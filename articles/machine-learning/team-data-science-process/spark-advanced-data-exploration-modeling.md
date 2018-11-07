@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: deguhath
-ms.openlocfilehash: 3674a6d629789392aba341f470bae83867331dfe
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 6fa59a176eaea08b612eb32eeb608fa7373d5c36
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394718"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249748"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Zaawansowane eksplorowanie i modelowanie danych za pomocą platformy Spark
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
-W tym instruktażu wykorzystano HDInsight Spark eksploracji danych i szkolenie klasyfikacji binarnej i modele regresji, przy użyciu krzyżowego sprawdzania poprawności i optymalizacji hiperparametrycznego odnośnie do przykładu NYC taksówki podróży i klasie 2013 zestawu danych. Przeprowadza użytkownika przez kroki [danych dla celów naukowych](http://aka.ms/datascienceprocess), end-to-end, przechowywanie danych i modele przy użyciu klastra usługi HDInsight Spark dla obiektów blob platformy Azure i związanych z przetwarzaniem. Proces analizuje i wizualizuje dane zaimportowane z usługi Azure Blob Storage i następnie przygotowuje dane w celu tworzenia modeli predykcyjnych. Python został użyty do kodu rozwiązania i wyświetlić odpowiednie wykresy. Te modele są kompilacji przy użyciu zestawu narzędzi Biblioteka MLlib platformy Spark w celu binarnej klasyfikacji i regresji zadań modelowania. 
+W tym instruktażu wykorzystano HDInsight Spark eksploracji danych i szkolenie klasyfikacji binarnej i modele regresji, przy użyciu krzyżowego sprawdzania poprawności i optymalizacji hiperparametrycznego odnośnie do przykładu NYC taksówki podróży i klasie 2013 zestawu danych. Przeprowadza użytkownika przez kroki [danych dla celów naukowych](https://aka.ms/datascienceprocess), end-to-end, przechowywanie danych i modele przy użyciu klastra usługi HDInsight Spark dla obiektów blob platformy Azure i związanych z przetwarzaniem. Proces analizuje i wizualizuje dane zaimportowane z usługi Azure Blob Storage i następnie przygotowuje dane w celu tworzenia modeli predykcyjnych. Python został użyty do kodu rozwiązania i wyświetlić odpowiednie wykresy. Te modele są kompilacji przy użyciu zestawu narzędzi Biblioteka MLlib platformy Spark w celu binarnej klasyfikacji i regresji zadań modelowania. 
 
 * **Klasyfikacji binarnej** zadania jest prognozowanie, czy porady zostało opłacone podróż. 
 * **Regresji** zadania jest prognozowanie, kwotę napiwku na podstawie innych funkcji porada. 

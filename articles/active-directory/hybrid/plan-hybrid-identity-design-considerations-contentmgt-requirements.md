@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a3e5ae61fcefcb65d08288a2ddc2dd239e68b211
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 60d4501257bf79d1846e62010bf7b336c1b18f19
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312256"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250870"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Określanie wymagań dotyczących zarządzania zawartością, rozwiązania tożsamości hybrydowej
 Opis wymagań dotyczących zarządzania zawartością w firmie bezpośrednie może wpływać na Twoją decyzję, na których rozwiązania tożsamości hybrydowej do użycia. Powszechne stosowanie wielu urządzeń i możliwość przynoszą własne urządzenia użytkowników ([BYOD](https://aka.ms/byodcg)), firmy muszą chronić swoje własne dane, ale jego również należy zachować prywatność użytkowników. Zwykle, gdy użytkownik ma swoje własne urządzenia, może również mieć wiele poświadczenia, które będą alternatywnych zgodnie z aplikacji, które używają. Jest ważne, aby odróżnić, jakie zawartość została utworzona przy użyciu osobistych poświadczeń w porównaniu z utworzonymi przy użyciu poświadczeń firmowych. Rozwiązanie tożsamości powinien mieć możliwość interakcji z chmury usługi, aby zapewnić bezproblemowe środowisko użytkownika końcowego podczas zapewnienia zachowania ich poufności i zwiększyć ochronę przed wyciekami danych. 
@@ -38,7 +38,7 @@ Ogólnie rzecz biorąc wymagania dotyczące zarządzania zawartością będzie k
 * Ochrona wycieku danych: odpowiedzialność za ochronę danych w celu uniknięcia wycieku środki kontroli bezpieczeństwa należy korzystać z systemu tożsamości w celu weryfikowania tożsamości użytkownika. Jest to również ważne w przypadku zastosowania dziennik inspekcji.
 
 > [!NOTE]
-> Odczyt [klasyfikacja danych pod kątem przygotowania do chmury](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) Aby uzyskać więcej informacji na temat najlepszych rozwiązań i wytycznych dotyczących klasyfikacji danych.
+> Odczyt [klasyfikacja danych pod kątem przygotowania do chmury](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) Aby uzyskać więcej informacji na temat najlepszych rozwiązań i wytycznych dotyczących klasyfikacji danych.
 > 
 > 
 

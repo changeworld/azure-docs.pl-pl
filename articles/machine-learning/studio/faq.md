@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: 87695e6e7e1f1abce7204ebbbbed2b492297f177
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 77ae05c240dbb099528d7224a936d90416366816
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393302"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247776"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure Machine Learning — często zadawane pytania: rozliczenia, możliwości, ograniczenia i pomoc techniczna
 Przedstawione tutaj często zadawane pytania i odpowiedzi dotyczą usługi Azure Machine Learning, która jest usługą w chmurze przeznaczoną do tworzenia modeli predykcyjnych i rozwiązań operacyjnych za pośrednictwem usług sieci Web. Wśród często zadawanych pytań znajdują się pytania dotyczące korzystania z samej usługi, w tym między innymi na temat modelu rozliczeń, możliwości, ograniczeń i pomocy technicznej.
 
 **Masz pytania, których nie możesz tu znaleźć?**
 
-Dla usługi Azure Machine Learning udostępniono forum w witrynie MSDN, gdzie członkowie społeczności skupiającej osoby zajmujące się nauką o danych mogą zadawać pytania dotyczące usługi Azure Machine Learning. Zespół ds. usługi Azure Machine Learning monitoruje forum. Przejdź do [forum poświęconego usłudze Azure Machine Learning](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning), aby poszukać odpowiedzi lub zadać własne pytanie.
+Dla usługi Azure Machine Learning udostępniono forum w witrynie MSDN, gdzie członkowie społeczności skupiającej osoby zajmujące się nauką o danych mogą zadawać pytania dotyczące usługi Azure Machine Learning. Zespół ds. usługi Azure Machine Learning monitoruje forum. Przejdź do [forum poświęconego usłudze Azure Machine Learning](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning), aby poszukać odpowiedzi lub zadać własne pytanie.
 
 ## <a name="general-questions"></a>Pytania ogólne
 **Co to jest Azure Machine Learning?**
@@ -123,7 +123,7 @@ Informacje na temat możliwości wprowadzania obrazu są dostępne w temacie [Im
 ### <a name="modules"></a>Moduły
 **W środowisku usługi Azure Machine Learning Studio nie ma poszukiwanego przeze mnie algorytmu, źródła danych, formatu danych lub szukanej operacji transformacji danych. Jakie są moje opcje?**
 
-Możesz przejść do [forum opinii użytkowników](http://go.microsoft.com/fwlink/?LinkId=404231), aby zobaczyć żądania funkcji, które śledzimy. Jeśli pojawiło się już żądanie dotyczące możliwości, której poszukujesz, zagłosuj na to żądanie. Jeśli możliwość, której poszukujesz, nie istnieje, utwórz nowe żądanie. Na tym forum możesz również sprawdzić stan swojego żądania. Ściśle śledzimy tę listę i często aktualizujemy stan dostępności funkcji. Ponadto możesz użyć wbudowanej obsługi języków R i Python, aby utworzyć niestandardowe przekształcenia wedle potrzeby.
+Możesz przejść do [forum opinii użytkowników](https://go.microsoft.com/fwlink/?LinkId=404231), aby zobaczyć żądania funkcji, które śledzimy. Jeśli pojawiło się już żądanie dotyczące możliwości, której poszukujesz, zagłosuj na to żądanie. Jeśli możliwość, której poszukujesz, nie istnieje, utwórz nowe żądanie. Na tym forum możesz również sprawdzić stan swojego żądania. Ściśle śledzimy tę listę i często aktualizujemy stan dostępności funkcji. Ponadto możesz użyć wbudowanej obsługi języków R i Python, aby utworzyć niestandardowe przekształcenia wedle potrzeby.
 
 **Czy mogę przenieść mój istniejący kod do środowiska usługi Machine Learning Studio?**
 
@@ -182,7 +182,7 @@ Obecnie możesz użyć wyłącznie języka R do tworzenia nowych modułów niest
 ### <a name="r-module"></a>Moduł R
 **Jakie pakiety języka R są dostępne w usłudze Machine Learning Studio?**
 
-Usługa Machine Learning Studio obsługuje obecnie ponad 400 pakietów języka R z sieci CRAN, a tutaj jest [aktualna lista](http://az754797.vo.msecnd.net/docs/RPackages.xlsx) wszystkich dostępnych pakietów. Zobacz też temat [Extend your experiment with R](extend-your-experiment-with-r.md) (Rozszerz swój eksperyment, korzystając z języka R), aby dowiedzieć się, jak pobrać tę listę samodzielnie. Jeśli żądanego pakietu nie ma na tej liście, należy podać nazwę pakietu na [forum opinii użytkowników](http://go.microsoft.com/fwlink/?LinkId=404231).
+Usługa Machine Learning Studio obsługuje obecnie ponad 400 pakietów języka R z sieci CRAN, a tutaj jest [aktualna lista](http://az754797.vo.msecnd.net/docs/RPackages.xlsx) wszystkich dostępnych pakietów. Zobacz też temat [Extend your experiment with R](extend-your-experiment-with-r.md) (Rozszerz swój eksperyment, korzystając z języka R), aby dowiedzieć się, jak pobrać tę listę samodzielnie. Jeśli żądanego pakietu nie ma na tej liście, należy podać nazwę pakietu na [forum opinii użytkowników](https://go.microsoft.com/fwlink/?LinkId=404231).
 
 **Czy jest możliwe utworzenie niestandardowego modułu R?**
 
@@ -312,7 +312,7 @@ Szkolenia można również znaleźć w witrynie [Microsoft Virtual Academy](http
 
 Aby uzyskać pomoc techniczną dotyczącą usługi Azure Machine Learning, przejdź do witryny [Pomoc techniczna platformy Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję **Machine Learning**.
 
-Dla usługi Azure Machine Learning udostępniono również forum społeczności w witrynie MSDN, gdzie można zadawać pytania dotyczące usługi Azure Machine Learning. Zespół ds. usługi Azure Machine Learning monitoruje forum. Przejdź do [Forum platformy Azure](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning).
+Dla usługi Azure Machine Learning udostępniono również forum społeczności w witrynie MSDN, gdzie można zadawać pytania dotyczące usługi Azure Machine Learning. Zespół ds. usługi Azure Machine Learning monitoruje forum. Przejdź do [Forum platformy Azure](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning).
 
 ## <a name="billing-questions"></a>Pytania dotyczące rozliczeń
 **Jak działa rozliczanie w usłudze Machine Learning?**

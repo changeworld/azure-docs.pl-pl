@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: ramamill
-ms.openlocfilehash: 753f666c9ac0167f672353ff33e28d0f7e68b755
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c7626c6edceddcfbd4d95ff6efc4678836a4502c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212951"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247997"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Rozwiązywanie problemów z funkcją Hyper-V do platformy Azure replikacji i trybu failover
 
@@ -167,6 +167,6 @@ Wszystkie zdarzenia replikacji funkcji Hyper-V są rejestrowane w dzienniku funk
 
 Te narzędzia mogą pomóc przy użyciu zaawansowanego rozwiązywania problemów:
 
--   Dla programu VMM, należy wykonać, Site Recovery dziennika kolekcję przy użyciu [narzędzie pomocy technicznej platformy diagnostyki (SDP)](http://social.technet.microsoft.com/wiki/contents/articles/28198.asr-data-collection-and-analysis-using-the-vmm-support-diagnostics-platform-sdp-tool.aspx).
+-   Dla programu VMM, należy wykonać, Site Recovery dziennika kolekcję przy użyciu [narzędzie pomocy technicznej platformy diagnostyki (SDP)](https://social.technet.microsoft.com/wiki/contents/articles/28198.asr-data-collection-and-analysis-using-the-vmm-support-diagnostics-platform-sdp-tool.aspx).
 -   Dla funkcji Hyper-V bez programu VMM [pobrać to narzędzie](https://dcupload.microsoft.com/tools/win7files/DIAG_ASRHyperV_global.DiagCab), i uruchom go na hoście funkcji Hyper-V, aby zebrać dzienniki.
 

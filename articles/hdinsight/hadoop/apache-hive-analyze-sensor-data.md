@@ -3,18 +3,18 @@ title: Analizowanie danych czujnika przy użyciu technologii Hive i Hadoop — A
 description: Dowiedz się, jak analizować dane czujników przy użyciu konsoli zapytań Hive z HDInsight (Hadoop), a następnie wizualizować te dane w programie Microsoft Excel za pomocą PowerView.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/14/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: f82bac1b478183cad41e1bb9f7dce3fed8b5417b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: dfc4d930f185c36c3ba0c869494ba0e7dee64cac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048902"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249408"
 ---
 # <a name="analyze-sensor-data-using-the-hive-query-console-on-hadoop-in-hdinsight"></a>Analizowanie danych z czujników w usłudze Hadoop w HDInsight przy użyciu konsoli zapytań Hive
 
@@ -41,7 +41,7 @@ W tym przykładzie użyjesz Hive do przetwarzania danych historycznych i zidenty
   > [!NOTE]
   > Program Microsoft Excel jest używany do wizualizacji danych z [Power View](https://support.office.com/Article/Power-View-Explore-visualize-and-present-your-data-98268d31-97e2-42aa-a52b-a68cf460472e?ui=en-US&rs=en-US&ad=US).
 
-* [Sterownika Microsoft Hive ODBC](http://www.microsoft.com/download/details.aspx?id=40886)
+* [Sterownika Microsoft Hive ODBC](https://www.microsoft.com/download/details.aspx?id=40886)
 
 ## <a name="to-run-the-sample"></a>Aby uruchomić przykład
 

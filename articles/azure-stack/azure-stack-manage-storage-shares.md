@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: d979692ba32c596058d28c88f32e7e5872ab7ef9
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 00fa1a78155e1add547b8b165f52cf3c1fba2dfe
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452330"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249901"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Zarządzanie pojemnością magazynu dla usługi Azure Stack 
 
@@ -138,7 +138,7 @@ Migracja konsoliduje obiektu blob kontenerów nowego udziału.
 > Migracja obiektów blob dla kontenera jest operację w trybie offline, która wymaga użycia programu PowerShell. Zakończenie migracji wszystkich obiektów blob w kontenerze, który w przypadku migracji pozostawać w trybie offline i nie można używać. Należy również unikać uaktualnianie usługi Azure Stack, aż do zakończenia wszystkich bieżących migracji.
 
 #### <a name="to-migrate-containers-using-powershell"></a>Aby przeprowadzić migrację kontenerów przy użyciu programu PowerShell
-1. Upewnij się, że masz [programu Azure PowerShell zainstalowany i skonfigurowany](http://azure.microsoft.com/documentation/articles/powershell-install-configure/). Aby uzyskać więcej informacji, zobacz temat [Using Azure PowerShell with Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767) (Używanie programu Azure PowerShell z usługą Azure Resource Manager).
+1. Upewnij się, że masz [programu Azure PowerShell zainstalowany i skonfigurowany](https://azure.microsoft.com/documentation/articles/powershell-install-configure/). Aby uzyskać więcej informacji, zobacz temat [Using Azure PowerShell with Azure Resource Manager](https://go.microsoft.com/fwlink/?LinkId=394767) (Używanie programu Azure PowerShell z usługą Azure Resource Manager).
 2.  Sprawdź kontener, aby zrozumieć, jakie dane są w udziale, który mają być poddane migracji. Aby zidentyfikować najlepsze kontenery Release candidate dla migracji w woluminie, należy użyć **Get AzsStorageContainer** polecenia cmdlet:
 
     ````PowerShell  

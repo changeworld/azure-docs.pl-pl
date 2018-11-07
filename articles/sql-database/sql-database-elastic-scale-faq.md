@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 31501cb0cc66c9d8db646e3cf0c75cc3d8daf7e0
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 52f507d8040f6ad628f7427253ce040ac69978ef
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242538"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250972"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Narzędzia elastycznych baz danych — często zadawane pytania (FAQ)
 
@@ -39,7 +39,7 @@ Nie używaj poświadczeń w formie "Nazwa użytkownika =username@servername", za
 
 #### <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Należy utworzyć Menedżera mapowań fragmentów i wypełnić fragmentów, za każdym razem, gdy mogę uruchomić Moje aplikacje?
 
-Nie — tworzenie Menedżera mapowań fragmentów (na przykład  **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) jest to jednorazowa operacja.  Aplikacja powinna używać wywołania **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** w momencie uruchamiania aplikacji.  Ma tylko jedno takie wywołanie dla domeny aplikacji.
+Nie — tworzenie Menedżera mapowań fragmentów (na przykład  **[ShardMapManagerFactory.CreateSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) jest to jednorazowa operacja.  Aplikacja powinna używać wywołania **[ShardMapManagerFactory.TryGetSqlShardMapManager()](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** w momencie uruchamiania aplikacji.  Ma tylko jedno takie wywołanie dla domeny aplikacji.
 
 #### <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Mam pytania dotyczące korzystania z narzędzi elastycznych baz danych, jak je odpowiedzi uzyskać?
 

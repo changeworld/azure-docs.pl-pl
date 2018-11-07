@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 554c575f338ebaa415ed21be8dc8b27eb79c3c0c
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: fea0a0dfd2e138fa4f33f4f489be74f5038b4ca6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634408"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244529"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Dołączanie maszyn w celu zarządzania usługi Azure Automation stanu konfiguracji
 
@@ -150,9 +150,9 @@ Można łatwo dołączać maszyny wirtualne usług Amazon Web Services do zarzą
 
 W środowisku lokalnym Windows i Windows maszyn w chmurach spoza platformy Azure (np. usług Amazon Web Services) mogą być także dołączona do usługi Azure Automation stan konfiguracji, tak długo, jak długo mają dostęp ruchu wychodzącego do Internetu za pomocą kilku prostych krokach:
 
-1. Upewnij się, że najnowsza wersja [WMF 5](http://aka.ms/wmf5latest) jest zainstalowany na komputerach, na których chcesz dołączyć do usługi Azure Automation stan konfiguracji.
+1. Upewnij się, że najnowsza wersja [WMF 5](https://aka.ms/wmf5latest) jest zainstalowany na komputerach, na których chcesz dołączyć do usługi Azure Automation stan konfiguracji.
 1. Postępuj zgodnie z instrukcjami w poniższej sekcji [ **metaconfigurations generowania DSC** ](#generating-dsc-metaconfigurations) do generowania folder zawierający potrzebne metaconfigurations DSC.
-1. Zdalnie zastosować metaconfiguration DSC programu PowerShell na maszynach, które chcesz dołączyć. **Na maszynie, to polecenie jest wykonywane z należy najnowszą wersję [WMF 5](http://aka.ms/wmf5latest) zainstalowane**:
+1. Zdalnie zastosować metaconfiguration DSC programu PowerShell na maszynach, które chcesz dołączyć. **Na maszynie, to polecenie jest wykonywane z należy najnowszą wersję [WMF 5](https://aka.ms/wmf5latest) zainstalowane**:
 
    ```powershell
    Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
@@ -190,7 +190,7 @@ Maszyny z systemem Linux w środowisku lokalnym, maszyny z systemem Linux na pla
     Set-DscLocalConfigurationManager -CimSession $Session -Path C:\Users\joe\Desktop\DscMetaConfigs
     ```
 
-Na maszynie, to polecenie jest wykonywane z należy najnowszą wersję [WMF 5](http://aka.ms/wmf5latest) zainstalowane.
+Na maszynie, to polecenie jest wykonywane z należy najnowszą wersję [WMF 5](https://aka.ms/wmf5latest) zainstalowane.
 
 1. Jeśli nie można zastosować metaconfigurations DSC programu PowerShell zdalnie, dla każdego komputera systemu Linux, aby dołączyć, należy skopiować metaconfiguration odpowiadający tej maszyny z folderu w kroku 5 na maszyny z systemem Linux. Następnie wywołaj `SetDscLocalConfigurationManager.py` lokalnie na każdym komputerze z systemem Linux których chcesz dołączyć do usługi Azure Automation stan konfiguracji:
 
@@ -207,7 +207,7 @@ Ogólnie dołączania żadnego komputera na konfiguracji stan automatyzacji plat
 
 ### <a name="using-a-dsc-configuration"></a>Przy użyciu konfiguracji DSC
 
-1. Otwórz VSCode (lub ulubionym edytorze) z uprawnieniami administratora na maszynie w środowisku lokalnym. Komputer musi mieć najnowszą wersję [WMF 5](http://aka.ms/wmf5latest) zainstalowane.
+1. Otwórz VSCode (lub ulubionym edytorze) z uprawnieniami administratora na maszynie w środowisku lokalnym. Komputer musi mieć najnowszą wersję [WMF 5](https://aka.ms/wmf5latest) zainstalowane.
 1. Skopiuj poniższy skrypt lokalnie. Ten skrypt zawiera konfiguracji DSC programu PowerShell do tworzenia metaconfigurations oraz polecenie, aby rozpocząć tworzenie metaconfiguration.
 
 > [!NOTE]

@@ -8,12 +8,12 @@ ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 4386f87b6986e6ab1742a8d3c14a100fea112182
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: dd3cb108844cd009d74de42630511073021d94b1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406315"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238492"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Rozpoczynanie pracy z usługą Azure Data Catalog
 Azure Data Catalog to w pełni zarządzana usługa w chmurze służąca jako system rejestracji i odnajdywania zasobów danych przedsiębiorstwa. Szczegółowe omówienie tej usługi można znaleźć w artykule [Co to jest usługa Azure Data Catalog?](data-catalog-what-is-data-catalog.md).
@@ -96,7 +96,7 @@ Baza danych firmy Adventure Works obsługuje standardowe scenariusze przetwarzan
 Aby zainstalować przykładową bazę danych firmy Adventure Works:
 
 1. Pobierz plik [Adventure Works 2014 Full Database Backup.zip](https://msftdbprodsamples.codeplex.com/downloads/get/880661) z witryny CodePlex.
-2. Aby przywrócić bazę danych na swoim komputerze, postępuj zgodnie z instrukcjami zawartymi w artykule [Restore a Database Backup by using SQL Server Management Studio](http://msdn.microsoft.com/library/ms177429.aspx) (Przywracanie kopii zapasowej bazy danych przy użyciu programu SQL Server Management Studio) lub wykonaj następujące czynności:
+2. Aby przywrócić bazę danych na swoim komputerze, postępuj zgodnie z instrukcjami zawartymi w artykule [Restore a Database Backup by using SQL Server Management Studio](https://msdn.microsoft.com/library/ms177429.aspx) (Przywracanie kopii zapasowej bazy danych przy użyciu programu SQL Server Management Studio) lub wykonaj następujące czynności:
    1. Otwórz program SQL Server Management Studio i połącz się z aparatem bazy danych programu SQL Server.
    2. Kliknij prawym przyciskiem myszy pozycję **Bazy danych** i kliknij polecenie **Przywróć bazę danych**.
    3. W obszarze **Przywracanie bazy danych** kliknij opcję **Urządzenie** w sekcji **Źródło** i kliknij przycisk **Przeglądaj**.

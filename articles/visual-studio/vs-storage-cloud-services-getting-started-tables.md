@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: f1e663463ff91da887a4afaebde4b2257347d4f4
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 44056ae1bca2595965abd3a47b4a2aa29d221623
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055831"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255237"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Wprowadzenie do usługi Azure table storage i Visual Studio połączonych usług (usługi w chmurze projektów)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -29,7 +29,7 @@ Usługa Azure Table storage umożliwia przechowywanie dużych ilości danych str
 
 Aby rozpocząć pracę, należy najpierw utworzyć tabelę w ramach konta magazynu. Pokażemy ci, jak utworzyć tabelę platformy Azure w kodzie, a także jak wykonać podstawowe tabeli i operacje jednostki, takie jak dodawanie, modyfikowanie, odczytywania i odczytywania jednostki z tabeli. Przykłady są napisane w języku C\# kod i użyć [biblioteki klienta usługi Microsoft Azure Storage dla platformy .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
-**Uwaga:** niektóre interfejsy API służące do przeprowadzania wywołań się do usługi Azure storage są asynchroniczne. Zobacz [programowanie asynchroniczne z Async i Await](http://msdn.microsoft.com/library/hh191443.aspx) Aby uzyskać więcej informacji. Kod poniżej założono, że są używane metody programowania asynchronicznego.
+**Uwaga:** niektóre interfejsy API służące do przeprowadzania wywołań się do usługi Azure storage są asynchroniczne. Zobacz [programowanie asynchroniczne z Async i Await](https://msdn.microsoft.com/library/hh191443.aspx) Aby uzyskać więcej informacji. Kod poniżej założono, że są używane metody programowania asynchronicznego.
 
 * Zobacz [Rozpoczynanie pracy z usługą Azure Table storage przy użyciu platformy .NET](../storage/storage-dotnet-how-to-use-tables.md) więcej informacji na temat programowe operowanie tabel.
 * Zobacz [dokumentacja usługi Storage](https://azure.microsoft.com/documentation/services/storage/) ogólne informacje o usłudze Azure Storage.

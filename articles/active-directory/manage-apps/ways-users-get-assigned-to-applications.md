@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 2301c2eee2853617251053713b50f9915962027b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d34671d4197735ea2c30aafc8fd01a5893427ff3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356939"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226852"
 ---
 # <a name="how-to-assign-users-to-applications"></a>Jak przypisać użytkowników do aplikacji
 
@@ -51,9 +51,9 @@ Użytkownikowi dostęp do aplikacji ich należy przypisać do niej w jakiś spos
 
 6.  Administrator włączy [Samoobsługowe zarządzanie grupami](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) zezwalający użytkownikowi do dołączenia do grupy, która aplikacja jest przypisany do, ale tylko **przy pobieraniu z wybranym zestawem osoby zatwierdzające w firmie**
 
-7.  Administrator przypisuje licencji użytkownika bezpośrednio do pierwszej aplikacji innych firm, takie jak [Microsoft Office 365](http://products.office.com/)
+7.  Administrator przypisuje licencji użytkownika bezpośrednio do pierwszej aplikacji innych firm, takie jak [Microsoft Office 365](https://products.office.com/)
 
-8.  Administrator przypisuje licencji do grupy, czy użytkownik jest członkiem do pierwszej aplikacji innych firm, takie jak [Microsoft Office 365](http://products.office.com/)
+8.  Administrator przypisuje licencji do grupy, czy użytkownik jest członkiem do pierwszej aplikacji innych firm, takie jak [Microsoft Office 365](https://products.office.com/)
 
 9.  [Administratora, który wyraża zgodę na aplikację](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) ma być używany przez wszystkich użytkowników, a następnie użytkownik loguje się do aplikacji
 

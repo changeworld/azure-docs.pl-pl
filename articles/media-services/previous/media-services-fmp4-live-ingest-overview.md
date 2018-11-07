@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: 88c152872ef8b571b8bc3e3f06ce486943e724b1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c6ff386913ed66cf4f74cb577bb8ca58e6932ada
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443532"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228882"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Specyfikacja odbierania usługi Azure Media Services na żywo podzielonej zawartości w formacie MP4
 Tej specyfikacji opisuje protokół i format podzielonej zawartości w formacie MP4 oparte na żywo transmisji strumieniowej przyjmowanie danych z usługi Azure Media Services. Media Services udostępnia usługi przesyłania strumieniowego na żywo, którego klienci mogą przeprowadzać przesyłanie strumieniowe wydarzeń na żywo i emisji zawartość w czasie rzeczywistym, korzystając z platformy Azure jako platformy usług w chmurze. W tym dokumencie omówiono również najlepsze wskazówki dotyczące tworzenia wysoce nadmiarowy i niezawodne na żywo pozyskiwać mechanizmami.
@@ -38,7 +38,7 @@ Na poniższym diagramie przedstawiono architekturę wysokiego poziomu usługi tr
 ![pozyskiwanie przepływu][image1]
 
 ## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3. Format Bitstream — ISO 14496 12 pofragmentowany plik MP4
-Formatu podczas transmisji strumieniowej na żywo pozyskiwania omówionych w tym dokumencie opiera się na [ISO-14496-12]. Aby uzyskać szczegółowy opis podzielonej zawartości w formacie MP4 i rozszerzeń, zarówno dla wideo na żądanie plików i pozyskiwania transmisji strumieniowej na żywo, zobacz [[MS-SSTR]](http://msdn.microsoft.com/library/ff469518.aspx).
+Formatu podczas transmisji strumieniowej na żywo pozyskiwania omówionych w tym dokumencie opiera się na [ISO-14496-12]. Aby uzyskać szczegółowy opis podzielonej zawartości w formacie MP4 i rozszerzeń, zarówno dla wideo na żądanie plików i pozyskiwania transmisji strumieniowej na żywo, zobacz [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).
 
 ### <a name="live-ingest-format-definitions"></a>Pozyskiwanie na żywo format definicji
 Na poniższej liście opisano specjalny format, których definicje, które są stosowane na żywo przesyłanie do usługi Azure Media Services:
@@ -137,7 +137,7 @@ Następujące oczekiwania stosuje się z punktu końcowego pozyskiwania na żywo
 ## <a name="9-encoder-redundancy"></a>9. Nadmiarowość kodera
 Krytyczne dla niektórych wydarzeń na żywo, wymagają jeszcze większej dostępności i jakości obsługi, zaleca się użycie aktywne aktywne nadmiarowych koderów w celu uzyskania płynnego trybu failover bez utraty danych.
 
-![nadmiarowość kodera][image6]
+![Nadmiarowość kodera][image6]
 
 Jak pokazano na poniższym diagramie, dwie grupy koderów wypchnąć dwie kopie każdego strumienia równocześnie do usługi na żywo. Ta konfiguracja jest obsługiwana, ponieważ usługa Media Services można odfiltrować zduplikowane fragmenty, oparte na sygnatury czasowej identyfikator i fragment strumienia. Wynikowy strumień na żywo i archiwum jest pojedynczej kopii wszystkich strumieni, który jest najlepsze możliwe agregacji z dwóch źródeł. Na przykład w hipotetyczny przypadków, tak długo, jak istnieje jeden koder (nie musi być taki sam) jest uruchomiona w dowolnym danym momencie w czasie dla każdego strumienia, wynikowy strumień na żywo z usługi jest ciągłe bez utraty danych. 
 
@@ -146,7 +146,7 @@ Wymagania dotyczące tego scenariusza są prawie taki sam jak wymagania w przypa
 ## <a name="10-service-redundancy"></a>10. Nadmiarowość usług
 Dla bardzo nadmiarowe dystrybucji globalnej czasami konieczne jest posiadanie między regionami kopii zapasowej w celu obsługi awarii regionalnej. Rozszerzając topologii "Kodera nadmiarowości", klienci mogą wybrać opcję ma nadmiarowe usługi w różnych regionach, która jest połączona z drugiego zestawu koderów. Klienci mogą również pracować z dostawcą Content Delivery Network do wdrożenia globalnego Traffic Manager przed wdrożeniami usług dwóch bezproblemowo kierować ruch klientów. Wymagania dotyczące koderów są takie same jak w przypadku "Kodera nadmiarowości". Jedynym wyjątkiem jest, że drugi zestaw koderów konieczna będzie wskazywał na żywo z innym pozyskiwania punktu końcowego. Na poniższym diagramie przedstawiono tej konfiguracji:
 
-![nadmiarowość usług][image7]
+![Nadmiarowość usług][image7]
 
 ## <a name="11-special-types-of-ingestion-formats"></a>11. Specjalne typy formatów pozyskiwania
 W tej sekcji omówiono typy specjalne formaty pozyskiwania na żywo, które są przeznaczone do obsługi określonych scenariuszy.

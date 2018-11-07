@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: barclayn
-ms.openlocfilehash: d0be0cbd9ff16acc1ecb209997a0c87cd4e43b36
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a28bf1dc23d678c710d7bd6b13f067427e76ef41
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955108"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238403"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Rozpoczynanie pracy z usługą Azure Key Vault
 Ten artykuł ułatwia rozpoczęcie pracy z usługą Azure Key Vault przy użyciu programu PowerShell i zawiera omówienie następujących działań:
@@ -36,7 +36,7 @@ Przed kontynuowaniem upewnij się, że masz:
 
 - **Subskrypcja platformy Azure**. Jeśli jej nie masz, możesz zarejestrować się w celu [utworzenia bezpłatnego konta](https://azure.microsoft.com/free/).
 - Program **Azure PowerShell**, **minimalna wersja 1.1.0**. Aby zainstalować program Azure PowerShell i skojarzyć go z subskrypcją platformy Azure, zobacz [Sposób instalowania i konfigurowania programu Azure PowerShell](/powershell/azure/overview). Jeśli masz już zainstalowany program Azure PowerShell, ale nie wiesz, z jakiej wersji korzystasz, w konsoli programu Azure PowerShell wpisz polecenie `(Get-Module azure -ListAvailable).Version`. Jeśli masz zainstalowany program Azure PowerShell w wersji od 0.9.1 do 0.9.8, nadal możesz korzystać tego samouczka z niewielkimi zmianami. Na przykład musisz użyć polecenia `Switch-AzureMode AzureResourceManager`. Do tego niektóre polecenia usługi Azure Key Vault uległy zmianie. Aby uzyskać listę poleceń cmdlet usługi Key Vault dla wersji od 0.9.1 do 0.9.8, zobacz [Polecenia cmdlet usługi Azure Key Vault](/powershell/module/azurerm.keyvault/#key_vault).
-- **Aplikacja, którą można skonfigurować do używania usługi Key Vault**. Przykładowa aplikacja jest dostępna w [Centrum pobierania Microsoft](http://www.microsoft.com/download/details.aspx?id=45343). Aby uzyskać instrukcje, zobacz załączony plik **Readme**.
+- **Aplikacja, którą można skonfigurować do używania usługi Key Vault**. Przykładowa aplikacja jest dostępna w [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=45343). Aby uzyskać instrukcje, zobacz załączony plik **Readme**.
 
 >[!NOTE]
 W tym artykule przyjęto założenie, że masz podstawową wiedzą dotyczącą programu PowerShell i platformy Azure. Aby uzyskać więcej informacji na temat programu PowerShell, zobacz [Wprowadzenie do programu Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx).

@@ -1,6 +1,6 @@
 ---
-title: Omówienie Reliable Actors sieci szkieletowej usług | Dokumentacja firmy Microsoft
-description: Wprowadzenie do modelu programowania Reliable Actors sieci szkieletowej usług.
+title: Omówienie elementów Reliable Actors w sieci szkieletowej usług | Dokumentacja firmy Microsoft
+description: Wprowadzenie do modelu programowania w elementach Reliable Actors usługi Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,67 +14,67 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: d0de7e7596fb7fabbc4061709816111a7a4ad827
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 363cba145ed4d5bcf138cf3f7130763891c51e8b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213048"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258065"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Wprowadzenie do elementów Reliable Actors usługi Service Fabric
-Reliable Actors to platforma aplikacji sieci szkieletowej usług na podstawie [aktora wirtualnego](http://research.microsoft.com/en-us/projects/orleans/) wzorca. Niezawodnej interfejs API złośliwych użytkowników zapewnia model programowania jednowątkowe oparty na skalowalność i niezawodność gwarancje udostępniane przez usługi sieć szkieletowa usług.
+Elementy Reliable Actors to struktura aplikacji usługi Service Fabric na podstawie [wirtualnego aktora](https://research.microsoft.com/en-us/projects/orleans/) wzorca. Interfejsu API programu Reliable Actors oferuje jednowątkowe model programowania oparty na skalowalność i niezawodność gwarancje udostępniane przez usługę Service Fabric.
 
-## <a name="what-are-actors"></a>Co to są złośliwych użytkowników?
-Aktor jest jednostką izolowanym, niezależnie od zasobów obliczeniowych i stanu z jednowątkowego wykonywania. [Wzorca aktora](https://en.wikipedia.org/wiki/Actor_model) to model obliczeniową dla systemów równoczesnych lub rozproszone, w którym dużej liczby uczestników te mogą być wykonywane jednocześnie i niezależnie od siebie nawzajem. Złośliwych użytkowników może komunikować się ze sobą i mogą utworzyć więcej złośliwych użytkowników.
+## <a name="what-are-actors"></a>Co to są aktorami?
+Aktor jest izolowanym, niezależnie od jednostki obliczeniowe i stan z wykonywaniem jednowątkowe. [Wzorcem aktora](https://en.wikipedia.org/wiki/Actor_model) jest modelem obliczeniową systemów współbieżnych lub rozproszonej, w którym dużej liczby Aktorzy mogą być wykonywane jednocześnie, a niezależnie od siebie. Aktorzy może komunikować się ze sobą i tworzą więcej podmiotów.
 
-### <a name="when-to-use-reliable-actors"></a>Kiedy należy używać Reliable Actors
-Usługa sieci szkieletowej Reliable Actors jest implementacją wzorca projektowego aktora. Podobnie jak w przypadku dowolnego wzorcu projektowym oprogramowania decyzja, czy ma być używany z określonym wzorcem jest podjęcie opartej na czy oprogramowania projektowania problem pasuje do wzorca.
+### <a name="when-to-use-reliable-actors"></a>Kiedy używać elementów Reliable Actors
+Elementy Reliable Actors usługi Service Fabric to implementacja wzorca projektowego aktora. Podobnie jak w przypadku wszelkie wzorzec projektowania oprogramowania decyzji, czy ma być używane z określonym wzorcem składa się zależnie od tego, czy oprogramowanie Projektuj problem pasuje do wzorca.
 
-Mimo że wzorzec projektowania aktora można bardzo zmieści się do liczby systemów rozproszonych problemy i scenariusze zachować ostrożność, że należy uwzględnić ograniczenia wzorca i framework implementacji. Stanowią ogólne wskazówki należy wziąć pod uwagę wzorca aktora do modelowania scenariuszu lub problem, jeśli:
+Mimo że wzorca projektowego aktora można jest dobrą dopasować liczby systemów rozproszonych problemy i scenariusze, zachować ostrożność, że muszą być wykonane uwagę ograniczenia wzorzec i framework jej implementacji. Jako ogólne wskazówki należy wziąć pod uwagę wzorcem aktora do modelowania problemów lub scenariusz, jeśli:
 
-* Obszar problem obejmuje dużą liczbą (tysięcy lub więcej) jednostek mały, niezależne i izolowane stanu i logiki.
-* Chcesz korzystać z jednowątkowego obiektów, które nie wymagają znaczących interakcji z zewnętrznego składników, w tym badania stanu zestawu podmiotów.
-* Swoich wystąpień aktora nie zablokuje wywołań nieprzewidywalne opóźnień wysyłając operacji We/Wy.
+* Obszar problemu obejmuje dużą liczbą (tysięcy lub więcej) małe, niezależne i izolowanych jednostek, stanu i logiki.
+* Chcesz pracować z jednowątkowe obiekty, które nie wymagają znaczących interakcji ze składników zewnętrznych, w tym, wykonywanie zapytań stanu w zestaw podmiotów.
+* Wystąpienia aktora nie będzie blokować obiektów wywołujących nieprzewidywalne opóźnień, wysyłając operacji We/Wy.
 
-## <a name="actors-in-service-fabric"></a>Złośliwych użytkowników w sieci szkieletowej usług
-W sieci szkieletowej usług, podmioty są realizowane w ramach Reliable Actors: struktura aplikacji na podstawie wzorca aktora wbudowane nad [niezawodne usługi sieć szkieletowa usług](service-fabric-reliable-services-introduction.md). Każdej usługi niezawodnego aktora, jaki jest rzeczywiście podzielonym na partycje, stanowe niezawodnej usługi.
+## <a name="actors-in-service-fabric"></a>Aktorzy usługi Service Fabric
+W usłudze Service Fabric, aktorów są realizowane w ramach elementów Reliable Actors: strukturę aplikacji na podstawie wzorca aktora skompilowane na [usług Reliable Services usługi Service Fabric](service-fabric-reliable-services-introduction.md). Każda usługa Reliable Actors, którą piszesz jest faktycznie podzielonym na partycje i stanowej usługi Reliable Service.
 
-Każdy aktora jest zdefiniowany jako wystąpienie typu aktora identyczny sposób obiektu .NET. wystąpienia typu .NET. Na przykład może to być typ aktora, która implementuje funkcje Kalkulatora i może istnieć wiele podmiotów tego typu rozproszonych w różnych węzłach w klastrze. Każdy taki aktora jest unikatowo identyfikowana przez identyfikator aktora.
+Każdego aktora jest zdefiniowany jako wystąpienie typu aktora taka sama jak sposób, w jaki obiekt .NET jest wystąpieniem typu .NET. Na przykład może to być typ aktora, który implementuje funkcje Kalkulator i może istnieć wiele podmiotów tego typu, rozproszonych w różnych węzłach w klastrze. Każdy taki aktora jest unikatowo identyfikowana przez identyfikator aktora.
 
 ## <a name="actor-lifetime"></a>Okres istnienia aktora
-Sieć szkieletowa usług podmiotów są wirtualny, co oznacza, że ich istnienia nie jest związana z ich reprezentacji w pamięci. W związku z tym nie muszą jawnie utworzone lub zniszczenia. Środowisko uruchomieniowe Reliable Actors automatycznie aktywuje czas aktora pierwszy odbierze żądanie dla danego identyfikatora aktora. Jeśli aktora nie jest używany w danym okresie czasu, środowisko uruchomieniowe Reliable Actors pamięci zbiera obiektu w pamięci. Również zachowa wiedzy istnienia aktora powinien trzeba będzie ponownie aktywować później. Aby uzyskać więcej informacji, zobacz [aktora cykl życia i odzyskiwanie pamięci](service-fabric-reliable-actors-lifecycle.md).
+Aktorów usługi Service Fabric są wirtualne, co oznacza, że ich okres istnienia nie jest związany z ich reprezentacji w pamięci. W rezultacie nie muszą jawnie utworzone lub zniszczone. Środowisko uruchomieniowe elementów Reliable Actors automatycznie aktywuje czas aktora pierwszy odbierze żądanie dla tego identyfikatora aktora. Jeśli aktora nie jest używany przez czas, w czasie wykonywania w elementach Reliable Actors wyrzucania elementów zbiera obiektu w pamięci. Również zachowa wiedzy o istnieniu aktora należy należy później ponownie aktywować. Aby uzyskać więcej informacji, zobacz [aktora cykl życia i odzyskiwanie kolekcji](service-fabric-reliable-actors-lifecycle.md).
 
-Ta warstwa abstrakcji okres istnienia aktora wirtualnego zawiera niektóre zastrzeżenia wyniku modelu aktora wirtualnego, a w rzeczywistości implementacji Reliable Actors w czasie odbiega od tego modelu.
+Tę warstwę abstrakcji okres istnienia aktora wirtualnej niesie ze sobą pewne zastrzeżenia wyniku model aktorów wirtualnego, a w rzeczywistości implementacji interfejsu Reliable Actors w czasie odbiega od tego modelu.
 
-* Aktor jest uaktywniany automatycznie (co obiekt aktora można skonstruować) po raz pierwszy jest wysyłany komunikat, jego identyfikator aktora. Po pewnym opóźnieniem od czasu obiekt aktora jest bezużytecznych. W przyszłości za pomocą Identyfikatora aktora ponownie, powoduje, że można utworzyć nowy obiekt aktora. Okres istnienia obiektu outlives stanu aktora, gdy przechowywana w Menedżer stanów.
-* Wywołaniem jakiejkolwiek jego metody aktora o identyfikatorze aktora aktywuje tego aktora. Z tego powodu aktora typy mają ich Konstruktor wywoływany niejawnie przez środowisko uruchomieniowe. W związku z tym kod klienta nie można przekazywać parametrów do konstruktora typu aktora, mimo że parametry mogą być przekazany do konstruktora aktora przez samą usługę. Wynik jest, że złośliwych użytkowników, mogą być zbudowane w stanie częściowo zainicjowany w czasie, inne metody są wywoływać w nim, jeśli aktora wymaga parametrów inicjowania od klienta. Brak punktu wejścia jednym aktywacji aktora z klienta.
-* Mimo że Reliable Actors niejawnie Tworzenie obiektów aktora; masz możliwość usunięcia jawnie aktora i jego stan.
+* Aktor jest aktywowana automatycznie (co powoduje aktora obiekt, do którego można skonstruować) po raz pierwszy komunikat jest wysyłany do jego identyfikatora aktora. Po pewnym opóźnieniem od czasu obiekt aktora jest bezużyteczne. W przyszłości ponownie przy użyciu Identyfikatora aktora, powoduje, że można utworzyć nowy obiekt aktora. Stanu aktora outlives okresu istnienia obiektu podczas przechowywane w Menedżer stanów.
+* Wywołaniem jakiejkolwiek jego metody aktora o identyfikatorze aktora aktywuje tego aktora. Z tego powodu aktora typy mają swoje Konstruktor wywołuje niejawnie przez środowisko uruchomieniowe. W związku z tym kod klienta nie parametry są przekazywane do konstruktora typ aktora, mimo że parametry może być przekazywane do konstruktora aktora za samą usługę. Powoduje to, że aktorów, musi być zbudowany w stanie częściowo zainicjowanych przez razem, gdy inne metody są wywoływane, jeśli aktora wymaga parametrów inicjowania od klienta. Nie ma żadnych pojedynczego punktu wejścia dla aktywacji aktora od klienta.
+* Mimo że elementów Reliable Actors niejawnie tworzenia obiektów aktora; masz możliwość jawnie usunąć aktora i jego stan.
 
-## <a name="distribution-and-failover"></a>Dystrybucji i trybu failover
-Zapewnienie skalowalność i niezawodność sieci szkieletowej usług dystrybuuje podmioty w klastrze i automatycznie migruje je z węzłów do dobrej kondycji a w razie potrzeby. Jest to Abstrakcja za pośrednictwem [podzielonym na partycje, stanowe niezawodnej usługi](service-fabric-concepts-partitioning.md). Dystrybucji, skalowalności, niezawodności i automatycznej pracy awaryjnej wszystkie są dostarczane ze względu na fakt, że podmiotów działają wewnątrz stanowe niezawodnej usługi o nazwie *usługi aktora*.
+## <a name="distribution-and-failover"></a>Rozpowszechnianie i trybu failover
+Aby zapewnić skalowalność i niezawodność, usługi Service Fabric dystrybuuje aktorów w całym klastrze i automatycznie migruje je z węzłów nie powiodło się tymi dobrej kondycji, zgodnie z potrzebami. Jest klasą abstrakcyjną za pośrednictwem [podzielonym na partycje i stanowej usługi Reliable Service](service-fabric-concepts-partitioning.md). Dystrybucja, skalowalności, niezawodności i automatycznej pracy awaryjnej znajdują się wszystkie ze względu na fakt, że Aktorzy działają wewnątrz stanowej usługi Reliable Service o nazwie *usługa aktora*.
 
-Podmioty są rozproszone na partycje usługi aktora, a te partycje są dystrybuowane między węzłami w klastrze usługi sieć szkieletowa usług. Każda partycja usługi zawiera zestaw złośliwych użytkowników. Usługa Service Fabric zarządza dystrybucji i pracy awaryjnej partycji usługi.
+Aktorzy są dystrybuowane na partycje usługi aktora, a te partycje są dystrybuowane między węzłami w klastrze usługi Service Fabric. Każda partycja usługi zawiera zestaw podmiotów. Usługa Service Fabric zarządza dystrybucji i pracy w trybie failover partycji usługi.
 
-Na przykład usługi aktora z partycjami dziewięć wdrożone do trzech węzłów przy użyciu domyślnego położenia partycji aktora będą dystrybuowane thusly:
+Na przykład usługi aktora z dziewięciu partycjami wdrożyć trzy węzły za pomocą domyślna lokalizacja partycji aktora będą rozproszone thusly:
 
-![Niezawodne dystrybucji złośliwych użytkowników][2]
+![Niezawodny dystrybucyjnej aktorów][2]
 
-Framework aktora zarządza ustawieniami partycji schemat i klawisz zakresu dla Ciebie. Upraszcza niektóre opcje, ale również zajmuje kilka brany pod uwagę:
+Struktura aktora zarządza ustawieniami partycji schematu i klucza zakresu dla Ciebie. Upraszcza niektórych opcji, ale także niesie ze sobą pewne zagadnienia:
 
-* Niezawodne usługi umożliwia wybierz schemat partycjonowania, klucza zakresu (w przypadku używania zakres schemat partycjonowania), a liczba partycji. Reliable Actors jest ograniczony do zakresu (uniform schematu Int64) schemat partycjonowania i wymaga, aby użyć pełnego zakresu klucza Int64.
-* Domyślnie podmiotów losowo są umieszczane w partycji co uniform dystrybucji.
-* Ponieważ podmiotów losowo znajdują się, powinien oczekiwano, że operacje aktora zawsze wymagają komunikacji w sieci, w tym serializacji i deserializacji obiektu danych wywołania metody, ponoszenia opóźnienia i koszty.
-* W zaawansowanych scenariuszach istnieje możliwość sterowania aktora partycji umieszczania przy użyciu aktora Int64 identyfikatorów, które mapują na określonej partycji. Jednak to tak może spowodować niezrównoważonej dystrybucji podmiotów na partycje.
+* Usług Reliable Services umożliwia wybierz schemat partycjonowania, zakres kluczy (w przypadku używania zakres schemat partycji), a liczba partycji. Elementy Reliable Actors jest ograniczona do zakresu (uniform schematu Int64) schemat partycjonowania i wymaga, aby korzystać z pełnego zakresu kluczy Int64.
+* Domyślnie aktorów losowo są umieszczane na partycje skutkuje jednolity ROZKŁAD.
+* Ponieważ losowo obowiązują aktorów, oczekiwane zachowane, że operacje aktora zawsze wymagają komunikacji sieciowej, w tym serializacji i deserializacji obiektu danych wywołania metody, opóźnień oraz obciążenie.
+* W zaawansowanych scenariuszach istnieje możliwość umieszczenia partycji aktora kontroli przy użyciu aktora Int64 identyfikatorów, które mapują z określonymi partycjami. Jednak wykonanie tej tak może spowodować niezrównoważone dystrybucji aktorów partycjach.
 
-Więcej informacji dotyczących sposobu usługi aktora są podzielone na partycje, można znaleźć w [partycjonowania pojęcia osób](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
+Aby uzyskać więcej informacji o jak usług aktora są podzielone na partycje, zobacz [partycjonowania pojęcia dla aktorów](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
 
 ## <a name="actor-communication"></a>Komunikacja aktora
-Interakcje aktora są definiowane w interfejs, który jest współużytkowany przez aktora, która implementuje interfejs i klienta, który pobiera serwer proxy, aby aktora za pomocą tego samego interfejsu. Ponieważ ten interfejs jest używane do asynchronicznego wywołania metody aktora, co metoda w interfejsie musi być zwracanie zadań.
+Interakcje aktora są definiowane w interfejs, który jest współużytkowany przez aktora, który implementuje interfejs i klienta, który pobiera serwer proxy przy użyciu tego samego interfejsu aktora. Ponieważ ten interfejs jest wykorzystywany do wywołania metody aktora asynchronicznie, każdej metody w interfejsie musi być zwracającą zadanie.
 
-Wywołań metod i ich odpowiedzi ostatecznie spowodować żądania sieci w klastrze, więc argumenty i typy wyników zadań, które zwracają muszą podlegać serializacji przez platformę. W szczególności muszą być [serializacji kontraktu danych](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
+Wywołania metod i ich odpowiedzi na ostatecznie powoduje, że w żądaniach sieci w klastrze, więc argumentów i typy wyników zadania, które zwracają musi być możliwy do serializacji przez platformę. W szczególności, musi być [kontraktu danych serializacji](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 
 ### <a name="the-actor-proxy"></a>Serwer proxy aktora
-Interfejs API klienta Reliable Actors zapewnia komunikację między wystąpieniem aktora i klienta aktora. Do komunikacji z aktorem, klient tworzy aktora obiekt serwera proxy, który implementuje interfejs aktora. Klient wchodzi w interakcję z aktorem przez wywołanie metody dla obiekt serwera proxy. Serwer proxy aktora może służyć do komunikacji klient aktora i aktora aktora.
+Interfejs API klienta elementów Reliable Actors zapewnia komunikację między wystąpienia aktora i klienta usługi aktora. Nawiązać połączenia z usługą aktora, klient tworzy obiekt serwera proxy aktora, który implementuje interfejs aktora. Klient korzysta z aktora przez wywołanie metody na obiekt serwera proxy. Serwer proxy aktora może służyć do komunikacji klienta do aktora i aktora do aktora.
 
 ```csharp
 // Create a randomly distributed actor ID
@@ -99,54 +99,54 @@ myActor.DoWorkAsync().get();
 ```
 
 
-Należy zauważyć, że dwa rodzaje informacji używanych do tworzenia obiektu proxy aktora identyfikator aktora i nazwę aplikacji. Identyfikator aktora unikatowo identyfikuje aktora, podczas gdy nazwa aplikacji identyfikuje [aplikacji usługi Service Fabric](service-fabric-reliable-actors-platform.md#application-model) wdrożonym aktora.
+Należy zauważyć, że dwóch rodzajów informacji używanych do tworzenia obiektu serwera proxy aktora ID aktora i nazwy aplikacji. Aktor o identyfikatorze unikatowo identyfikuje aktora, podczas gdy nazwa aplikacji identyfikuje [aplikacji usługi Service Fabric](service-fabric-reliable-actors-platform.md#application-model) wdrożonym aktora.
 
-`ActorProxy`(C#) / `ActorProxyBase`klasy (Java) po stronie klienta przeprowadza rozpoznawanie niezbędne do lokalizowania aktora według Identyfikatora i otwórz kanał komunikacji z nim. Również ponowną do zlokalizowania aktora w przypadku niepowodzenia komunikacji i tryb failover. W związku z tym dostarczanie komunikatów o następujących cechach:
+`ActorProxy`(C#) / `ActorProxyBase`Klasy (Java) po stronie klienta wykonuje niezbędne rozpoznawania, aby zlokalizować aktora według Identyfikatora i otwórz kanał komunikacyjny z nim. Również ponowi zlokalizować aktora w przypadku niepowodzenia komunikacji oraz przejścia w tryb failover. W rezultacie dostarczanie komunikatów ma następującą charakterystykę:
 
-* Dostarczanie komunikatów to optymalne rozwiązanie.
-* Złośliwych użytkowników może pojawić się zduplikowane wiadomości z tego samego klienta.
+* Dostarczanie komunikatów jest najlepszy nakład pracy.
+* Aktorzy może zostać wyświetlony zduplikowane komunikaty z tego samego klienta.
 
 ## <a name="concurrency"></a>Współbieżność
-Środowisko uruchomieniowe Reliable Actors udostępnia model na podstawie Włączanie dostępu za pomocą prostego do uzyskiwania dostępu do metody aktora. Oznacza to, że nie więcej niż jeden wątek może być aktywny wewnątrz kodu obiektu aktora w dowolnym momencie. Włącz dostęp przez Internet jest znacznie ułatwione równoczesnych systemów jako nie istnieje potrzeba mechanizmów synchronizacji dla dostępu do danych. Ponadto oznacza to, że systemy musi zostać zaprojektowana z uwagi dotyczące charakteru jednowątkowe dostęp do każdego wystąpienia aktora.
+Środowisko uruchomieniowe elementów Reliable Actors udostępnia model prosty dostęp oparty na protokole Włącz do uzyskiwania dostępu do metody aktora. Oznacza to, że nie więcej niż jeden wątek może być aktywne wewnątrz kodu obiektowego aktora w dowolnym momencie. Dostępu na podstawie Włącz znacznie upraszcza systemów jednoczesnych, ponieważ nie ma potrzeby mechanizmów synchronizacji, aby uzyskać dostęp do danych. Oznacza to również, że systemy muszą być zaprojektowane tak, za pomocą specjalne uwagi dotyczące charakteru jednowątkowe dostęp do każdego wystąpienia aktora.
 
-* Aktora pojedynczego wystąpienia nie może przetworzyć więcej niż jedno żądanie naraz. Wystąpienie aktora może spowodować wąskie gardło przepływności, jeżeli oczekuje się do obsługi żądań.
-* Złośliwych użytkowników można zakleszczenie od siebie wzajemnie, jeśli żądanie cykliczne między dwoma uczestnikami podczas zewnętrznych żądań na jeden z uczestników jednocześnie. Środowisko uruchomieniowe aktora automatycznie limitu czasu dla wywołań aktora i Zgłoś wyjątek, aby obiekt wywołujący, aby przerwać sytuacji możliwe zakleszczenie.
+* Wystąpienia aktora pojedynczej nie może przetworzyć więcej niż jedno żądanie w danym momencie. Wystąpienia aktora może spowodować wąskie gardło przepływności, jeśli oczekuje się do obsługi żądań równoczesnych.
+* Aktorów można zakleszczenie od siebie, jeśli istnieje cykliczne żądanie między dwoma uczestnikami podczas zewnętrznych wysłaniu żądania do jednego z uczestnikami jednocześnie. W środowisku uruchomieniowym aktora będą automatycznie przekroczyło limit czasu dla wywołań aktora i zgłosić wyjątek do obiektu wywołującego, aby przerwać możliwe zakleszczenie sytuacjach.
 
-![Niezawodna komunikacja złośliwych użytkowników][3]
+![Reliable Actors komunikacji][3]
 
-### <a name="turn-based-access"></a>Włącz dostęp przez Internet
-Włącz składa się z pełną wykonanie metody aktora w odpowiedzi na żądanie z innych uczestników lub klientów lub zakończenie wykonywania [czasomierza/monitu](service-fabric-reliable-actors-timers-reminders.md) wywołania zwrotnego. Mimo że te metody i wywołania zwrotne są asynchroniczne, środowisko uruchomieniowe złośliwych użytkowników nie interleave je. Włącz muszą być całkowicie przed Włącz nowe jest dozwolone. Innymi słowy aktora metody lub czasomierza/monitu wywołania zwrotnego, które jest aktualnie wykonywany musi być w pełni ukończone przed nowe wywołanie do metody lub wywołania zwrotnego jest dozwolone. Metoda lub wywołania zwrotnego jest uważana za zostało ukończone, jeśli wykonanie zwrócił z metody lub wywołania zwrotnego i Zadanie zwrócone przez metodę lub wywołanie zwrotne zostało zakończone. Warto akcentowania się, że ten współbieżności opartej na włączanie jest przestrzegana nawet między różnymi metodami, czasomierze i wywołania zwrotne.
+### <a name="turn-based-access"></a>Włącz dostęp
+Włącz składa się z pełną wykonanie metody aktora w odpowiedzi na żądanie z innych aktorów lub klientów lub zakończenie wykonywania [czasomierza/przypomnienie](service-fabric-reliable-actors-timers-reminders.md) wywołania zwrotnego. Mimo że te metody i wywołania zwrotne są asynchroniczne, środowisko uruchomieniowe aktorów nie ich przeplotu. Włącz musi być całkowicie zakończona, zanim nowy ruch jest dozwolony. Innymi słowy aktora metody lub czasomierza/przypomnienie wywołanie zwrotne, które jest w trakcie wykonywania muszą być w pełni przed nowe wywołania do metody lub wywołania zwrotnego jest dozwolone. Metody lub wywołania zwrotnego jest uważany za ukończony, czy wykonywania została zwrócona przez metodę wywołania zwrotnego i zadanie zwracane przez metodę lub wywołanie zwrotne zostało zakończone. Jest to warte podkreślając tego współbieżności tury jest zachowana nawet w różnych metod, czasomierze i wywołania zwrotne.
 
-Środowisko uruchomieniowe złośliwych użytkowników wymusza współbieżności opartej na ruch przez uzyskiwanie blokady dla aktora na początku Włącz i zwolnienie blokady na końcu Włącz. W związku z tym współbieżności opartej na włączanie są wymuszane na podstawie na aktora, a nie przez złośliwych użytkowników. Metody aktora i wywołania zwrotne czasomierza/monitu mogą być wykonywane jednocześnie imieniu uczestników.
+Środowisko wykonawcze aktorów wymusza współbieżności opartej na ruch przez uzyskanie blokady dla aktora, na początku Włącz i zwolnienie blokady na koniec Włącz. W związku z tym współbieżności opartej na Włącz są wymuszane na podstawie poszczególnych aktora i nie tylko w aktorów. Metody aktora i wywołania zwrotne czasomierza/przypomnienie mogą być wykonywane jednocześnie w imieniu innego aktorów.
 
-Poniższy przykład przedstawia pojęcia powyżej. Należy wziąć pod uwagę aktora typu, który implementuje dwóch metod asynchronicznych (powiedzieć *metoda1* i *metoda2*), a czasomierza oraz monitu. Na poniższym diagramie przedstawiono oś czasu wykonywania tych metod i wywołania zwrotne w imieniu dwóch uczestników (*ActorId1* i *ActorId2*) należących do tego typu aktora.
+Poniższy przykład ilustruje pojęcia powyżej. Należy wziąć pod uwagę typ aktora, który implementuje dwóch metod asynchronicznych (powiedzieć, *metoda1* i *Method2*), a timer oraz monit. Na poniższym diagramie przedstawiono oś czasu wykonywania te metody i wywołania zwrotne w imieniu dwóch uczestników (*ActorId1* i *ActorId2*) należących do tego typu aktora.
 
-![Niezawodne podmiotów środowiska uruchomieniowego Włącz współbieżności opartej i dostępem][1]
+![Reliable Actors środowiska uruchomieniowego Włącz współbieżności opartej i dostęp][1]
 
 Ten diagram jest zgodna z konwencjami te:
 
-* Każdy pionowym wierszem przedstawia przepływ logiczny wykonania metody lub wywołania zwrotnego w imieniu aktora określonego.
-* Występowania zdarzeń oznaczone w każdym wierszu pionowy w kolejności chronologicznej z nowszych zdarzeń występujących poniżej starsze.
-* Różne kolory dla osi czasu odpowiadający uczestników.
-* Wyróżnianie służy do wskazywania czas trwania, dla którego blokady dla aktora jest przechowywany w imieniu metody lub wywołania zwrotnego.
+* Każdego wiersza w pionie przedstawia przepływ logiczny wykonywania metody lub wywołania zwrotnego w imieniu określonego aktora.
+* Zdarzenia oznaczony w każdym wierszu pionowy występują w kolejności chronologicznej z nowszych zdarzeń mających miejsce poniżej tych starszych.
+* Różne kolory są używane do osi czasu, odpowiadający uczestników.
+* Wyróżnianie jest używany do wskazania czas trwania, dla którego utrzymania blokady dla aktora w imieniu metody lub wywołania zwrotnego.
 
-Niektóre ważne kwestie do rozważenia:
+Niektóre ważne punkty, które należy wziąć pod uwagę:
 
-* Gdy *metoda1* wykonuje zastępczy *ActorId2* w odpowiedzi na żądanie klienta *xyz789*, inne żądanie klienta (*abc123*) dociera, który wymaga także *metoda1* ma być wykonane przez *ActorId2*. Jednak wykonanie drugiej *metoda1* nie zaczyna się przed zakończeniem wykonywania wcześniejszych. Podobnie, przypomnienia zarejestrowany przez *ActorId2* uruchamiany podczas *metoda1* jest wykonywana w odpowiedzi na żądanie klienta *xyz789*. Wywołanie zwrotne monitu jest wykonywany tylko po obu wykonań *metoda1* są spełnione. Wszystko to jest ze względu na podstawie Włącz współbieżności wymuszany dla *ActorId2*.
-* Podobnie, współbieżności opartej na ruch jest również wymuszane dla *ActorId1*, jak to pokazano przez wykonanie *metoda1*, *metoda2*i wywołanie zwrotne czasomierza imieniu  *ActorId1* wykonywane w sposób szeregowego.
-* Wykonywanie *metoda1* zastępczy *ActorId1* pokrywa się z jej wykonanie w imieniu *ActorId2*. Jest to spowodowane współbieżności opartej na włączanie są wymuszane tylko w obrębie aktora, a nie przez złośliwych użytkowników.
-* W niektórych wykonania metody/wywołania zwrotnego `Task`(C#) / `CompletableFuture`(Java) zwracane przez zakończenie metody/wywołania zwrotnego po metoda zwraca. W niektórych innych operacji asynchronicznej zostało już zakończone w czasie, zwraca wartość metody/wywołania zwrotnego. W obu przypadkach blokady dla aktora jest zwalniany dopiero po zarówno zwraca metodę/wywołania zwrotnego i zakończy operację asynchroniczną.
+* Gdy *metoda1* jest wykonywany w imieniu *ActorId2* w odpowiedzi na żądania klienta *xyz789*, kolejne żądanie klienta (*abc123*) nadejściu, która wymaga również *metoda1* ma być wykonane przez *ActorId2*. Jednak wykonanie drugiej *metoda1* nie rozpoczyna się przed zakończeniem poprzedniego wykonania. Podobnie, przypomnienia zarejestrowane przez *ActorId2* generowane podczas *metoda1* jest wykonywana w odpowiedzi na żądania klienta *xyz789*. Przypomnienie wywołanie zwrotne jest wykonywane tylko po obu wykonaniami *metoda1* są kompletne. Wszystko to jest związany ze współbieżnością tury, są wymuszane w *ActorId2*.
+* Podobnie, współbieżności opartej na Włącz również jest wymuszane dla *ActorId1*, jak pokazano na wykonanie *metoda1*, *Method2*i wywołanie zwrotne czasomierza imieniu  *ActorId1* wykonywane w sposób szeregowy.
+* Wykonywanie *metoda1* imieniu *ActorId1* nakłada się na jej wykonanie w imieniu *ActorId2*. Jest to spowodowane współbieżności opartej na Włącz są wymuszane tylko w obrębie aktora i nie tylko w aktorów.
+* W niektórych wykonań Metoda/wywołania zwrotnego `Task`(C#) / `CompletableFuture`(Java) zwróciło zakończeniu metody/wywołania zwrotnego po powrocie z metody. W niektórych innych asynchronicznej operacji zostało już zakończone przez razem, gdy metoda/wywołania zwrotnego zwraca. W obu przypadkach blokady dla aktora jest zwalniany tylko wtedy, gdy metoda/wywołania zwrotnego zwraca i zakończeniu operacji asynchronicznej.
 
 ### <a name="reentrancy"></a>Ponowne wejścia
-Środowisko uruchomieniowe złośliwych użytkowników umożliwia ponowne wejście domyślnie. Oznacza to, że jeśli metoda aktora *aktora A* wywołuje metodę dla *B aktora*, który z kolei wywołuje innej metody w *aktora A*, że metoda może działać. Jest tak, ponieważ jest częścią tego samego kontekstu logicznej łańcuch wywołań. Wszystkie wywołania zegara i monitu rozpoczynać nowy kontekst wywołania logiczne. Zobacz [wielobieżność Reliable Actors](service-fabric-reliable-actors-reentrancy.md) więcej szczegółów.
+Środowisko uruchomieniowe aktorów umożliwia współużytkowania wątkowości domyślnie. Oznacza to, że jeśli metoda aktora *aktora A* wywołuje metodę dla *B aktora*, który z kolei wywołuje inną metodę na *aktora A*, że metoda może być uruchomiona. Jest tak, ponieważ jest on częścią ten sam kontekst łańcuch wywołań logicznych. Wszystkie wywołania czasomierza i przypomnienie rozpoczynać nowe logicznym kontekście wywołań. Zobacz [współużytkowania wątkowości w elementach Reliable Actors](service-fabric-reliable-actors-reentrancy.md) Aby uzyskać więcej informacji.
 
-### <a name="scope-of-concurrency-guarantees"></a>Zakres gwarancji współbieżności
-Środowisko uruchomieniowe złośliwych użytkowników zapewnia te gwarancje współbieżność w sytuacjach, w którym kontroluje wywołania tych metod. Na przykład zapewnia te gwarancje dla wywołań metod, które są wykonywane w odpowiedzi na żądanie klienta, a także wywołania zwrotne czasomierza i przypomnienia. Jeśli jednak kodu aktora bezpośrednio wywołuje tych metod poza mechanizmów dostarczonym w czasie wykonywania uczestników, następnie środowiska uruchomieniowego nie zawiera żadnej gwarancji współbieżności. Na przykład jeśli metoda jest wywoływana w kontekście niektórych zadań, która nie jest skojarzona z zadaniem zwracane przez metody aktora, następnie środowisko uruchomieniowe nie może zagwarantować współbieżności. Jeśli metoda jest wywoływana z wątku, który tworzy aktora samodzielnie, następnie środowiska uruchomieniowego także nie może zagwarantować współbieżności. W związku z tym, aby wykonać operacje w tle, złośliwych użytkowników należy używać [aktora czasomierze i przypomnieniami aktora](service-fabric-reliable-actors-timers-reminders.md) który przestrzegać współbieżności opartej na ruch.
+### <a name="scope-of-concurrency-guarantees"></a>Zakres gwarancje współbieżności
+Aktorzy środowisko wykonawcze zapewnia następujące gwarancje współbieżność w sytuacjach, w którym kontroluje wywołania tych metod. Na przykład zapewnia następujące gwarancje dla wywołań metod, które są wykonywane w odpowiedzi na żądania klienta, a także wywołania zwrotne czasomierza i przypomnienia. Jeśli jednak kod aktora bezpośrednio wywołuje te metody poza mechanizmach zapewnianych przez środowisko uruchomieniowe aktorów, następnie środowiska uruchomieniowego nie zawiera żadnej gwarancji współbieżności. Na przykład jeśli metoda jest wywoływana w kontekście niektórych zadań, która nie jest skojarzona z zadaniem zwracane przez metody aktora, środowisko uruchomieniowe nie podajemy gwarancje współbieżności. Jeśli metoda jest wywoływana z wątku, który aktora tworzy na jego własnej, następnie środowiska uruchomieniowego nie udostępniają gwarancje współbieżności. W związku z tym, aby wykonać operacje w tle, aktorów należy używać [aktora czasomierze i przypomnienia aktora](service-fabric-reliable-actors-timers-reminders.md) które przestrzegają tury współbieżności.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Rozpoczynanie pracy przez utworzenie pierwszej usługi Reliable Actors:
-   * [Wprowadzenie do korzystania z Reliable Actors na platformie .NET](service-fabric-reliable-actors-get-started.md)
-   * [Wprowadzenie do korzystania z Reliable Actors na języku Java](service-fabric-reliable-actors-get-started-java.md)
+Rozpocznij pracę od utworzenia pierwszej usługi Reliable Actors:
+   * [Wprowadzenie do elementów Reliable Actors na platformie .NET](service-fabric-reliable-actors-get-started.md)
+   * [Wprowadzenie do elementów Reliable Actors w języku Java](service-fabric-reliable-actors-get-started-java.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png

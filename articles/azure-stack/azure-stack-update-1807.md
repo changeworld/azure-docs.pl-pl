@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: b4ee3354d024034fd47ee50ae78d25d5bb4a38f5
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: ce74d12e4ea91d8c230218081461bc375e250ce4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345275"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260588"
 ---
 # <a name="azure-stack-1807-update"></a>Aktualizacja usługi Azure Stack 1807
 
@@ -94,7 +94,7 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack.
 - **Ulepszone czas tworzenia maszyny Wirtualnej** dla maszyn wirtualnych, które zostały utworzone z obrazów, możesz pobrać z witryny Azure marketplace.
 
 <!-- TBD | IS, ASDK -->  
-- **Usługa Azure Stack Capacity Planner usprawnienia w zakresie użyteczności**. Usługi Azure Stack [Capacity Planner](http://aka.ms/azstackcapacityplanner) oferuje uproszczone środowisko wpisywania pamięci podręcznej S2D i pojemność S2D podczas definiowania rozwiązania jednostki SKU. Limit 1000 maszyn wirtualnych zostało usunięte.
+- **Usługa Azure Stack Capacity Planner usprawnienia w zakresie użyteczności**. Usługi Azure Stack [Capacity Planner](https://aka.ms/azstackcapacityplanner) oferuje uproszczone środowisko wpisywania pamięci podręcznej S2D i pojemność S2D podczas definiowania rozwiązania jednostki SKU. Limit 1000 maszyn wirtualnych zostało usunięte.
 
 
 ### <a name="fixed-issues"></a>Rozwiązane problemy

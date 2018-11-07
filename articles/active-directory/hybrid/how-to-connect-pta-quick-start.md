@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: afd2b31c5829015e11a3875c609ea3171006c501
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 70c19b394b5c5702a0ec0f18aa3bbd0c05e39dfd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914145"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249799"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Usługi Azure Active Directory uwierzytelnianie przekazywane: Szybki start
 
@@ -142,7 +142,7 @@ Po drugie można tworzyć i uruchom skrypt instalacji nienadzorowanej wdrożenia
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](http://aka.ms/adfstoptadp) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
+- [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://aka.ms/adfstoptadp) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
 - [Blokada Smart](../authentication/howto-password-smart-lockout.md): informacje dotyczące konfigurowania funkcji inteligentnej blokady na swoją dzierżawę, aby chronić kont użytkowników.
 - [Bieżące ograniczenia](how-to-connect-pta-current-limitations.md): Dowiedz się, jakie scenariusze są obsługiwane przy użyciu uwierzytelniania przekazywanego i te, które nie są.
 - [Rozbudowana technicznie](how-to-connect-pta-how-it-works.md): zrozumienie sposobu działania funkcji uwierzytelniania przekazywanego.

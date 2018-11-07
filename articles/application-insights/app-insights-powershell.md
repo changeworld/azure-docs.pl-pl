@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 932e7447c59c7e9d8322a0e85b0843b0e836b840
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 262d2511879047d1723d3b15c4c107b80ba1c297
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095516"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250344"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Tworzenie zasobów usługi Application Insights przy użyciu programu PowerShell
 W tym artykule pokazano, jak zautomatyzować tworzenie i aktualizowanie [usługi Application Insights](app-insights-overview.md) zasoby automatycznie przy użyciu usługi Azure Resource Management. Użytkownik może na przykład zrobić jako część procesu kompilacji. Wraz z podstawowy zasób usługi Application Insights, można utworzyć [testy sieci web dostępności](app-insights-monitor-web-app-availability.md), skonfiguruj [alerty](app-insights-alerts.md)ustaw [ceny schemat](app-insights-pricing.md)i tworzenie innych zasobów platformy Azure .
@@ -30,7 +30,7 @@ Jeśli nie znasz programu PowerShell z subskrypcją platformy Azure przed:
 
 Instalowanie modułu Azure Powershell na komputerze, na którym chcesz uruchomić skrypty:
 
-1. Zainstaluj [Instalatora platformy sieci Web firmy Microsoft (w wersji 5 lub nowszej)](http://www.microsoft.com/web/downloads/platform.aspx).
+1. Zainstaluj [Instalatora platformy sieci Web firmy Microsoft (w wersji 5 lub nowszej)](https://www.microsoft.com/web/downloads/platform.aspx).
 2. Należy zainstalować program Microsoft Azure Powershell.
 
 ## <a name="create-an-azure-resource-manager-template"></a>Tworzenie szablonu usługi Azure Resource Manager
@@ -196,7 +196,7 @@ Aby utworzyć zasób aplikacji usługi z planu cen w przedsiębiorstwie, przy u�
                -appName myNewApp
 ```
 
-|priceCode|plan|
+|priceCode|Plan|
 |---|---|
 |1|Podstawowa|
 |2|Enterprise|
@@ -448,6 +448,6 @@ Inne artykuły, automatyzacji:
 * [Konfigurowanie alertów](app-insights-powershell-alerts.md)
 * [Tworzenie testów sieci web](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Wysyłanie Diagnostyki Azure do usługi Application Insights](app-insights-powershell-azure-diagnostics.md)
-* [Wdrażanie na platformie Azure z usługi GitHub](http://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
+* [Wdrażanie na platformie Azure z usługi GitHub](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [Utwórz adnotacji dotyczących wersji](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 

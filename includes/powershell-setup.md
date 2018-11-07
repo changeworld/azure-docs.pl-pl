@@ -1,6 +1,6 @@
 ---
 services: virtual-machines
-title: Konfigurowanie środowiska PowerShell
+title: Konfigurowanie programu PowerShell
 author: JoeDavies-MSFT
 solutions: ''
 manager: timlt
@@ -12,22 +12,22 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/12/2015
 ms.author: rasquill
-ms.openlocfilehash: be5089b825a873006696eb074ed4355f415e680b
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: b96e8e6e31817f6d261f41dbf3b3047dd49c29ba
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319524"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258244"
 ---
-## <a name="setting-up-powershell"></a>Konfigurowanie środowiska PowerShell
-Przed użyciem programu Azure PowerShell, wykonaj następujące kroki.
+## <a name="setting-up-powershell"></a>Konfigurowanie programu PowerShell
+Zanim użyjesz programu Azure PowerShell, wykonaj następujące kroki.
 
-### <a name="verify-powershell-versions"></a>Sprawdź wersje programu PowerShell
-Przed użyciem programu Windows PowerShell, musi mieć środowiska Windows PowerShell, w wersji 3.0 lub 4.0. Aby znaleźć wersję środowiska Windows PowerShell, wpisz następujące polecenie w wierszu polecenia programu Windows PowerShell.
+### <a name="verify-powershell-versions"></a>Sprawdź wersji programu PowerShell
+Zanim będzie można użyć programu Windows PowerShell, musi mieć programu Windows PowerShell, w wersji 3.0 lub 4.0. Aby znaleźć wersję środowiska Windows PowerShell, wpisz następujące polecenie w wierszu polecenia programu Windows PowerShell.
 
     $PSVersionTable
 
-Powinny zostać wyświetlone informacje podobne.
+Powinien zostać wyświetlony podobny do poniższego.
 
     Name                           Value
     ----                           -----
@@ -39,28 +39,28 @@ Powinny zostać wyświetlone informacje podobne.
     PSCompatibleVersions           {1.0, 2.0, 3.0}
     PSRemotingProtocolVersion      2.2
 
-Sprawdź, czy wartość **PSVersion** 3.0 lub 4.0. Aby zainstalować zgodną wersję, zobacz [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) lub [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855).
+Upewnij się, że wartość **PSVersion** jest 3.0 lub 4.0. Aby zainstalować zgodną wersję, zobacz [Windows Management Framework 3.0](https://www.microsoft.com/download/details.aspx?id=34595) lub [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855).
 
-Należy również zaznaczyć Azure PowerShell w wersji 0.8.0 lub nowszej. Można sprawdzić wersji programu Azure PowerShell, zainstalowanym za pomocą tego polecenia w wierszu polecenia programu PowerShell systemu Azure.
+Powinien również mieć Azure PowerShell w wersji 0.8.0 lub nowszej. Aby sprawdzić wersję programu Azure PowerShell, który został zainstalowany przy użyciu następującego polecenia w wierszu polecenia programu Azure PowerShell.
 
     Get-Module azure | format-table version
 
-Powinny zostać wyświetlone informacje podobne.
+Powinien zostać wyświetlony podobny do poniższego.
 
     Version
     -------
     0.8.16.1
 
-Aby uzyskać instrukcje i łącza do najnowszej wersji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azureps-cmdlets-docs).
+Aby uzyskać instrukcje i łącza do najnowszej wersji, zobacz [jak instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 ### <a name="set-your-azure-account-and-subscription"></a>Ustawianie konta i subskrypcji platformy Azure
-Jeśli nie masz jeszcze subskrypcji platformy Azure, możesz przeprowadzić aktywację Twojej [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub zarejestrować się w celu [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
+Jeśli nie masz jeszcze subskrypcji platformy Azure, możesz aktywować swoje [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub zarejestrować się w celu [bezpłatna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
-Otwórz wiersz polecenia programu PowerShell systemu Azure i zaloguj się na platformie Azure za pomocą tego polecenia.
+Otwórz wiersz polecenia programu Azure PowerShell, a następnie zaloguj się do platformy Azure za pomocą tego polecenia.
 
     Add-AzureAccount
 
-Jeśli masz wiele subskrypcji Azure, można wyświetlić listę subskrypcji platformy Azure za pomocą tego polecenia.
+Jeśli masz wiele subskrypcji platformy Azure, możesz wyświetlić listę subskrypcji platformy Azure za pomocą tego polecenia.
 
     Get-AzureSubscription
 
@@ -77,10 +77,10 @@ Otrzymasz informacje następującego typu:
     CurrentStorageAccountName : 
     TenantId                  : 32fa88b4-86f1-419f-93ab-2d7ce016dba7
 
-Można ustawić bieżącej subskrypcji Azure, uruchamiając następujące polecenia w wierszu polecenia programu PowerShell systemu Azure. Zastąp wszystko w obrębie oferty, w tym < i > znaków z poprawną nazwą.
+Możesz ustawić bieżąca subskrypcja platformy Azure, uruchamiając następujące polecenia w wierszu polecenia programu Azure PowerShell. Zastąp wszystkie elementy w ramach oferty, w tym < a > znaków z właściwą nazwą.
 
     $subscr="<SubscriptionName from the display of Get-AzureSubscription>"
     Select-AzureSubscription -SubscriptionName $subscr -Current    
 
-Aby uzyskać więcej informacji na temat subskrypcji platformy Azure i kont, zobacz [porady: nawiązać połączenia z subskrypcją](/powershell/azureps-cmdlets-docs#Connect).
+Aby uzyskać więcej informacji na temat subskrypcji platformy Azure i kont, zobacz [porady: łączenie się ze swoją subskrypcją](/powershell/azureps-cmdlets-docs#Connect).
 

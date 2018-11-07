@@ -3,19 +3,19 @@ title: Usuń gałąź błąd braku pamięci w usłudze Azure HDInsight
 description: Usuń gałąź błąd braku pamięci w HDInsight. Scenariusz klienta jest zapytanie w wielu dużych tabel.
 keywords: Brak ustawienia programu Hive błąd, za mało pamięci, pamięci
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 1ef4d8fa85a983c736fad73b652d8614c9a96ae5
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 90bf59dd7733864c345bbbb59b6236ae7b9a9c36
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109855"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248315"
 ---
 # <a name="fix-a-hive-out-of-memory-error-in-azure-hdinsight"></a>Usuń gałąź błąd braku pamięci w usłudze Azure HDInsight
 
@@ -99,7 +99,7 @@ Nasze wsparcie i zespoły inżynierów razem ustalono na jeden z problemów, co 
         </description>
       </property>
 
-Prawdopodobnie sprzężenia mapy był przyczyną miejsca na stercie Java naszych błędu pamięci. Jak wyjaśniono w wpis w blogu [ustawienia pamięci usługi Yarn w usłudze Hadoop w HDInsight](http://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), gdy jest aparat wykonywania platformy Tez użyta sterta miejsca faktycznie należy do kontenera aplikacji Tez. Zobacz poniższy obraz, opisujący pamięci kontenera aplikacji Tez.
+Prawdopodobnie sprzężenia mapy był przyczyną miejsca na stercie Java naszych błędu pamięci. Jak wyjaśniono w wpis w blogu [ustawienia pamięci usługi Yarn w usłudze Hadoop w HDInsight](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), gdy jest aparat wykonywania platformy Tez użyta sterta miejsca faktycznie należy do kontenera aplikacji Tez. Zobacz poniższy obraz, opisujący pamięci kontenera aplikacji Tez.
 
 ![Diagram pamięci kontenera tez: Hive błąd braku pamięci](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 

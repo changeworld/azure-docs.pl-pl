@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7e8afc02c738a2bba445b1d84b7cb899dfbb93a0
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: bc724f57a25e2ca12d334192d2171899345e72de
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301558"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247385"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Ramka zabezpieczeń: Bezpieczeństwo komunikacji | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -113,7 +113,7 @@ ms.locfileid: "43301558"
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | EnvironmentType - Azure |
 | **Odwołania**              | [Wymuszanie protokołu HTTPS w usłudze Azure App Service](../app-service/app-service-web-tutorial-custom-ssl.md#enforce-https) |
-| **Kroki** | <p>Chociaż system Azure pozwala już HTTPS dla usług Azure app services przy użyciu certyfikat wieloznaczny dla domeny *. azurewebsites.net, nie Wymuszaj HTTPS. Goście mogą nadal uzyskiwać dostęp do aplikacji przy użyciu protokołu HTTP, który może naruszyć bezpieczeństwo aplikacji i dlatego HTTPS musi jawnie wymuszone. Skorzystaj z aplikacji ASP.NET MVC [filtr RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) , wymusza przesłanie niezabezpieczonego żądania HTTP do wysłania się ponownie przy użyciu protokołu HTTPS.</p><p>Alternatywnie moduł ponowne zapisywanie adresów URL, który jest dołączony do usługi Azure App Service umożliwia wymuszanie protokołu HTTPS. Moduł ponowne zapisywanie adresów URL umożliwia deweloperom Definiowanie reguł, które są stosowane do żądań przychodzących, zanim żądania są przekazywane do aplikacji. Reguły ponownego zapisywania adresów URL są zdefiniowane w pliku web.config, przechowywane w katalogu głównym aplikacji</p>|
+| **Kroki** | <p>Chociaż system Azure pozwala już HTTPS dla usług Azure app services przy użyciu certyfikat wieloznaczny dla domeny *. azurewebsites.net, nie Wymuszaj HTTPS. Goście mogą nadal uzyskiwać dostęp do aplikacji przy użyciu protokołu HTTP, który może naruszyć bezpieczeństwo aplikacji i dlatego HTTPS musi jawnie wymuszone. Skorzystaj z aplikacji ASP.NET MVC [filtr RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) , wymusza przesłanie niezabezpieczonego żądania HTTP do wysłania się ponownie przy użyciu protokołu HTTPS.</p><p>Alternatywnie moduł ponowne zapisywanie adresów URL, który jest dołączony do usługi Azure App Service umożliwia wymuszanie protokołu HTTPS. Moduł ponowne zapisywanie adresów URL umożliwia deweloperom Definiowanie reguł, które są stosowane do żądań przychodzących, zanim żądania są przekazywane do aplikacji. Reguły ponownego zapisywania adresów URL są zdefiniowane w pliku web.config, przechowywane w katalogu głównym aplikacji</p>|
 
 ### <a name="example"></a>Przykład
 Poniższy przykład zawiera podstawową regułę ponownego zapisywania adresów URL, która wymusza cały ruch przychodzący do używania protokołu HTTPS
@@ -156,7 +156,7 @@ Ta zasada działa, zwracając kod stanu HTTP 301 (trwałe przekierowanie) po uż
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Usługi SQL Azure  |
 | **Atrybuty**              | Wersja SQL - V12 |
-| **Odwołania**              | [Najlepsze rozwiązania dotyczące pisania bezpiecznego parametry połączenia dla bazy danych SQL](http://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
+| **Odwołania**              | [Najlepsze rozwiązania dotyczące pisania bezpiecznego parametry połączenia dla bazy danych SQL](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
 | **Kroki** | <p>Cała komunikacja między bazy danych SQL Database i aplikację kliencką są szyfrowane przy użyciu protokołu Secure Sockets Layer (SSL), przez cały czas. SQL Database nie obsługuje połączenia nieszyfrowanego. Aby sprawdzić poprawność certyfikatów za pomocą kod aplikacji lub narzędzia, należy jawnie żądać połączenia szyfrowanego i niezaufane certyfikaty serwera. Jeśli aplikacji, kodu lub narzędzia nie żądać połączenia szyfrowanego, będzie nadal otrzymywał szyfrowanych połączeń</p><p>Jednak nie może sprawdzić poprawności certyfikatów serwera i związku z tym będzie narażony na ataki man-in middle". Aby sprawdzić poprawność certyfikatów za pomocą ADO.NET, kod aplikacji, należy ustawić `Encrypt=True` i `TrustServerCertificate=False` w parametrach połączenia bazy danych. Aby zweryfikować certyfikaty przy użyciu programu SQL Server Management Studio, otwórz nawiązywania połączenia z serwerem, okno dialogowe. Kliknij przycisk Szyfruj połączenie na karcie właściwości połączenia</p>|
 
 ## <a id="encrypted-sqlserver"></a>Wymuszaj zaszyfrowane komunikacji z serwerem SQL
