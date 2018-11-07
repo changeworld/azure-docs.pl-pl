@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: e7e0f6747beea43b55ae1a20da44cde3c070cd89
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 678a31b8c07b21e4bb2c43b8e8bc286d66ee4bab
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091376"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233749"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Ustawianie alertów w usłudze Application Insights przy użyciu programu PowerShell
 Można zautomatyzować konfigurację [alerty](app-insights-alerts.md) w [usługi Application Insights](app-insights-overview.md).
@@ -35,7 +35,7 @@ Jeśli nie znasz programu PowerShell z subskrypcją platformy Azure przed:
 
 Instalowanie modułu Azure Powershell na komputerze, na którym chcesz uruchomić skrypty.
 
-* Zainstaluj [Instalatora platformy sieci Web firmy Microsoft (w wersji 5 lub nowszej)](http://www.microsoft.com/web/downloads/platform.aspx).
+* Zainstaluj [Instalatora platformy sieci Web firmy Microsoft (w wersji 5 lub nowszej)](https://www.microsoft.com/web/downloads/platform.aspx).
 * Użyć go do zainstalowania środowiska Microsoft Azure Powershell
 
 ## <a name="connect-to-azure"></a>Nawiązywanie połączenia z usługą Azure
@@ -108,7 +108,7 @@ Ta zasada może służyć do metryki zgłoszony za pomocą [parametr miary](app-
 | `clientPerformance.sendRequest.value` |Czas żądania wysyłania |Czas poświęcony przez przeglądarkę, aby wysłać żądanie. |
 | `clientPerformance.total.value` |Czas ładowania strony przeglądarki |Czas od wysłania żądania użytkownika do załadowania modelu DOM, arkuszy stylów, skryptów i obrazów. |
 | `performanceCounter.available_bytes.value` |Dostępna pamięć |Pamięć fizyczna dostępna natychmiast dla procesów lub do użycia przez system. |
-| `performanceCounter.io_data_bytes_per_sec.value` |Proces we/wy |Łączna liczba bajtów odczytanych i zapisanych w ciągu sekundy w plikach i sieci oraz na urządzeniach. |
+| `performanceCounter.io_data_bytes_per_sec.value` |Liczba operacji we/wy procesu |Łączna liczba bajtów odczytanych i zapisanych w ciągu sekundy w plikach i sieci oraz na urządzeniach. |
 | `performanceCounter.number_of_exceps_thrown_per_sec.value` |częstotliwość występowania wyjątków |Wyjątki zgłoszone w ciągu sekundy. |
 | `performanceCounter.percentage_processor_time.value` |Procesy — procesor CPU |Wartość procentową czasu wszystkie wątki procesów używana przez procesor do wykonywania instrukcji w procesie aplikacji. |
 | `performanceCounter.percentage_processor_total.value` |Czas procesora |Procent czasu poświęconego przez procesor na aktywne wątki. |
@@ -118,7 +118,7 @@ Ta zasada może służyć do metryki zgłoszony za pomocą [parametr miary](app-
 | `performanceCounter.requests_per_sec.value` |Liczba żądań programu ASP.NET |Liczba wszystkich żądań wysłanych do aplikacji z platformy ASP.NET na sekundę. |
 | `remoteDependencyFailed.durationMetric.count` |Awarie zależności |Liczba wywołań zakończonych niepowodzeniem wykonanych przez aplikację serwera z zasobami zewnętrznymi. |
 | `request.duration` |Czas odpowiedzi serwera |Czas między odebraniem żądania HTTP i zakończeniem wysyłania odpowiedzi. |
-| `request.rate` |Współczynnik żądań |Liczba wszystkich żądań wysłanych do aplikacji na sekundę. |
+| `request.rate` |Współczynnik żądań |Liczba wszystkich żądań do aplikacji na sekundę. |
 | `requestFailed.count` |Żądania zakończone niepowodzeniem |Żądania liczba HTTP, które spowodowało kod odpowiedzi > = 400 |
 | `view.count` |Wyświetlenia strony |Liczba żądań użytkowników klientów dla strony sieci web. Odfiltrowane ruchu syntetycznego. |
 | {niestandardowe metryki nazwę} |{Nazwa metryki} |Wartość metryki zgłoszone przez [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric) lub [pomiarów parametr wywołania śledzenia](app-insights-api-custom-events-metrics.md#properties). |

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 6eb1ee90b22b9e37dcae900cd80f80cb549090e9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 173a64181c1e8c051c6856fa8353f484540917e7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213954"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249714"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Uruchamianie próbnego odzyskiwania na platformie Azure 
 
@@ -106,7 +106,7 @@ Jeśli chcesz połączyć się z maszyn wirtualnych platformy Azure przy użyciu
 **Tryb failover** | **Lokalizacja** | **Akcje**
 --- | --- | ---
 **Maszyny Wirtualnej platformy Azure z systemem Windows** | Na komputerze lokalnym przed włączeniem trybu failover | Dostęp do maszyny Wirtualnej platformy Azure za pośrednictwem Internetu, Włącz protokół RDP i upewnij się, że reguły TCP i UDP zostały dodane do **publicznych**, oraz że protokołu RDP jest dozwolona dla wszystkich profilów w **zapory Windows**  >  **Dozwolone aplikacje**.<br/><br/> Dostęp do maszyny Wirtualnej platformy Azure za pośrednictwem połączenia lokacja lokacja, Włącz protokół RDP na maszynie i upewnij się, że protokołu RDP jest dozwolona w **zapory Windows** -> **dozwolone aplikacje i funkcje**, aby uzyskać **Domena i prywatne** sieci.<br/><br/>  Upewnij się, że zasady sieci SAN systemu operacyjnego ustawiono **OnlineAll**. [Dowiedz się więcej](https://support.microsoft.com/kb/3031135).<br/><br/> Upewnij się, że nie ma żadnych oczekujących aktualizacji Windows na maszynie Wirtualnej podczas wyzwalania trybu failover. Windows update może uruchomić po przełączeniu w tryb failover, a nie będzie można zalogować się na maszynie Wirtualnej, do momentu ukończenia aktualizacji.
-**Maszyny Wirtualnej platformy Azure z systemem Windows** | Maszyna wirtualna platformy Azure po włączeniu trybu failover |  [Dodaj publiczny adres IP](https://aka.ms/addpublicip) dla maszyny wirtualnej.<br/><br/> Reguły sieciowych grup zabezpieczeń w trybie Failover maszyny Wirtualnej (i podsieci platformy Azure, do którego jest podłączony) muszą zezwalać na połączenia przychodzące do portu RDP.<br/><br/> Sprawdź **diagnostykę rozruchu** Aby sprawdzić, zrzut ekranu maszyny wirtualnej.<br/><br/> Jeśli nie możesz się połączyć, sprawdź, czy maszyna wirtualna jest uruchomiona i przejrzyj te [wskazówki dotyczące rozwiązywania problemów](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+**Maszyny Wirtualnej platformy Azure z systemem Windows** | Maszyna wirtualna platformy Azure po włączeniu trybu failover |  [Dodaj publiczny adres IP](https://aka.ms/addpublicip) dla maszyny wirtualnej.<br/><br/> Reguły sieciowych grup zabezpieczeń w trybie Failover maszyny Wirtualnej (i podsieci platformy Azure, do którego jest podłączony) muszą zezwalać na połączenia przychodzące do portu RDP.<br/><br/> Sprawdź **diagnostykę rozruchu** Aby sprawdzić, zrzut ekranu maszyny wirtualnej.<br/><br/> Jeśli nie możesz się połączyć, sprawdź, czy maszyna wirtualna jest uruchomiona i przejrzyj te [wskazówki dotyczące rozwiązywania problemów](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 **Maszyna wirtualna platformy Azure z systemem Linux** | Na komputerze lokalnym przed włączeniem trybu failover | Upewnij się, że Usługa Secure Shell na maszynie Wirtualnej jest ustawiona na automatyczne uruchomienie przy rozruchu systemu.<br/><br/> Sprawdź, czy reguły zapory zezwalają na połączenie SSH.
 **Maszyna wirtualna platformy Azure z systemem Linux** | Maszyna wirtualna platformy Azure po włączeniu trybu failover | Reguły sieciowych grup zabezpieczeń w trybie Failover maszyny Wirtualnej (i podsieci platformy Azure, do którego jest podłączony) muszą zezwalać na połączenia przychodzące do portu SSH.<br/><br/> [Dodaj publiczny adres IP](https://aka.ms/addpublicip) dla maszyny wirtualnej.<br/><br/> Sprawdź **diagnostykę rozruchu** dla zrzut ekranu maszyny wirtualnej.<br/><br/>
 

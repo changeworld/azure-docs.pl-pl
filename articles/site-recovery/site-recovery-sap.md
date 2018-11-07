@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: c83cf9fb319c21881f0db8bd94dc9a94a3b811bc
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1f38cd62a1394d45716e7224cc03a059fcaf9e13
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211727"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247759"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Konfigurowanie odzyskiwania po awarii dla wdrożenia obejmujące wiele warstw aplikacji SAP NetWeaver
 
@@ -93,8 +93,8 @@ Poniżej przedstawiono kroki konfigurowania odzyskiwania po awarii
 2. Projektowanie sieć odzyskiwania
 3.  Replikowanie kontrolera domeny
 4.  Replikowanie danych warstwy podstawowa 
-5.  Wykonaj test trybu failover 
-6.  Do trybu failover 
+5.  Przeprowadzanie testu trybu failover 
+6.  Przejdź w tryb failover 
 
 Poniżej przedstawiono zalecenia dotyczące odzyskiwania po awarii dla każdej warstwy, w tym przykładzie. 
 
@@ -150,7 +150,7 @@ Najczęściej używane skryptów usługi Azure Site Recovery można wdrożyć na
 
 1.  W witrynie Azure portal wybierz swój magazyn usługi Recovery Services.
 2.  Wybierz plan odzyskiwania, który został utworzony dla aplikacji SAP.
-3.  Wybierz **testowanie trybu Failover**.
+3.  Wybierz pozycję **Test pracy w trybie failover**.
 4.  Aby rozpocząć proces testu trybu failover, wybierz punkt odzyskiwania i usługa Azure virtual network.
 5.  Po skonfigurowaniu dodatkowej środowiska wykonywać operacji sprawdzania poprawności.
 6.  Po zakończeniu walidacji można wyczyścić środowisko trybu failover wybierz **wyczyść test pracy awaryjnej**.
@@ -161,11 +161,11 @@ Aby uzyskać więcej informacji, zobacz [testowy tryb failover na platformie Azu
 
 1.  W witrynie Azure portal wybierz swój magazyn usługi Recovery Services.
 2.  Wybierz plan odzyskiwania, który został utworzony dla aplikacji SAP.
-3.  Wybierz **trybu Failover**.
+3.  Wybierz pozycję **Tryb failover**.
 4.  Aby rozpocząć proces pracy awaryjnej, wybierz punkt odzyskiwania.
 
 Aby uzyskać więcej informacji, zobacz [trybu Failover w usłudze Site Recovery](site-recovery-failover.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby dowiedzieć się więcej na temat tworzenia rozwiązania do odzyskiwania po awarii, w przypadku wdrożeń oprogramowania SAP NetWeaver przy użyciu usługi Site Recovery, zobacz oficjalny dokument do pobrania [oprogramowanie SAP NetWeaver: tworzenie rozwiązania odzyskiwania po awarii przy użyciu usługi Azure Site Recovery](http://aka.ms/asr-sap). Oficjalny dokument w tym artykule omówiono zalecenia dotyczące różnych architekturach SAP, wyświetla listę obsługiwanych aplikacji i typy maszyn wirtualnych dla rozwiązania SAP na platformie Azure i w tym artykule opisano opcje planu testowania rozwiązanie odzyskiwania po awarii.
+* Aby dowiedzieć się więcej na temat tworzenia rozwiązania do odzyskiwania po awarii, w przypadku wdrożeń oprogramowania SAP NetWeaver przy użyciu usługi Site Recovery, zobacz oficjalny dokument do pobrania [oprogramowanie SAP NetWeaver: tworzenie rozwiązania odzyskiwania po awarii przy użyciu usługi Azure Site Recovery](https://aka.ms/asr-sap). Oficjalny dokument w tym artykule omówiono zalecenia dotyczące różnych architekturach SAP, wyświetla listę obsługiwanych aplikacji i typy maszyn wirtualnych dla rozwiązania SAP na platformie Azure i w tym artykule opisano opcje planu testowania rozwiązanie odzyskiwania po awarii.
 * Dowiedz się więcej o [replikowanie innych obciążeń](site-recovery-workload.md) przy użyciu usługi Site Recovery.

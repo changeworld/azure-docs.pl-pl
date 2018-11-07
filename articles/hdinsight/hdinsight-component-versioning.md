@@ -1,6 +1,6 @@
 ---
-title: Składniki i wersje — Azure HDInsight
-description: Dowiedz się, składniki i wersje w HDInsight i poziomów usług dostępnych w tej dystrybucji Hortonworks Data Platform w chmurze.
+title: Apache Hadoop, składniki i wersje — Azure HDInsight
+description: Poznaj składniki platformy Apache Hadoop i wersje w HDInsight i poziomów usług dostępnych w tej dystrybucji Hortonworks Data Platform w chmurze.
 keywords: wersji usługi hadoop, składniki ekosystemu platformy hadoop, składniki platformy hadoop, jak sprawdzić wersji usługi hadoop
 services: hdinsight
 ms.reviewer: jasonh
@@ -10,20 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 0e14ca31d51887626f773fb05b02b41c4325fef3
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: fca83090e6713e4360bd19d49c7fd6b9147fd6ea
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914791"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219736"
 ---
-# <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie są składniki i wersje dostępne z HDInsight?
+# <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie są składniki platformy Apache Hadoop i wersje dostępne z HDInsight?
 
 Więcej informacji na temat składników ekosystemu Apache Hadoop i wersji w programie Microsoft Azure HDInsight, a także pakiet Enterprise Security. Poznaj także sposób sprawdzić wersje składników usługi Hadoop w HDInsight. 
 
 Każda wersja HDInsight jest dystrybucją chmury wersji Hortonworks Data Platform (HDP).
 
-## <a name="hadoop-components-available-with-different-hdinsight-versions"></a>Dostępne z różnymi wersjami HDInsight składniki usługi Hadoop
+## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>Składniki platformy Apache Hadoop dostępne z różnymi wersjami HDInsight
 Usługa Azure HDInsight obsługuje wielu wersjach klastrów Hadoop, które można wdrożyć w dowolnym momencie. Każdy wybór wersji tworzy określoną wersję dystrybucji HDP i zestaw składników, które są zawarte w tej dystrybucji. 4 kwietnia 2017 r domyślną wersję klastra używane przez usługi Azure HDInsight jest 3.6 i opiera się na HDP 2.6.
 
 Wersje składników skojarzone z wersji klastra HDInsight są wymienione w poniższej tabeli: 
@@ -247,7 +247,7 @@ W poniższej tabeli wymieniono domyślne rozmiary maszyny wirtualnej (VM) w przy
   | Edge: zalecany rozmiar maszyny Wirtualnej | | | | | |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14, wersja 2 |
 * Brazylia Południowa i Japonia, część zachodnia tylko (nie rozmiary v2):
 
-  | Typ klastra | Hadoop | HBase | Zapytanie interakcyjne |Storm | platforma Spark | Usługa uczenie Maszynowe |
+  | Typ klastra | Hadoop | HBase | Zapytanie interakcyjne |Storm | platforma Spark | Usługi ML |
   | --- | --- | --- | --- | --- | --- | --- |
   | Główny: domyślny rozmiar maszyny Wirtualnej |D3 |D3  | D13, D14 |A3 |D12 |D12 |
   | Główny: zalecane rozmiary maszyn wirtualnych |D3, D4, D12 |D3, D4, D12  | D13, D14 |A3, A4, A5 |D12, D13, D14 |D12, D13, D14 |

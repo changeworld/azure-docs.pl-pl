@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: faabdb4c2d2e434863a6bed0b2cd85a05c94eab1
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: df9edfee9d8a6a0736a040924bac736cfcb3633c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395733"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250921"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Dziesięć rzeczy, które można wykonać na Windows maszyny wirtualnej analizy danych
 
@@ -64,9 +64,9 @@ Oto jak wygląda instalacji środowiska niestandardowego w programie Visual Stud
 
 ![Instalacji narzędzi PTVS](./media/vm-do-ten-things/PTVSSetup.png)
 
-Zobacz [dokumentacja narzędzi PTVS](http://aka.ms/ptvsdocs) Aby uzyskać więcej informacji na temat tworzenia środowiska Python.
+Zobacz [dokumentacja narzędzi PTVS](https://aka.ms/ptvsdocs) Aby uzyskać więcej informacji na temat tworzenia środowiska Python.
 
-Teraz możesz są skonfigurowane do tworzenia nowego projektu języka Python. Przejdź do **pliku** -> **New** -> **projektu** -> **Python** i wybierz typ Aplikacja języka Python, które tworzysz. Można ustawić środowisko Python dla bieżącego projektu do żądanej wersji (Python 2.7 lub 3.6), klikając prawym przyciskiem myszy **środowiska Python**, wybierając opcję **środowiska Python Dodaj/Usuń**, a następnie pobrania wymagane środowisko. Można znaleźć więcej informacji na temat pracy z narzędziami PTVS w produkcie [dokumentacji](http://aka.ms/ptvsdocs).
+Teraz możesz są skonfigurowane do tworzenia nowego projektu języka Python. Przejdź do **pliku** -> **New** -> **projektu** -> **Python** i wybierz typ Aplikacja języka Python, które tworzysz. Można ustawić środowisko Python dla bieżącego projektu do żądanej wersji (Python 2.7 lub 3.6), klikając prawym przyciskiem myszy **środowiska Python**, wybierając opcję **środowiska Python Dodaj/Usuń**, a następnie pobrania wymagane środowisko. Można znaleźć więcej informacji na temat pracy z narzędziami PTVS w produkcie [dokumentacji](https://aka.ms/ptvsdocs).
 
 ## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2. Eksplorowanie i modelowanie danych za pomocą języka Python lub R przy użyciu notesu programu Jupyter
 Notes Jupyter jest zaawansowane środowisko, która zapewnia oparte na przeglądarce "IDE" Eksplorowanie i modelowanie danych. Używając języka Python 2, 3 języka Python lub R ("Open Source" i Microsoft R Server) w notesie Jupyter.
@@ -806,7 +806,7 @@ Poniżej przedstawiono kroki na — wymagania wstępne, aby uzyskać dostęp do 
 
 1. Zestaw SDK Python usługi Azure Cosmos DB jest już zainstalowana na maszyny DSVM (uruchamianie ```pip install pydocumentdb --upgrade``` z wiersza polecenia, aby zaktualizować)
 2. Tworzenie konta usługi Azure Cosmos DB i bazę danych z [witryny Azure portal](https://portal.azure.com)
-3. Pobierz "Usługi Azure Cosmos DB narzędzia migracji" z [tutaj](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) i Wyodrębnij zawartość do katalogu wybranego
+3. Pobierz "Usługi Azure Cosmos DB narzędzia migracji" z [tutaj](https://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) i Wyodrębnij zawartość do katalogu wybranego
 4. Importuj dane JSON (swe dzieła danych) w udziale [publicznego obiektu blob](https://cahandson.blob.core.windows.net/samples/volcano.json) do usługi Cosmos DB z następującymi parametrami polecenia do narzędzia do migracji (dtui.exe z katalogu, w którym zainstalowano narzędzie migracji usługi Cosmos DB). Wprowadź lokalizację źródłowych i docelowych, z następującymi parametrami:
    
     `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`

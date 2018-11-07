@@ -3,18 +3,18 @@ title: Zarządzanie klastrem usługi ML w HDInsight — Azure
 description: Dowiedz się, jak Zarządzanie klastrem usługi ML w usłudze Azure HDInsight.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 38a8366a586b032c3b11cbef8ee5f01ad2b822a5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 11/06/2018
+ms.openlocfilehash: 35b80223552181e44beac011f5fb541158466acc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702405"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255408"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Zarządzanie klastrem usługi ML w usłudze Azure HDInsight
 
@@ -80,7 +80,7 @@ Pamiętaj, że nowo dodani użytkownicy nie mają uprawnień użytkownika root w
 
 ## <a name="connect-remotely-to-microsoft-ml-services"></a>Zdalne ustanawianie połączenia z usługami uczenia Maszynowego firmy Microsoft
 
-Możesz skonfigurować dostęp do kontekstu obliczeniowego aparatu Spark usługi Hadoop w HDInsight ze zdalnego wystąpienia klienta ML uruchomiony na pulpicie. Aby to zrobić, należy określić opcje (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches i sshProfileScript) podczas definiowania programu RxSpark kontekstu obliczeniowego na komputerze: na przykład:
+Możesz skonfigurować dostęp do kontekstu obliczeniowego aparatu HDInsight Spark ze zdalnego wystąpienia klienta ML uruchomiony na pulpicie. Aby to zrobić, należy określić opcje (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches i sshProfileScript) podczas definiowania programu RxSpark kontekstu obliczeniowego na komputerze: na przykład:
 
     myNameNode <- "default"
     myPort <- 0
@@ -226,16 +226,13 @@ Kontekst obliczeniowy pozwala określić, czy obliczenia są wykonywane lokalnie
         summary(modelSpark)
 
 
-   > [!NOTE]
-   > Możesz także użyć funkcji MapReduce do rozproszenia obliczeń na węzłach klastra. Aby uzyskać więcej informacji na temat kontekstu obliczeniowego, zobacz [obliczenia opcji kontekstu usługi ML klastra w HDInsight](r-server-compute-contexts.md).
-
 ## <a name="distribute-r-code-to-multiple-nodes"></a>Dystrybucja kodu R do wielu węzłów
 
 Za pomocą usługi ML w HDInsight, można uruchomić istniejący kod R i uruchom go w wielu węzłach w klastrze za pomocą `rxExec`. Funkcja ta jest przydatna podczas czyszczenia parametrów lub przeprowadzania symulacji. Poniższy kod przedstawia przykładowe użycie programu `rxExec`:
 
     rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
 
-Jeśli nadal używasz kontekstu Spark lub MapReduce, uruchomienie tego polecenia spowoduje zwrócenie wartości nodename dla węzłów procesu roboczego, w których uruchomiono kod `(Sys.info()["nodename"])`. Na przykład w klastrze czterech węzłów spodziewasz się pojawić się dane wyjściowe podobne do następującego fragmentu kodu:
+Jeśli nadal używasz kontekstu Spark, to polecenie spowoduje zwrócenie wartości nodename dla węzłów procesu roboczego, kod `(Sys.info()["nodename"])` jest uruchamiany na. Na przykład w klastrze czterech węzłów spodziewasz się pojawić się dane wyjściowe podobne do następującego fragmentu kodu:
 
     $rxElem1
         nodename

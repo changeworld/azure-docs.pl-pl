@@ -8,12 +8,12 @@ ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: a1a6208d3710c9610f9271ad19564abf2532f5d4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bb219b6db97e654c8fb6db0b1c43f3326db7b9c5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995006"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232063"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Rozpoczynanie pracy z usługą Azure Data Lake Analytics przy użyciu interfejsu wiersza polecenia platformy Azure
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -108,7 +108,7 @@ az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 Usługa Data Lake Analytics może także uzyskiwać dostęp do usługi Azure Blob Storage.  Aby uzyskać informacje o przekazywaniu danych do usługi Azure Blob Storage, zobacz temat [Korzystanie z interfejsu wiersza polecenia platformy Azure w usłudze Azure Storage](../storage/common/storage-azure-cli.md).
 
 ## <a name="submit-data-lake-analytics-jobs"></a>Przesyłanie zadań usługi Data Lake Analytics
-Zadania usługi Data Lake Analytics są napisane w języku U-SQL. Aby dowiedzieć się więcej o języku U-SQL, zobacz artykuły [Get started with U-SQL language](data-lake-analytics-u-sql-get-started.md) (Wprowadzenie do języka U-SQL) i [U-SQL Language Reference](http://go.microsoft.com/fwlink/?LinkId=691348) (Dokumentacja języka U-SQL).
+Zadania usługi Data Lake Analytics są napisane w języku U-SQL. Aby dowiedzieć się więcej o języku U-SQL, zobacz artykuły [Get started with U-SQL language](data-lake-analytics-u-sql-get-started.md) (Wprowadzenie do języka U-SQL) i [U-SQL Language Reference](https://go.microsoft.com/fwlink/?LinkId=691348) (Dokumentacja języka U-SQL).
 
 **Aby utworzyć skrypt zadania usługi Data Lake Analytics**
 

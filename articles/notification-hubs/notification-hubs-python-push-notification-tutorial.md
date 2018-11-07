@@ -14,17 +14,17 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: b0aa61c86b08a4fe2eddb5eb1fb5b33c4cb901a0
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 68754f85347fe6bc075af513580697d1e7a83c18
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386591"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247419"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Jak używać usługi Notification Hubs za pomocą języka Python
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Dostęp do wszystkich funkcji usługi Notification Hubs z zaplecza Java/PHP/Python/Ruby przy użyciu interfejsu REST Centrum powiadomień, zgodnie z opisem w artykule z witryny MSDN [interfejsów API REST usługi Notification Hubs](http://msdn.microsoft.com/library/dn223264.aspx).
+Dostęp do wszystkich funkcji usługi Notification Hubs z zaplecza Java/PHP/Python/Ruby przy użyciu interfejsu REST Centrum powiadomień, zgodnie z opisem w artykule z witryny MSDN [interfejsów API REST usługi Notification Hubs](https://msdn.microsoft.com/library/dn223264.aspx).
 
 > [!NOTE]
 > To jest przykładowy implementację referencyjną, implementowania wysyła powiadomienia w języku Python i nie jest oficjalnie obsługiwanych zestawu SDK języka Python Centrum powiadomień.
@@ -47,7 +47,7 @@ Możesz wykonać [samouczek z wprowadzeniem](notification-hubs-windows-store-dot
 > 
 
 ## <a name="client-interface"></a>Interfejs klienta
-Interfejs klienta głównego może zapewnić te same metody, które są dostępne w [zestawu SDK .NET Notification Hubs](http://msdn.microsoft.com/library/jj933431.aspx). Ten interfejs umożliwia tłumaczenie bezpośrednio, samouczków i przykładów, które są obecnie dostępne w tej witrynie i udostępnione przez społeczność w Internecie.
+Interfejs klienta głównego może zapewnić te same metody, które są dostępne w [zestawu SDK .NET Notification Hubs](https://msdn.microsoft.com/library/jj933431.aspx). Ten interfejs umożliwia tłumaczenie bezpośrednio, samouczków i przykładów, które są obecnie dostępne w tej witrynie i udostępnione przez społeczność w Internecie.
 
 Dostępne w kod możesz znaleźć [Przykład otoka interfejsu REST języka Python].
 
@@ -64,7 +64,7 @@ Aby wysłać powiadomienie wyskakujące Windows:
 ## <a name="implementation"></a>Wdrażanie
 Jeśli jeszcze nie zrobiono, wykonaj [samouczek z wprowadzeniem] w górę do ostatniej sekcji, w którym trzeba zaimplementować zaplecza.
 
-Poznaj wszystkie szczegóły implementacji pełnego otoki REST znajduje się na [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). W tej sekcji opisano implementacji języka Python główne kroki wymagane do dostępu punkty końcowe REST centrów powiadomień i wysyłania powiadomień
+Poznaj wszystkie szczegóły implementacji pełnego otoki REST znajduje się na [MSDN](https://msdn.microsoft.com/library/dn530746.aspx). W tej sekcji opisano implementacji języka Python główne kroki wymagane do dostępu punkty końcowe REST centrów powiadomień i wysyłania powiadomień
 
 1. Analizowanie parametrów połączenia
 2. Wygeneruj token autoryzacji
@@ -96,7 +96,7 @@ W tym miejscu jest główna klasa implementacji klienta, której Konstruktor ana
 
 
 ### <a name="create-security-token"></a>Tworzenie tokenu zabezpieczeń
-Dostępne są szczegółowe informacje o tworzeniu tokenu zabezpieczeń [tutaj](http://msdn.microsoft.com/library/dn495627.aspx).
+Dostępne są szczegółowe informacje o tworzeniu tokenu zabezpieczeń [tutaj](https://msdn.microsoft.com/library/dn495627.aspx).
 Dodaj następujące metody **Centrum NotificationHub** klasy do utworzenia tokenu na podstawie identyfikatora URI bieżącego żądania i poświadczenia wyodrębnione z parametrów połączenia.
 
     @staticmethod
@@ -148,7 +148,7 @@ Użyj pierwszego, pozwalają zdefiniować Klasa reprezentująca powiadomienie.
 
 Ta klasa jest kontenerem dla treści natywnych powiadomień lub zbiór właściwości szablonu powiadomienia, zestaw nagłówków, zawierającą formatu (platformy natywnej lub szablonu) i właściwości specyficzne dla platformy (np. właściwości wygasania firmy Apple i usługą WNS nagłówków).
 
-Zapoznaj się [dokumentacji interfejsów API REST usługi Notification Hubs](http://msdn.microsoft.com/library/dn495827.aspx) na platformach powiadomień określone formaty i dla wszystkich dostępnych opcji.
+Zapoznaj się [dokumentacji interfejsów API REST usługi Notification Hubs](https://msdn.microsoft.com/library/dn495827.aspx) na platformach powiadomień określone formaty i dla wszystkich dostępnych opcji.
 
 Teraz za pomocą tej klasy, Wyślij powiadomienie metod zapisu wewnątrz **Centrum NotificationHub** klasy.
 

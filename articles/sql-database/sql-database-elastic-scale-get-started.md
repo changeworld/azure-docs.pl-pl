@@ -12,12 +12,12 @@ ms.author: anjangsh
 ms.reviewer: ''
 manager: craigg
 ms.date: 08/27/2018
-ms.openlocfilehash: 74bbaeeee390952bf42407a53684bc33a7cfc543
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ad07b0a9ae2d0c90f63d4f3a842a5d386ac4c59b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242777"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249867"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Wprowadzenie do narzędzi elastycznej bazy danych
 Ten dokument stanowi wprowadzenie do środowiska dewelopera w systemie [Biblioteka kliencka elastic database](sql-database-elastic-database-client-library.md) , ułatwiając uruchamianie przykładowej aplikacji. Przykładowa aplikacja tworzy prostą podzieloną aplikację i analizuje kluczowe możliwości funkcji elastyczne narzędzia graficzne bazy danych Azure SQL Database. Koncentruje się ona na przypadki użycia [procesu zarządzania mapą fragmentów](sql-database-elastic-scale-shard-map-management.md), [routingu zależnego od danych](sql-database-elastic-scale-data-dependent-routing.md), i [zapytań z wieloma fragmentami](sql-database-elastic-scale-multishard-querying.md). Biblioteka klienta jest dostępna dla platformy .NET, a także języka Java. 
@@ -67,7 +67,7 @@ Aby dodać biblioteki klienckiej Projekt narzędzia Maven, dodaj następującą 
 
 ## <a name="elastic-database-tools-for-net"></a>Narzędzia elastycznych baz danych dla platformy .NET 
 ### <a name="prerequisites"></a>Wymagania wstępne
-* Program Visual Studio 2012 lub nowszym za pomocą języka C#. Pobierz bezpłatną wersję na [pobieranie Visual Studio](http://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
+* Program Visual Studio 2012 lub nowszym za pomocą języka C#. Pobierz bezpłatną wersję na [pobieranie Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
 * NuGet 2.7 lub nowszego. Aby uzyskać najnowszą wersję, zobacz [Instalowanie systemu NuGet](http://docs.nuget.org/docs/start-here/installing-nuget).
 
 ### <a name="download-and-run-the-sample-app"></a>Pobieranie i uruchamianie przykładowej aplikacji
@@ -95,13 +95,13 @@ Gratulacje! Pomyślnie skompilowane i uruchamianie pierwszej aplikacji podzielon
 > 
 
 ## <a name="key-pieces-of-the-code-sample"></a>Kluczowych przykładowy kod
-* **Zarządzanie fragmentami i fragmentów mapowania**: kod ilustruje sposób pracy z fragmentów, zakresy i mapowania w *ShardManagementUtils.cs* pliku. Aby uzyskać więcej informacji, zobacz [skalowania w poziomie bazy danych z Menedżera map fragmentów](http://go.microsoft.com/?linkid=9862595).  
+* **Zarządzanie fragmentami i fragmentów mapowania**: kod ilustruje sposób pracy z fragmentów, zakresy i mapowania w *ShardManagementUtils.cs* pliku. Aby uzyskać więcej informacji, zobacz [skalowania w poziomie bazy danych z Menedżera map fragmentów](https://go.microsoft.com/?linkid=9862595).  
 
-* **Routing zależny od danych**: Routing transakcji do prawego fragmentu jest wyświetlany w *DataDependentRoutingSample.cs* pliku. Aby uzyskać więcej informacji, zobacz [routingu zależnego od danych](http://go.microsoft.com/?linkid=9862596). 
+* **Routing zależny od danych**: Routing transakcji do prawego fragmentu jest wyświetlany w *DataDependentRoutingSample.cs* pliku. Aby uzyskać więcej informacji, zobacz [routingu zależnego od danych](https://go.microsoft.com/?linkid=9862596). 
 
-* **Wykonywanie zapytań za pośrednictwem wielu fragmentów**: wykonywanie zapytań między fragmentami zilustrowano *MultiShardQuerySample.cs* pliku. Aby uzyskać więcej informacji, zobacz [zapytań z wieloma fragmentami](http://go.microsoft.com/?linkid=9862597).
+* **Wykonywanie zapytań za pośrednictwem wielu fragmentów**: wykonywanie zapytań między fragmentami zilustrowano *MultiShardQuerySample.cs* pliku. Aby uzyskać więcej informacji, zobacz [zapytań z wieloma fragmentami](https://go.microsoft.com/?linkid=9862597).
 
-* **Dodawanie pustego fragmentów**: iteracyjne Dodawanie nowych fragmentów pusty odbywa się przez kod w *CreateShardSample.cs* pliku. Aby uzyskać więcej informacji, zobacz [skalowania w poziomie bazy danych z Menedżera map fragmentów](http://go.microsoft.com/?linkid=9862595).
+* **Dodawanie pustego fragmentów**: iteracyjne Dodawanie nowych fragmentów pusty odbywa się przez kod w *CreateShardSample.cs* pliku. Aby uzyskać więcej informacji, zobacz [skalowania w poziomie bazy danych z Menedżera map fragmentów](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Inne operacje elastycznego skalowania
 * **Podział istniejących fragmentu**: możliwość podziału fragmentów są dostarczane przez narzędzie do dzielenia i scalania. Aby uzyskać więcej informacji, zobacz [przenoszenie danych między bazami danych w chmurze skalowanych w poziomie](sql-database-elastic-scale-overview-split-and-merge.md).
@@ -119,12 +119,12 @@ Aby uzyskać informacje o cenach, zobacz [szczegóły cennika usługi SQL Databa
 Aby uzyskać więcej informacji na temat narzędzia elastycznych baz danych zobacz następujące artykuły:
 
 * Przykłady kodu: 
-  * Narzędzia elastycznych baz danych ([.NET](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
-  * [Narzędzia elastycznych baz danych dla usług SQL Azure - Entity Framework integracji](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
+  * Narzędzia elastycznych baz danych ([.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
+  * [Narzędzia elastycznych baz danych dla usług SQL Azure - Entity Framework integracji](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Skrypty dotyczące elastyczności w Centrum skryptów](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [ogłoszenie elastycznego skalowania](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
 * Witryna Channel 9: [klip wideo z omówieniem elastycznego skalowania](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* Forum dyskusyjne: [forum usługi Azure SQL Database](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
+* Forum dyskusyjne: [forum usługi Azure SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
 * Aby zmierzyć wydajność: [liczniki wydajności dla menedżera map fragmentów](sql-database-elastic-database-client-library.md)
 
 <!--Anchors-->

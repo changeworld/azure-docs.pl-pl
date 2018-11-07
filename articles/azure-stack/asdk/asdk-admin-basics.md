@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 555bf95367ab0d3e6c4afe09edb6777899400dd8
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 66a2871e0c4b36959ccd8f08df5b6b7edd09f624
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344672"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227828"
 ---
 # <a name="asdk-administration-basics"></a>Podstawy administracji ASDK 
 Istnieje kilka kwestii, o których należy wiedzieć, jeśli jesteś nowym użytkownikiem usługi Azure Stack Development Kit (ASDK) Administracja. Niniejsze wskazówki zawiera omówienie Twojej roli jako operatorów usługi Azure Stack w środowisku oceny i jak zapewnić użytkownikom testów może stać się produktywność szybko.
@@ -29,7 +29,7 @@ Najpierw należy przejrzeć [co to jest Azure Stack Development Kit?](asdk-what-
 
 Takich jak Azure Azure Stack innovates szybko dzięki regularnie udostępnimy nowe kompilacje ASDK. Jednak nie można uaktualnić ASDK, jak w przypadku wdrożeń systemów zintegrowanych w usłudze Azure Stack. Tak, jeśli chcesz przejść do najnowszej kompilacji, należy całkowicie [ponownie wdrożyć ASDK](asdk-redeploy.md). Nie można zastosować pakietów aktualizacji. Ten proces trwa, ale korzyścią jest to, że możesz wypróbować najnowsze funkcje jak najszybciej po ich udostępnieniu. 
 
-## <a name="what-account-should-i-use"></a>Jakiego konta mam korzystać?
+## <a name="what-account-should-i-use"></a>Z jakiego konta mam korzystać?
 Istnieje kilka istotnych kwestii konta, których należy wiedzieć podczas zarządzania usługi Azure Stack. Szczególnie w przypadku wdrożeń przy użyciu systemu Windows Server Active Directory Federation Services (AD FS) jako dostawcy tożsamości, a nie usługi Azure Active Directory (Azure AD). Obowiązują następujące zastrzeżenia konta do usługi Azure Stack zintegrowane systemy i ASDK wdrożeń:
 
 |Konto|Azure AD|AD FS|
@@ -43,7 +43,7 @@ Istnieje kilka istotnych kwestii konta, których należy wiedzieć podczas zarz�
 ## <a name="what-tools-do-i-use-to-manage"></a>Jakie narzędzia należy używać do zarządzania?
 Możesz użyć [Portal administratora stosu Azure](https://adminportal.local.azurestack.external) lub programu PowerShell do zarządzania usługi Azure Stack. Najprostszym sposobem podstawowe informacje na temat jest za pośrednictwem portalu. Jeśli chcesz użyć programu PowerShell, musisz zainstalować [programu PowerShell dla usługi Azure Stack](asdk-post-deploy.md#install-azure-stack-powershell) i [pobieranie narzędzia Azure Stack z usługi GitHub](asdk-post-deploy.md#download-the-azure-stack-tools).
 
-Usługa Azure Stack jako jego podstawowy mechanizm wdrażania, zarządzania i organizacji korzysta z usługi Azure Resource Manager. Jeśli użytkownik chce zarządzać usługi Azure Stack oraz pomóc je obsługi użytkowników, można dowiedzieć się o usłudze Azure Resource Manager. Dowiedz się więcej, czytając [wprowadzenie do usługi Azure Resource Manager oficjalny dokument dotyczący](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf).
+Usługa Azure Stack jako jego podstawowy mechanizm wdrażania, zarządzania i organizacji korzysta z usługi Azure Resource Manager. Jeśli użytkownik chce zarządzać usługi Azure Stack oraz pomóc je obsługi użytkowników, można dowiedzieć się o usłudze Azure Resource Manager. Dowiedz się więcej, czytając [wprowadzenie do usługi Azure Resource Manager oficjalny dokument dotyczący](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf).
 
 ## <a name="your-typical-responsibilities"></a>Twoje obowiązki typowe
 Użytkownicy chcą korzystać z usług. Ich względem Twojej roli głównego jest udostępnienia im tych usług. Używanie ASDK, możesz dowiedzieć się które usług do zaoferowania i sposób wprowadzania tych usług dostępnych przez [Tworzenie planów, ofert i przydziałów](asdk-offer-services.md). Należy również dodać elementy do portalu marketplace, takich jak obrazy maszyn wirtualnych. Najprostszym sposobem jest [pobieranie elementów portalu marketplace](asdk-marketplace-item.md) z platformy Azure do usługi Azure Stack.

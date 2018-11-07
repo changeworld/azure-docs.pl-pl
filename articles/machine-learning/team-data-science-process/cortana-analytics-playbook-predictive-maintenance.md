@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 8f42ee996dae476de3744239d4cc5f053722d52b
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 611896dc9428092a76a891168b48f6962d760e60
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093215"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254574"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Przewodnik sztucznej Inteligencji platformy Azure dla rozwiązania do konserwacji zapobiegawczej
 
@@ -431,13 +431,13 @@ Platforma Microsoft Azure oferuje ścieżki szkoleniowe dla podstawowe pojęcia 
 |:-------------------|--------------|
 | [Ścieżka szkoleniowa dla menedżerów PdM przy użyciu drzewa i lasu Random](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | Public | 
 | [Ścieżka szkoleniowa dla menedżerów PdM korzystające z uczenia głębokiego](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Public |
-| [Deweloper sztucznej Inteligencji na platformie Azure](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Public |
-| [Służbowe Microsoft AI](http://aischool.microsoft.com/learning-paths) | Public |
+| [Deweloper sztucznej Inteligencji na platformie Azure](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Public |
+| [Służbowe Microsoft AI](https://aischool.microsoft.com/learning-paths) | Public |
 | [Learning sztucznej Inteligencji platformy Azure z usługi GitHub](https://github.com/Azure/connectthedots/blob/master/readme.md) | Public |
 | [LinkedIn Learning](http://www.linkedin.com/learning) | Public |
 | [Seminaria internetowe sztucznej Inteligencji firmy Microsoft w serwisie Youtube](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Public |
 | [Pokaż sztucznej Inteligencji firmy Microsoft](http://channel9.msdn.com/Shows/AI-Show) | Public |
-| [LearnAI@MS](http://learnanalytics.microsoft.com) | Partnerzy |
-| [Microsoft Partner Network](http://learningportal.microsoft.com) | Partnerzy |
+| [LearnAI@MS](https://learnanalytics.microsoft.com) | Partnerzy |
+| [Microsoft Partner Network](https://learningportal.microsoft.com) | Partnerzy |
 
 Ponadto bezpłatne COURSE (ogromnych otwartych kursów online) na sztucznej Inteligencji są oferowane w tryb online przez instytucji akademickich, takich jak Stanforda i MIT i innych firm edukacyjnych.

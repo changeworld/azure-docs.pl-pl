@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.component: common
-ms.openlocfilehash: c6256fc209a4ffa5308dc3b24794f8295c57f4ef
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4ec0d4058c512ce420cd6e1bdc393b8043dbf1b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521782"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232563"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrowanie do usługi Azure Premium Storage (dyski niezarządzane)
 
@@ -54,10 +54,10 @@ Specyfikacje rozmiaru maszyny Wirtualnej platformy Azure są wymienione w [rozmi
 #### <a name="disk-sizes"></a>Rozmiary dysków
 Istnieje pięć typów dysków, które mogą być używane z maszyny Wirtualnej, a każdy z nich ma określone operacje We/Wy i przepływność limitów. Wziąć pod uwagę te limity Wybieranie typu dysku dla maszyny Wirtualnej odpowiednio do potrzeb aplikacji pod względem wydajności, wydajność, skalowalność, gdy ładuje szczytowego.
 
-| Typ magazynu dysków Premium  | P10   | P20   | P30            | P40            | P50            | 
+| Typ magazynu dysków Premium  | P10   | P20   | P30            | P40            | P50            | 
 |:-------------------:|:-----:|:-----:|:--------------:|:--------------:|:--------------:|
-| Rozmiar dysku           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
-| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 500   | 2300  | 5000           | 7500           | 7500           | 
+| Rozmiar dysku           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
+| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 500   | 2300  | 5000           | 7500           | 7500           | 
 | Przepływność na dysk | 100 MB na sekundę | 150 MB na sekundę | 200 MB na sekundę | 250 MB na sekundę | 250 MB na sekundę |
 
 W zależności od obciążenia należy sprawdzić, czy dyski dodatkowe dane są niezbędne dla maszyny Wirtualnej. Można dołączyć kilka dysków danych trwałych do maszyny Wirtualnej. Jeśli to konieczne, można stripe na dyskach w celu zwiększenia pojemności i wydajności woluminu. (Zobacz, co jest rozkładanie [tutaj](../../virtual-machines/windows/premium-storage-performance.md#disk-striping).) Jeśli stripe dysków z danymi usługi Premium Storage przy użyciu [miejsca do magazynowania][4], należy ją skonfigurować z jedną kolumnę dla każdego dysku, który jest używany. W przeciwnym razie ogólną wydajność rozłożone wolumin może być mniejszy niż oczekiwano z powodu nierówna Dystrybucja ruchu między dyskami. W przypadku maszyn wirtualnych systemu Linux można użyć *mdadm* narzędzie, aby osiągnąć takie same. Zobacz artykuł [konfigurowanie macierzy RAID oprogramowania w systemie Linux](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Aby uzyskać szczegółowe informacje.
@@ -94,14 +94,14 @@ Aby przygotować dyski VHD do migracji, będą potrzebne:
 
 * Subskrypcja platformy Azure, konta magazynu i kontener na tym koncie magazynu, do którego można skopiować wirtualnego dysku twardego. Należy pamiętać, że docelowe konto magazynu może być kontem Standard lub Premium Storage, w zależności od wymagań.
 * Narzędzie do uogólnienia wirtualny dysk twardy, jeśli planowane jest tworzenie wielu wystąpień maszyny Wirtualnej z niego. Na przykład, program sysprep dla Windows lub virt programu sysprep dla systemu Ubuntu.
-* Narzędzie do przekazania pliku VHD na koncie magazynu. Zobacz [Transfer danych za pomocą wiersza polecenia Azcopy](storage-use-azcopy.md) lub użyj [Eksplorator usługi Azure storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx). W tym przewodniku opisano kopiowania wirtualnego dysku twardego za pomocą narzędzia AzCopy.
+* Narzędzie do przekazania pliku VHD na koncie magazynu. Zobacz [Transfer danych za pomocą wiersza polecenia Azcopy](storage-use-azcopy.md) lub użyj [Eksplorator usługi Azure storage](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx). W tym przewodniku opisano kopiowania wirtualnego dysku twardego za pomocą narzędzia AzCopy.
 
 > [!NOTE]
 > Jeśli wybierzesz opcję Kopia synchroniczna za pomocą narzędzia AzCopy, aby uzyskać optymalną wydajność, należy skopiować wirtualnego dysku twardego, uruchamiając jeden z tych narzędzi z maszyny Wirtualnej platformy Azure, która znajduje się w tym samym regionie co konto magazynu docelowego. Jeśli kopiujesz dysk VHD maszyny wirtualnej platformy Azure w innym regionie, wydajność może przebiegać wolniej.
 >
 > W przypadku kopiowania dużych ilości danych w ramach ograniczonej przepustowości, rozważ [przy użyciu usługi Azure Import/Export do przesyłania danych do magazynu obiektów Blob](../storage-import-export-service.md); dzięki temu można przenieść dane przez wysyłanie dysków twardych do centrum danych platformy Azure. Usługa Azure Import/Export umożliwia kopiowanie danych na koncie magazynu w warstwie standardowa. Gdy dane znajdują się na koncie magazynu w warstwie standardowa, możesz użyć albo [API obiektu Blob kopiowania](https://msdn.microsoft.com/library/azure/dd894037.aspx) lub narzędzia AzCopy do transferu danych do konta usługi premium storage.
 >
-> Należy pamiętać, że platforma Microsoft Azure obsługuje tylko pliki wirtualnego dysku twardego o stałym rozmiarze. Pliki VHDX lub dynamicznych wirtualnych dysków twardych nie są obsługiwane. W przypadku dynamicznego wirtualnego dysku twardego można przekonwertować go do korzystania z o stałym rozmiarze [Convert-VHD](http://technet.microsoft.com/library/hh848454.aspx) polecenia cmdlet.
+> Należy pamiętać, że platforma Microsoft Azure obsługuje tylko pliki wirtualnego dysku twardego o stałym rozmiarze. Pliki VHDX lub dynamicznych wirtualnych dysków twardych nie są obsługiwane. W przypadku dynamicznego wirtualnego dysku twardego można przekonwertować go do korzystania z o stałym rozmiarze [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) polecenia cmdlet.
 >
 >
 
@@ -123,7 +123,7 @@ Poniżej omówimy nielicznych 3 w przypadku przygotowywania wirtualnego dysku tw
 Podczas przekazywania wirtualnego dysku twardego, która będzie służyć do tworzenia wielu ogólnych wystąpień maszyny Wirtualnej platformy Azure, musisz najpierw generalize dysku VHD za pomocą narzędzia sysprep. Dotyczy to do wirtualnego dysku twardego, który działa lokalnie lub w chmurze. Narzędzie Sysprep usuwa wszystkie informacje dotyczące komputera z dysku VHD.
 
 > [!IMPORTANT]
-> Tworzenie migawki lub utworzyć kopię zapasową maszyny Wirtualnej przed uogólnieniem go. Uruchamianie programu sysprep spowoduje zatrzymanie i cofnięcie przydziału wystąpienia maszyny Wirtualnej. Wykonaj kroki przedstawione poniżej Sysprep wirtualny dysk twardy systemu Windows. Należy pamiętać, że uruchamianie polecenia Sysprep konieczne będzie można zamknąć maszyny wirtualnej. Aby uzyskać więcej informacji na temat narzędzia Sysprep, zobacz [Omówienie programu Sysprep](http://technet.microsoft.com/library/hh825209.aspx) lub [techniczne dotyczące narzędzia Sysprep](http://technet.microsoft.com/library/cc766049.aspx).
+> Tworzenie migawki lub utworzyć kopię zapasową maszyny Wirtualnej przed uogólnieniem go. Uruchamianie programu sysprep spowoduje zatrzymanie i cofnięcie przydziału wystąpienia maszyny Wirtualnej. Wykonaj kroki przedstawione poniżej Sysprep wirtualny dysk twardy systemu Windows. Należy pamiętać, że uruchamianie polecenia Sysprep konieczne będzie można zamknąć maszyny wirtualnej. Aby uzyskać więcej informacji na temat narzędzia Sysprep, zobacz [Omówienie programu Sysprep](https://technet.microsoft.com/library/hh825209.aspx) lub [techniczne dotyczące narzędzia Sysprep](https://technet.microsoft.com/library/cc766049.aspx).
 >
 >
 
@@ -163,7 +163,7 @@ Musisz znaleźć usługi kontenera ścieżki i klucza konta magazynu do jednej z
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Opcja 1: Skopiuj wirtualny dysk twardy za pomocą narzędzia AzCopy (kopia asynchroniczny)
 Przy użyciu narzędzia AzCopy, można łatwo przekazywać wirtualny dysk twardy za pośrednictwem Internetu. W zależności od rozmiaru wirtualnych dysków twardych to może potrwać. Pamiętaj sprawdzić ruch przychodzący i wychodzący limity konta magazynu przy użyciu tej opcji. Zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](storage-scalability-targets.md) Aby uzyskać szczegółowe informacje.
 
-1. Pobierz i zainstaluj narzędzie AzCopy w tym miejscu: [najnowszą wersję programu AzCopy](http://aka.ms/downloadazcopy)
+1. Pobierz i zainstaluj narzędzie AzCopy w tym miejscu: [najnowszą wersję programu AzCopy](https://aka.ms/downloadazcopy)
 2. Otwórz program Azure PowerShell i przejdź do folderu, w którym zainstalowano narzędzia AzCopy.
 3. Użyj następującego polecenia, aby skopiować plik wirtualnego dysku twardego z "Źródło" do "Miejsce docelowe".
 
@@ -257,7 +257,7 @@ Przykład <Uri> może być ***"https://storagesample.blob.core.windows.net/mycon
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Opcja 2: Przy użyciu narzędzia AzCopy do przekazania pliku VHD
 Przy użyciu narzędzia AzCopy, można łatwo przekazywać wirtualny dysk twardy za pośrednictwem Internetu. W zależności od rozmiaru wirtualnych dysków twardych to może potrwać. Pamiętaj sprawdzić ruch przychodzący i wychodzący limity konta magazynu przy użyciu tej opcji. Zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](storage-scalability-targets.md) Aby uzyskać szczegółowe informacje.
 
-1. Pobierz i zainstaluj narzędzie AzCopy w tym miejscu: [najnowszą wersję programu AzCopy](http://aka.ms/downloadazcopy)
+1. Pobierz i zainstaluj narzędzie AzCopy w tym miejscu: [najnowszą wersję programu AzCopy](https://aka.ms/downloadazcopy)
 2. Otwórz program Azure PowerShell i przejdź do folderu, w którym zainstalowano narzędzia AzCopy.
 3. Użyj następującego polecenia, aby skopiować plik wirtualnego dysku twardego z "Źródło" do "Miejsce docelowe".
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 25c9cbcaf852aa07bcbe4f71bf69de366d4dbb87
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: 9511e4f90348d58c7b5f6e85d9a5eb74af276461
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50754039"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260503"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup: problemy z agentem lub rozszerzenia
 
@@ -153,7 +153,7 @@ Agent maszyny Wirtualnej może ulec uszkodzeniu lub usługa została zatrzymana.
 1. Ustal, czy Usługa agenta gościa Windows jest uruchomiona w usługach (services.msc) maszyny Wirtualnej. Spróbuj ponownie uruchomić usługę agenta gościa Windows i zainicjuj tworzenie kopii zapasowej.    
 2. Jeśli usługa agenta gościa Windows nie jest widoczny w usługach, w Panelu sterowania, przejdź do strony **programy i funkcje** do określenia, czy Usługa agenta gościa Windows jest zainstalowana.
 4. Jeśli Agent gościa Windows znajduje się w **programy i funkcje**, odinstaluj agenta gościa Windows.
-5. Pobierz i zainstaluj [najnowszej wersji pliku MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Musi mieć prawa administratora w celu ukończenia instalacji.
+5. Pobierz i zainstaluj [najnowszej wersji pliku MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Musi mieć prawa administratora w celu ukończenia instalacji.
 6. Sprawdź, czy usługi agenta gościa Windows są wyświetlane w usługach.
 7. Uruchomienie w kopii zapasowej na żądanie:
     * W portalu, wybierz **Utwórz teraz kopię zapasową**.

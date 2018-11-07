@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviwer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 343782448d4b508e678108ece268f2ce57b6ac1d
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 13e87ef0150924380c18c66c0362974ef599d4bf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868143"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231723"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Zawsze szyfrowane: Ochrona poufnych danych i przechowywania kluczy szyfrowania w magazynie certyfikatów Windows
 
@@ -56,7 +56,7 @@ W dalszej części tego samouczka będą potrzebne parametry połączenia. Po ut
 1. Kliknij przycisk **baz danych SQL** > **Clinic** > **Pokaż parametry połączenia bazy danych**.
 2. Skopiuj parametry połączenia dla **ADO.NET**.
    
-    ![Skopiuj parametry połączenia](./media/sql-database-always-encrypted/connection-strings.png)
+    ![Kopiowanie parametrów połączenia](./media/sql-database-always-encrypted/connection-strings.png)
 
 ## <a name="connect-to-the-database-with-ssms"></a>Nawiązywanie połączenia z bazą danych za pomocą programu SSMS
 Otwórz aplikację SSMS i połączyć się z serwerem z bazą danych okulistycznej.
@@ -64,7 +64,7 @@ Otwórz aplikację SSMS i połączyć się z serwerem z bazą danych okulistyczn
 1. Otwórz program SSMS. (Kliknij **Connect** > **aparatu bazy danych** otworzyć **Połącz z serwerem** okna, jeśli nie jest otwarty).
 2. Wprowadź nazwę serwera i poświadczenia. Nazwa serwera można znaleźć w bloku bazy danych SQL i parametry połączenia skopiowane wcześniej. Typ w tym nazwa kompletnego serwera *database.windows.net*.
    
-    ![Skopiuj parametry połączenia](./media/sql-database-always-encrypted/ssms-connect.png)
+    ![Kopiowanie parametrów połączenia](./media/sql-database-always-encrypted/ssms-connect.png)
 
 Jeśli **nowej reguły zapory** zostanie wyświetlone okno dialogowe, zaloguj się do platformy Azure, dzięki czemu program SSMS, Utwórz nową regułę zapory dla Ciebie.
 
@@ -514,5 +514,5 @@ Po utworzeniu bazy danych, która korzysta z funkcji zawsze zaszyfrowane, można
 * [Przezroczyste szyfrowanie danych](https://msdn.microsoft.com/library/bb934049.aspx)
 * [Szyfrowanie serwera SQL](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Kreator zawsze szyfrowane](https://msdn.microsoft.com/library/mt459280.aspx)
-* [Zawsze zaszyfrowane Blog](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+* [Zawsze zaszyfrowane Blog](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 5e730e52d55f6c8c2dd02f69e3efa67017af152b
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 0496d9b3fde8b0194ddf57b3bbfec98eb7fda7fe
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242980"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250853"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z usługą Azure Files w Windows
 
@@ -46,7 +46,7 @@ Windows 8, Windows Server 2012 i nowszych wersjach każdego systemu negocjowania
 
 ### <a name="cause-2-port-445-is-blocked"></a>Przyczyny 2: Port 445 jest zablokowany.
 
-Błąd 53 lub błąd 67 może wystąpić, jeśli port 445 komunikacja wychodząca centrum danych usługi Azure Files jest zablokowany. Aby wyświetlić podsumowanie usługodawców internetowych, które blokują lub nie zezwalaj na dostęp z portu 445, przejdź do [TechNet](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
+Błąd 53 lub błąd 67 może wystąpić, jeśli port 445 komunikacja wychodząca centrum danych usługi Azure Files jest zablokowany. Aby wyświetlić podsumowanie usługodawców internetowych, które blokują lub nie zezwalaj na dostęp z portu 445, przejdź do [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
 
 Aby dowiedzieć się, czy jest to przyczyną komunikat "Błąd 53 systemu", Portqry służy również do punktu końcowego TCP:445 zapytania. Jeśli punkt końcowy TCP:445 jest wyświetlany jako odfiltrowany, TCP port jest zablokowany. Oto przykładowe zapytanie:
 

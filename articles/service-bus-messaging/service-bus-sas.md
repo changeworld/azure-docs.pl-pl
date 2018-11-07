@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: spelluru
-ms.openlocfilehash: adc9d64c4756e055b3ff9b772feebd80902d2c9f
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: ef1b8b2dd96a89a553239168d412d84e63a29f2a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857877"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254591"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Kontrola dostępu usługi Service Bus przy użyciu sygnatury dostępu współdzielonego
 
@@ -57,7 +57,7 @@ Podczas tworzenia przestrzeni nazw usługi Service Bus reguły o nazwie **RootMa
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>Konfiguracja uwierzytelniania sygnatura dostępu współdzielonego
 
-Można skonfigurować [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) reguły w przestrzeni nazw usługi Service Bus, kolejki lub tematy. Konfigurowanie [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) w usłudze Service Bus subskrypcji nie jest obecnie obsługiwane, ale zasady skonfigurowane w przestrzeni nazw lub temat umożliwia bezpieczny dostęp do subskrypcji. Dla przykładu pracy, który ilustruje tę procedurę, zobacz [uwierzytelniania przy użyciu sygnatury dostępu współdzielonego (SAS) za pomocą subskrypcji magistrali usług](http://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) próbki.
+Można skonfigurować [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) reguły w przestrzeni nazw usługi Service Bus, kolejki lub tematy. Konfigurowanie [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) w usłudze Service Bus subskrypcji nie jest obecnie obsługiwane, ale zasady skonfigurowane w przestrzeni nazw lub temat umożliwia bezpieczny dostęp do subskrypcji. Dla przykładu pracy, który ilustruje tę procedurę, zobacz [uwierzytelniania przy użyciu sygnatury dostępu współdzielonego (SAS) za pomocą subskrypcji magistrali usług](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) próbki.
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
@@ -102,7 +102,7 @@ Jeśli jest Ci znana lub podejrzeń, że klucz zostanie naruszony, i że masz od
 
 Konfiguracja reguł autoryzacji, generowanie tokenów sygnatur dostępu Współdzielonego i uwierzytelnianiem klienta są następujące scenariusze, w opisany następująco.
 
-Aby uzyskać pełne pracy przykładowej aplikacji usługi Service Bus, który ilustruje konfiguracji i używa autoryzacji sygnatury dostępu Współdzielonego, zobacz [uwierzytelniania sygnatura dostępu współdzielonego z usługą Service Bus](http://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Powiązane próbki, który ilustruje sposób używania reguł autoryzacji sygnatury dostępu Współdzielonego skonfigurowanej w przestrzeni nazw lub tematy, aby zabezpieczyć subskrypcje usługi Service Bus jest dostępna tutaj: [uwierzytelniania przy użyciu sygnatury dostępu współdzielonego (SAS) za pomocą subskrypcji magistrali usług](http://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
+Aby uzyskać pełne pracy przykładowej aplikacji usługi Service Bus, który ilustruje konfiguracji i używa autoryzacji sygnatury dostępu Współdzielonego, zobacz [uwierzytelniania sygnatura dostępu współdzielonego z usługą Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Powiązane próbki, który ilustruje sposób używania reguł autoryzacji sygnatury dostępu Współdzielonego skonfigurowanej w przestrzeni nazw lub tematy, aby zabezpieczyć subskrypcje usługi Service Bus jest dostępna tutaj: [uwierzytelniania przy użyciu sygnatury dostępu współdzielonego (SAS) za pomocą subskrypcji magistrali usług](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Reguły autoryzacji dostępu do udostępnionych dostępu w jednostce
 

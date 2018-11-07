@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 37b8eff2d4ed89c90f1fa6f128673ed5bacaaa90
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 5d3073c3ed499ecdb20243e6db2b217aec3e1448
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339954"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254523"
 ---
 # <a name="azure-stack-administration-basics"></a>Podstawy administracji w usłudze Azure Stack
 Istnieje kilka kwestii, o których należy wiedzieć, jeśli jesteś nowym użytkownikiem usługi Azure Stack administracji. Niniejsze wskazówki zawiera omówienie Twojej roli jako operatorów usługi Azure Stack i co jest potrzebne do Poinformuj użytkowników dla nich, aby szybko stać się produktywności.
@@ -65,7 +65,7 @@ Usługi te wymagają dodatkowej konfiguracji przed można udostępnić je użytk
 
 Usługa Azure Stack będą w dalszym ciągu dodano obsługę usług platformy Azure. Przewidywany plan, można zobaczyć [usługi Azure Stack: stanowi rozszerzenie platformy Azure](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) oficjalny dokument. Można również monitorować [wpisów w blogu usługi Azure Stack](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) dla nowych anonsów.
 
-## <a name="what-account-should-i-use"></a>Jakiego konta mam korzystać?
+## <a name="what-account-should-i-use"></a>Z jakiego konta mam korzystać?
 Istnieje kilka istotnych kwestii konta, których należy wiedzieć podczas zarządzania usługi Azure Stack. Szczególnie w przypadku wdrożeń przy użyciu systemu Windows Server Active Directory Federation Services (AD FS) jako dostawcy tożsamości, a nie usługi Azure Active Directory (Azure AD). Obowiązują następujące zastrzeżenia konta do usługi Azure Stack zintegrowane systemy i ASDK wdrożeń:
 
 
@@ -81,7 +81,7 @@ Istnieje kilka istotnych kwestii konta, których należy wiedzieć podczas zarz�
  
 Możesz użyć [portal administratora](azure-stack-manage-portals.md) lub programu PowerShell do zarządzania usługi Azure Stack. Najprostszym sposobem podstawowe informacje na temat jest za pośrednictwem portalu. Jeśli chcesz użyć programu PowerShell istnieją procedury przygotowywania. Należy najpierw [zainstalować](azure-stack-powershell-install.md) programu PowerShell, [Pobierz](azure-stack-powershell-download.md) dodatkowych modułów i [skonfigurować](azure-stack-powershell-configure-admin.md) programu PowerShell.
 
-Usługa Azure Stack jako jego podstawowy mechanizm wdrażania, zarządzania i organizacji korzysta z usługi Azure Resource Manager. Jeśli użytkownik chce zarządzać usługi Azure Stack oraz pomóc je obsługi użytkowników, można dowiedzieć się o usługi Resource Manager. Zobacz [Rozpoczynanie pracy z usługą Azure Resource Manager](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf) oficjalny dokument.
+Usługa Azure Stack jako jego podstawowy mechanizm wdrażania, zarządzania i organizacji korzysta z usługi Azure Resource Manager. Jeśli użytkownik chce zarządzać usługi Azure Stack oraz pomóc je obsługi użytkowników, można dowiedzieć się o usługi Resource Manager. Zobacz [Rozpoczynanie pracy z usługą Azure Resource Manager](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf) oficjalny dokument.
 
 ## <a name="your-typical-responsibilities"></a>Twoje obowiązki typowe
 

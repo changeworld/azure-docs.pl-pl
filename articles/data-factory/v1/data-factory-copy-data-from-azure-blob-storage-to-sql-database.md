@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a9f76b38139cccedb97c6026f0e0efa14d0dbc8c
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 596a9e4e3e1d24bdcab561a7238548d418ac0581
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056409"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243577"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Samouczek: Kopiowanie danych z magazynu obiektów Blob do usługi SQL Database przy użyciu usługi fabryka danych
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
 ## <a name="prerequisites-for-the-tutorial"></a>Wymagania wstępne dotyczące samouczka
 Przed rozpoczęciem tego samouczka, musisz mieć następujące wymagania wstępne:
 
-* **Subskrypcja platformy Azure**.  Jeśli nie masz subskrypcji, możesz utworzyć konto bezpłatnej wersji próbnej w zaledwie kilka minut. Zobacz [bezpłatnej wersji próbnej](http://azure.microsoft.com/pricing/free-trial/) artykuł, aby uzyskać szczegółowe informacje.
+* **Subskrypcja platformy Azure**.  Jeśli nie masz subskrypcji, możesz utworzyć konto bezpłatnej wersji próbnej w zaledwie kilka minut. Zobacz [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/) artykuł, aby uzyskać szczegółowe informacje.
 * **Konto usługi Azure Storage**. Możesz użyć magazynu obiektów blob jako **źródła** magazynu danych w ramach tego samouczka. Jeśli nie masz konta usługi Azure Storage, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md).
 * **Usługa Azure SQL Database**. Użyj usługi Azure SQL database jako **docelowy** magazynu danych w ramach tego samouczka. Jeśli nie masz usługi Azure SQL database, używanego w tym samouczku, zobacz [sposób tworzenia i konfigurowania usługi Azure SQL Database](../../sql-database/sql-database-get-started.md) ją utworzyć.
 * **Program SQL Server 2012/2014 lub Visual Studio 2013**. Tworzenie przykładowej bazy danych i wyświetlić dane wynikowe w bazie danych za pomocą programu SQL Server Management Studio lub Visual Studio.  

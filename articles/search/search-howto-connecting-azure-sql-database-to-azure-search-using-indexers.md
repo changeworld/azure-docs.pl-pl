@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: 1c498bb857b717682f943af96b222d9712b5d389
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: ba2ce12fcfad14b0910144b1a95efd44be54811f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409224"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245651"
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Łączenie usługi Azure SQL Database do usługi Azure Search przy użyciu indeksatorów
 
@@ -140,7 +140,7 @@ Odpowiedź powinna wyglądać podobnie do poniższej:
     }
 
 Historia wykonywania zawiera maksymalnie 50 ostatnio wykonanych wykonań, które są sortowane w kolejności chronologicznej odwrotnej (tak, aby najnowsze wykonywania wykorzystasz w odpowiedzi).
-Dodatkowe informacje na temat odpowiedzi można znaleźć w [pobierania stanu indeksatora](http://go.microsoft.com/fwlink/p/?LinkId=528198)
+Dodatkowe informacje na temat odpowiedzi można znaleźć w [pobierania stanu indeksatora](https://go.microsoft.com/fwlink/p/?LinkId=528198)
 
 ## <a name="run-indexers-on-a-schedule"></a>Uruchamianie indeksatory zgodnie z harmonogramem
 Można także porządkować indeksatora okresowe uruchamianie zgodnie z harmonogramem. Aby to zrobić, Dodaj **harmonogram** właściwości podczas tworzenia lub aktualizowania indeksatora. W poniższym przykładzie przedstawiono żądanie PUT, aby zaktualizować indeksatora:

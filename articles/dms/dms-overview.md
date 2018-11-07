@@ -10,18 +10,18 @@ ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 71d79ac34c4797cceb8374d65afb6fd7662f1c21
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 053e571b6285cd405ea17f43fec1d3ea99732070
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456181"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235585"
 ---
 # <a name="what-is-the-azure-database-migration-service"></a>Co to jest Azure Database Migration Service?
 Azure Database Migration Service to w pełni zarządzana usługa zaprojektowana w celu umożliwienia bezproblemową migrację z wielu źródłowych baz danych na danych na platformę Azure przy minimalnych przestojach (migracja online).
 
 ## <a name="migrate-databases-to-azure-with-familiar-tools"></a>Migrowanie baz danych na platformie Azure przy użyciu znanych narzędzi
-Azure Database Migration Service integruje niektóre funkcje oferowane przez naszych istniejących narzędzi i usług. Jego zapewnia klientom kompleksowe rozwiązanie o wysokiej dostępności. Używa usługi [Data Migration Assistant](http://aka.ms/dma) można wygenerować raporty z oceny zawierające przedstawić zalecenia w zakresie przeprowadzenie Cię przez proces zmiany wymagane przed migracją. To Ty możesz aby skorygować wszystkie wymagane. Gdy wszystko będzie gotowe do rozpoczęcia procesu migracji, Azure Database Migration Service wykonuje wszystkie wymagane kroki. Można wyzwalać i zapomnij migrację projektów z poczucie spokoju, wiedząc, że proces korzysta z najlepszych rozwiązań, zgodnie z ustaleniami firmy Microsoft.
+Azure Database Migration Service integruje niektóre funkcje oferowane przez naszych istniejących narzędzi i usług. Jego zapewnia klientom kompleksowe rozwiązanie o wysokiej dostępności. Używa usługi [Data Migration Assistant](https://aka.ms/dma) można wygenerować raporty z oceny zawierające przedstawić zalecenia w zakresie przeprowadzenie Cię przez proces zmiany wymagane przed migracją. To Ty możesz aby skorygować wszystkie wymagane. Gdy wszystko będzie gotowe do rozpoczęcia procesu migracji, Azure Database Migration Service wykonuje wszystkie wymagane kroki. Można wyzwalać i zapomnij migrację projektów z poczucie spokoju, wiedząc, że proces korzysta z najlepszych rozwiązań, zgodnie z ustaleniami firmy Microsoft.
 
 > [!NOTE]
 > Przy użyciu usługi Azure Database Migration Service, aby dokonać migracji online wymaga tworzenia wystąpienia oparte na krytyczne dla działania firmy (wersja zapoznawcza) warstwy cenowej.

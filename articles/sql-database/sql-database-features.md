@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: b68e65bdcefcabb2804b259cff45e0a8719f7ab7
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: d650e0d8b76af8d6bdef5aeadf821e3d8f6d1c79
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870520"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241875"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porównanie funkcji: Azure SQL Database a baza danych programu SQL Server 
 
@@ -26,7 +26,7 @@ Usługa Azure SQL Database udostępnia wspólnej bazy kodu z programem SQL Serve
 Firma Microsoft nadal dodawania funkcji do usługi Azure SQL Database. Odwiedź strony poświęconej aktualizacjom usług dla platformy Azure, aby uzyskać najnowsze aktualizacje przy użyciu tych filtrów:
 
 * Włączony filtr [usługi SQL Database](https://azure.microsoft.com/updates/?service=sql-database).
-* Włączony filtr [ogłoszeń dotyczących ogólnej dostępności](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) funkcji usługi SQL Database.
+* Włączony filtr [ogłoszeń dotyczących ogólnej dostępności](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) funkcji usługi SQL Database.
 
 ## <a name="sql-server-feature-support-in-azure-sql-database"></a>Obsługa funkcji programu SQL Server w usłudze Azure SQL Database
 
@@ -42,7 +42,7 @@ Poniższej tabeli przedstawiono główne funkcje programu SQL Server i zawiera i
 | [Automatyczne tworzenie kopii zapasowych](sql-database-automated-backups.md) | Yes | Yes |
 | [Automatyczne dostrajanie (wymuszanie planu)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Tak](sql-database-automatic-tuning.md)| [Tak](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) |
 | [Automatyczne dostrajanie (indeksów)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Tak](sql-database-automatic-tuning.md)| Nie |
-| [Studio danych platformy Azure](https://docs.microsoft.com/sql/azure-data-studio/what-is) | Yes | Yes |
+| [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) | Yes | Yes |
 | [Plik BACPAC (Eksportowanie)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Tak — zobacz [eksportowania bazy danych SQL](sql-database-export.md) | Nie |
 | [Plik BACPAC (importowanie)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Tak — zobacz [importu bazy danych SQL](sql-database-import.md) | Nie |
 | [Polecenia Kopia zapasowa](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | Nie, tylko inicjowanych przez system automatycznych kopii zapasowych — Zobacz [automatyczne kopie zapasowe](sql-database-automated-backups.md) | Inicjowanych przez system z automatycznie tworzonymi kopiami zapasowymi i użytkownik zainicjował kopie zapasowe tylko do kopiowania — zobacz [kopii zapasowej różnice](sql-database-managed-instance-transact-sql-information.md#backup) |
@@ -128,7 +128,7 @@ Poniższej tabeli przedstawiono główne funkcje programu SQL Server i zawiera i
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Yes | Yes |
 | [Program SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Yes | Yes |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nie — zobacz [zdarzeniom rozszerzonym](sql-database-xevent-db-diff-from-svr.md) | Yes |
-| [Replikacji programu SQL Server](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [Tylko dla subskrybentów replikacji transakcyjnej i replikacji migawki](sql-database-cloud-migrate.md) | Tak — [replikację za pomocą wystąpienia zarządzanego SQL Database — publiczna wersja zapoznawcza](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance) |
+| [Replikacji programu SQL Server](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [Tylko dla subskrybentów replikacji transakcyjnej i replikacji migawki](sql-database-cloud-migrate.md) | Tak — [replikację za pomocą wystąpienia zarządzanego SQL Database — publiczna wersja zapoznawcza](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance) |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nie — [zobaczyć usługę Power BI](https://docs.microsoft.com/power-bi/) | Nie — [zobaczyć usługę Power BI](https://docs.microsoft.com/power-bi/) |
 | [Procedury składowane](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) | Yes | Yes |
 | [Systemowe funkcje składowane](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | Większość — Zobacz poszczególnych funkcji | Tak — zobacz [składowane, funkcje, wyzwala różnice](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |

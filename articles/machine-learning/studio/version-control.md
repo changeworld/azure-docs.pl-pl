@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
-ms.openlocfilehash: ff30afdcfebe51d914d2f7504ab3bf530309c222
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: d201d8848891038355fad01f610070259ad1e42a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42060709"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259194"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Zarządzanie cyklem życia aplikacji w usłudze Azure Machine Learning Studio
 Usługa Azure Machine Learning Studio to narzędzie do tworzenia eksperymenty usługi machine learning, w których jest przygotowany do działania na platformie chmury platformy Azure. Takich jak środowiska IDE programu Visual Studio i usługi w chmurze skalowalne scalania w pojedynczej platformy. Różne zasoby do wdrożenia i wykonywanie zautomatyzowanych standardowego rozwiązania zarządzania cyklem życia aplikacji (ALM) na podstawie wersji można zastosować w usłudze Azure Machine Learning Studio. W tym artykule omówiono niektóre opcje i metod.
@@ -43,7 +43,7 @@ Po jego otwarciu, możesz zapisać migawkę eksperymentu jako nowy eksperyment, 
 Jeśli usuniesz eksperymentu, zostaną usunięte wszystkie migawki tego eksperymentu.
 
 ### <a name="exportimport-experiment-in-json-format"></a>Operacja eksportu/importu eksperymentu w formacie JSON
-Migawki historii uruchamiania zachować niezmienne wersję eksperymentu w usłudze Azure Machine Learning Studio, za każdym razem, gdy zostanie przesłana do uruchomienia. Możesz także zapisać lokalną kopię eksperymentu i go zaewidencjonować w systemie kontroli źródła Ulubione, takie jak Team Foundation Server i później ponownie utworzyć eksperyment z tego pliku lokalnego. Możesz użyć [programu PowerShell usługi Azure Machine Learning](http://aka.ms/amlps) polecenia cmdlet [ *Export-AmlExperimentGraph* ](https://github.com/hning86/azuremlps#export-amlexperimentgraph) i [  *Import-AmlExperimentGraph* ](https://github.com/hning86/azuremlps#import-amlexperimentgraph) to zrobić.
+Migawki historii uruchamiania zachować niezmienne wersję eksperymentu w usłudze Azure Machine Learning Studio, za każdym razem, gdy zostanie przesłana do uruchomienia. Możesz także zapisać lokalną kopię eksperymentu i go zaewidencjonować w systemie kontroli źródła Ulubione, takie jak Team Foundation Server i później ponownie utworzyć eksperyment z tego pliku lokalnego. Możesz użyć [programu PowerShell usługi Azure Machine Learning](https://aka.ms/amlps) polecenia cmdlet [ *Export-AmlExperimentGraph* ](https://github.com/hning86/azuremlps#export-amlexperimentgraph) i [  *Import-AmlExperimentGraph* ](https://github.com/hning86/azuremlps#import-amlexperimentgraph) to zrobić.
 
 Plik JSON jest tekstową reprezentację wartości wykres eksperymentu, który może zawierać odwołania do zasobów w obszarze roboczym, takich jak zestaw danych lub uczonego modelu. Nie zawiera Zserializowany wersję zasobu. Jeśli użytkownik podejmie próbę ponownego importowania danych dokumentów JSON do obszaru roboczego, zasoby, do którego istnieje odwołanie musi już istnieć z tej samej zawartości identyfikatorów, które są określone w eksperymencie. W przeciwnym razie nie można uzyskać dostępu importowanych eksperymentu.
 
@@ -85,7 +85,7 @@ Jeśli tworzysz nową usługę sieci web opartych na usłudze Azure Resource Man
 Po utworzeniu wyeksportowany plik WSD i nad nim kontroli wersji, można także wdrożyć WSD jako nowej usługi sieci web w ramach planu usługi sieci web w różnych w innym regionie platformy Azure. Po prostu upewnij się, że użytkownik poda prawidłowego magazynu konfiguracji konta, a także nowy identyfikator planu usługi sieci web. Zastosowania poprawki w plikach różnych iLearner, można zmodyfikować plik WSD i zaktualizuj odwołanie do lokalizacji trenowanego modelu i wdrożyć go jako nowej usługi sieci web.
 
 ## <a name="automate-experiment-execution-and-deployment"></a>Automatyzowanie wykonywania eksperymentów i wdrażania
-Ważnym aspektem ALM jest zautomatyzować proces wdrażania aplikacji i wykonywanie. W usłudze Azure Machine Learning, można to zrobić za pomocą [modułu programu PowerShell](http://aka.ms/amlps). Oto przykład czynności end-to-end, które są istotne dla standardowych ALM zautomatyzować proces wykonywania/ciągłego wdrażania przy użyciu [modułu programu PowerShell usługi Azure Machine Learning Studio](http://aka.ms/amlps). Każdy krok jest połączony z co najmniej jeden polecenia cmdlet środowiska PowerShell służących do wykonywania tego kroku.
+Ważnym aspektem ALM jest zautomatyzować proces wdrażania aplikacji i wykonywanie. W usłudze Azure Machine Learning, można to zrobić za pomocą [modułu programu PowerShell](https://aka.ms/amlps). Oto przykład czynności end-to-end, które są istotne dla standardowych ALM zautomatyzować proces wykonywania/ciągłego wdrażania przy użyciu [modułu programu PowerShell usługi Azure Machine Learning Studio](https://aka.ms/amlps). Każdy krok jest połączony z co najmniej jeden polecenia cmdlet środowiska PowerShell służących do wykonywania tego kroku.
 
 1. [Przekaż zestaw danych](https://github.com/hning86/azuremlps#upload-amldataset).
 2. Skopiuj eksperyment do obszaru roboczego z [obszaru roboczego](https://github.com/hning86/azuremlps#copy-amlexperiment) lub z [galerii](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery), lub [zaimportować](https://github.com/hning86/azuremlps#import-amlexperimentgraph) [wyeksportowane](https://github.com/hning86/azuremlps#export-amlexperimentgraph) eksperymentów na podstawie danych lokalnych dysk.
@@ -99,6 +99,6 @@ Ważnym aspektem ALM jest zautomatyzować proces wdrażania aplikacji i wykonywa
 10. Test usługi sieci web [RRS](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) lub [BES](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint) punktu końcowego.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Pobierz [programu PowerShell usługi Azure Machine Learning Studio](http://aka.ms/amlps) moduł i początek w celu zautomatyzowania zadań ALM.
+* Pobierz [programu PowerShell usługi Azure Machine Learning Studio](https://aka.ms/amlps) moduł i początek w celu zautomatyzowania zadań ALM.
 * Dowiedz się, jak [tworzenie i zarządzanie dużą liczbą modeli uczenia Maszynowego przy użyciu tylko jednego eksperymentu](create-models-and-endpoints-with-powershell.md) za pośrednictwem programów PowerShell i ponownego trenowania interfejsu API.
 * Dowiedz się więcej o [wdrażanie usług sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md).

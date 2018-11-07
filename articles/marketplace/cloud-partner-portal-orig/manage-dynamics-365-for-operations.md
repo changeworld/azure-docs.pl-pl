@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f2e0c7b335b09a0d2b8b8399e807a354ec8e4282
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 41f3fd55be02364b4028642db9db1d3f47043afa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810394"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245090"
 ---
 # <a name="how-to-create-dynamics-365-for-operations-offer-via-cloud-partner-portal"></a>Jak utworzyć Dynamics 365 for Operations oferty za pośrednictwem portalu Cloud Partner
 
 Portal wydawców umożliwia opartej na rolach dostęp do portalu, dzięki czemu wiele osób móc współpracować kierunku stawiane ofertom. Zobacz [chmurze Portal Zarządzanie użytkownikami](./cloud-partner-portal-manage-users.md) Aby uzyskać więcej informacji.
 
-Można było opublikować ofertę w imieniu wydawcy konta, jedną z osób z \"właściciela\" konieczność roli zobowiązuje się do przestrzegania [warunki użytkowania](https://azure.microsoft.com/support/legal/website-terms-of-use/), [poufności informacji firmy Microsoft](http://www.microsoft.com/privacystatement/default.aspx), i [Umowa dotycząca programu certyfikat platformy Microsoft Azure](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
+Można było opublikować ofertę w imieniu wydawcy konta, jedną z osób z \"właściciela\" konieczność roli zobowiązuje się do przestrzegania [warunki użytkowania](https://azure.microsoft.com/support/legal/website-terms-of-use/), [poufności informacji firmy Microsoft](https://www.microsoft.com/privacystatement/default.aspx), i [Umowa dotycząca programu certyfikat platformy Microsoft Azure](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
 ## <a name="how-to-create-a-new-dynamics-365-for-operations-offer"></a>Sposób tworzenia nowego Dynamics 365 for Operations oferty
 

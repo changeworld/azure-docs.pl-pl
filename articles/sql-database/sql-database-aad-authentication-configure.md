@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: e0cc8759de6e204ec419053a70d263e21ca0dcf6
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 75108853929ea514a6b8660388d71736e74013e0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868637"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234735"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurowanie i zarządzanie nimi uwierzytelniania usługi Azure Active Directory przy użyciu języka SQL
 
@@ -202,7 +202,7 @@ Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia, zobacz [S
 Na wszystkich komputerach klienckich, z których aplikacje lub użytkowników łączyć się z usługi Azure SQL Database lub Azure SQL Data Warehouse przy użyciu tożsamości usługi Azure AD, należy zainstalować następujące oprogramowanie:
 
 - .NET framework 4.6 lub nowszy z [ https://msdn.microsoft.com/library/5a4x27ek.aspx ](https://msdn.microsoft.com/library/5a4x27ek.aspx).
-- Usługa Azure Active Directory Authentication Library dla programu SQL Server (**ADALSQL. Biblioteka DLL**) jest dostępna w wielu językach (x86 i amd64) z Centrum pobierania w [Microsoft Active Directory Authentication Library dla programu Microsoft SQL Server](http://www.microsoft.com/download/details.aspx?id=48742).
+- Usługa Azure Active Directory Authentication Library dla programu SQL Server (**ADALSQL. Biblioteka DLL**) jest dostępna w wielu językach (x86 i amd64) z Centrum pobierania w [Microsoft Active Directory Authentication Library dla programu Microsoft SQL Server](https://www.microsoft.com/download/details.aspx?id=48742).
 
 Należy spełnić te wymagania przez:
 
@@ -249,14 +249,14 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 > [!TIP]
 > Nie można bezpośrednio utworzyć użytkownika z usługi Azure Active Directory niż Azure Active Directory, który jest skojarzony z subskrypcją platformy Azure. Jednak członkowie innych aktywnych katalogów, będące importowanych użytkowników w usłudze Active Directory skojarzone (znanych jako użytkownicy zewnętrzni) można dodać do grupy usługi Active Directory w dzierżawie usługi Active Directory. Dzięki tworzenia użytkownika zawartej bazy danych dla tej grupy usługi AD dla użytkowników zewnętrznych usługi Active Directory można uzyskać dostępu do bazy danych SQL.
 
-Aby uzyskać więcej informacji o tworzeniu zawarte bazy danych użytkowników w oparciu o tożsamości usługi Azure Active Directory, zobacz [CREATE USER (Transact-SQL)](http://msdn.microsoft.com/library/ms173463.aspx).
+Aby uzyskać więcej informacji o tworzeniu zawarte bazy danych użytkowników w oparciu o tożsamości usługi Azure Active Directory, zobacz [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx).
 
 > [!NOTE]
 > Usuwanie administratora usługi Azure Active Directory dla serwera Azure SQL uniemożliwia łączenie się z serwerem dowolnego użytkownika uwierzytelniania usługi Azure AD. Jeśli to konieczne, pustych użytkowników usługi Azure AD można porzucić ręcznie przez administratora bazy danych SQL.
 > [!NOTE]
 > Jeśli zostanie wyświetlony **upłynął limit czasu połączenia**, może być konieczne ustawienie `TransparentNetworkIPResolution` parametr parametry połączenia na wartość false. Aby uzyskać więcej informacji, zobacz [problem limitu czasu połączenia z programem .NET Framework 4.6.1 — TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/2016/05/07/connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/).
 
-Podczas tworzenia użytkownika bazy danych, użytkownik otrzymuje **CONNECT** uprawnień i mogą się łączyć z tą bazą danych jako członek **publicznych** roli. Początkowo tylko uprawnienia dostępne dla użytkownika są wszystkie uprawnienia przyznane **publicznych** rolę lub uprawnienia udzielone do żadnej z grup usługi Azure AD, są członkami. Po zainicjowaniu użytkownikiem platformy Azure na podstawie usługi AD zawarte bazy danych można przyznać użytkownikowi dodatkowe uprawnienia, taki sam sposób jak udzielić uprawnień do jakichkolwiek innych typów użytkownika. Zazwyczaj przyznać uprawnienia do ról bazy danych i dodawania użytkowników do ról. Aby uzyskać więcej informacji, zobacz [podstawowe uprawnienia aparatu bazy danych](http://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx). Aby uzyskać więcej informacji na temat specjalne role bazy danych SQL, zobacz [Zarządzanie bazami danych i nazwami logowania w usłudze Azure SQL Database](sql-database-manage-logins.md).
+Podczas tworzenia użytkownika bazy danych, użytkownik otrzymuje **CONNECT** uprawnień i mogą się łączyć z tą bazą danych jako członek **publicznych** roli. Początkowo tylko uprawnienia dostępne dla użytkownika są wszystkie uprawnienia przyznane **publicznych** rolę lub uprawnienia udzielone do żadnej z grup usługi Azure AD, są członkami. Po zainicjowaniu użytkownikiem platformy Azure na podstawie usługi AD zawarte bazy danych można przyznać użytkownikowi dodatkowe uprawnienia, taki sam sposób jak udzielić uprawnień do jakichkolwiek innych typów użytkownika. Zazwyczaj przyznać uprawnienia do ról bazy danych i dodawania użytkowników do ról. Aby uzyskać więcej informacji, zobacz [podstawowe uprawnienia aparatu bazy danych](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx). Aby uzyskać więcej informacji na temat specjalne role bazy danych SQL, zobacz [Zarządzanie bazami danych i nazwami logowania w usłudze Azure SQL Database](sql-database-manage-logins.md).
 Konto użytkownika domeny federacyjnej, który jest importowany do domeny zarządzanej, jako użytkownik zewnętrzny, należy użyć tożsamość domeny zarządzanej.
 
 > [!NOTE]
@@ -354,7 +354,7 @@ Aby uzyskać więcej informacji, zobacz [Blog zabezpieczeń programu SQL Server]
 
 ### <a name="sqlcmd"></a>sqlcmd
 
-Poniższe instrukcje, nawiązywanie połączenia przy użyciu narzędzia sqlcmd, która jest dostępna w wersji 13.1 [Centrum pobierania](http://go.microsoft.com/fwlink/?LinkID=825643).
+Poniższe instrukcje, nawiązywanie połączenia przy użyciu narzędzia sqlcmd, która jest dostępna w wersji 13.1 [Centrum pobierania](https://go.microsoft.com/fwlink/?LinkID=825643).
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  

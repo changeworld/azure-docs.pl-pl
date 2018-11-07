@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 604eb528ef33a95993aa5b6d3ff6eebb77936aa2
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 2b0377b8eb980fa07cbd8bad4a6a34a85f26464a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157942"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256752"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Uznanie autorstwa użycia klienta partnerów platformy Azure
 
@@ -145,7 +145,7 @@ Wszystkie rejestracje dla identyfikatorów GUID szablonu są wykonywane za pośr
 
 Po Dodaj identyfikator GUID szablonu lub agenta użytkownika, a następnie zarejestrować identyfikatora GUID w CPP, wszystkie wdrożenia są śledzone. 
 
-1. Dotyczą [portalu Azure Marketplace](http://aka.ms/listonazuremarketplace) i Uzyskaj dostęp do CPP.
+1. Dotyczą [portalu Azure Marketplace](https://aka.ms/listonazuremarketplace) i Uzyskaj dostęp do CPP.
 
    * Partnerzy są wymagane do [mieć profil w CPP](https://docs.microsoft.com/azure/marketplace/become-publisher). Możesz zachęcać do tworzenia listy oferty w portalu Azure Marketplace lub w usłudze AppSource.
    * Partnerzy mogą zarejestrować wiele identyfikatorów GUID.

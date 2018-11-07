@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-ms.openlocfilehash: 3fb246b1515e7a637e6cff6499bf324c3f80dd45
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cd3fdec0e50d64af28306034e6e1086e67526b7d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232193"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251057"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>Instalowanie aktualizacji Update 0.4 na rozwiązania StorSimple Virtual Array
 
@@ -29,7 +29,7 @@ W tym artykule opisano kroki wymagane do zainstalowania aktualizacji Update 0.4 
 
 Należy pamiętać, który, instalowania aktualizacji lub poprawki powoduje ponowne uruchomienie urządzenia. Biorąc pod uwagę, że macierz wirtualna StorSimple jest urządzenie o jednym węźle, jest przerwane wszelkie operacje We/Wy w toku i urządzenie, wystąpi Przestój. 
 
-Przed zastosowaniem aktualizacji zaleca się wykonanie woluminy lub udziały w tryb offline na hoście pierwszy i następnie urządzenia. W ten sposób możliwości uszkodzenie danych.
+Przed zastosowaniem aktualizacji zaleca się wykonanie woluminy lub udziały w tryb offline na hoście pierwszy i następnie urządzenia. Minimalizuje to ryzyko uszkodzenia danych.
 
 > [!IMPORTANT]
 > Jeśli korzystasz z aktualizacji 0.1 lub wersji oprogramowania, musi być instalacja aktualizacji 0.3 metodę poprawkę, za pomocą lokalnego Interfejsu w przeglądarce. Jeśli korzystasz z aktualizacji 0.2 lub nowszej, zaleca się, że możesz zainstalować aktualizacje za pośrednictwem witryny Azure portal.
@@ -48,7 +48,7 @@ Wykonaj następujące kroki, aby pobrać aktualizację oprogramowania z Wykazu u
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>Aby pobrać aktualizacji lub poprawki
 
-1. Uruchom program Internet Explorer i przejdź do [ http://catalog.update.microsoft.com ](http://catalog.update.microsoft.com).
+1. Uruchom program Internet Explorer i przejdź do [ http://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
 
 2. Jeśli po raz pierwszy używasz Wykazu usługi Microsoft Update na danym komputerze, po wyświetleniu monitu o zainstalowanie dodatku Wykazu usługi Microsoft Update kliknij pozycję **Zainstaluj**.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 37b02b657278782ea82f3eb129335793a0b5c98d
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: d96d75f4f2623476f7af4e6eea930c1f2c503e3a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414036"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226917"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Jak zresetować lokalne hasło systemu Linux na maszynach wirtualnych platformy Azure
 
@@ -104,6 +104,6 @@ Nie można zalogować się do maszyny Wirtualnej, a pojawi się komunikat inform
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Rozwiązywanie problemów z maszyny Wirtualnej platformy Azure, dołączając dysk systemu operacyjnego do innej maszyny Wirtualnej platformy Azure](http://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
+* [Rozwiązywanie problemów z maszyny Wirtualnej platformy Azure, dołączając dysk systemu operacyjnego do innej maszyny Wirtualnej platformy Azure](https://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
 
 * [Wiersza polecenia platformy Azure: Instrukcje Usuń i ponownie wdróż Maszynę wirtualną z wirtualnego dysku twardego](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)

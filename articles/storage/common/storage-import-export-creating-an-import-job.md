@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: c1effeba7e4b0750d5af3a5a82b755704379af68
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d7a9da4ac3560e67a6f7bc8b79a7c2dd37995d4d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021850"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258014"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Tworzenie zadania importu dla usługi Azure Import/Export
 
@@ -35,7 +35,7 @@ Tworzenie zadania importu dla usługi Microsoft Azure Import/Export, za pomocą 
 
 Kroki, aby przygotować dyski do zadania importu, są takie same, czy tworzysz jobvia portalu lub za pośrednictwem interfejsu API REST.
 
-Poniżej przedstawiono krótkie omówienie przygotowania dysku. Zapoznaj się [odwołanie do usługi Azure Import ExportTool](storage-import-export-tool-how-to-v1.md) pełne instrukcje. Narzędzie importu/eksportu platformy Azure można pobrać [tutaj](http://go.microsoft.com/fwlink/?LinkID=301900).
+Poniżej przedstawiono krótkie omówienie przygotowania dysku. Zapoznaj się [odwołanie do usługi Azure Import ExportTool](storage-import-export-tool-how-to-v1.md) pełne instrukcje. Narzędzie importu/eksportu platformy Azure można pobrać [tutaj](https://go.microsoft.com/fwlink/?LinkID=301900).
 
 Przygotowywanie dysku obejmuje:
 

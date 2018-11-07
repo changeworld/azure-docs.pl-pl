@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: a3cbbf887c4b7df57f2df89dfb8649967d6d9b1b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 9f02c6779b3561f6eea57512ecb27dd2fd451d90
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434759"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238152"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definiowanie strategii ochrony danych dla rozwiązania tożsamości hybrydowej
 W tym zadaniu należy zdefiniować strategię ochrony danych do hybrydowego tożsamości rozwiązania w celu spełnienia wymagań biznesowych zdefiniowaną w:
@@ -74,7 +74,7 @@ Jest to ważna część zarządzania zawartością, aby dowiedzieć się, kto ma
 * Dodawanie lub usuwanie licencji
 
 > [!NOTE]
-> Odczyt [zabezpieczeń platformy Microsoft Azure i zarządzanie dziennikiem inspekcji](http://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf) Aby dowiedzieć się więcej na temat możliwości rejestrowania na platformie Azure.
+> Odczyt [zabezpieczeń platformy Microsoft Azure i zarządzanie dziennikiem inspekcji](https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf) Aby dowiedzieć się więcej na temat możliwości rejestrowania na platformie Azure.
 > W zależności od sposobu odpowiedzi na pytania w [określić wymagania związane z zarządzaniem zawartością](plan-hybrid-identity-design-considerations-contentmgt-requirements.md), powinno być możliwe ustalenie, jak zawartości, które mają być zarządzane w danym rozwiązaniu tożsamości hybrydowej. Mimo że wszystkie opcje dostępne w tabeli 6 możliwość integracji z usługą Azure AD, należy zdefiniować, co jest bardziej odpowiednia dla potrzeb biznesowych.
 >
 >

@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 05/14/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: fe5bcce06ef02bae75bf9fdaf5702a99f485885c
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: e4aa4a87bec8f737405c90bb42bdb5fc60cb379a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42054270"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233001"
 ---
 # <a name="azure-active-directory-risk-events"></a>Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory
 
@@ -75,7 +75,7 @@ Ten typ zdarzenia o podwyższonym ryzyku identyfikuje pochodzące z komputera od
 
 Algorytm ignoruje oczywiste "wyniki fałszywie dodatnie" Współtworzenie warunki niemożliwych podróży, takich jak sieci VPN i lokalizacje, które regularnie używane przez innych użytkowników w organizacji. System ma wstępny okres uczenia wynoszący 14 dni, podczas których uczy się zachowanie logowania nowego użytkownika. 
 
-### <a name="sign-in-from-unfamiliar-locations"></a>Logowanie z nieznanych lokalizacji
+### <a name="sign-in-from-unfamiliar-locations"></a>Logowania z nieznanych lokalizacji
 
 Tego typu zdarzenia o podwyższonym ryzyku uwzględnia ostatnie logowania w lokalizacji (IP, szerokości / długości geograficznej i jego numer ASN) aby określić nowy / nieznanych lokalizacjach. System przechowuje informacje o powyższych lokalizacjach, używane przez użytkownika i uwzględnia te lokalizacje "znanych". Zdarzenia o podwyższonym ryzyku jest wyzwalany, gdy logowania wystąpi z lokalizacji, która nie jest już na liście zaznajomiony lokalizacji. System ma wstępny okres uczenia wynoszący 30 dni, w których nie Flaga jakichkolwiek nowych lokalizacji jako nieznanych lokalizacji. System ignoruje także logowania z dobrze znanych urządzeń i lokalizacji, które geograficznie znajdują się blisko znanej lokalizacji. 
 
@@ -145,7 +145,7 @@ Niemożliwa zmiana lokalizacji jest zwykle dobry wskaźnik, który haker był w 
 > [!TIP]
 > Można zmniejszyć liczbę zgłaszanych fałszywych alarmów dla tego typu zdarzenia o podwyższonym ryzyku, konfigurując [lokalizacje z nazwą](../active-directory-named-locations.md). 
 
-### <a name="sign-in-from-unfamiliar-locations"></a>Logowanie z nieznanych lokalizacji
+### <a name="sign-in-from-unfamiliar-locations"></a>Logowania z nieznanych lokalizacji
 
 Nieznanych lokalizacji można podać silne wskazanie, czy osoba atakująca ma możliwość korzystania z kradzieży tożsamości. Fałszywych alarmów może wystąpić, gdy użytkownik podróżuje, próbuje się nowego urządzenia lub jest przy użyciu nowej sieci VPN. W wyniku tych wyników fałszywie dodatnich, jest poziom ryzyka dla tego typu zdarzenia **średni**.
 
@@ -155,7 +155,7 @@ To zdarzenie o podwyższonym ryzyku identyfikuje adresów IP, nie urządzeń uż
 
 Firma Microsoft zaleca się z nim, a skanowanie wszystkich urządzeń użytkownika. Jest również możliwe, że jest zainfekowany urządzeń osobistych użytkownika lub jak wspomniano wcześniej, że ktoś inny używał zainfekowanego urządzenia z tego samego adresu IP jako użytkownik. Zainfekowanych urządzeń są często zainfekowanych przez złośliwe oprogramowanie, które nie zostały zidentyfikowane przez oprogramowanie antywirusowe i może również oznaczać jako płynność nawyków, które mogą być przyczyną infekują urządzenia.
 
-Aby uzyskać więcej informacji na temat adresów przed infekcjami złośliwym oprogramowaniem, zobacz [Malware Protection Center](http://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409).
+Aby uzyskać więcej informacji na temat adresów przed infekcjami złośliwym oprogramowaniem, zobacz [Malware Protection Center](https://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409).
 
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Logowania z adresów IP związanych z podejrzanymi działaniami

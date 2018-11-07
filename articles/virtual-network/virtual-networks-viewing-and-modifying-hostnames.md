@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 4a836e0f5e47d6ef91e11fd1a0076859b54ed8e6
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: afd5361774af3379dc0d4054509e318e8263dcc5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243031"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250190"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Wyświetlanie i modyfikowanie nazw hostów
 Aby umożliwić wystąpień roli przywoływanie według nazwy hosta, należy ustawić wartość dla nazwy hosta w pliku konfiguracji usługi dla każdej roli. Można to zrobić, dodając nazwę wybranego hosta do **vmName** atrybutu **roli** elementu. Wartość **vmName** atrybut jest używany jako podstawa dla nazwy hosta dla wszystkich wystąpień roli. Na przykład jeśli **vmName** jest *webrole* istnieją trzy wystąpienia tej roli, nazwy hosta wystąpień będą *webrole0*, *webrole1*, i *webrole2*. Nie należy określić nazwę hosta dla maszyn wirtualnych w pliku konfiguracji, ponieważ nazwa hosta dla maszyny wirtualnej jest wypełniana na podstawie nazwy maszyny wirtualnej. Aby uzyskać więcej informacji na temat konfigurowania usługi Microsoft Azure, zobacz [schematu konfiguracji usługi platformy Azure (cscfg pliku)](https://msdn.microsoft.com/library/azure/ee758710.aspx)
@@ -58,7 +58,7 @@ Można zmodyfikować nazwę hosta dla maszyny wirtualnej lub wystąpienia roli, 
 
 [Schemat konfiguracji usługi platformy Azure (cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710.aspx)
 
-[Schemat konfiguracji sieci wirtualnej platformy Azure](http://go.microsoft.com/fwlink/?LinkId=248093)
+[Schemat konfiguracji sieci wirtualnej platformy Azure](https://go.microsoft.com/fwlink/?LinkId=248093)
 
 [Określanie ustawień usługi DNS za pomocą plików konfiguracji sieci](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
 

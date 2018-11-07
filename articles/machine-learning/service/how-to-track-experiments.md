@@ -9,19 +9,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 054cd54827dc11e57f249a270542ff81ff670912
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: da92f59c4e25ec012cd9ad389c9afac410ba28e1
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649996"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219311"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Śledzenie eksperymentów i szkolenia metryk w usłudze Azure Machine Learning
 
 W usłudze Azure Machine Learning można śledzić eksperymenty i monitorować metryki, aby ulepszyć proces tworzenia modelu. W tym artykule poznasz różne sposoby dodawania rejestrowania skrypt szkolenia, porady przesyłanie eksperymentu za pomocą **start_logging** i **ScriptRunConfig**, jak sprawdzić postęp uruchomione zadania oraz jak wyświetlać wyniki przebiegu. 
 
 >[!NOTE]
-> Kod w tym artykule został przetestowany przy użyciu zestawu SDK usługi Azure Machine Learning wersji 0.168 
+> Kod w tym artykule został przetestowany przy użyciu zestawu SDK usługi Azure Machine Learning wersji 0.1.74 
 
 ## <a name="list-of-training-metrics"></a>Listy metryk szkolenia 
 
@@ -67,7 +67,6 @@ Przed dodaniem rejestrowania i przesyłanie eksperymentu, należy skonfigurować
 
   # make up an arbitrary name
   experiment_name = 'train-in-notebook'
-  exp = Experiment(workspace_object = ws, name = experiment_name)
   ```
   
 ## <a name="option-1-use-startlogging"></a>Opcja 1: Użycie start_logging
@@ -103,7 +102,8 @@ Poniższy przykład przygotowuje prosty model Ridge skryptu sklearn lokalnie w p
 2. Dodaj śledzenia eksperymentu przy użyciu zestawu SDK usługi Azure Machine Learning i przekazywanie utrwalonych modelu na uruchomienie rekordu eksperymentu. Poniższy kod dodaje znaczniki, dzienników i przekazuje plik modelu na uruchomienie eksperymentu.
 
   ```python
-  run = Run.start_logging(experiment = exp)
+  experiment = Experiment(workspace = ws, name = experiment_name)
+  run = experiment.start_logging()
   run.tag("Description","My first run!")
   run.log('alpha', 0.03)
   reg = Ridge(alpha = 0.03)
@@ -209,8 +209,8 @@ W tym przykładzie stanowi rozszerzenie podstawowego modelu Ridge skryptu sklear
   ```python
   from azureml.core import ScriptRunConfig
 
-  src = ScriptRunConfig(source_directory = script_folder, script = 'train.py', run_config = run_config_user_managed)
-  run = exp.submit(src)
+  src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
+  run = experiment.submit(src)
   ```
   
 ## <a name="view-run-details"></a>Wyświetl szczegóły przebiegu
@@ -248,11 +248,22 @@ Link do uruchomienia oferuje bezpośrednio do strony szczegółów przebiegu w w
   ![Zrzut ekranu przedstawiający szczegóły przebiegu w witrynie Azure portal](./media/how-to-track-experiments/run-details-page-web.PNG)
 
 Można również wyświetlić wszystkie dane wyjściowe lub dzienniki dla uruchomienia lub Pobierz migawkę eksperymentu, przesłania więc folderu eksperymentu można udostępniać innym osobom.
+### <a name="viewing-charts-in-run-details"></a>Wyświetlanie wykresów w szczegóły przebiegu
+
+Istnieją różne sposoby rejestrowania interfejsów API dla różnych typów rekordów metryk podczas przebiegu i wyświetlać je jako wykresy w witrynie Azure portal. 
+
+|Wartość zarejestrowane|Przykładowy kod| Wyświetl w portalu|
+|----|----|----|
+|Dziennik tablicę wartości liczbowych| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Wykres liniowy pojedynczej zmiennej|
+|Logowania jest pojedyncza wartość liczbowa o takiej samej nazwie metryki wielokrotnie używane (jak z poziomu pętli for)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Wykres liniowy pojedynczej zmiennej|
+|Zaloguj się wielokrotnie wiersz z 2 kolumny liczbowe|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Wykres liniowy z dwoma zmiennymi|
+|Tabela dziennika z 2 kolumny liczbowe|`run.log_table(name='Sine Wave', value=sines)`|Wykres liniowy z dwoma zmiennymi|
 
 ## <a name="example-notebooks"></a>Przykład notesów
 Następujące notesów zademonstrowania koncepcji w tym artykule:
 * [01.Getting-Started/01.Train-WITHIN-notebook/01.Train-WITHIN-notebook.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/01.train-within-notebook)
 * [01.Getting-Started/02.Train-on-Local/02.Train-on-Local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
+* [01.Getting-Started/06.Logging-API/06.Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/06.logging-api/06.logging-api.ipynb)
 
 Pobierz te notesy: [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.component: common
-ms.openlocfilehash: 91eb9c12a8913c0a96ee7c3133dc5f982c42cad7
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 25de4f28d7516f5c7830b24e4c999ceb855a7759
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025313"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242980"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Zarządzanie współbieżnością w usłudze Microsoft Azure Storage
 ## <a name="overview"></a>Przegląd
@@ -45,7 +45,7 @@ Zarys tego procesu jest następująca:
 4. Jeśli bieżąca wartość elementu ETag obiektu blob jest inna wersja niż elementu ETag w **If-Match** warunkowego nagłówka w żądaniu, usługa zwraca błąd 412 do klienta. Oznacza to, do klienta inny proces został zaktualizowany obiekt blob, ponieważ klient pobrano go.
 5. Jeśli bieżąca wartość elementu ETag obiektu blob jest tej samej wersji, co element ETag w **If-Match** warunkowego nagłówka w żądaniu usługi, wykonuje żądaną operację i aktualizuje bieżącą wartość elementu ETag obiektów blob, aby pokazać, że została utworzona Nowa wersja.  
 
-Poniższy fragment C# (przy użyciu biblioteki klienta usługi Storage 4.2.0) przedstawiono prosty przykład sposobu konstruowania **AccessCondition If-Match** na podstawie wartości element ETag, który jest dostępny z właściwości obiektu blob, który był wcześniej albo pobrać lub wstawiona. Następnie używa **AccessCondition** obiektu, kiedy aktualizuje obiekt blob: **AccessCondition** dodaje obiekt **If-Match** nagłówka żądania. Jeśli inny proces był aktualizowany obiekt blob, usługę blob service zwraca komunikat stanu HTTP 412 (niepowodzenie warunku wstępnego). Można pobrać pełny przykład: [Zarządzanie współbieżnością za pomocą usługi Azure Storage](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
+Poniższy fragment C# (przy użyciu biblioteki klienta usługi Storage 4.2.0) przedstawiono prosty przykład sposobu konstruowania **AccessCondition If-Match** na podstawie wartości element ETag, który jest dostępny z właściwości obiektu blob, który był wcześniej albo pobrać lub wstawiona. Następnie używa **AccessCondition** obiektu, kiedy aktualizuje obiekt blob: **AccessCondition** dodaje obiekt **If-Match** nagłówka żądania. Jeśli inny proces był aktualizowany obiekt blob, usługę blob service zwraca komunikat stanu HTTP 412 (niepowodzenie warunku wstępnego). Można pobrać pełny przykład: [Zarządzanie współbieżnością za pomocą usługi Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
 
 ```csharp
 // Retrieve the ETag from the newly created blob
@@ -80,7 +80,7 @@ catch (StorageException ex)
 }  
 ```
 
-Usługa magazynu obejmuje również obsługę dodatkowych nagłówków warunkowych takich jak **If-Modified-Since**, **If w niezmienionej postaci od** i **If-None-Match** także ich kombinacji. Aby uzyskać więcej informacji, zobacz [Określanie warunkowego nagłówki dla operacji usługi obiektów Blob](http://msdn.microsoft.com/library/azure/dd179371.aspx) w witrynie MSDN.  
+Usługa magazynu obejmuje również obsługę dodatkowych nagłówków warunkowych takich jak **If-Modified-Since**, **If w niezmienionej postaci od** i **If-None-Match** także ich kombinacji. Aby uzyskać więcej informacji, zobacz [Określanie warunkowego nagłówki dla operacji usługi obiektów Blob](https://msdn.microsoft.com/library/azure/dd179371.aspx) w witrynie MSDN.  
 
 Poniższa tabela zawiera podsumowanie operacji kontenera, które akceptowanie nagłówków warunkowych, takich jak **If-Match** w żądaniu, które zwracają wartość elementu ETag w odpowiedzi.  
 
@@ -122,11 +122,11 @@ W poniższej tabeli przedstawiono operacje obiektów blob, które akceptowanie n
 (*) Dzierżawienie obiektu Blob nie zmienia się tag ETag na obiekcie blob.  
 
 ### <a name="pessimistic-concurrency-for-blobs"></a>Współbieżność pesymistyczna dla obiektów blob
-Aby zablokować obiektu blob do wyłącznego użytku, mogą nabyć [dzierżawy](http://msdn.microsoft.com/library/azure/ee691972.aspx) na nim. Po użytkownik uzyskuje dzierżawę, można określić, jak długo mają być dzierżawy: może to być od 15 do 60 sekund lub nieskończone, który wynosi blokady na wyłączność. Można odnowić dzierżawę skończoną rozszerzać go, a można zwolnić wszystkie dzierżawy, po zakończeniu pracy z nim. Usługa blob automatycznie zwalnia skończoną dzierżaw, gdy wygasają.  
+Aby zablokować obiektu blob do wyłącznego użytku, mogą nabyć [dzierżawy](https://msdn.microsoft.com/library/azure/ee691972.aspx) na nim. Po użytkownik uzyskuje dzierżawę, można określić, jak długo mają być dzierżawy: może to być od 15 do 60 sekund lub nieskończone, który wynosi blokady na wyłączność. Można odnowić dzierżawę skończoną rozszerzać go, a można zwolnić wszystkie dzierżawy, po zakończeniu pracy z nim. Usługa blob automatycznie zwalnia skończoną dzierżaw, gdy wygasają.  
 
 Dzierżawy Włącz synchronizacji różne strategie są obsługiwane, w tym zapisu na wyłączność / udostępnione na wyłączność, odczytu, zapisu / wyłącznie odczytu i zapisu do udostępnionego / odczyt wyłącznie. W przypadku, gdy istnieje dzierżawa usługi storage wymusza wyłączne operacje zapisu (put, ustaw i operacje usuwania) jednak zapewnienie na wyłączność dla operacji odczytu wymaga deweloperowi upewnij się, że wszystkie aplikacje klienckie używanie Identyfikatora dzierżawy w danym momencie tylko jeden klient ma Identyfikator prawidłową dzierżawę. Operacje odczytu, które nie obejmują wynik identyfikator dzierżawy w udostępnionej odczytów.  
 
-Poniższy fragment kodu języka C# pokazano przykład Uzyskiwanie dzierżawy wyłączności przez 30 sekund na obiekcie blob, aktualizowania zawartości obiektu blob, a następnie zwolnić dzierżawy. Jeśli istnieje już prawidłową dzierżawę w obiekcie blob podczas próby uzyskania nową dzierżawę, usługę blob service zwraca wynik stanu "Konflikt HTTP (409)". Następujący fragment kodu używa **AccessCondition** obiektu do hermetyzacji informacje o dzierżawach, gdy kieruje żądanie do zaktualizowania obiektu blob w usłudze storage.  Można pobrać pełny przykład: [Zarządzanie współbieżnością za pomocą usługi Azure Storage](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
+Poniższy fragment kodu języka C# pokazano przykład Uzyskiwanie dzierżawy wyłączności przez 30 sekund na obiekcie blob, aktualizowania zawartości obiektu blob, a następnie zwolnić dzierżawy. Jeśli istnieje już prawidłową dzierżawę w obiekcie blob podczas próby uzyskania nową dzierżawę, usługę blob service zwraca wynik stanu "Konflikt HTTP (409)". Następujący fragment kodu używa **AccessCondition** obiektu do hermetyzacji informacje o dzierżawach, gdy kieruje żądanie do zaktualizowania obiektu blob w usłudze storage.  Można pobrać pełny przykład: [Zarządzanie współbieżnością za pomocą usługi Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -155,7 +155,7 @@ catch (StorageException ex)
 }  
 ```
 
-Jeśli spróbujesz operacji zapisu dla dzierżawy obiektu blob bez przekazywania identyfikator dzierżawy, żądanie kończy się błędem 412. Należy pamiętać, że jeśli wygaśnięcia dzierżawy przed wywołaniem **UploadText** metoda, ale nadal przekazywać identyfikator dzierżawy, żądanie nie powiedzie się także z **412** błędu. Aby uzyskać więcej informacji o zarządzaniu czas wygaśnięcia dzierżawy i dzierżawy identyfikatorów, zobacz [dzierżawienie obiektu Blob](http://msdn.microsoft.com/library/azure/ee691972.aspx) dokumentacji rozwiązania REST.  
+Jeśli spróbujesz operacji zapisu dla dzierżawy obiektu blob bez przekazywania identyfikator dzierżawy, żądanie kończy się błędem 412. Należy pamiętać, że jeśli wygaśnięcia dzierżawy przed wywołaniem **UploadText** metoda, ale nadal przekazywać identyfikator dzierżawy, żądanie nie powiedzie się także z **412** błędu. Aby uzyskać więcej informacji o zarządzaniu czas wygaśnięcia dzierżawy i dzierżawy identyfikatorów, zobacz [dzierżawienie obiektu Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx) dokumentacji rozwiązania REST.  
 
 Następujące operacje obiektów blob umożliwia zarządzanie Współbieżność pesymistyczna dzierżawy:  
 
@@ -191,9 +191,9 @@ Następujące operacje kontenerów umożliwia zarządzanie Współbieżność pe
 
 Aby uzyskać więcej informacji, zobacz:  
 
-* [Określanie warunkowego nagłówki dla operacji usługi obiektów Blob](http://msdn.microsoft.com/library/azure/dd179371.aspx)
-* [Dzierżawa kontenera](http://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Dzierżawienie obiektu Blob ](http://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Określanie warunkowego nagłówki dla operacji usługi obiektów Blob](https://msdn.microsoft.com/library/azure/dd179371.aspx)
+* [Dzierżawa kontenera](https://msdn.microsoft.com/library/azure/jj159103.aspx)
+* [Dzierżawienie obiektu Blob ](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-the-table-service"></a>Zarządzanie współbieżnością w usłudze Table Service
 Usługa table service używa optymistycznej współbieżności kontroli jako domyślne zachowanie podczas pracy z jednostkami, w przeciwieństwie do usługi obiektów blob, w którym jawnie należy wybrać do wykonywania kontroli optymistycznej współbieżności. Różnica między usługami tabel i obiektów blob jest, że można zarządzać tylko zachowanie współbieżności jednostek należy za pomocą usługi obiektów blob można zarządzać współbieżności kontenerów i obiektów blob.  
@@ -208,7 +208,7 @@ Używaj optymistycznej współbieżności i sprawdzanie, jeśli inny proces zmod
 
 Pamiętaj, że w przeciwieństwie do usługi blob service tabeli wymaga klienta do uwzględnienia **If-Match** nagłówek żądania aktualizacji. Istnieje możliwość wymuszenia bezwarunkowe aktualizacji (ostatni składnik zapisywania usługi wins strategii) i obejście kontrolach współbieżności, jeśli klient ustawia **If-Match** nagłówka znak symbolu wieloznacznego (*) w żądaniu.  
 
-Poniższy fragment kodu języka C# zawiera jednostki Klient, która wcześniej została utworzona lub pobrać o swój adres e-mail, aktualizowane. Początkowy wstawiania lub pobrać magazynów operacji wartość elementu ETag w obiekcie klienta, a ponieważ w przykładzie użyto tego samego wystąpienia obiektu podczas wykonywania operacji zamieniania, powoduje automatyczne wysyłanie wartość elementu ETag do usługi tabel, włączenie usługi Sprawdź, czy naruszenie współbieżności. Jeśli inny proces był aktualizowany jednostki w usłudze table storage, usługa zwraca komunikat stanu HTTP 412 (niepowodzenie warunku wstępnego).  Można pobrać pełny przykład: [Zarządzanie współbieżnością za pomocą usługi Azure Storage](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
+Poniższy fragment kodu języka C# zawiera jednostki Klient, która wcześniej została utworzona lub pobrać o swój adres e-mail, aktualizowane. Początkowy wstawiania lub pobrać magazynów operacji wartość elementu ETag w obiekcie klienta, a ponieważ w przykładzie użyto tego samego wystąpienia obiektu podczas wykonywania operacji zamieniania, powoduje automatyczne wysyłanie wartość elementu ETag do usługi tabel, włączenie usługi Sprawdź, czy naruszenie współbieżności. Jeśli inny proces był aktualizowany jednostki w usłudze table storage, usługa zwraca komunikat stanu HTTP 412 (niepowodzenie warunku wstępnego).  Można pobrać pełny przykład: [Zarządzanie współbieżnością za pomocą usługi Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 try
@@ -251,7 +251,7 @@ Ogólnie rzecz biorąc deweloperzy korzystający z tabel będą miały optymisty
 
 Aby uzyskać więcej informacji, zobacz:  
 
-* [Operacje na jednostkach](http://msdn.microsoft.com/library/azure/dd179375.aspx)  
+* [Operacje na jednostkach](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
 ## <a name="managing-concurrency-in-the-queue-service"></a>Zarządzanie współbieżnością w usłudze kolejki
 Jeden scenariusz, w których współbieżności jest istotna w usłudze kolejkowania jest, której wielu klientów są pobieranie komunikatów z kolejki. Po pobraniu wiadomość z kolejki odpowiedź zawiera komunikat i wartości potwierdzenia pop, która jest wymagana do usuwania komunikatu. Komunikat nie zostanie automatycznie usunięta z kolejki, ale po jej pobraniu, nie jest widoczny dla innych klientów dla interwału czasu określonym przez parametr visibilitytimeout. Klient, który pobiera komunikat powinien usunąć komunikat po przetworzeniu i przed upływem czasu określonego przez TimeNextVisible element odpowiedzi, który jest obliczany na podstawie wartości parametru visibilitytimeout. Wartość visibilitytimeout jest dodawana do czasu, jaką wiadomość zostanie pobrana do określenia wartości TimeNextVisible.  
@@ -260,8 +260,8 @@ Usługa kolejki nie jest obsługiwane optymistycznego lub pesymistycznego wspó�
 
 Aby uzyskać więcej informacji, zobacz:  
 
-* [Interfejs API REST usługi kolejek](http://msdn.microsoft.com/library/azure/dd179363.aspx)
-* [Pobieranie wiadomości](http://msdn.microsoft.com/library/azure/dd179474.aspx)  
+* [Interfejs API REST usługi kolejek](https://msdn.microsoft.com/library/azure/dd179363.aspx)
+* [Pobieranie wiadomości](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
 ## <a name="managing-concurrency-in-the-file-service"></a>Zarządzanie współbieżnością w usłudze plików
 Usługa plików jest możliwy przy użyciu dwóch różnych punktów końcowych protokołu — SMB i REST. Usługa REST nie jest obsługiwane optymistyczne blokowanie lub pesymistycznego blokowania i wszystkie aktualizacje będą się odbywać w strategii wins ostatni składnik zapisywania. Klienci SMB, które instalować udziałów plików można wykorzystać mechanizmy blokowania systemu plików do zarządzania dostępem do udostępnionych plików — w tym możliwość wykonywania pesymistycznego blokowania. Po otwarciu pliku klienta SMB określa zarówno do uzyskiwania dostępu do plików udziału i trybu. Ustawianie opcji dostępu do plików, "Write" lub "Odczytu/zapisu" wraz z trybu udziału plików "None" spowoduje plik jest zablokowany przez klienta protokołu SMB, przed zamknięciem pliku. Jeśli próba wykonania operacji REST w pliku, w której klient SMB ma plik jest zablokowany usługi REST zwróci stan kodu 409 (konflikt) z kodem błędu SharingViolation.  
@@ -270,19 +270,19 @@ Po otwarciu pliku do usunięcia klienta SMB oznacza pliku jako oczekujące usuni
 
 Aby uzyskać więcej informacji, zobacz:  
 
-* [Zarządzanie plikiem blokad](http://msdn.microsoft.com/library/azure/dn194265.aspx)  
+* [Zarządzanie plikiem blokad](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 
 ## <a name="summary-and-next-steps"></a>Podsumowanie i następne kroki
 Usługa Microsoft Azure Storage została zaprojektowana w celu zaspokojenia potrzeb najbardziej złożonych aplikacji online bez wymuszania deweloperów do naruszenia bezpieczeństwa lub zmusza założenia kluczy, takie jak współbieżność i wyjaśnienie pojęcia spójności danych nadchodzące podejmowane dla udzielone.  
 
 Dla aplikacji pełny przykład, do którego odwołuje się ten blog:  
 
-* [Zarządzanie współbieżnością za pomocą usługi Azure Storage — Przykładowa aplikacja](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
+* [Zarządzanie współbieżnością za pomocą usługi Azure Storage — Przykładowa aplikacja](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
 
 Aby uzyskać więcej informacji na temat usługi Azure Storage, zobacz:  
 
 * [Strona główna programu Microsoft Azure Storage](https://azure.microsoft.com/services/storage/)
 * [Wprowadzenie do usługi Azure Storage](storage-introduction.md)
 * Wprowadzenie do magazynu [Blob](../blobs/storage-dotnet-how-to-use-blobs.md), [tabeli](../../cosmos-db/table-storage-how-to-use-dotnet.md), [kolejek](../storage-dotnet-how-to-use-queues.md), i [plików](../storage-dotnet-how-to-use-files.md)
-* Architektura magazynu — [usługi Azure Storage: Usługa magazynu w chmurze o wysokiej dostępności przy użyciu silnej spójności](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+* Architektura magazynu — [usługi Azure Storage: Usługa magazynu w chmurze o wysokiej dostępności przy użyciu silnej spójności](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

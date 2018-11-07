@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: b45328425cff978377d5e05de487d42e786c063b
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1e18db960b9e07ae412d0c41c4544ef6bb35977c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345111"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261164"
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Zarządzanie usługą Azure Cosmos DB w Eksploratorze usługi Azure Storage
 
@@ -130,7 +130,7 @@ Po kliknięciu prawym przyciskiem myszy subskrypcji w okienku Eksploratora pojaw
 
 2. Wybierz wartość **Bez ograniczeń**, aby możliwe było określenie klucza partycji, a następnie kliknij przycisk **OK**, aby zakończyć.
 
-    Jeśli podczas tworzenia kolekcji jest używany klucz partycji, to po jej utworzeniu nie można zmienić wartości klucza partycji. Aby uzyskać informacje na temat ustawień klucza partycji, zobacz [Design for partitioning (Projektowanie pod kątem partycjonowania)](partition-data.md#designing-for-partitioning).
+    Jeśli podczas tworzenia kolekcji jest używany klucz partycji, to po jej utworzeniu nie można zmienić wartości klucza partycji.
 
     ![Klucz partycji](./media/storage-explorer/partitionkey.png)
 
@@ -308,7 +308,7 @@ Spróbuj wykonać poniższe sugestie:
 
 Jeśli te rozwiązania nie działają w Twoim przypadku, wyślij wiadomość e-mail do zespołu narzędzi dla deweloperów usługi Cosmos Azure DB ([cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)) zawierającą szczegółowe informacje o problemach w celu ich rozwiązania.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Obejrzyj ten film wideo, aby dowiedzieć się, jak używać usługi Azure Cosmos DB w Eksploratorze usługi Azure Storage: [Use Azure Cosmos DB in Azure Storage Explorer (Używanie usługi Azure Cosmos DB w Eksploratorze usługi Azure Storage)](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
 * Aby dowiedzieć się więcej o Eksploratorze usługi Storage i sposobach łączenia się z dodatkowymi usługami, zobacz [Wprowadzenie do Eksploratora usługi Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).

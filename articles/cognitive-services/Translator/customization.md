@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: d01a5a8a9a60bef315327721b9f55345bc3d1361
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: bbfffe948080c87feaa8c9f0a46ef9afd90eae96
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645064"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229683"
 ---
 # <a name="customize-your-text-translations"></a>Dostosuj tłumaczenia tekstu
 
@@ -37,7 +37,7 @@ Dostosowany system jest dostępna za pośrednictwem regularnych wywołania Micro
 
 Biorąc pod uwagę odpowiedniego typu i ilość danych szkoleniowych nie jest niczym niezwykłym, można oczekiwać zyski od 5 do 10 lub BELEU jeszcze więcej punktów jakości tłumaczenia przy użyciu niestandardowych w usłudze Translator.
 
-Więcej informacji na temat różnych poziomów dostosowywania oparte na dostępnych danych można znaleźć w [podręcznika użytkownika w usłudze Translator niestandardowe](http://aka.ms/CustomTranslatorDocs).
+Więcej informacji na temat różnych poziomów dostosowywania oparte na dostępnych danych można znaleźć w [podręcznika użytkownika w usłudze Translator niestandardowe](https://aka.ms/CustomTranslatorDocs).
 
 
 ## <a name="microsoft-translator-hub"></a>Centrum usługi Microsoft Translator
@@ -48,12 +48,12 @@ Starsze Centrum w usłudze Translator firmy Microsoft może służyć do transla
 
 |   | **Centrum** | **Niestandardowe w usłudze Translator**|
 |:-----|:----:|:----:|
-|Stan funkcji dostosowywania   | Ogólna dostępność  | Podgląd |
+|Stan funkcji dostosowywania   | Ogólna dostępność  | Wersja zapoznawcza |
 | Interfejs API tłumaczenia tekstu w wersji  | Tylko w wersji 2   | Tylko w wersji 3 |
-| Dostosowywanie SMT | Tak   | Nie |
-| Dostosowywanie NMT | Nie    | Tak |
-| Nowe ujednolicone dostosowywanie usług mowy | Nie    | Tak |
-| [Bez śledzenia](http://www.aka.ms/notrace) | Tak   | Tak |
+| Dostosowywanie SMT | Yes   | Nie |
+| Dostosowywanie NMT | Nie    | Yes |
+| Nowe ujednolicone dostosowywanie usług mowy | Nie    | Yes |
+| [Bez śledzenia](https://www.aka.ms/notrace) | Yes  | Yes |
 
 ## <a name="collaborative-translations-framework"></a>Framework współpracy tłumaczenia
 
@@ -65,4 +65,4 @@ Starsze Centrum w usłudze Translator firmy Microsoft może służyć do transla
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Skonfiguruj system dostosowane języka, przy użyciu niestandardowych w usłudze Translator](http://aka.ms/CustomTranslatorDocs)
+> [Skonfiguruj system dostosowane języka, przy użyciu niestandardowych w usłudze Translator](https://aka.ms/CustomTranslatorDocs)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 3066da9a492fc12dd8b333a089b8aabbbb647414
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 3f7b216be79be1307a5668d6686fd73a27ae5574
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421360"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237863"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Uruchamianie klastra oprogramowania Cassandra w systemie Linux na platformie Azure przy użyciu środowiska Node.js
 
@@ -49,7 +49,7 @@ Bazy danych Cassandra można wdrożyć w pojedynczym regionie platformy Azure lu
 ### <a name="single-region-deployment"></a>Wdrażanie jednego regionu
 Teraz uruchom z wdrożeniem pojedynczego regionu i zebrać wnioski dotyczące tworzenia modelu wielu regionów. Sieci wirtualne platformy Azure umożliwia utworzyć odizolowane podsieci, mogą zostać spełnione wymagania dotyczące zabezpieczeń sieci, które zostały wymienione powyżej.  Proces opisany w tworzenie wdrożenia jednego regionu używa Ubuntu 14.04 LTS i Cassandra 2.08. Jednak ten proces można łatwo przyjąć inne wariantów systemu Linux. Poniżej przedstawiono niektóre właściwości systemowych wdrożenia w pojedynczym regionie.  
 
-**Wysoka dostępność:** węzły bazy danych Cassandra przedstawionej na rysunku 1 są wdrażane dwa zestawy dostępności, aby węzły są rozproszone między wiele domen błędów w celu zapewnienia wysokiej dostępności. Maszyny wirtualne, oznaczony za pomocą każdego zestawu dostępności jest mapowany do 2 domen błędów. Platforma Azure używa pojęcia domeny błędów, zarządzanie nieplanowane przestoje (na przykład awarii sprzętu lub oprogramowania). Pojęcia domeny uaktualnień (na przykład host lub stosowanie poprawek systemu operacyjnego gościa bądź uaktualnień, uaktualnieniami aplikacji) jest używany do zarządzania zaplanowany czas przestoju. Zobacz [odzyskiwania po awarii i wysoka dostępność dla aplikacji platformy Azure](http://msdn.microsoft.com/library/dn251004.aspx) roli domen w domenach błędów i uaktualnień w celu osiągnięcia wysokiej dostępności.
+**Wysoka dostępność:** węzły bazy danych Cassandra przedstawionej na rysunku 1 są wdrażane dwa zestawy dostępności, aby węzły są rozproszone między wiele domen błędów w celu zapewnienia wysokiej dostępności. Maszyny wirtualne, oznaczony za pomocą każdego zestawu dostępności jest mapowany do 2 domen błędów. Platforma Azure używa pojęcia domeny błędów, zarządzanie nieplanowane przestoje (na przykład awarii sprzętu lub oprogramowania). Pojęcia domeny uaktualnień (na przykład host lub stosowanie poprawek systemu operacyjnego gościa bądź uaktualnień, uaktualnieniami aplikacji) jest używany do zarządzania zaplanowany czas przestoju. Zobacz [odzyskiwania po awarii i wysoka dostępność dla aplikacji platformy Azure](https://msdn.microsoft.com/library/dn251004.aspx) roli domen w domenach błędów i uaktualnień w celu osiągnięcia wysokiej dostępności.
 
 ![Wdrażanie jednego regionu](./media/cassandra-nodejs/cassandra-linux1.png)
 

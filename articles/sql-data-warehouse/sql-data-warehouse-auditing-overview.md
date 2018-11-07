@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 18a6234eb56902625fdcc8f150a41b7551d229cc
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 199095c3cffc8df7f9755f1f2c4bb5a1acba3748
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318541"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260384"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Przeprowadzanie inspekcji w usłudze Azure SQL Data Warehouse
 
@@ -150,7 +150,7 @@ Istnieje kilka metod, których można użyć, aby wyświetlić dzienniki inspekc
 ### <a name="database-level-policy-audit-logs"></a>Dzienniki inspekcji zasad na poziomie bazy danych
 Dzienniki inspekcji na poziomie bazy danych są agregowane w kolekcji Store tabel z **SQLDBAuditLogs** prefiksu w ramach konta usługi Azure storage, wybrana w Instalatorze. Możesz wyświetlić pliki dziennika przy użyciu narzędzia, takie jak [Eksploratora usługi Azure Storage](http://azurestorageexplorer.codeplex.com).
 
-Szablon raportu wstępnie skonfigurowany pulpit nawigacyjny jest dostępny jako [arkusz kalkulacyjny programu Excel do pobrania](http://go.microsoft.com/fwlink/?LinkId=403540) ułatwiające szybsze analizowanie danych dzienników. Aby użyć szablonu w dziennikach inspekcji, potrzebujesz programu Excel 2013 lub nowszy i dodatku Power Query, który można [pobrać tutaj](http://www.microsoft.com/download/details.aspx?id=39379).
+Szablon raportu wstępnie skonfigurowany pulpit nawigacyjny jest dostępny jako [arkusz kalkulacyjny programu Excel do pobrania](https://go.microsoft.com/fwlink/?LinkId=403540) ułatwiające szybsze analizowanie danych dzienników. Aby użyć szablonu w dziennikach inspekcji, potrzebujesz programu Excel 2013 lub nowszy i dodatku Power Query, który można [pobrać tutaj](https://www.microsoft.com/download/details.aspx?id=39379).
 
 Szablon w nim fikcyjnej przykładowe dane, i możesz skonfigurować dodatku Power Query do importowania dziennika inspekcji bezpośrednio z konta usługi Azure storage.
 

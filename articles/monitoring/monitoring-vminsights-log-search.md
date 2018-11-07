@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 2a965825bed45362bdb43b2ce88b101d2041026d
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 6558a888ded1c8657bef6aba886a6f7d14cb554a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914264"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254540"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Tworzenie zapytań względem dzienników z usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
-Usługa Azure Monitor dla maszyn wirtualnych zbiera metryki wydajności i połączenia, komputera i przetwarzanie magazynu danych i informacji o stanie kondycji i przekazuje go do magazynu danych usługi Log Analytics w usłudze Azure Monitor.  Dane te są dostępne dla [wyszukiwania](../log-analytics/log-analytics-log-search.md) w usłudze Log Analytics. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
+Usługa Azure Monitor dla maszyn wirtualnych zbiera metryki wydajności i połączenia, komputera i przetwarzanie magazynu danych i informacji o stanie kondycji i przekazuje go do magazynu danych usługi Log Analytics w usłudze Azure Monitor.  Dane te są dostępne dla [wyszukiwania](../log-analytics/log-analytics-queries.md) w usłudze Log Analytics. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
 
 ## <a name="map-records"></a>Rekordy mapy
 Jeden rekord jest generowany na godzinę dla każdego komputera unikatowy i procesów, oprócz rekordów, które są generowane, gdy proces lub komputer uruchamia lub jest uruchomiona do usługi Azure Monitor dla funkcji mapy maszyn wirtualnych. Te rekordy mają właściwości podane w poniższych tabelach. Pola i wartości w zdarzeniach ServiceMapComputer_CL są mapowane na pola zasób maszynę w interfejsie API ServiceMap usługi Azure Resource Manager. Pola i wartości w zdarzeniach ServiceMapProcess_CL są mapowane na pola zasobów procesu w interfejsie API ServiceMap usługi Azure Resource Manager. Pole ResourceName_s zgodne pola Nazwa odpowiedniego zasobu usługi Resource Manager. 

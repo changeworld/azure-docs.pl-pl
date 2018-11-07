@@ -1,6 +1,6 @@
 ---
-title: Tworzenie obrazu niezarządzane uogólniony maszyny wirtualnej na platformie Azure | Dokumentacja firmy Microsoft
-description: Utwórz obraz unmanged uogólniony maszyny Wirtualnej systemu Windows na potrzeby tworzenia wielu kopii maszyny wirtualnej na platformie Azure.
+title: Tworzenie obrazu niezarządzanego uogólnionej maszyny wirtualnej na platformie Azure | Dokumentacja firmy Microsoft
+description: Utwórz obraz unmanged uogólnionej maszyny Wirtualnej Windows służące do tworzenia wielu kopii maszyny Wirtualnej na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -16,57 +16,57 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: b416acd9a2a3b03502b7eca11eade9dbd56f3afe
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 63fdf9cf24c7e412533f15ff0701bc8fb481602a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072053"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240617"
 ---
-# <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Jak utworzyć niezarządzane obrazu maszyny Wirtualnej z maszyny Wirtualnej platformy Azure
+# <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Sposób tworzenia obrazu maszyny Wirtualnej niezarządzanej maszyny wirtualnej platformy Azure
 
-W tym artykule omówiono używanie kont magazynu. Zalecane jest użycie dysków zarządzanych i zarządzanych obrazów zamiast konta magazynu. Aby uzyskać więcej informacji, zobacz [Przechwyć obraz zarządzanych uogólniony maszyny wirtualnej na platformie Azure](capture-image-resource.md).
+W tym artykule opisano użycie kont magazynu. Firma Microsoft zaleca używanie dysków zarządzanych i obrazy zarządzanych zamiast konta magazynu. Aby uzyskać więcej informacji, zobacz [przechwytywania obrazu zarządzanego uogólnionej maszyny Wirtualnej na platformie Azure](capture-image-resource.md).
 
-W tym artykule przedstawiono sposób tworzenia obrazu uogólniony maszyny Wirtualnej platformy Azure przy użyciu programu Azure PowerShell przy użyciu konta magazynu. Obraz można następnie używać do tworzenia inną maszynę Wirtualną. Obraz zawiera dysk systemu operacyjnego i dysków z danymi, które są dołączone do maszyny wirtualnej. Obraz nie zawiera zasobów sieci wirtualnej, więc należy skonfigurować te zasoby, podczas tworzenia nowej maszyny Wirtualnej. 
+W tym artykule pokazano, jak używać programu Azure PowerShell do tworzenia obrazu uogólnionej maszyny Wirtualnej platformy Azure przy użyciu konta magazynu. Obraz, który umożliwia następnie utworzyć inną maszynę Wirtualną. Obraz zawiera dysk systemu operacyjnego i dysków z danymi, które są dołączone do maszyny wirtualnej. Obraz, który nie zawiera zasoby sieci wirtualnej, dlatego należy skonfigurować te zasoby podczas tworzenia nowej maszyny Wirtualnej. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Musisz mieć wersję programu Azure PowerShell 1.0.x lub nowszej. Jeśli jeszcze nie zainstalowano programu PowerShell, przeczytaj [jak instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview) kroki instalacji.
+Musisz mieć wersję programu Azure PowerShell 1.0.x lub nowszej zainstalowany. Jeśli jeszcze nie zainstalowano programu PowerShell, zapoznaj się z [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) dla czynności instalacyjne.
 
-## <a name="generalize-the-vm"></a>Generalize maszyny Wirtualnej 
-W tej sekcji przedstawiono sposób generalize maszyny wirtualnej systemu Windows do użycia jako obraz. Uogólnianie maszyny Wirtualnej powoduje usunięcie wszystkich informacji osobowych konta, między innymi i przygotowuje komputer do użycia jako obraz. Aby uzyskać więcej informacji o narzędziu Sysprep, zobacz [sposobu użycia programu Sysprep: wprowadzenie](http://technet.microsoft.com/library/bb457073.aspx).
+## <a name="generalize-the-vm"></a>Uogólnianie maszyny Wirtualnej 
+W tej sekcji pokazano, jak uogólnić maszyny wirtualnej Windows do użycia jako obraz. Uogólnianie maszyny Wirtualnej powoduje usunięcie wszystkich danych konta osobistego, między innymi i przygotowuje maszynę do użycia jako obraz. Aby uzyskać więcej informacji na temat narzędzia Sysprep, zobacz [Używanie narzędzia Sysprep: wprowadzenie](https://technet.microsoft.com/library/bb457073.aspx).
 
-Upewnij się, że ról serwera uruchomionych na komputerze są obsługiwane przez program Sysprep. Aby uzyskać więcej informacji, zobacz [Obsługa programu Sysprep dla ról serwera](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+Upewnij się, że role serwera uruchomionego na maszynie są obsługiwane przez program Sysprep. Aby uzyskać więcej informacji, zobacz [Obsługa narzędzia Sysprep dla ról serwera](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
-> Podczas przekazywania dysk VHD do platformy Azure po raz pierwszy, upewnij się, że masz [przygotować maszyny Wirtualnej](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) przed uruchomieniem programu Sysprep. 
+> Podczas przekazywania wirtualnego dysku twardego na platformie Azure po raz pierwszy, upewnij się, że masz [przygotować maszyny Wirtualnej](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) przed uruchomieniem programu Sysprep. 
 > 
 > 
 
-Można również generalize maszyny Wirtualnej systemu Linux przy użyciu `sudo waagent -deprovision+user` i przechwytywanie maszyny Wirtualnej za pomocą programu PowerShell. Aby dowiedzieć się, jak przechwycić Maszynę wirtualną za pomocą interfejsu wiersza polecenia, zobacz [generalize i przechwytywanie maszyny wirtualnej systemu Linux przy użyciu interfejsu wiersza polecenia Azure ](../linux/capture-image.md).
+Możesz również uogólnić maszyny Wirtualnej systemu Linux przy użyciu `sudo waagent -deprovision+user` i przechwytywanie maszyny Wirtualnej za pomocą programu PowerShell. Aby dowiedzieć się, jak przechwycić Maszynę wirtualną przy użyciu interfejsu wiersza polecenia, zobacz [jak Uogólnij i Przechwyć maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure ](../linux/capture-image.md).
 
 
-1. Zaloguj się do maszyny wirtualnej systemu Windows.
-2. Otwórz okno Wiersz polecenia jako administrator. Zmień katalog na **%windir%\system32\sysprep**, a następnie uruchom `sysprep.exe`.
-3. W **narzędzie przygotowania systemu** okno dialogowe, wybierz opcję **wprowadź systemu Out-of-Box Experience (OOBE)** i upewnij się, że **Generalize** pole wyboru jest zaznaczone.
-4. W **opcje zamykania**, wybierz pozycję **zamknięcia**.
+1. Zaloguj się do maszyny wirtualnej Windows.
+2. Otwórz okno wiersza polecenia jako administrator. Zmień katalog na **%windir%\system32\sysprep**, a następnie uruchom `sysprep.exe`.
+3. W oknie dialogowym **Narzędzie przygotowywania systemu** wybierz pozycję **Włącz systemowy tryb OOBE** i upewnij się, że pole wyboru **Uogólnij** jest zaznaczone.
+4. W **opcje zamykania**, wybierz opcję **zamknięcia**.
 5. Kliknij przycisk **OK**.
    
     ![Uruchom program Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-6. Po zakończeniu działania programu Sysprep, zamyka maszyny wirtualnej. 
+6. Gdy narzędzie Sysprep zakończy działanie, maszyna wirtualna zostanie wyłączona. 
 
 > [!IMPORTANT]
-> Nie uruchamiaj ponownie maszynę Wirtualną, aż wszystko będzie gotowe, przekazywanie wirtualnego dysku twardego na platformie Azure lub Tworzenie obrazu z maszyny Wirtualnej. Gdy maszyna wirtualna przypadkowo pobiera ponownie uruchomione, uruchom program Sysprep do uogólnienia go ponownie.
+> Nie uruchamiaj ponownie maszynę Wirtualną, aż wszystko będzie gotowe przekazanie dysku VHD na platformie Azure lub utworzenie obrazu z maszyny Wirtualnej. Jeśli maszyna wirtualna przypadkowo zostanie ponownie uruchomiony, uruchom program Sysprep do uogólnienia go ponownie.
 > 
 > 
 
 ## <a name="log-in-to-azure-powershell"></a>Logowanie do programu Azure PowerShell
-1. Otwórz program Azure PowerShell i zaloguj się do konta platformy Azure.
+1. Otwórz program PowerShell platformy Azure i zaloguj się do konta platformy Azure.
    
     ```powershell
     Connect-AzureRmAccount
     ```
    
-    Otwiera okno podręczne wprowadzenie poświadczeń konta platformy Azure.
+    Wprowadzenie poświadczeń konta platformy Azure zostanie otwarte okno podręczne.
 2. Pobierz identyfikatory subskrypcji dla dostępnych subskrypcji.
    
     ```powershell
@@ -78,25 +78,25 @@ Można również generalize maszyny Wirtualnej systemu Linux przy użyciu `sudo 
     Select-AzureRmSubscription -SubscriptionId "<subscriptionID>"
     ```
 
-## <a name="deallocate-the-vm-and-set-the-state-to-generalized"></a>Cofnięcie przydziału maszyny Wirtualnej i ustawić stan na uogólniony
+## <a name="deallocate-the-vm-and-set-the-state-to-generalized"></a>Cofanie przydziału maszyny Wirtualnej i ustawić stan uogólniony
 
 > [!IMPORTANT] 
-> Nie można dodać, edytować lub usuwanie tagów z maszyny Wirtualnej, gdy jest oznaczony jako uogólniony. Jeśli chcesz dodać tag do maszyny Wirtualnej, upewnij się, że Dodaj tagi przed oznaczając je jako uogólniony.
+> Nie można dodać, edytować ani usuwać znaczników z maszyny Wirtualnej z systemem, gdy jest ona oznaczona jako uogólniona. Jeśli chcesz dodać tag do maszyny Wirtualnej, upewnij się, że możesz dodawać znaczników, zanim oznaczysz je jako uogólniona.
 > 
 
-1. Cofnięcie przydziału zasobów maszyny Wirtualnej.
+1. Cofnij przydział zasobów maszyny Wirtualnej.
    
     ```powershell
     Stop-AzureRmVM -ResourceGroupName <resourceGroup> -Name <vmName>
     ```
    
-    *Stan* dla maszyny Wirtualnej na platformie Azure portal zmieni się z **zatrzymane** do **zatrzymane (cofnięciu przydziału)**.
-2. Ustaw stan maszyny wirtualnej na **Uogólniono**. 
+    *Stan* dla maszyny Wirtualnej w witrynie Azure portal zmieni się z **zatrzymane** do **zatrzymane (cofnięty przydział)**.
+2. Ustaw stan maszyny wirtualnej do **Uogólniono**. 
    
     ```powershell
     Set-AzureRmVm -ResourceGroupName <resourceGroup> -Name <vmName> -Generalized
     ```
-3. Sprawdź stan maszyny Wirtualnej. **OSState/uogólniony** sekcji dla maszyny Wirtualnej powinny mieć **DisplayStatus** ustawioną **uogólniona maszyna wirtualna**.  
+3. Sprawdź stan maszyny Wirtualnej. **OSState/uogólniony** sekcji dla maszyny Wirtualnej powinien mieć **DisplayStatus** równa **uogólniona maszyna wirtualna**.  
    
     ```powershell
     $vm = Get-AzureRmVM -ResourceGroupName <resourceGroup> -Name <vmName> -Status
@@ -105,7 +105,7 @@ Można również generalize maszyny Wirtualnej systemu Linux przy użyciu `sudo 
 
 ## <a name="create-the-image"></a>Tworzenie obrazu
 
-Tworzenie obrazu niezarządzane maszyny wirtualnej w docelowy kontener magazynu przy użyciu tego polecenia. Obraz jest tworzony w tym samym kontem magazynu oryginalna maszyna wirtualna. `-Path` Parametr zapisuje kopię szablonu JSON dla źródłowej maszyny Wirtualnej na komputerze lokalnym. `-DestinationContainerName` Parametru jest nazwa kontenera, w którym chcesz przechowywać obrazów. Jeśli kontener nie istnieje, jest tworzony automatycznie.
+Tworzenie obrazu niezarządzanego maszyny wirtualnej w docelowy kontener magazynu za pomocą tego polecenia. Obraz, który jest tworzony w tym samym koncie magazynu, ponieważ oryginalna maszyna wirtualna. `-Path` Parametr zapisuje kopię szablonu JSON dla źródłowej maszyny Wirtualnej na komputerze lokalnym. `-DestinationContainerName` Parametr jest nazwą kontenera, w którym chcesz przechowywać swoje obrazy. Jeśli kontener nie istnieje, zostanie utworzony automatycznie.
    
 ```powershell
 Save-AzureRmVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
@@ -113,17 +113,17 @@ Save-AzureRmVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
     -Path <C:\local\Filepath\Filename.json>
 ```
    
-Możesz uzyskać adres URL obrazu z szablonu pliku JSON. Przejdź do **zasobów** > **storageProfile** > **osDisk** > **obrazu**  >  **uri** sekcji pełną ścieżkę obrazu. Adres URL obrazu, wygląda następująco: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`.
+Adres URL obrazu można uzyskać za pomocą szablonu pliku JSON. Przejdź do **zasobów** > **storageProfile** > **osDisk** > **obraz**  >  **uri** sekcji pełną ścieżkę obrazu. Adres URL obrazu wygląda następująco: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`.
    
-Można również sprawdzić identyfikatora URI w portalu. Obraz jest kopiowany do kontenera o nazwie **systemu** na koncie magazynu. 
+Można również sprawdzić identyfikatora URI w portalu. Obraz, który jest kopiowany do kontenera o nazwie **systemu** na koncie magazynu. 
 
-## <a name="create-a-vm-from-the-image"></a>Utwórz maszynę Wirtualną z obrazu
+## <a name="create-a-vm-from-the-image"></a>Utwórz Maszynę wirtualną z obrazu
 
-Teraz możesz utworzyć przynajmniej jednej maszyny wirtualnej z obrazu niezarządzane.
+Teraz możesz utworzyć co najmniej jedną maszynę wirtualną z obrazu niezarządzanego.
 
-### <a name="set-the-uri-of-the-vhd"></a>Ustaw identyfikator URI dysku VHD
+### <a name="set-the-uri-of-the-vhd"></a>Ustaw identyfikator URI wirtualnego dysku twardego
 
-Identyfikator URI dysku VHD do użycia ma format: https://**mojekontomagazynu**.blob.core.windows.net/**mojkontener**/**MyVhdName**VHD. W tym przykładzie wirtualnego dysku twardego o nazwie **myVHD** jest na koncie magazynu **mojekontomagazynu** w kontenerze **mojkontener**.
+Identyfikator URI wirtualnego dysku twardego do użycia jest w formacie: https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**VHD. W tym przykładzie wirtualnego dysku twardego o nazwie **myVHD** jest na koncie magazynu **mystorageaccount** w kontenerze **mycontainer**.
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -131,16 +131,16 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
 
 
 ### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
-Utwórz sieć wirtualną i podsieć [sieci wirtualnej](../../virtual-network/virtual-networks-overview.md).
+Tworzenie sieci wirtualnej i podsieci [sieci wirtualnej](../../virtual-network/virtual-networks-overview.md).
 
-1. Utwórz podsieć. W poniższym przykładzie tworzone podsieci o nazwie **mySubnet** w grupie zasobów **myResourceGroup** z prefiksem adresu o **10.0.0.0/24**.  
+1. Utwórz podsieć. Poniższy przykład tworzy podsieć o nazwie **mySubnet** w grupie zasobów **myResourceGroup** z prefiksem adresu **10.0.0.0/24**.  
    
     ```powershell
     $rgName = "myResourceGroup"
     $subnetName = "mySubnet"
     $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
     ```
-2. Utwórz sieć wirtualną. Poniższy przykład tworzy sieć wirtualną o nazwie **myVnet** w **zachodnie stany USA** lokalizacji z prefiksem adresu o **10.0.0.0/16**.  
+2. Utwórz sieć wirtualną. Poniższy przykład tworzy sieć wirtualną o nazwie **myVnet** w **zachodnie stany USA** lokalizacji z prefiksem adresu **10.0.0.0/16**.  
    
     ```powershell
     $location = "West US"
@@ -152,14 +152,14 @@ Utwórz sieć wirtualną i podsieć [sieci wirtualnej](../../virtual-network/vir
 ### <a name="create-a-public-ip-address-and-network-interface"></a>Tworzenie publicznego adresu IP adres i interfejsu sieciowego
 Aby umożliwić komunikację z maszyną wirtualną w sieci wirtualnej, potrzebujesz [publicznego adresu IP](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) i interfejsu sieciowego.
 
-1. Utwórz publiczny adres IP. W tym przykładzie jest tworzony publiczny adres IP o nazwie **myPip**. 
+1. Tworzenie publicznego adresu IP. W tym przykładzie tworzy publiczny adres IP o nazwie **myPip**. 
    
     ```powershell
     $ipName = "myPip"
     $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
-2. Utwórz kartę sieciową. W tym przykładzie jest tworzony karty Sieciowej o nazwie **myNic**. 
+2. Utwórz kartę sieciową. W tym przykładzie tworzy kartę Sieciową o nazwie **myNic**. 
    
     ```powershell
     $nicName = "myNic"
@@ -167,10 +167,10 @@ Aby umożliwić komunikację z maszyną wirtualną w sieci wirtualnej, potrzebuj
         -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
     ```
 
-### <a name="create-the-network-security-group-and-an-rdp-rule"></a>Tworzenie grupy zabezpieczeń sieci i reguły protokołu RDP
-Aby móc zalogować się do maszyny Wirtualnej za pomocą protokołu RDP, musisz mieć regułę zabezpieczeń, która udziela dostępu RDP do portu 3389. 
+### <a name="create-the-network-security-group-and-an-rdp-rule"></a>Tworzenie sieciowej grupy zabezpieczeń i regułę protokołu RDP
+Aby można było zalogować się do maszyny Wirtualnej przy użyciu protokołu RDP, musisz mieć reguły zabezpieczeń, która umożliwia dostęp do portu 3389 protokołu RDP. 
 
-W tym przykładzie tworzy grupy NSG o nazwie **myNsg** zawierający regułę o nazwie **myRdpRule** za pośrednictwem portu 3389 która zezwala na ruch RDP. Aby uzyskać więcej informacji na temat grup NSG, zobacz [Otwieranie portów dla maszyny Wirtualnej na platformie Azure przy użyciu programu PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ten przykład tworzy sieciową grupę zabezpieczeń o nazwie **myNsg** zawierający regułę o nazwie **myRdpRule** która zezwala na ruch RDP przez port 3389. Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [Otwieranie portów dla maszyny Wirtualnej na platformie Azure przy użyciu programu PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ```powershell
 $nsgName = "myNsg"
@@ -193,7 +193,7 @@ $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ### <a name="create-the-vm"></a>Tworzenie maszyny wirtualnej
-Następujące środowiska PowerShell kończy konfiguracji maszyn wirtualnych i używa niezarządzanej obrazu jako źródło dla nowej instalacji.
+Następujące polecenie programu PowerShell ukończenia konfiguracji maszyny wirtualnej i używa obrazu niezarządzanego jako źródło dla nowej instalacji.
 
 </br>
 
@@ -251,7 +251,7 @@ Następujące środowiska PowerShell kończy konfiguracji maszyn wirtualnych i u
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Sprawdź, czy maszyna wirtualna została utworzona
-Po zakończeniu powinien zostać wyświetlony nowo utworzony maszyny Wirtualnej w ramach [portalu Azure](https://portal.azure.com) w obszarze **Przeglądaj** > **maszyn wirtualnych**, lub za pomocą następujących poleceń programu PowerShell:
+Po zakończeniu powinien zostać wyświetlony nowo utworzonej maszyny Wirtualnej w [witryny Azure portal](https://portal.azure.com) w obszarze **Przeglądaj** > **maszyn wirtualnych**, lub używając następujące polecenie programu PowerShell polecenia:
 
 ```powershell
     $vmList = Get-AzureRmVM -ResourceGroupName $rgName
@@ -259,6 +259,6 @@ Po zakończeniu powinien zostać wyświetlony nowo utworzony maszyny Wirtualnej 
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby zarządzać nową maszynę wirtualną w taki sposób, z programu Azure PowerShell, zobacz [zarządzania maszynami wirtualnymi przy użyciu usługi Azure Resource Manager i programu PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Aby zarządzać swoją nową maszyną wirtualną przy użyciu programu Azure PowerShell, zobacz [Zarządzanie maszynami wirtualnymi przy użyciu usługi Azure Resource Manager i programu PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 

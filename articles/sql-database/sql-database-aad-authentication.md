@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 9d4ede9aee5261903a814cc2f29c788a2ba377f3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 86e60f339af3d6d467b68d5d3b27d77a9861add1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869773"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244083"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Użyj uwierzytelniania usługi Azure Active Directory do uwierzytelniania przy użyciu języka SQL
 
@@ -35,7 +35,7 @@ Przy użyciu uwierzytelniania usługi Azure AD można centralnie zarządzać to�
 - Je wyeliminować zapisywania haseł, włączając zintegrowane uwierzytelnianie Windows i inne formy uwierzytelniania obsługiwane przez usługę Azure Active Directory.
 - Uwierzytelnianie usługi Azure AD do uwierzytelniania tożsamości na poziomie bazy danych korzysta z użytkowników zawartej bazy danych.
 - Usługa Azure AD obsługuje tokenów uwierzytelniania dla aplikacji, do łączenia z bazą danych SQL.
-- Uwierzytelnianie usługi Azure AD obsługuje lokalnej usługi Azure Active Directory bez synchronizacji domeny usług AD FS (domeny federacyjnej) lub macierzystym użytkownika i hasło uwierzytelniania.  
+- Uwierzytelnianie usługi Azure AD obsługuje lokalnej usługi Azure Active Directory bez synchronizacji domeny usług AD FS (domeny federacyjnej) lub macierzystym użytkownika i hasło uwierzytelniania.  
 - Usługa Azure AD obsługuje połączenia z SQL Server Management Studio, które używają uniwersalne uwierzytelnianie usługi Active Directory, w tym usługi Multi-Factor Authentication (MFA).  Uwierzytelnianie wieloskładnikowe obejmuje silne uwierzytelnianie z szerokim zakresem prostych opcji weryfikacji — połączenie telefoniczne, wiadomość SMS, kart inteligentnych przy użyciu numeru pin lub powiadomienie aplikacji mobilnej. Aby uzyskać więcej informacji, zobacz [SSMS Obsługa usługi Azure AD MFA przy użyciu bazy danych SQL Database i SQL Data Warehouse](sql-database-ssms-mfa-authentication.md).  
 
 > [!NOTE]  
@@ -118,10 +118,10 @@ Uwierzytelnianie usługi Azure Active Directory obsługuje następujące metody 
 - Firma Microsoft zaleca ustawienie limitu czasu połączenia do 30 sekund.   
 - SQL Server 2016 Management Studio i SQL Server Data Tools dla programu Visual Studio 2015 (wersja 14.0.60311.1April 2016 lub nowszej) obsługuje uwierzytelnianie usługi Azure Active Directory. (Uwierzytelnianie usługi azure AD jest obsługiwany przez **.NET Framework Data Provider Pro SqlServer**; co najmniej wersji .NET Framework 4.6). W związku z tym najnowszych wersji tych narzędzi i aplikacji warstwy danych (DAC i. BACPAC) można użyć uwierzytelniania usługi Azure AD.   
 - [ODBC Driver 13.1 wersji](https://www.microsoft.com/download/details.aspx?id=53339) obsługuje uwierzytelnianie za pomocą usługi Azure Active Directory, jednak `bcp.exe` nie można nawiązać połączenia przy użyciu uwierzytelniania usługi Azure Active Directory, ponieważ używa starszej dostawcę ODBC.   
-- `sqlcmd` obsługuje usługi Azure Active Directory authentication rozpoczynający się od wersji 13.1 pochodzących [Centrum pobierania](http://go.microsoft.com/fwlink/?LinkID=825643).
-- SQL Server Data Tools dla programu Visual Studio 2015 wymaga co najmniej wersji kwietnia 2016 r. Data Tools (wersja 14.0.60311.1). Obecnie użytkownicy usługi Azure AD nie są wyświetlane w Eksploratorze obiektów programu SSDT. Jako obejście, Wyświetl użytkowników w [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).   
+- `sqlcmd` obsługuje usługi Azure Active Directory authentication rozpoczynający się od wersji 13.1 pochodzących [Centrum pobierania](https://go.microsoft.com/fwlink/?LinkID=825643).
+- SQL Server Data Tools dla programu Visual Studio 2015 wymaga co najmniej wersji kwietnia 2016 r. Data Tools (wersja 14.0.60311.1). Obecnie użytkownicy usługi Azure AD nie są wyświetlane w Eksploratorze obiektów programu SSDT. Jako obejście, Wyświetl użytkowników w [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).   
 - [6.0 w sterownik JDBC firmy Microsoft dla programu SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) usługi Azure AD obsługuje uwierzytelnianie. Zobacz też [ustawienie właściwości połączenia](https://msdn.microsoft.com/library/ms378988.aspx).   
-- Program PolyBase nie można uwierzytelnić przy użyciu uwierzytelniania usługi Azure AD.   
+- Program PolyBase nie można uwierzytelnić przy użyciu uwierzytelniania usługi Azure AD.   
 - Uwierzytelnianie usługi Azure AD jest obsługiwana dla usługi SQL Database w witrynie Azure portal **Importuj bazę danych** i **eksportowania bazy danych** bloków. Importowanie i eksportowanie przy użyciu uwierzytelniania usługi Azure AD jest również obsługiwany z polecenia programu PowerShell.   
 - Uwierzytelnianie usługi Azure AD jest obsługiwane dla bazy danych SQL Database, wystąpienia zarządzanego i SQL Data Warehouse przy użyciu interfejsu wiersza polecenia. Aby uzyskać więcej informacji, zobacz [Konfigurowanie i zarządzanie nimi w usłudze Azure Active Directory uwierzytelnianie przy użyciu bazy danych SQL Database lub SQL Data Warehouse](sql-database-aad-authentication-configure.md) i [SQL Server — az sql server](https://docs.microsoft.com/cli/azure/sql/server).
 

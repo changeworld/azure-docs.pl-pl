@@ -12,12 +12,12 @@ ms.author: jodebrui
 ms.reviewer: MightyPen
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 8c683e86cd78f4c4ebe7a537c469c875b8ca07fe
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 4455e0c0f31c9026526820b50214efb83720da0d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159843"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228049"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Użyj OLTP w pamięci, aby poprawić wydajność aplikacji w usłudze SQL Database
 [Przetwarzanie OLTP danych w pamięci](sql-database-in-memory.md) pozwala zwiększyć wydajność przetwarzania transakcji, pozyskiwania danych i scenariuszy danych przejściowych w [w warstwie Premium i krytyczne dla działania firmy](sql-database-service-tiers-vcore.md) baz danych bez zwiększania warstwę cenową. 
@@ -47,7 +47,7 @@ W programie SSMS podczas generowania raportu:
 * W **Eksplorator obiektów**, kliknij prawym przyciskiem myszy węzeł bazy danych.
 * Kliknij przycisk **raporty** > **raportów standardowych** > **przegląd analizy wydajności transakcji**.
 
-Aby uzyskać więcej informacji, zobacz [Określanie, czy tabela przechowywane procedury powinno być przenoszone do OLTP w pamięci](http://msdn.microsoft.com/library/dn205133.aspx).
+Aby uzyskać więcej informacji, zobacz [Określanie, czy tabela przechowywane procedury powinno być przenoszone do OLTP w pamięci](https://msdn.microsoft.com/library/dn205133.aspx).
 
 ## <a name="step-3-create-a-comparable-test-database"></a>Krok 3: Tworzenie bazy danych testów porównywalnych
 Załóżmy, że raport wskazuje, że baza danych zawiera tabelę, która używającym konwertowane do tabeli zoptymalizowanej pod kątem pamięci. Firma Microsoft zaleca, należy najpierw przetestować potwierdzenia wskazanie przez testowanie.
@@ -80,9 +80,9 @@ Aby użyć tej opcji migracji:
    * **Tabeli pamięci Optymalizator Advisor** zostanie wyświetlony Kreator.
 3. W kreatorze kliknij pozycję **weryfikacji migracji** (lub **dalej** przycisk) aby zobaczyć, czy tabela zawiera nieobsługiwane funkcje, które nie są obsługiwane w tabelach zoptymalizowanych pod kątem pamięci. Aby uzyskać więcej informacji, zobacz:
    
-   * *Lista kontrolna optymalizacji pamięci* w [Advisor optymalizacji pamięci](http://msdn.microsoft.com/library/dn284308.aspx).
-   * [Konstrukcji języka Transact-SQL, które nie są obsługiwane przez OLTP w pamięci](http://msdn.microsoft.com/library/dn246937.aspx).
-   * [Migrowanie do OLTP w pamięci](http://msdn.microsoft.com/library/dn247639.aspx).
+   * *Lista kontrolna optymalizacji pamięci* w [Advisor optymalizacji pamięci](https://msdn.microsoft.com/library/dn284308.aspx).
+   * [Konstrukcji języka Transact-SQL, które nie są obsługiwane przez OLTP w pamięci](https://msdn.microsoft.com/library/dn246937.aspx).
+   * [Migrowanie do OLTP w pamięci](https://msdn.microsoft.com/library/dn247639.aspx).
 4. Jeśli tabela nie ma żadnych nieobsługiwanych funkcji, doradcy przeprowadzać rzeczywiste schematu i migracji danych dla Ciebie.
 
 #### <a name="manual-t-sql"></a>Ręczne języka T-SQL
@@ -114,7 +114,7 @@ Procedury składowanej skompilowanej w sposób macierzysty musi mieć następuj�
 * OPCJĘ WITH NATIVE_COMPILATION
 * SCHEMABINDING: co oznacza, tabel, które procedury składowanej nie może mieć ich definicje kolumn, zmienić w dowolny sposób, które będą wpływać na procedury składowanej, chyba że usuniesz procedury składowanej.
 
-Moduł macierzysty muszą używać jednej big [bloków ATOMIC](http://msdn.microsoft.com/library/dn452281.aspx) zarządzania transakcji. Nie ma żadnej roli, rozpocząć transakcji jawnej lub ROLLBACK TRANSACTION. Jeśli kod wykryje naruszenie reguły biznesowej, może zostać przerwany atomic bloku [THROW](http://msdn.microsoft.com/library/ee677615.aspx) instrukcji.
+Moduł macierzysty muszą używać jednej big [bloków ATOMIC](https://msdn.microsoft.com/library/dn452281.aspx) zarządzania transakcji. Nie ma żadnej roli, rozpocząć transakcji jawnej lub ROLLBACK TRANSACTION. Jeśli kod wykryje naruszenie reguły biznesowej, może zostać przerwany atomic bloku [THROW](https://msdn.microsoft.com/library/ee677615.aspx) instrukcji.
 
 ### <a name="typical-create-procedure-for-natively-compiled"></a>Typowa procedura tworzenia dla skompilowanych w sposób macierzysty
 Zazwyczaj języka T-SQL, aby utworzyć procedury składowanej skompilowanej w sposób macierzysty są podobne do następującego szablonu:
@@ -145,7 +145,7 @@ Procedura migracji jest następująca:
 2. Należy zmodyfikować jego nagłówka do dopasowywania poprzedni szablon.
 3. Należy upewnić się, czy procedura składowana kod T-SQL korzysta z żadnych funkcji, które nie są obsługiwane dla procedur składowanych skompilowanych w sposób macierzysty. Jeśli to konieczne, należy zaimplementować rozwiązania problemu.
    
-   * Aby uzyskać szczegółowe informacje, zobacz [problemy z migracją natywnie kompilowane składowane](http://msdn.microsoft.com/library/dn296678.aspx).
+   * Aby uzyskać szczegółowe informacje, zobacz [problemy z migracją natywnie kompilowane składowane](https://msdn.microsoft.com/library/dn296678.aspx).
 4. Zmień nazwę starego procedury składowanej przy użyciu SP_RENAME. Lub po prostu usunąć ją.
 5. Uruchom skrypt edytowanych Tworzenie procedury języka T-SQL.
 
@@ -168,7 +168,7 @@ Należy rozważyć monitorowanie wydajności efekty swojej implementacji w pami�
 * [Monitorowanie usługi Azure SQL Database przy użyciu dynamicznych widoków zarządzania](sql-database-monitoring-with-dmvs.md)
 
 ## <a name="related-links"></a>Powiązane linki
-* [(Optymalizacja w pamięci) OLTP w pamięci](http://msdn.microsoft.com/library/dn133186.aspx)
-* [Wprowadzenie do procedur składowanych skompilowanych w sposób macierzysty](http://msdn.microsoft.com/library/dn133184.aspx)
-* [Klasyfikator optymalizacji pamięci](http://msdn.microsoft.com/library/dn284308.aspx)
+* [(Optymalizacja w pamięci) OLTP w pamięci](https://msdn.microsoft.com/library/dn133186.aspx)
+* [Wprowadzenie do procedur składowanych skompilowanych w sposób macierzysty](https://msdn.microsoft.com/library/dn133184.aspx)
+* [Klasyfikator optymalizacji pamięci](https://msdn.microsoft.com/library/dn284308.aspx)
 

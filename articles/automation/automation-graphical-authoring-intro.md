@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: afc1ec8e171bc602f2698b4a36f249bc454cbed9
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a4cd2cec56a15660a03ac111b1b8962d531479ad
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42057336"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233681"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Graficzny, tworzenia w usłudze Azure Automation
 
@@ -48,7 +48,7 @@ W kontrolce biblioteka jest wybierania [działania](#activities) do dodania do e
 |:--- |:--- |
 | Polecenia cmdlet |Obejmuje wszystkie polecenia cmdlet, których można użyć w elemencie runbook. Polecenia cmdlet są uporządkowane według modułu. Dostępne są wszystkie moduły, które zostały zainstalowane na koncie usługi automation. |
 | Elementy Runbook |Zawiera elementy runbook na Twoim koncie usługi automation. Tych elementów runbook można dodać do kanwy, aby służyć jako podrzędne elementy runbook. Wyświetlane są tylko elementy runbook typu core jako elementu runbook, edytowany; Graficzny tylko opartego na programie PowerShell elementów runbook w elementach runbook są pokazane, gdy dla elementów runbook graficzny przepływ pracy programu PowerShell są wyświetlane tylko przepływu pracy — opartego na programie PowerShell elementów runbook. |
-| Elementy zawartości |Obejmuje [elementów zawartości usługi automation](http://msdn.microsoft.com/library/dn939988.aspx) na koncie usługi automation, które mogą być używane w elemencie runbook. Po dodaniu elementu zawartości w elemencie runbook dodaje do działania przepływu pracy, który pobiera wybranego zasobu. W przypadku zmiennych elementów zawartości można wybrać, czy należy dodać działania pobierania zmiennej lub ustawiania zmiennej. |
+| Elementy zawartości |Obejmuje [elementów zawartości usługi automation](https://msdn.microsoft.com/library/dn939988.aspx) na koncie usługi automation, które mogą być używane w elemencie runbook. Po dodaniu elementu zawartości w elemencie runbook dodaje do działania przepływu pracy, który pobiera wybranego zasobu. W przypadku zmiennych elementów zawartości można wybrać, czy należy dodać działania pobierania zmiennej lub ustawiania zmiennej. |
 | Sterowanie elementem Runbook |Obejmuje działania sterowania elementu runbook, które mogą być używane w bieżącym elemencie runbook. A *Rozgałęzienie* przyjmuje wielu danych wejściowych i czeka, aż wszystkie została ukończona przed kontynuowaniem przepływu pracy. A *kodu* działanie jest uruchamiane co najmniej jeden wiersz kodu programu PowerShell lub przepływie pracy programu PowerShell w zależności od typu graficzny element runbook. To działanie można użyć niestandardowego kodu lub funkcji, który jest trudny do osiągnięcia z innymi działaniami. |
 
 ### <a name="configuration-control"></a>Kontrola konfiguracji
@@ -191,7 +191,7 @@ Utwórz łącze między dwoma działaniami, wybierając działanie źródłowego
 
 Wybierz link, aby skonfigurować jej właściwości w bloku konfiguracji. Obejmuje to typ łącza, który jest opisany w poniższej tabeli:
 
-| Typ łącza | Opis |
+| Typ linku | Opis |
 |:--- |:--- |
 | Potok |Działanie docelowe jest uruchamiane raz dla każdego obiektu danych wyjściowych działania źródłowego. Działanie docelowe nie jest uruchamiany, jeśli działania źródłowego nie powoduje żadnych danych wyjściowych. Dane wyjściowe działania źródłowego jest dostępna jako obiekt. |
 | Sekwencja |Działanie docelowe jest uruchamiane tylko jeden raz. Tablica obiektów otrzymuje z działania źródłowego. Dane wyjściowe działania źródłowego jest dostępna jako tablica obiektów. |
@@ -336,7 +336,7 @@ Dane utworzone przez wszystkie działania, które nie mają łącza wychodząceg
 
 ## <a name="powershell-expressions"></a>Wyrażenia programu PowerShell
 
-Jedną z zalet tworzenia elementów graficznych oferuje Ci możliwość tworzenia elementu runbook przy minimalnej znajomości tworzonych programu PowerShell. Obecnie trzeba wiedzieć bitowej programu PowerShell, jednak w celu wypełnienia pewnych [wartości parametrów](#activities) i ustawienia [połączonych warunków](#links-and-workflow). Ta sekcja zawiera krótkie wprowadzenie do wyrażenia programu PowerShell dla tych użytkowników, którzy nie mogą już być znane go. Pełne informacje na temat programu PowerShell są dostępne pod adresem [skryptów za pomocą programu Windows PowerShell](http://technet.microsoft.com/library/bb978526.aspx).
+Jedną z zalet tworzenia elementów graficznych oferuje Ci możliwość tworzenia elementu runbook przy minimalnej znajomości tworzonych programu PowerShell. Obecnie trzeba wiedzieć bitowej programu PowerShell, jednak w celu wypełnienia pewnych [wartości parametrów](#activities) i ustawienia [połączonych warunków](#links-and-workflow). Ta sekcja zawiera krótkie wprowadzenie do wyrażenia programu PowerShell dla tych użytkowników, którzy nie mogą już być znane go. Pełne informacje na temat programu PowerShell są dostępne pod adresem [skryptów za pomocą programu Windows PowerShell](https://technet.microsoft.com/library/bb978526.aspx).
 
 ### <a name="powershell-expression-data-source"></a>Źródło danych wyrażenia programu PowerShell
 Można użyć wyrażenia programu PowerShell jako źródło danych do wypełnienia wartości [parametru działania](#activities) z wynikami kodu programu PowerShell. Może to być pojedynczy wiersz kodu, który wykonuje niektóre prostej funkcji lub wiele wierszy, które wykonują niektórych złożonej logiki. Wszelkie dane wyjściowe z polecenia, który nie jest przypisany do zmiennej są kierowane do wartości parametru.
@@ -414,7 +414,7 @@ Możesz dołączyć wiele warunków przy użyciu [operatora logicznego](https://
 
 ### <a name="hashtables"></a>Tabele
 
-[Tabele](http://technet.microsoft.com/library/hh847780.aspx) są pary nazwa/wartość, które przydają się do zwracania zestaw wartości. Właściwości dla pewnych działań może oczekiwać hashtable zamiast prostych wartości. Może być też widoczny jako tablica skrótów, określany jako słownik.
+[Tabele](https://technet.microsoft.com/library/hh847780.aspx) są pary nazwa/wartość, które przydają się do zwracania zestaw wartości. Właściwości dla pewnych działań może oczekiwać hashtable zamiast prostych wartości. Może być też widoczny jako tablica skrótów, określany jako słownik.
 
 Można utworzyć obiektu hashtable przy użyciu następującej składni. Tablica skrótów może zawierać dowolną liczbę wpisów, ale każdy jest definiowana przez nazwę i wartość.
 

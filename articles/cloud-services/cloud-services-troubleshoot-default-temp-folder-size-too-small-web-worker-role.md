@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 5d60c5f2d759f3329997762270e9a0335ebbe1e9
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 4757b20e1a3d9830c2d52a5fbc85fd935b27fb62
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095969"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245039"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Domyślny rozmiar folderu TEMP jest zbyt mały dla roli sieć web/proces roboczy usług chmury
 Domyślny katalog tymczasowy rola usługi w chmurze sieci web lub proces roboczy ma maksymalnym rozmiarze 100 MB, co może stać się pełną w pewnym momencie. W tym artykule opisano sposoby unikania ilość miejsca dla katalogu tymczasowego.
@@ -71,8 +71,8 @@ namespace WorkerRole1
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Przeczytaj wpis w blogu, który opisuje [sposobu zwiększenia rozmiaru platformy Azure w sieci Web roli folderu tymczasowego środowiska ASP.NET](http://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx).
+Przeczytaj wpis w blogu, który opisuje [sposobu zwiększenia rozmiaru platformy Azure w sieci Web roli folderu tymczasowego środowiska ASP.NET](https://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx).
 
 Wyświetl więcej [artykuły dotyczące rozwiązywania problemów](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/vs-azure-tools-debugging-cloud-services-overview.md) dla usług w chmurze.
 
-Aby dowiedzieć się, jak rozwiązywać problemy dotyczące ról usługi chmury przy użyciu danych diagnostycznych na komputerze modelu PaaS platformy Azure, Wyświetl [serię wpisów w blogu Kevina Williamson](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Aby dowiedzieć się, jak rozwiązywać problemy dotyczące ról usługi chmury przy użyciu danych diagnostycznych na komputerze modelu PaaS platformy Azure, Wyświetl [serię wpisów w blogu Kevina Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

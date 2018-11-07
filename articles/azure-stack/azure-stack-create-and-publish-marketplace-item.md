@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 10/03/2018
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: 40ecb474b4faa4031cb364dfc1151c6fe6f09dd6
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c07e1282a755962b6fe6bc980207a510bd3287a4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856455"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253775"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Tworzenie i publikowanie elementu portalu Marketplace
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
 ## <a name="create-a-marketplace-item"></a>Tworzenie elementu portalu Marketplace
-1. [Pobierz](http://www.aka.ms/azurestackmarketplaceitem) narzędzie Packager galerii Azure i próbka Azure Stack w portalu Marketplace.
+1. [Pobierz](https://www.aka.ms/azurestackmarketplaceitem) narzędzie Packager galerii Azure i próbka Azure Stack w portalu Marketplace.
 2. Otwórz przykładowy elementu portalu Marketplace i Zmień nazwę **SimpleVMTemplate** folderu. (Na przykład użyj nazwy jako swojej elementu portalu Marketplace — **Contoso.TodoList**.) Ten folder zawiera:
    
    ```shell

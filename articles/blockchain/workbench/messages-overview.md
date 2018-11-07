@@ -10,18 +10,18 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: dcf31bd6b128115962e30dd6653364c4cd65047d
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b4a816c887d1cca78ff845858dce29049946b09f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242881"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235993"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Aplikacji Azure Blockchain Workbench komunikatów integracji
 
 Oprócz interfejsu API REST, Azure Blockchain Workbench także bazujące na komunikatach integracji. Środowisko robocze publikuje księgi skoncentrowane na zdarzenia za pośrednictwem usługi Azure Event Grid, umożliwiając użytkownikom podrzędnego pozyskiwania danych lub podjąć działania na podstawie tych zdarzeń. Dla tych klientów, które wymagają niezawodną obsługę komunikatów aplikacji Azure Blockchain Workbench dostarcza komunikaty do punktu końcowego usługi Azure Service Bus.
 
-Deweloperzy również wyrazili swoje zainteresowania możliwość systemów zewnętrznych, które komunikują się inicjować transakcji do tworzenia użytkowników, Tworzenie umów i aktualizowanie umów na rejestr. Gdy ta funkcja nie jest obecnie dostępny w publicznej wersji zapoznawczej, przykład zapewnia taką możliwość znajduje się w temacie [ http://aka.ms/blockchain-workbench-integration-sample ](http://aka.ms/blockchain-workbench-integration-sample).
+Deweloperzy również wyrazili swoje zainteresowania możliwość systemów zewnętrznych, które komunikują się inicjować transakcji do tworzenia użytkowników, Tworzenie umów i aktualizowanie umów na rejestr. Gdy ta funkcja nie jest obecnie dostępny w publicznej wersji zapoznawczej, przykład zapewnia taką możliwość znajduje się w temacie [ http://aka.ms/blockchain-workbench-integration-sample ](https://aka.ms/blockchain-workbench-integration-sample).
 
 ## <a name="event-notifications"></a>Powiadomienia o zdarzeniach
 

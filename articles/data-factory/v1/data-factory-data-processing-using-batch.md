@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 511a0122b37f5f34097da38a645790d99212ad18
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b8a9973738ac28a686488a816da0f7da5fe2ac3e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737417"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238526"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Przetwarzania dużych ilości danych przy użyciu usługi Data Factory i Batch
 > [!NOTE]
@@ -61,9 +61,9 @@ Można również tworzyć niestandardowe działania programu .NET do przeniesien
 ## <a name="architecture-of-a-sample-solution"></a>Architektura rozwiązania próbki
   Opisanej w tym artykule architektury jest to proste rozwiązanie. Ma również zastosowanie złożonych scenariuszy, takich jak modelowanie finansowe, przetwarzanie obrazu i renderowania i analiz dotyczących genomu ryzyka.
 
-Na diagramie przedstawiono, jak Data Factory służy do aranżacji przenoszenia i przetwarzania danych. Pokazuje również, jak usługa Batch przetwarza dane w sposób równoległy. Pobrać i wydrukować diagram łatwiejszego odwoływania (11 x 17 cali lub rozmiaru A3). Aby uzyskać dostęp do diagramu, aby można go wydrukować, zobacz [HPC i organizowanie danych za pomocą usługi Batch i Data Factory](http://go.microsoft.com/fwlink/?LinkId=717686).
+Na diagramie przedstawiono, jak Data Factory służy do aranżacji przenoszenia i przetwarzania danych. Pokazuje również, jak usługa Batch przetwarza dane w sposób równoległy. Pobrać i wydrukować diagram łatwiejszego odwoływania (11 x 17 cali lub rozmiaru A3). Aby uzyskać dostęp do diagramu, aby można go wydrukować, zobacz [HPC i organizowanie danych za pomocą usługi Batch i Data Factory](https://go.microsoft.com/fwlink/?LinkId=717686).
 
-[![Diagram przetwarzania danych na dużą skalę](./media/data-factory-data-processing-using-batch/image1.png)](http://go.microsoft.com/fwlink/?LinkId=717686)
+[![Diagram przetwarzania danych na dużą skalę](./media/data-factory-data-processing-using-batch/image1.png)](https://go.microsoft.com/fwlink/?LinkId=717686)
 
 Poniższa lista zawiera podstawowe kroki procesu. Rozwiązanie zawiera kod i wyjaśnienia w celu skompilowania rozwiązania end-to-end.
 

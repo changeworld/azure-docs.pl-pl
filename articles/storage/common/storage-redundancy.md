@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 618e1f5249f2e05c26e91231b4283d82546a880b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7afbdaba46674b69aa601355e80160e7c72ff373
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954491"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240974"
 ---
 # <a name="azure-storage-replication"></a>Replikacja usługi Azure Storage
 
@@ -39,7 +39,7 @@ Poniższa tabela zawiera krótkie omówienie zakres trwałości i dostępności,
 | Awaria obejmujących cały region                                                                                     | Nie                              | Nie                               | Yes                                  | Yes                                  |
 | Dostęp do odczytu do danych (w zdalnym, replikowany geograficznie region) w przypadku niedostępności obejmujących cały region | Nie                              | Nie                               | Nie                                   | Yes                                  |
 | Zaprojektowana w celu zapewnienia \_ \_ trwałości obiektów w danym roku                                          | co najmniej 99,999999999% (11 9) | co najmniej 99,9999999999% (12 9) | co najmniej 99,99999999999999% (16 9) | co najmniej 99,99999999999999% (16 9) |
-| Typy kont magazynu obsługiwanych                                                                   | Konta GPv1, GPv2 obiektów Blob                | Konta GPv2, GPv1 (za pośrednictwem programu PowerShell, interfejsu wiersza polecenia platformy Azure lub zasobów dostawcy interfejsu API)                             | Konta GPv1, GPv2 obiektów Blob                     | Konta GPv1, GPv2 obiektów Blob                     |
+| Typy kont magazynu obsługiwanych                                                                   | Konta GPv1, GPv2 obiektów Blob                | GPv2                             | Konta GPv1, GPv2 obiektów Blob                     | Konta GPv1, GPv2 obiektów Blob                     |
 | Umowa SLA dotycząca dostępności dla żądań odczytu | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,99% (99,9% w przypadku warstwy dostępu chłodnego) |
 | Umowa SLA dotycząca dostępności dla żądań zapisu | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) |
 
@@ -68,5 +68,5 @@ Jeśli zmienisz z GRS LRS, nie ma żadnych dodatkowych kosztów, ale replikowane
 - [Magazyn geograficznie nadmiarowy (GRS): replikacji między regionami dla usługi Azure Storage](storage-redundancy-grs.md)
 - [Usługa Azure cele skalowalności i wydajności magazynu](storage-scalability-targets.md)
 - [Projektowanie wysoko dostępnych aplikacji przy użyciu magazynu RA-GRS](../storage-designing-ha-apps-with-ragrs.md)
-- [Usługa Microsoft Azure Storage nadmiarowości opcje i dostęp do odczytu magazyn geograficznie nadmiarowy ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
-- [Dokument SOSP — Azure Storage: O wysokiej dostępności usługi magazynu w chmurze za pomocą silnej spójności](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+- [Usługa Microsoft Azure Storage nadmiarowości opcje i dostęp do odczytu magazyn geograficznie nadmiarowy ](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
+- [Dokument SOSP — Azure Storage: O wysokiej dostępności usługi magazynu w chmurze za pomocą silnej spójności](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

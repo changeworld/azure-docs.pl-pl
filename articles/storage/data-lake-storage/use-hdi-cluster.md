@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 3869d83ada1cbe0b234694b6acae88b6f68fc2dd
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 04e2e32de90283da2563395f8b24dbb4b1dab888
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782281"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241763"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Użyj usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza) przy użyciu klastrów usługi Azure HDInsight
 
@@ -49,13 +49,13 @@ Poniżej przedstawiono kilka kwestii, korzystając z konta usługi Azure Storage
 * **Pliki publiczne w ramach kont magazynu, które nie są podłączone do klastra** udostępnić uprawnienia tylko do odczytu do plików w systemie plików.
   
   > [!NOTE]
-  > Systemy plików publiczne pozwalają na pobranie listy wszystkich plików dostępnych w systemie plików, a dostęp do metadanych. Systemy plików publiczne pozwalają uzyskać dostęp do plików tylko wtedy, gdy znasz adres URL. Aby uzyskać więcej informacji, zobacz [ograniczyć dostęp do kontenerów i obiektów blob](http://msdn.microsoft.com/library/windowsazure/dd179354.aspx) (reguły dla kontenerów i obiektów blob pracy tego samego planu plików i systemu plików).
+  > Systemy plików publiczne pozwalają na pobranie listy wszystkich plików dostępnych w systemie plików, a dostęp do metadanych. Systemy plików publiczne pozwalają uzyskać dostęp do plików tylko wtedy, gdy znasz adres URL. Aby uzyskać więcej informacji, zobacz [ograniczyć dostęp do kontenerów i obiektów blob](https://msdn.microsoft.com/library/windowsazure/dd179354.aspx) (reguły dla kontenerów i obiektów blob pracy tego samego planu plików i systemu plików).
  
 * **Systemy plików prywatne w ramach kont magazynu, które nie są podłączone do klastra** nie zezwalają na dostęp do plików w systemie plików, chyba że zdefiniujesz konto magazynu podczas przesyłania zadań WebHCat. Przyczyny tego ograniczenia zostały omówione w dalszej części tego artykułu.
 
 Konta magazynu, które są zdefiniowane w procesie tworzenia oraz ich klucze są przechowywane w *%HADOOP_HOME%/conf/core-site.xml* w węzłach klastra. Domyślne zachowanie HDInsight jest użycie kont magazynu zdefiniowanych w *core-site.xml* pliku. To ustawienie możesz zmodyfikować przy użyciu narzędzia [Ambari](../../hdinsight/hdinsight-hadoop-manage-ambari.md)
 
-Wiele zadań WebHCat, w tym Hive, MapReduce, przesyłanie strumieniowe Hadoop, a także Pig, może przenosić ze sobą opis kont magazynu i metadane. (To podejście obecnie działa dla technologii Pig z kontami magazynu, ale nie dla metadanych.) Aby uzyskać więcej informacji, zobacz [Using an HDInsight Cluster with Alternate Storage Accounts and Metastores](http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx) (Używanie klastra usługi HDInsight z alternatywnymi kontami magazynu i magazynami metadanych).
+Wiele zadań WebHCat, w tym Hive, MapReduce, przesyłanie strumieniowe Hadoop, a także Pig, może przenosić ze sobą opis kont magazynu i metadane. (To podejście obecnie działa dla technologii Pig z kontami magazynu, ale nie dla metadanych.) Aby uzyskać więcej informacji, zobacz [Using an HDInsight Cluster with Alternate Storage Accounts and Metastores](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx) (Używanie klastra usługi HDInsight z alternatywnymi kontami magazynu i magazynami metadanych).
 
 ## <a id="benefits"></a>Korzyści z usługi Azure Storage
 

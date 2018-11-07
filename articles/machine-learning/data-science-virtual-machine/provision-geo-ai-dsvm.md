@@ -1,7 +1,7 @@
 ---
-title: Aprowizowanie maszyny wirtualnej analizy sztucznego geograficznie programu Azure - Azure | Dokumentacja firmy Microsoft
-description: Jak udostępnić maszynę wirtualną z magazynu geograficznie AI na platformie Azure.
-keywords: bezpośrednie uczenia AI, narzędzia do analizy danych, maszyny wirtualnej analizy danych, dane geograficzne analityka
+title: Aprowizowanie maszyny wirtualnej z geograficznie sztucznej inteligencji na platformie Azure — Azure | Dokumentacja firmy Microsoft
+description: Jak wykonać aprowizację maszyny wirtualnej geograficznie sztucznej Inteligencji na platformie Azure.
+keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, Geoprzestrzenna analiza
 services: machine-learning
 documentationcenter: ''
 author: gopitk
@@ -15,83 +15,83 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 93dfe6594aeaf45a6905fe8cb55c98dd37cc9599
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bdcf2662f2a81b145868cff92ecb7a2cb4d53046
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31408612"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239801"
 ---
-# <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Udostępnić maszynę wirtualną z magazynu geograficznie analizy sztucznego na platformie Azure 
+# <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej z geograficznie sztucznej inteligencji na platformie Azure 
 
-Geograficznie AI danych nauki maszyny wirtualnej (geograficznie DSVM) jest rozszerzeniem popularnych [maszyny wirtualnej platformy Azure danych nauki](http://aka.ms/dsvm) specjalnie skonfigurowanym do łączenia analytics AI i dane geograficzne. Analiza dane geograficzne w maszynie Wirtualnej są obsługiwane przez [ArcGIS Pro](https://www.arcgis.com/features/index.html). Maszyna wirtualna nauki danych umożliwia szybkie szkolenia maszyny modeli uczenia, a nawet z głębokiego uczenia modeli danych, które jest wzbogaconych informacji geograficznych. Jest obsługiwana tylko na DSVM 2016 systemu Windows. 
+Geograficzna sztucznej Inteligencji maszyny wirtualnej analizy danych (geograficznie DSVM) jest rozszerzeniem popularnej [maszyny wirtualnej do nauki o danych platformy Azure](https://aka.ms/dsvm) specjalnie skonfigurowanym do łączenia sztucznej Inteligencji i geoprzestrzenna analiza. Geoprzestrzenna analiza na maszynie wirtualnej są obsługiwane przez [ArcGIS Pro](https://www.arcgis.com/features/index.html). Maszyna wirtualna do nauki o danych umożliwia szybkie szkolenia maszyny modeli uczenia, a nawet z głębokiego uczenia modeli danych, które jest wzbogacone o informacji geograficznych. Jest obsługiwana tylko na maszyny wirtualnej DSVM Windows 2016. 
 
-DSVM geograficznie zawiera kilka narzędzi dla AI w tym:
+DSVM geograficznego zawiera szereg narzędzi sztucznej Inteligencji, w tym:
 
-- Wersje GPU popularnych głębokie uczenia struktury, takich jak kognitywnych zestaw narzędzi firmy Microsoft, TensorFlow, Keras, Caffe2, moduł łańcucha; 
-- narzędzia do uzyskania i wstępnego przetwarzania obrazu, dane tekstowe 
-- narzędzia do rozwoju działania, takie jak Microsoft R Server Developer Edition, Anaconda Python notesów Jupyter dla języka Python i R, IDEs Python i R, SQL bazy danych
-- W ESRI ArcGIS Pro oprogramowania dla komputerów stacjonarnych oraz Python i R interfejsy, które mogą pracować z danymi aplikacji AI dane geograficzne. 
-
-
-## <a name="create-your-geo-ai-data-science-vm"></a>Utwórz nauki AI danych z geograficznie maszyny Wirtualnej
-
-Poniżej przedstawiono procedurę, aby utworzyć wystąpienie maszyny wirtualnej z magazynu geograficznie AI danych nauki: 
+- Procesor GPU wersje popularnych platform uczenia głębokiego, takich jak Microsoft Cognitive Toolkit, TensorFlow, Keras, Caffe2, Chainer; 
+- narzędzia do uzyskania i obraz przetwarzania wstępnego, dane tekstowe 
+- Narzędzia dla działań programistycznych, takich jak Microsoft R Server Developer Edition, Anaconda Python notesów programu Jupyter dla języka Python i R, środowiska IDE języka Python i R, SQL bazy danych
+- Firmy ESRI ArcGIS Pro oprogramowania dla komputerów stacjonarnych wraz z języka Python i R interfejsy, które można pracować z danymi dane geograficzne z poziomu aplikacji sztucznej Inteligencji. 
 
 
-1. Przejdź do wyświetlania na maszynie wirtualnej [portalu Azure](https://ms.portal.azure.com/#create/microsoft-ads.geodsvmwindows).
-2. Wybierz **Utwórz** znajdujący się u dołu do kreatora.
+## <a name="create-your-geo-ai-data-science-vm"></a>Tworzenie usługi Geo sztucznej Inteligencji do analizy danych maszyny Wirtualnej
+
+Poniżej przedstawiono procedurę, aby utworzyć wystąpienie maszyna wirtualna do nauki o danych sztucznej Inteligencji geograficzna: 
+
+
+1. Przejdź do maszyny wirtualnej, w witrynie [witryny Azure portal](https://ms.portal.azure.com/#create/microsoft-ads.geodsvmwindows).
+2. Wybierz **Utwórz** znajdujący się u dołu, aby uwzględnić kreatora.
 ![create-geo-ai-dsvm](./media/provision-geo-ai-dsvm/Create-Geo-AI.png)
-3. Kreator pozwala utworzyć DSVM geograficznie wymaga **dane wejściowe** dla każdego z **cztery kroki** wyliczyć po prawej stronie tej liczby. Poniżej przedstawiono wejść potrzebne do skonfigurowania każdego z następujących czynności:
+3. Kreator używany do tworzenia DSVM geograficznie wymaga **dane wejściowe** dla każdego z **cztery kroki** wyliczane po prawej stronie tej liczby. Poniżej przedstawiono dane wejściowe wymagane do skonfigurowania każdego z następujących czynności:
 
 
 
    - **Podstawy**
 
-      1. **Nazwa**: Nazwa serwera nauki danych tworzona.
+      1. **Nazwa**: Nazwa serwera do nauki o danych, które tworzysz.
 
       2. **Nazwa użytkownika**: identyfikator logowania konta administratora.
 
       3. **Hasło**: hasło konta administratora.
 
-      4. **Subskrypcja**: Jeśli masz więcej niż jedną subskrypcję, wybierz jedną, na którym maszyna ma być utworzony i są rozliczane.
+      4. **Subskrypcja**: Jeśli masz więcej niż jedną subskrypcję, wybierz ten, na którym maszyna ma zostać utworzona i rozliczane.
 
-      5. **Grupa zasobów**: można utworzyć nową lub użyj **pusty** istniejącej grupy zasobów platformy Azure w ramach subskrypcji.
+      5. **Grupa zasobów**: możesz utworzyć nową lub użyj **pusty** istniejącą grupę zasobów platformy Azure w ramach subskrypcji.
 
-      6. **Lokalizacja**: wybierz centrum danych, która jest najbardziej odpowiednia. Zazwyczaj jest centrum danych, która zawiera większość danych lub zbliżony do fizycznej lokalizacji najszybszy dostęp do sieci. Jeśli należy wykonać głębokie uczenie na procesor GPU, trzeba wybrać jedną z lokalizacji na platformie Azure, wystąpieniami serii NC procesora GPU z maszyny Wirtualnej. Obecnie są lokalizacji, które mają GPU maszyn wirtualnych: **wschodnie stany USA, północno-środkowe stany, południowo-środkowe stany, zachodnie stany USA 2 Europa Północna, Europa Zachodnia**. Najbardziej aktualną listę Sprawdź [produkty Azure według regionu strony](https://azure.microsoft.com/regions/services/) i poszukaj **NC serii** w obszarze **obliczeniowe**. 
+      6. **Lokalizacja**: wybierz centrum danych, które jest najbardziej odpowiednie. Zazwyczaj jest centrum danych, który zawiera większość danych lub znajduje się najbliżej Twojej lokalizacji fizycznej najszybszy dostęp do sieci. Jeśli konieczne uczenia głębokiego na procesorze GPU, trzeba wybrać jedną z lokalizacji platformy Azure, która ma wystąpień maszyn wirtualnych GPU seria NC. Obecnie są lokalizacji, które mają maszynach wirtualnych procesorów GPU: **wschodnie stany USA, północno-środkowe stany USA, południowo-środkowe stany USA, zachodnie stany USA 2, Europa Północna, Europa Zachodnia**. Aby wyświetlić najnowszą listę, sprawdź [produkty Azure według regionu strony](https://azure.microsoft.com/regions/services/) i poszukaj **seria NC** w obszarze **obliczenia**. 
 
 
-   - **Ustawienia**: Wybierz jedno z serii NC GPU rozmiar maszyny wirtualnej, jeśli planujesz uruchamianie głębokie uczenie na procesor GPU na DSVM Twojego magazynu geograficznie. W przeciwnym razie możesz wybrać jedną z Procesora na podstawie wystąpienia.  Utwórz konto magazynu dla maszyny Wirtualnej. 
+   - **Ustawienia**: Wybierz jeden z rozmiar maszyny wirtualnej serii NC procesora GPU, jeśli planujesz uruchomić uczenia głębokiego na GPU na maszyny wirtualnej DSVM geograficznie. W przeciwnym razie można wybrać jedną z procesora CPU na podstawie wystąpienia.  Tworzenie konta magazynu dla maszyny Wirtualnej. 
    
-   - **Podsumowanie**: Sprawdź, czy wszystkie informacje wprowadzone jest poprawna.
+   - **Podsumowanie**: Sprawdź poprawność wszystkie informacje, które zostały wprowadzone.
 
-   - **Kup**: kliknij **kupić** uruchomić udostępnianie. Łącze znajduje się na warunki usługi. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczeniowe dla rozmiaru serwera w **rozmiar** kroku. 
+   - **Kup**: kliknij **Kup** można uruchomić aprowizacji. Link znajduje się na warunki użytkowania usługi. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczenia rozmiaru serwera wybranej w ramach **rozmiar** kroku. 
 
 >[!NOTE]
-> Udostępnianie powinno zająć około 20-30 minut. Stan inicjowania obsługi administracyjnej jest wyświetlana w portalu Azure.
+> Aprowizacja powinno zająć około 20 – 30 minut. Stan aprowizacji jest wyświetlany w witrynie Azure portal.
 
 
-## <a name="how-to-access-the-geo-ai-data-science-virtual-machine"></a>Jak dostęp do maszyny wirtualnej z magazynu geograficznie AI danych nauki
+## <a name="how-to-access-the-geo-ai-data-science-virtual-machine"></a>Jak uzyskać dostęp do maszyny wirtualnej do nauki o danych sztucznej Inteligencji geograficznie
 
-Po utworzeniu maszyny Wirtualnej, można przystąpić do rozpocząć korzystanie z narzędzia, które są zainstalowane i wstępnie skonfigurowane na nim. Brak Kafelki menu start i ikony pulpitu dla wielu narzędzi. Pulpit zdalny można do niego przy użyciu poświadczeń konta administratora, które skonfigurowano w poprzednim **podstawy** sekcji. 
+Po utworzeniu maszyny Wirtualnej, jesteś gotowy rozpocząć korzystanie z narzędzia, które są zainstalowane i wstępnie skonfigurowane na nim. Brak kafelków menu start i ikony pulpitu dla wielu narzędzi. Pulpit zdalny można do niej przy użyciu poświadczeń konta administratora, które skonfigurowano w poprzednim **podstawy** sekcji. 
 
 
-## <a name="using-arcgis-pro-installed-in-the-vm"></a>Przy użyciu ArcGIS Pro zainstalowana na maszynie wirtualnej
+## <a name="using-arcgis-pro-installed-in-the-vm"></a>Za pomocą ArcGIS Pro zainstalowane na maszynie wirtualnej
 
-DSVM geograficzna jest już desktop ArcGIS Pro preinstalowanym i wstępnie skonfigurowane do pracy przy użyciu narzędzi w DSVM środowiska. Po uruchomieniu ArcGIS monit logowania na koncie ArcGIS. Jeśli już masz konto ArcGIS i licencji na oprogramowanie, można użyć istniejących poświadczeń.  
+DSVM geograficzna ma już desktop ArcGIS Pro wstępnie zainstalowane i środowiska, wstępnie skonfigurowane do pracy z wszystkich narzędzi opisanych w maszyny DSVM. Po uruchomieniu ArcGIS monituje o dane logowania do konta usługi ArcGIS. Jeśli już masz konto ArcGIS i masz licencji na oprogramowanie, można użyć posiadanych poświadczeń.  
 
-![Łuk SIG logowania](./media/provision-geo-ai-dsvm/ArcGISLogon.png)
+![Łuk GIS logowania](./media/provision-geo-ai-dsvm/ArcGISLogon.png)
 
-W przeciwnym razie Załóż nowe konto ArcGIS i licencji lub pobrać [bezpłatnej wersji próbnej](https://www.arcgis.com/features/free-trial.html). 
+W przeciwnym razie Załóż nowe konto ArcGIS i licencji lub uzyskać [bezpłatna wersja próbna](https://www.arcgis.com/features/free-trial.html). 
 
-![ArcGIS bezpłatnych wersji próbnych](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
+![Komponent ArcGIS bezpłatną wersję próbną](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-Po utworzeniu rejestracji dla płatna lub bezpłatne konto próbne ArcGIS, ArcGIS Pro można autoryzować dla Twojego konta zgodnie z instrukcjami w [wprowadzenie dokumentacji ArcGIS Pro](http://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
+Po utworzeniu rejestrowania dla płatna lub konto bezpłatnej wersji próbnej ArcGIS, ArcGIS Pro można autoryzować dla swojego konta, postępując zgodnie z instrukcjami w [rozpoczęcie korzystania z dokumentacji ArcGIS Pro](http://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
 
-Po zalogowaniu do pulpitu ArcGIS Pro z Twoim kontem ArcGIS, można przystąpić do rozpoczęcia korzystania z narzędzi analizy danych, które są zainstalowane i skonfigurowane na Maszynie wirtualnej analytics dane geograficzne i projekty uczenia maszynowego.
+Po zalogowaniu do programu desktop ArcGIS Pro z Twoim kontem ArcGIS, jesteś gotowy rozpocząć korzystanie z narzędzi do nauki o danych, które są zainstalowane i skonfigurowane na maszynie Wirtualnej Geoprzestrzenna analiza i projektów uczenia maszynowego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Rozpoczynanie pracy przy użyciu maszyny Wirtualnej z magazynu geograficznie AI danych nauki ze wskazówkami w następujących tematach:
+Rozpoczęcie korzystania z maszyny Wirtualnej do analizy danych usługi Geo sztucznej Inteligencji za pomocą wytycznych z następujących tematów:
 
-* [Użyj analizy danych AI geograficznie maszyny Wirtualnej](use-geo-ai-dsvm.md)
+* [Użycie maszyny Wirtualnej analizy danych sztucznej Inteligencji geograficznych](use-geo-ai-dsvm.md)

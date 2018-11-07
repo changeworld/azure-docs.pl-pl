@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 8a40acda189507c1589373a48166ed1668e30650
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a92d3237300fcd29fecf49d78b2866f8bd7e6a6b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313663"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247708"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>Określić wymagania dotyczące kontroli dostępu dla danego rozwiązania tożsamości hybrydowej
 Gdy organizacji projektuje swoje rozwiązania z tożsamością hybrydową, aby przejrzeć wymagania dotyczące dostępu do zasobów, które zamierza udostępnić użytkownikom mogą również wykorzystać tej możliwości. Dostęp do danych między wszystkie cztery filarów tożsamości, które są:
@@ -34,7 +34,7 @@ Gdy organizacji projektuje swoje rozwiązania z tożsamością hybrydową, aby p
 W kolejnych sekcjach opisano uwierzytelnianie i autoryzacja w bardziej szczegółowe informacje, Administracja i inspekcji są dostępne w ramach cyklu życia tożsamości hybrydowej. Odczyt [określić zadania związane z zarządzaniem tożsamości hybrydowej](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) Aby uzyskać więcej informacji na temat tych możliwości.
 
 > [!NOTE]
-> Odczyt [czterech filarach z Identity — do zarządzania tożsamościami w wieku hybrydowego IT](http://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) Aby uzyskać więcej informacji na temat każdej z tych filarów.
+> Odczyt [czterech filarach z Identity — do zarządzania tożsamościami w wieku hybrydowego IT](https://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) Aby uzyskać więcej informacji na temat każdej z tych filarów.
 > 
 > 
 

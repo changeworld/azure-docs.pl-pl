@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 3821e13fd968e458e463e90ef338da6637d8d8f2
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 698cae13b9e78de6318c28bde998e195540c513c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622018"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256803"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Zainstaluj program .NET w ramach ról usług Azure Cloud Services
 W tym artykule opisano sposób instalowania wersji programu .NET Framework, które nie pochodzą z systemu operacyjnego gościa platformy Azure. Aby skonfigurować role usługi w chmurze w sieci web i proces roboczy, można użyć platformy .NET w systemie operacyjnym gościa.
@@ -34,7 +34,7 @@ Aby zainstalować program .NET w roli sieci web i proces roboczy, obejmują Inst
 ## <a name="add-the-net-installer-to-your-project"></a>Dodaj Instalatora .NET do projektu
 Aby pobrać Instalator internetowy programu .NET Framework, należy wybrać wersję, która ma zostać zainstalowany:
 
-* [Instalator sieci web platformy .NET 4.7.2](http://go.microsoft.com/fwlink/?LinkId=863262)
+* [Instalator sieci web platformy .NET 4.7.2](https://go.microsoft.com/fwlink/?LinkId=863262)
 * [Instalator sieci web platformy .NET 4.6.2](https://www.microsoft.com/download/details.aspx?id=53345)
 
 Aby dodać Instalatora dla *web* roli:

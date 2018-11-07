@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 86b7b87c8cc11be5c4f2c8892905bb6e6800e729
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1994c714f691177b526b44e277fea705d18b4335
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958886"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245702"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
 
@@ -108,9 +108,9 @@ Firma Microsoft używa danych tylko w celu świadczenie tej usługi.
 * Nie. Aplikację można uruchomić dowolnego miejsca i w hostów w środowisku lokalnym lub w chmurze.
 
 ## <a name="how-secure-is-my-data"></a>Jak bezpieczne są moje dane?
-Usługa Application Insights to usługa platformy Azure. Zasady zabezpieczeń są opisane w artykule [oficjalny dokument zabezpieczenia platformy Azure, ochrony prywatności i zgodności](http://go.microsoft.com/fwlink/?linkid=392408).
+Usługa Application Insights to usługa platformy Azure. Zasady zabezpieczeń są opisane w artykule [oficjalny dokument zabezpieczenia platformy Azure, ochrony prywatności i zgodności](https://go.microsoft.com/fwlink/?linkid=392408).
 
-Dane są przechowywane na serwerach Microsoft Azure. W przypadku kont w witrynie Azure Portal konta ograniczenia są opisane w [dokumentu zabezpieczeń platformy Azure, ochrony prywatności i zgodności](http://go.microsoft.com/fwlink/?linkid=392408).
+Dane są przechowywane na serwerach Microsoft Azure. W przypadku kont w witrynie Azure Portal konta ograniczenia są opisane w [dokumentu zabezpieczeń platformy Azure, ochrony prywatności i zgodności](https://go.microsoft.com/fwlink/?linkid=392408).
 
 Dostęp do danych przez personel firmy Microsoft jest ograniczona. Mamy dostęp do danych, tylko za zgodą użytkownika, a jeśli jest konieczna Obsługa korzystania z usługi Application Insights. 
 

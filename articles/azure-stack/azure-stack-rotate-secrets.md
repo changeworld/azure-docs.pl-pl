@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 418b23f0783341ff7e5aaf7e2bbb2e869eb7dc45
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 5d2f4fc77d5849dc2be80ada9610098c9a381f92
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466158"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244104"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Obróć klucze tajne w usłudze Azure Stack
 
@@ -92,7 +92,7 @@ Obrót wpisu tajnego wykonując poniższe instrukcje uruchamiania będą skorygo
 5.  Store wykonywanie kopii zapasowej certyfikatów używanych dla obrotu w bezpiecznej lokalizacji kopii zapasowej. Jeśli Twoje obrotu uruchomiona, a następnie kończy się niepowodzeniem, Zamień certyfikaty w udziale plików kopii zapasowych przed ponownym uruchomieniem obrót. Należy pamiętać, wykonywania kopii zapasowych w bezpiecznej lokalizacji kopii zapasowej.
 6.  Utwórz udział plików, w której będziesz mieć dostęp z ERCS maszyn wirtualnych. Udział plików musi być czytelny i zapisywalny dla **CloudAdmin** tożsamości.
 7.  Otwórz konsolę programu PowerShell ISE z komputera, na których mają dostęp do udziału plików. Przejdź do Twojego udziału plików. 
-8.  Uruchom **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** utworzyć wymagane katalogi zewnętrzne certyfikaty.
+8.  Uruchom **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** utworzyć wymagane katalogi zewnętrzne certyfikaty.
 
 ## <a name="rotating-external-and-internal-secrets"></a>Obracanie wewnętrznych i zewnętrznych wpisów tajnych
 

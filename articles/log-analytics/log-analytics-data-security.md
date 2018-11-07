@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d042033981cba4e9d56b48543a7c6016a38efb53
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 2b04853e8d01ae559ce4ad982daba2928a6cd130
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958558"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244478"
 ---
 # <a name="log-analytics-data-security"></a>Bezpieczeństwo danych analizy dziennika
 Ten dokument jest przeznaczony do dostarczają informacje charakterystyczne do usługi Log Analytics, która jest funkcją usługi Azure monitor, aby uzupełnić informacje na [Centrum zaufania systemu Azure](../security/security-microsoft-trust-center.md).  
@@ -36,7 +36,7 @@ Usługa Log Analytics bezpiecznie zarządza dane oparte na chmurze przy użyciu 
 * Zgodność
 * Certyfikaty standardów zabezpieczeń
 
-Skontaktuj się z nami za pomocą jakiekolwiek pytania, sugestie lub problemy dotyczące dowolnej z następujących informacji zgodnie z zasadami zabezpieczeń w tym [opcje pomocy technicznej platformy Azure](http://azure.microsoft.com/support/options/).
+Skontaktuj się z nami za pomocą jakiekolwiek pytania, sugestie lub problemy dotyczące dowolnej z następujących informacji zgodnie z zasadami zabezpieczeń w tym [opcje pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/).
 
 ## <a name="sending-data-securely-using-tls-12"></a>Wysyłanie danych przy użyciu protokołu TLS 1.2 
 
@@ -86,7 +86,7 @@ W poniższej tabeli przedstawiono przykłady typów danych:
 | Stan |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Zabezpieczenia fizyczne
-Usługa Log Analytics jest zarządzana przez personel firmy Microsoft, a wszystkie działania są rejestrowane i podlega inspekcji. Usługa log Analytics jest świadczona jako usługa platformy Azure i spełnia wszystkie wymagania dotyczące zgodności platformy Azure i zabezpieczeń. Możliwość wyświetlania szczegółów dotyczących zabezpieczeń fizycznych zasobów platformy Azure na stronie 18 [Przegląd zabezpieczeń usługi Microsoft Azure](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Prawa fizyczny dostęp do bezpiecznego obszary są zmieniane w ciągu jednego dnia, dla każdego, kto nie ma już odpowiedzialność za usługi Log Analytics, w tym transfer i kończenie działania. Informacje o globalnej infrastruktury fizycznej, używamy w [Datacenters Microsoft](https://azure.microsoft.com/global-infrastructure/).
+Usługa Log Analytics jest zarządzana przez personel firmy Microsoft, a wszystkie działania są rejestrowane i podlega inspekcji. Usługa log Analytics jest świadczona jako usługa platformy Azure i spełnia wszystkie wymagania dotyczące zgodności platformy Azure i zabezpieczeń. Możliwość wyświetlania szczegółów dotyczących zabezpieczeń fizycznych zasobów platformy Azure na stronie 18 [Przegląd zabezpieczeń usługi Microsoft Azure](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Prawa fizyczny dostęp do bezpiecznego obszary są zmieniane w ciągu jednego dnia, dla każdego, kto nie ma już odpowiedzialność za usługi Log Analytics, w tym transfer i kończenie działania. Informacje o globalnej infrastruktury fizycznej, używamy w [Datacenters Microsoft](https://azure.microsoft.com/global-infrastructure/).
 
 ## <a name="incident-management"></a>Zarządzanie zdarzeniami
 Usługa log Analytics ma procesu zarządzania zdarzeniami, które przestrzegać wszystkich usług firmy Microsoft. Aby podsumować, firma Microsoft:

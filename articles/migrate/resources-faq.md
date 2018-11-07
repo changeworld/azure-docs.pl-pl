@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: snehaa
-ms.openlocfilehash: e39cf260cc4931fc0dddc4922479522cb521d08e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2f04fe103d010a64a77b7d80730cf80007c3c126
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407065"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256379"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Usługa Azure Migrate — często zadawane pytania (FAQ)
 
-Ten artykuł zawiera często zadawane pytania dotyczące usługi Azure Migrate. Jeśli masz dodatkowe pytania po przeczytaniu tego artykułu, opublikuj je na [forum usługi Azure Migrate](http://aka.ms/AzureMigrateForum).
+Ten artykuł zawiera często zadawane pytania dotyczące usługi Azure Migrate. Jeśli masz dodatkowe pytania po przeczytaniu tego artykułu, opublikuj je na [forum usługi Azure Migrate](https://aka.ms/AzureMigrateForum).
 
 ## <a name="general"></a>Ogólne
 
@@ -54,9 +54,9 @@ Usługa Azure Migrate obsługuje obecnie wschodnie stany USA i zachodnie stany U
 
 Połączenie może być za pośrednictwem Internetu lub korzystać z usługi ExpressRoute w publicznej komunikacji równorzędnej.
 
-### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Z maszyny Wirtualnej można zabezpieczyć. OVA szablonu?
+### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Czy można zabezpieczyć maszynę Wirtualną z szablonu OVA?
 
-Dodatkowe składniki (na przykład oprogramowanie antywirusowe) można dodać do. OVA tak długo, jak komunikacja i reguł zapory wymagane dla usługi Azure Migrate urządzenia do pracy pozostało jako jest szablon.   
+Tak długo, jak komunikacji i reguł zapory wymagane dla usługi Azure Migrate urządzenia do pracy pozostało jest dodatkowych składników (na przykład oprogramowanie antywirusowe) można dodać do szablonu OVA.   
 
 ## <a name="discovery"></a>Odnajdowanie
 
@@ -114,7 +114,7 @@ Urządzenie modułu zbierającego łączy z programem vCenter Server (port 443) 
 
 Tak, urządzenie jeden moduł zbierający może służyć do wykrywania vCenter wielu serwerów, ale nie jednocześnie. Musisz uruchomić odnajdywania, jeden po drugim.
 
-### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>Jest. Szablon OVA używane przez usługę Site Recovery jest zintegrowana z usługą. OVA używane przez usługę Azure Migrate?
+### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>Czy szablon OVA używany przez usługę Site Recovery jest zintegrowana z usługą OVA używane przez usługę Azure Migrate?
 
 Obecnie nie ma żadnych integracji. . Szablon OVA w usłudze Site Recovery jest używany do konfigurowania serwera konfiguracji Usługa Site Recovery w celu replikacji serwera fizycznego/VMware, maszyny Wirtualnej. . OVA używane przez usługę Azure Migrate służy do odnalezienia maszyn wirtualnych VMware, zarządzane przez serwer vCenter, na potrzeby oceny migracji.
 
@@ -141,9 +141,23 @@ Usługa Azure Migrate nie obsługuje obecnie Szacowanie kosztów dla [oferty z u
 
 ## <a name="dependency-visualization"></a>Wizualizacja zależności
 
+### <a name="what-is-dependency-visualization"></a>Co to jest wizualizacji zależności?
+
+Wizualizacja zależności umożliwia ocenę grupy maszyn wirtualnych do migracji z większą pewnością przez krzyżowe sprawdzanie zależności maszyny, przed uruchomieniem oceny. Wizualizacja zależności pomaga upewnić się, że nic nie jest pozostawione, unikanie nieoczekiwanych awarii podczas migracji na platformę Azure. Usługa Azure Migrate korzysta z rozwiązania mapy usługi w usłudze Log Analytics, aby umożliwić wizualizacji zależności.
+
 ### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>Czy muszę płacić za używanie funkcji wizualizacji zależności?
 
-Usługa Azure Migrate jest dostępna bez dodatkowych opłat. Więcej informacji o cenach usługi Azure Migrate można uzyskać [tutaj](https://azure.microsoft.com/pricing/details/azure-migrate/).
+Nie. Więcej informacji o cenach usługi Azure Migrate można uzyskać [tutaj](https://azure.microsoft.com/pricing/details/azure-migrate/).
+
+### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>Czy należy zainstalować żadnych wizualizacji zależności?
+
+Aby użyć wizualizacji zależności, musisz pobrać i zainstalować agentów na każdym komputerze w środowisku lokalnym, który ma zostać oceniona. 
+
+- [Microsoft Monitoring agent(MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) musi być zainstalowany na każdym komputerze.
+- [Agenta zależności](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) musi być zainstalowany na każdym komputerze.
+- Ponadto w przypadku maszyn bez łączności internetowej musisz pobrać i zainstalować bramę usługi Log Analytics na nich.
+
+Nie potrzebujesz tych agentów na komputerach, które chcesz ocenić, jeśli nie używasz wizualizacji zależności.
 
 ### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>Czy można używać istniejącego obszaru roboczego w celu wizualizacji zależności?
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio
-ms.openlocfilehash: 82580fbab68eab28a2027cd277213f1fb2a76e07
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 3556384d71649391d094172a136b863ed26fd2ad
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716005"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227403"
 ---
 > [!NOTE]
 > Ta dokumentacja nie jest już aktualny i nie jest właściwa lokalizacja. Zamiast tego, przejdź do portalu Azure Marketplace [Podręcznik sprzedawcy](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide) wskazówki dotyczące publikowania oferty w portalu Azure Marketplace.
@@ -28,7 +28,7 @@ ms.locfileid: "39716005"
 W tym artykule znajduje się w celu ułatwienia deweloperom tworzenie, wdrażanie i zarządzanie ich rozwiązania wymienione w portalu Azure Marketplace dla innych klientów platformy Azure i partnerom kupowanie oraz używanie.
 
 ## <a name="marketplace-publishing"></a>Publikowanie w witrynie Marketplace
-Jako platformy Azure wydawcy dystrybucji i sprzedawać innowacyjne rozwiązania lub usług innych deweloperów niezależnych dostawców oprogramowania i specjalistów IT w portalu Marketplace. Za pośrednictwem witryny Marketplace mogą dotrzeć do klientów, którzy chcą szybko tworzyć ich aplikacji opartych na chmurze i rozwiązań mobilnych. Jeśli rozwiązanie jest przeznaczony dla użytkowników biznesowych, warto wziąć pod uwagę [AppSource](http://appsource.microsoft.com) portalu marketplace.
+Jako platformy Azure wydawcy dystrybucji i sprzedawać innowacyjne rozwiązania lub usług innych deweloperów niezależnych dostawców oprogramowania i specjalistów IT w portalu Marketplace. Za pośrednictwem witryny Marketplace mogą dotrzeć do klientów, którzy chcą szybko tworzyć ich aplikacji opartych na chmurze i rozwiązań mobilnych. Jeśli rozwiązanie jest przeznaczony dla użytkowników biznesowych, warto wziąć pod uwagę [AppSource](https://appsource.microsoft.com) portalu marketplace.
 
 
 ## <a name="supported-types-of-solutions"></a>Obsługiwane typy rozwiązania
@@ -51,7 +51,7 @@ Aby opublikować maszynę wirtualną [rozwiązania](https://createopportunity.az
 >[!NOTE]
 > Pracując przy użyciu Menedżera kont partnerów lub Menedżera partnera DX poproś nominuj rozwiązania do programu certyfikatów platformy Azure. Można także przejść do [certyfikat platformy Microsoft Azure](http://createopportunity.azurewebsites.net) strony sieci Web i wypełnij formularz zgłoszeniowy. Wprowadź adres e-mail menedżera konta partnera lub DX Menedżera partnera w **skontaktuj się z Microsoft sponsora** pole.
 
-Jeśli spełniasz kryteria kwalifikacji [zasad uczestnictwa w portalu Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833) i wniosek zostanie zatwierdzony, możemy rozpocząć pracę możesz dołączyć rozwiązania w portalu Marketplace.
+Jeśli spełniasz kryteria kwalifikacji [zasad uczestnictwa w portalu Azure Marketplace](https://go.microsoft.com/fwlink/?LinkID=526833) i wniosek zostanie zatwierdzony, możemy rozpocząć pracę możesz dołączyć rozwiązania w portalu Marketplace.
 
 ### <a name="register-your-account-as-a-microsoft-seller"></a>Zarejestruj swoje konto jako sprzedawcy firmy Microsoft
 Zarejestruj konto Microsoft jako [konta Microsoft Developer](marketplace-publishing-accounts-creation-registration.md).

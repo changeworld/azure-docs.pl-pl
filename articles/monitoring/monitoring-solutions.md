@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: fb1a05a92244743ac8b5f980ff912c9e839d0609
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 53020eeb96927143b2fb7394aee64f9b7ea55df9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913006"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248966"
 ---
 # <a name="management-solutions-in-azure"></a>Rozwiązania do zarządzania na platformie Azure
 Rozwiązania do zarządzania korzystać z usług na platformie Azure, aby zapewnić dodatkowy wgląd w działania określonej aplikacji lub usługi. Ten artykuł zawiera krótkie omówienie rozwiązania do zarządzania na platformie Azure i uzyskać szczegółowe informacje na temat używania i instalując je.
@@ -104,5 +104,5 @@ Aby usunąć rozwiązanie zainstalowany, znajdź go w [listę zainstalowanych ro
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Pobierz [listę rozwiązań do zarządzania przez firmę Microsoft](monitoring-solutions-inventory.md).
-* Dowiedz się, jak [tworzenia zapytań](../log-analytics/log-analytics-log-search.md) analizować dane zbierane przez rozwiązania do zarządzania.
+* Dowiedz się, jak [tworzenia zapytań](../log-analytics/log-analytics-queries.md) analizować dane zbierane przez rozwiązania do zarządzania.
 

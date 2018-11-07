@@ -9,16 +9,16 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 05/20/2018
-ms.openlocfilehash: 33c3b91e7bf9fa64e3ba3f98a9396045753d0c2a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 5a2935d559a967151c5bdc01c4b0806fe52179b4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045698"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260044"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Rozwiązywanie problemów z nietypowym zadaniem cyklicznym
 
-W tym artykule pokazano, jak [Azure Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) rozwiązywania problemów z zadań cyklicznych. Dowiedz się więcej o potokach i zadania cykliczne z [Azure Data Lake i Azure HDInsight blog](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/).
+W tym artykule pokazano, jak [Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) rozwiązywania problemów z zadań cyklicznych. Dowiedz się więcej o potokach i zadania cykliczne z [Azure Data Lake i Azure HDInsight blog](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/).
 
 Zadania cykliczne zwykle współużytkować tę samą logikę zapytania i podobne dane wejściowe. Załóżmy, że to zadanie cykliczne uruchamianie każdego ranka poniedziałek o godzinie 8 Aby zliczyć ostatni tydzień, co tydzień aktywnego użytkownika. Skrypty dla tych zadań współużytkować jeden szablon skryptu, który zawiera logikę zapytania. Dane wejściowe dla tych zadań są dane użycia dla ostatniego tygodnia. Udostępnianie tej samej logiki zapytania i podobne dane wejściowe zazwyczaj oznacza, że wykonywania tych zadań podobne i stabilne. Jeśli jedno z zadań cyklicznych nagle wykonuje nieprawidłowo, kończy się niepowodzeniem lub spowalnia dużo, możesz chcieć:
 
@@ -39,7 +39,7 @@ Za pomocą **narzędzia** > **usługi Data Lake** > **widok zadania**, możesz w
  
 ### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>Przypadek 2: Masz potok zadanie cykliczne, ale nie jej adres URL
 
-W programie Visual Studio, możesz otworzyć przeglądarkę potoków za pomocą Eksploratora serwera > Twoje konto usługi Azure Data Lake Analytics > **potoki**. (Jeśli nie możesz znaleźć tego węzła w Eksploratorze serwera [Pobierz najnowszą wtyczkę](http://aka.ms/adltoolsvs).) 
+W programie Visual Studio, możesz otworzyć przeglądarkę potoków za pomocą Eksploratora serwera > Twoje konto usługi Azure Data Lake Analytics > **potoki**. (Jeśli nie możesz znaleźć tego węzła w Eksploratorze serwera [Pobierz najnowszą wtyczkę](https://aka.ms/adltoolsvs).) 
 
 ![Wybranie węzła potoków](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/pipeline-browser.png)
 

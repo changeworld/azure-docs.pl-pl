@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 94d96cab28f738984b3d05d5eee0754e8c5e75b6
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: d52431b50e37101b0272e3ce4bbf91011a477775
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341583"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252091"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pięć kroków do zabezpieczania infrastruktury tożsamości
 
@@ -182,4 +182,4 @@ Istnieje wiele aspektów, które bezpiecznej infrastruktury tożsamości, ale te
 Jesteśmy wdzięczni za jak poważny bezpieczeństwa tożsamości i mamy nadzieję, że ten dokument jest przydatne plan w celu bardziej bezpieczne działania dla Twojej organizacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Jeśli potrzebujesz pomocy, planowanie i wdrażanie zaleceń, zobacz [wdrożenia planów projektów w usłudze Azure AD](http://aka.ms/deploymentplans) Aby uzyskać pomoc.
+Jeśli potrzebujesz pomocy, planowanie i wdrażanie zaleceń, zobacz [wdrożenia planów projektów w usłudze Azure AD](https://aka.ms/deploymentplans) Aby uzyskać pomoc.

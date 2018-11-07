@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: laviswa
-ms.openlocfilehash: 766a2a9a2b71d9cd013f26b843d413d7603ab1fd
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 22b31e7df4e11f8f98877a8497b533203dcc26b3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051361"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233307"
 ---
 # <a name="query-azure-cosmos-db-data-with-sql-queries"></a>Wykonywanie zapytań dotyczących danych usługi Azure Cosmos DB za pomocą zapytań SQL
 
@@ -368,7 +368,7 @@ Następujące operatory dwuargumentowe są obecnie obsługiwane i mogą być uż
 |Operacje arytmetyczne    |   +,-,*,/,%   |
 |bitowe  |   |, &, ^, <<>>,, >>> (zero wypełnienia przesunięcia bitowego w prawo)      |
 |Logiczne   |   AND, OR, NOT      |
-|porównanie   |    =, !=, &lt;, &gt;, &lt;=, &gt;=, <>     |
+|Porównanie   |    =, !=, &lt;, &gt;, &lt;=, &gt;=, <>     |
 |Ciąg  |  || (Połącz)       |
 
 Spójrzmy na kilka zapytań przy użyciu operatorów binarnych.
@@ -1557,7 +1557,7 @@ Funkcje sprawdzania typu pozwalają sprawdzić typ wyrażenia w ramach zapytania
 
 <table>
 <tr>
-  <td><strong>Sposób użycia</strong></td>
+  <td><strong>Użycie</strong></td>
   <td><strong>Opis</strong></td>
 </tr>
 <tr>
@@ -1763,7 +1763,7 @@ Usługa cosmos DB obsługuje następujące funkcje wbudowane Otwórz dane geogra
 
 <table>
 <tr>
-  <td><strong>Sposób użycia</strong></td>
+  <td><strong>Użycie</strong></td>
   <td><strong>Opis</strong></td>
 </tr>
 <tr>
@@ -2405,13 +2405,13 @@ Poniższy przykład pokazuje, jak queryDocuments w serwerze JavaScript API słu�
 
 ## <a id="References"></a>Odwołania
 1. [Wprowadzenie do usługi Azure Cosmos DB][introduction]
-2. [Usługa Azure Cosmos DB SQL specyfikacji](http://go.microsoft.com/fwlink/p/?LinkID=510612)
+2. [Usługa Azure Cosmos DB SQL specyfikacji](https://go.microsoft.com/fwlink/p/?LinkID=510612)
 3. [Przykłady usługi Azure Cosmos DB .NET](https://github.com/Azure/azure-documentdb-net)
 4. [Poziomy spójności usługi Azure Cosmos DB][consistency-levels]
 5. ANSI SQL 2011 [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 6. JSON [http://json.org/](http://json.org/)
 7. Specyfikacja języka JavaScript [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
-8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
+8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](https://msdn.microsoft.com/library/bb308959.aspx) 
 9. Technik oceny wykonania zapytania w przypadku dużych baz danych [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
 10. Przetwarzania zapytań w systemy równoległe relacyjnych baz danych, komputer IEEE Press społeczeństwa 1994 r.
 11. Tan — lu, Ooi, przetwarzania w systemach równoległe relacyjnej bazy danych, komputer IEEE Press społeczeństwa 1994 r. zapytań.

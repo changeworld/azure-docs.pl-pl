@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/01/2017
 ms.author: wesmc
-ms.openlocfilehash: 047d23184ccf640dd6510faca9f508eef0dc50cb
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: e007b23b6e4a55e2a939994e8f95d01fc24cc529
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050817"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241581"
 ---
 # <a name="aspnet-session-state-provider-for-azure-redis-cache"></a>Dostawca stanu sesji ASP.NET dla usługi Azure Redis Cache
 Usługa Azure Redis Cache zapewnia dostawcy stanu sesji, który służy do przechowywania Twojego sesji stanu w pamięci z usługą Redis Cache zamiast bazy danych programu SQL Server. Aby korzystać z pamięci podręcznej dostawcy stanu sesji, najpierw skonfigurować pamięć podręczną, a następnie skonfiguruj aplikację ASP.NET w pamięci podręcznej przy użyciu pakietu NuGet stanu sesji pamięci podręcznej Redis.
@@ -94,11 +94,11 @@ Konfigurowanie atrybutów przy użyciu wartości z bloku usługi pamięci podrę
 * **retryTimeoutInMilliseconds** — operacje, które nie zostaną ponowione w danym przedziale czasu w milisekundach. Pierwszym ponowieniem próby występuje po 20 MS, a następnie ponowne próby są wykonywane co sekundę, do czasu wygaśnięcia interwału retryTimeoutInMilliseconds. Natychmiast po tym okresie jeden raz końcowego jest próba powtórzenia operacji. Jeśli nadal kończy się niepowodzeniem, wyjątek jest zgłaszany ponownie do obiektu wywołującego, w zależności od ustawienia throwOnError. Wartość domyślna to 0, co oznacza brak ponownych prób.
 * **databaseId** — Określa, które bazy danych na potrzeby pamięci podręcznej danych wyjściowych. Jeśli nie zostanie określony, jest używana domyślna wartość 0.
 * **applicationName** — klucze są przechowywane w pamięci podręcznej redis jako `{<Application Name>_<Session ID>}_Data`. Ten schemat nazewnictwa umożliwia wielu aplikacjom na udostępnianie tego samego wystąpienia usługi Redis. Ten parametr jest opcjonalny, a jeśli nie zostanie określona wartość domyślna jest używana.
-* **connectionTimeoutInMilliseconds** — to ustawienie pozwala zastąpić ustawienie connectTimeout klienta StackExchange.Redis. Jeśli nie zostanie określony, używane jest domyślne ustawienie connectTimeout 5000. Aby uzyskać więcej informacji, zobacz [modelu konfiguracji StackExchange.Redis](http://go.microsoft.com/fwlink/?LinkId=398705).
-* **operationTimeoutInMilliseconds** — to ustawienie pozwala zastąpić ustawienie syncTimeout klienta StackExchange.Redis. Jeśli nie zostanie określony, używane jest domyślne ustawienie syncTimeout 1000. Aby uzyskać więcej informacji, zobacz [modelu konfiguracji StackExchange.Redis](http://go.microsoft.com/fwlink/?LinkId=398705).
+* **connectionTimeoutInMilliseconds** — to ustawienie pozwala zastąpić ustawienie connectTimeout klienta StackExchange.Redis. Jeśli nie zostanie określony, używane jest domyślne ustawienie connectTimeout 5000. Aby uzyskać więcej informacji, zobacz [modelu konfiguracji StackExchange.Redis](https://go.microsoft.com/fwlink/?LinkId=398705).
+* **operationTimeoutInMilliseconds** — to ustawienie pozwala zastąpić ustawienie syncTimeout klienta StackExchange.Redis. Jeśli nie zostanie określony, używane jest domyślne ustawienie syncTimeout 1000. Aby uzyskać więcej informacji, zobacz [modelu konfiguracji StackExchange.Redis](https://go.microsoft.com/fwlink/?LinkId=398705).
 * **redisSerializerType** — to ustawienie umożliwia określenie niestandardowej serializacji zawartości sesji, które są wysyłane do usługi Redis. Określony typ musi implementować `Microsoft.Web.Redis.ISerializer` i zadeklarować publicznego konstruktora bez parametrów. Domyślnie `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` jest używany.
 
-Aby uzyskać więcej informacji o tych właściwościach, zobacz oryginalnego wpis na blogu w [ogłoszenie dostawca stanu sesji ASP.NET dla usługi Redis](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
+Aby uzyskać więcej informacji o tych właściwościach, zobacz oryginalnego wpis na blogu w [ogłoszenie dostawca stanu sesji ASP.NET dla usługi Redis](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
 
 Nie zapomnij o komentarz standardowa InProc sesji stan dostawcy sekcji w z pliku web.config.
 

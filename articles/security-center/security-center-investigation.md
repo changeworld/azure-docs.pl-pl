@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 8c236b995d71cd067546cea5eeaaebe6d5dc4fab
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: de8a61b315ad433bef638368a30130b677e0a005
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300651"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229018"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Badanie zdarzeń i alertów w usłudze Azure Security Center (wersja zapoznawcza)
 Ten dokument ułatwia korzystanie z funkcji badania zdarzeń zabezpieczeń i alertów w usłudze Azure Security Center.
@@ -118,4 +118,4 @@ W tym dokumencie przedstawiono sposób użycia funkcji badania w usłudze Securi
 * [Informacje o alertach zabezpieczeń w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Poznaj różne typy alertów zabezpieczeń.
 * [Przewodnik rozwiązywania problemów z usługą Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Dowiedz się, jak rozwiązywać typowe problemy z usługą Security Center.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md). Odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
-* [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/). Wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
+* [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/). Wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.

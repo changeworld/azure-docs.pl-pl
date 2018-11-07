@@ -4,9 +4,6 @@ description: W tym artykule wyjaśniono, jak platforma Azure zapewnia maszyny wi
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jpconnock
-editor: ''
-ms.assetid: 5f666f2a-3a63-405a-abcd-b2e34d40e001
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2018
 ms.author: kumud
-ms.openlocfilehash: 58ae89a6b9d7b9e3858358d290e3ecb197e0ac2b
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 1d851b60909d548a0735e3827cdfc7746fd8121d
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249132"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219719"
 ---
 # <a name="outbound-connections-in-azure"></a>Połączenia wychodzące na platformie Azure
 
@@ -45,7 +42,7 @@ Usługa Azure Load Balancer i powiązane zasoby są jawnie zdefiniowane podczas 
 | --- | --- | --- | --- |
 | [1. Maszyny Wirtualnej przy użyciu adresu publicznego adresu IP poziomu wystąpienia (z lub bez modułu równoważenia obciążenia)](#ilpip) | Nieużywany port maskaradę SNAT, | TCP, UDP, ICMP, ESP | Platforma Azure korzysta z publicznego adresu IP, przypisany do konfiguracji IP karty sieciowej. wystąpienie programu Wystąpienie ma wszystkie dostępne porty efemeryczne. |
 | [2. Publiczny moduł równoważenia obciążenia skojarzone z maszyną Wirtualną (Brak adresu publicznym adresem IP na poziomie wystąpienia na wystąpieniu)](#lb) | SNAT przy użyciu portu maskaradę (PAT) przy użyciu frontonów modułu równoważenia obciążenia | TCP, UDP |Platforma Azure udostępnia publiczny adres IP publicznego frontonów modułu równoważenia obciążenia za pomocą wielu prywatnych adresów IP. Platforma Azure używa portów tymczasowych z frontonów osobisty token dostępu. |
-| [3. Autonomiczna maszyna wirtualna, (Brak usługi równoważenia obciążenia, żaden adres publiczny adres IP poziomu wystąpienia)](#defaultsnat) | SNAT przy użyciu portu maskaradę (PAT) | TCP, UDP | Azure automatycznie wyznacza publiczny adres IP dla SNAT, udostępnia ten publiczny adres IP za pomocą wielu prywatnych adresów IP zestawu dostępności i korzysta z portów tymczasowych ten publiczny adres IP. Jest to rezerwowego scenariusz dla powyższych scenariuszy. Firma Microsoft nie zaleca, aby uzyskać lepszy wgląd i kontrolę. |
+| [3. Autonomiczna maszyna wirtualna, (Brak usługi równoważenia obciążenia, żaden adres publiczny adres IP poziomu wystąpienia)](#defaultsnat) | SNAT przy użyciu portu maskaradę (PAT) | TCP, UDP | Azure automatycznie wyznacza publiczny adres IP dla SNAT, udostępnia ten publiczny adres IP za pomocą wielu prywatnych adresów IP zestawu dostępności i korzysta z portów tymczasowych ten publiczny adres IP. Ten scenariusz jest rezerwowych dla powyższych scenariuszy. Firma Microsoft nie zaleca, aby uzyskać lepszy wgląd i kontrolę. |
 
 Jeśli nie chcesz, aby maszyny Wirtualnej w celu komunikowania się z punktami końcowymi spoza platformy Azure w publicznej przestrzeni adresów IP, można użyć grup zabezpieczeń sieci (NSG) w celu zablokowania dostępu, zgodnie z potrzebami. Sekcja [zapobieganie łączności wychodzącej](#preventoutbound) omówienie sieciowych grup zabezpieczeń w bardziej szczegółowo. Wskazówki dotyczące projektowania, wdrażania i zarządzania bez żadnych wychodzącego dostępu do sieci wirtualnej znajduje się poza zakres tego artykułu.
 
@@ -53,7 +50,7 @@ Jeśli nie chcesz, aby maszyny Wirtualnej w celu komunikowania się z punktami k
 
 W tym scenariuszu maszyna wirtualna ma wystąpienia poziom publicznego adresu IP (ILPIP) do niej przypisany. Jeśli chodzi o połączeniach wychodzących, nie ma znaczenia, czy maszyna wirtualna jest równoważone, czy nie. Ten scenariusz ma pierwszeństwo przed innymi. Gdy używany jest ILPIP, maszyna wirtualna używa ILPIP wszystkie przepływy ruchu wychodzącego.  
 
-Publiczny adres IP przypisane do maszyny Wirtualnej jest 1:1 relację (zamiast 1: duży zakres) i zaimplementowane jako bezstanowej translatorem adresów sieciowych 1:1  Nie jest używany port zamaskowany (PAT), a maszyna wirtualna ma wszystkie porty efemeryczne dostępne do użycia.
+Publiczny adres IP przypisany do maszyny Wirtualnej jest to relacja 1:1 (zamiast 1: wiele) oraz implementowany jako bezstanowej translatorem adresów sieciowych 1:1  Nie jest używany port zamaskowany (PAT), a maszyna wirtualna ma wszystkie porty efemeryczne dostępne do użycia.
 
 Jeśli wystąpią wyczerpanie portów SNAT aplikacji inicjuje wiele przepływów ruchu wychodzącego, należy wziąć pod uwagę przypisywanie [ILPIP złagodzić ograniczenia SNAT](#assignilpip). Przegląd [wyczerpania Zarządzanie SNAT](#snatexhaust) w całości.
 
@@ -75,7 +72,7 @@ Aby monitorować kondycję połączenia wychodzące z podstawowego modułu równ
 
 ### <a name="defaultsnat"></a>Scenariusz 3: Autonomiczny z maszyny Wirtualnej bez adresu publicznym adresem IP na poziomie wystąpienia
 
-W tym scenariuszu maszyna wirtualna nie jest częścią puli publicznego modułu równoważenia obciążenia (i nie jest częścią puli wewnętrznej Balancer w warstwie standardowa) i nie ma przypisanego adresu ILPIP. Podczas tworzenia maszyny Wirtualnej przepływu wychodzącego, Azure tłumaczy prywatnej źródłowy adres IP przepływu wychodzącego do publicznych źródłowego adresu IP. Publiczny adres IP używany dla tego przepływu ruchu wychodzącego nie konfiguruje się i nie wliczają subskrypcji publicznego adresu IP limit zasobów. Ten publiczny adres IP nie należy do Ciebie i nie może być zastrzeżone. Jeśli ponowne wdrażanie maszyny Wirtualnej lub zestawu dostępności lub zestawu skalowania maszyn wirtualnych, ten publiczny adres IP zostaną zwolnione, a żądane nowego publicznego adresu IP. Nie należy używać w tym scenariuszu do listy dozwolonych adresów IP. Zamiast tego należy użyć jednego z dwóch scenariuszy gdzie można jawnie deklarować wychodzącego scenariusza i publiczny adres IP, który ma być używany dla łączności wychodzącej.
+W tym scenariuszu maszyna wirtualna nie jest częścią puli publicznego modułu równoważenia obciążenia (i nie jest częścią puli wewnętrznej Balancer w warstwie standardowa) i nie ma przypisanego adresu ILPIP. Podczas tworzenia maszyny Wirtualnej przepływu wychodzącego, Azure tłumaczy prywatnej źródłowy adres IP przepływu wychodzącego do publicznych źródłowego adresu IP. Publiczny adres IP używany dla tego przepływu ruchu wychodzącego nie konfiguruje się i nie wliczają subskrypcji publicznego adresu IP limit zasobów. Ten publiczny adres IP nie należy do Ciebie i nie może być zastrzeżone. Jeśli ponowne wdrażanie zestawu skalowania maszyn wirtualnych lub zestawu dostępności lub maszyny wirtualnej, ten publiczny adres IP zostaną zwolnione i zażądano nowego publicznego adresu IP. Nie należy używać w tym scenariuszu do listy dozwolonych adresów IP. Zamiast tego należy użyć jednego z dwóch scenariuszy gdzie można jawnie deklarować wychodzącego scenariusza i publiczny adres IP, który ma być używany dla łączności wychodzącej.
 
 >[!IMPORTANT] 
 >Ten scenariusz ma zastosowanie również podczas __tylko__ wewnętrznego podstawowego modułu równoważenia obciążenia jest dołączony. Scenariusz 3 jest __nie jest dostępna__ podczas wewnętrznego standardowego modułu równoważenia obciążenia jest dołączony do maszyny Wirtualnej.  Należy jawnie utworzyć [scenariusz 1](#ilpip) lub [Scenariusz 2](#lb) oprócz używania wewnętrznego standardowego modułu równoważenia obciążenia.
@@ -106,7 +103,7 @@ Można wybrać pominąć adresu IP frontonu z używane dla połączeń wychodzą
       ]
 ```
 
-Normalnie, ta opcja domyślnie przyjmuje wartość _false_ i oznacza, że ta zasada programy SNAT wychodzących na skojarzonych maszynach wirtualnych w puli zaplecza reguły równoważenia obciążenia.  Można to zmienić na _true_ aby zapobiec modułu równoważenia obciążenia dla połączeń wychodzących dla maszyny Wirtualnej przy użyciu adresu IP frontonu skojarzona z zasadami zachowania w puli zaplecza tej reguły równoważenia obciążenia.  I nadal można wyznaczyć określonego adresu IP dla ruchu wychodzącego przepływów, zgodnie z opisem w [wiele scenariuszy w połączeniu](#combinations) także.
+Zwykle `disableOutboundSnat` opcję wartość domyślna to _false_ i oznacza, że ta zasada programy SNAT wychodzących na skojarzonych maszynach wirtualnych w puli zaplecza reguły równoważenia obciążenia. `disableOutboundSnat` Można ją zmienić na _true_ aby zapobiec modułu równoważenia obciążenia przy użyciu adresu IP frontonu skojarzona dla połączeń wychodzących dla maszyn wirtualnych w puli zaplecza tej reguły równoważenia obciążenia.  I nadal można wyznaczyć określonego adresu IP dla ruchu wychodzącego przepływów, zgodnie z opisem w [wiele scenariuszy w połączeniu](#combinations) także.
 
 #### <a name="load-balancer-basic"></a>Podstawowy moduł równoważenia obciążenia
 
@@ -187,7 +184,7 @@ SNAT porty są określonego protokołu transportowego IP (TCP i UDP są obsługi
 
 ## <a name="problemsolving"></a> Rozwiązywanie problemów 
 
-Ta sekcja ma na celu ułatwić uniknięcie wyczerpania SNAT i innych scenariuszy, które mogą wystąpić w przypadku połączeń wychodzących na platformie Azure.
+W tej sekcji ma na celu ułatwić uniknięcie wyczerpania SNAT i który może wystąpić w przypadku połączeń wychodzących na platformie Azure.
 
 ### <a name="snatexhaust"></a> Zarządzanie wyczerpanie portów SNAT (PAT)
 [Porty efemeryczne](#preallocatedports) umożliwiający [osobisty token dostępu](#pat) są wyczerpującymi zasobów zgodnie z opisem w [autonomicznych maszyn wirtualnych, bez adresu publicznym adresem IP na poziomie wystąpienia](#defaultsnat) i [ze zrównoważonym obciążeniem maszynę Wirtualną bez Wystąpienie poziomu publiczny adres IP](#lb).
@@ -219,7 +216,7 @@ Przypisywanie ILPIP zmienia dany scenariusz [wystąpienia poziom publicznego adr
 
 #### <a name="multifesnat"></a>Użyj wiele frontonów
 
-Korzystając z publicznego standardowego modułu równoważenia obciążenia, Przypisz [wiele adresów IP frontonu dla połączeń wychodzących](#multife) i [należy pomnożyć liczbę dostępnych portów SNAT](#preallocatedports).  Musisz utworzyć konfigurację adresu IP frontonu, reguły i pulę zaplecza, aby wyzwolić programowanie SNAT na publiczny adres IP frontonu.  Reguła nie musi działać i sondę kondycji nie niezbędnych do osiągnięcia sukcesu.  Jeśli używasz wielu frontonów dla ruchu przychodzącego oraz (a nie tylko dla ruchu wychodzącego), należy użyć niestandardowych sond kondycji oraz w celu zapewnienia niezawodności.
+Korzystając z publicznego standardowego modułu równoważenia obciążenia, Przypisz [wiele adresów IP frontonu dla połączeń wychodzących](#multife) i [należy pomnożyć liczbę dostępnych portów SNAT](#preallocatedports).  Utwórz konfigurację adresu IP frontonu, reguły i pulę zaplecza, aby wyzwolić programowanie SNAT na publiczny adres IP frontonu.  Reguła nie musi działać i sondę kondycji nie niezbędnych do osiągnięcia sukcesu.  Jeśli używasz wielu frontonów dla ruchu przychodzącego oraz (a nie tylko dla ruchu wychodzącego), należy użyć niestandardowych sond kondycji oraz w celu zapewnienia niezawodności.
 
 >[!NOTE]
 >W większości przypadków wyczerpanie portów SNAT jest znakiem zły projektu.  Upewnij się, że rozumiesz, dlaczego są porty wyczerpuje przed użyciem frontonów więcej, aby dodać porty SNAT.  Może być maskowanie problemu, co może prowadzić do awarii później.
@@ -228,7 +225,7 @@ Korzystając z publicznego standardowego modułu równoważenia obciążenia, Pr
 
 [Wstępnie przydzielonych portów](#preallocatedports) są przypisywane w zależności od rozmiaru puli zaplecza i zgrupowane w warstwach, aby zminimalizować zakłócenia, gdy niektóre z portów, zostają przeniesione w celu uwzględnienia następnej warstwy rozmiar większych puli zaplecza.  Masz możliwość zwiększenia intensywności SNAT użycie portu dla danego serwera sieci Web przy użyciu skalowania puli wewnętrznej bazy danych do maksymalnego rozmiaru dla danej warstwy.  Wymaga to aplikacja może efektywnie skalować w poziomie.
 
-Na przykład 2 maszyny wirtualne w puli zaplecza musi 1024 SNAT portów dostępnych na konfiguracji IP, co daje w sumie 2048 SNAT portów dla wdrożenia.  Gdyby można zwiększyć do 50 wirtualnego wdrożenie maszyn, nawet wtedy, gdy liczba portów pozostaje stała na maszynę wirtualną, w sumie 51,200 (50 x 1024) wstępnie przydzielonych portów SNAT może służyć przez wdrożenie.  Jeśli chcesz skalować wdrożenie, sprawdź liczbę [wstępnie przydzielonych portów](#preallocatedports) na warstwę, aby upewnić się, że kształt usługi skalowania w poziomie do maksymalnej liczby odpowiedniej warstwy.  W poprzednim przykładzie Jeżeli wybrano skalowanie w poziomie do 51 zamiast 50 wystąpień, czy postępy do następnej warstwy i na końcu się przy użyciu mniejszej liczby portów SNAT na maszynę Wirtualną oraz jak Suma.
+Na przykład dwie maszyny wirtualne w puli zaplecza musi 1024 SNAT portów dostępnych na konfiguracji IP, co daje w sumie 2048 SNAT portów dla wdrożenia.  Gdyby można zwiększyć do 50 wirtualnego wdrożenie maszyn, nawet wtedy, gdy liczba portów pozostaje stała na maszynę wirtualną, w sumie 51,200 (50 x 1024) wstępnie przydzielonych portów SNAT może służyć przez wdrożenie.  Jeśli chcesz skalować wdrożenie, sprawdź liczbę [wstępnie przydzielonych portów](#preallocatedports) na warstwę, aby upewnić się, że kształt usługi skalowania w poziomie do maksymalnej liczby odpowiedniej warstwy.  W poprzednim przykładzie Jeżeli wybrano skalowanie w poziomie do 51 zamiast 50 wystąpień, czy postępy do następnej warstwy i na końcu się przy użyciu mniejszej liczby portów SNAT na maszynę Wirtualną oraz jak Suma.
 
 Skalowanie do następnej warstwy rozmiar większych puli wewnętrznej bazy danych czy potencjalną niektórych połączeń wychodzących przekroczenie limitu czasu Jeśli przydzielonych portów odbiorczego.  Jeśli używasz tylko niektóre z portów SNAT, skalowanie w poziomie na następny większy rozmiar puli wewnętrznej bazy danych nie jest istotny.  Połowa istniejących portów zostanie przesunięte na każdym razem, gdy przeniesiesz do następnej warstwy wewnętrznej bazy danych w puli.  Jeśli nie ma to miejsce, musisz kształt wdrożenia do warstwy o rozmiarze.  Lub aplikacji można wykryć i spróbuj ponownie gdy jest to konieczne.  TCP keepalives mogą pomóc w Wykryj, kiedy użyć funkcji SNAT względem porty nie są już funkcji z powodu przydzielany.
 
@@ -254,7 +251,7 @@ Jeśli sieciowa grupa zabezpieczeń blokuje żądania sondy kondycji z tagu domy
 
 ## <a name="limitations"></a>Ograniczenia
 - DisableOutboundSnat nie jest dostępny jako opcja, podczas konfigurowania reguły w portalu usługi równoważenia obciążenia.  Zamiast tego użyj narzędzia REST, szablonu lub klienta.
-- Role procesów roboczych w sieci Web bez sieci wirtualnej i innych usług platformy Microsoft może być dostępny, gdy tylko wewnętrznego standardowego modułu równoważenia obciążenia jest używana z powodu efekt uboczny z jak pre-sieć wirtualna usługi i innych platform services — funkcja. Należy nie polegać na ten efekt uboczny odpowiednio obsługi autonomiczną usługą Intune a bazowego platformy mogą ulec zmianie bez powiadomienia. Zawsze należy zakładać, że należy jawnie utworzyć łączności wychodzącej w razie potrzeby, korzystając z wewnętrznego standardowego modułu równoważenia obciążenia tylko. [Domyślne SNAT](#defaultsnat) Scenariusz 3 opisane w tym artykule nie jest dostępna.
+- Role procesów roboczych w sieci Web bez sieci wirtualnej i innych usług platformy Microsoft może być dostępny, gdy tylko wewnętrznego standardowego modułu równoważenia obciążenia jest używana z powodu efekt uboczny z jak pre-sieć wirtualna usługi i innych platform services — funkcja. Nie należy polegać na ten efekt uboczny jako sama usługa odpowiednich lub podstawowej platformy mogą ulec zmianie bez powiadomienia. Zawsze należy zakładać, że należy jawnie utworzyć łączności wychodzącej w razie potrzeby, korzystając z wewnętrznego standardowego modułu równoważenia obciążenia tylko. [Domyślne SNAT](#defaultsnat) Scenariusz 3 opisane w tym artykule nie jest dostępna.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.component: tables
-ms.openlocfilehash: 783522997a752c4eac575316983bc6ef853c3f43
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: c5b18bce9d0cf78569d0c2fa02ad14c96ad09bd1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526916"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237778"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Projektowanie skalowalnych i wydajnych tabel
 
@@ -37,7 +37,7 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Sygnatura czasowa</th>
+<th>Znacznik czasu</th>
 <th></th>
 </tr>
 <tr>
@@ -121,7 +121,7 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 </table>
 
 
-Do tej pory tych danych zostanie wyświetlony podobny do tabeli w relacyjnej bazie danych podstawowych różnic obowiązkowe kolumn i możliwość przechowywania wielu typów jednostek w tej samej tabeli. Ponadto każda właściwości zdefiniowane przez użytkownika, takie jak **FirstName** lub **wiek** ma typ danych, takie jak liczba całkowita lub ciąg, po prostu, takich jak kolumny w relacyjnej bazie danych. Mimo że w przeciwieństwie do relacyjnej bazy danych bez schematu charakter usługi Table service oznacza właściwości nie wymagają tych samych danych, wpisz dla każdej jednostki. Aby złożone typy danych są przechowywane w pojedynczej właściwości, należy użyć serializacji formatu JSON lub XML. Aby uzyskać więcej informacji na temat usługi, takie jak obsługiwane typy danych w tabelach, zakresów dat obsługiwanych, zasady nazewnictwa i ograniczeń związanych z rozmiarem, zobacz [opis modelu danych usługi Table Service](http://msdn.microsoft.com/library/azure/dd179338.aspx).
+Do tej pory tych danych zostanie wyświetlony podobny do tabeli w relacyjnej bazie danych podstawowych różnic obowiązkowe kolumn i możliwość przechowywania wielu typów jednostek w tej samej tabeli. Ponadto każda właściwości zdefiniowane przez użytkownika, takie jak **FirstName** lub **wiek** ma typ danych, takie jak liczba całkowita lub ciąg, po prostu, takich jak kolumny w relacyjnej bazie danych. Mimo że w przeciwieństwie do relacyjnej bazy danych bez schematu charakter usługi Table service oznacza właściwości nie wymagają tych samych danych, wpisz dla każdej jednostki. Aby złożone typy danych są przechowywane w pojedynczej właściwości, należy użyć serializacji formatu JSON lub XML. Aby uzyskać więcej informacji na temat usługi, takie jak obsługiwane typy danych w tabelach, zakresów dat obsługiwanych, zasady nazewnictwa i ograniczeń związanych z rozmiarem, zobacz [opis modelu danych usługi Table Service](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
 Wybór **PartitionKey** i **RowKey** ma podstawowe znaczenie dla projektu dobre tabeli. Każda jednostka przechowywana w tabeli musi mieć unikatową kombinację **PartitionKey** i **RowKey**. Podobnie jak w przypadku kluczy w tabeli relacyjnej bazy danych, **PartitionKey** i **RowKey** wartości są indeksowane, aby utworzyć indeks klastrowany, aby umożliwić szybkie wyszukania. Jednak usługa Table service nie tworzy żadnych indeksów pomocniczych, więc **PartitionKey** i **RowKey** są tylko właściwości indeksowanych. Niektóre wzorce opisane w [wzorce projektowe oparte na tabeli](table-storage-design-patterns.md) pokazują, jak można obejść to ograniczenie jawnego.  
 
@@ -132,7 +132,7 @@ Nazwa konta, nazwę tabeli i **PartitionKey** razem identyfikują partycji w ram
 
 W usłudze Table service oddzielnego węzła usługi jeden lub więcej zakończą się partycji i skali usługi przez dynamiczne równoważenie obciążenia partycji na węzłach. Jeśli węzeł ma pod obciążeniem, usłudze table service można *podziału* zakresu partycji obsługiwanych przez ten węzeł na różnych węzłach; gdy zmniejszenia ruchu, usługa może *scalania* zakresu partycji z węzłów cichy na jednym węźle.  
 
-Aby uzyskać więcej informacji na temat szczegółami wewnętrznymi usługi Table service, a w szczególności w jaki sposób usługa zarządza partycjami, zobacz dokument [usługi Microsoft Azure Storage: A o wysokiej dostępności usługi magazynu w chmurze with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Aby uzyskać więcej informacji na temat szczegółami wewnętrznymi usługi Table service, a w szczególności w jaki sposób usługa zarządza partycjami, zobacz dokument [usługi Microsoft Azure Storage: A o wysokiej dostępności usługi magazynu w chmurze with Strong Consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ## <a name="entity-group-transactions"></a>Transakcje grupy jednostek
 W usłudze Table service transakcji grup jednostek (EGTs) są tylko wbudowanego mechanizmu do wykonywania niepodzielnych aktualizacje w wielu jednostkach. EGTs są również czasami nazywane *partii transakcji*. EGTs może działać tylko na jednostek przechowywanych w tej samej partycji (czyli udział w tym samym kluczem partycji w danej tabeli). Aby w dowolnym momencie atomic transakcyjnych zachowanie jest wymagana w wielu jednostkach, upewnij się, że te jednostki są w tej samej partycji. Jest to często Przyczyna zachowaniem typów jednostek w tej samej tabeli (i partycji), a nie przy użyciu wielu tabel dla jednostek różnych typów. Pojedynczy EGT może operować na co najwyżej 100 jednostek.  Jeśli prześlesz wielu jednoczesnych EGTs do przetwarzania, jest ważne, aby upewnić się, że te EGTs nie działają na jednostkach, które są wspólne dla EGTs; w przeciwnym razie przetwarzania może być opóźnione.
@@ -152,7 +152,7 @@ W poniższej tabeli opisano niektóre z kluczowych wartości pod uwagę podczas 
 | Rozmiar **RowKey** |Ciąg do 1 KB rozmiaru |
 | Rozmiar transakcji grup jednostek |Transakcja może zawierać co najwyżej 100 jednostek i ładunek musi być mniejszy niż 4 MB. EGT można aktualizować tylko jednostki jeden raz. |
 
-Aby uzyskać więcej informacji, zobacz [Understanding the Table Service Data Model (Omówienie modelu danych usługi Table Service)](http://msdn.microsoft.com/library/azure/dd179338.aspx).  
+Aby uzyskać więcej informacji, zobacz [Understanding the Table Service Data Model (Omówienie modelu danych usługi Table Service)](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
 
 ## <a name="cost-considerations"></a>Kwestie związane z kosztami
 Magazyn tabel jest względnie niedrogie ulepszenie, ale powinien zawierać szacowane koszty użycia pojemności i liczba transakcji w ramach oceny od wszelkich rozwiązań do tabeli usługi. Jednak w wielu scenariuszach nieznormalizowany lub zduplikowane dane są przechowywane w celu poprawy wydajności i skalowalności rozwiązania jest prawidłowy podejście. Aby uzyskać więcej informacji o cenach, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  

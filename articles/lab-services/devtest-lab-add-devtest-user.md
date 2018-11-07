@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 8f9504458b1f332193e8457bcc9cf41e85fd6aca
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 558df3fa70989aaf9ba182df3a918994c7dc9db6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38573404"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243713"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Dodawanie właścicieli i użytkowników w usłudze Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -64,7 +64,7 @@ W poniższej tabeli przedstawiono akcje, które mogą być wykonywane przez uży
 Na poziomie laboratorium za pośrednictwem witryny Azure portal można dodać właścicieli i użytkowników. Może nim być użytkownik zewnętrzny przy użyciu prawidłowego [konta Microsoft (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account).
 Poniższe kroki ułatwiają dodanie właściciela lub użytkowników do laboratorium Azure DevTest Labs:
 
-1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
 3. Z listy labs wybierz żądane laboratorium.
 4. W bloku laboratorium wybierz **konfiguracji i zasad**. 
@@ -116,11 +116,11 @@ Możesz pobrać `subscriptionId`, `labResourceGroup`, i `labName` wartości z bl
 ## <a name="add-an-owner-or-user-at-the-subscription-level"></a>Dodawanie właściciela lub użytkowników na poziomie subskrypcji
 Uprawnienia platformy Azure są propagowane w zakresie nadrzędnym zakresem podrzędnych na platformie Azure. W związku z tym właścicieli subskrypcji platformy Azure, która zawiera labs są wykonywane automatycznie właścicieli tych laboratoriów. Właścicielem również maszyny wirtualne i inne zasoby utworzone przez użytkowników laboratorium i usługa Azure DevTest Labs. 
 
-Możesz dodać dodatkowych właścicieli do laboratorium za pomocą bloku laboratorium w [witryny Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040). Dodano właściciela zakres administracji jest jednak bardziej wąskie niż zakres właścicielem subskrypcji. Na przykład dodano właścicieli ma pełny dostęp do niektórych zasobów, które są tworzone w ramach subskrypcji w usłudze DevTest Labs. 
+Możesz dodać dodatkowych właścicieli do laboratorium za pomocą bloku laboratorium w [witryny Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040). Dodano właściciela zakres administracji jest jednak bardziej wąskie niż zakres właścicielem subskrypcji. Na przykład dodano właścicieli ma pełny dostęp do niektórych zasobów, które są tworzone w ramach subskrypcji w usłudze DevTest Labs. 
 
 Aby dodać właściciela do subskrypcji platformy Azure, wykonaj następujące kroki:
 
-1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Wybierz **wszystkich usług**, a następnie wybierz pozycję **subskrypcje** z listy.
 3. Wybierz odpowiednią subskrypcję.
 4. Wybierz **dostępu** ikony. 

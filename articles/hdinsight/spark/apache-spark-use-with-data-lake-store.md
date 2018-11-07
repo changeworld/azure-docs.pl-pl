@@ -3,18 +3,18 @@ title: Analizowanie danych w usłudze Azure Data Lake Store przy użyciu platfor
 description: Uruchamianie zadań Spark do analizy danych przechowywanych w usłudze Azure Data Lake Store
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: aae63b06999c0b8eafa0d42608d32a4d467a900c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 9fe4b3e49f8e3270f58929a5708a83ab02e2486c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041065"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255254"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>Analizowanie danych w Data Lake Store przy użyciu klastra platformy HDInsight Spark
 
@@ -34,7 +34,7 @@ W tym samouczku używasz notesu programu Jupyter dostępne przy użyciu klastró
 >
 >
 
-Jeśli utworzono klaster usługi HDInsight za pomocą programu Data Lake Store jako dodatkowego miejsca do magazynowania i Azure Storage Blob jako magazynem domyślnym, należy najpierw skopiować na przykładowych danych do konta Data Lake Store. Można użyć przykładowych danych z usługi Azure Blob Storage skojarzonego z klastrem HDInsight. Możesz użyć [narzędzia ADLCopy](http://aka.ms/downloadadlcopy) Aby to zrobić. Pobierz i zainstaluj narzędzie przy użyciu linku.
+Jeśli utworzono klaster usługi HDInsight za pomocą programu Data Lake Store jako dodatkowego miejsca do magazynowania i Azure Storage Blob jako magazynem domyślnym, należy najpierw skopiować na przykładowych danych do konta Data Lake Store. Można użyć przykładowych danych z usługi Azure Blob Storage skojarzonego z klastrem HDInsight. Możesz użyć [narzędzia ADLCopy](https://aka.ms/downloadadlcopy) Aby to zrobić. Pobierz i zainstaluj narzędzie przy użyciu linku.
 
 1. Otwórz wiersz polecenia i przejdź do katalogu, w którym zainstalowane jest AdlCopy, zwykle `%HOMEPATH%\Documents\adlcopy`.
 

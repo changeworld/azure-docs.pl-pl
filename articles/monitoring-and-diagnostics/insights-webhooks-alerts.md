@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 0f08e63d6cbf5be8667b1fd61556e3f33e31d06f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f2f96faf6bd8132422aeb3484547e4b6a1195a7f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957662"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255544"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Masz klasycznego alertu metryki powiadomić systemu poza platformą Azure za pomocą elementu webhook
 Elementy webhook umożliwia kierowanie powiadomień o alertach platformy Azure z innymi systemami przetwarzania końcowego lub niestandardowych akcji. Element webhook dla alertu dotyczącego służy do kierowania go do usługi, które wysyłanie wiadomości SMS, aby rejestrować błędy, aby powiadomić zespół za pośrednictwem czatu lub usług obsługi wiadomości lub różne inne akcje. 
@@ -101,8 +101,8 @@ Operację POST zawiera następujące ładunek w formacie JSON i schematu dla wsz
 >
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej na temat alertów platformy Azure i elementami webhook w filmie wideo [integracji usługi Azure alerts przy użyciu usługi PagerDuty](http://go.microsoft.com/fwlink/?LinkId=627080).
-* Dowiedz się, jak [wykonywanie skryptów w usłudze Azure Automation (elementy runbook) na alertów platformy Azure](http://go.microsoft.com/fwlink/?LinkId=627081).
+* Dowiedz się więcej na temat alertów platformy Azure i elementami webhook w filmie wideo [integracji usługi Azure alerts przy użyciu usługi PagerDuty](https://go.microsoft.com/fwlink/?LinkId=627080).
+* Dowiedz się, jak [wykonywanie skryptów w usłudze Azure Automation (elementy runbook) na alertów platformy Azure](https://go.microsoft.com/fwlink/?LinkId=627081).
 * Dowiedz się, jak [wysyłać wiadomości SMS za pośrednictwem usługi Twilio, z poziomu alertu usługi Azure przy użyciu aplikacji logiki](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app).
 * Dowiedz się, jak [wysyłać wiadomość Slack z poziomu alertu platformy Azure przy użyciu aplikacji logiki](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app).
 * Dowiedz się, jak [użyj aplikacji logiki, aby wysłać komunikat do kolejki platformy Azure z poziomu alertu usługi Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app).

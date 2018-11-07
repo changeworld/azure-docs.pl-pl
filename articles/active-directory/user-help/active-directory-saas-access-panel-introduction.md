@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: 1caf69ee822ec11e8797ca23c9c163d36344edc7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: d0d07e235c33877ede7f47a6095482b2acec18d0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719991"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239846"
 ---
 # <a name="what-is-the-myapps-portal"></a>Co to jest MyApps portal?
 
@@ -70,7 +70,7 @@ Rozszerzenie portalu MyApps jest obecnie dostępna dla:
 - **Firefox 26.0 lub nowsze**: na Windows XP z dodatkiem SP2 lub nowszym i Mac OS X 10.6 lub później.
 - **Internet Explorer 11**: Windows 7 lub nowszy (ograniczona obsługa).
 
-## <a name="my-apps-secure-sign-in-extension"></a>Moje aplikacje bezpiecznego logowania rozszerzenia
+## <a name="my-apps-secure-sign-in-extension"></a>Rozszerzenie bezpiecznego logowania do moich aplikacji
 Aby logować się na podstawie hasła logowania jednokrotnego, należy użyć rozszerzenia. Po zainstalowaniu rozszerzenia użytkownik może zalogować się w niej włączyć dodatkowe funkcje, wybierając **Zaloguj się rozpocząć**. 
 
 - Zaloguj się do aplikacji bezpośrednio za pomocą aplikacji **adres URL logowania**. Korzystając z adresu URL aplikacji, rozszerzenie wykrywa akcji i zapewnia możliwość logowania z rozszerzenia.
@@ -83,7 +83,7 @@ Aby logować się na podstawie hasła logowania jednokrotnego, należy użyć ro
 >
 Możesz pobrać rozszerzenia bezpośrednio z następujących witryn:
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Krawędź](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Edge](https://go.microsoft.com/fwlink/?linkid=845176)
 - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 Jeśli używasz Mój adres URL aplikacji innych niż `https://myapps.microsoft.com`, skonfigurować domyślny adres URL, wykonując następujące czynności:
@@ -137,7 +137,7 @@ Jeśli jesteś administratorem platformy Azure, a użytkownik jest zalogowany do
 Testowanie w *różnych* użytkownika konta, wykonaj następujące czynności:
 
 1. W prawym górnym rogu witryny Azure portal lub portalu MyApps, wybierz **Wyloguj**. 
-2. Przejdź do [portalu MyApps](http://myapps.microsoft.com).
+2. Przejdź do [portalu MyApps](https://myapps.microsoft.com).
 3. Na stronie logowania wpisz nazwę użytkownika i hasło dla konta w katalogu, który ma zostać przetestowana.
 
 

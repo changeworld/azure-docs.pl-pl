@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: d7dbb808205c78b53277c6d916f5166a41c7e93d
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 227ef61ee4809d376c6ac5e8e8c1a7f9c364b7fc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638430"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255766"
 ---
 # <a name="azure-storage-account-overview"></a>Przegląd konta usługi Azure storage
 
@@ -33,9 +33,9 @@ W poniższej tabeli opisano typy kont magazynu i ich funkcji:
 
 | Typ konta magazynu | Obsługiwane usługi                       | Warstwy wydajności obsługiwane | Warstwy dostępu obsługiwane               | Opcje replikacji                                                | Model wdrażania<sup>1</sup>  | Szyfrowanie<sup>2</sup> |
 |----------------------|------------------------------------------|-----------------------------|--------------------------------------|--------------------------------------------------------------------|-------------------|------------|
-| Ogólnego przeznaczenia w wersji 2   | Obiekt blob, plików, kolejki, tabeli i dysku       | Standard i Premium           | Gorąca, chłodna, archiwum<sup>3</sup> | MAGAZYN LRS, ZRS<sup>4</sup>, GRS, RA-GRS | Resource Manager | Zaszyfrowana  |
-| Ogólnego przeznaczenia w wersji 1   | Obiekt blob, plików, kolejki, tabeli i dysku       | Standard i Premium           | Nie dotyczy                                  | LRS, GRS, RA-GRS                                                   | Klasyczna usługa Resource Manager  | Zaszyfrowana  |
-| Magazyn obiektów blob         | Obiekt blob (blokowe obiekty BLOB i uzupełnialnych obiektów blob tylko) | Standard                    | Gorąca, chłodna, archiwum<sup>3</sup>                            | LRS, GRS, RA-GRS                                                   | Resource Manager  | Zaszyfrowana  |
+| Ogólnego przeznaczenia w wersji 2   | Obiekt blob, plików, kolejki, tabeli i dysku       | Standard i Premium           | Gorąca, chłodna, archiwum<sup>3</sup> | MAGAZYN LRS, ZRS<sup>4</sup>, GRS, RA-GRS | Resource Manager | Zaszyfrowane  |
+| Ogólnego przeznaczenia w wersji 1   | Obiekt blob, plików, kolejki, tabeli i dysku       | Standard i Premium           | ND                                  | LRS, GRS, RA-GRS                                                   | Klasyczna usługa Resource Manager  | Zaszyfrowane  |
+| Blob Storage         | Obiekt blob (blokowe obiekty BLOB i uzupełnialnych obiektów blob tylko) | Standardowa (Standard)                    | Gorąca, chłodna, archiwum<sup>3</sup>                            | LRS, GRS, RA-GRS                                                   | Resource Manager  | Zaszyfrowane  |
 
 <sup>1</sup>zaleca się użycie modelu wdrażania usługi Azure Resource Manager. W niektórych lokalizacjach, nadal można utworzyć konta magazynu przy użyciu klasycznego modelu wdrażania, a istniejące konta klasycznego w dalszym ciągu obsługiwana. Aby uzyskać więcej informacji, zobacz [usługi Azure Resource Manager a klasycznym wdrożeniu: omówienie modeli wdrażania i stanu zasobów](../../azure-resource-manager/resource-manager-deployment-model.md).
 
@@ -107,7 +107,7 @@ Usługa Azure Storage udostępnia różne opcje do uzyskiwania dostępu do danyc
 Są warstwy dostępu:
 
 > [!NOTE]
-> [Dostępu w warstwie Premium](../blobs/storage-blob-storage-tiers.md#premium-access-tier) jest dostępna w ograniczonej wersji zapoznawczej jako konto magazyn lokalnie nadmiarowy (LRS) w regionach: Europa Północna, wschodnie stany USA 2, środkowe stany USA i zachodnie stany USA. Aby dowiedzieć się, jak zarejestrować się w wersji zapoznawczej, zobacz [wprowadzenie do magazynu obiektów Blob platformy Azure — wersja Premium](http://aka.ms/premiumblob).
+> [Dostępu w warstwie Premium](../blobs/storage-blob-storage-tiers.md#premium-access-tier) jest dostępna w ograniczonej wersji zapoznawczej jako konto magazyn lokalnie nadmiarowy (LRS) w regionach: Europa Północna, wschodnie stany USA 2, środkowe stany USA i zachodnie stany USA. Aby dowiedzieć się, jak zarejestrować się w wersji zapoznawczej, zobacz [wprowadzenie do magazynu obiektów Blob platformy Azure — wersja Premium](https://aka.ms/premiumblob).
 
 * **Gorąca** warstwy dostępu, które jest zoptymalizowane pod kątem częstego dostępu do obiektów na koncie magazynu. Uzyskiwanie dostępu do danych w warstwie gorąca jest najbardziej ekonomiczne, a nieco wyższe koszty magazynowania. Tworzy nowego konta magazynu w warstwie gorąca warstwa domyślnie.
 * **Chłodna** warstwy dostępu, które jest zoptymalizowane pod kątem przechowywania dużych ilości danych, które rzadko uzyskuje dostęp i przechowywane przez co najmniej 30 dni. Przechowywanie danych w warstwie chłodna jest bardziej opłacalna, ale dostęp do tych danych może być nieco bardziej kosztowne niż dostęp do danych w warstwie gorąca.

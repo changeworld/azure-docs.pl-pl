@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 617a6f4873c49877cbef48a7df3f2ab2c625445e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 68f3fe0dbd16d3d71dc66af05de6f90156d67dfa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412520"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246365"
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Aplikacja i problemów dotyczących dostępności usługi dla usług Azure Cloud Services: często zadawane pytania (FAQ)
 
@@ -33,7 +33,7 @@ Około raz w miesiącu, firma Microsoft publikuje nową wersję systemu operacyj
 
 Aby uzyskać szczegółowe informacje o najnowszych aktualizacjach systemu operacyjnego gościa, zobacz [wersji systemu operacyjnego gościa platformy Azure i zgodności zestawów SDK](cloud-services-guestos-update-matrix.md).
 
-Aby uzyskać przydatne informacje na temat ponownego uruchamiania i wskaźników do szczegóły techniczne dotyczące aktualizacji gościa i systemu operacyjnego hosta, zobacz wpis na blogu MSDN [roli wystąpienie powoduje ponowne uruchomienie z powodu uaktualnienia systemu operacyjnego](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx).
+Aby uzyskać przydatne informacje na temat ponownego uruchamiania i wskaźników do szczegóły techniczne dotyczące aktualizacji gościa i systemu operacyjnego hosta, zobacz wpis na blogu MSDN [roli wystąpienie powoduje ponowne uruchomienie z powodu uaktualnienia systemu operacyjnego](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx).
 
 ## <a name="why-does-the-first-request-to-my-cloud-service-after-the-service-has-been-idle-for-some-time-take-longer-than-usual"></a>Dlaczego to pierwsze żądanie do mojej usłudze w chmurze po pewnym czasie usługa trwać dłużej niż zwykle?
 Gdy serwer sieci Web otrzymuje pierwszego żądania, najpierw następuje rekompilacja kod, a następnie przetwarza żądanie. Dlatego pierwsze żądanie trwa dłużej niż inne. Domyślnie pula aplikacji pobiera zamknięty w przypadkach braku aktywności użytkownika. Pula aplikacji zostanie również Odtwórz domyślnie co 1,740 minut (29 godzin).

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 06169ff8e084882eb9a2dbe71c89c3b2a40b384b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4dac0ed85500e4339f6389f05113dfd68b72c5ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214090"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244342"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Usuwanie serwerów i wyłączanie ochrony
 
@@ -34,7 +34,7 @@ Jeśli replikujesz maszyny wirtualne VMware lub serwerach fizycznych systemu Win
 3. Należy pamiętać, identyfikator serwera programu VMM.
 4. Usuń skojarzenie zasad replikacji z chmur na serwerze programu VMM, który chcesz usunąć.  W **infrastruktura usługi Site Recovery** > **dla programu System Center VMM** >  **zasady replikacji**, kliknij dwukrotnie skojarzonych zasad. Kliknij prawym przyciskiem myszy chmurę > **usuwanie skojarzenia**.
 5. Usuń serwer programu VMM lub aktywnego węzła. W **infrastruktura usługi Site Recovery** > **dla programu System Center VMM** > **serwery VMM**, kliknij prawym przyciskiem myszy serwer > **Usuń** .
-6. Jeśli serwer programu VMM był w stanie rozłączenia, następnie Pobierz i uruchom [skrypt czyszczący](http://aka.ms/asr-cleanup-script-vmm) na serwerze programu VMM. Otwórz program PowerShell z **Uruchom jako Administrator** opcję, aby zmienić zasady wykonywania dla zakresu domyślnej (LocalMachine). W skrypcie należy określić identyfikator serwera programu VMM, który chcesz usunąć. Skrypt usuwa rejestrację i informacji z serwera parowanie chmury.
+6. Jeśli serwer programu VMM był w stanie rozłączenia, następnie Pobierz i uruchom [skrypt czyszczący](https://aka.ms/asr-cleanup-script-vmm) na serwerze programu VMM. Otwórz program PowerShell z **Uruchom jako Administrator** opcję, aby zmienić zasady wykonywania dla zakresu domyślnej (LocalMachine). W skrypcie należy określić identyfikator serwera programu VMM, który chcesz usunąć. Skrypt usuwa rejestrację i informacji z serwera parowanie chmury.
 5. Uruchom skrypt czyszczenia w dowolnym pomocniczy serwer programu VMM.
 6. Uruchom skrypt czyszczenia w innych pasywne węzły klastra VMM, które ma zainstalowanego dostawcy.
 7. Odinstaluj dostawcę ręcznie na serwerze programu VMM. Jeśli masz klaster, należy usunąć ze wszystkich węzłów.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: 3aad10c398aa4f009ab29f4684cc500b6fb428e7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 3a980abc7b9611cfd6a3933a54505b0208b67f50
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427590"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253724"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Usługa Azure Blob storage: Premium (wersja zapoznawcza), gorąca, chłodna i archiwalna magazynu
 
@@ -65,7 +65,7 @@ W trakcie okresu zapoznawczego warstwy dostępu do usługi Premium:
 - Jest dostępna tylko w następujących regionach: wschodnie stany USA 2, środkowe stany USA i zachodnie stany USA
 - Nie obsługuje automatycznego warstw i zarządzanie cyklem życia danych
 
-Aby dowiedzieć się, jak zarejestrować się w wersji zapoznawczej z warstwy Premium dostępu, zobacz [wprowadzenie do magazynu obiektów Blob platformy Azure — wersja Premium](http://aka.ms/premiumblob).
+Aby dowiedzieć się, jak zarejestrować się w wersji zapoznawczej z warstwy Premium dostępu, zobacz [wprowadzenie do magazynu obiektów Blob platformy Azure — wersja Premium](https://aka.ms/premiumblob).
 
 ## <a name="hot-access-tier"></a>Warstwa dostępu Gorąca
 

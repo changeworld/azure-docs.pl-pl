@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: 8ff5c52b324c95bb48de0f9bbb1011ede737efb0
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: e18e1fb3e97dd9f846ee71be4f0fbb66aeca3d88
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387671"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238866"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Podręcznik techniczny do szablon rozwiązania Cortana Intelligence, dla prognozę energii
 ## <a name="overview"></a>**Omówienie**
@@ -47,7 +47,7 @@ Aplikacja generowanie zdarzeń wypełnia usługi Azure Event Hub tylko wtedy, gd
 [Usługi Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) usługa jest używana do dostarczania wyników analizy w czasie rzeczywistym dotyczących strumienia wejściowego z prawie [usługi Azure Event Hub](#azure-event-hub) usługi i publikuje wyniki na [usługi Power BI](https://powerbi.microsoft.com)pulpitu nawigacyjnego, a także wszystkie nieprzetworzone zdarzenia przychodzące do archiwizacji [usługi Azure Storage](https://azure.microsoft.com/services/storage/) usługi do późniejszego przetwarzania przez [usługi Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) usługi.
 
 ### <a name="hdinsight-custom-aggregation"></a>HDInsight Custom agregacji
-Usługa Azure HDInsight jest używana do uruchamiania [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skryptów (zarządzanych przez usługę Azure Data Factory) w celu zapewnienia agregacji nieprzetworzonych zdarzeń zarchiwizowanych przy użyciu usługi Azure Stream Analytics.
+Usługa Azure HDInsight jest używana do uruchamiania [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skryptów (zarządzanych przez usługę Azure Data Factory) w celu zapewnienia agregacji nieprzetworzonych zdarzeń zarchiwizowanych przy użyciu usługi Azure Stream Analytics.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 [Usługi Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) (zarządzanych przez usługę Azure Data Factory), używana jest usługa do prognozowania na przyszłe zużycie z danym regionie na podstawie otrzymanych danych wejściowych.
@@ -102,14 +102,14 @@ W tej sekcji omówiono niezbędne [potoki](data-factory/concepts-pipelines-activ
 
 ![](media/cortana-analytics-technical-guide-demand-forecast/ADF2.png)
 
-Zawiera pięć potoków tej fabryki [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skrypty, które są używane do partycji i agregacji danych. Jeśli zaznaczono inaczej, skryptów znajdują się w [usługi Azure Storage](https://azure.microsoft.com/services/storage/) konto utworzone podczas instalacji. Ich lokalizacja to: demandforecasting\\\\skryptu\\\\hive\\ \\ (lub name].blob.core.windows.net/demandforecasting rozwiązania https://[Your).
+Zawiera pięć potoków tej fabryki [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skrypty, które są używane do partycji i agregacji danych. Jeśli zaznaczono inaczej, skryptów znajdują się w [usługi Azure Storage](https://azure.microsoft.com/services/storage/) konto utworzone podczas instalacji. Ich lokalizacja to: demandforecasting\\\\skryptu\\\\hive\\ \\ (lub name].blob.core.windows.net/demandforecasting rozwiązania https://[Your).
 
-Podobnie jak [usługi Azure Stream Analytics](#azure-stream-analytics-1) zapytań, [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) aby skrypty miały niejawne wiedzę na temat formatu danych przychodzących, te zapytania należałoby można zmienić na format danych i podstawie[Inżynieria funkcji](machine-learning/team-data-science-process/create-features.md) wymagania.
+Podobnie jak [usługi Azure Stream Analytics](#azure-stream-analytics-1) zapytań, [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) aby skrypty miały niejawne wiedzę na temat formatu danych przychodzących, te zapytania należałoby można zmienić na format danych i podstawie[Inżynieria funkcji](machine-learning/team-data-science-process/create-features.md) wymagania.
 
 #### <a name="aggregatedemanddatato1hrpipeline"></a>*AggregateDemandDataTo1HrPipeline*
-To [potoku](data-factory/concepts-pipelines-activities.md) zawiera jedno działanie — [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) czynności za pomocą [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , które jest uruchamiane [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skrypt żądanie przesyłane strumieniowo w agregacji danych co 10 sekund na poziomie Podstacja co godzinę na poziomie regionu i umieścić w [usługi Azure Storage](https://azure.microsoft.com/services/storage/) za pomocą zadania usługi Azure Stream Analytics.
+To [potoku](data-factory/concepts-pipelines-activities.md) zawiera jedno działanie — [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) czynności za pomocą [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , które jest uruchamiane [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skrypt żądanie przesyłane strumieniowo w agregacji danych co 10 sekund na poziomie Podstacja co godzinę na poziomie regionu i umieścić w [usługi Azure Storage](https://azure.microsoft.com/services/storage/) za pomocą zadania usługi Azure Stream Analytics.
 
-[Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skryptu dla tego zadania partycjonowania jest ***AggregateDemandRegion1Hr.hql***
+[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skryptu dla tego zadania partycjonowania jest ***AggregateDemandRegion1Hr.hql***
 
 #### <a name="loadhistorydemanddatapipeline"></a>*LoadHistoryDemandDataPipeline*
 To [potoku](data-factory/concepts-pipelines-activities.md) zawiera dwa działania:
@@ -117,7 +117,7 @@ To [potoku](data-factory/concepts-pipelines-activities.md) zawiera dwa działani
 * [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) czynności za pomocą [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) uruchamiające skrypt Hive w celu agregowania godzinowe dane żądanie historii w poziomie Podstacja co godzinę na poziomie regionu i umieścić w usłudze Azure Storage w usłudze Azure Stream Zadanie usługi Analytics
 * [Kopiuj](https://msdn.microsoft.com/library/azure/dn835035.aspx) działanie, które przenosi dane zagregowane z rozszerzenia Azure Storage blob do usługi Azure SQL Database, które zostało zaaprowizowane w ramach instalacji szablonu rozwiązania.
 
-[Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skryptu dla tego zadania jest ***AggregateDemandHistoryRegion.hql***.
+[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skryptu dla tego zadania jest ***AggregateDemandHistoryRegion.hql***.
 
 #### <a name="mlscoringregionxpipeline"></a>*MLScoringRegionXPipeline*
 Te [potoki](data-factory/concepts-pipelines-activities.md) zawiera kilka działań, a wynik końcowy ocenami przewidywań eksperymentu usługi Azure Machine Learning, skojarzone z tym szablonie rozwiązania. Są niemal identyczne, z wyjątkiem każdej z nich obsługuje tylko innym regionie, która jest wykonywana przez różne RegionID przekazywany w potoku usługi ADF i skrypt programu hive dla każdego regionu.  
@@ -231,7 +231,7 @@ Upewnij się, aby zatrzymać generator danych, gdy nie korzystasz aktywnie rozwi
 Następujące dwa narzędzia są dostępne umożliwić użytkownikom lepsze rozumienie całkowite koszty związane z uruchomionej Prognozowanie popytu na szablon rozwiązania energetycznego w Twojej subskrypcji:
 
 * [Microsoft Azure narzędzie do szacowania kosztów (online)](https://azure.microsoft.com/pricing/calculator/)
-* [Microsoft Azure narzędzie do szacowania kosztów (wersja klasyczna)](http://www.microsoft.com/download/details.aspx?id=43376)
+* [Microsoft Azure narzędzie do szacowania kosztów (wersja klasyczna)](https://www.microsoft.com/download/details.aspx?id=43376)
 
 ## <a name="acknowledgements"></a>**Potwierdzanie**
 W tym artykule jest tworzone, badacz danych Yijing Chen i programista Min Qiu w firmie Microsoft.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: deguhath
-ms.openlocfilehash: 4ac07d9d56862f315f7ef1f68fdecad1af700dbf
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 86024316344ccbce87f48adbc0598c94e61c5e6d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395024"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253571"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Przewodniki dotyczące wykonywania procesu do nauki o danych zespołu
 
@@ -47,5 +47,5 @@ Aby uzyskać omówienie najważniejsze składniki wchodzące w skład procesu do
 
 Omówienie cyklu życia procesu do nauki o danych zespołu, używanej do organizowania projektów do nauki o danych, zobacz [cykl życia zespołowego danych naukowych](lifecycle.md). Cykl życia zawiera opis kroków, od początku do końca, że projekty zazwyczaj należy wykonać podczas są wykonywane. 
 
-Aby uzyskać omówienie tematów, które przeprowadzą Cię przez zadania, wchodzące w skład procesu do nauki o danych na platformie Azure, zobacz [danych dla celów naukowych](http://aka.ms/datascienceprocess). 
+Aby uzyskać omówienie tematów, które przeprowadzą Cię przez zadania, wchodzące w skład procesu do nauki o danych na platformie Azure, zobacz [danych dla celów naukowych](https://aka.ms/datascienceprocess). 
 

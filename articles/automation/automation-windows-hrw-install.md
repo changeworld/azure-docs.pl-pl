@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c94fd0bb68a03c64935c20fef1fab7b68c9c2c9b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 83820440a6304886785a175b27614b45fdb98b13
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032992"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252228"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Wdrażanie Windows hybrydowego procesu roboczego Runbook
 
@@ -132,7 +132,7 @@ Aby uzyskać szczegółowe informacje dotyczące instalacji, należy użyć **-V
 
 Elementy Runbook można użyć dowolnego działania i poleceń cmdlet zdefiniowane w modułach, które są zainstalowane w środowisku usługi Azure Automation. Te moduły nie są automatycznie wdrażane na komputerach w środowisku lokalnym, więc należy je zainstalować ręcznie. Wyjątkiem jest moduł platformy Azure, który jest instalowany domyślnie i zapewnia dostęp do poleceń cmdlet dla wszystkich usług platformy Azure i działań dla usługi Azure Automation.
 
-Ponieważ podstawowym celem funkcji hybrydowego procesu roboczego Runbook do zarządzania zasobami lokalnymi, najprawdopodobniej musisz zainstalować moduły, które obsługują te zasoby. Aby uzyskać informacje na temat instalowania modułów programu Windows PowerShell, zobacz [instalowanie modułów](http://msdn.microsoft.com/library/dd878350.aspx). 
+Ponieważ podstawowym celem funkcji hybrydowego procesu roboczego Runbook do zarządzania zasobami lokalnymi, najprawdopodobniej musisz zainstalować moduły, które obsługują te zasoby. Aby uzyskać informacje na temat instalowania modułów programu Windows PowerShell, zobacz [instalowanie modułów](https://msdn.microsoft.com/library/dd878350.aspx). 
 
 Moduły, które są zainstalowane musi znajdować się w lokalizacji, odwołuje się **PSModulePath** zmiennej środowiskowej, aby można je automatycznie zaimportować do hybrydowego procesu roboczego. Aby uzyskać więcej informacji, zobacz [Modyfikowanie ścieżki instalacji PSModulePath](https://msdn.microsoft.com/library/dd878326%28v=vs.85%29.aspx).
 

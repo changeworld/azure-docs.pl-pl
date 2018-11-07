@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 63cc8a698c9e383c4b5908286d28b51d89842bdc
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 236103861ce8a296c77f708dbb4a7cc7e03f10f3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585700"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258956"
 ---
 # <a name="azure-event-hubs-event-processor-host-overview"></a>Omówienie usługi Azure hosta procesora zdarzeń centrów zdarzeń
 
 Azure Event Hubs to usługa do pozyskiwania zaawansowanych danych telemetrycznych, która umożliwia strumieniowe przesyłanie milionów zdarzeń przy niskich kosztach. W tym artykule opisano sposób wykorzystywania odebrane zdarzenia przy użyciu *hosta procesora zdarzeń* (EPH); inteligentny agent odbiorcy, który ułatwia zarządzanie tworzenie punktów kontrolnych, dzierżawienie i czytników zdarzeń równoległych.  
 
-Klucz skalowanie dla usługi Event Hubs jest podzielone na partycje konsumentów. W przeciwieństwie do [konkurujący odbiorcy](http://msdn.microsoft.com/library/dn568101.aspx) wzorzec, partycjonowanego wzorca odbiorców umożliwia dużej skali przez usunięcie wąskich gardeł rywalizacji o zasoby i ułatwienia równoległości typu end to end.
+Klucz skalowanie dla usługi Event Hubs jest podzielone na partycje konsumentów. W przeciwieństwie do [konkurujący odbiorcy](https://msdn.microsoft.com/library/dn568101.aspx) wzorzec, partycjonowanego wzorca odbiorców umożliwia dużej skali przez usunięcie wąskich gardeł rywalizacji o zasoby i ułatwienia równoległości typu end to end.
 
 ## <a name="home-security-scenario"></a>Scenariusz domu zabezpieczeń
 

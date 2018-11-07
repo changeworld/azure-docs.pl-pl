@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 668882b8b39052c3c8e7d7b72c881a64c5c05a10
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 044a3bae75cb385e7a3542b920e0cb3b5bcedcd0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321802"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233630"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Rozwiązywanie problemów z samoobsługowego resetowania haseł
 
@@ -99,7 +99,7 @@ Najlepszym rozwiązaniem podczas rozwiązywania problemów z zapisywaniem zwrotn
 | Kod | Nazwa lub wiadomości | Opis |
 | --- | --- | --- |
 | 6329 | PORĘCZENIE: MMS(4924) 0x80230619: "ograniczenie zapobiega hasło zmieniany z bieżącym określoną." | To zdarzenie występuje, gdy próbuje ustawić hasło w Twoim katalogu lokalnego, który nie spełnia okres ważności hasła, historii, złożoność i filtrowania wymagania dotyczące domeny usługi zapisywania zwrotnego haseł. <br> <br> Jeśli masz minimalny okres ważności hasła i niedawno zmieniono hasło, w tym przedziale czasu, nie możesz ponownie zmienić hasło, aż do napotkania określonej wiek w domenie. Do celów testowych, minimalny wiek powinna być równa 0. <br> <br> Jeśli masz wymagania dotyczące historii haseł włączone, a następnie należy wybrać hasło, który nie został jeszcze użyty w ciągu ostatnich *N* razy, gdzie *N* jest ustawienie historii haseł. Jeśli zaznaczysz hasła, który został użyty w ciągu ostatnich *N* razy, a następnie w tym przypadku wyświetlony błąd. Do celów testowych, historii haseł powinna być równa 0. <br> <br> Jeśli masz wymagania dotyczące złożoności hasła, wszystkie z nich są wymuszane, gdy użytkownik podejmuje próbę zmiany lub resetowania hasła. <br> <br> Jeśli mają włączone filtry hasła, a użytkownik wybierze hasło nie spełnia kryteriów filtrowania, a następnie resetowania lub zmiany, operacja zakończy się niepowodzeniem. |
-| 6329 | MMS(3040): admaexport.cpp(2837): serwer nie zawiera kontrolki zasad haseł LDAP. | Ten problem występuje, gdy kontrolka LDAP_SERVER_POLICY_HINTS_OID (1.2.840.113556.1.4.2066) nie jest włączona na kontrolerów domeny. Aby użyć funkcji zapisywania zwrotnego haseł, możesz włączyć formant. Aby to zrobić, kontrolerów domeny musi być w systemie Windows Server 2008 (przy użyciu najnowszych SP) lub nowszej. Jeśli Twoje kontrolery domeny są 2008 (sprzed wersji R2), a następnie należy ponadto zastosować poprawkę [KB2386717](http://support.microsoft.com/kb/2386717). |
+| 6329 | MMS(3040): admaexport.cpp(2837): serwer nie zawiera kontrolki zasad haseł LDAP. | Ten problem występuje, gdy kontrolka LDAP_SERVER_POLICY_HINTS_OID (1.2.840.113556.1.4.2066) nie jest włączona na kontrolerów domeny. Aby użyć funkcji zapisywania zwrotnego haseł, możesz włączyć formant. Aby to zrobić, kontrolerów domeny musi być w systemie Windows Server 2008 (przy użyciu najnowszych SP) lub nowszej. Jeśli Twoje kontrolery domeny są 2008 (sprzed wersji R2), a następnie należy ponadto zastosować poprawkę [KB2386717](https://support.microsoft.com/kb/2386717). |
 | HR 8023042 | Aparat synchronizacji zwrócił błąd hr = 80230402, komunikat = próba pobrania obiektu nie powiodło się, ponieważ istnieją zduplikowane wpisy z tego samego zakotwiczenia. | Ten błąd występuje, gdy ten sam identyfikator użytkownika jest włączona w wielu domenach. To na przykład jeśli synchronizowania lasów kont i zasobów i mieć tej samej nazwy użytkownika, które są obecne i włączona w każdym lesie. <br> <br> Ten błąd może również wystąpić, jeśli używasz atrybutem zakotwiczenia nie jest unikatowa, takie jak alias lub nazwy UPN i dwóch użytkowników mają ten sam atrybut zakotwiczenia. <br> <br> Aby rozwiązać ten problem, upewnij się, że nie masz żadnych zduplikowanych użytkowników w ramach Twoich domen i użyć atrybutu zakotwiczenia unikatowy dla każdego użytkownika. |
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Jeśli źródłem zdarzenia jest PasswordResetService
@@ -215,7 +215,7 @@ Firma Microsoft zaleca wykonanie tego kroku, tylko wtedy, gdy spróbujesz pierws
 > Jeśli dostosowano reguły synchronizacji poza pole *wykonać ich kopię zapasową przed kontynuowaniem uaktualniania, a następnie ręcznie je wdrożyć ponownie po zakończeniu.*
 >
 
-1. Pobierz najnowszą wersję programu Azure AD Connect z [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=615771).
+1. Pobierz najnowszą wersję programu Azure AD Connect z [Microsoft Download Center](https://go.microsoft.com/fwlink/?LinkId=615771).
 1. Ponieważ masz już zainstalowany program Azure AD Connect, musisz wykonać uaktualnienie w miejscu do aktualizacji instalacji programu Azure AD Connect do najnowszej wersji.
 1. Wykonaj pobranego pakietu i postępuj zgodnie z wyświetlanymi instrukcjami, aby zaktualizować swojej maszyny, program Azure AD Connect.
 

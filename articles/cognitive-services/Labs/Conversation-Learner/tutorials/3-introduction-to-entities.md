@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f851d43d69999a848dea01c9457a379adb63353b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 4b1c2d9390890618a9aa61eb425fbd132917f414
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172385"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229052"
 ---
 # <a name="introduction-to-entities"></a>Wprowadzenie do jednostek
 
@@ -23,7 +23,7 @@ W tym samouczku wprowadza jednostki, a ilustruje sposób używania pola "Disqual
 
 ## <a name="video"></a>Połączenia wideo
 
-[![Samouczek 3 (wersja zapoznawcza)](http://aka.ms/cl-tutorial-03-preview)](http://aka.ms/blis-tutorial-03)
+[![Samouczek 3 (wersja zapoznawcza)](https://aka.ms/cl-tutorial-03-preview)](https://aka.ms/blis-tutorial-03)
 
 ## <a name="requirements"></a>Wymagania
 

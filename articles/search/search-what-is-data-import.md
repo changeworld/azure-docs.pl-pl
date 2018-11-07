@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: heidist
-ms.openlocfilehash: b518d86d5cb08f85beecd4afe30efc9e4f70e1f7
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: ab26adb330e69f71d94aa296ede558b44e47a187
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371472"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249782"
 ---
 # <a name="indexing-in-azure-search"></a>Indeksowanie w usłudze Azure Search
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Model polegający na ściąganiu obejmuje przeszukiwanie obsługiwanego źródł
 
 + [Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Table Storage](search-howto-indexing-azure-tables.md)
-+ [Azure Cosmos DB](http://aka.ms/documentdb-search-indexer)
++ [Azure Cosmos DB](https://aka.ms/documentdb-search-indexer)
 + [Baza danych Azure SQL i program SQL Server na maszynach wirtualnych platformy Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
 Indeksatory łączą indeks ze źródłem danych (zwykle tabelą, widokiem lub równoważną strukturą) i mapują pola źródłowe na równoważne pola w indeksie. W czasie wykonywania zestaw wierszy jest automatycznie przekształcany w dane w formacie JSON i ładowany do określonego indeksu. Wszystkie indeksatory obsługują planowanie, dzięki czemu możesz określić, jak często dane mają być odświeżane. Większość indeksatorów udostępnia śledzenie zmian, jeśli źródło danych obsługuje tę funkcję. Dzięki śledzeniu zmian i usuwania istniejących dokumentów oraz rozpoznawaniu nowych dokumentów indeksatory eliminują konieczność aktywnego zarządzania danymi w indeksie. 

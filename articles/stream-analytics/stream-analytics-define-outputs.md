@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: abf581430f7cf7020145b0217c387b8c2fc4f795
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 2ef599fe704b184e82de2d704753e3fb4a274a2a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979407"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257803"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano różne typy danych wyjściowych jest dostępny dla zadania usługi Azure Stream Analytics. Dane wyjściowe pozwalają na przechowywanie i zapisać wyniki zadania usługi Stream Analytics. Można wykonać, korzystając z danych wyjściowych, dalszych analiz biznesowych i danych magazynu danych. 
@@ -297,7 +297,7 @@ Poniższa tabela zawiera podsumowanie obsługi partycji i liczby modułów zapis
 | Typ wyjścia | Partycjonowanie pomocy technicznej | Klucz partycji  | Liczba modułów zapisywania danych wyjściowych | 
 | --- | --- | --- | --- |
 | Azure Data Lake Store | Yes | Użyj {date} i {time} tokenów w wzorzec prefiksu ścieżki. Wybierz format daty, takich jak RRRR/MM/DD, DD/MM/RRRR, MM-DD-RRRR. HH jest używany dla formatu godziny. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). | 
-| Azure SQL Database | Yes | Oparte na klauzuli PARTITION BY w zapytaniu | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). | 
+| Azure SQL Database | Yes | Oparte na klauzuli PARTITION BY w zapytaniu | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). Aby dowiedzieć się więcej na temat osiągania lepiej przepływności wydajność zapisu podczas ładowania danych do bazy danych SQL Azure, odwiedź stronę [dane wyjściowe usługi Azure Stream Analytics, do usługi Azure SQL Database](stream-analytics-sql-output-perf.md). | 
 | Azure Blob Storage | Yes | Użyj {date} i {time} tokeny od pól zdarzeń we wzorcu ścieżki. Wybierz format daty, takich jak RRRR/MM/DD, DD/MM/RRRR, MM-DD-RRRR. HH jest używany dla formatu godziny. Jako część [Podgląd](https://aka.ms/ASApreview1), można podzielić na partycje obiektu blob danych wyjściowych przez atrybut pojedyncze zdarzenie niestandardowe {fieldname} lub {daty/godziny:\<specyfikator >}. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). | 
 | Centrum zdarzeń Azure | Yes | Yes | Różni się w zależności od wyrównania partycji.</br> Gdy dane wyjściowe, które Centrum zdarzeń klucza partycji jest równie powiązana z nadrzędnego (poprzednia wersja) krok zapytania, liczba składników zapisywania jest taka sama liczba danych wyjściowych partycji Centrum zdarzeń. Każdy moduł zapisujący korzysta z Centrum EventHub w [klasy EventHubSender](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) do wysyłania zdarzeń do określonej partycji. </br> Gdy danych wyjściowych Centrum zdarzeń, klucz partycji nie jest wyrównana z nadrzędnego (poprzednia wersja) krok zapytania, liczba składników zapisywania jest taka sama jak liczba partycji w tym w poprzednim kroku. Każdy moduł zapisujący używa EventHubClient [klasy SendBatchAsync](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) do wysyłania zdarzeń do wszystkich partycji danych wyjściowych. |
 | Power BI | Nie | Brak | Nie dotyczy. | 
@@ -306,6 +306,8 @@ Poniższa tabela zawiera podsumowanie obsługi partycji i liczby modułów zapis
 | Kolejki usługi Azure Service Bus | Yes | Wybierane automatycznie. Liczba partycji jest oparty na [usługi Service Bus w jednostki SKU i rozmiar](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji jest unikatową wartością całkowitą dla każdej partycji.| Taka sama jak liczba partycji w kolejki wyjściowej. |
 | Azure Cosmos DB | Yes | Użyj tokenu {partition} w wzorzec nazw kolekcji. wartość {partition} opiera się na klauzuli PARTITION BY w zapytaniu. | Następuje partycjonowania danych wejściowych dla [pełni zrównoleglona zapytania](stream-analytics-scale-jobs.md). |
 | Azure Functions | Nie | Brak | Nie dotyczy. | 
+
+Jeśli karty danych wyjściowych nie jest podzielona na partycje, Brak danych w jednej partycji danych wejściowych spowoduje opóźnienie maksymalnie późnego przybycia ilość czasu.  W takich przypadkach dane wyjściowe są scalane w jednym składniku zapisywania, co może spowodować wąskie gardła w potoku. Aby dowiedzieć się więcej na temat późnego przybycia zasad, odwiedź stronę [zagadnienia dotyczące kolejności zdarzeń usługi Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md).
 
 ## <a name="output-batch-size"></a>Rozmiar partii danych wyjściowych
 Usługa Azure Stream Analytics używa partii o zmiennym rozmiarze do przetwarzania zdarzeń i zapisywania danych wyjściowych. Zazwyczaj aparat usługi Stream Analytics nie zapisuje jeden komunikat w danym momencie i używa partie w celu zwiększenia wydajności. Gdy przychodzącego i wychodzącego częstotliwość zdarzeń jest duża, używa większych partii. Gdy współczynnik ruchu wychodzącego jest niskie, używa mniejsze segmenty do niskich opóźnień. 

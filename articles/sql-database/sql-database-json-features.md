@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: dfbefd2ff4c2e99268c1e7e84154e93d58f542bb
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: c3f1cb7499be57be94cc387eb40d37c1710f2f75
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163634"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230533"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Wprowadzenie do funkcji JSON w usłudze Azure SQL Database
 Azure umożliwia bazy danych SQL, analizy i kwerend danych reprezentowanych w JavaScript Object Notation [(JSON)](http://www.json.org/) formatowania i eksportowanie danych relacyjnych jako tekst w formacie JSON.
@@ -201,5 +201,5 @@ Aby dowiedzieć się, jak zintegrować JSON w aplikacji, zapoznaj się z tymi za
 * [Dokumentacja MSDN](https://msdn.microsoft.com/library/dn921897.aspx)
 * [Wideo Channel 9](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
-Aby dowiedzieć się więcej o różnych scenariuszy integracji JSON w aplikacji, zobacz pokazy, w tym [wideo Channel 9](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) lub znaleźć scenariusz, który pasuje do danego przypadku użycia w [wpisy na blogu JSON](http://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/).
+Aby dowiedzieć się więcej o różnych scenariuszy integracji JSON w aplikacji, zobacz pokazy, w tym [wideo Channel 9](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) lub znaleźć scenariusz, który pasuje do danego przypadku użycia w [wpisy na blogu JSON](https://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/).
 

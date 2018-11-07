@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 51e96065f726fadd528323157609034b5bb3f151
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 8cf5f262a758efe08ad73e2d8066ad4b736e76d1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387892"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247725"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Jak wdrożyć certyfikaty urządzeń X.509
 
 Podczas cyklu życia rozwiązania IoT należy wdrożyć certyfikaty. Dwa z głównych powodów stopniowe certyfikatów będzie naruszenia zabezpieczeń i wygaśnięcia certyfikatu. 
 
-Stopniowe certyfikatów jest najlepszym rozwiązaniem w zakresie zabezpieczeń pomóc w zabezpieczeniu systemu w przypadku naruszenia. Jako część [założono metodologii naruszenia](http://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf), Microsoft funkcję specjalistów potrzebę posiadania zabezpieczeń reaktywnych procesach wraz ze środków zapobiegawczych. Stopniowe certyfikaty urządzeń należy uwzględnić te procesy zabezpieczeń. Częstotliwość, w której wdrażasz certyfikatów będzie zależeć od wymagania dotyczące zabezpieczeń rozwiązań. Klientów z wysoce poufne dane rozwiązania może codziennie, przerzucenie certyfikatu, podczas gdy inne wdrażać swoje certyfikaty co kilka lat.
+Stopniowe certyfikatów jest najlepszym rozwiązaniem w zakresie zabezpieczeń pomóc w zabezpieczeniu systemu w przypadku naruszenia. Jako część [założono metodologii naruszenia](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf), Microsoft funkcję specjalistów potrzebę posiadania zabezpieczeń reaktywnych procesach wraz ze środków zapobiegawczych. Stopniowe certyfikaty urządzeń należy uwzględnić te procesy zabezpieczeń. Częstotliwość, w której wdrażasz certyfikatów będzie zależeć od wymagania dotyczące zabezpieczeń rozwiązań. Klientów z wysoce poufne dane rozwiązania może codziennie, przerzucenie certyfikatu, podczas gdy inne wdrażać swoje certyfikaty co kilka lat.
 
 Stopniowe certyfikaty urządzenia będą obejmować aktualizowanie certyfikatów przechowywanych na urządzeniu i w Centrum IoT hub. Później, urządzenie można ponownie udostępnić się z Centrum IoT przy użyciu normalnych [automatycznej aprowizacji](concepts-auto-provisioning.md) przy użyciu usługi Device Provisioning Service.
 

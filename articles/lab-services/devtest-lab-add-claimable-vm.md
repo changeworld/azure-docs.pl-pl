@@ -1,6 +1,6 @@
 ---
-title: Tworzenie i zarządzanie nimi claimable maszyn wirtualnych w laboratorium w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dodać claimable maszyny wirtualnej do laboratorium w usłudze Azure DevTest Labs
+title: Tworzenie i zarządzanie nimi przejęcia maszyn wirtualnych w laboratorium Azure DevTest Labs | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dodać przejęcia maszyny wirtualnej do laboratorium Azure DevTest Labs
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -14,87 +14,87 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 669dfab75f34a0d1f997dc34f600402d3c10669b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3bfb674fa66f0701a099d237f4e760453c7b6a6e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787493"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232131"
 ---
-# <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Tworzenie i zarządzanie nimi claimable maszyn wirtualnych w usłudze Azure DevTest Labs
-Dodaj Maszynę wirtualną claimable laboratorium w podobny sposób jak możesz [dodać standardowe maszyny Wirtualnej](devtest-lab-add-vm.md) — z *podstawowej* czyli albo [niestandardowego obrazu](devtest-lab-create-template.md), [formuła](devtest-lab-manage-formulas.md) , lub [obrazu z witryny Marketplace](devtest-lab-configure-marketplace-images.md). Ten samouczek przeprowadzi Cię przez dodawanie claimable maszyny Wirtualnej do laboratorium w usłudze DevTest Labs przy użyciu portalu Azure i przedstawiono procesy, które użytkownik wykonuje oświadczeń i unclaim maszyny Wirtualnej.
+# <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Tworzenie i zarządzanie nimi przejęcia maszyn wirtualnych w usłudze Azure DevTest Labs
+Dodawanie przejęcia maszyny Wirtualnej do laboratorium w podobny sposób jak możesz [Dodaj maszyna wirtualna w warstwie standardowa](devtest-lab-add-vm.md) — od *podstawowy* oznacza to jedną [obrazu niestandardowego](devtest-lab-create-template.md), [formuły](devtest-lab-manage-formulas.md) , lub [obrazu z witryny Marketplace](devtest-lab-configure-marketplace-images.md). Ten samouczek przeprowadzi Cię przez dodawanie przejęcia maszyny Wirtualnej do laboratorium w usłudze DevTest Labs przy użyciu witryny Azure portal oraz przedstawiono procesy, które użytkownik wykona oświadczeń i wywołującemu maszyny Wirtualnej.
 
-## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Kroki, aby dodać claimable maszyny Wirtualnej do laboratorium w usłudze Azure DevTest Labs
-1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Wybierz **wszystkie usługi**, a następnie wybierz **DevTest Labs** z listy.
-1. Z listy labs wybierz laboratorium, w którym chcesz utworzyć claimable maszyny Wirtualnej.  
-1. W laboratorium **omówienie** okienku wybierz **+ Dodaj**.  
+## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Kroki, aby dodać przejęcia maszyny Wirtualnej do laboratorium Azure DevTest Labs
+1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
+1. Zaznacz na liście laboratoriów laboratorium, w którym chcesz utworzyć przejęcia maszyn wirtualnych.  
+1. W laboratorium **Przegląd** okienku wybierz **+ Dodaj**.  
 
     ![Dodawanie przycisku maszyny Wirtualnej](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
 
-1. Na **wybierz podstawowej** obszarze, wybierz podstawowy dla maszyny Wirtualnej.
+1. Na **wybierz podstawowej** obszaru, wybierz podstawowy dla maszyny Wirtualnej.
 1. W **maszyny wirtualnej** okienku, wprowadź nazwę dla nowej maszyny wirtualnej w **nazwę maszyny wirtualnej** pola tekstowego.
 
-    ![Okienko maszyny Wirtualnej laboratorium](./media/devtest-lab-add-vm/devtestlab-lab-vm-blade.png)
+    ![Okienko maszyn wirtualnych laboratorium](./media/devtest-lab-add-vm/devtestlab-lab-vm-blade.png)
 
-1. Wprowadź **nazwy użytkownika** udzieleniu uprawnień administratora na maszynie wirtualnej.  
-1. Jeśli chcesz skorzystać z hasła przechowywane w Twojej [tajny magazynu](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store), wybierz pozycję **używać hasła zapisane**i określ wartości klucza, który odpowiada klucz tajny (hasło). W przeciwnym razie wprowadź hasło w polu tekstowym etykietą **wpisz wartość**.
-1. **Typu dysku maszyny wirtualnej** Określa, który typ dysku magazynu jest dozwolony dla maszyn wirtualnych w laboratorium.
-1. Wybierz **rozmiar maszyny wirtualnej** i wybierz jedną z wstępnie zdefiniowane elementy, które Określ rdzeni procesora, rozmiar pamięci RAM i rozmiar dysku twardego maszyny wirtualnej do utworzenia.
-1. Wybierz **artefakty** i na liście artefaktów, wybierz i skonfiguruj artefaktów, które chcesz dodać do obrazu podstawowego. Jeśli nowych użytkowników programu DevTest Labs lub konfigurowanie artefaktów, zapoznaj się [Dodaj istniejący artefakt do maszyny Wirtualnej](devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) sekcji, a następnie wróć tutaj po zakończeniu.
-1. Wybierz **Zaawansowane ustawienia** Aby skonfigurować opcje wygaśnięcia i Opcje sieci maszyny Wirtualnej. W obszarze **oświadczeń opcje**, wybierz **tak** dokonanie claimable komputera.
+1. Wprowadź **nazwa_użytkownika** udzieleniu uprawnień administratora na maszynie wirtualnej.  
+1. Jeśli chcesz używać hasła przechowywane w swojej [magazynu wpisów tajnych](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store), wybierz opcję **używać hasła zapisane**i określ wartości klucza, który odpowiada klucz tajny (hasło). W przeciwnym razie, wprowadź hasło w polu tekstowym etykietą **wpisz wartość**.
+1. **Typ dysku maszyny wirtualnej** Określa typy dysku magazynu jest dozwolone dla maszyn wirtualnych w środowisku laboratoryjnym.
+1. Wybierz **rozmiar maszyny wirtualnej** i wybierz jeden z wstępnie zdefiniowanych elementów, które określają rdzeni procesora, pamięci RAM i rozmiar dysku twardego maszyny wirtualnej, aby utworzyć.
+1. Wybierz **artefaktów** i z listy artefaktów, wybierz i skonfiguruj artefaktów, które chcesz dodać do obrazu podstawowego. Jeśli jesteś nowym użytkownikiem usługi DevTest Labs, lub konfigurowanie artefaktów, dotyczą [Dodaj istniejący artefakt do maszyny Wirtualnej](devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) sekcji, a następnie wróć tutaj po zakończeniu.
+1. Wybierz **Zaawansowane ustawienia** skonfigurować opcje wygaśnięcia i Opcje sieci maszyny Wirtualnej. W obszarze **oświadczenia opcje**, wybierz **tak** do Przydziel tej maszynie przejęcia.
 
-  ![Wybierz claimable maszyny Wirtualnej.](./media/devtest-lab-add-vm/devtestlab-claim-VM-option.png)
+  ![Wybierz przejęcia maszyny Wirtualnej.](./media/devtest-lab-add-vm/devtestlab-claim-VM-option.png)
 
-1. Jeśli chcesz wyświetlić lub skopiuj szablon usługi Azure Resource Manager, zapoznaj się [szablonu Zapisz Azure Resource Manager](devtest-lab-add-vm.md#save-azure-resource-manager-template) , a następnie wróć tutaj po zakończeniu.
+1. Aby wyświetlić lub skopiuj szablon usługi Azure Resource Manager, zapoznaj się [szablonu Zapisz Azure Resource Manager](devtest-lab-add-vm.md#save-azure-resource-manager-template) sekcji, a następnie wróć tutaj po zakończeniu.
 1. Wybierz **Utwórz** dodać określoną maszynę Wirtualną do laboratorium.
 
-   Wyświetlany jest stan tworzenia maszyny Wirtualnej, najpierw **tworzenie**, następnie jako **systemem** po uruchomieniu maszyny Wirtualnej.
+   Stan tworzenia maszyny Wirtualnej jest wyświetlany, najpierw **tworzenie**, następnie jako **systemem** po uruchomieniu maszyny Wirtualnej.
 
 > [!NOTE]
-> W przypadku wdrożenia maszyn wirtualnych laboratorium za pośrednictwem [szablonów usługi Azure Resource Manager](devtest-lab-create-environment-from-arm.md), można utworzyć claimable maszyn wirtualnych, ustawiając **allowClaim** właściwości na wartość true w sekcji właściwości.
+> W przypadku wdrożenia laboratoryjnego maszyn wirtualnych na podstawie [szablonów usługi Azure Resource Manager](devtest-lab-create-environment-from-arm.md), przejęcia maszyn wirtualnych można utworzyć, ustawiając **allowClaim** właściwości na wartość true w sekcji właściwości.
 >
 >
 
-## <a name="using-a-claimable-vm"></a>Przy użyciu claimable maszyny Wirtualnej
+## <a name="using-a-claimable-vm"></a>Za pomocą przejęcia maszyny Wirtualnej
 
-Użytkownik może oświadczeń żadnej maszyny Wirtualnej z listy "Claimable maszyny wirtualne", wykonując jedną z następujących czynności:
+Użytkownik może przyjąć dowolnej maszyny Wirtualnej z listy "Przejęcia maszyny wirtualne", wykonując jedną z następujących czynności:
 
-* Z listy "Claimable maszyny wirtualne" u dołu okienka "Overview" laboratorium należy utworzyć, kliknij prawym przyciskiem myszy na jednym z maszyn wirtualnych na liście, a następnie wybierz pozycję **maszyny oświadczeń**.
+* Z listy "Przejęcia maszyny wirtualne" w dolnej części okienka "Przegląd" laboratorium, kliknij prawym przyciskiem myszy na jednej z maszyn wirtualnych, na liście, a następnie wybierz **maszyny oświadczenia**.
 
- ![Żądanie claimable określonej maszyny Wirtualnej.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
-
-
-* W górnej części okienka "Overview", wybierz **uzyskania**. Losowe maszyny wirtualnej jest przypisane z listy claimable maszyn wirtualnych.
-
- ![Żądanie żadnej claimable maszyny Wirtualnej.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
+ ![Żądanie przejęcia określonej maszyny Wirtualnej.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
 
 
-Po użytkownika oświadczeń maszyny Wirtualnej, przenieść w górę do listy "Moje maszyny wirtualne" i nie jest już claimable przez innego użytkownika.
+* W górnej części okienka "Przegląd" Wybierz **dowolny oświadczeń**. Losowe maszyny wirtualne są przypisane z listy przejęcia maszyn wirtualnych.
 
-## <a name="unclaim-a-vm"></a>Unclaim maszyny Wirtualnej
+ ![Żądanie dowolnej przejęcia maszyny Wirtualnej.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 
-Gdy użytkownik jest już korzystać z oświadczeniem maszyny Wirtualnej i chce udostępnić innemu użytkownikowi, ich powrócić oświadczeniem maszyny Wirtualnej do listy claimable maszyn wirtualnych, wykonując jedną z następujących czynności:
 
-- Z listy "Moje maszyny wirtualne", kliknij prawym przyciskiem myszy na jednym z maszyn wirtualnych na liście — lub zaznacz jego wielokropek (...) — i wybierz polecenie **Unclaim**.
+Po użytkownik oświadczeń maszyny Wirtualnej, są przenoszone w górę do listy "Moje maszyny wirtualne" i nie jest już przejęcia przez innych użytkowników.
 
-  ![Unclaim Maszynę wirtualną na liście maszyny Wirtualnej.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM2.png)
+## <a name="unclaim-a-vm"></a>Wywołującemu maszyny Wirtualnej
 
-- Na liście "Moje maszyny wirtualne", wybierz maszyny Wirtualnej, aby otworzyć jego okienku zarządzanie, a następnie wybierz **Unclaim** na pasku menu u góry.
+Po użytkownik jest już korzystać z oświadczeniem maszyny Wirtualnej i chce udostępnić innemu użytkownikowi, funkcje te mogą zwracać oświadczeniem maszyny Wirtualnej do listy przejęcia maszyn wirtualnych, wykonując jedną z następujących czynności:
 
-  ![Unclaim Maszynę wirtualną w okienku Zarządzanie maszyny Wirtualnej.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM.png)
+- Z listy "Moje maszyny wirtualne", kliknij prawym przyciskiem myszy na jednej z maszyn wirtualnych, na liście — lub wybierz jego przycisk wielokropka (...) — i wybierz **Unclaim**.
 
-Gdy użytkownik unclaims maszyny Wirtualnej, już nie ma uprawnień dla tego laboratorium określonej maszyny Wirtualnej.
+  ![Wywołującemu Maszynę wirtualną na liście maszyny Wirtualnej.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM2.png)
 
-### <a name="transferring-the-data-disk"></a>Transferowanie dysk z danymi
-Jeśli claimable maszyna wirtualna ma dysku danych oraz użytkownika unclaims go, pozostaje na dysku danych z maszyny Wirtualnej. Gdy innego użytkownika następnie oświadczeń, że maszyna wirtualna, nowy użytkownik oświadczeń dysk z danymi, a także maszyny Wirtualnej.
+- Na liście "Moje maszyny wirtualne" wybierz maszynę Wirtualną w celu otwarcia jej okienku zarządzanie, a następnie wybierz **Unclaim** na pasku menu u góry.
 
-Jest to nazywane "transferu dysku danych". Dysk z danymi staje się dostępna na liście nowego użytkownika z **dysków z danymi** zarządzanie.
+  ![Wywołującemu Maszynę wirtualną w okienku zarządzania maszyny Wirtualnej.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM.png)
 
-![Unclaim dysków z danymi.](./media/devtest-lab-add-vm/devtestlab-unclaim-datadisks.png)
+Po użytkownik unclaims Maszynę wirtualną, nie mają uprawnień dla tego laboratorium określonej maszyny Wirtualnej.
+
+### <a name="transferring-the-data-disk"></a>Przeniesienie dysku danych
+Jeśli przejęcia maszyna wirtualna ma dysk danych dołączony do niej użytkownika unclaims go, dysk danych pozostaje z maszyną Wirtualną. Kiedy inny użytkownik następnie oświadczeń, maszyny Wirtualnej, ten nowy użytkownik twierdzi, dysk z danymi, a także maszyny Wirtualnej.
+
+Jest to nazywane "transferu dysku danych". Dysk danych staje się dostępna na liście nowego użytkownika **dysków z danymi** ich do zarządzania.
+
+![Usuwa zgłoszenie dysków z danymi.](./media/devtest-lab-add-vm/devtestlab-unclaim-datadisks.png)
 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Po jego utworzeniu można Połącz się z maszyną Wirtualną, wybierając **Connect** w okienku jego zarządzania.
-* Eksploruj [galerię szablonów Szybki Start DevTest Labs usługi Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
+* Po jego utworzeniu można nawiązaniu połączenia z maszyną wirtualną, wybierając **Connect** w jej okienku zarządzania.
+* Zapoznaj się z [galerii szablonów szybkiego startu usługi DevTest Labs usługi Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
