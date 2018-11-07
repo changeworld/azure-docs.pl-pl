@@ -5,14 +5,14 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 11/05/2018
 ms.author: ganesr
-ms.openlocfilehash: 35644912da2b75009ba2b16f4a188011ba1f813e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9c9f216ee25cd74ac8bcb5521cad85d051422eb2
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650132"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219345"
 ---
 # <a name="expressroute-routing-requirements"></a>Wymagania dotyczące routingu w usłudze ExpressRoute
 Aby połączyć się z usługami w chmurze firmy Microsoft przy użyciu usługi ExpressRoute, konieczne będzie skonfigurowanie routingu oraz zarządzanie nim. Niektórzy dostawcy połączenia oferują konfigurowanie routingu oraz zarządzanie nim jako usługą zarządzaną. Skontaktuj się z dostawcą połączenia, aby sprawdzić, czy taka usługa jest oferowana. Jeśli nie, musisz spełnić wymagania opisane poniżej:
@@ -100,7 +100,7 @@ Jeśli Twoje prefiksy i numer systemu autonomicznego nie są przypisane do Ciebi
 Prywatny numer systemu autonomicznego jest dozwolony dla komunikacji równorzędnej firmy Microsoft, ale będzie również wymagał ręcznej weryfikacji. Ponadto firma Microsoft usuwa prywatne numery AS w ścieżce AS dla odebranych prefiksów. W związku z tym nie można dołączyć prywatnych numerów AS do ścieżki AS, aby [wpłynąć na routing komunikacji równorzędnej firmy Microsoft](expressroute-optimize-routing.md). 
 
 > [!IMPORTANT]
-> Publiczne adresy IP anonsowane w sieci firmy Microsoft za pośrednictwem usługi ExpressRoute nie mogą być anonsowane w Internecie. Mogłoby to spowodować przerwanie łączności z innymi usługami firmy Microsoft. Używane przez serwery w sieci użytkownika publiczne adresy IP, które komunikują się z punktami końcowymi usługi O365 w środowisku firmy Microsoft, mogą być jednak anonsowane za pośrednictwem usługi ExpressRoute. 
+> Nie anonsuje tego samego publicznego trasy IP do publicznej sieci Internet i za pośrednictwem usługi ExpressRoute. Zdecydowanie zaleca się możesz anonsować za pośrednictwem usługi ExpressRoute i bardziej ogólnych trasa do Internetu, aby dokładniej określoną trasę [translatora adresów Sieciowych](expressroute-nat.md). Oprócz publicznego trasę dla translatora adresów Sieciowych, należy można również ogłaszać dłuższe za pośrednictwem usługi ExpressRoute z publicznym adresem IP adresów używanych przez serwery w sieci lokalnej, które komunikują się z punktami końcowymi usługi Office 365, w ramach firmy Microsoft. 
 > 
 > 
 
@@ -160,7 +160,7 @@ Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolit
 | Wschodnie stany USA 2 | 12076:51005 |
 | Zachodnie stany USA | 12076:51006 |
 | Zachodnie stany USA 2 | 12076:51026 |
-| Zachodnio-środkowe stany USA | 12076:51027 |
+| Środkowo-zachodnie stany USA | 12076:51027 |
 | Środkowo-północne stany USA | 12076:51007 |
 | Środkowo-południowe stany USA | 12076:51008 |
 | Środkowe stany USA | 12076:51009 |
@@ -171,8 +171,8 @@ Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolit
 | **Europa** | |
 | Europa Północna | 12076:51003 |
 | Europa Zachodnia | 12076:51002 |
-| Zjednoczone Królestwo (południe) | 12076:51024 |
-| Zjednoczone Królestwo (zachód) | 12076:51025 |
+| Południowe Zjednoczone Królestwo | 12076:51024 |
+| Zachodnie Zjednoczone Królestwo | 12076:51025 |
 | Francja Środkowa | 12076:51030 |
 | Francja Południowa | 12076:51031 |
 | **Azja i Pacyfik** | |

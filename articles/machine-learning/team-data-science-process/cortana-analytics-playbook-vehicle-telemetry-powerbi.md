@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: e6601093577eb9e3dfba4ed27e1e0510cad17de7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b703cb4d3ddd8b62895c9c40c7fa2fba728e884e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421053"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262284"
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Instrukcje instalacji pulpit nawigacyjny Telemetrii Analytics szablon rozwiązania usługi Power BI pojazdu
 Menu łącze do rozdziały element playbook: 
@@ -30,7 +30,7 @@ Prezentuje rozwiązanie do analizy Telemetrii pojazdów, jak dealerzy i producen
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Wdrażanie [analiza Telemetrii pojazdów](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90) rozwiązania. 
-* [Instalowanie programu Power BI Desktop](http://www.microsoft.com/download/details.aspx?id=45331).
+* [Instalowanie programu Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=45331).
 * Uzyskaj [subskrypcji platformy Azure](https://azure.microsoft.com/pricing/free-trial/). Jeśli nie masz subskrypcji platformy Azure, Zacznij korzystać z bezpłatnej subskrypcji platformy Azure.
 * Otwórz konto usługi Power BI.
 
@@ -68,7 +68,7 @@ Po zakończeniu wdrażania, postępuj zgodnie z instrukcjami operacji ręcznych.
 
    ![Usługa Power BI w oknie rejestrowania](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/5-sign-into-powerbi.png)
    
-1. Wybierz **zaakceptować**. Aplikacja zaczyna być uruchamiana.
+1. Wybierz pozycję **Zaakceptuj**. Aplikacja zaczyna być uruchamiana.
 
    ![Uprawnienia pulpitu nawigacyjnego usługi Power BI](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/6-powerbi-dashboard-permissions.png)
 
@@ -348,7 +348,7 @@ Pomyślnie utworzono pulpit nawigacyjny w czasie rzeczywistym. W miarę postępu
 
 ### <a name="configure-power-bi-reports"></a>Konfigurowanie raportów usługi Power BI
 
-1. Otwórz plik projektanta **ConnectedCarsPbiReport.pbix** przy użyciu programu Power BI Desktop. Jeśli nie masz jeszcze je, zainstaluj program Power BI Desktop z [instalacji programu Power BI Desktop](http://www.microsoft.com/download/details.aspx?id=45331) witryny sieci Web.
+1. Otwórz plik projektanta **ConnectedCarsPbiReport.pbix** przy użyciu programu Power BI Desktop. Jeśli nie masz jeszcze je, zainstaluj program Power BI Desktop z [instalacji programu Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=45331) witryny sieci Web.
 
 1. Wybierz **Edytuj zapytania**.
 

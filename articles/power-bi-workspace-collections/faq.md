@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: e6e2c0b82f306e399454c1672c56e2933e3f1158
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: eed970d46c8a895001ce0a6d7d7f37acf6c02a55
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040869"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249204"
 ---
 # <a name="power-bi-workspace-collections-faq"></a>Kolekcji usługi Power BI w obszarze roboczym — często zadawane pytania
 
@@ -61,7 +61,7 @@ Zobacz naszą dokumentację usługi, aby uzyskać szczegółowe informacje na te
 Tak. Można użyć istniejącej subskrypcji platformy Azure do aprowizacji i jest używana usługa kolekcje obszar roboczy usługi Microsoft Power BI.
 
 ## <a name="does-my-application-end-user-need-a-power-bi-license"></a>Czy Moje użytkownika końcowego aplikacji wymaga licencji usługi Power BI?
-Nie. Użytkownicy końcowi aplikacji nie są wymagane do zakupu lub subskrypcji usługi Power BI oddzielnie Aby uzyskać dostęp do wizualizacji danych w aplikacji. W modelu kolekcji obszarów roboczych usługi Power BI, jako dostawca aplikacji jest naliczana za usługę za pośrednictwem mierników użycia platformy Azure. Zapoznaj się [strony cenowe i licencjonowania](http://go.microsoft.com/fwlink/?LinkId=760527).
+Nie. Użytkownicy końcowi aplikacji nie są wymagane do zakupu lub subskrypcji usługi Power BI oddzielnie Aby uzyskać dostęp do wizualizacji danych w aplikacji. W modelu kolekcji obszarów roboczych usługi Power BI, jako dostawca aplikacji jest naliczana za usługę za pośrednictwem mierników użycia platformy Azure. Zapoznaj się [strony cenowe i licencjonowania](https://go.microsoft.com/fwlink/?LinkId=760527).
 
 ## <a name="how-does-user-authentication-work-with-power-bi-workspace-collections"></a>Jak działa uwierzytelnianie użytkowników za pomocą kolekcji obszarów roboczych usługi Power BI?
 Usługa kolekcje obszarów roboczych usługi Power BI używa tokenów aplikacji do uwierzytelniania i autoryzacji zamiast jawnego uwierzytelniania użytkowników końcowych. W modelu tokenu aplikacji Aplikacja zarządza uwierzytelniania i autoryzacji dla użytkowników końcowych. Następnie gdy jest to konieczne, tworzy aplikację
@@ -80,7 +80,7 @@ Deweloperzy/pracowników nad lub kompilowania aplikacji musi mieć konto użytko
 Możesz odwiedzić stronę [stronę z dokumentacją dotyczącą kolekcji obszarów roboczych usługi Power BI](get-started.md). Użytkownik może najnowsze informacje o tej usłudze, odwiedzając [blog usługi Power BI](https://powerbi.microsoft.com/blog/) lub przechodząc do Centrum deweloperów usługi Power BI w witrynie dev.powerbi.com. Można również zadawać pytania w [Stackoverflow](http://stackoverflow.com/questions/tagged/powerbi).
 
 ## <a name="how-do-i-get-started"></a>Jak rozpocząć?
-Możesz rozpocząć pracę bezpłatnie teraz! Jeśli masz subskrypcję platformy Azure, można teraz udostępnić kolekcje obszarów roboczych usługi Power BI w witrynie Azure portal bezpośrednio. Można również tworzyć swoje [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/). Po aprowizowaniu usługi kolekcji obszarów roboczych usługi Power BI, można łatwo używać interfejsów API REST usługi Power BI bezpośrednio lub użyć dla deweloperów dostępne w zestawie SDK [GitHub](http://go.microsoft.com/fwlink/?LinkID=746472). Przykłady są udostępniane w sposób korzystania z zestawu SDK dla deweloperów.
+Możesz rozpocząć pracę bezpłatnie teraz! Jeśli masz subskrypcję platformy Azure, można teraz udostępnić kolekcje obszarów roboczych usługi Power BI w witrynie Azure portal bezpośrednio. Można również tworzyć swoje [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/). Po aprowizowaniu usługi kolekcji obszarów roboczych usługi Power BI, można łatwo używać interfejsów API REST usługi Power BI bezpośrednio lub użyć dla deweloperów dostępne w zestawie SDK [GitHub](https://go.microsoft.com/fwlink/?LinkID=746472). Przykłady są udostępniane w sposób korzystania z zestawu SDK dla deweloperów.
 
 ## <a name="see-also"></a>Zobacz także
 

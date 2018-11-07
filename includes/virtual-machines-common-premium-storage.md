@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 97e4e670d5db646cea28cb30e9ca95633cea2a8a
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7fa7e6126c415a0a33b77b78975e8f4a533c4675
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49437118"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51263291"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Magazyn w warstwie Premium o wysokiej wydajności i dysków zarządzanych dla maszyn wirtualnych
 
@@ -97,7 +97,7 @@ Poniżej przedstawiono niektóre z funkcji obsługiwanych w warstwie premium mag
     W tej samej maszyny Wirtualnej — wersja Premium Storage można użyć disks premium i standardowa. Dzięki usłudze Premium Storage można aprowizować maszynę Wirtualną i dołączyć kilka dysków trwałych danych do maszyny Wirtualnej. Jeśli to konieczne w celu zwiększenia pojemności i wydajności woluminu, można stripe dla usługi dysków.
 
     > [!NOTE]
-    > Jeśli stripe dysków magazynu premium storage danych przy użyciu [miejsca do magazynowania](http://technet.microsoft.com/library/hh831739.aspx), skonfigurować pod kątem funkcji miejsca do magazynowania z 1 kolumnę dla każdego dysku, którego używasz. W przeciwnym razie ogólną wydajność rozłożone wolumin może być krótszy niż oczekiwano z powodu nierówna Dystrybucja ruchu między dyskami. Domyślnie w Menedżerze serwera można skonfigurować kolumny dla maksymalnie 8 dysków. Jeśli masz więcej niż 8 dysków, należy utworzyć wolumin za pomocą programu PowerShell. Ręcznie określ liczbę kolumn. W przeciwnym razie interfejsu użytkownika Menedżera serwera w dalszym ciągu używać 8 kolumn, nawet jeśli masz więcej dysków. Na przykład jeśli masz 32 dysków w zestawie pojedynczej usługi stripe, należy określić 32 kolumn. Aby określić liczbę kolumn w dysk wirtualny wykorzystuje [New-VirtualDisk](http://technet.microsoft.com/library/hh848643.aspx) polecenia cmdlet programu PowerShell, użyj *NumberOfColumns* parametru. Aby uzyskać więcej informacji, zobacz [miejsca do magazynowania — omówienie](http://technet.microsoft.com/library/hh831739.aspx) i [— często zadawane pytania dla miejsca do magazynowania magazynu](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx).
+    > Jeśli stripe dysków magazynu premium storage danych przy użyciu [miejsca do magazynowania](https://technet.microsoft.com/library/hh831739.aspx), skonfigurować pod kątem funkcji miejsca do magazynowania z 1 kolumnę dla każdego dysku, którego używasz. W przeciwnym razie ogólną wydajność rozłożone wolumin może być krótszy niż oczekiwano z powodu nierówna Dystrybucja ruchu między dyskami. Domyślnie w Menedżerze serwera można skonfigurować kolumny dla maksymalnie 8 dysków. Jeśli masz więcej niż 8 dysków, należy utworzyć wolumin za pomocą programu PowerShell. Ręcznie określ liczbę kolumn. W przeciwnym razie interfejsu użytkownika Menedżera serwera w dalszym ciągu używać 8 kolumn, nawet jeśli masz więcej dysków. Na przykład jeśli masz 32 dysków w zestawie pojedynczej usługi stripe, należy określić 32 kolumn. Aby określić liczbę kolumn w dysk wirtualny wykorzystuje [New-VirtualDisk](https://technet.microsoft.com/library/hh848643.aspx) polecenia cmdlet programu PowerShell, użyj *NumberOfColumns* parametru. Aby uzyskać więcej informacji, zobacz [miejsca do magazynowania — omówienie](https://technet.microsoft.com/library/hh831739.aspx) i [— często zadawane pytania dla miejsca do magazynowania magazynu](https://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx).
     >
     > 
 
@@ -151,7 +151,9 @@ Jeśli używasz kont usługi premium storage dla dysków niezarządzanych aplika
 ### <a name="premium-storage-disk-limits"></a>Limity dysku usługi Premium Storage
 Podczas aprowizowania dysku magazynu premium rozmiar dysku określa maksymalny operacje We/Wy i przepływność (przepustowość). Platforma Azure oferuje osiem typów usług ogólnie dostępnych dysków magazynu premium storage: P4 (zarządzane tylko dysków), poziom P6 odpowiada P10 (Managed Disks tylko), P15 (zarządzane tylko dysków), P20, P30, P40 i P50. Także w trzech rozmiarach dysków w wersji zapoznawczej: P60 P70 i P80. Każdy typ dysku magazynu premium storage ma określone limity dla operacji We/Wy i przepływność. W poniższej tabeli opisano limity dla typów dysków:
 
-| Typ magazynu dysków Premium  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | P60             | P70                | P80                |
+Rozmiary oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej.
+
+| Typ magazynu dysków Premium  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | P60 *            | P70 *               | P80 *               |
 |---------------------|-------|-------|--------|--------|--------|------------------|-----------------|-----------------|-----------------|--------------------|--------------------|
 | Rozmiar dysku           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB| 1024 giB (1 TiB) | 2048 giB (2 TiB)| 4095 giB (4 TiB)| 8192 giB (8 TiB)| 16 384 giB (16 TiB)| 32 767 giB (32 TiB)|
 | Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500    | 1100   | 2300   | 5000             | 7500            | 7500            | 12 500          | 15 000             | 20,000             |
@@ -237,7 +239,7 @@ Poniższe limity mają zastosowanie do migawki obiektów blob magazynu w warstwi
 
 Aby zachować geograficznie nadmiarowych kopii usługi migawek, można skopiować migawki z konta usługi premium storage do konta magazynu geograficznie nadmiarowego magazynu w warstwie standardowa przy użyciu narzędzia AzCopy lub obiektu Blob kopiowania. Aby uzyskać więcej informacji, zobacz [Transfer danych za pomocą narzędzia wiersza polecenia AzCopy](../articles/storage/common/storage-use-azcopy.md) i [obiektu Blob kopiowania](/rest/api/storageservices/Copy-Blob).
 
-Aby uzyskać szczegółowe informacje dotyczące wykonywania operacji REST względem stronicowe obiekty BLOB na koncie usługi premium storage, zobacz [operacji usługi za pomocą usługi Azure Premium Storage Blob](http://go.microsoft.com/fwlink/?LinkId=521969).
+Aby uzyskać szczegółowe informacje dotyczące wykonywania operacji REST względem stronicowe obiekty BLOB na koncie usługi premium storage, zobacz [operacji usługi za pomocą usługi Azure Premium Storage Blob](https://go.microsoft.com/fwlink/?LinkId=521969).
 
 ### <a name="managed-disks"></a>Dyski zarządzane
 
@@ -267,12 +269,12 @@ Poniższe dystrybucje systemu Linux zostały zweryfikowane dla usługi Azure Pre
 | SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> SUSE — w systemie sles-12-v20150213 |
 | SUSE | SLES 11 Z DODATKIEM SP4 | 3.0.101-0.63.1+ | &nbsp; |
 | CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
-| CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [LIS4 wymagane](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zobacz uwagi w następnej sekcji* |
-| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [LIS4 zalecane](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zobacz uwagi w następnej sekcji* |
+| CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [LIS4 wymagane](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zobacz uwagi w następnej sekcji* |
+| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [LIS4 zalecane](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zobacz uwagi w następnej sekcji* |
 | Red Hat Enterprise Linux (RHEL) | 6.8+, 7.2+ | &nbsp; | &nbsp; |
 | Oracle | 6.0+, 7.2+ | &nbsp; | UEK4 lub RHCK |
-| Oracle | 7.0-7.1 | &nbsp; | UEK4 lub RHCK z[LIS 4.1 lub nowszym](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
-| Oracle | 6.4-6.7 | &nbsp; | UEK4 lub RHCK z[LIS 4.1 lub nowszym](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 7.0-7.1 | &nbsp; | UEK4 lub RHCK z[LIS 4.1 lub nowszym](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 6.4-6.7 | &nbsp; | UEK4 lub RHCK z[LIS 4.1 lub nowszym](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>Sterowników LIS systemie OpenLogic CentOS

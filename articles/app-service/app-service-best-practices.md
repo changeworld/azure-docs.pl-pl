@@ -1,6 +1,6 @@
 ---
 title: Najlepsze rozwiązania dotyczące usługi Azure App Service
-description: Dowiedz się, najlepsze rozwiązania i rozwiązywanie problemów dotyczących usługi Azure App Service.
+description: Poznaj najlepsze rozwiązania i rozwiązywanie problemów z usługi Azure App Service.
 services: app-service
 documentationcenter: ''
 author: dariagrigoriu
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: 7c5eb6190d4a4cdfa47779d2c4d7aadac5a2fb80
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: ff79680c00a394790ba56db9ab4b237f06c677e5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
-ms.locfileid: "27868322"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240634"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Najlepsze rozwiązania dotyczące usługi Azure App Service
-W tym artykule przedstawiono najlepsze rozwiązania dotyczące używania [usłudze Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). 
+Ten artykuł zawiera podsumowanie najlepsze rozwiązania dotyczące używania [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). 
 
-## <a name="colocation"></a>Wspólnej lokalizacji
-Podczas tworzenia rozwiązania, takie jak aplikacji sieci web i bazy danych zasobów platformy Azure znajdują się w różnych regionach, może mieć następujące skutki:
+## <a name="colocation"></a>Wspólnej
+Podczas tworzenia rozwiązania takie jak aplikacja sieci web i bazy danych zasobów platformy Azure znajdują się w różnych regionach, może mieć następujące skutki:
 
-* Większe opóźnienia w łączności między zasobami
-* Opłaty finansowe dla danych wychodzących transferu między regionu wspomnianego w [Azure cennikiem](https://azure.microsoft.com/pricing/details/data-transfers).
+* Większe opóźnienia w komunikacji między zasobami
+* Pieniężnych opłaty za dane wychodzące transferu między regionami wymienionych na [platformy Azure, cennik](https://azure.microsoft.com/pricing/details/data-transfers).
 
-Wspólnej lokalizacji, w tym samym regionie jest najlepsze w przypadku tworzenia rozwiązania, takie jak aplikacji sieci web i bazy danych lub magazyn konto używane do przechowywania danych zasobów platformy Azure. Podczas tworzenia zasobów, upewnij się, że znajdują się w tym samym regionie Azure, chyba że masz powód biznesowe lub projekt do nich nie. Aplikacji usługi app Service można przenieść do tego samego regionu bazy danych przy użyciu [usługi aplikacji — funkcja klonowania](app-service-web-app-cloning.md) obecnie dostępne dla aplikacji Plan usługi aplikacji — warstwa Premium.   
+Wspólną lokalizację, w tym samym regionie jest najlepsze dla zasobów platformy Azure, tworzenie rozwiązania takie jak aplikacja sieci web i bazy danych lub konta magazynu używany do przechowywania danych. Podczas tworzenia zasobów, upewnij się, że są w tym samym regionie platformy Azure, chyba że masz firmy lub projektowanie, przyczyna nie można je. Aplikacja usługi App Service można przenieść do tego samego regionu co baza danych, za pomocą [usługi App Service, funkcji klonowania](app-service-web-app-cloning.md) obecnie dostępny dla planu usługi aplikacji w warstwie Premium aplikacji.   
 
-## <a name="memoryresources"></a>Gdy aplikacje korzystać z większej ilości pamięci, niż oczekiwano
-Jeśli zauważysz aplikacji wymaga więcej pamięci niż oczekiwano jako wskazywane przez zalecenia dotyczące monitorowania lub usługi, należy wziąć pod uwagę [aplikacji usługi automatyczne naprawianie funkcji](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites). Jedną z opcji dla funkcji Automatyczne naprawianie trwa akcje niestandardowe w oparciu próg pamięci. Akcje obejmują spektrum z powiadomienia e-mail do badania za pośrednictwem zrzutu pamięci, aby ograniczenie na miejscu przez odtwarzania procesu roboczego. Automatyczne naprawianie można skonfigurować za pomocą pliku web.config i za pośrednictwem interfejsu użytkownika przyjazną zgodnie z opisem w w tym blogu dla [aplikacji usługi pomocy technicznej witryny rozszerzenia](https://azure.microsoft.com/blog/additional-updates-to-support-site-extension-for-azure-app-service-web-apps).   
+## <a name="memoryresources"></a>Gdy aplikacje zużywać więcej pamięci niż oczekiwano
+Jeśli zauważysz, że aplikacja zużywa więcej pamięci niż oczekiwano jako wskazywane przez zalecenia dotyczące monitorowania lub usługi, należy wziąć pod uwagę [funkcji App Service automatycznego naprawiania](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites). Jedną z opcji dla funkcji automatycznego naprawiania trwa akcje niestandardowe na podstawie progu pamięci. Akcje obejmują spektrum z powiadomienia e-mail do badań za pomocą zrzutu pamięci do ograniczania ryzyka na miejscu, odtwarzania procesu roboczego. Automatyczne naprawianie można skonfigurować za pomocą pliku web.config i za pomocą interfejsu użytkownika przyjazna zgodnie z opisem na w tym wpisie w blogu dla [rozszerzenia witryny pomocy technicznej usługi aplikacji](https://azure.microsoft.com/blog/additional-updates-to-support-site-extension-for-azure-app-service-web-apps).   
 
-## <a name="CPUresources"></a>Gdy aplikacje korzystać więcej procesorów niż oczekiwano
-Jeśli zauważysz aplikacja wykorzystuje więcej procesorów niż oczekiwano lub powtórzony nagłego Procesora środowiska wskazane za pośrednictwem zalecenia dotyczące monitorowania lub usługi, należy wziąć pod uwagę skalowanie w i skalowania plan usługi aplikacji. Jeśli aplikacja jest stanowa, skalowanie w jest jedyną opcją w przypadku aplikacji bezstanowych, skalowania w poziomie daje większą elastyczność i wyższe możliwości skalowania. 
+## <a name="CPUresources"></a>Gdy aplikacje używać większej mocy Procesora niż oczekiwano
+Jeśli zauważysz, że aplikacja zużywa większej mocy Procesora niż oczekiwano lub środowiska powtarzanych wzrostów użycia Procesora wskazywane przez zalecenia dotyczące monitorowania lub usługi, należy wziąć pod uwagę skalowanie w górę lub skalowania w poziomie plan usługi App Service. Jeśli aplikacja jest stanowa, skalowanie w górę jest jedyną opcją, jeśli Twoja aplikacja znajduje się poza bezstanowych, skalowania daje większą elastyczność i wyższych możliwości skalowania. 
 
-Aby uzyskać więcej informacji o aplikacjach "bezstanowych", "stanowe" vs można Obejrzyj ten film: [planowanie skalowalności End-to-End wielowarstwowej aplikacji w aplikacji sieci Web platformy Microsoft Azure](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Aby uzyskać więcej informacji na temat opcji skalowania i skalowanie automatyczne usługi aplikacji, zobacz [skalowanie aplikacji sieci Web w usłudze Azure App Service](web-sites-scale.md).  
+Aby uzyskać więcej informacji o aplikacjach "bezstanowe" "stanowych" vs możesz obejrzeć ten film wideo: [planowania skalowalne End-to-End wielowarstwową aplikację w usłudze Microsoft Azure Web App](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Aby uzyskać więcej informacji na temat opcji skalowania i automatycznym skalowaniem usługi App Service, zobacz [skalowanie aplikacji sieci Web w usłudze Azure App Service](web-sites-scale.md).  
 
-## <a name="socketresources"></a>Gdy wyczerpania zasobów gniazda
-Typową przyczyną wyczerpuje wychodzące połączenia TCP jest korzystanie z bibliotek klienta, nie są zaimplementowane do ponownego użycia połączenia TCP lub gdy nie jest używany protokół wyższego poziomu, takich jak HTTP - Keep-Alive. Zapoznaj się z dokumentacją dla poszczególnych bibliotek odwołuje się do aplikacji w Twojego planu usługi App Service zapewnienie są skonfigurowane lub dostępne w kodzie wydajne ponowne połączeń wychodzących. Wykonaj również biblioteki dokumentacji wskazówki dotyczące utworzenia prawidłowego i wersji lub czyszczenia, aby uniknąć przeciek połączenia. Dochodzenia takie klienta biblioteki są w toku, wpływ może skorygowane przez skalowanie w poziomie do wielu wystąpień.
+## <a name="socketresources"></a>Po wyczerpaniu zasobów gniazda
+Typową przyczyną wyczerpuje połączenia wychodzące TCP jest korzystanie z bibliotek klienckich, które nie są implementowane na ponowne użycie połączenia protokołu TCP lub gdy nie jest używany protokół wyższego poziomu, takich jak HTTP - Keep-Alive. Przejrzyj dokumentację dla każdej biblioteki przywoływane przez aplikacje na Plan usługi App Service do upewnij się, są one skonfigurowane lub dostępne w kodzie w poszukiwaniu wydajne ponownemu połączeń wychodzących. Również zgodnie z wytycznymi dokumentacji biblioteki dla utworzenia prawidłowego i wersji lub czyszczenia wyciekiem połączeń. Podczas takich dochodzeń biblioteki klienta jest w toku, wpływ może zminimalizować, skalując w poziomie do wielu wystąpień.
 
-### <a name="nodejs-and-outgoing-http-requests"></a>Node.js i wychodzących żądań http
-Podczas pracy z wielu wychodzących żądań http i Node.js, ważne jest zajmowanie HTTP - Keep-Alive. Można użyć [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` pakietu w celu ułatwienia w kodzie.
+### <a name="nodejs-and-outgoing-http-requests"></a>Środowisko node.js i wychodzące żądania http
+Jeśli pracujesz w języku Node.js i wiele wychodzące żądania http, ważne jest zajmowanie się HTTP - Keep-Alive. Możesz użyć [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` pakietu, aby ułatwić w kodzie.
 
-Zawsze obsługi `http` odpowiedzi, nawet jeśli nie wykonasz żadnej obsługi czynności. Jeśli odpowiedzi nie obsługują poprawnie, aplikacja zablokowała po pewnym czasie nie więcej gniazda nie są dostępne.
+Obsługa zawsze `http` odpowiedzi, nawet jeśli to zrobisz, żadne postanowienie program obsługi. Odpowiedź nie obsługują prawidłowo, aplikacja pobiera zatrzymany po pewnym czasie nie więcej gniazda nie są dostępne.
 
 Na przykład podczas pracy z `http` lub `https` pakietu:
 
@@ -56,19 +56,19 @@ var request = https.request(options, function(response) {
 });
 ```
 
-Jeśli używasz w usłudze aplikacji w systemie Linux na maszynie z wieloma rdzeniami, inny najlepszym rozwiązaniem jest Użyj PM2, aby uruchomić wiele procesów Node.js do wykonywania aplikacji. Możesz zrobić to, określając polecenie uruchomienia z kontenera.
+Jeśli w usłudze App Service w systemie Linux są uruchomione na komputerze z wieloma rdzeniami, inny, najlepszym rozwiązaniem jest Użyj PM2, aby uruchomić wiele procesów Node.js do wykonywania aplikacji. Należy go przez określenie polecenie uruchamiania, do kontenera.
 
-Na przykład, aby uruchomić czterech wystąpień:
+Na przykład można uruchomić wystąpień czterech:
 
 ```
 pm2 start /home/site/wwwroot/app.js --no-daemon -i 4
 ```
 
-## <a name="appbackup"></a>Gdy aplikacja kopii zapasowej uruchamia się niepowodzeniem
-Dwie najbardziej typowe przyczyny niepowodzenia tworzenia kopii zapasowej aplikacji są: nieprawidłowy miejsca do magazynowania i nieprawidłowa konfiguracja bazy danych. Takie błędy zazwyczaj się zdarzyć, gdy istnieją zmiany do magazynu lub bazy danych zasobów lub zmiany dotyczące dostępu do tych zasobów (na przykład poświadczenia zaktualizowane dla wybranej w ustawieniach tworzenia kopii zapasowej bazy danych). Tworzenie kopii zapasowych zwykle uruchamiane zgodnie z harmonogramem i wymagają dostępu do bazy danych i magazynu (na generowanie plików kopii zapasowej) (w przypadku kopiowania i odczytu zawartości do uwzględnienia w kopii zapasowej). Wynik nie może uzyskać dostępu do żadnego z tych zasobów będą zgodne niepowodzenia wykonywania kopii zapasowej. 
+## <a name="appbackup"></a>Gdy aplikacja kopii zapasowej rozpoczyna się kończy się niepowodzeniem
+Dwie najbardziej typowe przyczyny, dlaczego są niepowodzenia tworzenia kopii zapasowej aplikacji: nieprawidłowych ustawień magazynu i nieprawidłowa konfiguracja bazy danych. Te błędy najczęściej występuje, gdy istnieją zmiany w zasobach magazynu lub bazy danych lub zmiany dotyczące dostępu do tych zasobów (na przykład poświadczenia zaktualizowane dla wybranej w ustawieniach kopii zapasowej bazy danych). Kopie zapasowe zazwyczaj uruchamiane zgodnie z harmonogramem i wymagają dostępu do magazynu (w przypadku podawania pliki kopii zapasowej) i bazy danych (kopiowanie i odczytu zawartości, które mają zostać uwzględnione w kopii zapasowej). Wynikiem niepowodzenie dostęp do jednej z tych zasobów będzie spójny niepowodzenia wykonywania kopii zapasowej. 
 
-Gdy wystąpi niepowodzenie wykonywania kopii zapasowej, należy przejrzeć najnowsze wyniki, aby zrozumieć, jakiego typu błędu jest wykonywane. Niepowodzeń dostępu do magazynu należy przejrzeć i zaktualizować ustawienia magazynu używane w konfiguracji kopii zapasowej. Dla niepowodzenia dostępu do bazy danych należy przejrzeć i zaktualizować Twojego ciągi połączenia w ustawieniach aplikacji; Przejdź do aktualizacji konfiguracji kopii zapasowej, aby poprawnie obejmują wymagane bazy danych. Aby uzyskać więcej informacji dotyczących tworzenia kopii zapasowych aplikacji, zobacz [kopii zapasowej aplikacji sieci web w usłudze Azure App Service](web-sites-backup.md).
+Gdy wystąpi niepowodzeniami tworzenia kopii zapasowych, należy przejrzeć najnowsze wyniki, aby zrozumieć, jakiego typu błędu jest wykonywane. Dla błędów dostępu do magazynu Przejrzyj i zaktualizuj ustawienia magazynu, używane w konfiguracji kopii zapasowej. Dla błędów dostępu do bazy danych Przejrzyj i zaktualizuj swoje ciągi połączenia w ustawieniach aplikacji; następnie można zaktualizować konfiguracji kopii zapasowej, aby prawidłowo obejmują wymagane bazy danych. Aby uzyskać więcej informacji na temat kopii zapasowych aplikacji, zobacz [tworzenie kopii zapasowej aplikacji sieci web w usłudze Azure App Service](web-sites-backup.md).
 
-## <a name="nodejs"></a>Podczas wdrażania nowych aplikacji Node.js usługi aplikacji Azure
-Usługi aplikacji Azure domyślnej konfiguracji dla aplikacji Node.js ma najlepiej odpowiadający potrzebom najbardziej typowych aplikacji. Jeśli Konfiguracja aplikacji Node.js korzystałby z spersonalizowane dostrajanie do zwiększenia wydajności lub optymalizować wykorzystanie zasobów dla zasobów Procesora i pamięci/sieci, zobacz [najlepsze praktyki i przewodnik rozwiązywania problemów dla węzła aplikacji w aplikacji Azure Usługa](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). W tym artykule opisano ustawienia programu iisnode, może być konieczne skonfigurowanie aplikacji Node.js, w tym artykule opisano różne scenariusze lub problemy mogą być dostępne w aplikacji i przedstawia sposób rozwiązania tych problemów.
+## <a name="nodejs"></a>Gdy nowe aplikacje Node.js są wdrażane w usłudze Azure App Service
+Usługa Azure App Service domyślną konfigurację aplikacji Node.js jest przeznaczona do najlepiej spełniały potrzeby najbardziej typowych aplikacji. Jeśli Konfiguracja aplikacji Node.js używającym spersonalizowane dostrajania zwiększyć wydajność lub zoptymalizować użycie zasobów dla zasobów procesora CPU i pamięci/sieci, zobacz [najlepsze praktyki i przewodnik rozwiązywania problemów aplikacji Node w usłudze Azure App Usługa](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). W tym artykule opisano ustawienia programu iisnode, może być konieczne skonfigurowanie aplikacji Node.js, w tym artykule opisano różne scenariusze lub problemy mogą miała dostęp do aplikacji i pokazuje, jak rozwiązać te problemy.
 

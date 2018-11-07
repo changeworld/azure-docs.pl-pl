@@ -7,18 +7,18 @@ ms.date: 6/13/2018
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 7456785815dbefb2436713814965d90ba0e789ee
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 1be05ac7216a65922927b94d1cc4ba2a893433b2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39037270"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250989"
 ---
 # <a name="resource-manager-vcpu-quota-increase-requests"></a>Żądań zwiększenia limitu przydziału procesorów wirtualnych usługi Resource Manager
 
 Limity przydziału procesorów wirtualnych Menedżera zasobów są wymuszane na poziomie regionu oraz poziomu rodziny SKU.
-Dowiedz się więcej o jak przydziały są wymuszane na [limity usług i subskrypcji platformy Azure](http://aka.ms/quotalimits) strony.
-Aby dowiedzieć się więcej na temat rodzin SKU, może być porównywanie kosztów i wydajności na [cennik usługi Virtual Machines](http://aka.ms/pricingcompute) strony.
+Dowiedz się więcej o jak przydziały są wymuszane na [limity usług i subskrypcji platformy Azure](https://aka.ms/quotalimits) strony.
+Aby dowiedzieć się więcej na temat rodzin SKU, może być porównywanie kosztów i wydajności na [cennik usługi Virtual Machines](https://aka.ms/pricingcompute) strony.
 
 Aby poprosić o zwiększenie, postępuj zgodnie z instrukcjami poniżej z użyciem, aby utworzyć żądanie pomocy technicznej za pośrednictwem platformy Azure "użycie i limit przydziału" bloku dostępne w witrynie Azure Portal. 
 

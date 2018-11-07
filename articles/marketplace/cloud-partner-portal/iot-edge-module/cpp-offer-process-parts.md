@@ -12,18 +12,18 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 11/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 68c58c16d7083182d412adb6ed0d243a3291cc42
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 5b4d4471d9c77b5d13dfd5f8c2e9394b1c2d2a87
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431558"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242557"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>Moduł usługi IoT Edge oferują publikowania — omówienie
 
-W tym artykule opisano proces publikowania i kluczowych części w ramach oferty modułu usługi IoT Edge. Użyj w tym artykule jako punktu wyjścia do publikowania oferty publikowania [portalu Azure Marketplace](https://azuremarketplace.microsoft.com).
+<table> <tr> <td>W tej sekcji wyjaśniono, jak opublikować nową ofertę modułu usługi Azure IoT Edge Microsoft <a href="https://azuremarketplace.microsoft.com">portalu Azure Marketplace</a>. Moduł usługi IoT Edge to kontener zgodnego z platformą Docker, który wprowadził do uruchamiania na urządzeniu usługi IoT Edge. Moduły platformy Azure IoT Edge to najmniejsza obliczeń zarządzane przez usługi IoT Edge i może zawierać usług platformy Azure lub kodu niestandardowego rozwiązania. </td> <td><img src="./media/iotedge-icon1.png"  alt="Azure IoT Edge module icon" /></td> </tr> </table>
 
 ## <a name="publishing-process"></a>Proces publikowania
 

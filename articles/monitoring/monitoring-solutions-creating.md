@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2f7871aac0469e5fb8eaaebef9ca48404609bab7
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a942e1c783b460f07626e398f91f980db7634581
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912564"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259647"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Zaprojektować i zbudować rozwiązanie do zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
@@ -49,7 +49,7 @@ Istnieje kilka sposobów źródeł danych, które mogą być zbierane w repozyto
 Jeśli potrzebujesz danych, która nie jest dostępna za pośrednictwem dowolnych dostępnych źródeł danych, a następnie można użyć [interfejsu API modułu zbierającego dane HTTP](../log-analytics/log-analytics-data-collector-api.md) pozwala zapisywać dane w repozytorium usługi Log Analytics za pomocą dowolnego klienta, który można wywołać interfejs API REST.  Najbardziej typowe oznacza, że zbieranie danych niestandardowych w rozwiązaniu do zarządzania jest utworzenie [elementu runbook w usłudze Azure Automation](../automation/automation-runbook-types.md) który gromadzi informacje o wymaganych danych z zasobów platformy Azure lub zewnętrznych i używa interfejsu API modułu zbierającego dane do zapisu do repozytorium.  
 
 ### <a name="log-searches"></a>Wyszukiwanie w Dzienniku
-[Przeszukiwanie dzienników](../log-analytics/log-analytics-log-search.md) służą do wyodrębniania i analizować dane w repozytorium usługi Log Analytics.  Są one używane przez widoki i alerty, oprócz umożliwienia użytkownikowi przeprowadzenie analizy ad-hoc danych w repozytorium.  
+[Przeszukiwanie dzienników](../log-analytics/log-analytics-queries.md) służą do wyodrębniania i analizować dane w repozytorium usługi Log Analytics.  Są one używane przez widoki i alerty, oprócz umożliwienia użytkownikowi przeprowadzenie analizy ad-hoc danych w repozytorium.  
 
 Należy zdefiniować żadnych zapytań, które prawdopodobnie będą pomocne dla użytkowników, nawet jeśli nie są one używane przez wszystkie widoki i alerty.  Te będą dostępne dla nich jako zapisane wyszukiwania w portalu, a można również uwzględnić je w [części wizualizacji zapytań listy](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part) w widoku niestandardowym.
 

@@ -1,4 +1,4 @@
-Skorzystaj z forum [User Voice](http://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409), aby przekazać opinie i sugestie dotyczące sposobów usprawnienia usługi Azure Media Services. Możesz także przejść bezpośrednio do jednej z następujących kategorii:
+Skorzystaj z forum [User Voice](https://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409), aby przekazać opinie i sugestie dotyczące sposobów usprawnienia usługi Azure Media Services. Możesz także przejść bezpośrednio do jednej z następujących kategorii:
 
 * [Azure Media Player](https://feedback.azure.com/forums/169396-media-services/category/109320-azure-media-player/)
 * [Biblioteki zestawu SDK klienta](https://feedback.azure.com/forums/169396-media-services/category/144435-client-sdks/)

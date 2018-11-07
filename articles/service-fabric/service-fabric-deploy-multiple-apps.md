@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie aplikacji Node.js, która używa bazy danych MongoDB sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
-description: Przewodnik dotyczący sposobu pakietu wiele plików wykonywalnych gościa do wdrożenia klastra usługi sieć szkieletowa usług Azure
+title: Wdrażanie aplikacji Node.js, która używa bazy danych MongoDB w usłudze Azure Service Fabric | Dokumentacja firmy Microsoft
+description: Przewodnik dotyczący sposobu pakowanie wielu aplikacji wykonywalnych gości, aby wdrożyć klaster usługi Azure Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 9a7ab3881cd1058a60ff7d5f6e50c296f042e76e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ea2f27069ca445a4d74ddc634f5c396ab13564a1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206083"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249000"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Wdrażanie wielu aplikacji wykonywalnych gości
-W tym artykule przedstawiono sposób pakietów i wdrożyć wiele plików wykonywalnych gościa sieć szkieletowa usług Azure. Umożliwiające tworzenie i wdrażanie pojedynczego pakietu sieci szkieletowej usług przeczytać artykuł dotyczący sposobu do [wdrażanie pliku wykonywalnego gościa sieci szkieletowej usług](service-fabric-deploy-existing-app.md).
+Ten artykuł pokazuje, jak pakowanie i wdrażanie wielu aplikacji wykonywalnych gości w usłudze Azure Service Fabric. Do tworzenia i wdrażania jednego pakietu usługi Service Fabric przeczytaj, jak do [wdrażanie pliku wykonywalnego gościa w usłudze Service Fabric](service-fabric-deploy-existing-app.md).
 
-Jeśli w tym przewodniku pokazano, jak wdrożyć aplikację z Node.js fronton, który używa produktu MongoDB do przechowywania danych, możesz zastosować kroki do dowolnej aplikacji, która zawiera zależności na inną aplikację.   
+Chociaż w tym instruktażu przedstawiono sposób wdrażania aplikacji za pomocą środowiska Node.js fronton, który używa produktu MongoDB jako magazynu danych, można zastosować kroki do dowolnej aplikacji, która ma zależności od innej aplikacji.   
 
-Visual Studio można użyć do utworzenia pakietu aplikacji, która zawiera wiele plików wykonywalnych gościa. Zobacz [przy użyciu programu Visual Studio do pakietu istniejącej aplikacji](service-fabric-deploy-existing-app.md). Po dodaniu pierwszego pliku wykonywalnego gościa, kliknij prawym przyciskiem myszy projekt aplikacji i wybierz opcję **Dodaj -> Usługa sieci szkieletowej usług nowe** można dodać do rozwiązania projekt wykonywalny drugi gościa. Uwaga: Jeśli wybierzesz połączenia źródła w projekcie programu Visual Studio, budowania rozwiązania Visual Studio będzie upewnić, że pakiet aplikacji jest aktualne ze zmianami w źródle. 
+Aby utworzyć pakiet aplikacji, która zawiera wielu aplikacji wykonywalnych gości, można użyć programu Visual Studio. Zobacz [przy użyciu programu Visual Studio do pakietu istniejącej aplikacji](service-fabric-deploy-existing-app.md). Po dodaniu pierwszego pliku wykonywalnego gościa, kliknij prawym przyciskiem myszy projekt aplikacji i wybierz pozycję **Dodaj -> Nowy usługi service Fabric** można dodać drugi projekt wykonywalny gościa do rozwiązania. Uwaga: Jeśli wybierzesz łącze do źródła w projekcie programu Visual Studio, kompilowania rozwiązania programu Visual Studio będzie upewnij się, czy pakietu aplikacji jest na bieżąco ze zmianami w źródle. 
 
 ## <a name="samples"></a>Przykłady
-* [Przykład dla pakowanie i wdrażanie pliku wykonywalnego gościa](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Przykład dwóch gościa pliki wykonywalne (C# i nodejs) podczas komunikacji za pośrednictwem usługi nazw za pomocą usługi REST](https://github.com/Azure-Samples/service-fabric-containers)
+* [Przykład pakowanie i wdrażanie wykonywalnej gościa](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Przykład dwóch gościa pliki wykonywalne (C# i nodejs) podczas komunikowania się za pośrednictwem usługi nazewnictwa przy użyciu usługi REST](https://github.com/Azure-Samples/service-fabric-containers)
 
-## <a name="manually-package-the-multiple-guest-executable-application"></a>Ręcznie pakietu wielu aplikacja wykonywalna gościa
-Można też ręcznie pakietu pliku wykonywalnego gościa. Dla pakietów ręcznego, w tym artykule używa narzędzia pakowania sieci szkieletowej usług, które jest dostępne w [ http://aka.ms/servicefabricpacktool ](http://aka.ms/servicefabricpacktool).
+## <a name="manually-package-the-multiple-guest-executable-application"></a>Ręcznie pakowanie wielu aplikacji wykonywalnych gościa
+Można też ręcznie spakować plik wykonywalny gościa. Ręczne pakowania, w tym artykule używa narzędzia tworzenia pakietów usługi Service Fabric, które znajduje się w temacie [ http://aka.ms/servicefabricpacktool ](https://aka.ms/servicefabricpacktool).
 
 ### <a name="packaging-the-nodejs-application"></a>Pakowanie aplikacji Node.js
-W tym artykule przyjęto założenie, że Node.js nie jest zainstalowany w węzłach klastra sieci szkieletowej usług. W rezultacie musisz dodać Node.exe do katalogu głównego aplikacji węzeł przed opakowania. Struktura katalogów aplikacji Node.js (przy użyciu aparatu Jade szablonu i platforma sieci web Express) powinien wyglądać podobnie do poniższego:
+W tym artykule założono, że Node.js nie jest zainstalowany na węzłach w klastrze usługi Service Fabric. W rezultacie musisz dodać Node.exe do katalogu głównego w węźle przed pakowania aplikacji. Struktura katalogów aplikacji Node.js (przy użyciu środowiska internetowego Express i aparatu Jade szablonu) powinien wyglądać podobnie do poniższego:
 
 ```
 |-- NodeApplication
@@ -61,22 +61,22 @@ W tym artykule przyjęto założenie, że Node.js nie jest zainstalowany w węz�
     |-- node.exe
 ```
 
-Jako kolejny krok należy utworzyć pakiet aplikacji dla aplikacji Node.js. Poniższy kod tworzy pakiet aplikacji sieci szkieletowej usług, który zawiera aplikację Node.js.
+Kolejnym krokiem tworzenia pakietu aplikacji dla aplikacji Node.js. Poniższy kod tworzy pakiet aplikacji usługi Service Fabric, który zawiera aplikację Node.js.
 
 ```
 .\ServiceFabricAppPackageUtil.exe /source:'[yourdirectory]\MyNodeApplication' /target:'[yourtargetdirectory] /appname:NodeService /exe:'node.exe' /ma:'bin/www' /AppType:NodeAppType
 ```
 
-Poniżej znajduje się opis parametrów, które są używane:
+Poniżej przedstawiono opis parametrów, które są używane:
 
-* **/ source** wskazuje katalog aplikacji, który powinien być spakowany.
-* **/ target** definiuje katalogu, w którym można utworzyć pakietu. Ten katalog musi być inny niż katalog źródłowy.
-* **elementów/appname** definiuje nazwę istniejącej aplikacji w aplikacji. Należy zrozumieć przekłada nazwy usługi w manifeście, a nie nazwę aplikacji sieci szkieletowej usług.
-* **/exe** definiuje plik wykonywalny, który można uruchomić w tym przypadku powinien sieci szkieletowej usług `node.exe`.
-* **/ma** definiuje argumentu, który jest używany do uruchomienia pliku wykonywalnego. Ponieważ nie zainstalowano środowiska Node.js, sieć szkieletowa usług musi uruchomić serwera sieci web Node.js, wykonując `node.exe bin/www`.  `/ma:'bin/www'` informuje narzędzie tworzenia pakietów do użycia `bin/www` jako argument dla node.exe.
-* **/ Typ aplikacji** definiuje nazwę typu sieci szkieletowej usług aplikacji.
+* **/ source** wskazuje katalog aplikacji, która powinna być w pakiecie.
+* **/ target** Określa katalog, w którym można utworzyć pakietu. Ten katalog musi różnić się od katalogu źródłowego.
+* **operacji** definiuje nazwę istniejącej aplikacji w aplikacji. Należy zrozumieć, czy tłumaczy nazwy usługi w manifeście, a nie nazwa aplikacji usługi Service Fabric.
+* **/exe** definiuje plik wykonywalny, który powinien usługi Service Fabric można uruchomić w tym przypadku `node.exe`.
+* **/ma** definiuje argumentu, który jest używany do uruchomienia pliku wykonywalnego. Jak Node.js nie jest zainstalowany, Usługa Service Fabric musi uruchomić serwera sieci web środowiska Node.js, wykonując `node.exe bin/www`.  `/ma:'bin/www'` informuje o narzędzia pakowania używanego `bin/www` jako argument dla node.exe.
+* **/ Typ aplikacji** definiuje nazwę typu aplikacji usługi Service Fabric.
 
-Po przejściu do katalogu, który został określony w parametrze/TARGET, można wyświetlić, narzędzie utworzył pełni funkcjonalnej pakietu sieci szkieletowej usług w sposób przedstawiony poniżej:
+Jeśli możesz przejść do katalogu, który został określony w parametrze/TARGET, zostanie wyświetlony, narzędzie utworzył pełnej funkcjonalności pakietu usługi Service Fabric jak pokazano poniżej:
 
 ```
 |--[yourtargetdirectory]
@@ -96,7 +96,7 @@ Po przejściu do katalogu, który został określony w parametrze/TARGET, można
         |-- ServiceManifest.xml
     |-- ApplicationManifest.xml
 ```
-Wygenerowanego pliku ServiceManifest.xml ma teraz sekcja, która opisuje, jak można uruchomić serwera sieci web Node.js, jak pokazano w poniższym fragmencie kodu:
+Wygenerowany ServiceManifest.xml ma teraz sekcja, która opisuje, jak można uruchomić serwera sieci web środowiska Node.js, jak pokazano w poniższym fragmencie kodu:
 
 ```xml
 <CodePackage Name="C" Version="1.0">
@@ -109,7 +109,7 @@ Wygenerowanego pliku ServiceManifest.xml ma teraz sekcja, która opisuje, jak mo
     </EntryPoint>
 </CodePackage>
 ```
-W tym przykładzie serwer sieci web Node.js nasłuchuje portem 3000, więc musisz zaktualizować informacje o punkcie końcowym w pliku ServiceManifest.xml, jak pokazano poniżej.   
+W tym przykładzie serwer sieci web Node.js nasłuchuje na port 3000, więc musisz zaktualizować informacje o punkcie końcowym w pliku ServiceManifest.xml, jak pokazano poniżej.   
 
 ```xml
 <Resources>
@@ -119,9 +119,9 @@ W tym przykładzie serwer sieci web Node.js nasłuchuje portem 3000, więc musis
 </Resources>
 ```
 ### <a name="packaging-the-mongodb-application"></a>Pakowanie aplikacji bazy danych MongoDB
-Teraz, gdy spakowaniu aplikacji Node.js, można teraz i pakietu bazy danych MongoDB. Jak wspomniano wcześniej, kroki, które można przejść przez obecnie nie są specyficzne dla środowiska Node.js i bazy danych MongoDB. W rzeczywistości mają one zastosowanie do wszystkich aplikacji, które mają być dostarczana razem w jednej aplikacji sieci szkieletowej usług.  
+Teraz, gdy spakowaniu aplikacji Node.js, możesz Przejdź dalej i pakietu bazy danych MongoDB. Jak wspomniano wcześniej, kroki, które przeczytanie teraz nie są specyficzne dla środowiska Node.js i MongoDB. W rzeczywistości odnoszą się do wszystkich aplikacji, które są przeznaczone do umieszczenia w pakiecie ze sobą jako jedna aplikacja usługi Service Fabric.  
 
-Aby pakiet bazy danych MongoDB, chcesz upewnij się, że pakiet Mongod.exe i Mongo.exe. Oba pliki binarne znajdują się w `bin` katalogu z katalogu instalacji bazy danych MongoDB. Struktura katalogów jest podobny do poniższego.
+Aby spakować bazy danych MongoDB, chcesz upewnij się, że pakiet Mongod.exe i Mongo.exe. Oba pliki binarne znajdują się w `bin` katalogu katalogu instalacji bazy danych MongoDB. Struktura katalogów jest podobny do poniższego.
 
 ```
 |-- MongoDB
@@ -130,25 +130,25 @@ Aby pakiet bazy danych MongoDB, chcesz upewnij się, że pakiet Mongod.exe i Mon
         |-- mongo.exe
         |-- anybinary.exe
 ```
-Sieć szkieletowa usług musi uruchomić bazy danych MongoDB za pomocą polecenia podobnej do tej, poniżej, należy użyć `/ma` parametru podczas tworzenia pakietu bazy danych MongoDB.
+Usługa Service Fabric potrzebuje, aby rozpocząć bazy danych MongoDB za pomocą polecenia podobnego do poniżej, więc należy użyć `/ma` parametru podczas pakowania bazy danych MongoDB.
 
 ```
 mongod.exe --dbpath [path to data]
 ```
 > [!NOTE]
-> Dane nie są są zachowywane w przypadku awarii węzła, jeśli katalog danych MongoDB zostanie umieszczony w katalogu lokalnego węzła. Należy używać magazynu trwałego lub implementować repliki bazy danych MongoDB, aby zapobiec utracie danych.  
+> Dane nie są są zachowywane w przypadku awarii węzła, jeśli katalog danych bazy danych MongoDB zostanie umieszczony w katalogu lokalnym węzła. Należy korzystać z magazynu trwałego lub zaimplementować repliki bazy danych MongoDB, ustaw, aby zapobiec utracie danych.  
 >
 >
 
-W programie PowerShell lub powłoki poleceń narzędzia pakowania przeprowadzana z następującymi parametrami:
+W programie PowerShell lub powłoki poleceń firma Microsoft Uruchom narzędzie tworzenia pakietów z następującymi parametrami:
 
 ```
 .\ServiceFabricAppPackageUtil.exe /source: [yourdirectory]\MongoDB' /target:'[yourtargetdirectory]' /appname:MongoDB /exe:'bin\mongod.exe' /ma:'--dbpath [path to data]' /AppType:NodeAppType
 ```
 
-Aby dodać bazy danych MongoDB do pakietu aplikacji usługi Service Fabric, należy się upewnić, że punkty parametru/TARGET na tym samym katalogu, który już zawiera aplikację manifestu wraz z aplikacji Node.js. Należy również upewnić się, że używasz takiej samej nazwie atrybutów ApplicationType.
+Aby dodać bazy danych MongoDB do pakietu aplikacji usługi Service Fabric, należy się upewnić, że punkty parametr/target na tym samym katalogu, który już zawiera aplikację manifestu wraz z aplikacji Node.js. Należy również upewnić się, że używasz takiej samej nazwie ApplicationType.
 
-Teraz przejdź do katalogu i sprawdź, czy co narzędzie zostało utworzone.
+Teraz przejdź do katalogu i sprawdzić, jakie narzędzia został utworzony.
 
 ```
 |--[yourtargetdirectory]
@@ -164,7 +164,7 @@ Teraz przejdź do katalogu i sprawdź, czy co narzędzie zostało utworzone.
         |-- ServiceManifest.xml
     |-- ApplicationManifest.xml
 ```
-Jak widać, narzędzie dodany nowy folder bazy danych MongoDB, do katalogu, który zawiera pliki binarne bazy danych MongoDB. Po otwarciu `ApplicationManifest.xml` pliku, zobaczysz, że pakiet zawiera obecnie zarówno aplikacji Node.js, jak i bazy danych MongoDB. Poniższy kod przedstawia zawartość manifest aplikacji.
+Jak widać, narzędzie dodać nowy folder bazy danych MongoDB, do katalogu, który zawiera pliki binarne bazy danych MongoDB. Jeśli otworzysz `ApplicationManifest.xml` pliku, zobaczysz, że pakiet zawiera teraz aplikacją w technologii Node.js i MongoDB. Poniższy kod pokazuje zawartość manifestu aplikacji.
 
 ```xml
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyNodeApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -190,7 +190,7 @@ Jak widać, narzędzie dodany nowy folder bazy danych MongoDB, do katalogu, któ
 ```
 
 ### <a name="publishing-the-application"></a>Publikowanie aplikacji
-Ostatnim krokiem jest aby opublikować aplikację na lokalny klaster sieci szkieletowej usług za pomocą skryptów środowiska PowerShell poniżej:
+Ostatnim krokiem jest, aby opublikować aplikację w lokalnym klastrze usługi Service Fabric, korzystając z poniższych skryptów programu PowerShell:
 
 ```
 Connect-ServiceFabricCluster localhost:19000
@@ -204,9 +204,9 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'NodeAppType'
 New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0  
 ```
 
-Gdy aplikacja zostanie opublikowana pomyślnie z lokalnym klastrem, można uzyskać dostępu do aplikacji Node.js na porcie, który mamy zostały wprowadzone w manifeście usługi aplikacji Node.js — na przykład http://localhost:3000.
+Po pomyślnym opublikowaniu aplikacji w klastrze lokalnym, można uzyskać dostęp do aplikacji Node.js, przy użyciu portu, który możemy wprowadzono w manifeście usługi aplikacji Node.js — na przykład http://localhost:3000.
 
-W tym samouczku jak już wspomniano łatwo pakowaniu dwóch istniejących aplikacji jako jednej aplikacji sieci szkieletowej usług. Ma przedstawiono również sposób wdrażania sieci szkieletowej usług, dzięki czemu mogą korzystać z niektórych funkcji usługi Service Fabric, takie jak wysoka dostępność i kondycji systemu integracji.
+W ramach tego samouczka wiesz jak łatwo spakować dwa istniejące aplikacje jako jedna aplikacja usługi Service Fabric. Masz również pokazaliśmy, jak je wdrożyć do usługi Service Fabric, dzięki czemu mogą korzystać z niektórych funkcji usługi Service Fabric, takich jak wysoka dostępność i kondycji, integracji systemów.
 
 
 ## <a name="adding-more-guest-executables-to-an-existing-application-using-yeoman-on-linux"></a>Dodawanie więcej plików wykonywalnych gościa do istniejącej aplikacji w systemie Linux przy użyciu narzędzia Yeoman
@@ -216,6 +216,6 @@ Aby dodać kolejną usługę do aplikacji utworzonej już przy użyciu polecenia
 2. Uruchom `yo azuresfguest:AddService` i podaj odpowiednie szczegóły.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o wdrażaniu kontenerów [sieci szkieletowej usług i kontenery — omówienie](service-fabric-containers-overview.md)
-* [Przykład dla pakowanie i wdrażanie pliku wykonywalnego gościa](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Przykład dwóch gościa pliki wykonywalne (C# i nodejs) podczas komunikacji za pośrednictwem usługi nazw za pomocą usługi REST](https://github.com/Azure-Samples/service-fabric-containers)
+* Dowiedz się więcej o wdrażanie kontenerów przy użyciu [Omówienie usługi Service Fabric i kontenery](service-fabric-containers-overview.md)
+* [Przykład pakowanie i wdrażanie wykonywalnej gościa](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Przykład dwóch gościa pliki wykonywalne (C# i nodejs) podczas komunikowania się za pośrednictwem usługi nazewnictwa przy użyciu usługi REST](https://github.com/Azure-Samples/service-fabric-containers)

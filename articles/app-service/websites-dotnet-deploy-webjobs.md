@@ -15,18 +15,18 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 09/12/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 64fdb6dceb1ca10e68411f95c310fdd9a2e25202
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 08cbff7bc58f5925dee9b77ff195d362af4379d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444135"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245745"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Tworzenie i wdrażanie zadań Webjob za pomocą programu Visual Studio — usłudze Azure App Service
 
 ## <a name="overview"></a>Przegląd
 
-W tym temacie wyjaśniono, jak używać programu Visual Studio, aby wdrożyć projekt aplikacji konsoli w aplikacji sieci web w [usługi App Service](app-service-web-overview.md) jako [zadanie Azure WebJob](http://go.microsoft.com/fwlink/?LinkId=390226). Aby uzyskać informacje o tym, jak wdrażać zadania Webjob przy użyciu [witryny Azure portal](https://portal.azure.com), zobacz [zadania w tle uruchom za pomocą zadań Webjob](web-sites-create-web-jobs.md).
+W tym temacie wyjaśniono, jak używać programu Visual Studio, aby wdrożyć projekt aplikacji konsoli w aplikacji sieci web w [usługi App Service](app-service-web-overview.md) jako [zadanie Azure WebJob](https://go.microsoft.com/fwlink/?LinkId=390226). Aby uzyskać informacje o tym, jak wdrażać zadania Webjob przy użyciu [witryny Azure portal](https://portal.azure.com), zobacz [zadania w tle uruchom za pomocą zadań Webjob](web-sites-create-web-jobs.md).
 
 Gdy program Visual Studio wdroży projekt aplikacji konsoli z możliwością zadań Webjob, wykonuje dwie czynności:
 

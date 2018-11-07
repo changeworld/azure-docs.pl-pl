@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: a5300f3b998e22cca56001bd52f761bb0a366cbe
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 9af5ebe9f37127656c7f61357240d4e69a28812b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231461"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243133"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Korzystanie z funkcji pakowania multimediów platformy Azure do wykonywania zadań statyczne tworzenie pakietów
 > [!NOTE]
@@ -48,7 +48,7 @@ Statyczne tworzenie pakietów również służy do wykonywania następujących z
 * Przy użyciu statycznego szyfrowania do ochrony HLSv3 przy użyciu technologii PlayReady
 
 ## <a name="validating-adaptive-bitrate-mp4s-encoded-with-external-encoders"></a>Sprawdzanie poprawności adaptacyjne każdego pliku MP4 z szybkości transmisji bitów zakodowanych przy użyciu koderów zewnętrznych
-Jeśli chcesz użyć zestawu plików MP4 adaptacyjną szybkością transmisji bitów (bitów), które nie zostały zakodowane przy użyciu koderów Media Services, należy sprawdzić, czy pliki przed dalszym przetwarzaniem. Z funkcji pakowania usługi multimediów można sprawdzać poprawność element zawartości zawierający zestaw plików MP4 i sprawdź, czy zasób można spakować do Smooth Streaming i HLS. Jeśli zadanie sprawdzania poprawności nie powiedzie się, zadanie, które przetwarza zadanie zostanie ukończone z powodu błędu. Plik XML, który definiuje ustawienie wstępne zadania sprawdzania poprawności można znaleźć w [zadań wstępnie zdefiniowanych dla funkcji pakowania multimediów platformy Azure](http://msdn.microsoft.com/library/azure/hh973635.aspx) artykułu.
+Jeśli chcesz użyć zestawu plików MP4 adaptacyjną szybkością transmisji bitów (bitów), które nie zostały zakodowane przy użyciu koderów Media Services, należy sprawdzić, czy pliki przed dalszym przetwarzaniem. Z funkcji pakowania usługi multimediów można sprawdzać poprawność element zawartości zawierający zestaw plików MP4 i sprawdź, czy zasób można spakować do Smooth Streaming i HLS. Jeśli zadanie sprawdzania poprawności nie powiedzie się, zadanie, które przetwarza zadanie zostanie ukończone z powodu błędu. Plik XML, który definiuje ustawienie wstępne zadania sprawdzania poprawności można znaleźć w [zadań wstępnie zdefiniowanych dla funkcji pakowania multimediów platformy Azure](https://msdn.microsoft.com/library/azure/hh973635.aspx) artykułu.
 
 > [!NOTE]
 > Aby uniknąć problemów w czasie wykonywania, należy użyć usługi Media Encoder Standard do produkcji lub z funkcji pakowania usługi multimediów do weryfikacji zawartości. Jeśli serwer przesyłania strumieniowego na żądanie nie jest w stanie przeanalizować plików źródłowych w czasie wykonywania, pojawi się błąd HTTP 1.1 "415 Nieobsługiwany typ nośnika." Wielokrotnie powoduje serwerowi nie można przeanalizować plików źródłowych ma wpływ na wydajność serwera przesyłania strumieniowego na żądanie i może zmniejszyć przepustowość dostępną dla obsługująca innych żądań. Usługa Azure Media Services oferuje poziomu usług umowy (SLA) w usługach przesyłania strumieniowego na żądanie; Jednak ta umowa SLA nie mogą być uwzględniane, jeśli serwer jest używane w sposób opisany powyżej.
@@ -82,7 +82,7 @@ Aby sprawdzić poprawność plików MP4 z funkcji pakowania multimediów usługi
 
 Po utworzeniu adaptacyjną szybkością transmisji bitów, które zestawu plików MP4 mogą korzystać z dynamicznego tworzenia pakietów. Dynamiczne tworzenie pakietów umożliwia dostarczanie strumieni w określonym protokole bez dalszego pakowania. Aby uzyskać więcej informacji, zobacz [funkcję dynamicznego tworzenia pakietów](media-services-dynamic-packaging-overview.md).
 
-Poniższy przykład kodu używa rozszerzenia SDK .NET usługi Azure Media Services.  Upewnij się zaktualizować kod, aby wskazać folder, w którym znajdują się Twoje pliki wejściowe w formacie MP4 i plik .ism. A także gdzie znajduje się plik MediaPackager_ValidateTask.xml. Ten plik XML jest zdefiniowany w [zadanie ustawienie wstępne dla funkcji pakowania multimediów platformy Azure](http://msdn.microsoft.com/library/azure/hh973635.aspx) artykułu.
+Poniższy przykład kodu używa rozszerzenia SDK .NET usługi Azure Media Services.  Upewnij się zaktualizować kod, aby wskazać folder, w którym znajdują się Twoje pliki wejściowe w formacie MP4 i plik .ism. A także gdzie znajduje się plik MediaPackager_ValidateTask.xml. Ten plik XML jest zdefiniowany w [zadanie ustawienie wstępne dla funkcji pakowania multimediów platformy Azure](https://msdn.microsoft.com/library/azure/hh973635.aspx) artykułu.
 
 ```csharp
     using Microsoft.WindowsAzure.MediaServices.Client;
@@ -258,13 +258,13 @@ W przykładzie w tej sekcji koduje pliku mezzanine (w tym MP4 wielkości liter) 
 Usługa Media Services udostępnia teraz usługę dostarczania licencji PlayReady firmy Microsoft. W przykładzie w tym artykule przedstawiono sposób konfigurowania usługi dostarczania licencji PlayReady usługi Media Services (zobacz metoda ConfigureLicenseDeliveryService zdefiniowane w poniższym kodzie). Aby uzyskać więcej informacji na temat usługi dostarczania licencji PlayReady usługi Media Services, zobacz [za pomocą szyfrowania dynamicznego PlayReady i usługi dostarczania licencji](media-services-protect-with-playready-widevine.md).
 
 > [!NOTE]
-> Aby dostarczyć MPEG DASH szyfrowane za pomocą usług PlayReady, upewnij się, że opcje CENC przez ustawienie właściwości useSencBox i adjustSubSamples (opisane w [zadanie ustawienie wstępne dla obsługi funkcji](http://msdn.microsoft.com/library/azure/hh973610.aspx) artykuł) na wartość true.  
+> Aby dostarczyć MPEG DASH szyfrowane za pomocą usług PlayReady, upewnij się, że opcje CENC przez ustawienie właściwości useSencBox i adjustSubSamples (opisane w [zadanie ustawienie wstępne dla obsługi funkcji](https://msdn.microsoft.com/library/azure/hh973610.aspx) artykuł) na wartość true.  
 > 
 > 
 
 Upewnij się zaktualizować następujący kod, aby wskazać folder, w którym znajduje się plik wejściowy w formacie MP4.
 
-A także gdzie znajdują się pliki MediaPackager_MP4ToSmooth.xml i MediaEncryptor_PlayReadyProtection.xml. MediaPackager_MP4ToSmooth.xml jest zdefiniowany w [zadanie ustawienie wstępne dla funkcji pakowania multimediów platformy Azure](http://msdn.microsoft.com/library/azure/hh973635.aspx) i MediaEncryptor_PlayReadyProtection.xml jest zdefiniowany w [zadanie ustawienie wstępne dla obsługi funkcji](http://msdn.microsoft.com/library/azure/hh973610.aspx) artykułu. 
+A także gdzie znajdują się pliki MediaPackager_MP4ToSmooth.xml i MediaEncryptor_PlayReadyProtection.xml. MediaPackager_MP4ToSmooth.xml jest zdefiniowany w [zadanie ustawienie wstępne dla funkcji pakowania multimediów platformy Azure](https://msdn.microsoft.com/library/azure/hh973635.aspx) i MediaEncryptor_PlayReadyProtection.xml jest zdefiniowany w [zadanie ustawienie wstępne dla obsługi funkcji](https://msdn.microsoft.com/library/azure/hh973610.aspx) artykułu. 
 
 W przykładzie zdefiniowano metodę UpdatePlayReadyConfigurationXMLFile, która umożliwia dynamiczne aktualizowanie pliku MediaEncryptor_PlayReadyProtection.xml. W przypadku klucza inicjatora dostępne CommonEncryption.GeneratePlayReadyContentKey metoda służy do generowania klucza zawartości na podstawie keySeedValue i wartości Identyfikator klucza.
 
@@ -712,7 +712,7 @@ Jeśli chcesz zaszyfrować przez moduł HLS z algorytmu AES-128, masz do wyboru 
 > 
 > 
 
-W przykładzie w tej sekcji koduje pliku mezzanine (w tym przypadku MP4) w metodę pliki MP4, a następnie pakiety każdego pliku MP4 do Smooth Streaming. Go następnie pakiety Smooth Streaming na HTTP Live Streaming (HLS) zaszyfrowany przy użyciu szyfrowania strumienia 128-bitowego Advanced Encryption Standard (AES). Upewnij się zaktualizować następujący kod, aby wskazać folder, w którym znajduje się plik wejściowy w formacie MP4. A także gdzie znajdują się pliki konfiguracji MediaPackager_MP4ToSmooth.xml i MediaPackager_SmoothToHLS.xml. Można znaleźć definicji dla tych plików w [zadanie ustawienie wstępne dla funkcji pakowania multimediów platformy Azure](http://msdn.microsoft.com/library/azure/hh973635.aspx) artykułu.
+W przykładzie w tej sekcji koduje pliku mezzanine (w tym przypadku MP4) w metodę pliki MP4, a następnie pakiety każdego pliku MP4 do Smooth Streaming. Go następnie pakiety Smooth Streaming na HTTP Live Streaming (HLS) zaszyfrowany przy użyciu szyfrowania strumienia 128-bitowego Advanced Encryption Standard (AES). Upewnij się zaktualizować następujący kod, aby wskazać folder, w którym znajduje się plik wejściowy w formacie MP4. A także gdzie znajdują się pliki konfiguracji MediaPackager_MP4ToSmooth.xml i MediaPackager_SmoothToHLS.xml. Można znaleźć definicji dla tych plików w [zadanie ustawienie wstępne dla funkcji pakowania multimediów platformy Azure](https://msdn.microsoft.com/library/azure/hh973635.aspx) artykułu.
 
 ```csharp
     using System;
@@ -997,7 +997,7 @@ W przykładzie w tej sekcji koduje pliku mezzanine (w tym MP4 wielkości liter) 
 
 Usługa Media Services udostępnia teraz usługę dostarczania licencji PlayReady firmy Microsoft. W przykładzie w tym artykule przedstawiono sposób konfigurowania usługi dostarczania licencji PlayReady usługi Media Services (zobacz **ConfigureLicenseDeliveryService** metody zdefiniowanej w poniższym kodzie). 
 
-Upewnij się zaktualizować następujący kod, aby wskazać folder, w którym znajduje się plik wejściowy w formacie MP4. A także gdzie znajdują się pliki MediaPackager_MP4ToSmooth.xml MediaPackager_SmoothToHLS.xml i MediaEncryptor_PlayReadyProtection.xml. MediaPackager_MP4ToSmooth.xml i MediaPackager_SmoothToHLS.xml są definiowane w [zadanie ustawienie wstępne dla funkcji pakowania multimediów platformy Azure](http://msdn.microsoft.com/library/azure/hh973635.aspx) i MediaEncryptor_PlayReadyProtection.xml jest zdefiniowany w [zadanie ustawienie wstępne multimediów Azure Modułu szyfrującego](http://msdn.microsoft.com/library/azure/hh973610.aspx) artykułu.
+Upewnij się zaktualizować następujący kod, aby wskazać folder, w którym znajduje się plik wejściowy w formacie MP4. A także gdzie znajdują się pliki MediaPackager_MP4ToSmooth.xml MediaPackager_SmoothToHLS.xml i MediaEncryptor_PlayReadyProtection.xml. MediaPackager_MP4ToSmooth.xml i MediaPackager_SmoothToHLS.xml są definiowane w [zadanie ustawienie wstępne dla funkcji pakowania multimediów platformy Azure](https://msdn.microsoft.com/library/azure/hh973635.aspx) i MediaEncryptor_PlayReadyProtection.xml jest zdefiniowany w [zadanie ustawienie wstępne multimediów Azure Modułu szyfrującego](https://msdn.microsoft.com/library/azure/hh973610.aspx) artykułu.
 
 ```csharp
     using System;

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bcd2b2199628a7f717a7ce1d8eba032f5778379b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7f1bb400650a223a9f0b4249c33f7c480a1bc009
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301465"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262373"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Ramka zabezpieczeń: Dane poufne | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -28,7 +28,7 @@ ms.locfileid: "43301465"
 | **Aplikacja sieci Web** | <ul><li>[Upewnij się, że poufnej zawartości nie jest buforowana w przeglądarce](#cache-browser)</li><li>[Szyfruj sekcje pliki konfiguracji aplikacji sieci Web, które zawierają dane poufne](#encrypt-data)</li><li>[Jawnie Wyłącz Autouzupełnianie atrybutu HTML w formularzach poufnych i dane wejściowe](#autocomplete-input)</li><li>[Upewnij się, że poufne dane wyświetlane na ekranie użytkownika są wyświetlane jako znaki](#data-mask)</li></ul> | 
 | **Baza danych** | <ul><li>[Implementowanie dynamiczne maskowanie danych Aby ograniczyć użytkowników bez ujawniania uprzywilejowany poufnych danych](#dynamic-users)</li><li>[Upewnij się, że hasła są przechowywane w formacie solone wyznaczania wartości skrótu](#salted-hash)</li><li>[ Upewnij się, że poufne dane w kolumnach bazy danych są szyfrowane](#db-encrypted)</li><li>[Upewnij się, że włączone jest szyfrowanie tego poziomu bazy danych (TDE)](#tde-enabled)</li><li>[Upewnij się, że są szyfrowane kopie zapasowe bazy danych](#backup)</li></ul> | 
 | **Interfejs API sieci Web** | <ul><li>[Upewnij się, że dane poufne, które są istotne dla interfejsu API sieci Web nie są przechowywane w pamięci masowej w przeglądarce](#api-browser)</li></ul> | 
-| Azure Document DB | <ul><li>[Szyfruj poufne dane przechowywane w usłudze Azure Cosmos DB](#encrypt-docdb)</li></ul> | 
+| Baza danych Documentdb platformy Azure | <ul><li>[Szyfruj poufne dane przechowywane w usłudze Azure Cosmos DB](#encrypt-docdb)</li></ul> | 
 | **Granicy zaufania maszyn wirtualnych IaaS platformy Azure** | <ul><li>[Usługa Azure Disk Encryption umożliwia szyfrowanie dysków używanych przez maszyny wirtualne](#disk-vm)</li></ul> | 
 | **Granicy zaufania usługi Service Fabric** | <ul><li>[Szyfrowanie kluczy tajnych w aplikacji usługi Service Fabric](#fabric-apps)</li></ul> | 
 | **Dynamics CRM** | <ul><li>[Wykonaj bezpieczeństwa modelowania i użyj zespoły jednostki biznesowe w przypadku, gdy wymagane](#modeling-teams)</li><li>[Minimalizacja dostępu, aby udostępnić funkcję na jednostkach krytyczne](#entities)</li><li>[Szkolenie użytkowników na ryzyko związane z funkcji programu Dynamics CRM udziału i rozwiązania w zakresie zabezpieczeń](#good-practices)</li><li>[Obejmują reguły standardy programowania proscribing przedstawiający szczegóły konfiguracji w Zarządzanie wyjątkami](#exception-mgmt)</li></ul> | 
@@ -141,7 +141,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [MSDN: autouzupełniania atrybut](http://msdn.microsoft.com/library/ms533486(VS.85).aspx), [za pomocą automatycznego uzupełniania w języku HTML](http://msdn.microsoft.com/library/ms533032.aspx), [luki w zabezpieczeniach Sanityzacji HTML](http://technet.microsoft.com/security/bulletin/MS10-071), [Autouzupełnianie., ponownie?!](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **Odwołania**              | [MSDN: autouzupełniania atrybut](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [za pomocą automatycznego uzupełniania w języku HTML](https://msdn.microsoft.com/library/ms533032.aspx), [luki w zabezpieczeniach Sanityzacji HTML](https://technet.microsoft.com/security/bulletin/MS10-071), [Autouzupełnianie., ponownie?!](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **Kroki** | Atrybut autouzupełniania Określa, czy formularz powinien mają autouzupełniania, lub wyłączyć. Gdy autouzupełniania jest włączona, przeglądarki automatycznego ukończenia wartości na podstawie wartości, które użytkownik wprowadził przed. Na przykład po wprowadzeniu nowej nazwy i hasła w postaci i przesłaniu formularza, przeglądarka zapyta, czy można zapisywać hasła. Następnie podczas wyświetlania formularza, nazwę i hasło są wypełniane automatycznie lub odbywa się zgodnie z jej nazwa jest wpisana. Osoba atakująca z lokalnym dostępem można uzyskać zwykłego tekstu w pamięci podręcznej przeglądarki. Autouzupełnianie jest domyślnie włączona i musi jawnie wyłączone. |
 
 ### <a name="example"></a>Przykład
@@ -246,7 +246,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Azure Document DB | 
+| **Składnik**               | Baza danych Documentdb platformy Azure | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
