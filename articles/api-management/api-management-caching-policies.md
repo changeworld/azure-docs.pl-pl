@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 160172b25f4bcdb04ac9f9649bca6b08e0be1b0d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 1706364ca0281240b5b887bea219620c7b4add5e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269076"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246841"
 ---
 # <a name="api-management-caching-policies"></a>Zasady buforowania usługi API Management
-Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
+Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="CachingPolicies"></a> Zasady buforowania  
   
@@ -121,7 +121,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |różnią się przez developer-groups|Ustaw `true` do pamięci podręcznej odpowiedzi poszczególnych ról użytkownika.|Yes||  
   
 ### <a name="usage"></a>Sposób użycia  
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Sekcje zasad:** dla ruchu przychodzącego  
 -   **Zakresy zasad:** operacji interfejsu API, produktów  
@@ -193,7 +193,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |czas trwania|Time-to-live wpisów pamięci podręcznej wyrażony w sekundach.|Yes|ND|  
   
 ### <a name="usage"></a>Sposób użycia  
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Sekcje zasad:** ruchu wychodzącego    
 -   **Zakresy zasad:** operacji interfejsu API, produktów  
@@ -237,7 +237,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |Nazwa zmiennej|Nazwa [zmiennej kontekstowej](api-management-policy-expressions.md#ContextVariables) looked zapasową zostanie przypisana wartość, jeśli wyszukiwanie zakończy się pomyślnie. Jeśli wyszukiwanie w wyniku trafienia, zmienna zostanie przypisana wartość `default-value` atrybutu lub `null`, jeśli `default-value` atrybut jest określony.|Yes|ND|  
   
 ### <a name="usage"></a>Sposób użycia  
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Sekcje zasad:** zaplecza dla ruchu przychodzącego, wychodzący — błąd  
 -   **Zakresy zasad:** globalnej, operacji interfejsu API, produktów  
@@ -279,7 +279,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |wartość|Wartość w pamięci podręcznej.|Yes|ND|  
   
 ### <a name="usage"></a>Sposób użycia  
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Sekcje zasad:** zaplecza dla ruchu przychodzącego, wychodzący — błąd  
 -   **Zakresy zasad:** globalnej, operacji interfejsu API, produktów  
@@ -316,7 +316,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |key|Klucz wartości wcześniej w pamięci podręcznej, aby były usuwane z pamięci podręcznej.|Yes|ND|  
   
 #### <a name="usage"></a>Sposób użycia  
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .  
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .  
   
 -   **Sekcje zasad:** zaplecza dla ruchu przychodzącego, wychodzący — błąd  
 -   **Zakresy zasad:** globalnej, operacji interfejsu API, produktów  

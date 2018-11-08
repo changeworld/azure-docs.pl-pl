@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: c478c2c4af12ecaa02e6700ec7faffc5b9862a00
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 90837092390cd2550805658471ff7aa884773371
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958189"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239597"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Łączenie urządzenia Raspberry Pi z aplikacją usługi Azure IoT Central (Python)
 
@@ -64,11 +64,11 @@ Poniżej opisano sposób pobierania i konfigurowanie przykładowej aplikacji Pyt
 * Wysyła dane telemetryczne i wartości właściwości do usługi Azure IoT Central.
 * Odnosi się do ustawienia zmian wprowadzonych w usłudze Azure IoT Central.
 
-Aby skonfigurować urządzenie, [postępuj zgodnie z instrukcjami krok po kroku w witrynie GitHub.](http://aka.ms/iotcentral-docs-Raspi-releases)
+Aby skonfigurować urządzenie, [postępuj zgodnie z instrukcjami krok po kroku w witrynie GitHub.](https://aka.ms/iotcentral-docs-Raspi-releases)
 
 
 > [!NOTE]
-> Aby uzyskać więcej informacji na temat przykładowych Raspberry Pi w języku Python, zobacz [README](http://aka.ms/iotcentral-docs-Raspi-releases) pliku w usłudze GitHub.
+> Aby uzyskać więcej informacji na temat przykładowych Raspberry Pi w języku Python, zobacz [README](https://aka.ms/iotcentral-docs-Raspi-releases) pliku w usłudze GitHub.
 
 
 1. Po skonfigurowaniu urządzenia urządzenia na początek chwilowo wysyłania danych do usługi Azure IoT Central.

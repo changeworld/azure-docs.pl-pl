@@ -12,12 +12,12 @@ services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5ca47c8234239b56a2d829903828dda8220d53cb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e71de2d543c8f29b7195e74d574855bcbe739162
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967612"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260554"
 ---
 # <a name="aerial-image-classification"></a>Klasyfikacja obrazów z powietrza
 
@@ -154,7 +154,7 @@ Teraz utworzymy konto magazynu, że hosty projektu pliki, które muszą być dos
     az storage share create --account-name %STORAGE_ACCOUNT_NAME% --account-key %STORAGE_ACCOUNT_KEY% --name baitshare
     ```
 1. W swoim ulubionym edytorze tekstów, załaduj `settings.cfg` plik z projektu aplikacji Azure Machine Learning Workbench podkatalogu "Code" i Wstaw nazwę konta magazynu i klucz, jak wskazano. Zapisz i Zamknij `settings.cfg` pliku.
-1. Jeśli jeszcze tego nie zrobiono, Pobierz i zainstaluj [AzCopy](http://aka.ms/downloadazcopy) narzędzia. Upewnij się, że plik wykonywalny narzędzia AzCopy na ścieżce systemowej, wpisując "Narzędzia AzCopy", a następnie naciskając klawisz Enter, aby wyświetlić jego dokumentacji.
+1. Jeśli jeszcze tego nie zrobiono, Pobierz i zainstaluj [AzCopy](https://aka.ms/downloadazcopy) narzędzia. Upewnij się, że plik wykonywalny narzędzia AzCopy na ścieżce systemowej, wpisując "Narzędzia AzCopy", a następnie naciskając klawisz Enter, aby wyświetlić jego dokumentacji.
 1. Uruchom następujące polecenia, aby skopiować wszystkie przykładowe dane, wstępnie przetrenowane modeli i skryptów szkolenia modelu do odpowiedniej lokalizacji w ramach konta magazynu:
 
     ```
@@ -255,7 +255,7 @@ Klaster usługi Batch AI uzyskuje dostęp do danych szkoleniowych na serwerze pl
 
 Jeśli to konieczne, można potwierdzić, że transfer danych podjęła zgodnie z planem, logując się do serwera plików przy użyciu ulubionego narzędzia SSH i sprawdzanie `/mnt/data` zawartości katalogu. Powinien znajdować się dwa foldery training_images i validation_images, zawierających z podfolderach nazwanych zgodnie z ziemi korzystanie z kategorii.  Zestawy szkoleniowe i sprawdzania poprawności powinna zawierać ~ 44 k i obrazy k ~ 11, odpowiednio.
 
-#### <a name="create-a-batch-ai-cluster"></a>Utwórz klaster usługi Batch AI
+#### <a name="create-a-batch-ai-cluster"></a>Tworzenie klastra usługi Batch AI
 
 1. Tworzenia klastra, wykonując następujące polecenie:
 

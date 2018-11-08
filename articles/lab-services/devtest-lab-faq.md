@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 370700f8d146dd626e6e13deceb09dcaea34a9f3
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: b5ad6321a41c84928cbc6f8c51c4f5fe3567410f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983954"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262033"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs — często zadawane pytania
 Uzyskaj odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure DevTest Labs.
@@ -100,7 +100,7 @@ Wpisy na blogu następujące wskazówki oferty i informacje na temat przy użyci
 * [Wdrożenie nowej maszyny Wirtualnej w istniejącej laboratorium DevTest Labs z usługom DevOps platformy Azure](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 * [Za pomocą usługi DevOps platformy Azure release management dla ciągłych wdrożeń użytkownik usługi DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-Dla innych ciągłej integracji (CI) / kompilatorach ciągłe dostarczanie (CD) możesz uzyskać te same scenariusze przez wdrażanie [szablonów usługi Azure Resource Manager](https://aka.ms/dtlquickstarttemplate) przy użyciu [poleceń cmdlet programu Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) i [Zestawy SDK platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Możesz również użyć [interfejsy API REST dla usługi DevTest Labs](http://aka.ms/dtlrestapis) do integracji z łańcucha narzędzi.  
+Dla innych ciągłej integracji (CI) / kompilatorach ciągłe dostarczanie (CD) możesz uzyskać te same scenariusze przez wdrażanie [szablonów usługi Azure Resource Manager](https://aka.ms/dtlquickstarttemplate) przy użyciu [poleceń cmdlet programu Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) i [Zestawy SDK platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Możesz również użyć [interfejsy API REST dla usługi DevTest Labs](https://aka.ms/dtlrestapis) do integracji z łańcucha narzędzi.  
 
 
 **Maszyny wirtualne**
@@ -141,7 +141,7 @@ Aby zautomatyzować przekazywanie plików wirtualnego dysku twardego do tworzeni
 
 Aby znaleźć docelowe konto magazynu, która jest skojarzona z laboratorium:
 
-1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. W menu po lewej stronie wybierz **grup zasobów**.
 3. Znajdź i wybierz grupę zasobów, która jest skojarzona z laboratorium.
 4. W obszarze **Przegląd**, wybierz jedno z kont magazynu.

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: c3e0494d813f625a23f55171953d9145411a7024
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 96c518bee85b0b3dce9421e4cd9a1f2ada357bf0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960306"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259976"
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>Importuj dane usługi Azure Log Analytics w usłudze Power BI
 
@@ -81,5 +81,5 @@ Zestaw danych utworzony w usłudze Power BI mają te same dane, który wcześnie
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) do kompilowania zapytań, które można eksportować do usługi Power BI.
-* Dowiedz się więcej o [usługi Power BI](http://powerbi.microsoft.com) do tworzenia wizualizacji w oparciu eksportu usługi Log Analytics.
+* Dowiedz się więcej o [dziennikach](log-analytics-queries.md) do kompilowania zapytań, które można eksportować do usługi Power BI.
+* Dowiedz się więcej o [usługi Power BI](https://powerbi.microsoft.com) do tworzenia wizualizacji w oparciu eksportu usługi Log Analytics.

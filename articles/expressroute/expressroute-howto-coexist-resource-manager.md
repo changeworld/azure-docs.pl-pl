@@ -6,14 +6,14 @@ author: charwen
 manager: rossort
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 11/05/2018
 ms.author: charwen
-ms.openlocfilehash: c267e5002fbd603e4bb749550c19e8d022ce4d54
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 96e2eb85bc96075e0673359910522f8e35bf5a5c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162346"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243815"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurowanie połączeń usługi ExpressRoute i lokacja-lokacja współistniejących przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
@@ -27,7 +27,9 @@ Konfigurowanie sieci VPN typu lokacja-lokacja i współistniejących połączeń
 * Możesz skonfigurować sieć VPN typu lokacja-lokacja jako ścieżkę pracy w trybie failover dla usługi ExpressRoute. 
 * Alternatywnie możesz użyć sieci VPN typu lokacja-lokacja w celu nawiązania połączenia z lokacjami, które nie zostały połączone za pośrednictwem usługi ExpressRoute. 
 
-Ten artykuł zawiera instrukcje konfiguracji obu scenariuszy. Ten artykuł ma zastosowanie w modelu wdrażania przy użyciu usługi Resource Manager i używa programu PowerShell. Te scenariusze, w witrynie Azure Portal, można również skonfigurować, mimo że dokumentacja nie jest jeszcze dostępna.
+Ten artykuł zawiera instrukcje konfiguracji obu scenariuszy. Ten artykuł ma zastosowanie w modelu wdrażania przy użyciu usługi Resource Manager i używa programu PowerShell. Te scenariusze, w witrynie Azure portal, można również skonfigurować, mimo że dokumentacja nie jest jeszcze dostępna. Najpierw można skonfigurować albo bramy. Zazwyczaj podczas dodawania nowej bramy lub połączenia bramy będzie powodować Naliczanie bez przestojów.
+
+
 
 >[!NOTE]
 >Jeśli chcesz utworzyć sieć VPN typu lokacja-lokacja za pośrednictwem obwodu usługi ExpressRoute, zobacz [ten artykuł](site-to-site-vpn-over-microsoft-peering.md).
@@ -77,7 +79,7 @@ Ta procedura zawiera instrukcje tworzenia sieci wirtualnej i połączeń typu lo
 
 1. Zainstaluj najnowszą wersję poleceń cmdlet programu Azure PowerShell. Aby uzyskać więcej informacji na temat instalowania poleceń cmdlet, zobacz [How to install and configure Azure PowerShell](/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell). Polecenia cmdlet, których użyjesz do tej konfiguracji, mogą trochę różnić się od tych, które znasz. Koniecznie użyj poleceń cmdlet podanych w tych instrukcjach.
 
-2. Zaloguj się na swoje konto i skonfiguruj środowisko.
+2. Zaloguj się do swojego konta i konfigurowanie środowiska.
 
   ```powershell
   Connect-AzureRmAccount
@@ -209,7 +211,7 @@ Jeśli masz sieć wirtualną, która ma tylko jedną bramę sieci wirtualnej (na
 5. Na tym etapie masz sieć wirtualną bez bram. Aby utworzyć nowe bramy i skonfigurować połączenia, wykonaj kroki opisane w poprzedniej sekcji.
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>Aby dodać konfigurację typu punkt-lokacja do bramy sieci VPN
-Możesz wykonać poniższe kroki, aby dodać konfigurację typu punkt-lokacja do bramy sieci VPN w konfiguracji współistnienia.
+Aby wykonać poniższe kroki, aby dodać konfigurację punkt-lokacja do bramy sieci VPN w konfiguracji współistnienia.
 
 1. Dodaj pulę adresów klienta sieci VPN.
 
@@ -224,7 +226,8 @@ Możesz wykonać poniższe kroki, aby dodać konfigurację typu punkt-lokacja do
   $p2sCertMatchName = "RootErVpnCoexP2S" 
   $p2sCertToUpload=get-childitem Cert:\CurrentUser\My | Where-Object {$_.Subject -match $p2sCertMatchName} 
   if ($p2sCertToUpload.count -eq 1){write-host "cert found"} else {write-host "cert not found" exit} 
-  $p2sCertData = [System.Convert]::ToBase64String($p2sCertToUpload.RawData) Add-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $p2sCertFullName -VirtualNetworkGatewayname $azureVpn.Name -ResourceGroupName $resgrp.ResourceGroupName -PublicCertData $p2sCertData
+  $p2sCertData = [System.Convert]::ToBase64String($p2sCertToUpload.RawData) 
+  Add-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $p2sCertFullName -VirtualNetworkGatewayname $azureVpn.Name -ResourceGroupName $resgrp.ResourceGroupName -PublicCertData $p2sCertData
   ```
 
 Więcej informacji na temat sieci VPN typu punkt-lokacja znajduje się w artykule [Configure a Point-to-Site connection](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md) (Konfigurowanie połączenia typu punkt-lokacja).

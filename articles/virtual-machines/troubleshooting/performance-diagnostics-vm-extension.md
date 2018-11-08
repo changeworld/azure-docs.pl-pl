@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a759aad346e25fa42f16d9ccfdb42d9fd5b1cd38
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a76b22feee84820f3acc963af70ec24669a216d7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413489"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251972"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozszerzenie maszyny Wirtualnej diagnostyki wydajności platformy Azure dla Windows
 
-Usługa Azure rozszerzenie maszyny Wirtualnej diagnostyki wydajności pomaga diagnostycznych zbieranie danych dotyczących wydajności z maszyn wirtualnych Windows. Rozszerzenie wykonuje analizę i zapewnia raportu dotyczącego wyników i zalecenia, aby zidentyfikować i rozwiązać problemy z wydajnością dla maszyny wirtualnej. To rozszerzenie instaluje narzędzie rozwiązywania problemów, o nazwie [program PerfInsights](http://aka.ms/perfinsights).
+Usługa Azure rozszerzenie maszyny Wirtualnej diagnostyki wydajności pomaga diagnostycznych zbieranie danych dotyczących wydajności z maszyn wirtualnych Windows. Rozszerzenie wykonuje analizę i zapewnia raportu dotyczącego wyników i zalecenia, aby zidentyfikować i rozwiązać problemy z wydajnością dla maszyny wirtualnej. To rozszerzenie instaluje narzędzie rozwiązywania problemów, o nazwie [program PerfInsights](https://aka.ms/perfinsights).
 
 > [!NOTE]
     > Jeśli chcesz uruchomić diagnostykę na maszynie Wirtualnej w witrynie Azure portal dla maszyn wirtualnych-classic, zaleca się używać nowego środowiska. Aby uzyskać więcej informacji, zobacz [Diagnostyka wydajności maszyn wirtualnych platformy Azure](performance-diagnostics.md) 
@@ -230,7 +230,7 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
 ````
 
 ## <a name="information-on-the-data-captured"></a>Informacje na temat danych przechwyconych
-Narzędzie to program PerfInsights zbiera różne dzienniki, konfiguracji i danych diagnostycznych, w zależności od wybranego scenariusza. Aby uzyskać więcej informacji, zobacz [dokumentacji program PerfInsights](http://aka.ms/perfinsights).
+Narzędzie to program PerfInsights zbiera różne dzienniki, konfiguracji i danych diagnostycznych, w zależności od wybranego scenariusza. Aby uzyskać więcej informacji, zobacz [dokumentacji program PerfInsights](https://aka.ms/perfinsights).
 
 ## <a name="view-and-share-the-results"></a>Wyświetlanie i udostępnianie wyników
 

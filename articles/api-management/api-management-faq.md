@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 7082edf43e53766d32bd967d0b894f6439eaa492
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 760feae2c9b58e162dae487e240dda72099ed91b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42059571"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227981"
 ---
 # <a name="azure-api-management-faqs"></a>Często zadawane pytania usługi Azure API Management
 Odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dotyczące usługi Azure API Management.
@@ -77,7 +77,7 @@ Istnieje kilka opcji, jeśli chcesz skopiować wystąpienia usługi API Manageme
 Tak, można zarządzać usługi API Management programowo przy użyciu:
 
 * [Usługi API Management REST API](https://msdn.microsoft.com/library/azure/dn776326.aspx).
-* [Biblioteki zarządzania usługi ApiManagement platformy Microsoft Azure SDK](http://aka.ms/apimsdk).
+* [Biblioteki zarządzania usługi ApiManagement platformy Microsoft Azure SDK](https://aka.ms/apimsdk).
 * [Wdrożenie usługi](https://docs.microsoft.com/powershell/module/wds) i [Zarządzanie usługami](https://docs.microsoft.com/powershell/azure/servicemanagement/overview) poleceń cmdlet programu PowerShell.
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Jak dodać użytkownika do grupy administratorów?
@@ -104,7 +104,7 @@ Aby skonfigurować wielu środowiskach, na przykład środowisko testowe i środ
 * Hostowanie tych samych interfejsów API w różnych dzierżawach.
 
 ### <a name="can-i-use-soap-with-api-management"></a>Dzięki usłudze API Management można używać protokołu SOAP?
-[Przekazywanie protokołu SOAP](http://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) obsługa jest teraz dostępna. Administratorzy mogą importować WSDL usługi protokołu SOAP i usługi Azure API Management zostanie tworzenie frontonu protokołu SOAP. Dokumentacja portalu dla deweloperów, konsoli testów, zasad i analizy będą dostępne dla usługi SOAP.
+[Przekazywanie protokołu SOAP](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) obsługa jest teraz dostępna. Administratorzy mogą importować WSDL usługi protokołu SOAP i usługi Azure API Management zostanie tworzenie frontonu protokołu SOAP. Dokumentacja portalu dla deweloperów, konsoli testów, zasad i analizy będą dostępne dla usługi SOAP.
 
 ### <a name="is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules"></a>Jest stałej adresu IP bramy usługi API Management? Można go używać w regułach zapory?
 Publiczny adres IP (VIP) dzierżawcy interfejsu API zarządzania we wszystkich warstwach usługi API Management, jest statyczny okres istnienia dzierżawy, z pewnymi wyjątkami. Zmiana adresu IP w takiej sytuacji:
@@ -126,7 +126,7 @@ Aby dowiedzieć się, jak skonfigurować serwer autoryzacji OAuth 2.0 przy użyc
 API Management używa [wydajności metodę routingu ruchu](../traffic-manager/traffic-manager-routing-methods.md#performance) w przypadku wdrożeń w wielu lokalizacjach geograficznych. Ruch przychodzący jest kierowany do najbliższego bramy interfejsu API. Jeśli jeden region przejdzie do trybu offline, ruch przychodzący jest automatycznie kierowany do następnego najbliższej bramy. Dowiedz się więcej na temat metody routingu w [metody routingu w usłudze Traffic Manager](../traffic-manager/traffic-manager-routing-methods.md).
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Aby utworzyć wystąpienie usługi API Management można używać szablonu usługi Azure Resource Manager?
-Tak. Zobacz [usługa Azure API Management](http://aka.ms/apimtemplate) szablony szybkiego startu.
+Tak. Zobacz [usługa Azure API Management](https://aka.ms/apimtemplate) szablony szybkiego startu.
 
 ### <a name="can-i-use-a-self-signed-ssl-certificate-for-a-back-end"></a>Dla zaplecza można używać certyfikatu SSL z podpisem własnym?
 Tak. Można to zrobić za pomocą programu PowerShell lub przesyłając bezpośrednio do interfejsu API. To spowoduje wyłączenie sprawdzania poprawności łańcucha certyfikatu i pozwala korzystać z podpisem własnym lub prywatnie podpisany certyfikatów, podczas komunikowania się z usługi API Management z usługami zaplecza.

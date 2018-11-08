@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 41e7f5b4c36ad0bfed0ef5a9a31565474cf4d823
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: cf183b0a78ff3f7e442ea8052f37fc2df58aac54
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42060670"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262322"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Rozwiązywanie problemów z end-to-end, przy użyciu metryk usługi Azure Storage i rejestrowania, narzędzia AzCopy i analizatora komunikatów
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -37,7 +37,7 @@ Rozwiązywać problemy z aplikacji klienckich za pomocą usługi Microsoft Azure
   
     Zobacz [monitorowania na koncie magazynu w witrynie Azure portal](storage-monitor-storage-account.md) informacji o konfigurowaniu monitorowania w witrynie Azure portal.
 * **AzCopy**. Dzienniki serwera usługi Azure Storage są przechowywane jako obiekty BLOB, aby można było używać narzędzia AzCopy do kopiowania obiektów blob dziennika do katalogu lokalnego do analizy przy użyciu programu Microsoft Message Analyzer. Zobacz [Transfer danych za pomocą wiersza polecenia Azcopy](storage-use-azcopy.md) Aby uzyskać więcej informacji na temat narzędzia AzCopy.
-* **Narzędzie Microsoft Message Analyzer**. Message Analyzer jest narzędziem, które korzysta z plików dziennika i wyświetla dane dzienników w formacie wizualny, który ułatwia filter, search i dane dziennika dla grupy w zestawach użyteczne, służących do analizowania błędów i problemów z wydajnością. Zobacz [komunikatów analizatora działających w Przewodniku dotyczącym Microsoft](http://technet.microsoft.com/library/jj649776.aspx) Aby uzyskać więcej informacji na temat analizatora komunikatów.
+* **Narzędzie Microsoft Message Analyzer**. Message Analyzer jest narzędziem, które korzysta z plików dziennika i wyświetla dane dzienników w formacie wizualny, który ułatwia filter, search i dane dziennika dla grupy w zestawach użyteczne, służących do analizowania błędów i problemów z wydajnością. Zobacz [komunikatów analizatora działających w Przewodniku dotyczącym Microsoft](https://technet.microsoft.com/library/jj649776.aspx) Aby uzyskać więcej informacji na temat analizatora komunikatów.
 
 ## <a name="about-the-sample-scenario"></a>Przykładowy scenariusz — informacje
 W tym samouczku zostaną omówione scenariusz, gdzie metryk usługi Azure Storage Określa niski procent powodzeń dla aplikacji, która wymaga usługi Azure storage. Metryka współczynnik niski procent sukcesu (wyświetlana jako **PercentSuccess** w [witryny Azure portal](https://portal.azure.com) w tabulky metrik) śledzi operacje, które powiedzie się, ale które zwracają kod stanu HTTP, która jest większa niż 299. W plikach dziennika magazynu po stronie serwera, te operacje są rejestrowane ze stanem transakcji **ClientOtherErrors**. Aby uzyskać więcej szczegółów na temat metryki niski procent sukcesu zobacz [metryki pokazują PercentSuccess niski lub wpisy dziennika analytics ma operacji ze stanem transakcji ClientOtherErrors](storage-monitoring-diagnosing-troubleshooting.md#metrics-show-low-percent-success).
@@ -51,7 +51,7 @@ W naszym scenariuszu próbki gdy został określony, to pomiar współczynnika p
 ### <a name="some-causes-of-400-range-errors"></a>Niektóre przyczyny błędów 400 spoza zakresu
 Poniższe przykłady przedstawiono niektóre spośród błędy zakresu 400 żądań względem usługi Azure Blob Storage i ich możliwe przyczyny. Żadnego z tych błędów, jak również błędy w zakresie 300 i 500 zakresu, może przyczynić się do szybkości niski procent sukcesu.
 
-Należy pamiętać, że na poniższej liście wymieniono są dalekie od wartości ukończone. Zobacz [stanu i kodów błędów](http://msdn.microsoft.com/library/azure/dd179382.aspx) w witrynie MSDN, aby uzyskać szczegółowe informacje o ogólnych błędach usługi Azure Storage i o błędach do różnych usług magazynu.
+Należy pamiętać, że na poniższej liście wymieniono są dalekie od wartości ukończone. Zobacz [stanu i kodów błędów](https://msdn.microsoft.com/library/azure/dd179382.aspx) w witrynie MSDN, aby uzyskać szczegółowe informacje o ogólnych błędach usługi Azure Storage i o błędach do różnych usług magazynu.
 
 **Przykłady kodu 404 (nie znaleziono) stanu**
 
@@ -79,7 +79,7 @@ W tym samouczku użyjemy analizatora komunikatów do pracy z trzech różnych ty
 * **Dziennika śledzenia sieci HTTP**, który zbiera dane na danych żądań i odpowiedzi HTTP/HTTPS, w tym dla operacji w ramach usługi Azure Storage. W tym samouczku polega na wygenerowaniu śledzenia sieci za pomocą analizatora komunikatów.
 
 ### <a name="configure-server-side-logging-and-metrics"></a>Konfigurowanie metryk i rejestrowania po stronie serwera
-Najpierw musimy skonfigurować rejestrowanie usługi Azure Storage i metryki, tak, że mamy dane od aplikacji klienckiej do analizy. Rejestrowanie i metryki w na różne sposoby — można skonfigurować za pomocą [witryny Azure portal](https://portal.azure.com), przy użyciu programu PowerShell, lub programowo. Zobacz [Włączanie metryk usługi Storage i wyświetlanie danych metryk](http://msdn.microsoft.com/library/azure/dn782843.aspx) i [uzyskiwania dostępu do danych dzienników i włączanie rejestrowania magazynu](http://msdn.microsoft.com/library/azure/dn782840.aspx) w witrynie MSDN, aby uzyskać szczegółowe informacje o konfigurowaniu rejestrowanie i metryki.
+Najpierw musimy skonfigurować rejestrowanie usługi Azure Storage i metryki, tak, że mamy dane od aplikacji klienckiej do analizy. Rejestrowanie i metryki w na różne sposoby — można skonfigurować za pomocą [witryny Azure portal](https://portal.azure.com), przy użyciu programu PowerShell, lub programowo. Zobacz [Włączanie metryk usługi Storage i wyświetlanie danych metryk](https://msdn.microsoft.com/library/azure/dn782843.aspx) i [uzyskiwania dostępu do danych dzienników i włączanie rejestrowania magazynu](https://msdn.microsoft.com/library/azure/dn782840.aspx) w witrynie MSDN, aby uzyskać szczegółowe informacje o konfigurowaniu rejestrowanie i metryki.
 
 **W witrynie Azure portal**
 
@@ -124,7 +124,7 @@ Aby rozpocząć pracę przy użyciu programu PowerShell dla platformy Azure, zob
     ```
 
 ### <a name="configure-net-client-side-logging"></a>Konfigurowanie rejestrowania po stronie klienta platformy .NET
-Aby skonfigurować rejestrowanie po stronie klienta dla aplikacji platformy .NET, Włącz diagnostykę platformy .NET w pliku konfiguracyjnym aplikacji (web.config lub app.config). Zobacz [klienta rejestrowanie za pomocą biblioteki klienckiej magazynu .NET](http://msdn.microsoft.com/library/azure/dn782839.aspx) i [klienta rejestrowanie za pomocą zestawu Microsoft Azure Storage SDK dla języka Java](http://msdn.microsoft.com/library/azure/dn782844.aspx) w witrynie MSDN, aby uzyskać szczegółowe informacje.
+Aby skonfigurować rejestrowanie po stronie klienta dla aplikacji platformy .NET, Włącz diagnostykę platformy .NET w pliku konfiguracyjnym aplikacji (web.config lub app.config). Zobacz [klienta rejestrowanie za pomocą biblioteki klienckiej magazynu .NET](https://msdn.microsoft.com/library/azure/dn782839.aspx) i [klienta rejestrowanie za pomocą zestawu Microsoft Azure Storage SDK dla języka Java](https://msdn.microsoft.com/library/azure/dn782844.aspx) w witrynie MSDN, aby uzyskać szczegółowe informacje.
 
 Dziennik klienta zawiera szczegółowe informacje o kliencie przygotowuje żądania oraz odbiera i przetwarza odpowiedź.
 
@@ -160,7 +160,7 @@ Samouczek Zbieraj najpierw zapisać w analizatora komunikatów śledzenia sieci,
 > 
 > 
 
-Zobacz [korzystanie z funkcji śledzenia sieci](http://technet.microsoft.com/library/jj674819.aspx) w witrynie Technet, aby uzyskać więcej informacji.
+Zobacz [korzystanie z funkcji śledzenia sieci](https://technet.microsoft.com/library/jj674819.aspx) w witrynie Technet, aby uzyskać więcej informacji.
 
 ## <a name="review-metrics-data-in-the-azure-portal"></a>Przejrzyj dane metryk w witrynie Azure portal
 Gdy aplikacja została uruchomiona przez czas, przejrzenie wykresów metryk, które pojawiają się w [witryny Azure portal](https://portal.azure.com) obserwować, jaka została wydajność usługi.
@@ -186,15 +186,15 @@ AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest
 ```
 Narzędzie AzCopy jest dostępna do pobrania na [pliki do pobrania Azure](https://azure.microsoft.com/downloads/) strony. Aby uzyskać szczegółowe informacje dotyczące korzystania z narzędzia AzCopy, zobacz [Transfer danych za pomocą wiersza polecenia Azcopy](storage-use-azcopy.md).
 
-Aby uzyskać dodatkowe informacje dotyczące pobierania dzienników po stronie serwera, zobacz [Pobierz rejestrowania magazynu danych dziennika](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata).
+Aby uzyskać dodatkowe informacje dotyczące pobierania dzienników po stronie serwera, zobacz [Pobierz rejestrowania magazynu danych dziennika](https://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata).
 
 ## <a name="use-microsoft-message-analyzer-to-analyze-log-data"></a>Korzystanie z analizatora komunikatów firmy Microsoft do analizy danych dziennika
-Microsoft Message Analyzer jest narzędziem do przechwytywania, wyświetlanie i analizowanie protokołu komunikatów ruchu, zdarzeń i inne komunikaty w scenariuszach rozwiązywania problemów i diagnostycznych systemu lub aplikacji. Message Analyzer również pozwala na ładowanie, agregowania i analizowania danych z dziennika i zapisane pliki śledzenia. Aby uzyskać więcej informacji na temat analizatora komunikatów, zobacz [komunikatów analizatora działających w Przewodniku dotyczącym Microsoft](http://technet.microsoft.com/library/jj649776.aspx).
+Microsoft Message Analyzer jest narzędziem do przechwytywania, wyświetlanie i analizowanie protokołu komunikatów ruchu, zdarzeń i inne komunikaty w scenariuszach rozwiązywania problemów i diagnostycznych systemu lub aplikacji. Message Analyzer również pozwala na ładowanie, agregowania i analizowania danych z dziennika i zapisane pliki śledzenia. Aby uzyskać więcej informacji na temat analizatora komunikatów, zobacz [komunikatów analizatora działających w Przewodniku dotyczącym Microsoft](https://technet.microsoft.com/library/jj649776.aspx).
 
 Analizator komunikatów obejmuje zasoby dla usługi Azure Storage, które ułatwiają analizowanie serwera, klienta i dzienniki sieciowe w usłudze. W tej sekcji omówiono sposób używania tych narzędzi, aby rozwiązać problem niskiej procent sukcesu w dziennikach magazynu.
 
 ### <a name="download-and-install-message-analyzer-and-the-azure-storage-assets"></a>Pobierz i zainstaluj programy Message Analyzer i zasoby magazynu platformy Azure
-1. Pobierz [Message Analyzer](http://www.microsoft.com/download/details.aspx?id=44226) z Microsoft Centrum pobierania i uruchom Instalatora.
+1. Pobierz [Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) z Microsoft Centrum pobierania i uruchom Instalatora.
 2. Uruchom analizator komunikatów.
 3. Z **narzędzia** menu, wybierz opcję **Menedżer zasobów**. W **Menedżer zasobów** okno dialogowe, wybierz opcję **pliki do pobrania**, następnie filtrowanie według **usługi Azure Storage**. Widoczne są zasoby magazynu platformy Azure, jak pokazano na poniższej ilustracji.
 4. Kliknij przycisk **wszystkie elementy wyświetlane synchronizacji** zainstalował zasoby magazynu platformy Azure. Dostępne zasoby obejmują:
@@ -231,7 +231,7 @@ Najpierw należy określić przedział czasu, który Cię interesuje przeglądan
 
 Jeśli nadal masz dużą ilość danych dziennika, może być do określania sesji pozwalający filtrować dane dziennika, zanim będzie można go załadować. W **filtru sesji** wybierz opcję **biblioteki** przycisk, aby wybrać wstępnie zdefiniowany filtr; na przykład wybierz **globalnego czasu filtru I** z usługi Azure Storage filtry do filtrowania na przedział czasu. Następnie można edytować kryteria filtrowania, aby określić początkowa i końcowa sygnatura czasowa dla interwału, który chcesz wyświetlić. Można również filtrować nad kodem określonym statusem; na przykład można załadować tylko wpisy dziennika, gdy kod stanu jest 404.
 
-Aby uzyskać więcej informacji na temat importowania danych dziennika do programu Microsoft Message Analyzer, zobacz [podczas pobierania danych komunikatu](http://technet.microsoft.com/library/dn772437.aspx) w witrynie TechNet.
+Aby uzyskać więcej informacji na temat importowania danych dziennika do programu Microsoft Message Analyzer, zobacz [podczas pobierania danych komunikatu](https://technet.microsoft.com/library/dn772437.aspx) w witrynie TechNet.
 
 ### <a name="use-the-client-request-id-to-correlate-log-file-data"></a>Identyfikator żądania klienta umożliwia korelowanie danych pliku dziennika
 Biblioteka klienta usługi Azure Storage automatycznie generuje identyfikator żądania klienta unikatowy dla każdego żądania. Ta wartość są zapisywane do dziennika klienta, dziennik serwera i śledzenie sieci, aby można było używać do skorelowania danych we wszystkich trzech dzienników, w ramach analizatora komunikatów. Zobacz [identyfikator żądania klienta](storage-monitoring-diagnosing-troubleshooting.md#client-request-id) dodatkowe informacje o kliencie żądania identyfikator.
@@ -337,7 +337,7 @@ Dane wyświetlane w układów widoku w tych dwóch kartach można analizować da
 Jeśli znasz już adres obiektu blob, które zwróciło błąd 404, możesz zbadać dalej. Wyszukiwanie wpisów dziennika dla innych wiadomości, skojarzone z operacjami w tym samym obiekcie blob, można sprawdzić, czy klient wcześniej usunięta jednostki.
 
 ## <a name="analyze-other-types-of-storage-errors"></a>Analizowanie innych typów błędów magazynu
-Teraz, po zapoznaniu się z używaniem analizatora komunikatów na potrzeby analizowania danych dziennika, inne rodzaje błędów przy użyciu widoku można analizować układów, reguły koloru i wyszukiwanie filtrowania. W poniższej tabeli wymieniono niektóre problemy, które mogą wystąpić i kryteriów filtrowania służących do ich lokalizację. Aby uzyskać więcej informacji o konstruowaniu filtry oraz analizatora komunikatów, filtrowanie języka, zobacz [filtrowanie danych komunikatu](http://technet.microsoft.com/library/jj819365.aspx).
+Teraz, po zapoznaniu się z używaniem analizatora komunikatów na potrzeby analizowania danych dziennika, inne rodzaje błędów przy użyciu widoku można analizować układów, reguły koloru i wyszukiwanie filtrowania. W poniższej tabeli wymieniono niektóre problemy, które mogą wystąpić i kryteriów filtrowania służących do ich lokalizację. Aby uzyskać więcej informacji o konstruowaniu filtry oraz analizatora komunikatów, filtrowanie języka, zobacz [filtrowanie danych komunikatu](https://technet.microsoft.com/library/jj819365.aspx).
 
 | Aby zbadać... | Użyj wyrażenia filtru... | Wyrażenie ma zastosowanie do dziennika (klienta, serwera, sieci, wszystkie) |
 | --- | --- | --- |
@@ -361,7 +361,7 @@ Teraz, po zapoznaniu się z używaniem analizatora komunikatów na potrzeby anal
 Aby uzyskać więcej informacji na temat rozwiązywania problemów scenariuszy end-to-end w usłudze Azure Storage zobacz następujące zasoby:
 
 * [Monitor, diagnose, and troubleshoot Microsoft Azure Storage (Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage)](storage-monitoring-diagnosing-troubleshooting.md)
-* [Analityka magazynu](http://msdn.microsoft.com/library/azure/hh343270.aspx)
+* [Analityka magazynu](https://msdn.microsoft.com/library/azure/hh343270.aspx)
 * [Monitorowanie konta magazynu w witrynie Azure portal](storage-monitor-storage-account.md)
 * [Transfer danych za pomocą narzędzia wiersza polecenia AzCopy](storage-use-azcopy.md)
-* [Microsoft Message Analyzer operacyjnego przewodnik](http://technet.microsoft.com/library/jj649776.aspx)
+* [Microsoft Message Analyzer operacyjnego przewodnik](https://technet.microsoft.com/library/jj649776.aspx)

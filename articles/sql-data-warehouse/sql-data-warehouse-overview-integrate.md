@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 221d5d05906e7e162013c0d4cdddc01a95f4024c
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 5b302be582bd22a7b38601c90f5fe475062afb26
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302706"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239675"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>Integrowanie innych usług z usługą SQL Data Warehouse
 Oprócz podstawowych funkcji SQL Data Warehouse umożliwia integrację z wielu innych usług na platformie Azure. Oto niektóre z tych usług:
@@ -33,7 +33,7 @@ Integracja usługi Power BI pozwala połączyć mocy obliczeniowej usługi SQL D
 * **Bezpośrednie łączenie**: bardziej zaawansowanej połączenia przy użyciu przekazywania logicznej względem SQL Data Warehouse. Przekazywanie zapewnia szybsze analiz na większą skalę.
 * **Otwórz w usłudze Power BI**: przycisk "Otwórz w usłudze Power BI" przekazuje informacje o wystąpieniu do usługi Power BI dla simplifed sposób łączenia.
 
-Aby uzyskać więcej informacji, zobacz [Integracja z usługą Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md), lub [dokumentacji usługi Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/06/24/exploring-azure-sql-data-warehouse-with-power-bi.aspx).
+Aby uzyskać więcej informacji, zobacz [Integracja z usługą Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md), lub [dokumentacji usługi Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/06/24/exploring-azure-sql-data-warehouse-with-power-bi.aspx).
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 Usługa Azure Data Factory zapewnia użytkownikom zarządzana platforma umożliwiająca tworzenie złożonych wyodrębnianie i ładowanie potoków. Usługa SQL Data Warehouse integracji z usługą Azure Data Factory obejmuje:

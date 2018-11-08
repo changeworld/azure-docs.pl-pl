@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: lagayhar
-ms.openlocfilehash: 216cebe74b7661e0ca336480774a56ea953ddc75
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 1079b83411fd76b4b9115ee80e385f1f2c63ba85
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069475"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247096"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Wprowadzenie do usługi Application Insights w projekcie sieci Web w języku Java
 
@@ -342,7 +342,7 @@ Teraz opublikuj aplikację na serwerze, pozwól z niej korzystać innym osobom, 
 
 * Na serwerach systemu Windows zainstaluj:
 
-  * [Pakiet Microsoft Visual C++ Redistributable](http://www.microsoft.com/download/details.aspx?id=40784)
+  * [Pakiet Microsoft Visual C++ Redistributable](https://www.microsoft.com/download/details.aspx?id=40784)
 
     Ten składnik umożliwia działanie liczników wydajności.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dineshm
 ms.component: common
-ms.openlocfilehash: 0a105122eccdfa671c806389908762941f23200c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 6384af5368fe722d6c9307d56d8a071ebcd17bf0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525311"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226978"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Wyświetla listę zasobów usługi Azure Storage w języku C++
 Lista operacji są kluczem do wielu scenariuszy programowania za pomocą usługi Azure Storage. W tym artykule opisano, jak najbardziej wydajny sposób wyliczenie obiektów w usłudze Azure Storage przy użyciu listy interfejsów API dostarczonych w bibliotece klienta usługi Microsoft Azure Storage dla języka C++.
@@ -195,6 +195,6 @@ Aby uzyskać więcej informacji dotyczących usługi Azure Storage i Biblioteka 
 * [Jak używać magazynu tabel w języku C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [Jak używać magazynu kolejek w języku C++](../storage-c-plus-plus-how-to-use-queues.md)
 * [Biblioteki klienta usługi Azure Storage dokumentacji interfejsu API języka C++.](http://azure.github.io/azure-storage-cpp/)
-* [Blog zespołu odpowiedzialnego za usługę Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Blog zespołu odpowiedzialnego za usługę Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Dokumentacja usługi Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 
