@@ -1,6 +1,6 @@
 ---
-title: Skala przesyłania strumieniowego punktów końcowych z portalu Azure | Dokumentacja firmy Microsoft
-description: Ten samouczek przedstawia kroki skalowanie punktów końcowych przesyłania strumieniowego przy użyciu portalu Azure.
+title: Skalowanie punktów końcowych przy użyciu witryny Azure portal przesyłania strumieniowego | Dokumentacja firmy Microsoft
+description: Ten samouczek przeprowadzi Cię przez kroki skalowanie punktów końcowych przesyłania strumieniowego przy użyciu witryny Azure portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: juliako
-ms.openlocfilehash: f2a14f2622d78a4222a8518172eb1ce8ed9e6637
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fc281f8ca04941da88c0ff1b98ff0a044a3184f5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790216"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250836"
 ---
 # <a name="scale-streaming-endpoints-with-the-azure-portal"></a>Skalowanie punktów końcowych przesyłania strumieniowego przy użyciu witryny Azure Portal
 ## <a name="overview"></a>Przegląd
@@ -29,11 +29,11 @@ ms.locfileid: "33790216"
 > 
 > 
 
-Punkty końcowe przesyłania strumieniowego **Premium** są odpowiednie w przypadku zaawansowanych obciążeń, ponieważ zapewniają dedykowaną i skalowalną pojemność przepustowości. Klienci, którzy mają punkt końcowy przesyłania strumieniowego **Premium**, domyślnie uzyskują jedną jednostkę przesyłania strumieniowego (SU, streaming unit). Punkt końcowy przesyłania strumieniowego można skalować poprzez dodawanie jednostek SU. Każdy jednostka SU zwiększa pojemność przepustowości aplikacji. Aby uzyskać więcej informacji na temat przesyłania strumieniowego i typy punktów końcowych usługi CDN konfiguracji, zobacz [omówienie punktu końcowego przesyłania strumieniowego](media-services-streaming-endpoints-overview.md) tematu.
+Punkty końcowe przesyłania strumieniowego **Premium** są odpowiednie w przypadku zaawansowanych obciążeń, ponieważ zapewniają dedykowaną i skalowalną pojemność przepustowości. Klienci, którzy mają punkt końcowy przesyłania strumieniowego **Premium**, domyślnie uzyskują jedną jednostkę przesyłania strumieniowego (SU, streaming unit). Punkt końcowy przesyłania strumieniowego można skalować poprzez dodawanie jednostek SU. Każdy jednostka SU zwiększa pojemność przepustowości aplikacji. Aby uzyskać więcej informacji na temat przesyłania strumieniowego i typy punktów końcowych usługi CDN, konfigurację, zobacz [Przegląd punktu końcowego przesyłania strumieniowego](media-services-streaming-endpoints-overview.md) tematu.
  
-W tym temacie przedstawiono sposób skalowania punktu końcowego przesyłania strumieniowego.
+W tym temacie pokazano, jak skalować punktu końcowego przesyłania strumieniowego.
 
-Aby dowiedzieć się więcej o cenach, zobacz artykuł [Szczegółowe informacje o cenach usługi Media Services](http://go.microsoft.com/fwlink/?LinkId=275107).
+Aby dowiedzieć się więcej o cenach, zobacz artykuł [Szczegółowe informacje o cenach usługi Media Services](https://go.microsoft.com/fwlink/?LinkId=275107).
 
 ## <a name="scale-streaming-endpoints"></a>Skalowanie punktów końcowych przesyłania strumieniowego
 
@@ -41,12 +41,12 @@ Aby zmienić liczbę jednostek przesyłania strumieniowego, wykonaj następując
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) wybierz swoje konto usługi Azure Media Services.
 2. W **ustawienia** wybierz **punkty końcowe przesyłania strumieniowego**.
-3. Polecenie punktu końcowego przesyłania strumieniowego, który ma być skalowana. 
+3. Kliknij punkt końcowy przesyłania strumieniowego, który chcesz skalować. 
 
     > [!NOTE] 
     > Można skalować tylko **Premium** punkty końcowe przesyłania strumieniowego.
 
-4. Poruszając suwakiem, możesz określić liczbę jednostek przesyłania strumieniowego.
+4. Przesuń suwak, aby określić liczbę jednostek przesyłania strumieniowego.
 
     ![Punkt końcowy przesyłania strumieniowego](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints3.png)
 

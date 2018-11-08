@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/20/2018
 ms.author: amitsriva
-ms.openlocfilehash: 563194ea0b3e4bda2021c75c544d068f00d74ba7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3163d4d61dba958cdf71dd0470b943bba69b0191
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963836"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237201"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Kondycja zaplecza, dzienniki diagnostyczne i metryki dla usługi Application Gateway
 
@@ -258,7 +258,7 @@ Dziennik zapory jest generowany tylko wtedy, gdy włączono dla każdej bramy ap
 |ruleSetVersion     | Wersja używanego zestawu reguł. Dostępne wartości to 2.2.9 i 3.0.     |
 |ruleId     | Identyfikator reguły wyzwalającą zdarzenie.        |
 |message     | Przyjazny dla użytkownika komunikat wyzwalająca zdarzenia. Szczegółowe informacje znajdują się w sekcji szczegółów.        |
-|akcja     |  Nie wykonano akcji na żądanie. Dostępne wartości są zablokowane i dozwolone.      |
+|action     |  Nie wykonano akcji na żądanie. Dostępne wartości są zablokowane i dozwolone.      |
 |witryna     | Witryna, dla której został wygenerowany dziennik. Obecnie tylko globalne jest wyświetlany, ponieważ reguły są globalne.|
 |szczegóły     | Szczegółowe informacje o zdarzeniu wyzwalającym.        |
 |details.Message     | Opis reguły.        |
@@ -337,7 +337,7 @@ Metryki są funkcją dla niektórych zasobów platformy Azure, w którym można 
 
    Można filtrować według poszczególnych puli wewnętrznej bazy danych do wyświetlenia hostów w dobrej kondycji/złej kondycji w puli zaplecza określone.
 
-Przejdź do bramy aplikacji w obszarze **monitorowanie** kliknij **metryki**. Zaznacz, aby wyświetlić dostępne wartości **METRYKI** listy rozwijanej.
+Przejdź do bramy aplikacji w obszarze **monitorowanie** kliknij **metryki**. Aby wyświetlić dostępne wartości, wybierz listę rozwijaną **METRYKA**.
 
 Na poniższej ilustracji możesz zobaczyć przykład, za pomocą trzech metryk dla ostatnich 30 minut:
 
@@ -380,7 +380,7 @@ Aby dowiedzieć się więcej na temat elementów webhook i jak ich używać z al
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Wizualizuj dzienniki zdarzeń i liczników przy użyciu [usługi Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md).
-* [Wizualizuj dziennik aktywności platformy Azure z usługą Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) wpis w blogu.
+* [Wizualizuj dziennik aktywności platformy Azure z usługą Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) wpis w blogu.
 * [Wyświetlanie i analizowanie dzienników aktywności platformy Azure w usłudze Power BI i nie tylko](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) wpis w blogu.
 
 [1]: ./media/application-gateway-diagnostics/figure1.png

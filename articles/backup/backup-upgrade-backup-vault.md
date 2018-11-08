@@ -1,6 +1,6 @@
 ---
-title: Uaktualnienia magazynu kopii zapasowych w magazynie usług odzyskiwania Azure kopii zapasowej "
-description: Uaktualnienia magazynu kopii zapasowych w magazynie usług odzyskiwania, aby uzyskać nowe funkcje, takie jak kopii zapasowej Menedżera zasobów maszyn wirtualnych, zwiększone zabezpieczenia, kopii zapasowej maszyny Wirtualnej VMware i kopii zapasowej stanu systemu dla serwerów systemu Windows
+title: Uaktualnianie magazynu kopii zapasowych w magazynie usługi Recovery Services, usługi Azure Backup "
+description: Uaktualnianie magazynu kopii zapasowych w magazynie usługi Recovery Services, aby uzyskać nowe funkcje takie jak Kopia zapasowa usługi Resource manager VMs, zwiększone zabezpieczenia, kopia zapasowa maszyny Wirtualnej VMware i kopia zapasowa stanu systemu na serwerach Windows
 services: backup
 author: trinadhk
 manager: vijayts
@@ -8,93 +8,93 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/10/2017
 ms.author: trinadhk
-ms.openlocfilehash: 358c7b0e61d1c85e236007c2495941a31502431a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 01aacaecba8c5a4adf1dab5483a2f921df9314c0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606863"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252534"
 ---
-# <a name="backup-vault-upgraded-to-recovery-services-vault"></a>Magazyn kopii zapasowych uaktualnione do magazynu usług odzyskiwania
-Ten artykuł zawiera omówienie magazynu usług odzyskiwania, jakie udostępnia, często zadawane pytania na temat uaktualniania istniejącej kopii zapasowej magazynu do magazynu usług odzyskiwania i czynności po uaktualnieniu. Magazyn usług odzyskiwania jest odpowiednikiem usługi Azure Resource Manager w magazynie kopii zapasowej, która przechowuje dane kopii zapasowej. Dane są zwykle kopii danych lub informacje o konfiguracji dla maszyn wirtualnych (VM), obciążenia, serwerach lub stacjach roboczych, czy lokalnie lub na platformie Azure.
+# <a name="backup-vault-upgraded-to-recovery-services-vault"></a>Magazyn kopii zapasowych uaktualniony do magazynu usługi Recovery Services
+Ten artykuł zawiera omówienie magazynu usługi Recovery Services, które zawiera, często zadawane pytania na temat uaktualniania istniejącej kopii zapasowej magazynu do magazynu usługi Recovery Services i czynności po uaktualnieniu. Magazyn usługi Recovery Services jest odpowiednikiem usługi Azure Resource Manager magazynu kopii zapasowych, która przechowuje dane kopii zapasowej. Dane są zwykle kopii danych lub informacje o konfiguracji dla maszyn wirtualnych (VM), obciążenia, serwerach lub stacjach roboczych, czy w środowisku lokalnym lub na platformie Azure.
 
 ## <a name="what-is-a-recovery-services-vault"></a>Co to jest magazyn usługi Recovery Services?
-Magazyn usługi Recovery Services jest jednostką magazynu online na platformie Azure używaną do przechowywania danych, takich jak kopie zapasowe, punkty odzyskiwania i zasady tworzenia kopii zapasowych. Magazyny usług odzyskiwania służy do przechowywania danych kopii zapasowej dla różnych usług Azure, takich jak maszyny wirtualne IaaS (Linux lub Windows) oraz baz danych Azure SQL. System obsługi magazynów usług odzyskiwania Centrum programu DPM, Windows Server, serwer kopii zapasowej Azure i więcej. Magazyny usługi Recovery Services ułatwiają organizowanie danych kopii zapasowych przy jednoczesnym zmniejszeniu nakładów pracy związanych z zarządzaniem.
+Magazyn usługi Recovery Services jest jednostką magazynu online na platformie Azure używaną do przechowywania danych, takich jak kopie zapasowe, punkty odzyskiwania i zasady tworzenia kopii zapasowych. Magazyny usługi Recovery Services służy do przechowywania danych kopii zapasowych dla różnych usług platformy Azure, takie jak maszyny wirtualne IaaS (Linux lub Windows) i bazy danych Azure SQL. System pomocy technicznej Magazyny usług odzyskiwania Centrum programu DPM, Windows Server, usługi Azure Backup Server i więcej. Magazyny usługi Recovery Services ułatwiają organizowanie danych kopii zapasowych przy jednoczesnym zmniejszeniu nakładów pracy związanych z zarządzaniem.
 
-## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Magazyny usług odzyskiwania porównaniem i magazynami kopii zapasowych
-Magazyny usług odzyskiwania są oparte na modelu usługi Azure Resource Manager platformy Azure, magazyny kopii zapasowych są oparte na modelu Azure Service Manager. Po uaktualnieniu magazynu kopii zapasowych do magazynu usług odzyskiwania dane kopii zapasowej pozostanie niezmieniona podczas i po zakończeniu procesu uaktualniania. Magazyny usług odzyskiwania zapewniają funkcje nie są dostępne dla magazyny kopii zapasowych, takich jak:
+## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Magazyny usług odzyskiwania porównywanie i magazynami kopii zapasowych
+Magazyny usługi Recovery Services są oparte na modelu usługi Azure Resource Manager platformy Azure, magazyny kopii zapasowych są oparte na modelu usługi Azure Service Manager. Po uaktualnieniu magazynu usługi Backup do magazynu usługi Recovery Services dane kopii zapasowej pozostaje bez zmian, podczas i po zakończeniu procesu uaktualniania. Magazyny usługi Recovery Services zapewniają funkcje nie są dostępne dla magazynów kopii zapasowych, takie jak:
 
-- **Ulepszonych funkcji ułatwia zabezpieczanie danych kopii zapasowej**: magazynów z usług odzyskiwania, kopia zapasowa Azure udostępnia funkcje zabezpieczeń w celu ochrony kopii zapasowych w chmurze. Te funkcje zabezpieczeń sprawdź secure kopii zapasowych i bezpiecznie odzyskać dane z kopii zapasowych w chmurze, nawet jeśli serwerów produkcyjnych i tworzenia kopii zapasowej są uszkodzone. [Dowiedz się więcej](backup-azure-security-feature.md)
+- **Rozszerzone możliwości, aby ułatwić zabezpieczanie danych kopii zapasowej**: magazynów za pomocą usług Recovery Services, usługi Azure Backup udostępnia funkcje zabezpieczeń, aby chronić kopie zapasowe w chmurze. Te funkcje zabezpieczeń zagwarantować, że można zabezpieczyć kopie zapasowe i bezpiecznie odzyskać dane z kopiami zapasowymi w chmurze, nawet wtedy, gdy serwery produkcyjne i kopii zapasowej są uszkodzone. [Dowiedz się więcej](backup-azure-security-feature.md)
 
-- **Centralne monitorowanie sieci hybrydowe środowiska IT**: magazynów z usług odzyskiwania, można monitorować nie tylko z [maszyn wirtualnych IaaS platformy Azure](backup-azure-manage-vms.md) , ale także z [zasoby lokalne](backup-azure-manage-windows-server.md#manage-backup-items) z centralnej portalu. [Dowiedz się więcej](http://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
+- **Centralne monitorowanie hybrydowe środowiska IT**: magazynów za pomocą usług Recovery Services, można monitorować nie tylko Twojej [maszyn wirtualnych IaaS platformy Azure](backup-azure-manage-vms.md) , ale także usługi [zasobach lokalnych](backup-azure-manage-windows-server.md#manage-backup-items) centralnej portalu. [Dowiedz się więcej](https://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **Kontrola dostępu oparta na rolach (RBAC)**: RBAC zapewnia szczegółowej zarządzania kontroli dostępu na platformie Azure. [Platforma Azure oferuje różne role wbudowane](../role-based-access-control/built-in-roles.md), a kopia zapasowa Azure ma trzy [wbudowane role, aby zarządzać punktami odzyskiwania](backup-rbac-rs-vault.md). Magazyny usług odzyskiwania są zgodne z RBAC, który ogranicza możliwość użycia kopii zapasowej i przywracania dostępu do zdefiniowanego zestawu ról użytkownika. [Dowiedz się więcej](backup-rbac-rs-vault.md)
+- **Kontrola dostępu oparta na rolach (RBAC)**: RBAC zapewnia szczegółowej kontroli dostępu do zarządzania na platformie Azure. [System Azure oferuje różne role wbudowane](../role-based-access-control/built-in-roles.md), a usługa Azure Backup ma trzy [role wbudowane, umożliwiające zarządzanie punktami odzyskiwania](backup-rbac-rs-vault.md). Magazyny usługi Recovery Services są zgodne z RBAC, który ogranicza możliwość użycia kopia zapasowa i przywrócenia dostępu do określonych ról użytkownika. [Dowiedz się więcej](backup-rbac-rs-vault.md)
 
-- **Chroń wszystkie konfiguracje maszyn wirtualnych Azure**: Magazyny usług odzyskiwania chronić maszyny wirtualne oparte na Menedżera zasobów, w tym dyski Premium, dysków zarządzanych i szyfrowane maszyn wirtualnych. Uaktualnianie magazynu kopii zapasowych do magazynu usług odzyskiwania daje możliwość uaktualnienia programu Service Manager na podstawie maszyn wirtualnych do maszyn wirtualnych w Menedżerze zasobów. Podczas uaktualniania magazynu, można zachować punktów odzyskiwania maszyny Wirtualnej opartej na programu Service Manager i skonfiguruj ochronę uaktualnionego maszyn wirtualnych (włączone Resource Manager). [Dowiedz się więcej](http://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
+- **Chroń wszystkie konfiguracje maszyn wirtualnych platformy Azure**: magazynów usługi Recovery Services ochrona maszyn wirtualnych opartych na usłudze Resource Manager, m.in. dyski Premium Managed Disks i szyfrowanych maszyn wirtualnych. Uaktualnianie magazynu usługi Backup do magazynu usługi Recovery Services daje możliwość uaktualnienia maszyny wirtualne z opartych na programie Service Manager do maszyn wirtualnych opartych na programie Resource Manager. Podczas uaktualniania magazynu, można zachować punkty odzyskiwania maszyny Wirtualnej opartej na programie Service Manager i skonfigurować ochronę uaktualnionych maszyn wirtualnych (korzystających z Menedżera zasobów). [Dowiedz się więcej](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
-- **Natychmiastowego przywracania dla maszyn wirtualnych IaaS**: Magazyny usług odzyskiwania przy użyciu, można przywrócić pliki i foldery z maszyn wirtualnych IaaS bez przywracania całą maszynę Wirtualną, która umożliwia szybsze przywracania. Natychmiastowego przywracania dla maszyn wirtualnych IaaS jest dostępna dla systemów Windows i maszyn wirtualnych systemu Linux. [Dowiedz się więcej](http://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
+- **Natychmiastowe przywracanie dla maszyn wirtualnych IaaS**: Magazyny usługi Recovery Services za pomocą, można przywrócić pliki i foldery z maszyny Wirtualnej IaaS bez przywracania całej maszyny Wirtualnej, która umożliwia skraca czas ich przywracania. Natychmiastowe przywracanie dla maszyn wirtualnych IaaS jest dostępna dla maszyn wirtualnych systemu Linux i Windows. [Dowiedz się więcej](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
 
 > [!NOTE]
-> Jeśli masz elementy zarejestrowane do magazynu kopii zapasowej z agenta MARS starszych niż 2.0.9083.0, [Pobierz najnowszą wersję agenta MARS]( http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) wersji, aby z zalet funkcji magazynu usług odzyskiwania. 
+> Jeśli masz elementów zarejestrowanych w magazynie kopii zapasowych za pomocą agenta usług MARS starszych niż 2.0.9083.0, [Pobierz najnowszą wersję agenta usług MARS]( http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) wersji, aby korzystać z zalet funkcji magazynu usługi Recovery Services. 
 > 
 
-## <a name="managing-your-recovery-services-vaults"></a>Zarządzanie z Magazyny usług odzyskiwania
-Następujące ekrany Pokaż nowy magazyn usług odzyskiwania uaktualnione z magazynu kopii zapasowych w portalu Azure. Uaktualnionego magazynu będzie obecne w domyślnej grupie zasobów o nazwie "Domyślna-RecoveryServices-grupa zasobów — geo". Przykład: Jeśli magazynu kopii zapasowej znajduje się w zachodnie stany USA, jego będzie znajdować się w domyślnej grupy zasobów o nazwie domyślnej-RecoveryServices-ResourceGroup-westus.
+## <a name="managing-your-recovery-services-vaults"></a>Zarządzanie Magazyny usługi Recovery Services
+Następującym zrzucie ekranu przedstawiono nowy magazyn usługi Recovery Services uaktualniony z magazynu usługi Backup, która znajduje się w witrynie Azure portal. Uaktualniony magazyn będą obecne w domyślnej grupie zasobów o nazwie "Domyślna RecoveryServices-ResourceGroup geograficzna". Przykład: Jeśli magazyn kopii zapasowych znajdują się w regionie zachodnie stany USA, jego będą znajdować się w domyślną grupą zasobów o nazwie domyślnej-RecoveryServices-ResourceGroup-westus.
 > [!NOTE]
-> Klienci CPS Standard grupy zasobów nie ulega zmianie po uaktualnieniu magazynu i jest taka sama, jak przed uaktualnieniem.
+> W przypadku klientów standardu CPS grupa zasobów nie ulegną zmianie po uaktualnieniu magazynu i pozostaje taki sam, jak przed uaktualnieniem.
 
-Pierwszy ekran pokazuje pulpitu nawigacyjnego magazynu, który wyświetla jednostek klucza magazynu.
-![przykład uaktualnienia z magazynu kopii zapasowych magazynu usług odzyskiwania](./media/backup-azure-upgrade-backup-to-recovery-services/upgraded-rs-vault-in-dashboard.png)
+Pierwszy ekran przedstawia pulpit nawigacyjny magazynu, który wyświetla kluczowych jednostek dla magazynu.
+![przykład magazynu usług Recovery Services uaktualniony z magazynu usługi Backup](./media/backup-azure-upgrade-backup-to-recovery-services/upgraded-rs-vault-in-dashboard.png)
 
-Drugi ekran pokazuje pomocy łącza może pomóc Ci rozpocząć korzystanie z magazynu usług odzyskiwania.
+Drugi ekran przedstawia pomocy łącza, które ułatwiają rozpoczęcie korzystania z magazynu usługi Recovery Services.
 
-![łącza pomocy w bloku Szybki Start](./media/backup-azure-upgrade-backup-to-recovery-services/quick-start-w-help-links.png)
+![linki pomocy w bloku Szybki Start](./media/backup-azure-upgrade-backup-to-recovery-services/quick-start-w-help-links.png)
 
 ## <a name="post-upgrade-steps"></a>Czynności po uaktualnieniu
-Magazyn usług odzyskiwania obsługują określania informacji o strefie czasowej zasad tworzenia kopii zapasowej. Po pomyślnym uaktualnieniu magazynu, przejdź do zasady tworzenia kopii zapasowej z menu ustawień magazynu i zaktualizować informacje o strefie czasowej dla każdej zasady skonfigurowane w magazynie. Ten ekran pokazuje już czas harmonogram tworzenia kopii zapasowych określony na lokalnej strefie czasowej używane podczas tworzenia zasad. 
+Magazyn usługi Recovery Services obsługuje określanie informacji o strefie czasowej w zasadach kopii zapasowych. Po pomyślnym uaktualnieniu magazynu przejdź do pozycji zasady tworzenia kopii zapasowych z menu Ustawienia magazynu i zaktualizuj informacje o strefie czasowej dla każdej zasady skonfigurowane w magazynie. Ten ekran pokazuje już czas harmonogram tworzenia kopii zapasowych określony dla lokalnej strefy czasowej używane podczas tworzenia zasad. 
 
 ## <a name="enhanced-security"></a>Większe bezpieczeństwo
-Po uaktualnieniu magazynu kopii zapasowych do magazynu usług odzyskiwania, ustawienia zabezpieczeń dla tego magazynu są automatycznie włączone. Gdy ustawienia zabezpieczeń znajdują się na niektórych operacji, takich jak usuwanie kopii zapasowych lub zmiana hasła wymagają [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) numeru PIN. Aby uzyskać więcej informacji na zwiększonych zabezpieczeń, zobacz artykuł [funkcji zabezpieczeń do ochrony kopii zapasowych hybrydowego](backup-azure-security-feature.md). Po włączeniu zwiększonych zabezpieczeń danych jest zachowywana się do 14 dni, po usunięciu informacji punktu odzyskiwania z magazynu. Klienci są rozliczane do przechowywania tych danych zabezpieczeń. Przechowywanie danych zabezpieczeń ma zastosowanie do punktów odzyskiwania dla agenta usługi Kopia zapasowa Azure, serwer usługi Kopia zapasowa Azure i System Center Data Protection Manager. 
+Po uaktualnieniu magazynu usługi Backup do magazynu usługi Recovery Services, ustawienia zabezpieczeń dla tego magazynu są automatycznie włączone. Gdy ustawienia zabezpieczeń znajdują się w niektórych operacji, takich jak usuwanie kopii zapasowych lub zmiana hasła wymagać [usługi Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) numeru PIN. Aby uzyskać więcej informacji o zwiększonych zabezpieczeń, zobacz artykuł [funkcje zabezpieczeń, aby chronić hybrydowych kopii zapasowych](backup-azure-security-feature.md). Zwiększonych zabezpieczeń jest włączone, dane są przechowywane się 14 dni, po usunięciu informacji punktu odzyskiwania z magazynu. Klienci są obciążani za magazynowanie tych danych zabezpieczeń. Przechowywanie danych zabezpieczeń mają zastosowanie do punktów odzyskiwania dla agenta usługi Kopia zapasowa Azure, usługi Azure Backup Server i System Center Data Protection Manager. 
 
 ## <a name="gather-data-on-your-vault"></a>Zbieranie danych dotyczących magazynu
-Raz uaktualnienia do magazynu usług odzyskiwania, skonfiguruj raporty dla usługi Kopia zapasowa Azure (dla agenta maszynom wirtualnym IaaS i usług odzyskiwania Microsoft Azure) i umożliwia dostęp do raportów usługi Power BI. Aby uzyskać dodatkowe informacje dotyczące zbierania danych, zobacz artykuł, [raporty skonfigurować kopia zapasowa Azure](backup-azure-configure-reports.md).
+Raz uaktualnienie do magazynu usługi Recovery Services, skonfigurować raporty usługi Azure Backup (maszynom wirtualnym IaaS i usług Microsoft Azure Recovery Services agent), a dostęp do raportów przy użyciu usługi Power BI. Aby uzyskać dodatkowe informacje dotyczące zbierania danych, zapoznaj się z artykułem [raporty Konfigurowanie usługi Azure Backup](backup-azure-configure-reports.md).
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-**Plan uaktualniania wpływa na Moje bieżące kopie zapasowe?**</br>
-Nie. Kopie zapasowe trwającą nadal przerwana podczas i po uaktualnieniu.
+**Uaktualnij plan wpływa na Moje bieżące kopie zapasowe?**</br>
+Nie. Trwającą kopii zapasowych bezproblemowo kontynuują podczas i po uaktualnieniu.
 
-**Jaki jest średnia ta uaktualnienia do mojej istniejącej oprzyrządowania?**</br>
-Musisz zaktualizować narzędzi lub z istniejącej automatyzacji do modelu wdrażania usługi Resource Manager, aby upewnić się, że nadal działać po uaktualnieniu. Zapoznaj się z odwołań do poleceń cmdlet programu PowerShell dla [modelu wdrażania usługi Resource Manager](backup-client-automation.md).
+**Ile kosztuje to oznacza, że uaktualnienie dla moich istniejących narzędzi?**</br>
+W modelu wdrażania usługi Resource Manager, aby upewnić się, że będzie on nadal działać po uaktualnieniu należy zaktualizować istniejące automatyzacje lub narzędzia. Zapoznaj się z odwołań do poleceń cmdlet programu PowerShell dla [modelu wdrażania usługi Resource Manager](backup-client-automation.md).
 
-**I przywrócić po uaktualnieniu?**</br>
-Nie. ROLLBACK nie jest obsługiwana, gdy zasoby zostały pomyślnie uaktualnione.
+**Czy mogę wycofać po uaktualnieniu?**</br>
+Nie. Wycofanie nie jest obsługiwane po pomyślnym uaktualnieniu zasobów.
 
-**Może wyświetlać Mój po uaktualnieniu magazynu classic?**</br>
-Nie. Nie można wyświetlić lub zarządzaj nimi po uaktualnieniu magazynu klasycznego. Tylko będzie mógł używać nowego portalu Azure do wszystkich akcji zarządzania w magazynie.
+**Mogę wyświetlić mojej klasycznego magazynu po uaktualnieniu**</br>
+Nie. Nie można wyświetlić ani zarządzania magazynem klasycznego po uaktualnieniu. Tylko można użyć nowej witryny Azure portal dla wszystkich akcji zarządzania w magazynie.
 
-**Dlaczego nie widzę serwerów chronionych przez agenta MARS w mojej uaktualnionego magazynu?**</br>
-Musisz zainstalować najnowszą wersję agenta MARS można zobaczyć wszystkie serwery chronione przez agenta MARS w magazynie. Możesz pobrać najnowszą wersję agenta z [tutaj]( http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
+**Dlaczego nie widzę serwerów chronionych przez agenta usług MARS w mojej uaktualnionego magazynie?**</br>
+Musisz zainstalować najnowszą wersję agenta MARS, aby wyświetlić wszystkie serwery, które są chronione przez agenta usług MARS w magazynie. Możesz pobrać najnowszą wersję agenta z [tutaj]( http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
 
-**Nie widzę zasad tworzenia kopii zapasowej dla serwerów chronionych przez agenta MARS po uaktualnieniu**</br>
-Zasady tworzenia kopii zapasowej na magazyn może być nieaktualna i w związku z tym nie może zostać zsynchronizowany w magazynie uaktualniony. Zaktualizuj zasady upewnij się, że będzie się zasadom w uaktualnionym magazynu.
-Aby móc aktualizować zasady, przejdź do agenta MARS i zaktualizuj skonfigurowanych zasad tworzenia kopii zapasowej.
+**Nie widzę zasady tworzenia kopii zapasowych serwerów chronionych przez agenta usług MARS po uaktualnieniu**</br>
+Zasady tworzenia kopii zapasowej dla magazynu może być nieaktualna i w związku z tym nie może zostać zsynchronizowany w magazynie uaktualniony. Zaktualizuj zasady aby upewnić się, że jest nadal wyświetlany zasad w magazynie uaktualniony.
+Aby zaktualizować zasady, przejdź do agenta usług MARS i aktualizacja skonfigurowanych zasad kopii zapasowych.
 
 **Dlaczego nie można zaktualizować Moje zasad tworzenia kopii zapasowej po uaktualnieniu?**</br>
-Dzieje się tak podczas starego agenta kopii zapasowej i wybierz minimalny okres przechowywania jest mniejsza niż wartość minimalna dozwolonych. Po uaktualnieniu magazynu kopii zapasowych do magazynu usług odzyskiwania, ustawienia zabezpieczeń dla tego magazynu są automatycznie włączone. Aby upewnić się, że jest zawsze prawidłową liczbę punktów odzyskiwania dostępnych, brak niektórych okres przechowywania minimalnej, które należy aktualizować zgodnie z funkcji zabezpieczeń. Aby uzyskać więcej informacji, zobacz [tutaj](backup-azure-security-feature.md).
-Ponadto należy zaktualizować agentów programu Kopia zapasowa Azure do najnowszej wersji, aby z zalet najnowszych funkcji Kopia zapasowa Azure.
+Dzieje się tak, gdy są w ramach starego agenta kopii zapasowej i wybrać minimalny okres przechowywania jest mniejsza niż minimalna dozwolona wartość. Po uaktualnieniu magazynu usługi Backup do magazynu usługi Recovery Services, ustawienia zabezpieczeń dla tego magazynu są automatycznie włączone. Aby upewnić się, że jest zawsze prawidłowe liczby punktów odzyskiwania dostępnych, istnieje kilka minimalny okres przechowywania, musi być zachowana zgodnie z funkcji zabezpieczeń. Aby uzyskać więcej informacji można znaleźć [tutaj](backup-azure-security-feature.md).
+Ponadto należy zaktualizować agentów programu Azure Backup do najnowszej wersji, aby móc z zalet najnowszych funkcji usługi Azure Backup.
 
-**Zaktualizowano Moje agenta, ale nadal nie jest widoczne wszystkie obiekty synchronizowanego nawet przez kilka dni po uaktualnieniu**</br>
-Sprawdź, czy zarejestrowano tej samej maszyny do wielu magazynów. Upewnij się, że poszukujesz tego samego magazynu, w której agenta MARS jest zarejestrowana. Aby dowiedzieć się, które magazynu agenta MARS jest zarejestrowany, otwórz rejestru systemu Windows i sprawdź wartość dla klucza ServiceResourceName w obszarze HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config magazynu zarejestrowany pojawi agenta MARS Brak. Jeśli klucz ServiceResourceName nie jest widoczna w systemie, dotrzeć do nas o wartości kluczy ResourceId i MachineId w obszarze HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config, a pomożemy Ci rozwiązać ten problem.
+**Zaktualizowano agent, ale nadal nie są wyświetlane wszystkie obiekty synchronizowanego nawet przez kilka dni po uaktualnieniu**</br>
+Sprawdź, czy Jeśli zarejestrowano tym samym komputerze w wielu magazynach. Upewnij się, że szukasz na tym samym magazynie, do którego agenta usług MARS jest zarejestrowany. Aby dowiedzieć się, które magazynu agenta usług MARS jest zarejestrowany, otwórz Rejestr Windows i sprawdź wartość klucza ServiceResourceName pod HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config magazynu zarejestrowany pojawi agenta usług MARS . Jeśli klucz ServiceResourceName nie jest widoczny w systemie, się z nami za pomocą wartości kluczy ResourceId i MachineId w obszarze HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config, a my pomożemy Ci rozwiązać problem.
 
-**Dlaczego nie widzę informacji zadania dla mojej zasobów po uaktualnieniu?**</br>
-Monitorowanie kopii zapasowych (IaaS i MARS agent) jest nową funkcją, która pojawia się po uaktualnieniu magazynu kopii zapasowej w magazynie usług odzyskiwania. Dane monitorowania ma 12 godzin do synchronizacji z usługą.
+**Dlaczego nie widzę informacji zadania dla moich zasobów po uaktualnieniu?**</br>
+Monitorowanie kopii zapasowych (IaaS i agenta MARS) to nowa funkcja, która pojawia się po uaktualnieniu magazynu usługi Backup do magazynu usługi Recovery Services. Informacje monitorowania trwa maksymalnie 12 godzin do synchronizacji z usługą.
 
 **Jak zgłosić problem?**</br>
-W przypadku niepowodzenia jakiejkolwiek jego części uaktualnienia magazynu należy pamiętać, że OperationId na liście w dzienniku błędów. Aby rozwiązać ten problem aktywnie działa Support firmy Microsoft. Może dotrzeć do pomocy technicznej lub wiadomość e-mail na adres rsvaultupgrade@service.microsoft.com Twojego Identyfikatora subskrypcji, nazwę magazynu i OperationId. Firma Microsoft podejmie próbę rozwiązania problemu tak szybko jak to możliwe. Nie próbuj ponownie wykonać operację, chyba że jawnie instrukcją w tym celu przez firmę Microsoft.
+W przypadku niepowodzenia jakiejkolwiek jego części Uaktualnienie magazynu należy pamiętać, że identyfikatorowi OperationId na liście błędów. Microsoft Support aktywnie będzie działać w celu rozwiązania problemu. Można Dotrzyj do działu pomocy technicznej lub Wyślij wiadomość e-mail rsvaultupgrade@service.microsoft.com z Identyfikatora subskrypcji, nazwę magazynu i OperationId. Firma Microsoft podejmie możliwie jak najszybciej rozwiązać problem. Nie należy wykonywać ponowień operacji, chyba że jawnie zgodnie z instrukcjami otrzymywanymi Aby to zrobić przez firmę Microsoft.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Skorzystaj z poniższych artykułów dla:</br>
-[Tworzenie kopii zapasowej maszyn wirtualnych IaaS](backup-azure-arm-vms-prepare.md)</br>
-[Utwórz kopię zapasową serwera kopia zapasowa Azure](backup-azure-microsoft-azure-backup.md)</br>
+Użyj następujących artykułach:</br>
+[Tworzenie kopii zapasowych maszyn wirtualnych IaaS](backup-azure-arm-vms-prepare.md)</br>
+[Tworzenie kopii zapasowych usługi Azure Backup Server](backup-azure-microsoft-azure-backup.md)</br>
 [Tworzenie kopii zapasowej systemu Windows Server](backup-configure-vault.md)

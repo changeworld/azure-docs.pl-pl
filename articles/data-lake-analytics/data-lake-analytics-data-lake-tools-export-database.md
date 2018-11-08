@@ -9,16 +9,16 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: e4eea3cb4b16460c7e17bb6575c4e6cf8dda5a0a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7a4aae87cd704cf94c89c308c0c056ae5b9a8b4d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047258"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251006"
 ---
 # <a name="export-a-u-sql-database"></a>Eksportowanie bazy danych U-SQL
 
-Ten artykuł zawiera informacje o sposobie użycia [Azure Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) eksportowania bazy danych U-SQL jako pojedynczy skrypt U-SQL i pobrane zasoby. Możesz zaimportować wyeksportowanej bazy danych do konta lokalnego, w tym samym procesie.
+Ten artykuł zawiera informacje o sposobie użycia [Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) eksportowania bazy danych U-SQL jako pojedynczy skrypt U-SQL i pobrane zasoby. Możesz zaimportować wyeksportowanej bazy danych do konta lokalnego, w tym samym procesie.
 
 Klienci zwykle Obsługa wielu środowisk na potrzeby programowania, testowania i produkcji. Te środowiska znajdują się w obu kontem lokalnym, na komputerze lokalnym dla deweloperów, a na koncie usługi Azure Data Lake Analytics na platformie Azure. 
 
@@ -35,7 +35,7 @@ Wszystkie konta usługi Data Lake Analytics, do których masz uprawnienia są wy
    
     ![Eksplorator serwera - Export a bazy danych](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
 
-     Jeśli **wyeksportować** nie jest dostępna opcja menu, musisz [narzędzie aktualizacji do wersji z najnowszą wersję apletu](http://aka.ms/adltoolsvs).
+     Jeśli **wyeksportować** nie jest dostępna opcja menu, musisz [narzędzie aktualizacji do wersji z najnowszą wersję apletu](https://aka.ms/adltoolsvs).
 
 ### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>Krok 2: Konfigurowanie obiektów, które mają zostać wyeksportowane
 

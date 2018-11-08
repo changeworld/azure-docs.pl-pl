@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 751175e46e13d6046cd6f459e1405a876fdce39a
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: aff3ce4bc290f6e4ad2fb11a586372862d0c1462
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054584"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240736"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Dane wyjściowe elementu Runbook i komunikatów w usłudze Azure Automation
 Większość elementów runbook automatyzacji Azure obejmuje jakąś formę danych wyjściowych, takich jak komunikat o błędzie dla użytkownika lub obiekt złożony przeznaczony do użycia przez inny przepływ pracy. Program Windows PowerShell udostępnia [wiele strumieni](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) do wysyłania danych wyjściowych w skrypcie lub przepływu pracy. Usługa Azure Automation współpracuje z każdą z tych strumieni inaczej, i należy stosować najlepsze rozwiązania w zakresie używania każdego podczas tworzenia elementu runbook.
@@ -33,7 +33,7 @@ Poniższa tabela zawiera krótki opis każdego strumienia i ich zachowania w wit
 ## <a name="output-stream"></a>Strumień wyjściowy
 Strumień wyjściowy jest przeznaczony dla danych wyjściowych obiektów utworzonych przez skrypt lub przepływu pracy, gdy działa poprawnie. W usłudze Azure Automation ten strumień jest używany głównie dla obiektów, które mają być używane przez [nadrzędne elementy runbook, które wywołań bieżącego elementu runbook](automation-child-runbooks.md). Gdy użytkownik [element runbook zostanie wywołany](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution) nadrzędnego elementu runbook, zwraca dane ze strumienia wyjściowego do nadrzędnego. Dane ze strumienia wyjściowego należy używać tylko do przekazywania ogólnych informacji do użytkownika, jeśli wiesz, że element runbook nigdy nie jest wywoływana przez inny element runbook. Najlepszym rozwiązaniem jest jednak należy zwykle użyć [pełne Stream](#verbose-stream) do przekazywania ogólnych informacji do użytkownika.
 
-Możesz zapisać dane do strumienia wyjściowego przy użyciu [Write-Output](http://technet.microsoft.com/library/hh849921.aspx) lub umieszczając obiekt w osobnym wierszu w elemencie runbook.
+Możesz zapisać dane do strumienia wyjściowego przy użyciu [Write-Output](https://technet.microsoft.com/library/hh849921.aspx) lub umieszczając obiekt w osobnym wierszu w elemencie runbook.
 
 ```PowerShell
 #The following lines both write an object to the output stream.
@@ -75,7 +75,7 @@ Odpowiedni strumień pełny dla zadania elementu runbook będzie następująca:
 Po opublikowaniu elementu runbook, a przed uruchomieniem go, należy również włączyć pełne rejestrowanie w ustawienia elementu runbook, aby uzyskać pełne strumień wyjściowy.
 
 ### <a name="declaring-output-data-type"></a>Deklarujący typ danych wyjściowych
-Przepływ pracy można określić typu danych jego danych wyjściowych za pomocą [atrybutu OutputType](http://technet.microsoft.com/library/hh847785.aspx). Ten atrybut jest ignorowany podczas wykonywania, ale stanowi wskazówkę twórcy elementu runbook w czasie projektowania oczekiwane dane wyjściowe elementu runbook. Jak zestaw narzędzi dla elementów runbook w dalszym ciągu rozwijany, w ważność wzrasta znaczenie deklarowanie typów danych wyjściowych w czasie projektowania. W rezultacie jest najlepszym rozwiązaniem jest to dołączenie tej deklaracji w wszelkie elementy runbook, którą tworzysz.
+Przepływ pracy można określić typu danych jego danych wyjściowych za pomocą [atrybutu OutputType](https://technet.microsoft.com/library/hh847785.aspx). Ten atrybut jest ignorowany podczas wykonywania, ale stanowi wskazówkę twórcy elementu runbook w czasie projektowania oczekiwane dane wyjściowe elementu runbook. Jak zestaw narzędzi dla elementów runbook w dalszym ciągu rozwijany, w ważność wzrasta znaczenie deklarowanie typów danych wyjściowych w czasie projektowania. W rezultacie jest najlepszym rozwiązaniem jest to dołączenie tej deklaracji w wszelkie elementy runbook, którą tworzysz.
 
 Oto lista przykład typów danych wyjściowych:
 
@@ -120,7 +120,7 @@ W przeciwieństwie do strumienia wyjściowego strumienie komunikatów są przezn
 ### <a name="warning-and-error-streams"></a>Strumienie ostrzeżeń i błędów
 Strumienie ostrzeżeń i błędów są przeznaczone do rejestrowania problemów występujących w elemencie runbook. Są one zapisywane w historii zadań elementu runbook jest wykonywany, gdy znajdują się w okienku danych wyjściowych testu w witrynie Azure portal podczas testowania elementu runbook. Domyślnie element runbook kontynuuje wykonywanie po ostrzeżeniu lub błędzie. Można określić, że element runbook ma zostać zawieszony w ostrzeżenia lub błędu, ustawiając [zmiennej preferencji](#preference-variables) w elemencie runbook przed utworzeniem komunikatu. Na przykład, aby spowodować zawieszenie elementu runbook w błąd jako wyjątek w ten sposób, należy ustawić **$ErrorActionPreference** do zatrzymania.
 
-Utwórz ostrzeżenia lub błędu komunikat przy użyciu [Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) lub [Write-Error](http://technet.microsoft.com/library/hh849962.aspx) polecenia cmdlet. Działania mogą także zapisywać do tych strumieni.
+Utwórz ostrzeżenia lub błędu komunikat przy użyciu [Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) lub [Write-Error](https://technet.microsoft.com/library/hh849962.aspx) polecenia cmdlet. Działania mogą także zapisywać do tych strumieni.
 
 ```PowerShell
 #The following lines create a warning message and then an error message that will suspend the runbook.
@@ -135,7 +135,7 @@ Strumień komunikatów pełnych jest ogólne informacje o działaniu elementu ru
 
 Gdy [testowania elementu runbook](automation-testing-runbook.md), komunikaty pełne nie są wyświetlane, nawet jeśli element runbook jest skonfigurowany do rejestrowania rekordów pełnych. Aby wyświetlić komunikaty pełne podczas [testowania elementu runbook](automation-testing-runbook.md), należy ustawić dla zmiennej $VerbosePreference Kontynuuj. Za pomocą ta zmienna jest ustawiona komunikaty pełne są wyświetlane w okienku danych wyjściowych testu w witrynie Azure Portal.
 
-Tworzenie przy użyciu komunikat trybu informacji pełnej [Write-Verbose](http://technet.microsoft.com/library/hh849951.aspx) polecenia cmdlet.
+Tworzenie przy użyciu komunikat trybu informacji pełnej [Write-Verbose](https://technet.microsoft.com/library/hh849951.aspx) polecenia cmdlet.
 
 ```PowerShell
 #The following line creates a verbose message.
@@ -149,10 +149,10 @@ Strumień debugowania jest przeznaczony do użytku użytkowników interakcyjnych
 ## <a name="progress-records"></a>Rekordy postępu
 Jeśli skonfigurujesz elementu runbook do rejestrowania postępu rejestruje (na karcie Konfiguracja elementu runbook w portalu Azure), a następnie rekord zostanie zapisany w historii zadań przed i po każdym uruchomieniem działania. W większości przypadków należy zachować domyślne ustawienie bez rejestrowania rekordów postępu dla elementu runbook w celu zmaksymalizowania wydajności. Włącz tę opcję tylko rozwiązania lub debugowania elementu runbook. Podczas testowania elementu runbook, komunikaty o postępie nie są wyświetlane, nawet jeśli element runbook jest skonfigurowany do rejestrowania rekordów postępu.
 
-[Write-Progress](http://technet.microsoft.com/library/hh849902.aspx) polecenia cmdlet jest nieprawidłowy w elemencie runbook, ponieważ ta wartość jest przeznaczona do użytku z programem użytkownika interaktywnego.
+[Write-Progress](https://technet.microsoft.com/library/hh849902.aspx) polecenia cmdlet jest nieprawidłowy w elemencie runbook, ponieważ ta wartość jest przeznaczona do użytku z programem użytkownika interaktywnego.
 
 ## <a name="preference-variables"></a>Zmienne preferencji
-Używa programu Windows PowerShell [zmienne preferencji](http://technet.microsoft.com/library/hh847796.aspx) ustalenie, jak reagować na dane wysyłane do różnych strumieni wyjściowych. Te zmienne możesz ustawić w elemencie runbook do kontrolowania sposobu odpowiedzi na dane przesyłane do różnych strumieni.
+Używa programu Windows PowerShell [zmienne preferencji](https://technet.microsoft.com/library/hh847796.aspx) ustalenie, jak reagować na dane wysyłane do różnych strumieni wyjściowych. Te zmienne możesz ustawić w elemencie runbook do kontrolowania sposobu odpowiedzi na dane przesyłane do różnych strumieni.
 
 Poniższa tabela zawiera listę zmiennych preferencji, które mogą być używane w elementach runbook oraz ich prawidłowe i domyślne wartości. Poniższa tabela zawiera tylko wartości, które są prawidłowe w elemencie runbook. Dodatkowe wartości są prawidłowe dla zmiennych preferencji, gdy jest używana w programie Windows PowerShell poza usługi Azure Automation.
 

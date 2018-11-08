@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 89802722e9e848b5cd5ede952287d5c934c142c3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 594d181a5452317267157415bdaf68f572f0f0af
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351323"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260027"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Porty inne niż 1433 dla platformy ADO.NET 4.5
 W tym temacie opisano zachowanie połączenia usługi Azure SQL Database dla klientów korzystających z platformy ADO.NET 4.5 lub nowszej wersji. 
@@ -48,7 +48,7 @@ Upewnij się, że port, który 11000 11999 i 14000-14999 na komputerze klienta u
 * W szczególności portów z zakresu nie może zawierać innych blokują ruchu wychodzącego.
 * Na maszynie Wirtualnej platformy Azure **Zapora Windows z zabezpieczeniami zaawansowanymi** kontroluje ustawienia portu.
   
-  * Możesz użyć [interfejsu użytkownika zapory](http://msdn.microsoft.com/library/cc646023.aspx) można dodać reguły, dla którego należy określić **TCP** , takich jak protokół wraz z zakresu portów, przy użyciu składni **11000 11999**.
+  * Możesz użyć [interfejsu użytkownika zapory](https://msdn.microsoft.com/library/cc646023.aspx) można dodać reguły, dla którego należy określić **TCP** , takich jak protokół wraz z zakresu portów, przy użyciu składni **11000 11999**.
 
 ## <a name="version-clarifications"></a>Wyjaśnienia w wersji
 W tej sekcji wyjaśnia monikerów, które odwołują się do wersji produktu. Zawiera również listę niektórych kwestiach wersje produktów.
@@ -65,9 +65,9 @@ W tej sekcji wyjaśnia monikerów, które odwołują się do wersji produktu. Za
 
 
 ## <a name="related-links"></a>Powiązane linki
-* ADO.NET 4.6 został wydany 20 lipca 2015 r. Ogłoszenia na blogu zespołu programu .NET jest dostępna [tutaj](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx).
-* 15 sierpnia 2012 został wydany platformy ADO.NET 4.5. Ogłoszenia na blogu zespołu programu .NET jest dostępna [tutaj](http://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx). 
-  * Wpis w blogu ADO.NET 4.5.1 jest dostępny [tutaj](http://blogs.msdn.com/b/dotnet/archive/2013/06/26/announcing-the-net-framework-4-5-1-preview.aspx).
+* ADO.NET 4.6 został wydany 20 lipca 2015 r. Ogłoszenia na blogu zespołu programu .NET jest dostępna [tutaj](https://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx).
+* 15 sierpnia 2012 został wydany platformy ADO.NET 4.5. Ogłoszenia na blogu zespołu programu .NET jest dostępna [tutaj](https://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx). 
+  * Wpis w blogu ADO.NET 4.5.1 jest dostępny [tutaj](https://blogs.msdn.com/b/dotnet/archive/2013/06/26/announcing-the-net-framework-4-5-1-preview.aspx).
 
 * Microsoft® ODBC Driver 17 for SQL Server® — Windows, Linux i macOS https://www.microsoft.com/download/details.aspx?id=56567
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: f6e8ed1725b7ba2a0cba8523ae03c0306337aba0
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: db976fb61c5659fbdcb7ba30aa4f619d52d441c4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402511"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252398"
 ---
 # <a name="azure-database-security-checklist"></a>Lista kontrolna zabezpieczeń bazy danych platformy Azure
 
@@ -34,7 +34,7 @@ Należą do nich:
 -   Zarządzanie dostępem do użycia
 -   Szyfrowanie danych
 -   Inspekcja usługi SQL Database
--   Wykrywanie zagrożeń bazy danych SQL
+-   Wykrywanie zagrożeń usługi SQL Database
 
 ## <a name="introduction"></a>Wprowadzenie
 Chmura obliczeniowa wymaga nowych paradygmatów zabezpieczeń, które są Ci znane wielu użytkowników aplikacji, administratorzy baz danych i programistów. W rezultacie niektóre organizacje są wątpliwości do wdrożenia infrastruktury w chmurze do zarządzania danymi ze względu na postrzegany zagrożenia dla bezpieczeństwa. Jednak mogą znacznie tej częste złagodzone za pośrednictwem lepiej zrozumieć funkcje zabezpieczeń wbudowane w Microsoft Azure i Microsoft Azure SQL Database.
@@ -47,7 +47,7 @@ Zalecamy przeczytanie [bazy danych usługi Azure Security Best Practices](https:
 | ------------ | -------- |
 |**Ochrona danych**||
 | <br> Szyfrowanie podczas transferu/ruchu| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol), do szyfrowania danych, gdy dane są przenoszone do sieci.</li><li>Baza danych wymaga bezpiecznej komunikacji z klientami, na podstawie [TDS (Stream dane tabelaryczne)](https://msdn.microsoft.com/library/dd357628.aspx) protokołu za pośrednictwem protokołu TLS (Transport Layer Security).</li></ul> |
-|<br>Szyfrowanie w spoczynku| <ul><li>[Transparent Data Encryption](http://go.microsoft.com/fwlink/?LinkId=526242), gdy nieaktywne dane są przechowywane w fizycznie w dowolnej formie cyfrowej.</li></ul>|
+|<br>Szyfrowanie w spoczynku| <ul><li>[Transparent Data Encryption](https://go.microsoft.com/fwlink/?LinkId=526242), gdy nieaktywne dane są przechowywane w fizycznie w dowolnej formie cyfrowej.</li></ul>|
 |**Kontrola dostępu**||  
 |<br> Dostęp do bazy danych | <ul><li>[Uwierzytelnianie](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) uwierzytelniania (Azure Active Directory Authentication) AD korzysta z tożsamości zarządzanej przez usługę Azure Active Directory.</li><li>[Autoryzacja](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) przyznanie użytkownikom minimalnych niezbędnych uprawnień.</li></ul> |
 |<br>Dostęp do aplikacji| <ul><li>[Wiersz poziom zabezpieczeń](https://msdn.microsoft.com/library/dn765131) (przy użyciu zasad zabezpieczeń, w tym samym czasie, ograniczanie dostępu na poziomie wierszy na podstawie kontekstu użytkownika tożsamości, roli lub wykonywania).</li><li>[Dynamiczne maskowanie danych](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) (przy użyciu uprawnień i zasad, ogranicza ujawnianie poufnych danych przez ich maskowanie dla nieuprzywilejowanych użytkowników)</li></ul>|

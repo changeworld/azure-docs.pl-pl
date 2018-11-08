@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: 37a30055e567b27f4e215dac162642d4447a8e49
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1b293ee8f0f83d727cd647cdcdcc424b4db7e5d3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298209"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240889"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Aprowizacja maszyny wirtualnej do nauki o danych Windows na platformie Azure
 Microsoft Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wirtualnej (VM) platformy Windows Azure. Ma wstępnie zainstalowane i skonfigurowane za pomocą kilku narzędzi, które są używane do analizy danych i uczenia maszynowego. Uwzględnione są następujące narzędzia:
@@ -186,7 +186,7 @@ Kilku narzędzi platformy Azure są zainstalowane na maszynie Wirtualnej:
 * **Microsoft Azure PowerShell** to narzędzie, które jest używane do administrowania zasobami platformy Azure w języku skryptów programu PowerShell. Jest również instalowany na maszynie Wirtualnej. 
 
 ### <a name="power-bi"></a>Power BI
-**Power BI Desktop** jest zainstalowana w celu ułatwienia tworzenia pulpitów nawigacyjnych i wizualizacji. To narzędzie do pobierania danych z różnych źródeł, tworzyć pulpity nawigacyjne i raporty i opublikuj je w chmurze. Aby uzyskać więcej informacji, zobacz [usługi Power BI](http://powerbi.microsoft.com) lokacji. Power BI desktop można znaleźć na **Start** menu. 
+**Power BI Desktop** jest zainstalowana w celu ułatwienia tworzenia pulpitów nawigacyjnych i wizualizacji. To narzędzie do pobierania danych z różnych źródeł, tworzyć pulpity nawigacyjne i raporty i opublikuj je w chmurze. Aby uzyskać więcej informacji, zobacz [usługi Power BI](https://powerbi.microsoft.com) lokacji. Power BI desktop można znaleźć na **Start** menu. 
 
 > [!NOTE]
 > Wymagane jest konto Microsoft Office 365, aby dostęp do usługi Power BI. 
@@ -228,7 +228,7 @@ Każdy użytkownik aplikacji workbench, należy wykonać to działanie jednorazo
 * Odkryj narzędzia i na maszyny Wirtualnej do analizy danych, wybierając **Start** menu.
 * Informacje na temat usług Azure Machine Learning i aplikacji Workbench, odwiedzając produktu [strony Szybki Start i samouczków](../service/index.yml). 
 * Przejdź do **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** przykładów, korzystające z biblioteki kolekcję funkcji RevoScaleR w języku R, który obsługuje analizy danych w skali przedsiębiorstwa.  
-* Przeczytaj artykuł [dziesięć rzeczy, które można wykonać na maszynie wirtualnej analizy danych](http://aka.ms/dsvmtenthings).
+* Przeczytaj artykuł [dziesięć rzeczy, które można wykonać na maszynie wirtualnej analizy danych](https://aka.ms/dsvmtenthings).
 * Dowiedz się, jak tworzyć rozwiązania analityczne end-to-end systematycznie przy użyciu [zespołu danych dla celów naukowych](../team-data-science-process/index.yml).
 * Odwiedź stronę [galerii Azure AI](http://gallery.cortanaintelligence.com) nauki i dane analizy przykładowych maszyny korzystające z usługi Azure Machine Learning i powiązane dane usług na platformie Azure. Podano także ikony dla tej galerii na **Start** menu i pulpitu maszyny wirtualnej.
 

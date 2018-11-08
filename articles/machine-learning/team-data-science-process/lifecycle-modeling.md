@@ -1,6 +1,6 @@
 ---
-title: Modelowanie etapie cyklu życia procesu nauki danych zespołu - Azure | Dokumentacja firmy Microsoft
-description: Cele, zadań i elementów dostarczanych w etapie modelowania projektów analizy danych
+title: Modelowanie etap cyklu życia zespołowego danych naukowych — Azure | Dokumentacja firmy Microsoft
+description: Cele, zadania i elementy dostarczane dla etapu modelowania projektów do nauki o danych
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,83 +15,83 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: ff7434e84473fd68153be8116899ecdfb6a6a831
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4043ae4cf8ab7d9716db834fed0019456f2a52d4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837484"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227539"
 ---
 # <a name="modeling"></a>Modelowanie
 
-W tym artykule omówiono cele, zadań i elementów dostarczanych skojarzone z etapu modelowania zespołu danych nauki procesu (TDSP). Ten proces obejmuje zalecane cykl służy do struktury projektów analizy danych. Cykl życia przedstawiono główne etapy, które projekty zazwyczaj wykonywane, często wielokrotnie powtarzane:
+W tym artykule opisano cele, zadania i cele do zrealizowania skojarzone z etapem modelowania procesów do nauki o danych zespołu (TDSP). Ten proces obejmuje zalecane cyklu życia, który umożliwia tworzenie struktury projektów do nauki o danych. Cykl życia przedstawia główne etapy, które projekty zazwyczaj są wykonywane, często iteracyjne:
 
-   1. **Opis biznesowa**
-   2. **Uzyskiwanie danych i zrozumienie**
+   1. **Poznawanie firmy**
+   2. **Pozyskiwanie danych i opis**
    3. **Modelowanie**
    4. **Wdrożenie**
-   5. **Akceptacji klienta**
+   5. **Akceptacja klienta**
 
-W tym miejscu jest wizualną reprezentacją życia TDSP:
+Oto wizualnej reprezentacji cyklu przetwarzania TDSP:
 
-![Cykl życia TDSP](./media/lifecycle/tdsp-lifecycle2.png) 
+![Cykl życia przetwarzania TDSP](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goals"></a>Cele
 * Określ funkcji optymalne danych dla modelu uczenia maszynowego.
-* Tworzenie informacji modelu uczenia maszynowego, który prognozuje najdokładniej obiektu docelowego.
-* Tworzenie modelu uczenia maszynowego, który nadaje się do produkcji.
+* Utwórz i model uczenia maszynowego, który prognozuje najdokładniej element docelowy.
+* Utwórz model uczenia maszynowego, która jest odpowiednia w środowisku produkcyjnym.
 
 ## <a name="how-to-do-it"></a>Jak to zrobić
-Istnieją trzy główne zadania zostały omówione w tym etapie:
+Istnieją trzy główne zadania, które zostały omówione w tym etapie:
 
-  * **Inżynieria**: Tworzenie funkcji danych z danych pierwotnych w celu ułatwienia uczenia modelu.
-  * **Model uczenia**: znaleźć modelu, który najdokładniej odpowiada pytanie, porównując ich metryki sukcesu.
-  * Określa, czy model jest **nadające się do produkcji.**
+  * **Inżynieria funkcji**: Tworzenie funkcji danych na podstawie danych pierwotnych w celu ułatwienia szkoleń modelowych.
+  * **Szkolenie modelu**: znaleźć odpowiedzi na pytania najdokładniej przez porównanie ich metryki sukcesu modelu.
+  * Określa, czy model jest **odpowiednich dla środowiska produkcyjnego.**
 
 ### <a name="feature-engineering"></a>Inżynieria funkcji
-Funkcja engineering obejmuje dołączania, agregacji i przekształcenie zmienne pierwotne można utworzyć funkcje używane do analizy. Chcąc wgląd w przyczyn nadmiernego modelu, należy zrozumieć, jak te funkcje są powiązane ze sobą i sposobu używania tych funkcji algorytmów uczenia maszynowego. 
+Inżynieria funkcji obejmuje dołączania, agregacji i przekształcanie pierwotnych zmienne, aby tworzyć funkcje używane do analizy. Jeśli mają wgląd w co umożliwiające obsługę modelu, należy zrozumieć jak powiązane są ze sobą funkcje i sposobu używania tych funkcji algorytmów uczenia maszynowego. 
 
-Ten krok wymaga creative kombinację doświadczenia z domeny i szczegółowych danych uzyskane w kroku Eksploracja danych. Funkcja engineering jest działanie znajdowania i zmiennych informacyjny, ale w tym samym czasie unikać zbyt wiele zmiennych niepowiązanych. Zmienne informacyjny poprawy wyników; zmienne niepowiązanych powodować powstanie niepotrzebnego szumu do modelu. Należy również generowanie wszystkie nowe dane uzyskane podczas oceniania przez te funkcje. W związku z tym generowanie tych funkcji można tylko zależą od danych, która jest dostępna podczas oceniania. 
+Ten krok wymaga kombinację creative wiedzy na temat domeny i szczegółowe dane uzyskane w kroku eksploracji danych. Inżynieria funkcji jest działanie znajdowania i tym informacyjne zmiennych, ale w tym samym czasie próby Unikaj zbyt wielu zmiennych niepowiązanych. Zmienne i poprawy wyników; zmienne niepowiązanych wprowadzić niepotrzebny szum do modelu. Należy również generować nowe dane uzyskane podczas oceniania przez te funkcje. W rezultacie generowania tych funkcji tylko może zależeć od danych, która jest dostępna podczas oceniania. 
 
-Wskazówki techniczne dotyczące funkcji podczas inżynierii upewnij używania różnych technologii danych Azure, zobacz [Inżynieria w procesie nauki danych](create-features.md). 
+Wskazówki techniczne na temat funkcji podczas inżynierii udostępniać korzystać z różnych technologii danych platformy Azure, zobacz [Inżynieria funkcji w procesie nauki o danych](create-features.md). 
 
-### <a name="model-training"></a>szkolenie modelu
-W zależności od typu zapytania, który próbujesz odpowiedzi Brak dostępnych wiele algorytmów modelowania. Aby uzyskać wskazówki dotyczące wybierania algorytmów, zobacz [Wybieranie algorytmów w Microsoft Azure Machine Learning](../studio/algorithm-choice.md). Chociaż ten artykuł korzysta z usługi Azure Machine Learning, zapewnia wskazówki przydaje się do wszystkich projektów, do uczenia maszynowego. 
+### <a name="model-training"></a>Szkolenie modelu
+W zależności od typu zapytania, które próbujesz odpowiedzieć dostępnych wiele algorytmów modelowania. Aby uzyskać wskazówki na temat wybierania algorytmów, zobacz [jak wybór algorytmów dla usługi Microsoft Azure Machine Learning](../studio/algorithm-choice.md). Chociaż w tym artykule korzysta z usługi Azure Machine Learning, wskazówek zawartych w nim jest przydatne dla wszystkich projektów uczenia maszynowego. 
 
-Proces uczenia modelu obejmuje następujące kroki: 
+Proces do trenowania modelu obejmuje następujące kroki: 
 
    * **Podział danych wejściowych** losowo do modelowania szkoleniowy zestaw danych i testowego zestawu danych.
-   * **Tworzenie modeli** przy użyciu szkoleniowy zestaw danych.
-   * **Ocena** szkolenia i testowego zestawu danych. Szereg konkurencyjnych algorytmów uczenia maszynowego oraz różne parametry dostrajania skojarzony (nazywane *odchylenia parametru*) który adresowana odpowiedzi na pytanie płynących z bieżących danych.
-   * **Określić rozwiązania "Najważniejsze"** udzielenia odpowiedzi na pytanie, porównując metryki sukcesu między alternatywne metody.
+   * **Twórz modele** przy użyciu zestawu danych szkoleniowych.
+   * **Oceń** szkolenia i testowego zestawu danych. Używać szeregu konkurencyjnych algorytmów uczenia maszynowego oraz różne parametry dostrajania skojarzone (nazywane *parametrów*), przeznaczoną odpowiedzi na pytanie, będących przedmiotem zainteresowania z aktualnych danych.
+   * **Określić, jakie rozwiązanie "Najważniejsze"** odpowiedź na pytanie, porównując metryki sukcesu między alternatywne metody.
 
 > [!NOTE]
-> **Uniknąć wycieków**: może spowodować wycieku danych, jeśli zawierają dane pochodzące spoza umożliwia modelu lub Algorytm uczenia maszynowego w celu tworzenia prognoz nierealistycznie dobrej szkoleniowy zestaw danych. Wyciek jest typową przyczyną dlaczego dane, które służące uzyskać nerwowe, gdy otrzymują predykcyjnej wyników prawdopodobnie zbyt niskie. Te zależności, może być trudne do wykrycia. Aby uniknąć wycieków często wymaga iteracja między kompilowania zestawu danych analizy, tworzenie modelu i dokładność wyniki oceny. 
+> **Należy unikać wycieku**: może spowodować wycieku danych, jeśli zawierają dane pochodzące spoza szkoleniowy zestaw danych umożliwiający modelu lub Algorytm uczenia maszynowego, jak tworzyć prognozy nierealistycznie dobre. Wyciek jest typową przyczyną, dlaczego dane, które analityków otrzymaj nerwowe w przypadku, gdy uzyskują predykcyjne wyniki wydawać się zbyt dobrze. Te zależności, może być trudny do wykrycia. W celu uniknięcia wycieku często wymaga iteracja między tworzenia zestawu analiz danych, tworzenie modelu i oceny dokładności wyników. 
 > 
 > 
 
-Firma Microsoft udostępnia [automatycznego modelowania i narzędzia raportowania](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) z TDSP, która może być przesyłany przez wiele algorytmów i parametr przeszukiwanie w celu utworzenia modelu linii bazowej. Tworzy linię bazową modelowania raport, który zawiera podsumowanie wydajności każdego modelu wraz z kombinacją parametrów zmiennej znaczenie w tym. Ten proces ma charakter iteracyjny również, jak można dysku dalsze engineering funkcji. 
+Firma Microsoft zapewnia [zautomatyzowane, modelowania i raportowania narzędzie](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) za pomocą szablonu TDSP, który można uruchomić za pomocą wielu algorytmów i parametrów symulacji w celu utworzenia modelu odniesienia. Tworzy linię bazową modelowania raport podsumowujący wydajność każdego modelu wraz z kombinacją parametrów zmiennych znaczenie w tym. Ten proces jest również iteracyjna, jako jego dysku dalsze technicznego opracowywania funkcji. 
 
 ## <a name="artifacts"></a>Artefakty
-Artefakty utworzone na tym etapie obejmują:
+Artefakty utworzone podczas tego etapu obejmują:
 
-   * [Zestawy funkcji](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#feature-sets): funkcje rozwinięte modelowania zostały opisane w **zestawy funkcji** sekcji **definicji danych** raportu. Zawiera ona wskaźniki kod służący do generowania funkcje oraz opis sposobu funkcję został wygenerowany.
-   * [Model raportu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): dla każdego modelu, który zostanie podjęta próba, standard, jest generowany na podstawie szablonu raportu, który zawiera szczegóły dotyczące każdego doświadczenia.
-   * **Punkt kontrolny decyzji**: oceny, czy model wykonuje wystarczająco również wdrożyć w systemie produkcji. Niektóre kluczowe pytania są:
-     * Modelu odpowiedzi na pytanie, bez obaw wystarczające podanych danych testowych 
-     * Czy Wypróbuj żadnych alternatywnych metod? Należy zbierać dodatkowe dane, czy więcej engineering funkcji lub wypróbować inne algorytmy?
+   * [Zestawy funkcji](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#feature-sets): funkcje rozwinięte modelowania są opisane w **zestawy funkcji** części **definicji danych** raportu. Zawiera wskaźniki kod służący do generowania funkcji i opis jak funkcja został wygenerowany.
+   * [Model raportu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): dla każdego modelu, który zostanie podjęta próba standard, jest generowany na podstawie szablonu raportu, który zawiera szczegółowe informacje dotyczące każdego doświadczenia.
+   * **CheckPoint decision**: ocenić, czy model wykonuje wystarczająco dobrze wdrożenie go w systemie produkcyjnym. Niektóre kluczowe pytania są następujące:
+     * Model odpowiedzi na pytanie, bez obaw wystarczające, biorąc pod uwagę dane testowe 
+     * Należy spróbować żadnych alternatywnych metod? Należy zbierać dodatkowe dane, nie więcej technicznego opracowywania funkcji lub eksperymentować z innych algorytmów?
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Oto łącza do każdego kroku w cyklu TDSP:
+Poniżej podano linki do każdego kroku w cyklu życia przetwarzania TDSP:
 
-   1. [Opis biznesowa](lifecycle-business-understanding.md)
-   2. [Uzyskiwanie danych i zrozumienie](lifecycle-data.md)
+   1. [Poznawanie firmy](lifecycle-business-understanding.md)
+   2. [Pozyskiwanie danych i opis](lifecycle-data.md)
    3. [Modelowanie](lifecycle-modeling.md)
    4. [Wdrożenie](lifecycle-deployment.md)
-   5. [Akceptacji klienta](lifecycle-acceptance.md)
+   5. [Akceptacja klienta](lifecycle-acceptance.md)
 
-Firma Microsoft udostępnia pełnej end-to-end wskazówki, które pokazują wszystkie kroki w procesie w określonych scenariuszach. [Wskazówki przykład](walkthroughs.md) artykuł zawiera listę scenariuszy łącza i opisy miniatur. Wskazówki dotyczące ilustrują sposób łączenia chmury, narzędzia lokalnych i usług w przepływie pracy lub potoku, aby utworzyć aplikację inteligentnego. 
+Firma Microsoft oferuje instruktaży pełnej end-to-end, które przedstawiają wszystkie kroki w procesie dla konkretnych scenariuszy. [Przykładowe przewodniki](walkthroughs.md) artykuł zawiera listę scenariuszy wraz z linkami i opisy miniatur. Przewodniki pokazują, jak połączyć chmury, lokalnego narzędzia i usługi w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji. 
 
-Przykłady tego, jak wykonać kroki opisane w TDSPs, które używają usługi Azure Machine Learning Studio, zobacz [TDSP za pomocą usługi Azure Machine Learning](http://aka.ms/datascienceprocess). 
+Przykłady sposób wykonywania kroków w TDSPs, które używają usługi Azure Machine Learning Studio, zobacz [przetwarzania TDSP za pomocą usługi Azure Machine Learning](https://aka.ms/datascienceprocess). 

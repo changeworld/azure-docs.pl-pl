@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.component: tables
-ms.openlocfilehash: b06f5a66566c250eef608ddccc551aaebe24ef74
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: d055ea9b30732e1cc0fc4ae5471bae26adc08b35
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522802"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238900"
 ---
 # <a name="table-design-patterns"></a>Wzorce projektowe tabel
 W tym artykule opisano niektóre wzorce, które są przeznaczone do użycia z rozwiązaniami usługi tabeli. Ponadto zobaczysz, jak praktycznie rozwiązać niektóre problemy i charakterystyczne kompromisowe omówione w innych artykułach projektowania magazynu tabeli. Poniższy diagram przedstawia relacje między różnych wzorców:  
@@ -48,7 +48,7 @@ Po wykonaniu zapytania dotyczącego zakresu jednostek pracowników, można okre�
 * Można znaleźć wszyscy pracownicy działu sprzedaży z pracownikiem IDENTYFIKATORA w zakresie użycia 000100 do 000199: $filter = (PartitionKey eq "Sprzedaż") i (RowKey ge "empid_000100") i (RowKey le "empid_000199")  
 * Aby znaleźć wszyscy pracownicy działu sprzedaży przy użyciu adresu e-mail, rozpoczynając od litery "" Użyj: $filter = (PartitionKey eq "Sprzedaż") i (RowKey ge "email_a") i (RowKey lt "email_b")  
   
-  Należy zauważyć, że składnia filtru używanych w powyższych przykładach z usługi tabel interfejsu API REST, aby uzyskać więcej informacji, zobacz [wykonywanie zapytań dotyczących jednostek](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+  Należy zauważyć, że składnia filtru używanych w powyższych przykładach z usługi tabel interfejsu API REST, aby uzyskać więcej informacji, zobacz [wykonywanie zapytań dotyczących jednostek](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 ### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  
@@ -104,7 +104,7 @@ Po wykonaniu zapytania dotyczącego zakresu jednostek pracowników, można okre�
 * Aby znaleźć wszyscy pracownicy działu sprzedaży o identyfikatorze pracowników w zakresie **000100** do **000199** sortowane mogli oni skorzystać identyfikator pracownika: $filter = (PartitionKey eq ' empid_Sales") i (RowKey ge"000100") i (RowKey le "000199")  
 * Aby znaleźć wszyscy pracownicy działu sprzedaży za pomocą adresu e-mail, który rozpoczyna się od "" posortowanych w wiadomości e-mail adres mogli oni skorzystać: $filter = (PartitionKey eq ' email_Sales") i (RowKey ge"") i (RowKey lt"b")  
 
-Należy zauważyć, że składnia filtru używanych w powyższych przykładach z usługi tabel interfejsu API REST, aby uzyskać więcej informacji, zobacz [wykonywanie zapytań dotyczących jednostek](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Należy zauważyć, że składnia filtru używanych w powyższych przykładach z usługi tabel interfejsu API REST, aby uzyskać więcej informacji, zobacz [wykonywanie zapytań dotyczących jednostek](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 ### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  
@@ -617,7 +617,7 @@ Optymalne zapytanie zwraca pojedynczą jednostkę na podstawie **PartitionKey** 
 
 W takich scenariuszach, należy zawsze w pełni przetestować wydajność aplikacji.  
 
-Zapytanie względem usługi tabeli może zwrócić więcej niż 1000 jednostek w tym samym czasie i może być wykonywane przez maksymalnie pięć sekund. Jeśli zestaw wyników zawiera więcej niż 1000 jednostek, jeśli zapytanie nie została ukończona w ciągu pięciu sekund lub zapytanie przecina granicę partycji, usłudze Table service zwraca token kontynuacji, aby umożliwić aplikacji klienckiej zażądać następnego zestawu jednostek. Aby uzyskać więcej informacji na temat sposobu kontynuacji tokenów pracy, zobacz [limit czasu zapytania i dzielenia na strony](http://msdn.microsoft.com/library/azure/dd135718.aspx).  
+Zapytanie względem usługi tabeli może zwrócić więcej niż 1000 jednostek w tym samym czasie i może być wykonywane przez maksymalnie pięć sekund. Jeśli zestaw wyników zawiera więcej niż 1000 jednostek, jeśli zapytanie nie została ukończona w ciągu pięciu sekund lub zapytanie przecina granicę partycji, usłudze Table service zwraca token kontynuacji, aby umożliwić aplikacji klienckiej zażądać następnego zestawu jednostek. Aby uzyskać więcej informacji na temat sposobu kontynuacji tokenów pracy, zobacz [limit czasu zapytania i dzielenia na strony](https://msdn.microsoft.com/library/azure/dd135718.aspx).  
 
 Jeśli używasz biblioteki klienta usługi Storage go automatycznie obsługiwać tokenów kontynuacji dla Ciebie jako zwraca jednostki z usługi tabel. Poniższy przykład kodu C# automatycznie przy użyciu biblioteki klienta usługi Storage obsługuje tokeny kontynuacji, jeśli usługa table service zwraca je w odpowiedzi:  
 
@@ -719,7 +719,7 @@ Table service to *bez schematu* magazynu tabel, oznacza to, że pojedynczej tabe
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Sygnatura czasowa</th>
+<th>Znacznik czasu</th>
 <th></th>
 </tr>
 <tr>
@@ -811,7 +811,7 @@ Należy zauważyć, że każda jednostka może nadal mieć **PartitionKey**, **R
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Sygnatura czasowa</th>
+<th>Znacznik czasu</th>
 <th></th>
 </tr>
 <tr>

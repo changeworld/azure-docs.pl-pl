@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 3e0e9a59d7f77355077fc1f7781eb3be4dbe0532
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c245a844ae594f5d78b47a168ad5870f8aea10e9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296707"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227777"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Zespół danych dla celów naukowych role i zadania
 
@@ -66,7 +66,7 @@ Ten schemat i zarys następujących, bardziej szczegółowe zadania, które są 
 > [!NOTE]
 > Poniżej przedstawiono kroki konfigurowania środowiska TDSP i wykonuj inne zadania do nauki o danych w infrastrukturze DevOps platformy Azure. Firma Microsoft umożliwia określenie sposobu wykonywania tych zadań, za pomocą DevOps platformy Azure, ponieważ używamy do zaimplementowania przetwarzania TDSP w firmie Microsoft. Azure DevOps usprawnia współpracę dzięki integracji zarządzania elementów roboczych, które śledzą zadania i Usługa hostingu kod używany do udostępniania programów narzędziowych, organizowanie wersji i zapewnienia opartej na rolach zabezpieczeń. Masz możliwość wybrania innych platform, jeśli wolisz, implementowanie zadań opisane przez przetwarzania TDSP. Jednak w zależności od platformy, niektóre funkcje, z której korzystać z DevOps platformy Azure nie mogą być dostępne. 
 >
->Instrukcje w tym miejscu jest również użyć [maszyny wirtualnej do nauki o danych (DSVM)](http://aka.ms/dsvm) na platformie Azure w chmurze jako pulpit analityczny za pomocą kilku narzędzi do analizy danych popularnych wstępnie skonfigurowanych i zintegrowane z różnymi oprogramowania firmy Microsoft i platformy Azure usługi. Maszyny DSVM lub dowolnym innym środowisku programowania można użyć do zaimplementowania przetwarzania TDSP. 
+>Instrukcje w tym miejscu jest również użyć [maszyny wirtualnej do nauki o danych (DSVM)](https://aka.ms/dsvm) na platformie Azure w chmurze jako pulpit analityczny za pomocą kilku narzędzi do analizy danych popularnych wstępnie skonfigurowanych i zintegrowane z różnymi oprogramowania firmy Microsoft i platformy Azure usługi. Maszyny DSVM lub dowolnym innym środowisku programowania można użyć do zaimplementowania przetwarzania TDSP. 
 
 
 ## <a name="group-manager-tasks"></a>Menedżer grupy zadań

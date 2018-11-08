@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: 35650eec65fa9181d035c52e6b466985b483500c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 98eee29dc6810d35ee1792c601e6d2f147602cae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036511"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262186"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpieczanie wdrożeń PaaS
 
@@ -151,7 +151,7 @@ Aplikacje internetowe coraz częściej stają się obiektami złośliwych atakó
 ## <a name="monitor-the-performance-of-your-applications"></a>Monitorowanie wydajności aplikacji
 Monitorowanie to proces zbierania i analizowania danych w celu ustalania wydajności, kondycji i dostępności aplikacji. Skuteczna strategia monitorowania pomaga w zrozumieniu szczegółów działania składników aplikacji. Pomaga zwiększyć czas aktywności przez powiadomienie o istotnych kwestiach, dzięki czemu można je rozwiązać, zanim obejmą. Ułatwia on także wykrywać nieprawidłowe stany, które mogą być związane z zabezpieczeniami.
 
-Użyj [usługi Azure Application Insights](http://azure.microsoft.com/documentation/services/application-insights) monitorowanie dostępności, wydajności i użycia aplikacji, czy jest hostowana w chmurze lub lokalnie. Za pomocą usługi Application Insights, możesz szybko identyfikować i diagnozować błędy w aplikacji bez oczekiwania na zgłoszenie ich przez użytkownika. Dzięki zbieranym informacjom można podejmować świadome decyzje w zakresie konserwacji i ulepszeń aplikacji.
+Użyj [usługi Azure Application Insights](https://azure.microsoft.com/documentation/services/application-insights) monitorowanie dostępności, wydajności i użycia aplikacji, czy jest hostowana w chmurze lub lokalnie. Za pomocą usługi Application Insights, możesz szybko identyfikować i diagnozować błędy w aplikacji bez oczekiwania na zgłoszenie ich przez użytkownika. Dzięki zbieranym informacjom można podejmować świadome decyzje w zakresie konserwacji i ulepszeń aplikacji.
 
 Usługa Application Insights ma szeroką gamę narzędzi do interakcji z danymi, które zbiera. Usługa Application Insights przechowuje dane we wspólnym repozytorium. Może korzystać ze wspólnej funkcjonalności, np. alertów, pulpitów nawigacyjnych, a także szczegółowej analizy przy użyciu języka zapytań usługi Log Analytics.
 

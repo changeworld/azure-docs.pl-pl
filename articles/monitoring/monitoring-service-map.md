@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: ad696168674e0c04c457c06a81d4e723981eee47
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 0f3bc7302bc28a9bef288e5e5e0b9b891a08b8dd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914757"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252925"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Za pomocą rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Przy użyciu mapy usługi w taki sposób, które z nich można przeglądać serwery: jako wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami, czas oczekiwania na połączenie przychodzące i wychodzące i portami w dowolnej architekturze połączenia TCP, bez konieczności konfiguracji wymagane inne niż Instalacja agenta.
@@ -161,10 +161,10 @@ Połączenia zakończone niepowodzeniem są wyświetlane w mapach rozwiązania S
 
 Omówienie połączenia zakończone niepowodzeniem mogą pomóc w rozwiązywaniu problemów, sprawdzanie poprawności migracji, analizy zabezpieczeń i architektury ogólny opis. Połączenia zakończone niepowodzeniem są czasami nieszkodliwe, ale często wskazują bezpośrednio do problemu, takie jak środowisko pracy awaryjnej, nagle staje się niedostępny lub dwie warstwy aplikacji nie będzie w stanie komunikować się po migracji do chmury.
 
-## <a name="client-groups"></a>Grupy klientów
+## <a name="client-groups"></a>Grup klientów
 Grupy klienta są pola na mapie, które reprezentują komputerów klienckich, które nie mają agenci zależności. Pojedynczą grupę klienta reprezentuje klientów dla poszczególnych proces lub komputera.
 
-![Grupy klientów](media/monitoring-service-map/client-groups.png)
+![Grup klientów](media/monitoring-service-map/client-groups.png)
 
 Aby wyświetlić adresy IP serwerów z grupy klientów, wybierz grupę. Zawartość grupy są wymienione w **właściwości grupy klientów** okienka.
 
@@ -277,7 +277,7 @@ Integracja mapy usługi przy użyciu rozwiązania Update Management jest automat
 ![Okienko Change Tracking maszyny](media/monitoring-service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Rekordy usługi Log Analytics
-Mapy usługi komputera i przetwarzanie magazynu danych jest dostępna dla [wyszukiwania](../log-analytics/log-analytics-log-search.md) w usłudze Log Analytics. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
+Mapy usługi komputera i przetwarzanie magazynu danych jest dostępna dla [wyszukiwania](../log-analytics/log-analytics-queries.md) w usłudze Log Analytics. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
 
 Za godzinę dla każdego komputera unikatowy i procesów, oprócz rekordów, które są generowane, gdy proces lub komputer zostaje uruchomiony lub jest uruchomiona do rozwiązania Service Map, generowany jest jeden rekord. Te rekordy mają właściwości podane w poniższych tabelach. Pola i wartości w zdarzeniach ServiceMapComputer_CL są mapowane na pola zasób maszynę w interfejsie API ServiceMap usługi Azure Resource Manager. Pola i wartości w zdarzeniach ServiceMapProcess_CL są mapowane na pola zasobów procesu w interfejsie API ServiceMap usługi Azure Resource Manager. Pole ResourceName_s zgodne pola Nazwa odpowiedniego zasobu usługi Resource Manager. 
 
@@ -497,14 +497,14 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ## <a name="rest-api"></a>Interfejs API REST
 Wszystkie dane serwera, proces i zależności na mapie usługi są dostępne za pośrednictwem [interfejsu API REST mapy usługi](https://docs.microsoft.com/rest/api/servicemap/).
 
-## <a name="diagnostic-and-usage-data"></a>Dane diagnostyczne i dane dotyczące użycia
+## <a name="diagnostic-and-usage-data"></a>Dane diagnostyczne i użycia
 Firma Microsoft automatycznie zbiera dane dotyczące użycia i wydajności przez korzystanie z usługi mapy usługi. Firma Microsoft używa tych danych do zapewniania i poprawiania jakości, bezpieczeństwa i integralności usługi mapy usługi. Aby zapewnić dokładne i wydajne funkcje do rozwiązywania problemów, dane obejmują informacje o konfiguracji oprogramowania, takie jak system operacyjny i wersję, adres IP, nazwę DNS i nazwę stacji roboczej. Firma Microsoft gromadzi nazwisk, adresów ani innych informacji kontaktowych.
 
 Aby uzyskać więcej informacji na temat zbierania i wykorzystywania danych, zobacz [Microsoft Online Services Privacy Statement](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej o [dziennikach](../log-analytics/log-analytics-log-search.md) w usłudze Log Analytics, aby pobrać dane, które są zbierane przez rozwiązania Service Map.
+Dowiedz się więcej o [dziennikach](../log-analytics/log-analytics-queries.md) w usłudze Log Analytics, aby pobrać dane, które są zbierane przez rozwiązania Service Map.
 
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów

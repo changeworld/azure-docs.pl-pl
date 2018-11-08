@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: 21651c577dc6b519b139aa7bbfc6d03d8f2c6980
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: fe854c6a33a950f9f937118b6048d547f1a2fe37
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962150"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245770"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Migracja platformy Azure alertów dotyczących zdarzeń zarządzania do alertów dziennika aktywności
 
@@ -28,7 +28,7 @@ ms.locfileid: "50962150"
 Usługa Azure Monitor (dawniej Azure Insights) oferowana możliwość tworzenia alertu wyzwolona poza zdarzeń zarządzania i generowane powiadomienia na adresy URL lub adres e-mail elementu webhook. Które mogły zostać utworzone dla jednej z tych alertów, jeden z następujących sposobów:
 * W witrynie Azure portal dla niektórych typów zasobów, w obszarze monitorowanie -> Alerty -> Dodaj Alert, gdy "Alert dotyczący" jest równa "Events"
 * Uruchamiając polecenie cmdlet Add-AzureRmLogAlertRule programu PowerShell
-* Za pomocą bezpośrednio [interfejsu API REST alertów](http://docs.microsoft.com/rest/api/monitor/alertrules) odata.type = "ManagementEventRuleCondition" i dataSource.odata.type = "RuleManagementEventDataSource"
+* Za pomocą bezpośrednio [interfejsu API REST alertów](https://docs.microsoft.com/rest/api/monitor/alertrules) odata.type = "ManagementEventRuleCondition" i dataSource.odata.type = "RuleManagementEventDataSource"
  
 Poniższy skrypt programu PowerShell zwraca listę wszystkich alertów w zdarzenia zarządzania, które masz w subskrypcji, a także warunków określonych na temat każdego alertu.
 

@@ -1,6 +1,6 @@
 ---
-title: Jak używać usługi Azure storage dla kopii zapasowej serwera SQL i przywracania | Dokumentacja firmy Microsoft
-description: Informacje o sposobie tworzenia kopii zapasowych programu SQL Server do magazynu Azure. Opis korzyści wykonywanie kopii zapasowych baz danych do magazynu Azure.
+title: Jak używać usługi Azure storage do tworzenia kopii zapasowych programu SQL Server i Przywróć | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć kopię zapasową programu SQL Server do usługi Azure Storage. W tym artykule wyjaśniono zalety tworzenia kopii zapasowych baz danych SQL do usługi Azure Storage.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MikeRayMSFT
@@ -14,67 +14,67 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 39d4f452143454a345bd91f550e44c93651ff933
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0fdf768008161fbb72e48dae937a4172222dbb63
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29399053"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239750"
 ---
-# <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Użyj magazynu Azure dla programu SQL Server z kopii zapasowej i przywracania
+# <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Użyj usługi Azure Storage dla programu SQL Server z kopii zapasowej i przywracania
 ## <a name="overview"></a>Przegląd
-Począwszy od programu SQL Server 2012 z dodatkiem SP1 CU2, można teraz zapisać kopii zapasowych programu SQL Server bezpośrednio do usługi magazynu obiektów Blob platformy Azure. Ta funkcja służy do kopii zapasowych i przywracania usługi obiektów Blob platformy Azure z lokalną bazą danych serwera SQL lub bazy danych programu SQL Server w maszynie wirtualnej platformy Azure. Kopii zapasowej w chmurze zapewnia korzyści dostępności, nieograniczona replikacją geograficzną poza nim magazynu i łatwość migracji danych do i z chmury. Przy użyciu języka Transact-SQL lub SMO można wydać instrukcji BACKUP lub RESTORE.
+Począwszy od pakietu CU2 programu SQL Server 2012 z dodatkiem SP1, można teraz zapisywania kopii zapasowych programu SQL Server bezpośrednio do usługi Azure Blob storage. Ta funkcja służy do kopii zapasowych i przywracania usługi obiektów Blob platformy Azure przy użyciu lokalnej bazy danych programu SQL Server lub bazy danych programu SQL Server na maszynie wirtualnej platformy Azure. Kopia zapasowa w chmurze oferuje zalety dostępność, nieograniczone możliwości magazynowania poza siedzibą firmy replikowana geograficznie i łatwość migracji danych do i z chmury. Za pomocą języka Transact-SQL lub SMO można wydać instrukcji tworzenia kopii zapasowej lub przywracania.
 
-SQL Server 2016 wprowadzono nowe funkcje; można użyć [kopii zapasowej migawki pliku](http://msdn.microsoft.com/library/mt169363.aspx) do wykonywania niemal natychmiastowe tworzenie kopii zapasowych i przywracania bardzo szybki.
+SQL Server 2016 wprowadzono nowe funkcje; Możesz użyć [kopii zapasowych migawki plików](https://msdn.microsoft.com/library/mt169363.aspx) do wykonywania niemal natychmiastowych kopii zapasowych i niezwykle szybkie przywracanie danych.
 
-W tym temacie objaśniono, dlaczego można użyć magazynu Azure do przechowywania kopii zapasowych SQL, a następnie w tym artykule opisano składniki zaangażowane. Dostęp do wskazówki i dodatkowe informacje, aby rozpocząć korzystanie z tej usługi z kopii zapasowych programu SQL Server, można użyć zasobów udostępnianych na końcu tego artykułu.
+W tym temacie opisano, dlaczego warto używać usługi Azure storage do przechowywania kopii zapasowych programu SQL, a następnie w tym artykule opisano składniki zaangażowane. Dostęp do przewodników i dodatkowe informacje, aby rozpocząć korzystanie z tej usługi kopii zapasowych programu SQL Server, można użyć zasobów udostępnianych na końcu tego artykułu.
 
-## <a name="benefits-of-using-the-azure-blob-service-for-sql-server-backups"></a>Korzyści wynikające z korzystania z usługi obiektów Blob platformy Azure dla kopii zapasowych serwera SQL
-Istnieje kilka wyzwania, które czoła podczas wykonywania kopii zapasowych programu SQL Server. Te problemy obejmują zarządzanie magazynem, ryzyko wystąpienia awarii magazynu, dostęp do innej lokalizacji magazynu i konfiguracji sprzętu. Wiele z tych problemów są adresowane za pomocą usługi magazynu obiektów Blob platformy Azure do przechowywania kopii zapasowych programu SQL Server. Należy wziąć pod uwagę następujące korzyści:
+## <a name="benefits-of-using-the-azure-blob-service-for-sql-server-backups"></a>Korzyści z używania usługi obiektów Blob platformy Azure do przechowywania kopii zapasowych programu SQL Server
+Istnieje kilka kwestii, które są spowodowane podczas wykonywania kopii zapasowych programu SQL Server. Te problemy obejmują zarządzanie magazynem, ryzyko awarii magazynu, dostępu do magazynu poza siedzibą firmy i konfiguracji sprzętu. Wiele z tych wyzwań są adresowane za pomocą usługi magazynu obiektów Blob platformy Azure do przechowywania kopii zapasowych programu SQL Server. Należy wziąć pod uwagę następujące korzyści:
 
-* **Łatwość użycia**: przechowywanie kopii zapasowych w obiektach blob Azure może być wygodny sposób, elastyczne i łatwe na dostęp do opcji poza nim. Tworzenie innej lokalizacji magazynu kopii zapasowych programu SQL Server może wynosić maksymalnie modyfikowanie istniejących skryptów/zadań do użycia **BACKUP TO URL** składni. Poza miejscem przechowywania zwykle powinna być wystarczająco daleko od lokalizacji bazy danych produkcyjnej zapobiegające pojedynczego po awarii, które mogą wpływać na obu zdalną i produkcji lokalizacje bazy danych. Przez wybranie [obiektów blob platformy Azure replikacja geograficzna](../../../storage/common/storage-redundancy.md), masz dodatkową warstwę ochrony w przypadku awarii, które mogą wpłynąć na całego regionu.
-* **Kopia zapasowa archiwum**: Usługa magazynu obiektów Blob Azure oferuje lepszą alternatywę do opcji taśmy często używane do archiwizacji kopii zapasowych. Magazynu taśm może wymagać fizycznego transportu do innej lokalizacji i środki w celu ochrony nośnika. Przechowywania kopii zapasowych w magazynie obiektów Blob Azure udostępnia moment, wysokiej dostępności i niezawodny archiwizacji opcji.
-* **Zarządzane sprzętu**: się nie dodatkowe zarządzania sprzętem z usługami Azure. Usług Azure Zarządzanie sprzętem i podaj — replikacja geograficzna nadmiarowości i ochronę przed awariami sprzętu.
-* **Nieograniczony magazyn**: przez włączenie kopii zapasowej bezpośrednio do obiektów blob platformy Azure, musisz mieć dostęp do niemal nieograniczonego magazynu. Alternatywnie wykonywanie kopii zapasowych na dysku maszyny wirtualnej platformy Azure ma ograniczenia na podstawie rozmiaru maszyny. Istnieje ograniczona liczba dysków, które można dołączyć do maszyny wirtualnej platformy Azure do przechowywania kopii zapasowych. Ten limit jest 16 dysków dla bardzo dużych wystąpienia i mniej wystąpień mniejsze.
-* **Wykonaj kopię zapasową dostępności**: kopie zapasowe przechowywane w obiektach blob Azure są dostępne z dowolnego miejsca i w dowolnym momencie i łatwo dostępne dla przywracania do lokalnego programu SQL Server lub innego serwera SQL działającego w maszynę wirtualną platformy Azure, bez konieczności dołączania/odłączania bazy danych lub pobierania i dołączanie wirtualnego dysku twardego.
-* **Koszt**: zapłać tylko za to usługa, która jest używana. Może być ekonomicznego jako opcja archiwum poza nim i tworzenia kopii zapasowej. Zobacz [Kalkulator cen platformy Azure](http://go.microsoft.com/fwlink/?LinkId=277060 "Kalkulator cen")i [cennik usługi Azure artykułu](http://go.microsoft.com/fwlink/?LinkId=277059 "artykułu cennik") Aby uzyskać więcej informacji.
-* **Magazyn migawek**: Jeśli pliki bazy danych są przechowywane w obiekcie blob Azure i korzystasz z programu SQL Server 2016, możesz użyć [kopii zapasowej migawki pliku](http://msdn.microsoft.com/library/mt169363.aspx) do wykonywania niemal natychmiastowe tworzenie kopii zapasowych i przywracania bardzo szybki.
+* **Łatwość użycia**: przechowywania kopii zapasowych w obiektach blob platformy Azure może być wygodny sposób, elastyczne i łatwe do dostępu do opcji poza siedzibą firmy. Tworzenie magazynu poza siedzibą firmy, dla kopii zapasowych programu SQL Server może być bardzo proste — wystarczy modyfikowania istniejących skryptów/zadań do użycia **BACKUP TO URL** składni. Zazwyczaj należy magazynowania poza siedzibą firmy daleko z lokalizacji bazy danych produkcyjnych w celu zapobiegania awarii jednej, mogą mieć wpływ na zarówno poza siedzibą firmy i produkcyjne bazy danych w lokalizacji. Wybierając polecenie [w obiektach blob platformy Azure replikacja geograficzna](../../../storage/common/storage-redundancy.md), masz dodatkową warstwę ochrony awarii, które mogą mieć wpływ na cały region.
+* **Archiwum kopii zapasowej**: Usługa Azure Blob Storage oferuje lepszym rozwiązaniem opcji taśmy często używane do archiwizacji kopii zapasowych. Magazynu taśm może wymagać fizycznych transportu mechanizm poza siedzibą firmy i środki w celu ochrony nośnika. Przechowywanie kopii zapasowych w usłudze Azure Blob Storage zapewnia natychmiastowe o wysokiej dostępności i niezawodny archiwizacji opcji.
+* **Zarządzane sprzętu**: się nie dodatkowe zarządzania sprzętem z usługami platformy Azure. Usługi platformy Azure Zarządzanie sprzętem i zapewnia replikację geograficzną nadmiarowość i ochronę przed awariami sprzętu.
+* **Nieograniczony magazyn**: włączenie bezpośrednie tworzenie kopii zapasowych do obiektów blob platformy Azure, masz dostęp do praktycznie nieograniczone miejsce magazynowania. Alternatywnie kopie zapasowe na dysku maszyny wirtualnej platformy Azure ma zależności od rozmiaru maszyny. Ma limitu liczby dysków, które można dołączyć do maszyny wirtualnej platformy Azure do przechowywania kopii zapasowych. Ten limit jest 16 dysków dla bardzo duże wystąpienie i mniej wystąpień mniejsze.
+* **Wykonaj kopię zapasową dostępności**: kopie zapasowe przechowywane w obiektach blob platformy Azure są dostępne z dowolnego miejsca i w dowolnym momencie i łatwo dostępne dla przywracania programu SQL Server w środowisku lokalnym lub inny program SQL Server uruchomiony w maszynie wirtualnej platformy Azure, bez konieczności dołączania/odłączania bazy danych lub pobieranie i dołączanie wirtualnego dysku twardego.
+* **Koszt**: płacisz tylko za usługi, która jest używana. Może być ekonomiczne jako opcja archiwum poza siedzibą firmy i wykonywania kopii zapasowych. Zobacz [kalkulatora cen platformy Azure](https://go.microsoft.com/fwlink/?LinkId=277060 "Kalkulator cen")i [artykuł cennik usługi Azure](https://go.microsoft.com/fwlink/?LinkId=277059 "artykuł cennik") Aby uzyskać więcej informacji.
+* **Migawek magazynu**: Jeśli używasz programu SQL Server 2016 pliki bazy danych są przechowywane w usłudze Azure blob, możesz użyć [kopii zapasowych migawki plików](https://msdn.microsoft.com/library/mt169363.aspx) do wykonywania niemal natychmiastowych kopii zapasowych i niezwykle szybkie przywracanie danych.
 
-Aby uzyskać więcej informacji, zobacz [programu SQL Server z kopii zapasowej i przywracania usługi magazynu obiektów Blob Azure](http://go.microsoft.com/fwlink/?LinkId=271617).
+Aby uzyskać więcej informacji, zobacz [kopii zapasowej programu SQL Server i przywracania w usłudze Azure Blob Storage](https://go.microsoft.com/fwlink/?LinkId=271617).
 
-Następujące dwie sekcje wprowadzenie usługi magazynu obiektów Blob platformy Azure, w tym wymagane składniki programu SQL Server. Należy zrozumieć składników i ich interakcji pomyślnie użyj kopii zapasowej i przywracania usługi magazynu obiektów Blob platformy Azure.
+Następujące dwie sekcje wprowadzenie usługi Azure Blob storage, w tym wymagane składniki programu SQL Server. Jest ważne poznać składniki i ich interakcję, aby pomyślnie użyć kopii zapasowej i przywracanie z usługą Azure Blob storage.
 
-## <a name="azure-blob-storage-service-components"></a>Azure Blob Storage Service Components
-Następujące składniki platformy Azure są używane podczas wykonywania kopii zapasowej do usługi magazynu obiektów Blob platformy Azure.
+## <a name="azure-blob-storage-service-components"></a>Składniki usługi magazynu obiektów Blob platformy Azure
+Następujące składniki platformy Azure są używane podczas wykonywania kopii zapasowej do usługi Azure Blob storage.
 
 | Składnik | Opis |
 | --- | --- |
-| **Konto magazynu** |Konto magazynu jest punkt startowy dla wszystkich usług magazynu. Aby uzyskać dostęp do usługi Magazyn obiektów Blob Azure, należy najpierw utworzyć konto usługi Azure Storage. Aby uzyskać więcej informacji na temat usługi Magazyn obiektów Blob platformy Azure, zobacz [jak używać usługi magazynu obiektów Blob Azure](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/) |
-| Kontener |Kontener zawiera grupowanie zestawu obiektów blob i przechowywać nieograniczoną liczbę obiektów blob. Można zapisać programu SQL Server kopii zapasowych do usługi obiektów Blob platformy Azure, możesz musi mieć przynajmniej nadrzędny kontener utworzone. |
-| **Blob** |Typ i rozmiar pliku. Obiekty BLOB mają następujący format adresu URL: **https://[storage account].blob.core.windows.net/[container]/[blob]**. Aby uzyskać więcej informacji na temat stronicowe obiekty BLOB, zobacz [opis blokowych i stronicowych obiektów blob](http://msdn.microsoft.com/library/azure/ee691964.aspx) |
+| **Konto magazynu** |Konto magazynu jest punktem wyjścia dla wszystkich usług magazynu. Aby uzyskać dostęp do usługi Azure Blob Storage, należy najpierw utworzyć konto usługi Azure Storage. Aby uzyskać więcej informacji na temat usługi Azure Blob storage, zobacz [jak używać usługi Azure Blob Storage](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/) |
+| **Kontener** |Kontener zawiera grupowanie zestawu obiektów blob i może przechowywać nieograniczoną liczbę obiektów blob. Do zapisu w programu SQL Server kopii zapasowej do usługi obiektów Blob platformy Azure, możesz musi mieć co najmniej kontener głównego tworzone. |
+| **Obiekt blob** |Plik dowolnego typu i rozmiaru. Obiekty BLOB są adresy, przy użyciu następującego formatu adresu URL: **https://[storage account].blob.core.windows.net/[container]/[blob]**. Aby uzyskać więcej informacji na temat stronicowych obiektów blob, zobacz [omówienie blokowych i stronicowych obiektów blob](https://msdn.microsoft.com/library/azure/ee691964.aspx) |
 
 ## <a name="sql-server-components"></a>Składniki programu SQL Server
-Następujące składniki programu SQL Server są używane podczas wykonywania kopii zapasowej do usługi magazynu obiektów Blob platformy Azure.
+Następujące składniki programu SQL Server są używane podczas wykonywania kopii zapasowej do usługi Azure Blob storage.
 
 | Składnik | Opis |
 | --- | --- |
-| **Adres URL** |Adres URL określa zasobów identyfikator URI (Uniform) do unikatowego pliku kopii zapasowej. Adres URL służy do zapewnienia lokalizację i nazwę pliku kopii zapasowej programu SQL Server. Adres URL musi wskazywać rzeczywistych obiektów blob nie tylko kontenerem. Jeśli obiekt blob nie istnieje, jest tworzony. Jeśli istniejący obiekt blob jest określony, kopii zapasowej nie powiedzie się, chyba że > określono opcję klauzuli WITH FORMAT. Poniżej przedstawiono przykład adresu URL, należy określić w poleceniu kopii zapasowej: **http[s]://[storageaccount].blob.core.windows.net/[container]/[FILENAME.bak]**. HTTPS jest zalecane, ale nie jest wymagane. |
-| **poświadczenia** |Informacje wymagane do połączenia i uwierzytelnienia usługi magazynu obiektów Blob platformy Azure są przechowywane jako poświadczenie.  Aby program SQL Server do zapisu obiektów Blob platformy Azure lub przywracania kopii zapasowych z niego można utworzyć poświadczeń programu SQL Server. Aby uzyskać więcej informacji, zobacz [poświadczenia serwera SQL](https://msdn.microsoft.com/library/ms189522.aspx). |
+| **Adres URL** |Adres URL określa jednolity identyfikator (URI) do unikatowego pliku kopii zapasowej. Adres URL jest używany do zapewnienia lokalizację i nazwę pliku kopii zapasowej programu SQL Server. Adres URL musi wskazywać na rzeczywistych obiektów blob nie tylko kontenera. Jeśli obiekt blob nie istnieje, zostanie utworzony. Jeśli istniejący obiekt blob jest określona, kopii zapasowej zakończy się niepowodzeniem, chyba że > określono opcji klauzuli WITH FORMAT. Oto przykład adres URL należy określić w poleceniu BACKUP: **http[s]://[storageaccount].blob.core.windows.net/[container]/[FILENAME.bak]**. HTTPS jest zalecane, ale nie jest wymagane. |
+| **Poświadczenie** |Informacje, który jest wymagany do nawiązywania połączenia i uwierzytelniania usługi Azure Blob storage są przechowywane jako poświadczenie.  Aby dla programu SQL Server do zapisywania obiektów Blob platformy Azure lub przywracania kopii zapasowych z niego można utworzyć poświadczeń programu SQL Server. Aby uzyskać więcej informacji, zobacz [poświadczeń serwera SQL](https://msdn.microsoft.com/library/ms189522.aspx). |
 
 > [!NOTE]
-> Jeśli zdecydujesz się na kopiowanie i przekazać plik kopii zapasowej do usługi magazynu obiektów Blob platformy Azure, musi używać typu obiektu blob strony możliwość przechowywania, jeśli planujesz używanie tego pliku dla operacji przywracania. PRZYWRÓCENIE z typem danych blob bloku zakończy się niepowodzeniem z powodu błędu.
+> Jeśli wybierzesz, kopiowanie i przekazywanie pliku kopii zapasowej do usługi Azure Blob storage, możesz korzystać typu obiektu blob jako opcję usługi storage Jeśli planowane jest używanie tego pliku dla operacji przywracania. Przywracanie z typem danych blob bloku zakończy się niepowodzeniem z powodu błędu.
 > 
 > 
 
 ## <a name="next-steps"></a>Kolejne kroki
-1. Utwórz konto platformy Azure, jeśli nie został wcześniej. Jeśli dokonujesz oceny usługi Azure, należy wziąć pod uwagę [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/).
-2. Następnie wykonaj jedną z następujących samouczków, które opisano tworzenie konta magazynu i operacji przywracania.
+1. Utwórz konto platformy Azure, jeśli nie masz jeszcze jeden. Jeśli dokonujesz oceny usługi Azure, należy wziąć pod uwagę [bezpłatna wersja próbna](https://azure.microsoft.com/free/).
+2. Następnie wykonaj jedną z następujących samouczków, które przeprowadzą Cię przez tworzenie konta magazynu i operacji przywracania.
    
-   * **Program SQL Server 2014**: [samouczek: SQL Server 2014 w kopii zapasowej i przywracania na platformie Microsoft Azure Blob usługi magazynu](https://msdn.microsoft.com/library/jj720558\(v=sql.120\).aspx).
-   * **SQL Server 2016**: [samouczek: Korzystanie z usługi magazynu obiektów Blob Microsoft Azure z bazami danych programu SQL Server 2016](https://msdn.microsoft.com/library/dn466438.aspx)
-3. Przejrzyj, począwszy od dodatkowej dokumentacji [programu SQL Server z kopii zapasowej i przywracania usługi magazynu obiektów Blob platformy Microsoft Azure](https://msdn.microsoft.com/library/jj919148.aspx).
+   * **Program SQL Server 2014**: [samouczek: kopia zapasowa programu SQL Server 2014 i przywracania na platformie Microsoft Azure Blob usługi Storage](https://msdn.microsoft.com/library/jj720558\(v=sql.120\).aspx).
+   * **SQL Server 2016**: [samouczek: przy użyciu usługi Microsoft Azure Blob storage z bazami danych programu SQL Server 2016](https://msdn.microsoft.com/library/dn466438.aspx)
+3. Przejrzyj dokumentację, zaczynając od [kopii zapasowej programu SQL Server i przywracania w usłudze Microsoft Azure Blob Storage](https://msdn.microsoft.com/library/jj919148.aspx).
 
-Jeśli masz problemy, przejrzyj temat [kopii zapasowej serwera SQL do adresu URL najlepsze rozwiązania i rozwiązywanie problemów](https://msdn.microsoft.com/library/jj919149.aspx).
+Jeśli masz jakiekolwiek problemy, przejrzyj temat [kopię zapasową serwera SQL do adresu URL najlepszych rozwiązań i rozwiązywanie problemów](https://msdn.microsoft.com/library/jj919149.aspx).
 
-Dla innego serwera SQL z kopii zapasowej i przywracanie opcji, zobacz [kopii zapasowej i przywracania dla programu SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-backup-recovery.md).
+Dla innych programu SQL Server należy utworzyć kopię zapasową i opcje przywracania, zobacz [kopia zapasowa i przywracanie programu SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-backup-recovery.md).
 

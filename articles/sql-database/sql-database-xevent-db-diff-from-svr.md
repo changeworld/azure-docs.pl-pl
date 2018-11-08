@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 8852fc75658298a2c6887d8fef154d5a0b59affd
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 482faaea7089e095da13a2bae5f5937e20d50616
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159912"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246756"
 ---
 # <a name="extended-events-in-sql-database"></a>Rozszerzone zdarzenia w bazie danych SQL
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -32,15 +32,15 @@ W tym temacie wyjaśniono, jak implementacja rozszerzone zdarzenia w usłudze Az
 
 Dodatkowe informacje na temat zdarzenia rozszerzone dla usługi Azure SQL Database i programu Microsoft SQL Server jest dostępne pod adresem:
 
-- [Szybki Start: Rozszerzonych zdarzeń w programie SQL Server](http://msdn.microsoft.com/library/mt733217.aspx)
-- [Zdarzenia rozszerzone](http://msdn.microsoft.com/library/bb630282.aspx)
+- [Szybki Start: Rozszerzonych zdarzeń w programie SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
+- [Zdarzenia rozszerzone](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 W tym temacie założono, że masz już pewną wiedzę na temat:
 
 - [Usługa Azure SQL Database](https://azure.microsoft.com/services/sql-database/).
-- [Rozszerzone zdarzenia](http://msdn.microsoft.com/library/bb630282.aspx) w programie Microsoft SQL Server.
+- [Rozszerzone zdarzenia](https://msdn.microsoft.com/library/bb630282.aspx) w programie Microsoft SQL Server.
 
 - Duża część naszej dokumentacji dotyczące zdarzeń rozszerzonych ma zastosowanie do programu SQL Server i bazy danych SQL.
 
@@ -69,10 +69,10 @@ Tematy pokrewne zawierają dwa przykłady kodu:
 ## <a name="transact-sql-differences"></a>Różnice w języku Transact-SQL
 
 
-- Podczas wykonywania [tworzenie zdarzeń sesji](http://msdn.microsoft.com/library/bb677289.aspx) polecenia w programie SQL Server, możesz użyć **ON SERVER** klauzuli. Jednak w bazie danych SQL, możesz użyć **bazy danych na** klauzuli zamiast tego.
+- Podczas wykonywania [tworzenie zdarzeń sesji](https://msdn.microsoft.com/library/bb677289.aspx) polecenia w programie SQL Server, możesz użyć **ON SERVER** klauzuli. Jednak w bazie danych SQL, możesz użyć **bazy danych na** klauzuli zamiast tego.
 
 
-- **Bazy danych na** klauzuli ma również zastosowanie do [ALTER zdarzeń sesji](http://msdn.microsoft.com/library/bb630368.aspx) i [PORZUCIĆ zdarzeń sesji](http://msdn.microsoft.com/library/bb630257.aspx) polecenia języka Transact-SQL.
+- **Bazy danych na** klauzuli ma również zastosowanie do [ALTER zdarzeń sesji](https://msdn.microsoft.com/library/bb630368.aspx) i [PORZUCIĆ zdarzeń sesji](https://msdn.microsoft.com/library/bb630257.aspx) polecenia języka Transact-SQL.
 
 
 - Najlepszym rozwiązaniem jest uwzględnienie opcja sesji zdarzeń z **STARTUP_STATE = ON** w swojej **tworzenie zdarzeń sesji** lub **ALTER zdarzeń sesji** instrukcji.
@@ -80,7 +80,7 @@ Tematy pokrewne zawierają dwa przykłady kodu:
 
 ## <a name="new-catalog-views"></a>Nowych widoków katalogów
 
-Z funkcji zdarzeń rozszerzonych jest obsługiwany przez kilka [widoków wykazu](http://msdn.microsoft.com/library/ms174365.aspx). Widoki wykazu informujące o *metadanych lub definicji* sesji zdarzeń utworzonych przez użytkownika w bieżącej bazie danych. Widoki nie zwracają informacje na temat wystąpień zdarzeń aktywnych sesji.
+Z funkcji zdarzeń rozszerzonych jest obsługiwany przez kilka [widoków wykazu](https://msdn.microsoft.com/library/ms174365.aspx). Widoki wykazu informujące o *metadanych lub definicji* sesji zdarzeń utworzonych przez użytkownika w bieżącej bazie danych. Widoki nie zwracają informacje na temat wystąpień zdarzeń aktywnych sesji.
 
 | Nazwa<br/>Widok katalogu | Opis |
 |:--- |:--- |
@@ -92,9 +92,9 @@ Z funkcji zdarzeń rozszerzonych jest obsługiwany przez kilka [widoków wykazu]
 
 W programie Microsoft SQL Server, podobne widoki wykazu mają nazwy, które zawierają *.server\_*  zamiast *.database\_*. Wzorzec nazwy przypomina **sys.server_event_%**.
 
-## <a name="new-dynamic-management-views-dmvshttpmsdnmicrosoftcomlibraryms188754aspx"></a>Nowe dynamiczne widoki zarządzania [(DMV)](http://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Nowe dynamiczne widoki zarządzania [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
-Usługa Azure SQL Database ma [dynamicznych widoków zarządzania (DMV)](http://msdn.microsoft.com/library/bb677293.aspx) obsługujące zdarzeń rozszerzonych. Dynamiczne widoki zarządzania informujące o *active* sesji zdarzeń.
+Usługa Azure SQL Database ma [dynamicznych widoków zarządzania (DMV)](https://msdn.microsoft.com/library/bb677293.aspx) obsługujące zdarzeń rozszerzonych. Dynamiczne widoki zarządzania informujące o *active* sesji zdarzeń.
 
 | Nazwa DMV | Opis |
 |:--- |:--- |
@@ -149,11 +149,11 @@ SELECT
 
 Poniżej przedstawiono obiekty docelowe, których można przechwycić wyniki z swoje sesje zdarzeń bazy danych SQL:
 
-- [Celu buforu cyklicznego](http://msdn.microsoft.com/library/ff878182.aspx) -krótko przechowywane są dane zdarzeń w pamięci.
-- [Element docelowy zdarzenia licznika](http://msdn.microsoft.com/library/ff878025.aspx) -zlicza wszystkie zdarzenia występujące w trakcie sesji zdarzeń rozszerzonych.
-- [Element docelowy pliku zdarzenia](http://msdn.microsoft.com/library/ff878115.aspx) — zapisuje pełny buforów w kontenerze usługi Azure Storage.
+- [Celu buforu cyklicznego](https://msdn.microsoft.com/library/ff878182.aspx) -krótko przechowywane są dane zdarzeń w pamięci.
+- [Element docelowy zdarzenia licznika](https://msdn.microsoft.com/library/ff878025.aspx) -zlicza wszystkie zdarzenia występujące w trakcie sesji zdarzeń rozszerzonych.
+- [Element docelowy pliku zdarzenia](https://msdn.microsoft.com/library/ff878115.aspx) — zapisuje pełny buforów w kontenerze usługi Azure Storage.
 
-[Śledzenie zdarzeń dla Windows (ETW)](http://msdn.microsoft.com/library/ms751538.aspx) interfejsu API nie jest dostępna dla rozszerzonych zdarzeń w bazie danych SQL.
+[Śledzenie zdarzeń dla Windows (ETW)](https://msdn.microsoft.com/library/ms751538.aspx) interfejsu API nie jest dostępna dla rozszerzonych zdarzeń w bazie danych SQL.
 
 ## <a name="restrictions"></a>Ograniczenia
 
@@ -195,8 +195,8 @@ Jeśli zostanie wyświetlony komunikat o błędzie stwierdzający, że zostało 
 - [Polecenia cmdlet usługi Azure Storage](https://docs.microsoft.com/powershell/module/Azure.Storage)
 - [Przy użyciu programu Azure PowerShell z usługą Azure Storage](../storage/common/storage-powershell-guide-full.md) — zawiera szczegółowe informacje na temat programu PowerShell i usługi Azure Storage.
 - [Jak używać magazynu obiektów Blob w języku .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
-- [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)
-- [Tworzenie sesji zdarzeń (Transact-SQL)](http://msdn.microsoft.com/library/bb677289.aspx)
+- [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
+- [Tworzenie sesji zdarzeń (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
 - [Wpisy na blogu Jonathana Kehayias o rozszerzonych zdarzeniach w programie Microsoft SQL Server](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 
@@ -209,6 +209,6 @@ Inne tematy przykładowy kod dla rozszerzonych zdarzeń są dostępne poniższe 
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
 -->

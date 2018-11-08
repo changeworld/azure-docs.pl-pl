@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 44b4da7c293da0643fb88cc2de21433c6ea72c5c
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 8035a704a76d8f6287addff9c5503eb93f8e04fc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886408"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227845"
 ---
 # <a name="back-up-your-app-in-azure"></a>Tworzenie kopii zapasowej aplikacji na platformie Azure
 Funkcja tworzenia kopii zapasowych i przywracania w [usługi Azure App Service](app-service-web-overview.md) umożliwia łatwe tworzenie kopii zapasowych aplikacji ręcznie lub zgodnie z harmonogramem. Aplikację można przywrócić do migawki poprzedniego stanu przez zastąpienie istniejącej aplikacji lub przywrócenie do innej aplikacji. 
@@ -155,7 +155,7 @@ Uruchamianie tworzenia kopii zapasowych tak samo będzie robisz to zazwyczaj, [r
 ## <a name="how-backups-are-stored"></a>Jak są przechowywane kopie zapasowe
 Po wybraniu jednego lub więcej kopii zapasowych dla aplikacji, kopie zapasowe są widoczne na **kontenery** strony swojego konta magazynu i aplikacji. W ramach konta magazynu każdej kopii zapasowej składa się z`.zip` pliku, który zawiera dane kopii zapasowej i `.xml` plik zawierający manifest z `.zip` zawartość pliku. Można rozpakować i przeglądania tych plików, jeśli chcesz uzyskać dostęp do kopii zapasowych bez rzeczywistego wykonania przywracania aplikacji.
 
-Kopia zapasowa bazy danych dla aplikacji są przechowywane w katalogu głównym pliku zip. Usługi SQL database to jest plik BACPAC (bez rozszerzenia) i można je zaimportować. Aby utworzyć oparte na eksportowanie pliku BACPAC bazy danych SQL, zobacz [Importowanie pliku BACPAC do utworzenia nowej bazy danych użytkownika](http://technet.microsoft.com/library/hh710052.aspx).
+Kopia zapasowa bazy danych dla aplikacji są przechowywane w katalogu głównym pliku zip. Usługi SQL database to jest plik BACPAC (bez rozszerzenia) i można je zaimportować. Aby utworzyć oparte na eksportowanie pliku BACPAC bazy danych SQL, zobacz [Importowanie pliku BACPAC do utworzenia nowej bazy danych użytkownika](https://technet.microsoft.com/library/hh710052.aspx).
 
 > [!WARNING]
 > Zmieniając dowolne pliki znajdujące się w Twojej **websitebackups** kontener może spowodować, że kopia zapasowa stają się nieprawidłowe i w związku z tym nie-możliwością przywrócenia.

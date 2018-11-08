@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 4bf9277598c3e56c0429dddcb2204cb1338a33be
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0e8dbf47c40339c90a0e28c3ef497a8da963e481
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213257"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231026"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii serwerów fizycznych
 
@@ -42,7 +42,7 @@ W tabeli przedstawiono wymagania wstępne dotyczące wdrażania w środowisku lo
 
 ## <a name="download-the-latest-installation-file"></a>Pobierz najnowszy plik instalacyjny
 
-Najnowszą wersję pliku instalacyjnego serwera konfiguracji jest dostępny w portalu usługi Site Recovery. Ponadto można go pobrać bezpośrednio z [Microsoft Download Center](http://aka.ms/unifiedsetup).
+Najnowszą wersję pliku instalacyjnego serwera konfiguracji jest dostępny w portalu usługi Site Recovery. Ponadto można go pobrać bezpośrednio z [Microsoft Download Center](https://aka.ms/unifiedsetup).
 
 1. Zaloguj się do witryny Azure portal i przejdź do magazynu usługi Recovery Services.
 2. Przejdź do **infrastruktura usługi Site Recovery** > **serwery konfiguracji** (w ramach programu VMware i maszyn fizycznych).

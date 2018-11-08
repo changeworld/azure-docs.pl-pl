@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
-ms.openlocfilehash: 4a6327fcfe6f6e6f3b8b5c6ecbd14b832b4134c5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f5b8d3aa69d6a141394395f012e5cc57873cafaf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421216"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235942"
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Wprowadzenie do uruchamiania obciążeń programu Excel i SOA w klastrze pakietu HPC Pack na platformie Azure
 W tym artykule przedstawiono sposób wdrażania klastra Microsoft HPC Pack 2012 R2 na maszynach wirtualnych platformy Azure przy użyciu szablonu szybkiego startu platformy Azure lub opcjonalnie skrypt wdrażania środowiska Azure PowerShell. Klaster używa obrazów maszyny Wirtualnej portalu Azure Marketplace, zaprojektowane do uruchamiania programu Microsoft Excel lub obciążeń dotycząca architektury zorientowanej na usługi (SOA) za pomocą pakietu HPC Pack. Klastra służy do uruchamiania HPC dla programu Excel i SOA usługi z poziomu komputera klienckiego w środowisku lokalnym. Usługi HPC dla programu Excel obejmują odciążenia skoroszytu programu Excel i funkcji zdefiniowanych przez użytkownika programu Excel lub UDF.
@@ -225,7 +225,7 @@ Wykonaj następujące kroki w celu odciążenia skoroszytu programu Excel, aby b
         </startup>
     </configuration>
     ```
-1. Skonfiguruj klienta, aby przesyłać zadania do klastra pakietu HPC Pack. Jedną z opcji jest pobranie pełnego [instalacji pakietu HPC Pack 2012 R2 Update 3](http://www.microsoft.com/download/details.aspx?id=49922) i instalowanie klienta pakietu HPC Pack. Alternatywnie, Pobierz i zainstaluj [narzędzi klienta HPC Pack 2012 R2 Update 3](https://www.microsoft.com/download/details.aspx?id=49923) i odpowiednie Visual C++ 2010 redistributable dla komputera ([x64](http://www.microsoft.com/download/details.aspx?id=14632), [x86](https://www.microsoft.com/download/details.aspx?id=5555) ).
+1. Skonfiguruj klienta, aby przesyłać zadania do klastra pakietu HPC Pack. Jedną z opcji jest pobranie pełnego [instalacji pakietu HPC Pack 2012 R2 Update 3](https://www.microsoft.com/download/details.aspx?id=49922) i instalowanie klienta pakietu HPC Pack. Alternatywnie, Pobierz i zainstaluj [narzędzi klienta HPC Pack 2012 R2 Update 3](https://www.microsoft.com/download/details.aspx?id=49923) i odpowiednie Visual C++ 2010 redistributable dla komputera ([x64](https://www.microsoft.com/download/details.aspx?id=14632), [x86](https://www.microsoft.com/download/details.aspx?id=5555) ).
 1. W tym przykładzie używamy przykładowy skoroszyt programu Excel o nazwie ConvertiblePricing_Complete.xlsb. Możesz ją pobrać [tutaj](https://www.microsoft.com/en-us/download/details.aspx?id=2939).
 1. Skoroszyt programu Excel należy skopiować do folderu roboczego, takich jak D:\Excel\Run.
 1. Otwórz skoroszyt programu Excel. Na **programowanie** wstążki, kliknij przycisk **dodatki COM** i upewnij się, że dodatek HPC Pack programu Excel w modelu COM został załadowany pomyślnie.
@@ -262,7 +262,7 @@ Aby uruchomić plikami UDF programu Excel, postępuj zgodnie z powyższych krok�
 > 
 > 
 
-Po pomyślnym wdrożeniu klastra Kontynuuj poniższe kroki, aby uruchomić próbkę wbudowanych funkcji zdefiniowanej przez użytkownika w programie Excel. Dostosowane plikami UDF programu Excel, zobacz te [zasobów](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) kompilacji XLL i wdrożyć je w klastrze IaaS.
+Po pomyślnym wdrożeniu klastra Kontynuuj poniższe kroki, aby uruchomić próbkę wbudowanych funkcji zdefiniowanej przez użytkownika w programie Excel. Dostosowane plikami UDF programu Excel, zobacz te [zasobów](https://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) kompilacji XLL i wdrożyć je w klastrze IaaS.
 
 1. Otwórz nowy skoroszyt programu Excel. Na **programowanie** wstążki, kliknij przycisk **Add-Ins**. Następnie w oknie dialogowym kliknij **Przeglądaj**, przejdź do folderu %CCP_HOME%Bin\XLL32 i wybierz przykład ClusterUDF32.xll. Jeśli ClusterUDF32 nie istnieje na komputerze klienckim, skopiuj go z folderu %CCP_HOME%Bin\XLL32 węzła głównego.
    
@@ -280,7 +280,7 @@ Po pomyślnym wdrożeniu klastra Kontynuuj poniższe kroki, aby uruchomić prób
 Aby uruchomić aplikacje SOA ogólne w klastrze IaaS pakietu HPC Pack, najpierw użyj jednej z metod w kroku 1 do wdrożenia klastra. Określ ogólnego obrazu węzła obliczeń w tym przypadku, ponieważ nie trzeba programu Excel w węzłach obliczeniowych. Następnie wykonaj poniższe kroki.
 
 1. Po pobraniu certyfikatu klastra, należy zaimportować go na komputerze klienckim, w obszarze Cert: \CurrentUser\Root.
-1. Zainstaluj [HPC Pack 2012 R2 Update 3 SDK](http://www.microsoft.com/download/details.aspx?id=49921) i [narzędzi klienta HPC Pack 2012 R2 Update 3](https://www.microsoft.com/download/details.aspx?id=49923). Te narzędzia umożliwiają tworzenie i uruchamianie aplikacji klienckich SOA.
+1. Zainstaluj [HPC Pack 2012 R2 Update 3 SDK](https://www.microsoft.com/download/details.aspx?id=49921) i [narzędzi klienta HPC Pack 2012 R2 Update 3](https://www.microsoft.com/download/details.aspx?id=49923). Te narzędzia umożliwiają tworzenie i uruchamianie aplikacji klienckich SOA.
 1. Pobierz HelloWorldR2 [przykładowego kodu](https://www.microsoft.com/download/details.aspx?id=41633). Otwórz HelloWorldR2.sln w programie Visual Studio 2010 lub 2012. (W tym przykładzie nie jest obecnie zgodna z nowszej wersji programu Visual Studio).
 1. Najpierw Skompiluj projekt EchoService. Następnie można wdrożyć usługę w klastrze IaaS w taki sam sposób, które wdrażasz na lokalny klaster. Aby uzyskać szczegółowe instrukcje Zobacz Readme.doc w HelloWordR2. Modyfikowanie i tworzenie HellWorldR2 i inne projekty, zgodnie z opisem w poniższej sekcji, aby wygenerować aplikacje klienckie SOA, które są uruchamiane w klastrze usługi IaaS platformy Azure.
 
@@ -343,7 +343,7 @@ Aby użyć powiązania NetTcp, konfiguracji jest podobna do łączenia się z kl
 Aplikacja kliencka SOA nie wymaga żadnych zmian, z wyjątkiem sytuacji, zmiana nazwy główne do pełnej nazwy klastra w modelu IaaS.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Zobacz [te zasoby](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) Aby uzyskać więcej informacji o uruchamianiu obciążeń programu Excel za pomocą pakietu HPC Pack.
+* Zobacz [te zasoby](https://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) Aby uzyskać więcej informacji o uruchamianiu obciążeń programu Excel za pomocą pakietu HPC Pack.
 * Zobacz [Zarządzanie usługami SOA w Microsoft HPC Pack](https://technet.microsoft.com/library/ff919412.aspx) więcej informacji na temat wdrażania usług i zarządzanie nimi SOA za pomocą pakietu HPC Pack.
 
 <!--Image references-->

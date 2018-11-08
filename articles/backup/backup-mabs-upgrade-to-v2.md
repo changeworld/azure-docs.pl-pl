@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: adigan
-ms.openlocfilehash: a458a46f3775a593f369d5acb967fc90d61efde8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4f1e0c14d3a835b9f6d739511186bdcc19917a7a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628345"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230997"
 ---
 # <a name="install-azure-backup-server-v2"></a>Instalowanie usługi Azure Backup Server w wersji 2
 
@@ -103,7 +103,7 @@ Aby dodać wolumin w konsoli administratora:
 
   Jeśli chcesz dodać dysk, dysk musi należeć do grupy ochrony, która ma magazynu w starszej wersji. Te dyski, można użyć tylko dla tych grup ochrony. Jeśli serwer usługi Backup nie ma źródeł, które mają starszą ochroną, dysk nie ma na liście.
 
-  Aby uzyskać więcej informacji na temat dodawania dysków, zobacz [dodawanie dysków w celu zwiększenia magazynu w starszej wersji](http://docs.microsoft.com/system-center/dpm/upgrade-to-dpm-2016#adding-disks-to-increase-legacy-storage). Nie można nadać przyjaznej nazwy dysku.
+  Aby uzyskać więcej informacji na temat dodawania dysków, zobacz [dodawanie dysków w celu zwiększenia magazynu w starszej wersji](https://docs.microsoft.com/system-center/dpm/upgrade-to-dpm-2016#adding-disks-to-increase-legacy-storage). Nie można nadać przyjaznej nazwy dysku.
 
 
 ### <a name="assign-workloads-to-volumes"></a>Przypisywanie obciążeń do woluminów
@@ -160,7 +160,7 @@ Aby utworzyć grupę ochrony:
 
   ![Przejrzyj przydział magazynu dyskowego strony](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-6.png)
 
-  Woluminy magazynu na podstawie alokacji woluminu obciążenia (ustawiona przy użyciu programu PowerShell) i dostępnego magazynu. Woluminy magazynu można zmienić, wybierając inne woluminy z menu rozwijanego. Jeśli zmienisz wartość **Magazyn docelowy**, wartość **dostępny Magazyn dyskowy** zmieniają się dynamicznie, aby odzwierciedlić wartości w obszarze **wolnego miejsca** i ** Underprovisioned miejsca**.
+  Woluminy magazynu na podstawie alokacji woluminu obciążenia (ustawiona przy użyciu programu PowerShell) i dostępnego magazynu. Woluminy magazynu można zmienić, wybierając inne woluminy z menu rozwijanego. Jeśli zmienisz wartość **Magazyn docelowy**, wartość **dostępny Magazyn dyskowy** zmieniają się dynamicznie, aby odzwierciedlić wartości w obszarze **wolnego miejsca** i  **Underprovisioned miejsca**.
 
   Jeśli źródła danych zwiększą się zgodnie z planem wartość **miejsce** kolumny w **dostępny Magazyn dyskowy** odzwierciedla ilość dodatkowego magazynu, która jest potrzebna. Użyj tej wartości, aby ułatwić zaplanowanie potrzeb dotyczących magazynu dla bezproblemowego tworzenia kopii zapasowych. Jeśli ta wartość wynosi zero, istnieją nie potencjalnych problemów z magazynem w najbliższej przyszłości. Jeśli wartość jest różna od zera, nie ma wystarczającej ilości miejsca przydzielone (na podstawie zasad ochrony i rozmiaru danych chronionych elementów członkowskich).
 
@@ -175,13 +175,13 @@ Aktualizowanie grup ochrony w celu użycia Modern Backup Storage jest opcjonalne
 
 1. W konsoli administratora System Center 2016 DPM wybierz **ochrony** funkcji. W **elementu członkowskiego grupy ochrony** listy, kliknij prawym przyciskiem myszy element członkowski, a następnie wybierz **Zatrzymaj ochronę członka**.
 
-  ![Zatrzymaj ochronę członka](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+  ![Zatrzymaj ochronę członka](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
 2. W **Usuń z grupy** okna dialogowego przejrzyj używane miejsce na dysku i dostępne wolne miejsce w puli magazynów. Wartość domyślna to pozostawienie punktów odzyskiwania na dysku i umożliwić im wygaśnie za skojarzonych zasad przechowywania. Kliknij przycisk **OK**.
 
   Aby natychmiast przywrócić zajęte miejsce na dysku do wolnej puli magazynów, należy zaznaczyć **Usuń replikę z dysku** pole wyboru, aby usunąć dane kopii zapasowej (i punktów odzyskiwania) skojarzonych z tym elementem członkowskim.
 
-  ![Usuń z grupy, okno dialogowe](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+  ![Usuń z grupy, okno dialogowe](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. Utwórz grupę ochrony, która używa funkcji Modern Backup Storage. Dołącz źródła danych niechronione.
 
@@ -194,7 +194,7 @@ Aby dodać magazyn dyskowy:
 
 1. W konsoli administratora System Center 2016 DPM wybierz **zarządzania** > **Magazyn dyskowy** > **Dodaj**.
 
-  ![Dodaj okno dialogowe Magazyn dyskowy](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+  ![Dodaj okno dialogowe Magazyn dyskowy](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
 2. W **Dodawanie magazynu dyskowego** okno dialogowe, wybierz opcję **dodawać dyski**.
 

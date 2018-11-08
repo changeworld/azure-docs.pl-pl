@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: lbosq
-ms.openlocfilehash: bf91ec77f8d7248c6fa2047636f295c187f626c8
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 7e9de68866b5e5849d0e48ad5073fc7b89fbb1ca
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078226"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239308"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Przy użyciu wykresu podzielonym na partycje w usłudze Azure Cosmos DB
 
-Jedną z kluczowych funkcji interfejsu API języka Gremlin w usłudze Azure Cosmos DB jest zdolność do obsługi dużych wykresów za pomocą poziomy skalowalności. Ten proces odbywa się za pośrednictwem [partycjonowanie możliwości w usłudze Azure Cosmos DB](partition-data.md#how-does-partitioning-work), którego należy używać kontenerów, które można skalować niezależnie pod względem magazynu i przepływności. Usługa Azure Cosmos DB obsługuje następujące typy kontenerów wszystkich interfejsów API:
+Jedną z kluczowych funkcji interfejsu API języka Gremlin w usłudze Azure Cosmos DB jest zdolność do obsługi dużych wykresów za pomocą poziomy skalowalności. Ten proces odbywa się za pośrednictwem [partycjonowanie możliwości w usłudze Azure Cosmos DB](partition-data.md), którego należy używać kontenerów, które można skalować niezależnie pod względem magazynu i przepływności. Usługa Azure Cosmos DB obsługuje następujące typy kontenerów wszystkich interfejsów API:
 
 - **Kontener stały**: te kontenery można przechowywać wykres bazy danych do 10 GB w rozmiarze maksymalnie 10 000 jednostek żądań na sekundę, przydzielone do niego. Aby utworzyć kontener stały nie jest konieczne określenie właściwości klucza partycji danych.
 

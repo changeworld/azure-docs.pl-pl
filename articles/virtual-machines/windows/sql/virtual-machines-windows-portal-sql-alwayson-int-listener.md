@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: e87b58ecd72291365f9eba70c807e3018c02ae07
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 5e665cd0bcfdea436c2f493187c5bbea756f8f09
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382743"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248314"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Konfigurowanie modułu równoważenia obciążenia dla zawsze włączonej grupy dostępności na platformie Azure
 W tym artykule opisano sposób tworzenia modułu równoważenia obciążenia dla grupy dostępności programu SQL Server Always On w maszynach wirtualnych platformy Azure, które działają z usługą Azure Resource Manager. Grupy dostępności wymaga modułu równoważenia obciążenia w przypadku wystąpienia programu SQL Server na maszynach wirtualnych platformy Azure. Moduł równoważenia obciążenia przechowuje adres IP dla odbiornika grupy dostępności. Jeśli grupy dostępności obejmuje wiele regionów, każdy region wymaga modułu równoważenia obciążenia.
@@ -114,13 +114,13 @@ Sonda definiuje, jak platforma Azure sprawdzi, której wystąpienia programu SQL
    | **Nazwa** |Nazwa tekst reprezentujący sondy. Na przykład **SQLAlwaysOnEndPointProbe**. |
    | **Protokół** |**TCP** |
    | **Port** |Można użyć dowolnego dostępnego portu. Na przykład *59999*. |
-   | **Interval** |*5* |
+   | **Interwał** |*5* |
    | **Próg złej kondycji** |*2* |
 
 4.  Kliknij przycisk **OK**. 
 
 > [!NOTE]
-> Upewnij się, że port, który określisz został otwarty na zaporze oba wystąpienia programu SQL Server. Oba wystąpienia wymagają regułę ruchu przychodzącego dla portu TCP, którego używasz. Aby uzyskać więcej informacji, zobacz [apletu Dodaj lub Edytuj regułę zapory](http://technet.microsoft.com/library/cc753558.aspx). 
+> Upewnij się, że port, który określisz został otwarty na zaporze oba wystąpienia programu SQL Server. Oba wystąpienia wymagają regułę ruchu przychodzącego dla portu TCP, którego używasz. Aby uzyskać więcej informacji, zobacz [apletu Dodaj lub Edytuj regułę zapory](https://technet.microsoft.com/library/cc753558.aspx). 
 > 
 > 
 
@@ -144,7 +144,7 @@ Reguły równoważenia obciążenia skonfiguruj, jak moduł równoważenia obci�
    | **Sondy** |Użyj nazwy sondy, który został utworzony dla tego modułu równoważenia obciążenia. |
    | **Trwałość sesji** |**Brak** |
    | **Limit czasu bezczynności (minuty)** |*4* |
-   | **Pływający adres IP (bezpośredni zwrot serwera)** |**Włączone** |
+   | **Pływający adres IP (bezpośredni zwrot serwera)** |**Enabled (Włączone)** |
 
    > [!NOTE]
    > Masz może być przewinięcie w dół bloku Aby wyświetlić wszystkie ustawienia.
@@ -226,7 +226,7 @@ Aby dodać adres IP do modułu równoważenia obciążenia za pomocą witryny Az
    |**Nazwa** |Nazwa do identyfikacji sondy.
    |**Protokół** |TCP
    |**Port** |Nieużywany port TCP, które muszą być dostępne na wszystkich maszynach wirtualnych. Nie można używać do innych celów. Nie dwóch detektorów można użyć tego samego portu sondowania. 
-   |**Interval** |Ilość czasu między próbami sondy. Użyj wartości domyślnej (5).
+   |**Interwał** |Ilość czasu między próbami sondy. Użyj wartości domyślnej (5).
    |**Próg złej kondycji** |Liczba kolejnych progów, które powinna zakończyć się niepowodzeniem przed utworzeniem maszyny wirtualnej jest uznawana za złą.
 
 8. Kliknij przycisk **OK** można zapisać sondy. 
@@ -246,7 +246,7 @@ Aby dodać adres IP do modułu równoważenia obciążenia za pomocą witryny Az
    |**Sonda kondycji** |Wybierz utworzoną przez sondy.
    |**Trwałość sesji** |Brak
    |**Limit czasu bezczynności (minuty)** |Domyślne (4)
-   |**Pływający adres IP (bezpośredni zwrot serwera)** | Włączono
+   |**Pływający adres IP (bezpośredni zwrot serwera)** | Enabled (Włączony)
 
 ### <a name="configure-the-availability-group-to-use-the-new-ip-address"></a>Konfigurowanie grupy dostępności do korzystania z nowego adresu IP
 
@@ -276,7 +276,7 @@ Po skonfigurowaniu grupy dostępności do korzystania z nowego adresu IP, należ
 Jeśli grupa dostępności uczestniczy w rozproszonej grupy dostępności, modułu równoważenia obciążenia musi dodatkowa reguła. Ta reguła zapisuje port używany przez odbiornik grupy dostępności rozproszonych.
 
 >[!IMPORTANT]
->Ten krok ma zastosowanie tylko wtedy, gdy grupa dostępności uczestniczy w [rozproszonej grupy dostępności](http://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups). 
+>Ten krok ma zastosowanie tylko wtedy, gdy grupa dostępności uczestniczy w [rozproszonej grupy dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups). 
 
 1. Na każdym serwerze, który uczestniczy w rozproszonej grupie dostępności należy utworzyć regułę ruchu przychodzącego na odbiornika grupy dostępności rozproszonych portu TCP. W wielu przykładach dokumentacja używa 5022. 
 
@@ -289,13 +289,13 @@ Jeśli grupa dostępności uczestniczy w rozproszonej grupy dostępności, modu�
    |**Nazwa** |Nazwa do identyfikacji regułę dla rozproszonej grupy dostępności równoważenia obciążenia. 
    |**Adres IP frontonu** |Użyj tego samego adresu IP frontonu jako grupy dostępności.
    |**Protokół** |TCP
-   |**Port** |5022 — port [odbiornika punktu końcowego grupy dostępności rozproszonych](http://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups).</br> Może być dowolny dostępny port.  
+   |**Port** |5022 — port [odbiornika punktu końcowego grupy dostępności rozproszonych](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups).</br> Może być dowolny dostępny port.  
    |**Port zaplecza** | 5022 — Użyj taką samą wartość jak **portu**.
    |**Pula zaplecza** |Puli, która zawiera maszyny wirtualne z wystąpienia programu SQL Server. 
    |**Sonda kondycji** |Wybierz utworzoną przez sondy.
    |**Trwałość sesji** |Brak
    |**Limit czasu bezczynności (minuty)** |Domyślne (4)
-   |**Pływający adres IP (bezpośredni zwrot serwera)** | Włączono
+   |**Pływający adres IP (bezpośredni zwrot serwera)** | Enabled (Włączony)
 
 Powtórz te czynności dla modułu równoważenia obciążenia na inne, które uczestniczą w grupach rozproszonych dostępności grupy dostępności.
 

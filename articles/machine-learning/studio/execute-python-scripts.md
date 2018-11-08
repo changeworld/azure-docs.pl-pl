@@ -1,7 +1,7 @@
 ---
-title: Wykonywanie skryptów programu Python machine learning | Dokumentacja firmy Microsoft
-description: Przedstawiono projektowania zasad podstawowej obsługi skryptów języka Python w usłudze Azure Machine Learning i scenariusze użycia podstawowe, możliwości i ograniczeń.
-keywords: Python uczenia maszynowego, pandas, pandas języka python, skrypty języka python, wykonywanie skryptów języka python
+title: Wykonywanie skryptów uczenia maszynowego w języku Python | Dokumentacja firmy Microsoft
+description: Wskazano projektowania zasad podstawowych Obsługa skryptów języka Python w usłudze Azure Machine Learning i scenariusze użycia podstawowego, możliwości i ograniczeń.
+keywords: Python uczenia maszynowego, pandas, pandas języka python, skryptów w języku python, wykonywanie skryptów w języku python
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -16,47 +16,47 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 537839295deb631c3b9811c8d40db8608954e8a1
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7520780060f603a7e394b100549529a2c1b6fe4b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835257"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228168"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Wykonywanie skryptów uczenia maszynowego w języku Python w usłudze Azure Machine Learning Studio
 
-W tym temacie opisano zasady projektowania podstawowy bieżącego obsługę skryptów języka Python w usłudze Azure Machine Learning. Główne dostępnych możliwości opisano również, w tym:
+W tym temacie opisano zasady projektowania bazowego bieżącej obsługi skryptów w języku Python w usłudze Azure Machine Learning. Możliwości głównej opisano również, w tym:
 
-- wykonanie scenariusze użycia podstawowe
-- wynik eksperymentu w usłudze sieci web
+- wykonaj podstawowe użycia scenariuszy
+- Ocena eksperymentu w usłudze sieci web
 - Obsługa importowania istniejącego kodu
 - Eksportuj wizualizacji
-- Wykonaj nadzorowane funkcji wyboru
-- zrozumieć następujące ograniczenia
+- Wykonaj nadzorowanych funkcji wyboru cech
+- zrozumieć pewne ograniczenia
 
-[Python](https://www.python.org/) jest narzędziem niezbędne w piersi narzędzie z wielu analityków danych. Posiada:
+[Python](https://www.python.org/) jest narzędziem niezbędne w piersi narzędzie wielu analityków danych. Ma ona:
 
-* Składnia elegancki i zwięzłe 
-* Obsługa platform 
-* zbiór przeważająca zaawansowanych bibliotek i 
-* Narzędzia deweloperskie dojrzała. 
+* prosty i zwięzłej składni, 
+* Obsługa wielu platform 
+* Ogromna kolekcja zaawansowanych bibliotek i 
+* narzędzia programistyczne dla dorosłych. 
 
 Python jest używany we wszystkich fazach zwykle używanych w machine learning modelowania przepływu pracy:
 
-- pozyskiwania danych i przetwarzania 
-- Funkcja konstrukcji
-- szkolenie modelu 
-- Weryfikacja modelu
+- pozyskiwanie i przetwarzanie 
+- konstrukcja funkcji
+- Szkolenie modelu 
+- Walidacja modelu
 - Wdrażanie modeli
 
-Azure Machine Learning Studio obsługuje osadzania skrypty języka Python do różnych części maszyny eksperymentu uczenia, a także bezproblemowo opublikować go jako usługi sieci web w systemie Microsoft Azure.
+Usługa Azure Machine Learning Studio obsługuje osadzanie skryptów w języku Python na różne części maszyny eksperymentu uczenia i również bezproblemowo publikować je w postaci usług sieci web w systemie Microsoft Azure.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 
-## <a name="design-principles-of-python-scripts-in-machine-learning"></a>Projektowanie zasad skrypty języka Python w uczeniu maszynowym
+## <a name="design-principles-of-python-scripts-in-machine-learning"></a>Zasady projektowania skryptów języka Python w usłudze Machine Learning
 
-Podstawowy interfejs do języka Python w usłudze Azure Machine Learning Studio odbywa się za pośrednictwem [wykonanie skryptu Python] [ execute-python-script] modułu pokazany na rysunku 1.
+Podstawowy interfejs do języka Python w usłudze Azure Machine Learning Studio jest za pośrednictwem [wykonanie skryptu Python] [ execute-python-script] modułu przedstawionej na rysunku 1.
 
 ![image1](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
@@ -64,69 +64,69 @@ Podstawowy interfejs do języka Python w usłudze Azure Machine Learning Studio 
 
 Rysunek 1. **Wykonanie skryptu Python** modułu.
 
-[Wykonanie skryptu Python] [ execute-python-script] modułu w usłudze Azure ML Studio akceptuje maksymalnie trzech danych wejściowych i tworzy wyjścia do dwóch (omówiona w następnej sekcji), takie jak jego analogowy R [wykonanie skryptu języka R] [ execute-r-script] modułu. Kod języka Python, który będzie wykonywany jest wprowadzany do parametrów jako nazwane specjalnie punktu wejścia funkcji o nazwie `azureml_main`. W tym miejscu są używane do implementowania ten moduł zasad kluczy:
+[Wykonanie skryptu Python] [ execute-python-script] modułu w usłudze Azure ML Studio akceptuje maksymalnie trzy danych wejściowych i tworzy maksymalnie dwóch danych wyjściowych (co opisano w poniższej sekcji), takie jak jego analogowy R [wykonywania języka R Skrypt] [ execute-r-script] modułu. Wykonanie kodu języka Python jest wprowadzana w polu parametr jako specjalnie nazwane punktu wejścia funkcji o nazwie `azureml_main`. Poniżej przedstawiono zasady projektowania klucza używaną do zaimplementowania tego modułu:
 
-1. *Musi być idiomatyczne dla użytkowników języka Python.* Większość użytkowników Python współczynnika ich kodu jako funkcje w modułach. Dlatego przełączenie dużo wykonywanych instrukcji w module najwyższego poziomu jest stosunkowo rzadkie. W związku z tym pole skryptu ma również specjalnej funkcji Python a nie tylko sekwencji instrukcji. Obiekty widoczne w funkcji są standardowe typy biblioteka języka Python, takich jak [Pandas](http://pandas.pydata.org/) ramek danych i [NumPy](http://www.numpy.org/) tablic.
-2. *Musi mieć o wysokiej wierności między lokalnym i w chmurze wykonania.* Używane do wykonywania kodu Python wewnętrznej bazy danych jest oparty na [Anaconda](https://store.continuum.io/cshop/anaconda/), powszechnie używane i platform naukowych dystrybucję oprogramowania Python. Pochodzi on z bliski 200 najbardziej typowych pakietów języka Python. W związku z tym analityków danych może debugowania i kwalifikuj ich kodu w środowisku Azure Machine Learning zgodnego Anaconda lokalnego. Następnie użyj istniejącego środowiska programowania, takiego jak [IPython](http://ipython.org/) notesu lub [narzędzi Python Tools for Visual Studio](http://aka.ms/ptvs), aby uruchomić go w ramach eksperymentu uczenia Maszynowego Azure. `azureml_main` Punktu wejścia jest podstawowego funkcja Python i dlatego *** można tworzyć bez usługi Azure ML unikatowy kod lub zainstalowany zestaw SDK.
-3. *Musi być bezproblemowe zezwala na składanie z innych modułów uczenia maszynowego Azure.* [Wykonanie skryptu Python] [ execute-python-script] modułu akceptuje jako wejściach i wyjściach, standardowe zestawy danych usługi Azure Machine Learning. Podstawowej struktury przezroczyste i efektywnie pomost środowisk uruchomieniowych uczenie Maszynowe Azure i Python. Python można więc w połączeniu z istniejących uczenie Maszynowe Azure przepływów pracy, włącznie z tymi, które wywołują R i SQLite. Wynik, naukowca danych tworzą przepływy pracy który:
-   * Użyj Python i Pandas danych, przetwarzanie wstępne i czyszczenia
-   * strumieniowe źródło danych transformację SQL dołączenie wiele zestawów danych do funkcji formularza
-   * modele Train przy użyciu algorytmy w usłudze Azure Machine Learning 
-   * Oceń i po przetwarzaniu wyniki za pomocą R.
+1. *Musi być idiomatyczną dla użytkowników języka Python.* Większość użytkowników Python wziąć pod uwagę ich kod jako funkcje w modułach. Dlatego umieszczenie wiele instrukcji wykonywalnych w module najwyższego poziomu jest stosunkowo rzadkie. Co w efekcie polu skrypt pobiera również specjalnie nazwane funkcja języka Python zamiast po prostu sekwencji instrukcji. Obiekty udostępniane w funkcji są typów biblioteki standardowej języka Python, takie jak [Pandas](http://pandas.pydata.org/) ramki danych i [NumPy](http://www.numpy.org/) tablic.
+2. *Musi mieć o dużej wierności między lokalnych i w chmurze wykonań.* Zaplecza służącego do wykonania kodu w języku Python, opiera się na [Anaconda](https://store.continuum.io/cshop/anaconda/), powszechnie używane naukowych dystrybucji języka Python dla wielu platform. Chodzi o blisko 200 najpopularniejsze pakiety języka Python. W związku z tym analitykom danych można debugowania i kwalifikowania ich kodu w środowisku lokalnym usługi Azure Machine Learning zgodnego Anaconda. Następnie użyj istniejącego środowiska programowania, takich jak [IPython](http://ipython.org/) notesu lub [narzędzi Python Tools for Visual Studio](https://aka.ms/ptvs), aby go uruchomić w ramach eksperymentu usługi uczenie Maszynowe Azure. `azureml_main` Punkt wejścia jest wanilii funkcji języka Python, a tym samym *** można tworzyć bez usługi Azure ML kodu lub zainstalowany zestaw SDK.
+3. *Musi być bezproblemowo konfigurowalna z innymi modułami usługi Azure Machine Learning.* [Wykonanie skryptu Python] [ execute-python-script] moduł przyjmuje jako dane wejściowe i wyjściowe, standardowe zestawy danych usługi Azure Machine Learning. Podstawowej struktury przejrzystą i efektywnie pomost środowisk uruchomieniowych uczenie Maszynowe Azure i języka Python. Dlatego języka Python może służyć w połączeniu z istniejącymi przepływami pracy usługi uczenie Maszynowe Azure, łącznie z tymi, które wywołują z języków R i bazy danych SQLite. Wynik, badacz danych tworzą przepływy pracy który:
+   * Używanie języka Python i Pandas dla przetwarzania wstępnego i czyszczenie danych
+   * źródła danych do przekształcania SQL, dołączenie do wielu zestawów danych do postaci funkcji
+   * szkolenie modeli przy użyciu algorytmów w usłudze Azure Machine Learning 
+   * Oceń i po przetworzeniu wyniki za pomocą języka R.
 
 
-## <a name="basic-usage-scenarios-in-ml-for-python-scripts"></a>Scenariusze użycia podstawowe w ML skrypty języka Python
+## <a name="basic-usage-scenarios-in-ml-for-python-scripts"></a>Scenariusze użycia podstawowego ml skryptów w języku Python
 
-W tej sekcji możemy badania niektórych podstawowych zastosowań [wykonanie skryptu Python] [ execute-python-script] modułu. Dane wejściowe, aby moduł Python są widoczne jako Pandas ramek danych. Funkcja musi zwracać jedną ramkę danych Pandas umieszczone wewnątrz Python [sekwencji](https://docs.python.org/2/c-api/sequence.html) przykład spójnej kolekcji, listy lub tablicy NumPy. Pierwszy element tej sekwencji jest następnie zwracany w pierwszy port wyjściowy modułu. Ten schemat jest pokazany na rysunku 2.
+W tej sekcji, firma Microsoft przeglądów niektóre z podstawowych zastosowań [wykonanie skryptu Python] [ execute-python-script] modułu. Dane wejściowe do modułu Python są widoczne jako Pandas ramki danych. Funkcja musi zwracać jedną ramkę danych Pandas spakowane w języku Python [sekwencji](https://docs.python.org/2/c-api/sequence.html) takich jak krotki, listy lub tablicy NumPy. Pierwszy element tej sekwencji jest następnie zwracany pierwszy port wyjściowy modułu. Ten schemat jest pokazany na rysunku 2.
 
 ![image3](./media/execute-python-scripts/map-of-python-script-inputs-outputs.png)
 
-Rysunek 2. Mapowanie portów do parametrów wejściowych i zwrócić wartość portu w danych wyjściowych.
+Rysunek 2. Mapowanie portów dla parametrów wejściowych i zwrócenia wartości do portu wyjściowego.
 
-Bardziej szczegółowe semantykę sposobie porty wejściowe pobrać mapowania parametrów `azureml_main` funkcji są wyświetlane w tabeli 1:
+Bardziej szczegółowe semantykę jak porty wejściowe są mapowane na parametrów `azureml_main` funkcji są wyświetlane w tabeli 1:
 
 ![image1T](./media/execute-python-scripts/python-script-inputs-mapped-to-parameters.png)
 
 Tabela 1. Mapowanie portów wejściowych do parametrów funkcji.
 
-Mapowanie między porty wejściowe i parametry funkcji jest pozycyjnych:
+Mapowanie między porty wejściowe i parametry funkcji jest pozycyjne:
 
-- Pierwszy port wejściowy połączonych jest mapowana na pierwszy parametr funkcji. 
-- Drugi parametr funkcji jest mapowany drugiej danej wejściowej (Jeśli połączono).
+- Pierwszy połączonych port wejściowy jest zamapowana na pierwszy parametr funkcji. 
+- Drugie dane wejściowe (jeśli jest podłączony) jest mapowany na drugi parametr funkcji.
 
-Zobacz *Python do analizy danych* (O'Reilly 2012) przez McKinney Zach. Aby uzyskać więcej informacji na temat Python Pandas i jak może służyć do modyfikowania danych efektywne. 
-
-
-## <a name="translation-of-input-and-output-types"></a>Tłumaczenie typy wejściowe i wyjściowe 
-Wejściowe zestawy danych w uczenie Maszynowe Azure są konwertowane na ramek danych w Pandas. Ramek danych wyjściowych jest konwertowana z powrotem do zestawów danych uczenie Maszynowe Azure. Wykonywane są następujące konwersji:
-
-1. Ciąg, jak i numeryczne kolumn są konwertowane na — jest i brakujące wartości w zestawie danych są konwertowane do wartości "NA" w Pandas. Tej samej Konwersja odbywa się w drodze Wstecz (wartości NA Pandas są konwertowane na brakujących wartości w uczenie Maszynowe Azure).
-2. Wektory indeksu w Pandas nie są obsługiwane w uczenie Maszynowe Azure. Wszystkie ramki danych wejściowych w funkcji języka Python zawsze ma 64-bitowych wartości liczbowych indeksu z zakresu od 0 do liczby wierszy pomniejszonej o 1. 
-3. Azure ML zestawy danych nie może zawierać zduplikowanych nazw kolumn i nazwy kolumn, które nie są ciągami. Jeśli ramki danych wyjściowych zawiera nieliczbowy kolumn, struktura wywołuje `str` na nazwy kolumn. Podobnie zduplikowanych nazw kolumn automatycznie są zniekształcone aby upewnić się, że nazwy są unikatowe. Sufiks (2) jest dodawana do pierwszego duplikat, (3) do drugiego duplikat i tak dalej.
+Zobacz *języka Python do analizy danych* (O'Reilly 2012) przez McKinney Zach. Aby uzyskać więcej informacji na temat Pandas języka Python i jak może służyć do modyfikowania danych, efektywnie i wydajnie. 
 
 
-## <a name="operationalizing-python-scripts"></a>Operacyjnych skrypty języka Python
+## <a name="translation-of-input-and-output-types"></a>Tłumaczenie typów wejściowych i wyjściowych 
+Wejściowe zestawy danych w usłudze Azure ML są konwertowane na ramki danych w Pandas. Dane wyjściowe ramki danych są konwertowane do zestawów danych usługi Azure ML. Poniższe konwersje są wykonywane:
 
-Wszelkie [wykonanie skryptu Python] [ execute-python-script] moduły używane w eksperymencie oceniania są wywoływane, gdy publikowane jako usługi sieci web. Przykładowo rysunek 3 przedstawia oceniania eksperymentu, która zawiera kod, aby obliczyć pojedynczego wyrażenia języka Python. 
+1. Kolumny ciągów i numeryczne są konwertowane odpowiednio — jest i brakujących wartości w zestawie danych są konwertowane do wartości "Nazwa" w Pandas. Tej samej konwersji się dzieje w sposób Wstecz (Pandas NA wartości są konwertowane na brakujących wartości w usłudze Azure ML).
+2. Indeks wektorów w Pandas nie są obsługiwane w usłudze Azure ML. Wszystkie ramki danych wejściowych w funkcji języka Python zawsze mieć 64-bitowe indeksu numerycznego z zakresu od 0 do liczby wierszy, minus 1. 
+3. Usługa Azure ML zestawy danych nie może mieć zduplikowanych nazw kolumn i nazwy kolumn, które nie są ciągami. Jeśli dane wyjściowe ramki danych zawiera nieliczbową kolumn, struktura wywołuje `str` na nazwy kolumn. Podobnie zduplikowanych nazw kolumn są automatycznie zniekształcone, aby upewnić się, że nazwy są unikatowe. Do pierwszego duplikat, (3) jest dodawany sufiks (2) do drugiego duplikat i tak dalej.
+
+
+## <a name="operationalizing-python-scripts"></a>Operacjonalizacji skryptów w języku Python
+
+Wszelkie [wykonanie skryptu Python] [ execute-python-script] moduły używane w eksperymencie oceniania są wywoływane, gdy publikowane jako usługi sieci web. Przykładowo rysunek 3 przedstawia oceniania eksperyment, który zawiera kod, aby obliczyć pojedynczego wyrażenia języka Python. 
 
 ![image4](./media/execute-python-scripts/figure3a.png)
 
 ![image5](./media/execute-python-scripts/python-script-with-python-pandas.png)
 
-Rysunek 3. Usługa sieci Web do obliczenia wyrażenia języka Python.
+Rysunek 3. Usługa sieci Web do oceny wyrażenia języka Python.
 
-Utworzone na podstawie tego eksperymentu usługi sieci web:
+Usługi sieci web utworzone na podstawie tego doświadczenia:
 
-- przyjmuje jako dane wejściowe wyrażenia języka Python (jako ciąg)
-- wysyła on interpreter języka Python 
-- zwraca tabelę zawierającą zarówno wyrażenie i obliczony wynik.
+- przyjmuje jako dane wejściowe do wyrażenia języka Python (jako ciąg)
+- wysyła je do interpretera języka Python 
+- zwraca tabelę zawierającą wyrażenie i obliczony wynik.
 
 
-## <a name="importing-existing-python-script-modules"></a>Importowanie istniejących moduły skryptu języka Python
+## <a name="importing-existing-python-script-modules"></a>Importowanie istniejących modułów skryptu języka Python
 
-Typowe przypadek użycia dla wielu analityków danych jest włączenie istniejących skryptów języka Python do eksperymentów uczenie Maszynowe Azure. Zamiast konieczności czy cały kod jest połączonych i wkleić w polu jednego skryptu [wykonanie skryptu Python] [ execute-python-script] modułu akceptuje plik zip, który zawiera modułów środowiska Python w trzecim portu wejściowego. Rozpakowane jest plik przez platformę wykonywania w czasie wykonywania i zawartości zostaną dodane do ścieżki biblioteki interpreter języka Python. `azureml_main` Punktu wejścia funkcji można następnie zaimportować te moduły bezpośrednio.
+Typowy przypadek użycia dla wielu analityków danych jest włączenie istniejących skryptów języka Python do eksperymentów usługi uczenie Maszynowe Azure. Zamiast konieczności, że cały kod być łączone i wkleić w polu jednego skryptu, [wykonanie skryptu Python] [ execute-python-script] moduł przyjmuje plik zip, który zawiera moduły języka Python na trzeci portu wejściowego. Plik jest rozpakowano przez środowisko wykonywania w czasie wykonywania i zawartości są dodawane do ścieżki biblioteki interpreter języka Python. `azureml_main` Punktu wejścia funkcji można następnie zaimportować moduły bezpośrednio.
 
-Na przykład należy wziąć pod uwagę pliku Hello.py zawierający funkcję prosty "tekst Hello, World".
+Na przykład należy wziąć pod uwagę pliku Hello.py zawierający prostej funkcji "Hello, World".
 
 ![image6](./media/execute-python-scripts/figure4.png)
 
@@ -136,79 +136,80 @@ Następnie utwórz plik Hello.zip, który zawiera Hello.py:
 
 ![image7](./media/execute-python-scripts/figure5.png)
 
-Rysunek 5. Plik zip zawierający zdefiniowane przez użytkownika kod języka Python.
+Rysunek 5. Plik zip zawierający kod Python zdefiniowanych przez użytkownika.
 
-Przekaż plik zip jako zestawu danych w usłudze Azure Machine Learning Studio. Utwórz i uruchom eksperymentu, która korzysta z kodu języka Python w pliku Hello.zip przy dołączeniu go do trzeciego port wejściowy z **wykonanie skryptu Python** modułu, jak pokazano na poniższym rysunku.
+Przekazywanie pliku zip jako zestaw danych do usługi Azure Machine Learning Studio. Następnie utwórz i uruchom eksperyment, który używa kodu w języku Python w pliku Hello.zip, dołączając ją do trzeciego portem wejściowym **wykonanie skryptu Python** modułu, jak pokazano na ilustracji.
 
 ![image8](./media/execute-python-scripts/figure6a.png)
 
 ![image9](./media/execute-python-scripts/figure6b.png)
 
-Rysunek 6. Przekazano eksperymentu przykładowego kodu Python zdefiniowane przez użytkownika jako plik zip.
+Rysunek 6. Przekazano przykładowego eksperymentu przy użyciu kodu języka Python zdefiniowanych przez użytkownika jako plik zip.
 
-Dane wyjściowe modułu pokazuje, że plik zip został rozpakowanych, a funkcja `print_hello` została uruchomiona.
+Dane wyjściowe modułu pokazują, czy plik zip został rozpakowanych i że funkcja `print_hello` została uruchomiona.
  
 ![image10](./media/execute-python-scripts/figure7.png)
 
-Rysunek 7. Zdefiniowane przez użytkownika funkcja używana wewnątrz [wykonanie skryptu Python] [ execute-python-script] modułu.
+Rysunek 7. Funkcja zdefiniowana przez użytkownika używana wewnątrz [wykonanie skryptu Python] [ execute-python-script] modułu.
 
 
-## <a name="working-with-visualizations"></a>Praca z wizualizacji
+## <a name="working-with-visualizations"></a>Praca z wizualizacjami
 
-Wykresy utworzone za pomocą MatplotLib, który można wywołać w przeglądarce może być zwracany przez [wykonanie skryptu Python][execute-python-script]. Ale powierzchnie nie są automatycznie przekierowywane do obrazów w są one przy użyciu R. Dlatego użytkownik jawnie zapisać wszelkie powierzchni na plik PNG jeśli mają zostać zwrócone do usługi Azure Machine Learning. 
+Wykresy utworzone za pomocą MatplotLib, które mogą być wizualizowane w przeglądarce może zostać zwrócony przez [wykonanie skryptu Python][execute-python-script]. Ale powierzchnie nie nastąpi automatyczne przekierowanie do obrazów w są one podczas używania języka R. Więc użytkownik musi jawnie zapisać żadnych wykresów na pliki PNG jeśli mają zostać zwrócone do usługi Azure Machine Learning. 
 
-Aby wygenerować obrazów z MatplotLib, należy wykonać następującą procedurę:
+Do generowania obrazów z MatplotLib, należy wykonać następującą procedurę:
 
 * Przełącz z domyślne renderowanie Qt wewnętrznej bazy danych do "AGG" 
 * Utwórz nowy obiekt rysunek 
-* Pobierz osi i generowanie wszystkich powierzchni do niego 
-* Zapisz wartość do pliku PNG 
+* Pobierz oś oraz generować wykresy wszystkich do niego 
+* Zapisz plik PNG rysunku 
 
-Ten proces przedstawiono na poniższej rysunek 8 tworzy wykres punktowy macierzy przy użyciu funkcji scatter_matrix w Pandas.
+Ten proces przedstawiono na poniższym rysunku 8, który tworzy wykres punktowy macierzy przy użyciu funkcji scatter_matrix w Pandas.
 
 ![image1v](./media/execute-python-scripts/figure-v1-8.png)
 
-Rysunek 8. Kod, aby zapisać dane MatplotLib obrazów.
+Rysunek 8. Kod, aby zapisać rysunki MatplotLib obrazów.
 
-Na rysunku nr 9 przedstawiono eksperymentu, która używa skryptu pokazana wcześniej, aby zwrócić geograficzne za pomocą drugiego port wyjściowy.
+Rysunek 9 przedstawiono eksperyment, który używa skryptu przedstawionego wcześniej, aby zwrócić geograficzne za pomocą drugiego port wyjściowy.
 
 ![image2v](./media/execute-python-scripts/figure-v2-9a.png) 
 
 ![image2v](./media/execute-python-scripts/figure-v2-9b.png) 
 
-Rysunek 9. Wizualizacja powierzchni wygenerowane z kodu języka Python.
+Rysunek 9. Wizualizacja powierzchni wygenerowany na podstawie kodu w języku Python.
 
-Istnieje możliwość zwraca wiele wartości zapisując je w różnych obrazów, obsługi usługi Azure Machine Learning przejmuje wszystkie obrazy i łączy je dla wizualizacji.
+Istnieje możliwość zwrócić wiele wartości, zapisując je na różne obrazy, środowisko uruchomieniowe usługi Azure Machine Learning przejmuje wszystkie obrazy i łączy je do wizualizacji.
 
 
-## <a name="advanced-examples"></a>Przykłady zaawansowane
+## <a name="advanced-examples"></a>Zaawansowane przykłady
 
-Środowisko Anaconda zainstalowane w usłudze Azure Machine Learning zawiera pakiety wspólne, takie jak NumPy, SciPy i Scikits Dowiedz się więcej. Te pakiety można skutecznie dla różnych zadań przetwarzania danych w potoku uczenia maszynowego. Na przykład następujące eksperymentu i skrypt przedstawiający zastosowanie uczących zespół w Scikits — Dowiedz się, można obliczyć funkcji wyniki znaczenie dla zestawu danych. Wyniki mogą posłużyć do wykonania funkcji nadzorowane wyboru przed podawana do innego modelu uczenia Maszynowego.
+Środowisko Anaconda, zainstalowane w usłudze Azure Machine Learning obejmuje popularnych pakietów takich jak NumPy SciPy i Dowiedz się Scikits. Te pakiety można skutecznie dla różnych zadań przetwarzania danych w potoku uczenia maszynowego. Na przykład poniższego eksperymentu oraz skrypt ilustrują użycie uczących zespołu w Scikits — Dowiedz się, jak funkcja wyniki znaczenie dla zestawu danych wystąpień obliczeniowych. Wyniki może służyć do wykonywania wybór funkcji nadzorowanych przed podawana do innego modelu uczenia Maszynowego.
 
-W tym miejscu jest funkcją języka Python, używany do obliczania oceny znaczenie i kolejność funkcje oparte na wyniki:
+W tym miejscu jest funkcją języka Python, używany do obliczania wyników znaczenie i kolejność, w oparciu o wyniki funkcji:
 
 ![image11](./media/execute-python-scripts/figure8.png)
 
-Rysunek 10. Funkcja funkcji rank przez wyniki.
-  Następujące eksperymentu następnie oblicza i zwraca wyniki znaczenie funkcji w zestawie danych "Pima indyjskiego cukrzyca" w usłudze Azure Machine Learning:
+Rysunek 10. Funkcja funkcji rank, wyniki.
+ 
+Poniższego eksperymentu następnie oblicza i zwraca wyniki znaczenie funkcji w zestawie danych "Pima indyjskim choroby" w usłudze Azure Machine Learning:
 
 ![image12](./media/execute-python-scripts/figure9a.png)
 ![image13](./media/execute-python-scripts/figure9b.png)    
 
-Rysunek 11. Wypróbuj rangi funkcji w zestawie danych cukrzyca indyjskiego Pima.
+Rysunek 11. Wypróbuj do rangi funkcji w zestawie danych choroby indyjskim Pima.
 
 ## <a name="limitations"></a>Ograniczenia
-[Wykonanie skryptu Python] [ execute-python-script] aktualnie ma następujące ograniczenia:
+[Wykonanie skryptu Python] [ execute-python-script] obecnie ma następujące ograniczenia:
 
-1. *Wykonywanie w trybie piaskownicy.* Środowisko uruchomieniowe języka Python jest obecnie w trybie piaskownicy, a w związku z tym nie zezwala na dostęp do sieci lub lokalnego systemu plików w sposób ciągły. Wszystkie pliki zapisywane lokalnie są izolowane i usuwane po zakończeniu pracy w module. Kod języka Python, nie można uzyskać dostępu większości katalogów znajdujących się na komputerze, na którym jest uruchamiany na, wyjątku jest w bieżącym katalogu i jego podkatalogach.
-2. *Brak zaawansowane programowanie i debugowanie pomocy technicznej.* Moduł Python nie obsługuje obecnie IDE funkcje, takie jak intellisense i debugowanie. Ponadto jeśli moduł nie powiedzie się w czasie wykonywania, pełny ślad stosu Python jest dostępna. Ale musi być wyświetlana w dzienniku danych wyjściowych dla modułu. Obecnie zalecamy tworzenie i debugowanie skryptów języka Python w środowisku, na przykład IPython a następnie zaimportuj kod do modułu.
-3. *Dane wyjściowe ramki danych.* Punkt wejścia Python jest dozwolony tylko do zwrócenia ramki danych jako dane wyjściowe. Nie jest obecnie możliwe przywrócić dowolne obiekty Python, takie jak przeszkolone modeli bezpośrednio środowiska uruchomieniowego usługi Azure Machine Learning. Podobnie jak [wykonanie skryptu języka R][execute-r-script], który ma tego samego ograniczenia, jest możliwe w większości przypadków pickle obiekty do tablicy typu byte, a następnie wróć który wewnątrz ramki danych.
-4. *Brak możliwości dostosowania instalacji języka Python*. Za pomocą mechanizmu pliku zip opisanych wcześniej jest obecnie jedynym sposobem, aby dodać niestandardowe moduły języka Python. Gdy jest to możliwe w dla małych modułów, jest skomplikowane dla dużych modułów, (zwłaszcza z natywnych bibliotek DLL) lub dużej liczby modułów. 
+1. *Wykonywania w trybie piaskownicy.* Środowisko uruchomieniowe języka Python jest obecnie w trybie piaskownicy, a w rezultacie nie zezwala na dostęp do sieci lub do lokalnego systemu plików w sposób ciągły. Wszystkie pliki zapisane lokalnie są izolowane i usunięte po zakończeniu modułu. Większość katalogów na komputerze, na których ono działa, wyjątek jest w bieżącym katalogu i jego podkatalogach kodu w języku Python nie ma dostępu.
+2. *Brak zaawansowanego tworzenia i obsługi debugowania.* Moduł Python aktualnie nie obsługuje funkcje środowiska IDE, takie jak intellisense i debugowanie. Ponadto w przypadku awarii w czasie wykonywania moduł pełny ślad stosu Python jest dostępna. Ale musi być wyświetlana w dzienniku danych wyjściowych dla modułu. Firma Microsoft zaleca obecnie programowanie i debugowanie skryptów w języku Python w środowisku, takie jak IPython a następnie zaimportuj kod do modułu.
+3. *Dane wyjściowe ramki danych jednego.* Punkt wejścia Python jest dozwolony tylko do zwrócenia ramkę danych jako dane wyjściowe. Nie jest obecnie możliwe przywrócić dowolne obiekty języka Python, takie jak przeszkolone modele bezpośrednio środowiska uruchomieniowego usługi Azure Machine Learning. Podobnie jak [wykonanie skryptu języka R][execute-r-script], która ma takie samo ograniczenie występuje, jest możliwe w wielu przypadkach pickle obiektów w tablicy bajtów, a następnie wróć, wewnątrz ramki danych.
+4. *Brak możliwości dostosowania instalacji języka Python*. Obecnie jedynym sposobem dodawania niestandardowych modułów języka Python jest za pośrednictwem mechanizmu pliku zip, opisanego wcześniej. Gdy jest to możliwe dla małych modułów, jest kłopotliwe dla dużych modułów, (zwłaszcza z natywnych bibliotek DLL) lub dużej liczby modułów. 
 
 ## <a name="conclusions"></a>Wnioski
-[Wykonanie skryptu Python] [ execute-python-script] moduł pozwala naukowca danych, aby zastosować istniejący kod języka Python w przepływach pracy learning hostowanych w chmurze maszyny w usłudze Azure Machine Learning i bezproblemowo operacjonalizacji je jako część usługi sieci web. Moduł skryptu Python naturalnie współdziała z innych modułów w usłudze Azure Machine Learning. Moduł może służyć szereg zadań z Eksploracja danych, przetwarzanie wstępne i wyodrębniania funkcji, a następnie do oceny i przetwarzania końcowego wyników. Środowisko uruchomieniowe wewnętrznej bazy danych używane do wykonywania jest oparta na platformę Anaconda — dystrybucję oprogramowania Python dobrze przetestowane i powszechnie używane. To zaplecza upraszcza dla Ciebie do wewnętrznych zasobów istniejącego kodu do chmury.
+[Wykonanie skryptu Python] [ execute-python-script] moduł pozwala bezproblemowo włączenie istniejącego kodu języka Python do uczenia maszynowego hostowanymi w chmurze przepływów w usłudze Azure Machine Learning i do wydobywania danych operacjonalizowanie je jako część usługi sieci web. Moduł skryptu języka Python naturalnie współdziała z innymi modułami w usłudze Azure Machine Learning. Moduł może służyć do szeroką gamę zadań przy użyciu eksplorację danych do przetwarzania wstępnego i wyodrębniania funkcji, a następnie do oceny i przetwarzanie końcowe wyników. Środowisko uruchomieniowe wewnętrznej bazy danych, używane do wykonywania opiera się na Anaconda, dobrze przetestowana i powszechnie używanych dystrybucji języka Python. To zaplecze upraszcza dla Ciebie dołączyć istniejące zasoby kodu do chmury.
 
-Oczekujemy oferowanie dodatkowych funkcji do [wykonanie skryptu Python] [ execute-python-script] modułu, takich jak możliwość nauczenia i operacjonalizuj modele w języku Python i lepszą obsługę opracowywania i debugowania kodu w usłudze Azure Machine Learning Studio.
+Oczekujemy, że zapewnia dodatkowe funkcje, aby [wykonanie skryptu Python] [ execute-python-script] modułu, takie jak możliwość uczenia i operacjonalizuj modele w języku Python i lepszą obsługę programowania i debugowanie kodu w usłudze Azure Machine Learning Studio.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Więcej informacji możesz znaleźć w [Centrum deweloperów języka Python](https://azure.microsoft.com/develop/python/).

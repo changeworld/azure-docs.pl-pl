@@ -12,12 +12,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 92db2a86f5f698945cd2252476e951d658dc75ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c3aa1bfe2cc1513d636452031de62da814af6cd7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959210"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262305"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Jak wybierać algorytmy w usłudze Azure Machine Learning Studio
 
@@ -121,7 +121,7 @@ Niektóre algorytmów uczenia zakładają określonej struktury danych lub zakł
 | [las decyzyjny](https://msdn.microsoft.com/library/azure/dn906008.aspx) |● |○ | |6 | |
 | [Dżungla decyzji](https://msdn.microsoft.com/library/azure/dn905976.aspx) |● |○ | |6 |Zużycie małej ilości pamięci |
 | [wzmocnione drzewo decyzyjnego](https://msdn.microsoft.com/library/azure/dn906025.aspx) |● |○ | |6 |Zużycie pamięci |
-| [sieć neuronowa](https://msdn.microsoft.com/library/azure/dn905947.aspx) |● | | |9 |[Możliwe jest dostosowanie dodatkowe](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [sieć neuronowa](https://msdn.microsoft.com/library/azure/dn905947.aspx) |● | | |9 |[Możliwe jest dostosowanie dodatkowe](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [uśrednionej perceptron](https://msdn.microsoft.com/library/azure/dn906036.aspx) |○ |○ |● |4 | |
 | [Obsługa maszyny wektora](https://msdn.microsoft.com/library/azure/dn905835.aspx) | |○ |● |5 |Dobre dla funkcji dużych zestawów |
 | [lokalnie dogłębnej obsłudze wektor maszyny](https://msdn.microsoft.com/library/azure/dn913070.aspx) |○ | | |8 |Dobre dla funkcji dużych zestawów |
@@ -130,7 +130,7 @@ Niektóre algorytmów uczenia zakładają określonej struktury danych lub zakł
 | [Regresja logistyczna](https://msdn.microsoft.com/library/azure/dn905853.aspx) | |● |● |5 | |
 | [las decyzyjny](https://msdn.microsoft.com/library/azure/dn906015.aspx) |● |○ | |6 | |
 | [Dżungla decyzji ](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |Zużycie małej ilości pamięci |
-| [sieć neuronowa](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Możliwe jest dostosowanie dodatkowe](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [sieć neuronowa](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Możliwe jest dostosowanie dodatkowe](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Zobacz właściwości wybrano metodę dwuklasowych |
 | **Regression** | | | | | |
 | [Liniowy](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
@@ -138,7 +138,7 @@ Niektóre algorytmów uczenia zakładają określonej struktury danych lub zakł
 | [las decyzyjny](https://msdn.microsoft.com/library/azure/dn905862.aspx) |● |○ | |6 | |
 | [wzmocnione drzewo decyzyjnego](https://msdn.microsoft.com/library/azure/dn905801.aspx) |● |○ | |5 |Zużycie pamięci |
 | [kwantyl szybkie lasu](https://msdn.microsoft.com/library/azure/dn913093.aspx) |● |○ | |9 |Zamiast prognozy punktu dystrybucji |
-| [sieć neuronowa](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[Możliwe jest dostosowanie dodatkowe](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [sieć neuronowa](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[Możliwe jest dostosowanie dodatkowe](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [Poissona](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |Z technicznego punktu widzenia dziennika liniowych. Do prognozowania liczby |
 | [Liczba porządkowa](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |Do przewidywania porządkowanie ranga |
 | **Wykrywanie anomalii** | | | | | |
@@ -190,7 +190,7 @@ Aby uniknąć overfitting drzewa decyzyjnego ograniczenie ile razy oni podzieli�
 Sieci neuronowych są mózg inspirowanej obejmujące algorytmów uczenia [kontra](https://msdn.microsoft.com/library/azure/dn906030.aspx), [dwuklasowych](https://msdn.microsoft.com/library/azure/dn905947.aspx), i [regresji](https://msdn.microsoft.com/library/azure/dn905924.aspx) problemów. Pochodzą one w najróżniejsze, ale są sieci neuronowych, w ramach usługi Azure Machine Learning, wszystko w postaci ukierunkowanych grafy acykliczne. Oznacza to, że funkcje wejściowe są przekazywane do przodu (nigdy nie do tyłu) za pośrednictwem sekwencji warstwy przed są przekształcane w danych wyjściowych. W każdej warstwie dane wejściowe są liczone w różnych kombinacjach, sumy i przekazywane do następnej warstwy. Ta kombinacja prostych obliczeń powoduje możliwość klasy złożone granic i dane trendów pozornie przez magic. Wielowarstwowe z wielu sieci tego rodzaju wykonaj "uczenia głębokiego" który paliwa bardzo tech raportowania oraz science-fiction.
 
 Ta o wysokiej wydajności nie darmowe, mimo że. Sieci neuronowych może zająć dużo czasu na nauczenie, szczególnie w przypadku dużych zestawów danych z dużą liczbą funkcji. Mają również więcej parametrów niż większość algorytmy, które oznacza, że parametr zaczynają znacznie rozszerza czasu szkoleń.
-I dla tych overachievers, którzy chcą [określić własne struktury sieci](http://go.microsoft.com/fwlink/?LinkId=402867), możliwości są inexhaustible.
+I dla tych overachievers, którzy chcą [określić własne struktury sieci](https://go.microsoft.com/fwlink/?LinkId=402867), możliwości są inexhaustible.
 
 ![Granice rozpoznawane przez sieci neuronowych][6]
 ***granice rozpoznawane przez sieci neuronowych mogą być złożone i nieregularne***

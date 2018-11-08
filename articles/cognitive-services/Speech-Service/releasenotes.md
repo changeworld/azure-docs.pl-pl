@@ -8,16 +8,47 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 10/12/2018
+ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: b5e4d239121b2449a45dfce826c99765f1c3f4be
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e2c676932541866df081f6db54fa0b1ec4da7088
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471142"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218597"
 ---
 # <a name="release-notes"></a>Informacje o wersji
+
+## <a name="speech-service-sdk-110"></a>Usługa rozpoznawania mowy SDK 1.1.0
+
+**Nowe funkcje**
+
+* Obsługa systemu Android x86/x64.
+* Obsługa serwera proxy: W obiekcie SpeechConfig można teraz wywołać funkcję, aby ustawić informacje o serwerze proxy (nazwa hosta, portu, nazwy użytkownika i hasło). Ta funkcja nie jest jeszcze dostępne w systemie iOS.
+* Kod błędu ulepszone i komunikatów. Jeśli rozpoznawania zwrócił błąd, to już ustawiona `Reason` (w przypadku anulowane) lub `CancellationDetails` (w wyniku rozpoznawania) do `Error`. Anulowano zdarzeń zawiera teraz dwa dodatkowe elementy członkowskie `ErrorCode` i `ErrorDetails`. Jeśli serwer zwrócił dodatkowe informacje o błędzie z zgłoszonego błędu, będzie teraz dostępna w nowych elementów członkowskich.
+
+**Ulepszenia**
+
+* Dodano dodatkowa weryfikacja w konfiguracji rozpoznawania i dodano dodatkowe komunikat.
+* Ulepszona obsługa wieloletni wyciszenia w środku plik audio.
+* Pakiet NuGet: dla platformy .NET Framework projektów uniemożliwić kompilowanie za pomocą konfiguracji AnyCPU.
+
+**Poprawki błędów**
+
+* Naprawiono kilka wyjątków w aparatów rozpoznawania gestów. Ponadto wyjątki są przechwytywane i konwertowane na zdarzenia anulowane.
+* Napraw przeciek pamięci w przystawce Zarządzanie właściwości.
+* Naprawiono usterkę, w którym plik audio w wejściowych mogło powodować awarię aparat rozpoznawania.
+* Usunięto usterkę, w którym zdarzenia można odebrane po wystąpieniu zdarzenia zatrzymanie sesji.
+* Rozwiązano niektóre sytuacje wyścigu w wielowątkowości.
+* Naprawiono systemu iOS problem ze zgodnością, co może spowodować awarię.
+* Ulepszenia obsługi systemu Android mikrofonu.
+* Usunięto usterkę, w którym rozpoznawania w języku JavaScript będzie ignorować języka rozpoznawania.
+* Naprawiono usterkę uniemożliwiającą ustawienie EndpointId (w niektórych przypadkach) w języku JavaScript.
+* Kolejność parametrów zmienione w AddIntent w języku JavaScript i dodano Brak podpisu AddIntent JavaScript.
+
+**Przykłady**
+
+* Dodano przykładu w języku C++ dla ściąganie i wypychanie strumienia użycia w naszym [przykładowego repozytorium](https://aka.ms/csspeech/samples).
 
 ## <a name="speech-service-sdk-101"></a>Usługa rozpoznawania mowy 1.0.1 zestawu SDK
 
