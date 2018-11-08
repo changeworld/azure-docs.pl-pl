@@ -1,5 +1,5 @@
-# <a name="pull-request-comment-automation"></a>Automatyzacja komentarz żądania ściągnięcia
+# <a name="pull-request-comment-automation"></a>Automatyzacja komentarzy żądań ściągnięcia
 
-W tych wskazówkach została przeniesiona do witryny docs.microsoft.com wewnętrzny przewodnika dla współautorów.
+Ten artykuł został przeniesiony do wewnętrznego przewodnika dla współautorów w witrynie docs.microsoft.com.
 
 [https://aka.ms/pr-comments](https://aka.ms/pr-comments)

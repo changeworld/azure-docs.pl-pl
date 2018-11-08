@@ -1,5 +1,5 @@
-# <a name="quality-criteria-for-pull-request-review"></a>Przejrzyj kryteria jakości żądania ściągnięcia
+# <a name="quality-criteria-for-pull-request-review"></a> Kryteria jakości przeglądu żądań ściągnięcia
 
-W tych wskazówkach została przeniesiona do witryny docs.microsoft.com wewnętrzny przewodnika dla współautorów.
+Ten artykuł został przeniesiony do wewnętrznego przewodnika dla współautorów w witrynie docs.microsoft.com.
 
 [https://aka.ms/pr-review-criteria](https://aka.ms/pr-review-criteria)

@@ -25,7 +25,7 @@ ms.locfileid: "32185360"
 ---
 # <a name="azure-technical-content-contributors-guide-index"></a>Indeks przewodnika dla platformy Azure współautorów zawartości technicznej
 
-Jeśli użytkownik jest współautorem społeczności, zobacz nasze [README](../README.md)
+Jeśli jesteś współautorem zewnętrznym, zobacz nasze [README](../README.md)
 
-Współautorzy pracownika powinna zostać wyświetlona [przewodnika wewnętrzny współautorów](https://review.docs.microsoft.com/help/contribute/?branch=master).
+Pracownicy Microsoft powinni zapoznać się z [przewodnikiem dla współautorów wewnętrznych](https://review.docs.microsoft.com/help/contribute/?branch=master).
 
