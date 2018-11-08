@@ -10,16 +10,16 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: a74e6a6a90a242d4d1b2fd71a5fc6cf949ea55cb
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 5e168608202f81f698221b52315de83e9713feab
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815260"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282927"
 ---
 # <a name="configure-your-custom-search-experience"></a>Konfigurowanie środowiska wyszukiwania niestandardowego
 
-Wystąpienia wyszukiwania niestandardowego pozwala dostosować środowisko wyszukiwania, aby uwzględnić tylko zawartość z witryn sieci Web przez użytkownika, interesujące. Zamiast przeprowadzania wyszukiwania w sieci web, Bing, wyszukiwanie tylko wycinek sieci web, który Cię interesuje. Aby utworzyć niestandardowy widok sieci web, użyj wyszukiwania niestandardowego Bing [portal](https://customsearch.ai). Aby uzyskać informacji na temat logowania się do portalu, zobacz [Tworzenie pierwszego wystąpienia wyszukiwania niestandardowego Bing](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/quick-start). 
+Wystąpienia wyszukiwania niestandardowego pozwala dostosować środowisko wyszukiwania, aby uwzględnić tylko zawartość z witryn sieci Web przez użytkownika, interesujące. Zamiast przeprowadzania wyszukiwania w sieci web, Bing, wyszukiwanie tylko wycinek sieci web, który Cię interesuje. Aby utworzyć niestandardowy widok internetowy, użyj [portalu](https://customsearch.ai) usługi wyszukiwania niestandardowego Bing. Aby uzyskać informacji na temat logowania się do portalu, zobacz [Tworzenie pierwszego wystąpienia wyszukiwania niestandardowego Bing](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/quick-start). 
 
 Portal umożliwia tworzenie wystąpienia wyszukiwania, które określa domen, niezwykle i stron sieci Web, które Bing, wyszukiwanie i te, których nie chcesz, aby wyszukać. Oprócz określenia adresów URL informacji o zawartości, można również zadawać portalu Aby zasugerować zawartości, który chcesz dodać do widoku. 
 
@@ -64,7 +64,7 @@ Podobnie można dodać wycinki do listy zablokowanych (z wyjątkiem przekazywani
 
 ## <a name="pinned-list"></a>Lista przypięte
 
-Portal umożliwia także przypiąć konkretnej strony sieci Web na początku wyników wyszukiwania, jeśli użytkownik wprowadzi określonych wyszukiwany termin. **Pinned** karta zawiera listę par zapytania termin i stron sieci Web, które określają strony sieci Web, który jest wyświetlany jako najlepszy wynik dla określonej kwerendy. Aby uzyskać informacje o przypinaniu wyników, zobacz [dostosować ranga](#adjustrank).
+Portal umożliwia także przypięcie określonej strony internetowej na początku listy wyników wyszukiwania w przypadku wprowadzenia przez użytkownika określonego terminu. **Pinned** karta zawiera listę par zapytania termin i stron sieci Web, które określają strony sieci Web, który jest wyświetlany jako najlepszy wynik dla określonej kwerendy. Ponadto tylko indeksowanych stron sieci Web zostanie wyświetlony w wynikach wyszukiwania. Aby uzyskać informacje o przypinaniu wyników, zobacz [dostosować ranga](#adjustrank). 
 
 Przypinanie wyników nie jest dostępna dla wyszukiwania obrazów i funkcji wyszukiwania wideo.
 
@@ -175,7 +175,7 @@ Jeśli masz subskrypcję do wyszukiwania niestandardowego na odpowiednim poziomi
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Wywołanie usługi wyszukiwania niestandardowego](./search-your-custom-view.md)
-- [Konfigurowanie środowiska obsługiwanego interfejsu użytkownika](./hosted-ui.md)
-- [Korzystanie ze znaczników dekoracji, aby wyróżnić tekst](./hit-highlighting.md)
-- [Strona stron sieci Web](./page-webpages.md)
+- [Wywoływanie wyszukiwania niestandardowego](./search-your-custom-view.md)
+- [Konfigurowanie środowiska hostowanego interfejsu użytkownika](./hosted-ui.md)
+- [Wyróżnianie tekstu za pomocą znaczników dekoracji](./hit-highlighting.md)
+- [Dzielenie na strony wyników wyszukiwania stron internetowych](./page-webpages.md)

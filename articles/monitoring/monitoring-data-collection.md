@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: a810de5c3c70322560bb45bcc2aee5cf0798cea9
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 8aa79d66801ff30fedc725913696d5cfa3c9626f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248714"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282835"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Dane monitorowania zbierane przez usługi Azure Monitor
 [Usługa Azure Monitor](../azure-monitor/overview.md) jest to usługa, która pomaga monitorować Twoje aplikacje i zasoby korzystają z. Decydujące znaczenie dla tej funkcji jest przechowywanie danych telemetrycznych i innych danych z monitorowanych zasobów. Ten artykuł zawiera pełny opis jak te dane są przechowywane i używane przez usługi Azure Monitor.
@@ -98,7 +98,7 @@ Istnieją trzy podstawowe źródła metryki zebrane przez usługi Azure Monitor.
 Następujące zadania, które można wykonywać za pomocą metryk:
 
 - Użyj [Eksploratora metryk](../monitoring-and-diagnostics/monitoring-metric-charts.md) do analizowania zebranych metryk i vykreslit v je. Śledzić wydajność zasobu (np. maszyn wirtualnych, witryny sieci Web lub logiki aplikacji), przypinając wykresy, aby [pulpitu nawigacyjnego platformy Azure](../azure-portal/azure-portal-dashboards.md).
-- Konfigurowanie [regułę alertu metryki](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) która wyśle powiadomienie, lub trwa [zautomatyzowanej akcji](../monitoring-and-diagnostics/monitoring-action-groups.md) gdy Metryka przekracza próg.
+- Konfigurowanie [regułę alertu metryki](../monitoring-and-diagnostics/alert-metric.md) która wyśle powiadomienie, lub trwa [zautomatyzowanej akcji](../monitoring-and-diagnostics/monitoring-action-groups.md) gdy Metryka przekracza próg.
 - Użyj [skalowania automatycznego](../monitoring-and-diagnostics/monitoring-overview-autoscale.md) lub zwiększ zasoby na podstawie metryki przekroczenia wartości progowej.
 - Metryki tras do usługi Log Analytics do analizowania danych metryk wraz z danymi dziennika oraz do przechowywania wartości metryk przez okres dłuższy niż 93 dni. 
 - Stream metryki, aby [Centrum zdarzeń](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) do kierowania ich do [usługi Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) lub systemów zewnętrznych.
@@ -138,7 +138,7 @@ Zebrane przez usługi Azure Monitor dzienniki są przechowywane w usłudze Log A
 Usługa log Analytics może zbierać dane z różnych źródeł, zarówno w obrębie platformy Azure i z zasobami lokalnymi. Następujące źródła danych zapisanych w usłudze Log Analytics:
 
 - [Dzienniki aktywności](../log-analytics/log-analytics-activity.md) z zasobów platformy Azure, które obejmują informacje o swojej konfiguracji i kondycji i [dzienniki diagnostyczne](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) zapewniające wgląd w ich działania.
-- Agenci na [Windows](../log-analytics/log-analytics-windows-agent.md) i [Linux](../log-analytics/log-analytics-linux-agents.md) maszyn wirtualnych, które wysyłają dane telemetryczne z systemu operacyjnego gościa i aplikacji do usługi Log Analytics zgodnie z opisem w [źródeł danych](../log-analytics/log-analytics-data-sources.md) , należy skonfigurować.
+- Agenci na [Windows](../log-analytics/log-analytics-windows-agent.md) i [Linux](../log-analytics/log-analytics-quick-collect-linux-computer.md) maszyn wirtualnych, które wysyłają dane telemetryczne z systemu operacyjnego gościa i aplikacji do usługi Log Analytics zgodnie z opisem w [źródeł danych](../log-analytics/log-analytics-data-sources.md) , należy skonfigurować.
 - Dane aplikacji są zbierane przez [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/).
 - Danych zapewniające wgląd w określonej aplikacji lub usługi [rozwiązania do monitorowania](../monitoring/monitoring-solutions.md) lub funkcje, takie jak szczegółowe informacje o kontenerze, szczegółowych informacji z maszyny Wirtualnej lub grupy zasobów w szczegółowe informacje.
 - Dane zabezpieczeń gromadzone przez [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/).

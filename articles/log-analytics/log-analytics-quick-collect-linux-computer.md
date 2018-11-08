@@ -16,15 +16,15 @@ ms.date: 08/02/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: 01ada4e0bcd266d99071988532221611711e2f1b
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c6e090fe7e79de7b08e77fe7bb08d5f2bf53c9d5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418385"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282768"
 ---
 # <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>Konfigurowanie agenta usługi Log Analytics na komputerach z systemem Linux w środowisku hybrydowym
-Usługa [Azure Log Analytics](log-analytics-overview.md) umożliwia zbieranie danych bezpośrednio z fizycznych i wirtualnych komputerów z systemem Linux w centrum danych lub innym środowisku w chmurze do pojedynczego repozytorium na potrzeby szczegółowej analizy i korelacji.  W tym przewodniku Szybki start opisano, jak w kilku prostych krokach skonfigurować i rozpocząć zbieranie danych z komputera z systemem Linux.  Aby uzyskać informacje dotyczące maszyn wirtualnych platformy Azure z systemem Linux, zobacz następujący temat [Zbieranie danych dotyczących infrastruktury Azure Virtual Machines](log-analytics-quick-collect-azurevm.md).  
+Usługa [Azure Log Analytics](log-analytics-agent-windows.md) umożliwia zbieranie danych bezpośrednio z fizycznych i wirtualnych komputerów z systemem Linux w centrum danych lub innym środowisku w chmurze do pojedynczego repozytorium na potrzeby szczegółowej analizy i korelacji.  W tym przewodniku Szybki start opisano, jak w kilku prostych krokach skonfigurować i rozpocząć zbieranie danych z komputera z systemem Linux.  Aby uzyskać informacje dotyczące maszyn wirtualnych platformy Azure z systemem Linux, zobacz następujący temat [Zbieranie danych dotyczących infrastruktury Azure Virtual Machines](log-analytics-quick-collect-azurevm.md).  
 
 Aby poznać obsługiwaną konfigurację, przejrzyj tematy dotyczące [obsługiwanych systemów operacyjnych Linux](log-analytics-concept-hybrid.md#supported-linux-operating-systems) oraz [konfiguracji zapory sieciowej](log-analytics-concept-hybrid.md#network-firewall-requirements).
 

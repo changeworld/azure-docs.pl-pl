@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 819af52bb10c9ffcb7e1133437f6d0afbe6105ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fa38d0ef3d00bf5fdb886703cd882ec5ba552b95
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26629690"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234038"
 ---
 # <a name="hybrid-connections-overview"></a>Połączenia hybrydowe — omówienie
 
@@ -36,7 +36,7 @@ Połączenia hybrydowe są funkcją usługi Azure BizTalk Services. Połączenia
 Korzyści wynikające z użycia połączeń hybrydowych:
 
 * Funkcje Web Apps i Mobile Apps mogą w bezpieczny sposób uzyskać dostęp do istniejących lokalnych danych i usług.
-* Wiele aplikacji sieci Web lub aplikacji mobilnych może współdzielić połączenie hybrydowe, aby uzyskać dostęp do zasobu lokalnego.
+* Wiele aplikacji internetowych lub aplikacji mobilnych może współdzielić połączenie hybrydowe, aby uzyskać dostęp do zasobu lokalnego.
 * Do uzyskania dostępu do sieci potrzebne są minimalne porty TCP.
 * Aplikacje korzystające z połączeń hybrydowych uzyskują dostęp tylko do określonych zasobów lokalnych opublikowanych za pośrednictwem połączenia hybrydowego.
 * Mogą łączyć się z dowolnym zasobem lokalnym, który używa statycznego portu TCP, takim jak program SQL Server, MySQL, interfejsy API protokołu HTTP sieci Web i większość niestandardowych usług sieci Web.
@@ -46,7 +46,7 @@ Korzyści wynikające z użycia połączeń hybrydowych:
   > 
   > 
 * Można ich używać ze wszystkimi środowiskami obsługiwanymi przez funkcję Web Apps (.NET, PHP, Java, Python, Node.js) oraz funkcję Mobile Apps (Node.js, .NET).
-* Funkcje Web Apps oraz Mobile Apps mogą uzyskać dostęp do zasobów lokalnych w dokładnie taki sam sposób, jakby miało to miejsce, gdyby aplikacja sieci Web lub aplikacja mobilna znajdowały się w sieci lokalnej. Na przykład takie same parametry połączenia użyte lokalnie mogą być również używane na platformie Azure.
+* Funkcje Web Apps oraz Mobile Apps mogą uzyskać dostęp do zasobów lokalnych w dokładnie taki sam sposób, jakby miało to miejsce, gdyby aplikacja internetowa lub aplikacja mobilna znajdowały się w sieci lokalnej. Na przykład takie same parametry połączenia użyte lokalnie mogą być również używane na platformie Azure.
 
 Połączenia hybrydowe zapewniają także administratorom przedsiębiorstw widoczność zasobów firmy, do których uzyskują dostęp aplikacje hybrydowe, i kontrolę nad tymi zasobami, np.:
 
@@ -94,7 +94,7 @@ Połączenia hybrydowe używają następujących portów TCP:
 [Tworzenie połączeń hybrydowych i zarządzanie nimi](integration-hybrid-connection-create-manage.md)
 
 ## <a name="see-also"></a>Zobacz też
-[REST API for Managing BizTalk Services on Microsoft Azure (Interfejs API REST do zarządzania usługą BizTalk Services na platformie Microsoft Azure)](http://msdn.microsoft.com/library/azure/dn232347.aspx)  
+[REST API for Managing BizTalk Services on Microsoft Azure (Interfejs API REST do zarządzania usługą BizTalk Services na platformie Microsoft Azure)](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
 [BizTalk Services: Editions Chart (Usługa BizTalk Services: zestawienie wersji)](biztalk-editions-feature-chart.md)  
 [Tworzenie usługi BizTalk](biztalk-provision-services.md)  
 [BizTalk Services: Dashboard, Monitor and Scale tabs (Usługa BizTalk Services: karty Pulpit nawigacyjny, Monitor i Skalowanie)](biztalk-dashboard-monitor-scale-tabs.md)  

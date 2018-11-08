@@ -4,16 +4,16 @@ description: W tym artykule opisano, jak zasobu definicji zasad jest używany pr
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 0ff56b86243956d1fa6b51a6dfd14af9e00d8367
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: b5c7d0c6d54272518b19ffec0d8f02ebbcfe55d9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212781"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283295"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -123,12 +123,12 @@ W regule zasad możesz odwoływać się do parametrów za pomocą następującyc
 
 ## <a name="definition-location"></a>Lokalizacja definicji
 
-Podczas tworzenia definicji inicjatywy lub zasad, ważne jest, aby określić lokalizację definicji.
+Podczas tworzenia inicjatywy lub zasad, należy określić lokalizację definicji. Lokalizacja definicji musi być grupą zarządzania lub subskrypcji i określa zakres, do której można przypisać inicjatywy lub zasad. Zasoby muszą być bezpośredni członkowie lub elementy podrzędne w hierarchii Lokalizacja definicji docelową przypisania.
 
-Lokalizacja definicji określa zakres, do której można przypisać do definicji inicjatywy lub zasad. Lokalizację można określić jako grupę zarządzania lub subskrypcji.
+Jeśli lokalizacja definicji to:
 
-> [!NOTE]
-> Jeśli planowane jest zastosowanie tę definicję zasad do wielu subskrypcji, lokalizacji musi być zawierającą subskrypcje, które spowoduje przypisanie inicjatywy lub zasad grupy zarządzania.
+- **Subskrypcja** — tylko do zasobów w ramach tej subskrypcji można przypisać zasady.
+- **Grupa zarządzania** — tylko do zasobów w ramach subskrypcji podrzędnych i podrzędne grupy zarządzania można przypisać zasady. Jeśli planowane jest zastosowanie definicję zasad do wielu subskrypcji, lokalizacji musi być grupą zarządzania, który zawiera te subskrypcje.
 
 ## <a name="display-name-and-description"></a>Nazwę wyświetlaną i opis
 
@@ -146,7 +146,7 @@ W **następnie** bloku, należy zdefiniować wpływ, jaki się stanie, gdy **Je�
         <condition> | <logical operator>
     },
     "then": {
-        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
+        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists | disabled"
     }
 }
 ```
@@ -232,7 +232,8 @@ Zasady obsługuje następujące typy wpływu:
 - **Inspekcja**: generuje to zdarzenie ostrzegawcze w dzienniku aktywności, ale zwraca Niepowodzenie żądania
 - **Dołącz**: dodaje zestaw zdefiniowanych pól do żądania
 - **AuditIfNotExists**: umożliwia inspekcję, jeśli zasób nie istnieje.
-- **DeployIfNotExists**: wdraża zasobu, jeśli jeszcze nie istnieje.
+- **DeployIfNotExists**: wdraża zasobu, jeśli jeszcze nie istnieje
+- **Wyłączone**: nie może oszacować zasoby pod kątem zgodności z regułą zasad
 
 Aby uzyskać **Dołącz**, należy podać następujące informacje:
 
@@ -247,6 +248,18 @@ Aby uzyskać **Dołącz**, należy podać następujące informacje:
 Wartość może być ciąg lub obiekt do formatu JSON.
 
 Za pomocą **AuditIfNotExists** i **DeployIfNotExists** można ocenić istnienie powiązanego zasobu i Zastosuj regułę i odpowiedni wpływ, gdy ten zasób nie istnieje. Na przykład można wymagać, że usługi network watcher jest wdrażana dla wszystkich sieci wirtualnych. Aby uzyskać przykład inspekcję, gdy rozszerzenie maszyny wirtualnej nie została wdrożona, zobacz [inspekcji, jeśli rozszerzenie nie istnieje](../samples/audit-ext-not-exist.md).
+
+**DeployIfNotExists** wymaga efekt **roleDefinitionId** właściwość **szczegóły** część reguły. Aby uzyskać więcej informacji, zobacz [korygowania — konfigurowanie definicji zasad](../how-to/remediate-resources.md#configure-policy-definition).
+
+```json
+"details": {
+    ...
+    "roleDefinitionIds": [
+        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+        "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
+    ]
+}
+```
 
 Aby uzyskać szczegółowe informacje dotyczące każdego skutku, kolejność oceny, właściwości i przykłady, zobacz [zrozumienie zasad efekty](effects.md).
 

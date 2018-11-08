@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: acb3297b8d7af1a91563fb2f519e06bc49c65695
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ae6964b36f837931f2278ceef0b330f9badb1d71
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314622"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282717"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory uwierzytelnianie przekazywane: Bieżące ograniczenia
 
@@ -54,7 +54,7 @@ Włączanie synchronizacji skrótów haseł z opcją uwierzytelnianie trybu fail
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Szybki start](how-to-connect-pta-quick-start.md): Szybkie rozpoczynanie pracy przy użyciu uwierzytelniania przekazywanego usługi AD platformy Azure.
-- [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
+- [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://aka.ms/ADFSTOPTADPDownload) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
 - [Blokada Smart](../authentication/howto-password-smart-lockout.md): informacje dotyczące konfigurowania funkcji inteligentnej blokady na swoją dzierżawę, aby chronić kont użytkowników.
 - [Rozbudowana technicznie](how-to-connect-pta-how-it-works.md): zrozumienie sposobu działania funkcji uwierzytelniania przekazywanego.
 - [Często zadawane pytania dotyczące](how-to-connect-pta-faq.md): odpowiedzi na często zadawane pytania dotyczące funkcji uwierzytelniania przekazywanego.

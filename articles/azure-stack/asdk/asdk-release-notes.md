@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2018
+ms.date: 11/07/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 284a964162a2374287b42698b9a2021be36590dd
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 8e8518cdf95e1b97bd4b641322c1b2a3fdc3bf9e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158163"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282462"
 ---
 # <a name="asdk-release-notes"></a>Informacje o wersji ASDK  
 Ten artykuł zawiera informacje dotyczące ulepszeń, poprawek i znanych problemach w usłudze Azure Stack Development Kit (ASDK). Jeśli nie masz pewności, której wersji używasz, możesz to zrobić [korzystanie z portalu, aby sprawdzić](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -99,6 +99,9 @@ Aby uzyskać więcej informacji, zobacz [przekazywania usługi syslog usługi Az
 
 
 #### <a name="compute"></a>Wystąpienia obliczeniowe 
+
+<!-- TBD – IS, ASDK -->
+- Ponowne dołączenie odłączono dysk do tej samej maszyny wirtualnej (VM) z taką samą nazwę i numer LUN zakończy się niepowodzeniem z powodu błędu takich jak **nie można dołączyć dysku danych "datadisk" do maszyny Wirtualnej "vm1"**. Ten błąd występuje, ponieważ dysk jest obecnie odłączany lub ostatnia odłączanie operacja nie powiodła się. Zaczekaj, aż dysk zostanie całkowicie odłączony a następnie spróbuj ponownie lub usuń bądź Odłącz dysk jawnie ponownie. Obejście polega na dołączyć go ponownie z inną nazwą lub w innej jednostce LUN. 
 
 <!-- 3235634 – IS, ASDK -->
 - Aby wdrożyć maszyny wirtualne o rozmiarach zawierający **v2** sufiks; na przykład **maszyna wirtualna standard_a2_v2 —**, określ sufiks jako **maszyna wirtualna standard_a2_v2 —** (v małe litery). Nie używaj **maszyna wirtualna Standard_A2_V2** (wielkie litery V). To działa na platformie Azure globalnych i niezgodności w usłudze Azure Stack.

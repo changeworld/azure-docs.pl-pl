@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b3b686815b86e28c0473668825b89736b9af5bf1
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: f2e18db7bd1766901ffb36cc74172f4c8414135c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740489"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232893"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Samouczek: rozpakowywanie, podłączanie i odblokowywanie urządzenia Azure Data Box Disk
 
@@ -75,7 +75,7 @@ Aby podłączyć i odblokować dyski, wykonaj następujące czynności.
     W procedurze poniżej będziesz używać wyłącznie narzędzia do odblokowywania dysków Data Box Disk. Pozostałe dwa narzędzia zostaną użyte później.
 
     > [!div class="nextstepaction"]
-    > [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Windows](http://aka.ms/databoxdisktoolswin)         
+    > [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Windows](https://aka.ms/databoxdisktoolswin)         
 
 3. Wyodrębnij zestaw narzędzi na komputerze, którego użyjesz do skopiowania danych. 
 4. Otwórz okno wiersza polecenia lub uruchom program Windows PowerShell jako administrator na tym samym komputerze.
@@ -131,7 +131,7 @@ Aby podłączyć i odblokować dyski, wykonaj następujące czynności.
 2. Pobierz zestaw narzędzi dla dysków Data Box Disk przeznaczony dla klienta z systemem Linux.  
 
     > [!div class="nextstepaction"]
-    > [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Linux](http://aka.ms/databoxdisktoolslinux) 
+    > [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Linux](https://aka.ms/databoxdisktoolslinux) 
 
 3. Otwórz terminal na komputerze klienckim z systemem Linux. Przejdź do folderu, do którego pobrano oprogramowanie. Zmień uprawnienia do plików, aby umożliwić ich uruchomienie. Wpisz następujące polecenie: 
 
