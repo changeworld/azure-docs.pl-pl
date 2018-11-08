@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: df48e0dbf5a6c010f659e1019e56b7670c264234
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: bd2b28a7f8d0a765e10ffa58b5a72b4bd5bc47b0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319697"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228185"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>Zastrzeżone adresy IP (wdrażanie klasyczne)
 
@@ -43,7 +43,7 @@ Aby dowiedzieć się więcej o adresach IP na platformie Azure, przeczytaj [adre
 - Jak wiele zastrzeżonych adresów IP można mieć?
     Aby uzyskać więcej informacji, zobacz [limitów platformy Azure](../azure-subscription-service-limits.md#networking-limits) artykułu.
 - Zastrzeżone adresy IP jest opłaty?
-    Czasami. Aby uzyskać szczegółowe informacje o cenach, zobacz [zastrzeżonego adresu IP adres — szczegóły cennika](http://go.microsoft.com/fwlink/?LinkID=398482) strony.
+    Czasami. Aby uzyskać szczegółowe informacje o cenach, zobacz [zastrzeżonego adresu IP adres — szczegóły cennika](https://go.microsoft.com/fwlink/?LinkID=398482) strony.
 - Jak zastrzec adres IP?
     Można użyć programu PowerShell, [interfejsu API REST zarządzania Azure](https://msdn.microsoft.com/library/azure/dn722420.aspx), lub [witryny Azure portal](https://portal.azure.com) do rezerwowania adresu IP w regionie platformy Azure. Zastrzeżony adres IP jest skojarzony z subskrypcją.
 - Czy można używać zastrzeżonego adresu IP, za pomocą sieci wirtualne oparte na grupie koligacji?
@@ -83,7 +83,7 @@ Oczekiwane dane wyjściowe:
     OperationStatus      : Succeeded
 
 >[!NOTE]
->Kiedy tworzysz zastrzeżonego adresu IP przy użyciu programu PowerShell, nie można określić grupę zasobów, aby utworzyć zastrzeżonego adresu IP w. Azure umieszcza go do grupy zasobów o nazwie *domyślnej sieci* automatycznie. Jeśli tworzysz zastrzeżonego adresu IP za pomocą [witryny Azure portal](http://portal.azure.com), możesz określić wszystkie grupy zasobów, możesz wybrać. Jeśli tworzysz zastrzeżonego adresu IP w grupie zasobów innej niż *domyślnej sieci* jednak zawsze, gdy odwołujesz się zastrzeżonego adresu IP za pomocą poleceń takich jak `Get-AzureReservedIP` i `Remove-AzureReservedIP`, musi odwoływać się do nazwy  *Nazwa grupy zasobów zarezerwowanych adresów ip — Nazwa grupy*.  Na przykład, jeśli tworzysz zastrzeżony adres IP o nazwie *myReservedIP* w grupie zasobów o nazwie *myResourceGroup*, musi odwoływać się nazwa zastrzeżonego adresu IP jako *grupie myResourceGroup myReservedIP*.   
+>Kiedy tworzysz zastrzeżonego adresu IP przy użyciu programu PowerShell, nie można określić grupę zasobów, aby utworzyć zastrzeżonego adresu IP w. Azure umieszcza go do grupy zasobów o nazwie *domyślnej sieci* automatycznie. Jeśli tworzysz zastrzeżonego adresu IP za pomocą [witryny Azure portal](http://portal.azure.com), możesz określić wszystkie grupy zasobów, możesz wybrać. Jeśli tworzysz zastrzeżonego adresu IP w grupie zasobów innej niż *domyślnej sieci* jednak zawsze, gdy odwołujesz się zastrzeżonego adresu IP za pomocą poleceń takich jak `Get-AzureReservedIP` i `Remove-AzureReservedIP`, musi odwoływać się do nazwy  *Nazwa grupy zasobów zarezerwowanych adresów ip — Nazwa grupy*.  Na przykład, jeśli tworzysz zastrzeżony adres IP o nazwie *myReservedIP* w grupie zasobów o nazwie *myResourceGroup*, musi odwoływać się nazwa zastrzeżonego adresu IP jako *grupie myResourceGroup myReservedIP*.   
 
 
 Po jest zastrzeżony adres IP, pozostaje skojarzona z subskrypcji do momentu ich usunięcia. Usuń zastrzeżony adres IP w następujący sposób:
