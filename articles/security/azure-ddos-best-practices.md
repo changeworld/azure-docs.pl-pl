@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 29aea0171c767b2188e3eac23b1d61ffbda8e284
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 37748aaa7f34a51d24091ee04608496ebd45fa90
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986854"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231638"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Usługa Azure DDoS Protection: Najlepsze rozwiązania i architektury referencyjne
 
@@ -28,7 +28,7 @@ Projektowanie pod kątem rozproszona odmowa usługi (DDoS) odporności wymaga pl
 
 ## <a name="types-of-attacks"></a>Rodzaje ataków
 
-Przed atakami DDoS jest typem ataku, który próbuje wyczerpaniu zasobów aplikacji. Celem jest wpływ na dostępność aplikacji i jego zdolność do obsługi żądań uzasadnione. Ataki stają się coraz bardziej złożone i większy rozmiar i wpływu. Ataki DDoS mogą być przeznaczone dla dowolnego punktu końcowego, który jest publicznie dostępny za pośrednictwem Internetu.
+Przed atakami DDoS jest typem ataku, który próbuje wyczerpaniu zasobów aplikacji. Celem jest wpływ na dostępność aplikacji i jego zdolność do obsługi żądań uzasadnione. Ataki stają się coraz bardziej złożone i większy rozmiar i wpływu. Celem ataku DDoS może być dowolny punkt końcowy publicznie dostępny za pośrednictwem Internetu.
 
 System Azure oferuje ciągłą ochronę przed atakami DDoS. Ta ochrona jest zintegrowana z platformą Azure, domyślnie, a także bez dodatkowych kosztów. 
 
@@ -75,7 +75,7 @@ Upewnij się, że bezpieczeństwo to priorytet w całym cyklu życia aplikacji, 
 Aby zabezpieczyć usługi uruchomionej na Microsoft Azure, należy dysponować dobrą znajomością architektury aplikacji i skoncentrować się na [pięciu filarów jakości oprogramowania](https://docs.microsoft.com/azure/architecture/guide/pillars).
 Typowe ruchu woluminów, należy wiedzieć modelu łączności między aplikacją i innymi aplikacjami i punktów końcowych usługi, które są dostępne do publicznego Internetu.
 
-Zapewnia, że aplikacja jest odporność obsługi typu "odmowa usługi, która jest przeznaczona dla aplikacji" jest dla Ciebie najważniejsza. Bezpieczeństwo i ochrona prywatności są wbudowane w platformy Azure, począwszy od [cykl projektowania zabezpieczeń (SDL)](https://www.microsoft.com/sdl/default.aspx). Proces SDL, zapewnia bezpieczeństwo na każdym etapie programowania i gwarantuje, że Azure jest stale aktualizowana się jeszcze bardziej bezpieczne.
+Zapewnia, że aplikacja jest odporność obsługi typu "odmowa usługi, która jest przeznaczona dla aplikacji" jest dla Ciebie najważniejsza. Bezpieczeństwo i ochrona prywatności są wbudowane w platformy Azure, począwszy od [cykl projektowania zabezpieczeń (SDL)](https://www.microsoft.com/sdl/default.aspx). Proces SDL, zapewnia bezpieczeństwo na każdym etapie programowania i gwarantuje, że Azure jest stale aktualizowana się jeszcze bardziej bezpieczne.
 
 ### <a name="design-for-scalability"></a>Projektowanie pod kątem skalowalności
 
@@ -182,7 +182,7 @@ Cyberbezpieczeństwa wymaga stałej innowacji w obrony. Usługa Azure Standard p
 
 Ataków DDoS, który jest przeznaczony dla zasobów platformy Azure, zwykle wymaga minimalnej interwencji z punktu widzenia użytkownika. Mimo dołączanie przed atakami DDoS środki zaradcze w ramach strategii reagowania na zdarzenia pomaga zminimalizować wpływ na ciągłość prowadzenia działalności biznesowej.
 
-### <a name="microsoft-threat-intelligence"></a>Analizy zagrożeń firmy Microsoft
+### <a name="microsoft-threat-intelligence"></a>Analiza zagrożeń firmy Microsoft
 
 Firma Microsoft dysponuje siecią analizy zagrożeń rozbudowane. Ta sieć używa wiedzy zbiorczej o społeczności rozszerzone zabezpieczenia, który obsługuje usługi online firmy Microsoft, partnerów firmy Microsoft i relacje w branży zabezpieczeń internet. 
 
@@ -265,7 +265,7 @@ W ramach tej architektury Standard ochrony przed atakami DDoS jest włączone w 
 
 #### <a name="paas-web-application"></a>Aplikacja internetowa PaaS
 
-Ta architektura referencyjna pokazuje, uruchomienie aplikacji usługi Azure App Service w jednym regionie. W tej architekturze przedstawiono zestaw sprawdzonych rozwiązań dotyczących aplikacji sieci web, która używa [usługi Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) i [usługi Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
+Ta architektura referencyjna pokazuje, uruchomienie aplikacji usługi Azure App Service w jednym regionie. W tej architekturze przedstawiono zestaw sprawdzonych rozwiązań dotyczących aplikacji sieci web, która używa [usługi Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) i [usługi Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
 Region rezerwy jest skonfigurowany dla scenariuszy pracy awaryjnej.
 
 ![Diagram architektury referencyjnej dla aplikacji sieci web PaaS](media/azure-ddos-best-practices/image11.png)
@@ -300,6 +300,6 @@ Aby uzyskać więcej informacji na temat tej architektury referencyjnej, zobacz 
 
 * [Strona produktu usługi Azure DDoS Protection](https://azure.microsoft.com/services/ddos-protection/)
 
-* [Blog dotyczący platformy Azure DDoS Protection](http://aka.ms/ddosblog)
+* [Blog dotyczący platformy Azure DDoS Protection](https://aka.ms/ddosblog)
 
 * [Dokumentacja usługi Azure DDoS Protection](../virtual-network/ddos-protection-overview.md)

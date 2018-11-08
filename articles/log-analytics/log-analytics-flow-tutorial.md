@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 224d5673b374b9b30237d25113e07aaf6dd4feaf
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 77d47b1f4946a8539b58b9335b967321b6bbf2e9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960980"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259874"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Automatyzacja procesów usługi Log Analytics przy użyciu łącznika dla Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) pozwala tworzyć zautomatyzowane przepływy pracy przy użyciu setek akcji dla wielu usług. Dane wyjściowe z akcji może służyć jako dane wejściowe do innego, co pozwala na tworzenie integracja między różnymi usługami.  Łącznik usługi Azure Log Analytics dla Microsoft Flow, umożliwiają tworzenie przepływów pracy, które zawierają dane pobierane przez wyszukiwań w dziennikach w usłudze Log Analytics.
@@ -29,7 +29,7 @@ Samouczek, w tym artykule pokazano, jak utworzyć przepływ, który automatyczni
 
 
 ## <a name="step-1-create-a-flow"></a>Krok 1: Tworzenie przepływu
-1. Zaloguj się do [Microsoft Flow](http://flow.microsoft.com)i wybierz **moje przepływy**.
+1. Zaloguj się do [Microsoft Flow](https://flow.microsoft.com)i wybierz **moje przepływy**.
 2. Kliknij przycisk **+ Utwórz z pustego**.
 
 ## <a name="step-2-create-a-trigger-for-your-flow"></a>Krok 2: Tworzenie wyzwalacza przepływu
@@ -79,7 +79,7 @@ Samouczek, w tym artykule pokazano, jak utworzyć przepływ, który automatyczni
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [przeszukiwanie dzienników w usłudze Log Analytics](log-analytics-log-search.md).
+- Dowiedz się więcej o [przeszukiwanie dzienników w usłudze Log Analytics](log-analytics-queries.md).
 - Dowiedz się więcej o [Microsoft Flow](https://ms.flow.microsoft.com).
 
 

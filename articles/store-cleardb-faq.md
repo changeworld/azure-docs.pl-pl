@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f145e879dab4484d647cf8ea21582958df0f0cd4
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: cce6555c71829110781a6dd13757078b105dbb41
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665726"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230635"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Często zadawane pytania dotyczące baz danych ClearDB MySQL w usłudze Azure App Service
 Często zadawane pytania odpowiedzi na często zadawane pytania dotyczące używania i kupowanie baz danych ClearDB MySQL dla aplikacji sieci Web platformy Azure.
@@ -106,7 +106,7 @@ Klienci z pośrednią umową EA można znaleźć subskrypcjami w witrynie Azure 
 Dostęp do portalu Azure Marketplace dla usługi innych firm może być zarządzane przez administratorów rejestracji EA Azure. One wyłączone, lub ponownie włączyć dostęp do 3 zakupów od innych firm z Store w subskrypcji i zarządzanie kontami w sekcji konta w witrynie Enterprise Portal.
 
 ## <a name="who-do-i-contact-for-questions-about-my-bill-for-cleardb-services-in-my-ea-subscription"></a>Jak skontaktować się pytania dotyczące mojego rachunku usługi ClearDB w mojej subskrypcji umowy EA?
-Skontaktuj się z pomocą [pomoc techniczną dla przedsiębiorstw klienta](http://aka.ms/AzureEntSupport) w odniesieniu do rozliczeń w ramach rejestracji umowy EA. Zespół pomocy technicznej w portalu EA będą odpowiedź na Twoje pytanie lub pomóc w rozwiązaniu problemu.
+Skontaktuj się z pomocą [pomoc techniczną dla przedsiębiorstw klienta](https://aka.ms/AzureEntSupport) w odniesieniu do rozliczeń w ramach rejestracji umowy EA. Zespół pomocy technicznej w portalu EA będą odpowiedź na Twoje pytanie lub pomóc w rozwiązaniu problemu.
 
 ## <a name="more-information"></a>Więcej informacji
 [Portal Azure Marketplace — często zadawane pytania](https://azure.microsoft.com/marketplace/faq/)

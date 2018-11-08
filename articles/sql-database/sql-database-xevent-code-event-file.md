@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 302607df2292fe7a67a8b6860dab19eef7f391a9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 8577b6a1d0f57820cbdd4096b0e8412096ff3af3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160370"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232080"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Kod docelowy pliku zdarzenia dla rozszerzonych zdarzeń w bazie danych SQL
 
@@ -25,7 +25,7 @@ ms.locfileid: "47160370"
 
 Cały przykładowy kod ma niezawodny sposób przechwytywania i przekazuje informacje dla zdarzeń rozszerzonych.
 
-W programie Microsoft SQL Server [element docelowy pliku zdarzenia](http://msdn.microsoft.com/library/ff878115.aspx) służy do przechowywania danych zdarzeń wyjściowych do pliku lokalnego dysku twardego. Ale takie pliki nie są dostępne dla usługi Azure SQL Database. Zamiast tego używamy usługi Azure Storage do obsługi element docelowy pliku zdarzenia.
+W programie Microsoft SQL Server [element docelowy pliku zdarzenia](https://msdn.microsoft.com/library/ff878115.aspx) służy do przechowywania danych zdarzeń wyjściowych do pliku lokalnego dysku twardego. Ale takie pliki nie są dostępne dla usługi Azure SQL Database. Zamiast tego używamy usługi Azure Storage do obsługi element docelowy pliku zdarzenia.
 
 W tym temacie przedstawiono przykładowy kod dwufazowe:
 
@@ -44,9 +44,9 @@ W tym temacie przedstawiono przykładowy kod dwufazowe:
 * SQL Server Management Studio (ssms.exe), najlepiej jej najnowszej miesięcznych aktualizacji wersji. 
   Możesz pobrać najnowszą ssms.exe od:
   
-  * Temat zatytułowany [pobierania programu SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).
-  * [Bezpośredni link do pobierania.](http://go.microsoft.com/fwlink/?linkid=616025)
-* Konieczne jest posiadanie [modułów programu Azure PowerShell](http://go.microsoft.com/?linkid=9811175) zainstalowane.
+  * Temat zatytułowany [pobierania programu SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+  * [Bezpośredni link do pobierania.](https://go.microsoft.com/fwlink/?linkid=616025)
+* Konieczne jest posiadanie [modułów programu Azure PowerShell](https://go.microsoft.com/?linkid=9811175) zainstalowane.
   
   * Moduły udostępniają polecenia, takie jak - **New-AzureStorageAccount**.
 
@@ -506,11 +506,11 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 Powyższy skrypt języka Transact-SQL umożliwia odczyt event_file następującą funkcję systemu:
 
-* [sys.fn_xe_file_target_read_file (Transact-SQL)](http://msdn.microsoft.com/library/cc280743.aspx)
+* [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
 
 Wyjaśnienie zaawansowane opcje wyświetlania danych od zdarzeń rozszerzonych znajduje się w temacie:
 
-* [Zaawansowane wyświetlanie danych docelowych z zdarzenia rozszerzone](http://msdn.microsoft.com/library/mt752502.aspx)
+* [Zaawansowane wyświetlanie danych docelowych z zdarzenia rozszerzone](https://msdn.microsoft.com/library/mt752502.aspx)
 
 
 ## <a name="converting-the-code-sample-to-run-on-sql-server"></a>Konwertowanie przykładowego kodu do uruchamiania w programie SQL Server
@@ -528,10 +528,10 @@ Załóżmy, że chcesz uruchomić powyższego przykładu języka Transact-SQL, p
 Aby uzyskać więcej informacji na temat kont i kontenery w usłudze Azure Storage zobacz:
 
 * [Jak używać magazynu obiektów Blob w języku .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
-* [Nazewnictwo i odwołania do kontenerów, obiektów blob i metadanych](http://msdn.microsoft.com/library/azure/dd135715.aspx)
-* [Praca z nadrzędny kontener](http://msdn.microsoft.com/library/azure/ee395424.aspx)
-* [Lekcja 1: Tworzenie przechowywanych zasad dostępu i sygnatury dostępu współdzielonego kontenera platformy Azure](http://msdn.microsoft.com/library/dn466430.aspx)
-  * [Lekcja 2: Tworzenie poświadczeń programu SQL Server przy użyciu sygnatury dostępu współdzielonego](http://msdn.microsoft.com/library/dn466435.aspx)
+* [Nazewnictwo i odwołania do kontenerów, obiektów blob i metadanych](https://msdn.microsoft.com/library/azure/dd135715.aspx)
+* [Praca z nadrzędny kontener](https://msdn.microsoft.com/library/azure/ee395424.aspx)
+* [Lekcja 1: Tworzenie przechowywanych zasad dostępu i sygnatury dostępu współdzielonego kontenera platformy Azure](https://msdn.microsoft.com/library/dn466430.aspx)
+  * [Lekcja 2: Tworzenie poświadczeń programu SQL Server przy użyciu sygnatury dostępu współdzielonego](https://msdn.microsoft.com/library/dn466435.aspx)
 * [Rozszerzone zdarzenia dla programu Microsoft SQL Server](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
 
 <!--

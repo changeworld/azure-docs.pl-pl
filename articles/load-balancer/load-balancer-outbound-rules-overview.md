@@ -4,8 +4,6 @@ description: Użyj reguł dla ruchu wychodzącego do definiowania tłumaczenia a
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jpconnock
-tags: azure-resource-manager
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 0ba7ed902c6ecb7a328aa6db3d3855b88bed2813
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: ab09eb939d760a0f06be758fdf83591565aaf7d0
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637566"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219379"
 ---
 # <a name="load-balancer-outbound-rules"></a>Reguły ruchu wychodzącego modułu równoważenia obciążenia
 
@@ -67,11 +65,11 @@ Wersja "2018-07-01" interfejsu API pozwala na definicję reguły ruchu wychodzą
 
 ### <a name="scale"></a> Skala NAT dla ruchu wychodzącego z wieloma adresami IP
 
-Chociaż regułę dla ruchu wychodzącego, mogą być używane z tylko jednego publicznego adresu IP, reguły ruchu wychodzącego do jej obsługi ułatwiają obciążenia konfiguracji skalowania wychodzących reguł NAT. Wiele adresów IP umożliwia planowanie scenariusze o dużej skali i można użyć reguł dla ruchu wychodzącego, aby uniknąć [wyczerpania SNAT](load-balancer-outbound-connections.md#snatexhaust) podatne wzorców.  
+Chociaż regułę dla ruchu wychodzącego, mogą być używane z tylko jednego publicznego adresu IP, reguły ruchu wychodzącego do jej obsługi ułatwiają obciążenia konfiguracji skalowania wychodzących reguł NAT. Wiele adresów IP umożliwia zaplanowanie na dużą skalę scenariuszach i można użyć reguł dla ruchu wychodzącego, aby uniknąć [wyczerpania SNAT](load-balancer-outbound-connections.md#snatexhaust) podatne wzorców.  
 
-Poszczególnych dodatkowych adresów IP, które są dostarczane przez frontonu zapewnia 64 000 portów tymczasowych dla modułu równoważenia obciążenia do użycia jako SNAT portów. Chociaż Równoważenie obciążenia i reguł translatora adresów Sieciowych dla ruchu przychodzącego pojedynczego serwera sieci Web, reguły ruchu wychodzącego rozwija pojęcie frontonu i zezwala na wiele frontonów dla każdej reguły.  Wiele frontonów dla każdej reguły ilość dostępnych portów SNAT jest mnożona każdy publiczny adres IP i mogą być obsługiwane scenariusze bardzo duże.
+Poszczególnych dodatkowych adresów IP, które są dostarczane przez frontonu zapewnia 64 000 portów tymczasowych dla modułu równoważenia obciążenia do użycia jako SNAT portów. Chociaż Równoważenie obciążenia i reguł translatora adresów Sieciowych dla ruchu przychodzącego pojedynczego serwera sieci Web, reguły ruchu wychodzącego rozwija pojęcie frontonu i zezwala na wiele frontonów dla każdej reguły.  Wiele frontonów dla każdej reguły ilość dostępnych portów SNAT jest mnożona każdy publiczny adres IP i dużych scenariusze, które mogą być obsługiwane.
 
-Ponadto można użyć [publiczny prefiks IP](https://aka.ms/lbpublicipprefix) bezpośrednio za pomocą regułę dla ruchu wychodzącego.  Zapewnia to łatwiejsze skalowanie oraz uproszczone umieszczania na białej liście przepływy pochodzące z wdrożenie systemu Azure. Można skonfigurować konfigurację adresu IP frontonu w ramach zasobu modułu równoważenia obciążenia można przywoływać publiczny prefiks adresu IP bezpośrednio.  Dzięki temu moduł równoważenia obciążenia wyłączną kontrolę nad publiczny prefiks adresu IP i reguły ruchu wychodzącego automatycznie użyje wszystkich publicznych adresów IP zawartych w publiczny prefiks adresu IP dla połączeń wychodzących.  Każdy z adresów IP w zakresie publiczny prefiks IP zapewniają 64 000 portów tymczasowych dla adresu IP dla modułu równoważenia obciążenia do użycia jako SNAT portów.   
+Ponadto można użyć [publiczny prefiks IP](https://aka.ms/lbpublicipprefix) bezpośrednio za pomocą regułę dla ruchu wychodzącego.  Za pomocą publicznego adresu IP prefiksu umożliwia łatwiejsze skalowanie i uproszczone stosując białą listę przepływów, pochodzących z wdrożenie systemu Azure. Można skonfigurować konfigurację adresu IP frontonu w ramach zasobu modułu równoważenia obciążenia można przywoływać publiczny prefiks adresu IP bezpośrednio.  Dzięki temu moduł równoważenia obciążenia wyłączną kontrolę nad publiczny prefiks adresu IP i reguły ruchu wychodzącego automatycznie użyje wszystkich publicznych adresów IP zawartych w publiczny prefiks adresu IP dla połączeń wychodzących.  Każdy z adresów IP w zakresie publiczny prefiks IP zapewniają 64 000 portów tymczasowych dla adresu IP dla modułu równoważenia obciążenia do użycia jako SNAT portów.   
 
 Nie może mieć poszczególne zasoby adresów publicznych adresów IP utworzone na podstawie publiczny prefiks adresu IP przy użyciu tej opcji, jak reguły ruchu wychodzącego musi mieć pełną kontrolę nad publiczny prefiks adresu IP.  Jeśli potrzebujesz bardziej szczegółową kontrolę poprawnie, można utworzyć indywidualne zasób publicznego adresu IP z publicznych adresów IP prefiksu i przypisać wiele publicznych adresów IP indywidualnie do frontonu regułę dla ruchu wychodzącego.
 

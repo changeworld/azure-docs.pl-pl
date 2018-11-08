@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/31/2018
-ms.openlocfilehash: 233e6e9bccd8729cd61514f2855799cf3d22d72b
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 71a23e982f1e4ae5609d4f9a160cd1861e043ea1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914672"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251819"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kody błędów SQL dla aplikacji klienckich, SQL Database: błędy połączeń i inne problemy z bazy danych
 
@@ -45,7 +45,7 @@ Aby uzyskać przykłady kodu logikę ponawiania próby zobacz:
 * [Biblioteki połączeń dla usługi SQL Database i programu SQL Server](sql-database-libraries.md) 
 * [Działania, aby naprawić błędy połączeń i błędów przejściowych w usłudze SQL Database](sql-database-connectivity-issues.md)
 
-Omówienie *czasu blokowania* dla klientów używających ADO.NET jest dostępna w [programu SQL Server połączenia puli (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx).
+Omówienie *czasu blokowania* dla klientów używających ADO.NET jest dostępna w [programu SQL Server połączenia puli (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx).
 
 ### <a name="transient-fault-error-codes"></a>Kody błędów przejściowych błędów
 Następujące błędy są przejściowe i powinno być ponowione w aplikacji logiki: 
@@ -94,8 +94,8 @@ Tematy pokrewne:
 
 | Kod błędu | Ważność | Opis |
 | ---:| ---:|:--- |
-| 10928 |20 |Identyfikator zasobu: %d. Limit %s dla bazy danych wynosi %d i został osiągnięty. Aby uzyskać więcej informacji, zobacz [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637).<br/><br/>Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2.<br/><br/>Aby uzyskać więcej informacji na temat tego błędu i sposobie jego rozwiązania zobacz:<br/>• [Limity zasobów usługi azure SQL Database](sql-database-service-tiers-dtu.md). |
-| 10929 |20 |Identyfikator zasobu: %d. Gwarancji minimalne %s to %d, maksymalny limit to %d, a bieżące użycie dla bazy danych to %d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania przekracza %d dla tej bazy danych. Aby uzyskać więcej informacji, zobacz [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637). W przeciwnym razie spróbuj ponownie później.<br/><br/>Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2.<br/><br/>Aby uzyskać więcej informacji na temat tego błędu i sposobie jego rozwiązania zobacz:<br/>• [Limity zasobów usługi azure SQL Database](sql-database-service-tiers-dtu.md). |
+| 10928 |20 |Identyfikator zasobu: %d. Limit %s dla bazy danych wynosi %d i został osiągnięty. Aby uzyskać więcej informacji, zobacz [http://go.microsoft.com/fwlink/?LinkId=267637](https://go.microsoft.com/fwlink/?LinkId=267637).<br/><br/>Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2.<br/><br/>Aby uzyskać więcej informacji na temat tego błędu i sposobie jego rozwiązania zobacz:<br/>• [Limity zasobów usługi azure SQL Database](sql-database-service-tiers-dtu.md). |
+| 10929 |20 |Identyfikator zasobu: %d. Gwarancji minimalne %s to %d, maksymalny limit to %d, a bieżące użycie dla bazy danych to %d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania przekracza %d dla tej bazy danych. Aby uzyskać więcej informacji, zobacz [http://go.microsoft.com/fwlink/?LinkId=267637](https://go.microsoft.com/fwlink/?LinkId=267637). W przeciwnym razie spróbuj ponownie później.<br/><br/>Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2.<br/><br/>Aby uzyskać więcej informacji na temat tego błędu i sposobie jego rozwiązania zobacz:<br/>• [Limity zasobów usługi azure SQL Database](sql-database-service-tiers-dtu.md). |
 | 40544 |20 |Baza danych osiągnęła limit przydziału rozmiaru. Partycji lub Usuń dane, Porzuć indeksy lub zapoznaj się z dokumentacją, aby ustalić możliwe rozwiązania. |
 | 40549 |16 |Sesja jest przerwana z powodu długotrwałej transakcji. Spróbuj skrócić transakcję. |
 | 40550 |16 |Sesja została przerwana, ponieważ uzyskała zbyt wiele blokad. Spróbuj odczytu lub modyfikować mniej wierszy w ramach jednej transakcji. |
@@ -109,7 +109,7 @@ Następujące błędy odnoszą się do tworzenia i używania pul elastycznych:
 | Kod błędu | Ważność | Opis | Działania naprawcze |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |Osiągnięto limit przestrzeni dyskowej w puli elastycznej. Użycie magazynu dla puli elastycznej nie może przekroczyć (%d) MB. Podjęto próbę zapisu danych do bazy danych, gdy został osiągnięty limit magazynu elastycznej puli. |Należy rozważyć zwiększenie Dtu i/lub Dodawanie magazynu do elastycznej puli, jeśli jest to możliwe, aby zwiększyć limit przestrzeni dyskowej, zmniejszenie miejsca używanego przez poszczególnych baz danych w puli elastycznej lub usuwać bazy danych z puli elastycznej. |
-| 10929 | 16 |Gwarancji minimalne %s to %d, maksymalny limit to %d, a bieżące użycie dla bazy danych to %d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania przekracza %d dla tej bazy danych. Zobacz [ http://go.microsoft.com/fwlink/?LinkId=267637 ](http://go.microsoft.com/fwlink/?LinkId=267637) uzyskać pomoc. W przeciwnym razie spróbuj ponownie później. Jednostka DTU / minimalna liczba rdzeni wirtualnych na bazę danych; Jednostka DTU / maksymalna liczba na bazę danych rdzeni wirtualnych. Całkowita liczba współbieżnych procesów roboczych (żądań) we wszystkich bazach danych w puli elastycznej próba przekracza limit puli. |Należy rozważyć zwiększenie liczby jednostek Dtu lub rdzeni wirtualnych w puli elastycznej w miarę możliwości w celu zwiększenia limitu jego procesów roboczych lub usuwać bazy danych z puli elastycznej. |
+| 10929 | 16 |Gwarancji minimalne %s to %d, maksymalny limit to %d, a bieżące użycie dla bazy danych to %d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania przekracza %d dla tej bazy danych. Zobacz [ http://go.microsoft.com/fwlink/?LinkId=267637 ](https://go.microsoft.com/fwlink/?LinkId=267637) uzyskać pomoc. W przeciwnym razie spróbuj ponownie później. Jednostka DTU / minimalna liczba rdzeni wirtualnych na bazę danych; Jednostka DTU / maksymalna liczba na bazę danych rdzeni wirtualnych. Całkowita liczba współbieżnych procesów roboczych (żądań) we wszystkich bazach danych w puli elastycznej próba przekracza limit puli. |Należy rozważyć zwiększenie liczby jednostek Dtu lub rdzeni wirtualnych w puli elastycznej w miarę możliwości w celu zwiększenia limitu jego procesów roboczych lub usuwać bazy danych z puli elastycznej. |
 | 40844 | 16 |Baza danych "%ls" na serwerze "%ls" jest bazą danych w wersji "%ls" w puli elastycznej i nie może mieć relacji ciągłych kopii.  |ND |
 | 40857 | 16 |Nie znaleziono serwera puli elastycznej: "%ls", nazwa puli elastycznej: "%ls". Określona pula elastyczna nie istnieje na określonym serwerze. | Podaj nazwę puli elastycznej prawidłowe. |
 | 40858 | 16 |Pula elastyczna "%ls" już istnieje na serwerze: "%ls". Określona pula elastyczna jest już istnieje na określonym serwerze logicznym. | Podaj nową nazwę puli elastycznej. |

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3af2b2a1b35a290746007d7f486473162a055b99
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8cde172207717aca2af5dfa706f7d9c6d290c36e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211370"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239206"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -76,7 +76,7 @@ Usługa ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peer
 
 ### <a name="microsoft-peering"></a>Komunikacja równorzędna firmy Microsoft
 
-* [Office 365](http://aka.ms/ExpressRouteOffice365)
+* [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Dynamics 365 
 * Power BI
 * Usługa Azure Active Directory
@@ -199,11 +199,7 @@ Tak. Maszyny wirtualne wdrożone w sieciach wirtualnych połączonych z tym samy
 
 ### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>Czy można używać połączenia lokacja lokacja dla sieci wirtualnych w połączeniu z usługą ExpressRoute?
 
-Tak. Usługa ExpressRoute może współistnieć z sieci VPN typu lokacja lokacja.
-
-### <a name="can-i-move-a-virtual-network-from-site-to-site--point-to-site-configuration-to-use-expressroute"></a>Czy można przenieść sieci wirtualnej, z konfiguracji lokacja lokacja / punkt lokacja za pomocą usługi ExpressRoute?
-
-Tak. Należy utworzyć bramę usługi ExpressRoute w ramach sieci wirtualnej. Brak małych przestoje związane z procesem.
+Tak. Usługa ExpressRoute może współistnieć z sieci VPN typu lokacja lokacja. Zobacz [Konfigurowanie usługi ExpressRoute i współistniejących połączeń lokacja lokacja](expressroute-howto-coexist-resource-manager.md).
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Dlaczego jest publiczny adres IP skojarzony z bramą ExpressRoute w sieci wirtualnej
 
@@ -287,7 +283,7 @@ Tak. ExpressRoute premium opłaty na podstawie obwodu usługi ExpressRoute opła
 
 1. Przegląd [strony wymagania wstępne usługi ExpressRoute](expressroute-prerequisites.md) się upewnić, że spełnione są wymagania.
 2. Aby upewnić się, że spełnione są Twoje potrzeby w zakresie łączności, zapoznaj się z listy dostawców usług i lokalizacje w [ExpressRoute partnerzy i lokalizacje](expressroute-locations.md) artykułu.
-3. Planowanie wymagań dotyczących pojemności, przeglądając [Planowanie sieci i dostrajanie wydajności dla usługi Office 365](http://aka.ms/tune/).
+3. Planowanie wymagań dotyczących pojemności, przeglądając [Planowanie sieci i dostrajanie wydajności dla usługi Office 365](https://aka.ms/tune/).
 4. Wykonaj następujące kroki w przepływach pracy, aby skonfigurować łączność [przepływy pracy ExpressRoute dla aprowizacji obwodu i stanów obwodów](expressroute-workflows.md).
 
 > [!IMPORTANT]
@@ -297,11 +293,11 @@ Tak. ExpressRoute premium opłaty na podstawie obwodu usługi ExpressRoute opła
 
 ### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services-and-dynamics-365"></a>Czy moje istniejące obwodów usługi ExpressRoute może obsługiwać łączność z usługami Office 365 i Dynamics 365?
 
-Tak. Istniejący obwód usługi ExpressRoute można skonfigurować do obsługi łączności z usługami Office 365. Upewnij się, że masz wystarczająco duże, aby połączyć się z usługami Office 365 i włączeniu dodatku premium. [Planowanie sieci i dostrajanie wydajności dla usługi Office 365](http://aka.ms/tune/) musi pomaga zaplanować łączności. Zobacz też [tworzenie i modyfikowanie obwodu ExpressRoute](expressroute-howto-circuit-classic.md).
+Tak. Istniejący obwód usługi ExpressRoute można skonfigurować do obsługi łączności z usługami Office 365. Upewnij się, że masz wystarczająco duże, aby połączyć się z usługami Office 365 i włączeniu dodatku premium. [Planowanie sieci i dostrajanie wydajności dla usługi Office 365](https://aka.ms/tune/) musi pomaga zaplanować łączności. Zobacz też [tworzenie i modyfikowanie obwodu ExpressRoute](expressroute-howto-circuit-classic.md).
 
 ### <a name="what-office-365-services-can-be-accessed-over-an-expressroute-connection"></a>Jakie usługi Office 365 services jest dostępna za pośrednictwem połączenia usługi ExpressRoute?
 
-Zapoznaj się [URL usługi Office 365 i zakresy adresów IP](http://aka.ms/o365endpoints) strony, aby uzyskać aktualną listę usług obsługiwanych za pośrednictwem usługi ExpressRoute.
+Zapoznaj się [URL usługi Office 365 i zakresy adresów IP](https://aka.ms/o365endpoints) strony, aby uzyskać aktualną listę usług obsługiwanych za pośrednictwem usługi ExpressRoute.
 
 ### <a name="how-much-does-expressroute-for-office-365-services-cost"></a>Ile kosztuje usługa ExpressRoute dla kosztu usługi Office 365?
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/03/2016
 ms.author: hascipio;
-ms.openlocfilehash: e1f90650e71345957c2d353774cb8bef62c1868b
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: d4c7dce1876e9838fe986aebb7e38a09e8a82baf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715019"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252976"
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Przewodnik poprodukcyjnych oferty maszyny wirtualnej w witrynie Azure Marketplace
 W tym artykule wyjaśniono, jak można zaktualizować na żywo maszyny wirtualnej z tej oferty w portalu Azure Marketplace. Jego przeprowadzi Cię przez proces dodawania jednego lub więcej nowych jednostek SKU do istniejącej oferty. On również przeprowadzi Cię przez proces usuwania oferty na żywo maszyny wirtualnej lub jednostki SKU z witryny Marketplace.
@@ -30,7 +30,7 @@ Po oferty/jednostki SKU jest umieszczone w [witryny Azure portal](http://portal.
 * **Identyfikator jednostki SKU**: W publikowania portalu, przejdź do **maszyn wirtualnych** i wybierz swoją ofertę. Następnie kliknij przycisk **jednostki SKU** > **Dodaj jednostkę SKU**.
 * **Namespace wydawcy**: W publikowania portalu, przejdź do **maszyn wirtualnych** > **wskazówki** > **Poinformuj nas o Twoja firma**(znajdujący się w obszarze "Krok 2 zarejestrować Twoja firma") > **Namespace wydawcy** > **Namespace**.
 
-Po oferty/jednostki SKU znajduje się w [Marketplace](http://azure.microsoft.com/marketplace), nie można zmienić następujące pola tekstowe:
+Po oferty/jednostki SKU znajduje się w [Marketplace](https://azure.microsoft.com/marketplace), nie można zmienić następujące pola tekstowe:
 
 * **Identyfikator oferty**: W publikowania portalu, przejdź do **maszyn wirtualnych** i wybierz swoją ofertę. Następnie kliknij przycisk **obrazów maszyn wirtualnych** > **identyfikator oferty**.
 * **Identyfikator jednostki SKU**: W publikowania portalu, przejdź do **maszyn wirtualnych** i wybierz swoją ofertę. Następnie kliknij przycisk **jednostki SKU** > **Dodaj jednostkę SKU**.
@@ -208,7 +208,7 @@ Aby dodać nowe jednostki SKU w ofercie na żywo, wykonaj następujące kroki:
 1. Zaloguj się do [portal wydawców](https://publish.windowsazure.com).
 2. Przejdź do **maszyn wirtualnych** , a następnie wybierz swoją ofertę.
 3. W menu po lewej stronie kliknij **jednostki SKU** kartę. Następnie kliknij przycisk **Dodaj jednostkę SKU**. 
-4. W oknie dialogowym wprowadź **identyfikator jednostki SKU** małymi literami. Wybierz **Przełącz model rozliczeń swojej własnej licencji (BYOL)** pole wyboru, jeśli chcesz opublikować nowej jednostki SKU z modelem rozliczeń BYOL. W przeciwnym razie wyczyść pole wyboru. Kliknij przycisk znacznika do utworzenia nowej jednostki SKU. Jeśli nie wybierzesz model rozliczeń w ramach opcji BYOL, model rozliczania ustawiono automatycznie co godzinę. 30-dniowej bezpłatnej wersji próbnej dla modelu rozliczania co godzinę, zaznacz **jednego miesiąca** dla **jest dostępna bezpłatna wersja próbna?** W przeciwnym razie wybierz **wersji próbnej nie**. (**Jest dostępna bezpłatna wersja próbna? ** pojawia się tylko wtedy, gdy w ramach opcji BYOL nie zostały wybrane podczas tworzenia nowej jednostki SKU.)
+4. W oknie dialogowym wprowadź **identyfikator jednostki SKU** małymi literami. Wybierz **Przełącz model rozliczeń swojej własnej licencji (BYOL)** pole wyboru, jeśli chcesz opublikować nowej jednostki SKU z modelem rozliczeń BYOL. W przeciwnym razie wyczyść pole wyboru. Kliknij przycisk znacznika do utworzenia nowej jednostki SKU. Jeśli nie wybierzesz model rozliczeń w ramach opcji BYOL, model rozliczania ustawiono automatycznie co godzinę. 30-dniowej bezpłatnej wersji próbnej dla modelu rozliczania co godzinę, zaznacz **jednego miesiąca** dla **jest dostępna bezpłatna wersja próbna?** W przeciwnym razie wybierz **wersji próbnej nie**. (**Jest dostępna bezpłatna wersja próbna?**  pojawia się tylko wtedy, gdy w ramach opcji BYOL nie zostały wybrane podczas tworzenia nowej jednostki SKU.)
 
    > [!IMPORTANT]
    > **Ukryj tej jednostki SKU z witryny Marketplace, ponieważ zawsze powinny zostać zakupione za pomocą szablonu rozwiązania** powinien być **tak** *tylko* Jeśli jest zatwierdzona do publikowania szablonu rozwiązania. W przeciwnym razie ta opcja powinna zawsze być **nie**.

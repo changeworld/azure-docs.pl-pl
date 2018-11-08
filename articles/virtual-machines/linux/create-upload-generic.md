@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: 67796cc3cbb925bb18a917d17b8abb7c085de370
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 3aa2803550c445e0b30ff998cf3adb779515e487
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638209"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235976"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informacje dotyczące niezatwierdzonych dystrybucji
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -76,7 +76,7 @@ Obrazy VHD na platformie Azure musi mieć rozmiar wirtualny wyrównane do 1 MB. 
 
 * Http:// wirtualnego dysku twardego<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd ma nieobsługiwany rozmiar wirtualny 21475270656 bajtów. Rozmiar musi być liczbą całkowitą (w MB).
 
-W takim przypadku Zmień rozmiar maszyny Wirtualnej przy użyciu konsoli Menedżera funkcji Hyper-V lub [dysku VHD zmiany rozmiaru](http://technet.microsoft.com/library/hh848535.aspx) polecenia cmdlet programu PowerShell.  Jeśli w środowisku Windows nie jest uruchomiony, zalecamy użycie `qemu-img` konwersji (jeśli jest to konieczne), i zmienianie rozmiaru wirtualnego dysku twardego.
+W takim przypadku Zmień rozmiar maszyny Wirtualnej przy użyciu konsoli Menedżera funkcji Hyper-V lub [dysku VHD zmiany rozmiaru](https://technet.microsoft.com/library/hh848535.aspx) polecenia cmdlet programu PowerShell.  Jeśli w środowisku Windows nie jest uruchomiony, zalecamy użycie `qemu-img` konwersji (jeśli jest to konieczne), i zmienianie rozmiaru wirtualnego dysku twardego.
 
 > [!NOTE]
 > Brak [znaną usterką w programie qemu img](https://bugs.launchpad.net/qemu/+bug/1490611) wersji > = 2.2.1 powodujący sformatowany wirtualnego dysku twardego. Problem został rozwiązany w wersji 2.6 QEMU. Zalecamy użycie programu `qemu-img` 2.2.0 lub mniej, lub wersji 2.6 lub nowszej.
@@ -125,7 +125,7 @@ W takim przypadku Zmień rozmiar maszyny Wirtualnej przy użyciu konsoli Menedż
 
 Sterowniki usługi LIS (Linux Integration) dla funkcji Hyper-V i platformą Azure są tworzone bezpośrednio do nadrzędnego jądra systemu Linux. Wiele dystrybucji, które zawierają najnowszej wersji jądra systemu Linux (na przykład 3.x) już te sterowniki, które są dostępne lub inny sposób dostarczyć backported wersje tych sterowników za pomocą ich jądra.  Te sterowniki są stale aktualizowane w jądrze nadrzędnego z nowych poprawek i funkcji, więc jeśli jest to możliwe, firma Microsoft zaleca uruchamianie [zatwierdzonego dla dystrybucji](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) zawierającego te poprawki i aktualizacje.
 
-Jeśli korzystasz z wariantu Red Hat Enterprise Linux w wersji 6.0 i 6.3, a następnie należy zainstalować [najnowszych sterowników LIS dla funkcji Hyper-V](http://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409). Począwszy od systemu RHEL 6.4 + (i ich pochodnych) sterowników LIS są już dołączone do jądra, a więc nie instalacji dodatkowe pakiety są wymagane.
+Jeśli korzystasz z wariantu Red Hat Enterprise Linux w wersji 6.0 i 6.3, a następnie należy zainstalować [najnowszych sterowników LIS dla funkcji Hyper-V](https://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409). Począwszy od systemu RHEL 6.4 + (i ich pochodnych) sterowników LIS są już dołączone do jądra, a więc nie instalacji dodatkowe pakiety są wymagane.
 
 Jeśli wymagana jest niestandardowy jądra, firma Microsoft zaleca najnowszej wersji jądra (na przykład 3.8 i nowsze). Dystrybucje lub dostawców, którzy mają swoje własne jądra należy regularnie Poprawka usterki systemu sterowników LIS z nadrzędnego jądra swoje niestandardowe jądra.  Nawet jeśli korzystasz już z stosunkowo najnowszej wersji jądra, zdecydowanie zalecamy rejestrowanie informacji o dowolnej nadrzędne naprawia sterowników LIS i poprawka usterki systemu je stosownie do potrzeb. Lokalizacje plików źródłowych sterowników LIS są określone w [MAINTAINERS](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS) pliku w drzewie źródła jądra systemu Linux:
 ```

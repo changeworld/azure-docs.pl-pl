@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 11/6/2018
 ms.author: patricka
-ms.openlocfilehash: a1c516ebbeb33d2aa92f6a0e3031a2b2d9fb4e9c
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.reviewer: bryanr
+ms.openlocfilehash: fbf62e53ffe3fc3540086137955417bec56e7825
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026164"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240175"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Wielodostępność w usłudze Azure Stack
 
@@ -26,9 +27,9 @@ ms.locfileid: "50026164"
 
 Można skonfigurować w usłudze Azure Stack w celu obsługi użytkowników z wielu dzierżaw usługi Azure Active Directory (Azure AD) do korzystania z usług w usłudze Azure Stack. Na przykład rozważmy następujący scenariusz:
 
- - Jesteś administratorem usługi domeny contoso.onmicrosoft.com, gdzie zainstalowano usługi Azure Stack.
- - Jan jest administratorem Directory fabrikam.onmicrosoft.com, gdzie znajdują się użytkownicy-goście. 
- - Firma firmy Mary odbiera IaaS i PaaS z Twojej firmy i wymaga umożliwić użytkownikom z katalogu gościa (fabrikam.onmicrosoft.com) Zaloguj się i korzystać z zasobów usługi Azure Stack w contoso.onmicrosoft.com.
+- Jesteś administratorem usługi domeny contoso.onmicrosoft.com, gdzie zainstalowano usługi Azure Stack.
+- Jan jest administratorem Directory fabrikam.onmicrosoft.com, gdzie znajdują się użytkownicy-goście.
+- Firma firmy Mary odbiera IaaS i PaaS z Twojej firmy i wymaga umożliwić użytkownikom z katalogu gościa (fabrikam.onmicrosoft.com) Zaloguj się i korzystać z zasobów usługi Azure Stack w contoso.onmicrosoft.com.
 
 Ten przewodnik zawiera kroki wymagane w kontekście tego scenariusza, aby skonfigurować wielu dzierżawców w usłudze Azure Stack. W tym scenariuszu możesz i Mary należy wykonać czynności, aby umożliwić użytkownikom z firmy Fabrikam logować się i korzystać z usług z wdrożenia usługi Azure Stack w firmie Contoso.  
 
@@ -50,6 +51,8 @@ Istnieje kilka wymagań wstępnych na wypadek, przed rozpoczęciem konfigurowani
 W tej sekcji służy do konfigurowania usługi Azure Stack, aby umożliwić logowania z firmy Fabrikam w usłudze Azure AD directory dzierżaw.
 
 Dołączanie dzierżawy katalogu gościa (Fabrikam) do usługi Azure Stack przez skonfigurowanie usługi Azure Resource Manager, aby akceptować użytkowników i jednostki z gościa dzierżawy katalogu usług.
+
+Administrator usługi domeny contoso.onmicrosoft.com uruchom następujące polecenia.
 
 ````PowerShell  
 ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -76,11 +79,11 @@ Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint
 
 ### <a name="configure-guest-directory"></a>Skonfiguruj katalog gości
 
-Po wykonaniu kroków w katalogu usługi Azure Stack Mary należy dostarczyć zgodę na uzyskiwanie dostępu do katalogu gościa w usłudze Azure Stack i rejestrowanie w usłudze Azure Stack katalogu gościa. 
+Raz administratora platformy Azure Stack / operator ma włączoną katalogu firmy Fabrikam do użycia z usługą Azure Stack, Joanna należy zarejestrować Fabrikam katalogu dzierżawy usługi Azure Stack.
 
 #### <a name="registering-azure-stack-with-the-guest-directory"></a>Rejestrowanie usługi Azure Stack przy użyciu katalog gości
 
-Po ich podaniu wyrażania zgody dla usługi Azure Stack, uzyskanie dostępu do katalogu firmy Fabrikam administratora katalogu gościa Mary należy zarejestrować Fabrikam katalogu dzierżawy usługi Azure Stack.
+Joanna administratorem katalogu Fabrikam uruchom następujące polecenia w fabrikam.onmicrosoft.com katalogu gościa.
 
 ````PowerShell
 ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -99,14 +102,14 @@ Register-AzSWithMyDirectoryTenant `
 > Administrator usługi Azure Stack instalacji aktualizacji lub nowych usług w przyszłości może być konieczne ponownie uruchom ten skrypt.
 >
 > Ten skrypt należy uruchomić ponownie w dowolnym momencie, aby sprawdzić stan aplikacji usługi Azure Stack w Twoim katalogu.
-> 
+>
 > Zauważyliście problemy z tworzeniem maszyn wirtualnych na dyski zarządzane (zostanie wprowadzony w aktualizacji 1808) nowej **dostawcy zasobów dysku** dodano, co wymaga tego skryptu do ponownego uruchomienia.
 
 ### <a name="direct-users-to-sign-in"></a>Bezpośrednie użytkownikom na logowanie
 
 Teraz, gdy użytkownik i Mary zostały wykonane kroki, aby dołączyć Mary katalogu, Joanna można kierować Fabrikam użytkownikom zalogowanie się.  Firma Fabrikam (oznacza to, że użytkownicy z sufiksem fabrikam.onmicrosoft.com) logowania, odwiedzając stronę https://portal.local.azurestack.external.  
 
-Joanna skieruje dowolne [obce podmioty zabezpieczeń](../role-based-access-control/rbac-and-directory-admin-roles.md) w katalogu firmy Fabrikam (czyli użytkownicy w katalogu firmy Fabrikam przyrostka fabrikam.onmicrosoft.com) do logowania za pomocą https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Jeśli nie korzystają z tego adresu URL, są wysyłane do ich katalog domyślny (Fabrikam) i komunikat o błędzie stwierdzający, że ich administrator nie wyraził zgody.
+Joanna skieruje dowolne [obce podmioty zabezpieczeń](../role-based-access-control/rbac-and-directory-admin-roles.md) w katalogu firmy Fabrikam (czyli użytkownicy w katalogu firmy Fabrikam przyrostka fabrikam.onmicrosoft.com) do logowania za pomocą https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Jeśli nie korzystają z tego adresu URL są wysyłane do ich katalog domyślny (Fabrikam) i komunikat o błędzie stwierdzający, że ich administrator nie wyraził zgodę.
 
 ## <a name="disable-multi-tenancy"></a>Wyłączanie obsługi wielu dzierżawców
 

@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 8f32e84e5381a548ada2c5ad393e16c65b17379e
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f68bf05ef9749794c78898e4464489e7cfb358ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957186"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231386"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Wdrażanie aplikacji w usłudze Azure App Service przy użyciu protokołu FTP/S
 
-W tym artykule dowiesz się, jak wdrażanie aplikacji sieci web, zaplecza aplikacji mobilnej lub aplikacji interfejsu API za pomocą protokołu FTP i FTPS [usługi Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714).
+W tym artykule dowiesz się, jak wdrażanie aplikacji sieci web, zaplecza aplikacji mobilnej lub aplikacji interfejsu API za pomocą protokołu FTP i FTPS [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).
 
 Punkt końcowy protokołu FTP/S dla aplikacji jest już aktywny. Konfiguracja nie jest niezbędne do obsługi wdrożenia protokołu FTP/S.
 

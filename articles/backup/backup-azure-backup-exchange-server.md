@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: adigan
-ms.openlocfilehash: 8fbe3e716971f4d82e6d24fb866334ffd626bf32
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 7e95fa0cc6b5f9476df68ab44e5dbc8bb5432d52
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945981"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234463"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Tworzenie kopii zapasowych serwera programu Exchange do usługi Azure Backup przy użyciu programu System Center 2012 R2 DPM
 W tym artykule opisano sposób konfigurowania serwera System Center 2012 R2 Data Protection Manager (DPM), aby utworzyć kopię zapasową serwera Microsoft Exchange do usługi Azure Backup.  
 
 ## <a name="updates"></a>Aktualizacje
-Aby pomyślnie zarejestrować serwer programu DPM za pomocą usługi Azure Backup, należy zainstalować najnowszego pakietu zbiorczego aktualizacji dla programu System Center 2012 R2 DPM oraz najnowszą wersję agenta usługi Azure Backup. Pobierz najnowszy pakiet zbiorczy aktualizacji z [Microsoft Catalog](http://catalog.update.microsoft.com/v7/site/Search.aspx?q=System%20Center%202012%20R2%20Data%20protection%20manager).
+Aby pomyślnie zarejestrować serwer programu DPM za pomocą usługi Azure Backup, należy zainstalować najnowszego pakietu zbiorczego aktualizacji dla programu System Center 2012 R2 DPM oraz najnowszą wersję agenta usługi Azure Backup. Pobierz najnowszy pakiet zbiorczy aktualizacji z [Microsoft Catalog](https://catalog.update.microsoft.com/v7/site/Search.aspx?q=System%20Center%202012%20R2%20Data%20protection%20manager).
 
 > [!NOTE]
 > W przykładach w tym artykule jest zainstalowana wersja 2.0.8719.0 agenta usługi Azure Backup, a na System Center 2012 R2 DPM zainstalowano pakietu zbiorczego aktualizacji 6.

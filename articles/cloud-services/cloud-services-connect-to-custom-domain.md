@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: b05e20b5c99c6f1b5b1bf93ca781ec97284fba79
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: bb812699795f112023b579352ac3a52bef311d40
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004919"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232651"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Role usługi w chmurze Azure nawiązywania połączenia z niestandardowego kontrolera domeny usługi AD hostowanych na platformie Azure
 Skonfiguruje możemy najpierw Virtual Network (VNet) na platformie Azure. Następnie dodamy kontrolera domeny Active Directory (obsługiwanych na maszynie wirtualnej platformy Azure) do sieci wirtualnej. Następnie firma Microsoft będzie Dodawanie istniejących ról usługi w chmurze do wstępnie utworzonej sieci wirtualnej, a następnie łączyć je z kontrolera domeny.
@@ -95,7 +95,7 @@ Aby zalogować się do maszyny Wirtualnej, można pobrać pliku RDP przy użyciu
 Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-path>
 ```
 
-Po zalogowaniu do maszyny Wirtualnej skonfigurować maszynę wirtualną jako kontroler domeny usługi AD, po przewodnik krok po kroku na [sposób konfigurowania klienta kontrolerem domeny usługi AD](http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx).
+Po zalogowaniu do maszyny Wirtualnej skonfigurować maszynę wirtualną jako kontroler domeny usługi AD, po przewodnik krok po kroku na [sposób konfigurowania klienta kontrolerem domeny usługi AD](https://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx).
 
 ## <a name="add-your-cloud-service-to-the-virtual-network"></a>Dodaj usługi w chmurze do sieci wirtualnej
 Następnie należy dodać wdrażania usługi w chmurze do nowej sieci wirtualnej. Aby to zrobić, należy zmodyfikować pliku cscfg usługi cloud service, dodając istotne sekcje do Twojego pliku cscfg przy użyciu programu Visual Studio lub dowolnego edytora.

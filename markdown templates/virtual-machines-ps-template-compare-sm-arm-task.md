@@ -10,22 +10,22 @@ Pay attention to spacing and indents. They affect formatting.
 
 <!--replace this with Properties and Tags sections. These are required sections. See "article-metadata.md" in under the "contributor-guide" folder in your repo. Attributes in each section can be placed on separate lines to make them easier to read and check-->
 
-# <a name="use-azure-powershell-to-task"></a>Przy użyciu programu Azure PowerShell [zadań]
-W tym artykule przedstawiono sposób [zadanie] za pomocą poleceń z modułu platformy Azure i moduł usługi Azure Resource Manager. Ta wartość jest przeznaczona do zapoznawania się nowych poleceń również przeprowadzić migrację istniejących skryptów do nowych poleceń.
+# <a name="use-azure-powershell-to-task"></a>[Zadanie] przy użyciu programu Azure PowerShell
+W tym artykule pokazano, jak [zadanie], przy użyciu poleceń zarówno z modułu platformy Azure i moduł usługi Azure Resource Manager. To ma na celu pomóc nauczyć się nowych poleceń, także, jak migrować istniejące skrypty do nowych poleceń.
 
-## <a name="prerequisite-install-a-recent-version-of-azure-powershell"></a>Wymaganie wstępne: Zainstaluj najnowszą wersję programu Azure PowerShell
-Jeśli jeszcze tego nie zrobiono tego wcześniej, zainstalować co najmniej wersji [numer wersji] programu Azure PowerShell na komputerze lokalnym. Jeśli używasz starszej wersji, nie ma on poleceń cmdlet usługi Azure Resource Manager opisane w tym artykule. Aby uzyskać szczegółowe informacje, zobacz:
+## <a name="prerequisite-install-a-recent-version-of-azure-powershell"></a>Wymagania wstępne: Zainstaluj najnowszą wersję programu Azure PowerShell
+Jeśli użytkownik jeszcze tego nie zrobiono, zainstaluj przynajmniej [numer wersji] wersję programu Azure PowerShell na komputerze lokalnym. Jeśli używasz starszej wersji, nie będzie mieć poleceń cmdlet usługi Azure Resource Manager, opisanych w tym artykule. Aby uzyskać szczegółowe informacje, zobacz:
 
-* [Jak zainstalować i skonfigurować program Azure PowerShell](install-configure-powershell.md) instrukcje dotyczące konfigurowania programu Azure PowerShell.
-* [Za pomocą środowiska Windows PowerShell z usługą Resource Manager](powershell-azure-resource-manager.md) dla podstawy przy użyciu usługi Resource Manager.
+* [Jak zainstalować i skonfigurować program Azure PowerShell](install-configure-powershell.md) Aby uzyskać instrukcje dotyczące konfigurowania programu Azure PowerShell.
+* [Przy użyciu programu Windows PowerShell z usługą Resource Manager](powershell-azure-resource-manager.md) uzyskać podstawowe informacje na temat korzystania z usługi Resource Manager.
 
 > [!NOTE]
-> Większość zadań wymagają można użyć w wierszu polecenia programu Azure PowerShell poziomie administratora.
+> Większość zadań wymaga przy użyciu wiersza polecenia przy użyciu programu Azure PowerShell o poziomie administratora.
 > 
 > 
 
 ## <a name="command-comparison"></a>Polecenie porównania
-To [tabeli | sekcji] przedstawiono składnię polecenia.
+To [Tabela | sekcji] przedstawiono składnię polecenia.
 
 <!--[optional image - to use an image in this article, add a folder with the same name as the article file name without extension, inside the Media folder of the repo. Use only this folder to store the images. Don't attempt to use a common folder to share images you want to use in more than 1 file.]
 Then, use the following syntax to add a reference to the image in your article:
@@ -34,7 +34,7 @@ Then, use the following syntax to add a reference to the image in your article:
 
 <!--if a command string uses variables, define the variables first, using the  following construction. In some cases the variable is straightforward and doesn't need much explanation. But parameters such as location and size can benefit from brief explanation or listing all accepted values:--> 
 
-Poniższe przykłady poleceń należy użyć następujących zmiennych:
+Te przykłady poleceń, użyj poniższych zmiennych:
 
 $FriendlyName"<Describe value>"
 
@@ -46,20 +46,20 @@ $FriendlyName"<Describe value>"
 
 <!--if it makes more sense to present this one command block after the other instead of a table, use this. Otherwise, delete-->
 
-[Krótkie wprowadzenie zdanie o poleceniu. Pominąć, jeśli nie ma naprawdę znaczy. Ale korzysta z takiego podejścia potoku, wyjaśnić, że]:
+[Wprowadzenie krótkie zdanie o poleceniu. Pominąć, jeśli nie ma naprawdę nic powiedzieć. Ale korzysta z takich metod potoku, wyjaśniono, że]:
 
     [command string]
 
 ## <a name="script-examples"></a>Przykłady skryptów
-Oto przykład używającej [nazwy polecenia cmdlet)] do [zadania]. Zawiera polecenia który:
+Oto przykład pokazujący [nazwy poleceń cmdlet)] do [zadania]. Zawiera polecenia który:
 
-* [krótki zlecenie, używa, ma, jest itp]
+* [krótki zlecenie, zastosowań, ma, jest itp]
 * [dalej zlecenie krótki] 
 
-<!--include this statement if it uses variables that weren't introduced earlier--> It includes the following variables:
+<!--include this statement if it uses variables that weren't introduced earlier--> Zawiera ona następujące zmienne:
 
 * [zmienna 1]
-* [zmiennej 2]
+* [zmienna 2]
 
 <!--This shows you how a recent example was presented as well as how it was formatted. Preceding each line with one tab or four spaces to format in a code block-->
 
@@ -90,12 +90,12 @@ Oto przykład używającej [nazwy polecenia cmdlet)] do [zadania]. Zawiera polec
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 <!--At a minimum, include a link back to the migration task list article. Use the formats shown below. See create-links-markdown.md for more info -->
 <!--use this format for links to other articles, such as the migration task list. -->
-[Zarządzanie dostępności](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Zarządzanie dostępnością](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 <!--To link to an ACOM page outside the /documentation/ subdomain (such as a pricing page, SLA page or anything else that is not a documentation article), use an absolute URL, but omit the locale:
 
-    [link text](http://azure.microsoft.com/pricing/details/virtual-machines/)-->
+    [link text](https://azure.microsoft.com/pricing/details/virtual-machines/)-->
 
 <!--use this for URLs outside of ACOM. Be sure to locale, and if you're linking to the Azure library on MSDN, include the '/azure/' part of the URL-->
-[Dokumentacja maszyny wirtualne](https://msdn.microsoft.com/library/azure/jj156003.aspx)
+[Dokumentacja dotycząca maszyn wirtualnych](https://msdn.microsoft.com/library/azure/jj156003.aspx)
 

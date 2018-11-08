@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 1cbb46f5238c2019225ab724abaf49e878d19598
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 6dff1b2fe40acdef1fde95444d70f0bcfc120a64
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353870"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230040"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Rozwiązywanie problemów z wydajnością usługi Azure SQL Database dzięki inteligentnej analizie
 
@@ -167,7 +167,7 @@ Ponieważ pagelatch jest mechanizm kontroli wewnętrznej bazy danych SQL Databas
 
 Jedną z metod obsługi rywalizacji zatrzaśnięcia jest wymienić klucz indeksu sekwencyjne kluczem niesekwencyjną sieć w celu równomiernego rozkładania wstawia w zakresie indeksu. Zazwyczaj wiodących kolumn w indeksie dystrybuuje obciążenie proporcjonalnie. Inną metodą należy wziąć pod uwagę, jest Partycjonowanie tabel. Tworzenie skrótu schemat z kolumną obliczaną w tabeli partycjonowanej partycji jest typowym podejściem łagodzenia zatrzaśnięcia nadmierną rywalizację. W przypadku rywalizacji o zasoby we/wy pagelatch wprowadzenie do indeksów pomaga rozwiązać ten problem z wydajnością. 
 
-Aby uzyskać więcej informacji, zobacz [diagnozowanie i rozwiązywanie zatrzasnąć rywalizacji o zasoby w programie SQL Server](http://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) (pobrania w formacie PDF).
+Aby uzyskać więcej informacji, zobacz [diagnozowanie i rozwiązywanie zatrzasnąć rywalizacji o zasoby w programie SQL Server](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) (pobrania w formacie PDF).
 
 ## <a name="missing-index"></a>Brakujący indeks
 

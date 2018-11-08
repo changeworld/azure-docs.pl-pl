@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 69a4364c1d110ae78370fbf0ba1b4a92e033a862
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: c2fb3ae20ea2b6ba71408a734c1e0c82cbeb699c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241568"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233579"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Instalowanie Przegląd zadań elastycznej bazy danych
 
@@ -31,7 +31,7 @@ Jeśli zainstalowano już **zadania Elastic Database** za pośrednictwem portalu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Subskrypcja platformy Azure. Bezpłatnej wersji próbnej, zobacz [bezpłatna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
-* Azure PowerShell. Zainstaluj najnowszą wersję przy użyciu polecenia [Instalatora platformy sieci Web](http://go.microsoft.com/fwlink/p/?linkid=320376). Aby uzyskać szczegółowe informacje, zobacz artykuł [How to install and configure Azure PowerShell](/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell).
+* Azure PowerShell. Zainstaluj najnowszą wersję przy użyciu polecenia [Instalatora platformy sieci Web](https://go.microsoft.com/fwlink/p/?linkid=320376). Aby uzyskać szczegółowe informacje, zobacz artykuł [How to install and configure Azure PowerShell](/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell).
 * [Narzędzie wiersza polecenia NuGet](https://nuget.org/nuget.exe) służy do zainstalowania pakietu zadań elastycznej bazy danych. Aby uzyskać więcej informacji, zobacz http://docs.nuget.org/docs/start-here/installing-nuget.
 
 ## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>Pobierz i zaimportuj pakiet PowerShell zadań elastycznej bazy danych

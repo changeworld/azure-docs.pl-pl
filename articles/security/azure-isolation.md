@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 5710ebc1c52737e27aafa88eef5e9ae402f8e53f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: a56d595ca88541779f5213c6b0ec88fc87913b6a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579850"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239053"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej platformy Azure
 ##  <a name="introduction"></a>Wprowadzenie
@@ -111,7 +111,7 @@ Niektóre inne funkcje usługi Azure Active Directory, obejmują:
 - [Usługa Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) udostępnia usługę o wysokiej dostępności globalnej tożsamości zarządzania dla aplikacji przeznaczonych dla konsumentów, która może obsłużyć setki milionów tożsamości. Można ją łatwo integrować z platformami mobilnymi i platformami sieci Web. Klientów można zarejestrować się do wszystkich aplikacji przy użyciu w pełni dostosowywanego procesu przy użyciu istniejących kont sieci społecznościowych lub tworząc poświadczenia.
 
 ### <a name="isolation-from-microsoft-administrators--data-deletion"></a>Izolacja z Administratorzy usługi Microsoft i usuwanie danych
-Firma Microsoft podejmuje środki silne, aby chronić dane przed nieodpowiednim dostępu lub użyj osobom nieupoważnionym. Te kontrole i procesy operacyjne są wspierane przez [Online Services — warunki](http://aka.ms/Online-Services-Terms), które oferują zobowiązania umowne, które określają sposób dostępu do danych.
+Firma Microsoft podejmuje środki silne, aby chronić dane przed nieodpowiednim dostępu lub użyj osobom nieupoważnionym. Te kontrole i procesy operacyjne są wspierane przez [Online Services — warunki](https://aka.ms/Online-Services-Terms), które oferują zobowiązania umowne, które określają sposób dostępu do danych.
 
 -   Inżynierowie firmy Microsoft bez domyślnego dostępu do danych w chmurze. Zamiast tego otrzyma dostęp, w obszarze zarządzania nadzoru, tylko wtedy, gdy jest to konieczne. Dostęp jest starannie kontrolowany i rejestrowane i odwoływane, gdy nie jest już potrzebny.
 
@@ -119,7 +119,7 @@ Firma Microsoft podejmuje środki silne, aby chronić dane przed nieodpowiednim 
 
 Usługi biznesowe dzięki usłudze inspekcji certyfikaty, takich jak ISO/IEC 27001 są regularnie weryfikowane przez firmę Microsoft i akredytowanych audytorów, które przeprowadzają przykładowe inspekcje, aby stwierdzać, że dostęp, jedynie do celów biznesową. Można zawsze dostęp do danych klienta w dowolnym momencie i z dowolnego powodu.
 
-Jeśli usuniesz, wszelkie dane, Microsoft Azure usuwa dane, w tym wszystkie buforowane lub kopii zapasowej kopii. W przypadku usług w zakresie, usunięcie zostanie przeprowadzona w ciągu 90 dni, po upływie okresu przechowywania. (Usługi w zakresie są zdefiniowane w sekcji warunków przetwarzania danych naszych [Online Services — warunki](http://aka.ms/Online-Services-Terms).)
+Jeśli usuniesz, wszelkie dane, Microsoft Azure usuwa dane, w tym wszystkie buforowane lub kopii zapasowej kopii. W przypadku usług w zakresie, usunięcie zostanie przeprowadzona w ciągu 90 dni, po upływie okresu przechowywania. (Usługi w zakresie są zdefiniowane w sekcji warunków przetwarzania danych naszych [Online Services — warunki](https://aka.ms/Online-Services-Terms).)
 
 Jeśli na dysku używane do przechowywania wystąpi awaria sprzętowa, jest bezpiecznie [usunięte lub zniszczone](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data) przed Microsoft zwraca go do producenta dla zastąpienia lub naprawy. Dane na dysku zostanie zastąpiony, aby upewnić się, że za pomocą jakichkolwiek środków nie można odzyskać dane.
 

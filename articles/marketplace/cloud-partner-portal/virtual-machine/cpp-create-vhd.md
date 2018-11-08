@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e06b6412061702e7f2d57dc1528ebf043a815516
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 84e0d02f2608a6ee94ee409345e530357d394671
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639960"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233188"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Utwórz wirtualny dysk twardy zgodnych z platformą Azure
 
@@ -33,7 +33,7 @@ Ten artykuł zawiera kroki wymagane do utworzenia wirtualnego dysku twardego (VH
 Wirtualny dysk twardy systemu operacyjnego obrazu maszyny Wirtualnej musi być oparta na zatwierdzone Azure podstawowy obraz, który zawiera systemu Windows Server lub SQL Server.
 Aby rozpocząć, Utwórz Maszynę wirtualną z jednego z następujących obrazów znajdujących się w portalu Microsoft Azure:
 
--   System Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012r2datacenter/), [2012 Datacenter](http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012datacenter/), [2008 R2 z dodatkiem SP1](http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2008r2sp1/))
+-   System Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012r2datacenter/), [2012 Datacenter](https://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012datacenter/), [2008 R2 z dodatkiem SP1](https://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2008r2sp1/))
 -   [Program SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, sieci Web)
 -   [SQL Server 2012 z dodatkiem SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, sieci Web)
 

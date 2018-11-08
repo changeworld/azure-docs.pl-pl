@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: cc172e35e8964fad3b1a1410d1f1f3240c423ab3
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 3370767947399b167f4f1c81b57d8f92edfa0c4d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810425"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242691"
 ---
 <a name="delete-an-offer-or-sku-from-azure-marketplace"></a>Usuwanie oferty lub jednostki SKU z witryny Azure Marketplace
 ==========================================
 
 Z różnych przyczyn możesz zdecydować o usunięciu oferty z witryny Marketplace. Po usunięciu oferty nowi klienci nie będą już mogli jej kupować ani wdrażać, ale nie ma to wpływu na istniejących klientów.
-Zakończenie oferty to proces zakończenia świadczenia usługi i/lub rozwiązania umowy licencjonowania między Tobą i Twoimi obecnymi klientami. Wskazówki i zasady dotyczące usuwania i kończenia oferty podlegają [umowie wydawcy portalu Microsoft Marketplace](http://go.microsoft.com/fwlink/?LinkID=699560) (patrz sekcja:
+Zakończenie oferty to proces zakończenia świadczenia usługi i/lub rozwiązania umowy licencjonowania między Tobą i Twoimi obecnymi klientami. Wskazówki i zasady dotyczące usuwania i kończenia oferty podlegają [umowie wydawcy portalu Microsoft Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560) (patrz sekcja:
 7) i [— zasady udziału](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (patrz sekcja 6.2). Rozmowy tego artykułu, o różnych obsługiwanych Usuń scenariusze i kroki, które można wykonać dla nich.
 
 <a name="delete-a-live-sku-from-azure-marketplace"></a>Usuń jednostkę SKU na żywo z witryny Azure Marketplace

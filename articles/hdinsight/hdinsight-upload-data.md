@@ -1,25 +1,25 @@
 ---
-title: Przekazywanie danych dla zadań Hadoop w usłudze HDInsight
-description: Dowiedz się, jak przekazywać i uzyskać dostęp do danych dla zadań Hadoop w HDInsight przy użyciu platformy Azure klasyczny interfejs wiersza polecenia, Eksplorator usługi Azure Storage, programu Azure PowerShell, wiersza polecenia usługi Hadoop lub narzędzia Sqoop.
+title: Przekazywanie danych na potrzeby zadań usługi Apache Hadoop w HDInsight
+description: Dowiedz się, jak przekazywać i dostęp do danych dla zadań technologii Apache Hadoop w HDInsight przy użyciu platformy Azure klasyczny interfejs wiersza polecenia, Eksplorator usługi Azure Storage, programu Azure PowerShell, wiersza polecenia usługi Hadoop lub narzędzia Sqoop.
 keywords: hadoop etl, pobieranie danych do platformy hadoop, hadoop ładowanie danych
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
-ms.author: jasonh
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.openlocfilehash: 44aaccee436011bd7d27bec87515fde0e898732e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.openlocfilehash: 50e9162da5fda98d73ccfeea0776dc89ddd25dac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985983"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256922"
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Przekazywanie danych dla zadań Hadoop w usłudze HDInsight
 
-Usługa Azure HDInsight udostępnia w pełni funkcjonalne Rozproszony system plików Hadoop (HDFS) za pośrednictwem usługi Azure Storage i Azure Data Lake Store. Usługi Azure Storage i Data lake Store są przeznaczone jako rozszerzenie systemu plików HDFS, aby zapewnić bezproblemowe środowisko dla klientów. Umożliwiają one pełny zestaw składników w ekosystemie usługi Hadoop do operować bezpośrednio na danych, którymi zarządza. Usługa Azure Storage i Data Lake Store są systemów różnych plików, które są zoptymalizowane pod kątem magazynowania danych oraz obliczenia na tych danych. Aby uzyskać informacje o zaletach przy użyciu usługi Azure Storage, zobacz [używanie usługi Azure Storage za pomocą HDInsight] [ hdinsight-storage] i [Użyj Data Lake Store za pomocą HDInsight](hdinsight-hadoop-use-data-lake-store.md).
+Usługa Azure HDInsight udostępnia w pełni funkcjonalne Rozproszony system plików Hadoop (HDFS) za pośrednictwem usługi Azure Storage i usługi Azure Data Lake Storage (Gen1 i Gen2). Usługi Azure Storage i Gen1 usługi Data lake Storage i Gen2 mają jako rozszerzenia systemu plików HDFS zapewnia bezproblemową obsługę klientów. Umożliwiają one pełny zestaw składników w ekosystemie usługi Hadoop do operować bezpośrednio na danych, którymi zarządza. Usługa Azure Storage, Data Lake Storage Gen1 i Gen2 są systemów różnych plików, które są zoptymalizowane pod kątem magazynowania danych oraz obliczenia na tych danych. Aby uzyskać informacje o zaletach przy użyciu usługi Azure Storage, zobacz [używanie usługi Azure Storage za pomocą HDInsight][hdinsight-storage], [Użyj Data Lake Storage Gen1 z HDInsight](hdinsight-hadoop-use-data-lake-store.md) i [ Za pomocą usług Data Lake Storage Gen2 HDInsight](../storage/data-lake-storage/use-hdi-cluster.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,7 +29,8 @@ Przed rozpoczęciem należy uwzględnić następujące wymagania:
 * Znajomość dwa następujące artykuły:
 
     - [Usługa Azure Storage za pomocą HDInsight][hdinsight-storage]
-    - [Użyj Data Lake Store za pomocą HDInsight](hdinsight-hadoop-use-data-lake-store.md)
+    - [Za pomocą usług Data Lake Storage Gen1 HDInsight](hdinsight-hadoop-use-data-lake-store.md)
+    - [Za pomocą usług Data Lake Storage Gen2 HDInsight](../storage/data-lake-storage/use-hdi-cluster.md)   
 
 ## <a name="upload-data-to-azure-storage"></a>Przekazywanie danych do usługi Azure Storage
 
@@ -213,7 +214,7 @@ Przed rozpoczęciem korzystania z narzędzia, musisz wiedzieć, usługa Azure st
     Po zakończeniu plik podczas przekazywania, można użyć go z zadań w klastrze HDInsight.
 
 ### <a name="mount-azure-storage-as-local-drive"></a>Instalowanie usługi Azure Storage jako dysk lokalny
-Zobacz [Instalowanie usługi Azure Storage jako dysk lokalny](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
+Zobacz [Instalowanie usługi Azure Storage jako dysk lokalny](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
 
 ### <a name="upload-using-services"></a>Przekazywanie przy użyciu usług
 #### <a name="azure-data-factory"></a>Azure Data Factory
@@ -304,6 +305,8 @@ Skoro już wiesz, jak pobierać dane do HDInsight, przeczytaj następujące arty
 [hdinsight-use-sqoop]:hadoop/hdinsight-use-sqoop.md
 
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
+[hdinsight-adls-gen1]: hdinsight-hadoop-use-data-lake-store.md
+[hdinsight-adls-gen2]: ../storage/data-lake-storage/use-hdi-cluster.md
 [hdinsight-submit-jobs]:hadoop/submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 

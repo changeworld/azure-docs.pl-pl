@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 03/06/2018
 ms.author: danlep
-ms.openlocfilehash: 7bb49e48f3777304aa6f40cee40e0b7147994201
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 52338cc21e46b544c2abb79cd7094615c837a2e8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345241"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233783"
 ---
 # <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>Konfigurowanie klastra Windows RDMA za pomocą pakietu HPC Pack do uruchamiania aplikacji MPI
 Konfigurowanie klastra Windows RDMA na platformie Azure przy użyciu [pakietu Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) i [obsługą dostępu RDMA HPC rozmiarach](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#rdma-capable-instances) do uruchamiania aplikacji równoległych interfejsu przekazywania komunikatów (MPI). Po skonfigurowaniu węzłów funkcją RDMA, oparte na systemie Windows Server w klastrze pakietu HPC Pack aplikacji MPI wydajne komunikowanie się za pośrednictwem o niskich opóźnieniach i wysokiej przepustowości sieci na platformie Azure, w oparciu o technologię zdalnego bezpośredniego pamięci (RDMA) dostępu.
@@ -51,19 +51,19 @@ Poniżej przedstawiono zagadnienia i czynności, aby szybciej obsługą dostępu
     Pobieranie pakietu instalacyjnego pakietu HPC Pack z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=49922). Wymagania i instrukcje, aby przygotować się do wdrożenia platformy Azure serii zobacz [serii do wystąpień procesu roboczego platformy Azure za pomocą pakietu Microsoft HPC Pack](https://technet.microsoft.com/library/gg481749.aspx).
 2. **Konfigurowanie certyfikatu zarządzania w subskrypcji platformy Azure**
    
-    Konfigurowanie certyfikatu do zabezpieczenia połączenia między węzłem głównym i platformą Azure. Opcje i procedury, zobacz [scenariuszami, aby skonfigurować certyfikat zarządzania platformy Azure dla pakietu HPC Pack](http://technet.microsoft.com/library/gg481759.aspx). W przypadku wdrożeń testowych pakietu HPC Pack instaluje domyślne Microsoft HPC certyfikat zarządzania platformy Azure możesz szybko przekazać do subskrypcji platformy Azure.
+    Konfigurowanie certyfikatu do zabezpieczenia połączenia między węzłem głównym i platformą Azure. Opcje i procedury, zobacz [scenariuszami, aby skonfigurować certyfikat zarządzania platformy Azure dla pakietu HPC Pack](https://technet.microsoft.com/library/gg481759.aspx). W przypadku wdrożeń testowych pakietu HPC Pack instaluje domyślne Microsoft HPC certyfikat zarządzania platformy Azure możesz szybko przekazać do subskrypcji platformy Azure.
 3. **Utwórz nową usługę w chmurze i konto magazynu**
    
     Użyj witryny Azure portal do utworzenia usługi w chmurze (klasyczne) i konto magazynu (klasyczne) dla wdrożenia. Utworzyć te zasoby w regionie, w których jest dostępny rozmiar wystąpienia serii H, A8 lub A9, którego chcesz użyć. Zobacz [produkty Azure według regionów](https://azure.microsoft.com/regions/services/).
 
 4. **Tworzenie szablonu węzła platformy Azure**
    
-    Użyj węzła Kreator tworzenia szablonu w Menedżerze klastra HPC. Aby uzyskać instrukcje, zobacz [utworzyć szablon zestaw Azure node](http://technet.microsoft.com/library/gg481758.aspx#BKMK_Templ) w "Kroki do wdrożenia usługi Azure węzłów za pomocą pakietu Microsoft HPC Pack".
+    Użyj węzła Kreator tworzenia szablonu w Menedżerze klastra HPC. Aby uzyskać instrukcje, zobacz [utworzyć szablon zestaw Azure node](https://technet.microsoft.com/library/gg481758.aspx#BKMK_Templ) w "Kroki do wdrożenia usługi Azure węzłów za pomocą pakietu Microsoft HPC Pack".
    
     Dla testów wstępnych zalecamy Konfigurowanie zasad ręczne dostępności w szablonie.
 5. **Dodaj węzły do klastra**
    
-    Użyj Kreator dodawania węzłów w Menedżerze klastra HPC. Aby uzyskać więcej informacji, zobacz [Dodawanie węzłów Azure w klastrze HPC Windows](http://technet.microsoft.com/library/gg481758.aspx#BKMK_Add).
+    Użyj Kreator dodawania węzłów w Menedżerze klastra HPC. Aby uzyskać więcej informacji, zobacz [Dodawanie węzłów Azure w klastrze HPC Windows](https://technet.microsoft.com/library/gg481758.aspx#BKMK_Add).
    
     Określając rozmiar węzłów, wybierz jeden z obsługą dostępu RDMA rozmiarów wystąpień.
    
@@ -76,7 +76,7 @@ Poniżej przedstawiono zagadnienia i czynności, aby szybciej obsługą dostępu
     Wybierz węzły, a następnie użyć **Start** akcji w Menedżerze klastra HPC. Po ukończeniu inicjowania obsługi administracyjnej zaznacz węzły i używać **przejdź do trybu Online** akcji w Menedżerze klastra HPC. Węzły są gotowe do uruchomienia zadania.
 7. **Przesyłanie zadań do klastra**
    
-   Narzędzia pakietu HPC Pack zadania przesyłania do obsługi zadań klastra. Zobacz [Microsoft HPC Pack: Zarządzanie zadaniami](http://technet.microsoft.com/library/jj899585.aspx).
+   Narzędzia pakietu HPC Pack zadania przesyłania do obsługi zadań klastra. Zobacz [Microsoft HPC Pack: Zarządzanie zadaniami](https://technet.microsoft.com/library/jj899585.aspx).
 8. **Zatrzymaj (anulowanie aprowizacji) węzłów**
    
    Po zakończeniu zadania uruchomione węzły Przełącz do trybu offline i używać **zatrzymać** akcji w Menedżerze klastra HPC.

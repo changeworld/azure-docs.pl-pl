@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: e0971b6b9b8460447d383d238843d4bdddc912f7
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 5499193ba96d5a32ac6d3b310eee531c68fd52fb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958981"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255929"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Zawsze szyfrowane: Ochrona poufnych danych i przechowywania kluczy szyfrowania w usłudze Azure Key Vault
 
@@ -635,5 +635,5 @@ Po utworzeniu bazy danych, która korzysta z funkcji zawsze zaszyfrowane, można
 * [Niewidoczne szyfrowanie danych](https://msdn.microsoft.com/library/bb934049.aspx)
 * [Szyfrowanie serwera SQL](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Zawsze zaszyfrowane Kreatora](https://msdn.microsoft.com/library/mt459280.aspx)
-* [Zawsze zaszyfrowane blog](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+* [Zawsze zaszyfrowane blog](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
 

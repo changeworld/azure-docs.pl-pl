@@ -1,24 +1,24 @@
 ---
-title: Zarządzanie klastrami Hadoop z systemem Windows w HDInsight przy użyciu witryny Azure portal
-description: Dowiedz się, jak do administrowania usługą HDInsight. Tworzenie klastra usługi HDInsight, otwórz interakcyjnej konsoli języka JavaScript i otwieranie konsoli poleceń platformy Hadoop.
+title: Zarządzanie klastrami Apache Hadoop oparte na Windows w HDInsight przy użyciu witryny Azure portal
+description: Dowiedz się, jak do administrowania usługą HDInsight. Tworzenie klastra usługi HDInsight, otwórz interakcyjnej konsoli języka JavaScript i Otwórz konsolę polecenia Apache Hadoop.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 130f684b69a9cfa1936c2a9aa5175f3d5a7631ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 67138b9e98818f5d106c73cef027d0eb2515e9a8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970281"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233919"
 ---
-# <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Hadoop z systemem Windows w HDInsight przy użyciu witryny Azure portal
+# <a name="manage-windows-based-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Apache Hadoop oparte na Windows w HDInsight przy użyciu witryny Azure portal
 
-Za pomocą [witryny Azure portal][azure-portal], tworzenie klastrów Hadoop z systemem Windows w usłudze Azure HDInsight, Zmień hasło użytkownika usługi Hadoop i Włącz protokół RDP (Remote Desktop), aby dostęp do poleceń usługi Hadoop Konsola w klastrze.
+Za pomocą [witryny Azure portal][azure-portal], można utworzyć klastry Apache Hadoop oparte na Windows w usłudze Azure HDInsight, Zmień hasło użytkownika usługi Hadoop i Włącz protokół RDP (Remote Desktop), aby mogli uzyskiwać dostęp Hadoop konsoli poleceń w klastrze.
 
 Informacje przedstawione w tym artykule dotyczy tylko klastry HDInsight oparty na oknach. Aby uzyskać informacji dotyczących zarządzania opartego na systemie Linux klastrów, zobacz [klastrów zarządzania Hadoop w HDInsight przy użyciu witryny Azure portal](hdinsight-administer-use-portal-linux.md).
 
@@ -34,7 +34,7 @@ Przed rozpoczęciem korzystania z informacji zawartych w tym artykule należy dy
 * **Konto usługi Azure Storage** — klaster HDInsight używa kontenera usługi Azure Blob storage jako domyślnego systemu plików. Aby uzyskać więcej informacji na temat sposobu usługi Azure Blob storage zapewnia bezproblemową obsługę z klastrami HDInsight, zobacz [użycia usługi Azure Blob Storage za pomocą HDInsight](hdinsight-hadoop-use-blob-storage.md). Aby uzyskać więcej informacji na temat tworzenia konta usługi Azure Storage, zobacz [sposób tworzenia konta magazynu](../storage/common/storage-create-storage-account.md).
 
 ## <a name="open-the-portal"></a>Otwórz Portal
-1. Zaloguj się do [ https://portal.azure.com ](https://portal.azure.com).
+1. Zaloguj się do witryny [https://portal.azure.com](https://portal.azure.com).
 2. Po otwarciu portalu, możesz wykonywać następujące czynności:
 
    * Kliknij przycisk **Utwórz zasób** menu po lewej stronie, aby utworzyć nowy klaster:
@@ -67,7 +67,7 @@ HDInsight działa dzięki składnikom szeroki zakres usługi Hadoop. Aby uzyska�
 Instalacja oprogramowania niestandardowego w klastrze za pomocą połączenia pulpitu zdalnego nie jest obsługiwana. Należy unikać przechowywanie wszystkich plików na dyskach węzła głównego, ponieważ zostaną one utracone jeśli trzeba będzie ponownie utworzyć klastry. Zalecane jest przechowywanie plików w usłudze Azure Blob storage. Magazyn obiektów blob jest trwały.
 
 ## <a name="list-and-show-clusters"></a>Listy i wyświetlaniu klastrów
-1. Zaloguj się do [ https://portal.azure.com ](https://portal.azure.com).
+1. Zaloguj się do witryny [https://portal.azure.com](https://portal.azure.com).
 2. Kliknij przycisk **klastry HDInsight** menu po lewej stronie.
 3. Kliknij nazwę klastra. Jeśli lista klastra jest długa, możesz użyć filtrów w górnej części strony.
 4. Kliknij dwukrotnie klastra z listy, aby wyświetlić jego szczegóły.
@@ -328,7 +328,7 @@ Poświadczenia podane podczas jego tworzenia klastra dają dostęp do usługi w 
     Wartości domyślne dla wygasa jest tygodnia.
 
    > [!NOTE]
-   > Można również użyć zestawu .NET SDK HDInsight można włączyć pulpitu zdalnego w klastrze. Użyj **EnableRdp** metody na obiekt klienta HDInsight w następujący sposób: **klienta. EnableRdp (nazwa_klastra, lokalizację, "rdpuser", "rdppassword" DateTime.Now.AddDays(6))**. Podobnie, aby wyłączyć pulpitu zdalnego w klastrze, należy użyć **klienta. DisableRdp (clustername, lokalizacja)**. Aby uzyskać więcej informacji na temat tych metod, zobacz [dokumentacja zestawu SDK .NET usługi HDInsight](http://go.microsoft.com/fwlink/?LinkId=529017). Ma to zastosowanie tylko w przypadku klastrów HDInsight w systemie Windows.
+   > Można również użyć zestawu .NET SDK HDInsight można włączyć pulpitu zdalnego w klastrze. Użyj **EnableRdp** metody na obiekt klienta HDInsight w następujący sposób: **klienta. EnableRdp (nazwa_klastra, lokalizację, "rdpuser", "rdppassword" DateTime.Now.AddDays(6))**. Podobnie, aby wyłączyć pulpitu zdalnego w klastrze, należy użyć **klienta. DisableRdp (clustername, lokalizacja)**. Aby uzyskać więcej informacji na temat tych metod, zobacz [dokumentacja zestawu SDK .NET usługi HDInsight](https://go.microsoft.com/fwlink/?LinkId=529017). Ma to zastosowanie tylko w przypadku klastrów HDInsight w systemie Windows.
    >
    >
 

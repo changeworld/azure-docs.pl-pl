@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: f972495fe1a5a0744cf6d7046b555349e5bc8c54
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 9d11a34c499029550de12e8a47f7de0b1beac7b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416430"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235041"
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Przy użyciu pomocy technicznej platformy Azure Resource Manager z usługą Azure Load Balancer
 
@@ -50,9 +50,9 @@ Dla szablonów szybkiego startu przy użyciu usługi Azure Load Balancer, zobacz
 
 Przykłady szablonów:
 
-* [2 maszyny wirtualne usługi Load Balancer i reguł równoważenia obciążenia](http://go.microsoft.com/fwlink/?LinkId=544799)
-* [2 maszyny wirtualne w sieci Wirtualnej przy użyciu reguł wewnętrznego modułu równoważenia obciążenia i równoważenia obciążenia](http://go.microsoft.com/fwlink/?LinkId=544800)
-* [2 maszyny wirtualne w module równoważenia obciążenia i Konfiguruj reguły translatora adresów Sieciowych na równoważenia obciążenia](http://go.microsoft.com/fwlink/?LinkId=544801)
+* [2 maszyny wirtualne usługi Load Balancer i reguł równoważenia obciążenia](https://go.microsoft.com/fwlink/?LinkId=544799)
+* [2 maszyny wirtualne w sieci Wirtualnej przy użyciu reguł wewnętrznego modułu równoważenia obciążenia i równoważenia obciążenia](https://go.microsoft.com/fwlink/?LinkId=544800)
+* [2 maszyny wirtualne w module równoważenia obciążenia i Konfiguruj reguły translatora adresów Sieciowych na równoważenia obciążenia](https://go.microsoft.com/fwlink/?LinkId=544801)
 
 ## <a name="setting-up-azure-load-balancer-with-a-powershell-or-cli"></a>Konfigurowanie równoważenia obciążenia platformy Azure za pomocą programu PowerShell lub interfejsu wiersza polecenia
 

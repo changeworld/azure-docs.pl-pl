@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 693fd7b80d69c20971315d8636f27daeb0cacaee
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 28be219c35d382cbd141bb050b35893da02ab775
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240889"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256456"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Konkursy dotyczące usługi Microsoft Cortana Intelligence — często zadawane pytania
 **Co to jest pakiet Cortana Intelligence konkursy?**
 
-Konkursy analizy Cortany Microsoft łączy w sobie globalnej społeczności Entuzjaści danych przez zbiorczo rozwiązywaniu niektórych z najbardziej złożonych problemów do nauki o danych na świecie. Pakiet Cortana Intelligence konkursy umożliwiają Entuzjaści danych z na całym świecie konkurować i tworzenie modeli do analizy danych o wysokiej dokładne i inteligentne. Te konkursy hostowanej są oparte na unikatowych zestawów danych, które zostały udostępnione w publicznie po raz pierwszy. Uczestnicy można wygrać nagrody lub rozpoznawania za pośrednictwem najważniejsze 10 Liderzy publicznych. Dostępne konkursy strony głównej w [aka.ms/CIComp](http://aka.ms/CIComp).
+Konkursy analizy Cortany Microsoft łączy w sobie globalnej społeczności Entuzjaści danych przez zbiorczo rozwiązywaniu niektórych z najbardziej złożonych problemów do nauki o danych na świecie. Pakiet Cortana Intelligence konkursy umożliwiają Entuzjaści danych z na całym świecie konkurować i tworzenie modeli do analizy danych o wysokiej dokładne i inteligentne. Te konkursy hostowanej są oparte na unikatowych zestawów danych, które zostały udostępnione w publicznie po raz pierwszy. Uczestnicy można wygrać nagrody lub rozpoznawania za pośrednictwem najważniejsze 10 Liderzy publicznych. Dostępne konkursy strony głównej w [aka.ms/CIComp](https://aka.ms/CIComp).
 
 **Jak często firma Microsoft będzie publikować nowy konkursy**
 
@@ -37,7 +37,7 @@ Pytania ogólne, można użyć [forum Microsoft Azure Machine Learning](https://
 
 **Jak Podaj konkurs?**
 
-Dostęp do [konkursy](https://gallery.cortanaintelligence.com/competitions) strony głównej w [galerii Azure AI](https://gallery.cortanaintelligence.com/), lub przejdź do [ http://aka.ms/CIComp ](http://aka.ms/CIComp). Strona główna zawiera listę wszystkich konkursów, które są aktualnie uruchomione. Każdy konkurs zawiera szczegółowe instrukcje oraz zasadami uczestnictwa, nagrody i czas trwania na stronie tworzenia konta.
+Dostęp do [konkursy](https://gallery.cortanaintelligence.com/competitions) strony głównej w [galerii Azure AI](https://gallery.cortanaintelligence.com/), lub przejdź do [ http://aka.ms/CIComp ](https://aka.ms/CIComp). Strona główna zawiera listę wszystkich konkursów, które są aktualnie uruchomione. Każdy konkurs zawiera szczegółowe instrukcje oraz zasadami uczestnictwa, nagrody i czas trwania na stronie tworzenia konta.
 
 1. Znajdź konkurs, w którym chce uczestniczyć w programie, zapoznaj się z instrukcjami i Obejrzyj wideo z samouczkiem. Następnie kliknij przycisk **wprowadź konkurencji** przycisk i skopiuj eksperymentu Starter do istniejącego obszaru roboczego usługi Azure Machine Learning. Jeśli nie masz jeszcze dostępu do obszaru roboczego, należy utworzyć jedną wcześniej. Uruchom eksperyment Starter, obserwować metryki wydajności, a następnie swoją kreatywność umożliwia zwiększenie wydajności modelu. Prawdopodobnie spędzisz większość czasu w tym kroku.   
 
@@ -98,7 +98,7 @@ Firma Microsoft zweryfikuje wyniki Liderzy prywatnej, a następnie możemy się 
 
 **Jak będzie uzyskać nagród pieniężnych, jeśli I wygraj konkurs?**
 
-Jeśli jesteś zwycięzcy konkursu, należy podpisać oświadczenie o uprawnienia, licencji i wydania na podstawie. Ten formularz ponownie przedstawia z regułami konkursu. Zwycięzcy konieczne Wypełnij formularz nam podatku W-9 lub W postaci-8BEN Jeżeli nie są one podatników Stanów Zjednoczonych. Firma Microsoft skontaktuje się z zwycięzców wszystkie jako część procesu kW nagrody za pomocą poczty e-mail ich rejestracji. Można znaleźć na naszej [warunków i postanowień](http://aka.ms/comptermsandconditions) dodatkowe szczegóły.
+Jeśli jesteś zwycięzcy konkursu, należy podpisać oświadczenie o uprawnienia, licencji i wydania na podstawie. Ten formularz ponownie przedstawia z regułami konkursu. Zwycięzcy konieczne Wypełnij formularz nam podatku W-9 lub W postaci-8BEN Jeżeli nie są one podatników Stanów Zjednoczonych. Firma Microsoft skontaktuje się z zwycięzców wszystkie jako część procesu kW nagrody za pomocą poczty e-mail ich rejestracji. Można znaleźć na naszej [warunków i postanowień](https://aka.ms/comptermsandconditions) dodatkowe szczegóły.
 
 **Co zrobić, jeśli więcej niż jeden wpis otrzymuje ten sam wynik?**
 
@@ -114,5 +114,5 @@ Obecnie platforma konkurencji obsługuje tylko wpisy z obszaru roboczego w przes
 
 **Czy przechowujemy rozwiązania konkursów i wpisy użytkowników?**
 
-Wpisy użytkownika tylko są zachowywane do celów ewaluacyjnych zidentyfikować zwycięskiego rozwiązania. Zapoznaj się nasze [warunków i postanowień](http://aka.ms/comptermsandconditions) dla szczegółowych informacji.
+Wpisy użytkownika tylko są zachowywane do celów ewaluacyjnych zidentyfikować zwycięskiego rozwiązania. Zapoznaj się nasze [warunków i postanowień](https://aka.ms/comptermsandconditions) dla szczegółowych informacji.
 

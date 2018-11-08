@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hascipio
-ms.openlocfilehash: aadc695b1f07d04f1fcc7f2f2e3ff90fb7f54849
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 300b94aea0c06092a5fb6bdecd49771ef1cd517d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714010"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234191"
 ---
 # <a name="get-pre-approved-via-the-microsoft-azure-certified-program"></a>Pobierz wstępnie zatwierdzone za pośrednictwem programu certyfikatów platformy Microsoft Azure
 Ten artykuł zawiera instrukcje dotyczące sposobu stają się certyfikat platformy Microsoft Azure, dzięki czemu mogą publikować rozwiązanie usługi z portalu Azure Marketplace i kwalifikują się do korzyści marketingu. Szczegółowe omówienie programu certyfikat platformy Microsoft Azure i korzyści, odwiedź stronę [ http://azure.com/certified ](http://azure.com/certified).
@@ -34,7 +34,7 @@ Ten artykuł zawiera instrukcje dotyczące sposobu stają się certyfikat platfo
 3. Pracując przy użyciu Menedżera kont partnerów lub Menedżera partnera DX, poproś go o nominuj rozwiązania do certyfikatu platformy Azure programu lub przejdź do [certyfikat platformy Microsoft Azure](http://createopportunity.azurewebsites.net) Wypełnij formularz zgłoszeniowy strony sieci Web, a następnie wprowadź Ta wiadomość e-mail z menedżerem konta partnera lub menedżerem partnera DX w polu kontakt sponsora firmy Microsoft.
 
 > [!IMPORTANT]
-> **"Sprzedaż — od" krajów** — w celu sprzedaży z usług w witrynie Microsoft Azure Marketplace potrzeb jednostki zarejestrowane pochodzić z jednego z krajów zatwierdzonych "sprzedaż — od". To ograniczenie jest ze względu na informacje dotyczące wypłat i opodatkowania. Firma Microsoft aktywnie chcą rozwiń ta lista krajów w najbliższej przyszłości, więc wkrótce. Aby uzyskać pełną listę, zobacz 1b sekcji [zasad uczestnictwa w portalu Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833).
+> **"Sprzedaż — od" krajów** — w celu sprzedaży z usług w witrynie Microsoft Azure Marketplace potrzeb jednostki zarejestrowane pochodzić z jednego z krajów zatwierdzonych "sprzedaż — od". To ograniczenie jest ze względu na informacje dotyczące wypłat i opodatkowania. Firma Microsoft aktywnie chcą rozwiń ta lista krajów w najbliższej przyszłości, więc wkrótce. Aby uzyskać pełną listę, zobacz 1b sekcji [zasad uczestnictwa w portalu Azure Marketplace](https://go.microsoft.com/fwlink/?LinkID=526833).
 
 
 ## <a name="next-step"></a>Następny krok

@@ -9,22 +9,22 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: bee74f0399def142915aa26d15ecfa671925f405
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 0df13e3364cebe7cb5804b840889bca971b36be2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025586"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235058"
 ---
-# <a name="encoding-with-azure-media-services"></a>Kodowanie za pomocą usługi Azure Media Services
+# <a name="encoding-with-media-services"></a>Kodowanie za pomocą usługi Media Services
 
-Usługa Azure Media Services umożliwia kodowanie plików multimediów cyfrowych wysokiej jakości do formatów, które można odtwarzać na różnych przeglądarek i urządzeń. Na przykład może zaistnieć potrzeba strumieniowego odtwarzania treści w formatach HLS lub MPEG DASH firmy Apple. Usługa Media Services pozwala także na analizowanie zawartości wideo lub audio. W tym temacie zawierają wytyczne dotyczące celu zakodowania zawartości przy użyciu usługi Media Services v3.
+Usługa Azure Media Services umożliwia kodowanie plików multimediów cyfrowych wysokiej jakości do formatów, które można odtwarzać na różnych przeglądarek i urządzeń. Na przykład może zaistnieć potrzeba strumieniowego odtwarzania treści w formatach HLS lub MPEG DASH firmy Apple. Ten temat zawiera wskazówki na temat kodowania zawartości za pomocą usługi Media Services v3.
 
 Kodowanie za pomocą usługi Media Services v3, musisz utworzyć transformację i zadania. Przekształcenie definiuje przepis na kodowania ustawień i danych wyjściowych, a zadanie jest wystąpieniem przepisu. Aby uzyskać więcej informacji, zobacz [transformacje i zadania](transform-concept.md)
 
-Podczas kodowania za pomocą usługi Azure Media Services, umożliwia wstępne Poinformuj kodera w przetwarzaniu multimedialnych plików wejściowych. Na przykład można określić rozdzielczość wideo i/lub liczbę kanałów audio, który ma w zakodowanej zawartości. 
+Podczas kodowania za pomocą usługi Media Services, umożliwia wstępne Poinformuj kodera w przetwarzaniu multimedialnych plików wejściowych. Na przykład można określić rozdzielczość wideo i/lub liczbę kanałów audio, który ma w zakodowanej zawartości. 
 
 Użytkownik może szybko rozpocząć pracę z jedną z zalecanych wbudowane ustawienia wstępne, oparte na najlepszych branżowych rozwiązań lub można utworzyć niestandardowe ustawienie wstępne pod kątem określonych wymagań scenariusza lub urządzenia. Aby uzyskać więcej informacji, zobacz [kodowanie przy użyciu niestandardowej transformacji](customize-encoder-presets-how-to.md). 
 
@@ -34,8 +34,6 @@ Usługa Media Services obsługuje obecnie następujące wbudowane ustawienia wst
 
 |**Nazwa ustawienia wstępnego**|**Scenariusz**|**Szczegóły**|
 |---|---|---|
-|**AudioAnalyzerPreset**|Analiza audio|Ustawienie wstępne stosuje zestaw wstępnie zdefiniowanych operacji analizy oparte na sztucznej Inteligencji, w tym transkrypcja mowy. Obecnie usługa ustawienia wstępnego obsługuje przetwarzania zawartości za pomocą pojedynczej ścieżki audio.<br/>Można określić język dla ładunku audio w danych wejściowych w formacie BCP 47 "region tagu języka" (na przykład "en US"). Listę obsługiwanych języków to "en US", "en-GB", "es-MX", "pt-BR", "fr-FR", "ja-JP", "es-ES", "it-IT", "zh-CN".|
-|**VideoAnalyzerPreset**|Analiza audio i wideo|Wyodrębnia informacje (obszerne metadane) z audio i wideo, a następnie generuje plik formatu JSON. Można określić, czy mają zostać wyodrębnione audio insights podczas przetwarzania pliku wideo. Aby uzyskać więcej informacji, zobacz [analiza wideo](analyze-videos-tutorial-with-api.md).|
 |**BuiltInStandardEncoderPreset**|Przesyłanie strumieniowe|Używane do definiowania wbudowaną ustawienie wstępne kodowania wejściowy plik wideo za pomocą kodera w warstwie standardowa. <br/>Obecnie obsługiwane są następujące ustawienia:<br/>**EncoderNamedPreset.AdaptiveStreaming** (zalecane). Aby uzyskać więcej informacji, zobacz [automatyczne generowanie drabiny szybkości transmisji bitów](autogen-bitrate-ladder.md).<br/>**EncoderNamedPreset.AACGoodQualityAudio** — tworzy pojedynczego pliku MP4, zawierający tylko dźwięk stereo zakodowane w 192 kb/s.<br/>**EncoderNamedPreset.H264MultipleBitrate1080p** — tworzy zbiór 8 wyrównane GOP pliki MP4 z, od 6000 KB/s do 400 KB/s i stereo AAC audio. Rozdzielczość rozpoczyna się od 1080p i prowadzi w dół do 360 p.<br/>**EncoderNamedPreset.H264MultipleBitrate720p** — tworzy zbiór 6 wyrównane GOP pliki MP4 z, od 3400 KB/s do 400 KB/s i stereo AAC audio. Rozdzielczość rozpoczyna się od 720p i prowadzi w dół do 360 p.<br/>**EncoderNamedPreset.H264MultipleBitrateSD** — tworzy zbiór 5 wyrównane GOP pliki MP4 z, od 1600 KB/s do 400 KB/s i stereo AAC audio. Rozdzielczość rozpoczyna się od 480p i prowadzi w dół do 360 p.<br/><br/>Aby uzyskać więcej informacji, zobacz [przekazywanie, kodowanie i przesyłanie strumieniowe plików](stream-files-tutorial-with-api.md).|
 |**StandardEncoderPreset**|Przesyłanie strumieniowe|W tym artykule opisano ustawienia, które mają być używane podczas kodowania wejściowy plik wideo za pomocą kodera w warstwie standardowa. <br/>Użyj tego ustawienia wstępnego podczas dostosowywania ustawień wstępnych transformacji. Aby uzyskać więcej informacji, zobacz [Dostosowywanie ustawień wstępnych przekształcenie](customize-encoder-presets-how-to.md).|
 
@@ -45,16 +43,15 @@ Usługa Media Services w pełni obsługuje dostosowywania wszystkie wartości w 
 
 ## <a name="scaling-encoding-in-v3"></a>Skalowanie kodowania w wersji 3
 
-Obecnie klienci mają używać witryny Azure portal lub interfejsów API usług AMS w wersji 2 można ustawić jednostki zarezerwowane (zgodnie z opisem w [skalowanie przetwarzania multimediów](../previous/media-services-scale-media-processing-overview.md). 
+Obecnie klienci mają używać witryny Azure portal lub interfejsów API w wersji 2 usługi Media Services do zestawu jednostek ru (zgodnie z opisem w [skalowanie przetwarzania multimediów](../previous/media-services-scale-media-processing-overview.md). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 ### <a name="tutorials"></a>Samouczki
 
-Następujące tutorals pokazują, jak w celu zakodowania zawartości przy użyciu usługi Media Services:
+Następujący samouczek pokazuje, jak w celu zakodowania zawartości przy użyciu usługi Media Services:
 
-* [Przekazywanie, kodowanie i przesyłanie strumieniowe przy użyciu usługi Azure Media Services](stream-files-tutorial-with-api.md)
-* [Analizowanie klipów wideo w usłudze Azure Media Services](analyze-videos-tutorial-with-api.md)
+* [Przekazywanie, kodowanie i przesyłanie strumieniowe przy użyciu usługi Media Services](stream-files-tutorial-with-api.md)
 
 ### <a name="code-samples"></a>Przykłady kodu
 

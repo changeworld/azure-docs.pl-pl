@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: cd688ec1f5b7b46138a3b601f52b54dd6f3615e3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 694129fa39a84deac118c35da52a0617fe805d6c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046494"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261153"
 ---
 # <a name="analyze-hadoop-logs"></a>Analizowanie dzienników usługi Hadoop
 
@@ -59,7 +59,7 @@ Brak dostępnych wiele narzędzi do uzyskiwania dostępu do danych w tych tabela
 * Dodatku Power Query dla programu Excel
 
 #### <a name="use-power-query-for-excel"></a>Użyj dodatku Power Query dla programu Excel
-Dodatek Power Query mogą być instalowane z [dodatku Microsoft Power Query dla programu Excel](http://www.microsoft.com/en-us/download/details.aspx?id=39379). Zobacz stronę pobierania pakietu z wymaganiami systemowymi.
+Dodatek Power Query mogą być instalowane z [dodatku Microsoft Power Query dla programu Excel](https://www.microsoft.com/en-us/download/details.aspx?id=39379). Zobacz stronę pobierania pakietu z wymaganiami systemowymi.
 
 **Otwórz i analizowanie dzienników usługi za pomocą dodatku Power Query**
 
@@ -83,7 +83,7 @@ Dodatek Power Query mogą być instalowane z [dodatku Microsoft Power Query dla 
 Można teraz używać programu Excel do filtrowania i sortowania, zgodnie z potrzebami. Może być uwzględnienie innych kolumn (np. komunikat o), aby przejść do problemów, gdy występują one, ale wybierając i grupowanie kolumn opisanych powyżej zapewnia znośnego obrazu, co się dzieje z usługi Hadoop. Ten sam pomysł można zastosować do tabel setuplog i hadoopinstalllog.
 
 #### <a name="use-visual-studio"></a>Korzystanie z programu Visual Studio
-**Używanie programu Visual Studio**
+**Korzystanie z programu Visual Studio**
 
 1. Otwórz program Visual Studio.
 2. Z **widoku** menu, kliknij przycisk **programu Cloud Explorer**. Lub po prostu kliknij **CTRL +\, CTRL + X**.

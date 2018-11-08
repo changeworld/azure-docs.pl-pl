@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 031c609ee5dcd04fc461af74b7f49973fbd290c3
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: dab1547ca17acaeda3cb168d78b342661ebe4615
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157623"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230482"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Administrowanie domeną zarządzaną usług domenowych Azure Active Directory
 W tym artykule pokazano, jak administrowanie domeną zarządzaną usług domenowych Azure Active Directory (AD).
@@ -63,7 +63,7 @@ Pierwszym krokiem jest, aby skonfigurować maszynę wirtualną systemu Windows S
 ### <a name="remotely-administer-the-managed-domain-from-a-client-computer-for-example-windows-10"></a>Zdalne administrowanie domeną zarządzaną z poziomu komputera klienckiego (na przykład system Windows 10)
 Domeny zarządzanej przez instrukcje w tym artykule maszynę wirtualną systemu Windows Server do administrowania DS usługi AAD. Jednak możesz również używać maszynę wirtualną Windows klienta (na przykład system Windows 10), aby to zrobić.
 
-Możesz [zainstalować narzędzia administracji zdalnej serwera (RSAT)](http://social.technet.microsoft.com/wiki/contents/articles/2202.remote-server-administration-tools-rsat-for-windows-client-and-windows-server-dsforum2wiki.aspx) na maszynie wirtualnej klienta Windows, postępując zgodnie z instrukcjami w witrynie TechNet.
+Możesz [zainstalować narzędzia administracji zdalnej serwera (RSAT)](https://social.technet.microsoft.com/wiki/contents/articles/2202.remote-server-administration-tools-rsat-for-windows-client-and-windows-server-dsforum2wiki.aspx) na maszynie wirtualnej klienta Windows, postępując zgodnie z instrukcjami w witrynie TechNet.
 
 ## <a name="task-2---install-active-directory-administration-tools-on-the-virtual-machine"></a>Zadanie 2 — narzędzia administracyjne usługi Active Directory w instalacji na maszynie wirtualnej
 Wykonaj poniższe kroki, aby zainstalować narzędzia Administrowanie usługą Active Directory na maszynie wirtualnej przyłączonych do domeny. Aby uzyskać więcej informacji zobacz temat Technet [informacji o instalowaniu i używaniu narzędzi administracji zdalnej serwera](https://technet.microsoft.com/library/hh831501.aspx).

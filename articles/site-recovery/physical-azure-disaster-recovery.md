@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 13ce074f8ec22bc80ee5c56f2127b3a5b4d788bf
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4f4a61ad0c1b1fcab4773dcc16c5e22053c4158d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215399"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230890"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla lokalnych serwerów fizycznych
 
@@ -23,7 +23,7 @@ Ten samouczek pokazuje, jak skonfigurować odzyskiwanie po awarii w środowisku 
 
 > [!div class="checklist"]
 > * Skonfiguruj wymagania wstępne platformy Azure i w środowisku lokalnym
-> * Utwórz magazyn usługi Recovery Services dla usługi Site Recovery 
+> * Tworzenie magazynu usługi Recovery Services dla usługi Site Recovery 
 > * Konfigurowanie źródła i docelowych środowisk replikacji
 > * Tworzenie zasad replikacji
 > * Włączanie replikacji dla serwera
@@ -51,7 +51,7 @@ Przed rozpoczęciem należy pamiętać, że:
 
 ### <a name="set-up-an-azure-account"></a>Konfigurowanie konta platformy Azure
 
-Pobieranie programu Microsoft [konta platformy Azure](http://azure.microsoft.com/).
+Pobieranie programu Microsoft [konta platformy Azure](https://azure.microsoft.com/).
 
 - Możesz rozpocząć od [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 - Dowiedz się więcej o [cenach usługi Site Recovery](site-recovery-faq.md#pricing)i Uzyskaj [cennik](https://azure.microsoft.com/pricing/details/site-recovery/).
@@ -157,10 +157,10 @@ Wybierz i zweryfikuj zasoby docelowe.
 
 ## <a name="create-a-replication-policy"></a>Tworzenie zasad replikacji
 
-1. Aby utworzyć nowe zasady replikacji, kliknij przycisk **infrastruktura usługi Site Recovery** > **zasady replikacji** > **+ zasady replikacji**.
-2. W **Tworzenie zasad replikacji**, określ nazwę zasad.
-3. W **progu celu punktu odzyskiwania**, określ limit punktu odzyskiwania celu (RPO). Ta wartość określa częstość tworzenia punktów odzyskiwania danych. Przekroczenie tego limitu przez replikację ciągłą spowoduje wygenerowanie alertu.
-4. W **czas przechowywania punktu odzyskiwania**, określić czas (w godzinach) okno przechowywania dla każdego punktu odzyskiwania. Replikowane maszyny wirtualne można odzyskać do dowolnego punktu w tym oknie. Do przechowywania do 24 godzin jest obsługiwany w przypadku maszyn replikowanych do magazynu premium storage, a następnie 72 godzin w przypadku magazynu w warstwie standardowa.
+1. Aby utworzyć nowe zasady replikacji, kliknij pozycję **Infrastruktura usługi Site Recovery** > **Zasady replikacji** > **+Zasady replikacji**.
+2. W obszarze **Tworzenie zasad replikacji** określ nazwę zasad.
+3. W obszarze **Wartość progowa celu punktu odzyskiwania** określ limit celu punktu odzyskiwania. Ta wartość określa częstość tworzenia punktów odzyskiwania danych. Przekroczenie tego limitu przez replikację ciągłą spowoduje wygenerowanie alertu.
+4. W obszarze **Przechowywanie punktu odzyskiwania** określ (w godzinach), jak długie jest okno przechowywania dla każdego punktu odzyskiwania. Replikowane maszyny wirtualne można odzyskać do dowolnego punktu w tym oknie. Przechowywanie do 24 godzin jest obsługiwane dla maszyn replikowanych do magazynu w warstwie Premium, zaś do 72 godzin dla magazynu w warstwie Standardowa.
 5. W **częstotliwość migawek spójności aplikacji**, określić, jak często (w minutach) będą tworzone punkty odzyskiwana zawierające migawki spójne z aplikacjami. Kliknij przycisk **OK**, aby utworzyć zasady.
 
     ![Zasady replikacji](./media/physical-azure-disaster-recovery/replication-policy.png)

@@ -1,6 +1,6 @@
 ---
-title: Następne kroki tworzenia projektu sieci szkieletowej usług | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat projekt aplikacji utworzony w programie Visual Studio.  Informacje o sposobie tworzenia usług za pomocą samouczki i dowiedzieć się więcej na temat tworzenia usługi dla usługi Service Fabric.
+title: Kolejne kroki tworzenia projektu usługi Service Fabric | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat projektu aplikacji, który został utworzony w programie Visual Studio.  Dowiedz się, jak tworzyć usługi przy użyciu samouczków i dowiedzieć się więcej na temat tworzenia usługi dla usługi Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,64 +14,64 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: rwike77
-ms.openlocfilehash: a87dd6f4afa152aebafdde24defcabe841ae2e9c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4d5e74b9ecffbf8f1161cf6c5ef948cd154d993f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206469"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233171"
 ---
-# <a name="your-service-fabric-application-and-next-steps"></a>Sieć szkieletowa usług aplikacji i następne kroki
-Utworzono aplikację sieci szkieletowej usług Azure. W tym artykule opisano niektóre samouczkami, aby wypróbować, w skład projektu, pewne dodatkowe informacje, które mogą być zainteresowane i potencjalne następne kroki.
+# <a name="your-service-fabric-application-and-next-steps"></a>Aplikację usługi Service Fabric i następne kroki
+Utworzono aplikację usługi Azure Service Fabric. W tym artykule opisano kilka samouczków, możesz wypróbować, korzeń projektu, pewne dodatkowe informacje, które mogą być zainteresowane i potencjalne następnych kroków.
 
-## <a name="get-started-with-tutorials-walk-throughs-and-samples"></a>Rozpoczynanie pracy z samouczkami, przewodników i przykłady
+## <a name="get-started-with-tutorials-walk-throughs-and-samples"></a>Rozpoczynanie pracy z usługą samouczki, przewodniki i przykłady
 Chcesz zacząć?  
 
-Pracy za pośrednictwem platformy .NET — samouczek aplikacji. Dowiedz się, jak [tworzenia aplikacji](service-fabric-tutorial-create-dotnet-app.md) z platformy ASP.NET Core frontonu i stanowe zaplecza, [wdrożyć aplikację](service-fabric-tutorial-deploy-app-to-party-cluster.md) do klastra, [skonfigurować CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md), i [— Konfiguracja monitorowania i diagnostyki](service-fabric-tutorial-monitoring-aspnet.md).
+Działa przez samouczek dotyczący aplikacji platformy .NET. Dowiedz się, jak [tworzenia aplikacji](service-fabric-tutorial-create-dotnet-app.md) za pomocą frontonu platformy ASP.NET Core i stanowej back-end, [wdrożenia aplikacji](service-fabric-tutorial-deploy-app-to-party-cluster.md) do klastra, [Konfigurowanie ciągłej integracji/ciągłego Dostarczania](service-fabric-tutorial-deploy-app-with-cicd-vsts.md), i [Konfigurowanie monitorowanie i Diagnostyka](service-fabric-tutorial-monitoring-aspnet.md).
 
-Lub, wypróbuj jedną z następujących przewodników i tworzenie pierwszej...
-- [C# niezawodnej usługi w systemie Windows](service-fabric-reliable-services-quick-start.md) 
-- [C# Reliable Actors usługi w systemie Windows](service-fabric-reliable-actors-get-started.md) 
-- [Usługa wykonywalna gościa w systemie Windows](quickstart-guest-app.md) 
+Lub, wypróbuj jedną z następujących przewodników i Utwórz pierwsze...
+- [C#Niezawodne usługi w Windows](service-fabric-reliable-services-quick-start.md) 
+- [C#Niezawodne usługi aktorów na Windows](service-fabric-reliable-actors-get-started.md) 
+- [Usługi wykonywalnej gościa na Windows](quickstart-guest-app.md) 
 - [Aplikacja kontenera dla systemu Windows](service-fabric-get-started-containers.md) 
 
-Może być również zainteresowana wypróbowaniem naszej [przykładowe aplikacje](http://aka.ms/servicefabricsamples).
+Użytkownik może również zainteresować się wypróbowania naszej [przykładowe aplikacje](https://aka.ms/servicefabricsamples).
 
-## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>Masz pytania lub opinie?  Należy zgłosić problem?
-Zapoznaj się z artykułem [często zadawane pytania](service-fabric-common-questions.md) i odpowiedzi na czynności sieci szkieletowej usług i jak należy jej używać.
+## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>Masz pytania lub opinię?  Potrzebujesz zgłosić problem?
+Zapoznaj się z artykułem [często zadawane pytania dotyczące](service-fabric-common-questions.md) i znajduj odpowiedzi na możliwościach usługi Service Fabric i jak powinna być używana.
 
-[Opcje pomocy technicznej](service-fabric-support.md) wymieniono fora StackOverflow i MSDN zadać pytania, a także opcje raportowania problemów, uzyskiwania pomocy technicznej i przesyłanie opinię o produkcie.
+[Opcje pomocy technicznej](service-fabric-support.md) Wyświetla fora w witrynie StackOverflow i MSDN dotyczące zadawania pytań, a także opcje do zgłaszania problemów dotyczących, uzyskiwanie pomocy technicznej i przesyłanie opinii o produkcie.
 
 ## <a name="the-application-project"></a>Projekt aplikacji
-Każdej nowej aplikacji zawiera projekt aplikacji. Może to być jeden lub dwa dodatkowe projekty, w zależności od typu wybranych usług.
+Co nowego aplikacja zawiera projekt aplikacji. Może to być jeden lub dwa dodatkowe projekty, w zależności od typu wybranych usług.
 
-Projekt aplikacji obejmuje:
+Projekt aplikacji składa się z:
 
 * Zestaw odwołania do usług, które składają się na aplikację.
-* Profilów (węzła 1 lokalnego, 5 węzła lokalnego i chmura) używanych do obsługi preferencje dotyczące pracy z różnych środowiskach — takie jak preferencje dotyczące punktu końcowego klastra oraz czy można wykonywać wdrożenia uaktualnienia domyślnie trzy publikowania.
-* Parametr aplikacji trzy pliki (taki sam jak powyżej) można do obsługi konfiguracje specyficzne dla środowiska aplikacji, takie jak liczba partycji można utworzyć dla usługi. Dowiedz się, jak [konfigurowania aplikacji w wielu środowiskach](service-fabric-manage-multiple-environment-app-configuration.md).
-* Skrypt wdrożenia, który służy do wdrażania aplikacji z poziomu wiersza polecenia lub w ramach automatycznych ciągłego potoku integracji i wdrażania. Dowiedz się więcej o [wdrażanie aplikacji przy użyciu programu PowerShell](service-fabric-deploy-remove-applications.md).
-* Manifest aplikacji zawiera opis aplikacji. Manifest można znaleźć w folderze ApplicationPackageRoot. Dowiedz się więcej o [manifestów aplikacji i usług](service-fabric-application-model.md).
+* Opublikuj trzy profile (1 węzła lokalnego, 5 węzłów lokalnego i chmury), które można użyć, aby zachować preferencje dotyczące pracy z różnych środowisk — takie jak preferencje dotyczące punkt końcowy klastra i czy ma być przeprowadzane uaktualnienie wdrożeń domyślnie.
+* Parametr aplikace trzy pliki (tak samo jak powyżej), można użyć do obsługi konfiguracji specyficznych dla środowiska aplikacji, takich jak liczba partycji można utworzyć dla niej. Dowiedz się, jak [Konfigurowanie aplikacji dla wielu środowisk](service-fabric-manage-multiple-environment-app-configuration.md).
+* Skrypt wdrożenia, który służy do wdrażania aplikacji z poziomu wiersza polecenia lub w ramach ciągłej integracji i ciągłego wdrażania potoku zautomatyzowanego. Dowiedz się więcej o [wdrażanie aplikacji przy użyciu programu PowerShell](service-fabric-deploy-remove-applications.md).
+* Manifest aplikacji zawiera opis aplikacji. Manifest można znaleźć w folderze ApplicationPackageRoot. Dowiedz się więcej o [manifestów aplikacji i usługi](service-fabric-application-model.md).
 
 
 
 ## <a name="learn-more-about-the-programming-models"></a>Dowiedz się więcej o modelach programowania
-Sieć szkieletowa usług oferuje wiele sposobów, aby zapisać i zarządzania usługami.  Poniżej przedstawiono omówienie i podstawowe pojęcia [bezstanowe i stanowe niezawodne usługi](service-fabric-reliable-services-introduction.md), [Reliable Actors](service-fabric-reliable-actors-introduction.md), [kontenery](service-fabric-containers-overview.md), [gościa pliki wykonywalne ](service-fabric-guest-executables-introduction.md), i [bezstanowych i stanowych usług platformy ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md).
+Usługa Service Fabric oferuje wiele sposobów, aby zapisać i zarządzania usługami.  Poniżej przedstawiono omówienie i podstawowe pojęcia [bezstanowych i stanowych usług Reliable Services](service-fabric-reliable-services-introduction.md), [elementów Reliable Actors](service-fabric-reliable-actors-introduction.md), [kontenery](service-fabric-containers-overview.md), [plików wykonywalnych gościa ](service-fabric-guest-executables-introduction.md), i [stanowych i bezstanowych usług platformy ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md).
 
-## <a name="learn-about-service-communication"></a>Dowiedz się więcej o komunikacji usługi
-Aplikacji usługi sieć szkieletowa składa się z różnych usług, w którym każda usługa wykonuje zadanie specjalne. Te usługi może komunikować się ze sobą i mogą być aplikacje klienckie poza klastrem, które nawiązać połączenie i łączyć się z usługami. Dowiedz się, jak [ustawienia komunikacji z i od usług](service-fabric-connect-and-communicate-with-services.md) w sieci szkieletowej usług. 
+## <a name="learn-about-service-communication"></a>Dowiedz się więcej o komunikacji usług
+Aplikacja usługi Service Fabric składa się z różnych usług, w którym każda usługa wykonuje specjalne zadanie. Te usługi mogą komunikować się ze sobą i mogą być aplikacje klienckie poza klastrem nawiązać połączenie i komunikować się z usługami. Dowiedz się, jak [skonfigurowanie komunikacji z oraz między usługami](service-fabric-connect-and-communicate-with-services.md) w usłudze Service Fabric. 
 
 ## <a name="learn-about-configuring-application-security"></a>Informacje na temat konfigurowania zabezpieczeń aplikacji
-Możesz zabezpieczyć aplikacji uruchomionych w klastrze, w obszarze konta innego użytkownika. Zabezpieczanie zasobów, które są używane przez aplikacje w czasie wdrażania na kontach użytkowników — na przykład, plików, katalogów i certyfikatów pomaga również w sieci szkieletowej usług. Dzięki temu uruchamianie aplikacji, nawet w środowisku hostowanej udostępnionego bardziej bezpieczne od siebie nawzajem.  Dowiedz się, jak [konfigurowania zasad zabezpieczeń dla aplikacji](service-fabric-application-runas-security.md).
+Można zabezpieczyć aplikacje, które są uruchomione w klastrze, w ramach różnych kont użytkowników. Usługa Service Fabric pomaga również w zabezpieczenia zasobów używanych przez aplikacje w czasie wdrażania na kontach użytkowników — na przykład, pliki, katalogi i certyfikatów. Dzięki temu uruchomionych aplikacji, nawet w środowisku współdzielonym hostowanej bardziej bezpieczne od siebie nawzajem.  Dowiedz się, jak [podczas konfigurowania zasad zabezpieczeń dla aplikacji](service-fabric-application-runas-security.md).
 
-Twoja aplikacja mogą zawierać poufne informacje, takie jak parametry połączenia magazynu, hasła lub inne wartości, które nie powinny być traktowane w postaci zwykłego tekstu. Dowiedz się, jak [Zarządzanie kluczy tajnych w aplikacji](service-fabric-application-secret-management.md).
+Twoja aplikacja może zawierać poufne informacje, takie jak parametry połączenia magazynu, hasła lub inne wartości, które nie powinny być traktowane w postaci zwykłego tekstu. Dowiedz się, jak [zarządzania wpisami tajnymi aplikacji](service-fabric-application-secret-management.md).
 
-## <a name="learn-about-the-application-lifecycle"></a>Więcej informacji na temat cyklu życia aplikacji
-Zgodnie z innych platform aplikacji usługi Service Fabric zwykle odbywa się przez następujących faz: projekt, programowanie testowania, wdrożenia, uaktualnianie, obsługi i usuwania. [W tym artykule](service-fabric-application-lifecycle.md) zawiera omówienie interfejsów API i jak są używane przez różne role w etapy cyklu życia aplikacji sieci szkieletowej usług.
+## <a name="learn-about-the-application-lifecycle"></a>Dowiedz się więcej o cyklu życia aplikacji
+Zgodnie z innymi platformami aplikacji usługi Service Fabric zwykle odbywa się przez następujące fazy: projektowania, rozwoju, testowania, wdrażanie, uaktualnianie, obsługi i usuwania. [W tym artykule](service-fabric-application-lifecycle.md) zawiera omówienie interfejsów API i jak są one używane przez różne role, w fazach cyklu życia aplikacji usługi Service Fabric.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Tworzenie klastra systemu Windows na platformie Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
-- Wizualizowanie klastra, w tym wdrożone aplikacje i fizycznego układu z [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
+- [Tworzenie klastra Windows na platformie Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+- Wizualizowanie klastra, w tym wdrożone aplikacje i fizyczny układ z [narzędzia Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 - [Wersja i uaktualniania usług](service-fabric-application-upgrade-tutorial.md)
 
 

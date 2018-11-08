@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: ccompy
-ms.openlocfilehash: 5f2dd31488ae61bec061a81986a208bd328bf39b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ce0123528b3fb2454d8b83d59b5916363ae0e944
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093624"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251580"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Blokowanie środowiska usługi App Service
 
@@ -28,7 +28,7 @@ Istnieje kilka zależności dla ruchu przychodzącego, które ma środowisko ASE
 
 Wychodzące zależności środowiska ASE prawie całkowicie są definiowane przy użyciu nazw FQDN, które nie mają adresów statycznych spodem. Brak statycznych adresów oznacza, że sieciowe grupy zabezpieczeń (NSG) nie można zablokować ruch wychodzący ze środowiska ASE. Zmianie adresów wystarczająco często nie jeden skonfigurować reguły na podstawie bieżącego rozdzielczości i użycie w celu utworzenia grup zabezpieczeń sieci. 
 
-Rozwiązania do zabezpieczania wychodzące adresy zaletą korzystania z urządzenia zapory, które można kontrolować ruch wychodzący na podstawie nazw domen. Zespół Azure Networking wstrzymał nowe urządzenie sieciowe w wersji zapoznawczej o nazwie zapory usługi Azure. Zaporę usługi Azure jest w stanie ograniczenie wychodzących HTTP oraz ruch HTTPS na podstawie nazwy DNS miejsca docelowego.  
+Rozwiązania do zabezpieczania wychodzące adresy zaletą korzystania z urządzenia zapory, które można kontrolować ruch wychodzący na podstawie nazw domen. Zaporę platformy Azure, można ograniczyć ruchu wychodzącego ruchu HTTP i HTTPS na podstawie nazwy FQDN miejsca docelowego.  
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Konfigurowanie zapory platformy Azure za pomocą środowiska ASE 
 
@@ -36,11 +36,11 @@ Dostępne są następujące kroki, aby zablokować ruch wychodzący ze środowis
 
 1. Tworzenie zapory platformy Azure w sieci wirtualnej, gdzie środowisko ASE są lub będą. [Usługa Azure zawiera zapory](https://docs.microsoft.com/azure/firewall/)
 2. W interfejsie użytkownika zapory platformy Azure wybierz Tag FQDN środowiska usługi aplikacji
-3. Utwórz tabelę tras z adresami zarządzania z [adresy zarządzania środowiska App Service Environment]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) z następnym przeskokiem do Internetu. Wpisy tabeli trasy są wymagane, aby uniknąć problemów z routingiem asymetrycznym. 
-4. Dodawanie tras do zależności adresów IP wymienionych poniżej, w zależności adresu IP z następnym przeskokiem do Internetu. 
-5. Dodaj trasę do tabeli tras dla 0.0.0.0/0 za pomocą następnego przeskoku jest urządzenia sieciowego zapory usługi Azure
-6. Tworzenie punktów końcowych usługi dla podsieci środowiska ASE, Azure SQL i Azure Storage
-7. Przypisz tabeli tras, który został utworzony do podsieci środowiska ASE  
+3. Utwórz tabelę tras z adresami zarządzania z [adresy zarządzania środowiska App Service Environment]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) z następnym przeskokiem do Internetu. Wpisy tabeli trasy są wymagane, aby uniknąć problemów z routingiem asymetrycznym.
+4. Dodawanie tras do zależności adresów IP wymienionych poniżej, w zależności adresu IP z następnym przeskokiem do Internetu.
+5. Dodaj trasę do tabeli tras dla 0.0.0.0/0 za pomocą następnego przeskoku jest zapory platformy Azure.
+6. Tworzenie punktów końcowych usługi dla podsieci środowiska ASE, Azure SQL i Azure Storage.
+7. Przypisz tabeli tras, który został utworzony do podsieci środowiska ASE.
 
 ## <a name="application-traffic"></a>Ruch aplikacji 
 

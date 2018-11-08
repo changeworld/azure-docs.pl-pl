@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
 ms.component: queues
-ms.openlocfilehash: 907175ac341632d2ba0048ab486392b949f83626
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 67a5dc0eddb6deb51ec69c68c48d5edf308cf43e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42057557"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231570"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Jak używać Magazynu kolejek w języku Ruby
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -153,7 +153,7 @@ azure_queue_service.delete_queue("test-queue")
 ## <a name="next-steps"></a>Następne kroki
 Teraz, kiedy znasz już podstawy usługi queue storage, skorzystaj z poniższych linków, aby dowiedzieć się więcej o bardziej skomplikowanych zadaniach magazynu.
 
-* Odwiedź stronę [Blog zespołu usługi Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/)
+* Odwiedź stronę [Blog zespołu usługi Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/)
 * Odwiedź stronę [zestawu Azure SDK dla języka Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) repozytorium w witrynie GitHub
 
 W celu porównania omówionych w tym artykule usługi kolejek platformy Azure i kolejek usługi Azure Service Bus omówione w [jak używać kolejek usługi Service Bus](https://azure.microsoft.com/develop/ruby/how-to-guides/service-bus-queues/) artykuł, zobacz [kolejek platformy Azure i kolejek usługi Service Bus — porównanie i Porównanie](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)

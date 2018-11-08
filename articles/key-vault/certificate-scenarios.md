@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: bryanla
-ms.openlocfilehash: 60920aaa62d8472eaca8f929c62ce1c0af08f9a4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 4b7192b0c406d2c5df42e3bb3e604f26c56c7bd4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385638"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235194"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Rozpoczynanie pracy z certyfikatami usługi Key Vault
 Następujące scenariusze przedstawiają kilka podstawowe sposoby użycia usługi Key Vault certyfikatu zarządzania tym dodatkowe kroki wymagane do utworzenia pierwszego certyfikatu w magazynie kluczy.
@@ -56,7 +56,7 @@ Certyfikaty składają się z trzech zasoby powiązane ze sobą połączone ze s
         -   Dostawca  
         -   Poświadczenia — poświadczenia konta urzędu certyfikacji. Każdym urzędzie certyfikacji ma swój własny określonych danych.  
 
-     Aby uzyskać więcej informacji o tworzeniu konta przy użyciu dostawcy urzędu certyfikacji, zobacz wpis powiązane [blog usługi Key Vault](http://aka.ms/kvcertsblog).  
+     Aby uzyskać więcej informacji o tworzeniu konta przy użyciu dostawcy urzędu certyfikacji, zobacz wpis powiązane [blog usługi Key Vault](https://aka.ms/kvcertsblog).  
 
 **Krok 3.1** — skonfiguruj [certyfikatu kontakty](/rest/api/keyvault/setcertificatecontacts) powiadomień. Jest to kontaktu dla użytkownika usługi Key Vault. Usługa Key Vault nie wymusza ten krok.  
 

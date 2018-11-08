@@ -14,12 +14,12 @@ ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: db008953b9aa596a64aceccacc0e4632ebfff596
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 72665ed4c25d2719ac5030bce59157a3ccd9dec7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720127"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236010"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?
 Logowanie jednokrotne oznacza, że będzie mogła uzyskać dostęp do wszystkich aplikacji i zasobów potrzebnych do prowadzenia działalności, logując się tylko wtedy, gdy za pomocą jednego konta użytkownika. Po zalogowaniu możesz uzyskać dostęp do wszystkich aplikacji bez konieczności uwierzytelnienia (na przykład, wpisz hasło) po raz drugi.
@@ -84,7 +84,7 @@ Podczas konfigurowania logowania jednokrotnego dla aplikacji, witryny Azure port
 
 Na przykład w przypadku aplikacji, która jest skonfigurowana do uwierzytelniania użytkowników za pomocą Active Directory Federation Services 2.0, administrator może użyć opcji "połączone logowanie jednokrotne" Aby utworzyć link do niego w panelu dostępu. Gdy użytkownicy uzyskują dostęp do łącza, są uwierzytelniani, za pomocą Active Directory Federation Services 2.0 lub dowolnego istniejącego pojedynczego logowania jednokrotnego rozwiązania jest udostępniany przez aplikację.
 
-### <a name="user-provisioning"></a>Inicjowanie obsługi użytkowników
+### <a name="user-provisioning"></a>Aprowizowanie użytkowników
 Wybierz aplikacje usługi Azure AD umożliwia automatyczne użytkownika aprowizację i anulowanie obsługi kont w innych aplikacji SaaS pochodzących od w witrynie Azure portal przy użyciu informacji o tożsamości systemu Windows Server Active Directory lub Azure AD. Po użytkownik otrzyma uprawnienia w usłudze Azure AD dla jednego z tych aplikacji, konta mogą być automatycznie tworzone (udostępnione) w lokalizacji docelowej aplikacji SaaS.
 
 Gdy użytkownik zostanie usunięty lub jego informacje zmian w usłudze Azure AD, tych zmian również są odzwierciedlane w aplikacji SaaS. Oznacza to, że zarządzanie cyklem życia tożsamości automatyczne konfigurowanie umożliwia administratorom sterować i zapewnić zautomatyzowaną aprowizację i cofanie aprowizacji w aplikacjach SaaS. W usłudze Azure AD ta Automatyzacja zarządzania cyklem życia tożsamości jest włączane przez Inicjowanie obsługi użytkowników.
@@ -102,7 +102,7 @@ Chcesz zacząć? Do wdrożenia logowania jednokrotnego między usługą Azure AD
 Poniżej przedstawiono kilka wskazówek, służące do znajdowania aplikacji, jakie funkcje, które obsługują:
 
 * Usługa Azure AD obsługuje automatyczne aprowizację i anulowanie obsługi dla wszystkich aplikacji "Proponowany" w [Galeria aplikacji usługi Azure Active Directory](https://azure.microsoft.com/marketplace/active-directory/all/).
-* Listę aplikacji federacyjnych przeznaczone do obsługi federacyjnego logowania jednokrotnego przy użyciu protokołu, takie jak SAML, WS-Federation i OpenID Connect można znaleźć [tutaj](http://social.technet.microsoft.com/wiki/contents/articles/20235.azure-active-directory-application-gallery-federated-saas-apps.aspx).
+* Listę aplikacji federacyjnych przeznaczone do obsługi federacyjnego logowania jednokrotnego przy użyciu protokołu, takie jak SAML, WS-Federation i OpenID Connect można znaleźć [tutaj](https://social.technet.microsoft.com/wiki/contents/articles/20235.azure-active-directory-application-gallery-federated-saas-apps.aspx).
 
 Po znalezieniu aplikacji, możesz rozpocząć zgodnie z instrukcjami krok po kroku w galerii aplikacji i w witrynie Azure portal umożliwia logowanie jednokrotne.
 

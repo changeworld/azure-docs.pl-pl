@@ -7,26 +7,26 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/27/2017
-ms.author: maxluk
-ms.openlocfilehash: 434b3ecf65aaa5ecea81f5a9773f1bc6e8f6f2be
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: arindamc
+ms.openlocfilehash: 727ecdb06f9a43bf3722f82fa10b7a3304cf4958
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092331"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255306"
 ---
 # <a name="monitor-cluster-performance"></a>Monitorowanie wydajności klastra
 
-Monitorowanie kondycji i wydajności klastra usługi HDInsight ma zasadnicze znaczenie dla zachowanie maksymalnej wydajności i wykorzystania zasobów. Monitorowanie może również pomóc adres kodu lub błędy konfiguracji klastra.
+Monitorowanie kondycji i wydajności klastra usługi HDInsight ma zasadnicze znaczenie dla utrzymania optymalną wydajność i wykorzystanie zasobów. Monitorowanie może również ułatwić wykrywanie i błędów konfiguracji klastra i problemów z kodem użytkownika.
 
-Poniższe sekcje opisują, jak zoptymalizować klastra podczas ładowania, YARN kolejki wydajności i dostępności magazynu.
+W poniższych sekcjach opisano sposób monitorowania i optymalizowania obciążenia w klastrach usługi YARN kolejki i wykrywa problemy związane z magazynowaniem ograniczania przepustowości.
 
-## <a name="cluster-loading"></a>Ładowanie klastra
+## <a name="monitor-cluster-load"></a>Monitorowanie klastra obciążenia
 
-Klastry Hadoop powinien równoważyć ładowania w węzłach klastra. Ta równoważenia zapobiega zadań przetwarzania jest ograniczony przez ilość pamięci RAM, procesora CPU lub zasobów dysku.
+Klastry usługi Hadoop może dostarczać najbardziej optymalną wydajność, podczas obciążenia w klastrze jest równomiernie rozłożona na wszystkich węzłach. Dzięki temu zadań przetwarzania do uruchomienia bez jest ograniczony przez ilość pamięci RAM, procesora CPU lub zasoby dyskowe w poszczególnych węzłach.
 
-Aby wysokiego poziomu poznać węzłów klastra i ich ładowanie, zaloguj się do [Interfejsu sieci Web Ambari](hdinsight-hadoop-manage-ambari.md), a następnie wybierz **hosty** kartę. Hosty są wyświetlane według ich w pełni kwalifikowanych nazw domen. Stan każdego hosta jest wyświetlany za pomocą wskaźnika kolorowe kondycji:
+Aby uzyskać ogólne przyjrzeć się węzły klastra i ich ładowania, zaloguj się do [Interfejsu sieci Web Ambari](hdinsight-hadoop-manage-ambari.md), a następnie wybierz **hostów** kartę. Hosty są wyświetlane według ich w pełni kwalifikowanych nazw domen. Stan każdego hosta jest wyświetlany za pomocą wskaźnika kolorowe kondycji:
 
 | Kolor | Opis |
 | --- | --- |
@@ -47,11 +47,11 @@ Zobacz [HDInsight Zarządzanie klastrami przy użyciu interfejsu użytkownika si
 
 ## <a name="yarn-queue-configuration"></a>Konfiguracja kolejki usługi YARN
 
-Usługi Hadoop ma różne usługi działające na różnych jego rozproszoną platformę. YARN (jeszcze inny zasób moduł negocjowania) służy do koordynowania tych usług, przydzielania zasobów klastra i zarządza dostępem do wspólnego zestawu danych.
+Usługi Hadoop ma różne usługi działające na różnych jego rozproszoną platformę. YARN (jeszcze inny zasób moduł negocjowania) służy do koordynowania tych usług i przydziela zasoby klastra, aby upewnić się, że obciążenie jest równomiernie rozłożona na klastrze.
 
 YARN dwóch obowiązki JobTracker, zarządzanie zasobami oraz planowanie/monitorowania zadań, jest podzielony na dwie demonów: globalnego Menedżera zasobów i poszczególnych aplikacji ApplicationMaster (AM).
 
-Jest ResourceManager *czystego harmonogramu*i wyłącznie rozstrzyga o kolejności przetwarzania dostępnych zasobów między wszystkie współzawodniczącym aplikacjom. Menedżera zasobów gwarantuje, że wszystkie zasoby są zawsze w użyciu, optymalizacji dla różnych stałych, takich jak umowy SLA, gwarancji wydajności i tak dalej. ApplicationMaster negocjuje zasobów z Menedżera zasobów i współdziała z NodeManager(s) do wykonywania i monitorowania kontenerów i ich zużycia zasobów.
+Menedżer zasobów jest *czystego harmonogramu*i wyłącznie rozstrzyga o kolejności przetwarzania dostępnych zasobów między wszystkie współzawodniczącym aplikacjom. Menedżer zasobów zapewnia, że wszystkie zasoby są zawsze w użyciu, optymalizacji dla różnych stałych, takich jak umowy SLA, gwarancji wydajności i tak dalej. ApplicationMaster negocjuje zasobów z Menedżera zasobów i współdziała z NodeManager(s) do wykonywania i monitorowania kontenerów i ich zużycia zasobów.
 
 Gdy wiele dzierżaw współużytkuje to dużego klastra, jest konkurencję w odniesieniu do zasobów klastra. CapacityScheduler jest podłączany harmonogram, który pomaga w udostępnianie przez kolejkowanie się żądania zasobów. Obsługuje również CapacityScheduler *hierarchiczne kolejek* aby upewnić się, że zasoby są współdzielone między podrzędnych kolejek organizacji, przed kolejek inne aplikacje mogą korzystać z bezpłatnych zasobów.
 

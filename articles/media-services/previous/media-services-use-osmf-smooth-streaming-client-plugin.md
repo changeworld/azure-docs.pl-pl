@@ -1,6 +1,6 @@
 ---
-title: Płynnego przesyłania strumieniowego dodatek plug-in dla typu Open Source Media Framework
-description: Dowiedz się, jak używać usługi Azure Media Services Smooth Streaming wtyczki dla otwartej struktury nośnika źródłowego programu Adobe.
+title: Wtyczka Smooth Streaming dla typu Open Source Media Framework
+description: Dowiedz się, jak używać usługi Azure Media Services wtyczki Smooth Streaming dla firmy Adobe Open Source Media Framework.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,51 +14,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 6a4ae0697e59eb00e216fc29b154408e4d7a99b8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1664dc16e93fa825962690ec3ed5681478005d59
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790412"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229632"
 ---
-# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Jak używać Smooth Microsoft przesyłania strumieniowego dodatek dla programu Adobe typu Open Source Media Framework
+# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Jak używać zestawu Microsoft Smooth Streaming dodatek dla programu Adobe typu Open Source Media Framework
 ## <a name="overview"></a>Przegląd
-Dodatek Microsoft Smooth Streaming dla Otwórz źródła Media Framework w wersji 2.0 (SS dla OSMF) rozszerza możliwości domyślne OSMF i dodaje Microsoft Smooth Streaming odtwarzanie zawartości dla nowych i istniejących odtwarzaczy OSMF. Wtyczka dodaje również funkcje Smooth Streaming odtwarzania do odtwarzania multimediów światła (SMP).
+Dodatek Microsoft Smooth Streaming dla Otwórz źródła Media Framework w wersji 2.0 (SS dla platformy OSMF) rozszerza możliwości domyślne OSMF i dodaje Microsoft Smooth Streaming odtwarzanie zawartości dla nowych i istniejących odtwarzaczy OSMF. Wtyczka dodaje również możliwości odtwarzania Smooth Streaming do Strobe Media Playback (SMP).
 
-SS dla OSMF obejmuje dwie wersje dodatku:
+SS dla platformy OSMF zawiera dwie wersje wtyczki:
 
-* Statyczne Smooth Streaming dodatek plug-in dla OSMF (SWC)
-* Dynamiczne Smooth Streaming dodatek plug-in dla OSMF (SWF)
+* Statyczne wtyczki Smooth Streaming dla OSMF (SWC)
+* Dynamiczne wtyczki Smooth Streaming dla OSMF (SWF)
 
-Tym dokumencie przyjęto założenie, że czytelnik ma ogólne praktyczną znajomość OSMF i OSMF dodatków plug-in. Aby uzyskać więcej informacji na temat OSMF można znaleźć w dokumentacji na [oficjalna witryna OSMF](http://osmf.org/).
+W tym dokumencie przyjęto założenie, że czytelnik ma ogólne praktyczną wiedzę na temat technologii OSMF i OSMF wtyczek. Aby uzyskać więcej informacji na temat technologii OSMF można znaleźć w dokumentacji na [oficjalna witryna OSMF](http://osmf.org/).
 
-### <a name="smooth-streaming-plugin-for-osmf-20"></a>Wtyczka Smooth Streaming OSMF 2.0
-Wtyczka obsługuje ładowania i odtwarzania zawartości Smooth Streaming na żądanie przy użyciu następujących funkcji:
+### <a name="smooth-streaming-plugin-for-osmf-20"></a>Zestaw Smooth Streaming wtyczki dla OSMF w wersji 2.0
+Wtyczka obsługuje ładowanie i odtwarzanie zawartości Smooth Streaming na żądanie dzięki następującym funkcjom:
 
-* Odtwarzanie Smooth Streaming na żądanie (Wstrzymaj, wyszukiwania, Zatrzymaj odtwarzanie)
-* Odtwarzanie Live Smooth Streaming (Odtwórz)
-* Na żywo funkcji DVR (Wstrzymaj, wyszukiwania, odtwarzania DVR, Go Live)
-* Obsługa wideo koderów-dekoderów - H.264
-* Obsługę Audio koderów-dekoderów - AAC
-* Wiele wersji językowych audio przełączenie OSMF wbudowanych interfejsów API
-* Maksymalna liczba odtwarzania jakości wybór z interfejsami API wbudowanych OSMF
-* Podpisy z wtyczki podpisy OSMF kodowane boczną
+* Odtwarzanie Smooth Streaming na żądanie (Odtwórz, Wstrzymaj, wyszukiwanie, Zatrzymaj)
+* Odtwarzanie Live Smooth Streaming (odtwarzanie)
+* Na żywo funkcji DVR (Wstrzymaj, wyszukiwanie, odtwarzania DVR Go-to-Live)
+* Obsługa koderów-dekoderów wideo — H.264
+* Obsługa dźwięku kodery-dekodery - adaptacyjnych kontrolek aplikacji
+* Przełączanie przy użyciu technologii OSMF wbudowanym interfejsom API wielu języka audio
+* Maksymalna liczba odtwarzania jakości zaznaczenie z wbudowanym interfejsom API OSMF
+* Przyczepki napisy, za pomocą wtyczki podpisy OSMF
 * Adobe&reg; Flash&reg; Player 11.4 lub nowszej.
-* Ta wersja obsługuje tylko OSMF 2.0.
+* Ta wersja obsługuje tylko OSMF w wersji 2.0.
 
 ## <a name="supported-features-and-known-issues"></a>Obsługiwane funkcje i znane problemy
-Aby uzyskać pełną listę obsługiwanych funkcji, nieobsługiwanych funkcji oraz znanych problemów, zapoznaj się [tego dokumentu](http://download.microsoft.com/download/3/1/B/31B63D97-574E-4A8D-BF8D-170744181724/Smooth_Streaming_Plugin_for_OSMF.pdf).
+Aby uzyskać pełną listę obsługiwanych funkcji, nieobsługiwanych funkcji oraz znanych problemów, zobacz [w tym dokumencie](https://download.microsoft.com/download/3/1/B/31B63D97-574E-4A8D-BF8D-170744181724/Smooth_Streaming_Plugin_for_OSMF.pdf).
 
-## <a name="loading-the-plugin"></a>Podczas ładowania dodatku plug-in
-Można załadować wtyczki OSMF statycznie (w czasie kompilacji) lub dynamicznie (w czasie wykonywania). Dodatek Smooth Streaming do pobrania OSMF obejmuje zarówno dynamicznej i statycznej wersji.
+## <a name="loading-the-plugin"></a>Ładowanie wtyczki
+Statycznie (w czasie kompilacji) można załadować wtyczki OSMF lub dynamicznie (w czasie wykonywania). Wtyczka Smooth Streaming dla OSMF pobierania zawiera wersje statycznych i dynamicznych.
 
-* Ładowanie statycznych: Aby załadować statycznie, jest wymagany plik biblioteki statycznej (SWC). Statyczne wtyczek są dodawane jako odwołania do projektów i dokonać scalania w pliku wyjściowego w czasie kompilacji.
-* Dynamiczne ładowanie: Aby załadować dynamicznie, wymagany jest prekompilowany plik (SWF). Dynamiczne dodatków plug-in są załadowane w czasie wykonywania i nie są uwzględnione w danych wyjściowych projektu. (Skompilowanych danych wyjściowych) Wtyczki dynamicznej mogą być ładowane przy użyciu protokołów HTTP i plików.
+* Ładowanie statyczne: Aby załadować statycznie, wymagany jest plik biblioteki statycznej (SWC). Statyczne wtyczki są dodawane jako odwołania do projektów i scalanie wewnątrz pliku wyjściowego w czasie kompilacji.
+* Dynamiczne ładowanie: Aby załadować dynamicznie, wymagany jest prekompilowany plik (SWF). Dynamiczne dodatków plug-in są ładowane w czasie wykonywania i nie są uwzględnione w danych wyjściowych projektu. (Skompilowanych danych wyjściowych) Dynamiczne wtyczki mogą być ładowane przy użyciu protokołów HTTP i plików.
 
-Aby uzyskać więcej informacji na ładowanie statycznych i dynamicznych, można znaleźć w oficjalnej [strona wtyczek OSMF](http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf).
+Aby uzyskać więcej informacji na temat ładowania statycznych i dynamicznych, można znaleźć w oficjalnej [strona wtyczek OSMF](http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf).
 
-### <a name="ss-for-osmf-static-loading"></a>SS do ładowania statycznych OSMF
-Poniższy fragment kodu przedstawia sposób załadować wtyczki SS statycznie dla OSMF i odtwarzanie wideo podstawowe za pomocą klasy OSMF MediaFactory. Przed dołączeniem SS OSMF kodu, upewnij się, że odwołania projektu zawiera wtyczki statyczny "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc".
+### <a name="ss-for-osmf-static-loading"></a>SS dotyczące ładowania statyczne OSMF
+Poniższy fragment kodu przedstawia sposób ładowania dodatku plug-in SS dla platformy OSMF statycznie i odtwarzanie wideo podstawowa przy użyciu technologii OSMF MediaFactory klasy. Przed dołączeniem SS dla OSMF kodu, upewnij się, że odwołania projektu zawiera wtyczki statyczne "MSAdaptiveStreamingPlugin-v1.0.3 osmf2.0.swc".
 
 ```
 package 
@@ -193,8 +193,8 @@ package
 ```
 
 
-### <a name="ss-for-osmf-dynamic-loading"></a>SS dla OSMF dynamiczne ładowanie
-Poniższy fragment kodu przedstawia sposób załadować wtyczki SS dla OSMF dynamicznie i odtwarzać podstawowego wideo przy użyciu klasy OSMF MediaFactory. Przed dołączeniem SS OSMF kodu, skopiuj do folderu projektu wtyczki dynamiczne "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf", aby załadować przy użyciu protokołu pliku, lub skopiuj na serwerze sieci web, obciążenia HTTP. Nie istnieje potrzeba do dołączenia "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc" odwołania do projektu.
+### <a name="ss-for-osmf-dynamic-loading"></a>SS dotyczące ładowania dynamiczne OSMF
+Poniższy fragment kodu pokazuje, jak załadować wtyczki SS dla platformy OSMF dynamicznie i odtwarzać podstawową wideo za pomocą klasy OSMF MediaFactory. Przed dołączeniem SS dla OSMF kodu, skopiuj dodatek dynamicznej "MSAdaptiveStreamingPlugin-v1.0.3 osmf2.0.swf" do folderu projektu, jeśli chcesz załadować przy użyciu protokołu plików lub skopiuj w serwerze sieci web dla obciążenia HTTP. Nie ma potrzeby do dołączenia "MSAdaptiveStreamingPlugin-v1.0.3 osmf2.0.swc" odwołania do projektu.
 
 {pakietu
 
@@ -327,15 +327,15 @@ Poniższy fragment kodu przedstawia sposób załadować wtyczki SS dla OSMF dyna
     }
 }
 
-## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Odtwarzanie multimediów światła z wtyczki dynamiczne SS ODMF
-Smooth Streaming wtyczki dynamiczne OSMF jest zgodny z [odtwarzania multimediów światła (SMP)](http://osmf.org/strobe_mediaplayback.html). SS wtyczki OSMF służy do dodawania Smooth Streaming odtwarzanie zawartości do punktu SMP. Aby to zrobić, należy skopiować "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" na serwerze sieci web, obciążenia HTTP, wykonując następujące czynności:
+## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Strobe odtwarzanie mediów za pomocą dodatek dynamicznej SS ODMF
+Smooth Streaming dla OSMF wtyczki dynamicznych jest zgodny z [Strobe Media Playback (SMP)](http://osmf.org/strobe_mediaplayback.html). SS dla wtyczki OSMF służy do dodawania funkcji Smooth Streaming odtwarzanie zawartości do SMP. Aby to zrobić, należy skopiować "MSAdaptiveStreamingPlugin-v1.0.3 osmf2.0.swf" na serwerze sieci web, dla obciążenia HTTP wykonując następujące czynności:
 
-1. Przeglądaj [strony Instalatora odtwarzanie multimediów światła](http://osmf.org/dev/2.0gm/setup.html). 
-2. Ustaw src ze źródłem Smooth Streaming (np. http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
-3. Wprowadź żądane zmiany w konfiguracji, a następnie kliknij polecenie Podgląd i aktualizacji.
+1. Przeglądaj [strony Instalatora Strobe Media Playback](http://osmf.org/dev/2.0gm/setup.html). 
+2. Ustaw src źródłem Smooth Streaming (np. http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
+3. Wprowadź żądane zmiany w konfiguracji, a następnie kliknij polecenie Podgląd i aktualizacja.
    
-   **Uwaga** prawidłowy crossdomain.xml wymaga serwera zawartości sieci web. 
-4. Skopiuj i Wklej kod, aby to prosta strona HTML za pomocą edytora tekstu, takich jak w poniższym przykładzie:
+   **Uwaga** serwera zawartości sieci web wymaga crossdomain.xml prawidłowe. 
+4. Skopiuj i Wklej kod do prostych strony HTML przy użyciu ulubionego edytora tekstu, takie jak w poniższym przykładzie:
 
         <html>
         <body>
@@ -360,7 +360,7 @@ Smooth Streaming wtyczki dynamiczne OSMF jest zgodny z [odtwarzania multimediów
 
 
 
-1. Dodaj wtyczkę Smooth Streaming OSMF kod osadzania i Zapisz.
+1. Dodawanie wtyczki Smooth Streaming dla platformy OSMF kod osadzania i Zapisz.
    
         <html>
         <object width="920" height="640"> 
@@ -380,10 +380,10 @@ Smooth Streaming wtyczki dynamiczne OSMF jest zgodny z [odtwarzania multimediów
         </embed>
         </object>
         </html>
-2. Zapisz strony HTML i opublikować na serwerze sieci web. Przejdź do strony sieci web opublikowanych przy użyciu Twoje ulubione Flash&reg; Player włączone przeglądarki internetowej (program Internet Explorer, Chrome, Firefox, itp).
-3. Korzystanie z funkcji Smooth Streaming zawartości wewnątrz Adobe&reg; Flash&reg; Player.
+2. Zapisz stronę HTML i opublikować na serwerze sieci web. Przejdź na stronę sieci web opublikowanych przy użyciu Twojego ulubionego Flash&reg; Player włączone przeglądarka internetowa (Internet Explorer, Chrome, Firefox itd).
+3. Korzystaj z funkcji Smooth Streaming zawartość wewnątrz Adobe&reg; Flash&reg; odtwarzacza.
 
-Aby uzyskać więcej informacji na ogólne programowanie OSMF, zobacz urzędnika [OSMF programowanie strony](http://osmf.org/resources.html).
+Aby uzyskać więcej informacji na temat technologii OSMF ogólne ustawienia projektowania, zobacz official będzie przydatna [strony rozwoju technologii OSMF](http://osmf.org/resources.html).
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -392,5 +392,5 @@ Aby uzyskać więcej informacji na ogólne programowanie OSMF, zobacz urzędnika
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zobacz też
-[Adaptacyjne przesyłanie strumieniowe wtyczki dla aktualizacji OSMF firmy Microsoft](https://azure.microsoft.com/blog/2014/10/27/microsoft-adaptive-streaming-plugin-for-osmf-update/) 
+[Microsoft przesyłanej strumieniowo wtyczki dla aktualizacji OSMF](https://azure.microsoft.com/blog/2014/10/27/microsoft-adaptive-streaming-plugin-for-osmf-update/) 
 

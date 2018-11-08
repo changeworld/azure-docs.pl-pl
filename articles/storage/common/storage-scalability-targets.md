@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: a49ad2546babe8bef6b52be1d8a2dbaceec94003
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 758871537b89a9c010cfaddf324e2208f9846afb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391809"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241329"
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Cele usługi Azure Storage dotyczące skalowalności i wydajności
 ## <a name="overview"></a>Przegląd
 W tym artykule opisano tematy dotyczące skalowalności i wydajności dla usługi Azure Storage. Aby uzyskać podsumowanie inne limity platformy Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../../azure-subscription-service-limits.md).
 
 > [!NOTE]
-> Wszystkie konta magazynu na nową topologię siecią płaską a obsługuje cele dotyczące skalowalności i wydajności, opisane w tym artykule, niezależnie od tego, w przypadku ich utworzenia. Aby uzyskać więcej informacji na architekturę siecią płaską usługi Azure Storage i skalowalność, zobacz [usługi Microsoft Azure Storage: A o wysokiej dostępności usługi magazynu w chmurze with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).
+> Wszystkie konta magazynu na nową topologię siecią płaską a obsługuje cele dotyczące skalowalności i wydajności, opisane w tym artykule, niezależnie od tego, w przypadku ich utworzenia. Aby uzyskać więcej informacji na architekturę siecią płaską usługi Azure Storage i skalowalność, zobacz [usługi Microsoft Azure Storage: A o wysokiej dostępności usługi magazynu w chmurze with Strong Consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).
 > 
 
 > [!IMPORTANT]
@@ -63,5 +63,5 @@ Za pomocą usługi Azure File Sync mają próbowaliśmy jak najszerzej się proj
 * [Subskrypcja platformy Azure i limity, przydziały i ograniczenia](../../azure-subscription-service-limits.md)
 * [Replikacja usługi Azure Storage](../storage-redundancy.md)
 * [Microsoft Azure Storage Performance and Scalability Checklist (Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage)](../storage-performance-checklist.md)
-* [Microsoft Azure Storage: O wysokiej dostępności usługi magazynu w chmurze za pomocą silnej spójności](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+* [Microsoft Azure Storage: O wysokiej dostępności usługi magazynu w chmurze za pomocą silnej spójności](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

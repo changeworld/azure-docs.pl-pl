@@ -5,33 +5,33 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 03/22/2018
+ms.date: 11/05/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0bf55d2353d3524e65602c7e67b7adbf80432043
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fab00e5281bb91bce10228b3bc2e9cfd503d5d5b
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30198081"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219821"
 ---
-Należy utworzyć sieć wirtualną i podsieć bramy, przed rozpoczęciem pracy poniższe zadania.
+Należy utworzyć sieć wirtualną i podsieć bramy, przed rozpoczęciem pracy na następujące zadania.
 
 > [!NOTE]
-> Poniższe przykłady dotyczą S2S/ExpressRoute współistnieją konfiguracje.
-> Aby uzyskać więcej informacji na temat pracy z bram w konfiguracji coexist, zobacz [konfiguracji współistnienia połączeń](../articles/expressroute/expressroute-howto-coexist-classic.md#gw)
+> Te przykłady nie dotyczą S2S/ExpressRoute współistnieją konfiguracje.
+> Aby uzyskać więcej informacji na temat pracy z bramami w konfiguracji coexist zobacz [skonfigurować współistniejące połączenia](../articles/expressroute/expressroute-howto-coexist-classic.md#gw)
 
-## <a name="add-a-gateway"></a>Dodaj bramę
+## <a name="add-a-gateway"></a>Dodawanie bramy
 
-Aby utworzyć bramę, należy użyć poniższego polecenia. Należy zastąpić wszystkie własne wartości.
+Użyj poniższego polecenia, aby utworzyć bramę. Pamiętaj zastąpić wszelkie wartości swoimi własnymi.
 
 ```powershell
-New-AzureVNetGateway -VNetName "MyAzureVNET" -GatewayName "ERGateway" -GatewayType DynamicRouting -GatewaySKU  Standard
+New-AzureVNetGateway -VNetName "MyAzureVNET" -GatewayType DynamicRouting -GatewaySKU  Standard
 ```
 
-## <a name="verify-the-gateway-was-created"></a>Sprawdź, czy utworzono bramę
+## <a name="verify-the-gateway-was-created"></a>Sprawdź, czy brama została utworzona
 
-Użyj poniższego polecenia, aby sprawdzić, czy utworzono bramę. To polecenie pobiera również identyfikator bramy, który jest wymagany dla innych operacji.
+Użyj poniższego polecenia, aby sprawdzić, czy brama została utworzona. To polecenie również pobiera identyfikator bramy, które są wymagane dla innych operacji.
 
 ```powershell
 Get-AzureVNetGateway
@@ -39,10 +39,10 @@ Get-AzureVNetGateway
 
 ## <a name="resize-a-gateway"></a>Zmień rozmiar bramy
 
-Istnieje szereg [jednostki SKU bramy](../articles/expressroute/expressroute-about-virtual-network-gateways.md). Następujące polecenie służy do zmiany jednostka SKU bramy w dowolnym momencie.
+Istnieje szereg [jednostki SKU bramy](../articles/expressroute/expressroute-about-virtual-network-gateways.md). Aby zmienić jednostkę SKU bramy w dowolnym momencie, można użyć następującego polecenia.
 
 > [!IMPORTANT]
-> To polecenie nie działa dla UltraPerformance bramy. Aby zmienić bramę do bramy UltraPerformance, najpierw usuń istniejącą bramę usługi ExpressRoute, a następnie utwórz nową bramę UltraPerformance. Na starszą wersję bramy sieci z bramy UltraPerformance, najpierw usuń UltraPerformance bramy, a następnie utwórz nową bramę. 
+> To polecenie nie działa dla bramy UltraPerformance. Aby zmienić brama do bramy UltraPerformance, najpierw usuń istniejącą bramą ExpressRoute, a następnie utwórz nowe bramy UltraPerformance. W przypadku obniżania bramy z bramy UltraPerformance, najpierw usuń bramy UltraPerformance, a następnie utwórz nową bramę. 
 >
 >
 
@@ -50,7 +50,7 @@ Istnieje szereg [jednostki SKU bramy](../articles/expressroute/expressroute-abou
 Resize-AzureVNetGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
 ```
 
-## <a name="remove-a-gateway"></a>Usuń bramę
+## <a name="remove-a-gateway"></a>Usuwanie bramy
 
 Użyj poniższego polecenia, aby usunąć bramę
 

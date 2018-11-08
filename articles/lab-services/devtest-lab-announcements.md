@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: ecfaf24d1122b711a93e1335b79acbbc4235bdae
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: eedab085098c34cdac3c49a3892f7cb0d5824f1b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049953"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259925"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Publikowanie anonsu do laboratorium w usłudze Azure DevTest Labs
 
@@ -35,7 +35,7 @@ Funkcja ogłoszenie jest przeznaczona do użycia na potrzeby powiadomień tymcza
 
 ## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>Kroki umożliwiające publikowanie anonsu w laboratorium istniejące
 
-1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. W razie potrzeby zaznacz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy. (Laboratorium może być już wyświetlane na pulpicie nawigacyjnym w obszarze **wszystkie zasoby**).
 1. Zaznacz na liście laboratoriów laboratorium, w której chcesz publikować anonsu.  
 1. W laboratorium **Przegląd** wybierz opcję **konfiguracji i zasad**.  
@@ -70,7 +70,7 @@ Nie jest już do wyświetlenia tego anonsu użytkownikom laboratorium, należy p
 
 ## <a name="steps-for-users-to-view-an-announcement"></a>Kroki dla użytkowników wyświetlić anonsu
 
-1. Z [witryny Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040), wybierz laboratorium.
+1. Z [witryny Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040), wybierz laboratorium.
 
 1. Jeśli laboratorium ma anonsu opublikowane dla niego, informacje o uznaniu informacji jest wyświetlany w górnej części strony Przegląd laboratorium. To ogłoszenie jest tytuł anonsu, który został określony podczas tworzenia anonsu.
 

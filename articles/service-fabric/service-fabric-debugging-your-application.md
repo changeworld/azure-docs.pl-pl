@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 30e432b34cc586e1671c9ffdf7b48c3997e9eb23
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f16bf06d03511223b54542ad7a389f78d37f3ea9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442390"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235075"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Debugowanie aplikacji usługi Service Fabric przy użyciu programu Visual Studio
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ Przez wdrożenie i profilowanie aplikacji usługi Azure Service Fabric w klastrz
 Jeśli aplikacje usługi Service Fabric są uruchomione w klastrze usługi Service Fabric na platformie Azure, jest możliwe zdalne debugowanie je bezpośrednio z programu Visual Studio.
 
 > [!NOTE]
-> Ta funkcja wymaga [usługi Service Fabric SDK 2.0](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) i [zestawu Azure SDK dla platformy .NET 2.9](https://azure.microsoft.com/downloads/).    
+> Ta funkcja wymaga [usługi Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) i [zestawu Azure SDK dla platformy .NET 2.9](https://azure.microsoft.com/downloads/).    
 > 
 > 
 
@@ -112,7 +112,7 @@ Jeśli aplikacje usługi Service Fabric są uruchomione w klastrze usługi Servi
 Jest również możliwe do strumienia danych śledzenia bezpośrednio z poziomu węzła klastra zdalnego programu Visual Studio. Ta funkcja umożliwia strumienia zdarzeń śledzenia funkcji ETW, utworzone w węźle klastra usługi Service Fabric.
 
 > [!NOTE]
-> Ta funkcja wymaga [usługi Service Fabric SDK 2.0](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) i [zestawu Azure SDK dla platformy .NET 2.9](https://azure.microsoft.com/downloads/).
+> Ta funkcja wymaga [usługi Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) i [zestawu Azure SDK dla platformy .NET 2.9](https://azure.microsoft.com/downloads/).
 > Ta funkcja obsługuje tylko klastrów działających na platformie Azure.
 > 
 > 

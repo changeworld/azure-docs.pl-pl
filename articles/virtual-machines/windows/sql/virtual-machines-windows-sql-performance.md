@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: jroth
-ms.openlocfilehash: 0119c6642d68db6a90af07395882e620b1af08c6
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 395994e2ac017bcdadaca4defad4ec0f910cea17
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394956"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258133"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Wytyczne dotyczące wydajności dla programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -39,7 +39,7 @@ Poniżej znajduje się lista szybkie sprawdzenie w celu uzyskania optymalnej wyd
 
 | Obszar | Optymalizacje |
 | --- | --- |
-| [Rozmiar maszyny Wirtualnej](#vm-size-guidance) |[DS3_v2](../sizes-general.md) lub nowsze dla programu SQL Enterprise edition.<br/><br/>[DS2_v2](../sizes-general.md) lub nowszej wersji programu SQL Standard i sieci Web. |
+| [Rozmiar maszyny wirtualnej](#vm-size-guidance) |[DS3_v2](../sizes-general.md) lub nowsze dla programu SQL Enterprise edition.<br/><br/>[DS2_v2](../sizes-general.md) lub nowszej wersji programu SQL Standard i sieci Web. |
 | [Storage](#storage-guidance) |Użyj [usługi Premium Storage](../premium-storage.md). Magazynu w warstwie standardowa jest zalecane tylko na potrzeby tworzenia i testowania.<br/><br/>Zachowaj [konta magazynu](../../../storage/common/storage-create-storage-account.md) i maszyn wirtualnych serwera SQL, w tym samym regionie.<br/><br/>Wyłącz Azure [magazyn geograficznie nadmiarowy](../../../storage/common/storage-redundancy.md) (replikacja geograficzna) na koncie magazynu. |
 | [Dyski](#disks-guidance) |Użyj co najmniej 2 [dyski P30](../premium-storage.md#scalability-and-performance-targets) (1 dla plików dziennika i 1 dla plików danych, w tym bazy danych TempDB).<br/><br/>Należy unikać używania systemu operacyjnego oraz dyski tymczasowe do przechowywania bazy danych lub rejestrowania.<br/><br/>Włącz buforowanie odczytu na dyskach hostowania plików danych i plików danych bazy danych TempDB.<br/><br/>Nie należy włączać buforowanie na dyskach hostingu w pliku dziennika.<br/><br/>Ważne: Zatrzymaj usługę programu SQL Server, zmieniając ustawienia pamięci podręcznej dla dysku maszyny Wirtualnej platformy Azure.<br/><br/>STRIPE wielu dysków z danymi platformy Azure można pobrać zwiększać przepustowość operacji We/Wy.<br/><br/>Formatuj przy użyciu rozmiarów udokumentowanego alokacji. |
 | [OPERACJE WE/WY](#io-guidance) |Włączanie kompresji strony bazy danych.<br/><br/>Włącz inicjowanie błyskawiczne plików dla danych plików.<br/><br/>Ogranicz przejęta w bazie danych.<br/><br/>Wyłącz zmniejszania w bazie danych.<br/><br/>Przenieś wszystkie bazy danych do dysków danych, w tym systemowych baz danych.<br/><br/>Przenieś programu SQL Server błąd dziennika śledzenia pliku katalogów i dysków z danymi.<br/><br/>Skonfiguruj domyślne lokalizacje plików bazy danych i kopii zapasowych.<br/><br/>Włącz zablokowanych stron.<br/><br/>Zastosować poprawki wydajności programu SQL Server. |
@@ -166,7 +166,7 @@ Maszyny wirtualne obsługujące usługę Premium Storage (seria DS, seria DSv2 i
     ![Pliki dziennika danych SQL i tworzenie kopii zapasowych](./media/virtual-machines-windows-sql-performance/sql_server_default_data_log_backup_locations.png)
 * Włącz zablokowanych stron, które mają zmniejszyć We/Wy i każde działanie stronicowania. Aby uzyskać więcej informacji, zobacz [Włącz blokowanie stron w pamięci (Windows) — opcja](https://msdn.microsoft.com/library/ms190730.aspx).
 
-* Jeśli używasz programu SQL Server 2012, należy zainstalować Service Pack 1 aktualizacją zbiorczą 10. Ta aktualizacja zawiera poprawki niską wydajność operacji We/Wy podczas wykonywania select w tabeli tymczasowej instrukcji w programie SQL Server 2012. Aby uzyskać informacje, zobacz [artykuł bazy wiedzy](http://support.microsoft.com/kb/2958012).
+* Jeśli używasz programu SQL Server 2012, należy zainstalować Service Pack 1 aktualizacją zbiorczą 10. Ta aktualizacja zawiera poprawki niską wydajność operacji We/Wy podczas wykonywania select w tabeli tymczasowej instrukcji w programie SQL Server 2012. Aby uzyskać informacje, zobacz [artykuł bazy wiedzy](https://support.microsoft.com/kb/2958012).
 
 * Należy wziąć pod uwagę kompresowanie wszystkich plików danych podczas przesyłania wchodzącym/wychodzącym platformy Azure.
 

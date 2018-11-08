@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: fea3455b31ff2ea7119fa4146aa84f855a3b6e35
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: cd3b5f49788282b535f07c6f84bf7e4002132ab9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054676"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237591"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Jakie usługi Azure Cosmos DB indeksuje dane?
 
@@ -323,7 +323,7 @@ Można wybrać, czy mają kolekcja do automatycznego indeksowania wszystkich dok
 
 Za pomocą automatycznego indeksowania, wyłączona, nadal selektywnie można dodać tylko do określonych dokumentów do indeksu. Z drugiej strony możesz pozostawić automatyczne indeksowanie i selektywnie wskazać, które mają zostać wykluczone z określonych dokumentów. Indeksowanie i wyłączanie konfiguracji są przydatne, jeśli masz tylko podzbiór dokumentów, które muszą zostać wykonane zapytanie.
 
-Poniższy przykład pokazuje, jak dołączyć dokument jawnie za pomocą [SQL API .NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) i [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) właściwości.
+Poniższy przykład pokazuje, jak dołączyć dokument jawnie za pomocą [SQL API .NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) i [RequestOptions.IndexingDirective](https://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) właściwości.
 
     // If you want to override the default collection behavior to either
     // exclude (or include) a document in indexing,
@@ -413,7 +413,7 @@ Kiedy będzie wprowadzeniu zmiany zasad indeksowania do kolekcji usługi Azure C
 ## <a name="performance-tuning"></a>Dostosowywanie wydajności
 Interfejsy API SQL zawierają informacje dotyczące metryk wydajności, takich jak magazyn indeksów używane i kosztów przepustowości (w jednostkach żądania) dla każdej operacji. Można użyć tych informacji do porównania różnych zasad indeksowania i dotyczące dostosowywania wydajności.
 
-Aby sprawdzić limit przydziału magazynu i użycia kolekcji, należy uruchomić **HEAD** lub **UZYSKAĆ** żądania dotyczącego zasobu kolekcji. Następnie należy sprawdzić **x-ms zażądać przydziału** i **x-ms żądania — użycie** nagłówków. W zestawie SDK platformy .NET [DocumentSizeQuota](http://msdn.microsoft.com/library/dn850325.aspx) i [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) właściwości w [ResourceResponse < T\> ](http://msdn.microsoft.com/library/dn799209.aspx) zawierają te odpowiadające im wartości.
+Aby sprawdzić limit przydziału magazynu i użycia kolekcji, należy uruchomić **HEAD** lub **UZYSKAĆ** żądania dotyczącego zasobu kolekcji. Następnie należy sprawdzić **x-ms zażądać przydziału** i **x-ms żądania — użycie** nagłówków. W zestawie SDK platformy .NET [DocumentSizeQuota](https://msdn.microsoft.com/library/dn850325.aspx) i [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) właściwości w [ResourceResponse < T\> ](https://msdn.microsoft.com/library/dn799209.aspx) zawierają te odpowiadające im wartości.
 
      // Measure the document size usage (which includes the index size) against   
      // different policies.
@@ -421,7 +421,7 @@ Aby sprawdzić limit przydziału magazynu i użycia kolekcji, należy uruchomić
      Console.WriteLine("Document size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 
 
-Do mierzenia obciążenie indeksowanie każdej operacji zapisu (Tworzenie, aktualizowanie lub usuwanie), sprawdzić **x-ms żądanie — opłata** nagłówka (lub odpowiednik [RequestCharge](http://msdn.microsoft.com/library/dn799099.aspx) właściwości w [ ResourceResponse < T\> ](http://msdn.microsoft.com/library/dn799209.aspx) w zestawie .NET SDK) do mierzenia liczby jednostek żądania, które są używane przez te operacje.
+Do mierzenia obciążenie indeksowanie każdej operacji zapisu (Tworzenie, aktualizowanie lub usuwanie), sprawdzić **x-ms żądanie — opłata** nagłówka (lub odpowiednik [RequestCharge](https://msdn.microsoft.com/library/dn799099.aspx) właściwości w [ ResourceResponse < T\> ](https://msdn.microsoft.com/library/dn799209.aspx) w zestawie .NET SDK) do mierzenia liczby jednostek żądania, które są używane przez te operacje.
 
      // Measure the performance (request units) of writes.     
      ResourceResponse<Document> response = await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"), myDocument);              

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 0e1c049596b5231ad72590fc17a73cd5aa457e4d
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 4a72f11b55d1c315a9dce62de3e6d23c340baa51
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056138"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232865"
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Przewodnik, aby utworzyć szablon rozwiązań dla witryny Azure Marketplace
 Po wykonaniu kroku 1, [o tworzeniu konta i rejestracji][link-acct-creation], firma Microsoft przewodnikiem po utworzeniu szablonu rozwiązań zgodnych z platformą Azure w [techniczne wymagania wstępne dotyczące tworzenia Szablon rozwiązania](marketplace-publishing-solution-template-creation-prerequisites.md). Teraz przeprowadzimy Cię przez kroki tworzenia szablonu rozwiązania dla wielu maszyn wirtualnych na [portalu wydawców] [ link-pubportal] dla witryny Azure Marketplace.
@@ -62,7 +62,7 @@ Użytkownik może również zainteresować te pokrewne artykuły:
 * Obrazy maszyn wirtualnych: [dotyczące obrazów maszyn wirtualnych na platformie Azure](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 * Rozszerzenia maszyn wirtualnych: [rozszerzeń maszyn wirtualnych platformy Azure i funkcji](../virtual-machines/extensions/features-windows.md)
 * Usługa Azure Resource Manager: [Tworzenie szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) i [przykłady prostego szablonu](https://github.com/rjmax/ArmExamples)
-* Ogranicza konto magazynu: [jak monitorować ograniczania konta magazynu](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) i [magazynu w warstwie Premium](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)
+* Ogranicza konto magazynu: [jak monitorować ograniczania konta magazynu](https://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) i [magazynu w warstwie Premium](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)
 
 [img-pubportal-menu-sol-templ]:media/marketplace-publishing-solution-template-creation/pubportal-menu-solution-templates.png
 [img-pubportal-sol-templ-new]:media/marketplace-publishing-solution-template-creation/pubportal-solution-template-new.png

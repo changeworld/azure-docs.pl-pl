@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: ca93d97c3e0ddab0377ef437a04e7e3e31197b97
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 6967805044bb11e9aed3fe66d580df059f7a461a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166380"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231401"
 ---
 # <a name="split-merge-security-configuration"></a>Konfiguracja zabezpieczenia dzielenia i scalania
 Aby użyć usługi dzielenia i scalania, należy poprawnie skonfigurować zabezpieczenia. Usługa jest częścią funkcji elastyczne skalowanie systemu Microsoft Azure SQL Database. Aby uzyskać więcej informacji, zobacz [elastycznej podziału skali i scalić samouczek usługi](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -29,21 +29,21 @@ Certyfikaty są skonfigurowane na dwa sposoby.
 2. [Aby skonfigurować certyfikaty klienta](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>Uzyskiwanie certyfikatów
-Certyfikaty można uzyskać od publicznych urzędów certyfikacji (CA) lub z [Windows certyfikatu usługi](http://msdn.microsoft.com/library/windows/desktop/aa376539.aspx). Są to preferowane metody służące do uzyskania certyfikatów.
+Certyfikaty można uzyskać od publicznych urzędów certyfikacji (CA) lub z [Windows certyfikatu usługi](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx). Są to preferowane metody służące do uzyskania certyfikatów.
 
 Jeśli te opcje nie są dostępne, można wygenerować **certyfikaty z podpisem własnym**.
 
 ## <a name="tools-to-generate-certificates"></a>Narzędzia do generowania certyfikatów
-* [makecert.exe](http://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx.exe](http://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
+* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Aby uruchomić narzędzia
-* W wierszu polecenia dla deweloperów programu Visual Studio, zobacz [wiersza polecenia programu Visual Studio](http://msdn.microsoft.com/library/ms229859.aspx) 
+* W wierszu polecenia dla deweloperów programu Visual Studio, zobacz [wiersza polecenia programu Visual Studio](https://msdn.microsoft.com/library/ms229859.aspx) 
   
     Jeśli zainstalowano, przejdź do:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* Pobierz WDK z [Windows 8.1: zestawy i narzędzia do pobrania](http://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* Pobierz WDK z [Windows 8.1: zestawy i narzędzia do pobrania](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>Aby skonfigurować certyfikat SSL
 Certyfikat SSL jest wymagany do szyfrowania komunikacji i uwierzytelniania serwera. Wybierz najbardziej odpowiednią z trzech poniższych scenariuszy, a wykonywanie wszystkich jej kroków:
@@ -411,7 +411,7 @@ W **Kreator eksportu certyfikatów**:
 11. Kliknij przycisk **Zakończ**.
 12. Kliknij przycisk **OK**.
 
-## <a name="import-certificate"></a>Importowanie certyfikatu
+## <a name="import-certificate"></a>Importuj certyfikat
 W Kreatorze importu certyfikatów:
 
 1. Wybierz lokalizację magazynu.

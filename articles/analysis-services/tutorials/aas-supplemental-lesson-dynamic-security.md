@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3a62440b9fe44dfed14cfd9887d4d3cc2e4dbb92
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6a0c4158b85a6bc6c9276eff19466fb742c6f442
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430242"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235928"
 ---
 # <a name="supplemental-lesson---dynamic-security"></a>Lekcja uzupełniająca — zabezpieczenia dynamiczne
 
@@ -21,7 +21,7 @@ W tej lekcji uzupełniającej utworzysz dodatkową rolę w celu zaimplementowani
   
 Aby zaimplementować zabezpieczenia dynamiczne, dodaj do modelu tabelę zawierającą nazwy użytkowników, którzy mogą połączyć się z modelem oraz przeglądać obiekty i dane modelu. Model tworzony przy użyciu tego samouczka znajduje się w kontekście Adventure Works, jednak w celu ukończenia tej lekcji należy dodać tabelę zawierającą użytkowników z własnej domeny. Nie jest wymagane podanie haseł dla dodawanych nazw użytkowników. Aby utworzyć tabelę EmployeeSecurity zawierającą niewielką próbkę użytkowników z własnej domeny, należy za pomocą funkcji Wklej wkleić dane pracowników z arkusza kalkulacyjnego programu Excel. W scenariuszu rzeczywistym tabela zawierająca nazwy użytkowników będzie zazwyczaj tabelą z istniejącej bazy danych użytej jako źródło danych, na przykład rzeczywistą tabelą DimEmployee.  
   
-Aby zaimplementować zabezpieczenia dynamiczne, należy użyć dwóch funkcji języka DAX: [USERNAME (DAX)](http://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) i [LOOKUPVALUE (DAX)](http://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Te funkcje, zastosowane w formule filtra wierszy, są definiowane w nowej roli. Za pomocą funkcji LOOKUPVALUE formuła określa wartość z tabeli EmployeeSecurity. Następnie formuła przekazuje tę wartość funkcji USERNAME, która określa nazwę użytkownika dla zalogowanego użytkownika należącego do tej roli. Użytkownik może następnie przeglądać tylko dane określone przez filtry wierszy danej roli. W tym scenariuszu określisz, że pracownicy działu sprzedaży mogą przeglądać tylko dane sprzedaży internetowej dotyczące regionów sprzedaży, których są członkami.  
+Aby zaimplementować zabezpieczenia dynamiczne, należy użyć dwóch funkcji języka DAX: [USERNAME (DAX)](https://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) i [LOOKUPVALUE (DAX)](https://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Te funkcje, zastosowane w formule filtra wierszy, są definiowane w nowej roli. Za pomocą funkcji LOOKUPVALUE formuła określa wartość z tabeli EmployeeSecurity. Następnie formuła przekazuje tę wartość funkcji USERNAME, która określa nazwę użytkownika dla zalogowanego użytkownika należącego do tej roli. Użytkownik może następnie przeglądać tylko dane określone przez filtry wierszy danej roli. W tym scenariuszu określisz, że pracownicy działu sprzedaży mogą przeglądać tylko dane sprzedaży internetowej dotyczące regionów sprzedaży, których są członkami.  
   
 Zadania, które są unikatowe dla przedstawionego scenariusza modelu tabelarycznego Adventure Works, ale nie zawsze będą miały zastosowanie w przypadku rzeczywistych scenariuszy, zostały odpowiednio oznaczone. Każde zadanie zawiera dodatkowe informacje opisujące jego cel.  
   

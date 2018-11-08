@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 05/23/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5fe16ecb2725cf306b5b57c9d45d8601581a3ece
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 13d81e655b98771d985277974bd3081437e2a3e8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578904"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255783"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Rozwiązywanie problemów dotyczących użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory
 
@@ -61,9 +61,9 @@ Przejrzyj wyświetlane w tym miejscu informacje. Należy zresetować hasło dla 
 
 Wykonaj następujące akcje, aby pomóc usunąć zagrożenie z kont i zabezpieczyć swoje środowisko:
 
-1.  [Zweryfikuj](http://aka.ms/MFAValid) poprawność informacji dla uwierzytelniania wieloskładnikowego i samoobsługowego resetowania hasła. 
-2.  [Włącz](http://aka.ms/MFAuth) uwierzytelnianie wieloskładnikowe dla wszystkich użytkowników. 
-3.  Za pomocą tego [skryptu korygującego](http://aka.ms/remediate) dla każdego dotkniętego konta możesz automatycznie wykonać następujące kroki: 
+1.  [Zweryfikuj](https://aka.ms/MFAValid) poprawność informacji dla uwierzytelniania wieloskładnikowego i samoobsługowego resetowania hasła. 
+2.  [Włącz](https://aka.ms/MFAuth) uwierzytelnianie wieloskładnikowe dla wszystkich użytkowników. 
+3.  Za pomocą tego [skryptu korygującego](https://aka.ms/remediate) dla każdego dotkniętego konta możesz automatycznie wykonać następujące kroki: 
 
     a. Zresetować hasło do zabezpieczania konta i skasować aktywne sesje.
 
@@ -87,10 +87,10 @@ Wykonaj następujące akcje, aby pomóc usunąć zagrożenie z kont i zabezpiecz
 
 Ponadto wykonaj następujące czynności:
 
-- Przeczytaj i wdróż te [wskazówki](http://aka.ms/fixaccount) dotyczące rozwiązywania nietypowych działań. 
-- [Włącz potok inspekcji](http://aka.ms/improvesecurity), aby pomóc analizować działania w Twojej dzierżawie. Po wykonaniu tych czynności magazyn inspekcji rozpoczyna zapełnianie wszystkich dzienników aktywności. W tym momencie możesz również wykorzystać [funkcje wyszukiwania i badania Centrum zabezpieczeń i zgodności](http://aka.ms/sccsearch). 
-- Użyj tego [skryptu](http://aka.ms/mailboxaudit1), aby włączyć inspekcję skrzynki pocztowej dla wszystkich kont. 
-- Przejrzyj reguły delegowania uprawnień i przekazywania poczty dla wszystkich skrzynek pocztowych. Do wykonania tego zadania możesz użyć tego [skryptu programu PowerShell](http://aka.ms/delegateforwardrules). 
+- Przeczytaj i wdróż te [wskazówki](https://aka.ms/fixaccount) dotyczące rozwiązywania nietypowych działań. 
+- [Włącz potok inspekcji](https://aka.ms/improvesecurity), aby pomóc analizować działania w Twojej dzierżawie. Po wykonaniu tych czynności magazyn inspekcji rozpoczyna zapełnianie wszystkich dzienników aktywności. W tym momencie możesz również wykorzystać [funkcje wyszukiwania i badania Centrum zabezpieczeń i zgodności](https://aka.ms/sccsearch). 
+- Użyj tego [skryptu](https://aka.ms/mailboxaudit1), aby włączyć inspekcję skrzynki pocztowej dla wszystkich kont. 
+- Przejrzyj reguły delegowania uprawnień i przekazywania poczty dla wszystkich skrzynek pocztowych. Do wykonania tego zadania możesz użyć tego [skryptu programu PowerShell](https://aka.ms/delegateforwardrules). 
 
 
 

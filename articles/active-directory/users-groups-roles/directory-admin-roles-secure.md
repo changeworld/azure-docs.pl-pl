@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 55ce6398d89e56f92874d0ec135377d2a08cf075
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f42e7c2e564f660df1e88c63c00a9f04db7c8116
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297813"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240107"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD
 
@@ -388,7 +388,7 @@ Określ, czy wymagane do [przenieść własność subskrypcji platformy Azure do
 
 8. Upewnij się, że zapisywania kopii zapasowych dzienników istotnych dla potencjalnych analizy śledczej i prawne.
 
-Aby uzyskać więcej informacji na temat obsługi zdarzenia związane z bezpieczeństwem w Microsoft Office 365, zobacz [Zarządzanie zdarzeniami zabezpieczeń w usłudze Microsoft Office 365](http://aka.ms/Office365SIM).
+Aby uzyskać więcej informacji na temat obsługi zdarzenia związane z bezpieczeństwem w Microsoft Office 365, zobacz [Zarządzanie zdarzeniami zabezpieczeń w usłudze Microsoft Office 365](https://aka.ms/Office365SIM).
 
 ## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>Często zadawane pytania: Często zadawane pytania są uzyskiwane dotyczące zabezpieczania uprzywilejowanego dostępu  
 

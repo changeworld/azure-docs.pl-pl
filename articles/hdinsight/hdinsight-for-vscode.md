@@ -10,16 +10,16 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: 5cf3a18dc01ba5670e73aa93cb6c9aab2d5de660
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: f8bd1f1181cbd592782ce1126d5d61b5f257ca08
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378623"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234752"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Użyj usługi Azure HDInsight Tools for Visual Studio Code
 
-Dowiedz się, jak używać narzędzi HDInsight systemu Azure dla programu Visual Studio Code (VS Code) do tworzenia i przesyłania zadań wsadowych Hive, interaktywne zapytania programu Hive oraz skrypty PySpark. Narzędzia HDInsight systemu Azure można zainstalować na platformach, które są obsługiwane przez program VS Code. Są to systemy Windows, Linux i macOS. Wymagania wstępne dla różnych platform można znaleźć.
+Dowiedz się, jak używać Azure HDInsight Tools for Visual Studio Code (VS Code) do tworzenia i przesyłania zadań wsadowych Apache Hive, interaktywne zapytania usługi Apache Hive oraz skrypty PySpark. Narzędzia HDInsight systemu Azure można zainstalować na platformach, które są obsługiwane przez program VS Code. Są to systemy Windows, Linux i macOS. Wymagania wstępne dla różnych platform można znaleźć.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -83,7 +83,7 @@ Przed przesłaniem skryptów w klastrach HDInsight z programu VS Code, musisz na
 
         ![Sign in instructions for innego środowiska logowania](./media/hdinsight-for-vscode/hdi-azure-hdinsight-hdinsight-signin.png)
 
-    Po nawiązaniu połączenia swojej nazwy konta platformy Azure są wyświetlane na pasku stanu w lewym dolnym rogu okna programu VS Code. 
+    Po nawiązaniu połączenia swojej nazwy konta platformy Azure są wyświetlane na pasku stanu w lewym dolnym rogu okna programu VS Code. 
 
     > [!NOTE]
     > Z powodu problemu z znanych uwierzytelniania platformy Azure należy otworzyć w trybie prywatnym lub w trybie incognito w przeglądarce. Jeśli Twoje konto platformy Azure ma dwa czynniki włączona, zaleca się przy użyciu uwierzytelniania phone zamiast numeru PIN, uwierzytelnianie.
@@ -102,7 +102,7 @@ Przed przesłaniem skryptów w klastrach HDInsight z programu VS Code, musisz na
 
 <h3 id="linkcluster">Aby połączyć klaster</h3>
 
-Można połączyć normalny klaster przy użyciu nazwy użytkownika systemu Ambari zarządzane, również połączyć klaster hadoop zabezpieczeń przy użyciu nazwy użytkownika domeny (takich jak: user1@contoso.com).
+Można połączyć normalny klaster przy użyciu Apache Ambari zarządzane nazwy użytkownika lub połączyć pakiet zabezpieczeń dla przedsiębiorstw bezpiecznego klastra usługi Hadoop przy użyciu domena nazwa użytkownika (takie jak: user1@contoso.com).
 1. Otwórz paletę poleceń, wybierając pozycję **CTRL + SHIFT + P**, a następnie wprowadź **HDInsight: Połącz klaster**.
 
    ![polecenie klastra łącze](./media/hdinsight-for-vscode/link-cluster-command.png)
@@ -121,12 +121,12 @@ Można połączyć normalny klaster przy użyciu nazwy użytkownika systemu Amba
 4. Wstawiając może zostać odłączyć klaster **HDInsight: odłączyć klaster** z palety poleceń.
 
 
-### <a name="to-link-a-generic-livy-endpoint"></a>Aby połączyć ogólny punkt końcowy usługi livy
+### <a name="to-link-a-generic-apache-livy-endpoint"></a>Aby połączyć ogólnego endpoint Apache, usługi Livy
 
 1. Otwórz paletę poleceń, wybierając pozycję **CTRL + SHIFT + P**, a następnie wprowadź **HDInsight: Połącz klaster**.
 2. Wybierz **punktu końcowego usługi Livy ogólny**.
-3. Wprowadź ogólny punkt końcowy usługi livy, na przykład: http://10.172.41.42:18080.
-4. Wybierz **podstawowe** podczas autoryzacji dla ogólnego usługi livy punktu końcowego, w przeciwnym razie, wybrać **Brak**.
+3. Wprowadź ogólny punkt końcowy usługi Livy, na przykład: http://10.172.41.42:18080.
+4. Wybierz **podstawowe** podczas autoryzacji dla ogólnego usługi Livy punktu końcowego, w przeciwnym razie, wybrać **Brak**.
 5. Nazwa danych wejściowych użytkownika podczas wybierz **podstawowe** w step4.
 6. Wprowadź hasło, gdy wybierz **podstawowe** w step4.
 7. Ogólny punkt końcowy usługi livy łączenie zakończyło się pomyślnie.
@@ -142,7 +142,7 @@ Aby przetestować połączenie, można wyświetlić listę klastry usługi HDIns
 
 2. Kliknij prawym przyciskiem myszy w Edytorze skryptów, a następnie wybierz **HDInsight: lista klastrów** z menu kontekstowego. 
 
-3. Klastry Hive, jak i platformy Spark są wyświetlane w **dane wyjściowe** okienka.
+3. Klastry HDInsight są wyświetlane w **dane wyjściowe** okienka.
 
     ![Ustaw domyślną konfigurację klastra](./media/hdinsight-for-vscode/list-cluster-result.png)
 
@@ -160,7 +160,7 @@ Aby przetestować połączenie, można wyświetlić listę klastry usługi HDIns
 
 2. Wprowadź **HDInsight: należy ustawić środowisko Azure**.
 
-3. Wybierz jeden ze sposobów z platformy Azure i AzureChina jako domyślny wpis logowania.
+3. Wybierz środowisko, np. "Azure" lub "AzureChina" jako domyślny wpis logowania.
 
 4. W tym samym czasie narzędzie już zapisany domyślny wpis nazwy logowania w **. VSCode\settings.json**. Należy również bezpośrednio zaktualizować go w tym pliku konfiguracji. 
 
@@ -181,7 +181,7 @@ Za pomocą narzędzi HDInsight dla programu VS Code możesz przesłać interakcy
     ```
 4. Kliknij prawym przyciskiem myszy w Edytorze skryptów, wybierz **HDInsight: Hive Interactive** przesłać zapytanie, lub użyj skrótu **Ctrl + Alt + I**. Wybierz **HDInsight: wsadowych Hive** Prześlij skrypt lub użyj skrótu **Ctrl + Alt + H**. 
 
-5. Wybierz klaster, gdy są potrzebne. Narzędzia pozwalają również na przesyłanie bloku kodu zamiast całego pliku skryptu za pomocą menu kontekstowego. Wkrótce wyniki zapytań zostają wyświetlone w nowej tabeli.
+5. Wybierz klaster, jeśli nie określono klastra domyślnego. Narzędzia pozwalają również na przesyłanie bloku kodu zamiast całego pliku skryptu za pomocą menu kontekstowego. Po kilku chwilach wyniki zapytania są wyświetlane w nowej karcie.
 
    ![Wynik interakcyjnego klastra Hive](./media/hdinsight-for-vscode/interactive-hive-result.png)
 
@@ -191,7 +191,7 @@ Za pomocą narzędzi HDInsight dla programu VS Code możesz przesłać interakcy
 
 ## <a name="submit-interactive-pyspark-queries"></a>Przesyłanie zapytań interakcyjnych PySpark
 
-### <a name="to-submit-interactive-pyspark-queries-to-spark-clusters"></a>Aby przesłać interakcyjnego PySpark zapytania do klastrów platformy Spark.
+### <a name="to-submit-interactive-pyspark-queries-to-hdinsight-spark-clusters"></a>Aby przesłać interakcyjnego PySpark zapytania do klastrów usługi HDInsight Spark.
 
 1. Utwórz nowy folder roboczy i nowy plik skryptu z rozszerzeniem PY, jeśli nie masz jeszcze je.
 
@@ -211,7 +211,7 @@ Za pomocą narzędzi HDInsight dla programu VS Code możesz przesłać interakcy
    for i in range(0, 5):
         print(sortedCollection[i])
    ```
-4. Wyróżnianie tych skryptów. Następnie kliknij prawym przyciskiem myszy w Edytorze skryptów i wybierz **HDInsight: interakcyjnego PySpark**, lub użyj skrótu **Ctrl + Alt + I**.
+4. Zaznacz ten skrypt. Następnie kliknij prawym przyciskiem myszy w Edytorze skryptów i wybierz **HDInsight: interakcyjnego PySpark**, lub użyj skrótu **Ctrl + Alt + I**.
 
 5. Jeśli jeszcze nie zainstalowano **Python** rozszerzenia w programie VS Code wybierz **zainstalować** przycisk, jak pokazano na poniższej ilustracji:
 
@@ -326,10 +326,10 @@ Możesz również przesłać plik, ogłoszenie folderu .vscode jest automatyczni
     | pyFiles | Pliki języka Python do użycia w ramach tej sesji | Lista parametrów |
     | plików | pliki, które zostaną użyte w tej sesji | Lista parametrów |
     | driverMemory | Ilość pamięci na potrzeby procesu sterownika | ciąg |
-    | driverCores | Liczba rdzeni do użycia dla procesu sterownika | Int |
+    | driverCores | Liczba rdzeni do użycia dla procesu sterownika | int |
     | executorMemory | Ilość pamięci na działaniu proces wykonujący testy | ciąg |
-    | executorCores | Liczba rdzeni do użycia dla każdej funkcji wykonawczej | Int |
-    | numExecutors | Liczbie funkcji wykonawczych, aby uruchomić dla tej sesji | Int |
+    | executorCores | Liczba rdzeni do użycia dla każdej funkcji wykonawczej | int |
+    | numExecutors | Liczbie funkcji wykonawczych, aby uruchomić dla tej sesji | int |
     | Archiwa | Archiwa ma być używany w ramach tej sesji | Lista parametrów |
     | kolejka | Nazwa kolejki YARN, do której przesłano | ciąg |
     | name | Nazwa tej sesji | ciąg |
@@ -340,7 +340,7 @@ Możesz również przesłać plik, ogłoszenie folderu .vscode jest automatyczni
 
     | name | description | type | 
     | :- | :- | :- | 
-    | id | Identyfikator sesji | Int | 
+    | id | Identyfikator sesji | int | 
     | appId | Identyfikator aplikacji dla tej sesji |  Ciąg |
     | appInfo | Informacje o szczegółowe aplikacji | Mapa klucza = val |
     | Dziennik | Wiersze dziennika | Lista ciągów |

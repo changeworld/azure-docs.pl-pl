@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 906cec35c30c277ac1e8bc641d12fe37c29413dd
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: edddc40b17adde685f875dfaa6b20879c6e61b15
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427182"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259160"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Często zadawane pytania dotyczące programu SQL Server uruchomionego na maszynach wirtualnych Windows Azure
 
@@ -79,7 +79,7 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 1. **Czy muszę płacić za licencję programu SQL Server na Maszynie wirtualnej platformy Azure, jeśli jest on używany tylko w stanie wstrzymania/tryb failover?**
 
-   Jeśli masz pakiet Software Assurance i używają opcji przenoszenia licencji zgodnie z opisem w [często zadawane pytania dotyczące licencjonowania maszyny wirtualnej](http://azure.microsoft.com/pricing/licensing-faq/) nie trzeba płacić za licencję na jeden udział jako replika pomocnicza pasywnym we wdrożeniu o wysokiej dostępności programu SQL Server. W przeciwnym razie trzeba płacić za jej licencji.
+   Jeśli masz pakiet Software Assurance i używają opcji przenoszenia licencji zgodnie z opisem w [często zadawane pytania dotyczące licencjonowania maszyny wirtualnej](https://azure.microsoft.com/pricing/licensing-faq/) nie trzeba płacić za licencję na jeden udział jako replika pomocnicza pasywnym we wdrożeniu o wysokiej dostępności programu SQL Server. W przeciwnym razie trzeba płacić za jej licencji.
 
 
 ## <a name="administration"></a>Administracja

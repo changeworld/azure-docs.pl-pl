@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 23fde5fab8f223ff1d958a8fac6a31818f1fdd7c
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: a638487fb0a622f899095989ca5341013299e181
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818920"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234412"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migracja danych z serii StorSimple 5000 – 7000 do urządzenia z serii 8000
 
@@ -57,7 +57,7 @@ Migracja po stronie hosta pozwala na konfigurowanie z serii 8000 niezależnie i 
 | 3.   | Po pomyślnej migracji wszystkie dane są lokalne na urządzeniu. Nie ma żadnych opóźnienia podczas uzyskiwania dostępu do danych. | Spowoduje zwiększenie użycia magazynu platformy Azure, dopóki dane zostaną usunięte z urządzenia 5000/7000.                                                                                                        |
 | 4.   |                                                                                                                           | Jeśli urządzenie z serii 7000/5000 ma dużą ilość danych, podczas migracji te dane muszą zostać pobrane z platformy azure, które zostaną naliczone koszty oraz opóźnienia związane z pobieranie danych z platformy Azure |
 
-Ten artykuł dotyczy tylko funkcji migracji z 5000/7000 do urządzenia z serii 8000. Aby uzyskać więcej informacji na temat migracji po stronie hosta, przejdź do [migracja z innych urządzeń magazynujących](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf).
+Ten artykuł dotyczy tylko funkcji migracji z 5000/7000 do urządzenia z serii 8000. Aby uzyskać więcej informacji na temat migracji po stronie hosta, przejdź do [migracja z innych urządzeń magazynujących](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf).
 
 ## <a name="migration-prerequisites"></a>Wymagania wstępne dotyczące migracji
 

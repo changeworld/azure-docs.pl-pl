@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 5cd56abd02c55dbf72c92ed070f9988fae2b6762
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 7ab12c86e01a34e4ba2a9673364c0e1104f6cdba
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365258"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231627"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji sieci web w usłudze Azure App Service
 ## <a name="overview"></a>Przegląd
-Platforma Azure udostępnia wbudowaną funkcję diagnostyki, która pomaga w debugowaniu [aplikacji sieci web usługi App Service](http://go.microsoft.com/fwlink/?LinkId=529714). W tym artykule dowiesz się, jak włączyć rejestrowanie diagnostyczne i dodać Instrumentację do aplikacji, a także jak uzyskać dostęp do informacji rejestrowanych przez system Azure.
+Platforma Azure udostępnia wbudowaną funkcję diagnostyki, która pomaga w debugowaniu [aplikacji sieci web usługi App Service](https://go.microsoft.com/fwlink/?LinkId=529714). W tym artykule dowiesz się, jak włączyć rejestrowanie diagnostyczne i dodać Instrumentację do aplikacji, a także jak uzyskać dostęp do informacji rejestrowanych przez system Azure.
 
 W tym artykule wykorzystano [witryny Azure portal](https://portal.azure.com), programu Azure PowerShell i interfejsu wiersza polecenia platformy Azure (Azure CLI) do pracy z dzienników diagnostycznych. Aby uzyskać informacje na temat pracy z dzienników diagnostycznych przy użyciu programu Visual Studio, zobacz [Rozwiązywanie problemów z platformy Azure w programie Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
 
@@ -37,10 +37,10 @@ Można włączyć lub wyłączyć następujące rodzaje dzienników:
 
 * **Szczegółowe rejestrowanie błędów** — szczegółowe informacje o błędzie dla kodów stanu HTTP, które wskazują błędu (kod stanu 400 lub nowszej). Może on zawierać informacje, które mogą pomóc ustalić, dlaczego serwer zwrócił kod błędu.
 * **Nie powiodło się żądanie śledzenia** — szczegółowe informacje dotyczące żądań zakończonych niepowodzeniem, w tym śledzenia komponenty używani do przetwarzania żądania i czasu trwania w poszczególnych składnikach. Jest to przydatne, jeśli chcesz zwiększyć wydajność witryny lub określić, co powoduje określonego błędu HTTP, który ma zostać zwrócona.
-* **Rejestrowanie serwera w sieci Web** — informacje o transakcji HTTP za pomocą [rozszerzonym formacie W3C dziennika pliku](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Jest to przydatne, podczas określania ogólnego metryki witryn, takie jak liczba żądań obsłużonych lub ile żądań pochodzących z określonego adresu IP.
+* **Rejestrowanie serwera w sieci Web** — informacje o transakcji HTTP za pomocą [rozszerzonym formacie W3C dziennika pliku](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Jest to przydatne, podczas określania ogólnego metryki witryn, takie jak liczba żądań obsłużonych lub ile żądań pochodzących z określonego adresu IP.
 
 ### <a name="application-diagnostics"></a>Diagnostyka aplikacji
-Usługa Application diagnostics można przechwytywać informacji generowanych przez aplikację sieci web. Aplikacje ASP.NET mogą używać [System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) klasy do rejestrowania informacji w dzienniku diagnostyki aplikacji. Na przykład:
+Usługa Application diagnostics można przechwytywać informacji generowanych przez aplikację sieci web. Aplikacje ASP.NET mogą używać [System.Diagnostics.Trace](https://msdn.microsoft.com/library/36hhw2t6.aspx) klasy do rejestrowania informacji w dzienniku diagnostyki aplikacji. Na przykład:
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
@@ -97,7 +97,7 @@ Struktury katalogów, które dzienniki są przechowywane w jest następująca:
 * **Dzienniki aplikacji** -/LogFiles/aplikacji /. Ten folder zawiera jeden lub więcej plików tekstowych zawierających informacji generowanych przez rejestrowanie aplikacji.
 * **Nie powiodło się żądanie ślady** -/ LogFiles/W3SVC ### /. Ten folder zawiera pliku XSL i co najmniej jeden plik XML. Upewnij się, pobrać pliku XSL do tego samego katalogu, jak pliki XML, ponieważ plik XSL zapewnia funkcje dotyczące formatowania i filtrowania zawartości plików XML podczas wyświetlania w przeglądarce Internet Explorer.
 * **Szczegółowe dzienniki błędów** -/LogFiles/DetailedErrors /. Ten folder zawiera jeden lub więcej plików htm, które zapewniają szczegółowe informacje, które wystąpiły błędy HTTP.
-* **Dzienniki serwera Web** -/LogFiles/http/RawLogs. Ten folder zawiera jeden lub więcej plików tekstowych formatowana przy użyciu [rozszerzonym formacie W3C dziennika pliku](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx).
+* **Dzienniki serwera Web** -/LogFiles/http/RawLogs. Ten folder zawiera jeden lub więcej plików tekstowych formatowana przy użyciu [rozszerzonym formacie W3C dziennika pliku](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx).
 * **Dzienniki wdrożenia** -/ LogFiles/Git. Ten folder zawiera dzienniki generowane przez procesy wewnętrznego wdrażania aplikacji sieci web platformy Azure, a także dzienniki dla wdrożenia Git. Można również znaleźć dzienniki wdrożenia w obszarze D:\home\site\deployments.
 
 ### <a name="ftp"></a>FTP
@@ -171,7 +171,7 @@ Aby odfiltrować typów określonego dziennika, takich jak HTTP, użyj **— śc
 Aby wyświetlić listę dostępnych ścieżek, użyj parametru - ListPath.
 
 > [!NOTE]
-> Jeśli nie zainstalowano programu Azure PowerShell lub nie skonfigurowano do użycia w Twojej subskrypcji platformy Azure, zobacz [jak używać programu Azure PowerShell](http://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/).
+> Jeśli nie zainstalowano programu Azure PowerShell lub nie skonfigurowano do użycia w Twojej subskrypcji platformy Azure, zobacz [jak używać programu Azure PowerShell](https://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/).
 >
 >
 
@@ -264,7 +264,7 @@ Dane przechowywane w obiekcie blob powinien wyglądać podobnie do poniższego p
 Dzienniki szczegółowy komunikat o błędzie są dokumenty HTML, które zawierają bardziej szczegółowe informacje dotyczące błędów protokołu HTTP, które wystąpiły. Ponieważ są one po prostu dokumentów HTML, ich można wyświetlić w przeglądarce sieci web.
 
 ### <a name="web-server-logs"></a>Dzienniki serwera sieci Web
-Dzienniki serwera sieci web są formatowane przy użyciu [rozszerzonym formacie W3C dziennika pliku](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Te informacje mogą być odczytywane za pomocą edytora tekstu lub analizowany za pomocą narzędzi takich jak [analizator dzienników](http://go.microsoft.com/fwlink/?LinkId=246619).
+Dzienniki serwera sieci web są formatowane przy użyciu [rozszerzonym formacie W3C dziennika pliku](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Te informacje mogą być odczytywane za pomocą edytora tekstu lub analizowany za pomocą narzędzi takich jak [analizator dzienników](https://go.microsoft.com/fwlink/?LinkId=246619).
 
 > [!NOTE]
 > Dzienniki generowane przez aplikacje sieci web platformy Azure nie obsługują **s-computername**, **s-ip**, lub **cs-version** pola.
@@ -274,7 +274,7 @@ Dzienniki serwera sieci web są formatowane przy użyciu [rozszerzonym formacie 
 ## <a name="nextsteps"></a> Następne kroki
 * [Jak monitorować aplikacje sieci Web](web-sites-monitor.md)
 * [Rozwiązywanie problemów z aplikacjami sieci web platformy Azure w programie Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md)
-* [Analizowanie dzienników aplikacji sieci web w HDInsight](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
+* [Analizowanie dzienników aplikacji sieci web w HDInsight](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 
 > [!NOTE]
 > Jeśli chcesz zacząć korzystać z usługi Azure App Service przed utworzeniem konta platformy Azure, przejdź do artykułu [Try App Service](https://azure.microsoft.com/try/app-service/) (Wypróbuj usługę App Service), w którym wyjaśniono, jak od razu utworzyć początkową aplikację internetową o krótkim okresie istnienia w usłudze App Service. Bez kart kredytowych i bez zobowiązań.

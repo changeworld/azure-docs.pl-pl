@@ -2,19 +2,19 @@
 title: Przesyłanie zadań do klastra Spark w usłudze Azure HDInsight za pomocą platformy Spark usługi Livy
 description: Dowiedz się, jak używać interfejsu API REST programu Apache Spark do przesyłania zadań platformy Spark zdalne z klastrem usługi Azure HDInsight.
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 07/18/2018
-ms.openlocfilehash: 677c7d27d34725b75c5dfed70cc377735f5d7d61
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.openlocfilehash: 86a047fe291c7872fe275ba7246b9f3e59044723
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045216"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236827"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Użyj interfejsu API REST programu Apache Spark, aby przesłać zdalnej obsługi zadań do klastra usługi HDInsight Spark
 
@@ -152,9 +152,9 @@ Wykonaj następujące czynności:
    
     Ostatni wiersz danych wyjściowych zawiera usługi batch został pomyślnie usunięty. Trwa usuwanie zadania, gdy uruchomiona jest również kasuje zadania. Jeśli usuniesz zadanie, które zostało ukończone pomyślnie, lub w przeciwnym razie usuwa informacje o zadaniu całkowicie.
 
-## <a name="using-livy-spark-on-hdinsight-35-clusters"></a>Za pomocą usługi Livy platformy Spark w klastrach HDInsight 3.5
+## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>Aktualizacje konfiguracji usługi Livy, począwszy od wersji HDInsight 3.5
 
-Klastrów HDInsight 3.5 domyślnie wyłącza lokalne ścieżki do plików do dostępu do przykładowych plików danych lub plikach JAR. Firma Microsoft zachęca do użycia `wasb://` ścieżkę zamiast tego dostępu plikach JAR i przykładowe dane plików z klastra. Jeśli chcesz użyć ścieżki lokalnej, należy odpowiednio Zaktualizuj konfigurację systemu Ambari. W tym celu:
+HDInsight 3.5 klastrów i powyżej, domyślnie wyłączyć użycie lokalne ścieżki do plików do dostępu do przykładowych plików danych lub plikach JAR. Firma Microsoft zachęca do użycia `wasb://` ścieżkę zamiast tego dostępu plikach JAR i przykładowe dane plików z klastra. Jeśli chcesz użyć ścieżki lokalnej, należy odpowiednio Zaktualizuj konfigurację systemu Ambari. W tym celu:
 
 1. Przejdź do portalu Ambari klastra. Interfejs użytkownika sieci Web Ambari jest dostępna w klastrze usługi HDInsight w https://**CLUSTERNAME**. azurehdidnsight.net, gdzie CLUSTERNAME jest nazwą klastra.
 

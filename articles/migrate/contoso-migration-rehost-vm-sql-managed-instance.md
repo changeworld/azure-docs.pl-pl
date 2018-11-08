@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 0e4576ad4f7eece543ef572073919bcf3ca3a4e9
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: ae719e6daa3c07ffe298cfefcc5a0a2846a49032
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116146"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231825"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Migracja Contoso: ponowne hostowanie aplikacji w środowisku lokalnym na maszynie Wirtualnej platformy Azure oraz wystąpienie zarządzane usługi SQL Database
 
@@ -366,7 +366,7 @@ Po przejściu w tryb failover na platformie Azure Contoso chce można było poł
 Administratorzy firmy Contoso konieczne sprawdzenie następujących kwestii, po przejściu w tryb failover:
 
 - Powinno być nie oczekujących aktualizacji Windows na maszynie Wirtualnej po wyzwoleniu przejścia w tryb failover. W przypadku oczekujących aktualizacji Windows Contoso nie logowania do maszyny wirtualnej do momentu ukończenia aktualizacji.
-- Po przejściu w tryb failover należy sprawdzić Administratorzy **diagnostykę rozruchu** Aby wyświetlić zrzut ekranu maszyny wirtualnej. Jeśli nie będą mogli zobaczyć diagnostykę rozruchu, należy sprawdzić czy maszyna wirtualna jest uruchomiona, a następnie przejrzyj [wskazówki dotyczące rozwiązywania problemów](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+- Po przejściu w tryb failover należy sprawdzić Administratorzy **diagnostykę rozruchu** Aby wyświetlić zrzut ekranu maszyny wirtualnej. Jeśli nie będą mogli zobaczyć diagnostykę rozruchu, należy sprawdzić czy maszyna wirtualna jest uruchomiona, a następnie przejrzyj [wskazówki dotyczące rozwiązywania problemów](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 ## <a name="step-5-replicate-the-on-premises-vms-to-azure"></a>Krok 5: Replikowanie lokalnych maszyn wirtualnych na platformę Azure
 

@@ -9,18 +9,18 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 54646a7d4962c5dfe255d28bdb91d272062530dd
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: b7befb46da8674e0bec7d3f73ad33a12529ffc3a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364278"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232385"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Wzorce projektowe dla wielodostępnych aplikacji SaaS i usługa Azure Search
 Wielodostępnej aplikacji to taki, który zawiera te same usług i funkcji do dowolnej liczby dzierżawców, którzy nie może zobaczyć i udostępnianie danych z innymi dzierżawami. W tym dokumencie omówiono strategii izolacji dzierżawy dla aplikacji wielodostępnych utworzonych za pomocą usługi Azure Search.
 
 ## <a name="azure-search-concepts"></a>Pojęcia dotyczące usługi Azure Search
-Jako rozwiązanie typu wyszukiwanie jako usługa Azure Search umożliwia deweloperom Dodawanie środowiska sformatowanego wyszukiwania do aplikacji bez konieczności zarządzania dowolną infrastrukturą lub eksperckiej wiedzy o pobierania informacji. Dane są przekazywane do usługi i następnie przechowywane w chmurze. Za pomocą prostych żądań do interfejsu API usługi Azure Search, dane można być zmodyfikowane i przeszukiwane. Omówienie usługi można znaleźć w [w tym artykule](http://aka.ms/whatisazsearch). Przed omówieniem wzorce projektowe, ważne jest zrozumienie niektórych pojęć w usłudze Azure Search.
+Jako rozwiązanie typu wyszukiwanie jako usługa Azure Search umożliwia deweloperom Dodawanie środowiska sformatowanego wyszukiwania do aplikacji bez konieczności zarządzania dowolną infrastrukturą lub eksperckiej wiedzy o pobierania informacji. Dane są przekazywane do usługi i następnie przechowywane w chmurze. Za pomocą prostych żądań do interfejsu API usługi Azure Search, dane można być zmodyfikowane i przeszukiwane. Omówienie usługi można znaleźć w [w tym artykule](https://aka.ms/whatisazsearch). Przed omówieniem wzorce projektowe, ważne jest zrozumienie niektórych pojęć w usłudze Azure Search.
 
 ### <a name="search-services-indexes-fields-and-documents"></a>Usługi wyszukiwania, indeksów, pola i dokumenty
 Korzystając z usługi Azure Search, jeden subskrybuje *usługi wyszukiwania*. Ponieważ dane są przekazywane do usługi Azure Search, jest on przechowywany w *indeksu* w ramach usługi wyszukiwania. Może to być liczba indeksów w jednej usłudze. Aby korzystać z dobrze znanych koncepcji baz danych, usługi wyszukiwania można przyrównać do bazy danych, gdy indeksów w ramach usługi można przyrównać do tabel w bazie danych.
@@ -126,7 +126,7 @@ Ta metoda może służyć do osiągnięcia funkcji oddzielnych kont użytkownik�
 > 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Usługa Azure Search to świetna wybór w przypadku wielu aplikacji [Przeczytaj więcej na temat zaawansowanych funkcji usługi](http://aka.ms/whatisazsearch). Podczas obliczania różnych wzorców projektowych dla aplikacji wielodostępnych, należy wziąć pod uwagę [różnych warstw cenowych](https://azure.microsoft.com/pricing/details/search/) oraz odpowiednie [limitów usług](search-limits-quotas-capacity.md) aby najlepiej dopasować usługi Azure Search, aby dopasować aplikacji obciążenia i architektur różnej wielkości.
+Usługa Azure Search to świetna wybór w przypadku wielu aplikacji [Przeczytaj więcej na temat zaawansowanych funkcji usługi](https://aka.ms/whatisazsearch). Podczas obliczania różnych wzorców projektowych dla aplikacji wielodostępnych, należy wziąć pod uwagę [różnych warstw cenowych](https://azure.microsoft.com/pricing/details/search/) oraz odpowiednie [limitów usług](search-limits-quotas-capacity.md) aby najlepiej dopasować usługi Azure Search, aby dopasować aplikacji obciążenia i architektur różnej wielkości.
 
 Pytania dotyczące usługi Azure Search i scenariuszach wielodostępnych może zostać skierowany do azuresearch_contact@microsoft.com.
 

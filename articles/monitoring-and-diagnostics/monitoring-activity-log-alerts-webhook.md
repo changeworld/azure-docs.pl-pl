@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: e989406c852b7c87123681dd875f9cd8229524c1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 147e67efa901c834afef8f0da2acf6f5b523f6ad
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971930"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254200"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Elementy Webhook dla alertów dziennika aktywności platformy Azure
 Jako część definicji grupy akcji można skonfigurować elementu webhook punktów końcowych, aby otrzymywać powiadomienia o alertach dziennika aktywności. Przy użyciu elementów webhook można kierować te powiadomienia do innych systemów w zakresie przetwarzania końcowego lub niestandardowej akcji. Ten artykuł pokazuje, jak wygląda ładunek HTTP POST do elementu webhook.
@@ -197,7 +197,7 @@ Określonego schematu szczegółowe informacje na temat wszystkich innych alert�
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Dowiedz się więcej o dzienniku aktywności](monitoring-overview-activity-logs.md).
-* [Wykonywanie skryptów usługi Azure automation (elementy Runbook) na temat alertów platformy Azure](http://go.microsoft.com/fwlink/?LinkId=627081).
+* [Wykonywanie skryptów usługi Azure automation (elementy Runbook) na temat alertów platformy Azure](https://go.microsoft.com/fwlink/?LinkId=627081).
 * [Wysyłać wiadomość SMS za pośrednictwem usługi Twilio, z poziomu alertu platformy Azure przy użyciu aplikacji logiki](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Ten przykład dotyczy alertów dotyczących metryk, ale może być zmodyfikowana, aby pracować alertu dziennika aktywności.
 * [Korzystanie z aplikacji logiki, aby wysłać wiadomość Slack z poziomu alertu usługi Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Ten przykład dotyczy alertów dotyczących metryk, ale może być zmodyfikowana, aby pracować alertu dziennika aktywności.
 * [Użyj aplikacji logiki, aby wysłać komunikat do kolejki platformy Azure z poziomu alertu usługi Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Ten przykład dotyczy alertów dotyczących metryk, ale może być zmodyfikowana, aby pracować alertu dziennika aktywności.

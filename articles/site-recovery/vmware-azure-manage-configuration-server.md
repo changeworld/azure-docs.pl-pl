@@ -1,18 +1,18 @@
 ---
 title: Zarządzanie serwerem konfiguracji dla programu VMware i odzyskiwanie po awarii serwerów fizycznych z usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób zarządzania istniejącego serwera konfiguracji odzyskiwania po awarii maszyn wirtualnych programu VMware i serwerów fizycznych na platformę Azure za pomocą RecoveryS witryny Azure.
+description: W tym artykule opisano sposób zarządzania istniejącego serwera konfiguracji odzyskiwania po awarii maszyn wirtualnych programu VMware i serwerów fizycznych na platformę Azure za pomocą usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 4ac3871893e7e8161dc087f285eb3d802cd4a355
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f76a55778a5d4c00060192bfaa704724d5fe1045
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215144"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219492"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>Zarządzanie serwerem konfiguracji dla maszyn wirtualnych VMware
 
@@ -137,10 +137,10 @@ Możesz uruchamiać pakiety zbiorcze aktualizacji, aby zaktualizować serwer kon
 - Jeśli zostanie uruchomione, zbierając 9,7, 9,8, 9.9 lub 9.10, można uaktualnić bezpośrednio do 9.11.
 - Jeśli chcesz uaktualnić do 9.11 uruchom 9.6 lub starszym, należy najpierw uaktualnić do wersji zbierając 9,7. przed 9.11.
 
-Łącza do pakiety zbiorcze aktualizacji dla uaktualnienie dla wszystkich wersji serwera konfiguracji są dostępne w [strona aktualizacji witryny typu wiki](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+Łącza do pakiety zbiorcze aktualizacji dla uaktualnienie dla wszystkich wersji serwera konfiguracji są dostępne w [aktualizacje platformy Azure, strona](https://azure.microsoft.com/updates/?product=site-recovery).
 
 > [!IMPORTANT]
-> Przy każdej nowej wersji "n" z usługi Azure Site Recovery componenet publikowany, wszystkie wersje poniżej n-4 "jest uważany za świadczenie pomocy technicznej. Zawsze zaleca się uaktualnienie do najnowszej wersji dostępne.
+> Przy każdej nowej wersji "n" z usługi Azure Site Recovery składnik, który jest zwalniana, wszystkie wersje poniżej n-4 "jest uważany za świadczenie pomocy technicznej. Zawsze zaleca się uaktualnienie do najnowszej wersji dostępne.
 
 Uaktualnij serwer w następujący sposób:
 

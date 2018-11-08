@@ -1,6 +1,6 @@
 ---
 title: Omówienie programu Microsoft Azure StorSimple i dostawcy rozwiązań w chmurze | Dokumentacja firmy Microsoft
-description: Omówienie StorSimple i dostawcy usług Kryptograficznych dla partnerów usługi StorSimple.
+description: Omówienie magazynu StorSimple i dostawcy usług Kryptograficznych dla partnerów usługi StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: c8cb51093142146fc7d43b51a62d949f6cc38988
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0dac86a696599a391cb243ad11e16931e00b8921
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875655"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238934"
 ---
-# <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Wdrażanie tablicy wirtualnego StorSimple programu dostawcy rozwiązania chmury
+# <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Wdrażanie macierzy wirtualnej StorSimple dla Cloud Solution Provider Program
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-Tablica wirtualnego StorSimple można wdrożyć przez partnerów Cloud Solution Provider (CSP) dla klientów. Partner dostawcy usług Kryptograficznych można utworzyć usługi Menedżer StorSimple urządzenia. Ta usługa może następnie używane do wdrażania i zarządzania tablicy wirtualnego StorSimple oraz skojarzone udziałów, woluminów i kopii zapasowych.
+Macierz wirtualną StorSimple można wdrożyć przez partnerów Cloud Solution Provider (CSP) dla swoich klientów. Partner programu CSP może utworzyć usługi Menedżer urządzeń StorSimple. Ta usługa następnie może służyć do wdrażania i zarządzania rozwiązania StorSimple Virtual Array i skojarzone udziałów, woluminów i kopii zapasowych.
 
-W tym artykule opisano sposób partnera dostawcy usług Kryptograficznych można dodać klienta lub nową subskrypcję do istniejącego klienta, a następnie utworzyć usługi do wdrożenia tablicą wirtualnego StorSimple w dostawcy usług Kryptograficznych.
+W tym artykule opisano, jak partner programu CSP można dodać do istniejącego klienta klient lub nową subskrypcję, a następnie utworzyć usługi do wdrożenia rozwiązania StorSimple Virtual Array w programie CSP.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem upewnij się, że:
 
-- Zarejestrowane w programie dostawcy usług Kryptograficznych.
-- Masz poprawne [Centrum partnerskiego](http://partnercenter.microsoft.com/) poświadczenia logowania. Poświadczenia umożliwiają Zaloguj się do portalu dla partnerów do dodawania nowych klientów, wyszukiwać klientów lub przejdź do konta klienta z poziomu pulpitu nawigacyjnego partnera. Dostawca usług Kryptograficznych może działać jako StorSimple administrator w imieniu klienta w portalu Azure.
+- Użytkownik jest zarejestrowany w ramach programu CSP.
+- Masz poprawne [Centrum partnerskiego](https://partnercenter.microsoft.com/) poświadczenia logowania. Poświadczenia umożliwiają Zaloguj się do portalu dla partnerów do dodawania nowych klientów, wyszukiwać klientów lub przejdź do konta klienta, na pulpicie nawigacyjnym partnera. Dostawca CSP może działać jako administratora usługi StorSimple w imieniu klientów w witrynie Azure portal.
                              
 ## <a name="add-a-customer"></a>Dodaj klienta
 
-Jeśli dodasz klienta subskrypcji jest tworzony automatycznie. Aby dodać klienta (i automatycznie utworzyć subskrypcję), wykonaj następujące kroki w portalu dla partnerów.
+Jeśli dodasz klienta, jest tworzony automatycznie subskrypcji. Aby dodać klienta (i automatycznie Utwórz subskrypcję), wykonaj następujące kroki w portalu dla partnerów.
 
-1. Przejdź do [Centrum partnerskiego](http://partnercenter.microsoft.com/) i zaloguj się przy użyciu poświadczeń konta dostawcy usług Kryptograficznych. Kliknij przycisk **pulpitu nawigacyjnego**.
+1. Przejdź do [Centrum partnerskiego](https://partnercenter.microsoft.com/) i zaloguj się przy użyciu poświadczeń konta programu CSP. Kliknij przycisk **pulpit nawigacyjny**.
 
-     ![Pulpit nawigacyjny w Centrum partnerskiego](./media/storsimple-partner-csp-deploy/image1.png)
+     ![Pulpit nawigacyjny Centrum partnerskiego](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. W lewym okienku kliknij **klientów**. W prawym okienku kliknij **dodać klienci**. Wprowadź szczegóły klienta. Kliknij przycisk **dalej: subskrypcji** można utworzyć subskrypcji klienta.
+2. W okienku po lewej stronie kliknij **klientów**. W okienku po prawej stronie kliknij **Dodaj klientów**. Wprowadź szczegóły klienta. Kliknij przycisk **dalej: subskrypcje** do utworzenia subskrypcji klienta.
 
     ![Dodaj klienta](./media/storsimple-partner-csp-deploy/image2.png)
 
@@ -52,56 +52,56 @@ Jeśli dodasz klienta subskrypcji jest tworzony automatycznie. Aby dodać klient
 
     ![Przejrzyj informacje o subskrypcji](./media/storsimple-partner-csp-deploy/image3.png)
                               
-4. Przejrzyj informacje i kliknij przycisk **przesyłania**.
+4. Przejrzyj informacje, a następnie kliknij przycisk **przesyłania**.
 
-    ![Przedstawia subskrypcji](./media/storsimple-partner-csp-deploy/image4.png)
+    ![Prześlij subskrypcję](./media/storsimple-partner-csp-deploy/image4.png)
 
 5. Zapisz informacje o potwierdzenie w przyszłości.
 
     ![Zapisz potwierdzenia](./media/storsimple-partner-csp-deploy/image5.png)
 
-6. Znajdź fizyczną lub przejdź do klienta zostanie dodany. Kliknij przycisk **nazwa firmy** aby przejść do szczegółów.
+6. Znajdź fizyczną lub przejdź do klienta właśnie dodałeś. Kliknij przycisk **nazwa firmy** na przechodzenie do szczegółów.
 
     ![Wyszukaj klienta](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. W lewym okienku wybierz **Zarządzanie usługami**. W prawym okienku w obszarze **administrowania usługami**, kliknij przycisk **portalu zarządzania Microsoft Azure** do logowania się jako administrator systemu Azure dla klienta.
+7. W okienku po lewej stronie wybierz **Zarządzanie usługami**. W okienku po prawej stronie w obszarze **administrowania usługami**, kliknij przycisk **portalu zarządzania Microsoft Azure** zalogowania się jako administrator platformy Azure dla klientów.
 
-    ![Zaloguj się do portalu Azure](./media/storsimple-partner-csp-deploy/image9.png)
+    ![Logowanie do witryny Azure Portal](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. Aby utworzyć Menedżera urządzeń StorSimple, kliknij przycisk **+ nowy** i wyszukiwania lub przejdź do **wirtualnego serii urządzenia StorSimple**. Aby uzyskać więcej informacji, przejdź do [wdrożyć usługę Menedżer StorSimple urządzenia](storsimple-virtual-array-manage-service.md).
+8. Aby utworzyć Menedżera urządzeń StorSimple, kliknij przycisk **+ nowy** i wyszukać, lub przejdź do **seria urządzeń wirtualnych StorSimple**. Aby uzyskać więcej informacji, przejdź do [wdrażania usługi Menedżer urządzeń StorSimple](storsimple-virtual-array-manage-service.md).
 
-    ![Utwórz usługę Menedżer StorSimple urządzenia](./media/storsimple-partner-csp-deploy/image8.png)
+    ![Tworzenie usługi Menedżer urządzeń StorSimple](./media/storsimple-partner-csp-deploy/image8.png)
 
 
 ## <a name="add-a-subscription"></a>Dodaj subskrypcję
 
-W niektórych przypadkach może być istniejący klient i należy dodać subskrypcję. Aby dodać subskrypcję do istniejącego klienta, wykonaj następujące kroki w portalu dla partnerów.
+W niektórych przypadkach może być istniejącym klientem, a następnie należy dodać subskrypcję. Aby dodać subskrypcję do istniejącego klienta, wykonaj następujące kroki w portalu dla partnerów.
 
-1. Przejdź do [Centrum partnerskiego](http://partnercenter.microsoft.com/) i zaloguj się przy użyciu poświadczeń konta dostawcy usług Kryptograficznych. Kliknij przycisk **pulpitu nawigacyjnego**.
+1. Przejdź do [Centrum partnerskiego](https://partnercenter.microsoft.com/) i zaloguj się przy użyciu poświadczeń konta programu CSP. Kliknij przycisk **pulpit nawigacyjny**.
 
-     ![Pulpit nawigacyjny w Centrum partnerskiego](./media/storsimple-partner-csp-deploy/image1.png)
+     ![Pulpit nawigacyjny Centrum partnerskiego](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. W lewym okienku kliknij **klientów**. Znajdź fizyczną lub przejdź do klienta chcesz dodać subskrypcję. Kliknij przycisk ![Ikona znacznika wyboru Rozwiń](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) ikonę, aby rozwinąć wiersz dla nazwy firmy klienta. W sekcji szczegółów kliknij **dodawać subskrypcje**.
+2. W okienku po lewej stronie kliknij **klientów**. Znajdź fizyczną lub przejdź do klienta, które chcesz dodać subskrypcję. Kliknij przycisk ![ikonę znacznika wyboru Rozwiń](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) ikonę, aby rozwinąć wiersz dla nazwy firmy klienta. W sekcji szczegółów kliknij **Dodaj subskrypcje**.
 
     ![Klienci](./media/storsimple-partner-csp-deploy/image10.png)
 
-3. Sprawdź **Microsoft Azure** dla **Top oferty** w subskrypcji i kliknij przycisk **przesyłania**. Spowoduje to utworzenie nowej subskrypcji.
+3. Sprawdź **Microsoft Azure** dla **najważniejsze oferty** w subskrypcji i kliknij przycisk **przesyłania**. Spowoduje to utworzenie nowej subskrypcji.
 
     ![Dodaj nową subskrypcję](./media/storsimple-partner-csp-deploy/image11.png)
 
-6. Po utworzeniu nowej subskrypcji, kliknij przycisk **<--klientów** w okienku po lewej, aby powrócić do **klientów** strony. Wyszukiwanie odbiorcy, dla którego utworzono subskrypcji. Kliknij przycisk **nazwa firmy** aby przejść do szczegółów.
+6. Po utworzeniu nowej subskrypcji, kliknij **< — klienci** w okienku po lewej stronie, aby powrócić do **klientów** strony. Wyszukaj klienta, dla którego utworzono subskrypcję. Kliknij przycisk **nazwa firmy** na przechodzenie do szczegółów.
 
     ![Wyszukaj klienta](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. W lewym okienku wybierz **Zarządzanie usługami**. W prawym okienku w obszarze **administrowania usługami**, kliknij przycisk **portalu zarządzania Microsoft Azure** do logowania się jako administrator systemu Azure dla klienta.
+7. W okienku po lewej stronie wybierz **Zarządzanie usługami**. W okienku po prawej stronie w obszarze **administrowania usługami**, kliknij przycisk **portalu zarządzania Microsoft Azure** zalogowania się jako administrator platformy Azure dla klientów.
 
-    ![Zaloguj się do portalu Azure](./media/storsimple-partner-csp-deploy/image9.png)
+    ![Logowanie do witryny Azure Portal](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. Aby utworzyć Menedżera urządzeń StorSimple, kliknij przycisk **+ nowy** i wyszukiwania lub przejdź do **wirtualnego serii urządzenia StorSimple**. Aby uzyskać więcej informacji, przejdź do [wdrożyć usługę Menedżer StorSimple urządzenia](storsimple-virtual-array-manage-service.md).
+8. Aby utworzyć Menedżera urządzeń StorSimple, kliknij przycisk **+ nowy** i wyszukać, lub przejdź do **seria urządzeń wirtualnych StorSimple**. Aby uzyskać więcej informacji, przejdź do [wdrażania usługi Menedżer urządzeń StorSimple](storsimple-virtual-array-manage-service.md).
 
-    ![Utwórz usługę Menedżer StorSimple urządzenia](./media/storsimple-partner-csp-deploy/image8.png)
+    ![Tworzenie usługi Menedżer urządzeń StorSimple](./media/storsimple-partner-csp-deploy/image8.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli masz więcej pytań dotyczących StorSimple w dostawcy usług Kryptograficznych, przejdź do [StorSimple w dostawcy usług Kryptograficznych: często zadawane pytania](storsimple-partner-csp-faq.md).
-- Jeśli wszystko jest gotowe do wdrożenia programu StorSimple, przejdź do [wdrażanie programu StorSimple w dostawcy usług Kryptograficznych](storsimple-partner-csp-deploy.md).
+- Jeśli masz więcej pytań dotyczących StorSimple w programie CSP, przejdź do strony [StorSimple w programie CSP: często zadawane pytania dotyczące](storsimple-partner-csp-faq.md).
+- Jeśli wszystko jest gotowe do wdrożenia usługi StorSimple, przejdź do strony [wdrażanie rozwiązania StorSimple w programie CSP](storsimple-partner-csp-deploy.md).

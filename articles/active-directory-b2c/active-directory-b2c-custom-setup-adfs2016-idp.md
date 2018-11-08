@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 11/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6f7fced5163476dc1de866474484f98d546d1901
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 1def5686933a971b1192ec58bc72d64cbc5e8931
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945726"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219328"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Dodawanie usług AD FS jako dostawcy tożsamości SAML, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -64,6 +64,7 @@ Konto usług AD FS można zdefiniować jako dostawcy oświadczeń, przez dodanie
           <Metadata>
             <Item Key="WantsEncryptedAssertions">false</Item>
             <Item Key="PartnerEntity">https://your-ADFS-domain/federationmetadata/2007-06/federationmetadata.xml</Item>
+            <Item Key=" XmlSignatureAlgorithm">Sha256</Item>
           </Metadata>
           <CryptographicKeys>
             <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_ADFSSamlCert"/>
@@ -165,6 +166,15 @@ Otwórz przeglądarkę i przejdź do adresu URL. Upewnij się, wpisz poprawny ad
 9. Wybierz **Dodaj regułę**.  
 10. W **szablonu reguły w oświadczenie**, wybierz opcję **Wyślij atrybuty LDAP jako oświadczenia**.
 11. Podaj **Nazwa reguły oświadczeń**. Dla **magazyn atrybutów**, wybierz opcję **usługi Active Directory wybierz**, Dodaj następujące oświadczeń, a następnie kliknij przycisk **Zakończ** i **OK**.
+
+    | LDAP attrubute | Typ oświadczenia wychodzącego |
+    | -------------- | ------------------- |
+    | Nazwy podmiotu zabezpieczeń użytkownika | userPricipalName |
+    | Nazwisko | family_name |
+    | Podana nazwa | given_name |
+    | E-mail adresem | e-mail |
+    | Nazwa wyświetlana | name |
+    
 12.  Oparte na typu certyfikatu, konieczne może być ustawiona algorytmu wyznaczania wartości skrótu. Na jednostki uzależnionej strony zaufania (B2C pokaz) oknie właściwości wybierz **zaawansowane** kartę i zmień **skrótu Secure hash algorithm** do `SHA-1` lub `SHA-256`i kliknij przycisk **Ok**.  
 13. W Menedżerze serwera wybierz **narzędzia**, a następnie wybierz pozycję **zarządzania usług AD FS**.
 14. Wybierz zaufanie jednostki uzależnionej został utworzony, wybierz pozycję **aktualizacji z metadanych Federacji**, a następnie kliknij przycisk **aktualizacji**. 

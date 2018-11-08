@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: b6f1185a94f865578d9a6514fb6841f8811b2230
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 58992c80344902674b2b21a71b07925c752911a4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060942"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230951"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Często zadawane pytania dotyczące usługi Azure Multi-Factor Authentication
 
@@ -145,7 +145,7 @@ Jeśli Twoja organizacja nie ma starszych klientów, nie należy zezwalać użyt
 
 Dostarczanie wiadomości tekstowych i otrzymania odpowiedzi w dwukierunkowa wiadomość SMS nie ma gwarancji, ponieważ istnieją fluktuacje czynniki, które mogłyby wpłynąć na niezawodność usługi. Czynniki te obejmują kraju przeznaczenia, operator telefonii komórkowej i siła sygnału.
 
-Jeśli użytkownicy często mają problemy z niezawodne odbieranie wiadomości SMS, należy poinformować ich, aby zamiast tego użyj przenośnych metody połączeń telefonicznych lub aplikacji. Aplikacja mobilna może otrzymywać powiadomienia, zarówno za pośrednictwem połączenia sieci Wi-Fi i sieci komórkowej. Ponadto aplikacja mobilna może generować kody weryfikacyjne nawet wtedy, gdy urządzenie nie ma w ogóle Brak sygnału. Aplikacja Microsoft Authenticator jest dostępna dla [Android](http://go.microsoft.com/fwlink/?Linkid=825072), [IOS](http://go.microsoft.com/fwlink/?Linkid=825073), i [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071).
+Jeśli użytkownicy często mają problemy z niezawodne odbieranie wiadomości SMS, należy poinformować ich, aby zamiast tego użyj przenośnych metody połączeń telefonicznych lub aplikacji. Aplikacja mobilna może otrzymywać powiadomienia, zarówno za pośrednictwem połączenia sieci Wi-Fi i sieci komórkowej. Ponadto aplikacja mobilna może generować kody weryfikacyjne nawet wtedy, gdy urządzenie nie ma w ogóle Brak sygnału. Aplikacja Microsoft Authenticator jest dostępna dla [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [IOS](https://go.microsoft.com/fwlink/?Linkid=825073), i [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071).
 
 Jeśli musisz użyć wiadomości SMS, zaleca się przy użyciu jednokierunkowa wiadomość SMS, a nie dwukierunkowa wiadomość SMS, gdy jest to możliwe. Jednokierunkowa wiadomość SMS jest bardziej niezawodna i uniemożliwia użytkownikom naliczane globalnego programu SMS z odpowiadaniu na wiadomość tekstową, która została wysłana z innego kraju.
 

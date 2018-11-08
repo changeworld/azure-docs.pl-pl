@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: 9778d348cf49d4066f034931dc350a1f4a608ad2
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e2b3545c020f41f25f19843eab158cfb1b419164
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48236588"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253452"
 ---
 # <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>Migracja do najnowszej wersji usługi Azure Machine Learning 
 
@@ -38,7 +38,7 @@ Poniższej tabeli i artykule wyjaśniono, co można zrobić z istniejących zaso
 |Zarejestrowane obrazów|Nie|Ponownie utworzyć obraz platformy Docker wdrożenia w ramach nowego obszaru roboczego.|
 |Wdrożonymi usługami sieci web|Nie|Brak. Będą one nadal działać jako — jest <br/>lub [wdrażać je ponownie przy użyciu najnowszej wersji](#services).|
 |Eksperymentowanie i <br/>Konta zarządzania modelami|Nie|[Utwórz obszar roboczy](#resources) zamiast tego.|
-|Usługi Machine learning interfejs wiersza polecenia i zestawu SDK|Nie|Użyj nowego [interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) i [SDK](http://aka.ms/aml-sdk) dla nowej pracy.|
+|Usługi Machine learning interfejs wiersza polecenia i zestawu SDK|Nie|Użyj nowego [interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) i [SDK](https://aka.ms/aml-sdk) dla nowej pracy.|
 
 
 Dowiedz się więcej o [co zmieniło się w tej wersji](overview-what-happened-to-workbench.md)?
@@ -52,7 +52,7 @@ Dowiedz się więcej o [co zmieniło się w tej wersji](overview-what-happened-t
 
 Zasoby, takie jak konta eksperymentowanie w usłudze, konta zarządzania modelami i uczenia maszynowego obliczeniowe środowiska nie można migrować za pośrednictwem do najnowszej wersji usługi Azure Machine Learning. Zobacz [osi czasu](overview-what-happened-to-workbench.md#timeline) na jak długo zasobów będą nadal działać.
 
-Rozpocznij pracę z najnowszą wersją, tworząc obszar roboczy usługi Azure Machine Learning w [witryny Azure portal](quickstart-get-started.md). Pulpit nawigacyjny z obszaru roboczego portalu jest obsługiwana na tylko w przeglądarkach Edge, Chrome i Firefox.
+Rozpocznij pracę z najnowszą wersją, tworząc obszar roboczy usługi Azure Machine Learning w [witryny Azure portal](quickstart-get-started.md). Pulpit nawigacyjny obszaru roboczego w portalu jest obsługiwany tylko w przeglądarkach Edge, Chrome i Firefox.
 
 Ten nowy obszar roboczy jest zasobem najwyższego poziomu usługi i umożliwia korzystanie ze wszystkich najnowszych funkcji usługi Azure Machine Learning. Dowiedz się więcej na ten temat [obszar roboczy i architektura](concept-azure-machine-learning-architecture.md).
 
@@ -62,7 +62,7 @@ Ten nowy obszar roboczy jest zasobem najwyższego poziomu usługi i umożliwia k
 
 Zamiast projektów w obszarze roboczym w chmurze, projekty są teraz katalogów na komputerze lokalnym w najnowszej wersji. Wyświetlany diagram [najnowsza architektura](concept-azure-machine-learning-architecture.md). 
 
-Aby nadal korzystać z lokalnego katalogu zawierającego pliki i skrypty, należy określić nazwę katalogu w ["experiment.submit"](http://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) polecenia języka Python lub za pomocą polecenia interfejsu wiersza polecenia "az ml projektu Dołącz".
+Aby nadal korzystać z lokalnego katalogu zawierającego pliki i skrypty, należy określić nazwę katalogu w ["experiment.submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) polecenia języka Python lub za pomocą polecenia interfejsu wiersza polecenia "az ml projektu Dołącz".
 
 Na przykład:
 ```python

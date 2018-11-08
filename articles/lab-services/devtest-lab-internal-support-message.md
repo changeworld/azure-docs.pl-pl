@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 2d12ca26fb2aa5abddcf44b2e634b2f08b1fb01b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: deb98c2c633200ab4be1d763a94fd2a04979a3b1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38696254"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235704"
 ---
 # <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Dodaj instrukcję wewnętrznej pomocy technicznej do laboratorium Azure DevTest Labs
 
@@ -31,7 +31,7 @@ Instrukcja wewnętrznej pomocy technicznej jest przeznaczona do umożliwiają og
 
 ## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>Kroki pozwalające dodawać oświadczenie pomocy technicznej do istniejącego laboratorium
 
-1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. W razie potrzeby zaznacz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy. (Laboratorium może być już wyświetlane na pulpicie nawigacyjnym w obszarze **wszystkie zasoby**).
 1. Zaznacz na liście laboratoriów laboratorium, w której chcesz dodać oświadczenie pomocy technicznej.  
 1. W laboratorium **Przegląd** wybierz opcję **konfiguracji i zasad**.  
@@ -55,7 +55,7 @@ Jeśli nie chcesz już nie pokazuj tego komunikatu pomocy technicznej do laborat
 
 ## <a name="steps-for-users-to-view-the-support-message"></a>Kroki dla użytkowników wyświetlić komunikat o pomocy technicznej
 
-1. Z [witryny Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040), wybierz laboratorium.
+1. Z [witryny Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040), wybierz laboratorium.
 
 1. W laboratorium **Przegląd** wybierz opcję **wewnętrznej pomocy technicznej**.  
 

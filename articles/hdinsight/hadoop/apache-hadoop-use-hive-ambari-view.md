@@ -2,19 +2,19 @@
 title: Praca z technologią Hive w HDInsight (Hadoop) — Azure przy użyciu widoków Ambari
 description: Dowiedz się, jak przesłać zapytania Hive przy użyciu programu Hive widoku z przeglądarki sieci web. Widok programu Hive jest częścią Interfejsu sieci Web Ambari, które są dostarczane z klastra usługi HDInsight opartych na systemie Linux.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
-ms.openlocfilehash: 43b82070ced57c0654d646fbea5a12aeab7c2a31
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: c481889eda53ff46a8899676da2529fe4165dfd5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048525"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233160"
 ---
 # <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>Używanie widoku Hive narzędzia Ambari z platformą Hadoop w HDInsight
 
@@ -166,7 +166,7 @@ Można następnie użyć funkcji zdefiniowanej przez użytkownika w zapytaniu. N
 Aby uzyskać więcej informacji na temat korzystania z funkcji zdefiniowanych przez użytkownika za pomocą technologii Hive w HDInsight zobacz następujące artykuły:
 
 * [Przy użyciu języka Python z technologiami Hive i Pig w HDInsight](python-udf-hdinsight.md)
-* [Jak dodać niestandardowe UDF programu Hive do HDInsight](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Jak dodać niestandardowe UDF programu Hive do HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
 ## <a name="hive-settings"></a>Ustawienia programu hive
 

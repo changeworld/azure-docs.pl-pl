@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 02/14/2017
 ms.author: wesmc
-ms.openlocfilehash: a6c3314a981b46aa6f1cbca1f34392d1e1ae6c9a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 6ea237c406a9d09b500a12755cd1fa99bb7d41cb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431648"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234429"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-redis-cache"></a>Dostawca pamięci podręcznej danych wyjściowych platformy ASP.NET dla usługi Azure Redis Cache
 Dostawca Redis wyjściowej pamięci podręcznej jest mechanizm magazynu spoza procesu do danych w pamięci podręcznej danych wyjściowych. Dane te są specjalnie dla pełnej odpowiedzi HTTP (stronie buforowanie danych wyjściowych). Dostawca podłącza się do nowego dane wyjściowe pamięci podręcznej dostawcy rozszerzeń punktu wprowadzone w programie ASP.NET 4.
@@ -89,8 +89,8 @@ Konfigurowanie atrybutów przy użyciu wartości z bloku usługi pamięci podrę
   * Port bez obsługi protokołu SSL jest domyślnie wyłączony w przypadku nowych pamięci podręcznych. Określ wartość true dla tego ustawienia używał portu protokołu SSL. Aby uzyskać więcej informacji na temat włączania portu bez protokołu SSL, zobacz [porty dostępu](cache-configure.md#access-ports) sekcji [Konfigurowanie pamięci podręcznej](cache-configure.md) tematu.
 * **databaseId** — określoną bazę danych, która do użycia dla pamięci podręcznej dane wyjściowe. Jeśli nie zostanie określony, jest używana domyślna wartość 0.
 * **applicationName** — klucze są przechowywane w pamięci podręcznej redis jako `<AppName>_<SessionId>_Data`. Ten schemat nazewnictwa umożliwia wielu aplikacjom na udostępnianie tego samego klucza. Ten parametr jest opcjonalny, a jeśli nie zostanie określona wartość domyślna jest używana.
-* **connectionTimeoutInMilliseconds** — to ustawienie pozwala zastąpić ustawienie connectTimeout klienta StackExchange.Redis. Jeśli nie zostanie określony, używane jest domyślne ustawienie connectTimeout 5000. Aby uzyskać więcej informacji, zobacz [modelu konfiguracji StackExchange.Redis](http://go.microsoft.com/fwlink/?LinkId=398705).
-* **operationTimeoutInMilliseconds** — to ustawienie pozwala zastąpić ustawienie syncTimeout klienta StackExchange.Redis. Jeśli nie zostanie określony, używane jest domyślne ustawienie syncTimeout 1000. Aby uzyskać więcej informacji, zobacz [modelu konfiguracji StackExchange.Redis](http://go.microsoft.com/fwlink/?LinkId=398705).
+* **connectionTimeoutInMilliseconds** — to ustawienie pozwala zastąpić ustawienie connectTimeout klienta StackExchange.Redis. Jeśli nie zostanie określony, używane jest domyślne ustawienie connectTimeout 5000. Aby uzyskać więcej informacji, zobacz [modelu konfiguracji StackExchange.Redis](https://go.microsoft.com/fwlink/?LinkId=398705).
+* **operationTimeoutInMilliseconds** — to ustawienie pozwala zastąpić ustawienie syncTimeout klienta StackExchange.Redis. Jeśli nie zostanie określony, używane jest domyślne ustawienie syncTimeout 1000. Aby uzyskać więcej informacji, zobacz [modelu konfiguracji StackExchange.Redis](https://go.microsoft.com/fwlink/?LinkId=398705).
 
 Dodaj dyrektywę OutputCache do każdej strony, dla którego chcesz buforować dane wyjściowe.
 
@@ -98,7 +98,7 @@ Dodaj dyrektywę OutputCache do każdej strony, dla którego chcesz buforować d
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-W poprzednim przykładzie dane strony pamięci podręcznej pozostaje w pamięci podręcznej 60 sekund, a inna wersja strony są buforowane dla każdej kombinacji parametrów. Aby uzyskać więcej informacji na temat dyrektywy OutputCache zobacz [ @OutputCache ](http://go.microsoft.com/fwlink/?linkid=320837).
+W poprzednim przykładzie dane strony pamięci podręcznej pozostaje w pamięci podręcznej 60 sekund, a inna wersja strony są buforowane dla każdej kombinacji parametrów. Aby uzyskać więcej informacji na temat dyrektywy OutputCache zobacz [ @OutputCache ](https://go.microsoft.com/fwlink/?linkid=320837).
 
 Gdy te kroki są wykonywane, aplikacja jest skonfigurowana do używania dostawcy pamięci podręcznej danych wyjściowych usługi Redis.
 

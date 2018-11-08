@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 13535dae82ef2c8896dad7d6221553d15e4e6a95
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e616df772bf11d1247f96c78bea2392252f5e5d0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38573815"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259755"
 ---
 # <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>Wyświetl miesięczne szacowane trendu kosztów laboratorium Azure DevTest Labs
 Funkcja zarządzania kosztami DevTest Labs pomaga śledzić koszty środowiska laboratoryjnego. W tym artykule przedstawiono sposób użycia **miesięczne szacowane trendu kosztów** wykres, aby wyświetlić bieżący miesiąc kalendarza szacowany koszt od początku i przewidywany koszt koniec miesiąca dla bieżącego miesiąca kalendarzowego. W tym artykule również pokazano, jak w lepszym zarządzaniu kosztami laboratorium, ustawiając wydatków celów i progów, gdy osiągnięty wyzwalacza usługi DevTest Labs zgłosić wyników.
@@ -27,7 +27,7 @@ Funkcja zarządzania kosztami DevTest Labs pomaga śledzić koszty środowiska l
 ## <a name="viewing-the-monthly-estimated-cost-trend-chart"></a>Wyświetlanie wykresu trendu kosztów szacowany miesięczny
 Aby wyświetlić wykres trendu kosztów szacowane miesięczne, wykonaj następujące kroki: 
 
-1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. W razie potrzeby zaznacz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy. (Laboratorium może być już wyświetlane na pulpicie nawigacyjnym w obszarze **wszystkie zasoby**).
 1. Z listy labs wybierz żądane laboratorium.  
 1. W laboratorium **Przegląd** wybierz opcję **konfiguracji i zasad**.   

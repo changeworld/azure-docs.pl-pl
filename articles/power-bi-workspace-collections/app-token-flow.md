@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 54eefc9c488718dae25e35ef0c5f0f5c50dea16c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a51664144d0dba8eeb82999b212beaf79b4503b2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041745"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236934"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI
 
@@ -170,7 +170,7 @@ Body
    
    ![Przepływie tokenu aplikacji — usługa wysłać raport do użytkownika](media/get-started-sample/token-6.png)
 
-Po **kolekcji obszarów roboczych usługi Power BI** wysyła raport do użytkownika, użytkownik może wyświetlić raport w aplikacji niestandardowej. Na przykład, jeśli został zaimportowany [analizowanie pliku danych sprzedaży PBIX próbka](http://download.microsoft.com/download/1/4/E/14EDED28-6C58-4055-A65C-23B4DA81C4DE/Analyzing_Sales_Data.pbix), przykładową aplikację sieci web powinien wyglądać tak:
+Po **kolekcji obszarów roboczych usługi Power BI** wysyła raport do użytkownika, użytkownik może wyświetlić raport w aplikacji niestandardowej. Na przykład, jeśli został zaimportowany [analizowanie pliku danych sprzedaży PBIX próbka](https://download.microsoft.com/download/1/4/E/14EDED28-6C58-4055-A65C-23B4DA81C4DE/Analyzing_Sales_Data.pbix), przykładową aplikację sieci web powinien wyglądać tak:
 
 ![Przykładowy raport osadzone w aplikacji](media/get-started-sample/sample-web-app.png)
 
