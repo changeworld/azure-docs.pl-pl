@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 23e219fa49146158c97f392427eee7c42c347a7a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: b4b6e91f9b20166f63a4710f42726bf1d4090022
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307424"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251563"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Zabezpieczeń ramka: Uwierzytelnianie | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -156,7 +156,7 @@ ms.locfileid: "43307424"
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Lokalnego, usługi SQL Azure |
 | **Atrybuty**              | Bazy danych SQL — MSSQL2012, wersja SQL — w wersji V12 |
-| **Odwołania**              | [Najlepsze rozwiązania dotyczące zabezpieczeń przy użyciu zawartych baz danych](http://msdn.microsoft.com/library/ff929055.aspx) |
+| **Odwołania**              | [Najlepsze rozwiązania dotyczące zabezpieczeń przy użyciu zawartych baz danych](https://msdn.microsoft.com/library/ff929055.aspx) |
 | **Kroki** | Brak zasad haseł wymuszone może zwiększyć prawdopodobieństwo słabe poświadczenie, jest określana w zawartej bazie danych. Korzystać z uwierzytelniania Windows. |
 
 ## <a id="authn-sas-tokens"></a>Użyj na poświadczenia uwierzytelniania urządzeń przy użyciu tokenów sygnatur dostępu współdzielonego

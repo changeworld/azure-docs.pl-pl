@@ -1,6 +1,6 @@
 ---
-title: Możliwość obsługi i zasadami wycofania przewodnik dla systemu operacyjnego gościa Azure | Dokumentacja firmy Microsoft
-description: Zawiera informacje o co będzie pomocy technicznej firmy Microsoft w odniesieniu do systemu operacyjnego gościa Azure używany przez usługi w chmurze.
+title: Zasady wycofywania i możliwości obsługi przewodnik dotyczący systemu operacyjnego gościa platformy Azure | Dokumentacja firmy Microsoft
+description: Zawiera informacje o jakie firmy Microsoft będzie obsługiwać w odniesieniu do systemu operacyjnego gościa platformy Azure używane przez usługi w chmurze.
 services: cloud-services
 documentationcenter: na
 author: raiye
@@ -14,67 +14,67 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
-ms.openlocfilehash: dfa3bac95b9827789950b4931e3198237de4a1fd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6068f054a2ce695a889351b1f959319c64eb73fd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608566"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235602"
 ---
-# <a name="azure-guest-os-supportability-and-retirement-policy"></a>Azure zasad obsługi i wycofania systemu operacyjnego gościa
-Informacje na tej stronie odnosi się do systemu operacyjnego gościa Azure ([systemu operacyjnego gościa](cloud-services-guestos-update-matrix.md)) dla usługi w chmurze sieci web i proces roboczy ról (PaaS). Nie ma zastosowania do maszyn wirtualnych (IaaS).
+# <a name="azure-guest-os-supportability-and-retirement-policy"></a>Usługa Azure policy wycofywania i możliwości obsługi systemu operacyjnego gościa
+Informacje na tej stronie dotyczą systemu operacyjnego gościa platformy Azure ([systemu operacyjnego gościa](cloud-services-guestos-update-matrix.md)) dla role usług w chmurze sieci web i proces roboczy (PaaS). Nie ma zastosowania do maszyn wirtualnych (IaaS).
 
-Firma Microsoft ma opublikowanej [zasady pomocy technicznej dla systemu operacyjnego gościa](http://support.microsoft.com/gp/azure-cloud-lifecycle-faq). Strona, do której są odczytywanie opisuje teraz implementowania zasad.
+Firma Microsoft ma publikowania [zasady pomocy technicznej dla systemu operacyjnego gościa](https://support.microsoft.com/gp/azure-cloud-lifecycle-faq). Strony odczytywanym teraz w tym artykule opisano sposób implementacji zasad.
 
 Zasady
 
-1. Microsoft będzie obsługiwać **co najmniej dwóch najnowsze rodzin systemu operacyjnego gościa**. Po wycofaniu rodzina klienci mają 12 miesięcy od daty oficjalnego wycofywania można zaktualizować do nowszej obsługiwanej rodziny systemu operacyjnego gościa.
-2. Firma Microsoft będzie obsługuje **co najmniej dwóch najnowszej wersji obsługiwanych rodzin systemu operacyjnego gościa**.
-3. Firma Microsoft będzie obsługuje **co najmniej dwóch najnowszej wersji zestawu Azure SDK**. Gdy wersja zestawu SDK jest wycofywany, klienci będą mieli 12 miesięcy od daty oficjalnego wycofywania można zaktualizować do nowszej wersji.
+1. Firma Microsoft będzie obsługuje **co najmniej najnowsze dwóch rodzin systemów operacyjnych gościa**. Po wycofaniu rodziny klienci mają 12 miesięcy od dnia oficjalne wycofywania można zaktualizować do nowszej obsługiwanej rodziny systemów operacyjnych gościa.
+2. Firma Microsoft będzie obsługuje **co najmniej dwa najnowsze wersje obsługiwanych rodzin systemów operacyjnych gościa**.
+3. Firma Microsoft będzie obsługuje **co najmniej dwa najnowsze wersje zestawu Azure SDK**. W przypadku wersji zestawu SDK został wycofany, klienci będą mieli 12 miesięcy od daty oficjalne wycofywania można zaktualizować do nowszej wersji.
 
-W czasie więcej niż dwie grupy lub wersji może być obsługiwana. Informacje pomocy technicznej systemu operacyjnego gościa oficjalnego pojawią się na [poszczególnych wersji systemu operacyjnego gościa Azure i zgodność pakietu SDK](cloud-services-guestos-update-matrix.md).
+W czasie więcej niż dwóch rodziny i wersji może być obsługiwany. Oficjalna informacje pomocy technicznej systemu operacyjnego gościa, pojawi się na [wersji systemu operacyjnego gościa platformy Azure i zgodności zestawów SDK](cloud-services-guestos-update-matrix.md).
 
 ## <a name="when-a-guest-os-version-is-retired"></a>Po wycofaniu wersji systemu operacyjnego gościa
-Nowy system operacyjny gościa **wersji** wprowadzono o co miesiąc, w celu uwzględnienia najnowszych aktualizacji MSRC. Z powodu regularnych comiesięcznych aktualizacji wersja systemu operacyjnego gościa zwykle jest wyłączona około 60 dni po jego wersji. To działanie umożliwia zachowanie co najmniej dwie wersje systemu operacyjnego gościa, dla każdej rodziny, które są dostępne do użycia.
+Nowy system operacyjny gościa **wersji** wprowadzono o co miesiąc, aby zawierały najnowsze aktualizacje MSRC. Ze względu na regularne comiesięcznych aktualizacji wersja systemu operacyjnego gościa jest wyłączona zwykle około 60 dni po jego wydaniu. To działanie powoduje co najmniej dwie wersje systemu operacyjnego gościa w ramach każdej rodziny, które są dostępne do użycia.
 
-### <a name="process-during-a-guest-os-family-retirement"></a>Podczas wycofywania rodziny systemu operacyjnego gościa
-Po ogłoszenia wycofania klienci mają okres 12 miesięcy "przejścia", zanim starsze rodziny oficjalnie zostaną usunięte z usługi. Ten czas przejścia może zostać rozszerzony według uznania firmy Microsoft. Aktualizacje zostaną opublikowane na [poszczególnych wersji systemu operacyjnego gościa Azure i zgodność pakietu SDK](cloud-services-guestos-update-matrix.md).
+### <a name="process-during-a-guest-os-family-retirement"></a>Proces podczas wycofywania do rodziny systemów operacyjnych gościa
+Po wycofaniu zostanie zaanonsowana, klienci mają okresu 12-miesięcznego "przejście", zanim starsze rodzinie oficjalnie zostanie usunięte z usługi. Ten czas przejścia może zostać rozszerzona według uznania firmy Microsoft. Aktualizacje zostaną opublikowane na [wersji systemu operacyjnego gościa platformy Azure i zgodności zestawów SDK](cloud-services-guestos-update-matrix.md).
 
-Proces stopniowego wycofania rozpocznie sześciu (6) miesięcy do okresu przejściowego. W tym czasie:
+Proces stopniowego wycofania rozpocznie się sześć (6) miesięcy w okresie przejściowym. W tym czasie:
 
-1. Firma Microsoft będzie wysyłać klientów wycofania.
+1. Firma Microsoft powiadomi klientów o wycofaniu.
 2. Nowsza wersja zestawu SDK platformy Azure nie obsługuje wycofane rodziny systemów operacyjnych gościa.
-3. Nowych wdrożeń i redeployments usługi w chmurze nie będą mogły wycofane rodziny
+3. Nowych wdrożeń i redeployments usług w chmurze nie mogą być wycofane rodziny
 
-Firma Microsoft będzie wprowadzenie nowej wersji systemu operacyjnego gościa, implementując najnowsze aktualizacje MSRC do ostatniego dnia okres przejściowy, nazywany "Data wygaśnięcia". Na datę wygaśnięcia będą obsługiwane usługi w chmurze nadal działa w ramach umowy SLA platformy Azure. Firma Microsoft ma prawo wymusić uaktualnienia, usuń lub Zatrzymaj usługi po tym dniu.
+Firma Microsoft będzie wprowadzenie nowej wersji systemu operacyjnego gościa, zawierające najnowsze aktualizacje MSRC do ostatniego dnia okresu przejściowego, znane jako "Data wygaśnięcia". Na datę wygaśnięcia usług w chmurze nadal działa będą obsługiwane w ramach umowy SLA platformy Azure. Firma Microsoft ma prawo do wymuszenia uaktualnienia, usuń lub Zatrzymaj te usługi po tej dacie.
 
-### <a name="process-during-a-guest-os-version-retirement"></a>Podczas wycofywania wersji systemu operacyjnego gościa
-Jeśli klienci ich systemu operacyjnego gościa, można automatycznie zaktualizować, ich nie musisz się martwić o obsłudze wersji systemu operacyjnego gościa. Mogą zawsze używać najnowszej wersji systemu operacyjnego gościa.
+### <a name="process-during-a-guest-os-version-retirement"></a>Proces podczas wycofywania wersji systemu operacyjnego gościa
+Jeśli klienci ustawić ich system operacyjny gościa do automatycznego aktualizowania, nigdy nie mają już martwić się o obsłudze wersji systemu operacyjnego gościa. Będą zawsze korzystać z najnowszej wersji systemu operacyjnego gościa.
 
-Wersje systemu operacyjnego gościa są wydawane co miesiąc. Ze względu na częstotliwość regularne wersji każdej wersji ma stały czas działania.
+Wersje systemów operacyjnych gościa są wydawane co miesiąc. Ze względu na częstotliwość standardowych wersji każda wersja ma stały czas.
 
-W ciągu 60 dni do czasu działania jest wersja "*wyłączone*". "Wyłączone" oznacza, że wersja jest usunięte z portalu. Nie można ustawić wersję z pliku konfiguracji CSCFG. Istniejące wdrożenia pozostają uruchomione. Jednak nowych wdrożeń i kodem i konfiguracją aktualizacje do istniejących wdrożeń będzie niemożliwe.
+W ciągu 60 dni do czasu działania, jest to wersja "*wyłączone*". "Wyłączone" oznacza, że wersja została usunięta z portalu. Nie można ustawić wersji z pliku konfiguracji w pliku CSCFG. Istniejące wdrożenia są pozostawiony jako uruchomiony. Ale nowych wdrożeń i kodem i konfiguracją aktualizacje istniejących wdrożeń będzie niemożliwe.
 
-Pewien czas po przekształceniu "wyłączone", wersja systemu operacyjnego gościa "*wygasa*" oraz wszystkie instalacje nadal działa w tej wersji są życie uaktualnione, a opcja automatycznej aktualizacji systemu operacyjnego gościa w przyszłości. Wygaśnięcia odbywa się w partiach, więc czas inwalidztwem do wygaśnięcia może się różnić.
+Pewien czas po staje się "wyłączone", wersja systemu operacyjnego gościa "*wygasa*" i wszelkie instalacje nadal uruchomione w tej wersji są życie uaktualniony oraz skonfigurowany do automatycznej aktualizacji systemu operacyjnego gościa w przyszłości. Wygaśnięcie odbywa się w partiach, więc czas inwalidztwem wygaśnięcia może się różnić.
 
-Okresy te mogą wydłużać według uznania firmy Microsoft, aby ułatwić przejścia klienta. Wszelkie zmiany zostaną przekazane na [poszczególnych wersji systemu operacyjnego gościa Azure i zgodność pakietu SDK](cloud-services-guestos-update-matrix.md).
+Okresy te mogą wydłużać według uznania firmy Microsoft do jej obsługi ułatwiają realizację przejścia klienta. Wszelkie zmiany zostaną przekazane na [wersji systemu operacyjnego gościa platformy Azure i zgodności zestawów SDK](cloud-services-guestos-update-matrix.md).
 
 ### <a name="notifications-during-retirement"></a>Powiadomienia podczas wycofywania
-* **Wycofanie rodziny** <br>Firma Microsoft będzie używać blogach i powiadomieniu portalu. Klienci, którzy nadal używają wycofane rodziny systemu operacyjnego gościa zostanie powiadomiony przez bezpośrednią komunikację (poczty e-mail, wiadomości portalu, połączenie telefoniczne) do administratorów przypisanego do usługi. Wszystkie zmiany zostaną opublikowane w [poszczególnych wersji systemu operacyjnego gościa Azure i zgodność pakietu SDK](cloud-services-guestos-update-matrix.md).
-* **Wycofywania wersji** <br>Wszystkie zmiany i dat występowania zostaną opublikowane w [poszczególnych wersji systemu operacyjnego gościa Azure i zgodność pakietu SDK](cloud-services-guestos-update-matrix.md), w tym wersja, wyłączona i wygaśnięcia. Administratorzy usług będziesz otrzymywać wiadomości e-mail, jeśli mają wdrożeń uruchomionych na wyłączone wersji systemu operacyjnego gościa lub rodziny. Terminy te wiadomości e-mail mogą się różnić. Zazwyczaj są co najmniej miesiąc przed inwalidztwo, chociaż ten czas nie jest oficjalną umowy SLA.
+* **Wycofanie rodziny** <br>Firma Microsoft użyje wpisów w blogu i powiadomienia w portalu. Klienci, którzy nadal używają wycofane rodziny systemów operacyjnych gościa będzie powiadamiany przez bezpośrednią komunikację (wiadomości e-mail, wiadomości portalu, połączenie telefoniczne) administratorom przypisanego do usługi. Wszystkie zmiany zostaną opublikowane w [wersji systemu operacyjnego gościa platformy Azure i zgodności zestawów SDK](cloud-services-guestos-update-matrix.md).
+* **Wycofanie wersji** <br>Wszystkie zmiany i daty ich wystąpienia, zostanie on opublikowany na [wersji systemu operacyjnego gościa platformy Azure i zgodności zestawów SDK](cloud-services-guestos-update-matrix.md), w tym wydania, wyłączona i wygaśnięcia. Administratorzy usług będą otrzymywać wiadomości e-mail, jeśli mają one wdrożeń uruchomionych na wyłączone wersji systemu operacyjnego gościa lub rodziny. Chronometraż dla tych wiadomości e-mail mogą się różnić. Zazwyczaj są one co najmniej miesiąc przed kalectwa, że tego czasu nie ma umowy SLA oficjalnych.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
-**Jak można ograniczyć wpływ migracji?**
+**Jak można zmniejszyć wpływ migracji?**
 
-Zalecane jest użycie najnowszej rodziny systemów operacyjnych gościa za projektowanie usługi w chmurze.
+Zalecamy użycie najnowszej rodziny systemów operacyjnych gościa do projektowania usługi w chmurze.
 
-1. Uruchom planowania migracji do nowszej rodziny wcześniej.
-2. Konfigurowanie wdrożenia testowe tymczasowego do testowania usługi w chmurze systemem nowej rodziny.
-3. Wartość używanej wersji systemu operacyjnego gościa **automatyczne** (osVersion = * w [.cscfg](cloud-services-model-and-package.md#cscfg) pliku) dzięki migracji do nowej wersji systemu operacyjnego gościa odbywa się automatycznie.
+1. Rozpocznij, planowania migracji do nowszych rodziny wcześnie.
+2. Konfigurowanie wdrożenia testowe tymczasowego do testowania usługi w chmurze systemem Nowa rodzina.
+3. Ustawiona wersja Twojego systemu operacyjnego gościa na **automatyczne** (osVersion = * w [.cscfg](cloud-services-model-and-package.md#cscfg) pliku) dzięki migracji do nowej wersji systemu operacyjnego gościa odbywa się automatycznie.
 
-**Co zrobić, jeśli Moja aplikacja sieci web wymaga lepsza integracja z systemem operacyjnym?**
+**Co zrobić, jeśli Moja aplikacja sieci web wymaga lepszą integrację z systemem operacyjnym?**
 
-Jeśli architektury aplikacji sieci web jest zależny od funkcji systemu operacyjnego, użyj platformy obsługiwane funkcje takie jak [uruchamiania zadań](cloud-services-startup-tasks.md) lub innych mechanizmów rozszerzalności. Alternatywnie można również użyć [maszyny wirtualne Azure](https://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS — infrastruktura jako usługa), gdzie jest odpowiedzialny za konserwację system operacyjny.
+Jeśli architektury aplikacji sieci web jest zależny od funkcji systemu operacyjnego, użyj możliwości obsługiwanych platform takich jak [zadania uruchamiania](cloud-services-startup-tasks.md) lub innych mechanizmów rozszerzalności. Alternatywnie, można również użyć [maszyn wirtualnych platformy Azure](https://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS — infrastruktura jako usługa), gdzie jesteś odpowiedzialny za prowadzenie zasadniczego systemu operacyjnego.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Przejrzyj najnowszej [wersje systemu operacyjnego gościa](cloud-services-guestos-update-matrix.md).
+Przejrzyj najnowsze [wersji systemu operacyjnego gościa](cloud-services-guestos-update-matrix.md).

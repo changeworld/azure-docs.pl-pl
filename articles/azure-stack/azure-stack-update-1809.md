@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 00ce57dbff749d4ee906e0e7dae1d828ef85326f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: cca9307fd849f6b8537cf7484d2e56e1a710295b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962065"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257194"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizacja usługi Azure Stack 1809
 
@@ -39,7 +39,7 @@ Numerem kompilacji aktualizacji usługi Azure Stack 1809 **1.1809.0.90**.
 
 Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack:
 
-- W tej wersji usługi Azure Stack zintegrowane systemy obsługuje konfiguracje węzłów 4 – 16. Możesz użyć [Planisty wydajności usługi Azure Stack](http://aka.ms/azstackcapacityplanner) pomagają w planowaniu pojemności usługi Azure Stack i konfiguracji.
+- W tej wersji usługi Azure Stack zintegrowane systemy obsługuje konfiguracje węzłów 4 – 16. Możesz użyć [Planisty wydajności usługi Azure Stack](https://aka.ms/azstackcapacityplanner) pomagają w planowaniu pojemności usługi Azure Stack i konfiguracji.
 
 - <!--  2712869   | IS  ASDK -->  **Klient usługi syslog usługi Azure Stack (ogólnie)** ten klient umożliwia przekazywanie inspekcje, alerty i dzienniki zabezpieczeń związane z infrastruktury Azure Stack w celu syslog serwera lub zabezpieczeń informacjami i zdarzeniami (SIEM) oprogramowania do zarządzania zewnętrzne w stosunku do usługi Azure Stack. Klient usługi syslog obsługuje teraz, określając port, na którym nasłuchuje serwer syslog.
 
