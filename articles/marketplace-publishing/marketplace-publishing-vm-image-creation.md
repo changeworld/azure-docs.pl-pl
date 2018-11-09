@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 2a3c317dc9abdb861a007be9aaed714089e9f453
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 2ec758d9457b75cd7e5f6f29757d3201f3a6d62e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388198"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283482"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Przewodnik, aby utworzyć obraz maszyny wirtualnej w portalu Azure Marketplace
 W tym artykule **kroku 2**, przeprowadzi Cię przez przygotowywania wirtualnych dysków twardych (VHD), które zostanie wdrożone w portalu Azure Marketplace. Twoje dyski VHD są podstawą dla jednostki SKU. Ten proces różni się w zależności od tego, czy udostępniasz opartych na systemie Linux lub Windows, na podstawie jednostki SKU. W tym artykule opisano oba scenariusze. Ten proces można wykonać równolegle z [o tworzeniu konta i rejestracji][link-acct-creation].
@@ -148,11 +148,11 @@ Aby pobrać pliku pulpitu zdalnego na komputerze lokalnym, użyj [polecenia cmdl
 
         Get‐AzureRemoteDesktopFile ‐ServiceName “baseimagevm‐6820cq00” ‐Name “BaseImageVM” –LocalPath “C:\Users\Administrator\Desktop\BaseImageVM.rdp”
 
-Więcej informacji na temat protokołu RDP można znaleźć w witrynie MSDN w artykule [nawiązywanie połączenia z Maszyną wirtualną platformy Azure przy użyciu protokołu RDP lub SSH](http://msdn.microsoft.com/library/azure/dn535788.aspx).
+Więcej informacji na temat protokołu RDP można znaleźć w witrynie MSDN w artykule [nawiązywanie połączenia z Maszyną wirtualną platformy Azure przy użyciu protokołu RDP lub SSH](https://msdn.microsoft.com/library/azure/dn535788.aspx).
 
 **Konfigurowanie maszyny Wirtualnej i tworzenie jednostki SKU**
 
-Po pobraniu wirtualnego dysku twardego systemu operacyjnego Użyj funkcji Hyper-v i konfigurowanie maszyny Wirtualnej, aby rozpocząć tworzenie jednostki SKU. Szczegółowy opis kroków można znaleźć w witrynie TechNet: [instalacji funkcji Hyper-v i konfigurowanie maszyny Wirtualnej](http://technet.microsoft.com/library/hh846766.aspx).
+Po pobraniu wirtualnego dysku twardego systemu operacyjnego Użyj funkcji Hyper-v i konfigurowanie maszyny Wirtualnej, aby rozpocząć tworzenie jednostki SKU. Szczegółowy opis kroków można znaleźć w witrynie TechNet: [instalacji funkcji Hyper-v i konfigurowanie maszyny Wirtualnej](https://technet.microsoft.com/library/hh846766.aspx).
 
 ### <a name="34-choose-the-correct-vhd-size"></a>3.4, wybierz odpowiedni rozmiar wirtualnego dysku twardego
 System operacyjny Windows wirtualnego dysku twardego w obrazie maszyny Wirtualnej powinien zostać utworzony jako dysk VHD o stałym formacie 128 GB.  
@@ -191,7 +191,7 @@ Aby dowiedzieć się więcej na temat obrazów maszyn wirtualnych, przejrzyj nas
 
 ### <a name="set-up-the-necessary-tools-powershell-and-azure-classic-cli"></a>Konfigurowanie niezbędne narzędzia programu PowerShell i klasycznego wiersza polecenia platformy Azure
 * [Jak skonfigurować program PowerShell](/powershell/azure/overview)
-* [Jak skonfigurować klasycznego wiersza polecenia platformy Azure](../cli-install-nodejs.md)
+* [Jak skonfigurować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ### <a name="41-create-a-user-vm-image"></a>4.1 tworzenia obrazu maszyny Wirtualnej użytkownika
 #### <a name="capture-vm"></a>Przechwytywanie maszyny Wirtualnej
@@ -427,63 +427,45 @@ Poniżej przedstawiono kroki do generowania adresu URL sygnatury dostępu Wspó�
 
 11. Powtórz te czynności dla każdego wirtualnego dysku twardego w ramach jednostki SKU.
 
-**Klasyczny interfejs wiersza polecenia Azure (zalecane dla Non-Windows & ciągłej integracji)**
+**Azure CLI 2.0 (zalecane dla innych niż Windows i ciągłej integracji)**
 
 Poniżej przedstawiono kroki do generowania adresu URL sygnatury dostępu Współdzielonego za pomocą klasycznego wiersza polecenia platformy Azure
 
 [!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
 
-1.  Pobierz klasycznego wiersza polecenia platformy Azure z [tutaj](https://azure.microsoft.com/documentation/articles/xplat-cli-install/). Możesz również znaleźć różne linki dla **[Windows](http://aka.ms/webpi-azure-cli)** i  **[systemu MAC OS](http://aka.ms/mac-azure-cli)**.
+1.  Pobierz interfejs wiersza polecenia Microsoft Azure, z [tutaj](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Możesz również znaleźć różne linki dla **[Windows](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)** i  **[systemu MAC OS](https://docs.microsoft.com/cli/azure/install-azure-cli-macos?view=azure-cli-latest)**.
 
 2.  Po jej pobraniu, zainstaluj
 
-3.  Tworzenie programu PowerShell (lub innego pliku wykonywalnego, skrypt) pliku poniższym kodem i zapisz go lokalnie
+3.  Tworzenie powłoki Bash (lub innego pliku wykonywalnego, skrypt równoważne) pliku następującym kodem i zapisz go lokalnie
 
-          $conn="DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<Storage Account Key>"
-          azure storage container list vhds -c $conn
-          azure storage container sas create vhds rl <Permission End Date> -c $conn --start <Permission Start Date>  
+        export AZURE_STORAGE_ACCOUNT=<Storage Account Name>
+        EXPIRY=$(date -d "3 weeks" '+%Y-%m-%dT%H:%MZ')
+        CONTAINER_SAS=$(az storage container generate-sas --account-name -n vhds --permissions rl --expiry $EXPIRY -otsv)
+        BLOB_URL=$(az storage blob url -c vhds -n <VHD Blob Name> -otsv)
+        echo $BLOB_URL\?$CONTAINER_SAS
 
     Zaktualizuj następujące parametry w powyżej
 
-    a. **`<StorageAccountName>`**: Nadaj nazwę konta magazynu
+    a. **`<Storage Account Name>`**: Nadaj nazwę konta magazynu
 
-    b. **`<Storage Account Key>`**: Podać klucz konta magazynu
+    b. **`<VHD Blob Name>`**: Nadaj nazwę obiektu blob wirtualnego dysku twardego.
 
-    c. **`<Permission Start Date>`**: Aby chronić czasu UTC, wybierz dzień przed bieżącą datą. Na przykład, jeśli bieżąca data to 26 października 2016 roku, następnie wartość powinna być 2016-10-25. Jeśli przy użyciu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej, podaj datę i godzinę rozpoczęcia oraz datę zakończenia, na przykład: 10-25-2016T00:00:00Z.
+    Wybierz datę, która jest co najmniej 3 tygodnie po dacie rozpoczęcia (wartość domyślna to generowania tokenu sygnatury dostępu współdzielonego). Przykładowa wartość to: **2018-10-11T23:56Z**.
 
-    d. **`<Permission End Date>`**: Wybierz datę, która jest co najmniej 3 tygodnie po **Data rozpoczęcia**. Wartość powinna być **2016-11-02**. Jeśli przy użyciu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej, podaj datę i godzinę rozpoczęcia oraz datę zakończenia, na przykład: 11-02-2016T00:00:00Z.
+    Poniżej przedstawiono przykładowy kod po aktualizowania odpowiednich parametrów wyeksportować AZURE_STORAGE_ACCOUNT = vhdstorage1ba78dfb6bc2d8 wygaśnięcia = $(Data -d "3 tygodnie" "+ %T %m % dT % H: % MZ") CONTAINER_SAS = $(az storage container Generowanie sygnatury dostępu współdzielonego - n wirtualne dyski twarde — uprawnienia rl — $wygaśnięcia WYGAŚNIĘCIA - otsv) BLOB_URL = $(az storage blob url - c wirtualne dyski twarde - n osdisk_1ba78dfb6b.vhd - otsv) echo $BLOB_URL\?$CONTAINER_SAS
 
-    Poniżej przedstawiono przykładowy kod po zaktualizowaniu odpowiednie parametry
+4.  Uruchom skrypt i zostanie w niej podana adresu URL sygnatury dostępu Współdzielonego dla poziomu dostępu do kontenera.
 
-          $conn="DefaultEndpointsProtocol=https;AccountName=st20151;AccountKey=TIQE5QWMKHpT5q2VnF1bb+NUV7NVMY2xmzVx1rdgIVsw7h0pcI5nMM6+DVFO65i4bQevx21dmrflA91r0Vh2Yw=="
-          azure storage container list vhds -c $conn
-          azure storage container sas create vhds rl 11/02/2016 -c $conn --start 10/25/2016  
-
-4.  Otwórz Edytor programu Powershell w trybie "Uruchom jako Administrator", a następnie otwórz plik w kroku #3. Można użyć dowolnego edytora skrypt, który jest dostępny dla Twojego systemu operacyjnego.
-
-5.  Uruchom skrypt i zostanie w niej podana adresu URL sygnatury dostępu Współdzielonego dla kontenera poziom dostępu
-
-    Poniżej będą dane wyjściowe sygnatura dostępu Współdzielonego i skopiuj część wyróżnione w Notatniku
-
-    ![Rysowanie](media/marketplace-publishing-vm-image-creation/img5.2_16.png)
-
-6.  Teraz otrzymasz poziomie kontenera adresu URL sygnatury dostępu Współdzielonego i należy dodać nazwy wirtualnego dysku twardego w nim.
-
-    Adres URL sygnatury dostępu Współdzielonego poziomu kontenera #
-
-    `https://st20151.blob.core.windows.net/vhds?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
-
-7.  Wstaw nazwę wirtualnego dysku twardego po nazwie adresu URL sygnatury dostępu Współdzielonego kontenera, jak pokazano poniżej `https://st20151.blob.core.windows.net/vhds/<VHDName>?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
-
-    Przykład:
-
-    TestRGVM201631920152.vhd jest nazwa wirtualnego dysku twardego, a następnie będzie adres URL sygnatury dostępu Współdzielonego dysku VHD
-
-    `https://st20151.blob.core.windows.net/vhds/ TestRGVM201631920152.vhd?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
+5.  Sprawdź adres URL sygnatury dostępu Współdzielonego.
 
     - Upewnij się, że nazwa pliku obrazu i ".vhd" są w identyfikatorze URI.
     -   Upewnij się, że w środkowej części podpisu "sp = rl" pojawia się. W tym przykładzie pokazano, dostęp do odczytu i listy podano pomyślnie.
     -   Upewnij się, że w środkowej części podpisu "sr = c" zostanie wyświetlony. Oznacza to, że masz dostęp na poziomie kontenera
+
+    Przykład:
+
+    `https://vhdstorage1ba78dfb6bc2d8.blob.core.windows.net/vhds/osdisk_1ba78dfb6b.vhd?se=2018-10-12T00%3A04Z&sp=rl&sv=2018-03-28&sr=c&sig=...`
 
 8.  Aby upewnić się, wygenerowany udostępnione działania identyfikator URI podpisu dostępu, należy przetestować ją w przeglądarce. Należy go uruchomić proces pobierania
 

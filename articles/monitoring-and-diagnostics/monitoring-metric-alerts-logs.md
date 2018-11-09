@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 62b5c8fd0a63e660cd4126755d94ea90cf4d412b
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 461c6e3cbdfcc5ef8207277b08ad4a8cf492f796
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961164"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282802"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Tworzenie alertów metryk dla dzienników w usłudze Azure Monitor  
 
 ## <a name="overview"></a>Przegląd
-Platforma Azure obsługuje monitorowanie [typu alertu Metryka](monitoring-near-real-time-metric-alerts.md) mającego korzyści za pośrednictwem [alertów klasycznych](insights-alerts-portal.md). Metryki są dostępne dla [obszerne listy usług systemu Azure](monitoring-supported-metrics.md). W tym artykule opisano korzystanie z podzestawu (czyli) dla zasobu - `Microsoft.OperationalInsights/workspaces`. 
+Platforma Azure obsługuje monitorowanie [typu alertu Metryka](monitoring-near-real-time-metric-alerts.md) mającego korzyści za pośrednictwem [alertów klasycznych](alert-metric-classic.md). Metryki są dostępne dla [obszerne listy usług systemu Azure](monitoring-supported-metrics.md). W tym artykule opisano korzystanie z podzestawu (czyli) dla zasobu - `Microsoft.OperationalInsights/workspaces`. 
 
 Popularne dzienników usługi Log Analytics, wyodrębnić jako metryki jako część metryk z dzienników w tym zasobów na platformie Azure lub lokalnie, można użyć alertów dotyczących metryk. Poniżej wymieniono obsługiwane rozwiązania usługi Log Analytics:
 - [Liczniki wydajności](../log-analytics/log-analytics-data-sources-performance-counters.md) maszyn Windows i Linux

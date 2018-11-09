@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e5414a7607c036f1d60f58e1eb047da1e54f4db9
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 07452a97ba16d7745d48e210dd90ce077be64683
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585344"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233443"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Zasoby poświadczeń w usłudze Azure Automation
 
-Zasób poświadczenia usługi Automation przechowuje obiekt zawierający poświadczenia zabezpieczeń, takie jak nazwa użytkownika i hasło. Konfiguracje elementów Runbook i DSC może używać poleceń cmdlet, które akceptuje obiekt PSCredential uwierzytelniania lub może ich wyodrębnić nazwy użytkownika i hasła obiektu PSCredential, aby zapewnić do niektórych aplikacji lub usługi wymagającej uwierzytelniania. Właściwości dla poświadczenia są bezpiecznie przechowywane w usłudze Azure Automation i dostępne w elemencie runbook lub konfiguracji DSC przy użyciu [Get-AutomationPSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) działania.
+Zasób poświadczenia usługi Automation przechowuje obiekt zawierający poświadczenia zabezpieczeń, takie jak nazwa użytkownika i hasło. Konfiguracje elementów Runbook i DSC może używać poleceń cmdlet, które akceptuje obiekt PSCredential uwierzytelniania lub może ich wyodrębnić nazwy użytkownika i hasła obiektu PSCredential, aby zapewnić do niektórych aplikacji lub usługi wymagającej uwierzytelniania. Właściwości dla poświadczenia są bezpiecznie przechowywane w usłudze Azure Automation i dostępne w elemencie runbook lub konfiguracji DSC przy użyciu [Get-AutomationPSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) działania.
 
 [!INCLUDE [gdpr-dsr-and-stp-note.md](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -53,7 +53,7 @@ Działania w poniższej tabeli są używane do dostępu do poświadczeń w eleme
 
 | Działania | Opis |
 |:--- |:--- |
-| Get-AutomationPSCredential |Pobiera poświadczenia do użycia w elemencie runbook lub konfiguracji DSC. Zwraca [System.Management.Automation.PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) obiektu. |
+| Get-AutomationPSCredential |Pobiera poświadczenia do użycia w elemencie runbook lub konfiguracji DSC. Zwraca [System.Management.Automation.PSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential) obiektu. |
 
 > [!NOTE]
 > Należy unikać używania zmiennych w parametrze Name Get-AutomationPSCredential, ponieważ może to skomplikować wykrywanie zależności między elementami runbook lub konfiguracji DSC i poświadczeń zasobów w czasie projektowania.
@@ -94,7 +94,7 @@ New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name
 
 ## <a name="using-a-powershell-credential"></a>Używanie poświadczenia programu PowerShell
 
-Pobierz zasób poświadczeń w elemencie runbook lub konfiguracji DSC przy użyciu **Get-AutomationPSCredential** działania. Spowoduje to zwrócenie [obiektu PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) , za pomocą działania lub polecenia cmdlet, które wymaga, aby parametr PSCredential. Możesz również pobrać właściwości obiektu poświadczeń można użyć pojedynczo. Obiekt ma właściwość dla nazwy użytkownika i hasła bezpiecznego lub użyć **GetNetworkCredential** metodę, aby zwrócić [NetworkCredential](http://msdn.microsoft.com/library/system.net.networkcredential.aspx) obiekt, który zapewni niezabezpieczonej wersji hasło.
+Pobierz zasób poświadczeń w elemencie runbook lub konfiguracji DSC przy użyciu **Get-AutomationPSCredential** działania. Spowoduje to zwrócenie [obiektu PSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) , za pomocą działania lub polecenia cmdlet, które wymaga, aby parametr PSCredential. Możesz również pobrać właściwości obiektu poświadczeń można użyć pojedynczo. Obiekt ma właściwość dla nazwy użytkownika i hasła bezpiecznego lub użyć **GetNetworkCredential** metodę, aby zwrócić [NetworkCredential](https://msdn.microsoft.com/library/system.net.networkcredential.aspx) obiekt, który zapewni niezabezpieczonej wersji hasło.
 
 ### <a name="textual-runbook-sample"></a>Przykład tekstowy element runbook
 

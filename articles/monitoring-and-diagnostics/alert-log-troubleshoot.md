@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 0e1cb2cdd6270590def11479cc5859d996d84caa
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 5572c80879584e7f6df650263ae455a134ee4088
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50749058"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283601"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Rozwiązywanie problemów z alertami dzienników w usłudze Azure Monitor  
 
@@ -79,10 +79,10 @@ W zależności od sposobu skonfigurowania reguły alertu może być źle wielopa
 ### <a name="alert-query-output-misunderstood"></a>Dane wyjściowe zapytanie alertu źle zrozumiane
 Dla dziennika alertów logikę alertów są dostarczane przez użytkownika za pośrednictwem zapytania usługi analytics. Dostarczone zapytanie usługi analytics można używać różnych danych Big Data i funkcji matematycznych, aby utworzyć określone konstrukcji. Alerty usługi wykona zapytań klienta w odstępach czasu określonych danych w przedziale czasu określony; alerty usługi sprawia, że subtelne zmiany do kwerendy dostarczone — oparte na wybranego typu alertu i takie same można być poświadczeniem "Wyślij zapytanie w celu wykonania" w sekcji Konfigurowanie sygnału logikę ekranu, jak przedstawiono poniżej: ![zapytanie do wykonania](./media/monitor-alerts-unified/LogAlertPreview.png)
  
-Przedstawionego na **zapytanie do wykonania** sekcja jest jakie dziennika alertu usługa zostanie uruchomiona; użytkownik może uruchomić określonej kwerendy, a także przedział czasu za pośrednictwem [portalu analiza](../log-analytics/log-analytics-log-search-portals.md) lub [interfejsu API analizy](https://docs.microsoft.com/en-us/rest/api/loganalytics/) -Jeśli chcą wiedzieć przed tworzenia alertu, może to być dane wyjściowe zapytanie alertu.
+Przedstawionego na **zapytanie do wykonania** sekcja jest jakie dziennika alertu usługa zostanie uruchomiona; użytkownik może uruchomić określonej kwerendy, a także przedział czasu za pośrednictwem [portalu analiza](../log-analytics/log-analytics-log-search-portals.md) lub [interfejsu API analizy](https://docs.microsoft.com/rest/api/loganalytics/) -Jeśli chcą wiedzieć przed tworzenia alertu, może to być dane wyjściowe zapytanie alertu.
  
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej o [alerty dzienników w alertów platformy Azure](monitor-alerts-unified-log.md)
 * Dowiedz się więcej o [usługi Application Insights](../application-insights/app-insights-analytics.md)
-* Dowiedz się więcej o [usługi Log Analytics](../log-analytics/log-analytics-overview.md). 
+* Dowiedz się więcej o [usługi Log Analytics](../log-analytics/log-analytics-queries.md). 

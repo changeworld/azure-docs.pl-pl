@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 26899ea62b8caa872b6c99b94976c87f84ba7176
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: b74f40c093ca4cc62330de321ea2b53315b903db
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091127"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247368"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Rozwiązywanie problemów oraz pytania i odpowiedzi dotyczące usługi Application Insights dla języka Java
 Pytania lub problemy z [usługi Azure Application Insights w języku Java][java]? Poniżej przedstawiono kilka wskazówek.
@@ -43,7 +43,7 @@ Pytania lub problemy z [usługi Azure Application Insights w języku Java][java]
 * Upewnij się, aby użyć tej samej wersji usługi Application Insights podstawowych, sieci web, agenta i rejestrowanie appenders Aby uniknąć jakichkolwiek problemów konflikt wersji.
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>Używany do wyświetlania danych, ale została zatrzymana
-* Sprawdź [blogu stan](http://blogs.msdn.com/b/applicationinsights-status/).
+* Sprawdź [blogu stan](https://blogs.msdn.com/b/applicationinsights-status/).
 * Możesz przekroczyć miesięczny limit punktów danych? Otwórz ustawienia/przydział i cennik. Jeśli tak, możesz uaktualnić swój plan lub płacić za dodatkową pojemność. Zobacz [ceny schemat](https://azure.microsoft.com/pricing/details/application-insights/).
 * Możesz ostatnio uaktualniono zestaw SDK? Upewnij się, że tylko plikach JAR unikatowy zestaw SDK znajdują się w katalogu projektu. Nie powinien być dwie różne wersje zestawu SDK jest obecny.
 * Sprawdzasz zasobu usługi AI poprawne? Można dopasować klucz instrumentacji aplikacji do zasobu, w którym są oczekiwane dane telemetryczne. Powinny one być takie same.

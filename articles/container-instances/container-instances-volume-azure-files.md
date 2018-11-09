@@ -2,23 +2,23 @@
 title: Instalacji woluminu plików platformy Azure w usłudze Azure Container Instances
 description: Dowiedz się, jak można zainstalować woluminu plików platformy Azure, aby utrwalanie stanu przy użyciu usługi Azure Container Instances
 services: container-instances
-author: seanmck
+author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 02/20/2018
-ms.author: seanmck
+ms.date: 11/05/2018
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 83c86d8310aff80f148e878261ba33b01846006b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f3d4bfa7d8ffda1ab2789927d03a777fab0ed89c
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441327"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281585"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Instalowanie udziału plików platformy Azure w usłudze Azure Container Instances
 
-Domyślnie usługi Azure Container Instances są bezstanowe. Kontener ulegnie awarii lub przestanie, wszystkie jego stan zostanie utracone. Aby zachować stan poza okres istnienia kontenera, można zainstalować woluminu z magazynu zewnętrznego. W tym artykule przedstawiono sposób instalowania udziału plików platformy Azure do użycia z usługą Azure Container Instances.
+Domyślnie usługi Azure Container Instances są bezstanowe. Kontener ulegnie awarii lub przestanie, wszystkie jego stan zostanie utracone. Aby zachować stan poza okres istnienia kontenera, można zainstalować woluminu z magazynu zewnętrznego. W tym artykule pokazano, jak zainstalować udział plików platformy Azure utworzonych za pomocą [usługi Azure Files](../storage/files/storage-files-introduction.md) do użycia z usługą Azure Container Instances. Usługa Pliki Azure oferuje w pełni zarządzane udziały plików w chmurze, dostępne za pośrednictwem protokołu Server Message Block (SMB) będącego standardem branżowym. Za pomocą udziału plików platformy Azure przy użyciu usługi Azure Container Instances zapewnia funkcji udostępniania plików, podobne do udziału plików platformy Azure przy użyciu maszyn wirtualnych platformy Azure.
 
 > [!NOTE]
 > Instalowanie udziału plików platformy Azure jest obecnie ograniczone do kontenerów systemu Linux. Podczas gdy pracujemy, aby udostępnić wszystkie funkcje na potrzeby kontenerów systemu Windows, bieżące różnice dotyczące platform możesz znaleźć w temacie [Limity przydziałów i dostępność regionów dla usługi Azure Container Instances](container-instances-quotas.md).
@@ -41,29 +41,24 @@ az storage account create \
     --location $ACI_PERS_LOCATION \
     --sku Standard_LRS
 
-# Export the connection string as an environment variable. The following 'az storage share create' command
-# references this environment variable when creating the Azure file share.
-export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string --resource-group $ACI_PERS_RESOURCE_GROUP --name $ACI_PERS_STORAGE_ACCOUNT_NAME --output tsv`
-
 # Create the file share
-az storage share create -n $ACI_PERS_SHARE_NAME
+az storage share create --name $ACI_PERS_SHARE_NAME --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME
 ```
 
 ## <a name="get-storage-credentials"></a>Pobierz poświadczenia magazynu
 
 Aby zainstalować udział plików platformy Azure jako woluminu w usłudze Azure Container Instances, trzy wartości będą potrzebne: Nazwa konta magazynu, nazwę udziału i klucza dostępu do magazynu.
 
-Jeśli używany jest skrypt powyżej, nazwa konta magazynu został utworzony z losową wartość na końcu. Aby wysłać zapytanie ciąg końcowy (w tym losowe część), użyj następujących poleceń:
+Jeśli używany jest skrypt powyżej, nazwa konta magazynu została zapisana w zmiennej ACI_PERS_STORAGE_ACCOUNT_NAME $. Aby wyświetlić nazwę konta, wpisz:
 
-```azurecli-interactive
-STORAGE_ACCOUNT=$(az storage account list --resource-group $ACI_PERS_RESOURCE_GROUP --query "[?contains(name,'$ACI_PERS_STORAGE_ACCOUNT_NAME')].[name]" --output tsv)
-echo $STORAGE_ACCOUNT
+```console
+echo $ACI_PERS_STORAGE_ACCOUNT_NAME
 ```
 
 Nazwa udziału jest już znany (zdefiniowany jako *acishare* w skrypcie powyżej), więc wszystkie, czy nadal jest klucz konta magazynu, w którym można znaleźć, używając następującego polecenia:
 
 ```azurecli-interactive
-STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $STORAGE_ACCOUNT --query "[0].value" --output tsv)
+STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" --output tsv)
 echo $STORAGE_KEY
 ```
 
@@ -88,7 +83,7 @@ Wartość `--dns-name-label` musi być unikatowa w regionie platformy Azure, w k
 
 ## <a name="manage-files-in-mounted-volume"></a>Zarządzanie plikami w woluminie
 
-Po uruchomieniu kontenera, można użyć prostej aplikacji sieci web wdrażane za pomocą [microsoft/aci-hellofiles] [ aci-hellofiles] obrazu do zarządzania plikami w udziale plików platformy Azure w określonej ścieżce instalacji. Uzyskaj aplikację internetową w pełni kwalifikowaną nazwę domeny (FQDN) za pomocą [az container show] [ az-container-show] polecenia:
+Po uruchomieniu kontenera, można użyć prostej aplikacji sieci web wdrażane za pomocą [microsoft/aci-hellofiles] [ aci-hellofiles] obrazu do tworzenia małych plików tekstowych w udziale plików platformy Azure w określonej ścieżce instalacji. Uzyskaj aplikację internetową w pełni kwalifikowaną nazwę domeny (FQDN) za pomocą [az container show] [ az-container-show] polecenia:
 
 ```azurecli-interactive
 az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn
@@ -98,11 +93,11 @@ Możesz użyć [witryny Azure portal] [ portal] lub narzędzia, takie jak [Micro
 
 ## <a name="mount-multiple-volumes"></a>Zainstaluj wiele woluminów
 
-Aby zainstalować wiele woluminów w wystąpieniu kontenera, należy wdrożyć przy użyciu [szablonu usługi Azure Resource Manager](/azure/templates/microsoft.containerinstance/containergroups).
+Aby zainstalować wiele woluminów w wystąpieniu kontenera, należy wdrożyć przy użyciu [szablonu usługi Azure Resource Manager](/azure/templates/microsoft.containerinstance/containergroups) lub pliku YAML.
 
-Najpierw podaj szczegóły udziału i zdefiniować woluminy przy wprowadzaniu `volumes` tablicy w `properties` części szablonu. Na przykład, jeśli utworzono dwa udziałów plików platformy Azure o nazwie *share1* i *share2* na koncie magazynu *myStorageAccount*, `volumes` wyglądałby tablicy podobny do następującego:
+Aby użyć szablonu, podaj szczegóły udziału, a następnie zdefiniować woluminy przy wprowadzaniu `volumes` tablicy w `properties` części szablonu. Na przykład, jeśli utworzono dwa udziałów plików platformy Azure o nazwie *share1* i *share2* na koncie magazynu *myStorageAccount*, `volumes` wyglądałby tablicy podobny do następującego:
 
-```json
+```JSON
 "volumes": [{
   "name": "myvolume1",
   "azureFile": {
@@ -123,7 +118,7 @@ Najpierw podaj szczegóły udziału i zdefiniować woluminy przy wprowadzaniu `v
 
 Następnie dla każdego kontenera w grupie kontenerów, w którym chcesz zainstalować woluminów należy wypełnić `volumeMounts` tablicy w `properties` sekcja definicji kontenera. Na przykład instaluje to dwa woluminy *myvolume1* i *myvolume2*, poprzednio zdefiniowanymi:
 
-```json
+```JSON
 "volumeMounts": [{
   "name": "myvolume1",
   "mountPath": "/mnt/share1/"
@@ -134,7 +129,7 @@ Następnie dla każdego kontenera w grupie kontenerów, w którym chcesz zainsta
 }]
 ```
 
-Aby zapoznać się z przykładem wdrażaniem wystąpienia kontenera za pomocą szablonu usługi Azure Resource Manager, zobacz [wdrażanie grup wielu kontenerów w usłudze Azure Container Instances](container-instances-multi-container-group.md).
+Aby zapoznać się z przykładem wdrażaniem wystąpienia kontenera za pomocą szablonu usługi Azure Resource Manager, zobacz [. wdrożenie grupy kontenera](container-instances-multi-container-group.md). Na przykład przy użyciu pliku YAML, zobacz [wdrażania grupy wielu kontenerów przy użyciu kodu YAML](container-instances-multi-container-yaml.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

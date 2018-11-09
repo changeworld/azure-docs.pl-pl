@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: e791ddd3ade2ff486f1c3ec123695ecc155353d6
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: aa0d209cf3da65bb3d50a6458ecc33cfcd85eecb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541908"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240600"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scenariusze zabezpieczeń klastra usługi Service Fabric
 Klaster usługi Azure Service Fabric jest zasobem, którego jesteś właścicielem. Jest odpowiedzialny za Zabezpieczanie klastrów zapobiega nieautoryzowanym użytkownikom nawiązywanie połączeń z nich. Zabezpieczonego klastra jest szczególnie ważne w przypadku obciążeń produkcyjnych są uruchomione w klastrze. Chociaż można utworzyć z niezabezpieczonym klastrem, jeśli klaster udostępnia punktów końcowych zarządzania do publicznej sieci internet, użytkowników anonimowych można się z nim. Niezabezpieczonych klastrów nie są obsługiwane w przypadku obciążeń produkcyjnych. 
@@ -85,7 +85,7 @@ Użytkownicy, którzy są przypisani do roli Administrator ma pełny dostęp do 
 Ustaw role administratora i użytkownika klienta podczas tworzenia klastra. Przypisz role, zapewniając osobne tożsamości (np. przy użyciu certyfikatów lub Azure AD) dla poszczególnych ról. Aby uzyskać więcej informacji na temat domyślne ustawienia kontroli dostępu oraz sposobu zmiany ustawień domyślnych, zobacz [opartej na rolach kontrola dostępu dla klientów usługi Service Fabric](service-fabric-cluster-security-roles.md).
 
 ## <a name="x509-certificates-and-service-fabric"></a>Certyfikaty X.509 i Service Fabric
-Cyfrowe certyfikaty X.509 często są używane do uwierzytelniania klientów i serwerów. Są używane do szyfrowania i cyfrowego podpisywania wiadomości. Usługa Service Fabric używa certyfikatów X.509 do zabezpieczenia klastra i udostępnia funkcje zabezpieczeń aplikacji. Aby uzyskać więcej informacji na temat certyfikatów cyfrowych X.509, zobacz [Praca z certyfikatami](http://msdn.microsoft.com/library/ms731899.aspx). Możesz użyć [usługi Key Vault](../key-vault/key-vault-get-started.md) do zarządzania certyfikatami klastrów usługi Service Fabric na platformie Azure.
+Cyfrowe certyfikaty X.509 często są używane do uwierzytelniania klientów i serwerów. Są używane do szyfrowania i cyfrowego podpisywania wiadomości. Usługa Service Fabric używa certyfikatów X.509 do zabezpieczenia klastra i udostępnia funkcje zabezpieczeń aplikacji. Aby uzyskać więcej informacji na temat certyfikatów cyfrowych X.509, zobacz [Praca z certyfikatami](https://msdn.microsoft.com/library/ms731899.aspx). Możesz użyć [usługi Key Vault](../key-vault/key-vault-get-started.md) do zarządzania certyfikatami klastrów usługi Service Fabric na platformie Azure.
 
 Niektóre ważne kwestie należy wziąć pod uwagę:
 
@@ -109,7 +109,7 @@ Inne kwestie do rozważenia:
 
 * **Podmiotu** pole może mieć wiele wartości. Każda wartość jest poprzedzony znakiem inicjowania, aby wskazać typ wartości. Zwykle jest inicjowania **CN** (dla *nazwa pospolita*), na przykład **CN = www.contoso.com**. 
 * **Podmiotu** pole może być pusta. 
-* Jeśli opcjonalny **alternatywna nazwa podmiotu** wypełnianie pola, musi mieć zarówno nazwa pospolita certyfikatu i jednego wpisu na sieci SAN. Są one wprowadzane jako **nazwy DNS** wartości. Aby dowiedzieć się, jak generować certyfikaty, które mają sieci SAN, zobacz [sposób dodawania alternatywna nazwa podmiotu do bezpiecznego certyfikatu LDAP](http://support.microsoft.com/kb/931351).
+* Jeśli opcjonalny **alternatywna nazwa podmiotu** wypełnianie pola, musi mieć zarówno nazwa pospolita certyfikatu i jednego wpisu na sieci SAN. Są one wprowadzane jako **nazwy DNS** wartości. Aby dowiedzieć się, jak generować certyfikaty, które mają sieci SAN, zobacz [sposób dodawania alternatywna nazwa podmiotu do bezpiecznego certyfikatu LDAP](https://support.microsoft.com/kb/931351).
 * Wartość **przeznaczone do celów** pole certyfikatu powinien zawierać odpowiednią wartość, takich jak **uwierzytelniania serwera** lub **uwierzytelnianie klienta**.
 
 ### <a name="application-certificates-optional"></a>Certyfikaty aplikacji (opcjonalnie)

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 9430a2b72e2599f4a64103016fcae940cbc0a417
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: ac15b95c19fb0184e902ebb43146a76b6ba2faaf
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249207"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283737"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Wyzwalacz siatki zdarzeń dla usługi Azure Functions
 
@@ -245,12 +245,12 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 ## <a name="usage"></a>Sposób użycia
 
-Dla funkcji języka C# i F # na platformie Azure funkcji 1.x, można użyć następujących typów parametru wyzwalacza usługi Event Grid:
+Aby uzyskać C# i F# funkcji na platformie Azure funkcji 1.x, można użyć następujących typów parametru wyzwalacza usługi Event Grid:
 
 * `JObject`
 * `string`
 
-Dla funkcji języka C# i F # w usłudze Azure Functions 2.x, istnieje również możliwość użycia następującego typu parametru dla wyzwalacza usługi Event Grid:
+Aby uzyskać C# i F# funkcji w usłudze Azure Functions 2.x, istnieje również możliwość użycia następującego typu parametru dla wyzwalacza usługi Event Grid:
 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent`-Definiuje właściwości pól, które są wspólne dla wszystkich typów zdarzeń.
 
@@ -358,6 +358,14 @@ Aby uzyskać więcej informacji o tym, jak można utworzyć subskrypcji, zobacz 
 ### <a name="get-the-system-key"></a>Pobierz klucz systemu
 
 Klucz systemu można uzyskać za pomocą następujący interfejs API (HTTP GET):
+
+#### <a name="version-2x-runtime"></a>Środowisko uruchomieniowe 2.x wersji
+
+```
+http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgrid_extension?code={masterkey}
+```
+
+#### <a name="version-1x-runtime"></a>Środowisko uruchomieniowe 1.x wersji
 
 ```
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={masterkey}

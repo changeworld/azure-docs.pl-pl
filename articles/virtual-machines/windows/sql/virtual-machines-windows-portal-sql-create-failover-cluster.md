@@ -16,16 +16,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 8e107c1721d5623239a694eba39b32e8a2a6089d
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 382027782044a5a1011976560b7460047544f521
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42060984"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237968"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurowanie wystąpienia klastra trybu Failover programu SQL Server na maszynach wirtualnych platformy Azure
 
-W tym artykule opisano sposób tworzenia programu SQL Server trybu Failover klastra wystąpienia (FCI) na maszynach wirtualnych platformy Azure w modelu usługi Resource Manager. To rozwiązanie używa [systemu Windows Server 2016 Datacenter edition bezpośrednimi miejscami do magazynowania \(S2D\) ](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) jako opartych na oprogramowaniu wirtualna sieć SAN synchronizujący magazynu (dyski danych) między węzły (maszyny wirtualne platformy Azure) w Klaster Windows. Funkcja S2D to nowość w systemie Windows Server 2016.
+W tym artykule opisano sposób tworzenia programu SQL Server trybu Failover klastra wystąpienia (FCI) na maszynach wirtualnych platformy Azure w modelu usługi Resource Manager. To rozwiązanie używa [systemu Windows Server 2016 Datacenter edition bezpośrednimi miejscami do magazynowania \(S2D\) ](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) jako opartych na oprogramowaniu wirtualna sieć SAN synchronizujący magazynu (dyski danych) między węzły (maszyny wirtualne platformy Azure) w Klaster Windows. Funkcja S2D to nowość w systemie Windows Server 2016.
 
 Na poniższym diagramie przedstawiono kompletne rozwiązanie na maszynach wirtualnych platformy Azure:
 
@@ -44,7 +44,7 @@ Na powyższym diagramie przedstawiono:
    >[!NOTE]
    >Wszystkie zasoby platformy Azure znajdują się w diagramie znajdują się w tej samej grupie zasobów.
 
-Aby uzyskać szczegółowe informacje o S2D, zobacz [systemu Windows Server 2016 Datacenter edition bezpośrednimi miejscami do magazynowania \(S2D\)](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview).
+Aby uzyskać szczegółowe informacje o S2D, zobacz [systemu Windows Server 2016 Datacenter edition bezpośrednimi miejscami do magazynowania \(S2D\)](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview).
 
 S2D obsługuje dwa typy architektur — zbieżne i hiper zbieżności. Architektura, w tym dokumencie jest hiper zbieżności. To infrastruktura hiper zbieżności umieszcza magazynu na serwerach tego samego hosta aplikacji klastrowanej. W ramach tej architektury magazynu jest w każdym węźle infrastruktury klasyfikacji plików programu SQL Server.
 
@@ -52,13 +52,13 @@ S2D obsługuje dwa typy architektur — zbieżne i hiper zbieżności. Architekt
 
 W usłudze Azure Virtual Machines można licencji programu SQL Server przy użyciu płatność zgodnie z rzeczywistym użyciem (PAYG) lub model dostarczania własnej licencji obrazów maszyn wirtualnych (BYOL). Typ obrazu, wybór ma wpływ na sposób są naliczane.
 
-Za pomocą PAYG licencjonowania, wystąpienia klastra trybu failover (FCI) programu SQL Server na maszynach wirtualnych Azure wiąże się z opłat dla wszystkich węzłów infrastruktury klasyfikacji plików, w tym węzły pasywne. Aby uzyskać więcej informacji, zobacz [cennik maszyn wirtualnych usługi SQL Server Enterprise](http://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/). 
+Za pomocą PAYG licencjonowania, wystąpienia klastra trybu failover (FCI) programu SQL Server na maszynach wirtualnych Azure wiąże się z opłat dla wszystkich węzłów infrastruktury klasyfikacji plików, w tym węzły pasywne. Aby uzyskać więcej informacji, zobacz [cennik maszyn wirtualnych usługi SQL Server Enterprise](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/). 
 
-Klienci z umowy Enterprise Agreement z pakietem Software Assurance mają prawa do używania jednego bezpłatnego węzła pasywnego infrastruktury klasyfikacji plików dla każdego aktywnego węzła. Aby móc korzystać z tej korzyści w przypadku platformy Azure, używać obrazów maszyn wirtualnych w ramach opcji BYOL, a następnie użyć tej samej licencji na aktywnym i pasywnym węzły trybu. Aby uzyskać więcej informacji, zobacz [umowy Enterprise Agreement](http://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx).
+Klienci z umowy Enterprise Agreement z pakietem Software Assurance mają prawa do używania jednego bezpłatnego węzła pasywnego infrastruktury klasyfikacji plików dla każdego aktywnego węzła. Aby móc korzystać z tej korzyści w przypadku platformy Azure, używać obrazów maszyn wirtualnych w ramach opcji BYOL, a następnie użyć tej samej licencji na aktywnym i pasywnym węzły trybu. Aby uzyskać więcej informacji, zobacz [umowy Enterprise Agreement](https://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx).
 
 Aby porównać PAYG i BYOL licencji na program SQL Server na maszynach wirtualnych Azure zobacz [wprowadzenie do maszyn wirtualnych SQL](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms).
 
-Aby uzyskać pełne informacje na temat licencjonowania programu SQL Server, zobacz [ceny](http://www.microsoft.com/sql-server/sql-server-2017-pricing).
+Aby uzyskać pełne informacje na temat licencjonowania programu SQL Server, zobacz [ceny](https://www.microsoft.com/sql-server/sql-server-2017-pricing).
 
 ### <a name="example-azure-template"></a>Przykładowy szablon platformy Azure
 
@@ -71,12 +71,12 @@ Istnieje kilka rzeczy, które należy znać i kilka rzeczy, które należy w mie
 ### <a name="what-to-know"></a>Co należy wiedzieć
 Musisz mieć operacyjnej znajomości następujące technologie:
 
-- [Technologie klastrowania Windows](http://technet.microsoft.com/library/hh831579.aspx)
-- [Wystąpienia klastra trybu Failover programu SQL Server](http://msdn.microsoft.com/library/ms189134.aspx).
+- [Technologie klastrowania Windows](https://technet.microsoft.com/library/hh831579.aspx)
+- [Wystąpienia klastra trybu Failover programu SQL Server](https://msdn.microsoft.com/library/ms189134.aspx).
 
 Ponadto powinna mieć ogólna wiedza o następujące technologie:
 
-- [Hiperkonwergentne rozwiązanie z zastosowaniem bezpośrednich miejsc do magazynowania w systemie Windows Server 2016](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
+- [Hiperkonwergentne rozwiązanie z zastosowaniem bezpośrednich miejsc do magazynowania w systemie Windows Server 2016](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
 - [Grupy zasobów platformy Azure](../../../azure-resource-manager/resource-group-portal.md)
 
 > [!IMPORTANT]
@@ -225,11 +225,11 @@ Następnym krokiem jest, aby skonfigurować klaster trybu failover przy użyciu 
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
 
-Odwołanie, kolejne kroki postępuj zgodnie z instrukcjami w kroku 3 [hiperkonwergentne rozwiązanie z zastosowaniem bezpośrednich miejsc do magazynowania w systemie Windows Server 2016](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct).
+Odwołanie, kolejne kroki postępuj zgodnie z instrukcjami w kroku 3 [hiperkonwergentne rozwiązanie z zastosowaniem bezpośrednich miejsc do magazynowania w systemie Windows Server 2016](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct).
 
 ### <a name="validate-the-cluster"></a>Sprawdź poprawność klastra
 
-Ten przewodnik odwołuje się do instrukcji w obszarze [weryfikacji klastra](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-31-run-cluster-validation).
+Ten przewodnik odwołuje się do instrukcji w obszarze [weryfikacji klastra](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-31-run-cluster-validation).
 
 Sprawdzanie poprawności klastra w interfejsie użytkownika lub za pomocą programu PowerShell.
 
@@ -259,7 +259,7 @@ Po sprawdzeniu klastra, należy utworzyć klaster trybu failover.
 
 ### <a name="create-the-failover-cluster"></a>Tworzenie klastra trybu failover
 
-Ten przewodnik odwołuje się do [utworzyć klaster trybu failover](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-32-create-a-cluster).
+Ten przewodnik odwołuje się do [utworzyć klaster trybu failover](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-32-create-a-cluster).
 
 Aby utworzyć klaster trybu failover, potrzebne są:
 - Nazwy maszyn wirtualnych, które stają się węzłami klastra.
@@ -276,19 +276,19 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 Monitor w chmurze to nowy typ monitora kworum klastra, przechowywane w usłudze Azure Blob Storage. Eliminuje to konieczność osobne maszyny wirtualnej, którym udział monitora.
 
-1. [Tworzenie monitora w chmurze dla klastra trybu failover](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness).
+1. [Tworzenie monitora w chmurze dla klastra trybu failover](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness).
 
 1. Utwórz kontener obiektów blob.
 
 1. Zapisać klucze dostępu i adresem URL kontenera.
 
-1. Konfigurowanie monitora kworum klastra trybu failover. Zobacz, [konfigurowania monitora kworum w interfejsie użytkownika](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness) w interfejsie użytkownika.
+1. Konfigurowanie monitora kworum klastra trybu failover. Zobacz, [konfigurowania monitora kworum w interfejsie użytkownika](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness) w interfejsie użytkownika.
 
 ### <a name="add-storage"></a>Dodawanie magazynu
 
-Dyski S2D muszą być puste i bez partycji ani innych danych. Aby wyczyścić postępuj zgodnie z dysków [kroki opisane w tym przewodniku](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-34-clean-disks).
+Dyski S2D muszą być puste i bez partycji ani innych danych. Aby wyczyścić postępuj zgodnie z dysków [kroki opisane w tym przewodniku](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-34-clean-disks).
 
-1. [Włącz Store bezpośrednimi miejscami do magazynowania \(S2D\)](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct).
+1. [Włącz Store bezpośrednimi miejscami do magazynowania \(S2D\)](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct).
 
    Następujące polecenie programu PowerShell umożliwia bezpośrednie miejsca do magazynowania magazynu.  
 
@@ -298,7 +298,7 @@ Dyski S2D muszą być puste i bez partycji ani innych danych. Aby wyczyścić po
 
    W **Menedżera klastra trybu Failover**, możesz teraz wyświetlić puli magazynu.
 
-1. [Tworzenie woluminu](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes).
+1. [Tworzenie woluminu](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes).
 
    Jedna z funkcji S2D jest on automatycznie tworzy pulę magazynu po jej włączeniu. Teraz możesz przystąpić do tworzenia woluminu. Polecenia cmdlet programu PowerShell `New-Volume` automatyzuje proces tworzenia woluminu, w tym formatowania, dodać do klastra i utworzenie udostępnionego woluminu klastra (CSV). Poniższy przykład tworzy 800 gigabajt (GB) pliku CSV.
 
@@ -343,7 +343,7 @@ Po skonfigurowaniu klastra trybu failover i wszystkie składniki klastra, w tym 
 1. Kliknij przycisk **Dodaj węzeł do klastra trybu failover programu SQL Server**. Postępuj zgodnie z instrukcjami w Kreatorze instalacji programu SQL server i dodać ten serwer do trybu.
 
    >[!NOTE]
-   >Jeśli używasz obrazu galerii witryny Azure Marketplace z programem SQL Server, narzędzia programu SQL Server zostały zawarte w obrazie. Jeśli nie używasz tego obrazu, narzędzia programu SQL Server należy zainstalować oddzielnie. Zobacz [pobieranie programu SQL Server Management Studio (SSMS)](http://msdn.microsoft.com/library/mt238290.aspx).
+   >Jeśli używasz obrazu galerii witryny Azure Marketplace z programem SQL Server, narzędzia programu SQL Server zostały zawarte w obrazie. Jeśli nie używasz tego obrazu, narzędzia programu SQL Server należy zainstalować oddzielnie. Zobacz [pobieranie programu SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
 
 ## <a name="step-5-create-azure-load-balancer"></a>Krok 5: Tworzenie modułu równoważenia obciążenia platformy Azure
 
@@ -478,7 +478,7 @@ Testowanie trybu failover z infrastruktury klasyfikacji plików, aby zweryfikowa
 Aby przetestować łączność, zaloguj się do innej maszyny wirtualnej w tej samej sieci wirtualnej. Otwórz **SQL Server Management Studio** i nawiąż połączenie z nazwy infrastruktury klasyfikacji plików programu SQL Server.
 
 >[!NOTE]
->Jeśli to konieczne, możesz to zrobić [pobieranie programu SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).
+>Jeśli to konieczne, możesz to zrobić [pobieranie programu SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
 
 ## <a name="limitations"></a>Ograniczenia
 
@@ -491,10 +491,10 @@ Na maszynach wirtualnych platformy Azure usługi MSDTC nie jest obsługiwana w s
 
 ## <a name="see-also"></a>Zobacz też
 
-[Konfigurowanie S2D przy użyciu pulpitu zdalnego (Azure)](http://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
+[Konfigurowanie S2D przy użyciu pulpitu zdalnego (Azure)](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
 
-[Hiperkonwergentne rozwiązanie z funkcji miejsca do magazynowania bezpośredniego](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct).
+[Hiperkonwergentne rozwiązanie z funkcji miejsca do magazynowania bezpośredniego](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct).
 
-[Omówienie bezpośrednich miejsc magazynu](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)
+[Omówienie bezpośrednich miejsc magazynu](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)
 
 [Obsługa programu SQL Server dla S2D](https://blogs.technet.microsoft.com/dataplatforminsider/2016/09/27/sql-server-2016-now-supports-windows-server-2016-storage-spaces-direct/)

@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: c9d9cd9616b263ca002e6fe7ad6c875cce10289b
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 518e14b991aa110a6ed55f984a66cd386a618f0f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055985"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228967"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Rozpoczynanie pracy z usługą Azure table storage i Visual Studio połączonych usług (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -173,7 +173,7 @@ Poniższe kroki ilustrują Tworzenie tabeli:
   
     ![Utwórz tabelę](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
-    Jak wspomniano wcześniej, **CloudTable.CreateIfNotExists** metoda zwraca **true** tylko, gdy w tabeli nie istnieje i zostanie utworzony. W związku z tym, po uruchomieniu aplikacji, gdy tabela istnieje, metoda zwraca **false**. Aby uruchomić aplikację wiele razy, możesz usunąć tabeli przed ponownym uruchomieniem aplikacji. Usunięcie tabeli może odbywać się za pośrednictwem **CloudTable.Delete** metody. Możesz także usunąć tabeli przy użyciu [witryny Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) lub [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
+    Jak wspomniano wcześniej, **CloudTable.CreateIfNotExists** metoda zwraca **true** tylko, gdy w tabeli nie istnieje i zostanie utworzony. W związku z tym, po uruchomieniu aplikacji, gdy tabela istnieje, metoda zwraca **false**. Aby uruchomić aplikację wiele razy, możesz usunąć tabeli przed ponownym uruchomieniem aplikacji. Usunięcie tabeli może odbywać się za pośrednictwem **CloudTable.Delete** metody. Możesz także usunąć tabeli przy użyciu [witryny Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) lub [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
 
 ## <a name="add-an-entity-to-a-table"></a>Dodawanie jednostki do tabeli
 
@@ -273,7 +273,7 @@ Klasa jednostki *musi* zadeklarować publicznego konstruktora bez parametrów.
 
 1. Uruchom aplikację, a następnie wybierz pozycję **Dodaj jednostkę** aby zobaczyć wyniki, podobnie jak na poniższym zrzucie ekranu:
   
-    ![Dodaj jednostkę](./media/vs-storage-aspnet-getting-started-tables/add-entity-results.png)
+    ![Dodawanie jednostki](./media/vs-storage-aspnet-getting-started-tables/add-entity-results.png)
 
     Możesz sprawdzić, czy jednostka został dodany, wykonując czynności opisane w sekcji [pobrać pojedynczą jednostkę](#get-a-single-entity). Można również użyć [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) Aby wyświetlić wszystkie jednostki dla tabel.
 

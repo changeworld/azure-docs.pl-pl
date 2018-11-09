@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 9d2745f1211aa6f818f89d9597867e1b3b2de03f
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 4e89664bf980717dbfd7994d6469fc4a412307a0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362657"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258548"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>Zarządzanie potencjalnych klientów dla portalu marketplace w chmurze
 
@@ -97,7 +97,7 @@ Po technicznych, skonfiguruj znajduje się w miejscu, należy dołączyć potenc
 
 **Jakie są potencjalnymi klientami i dlaczego są one ważne do mnie jako wydawcę w portalu Marketplace?** 
 
-Potencjalni klienci to klientów, którzy wdrażają produkty z witryny Marketplace. Czy produktu znajduje się na [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/en-us) lub [AppSource](http://appsource.microsoft.com/), będzie można odbierać potencjalnych klientów, którzy są zainteresowani produktu, jeśli skonfigurowano docelowy potencjalnego klienta w ofercie.  
+Potencjalni klienci to klientów, którzy wdrażają produkty z witryny Marketplace. Czy produktu znajduje się na [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/en-us) lub [AppSource](https://appsource.microsoft.com/), będzie można odbierać potencjalnych klientów, którzy są zainteresowani produktu, jeśli skonfigurowano docelowy potencjalnego klienta w ofercie.  
 
 
 **Gdzie można uzyskać pomoc w konfigurowaniu Moje docelowego potencjalnego klienta** 

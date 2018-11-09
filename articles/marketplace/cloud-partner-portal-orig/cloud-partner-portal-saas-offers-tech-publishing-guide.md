@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9d73040f11549741643d96913c42df49594b8d41
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 7430e57ceaec8a280c17f1276d503919a9703182
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810290"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228899"
 ---
 <a name="saas-application-technical-publishing-guide"></a>Technical aplikacji SaaS Podręcznik publikowania
 ===========================================
@@ -34,7 +34,7 @@ Omówienie wszystkich innych ofert z portalu Marketplace można znaleźć [przew
 
 Portal wydawców umożliwia opartej na rolach dostęp do portalu, dzięki czemu wiele osób do współpracy w kierunku stawiane ofertom. Aby uzyskać więcej informacji, zobacz [Zarządzanie użytkownikami](./cloud-partner-portal-manage-users.md). 
 
-Można było opublikować ofertę w imieniu wydawcy konta, jedną z osób z *właściciela* konieczność roli zobowiązuje się do przestrzegania [warunki użytkowania](https://azure.microsoft.com/support/legal/website-terms-of-use/), [Microsoft PrivacyStatement](http://www.microsoft.com/privacystatement/default.aspx), i [ProgramAgreement certyfikat platformy Microsoft Azure](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
+Można było opublikować ofertę w imieniu wydawcy konta, jedną z osób z *właściciela* konieczność roli zobowiązuje się do przestrzegania [warunki użytkowania](https://azure.microsoft.com/support/legal/website-terms-of-use/), [Microsoft PrivacyStatement](https://www.microsoft.com/privacystatement/default.aspx), i [ProgramAgreement certyfikat platformy Microsoft Azure](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
 
 <a name="creating-an-offer"></a>Tworzenie oferty
@@ -198,7 +198,7 @@ Istnieją trzy główne obszary: kontakt techniczny, skontaktuj się z pomocy te
 | **Skontaktuj się z**         | **Opis**                                                                                                                          |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | Kontakt techniczny | Podaj nazwę, adres e-mail i numer telefonu kontakt techniczny, dzięki której firmy Microsoft mogą uzyskać problemów pomocy technicznej i biznesowej. |
-| Skontaktuj się z pomocy technicznej     | Podaj nazwę, adres e-mail, numer telefonu i adres URL, do której klienci mogą wówczas, gdy są żądania pomocy technicznej pomocy technicznej.                  |
+| Osoba kontaktowa ds. pomocy technicznej     | Podaj nazwę, adres e-mail, numer telefonu i adres URL, do której klienci mogą wówczas, gdy są żądania pomocy technicznej pomocy technicznej.                  |
 |  |  |
 
 

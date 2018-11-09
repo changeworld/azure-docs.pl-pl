@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/19/2018
+ms.date: 11/08/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: b5c2c51429e37eea2473ae5966b1f41295875cb6
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: ec73083d1bb66e7c7735a2bee8e89eeb56cf7620
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638175"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282502"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Pobieranie elementów portalu marketplace z platformy Azure do usługi Azure Stack
 
@@ -168,8 +168,10 @@ Istnieją dwie części do tego scenariusza:
 
    Możesz uzyskać *wydawcy*, *oferują*, i *jednostki sku* wartości obrazu z pliku tekstowego zawierającego pliki do pobrania przy użyciu pliku AZPKG. Plik tekstowy znajduje się w lokalizacji docelowej. *Wersji* wartość wersji, podczas pobierania elementu z platformy Azure w ramach poprzedniej procedury. 
  
-   W poniższej przykładowy skrypt są używane wartości dla systemu Windows Server 2016 Datacenter — instalacja Server Core maszyny wirtualnej. Wartość *- Osuri* jest przykładowa ścieżka do lokalizacji magazynu obiektów blob dla elementu.
+   W poniższej przykładowy skrypt są używane wartości dla systemu Windows Server 2016 Datacenter — instalacja Server Core maszyny wirtualnej. Wartość *- Osuri* jest przykładowa ścieżka do lokalizacji magazynu obiektów blob dla elementu. 
 
+   Zamiast tego skryptu, można użyć [procedury opisanej w tym artykule](azure-stack-add-vm-image.md#add-a-vm-image-through-the-portal) do zaimportowania. Obraz wirtualnego dysku twardego za pomocą witryny Azure portal.
+ 
    ```PowerShell  
    Add-AzsPlatformimage `
     -publisher "MicrosoftWindowsServer" `
@@ -179,6 +181,7 @@ Istnieją dwie części do tego scenariusza:
     -Version "2016.127.20171215" `
     -OsUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.vhd"  
    ```
+   
    **Informacje o szablonach rozwiązania:** niektóre szablony mogą zawierać małych 3 MB. Plik wirtualnego dysku twardego o nazwie **fixed3.vhd**. Nie trzeba zaimportować ten plik do usługi Azure Stack. Fixed3.VHD.  Ten plik jest dołączone do niektórych szablony rozwiązań, aby spełniać wymagania publikacji w portalu Azure Marketplace.
 
    Przejrzyj opis szablonów i Pobierz, a następnie zaimportować dodatkowe wymagania, takie jak wirtualne dyski twarde, które są wymagane do pracy za pomocą szablonu rozwiązania.  

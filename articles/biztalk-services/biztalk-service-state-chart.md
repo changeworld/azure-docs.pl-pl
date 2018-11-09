@@ -1,6 +1,6 @@
 ---
-title: Zadania, dozwolone w różnych stanów oraz Stany w usługi BizTalk Services | Dokumentacja firmy Microsoft
-description: 'Akcje operacje dozwolone w inny stan MABS: Zatrzymaj, start, uruchom ponownie, wstrzymać, wznowić, Usuń, skalowania, aktualizacji konfiguracji i tworzenia kopii zapasowej'
+title: Zadania, dozwolone w różnych stanach lub stanów usługi BizTalk Services | Dokumentacja firmy Microsoft
+description: 'Dozwolone w inny stan serwera usługi Mab akcji/operacje: Zatrzymaj, start, ponowne uruchomienie, wstrzymać, wznowić, Usuń, skalowanie, aktualizowanie konfiguracji i tworzenia kopii zapasowej'
 services: biztalk-services
 documentationcenter: ''
 author: MandiOhlinger
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
 ms.author: mandia
-ms.openlocfilehash: 05470e75fc7b46603c8fce3a98c66ac6a24758a8
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: bbe1288a42db307001ac778394ac410206f1df21
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24102746"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228202"
 ---
-# <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>Co można i nie można wykonać przy użyciu stanu usługi BizTalk
+# <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>Tym, co można, a czego nie można wykonać przy użyciu stanu usługi BizTalk
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-W zależności od bieżącego stanu usługi BizTalk ma działań, które mogą lub nie można wykonać na usługi BizTalk.
+W zależności od bieżącego stanu usługi BizTalk istnieją operacje, które mogą lub nie można wykonać w usłudze BizTalk.
 
-Na przykład można udostępnić nową usługę BizTalk. Po pomyślnym ukończeniu, usługa BizTalk jest `active` stanu. W stanie aktywnym Zatrzymaj, Wstrzymaj, a usunąć usługi BizTalk. Jeśli należy zatrzymać usługę BizTalk i Zatrzymaj zakończy się niepowodzeniem, a następnie usługi BizTalk przechodzi do `StopFailed` stanu. W `StopFailed` stanu, można ponownie uruchomić usługę BizTalk. Jeśli spróbujesz operację, która nie jest dozwolona, takich jak wznowieniu wystąpił następujący błąd:
+Na przykład możesz aprowizować nową usługę BizTalk. Po pomyślnym zakończeniu, usługa BizTalk jest `active` stanu. W stanie aktywnym można zatrzymać, wstrzymać i usuwać usługi BizTalk. Jeśli należy zatrzymać usługę BizTalk i Zatrzymaj zakończy się niepowodzeniem, a następnie usługa BizTalk przechodzi do `StopFailed` stanu. W `StopFailed` stanu, można ponownie uruchomić usługę BizTalk service. Jeśli spróbujesz operacji, która nie jest dozwolona, np. Wznów wystąpi następujący błąd:
 
 `Operation not allowed`
 
 ## <a name="view-the-possible-states"></a>Możliwe stany
 
-W poniższych tabelach przedstawiono operacje lub akcje, które można wykonać, gdy usługa BizTalk znajduje się w określonym stanie. ✔ oznacza, że operacja jest dozwolona w tym stanie. Pusty wpis oznacza, że znajduje się w tym stanie nie można wykonać operacji.
+W poniższej tabeli wymieniono operacje lub akcje, które mogą realizować, gdy usługa BizTalk Services jest w określonym stanie. ✔ oznacza, że ta operacja jest dozwolona w tym stanie. Pusty element oznacza, że nie można wykonać operacji znajduje się w tym stanie.
 
-| Stan usługi | Uruchamianie | Stop | Ponowne uruchamianie | Wstrzymaj | Resume | Usuwanie | Skalowanie | Aktualizacja <br/> Konfiguracja | Tworzenie kopii zapasowych |
+| Stan usługi | Uruchamianie | Stop | Ponowne uruchamianie | Wstrzymaj | Resume | Usuwanie | Skalowanie | Aktualizacja <br/> Konfigurowanie | Backup |
 | --- | --- | --- | --- | --- | --- | --- |--- | --- | --- |
 | Aktywne |  | ✔ | ✔ | ✔ |  | ✔ |✔ |✔ |✔ |
 | Disabled (Wyłączony) |  |  |  |  |  | ✔ | |  |  | 
 | Zawieszone |  |  |  |  | ✔ | ✔ | |  | ✔ |
-| Zatrzymane | ✔ |  | ✔ |  |  | ✔ | |  | ✔ |
+| Zatrzymano | ✔ |  | ✔ |  |  | ✔ | |  | ✔ |
 | Aktualizacja usługi nie powiodło się |  |  |  |  |  | ✔ | |  |  | 
 | DisableFailed |  |  |  |  |  | ✔ | |  |  | 
 | EnableFailed |  |  |  |  |  | ✔ | |  |  | 
@@ -53,10 +53,10 @@ W poniższych tabelach przedstawiono operacje lub akcje, które można wykonać,
 
 
 ## <a name="see-also"></a>Zobacz też
-* [Co można zrobić w kartach pulpitu nawigacyjnego, monitor i skalowania w usługi BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-* [Pobierz Developer, podstawowa, standardowa i Premium Edition w usługi BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [Jak wykonać kopię zapasową i przywrócić usługi BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-* [Ograniczanie wyjaśniono w usługi BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
-* [Pobrać usługi Service Bus i kontroli dostępu wystawcy nazwy i wystawców wartości klucza dla usługi BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
-* [Jak rozpocząć pracę z zestawem SDK usługi Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [Co można zrobić na kartach pulpit nawigacyjny, monitor i skalowanie w usłudze BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+* [Co można uzyskać za pomocą wersji Developer, Basic, Standard i Premium w usłudze BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [Jak utworzyć kopię zapasową i przywrócić usługi BizTalk](https://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+* [Ograniczanie wyjaśnione w usłudze BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
+* [Pobieranie usługi Service Bus i Access Control wystawcy nazwy i Wystawca klucza wartości dla usługi BizTalk](https://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+* [Jak rozpocząć pracę z zestawem SDK usługi Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 

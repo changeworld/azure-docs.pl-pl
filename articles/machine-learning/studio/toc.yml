@@ -4,12 +4,16 @@ items:
 - name: Omówienie
   items:
   - name: Machine Learning Studio
+    displayName: overview
     href: what-is-ml-studio.md
   - name: Możliwości usługi ML Studio
+    displayName: overview
     href: studio-overview-diagram.md
   - name: Podstawy usługi ML Studio (infografika)
+    displayName: algorithm, algorithms
     href: basics-infographic-with-algorithm-examples.md
   - name: Często zadawane pytania
+    displayName: FAQ
     href: faq.md
   - name: Co nowego?
     href: whats-new.md
@@ -17,6 +21,7 @@ items:
 - name: Rozpoczęcie pracy
   items:
   - name: Tworzenie pierwszego eksperymentu
+    displayName: quickstart
     href: create-experiment.md
   - name: Przykładowy przewodnik
     items:
@@ -31,8 +36,10 @@ items:
     - name: 4 — Nauczanie i ocena
       href: walkthrough-4-train-and-evaluate-models.md
     - name: 5 — Wdrażanie usługi internetowej
+      displayName: publish
       href: walkthrough-5-publish-web-service.md
     - name: 6 — Uzyskiwanie dostępu do usługi internetowej
+      displayName: consume
       href: walkthrough-6-access-web-service.md
   - name: Analiza danych dla początkujących
     items:
@@ -63,6 +70,7 @@ items:
       - name: Wdrażanie przy użyciu usługi ARM
         href: deploy-with-resource-manager-template.md
       - name: Wyświetlanie i usuwanie danych konta usługi Studio
+        displayName: export
         href: export-delete-personal-data-dsr.md
   - name: Uzyskiwanie i rozumienie danych
     items:
@@ -77,6 +85,7 @@ items:
       - name: Z eksperymentu
         href: import-data-from-an-experiment.md
       - name: Korzystanie z lokalnej bazy danych SQL
+        displayName: on-premises
         href: use-data-from-an-on-premises-sql-server.md
   - name: Opracowywanie modeli
     items:
@@ -87,6 +96,7 @@ items:
       - name: Zarządzanie iteracjami eksperymentów
         href: manage-experiment-iterations.md
       - name: Tworzenie modeli przy użyciu programu PowerShell
+        displayName: endpoint, endpoints
         href: create-models-and-endpoints-with-powershell.md
       - name: Wybieranie algorytmów
         items:
@@ -103,6 +113,7 @@ items:
         - name: Ocena wydajności
           href: evaluate-model-performance.md
         - name: Optymalizowanie parametrów
+          displayName: optimization
           href: algorithm-parameters-optimize.md
         - name: Interpretowanie wyników
           href: interpret-model-results.md
@@ -117,20 +128,25 @@ items:
         - name: Wykonywanie skryptów w języku Python
           href: execute-python-scripts.md
   - name: Operacjonalizowanie modeli
+    displayName: deploy
     items:
     - name: Omówienie
+      displayName: deploy, consume, web service
       href: deploy-consume-web-service-guide.md
     - name: Wdrażanie modeli
       items:
       - name: Wdrażanie usługi internetowej
+        displayName: publish
         href: publish-a-machine-learning-web-service.md
       - name: Jak to działa
         href: model-progression-experiment-to-web-service.md
       - name: Przygotowanie do wdrożenia
         href: convert-training-experiment-to-scoring-experiment.md
       - name: Korzystanie z danych zewnętrznych
+        displayName: import, export
         href: web-services-that-use-import-export-modules.md
       - name: Wdrażanie w wielu regionach
+        displayName: multiple regions
         href: how-to-deploy-to-multiple-regions.md
       - name: Korzystanie z parametrów usług internetowych
         href: web-service-parameters.md
@@ -141,6 +157,7 @@ items:
       - name: Korzystanie z portalu usług internetowych
         href: manage-new-webservice.md
       - name: Zarządzanie za pomocą interfejsów API
+        displayName: endpoint, endpoints
         href: manage-web-service-endpoints-using-api-management.md
       - name: Tworzenie punktów końcowych
         href: create-endpoint.md
@@ -238,9 +255,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-machine-learning
   - name: Filmy wideo
     href: https://azure.microsoft.com/resources/videos/index/?services=machine-learning
-ms.openlocfilehash: b7c5cea35e8b1441bc8a08e8d8582141cd430868
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 77caf4b0144b8c7d7a7a48053d55864bfa9ae286
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431529"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287595"

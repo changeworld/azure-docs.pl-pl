@@ -12,18 +12,18 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: c9c3383719ed8001167a6dce42d2df3e58b6ca74
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 0da4626943a7223b24baac80121b5da0062c0d73
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161968"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237081"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Kod docelowy buforu dla rozszerzonych zdarzeń w bazie danych SQL cyklicznego
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-Chcesz kompletny przykład kodu dla szybkiego Najprostszym sposobem przechwytywania i przekazuje informacje dla zdarzeń rozszerzonych podczas testu. Najprostszym miejsce docelowe dla danych zdarzeń rozszerzonych jest [docelowej bufor cykliczny](http://msdn.microsoft.com/library/ff878182.aspx).
+Chcesz kompletny przykład kodu dla szybkiego Najprostszym sposobem przechwytywania i przekazuje informacje dla zdarzeń rozszerzonych podczas testu. Najprostszym miejsce docelowe dla danych zdarzeń rozszerzonych jest [docelowej bufor cykliczny](https://msdn.microsoft.com/library/ff878182.aspx).
 
 W tym temacie przedstawiono przykładowy kod języka Transact-SQL, który:
 
@@ -50,8 +50,8 @@ W tym temacie przedstawiono przykładowy kod języka Transact-SQL, który:
 * SQL Server Management Studio (ssms.exe), najlepiej jej najnowszej miesięcznych aktualizacji wersji. 
   Możesz pobrać najnowszą ssms.exe od:
   
-  * Temat zatytułowany [pobierania programu SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).
-  * [Bezpośredni link do pobierania.](http://go.microsoft.com/fwlink/?linkid=616025)
+  * Temat zatytułowany [pobierania programu SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+  * [Bezpośredni link do pobierania.](https://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>Przykład kodu
 
@@ -353,6 +353,6 @@ Inne tematy przykładowy kod dla rozszerzonych zdarzeń są dostępne poniższe 
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
 -->

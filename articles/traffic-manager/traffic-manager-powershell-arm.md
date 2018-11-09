@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 8dcd89415bdd48b2d8d5c8e1e699159e9d1129e5
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8696f4780db8b98457b56dd7f1162553697023d4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139479"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237931"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Zarządzanie usługą Traffic Manager przy użyciu programu PowerShell
 
@@ -178,7 +178,7 @@ Każdy profil usługi Traffic Manager określa pojedynczą metodę routingu ruch
 Zagnieżdżone punkty końcowe są konfigurowane w profilu nadrzędnego, przy użyciu typu określonego punktu końcowego "NestedEndpoints". Podczas określania zagnieżdżonych punktów końcowych:
 
 * Należy określić punkt końcowy przy użyciu parametru "element targetResourceId"
-* Jeśli używana jest metoda routingu ruchu "Wydajność", "EndpointLocation" jest wymagana. W przeciwnym razie jest to opcjonalne. Wartość musi być [nazwa prawidłowy region platformy Azure](http://azure.microsoft.com/regions/).
+* Jeśli używana jest metoda routingu ruchu "Wydajność", "EndpointLocation" jest wymagana. W przeciwnym razie jest to opcjonalne. Wartość musi być [nazwa prawidłowy region platformy Azure](https://azure.microsoft.com/regions/).
 * "Waga" i "Priority" są opcjonalne, jak w przypadku punkty końcowe platformy Azure.
 * Parametr "MinChildEndpoints" jest opcjonalny. Wartość domyślna to "1". Jeśli liczba dostępnych punktów końcowych nie spadnie poniżej tego progu, profilu nadrzędnego uważa, profilu podrzędny "negatywny wpływ na dostępność" i przekierowywanie ruchu do punktów końcowych w profilu nadrzędnej.
 

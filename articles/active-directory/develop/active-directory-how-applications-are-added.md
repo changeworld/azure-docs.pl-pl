@@ -17,12 +17,12 @@ ms.date: 04/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
-ms.openlocfilehash: fb2bfc89322d81833b1961bfb866a773c5d1d475
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 8e806fc334faf85864ea9158d4f2ed6d107327ae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577234"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241501"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak i dlaczego aplikacje są dodawane do usługi Azure AD
 
@@ -69,7 +69,7 @@ Podobnie jak obiekty aplikacji jednostki usługi mogą być tworzone za pomocą 
 
 * Gdy użytkownicy logują się do aplikacji innych firm zintegrowane z usługą Azure AD
   * Podczas logowania użytkownicy zostaną poproszeni o przyznać uprawnienia do aplikacji w celu dostępu do swojego profilu i inne uprawnienia. Pierwszą osobą, aby wyrazić zgodę powoduje, że nazwy głównej usługi, która reprezentuje aplikacji, które mają zostać dodane do katalogu.
-* Gdy użytkownicy logują się do usług online firmy Microsoft, takich jak [usługi Office 365](http://products.office.com/)
+* Gdy użytkownicy logują się do usług online firmy Microsoft, takich jak [usługi Office 365](https://products.office.com/)
   * Po zasubskrybowaniu usługi Office 365 lub Rozpocznij okres próbny nazwy główne usług są tworzone w katalogu reprezentująca różne usługi, które są używane do dostarczania, wszystkie funkcje związane z usługą Office 365.
   * Niektóre usługi Office 365, takich jak SharePoint tworzenie jednostek usługi w sposób ciągły, aby umożliwić bezpieczną komunikację między składnikami, włącznie z przepływami pracy.
 * Gdy administrator dodaje aplikację z galerii aplikacji (to spowoduje również utworzenie podstawowego obiektu aplikacji)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 8cca69109f07cbcffe2a5d796262e51fc9233cc5
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 8591e723cad1c44e9cc8d00008485e6b304fc4d3
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914692"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283374"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Jak dołączyć Azure Monitor wykrywający sytuacje, maszyny wirtualne (wersja zapoznawcza)
 W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla maszyn wirtualnych w celu monitorowania kondycji systemu operacyjnego w maszynach wirtualnych platformy Azure oraz wykrywanie i mapowanie zależności aplikacji, które może być hostowana na nich.  
@@ -337,7 +337,7 @@ Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpie
     ```
 
 ### <a name="enable-using-azure-policy"></a>Włącz przy użyciu usługi Azure Policy
-Aby włączyć usługi Azure Monitor dla maszyn wirtualnych na dużą skalę, która zapewnia spójne zgodności i automatyczne włączanie dla nowych maszyn wirtualnych aprowizowane, [usługi Azure Policy](../azure-policy/azure-policy-introduction.md) jest zalecane. Te zasady:
+Aby włączyć usługi Azure Monitor dla maszyn wirtualnych na dużą skalę, która zapewnia spójne zgodności i automatyczne włączanie dla nowych maszyn wirtualnych aprowizowane, [usługi Azure Policy](../governance/policy/overview.md) jest zalecane. Te zasady:
 
 * Wdrażanie agenta usługi Log Analytics i agenta zależności 
 * Raport dotyczący wyniki sprawdzania zgodności 

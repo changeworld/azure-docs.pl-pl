@@ -4,7 +4,7 @@ items:
 - name: Omówienie
   items:
   - name: Co to jest usługa Azure Machine Learning?
-    displayName: AML, services
+    displayName: AML, services, overview
     href: overview-what-is-azure-ml.md
   - name: Jak działa usługa
     displayName: architecture
@@ -17,6 +17,7 @@ items:
   - name: Wprowadzenie — portal
     href: quickstart-get-started.md
   - name: Wprowadzenie — Python
+    displayName: create workspace
     href: quickstart-create-workspace-with-python.md
 - name: Samouczki
   items:
@@ -25,6 +26,7 @@ items:
   - name: 'Wdrażanie modeli: część 2'
     href: tutorial-deploy-models-with-aml.md
   - name: Szkolenie zautomatyzowanych modeli uczenia maszynowego
+    displayName: automl
     href: tutorial-auto-train-models.md
 - name: Przykłady
   items:
@@ -34,6 +36,7 @@ items:
 - name: Pojęcia
   items:
   - name: Zarządzanie modelami
+    displayName: deploy, deployment
     href: concept-model-management-and-deployment.md
   - name: Przyspieszanie działania dzięki układom FPGA
     href: concept-accelerate-with-fpgas.md
@@ -51,13 +54,14 @@ items:
     - name: Konfigurowanie środowiska
       href: how-to-configure-environment.md
     - name: VS Code Tools for AI
+      displayName: Visual Studio Code, vscode
       items:
       - name: Rozpoczęcie pracy
         href: how-to-vscode-tools.md
       - name: Szkolenie i wdrażanie
         href: how-to-vscode-train-deploy.md
   - name: Przygotowywanie danych
-    displayName: data prep, etl, elt
+    displayName: data prep, etl, elt, data preparation
     href: how-to-data-prep.md
     items:
     - name: Ładowanie danych
@@ -69,6 +73,7 @@ items:
   - name: Szkolenie modeli
     items:
     - name: Konfigurowanie środowisk szkoleniowych
+      displayName: compute target, train
       href: how-to-set-up-training-targets.md
     - name: Uzyskiwanie dostępu do danych w ramach szkolenia
       href: how-to-access-data.md
@@ -79,13 +84,12 @@ items:
         href: how-to-train-pytorch.md
       - name: TensorFlow
         href: how-to-train-tensorflow.md
-  - name: Dostrajanie modeli
-    items:
     - name: Dostrajanie hiperparametrów
       href: how-to-tune-hyperparameters.md
     - name: Śledzenie eksperymentów i metryk
       href: how-to-track-experiments.md
   - name: Automatyzacja uczenia maszynowego
+    displayName: automl
     href: how-to-automated-ml.md
     items:
     - name: Konfigurowanie uczenia automatycznego
@@ -101,8 +105,10 @@ items:
     - name: Gdzie należy wdrażać modele
       href: how-to-deploy-and-where.md
     - name: Wdrażanie w usłudze ACI
+      displayName: Azure Container Instances
       href: how-to-deploy-to-aci.md
     - name: Wdrażanie w usłudze AKS
+      displayName: Azure Kubernetes
       href: how-to-deploy-to-aks.md
     - name: Wdrażanie w układach FPGA
       href: how-to-deploy-fpga-web-service.md
@@ -347,9 +353,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Stare problemy
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 23e715064db714765a11771182248978f9493bd2
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 06fb6198395fbf57d9c56aeedea7d96be3ab1c86
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095079"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287629"

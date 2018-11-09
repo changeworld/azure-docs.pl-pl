@@ -2,16 +2,16 @@
 title: Wprowadzenie do zapory aplikacji sieci web (WAF) w usłudze Azure Application Gateway
 description: Ten artykuł zawiera omówienie zapory aplikacji sieci web (WAF) w usłudze Application Gateway
 services: application-gateway
-author: amsriva
+author: vhorne
 ms.service: application-gateway
-ms.date: 10/11/2018
+ms.date: 11/7/2018
 ms.author: amsriva
-ms.openlocfilehash: 10a67eab142287cf9303e54005b6b167e9890df0
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4b03065c59eed8f0d72e2724e60b6d8908518727
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068455"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219532"
 ---
 # <a name="web-application-firewall-waf"></a>Zapora aplikacji internetowej
 
@@ -39,7 +39,7 @@ Poniżej przedstawiono główne korzyści wynikające ze stosowania usługi Appl
 
 * Monitoruj aplikację internetową pod kątem ataków przy użyciu dziennika zapory aplikacji internetowej w czasie rzeczywistym. Ten dziennik jest zintegrowany z usługą [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) w celu śledzenia alertów i dzienników zapory aplikacji sieci Web oraz łatwego monitorowania trendów.
 
-* Zapora aplikacji sieci Web zostanie wkrótce zintegrowana z usługą Azure Security Center. Usługa Azure Security Center daje pełny widok stanu bezpieczeństwa wszystkich Twoich zasobów platformy Azure.
+* Zapora aplikacji sieci Web jest zintegrowana z usługą Azure Security Center. Usługa Azure Security Center daje pełny widok stanu bezpieczeństwa wszystkich Twoich zasobów platformy Azure.
 
 ### <a name="customization"></a>Dostosowywanie
 
@@ -47,12 +47,12 @@ Poniżej przedstawiono główne korzyści wynikające ze stosowania usługi Appl
 
 ## <a name="features"></a>Funkcje
 
-- Ochrona przed atakami polegającymi na iniekcji SQL
-- Ochrona przed atakami z użyciem skryptów wykorzystywanych w obrębie wielu witryn
-- Częste ataki w ramach sieci Web polegające na iniekcji poleceń, przemycaniu żądań HTTP, rozdzielaniu odpowiedzi HTTP i zdalnym dołączaniu plików
+- Ochrona iniekcji SQL
+- Obejmujące wiele lokacji skryptów ochrony
+- Typowe sieci Web przed atakami ochronę polegającą na polegające na iniekcji poleceń, przemycaniu odpowiedzi HTTP, rozdzielaniu żądań HTTP i ataku dołączenie pliku zdalnego
 - Ochrona przed naruszeniami protokołu HTTP
-- Ochrona przed nieprawidłowościami protokołu HTTP, takimi jak brakujące powiązania agenta i użytkownika hosta oraz akceptowanie nagłówków
-- Zapobieganie atakom z użyciem robotów, przeszukiwarek i skanerów
+- Ochrona przed anomalie protokołu HTTP, takich jak brakujące hosta agenta użytkownika ani nagłówków accept
+- Zapobieganie atakom robotów, przeszukiwarek i skanerów
 - Wykrywanie typowych błędów konfiguracji aplikacji (czyli Apache, usługi IIS itp.)
 
 ### <a name="public-preview-features"></a>Funkcje w publicznej wersji zapoznawczej
@@ -74,13 +74,13 @@ Usługa Application Gateway obsługuje dwa zestawy reguł: CRS 3.0 i CRS 2.2.9. 
 
 Zapora aplikacji internetowej jest domyślnie wstępnie skonfigurowana przy użyciu zestawu CRS 3.0, ale możesz używać wersji 2.2.9. Zestaw CRS 3.0 oferuje mniejszą liczbę wyników fałszywie dodatnich niż wersja 2.2.9. Umożliwiono [dostosowywanie reguł do określonych wymagań](application-gateway-customize-waf-rules-portal.md). Oto niektóre typowe luki w zabezpieczeniach w Internecie, przed którymi chroni zapora aplikacji internetowej:
 
-- Ochrona przed atakami polegającymi na iniekcji SQL
-- Ochrona przed atakami z użyciem skryptów wykorzystywanych w obrębie wielu witryn
-- Częste ataki w ramach sieci Web polegające na iniekcji poleceń, przemycaniu żądań HTTP, rozdzielaniu odpowiedzi HTTP i zdalnym dołączaniu plików
+- Ochrona iniekcji SQL
+- Obejmujące wiele lokacji skryptów ochrony
+- Typowe sieci Web przed atakami ochronę polegającą na polegające na iniekcji poleceń, przemycaniu odpowiedzi HTTP, rozdzielaniu żądań HTTP i ataku dołączenie pliku zdalnego
 - Ochrona przed naruszeniami protokołu HTTP
-- Ochrona przed nieprawidłowościami protokołu HTTP, takimi jak brakujące powiązania agenta i użytkownika hosta oraz akceptowanie nagłówków
-- Zapobieganie atakom z użyciem robotów, przeszukiwarek i skanerów
-- Wykrywanie typowych błędów konfiguracji aplikacji (np. Apache, usługi IIS itp.)
+- Ochrona przed anomalie protokołu HTTP, takich jak brakujące hosta agenta użytkownika ani nagłówków accept
+- Zapobieganie atakom robotów, przeszukiwarek i skanerów
+- Wykrywanie typowych błędów konfiguracji aplikacji (np. Apache, usługi IIS, itd.)
 
 Bardziej szczegółowe listę reguł i ich ochrony w artykule [podstawowych zestawów reguł](#core-rule-sets).
 

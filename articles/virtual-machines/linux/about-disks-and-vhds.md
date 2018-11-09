@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.component: disks
-ms.openlocfilehash: feb3e60ee1b43ec85c81912fbce086858bb33742
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
-ms.translationtype: MT
+ms.openlocfilehash: 53b44d47d9421f1b37aef7ca4d30c2c753b79740
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715934"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218325"
 ---
 # <a name="about-disks-storage-for-azure-linux-vms"></a>Magazyn dysków dla maszyn wirtualnych systemu Linux platformy Azure — informacje
 Podobnie jak dowolny inny komputer maszyn wirtualnych na platformie Azure używać dysków jako miejsce do przechowywania systemu operacyjnego, aplikacji i danych. Wszystkie maszyny wirtualne platformy Azure ma co najmniej dwa dyski — dysk systemu operacyjnego Linux oraz dyski tymczasowe. Dysk systemu operacyjnego jest tworzone na podstawie obrazu, a dysk systemu operacyjnego i obrazu są wirtualne dyski twarde (VHD) przechowywane na koncie usługi Azure storage. Maszyny wirtualne mogą także mieć co najmniej jeden dysk danych, które również są przechowywane jako wirtualne dyski twarde.
@@ -37,8 +37,6 @@ Każda maszyna wirtualna zawiera dyski tymczasowe. Dysk tymczasowy udostępnia k
 
 Na maszynach wirtualnych z systemem Linux dysk jest zwykle **/dev/sdb** jest sformatowany i zamontowany **katalogu/mnt** przez agenta systemu Linux platformy Azure. Rozmiar dysku tymczasowego zależy od rozmiaru maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych systemu Linux](../windows/sizes.md).
 
-Aby uzyskać więcej informacji o używaniu platformy Azure na dysk tymczasowy, zobacz [opis dysku tymczasowego na Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
-
 ## <a name="data-disk"></a>Dysk z danymi
 
 Dysk danych to wirtualny dysk twardy, który jest dołączony do maszyny wirtualnej do przechowywania danych aplikacji lub innymi danymi, które należy zachować. Dyski danych są rejestrowane jako dyski SCSI i są oznaczone literą, który wybierzesz. Każdy dysk z danymi ma maksymalną pojemność wynoszącą 4095 GB. Rozmiar maszyny wirtualnej Określa, jak wiele dysków z danymi można dołączać i typ magazynu służy do obsługi dysków.
@@ -59,4 +57,3 @@ Można dodać dysków z danymi do maszyny wirtualnej w dowolnym momencie przez *
 * [Dołączanie dysku](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) można dodać dodatkowy magazyn dla maszyny Wirtualnej.
 * [Utwórz migawkę](snapshot-copy-managed-disk.md).
 * [Konwertowanie do usługi managed disks](convert-unmanaged-to-managed-disks.md).
-

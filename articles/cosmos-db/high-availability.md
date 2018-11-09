@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: fb7de4a913fa1edb3329e25276f83be2fb6cecd8
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 5dc43aa5b98f097bd8bdf927f40b2d3efc878d48
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961810"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283499"
 ---
 # <a name="high-availability-in-azure-cosmos-db"></a>Wysoka dostępność w usłudze Azure Cosmos DB
 
@@ -69,7 +69,7 @@ Następnie informacje na temat skalowania przepływności w następującym artyk
 
 * [Dostępność i wydajność kompromisy dla różnych poziomów spójności](consistency-levels-tradeoffs.md)
 
-* [Skalowanie przepływności globalnie](scaling-throughput.md)
+* [Skalowanie aprowizowanej przepływności globalnie](scaling-throughput.md)
 
 * [Dystrybucja globalna - kulisy](global-dist-under-the-hood.md)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 93b79b7adacdec18912d28bb9725e2dc77737d59
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 2190978b2583b2f5d8a1b10431c65fd24fe6842d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050767"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228151"
 ---
 # <a name="upgrade-your-standalone-azure-service-fabric-cluster-on-windows-server"></a>Uaktualnianie klastra usługi Azure Service Fabric autonomicznego w systemie Windows Server 
 > [!div class="op_single_selector"]
@@ -43,9 +43,9 @@ Klaster można uaktualnić do nowej wersji, tylko wtedy, gdy używasz się konfi
 Klaster można uaktualnić do najnowszej wersji lub obsługiwana wersja usługi Service Fabric dwóch różnych przepływów pracy. Jeden przepływ pracy jest w przypadku klastrów, które mają łączność, aby pobrać najnowszą wersję automatycznie. Inny przepływ pracy jest w przypadku klastrów, które nie mają połączenia, aby pobrać najnowszą wersję usługi Service Fabric.
 
 ### <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>Uaktualnianie klastrów, które mają łączność do pobierania najnowszych kodu i konfiguracji
-Wykonaj następujące kroki w celu uaktualnienia klastra do obsługiwanej wersji, jeśli węzły klastra ma połączenia internetowego z [Microsoft Download Center](http://download.microsoft.com).
+Wykonaj następujące kroki w celu uaktualnienia klastra do obsługiwanej wersji, jeśli węzły klastra ma połączenia internetowego z [Microsoft Download Center](https://download.microsoft.com).
 
-W przypadku klastrów, które mają łączność z [Microsoft Download Center](http://download.microsoft.com), Microsoft okresowo sprawdza dostępność nowych wersji usługi Service Fabric.
+W przypadku klastrów, które mają łączność z [Microsoft Download Center](https://download.microsoft.com), Microsoft okresowo sprawdza dostępność nowych wersji usługi Service Fabric.
 
 Gdy dostępna jest nowa wersja usługi Service Fabric, pakiet jest pobierana lokalnie z klastrem i zainicjowana obsługa administracyjna dla uaktualnienie. Ponadto informowanie klientów o tej nowej wersji, system wyświetla ostrzeżenie kondycji jawne klastra, który jest podobny do następującego:
 
@@ -106,7 +106,7 @@ Gdy pojawi się ostrzeżenie kondycji klastra, wykonaj następujące czynności:
     Po rozwiązaniu problemów, które spowodowało wycofywania, należy ponownie zainicjować uaktualnienie wykonując te same czynności w sposób opisany wcześniej.
 
 ### <a name="upgrade-clusters-that-have-no-connectivity-to-download-the-latest-code-and-configuration"></a>Uaktualnianie klastrów, które mają *braku łączności z* można pobrać najnowszy kod i Konfiguracja
-Wykonaj następujące kroki w celu uaktualnienia klastra do obsługiwanej wersji, jeśli węzły klastra nie ma łączności z Internetem [Microsoft Download Center](http://download.microsoft.com).
+Wykonaj następujące kroki w celu uaktualnienia klastra do obsługiwanej wersji, jeśli węzły klastra nie ma łączności z Internetem [Microsoft Download Center](https://download.microsoft.com).
 
 > [!NOTE]
 > Jeśli korzystasz z klastra, który nie jest połączony z Internetem, należy monitorować blog zespołu usługi Service Fabric, aby dowiedzieć się więcej o nowych wersjach. System nie wyświetla ostrzeżenie kondycji klastra o nowych wersjach.  

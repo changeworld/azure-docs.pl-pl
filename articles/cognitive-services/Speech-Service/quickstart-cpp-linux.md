@@ -8,32 +8,32 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 10/12/2018
+ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: c637659c58ba518b8d1efca11bfa5303f1e1dde0
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: bfb71c000eea56e705b33fb97827aead23de8cbb
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469116"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219277"
 ---
-# <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku C++ w systemie Linux przy użyciu zestawu SDK usługi Mowa
+# <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku C++ w systemie Linux przy użyciu zestawu Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-W tym artykule opisano tworzenie aplikacji konsolowej w języku C++ dla systemu Ubuntu Linux 16.04. Należy użyć [zestawu SDK usługi Mowa](speech-sdk.md) z usługi Cognitive Services do transkrypcji mowy na tekst w czasie rzeczywistym z mikrofonu komputera. Aplikacja jest kompilowana przy użyciu [zestawu SDK usługi Mowa dla systemu Linux](https://aka.ms/csspeech/linuxbinary) i kompilatora języka C++ dystrybucji systemu Linux (na przykład `g++`).
+W tym artykule opisano tworzenie aplikacji konsolowej w języku C++ dla systemu Ubuntu Linux 16.04. Należy użyć zestawu [Speech SDK](speech-sdk.md) usługi Cognitive Services do transkrypcji mowy na tekst w czasie rzeczywistym z mikrofonu komputera. Aplikacja jest kompilowana przy użyciu [zestawu Speech SDK dla systemu Linux](https://aka.ms/csspeech/linuxbinary) i kompilatora języka C++ dystrybucji systemu Linux (na przykład `g++`).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskrypcji usługi Mowa. Możesz go uzyskać bezpłatnie. Zobacz [Wypróbuj bezpłatnie usługę Mowa](get-started.md), aby uzyskać szczegółowe informacje.
+Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskrypcji usługi rozpoznawania mowy. Możesz go uzyskać bezpłatnie. Zobacz [Wypróbuj bezpłatnie usługę rozpoznawania mowy](get-started.md), aby uzyskać szczegółowe informacje.
 
-## <a name="install-speech-sdk"></a>Instalowanie zestawu SDK usługi Mowa
+## <a name="install-speech-sdk"></a>Instalowanie zestawu Speech SDK
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Bieżąca wersja zestawu SDK usługi Mowa z usługi Cognitive Services to `1.0.1`.
+Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.1.0`.
 
-Zestawu SDK usługi Mowa dla systemu Linux można używać do kompilowania aplikacji 64-bitowych i 32-bitowych. Wymagane biblioteki i pliki nagłówkowe można pobrać jako plik TAR ze strony https://aka.ms/csspeech/linuxbinary.
+Zestawu Speech SDK dla systemu Linux można używać do kompilowania aplikacji 64-bitowych i 32-bitowych. Wymagane biblioteki i pliki nagłówkowe można pobrać jako plik TAR ze strony https://aka.ms/csspeech/linuxbinary.
 
 Pobierz i zainstaluj zestaw SDK w następujący sposób:
 
@@ -44,7 +44,7 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
    sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
    ```
 
-1. Wybierz katalog, do którego pliki zestawów SDK usługi Mowa powinny zostać wyodrębnione, i ustaw zmienną środowiskową `SPEECHSDK_ROOT`, aby wskazywała na ten katalog. Ta zmienna ułatwia odwoływanie się do katalogu w przyszłych poleceniach. Jeśli na przykład chcesz używać katalogu `speechsdk` w katalogu macierzystym, użyj polecenia podobnego do poniższego:
+1. Wybierz katalog, do którego pliki zestawów Speech SDK powinny zostać wyodrębnione, i ustaw zmienną środowiskową `SPEECHSDK_ROOT`, aby wskazywała na ten katalog. Ta zmienna ułatwia odwoływanie się do katalogu w przyszłych poleceniach. Jeśli na przykład chcesz używać katalogu `speechsdk` w katalogu macierzystym, użyj polecenia podobnego do poniższego:
 
    ```sh
    export SPEECHSDK_ROOT="$HOME/speechsdk"
@@ -56,7 +56,7 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
    mkdir -p "$SPEECHSDK_ROOT"
    ```
 
-1. Pobierz i wyodrębnij archiwum `.tar.gz` zawierające pliki binarne zestawu SDK usługi Mowa:
+1. Pobierz i wyodrębnij archiwum `.tar.gz` zawierające pliki binarne zestawu Speech SDK:
 
    ```sh
    wget -O SpeechSDK-Linux.tar.gz https://aka.ms/csspeech/linuxbinary
@@ -79,7 +79,7 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp-linux/helloworld.cpp#code)]
 
-1. W nowym pliku zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji usługi Mowa.
+1. W nowym pliku zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji usługi rozpoznawania mowy.
 
 1. Zastąp ciąg `YourServiceRegion` [regionem](regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
@@ -102,7 +102,7 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
 
 ## <a name="run-the-app"></a>Uruchamianie aplikacji
 
-1. Skonfiguruj ścieżkę biblioteki modułu ładującego tak, aby wskazywała bibliotekę zestawu SDK usługi Mowa.
+1. Skonfiguruj ścieżkę biblioteki modułu ładującego tak, aby wskazywała bibliotekę zestawu Speech SDK.
 
    * W systemie **x64** (wersja 64-bitowa) wprowadź następujące polecenie.
 
@@ -122,7 +122,7 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
    ./helloworld
    ```
 
-1.  W oknie konsoli zostanie wyświetlony monit o wypowiedzenie tekstu. Wymów frazę lub zdanie w języku angielskim. Mowa zostanie przesłana do usługi Mowa i transkrybowana na tekst, który zostanie wyświetlony w tym samym oknie.
+1.  W oknie konsoli zostanie wyświetlony monit o wypowiedzenie tekstu. Wymów frazę lub zdanie w języku angielskim. Mowa zostanie przesłana do usługi rozpoznawania mowy i transkrybowana na tekst, który zostanie wyświetlony w tym samym oknie.
 
    ```text
    Say something...
@@ -135,10 +135,10 @@ Poszukaj tego przykładu w folderze `quickstart/cpp-linux`.
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Recognize intents from speech by using the Speech SDK for C++](how-to-recognize-intents-from-speech-cpp.md) (Rozpoznawanie intencji z mowy przy użyciu zestawu SDK usługi Mowa dla języka C++)
+> [Recognize intents from speech by using the Speech SDK for C++](how-to-recognize-intents-from-speech-cpp.md) (Rozpoznawanie intencji z mowy przy użyciu zestawu Speech SDK mowy dla języka C++)
 
 ## <a name="see-also"></a>Zobacz też
 
-- [Translate speech with the Cognitive Services Speech SDK for C#](how-to-translate-speech-csharp.md) (Tłumaczenie mowy za pomocą zestawu SDK usługi Mowa z usługi Cognitive Services dla języka C#)
+- [Translate speech with the Cognitive Services Speech SDK for C#](how-to-translate-speech-csharp.md) (Tłumaczenie mowy za pomocą zestawu Speech SDK usługi Cognitive Services dla języka C#)
 - [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
 - [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)

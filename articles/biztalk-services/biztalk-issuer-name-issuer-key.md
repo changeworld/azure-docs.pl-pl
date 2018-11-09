@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 78796b5dc62cb573f149c24d90205d26fb139cf7
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: eb5b4b3741b064a934833b3094c69db85e9ccabb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628651"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238713"
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk Services: Issuer Name and Issuer Key (Usługa BizTalk Services: nazwa i klucz wydawcy)
 
@@ -77,24 +77,24 @@ Więcej na temat [New AzureSBNamespace](https://docs.microsoft.com/powershell/mo
 Nazwa wystawcy magistrali usług i klucz wydawcy są używane przez usługi adaptera BizTalk Services. W projekcie usługi BizTalk Services w programie Visual Studio umożliwia usługi adaptera BizTalk nawiązać połączenie z lokalnym systemem Line of Business (LOB). Nawiązać połączenie, Utwórz LOB przekazywania i wprowadź swoje dane systemu LOB. W ten sposób można także wprowadzić nazwę wystawcy magistrali usługi i klucz wydawcy.
 
 ### <a name="to-retrieve-the-service-bus-issuer-name-and-issuer-key"></a>Aby pobrać nazwę wystawcy magistrali usługi i klucz wydawcy
-1. Zaloguj się w [Portalu Azure](http://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
 2. Wyszukaj **usługi Service Bus**i wybierz przestrzeń nazw. 
 3. Otwórz **zasady dostępu współdzielonego** właściwości, wybierz zasady i wyświetlić **parametry połączenia** dla nazwy i wartości klucza.  
 
 ## <a name="next"></a>Następne kroki
 Dodatkowe tematy usługi Azure BizTalk Services:
 
-* [Instalowanie zestawu SDK usługi Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
-* [Samouczki: Azure BizTalk Services —](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
-* [Jak rozpocząć pracę z zestawem SDK usługi Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-* [Usługa Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
+* [Instalowanie zestawu SDK usługi Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
+* [Samouczki: Azure BizTalk Services —](https://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
+* [Jak rozpocząć pracę z zestawem SDK usługi Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Usługa Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
 ## <a name="see-also"></a>Zobacz też
-* [Porady: Konfigurowanie tożsamości usługi za pomocą usługi zarządzania usługi ACS](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
-* [Usługa BizTalk Services: Deweloper, podstawowa, standardowa i Premium Editions Chart](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [Usługa BizTalk Services: Inicjowanie obsługi administracyjnej](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-* [BizTalk Services: Provisioning Status Chart (Usługa BizTalk Services: aprowizowanie wykresu stanu)](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-* [BizTalk Services: Dashboard, Monitor and Scale tabs (Usługa BizTalk Services: karty Pulpit nawigacyjny, Monitor i Skalowanie)](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-* [BizTalk Services: Backup and Restore (Usługa BizTalk Services: tworzenie kopii zapasowej i przywracanie)](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-* [BizTalk Services: Throttling (Usługa BizTalk Services: ograniczanie przepływności)](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
+* [Porady: Konfigurowanie tożsamości usługi za pomocą usługi zarządzania usługi ACS](https://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
+* [Usługa BizTalk Services: Deweloper, podstawowa, standardowa i Premium Editions Chart](https://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [Usługa BizTalk Services: Inicjowanie obsługi administracyjnej](https://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+* [BizTalk Services: Provisioning Status Chart (Usługa BizTalk Services: aprowizowanie wykresu stanu)](https://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+* [BizTalk Services: Dashboard, Monitor and Scale tabs (Usługa BizTalk Services: karty Pulpit nawigacyjny, Monitor i Skalowanie)](https://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+* [BizTalk Services: Backup and Restore (Usługa BizTalk Services: tworzenie kopii zapasowej i przywracanie)](https://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+* [BizTalk Services: Throttling (Usługa BizTalk Services: ograniczanie przepływności)](https://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
 

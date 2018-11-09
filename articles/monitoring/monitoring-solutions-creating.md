@@ -17,7 +17,7 @@ ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a942e1c783b460f07626e398f91f980db7634581
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51259647"

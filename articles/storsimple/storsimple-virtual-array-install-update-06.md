@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
-ms.openlocfilehash: 111976cd684561f5bc63b92f09a20470fe3036d7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 89ca7a5fa13696856bed108e4cbf7462b536b4bb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38606650"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246620"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>Instalowanie aktualizacji Update 0.6 na rozwiązania StorSimple Virtual Array
 
@@ -27,7 +27,7 @@ ms.locfileid: "38606650"
 
 W tym artykule opisano kroki wymagane do zainstalowania aktualizacji Update 0.6 na rozwiązania StorSimple Virtual Array przy użyciu witryny Azure portal i za pomocą lokalnego Interfejsu w przeglądarce. Możesz zastosować aktualizacje oprogramowania lub poprawek w celu zapewnienia aktualności rozwiązania StorSimple Virtual Array.
 
-Przed zastosowaniem aktualizacji zaleca się wykonanie woluminy lub udziały w tryb offline na hoście pierwszy i następnie urządzenia. W ten sposób możliwości uszkodzenie danych. Po woluminy lub udziały są w trybie offline, należy również wziąć ręcznego tworzenia kopii zapasowych urządzenia.
+Przed zastosowaniem aktualizacji zaleca się wykonanie woluminy lub udziały w tryb offline na hoście pierwszy i następnie urządzenia. Minimalizuje to ryzyko uszkodzenia danych. Po woluminy lub udziały są w trybie offline, należy również wziąć ręcznego tworzenia kopii zapasowych urządzenia.
 
 > [!IMPORTANT]
 > - Odnosi się do aktualizacji Update 0.6 **10.0.10293.0** wersję oprogramowania na urządzeniu. Aby uzyskać informacji na temat nowości w tej aktualizacji, przejdź do [informacje o wersji dla aktualizacji Update 0.6](storsimple-virtual-array-update-06-release-notes.md).
@@ -57,7 +57,7 @@ Wykonaj następujące kroki, aby pobrać aktualizację oprogramowania z Wykazu u
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>Aby pobrać aktualizacji lub poprawki
 
-1. Uruchom program Internet Explorer i przejdź do [ http://catalog.update.microsoft.com ](http://catalog.update.microsoft.com).
+1. Uruchom program Internet Explorer i przejdź do [ http://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
 
 2. Jeśli korzystasz wykazu usługi Microsoft Update po raz pierwszy na tym komputerze, kliknij przycisk **zainstalować** monit o zainstalowanie dodatku wykazu usługi Microsoft Update.
 
@@ -74,7 +74,7 @@ Wykonaj następujące kroki, aby pobrać aktualizację oprogramowania z Wykazu u
 6. Otwórz folder, w którym znajdują się pliki.
     ![Pliki w pakiecie](./media/storsimple-virtual-array-install-update-06/update06folder.png)
 
-    Zobacz:
+    Zobaczysz:
     -  Plik pakietu autonomicznego usługi Microsoft Update `WindowsTH-KB3011067-x64`. Ten plik jest używany do aktualizacji oprogramowania urządzenia.
     - Plik pakietu agenta monitorowania w Genewie `GenevaMonitoringAgentPackageInstaller`. Ten plik jest używany do zaktualizowania agenta usługi (MDS) monitorowania i diagnostyki. Kliknij dwukrotnie plik cab. A _.msi_ jest wyświetlana. Wybierz plik, kliknij prawym przyciskiem myszy, a następnie **wyodrębnić** pliku. Możesz użyć _.msi_ pliku do zaktualizowania agenta.
 

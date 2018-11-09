@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/23/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 1aeaff486ed9f7cb99ea0b95451fc765344847a1
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 85873dc023e63b7cc9f5ba3ff87214c49ac16e34
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086679"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246739"
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
@@ -30,7 +30,7 @@ Usługa Azure Migrate ułatwia wykonywanie następujących działań:
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 
 - Gotowość do migracji na maszyny wirtualne platformy Azure można ocenić tylko dla lokalnych maszyn wirtualnych VMware. Maszyny wirtualne VMware muszą być zarządzane przez program vCenter Server (w wersji 5.5, 6.0 lub 6.5).
-- Jeśli chcesz ocenić maszyny wirtualne funkcji Hyper-V i serwery fizyczne, użyj narzędzia [Planista wdrażania usługi Azure Site Recovery](http://aka.ms/asr-dp-hyperv-doc) w przypadku maszyn funkcji Hyper-V, a w przypadku maszyn fizycznych skorzystaj z [narzędzi partnerów](https://azure.microsoft.com/migration/partners/).
+- Jeśli chcesz ocenić maszyny wirtualne funkcji Hyper-V i serwery fizyczne, użyj narzędzia [Planista wdrażania usługi Azure Site Recovery](https://aka.ms/asr-dp-hyperv-doc) w przypadku maszyn funkcji Hyper-V, a w przypadku maszyn fizycznych skorzystaj z [narzędzi partnerów](https://azure.microsoft.com/migration/partners/).
 - Można odnajdywać maksymalnie 1500 maszyn wirtualnych w jednym odnajdywaniu i maksymalnie 1500 maszyn wirtualnych w jednym projekcie. Można oceniać maksymalnie 1500 maszyn wirtualnych w ramach pojedynczej oceny.
 - Jeśli chcesz odnaleźć większe środowisko możesz podzielić operację odnajdywania i utworzyć wielu projektów. [Dowiedz się więcej](how-to-scale-assessment.md). Usługa Azure Migrate obsługuje maksymalnie 20 projektów na subskrypcję.
 - Usługa Azure Migrate obsługuje tylko dyski zarządzane na potrzeby oceny migracji.
