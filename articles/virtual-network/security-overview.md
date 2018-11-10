@@ -4,9 +4,6 @@ description: Dowiedz się więcej na temat grup zabezpieczeń sieci i aplikacji.
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: 79ea839a5b57a2b64b80feba8324764a23c05697
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e9a4aa1606e99057565891dc10d17ba9abf15d9c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987020"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159081"
 ---
 # <a name="security-groups"></a>Grupy zabezpieczeń
 <a name="network-security-groups"></a>
@@ -60,9 +57,9 @@ Rozszerzone reguły zabezpieczeń upraszczają definicję zabezpieczeń dla siec
  Poniżej wymienione tagi usługi są dostępne do użycia w definicji reguły zabezpieczeń. Ich nazwy różnią się nieco między sobą w [modelach wdrażania platformy Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 * **VirtualNetwork** (model wdrażania przy użyciu usługi Resource Manager) (**VIRTUAL_NETWORK** — model klasyczny): ten tag obejmuje przestrzeń adresową sieci wirtualnej (wszystkie zakresy CIDR zdefiniowane dla sieci wirtualnej), wszystkie połączone lokalne przestrzenie adresowe oraz [skomunikowane równorzędnie](virtual-network-peering-overview.md) sieci wirtualne lub sieć wirtualną połączoną z [bramą sieci wirtualnej](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-* **AzureLoadBalancer** (model usługi Resource Manager) (**AZURE_LOADBALANCER** — model klasyczny): ten znacznik określa moduł równoważenia obciążenia infrastruktury platformy Azure. Ten znacznik przekłada się na [adres IP centrum danych Azure](https://www.microsoft.com/download/details.aspx?id=41653), z którego pochodzą sondy kondycji platformy Azure. Jeśli nie jest używana usługa Azure Load Balancer, tę zasadę można przesłonić.
+* **AzureLoadBalancer** (model usługi Resource Manager) (**AZURE_LOADBALANCER** — model klasyczny): ten znacznik określa moduł równoważenia obciążenia infrastruktury platformy Azure. Ten znacznik przekłada się na [wirtualny adres IP hosta](security-overview.md##azure-platform-considerations) (168.63.129.16), z którego pochodzą sondy kondycji platformy Azure. Jeśli nie jest używana usługa Azure Load Balancer, tę zasadę można przesłonić.
 * **Internet** (model usługi Resource Manager) (**INTERNET** — model klasyczny): ten tag określa przestrzeń adresów IP, która znajduje się poza siecią wirtualną i do której można uzyskać dostęp w publicznym Internecie. Ten zakres adresów obejmuje [publiczną przestrzeń adresów IP należącą do platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653).
-* **AzureCloud** (tylko model wdrażania przy użyciu usługi Resource Manager): ten tag określa przestrzeń adresową IP dla platformy Azure, w tym wszystkie publiczne adresy IP centrum danych. W przypadku określenia wartości *AzureCloud* dozwolony lub blokowany jest ruch do publicznych adresów IP platformy Azure. Jeśli chcesz zezwolić na dostęp do usługi AzureCloud w konkretnym [regionie](https://azure.microsoft.com/regions), możesz określić region. Jeśli na przykład chcesz zezwolić na dostęp do usługi AzureCloud platformy Azure tylko w regionie Wschodnie stany USA, możesz określić *AzureCloud.EastUS* jako tag usługi. 
+* **AzureCloud** (tylko model wdrażania przy użyciu usługi Resource Manager): ten tag określa przestrzeń adresową IP dla platformy Azure, w tym wszystkie [publiczne adresy IP centrum danych](https://www.microsoft.com/download/details.aspx?id=41653). W przypadku określenia wartości *AzureCloud* dozwolony lub blokowany jest ruch do publicznych adresów IP platformy Azure. Jeśli chcesz zezwolić na dostęp do usługi AzureCloud w konkretnym [regionie](https://azure.microsoft.com/regions), możesz określić region. Jeśli na przykład chcesz zezwolić na dostęp do usługi AzureCloud platformy Azure tylko w regionie Wschodnie stany USA, możesz określić *AzureCloud.EastUS* jako tag usługi. 
 * **AzureTrafficManager** (tylko model wdrażania przy użyciu usługi Resource Manager): ten tag określa przestrzeń adresową IP na potrzeby adresów IP sondy usługi Azure Traffic Manager. Więcej informacji na temat adresów IP sondy usługi Traffic Manager można znaleźć w temacie [Usługa Azure Traffic Manager — często zadawane pytania](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). 
 * **Storage** (tylko model wdrażania przy użyciu usługi Resource Manager): ten tag określa przestrzeń adresów IP dla usługi Azure Storage. W przypadku określenia wartości *Storage* dozwolony lub blokowany jest ruch do usługi Storage. Jeśli chcesz zezwolić na dostęp do usługi Storage w konkretnym [regionie](https://azure.microsoft.com/regions), możesz określić region. Jeśli na przykład chcesz zezwolić na dostęp do usługi Azure Storage tylko w regionie Wschodnie stany USA, możesz określić *Storage.EastUS* jako tag usługi. Tag reprezentuje usługę, ale nie konkretne wystąpienia usługi. Na przykład tag reprezentuje usługę Azure Storage, ale nie konkretne konto usługi Azure Storage. Wszystkie prefiksy adresów reprezentowane przez ten tag są również reprezentowane przez tag **Internet**. 
 * **Sql** (tylko model wdrażania przy użyciu usługi Resource Manager): ten tag określa prefiksy adresów usług Azure SQL Database i Azure SQL Data Warehouse. W przypadku określenia wartości *Sql* dozwolony lub blokowany jest ruch do usługi Sql. Jeśli chcesz zezwolić na dostęp do usługi Sql w konkretnym [regionie](https://azure.microsoft.com/regions), możesz określić region. Jeśli na przykład chcesz zezwolić na dostęp do usługi Azure SQL Database tylko w regionie Wschodnie stany USA, możesz określić *Sql.EastUS* jako tag usługi. Tag reprezentuje usługę, ale nie konkretne wystąpienia usługi. Na przykład tag reprezentuje usługę Azure SQL Database, ale nie konkretną bazę danych lub serwer SQL. Wszystkie prefiksy adresów reprezentowane przez ten tag są również reprezentowane przez tag **Internet**. 
@@ -79,7 +76,6 @@ Rozszerzone reguły zabezpieczeń upraszczają definicję zabezpieczeń dla siec
 * **GatewayManager** (tylko model wdrażania przy użyciu usługi Resource Manager): ten tag określa prefiksy adresów usługi Azure Gateway Manager. W przypadku określenia wartości *GatewayManager* dozwolony lub blokowany jest ruch do usługi GatewayManager. Jeśli chcesz zezwolić na dostęp do usługi GatewayManager w wybranym [regionie](https://azure.microsoft.com/regions), możesz określić ten region za pomocą następującego formatu: GatewayManager.[nazwa regionu]. 
 * **AzureDataLake** (tylko model wdrażania przy użyciu usługi Resource Manager): ten tag określa prefiksy adresów usługi Azure Data Lake. W przypadku określenia wartości *AzureDataLake* dozwolony lub blokowany jest ruch do usługi AzureDataLake. 
 * **AzureActiveDirectory** (tylko model wdrażania przy użyciu usługi Resource Manager): ten tag określa prefiksy adresów usługi AzureActiveDirectory. W przypadku określenia wartości *AzureActiveDirectory* dozwolony lub blokowany jest ruch do usługi AzureActiveDirectory.  
-* **CorpNetSAW** (tylko model wdrażania przy użyciu usługi Resource Manager): ten tag określa prefiksy adresów [urządzeń CorpNetSAW](../security/azure-security-iaas.md) obsługiwanych przez platformę Azure. W niektórych przypadkach usługi platformy Azure mogą użyć tego tagu usługi, aby zażądać dostępu do wystąpień zarządzanych przez klienta w celu zwiększenia możliwości obsługi. W przypadku określenia wartości *CorpNetSAW* dozwolony lub blokowany jest ruch do urządzeń CorpNetSAW. 
 
 > [!NOTE]
 > Tagi usług Azure określają prefiksy adresów określonych chmur, które są używane. Regionalne tagi usług nie są obsługiwane przez chmury krajowe. Obsługiwane są wyłącznie formaty globalne, na przykład *Storage* i *Sql*.

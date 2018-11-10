@@ -11,10 +11,10 @@ ms.custom: include file
 ms.date: 08/06/2018
 ms.author: diberry
 ms.openlocfilehash: 7708b902232b63e47ae303d90d6c9357257558e3
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041910"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50141276"
 ---
-Te kilka wypowiedzi są wyłącznie w celach demonstracyjnych. Aplikacja rzeczywistych powinien mieć co najmniej 15 wypowiedzi o różnej długości, kolejność słów, czasu teraźniejszego, poprawność gramatyczną i liczba wyrazów.
+Tych kilka wypowiedzi służy wyłącznie do celów demonstracyjnych. Rzeczywista aplikacja powinna mieć co najmniej 15 wypowiedzi o różnej długości, kolejności słów, czasie, poprawności gramatycznej i liczbie wyrazów.

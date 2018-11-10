@@ -1,8 +1,21 @@
+---
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 09/04/2018
+ms.author: glenga
+ms.openlocfilehash: cf8c6f07eb38487dd29624b15be3637536be92fc
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133671"
+---
 ## <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
 
-Funkcje używa ogólnego przeznaczenia konta w usłudze Azure Storage, aby zachować stan i inne informacje o funkcji. Utwórz konto magazynu ogólnego przeznaczenia w grupie zasobów został utworzony za pomocą [Tworzenie konta magazynu az](/cli/azure/storage/account#create) polecenia.
+Usługa Functions przechowuje informacje o stanie i inne informacje dotyczące funkcji za pomocą konta ogólnego przeznaczenia usługi Azure Storage. Utwórz konto magazynu ogólnego przeznaczenia w utworzonej grupie zasobów przy użyciu polecenia [az storage account create](/cli/azure/storage/account#create).
 
-W poniższym poleceniu zastąp nazwę konta magazynu globalnie unikatowy, której występuje `<storage_name>` symbolu zastępczego. Nazwy kont usługi Magazyn muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery.
+W poniższym poleceniu w miejsce symbolu zastępczego `<storage_name>` wstaw unikatową w skali globalnej nazwę konta magazynu. Nazwy kont usługi Storage muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery.
 
 ```azurecli-interactive
 az storage account create --name <storage_name> --location westeurope --resource-group myResourceGroup --sku Standard_LRS

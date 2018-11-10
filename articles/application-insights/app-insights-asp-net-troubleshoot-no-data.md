@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3fa41f894e3228310bae6a9407cfcc426c27bfdc
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 47cf32a57fc4a2d0e20a9f2c242db1f3dec96fe5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963722"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228542"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Brakuje części moich danych telemetrycznych
@@ -141,7 +141,7 @@ Poprawka:
     
     ![](./media/app-insights-asp-net-troubleshoot-no-data/ikey-check.png)
 * W [głównego pulpitu nawigacyjnego Microsoft Azure](https://portal.azure.com), spójrz na mapę usługi kondycji. W przypadku niektórych alertów oznaczeń, poczekaj na ich powrotu do OK i następnie zamknięcie i ponowne otwarcie bloku aplikacji usługi Application Insights.
-* Należy także sprawdzić [naszym blogu stan](http://blogs.msdn.com/b/applicationinsights-status/).
+* Należy także sprawdzić [naszym blogu stan](https://blogs.msdn.com/b/applicationinsights-status/).
 * Czy napisałeś cały kod dla [SDK po stronie serwera](app-insights-api-custom-events-metrics.md) , mogą ulec zmianie klucz Instrumentacji w `TelemetryClient` wystąpień lub `TelemetryContext`? Lub czy napisałeś [konfiguracji filtru lub próbkowania](app-insights-api-filtering-sampling.md) może on filtrować się zbyt dużo?
 * Jeśli edytowano plik applicationinsights.config został dostosowany, dokładnie sprawdź konfigurację [TelemetryInitializers i TelemetryProcessors](app-insights-api-filtering-sampling.md). Typ o nazwie nieprawidłowo lub parametru może spowodować zestawu SDK do wysyłania żadnych danych.
 
@@ -167,7 +167,7 @@ Dane dotyczące wydajności (procesora CPU, we/wy i tak dalej) jest dostępna dl
 * Windows Server 2008: Upewnij się, że zainstalowano następujące aktualizacje: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Używany do wyświetlania danych, ale została zatrzymana
-* Sprawdź [blogu stan](http://blogs.msdn.com/b/applicationinsights-status/).
+* Sprawdź [blogu stan](https://blogs.msdn.com/b/applicationinsights-status/).
 * Możesz przekroczyć miesięczny limit punktów danych? Otwórz ustawienia/przydział i cennik, aby dowiedzieć się. Jeśli tak, możesz uaktualnić swój plan lub płacić za dodatkową pojemność. Zobacz [ceny schemat](https://azure.microsoft.com/pricing/details/application-insights/).
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>Nie widzę wszystkich danych, których oczekiwano

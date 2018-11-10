@@ -7,20 +7,20 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2018
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 50005e38214bf22aa664c2d2b0cc4f86da412818
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 365c6e41db865edf8384ca1f82210d9471808f94
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144498"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140861"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Szybki start: testowanie opartego na chmurze rozwiązania do zdalnego monitorowania
 
-W tym przewodniku Szybki start pokazano, jak wdrożyć akcelerator rozwiązań do zdalnego monitorowania usługi Azure IoT do uruchamiania jako opartą na chmurze symulację zdalnego monitorowania. Po wdrożeniu akceleratora rozwiązań użyj strony rozwiązania **Pulpit nawigacyjny**, aby wyświetlić urządzenia symulowane na mapie, i strony **Konserwacja**, aby zareagować na alert dotyczący ciśnienia z symulowanego urządzenia typu „chiller” (chłodziarki). Ten akcelerator rozwiązań może posłużyć jako punkt wyjścia dla własnej implementacji lub do nauki.
+W tym przewodniku Szybki start pokazano, jak wdrożyć akcelerator rozwiązań do zdalnego monitorowania usługi Azure IoT. W tym rozwiązaniu opartym na chmurze użyjesz strony **Pulpit nawigacyjny**, aby wyświetlić urządzenia symulowane na mapie, i strony **Konserwacja**, aby zareagować na alert dotyczący ciśnienia z symulowanego urządzenia typu „chiller” (chłodziarki). Ten akcelerator rozwiązań może posłużyć jako punkt wyjścia dla własnej implementacji lub do nauki.
 
-W początkowym wdrożeniu akcelerator rozwiązań do zdalnego monitorowania jest skonfigurowany dla firmy o nazwie Contoso. Firma Contoso zarządza różnego typu urządzeniami, takimi jak chłodziarki, wdrożonymi w różnych środowiskach fizycznych. Chłodziarka wysyła dane telemetryczne dotyczące temperatury, wilgotności i ciśnienia do akceleratora rozwiązań do zdalnego monitorowania.
+W początkowym wdrożeniu akcelerator rozwiązań jest skonfigurowany dla firmy o nazwie Contoso. Jako operator w firmie Contoso zarządzasz różnego typu urządzeniami, takimi jak chłodziarki, wdrożonymi w różnych środowiskach fizycznych. Chłodziarka wysyła dane telemetryczne dotyczące temperatury, wilgotności i ciśnienia do akceleratora rozwiązań do zdalnego monitorowania.
 
 Do wykonania kroków tego przewodnika Szybki start jest potrzebna aktywna subskrypcja platformy Azure.
 
@@ -38,13 +38,13 @@ Kliknij pozycję **Wypróbuj teraz** na kafelku **Zdalne monitorowanie**.
 
 Na stronie **Tworzenie rozwiązania do monitorowania zdalnego** wybierz wdrożenie **Podstawowe**. Jeśli wdrażasz akcelerator rozwiązań, aby dowiedzieć się, jak działa, lub aby uruchomić pokaz, wybierz opcję **Podstawowe** w celu zminimalizowania kosztów.
 
-Wybierz pozycję **.NET** jako język. Implementacje środowisk Java i .NET mają identyczne funkcje.
+Wybierz pozycję **.NET** jako język. Implementacje środowisk Java i .NET mają takie same funkcje.
 
 W polu **Nazwa rozwiązania** wprowadź unikatową nazwę akceleratora rozwiązań do monitorowania zdalnego. W tym przewodniku Szybki start używamy nazwy **contoso-rm2**.
 
 W polach **Subskrypcja** i **Region** wybierz wartości, których chcesz użyć do wdrożenia akceleratora rozwiązania. Zwykle jest wybierany region znajdujący się najbliżej. W tym przewodniku Szybki start używamy subskrypcji **programu Visual Studio Enterprise** i regionu **Europa Zachodnia**. Musisz być [użytkownikiem lub administratorem globalnym](iot-accelerators-permissions.md) w ramach subskrypcji.
 
-Kliknij pozycję **Utwórz rozwiązanie** aby rozpocząć wdrażanie. Ten proces trwa co najmniej pięć minut:
+Aby rozpocząć wdrożenie, kliknij przycisk **Utwórz rozwiązanie**. Ten proces trwa co najmniej pięć minut:
 
 ![Szczegóły rozwiązania do monitorowania zdalnego](./media/quickstart-remote-monitoring-deploy/createform.png)
 
@@ -68,15 +68,15 @@ Kliknij pozycję **Zaakceptuj**, aby zaakceptować żądanie uprawnień. W przeg
 
 Pulpit nawigacyjny rozwiązania przedstawia następujące informacje o symulowanych urządzeniach firmy Contoso:
 
-* **Statystyki urządzeń** — podsumowanie alertów i łączną liczbę urządzeń. W domyślnym wdrożeniu firma Contoso ma 10 urządzeń symulowanych różnych typów.
+* Panel **Statystyki urządzeń** zawiera podsumowanie alertów i łączną liczbę urządzeń. W domyślnym wdrożeniu firma Contoso ma 10 urządzeń symulowanych różnych typów.
 
-* **Lokalizacje urządzeń** — lokalizacje fizyczne urządzeń. Kolor pinezki wskazuje, czy są dostępne alerty z urządzenia.
+* Panel **Lokalizacje urządzeń** pokazuje lokalizacje fizyczne urządzeń. Kolor pinezki wskazuje, czy są dostępne alerty z urządzenia.
 
-* **Alerty** — szczegółowe informacje o alertach z urządzeń.
+* Panel **Alerty** podaje szczegółowe informacje o alertach z urządzeń.
 
-* **Telemetria** — dane telemetryczne z urządzeń. Możesz wyświetlać różne strumienie telemetrii, klikając typy telemetrii u góry.
+* Panel **Telemetria** pokazuje dane telemetryczne z urządzeń. Możesz wyświetlać różne strumienie telemetrii, klikając typy telemetrii u góry.
 
-* **Analiza** — połączone informacje o alertach z urządzeń.
+* Panel **Analiza** przedstawia połączone informacje o alertach z urządzeń.
 
 ## <a name="respond-to-an-alert"></a>Odpowiadanie na alert
 
@@ -108,7 +108,7 @@ Aby wykonać działanie dotyczące chłodziarki, przewiń w dół do pozycji **I
 
 [![Wybieranie urządzenia i planowanie akcji](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-expanded.png#lightbox)
 
-W panelu **Zadania** wybierz pozycję **Uruchom metodę** a następnie metodę **EmergencyValveRelease**. Dodaj nazwę zadania **ChillerPressureRelease** i kliknij przycisk **Zastosuj**. Te ustawienia pozwalają utworzyć zadanie, które jest wykonywane natychmiast.
+W panelu **Zadania** wybierz pozycję **Uruchom metodę** a następnie metodę **EmergencyValveRelease**. Dodaj nazwę zadania **ChillerPressureRelease** i kliknij przycisk **Zastosuj**. Te ustawienia pozwalają utworzyć dla Ciebie zadanie, które jest wykonywane natychmiast.
 
 Aby wyświetlić stan zadania, wróć do strony **Konserwacja** i wyświetl listę zadań w widoku **Zadania**. Może być konieczne odczekanie kilku sekund, zanim zostanie uruchomione zadanie zwolnienia zaworu ciśnienia chłodziarki:
 

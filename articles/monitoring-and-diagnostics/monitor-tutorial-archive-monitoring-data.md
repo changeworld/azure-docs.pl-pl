@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: metrics
-ms.openlocfilehash: be6f3efd74d013e9ddb02c44031dd6a402f00871
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ac8be998a70b31af9829eeeab24902c62fd2fe37
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409494"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961517"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archiwizowanie metryk platformy Azure i zapisywanie danych w dzienniku przy użyciu usługi Azure Storage
 
@@ -42,7 +42,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Najpierw musisz skonfigurować konto magazynu, na którym będą archiwizowane dane monitorowania. Aby to zrobić, [wykonaj te kroki](../storage/common/storage-create-storage-account.md).
+Najpierw musisz skonfigurować konto magazynu, na którym będą archiwizowane dane monitorowania. Aby to zrobić, [wykonaj te kroki](../storage/common/storage-quickstart-create-account.md).
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>Przekierowywanie dzienników subskrypcji do konta magazynu
 
@@ -198,4 +198,4 @@ W tym samouczku omówiono archiwizowanie danych monitorowania ze środowiska pla
 Aby uzyskać szczegółowe informacje i wykorzystać swoje dane w większym stopniu, wyślij je również do usługi Log Analytics.
 
 > [!div class="nextstepaction"]
-> [Wprowadzenie do usługi Log Analytics](../log-analytics/log-analytics-get-started.md)
+> [Wprowadzenie do usługi Log Analytics](../log-analytics/log-analytics-queries.md)

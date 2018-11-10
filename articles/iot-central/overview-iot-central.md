@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 8c369ab05059e57f2e2a98339052c27292ac7c0d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8240cf5beb50ef16aa2bd03415e6bbff9a2f4250
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628780"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158146"
 ---
 <!---
 Purpose of an Overview article: 
@@ -25,7 +25,7 @@ Purpose of an Overview article:
 
 # <a name="what-is-azure-iot-central"></a>Co to jest usługa Azure IoT Central?
 
-Usługa Microsoft Azure IoT Central to w pełni zarządzane rozwiązanie IoT typu „oprogramowanie jako usługa”, które ułatwia tworzenie produktów łączących świat fizyczny i cyfrowy. Wizję połączonych produktów można realizować w następujący sposób:
+Usługa Azure IoT Central to w pełni zarządzane rozwiązanie IoT typu „oprogramowanie jako usługa”, które ułatwia tworzenie produktów łączących świat fizyczny i cyfrowy. Wizję połączonych produktów można realizować w następujący sposób:
 
 - Przez uzyskiwanie nowych szczegółowych danych z połączonych urządzeń w celu oferowania klientom lepszych produktów i zwiększenia jakości obsługi
 - Przez tworzenie nowych możliwości biznesowych dla organizacji
@@ -65,7 +65,7 @@ Konstruktor używa usługi Azure IoT Central, aby utworzyć dla organizacji nies
 - Aplikacja oparta na chmurze, która odbiera dane telemetryczne z urządzeń i umożliwia zarządzanie tymi urządzeniami.
 - Wiele urządzeń z uruchomionym niestandardowym kodem połączonych z aplikacją opartą na chmurze.
 
-Możesz szybko wdrożyć nową aplikację usługi Azure IoT Central i dostosować ją do określonych wymagań w przeglądarce. Konstruktor usługi Azure IoT Central może utworzyć _szablon urządzenia_ za pomocą narzędzi internetowych dla urządzeń łączących się z aplikacją. Szablon urządzenia to plan modelu urządzenia współdzielony przez wszystkie urządzenia utworzone za pomocą szablonu. Szablon urządzenia definiuje cechy i zachowanie typu urządzenia, takie jak:
+Możesz szybko wdrożyć nową aplikację usługi Azure IoT Central i dostosować ją do określonych wymagań w przeglądarce. Konstruktor usługi Azure IoT Central może utworzyć _szablon urządzenia_ za pomocą narzędzi internetowych dla urządzeń łączących się z aplikacją. Szablon urządzenia jest schematem modelu urządzenia. Wszystkie urządzenia utworzone na podstawie tego samego szablonu urządzenia współużytkują szablon. Szablon urządzenia definiuje cechy i zachowanie typu urządzenia, takie jak:
 
 - Wysyłane dane telemetryczne.
 - Właściwości biznesowe, które może modyfikować operator.
