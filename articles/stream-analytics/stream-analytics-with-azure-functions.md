@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.workload: data-services
 ms.date: 04/09/2018
-ms.author: jasonh
+ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 50ea4dafe7edfdeb851ad6d9cc42a7bca262e970
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 0a187bbc476738294e2f7f31de4e11ea92e604f9
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985815"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978004"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Uruchamianie usługi Azure Functions z zadań usługi Azure Stream Analytics 
 
@@ -196,6 +196,13 @@ Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](strea
    To polecenie powinno wyświetlić wartość dla określonego klucza:
 
    ![Zrzut ekranu danych wyjściowych usługi Azure Redis Cache](./media/stream-analytics-with-azure-functions/image5.png)
+   
+## <a name="error-handling-and-retries"></a>Obsługa błędów oraz wykonywanie ponownych prób
+W przypadku awarii podczas wysyłania zdarzeń do usługi Azure Functions usługa Stream Analytics ponawia próbę w celu pomyślnego wykonania operacji. Jednak istnieją pewne błędy, w przypadku których ponowne próby nie wykonywane. Są to:
+
+ 1. Wyjątki HttpRequestException
+ 2. Wyjątek dotyczący zbyt dużej jednostki żądania (kod błędu HTTP 413)
+ 3. Wyjątki ApplicationException
 
 ## <a name="known-issues"></a>Znane problemy
 

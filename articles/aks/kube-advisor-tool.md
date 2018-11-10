@@ -5,14 +5,14 @@ services: container-service
 author: seanmck
 ms.service: container-service
 ms.topic: troubleshooting
-ms.date: 09/13/2018
+ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: e29308b7b1c17377cf1d627f2a32a2ba6ea4d077
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 01095ac4ed8e362f1a89a53b10b5da6a547feb57
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314895"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218642"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Sprawdzanie, czy są najlepsze rozwiązania Kubernetes w klastrze
 
@@ -30,7 +30,7 @@ Istnieje kilka najlepszych rozwiązań, które należy wykonać na swoich wdroż
 Aby uruchomić narzędzie w klastrze, który jest skonfigurowany dla [kontroli dostępu opartej na rolach (RBAC)](aad-integration.md), używając następujących poleceń. Pierwsze polecenie tworzy konto usługi Kubernetes. Drugie polecenie uruchamia narzędzie w zasobniku przy użyciu tego konta usługi i konfiguruje zasobnika do usunięcia, po jej zakończenia. 
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml?token=ABLLDrNcuHMro9jQ0xduCaEbpzLupzQUks5bh3RhwA%3D%3D
+kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }"
 ```
@@ -60,7 +60,7 @@ Domyślnie nie żądania lub granice są ustawione na specyfikacje zasobników. 
 Jeśli klaster ma włączone RBAC, można oczyścić `ClusterRoleBinding` po uruchomieniu narzędzia, za pomocą następującego polecenia:
 
 ```bash
-kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml?token=ABLLDrNcuHMro9jQ0xduCaEbpzLupzQUks5bh3RhwA%3D%3D
+kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 ```
 
 Jeśli używasz narzędzia względem klastra, który nie jest włączone RBAC, żadne oczyszczanie jest wymagana.

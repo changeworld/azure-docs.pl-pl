@@ -4,17 +4,17 @@ description: Usługa Azure Resource Graph umożliwia uruchamianie pewnych zaawan
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 934dff93b9a7f5d6755f55ad1073e01e586b1ca7
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: fbbdc4a67cd6f2e7d74031f7acc584bf0004bea4
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647837"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085380"
 ---
 # <a name="advanced-resource-graph-queries"></a>Zaawansowane zapytania usługi Resource Graph
 
@@ -31,11 +31,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="language-support"></a>Obsługa języków
 
-Interfejs wiersza polecenia platformy Azure (za pośrednictwem rozszerzenia) i program Azure PowerShell (za pośrednictwem modułu) obsługują usługę Azure Resource Graph. Przed wykonaniem dowolnego z następujących zapytań sprawdź, czy Twoje środowisko jest gotowe. Zobacz [Interfejs wiersza polecenia platformy Azure](../first-query-azurecli.md#add-the-resource-graph-extension) i [Program Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module), gdzie znajdziesz kroki instalacji i weryfikacji wybranego środowiska powłoki.
+Interfejs wiersza polecenia platformy Azure (za pośrednictwem rozszerzenia) i program Azure PowerShell (za pośrednictwem modułu) obsługują usługę Azure Resource Graph. Przed uruchomieniem dowolnego z poniższych zapytań sprawdź, czy Twoje środowisko jest gotowe. Zobacz [Interfejs wiersza polecenia platformy Azure](../first-query-azurecli.md#add-the-resource-graph-extension) i [Program Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module), gdzie znajdziesz kroki instalacji i weryfikacji wybranego środowiska powłoki.
 
-## <a name="vmss-capacity"></a>Pobieranie pojemności i rozmiaru zestawu skalowania maszyn wirtualnych
+## <a name="vmss-capacity"></a>Uzyskiwanie pojemności zestawu skalowania i rozmiaru maszyny wirtualnej
 
-To zapytanie szuka zasobów zestawu skalowania maszyn wirtualnych (VMSS) i pobiera różne szczegółowe informacje, takie jak rozmiar maszyny wirtualnej i pojemność zestawu skalowania. Te informacje używają funkcji `toint()`, aby rzutować pojemność na liczbę, co pozwala na sortowanie. To polecenie również zmienia nazwy zwracanych wartości na niestandardowe nazwy właściwości.
+To zapytanie szuka zasobów zestawu skalowania maszyn wirtualnych i pobiera różne szczegółowe informacje, takie jak rozmiar maszyny wirtualnej i pojemność zestawu skalowania. To zapytanie używa funkcji `toint()`, aby rzutować pojemność na liczbę, co pozwala na sortowanie. Na koniec następuje zmiana nazw kolumn na właściwości o niestandardowej nazwie.
 
 ```Query
 where type=~ 'microsoft.compute/virtualmachinescalesets'
@@ -75,7 +75,7 @@ To zapytanie szuka maszyn wirtualnych, które odpowiadają [wyrażeniu regularne
 Polecenie **matches regex @** pozwala na określenie wyrażenia regularnego do dopasowania, czyli **^Contoso(.*)[0-9]+$**. Definicja tego wyrażenia regularnego jest wyjaśniona jako:
 
 - `^` - Dopasowanie musi zaczynać się od początku ciągu.
-- `Contoso` - Dopasowywany ciąg podstawowy (z uwzględnieniem wielkości liter).
+- `Contoso` - Ciąg z uwzględnieniem wielkości liter.
 - `(.*)` - Dopasowanie podwyrażenia:
   - `.` - Dopasowuje dowolny pojedynczy znak (z wyjątkiem nowego wiersza).
   - `*` - Dopasowuje poprzedni element zero lub więcej razy.

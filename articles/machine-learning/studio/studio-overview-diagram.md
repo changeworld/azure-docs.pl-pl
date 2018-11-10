@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/04/2017
-ms.openlocfilehash: 240be0e7dc199a84130739244743d245b780b608
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 2f3d96908cbcb68ff01a6e43696a119bf21d02ce
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902080"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226569"
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Diagram przeglądowy możliwości usługi Azure Machine Learning Studio
 Diagram **Przegląd możliwości usługi Microsoft Azure Machine Learning Studio** przedstawia ogólny przegląd sposobu użycia usługi Machine Learning Studio w celu opracowania modelu analizy predykcyjnej i operacjonalizacji go w chmurze Azure.
@@ -39,7 +39,7 @@ Ten diagram przedstawia sposób dopasowania wszystkich tych elementów.
 ## <a name="download-the-machine-learning-studio-overview-diagram"></a>Pobieranie diagramu przeglądowego usługi Machine Learning Studio
 Pobierz diagram **Przegląd możliwości usługi Microsoft Azure Machine Learning Studio** i uzyskaj ogólny obraz możliwości usługi Machine Learning Studio. Aby mieć ten diagram zawsze w pobliżu, wydrukuj go w rozmiarze tabloidu (11 cali x 17 cali).
 
-**Pobierz diagram tutaj: [Przegląd możliwości usługi Microsoft Azure Machine Learning Studio](http://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
+**Pobierz diagram tutaj: [Przegląd możliwości usługi Microsoft Azure Machine Learning Studio](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
 
 ![Przegląd możliwości usługi Microsoft Azure Machine Learning Studio][studio-overview]
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/12/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: b1f7120b3758e35d818aedbcc3b85feca44f8c33
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a7f21d0ebebbe2c811470de384cc5ee9a34ab060
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129662"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006162"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Ochrona zasobów sieciowych w usłudze Azure Security Center
 Usługa Azure Security Center w sposób ciągły analizuje stan zabezpieczeń zasobów platformy Azure najlepsze rozwiązania dotyczące zabezpieczeń sieci. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek harden i chronić zasoby.
@@ -126,6 +126,20 @@ W tym widoku topologii pierwszy poziom Wyświetla sieci wirtualnych. Drugi Wyśw
 
 Trzeci poziom przedstawia maszyny wirtualne, co jest podobne do powyższego opisu. Możesz kliknąć dowolny zasób, aby dowiedzieć się więcej lub zastosować wymagane kontroli lub konfigurację zabezpieczeń.
 
+## <a name="network-recommendations"></a>Zalecenia dotyczące sieci
+
+|Typ zasobu|Wskaźnik bezpieczeństwa|Zalecenie|Opis|
+|----|----|----|----|
+|Maszyna|40|Włącz sieciowe grupy zabezpieczeń na maszynach wirtualnych|Włącz sieciowe grupy zabezpieczeń do kontrolowania dostępu do sieci maszyn wirtualnych.|
+|Podsieć|35|Włącz sieciowe grupy zabezpieczeń w podsieciach |Włącz sieciowe grupy zabezpieczeń kontrolować dostęp do zasobów wdrożonych w podsieci sieci.|
+|Maszyna|30|Stosowanie kontroli dostępu just in time do sieci|Stosuje się tylko w kontroli dostępu maszyn wirtualnych czas trwale zablokować dostęp do wybranych portów i włączyć autoryzowanych użytkowników otworzyć je w ten sam mechanizm, jak i przez ograniczony czas.|
+|Maszyna|20|Ogranicz dostęp za pośrednictwem punktu końcowego mającego połączenie z Internetem|Utrwalanie goups zabezpieczeń sieci o kontakt z Internetem maszyn wirtualnych przez ograniczenie dostępu do istniejącej reguły zezwalania.|
+|Maszyna|10|Dodawanie zapory nowej generacji|Dodaj rozwiązanie nowej następnej generacji zapory (NGFW) w celu zapewnienia lepszej ochrony maszyn wirtualnych z Internetem.|
+|Maszyna|5|Kierowanie ruchu przez sieci bramy tylko zapory|Aby można było ukończyć wdrożenie rozwiązania zapory następnej generacji, ruch do chronionego kontakt z Internetem maszyn wirtualnych należy używały tylko kolejnego rozwiązania zapory generacji.|
+|VNet|5|Włączanie standardu ochrony przed atakami DDoS|Aplikacje z publicznych adresów IP w tych sieciach wirtualnych nie są chronione przy użyciu standardowych usługi DDOS protection. Zaleca się, aby umożliwić włączanie łagodzenia pojemności sieci i ataki protokołu.|
+|Maszyna|10|Dodawanie zapory nowej generacji|Dodaj rozwiązanie nowej następnej generacji zapory (NGFW) w celu zapewnienia lepszej ochrony maszyn wirtualnych z Internetem.|
+|Maszyna|5|Kierowanie ruchu przez sieci bramy tylko zapory|Aby można było ukończyć wdrożenie rozwiązania zapory następnej generacji, ruch do chronionego kontakt z Internetem maszyn wirtualnych należy używały tylko kolejnego rozwiązania zapory generacji.|
+Sieć wirtualna|5|Włączanie standardu ochrony przed atakami DDoS|Aplikacje z publicznych adresów IP w tych sieciach wirtualnych nie są chronione przy użyciu standardowych usługi DDOS protection. Zaleca się, aby umożliwić włączanie łagodzenia pojemności sieci i ataki protokołu.|
 ## <a name="see-also"></a>Zobacz także
 Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do innych typów zasobów platformy Azure, zobacz następujące tematy:
 

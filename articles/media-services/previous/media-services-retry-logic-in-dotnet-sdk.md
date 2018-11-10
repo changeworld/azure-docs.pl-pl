@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: 0a4c9db8da046e901241bc383098013b2acc6bb2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: a5171484bb4377e0f9cd84dc0a517f4ea84123e7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242266"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228321"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Logika ponawiania w zestawie SDK usługi multimediów dla platformy .NET
 Podczas pracy z usługami Microsoft Azure, mogą wystąpić błędy przejściowe. Jeśli wystąpi błąd przejściowy, w większości przypadków, po kilku próbach operacja powiedzie się. Media Services SDK dla platformy .NET implementuje logikę ponawiania, do obsługi błędów przejściowych, skojarzone z wyjątków i błędów, które są spowodowane przez żądania sieci web, wykonywanie zapytań, zapisywanie zmian i operacji magazynu.  Domyślnie Media Services SDK dla platformy .NET wykonuje czterech ponownych prób przed ponownego zgłaszania wyjątku do aplikacji. Kod w aplikacji następnie musi poprawnie obsługiwać tego wyjątku.  
@@ -49,7 +49,7 @@ W poniższej tabeli opisano wyjątki, które obsługuje Media Services SDK dla p
 | IOException |Nie |Yes |Nie |Nie |
 
 ### <a name="WebExceptionStatus"></a> Klasa WebException kody stanu
-W poniższej tabeli przedstawiono, który kodów błędu WebException Logika ponawiania jest zaimplementowana. [WebExceptionStatus](http://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) wyliczenie definiuje kodów stanu.  
+W poniższej tabeli przedstawiono, który kodów błędu WebException Logika ponawiania jest zaimplementowana. [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) wyliczenie definiuje kodów stanu.  
 
 | Stan | Żądania sieci Web | Magazyn | Zapytanie | SaveChanges |
 | --- | --- | --- | --- | --- |

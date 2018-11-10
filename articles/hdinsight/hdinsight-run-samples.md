@@ -2,19 +2,19 @@
 title: Uruchamianie przykładów dla usługi Hadoop w HDInsight — Azure
 description: Rozpocznij pracę przy użyciu usługi Azure HDInsight przy użyciu przykłady przekazane. Użycie skryptów programu PowerShell, których uruchamianie programów MapReduce w klastrach danych.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 84c28eebc2bcf1bfdfcb0995f1caa05ed19629e2
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: d1da4d10b6346d774c657b0263c9da6278116b61
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250839"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006417"
 ---
 # <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Uruchamianie przykładów technologii MapReduce usługi Hadoop w HDInsight z systemem Windows
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]

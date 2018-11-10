@@ -2,23 +2,25 @@
 title: Instalowanie Presto, w klastrach usługi Azure HDInsight w systemie Linux
 description: Dowiedz się, jak zainstalować Presto oraz Airpal w klastrach opartych na systemie Linux usługi HDInsight Hadoop za pomocą akcji skryptu.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/21/2018
-ms.author: jasonh
-ms.openlocfilehash: b9ac9c49e633906e47244eedcb18a4cda4a6228d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: ea806a1004cf268fb7da75fa45013bdbaf882d86
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978957"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227505"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>Instalowanie i używanie Presto w klastrach usługi HDInsight Hadoop
 
 W tym dokumencie nauczysz się Zainstaluj skrypt Presto w klastrach usługi HDInsight Hadoop za pomocą akcji skryptu. Poznasz również sposób instalowania Airpal w istniejącym klastrze HDInsight Presto.
+
+HDInsight oferuje również Presto Gwiazda z aplikacji w przypadku klastrów Apache Hadoop. Aby uzyskać więcej informacji, zobacz [instalowanie aplikacji innych firm w usłudze Azure HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apps-install-applications)
 
 > [!IMPORTANT]
 > Kroki opisane w tym dokumencie wymagają **klastra platformy Hadoop w HDInsight 3.5** , użyto systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz [wersji HDInsight](hdinsight-component-versioning.md).
@@ -42,17 +44,17 @@ Ta sekcja zawiera instrukcje dotyczące sposobu używania przykładowy skrypt, p
 
     * Musi to być klastra Hadoop z HDInsight w wersji 3.6.
 
-    * Musi ona używać usługi Azure Storage jako magazynu danych. Za pomocą Presto w klastrze, który używa usługi Azure Data Lake Store jako opcji magazynu nie jest jeszcze obsługiwana. 
+    * Musi ona używać usługi Azure Storage jako magazynu danych. Za pomocą Presto w klastrze, który używa usługi Azure Data Lake Store jako opcji magazynu nie jest jeszcze opcję.
 
     ![Tworzenie klastra HDInsight przy użyciu opcji niestandardowych](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
 
-2. Na **Zaawansowane ustawienia** wybierz opcję **akcji skryptu**i podaj poniższe informacje:
+2. Na **Zaawansowane ustawienia** wybierz opcję **akcji skryptu**i podaj poniższe informacje. Można również wybrać opcję "Zainstaluj Presto", typ skryptu.
    
    * **Nazwa**: Wprowadź przyjazną nazwę dla akcji skryptu.
    * **Identyfikator URI skryptu powłoki systemowej**: `https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`
    * **HEAD**: Zaznacz tę opcję
    * **Proces ROBOCZY**: Zaznacz tę opcję
-   * **DOZORCY**: wyczyść to pole wyboru
+   * **DOZORCY**: pozostaw to pole wyboru puste
    * **Parametry**: pozostaw to pole puste
 
 

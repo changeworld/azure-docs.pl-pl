@@ -1,4 +1,4 @@
-# <a name="quality-criteria-for-pull-request-review"></a> Kryteria jakości przeglądu żądań ściągnięcia
+# <a name="quality-criteria-for-pull-request-review"></a>Kryteria jakości przeglądu żądań ściągnięcia
 
 Ten artykuł został przeniesiony do wewnętrznego przewodnika dla współautorów w witrynie docs.microsoft.com.
 

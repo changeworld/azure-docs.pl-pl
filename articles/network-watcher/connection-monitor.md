@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/27/2018
+ms.date: 10/25/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 9b13b8ae0b64dc84e476f5fc5da59ea30702fd8d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0c865b8bc129f4f2809f2dbb09a836efe4cee3d9
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639031"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093044"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Samouczek: monitorowanie komunikacji sieciowej między dwiema maszynami wirtualnymi przy użyciu witryny Azure Portal
 
@@ -30,6 +30,7 @@ Pomyślna komunikacja między maszyną wirtualną i punktem końcowym, takim jak
 > [!div class="checklist"]
 > * Tworzenie dwóch maszyn wirtualnych
 > * Monitorowanie komunikacji między maszynami wirtualnymi za pomocą możliwości monitorowania połączenia usługi Network Watcher
+> * Generowanie alertów dotyczących metryk monitora połączeń
 > * Diagnozowanie problemu z komunikacją między dwiema maszynami wirtualnymi i poznanie sposobu jego rozwiązywania
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -120,6 +121,19 @@ Utwórz monitor połączeń na potrzeby monitorowania komunikacji na porcie TCP 
     | ŚREDNI CZAS RUNDY          | Umożliwia poznanie czasu rundy podczas nawiązania połączenia (w milisekundach). Monitor połączeń sonduje połączenie co 60 sekund, dzięki czemu można monitorować czas opóźnienia.                                         |
     | Przeskoki                     | Monitor połączeń informuje o przeskokach między dwoma punktami końcowymi. W tym przykładzie połączenie istnieje między dwiema maszynami wirtualnymi w tej samej sieci wirtualnej, dlatego jest tylko jeden przeskok do adresu IP 10.0.0.5. Dodatkowe przeskoki pojawią się, jeśli jakikolwiek istniejący system lub trasy niestandardowe kierują ruch między maszynami wirtualnymi za pośrednictwem na przykład bramy sieci VPN lub sieciowego urządzenia wirtualnego.                                                                                                                         |
     | STAN                   | Zielone znaczniki wyboru przy poszczególnych punktach końcowych informują o dobrej kondycji każdego punktu końcowego.    ||
+
+## <a name="generate-alerts"></a>Generowanie alertów
+
+Alerty są tworzone na podstawie reguł alertów na platformie Azure Monitor i mogą automatycznie uruchamiać zapisane zapytania lub niestandardowe wyszukiwania dziennika w regularnych odstępach czasu. Wygenerowany alert może automatycznie uruchomić jedną lub więcej akcji, takich jak powiadomienie kogoś lub uruchomienie innego procesu. Podczas ustawiania reguły alertu zasób docelowy określa listę dostępnych metryk, które umożliwiają generowanie alertów.
+
+1. W witrynie Azure Portal wybierz usługę **Monitor**, a następnie wybierz pozycję **Alerty** > **Nowa reguła alertu**.
+2. Kliknij pozycję **Wybierz element docelowy**, a następnie wybierz zasoby docelowe. Wybierz pozycję **Subskrypcja** i ustaw **Typ zasobu**, aby odfiltrować monitor połączeń, którego chcesz używać.
+
+    ![ekran alertu z zaznaczonym elementem docelowym](./media/connection-monitor/set-alert-rule.png)
+1. Po wybraniu zasobu docelowego wybierz pozycję **Dodaj kryteria**. Usługa Network Watcher zawiera [metryki, na podstawie których można tworzyć alerty](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts#metrics-and-dimensions-supported). W obszarze **Dostępne sygnały** ustaw metryki ProbesFailedPercent i AverageRoundtripMs:
+
+    ![strona alertów z zaznaczonymi sygnałami](./media/connection-monitor/set-alert-signals.png)
+1. Wypełnij szczegóły alertu, takie jak nazwa, opis i ważność reguły alertu. Do alertu możesz także dodać grupę akcji, aby zautomatyzować i dostosować reakcję na alert.
 
 ## <a name="view-a-problem"></a>Wyświetlanie problemu
 

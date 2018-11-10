@@ -2,19 +2,19 @@
 title: Opracowywanie akcji skryptu za pomocą opartych na systemie Linux HDInsight — Azure
 description: Dowiedz się, jak dostosowywać klastry HDInsight opartych na systemie Linux za pomocą skryptów powłoki Bash. Funkcja akcji skryptu HDInsight umożliwia uruchamianie skryptów w trakcie lub po utworzeniu klastra. Skrypty może służyć do zmiany ustawień konfiguracji klastra lub instalowania dodatkowego oprogramowania.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
-ms.author: jasonh
-ms.openlocfilehash: 9a10620e3a388fa47076afd54e1789607e5ca47e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: 90bba26bf1fd941085568cacd4d005f10eaed1b8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986255"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005397"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Opracowywanie akcji skryptu za pomocą HDInsight
 

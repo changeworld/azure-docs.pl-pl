@@ -4,21 +4,21 @@ description: Usługa Azure Blueprints umożliwia tworzenie, definiowanie i wdra�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/25/2018
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 6b7ca276f3273faa485d08633061f882493f72f7
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2c53c5c51a6e93fa99f32400e512f0e13503b436
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647276"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092131"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definiowanie i przypisywanie strategii platformy Azure w portalu
 
-Znajomość sposobu tworzenia i przypisywania strategii na platformie Azure umożliwia organizacji definiowanie typowych wzorców spójności oraz tworzenie konfiguracji wielokrotnego użytku, które można szybko wdrażać, w oparciu o szablony usługi Resource Manager, zasady, zabezpieczenia itd. Z tego samouczka dowiesz się, jak za pomocą usługi Azure Blueprints wykonywać niektóre typowe zadania związane z tworzeniem, publikowaniem i przypisywaniem strategii w organizacji, takie jak:
+Znajomość sposobu tworzenia i przypisywania strategii umożliwia definiowanie typowych wzorców tworzenia konfiguracji wielokrotnego użytku, które można szybko wdrażać, w oparciu o szablony usługi Resource Manager, zasady, zabezpieczenia itd. Z tego samouczka dowiesz się, jak za pomocą usługi Azure Blueprints wykonywać niektóre typowe zadania związane z tworzeniem, publikowaniem i przypisywaniem strategii w organizacji, takie jak:
 
 > [!div class="checklist"]
 > - Tworzenie nowej strategii i dodawanie różnych obsługiwanych artefaktów
@@ -34,7 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utworzenie strategii z dostępnych zasobów. W tym przykładzie utworzysz strategię o nazwie „MyBlueprint”, aby skonfigurować przypisania ról i zasad dla subskrypcji, dodasz grupę zasobów oraz utworzysz przypisanie roli i szablonu usługi Resource Manager w grupie zasobów.
 
-1. Uruchom usługę Azure Blueprints w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając pozycję **Zasady** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
+1. Kliknij pozycję **Wszystkie usługi**, a następnie wyszukaj i wybierz pozycję **Zasady** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
 
 1. Wybierz pozycję **Definicje strategii** w lewej części strony i kliknij przycisk **+ Utwórz strategię** znajdujący się u góry strony.
 
@@ -49,7 +49,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
 1. Sprawdź, czy informacje są poprawne (wartości pól **Nazwa strategii** i **Lokalizacja definicji** nie można później zmienić), a następnie kliknij pozycję **Dalej: Artefakty** w dolnej części strony lub kartę **Artefakty** w górnej części strony.
 
-1. Dodaj przypisanie roli w subskrypcji: kliknij lewym przyciskiem myszy wiersz **+ Dodaj artefakt...**  w obszarze **Subskrypcja**, aby otworzyć okno „Dodawanie artefaktu” po prawej stronie przeglądarki. W polu _Typ artefaktu_ wybierz wartość „Przypisanie roli”. W polu _Rola_ wybierz wartość „Współautor” i pozostaw pole _Dodaj użytkownika, aplikację lub grupę_ z zaznaczonym polem wyboru wskazującym **parametr dynamiczny**. Kliknij pozycję **Dodaj**, aby dodać ten artefakt do strategii.
+1. Dodaj przypisanie roli w subskrypcji: kliknij lewym przyciskiem myszy wiersz **+ Dodaj artefakt...** w obszarze **Subskrypcja**, aby otworzyć okno „Dodawanie artefaktu” po prawej stronie przeglądarki. W polu _Typ artefaktu_ wybierz wartość „Przypisanie roli”. W polu _Rola_ wybierz wartość „Współautor” i pozostaw pole _Dodaj użytkownika, aplikację lub grupę_ z zaznaczonym polem wyboru wskazującym **parametr dynamiczny**. Kliknij pozycję **Dodaj**, aby dodać ten artefakt do strategii.
 
    ![Artefakt — Przypisanie roli](./media/create-blueprint-portal/add-role-assignment.png)
 
@@ -58,7 +58,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
 1. Dodaj przypisanie zasad w subskrypcji: kliknij lewym przyciskiem myszy wiersz **+ Dodaj artefakt...**  bezpośrednio pod elementem **Subskrypcja**. W polu _Typ artefaktu_ wybierz wartość „Przypisanie zasad”. Zmień _Typ_ na „Wbudowane” i w polu _Wyszukiwanie_ wprowadź wartość „tag”. Kliknij poza polem _Wyszukiwanie_, aby zastosować filtrowanie. Wybierz opcję „Zastosuj tag i jego wartość domyślną do grup zasobów”, klikając ją. Kliknij pozycję **Dodaj**, aby dodać ten artefakt do strategii.
 
-1. Kliknij wiersz przypisania zasad „Zastosuj tag i jego wartość domyślną do grup zasobów”. Zostanie otwarte okno, w którym można podać parametry do artefaktu jako część definicji strategii i ustawić parametry dla wszystkich przypisań (**parametry statyczne**) na podstawie tej strategii zamiast ustawiania ich podczas przypisywania (**parametry dynamiczne**). W tym przykładzie jest pożądane użycie **parametrów dynamicznych** podczas przypisywania strategii, więc pozostaw wartości domyślne i kliknij przycisk **Anuluj**.
+1. Kliknij wiersz przypisania zasad „Zastosuj tag i jego wartość domyślną do grup zasobów”. Zostanie otwarte okno, w którym można podać parametry do artefaktu jako część definicji strategii i ustawić parametry dla wszystkich przypisań (**parametry statyczne**) na podstawie tej strategii zamiast ustawiania ich podczas przypisywania (**parametry dynamiczne**). W tym przykładzie użyto **parametrów dynamicznych** podczas przypisywania strategii, więc pozostaw wartości domyślne i kliknij przycisk **Anuluj**.
 
 1. Dodaj grupę zasobów w subskrypcji: kliknij lewym przyciskiem myszy wiersz **+ Dodaj artefakt...** w obszarze **Subskrypcja**. W polu _Typ artefaktu_ wybierz opcję „Grupa zasobów”. Pozostaw pola _Nazwa grupy zasobów_ i _Lokalizacja_ puste, ale upewnij się, że dla każdej właściwości jest zaznaczone pole wyboru, aby były one **parametrami dynamicznymi**. Kliknij pozycję **Dodaj**, aby dodać ten artefakt do strategii.
 
@@ -111,7 +111,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
    ![Artefakt — szablon usługi Resource Manager](./media/create-blueprint-portal/add-resource-manager-template.png)
 
-1. Ukończona strategia powinna wyglądać podobnie do poniższej. Zauważ, że każdy artefakt ma informację „wypełniono _x_ z _y_ parametrów” w kolumnie _Parametry_. **Parametry dynamiczne** będą ustawiane każdorazowo podczas przypisywania strategii.
+1. Ukończona strategia powinna wyglądać podobnie do poniższej. Zauważ, że każdy artefakt ma informację „wypełniono _x_ z _y_ parametrów” w kolumnie _Parametry_. **Parametry dynamiczne** są ustawiane każdorazowo podczas przypisywania strategii.
 
    ![Ukończona strategia](./media/create-blueprint-portal/completed-blueprint.png)
 
@@ -119,7 +119,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
 ## <a name="edit-a-blueprint"></a>Edytowanie strategii
 
-W ramach procedury [Tworzenie strategii](#create-a-blueprint) nie podano opisu strategii i nie dodano przypisania roli do nowej grupy zasobów. Oba te błędy można naprawić, wykonując następujące kroki:
+W ramach procedury [Tworzenie strategii](#create-a-blueprint) nie podano opisu strategii i nie dodano przypisania roli do nowej grupy zasobów. Oba te problemy można naprawić, wykonując następujące czynności:
 
 1. Wybierz pozycję **Definicje strategii** w lewej części strony.
 
@@ -129,7 +129,7 @@ W ramach procedury [Tworzenie strategii](#create-a-blueprint) nie podano opisu s
 
 1. Kliknij pozycję **Dalej: Artefakty** w dolnej części strony lub kartę **Artefakty** w górnej części strony.
 
-1. Dodaj przypisanie roli w ramach grupy zasobów: kliknij lewym przyciskiem myszy wiersz **+ Dodaj artefakt...** bezpośrednio pod wpisem **ResourceGroup**. W polu _Typ artefaktu_ wybierz wartość „Przypisanie roli”. W obszarze _Rola_ wybierz rolę „Właściciel” i usuń zaznaczenie dla pola _Dodaj użytkownika, aplikację lub grupę_, a następnie wyszukaj i wybierz użytkownika, aplikację lub grupę do dodania. Będzie to **parametr statyczny**, który będzie używany w każdym przypisaniu tej strategii. Kliknij pozycję **Dodaj**, aby dodać ten artefakt do strategii.
+1. Dodaj przypisanie roli w ramach grupy zasobów: kliknij lewym przyciskiem myszy wiersz **+ Dodaj artefakt...** bezpośrednio pod wpisem **ResourceGroup**. W polu _Typ artefaktu_ wybierz wartość „Przypisanie roli”. W obszarze _Rola_ wybierz rolę „Właściciel” i usuń zaznaczenie dla pola _Dodaj użytkownika, aplikację lub grupę_, a następnie wyszukaj i wybierz użytkownika, aplikację lub grupę do dodania. Ten artefakt używa tego samego **parametru statycznego** ustawionego w każdym przypisaniu tej strategii. Kliknij pozycję **Dodaj**, aby dodać ten artefakt do strategii.
 
    ![Artefakt — Przypisanie roli nr 2](./media/create-blueprint-portal/add-role-assignment-2.png)
 
@@ -163,7 +163,7 @@ Po opublikowaniu strategii można przypisać ją do subskrypcji. Przypisz utworz
 1. Na stronie **Przypisywanie strategii** wybierz z listy rozwijanej **Subskrypcje** subskrypcje, w których chcesz wdrożyć tę strategię.
 
    > [!NOTE]
-   > Dla każdej wybranej subskrypcji zostanie utworzone przypisanie, co umożliwia późniejsze zmiany w przypisaniu pojedynczej subskrypcji bez wymuszania zmian w pozostałych wybranych subskrypcjach.
+   > Dla każdej wybranej subskrypcji jest tworzone przypisanie, co umożliwia późniejsze zmiany w przypisaniu pojedynczej subskrypcji bez wymuszania zmian w pozostałych wybranych subskrypcjach.
 
 1. W polu **Przypisana nazwa** podaj unikatową nazwę tego przypisania.
 
@@ -180,7 +180,7 @@ Po opublikowaniu strategii można przypisać ją do subskrypcji. Przypisz utworz
 1. Dla grupy „ResourceGroup” podaj **nazwę** „StorageAccount” i wybierz **lokalizację** „Wschodnie stany USA 2” z listy rozwijanej.
 
    > [!NOTE]
-   > Dla każdego artefaktu, który został dodany w ramach grupy zasobów podczas definiowania strategii, tworzone jest wcięcie w celu wyrównania tego artefaktu do grupy zasobów lub obiektu, z którym zostanie wdrożony. Artefakty, które nie przyjmują parametrów lub nie mają parametrów do zdefiniowania podczas przypisania, zostaną wyświetlone tylko jako informacje kontekstowe.
+   > Dla każdego artefaktu, który został dodany w ramach grupy zasobów podczas definiowania strategii, tworzone jest wcięcie w celu wyrównania tego artefaktu do grupy zasobów lub obiektu, z którym ma być wdrożony. Artefakty, które nie przyjmują parametrów lub nie mają parametrów do zdefiniowania podczas przypisania, są wyświetlane tylko jako informacje kontekstowe.
 
 1. W szablonie „StorageAccount” usługi Azure Resource Manager wybierz wartość „Standard_GRS” dla parametru **storageAccountType**.
 
@@ -201,11 +201,11 @@ Teraz, gdy strategia została przypisana do subskrypcji, sprawdź postęp wdraż
 
    ![Wyświetlanie szczegółów przypisania](./media/create-blueprint-portal/view-assignment-details.png)
 
-1. Na stronie **Szczegóły wdrożenia** sprawdź, czy wszystkie artefakty zostały pomyślnie wdrożone, i czy nie było żadnych błędów podczas wdrażania. Jeśli wystąpiły błędy, zobacz kroki w temacie [rozwiązywanie problemów ze strategią](./troubleshoot/general.md), aby ustalić, co poszło źle.
+1. Na stronie **Szczegóły wdrożenia** sprawdź, czy wszystkie artefakty zostały pomyślnie wdrożone, i czy nie było żadnych błędów podczas wdrażania. Jeśli wystąpiły błędy, zobacz kroki [rozwiązywania problemów ze strategią](./troubleshoot/general.md), aby ustalić, co poszło źle.
 
 ## <a name="unassign-a-blueprint"></a>Cofanie przypisania strategii
 
-Strategie można usunąć z subskrypcji, jeśli nie są już potrzebne lub zostały zastąpione nowszymi strategiami zawierającymi zaktualizowane wzorce, zasady i projekty. Po usunięciu strategii artefakty przypisane w jej ramach są pozostawiane. Aby usunąć przypisanie strategii, wykonaj następujące kroki:
+Jeśli przypisanie strategii nie jest już potrzebne, możesz usunąć je z subskrypcji. Strategia mogła zostać zastąpiona przez nowszą strategię zawierającą zaktualizowane wzorce, zasady i projekty. Po usunięciu strategii artefakty przypisane w jej ramach są pozostawiane. Aby usunąć przypisanie strategii, wykonaj następujące kroki:
 
 1. Wybierz pozycję **Przypisane strategie** w lewej części strony.
 
@@ -220,7 +220,7 @@ Strategie można usunąć z subskrypcji, jeśli nie są już potrzebne lub zosta
 1. Kliknij prawym przyciskiem myszy strategię, którą chcesz usunąć, i wybierz polecenie **Usuń strategię**. Następnie w oknie dialogowym potwierdzenia kliknij przycisk **Tak**.
 
 > [!NOTE]
-> Usunięcie strategii za pomocą tej metody spowoduje również usunięcie wszystkich **opublikowanych wersji** wybranej strategii. Aby usunąć jedną wersję, otwórz strategię, kliknij kartę **Opublikowane wersje**, wybierz i kliknij wersję, którą chcesz usunąć, a następnie kliknij pozycję **Usuń tę wersję**. Ponadto strategii z przypisaniami nie można usunąć, dopóki wszystkie te przypisania strategii nie zostały usunięte.
+> Usunięcie strategii za pomocą tej metody powoduje również usunięcie wszystkich **opublikowanych wersji** wybranej strategii. Aby usunąć jedną wersję, otwórz strategię, kliknij kartę **Opublikowane wersje**, wybierz i kliknij wersję, którą chcesz usunąć, a następnie kliknij pozycję **Usuń tę wersję**. Ponadto strategii z przypisaniami nie można usunąć, dopóki wszystkie te przypisania strategii nie zostały usunięte.
 
 ## <a name="next-steps"></a>Następne kroki
 

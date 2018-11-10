@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: da1f69fc4b962114668c3365ef345c361a22a526
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f9cc3033c476afe389cb52d3468facb9168fb920
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963969"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006536"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Usługi platformy Azure zbieranie dzienników i metryk do użycia w usłudze Log Analytics
 
@@ -159,4 +159,4 @@ Galeria szablonów platformy Azure ma [przykłady użycia usługi Azure Automati
 
 * [Magazyn obiektów blob na użytek usług IIS i magazynu table storage zdarzeń](log-analytics-azure-storage-iis-table.md) do odczytywania dzienników dla tej diagnostyki zapisu do usługi table storage lub dzienniki programu IIS zapisywane do magazynu obiektów blob usługi systemu Azure.
 * [Włączanie rozwiązań](../monitoring/monitoring-solutions.md) zapewniające wgląd w dane.
-* [Używają zapytań wyszukiwania](log-analytics-log-search.md) do analizowania danych.
+* [Używają zapytań wyszukiwania](log-analytics-queries.md) do analizowania danych.

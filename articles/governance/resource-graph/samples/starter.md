@@ -4,17 +4,17 @@ description: Użyj usługi Azure Resource Graph do uruchamiania niektórych pods
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: ba3df8f0f7fa0443e64972647b6f146f756e62d6
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: d5b2bb719bcd5c2145740a02bc408385953ff739
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646632"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50084534"
 ---
 # <a name="starter-resource-graph-queries"></a>Zapytania usługi Resource Graph dla początkujących
 
@@ -38,7 +38,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="language-support"></a>Obsługa języków
 
-Interfejs wiersza polecenia platformy Azure (za pośrednictwem rozszerzenia) i program Azure PowerShell (za pośrednictwem modułu) obsługują usługę Azure Resource Graph. Przed wykonaniem dowolnego z następujących zapytań sprawdź, czy Twoje środowisko jest gotowe. Zobacz [Interfejs wiersza polecenia platformy Azure](../first-query-azurecli.md#add-the-resource-graph-extension) i [Program Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module), gdzie znajdziesz kroki instalacji i weryfikacji wybranego środowiska powłoki.
+Interfejs wiersza polecenia platformy Azure (za pośrednictwem rozszerzenia) i program Azure PowerShell (za pośrednictwem modułu) obsługują usługę Azure Resource Graph. Przed uruchomieniem dowolnego z poniższych zapytań sprawdź, czy Twoje środowisko jest gotowe. Zobacz [Interfejs wiersza polecenia platformy Azure](../first-query-azurecli.md#add-the-resource-graph-extension) i [Program Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module), gdzie znajdziesz kroki instalacji i weryfikacji wybranego środowiska powłoki.
 
 ## <a name="count-resources"></a>Liczba zasobów platformy Azure
 
@@ -58,7 +58,7 @@ Search-AzureRmGraph -Query "summarize count()"
 
 ## <a name="list-resources"></a>Lista zasobów posortowana według nazwy
 
-Bez ograniczania do typu zasobu lub konkretnej dopasowywanej właściwości, to zapytanie zwraca tylko **nazwę**, **typ**, i **lokalizację** zasobów platformy Azure, ale używa polecenia `order by` do sortowania ich według właściwości **nazwa** w kolejności rosnącej (`asc`).
+To zapytanie zwraca dowolny typ zasobu, ale tylko właściwości **nazwa**, **typ** i **lokalizacja**. Używa ono polecenia `order by` do sortowania właściwości według właściwości **nazwa** w kolejności rosnącej (`asc`).
 
 ```Query
 project name, type, location
@@ -75,8 +75,7 @@ Search-AzureRmGraph -Query "project name, type, location | order by name asc"
 
 ## <a name="show-vms"></a>Pokaż wszystkie maszyny wirtualne uporządkowane według nazwy w kolejności malejącej
 
-Zamiast pobierania wszystkich zasobów platformy Azure, jeśli chcemy pobrać tylko listę maszyn wirtualnych (typu `Microsoft.Compute/virtualMachines`), możemy dopasować właściwość **typ** w wynikach.
-Podobnie jak w przypadku poprzedniego zapytania, element `desc` zmienia `order by` na kolejność malejącą. `=~` w dopasowaniu typu nakazuje usłudze Resource Graph ignorowanie wielkości liter.
+Aby wyświetlić listę zawierającą tylko maszyny wirtualne (które są typu `Microsoft.Compute/virtualMachines`), możemy dopasować w wynikach właściwość **typ**. Podobnie jak w przypadku poprzedniego zapytania, element `desc` zmienia `order by` na kolejność malejącą. `=~` w dopasowaniu typu nakazuje usłudze Resource Graph ignorowanie wielkości liter.
 
 ```Query
 project name, location, type
@@ -165,7 +164,8 @@ Search-AzureRmGraph -Query "where type contains 'storage' | distinct type"
 
 ## <a name="list-publicip"></a>Lista wszystkich publicznych adresów IP
 
-Podobnie jak poprzednie zapytanie, znajduje wszystko, co było typem zawierającym słowo **publicIPAddresses**. To zapytanie rozszerza ten wzorzec w celu wykluczenia wyników, w których właściwość **properties.ipAddress** ma wartość null, aby zwrócić tylko właściwości **properties.ipAddress** i ograniczyć (`limit`) wyniki do pierwszych 100. W zależności od wybranej powłoki może być konieczne zastosowanie znaku ucieczki dla cudzysłowów.
+Podobnie jak poprzednie zapytanie, znajduje wszystko, co jest typem zawierającym słowo **publicIPAddresses**.
+To zapytanie rozszerza ten wzorzec w celu wykluczenia wyników, w których właściwość **properties.ipAddress** ma wartość null, aby zwrócić tylko właściwości **properties.ipAddress** i ograniczyć (`limit`) wyniki do pierwszych 100. W zależności od wybranej powłoki może być konieczne zastosowanie znaku ucieczki dla cudzysłowów.
 
 ```Query
 where type contains 'publicIPAddresses' and properties.ipAddress != ''
@@ -215,7 +215,7 @@ az graph query -q "where tags.environment=~'internal' | project name"
 Search-AzureRmGraph -Query "where tags.environment=~'internal' | project name"
 ```
 
-Gdyby było również konieczne podanie tagów zasobu i ich wartości, ten przykład można rozszerzyć, dodając właściwość **tagi** do słowa kluczowego `project`.
+Aby uzyskać także nazwy i wartości tagów w zasobie, dodaj właściwość **tagi** do słowa kluczowego `project`.
 
 ```Query
 where tags.environment=~'internal'
@@ -232,7 +232,7 @@ Search-AzureRmGraph -Query "where tags.environment=~'internal' | project name, t
 
 ## <a name="list-specific-tag"></a>Lista wszystkich kont magazynu z konkretną wartością tagu
 
-Łącząc możliwość filtrowania z poprzedniego przykładu z użyciem filtrowania według typu zasobów platformy Azure według właściwości **typ**, możemy ograniczyć nasze wyszukiwanie do określonych typów zasobów platformy Azure przy użyciu określonej nazwy i wartości tagu.
+Połącz funkcję filtrowania z poprzedniego przykładu i przefiltruj typ zasobów platformy Azure według właściwości **typ**. To zapytanie ogranicza także nasze wyszukiwanie do określonych typów zasobów platformy Azure o określonej nazwie i wartości tagu.
 
 ```Query
 where type =~ 'Microsoft.Storage/storageAccounts'

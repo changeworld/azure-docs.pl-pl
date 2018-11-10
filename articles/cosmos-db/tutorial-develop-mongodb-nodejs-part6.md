@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/17/2018
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: a1705913e1656901d0a87a3cebb2eb69a6c7ad63
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 667c1fbce398e06f9f2a6edca21935ae1062a737
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698591"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740574"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-6-add-post-put-and-delete-functions-to-the-app"></a>Tworzenie aplikacji bazy danych MongoDB przy użyciu usług Angular i Azure Cosmos DB — część 6: dodawanie funkcji Post, Put i Delete do aplikacji
 
@@ -88,13 +88,13 @@ Przed rozpoczęciem tej części samouczka upewnij się, że zostały wykonane c
     });
     ```
 
-5. Sprawdź, czy wszystko działa, uruchamiając aplikację. W programie Visual Studio Code zapisz wszystkie zmiany kliknij przycisk **Debug** (Debuguj) ![Ikona Debug (Debuguj) w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) po lewej stronie, a następnie kliknij przycisk **Start Debugging** (Rozpocznij debugowanie) ![Ikona Start Debugging (Rozpocznij debugowanie) w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
+5. Sprawdź, czy wszystko działa, uruchamiając aplikację. W programie Visual Studio Code zapisz wszystkie zmiany wybierz przycisk **Debuguj** (Debuguj) ![Ikona Debug (Debuguj) w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) po lewej stronie, a następnie wybierz przycisk **Start Debugging** (Rozpocznij debugowanie) ![Ikona Start Debugging (Rozpocznij debugowanie) w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
 
 6. Teraz wróć do przeglądarki internetowej i otwórz kartę Narzędzia programistyczne > Sieć, naciskając klawisz F12 w przypadku większości komputerów. Przejdź do adresu [http://localhost:3000](http://localhost:3000), aby obejrzeć wywołania wykonywane w sieci.
 
     ![Karta Sieć w przeglądarce Chrome z widoczną aktywnością sieci](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
 
-7. Dodaj nowy element hero, klikając przycisk **Add New Hero** (Dodaj nowy element hero). Wprowadź identyfikator „999”, nazwę „Fred” i powiedzenie „Hello”, a następnie kliknij przycisk **Save** (Zapisz). Na karcie Sieć powinno pojawić się wysłane żądanie POST dotyczące nowego elementu hero. 
+7. Dodaj nowy element hero, wybierając przycisk **Add New Hero** (Dodaj nowy element hero). Wprowadź identyfikator „999”, nazwę „Fred” i powiedzenie „Hello”, a następnie wybierz przycisk **Save** (Zapisz). Na karcie Sieć powinno pojawić się wysłane żądanie POST dotyczące nowego elementu hero. 
 
     ![Karta Sieć w przeglądarce Chrome z aktywnością sieci dla funkcji Get i Post](./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png)
 
@@ -173,17 +173,17 @@ Przed rozpoczęciem tej części samouczka upewnij się, że zostały wykonane c
     };
     ```
 
-4. Teraz po zaktualizowaniu kodu kliknij przycisk **Restart** (Uruchom ponownie) ![Przycisk Restart (Uruchom ponownie) w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png) w programie Visual Studio Code.
+4. Teraz po zaktualizowaniu kodu wybierz przycisk **Restart** (Uruchom ponownie) ![Przycisk Restart (Uruchom ponownie) w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png) w programie Visual Studio Code.
 
-5. Odśwież stronę w przeglądarce internetowej, a następnie kliknij przycisk **Add New Hero** (Dodaj nowy element hero). Dodaj nowy element hero z identyfikatorem „9”, nazwą „Starlord” i powiedzeniem „Hi”. Kliknij przycisk **Save** (Zapisz), aby zapisać nowy element hero.
+5. Odśwież stronę w przeglądarce internetowej, a następnie wybierz przycisk **Add New Hero** (Dodaj nowy element hero). Dodaj nowy element hero z identyfikatorem „9”, nazwą „Starlord” i powiedzeniem „Hi”. Wybierz przycisk **Save** (Zapisz), aby zapisać nowy element hero.
 
-6. Teraz wybierz element hero **Starlord** i zmień powiedzenie z „Hi” na „Bye”, a następnie kliknij przycisk **Save** (Zapisz). 
+6. Teraz wybierz element hero **Starlord** i zmień powiedzenie z „Hi” na „Bye”, a następnie wybierz przycisk **Save** (Zapisz). 
 
     Teraz możesz wybrać identyfikator na karcie Sieć w celu wyświetlenia ładunku. W ładunku widać powiedzenie ustawione na „Bye”.
 
     ![Aplikacja Heroes i karta Sieć z przedstawionym ładunkiem](./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png) 
 
-    Możesz również usunąć jeden z elementów hero w interfejsie użytkownika i sprawdzić, ile czasu pozostało do ukończenia operacji usuwania. Wypróbuj tę funkcję, klikając przycisk „Delete” (Usuń) dla elementu hero o nazwie „Fred”.
+    Możesz również usunąć jeden z elementów hero w interfejsie użytkownika i sprawdzić, ile czasu pozostało do ukończenia operacji usuwania. Wypróbuj tę funkcję, wybierz przycisk „Delete” (Usuń) dla elementu hero o nazwie „Fred”.
 
     ![Aplikacja Heroes i karta Sieć pokazująca czas potrzebny do ukończenia działania funkcji](./media/tutorial-develop-mongodb-nodejs-part6/times.png) 
 

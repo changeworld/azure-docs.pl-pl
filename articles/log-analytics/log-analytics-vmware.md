@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9b0a9b8c976ce5ef9fb57a6f8bcfd076f370bb10
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: fe2407f67e2ef7a2eb14105db0fef10917f34ba9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963998"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005227"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Rozwiązanie monitorowanie VMware (wersja zapoznawcza) w usłudze Log Analytics
 
@@ -131,7 +131,7 @@ W **VMware** widoku pulpitu nawigacyjnego bloki są uporządkowane według:
 
 Kliknij przycisk bloku, aby otworzyć okienko wyszukiwania usługi Log Analytics, która zawiera szczegółowe informacje specyficzne dla bloku.
 
-W tym miejscu można edytować zapytania wyszukiwania, aby zmodyfikować go dla określonego elementu. Aby uzyskać więcej informacji na temat tworzenia wyszukiwań w dziennikach, zobacz [znaleźć dane przy użyciu przeszukiwania dzienników w usłudze Log Analytics](log-analytics-log-search.md).
+W tym miejscu można edytować zapytania wyszukiwania, aby zmodyfikować go dla określonego elementu. Aby uzyskać więcej informacji na temat tworzenia wyszukiwań w dziennikach, zobacz [znaleźć dane przy użyciu przeszukiwania dzienników w usłudze Log Analytics](log-analytics-queries.md).
 
 #### <a name="find-esxi-host-events"></a>Znajdź wydarzenia hosta ESXi
 Jeden host ESXi generuje wiele dzienników, w oparciu o ich procesów. To rozwiązanie monitorowanie VMware centralizuje je i zawiera podsumowanie liczby zdarzeń. To scentralizowany widok pomaga zrozumieć, które hostów ESXi ma dużej liczby zdarzeń i jakie zdarzenia występują najczęściej w danym środowisku.
@@ -206,6 +206,6 @@ Może istnieć kilka przyczyn:
     d. Jeśli plik nie istnieje lub nie użytkownika i ustawienia grupy jest nieprawidłowy, akcje naprawcze, [przygotowania serwera z systemem Linux](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Użyj [wyszukiwań w dziennikach](log-analytics-log-search.md) w usłudze Log Analytics, aby wyświetlić szczegółowe VMware obsługi danych.
+* Użyj [wyszukiwań w dziennikach](log-analytics-queries.md) w usłudze Log Analytics, aby wyświetlić szczegółowe VMware obsługi danych.
 * [Tworzenie własnych pulpitów nawigacyjnych](log-analytics-dashboards.md) przedstawiający dane hosta VMware.
 * [Tworzenie alertów](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) po wystąpieniu określonych zdarzeń hostów VMware.

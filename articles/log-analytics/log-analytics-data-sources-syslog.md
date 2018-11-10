@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5247edc02a62f67755ce818645f66f616c5266ce
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 132935371a1b4f52892ae2fb956407079906e79a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962405"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004906"
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>SYSLOG źródeł danych w usłudze Log Analytics
 SYSLOG jest protokołem rejestrowania zdarzeń, który jest wspólny dla systemu Linux.  Aplikacje będzie wysyłać komunikaty, które mogą być przechowywane na komputerze lokalnym lub dostarczane do modułu zbierającego Syslog.  Po zainstalowaniu agenta pakietu OMS dla systemu Linux umożliwia skonfigurowanie lokalnego demona usługi Syslog do przekazywania komunikatów do agenta.  Agent wysyła następnie komunikatu do usługi Log Analytics, gdzie odpowiedni rekord zostanie utworzony w repozytorium pakietu OMS.  
@@ -207,6 +207,6 @@ Poniższa tabela zawiera przykłady różnych zapytań dziennika, które pobiera
 | SYSLOG &#124; summarize AggregatedValue = count() by funkcji |Liczba Syslog rekordy według funkcji. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) analizować dane zbierane z innych źródeł danych i rozwiązań.
+* Dowiedz się więcej o [dziennikach](log-analytics-queries.md) analizować dane zbierane z innych źródeł danych i rozwiązań.
 * Użyj [pól niestandardowych](log-analytics-custom-fields.md) do analizowania danych z rekordy syslog na poszczególne pola.
 * [Konfigurowanie agentów systemu Linux](log-analytics-quick-collect-linux-computer.md) do gromadzenia innych typów danych.

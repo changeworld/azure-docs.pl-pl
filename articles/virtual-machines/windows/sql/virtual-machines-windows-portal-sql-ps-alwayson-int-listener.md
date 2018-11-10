@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
-ms.openlocfilehash: b4641c847db817df905f056847a26d003ac25fd1
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: ee7b403c2ebdc590bd428eff880769ae83632585
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43381799"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228219"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Skonfiguruj co najmniej jeden Always On odbiorników grup dostępności — Resource Manager
 W tym temacie przedstawiono sposób:
@@ -41,7 +41,7 @@ Powiązane tematy obejmują:
 [!INCLUDE [Start your PowerShell session](../../../../includes/sql-vm-powershell.md)]
 
 ## <a name="configure-the-windows-firewall"></a>Skonfiguruj zaporę Windows
-Skonfiguruj zaporę Windows, aby zezwolić na dostęp do programu SQL Server. Reguły zapory zezwalają na połączenia protokołu TCP do użycia portów w programie wystąpienia programu SQL Server i badania odbiornika. Aby uzyskać szczegółowe instrukcje, zobacz [skonfigurować zaporę Windows dla dostępu aparatu bazy danych](http://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Utwórz regułę ruchu przychodzącego dla portu programu SQL Server i port sondy.
+Skonfiguruj zaporę Windows, aby zezwolić na dostęp do programu SQL Server. Reguły zapory zezwalają na połączenia protokołu TCP do użycia portów w programie wystąpienia programu SQL Server i badania odbiornika. Aby uzyskać szczegółowe instrukcje, zobacz [skonfigurować zaporę Windows dla dostępu aparatu bazy danych](https://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Utwórz regułę ruchu przychodzącego dla portu programu SQL Server i port sondy.
 
 Jeśli jesteś ograniczanie dostępu przy użyciu grupy zabezpieczeń sieci platformy Azure, upewnij się, że reguły Zezwalaj obejmują adresy IP maszyn wirtualnych serwera SQL w wewnętrznej bazie danych, pływający adres IP modułu równoważenia obciążenia adresów dla odbiornika grupy dostępności i adres IP podstawowe klastra, jeśli ma to zastosowanie.
 
@@ -110,7 +110,7 @@ Port frontonu jest port, którego aplikacje za pośrednictwem nawiąż połącze
 > W przypadku grup dostępności programu SQL Server poszczególnych adresów IP wymaga port sondy określonych. Na przykład jeśli jeden adres IP modułu równoważenia obciążenia używa port sondy 59999, nie inne adresy IP dla tego modułu równoważenia obciążenia można użyć port sondy 59999.
 
 * Aby uzyskać informacje o limitach usługi równoważenia obciążenia, zobacz **adresy IP prywatnej frontonu na moduł równoważenia obciążenia** w obszarze [limity dotyczące sieci — usługi Azure Resource Manager](../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
-* Aby uzyskać informacje o limitach grupy dostępności, zobacz [ograniczenia (grupy dostępności)](http://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG).
+* Aby uzyskać informacje o limitach grupy dostępności, zobacz [ograniczenia (grupy dostępności)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG).
 
 Poniższy skrypt dodaje nowy adres IP do istniejącego modułu równoważenia obciążenia. Wewnętrznego modułu równoważenia obciążenia korzysta z portu odbiornika dla frontonu port równoważenia obciążenia. Ten port może być numer portu, którego nasłuchuje program SQL Server. Dla domyślnego wystąpienia programu SQL Server numer portu to 1433. Regułę grupy dostępności równoważenia obciążenia wymaga pływającego adresu IP (bezpośredni zwrot serwera), dzięki czemu portu zaplecza jest taki sam jak port frontonu. Zaktualizuj zmienne w danym środowisku. 
 
@@ -188,7 +188,7 @@ Aby przetestować połączenie:
 SQLCMD automatycznie nawiązania połączenia z dowolnego wystąpienia programu SQL Server obsługuje replikę podstawową. 
 
 > [!NOTE]
-> Upewnij się, że port, który określisz jest otwarty na zaporze oba serwery SQL. Oba serwery wymagają regułę ruchu przychodzącego dla portu TCP, którego używasz. Zobacz [apletu Dodaj lub Edytuj regułę zapory](http://technet.microsoft.com/library/cc753558.aspx) Aby uzyskać więcej informacji. 
+> Upewnij się, że port, który określisz jest otwarty na zaporze oba serwery SQL. Oba serwery wymagają regułę ruchu przychodzącego dla portu TCP, którego używasz. Zobacz [apletu Dodaj lub Edytuj regułę zapory](https://technet.microsoft.com/library/cc753558.aspx) Aby uzyskać więcej informacji. 
 > 
 > 
 
@@ -199,15 +199,15 @@ Należy pamiętać, że następujące wytyczne dotyczące odbiornika grupy dost�
 
 * Jeśli jesteś ograniczanie dostępu przy użyciu grupy zabezpieczeń sieci platformy Azure, upewnij się, że reguły Zezwalaj obejmują adresy IP maszyn wirtualnych serwera SQL w wewnętrznej bazie danych, pływający adres IP modułu równoważenia obciążenia adresów dla odbiornika grupy dostępności i adres IP podstawowe klastra, jeśli ma to zastosowanie.
 
-## <a name="for-more-information"></a>Aby uzyskać więcej informacji
+## <a name="for-more-information"></a>Więcej informacji
 Aby uzyskać więcej informacji, zobacz [dostępności Konfigurowanie zawsze włączonej grupie w maszynie Wirtualnej platformy Azure ręcznie](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
 
 ## <a name="powershell-cmdlets"></a>Polecenia cmdlet programu PowerShell
 Użyj następujących poleceń cmdlet programu PowerShell do utworzenia wewnętrznego modułu równoważenia obciążenia maszyn wirtualnych platformy Azure.
 
-* [Nowy-AzureRmLoadBalancer](http://msdn.microsoft.com/library/mt619450.aspx) tworzy moduł równoważenia obciążenia. 
-* [Nowe AzureRMLoadBalancerFrontendIpConfig](http://msdn.microsoft.com/library/mt603510.aspx) tworzy konfigurację adresu IP frontonu dla modułu równoważenia obciążenia. 
-* [Nowy-AzureRmLoadBalancerRuleConfig](http://msdn.microsoft.com/library/mt619391.aspx) tworzy konfiguracji reguły dla modułu równoważenia obciążenia. 
-* [Nowe AzureRmLoadBalancerBackendAddressPoolConfig](http://msdn.microsoft.com/library/mt603791.aspx) tworzy konfigurację puli adresów zaplecza dla modułu równoważenia obciążenia. 
-* [Nowy-AzureRmLoadBalancerProbeConfig](http://msdn.microsoft.com/library/mt603847.aspx) tworzy konfigurację sondowania dla modułu równoważenia obciążenia.
-* [Remove-AzureRmLoadBalancer](http://msdn.microsoft.com/library/mt603862.aspx) usuwa modułu równoważenia obciążenia z grupy zasobów platformy Azure.
+* [Nowy-AzureRmLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) tworzy moduł równoważenia obciążenia. 
+* [Nowe AzureRMLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) tworzy konfigurację adresu IP frontonu dla modułu równoważenia obciążenia. 
+* [Nowy-AzureRmLoadBalancerRuleConfig](https://msdn.microsoft.com/library/mt619391.aspx) tworzy konfiguracji reguły dla modułu równoważenia obciążenia. 
+* [Nowe AzureRmLoadBalancerBackendAddressPoolConfig](https://msdn.microsoft.com/library/mt603791.aspx) tworzy konfigurację puli adresów zaplecza dla modułu równoważenia obciążenia. 
+* [Nowy-AzureRmLoadBalancerProbeConfig](https://msdn.microsoft.com/library/mt603847.aspx) tworzy konfigurację sondowania dla modułu równoważenia obciążenia.
+* [Remove-AzureRmLoadBalancer](https://msdn.microsoft.com/library/mt603862.aspx) usuwa modułu równoważenia obciążenia z grupy zasobów platformy Azure.

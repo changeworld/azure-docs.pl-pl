@@ -9,14 +9,14 @@ ms.author: govindk
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: f73a201a25bb2f975e8a261a6c21aa7b066c3a7c
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 56fc07c6d775ee8015ce244acb7782607bda802a
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247854"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739791"
 ---
-# <a name="migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Migrowanie danych na konto interfejsu API Cassandra w usłudze Azure Cosmos DB
+# <a name="tutorial-migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Samouczek: migrowanie danych do konta interfejsu API Cassandra usługi Azure Cosmos DB
 
 Ten samouczek zawiera instrukcje dotyczące sposobu przeprowadzania migracji danych z bazy danych Apache Cassandra do interfejsu API Cassandra w usłudze Azure Cosmos DB. 
 
@@ -62,11 +62,11 @@ Po zidentyfikowaniu wymagań dotyczących istniejącego obciążenia musisz utwo
 
 ## <a name="prerequisites-for-migration"></a>Wymagania wstępne dotyczące migracji
 
-* **Utworzenie tabel na koncie interfejsu API Cassandra w usłudze Azure Cosmos DB.** Przed rozpoczęciem migracji danych utwórz wstępnie wszystkie tabele z poziomu witryny Azure Portal lub serwera cqlsh. W przypadku migracji do konta usługi Azure Cosmos DB, która ma przepływność poziomu bazy danych, pamiętaj o podaniu klucza partycji podczas tworzenia kontenerów usługi Azure Cosmos DB.
+* **Utworzenie tabel na koncie interfejsu API Cassandra w usłudze Azure Cosmos DB.** Przed rozpoczęciem migracji danych utwórz wstępnie wszystkie tabele z poziomu witryny Azure Portal lub serwera cqlsh. W przypadku migracji do konta usługi Azure Cosmos DB, która ma przepływność na poziomie bazy danych, pamiętaj o podaniu klucza partycji podczas tworzenia kontenerów usługi Azure Cosmos DB.
 
 * **Zwiększenie przepływności.** Czas trwania migracji danych zależy od przepływności aprowizowanej dla tabel w usłudze Azure Cosmos DB. Na czas trwania migracji zwiększ przepływność. Dzięki większej przepływności można uniknąć ograniczania przepustowości i przeprowadzać migrację w krótszym czasie. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności, zobacz [ustawianie przepływności](set-throughput.md) dla kontenerów usługi Azure Cosmos DB. Zalecane jest również posiadanie konta usługi Azure Cosmos DB w tym samym regionie, w którym znajduje się źródłowa baza danych. 
 
-* **Włączenie protokołu SSL.** Usługa Azure Cosmos DB ma ścisłe wymagania i standardy dotyczące bezpieczeństwa. Pamiętaj, aby włączyć protokół SSL w przypadku interakcji z kontem. W przypadku korzystania z języka CQL z protokołem SSH możesz udostępnić informacje wymagane przez protokół SSL.
+* **Włączenie protokołu SSL:** usługa Azure Cosmos DB ma ścisłe wymagania i standardy dotyczące bezpieczeństwa. Pamiętaj, aby włączyć protokół SSL w przypadku interakcji z kontem. W przypadku korzystania z języka CQL z protokołem SSH możesz udostępnić informacje wymagane przez protokół SSL.
 
 ## <a name="options-to-migrate-data"></a>Opcje migracji danych
 
@@ -101,7 +101,7 @@ Aby przeprowadzić migrację danych z interfejsu API Cassandra w usłudze Azure 
 
 - Przenieś dane do docelowego punktu końcowego interfejsu API Cassandra przy użyciu [operacji kopiowania tabeli](cassandra-spark-table-copy-ops.md) 
 
-Migracja danych przy użyciu zadań platformy Spark jest opcją zalecaną, gdy Twoje dane znajdują się w istniejącym klastrze na maszynach wirtualnych platformy Azure lub w jakiejkolwiek innej chmurze. Ta metoda wymaga skonfigurowania platformy Spark jako elementu pośredniczącego w jednorazowym lub regularnym pozyskiwaniu. Migrację możesz przyspieszyć, używając łączności ExpressRoute między środowiskiem lokalnym i platformą Azure. 
+Migracja danych przy użyciu zadań platformy Spark jest opcją zalecaną, gdy Twoje dane znajdują się w istniejącym klastrze na maszynach wirtualnych platformy Azure lub w jakiejkolwiek innej chmurze. Ta opcja wymaga skonfigurowania platformy Spark jako elementu pośredniczącego na potrzeby jednorazowego lub regularnego pozyskiwania. Migrację możesz przyspieszyć, używając łączności ExpressRoute między środowiskiem lokalnym i platformą Azure. 
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5638b71147592ae71c741ca86da68ddfec668af5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: acb010b0169fd876bf540f7a4115dbabfeda923a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299070"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227199"
 ---
 # <a name="connecting-microsoft-azure-application-gateway-to-azure-security-center"></a>Łączenie usługi Microsoft Azure Application Gateway do usługi Azure Security Center
 Ten dokument pomoże Ci skonfigurować integrację z Centrum zabezpieczeń i zapory aplikacji sieci web Application Gateway (WAF).
@@ -61,4 +61,4 @@ W tym artykule przedstawiono sposób zintegrowania Application Gateway zapory ap
 * [Monitorowanie kondycji zabezpieczeń w usłudze Security Center](security-center-monitoring.md).
 * [Monitorowanie rozwiązań partnerskich w usłudze Security Center](security-center-partner-solutions.md).
 * [Azure Security Center — często zadawane pytania](security-center-faq.md).
-* [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/).
+* [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/).

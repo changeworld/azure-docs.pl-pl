@@ -1,6 +1,6 @@
 ---
-title: Tworzenie filtrów za pomocą usługi Azure Media Services interfejsu API REST | Dokumentacja firmy Microsoft
-description: W tym temacie opisano sposób tworzenia filtrów dzięki klienta można użyć ich do określonych sekcji strumienia strumienia. Usługa Media Services tworzy dynamiczne manifestów do osiągnięcia tej selektywnego przesyłania strumieniowego.
+title: Tworzenie filtrów za pomocą usługi Azure Media Services — interfejs API REST | Dokumentacja firmy Microsoft
+description: W tym temacie opisano sposób tworzenia filtrów, więc klienta można ich używać do określonych sekcji strumienia strumienia. Usługa Media Services tworzy manifestów dynamicznych w celu uzyskania tego selektywne przesyłania strumieniowego.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,28 +14,28 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako;cenkdin
-ms.openlocfilehash: 396abe0801d76af3820d302d40d2fc076754741b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 50becbe517e98802c9a3af91b86f845df05378a7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790279"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227522"
 ---
-# <a name="creating-filters-with-azure-media-services-rest-api"></a>Tworzenia filtrów z usługi Azure Media Services interfejsu API REST
+# <a name="creating-filters-with-azure-media-services-rest-api"></a>Tworzenie filtrów za pomocą usługi Azure Media interfejs API REST usług
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
 > * [REST](media-services-rest-dynamic-manifest.md)
 > 
 > 
 
-Począwszy od wersji 2.17, Media Services można zdefiniować filtry dla zasobów. Te filtry są reguły po stronie serwera, które umożliwiają klientom wybierz można wykonywać następujące czynności: odtwarzanie tylko części klipu wideo (zamiast odtwarzanie całego), lub określ tylko podzestaw wersji audio i wideo, które urządzenia klienta może obsłużyć (zamiast elementu wszystkie wersje, które są skojarzone z elementu zawartości). Filtrowania elementów zawartości zostaną zarchiwizowane za pośrednictwem **dynamiczne manifestu**, które są tworzone na żądanie klienta do strumienia wideo oparte na określonej filtry.
+Począwszy od wersji 2.17, Media Services umożliwia definiowanie filtrów dla zasobów. Te filtry są reguły po stronie serwera, które umożliwiają klientom chce wykonywać następujące czynności: odtwarzanie tylko na część wideo (zamiast odtwarzanie całego), lub określ tylko podzbiór odwzorowaniami audio i wideo, obsługujące przez klienta urządzenia (zamiast z wszystkie wersje, które są skojarzone z elementem zawartości). Filtrowanie zasobów są archiwizowane za pośrednictwem **manifestów dynamicznych**s, które są tworzone na żądanie klienta do przesyłania strumieniowego wideo oparte na określonej filtry.
 
-Aby uzyskać szczegółowe informacje dotyczące filtrów i dynamicznych manifestu, zobacz [dynamicznie manifesty omówienie](media-services-dynamic-manifest-overview.md).
+Aby uzyskać szczegółowe informacje dotyczące filtrów i manifestów dynamicznych, zobacz [dynamiczne manifesty Przegląd](media-services-dynamic-manifest-overview.md).
 
-W tym artykule przedstawiono sposób tworzenia, aktualizacji i usuwania filtrów przy użyciu interfejsów API REST. 
+W tym artykule pokazano, jak używać interfejsów API REST do tworzenia, aktualizacji i usuwania filtrów. 
 
 ## <a name="types-used-to-create-filters"></a>Typy używane do tworzenia filtrów
-Następujące typy są używane podczas tworzenia filtrów:  
+Podczas tworzenia filtrów, używane są następujące typy:  
 
 * [Filtr](https://docs.microsoft.com/rest/api/media/operations/filter)
 * [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
@@ -44,17 +44,17 @@ Następujące typy są używane podczas tworzenia filtrów:
 
 >[!NOTE]
 
->Podczas uzyskiwania dostępu do obiektów w usłudze Media Services, należy ustawić określonych pól nagłówka i wartości w Twoich żądań HTTP. Aby uzyskać więcej informacji, zobacz [ustawień dla rozwoju interfejsu API REST usługi Media](media-services-rest-how-to-use.md).
+>Podczas uzyskiwania dostępu do jednostek w usłudze Media Services, należy ustawić określonych pól nagłówka i wartości w żądaniach HTTP. Aby uzyskać więcej informacji, zobacz [Instalatora w celu tworzenia interfejsu API REST usługi Media](media-services-rest-how-to-use.md).
 
 ## <a name="connect-to-media-services"></a>Łączenie się z usługą Media Services
 
-Aby uzyskać informacje na temat nawiązywania połączenia z interfejsu API usług AMS, zobacz [dostępu Azure Media Services API przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Aby uzyskać informacje o tym, jak połączyć się z interfejsem API usługi AMS, zobacz [dostęp do interfejsu API usługi multimediów Azure przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 ## <a name="create-filters"></a>Tworzenie filtrów
-### <a name="create-global-filters"></a>Utwórz filtry globalne
+### <a name="create-global-filters"></a>Tworzenie filtrów globalnych
 Aby utworzyć filtr globalny, użyj następujących żądań HTTP:  
 
-#### <a name="http-request"></a>Żądania HTTP
+#### <a name="http-request"></a>Żądanie HTTP
 Nagłówki żądania
 
     POST https://media.windows.net/API/Filters HTTP/1.1 
@@ -104,10 +104,10 @@ Treść żądania
 #### <a name="http-response"></a>Odpowiedź HTTP
     HTTP/1.1 201 Created 
 
-### <a name="create-local-assetfilters"></a>Utwórz AssetFilters lokalnego
-Aby utworzyć lokalnego AssetFilter, użyj następujących żądań HTTP:  
+### <a name="create-local-assetfilters"></a>Tworzenie lokalnej AssetFilters
+Aby utworzyć AssetFilter lokalnych, wykonaj następujące żądania HTTP:  
 
-#### <a name="http-request"></a>Żądania HTTP
+#### <a name="http-request"></a>Żądanie HTTP
 Nagłówki żądania
 
     POST https://media.windows.net/API/AssetFilters HTTP/1.1 
@@ -160,7 +160,7 @@ Treść żądania
 ### <a name="get-all-global-filters-in-the-ams-account"></a>Pobierz wszystkie globalne **filtru**s w ramach konta usługi AMS
 Aby wyświetlić listę filtrów, użyj następujących protokołu HTTP żądania: 
 
-#### <a name="http-request"></a>Żądania HTTP
+#### <a name="http-request"></a>Żądanie HTTP
     GET https://media.windows.net/API/Filters HTTP/1.1 
     DataServiceVersion:3.0 
     MaxDataServiceVersion: 3.0 
@@ -170,8 +170,8 @@ Aby wyświetlić listę filtrów, użyj następujących protokołu HTTP żądani
     x-ms-version: 2.17 
     Host: media.windows.net 
 
-### <a name="get-assetfilters-associated-with-an-asset"></a>Pobierz **AssetFilter**s skojarzony z zasobem
-#### <a name="http-request"></a>Żądania HTTP
+### <a name="get-assetfilters-associated-with-an-asset"></a>Pobierz **AssetFilter**s skojarzone z elementem zawartości
+#### <a name="http-request"></a>Żądanie HTTP
     GET https://media.windows.net/API/Assets('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592')/AssetFilters HTTP/1.1 
     DataServiceVersion: 3.0 
     MaxDataServiceVersion: 3.0 
@@ -183,7 +183,7 @@ Aby wyświetlić listę filtrów, użyj następujących protokołu HTTP żądani
     Host: media.windows.net 
 
 ### <a name="get-an-assetfilter-based-on-its-id"></a>Pobierz **AssetFilter** na podstawie jego identyfikatora
-#### <a name="http-request"></a>Żądania HTTP
+#### <a name="http-request"></a>Żądanie HTTP
     GET https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__TestFilter') HTTP/1.1 
     DataServiceVersion: 3.0 
     MaxDataServiceVersion: 3.0 
@@ -194,15 +194,15 @@ Aby wyświetlić listę filtrów, użyj następujących protokołu HTTP żądani
     x-ms-client-request-id: 00000000
 
 
-## <a name="update-filters"></a>Filtry aktualizacji
-Użyj poprawki, PUT lub scalania, aby zaktualizować filtr z nowej wartości właściwości.  Aby uzyskać więcej informacji o tych operacjach, zobacz [poprawki, PUT, MERGE](http://msdn.microsoft.com/library/dd541276.aspx).
+## <a name="update-filters"></a>Zaktualizuj filtry
+Użyj poprawki, PUT lub scalania, aby zaktualizować filtr przy użyciu nowej wartości właściwości.  Aby uzyskać więcej informacji na temat tych operacji, zobacz [umieszczanie poprawek i SCALIĆ](https://msdn.microsoft.com/library/dd541276.aspx).
 
-Po zaktualizowaniu filtru może potrwać maksymalnie dwie minuty dla punktu końcowego przesyłania strumieniowego odświeżyć zasady. Jeśli zawartość zostało obsłużone przy użyciu tego filtru (i w pamięci podręcznej serwerów proxy i sieci CDN pamięci podręcznych), aktualizacja tego filtru może powodować błędy player. Wyczyścić pamięć podręczną po zaktualizowaniu filtru. Jeśli ta opcja nie jest możliwe, należy rozważyć użycie inny filtr.  
+Jeśli zaktualizujesz filtru, może potrwać do dwóch minut, zanim punkt końcowy przesyłania strumieniowego odświeżyć zasady. Zawartość zostało obsłużone za pomocą tego filtru (i w pamięci podręcznej serwerów proxy i Azure CDN pamięci podręcznych), aktualizacja tego filtru może spowodować błędy odtwarzacza. Wyczyść pamięć podręczną po zaktualizowaniu filtru. Jeśli ta opcja nie jest możliwe, należy wziąć pod uwagę przy użyciu innego filtru.  
 
-### <a name="update-global-filters"></a>Filtry globalne aktualizacji
-Aby zaktualizować filtr globalny, należy zastosować następujące żądania HTTP: 
+### <a name="update-global-filters"></a>Zaktualizuj filtry globalne
+Aby zaktualizować filtrów globalnych, użyj następujących żądań HTTP: 
 
-#### <a name="http-request"></a>Żądania HTTP
+#### <a name="http-request"></a>Żądanie HTTP
 Nagłówki żądania: 
 
     MERGE https://media.windows.net/API/Filters('filterName') HTTP/1.1 
@@ -239,10 +239,10 @@ Treść żądania:
        ] 
     } 
 
-### <a name="update-local-assetfilters"></a>Aktualizacja lokalnych AssetFilters
-Aby zaktualizować lokalny filtr, należy zastosować następujące żądania HTTP: 
+### <a name="update-local-assetfilters"></a>Zaktualizuj lokalne AssetFilters
+Aby zaktualizować lokalny filtr, użyj następujących żądań HTTP: 
 
-#### <a name="http-request"></a>Żądania HTTP
+#### <a name="http-request"></a>Żądanie HTTP
 Nagłówki żądania: 
 
     MERGE https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__TestFilter')  HTTP/1.1 
@@ -279,11 +279,11 @@ Treść żądania:
     } 
 
 
-## <a name="delete-filters"></a>Usuwanie filtrów
+## <a name="delete-filters"></a>Usuń filtry
 ### <a name="delete-global-filters"></a>Usuń filtry globalne
 Aby usunąć filtr globalny, użyj następujących żądań HTTP:
 
-#### <a name="http-request"></a>Żądania HTTP
+#### <a name="http-request"></a>Żądanie HTTP
     DELETE https://media.windows.net/api/Filters('GlobalFilter') HTTP/1.1 
     DataServiceVersion:3.0 
     MaxDataServiceVersion: 3.0 
@@ -295,9 +295,9 @@ Aby usunąć filtr globalny, użyj następujących żądań HTTP:
 
 
 ### <a name="delete-local-assetfilters"></a>Usuń lokalne AssetFilters
-Aby usunąć lokalnego AssetFilter, użyj następujących żądań HTTP:
+Aby usunąć AssetFilter lokalnym, użyj następujących żądań HTTP:
 
-#### <a name="http-request"></a>Żądania HTTP
+#### <a name="http-request"></a>Żądanie HTTP
     DELETE https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__LocalFilter') HTTP/1.1 
     DataServiceVersion: 3.0 
     MaxDataServiceVersion: 3.0 
@@ -307,10 +307,10 @@ Aby usunąć lokalnego AssetFilter, użyj następujących żądań HTTP:
     x-ms-version: 2.17 
     Host: media.windows.net 
 
-## <a name="build-streaming-urls-that-use-filters"></a>Tworzenie adresów URL, które należy używać filtrów przesyłania strumieniowego
-Aby uzyskać informacje na temat sposobu publikowania i dostarczanie zasobów, zobacz [dostarczania zawartości do klientów omówienie](media-services-deliver-content-overview.md).
+## <a name="build-streaming-urls-that-use-filters"></a>Tworzenie adresów URL, które używają filtrów przesyłania strumieniowego
+Aby uzyskać informacje na temat publikowania i dostarczać zasobów, zobacz [dostarczanie zawartości klientom Przegląd](media-services-deliver-content-overview.md).
 
-Poniższe przykłady przedstawiają sposób dodawania filtrów do przesyłania strumieniowego adresami URL.
+Następujące przykłady przedstawiają sposób dodawania filtrów do przesyłania strumieniowego adresami URL.
 
 **MPEG DASH** 
 
@@ -320,7 +320,7 @@ Poniższe przykłady przedstawiają sposób dodawania filtrów do przesyłania s
 
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)
 
-**Apple HTTP Live przesyłania strumieniowego V3 (HLS)**
+**Apple HTTP Live przesyłania strumieniowego (HLS) V3**
 
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
 
@@ -336,5 +336,5 @@ Poniższe przykłady przedstawiają sposób dodawania filtrów do przesyłania s
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zobacz też
-[Omówienie dynamicznej manifestów](media-services-dynamic-manifest-overview.md)
+[Omówienie manifestów dynamicznych](media-services-dynamic-manifest-overview.md)
 

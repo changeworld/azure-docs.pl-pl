@@ -1,6 +1,6 @@
 ---
-title: Biznesowe opis etapie cyklu życia procesu nauki danych zespołu - Azure | Dokumentacja firmy Microsoft
-description: Cele, zadań i elementów dostarczanych na etapie opis firm projektów analizy danych
+title: Etap opis firm cykl życia zespołowego danych naukowych — Azure | Dokumentacja firmy Microsoft
+description: Cele, zadania i elementy dostarczane dla etapu opis biznesowych, projektów do nauki o danych
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,54 +15,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 6d8eedbbf4a682443e73ecb9cf9496f3cdd1cd9d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 00dc359fc171afe470b1dfe8f38d0951085ec580
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837205"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228304"
 ---
 # <a name="business-understanding"></a>Poznawanie firmy
 
-W tym artykule omówiono cele, zadań i elementów dostarczanych skojarzone z etapu opis firm zespołu danych nauki procesu (TDSP). Ten proces obejmuje zalecane cykl służy do struktury projektów analizy danych. Cykl życia przedstawiono główne etapy, które projekty zazwyczaj wykonywane, często wielokrotnie powtarzane:
+W tym artykule opisano cele, zadania i cele do zrealizowania skojarzone z etapem opis firm procesu do nauki o danych zespołu (TDSP). Ten proces obejmuje zalecane cyklu życia, który umożliwia tworzenie struktury projektów do nauki o danych. Cykl życia przedstawia główne etapy, które projekty zazwyczaj są wykonywane, często iteracyjne:
 
-   1. **Opis biznesowa**
-   2. **Uzyskiwanie danych i zrozumienie**
+   1. **Poznawanie firmy**
+   2. **Pozyskiwanie danych i opis**
    3. **Modelowanie**
    4. **Wdrożenie**
-   5. **Akceptacji klienta**
+   5. **Akceptacja klienta**
 
-W tym miejscu jest wizualną reprezentacją życia TDSP: 
+Oto wizualnej reprezentacji cyklu przetwarzania TDSP: 
 
-![Cykl życia TDSP](./media/lifecycle/tdsp-lifecycle2.png) 
+![Cykl życia przetwarzania TDSP](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goals"></a>Cele
-* Określ klucza zmienne, które mają służyć jako miejsca docelowe modelu i których powiązane metryki są używane ocenić powodzenie projektu.
-* Określenie odpowiednich źródeł danych do firmy musi uzyskać lub ma dostęp do.
+* Określ klucza zmienne, które mają służyć jako obiekty docelowe modelu i którego powiązane metryki są używane ustalenia powodzenia projektu.
+* Określenie odpowiednich źródeł danych, które ma dostęp do firmy, lub musi uzyskać.
 
 ## <a name="how-to-do-it"></a>Jak to zrobić
-Istnieją dwa główne zadania zostały omówione w tym etapie: 
+Istnieją dwa główne zadania, które zostały rozwiązane podczas tego etapu: 
 
-   * **Zdefiniuj cele**: Praca z klienta oraz innych zainteresowanych osób do zrozumienia i identyfikację problemów biznesowych. Sformułować pytania, na które zdefiniuj cele biznesowe, które można kierować techniki analizy danych.
-   * **Źródła danych**: Znajdź odpowiednie dane, które pomaga odpowiedzieć na pytania, które określają cele projektu.
+   * **Zdefiniuj cele**: Praca z klientów i innych zainteresowanych stron, aby zrozumieć i zidentyfikować problemy biznesowe. Formułowanie pytania, które definiują cele biznesowe, przeznaczonych dla metody do nauki o danych.
+   * **Identyfikowanie źródeł danych**: Znajdź odpowiednie dane, które pomoże Ci odpowiadać na pytania, definiujące cele projektu.
 
 ### <a name="define-objectives"></a>Zdefiniuj cele
-1. Głównym celem tego etapu jest ustalenie zmiennych klucza biznesowe, które wymaga analizy do prognozowania. Firma Microsoft odnosi się do tych zmiennych jako *modelu obiektów docelowych*, i używamy metryki skojarzonych z nimi, aby określić powodzenie projektu. Dwa przykłady takich miejsc docelowych są prognozy sprzedaży lub prawdopodobieństwo kolejności jest fałszywe.
+1. Głównym celem tego kroku jest do identyfikowania zmienne klucza biznesowych, które niezbędne do analizy do prognozowania. Będziemy odwoływać się do tych zmiennych jako *modelu obiektów docelowych*, i używamy metryki skojarzonych z nimi do ustalenia powodzenia projektu. Dwa przykłady takich celów są prognoz sprzedaży lub prawdopodobieństwo, że kolejność jest fałszywe.
 
-2. Zdefiniuj cele projektu pytania i uściślenie "ostrych" pytania, które są istotne, określonych i jednoznaczne. Nauki danych jest procesem, który używa nazwy i numery odpowiedzi na takie pytania. Aby uzyskać więcej informacji na zadawanie pytań sharp, zobacz [sposób wykonywania analizy danych](https://blogs.technet.microsoft.com/machinelearning/2016/03/28/how-to-do-data-science/) blogu. Używane zwykle nauki danych lub odpowiedzi na pytania pięć typów uczenia maszynowego:
+2. Zdefiniuj cele projektu, pytania i rafinacja "ostrych" zadawane pytania, które są istotne, określonej i jednoznaczna. Do nauki o danych jest procesem, który używa nazwy i numery odpowiedzi na takie pytania. Aby uzyskać więcej informacji na zadawanie pytań sharp zobacz [sposobu przeprowadzenia analizy danych](https://blogs.technet.microsoft.com/machinelearning/2016/03/28/how-to-do-data-science/) blogu. Zazwyczaj używasz do nauki o danych i uczenia maszynowego, aby odpowiedzieć pięć typów pytań:
  
    * Ile lub ile? (Regresja)
-   * Kategorii? (Klasyfikacja)
-   * Grupę? (klastrowania)
+   * Jakiej kategorii? (Klasyfikacja)
+   * Która grupa? (klastrowania)
    * Jest to nieco dziwne? (wykrywanie anomalii)
-   * Należy podjąć, która opcja? (zalecane)
+   * Opcję, która ma być wykonywana? (zalecenie)
 
-   Ustal, które z tych pytań jest wysyłane żądanie i jak odpowiadający osiągnięcia celów biznesowych.
+   Określ, który z tych pytań jest wysyłane żądanie i jak odpowiadający powoduje to osiągnięcie celów biznesowych.
 
-3. Zdefiniuj zespołu projektu, określając role i obowiązki związane z jego elementów członkowskich. Opracuj plan wysokiego poziomu punktu kontrolnego, który można iterację w miarę odnajdywania więcej informacji. 
+3. Definiowanie zespołu projektu, określając ról i obowiązków, jego członków. Opracowywanie planu wysokiego poziomu punktu kontrolnego, który możesz powtarzanie czynności w odkrywaniu większej ilości informacji. 
 
-4. Zdefiniuj metryki sukcesu. Na przykład można osiągnąć prognozowania przenoszenie klienta. Szybkość dokładność "procent x" należy do końca tego projektu trzech miesięcy. Przy użyciu tych danych możesz zaoferować się, że churn — promocji klienta, aby zmniejszyć. Metryki musi być **INTELIGENTNE**: 
+4. Zdefiniuj metryki sukcesu. Na przykład można osiągnąć przewidywanie zmienności klientów. Szybkość dokładność "x" procent jest konieczne do końca tego projektu trzech miesięcy. Dzięki tym danym może zaoferować, postęp dokonany w promocji klienta, aby zmniejszyć. Metryki musi być **INTELIGENTNE**: 
 
    * **S**bierz określone 
    * **M**easurable
@@ -70,31 +70,31 @@ Istnieją dwa główne zadania zostały omówione w tym etapie:
    * **R**elevant 
    * **T**powiązane z edytora ime 
 
-### <a name="identify-data-sources"></a>Źródła danych
-Zidentyfikuj źródeł danych, które zawierają przykłady znanych odpowiedzi na pytania sharp. Wyszukaj następujące dane:
+### <a name="identify-data-sources"></a>Identyfikowanie źródeł danych
+Identyfikowanie źródeł danych, które zawierają przykłady znanych odpowiedzi na swoje pytania sharp. Wyszukaj następujące dane:
 
-* Dane na pytanie. Czy istnieją środki docelowych i funkcje, które są powiązane z obiektem docelowym?
-* Dane, które są dokładne miary z modelu docelowego i funkcji do zainteresowań.
+* Dane, która jest odpowiednia do pytania. Czy masz miary docelowej i funkcje, które są powiązane z obiektem docelowym?
+* Dane, które jest dokładne miary docelowej modelu i funkcji.
 
-Na przykład znaleźć, że istniejące systemy należy zbierać i rejestrować dodatkowych typów danych w celu rozwiązania problemu i osiągnięcia celów projektu. W takiej sytuacji można wyszukać zewnętrznych źródeł danych lub zaktualizować systemy zbierania danych nowego.
+Może na przykład, okaże się, że istniejące systemy trzeba zbierać i rejestrować dodatkowych typów danych, aby rozwiązać problem i osiągać cele projektu. W takiej sytuacji można szukać zewnętrznych źródeł danych lub zaktualizować systemy zbierania nowych danych.
 
 ## <a name="artifacts"></a>Artefakty
-Poniżej przedstawiono elementy dostarczane na tym etapie:
+Oto elementy dostarczane podczas tego etapu:
 
-   * [Dokument karty](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): standardowy szablon znajduje się w definicji struktury TDSP projektu. Dokument karty jest życia. Należy zaktualizować szablon w projekcie wprowadzeniu nowych odnajdywania i zmiany wymagań biznesowych. Należy przejść na ten dokument, dodając więcej szczegółów, w czasie wykonywania w procesie odnajdowania. Zachowaj klienta i inni uczestnicy projektu w wprowadzania zmian i dokładniej informują powody zmiany do nich.  
-   * [Źródła danych](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): **źródeł danych pierwotnych** sekcji **definicje danych** raport, który znajduje się w projekcie TDSP **raport danych** folder zawiera dane źródeł. Ta sekcja określa oryginał i miejsce docelowe lokalizacje nieprzetworzone dane. W późniejszym etapie należy wypełnić dodatkowe szczegóły, takie jak skrypty w celu przenoszenia danych do środowiska analitycznych.  
-   * [Słowniki danych](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): ten dokument zawiera opis danych, które są udostępniane przez klienta. Opisy te zawierają informacje o schematu (typy danych i informacji na temat reguł sprawdzania poprawności, jeśli istnieje) i diagramy jednostki relacji, jeśli jest dostępna.
+   * [Karty dokumentów](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): standardowy szablon znajduje się w definicji struktury przetwarzania TDSP projektu. Dokument karty jest życia. Należy zaktualizować szablon w całym projekcie, wprowadzić nowe operacje odnajdywania, a jako firma zmienią się wymagania. Klucz jest do iteracji na tego dokumentu, dodając więcej szczegółów, w czasie wykonywania procesu odnajdywania. Zachowaj klienta i innych uczestników projektu w wprowadzania zmian oraz wyraźnego powiadomienia powody zmiany do nich.  
+   * [Źródła danych](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): **źródeł danych pierwotnych** części **definicje danych** raport, który znajduje się w projekcie środowiska TDSP **raport danych** folder zawiera dane źródła. W tej sekcji Określa lokalizacje oryginału i docelowego dla nieprzetworzonych danych. W późniejszym etapie należy wypełnić dodatkowe szczegóły, takie jak skrypty, aby przenieść dane do środowiska analityczne.  
+   * [Słowniki danych](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): ten dokument zawiera opis danych, które są dostarczane przez klienta. Opisy te obejmują informacje schematu (typy danych i informacji na temat reguł sprawdzania poprawności, jeśli istnieje) i diagramy relacji jednostki, jeśli jest dostępny.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Oto łącza do każdego kroku w cyklu TDSP:
+Poniżej podano linki do każdego kroku w cyklu życia przetwarzania TDSP:
 
-   1. [Opis biznesowa](lifecycle-business-understanding.md)
-   2. [Uzyskiwanie danych i zrozumienie](lifecycle-data.md)
+   1. [Poznawanie firmy](lifecycle-business-understanding.md)
+   2. [Pozyskiwanie danych i opis](lifecycle-data.md)
    3. [Modelowanie](lifecycle-modeling.md)
    4. [Wdrożenie](lifecycle-deployment.md)
-   5. [Akceptacji klienta](lifecycle-acceptance.md)
+   5. [Akceptacja klienta](lifecycle-acceptance.md)
 
-Firma Microsoft udostępnia pełnej end-to-end wskazówki, które pokazują wszystkie kroki w procesie w określonych scenariuszach. [Wskazówki przykład](walkthroughs.md) artykuł zawiera listę scenariuszy łącza i opisy miniatur. Wskazówki dotyczące ilustrują sposób łączenia chmury, narzędzia lokalnych i usług w przepływie pracy lub potoku, aby utworzyć aplikację inteligentnego. 
+Firma Microsoft oferuje instruktaży pełnej end-to-end, które przedstawiają wszystkie kroki w procesie dla konkretnych scenariuszy. [Przykładowe przewodniki](walkthroughs.md) artykuł zawiera listę scenariuszy wraz z linkami i opisy miniatur. Przewodniki pokazują, jak połączyć chmury, lokalnego narzędzia i usługi w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji. 
 
-Przykłady tego, jak wykonać kroki opisane w TDSPs, które używają usługi Azure Machine Learning Studio, zobacz [TDSP za pomocą usługi Azure Machine Learning](http://aka.ms/datascienceprocess).
+Przykłady sposób wykonywania kroków w TDSPs, które używają usługi Azure Machine Learning Studio, zobacz [przetwarzania TDSP za pomocą usługi Azure Machine Learning](https://aka.ms/datascienceprocess).

@@ -10,12 +10,12 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 1fa31b23aa8df73b13e73da80096596bf1ce2db3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 92e16104edb46298d6e503b7546449ed71041047
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093304"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005754"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Usługa Azure SQL Data Warehouse — równoległego (MPP) architekturę przetwarzania
 Dowiedz się, jak Azure SQL Data Warehouse łączy masowego przetwarzania równoległego (MPP) z usługą Azure storage w celu osiągnięcia wysokiej wydajności i skalowalności. 
@@ -23,7 +23,7 @@ Dowiedz się, jak Azure SQL Data Warehouse łączy masowego przetwarzania równo
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
 ## <a name="mpp-architecture-components"></a>Składniki architektury MPP
-Usługa SQL Data Warehouse korzysta z skalowania w poziomie architekturę do dystrybucji obliczeniową przetwarzania danych w wielu węzłach. Jednostka skalowania jest klasą abstrakcyjną mocy obliczeniowej, który jest znany jako jednostki magazynu danych. Usługa SQL Data Warehouse oddziela obliczeń z usługi storage umożliwia skalowanie zasobów obliczeniowych niezależnie od danych w Twoim systemie.
+Usługa SQL Data Warehouse korzysta z skalowania w poziomie architekturę do dystrybucji obliczeniową przetwarzania danych w wielu węzłach. Jednostka skalowania jest klasą abstrakcyjną mocy obliczeniowej, który jest znany jako [data warehouse Unit, jednostka](what-is-a-data-warehouse-unit-dwu-cdwu.md). Usługa SQL Data Warehouse oddziela obliczeń z usługi storage umożliwia skalowanie zasobów obliczeniowych niezależnie od danych w Twoim systemie.
 
 ![Architektura usługi SQL Data Warehouse](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 

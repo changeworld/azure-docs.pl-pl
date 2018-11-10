@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: juliako
-ms.openlocfilehash: 90aa3551bb9e2d903fb0f66e3a9b464b0f4be928
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a087c1a069e340c01f2eda657a3d0ecce768168c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987617"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228135"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analizowanie plików audio i wideo
 
@@ -25,20 +25,29 @@ Azure Media Services v3 umożliwia prowadzenie analiz plików audio i wideo za p
 Aby analizować zawartością za pomocą usługi Media Services v3 ustawienia, należy utworzyć **Przekształcanie** i Prześlij **zadania** który używa tych ustawień: **AudioAnalyzerPreset** lub **VideoAnalyzerPreset**. Następujący artykuł pokazuje sposób użycia **VideoAnalyzerPreset**: [samouczek: analizowanie klipów wideo w usłudze Azure Media Services](analyze-videos-tutorial-with-api.md).
 
 > [!NOTE]
-> Korzystając z ustawienia będą zawierać wideo ani dźwięku Analyzer, należy użyć witryny Azure portal, aby ustawić na koncie 10 jednostek zarezerwowanych multimediów S3. Aby uzyskać więcej informacji, zobacz [skalowanie przetwarzania multimediów](../previous/media-services-scale-media-processing-overview.md).
+> Jeśli używasz wstępnych ustawień analizatora wideo lub dźwięku, skorzystaj z witryny Azure Portal i ustaw na koncie 10 jednostek zarezerwowanych multimediów S3. Aby uzyskać więcej informacji, zobacz temat [Scale media processing (Skalowanie przetwarzania multimediów)](../previous/media-services-scale-media-processing-overview.md).
 
-## <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
+## <a name="built-in-presets"></a>Wbudowane ustawienia wstępne
 
-**AudioAnalyzerPreset** pozwala wyodrębnić wielu audio szczegółowych informacji z pliku audio lub wideo. Dane wyjściowe obejmują plik JSON (z wszystkie szczegółowe informacje), a plik VTT transkrypcjach audio. To ustawienie wstępne akceptuje właściwość, która określa język pliku wejściowego w formie [BCP47](https://tools.ietf.org/html/bcp47) ciągu. Audio szczegółowe informacje obejmują:
+Usługa Media Services obsługuje obecnie następujące ustawienia analizatora wbudowane:  
+
+|**Nazwa ustawienia wstępnego**|**Scenariusz**|**Szczegóły**|
+|---|---|---|
+|**AudioAnalyzerPreset**|Analiza audio|Ustawienie wstępne stosuje zestaw wstępnie zdefiniowanych operacji analizy oparte na sztucznej Inteligencji, w tym transkrypcja mowy. Obecnie usługa ustawienia wstępnego obsługuje przetwarzania zawartości za pomocą pojedynczej ścieżki audio.<br/>Można określić język dla ładunku audio w danych wejściowych w formacie BCP 47 "region tagu języka" (na przykład "en US"). Listę obsługiwanych języków to "en US", "en-GB", "es-MX", "pt-BR", "fr-FR", "ja-JP", "es-ES", "it-IT", "zh-CN".|
+|**VideoAnalyzerPreset**|Analiza audio i wideo|Wyodrębnia informacje (obszerne metadane) z audio i wideo, a następnie generuje plik formatu JSON. Można określić, czy mają zostać wyodrębnione audio insights podczas przetwarzania pliku wideo. Aby uzyskać więcej informacji, zobacz [analiza wideo](analyze-videos-tutorial-with-api.md).|
+
+### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
+
+Ustawienia wstępnego, można tworzyć wiele analizy audio z pliku audio lub wideo. Dane wyjściowe obejmują plik JSON (z wszystkie szczegółowe informacje), a plik VTT transkrypcjach audio. To ustawienie wstępne akceptuje właściwość, która określa język pliku wejściowego w formie [BCP47](https://tools.ietf.org/html/bcp47) ciągu. Audio szczegółowe informacje obejmują:
 
 * Transkrypcję audio — transkrypcji wypowiadanych słów z sygnaturami czasowymi. Obsługuje wiele języków
 * Osoby mówiącej indeksowania — mapowanie prelegentów i odpowiednie wypowiadanych słów
 * Analiza tonacji mowy — dane wyjściowe analiza tonacji, wykonywane na transkrypcję audio
 * Słowa kluczowe — słów kluczowych, które są wyodrębniane z transkrypcję audio.
 
-## <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
+### <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
 
-**VideoAnalyzerPreset** pozwala wyodrębnić wiele szczegółowych informacji audio i wideo z pliku wideo. Dane wyjściowe obejmują plik w formacie JSON (z wszystkie szczegółowe informacje), plik VTT dla transkrypcji wideo i kolekcji miniatur. To ustawienie wstępne akceptuje także [BCP47](https://tools.ietf.org/html/bcp47) reprezentującym (język wideo) jako właściwość. Informacjom o filmie wideo obejmują wszystkie audio, wymienionych powyżej szczegółowe informacje i dodatkowe następujące elementy:
+Ustawienia wstępnego, można tworzyć wiele analizy audio i wideo z pliku wideo. Dane wyjściowe obejmują plik w formacie JSON (z wszystkie szczegółowe informacje), plik VTT dla transkrypcji wideo i kolekcji miniatur. To ustawienie wstępne akceptuje także [BCP47](https://tools.ietf.org/html/bcp47) reprezentującym (język wideo) jako właściwość. Informacjom o filmie wideo obejmują wszystkie audio, wymienionych powyżej szczegółowe informacje i dodatkowe następujące elementy:
 
 * Śledzenie twarzy — czas, w którym znajdują się w wideo twarzy. Każdej twarzy ma identyfikator twarzy i odpowiednią kolekcję miniatur
 * Wizualne tekst — tekst, który zostanie wykryte za pomocą funkcji optycznego rozpoznawania znaków. Tekst jest czas sygnaturę i umożliwia również wyodrębnianie słów kluczowych (oprócz transkrypcjach audio)

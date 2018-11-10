@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/29/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6eba50fbe7c2a7a40b08e37a96adac66583b8251
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 112b9bac5d99556201b2038cf150293c9f2ed86d
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781864"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005805"
 ---
 # <a name="restoring-azure-sql-data-warehouse"></a>Przywracanie usługi Azure SQL Data Warehouse 
 W tym artykule dowiesz się, jak wykonać następujące czynności w witrynie Azure portal i programu PowerShell:
@@ -25,10 +25,6 @@ W tym artykule dowiesz się, jak wykonać następujące czynności w witrynie Az
 - Przywróć z usuniętej bazy danych
 - Przywróć z geograficznej kopii zapasowej
 - Utwórz kopię magazynu danych z punktu przywracania zdefiniowanych przez użytkownika
-
-> [!NOTE]
-> Począwszy od 8/27 przywracania między serwerami zostało wyłączone z powodu znanego regresji. Aktywnie pracujemy nad poprawką w naszym najwyższym priorytetem. Przepraszamy za niedogodności. W międzyczasie możesz wykorzystać swoje [geograficznej kopii zapasowej](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore#restore-from-an-azure-geographical-region) można przywrócić na serwerach.  
->
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 **Sprawdź wydajność jednostek DTU.** Każda usługa SQL Data Warehouse jest obsługiwana przez serwer SQL (np. myserver.database.windows.net), która ma domyślny limit przydziału jednostek DTU.  Zanim można przywrócić bazę danych SQL data warehouse, upewnij się, że program SQL server ma wystarczającą ilość pozostały limit przydziału jednostek DTU dla przywracana baza danych. Aby dowiedzieć się, jak obliczyć potrzebnych jednostek DTU lub zażądać więcej jednostek DTU, zobacz [żądanie zmiany limitu przydziału jednostek DTU][Request a DTU quota change].

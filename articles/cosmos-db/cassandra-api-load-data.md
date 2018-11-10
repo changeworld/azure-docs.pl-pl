@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 662d4b8812ca4b92c1130b9c2c38771e7ec30a06
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: e116dbf1d49fed1a47b830f9a57cd77a33b7ea9c
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394001"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740724"
 ---
-# <a name="load-sample-data-into-an-azure-cosmos-db-cassandra-api-table"></a>Ładowanie przykładowych danych do tabeli interfejsu API Cassandra usługi Azure Cosmos DB
+# <a name="tutorial-load-sample-data-into-an-azure-cosmos-db-cassandra-api-table"></a>Samouczek: ładowanie przykładowych danych do tabeli interfejsu API Cassandra usługi Azure Cosmos DB
 
 W tym samouczku przedstawiono jak załadować przykładowe dane użytkownika do tabeli na koncie interfejsu API Cassandra usługi Azure Cosmos DB przy użyciu aplikacji języka Java. Aplikacja języka Java używa [sterownika języka Java](https://github.com/datastax/java-driver) i ładuje dane użytkownika, takie jak identyfikator, nazwa i miasto użytkownika. 
 
@@ -32,43 +32,45 @@ Ten samouczek obejmuje następujące zadania:
 
 ## <a name="load-data-into-the-table"></a>Ładowanie danych do tabel
 
-Otwórz plik „UserRepository.java” w folderze „src\main\java\com\azure\cosmosdb\cassandra” i dołącz kod wstawiający pola user_id, user_name i user_bcity do tabeli:
+Wykonaj poniższe czynności, aby załadować dane do tabeli interfejsu API Cassandra:
 
-```java
-/**
-* Insert a row into user table
-*
-* @param id   user_id
-* @param name user_name
-* @param city user_bcity
-*/
-public void insertUser(PreparedStatement statement, int id, String name, String city) {
+1. Otwórz plik „UserRepository.java” w folderze „src\main\java\com\azure\cosmosdb\cassandra” i dołącz kod wstawiający pola user_id, user_name i user_bcity do tabeli:
+
+   ```java
+   /**
+   * Insert a row into user table
+   *
+   * @param id   user_id
+   * @param name user_name
+   * @param city user_bcity
+   */
+   public void insertUser(PreparedStatement statement, int id, String name, String city) {
         BoundStatement boundStatement = new BoundStatement(statement);
         session.execute(boundStatement.bind(id, name, city));
-}
+   }
 
-/**
-* Create a PrepareStatement to insert a row to user table
-*
-* @return PreparedStatement
-*/
-public PreparedStatement prepareInsertStatement() {
-    final String insertStatement = "INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (?,?,?)";
-    return session.prepare(insertStatement);
-}
-```
+   /**
+   * Create a PrepareStatement to insert a row to user table
+   *
+   * @return PreparedStatement
+   */
+   public PreparedStatement prepareInsertStatement() {
+      final String insertStatement = "INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (?,?,?)";
+   return session.prepare(insertStatement);
+   }
+   ```
  
-Otwórz plik „UserProfile.java” w folderze „src\main\java\com\azure\cosmosdb\cassandra”. Ta klasa zawiera metodę main wywołującą metody createKeyspace i createTable zdefiniowane wcześniej. Teraz dodaj następujący kod, aby wstawić przykładowe dane do tabeli interfejsu API Cassandra.
+2. Otwórz plik „UserProfile.java” w folderze „src\main\java\com\azure\cosmosdb\cassandra”. Ta klasa zawiera metodę main wywołującą metody createKeyspace i createTable zdefiniowane wcześniej. Teraz dodaj następujący kod, aby wstawić przykładowe dane do tabeli interfejsu API Cassandra.
 
-```java
-//Insert rows into user table
-PreparedStatement preparedStatement = repository.prepareInsertStatement();
-    repository.insertUser(preparedStatement, 1, "JohnH", "Seattle");
-    repository.insertUser(preparedStatement, 2, "EricK", "Spokane");
-    repository.insertUser(preparedStatement, 3, "MatthewP", "Tacoma");
-    repository.insertUser(preparedStatement, 4, "DavidA", "Renton");
-    repository.insertUser(preparedStatement, 5, "PeterS", "Everett");
-```
+   ```java
+   //Insert rows into user table
+   PreparedStatement preparedStatement = repository.prepareInsertStatement();
+     repository.insertUser(preparedStatement, 1, "JohnH", "Seattle");
+     repository.insertUser(preparedStatement, 2, "EricK", "Spokane");
+     repository.insertUser(preparedStatement, 3, "MatthewP", "Tacoma");
+     repository.insertUser(preparedStatement, 4, "DavidA", "Renton");
+     repository.insertUser(preparedStatement, 5, "PeterS", "Everett");
+   ```
 
 ## <a name="run-the-app"></a>Uruchamianie aplikacji
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 40d1f73f4aed3f3f35f3f5c9de951e9b9fd271bc
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 538481088d6355729486c1d9fbaaa6af16a1b841
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963323"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006026"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
 
@@ -34,9 +34,6 @@ Możesz pobrać zdarzenia z dziennika aktywności przy użyciu witryny Azure por
 
 > [!NOTE]
 >  [Nowszych alertów](monitoring-overview-unified-alerts.md) oferuje udoskonalone środowisko tworzenia i zarządzania działaniami po zalogowaniu się reguły alertów.  [Dowiedz się więcej](alert-activity-log.md).
-
-Umożliwia wyświetlenie poniższego klipu wideo wprowadzenie do dziennika aktywności.
-> [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
 
 
 ## <a name="categories-in-the-activity-log"></a>Kategorie w dzienniku aktywności
@@ -70,7 +67,7 @@ Oto kilka rzeczy, które można zrobić z dziennika aktywności:
 W witrynie Azure portal można wyświetlić dziennik aktywności w kilku miejscach:
 * **Dziennika aktywności** której będziesz mieć dostęp przez wyszukiwanie w dzienniku aktywności w **wszystkich usług** w okienku nawigacji po lewej stronie.
 * **Monitor** pojawia się domyślnie w okienku nawigacji po lewej stronie. Dziennik aktywności jest jedną sekcję usługi Azure Monitor.
-* Dowolny zasób **zasobów**, na przykład blok konfiguracji dla maszyny wirtualnej. Dziennik aktywności jest się w sekcji na większości z tych bloków zasobów, klikając ją automatycznie filtruje zdarzenia, które do tych powiązanych z tym zasobem określone.
+* Większość **zasobów**, na przykład blok konfiguracji dla maszyny wirtualnej. Dziennik aktywności jest sekcji na większości bloków zasobów i klikając je automatycznie filtruje zdarzenia, które do tych powiązanych z tym określonym zasobem.
 
 W witrynie Azure portal można filtrować według tych pól dziennik aktywności:
 * TimeSpan — godzina rozpoczęcia i zakończenia zdarzenia.
@@ -84,11 +81,9 @@ W witrynie Azure portal można filtrować według tych pól dziennik aktywności
 * Zdarzenie zainicjowane przez — "komputer wywołujący" lub użytkownik, który wykonał operację.
 * Otwórz wyszukiwanie — jest to pole wyszukiwania tekstu Otwórz, wyszukująca ciąg we wszystkich polach we wszystkich przypadkach.
 
-Po zdefiniowaniu zestaw filtrów można zapisać go jako zapytanie, które są utrwalane między sesjami, jeśli potrzebujesz wsparcia do wykonania tego samego zapytania o te filtry zastosowane ponownie w przyszłości. Zapytania można również przypiąć do pulpitu nawigacyjnego platformy Azure, aby zawsze nadzorować określonych zdarzeń.
+Po zdefiniowaniu zestaw filtrów kwerendy można przypiąć do pulpitu nawigacyjnego platformy Azure, aby zawsze nadzorować określonych zdarzeń.
 
-Klikając przycisk "Zastosuj" uruchamia zapytania i Pokaż wszystkie wydarzenia dopasowania. Kliknij dowolne zdarzenie, na liście przedstawiono podsumowanie tego zdarzenia, a także pełne nieprzetworzone dane JSON tego zdarzenia.
-
-Aby uzyskać jeszcze większe możliwości, możesz kliknąć **wyszukiwanie w dzienniku** ikonę, która wyświetla dane dziennika aktywności w [rozwiązanie Log Analytics Activity Log Analytics](../log-analytics/log-analytics-activity.md). Blok dziennika aktywności oferuje środowisko podstawowa filtru/przeglądania dzienników, ale usługi Log Analytics umożliwia przestawianie, zapytania i wizualizować dane w sposób bardziej wydajne.
+Aby uzyskać jeszcze większe możliwości, możesz kliknąć **dzienniki** ikonę, która wyświetla dane dziennika aktywności w [rozwiązanie Log Analytics Activity Log Analytics](../log-analytics/log-analytics-activity.md). Blok dziennika aktywności oferuje środowisko podstawowa filtru/przeglądania dzienników, ale usługi Log Analytics umożliwia przestawianie, zapytania i wizualizować dane w sposób bardziej wydajne.
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>Eksportuj Dziennik aktywności, za pomocą profilu dziennika
 A **profilu dziennika** kontroluje sposób dziennik aktywności jest eksportowana. Przy użyciu profilu dziennika, można skonfigurować:
@@ -114,14 +109,14 @@ Możesz użyć magazynu konta lub event hub przestrzeni nazw, która nie znajduj
 Te ustawienia można skonfigurować za pomocą opcji "Export" w bloku dziennika aktywności w portalu. Również mogą być konfigurowane programowo [przy użyciu interfejsu API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931927.aspx), w przypadku poleceń cmdlet programu PowerShell lub interfejsu wiersza polecenia. Subskrypcja może mieć tylko jeden profil dziennika.
 
 ### <a name="configure-log-profiles-using-the-azure-portal"></a>Konfigurowanie profilów dziennika przy użyciu witryny Azure portal
-Można przesyłać strumieniowo dziennik aktywności do Centrum zdarzeń lub przechowywać je w ramach konta magazynu przy użyciu opcji "Export" w witrynie Azure portal.
+Można przesyłać strumieniowo dziennik aktywności do Centrum zdarzeń lub przechowywać je w ramach konta magazynu przy użyciu opcji "Eksportuj do Centrum zdarzeń" w witrynie Azure portal.
 
 1. Przejdź do **dziennika aktywności** za pomocą menu po lewej stronie portalu.
 
-    ![Przejdź do dziennika aktywności w portalu](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate.png)
-2. Kliknij przycisk **wyeksportować** znajdujący się u góry bloku.
+    ![Przejdź do dziennika aktywności w portalu](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate-v2.png)
+2. Kliknij przycisk **Eksportuj do Centrum zdarzeń** znajdujący się u góry bloku.
 
-    ![Przycisk Eksportuj w portalu](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
+    ![Przycisk Eksportuj w portalu](./media/monitoring-overview-activity-logs/activity-logs-portal-export-v2.png)
 3. W wyświetlonym bloku możesz wybrać:  
   * regiony, dla których chcesz eksportowanie zdarzeń
   * Konto magazynu, do której chcesz zapisać zdarzenia

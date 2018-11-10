@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 0ca9cf0ff75ea76cd2dc203fbdb37162ed1ace34
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: ad3deaad8c069cfb11bb0eb997d886807ecdb0f8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962762"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006502"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analizowanie użycia danych w usłudze Log Analytics
 
@@ -58,7 +58,7 @@ Pulpit nawigacyjny **Użycie usługi Log Analytics** udostępnia następujące i
 3. Na liście obszarów roboczych usługi Log Analytics wybierz obszar roboczy.
 4. Wybierz pozycję **Użycie i szacunkowe koszty** z listy w lewym okienku.
 5. Na pulpicie nawigacyjnym **Użycie i szacowane koszty** możesz modyfikować zakres czasu, wybierając pozycję **Czas: ostatnie 24 godziny** i zmieniać przedział czasu.<br><br> ![przedział czasu](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>
-6. Wyświetl bloki kategorii użycia pokazujące obszary, które Cię interesują. Wybierz blok, a następnie kliknij w nim pozycję, aby wyświetlić więcej szczegółów w obszarze [Wyszukiwanie w dzienniku](log-analytics-log-search.md).<br><br> ![przykładowy kluczowy wskaźnik wydajności użycia danych](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
+6. Wyświetl bloki kategorii użycia pokazujące obszary, które Cię interesują. Wybierz blok, a następnie kliknij w nim pozycję, aby wyświetlić więcej szczegółów w obszarze [Wyszukiwanie w dzienniku](log-analytics-queries.md).<br><br> ![przykładowy kluczowy wskaźnik wydajności użycia danych](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
 7. Na pulpicie nawigacyjnym wyszukiwania w dzienniku przejrzyj wyniki zwrócone w wyniku wyszukiwania.<br><br> ![przykład wyszukiwania w dzienniku użycia](./media/log-analytics-usage/usage-log-search-01.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Tworzenie alertu, gdy ilość zebranych danych jest większa od oczekiwanej
@@ -173,7 +173,7 @@ Kliknij opcję **Zobacz wszystko**, aby wyświetlić pełną listę komputerów,
 Użyj funkcji [określania celu rozwiązania](../monitoring/monitoring-solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Zobacz temat [Wyszukiwanie w dziennikach w usłudze Log Analytics](log-analytics-log-search.md), aby dowiedzieć się, jak korzystać z języka wyszukiwania. Możesz użyć zapytań wyszukiwania w celu przeprowadzenia dodatkowej analizy danych użycia.
+* Zobacz temat [Wyszukiwanie w dziennikach w usłudze Log Analytics](log-analytics-queries.md), aby dowiedzieć się, jak korzystać z języka wyszukiwania. Możesz użyć zapytań wyszukiwania w celu przeprowadzenia dodatkowej analizy danych użycia.
 * Wykonaj kroki opisane w sekcji dotyczącej [tworzenia nowego alertu dziennika](../monitoring-and-diagnostics/alert-metric.md), aby otrzymywać powiadomienie, gdy kryteria wyszukiwania zostaną spełnione.
 * Użyj funkcji [określania celu rozwiązania](../monitoring/monitoring-solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów.
 * Aby skonfigurować efektywne zasady zbierania zdarzeń zabezpieczeń, przejrzyj [zasady filtrowania usługi Azure Security Center](../security-center/security-center-enable-data-collection.md).
