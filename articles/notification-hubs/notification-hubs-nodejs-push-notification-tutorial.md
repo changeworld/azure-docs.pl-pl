@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 49ee6b7fabe78c2328a2a772347c612ad38cfe7a
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 8e4c97a710cc9e6d3af4ebdd7dc97bda9f8d02ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091734"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228440"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Wysyłanie powiadomień wypychanych przy użyciu usługi Azure Notification Hubs i środowiska Node.js
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -43,7 +43,7 @@ Omówione scenariusze obejmują wysyłanie powiadomień wypychanych do aplikacji
 Aby uzyskać więcej informacji na temat usługi notification hubs, zobacz [następne kroki](#next) sekcji.
 
 ## <a name="what-are-notification-hubs"></a>Co to jest Notification Hubs?
-Usługa Azure Notification Hubs zapewnia łatwe w użyciu, wieloplatformową skalowalne infrastrukturę umożliwiającą wysyłanie powiadomień wypychanych do urządzeń przenośnych. Szczegółowe informacje na temat infrastruktury usługi, [usługi Azure Notification Hubs](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx) strony.
+Usługa Azure Notification Hubs zapewnia łatwe w użyciu, wieloplatformową skalowalne infrastrukturę umożliwiającą wysyłanie powiadomień wypychanych do urządzeń przenośnych. Szczegółowe informacje na temat infrastruktury usługi, [usługi Azure Notification Hubs](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx) strony.
 
 ## <a name="create-a-nodejs-application"></a>Tworzenie aplikacji Node.js
 Pierwszym krokiem w ramach tego samouczka jest utworzenie nowej pustej aplikacji Node.js. Instrukcje dotyczące tworzenia aplikacji w technologii Node.js można znaleźć [tworzenie i wdrażanie aplikacji Node.js do witryny sieci Web Azure][nodejswebsite], [Node.js usługi w chmurze] [ Node.js Cloud Service] przy użyciu programu Windows PowerShell, lub [witryny sieci Web za pomocą programu WebMatrix][webmatrix].
@@ -141,11 +141,11 @@ Poniższy kod używa **ApnsService** wystąpienia udostępnianych przez **Notifi
 * **Tagi** — identyfikator tagu. Jeśli zostanie podany żaden tag, powiadomienie jest wysyłane do wszystkich klientów.
 * **Ładunek** -ładunek XML komunikatu.
 * **TargetName**  -  `toast` powiadomienia wyskakującego powiadomienia. `token` Kafelek powiadomienia.
-* **NotificationClass** — priorytet zawiadomienia. Zobacz **elementów nagłówka HTTP** części [powiadomienia wypychane z serwera](http://msdn.microsoft.com/library/hh221551.aspx) dokumentu prawidłowych wartości.
+* **NotificationClass** — priorytet zawiadomienia. Zobacz **elementów nagłówka HTTP** części [powiadomienia wypychane z serwera](https://msdn.microsoft.com/library/hh221551.aspx) dokumentu prawidłowych wartości.
 * **Opcje** — jest to opcjonalne nagłówki żądania.
 * **Wywołanie zwrotne** — funkcja wywołania zwrotnego.
 
-Aby uzyskać listę prawidłowe **TargetName**, **NotificationClass** i opcje nagłówka, zapoznaj się z [powiadomienia wypychane z serwera](http://msdn.microsoft.com/library/hh221551.aspx) strony.
+Aby uzyskać listę prawidłowe **TargetName**, **NotificationClass** i opcje nagłówka, zapoznaj się z [powiadomienia wypychane z serwera](https://msdn.microsoft.com/library/hh221551.aspx) strony.
 
 Poniższy przykładowy kod używa **MpnsService** wystąpienia udostępnianych przez **NotificationHubService** wysyłać powiadomienia wypychane wyskakujące:
 
@@ -165,7 +165,7 @@ Poniższy przykładowy kod używa **MpnsService** wystąpienia udostępnianych p
 * **Opcje** — jest to opcjonalne nagłówki żądania.
 * **Wywołanie zwrotne** — funkcja wywołania zwrotnego.
 
-Aby uzyskać listę prawidłowych typów i nagłówków żądań, zobacz [nagłówki żądania i odpowiedzi usługi powiadomień wypychanych](http://msdn.microsoft.com/library/windows/apps/hh465435.aspx).
+Aby uzyskać listę prawidłowych typów i nagłówków żądań, zobacz [nagłówki żądania i odpowiedzi usługi powiadomień wypychanych](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx).
 
 Poniższy kod używa **WnsService** wystąpienia udostępnianych przez **NotificationHubService** wysyłać wyskakujące powiadomienia wypychane do aplikacji platformy uniwersalnej systemu Windows:
 

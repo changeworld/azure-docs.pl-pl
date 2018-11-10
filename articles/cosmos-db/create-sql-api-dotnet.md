@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 clicktale: true
-ms.openlocfilehash: 36265685b9bc43e95c6d7bc1e7a9ad3c52835b36
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 506d21589ee8c5d284bd9ffc430d8b1d40afb910
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977999"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741729"
 ---
 # <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>Szybki start: Tworzenie aplikacji internetowej platformy .NET w usłudze Azure Cosmos DB przy użyciu interfejsu API SQL i witryny Azure Portal
 
@@ -120,7 +120,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku DocumentDBRepository.go.
 
 Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach połączenia i skopiować je do aplikacji.
 
-1. W witrynie [Azure Portal](http://portal.azure.com/), korzystając ze swojego konta usługi Azure Cosmos DB, kliknij na lewym panelu nawigacyjnym pozycję **Klucze**, a następnie pozycję **Klucze odczytu i zapisu**. W następnym kroku, korzystając z przycisków kopiowania dostępnych po prawej stronie ekranu, skopiujesz identyfikator URI i klucz podstawowy do pliku web.config.
+1. W witrynie [Azure Portal](http://portal.azure.com/), korzystając ze swojego konta usługi Azure Cosmos DB, wybierz na lewym panelu nawigacyjnym pozycję **Klucze**, a następnie pozycję **Klucze odczytu i zapisu**. W następnym kroku, korzystając z przycisków kopiowania dostępnych po prawej stronie ekranu, skopiujesz identyfikator URI i klucz podstawowy do pliku web.config.
 
     ![Wyświetlanie i kopiowanie klucza dostępu w witrynie Azure Portal, blok Klucze](./media/create-sql-api-dotnet/keys.png)
 
@@ -139,15 +139,15 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
     `<add key="database" value="Tasks" />`    
     
 ## <a name="run-the-web-app"></a>Uruchamianie aplikacji internetowej
-1. W programie Visual Studio kliknij projekt prawym przyciskiem myszy w **Eksploratorze rozwiązań**, a następnie kliknij polecenie **Zarządzaj pakietami NuGet**. 
+1. W programie Visual Studio kliknij projekt prawym przyciskiem myszy w **Eksploratorze rozwiązań**, a następnie wybierz polecenie **Zarządzaj pakietami NuGet**. 
 
 2. W polu **Przeglądaj** pakietu NuGet wpisz ciąg *DocumentDB*.
 
 3. Korzystając z wyników, zainstaluj bibliotekę **Microsoft.Azure.DocumentDB**. Spowoduje to zainstalowanie pakietu Microsoft.Azure.DocumentDB, a także wszystkich zależności.
 
-4. Naciśnij klawisze CTRL + F5, aby uruchomić aplikację. Aplikacja zostanie wyświetlona w przeglądarce. 
+4. Naciśnij klawisze CTRL+F5, aby uruchomić aplikację. Aplikacja zostanie wyświetlona w przeglądarce. 
 
-5. Kliknij pozycję **Utwórz nowy** w przeglądarce i utwórz kilka nowych zadań w swojej aplikacji z zadaniami do wykonania.
+5. Wybierz pozycję **Utwórz nowy** w przeglądarce i utwórz kilka nowych zadań w swojej aplikacji z zadaniami do wykonania.
 
    ![Aplikacja z listą zadań do wykonania z przykładowymi danymi](./media/create-sql-api-dotnet/azure-comosdb-todo-app-list.png)
 

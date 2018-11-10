@@ -10,26 +10,26 @@ ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 0cf1103b37572b43585e4a977dc4d034e7a50e2f
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: fb6eeafd8183d9e0ae3e6822c236344a9ea1f90f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814478"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419048"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-java"></a>Przewodnik Szybki start dotyczący korzystania z interfejsu API wyszukiwania jednostek Bing przy użyciu języka Java 
 
-W tym artykule dowiesz się, jak korzystać z interfejsu API [wyszukiwania jednostek Bing](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) przy użyciu języka Java.
+W tym artykule przedstawiono sposób korzystania z interfejsu API [wyszukiwania jednostek Bing](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) przy użyciu języka Java.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musisz mieć zestaw [JDK 7 lub 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), aby skompilować i uruchomić ten kod. Możesz użyć środowiska projektowego Java, jeśli masz ulubione, ale edytor tekstu również wystarczy.
+Musisz mieć zestaw [JDK 7 lub 8](https://aka.ms/azure-jdks), aby skompilować i uruchomić ten kod. Jeśli masz ulubione środowisko projektowe Java, możesz go użyć, ale edytor tekstów również wystarczy.
 
 Trzeba mieć [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do **interfejsu API wyszukiwania jednostek Bing**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Potrzebny jest klucz dostępu podany przy aktywacji bezpłatnej wersji próbnej lub klucz płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
 
 ## <a name="search-entities"></a>Wyszukiwanie jednostek
 
-Aby uruchomić tę aplikację, wykonaj następujące czynności.
+Aby uruchomić tę aplikację, wykonaj następujące kroki.
 
 1. Utwórz nowy projekt języka Java w ulubionym środowisku IDE.
 2. Dodaj kod przedstawiony poniżej.

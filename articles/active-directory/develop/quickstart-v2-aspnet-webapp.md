@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: cabc4f2212e18d774066efad70d9654bb70020d5
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 4035e93b8eed0a7bc1dd0cddbc42f41e9c26f333
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831504"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218869"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Szybki start: dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
 
@@ -31,17 +31,29 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 ![Jak działa przykładowa aplikacja wygenerowana w tym przewodniku Szybki start](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.png)
 
 > [!div renderon="docs"]
-> ## <a name="register-your-application-and-download-your-quickstart-app"></a>Rejestrowanie aplikacji i pobieranie aplikacji Szybki start
+> ## <a name="register-and-download-your-quickstart-app"></a>Rejestrowanie i pobieranie aplikacji Szybki start
+> Istnieją dwie opcje uruchamiania aplikacji Szybki start:
+> * [Expresowe] [Opcja 1. Zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [Ręczne] [Opcja 2. Zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>Rejestrowanie i konfigurowanie aplikacji i przykładowego kodu
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Opcja 1. Zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu
+>
+> 1. Przejdź do witryny [Azure Portal — Rejestracja aplikacji (wersja zapoznawcza)](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs).
+> 1. Wprowadź nazwę aplikacji i kliknij pozycję **Zarejestruj**.
+> 1. Postępuj zgodnie z instrukcjami, aby jednym kliknięciem pobrać i automatycznie skonfigurować nową aplikację.
+>
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Opcja 2. Zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu
+>
 > #### <a name="step-1-register-your-application"></a>Krok 1. Rejestrowanie aplikacji
-> 
-> 1. Przejdź do [portalu rejestracji aplikacji firmy Microsoft](https://apps.dev.microsoft.com/portal/register-app).
-> 1. Wprowadź nazwę aplikacji, upewnij się, że pole wyboru **Guided Setup** (Konfiguracja z przewodnikiem) nie jest zaznaczone, a następnie kliknij przycisk **Create** (Utwórz).
-> 1. Kliknij pozycję `Add Platform`, a następnie wybierz pozycję `Web`.
-> 1. Upewnij się, że pole wyboru **Zezwalaj na niejawny przepływ** jest *zaznaczone*.
-> 1. W polu **Identyfikatory URL przekierowań** wprowadź ciąg `https://localhost:44368/`.
-> 1. Przewiń w dół do końca strony, a następnie kliknij pozycję **Zapisz**.
+> Aby ręcznie zarejestrować aplikację i dodać informacje na temat rejestracji aplikacji do rozwiązania, wykonaj następujące czynności:
+>
+> 1. Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+> 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
+> 1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory**, a następnie pozycję **Rejestracje aplikacji (wersja zapoznawcza)** > **Nowa rejestracja**.
+> 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
+>      - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `ASPNET-Quickstart`.
+>      - Dodaj adres `https://localhost:44368/` w polu **Adres URL odpowiedzi** i kliknij pozycję **Zarejestruj**.
+Wybierz menu **Uwierzytelnianie**, ustaw wartość **Tokeny identyfikatorów** w obszarze **Niejawne przyznanie**, a następnie wybierz pozycję **Zapisz**.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1. Konfigurowanie aplikacji w witrynie Azure Portal
@@ -60,15 +72,23 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 
 1. Wyodrębnij plik zip do folderu lokalnego bliższego folderowi głównemu, na przykład **C:\Azure-Samples**
 1. Otwórz rozwiązanie w programie Visual Studio (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
-1. Dokonaj edycji pliku **Web.config** i zastąp ciąg `Enter_the_Application_Id_here` identyfikatorem aplikacji skopiowanym z zarejestrowanej właśnie aplikacji:
+1. Przeprowadź edycję pliku **Web.config** i zastąp parametry `ClientId` oraz `Tenant` następującymi:
 
     ```xml
     <add key="ClientId" value="Enter_the_Application_Id_here" />
+    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
     ```
-    
-> [!div class="sxs-lookup" renderon="portal"]
-> [!IMPORTANT]
-> Jeśli Twoja aplikacja jest *aplikacją z jedną dzierżawą* (przeznaczoną tylko dla kont znajdujących się w tym katalogu), w pliku **Web.config** znajdź parametr `Tenant` i zastąp wartość parametru `common` swoim **identyfikatorem dzierżawy** lub **nazwą dzierżawy** (na przykład contoso.microsoft.com). Nazwę dzierżawy możesz uzyskać na stronie **Przegląd**.
+
+> [!div renderon="docs"]
+> Gdzie:
+> - `Enter_the_Application_Id_here` jest identyfikatorem dla zarejestrowanej aplikacji.
+> - `Enter_the_Tenant_Info_Here` jest jedną z poniższych opcji:
+>   - Jeśli aplikacja obsługuje tryb **Tylko moja organizacja**, zastąp tę wartość za pomocą wartości **Identyfikator dzierżawy** lub **Nazwa dzierżawy** (na przykład contoso.microsoft.com)
+>   - Jeśli aplikacja obsługuje tryb**Konta w dowolnym katalogu organizacyjnym**, zastąp tę wartość za pomocą wartości `organizations`
+>   - Jeśli aplikacja obsługuje tryb **Wszyscy użytkownicy kont Microsoft**, zastąp tę wartość za pomocą wartości `common`
+>
+> > [!TIP]
+> > Aby znaleźć wartości *Identyfikator aplikacji*, *Identyfikator katalogu (dzierżawy)* i *Obsługiwane typy kont*, przejdź do strony **Przegląd**
 
 ## <a name="more-information"></a>Więcej informacji
 

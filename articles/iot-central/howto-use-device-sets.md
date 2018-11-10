@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 28706ad77f48ae826b621ebdd920d26f3b87178a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a5dd018197ff78ff0563349fd941308c3684a456
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731987"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004123"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Za pomocą zestawów urządzeń w aplikacji usługi Azure IoT Central
 
-W tym artykule opisano, jak to zrobić, jako operator używanie urządzenia ustawia w aplikacji Microsoft Azure IoT Central.
+W tym artykule opisano, jak to zrobić, jako operator używanie urządzenia ustawia w aplikacji usługi Azure IoT Central.
 
-Zestaw urządzeń znajduje się lista urządzeń, które są zgrupowane razem, ponieważ wszystkie spełniają pewne określone kryteria. Urządzenia, ustawia pomocy zarządzania, wizualizowanie i analizowanie urządzeń na dużą skalę za pomocą grupowania urządzeń na mniejsze, logiczne grupy. Na przykład utworzyć listę wszystkich urządzeń klimatyzacyjne w Seattle, aby umożliwić mu Seattle i Znajdź wszystkie urządzenia, dla których jest ona odpowiedzialna. W tym artykule pokazano, jak utworzyć i skonfigurować zestawy urządzeń.
+Zestaw urządzeń znajduje się lista urządzeń, które są zgrupowane razem, ponieważ wszystkie spełniają pewne określone kryteria. Urządzenia, ustawia pomocy zarządzania, wizualizowanie i analizowanie urządzeń na dużą skalę za pomocą grupowania urządzeń na mniejsze, logiczne grupy. Na przykład utworzyć listę wszystkich urządzeń klimatyzacyjne w Seattle, aby umożliwić mu Seattle i Znajdź wszystkie urządzenia, dla których obsługi administracyjnej jest odpowiedzialna. W tym artykule pokazano, jak utworzyć i skonfigurować zestawy urządzeń.
 
 ## <a name="create-a-device-set"></a>Tworzenie zestawu urządzeń
 
@@ -73,7 +73,7 @@ Po utworzeniu zestawu urządzeń, można skonfigurować jej **pulpit nawigacyjny
         ![Wybierz siatki](media/howto-use-device-sets/image8.png)
 
     1. Nadaj swojej siatce **tytuł**.
-    1. Wybierz kolumny do wyświetlenia, wybierając przycisk Ustawienia. W panelu, które się pojawi wybierz kolumny, które mają być pokazywane i kliknij strzałkę w prawo, aby go zaznaczyć.
+    1. Wybierz kolumny do wyświetlenia, wybierając **Dodaj/Usuń**. W panelu, które się pojawi wybierz kolumny, które mają być pokazywane i kliknij strzałkę w prawo, aby go zaznaczyć.
     1. Wybierz pozycję **OK**.
     1. Wybierz pozycję **Zapisz**.
 
@@ -101,9 +101,10 @@ Aby dodać mapę lokalizacji na urządzeniu ustawia pulpit nawigacyjny, musi mie
 
 2. Nadaj tytuł, a następnie wybierz właściwość location, wcześniej skonfigurowane w ramach właściwości urządzenia.
 3. Zapisz, aby zobaczyć mapę kafelka, wyświetlanie lokalizacji urządzenia w zestawie urządzeń.
-4. Teraz gdy operator wyświetla pulpit nawigacyjny zestawy urządzeń, dyrektor może zobaczyć wszystkie Kafelki zostały skonfigurowane, w tym miejscu mapy w celu wizualizowania lokalizacji urządzenia w skrócie! 
+4. Teraz gdy operator widoki urządzenie ustawia pulpitu nawigacyjnego, operator zobaczyć wszystkie Kafelki, które zostały skonfigurowane, włącznie z lokalizacją mapy w celu wizualizowania lokalizacji urządzenia w skrócie! 
     
-[!NOTE] Będzie zmiana rozmiaru mapę, aby Twoje żądany rozmiar. Kliknięcie numeru pin w mapie wyświetli informacje o urządzeniu, nazwę i lokalizację. Możesz kliknąć w oknie podręcznym, aby przejść do strony właściwości urządzenia.  
+> [!NOTE] 
+> Będzie zmiana rozmiaru mapę, aby Twoje żądany rozmiar. Kliknięcie numeru pin w mapie wyświetli informacje o urządzeniu, nazwę i lokalizację. Możesz kliknąć w oknie podręcznym, aby przejść do strony właściwości urządzenia.  
 
 
 ## <a name="configure-the-list-for-your-device-set"></a>Konfiguruj listę zestawu urządzeń

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: 3512cb7eda9f9e5a6e18dc83f6523029b17a9de2
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: c1e38064e8abe53c96a70fb189b3d9e4cc4bc4e4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391474"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413999"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Wdrażanie aplikacji w zestawach skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible
 Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Możesz go użyć do wdrażania aplikacji na platformie Azure. W tym artykule przedstawiono sposób wdrażania aplikacji Java w zestawie skalowania maszyn wirtualnych platformy Azure (VMSS).  
@@ -23,7 +23,7 @@ Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zas
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 - **Zestaw skalowania maszyn wirtualnych** — jeśli nie masz jeszcze zestawu skalowania maszyn wirtualnych, możesz [utworzyć zestaw skalowania maszyn wirtualnych przy użyciu rozwiązania Ansible](ansible-create-configure-vmss.md). 
 - **Usługa git** - [git](https://git-scm.com) jest używana do pobrania przykładu w języku Java używanego w tym samouczku.
-- **Java SE Development Kit (JDK)** — zestaw JDK służy do utworzenia przykładowego projektu w języku Java.
+- **Java SE Development Kit (JDK)** — zestaw [JDK](https://aka.ms/azure-jdks) służy do utworzenia przykładowego projektu w języku Java.
 - **Narzędzia kompilacji Apache Maven** — [narzędzia kompilacji Apache Maven](https://maven.apache.org/download.cgi) służą do utworzenia przykładowego projektu w języku Java.
 
 > [!Note]

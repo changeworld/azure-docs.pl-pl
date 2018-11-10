@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
-ms.openlocfilehash: e10bd04f37951f93db8af083692b7a2fe25ac9b7
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 9d1229084410b6fe7c500a22f8e1e1aed1b8107d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348452"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227352"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>Zainstaluj aktualizację 1.1 na rozwiązania StorSimple Virtual Array
 
@@ -27,7 +27,7 @@ ms.locfileid: "39348452"
 
 W tym artykule opisano kroki wymagane do zainstalowania aktualizacji 1.1 na rozwiązania StorSimple Virtual Array przy użyciu witryny Azure portal i za pomocą lokalnego Interfejsu w przeglądarce.
 
-Możesz zastosować aktualizacje oprogramowania lub poprawek w celu zapewnienia aktualności rozwiązania StorSimple Virtual Array. Przed zastosowaniem aktualizacji zaleca się wykonanie woluminy lub udziały w tryb offline na hoście pierwszy i następnie urządzenia. W ten sposób możliwości uszkodzenie danych. Po woluminy lub udziały są w trybie offline, należy również wziąć ręcznego tworzenia kopii zapasowych urządzenia.
+Możesz zastosować aktualizacje oprogramowania lub poprawek w celu zapewnienia aktualności rozwiązania StorSimple Virtual Array. Przed zastosowaniem aktualizacji zaleca się wykonanie woluminy lub udziały w tryb offline na hoście pierwszy i następnie urządzenia. Minimalizuje to ryzyko uszkodzenia danych. Po woluminy lub udziały są w trybie offline, należy również wziąć ręcznego tworzenia kopii zapasowych urządzenia.
 
 > [!IMPORTANT]
 > - Aktualizacja 1.1 odnosi się do **10.0.10307.0** wersję oprogramowania na urządzeniu. Aby uzyskać informacji na temat nowości w tej aktualizacji, przejdź do [informacje o wersji 1.1 aktualizacji](storsimple-virtual-array-update-11-release-notes.md).
@@ -66,7 +66,7 @@ Wykonaj poniższe kroki, aby pobrać aktualizację 1.1 z wykazu usługi Microsof
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>Aby pobrać aktualizacji lub poprawki
 
-1. Uruchom program Internet Explorer i przejdź do [ http://catalog.update.microsoft.com ](http://catalog.update.microsoft.com).
+1. Uruchom program Internet Explorer i przejdź do [ http://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
 
 2. Jeśli korzystasz wykazu usługi Microsoft Update po raz pierwszy na tym komputerze, kliknij przycisk **zainstalować** monit o zainstalowanie dodatku wykazu usługi Microsoft Update.
 

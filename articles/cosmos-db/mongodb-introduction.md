@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/12/2018
 ms.author: sclyon
-ms.openlocfilehash: b0fba3cee298e55702629815da4649d9af315b25
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 1f21065414fec6bbe943014e954ecb45af2bb6b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43283030"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227879"
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Wprowadzenie do usługi Azure Cosmos DB: interfejs API usługi MongoDB
 
@@ -66,5 +66,4 @@ Informacje o interfejsie API usługi MongoDB usługi Azure Cosmos DB zostały zi
 * Postępuj zgodnie z instrukcjami z samouczka [Use Studio 3T (MongoChef) with Azure Cosmos DB](mongodb-mongochef.md) [Korzystanie z programu Studio 3T (MongoChef) w usłudze Azure Cosmos DB] i dowiedz się, jak utworzyć połączenie między bazą danych usługi Azure Cosmos DB i aplikacją MongoDB w programie Studio 3T.
 * Postępuj zgodnie z instrukcjami z samouczka [Migrate data to Azure Cosmos DB with protocol support for MongoDB](mongodb-migrate.md) (Migrowanie danych do usługi Azure Cosmos DB przy użyciu obsługi protokołów dla usługi MongoDB) i importuj dane do interfejsu API dla bazy danych usługi MongoDB.
 * Połącz się z interfejsem API do konta usługi MongoDB przy użyciu programu [Robomongo](mongodb-robomongo.md).
-* Dowiedz się, ile jednostek żądania jest używanych przez Twoje operacje – przeczytaj artykuł zawierający informacje na temat [polecenia GetLastRequestStatistics i metryk witryny Azure Portal](set-throughput.md#GetLastRequestStatistics).
 * Dowiedz się, jak [konfigurować preferencje odczytu dla aplikacji rozproszonych globalnie](../cosmos-db/tutorial-global-distribution-mongodb.md).

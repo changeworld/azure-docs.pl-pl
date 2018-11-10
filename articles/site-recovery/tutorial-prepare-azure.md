@@ -1,21 +1,21 @@
 ---
-title: Tworzenie zasobów do używania z usługą Azure Site Recovery | Microsoft Docs
-description: Dowiedz się, jak przygotować platformę Azure do replikacji maszyn lokalnych przy użyciu usługi Azure Site Recovery.
+title: Przygotowywanie platformy Azure do odzyskiwania po awarii maszyn lokalnych przy użyciu usługi Azure Site Recovery | Microsoft Docs
+description: Dowiedz się, jak przygotować platformę Azure do odzyskiwania po awarii maszyn lokalnych przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 10/29/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1d9f84a176d4c2483c83e8961bf426e70933aaa2
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: c00dd8cd412d79093e4ae1fd7ea30a3071c9b54f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457157"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210248"
 ---
-# <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Przygotowywanie zasobów platformy Azure do replikacji maszyn lokalnych
+# <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Przygotowywanie zasobów platformy Azure na potrzeby odzyskiwania po awarii maszyn lokalnych
 
  Usługa [Azure Site Recovery](site-recovery-overview.md) przyczynia się do strategii związanej z ciągłością biznesową i odzyskiwaniem po awarii (BCDR, business continuity and disaster recovery) przez zapewnienie niezawodnego działania aplikacji biznesowych podczas planowanych lub nieplanowanych przestojów. Usługa Site Recovery zarządza odzyskiwaniem po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure, a także organizuje to odzyskiwanie. Obejmuje to replikację, przechodzenie w tryb failover i odzyskiwanie.
 

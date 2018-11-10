@@ -9,16 +9,16 @@ ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: defdebec158f763003e90957687f4565176cb76a
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: be0c3e7e09e61230332b1275289fd93e59c7c0b2
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166852"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156990"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>Samouczek: opracowywanie modułu usługi IoT Edge w środowisku Node.js i wdrażanie go na urządzeniu symulowanym
 
-Moduły usługi IoT Edge umożliwiają wdrożenie kodu implementującego logikę biznesową bezpośrednio na urządzeniach usługi IoT Edge. W tym samouczku przedstawiono sposób tworzenia i wdrażania modułu usługi IoT Edge, w którym są filtrowane dane czujnika. Użyjesz symulowanego urządzenia usługi IoT Edge utworzonego podczas pracy z samouczkami dotyczącymi wdrażania usługi Azure IoT Edge na urządzeniu symulowanym w systemie [Windows][lnk-tutorial1-win] lub [Linux][lnk-tutorial1-lin]. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:    
+Moduły usługi IoT Edge umożliwiają wdrożenie kodu implementującego logikę biznesową bezpośrednio na urządzeniach usługi IoT Edge. W tym samouczku przedstawiono sposób tworzenia i wdrażania modułu usługi IoT Edge, w którym są filtrowane dane czujnika. Użyjesz symulowanego urządzenia usługi IoT Edge utworzonego w ramach przewodnika Szybki start. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:    
 
 > [!div class="checklist"]
 > * Tworzenie modułu usługi IoT Edge w środowisku Node.js przy użyciu programu Visual Studio Code
@@ -250,12 +250,3 @@ W tym samouczku został utworzony moduł usługi IoT Edge zawierający kod słu�
 > [Wdrażanie funkcji platformy Azure jako modułu](tutorial-deploy-function.md)
 > [Wdrażanie usługi Azure Stream Analytics jako modułu](tutorial-deploy-stream-analytics.md)
 
-
-<!-- Links -->
-[lnk-tutorial1-win]: quickstart.md
-[lnk-tutorial1-lin]: quickstart-linux.md
-
-<!-- Images -->
-[1]: ./media/tutorial-csharp-module/programcs.png
-[2]: ./media/tutorial-csharp-module/build-module.png
-[3]: ./media/tutorial-csharp-module/docker-os.png

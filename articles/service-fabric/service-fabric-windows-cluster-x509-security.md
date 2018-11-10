@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 8383d6afa4b6029aca3978c53eec1865d1d8c8ea
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b23b2c46098fb53a3a08ff86c46cc6b6c9b936bb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721844"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228576"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Zabezpieczanie klastra autonomicznego w Windows przy użyciu certyfikatów X.509
 W tym artykule opisano sposób zabezpieczania komunikacji między różnymi węzłami klastra autonomicznego Windows. Opisuje ona również, jak do uwierzytelniania klientów łączących się z tym klastrem przy użyciu certyfikatów X.509. Uwierzytelnianie zapewnia, że tylko autoryzowani użytkownicy mogą uzyskiwać dostęp do klastra i wdrożone aplikacje i wykonywać zadania zarządzania. Certyfikat zabezpieczeń powinna być włączona w klastrze podczas tworzenia klastra.  
@@ -257,7 +257,7 @@ Jeśli używasz magazynów wystawcy, uaktualnienie nie konfiguracji musi zostać
 ## <a name="acquire-the-x509-certificates"></a>Uzyskiwanie certyfikatów X.509
 Do zabezpieczenia komunikacji w klastrze, należy najpierw uzyskać certyfikaty X.509 dla węzłów klastra. Ponadto aby ograniczyć liczbę połączeń do tego klastra do autoryzowanych komputerów/użytkowników, należy uzyskać i zainstalować certyfikaty dla komputerów klienckich.
 
-W przypadku klastrów uruchomionych obciążeń produkcyjnych należy użyć [certyfikatu urzędu certyfikacji](https://en.wikipedia.org/wiki/Certificate_authority)-podpisany certyfikat X.509 do zabezpieczenia klastra. Aby uzyskać więcej informacji na temat sposobu uzyskania tych certyfikatów, zobacz [sposobie uzyskiwania certyfikatu](http://msdn.microsoft.com/library/aa702761.aspx).
+W przypadku klastrów uruchomionych obciążeń produkcyjnych należy użyć [certyfikatu urzędu certyfikacji](https://en.wikipedia.org/wiki/Certificate_authority)-podpisany certyfikat X.509 do zabezpieczenia klastra. Aby uzyskać więcej informacji na temat sposobu uzyskania tych certyfikatów, zobacz [sposobie uzyskiwania certyfikatu](https://msdn.microsoft.com/library/aa702761.aspx).
 
 W przypadku klastrów, których używasz do celów testowych można użyć certyfikatu z podpisem własnym.
 
