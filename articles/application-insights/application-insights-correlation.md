@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/09/2018
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: d9b6f5c08eed5efceafc71feaf654ad8f4fcafa0
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: eb14a3bc76fef37cdff4ed49cdbb6a99eac40928
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341127"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280167"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacja telemetrii w usłudze Application Insights
 
@@ -59,14 +59,14 @@ W nocie widok wyników, wszystkie elementy danych telemetrycznych udostępnić g
 |------------|---------------------------|--------------|--------------------|--------------|
 | wyświetlenia strony   | Podstawowy strony                |              | STYz               | STYz         |
 | zależność | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
-| wyślij żądanie    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| żądanie    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | zależność | Pobierz /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
 Teraz po wywołaniu `GET /api/stock/value` wprowadzone do usługi zewnętrznej, aby znać tożsamość tego serwera. Możesz więc ustawić `dependency.target` odpowiednio pola. Gdy usługi zewnętrznej nie obsługuje monitorowania - `target` jest ustawiona na nazwę hosta usługi, takiej jak `stock-prices-api.com`. Jednak jeśli usługi identyfikuje, zwracając wstępnie zdefiniowanej nagłówka HTTP - `target` zawiera tożsamości usługi, która umożliwia usługi Application Insights do utworzenia rozproszonego śledzenia, badając dane telemetryczne z tej usługi. 
 
 ## <a name="correlation-headers"></a>Nagłówki korelacji
 
-Firma Microsoft pracuje nad RFC propozycję [korelacji protokołu HTTP](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v1.md). Propozycja ta definiuje dwa nagłówki:
+Firma Microsoft pracuje nad RFC propozycję [korelacji protokołu HTTP](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Propozycja ta definiuje dwa nagłówki:
 
 - `Request-Id` przenoszenia globalnie unikatowy identyfikator wywołania
 - `Correlation-Context` -wykonuje kolekcję par wartości nazwy we właściwościach rozproszonego śledzenia
@@ -77,7 +77,7 @@ Definiuje usługę Application Insights [rozszerzenia](https://github.com/lmolko
 
 ### <a name="w3c-distributed-tracing"></a>W3C rozproszonego śledzenia
 
-Firma cleardb zmienia się (format W3C rozproszonego śledzenia) [https://w3c.github.io/distributed-tracing/report-trace-context.html]. Definiuje on:
+Firma cleardb zmienia się [format W3C rozproszonego śledzenia](https://w3c.github.io/trace-context/). Definiuje on:
 - `traceparent` -niesie ze sobą globalnie unikatowy identyfikator i unikatowy identyfikator wywołania
 - `tracestate` -niesie ze sobą w określonym kontekście systemu śledzenia.
 
@@ -156,7 +156,7 @@ public class CloudRoleNameInitializer extends WebTelemetryInitializerBase {
     }
   }
 ```
-Za pomocą [klasy kontekstu urządzenia](https://docs.microsoft.com/et-ee/java/api/com.microsoft.applicationinsights.extensibility.context._device_context) (oznakowany tego elementu telemetrii)
+Za pomocą [klasy kontekstu urządzenia](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context._device_context) (oznakowany tego elementu telemetrii)
 ```Java
 telemetry.getContext().getDevice().setRoleName("My Component Name");
 ```

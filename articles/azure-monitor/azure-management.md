@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2018
 ms.author: bwren
-ms.openlocfilehash: 46c59d02294dea34a4713f44f31733035c68d66e
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 30898be58db228484bcd85e8896da10d0bfc29dd
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47057957"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277464"
 ---
 # <a name="azure-management---monitoring"></a>Zarządzanie platformą Azure — monitorowanie
 
@@ -35,13 +35,13 @@ Poniższy diagram przedstawia różne obszary zarządzania wymagane do obsługi 
 W poniższych sekcjach krótko opisano różne obszary zarządzania oraz podano linki do szczegółowych informacji o głównych usługach platformy Azure dotyczących tych obszarów.
 
 ## <a name="monitor"></a>Monitorowanie
-Monitorowanie to proces zbierania i analizowania danych w celu ustalania wydajności, kondycji i dostępności aplikacji biznesowych i zasobów, od których one zależą. Skuteczna strategia monitorowania pomoże poznać szczegółowe działanie różnych składników aplikacji i zwiększyć czas aktywności przez proaktywne powiadamianie o istotnych kwestiach w celu umożliwienia rozwiązywania ich, zanim staną się problemami. Monitorowanie na platformie Azure, przede wszystkim jest dostarczany przez [usługi Azure Monitor](../azure-monitor/overview.md) zapewniającą typowych magazynów do przechowywania danych monitorowania, dane z wielu źródeł do zbierania danych z różnych warstw obsługi aplikacji i funkcji analizowanie i reagowanie na zebranych danych.
+Monitorowanie to proces zbierania i analizowania danych w celu ustalania wydajności, kondycji i dostępności aplikacji biznesowych i zasobów, od których one zależą. Skuteczna strategia monitorowania pomoże poznać szczegółowe działanie różnych składników aplikacji i zwiększyć czas aktywności przez proaktywne powiadamianie o istotnych kwestiach w celu umożliwienia rozwiązywania ich, zanim staną się problemami. Monitorowanie na platformie Azure jest realizowane przede wszystkim za pomocą usługi [Azure Monitor](../azure-monitor/overview.md), która zapewnia wspólne magazyny do przechowywania danych monitorowania, wiele źródeł danych do zbierania danych z różnych warstw obsługi aplikacji i funkcje do analizowania zebranych danych oraz do reagowania na nie.
 
 ## <a name="configure"></a>Konfigurowanie
 Konfigurowanie dotyczy początkowego wdrażania i konfigurowania aplikacji i zasobów oraz ich ciągłej obsługi przy użyciu poprawek i aktualizacji.  Automatyzacja tych zadań za pomocą skryptów i zasad pozwala wyeliminować nadmiarowość, zminimalizować poświęcany czas i wysiłek oraz zwiększyć dokładność i wydajność.  [Usługa Azure Automation](..\automation\automation-intro.md) dostarcza większość usług do automatyzowania zadań konfiguracji.  Oprócz elementów Runbook do automatyzowania procesów zapewnia ona zarządzanie konfiguracją i aktualizacjami, co pomaga zarządzać konfiguracją za pośrednictwem zasad oraz identyfikować i wdrażać aktualizacje.
 
 ## <a name="govern"></a>Ład
-Ład dotyczy mechanizmów i procesów kontrolowania aplikacji i zasobów na platformie Azure.  Obejmuje to planowanie inicjatyw i wyznaczanie strategicznych priorytetów.  Ład na platformie Azure jest zaimplementowany głównie za pomocą dwóch usług.  [Zasady platformy Azure](../azure-policy/azure-policy-introduction.md) pozwalają tworzyć i przypisywać definicje zasad oraz zarządzać nimi. Te definicje wymuszają różne reguły i działania dotyczące zasobów, aby pozostały one zgodne ze standardami firmy i umowami dotyczącymi poziomu usług. [Usługa Azure Cost Management firmy Cloudyn](../cost-management/overview.md) umożliwia śledzenie użycia chmury i wydatków na zasoby platformy Azure i innych dostawców rozwiązań w chmurze, w tym AWS i Google.
+Ład dotyczy mechanizmów i procesów kontrolowania aplikacji i zasobów na platformie Azure.  Obejmuje to planowanie inicjatyw i wyznaczanie strategicznych priorytetów.  Ład na platformie Azure jest zaimplementowany głównie za pomocą dwóch usług.  [Zasady platformy Azure](../governance/policy/overview.md) pozwalają tworzyć i przypisywać definicje zasad oraz zarządzać nimi. Te definicje wymuszają różne reguły i działania dotyczące zasobów, aby pozostały one zgodne ze standardami firmy i umowami dotyczącymi poziomu usług. [Usługa Azure Cost Management firmy Cloudyn](../cost-management/overview.md) umożliwia śledzenie użycia chmury i wydatków na zasoby platformy Azure i innych dostawców rozwiązań w chmurze, w tym AWS i Google.
 
 ## <a name="secure"></a>Bezpieczeństwo
 Zarządzanie zabezpieczeniami aplikacji, zasobów i danych obejmuje ocenę zagrożeń, zbieranie i analizowanie danych zabezpieczeń oraz zapewnianie, że aplikacje i zasoby są projektowane i konfigurowane w bezpieczny sposób.  Funkcje monitorowania zabezpieczeń i analizy zagrożeń są dostarczane przez usługę [Azure Security Center](../security-center/security-center-intro.md), która obejmuje ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami w różnych obciążeniach chmur hybrydowych.  Zapoznaj się też z tematem [Introduction to Azure Security](../security/azure-security.md) (Wprowadzenie do zabezpieczeń platformy Azure), aby uzyskać obszerne informacje o zabezpieczeniach na platformie Azure oraz wskazówki dotyczące bezpiecznego konfigurowania jej zasobów.

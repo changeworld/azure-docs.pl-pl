@@ -3,7 +3,7 @@ title: Instalacja agenta programu Azure AD Connect Health | Microsoft Docs
 description: Jest to strona programu Azure AD Connect Health opisująca instalację agenta usług AD FS i synchronizacji.
 services: active-directory
 documentationcenter: ''
-author: zhiweiw
+author: zhiweiwangmsft
 manager: mtillman
 editor: curtand
 ms.assetid: 1cc8ae90-607d-4925-9c30-6770a4bd1b4e
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: c57e6d3e35994bea99e15f37ed0fb6aa2d108f74
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cb3ecff394aa8f2f80c61499e848d7d63806b37d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46303931"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279776"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalowanie agenta programu Azure AD Connect Health
 W tym dokumencie opisano instalowanie i konfigurowanie agentów programu Azure AD Connect Health. Agentów możesz pobrać [tutaj](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent).
@@ -37,7 +37,7 @@ Poniższa tabela zawiera listę wymagań dotyczących używania programu Azure A
 | Inspekcja połączenia SSL dla ruchu wychodzącego jest filtrowana lub wyłączona | Rejestracja agenta lub operacje przekazywania danych mogą zakończyć się niepowodzeniem, jeśli w warstwie sieciowej jest aktywny proces zakończenia lub inspekcji połączenia SSL dla ruchu wychodzącego. Dowiedz się więcej na temat [sposobu konfigurowania inspekcji połączenia SSL](https://technet.microsoft.com/library/ee796230.aspx) |
 | Porty zapory na serwerze, na którym jest uruchomiony agent |Agent wymaga, aby poniższe porty zapory były otwarte w celu komunikacji z punktami końcowymi usług programu Azure AD Connect Health.</br></br><li>Port TCP 443</li><li>Port TCP 5671</li> </br>Dowiedz się więcej na temat [włączania portów zapory](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
 | Zezwalaj na następujące witryny sieci web, jeśli są włączone zwiększone zabezpieczenia programu Internet Explorer |Jeśli zwiększone zabezpieczenia programu Internet Explorer są włączone na serwerze, na którym ma zostać zainstalowany agent, musisz zezwolić na otwieranie poniższych witryn sieci Web.</br></br><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>Serwer federacyjny Twojej organizacji zaufany przez usługę Azure Active Directory. Na przykład: https:\//sts.contoso.com</li> Dowiedz się więcej na temat [sposobu konfigurowania programu Internet Explorer](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
-| Upewnij się, że zainstalowano program PowerShell w wersji 4.0 lub nowszej | <li>System Windows Server 2008 R2 jest dostarczany z programem PowerShell w wersji 2.0, która jest niewystarczająca dla agenta.  Zaktualizuj program PowerShell zgodnie z opisem w poniższej sekcji dotyczącej [instalacji agenta na serwerach z systemem Windows Server 2008 R2](#agent-installation-on-windows-server-2008-r2-servers).</li><li>System Windows Server 2012 jest dostarczany z programem PowerShell w wersji 3.0, która jest niewystarczająca dla agenta.  [Zaktualizuj](http://www.microsoft.com/download/details.aspx?id=40855) platformę Windows Management Framework.</li><li>System Windows Server 2012 R2 i jego nowsze wersje są dostarczane z wystarczająco nową wersją programu PowerShell.</li>|
+| Upewnij się, że zainstalowano program PowerShell w wersji 4.0 lub nowszej | <li>System Windows Server 2008 R2 jest dostarczany z programem PowerShell w wersji 2.0, która jest niewystarczająca dla agenta.  Zaktualizuj program PowerShell zgodnie z opisem w poniższej sekcji dotyczącej [instalacji agenta na serwerach z systemem Windows Server 2008 R2](#agent-installation-on-windows-server-2008-r2-servers).</li><li>System Windows Server 2012 jest dostarczany z programem PowerShell w wersji 3.0, która jest niewystarczająca dla agenta.  [Zaktualizuj](https://www.microsoft.com/download/details.aspx?id=40855) platformę Windows Management Framework.</li><li>System Windows Server 2012 R2 i jego nowsze wersje są dostarczane z wystarczająco nową wersją programu PowerShell.</li>|
 |Wyłącz standard FIPS|Standard FIPS nie jest obsługiwany przez agentów programu Azure AD Connect Health.|
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Łączność wychodząca z punktami końcowymi usług Azure
@@ -53,12 +53,12 @@ Poniższa tabela zawiera listę wymagań dotyczących używania programu Azure A
 ## <a name="download-and-install-the-azure-ad-connect-health-agent"></a>Pobieranie i instalowanie agenta programu Azure AD Connect Health
 * Sprawdź, czy [wymagania programu Azure AD Connect Health zostały spełnione](how-to-connect-health-agent-install.md#requirements).
 * Wprowadzenie do korzystania z programu Azure AD Connect Health dla usług AD FS
-    * [Pobierz agenta programu Azure AD Connect Health dla usług AD FS.](http://go.microsoft.com/fwlink/?LinkID=518973)
+    * [Pobierz agenta programu Azure AD Connect Health dla usług AD FS.](https://go.microsoft.com/fwlink/?LinkID=518973)
     * [Zobacz instrukcje instalacji](#installing-the-azure-ad-connect-health-agent-for-ad-fs).
 * Wprowadzenie do korzystania z programu Azure AD Connect Health do celów synchronizacji
-    * [Pobierz i zainstaluj najnowszą wersję programu Azure AD Connect](http://go.microsoft.com/fwlink/?linkid=615771). Agent kondycji do celów synchronizacji zostanie zainstalowany w ramach instalacji programu Azure AD Connect (w wersji 1.0.9125.0 lub nowszej).
+    * [Pobierz i zainstaluj najnowszą wersję programu Azure AD Connect](https://go.microsoft.com/fwlink/?linkid=615771). Agent kondycji do celów synchronizacji zostanie zainstalowany w ramach instalacji programu Azure AD Connect (w wersji 1.0.9125.0 lub nowszej).
 * Wprowadzenie do korzystania z programu Azure AD Connect Health dla usług AD DS
-    * [Pobierz agenta programu Azure AD Connect Health dla usług AD DS](http://go.microsoft.com/fwlink/?LinkID=820540).
+    * [Pobierz agenta programu Azure AD Connect Health dla usług AD DS](https://go.microsoft.com/fwlink/?LinkID=820540).
     * [Zobacz instrukcje instalacji](#installing-the-azure-ad-connect-health-agent-for-ad-ds).
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-fs"></a>Instalowanie agenta programu Azure AD Connect Health Agent dla usług AD FS
@@ -105,7 +105,7 @@ Kroki dotyczące serwerów z systemem Windows Server 2008 R2:
    * Zainstaluj aplikację PowerShell ISE (z funkcji systemu Windows).
    * Zainstaluj platformę [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855).
    * Zainstaluj na serwerze program Internet Explorer w wersji 10 lub nowszej. (Wymagane przez usługę kondycji do uwierzytelnienia przy użyciu poświadczeń administratora platformy Azure.)
-4. Aby uzyskać więcej informacji na temat instalowania programu Windows PowerShell 4.0 w systemie Windows Server 2008 R2, zobacz artykuł w witrynie wiki [tutaj](http://social.technet.microsoft.com/wiki/contents/articles/20623.step-by-step-upgrading-the-powershell-version-4-on-2008-r2.aspx).
+4. Aby uzyskać więcej informacji na temat instalowania programu Windows PowerShell 4.0 w systemie Windows Server 2008 R2, zobacz artykuł w witrynie wiki [tutaj](https://social.technet.microsoft.com/wiki/contents/articles/20623.step-by-step-upgrading-the-powershell-version-4-on-2008-r2.aspx).
 
 ### <a name="enable-auditing-for-ad-fs"></a>Włączanie inspekcji dla usług AD FS
 > [!NOTE]
@@ -175,7 +175,7 @@ Zwróć uwagę, że poziom inspekcji „basic” (podstawowy) jest włączony do
 > Serwer synchronizacji nie powinien być serwerem usług AD FS. Nie instaluj agenta synchronizacji na serwerze usług AD FS.
 >
 
-W najnowszej kompilacji programu Azure AD Connect agent programu Azure AD Connect Health do celów synchronizacji jest instalowany automatycznie. Aby używać programu Azure AD Connect do celów synchronizacji, musisz pobrać i zainstalować najnowszą wersję programu Azure AD Connect. Najnowszą wersję możesz pobrać [tutaj](http://www.microsoft.com/download/details.aspx?id=47594).
+W najnowszej kompilacji programu Azure AD Connect agent programu Azure AD Connect Health do celów synchronizacji jest instalowany automatycznie. Aby używać programu Azure AD Connect do celów synchronizacji, musisz pobrać i zainstalować najnowszą wersję programu Azure AD Connect. Najnowszą wersję możesz pobrać [tutaj](https://www.microsoft.com/download/details.aspx?id=47594).
 
 Aby sprawdzić, czy agent został zainstalowany, znajdź następujące usługi na serwerze: Jeśli konfiguracja została zakończona, te usługi powinny być uruchomione. W przeciwnym razie pozostaną one zatrzymane do czasu zakończenia konfiguracji.
 

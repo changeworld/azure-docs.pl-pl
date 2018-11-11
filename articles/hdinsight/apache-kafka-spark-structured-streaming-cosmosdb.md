@@ -1,5 +1,5 @@
 ---
-title: Apache Spark, przesyłanie strumieniowe ze strukturą z platformy Apache Kafka do usługi Azure Cosmos DB — usługa Azure HDInsight
+title: Apache Spark, przesyłanie strumieniowe ze strukturą z usługi Kafka do usługi Azure Cosmos DB — usługa Azure HDInsight
 description: Dowiedz się, jak za pomocą Apache Spark Structured Streaming odczytywać dane z platformy Apache Kafka, a następnie przechowywać ją do usługi Azure Cosmos DB. Ten przykład obejmuje strumieniowe przesyłanie danych z platformy Spark w usłudze HDInsight za pomocą notesu Jupyter.
 services: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 159d3d1576ab3a38baaba94594b3abf04ef3ad56
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
-ms.translationtype: MT
+ms.openlocfilehash: fcedf4a9335a0d70cfbab5a7f803b68cb154e209
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287986"
+ms.locfileid: "51278909"
 ---
 # <a name="use-apache-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>Korzystanie z platformy Apache Spark Structured Streaming with Kafka i Azure Cosmos DB
 

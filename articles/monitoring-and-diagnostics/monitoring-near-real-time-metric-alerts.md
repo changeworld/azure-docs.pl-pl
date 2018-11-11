@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: dae75d118ec46c5023f0bb347fe5fbefafb84c4a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 15ecbcafd3397b425b669a48f19bee6073b71149
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961514"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279793"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Obsługiwane zasobów dla alertów dotyczących metryk w usłudze Azure Monitor
 
-Usługa Azure Monitor obsługuje teraz nowego typu alertu metryki, która ma znaczące korzyści w starszej wersji [klasycznego alertów dotyczących metryk](insights-alerts-portal.md). Metryki są dostępne dla [obszerne listy usług systemu Azure](monitoring-supported-metrics.md). Nowszych alertów obsługuje podzbiór (rosnący) typów zasobów. W tym artykule wymieniono tego podzbioru.
+Usługa Azure Monitor obsługuje teraz nowego typu alertu metryki, która ma znaczące korzyści w starszej wersji [klasycznego alertów dotyczących metryk](alert-metric-classic.md). Metryki są dostępne dla [obszerne listy usług systemu Azure](monitoring-supported-metrics.md). Nowszych alertów obsługuje podzbiór (rosnący) typów zasobów. W tym artykule wymieniono tego podzbioru.
 
 Umożliwia także nowszych alertów metryk dotyczących popularnych dzienników usługi Log Analytics, wyodrębnić jako metryki. Aby uzyskać więcej informacji, Wyświetl [alerty metryki dla dzienników](monitoring-metric-alerts-logs.md).
 

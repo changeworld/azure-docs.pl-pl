@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/30/2018
+ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: a9e601d0bd9a4d7879ecd205488c6a901a464021
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 77f9e52da8ada9cdf56d4a710bba65492cc17f75
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419848"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280745"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Samouczek: Wdrażanie aplikacji na platformie Azure i usługi Azure Stack
 
@@ -292,7 +292,7 @@ Można utworzyć połączenia usługi przy użyciu następującego mapowania:
 | Nazwa subskrypcji | name@contoso.com | Nazwa subskrypcji użytkownika z usługi Azure Stack. |
 | Identyfikator klienta jednostki usługi | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | Identyfikator podmiotu zabezpieczeń z [to](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) sekcję w tym artykule. |
 | Klucz jednostki usługi | THESCRETGOESHERE = | Klucz z tego samego artykułu (lub hasło, jeśli używany jest skrypt). |
-| Identyfikator dzierżawy | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | Identyfikator dzierżawy, możesz pobrać następujące instrukcje na uzyskiwanie dzierżawy identyfikatora. Identyfikator dzierżawy, możesz pobrać następujące instrukcji w [uzyskanie Identyfikatora dzierżawy](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).  |
+| Identyfikator dzierżawy | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | Identyfikator dzierżawy, możesz pobrać następujące instrukcji w [uzyskanie Identyfikatora dzierżawy](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).  |
 | Połączenie: | Nie zweryfikowano | Sprawdź ustawienia połączenia do jednostki usługi. |
 
 Teraz, gdy jest tworzony punkt końcowy, metodyki DevOps w celu połączenia usługi Azure Stack jest gotowe do użycia. Agent kompilacji w usłudze Azure Stack pobiera instrukcje od metodyki DevOps, a następnie agenta umożliwia przekazywanie informacji o punkcie końcowym komunikacji z usługą Azure Stack.
@@ -317,7 +317,7 @@ Można utworzyć połączenia usługi przy użyciu następującego mapowania:
 | Nazwa subskrypcji | name@contoso.com | Nazwa subskrypcji użytkownika z usługi Azure Stack. |
 | Identyfikator klienta jednostki usługi | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | Identyfikator klienta jednostki usługi utworzono dla usług AD FS. |
 | Certyfikat | `<certificate>` |  Konwertuj plik certyfikatu z profilu PFX na PEM. Wklej zawartość pliku PEM certyfikatu w tym polu. <br> Konwertowanie PFX na PEM:<br>`openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>` |
-| Identyfikator dzierżawy | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | Identyfikator dzierżawy, możesz pobrać następujące instrukcje na uzyskiwanie dzierżawy identyfikatora. Identyfikator dzierżawy, możesz pobrać następujące instrukcji w [uzyskanie Identyfikatora dzierżawy](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id). |
+| Identyfikator dzierżawy | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | Identyfikator dzierżawy, możesz pobrać następujące instrukcji w [uzyskanie Identyfikatora dzierżawy](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id). |
 | Połączenie: | Nie zweryfikowano | Sprawdź ustawienia połączenia do jednostki usługi. |
 
 Teraz, gdy jest tworzony punkt końcowy, DevOps platformy Azure do połączenia usługi Azure Stack jest gotowe do użycia. Agent kompilacji w usłudze Azure Stack pobiera instrukcje z DevOps platformy Azure, a następnie agenta umożliwia przekazywanie informacji o punkcie końcowym komunikacji z usługą Azure Stack.

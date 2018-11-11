@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6d7e9e5a4c60c16c505b0b69f14d22ebd868c1c0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: fd0b2bda91ecb9b717f4cfe366c45bc95b21fd8e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748225"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277566"
 ---
 # <a name="filter-events-for-event-grid"></a>Filtrowanie zdarzeń usługi Event Grid
 
@@ -181,30 +181,17 @@ Kolejny przykład szablonu usługi Resource Manager tworzy subskrypcję dla usł
 
 ## <a name="filter-by-operators-and-data"></a>Filtruj według operatory i danych
 
-Aby korzystać z zaawansowanego filtrowania, należy zainstalować rozszerzenia w wersji zapoznawczej dla wiersza polecenia platformy Azure. Możesz użyć [CloudShell](/azure/cloud-shell/quickstart) albo zainstalować interfejs wiersza polecenia platformy Azure lokalnie.
+Aby uzyskać większą elastyczność filtrowania można użyć operatorów i właściwości danych, aby filtrować zdarzenia.
 
-### <a name="install-extension"></a>Instalowanie rozszerzenia
-
-W usłudze CloudShell:
-
-* Jeśli wcześniej zainstalowano rozszerzenie, zaktualizuj go `az extension update -n eventgrid`
-* Jeśli wcześniej nie zainstalowano rozszerzenie, zainstaluj go `az extension add -n eventgrid`
-
-W przypadku instalacji lokalnej:
-
-1. Lokalnie Odinstaluj wiersza polecenia platformy Azure.
-1. Zainstaluj [najnowszej wersji](/cli/azure/install-azure-cli) z wiersza polecenia platformy Azure.
-1. Uruchom okno poleceń.
-1. Odinstalowywanie poprzednich wersji rozszerzenia `az extension remove -n eventgrid`
-1. Instalowanie rozszerzenia `az extension add -n eventgrid`
-
-Teraz możesz użyć zaawansowanego filtrowania.
+[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ### <a name="subscribe-with-advanced-filters"></a>Subskrybuj, korzystając z zaawansowanych filtrów
 
 Aby dowiedzieć się więcej na temat operatorów i klucze, które umożliwiają filtrowanie zaawansowane, zobacz [zaawansowanego filtrowania](event-filtering.md#advanced-filtering).
 
-Poniższy przykład tworzy temat niestandardowy. On subskrybowanie tematu niestandardowego i filtruje według wartości w obiekcie danych. Zdarzenia, które mają color, ustawioną na niebieski, czerwonego lub zielonego, są wysyłane do subskrypcji.
+Te przykłady tworzenie tematu niestandardowego. One subskrybowanie do tematu niestandardowego i filtrowanie według wartości w obiekcie danych. Zdarzenia, które mają color, ustawioną na niebieski, czerwonego lub zielonego, są wysyłane do subskrypcji.
+
+W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
 ```azurecli-interactive
 topicName=<your-topic-name>
@@ -225,9 +212,33 @@ az eventgrid event-subscription create \
 
 Należy zauważyć, że [datę wygaśnięcia](concepts.md#event-subscription-expiration) jest ustawiona dla subskrypcji.
 
+W przypadku programu PowerShell użyj polecenia:
+
+```azurepowershell-interactive
+$topicName = <your-topic-name>
+$endpointURL = <endpoint-URL>
+
+New-AzureRmResourceGroup -Name gridResourceGroup -Location eastus2
+New-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Location eastus2 -Name $topicName
+
+$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicName).Id
+
+$expDate = '<mm/dd/yyyy hh:mm:ss>' | Get-Date
+$AdvFilter1=@{operator="StringIn"; key="Data.color"; Values=@('blue', 'red', 'green')}
+
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName <event_subscription_name> `
+  -Endpoint $endpointURL `
+  -ExpirationDate $expDate `
+  -AdvancedFilter @($AdvFilter1)
+```
+
 ### <a name="test-filter"></a>Filtr testu
 
-Aby przetestować filtr, wysyłanie zdarzeń za pomocą pola kolor na zielony.
+Aby przetestować filtr, wysyłanie zdarzeń za pomocą pola kolor na zielony. Ponieważ jest zielony, jedna z wartości w filtrze, zdarzenia są dostarczane do punktu końcowego.
+
+W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
 ```azurecli-interactive
 topicEndpoint=$(az eventgrid topic show --name $topicName -g gridResourceGroup --query "endpoint" --output tsv)
@@ -238,17 +249,60 @@ event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/
 curl -X POST -H "aeg-sas-key: $key" -d "$event" $topicEndpoint
 ```
 
-Zdarzenia są wysyłane do punktu końcowego usługi.
+W przypadku programu PowerShell użyj polecenia:
 
-Aby przetestować scenariusz, w którym zdarzenie nie jest wysyłana, wysyłanie zdarzeń za pomocą pola kolor na żółty.
+```azurepowershell-interactive
+$endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicName).Endpoint
+$keys = Get-AzureRmEventGridTopicKey -ResourceGroupName gridResourceGroup -Name $topicName
+
+$eventID = Get-Random 99999
+$eventDate = Get-Date -Format s
+
+$htbody = @{
+    id= $eventID
+    eventType="recordInserted"
+    subject="myapp/vehicles/cars"
+    eventTime= $eventDate
+    data= @{
+        model="SUV"
+        color="green"
+    }
+    dataVersion="1.0"
+}
+
+$body = "["+(ConvertTo-Json $htbody)+"]"
+
+Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
+```
+
+Aby przetestować scenariusz, w którym zdarzenie nie jest wysyłana, wysyłanie zdarzeń za pomocą pola kolor na żółty. Żółty nie jest jedną z wartości określone w ramach subskrypcji, dzięki czemu zdarzenia nie są dostarczane do Twojej subskrypcji.
+
+W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
 ```azurecli-interactive
 event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/cars", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "model": "SUV", "color": "yellow"},"dataVersion": "1.0"} ]'
 
 curl -X POST -H "aeg-sas-key: $key" -d "$event" $topicEndpoint
 ```
+W przypadku programu PowerShell użyj polecenia:
 
-Żółty nie jest jedną z wartości określone w ramach subskrypcji, dzięki czemu zdarzenia nie są dostarczane do Twojej subskrypcji.
+```azurepowershell-interactive
+$htbody = @{
+    id= $eventID
+    eventType="recordInserted"
+    subject="myapp/vehicles/cars"
+    eventTime= $eventDate
+    data= @{
+        model="SUV"
+        color="yellow"
+    }
+    dataVersion="1.0"
+}
+
+$body = "["+(ConvertTo-Json $htbody)+"]"
+
+Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

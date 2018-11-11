@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/23/2018
 ms.author: sethm
 ms.reviewer: harik
-ms.openlocfilehash: f00b175fed36fbe2b28f1d11843bb17c54ac3873
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0bbe2ee7436cc03a3780da096a498769d66eb505
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086968"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277940"
 ---
 # <a name="azure-stack-servicing-policy"></a>Obsługa zasad z usługi Azure Stack
 W tym artykule opisano zasady obsługi dla usługi Azure Stack zintegrowane systemy i co należy zrobić, aby zapewnić systemu w stanie wspieranym. 
@@ -55,7 +55,7 @@ Aby kontynuować do otrzymania pomocy technicznej, należy pozostawić wdrożeni
 
 Na przykład jeśli 1805 niedawno dostępny zaktualizowanej wersji, a poprzednie dwa pakiety aktualizacji były w wersji 1804 i 1803, zarówno w wersji 1803, jak i w wersji 1804 pozostają w pomocy technicznej. Jednak 1802 jest obsługiwany. Prawdziwe zasad, gdy istnieje bez zwalniania miesiąc lub dwóch. Na przykład jeśli nie było żadnych wersji 1804 bieżącej wersji jest 1805, poprzednie dwa pakiety aktualizacji 1803 i 1802 pozostają w pomocy technicznej.
 
-Pakiety aktualizacji oprogramowania firmy Microsoft są skumulowanych i wymagają poprzedniego pakietu aktualizacji jako warunek wstępny. Jeśli zdecydujesz się mają być odroczone co najmniej jednej aktualizacji, należy wziąć pod uwagę ogólnego środowiska uruchomieniowego, jeśli chcesz przejść do najnowszej wersji. 
+Pakiety aktualizacji oprogramowania firmy Microsoft są skumulowanych i wymagają poprzedniego pakietu aktualizacji lub poprawek jako warunek wstępny. Jeśli zdecydujesz się mają być odroczone co najmniej jednej aktualizacji, należy wziąć pod uwagę ogólnego środowiska uruchomieniowego, jeśli chcesz przejść do najnowszej wersji. 
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 Usługa Azure Stack przebiega w taki sam pomocy technicznej Azure. Klienci korporacyjni mogą postępować zgodnie z instrukcjami w [jak utworzyć żądanie pomocy technicznej platformy Azure](/azure/azure-supportability/how-to-create-azure-support-request). Jeśli jesteś klientem z dostawcy usług chmury (CSP), skontaktuj się z dostawca usług Kryptograficznych pomocy technicznej.  Aby uzyskać więcej informacji, zobacz [— często zadawane pytania dla pomocy technicznej Azure](https://azure.microsoft.com/support/faq/). 

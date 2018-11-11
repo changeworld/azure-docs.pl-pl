@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 71e5ae2a6b486873df147e7c2c0518e1c47b09c7
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 11/07/2018
+ms.openlocfilehash: 0a248ec5137a6de43910b1d11184dfeda18601f5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914009"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280351"
 ---
 # <a name="tutorial-set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>Samouczek: Konfigurowanie SQL Data Sync na synchronizowanie danych między Azure SQL Database i programu SQL Server w środowisku lokalnym
 
@@ -129,7 +129,7 @@ Na **konfigurować lokalnego** wykonaj następujące czynności:
 
     Jeśli została wybrana opcja **Utwórz nowego agenta**, wykonaj następujące czynności:
 
-   1. Pobierz oprogramowanie agenta synchronizacji klienta z linku podanego i zainstaluj go na komputerze, na którym znajduje się serwer SQL.
+   1. Pobierz oprogramowanie agenta synchronizacji klienta z linku podanego i zainstaluj go na komputerze, na którym znajduje się serwer SQL. Możesz również pobrać agenta synchronizacji danych bezpośrednio z [agenta synchronizacji danych Azure SQL](https://www.microsoft.com/download/details.aspx?id=27693).
 
         > [!IMPORTANT]
         > Musisz otworzyć wychodzącego portu TCP 1433 w zaporze aby umożliwić agenta klienta komunikacji z serwerem.
@@ -253,35 +253,7 @@ Po wyeksportowaniu bazę danych jako `.bacpac` pliku i zaimportować plik, aby u
 
 ## <a name="faq-about-the-client-agent"></a>Często zadawane pytania dotyczące agenta klienta
 
-### <a name="why-do-i-need-a-client-agent"></a>Dlaczego należy to agent klienta
-
-Usługa SQL Data Sync komunikuje się z bazy danych SQL Server za pośrednictwem agenta klienta. Ta funkcja zabezpieczeń uniemożliwiają bezpośrednią komunikację z bazami danych za zaporą. Gdy usługa SQL Data Sync komunikuje się z agenta, robi to przy użyciu zaszyfrowane połączenia i unikatowy token lub *klucz agenta*. Bazy danych programu SQL Server uwierzytelnienia agenta przy użyciu klucza ciągu i agent połączenia. Ten projekt zapewnia wysoki poziom zabezpieczeń dla Twoich danych.
-
-### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>Ile wystąpień agent lokalny można uruchomić interfejs użytkownika
-
-Można uruchomić tylko jedno wystąpienie interfejsu użytkownika.
-
-### <a name="how-can-i-change-my-service-account"></a>Jak zmienić konto usługi
-
-Po zainstalowaniu agenta klienta, jedynym sposobem, aby zmienić konto usługi jest odinstalowanie go i zainstaluj nowego agenta klienta przy użyciu nowego konta usługi.
-
-### <a name="how-do-i-change-my-agent-key"></a>Jak zmienić mój klucz agenta
-
-Klucz agenta można używać tylko raz przez agenta. Nie można użyć ponownie, gdy należy usunąć, a następnie ponownie zainstaluj nowego agenta ani nie może on być używany przez wielu agentów. Jeśli potrzebujesz utworzyć nowy klucz dla istniejącego agenta, należy się upewnić, że ten sam klucz jest rejestrowane za pomocą agenta klienta i w usłudze SQL Data Sync.
-
-### <a name="how-do-i-retire-a-client-agent"></a>Jak wycofać to agent klienta
-
-Aby natychmiast unieważnia lub wycofanie agenta, Wygeneruj ponownie klucz w portalu, ale nie przesyłać go w Interfejsie użytkownika agentów. Trwa ponowne generowanie klucza unieważnia poprzedni klucz niezależnie, jeśli agent odpowiedniego online lub offline.
-
-### <a name="how-do-i-move-a-client-agent-to-another-computer"></a>Jak przenieść agenta klienta do innego komputera
-
-Jeśli chcesz uruchomić lokalnego agenta za pomocą innego komputera niż aktualnie na, wykonaj następujące czynności:
-
-1. Zainstaluj agenta na wybrany komputer.
-2. Zaloguj się do portalu usługi SQL Data Sync, a następnie ponownie wygenerować klucz agenta dla nowego agenta.
-3. Korzystanie z interfejsu użytkownika nowy agent, aby przesłać nowy klucz agenta.
-4. Zaczekaj, aż agent klienta pobierze listę lokalnych baz danych, które zostały wcześniej zarejestrowane.
-5. Podaj poświadczenia bazy danych dla wszystkich baz danych, które wyświetlają jako niedostępny. Te bazy danych musi być dostępny z nowego komputera, na którym jest zainstalowany agent.
+Często zadawane pytania dotyczące agenta klienta, zobacz [agenta — często zadawane pytania](sql-database-data-sync-agent.md#agent-faq).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

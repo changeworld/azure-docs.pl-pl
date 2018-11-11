@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/09/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: cca9307fd849f6b8537cf7484d2e56e1a710295b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f44b267a28abd64acdd6bc74a43f1c5be8daf0ab
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257194"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515611"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizacja usługi Azure Stack 1809
 
@@ -70,6 +70,17 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack:
 - <!-- 2702741 -  IS, ASDK --> Rozwiązano problem, w której publiczne adresy IP, które zostały wdrożone za pomocą dynamicznej alokacji metoda nie jest gwarantowana zostaną zachowane po wystawieniu Zatrzymaj anulowanie. Teraz są zachowywane.
 
 - <!-- 3078022 - IS, ASDK --> Jeśli maszyna wirtualna została zatrzymana z cofniętą alokacją przed 1808 nie można jej ponownie przydzielić po 1808 aktualizacji.  Ten problem został rozwiązany w 1809. Wystąpienia, które zostały w tym stanie i nie może zostać uruchomiony, może zostać uruchomiony w 1809 dzięki tej poprawce. Poprawka zapobiega także ten problem pojawiał.
+
+<!-- 3090289 – IS, ASDK --> 
+- Rozwiązano problem, gdzie po zastosowaniu tej aktualizacji 1808, można napotkać następujące problemy podczas wdrażania maszyn wirtualnych z usługą Managed Disks:
+
+   1. Jeśli subskrypcja została utworzona przed aktualizacją 1808, wdrażania maszyny Wirtualnej z usługą Managed Disks może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki dla każdej subskrypcji:
+      1. W portalu dzierżawcy, przejdź do **subskrypcje** i Znajdź subskrypcji. Kliknij przycisk **dostawców zasobów**, następnie kliknij przycisk **Microsoft.Compute**, a następnie kliknij przycisk **ponownie zarejestrować**.
+      2. W ramach tej samej subskrypcji, przejdź do **kontrola dostępu (IAM)** i upewnij się, że **usługi Azure Stack — dysk zarządzany** znajduje się na liście.
+   2. Skonfigurowanie środowiska z wieloma dzierżawami wdrażania maszyn wirtualnych w ramach subskrypcji, skojarzony z katalogiem gościa może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki:
+      1. Zastosuj [1808 Azure Stack poprawkę](https://support.microsoft.com/help/4471992).
+      2. Postępuj zgodnie z instrukcjami w [w tym artykule](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) Aby zmienić konfigurację wszystkich katalogów gościa.
+
 
 ### <a name="changes"></a>Zmiany
 
@@ -128,7 +139,7 @@ Aby uzyskać więcej informacji na temat tych luk w zabezpieczeniach kliknij pop
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-- Zainstaluj najnowsze poprawki stosu platformy Azure dla 1808 przed zastosowaniem 1809. Aby uzyskać więcej informacji, zobacz [4468920 KB — Azure Stack poprawkę Azure stosu poprawkę 1.1808.5.110](https://support.microsoft.com/en-us/help/4468920).
+- Zainstaluj najnowsze poprawki stosu platformy Azure dla 1808 przed zastosowaniem 1809. Aby uzyskać więcej informacji, zobacz [4471992 KB — Azure Stack poprawkę Azure stosu poprawkę 1.1808.7.113](https://support.microsoft.com/help/4471992/).
 
   > [!TIP]  
   > Subskrybowania następujących *RRS* lub *Atom* źródła danych na bieżąco przy użyciu usługi Azure Stack poprawki:
@@ -157,9 +168,8 @@ Aby uzyskać więcej informacji na temat tych luk w zabezpieczeniach kliknij pop
 > [!Important]  
 > Przygotuj wdrożenia usługi Azure Stack na hoście rozszerzenia, który został włączony przez następny pakiet aktualizacji. Przygotowanie systemu przy użyciu poniższych wskazówek, [przygotować się do hosta rozszerzenia dla usługi Azure Stack](azure-stack-extension-host-prepare.md).
 
-<!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
- - [Link to KB]()  
- -->
+Po zainstalowaniu tej aktualizacji Zainstaluj wszystkie odpowiednie poprawki. Uzyskać więcej informacji, zobacz następujące artykuły bazy wiedzy knowledge base, a także naszego [obsługi zasad](azure-stack-servicing-policy.md).  
+- [KB 4471993 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1809.3.96](https://support.microsoft.com/help/4471993/)  
 
 ## <a name="known-issues-post-installation"></a>Znane problemy (po instalacji)
 

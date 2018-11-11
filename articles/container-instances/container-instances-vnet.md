@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 11/05/2018
 ms.author: danlep
-ms.openlocfilehash: cab19cf051efea55a476128e4038aa69efdce8d9
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: e2f0d90a0a4384560c0a4126c028761765cb9e45
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157092"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288870"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure
 
@@ -56,7 +56,7 @@ Chociaż ta funkcja jest dostępna w wersji zapoznawczej, podlegają następują
 
 ## <a name="required-network-resources"></a>Wymaganych zasobów sieciowych
 
-Istnieją trzy zasoby usługi Azure Virtual Network, wymaganą do wdrożenia grup kontenerów w sieci wirtualnej: [sieci wirtualnej](#virtual-network) , [delegowane podsieci](#subnet-delegated) w ramach sieci wirtualnej i [sieci profilu](#network-profile).
+Istnieją trzy zasoby usługi Azure Virtual Network, wymaganą do wdrożenia grup kontenerów w sieci wirtualnej: [sieci wirtualnej](#virtual-network) , [delegowane podsieci](#subnet-delegated) w ramach sieci wirtualnej i [sieci profilu](#network-profile). 
 
 ### <a name="virtual-network"></a>Sieć wirtualna
 
@@ -70,15 +70,17 @@ Podsieci, której użyjesz dla grupy kontenerów może zawierać tylko grupy kon
 
 ### <a name="network-profile"></a>Profil sieciowy
 
-Profil sieciowy jest szablonu konfiguracji sieci dla zasobów platformy Azure. Określa niektóre właściwości sieciowe dla zasobu, na przykład podsieci, do którego powinny zostać wdrożone. Przy pierwszym wdrożeniu grupy kontenera do podsieci (i w związku z tym sieci wirtualnej), platforma Azure tworzy profil sieciowy dla Ciebie. Można następnie użyć tego profilu sieci do przyszłych wdrożeń do podsieci.
+Profil sieciowy jest szablonu konfiguracji sieci dla zasobów platformy Azure. Określa niektóre właściwości sieciowe dla zasobu, na przykład podsieci, do którego powinny zostać wdrożone. Po raz pierwszy używasz [utworzyć kontener az] [ az-container-create] polecenia, aby wdrożyć grupę kontenerów do podsieci (i w związku z tym sieci wirtualnej), platforma Azure tworzy profil sieciowy dla Ciebie. Można następnie użyć tego profilu sieci do przyszłych wdrożeń do podsieci. 
+
+Aby użyć szablonu usługi Resource Manager, plik YAML lub programistycznej metody wdrażania grupy kontenerów do podsieci, musisz podać pełny identyfikator zasobu usługi Resource Manager profil sieciowy. Można użyć profil, który został wcześniej utworzony przy użyciu [utworzyć kontener az][az-container-create], lub Utwórz profil przy użyciu szablonu usługi Resource Manager (zobacz [odwołania](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)). Aby uzyskać identyfikator utworzony uprzednio profil, należy użyć [Lista profilów sieciowych az] [ az-network-profile-list] polecenia. 
 
 Na poniższym diagramie kilka grup kontenerów zostały wdrożone do podsieci delegować domenę do usługi Azure Container Instances. Po wdrożeniu jedną grupę kontenerów do podsieci, można wdrożyć dodatkowe kontenera grupy do niej, określając ten sam profil sieci.
 
 ![Grupy kontenerów w ramach sieci wirtualnej][aci-vnet-01]
 
-## <a name="deploy-to-virtual-network"></a>Wdrażanie w sieci wirtualnej
+## <a name="deployment-scenarios"></a>Scenariusze wdrażania
 
-Można wdrożyć nową sieć wirtualną grup kontenerów i zezwolenie platformie Azure do tworzenia wymaganych zasobów sieciowych dla Ciebie, lub Wdróż do istniejącej sieci wirtualnej.
+Możesz użyć [utworzyć kontener az] [ az-container-create] wdrażanie grup kontenerów do nowej sieci wirtualnej i zezwolić na platformie Azure, aby utworzyć wymaganych zasobów sieciowych dla Ciebie, lub Wdróż do istniejącej sieci wirtualnej. 
 
 ### <a name="new-virtual-network"></a>Nową sieć wirtualną
 
@@ -99,19 +101,21 @@ Aby wdrożyć grupę kontenerów do istniejącej sieci wirtualnej:
 
 1. Utwórz podsieć w istniejącej sieci wirtualnej lub być puste istniejącej podsieci *wszystkich* inne zasoby
 1. Wdróż grupę kontenerów, z [utworzyć kontener az] [ az-container-create] i określ jedną z następujących czynności:
-   * Nazwa sieci wirtualnej i podsieci</br>
-    lub
-   * Identyfikator lub nazwa profilu sieciowego
+   * Nazwa sieci wirtualnej i podsieci
+   * Zasób sieci wirtualnej, identyfikator i identyfikator zasobu podsieci, który umożliwia używanie sieci wirtualnej z innej grupy zasobów
+   * Nazwa profilu sieciowego lub identyfikator, który można uzyskać za pomocą [Lista profilów sieciowych az][az-network-profile-list]
 
 Po wdrożeniu pierwszej grupy kontenera do istniejącej podsieci, Azure deleguje tej podsieci do usługi Azure Container Instances. Nie można wdrażać zasobów innych niż grup kontenerów, z tą podsiecią.
 
+## <a name="deployment-examples"></a>Przykłady wdrożeń
+
 W następujących sekcjach opisano sposób wdrażania grup kontenerów z siecią wirtualną przy użyciu wiersza polecenia platformy Azure. W przykładach poleceń sformatowanych w systemie **Bash** powłoki. Jeśli wolisz inny powłoki, takich jak program PowerShell lub wierszu polecenia, należy odpowiednio dostosować znaki kontynuacji wiersza.
 
-## <a name="deploy-to-new-virtual-network"></a>Wdrożyć nową sieć wirtualną
+### <a name="deploy-to-a-new-virtual-network"></a>Wdrożyć nową sieć wirtualną
 
 Najpierw należy wdrożyć grupę kontenerów i określ parametry w celu nową sieć wirtualną i podsieć. Po określeniu tych parametrów, Azure tworzy sieć wirtualną i podsieć, deleguje podsieci do usługi Azure Container instances i również tworzy profil sieciowy. Po utworzeniu tych zasobów grupy kontenerów jest wdrażana do podsieci.
 
-Uruchom następujące polecenie [utworzyć kontener az] [ az-container-create] polecenia, który określa ustawienia dla nowej sieci wirtualnej i podsieci. To polecenie wdraża [microsoft/aci-helloworld] [ aci-helloworld] kontenera uruchamiającego małych Node.js serwerem sieci Web obsługująca statyczną stronę sieci web. W następnej sekcji będzie wdrożyć drugiej grupy kontenerów na tej samej podsieci, a testowanie komunikacji między wystąpieniami dwóch kontenerów.
+Uruchom następujące polecenie [utworzyć kontener az] [ az-container-create] polecenia, który określa ustawienia dla nowej sieci wirtualnej i podsieci. Należy podać nazwę grupy zasobów, która została utworzona w regionie, [obsługuje](#preview-limitations) grup kontenerów w sieci wirtualnej. To polecenie wdraża [microsoft/aci-helloworld] [ aci-helloworld] kontenera uruchamiającego małych Node.js serwerem sieci Web obsługująca statyczną stronę sieci web. W następnej sekcji będzie wdrożyć drugiej grupy kontenerów na tej samej podsieci, a testowanie komunikacji między wystąpieniami dwóch kontenerów.
 
 ```azurecli
 az container create \
@@ -126,7 +130,7 @@ az container create \
 
 Podczas wdrażania nowej sieci wirtualnej za pomocą tej metody, wdrożenie może potrwać kilka minut, podczas gdy zasoby sieciowe zostaną utworzone. Po początkowym wdrożeniu wdrożeń grupy kontenerów dodatkowe ukończyć szybciej.
 
-## <a name="deploy-to-existing-virtual-network"></a>Wdrażanie w istniejącej sieci wirtualnej
+### <a name="deploy-to-existing-virtual-network"></a>Wdrażanie w istniejącej sieci wirtualnej
 
 Teraz, gdy wdrożono grupy kontenerów do nowej sieci wirtualnej, wdrożyć drugiej grupy kontenerów tej samej podsieci, a następnie sprawdzić łączność między wystąpieniami dwóch kontenerów.
 
@@ -174,7 +178,7 @@ index.html           100% |*******************************|  1663   0:00:00 ETA
 
 Dane wyjściowe dziennika powinien pokazują, że `wget` był w stanie nawiązać połączenie i Pobierz plik indeksu z pierwszego kontenera przy użyciu jego prywatny adres IP w podsieci lokalnej. Pozostały ruch sieciowy między grupami dwóch kontenerów w ramach sieci wirtualnej.
 
-## <a name="deploy-to-existing-virtual-network---yaml"></a>Wdrażanie w istniejącej sieci wirtualnej — YAML
+### <a name="deploy-to-existing-virtual-network---yaml"></a>Wdrażanie w istniejącej sieci wirtualnej — YAML
 
 Grupy kontenerów można także wdrożyć do istniejącej sieci wirtualnej przy użyciu pliku YAML. Aby wdrożyć w podsieci w sieci wirtualnej, należy określić kilka dodatkowych właściwości w YAML:
 

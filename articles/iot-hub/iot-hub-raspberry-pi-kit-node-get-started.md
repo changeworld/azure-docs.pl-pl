@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 348186bcb29b272b7e6512ce42221d54d6b388d9
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 3f34167cfe689734ec5d5954a1c24a09a1e8d3bd
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161819"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515016"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Łączenie urządzenia Raspberry Pi do usługi Azure IoT Hub (Node.js)
 
@@ -42,7 +42,7 @@ Nie masz jeszcze zestawu? Spróbuj [symulatora w trybie online urządzenia Raspb
 
 ## <a name="what-you-need"></a>Co jest potrzebne
 
-![Co jest potrzebne](media/iot-hub-raspberry-pi-kit-node-get-started/0_starter_kit.jpg)
+![Co jest potrzebne](./media/iot-hub-raspberry-pi-kit-node-get-started/0_starter_kit.jpg)
 
 * Raspberry Pi 2 lub Raspberry Pi 3 tablicy.
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -63,7 +63,17 @@ Opcjonalne są następujące elementy:
 > [!NOTE] 
 > Jeśli nie masz opcjonalne elementy, można użyć danych z symulowanych czujników.
 
-[!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
+
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+### <a name="retrieve-connection-string-for-iot-hub"></a>Pobieranie parametrów połączenia dla Centrum IoT hub
+
+[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>Rejestrowanie nowego urządzenia w usłudze IoT hub
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="set-up-raspberry-pi"></a>Konfigurowanie urządzenia Raspberry Pi
 
@@ -102,11 +112,11 @@ Przygotuj karcie microSD instalacji obrazu Raspbian.
 
 3. Kliknij ikonę Raspberry > **preferencje** > **Raspberry Pi konfiguracji**.
 
-   ![W menu Preferencje Raspbian](media/iot-hub-raspberry-pi-kit-node-get-started/1_raspbian-preferences-menu.png)
+   ![W menu Preferencje Raspbian](./media/iot-hub-raspberry-pi-kit-node-get-started/1_raspbian-preferences-menu.png)
 
 4. Na **interfejsów** kartę, należy ustawić **I2C** i **SSH** do **Włącz**, a następnie kliknij przycisk **OK**. Jeśli nie masz fizycznego czujniki i chcesz użyć danych z symulowanych czujników, ten krok jest opcjonalny.
 
-   ![Włącz I2C i ustawieniami SSH na urządzeniu Raspberry Pi](media/iot-hub-raspberry-pi-kit-node-get-started/2_enable-i2c-ssh-on-raspberry-pi.png)
+   ![Włącz I2C i ustawieniami SSH na urządzeniu Raspberry Pi](./media/iot-hub-raspberry-pi-kit-node-get-started/2_enable-i2c-ssh-on-raspberry-pi.png)
 
 > [!NOTE] 
 > Aby włączyć protokół SSH i I2C, można znaleźć więcej dokumentów odwołania na [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) i [Adafruit.com](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).
@@ -115,7 +125,7 @@ Przygotuj karcie microSD instalacji obrazu Raspbian.
 
 Użyj przewodów breadboard i jumper nawiązać DIODĘ i BME280 Pi w następujący sposób. Jeśli nie masz czujnik [pominąć tę sekcję](#connect-pi-to-the-network).
 
-![Połączenie urządzenia Raspberry Pi i czujnik](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
+![Połączenie urządzenia Raspberry Pi i czujnik](./media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
 
 Czujnik BME280 może zbierać dane temperatury i wilgotności. Dioda LED miga, gdy urządzenie wysyła komunikat do chmury. 
 
@@ -134,13 +144,13 @@ Kliknij, aby wyświetlić [Raspberry Pi 2 i 3 mapowania kodu pin](https://develo
 
 Po pomyślnym nawiązaniu BME280 urządzenia Raspberry Pi, należy go jak poniżej obrazu.
 
-![Pi połączonych i BME280](media/iot-hub-raspberry-pi-kit-node-get-started/4_connected-pi.jpg)
+![Pi połączonych i BME280](./media/iot-hub-raspberry-pi-kit-node-get-started/4_connected-pi.jpg)
 
 ### <a name="connect-pi-to-the-network"></a>Pi się z siecią
 
 Włącz Pi przy użyciu micro kabla USB i zasilacz. Użyj kabla Ethernet do łączenia Pi sieci przewodowej lub postępuj zgodnie z [instrukcji z urządzeniem Raspberry Pi podstawę](https://www.raspberrypi.org/learning/software-guide/wifi/) do Pi nawiązać połączenie z sieci bezprzewodowej. Po Twojej Pi została pomyślnie podłączona do sieci, należy pamiętać o [adres IP Twojego Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).
 
-![Podłączone do sieci przewodowej](media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
+![Podłączone do sieci przewodowej](./media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
 
 > [!NOTE]
 > Upewnij się, że Pi jest podłączony do sieci z komputera. Na przykład jeśli komputer jest połączony z siecią bezprzewodową, gdy Pi jest połączony z siecią przewodową, możesz nie zobaczyć adres IP w danych wyjściowych devdisco.
@@ -157,7 +167,7 @@ Włącz Pi przy użyciu micro kabla USB i zasilacz. Użyj kabla Ethernet do łą
 
    b. Skopiuj adres IP w sekcji Pi do nazwy hosta (lub adres IP), a następnie wybierz typ połączenia SSH.
    
-   ![Programu puTTy](media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
+   ![Programu puTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
    
    **Mac i użytkownicy systemu Ubuntu**
    
@@ -204,7 +214,7 @@ Włącz Pi przy użyciu micro kabla USB i zasilacz. Użyj kabla Ethernet do łą
    nano config.json
    ```
 
-   ![Plik konfiguracji](media/iot-hub-raspberry-pi-kit-node-get-started/6_config-file.png)
+   ![Plik konfiguracji](./media/iot-hub-raspberry-pi-kit-node-get-started/6_config-file.png)
 
    Istnieją dwa elementy w tym pliku, które można skonfigurować. Pierwsza z nich jest `interval`, która definiuje interwał (w milisekundach) między komunikaty wysyłane do chmury. Drugim jest `simulatedData`, który jest wartość logiczna wskazująca, czy używać danych z czujników symulowanych lub nie.
 
@@ -226,7 +236,7 @@ Uruchamianie przykładowej aplikacji, uruchamiając następujące polecenie:
 
 Powinny być widoczne następujące dane wyjściowe, dane czujników i komunikaty, które są wysyłane do usługi IoT hub.
 
-![Dane wyjściowe — dane czujników wysyłanych z urządzenia Raspberry Pi do Centrum IoT hub](media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
+![Dane wyjściowe — dane czujników wysyłanych z urządzenia Raspberry Pi do Centrum IoT hub](./media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

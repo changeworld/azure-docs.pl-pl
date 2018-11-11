@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: c7e7b100242d6ceb35172b872f2fb6ff7f4b402b
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: dd73ca876385cf81059228088f7b027f533315eb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886164"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277840"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>Samouczek 4. Wyodrębnianie wzorców powiązanych kontekstowo
 
@@ -49,7 +49,7 @@ Jeśli masz problem z wykrywaniem prostych jednostek, ponieważ określają one 
 > * Tworzenie listy fraz Cities (Miasta)
 > * Pobieranie intencji i jednostek z punktu końcowego
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
 Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
@@ -64,7 +64,7 @@ Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj nast�
 
 ## <a name="create-new-entities"></a>Tworzenie nowych jednostek
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wybierz pozycję **Entities** (Jednostki) w obszarze nawigacji po lewej stronie. 
 
@@ -254,7 +254,7 @@ Miasta, tak jak nazwiska, są problematyczne, ponieważ również mogą zawiera�
 
 ## <a name="get-intent-and-entities-from-endpoint"></a>Pobieranie intencji i jednostek z punktu końcowego
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Move wayne berry from miami to mount vernon`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
 
@@ -380,6 +380,8 @@ W tym samouczku aplikacja Human Resources wykryje wypowiedzi dotyczące przenosz
 |--|--|--|
 |[Hierarchiczne (brak ról)](luis-quickstart-intent-and-hier-entity.md)|mv Jill Jones from **a-2349** to **b-1298** (przenieś osobę o nazwisku Jill Jones z lokalizacji a-2349 do lokalizacji b-1298)|a-2349, b-1298|
 |Ten samouczek (przy użyciu ról)|Move Billy Patterson from **Yuma** to **Denver** (Przenieś osobę o nazwisku Billy Patterson z miasta Yuma do miasta Denver)|Yuma, Denver|
+
+Aby uzyskać więcej informacji, zobacz [Role a jednostki hierarchiczne](luis-concept-roles.md#roles-versus-hierarchical-entities).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

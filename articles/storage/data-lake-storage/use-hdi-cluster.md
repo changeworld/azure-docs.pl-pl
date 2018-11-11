@@ -7,20 +7,20 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 04e2e32de90283da2563395f8b24dbb4b1dab888
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 8c79107a0081b1c7478ffe8ceb44ec67e1f618c4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241763"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283669"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Użyj usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza) przy użyciu klastrów usługi Azure HDInsight
 
-Aby analizować dane w klastrze HDInsight, można przechowywać dane w dowolnej kombinacji usługi Azure Storage, Azure Data Lake Storage Gen1 lub Azure Data Lake Gen2 — wersja zapoznawcza. Wszystkie opcje magazynowania pozwalają bezpiecznie usuwać klastry HDInsight, które są używane do obliczeń bez utraty danych użytkownika.
+Aby analizować dane w klastrze usługi HDInsight, można przechowywać dane w dowolnej kombinacji usługi Azure Blob Storage, Azure Blob Storage za pomocą usługi Azure Data Lake Gen2 — wersja zapoznawcza włączone lub Azure Data Lake Storage Gen1. Wszystkie opcje magazynowania pozwalają bezpiecznie usuwać klastry HDInsight, które są używane do obliczeń bez utraty danych użytkownika.
 
-Platforma Hadoop obsługuje pojęcie domyślnego systemu plików. Domyślny system plików wyznacza domyślny schemat i element authority. Może również służyć do rozpoznawania ścieżek względnych. W trakcie procesu tworzenia klastra HDInsight można wskazać kontener obiektów blob w usłudze Azure Storage lub Azure Data Lake Storage jako domyślnego systemu plików. Można również HDInsight w wersji 3.5 usługi możesz można wybrać usługę Azure Storage lub Azure Data Lake Storage jako domyślny system plików z pewnymi wyjątkami.
+Platforma Hadoop obsługuje pojęcie domyślnego systemu plików. Domyślny system plików wyznacza domyślny schemat i element authority. Może również służyć do rozpoznawania ścieżek względnych. W trakcie procesu tworzenia klastra HDInsight można wskazać kontener obiektów blob w usłudze Azure Storage lub hierarchicznej przestrzeni nazw, oferowane przez Data Lake Storage Gen2 jako domyślny system plików. Alternatywnie za pomocą HDInsight 3.5, można wybierać kontenera lub hierarchicznej przestrzeni nazw jako domyślny system plików z pewnymi wyjątkami.
 
-W tym artykule dowiesz się, jak usługi Azure Data Lake Storage Gen2 działa z klastrami HDInsight. Aby uzyskać więcej informacji na temat tworzenia klastra usługi HDInsight, zobacz [Konfigurowanie HDInsight clusters, za pomocą usługi Azure Data Lake Storage za pomocą usługi Hadoop, Spark, Kafka i](quickstart-create-connect-hdi-cluster.md).
+W tym artykule dowiesz się, jak Data Lake Storage Gen2 działa z klastrami HDInsight. Aby uzyskać więcej informacji na temat tworzenia klastra usługi HDInsight, zobacz [Konfigurowanie HDInsight clusters, za pomocą usługi Azure Data Lake Storage za pomocą usługi Hadoop, Spark, Kafka i](quickstart-create-connect-hdi-cluster.md).
 
 Usługa Azure Storage to niezawodne rozwiązanie ogólnego przeznaczenia, które bezproblemowo integruje się z usługą HDInsight. HDInsight można użyć usługi Azure Data Lake Storage jako domyślny system plików dla klastra. Korzystając Hadoop interfejsu rozproszonego systemu plików (hadoop HDFS) pełny zestaw składników w HDInsight może operować bezpośrednio na pliki w usłudze Azure Data Lake Storage.
 
@@ -80,13 +80,13 @@ Niektóre zadania i pakiety MapReduce mogą tworzyć wyniki pośrednie, których
 > [!NOTE]
 > Większość poleceń systemu plików HDFS (na przykład `ls`, `copyFromLocal` i `mkdir`) nadal działa zgodnie z oczekiwaniami. Tylko polecenia specyficzne dla systemu plików DFS, takich jak `fschk` i `dfsadmin`, Pokaż różne zachowanie w usłudze Azure storage.
 
-## <a name="create-an-data-lake-storage-file-system"></a>Tworzenie system plików usługi Data Lake Storage
+## <a name="create-a-data-lake-storage-file-system"></a>Tworzenie systemu plików usługi Data Lake Storage
 
 Aby korzystać z systemu plików, należy najpierw utworzyć [konta usługi Azure Storage][azure-storage-create]. W ramach tego procesu możesz określić region platformy Azure, w której jest tworzone konto magazynu. Klaster i konto magazynu muszą być hostowane w tym samym regionie. Baza danych SQL Server na potrzeby magazynu metadanych Hive i baza danych SQL Server na potrzeby magazynu metadanych Oozie również muszą znajdować się w tym samym regionie.
 
-Wszędzie tam, gdzie go umieszczono, każdy utworzony obiekt blob należy do systemu plików na Twoim koncie usługi Azure Data Lake Storage. 
+Wszędzie tam, gdzie go umieszczono, każdy utworzony obiekt blob należy do systemu plików na koncie magazynu.
 
-Domyślny system plików usługi Data Lake Storage przechowuje informacje specyficzne dla klastra, takie jak dzienniki i historię zadań. Nie udostępniaj domyślnego systemu plików usługi Data Lake Storage przy użyciu wielu klastrów HDInsight. Może to spowodować uszkodzenie historii zadań. Zalecane jest, aby użyć innego systemu plików dla każdego klastra i umieszczanie udostępnionych danych w połączonym koncie magazynu określonym we wdrożeniu wszystkich odpowiednich klastrów zamiast domyślnego konta magazynu. Aby uzyskać więcej informacji na temat konfigurowania połączonych kont magazynu, zobacz artykuł [Tworzenie klastrów usługi HDInsight][hdinsight-creation]. Jednak po usunięciu oryginalnego klastra HDInsight można ponownie użyć domyślnego systemu plików magazynu. W przypadku klastrów HBase można zachować schemat tabeli HBase i dane przez utworzenie nowego klastra HBase przy użyciu domyślnego kontenera obiektów blob, używanego przez usunięto klaster HBase, który został usunięty.
+Domyślnego systemu plików Data Lake Storage Gen2 przechowuje informacje specyficzne dla klastra, takie jak dzienniki i historię zadań. Nie można udostępniać domyślnego systemu plików Data Lake Storage Gen2 wielu klastrów HDInsight. Może to spowodować uszkodzenie historii zadań. Zalecane jest, aby użyć innego systemu plików dla każdego klastra i umieszczanie udostępnionych danych w połączonym koncie magazynu określonym we wdrożeniu wszystkich odpowiednich klastrów zamiast domyślnego konta magazynu. Aby uzyskać więcej informacji na temat konfigurowania połączonych kont magazynu, zobacz artykuł [Tworzenie klastrów usługi HDInsight][hdinsight-creation]. Jednak po usunięciu oryginalnego klastra HDInsight można ponownie użyć domyślnego systemu plików magazynu. W przypadku klastrów HBase można zachować schemat tabeli HBase i dane przez utworzenie nowego klastra HBase przy użyciu domyślnego kontenera obiektów blob, używanego przez usunięto klaster HBase, który został usunięty.
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../../includes/hdinsight-secure-transfer.md)]
 
@@ -132,7 +132,7 @@ Jeśli użytkownik [zainstalowaniu i skonfigurowaniu programu Azure PowerShell][
     New-AzureStorageContainer -Name $containerName -Context $destContext
 
 > [!NOTE]
-> Utworzenie kontenera jest synonimem tworzenie systemu plików w usłudze Azure Data Lake Storage.
+> Utworzenie kontenera jest synonimem tworzenie systemu plików w Data Lake Storage Gen2.
 
 ### <a name="use-azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -164,7 +164,7 @@ Aby utworzyć kontener, użyj następującego polecenia:
     azure storage container create <CONTAINER_NAME> --account-name <STORAGE_ACCOUNT_NAME> --account-key <STORAGE_ACCOUNT_KEY>
 
 > [!NOTE]
-> Utworzenie kontenera jest synonimem tworzenie systemu plików w usłudze Azure Data Lake Storage.
+> Utworzenie kontenera jest synonimem tworzenie systemu plików w Data Lake Storage Gen2.
 
 ## <a name="address-files-in-azure-storage"></a>Adresowanie plików w usłudze Azure Storage
 
@@ -174,7 +174,7 @@ Schemat identyfikatora URI do uzyskiwania dostępu do plików w usłudze Azure S
 
 Schemat identyfikatora URI zapewnia nieszyfrowany dostęp (za pomocą *abfs:* prefiks) oraz szyfrowany dostęp SSL (z *abfss*). Firma Microsoft zaleca używanie *abfss* wszędzie tam, gdzie to możliwe, nawet w przypadku uzyskiwania dostępu do danych, który znajduje się w tym samym regionie platformy Azure.
 
-* &lt;FILE_SYSTEM_NAME&gt; identyfikuje ścieżka systemu plików usługi Azure Data Lake Storage.
+* &lt;FILE_SYSTEM_NAME&gt; identyfikuje ścieżka systemu plików Data Lake Storage Gen2.
 * &lt;ACCOUNT_NAME&gt; identyfikuje nazwę konta usługi Azure Storage. Wymagana jest w pełni kwalifikowana nazwa domeny (FQDN).
 
     Jeśli wartości &lt;FILE_SYSTEM_NAME&gt; ani &lt;ACCOUNT_NAME&gt; został określony, używany jest domyślny system plików. W przypadku plików w domyślnym systemie plików można używać ścieżki względnej lub bezwzględnej. Na przykład *hadoop-mapreduce-examples.jar* pliku, który jest dostarczany z klastrami HDInsight mogą się odwoływać przy użyciu jednej z następujących ścieżek:
@@ -205,9 +205,9 @@ W tym artykule przedstawiono sposób korzystania z magazynu Azure zgodnego z sys
 Aby uzyskać więcej informacji, zobacz:
 
 * [Sterownik systemu plików Hadoop ABFS dla usługi Azure Data Lake Storage Gen2](abfs-driver.md)
-* [Wprowadzenie do usługi Azure Data Lake Storage](introduction.md)
-* [Konfigurowanie klastrów HDInsight za pomocą usługi Azure Data Lake Storage za pomocą usługi Hadoop, Spark, Kafka i więcej](quickstart-create-connect-hdi-cluster.md)
-* [Pozyskiwanie danych do usługi Azure Data Lake Storage za pomocą narzędzia distcp](use-distcp.md)
+* [Wprowadzenie do usługi Azure Data Lake Storage Gen2](introduction.md)
+* [Konfigurowanie klastrów HDInsight, za pomocą usługi Azure Data Lake Storage Gen2 za pomocą usługi Hadoop, Spark, Kafka i więcej](quickstart-create-connect-hdi-cluster.md)
+* [Pozyskiwanie danych do usługi Azure Data Lake Storage Gen2 korzystanie z narzędzia distcp](use-distcp.md)
 
 [powershell-install]: /powershell/azureps-cmdlets-docs
 [hdinsight-creation]: ../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md

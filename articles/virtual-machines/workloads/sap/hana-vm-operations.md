@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/27/2018
+ms.date: 11/06/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: db2d7fbe395a6d7e332d79183a331b45f7767f51
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 45b6de7693325b5ccfcb01ad9babc61dd2f6e003
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434064"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289142"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfiguracje infrastruktury SAP HANA i operacji na platformie Azure
 Ten dokument zawiera wskazówki dotyczące konfigurowania infrastruktury platformy Azure i obsługi systemów SAP HANA, które zostały wdrożone na natywnych maszynach wirtualnych platformy Azure (maszyny wirtualne). Dokument zawiera również informacje o konfiguracji dla oprogramowania SAP HANA skalowalnego w poziomie dla jednostki SKU maszyny Wirtualnej M128s. Ten dokument nie jest przeznaczona do zastąpienia dokumentacji SAP standardowa obejmuje następującą zawartością:
@@ -79,13 +79,13 @@ Aby uzyskać listę typów magazynów i umowach SLA, przepustowość operacji We
 
 ### <a name="configuring-the-storage-for-azure-virtual-machines"></a>Konfigurowanie magazynu dla maszyn wirtualnych platformy Azure
 
-Ile zakupiono urządzenia platformy SAP HANA w środowisku lokalnym, nigdy nie było konieczne interesujące podsystemów we/wy i jego możliwości. Ponieważ dostawcą urządzenia potrzebne do upewnij się, że spełnione są wymagania minimalne magazynu dla oprogramowania SAP HANA. Podczas tworzenia infrastruktury platformy Azure, samodzielnie, należy również mieć świadomość niektórych z tych wymagań. A także zrozumienie wymagań dotyczących konfiguracji, sugerowane w poniższych sekcjach. Lub w sytuacjach, gdy konfigurujesz maszyny wirtualne systemem SAP HANA. Niektóre właściwości, które zostaną poproszeni o powodujące konieczność:
+Do tej pory nigdy nie było konieczne interesujące podsystemów we/wy i jego możliwości. Przyczyna był dostawcą urządzenia konieczne upewnić się, czy spełnienia wymagań minimalny magazyn dla oprogramowania SAP HANA. Podczas tworzenia infrastruktury platformy Azure, samodzielnie, należy również mieć świadomość niektórych z tych wymagań. A także zrozumienie wymagań dotyczących konfiguracji, sugerowane w poniższych sekcjach. Lub w sytuacjach, gdy konfigurujesz maszyny wirtualne systemem SAP HANA. Niektóre właściwości, które zostaną poproszeni o powodujące konieczność:
 
 - Włącz woluminu odczytu/zapisu na **/hana/log** 250 MB/s co najmniej o rozmiarze operacji We/Wy 1 MB
 - Włącz odczyt działania co najmniej 400 MB/s dla **/hana/danych** dla 16 MB i 64 MB rozmiar operacji We/Wy
 - Włącz działanie zapisu co najmniej 250 MB/s dla **/hana/danych** z 16 MB i 64 MB rozmiar operacji We/Wy
 
-Biorąc pod uwagę, że magazyn niski czas oczekiwania jest krytyczny dla systemów DBMS, nawet przy wzroście tymi systemami DBMS, takich jak SAP HANA, przechowywać dane w pamięci. Ścieżki krytycznej w magazynie jest zazwyczaj wokół zapisu dziennika transakcji systemy DBMS. Można jednak również operacje, takie jak zapisywanie punktów zapisu lub ładowania danych w pamięci, po odzyskiwanie po awarii może być niezbędna. Dlatego jest wymagane, aby korzystać z dysków magazynu Premium platformy Azure dla **/hana/danych** i **/hana/log** woluminów. W celu osiągnięcia minimalnej przepustowości **/hana/log** i **/hana/danych** zgodnie z potrzebami, SAP, potrzebne do utworzenia RAID 0 za pomocą MDADM lub LVM przez wiele dysków Azure Premium Storage. I korzystać z woluminów RAID jako **/hana/danych** i **/hana/log** woluminów. Zgodnie z usługi stripe rozmiary RAID 0 zalecane jest użycie:
+Biorąc pod uwagę, że magazyn niski czas oczekiwania jest krytyczny dla systemów DBMS, nawet przy wzroście DBMS, takich jak SAP HANA, przechowywać dane w pamięci. Ścieżki krytycznej w magazynie jest zazwyczaj wokół zapisu dziennika transakcji systemy DBMS. Można jednak również operacje, takie jak zapisywanie punktów zapisu lub ładowania danych w pamięci, po odzyskiwanie po awarii może być niezbędna. Dlatego jest wymagane, aby korzystać z dysków magazynu Premium platformy Azure dla **/hana/danych** i **/hana/log** woluminów. W celu osiągnięcia minimalnej przepustowości **/hana/log** i **/hana/danych** zgodnie z potrzebami, SAP, potrzebne do utworzenia RAID 0 za pomocą MDADM lub LVM przez wiele dysków Azure Premium Storage. I korzystać z woluminów RAID jako **/hana/danych** i **/hana/log** woluminów. Zgodnie z usługi stripe rozmiary RAID 0 zalecane jest użycie:
 
 - 64 KB lub 128 KB   **/hana/danych**
 - 32 KB   **/hana/log**
@@ -112,66 +112,12 @@ W wyniku tych obserwowanych wzorce operacji We/Wy przez platformę SAP HANA bufo
 
 Również pamiętać ogólną przepustowość we/wy maszyny Wirtualnej podczas zmiany rozmiaru lub podejmowania decyzji dla maszyny Wirtualnej. Ogólną przepływność magazynu maszyny Wirtualnej jest udokumentowany w artykule [rozmiarów maszyn wirtualnych zoptymalizowanych pod kątem pamięci](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory).
 
-#### <a name="cost-conscious-azure-storage-configuration"></a>Koszt świadome konfigurację usługi Azure Storage
-W poniższej tabeli przedstawiono konfigurację typy maszyn wirtualnych, których klienci często używają do hosta SAP HANA na maszynach wirtualnych platformy Azure. Może to być pewnych typów maszyn wirtualnych, które nie spełnia wszystkie kryteria minimalnej platformy SAP Hana. Ale do tej pory sprawiał tych maszyn wirtualnych do wykonania prawidłowo dla scenariuszy nieprodukcyjnych. 
-
-> [!NOTE]
-> Na potrzeby scenariuszy produkcyjnych, sprawdź, czy typ maszyny Wirtualnej jest obsługiwana w przypadku oprogramowania SAP HANA SAP w [dokumentacji SAP IAAS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html).
-
-
-| JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Pamięć RAM | Maksymalnie z WE/WY MASZYNY WIRTUALNEJ<br /> Przepływność | / hana/danych i dziennika/hana /<br /> Rozłożona z LVM lub MDADM | / hana/udostępnione | wolumin/root | / usr/sap | Hana/kopia zapasowa |
-| --- | --- | --- | --- | --- | --- | --- | -- |
-| DS14v2 | 128 GiB | 768 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
-| E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
-| E32v3 | 256 GiB | 768 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
-| E64v3 | 443 GiB | 1200 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
-| GS5 | 448 GiB | 2000 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
-| M32ts | 192 giB | 500 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
-| M32ls | 256 GiB | 500 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
-| M64ls | 512 GiB | 1000 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 |1 x S30 |
-| M64s | 1000 GiB | 1000 MB/s | 2 x P30 | 1 x S30 | 1 x S6 | 1 x S6 |2 x S30 |
-| M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 3 x S30 |
-| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S40 |
-| M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S50 |
-
-
-Dyski zalecane dla mniejszych maszyny Wirtualnej typów z 3 x P20 oversize woluminy dotyczące zalecenia miejsce zgodnie z opisem w [SAP TDI magazynu oficjalny dokument dotyczący](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html). Jednak wyboru wyświetlane w tabeli została wprowadzona w celu zapewnienia wystarczającej przepływności dysku dla oprogramowania SAP HANA. Jeśli potrzebujesz zmiany **/hana/kopia**p wolumin, który został o rozmiarze do przechowywania kopii zapasowych, które reprezentują dwa razy woluminie pamięci, możesz ją dostosować.   
-Sprawdź, czy przepływności różnych woluminach sugerowane będzie spełniać obciążenia, które chcesz uruchomić. Jeśli obciążenie wymaga wyższej woluminów na potrzeby **/hana/danych** i **/hana/log**, należy zwiększyć liczbę Azure Premium Storage wirtualnych dysków twardych. Zmiany rozmiaru woluminu z kolejnych wirtualnych dysków twardych niż wymienione spowoduje zwiększenie przepływności operacji We/Wy i operacje We/Wy w ramach typu maszyny wirtualnej platformy Azure. 
-
-> [!NOTE]
-> Powyższej konfiguracji nie będą korzystać z [maszyny wirtualnej platformy Azure pojedynczy umowę SLA maszyn wirtualnych](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/) ponieważ ona korzystać z usługi Azure Premium Storage i Azure Standard Storage. Jednak zaznaczenie została wybrana w celu optymalizacji kosztów.
-
-
-#### <a name="azure-storage-configuration-to-benefit-for-meeting-single-vm-sla"></a>Azure konfiguracji magazynu można korzystać za wynikających z jednej maszyny Wirtualnej umowy SLA
-Jeśli chcesz korzystać z [maszyny wirtualnej platformy Azure pojedynczy umowę SLA maszyn wirtualnych](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/), należy użyć usługi Azure Premium Storage wirtualne dyski twarde wyłącznie.
-
-> [!NOTE]
-> Na potrzeby scenariuszy produkcyjnych, sprawdź, czy typ maszyny Wirtualnej jest obsługiwana w przypadku oprogramowania SAP HANA SAP w [dokumentacji SAP IAAS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html).
-
-| JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Pamięć RAM | Maksymalnie z WE/WY MASZYNY WIRTUALNEJ<br /> Przepływność | / hana/danych i dziennika/hana /<br /> Rozłożona z LVM lub MDADM | / hana/udostępnione | wolumin/root | / usr/sap | Hana/kopia zapasowa |
-| --- | --- | --- | --- | --- | --- | --- | -- |
-| DS14v2 | 128 GiB | 768 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P15 |
-| E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P15 |
-| E32v3 | 256 GiB | 768 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P20 |
-| E64v3 | 443 GiB | 1200 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P30 |
-| GS5 | 448 GiB | 2000 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P30 |
-| M32ts | 192 giB | 500 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P20 |
-| M32ls | 256 GiB | 500 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P20 |
-| M64ls | 512 GiB | 1000 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P30 |
-| M64s | 1000 GiB | 1000 MB/s | 2 x P30 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
-| M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 1 x P30 | 1 x P6 | 1 x P6 | 3 x P30 |
-| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P40 |
-| M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P50 |
-
-
-Dyski zalecane dla mniejszych maszyny Wirtualnej typów z 3 x P20 oversize woluminy dotyczące zalecenia miejsce zgodnie z opisem w [SAP TDI magazynu oficjalny dokument dotyczący](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html). Jednak wyboru wyświetlane w tabeli została wprowadzona w celu zapewnienia wystarczającej przepływności dysku dla oprogramowania SAP HANA. Jeśli potrzebujesz zmiany **/hana/kopia zapasowa** wolumin, który został o rozmiarze do przechowywania kopii zapasowych, które reprezentują dwa razy woluminie pamięci, możesz ją dostosować.  
-Sprawdź, czy przepływności różnych woluminach sugerowane będzie spełniać obciążenia, które chcesz uruchomić. Jeśli obciążenie wymaga wyższej woluminów na potrzeby **/hana/danych** i **/hana/log**, należy zwiększyć liczbę Azure Premium Storage wirtualnych dysków twardych. Zmiany rozmiaru woluminu z kolejnych wirtualnych dysków twardych niż wymienione spowoduje zwiększenie przepływności operacji We/Wy i operacje We/Wy w ramach typu maszyny wirtualnej platformy Azure. 
-
-
+#### <a name="linux-io-scheduler-mode"></a>Tryb harmonogram We/Wy systemu Linux
+Linux ma kilku różnych trybach planowania operacji We/Wy. Ogólne zalecenie za pośrednictwem dostawcy systemu Linux i oprogramowania SAP jest ustawiony tryb harmonogram we/wy dla woluminów dysku z **cfq** tryb **aktualizujący nie działa** trybu. Szczegółowe informacje są wywoływane w [1984798 # Uwaga SAP](https://launchpad.support.sap.com/#/notes/1984787). 
 
 
 #### <a name="storage-solution-with-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Rozwiązanie do magazynowania z akceleratorem zapisu platformy Azure dla maszyn wirtualnych serii M platformy Azure
-Akcelerator zapisu platformy Azure jest funkcji, który jest wprowadzenie udostępniona dla maszyn wirtualnych serii M wyłącznie. Jak nazwy stanów, funkcji ma na celu poprawę czas oczekiwania operacji We/Wy zapisu względem usługi Azure Premium Storage. For SAP HANA i akcelerator zapisu powinien zostać użyty dla **/hana/log** tylko woluminów. W związku z tym konfiguracji przedstawionych do tej pory muszą zostać zmienione. Zmiana głównego jest rozpad między **/hana/danych** i **/hana/log** aby można było używać akcelerator zapisu platformy Azure względem **/hana/log** tylko woluminów. 
+Akcelerator zapisu platformy Azure jest wprowadzenie wdrażania maszyn wirtualnych platformy Azure serii M wyłącznie funkcjonalność. Jak nazwy stanów, funkcji ma na celu poprawę czas oczekiwania operacji We/Wy zapisu względem usługi Azure Premium Storage. For SAP HANA i akcelerator zapisu powinien zostać użyty dla **/hana/log** tylko woluminów. W związku z tym konfiguracji przedstawionych do tej pory muszą zostać zmienione. Zmiana głównego jest rozpad między **/hana/danych** i **/hana/log** aby można było używać akcelerator zapisu platformy Azure względem **/hana/log** tylko woluminów. 
 
 > [!IMPORTANT]
 > Certyfikacji platformy SAP HANA dla maszyn wirtualnych serii M platformy Azure są oparte wyłącznie na programie akcelerator zapisu platformy Azure dla **/hana/log** woluminu. W rezultacie produkcji scenariuszy SAP HANA wdrożenia na maszynach wirtualnych serii M Azure oczekuje się, można skonfigurować za pomocą akcelerator zapisu platformy Azure dla **/hana/log** woluminu.  
@@ -205,12 +151,46 @@ Bardziej szczegółowe instrukcje na temat włączania akcelerator zapisu platfo
 
 Szczegółowe informacje i ograniczenia dotyczące akcelerator zapisu platformy Azure można znaleźć w dokumentacji tych samych.
 
+
+#### <a name="cost-conscious-azure-storage-configuration"></a>Koszt świadome konfigurację usługi Azure Storage
+W poniższej tabeli przedstawiono konfigurację typy maszyn wirtualnych, których klienci często używają do hosta SAP HANA na maszynach wirtualnych platformy Azure. Być może niektóre typy maszyn wirtualnych, które nie spełnia wszystkie kryteria minimalnej platformy SAP Hana lub oficjalnie nie są obsługiwane z platformą SAP HANA, SAP. Ale do tej pory sprawiał tych maszyn wirtualnych do wykonania prawidłowo dla scenariuszy nieprodukcyjnych. 
+
 > [!NOTE]
-> Zalecenia dotyczące konfiguracji dysku, które zostały podane są przeznaczone dla minimalne wymagania, którą SAP wyraża kierunku ich dostawców infrastruktury. Rzeczywiste wdrożeń i scenariusze obciążeń sytuacjach napotkano, których te zalecenia pozwalają nadal nie dostarczył wystarczające możliwości. To może się zdarzyć, gdy klient wymagane szybciej ponowne załadowanie danych po ponownym uruchomieniu HANA lub gdzie kopii zapasowej konfiguracji wymaganych większą przepustowość do magazynu. Czasami uwzględnione **/hana/log** gdzie 5000 operacji We/Wy nie była wystarczająca dla określonego obciążenia. Dlatego take te zalecenia jako początkowy punkt i dostosować na podstawie wymagań obciążenia.
+> Na potrzeby scenariuszy produkcyjnych, sprawdź, czy typ maszyny Wirtualnej jest obsługiwana w przypadku oprogramowania SAP HANA SAP w [dokumentacji SAP IAAS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html).
+
+
+| JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Pamięć RAM | Maksymalnie z WE/WY MASZYNY WIRTUALNEJ<br /> Przepływność | / hana/danych i dziennika/hana /<br /> Rozłożona z LVM lub MDADM | / hana/udostępnione | wolumin/root | / usr/sap | Hana/kopia zapasowa |
+| --- | --- | --- | --- | --- | --- | --- | -- |
+| DS14v2 | 128 GiB | 768 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
+| E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
+| E32v3 | 256 GiB | 768 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
+| E64v3 | 443 GiB | 1200 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
+| GS5 | 448 GiB | 2000 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
+| M32ts | 192 giB | 500 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
+| M32ls | 256 GiB | 500 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
+| M64ls | 512 GiB | 1000 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 |1 x S30 |
+| M64s | 1000 GiB | 1000 MB/s | 2 x P30 | 1 x S30 | 1 x S6 | 1 x S6 |2 x S30 |
+| M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 3 x S30 |
+| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S40 |
+| M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S50 |
+
+
+Dyski zalecane dla mniejszych maszyny Wirtualnej typów z 3 x P20 oversize woluminy dotyczące zalecenia miejsce zgodnie z opisem w [SAP TDI magazynu oficjalny dokument dotyczący](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html). Jednak wyboru wyświetlane w tabeli została wprowadzona w celu zapewnienia wystarczającej przepływności dysku dla oprogramowania SAP HANA. Jeśli potrzebujesz zmiany **/hana/kopia zapasowa** wolumin, który został o rozmiarze do przechowywania kopii zapasowych, które reprezentują dwa razy woluminie pamięci, możesz ją dostosować.   
+Sprawdź, czy przepływności różnych woluminach sugerowane będzie spełniać obciążenia, które chcesz uruchomić. Jeśli obciążenie wymaga wyższej woluminów na potrzeby **/hana/danych** i **/hana/log**, należy zwiększyć liczbę Azure Premium Storage wirtualnych dysków twardych. Zmiany rozmiaru woluminu z kolejnych wirtualnych dysków twardych niż wymienione spowoduje zwiększenie przepływności operacji We/Wy i operacje We/Wy w ramach typu maszyny wirtualnej platformy Azure. 
+
+> [!NOTE]
+> Powyższej konfiguracji nie będą korzystać z [maszyny wirtualnej platformy Azure pojedynczy umowę SLA maszyn wirtualnych](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/) ponieważ ona korzystać z usługi Azure Premium Storage i Azure Standard Storage. Jednak zaznaczenie została wybrana w celu optymalizacji kosztów. Należy wybrać usługi Premium Storage dla wszystkich dysków powyżej, które są wyświetlane jako usługi Azure Standard Storage (Sxx) do zapewnienia zgodności z SLA pojedynczej maszyny Wirtualnej platformy Azure do konfiguracji maszyny Wirtualnej.
+
+
+> [!NOTE]
+> Zalecenia dotyczące konfiguracji dysku, które zostały podane są przeznaczone dla minimalne wymagania, którą SAP wyraża kierunku ich dostawców infrastruktury. Rzeczywiste wdrożeń i scenariusze obciążeń sytuacjach napotkano, których te zalecenia pozwalają nadal nie dostarczył wystarczające możliwości. To może się zdarzyć, gdy klient wymagane szybciej ponowne załadowanie danych po ponownym uruchomieniu HANA lub gdzie kopii zapasowej konfiguracji wymaganych większą przepustowość do magazynu. Czasami uwzględnione **/hana/log** gdzie 5000 operacji We/Wy nie jest wystarczająca dla określonego obciążenia. Dlatego take te zalecenia jako początkowy punkt i dostosować na podstawie wymagań obciążenia.
 >  
 
 ### <a name="set-up-azure-virtual-networks"></a>Konfigurowanie sieci wirtualnych platformy Azure
 Jeśli masz połączenie lokacja lokacja na platformie Azure za pośrednictwem sieci VPN lub usługi ExpressRoute, musisz mieć co najmniej jedną sieć wirtualna platformy Azure jest połączona za pośrednictwem bramy sieci wirtualnej z obwodem usługi VPN lub usługi ExpressRoute. W przypadku prostych wdrożeń bramy wirtualnej można wdrożyć w podsieci sieci wirtualnej platformy Azure (VNet), który obsługuje również wystąpieniami platformy SAP HANA. Aby zainstalować oprogramowanie SAP HANA, należy utworzyć dwa dodatkowe podsieci w sieci wirtualnej platformy Azure. W jednej podsieci hostuje maszyny wirtualne do uruchamiania wystąpień oprogramowania SAP HANA. Innych podsieci jest uruchamiany serwer Przesiadkowy lub maszyny wirtualne zarządzania hosta SAP HANA Studio i inne oprogramowanie do zarządzania, oprogramowanie aplikacji.
+
+> [!IMPORTANT]
+> Z funkcji, ale bardziej ważne poza ze względu na wydajność nie jest obsługiwane do skonfigurowania [wirtualne urządzenia sieciowe Azure](https://azure.microsoft.com/solutions/network-appliances/) ścieżki komunikacji między aplikacji SAP i HANA bazy danych wystąpień oprogramowania SAP Hybris NetWeaver i S/4HANA na podstawie systemu SAP. Dodatkowe scenariusze, w których urządzeń WUS nie są obsługiwane znajdują się w zaufanych ścieżek komunikacji między maszynami wirtualnymi platformy Azure, reprezentujące interwencja urządzeń i węzłów klastra program Pacemaker w systemie Linux, zgodnie z opisem w [wysoką dostępność środowiska SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server w przypadku aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse). Lub w ramach komunikacji ścieżek między maszynami wirtualnymi platformy Azure i systemu Windows serwer SOFS nawet zgodnie z opisem w [klastra wystąpienie SAP ASCS/SCS na klastrze pracy awaryjnej Windows przy użyciu udziału plików na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share). Urządzenia WUS w komunikacji ścieżki mogą łatwo dwukrotnie opóźnienie sieciowe między dwoma partnerami komunikacji, można ograniczyć przepustowość w krytyczne ścieżki między warstwą aplikacji SAP i HANA wystąpień bazy danych. W niektórych scenariuszach zaobserwowane ze swoimi klientami urządzeń WUS może spowodować klastry program Pacemaker w systemie Linux, aby zakończyć się niepowodzeniem w przypadku których komunikacji między węzłami klastra program Pacemaker w systemie Linux muszą komunikować się na ich urządzenia interwencja za pośrednictwem urządzenia NVA.   
 
 Po zainstalowaniu maszyn wirtualnych do uruchamiania oprogramowania SAP HANA, potrzebne są maszyny wirtualne:
 
@@ -294,7 +274,7 @@ Części ustalanie rozmiarów woluminów dla węzłów jest taka sama, jak w prz
 
 Sprawdź, czy przepływności różnych woluminach sugerowane będzie spełniać obciążenia, które chcesz uruchomić. Jeśli obciążenie wymaga wyższej woluminów na potrzeby **/hana/danych** i **/hana/log**, należy zwiększyć liczbę Azure Premium Storage wirtualnych dysków twardych. Zmiany rozmiaru woluminu z kolejnych wirtualnych dysków twardych niż wymienione spowoduje zwiększenie przepływności operacji We/Wy i operacje We/Wy w ramach typu maszyny wirtualnej platformy Azure. Mają zastosowanie również akcelerator zapisu platformy Azure do dysków tworzące **/hana/log** woluminu.
  
-W dokumencie [SAP HANA TDI dyskowej](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html), formuła o nazwie definiujący rozmiar **/hana/udostępnione** wolumin na potrzeby skalowania w poziomie jako rozmiar pamięci węzła pojedynczego procesu roboczego na 4 węzły procesu roboczego.
+W dokumencie [SAP HANA TDI dyskowej](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html), formuła o nazwie definiujący rozmiar **/hana/udostępnione** wolumin na potrzeby skalowania w poziomie jako rozmiar pamięci węzła pojedynczego procesu roboczego na czterech węzłach procesu roboczego.
 
 Przy założeniu, że wykonujesz platformy SAP HANA skalowalnego w poziomie certyfikowanych M128s maszyny Wirtualnej platformy Azure z około 2 TB pamięci, zaleceń dotyczących SAP można podsumować takich jak:
 
@@ -343,9 +323,9 @@ Jeśli chcesz udostępnić klaster systemu plików NFS o wysokiej dostępności 
 Instalowanie konfiguracji SAP skalowalnego w poziomie, należy wykonać ogólne kroki:
 
 - Wdrażanie nowych lub dostosowanie nowej infrastruktury sieci wirtualnej platformy Azure
-- Wdrażanie nowego maszyn wirtualnych przy użyciu usługi Azure managed woluminów magazynu w warstwie Premium
+- Wdrażanie nowych maszyn wirtualnych przy użyciu woluminów magazynu Premium zarządzanych platformy Azure
 - Wdrażanie nowej lub dostosowanie istniejącego klastra systemu plików NFS o wysokiej dostępności
-- Dostosowanie routing w sieci, aby upewnić się, że, np. komunikacji wewnątrz węzła między maszynami wirtualnymi nie odbywa się za pośrednictwem [urządzenie WUS](https://azure.microsoft.com/solutions/network-appliances/). Dotyczy to także ruch między maszynami wirtualnymi i o wysokiej dostępności klastra systemu plików NFS.
+- Dostosowanie routing w sieci, aby upewnić się, że na przykład komunikacji wewnątrz węzła między maszynami wirtualnymi nie odbywa się za pośrednictwem [urządzenie WUS](https://azure.microsoft.com/solutions/network-appliances/). Dotyczy to także ruch między maszynami wirtualnymi i o wysokiej dostępności klastra systemu plików NFS.
 - Zainstaluj oprogramowanie SAP HANA węzła głównego.
 - Dostosowanie parametrów konfiguracji węzła głównego platformy SAP HANA
 - Kontynuuj instalację węzłów procesu roboczego platformy SAP HANA
@@ -389,7 +369,8 @@ Szczegółowe informacje zostaną wyjaśnione w poniższych sekcjach.
 
 W usłudze Azure IaaS DT 2.0 jest obsługiwana tylko na dedykowanej maszynie Wirtualnej. Nie można uruchomić DT 2.0 w tej samej maszyny wirtualnej platformy Azure, gdzie jest uruchomione wystąpienie oprogramowania HANA. Początkowo dwa typy maszyn wirtualnych może służyć do uruchamiania programu SAP HANA DT 2.0:
 
-E32sv3 M64-32ms 
+- M64-32ms 
+- E32sv3 
 
 Zobacz opis typu maszyny Wirtualnej [tutaj](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
 
@@ -405,7 +386,7 @@ Zalecane konfiguracje będą:
 | M64s | E32sv3 |
 
 
-Możliwe są wszystkie kombinacje z certyfikatem SAP HANA maszyny wirtualne serii M z obsługiwanych DT 2.0 maszyn wirtualnych (M64-32ms, E32sv3).
+Możliwe są wszystkie kombinacje z certyfikatem SAP HANA maszyny wirtualne serii M z obsługiwanych DT 2.0 maszyn wirtualnych (M64-32ms i E32sv3).
 
 
 ### <a name="azure-networking-and-sap-hana-dt-20"></a>Sieci platformy Azure i SAP HANA DT w wersji 2.0
@@ -428,7 +409,7 @@ Konieczne jest dołączenie wielu dysków platformy Azure do maszyny Wirtualnej 
 - Szczegółowe informacje o konfigurowaniu LVM do utworzenia woluminu rozłożonego dla maksymalna przepływność można znaleźć [tutaj](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)
 
 W zależności od wymagań dotyczących rozmiaru istnieją różne opcje, aby osiągnąć maksymalną przepływność maszyny Wirtualnej. Oto konfiguracje dysków wolumin danych dla każdego typu maszyny Wirtualnej w wersji 2.0 DT do osiągnięcia górnego limitu przepływności maszyny Wirtualnej. Maszyna wirtualna E32sv3 powinny być uważane poziomem wpis dla obciążeń mniejszych. W przypadku, gdy jej Włącz się, że nie jest szybkie wystarczająco może być konieczne zmienić rozmiar maszyny Wirtualnej, aby M64-32ms.
-Jako maszyna wirtualna M64-32ms ma dużej ilości pamięci, obciążenie We/Wy nie może nawiązać połączenia limit, szczególnie w przypadku obciążeń intensywnie korzystających z odczytu. W związku z tym mniej dysków w stripe zestawu są wystarczające w zależności od określonego obciążenia klientów. Jednak znajdować się w bezpiecznej stronie dysku poniższych konfiguracji dobrano w celu zagwarantowania maksymalną przepływność:
+Jako maszyna wirtualna M64-32ms ma dużej ilości pamięci, obciążenie We/Wy nie może nawiązać połączenia limit, szczególnie w przypadku obciążeń intensywnie korzystających z odczytu. W związku z tym mniejszą liczbę dysków w zestawie usługi stripe są wystarczające w zależności od określonego obciążenia klientów. Jednak znajdować się w bezpiecznej stronie dysku poniższych konfiguracji dobrano w celu zagwarantowania maksymalną przepływność:
 
 
 | JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Konfiguracja dysku 1 | Konfiguracja dysku 2 | Konfiguracja dysku 3 | Konfiguracja dysku 4 | Konfiguracja dysku 5 | 
@@ -439,7 +420,7 @@ Jako maszyna wirtualna M64-32ms ma dużej ilości pamięci, obciążenie We/Wy n
 
 Szczególnie w przypadku, gdy obciążenie jest intensywnego odczytu go może zwiększyć wydajność operacji We/Wy włączenie pamięci podręcznej hosta platformy Azure "tylko do odczytu" zgodnie z zaleceniami woluminy danych oprogramowania bazy danych. Dla transakcji dziennika pamięci podręcznej dysku platformy Azure hosta musi być "none". 
 
-Dotyczące rozmiaru woluminu dziennika zalecane punkt początkowy jest o heurystykę 15% rozmiaru danych. Tworzenie woluminu dziennika można osiągnąć przy użyciu typów inny dysk platformy Azure, w zależności od wymagań kosztów i przepływności. Również dla dziennika jest preferowana woluminu wysokiej przepływności i w razie M64-32ms zdecydowanie zalecane jest aby włączyć akcelerator zapisu na (jest to wymagane dla oprogramowania SAP HANA). Zapewnia to opóźnienie zapisu na dysku optymalne dla dziennika transakcji (dostępne tylko dla serii M). Istnieje kilka elementów, które należy wziąć pod uwagę, chociaż takie jak maksymalna liczba dysków na typ maszyny Wirtualnej. Można znaleźć szczegółowe informacje o WA [tutaj](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+Dotyczące rozmiaru woluminu dziennika zalecane punkt początkowy jest o heurystykę 15% rozmiaru danych. Tworzenie woluminu dziennika można osiągnąć przy użyciu typów inny dysk platformy Azure, w zależności od wymagań kosztów i przepływności. W dzienniku wysokiej przepływności operacji We/Wy woluminu jest wymagana.  W przypadku używania maszyny Wirtualnej wpisz M64-32ms zdecydowanie zalecane jest włączanie [akceleratorem zapisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator). Akcelerator zapisu platformy Azure zapewnia opóźnienia zapisu optymalne dysku dla dziennika transakcji (dostępne tylko dla serii M). Istnieje kilka elementów, które należy wziąć pod uwagę, chociaż takie jak maksymalna liczba dysków na typ maszyny Wirtualnej. Można znaleźć szczegółowe informacje o akceleratorem zapisu [tutaj](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
 
 Poniżej przedstawiono kilka przykładów dotyczących rozmiaru woluminu dziennika:

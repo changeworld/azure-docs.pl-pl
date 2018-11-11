@@ -5,15 +5,15 @@ services: virtual-machines-windows
 author: dlepow
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 09/24/2018
+ms.date: 11/08/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 4da90cf636ab2010d7c369f4c13e45190dc6b2db
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 6b6c7ce5589920f3101a13ab0ed6b7877f9cbca8
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48020860"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51333776"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Obsługiwane systemy operacyjne i sterowniki
 
@@ -30,10 +30,9 @@ Sterowniki NVIDIA Tesla (CUDA) dla NC, NCv2, NCv3 i maszyny wirtualne z serii ND
 | Windows Server 2016 | [398.75](http://us.download.nvidia.com/Windows/Quadro_Certified/398.75/398.75-tesla-desktop-winserver2016-international.exe) (.exe) |
 | Windows Server 2012 R2 | [398.75](http://us.download.nvidia.com/Windows/Quadro_Certified/398.75/398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe) (.exe) |
 
-
 ### <a name="nvidia-grid-drivers"></a>Sterowniki NVIDIA GRID
 
-Microsoft dystrybuuje instalatory sterownika technologii NVIDIA GRID dla amd NV maszyny wirtualne z serii NVv2 używany jako wirtualnych stacji roboczych lub aplikacje wirtualne. Zainstaluj tylko te sterowniki siatki na maszynach wirtualnych serii NV Azure, tylko w systemach operacyjnych wymienionych w poniższej tabeli. Te sterowniki obejmują licencji na program siatki wirtualnej oprogramowania procesora GPU na platformie Azure.
+Microsoft dystrybuuje instalatory sterownik technologii NVIDIA GRID NV i maszyny wirtualne z serii NVv2 używany jako wirtualnych stacji roboczych lub aplikacje wirtualne. Zainstaluj tylko te sterowniki siatki na maszynach wirtualnych serii NV Azure, tylko w systemach operacyjnych wymienionych w poniższej tabeli. Te sterowniki obejmują licencji na program siatki wirtualnej oprogramowania procesora GPU na platformie Azure. Nie trzeba skonfigurować serwer licencji oprogramowania vGPU firmy NVIDIA.
 
 | System operacyjny | Sterownik |
 | -------- |------------- |

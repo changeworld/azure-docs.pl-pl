@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2018
 ms.author: shvija
-ms.openlocfilehash: ed337689360428d66657e5391ee52bb0ae39dc14
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 3db77a31dfe92e16d2ec145cc0be595082d0d927
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365649"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279385"
 ---
 # <a name="event-hubs-samples"></a>Przykłady usługi Event Hubs 
 Przykłady usługi Event Hubs można znaleźć na [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples). Te przykłady pokazują kluczowe funkcje [usługi Azure Event Hubs](/azure/event-hubs/). W tym artykule kategoryzuje i opisuje dostępna, wraz z łączami do każdego przykładów.
@@ -60,7 +60,8 @@ Możesz znaleźć przykłady interfejsu wiersza polecenia platformy Azure dla us
 ## <a name="azure-powershell-samples"></a>Przykłady programu Azure PowerShell
 Możesz znaleźć przykładów programu Azure PowerShell dla usługi Azure Event Hubs w [azure-event-hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/PowerShell) repozytorium GitHub.
  
-
+## <a name="apache-kafka-samples"></a>Przykłady dla platformy Apache Kafka
+Możesz znaleźć przykłady dla usługi Event Hubs dla platformy Apache Kafka funkcji [azure — zdarzeń hubs dla — platformy kafka](https://github.com/Azure/azure-event-hubs-for-kafka) repozytorium GitHub.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Możesz dowiedzieć się więcej o usłudze Event Hubs w następujących artykułach:

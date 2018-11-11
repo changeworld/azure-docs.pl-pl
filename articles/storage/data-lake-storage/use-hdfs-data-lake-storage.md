@@ -8,23 +8,23 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: artek
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: c59331c772e140fccfefb89eef086a35837171e1
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c5f11cbb12b727f5f308d7a71c51706fa8ec373f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576979"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277090"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Przy użyciu interfejsu wiersza polecenia systemu plików HDFS z Gen2 Lake magazynu danych
 
-Usługa Azure Data Lake Gen2 — wersja zapoznawcza pozwala zarządzać i uzyskiwać dostęp do danych, tak samo, jak za pomocą [pliku System (HDFS, Hadoop Distributed)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Czy istnieje klastra usługi HDInsight, dołączony, lub uruchomić zadanie platformy Apache Spark przy użyciu usługi Azure Databricks w celu przeprowadzenia analizy danych przechowywanych w usłudze Azure Data Lake magazynu Gen2 można użyć interfejsu wiersza polecenia (CLI) do pobrania i manipulowania nimi załadowanych danych. Pozostałej części tego artykułu opisano opcje mają podczas [zespół usługi Azure Storage pracuje nad dodaniem obsługi dla Eksploratora usługi Azure Storage i witryny Azure portal](https://azure.microsoft.com/roadmap/).
+Usługa Azure Data Lake Gen2 — wersja zapoznawcza pozwala zarządzać i uzyskiwać dostęp do danych, tak samo, jak za pomocą [pliku System (HDFS, Hadoop Distributed)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Czy istnieje klastra usługi HDInsight, dołączony, lub uruchomić zadanie platformy Apache Spark przy użyciu usługi Azure Databricks w celu przeprowadzenia analizy danych przechowywanych na koncie usługi Azure Storage, można użyć interfejsu wiersza polecenia (CLI) do pobrania i manipulowania nimi załadowanych danych.
 
 ## <a name="hdfs-cli-with-hdinsight"></a>System plików HDFS interfejsu wiersza polecenia przy użyciu HDInsight
 
 Usługa HDInsight zapewnia dostęp do rozproszonego systemu plików, który jest lokalnie dołączony do węzłów obliczeniowych. W tym systemie plików jest możliwy za pomocą powłoki, który wchodzi w interakcję bezpośrednio z systemu plików HDFS i innych systemów plików, które obsługuje platformy Hadoop. Poniżej przedstawiono typowe polecenia i linki do przydatnych zasobów.
 
 >[!IMPORTANT]
->Naliczanie opłat rozpoczyna się w momencie utworzenia klastra usługi HDInsight i kończy się wraz z jego usunięciem. Jest rozliczana proporcjonalnie za minutę, więc należy go usunąć z klastrem, gdy nie jest już w użyciu (Dowiedz się, jak [usunąć klaster](../../hdinsight/hdinsight-delete-cluster.md)). Jednak dane przechowywane w usłudze Azure Data Lake magazynu Gen2 będzie nadal występował mimo klastra usługi HDInsight zostanie usunięty.
+>Klaster HDInsight rozliczeń rozpoczyna się po utworzeniu klastra i zatrzymuje, gdy klaster jest usuwany. Opłaty są naliczane za minutę, więc jeśli klaster nie jest używany, należy go usunąć. Aby dowiedzieć się, jak usunąć klaster, zobacz nasze [artykuł na temat](../../hdinsight/hdinsight-delete-cluster.md). Jednak dane przechowywane na koncie magazynu w usłudze Data Lake magazynu Gen2 — włączone będzie nadal występował mimo klastra usługi HDInsight zostanie usunięty.
 
 Aby uzyskać listę plików lub katalogów:
 

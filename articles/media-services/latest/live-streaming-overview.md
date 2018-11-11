@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/08/2018
 ms.author: juliako
-ms.openlocfilehash: c8e4e84d7ae0defdb053108dc668956062c47ea5
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a4569505cb9a42f6682391a8b06725dea5e539dc
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962388"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344981"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Przesyłanie strumieniowe przy użyciu usługi Azure Media Services v3 na żywo
 
@@ -44,11 +44,11 @@ Jeśli to konieczne, można także zastosować **filtrowanie dynamiczne**, któr
 
 Następujące nowe ulepszenia zostały wykonane w najnowszej wersji.
 
-- Nowy tryb małe opóźnienia na żywo (10 sekund end-to-end).
+- Nowy tryb małymi opóźnieniami. Aby uzyskać więcej informacji, zobacz [opóźnienie](#latency).
 - Ulepszona obsługa protokołu RTMP (Zwiększona stabilność i więcej obsługę kodera źródłowego).
 - Pozyskuj RTMPS bezpieczne.
 
-    Po utworzeniu element LiveEvent teraz uzyskać adresy URL pozyskiwania 4. Pozyskiwanie 4 adresy URL są niemal identyczne, mają ten sam token przesyłania strumieniowego (AppId), tylko część numer portu jest inny. Są dwa adresy URL podstawowego i zapasowego dla RTMPS.   
+    Gdy utworzysz element LiveEvent, otrzymasz 4 adresy URL pozyskiwania. Pozyskiwanie 4 adresy URL są niemal identyczne, mają ten sam token przesyłania strumieniowego (AppId), tylko część numer portu jest inny. Są dwa adresy URL podstawowego i zapasowego dla RTMPS.   
 - Obsługa transkodowanie 24-godzinnym. 
 - Ulepszona obsługa sygnalizowanie ad w RTMP za pośrednictwem SCTE35.
 
@@ -82,7 +82,7 @@ Podczas tworzenia tego typu element LiveEvent należy określić **Brak** (LiveE
 
 W poniższej tabeli porównano funkcje dwa typy element LiveEvent.
 
-| Cecha | Element LiveEvent przekazywania | Element LiveEvent podstawowe |
+| Cecha | Element LiveEvent przekazywania | Standardowy element LiveEvent |
 | --- | --- | --- |
 | Pojedyncza szybkość transmisji bitów w danych wejściowych jest zakodowany do wielokrotnych w chmurze |Nie |Yes |
 | Maksymalna rozdzielczość, liczba warstw |4Kp30  |720p 6 warstwy 30 kl. / s |
@@ -94,7 +94,7 @@ W poniższej tabeli porównano funkcje dwa typy element LiveEvent.
 | Obsługa ad sygnalizowanie za pośrednictwem sieci wewnątrzpasmowej SCTE35|Yes |Yes |
 | Podpisy napisy kodowane CEA 608/708 przekazywania |Yes |Yes |
 | Zdolność odzyskania po krótkie wstrzymania w udziale kanału informacyjnego |Yes |Nie (element LiveEvent rozpocznie się slating ponad 6 sekund bez danych wejściowych)|
-| Obsługa niejednolitego GOPs danych wejściowych |Yes |Nie — dane wejściowe zostały poprawione 2 s GOPs |
+| Obsługa niejednolitego GOPs danych wejściowych |Yes |Nie — dane wejściowe zostały poprawione GOPs. 2 sek. |
 | Obsługa dane wejściowe szybkość klatek zmiennej |Yes |Nie — dane wejściowe muszą zostać usunięte, szybkości klatek.<br/>Niewielkich zmian są dopuszczalne na przykład podczas sceny wysokiej ruchu. Ale kodera nie można porzucić do 10 ramek na sekundę. |
 | Auto bliskie z element LiveEvent, gdy dane wejściowe źródła danych zostaną utracone |Nie |Po 12 godzinach, jeśli nie ma żadnych LiveOutput uruchamiania |
 
@@ -126,6 +126,20 @@ Element LiveEvent obsługuje maksymalnie trzy jednocześnie uruchomione LiveOutp
 Po przesłaniu strumienia do kanału LiveEvent można rozpocząć zdarzenie przesyłania strumieniowego poprzez utworzenie elementu zawartości oraz obiektu LiveOutput i lokalizatora przesyłania strumieniowego. Spowoduje to archiwizację strumienia i udostępnić go użytkownikom za pośrednictwem [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints).
 
 Po utworzeniu konta usługi Media Services domyślny punkt końcowy przesyłania strumieniowego jest dodawany do swojego konta w stanie zatrzymania. Aby rozpocząć przesyłanie strumieniowe zawartości oraz korzystać z dynamicznego tworzenia pakietów i szyfrowania dynamicznego, punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość musi być w stanie uruchomiona.
+
+## <a name="latency"></a>Opóźnienie
+
+W tej sekcji omówiono typowe wyniki, które zobaczysz podczas korzystania z ustawień małe opóźnienia i wiele odtwarzaczy. Wyniki różnią się zależnie od opóźnienia sieci i usługi CDN.
+
+Aby korzystać z nowych funkcji LowLatency, można ustawić **StreamOptionsFlag** do **LowLatency** na element LiveEvent. Gdy strumień jest uruchomiona, możesz użyć [usługi Azure Media Player](http://ampdemo.azureedge.net/) (AMP) Strona demonstracyjna i ustaw opcje odtwarzania, aby używać "Niskie opóźnienie Algorytm heurystyczny profil".
+
+### <a name="pass-through-liveevents"></a>LiveEvents przekazywania
+
+||2S GOP krótki czas oczekiwania, włączone|1s GOP krótki czas oczekiwania, włączone|
+|---|---|---|
+|KRESKI w AMP|10s|8S|
+|HLS na odtwarzaczu natywnych dla systemów iOS|14S|10s|
+|HLS. JS w odtwarzaczu Mixer|30 sekund|16s|
 
 ## <a name="billing"></a>Rozliczenia
 

@@ -7,13 +7,13 @@ ms.author: raagyema
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 09/27/2018
-ms.openlocfilehash: 8fcb5e8371d6c813eb7f0ab4d23a5aac5c41fb3b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 11/07/2018
+ms.openlocfilehash: b482a43236885f4b5574a9ba3319f74b083df33a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404643"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281264"
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Serwery usługi Azure Database for PostgreSQL
 Ten artykuł zawiera zagadnienia i wytyczne dotyczące pracy z usługą Azure Database dla serwerów MySQL.
@@ -28,7 +28,7 @@ Azure Database for postgresql w warstwie serwera:
 - Zapewnia przestrzeń nazw dla baz danych.
 - To kontener z silną semantyką okresu istnienia — usuwanie serwera, a następnie usuwane zawartych baz danych.
 - Rozmieszcza zasoby w regionie.
-- Udostępnia punkt końcowy połączenia dla serwera i bazy danych programu access (. postgresql.database.azure.com).
+- Udostępnia punkt końcowy połączenia dla serwera i dostępu do bazy danych 
 - Określa zakres dla zasad zarządzania, które są stosowane do jego baz danych: logowania, zapory, użytkowników, ról, konfiguracji itp.
 - Jest dostępna w wielu wersji. Aby uzyskać więcej informacji, zobacz [obsługiwane wersje bazy danych postgresql w warstwie](concepts-supported-versions.md).
 - Jest otwarty przez użytkowników. Aby uzyskać więcej informacji, zobacz [rozszerzenia PostgreSQL](concepts-extensions.md).
@@ -43,7 +43,7 @@ Następujące elementy zapewnić bezpieczny dostęp do bazy danych:
 | **Uwierzytelnianie i autoryzacja** | Usługa Azure Database for postgresql w warstwie serwera obsługuje uwierzytelnianie za pomocą natywnego PostgreSQL. Można połączyć i uwierzytelniania z serwerem przy użyciu identyfikatora logowania administratora serwera. |
 | **Protokół** | Usługa obsługuje oparta na komunikatach protokół używany przez PostgreSQL. |
 | **TCP/IP** | Protokół jest obsługiwany za pośrednictwem protokołu TCP/IP, a także za pośrednictwem gniazd domeny systemu Unix. |
-| **Zapora** | Aby lepiej chronić swoje dane, reguła zapory uniemożliwia dostęp do serwera i jego baz danych do momentu określenia komputerów, które mają uprawnienia. Zobacz [— Azure Database for reguły zapory serwera PostgreSQL](concepts-firewall-rules.md). |
+| **Zapora** | Aby lepiej chronić swoje dane, reguła zapory uniemożliwia dostęp do serwera i jego baz danych do momentu określenia komputerów, które mają uprawnienia. Zobacz [— Azure Database for reguły zapory serwera PostgreSQL](concepts-firewall-rules.md). |
 
 ## <a name="managing-your-server"></a>Zarządzanie serwerem
 Można zarządzać — Azure Database dla serwerów MySQL za pomocą [witryny Azure portal](https://portal.azure.com) lub [wiersza polecenia platformy Azure](/cli/azure/postgres).
@@ -52,7 +52,7 @@ Podczas tworzenia serwera, skonfigurowaniu poświadczeń dla użytkownika admini
 
 Atrybut PostgreSQL administratora jest przypisywany do azure_superuser, która należy do zarządzanej usługi. Nie masz dostępu do tej roli.
 
-Azure Database for postgresql w warstwie serwera ma dwie domyślne bazy danych: 
+Azure Database for postgresql w warstwie serwera zawiera domyślne bazy danych: 
 - **postgres** — domyślna baza danych, można połączyć serwerowi po utworzeniu.
 - **azure_maintenance** — ta baza danych jest używany do oddzielania procesów, które zapewniają usługę zarządzaną od działań użytkownika. Nie masz dostępu do tej bazy danych.
 - **azure_sys** -Store kwerendy bazy danych. Ta baza danych nie są gromadzone dane, gdy Store zapytań jest wyłączony; to ustawienie domyślne. Aby uzyskać więcej informacji, zobacz [Przegląd Query Store](concepts-query-store.md).
@@ -65,7 +65,7 @@ Jako usługa zarządzana dla programu Postgres konfigurowalne parametry w usłud
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Aby zapoznać się z omówieniem usługi, zobacz [— Azure Database for postgresql — omówienie](overview.md).
-- Aby uzyskać informacje dotyczące określonego zasobu Przydziały i ograniczenia na podstawie Twojej **warstwy usług**, zobacz [warstwy usług](concepts-pricing-tiers.md).
-- Aby uzyskać informacje na temat łączenia się z usługą, zobacz [biblioteki połączeń dla usługi Azure Database for postgresql w warstwie](concepts-connection-libraries.md).
+- Aby zapoznać się z omówieniem usługi, zobacz [— Azure Database for postgresql — omówienie](overview.md).
+- Aby uzyskać informacje dotyczące określonego zasobu Przydziały i ograniczenia na podstawie Twojej **warstwy usług**, zobacz [warstwy usług](concepts-pricing-tiers.md).
+- Aby uzyskać informacje na temat łączenia się z usługą, zobacz [biblioteki połączeń dla usługi Azure Database for postgresql w warstwie](concepts-connection-libraries.md).
 - Wyświetlanie i edytowanie parametrów serwera za pomocą [witryny Azure portal](howto-configure-server-parameters-using-portal.md) lub [wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md).

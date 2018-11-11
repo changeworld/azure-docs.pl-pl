@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 2c82007092f9ff93086d5caaf188f6922f4a8aea
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 888b9a256a68b77b91145bb3ccfeea820c97ccfa
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086186"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515379"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Tworzenie funkcji platformy Azure przy użyciu programu Visual Studio  
 
@@ -29,7 +29,7 @@ Narzędzia usługi Azure Functions zapewnia następujące korzyści:
 * Twórz i wdrażaj wstępnie skompilowanych funkcji języka C#. Wstępnie skompilowane funkcje zapewniają lepsze zimnego startu wydajność niż funkcji języka C# opartych na skryptach. 
 * Kod funkcji w języku C#, mając wszystkie korzyści wynikające z programowania Visual Studio. 
 
-W tym artykule pokazano, jak tworzyć funkcje w języku C# za pomocą narzędzi usługi Azure Functions dla programu Visual Studio 2017. Poznasz również sposób publikowania projektu na platformie Azure jako zestaw .NET.
+Ten artykuł zawiera szczegółowe informacje o sposobie używania narzędzi usługi Azure Functions dla programu Visual Studio 2017 do tworzenia C# funkcje i opublikuj je na platformie Azure. Przed przeczytaniem tego artykułu, należy wykonać [szybkiego startu usługi Functions dla programu Visual Studio](functions-create-your-first-function-visual-studio.md). 
 
 > [!IMPORTANT]
 > Nie można mieszać lokalnego opracowywania aplikacji za pomocą portalu w tej samej aplikacji funkcji. Podczas publikowania z poziomu lokalnego projektu aplikacji funkcji w procesie wdrażania zastępuje wszystkie funkcje, które opracowane w portalu.
@@ -81,6 +81,9 @@ Szablon projektu tworzy projekt C#, instaluje `Microsoft.NET.Sdk.Functions` paki
 * **Host.JSON**: umożliwia skonfigurowanie hosta funkcji. Te ustawienia mają zastosowanie zarówno, gdy uruchomiona lokalnie i na platformie Azure. Aby uzyskać więcej informacji, zobacz [dokumentacja pliku host.JSON](functions-host-json.md).
 
 * **Local.Settings.JSON**: przechowuje ustawienia używane podczas uruchamiania funkcji lokalnie. Te ustawienia nie są używane przez platformę Azure, są one używane przez [podstawowych narzędzi usługi Azure Functions](functions-run-local.md). Użyj tego pliku, aby określić ustawienia aplikacji dla zmiennych wymaganych funkcji. Dodaj nowy element do **wartości** tablicy dla każdego połączenia wymagane przez powiązania funkcji w projekcie. Aby uzyskać więcej informacji, zobacz [pliku ustawień lokalnych](functions-run-local.md#local-settings-file) w artykule podstawowych narzędzi usługi Azure Functions.
+
+    >[!IMPORTANT]
+    >Pliku local.settings.json może zawierać klucze tajne, musi on spod kontroli źródła z projektu. **Kopiuj do katalogu wyjściowego** ustawienie dla tego pliku powinna zawsze być **Kopiuj Jeśli nowszy**. 
 
 Aby uzyskać więcej informacji, zobacz [projekt biblioteki klas funkcji](functions-dotnet-class-library.md#functions-class-library-project).
 
@@ -186,7 +189,7 @@ Aby dowiedzieć się więcej na temat korzystania z podstawowych narzędzi usłu
 
 Wszystkie ustawienia, które zostały dodane w local.settings.json należy również dodać do aplikacji funkcji na platformie Azure. Te ustawienia nie są ładowane automatycznie podczas publikowania projektu.
 
-Najprostszym sposobem przekazywania wymaganych ustawień do aplikacji funkcji na platformie Azure jest użycie **Zarządzanie ustawieniami aplikacji...**  łącze, które jest wyświetlane, gdy opublikujesz projekt. 
+Najprostszym sposobem przekazywania wymaganych ustawień do aplikacji funkcji na platformie Azure jest użycie **Zarządzanie ustawieniami aplikacji...**  łącze, które jest wyświetlane, gdy opublikujesz projekt.
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings.png)
 
@@ -194,11 +197,13 @@ Spowoduje to wyświetlenie **ustawienia aplikacji** okno dialogowe dla aplikacji
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
+**Lokalne** reprezentuje wartość ustawienia w pliku local.settings.json i **zdalnego** jest bieżące ustawienie w aplikacji funkcji na platformie Azure.  Wybierz **Dodaj ustawienie** Aby utworzyć nowe ustawienie aplikacji. Użyj **wstawienia wartości na podstawie danych lokalnych** link, aby skopiować wartość ustawienia do **zdalnego** pola. Oczekujące zmiany są zapisywane w pliku ustawień lokalnych i aplikacji funkcji po wybraniu **OK**.
+
 Można również zarządzać ustawienia aplikacji w jednym z tych sposobów:
 
 * [Za pomocą witryny Azure portal](functions-how-to-use-azure-function-app-settings.md#settings).
 * [Za pomocą `--publish-local-settings` opcja publikowania w podstawowych narzędzi usługi Azure Functions](functions-run-local.md#publish).
-* [Przy użyciu wiersza polecenia platformy Azure](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
+* [Przy użyciu wiersza polecenia platformy Azure](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set).
 
 ## <a name="monitoring-functions"></a>Funkcje monitorowania
 

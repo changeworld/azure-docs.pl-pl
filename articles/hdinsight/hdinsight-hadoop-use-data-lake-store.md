@@ -2,19 +2,19 @@
 title: Użyj Data Lake Store z usługą Hadoop w usłudze Azure HDInsight
 description: Dowiedz się, jak wykonywać zapytania o dane z usługi Azure Data Lake Store i zapisywać wyniki analiz.
 services: hdinsight,storage
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 07/23/2018
-ms.openlocfilehash: d205a46c672523e029816b573742d991de79b2ae
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 11/06/2018
+ms.openlocfilehash: 0859e480df0111e26d5b64bf835f94b3852b3414
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956735"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277362"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Korzystanie z usługi Data Lake Store w połączeniu z klastrami usługi Azure HDInsight
 
@@ -40,16 +40,17 @@ Aktualnie tylko niektóre typy/wersje klastra usługi HDInsight obsługują uży
 
 | Typ klastra usługi HDInsight | Usługa Data Lake Store jako magazyn domyślny | Usługa Data Lake Store jako magazyn dodatkowy| Uwagi |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight w wersji 3.6 | Yes | Yes | |
+| HDInsight w wersji 3.6 | Yes | Yes | Z wyjątkiem bazy danych HBase|
 | HDInsight w wersji 3.5 | Yes | Yes | Z wyjątkiem bazy danych HBase|
 | HDInsight w wersji 3.4 | Nie | Yes | |
 | HDInsight w wersji 3.3 | Nie | Nie | |
 | HDInsight w wersji 3.2 | Nie | Yes | |
 | Storm | | |Usługa Data Lake Store umożliwia zapisanie danych pochodzących z topologii Storm. Usługi Data Lake Store można również używać do obsługi danych referencyjnych, które następnie mogą być odczytywane przez topologię Storm.|
 
+[!WARNING]
+> HDInsight HBase nie jest obsługiwana przy użyciu usługi Azure Data Lake Storage generacji 1
+
 Używanie usługi Data Lake Store jako konta magazynu dodatkowego nie ma wpływu na wydajność ani możliwość odczytywania danych z klastra lub zapisywania ich w usłudze Azure Storage.
-
-
 ## <a name="use-data-lake-store-as-default-storage"></a>Używanie usługi Data Lake Store jako magazynu domyślnego
 
 Po wdrożeniu usługi HDInsight z usługą Data Lake Store jako magazynem domyślnym pliki klastra są zapisywane w usłudze Data Lake Store w następującej lokalizacji:

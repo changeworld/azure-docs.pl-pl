@@ -6,14 +6,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 11/05/2018
 ms.author: spelluru
-ms.openlocfilehash: b8102c4f98c2627f85946b71a69e88eb02f92bc4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a000c599ecf8287af57aec2f6e9d550bbe61f280
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257786"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279885"
 ---
 # <a name="service-bus-faq"></a>Service Bus — często zadawane pytania
 
@@ -21,7 +21,7 @@ W tym artykule omówiono niektóre często zadawane pytania dotyczące usługi M
 
 ## <a name="general-questions-about-azure-service-bus"></a>Ogólne pytania dotyczące usługi Azure Service Bus
 ### <a name="what-is-azure-service-bus"></a>Co to jest Azure Service Bus?
-[Usługa Azure Service Bus](service-bus-messaging-overview.md) asynchronicznej obsługi komunikatów platforma chmury, która umożliwia wysyłanie danych między systemami odłączony. Firma Microsoft oferuje tę funkcję jako usługa, co oznacza, że nie trzeba do obsługi każdego z własnych urządzeń, aby można było go używać.
+[Usługa Azure Service Bus](service-bus-messaging-overview.md) asynchronicznej obsługi komunikatów platforma chmury, która umożliwia wysyłanie danych między systemami odłączony. Firma Microsoft oferuje tę funkcję jako usługa, co oznacza, że nie trzeba do obsługi sprzętu z niego korzystać.
 
 ### <a name="what-is-a-service-bus-namespace"></a>Co to jest przestrzeń nazw usługi Service Bus?
 A [przestrzeni nazw](service-bus-create-namespace-portal.md) zapewnia kontener określania zakresu na potrzeby adresowania zasobów usługi Service Bus w aplikacji. Tworzenie przestrzeni nazw jest niezbędne do korzystania z usługi Service Bus i jest jednym z pierwszych kroków w środowisku wprowadzenie.
@@ -77,6 +77,9 @@ Domyślnie dla każdej chmury usługa Microsoft ustawia łączny miesięczny prz
 Firma Microsoft zastrzega sobie prawo wyłączenia konta klienta, która przekroczyła swoje limity przydziału użycia w danym miesiącu, są wysyłane wiadomości e-mail z powiadomieniami i wielu prób do kontaktowania się z klientem, przed podjęciem działania. Przekroczenia tych limitów przydziału odpowiadają klienci nadal opłaty, które przekraczają limitów przydziału.
 
 Podobnie jak w przypadku innych usług na platformie Azure, Usługa Service Bus wymusza zestaw określonych przydziałów, aby upewnić się, że istnieje uczciwe wykorzystanie zasobów. Można znaleźć więcej szczegółów na temat tych limitów przydziału w [Omówienie przydziałów usługi Service Bus][Quotas overview].
+
+### <a name="how-to-handle-messages-of-size--1-mb"></a>W jaki sposób do obsługi komunikatów o rozmiarze > 1 MB?
+Usług obsługi wiadomości usługi Service Bus (kolejek i tematów/subskrypcji) Zezwalaj aplikacji na wysyłanie wiadomości o rozmiarze do 256 KB (warstwa standardowa) lub 1 MB (warstwa premium). Jeśli masz do czynienia z komunikatami o rozmiarze większym niż 1 MB, użyj wzorca wyboru oświadczenia, które są opisane w [ten wpis w blogu](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern).
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Co to są wyjątki generowane przez interfejsów API usługi Azure Service Bus i ich sugerowane rozwiązania?

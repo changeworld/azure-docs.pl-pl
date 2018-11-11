@@ -2,19 +2,19 @@
 title: Platforma Apache Spark umożliwia odczytywanie i zapisywanie danych do usługi Azure SQL database
 description: Dowiedz się, jak skonfigurować połączenie między klastra platformy HDInsight Spark i Azure SQL database do odczytywania danych, zapis danych i przesyłanie strumieniowe danych do bazy danych SQL
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 2aec894da6b4e5ffd59fee12bc8476b25955c991
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: b8494150a060e02145eab3674bdd2dd62cdda225
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045800"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277294"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Klaster HDInsight Spark umożliwia odczytywanie i zapisywanie danych do usługi Azure SQL database
 
@@ -234,7 +234,7 @@ W tej sekcji, firma Microsoft przesyłanie strumieniowe danych do **hvactable** 
         
          var streamingQuery = WriteToSQLQuery.start()
 
-1. Sprawdź, czy dane są przesyłane strumieniowo do **hvactable** , uruchamiając następujące zapytanie w SQL Server Management Studio (SSMS). Za każdym, gdy uruchom zapytanie, pokazuje liczbę wierszy w tabeli, zwiększając.
+1. Sprawdź, czy dane są przesyłane strumieniowo do **hvactable** , uruchamiając następujące zapytanie w SQL Server Management Studio (SSMS). Za każdym razem, gdy możesz uruchomić zapytanie, pokazuje liczbę wierszy w tabeli, zwiększając.
 
         SELECT COUNT(*) FROM hvactable
 

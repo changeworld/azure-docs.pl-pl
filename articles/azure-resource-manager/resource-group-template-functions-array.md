@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
+ms.date: 11/8/2018
 ms.author: tomfitz
-ms.openlocfilehash: 81638136589fc474d5183341d2fe0f9f896d6b41
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 660764183cdee911c49dedf74893f3d368cd9492
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434470"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346630"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Funkcje tablicy i obiektów dla szablonów usługi Azure Resource Manager 
 
@@ -119,7 +119,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
 ```
 
@@ -207,7 +207,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
 ```
 
@@ -281,7 +281,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
 ```
 
@@ -321,7 +321,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
 ```
 
@@ -415,7 +415,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
 ```
 
@@ -495,7 +495,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
 ```
 
@@ -574,7 +574,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
 ```
 
@@ -639,7 +639,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
 ```
 
@@ -718,7 +718,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
 ```
 
@@ -791,7 +791,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
 ```
 
@@ -856,7 +856,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
 ```
 
@@ -928,7 +928,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
 ```
 
@@ -1003,7 +1003,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
@@ -1067,7 +1067,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
@@ -1082,8 +1082,8 @@ Tworzy tablicę liczb całkowitych z początkowa liczba całkowita i zawierając
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| startingInteger |Yes |Int |Pierwsza liczba całkowita w tablicy. |
-| numberofElements |Yes |Int |Liczb całkowitych w tablicy. |
+| startingInteger |Yes |int |Pierwsza liczba całkowita w tablicy. |
+| numberofElements |Yes |int |Liczb całkowitych w tablicy. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1131,7 +1131,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
 ```
 
@@ -1147,7 +1147,7 @@ Zwraca tablicę ze wszystkimi elementami po określonej liczbie w tablicy lub zw
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | originalValue |Yes |tablicy lub ciągu |Tablica lub ciąg używany do pomijania. |
-| numberToSkip |Yes |Int |Liczba elementów lub znaki do pominięcia. Jeśli ta wartość jest mniejsza lub równa 0, zwracane są wszystkie elementy lub znaków w wartości. Jeśli jest większa niż długość tablicy lub ciągu, zwracana jest pusta tablica lub ciąg. |
+| numberToSkip |Yes |int |Liczba elementów lub znaki do pominięcia. Jeśli ta wartość jest mniejsza lub równa 0, zwracane są wszystkie elementy lub znaków w wartości. Jeśli jest większa niż długość tablicy lub ciągu, zwracana jest pusta tablica lub ciąg. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1212,7 +1212,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
 ```
 
@@ -1228,7 +1228,7 @@ Zwraca tablicę z określonej liczby elementów od początku tablicy lub ciągu 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | originalValue |Yes |tablicy lub ciągu |Tablicy lub ciągu, aby móc elementy z. |
-| numberToTake |Yes |Int |Liczba elementów lub znaki do wykonania. Jeśli ta wartość jest mniejsza lub równa 0, zwracana jest pusta tablica lub ciąg. Jeśli jest większa niż długość danej tablicy lub ciągu, zwracane są wszystkie elementy w tablicy lub ciągu. |
+| numberToTake |Yes |int |Liczba elementów lub znaki do wykonania. Jeśli ta wartość jest mniejsza lub równa 0, zwracana jest pusta tablica lub ciąg. Jeśli jest większa niż długość danej tablicy lub ciągu, zwracane są wszystkie elementy w tablicy lub ciągu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1293,7 +1293,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
 ```
 
@@ -1372,7 +1372,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
 ```
 

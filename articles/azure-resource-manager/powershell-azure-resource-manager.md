@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/20/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7cda2a406c6c49e9252bfd5840e8f943e5b7043f
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 0ecb497e9b07119f6c32149a875f27ee7c338d74
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205803"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344641"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Zarządzanie zasobami za pomocą programu Azure PowerShell
 
@@ -56,7 +56,7 @@ W tym artykule wdrożysz maszynę wirtualną i jej powiązane sieci wirtualnej. 
 * [Współautor sieci](../role-based-access-control/built-in-roles.md#network-contributor)
 * [Współautor konta magazynu](../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Zamiast przypisywać role poszczególnym użytkownikom, często łatwiej jest [utworzyć grupę usługi Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) dla użytkowników, którzy muszą wykonywać podobne działania. Następnie należy przypisać tę grupę do odpowiedniej roli. Aby uprościć ten artykuł, utwórz grupę usługi Azure Active Directory bez członków. Nadal możesz przypisać tę grupę do roli w zakresie. 
+Zamiast przypisywać role poszczególnym użytkownikom, często łatwiej jest [utworzyć grupę usługi Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) dla użytkowników, którzy muszą wykonywać podobne działania. Następnie należy przypisać tę grupę do odpowiedniej roli. Aby uprościć ten artykuł, utwórz grupę usługi Azure Active Directory bez członków. Nadal możesz przypisać tę grupę do roli w zakresie.
 
 Poniższy przykład obejmuje tworzenie grupy i przypisuje go do roli Współautor maszyny wirtualnej dla grupy zasobów. Aby uruchomić `New-AzureAdGroup` polecenia należy używać [usługi Azure Cloud Shell](/azure/cloud-shell/overview) lub [pobieranie modułu programu PowerShell usługi Azure AD](https://www.powershellgallery.com/packages/AzureAD/).
 
@@ -74,7 +74,7 @@ Zazwyczaj należy powtórzyć ten proces dla roli **Współautor sieci** i **Wsp
 
 ## <a name="azure-policy"></a>Azure Policy
 
-[Usługa Azure Policy](../azure-policy/azure-policy-introduction.md) pomaga należy upewnić się, wszystkie zasoby w subskrypcji spełniają standardy firmy. Subskrypcja ma już kilka definicji zasad. Aby wyświetlić dostępne definicje zasad, użyj:
+Usługa [Azure Policy](../azure-policy/azure-policy-introduction.md) ułatwia zapewnienie, że wszystkie zasoby w subskrypcji spełniają standardy firmy. Subskrypcja ma już kilka definicji zasad. Aby wyświetlić dostępne definicje zasad, użyj:
 
 ```azurepowershell-interactive
 (Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -211,11 +211,12 @@ Remove-AzureRmResourceLock -LockName LockNSG `
 
 Gdy grupa zasobów, maszyna wirtualna i wszystkie pokrewne zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
 
-```powershell
+```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * Aby dowiedzieć się więcej o monitorowaniu maszyn wirtualnych, zobacz [monitorowania i aktualizowania maszyny wirtualnej Windows przy użyciu programu Azure PowerShell](../virtual-machines/windows/tutorial-monitoring.md).
 * Aby dowiedzieć się więcej o korzystaniu z usługi Azure Security Center do zaimplementowania zalecanych zasad zabezpieczania, [monitorowanie zabezpieczeń maszyny wirtualnej przy użyciu usługi Azure Security Center](../virtual-machines/windows/tutorial-azure-security.md).
 * Można przenieść istniejące zasoby, do nowej grupy zasobów. Aby uzyskać przykłady, zobacz [przeniesienia zasobów do nowej grupy zasobów lub subskrypcji](resource-group-move-resources.md).

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 11/09/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 8e8518cdf95e1b97bd4b641322c1b2a3fdc3bf9e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 27dbd4215deef6574622ffcd2c62a64503459258
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282462"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515764"
 ---
 # <a name="asdk-release-notes"></a>Informacje o wersji ASDK  
 Ten artykuł zawiera informacje dotyczące ulepszeń, poprawek i znanych problemach w usłudze Azure Stack Development Kit (ASDK). Jeśli nie masz pewności, której wersji używasz, możesz to zrobić [korzystanie z portalu, aby sprawdzić](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -46,7 +46,7 @@ Aby uzyskać więcej informacji, zobacz [przekazywania usługi syslog usługi Az
 <!-- TBD - IS ASDK --> 
 - Rozwiązano problem, w której maszyny wirtualne są tworzone w portalu użytkowników usługi Azure Stack, a portalem wyświetlane niepoprawną liczbę dysków z danymi, które można dołączyć do maszyny Wirtualnej serii DS. Maszyny wirtualne z serii DS może obsłużyć tyle dysków z danymi konfiguracji platformy Azure.
 
-- Następujące problemy z dysków zarządzanych zostały usunięte w 1809 i również zostały usunięte w 1808 [usługi Azure Stack poprawkę 1.1808.5.110](https://support.microsoft.com/help/4468920/): 
+- Następujące problemy z dysków zarządzanych zostały usunięte w 1809 i również zostały usunięte w 1808 [usługi Azure Stack poprawkę 1.1808.7.113](https://support.microsoft.com/help/4471992/): 
 
    <!--  2966665 – IS, ASDK --> 
    - Rozwiązano problem w które dołączanie dysków danych SSD premium rozmiar maszyn wirtualnych dysku zarządzanego (DS, DSv2, Fs i Fs_V2) nie powiodło się z powodu błędu: *nie można zaktualizować dysków maszyny wirtualnej "vmname" Błąd: żądanie nie można wykonać operacji, ponieważ Typ konta magazynu "Premium_LRS" nie jest obsługiwana dla rozmiaru maszyny Wirtualnej "Standard_DS/Ds_V2/FS/Fs_v2)*. 
@@ -59,6 +59,16 @@ Aby uzyskać więcej informacji, zobacz [przekazywania usługi syslog usługi Az
 - <!-- 2702741 -  IS, ASDK --> Rozwiązano problem, w której publiczne adresy IP, które zostały wdrożone za pomocą dynamicznej alokacji metoda nie jest gwarantowana zostaną zachowane po wystawieniu Zatrzymaj anulowanie. Teraz są zachowywane.
 
 - <!-- 3078022 - IS, ASDK --> Jeśli maszyna wirtualna została zatrzymana z cofniętą alokacją przed 1808 nie można jej ponownie przydzielić po 1808 aktualizacji.  Ten problem został rozwiązany w 1809. Wystąpienia, które zostały w tym stanie i nie może zostać uruchomiony, może zostać uruchomiony w 1809 dzięki tej poprawce. Poprawka zapobiega także ten problem pojawiał.
+
+<!-- 3090289 – IS, ASDK --> 
+- Rozwiązano problem, w którym po zastosowaniu tej aktualizacji 1808, można napotkać następujące problemy podczas wdrażania maszyn wirtualnych z usługą Managed Disks:
+
+   1. Jeśli subskrypcja została utworzona przed aktualizacją 1808, wdrażania maszyny Wirtualnej z usługą Managed Disks może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki dla każdej subskrypcji:
+      1. W portalu dzierżawcy, przejdź do **subskrypcje** i Znajdź subskrypcji. Kliknij przycisk **dostawców zasobów**, następnie kliknij przycisk **Microsoft.Compute**, a następnie kliknij przycisk **ponownie zarejestrować**.
+      2. W ramach tej samej subskrypcji, przejdź do **kontrola dostępu (IAM)** i upewnij się, że **usługi Azure Stack — dysk zarządzany** znajduje się na liście.
+   2. Skonfigurowanie środowiska z wieloma dzierżawami wdrażania maszyn wirtualnych w ramach subskrypcji, skojarzony z katalogiem gościa może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki:
+      1. Zastosuj [1808 Azure Stack poprawkę](https://support.microsoft.com/help/4471992).
+      2. Postępuj zgodnie z instrukcjami w [w tym artykule](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) Aby zmienić konfigurację wszystkich katalogów gościa.
 
 - **Różne poprawki** dla wydajności, stabilności, bezpieczeństwa i systemu operacyjnego, który jest używany przez usługę Azure Stack
 
@@ -100,7 +110,7 @@ Aby uzyskać więcej informacji, zobacz [przekazywania usługi syslog usługi Az
 
 #### <a name="compute"></a>Wystąpienia obliczeniowe 
 
-<!-- TBD – IS, ASDK -->
+<!-- 3164607 – IS, ASDK -->
 - Ponowne dołączenie odłączono dysk do tej samej maszyny wirtualnej (VM) z taką samą nazwę i numer LUN zakończy się niepowodzeniem z powodu błędu takich jak **nie można dołączyć dysku danych "datadisk" do maszyny Wirtualnej "vm1"**. Ten błąd występuje, ponieważ dysk jest obecnie odłączany lub ostatnia odłączanie operacja nie powiodła się. Zaczekaj, aż dysk zostanie całkowicie odłączony a następnie spróbuj ponownie lub usuń bądź Odłącz dysk jawnie ponownie. Obejście polega na dołączyć go ponownie z inną nazwą lub w innej jednostce LUN. 
 
 <!-- 3235634 – IS, ASDK -->
@@ -108,16 +118,6 @@ Aby uzyskać więcej informacji, zobacz [przekazywania usługi syslog usługi Az
 
 <!-- 3099544 – IS, ASDK --> 
 - Jeśli podczas tworzenia nowej maszyny wirtualnej (VM) przy użyciu portalu Azure Stack, wybierz rozmiar maszyny Wirtualnej, w kolumnie USD/miesiąc jest wyświetlany z **Unavailable** wiadomości. Ta kolumna nie powinien pojawić się; Wyświetlanie maszyny Wirtualnej cen kolumna nie jest obsługiwana w usłudze Azure Stack.
-
-<!-- 3090289 – IS, ASDK --> 
-- Po zastosowaniu 1808 aktualizacji, podczas wdrażania maszyn wirtualnych z usługą Managed Disks, mogą wystąpić następujące problemy:
-
-   1. Jeśli subskrypcja została utworzona przed aktualizacją 1808, wdrażania maszyny Wirtualnej z usługą Managed Disks może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki dla każdej subskrypcji:
-      1. W portalu dzierżawcy, przejdź do **subskrypcje** i Znajdź subskrypcji. Kliknij przycisk **dostawców zasobów**, następnie kliknij przycisk **Microsoft.Compute**, a następnie kliknij przycisk **ponownie zarejestrować**.
-      2. W ramach tej samej subskrypcji, przejdź do **kontrola dostępu (IAM)** i upewnij się, że **usługi Azure Stack — dysk zarządzany** znajduje się na liście.
-   2. Skonfigurowanie środowiska z wieloma dzierżawami wdrażania maszyn wirtualnych w ramach subskrypcji, skojarzony z katalogiem gościa może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki:
-      1. Zastosuj [1808 Azure Stack poprawkę](https://support.microsoft.com/help/4468920).
-      2. Postępuj zgodnie z instrukcjami w [w tym artykule](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) Aby zmienić konfigurację wszystkich katalogów gościa.
 
 <!-- 2869209 – IS, ASDK --> 
 - Korzystając z [ **AzsPlatformImage Dodaj** polecenia cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), należy użyć **- OsUri** jako konto magazynu, identyfikator URI, gdy dysk jest przekazywany parametr. Jeśli używasz lokalnej ścieżki dysku, polecenia cmdlet zakończy się niepowodzeniem z następującym błędem: *długotrwałych operacji nie powiodło się ze stanem "Niepowodzenie"*. 

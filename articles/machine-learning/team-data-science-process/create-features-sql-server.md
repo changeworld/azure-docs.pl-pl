@@ -15,19 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: deguhath
-ms.openlocfilehash: 89c4e6e6db087e27426598c3ead5142ad540c0c1
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 6729de763265355125100ccdaf0c5cd81e2bfd8d
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393885"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346551"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Tworzenie funkcji dla danych w programie SQL Server przy użyciu języka SQL i Python
 W tym dokumencie przedstawiono sposób generowania funkcji dla danych przechowywanych w maszynę Wirtualną programu SQL Server na platformie Azure, ułatwiającą algorytmy wydajniej informacje z danych. Można użyć bazy danych SQL lub języka programowania, takich jak Python, aby wykonać to zadanie. Oba podejścia są przedstawione w tym artykule.
 
-[!INCLUDE [cap-create-features-data-selector](../../../includes/cap-create-features-selector.md)]
-
-To **menu** łącza do tematów opisujących sposób tworzenia funkcji dla danych w różnych środowiskach. To zadanie jest to krok w [Team Data Science naukowych](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+To zadanie jest to krok w [Team Data Science naukowych](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 > [!NOTE]
 > Na przykład praktycznych, można zapoznać się [zestawu danych taksówek NYC](http://www.andresmh.com/nyctaxitrips/) i odnoszą się do IPNB pod tytułem [danych NYC inteligencji przy użyciu IPython Notebook i programu SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) dla przewodnika end-to-end.

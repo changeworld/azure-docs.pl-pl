@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 67138b9e98818f5d106c73cef027d0eb2515e9a8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 651a03f69a7664b68ce3fe5c512c59c01762a505
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233919"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282479"
 ---
 # <a name="manage-windows-based-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Apache Hadoop oparte na Windows w HDInsight przy użyciu witryny Azure portal
 
@@ -22,9 +22,7 @@ Za pomocą [witryny Azure portal][azure-portal], można utworzyć klastry Apache
 
 Informacje przedstawione w tym artykule dotyczy tylko klastry HDInsight oparty na oknach. Aby uzyskać informacji dotyczących zarządzania opartego na systemie Linux klastrów, zobacz [klastrów zarządzania Hadoop w HDInsight przy użyciu witryny Azure portal](hdinsight-administer-use-portal-linux.md).
 
-> [!IMPORTANT]
-> Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
-
+[!INCLUDE [windows-retirement-notice](../../includes/windows-retirement-notice.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

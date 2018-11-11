@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 1bee48225448a964da7caa2a7b284b274c52bea6
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 8e57c071c9fd93a8581d574aeec2b23b38b3ab95
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914060"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281663"
 ---
 # <a name="introduction-to-auto-scaling"></a>Wprowadzenie do automatycznego skalowania
 Automatyczne skalowanie jest dodatkowe możliwości usługi Service Fabric dynamicznie skalować swoje usługi, w oparciu o obciążenie, które usługi są raportowania lub na podstawie ich użycia zasobów. Automatyczne skalowanie zapewnia dużą elastyczność i umożliwia inicjowanie obsługi administracyjnej dodatkowych wystąpień lub partycje usługi na żądanie. Cały automatycznego skalowania procesu jest zautomatyzowanych i przejrzystości, a po skonfigurowaniu zasad w usłudze nie ma potrzeby ręcznego operacji skalowania na poziomie usługi. Automatyczne skalowanie może zostać włączona podczas tworzenia usługi lub w dowolnej chwili, aktualizując usługę.
@@ -28,7 +28,9 @@ Typowy scenariusz, w których jest użyteczny automatyczne skalowanie jest, gdy 
 * Jeśli wszystkie wystąpienia elementu mojej bramy średnio z więcej niż dwa rdzenie, skalować usługi bramy w poziomie przez dodanie jednego wystąpienia więcej. To co godzinę, ale nigdy nie mają więcej niż siedem wystąpień w sumie.
 * Jeśli wszystkie wystąpienia elementu mojej bramy średnio z mniej niż 0,5 rdzenia, skalować usługę w przez usunięcie jednego wystąpienia. To co godzinę, ale nigdy nie mają mniej niż trzy wystąpienia w sumie.
 
-Automatyczne skalowanie jest obsługiwana dla kontenerów i regularnego usługi Service Fabric. W pozostałej części tego artykułu opisano zasady skalowania, sposobów, aby włączyć lub wyłączyć automatyczne skalowanie i przedstawiono przykłady dotyczące używania tej funkcji.
+Automatyczne skalowanie jest obsługiwana dla kontenerów i regularnego usługi Service Fabric. Aby korzystać z automatycznego skalowania, konieczne będzie działać w wersji 6.2 lub nowszej środowiska uruchomieniowego usługi Service Fabric. 
+
+W pozostałej części tego artykułu opisano zasady skalowania, sposobów, aby włączyć lub wyłączyć automatyczne skalowanie i przedstawiono przykłady dotyczące używania tej funkcji.
 
 ## <a name="describing-auto-scaling"></a>Opisujące Autoskalowanie
 Automatyczne skalowanie zasady mogą być definiowane dla poszczególnych usług w klastrze usługi Service Fabric. Wszystkie zasady skalowania składa się z dwóch części:
@@ -41,7 +43,7 @@ Wszystkie wyzwalacze, które są obecnie obsługiwane pracy za pomocą [miar log
 Istnieją dwa mechanizmy, które są obecnie obsługiwane przez automatyczne skalowanie. Pierwsza z nich jest przeznaczona dla usługi bezstanowej lub kontenery, gdy automatyczne skalowanie odbywa się przez dodanie lub usunięcie [wystąpień](service-fabric-concepts-replica-lifecycle.md). Dla usług stanowych i bezstanowych, automatycznego skalowania można również przeprowadzić przez dodawanie lub usuwanie nazwanej [partycje](service-fabric-concepts-partitioning.md) usługi.
 
 > [!NOTE]
-> Obecnie są obsługiwane tylko jedne zasady skalowania na usługę i tylko jeden wyzwalacz skalowanie zgodnie z zasadami.
+> Obecnie są obsługiwane tylko jedne zasady skalowania na usługę i tylko jeden wyzwalacz skalowania na zasady skalowania.
 
 ## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Wyzwalacz obciążenia średni partycji o skalowanie na podstawie wystąpienia
 Pierwszy typ wyzwalacza opiera się na obciążenie wystąpień w partycji o bezstanowa usługa. Metryki obciążenia są najpierw wygładzone uzyskać obciążenia dla każdego wystąpienia partycji, a następnie te wartości są uśredniane we wszystkich wystąpieniach partycji. Istnieją trzy czynniki, które określają, kiedy będzie można skalować usługi:

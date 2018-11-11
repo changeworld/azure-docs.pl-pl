@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 11/7/2018
 ms.author: shlo
-ms.openlocfilehash: 3db32dfe2d7b65535f7d30f76241b33ecca96c15
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7a0d72ac67b329cb6d25be955205a2bbcef38e81
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957959"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281697"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Wizualne Tworzenie usługi Azure Data Factory
 Usługi Azure Data Factory użytkownika interfejsu środowiska pozwala wizualnie tworzyć i wdrażać zasoby fabryki danych bez konieczności pisania kodu. Można przeciągnąć działania na kanwę potoku, wykonywać przebiegi testowe, interakcyjnie debugować i wdrożyć i monitorować uruchomienia potoków. Dostępne są dwie opcje używania środowiska użytkownika do wykonania wizualnego tworzenia:
@@ -142,7 +142,9 @@ Po zostały scalone zmiany w gałęzi współpracy (`master` jest ustawieniem do
 
 ## <a name="author-with-github-integration"></a>Tworzenie za pomocą integracji usługi GitHub
 
-Tworzeniu wizualizacji przy użyciu Integracja z usługą GitHub obsługuje kontroli źródła i współpracy for work na potoków usługi data factory. Fabryki danych można skojarzyć z repozytorium GitHub konta do kontroli źródła, współpracy, obsługi wersji. Na jednym koncie usługi GitHub może mieć wiele repozytoriów, ale repozytorium GitHub mogą być skojarzone z fabryką danych tylko jeden. Jeśli nie masz konta usługi GitHub lub repozytorium, postępuj zgodnie z [w instrukcjach](https://github.com/join) do tworzenia zasobów. Integracja z usługą GitHub przy użyciu usługi Data Factory obsługuje zarówno publiczne usługi GitHub oraz jak GitHub Enterprise.
+Tworzeniu wizualizacji przy użyciu Integracja z usługą GitHub obsługuje kontroli źródła i współpracy for work na potoków usługi data factory. Fabryki danych można skojarzyć z repozytorium GitHub konta do kontroli źródła, współpracy, obsługi wersji. Na jednym koncie usługi GitHub może mieć wiele repozytoriów, ale repozytorium GitHub mogą być skojarzone z fabryką danych tylko jeden. Jeśli nie masz konta usługi GitHub lub repozytorium, postępuj zgodnie z [w instrukcjach](https://github.com/join) do tworzenia zasobów.
+
+Integracja z usługą GitHub przy użyciu usługi Data Factory obsługuje zarówno publiczne usługi GitHub (czyli [ https://github.com ](https://github.com)) i GitHub Enterprise. Można użyć prywatnych i publicznych repozytoriów GitHub z usługą Data Factory, długo po ich przeczytaniu i uprawnienia zapisu w repozytorium w usłudze GitHub.
 
 Aby skonfigurować repozytorium GitHub, musisz mieć uprawnienia administratora dla subskrypcji platformy Azure, którego używasz.
 
@@ -164,11 +166,11 @@ Repozytorium GitHub można skonfigurować za pomocą usługi data factory, za po
 
 **Metoda konfiguracji 1 (publiczne repozytorium): strona zaczynajmy**
 
-W usłudze Azure Data Factory, przejdź do **zaczynajmy** strony. Wybierz **Konfigurowanie repozytorium kodu**:
+W usłudze Azure Data Factory, przejdź do **zaczynajmy** strony. Wybierz **Konfigurowanie repozytorium kodu**:
 
 ![Strona wprowadzenie fabryki danych](media/author-visually/github-integration-image1.png)
 
-**Ustawienia repozytorium** zostanie wyświetlone okienko konfiguracji:
+ **Ustawienia repozytorium** zostanie wyświetlone okienko konfiguracji:
 
 ![Ustawienia repozytorium GitHub](media/author-visually/github-integration-image2.png)
 
@@ -181,14 +183,14 @@ W okienku wyświetlana następujący kod repozytoriów Azure ustawień repozytor
 | **RepositoryName**                                       | Nazwa repozytorium usługi GitHub kodu. Konta usługi GitHub zawierają repozytoriów Git do zarządzania kodem źródłowym. Możesz utworzyć nowe repozytorium, lub użyć istniejącego repozytorium, który jest już na Twoim koncie.                                                                                                                                                                                                                              |                    |
 | **Gałąź współpracy**                                 | Gałęzi współpracy usługi GitHub, które jest używane do publikowania. Domyślnie jest głównym. To ustawienie można zmienić w przypadku, gdy chcesz opublikować zasobów z innej gałęzi.                                                                                                                                                                                                                                                               |                    |
 | **Folder główny**                                          | Folderem w gałęzi współpracy usługi GitHub.                                                                                                                                                                                                                                                                                                                                                                             |                    |
-| **Importuj istniejące zasoby fabryki danych do repozytorium** | Określa, czy Importuj istniejące zasoby fabryki danych ze środowiska użytkownika **Kanwa tworzenia** do repozytorium GitHub. Zaznacz pole, aby zaimportować swoje zasoby fabryki danych do skojarzonego repozytorium Git w formacie JSON. Ta akcja Eksportuje każdy zasób osobno (czyli usługi połączone i zestawy danych są eksportowane do oddzielnych JSON Smb1sessionsetup). Gdy to pole nie jest zaznaczone, istniejące zasoby nie są importowane. | Wybrane (ustawienie domyślne) |
+| **Importuj istniejące zasoby fabryki danych do repozytorium** | Określa, czy Importuj istniejące zasoby fabryki danych ze środowiska użytkownika **Kanwa tworzenia** do repozytorium GitHub. Zaznacz pole, aby zaimportować swoje zasoby fabryki danych do skojarzonego repozytorium Git w formacie JSON. Ta akcja Eksportuje każdy zasób osobno (czyli usługi połączone i zestawy danych są eksportowane do oddzielnych JSON Smb1sessionsetup). Gdy to pole nie jest zaznaczone, istniejące zasoby nie są importowane. | Wybrane (ustawienie domyślne) |
 | **Gałąź do importowania zasobów do**                       | Określa, które gałęzią zasoby fabryki danych (potoki, zestawy danych, połączonych usług itp.) są importowane. Zasoby można importować do jednej z następujących gałęziach:. B współpracy. Utwórz nowy. Użyj istniejącego                                                                                                                                                                                                     |                    |
 
 #### <a name="configuration-method-2-public-repo-ux-authoring-canvas"></a>Metoda konfiguracji 2 (publiczne repozytorium): UX Kanwa tworzenia
 
-W Interfejsie usługi Azure Data Factory **Kanwa tworzenia**, zlokalizuj fabryką danych. Wybierz **usługi Data Factory** menu rozwijanego, a następnie wybierz **Konfiguruj repozytorium kodu**.
+W Interfejsie usługi Azure Data Factory **Kanwa tworzenia**, zlokalizuj fabryką danych. Wybierz **usługi Data Factory** menu rozwijanego, a następnie wybierz **Konfiguruj repozytorium kodu**.
 
-Zostanie wyświetlone okienko konfiguracji. Aby uzyskać szczegółowe informacje o ustawieniach konfiguracji, zobacz opisy w *metody konfiguracji 1* powyżej.
+Zostanie wyświetlone okienko konfiguracji. Aby uzyskać szczegółowe informacje o ustawieniach konfiguracji, zobacz opisy w *metody konfiguracji 1* powyżej.
 
 ### <a name="configure-a-github-enterprise-repository-with-azure-data-factory"></a>Konfigurowanie repozytorium GitHub Enterprise za pomocą usługi Azure Data Factory
 
@@ -196,11 +198,11 @@ Repozytorium GitHub Enterprise można skonfigurować za pomocą usługi data fac
 
  #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>Metoda konfiguracji 1 (Enterprise repozytorium): strona zaczynajmy
 
-W usłudze Azure Data Factory, przejdź do **zaczynajmy** strony. Wybierz **Konfigurowanie repozytorium kodu**:
+W usłudze Azure Data Factory, przejdź do **zaczynajmy** strony. Wybierz **Konfigurowanie repozytorium kodu**:
 
 ![Strona wprowadzenie fabryki danych](media/author-visually/github-integration-image1.png)
 
-**Ustawienia repozytorium** zostanie wyświetlone okienko konfiguracji:
+ **Ustawienia repozytorium** zostanie wyświetlone okienko konfiguracji:
 
 ![Ustawienia repozytorium GitHub](media/author-visually/github-integration-image3.png)
 
@@ -215,14 +217,14 @@ W okienku wyświetlana następujący kod repozytoriów Azure ustawień repozytor
 | **RepositoryName**                                       | Nazwa repozytorium usługi GitHub kodu. Konta usługi GitHub zawierają repozytoriów Git do zarządzania kodem źródłowym. Możesz utworzyć nowe repozytorium, lub użyć istniejącego repozytorium, który jest już na Twoim koncie.                                                                                                                                                                                                                              |                    |
 | **Gałąź współpracy**                                 | Gałęzi współpracy usługi GitHub, które jest używane do publikowania. Domyślnie jest głównym. To ustawienie można zmienić w przypadku, gdy chcesz opublikować zasobów z innej gałęzi.                                                                                                                                                                                                                                                               |                    |
 | **Folder główny**                                          | Folderem w gałęzi współpracy usługi GitHub.                                                                                                                                                                                                                                                                                                                                                                             |                    |
-| **Importuj istniejące zasoby fabryki danych do repozytorium** | Określa, czy Importuj istniejące zasoby fabryki danych ze środowiska użytkownika **Kanwa tworzenia** do repozytorium GitHub. Zaznacz pole, aby zaimportować swoje zasoby fabryki danych do skojarzonego repozytorium Git w formacie JSON. Ta akcja Eksportuje każdy zasób osobno (czyli usługi połączone i zestawy danych są eksportowane do oddzielnych JSON Smb1sessionsetup). Gdy to pole nie jest zaznaczone, istniejące zasoby nie są importowane. | Wybrane (ustawienie domyślne) |
+| **Importuj istniejące zasoby fabryki danych do repozytorium** | Określa, czy Importuj istniejące zasoby fabryki danych ze środowiska użytkownika **Kanwa tworzenia** do repozytorium GitHub. Zaznacz pole, aby zaimportować swoje zasoby fabryki danych do skojarzonego repozytorium Git w formacie JSON. Ta akcja Eksportuje każdy zasób osobno (czyli usługi połączone i zestawy danych są eksportowane do oddzielnych JSON Smb1sessionsetup). Gdy to pole nie jest zaznaczone, istniejące zasoby nie są importowane. | Wybrane (ustawienie domyślne) |
 | **Gałąź do importowania zasobów do**                       | Określa, które gałęzią zasoby fabryki danych (potoki, zestawy danych, połączonych usług itp.) są importowane. Zasoby można importować do jednej z następujących gałęziach:. B współpracy. Utwórz nowy. Użyj istniejącego                                                                                                                                                                                                     |                    |
 
 #### <a name="configuration-method-2-enterprise-repo-ux-authoring-canvas"></a>Metoda konfiguracji 2 (Enterprise repozytorium): UX Kanwa tworzenia
 
-W Interfejsie usługi Azure Data Factory **Kanwa tworzenia**, zlokalizuj fabryką danych. Wybierz **usługi Data Factory** menu rozwijanego, a następnie wybierz **Konfiguruj repozytorium kodu**.
+W Interfejsie usługi Azure Data Factory **Kanwa tworzenia**, zlokalizuj fabryką danych. Wybierz **usługi Data Factory** menu rozwijanego, a następnie wybierz **Konfiguruj repozytorium kodu**.
 
-Zostanie wyświetlone okienko konfiguracji. Aby uzyskać szczegółowe informacje o ustawieniach konfiguracji, zobacz opisy w *metody konfiguracji 1* powyżej.
+Zostanie wyświetlone okienko konfiguracji. Aby uzyskać szczegółowe informacje o ustawieniach konfiguracji, zobacz opisy w *metody konfiguracji 1* powyżej.
 
 ## <a name="use-the-expression-language"></a>Użyj języka wyrażeń
 Wyrażenia wartości właściwości można określić przy użyciu języka wyrażeń, który jest obsługiwany przez usługę Azure Data Factory.

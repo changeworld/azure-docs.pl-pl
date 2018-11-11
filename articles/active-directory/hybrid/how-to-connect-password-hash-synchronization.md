@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2d289dee6770b0fc70edb0ed5fecf8a39402c6fa
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 3579a17ab28bd39ddad5008e1d0f8f7834237807
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311990"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282003"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync
 Ten artykuł zawiera informacje potrzebne do synchronizacji haseł użytkowników z lokalnym wystąpieniem usługi Active Directory do wystąpienia usługi Azure Active Directory (Azure AD) oparte na chmurze.
@@ -54,7 +54,7 @@ Aby uzyskać więcej informacji, zobacz [Integrowanie tożsamości lokalnych z u
 >
 
 ## <a name="how-password-hash-synchronization-works"></a>Jak działa synchronizacja skrótów haseł
-Domeny usługi Active Directory są przechowywane hasła w postaci reprezentację wartości skrótu hasła rzeczywistego użytkownika. Wartość skrótu jest wynikiem jednokierunkowe funkcji matematycznych ( *algorytmem wyznaczania wartości skrótu*). Nie istnieje metoda można przywrócić wynik jednokierunkowa funkcja zwykły tekst wersję hasła. Nie można używać skrótu hasła do logowania do sieci lokalnej.
+Domeny usługi Active Directory są przechowywane hasła w postaci reprezentację wartości skrótu hasła rzeczywistego użytkownika. Wartość skrótu jest wynikiem jednokierunkowe funkcji matematycznych ( *algorytmem wyznaczania wartości skrótu*). Nie ma możliwości przywrócenia wyniku tej jednokierunkowej funkcji z powrotem do hasła w postaci zwykłego tekstu. Skrótu hasła nie można użyć w celu zalogowania się do sieci lokalnej.
 
 Aby zsynchronizować hasła, synchronizacja programu Azure AD Connect wyodrębnia usługi skrótów haseł z lokalnym wystąpieniem usługi Active Directory. Przetwarzanie zapewnienia dodatkowego bezpieczeństwa jest stosowany do skrótu hasła, zanim jest zsynchronizowany z usługą uwierzytelniania usługi Azure Active Directory. Hasła są synchronizowane na poszczególnych użytkowników, a także w porządku chronologicznym.
 
@@ -136,7 +136,7 @@ Synchronizacja haseł nie ma wpływu na użytkownika platformy Azure, który jes
 ## <a name="enable-password-hash-synchronization"></a>Włączanie synchronizacji skrótów haseł
 
 >[!IMPORTANT]
->Jeśli migrujesz z usług AD FS (lub inne technologie federacyjnych) do synchronizacji skrótów haseł, zdecydowanie zalecamy, skorzystaj z naszego przewodnika wdrożenia są szczegółowo opublikowane [tutaj](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Password%20Hash%20Synchronization.docx).
+>Jeśli migrujesz z usług AD FS (lub inne technologie federacyjnych) do synchronizacji skrótów haseł, zdecydowanie zalecamy, skorzystaj z naszego przewodnika wdrożenia są szczegółowo opublikowane [tutaj](https://aka.ms/adfstophsdpdownload).
 
 Po zainstalowaniu usługi Azure AD Connect przy użyciu **ustawień ekspresowych** opcji synchronizacji skrótów haseł jest automatycznie włączone. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure AD Connect przy użyciu ustawień ekspresowych](how-to-connect-install-express.md).
 

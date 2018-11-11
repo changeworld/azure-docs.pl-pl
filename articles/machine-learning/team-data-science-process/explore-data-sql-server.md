@@ -1,6 +1,6 @@
 ---
-title: Eksplorowanie danych w maszynie wirtualnej serwera SQL na platformie Azure | Dokumentacja firmy Microsoft
-description: Jak eksplorować dane przechowywane na maszynie Wirtualnej z programu SQL Server na platformie Azure.
+title: Eksplorowanie danych na maszynie wirtualnej programu SQL Server na platformie Azure | Dokumentacja firmy Microsoft
+description: Jak do eksplorowania danych, która jest przechowywana w maszynę Wirtualną programu SQL Server na platformie Azure.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,50 +15,49 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: d96852006377123f6e9d17c3ae5b79fe930c1e1c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 546d75172b9e6dbd77d63c36e5b8cebd0835a582
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836800"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345610"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Eksplorowanie danych maszyny wirtualnej programu SQL Server na platformie Azure
-W tym dokumencie opisano sposób eksplorować dane przechowywane na maszynie Wirtualnej z programu SQL Server na platformie Azure. Można to zrobić przy użyciu języka programowania, takich jak Python lub wrangling danych przy użyciu programu SQL.
 
-Następujące **menu** linki do tematów opisujących sposób użycia narzędzia, aby eksplorować dane w różnych środowiskach magazynu. To zadanie jest krokiem w procesie Analytics Cortana (CAP).
+W tym artykule opisano sposób eksplorowania danych, która jest przechowywana w maszynę Wirtualną programu SQL Server na platformie Azure. Można to zrobić za dane inteligencji przy użyciu języka SQL lub przy użyciu języka programowania, takich jak Python.
 
-[!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
+To zadanie jest to krok w [zespołu danych dla celów naukowych](overview.md).
 
 > [!NOTE]
-> Instrukcje SQL próbki w tym dokumencie założono, że dane są w programie SQL Server. Jeśli nie, zajrzyj do mapy procesu chmury danych nauki, aby dowiedzieć się, jak przenieść dane do programu SQL Server.
+> Przykładowe instrukcje SQL, w tym dokumencie przyjęto założenie, że dane są w programie SQL Server. Jeśli nie, można znaleźć mapy procesu do nauki o danych chmury dowiesz się, jak przenieść dane do programu SQL Server.
 > 
 > 
 
 ## <a name="sql-dataexploration"></a>Eksplorowanie danych SQL za pomocą skryptów SQL
-Poniżej przedstawiono kilka przykładowe skrypty SQL, które mogą służyć do eksplorowania magazyny danych w programie SQL Server.
+Poniżej przedstawiono kilka przykładowe skrypty SQL, których można użyć, aby zapoznać się z magazynami danych w programie SQL Server.
 
 1. Zliczanie uwagi na dzień
    
     `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
-2. Pobierz poziomy w kolumnie podzielone na kategorie
+2. Pobierz poziomy w kolumnie podzielonych na kategorie
    
     `select  distinct <column_name> from <databasename>`
-3. Pobierz liczbę poziomów w połączeniu z dwóch kolumn podzielone na kategorie 
+3. Pobierz liczbę poziomów w połączeniu z dwóch kolumn podzielonych na kategorie 
    
     `select <column_a>, <column_b>,count(*) from <tablename> group by <column_a>, <column_b>`
-4. Pobierz dystrybucji dla kolumn wartości liczbowych
+4. Rozpoczynanie dystrybucji dla kolumny liczbowe
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
 > [!NOTE]
-> Na przykład praktyczne, można użyć [dataset taksówki NYC](http://www.andresmh.com/nyctaxitrips/) i zapoznaj się z IPNB zatytułowany [wrangling NYC danych za pomocą notesu IPython i SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) dla przewodnika end-to-end.
+> Na przykład praktycznych, możesz użyć [zestawu danych taksówek NYC](http://www.andresmh.com/nyctaxitrips/) i odnoszą się do IPNB pod tytułem [danych NYC inteligencji przy użyciu IPython Notebook i programu SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) dla przewodnika end-to-end.
 > 
 > 
 
 ## <a name="python"></a>Eksplorowanie danych SQL za pomocą języka Python
-Przy użyciu języka Python do Eksplorowanie danych oraz do generowania funkcji, jeśli dane są w programie SQL Server jest podobny do przetwarzania danych obiektów blob platformy Azure przy użyciu języka Python, zgodnie z opisem w [danych obiektów Blob platformy Azure procesu w danym środowisku nauki danych](data-blob.md). Dane powinna być załadowana z bazy danych do pandas DataFrame, a następnie mogą być dalej przetwarzane. Proces łączenia z bazą danych i ładowania danych do DataFrame w tej sekcji możemy dokumentu.
+Przy użyciu języka Python, aby eksplorować dane i wygenerować funkcje, gdy dane znajdują się w programie SQL Server jest podobny do przetwarzania danych w usłudze Azure blob przy użyciu języka Python, zgodnie z opisem w [danych obiektów Blob platformy Azure proces w danym środowisku do nauki o danych](data-blob.md). Dane powinna być załadowana z bazy danych do pandas DataFrame i następnie mogą być dalej przetwarzane. Udokumentowaliśmy proces łączenia z bazą danych i ładowania danych do elementów DataFrame w tej sekcji.
 
-Następującego formatu ciągu połączenia może służyć do połączenia z bazą danych programu SQL Server w języku Python za pomocą pyodbc (Zastąp servername, dbname nazwy użytkownika i hasła o określonej wartości):
+Następujący format parametrów połączenia może służyć do łączenia z bazą danych programu SQL Server za pomocą języka Python za pomocą moduł pyodbc (Zastąp servername, dbname, nazwę użytkownika i hasła o określonej wartości):
 
     #Set up the SQL Azure connection
     import pyodbc    
@@ -69,8 +68,8 @@ Następującego formatu ciągu połączenia może służyć do połączenia z ba
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
 
-Teraz możesz pracować z Pandas DataFrame, jak to opisano w temacie [danych obiektów Blob platformy Azure procesu w danym środowisku nauki danych](data-blob.md).
+Teraz możesz pracować z biblioteki Pandas DataFrame zgodnie z opisem w temacie [danych obiektów Blob platformy Azure proces w danym środowisku do nauki o danych](data-blob.md).
 
-## <a name="the-team-data-science-process-in-action-example"></a>Proces nauki danych zespołu w przykładzie akcji
-Aby proces Analytics Cortana, przy użyciu publicznego zestawu danych, na przykład na trasie wskazówki, zobacz [zespołu danych nauki procesu w działaniu: przy użyciu programu SQL Server](sql-walkthrough.md).
+## <a name="the-team-data-science-process-in-action-example"></a>Zespół danych dla celów naukowych w przykładzie akcji
+Aby procesie Cortana Analytics, za pomocą publicznego zestawu danych, na przykład end-to-end wskazówki, zobacz [zespołu danych dla celów naukowych w działaniu: przy użyciu programu SQL Server](sql-walkthrough.md).
 

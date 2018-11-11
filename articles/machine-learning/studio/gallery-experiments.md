@@ -1,6 +1,6 @@
 ---
-title: Experiments galerii Azure AI | Dokumentacja firmy Microsoft
-description: Odnajdywanie i udostępniać eksperymenty w galerii Azure AI.
+title: Experiments Galeria sztucznej Inteligencji platformy Azure | Dokumentacja firmy Microsoft
+description: Odnajdywanie i udostępnianie eksperymenty w galerii sztucznej Inteligencji platformy Azure.
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -15,178 +15,176 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
-ms.openlocfilehash: d57e780fbf5187f2481d40bde28b113181c15b4a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 22432a98a7ac5ecba46201d0166940e069f6031b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834662"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346443"
 ---
-# <a name="discover-experiments-in-azure-ai-gallery"></a>Odnajdywanie eksperymenty w galerii Azure AI
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
+# <a name="discover-experiments-in-azure-ai-gallery"></a>Odkryj eksperymenty w galerii Azure AI
 
-## <a name="experiments-for-machine-learning-studio"></a>Eksperymentów w usłudze Machine Learning Studio
-Galeria zawiera szeroką gamę [eksperymenty](https://gallery.cortanaintelligence.com/experiments) zostały opracowane w [Azure Machine Learning Studio](https://studio.azureml.net). Zakres eksperymentów z szybkiego eksperymenty Weryfikacja koncepcji, które pokazują określonej maszyny uczenia chcemy pełni rozwinięte rozwiązań problemów learning złożonych maszyny.
+[Galeria sztucznej Inteligencji platformy Azure](http://gallery.cortanaintelligence.com) zawiera szeroką gamę [eksperymentów](https://gallery.cortanaintelligence.com/experiments) zostały opracowane w [Azure Machine Learning Studio](https://studio.azureml.net). Eksperymenty z zakresu od szybkiego eksperymentów weryfikacji koncepcji, które przedstawiają określonej usługi machine learning technikę do w pełni rozwinięte rozwiązań złożonych machine learning problemów.
 
 > [!NOTE]
-> ***Eksperymentu*** jest kanwy w usłudze Machine Learning Studio używanego w celu utworzenia modelu analizy predykcyjnej. Łączenie danych z różnych modułów analitycznych do tworzenia modelu. Można spróbuj różnych pomysły, czy działa w wersji próbnej i ostatecznie wdrożyć model jako usługę sieci web na platformie Azure. Na przykład sposobu tworzenia podstawowych eksperymentu zobacz [samouczek dotyczący uczenia maszynowego: Tworzenie pierwszego eksperymentu w usłudze Azure Machine Learning Studio](create-experiment.md). Na pełniejsze Przewodnik tworzenia rozwiązania analizy predykcyjnej, zobacz [wskazówki: tworzenie rozwiązania analizy predykcyjnej w celu oceny ryzyka kredytowego w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md).
+> ***Eksperymentować*** jest kanwy w usłudze Machine Learning Studio, można użyć w celu utworzenia modelu analizy predykcyjnej. Aby utworzyć model łączenia danych z różnych modułów analitycznych. Można spróbować różnych pomysły, czy przebiegi wersji próbnej i po pewnym czasie wdrażania modelu w formie usługi internetowej na platformie Azure. Na przykład sposobu tworzenia eksperymentu podstawowe zobacz [samouczek dotyczący uczenia maszynowego: Tworzenie pierwszego eksperymentu w usłudze Azure Machine Learning Studio](create-experiment.md). Bardziej szczegółowe instrukcje dotyczące sposobu tworzenia rozwiązania analizy predykcyjnej, zobacz [wskazówki: tworzenie rozwiązania analizy predykcyjnej w celu oceny ryzyka kredytowego w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md).
 >
 >
 
 ## <a name="discover"></a>Wykrywanie
-Aby przeglądać eksperymenty [w galerii](http://gallery.cortanaintelligence.com), w górnej części strony głównej galerii, wybierz **eksperymenty**.
+Aby przeglądać eksperymenty [w galerii](http://gallery.cortanaintelligence.com), w górnej części strony głównej galerii Wybierz **eksperymentów**.
 
-**[Eksperymenty](https://gallery.cortanaintelligence.com/experiments)** zostanie wyświetlona lista ostatnio dodany i popularne eksperymenty. Aby zobaczyć wszystkie eksperymenty, zaznacz **zobaczyć wszystkie** przycisku. Do wyszukiwania określonych eksperymentu, wybierz **zobaczyć wszystkie**, a następnie wybierz kryteria. Można również wprowadzić terminy wyszukiwania w **wyszukiwania** u góry strony galerii.
+**[Eksperymentów](https://gallery.cortanaintelligence.com/experiments)** stronie wyświetlana jest lista ostatnio dodanych i popularne eksperymenty. Aby zobaczyć wszystkie eksperymenty, wybierz **holograficznych** przycisku. Aby wyszukać określonego eksperymentu, wybierz **holograficznych**i kryteria filtrowania a następnie wybierz pozycję. Można również wprowadzić terminy wyszukiwania w **wyszukiwania** polu w górnej części strony galerii.
 
-Możesz uzyskać więcej informacji na temat eksperyment na stronie szczegółów eksperymentu. Aby otworzyć stronę szczegółów eksperymentu, wybierz eksperymentu. W eksperymencie szczegóły strony w **komentarze** sekcji, można dodać komentarz, wyrazić swoją opinię lub zadać pytania dotyczące eksperymentu. Możesz nawet udostępniać eksperyment znajomych lub współpracowników w serwisie Twitter i LinkedIn. Można również e-mail łącze do strony szczegółów doświadczenia z zaproszeniem dla innych użytkowników, aby wyświetlić stronę.
+Aby uzyskać więcej informacji na temat eksperyment na stronie szczegółów eksperymentu. Aby otworzyć stronę szczegółów eksperymentu, wybierz eksperymentu. Na eksperyment szczegóły stronie **komentarze** sekcji można komentarz, przekazać opinię lub zadać pytania dotyczące eksperymentu. Możesz nawet udostępniać eksperymentu znajomym lub współpracownicy w serwisie Twitter i LinkedIn. Możesz również poczty link do strony szczegółów eksperyment, aby zaprosić innych użytkowników, aby wyświetlić stronę.
 
-![Udostępnij ten element znajomych](./media/gallery-how-to-use-contribute-publish/share-links.png)
+![Udostępnij ten element ze znajomymi](./media/gallery-how-to-use-contribute-publish/share-links.png)
 
-![Dodaj komentarz własnych](./media/gallery-how-to-use-contribute-publish/comments.png)
+![Dodać swoje własne komentarze](./media/gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="download"></a>Do pobrania
-Do swojego obszaru roboczego usługi Machine Learning Studio, możesz pobrać kopię każdego doświadczenia w galerii. Następnie można zmodyfikować kopii programu do tworzenia własnych rozwiązań.
+Możesz pobrać kopię każdego doświadczenia w galerii do swojego obszaru roboczego usługi Machine Learning Studio. Następnie można zmodyfikować kopii do tworzenia własnych rozwiązań.
 
-Galerii AI Azure oferuje można importować kopię eksperyment na dwa sposoby:
+Galeria sztucznej Inteligencji platformy Azure oferuje dwa sposoby, aby zaimportować kopię eksperymentu:
 
-* **Z poziomu galerii**. Jeśli znajdziesz eksperymentu w galerii, możesz pobrać kopię, a następnie otwórz go w obszarze roboczym Machine Learning Studio.
-* **Za pomocą uczenia maszynowego Studio**. W usłudze Machine Learning Studio służy każdego doświadczenia w galerii jako szablon, aby utworzyć nowy eksperyment.
+* **Za pomocą galerii**. Jeśli okaże się eksperyment, który chcesz w galerii, możesz pobrać kopię, a następnie otwórz go w obszarze roboczym usługi Machine Learning Studio.
+* **Z poziomu usługi Machine Learning Studio**. W usłudze Machine Learning Studio umożliwia dowolnym eksperymentu w galerii jako szablonu Tworzenie nowego eksperymentu.
 
-### <a name="from-the-gallery"></a>Z galerii
+### <a name="from-the-gallery"></a>Za pomocą galerii
 
 1. W galerii Otwórz stronę szczegółów eksperymentu.
-2. Wybierz **Otwórz w Studio**.
+2. Wybierz **Otwórz w programie Studio**.
 
-    ![Otwórz doświadczenia z galerii](./media/gallery-experiments/open-experiment-from-gallery.png)
+    ![Otwórz eksperyment z galerii](./media/gallery-experiments/open-experiment-from-gallery.png)
 
-Po wybraniu **Otwórz w Studio**, otwiera eksperymentu w obszarze roboczym Machine Learning Studio. (Jeśli jeszcze nie zalogowano Cię do usługi Machine Learning Studio, zostanie wyświetlony monit pierwsze logowanie przy użyciu konta Microsoft.)
+Po wybraniu **Otwórz w programie Studio**, eksperyment, który zostanie otwarty w obszarze roboczym usługi Machine Learning Studio. (Jeśli jeszcze nie zostało to zrobione usłudze Machine Learning Studio, monit o pierwszym zalogowaniu za pomocą konta Microsoft.)
 
-### <a name="from-within-machine-learning-studio"></a>Za pomocą uczenia maszynowego Studio
+### <a name="from-within-machine-learning-studio"></a>Z poziomu usługi Machine Learning Studio
 
-1. W usłudze Machine Learning Studio, wybierz **nowy**.
-2. Wybierz **eksperymentu**. Wybierz z listy eksperymenty w galerii lub znaleźć eksperyment określonego za pomocą **wyszukiwania** pole.
-3. Wskaż myszy eksperymentu, a następnie wybierz **Otwórz w Studio**. (Aby wyświetlić informacje o eksperyment, wybierz **Wyświetl w galerii**. Powoduje to przejście do strony szczegółów eksperymentu w galerii.)
+1. W usłudze Machine Learning Studio, wybierz **NEW**.
+2. Wybierz **eksperymentu**. Wybierz z listy eksperymenty w galerii lub znalezienia określonych eksperymentu przy użyciu **wyszukiwania** pole.
+3. Wskaż myszą eksperymentu, a następnie wybierz **Otwórz w programie Studio**. (Aby wyświetlić informacje o eksperymentu, wybierz **widoku w galerii**. Spowoduje to przejście do strony szczegółów eksperymentu w galerii.)
 
-    ![Otwórz galerię Poeksperymentuj z wewnątrz usługi Machine Learning Studio](./media/gallery-experiments/open-experiment-from-studio.png)
+    ![Otwórz galerię eksperymentować z wewnątrz usługi Machine Learning Studio](./media/gallery-experiments/open-experiment-from-studio.png)
 
-Można dostosować, iteracji i wdrożyć pobrany eksperymentu, podobnie jak inne eksperymentu, które są tworzone w usłudze Machine Learning Studio.
+Można dostosować, iteracji i wdrożyć pobrany eksperyment, podobnie jak inne eksperyment, który zostanie utworzony w usłudze Machine Learning Studio.
 
-![Eksperymentu otwarty w Studio](./media/gallery-experiments/experiment-open-in-studio.png)
+![Eksperyment otwierane w programie Studio](./media/gallery-experiments/experiment-open-in-studio.png)
 
-## <a name="contribute"></a>Współtworzenia
-Po zalogowaniu się do galerii staje się członkami społeczności galerii. Jest członkiem społeczności może przyczynić się własne eksperymentów, aby inni użytkownicy mogą korzystać z rozwiązań, które zostały odnalezione.
+## <a name="contribute"></a>Współtworzenie
+Po zalogowaniu się do galerii, stanie się członkiem społeczności galerii. Jako członek społeczności może współtworzyć zawartość własnych eksperymentów, aby inni użytkownicy mogą korzystać z rozwiązania, które już znasz.
 
-### <a name="publish-your-experiment-to-the-gallery"></a>Publikowanie eksperymentu w galerii
+### <a name="publish-your-experiment-to-the-gallery"></a>Publikowanie eksperymentu do galerii
 
-1. Zaloguj się do usługi Machine Learning Studio za pomocą konta Microsoft.
-2. Tworzenie eksperymentu, a następnie ją uruchom.
-3. Jeśli wszystko jest gotowe do publikowania eksperymentu w galerii, na liście poniżej obszaru roboczego eksperymentu Akcje wybierz **publikowania do galerii**.
+1. Zaloguj się do usługi Machine Learning Studio, za pomocą konta Microsoft.
+2. Tworzenie eksperymentu, a następnie uruchom go.
+3. Gdy wszystko będzie gotowe do opublikowania eksperymentu w galerii, na liście poniżej obszaru roboczego eksperymentu, akcje wybierz **publikowania do galerii**.
 
     ![Wybierz pozycję "Publikuj do galerii"](./media/gallery-experiments/publish-experiment-to-gallery.png)
-4. Na **opis eksperymentu** wprowadź tytuł i tagów. Należy opisowy tytuł i tagów. Wyróżnij metod, które zostanie użyte lub rozwiązywanie rzeczywistych problemów. Na przykład eksperymentu opisowy tytuł "klasyfikacji binarnej: Twitter analizy wskaźniki nastrojów klientów."
+4. Na **opis eksperymentu** wpisz tytuł i tagów. Należy opisowy tytuł i tagów. Wyróżnij metod, które zostanie użyte lub rozwiązywania problemów rzeczywistych. Na przykład eksperymentu opisowy tytuł "Klasyfikacja binarna: analiza tonacji w usłudze Twitter."
 
-    ![Wprowadź tytuł i tagi do publikowania](./media/gallery-experiments/experiment-description.png)
-5. W **podsumowania** wprowadź podsumowanie eksperymentu. Zwięźle opisz eksperyment rozwiązuje problemu i jak złożoną.
-6. W **szczegółowy opis** pozycję opisano kroki wykonane w każdej części eksperymentu. Niektóre tematy przydatne do uwzględnienia są:
-   * Zrzut ekranu wykres eksperymentu
+    ![Wprowadź tytuł i tagi dla publikowania](./media/gallery-experiments/experiment-description.png)
+5. W **podsumowania** wprowadź podsumowanie eksperymentu. Zwięźle opisz problem rozwiązuje eksperymentu, a jak złożoną.
+6. W **szczegółowy opis** polu, opisano czynności wykonanej w każdej części eksperymentu. Kilka przydatnych tematów, aby uwzględnić to:
+   * Zrzut ekranu przedstawiający eksperymentu wykres
    * Wyjaśnienie i źródeł danych
    * Przetwarzanie danych
    * Inżynieria funkcji
    * Opis modelu
    * Wyniki i ocena wydajności modelu
 
-   Można użyć języka znaczników markdown sformatować opis. Aby zobaczyć, jak będzie wyglądać wpisy na stronie z opisem eksperymentu eksperyment został opublikowany, zaznacz **Podgląd**.
+   Można używać języka markdown do formatowania opis. Aby zobaczyć, jak wpisy na stronie eksperymentu opis będzie wyglądać po opublikowaniu eksperymentu, wybierz **Podgląd**.
 
-   ![Wybierz opcję "Wersji zapoznawczej", aby zobaczyć, jak będzie wyglądać tekst](./media/gallery-experiments/preview-markdown-text.png)
+   ![Wybierz pozycję "Preview", aby zobaczyć, jak będzie wyglądać tekstu](./media/gallery-experiments/preview-markdown-text.png)
 
    > [!TIP]
-   > Pola tekstowe podana edycji markdown i Podgląd są niewielkie. Zaleca się, że zapisu dokumentacji eksperymentu w edytorze języka znaczników markdown, skopiuj go, a następnie wklej ukończone dokumentacji w polu tekstowym w galerii. Po opublikowaniu eksperymentu, użytkownik może wprowadzić poprawki przy użyciu standardowych narzędzi sieci web tego markdown używany do edycji i podglądu.
+   > Pola tekstowe, podana edycji języka markdown i (wersja zapoznawcza) są małe. Zaleca się, że pisanie dokumentacji eksperymentu w edytora języka markdown, skopiuj go, a następnie wklej ukończone dokumentacji w polu tekstowym w galerii. Po opublikowaniu eksperymentu, użytkownik może wprowadzić poprawki przy użyciu standardowych narzędzi opartych na sieci web tego używanie języka markdown na potrzeby operacji Edytuj i w wersji zapoznawczej.
 
-7. Na **wybór obrazu** wybierz obraz miniatury swojego eksperymentu. Obraz miniatury wyświetlany u góry strony szczegółów eksperymentu, w kafelku eksperymentu. Inni użytkownicy zobaczą obraz miniatury przeglądających galerię. Przekaż obraz z komputera lub Wybierz podstawowy obraz w galerii.
+7. Na **wybór obrazu** wybierz obraz miniatury swojego eksperymentu. Obraz miniatury pojawia się u góry strony szczegółów eksperymentu, a na kafelku eksperymentu. Inni użytkownicy zobaczą obraz miniatury, podczas przeglądania galerii. Możesz przekazać obraz z komputera lub Wybierz podstawowy obraz z galerii.
     </br>
     ![Przekazywanie lub wybrać obraz w galerii](./media/gallery-experiments/select-gallery-image.png)
-8. Na **ustawienia** w obszarze **widoczność**, określ, czy do publikowania zawartości publicznie (**publicznego**) lub jest ona dostępna tylko dla osób, które mają łącze do strony ( **Nieznajdujące się na liście**).
+8. Na **ustawienia** w obszarze **widoczność**, wybierz, czy do publikowania zawartości publicznie (**publicznych**) lub jest dostępny tylko dla osób, które mają łącza do (strony **Nieznajdujące się na liście**).
 
-    ![Wybierz, czy chcesz opublikować publicznie lub jako nieznajdujące się na liście](./media/gallery-experiments/choose-public-or-unlisted.png)
+    ![Określ, czy chcesz opublikować publicznie lub jako nieznajdujące się na liście](./media/gallery-experiments/choose-public-or-unlisted.png)
 
     <!-- -->
 
    > [!TIP]
-   > Jeśli chcesz upewnij się, że w dokumentacji poprawne przed udostępnieniem publicznie, należy najpierw opublikować eksperymentu jako **Unlisted**. Później, możesz zmienić ustawienie widoczności do **publicznego** na stronie szczegółów eksperymentu.
+   > Jeśli chcesz upewnić się, w dokumentacji poprawne przed udostępnieniem publicznie, należy najpierw opublikować eksperymentu jako **Unlisted**. Później można zmienić ustawienie widoczności **publicznych** na stronie szczegółów eksperymentu.
    >
    >
-9. Aby opublikować eksperymentu w galerii, wybierz **OK** znacznik wyboru.
+9. Aby opublikować eksperymentu do galerii, wybierz **OK** znacznik wyboru.
 
     ![Wybierz znacznik wyboru OK, aby opublikować eksperymentu](./media/gallery-experiments/ok-checkmark.png)
 
-Aby uzyskać wskazówki dotyczące sposobu publikowania eksperyment galerii wysokiej jakości, zobacz [porady dotyczące dokumentowania i publikowania eksperymentu](#tips-for-documenting-and-publishing-your-experiment).
+Aby uzyskać wskazówki dotyczące sposobu publikowania eksperymentów galerii wysokiej jakości, zobacz [porady dotyczące Dokumentowanie i publikowania eksperymentu](#tips-for-documenting-and-publishing-your-experiment).
 
-To wszystko — wszystko gotowe.
+To wszystko — wszystko będzie gotowe.
 
-Można teraz wyświetlić eksperymentu w galerii i udostępnić link. Jeśli publikowany eksperymentu przy użyciu **publicznego** widoczność ustawienie eksperyment zostaną wyświetlone w przeglądania i wyników wyszukiwania w galerii. Można edytować dokumentacji eksperymentu na stronie szczegółów eksperymentu zawsze, gdy użytkownik jest zalogowany do galerii.
+Można teraz wyświetlić eksperymentu w galerii i Udostępnij link z innymi osobami. Jeśli jest publikowany eksperymentu przy użyciu **publicznych** widoczność ustawienie eksperymentu zostaną wyświetlone w przeglądania i w wynikach wyszukiwania w galerii. Można edytować z dokumentacją eksperyment na stronie szczegółów eksperymentu po każdym razem, gdy użytkownik jest zalogowany do galerii.
 
-Aby wyświetlić listę Twój wkład, wybierz obraz w prawym górnym rogu dowolnej strony w galerii. Następnie wybierz nazwę użytkownika, aby otworzyć strony swojego konta.
+Aby wyświetlić listę wkładów, wybierz obraz w prawym górnym rogu każdej strony galerii. Następnie wybierz nazwę użytkownika, aby otworzyć stronę konta.
 
 ![Wybierz nazwę swojego konta](./media/gallery-experiments/click-account-name.png)
 
-### <a name="update-your-experiment"></a>Zaktualizuj eksperymentu
-Jeśli chcesz, możesz wprowadzić zmiany do przepływu pracy (modułów, parametry i tak dalej) w eksperymencie opublikowany w galerii. W usłudze Machine Learning Studio wprowadź wszelkie zmiany, które chcesz dokonać eksperymentu, a następnie opublikować ponownie. Opublikowane eksperymentu zostaną zaktualizowane o wprowadzone zmiany.
+### <a name="update-your-experiment"></a>Aktualizuj eksperymentu
+Jeśli potrzebujesz, możesz wprowadzać zmiany, do przepływu pracy (moduły, parametry i tak dalej) w eksperymencie, który został opublikowany w galerii. W usłudze Machine Learning Studio należy wprowadzać żadnych zmian, które chcesz dokonać eksperymentu, a następnie opublikuj go ponownie. Opublikowane eksperymentu zostaną zaktualizowane wraz ze zmianami.
 
-Dla eksperymentu bezpośrednio w galerii, można zmienić dowolne z poniższych informacji:
+Do swojego eksperymentu bezpośrednio w galerii, można zmienić dowolne z następujących informacji:
 
 * Nazwa eksperymentu
 * Podsumowanie lub opisu
 * Tagi
 * Image (Obraz)
-* Ustawienie widoczności (**publicznego** lub **Unlisted**)
+* Ustawienie widoczności (**publicznych** lub **Unlisted**)
 
-Można również usunąć doświadczenia z galerii.
+Możesz również usunąć eksperymentu z galerii.
 
-Możesz wprowadzić te zmiany lub usunąć eksperymentu, na stronie szczegółów eksperymentu lub ze strony profilu w galerii.
+Możesz wprowadzić te zmiany lub usunięcia eksperymentu, na stronie szczegółów eksperymentu lub na stronie profilu w galerii.
 
 
 #### <a name="from-the-experiment-details-page"></a>Na stronie szczegółów eksperymentu
-Na stronie szczegółów eksperymentu, aby zmienić szczegóły eksperymentu, wybierz **Edytuj**.
+Na stronie szczegółów eksperyment, aby zmienić szczegóły swojego eksperymentu, wybierz **Edytuj**.
 
 ![Wybierz pozycję Edytuj, aby edytować eksperymentu](./media/gallery-experiments/edit-button.png)
 
-Na stronie Szczegóły przejdzie do trybu edycji. Aby wprowadzić zmiany, wybierz **Edytuj** obok nazwy eksperymentu, podsumowanie lub znaczników. Po zakończeniu wprowadzania zmiany wybierz **gotowe**.
+Na stronie szczegółów przejdzie do trybu edycji. Aby wprowadzić zmiany, wybierz **Edytuj** obok nazwy eksperymentu, podsumowanie lub tagów. Po zakończeniu wprowadzania zmian wybierz **gotowe**.
 
-![Wybierz pozycję "Edytuj", aby edytować szczegóły, a następnie wybierz pozycję "Gotowe", po zakończeniu](./media/gallery-experiments/edit-details-page.png)
+![Wybierz pozycję "Edytuj", aby edytować informacje, a następnie wybierz pozycję "Gotowe", po zakończeniu](./media/gallery-experiments/edit-details-page.png)
 
-Aby zmienić ustawienia widoczności dla eksperyment (**publicznego** lub **Unlisted**), lub aby usunąć doświadczenia z galerii, wybierz **ustawienia** ikony.
+Aby zmienić ustawienia widoczność eksperymentu (**publicznych** lub **Unlisted**), lub aby usunąć doświadczenia z galerii, wybierz **ustawienia** ikonę.
 
 ![Wybierz pozycję "Ustawienia", aby zmienić widoczność lub usunąć eksperymentu](./media/gallery-experiments/settings-button.png)
 
-#### <a name="from-your-profile-page"></a>Ze strony profilu
-Na stronie profilu wybierz strzałkę w dół do eksperymentu, a następnie wybierz **Edytuj**. Powoduje to przejście do strony szczegółów swojego eksperymentu w trybie edycji. Po zakończeniu wprowadzania zmiany wybierz **gotowe**.
+#### <a name="from-your-profile-page"></a>Na stronie profilu
+Na stronie profilu, wybierz strzałkę w dół eksperymentu, a następnie wybierz **Edytuj**. Spowoduje to przejście do strony szczegółów do swojego eksperymentu, w trybie edycji. Po zakończeniu wprowadzania zmian, wybierz **gotowe**.
 
-Aby usunąć doświadczenia z galerii, wybierz **usunąć**.
+Aby usunąć doświadczenia z galerii, wybierz **Usuń**.
 
-![Wybierz opcję "Edytuj" lub "Delete"](./media/gallery-experiments/edit-delete-buttons.png)
+![Wybierz pozycję "Edytuj" lub "Delete"](./media/gallery-experiments/edit-delete-buttons.png)
 
-### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Porady dotyczące dokumentowania i publikowania eksperymentu
-* Można założyć, że czytelnik ma wystąpić nauki poprzednich danych, ale może być przydatne do używania prostego języka. Wyjaśnień szczegółowo, jeśli to możliwe.
-* Pakietu Cortana Intelligence Suite jest stosunkowo nowe. Nie wszystkie czytników znają jak z niego korzystać. Podaj wystarczającej ilości informacji i krok wyjaśnienia, aby ułatwić Przejdź eksperymentu.
-* Elementy wizualne mogą być przydatne dla czytników interpretowania i korzystać z dokumentacją eksperymentu poprawnie. Elementy wizualne obejmują wykresów eksperymentów i zrzuty ekranu danych. Aby uzyskać więcej informacji o sposobie obejmują obrazy w dokumentacji eksperymentu, zobacz [przykłady i wskazówki dotyczące publikowania kolekcji](https://gallery.cortanaintelligence.com/Collection/Publishing-Guidelines-and-Examples-1).
-* Jeśli dołączysz zestawu danych w eksperymencie (to znaczy nie importowany zestawu danych za pośrednictwem modułu importu danych), zestaw danych jest częścią eksperymentu i został opublikowany w galerii. Upewnij się, że zestaw danych, który można opublikować warunki, które umożliwiają udostępnianie i pobieranie wszystkim osobom licencjonowania. Galeria udziały są objęte Azure [warunki użytkowania](https://azure.microsoft.com/support/legal/website-terms-of-use/).
+### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Porady dotyczące Dokumentowanie i publikowania eksperymentu
+* Można założyć, że czytelnik ma do nauki o danych z wcześniejszego doświadczenia, ale może być przydatne prostego języka. Opisano elementy szczegółowo, jeśli to możliwe.
+* Pakiet Cortana Intelligence Suite jest względnie nowe. Nie wszystkie czytelnicy znają jak z niej korzystać. Podaj wystarczająco dużo informacji i instrukcje krok po kroku wyjaśnień ułatwiające czytelnicy Przejdź eksperymentu.
+* Wizualizacje mogą być pomocne dla czytników zawartości do interpretacji i korzystać z dokumentacją eksperymentu poprawnie. Wizualizacje obejmują wykresów eksperymentów i zrzuty ekranu danych. Aby uzyskać więcej informacji na temat obejmują obrazy w dokumentacji eksperymentu, zobacz [przykłady i wskazówki dotyczące publikowania kolekcji](https://gallery.cortanaintelligence.com/Collection/Publishing-Guidelines-and-Examples-1).
+* Jeśli dodasz zestaw danych w eksperymencie (czyli nie importujesz zestawu danych za pomocą modułu importu danych), zestaw danych jest częścią eksperymentu i został opublikowany w galerii. Upewnij się, że zestaw danych, którą publikujesz warunki, które umożliwiają udostępnianie i pobieranie przez dowolną osobę licencjonowania. Wkład do galerii znajdują się w obszarze Azure [warunki użytkowania](https://azure.microsoft.com/support/legal/website-terms-of-use/).
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
-**Jakie są wymagania dotyczące przesyłania lub edytowanie obrazu dla moim eksperymencie?**
+**Jakie są wymagania dotyczące przesyłania lub edytowanie obrazu na moim eksperymencie?**
 
-Obrazy przesyłane z eksperymencie są używane do tworzenia kafelka eksperymentu dla Ciebie. Zaleca się obrazy mniejszy niż 500 KB aspect ratio 3:2 i rozdzielczością 960 &#215; 640.
+Obrazy, którzy przesłali z eksperymentu są używane do utworzenia kafelka eksperymentu dla przekazywanego wkładu. Zaleca się, że obrazów być mniejszy niż 500 KB aspect ratio 3:2 i rozpoznawanie 960 &#215; 640.
 
-**Co się dzieje z zestawu danych używanych w eksperymencie? Jest zestaw danych także opublikowany w galerii?**
+**Co się dzieje z zestawu danych, używane w eksperymencie? Zestaw danych opublikowano również w galerii?**
 
-Zestaw danych jest częścią eksperymentu, jest on zaimportowany przez moduł importowanie danych w zestawie danych jest opublikowany w galerii w ramach eksperymentu. Upewnij się, że zestaw danych, która publikować z eksperymentu ma odpowiednie postanowień licencyjnych. Postanowienia licencyjne powinna zezwalać na każdy do udziału, a następnie Pobierz dane.
+Jeśli zestaw danych jest częścią eksperymentu, a nie jest importowany za pomocą modułu importu danych, zestaw danych jest opublikowany w galerii w ramach eksperymentu. Upewnij się, że zestaw danych, która publikować z eksperymentu ma odpowiednie postanowienia licencyjne. Postanowienia licencyjne powinno umożliwić wszystkim użytkownikom udostępnianie i Pobierz dane.
 
-**Masz eksperymentu, która używa modułu importowanie danych do pobierania danych z usługi Azure HDInsight lub SQL Server. Używa moich poświadczeń do pobierania danych. Można opublikować tego rodzaju eksperymentu? Jak można mieć pewność, nie będzie można udostępniać moje poświadczenia?**
+**Masz eksperyment, który używa modułu importu danych do pobierania danych z usługi Azure HDInsight lub programu SQL Server. Moje poświadczenia używa do pobierania danych. Czy można opublikować tego rodzaju eksperymentu? Jak mogę można czuwać nie będą udostępniane moje poświadczenia?**
 
-Obecnie nie można opublikować eksperymentu, który korzysta z poświadczeń w galerii.
+Obecnie nie można opublikować eksperyment, który korzysta z poświadczeń w galerii.
 
 **Jak wprowadzić wiele tagów?**
 
-Po wprowadzeniu tag, aby wprowadzić innego tagu, naciśnij klawisz Tab.
+Po wprowadzeniu tag, aby wprowadzić inny znacznik, naciśnij klawisz Tab.
 
 **[Przejdź do galerii](http://gallery.cortanaintelligence.com)**
 

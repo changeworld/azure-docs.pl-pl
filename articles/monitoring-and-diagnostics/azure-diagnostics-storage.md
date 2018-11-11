@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: jeconnoc
 ms.component: diagnostic-extension
-ms.openlocfilehash: 733c84ef9e6cee1a8ea488f0007ade1e72f39737
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f9ae9e2edea1daf2fda825053c777521f042413d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033253"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278926"
 ---
-# <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Store i przeglądanie danych diagnostycznych w usłudze Azure Storage
+# <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Przechowywanie i przeglądanie danych diagnostycznych w usłudze Azure Storage
 Dane diagnostyczne nie są trwale przechowywane, chyba że przeniesiesz emulatora usługi Microsoft Azure storage lub magazynu Azure. Jeden raz w magazynie, można je wyświetlić przy użyciu jednego z kilku dostępnych narzędzi.
 
 ## <a name="specify-a-storage-account"></a>Określ konto magazynu
@@ -73,7 +73,7 @@ Dane dziennika są przechowywane w magazynie obiektów Blob lub tabel o następu
 ## <a name="tools-to-view-diagnostic-data"></a>Narzędzia do wyświetlania danych diagnostycznych
 Niektóre narzędzia są dostępne do wyświetlania danych, gdy zostanie przeniesiona do magazynu. Na przykład:
 
-* Eksploratora serwera w programie Visual Studio — po zainstalowaniu narzędzi platformy Azure dla programu Microsoft Visual Studio umożliwia węzła usługi Azure Storage w Eksploratorze serwera z Twojego konta usługi Azure storage widoku tylko do odczytu obiektów blob i danych tabeli. Można wyświetlić dane z konta magazynu lokalnego emulatora, a także z kont usługi storage utworzonego na platformie Azure. Aby uzyskać więcej informacji, zobacz [przeglądanie i zarządzanie zasobami magazynu za pomocą Eksploratora serwera](../vs-azure-tools-storage-resources-server-explorer-browse-manage.md).
+* Eksploratora serwera w programie Visual Studio — po zainstalowaniu narzędzi platformy Azure dla programu Microsoft Visual Studio umożliwia węzła usługi Azure Storage w Eksploratorze serwera z Twojego konta usługi Azure storage widoku tylko do odczytu obiektów blob i danych tabeli. Można wyświetlić dane z konta magazynu lokalnego emulatora, a także z kont usługi storage utworzonego na platformie Azure. Aby uzyskać więcej informacji, zobacz [przeglądanie i zarządzanie zasobami magazynu za pomocą Eksploratora serwera](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) jest aplikacją autonomiczną, która umożliwia łatwą obsługę danych w usłudze Azure Storage w Windows, OS x i Linux.
 * [Usługa Azure Management Studio](http://www.cerebrata.com/products/azure-management-studio/introduction) obejmuje Menedżera diagnostyki platformy Azure, dzięki czemu można wyświetlić i pobrać oraz zarządzać nimi dane diagnostyczne zbierane przez aplikacje działające na platformie Azure.
 

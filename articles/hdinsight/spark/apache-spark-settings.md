@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/26/2018
-ms.openlocfilehash: 926ce58872b06b41a0c7942b7090dcb4d5c8df03
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.openlocfilehash: 9533992b939983ceda37a7c98d0bc2426168a0ac
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956493"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279362"
 ---
 # <a name="configure-spark-settings"></a>Konfigurowanie ustawień platformy Spark
 
@@ -30,11 +30,8 @@ Liczba maszyn wirtualnych i rozmiarach maszyn wirtualnych, dla węzłów w klast
 
 Użyj najlepsze wersji platformy Spark dla klastra.  Usługa HDInsight obejmuje kilka wersji platformy Spark i HDInsight sam.  Każda wersja platformy Spark zawiera zestaw domyślnych ustawień klastra.  
 
-Podczas tworzenia nowego klastra, w tym miejscu są bieżącej wersji platformy Spark do wyboru:
+Podczas tworzenia nowego klastra, istnieje wiele wersji platformy Spark do wyboru. Aby zapoznać się z pełną listą [HDInsight składniki i wersje](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning)
 
-![Wersje platformy Spark](./media/apache-spark-settings/spark-version.png)
-
-Platforma Spark 2.x można uruchomić znacznie lepsze niż Spark 1.x. Platforma Spark 2.x ma kilka optymalizacji wydajności, takie jak Wolfram, Catalyst optymalizacji zapytań i nie tylko.  
 
 > [!NOTE]
 > Domyślna wersja platformy Apache Spark w usłudze HDInsight mogą ulec zmianie bez powiadomienia. Jeśli masz zależność wersji, firma Microsoft zaleca określić tej konkretnej wersji, podczas tworzenia klastrów za pomocą zestawu SDK platformy .NET, programu Azure PowerShell i klasycznego wiersza polecenia platformy Azure.

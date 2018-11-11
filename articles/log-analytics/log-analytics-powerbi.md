@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 96c518bee85b0b3dce9421e4cd9a1f2ada357bf0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7cf4613f2fdceca3e869473ed3ec7f47fb417fcb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259976"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277652"
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>Importuj dane usługi Azure Log Analytics w usłudze Power BI
 
@@ -33,7 +33,7 @@ Aby zaimportować dane z obszaru roboczego usługi Log Analytics w usłudze Powe
 ![Usługi log Analytics w usłudze Power BI](media/log-analytics-powerbi/overview.png)
 
 ## <a name="export-query"></a>Eksportuj kwerendy
-Rozpocznij od utworzenia [wyszukiwanie w dzienniku](log-analytics-log-search-new.md) , zwraca dane z usługi Log Analytics mają do wypełniania zestawu danych usługi Power BI.  Następnie wyeksportować zapytanie do [języku Power Query (M)](https://msdn.microsoft.com/library/mt807488.aspx) których można używać w programie Power BI Desktop.
+Rozpocznij od utworzenia [wyszukiwanie w dzienniku](log-analytics-queries.md) , zwraca dane z usługi Log Analytics mają do wypełniania zestawu danych usługi Power BI.  Następnie wyeksportować zapytanie do [języku Power Query (M)](https://msdn.microsoft.com/library/mt807488.aspx) których można używać w programie Power BI Desktop.
 
 1. Tworzenie przeszukiwania dzienników w usłudze Log Analytics, aby wyodrębnić dane dla zestawu danych.
 2. Jeśli używasz portalu przeszukiwania dzienników, kliknij przycisk **usługi Power BI**.  Jeśli używasz portalu analiza, wybierz **wyeksportować** > **usługi Power BI zapytania (M)**.  Te dwie opcje eksportowania zapytania do pliku tekstowego o nazwie **PowerBIQuery.txt**. 

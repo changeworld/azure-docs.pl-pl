@@ -5,20 +5,21 @@ services: automation
 author: georgewallace
 ms.service: automation
 ms.topic: include
-ms.date: 04/05/2018
+ms.date: 11/07/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: abe7668ed16ddd5cc1b247207d3e80f7c1118137
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: 70cdd5a9d0482c24dfeb2037ae56b86cd9339fcf
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50964569"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285795"
 ---
 | Zasób | Limit maksymalny |Uwagi|
 | --- | --- |---|
 | Maksymalna liczba nowych zadań, które mogą być przesyłane co 30 sekund na konto usługi Automation (innych niż zaplanowane zadania) |100 |Ten limit jest trafień, kolejne żądania, aby utworzyć zadanie zakończyć się niepowodzeniem. Klient odbiera odpowiedź o błędzie.|
 | Maksymalna liczba równoczesnych zadań uruchomionych na tym samym wystąpieniu czas na konto usługi Automation (innych niż zaplanowane zadania) |200 |Ten limit jest trafień, kolejne żądania, aby utworzyć zadanie zakończyć się niepowodzeniem. Klient odbiera odpowiedź o błędzie.|
+| Maksymalny rozmiar magazynu metadanych zadania dla 30-dniowego okresu kroczącego. | 10GB (około 4 mln zadań)|Ten limit jest trafień, kolejne żądania, aby utworzyć zadanie zakończyć się niepowodzeniem. |
 | Maksymalna liczba modułów, które można importować co 30 sekund na konto usługi Automation |5 ||
 | Maksymalny rozmiar modułu |100 MB ||
 | Czas wykonywania zadania — warstwa bezpłatna |500 minut na subskrypcję na miesiąc kalendarzowy ||

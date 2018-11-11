@@ -17,12 +17,12 @@ ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: 8d219ecb2d8a6694da038044bcab883a5535e957
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dc3bbab2242321ae736f3f2cefb1eed5e96e834e
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999260"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288734"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Słownik deweloperów usługi Azure Active Directory
 
@@ -120,7 +120,7 @@ Zobacz [odwołania do tokenu usługi Azure AD] [ AAD-Tokens-Claims] Aby uzyskać
 
 ## <a name="microsoft-identity-platform"></a>Platforma tożsamości firmy Microsoft
 
-Platforma tożsamości firmy Microsoft jest unowocześnienia funkcji usługi Azure Active Directory (Azure AD) identity usługi i dla deweloperów platformy. Dzięki niej deweloperzy mogą tworzyć aplikacje, które podpisania wszystkich tożsamości firmy Microsoft, uzyskiwać tokeny do wywołania programu Microsoft Graph, Microsoft APIs lub interfejsów API, które programiści. Jest w pełni funkcjonalne platforma, która składa się z usługi uwierzytelniania, bibliotek, rejestrowanie aplikacji i konfiguracji, dokumentacji dla deweloperów pełną, przykłady kodu i innej zawartości dla deweloperów. Platforma tożsamości firmy Microsoft obsługuje standardowych protokołów branżowych, takich jak OAuth 2.0 i OpenID Connect. Zobacz [platforma tożsamości firmy Microsoft o](about-microsoft-identity-platform.md) Aby uzyskać więcej informacji.
+Platforma tożsamości firmy Microsoft to unowocześnienie platformy deweloperów i usługi tożsamości Azure Active Directory (Azure AD). Dzięki niej deweloperzy mogą tworzyć aplikacje, które logują użytkowników przy użyciu wszystkich tożsamości firmy Microsoft i uzyskują tokeny do wywoływania programu Microsoft Graph, innych interfejsów API firmy Microsoft lub interfejsów API opracowanych przez deweloperów. Jest w pełni funkcjonalne platforma, która składa się z usługi uwierzytelniania, bibliotek, rejestrowanie aplikacji i konfiguracji, dokumentacji dla deweloperów pełną, przykłady kodu i innej zawartości dla deweloperów. Platforma tożsamości firmy Microsoft obsługuje standardowe protokoły branżowe, takie jak OAuth 2.0 i OpenID Connect. Zobacz [platforma tożsamości firmy Microsoft o](about-microsoft-identity-platform.md) Aby uzyskać więcej informacji.
 
 ## <a name="multi-tenant-application"></a>aplikacji wielodostępnych
 
@@ -163,7 +163,7 @@ Role są ciągami zdefiniowany zasób (na przykład "osoba zatwierdzająca wydat
 
 Aby uzyskać szczegółowe omówienie ról aplikacji udostępnianych przez interfejs API programu Graph usługi Azure AD, zobacz [zakresów uprawnień interfejsu API programu Graph][AAD-Graph-Perm-Scopes]. Na przykład krok po kroku wdrożenia, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal][AAD-RBAC].
 
-## <a name="scopes"></a>Zakresy
+## <a name="scopes"></a>scopes
 
 Podobnie jak [role](#roles), zakresy umożliwiają [serwer zasobów](#resource-server) dotyczące dostępu do jego chronionych zasobów. Zakresy są używane do implementowania [zakresu] [ OAuth2-Access-Token-Scopes] kontroli dostępu, aby uzyskać [aplikacja kliencka](#client-application) , nadano delegowanego dostępu do zasobu udzielonej przez właściciela.
 
@@ -244,7 +244,7 @@ Aby przekazać opinie i pomoc do analizy i połącz kształt tej zawartości, w 
 [AZURE-portal]: https://portal.azure.com
 [AAD-RBAC]: ../../role-based-access-control/role-assignments-portal.md
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
-[Microsoft-Graph]: https://graph.microsoft.io
+[Microsoft-Graph]: https://developer.microsoft.com/graph
 [O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
 [OAuth2-AuthZ-Endpoint]: https://tools.ietf.org/html/rfc6749#section-3.1

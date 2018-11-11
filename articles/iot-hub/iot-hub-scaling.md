@@ -8,21 +8,21 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 6ae0217ed4b8833eb42a4719a1f2525461f9dcdd
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: d98a890cfb6bd388477ff3f14b81c8df02ece879
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143652"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287969"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybrać właściwą warstwę usługi IoT Hub dla Twojego rozwiązania
 
-Każde rozwiązanie IoT jest inny, dzięki czemu usługa Azure IoT Hub oferuje kilka opcji, w oparciu o cenach i skali. W tym artykule mają na celu ułatwić ocenę potrzeb usługi IoT Hub. Cennik informacji na temat warstw usługi IoT Hub można znaleźć [cenach usługi IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub). 
+Każde rozwiązanie IoT jest inny, dzięki czemu usługa Azure IoT Hub oferuje kilka opcji, w oparciu o cenach i skali. W tym artykule mają na celu ułatwić ocenę potrzeb usługi IoT Hub. Aby uzyskać informacje o warstwach usługi IoT Hub, zobacz [cenach usługi IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub). 
 
 Aby zdecydować, którą warstwę usługi IoT Hub jest odpowiednia dla danego rozwiązania, spróbuj odpowiedzieć sobie dwa pytania:
 
 **Jakie funkcje chcę użyć?**
-Usługa Azure IoT Hub oferuje dwie warstwy, podstawowa i standardowa, które różnią się w wiele funkcji, które obsługują. Jeśli rozwiązanie IoT opiera się wokół zbieranie danych z urządzeń i centralnie je analizować, warstwa basic jest prawdopodobnie odpowiedni dla Ciebie. Jeśli zdalne sterowanie urządzeniami IoT lub dystrybucji niektórych obciążeń na samych urządzeń za pomocą bardziej zaawansowanych ustawień konfiguracji należy rozważyć w warstwie standardowa. Aby uzyskać szczegółowy podział, które funkcje dostępne w poszczególnych warstwach w dalszym ciągu [warstw podstawowa i standardowa](#basic-and-standard-tiers).
+Usługa Azure IoT Hub oferuje dwie warstwy, podstawowa i standardowa, które różnią się w wiele funkcji, które obsługują. Jeśli rozwiązanie IoT opiera się wokół zbieranie danych z urządzeń i centralnie je analizować, warstwa basic jest prawdopodobnie odpowiedni dla Ciebie. Jeśli chcesz, zdalne sterowanie urządzeniami IoT lub dystrybucji niektórych obciążeń na samych urządzeń za pomocą bardziej zaawansowanych ustawień konfiguracji, należy rozważyć warstwy standardowa. Aby uzyskać szczegółowy podział, które funkcje dostępne w poszczególnych warstwach w dalszym ciągu [warstw podstawowa i standardowa](#basic-and-standard-tiers).
 
 **Jak dużo danych chcę przenieść codziennie?**
 Każda warstwa usługi IoT Hub jest dostępna w trzech rozmiarach, na podstawie ogólnej przepływności ilości danych może obsługiwać w każdym dniu. Te rozmiary numerycznie są identyfikowane jako 1, 2 i 3. Na przykład każda jednostka w Centrum IoT poziomu 1 może obsługiwać tysiąc 400 komunikatów dziennie, gdy jednostka poziomu 3 może obsługiwać 300 milionów. Aby uzyskać więcej informacji na temat wytycznych dane w dalszym ciągu [przepływność komunikatów](#message-throughput).
@@ -31,7 +31,7 @@ Każda warstwa usługi IoT Hub jest dostępna w trzech rozmiarach, na podstawie 
 
 Warstwy standardowa usługi IoT Hub umożliwia korzystanie z wszystkich funkcji i jest wymagana dla dowolnego rozwiązania IoT, które chcą ułatwić korzystanie z możliwości komunikacji dwukierunkowej. Warstwa podstawowa umożliwia podzbiór funkcji i jest przeznaczona dla rozwiązań IoT, które potrzebują tylko komunikację jednokierunkową z urządzeń do chmury. Obie warstwy oferują te same funkcje zabezpieczeń i uwierzytelniania.
 
-Po utworzeniu Centrum IoT hub można uaktualnić z warstwy podstawowa do warstwy standard bez przerywania istniejących. Aby uzyskać więcej informacji, zobacz [uaktualnianie Centrum IoT hub](iot-hub-upgrade.md). Należy zauważyć, że partycja maksymalny limit dla warstwy podstawowa usługi IoT Hub jest 8, a w warstwie standardowa wynosi 32. Większość centrów IoT potrzebuje tylko 4 partycjami. Limit partycji jest wybierany, gdy usługa IoT Hub zostanie utworzona i odnosi się komunikaty urządzenie chmura z liczbą jednoczesnych czytników tych komunikatów. Ta wartość zmienia się podczas migracji z warstwy podstawowa do warstwy standardowa. Należy również zauważyć, że tylko jeden typ [wersji](https://azure.microsoft.com/pricing/details/iot-hub/) w obrębie warstwy można wybrać dla każdej usługi IoT Hub. Na przykład można utworzyć usługi IoT Hub przy użyciu wielu jednostek S1, ale nie kombinację jednostek z różnych wersji, takich jak S1 i B3 lub warstwy S1 i S2.
+Po utworzeniu Centrum IoT hub, możesz uaktualnić z warstwy podstawowa do warstwy standard bez przerywania istniejących. Aby uzyskać więcej informacji, zobacz [uaktualnianie Centrum IoT hub](iot-hub-upgrade.md). Limit maksymalny partycji dla usługi IoT Hub w warstwie podstawowa jest 8, a w warstwie standardowa wynosi 32. Większość centrów IoT potrzebuje tylko 4 partycjami. Limit partycji jest wybierany, gdy usługa IoT Hub zostanie utworzona i odnosi się komunikaty urządzenie chmura z liczbą jednoczesnych czytników tych komunikatów. Ta wartość zmienia się podczas migracji z warstwy podstawowa do warstwy standardowa. Należy również zauważyć, że tylko jeden typ [wersji](https://azure.microsoft.com/pricing/details/iot-hub/) w obrębie warstwy można wybrać dla każdej usługi IoT Hub. Na przykład można utworzyć usługi IoT Hub przy użyciu wielu jednostek S1, ale nie kombinację jednostek z różnych wersji, takich jak S1 i B3 lub warstwy S1 i S2.
 
 | Możliwości | Warstwa Podstawowa | Warstwa standardowa |
 | ---------- | ---------- | ------------- |
@@ -42,7 +42,7 @@ Po utworzeniu Centrum IoT hub można uaktualnić z warstwy podstawowa do warstwy
 | [Usługa Device Provisioning](../iot-dps/about-iot-dps.md) | Yes | Yes |
 | [Monitorowanie i Diagnostyka](iot-hub-monitor-resource-health.md) | Yes | Yes |
 | [Komunikaty z chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) |   | Yes |
-| [Bliźniacze reprezentacje urządzeń](iot-hub-devguide-device-twins.md), [bliźniaczych reprezentacjach modułów](iot-hub-devguide-module-twins.md) i [zarządzania urządzeniami](iot-hub-device-management-overview.md) |   | Yes |
+| [Bliźniacze reprezentacje urządzeń](iot-hub-devguide-device-twins.md), [bliźniaczych reprezentacjach modułów](iot-hub-devguide-module-twins.md), i [zarządzania urządzeniami](iot-hub-device-management-overview.md) |   | Yes |
 | [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Yes |
 
 Centrum IoT oferuje bezpłatną warstwę, która jest przeznaczona do testowania i oceny. Zawiera wszystkie funkcje warstwy standardowa, ale ograniczone limity obsługi komunikatów. Nie można uaktualnić z warstwy bezpłatna, podstawowa lub standardowa. 
@@ -115,7 +115,7 @@ W jednym centrum IoT umożliwia skalowanie do milionów urządzeń, czasami rozw
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby uzyskać dodatkowe informacje na temat możliwości usługi IoT Hub i szczegółowe informacje dotyczące wydajności, zobacz [cenach usługi IoT Hub] [link-pricing] lub [usługi IoT Hub, przydziały i ograniczenia][IoT Hub quotas and throttles].
+* Aby uzyskać więcej informacji na temat możliwości usługi IoT Hub i szczegółowe informacje dotyczące wydajności, zobacz [cenach usługi IoT Hub] [ lnk-pricing] lub [usługi IoT Hub, przydziały i ograniczenia] [ IoT Hub quotas and throttles].
 * Aby zmienić warstwę usługi IoT Hub, wykonaj kroki opisane w [uaktualnianie Centrum IoT hub](iot-hub-upgrade.md).
 
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub

@@ -15,19 +15,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
-ms.openlocfilehash: 02a12e917ed36367ffac1ac2e7a1fef1c6098ea7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0594b9b40fdf8647f99946a31dbb47a95c9694ac
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985371"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300357"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook"></a>Podręcznik dotyczący rozwiązań analizy Telemetrii pojazdów
-Menu łącze do rozdziały element playbook: 
 
-[!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
-
-## <a name="overview"></a>Przegląd
 Komputery Super superkomputery laboratorium i są teraz zaparkowane w warsztatów samochodowych. Są one teraz są umieszczane w samochody, które zawierają wiele czujników. Czujniki te umożliwiają je śledzić i monitorować miliony zdarzeń co sekundę. Najpóźniej w roku 2020 większość tych pojazdów będzie połączona z Internetem. Sięgnięcie do tego bogactwa danych zapewnia większe bezpieczeństwo, niezawodność, a więc zapewniają lepsze środowisko. Firma Microsoft udziela to dream mogą stać się rzeczywistością dzięki pakietowi Cortana Intelligence.
 
 Pakiet Cortana Intelligence to w pełni zarządzane dane big Data i zaawansowanych analiz, można użyć w celu przekształcania danych w inteligentną akcję. Szablon rozwiązania analizy Telemetrii pojazdów Cortana analizy pokazano, jak dealerzy i producenci samochodów oraz firmy ubezpieczeniowe mogą uzyskać w czasie rzeczywistym i predykcyjny wgląd w kondycję pojazdów i nawyki kierowców.
@@ -54,3 +50,8 @@ To rozwiązanie uzyskuje dostęp do dwóch różnych źródeł danych:
 * **Symulowane sygnały pojazdu i Diagnostyka**: symulator telematyce pojazdu emituje informacje diagnostyczne i sygnałów, które odpowiadają stan pojazdu i opracowuje wzorca w danym punkcie w czasie. 
 * **Katalog pojazdów**: tego zestawu danych referencyjnych mapuje VIN numery modeli.
 
+## <a name="next-steps"></a>Następne kroki
+
+Aby poznać dalsze tego rozwiązania, zobacz [podręcznik dotyczący rozwiązań analizy Telemetrii pojazdów: szczegółami rozwiązania](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md).
+
+Aby dowiedzieć się, jak skonfigurować raporty usługi Power BI i pulpity nawigacyjne dla tego rozwiązania, zobacz [instrukcje dotyczące konfiguracji pulpitu nawigacyjnego można przeprowadzić przy użyciu danych Telemetrycznych analizy rozwiązania szablonu usługi Power BI](cortana-analytics-playbook-vehicle-telemetry-powerbi.md).

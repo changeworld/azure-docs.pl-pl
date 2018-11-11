@@ -3,18 +3,18 @@ title: 'Samouczek: Przetwarzanie danych z usługi Azure Event Hubs przy użyciu 
 description: Platforma Apache Spark w usłudze Azure HDInsight nawiązać połączenie z usługi Azure Event Hubs i przetwarzanie danych przesyłanych strumieniowo.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: conceptual
-ms.date: 06/14/2018
-ms.openlocfilehash: 9cdb5ae31e2743b5ebe877ddd8d6680423e3d9b2
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.openlocfilehash: eb2145d2e7b787bafa0b546449282454f7059999
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046256"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283414"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-spark-in-hdinsight"></a>Samouczek: Proces opublikuje za pomocą usługi Azure Event Hubs i platformy Spark w HDInsight
 
@@ -73,18 +73,14 @@ To Centrum zdarzeń jest służy do przechowywania tweetów.
     ![Podaj nazwę Centrum zdarzeń dla aparatu Spark streaming przykład](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Podaj nazwę Centrum zdarzeń dla aparatu Spark streaming przykład")
 5. Wybierz **Utwórz** można utworzyć przestrzeni nazw.
 
-6. Otwórz przestrzeń nazw Centrum zdarzeń przy użyciu następujących instrukcji:
+7. Otwórz przestrzeń nazw Centrum zdarzeń przy użyciu następujących instrukcji:
 
     1. W portalu, wybierz **wszystkich usług**.
     2. W polu filtru wprowadź **usługi event hubs**.
-    3. Kliknij dwukrotnie utworzoną przestrzeń nazw.
+    3. Wybierz nowo utworzoną przestrzeń nazw.
     4. Wybierz **+ Centrum zdarzeń**.
 
-6. Na liście przestrzeni nazw usługi Event Hubs wybierz nowo utworzoną przestrzeń nazw.      
-5. Wybierz **usługi Event Hubs**, a następnie wybierz pozycję **+ Centrum zdarzeń** utworzyć nowe Centrum zdarzeń.
-  
-
-6. Wprowadź następujące wartości:
+8. Wprowadź następujące wartości:
 
     - Nazwa: Nadaj nazwę Centrum zdarzeń.
     - Liczba partycji: 10
@@ -92,12 +88,12 @@ To Centrum zdarzeń jest służy do przechowywania tweetów.
    
     ![Podaj szczegóły Centrum zdarzeń dla aparatu Spark streaming przykład](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Podaj szczegóły Centrum zdarzeń dla aparatu Spark streaming przykład")
 
-7. Wybierz pozycję **Utwórz**.
-8. Wybierz **zasady dostępu współdzielonego** dla przestrzeni nazw (Uwaga nie jest zasady dostępu współdzielonego Centrum zdarzeń), a następnie wybierz **RootManageSharedAccessKey**.
+9. Wybierz pozycję **Utwórz**.
+10. Wybierz **zasady dostępu współdzielonego** dla przestrzeni nazw (Uwaga nie jest zasady dostępu współdzielonego Centrum zdarzeń), a następnie wybierz **RootManageSharedAccessKey**.
     
      ![Ustawianie zasad Centrum zdarzeń dla aparatu Spark streaming przykład](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "zasad Ustaw Centrum zdarzeń dla aparatu Spark streaming przykład")
 
-9. Zapisz wartości **klucza podstawowego** i **parametry połączenia — klucz podstawowy** w dalszej części tego samouczka.
+11. Zapisz wartości **klucza podstawowego** i **parametry połączenia — klucz podstawowy** w dalszej części tego samouczka.
 
      ![Wyświetl klucze zasad Centrum zdarzeń dla aparatu Spark streaming przykład](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "zasad Centrum zdarzeń widoku kluczy w przypadku przykładu przesyłania strumieniowego platformy Spark")
 
@@ -222,7 +218,7 @@ Należy utworzyć inny notesu Jupyter i nadaj mu **ReadTweetsFromEventHub**.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Usługa HDInsight zapisuje Twoje dane w usłudze Azure Storage lub Azure Data Lake Store, więc możesz bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane. Jeśli planujesz natychmiastowe rozpoczęcie pracy z następnym samouczkiem, warto zachować klaster.
+Usługa HDInsight zapisuje Twoje dane w usłudze Azure Storage lub Azure Data Lake Store, więc możesz bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Jeśli planujesz pracę w następnym samouczku natychmiast, możesz chcieć zachować klaster, w przeciwnym razie przejdź dalej i usunąć klaster.
 
 Otwórz klaster w witrynie Azure Portal, a następnie wybierz pozycję **Usuń**.
 

@@ -13,12 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: a39ae42ba2344cb39318809e2f120e01a75344d7
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b595e62e032743be2655406ac02c8db94cf708f9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025790"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281771"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Jak używać zestawu SDK aplikacji usługi Azure Mobile dla systemu Android
 
@@ -1047,7 +1047,7 @@ Ogólny proces zalogować się przy użyciu uwierzytelniania przepływu klienta 
 
 * Skonfiguruj uwierzytelnianie usługi Azure App Service i autoryzacji, tak jak serwer przepływu uwierzytelniania.
 * Zintegruj dostawcy uwierzytelniania zestawu SDK do uwierzytelniania w celu wygenerowania tokenu dostępu.
-* Wywołaj `.login()` metody w następujący sposób:
+* Wywołaj `.login()` metody w następujący sposób (`result` powinien być `AuthenticationResult`):
 
     ```java
     JSONObject payload = new JSONObject();
@@ -1065,6 +1065,8 @@ Ogólny proces zalogować się przy użyciu uwierzytelniania przepływu klienta 
     });
     ```
 
+Zobacz pełny przykład kodu w następnej sekcji.
+
 Zastąp `onSuccess()` metody za pomocą dowolnie kod mają być używane podczas logowania się pomyślnie.  `{provider}` Ciągu jest prawidłowy dostawca: **aad** (Azure Active Directory), **facebook**, **google**, **microsoftaccount**, lub **twitter**.  Jeśli zaimplementowano uwierzytelniania niestandardowego, można także zastosować tag dostawcy uwierzytelniania niestandardowego.
 
 ### <a name="adal"></a>Uwierzytelnianie użytkowników za pomocą Active Directory Authentication Library (ADAL)
@@ -1074,35 +1076,35 @@ Active Directory Authentication Library (ADAL) służy do logowania się użytko
 1. Skonfiguruj zaplecza aplikacji mobilnej do logowania w usłudze AAD, wykonując [sposób konfigurowania usługi App Service dla nazwy logowania usługi Active Directory] [ 22] samouczka. Upewnij się ukończyć opcjonalny krok rejestrowanie natywnej aplikacji klienckiej.
 2. Zainstaluj biblioteki ADAL, modyfikując z plikiem build.gradle, aby uwzględnić następujące definicje:
 
-```
-repositories {
-    mavenCentral()
-    flatDir {
-        dirs 'libs'
+    ```
+    repositories {
+        mavenCentral()
+        flatDir {
+            dirs 'libs'
+        }
+        maven {
+            url "YourLocalMavenRepoPath\\.m2\\repository"
+        }
     }
-    maven {
-        url "YourLocalMavenRepoPath\\.m2\\repository"
+    packagingOptions {
+        exclude 'META-INF/MSFTSIG.RSA'
+        exclude 'META-INF/MSFTSIG.SF'
     }
-}
-packagingOptions {
-    exclude 'META-INF/MSFTSIG.RSA'
-    exclude 'META-INF/MSFTSIG.SF'
-}
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile('com.microsoft.aad:adal:1.1.1') {
-        exclude group: 'com.android.support'
-    } // Recent version is 1.1.1
-    compile 'com.android.support:support-v4:23.0.0'
-}
-```
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+        compile('com.microsoft.aad:adal:1.1.1') {
+            exclude group: 'com.android.support'
+        } // Recent version is 1.1.1
+        compile 'com.android.support:support-v4:23.0.0'
+    }
+    ```
 
-1. Dodaj następujący kod do aplikacji, co następujące elementy zastępcze:
+3. Dodaj następujący kod do aplikacji, co następujące elementy zastępcze:
 
-* Zastąp **INSERT-urzędu-tutaj** nazwą dzierżawy, w której aprowizowano aplikacji. Powinna być w formacie https://login.microsoftonline.com/contoso.onmicrosoft.com.
-* Zastąp **INSERT zasobów — identyfikator — tutaj** z Identyfikatorem klienta dla zaplecza aplikacji mobilnej. Można uzyskać identyfikator klienta z **zaawansowane** karcie **ustawienia usługi Azure Active Directory** w portalu.
-* Zastąp **INSERT klienta-ID — tutaj** z Identyfikatorem klienta został skopiowany z aplikacja kliencka macierzystego.
-* Zastąp **INSERT PRZEKIEROWANIA-URI-tutaj** z witryny */.auth/login/done* punktu końcowego, przy użyciu schematu HTTPS. Ta wartość powinna być podobna do *https://contoso.azurewebsites.net/.auth/login/done*.
+    * Zastąp **INSERT-urzędu-tutaj** nazwą dzierżawy, w której aprowizowano aplikacji. Powinna być w formacie https://login.microsoftonline.com/contoso.onmicrosoft.com.
+    * Zastąp **INSERT zasobów — identyfikator — tutaj** z Identyfikatorem klienta dla zaplecza aplikacji mobilnej. Można uzyskać identyfikator klienta z **zaawansowane** karcie **ustawienia usługi Azure Active Directory** w portalu.
+    * Zastąp **INSERT klienta-ID — tutaj** z Identyfikatorem klienta został skopiowany z aplikacja kliencka macierzystego.
+    * Zastąp **INSERT PRZEKIEROWANIA-URI-tutaj** z witryny */.auth/login/done* punktu końcowego, przy użyciu schematu HTTPS. Ta wartość powinna być podobna do *https://contoso.azurewebsites.net/.auth/login/done*.
 
 ```java
 private AuthenticationContext mContext;

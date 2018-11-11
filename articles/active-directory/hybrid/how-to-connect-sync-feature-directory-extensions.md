@@ -15,15 +15,15 @@ ms.workload: identity
 ms.date: 10/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9c40cfd9b15f2ae6398b70effc4f4d38111cfe1e
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: b6c5f55a575605eef3a280de4f973d9b2d0a4ace
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886069"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288309"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Synchronizacja programu Azure AD Connect: rozszerzenia katalogów
-Umożliwia rozszerzeń katalogów rozszerzania schematu w usłudze Azure Active Directory (Azure AD) przy użyciu atrybutów z usługi Active Directory w środowisku lokalnym. Ta funkcja umożliwia tworzenie aplikacji biznesowych za korzystanie z atrybutów, które nadal zarządzać w środowisku lokalnym. Te atrybuty mogą być używane za pośrednictwem [rozszerzenia katalogów interfejsu API usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) lub [programu Microsoft Graph](https://graph.microsoft.io/). Zobaczysz dostępne atrybuty za pomocą [programu Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) i [programu Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)odpowiednio.
+Umożliwia rozszerzeń katalogów rozszerzania schematu w usłudze Azure Active Directory (Azure AD) przy użyciu atrybutów z usługi Active Directory w środowisku lokalnym. Ta funkcja umożliwia tworzenie aplikacji biznesowych za korzystanie z atrybutów, które nadal zarządzać w środowisku lokalnym. Te atrybuty mogą być używane za pośrednictwem [rozszerzenia katalogów interfejsu API usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) lub [programu Microsoft Graph](https://developer.microsoft.com/graph/). Zobaczysz dostępne atrybuty za pomocą [programu Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) i [programu Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)odpowiednio.
 
 Obecnie nie obciążenie usługi Office 365 korzysta z tych atrybutów.
 

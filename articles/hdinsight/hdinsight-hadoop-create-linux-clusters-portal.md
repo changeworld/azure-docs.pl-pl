@@ -1,20 +1,20 @@
 ---
-title: Tworzenie klastrów Hadoop w przeglądarce sieci web — Azure HDInsight
-description: Informacje o sposobie tworzenia klastrów Hadoop, HBase, Storm i Spark w systemie Linux for HDInsight przy użyciu przeglądarki sieci web i portalu Azure w wersji zapoznawczej.
+title: Tworzenie klastrów usługi Apache Hadoop w przeglądarce sieci web — Azure HDInsight
+description: Dowiedz się, jak utworzyć klastry Apache Hadoop, Apache HBase, Apache Storm lub Apache Spark w systemie Linux dla HDInsight przy użyciu przeglądarki sieci web i portalu Azure w wersji zapoznawczej.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/21/2018
-ms.author: jasonh
-ms.openlocfilehash: 77f4b8e8826dab014b81fdb6847755630ac44508
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 8d5e29b89d65bc8777feac0c496b3253bc2a6763
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104946"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278994"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Tworzenie klastrów opartych na systemie Linux w HDInsight przy użyciu witryny Azure portal
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -34,7 +34,7 @@ Witryna Azure portal udostępnia większość właściwości klastra. Przy użyc
 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Kliknij przycisk **+**, kliknij przycisk **rozwiązania inteligentne + analiza**, a następnie kliknij przycisk **HDInsight**.
+2. Kliknij przycisk **+ Utwórz zasób**, kliknij przycisk **Analytics**, a następnie kliknij przycisk **HDInsight**.
    
     ![Tworzenie nowego klastra w witrynie Azure portal](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster.png "tworzenia nowego klastra w witrynie Azure portal")
 
@@ -47,10 +47,6 @@ Witryna Azure portal udostępnia większość właściwości klastra. Przy użyc
     * Z **subskrypcji** listę rozwijaną, wybierz subskrypcję platformy Azure, która jest używana dla klastra.
 
     * Kliknij przycisk **typ klastra**, a następnie wybierz typ klastra (usługi Hadoop, Spark, itp.), którą chcesz utworzyć. Aby uzyskać **systemu operacyjnego**, kliknij przycisk **Linux** , a następnie wybierz wersję. Użyj wersji domyślnej, jeśli nie masz pewności co do wyboru. Więcej informacji można znaleźć w temacie [HDInsight cluster versions](hdinsight-component-versioning.md) (Wersje klastrów usługi HDInsight).
-
-        W przypadku typów klastrów Hadoop, Spark i interakcyjnych zapytań można również wybrać do zainstalowania **pakiet Enterprise Security**. Pakiet Enterprise Security włącza funkcje zabezpieczeń, takich jak integracja usługi Azure Active Directory oraz struktury Apache Ranger dla klastrów. Aby uzyskać więcej informacji, zobacz [pakiet Enterprise Security w usłudze Azure HDInsight](./domain-joined/apache-domain-joined-introduction.md).
-
-        ![Włącz pakiet Enterprise Security](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-enable-enterprise-security-package.png "włączyć pakiet Enterprise Security")
      
         > [!IMPORTANT]
         > HDInsight mogą mieć różnych typów, które odnoszą się do obciążenia lub technologii, że klaster jest ona dostrojona dla klastrów. Nie istnieje obsługiwana metoda do tworzenia klastra, który łączy wiele typów, takich jak Storm i bazy danych HBase w jednym klastrze. 
@@ -69,7 +65,9 @@ Witryna Azure portal udostępnia większość właściwości klastra. Przy użyc
 
     * Kliknij przycisk **Dalej**.
 
-4. Aby uzyskać **magazynu**, określ, czy usługi Azure Storage (WASB) lub usługi Data Lake Storage jako magazynu domyślnego. Przyjrzyj się poniższej tabeli, aby uzyskać więcej informacji.
+4. W **zabezpieczeń i sieci**, można Połącz klaster z siecią wirtualną, korzystając z podanej listy rozwijanej. Wybierz sieć wirtualną platformy Azure i podsieć, jeśli chcesz umieścić klastra w sieci wirtualnej. Aby uzyskać informacji na temat używania HDInsight z siecią wirtualną, łącznie z określonymi wymaganiami konfiguracji sieci wirtualnej, zobacz [HDInsight rozszerzanie możliwości za pomocą usługi Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md). Jeśli chcesz używać **pakiet Enterprise Security**, można również wykonać instrukcje w tym miejscu: [Konfigurowanie klastra HDInsight z pakietem Enterprise Security za pomocą usługi Azure Active Directory Domain Services](https://docs.microsoft.com/en-us/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
+
+5. Aby uzyskać **magazynu**, określ, czy usługi Azure Storage (WASB) lub usługi Data Lake Storage jako magazynu domyślnego. Przyjrzyj się poniższej tabeli, aby uzyskać więcej informacji.
 
     ![Tworzenie nowego klastra w witrynie Azure portal](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "tworzenia nowego klastra w witrynie Azure portal")
 
@@ -84,7 +82,7 @@ Witryna Azure portal udostępnia większość właściwości klastra. Przy użyc
     > [!WARNING]
     > Korzystanie z dodatkowego konta magazynu w innej lokalizacji niż klaster usługi HDInsight nie jest obsługiwane.
 
-5. Opcjonalnie kliknij **aplikacje** instalować aplikacje, które działają z klastrami HDInsight. Te aplikacje mogą być opracowane przez firmę Microsoft, niezależnych dostawców oprogramowania (ISV) lub samodzielnie. Aby uzyskać więcej informacji, zobacz [aplikacji HDInsight zainstalować](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
+6. Opcjonalnie kliknij **aplikacje** instalować aplikacje, które działają z klastrami HDInsight. Te aplikacje mogą być opracowane przez firmę Microsoft, niezależnych dostawców oprogramowania (ISV) lub samodzielnie. Aby uzyskać więcej informacji, zobacz [aplikacji HDInsight zainstalować](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
 
 
 6. Kliknij przycisk **rozmiar klastra** do wyświetlania informacji o węzłach, które są używane dla tego klastra. Ustaw liczbę węzłów procesu roboczego, które są potrzebne dla klastra. Szacowany koszt klastra jest również wyświetlany.
@@ -100,18 +98,10 @@ Witryna Azure portal udostępnia większość właściwości klastra. Przy użyc
    
    Kliknij przycisk **dalej** Aby zapisać konfigurację cen węzła.
 
-7. Kliknij przycisk **Zaawansowane ustawienia** skonfigurować inne ustawienia opcjonalne, takie jak przy użyciu **akcji skryptu** dostosować klaster, aby zainstalować składniki niestandardowe lub dołączenie **wsieciwirtualnej**. Przyjrzyj się poniższej tabeli, aby uzyskać więcej informacji.
+8. W **akcji skryptu**, można dostosować klaster, aby zainstalować składniki niestandardowe.  Użyj tej opcji, jeśli chcesz użyć niestandardowego skryptu do dostosowywania klastra, podczas tworzenia klastra. Aby uzyskać więcej informacji na temat akcji skryptu, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
+Kliknij przycisk **Dalej**.
 
-    ![Warstwami cenowymi węzłów](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-advanced.png "Określ liczbę węzłów klastra")
-
-    | Opcja | Opis |
-    |--------|-------------|
-    | **Akcje skryptu** | Użyj tej opcji, jeśli chcesz użyć niestandardowego skryptu do dostosowywania klastra, podczas tworzenia klastra. Aby uzyskać więcej informacji na temat akcji skryptu, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md). |
-    | **Virtual Network** | Wybierz sieć wirtualną platformy Azure i podsieć, jeśli chcesz umieścić klastra w sieci wirtualnej. Aby uzyskać informacji na temat używania HDInsight z siecią wirtualną, łącznie z określonymi wymaganiami konfiguracji sieci wirtualnej, zobacz [HDInsight rozszerzanie możliwości za pomocą usługi Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md). |
-
-    Kliknij przycisk **Dalej**.
-
-8. Aby uzyskać **Podsumowanie**, sprawdź informacje, wprowadzony wcześniej, a następnie kliknij przycisk **Utwórz**.
+9. Aby uzyskać **Podsumowanie**, sprawdź informacje, wprowadzony wcześniej, a następnie kliknij przycisk **Utwórz**.
 
     ![Warstwami cenowymi węzłów](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-summary.png "Określ liczbę węzłów klastra")
     
@@ -119,7 +109,7 @@ Witryna Azure portal udostępnia większość właściwości klastra. Przy użyc
     > Dopiero po pewnym czasie dla klastra, który ma zostać utworzony, zwykle około 15 minut. Użyj kafelka na tablicy startowej, lub **powiadomienia** wpis w lewej części strony Aby sprawdzić w procesie aprowizacji.
     > 
     > 
-12. Po zakończeniu procesu tworzenia, kliknij Kafelek klastra na tablicy startowej. W oknie klastra zawiera następujące informacje.
+10. Po zakończeniu procesu tworzenia, kliknij Kafelek klastra na tablicy startowej. W oknie klastra zawiera następujące informacje.
     
     ![Interfejs klastra](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-completed.png "właściwości klastra")
     

@@ -9,18 +9,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: 7f2c242d7040413598864222efdf06843eddc7d9
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 4aa5e4ff46eeaa4e8d8c723f626dd1f1193fd12a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959498"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281612"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db"></a>Dane globalne dystrybucji za pomocą usługi Azure Cosmos DB
 
 Uruchom wiele współczesnych aplikacji w skali globalnej. Te aplikacje są zawsze włączone i dostępne dla użytkowników na całym świecie. Zarządzanie globalna dystrybucja danych używanego przez te aplikacje, jednocześnie zapewniając wysoką wydajność i wysoka dostępność jest twardych problem. Usługa Azure Cosmos DB to usługa globalnie rozproszonej bazy danych, która zapewnia wysoką wydajność i wysokiej dostępności. Z tych powodów usługi Azure Cosmos DB jest najbardziej odpowiednia dla tych aplikacji w czasie rzeczywistym.
 
-Usługa cosmos DB jest podstawowe usługi platformy Azure i jest on dostępny w wszystkich [regionów świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/regions/) domyślnie. Firma Microsoft utrzymuje innowacyjne centra danych platformy Azure w więcej niż 50 regionach na całym świecie i nadal rosnących potrzeb klientów. Podczas tworzenia konta usługi Cosmos DB, możesz zdecydować, regiony, które powinny zostać wdrożone w. Firma Microsoft obsługuje usługi Cosmos DB usługi 24/7, dzięki czemu możesz skupić się na swoich aplikacjach.
+Usługa cosmos DB jest podstawowe usługi platformy Azure i jest on dostępny w wszystkich [regionów świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/regions/) domyślnie. Firma Microsoft utrzymuje innowacyjne centra danych platformy Azure w regionach 54 + na całym świecie i nadal rosnących potrzeb klientów. Podczas tworzenia konta usługi Cosmos DB, możesz zdecydować, regiony, które powinny zostać wdrożone w. Firma Microsoft obsługuje usługi Cosmos DB usługi 24/7, dzięki czemu możesz skupić się na swoich aplikacjach.
 
 Można skonfigurować jako globalnie rozproszone i dostępny we wszystkich regionach platformy Azure ponad 50 baz danych. Aby zmniejszyć czas oczekiwania, należy umieścić przybliża dane do lokalizacji użytkownika. Wybór wymaganych regionach zależy od globalny zasięg Twojej aplikacji i gdzie są Twoi użytkownicy. Usługa cosmos DB w sposób przezroczysty replikuje dane w ramach konta usługi skonfigurowanego regionów. Zapewnia pojedynczy obraz systemu bazy danych Cosmos i kontenerów, przez które aplikacji mogą odczytywać i zapisywać lokalnie. Za pomocą usługi Cosmos DB można dodać lub usunąć regiony skojarzony z Twoim kontem w dowolnym momencie. Aplikacji nie musi być wstrzymane lub ponownego wdrażania, aby dodać lub usunąć region. Kontynuuje zapewniające wysoką dostępność przez cały czas w związku z możliwościami multihostingu, które zapewnia usługa.
 
@@ -48,5 +48,5 @@ Dowiedz się więcej o globalnej dystrybucji w następujących artykułach:
 
 * [Dystrybucja globalna - kulisy](global-dist-under-the-hood.md)
 * [Jak skonfigurować klientów dla wielu](how-to-manage-database-account.md#configure-clients-for-multi-homing)
-* [Jak dodawanie/usuwanie regionów ze swojej bazy danych](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [Jak usunąć regiony z konta usługi Cosmos](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Jak utworzyć zasady rozpoznawania konfliktu niestandardowego konta interfejsu API SQL](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

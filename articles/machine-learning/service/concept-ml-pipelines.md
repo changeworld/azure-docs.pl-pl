@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 11/07/2018
-ms.openlocfilehash: 212488b74ba726012966787c7b2de633414e96a4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 59a35cd7ca3af446853d518fc7e7d48d2321ff10
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245345"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278977"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>Potoki i usługi Azure Machine Learning
 
@@ -43,6 +43,8 @@ Przy użyciu etapy umożliwia ponowne uruchamianie tylko kroki, których potrzeb
 Gdy potok został zaprojektowany, jest często więcej dostrajanie wokół pętli szkolenia potoku. Kiedy ponowne uruchomienie potoku wykonywania przechodzi do czynności, które konieczne będzie ponowne uruchomienie, takich jak skrypt szkolenia zaktualizowane i pomija, co się nie zmienił. Tym samym modelu dotyczy niezmienione skrypty używane do wykonywania tego kroku. 
 
 Za pomocą usługi Azure Machine Learning używając różnych zestawów narzędzi i platform, takich jak Microsoft Cognitive Toolkit lub TensorFlow dla każdego kroku w potoku. Współrzędne platformy Azure między różnymi [celów obliczeń](concept-azure-machine-learning-architecture.md) używać tak, aby pośrednie dane mogą być udostępniane podrzędnego obliczeniowych elementów docelowych łatwe. 
+
+Możesz [śledzić metryki dla eksperymentów potoku](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-track-experiments) bezpośrednio w witrynie Azure portal. 
 
 ## <a name="key-advantages"></a>Najważniejsze zalety
 

@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 8137a292045377c5dccb69c21a8118d0dc17874e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 14e8eb7c73a1e2cf5047410d3571008c1cd1e1ca
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069948"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289278"
 ---
-# <a name="internet-of-things-security-from-the-ground-up"></a>Bezpieczeństwo Internetu rzeczy od podstaw
+# <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>Zabezpieczenia dla Internetu rzeczy (IoT) od podstaw
 
 Internet rzeczy (IoT) stanowi specyficzne wyzwania zabezpieczeń, ochrony prywatności i zgodności dla firm na całym świecie. W przeciwieństwie do tradycyjnych cybernetycznymi technologii gdzie tych problemów koncentrują się wokół oprogramowania oraz sposób implementacji IoT dotyczy, co się stanie po zbiegają się tym i cech fizycznych. Ochrona rozwiązań IoT wymaga zapewnienia bezpieczne Inicjowanie obsługi urządzeń, bezpieczną łączność między tymi urządzeniami i chmurą i ochronę danych w chmurze podczas przetwarzania i przechowywania. Działa z takich funkcji, są jednak ograniczonych zasobach urządzeń, rozkład geograficzny wdrożeń i dużą liczbę urządzeń, w ramach rozwiązania.
 

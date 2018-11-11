@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/06/2018
+ms.date: 11/06/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3948c226f13f0ff358f9ca467f19cf0e48795911
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bed053f812cc5c14e6cfe76b8a08b1ffe0cadcb3
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429891"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289125"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -64,7 +64,7 @@ W dokumencie używane są następujące terminy:
 * SAP składnik: Poszczególnych aplikacji SAP ECC, BW, Menedżer rozwiązania lub EP.  Składniki SAP mogą być oparte na tradycyjnych technologii ABAP i Java lub aplikacji innych niż NetWeaver na podstawie takich jak obiekty biznesowych.
 * Środowisko SAP: co najmniej jednego składnika SAP logicznie pogrupowane do wykonywania funkcji biznesowych, takich jak rozwój, QAS, szkolenia, odzyskiwania po awarii lub produkcji.
 * Środowisko SAP: Określenie to odnosi się do całego zasoby SAP klientów pozioma IT. Środowisko SAP obejmuje wszystkie produkcji i środowisk nieprodukcyjnych.
-* SAP System: Kombinacja warstwy system DBMS i warstwy aplikacji, na przykład SAP ERP i przeniesieniu jej rozwoju systemu SAP BW system testowy, system produkcyjny SAP CRM, itp. W przypadku wdrożeń platformy Azure go nie jest obsługiwane do dzielenia tych dwóch warstw między lokalną i platformą Azure. To oznacza, że system SAP jest wdrożony w środowisku lokalnym lub jest ona wdrożona na platformie Azure. Można jednak wdrożyć różnych systemów środowisko SAP na platformie Azure lub lokalnie. Na przykład możesz wdrożyć rozwoju SAP CRM i systemy testowe platformie Azure, ale SAP CRM produkcji systemu lokalnego.
+* SAP System: Kombinacja warstwy system DBMS i warstwy aplikacji, na przykład SAP ERP i przeniesieniu jej rozwoju systemu SAP BW system testowy, system produkcyjny SAP CRM, itp. W przypadku wdrożeń platformy Azure go nie jest obsługiwane do dzielenia tych dwóch warstw między lokalną i platformą Azure. W związku z systemem SAP jest wdrożone w środowisku lokalnym lub jest wdrażana na platformie Azure. Można jednak wdrożyć różnych systemów środowisko SAP na platformie Azure lub lokalnie. Na przykład możesz wdrożyć rozwoju SAP CRM i systemy testowe platformie Azure, ale SAP CRM produkcji systemu lokalnego.
 * Między lokalizacjami: w tym artykule opisano scenariusz, w której maszyny wirtualne są wdrażane z subskrypcją platformy Azure, site to site, obejmujące wiele lokacji lub połączenia usługi ExpressRoute między zasobom w środowisku lokalnym i platformą Azure. Dokumentacja wspólnych platformy Azure, tego rodzaju wdrożenia są również opisać jako scenariuszy obejmujących wiele lokalizacji. Przyczyna połączenie ma rozszerzone domen lokalnych, w lokalnej usłudze Active Directory i DNS w środowisku lokalnym na platformę Azure. Pozioma w środowisku lokalnym jest rozszerzony do zasobów platformy Azure w subskrypcji. Problemy to rozszerzenie, maszyn wirtualnych może być częścią domeny w środowisku lokalnym. Użytkownicy domeny lokalnej domeny mogą uzyskiwać dostęp do serwerów i można uruchomić usługi na tych maszynach wirtualnych (np. usługi DBMS). Komunikacja i rozpoznawanie nazw między maszynami wirtualnymi wdrożony w środowisku lokalnym i maszyn wirtualnych wdrożonych na platformie Azure jest możliwe. Ten scenariusz jest najbardziej typowym scenariuszem wdrażania zasobów SAP na platformie Azure. Aby uzyskać więcej informacji, zobacz [planowania i projektowania dla bramy sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design).
 
 > [!NOTE]
@@ -161,7 +161,7 @@ Jak już wspomniano Jeśli Twoje wymagania operacje We/Wy przekraczają, co moż
 >
 
 ### <a name="managed-or-non-managed-disks"></a>Dysków zarządzanych lub niezarządzanych
-Konto usługi Azure Storage jest nie tylko konstrukcja administracyjne, ale również przedmiotem ograniczeń. Ograniczenia różnią się między Azure Standard Storage Accounst i kont usługi Azure Premium Storage. Dokładnych możliwości i ograniczenia są wymienione w artykule [usługi Azure Storage dotyczące skalowalności i elementy docelowe wydajności](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)
+Konto usługi Azure Storage jest nie tylko konstrukcja administracyjne, ale również przedmiotem ograniczeń. Ograniczenia różnią się od konta usługi Azure Standard Storage i kont usługi Azure Premium Storage. Dokładnych możliwości i ograniczenia są wymienione w artykule [usługi Azure Storage dotyczące skalowalności i elementy docelowe wydajności](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)
 
 Dla usługi Azure Standard Storage, jest ważne, pamiętaj, że istnieje limit na operacje We/Wy na konto magazynu (wiersz zawierający **całkowita liczba żądań** w artykule [usługi Azure Storage cele skalowalności i wydajności](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)). Ponadto jest początkowa limit liczby kont magazynu na subskrypcję platformy Azure. W związku z tym należy zrównoważyć wirtualne dyski twarde dla większych środowisko SAP na kontach innego magazynu, aby uniknąć osiągnięcia limitów te konta magazynu. Tedious pracy, gdy mówimy o kilku kilkuset maszyny wirtualne z więcej niż tysięcy wirtualnych dysków twardych. 
 
@@ -276,7 +276,10 @@ Istnieje kilka najlepszych rozwiązań, które spowodowało poza setki wdrożeń
 > [!NOTE]
 > Należy przypisać statyczne adresy IP za pośrednictwem platformy Azure oznacza, że do poszczególnych kart sieciowych. Nie należy przypisywać statyczne adresy IP w ramach systemu operacyjnego gościa do wirtualnej karty sieciowej. Niektórych usług platformy Azure, takich jak usługa Kopia zapasowa Azure opierają się na fakcie, że w co najmniej podstawowego wirtualnej karty sieciowej jest ustawiony, DHCP, a nie statycznych adresów IP. Zobacz też dokumentu [kopii zapasowej maszyny wirtualnej Azure Rozwiązywanie problemów z](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking). Musisz przypisać wiele statycznych adresów IP do maszyny Wirtualnej, należy przypisać wiele kart sieciowych do maszyny Wirtualnej.
 >
->
+
+
+> [!IMPORTANT]
+> Z funkcji, ale bardziej ważne poza ze względu na wydajność nie jest obsługiwane do skonfigurowania [wirtualne urządzenia sieciowe Azure](https://azure.microsoft.com/solutions/network-appliances/) ścieżki komunikacji między aplikacją SAP DBMS warstwa oprogramowania SAP NetWeaver Hybris lub S/4HANA na podstawie systemu SAP. Dodatkowe scenariusze, w których urządzeń WUS nie są obsługiwane znajdują się w zaufanych ścieżek komunikacji między maszynami wirtualnymi platformy Azure, reprezentujące interwencja urządzeń i węzłów klastra program Pacemaker w systemie Linux, zgodnie z opisem w [wysoką dostępność środowiska SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server w przypadku aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse). Lub w ramach komunikacji ścieżek między maszynami wirtualnymi platformy Azure i systemu Windows serwer SOFS nawet zgodnie z opisem w [klastra wystąpienie SAP ASCS/SCS na klastrze pracy awaryjnej Windows przy użyciu udziału plików na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share). Urządzenia WUS w komunikacji ścieżki mogą łatwo dwukrotnie opóźnienie sieciowe między dwoma partnerami komunikacji, można ograniczyć przepustowość w krytyczne ścieżki między warstwą aplikacji SAP i warstwy system DBMS. W niektórych scenariuszach zaobserwowane ze swoimi klientami urządzeń WUS może spowodować klastry program Pacemaker w systemie Linux, aby zakończyć się niepowodzeniem w przypadku których komunikacji między węzłami klastra program Pacemaker w systemie Linux muszą komunikować się na ich urządzenia interwencja za pośrednictwem urządzenia NVA.   
 
 Używa dwóch maszyn wirtualnych do wdrażania systemu DBMS, w ramach zestawu dostępności platformy Azure, a także osobne routingu dla warstwy aplikacji SAP i zarządzanie i operacje ruchu do dwóch maszyn wirtualnych z systemem DBMS w środowisku produkcyjnym, diagram nierównej będzie wyglądać:
 
@@ -334,7 +337,7 @@ Dokumentację w szczególności DBMS można znaleźć w tych artykułach:
 - [Wdrażanie systemu DBMS usługi Azure Virtual Machines oprogramowania Oracle dla obciążenia SAP](dbms_guide_oracle.md)
 - [Wdrażanie systemu DBMS usługi Azure Virtual Machines programu IBM DB2 dla obciążenia SAP](dbms_guide_ibm.md)
 - [Wdrażanie systemu DBMS usługi Azure Virtual Machines produktu SAP ESE dla obciążenia SAP](dbms_guide_sapase.md)
-- [SAP maxDB, na żywo pamięci podręcznej i serwer zawartości wdrożenia na platformie Azure](dbms_guide_maxdb.md)
+- [SAP maxDB, na żywo z pamięci podręcznej i wdrażania serwera zawartości na platformie Azure](dbms_guide_maxdb.md)
 - [Przewodnik obsługi oprogramowania SAP HANA na platformie Azure](hana-vm-operations.md)
 - [SAP HANA wysoką dostępność dla maszyn wirtualnych platformy Azure](sap-hana-availability-overview.md)
 - [Przewodnik tworzenia kopii zapasowych dla oprogramowania SAP HANA na maszynach wirtualnych platformy Azure](sap-hana-backup-guide.md)

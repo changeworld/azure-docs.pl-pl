@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: fa425a5ecd8cf8f4c7b3516534b4c4f0f4257850
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 962090340cad6bcd95245cffe16c25f08a98226b
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085346"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300765"
 ---
 # <a name="monitor-your-azure-machine-learning-models-in-production-with-application-insights"></a>Monitorowanie usługi Azure Machine Learning modeli w środowisku produkcyjnym za pomocą usługi Application Insights
 
@@ -109,8 +109,11 @@ Aby wyłączyć usługę Application Insights, użyj następującego kodu:
 ## <a name="evaluate-data"></a>Ocena danych
 Dane usługi są przechowywane na koncie usługi Application Insights w ramach tej samej grupie zasobów co usługa Azure Machine Learning.
 Aby go wyświetlić:
-1. Przejdź do grupy zasobów w [witryny Azure portal](https://portal.azure.com) i przejdź do zasobu usługi Application Insights. 
-2. **Przegląd** karta zawiera podstawowy zestaw metryk dla usługi.
+1. Przejdź do obszaru roboczego usługi Machine Learning w [witryny Azure portal](https://portal.azure.com) i kliknij łącze usługi Application Insights.
+
+    [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+
+1. Wybierz **Przegląd** kartę, aby wyświetlić podstawowy zestaw metryk dla Twojej usługi.
 
    [![Przegląd](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -130,3 +133,7 @@ Aby dowiedzieć się więcej o tym, jak używać usługi Application Insights, z
 
 ## <a name="next-steps"></a>Kolejne kroki
 Może również zbierać dane na modeli w produkcji. Przeczytaj artykuł [zbieranie danych dla modeli w środowisku produkcyjnym](how-to-enable-data-collection.md). 
+
+
+## <a name="other-references"></a>Inne odwołania
+* [Usługa Azure Monitor dla kontenerów](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)

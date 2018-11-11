@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 6042aa4dd8b26a0986737edc3c89b8e165ae970a
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 2c862dcaf5f9267265879faa8ac927ddf7515419
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067707"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277277"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą interfejsu wiersza polecenia platformy Azure w usłudze Azure Stack
 
@@ -139,6 +139,18 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
         --suffix-keyvault-dns ".vault.local.azurestack.external" \ 
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
+    c. Aby zarejestrować *użytkownika* w środowisku Wielodostępności, należy użyć:
+
+      ```azurecli
+      az cloud register \ 
+        -n AzureStackUser \ 
+        --endpoint-resource-manager "https://management.local.azurestack.external" \ 
+        --suffix-storage-endpoint "local.azurestack.external" \ 
+        --suffix-keyvault-dns ".vault.local.azurestack.external" \ 
+        --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases> \
+        --endpoint-active-directory-resource-id=<URI of the ActiveDirectoryServiceEndpointResourceID> \
+        --profile 2018-03-01-hybrid
+      ```
 
 1. Ustawianie aktywnego środowiska za pomocą następujących poleceń.
 
@@ -223,7 +235,7 @@ Jeśli grupa zasobów została utworzona pomyślnie, poprzednie polecenie wyświ
 Istnieją znane problemy, które należy wiedzieć przy użyciu interfejsu wiersza polecenia w usłudze Azure Stack:
 
  - Tj tryb interaktywny interfejsu wiersza polecenia `az interactive` polecenie nie jest jeszcze obsługiwane w usłudze Azure Stack.
- - Aby uzyskać listę obrazów maszyn wirtualnych są dostępne w usłudze Azure Stack, użyj `az vm images list --all` polecenia zamiast `az vm image list` polecenia. Określanie `--all` option zapewnia, że odpowiedzi zwraca tylko obrazy, które są dostępne w danym środowisku usługi Azure Stack.
+ - Aby uzyskać listę obrazów maszyn wirtualnych są dostępne w usłudze Azure Stack, użyj `az vm image list --all` polecenia zamiast `az vm image list` polecenia. Określanie `--all` option zapewnia, że odpowiedzi zwraca tylko obrazy, które są dostępne w danym środowisku usługi Azure Stack.
  - Aliasy obrazu maszyny wirtualnej, które są dostępne na platformie Azure nie może być stosowane do usługi Azure Stack. Korzystając z obrazów maszyn wirtualnych, należy użyć całego parametru URN (Canonical: UbuntuServer:14.04.3-LTS:1.0.0) zamiast alias obrazu. Ta URN musi odpowiadać specyfikacji obrazu wyprowadzana z `az vm images list` polecenia.
 
 ## <a name="next-steps"></a>Kolejne kroki

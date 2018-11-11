@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 2/1/2018
-ms.openlocfilehash: 0d0274b88a15688106f185ede87f576443bdadb0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ed3fc6d1d2a4b674e2866d2e168fb72490575869
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229359"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281837"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Dodatek programu Excel dla usług sieci web Azure Machine Learning Studio
 Excel ułatwia wywołują usługi sieci web bezpośrednio, bez konieczności pisania kodu.
@@ -28,7 +28,7 @@ Excel ułatwia wywołują usługi sieci web bezpośrednio, bez konieczności pis
 1. Otwórz [przykładowy plik programu Excel](https://aka.ms/amlexcel-sample-2), który zawiera dodatek programu Excel i danych dotyczących osób na Titanica. 
  
 > [!NOTE]
-> Zobaczysz, że na liście usług sieci Web związane z nim do pliku i u dołu pola wyboru "Automatycznie — przewidywanie". Po włączeniu automatycznego — przewidywanie przewidywań **wszystkie** usługi będzie za każdym, gdy zaktualizowano nastąpiła zmiana w danych wejściowych. Jeśli nie jest zaznaczone trzeba będzie kliknąć "Przewidzieć All" w przypadku odświeżania. Umożliwiające automatyczne — przewidywanie na usługę poziomu przejdź do kroku 6.
+> Zobaczysz, że na liście usług sieci Web związane z nim do pliku i u dołu pola wyboru "Automatycznie — przewidywanie". Po włączeniu automatycznego — przewidywanie przewidywań **wszystkie** usługi zostanie zaktualizowany, za każdym razem, gdy brak zmian w danych wejściowych. Jeśli nie jest zaznaczone trzeba będzie kliknąć "Przewidzieć All" w przypadku odświeżania. Umożliwiające automatyczne — przewidywanie na usługę poziomu przejdź do kroku 6.
 
 2. Wybierz usługę sieci web, klikając go — "Titanic renty predykcyjne (przykład dodatku Excel) [Wynik]" w tym przykładzie.
    

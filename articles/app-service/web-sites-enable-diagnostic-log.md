@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 7ab12c86e01a34e4ba2a9673364c0e1104f6cdba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0c22072d0eaa328fdf786421344e8ef2caaa575c
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231627"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515662"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji sieci web w usłudze Azure App Service
 ## <a name="overview"></a>Przegląd
 Platforma Azure udostępnia wbudowaną funkcję diagnostyki, która pomaga w debugowaniu [aplikacji sieci web usługi App Service](https://go.microsoft.com/fwlink/?LinkId=529714). W tym artykule dowiesz się, jak włączyć rejestrowanie diagnostyczne i dodać Instrumentację do aplikacji, a także jak uzyskać dostęp do informacji rejestrowanych przez system Azure.
 
-W tym artykule wykorzystano [witryny Azure portal](https://portal.azure.com), programu Azure PowerShell i interfejsu wiersza polecenia platformy Azure (Azure CLI) do pracy z dzienników diagnostycznych. Aby uzyskać informacje na temat pracy z dzienników diagnostycznych przy użyciu programu Visual Studio, zobacz [Rozwiązywanie problemów z platformy Azure w programie Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
+W tym artykule wykorzystano [witryny Azure portal](https://portal.azure.com) i wiersza polecenia platformy Azure, aby pracować z dzienników diagnostycznych. Aby uzyskać informacje na temat pracy z dzienników diagnostycznych przy użyciu programu Visual Studio, zobacz [Rozwiązywanie problemów z platformy Azure w programie Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -65,7 +65,7 @@ Aby uzyskać **rejestrowanie aplikacji**, można włączyć opcję systemu pliku
 
 Aby uzyskać **rejestrowanie serwera sieci Web**, możesz wybrać **magazynu** lub **system plików**. Wybieranie **magazynu** służy do wybierania konta magazynu i kontener obiektów blob, które dzienniki są zapisywane. 
 
-Jeśli dzienniki są przechowywane w systemie plików, pliki mogą być uzyskują FTP, lub pobrana jako archiwum Zip przy użyciu programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure (Azure CLI).
+Jeśli dzienniki są przechowywane w systemie plików, pliki mogą być dostęp do FTP, lub pobrane jako archiwum Zip przy użyciu wiersza polecenia platformy Azure.
 
 Domyślnie dzienniki nie są automatycznie usuwane (z wyjątkiem produktów **rejestrowanie aplikacji (system plików)**). Aby automatycznie usunąć dzienniki, ustaw **okres przechowywania (dni)** pola.
 
@@ -84,13 +84,9 @@ Gdy wszystkie trzy lokalizacje magazynu zapewnić tym samym podstawowe informacj
 > [!NOTE]
 > Informacje przechowywane w **magazyn tabel** lub **magazynu obiektów blob** może zostać oceniony jedynie przy użyciu klienta usługi storage lub aplikacji, która bezpośrednio może współpracować z tych systemów magazynowania. Na przykład programu Visual Studio 2013 zawiera Eksploratora magazynu, który może służyć do zapoznaj się z tabelą lub obiektem blob storage i HDInsight dostęp do danych przechowywanych w magazynie obiektów blob. Możesz również zapisywać dane aplikacji, która uzyskuje dostęp do usługi Azure Storage przy użyciu jednej z [zestawami SDK Azure](https://azure.microsoft.com/downloads/).
 >
-> [!NOTE]
-> Można również włączyć diagnostyki za pomocą programu Azure PowerShell przy użyciu **Set-AzureWebsite** polecenia cmdlet. Jeśli nie zainstalowano programu Azure PowerShell lub nie skonfigurowano do użycia w Twojej subskrypcji platformy Azure, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
->
->
 
 ## <a name="download"></a> Porady: pobieranie dzienników
-Informacje diagnostyczne są przechowywane w systemie plików aplikacji sieci web są dostępne bezpośrednio za pomocą protokołu FTP. Można go również pobrać jako archiwum Zip, przy użyciu programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.
+Informacje diagnostyczne są przechowywane w systemie plików aplikacji sieci web są dostępne bezpośrednio za pomocą protokołu FTP. Można go również pobrać jako archiwum Zip, przy użyciu wiersza polecenia platformy Azure.
 
 Struktury katalogów, które dzienniki są przechowywane w jest następująca:
 
@@ -106,19 +102,7 @@ Aby otworzyć połączenie FTP do serwera FTP swojej aplikacji, zobacz [wdrażan
 
 Po nawiązaniu połączenia do serwera FTP/S w aplikacji sieci web Otwórz **LogFiles** folder, w którym są przechowywane pliki dziennika.
 
-### <a name="download-with-azure-powershell"></a>Pobieranie przy użyciu programu Azure PowerShell
-Aby pobrać pliki dziennika, Uruchom nowe wystąpienie programu Azure PowerShell i użyj następującego polecenia:
-
-    Save-AzureWebSiteLog -Name webappname
-
-To polecenie zapisuje w dziennikach aplikacji sieci web, określonej przez **— nazwa** parametrów w pliku o nazwie **logs.zip** w bieżącym katalogu.
-
-> [!NOTE]
-> Jeśli nie zainstalowano programu Azure PowerShell lub nie skonfigurowano do użycia w Twojej subskrypcji platformy Azure, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
->
->
-
-### <a name="download-with-azure-command-line-interface"></a>Pobieranie przy użyciu interfejsu wiersza polecenia platformy Azure
+### <a name="download-with-azure-cli"></a>Pobieranie z wiersza polecenia platformy Azure
 Aby pobrać pliki dziennika przy użyciu interfejsu wiersza polecenia platformy Azure, otwórz nowy wiersz polecenia, programu PowerShell, Bash lub sesji terminalowej i wprowadź następujące polecenie:
 
     az webapp log download --resource-group resourcegroupname --name webappname
@@ -126,7 +110,7 @@ Aby pobrać pliki dziennika przy użyciu interfejsu wiersza polecenia platformy 
 To polecenie zapisuje w dziennikach aplikacji sieci web o nazwie "webappname" w pliku o nazwie **diagnostics.zip** w bieżącym katalogu.
 
 > [!NOTE]
-> Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure (Azure CLI) lub nie skonfigurowano do użycia w Twojej subskrypcji platformy Azure, zobacz [instrukcje wiersza polecenia platformy Azure użyj](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+> Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure lub nie skonfigurowano do użycia w Twojej subskrypcji platformy Azure, zobacz [instrukcje wiersza polecenia platformy Azure użyj](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 >
 >
 
@@ -143,7 +127,7 @@ Visual Studio Application Insights udostępnia narzędzia, filtrowanie i przeszu
 [Więcej informacji na temat wydajności śledzenia za pomocą usługi Application Insights](../application-insights/app-insights-azure-web-apps.md)
 
 ## <a name="streamlogs"></a> Porady: Stream dzienników
-Podczas tworzenia aplikacji, jest często warto wyświetlać informacje rejestrowania w czasie niemal rzeczywistym. Informacje o rejestrowaniu można przesyłać strumieniowo do środowiska deweloperskiego przy użyciu programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.
+Podczas tworzenia aplikacji, jest często warto wyświetlać informacje rejestrowania w czasie niemal rzeczywistym. Informacje o rejestrowaniu można przesyłać strumieniowo do środowiska deweloperskiego przy użyciu wiersza polecenia platformy Azure.
 
 > [!NOTE]
 > Niektóre rodzaje rejestrowania bufor zapisu do pliku dziennika, co może skutkować zdarzeń poza kolejnością w strumieniu. Na przykład wpis dziennika aplikacji, który występuje, gdy użytkownik odwiedzi strony mogą być wyświetlane w usłudze stream przed odpowiadający mu wpis dziennika HTTP dla żądania strony.
@@ -153,29 +137,7 @@ Podczas tworzenia aplikacji, jest często warto wyświetlać informacje rejestro
 >
 >
 
-### <a name="streaming-with-azure-powershell"></a>Przesyłanie strumieniowe przy użyciu programu Azure PowerShell
-Przesyłanie strumieniowe informacje rejestrowania, Uruchom nowe wystąpienie programu Azure PowerShell i użyj następującego polecenia:
-
-    Get-AzureWebSiteLog -Name webappname -Tail
-
-To polecenie łączy do aplikacji sieci web, określonej przez **— nazwa** parametru i rozpocząć przesyłanie strumieniowe informacje do okna programu PowerShell, w momencie wystąpienia zdarzenia dziennika, w aplikacji sieci web. Wszystkie informacje zapisane pliki kończące się na .txt, log lub .htm, które są przechowywane w katalogu /LogFiles (d:/home/logfiles) jest przesyłany strumieniowo do konsoli lokalnej.
-
-Aby odfiltrować określone zdarzenia, takie jak błędy, użyj **-komunikat** parametru. Na przykład:
-
-    Get-AzureWebSiteLog -Name webappname -Tail -Message Error
-
-Aby odfiltrować typów określonego dziennika, takich jak HTTP, użyj **— ścieżka** parametru. Na przykład:
-
-    Get-AzureWebSiteLog -Name webappname -Tail -Path http
-
-Aby wyświetlić listę dostępnych ścieżek, użyj parametru - ListPath.
-
-> [!NOTE]
-> Jeśli nie zainstalowano programu Azure PowerShell lub nie skonfigurowano do użycia w Twojej subskrypcji platformy Azure, zobacz [jak używać programu Azure PowerShell](https://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/).
->
->
-
-### <a name="streaming-with-azure-command-line-interface"></a>Przesyłanie strumieniowe przy użyciu interfejsu wiersza polecenia platformy Azure
+### <a name="streaming-with-azure-cli"></a>Przesyłanie strumieniowe z wiersza polecenia platformy Azure
 Przesyłanie strumieniowe rejestrowanie informacji, otwórz nowy wiersz polecenia, programu PowerShell, Bash lub sesji terminalowej i wprowadź następujące polecenie:
 
     az webapp log tail --name webappname --resource-group myResourceGroup
@@ -191,7 +153,7 @@ Aby odfiltrować typów określonego dziennika, takich jak HTTP, użyj **— śc
     az webapp log tail --name webappname --resource-group myResourceGroup --path http
 
 > [!NOTE]
-> Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure lub nie skonfigurowano do użycia w Twojej subskrypcji platformy Azure, zobacz [jak można użyć interfejsu wiersza polecenia Azure](../cli-install-nodejs.md).
+> Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure lub nie skonfigurowano do użycia w Twojej subskrypcji platformy Azure, zobacz [instrukcje wiersza polecenia platformy Azure użyj](../cli-install-nodejs.md).
 >
 >
 

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: b0e9f72bad685d569b4a09baecec8cebc33fefde
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b528507d0f12cda72855db19aa28c7b06a4e26c1
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717900"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345219"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopiowanie danych do i z programu SQL Server przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -119,7 +119,7 @@ Aby skopiować dane z/do bazy danych programu SQL Server, należy ustawić wła�
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość typu elementu dataset musi być równa: **SqlServerTable** | Yes |
-| tableName |Nazwa tabeli lub widoku w wystąpieniu bazy danych programu SQL Server, które połączona usługa przywołuje. | Yes |
+| tableName |Nazwa tabeli lub widoku w wystąpieniu bazy danych programu SQL Server, które połączona usługa przywołuje. | Brak źródła tak dla ujścia |
 
 **Przykład:**
 
@@ -159,7 +159,6 @@ Aby skopiować dane z programu SQL Server, należy ustawić typ źródłowego w 
 
 - Jeśli **sqlReaderQuery** określono SqlSource uruchomieniu działania kopiowania to zapytanie względem źródła programu SQL Server, aby uzyskać dane. Alternatywnie, można określić procedury składowanej, określając **sqlReaderStoredProcedureName** i **storedProcedureParameters** (jeśli jest to procedura składowana pobiera parametry).
 - Jeśli nie określisz "sqlReaderQuery" lub "sqlReaderStoredProcedureName" kolumny zdefiniowane w sekcji "strukturę" zestaw danych JSON służą do utworzenia kwerendy (`select column1, column2 from mytable`) w celu uruchomienia programu SQL Server. Definicja zestawu danych nie ma "strukturę", wszystkie kolumny są wybierane z tabeli.
-- Kiedy używasz **sqlReaderStoredProcedureName**, nadal należy określić dummy **tableName** właściwość w zestawie danych JSON.
 
 **Przykład: użycie zapytania SQL**
 
@@ -489,7 +488,7 @@ Podczas kopiowania danych z i do programu SQL Server, następujące mapowania s�
 | dane binarne |Byte[] |
 | Bitowe |Wartość logiczna |
 | Char |Ciąg, Char] |
-| data |DateTime |
+| date |DateTime |
 | Data/godzina |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
@@ -497,7 +496,7 @@ Podczas kopiowania danych z i do programu SQL Server, następujące mapowania s�
 | Atrybut FILESTREAM (varbinary(max)) |Byte[] |
 | Liczba zmiennoprzecinkowa |Podwójne |
 | image |Byte[] |
-| Int |Int32 |
+| int |Int32 |
 | pieniędzy |Dziesiętna |
 | nchar |Ciąg, Char] |
 | ntext |Ciąg, Char] |

@@ -2,19 +2,19 @@
 title: Dostosowywanie klastrów HDInsight za pomocą akcji skryptu, Azure
 description: Dodaj niestandardowe składniki w klastrach HDInsight opartych na systemie Linux za pomocą akcji skryptu. Akcje skryptu to skrypty powłoki Bash, które mogą służyć do dostosowywania konfiguracji klastra lub dodać dodatkowych usług i narzędzi, takich jak Hue, Solr lub języka R.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/01/2018
-ms.author: jasonh
-ms.openlocfilehash: e9662a0a0def91fa2cace1eb47dceffed5ff1ae6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 24fecd73876228b3665cde21ae312963ec979df6
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978033"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279737"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Dostosowywanie klastrów HDInsight opartych na systemie Linux za pomocą akcji skryptu
 
@@ -67,7 +67,7 @@ Akcja skryptu jest skrypt powłoki Bash, działającego w węzłach w klastrze u
         Na przykład zobacz identyfikatorów URI [przykładowe skrypty akcji skryptu](#example-script-action-scripts) sekcji.
 
         > [!WARNING]
-        > HDInsight obsługuje tylko __ogólnego przeznaczenia__ kont usługi Azure Storage. Obecnie nie obsługuje __magazynu obiektów Blob__ typ konta.
+        > HDInsight obsługuje tylko obiektów Blob na kontach usługi Azure Storage w warstwie standardowa wydajności. 
 
 * Można ograniczyć do **uruchomienia w ramach określonych typów węzłów**, na przykład węzłów głównych lub węzłów procesu roboczego.
 

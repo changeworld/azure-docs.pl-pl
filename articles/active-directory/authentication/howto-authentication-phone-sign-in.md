@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: librown
-ms.openlocfilehash: 81c249c8dc8475428f4cb0014e57f09e28a3d9af
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 3a9fba644bd379f3f54cf07cf35c0a54029756da
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804331"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287187"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Logowanie telefonem bez hasła przy użyciu aplikacji Microsoft Authenticator (publiczna wersja zapoznawcza)
 
@@ -37,11 +37,16 @@ W publicznej wersji zapoznawczej administrator musi najpierw dodać zasad za pom
 
 ### <a name="steps-to-enable"></a>Kroki, aby włączyć
 
-1. Zainstaluj [publicznej wersji zapoznawczej usługi Azure Active Directory w wersji 2 modułu programu PowerShell](https://www.powershellgallery.com/packages/AzureADPreview/).  
-2. W programie PowerShell Uruchom dwa polecenia:
-   1. `Connect-AzureAD`
-      1. W oknie dialogowym uwierzytelniania Zaloguj się przy użyciu konta w dzierżawie. Konto musi być Administrator zabezpieczeń lub Administrator globalny.
-   2. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
+Upewnij się, że masz najnowszą wersję publicznej wersji zapoznawczej usługi Azure Active Directory w wersji 2 modułu programu PowerShell. Możesz też chcieć odinstalowanie i ponowne zainstalowanie, aby to sprawdzić, wykonując następujące polecenia:
+
+1. `Uninstall-Module -Name AzureADPreview`
+2. `Install-Module -Name AzureADPreview`
+
+Aby umożliwić telefonu bez hasło logowania (wersja zapoznawcza) przy użyciu następujących poleceń programu PowerShell:
+
+1. `Connect-AzureAD`
+   1. W oknie dialogowym uwierzytelniania Zaloguj się przy użyciu konta w dzierżawie. Konto musi być Administrator zabezpieczeń lub Administrator globalny.
+1. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
 
 ## <a name="how-do-my-end-users-enable-phone-sign-in"></a>Jak Moi użytkownicy końcowi włączyć logowanie za pomocą telefonu?
 
@@ -61,7 +66,7 @@ Po użytkownik ma konto usługi MFA za pomocą powiadomień push w aplikacji Mic
 
 ### <a name="ad-fs-integration"></a>Integracja z usługą AD FS
 
-Po użytkownik włączył poświadczenia bez hasła Microsoft Authenticator, zawsze będzie domyślnie wysłanie powiadomienia do zatwierdzenia uwierzytelniania dla tego użytkownika. Tę logikę uniemożliwia użytkownikom w dzierżawie hybrydowego być kierowany do usług AD FS dla weryfikacji logowania bez użytkownika, wykonanie dodatkowych czynności kliknij pozycję "Zamiast tego użyj hasła." Ten proces będzie również pominąć wszystkie zasady dostępu warunkowego w środowisku lokalnym i przepływów uwierzytelniania przekazywanego. Wyjątek do tego procesu jest, jeśli login_hint jest określony, użytkownik będzie automatycznie przekazywane do usług AD FS, a Pomiń opcję, aby użyć poświadczeń bez hasła.
+Po użytkownik włączył poświadczenia bez hasła Microsoft Authenticator, zawsze będzie domyślnie wysłanie powiadomienia do zatwierdzenia uwierzytelniania dla tego użytkownika. Tę logikę uniemożliwia użytkownikom w dzierżawie hybrydowego być kierowany do usług AD FS dla weryfikacji logowania bez użytkownika, wykonanie dodatkowych czynności kliknij pozycję "Zamiast tego użyj hasła." Ten proces będzie również pominąć wszystkie zasady dostępu warunkowego w środowisku lokalnym i przepływów uwierzytelniania przekazywanego. Wyjątek do tego procesu jest, jeśli login_hint jest określony, użytkownik będzie automatycznie przekazana dalej do usług AD FS, a Pomiń opcję, aby użyć poświadczeń bez hasła.
 
 ### <a name="azure-mfa-server"></a>Serwer usługi Azure MFA
 

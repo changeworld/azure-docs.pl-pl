@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 79a6636043499cffb7eded409cdc27c56de98e33
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bec94e2017660e9804bbc232e0a3163afdaafcb6
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430225"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277770"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Samouczek: resetowanie hasła usługi Azure AD z ekranu logowania
 
@@ -113,7 +113,7 @@ Podczas testowania tej funkcjonalności za pomocą pulpitu zdanego link „Reset
 
 Jeśli ekran blokady systemu Windows zostanie wyłączony za pomocą klucza rejestru lub zasad grupy, pozycja **Resetuj hasło** nie będzie dostępna.
 
-Jeśli zasady wymagają naciśnięcia klawiszy Ctrl+Alt+Del lub powiadomienia na ekranie blokady są wyłączone, pozycja **Resetuj hasło** nie będzie działać. System Windows 10 19H1 obsłuży to wymaganie.
+Jeśli zasady wymagają naciśnięcia klawiszy Ctrl+Alt+Del lub powiadomienia na ekranie blokady są wyłączone, pozycja **Resetuj hasło** nie będzie działać.
 
 Dziennik inspekcji usługi Azure AD zawiera informacje dotyczące adresu IP i typu klienta, które są powiązane z żądaniem resetowania hasła.
 

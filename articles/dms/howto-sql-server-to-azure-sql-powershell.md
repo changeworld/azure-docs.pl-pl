@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: 0a4e88ed52e2da814d1b10dbc695c9c61b899ef1
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.date: 11/10/2018
+ms.openlocfilehash: 771b89fda4e37d9e8ba47df95f7fd57b41f792a3
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248208"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515543"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>Migrowanie lokalnego programu SQL Server do usługi Azure SQL Database przy użyciu programu Azure PowerShell
 W tym artykule, wykonywana jest migracja **Adventureworks2012** bazy danych przywróconej do lokalnego wystąpienia programu SQL Server 2016 lub nowszym do usługi Azure SQL Database przy użyciu programu Microsoft Azure PowerShell. Można migrować bazy danych z lokalnego wystąpienia programu SQL Server do usługi Azure SQL Database przy użyciu `AzureRM.DataMigration` modułu w programie Microsoft Azure PowerShell.
@@ -61,7 +61,7 @@ Można utworzyć nowego wystąpienia usługi Azure Database Migration Service pr
 - *Nazwa grupy zasobów platformy Azure*. Możesz użyć [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-4.4.1) polecenie, aby utworzyć grupę zasobów platformy Azure, jak przedstawiono wcześniej, a następnie podaj jej nazwę jako parametr.
 - *Nazwa usługi*. Ciąg, który odnosi się do żądanego unikatową nazwę usługi dla usługi Azure Database Migration Service 
 - *Lokalizacja*. Określa lokalizację usługi. Określ lokalizację centrum danych platformy Azure, takich jak zachodnie stany USA lub Azja południowo-wschodnia
-- *Jednostka SKU*. Ten parametr odnosi się do nazwy jednostek Sku usługi DMS. Obecnie obsługiwane nazwy jednostek Sku są *Basic_1vCore*, *Basic_2vCores*, *GeneralPurpose_4vCores*
+- *Jednostka SKU*. Ten parametr odnosi się do nazwy jednostek Sku usługi DMS. Obecnie obsługiwane nazwa jednostki Sku jest *GeneralPurpose_4vCores*.
 - *Identyfikator podsieci wirtualnej*. Można użyć polecenia cmdlet [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig?view=azurermps-4.4.1) utworzyć podsieć. 
 
 Poniższy przykład tworzy usługi o nazwie *MyDMS* w grupie zasobów *MyDMSResourceGroup* na terenie *wschodnie stany USA* regionem przy użyciu sieci wirtualnej o nazwie  *MyVNET* i podsieci o nazwie *MySubnet*.

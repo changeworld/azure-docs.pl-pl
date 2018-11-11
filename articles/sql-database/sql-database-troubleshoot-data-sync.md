@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: beab191ff33939053da942b0ce7df22238b8acef
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 44bf04d3840009b9408ccfc51fdcefa7c7e116cb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247317"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278943"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Rozwiązywanie problemów z usługą SQL Data Sync
 
@@ -112,143 +112,7 @@ Synchronizacja danych nie obsługuje odwołań cyklicznych. Należy ich unikać.
 
 ## <a name="client-agent-issues"></a>Problemy dotyczące agenta klienta
 
-- [Agent klienta zainstalować, odinstalować lub naprawić kończy się niepowodzeniem](#agent-install)
-
-- [Agent klienta nie działa po anulowaniu dezinstalacji](#agent-uninstall)
-
-- [Moja baza danych nie jest wymienione na liście agenta](#agent-list)
-
-- [Agent klienta nie zaczyna się (błąd 1069)](#agent-start)
-
-- [Nie mogę przesłać klucz agenta](#agent-key)
-
-- [Nie można usunąć agenta klienta z poziomu portalu, jeśli jego skojarzony lokalnej bazy danych jest niedostępny](#agent-delete)
-
-- [Lokalnego agenta synchronizacji aplikacji nie można nawiązać połączenia usługi synchronizacji lokalnych](#agent-connect)
-
-### <a name="agent-install"></a> Agent klienta zainstalować, odinstalować lub naprawić kończy się niepowodzeniem
-
-- **Przyczyna**. Wiele scenariuszy mogą być przyczyną tego błędu. Aby określić konkretną przyczynę tego błędu, sprawdź dzienniki.
-
-- **Rozpoznawanie**. Aby znaleźć określone przyczynę niepowodzenia, należy wygenerować i spójrz na dzienniki Instalatora Windows. Można włączyć rejestrowanie w wierszu polecenia. Na przykład jeśli pobrany plik AgentServiceSetup.msi jest LocalAgentHost.msi, generowanie i przejrzyj pliki dziennika przy użyciu następujących wierszy polecenia:
-
-    -   Dla instalacji: `msiexec.exe /i SQLDataSyncAgent-Preview-ENU.msi /l\*v LocalAgentSetup.InstallLog`
-    -   Aby uzyskać odinstalowuje: `msiexec.exe /x SQLDataSyncAgent-se-ENU.msi /l\*v LocalAgentSetup.InstallLog`
-
-    Można również włączyć rejestrowanie dla wszystkich instalacji, które są wykonywane przez Instalatora Windows. Artykuł bazy wiedzy Microsoft Knowledge Base [sposobach włączania rejestrowania zdarzeń Instalatora Windows](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) umożliwia rozwiązanie jednego kliknięcia, aby włączyć rejestrowanie dla Instalatora Windows. Umożliwia także lokalizacją dzienników.
-
-### <a name="agent-uninstall"></a> Agent klienta nie działa po anulowaniu dezinstalacji
-
-Agent klienta nie rozwiąże problemu, nawet po zakończeniu możesz anulować jego dezinstalacji.
-
-- **Przyczyna**. Dzieje się tak, ponieważ agent klienta SQL Data Sync nie przechowuje poświadczeń.
-
-- **Rozpoznawanie**. Możesz wypróbować te dwa rozwiązania:
-
-    -   Wprowadź ponownie poświadczenia dla agenta klienta za pomocą apletu services.msc.
-    -   Odinstaluj agenta klienta, a następnie zainstalować nową. Pobierz i zainstaluj najnowszą wersję agenta klienta z [Centrum pobierania](https://go.microsoft.com/fwlink/?linkid=221479).
-
-### <a name="agent-list"></a> Moja baza danych nie jest wymienione na liście agenta
-
-Gdy spróbujesz dodać istniejącej bazy danych programu SQL Server do grupy synchronizacji, baza danych nie jest wyświetlane na liście agentów.
-
-Te scenariusze mogą być przyczyną tego problemu:
-
-- **Przyczyna**. Grupy synchronizacji i agent klienta znajdują się w różnych centrach danych.
-
-- **Rozpoznawanie**. Agent klienta i grupy synchronizacji musi być w jednym centrum danych. Aby skonfigurować tę funkcjonalność, masz dwie opcje:
-
-    -   Utwórz nowego agenta w centrum danych, w którym znajduje się grupa synchronizacji. Następnie zarejestruj bazy danych za pomocą tego agenta.
-    -   Usuń bieżącą grupę synchronizacji. Następnie należy ponownie utworzyć grupy synchronizacji w centrum danych, w którym znajduje się agent.
-
-- **Przyczyna**. Agent klienta listę baz danych nie jest aktualny.
-
-- **Rozpoznawanie**. Zatrzymaj i ponownie uruchom usługę agenta klienta.
-
-    Agent lokalny pobiera listę skojarzonych bazach danych tylko w pierwszym przesyłania klucz agenta. Go nie Pobierz listę skojarzonych bazach danych w kolejnych agentów zgłoszenia kluczy. Bazy danych, które są zarejestrowane w trakcie przenoszenia agenta nie pojawiają się w oryginalnym wystąpieniu agenta.
-
-### <a name="agent-start"></a> Agent klienta nie zaczyna się (błąd 1069)
-
-Dowiedz się, że agent nie jest uruchomiona na komputerze, który jest hostem serwera SQL. Podczas próby ręcznego uruchomienia agenta zobaczysz okno dialogowe, która wyświetla komunikat "Błąd 1069: nie można uruchomić usługi z powodu niepowodzenia logowania."
-
-![Okno dialogowe błędu 1069 synchronizacji danych](media/sql-database-troubleshoot-data-sync/sync-error-1069.png)
-
-- **Przyczyna**. Prawdopodobną przyczyną wystąpienia tego błędu jest to, że hasło na lokalnym serwerze została zmieniona od czasu utworzenia agenta i hasło agenta.
-
-- **Rozpoznawanie**. Zaktualizuj hasło agenta do swoje bieżące hasło serwera:
-
-  1. Znajdź usługę agenta klienta SQL Data Sync.  
-    a. Wybierz **Start**.  
-    b. W polu wyszukiwania wprowadź **services.msc**.  
-    c. W wynikach wyszukiwania wybierz **usług**.  
-    d. W **usług** okna, przewiń do wpisu dla **agenta synchronizacji danych programu SQL**.  
-  1. Kliknij prawym przyciskiem myszy **agenta synchronizacji danych programu SQL**, a następnie wybierz pozycję **zatrzymać**.
-  1. Kliknij prawym przyciskiem myszy **agenta synchronizacji danych programu SQL**, a następnie wybierz pozycję **właściwości**.
-  1. Na **właściwości agenta synchronizacji danych programu SQL**, wybierz opcję **Zaloguj** kartę.
-  1. W **hasło** wprowadź hasło.
-  1. W **Potwierdź hasło** pole, wprowadź ponownie hasło.
-  1. Wybierz pozycję **Apply** (Zastosuj), a następnie wybierz przycisk **OK**.
-  1. W **usług** okna, kliknij prawym przyciskiem myszy **agenta synchronizacji danych programu SQL** usługi, a następnie kliknij przycisk **Start**.
-  1. Zamknij **usług** okna.
-
-### <a name="agent-key"></a> Nie mogę przesłać klucz agenta
-
-Po utworzeniu lub ponownie utworzyć klucz dla agenta, spróbuj przesłać klucz za pośrednictwem aplikacji SqlAzureDataSyncAgent. Przesyłanie nie powiedzie się.
-
-![Okno dialogowe błędu synchronizacji — nie można przesłać klucz agenta](media/sql-database-troubleshoot-data-sync/sync-error-cant-submit-agent-key.png)
-
-- **Wymagania wstępne**. Przed kontynuowaniem sprawdź następujące wymagania wstępne:
-
-  - Usługa SQL Data Sync Windows jest uruchomiona.
-
-  - Konto usługi dla usługi SQL Data Sync Windows ma dostęp do sieci.
-
-  - Wychodząca przez port 1433 jest otwarty w regule zapory lokalnej.
-
-  - Lokalny adres ip jest dodawany do serwera lub reguły zapory bazy danych dla bazy danych metadanych synchronizacji.
-
-- **Przyczyna**. Klucz agenta jednoznacznie identyfikuje każdy agent lokalny. Klucz musi spełniać dwa warunki:
-
-  -   Klucz agenta klienta na serwerze SQL Data Sync i lokalnym komputerze muszą być identyczne.
-  -   Klucz agenta klienta może służyć tylko raz.
-
-- **Rozpoznawanie**. Jeśli agenta nie działa, jest to, ponieważ jeden lub oba te warunki nie są spełnione. Aby wyświetlić swoje agenta, aby ponownie działać:
-
-  1. Wygeneruj nowy klucz.
-  1. Zastosuj nowy klucz do agenta.
-
-  Aby zastosować nowy klucz na agencie:
-
-  1. W Eksploratorze plików przejdź do katalogu instalacji agenta. Domyślny katalog instalacji to C:\\Program Files (x86)\\programu Microsoft SQL Data Sync.
-  1. Kliknij dwukrotnie ikonę podkatalogu bin.
-  1. Otwórz aplikację SqlAzureDataSyncAgent.
-  1. Wybierz **przesłać klucz agenta**.
-  1. W podanym miejscu Wklej klucz ze Schowka.
-  1. Kliknij przycisk **OK**.
-  1. Zamknij program.
-
-### <a name="agent-delete"></a> Nie można usunąć agenta klienta z poziomu portalu, jeśli jego skojarzony lokalnej bazy danych jest niedostępny
-
-Jeśli lokalny punkt końcowy (czyli bazy danych) zarejestrowana w usłudze SQL Data Sync agenta klienta staje się niedostępny, nie można usunąć agenta klienta.
-
-- **Przyczyna**. Nie można usunąć lokalny agent, ponieważ nieosiągalny bazy danych jest nadal zarejestrowany za pośrednictwem agenta. Podczas próby usunięcia agenta proces usuwania próbuje nawiązać połączenie bazy danych, która kończy się niepowodzeniem.
-
-- **Rozpoznawanie**. Użyj "wymuszonego usunięcia" można usunąć bazy danych jest nieosiągalny.
-
-> [!NOTE]
-> Jeśli tabele metadanych synchronizacji pozostają po "wymuszonego usunięcia", użyj `deprovisioningutil.exe` pora to oczyścić.
-
-### <a name="agent-connect"></a> Lokalnego agenta synchronizacji aplikacji nie można nawiązać połączenia usługi synchronizacji lokalnych
-
-- **Rozpoznawanie**. Spróbuj wykonać następujące kroki:
-
-  1. Zakończ działanie aplikacji.  
-  1. Otwórz Panel usługi składnika.  
-    a. W polu wyszukiwania na pasku zadań, wprowadź **services.msc**.  
-    b. W wynikach wyszukiwania, kliknij dwukrotnie **usług**.  
-  1. Zatrzymaj **SQL Data Sync** usługi.
-  1. Uruchom ponownie **SQL Data Sync** usługi.  
-  1. Otwórz ponownie tę aplikację.
+Aby rozwiązać problemy z agenta klienta, zobacz [wystawia Rozwiązywanie problemów z agenta synchronizacji danych](sql-database-data-sync-agent.md#agent-tshoot).
 
 ## <a name="setup-and-maintenance-issues"></a>Problemy dotyczące instalacji i konserwacji
 

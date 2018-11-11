@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 2f35f54c7ec5ad169673aebe08602294270f470a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
+ms.openlocfilehash: a2bf6ef44a8698e802d9bbc25689988498c55f13
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364459"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300272"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Wykrywanie anomalii w usłudze Azure Stream Analytics
 
@@ -31,7 +31,7 @@ AnomalyDetection operator wykrywa trzy rodzaje anomalii:
 
 * **Wolne ujemna Trend**: powolne spadek trend wraz z upływem czasu.  
 
-Za pomocą operatora AnomalyDetection, należy określić **Limit Duration** klauzuli. Ta klauzula Określa przedział czasu (jak daleko w historii z bieżącego zdarzenia) należy uwzględnić podczas wykrywania anomalii. Opcjonalnie Ten operator może być ograniczone wyłącznie te zdarzenia, które odpowiadają określoną właściwość lub warunek, za pomocą  **podczas**  klauzuli.   Ten operator może również opcjonalnie przetwarzać grup zdarzeń oddzielnie w zależności od klucza określonego w **partycji przez** klauzuli. Uczenia i przewidywania występować niezależnie dla każdej partycji. 
+Za pomocą operatora AnomalyDetection, należy określić **Limit Duration** klauzuli. Ta klauzula Określa przedział czasu (jak daleko w historii z bieżącego zdarzenia) należy uwzględnić podczas wykrywania anomalii. Opcjonalnie Ten operator może być ograniczone wyłącznie te zdarzenia, które odpowiadają określoną właściwość lub warunek, za pomocą **podczas** klauzuli. Ten operator może również opcjonalnie przetwarzać grup zdarzeń oddzielnie w zależności od klucza określonego w **partycji przez** klauzuli. Uczenia i przewidywania występować niezależnie dla każdej partycji. 
 
 ## <a name="syntax-for-anomalydetection-operator"></a>Składnia AnomalyDetection — operator
 
@@ -45,11 +45,11 @@ Za pomocą operatora AnomalyDetection, należy określić **Limit Duration** kla
 
 * **wyrażenie_skalarne** -wyrażenie skalarne, nad którym odbywa się wykrywanie anomalii. Dozwolone wartości dla tego parametru obejmują Float lub typy danych Bigint oznacza zwracany pojedynczy () wartość skalarną. Wyrażenia z symbolami wieloznacznymi **\*** jest niedozwolone. Wyrażenie skalarne, które nie mogą zawierać inne funkcje analityczne lub funkcji zewnętrznych. 
 
-* **partition_by_clause** — `PARTITION BY <partition key>` klauzuli dzieli edukacyjnych i szkoleniowych w oddzielnych partycjach. Innymi słowy, osobnymi plikami modelu będzie używana dla wartości `<partition key>` i tylko zdarzenia przy użyciu tej wartości będą używane na potrzeby edukacyjnych i szkoleniowych w tym modelu. Na przykład następujące zapytanie pociągów i przeznaczona do oceniania odczytu względem innych odczyty tylko tych samych czujnik:
+* **partition_by_clause** — `PARTITION BY <partition key>` klauzuli dzieli edukacyjnych i szkoleniowych w oddzielnych partycjach. Innymi słowy, osobnymi plikami modelu będzie używana dla wartości `<partition key>` i tylko zdarzenia przy użyciu tej wartości będą używane na potrzeby edukacyjnych i szkoleniowych w tym modelu. Na przykład następujące zapytanie pociągów i przeznaczona do oceniania odczytu względem innych odczyty tylko tych samych czujnik:
 
   `SELECT sensorId, reading, ANOMALYDETECTION(reading) OVER(PARTITION BY sensorId LIMIT DURATION(hour, 1)) FROM input`
 
-* **Klauzula limit_duration** `DURATION(<unit>, <length>)` -Określa przedział czasu (jak daleko w historii z bieżącego zdarzenia) należy uwzględnić podczas wykrywania anomalii. Zobacz [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) szczegółowy opis obsługiwanych jednostek i ich skrótami. 
+* **Klauzula limit_duration**  `DURATION(<unit>, <length>)` -Określa przedział czasu (jak daleko w historii z bieżącego zdarzenia) należy uwzględnić podczas wykrywania anomalii. Zobacz [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) szczegółowy opis obsługiwanych jednostek i ich skrótami. 
 
 * **when_clause** -określa warunek logiczny dla zdarzeń uwzględnione podczas obliczania wykrywania anomalii.
 
@@ -243,7 +243,7 @@ Gdy strumień wejściowy nie jest jednolite, krok agregacji może pomóc przeksz
 ## <a name="references"></a>Dokumentacja
 
 * [Wykrywanie anomalii — używanie uczenia maszynowego w celu wykrycia nieprawidłowości w danych szeregów czasowych](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/)
-* [Interfejs API wykrywania anomalii uczenia maszynowego](https://docs.microsoft.com/en-gb/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
+* [Interfejs API wykrywania anomalii uczenia maszynowego](https://docs.microsoft.com/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
 * [Wykrywanie anomalii w czasie serii](https://msdn.microsoft.com/library/azure/mt775197.aspx)
 
 ## <a name="next-steps"></a>Kolejne kroki

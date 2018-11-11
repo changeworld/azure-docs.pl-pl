@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: b6386f4a23a0ca6d0134f8c4e298a3f7100cc1d6
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: a517597c2c4586b59594415f2361e3e4166d4c5a
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466957"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299660"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Organizowanie zasobów platformy Azure przy użyciu tagów
 
@@ -35,7 +35,7 @@ Przykłady w tym artykule wymagają programu Azure PowerShell w wersji 6.0 lub n
 
 Aby wyświetlić istniejące tagi dla *grupy zasobów*, użyj:
 
-```powershell
+```azurepowershell-interactive
 (Get-AzureRmResourceGroup -Name examplegroup).Tags
 ```
 
@@ -50,31 +50,31 @@ Environment                    Test
 
 Aby wyświetlić istniejące tagi dla *zasobu o określonym identyfikatorze zasobu*, użyj:
 
-```powershell
+```azurepowershell-interactive
 (Get-AzureRmResource -ResourceId /subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>).Tags
 ```
 
 Aby wyświetlić istniejące tagi dla *zasobu o określonej nazwie i grupie zasobów*, użyj:
 
-```powershell
+```azurepowershell-interactive
 (Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
 ```
 
 Aby uzyskać *grupy zasobów, które mają konkretny tag*, użyj:
 
-```powershell
+```azurepowershell-interactive
 (Get-AzureRmResourceGroup -Tag @{ Dept="Finance" }).ResourceGroupName
 ```
 
 Aby uzyskać *zasoby, które mają konkretny tag*, użyj:
 
-```powershell
+```azurepowershell-interactive
 (Get-AzureRmResource -Tag @{ Dept="Finance"}).Name
 ```
 
 Aby uzyskać *zasoby, które mają konkretny tag nazwę*, użyj:
 
-```powershell
+```azurepowershell-interactive
 (Get-AzureRmResource -TagName Dept).Name
 ```
 
@@ -82,13 +82,13 @@ Za każdym razem, gdy stosujesz tagi do zasobu lub grupy zasobów, istniejące t
 
 Aby dodać tagi do *grupy zasobów bez istniejących tagów*, użyj:
 
-```powershell
+```azurepowershell-interactive
 Set-AzureRmResourceGroup -Name examplegroup -Tag @{ Dept="IT"; Environment="Test" }
 ```
 
 Aby dodać tagi do *grupy zasobów z istniejącymi tagami*, pobierz istniejące tagi, dodaj nowy tag i ponownie zastosuj tagi:
 
-```powershell
+```azurepowershell-interactive
 $tags = (Get-AzureRmResourceGroup -Name examplegroup).Tags
 $tags.Add("Status", "Approved")
 Set-AzureRmResourceGroup -Tag $tags -Name examplegroup
@@ -96,22 +96,22 @@ Set-AzureRmResourceGroup -Tag $tags -Name examplegroup
 
 Aby dodać tagi do *zasobu bez istniejących tagów*, użyj:
 
-```powershell
+```azurepowershell-interactive
 $r = Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup
 Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceId $r.ResourceId -Force
 ```
 
 Aby dodać tagi do *zasobu z istniejącymi tagami*, użyj:
 
-```powershell
+```azurepowershell-interactive
 $r = Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup
-$r.Tags.Add("Status", "Approved") 
+$r.Tags.Add("Status", "Approved")
 Set-AzureRmResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
 ```
 
 Aby zastosować wszystkie tagi z grupy zasobów do jej zasobów *bez zachowania tagów istniejących w zasobach*, użyj następującego skryptu:
 
-```powershell
+```azurepowershell-interactive
 $groups = Get-AzureRmResourceGroup
 foreach ($g in $groups)
 {
@@ -121,7 +121,7 @@ foreach ($g in $groups)
 
 Aby zastosować wszystkie tagi z grupy zasobów do jej zasobów *z zachowaniem tagów istniejących w zasobach, które nie są duplikatami*, użyj następującego skryptu:
 
-```powershell
+```azurepowershell-interactive
 $group = Get-AzureRmResourceGroup "examplegroup"
 if ($group.Tags -ne $null) {
     $resources = Get-AzureRmResource -ResourceGroupName $group.ResourceGroupName
@@ -149,7 +149,7 @@ if ($group.Tags -ne $null) {
 
 Aby usunąć wszystkie tagi, przekaż pustą tablicę skrótów:
 
-```powershell
+```azurepowershell-interactive
 Set-AzureRmResourceGroup -Tag @{} -Name examplegroup
 ```
 
@@ -208,7 +208,7 @@ Aby dodać tagi do *zasobu bez istniejących tagów*, użyj:
 az resource tag --tags Dept=IT Environment=Test -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-Aby dodać tagi do zasobu, który ma już tagi, Pobierz istniejące tagi, ponownie sformatować tę wartość i ponownie zastosuj tagi istniejące i nowe: 
+Aby dodać tagi do zasobu, który ma już tagi, Pobierz istniejące tagi, ponownie sformatować tę wartość i ponownie zastosuj tagi istniejące i nowe:
 
 ```azurecli
 jsonrtag=$(az resource show -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks" --query tags)

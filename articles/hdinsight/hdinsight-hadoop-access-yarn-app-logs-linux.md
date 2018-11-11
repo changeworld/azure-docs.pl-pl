@@ -1,36 +1,33 @@
 ---
-title: Access Hadoop YARN application loguje HDInsight opartych na systemie Linux — platformy Azure
-description: Dowiedz się, jak dostęp do dzienników aplikacji usługi YARN w klastrze opartych na systemie Linux HDInsight (Hadoop) przy użyciu wiersza polecenia i przeglądarki sieci web.
+title: Dostęp do usługi Apache Hadoop YARN application loguje HDInsight opartych na systemie Linux — Azure
+description: Dowiedz się, jak dostęp do dzienników aplikacji usługi YARN w klastrze HDInsight opartych na systemie Linux (Apache Hadoop) przy użyciu wiersza polecenia i przeglądarki sieci web.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: jasonh
-ms.openlocfilehash: 179349d059fd75e2da01eb908a786e2e7ac91307
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 302f2f96a7f17699411ab9fdbdb6ab1f9de149c8
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092264"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277603"
 ---
-# <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>Dostęp do aplikacji usługi YARN loguje HDInsight opartych na systemie Linux
+# <a name="access-apache-yarn-application-logs-on-linux-based-hdinsight"></a>Dzienniki aplikacji Apache YARN dostępu na HDInsight opartych na systemie Linux
 
-Dowiedz się, jak dostęp do dzienników aplikacji usługi YARN (jeszcze inny zasób moduł negocjowania) w klastrze usługi Hadoop w usłudze Azure HDInsight.
+Dowiedz się, jak dostęp do dzienników aplikacji usługi Apache YARN (jeszcze inny zasób moduł negocjowania) w klastrze Apache Hadoop w usłudze Azure HDInsight.
 
 > [!IMPORTANT]
-> Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz [przechowywanie wersji składnika HDInsight](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym na HDInsight w wersji 3.6 lub nowszej. Aby uzyskać więcej informacji, zobacz [przechowywanie wersji składnika HDInsight](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="YARNTimelineServer"></a>YARN Timeline Server
 
-[YARN Timeline Server](http://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) zawiera ogólne informacje dotyczące ukończonych aplikacji oraz informacje o właściwa dla struktury aplikacji za pośrednictwem dwóch różnych interfejsów. W szczególności:
+[Apache YARN Timeline Server](http://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) zawiera ogólne informacje dotyczące ukończonych aplikacji
 
-* Przechowywanie i pobieranie informacji o aplikacji ogólnego w klastrach HDInsight została włączona przy użyciu wersji 3.1.1.374 lub nowszej.
-* Składnik informacji o aplikacjach dla określonej platformy Timeline Server nie jest obecnie dostępna w klastrach HDInsight.
-
-Ogólne informacje dotyczące aplikacji zawiera następujący typ danych:
+YARN Timeline Server zawiera następujący typ danych:
 
 * Identyfikator aplikacji, unikatowy identyfikator aplikacji
 * Użytkownik, który uruchomił aplikację

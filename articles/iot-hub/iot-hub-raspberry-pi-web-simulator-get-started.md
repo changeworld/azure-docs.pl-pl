@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 2dd9b14ebd7e64a1073ab773b2f1ac8d8c05ac0a
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: a2d067f71b7b68944e479cfd27c1dbf414762af8
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185251"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514880"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Łączenie urządzenia Raspberry Pi symulatora w trybie online dla usługi Azure IoT Hub (Node.js)
 
@@ -59,9 +59,13 @@ Kliknij przycisk, który można uruchomić symulatora urządzenia Raspberry Pi w
 <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Uruchom symulator urządzenia Raspberry Pi</a>
 
 Istnieją trzy obszary, w symulatorze sieci web.
+
 1. Obszar zestawu — obwód domyślny jest, że Pi łączy się z czujnika BME280 i DIODĘ. Obszar jest zablokowana w wersji zapoznawczej więc obecnie nie można wykonywać dostosowywania.
+
 2. Kodowanie obszar — kod online Edytor kodu, korzystając z urządzeniem Raspberry Pi. Przykładowa aplikacja domyślna ułatwia zbieranie danych z czujników z czujnika BME280 i wysyła do usługi Azure IoT Hub. Aplikacja jest w pełni zgodne z rzeczywistych urządzeń Pi. 
+
 3. Zintegrowana Konsola okna — pokazuje dane wyjściowe kodu. W górnej części tego okna istnieją trzy przyciski.
+
    * **Uruchom** — Uruchom aplikację w obszarze kodowania.
    * **Resetuj** — resetowanie kodowania obszaru do domyślnej aplikacji przykładowej.
    * **Rozwijania/zwijania** — z prawej strony znajduje się przycisk umożliwia zwijania/Rozwiń okno konsoli.
@@ -71,8 +75,17 @@ Symulator internetowy urządzenia Raspberry Pi jest teraz dostępna w wersji zap
 
 ![Omówienie Pi symulatora w trybie online](media/iot-hub-raspberry-pi-web-simulator/0_overview.png)
 
-[!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+### <a name="retrieve-connection-string-for-iot-hub"></a>Pobieranie parametrów połączenia dla Centrum IoT hub
+
+[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>Rejestrowanie nowego urządzenia w usłudze IoT hub
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="run-a-sample-application-on-pi-web-simulator"></a>Uruchamianie przykładowej aplikacji w symulatorze web Pi
 
@@ -80,7 +93,6 @@ Symulator internetowy urządzenia Raspberry Pi jest teraz dostępna w wersji zap
    ![Zastąp parametry połączenia urządzenia](media/iot-hub-raspberry-pi-web-simulator/1_connectionstring.png)
 
 2. Kliknij przycisk **Uruchom** lub typ `npm start` do uruchomienia aplikacji.
-
 
 Następujące dane wyjściowe, dane czujników i komunikaty, które są wysyłane do usługi IoT hub powinny być ![dane wyjściowe — dane czujników wysyłanych z urządzenia Raspberry Pi do Centrum IoT hub](media/iot-hub-raspberry-pi-web-simulator/2_run_application.png)
 

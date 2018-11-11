@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: c1005d60df0b1cfd3b24be954ab4ff1b18c8f7a8
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 0f134bdb4f77034dd124027fc960d172d25db721
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348773"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515322"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Uaktualnianie aplikacji usługi Service Fabric przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
@@ -79,13 +79,13 @@ Teraz, skompiluj projekt, wybierając tylko **ActorService** projektu, a następ
 ## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>Krok 3: Wybierz zasady dotyczące kondycji i parametry uaktualniania
 Zapoznaj się z [parametry uaktualniania aplikacji](service-fabric-application-upgrade-parameters.md) i [procesu uaktualniania](service-fabric-application-upgrade.md) uzyskać dobre zrozumienie różnych parametry uaktualniania, limity czasu i kondycji kryterium stosowane. W tym przewodniku kryterium oceny kondycji usługi jest wartość domyślną (i zalecana) wartości, które oznacza, że wszystkie usługi i wystąpień powinna być *dobrej kondycji* po uaktualnieniu.  
 
-Jednak umożliwia zwiększenie *HealthCheckStableDuration* do 60 sekund (tak, aby usługi są w dobrej kondycji przez co najmniej 20 sekund przed uaktualnienia przechodzi do następnej domeny aktualizacji).  Załóżmy również ustawić *UpgradeDomainTimeout* jako 1200 sekund i *UpgradeTimeout* do 3000 sekund.
+Jednak umożliwia zwiększenie *HealthCheckStableDuration* do 180 sekund (tak, aby te usługi są w dobrej kondycji przez co najmniej 120 sekund przed uaktualnienia przechodzi do następnej domeny aktualizacji).  Załóżmy również ustawić *UpgradeDomainTimeout* jako 1200 sekund i *UpgradeTimeout* do 3000 sekund.
 
 Na koniec spróbujmy również ustawić *UpgradeFailureAction* do wycofania. Ta opcja wymaga usługi Service Fabric wycofać aplikację do poprzedniej wersji, w przypadku napotkania problemów podczas uaktualniania. W związku z tym podczas uruchamiania (odbywa się w kroku 4), są określone następujące parametry:
 
 FailureAction = wycofywania
 
-HealthCheckStableDurationSec = 60
+HealthCheckStableDurationSec = 180
 
 UpgradeDomainTimeoutSec = 1200
 

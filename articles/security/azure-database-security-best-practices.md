@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: tomsh
-ms.openlocfilehash: bceccbfd0efb54db3e599ec737fe5df0c2a87acd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cceea9fa613d2a2428427bfe73eb50550db6c69a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261659"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281629"
 ---
 # <a name="azure-database-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń bazy danych platformy Azure
 Zabezpieczenia są szczególnie ważne dla zarządzania bazami danych i zawsze było priorytet [usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). Bazy danych, które mogą być ściśle chronione ułatwiające spełniają najbardziej prawnych lub wymagań dotyczących zabezpieczeń, takich jak HIPAA, ISO 27001/27002 i PCI DSS poziom 1. Bieżącą listę certyfikatów zgodności zabezpieczeń znajduje się w temacie [witryny Microsoft Trust Center](https://azure.microsoft.com/support/trust-center/services/). Można także umieścić baz danych w określonych centrów danych platformy Azure, na podstawie wymagań prawnych.
@@ -122,7 +122,7 @@ Ponieważ autoryzowanym użytkownikiem, np. administratora zabezpieczeń lub adm
 - Upewnij się, że użytkownicy i aplikacje używać osobnych kont do uwierzytelniania. W ten sposób można ograniczyć uprawnienia nadane dla użytkowników i aplikacji i zmniejszyć ryzyko złośliwych działań.
 - Zaimplementować zabezpieczenia na poziomie bazy danych przy użyciu ról stałej bazy danych (na przykład db_datareader i db_datawriter). Lub można utworzyć ról niestandardowych dla twojej aplikacji, aby udzielić jawnych uprawnień do obiektów wybranej bazy danych.
 
-Można również rozważyć inne sposoby szyfrowania danych:
+Inne sposoby Zabezpieczanie danych należy wziąć pod uwagę:
 
 - [Szyfrowanie na poziomie komórki](/sql/relational-databases/security/encryption/encrypt-a-column-of-data) służące do szyfrowania określonej kolumny lub nawet poszczególnych komórek danych przy użyciu różnych kluczy szyfrowania.
 - [Zawsze szyfrowane](/sql/relational-databases/security/encryption/always-encrypted-database-engine), co umożliwia klientom szyfrowanie cennych danych wewnątrz aplikacji klienckich i nigdy nie ujawniania kluczy szyfrowania z aparatem bazy danych (bazy danych SQL Database lub SQL Server). W wyniku Always Encrypted umożliwia rozdzielenie tych, którzy są właścicielami danych (i mogą je wyświetlać) oraz tych, którzy zarządzania danymi (ale nie powinny mieć dostępu).

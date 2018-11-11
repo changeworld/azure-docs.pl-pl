@@ -1,25 +1,25 @@
 ---
-title: Platforma Apache Spark streaming przy użyciu platformy Kafka — Azure HDInsight
-description: Dowiedz się, jak za pomocą platformy Apache Spark platforma Spark przesyłanie strumieniowe danych do i z platformy Apache Kafka za pomocą DStreams. Ten przykład obejmuje strumieniowe przesyłanie danych z platformy Spark w usłudze HDInsight za pomocą notesu Jupyter.
+title: Platforma Apache Spark streaming przy użyciu platformy Apache Kafka — Azure HDInsight
+description: Dowiedz się, jak za pomocą platformy Apache Spark przesyłanie strumieniowe danych do i z platformy Apache Kafka za pomocą DStreams. Ten przykład obejmuje strumieniowe przesyłanie danych z platformy Spark w usłudze HDInsight za pomocą notesu Jupyter.
 keywords: kafka przykład dozorcy platformy kafka, spark, przesyłanie strumieniowe kafka i spark streaming przykład platformy kafka
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/23/2018
-ms.author: jasonh
-ms.openlocfilehash: d06e9d26051fbfafc4d717ec180e8760157aefd9
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: b103300c7d4b72c0605b8355b03fac5201ab6d68
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094170"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279164"
 ---
-# <a name="apache-spark-streaming-dstream-example-with-kafka-on-hdinsight"></a>Platforma Apache Spark streaming (DStream) przykład z platformą Kafka w HDInsight
+# <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Platforma Apache Spark streaming (DStream) przykład z platformy Apache Kafka w HDInsight
 
-Dowiedz się, jak za pomocą platformy Apache Spark platforma Spark przesyłanie strumieniowe danych do i z platformy Apache Kafka w HDInsight przy użyciu DStreams. W tym przykładzie użyto notesu programu Jupyter, które uruchamia w klastrze Spark.
+Dowiedz się, jak za pomocą platformy Apache Spark przesyłanie strumieniowe danych do i z platformy Apache Kafka w HDInsight przy użyciu DStreams. W tym przykładzie użyto notesu programu Jupyter, które uruchamia w klastrze Spark.
 
 > [!NOTE]
 > Kroki przedstawione w tym dokumencie obejmują tworzenie grupy zasobów platformy Azure, która zawiera zarówno platformę Spark w usłudze HDInsight, jak i platformę Kafka w klastrze usługi HDInsight. Oba klastry znajdują się w usłudze Azure Virtual Network, dzięki czemu klaster Spark może komunikować się bezpośrednio z klastrem Kafka.
@@ -59,7 +59,7 @@ Chociaż można utworzyć sieci wirtualnej platformy Azure, platformy Kafka i Sp
 
     * **Lokalizacja**: Wybierz lokalizację lokalizacji geograficznej blisko.
 
-    * **Podstawowa nazwa klastra**: Ta wartość jest używana jako nazwa podstawowa dla aparatu Spark i klastry platformy Kafka. Na przykład wprowadzenie **hdi** tworzony klaster Spark, o nazwie __spark hdi__ i klastra platformy Kafka o nazwie **kafka hdi**.
+    * **Podstawowa nazwa klastra**: Ta wartość jest używana jako nazwa podstawowa dla aparatu Spark i klastry platformy Kafka. Na przykład wprowadzenie **hdistreaming** tworzony klaster Spark, o nazwie __spark hdistreaming__ i klastra platformy Kafka o nazwie **kafka hdistreaming**.
 
     * **Nazwa użytkownika logowania klastra**: nazwa użytkownika będącego administratorem klastrów Spark i Kafka.
 
@@ -71,7 +71,7 @@ Chociaż można utworzyć sieci wirtualnej platformy Azure, platformy Kafka i Sp
 
 3. Przeczytaj **Warunki i postanowienia**, a następnie wybierz pozycję **Wyrażam zgodę na powyższe warunki i postanowienia**.
 
-4. Na koniec zaznacz opcję **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz pozycję **Kup**. Tworzenie klastrów trwa około 20 minut.
+4. Na koniec wybierz pozycję **zakupu**. Tworzenie klastrów trwa około 20 minut.
 
 Po utworzeniu zasobów zostanie wyświetlona strona podsumowania.
 

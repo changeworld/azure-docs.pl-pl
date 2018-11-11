@@ -4,40 +4,46 @@ description: Definicja zasad platformy Azure ma różne efekty, określające sp
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 54562401c830232d0a4bf90405cc5a2dbedcd8bc
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 4668b1fe6e59898d81fc71558e21acd1a89be767
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055972"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279502"
 ---
-# <a name="understand-policy-effects"></a>Zrozumieć wpływ zasad
+# <a name="understand-policy-effects"></a>Interpretacja efektów działania zasad
 
 Każda definicja zasad w zasadach usługi Azure ma wpływ jednego, który określa, co się dzieje podczas skanowania, kiedy **Jeśli** segmentu reguła zasad jest oceniany w celu on niezgodny z zasobem skanowania. Efekty można także zachowywać się inaczej, jeśli są one dla nowego zasobu, zasób zaktualizowane lub istniejący zasób.
 
-Obecnie istnieją pięciu efektów, które są obsługiwane w definicji zasad:
+Obecnie istnieją sześć efektów, które są obsługiwane w definicji zasad:
 
 - Append
 - Inspekcja
 - AuditIfNotExists
 - Zablokuj
 - DeployIfNotExists
+- Disabled (Wyłączony)
 
 ## <a name="order-of-evaluation"></a>Kolejność obliczania
 
 Po wysłaniu żądania do tworzenia lub aktualizowania zasobów za pomocą usługi Azure Resource Manager, zasady są przetwarzane kilka efektów przed przekazanie żądania do odpowiedniego dostawcy zasobów.
 Uniemożliwi to niepotrzebne przetwarzania przez dostawcę zasobów, gdy zasób nie spełnia zaprojektowane nadzoru kontrolki zasad. Zasady tworzy listę wszystkie definicje zasad przypisany przez przypisanie inicjatywy lub zasad, które dotyczą według zakresu (minus wykluczenia) zasobu i przygotowuje się do oceny zasobu wobec każdej definicji.
 
-- **Dołącz** jest stosowana jako pierwsza. Ponieważ Dołącz może zmienić żądania, zmiany wprowadzone przez dołączanie może uniemożliwić inspekcji lub odmówić efekt wraz z.
+- **Wyłączone** jest najpierw sprawdzane w celu określenia, jeśli powinna być oceniana reguła zasad.
+- **Dołącz** jest następnie oceniany. Ponieważ Dołącz może zmienić żądania, zmiany wprowadzone przez dołączanie może uniemożliwić inspekcji lub odmówić efekt wraz z.
 - **Odmów** jest następnie oceniany. Oceniając odmówić przed inspekcji, double rejestrowanie niepożądane zasobów nie będzie mógł.
 - **Inspekcja** jest następnie oceniany przed żądanie, przechodząc do dostawcy zasobów.
 
 Gdy żądanie znajduje się na potrzeby dostawcy zasobów i dostawcy zasobów zwraca kod stanu powodzenia **AuditIfNotExists** i **DeployIfNotExists** są obliczane, aby określić, czy monitowania wymagana jest zgodność rejestrowania lub akcji.
+
+## <a name="disabled"></a>Disabled (Wyłączony)
+
+Efekt jest przydatna przy testowaniu w sytuacji, a gdy definicja zasad ma sparametryzowane efekt. Staje się można wyłączyć pojedynczego przypisanie tej zasady, zmieniając parametr przypisania efektu zamiast wyłączać wszystkie przypisania zasad.
 
 ## <a name="append"></a>Append
 

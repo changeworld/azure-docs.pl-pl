@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 11/05/2018
+ms.date: 11/07/2018
 ms.author: juliako
-ms.openlocfilehash: 2f5c0ef63ba150fdad4aea1a0c65269611d56815
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 1c8bacf4c6cb22240609fb9f5dc0c3c456bc4531
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247691"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287544"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji do przenoszenia z usługi Media Services v2 do v3
 
@@ -45,7 +45,7 @@ Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej w
 * Pojęcia związane z [przekształca](transforms-jobs-concept.md) dla przetwarzanie zadań opartych na plikach. Przekształcenie może służyć do tworzenia konfiguracji wielokrotnego użytku, do tworzenia szablonów usługi Azure Resource Manager i izolowania przetwarzania ustawień między wieloma klientami lub dzierżawcy.
 * Element zawartości może mieć [wielu StreamingLocators](streaming-locators-concept.md) każdego z różnymi ustawieniami funkcji dynamicznego tworzenia pakietów i szyfrowania dynamicznego.
 * [Content protection](content-key-policy-concept.md) obsługuje wiele kluczowych funkcji.
-* Można przesyłać strumieniowo wydarzenia na żywo, które są do 24 godzin.
+* Można przesyłać strumieniowo wydarzenia na żywo, które są do 24 godzin długo po za pomocą usługi Media Services w celu przetranskodowania jej wkład pojedyncza szybkość transmisji bitów źródła danych do strumienia wyjściowego, który ma wielokrotnych.
 * Nowe Niskie opóźnienie obsługę przesyłania strumieniowego na żywo na LiveEvents.
 * Element LiveEvent (wersja zapoznawcza) obsługuje funkcję dynamicznego tworzenia pakietów i szyfrowania dynamicznego. Dzięki temu ochrony zawartości w wersji zapoznawczej, a także DASH i HLS pakowania.
 * LiveOutput jest łatwiejszy w obsłudze niż jednostka Program w interfejsach API w wersji 2. 

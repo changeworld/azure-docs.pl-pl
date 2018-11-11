@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 752a0262503550b9995ac76f648a132429203cce
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a40917ec24ede1107f7d8ae7f5fb2f0f03d1094c
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961436"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278331"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co to jest rozszerzenie diagnostyki platformy Azure
 Rozszerzenie diagnostyki platformy Azure jest agenta w systemie Azure umożliwia zbieranie danych diagnostycznych na rozmieszczonej aplikacji. Rozszerzenie diagnostyki można użyć z wielu różnych źródeł. Obecnie obsługiwane wartości to usługa w chmurze (klasyczne) w sieci Web i ról procesów roboczych, maszyny wirtualne, zestawy skalowania maszyn wirtualnych i Service Fabric. Inne usługi platformy Azure jest diagnostyki różnych metod. Zobacz [monitorowania na platformie Azure — omówienie](../azure-monitor/overview.md).
@@ -60,7 +60,7 @@ Zobacz [schemat i Historia wersji usługi Diagnostyka Azure](azure-diagnostics-s
 Wybierz usługę, której chcesz się zbieranie danych diagnostycznych na i skorzystaj z następujących artykułów, aby rozpocząć pracę. Użyj linków ogólne diagnostyki platformy Azure dla odwołania do wykonywania określonych zadań.
 
 ## <a name="cloud-services-using-azure-diagnostics"></a>Usługi w chmurze przy użyciu diagnostyki Azure
-* Jeśli używasz programu Visual Studio, zobacz [za pomocą Visual Studio śledzenia aplikacji usługi w chmurze](../vs-azure-tools-debug-cloud-services-virtual-machines.md) na rozpoczęcie pracy. W przeciwnym razie zobacz
+* Jeśli używasz programu Visual Studio, zobacz [za pomocą Visual Studio śledzenia aplikacji usługi w chmurze](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines) na rozpoczęcie pracy. W przeciwnym razie zobacz
 * [Jak monitorować usługi Cloud services przy użyciu diagnostyki Azure](../cloud-services/cloud-services-how-to-monitor.md)
 * [Konfigurowanie diagnostyki platformy Azure w aplikacji usługi w chmurze](../cloud-services/cloud-services-dotnet-diagnostics.md)
 
@@ -71,8 +71,8 @@ Aby uzyskać bardziej zaawansowanych tematów zobacz
 * [Konfigurowanie diagnostyki w usługach Cloud Services za pomocą programu PowerShell](../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="virtual-machines"></a>Maszyny wirtualne
-* Jeśli używasz programu Visual Studio, zobacz [za pomocą Visual Studio śledzenia usługi Azure Virtual Machines](../vs-azure-tools-debug-cloud-services-virtual-machines.md) na rozpoczęcie pracy. W przeciwnym razie zobacz
-* [Konfigurowanie diagnostyki platformy Azure na maszynie wirtualnej platformy Azure](../virtual-machines/virtual-machines-dotnet-diagnostics.md)
+* Jeśli używasz programu Visual Studio, zobacz [za pomocą Visual Studio śledzenia usługi Azure Virtual Machines](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines) na rozpoczęcie pracy. W przeciwnym razie zobacz
+* [Konfigurowanie diagnostyki platformy Azure na maszynie wirtualnej platformy Azure](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
 
 Aby uzyskać bardziej zaawansowanych tematów zobacz
 

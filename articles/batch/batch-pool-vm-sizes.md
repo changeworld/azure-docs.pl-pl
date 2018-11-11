@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/07/2018
 ms.author: danlep
-ms.openlocfilehash: 987cbcc642152a4077cc895ad06e43ac56113497
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 35e5d13ac358fa5edcb778253340de0f9e15c067
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544068"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281282"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Wybierz rozmiar maszyny Wirtualnej dla węzłów obliczeniowych w puli usługi Azure Batch
 
@@ -42,8 +42,14 @@ Pule usługi Batch w konfiguracji maszyny wirtualnej obsługuje wszystkie rozmia
 | Seria A | Standardowa_A0 |
 | Seria B | Wszyscy |
 
-Maszyny wirtualne serii M są obsługiwane tylko dla węzłów o niskim priorytecie.
+Następujących rozmiarów maszyn wirtualnych są obsługiwane tylko dla węzłów o niskim priorytecie:
 
+| Rodzina  | Obsługiwane rozmiary  |
+|---------|---------|
+| Seria M | Standardowa_M64ms |
+| Seria M | Maszyna wirtualna Standard_M128s |
+
+Inne rozmiary maszyn wirtualnych z rodziny serii M są obecnie obsługiwane.
 
 ### <a name="pools-in-cloud-service-configuration"></a>Pulach w konfiguracji usługi w chmurze
 
@@ -55,6 +61,7 @@ Pule usługi Batch w konfiguracji usługi w chmurze obsługują wszystkie [rozmi
 | Seria Av2 | Standard_A1_v2, maszyna wirtualna Standard_A2_v2, maszyna wirtualna Standard_A2m_v2 |
 
 ## <a name="restricted-vm-families"></a>Ograniczone rodzin maszyn wirtualnych
+
 Następujące rodzin maszyn wirtualnych może zostać alokowany w pule usługi Batch, ale należy zażądać zwiększenia limitu przydziału określone (zobacz [w tym artykule](batch-quota-limit.md#increase-a-quota)):
 * Seria NCv2
 * Seria NCv3

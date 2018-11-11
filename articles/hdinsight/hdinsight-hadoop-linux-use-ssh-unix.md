@@ -2,20 +2,20 @@
 title: Korzystanie z protokołu SSH w usłudze Hadoop — Azure HDInsight
 description: Do usługi HDInsight można uzyskać dostęp przy użyciu protokołu Secure Shell (SSH). Ten dokument zawiera informacje dotyczące nawiązywania połączenia z usługą HDInsight przy użyciu poleceń ssh i scp z klientów systemów Windows, Linux, Unix lub macOS.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 keywords: polecenia w usłudze hadoop w systemie linux,polecenia hadoop linux,hadoop macos,ssh hadoop,klaster ssh hadoop
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/26/2018
-ms.author: jasonh
+ms.date: 11/06/2018
+ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 7054bf34fea5b499fdec167667242d918cc01c8e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5a3fccba6465e6043db3f95ffdb65f1a8d8a7009
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981728"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279363"
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Łączenie się z usługą HDInsight (Hadoop) przy użyciu protokołu SSH
 

@@ -9,18 +9,18 @@ ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
 ms.component: alerts
-ms.openlocfilehash: 8f3be2b1eb9c12aab212fb198283dce9ee3d3912
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 965a35eb4cf33abe78ca802e8d59f13a649dec0a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982865"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279232"
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>Otrzymywanie powiadomienia w przypadku spełnienia określonego warunku przez wartość metryki
 
 Usługa Azure Monitor udostępnia metryki dla wielu zasobów platformy Azure. Te metryki informują o wydajności i kondycji zasobów. W wielu przypadkach wartości metryk mogą wskazywać problemy z zasobami. Możesz tworzyć alerty dotyczące metryk, aby monitorować zasoby pod kątem nieprawidłowego działania i otrzymywać powiadomienia w przypadku jego wystąpienia. Ten przewodnik Szybki start zawiera instrukcje tworzenia aplikacji logiki, tworzenia zadania oraz wizualizowania metryk tej aplikacji logiki. Następnie opisano proces tworzenia alertu i otrzymywania powiadomienia dotyczącego metryki zasobu aplikacji logiki.
 
-Aby uzyskać więcej informacji na temat metryk i alertów dotyczących metryk, zobacz artykuły [Azure Monitor metrics overview](./monitoring-overview-metrics.md) (Omówienie metryk w usłudze Azure Monitor) i [Azure Monitor alerts overview](./monitoring-overview-alerts.md) (Omówienie alertów w usłudze Azure Monitor). 
+Aby uzyskać więcej informacji na temat metryk i alertów dotyczących metryk, zobacz artykuły [Azure Monitor metrics overview](../monitoring/monitoring-data-collection.md) (Omówienie metryk w usłudze Azure Monitor) i [Azure Monitor alerts overview](./monitoring-overview-alerts.md) (Omówienie alertów w usłudze Azure Monitor). 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 

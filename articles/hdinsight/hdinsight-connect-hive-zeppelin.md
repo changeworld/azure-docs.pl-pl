@@ -1,32 +1,32 @@
 ---
-title: Uruchamianie zapytań programu Hive w usłudze Azure HDInsight za pomocą rozwiązania Zeppelin
-description: Dowiedz się, jak uruchamiać zapytania Hive za pomocą rozwiązania Zeppelin.
+title: Uruchamianie zapytania usługi Apache Hive w usłudze Azure HDInsight za pomocą rozwiązania Zeppelin Apache
+description: Dowiedz się, jak uruchamiać zapytania usługi Apache Hive za pomocą rozwiązania Zeppelin Apache.
 keywords: Usługa hdinsight, hadoop, hive, interakcyjnych zapytań i funkcji LLAP
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 3064c9cd141458307891f666bd5af9aa738cc021
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/05/2018
+ms.author: hrasheed
+ms.openlocfilehash: 75ec0e17e9866d2cd3420ff6ecf648bf22a8ae8e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093172"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277957"
 ---
-# <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>Uruchamianie zapytań programu Hive w usłudze Azure HDInsight za pomocą rozwiązania Zeppelin 
+# <a name="use-apache-zeppelin-to-run-apache-hive-queries-in-azure-hdinsight"></a>Uruchamianie zapytania usługi Apache Hive w usłudze Azure HDInsight za pomocą rozwiązania Zeppelin Apache 
 
-Klastry HDInsight interakcyjnego zapytania obejmują z notesów Zeppelin używanych do uruchamiania interakcyjnych zapytań Hive. W tym artykule dowiesz się, jak uruchamiać zapytania Hive w usłudze Azure HDInsight za pomocą rozwiązania Zeppelin. 
+Klastry HDInsight interakcyjnego zapytania obejmują notesów Apache Zeppelin, które umożliwiają uruchamianie interakcyjnych zapytań Hive. W tym artykule dowiesz się, jak uruchomić zapytania usługi Apache Hive w usłudze Azure HDInsight za pomocą rozwiązania Zeppelin Apache. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed przejściem w tym artykule, należy dysponować następującymi elementami:
 
 * **Klastra zapytania interakcyjnego HDInsight**. Zobacz [Utwórz klaster](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) do utworzenia klastra HDInsight.  Upewnij się wybrać typ zapytania interaktywnego. 
 
-## <a name="create-a-zeppelin-note"></a>Utwórz notatkę Zeppelin
+## <a name="create-a-apache-zeppelin-note"></a>Utwórz notatkę Zeppelin Apache
 
 1. Przejdź do następującego adresu URL:
 

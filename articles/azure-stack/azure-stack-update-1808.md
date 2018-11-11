@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/09/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 1414fd7b559a1bf12cc26d218f4577bbdc986916
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a28168291c79dc54feb5ff572c609cdfb09a187f
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964122"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515594"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizacja usługi Azure Stack 1808
 
@@ -64,12 +64,13 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack.
 - **Elementu portalu marketplace Kubernetes**. Teraz można wdrożyć klastry Kubernetes za pomocą [elementu portalu Kubernetes Marketplace](azure-stack-solution-template-kubernetes-cluster-add.md). Użytkownicy mogą wybrać element Kubernetes i wypełnij kilka parametrów do wdrażania klastra Kubernetes w usłudze Azure Stack. Szablony ma na celu ułatwić użytkownikom, aby skonfigurować tworzenie i testowanie wdrożenia rozwiązania Kubernetes w kilku krokach.
 
 <!-- | IS ASDK--> 
-- **Łańcuch bloków szablony**. Można teraz wykonać [wdrożeń konsorcjum Ethereum](azure-stack-ethereum.md) w usłudze Azure Stack. Można znaleźć trzy nowe szablony w [usługi Azure Stack szablonów Szybki Start](https://github.com/Azure/AzureStack-QuickStart-Templates). Umożliwiają one użytkownikowi wdrażanie i konfigurowanie sieci Ethereum konsorcjum zawierającym wiele elementów członkowskich przy minimalnej znajomości platformy Azure i Ethereum. Szablony ma na celu ułatwić użytkownikom w celu konfigurowania i testowania wdrożeń łańcucha bloków w kilku krokach.
+- **Łańcuch bloków szablony**. Można teraz wykonać [wdrożeń konsorcjum Ethereum](user/azure-stack-ethereum.md) w usłudze Azure Stack. Można znaleźć trzy nowe szablony w [szablony szybkiego startu usługi Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates). Umożliwiają one użytkownikowi wdrażanie i konfigurowanie sieci Ethereum konsorcjum zawierającym wiele elementów członkowskich przy minimalnej znajomości platformy Azure i Ethereum. Szablony ma na celu ułatwić użytkownikom w celu konfigurowania i testowania wdrożeń łańcucha bloków w kilku krokach.
 
 <!-- | IS ASDK--> 
 - **Interfejs API w wersji profilu 2017-03-09-profile została zaktualizowana w celu 2018-03-01-hybrydowego**. Profile interfejsu API Określ dostawca zasobów platformy Azure i wersja interfejsu API dla punkty końcowe REST platformy Azure. Aby uzyskać więcej informacji na temat profilów, zobacz [Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack](/azure/azure-stack/user/azure-stack-version-profiles).
 
- ### <a name="fixed-issues"></a>Rozwiązane problemy
+### <a name="fixed-issues"></a>Rozwiązane problemy
+
 <!-- IS ASDK--> 
 - Rozwiązaliśmy problem w przypadku tworzenia zestaw dostępności w portalu, co spowodowało w zestawie, domeny błędów i domeny aktualizacji 1. 
 
@@ -162,7 +163,7 @@ Ta aktualizacja zawiera także ograniczania ryzyka związanego z wykonywaniem sp
 > Przygotuj wdrożenia usługi Azure Stack na host rozszerzenia. Przygotowanie systemu przy użyciu poniższych wskazówek, [przygotować się do hosta rozszerzenia dla usługi Azure Stack](azure-stack-extension-host-prepare.md).
 
 Po zainstalowaniu tej aktualizacji Zainstaluj wszystkie odpowiednie poprawki. Uzyskać więcej informacji, zobacz następujące artykuły bazy wiedzy knowledge base, a także naszego [obsługi zasad](azure-stack-servicing-policy.md). 
-- [KB 4468920 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1808.5.110](https://support.microsoft.com/help/4468920/)
+- [KB 4468920 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1808.7.113](https://support.microsoft.com/help/4471992/)
 
 
 ## <a name="known-issues-post-installation"></a>Znane problemy (po instalacji)
@@ -253,8 +254,11 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
 ### <a name="compute"></a>Wystąpienia obliczeniowe
 
+<!-- 3164607 – IS, ASDK -->
+- Ponowne dołączenie odłączono dysk do tej samej maszyny wirtualnej (VM) z taką samą nazwę i numer LUN zakończy się niepowodzeniem z powodu błędu takich jak **nie można dołączyć dysku danych "datadisk" do maszyny Wirtualnej "vm1"**. Ten błąd występuje, ponieważ dysk jest obecnie odłączany lub ostatnia odłączanie operacja nie powiodła się. Zaczekaj, aż dysk zostanie całkowicie odłączony a następnie spróbuj ponownie lub usuń bądź Odłącz dysk jawnie ponownie. Obejście polega na dołączyć go ponownie z inną nazwą lub w innej jednostce LUN. 
+
 <!-- 3099544 – IS, ASDK --> 
-- Jeśli podczas tworzenia nowej maszyny wirtualnej (VM) przy użyciu portalu Azure Stack, wybierz rozmiar maszyny Wirtualnej, w kolumnie USD/miesiąc jest wyświetlany z **Unavailable** wiadomości. Ta kolumna nie powinien pojawić się; Wyświetlanie maszyny Wirtualnej cen kolumna nie jest obsługiwana w usłudze Azure Stack.
+- Jeśli podczas tworzenia nowej maszyny Wirtualnej przy użyciu portalu Azure Stack, wybierz rozmiar maszyny Wirtualnej, w kolumnie USD/miesiąc jest wyświetlany z **Unavailable** wiadomości. Ta kolumna nie powinien pojawić się; Wyświetlanie maszyny Wirtualnej cen kolumna nie jest obsługiwana w usłudze Azure Stack.
 
 <!-- 3090289 – IS, ASDK --> 
 - Po zastosowaniu 1808 aktualizacji, podczas wdrażania maszyn wirtualnych z usługą Managed Disks, mogą wystąpić następujące problemy:
@@ -263,7 +267,7 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
       1. W portalu dzierżawcy, przejdź do **subskrypcje** i Znajdź subskrypcji. Kliknij przycisk **dostawców zasobów**, następnie kliknij przycisk **Microsoft.Compute**, a następnie kliknij przycisk **ponownie zarejestrować**.
       2. W ramach tej samej subskrypcji, przejdź do **kontrola dostępu (IAM)** i upewnij się, że **usługi Azure Stack — dysk zarządzany** znajduje się na liście.
    2. Skonfigurowanie środowiska z wieloma dzierżawami wdrażania maszyn wirtualnych w ramach subskrypcji, skojarzony z katalogiem gościa może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki:
-      1. Zastosuj [1808 Azure Stack poprawkę](https://support.microsoft.com/help/4468920/).
+      1. Zastosuj [1808 Azure Stack poprawkę](https://support.microsoft.com/help/4471992/).
       2. Postępuj zgodnie z instrukcjami w [w tym artykule](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) Aby zmienić konfigurację wszystkich katalogów gościa.
       
 <!-- 3179561 - IS --> 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 6e5bbdf0d43b642816a58419c2ce1c186fd44acb
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 774c313086883bedf4f8e06a46715a438fc02e69
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960756"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281204"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatyczne włączanie ustawień diagnostycznych podczas tworzenia zasobów przy użyciu szablonu usługi Resource Manager
 W tym artykule pokazano, jak można użyć [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) do konfigurowania ustawień diagnostycznych dla zasobu, podczas jego tworzenia. Umożliwia to automatyczne uruchamianie usługi Dzienniki diagnostyczne i metryki usługi Event hubs, ich archiwizowanie na koncie magazynu lub wysyłając je do usługi Log Analytics, po utworzeniu zasobu przesyłania strumieniowego.
@@ -26,7 +26,7 @@ W tym artykule pokazano, jak można użyć [szablonu usługi Azure Resource Mana
 Metody włączania dzienników diagnostycznych przy użyciu szablonu usługi Resource Manager, zależy od typu zasobu.
 
 * **Non-Compute** używany przez zasoby (na przykład automatyzacji sieciowych grup zabezpieczeń, Logic Apps) [ustawień diagnostycznych opisanych w tym artykule](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings).
-* **Obliczenia** używany przez zasoby (WAD/LAD oparte) [WAD/LAD pliku konfiguracji opisanych w tym artykule](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
+* **Obliczenia** używany przez zasoby (WAD/LAD oparte) [WAD/LAD pliku konfiguracji opisanych w tym artykule](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
 W tym artykule opisano sposób konfigurowania diagnostyki za pomocą jednej z metod.
 

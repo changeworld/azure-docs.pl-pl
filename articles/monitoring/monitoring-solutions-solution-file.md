@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 13da68f826f7077acec9a64d1aa0ea18c66be6ff
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 21e280740d5d7f467ee70952febf858e0dc0b89d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914247"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278212"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Tworzenie pliku rozwiązania zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
 > Jest to wersję wstępną dokumentacji dotyczące tworzenia rozwiązania do zarządzania na platformie Azure, które są obecnie w wersji zapoznawczej. Żadnego schematu opisanych poniżej ulec zmianie.  
 
-Rozwiązania do zarządzania na platformie Azure są implementowane jako [szablonów usługi Resource Manager](../azure-resource-manager/resource-manager-template-walkthrough.md).  Głównym zadaniem, jak tworzyć rozwiązania do zarządzania jest uczenie jak [Tworzenie szablonu](../azure-resource-manager/resource-group-authoring-templates.md).  Ten artykuł zawiera unikatowe szczegółowe informacje o szablonów używanych dla rozwiązania i sposobie konfigurowania typowe rozwiązanie z zasobów.
+Rozwiązania do zarządzania na platformie Azure są implementowane jako [szablonów usługi Resource Manager](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).  Głównym zadaniem, jak tworzyć rozwiązania do zarządzania jest uczenie jak [Tworzenie szablonu](../azure-resource-manager/resource-group-authoring-templates.md).  Ten artykuł zawiera unikatowe szczegółowe informacje o szablonów używanych dla rozwiązania i sposobie konfigurowania typowe rozwiązanie z zasobów.
 
 
 ## <a name="tools"></a>Narzędzia

@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 0221965c51f2287cb6042c33b9ab3402e104abc3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: fe73d5a2aa63cf127f5df835484cfcc75ef702aa
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870482"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514965"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połącz aplikację z wystąpieniem zarządzanym usługi Azure SQL Database
 
@@ -60,7 +60,7 @@ Jeśli nie można ustanowić połączenia do wystąpienia zarządzanego środowi
 Wystąpienie zarządzane jest możliwy tylko za pośrednictwem prywatnego adresu IP tak aby można było uzyskać do niego dostęp z Twojego pola dla deweloperów, najpierw musisz utworzyć połączenie między usługami box usługi dla deweloperów i sieci wirtualnej wystąpienia zarządzanego. Aby to zrobić, należy skonfigurować połączenie punkt-lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikatu platformy Azure natywnych. Aby uzyskać więcej informacji, zobacz [Konfigurowanie połączenia punkt lokacja, nawiązywanie połączenia z bazą danych wystąpienia zarządzanego Azure SQL z na komputerze lokalnym](sql-database-managed-instance-configure-p2s.md).
 
 ## <a name="connect-from-on-premises-with-vnet-peering"></a>Łączenie ze środowiska lokalnego za pomocą komunikacji równorzędnej sieci wirtualnej
-Inny scenariusz implementowany przez klientów jest zainstalowaną bramę sieci VPN w oddzielnej sieci wirtualnej i subskrypcję z jednego wystąpienia zarządzanego hostingu. Dwie wirtualne etworks następnie równorzędne. Następujący przykładowy diagram architektury pokazuje, jak można to zaimplementować.
+Inny scenariusz implementowany przez klientów jest zainstalowaną bramę sieci VPN w oddzielnej sieci wirtualnej i subskrypcję z jednego wystąpienia zarządzanego hostingu. Następnie równorzędnym połączeniu dwóch sieci wirtualnych. Następujący przykładowy diagram architektury pokazuje, jak można to zaimplementować.
 
 ![Komunikacja równorzędna sieci wirtualnych](./media/sql-database-managed-instance-connect-app/vnet-peering.png)
 
@@ -83,6 +83,10 @@ Przypadek specjalny nawiązywania połączenia z usługi Azure App Service do wy
 W tym scenariuszu przedstawiono na poniższym diagramie:
 
 ![Komunikacja równorzędna w zintegrowanej aplikacji](./media/sql-database-managed-instance/integrated-app-peering.png)
+
+>[!NOTE]
+>Funkcja integracji sieci wirtualnej nie jest zintegrowana z aplikacji z siecią wirtualną, która ma bramę usługi ExpressRoute. Nawet jeśli brama usługi ExpressRoute jest konfigurowane w trybie współistnienie Integracja sieci wirtualnej nie działa. Jeśli potrzebujesz dostępu do zasobów za pośrednictwem połączenia usługi ExpressRoute, można użyć w środowisku usługi App Service, która działa w sieci wirtualnej.
+>
  
 ## <a name="troubleshooting-connectivity-issues"></a>Rozwiązywanie problemów z łącznością
 

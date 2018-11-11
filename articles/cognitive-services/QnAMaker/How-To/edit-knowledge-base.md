@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/06/2018
 ms.author: tulasim
-ms.openlocfilehash: f927e5b7ff65b82aef9d4224d22296e0fa48ad59
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: adcefe8fed927aca2533ea811bac56f0b92288de
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451888"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279765"
 ---
 # <a name="edit-a-knowledge-base"></a>Edytowanie bazy wiedzy
 
@@ -54,7 +54,7 @@ Aktualizacja serwera z bazy wiedzy jest zależna od **warstwę cenową zarządza
     >[!NOTE]
     Opuszczenie strony przed kliknięciem przycisku zapisywania i szkolenie nie utrwala zmiany.
 
-## <a name="add-a-qna-pair"></a>Dodaj parę pytań i odpowiedzi
+## <a name="add-a-qna-pair"></a>Dodawanie pary pytań i odpowiedzi
 
 Wybierz **pary dodawanie pytań i odpowiedzi** Aby dodać nowy wiersz do tabeli w bazie wiedzy knowledge base.
 
@@ -89,6 +89,12 @@ Dodaj pary metadanych, wybierając ikonę filtru
 3. **Podział na strony** umożliwia zarządzanie duże bazy wiedzy
 
     ![Wyszukiwanie, stronicowanie i grupy](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+
+## <a name="delete-knowledge-bases"></a>Usuń z bazy wiedzy
+
+Usuwanie bazy wiedzy (KB) jest operacją nieodwracalną. Nie można cofnąć. Przed usunięciem bazy wiedzy, należy wyeksportować wiedzy z **ustawienia** stronie portalu narzędzia QnA Maker. 
+
+Jeśli udostępniasz wiedzy o [współpracowników](collaborate-knowledge-base.md) usuń go, wszyscy utraci dostęp w KB. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: shvija
-ms.openlocfilehash: c4a9a3189f3de101528871e4dba95bf7a76b9846
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: a3f7245d8a648249a4e7179cc02982eae8561037
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746918"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280583"
 ---
 # <a name="event-hubs-features-overview"></a>Omówienie funkcji usługi Event Hubs
 
@@ -28,13 +28,21 @@ W tym artykule opiera się na informacjach w [artykuł z omówieniem](event-hubs
 ## <a name="namespace"></a>Przestrzeń nazw
 Przestrzeń nazw usługi Event Hubs zapewnia kontener określania zakresu unikatowy, odwołuje się jego [w pełni kwalifikowaną nazwę domeny](https://en.wikipedia.org/wiki/Fully_qualified_domain_name), w którym tworzysz usługi event hubs lub tematów platformy Kafka. 
 
+## <a name="event-hubs-for-apache-kafka"></a>Usługa Event Hubs dla platformy Apache Kafka
+
+[Ta funkcja](event-hubs-for-kafka-ecosystem-overview.md) udostępnia punkt końcowy, który umożliwia klientom na komunikowanie się z usługi Event Hubs przy użyciu protokołu platformy Kafka. Ta integracja zapewnia klientom punktu końcowego platformy Kafka. Dzięki temu klienci mogą konfigurować swoje istniejące aplikacje platformy Kafka na komunikowanie się z usługi Event Hubs, zapewniając alternatywa działające własne klastry platformy Kafka. Usługa Event Hubs dla platformy Apache Kafka obsługuje protokół platformy Kafka, 1.0 lub nowszy. 
+
+Dzięki tej integracji nie trzeba uruchomić klastry platformy Kafka lub zarządzać nimi przy użyciu dozorcy. Umożliwia to także pracować z niektórych funkcji najbardziej wymagających centrów zdarzeń, takich jak przechwytywanie automatyczne rozszerzanie i odzyskiwania po awarii geograficznie.
+
+Ta integracja umożliwia również aplikacji, takich jak twórca dublowanie lub środowiska takiego jak połączyć Kafka pracę clusterless tylko zmian konfiguracji. 
+
 ## <a name="event-publishers"></a>Wydawcy zdarzeń
 
-Każda jednostka, która wysyła dane do Centrum zdarzeń jest producentem zdarzeń, lub *wydawca zdarzeń*. Wydawcy zdarzeń mogą publikować zdarzenia przy użyciu protokołu HTTPS lub AMQP 1.0. Wydawcy zdarzeń używają tokenu sygnatury dostępu współdzielonego w celu identyfikowania siebie w centrum zdarzeń i mogą mieć unikatową tożsamość lub używają typowego tokenu sygnatury dostępu współdzielonego.
+Każda jednostka, która wysyła dane do Centrum zdarzeń jest producentem zdarzeń, lub *wydawca zdarzeń*. Wydawcy zdarzeń mogą publikować zdarzenia przy użyciu protokołu HTTPS lub AMQP 1.0 lub platformy Kafka w wersji 1.0 lub nowszy. Wydawcy zdarzeń używają tokenu sygnatury dostępu współdzielonego w celu identyfikowania siebie w centrum zdarzeń i mogą mieć unikatową tożsamość lub używają typowego tokenu sygnatury dostępu współdzielonego.
 
 ### <a name="publishing-an-event"></a>Publikowanie zdarzenia
 
-Zdarzenie można opublikować za pośrednictwem protokołu AMQP 1.0 lub HTTPS. Usługa Event Hubs zapewnia [bibliotek klienta i klasy](event-hubs-dotnet-framework-api-overview.md) do publikowania zdarzeń do Centrum zdarzeń z klientów programu .NET. W przypadku innych środowisk uruchomieniowych i platform można używać dowolnego klienta protokołu AMQP 1.0, na przykład [Apache Qpid](http://qpid.apache.org/). Zdarzenia można publikować indywidualnie lub w partiach. Jedna publikacja (wystąpienie danych zdarzeń) ma limit wynoszący 256 KB, niezależnie od tego, czy jest to pojedyncze zdarzenie, czy partia. Publikowanie zdarzeń jest większy niż próg powoduje wystąpienie błędu. Najlepszym rozwiązaniem dla wydawców jest niebranie pod uwagę partycji w ramach centrum zdarzeń i określenie jedynie *klucza partycji* (zostanie wprowadzony w następnej sekcji) lub tożsamości za pomocą ich tokenu sygnatury dostępu współdzielonego.
+Można opublikować zdarzenia za pośrednictwem protokołu AMQP 1.0, platformy Kafka w wersji 1.0 (lub nowszy) lub HTTPS. Usługa Event Hubs zapewnia [bibliotek klienta i klasy](event-hubs-dotnet-framework-api-overview.md) do publikowania zdarzeń do Centrum zdarzeń z klientów programu .NET. W przypadku innych środowisk uruchomieniowych i platform można używać dowolnego klienta protokołu AMQP 1.0, na przykład [Apache Qpid](http://qpid.apache.org/). Zdarzenia można publikować indywidualnie lub w partiach. Jedna publikacja (wystąpienie danych zdarzeń) ma limit 1 MB, niezależnie od tego, czy jest to pojedyncze zdarzenie, czy partia. Publikowanie zdarzeń jest większy niż próg powoduje wystąpienie błędu. Najlepszym rozwiązaniem dla wydawców jest niebranie pod uwagę partycji w ramach centrum zdarzeń i określenie jedynie *klucza partycji* (zostanie wprowadzony w następnej sekcji) lub tożsamości za pomocą ich tokenu sygnatury dostępu współdzielonego.
 
 Decyzja o korzystaniu z protokołu AMQP lub HTTPS jest specyficzna dla scenariusza użycia. Protokół AMQP wymaga ustanowienia trwałego gniazda dwukierunkowego oprócz protokołu TLS lub SSL/ TLS. Protokół AMQP zużywa więcej zasobów sieciowych przy inicjowaniu sesji, jednak protokół HTTPS wymaga dla każdego żądania dodatkowego narzutu na protokół SSL. Protokół AMQP charakteryzują się wyższą wydajnością dla częstych wydawców.
 
