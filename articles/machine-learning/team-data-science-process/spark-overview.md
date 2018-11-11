@@ -15,15 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: acb02df7a1ca49e822062ec5658b4875388b85ab
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 043d19e3917bcdac7e963225af7e614315e414bd
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586023"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344709"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Omówienie używania platformy Spark w usłudze Azure HDInsight do analizy danych
-[!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
 Tym zestawie tematów pokazuje, jak używać platformy HDInsight Spark do wykonania typowych zadań do nauki o danych, takich jak pozyskiwanie danych, technicznego opracowywania funkcji, modelowania i ocenę modelu. Dane używane jest przykładem 2013 NYC taksówek podróży i klasie zestawu danych. Modele utworzone obejmują regresji logistycznej liniowego i liniowa w, losowych lasów i gradientu wzmocnionego drzewa. W tematach opisano również sposób przechowywania tych modeli w usłudze Azure blob storage (WASB) oraz ocena i oceny wydajności predykcyjne. Obejmuje bardziej zaawansowanych tematów, jak modeli może być uczony przy użyciu zaczynają krzyżowego sprawdzania poprawności i parametrów. Ten ogólny temat odwołuje się również do tematów opisujących, jak skonfigurować klaster Spark, które należy wykonać czynności opisane w wskazówki podane. 
 

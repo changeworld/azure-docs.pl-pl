@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5f5bfe6c730f569f0cc902b0e0a132bfca645a45
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c17c14b015531bf3f978ac30b013c80ad5be779e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961691"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006519"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optymalizowanie środowiska za pomocą rozwiązania System Center Operations Manager Health Check (wersja zapoznawcza)
 
@@ -238,7 +238,7 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
     ```
 
     >[!NOTE]
-    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](log-analytics-log-search.md), a następnie powyższe zapytania zmienią się następujące czynności.
+    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](log-analytics-queries.md), a następnie powyższe zapytania zmienią się następujące czynności.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -263,7 +263,7 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
     ```
 
     >[!NOTE]
-    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](log-analytics-log-search.md), a następnie powyższe zapytania zmienią się następujące czynności.
+    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](log-analytics-queries.md), a następnie powyższe zapytania zmienią się następujące czynności.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -304,4 +304,4 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Przeszukiwanie dzienników](log-analytics-log-search.md) Aby dowiedzieć się, jak analizować szczegółowe dane usługi System Center Operations Manager Health Check i zalecenia.
+- [Przeszukiwanie dzienników](log-analytics-queries.md) Aby dowiedzieć się, jak analizować szczegółowe dane usługi System Center Operations Manager Health Check i zalecenia.

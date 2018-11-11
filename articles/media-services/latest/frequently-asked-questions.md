@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: dccbc6e57e970ec7089f81fccb33b741b9c00e74
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 26661a213b5df5424bf9ab9ad799345ae35620ea
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376724"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036771"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Azure Media Services v3 — często zadawane pytania
 
@@ -28,7 +28,7 @@ Jeszcze nie. Można użyć jednego z obsługiwanych zestawów SDK. Zobacz, samou
 
 ## <a name="is-there-an-api-for-configuring-media-reserved-units"></a>Do konfigurowania jednostek zarezerwowanych multimediów to interfejs API?
 
-Zespół usługi Media Services jest wyeliminowanie (RUS) w wersji 3. Jednak pracy wymaganej usługi nie została ukończona. Do tego czasu, klienci muszą użyć witryny Azure portal lub interfejsów API usług AMS w wersji 2 można ustawić jednostki zarezerwowane (zgodnie z opisem w [skalowanie przetwarzania multimediów](../previous/media-services-scale-media-processing-overview.md). 
+Obecnie masz konfigurowania jednostek zarezerwowanych multimediów przy użyciu interfejsów API usług AMS w wersji 2 (zgodnie z opisem w [skalowanie przetwarzania multimediów](../previous/media-services-scale-media-processing-overview.md). 
 
 Korzystając z **VideoAnalyzerPreset** i/lub **AudioAnalyzerPreset**, ustawić konto usługi Media Services do 10 jednostek zarezerwowanych multimediów S3.
 

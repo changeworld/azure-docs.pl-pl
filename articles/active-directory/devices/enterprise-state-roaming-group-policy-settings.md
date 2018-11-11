@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: b5f5fa74dca664d31c19055fadd9b66f84627b67
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: c6ec20b7467998d221858dfd852461ad33a64494
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157109"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035217"
 ---
 # <a name="group-policy-and-mdm-settings"></a>Ustawienia zasad grupy i zarządzania urządzeniami Przenośnymi
 Użyj tych zasad grupy i ustawienia zarządzania (urządzeniami przenośnymi MDM) dla urządzeń przenośnych tylko na urządzeniach należących do firmy, ponieważ te zasady są stosowane do całego urządzenia użytkownika. Stosowanie zasad zarządzania urządzeniami Przenośnymi, aby wyłączyć synchronizację ustawień do użytku osobistego, urządzenia należące do użytkownika zostanie negatywny wpływ na korzystanie z tego urządzenia. Ponadto innych kont użytkowników na urządzeniu będą również mieć wpływ na przez zasady.
