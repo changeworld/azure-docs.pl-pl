@@ -1,10 +1,10 @@
 ---
-title: Skalowania przetwarzania nośnika przy użyciu portalu Azure | Dokumentacja firmy Microsoft
-description: Ten samouczek przedstawia kroki nośnika skalowania przetwarzania przy użyciu portalu Azure.
+title: Skalowanie przetwarzania multimediów za pomocą witryny Azure portal | Dokumentacja firmy Microsoft
+description: Ten samouczek przeprowadzi Cię przez kroki media skalowanie przetwarzania za pomocą witryny Azure portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: e500f733-68aa-450c-b212-cf717c0d15da
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/04/2017
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: 51973916c97282ac93032ab833402d9d1356647e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2aabdc503a694de46796b7c3afeedfcdb2f39ca9
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790314"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037874"
 ---
 # <a name="change-the-reserved-unit-type"></a>Zmiana typu jednostki zarezerwowanej
 > [!div class="op_single_selector"]
@@ -31,10 +31,6 @@ ms.locfileid: "33790314"
 > 
 > 
 
-> [!NOTE]
-> Aby uzyskać najnowszą wersję zestawu SDK języka Java i zacząć programować w języku Java, zobacz [Rozpoczynanie korzystania z zestawu SDK klienta Java dla usług Azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use). <br/>
-> Aby pobrać najnowszy zestaw SDK języka PHP dla usługi Media Services, poszukaj wersji 0.5.7 pakietu Microsoft/WindowAzure w [repozytorium Packagist](https://packagist.org/packages/microsoft/windowsazure#v0.5.7).  
-
 ## <a name="overview"></a>Przegląd
 
 Konto usługi Media Services jest skojarzone z typem jednostki zarezerwowanej określającym szybkość, z jaką są przetwarzane zadania przetwarzania multimediów. Można wybrać jeden z następujących typów jednostki zarezerwowanej: **S1**, **S2** lub **S3**. Na przykład to samo zadanie kodowania jest wykonywane szybciej przy użyciu typu jednostki zarezerwowanej **S2** niż w przypadku użycia typu **S1**.
@@ -45,19 +41,19 @@ Oprócz określenia typu jednostki zarezerwowanej można określić aprowizację
 >Jednostki zarezerwowane przekształcają wszystkie operacje przetwarzania multimediów do postaci równoległej, uwzględniając zadania Indeksowania za pomocą usługi Azure Media Indexer. Jednak w przeciwieństwie do kodowania zadania indeksowania nie są przetwarzane szybciej przy użyciu szybszych jednostek zarezerwowanych.
 
 > [!IMPORTANT]
-> Upewnij się przejrzeć [omówienie](media-services-scale-media-processing-overview.md) tematu, aby uzyskać więcej informacji na temat skalowania przetwarzania tematu nośnika.
+> Upewnij się zapoznać się z [Przegląd](media-services-scale-media-processing-overview.md) tematu, aby uzyskać więcej informacji na temat skalowania tematu przetwarzania multimediów.
 > 
 > 
 
 ## <a name="scale-media-processing"></a>Skalowanie przetwarzania multimediów
-Aby zmienić typ jednostki zarezerwowane i liczbę jednostek zarezerwowanego, wykonaj następujące czynności:
+Aby zmienić typ jednostki zarezerwowanej i liczbę jednostek zarezerwowanych, wykonaj następujące czynności:
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) wybierz swoje konto usługi Azure Media Services.
 2. W **ustawienia** wybierz **jednostki zarezerwowane multimediów**.
    
-    Aby zmienić liczbę jednostek zarezerwowanego dla typu wybranej jednostki zarezerwowane, użyj **jednostki obsługiwanej nośnika** suwak w górnej części ekranu.
+    Aby zmienić liczbę jednostek zarezerwowanych dla typu jednostki zarezerwowanej wybrane, użyj **jednostek obsługiwane multimediów** suwaka w górnej części ekranu.
    
-    Aby zmienić **typ jednostki zarezerwowane**, kliknij **szybkości przetwarzania zarezerwowanych jednostek** paska. Wybierz warstwę cenową należy: S1, S2 lub S3.
+    Aby zmienić **ZASTRZEŻONY typ jednostki**, kliknij pozycję **szybkość jednostek zarezerwowanych przetwarzania** paska. Następnie wybierz warstwę cenową, potrzebujesz: S1, S2 lub S3.
    
 3. Kliknij przycisk ZAPISZ, aby zapisać zmiany.
    

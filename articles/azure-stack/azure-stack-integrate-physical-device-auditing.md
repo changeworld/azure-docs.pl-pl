@@ -6,24 +6,25 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 11/05/2018
 ms.author: patricka
 ms.reviewer: fiseraci
 keywords: ''
-ms.openlocfilehash: 459cdf4e1a70ee02d818dd6abe101e4fc3475b68
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 83177363803c8f5c505c083614000dfa8f0df60d
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40034764"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036907"
 ---
 # <a name="azure-stack-datacenter-integration---physical-device-auditing"></a>Integracja centrum danych usługi Azure Stack — inspekcja urządzenia fizycznego
 
-Wszystkie urządzenia fizycznego w usłudze Azure Stack, takimi jak kontrolery zarządzania płytą główną (BMC) i przełączniki sieciowe emitowania dzienników inspekcji, a następnie powinny one zostać zintegrowane całe rozwiązanie inspekcji. Ponieważ urządzenia różnią się w wielu różnych dostawców sprzętu usługi Azure Stack OEM, skontaktuj się z dostawcą dokumentację inspekcji integracji. Poniższe sekcje zawierają ogólne informacje dla urządzenia fizycznego inspekcji w usłudze Azure Stack.  
+Wszystkie urządzenia fizycznego w usłudze Azure Stack, takimi jak kontrolery zarządzania płytą główną (BMC) i przełączniki sieciowe emitowania dzienników inspekcji. Całe rozwiązanie inspekcji można zintegrować dzienniki inspekcji. Ponieważ urządzenia różnią się w wielu różnych dostawców sprzętu usługi Azure Stack OEM, skontaktuj się z dostawcą dokumentację inspekcji integracji.
+Poniższe sekcje zawierają ogólne informacje dla urządzenia fizycznego inspekcji w usłudze Azure Stack.  
 
 ## <a name="physical-device-access-auditing"></a>Przeprowadzanie inspekcji dostępu do urządzenia fizycznego
 
-Wszystkie fizyczne urządzenia w usłudze Azure Stack obsługuje TACACS lub serwera RADIUS. Obejmuje to dostęp do kontrolera zarządzania płytą główną (BMC) i przełącznikami sieciowymi.
+Wszystkie fizyczne urządzenia w usłudze Azure Stack obsługuje TACACS lub serwera RADIUS. Obsługa obejmuje dostęp do kontrolera zarządzania płytą główną (BMC) i przełącznikami sieciowymi.
 
 Rozwiązania platformy Azure Stack nie są dostarczane za pomocą usługi RADIUS lub TACACS wbudowane. Jednak te rozwiązania zostały zweryfikowane aby obsługiwały korzystanie z istniejących rozwiązań usługi RADIUS lub TACACS dostępnych na rynku.
 

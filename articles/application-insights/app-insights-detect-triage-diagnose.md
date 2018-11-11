@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 799593758bf24924d91d38bd6a626b945247183b
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 41c8fd0092af035153b3161c4a6c3eb5c5ef3f1d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050242"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958903"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Omówienie usługi Azure Application Insights dla metodyki DevOps
 
@@ -231,6 +231,6 @@ Możesz rozpocząć pracę na kilka sposobów, w zależności od właściwości 
 * [Aplikacja internetowa platformy ASP.NET](app-insights-asp-net.md)
 * [Aplikacja internetowa Java](app-insights-java-get-started.md)
 * [Aplikacja internetowa Node.js](app-insights-nodejs.md)
-* Już wdrożone aplikacje hostowane w usługach [IIS](app-insights-monitor-web-app-availability.md), [J2EE](app-insights-java-live.md) lub [Azure](app-insights-azure.md).
+* Już wdrożone aplikacje hostowane w usługach [IIS](app-insights-monitor-web-app-availability.md), [J2EE](app-insights-java-live.md) lub [Azure](app-insights-overview.md).
 * [Strony internetowe](app-insights-javascript.md) — aplikacja jednostronicowa lub zwykła strona internetowa — używane samodzielnie lub jako dodatek do dowolnych opcji serwerowych.
 * [Testy dostępności](app-insights-monitor-web-app-availability.md) do testowania aplikacji w publicznym Internecie.

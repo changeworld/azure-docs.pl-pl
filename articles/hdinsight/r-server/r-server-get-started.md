@@ -3,18 +3,18 @@ title: Wprowadzenie do usług ML w usłudze HDInsight — Azure
 description: Dowiedz się, jak utworzyć aparat Apache Spark w klastrze usługi HDInsight zawierającym usługi ML, a następnie przesłać skrypt języka R do klastra.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 7b3d2d47db733d1290bccca0e44958098451324e
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 0811f0e115545a37b6c570c436900a8548adae61
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046416"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006366"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Wprowadzenie do usług ML w usłudze Azure HDInsight
 

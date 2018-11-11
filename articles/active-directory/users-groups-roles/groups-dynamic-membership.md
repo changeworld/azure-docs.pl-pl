@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 11/05/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: c2e50362de48991c818017b59632be3b0e74cb0b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: MT
+ms.openlocfilehash: 53c50ba75a16c58d7936a6f06de87218f67f5951
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282071"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219600"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w usłudze Azure Active Directory
 
@@ -339,9 +339,7 @@ Nazwa właściwości niestandardowych można znaleźć w katalogu, wysyłając z
 
 ## <a name="rules-for-devices"></a>Reguły urządzeń
 
-Można również utworzyć regułę, która wybiera obiekty urządzeń do członkostwa w grupie. Członkowie grupy nie może być użytkowników i urządzeń. **OrganizationalUnit** atrybut nie jest już znajduje się na liście i nie powinna być używana. Ten ciąg jest ustawiony przez usługę Intune w szczególnych przypadkach, ale nie został rozpoznany przez usługę Azure AD, dlatego żadne urządzenia są dodawane do grupy na podstawie tego atrybutu.
-
-Następujące atrybuty urządzenia może służyć.
+Można również utworzyć regułę, która wybiera obiekty urządzeń do członkostwa w grupie. Członkowie grupy nie może być użytkowników i urządzeń. Następujące atrybuty urządzenia może służyć.
 
  Atrybutu urządzenia  | Wartości | Przykład
  ----- | ----- | ----------------
@@ -357,6 +355,7 @@ Następujące atrybuty urządzenia może służyć.
  enrollmentProfileName | Nazwa profilu profilu rejestracji urządzeń firmy Apple lub rozwiązania Windows Autopilot | (device.enrollmentProfileName - eq "IPhone DEP")
  isRooted | wartość true, false | (device.isRooted - eq true)
  managementType | Zarządzanie urządzeniami Przenośnymi (dla urządzeń przenośnych)<br>Komputer (w przypadku komputerów zarządzanych przez agenta PC usługi Intune) | (device.managementType - eq "MDM")
+ Jednostka organizacyjna | dowolną wartość ciągu pasujące do nazwy jednostki organizacyjnej, ustawiane przez usługi Active Directory w środowisku lokalnym | (device.organizationalUnit -eq "US PCs")
  deviceId | Nieprawidłowy identyfikator urządzenia usługi Azure AD | (device.deviceId - eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  Identyfikator obiektu | Identyfikator obiektu prawidłowy, usługa Azure AD |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
  systemLabels | dowolny ciąg dopasowania właściwości urządzenia usługi Intune do znakowania nowoczesnym miejscu pracy urządzenia | (device.systemLabels — zawiera "M365Managed")
