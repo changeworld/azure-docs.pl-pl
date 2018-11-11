@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: e449703dd8d012037af9540397ecd3b7bc0c7e7f
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: c5c2e4cd26954efb92d470f5432f709e4dc3f887
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114644"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240583"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>Porównanie usług Flow, Logic Apps, Functions i WebJobs
 
@@ -129,5 +129,5 @@ Możesz również uzyskać więcej informacji na temat tych usług integracji, k
 
 * [Korzystanie z usług Azure Functions i Azure App Service w scenariuszach integracji (autor: Christopher Anderson)](http://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/)
 * [Uproszczone integracje (autor: Charles Lamanna)](http://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
-* [Logic Apps — emisja internetowa na żywo](http://aka.ms/logicappslive)
+* [Logic Apps — emisja internetowa na żywo](https://aka.ms/logicappslive)
 * [Microsoft Flow — często zadawane pytania](https://flow.microsoft.com/documentation/frequently-asked-questions/)

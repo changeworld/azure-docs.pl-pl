@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 72eaa17e78086a4e5338bb3198ef7471c44b785f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: eb48e40007a25992a9a399176b6a4f93be89efc8
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40235044"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344092"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Subskrybowanie do zdarzeń za pośrednictwem portalu
 
@@ -45,6 +45,16 @@ Aby utworzyć subskrypcję usługi Event Grid dla każdej z obsługiwanych [źr�
 1. Podaj dodatkowe szczegóły dotyczące subskrypcji zdarzeń, takich jak punkt końcowy do obsługi zdarzeń i nazwy subskrypcji.
 
    ![Podaj szczegóły subskrypcji](./media/subscribe-through-portal/provide-subscription-details.png)
+
+1. Włącz obsługę utraconych komunikatów i Dostosuj zasady ponawiania, wybierz **dodatkowe funkcje**.
+
+   ![Wybierz dodatkowe funkcje](./media/subscribe-through-portal/select-additional-features.png)
+
+1. Wybierz kontener do przechowywania zdarzeń, które nie są dostarczane, i określenie, jak są wysyłane ponownych prób.
+
+   ![Włącz utraconych, a następnie spróbuj ponownie](./media/subscribe-through-portal/set-deadletter-retry.png)
+
+1. Po zakończeniu wybierz pozycję **Utwórz**.
 
 ## <a name="create-subscription-on-resource"></a>Utwórz subskrypcję dla zasobu
 

@@ -1,6 +1,6 @@
 
 # Odporność platformy Azure
-## [Strona funkcji odporności Azure](http://azure.microsoft.com/features/resiliency)
+## [Strona funkcji odporności Azure](https://azure.microsoft.com/features/resiliency)
 ## [Projektowanie aplikacji odpornych na błędy dla platformy Azure](https://docs.microsoft.com/azure/architecture/resiliency/)
 
 # Wysoka dostępność
@@ -50,10 +50,10 @@
 #### [Geograficzne odzyskiwanie po awarii w usłudze Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview)
 
 ### VPN Gateway
-#### [Tworzenie bramy sieci wirtualnej strefowo nadmiarowej](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
+#### [Tworzenie strefowo nadmiarowej bramy sieci wirtualnej](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
 
 ### ExpressRoute
-#### [Tworzenie bramy sieci wirtualnej strefowo nadmiarowej](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
+#### [Tworzenie strefowo nadmiarowej bramy sieci wirtualnej](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
 
 # Odzyskiwanie po awarii
 ## [Korzystanie z usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/)

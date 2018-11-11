@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 09/24/2018
-ms.openlocfilehash: 4a867692d3ce509443e5aa94536075fdcd4bab84
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 1dac11b8ad71a936b33742b52c95ac998176baf7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945964"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244949"
 ---
 # <a name="what-is-azure-machine-learning-service-preview"></a>Co to jest usługa Azure Machine Learning (wersja zapoznawcza)?
 
@@ -48,7 +48,7 @@ Można zarządzać wdrożonymi modelami i śledzić wiele przebiegów, eksperyme
 Usługa Azure Machine Learning może automatycznie wygenerować model i automatycznie go dla Ciebie dostroić.
 Na przykład zobacz temat [Tutorial: Automatically train a classification model with Azure Automated Machine Learning](tutorial-auto-train-models.md) (Samouczek: szkolenie modelu klasyfikacji za pomocą zautomatyzowanego uczenia maszynowego w usłudze Azure Machine Learning).
 
-Używając zestawu Azure Machine Learning <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> dla języka Python razem z pakietami języka Python typu „open source”, możesz również samodzielnie tworzyć i szkolić bardzo precyzyjne modele uczenia maszynowego i uczenia głębokiego w obszarze roboczym usługi Azure Machine Learning Service.
+Używając zestawu Azure Machine Learning <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> dla języka Python razem z pakietami języka Python typu „open source”, możesz również samodzielnie tworzyć i szkolić bardzo precyzyjne modele uczenia maszynowego i uczenia głębokiego w obszarze roboczym usługi Azure Machine Learning Service.
 Możesz korzystać z wielu składników uczenia maszynowego dostępnych w pakietach języka Python typu „open source”, np. z następujących:
 
 - <a href="http://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>
@@ -59,7 +59,7 @@ Możesz korzystać z wielu składników uczenia maszynowego dostępnych w pakiet
 
 Po utworzeniu modelu należy go użyć do utworzenia kontenera (np. Docker), który można wdrożyć lokalnie do testowania, a następnie jako produkcyjną usługę sieci Web w usłudze [Azure Container Instances](how-to-deploy-to-aci.md) lub [Azure Kubernetes Service](how-to-deploy-to-aks.md).
 
-Następnie można zarządzać wdrożonymi modelami przy użyciu [witryny Azure Portal](https://portal.azure.com/) lub [rozszerzenia interfejsu wiersza polecenia usługi Azure Machine Learning](https://review.docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli).
+Następnie można zarządzać wdrożonymi modelami przy użyciu [witryny Azure Portal](https://portal.azure.com/) lub [rozszerzenia interfejsu wiersza polecenia usługi Azure Machine Learning](reference-azure-machine-learning-cli.md).
 Można ocenić metryki modelu, ponownie szkolić i ponownie wdrażać nowe wersje modelu, a wszystko to w trakcie śledzenia eksperymentów związanych z modelem.
 
 Aby rozpocząć pracę przy użyciu usługi Azure Machine Learning, zobacz temat [Następne kroki](#next-steps) poniżej.
@@ -85,6 +85,8 @@ Jeśli nie masz subskrypcji, możesz [otworzyć bezpłatne konto platformy Azure
 - Postępuj zgodnie z instrukcjami zawartymi w gotowym artykule [Train an image classification model with Azure Machine Learning](tutorial-train-models-with-aml.md) (Uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning), aby dowiedzieć się, jak uczyć i wdrażać modele za pomocą usługi Azure Machine Learning
 
 - Aby uzyskać informacje dotyczące zezwalania usłudze Azure Machine Learning na automatyczne generowanie i automatyczne dostrajanie Twojego modelu, zobacz temat [Samouczek: Szkolenie modelu klasyfikacji za pomocą zautomatyzowanego uczenia maszynowego w usłudze Azure Machine Learning](tutorial-auto-train-models.md)
+
+- Dowiedz się więcej o [potokach uczenia maszynowego](/azure/machine-learning/service/concept-ml-pipelines) w celu tworzenia i optymalizowania scenariuszy uczenia maszynowego oraz zarządzania nimi.
 
 - Aby zapoznać się z technicznym, bardziej szczegółowym opisem usługi, zobacz temat [Architecture and concepts: How does Azure Machine Learning service work?](concept-azure-machine-learning-architecture.md) (Architektura i koncepcje: Jak działa usługa Azure Machine Learning?)
 

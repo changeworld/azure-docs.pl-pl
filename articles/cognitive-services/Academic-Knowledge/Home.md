@@ -10,12 +10,12 @@ ms.component: academic-knowledge
 ms.topic: overview
 ms.date: 10/30/2018
 ms.author: darrine
-ms.openlocfilehash: aa945eb8f0b79a6b0760650bd34dba55d80ef3a4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 02675b8cdc8c509764b20893bde54b50bec74a50
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240362"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242151"
 ---
 # <a name="academic-knowledge-api"></a>Academic Knowledge API
 
@@ -23,7 +23,7 @@ Zapraszamy do korzystania z interfejsu Academic Knowledge API. Dzięki tej usłu
 
 Dane grafu MAG są wyodrębniane z internetowego indeksu usługi Bing, a także z wewnętrznej bazy wiedzy z usługi Bing. Ten interfejs API zawiera aktualne informacje z Internetu dzięki ciągłemu indeksowaniu i odnajdywaniu informacji przez usługę Bing. Na podstawie tego zestawu danych interfejs Academic Knowledge API umożliwia prowadzenie interakcyjnego dialogu opartego na wiedzy, który bezproblemowo łączy reaktywne wyszukiwanie z proaktywną obsługą sugestii, bogatymi wynikami przeszukiwania grafu dokumentów dotyczących badań oraz rozkładem histogramu wartości atrybutów dla zestawu dokumentów i powiązanych jednostek.
 
-Aby uzyskać więcej informacji o grafie Microsoft Academic Graph, zobacz [http://aka.ms/academicgraph](http://aka.ms/academicgraph).
+Aby uzyskać więcej informacji o grafie Microsoft Academic Graph, zobacz [http://aka.ms/academicgraph](https://aka.ms/academicgraph).
 
 Interfejs Academic Knowledge API został przeniesiony z usługi Cognitive Services w wersji zapoznawczej do usługi Cognitive Services Labs. Nowa strona główna projektu to [https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge](https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge). Istniejący klucz interfejsu API będzie nadal działać do 24 maja 2018 roku. Po tej dacie wygeneruj nowy klucz interfejsu API. Pamiętaj, że płatna wersja zapoznawcza nie będzie już dostępna po wygaśnięciu istniejącego klucza. Skontaktuj się z naszym zespołem, jeśli bezpłatna warstwa interfejsu API jest niewystarczająca dla Twoich celów. 
 

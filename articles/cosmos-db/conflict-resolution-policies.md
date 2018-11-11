@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: c682b61a39224f2c80db8fe5fa153ea5e5d82922
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1b2a122cc8a04d4f0044ecb0fe0341357bc29c0f
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958573"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514829"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Zasad rozpoznawania i typy konfliktów
 
 Konflikty i rozwiązywania konfliktów, że zasady są stosowane, jeśli Twoje konta usługi Cosmos jest skonfigurowany z wieloma zapisu regionów.
 
-Dla kont usługi Cosmos DB, skonfigurowanych przy użyciu wielu regionów zapisu może wystąpić konflikt aktualizacji, gdy wiele modułów zapisujących aktualizacji jednocześnie tego samego elementu w wielu regionach. Konflikty aktualizacji są przydzielane do trzech następujących typów:
+Dla konta usługi Cosmos skonfigurowany z wieloma regionami zapisu może wystąpić konflikt aktualizacji, gdy wiele modułów zapisujących aktualizacji jednocześnie tego samego elementu w wielu regionach. Konflikty aktualizacji są przydzielane do trzech następujących typów:
 
 1. **Wstaw konfliktów:** te konflikty może wystąpić, gdy aplikacja jednocześnie wstawia dwóch lub więcej elementów z tego samego unikatowego indeksu (na przykład właściwość ID) z co najmniej dwóch regionach. W takim przypadku wszystkie zapisy może się powieść, początkowo w ich regionach lokalnych, ale na podstawie zasady rozwiązywania konfliktów, które wybierzesz, tylko jeden element o identyfikatorze oryginalnego jest ostatecznie zatwierdzić.
 

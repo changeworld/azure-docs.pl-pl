@@ -15,15 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath
-ms.openlocfilehash: 95403e71367f111877c6f317c63811333bd054dd
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 76b67112ade2d160f281533c4be7d41c98087398
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395194"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345542"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Zoperacjonalizować modele uczenia maszynowego utworzonych na platformie Spark
-[!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
 W tym temacie pokazano, jak do obsługi operacji modelu uczenia maszynowego zapisane (ML) przy użyciu języka Python w klastrach HDInsight Spark. Go w tym artykule opisano sposób ładowania modeli uczenia maszynowego, które zostały utworzone przy użyciu MLlib platformy Spark i przechowywane w usłudze Azure Blob Storage (WASB) oraz ocena ich z zestawami danych, które są także przechowywane w WASB. Pokazuje, jak wstępnie przetworzyć dane wejściowe, przekształcić funkcji za pomocą indeksowaniem i kodowanie funkcji w zestawie narzędzi MLlib oraz sposób tworzenia obiektu etykietą punktu danych, który może służyć jako dane wejściowe do oceniania przy użyciu modeli uczenia Maszynowego. Modele użyte do oceniania obejmują regresji liniowej, regresji logistycznej, losowych modele lasu i modele drzewa zwiększania wyniku gradientu.
 

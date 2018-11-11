@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 1ec6228993c516ce2974c64bfa5b6dcdf63e7f91
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: a162d0c19bef28e6e4566d39c2dc3b82a87a4aa9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343830"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242096"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Użyj obrazu z witryny Azure Marketplace do utworzenia maszyny wirtualnej programu Terraform z systemem Linux przy użyciu tożsamości zarządzanych dla zasobów platformy Azure
 
@@ -97,9 +97,9 @@ Poprzedni skrypt używa mechanizmu [interaktywnego logowania programu AZ CLI 2.0
 W tym artykule przedstawiono sposób konfigurowania maszyny wirtualnej programu Terraform z systemem Linux na platformie Azure. Poniżej przedstawiono kilka dodatkowych zasobów zawierających więcej informacji na temat narzędzia Terraform na platformie Azure: 
 
  [Centrum narzędzia Terraform w witrynie Microsoft.com](https://docs.microsoft.com/azure/terraform/)  
- [Dokumentacja dostawcy narzędzia Terraform na platformie Azure](http://aka.ms/terraform)  
- [Źródło dostawcy narzędzia Terraform na platformie Azure](http://aka.ms/tfgit)  
- [Moduły narzędzia Terraform na platformie Azure](http://aka.ms/tfmodules)
+ [Dokumentacja dostawcy narzędzia Terraform na platformie Azure](https://aka.ms/terraform)  
+ [Źródło dostawcy narzędzia Terraform na platformie Azure](https://aka.ms/tfgit)  
+ [Moduły narzędzia Terraform na platformie Azure](https://aka.ms/tfmodules)
  
 
 

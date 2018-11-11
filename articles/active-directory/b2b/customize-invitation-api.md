@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 8809a5a8b4f76d6e33bbb934e13931e86f2d681c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: a2a869c04034f8ca38e80e1bf10518d22e38bcbc
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091777"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287000"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Dostosowywanie i współpracy usługi Azure Active Directory B2B interfejsu API
 
@@ -75,7 +75,7 @@ W tym trybie, kto korzysta na potrzeby interfejsu API musi mieć uprawnienia mo�
 ### <a name="app-only-mode"></a>Tryb tylko do aplikacji
 W kontekście tylko aplikacji Aplikacja musi zakresu User.Invite.All związane z zaproszeniem została wykonana pomyślnie.
 
-Aby uzyskać więcej informacji można znaleźć: https://graph.microsoft.io/docs/authorization/permission_scopes
+Aby uzyskać więcej informacji można znaleźć: https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 9f88e71df7697156e0745aeaf6b989548bcc223f
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: a4a9fefa98d30d0f9815a935f000c8a663dffd21
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945115"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514200"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Usługa Azure Stack certyfikaty podpisywania generowania żądania
 
@@ -29,7 +29,7 @@ Narzędzie do sprawdzania gotowości usługi Azure Stack (AzsReadinessChecker) w
  - **Standardowy certyfikat żądania**  
     Limit czasu żądania według [generowanie certyfikatów PKI dla wdrażania usługi Azure Stack](azure-stack-get-pki-certs.md).
  - **Platforma jako usługa**  
-    Opcjonalnie żądania platforma jako usługa (PaaS) nazwy certyfikatów, jak to określono w [wymagania certyfikatów infrastruktury kluczy publicznych usługi Azure Stack — opcjonalnie certyfikaty PaaS](azure-stack-pki-certs.md#optional-paas-certificates).
+    Możesz poprosić o platforma jako usługa (PaaS) nazwy certyfikatów, jak to określono w [wymagania certyfikatów infrastruktury kluczy publicznych usługi Azure Stack — opcjonalnie certyfikaty PaaS](azure-stack-pki-certs.md#optional-paas-certificates).
 
 
 
@@ -78,7 +78,7 @@ Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfi
     $IdentitySystem = "AAD"
     ````
 
-    Usługi federacyjne Active Directory
+    Usługi Active Directory Federation Services
 
     ```PowerShell
     $IdentitySystem = "ADFS"
@@ -102,7 +102,7 @@ Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfi
 
     Aby uwzględnić usługi PaaS, określ przełącznik ```-IncludePaaS```
 
-7. Alternatywnie dla środowisk projektowych/testowych. Do generowania żądania certyfikatu jednego z wielu nazwy alternatywnej podmiotu Dodaj **- RequestType SingleCSR** parametru i wartości (**nie** zalecana dla środowisk produkcyjnych):
+7. Możesz też dla środowisk projektowych/testowych, aby wygenerować żądanie certyfikatu jednego z wielu nazwy alternatywnej podmiotu dodać **- RequestType SingleCSR** parametru i wartości (**nie** zalecane dla środowisk produkcyjnych):
 
     ```PowerShell  
     New-AzsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem

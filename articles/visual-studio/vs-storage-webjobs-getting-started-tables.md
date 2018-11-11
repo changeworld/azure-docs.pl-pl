@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: a10d354cf819ebaa7e2199d9de0566b3e6bfd1bf
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: c708c396911badb7c7ce5df2497aaba47cb7defe
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060327"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243764"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Wprowadzenie do usługi Azure Storage (projekty, zadanie WebJob platformy Azure)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -145,5 +145,5 @@ Aby uzyskać więcej informacji o sposobie używania **CloudTable** obiektu, zob
 Aby uzyskać informacje dotyczące obsługi przetwarzania tabeli wyzwolone przez komunikatu w kolejce lub dla zestawu SDK usługi WebJobs scenariuszy nie odnoszą się do przetwarzania tabeli, zobacz [wprowadzenie do usługi Azure Queue storage i Visual Studio podłączone usługi (projekty, zadania WebJob) ](../storage/vs-storage-webjobs-getting-started-queues.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule udostępnił przykłady kodu, które pokazują, jak obsługiwać typowe scenariusze dotyczące pracy z tabelami platformy Azure. Aby uzyskać więcej informacji o sposobie używania usługi Azure WebJobs i zestaw SDK zadań Webjob, zobacz [zasoby dokumentacji usługi Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
+W tym artykule udostępnił przykłady kodu, które pokazują, jak obsługiwać typowe scenariusze dotyczące pracy z tabelami platformy Azure. Aby uzyskać więcej informacji o sposobie używania usługi Azure WebJobs i zestaw SDK zadań Webjob, zobacz [zasoby dokumentacji usługi Azure WebJobs](https://go.microsoft.com/fwlink/?linkid=390226).
 

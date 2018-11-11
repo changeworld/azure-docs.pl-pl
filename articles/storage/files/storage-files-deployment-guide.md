@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: d2e09c837597dfd15e6258cbd0100762b098eedf
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: b9a98cea8ee19846afc30b322c3fdacb21f2bf44
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523489"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242459"
 ---
 # <a name="how-to-deploy-azure-files"></a>Jak wdrożyć usługę Pliki Azure
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. W tym artykule Pokaż praktycznie wdrażanie usługi Azure Files w Twojej organizacji.
@@ -29,7 +29,7 @@ W tym artykule założono, że zostały już wykonane następujące czynności:
 ## <a name="transfer-data-into-azure-files"></a>Przesyłanie danych do usługi Azure Files
 Możesz przeprowadzić migrację istniejących udziałów plików, na przykład tych przechowywanych lokalnie, do nowego udziału plików platformy Azure. W tej sekcji opisano, jak do przenoszenia danych do udziału plików platformy Azure za pomocą kilku popularnych metod szczegółowe z [przewodnik planowania](storage-files-planning.md#data-transfer-method)
 
-### <a name="azure-file-sync"></a>Usługa Azure File Sync
+### <a name="azure-file-sync"></a>Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Robi to poprzez przekształcenie serwerów Windows w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
 
 Usługa Azure File Sync mogą służyć do migrowania danych do udziału plików platformy Azure, nawet jeśli mechanizm synchronizacji nie jest konieczne dla długoterminowego użytkowania. Więcej informacji na temat korzystania z usługi Azure File Sync na przesyłanie danych do udziału plików platformy Azure można znaleźć w [Planowanie wdrażania usługi Azure File Sync](storage-sync-files-planning.md) i [sposób wdrażania usługi Azure File Sync](storage-sync-files-deployment-guide.md).
@@ -108,7 +108,7 @@ ROBOCOPY jest narzędziem dobrze znanych kopiowania, które jest dostarczany z p
 ### <a name="azcopy"></a>Narzędzie AzCopy
 AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania danych do i z usługi Azure Files, a także usługi Azure Blob storage przy użyciu prostych poleceń z optymalną wydajnością. Narzędzie AzCopy jest prosty w użyciu:
 
-1. Pobierz [najnowszą wersję programu AzCopy na Windows](http://aka.ms/downloadazcopy) lub [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy).
+1. Pobierz [najnowszą wersję programu AzCopy na Windows](https://aka.ms/downloadazcopy) lub [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy).
 2. Użyj `azcopy` do przenoszenia danych do udziału plików platformy Azure, w wierszu polecenia. Składnia na Windows jest w następujący sposób: 
 
     ```

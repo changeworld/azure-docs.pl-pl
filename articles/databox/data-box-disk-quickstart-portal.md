@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: ca0fb177c8b6a16cf624fd4533c9c9040e6d9dee
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: f84eda2269df0bbe7186a2f1a9abb9c594b75455
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365238"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245073"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>Szybki start: wdrażanie usługi Azure Data Box Disk (w wersji zapoznawczej) za pomocą witryny Azure Portal
 
@@ -31,11 +31,11 @@ Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://
 
 Przed rozpoczęciem:
 
-- Upewnij się, że w ramach Twojej subskrypcji włączono usługę Azure Data Box. Aby włączyć tę usługę w subskrypcji, [zarejestruj się](http://aka.ms/azuredataboxfromdiskdocs).
+- Upewnij się, że w ramach Twojej subskrypcji włączono usługę Azure Data Box. Aby włączyć tę usługę w subskrypcji, [zarejestruj się](https://aka.ms/azuredataboxfromdiskdocs).
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal pod adresem [http://aka.ms/azuredataboxfromdiskdocs](http://aka.ms/azuredataboxfromdiskdocs).
+Zaloguj się do witryny Azure Portal pod adresem [http://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs).
 
 ## <a name="order"></a>Zamówienie
 
@@ -70,11 +70,11 @@ Ten krok zajmuje około 5 minut.
     3. Uruchom narzędzie do odblokowywania urządzenia Data Box Disk i podaj klucz dostępu. W przypadku ponownego użycia dysku uruchom ponownie narzędzie do odblokowywania i podaj klucz dostępu. **Do odblokowania dysku nie należy używać okna dialogowego funkcji BitLocker ani klucza funkcji BitLocker.** Aby uzyskać więcej informacji na temat sposobu odblokowywania dysków, zobacz [Odblokowywanie dysków na komputerze klienckim z systemem Windows]() lub [Odblokowywanie dysków na komputerze klienckim z systemem Linux]().
     4. W narzędziu jest wyświetlana litera dysku przypisana do danego dysku. Zanotuj tę literę dysku. Będzie używana w kolejnych krokach.
 
-## <a name="copy-data-and-verify"></a>Kopiowanie danych i weryfikacja
+## <a name="copy-data-and-validate"></a>Kopiowanie danych i weryfikacja
 
 Czas wymagany do ukończenia tej operacji zależy od rozmiaru danych. 
 
-1. Dysk zawiera foldery *PageBlob*, *BlockBlob* oraz *AzureImportExport*. Przeciągnij i upuść dane, które mają zostać zaimportowane jako blokowe obiekty blob, do folderu *BlockBlob*. Analogicznie przeciągnij i upuść dane w formatach takich jak VHD/VHDX do folderu *PageBlob*.
+1. Dysk zawiera foldery *PageBlob*, *BlockBlob* oraz *DataBoxDiskImport*. Przeciągnij i upuść dane, które mają zostać zaimportowane jako blokowe obiekty blob, do folderu *BlockBlob*. Analogicznie przeciągnij i upuść dane w formatach takich jak VHD/VHDX do folderu *PageBlob*.
 
     Dla każdego podfolderu w folderach *BlockBlob* i *PageBlob* zostanie utworzony kontener na koncie usługi Azure Storage. Wszystkie pliki w folderach *BlockBlob* i *PageBlob* zostaną skopiowane do domyślnego kontenera `$root` na koncie usługi Azure Storage.
 
@@ -82,7 +82,7 @@ Czas wymagany do ukończenia tej operacji zależy od rozmiaru danych.
     > - Wszystkie kontenery i obiekty blob powinny mieć nazwy zgodne z [konwencją nazewnictwa platformy Azure](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions). W przypadku niezgodności z tymi regułami przekazywanie danych na platformę Azure zakończy się niepowodzeniem.
     > - Rozmiar plików nie może przekraczać ok. 4,75 TiB w przypadku blokowych obiektów blob i ok. 8 TiB w przypadku stronicowych obiektów blob.
 
-2. (Opcjonalnie) Po zakończeniu kopiowania zalecamy uruchomienie narzędzia `DataBoxDiskValidation.cmd` znajdującego się w folderze *AzureImportExport* w celu wygenerowania sum kontrolnych na potrzeby sprawdzania poprawności. Czas wykonywania tej operacji zależy od rozmiaru danych. 
+2. (Opcjonalnie) Po zakończeniu kopiowania zalecamy uruchomienie narzędzia `DataBoxDiskValidation.cmd` znajdującego się w folderze *DataBoxDiskImport* w celu wygenerowania sum kontrolnych na potrzeby sprawdzania poprawności. Czas wykonywania tej operacji zależy od rozmiaru danych. 
 3. Odłącz dysk. 
 
 

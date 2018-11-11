@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
 ms.custom: devcenter, vs-azure
-ms.openlocfilehash: 110f787866296ec08b9937d56461d37574270a43
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 22856b6e9b543504db66bce074d32d9ad70f5238
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980927"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247674"
 ---
 # <a name="_Toc395809351"></a>Samouczek platformy ASP.NET MVC: Opracowywanie aplikacji internetowych za pomocą usługi Azure Cosmos DB
 
@@ -488,7 +488,7 @@ Ostatnia rzecz do zrobienia to dodanie możliwości edytowania elementów **Item
             return View(item);
         }
    
-    Pierwsza metoda obsługuje akcję GET protokołu HTTP, która jest wywoływana po kliknięciu przez użytkownika linku **Edit** (Edytuj) w widoku **Index** (Indeks). Ta metoda pobiera element [**Document**](http://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx) z usługi Azure Cosmos DB i przekazuje go do widoku **Edit** (Edycja).
+    Pierwsza metoda obsługuje akcję GET protokołu HTTP, która jest wywoływana po kliknięciu przez użytkownika linku **Edit** (Edytuj) w widoku **Index** (Indeks). Ta metoda pobiera element [**Document**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx) z usługi Azure Cosmos DB i przekazuje go do widoku **Edit** (Edycja).
    
     Widok **Edit** (Edycja) wykona następnie akcję POST protokołu HTTP dla kontrolera **IndexController**. 
    

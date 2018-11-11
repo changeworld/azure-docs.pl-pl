@@ -22,6 +22,8 @@ items:
     items:
     - name: Azure Portal
       href: tutorial-design-database-using-portal.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: tutorial-design-database-cli.md
 - name: Pojęcia
   items:
   - name: Bazy danych i serwery
@@ -30,8 +32,6 @@ items:
       href: concepts-servers.md
     - name: Obsługiwane wersje
       href: concepts-supported-versions.md
-    - name: Dzienniki serwera
-      href: concepts-server-logs.md
     - name: Wysoka dostępność
       href: concepts-high-availability.md
   - name: Zasoby
@@ -52,6 +52,16 @@ items:
       href: concepts-business-continuity.md
     - name: Tworzenie kopii zapasowej i przywracanie
       href: concepts-backup.md
+  - name: Monitorowanie
+    items:
+    - name: Monitorowanie
+      href: concepts-monitoring.md
+    - name: Dzienniki serwera
+      href: concepts-server-logs.md
+  - name: Opracowywanie zawartości
+    items:
+    - name: Elastyczność połączenia
+      href: concepts-connectivity.md
   - name: Replikacja
     items:
     - name: Replikacja wejściowa danych
@@ -62,10 +72,14 @@ items:
     items:
     - name: Azure Portal
       href: howto-manage-firewall-portal.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: howto-manage-firewall-cli.md
   - name: Przywracanie serwera
     items:
     - name: Azure Portal
       href: howto-restore-server-portal.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: howto-restore-server-cli.md
   - name: Migrowanie bazy danych
     items:
     - name: Zrzucanie i przywracanie
@@ -82,14 +96,24 @@ items:
     items:
     - name: Azure Portal
       href: howto-server-parameters.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: howto-configure-server-parameters-cli.md
   - name: Dzienniki dostępu serwera
     items:
     - name: Azure Portal
       href: howto-configure-server-logs-portal.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: howto-configure-server-logs-cli.md
   - name: Replikacja
     items:
     - name: Konfigurowanie replikacji wejściowej danych
       href: howto-data-in-replication.md
+  - name: Rozwiązywanie problemów
+    items:
+    - name: Rozwiązywanie problemów z błędami połączenia
+      href: howto-troubleshoot-common-connection-issues.md
+    - name: Rozwiązywanie problemów z wydajnością zapytań
+      href: howto-troubleshoot-query-performance.md
 - name: Dokumentacja
   items:
   - name: Interfejs API REST
@@ -109,14 +133,14 @@ items:
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-database-mariadb
   - name: Prośba o funkcję
-    href: https://feedback.azure.com/forums/597982-azure-database-for-mysql
+    href: https://feedback.azure.com/forums/915439-azure-database-for-mariadb
   - name: Dostępność w danym regionie
     href: https://azure.microsoft.com/regions/services/
   - name: Opcje pomocy technicznej
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 2ba86afb2bb0aeff5ab83cfb9e3ee1b27ce3b3f5
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 3fc6bf5571f3ddcfe6d1a6acd7fc4a298f996e63
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986352"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515424"

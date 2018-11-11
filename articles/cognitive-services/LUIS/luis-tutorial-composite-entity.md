@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 99e0b22b663f6edab9646111b390186a6f89a90f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1521bba188fcd7d8bade88196fe687929f414f93
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035185"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283516"
 ---
 # <a name="tutorial-6-group-and-extract-related-data"></a>Samouczek 6: Grupowanie i Wyodrębnij powiązanych danych
 W tym samouczku należy dodać złożonego jednostki pakietów wyodrębnione dane różnych typów do pojedynczej jednostki zawierającej. Przez tworzenie pakietów danych, aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typów danych.
@@ -26,30 +26,30 @@ Złożone jednostki jest odpowiednia dla danych tego typu, ponieważ dane:
 
 * Są ze sobą powiązane. 
 * Używać różnych typów jednostek.
-* Muszą być grupowane i przetwarzane przez aplikację kliencką jako jednostka danych.
+* Te informacje należy grupować i przetwarzać jako całość w aplikacji klienckiej.
 
-**W tym samouczku dowiesz się, jak:**
+**Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Użyj istniejącego samouczek aplikacji
+> * Korzystanie z istniejącej aplikacji samouczka
 > * Dodawanie jednostki złożonej 
 > * Szkolenie
 > * Publikowanie
-> * Pobierz intencje i podmioty z punktu końcowego
+> * Pobieranie intencji i jednostek z punktu końcowego
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>Użyj istniejącej aplikacji
-Kontynuuj aplikację utworzoną w samouczku ostatni o nazwie **kadry**. 
+## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
+Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
 
-Jeśli nie masz aplikacji kadry z poprzedniego samouczka, należy użyć następujących czynności:
+Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj następujące kroki:
 
-1.  Pobierz i Zapisz [pliku JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-hier-HumanResources.json).
+1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-hier-HumanResources.json).
 
-2. Importuj dane JSON do nowej aplikacji.
+2. Zaimportuj plik JSON do nowej aplikacji.
 
-3. Z **Zarządzaj** sekcji na **wersji** kartę, klonowanie wersji i nadaj mu nazwę `composite`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używany jako część trasy adresu URL, nazwa nie może zawierać żadnych znaków, które nie są prawidłowe w adresie URL.
+3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `composite`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL.
 
 
 ## <a name="composite-entity"></a>Złożone jednostki
@@ -97,7 +97,7 @@ Wyodrębnione dane z punktu końcowego powinna zawierać te informacje i zwróci
 ]
 ```
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Na **intencji** wybierz opcję **MoveEmployee** intencji. 
 
@@ -153,7 +153,7 @@ Wyodrębnione dane z punktu końcowego powinna zawierać te informacje i zwróci
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>Pobierz intencje i podmioty z punktu końcowego 
+## <a name="get-intent-and-entities-from-endpoint"></a>Pobieranie intencji i jednostek z punktu końcowego 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 

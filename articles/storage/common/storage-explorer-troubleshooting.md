@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: fa73062cc2fdfa3704088f37b2e4856e134a6dfe
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 4f0558f9619aa06557cf89e885154f6326d4b150
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979033"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281782"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów z Eksploratora usługi Storage platformy Azure
 
@@ -59,6 +59,9 @@ Jeśli w pętli ponownego lub zostały zmienione nazwy UPN jednego z kont, spró
 1. Usuń wszystkie konta, a następnie Zamknij Eksploratora usługi Storage
 2. Usuń. Folder IdentityService z Twojego komputera. W Windows, folderze znajduje się w `C:\users\<username>\AppData\Local`. Dla systemów Mac i Linux można znaleźć folderu w folderze głównym katalogu użytkownika.
 3. Jeśli na komputerze Mac lub Linux, należy również usunąć wpis Microsoft.Developer.IdentityService z magazynu kluczy Twojego systemu operacyjnego. Na komputerze Mac magazynu kluczy to aplikacja "Gnome Pęk kluczy". Dla systemu Linux aplikacji jest zwykle nazywane "Pęku kluczy", ale nazwa może się różnić w zależności od Twojej dystrybucji.
+
+### <a name="conditional-access"></a>Dostęp warunkowy
+Dostęp warunkowy nie jest obsługiwana, gdy Eksplorator usługi Storage jest używany w systemie Windows 10, Linux lub macOS. Jest to spowodowane ograniczenia w bibliotece usługi AAD używane przez Eksploratora usługi Storage.
 
 ## <a name="mac-keychain-errors"></a>Błędy pęku kluczy komputera Mac.
 Systemu macOS pęku kluczy czasami może przejść do stanu, który powoduje, że problemy z biblioteki uwierzytelniania usługi Storage Explorer. Aby uzyskać łańcucha kluczy, poza tym spróbuj stanu następujące czynności:

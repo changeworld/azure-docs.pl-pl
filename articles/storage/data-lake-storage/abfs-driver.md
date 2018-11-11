@@ -9,20 +9,20 @@ ms.author: jamesbak
 ms.date: 06/27/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: f618b925839d6f501635748734327293a2073b64
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f1eacaa33fd5d0c70e8a1d3547fa40bf9d0d616c
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384859"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282598"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Sterownik systemu plików obiektów Blob platformy Azure (ABFS): dedykowanych sterownika usługi Azure Storage dla platformy Hadoop
 
-Jedną z metod dostępu do danych w usłudze Azure Data Lake Gen2 — wersja zapoznawcza jest za pośrednictwem [system plików Hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Azure Data Lake magazynu Gen2 funkcji skojarzone sterownika, sterownik systemu plików obiektów Blob platformy Azure lub `ABFS`. ABFS jest częścią technologii Apache Hadoop i znajduje się w wielu komercyjnych dystrybucje usługi Hadoop. Korzystając z tego sterownika, wiele aplikacji i struktury mogą dostęp do danych w Data Lake Storage Gen2 bez konieczności wprowadzania kodu jawnie odwołuje się do usługi Data Lake Storage Gen2.
+Jedną z metod dostępu do danych w usłudze Azure Data Lake Gen2 — wersja zapoznawcza jest za pośrednictwem [system plików Hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Data Lake Storage Gen2 umożliwia użytkownikom dostępu usługi Azure Blob Storage do nowego sterownika sterownik systemu plików obiektów Blob platformy Azure lub `ABFS`. ABFS jest częścią technologii Apache Hadoop i znajduje się w wielu komercyjnych dystrybucje usługi Hadoop. Przy użyciu tego sterownika, wiele aplikacji i struktury mogą dostęp do danych w usłudze Azure Blob Storage bez konieczności wprowadzania kodu jawnie odwołujące się do Data Lake Storage Gen2.
 
 ## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Możliwość uprzedniego: sterownik Windows Azure Storage Blob
 
-Sterownik systemu Windows Azure Storage Blob lub [sterownika WASB](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) podane oryginalnego wsparcie dla obiektów blob usługi Azure Storage. Ten sterownik wykonać złożone zadania system plików mapowania semantyki (zgodnie z potrzebami przy użyciu interfejsu systemu plików usługi Hadoop) do tego obiektu przechowywania interfejs w stylu udostępnianych przez usługi Azure Blob Storage. Ten sterownik w dalszym ciągu obsługuje ten model, zapewniając wysoką wydajność dostępu do danych przechowywanych w obiektach blob, ale zawiera znaczną ilość kodu, wykonywanie tego mapowania, dzięki czemu trudne w utrzymaniu. Ponadto niektóre operacje, takie jak [FileSystem.rename()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) i [FileSystem.delete()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) po zastosowaniu do katalogów wymagają sterowników do wykonania ogromną liczbę operacji (z powodu braku magazyny obiektów obsługę katalogów) co często prowadzi do pogorszenie wydajności. Nowa usługa Azure Data Lake Storage został zaprojektowany w celu pokonania nieprzerwaną pracę braki WASB.
+Sterownik systemu Windows Azure Storage Blob lub [sterownika WASB](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) pod warunkiem, oryginalnym pomocy technicznej dla usługi Azure Blob Storage. Ten sterownik wykonać złożone zadania system plików mapowania semantyki (zgodnie z potrzebami przy użyciu interfejsu systemu plików usługi Hadoop) do tego obiektu przechowywania interfejs w stylu udostępnianych przez usługi Azure Blob Storage. Ten sterownik w dalszym ciągu obsługuje ten model, zapewniając wysoką wydajność dostępu do danych przechowywanych w obiektach blob, ale zawiera znaczną ilość kodu, wykonywanie tego mapowania, dzięki czemu trudne w utrzymaniu. Ponadto niektóre operacje, takie jak [FileSystem.rename()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) i [FileSystem.delete()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) po zastosowaniu do katalogów wymagają sterowników do wykonania ogromną liczbę operacji (z powodu braku magazyny obiektów obsługę katalogów) co często prowadzi do pogorszenie wydajności. Sterownik ABFS został zaprojektowany w celu pokonania nieprzerwaną pracę braki WASB.
 
 ## <a name="the-azure-blob-file-system-driver"></a>Sterownik systemu plików obiektów Blob platformy Azure
 

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/17/2018
-ms.openlocfilehash: 31f61a1d6dee19ada60a1024a235f6329d7d5ca0
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 661fd36b4451238f488bff1db60a901a8dabd5aa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377818"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242164"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Często zadawane pytania dotyczące bazy danych SQL Azure na dużą skalę
 
@@ -253,7 +253,7 @@ Tak. Pochodzących z różnych źródeł danych innych niż SQL Server wymaga mi
 
 ### <a name="what-slas-are-provided-for-a-hyperscale-database"></a>Umowy SLA podano dla bazy danych na dużą skalę
 
-Ogólnie rzecz biorąc umowy SLA nie jest dostępna w publicznej wersji zapoznawczej. Jednak w Hiperskali zapewnia takiego samego poziomu wysokiej dostępności przy użyciu bieżących ofert bazy danych SQL. Zobacz [SLA](http://azure.microsoft.com/support/legal/sla/).
+Ogólnie rzecz biorąc umowy SLA nie jest dostępna w publicznej wersji zapoznawczej. Jednak w Hiperskali zapewnia takiego samego poziomu wysokiej dostępności przy użyciu bieżących ofert bazy danych SQL. Zobacz [SLA](https://azure.microsoft.com/support/legal/sla/).
 
 ### <a name="are-the-database-backups-managed-for-me-by-the-azure-sql-database-service"></a>Kopie zapasowe bazy danych odbywa się automatycznie przez usługę Azure SQL Database
 

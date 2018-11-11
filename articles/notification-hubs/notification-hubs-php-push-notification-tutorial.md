@@ -14,17 +14,17 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: b812d60363ffebf1f4374b6fd44dff5e67497e08
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: cf7dd8b111683a3b5b2f0a9f371c08ffb788fe58
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42056971"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241076"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>Jak używać usługi Notification Hubs za pomocą języka PHP
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Dostęp do wszystkich funkcji usługi Notification Hubs z zaplecza Java/PHP/języka Ruby przy użyciu interfejsu REST Centrum powiadomień, zgodnie z opisem w temacie w witrynie MSDN [interfejsów API REST usługi Notification Hubs](http://msdn.microsoft.com/library/dn223264.aspx).
+Dostęp do wszystkich funkcji usługi Notification Hubs z zaplecza Java/PHP/języka Ruby przy użyciu interfejsu REST Centrum powiadomień, zgodnie z opisem w temacie w witrynie MSDN [interfejsów API REST usługi Notification Hubs](https://msdn.microsoft.com/library/dn223264.aspx).
 
 W tym temacie pokazano, jak:
 
@@ -32,7 +32,7 @@ W tym temacie pokazano, jak:
 * Postępuj zgodnie z [samouczek z wprowadzeniem](notification-hubs-ios-apple-push-notification-apns-get-started.md) na wybraną platformę przenośnych, wdrażanie część zaplecza w języku PHP.
 
 ## <a name="client-interface"></a>Interfejs klienta
-Interfejs klienta głównego może zapewnić te same metody, które są dostępne w [zestawu SDK .NET Notification Hubs](http://msdn.microsoft.com/library/jj933431.aspx), który pozwala na bezpośrednie przetłumaczenie samouczków i przykładów, które są obecnie dostępne w tej witrynie i pochodzącego z danego Społeczność w Internecie.
+Interfejs klienta głównego może zapewnić te same metody, które są dostępne w [zestawu SDK .NET Notification Hubs](https://msdn.microsoft.com/library/jj933431.aspx), który pozwala na bezpośrednie przetłumaczenie samouczków i przykładów, które są obecnie dostępne w tej witrynie i pochodzącego z danego Społeczność w Internecie.
 
 Dostępne w kod możesz znaleźć [przykład otoka interfejsu REST PHP].
 
@@ -49,7 +49,7 @@ Aby wysłać dla systemu iOS natywnych powiadomień:
 Jeśli jeszcze nie zrobiono, wykonaj [samouczek z wprowadzeniem] w górę do ostatniej sekcji, w którym trzeba zaimplementować zaplecza.
 Ponadto, jeśli chcesz, możesz użyć kodu z [przykład otoka interfejsu REST PHP] i przejdź bezpośrednio do [ukończenia tego samouczka](#complete-tutorial) sekcji.
 
-Poznaj wszystkie szczegóły implementacji pełnego otoki REST znajduje się na [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). W tej sekcji opisano implementację PHP główne kroki wymagane do uzyskania dostępu punkty końcowe REST centrów powiadomień:
+Poznaj wszystkie szczegóły implementacji pełnego otoki REST znajduje się na [MSDN](https://msdn.microsoft.com/library/dn530746.aspx). W tej sekcji opisano implementację PHP główne kroki wymagane do uzyskania dostępu punkty końcowe REST centrów powiadomień:
 
 1. Analizowanie parametrów połączenia
 2. Wygeneruj token autoryzacji
@@ -92,7 +92,7 @@ W tym miejscu jest główna klasa implementacji klienta, której Konstruktor, kt
 
 
 ### <a name="create-security-token"></a>Tworzenie tokenu zabezpieczeń
-Dostępne są szczegółowe informacje o tworzeniu tokenu zabezpieczeń [tutaj](http://msdn.microsoft.com/library/dn495627.aspx).
+Dostępne są szczegółowe informacje o tworzeniu tokenu zabezpieczeń [tutaj](https://msdn.microsoft.com/library/dn495627.aspx).
 Następującej metody ma zostać dodane do **Centrum NotificationHub** klasy do utworzenia tokenu na podstawie identyfikatora URI bieżącego żądania i poświadczenia wyodrębnione z parametrów połączenia.
 
     private function generateSasToken($uri) {
@@ -135,7 +135,7 @@ Najpierw należy zdefiniować Daj nam Klasa reprezentująca powiadomienie.
 
 Ta klasa jest kontenerem dla treści natywnych powiadomień, lub zbiór właściwości, w przypadku powiadomienia szablonu i zestaw nagłówków, zawierającą formatu (platformy natywnej lub szablonu) i właściwości specyficzne dla platformy (na przykład właściwości wygasania firmy Apple lub usługi WNS nagłówki).
 
-Zapoznaj się [dokumentacji interfejsów API REST usługi Notification Hubs](http://msdn.microsoft.com/library/dn495827.aspx) na platformach powiadomień określone formaty i dla wszystkich dostępnych opcji.
+Zapoznaj się [dokumentacji interfejsów API REST usługi Notification Hubs](https://msdn.microsoft.com/library/dn495827.aspx) na platformach powiadomień określone formaty i dla wszystkich dostępnych opcji.
 
 Korzystając z tej klasy, możemy teraz zapisać wysyłania powiadomień metody wewnątrz **Centrum NotificationHub** klasy.
 

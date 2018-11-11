@@ -1,6 +1,6 @@
 ---
-title: 'Rozwiązywanie problemów: Utworzyć i nawiązywanie z obszaru roboczego usługi Machine Learning | Dokumentacja firmy Microsoft'
-description: Rozwiązania typowych problemów z tworzeniem i nawiązywania połączenia z obszaru roboczego uczenia maszynowego Azure
+title: 'Rozwiązywanie problemów: Tworzenie i łączenie do obszaru roboczego usługi Machine Learning | Dokumentacja firmy Microsoft'
+description: Rozwiązania typowych problemów z tworzeniem i nawiązywania połączenia z obszarem roboczym usługi Azure Machine Learning
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -15,36 +15,36 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 262c9af4e0f3ee34dc89986affacb6c0d8a0d801
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 1d53e13798f24fa6225b0a587dde71b4f34f48fc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835726"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243389"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-workspace"></a>Podręcznik rozwiązywania problemów: tworzenie obszaru roboczego usługi Machine Learning i nawiązywanie połączenia z nim
-Ten przewodnik zawiera temat rozwiązań dla niektórych często spotykanych problemów podczas konfigurowania obszarów roboczych usługi Azure Machine Learning.
+Ten przewodnik zawiera temat rozwiązania niektórych często spotykanych wyzwania podczas konfigurowania obszary robocze usługi Azure Machine Learning.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="workspace-owner"></a>Właściciel obszaru roboczego
-Aby otworzyć obszar roboczy usługi Machine Learning Studio, użytkownik musi zalogować się Account Microsoft użyty do utworzenia obszaru roboczego lub konieczność odbierania zaproszenia od właściciela do obszaru roboczego. W portalu Azure można zarządzać obszaru roboczego, który obejmuje możliwość konfigurowania dostępu.
+Aby otworzyć obszar roboczy w usłudze Machine Learning Studio, użytkownik musi być zalogowany Account Microsoft został użyty do utworzenia obszaru roboczego lub musisz otrzymać zaproszenie od właściciela do obszaru roboczego. W witrynie Azure portal można zarządzać obszaru roboczego, w tym możliwość skonfigurowania dostępu.
 
-Aby uzyskać więcej informacji na temat zarządzania obszaru roboczego, zobacz [Zarządzanie obszarem roboczym usługi Azure Machine Learning].
+Aby uzyskać więcej informacji na temat zarządzania obszarem roboczym, zobacz [Zarządzanie obszarem roboczym usługi Azure Machine Learning].
 
 [Zarządzanie obszarem roboczym usługi Azure Machine Learning]: manage-workspace.md
 
-## <a name="allowed-regions"></a>Dozwolonych regionów
-Usługa Machine Learning jest obecnie dostępna w ograniczonej liczbie regionów. Jeśli subskrypcja nie zawiera jeden z tych regionów, zobaczysz komunikat o błędzie, "Masz żadnych subskrypcji w dozwolonych regionów."
+## <a name="allowed-regions"></a>Dozwolone regionów
+Machine Learning jest obecnie dostępna w ograniczonej liczbie regionów. Jeśli Twoja subskrypcja obejmuje jedną z tych regionów, może zostać wyświetlony komunikat o błędzie, "Masz żadnych subskrypcji w regionach dozwolone."
 
-Żądanie dodania obszaru do subskrypcji, Utwórz nowe żądanie pomocy technicznej firmy Microsoft z portalu Azure, wybierz **rozliczeń** jako typ problemu i postępuj zgodnie z monitami, aby przesłać żądanie.
+Żądanie dodania regionie Twojej subskrypcji, Utwórz nowe żądanie pomocy technicznej firmy Microsoft w witrynie Azure portal wybierz pozycję **rozliczeń** jako typ problemu i postępuj zgodnie z monitami, aby przesłać żądanie.
 
 ## <a name="storage-account"></a>Konto magazynu
-Usługa Machine Learning wymaga konta magazynu do przechowywania danych. Można użyć istniejącego konta magazynu, lub można utworzyć nowe konto magazynu, podczas tworzenia nowego obszaru roboczego uczenia maszynowego (jeśli istnieje limit przydziału, aby utworzyć nowe konto magazynu).
+Usługa Machine Learning wymaga konta magazynu do przechowywania danych. Można użyć istniejącego konta magazynu lub utworzyć nowe konto magazynu podczas tworzenia nowego obszaru roboczego usługi Machine Learning (w przypadku przydziału do utworzenia nowego konta magazynu).
 
-Po utworzeniu nowego obszaru roboczego uczenia maszynowego można logowania się do usługi Machine Learning Studio za pomocą konta Microsoft, który został użyty do utworzenia obszaru roboczego. Jeśli wystąpią komunikat o błędzie, "Obszaru roboczego nie została odnaleziona" (podobnie jak w poniższym zrzucie ekranu), aby usunąć pliki cookie przeglądarki użyj następujące kroki.
+Po utworzeniu nowego obszaru roboczego usługi Machine Learning, użytkownik może Zaloguj się do usługi Machine Learning Studio przy użyciu konta Microsoft, który został użyty do utworzenia obszaru roboczego. Jeśli wystąpi komunikat o błędzie "Obszaru roboczego nie znaleziono" (podobnie jak na poniższym zrzucie ekranu), użyj poniższe kroki można usunąć pliki cookie przeglądarki.
 
-![Nie można odnaleźć obszaru roboczego][screen3]
+![Nie znaleziono obszaru roboczego][screen3]
 
 **Aby usunąć pliki cookie przeglądarki**
 
@@ -52,19 +52,19 @@ Po utworzeniu nowego obszaru roboczego uczenia maszynowego można logowania się
 
 ![Opcje internetowe][screen4]
 
-2. W obszarze **ogólne** , kliknij pozycję **usunąć...**
+2. W obszarze **ogólne** kliknij pozycję **Usuń...**
 
 ![Karta Ogólne][screen5]
 
-3. W **usuwanie historii przeglądania** okna dialogowego upewnij się, **pliki cookie i dane witryn sieci Web** jest zaznaczone, a następnie kliknij przycisk **usunąć**.
+3. W **usuwanie historii przeglądania** okna dialogowego pole, upewnij się, **pliki cookie i dane witryn internetowych** jest zaznaczone, a następnie kliknij przycisk **Usuń**.
 
 ![Usuń pliki cookie][screen6]
 
-Po usunięciu plików cookie, uruchom ponownie przeglądarkę, a następnie przejdź do [Microsoft Azure Machine Learning](https://studio.azureml.net) strony. Po wyświetleniu monitu o nazwę użytkownika i hasło, wprowadź konto Microsoft, którego użyto do utworzenia obszaru roboczego.
+Po usunięciu plików cookie, uruchom ponownie przeglądarkę, a następnie przejdź do [Microsoft Azure Machine Learning](https://studio.azureml.net) strony. Po wyświetleniu monitu o nazwę użytkownika i hasło, wprowadź tego samego konta Microsoft, który został użyty do utworzenia obszaru roboczego.
 
 ## <a name="comments"></a>Komentarze
 
-Naszym celem jest zapewnienie środowiska usługi Machine Learning jako bezproblemowe, jak to możliwe. Opublikuj uwagi i problemy z [forum usługi Azure Machine Learning](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) w celu ułatwienia obsługi można lepiej.
+Naszym celem jest zapewnienie środowiska usługi Machine Learning jako Bezproblemowa, jak to możliwe. Opublikuj wszystkie komentarze i problemy w czasie [forum usługi Azure Machine Learning](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) aby pomóc nam w udzieleniu skuteczniejszej.
 
 [screen1]:media/troubleshooting-creating-ml-workspace/screen1.png
 [screen2]:media/troubleshooting-creating-ml-workspace/screen2.png

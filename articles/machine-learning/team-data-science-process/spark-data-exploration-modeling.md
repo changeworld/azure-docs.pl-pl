@@ -15,15 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath
-ms.openlocfilehash: f6f0393fa3c7a1c0851c18ebd4e48f2ef426f893
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 34b5d052a31eb0185a54d3f54a5af8ba90d857eb
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248490"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346681"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Eksplorowanie i modelowanie danych za pomocą platformy Spark
-[!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
 W tym przewodniku używa platformy HDInsight Spark do wykonywania eksploracji danych i binarnej klasyfikacji i regresji, modelowanie zadania, na przykład NYC taksówki podróży, jak i klasie 2013 zestawu danych.  Przeprowadza użytkownika przez kroki [danych dla celów naukowych](https://aka.ms/datascienceprocess), end-to-end, przechowywanie danych i modele przy użyciu klastra usługi HDInsight Spark dla obiektów blob platformy Azure i związanych z przetwarzaniem. Proces analizuje i wizualizuje dane zaimportowane z usługi Azure Blob Storage i następnie przygotowuje dane w celu tworzenia modeli predykcyjnych. Te modele są kompilacji przy użyciu zestawu narzędzi Biblioteka MLlib platformy Spark w celu binarnej klasyfikacji i regresji zadań modelowania.
 

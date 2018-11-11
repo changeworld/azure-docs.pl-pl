@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/08/2018
-ms.openlocfilehash: f261c59193349d55d407e6079002b75884273e84
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fb4eabb247e6a4fe5550b2b23d34862c789bfaa1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960247"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232328"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Tworzenie klastra Kubernetes za pomocą usługi Azure Kubernetes Service i narzędzia Terraform
 Usługa [Azure Kubernetes Service (AKS)](/azure/aks/) zarządza hostowanym środowiskiem Kubernetes, dzięki czemu można szybko i łatwo wdrażać konteneryzowane aplikacje i zarządzać nimi bez specjalistycznej wiedzy z zakresu aranżacji kontenerów. Eliminuje to również uciążliwości związane z bieżącą obsługą i konserwacją dzięki aprowizowaniu, aktualizowaniu i skalowaniu zasobów na żądanie bez przełączania aplikacji do trybu offline.
@@ -372,6 +372,6 @@ Nowo utworzony klaster można sprawdzić za pomocą narzędzi usługi Kubernetes
 W tym artykule przedstawiono sposób tworzenia klastra Kubernetes przy użyciu narzędzia Terraform i usługi AKS. Poniżej przedstawiono kilka dodatkowych zasobów zawierających więcej informacji na temat narzędzia Terraform na platformie Azure: 
 
  [Centrum narzędzia Terraform w witrynie Microsoft.com](https://docs.microsoft.com/azure/terraform/)  
- [Dokumentacja dostawcy narzędzia Terraform na platformie Azure](http://aka.ms/terraform)  
- [Źródło dostawcy narzędzia Terraform na platformie Azure](http://aka.ms/tfgit)  
- [Moduły narzędzia Terraform na platformie Azure](http://aka.ms/tfmodules)
+ [Dokumentacja dostawcy narzędzia Terraform na platformie Azure](https://aka.ms/terraform)  
+ [Źródło dostawcy narzędzia Terraform na platformie Azure](https://aka.ms/tfgit)  
+ [Moduły narzędzia Terraform na platformie Azure](https://aka.ms/tfmodules)

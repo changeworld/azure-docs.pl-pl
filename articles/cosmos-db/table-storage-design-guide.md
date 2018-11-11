@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: 2af93d149948071f78d0c684b812e84fa68db341
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 6ac0895ac31a815f00ca6c5fa1dfd325be2e3963
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251128"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245821"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Przewodnik po projektowaniu tabel usługi Azure Storage: Projektowanie skalowalnych i wydajnych tabel
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -122,7 +122,7 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 </table>
 
 
-Do tej pory ten projekt jest podobny do tabeli w relacyjnej bazie danych przy użyciu podstawowych różnic obowiązkowe kolumn i możliwość przechowywania wielu typów jednostek w tej samej tabeli. Ponadto poszczególne właściwości zdefiniowanych przez użytkownika, takie jak **FirstName** lub **wiek** ma typ danych, takie jak liczba całkowita lub ciąg, po prostu, takich jak kolumny w relacyjnej bazie danych. Mimo że w przeciwieństwie do relacyjnej bazy danych bez schematu charakter usługi Table service oznacza właściwości nie wymagają tych samych danych, wpisz dla każdej jednostki. Aby złożone typy danych są przechowywane w pojedynczej właściwości, należy użyć serializacji formatu JSON lub XML. Aby uzyskać więcej informacji na temat usługi, takie jak obsługiwane typy danych w tabelach, zakresów dat obsługiwanych, zasady nazewnictwa i ograniczeń związanych z rozmiarem, zobacz [opis modelu danych usługi Table Service](http://msdn.microsoft.com/library/azure/dd179338.aspx).
+Do tej pory ten projekt jest podobny do tabeli w relacyjnej bazie danych przy użyciu podstawowych różnic obowiązkowe kolumn i możliwość przechowywania wielu typów jednostek w tej samej tabeli. Ponadto poszczególne właściwości zdefiniowanych przez użytkownika, takie jak **FirstName** lub **wiek** ma typ danych, takie jak liczba całkowita lub ciąg, po prostu, takich jak kolumny w relacyjnej bazie danych. Mimo że w przeciwieństwie do relacyjnej bazy danych bez schematu charakter usługi Table service oznacza właściwości nie wymagają tych samych danych, wpisz dla każdej jednostki. Aby złożone typy danych są przechowywane w pojedynczej właściwości, należy użyć serializacji formatu JSON lub XML. Aby uzyskać więcej informacji na temat usługi, takie jak obsługiwane typy danych w tabelach, zakresów dat obsługiwanych, zasady nazewnictwa i ograniczeń związanych z rozmiarem, zobacz [opis modelu danych usługi Table Service](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
 Jak będzie widać, wybór **PartitionKey** i **RowKey** ma podstawowe znaczenie dla projektu dobre tabeli. Każda jednostka przechowywana w tabeli musi mieć unikatową kombinację **PartitionKey** i **RowKey**. Podobnie jak w przypadku kluczy w tabeli relacyjnej bazy danych, **PartitionKey** i **RowKey** wartości są indeksowane, aby utworzyć indeks klastrowany, która umożliwia szybkie wyszukania; w usłudze Table service tworzy jednak żadnego indeksy pomocnicze, dzięki czemu są one tylko dwie właściwości indeksowane (wzorców opisanym w dalszej części widoczna jest jak obejść to ograniczenie widoczna).  
 
@@ -133,7 +133,7 @@ Nazwa konta, nazwę tabeli i **PartitionKey** razem identyfikują partycji w ram
 
 W usłudze Table service oddzielnego węzła usługi jeden lub więcej zakończą się partycji i skali usługi przez dynamiczne równoważenie obciążenia partycji na węzłach. Jeśli węzeł ma pod obciążeniem, usłudze table service można *podziału* zakresu partycji obsługiwanych przez ten węzeł na różnych węzłach; gdy zmniejszenia ruchu, usługa może *scalania* zakresu partycji z węzłów cichy na jednym węźle.  
 
-Aby uzyskać więcej informacji na temat szczegółami wewnętrznymi usługi Table service, a w szczególności w jaki sposób usługa zarządza partycjami, zobacz dokument [usługi Microsoft Azure Storage: A o wysokiej dostępności usługi magazynu w chmurze with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Aby uzyskać więcej informacji na temat szczegółami wewnętrznymi usługi Table service, a w szczególności w jaki sposób usługa zarządza partycjami, zobacz dokument [usługi Microsoft Azure Storage: A o wysokiej dostępności usługi magazynu w chmurze with Strong Consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ### <a name="entity-group-transactions"></a>Transakcje grupy jednostek
 W usłudze Table service transakcji grup jednostek (EGTs) są tylko wbudowanego mechanizmu do wykonywania niepodzielnych aktualizacje w wielu jednostkach. EGTs są również nazywane *partii transakcji* w dokumentacji. EGTs może działać tylko na jednostek przechowywanych w tej samej partycji (udział ten sam klucz partycji w danej tabeli), więc potrzebujesz atomic transakcyjnych zachowanie w wielu jednostkach, należy się upewnić, że te jednostki są w tej samej partycji. Jest to często Przyczyna zachowaniem typów jednostek w tej samej tabeli (i partycji), a nie przy użyciu wielu tabel dla jednostek różnych typów. Pojedynczy EGT może operować na co najwyżej 100 jednostek.  Jeśli prześlesz wielu jednoczesnych EGTs do przetwarzania, jest ważne, aby upewnić się, że te EGTs nie działają na jednostek, które są wspólne w EGTs, ponieważ w przeciwnym razie przetwarzania może być opóźniony w.
@@ -153,7 +153,7 @@ Poniższa tabela zawiera niektóre z kluczowych wartości pod uwagę podczas pro
 | Rozmiar **RowKey** |Ciąg do 1 KB rozmiaru |
 | Rozmiar transakcji grup jednostek |Transakcja może zawierać co najwyżej 100 jednostek i ładunek musi być mniejszy niż 4 MB. EGT można aktualizować tylko jednostki jeden raz. |
 
-Aby uzyskać więcej informacji, zobacz [Understanding the Table Service Data Model (Omówienie modelu danych usługi Table Service)](http://msdn.microsoft.com/library/azure/dd179338.aspx).  
+Aby uzyskać więcej informacji, zobacz [Understanding the Table Service Data Model (Omówienie modelu danych usługi Table Service)](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
 
 ### <a name="cost-considerations"></a>Kwestie związane z kosztami
 Magazyn tabel jest względnie niedrogie ulepszenie, ale powinien zawierać szacowane koszty użycia pojemności i liczba transakcji jako część oceny dowolnego rozwiązania, które korzysta z usługi tabel. Jednak w wielu scenariuszach nieznormalizowany lub zduplikowane dane są przechowywane w celu poprawy wydajności i skalowalności rozwiązania jest prawidłowy podejście do wykonania. Aby uzyskać więcej informacji o cenach, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
@@ -208,7 +208,7 @@ W poniższych przykładach założono, usłudze table service zapisuje jednostek
 | **Wiek** |Liczba całkowita |
 | **EmailAddress** |Ciąg |
 
-We wcześniejszej sekcji [Omówienie usługi Azure Table](#overview) opisano niektóre z kluczowymi funkcjami usługi Azure Table service, które mają bezpośredni wpływ na projektowanie pod kątem zapytań. Wynikiem tych ogólne wytyczne dotyczące projektowania zapytań usługi tabeli. Składnia filtru użyte w poniższych przykładach jest z usługi tabel interfejsu API REST, aby uzyskać więcej informacji, zobacz [wykonywanie zapytań dotyczących jednostek](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+We wcześniejszej sekcji [Omówienie usługi Azure Table](#overview) opisano niektóre z kluczowymi funkcjami usługi Azure Table service, które mają bezpośredni wpływ na projektowanie pod kątem zapytań. Wynikiem tych ogólne wytyczne dotyczące projektowania zapytań usługi tabeli. Składnia filtru użyte w poniższych przykładach jest z usługi tabel interfejsu API REST, aby uzyskać więcej informacji, zobacz [wykonywanie zapytań dotyczących jednostek](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 * A ***kwerendy punktu*** jest najbardziej efektywny sposób wyszukiwania, aby użyć i jest zalecana służący do wyszukiwania mocno obciążające lub wyszukiwania, wymagających najmniejszego opóźnienia. W przypadku takiego zapytania umożliwia wydajne Znajdź pojedynczą jednostkę, określając zarówno indeksy **PartitionKey** i **RowKey** wartości. Na przykład: $filter = (PartitionKey eq "Sprzedaż") i (RowKey eq '2')  
 * Po drugie, najlepiej jest ***kwerendy zakresu*** , który używa **PartitionKey** i filtry na szeroką gamę **RowKey** wartości do zwrócenia więcej niż jedną jednostkę. **PartitionKey** wartość określa określonej partycji i **RowKey** wartości identyfikują podzestawu jednostek w partycji. Na przykład: $filter = PartitionKey eq "Sprzedaż i RowKey ge" i RowKey lt t "  
@@ -437,7 +437,7 @@ Po wykonaniu zapytania dotyczącego zakresu jednostek pracowników, można okre�
 * Aby znaleźć wszyscy pracownicy działu sprzedaży, identyfikator pracownika używany zakres 000100 do 000199: $filter = (PartitionKey eq "Sprzedaż") i (RowKey ge "empid_000100") i (RowKey le "empid_000199")  
 * Aby znaleźć wszyscy pracownicy działu sprzedaży przy użyciu adresu e-mail, rozpoczynając od litery "" Użyj: $filter = (PartitionKey eq "Sprzedaż") i (RowKey ge "email_a") i (RowKey lt "email_b")  
   
-  Składnia filtru używanych w powyższych przykładach jest z usługi tabel interfejsu API REST, aby uzyskać więcej informacji, zobacz [wykonywanie zapytań dotyczących jednostek](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+  Składnia filtru używanych w powyższych przykładach jest z usługi tabel interfejsu API REST, aby uzyskać więcej informacji, zobacz [wykonywanie zapytań dotyczących jednostek](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 #### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  
@@ -491,7 +491,7 @@ Po wykonaniu zapytania dotyczącego zakresu jednostek pracowników, można okre�
 * Aby znaleźć wszyscy pracownicy działu sprzedaży o identyfikatorze pracowników w zakresie **000100** do **000199** sortowane mogli oni skorzystać identyfikator pracownika: $filter = (PartitionKey eq ' empid_Sales") i (RowKey ge"000100") i (RowKey le "000199")  
 * Aby znaleźć wszyscy pracownicy działu sprzedaży za pomocą adresu e-mail, który rozpoczyna się od "" posortowanych w wiadomości e-mail adres mogli oni skorzystać: $filter = (PartitionKey eq ' email_Sales") i (RowKey ge"") i (RowKey lt"b")  
 
-Należy zauważyć, że składnia filtru używanych w powyższych przykładach jest z usługi tabel interfejsu API REST, aby uzyskać więcej informacji, zobacz [wykonywanie zapytań dotyczących jednostek](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Należy zauważyć, że składnia filtru używanych w powyższych przykładach jest z usługi tabel interfejsu API REST, aby uzyskać więcej informacji, zobacz [wykonywanie zapytań dotyczących jednostek](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 #### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  
@@ -1002,7 +1002,7 @@ Optymalne zapytanie zwraca pojedynczą jednostkę na podstawie **PartitionKey** 
 
 W takich scenariuszach, należy zawsze w pełni przetestować wydajność aplikacji.  
 
-Zapytanie względem usługi tabeli może zwrócić więcej niż 1000 jednostek w tym samym czasie i może być wykonywane przez maksymalnie pięć sekund. Jeśli zestaw wyników zawiera więcej niż 1000 jednostek, jeśli zapytanie nie została ukończona w ciągu pięciu sekund lub zapytanie przecina granicę partycji, usłudze Table service zwraca token kontynuacji, aby umożliwić aplikacji klienckiej zażądać następnego zestawu jednostek. Aby uzyskać więcej informacji na temat sposobu kontynuacji tokenów pracy, zobacz [limit czasu zapytania i dzielenia na strony](http://msdn.microsoft.com/library/azure/dd135718.aspx).  
+Zapytanie względem usługi tabeli może zwrócić więcej niż 1000 jednostek w tym samym czasie i może być wykonywane przez maksymalnie pięć sekund. Jeśli zestaw wyników zawiera więcej niż 1000 jednostek, jeśli zapytanie nie została ukończona w ciągu pięciu sekund lub zapytanie przecina granicę partycji, usłudze Table service zwraca token kontynuacji, aby umożliwić aplikacji klienckiej zażądać następnego zestawu jednostek. Aby uzyskać więcej informacji na temat sposobu kontynuacji tokenów pracy, zobacz [limit czasu zapytania i dzielenia na strony](https://msdn.microsoft.com/library/azure/dd135718.aspx).  
 
 Jeśli używasz biblioteki klienta usługi Storage go automatycznie obsługiwać tokenów kontynuacji dla Ciebie jako zwraca jednostki z usługi tabel. Poniższy przykład kodu C# automatycznie przy użyciu biblioteki klienta usługi Storage obsługuje tokeny kontynuacji, jeśli usługa table service zwraca je w odpowiedzi:  
 

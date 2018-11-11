@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 73e5e54e40223f7cd972e2bd2752add9ca82ff2b
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 0c19d32f6c6f491a91ba6c2219be9fd016b5ec34
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452347"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243883"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Znajomość i wykorzystanie agenta systemu Linux dla platformy Azure
 
@@ -73,7 +73,7 @@ Przepływ informacji z platformą do agenta odbywa się za pośrednictwem dwóch
 Poniższe systemy zostały przetestowane i znane pracy z agentem systemu Linux platformy Azure:
 
 > [!NOTE]
-> Ta lista może różnić się od oficjalną listę obsługiwanych systemów na platformie Microsoft Azure, tak jak opisano tutaj: [http://support.microsoft.com/kb/2805216](http://support.microsoft.com/kb/2805216)
+> Ta lista może różnić się od oficjalną listę obsługiwanych systemów na platformie Microsoft Azure, tak jak opisano tutaj: [http://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
@@ -344,6 +344,6 @@ Korzystanie z obrazów w chmurze systemu Ubuntu [pakietu cloud-init](https://lau
 
 * Aby uzyskać więcej informacji zobacz następujące zasoby do konfigurowania punktu instalacji dysku zasobów, a następnie zamienić miejsca na obrazy systemu Ubuntu w chmurze podczas inicjowania obsługi:
   
-  * [Ubuntu Witryna typu Wiki: Konfigurowanie partycji wymiany](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Ubuntu Witryna typu Wiki: Konfigurowanie partycji wymiany](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [Wstawianie danych niestandardowych do maszyny wirtualnej platformy Azure](../windows/classic/inject-custom-data.md)
 

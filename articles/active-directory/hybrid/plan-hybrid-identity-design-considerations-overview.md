@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d916e884e7764a1ba5ebaf224750f38e7d7673e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d85157c3f1aafd33a2b996168f2f9eac613a209c
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313894"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344886"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Zagadnienia dotyczące projektowania tożsamości hybrydowej usługi Azure Active Directory
 Urządzenia z systemem odbiorcy są proliferating świecie korporacyjnym, a oprogramowanie jako usługa (SaaS) aplikacji działających w chmurze są łatwe do przyjęcia. W rezultacie zachowaniu kontroli nad użytkownikom aplikacji wewnętrznych platformach centrów danych i chmury może być trudne.  
@@ -58,10 +58,10 @@ Zostanie wyświetlony projekt najlepiej spełniający wymagania dopiero po wykon
 
 | Faza tożsamości hybrydowej | Na liście tematów |
 | --- | --- |
-| Określić wymagania dotyczące tożsamości |[Określanie potrzeb biznesowych](plan-hybrid-identity-design-considerations-business-needs.md)<br> [Określić wymagania dotyczące synchronizacji katalogu](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [Określanie wymagań dotyczących uwierzytelniania wieloskładnikowego](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [Definiowanie strategii wdrażania tożsamości hybrydowej](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
+| Określanie wymagań dotyczących tożsamości |[Określanie potrzeb biznesowych](plan-hybrid-identity-design-considerations-business-needs.md)<br> [Określić wymagania dotyczące synchronizacji katalogu](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [Określanie wymagań dotyczących uwierzytelniania wieloskładnikowego](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [Definiowanie strategii wdrażania tożsamości hybrydowej](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
 | Planowanie wzmocnienia zabezpieczeń danych za pośrednictwem rozwiązania silna tożsamość |[Określanie wymagań dotyczących ochrony danych](plan-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [Określanie wymagań dotyczących zarządzania zawartością](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [Określić wymagania dotyczące kontroli dostępu](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [Określanie wymagań dotyczących odpowiedzi na zdarzenia](plan-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [Definiowanie strategii ochrony danych](plan-hybrid-identity-design-considerations-data-protection-strategy.md) |
 | Planowanie cyklu życia tożsamości hybrydowej |[Określić zadania związane z zarządzaniem tożsamości hybrydowej](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [Zarządzanie synchronizacji](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [Określenia strategii wdrażania zarządzania tożsamości hybrydowej](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
 
-## <a name="download-this-guide"></a>Pobierz ten przewodnik
-Możesz pobrać wersję pdf przewodnika zagadnienia dotyczące projektowania tożsamości hybrydowej z [galerii Technet](https://gallery.technet.microsoft.com/Azure-Hybrid-Identity-b06c8288). 
+## <a name="next-steps"></a>Następne kroki
+[Określić wymagania dotyczące tożsamości](plan-hybrid-identity-design-considerations-business-needs.md)
 

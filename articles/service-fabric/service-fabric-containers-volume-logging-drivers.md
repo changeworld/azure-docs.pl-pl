@@ -3,7 +3,7 @@ title: Usługa sieci szkieletowej Azure pliki sterowników woluminów (wersja za
 description: Usługa Service Fabric obsługuje przy użyciu usługi Azure Files do tworzenia kopii zapasowych woluminów z kontenera. Ta funkcja jest obecnie dostępna w wersji zapoznawczej.
 services: service-fabric
 documentationcenter: other
-author: mani-ramaswamy
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
-ms.author: subramar
-ms.openlocfilehash: 0ce1ca09327fa0bd7fbbb82b8dc3c3bdc70d5028
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.author: twhitney, subramar
+ms.openlocfilehash: fabb44f9369dd7b7050ae353ab94263f140aae48
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239376"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346409"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Sterownik woluminu plików platformy Azure dla usługi sieci szkieletowej (wersja zapoznawcza)
 Dodatek woluminu plików platformy Azure jest [wtyczki woluminu Docker](https://docs.docker.com/engine/extend/plugins_volume/) zapewniający [usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) na podstawie woluminów na potrzeby kontenerów platformy Docker. Ta wtyczka woluminu platformy Docker jest spakowany jako aplikacji usługi Service Fabric, który może być wdrożony w klastrach usługi Service Fabric. Jego celem jest zapewnienie usługi Azure Files na podstawie woluminów dla innych aplikacji kontenera usługi Service Fabric, które zostały wdrożone w klastrze.
@@ -166,12 +166,11 @@ W **woluminu** element we fragmencie kodu powyżej, wtyczka woluminu plików pla
 - **Miejsce docelowe** — ten tag jest to lokalizacja wolumin jest mapowany do uruchomionego kontenera. W efekcie lokalizacji docelowej nie może być lokalizacji, która już istnieje w kontenerze
 
 Jak pokazano na **DriverOption** elementy we fragmencie kodu powyżej, wtyczka woluminu plików platformy Azure obsługuje następujące opcje sterownika:
+- **Nazwa udziału** — nazwę udziału plików usługi Azure Files, zapewniająca woluminu dla kontenera.
+- **storageAccountName** — nazwa konta magazynu platformy Azure, który zawiera plik usługi Azure Files udostępniania.
+- **storageAccountKey** -klucz dostępu dla konta usługi Azure storage, który zawiera udział plików usługi Azure Files.
+- **storageAccountFQDN** — nazwę domeny skojarzone z kontem magazynu. Jeśli storageAccountFQDN nie zostanie określony, nazwy domeny będzie sformatowany przy użyciu suffix(.file.core.windows.net) domyślne storageAccountName.  
 
-Obsługiwane opcje sterownika:
-- **Nazwa udziału** — nazwę udziału plików usługi Azure Files, zapewniająca woluminu dla kontenera
-- **storageAccountName** — nazwa konta magazynu platformy Azure, który zawiera plik usługi Azure Files udostępniania
-- **storageAccountKey** -klucz dostępu dla konta usługi Azure storage, który zawiera udział plików usługi Azure Files
-- **storageAccountFQDN** — nazwę domeny skojarzone z kontem magazynu. Jeśli storageAccountFQDN nie zostanie określony, nazwy domeny będzie sformatowany przy użyciu suffix(.file.core.windows.net) domyślne storageAccountName. 
     ```xml
     - Example1: 
         <DriverOption Name="shareName" Value="myshare1" />
@@ -184,6 +183,7 @@ Obsługiwane opcje sterownika:
         <DriverOption Name="storageAccountKey" Value="mykey2" />
         <DriverOption Name="storageAccountFQDN" Value="myaccount2.file.core.chinacloudapi.cn" />
     ```
+
 ## <a name="using-your-own-volume-or-logging-driver"></a>Korzystając z własnych woluminu lub rejestrowanie sterownika
 Usługa Service Fabric umożliwia także użycie własnego niestandardowego [woluminu](https://docs.docker.com/engine/extend/plugins_volume/) lub [rejestrowania](https://docs.docker.com/engine/admin/logging/overview/) sterowników. Jeśli nie zainstalowano sterownika wolumin/rejestrowania platformy Docker w klastrze, można zainstalować go ręcznie przy użyciu protokołów RDP/SSH. Można przeprowadzić instalację za pomocą tych protokołów za pośrednictwem [skrypt uruchamiania zestawu skalowania maszyn wirtualnych](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) lub [skryptu SetupEntryPoint](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model#describe-a-service).
 

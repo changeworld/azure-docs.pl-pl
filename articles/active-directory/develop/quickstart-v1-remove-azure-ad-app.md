@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 2cd77ee6df52940a800733209b7e384d72d98103
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ddc04d32f76515cb93d2cde3fe4eccaab7e4c291
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962134"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245362"
 ---
 # <a name="quickstart-remove-an-application-from-azure-active-directory"></a>Szybki start: usuwanie aplikacji z usługi Azure Active Directory
 
@@ -69,7 +69,7 @@ Podzestaw aplikacji, który jest wyświetlany w obszarze filtru **Wszystkie apli
 
 Pod względem technicznym aplikacje z wieloma dzierżawami należą do innej dzierżawy i zostały zarejestrowane w Twojej dzierżawie po udzielenia zgody. Dokładniej mówiąc, są reprezentowane tylko przez obiekt główny usługi w dzierżawie, bez odpowiadającego mu obiektu aplikacji. Aby uzyskać więcej informacji na temat różnic między obiektami aplikacji a jednostkami usługi, zobacz [Application and service principal objects in Azure AD (Obiekty aplikacji i obiekty główne usługi w usłudze Azure AD)](app-objects-and-service-principals.md).
 
-Aby usunąć dostęp aplikacji z wieloma dzierżawami do Twojego katalogu (po wcześniejszym udzieleniu zgody), administrator firmy musi usunąć jednostkę usługi aplikacji. Administrator mający uprawnienia administratora globalnego może usunąć dostęp w witrynie Azure Portal lub za pośrednictwem [poleceń cmdlet programu PowerShell usługi Azure AD](http://go.microsoft.com/fwlink/?LinkId=294151).
+Aby usunąć dostęp aplikacji z wieloma dzierżawami do Twojego katalogu (po wcześniejszym udzieleniu zgody), administrator firmy musi usunąć jednostkę usługi aplikacji. Administrator mający uprawnienia administratora globalnego może usunąć dostęp w witrynie Azure Portal lub za pośrednictwem [poleceń cmdlet programu PowerShell usługi Azure AD](https://go.microsoft.com/fwlink/?LinkId=294151).
 
 ## <a name="next-steps"></a>Następne kroki
 

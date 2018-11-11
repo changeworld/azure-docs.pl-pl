@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 718b57a801a9ba62a0154ae42da2ac0c0741f203
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e25f98f1189f71943ece4a7877a86e29698689a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22706652"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240515"
 ---
 # <a name="biztalk-services-editions-chart"></a>Usługa BizTalk Services: wykres wersji
 
@@ -55,15 +55,15 @@ W poniższej tabeli przedstawiono różnice.
 <tr bgcolor="FAF9F9">
         <th></th>
         <th>Bezpłatna (wersja zapoznawcza)</th>
-        <th>Dla deweloperów</th>
+        <th>Developer</th>
         <th>Podstawowa</th>
-        <th>Standardowa</th>
+        <th>Standardowa (Standard)</th>
         <th>Premium</th>
 </tr>
 
 <tr>
 <td><strong>Cena początkowa</strong></td>
-<td colspan="5"><a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011">Azure BizTalk Services — cennik</a> <br/><br/> <a HREF="http://azure.microsoft.com/pricing/calculator/?scenario=full">Kalkulator cen platformy Azure</a></td>
+<td colspan="5"><a HREF="https://go.microsoft.com/fwlink/p/?LinkID=304011">Azure BizTalk Services — cennik</a> <br/><br/> <a HREF="https://azure.microsoft.com/pricing/calculator/?scenario=full">Kalkulator cen platformy Azure</a></td>
 </tr>
 <tr>
 <td><strong>Domyślna konfiguracja minimalna</strong></td>
@@ -153,7 +153,7 @@ Zawiera umowy modułu TPM</td>
 <tr>
 <td><strong>Wysoka dostępność</strong>
 <br/><br/>
-Umowa dotycząca poziomu usług (SLA) znajduje się w artykule <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011">Usługa BizTalk — cennik</a>.
+Umowa dotycząca poziomu usług (SLA) znajduje się w artykule <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=304011">Usługa BizTalk — cennik</a>.
 </td>
 <td>Nie dołączono</td>
 <td>Nie dołączono</td>
@@ -225,7 +225,7 @@ Usługa BizTalk Server na maszynach wirtualnych Azure zapewnia architekturę typ
 Jeśli chcesz tworzyć nowe rozwiązania integracji, które zminimalizują wysiłek związany z zarządzaniem infrastrukturą, użyj usługi BizTalk Services. Jeśli chcesz szybko migrować istniejące rozwiązania BizTalk lub szukasz środowiska na żądanie do programowania i testowania aplikacji BizTalk Server, użyj usługi BizTalk Server na maszynie wirtualnej Azure.
 
 #### <a name="what-is-the-difference-between-biztalk-adapter-service-and-hybrid-connections"></a>Jaka jest różnica między usługą adaptera BizTalk i połączeniami hybrydowymi?
-Usługa adaptera BizTalk jest używana przez usługę Azure BizTalk. Usługa adaptera BizTalk używa rozwiązania BizTalk Adapter Pack do łączenia z lokalnym systemem Line of Business (LOB). Połączenie hybrydowe zapewnia łatwy i wygodny sposób łączenia aplikacji Azure, takich jak funkcja Aplikacje sieci Web w usługach Azure App Service i Azure Mobile Services, z zasobami lokalnymi.
+Usługa adaptera BizTalk jest używana przez usługę Azure BizTalk. Usługa adaptera BizTalk używa rozwiązania BizTalk Adapter Pack do łączenia z lokalnym systemem Line of Business (LOB). Połączenie hybrydowe zapewnia łatwy i wygodny sposób łączenia aplikacji Azure, takich jak funkcja Web Apps w usługach Azure App Service i Azure Mobile Services, z zasobami lokalnymi.
 
 #### <a name="what-does-hybrid-connection-data-transfer-gb-per-unit-mean-is-this-per-minutehourdayweekmonth-what-happens-when-the-limit-is-reached"></a>Co oznacza „Transfer danych połączenia hybrydowego (GB) na jednostkę”? Czy jednostka jest liczona co minutę/godzinę/dzień/tydzień/miesiąc? Co się stanie po osiągnięciu limitu?
 Koszt połączenia hybrydowego na jednostkę zależy od wersji usługi BizTalk Services. Krótko mówiąc, koszty zależą od ilości przesyłanych danych. Na przykład transfer 10 GB danych dziennie kosztuje mniej niż transfer 100 GB danych dziennie. Użyj [Kalkulatora cen](https://azure.microsoft.com/pricing/calculator/?scenario=full) usługi BizTalk Services, aby obliczyć określone koszty. Limity są zazwyczaj dzienne. Po przekroczeniu limitu opłaty są naliczane według stawki 1 USD za GB.
@@ -242,10 +242,10 @@ Bezpłatnej wersji nie można migrować ani „skalować w górę” do innej wa
 W przypadku pozostałych wersji użyj funkcji kopii zapasowej i przywracania do migracji artefaktów z jednej warstwy do innej. Na przykład utwórz kopię zapasową artefaktów w warstwie wersji standardowej, a następnie przywróć je do warstwy wersji Premium. W artykule [BizTalk Services: Backup and Restore](biztalk-backup-restore.md) (Usługa BizTalk Services: tworzenie kopii zapasowej i przywracanie) opisano obsługiwane ścieżki migracji i podano artefakty, których kopia zapasowa jest tworzona. Pamiętaj, że nie tworzy się kopii zapasowej połączeń hybrydowych. Po utworzeniu kopii zapasowej i przywróceniu do nowej warstwy należy ponownie utworzyć połączenia hybrydowe.  
 
 #### <a name="is-the-biztalk-adapter-service-included-in-the-service-how-do-i-receive-the-software"></a>Czy usługa adaptera BizTalk jest dołączona do usługi? Jak otrzymać oprogramowanie?
-Tak, usługa adaptera BizTalk razem z usługą BizTalk Adapter Pack są dołączone do plików [do pobrania](http://www.microsoft.com/download/details.aspx?id=39087) zestawu SDK usługi Azure BizTalk Services.
+Tak, usługa adaptera BizTalk razem z usługą BizTalk Adapter Pack są dołączone do plików [do pobrania](https://www.microsoft.com/download/details.aspx?id=39087) zestawu SDK usługi Azure BizTalk Services.
 
 ## <a name="next-steps"></a>Następne kroki
-Aby utworzyć usługę Azure BizTalk Services w portalu Azure, przejdź do artykułu [BizTalk Services: Provisioning using the Azure portal](biztalk-provision-services.md) (Usługa BizTalk Services: inicjowanie obsługi przy użyciu portalu Azure). Aby rozpocząć tworzenie aplikacji, przejdź do artykułu [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197) (Usługa Azure BizTalk Services).
+Aby utworzyć usługę Azure BizTalk Services w portalu Azure, przejdź do artykułu [BizTalk Services: Provisioning using the Azure portal](biztalk-provision-services.md) (Usługa BizTalk Services: inicjowanie obsługi przy użyciu portalu Azure). Aby rozpocząć tworzenie aplikacji, przejdź do artykułu [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197) (Usługa Azure BizTalk Services).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 * [BizTalk Services: Provisioning using the Azure portal (Usługa BizTalk Services: aprowizowanie przy użyciu witryny Azure Portal)](biztalk-provision-services.md)<br/>
@@ -254,5 +254,5 @@ Aby utworzyć usługę Azure BizTalk Services w portalu Azure, przejdź do artyk
 * [BizTalk Services: Backup and Restore (Usługa BizTalk Services: tworzenie kopii zapasowej i przywracanie)](biztalk-backup-restore.md)<br/>
 * [BizTalk Services: Throttling (Usługa BizTalk Services: ograniczanie przepływności)](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk Services: Issuer Name and Issuer Key (Usługa BizTalk Services: nazwa i klucz wydawcy)](biztalk-issuer-name-issuer-key.md)<br/>
-* [Jak rozpocząć pracę z zestawem SDK usługi Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Jak rozpocząć pracę z zestawem SDK usługi Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 

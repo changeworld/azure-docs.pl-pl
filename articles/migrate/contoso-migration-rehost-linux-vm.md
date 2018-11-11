@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 54daea1108b98b316e1ead3b9035c1b65745dd19
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 4845fdbbfa4dfabf53b1f7e747668cf7f5108eb7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114128"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232712"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Migracja Contoso: ponowne hostowanie aplikacji systemu Linux w środowisku lokalnym do maszyn wirtualnych platformy Azure
 
@@ -196,7 +196,7 @@ Po przejściu w tryb failover na platformie Azure Contoso chce można było poł
 
 - Dostęp do maszyn wirtualnych platformy Azure za pośrednictwem Internetu, umożliwiają one SSH w systemie Linux w środowisku lokalnym maszyny Wirtualnej przed migracją.  Dla systemu Ubuntu można to zrobić za pomocą następującego polecenia: **"sudo" polecenia apt-get ssh zainstalować -y**.
 - Po uruchomieniu migracji (tryb failover), można sprawdzić **diagnostykę rozruchu** Aby wyświetlić zrzut ekranu maszyny wirtualnej.
-- Jeśli to nie rozwiąże problemu, należy sprawdzić, czy maszyna wirtualna jest uruchomiona i przejrzyj te [wskazówki dotyczące rozwiązywania problemów](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+- Jeśli to nie rozwiąże problemu, należy sprawdzić, czy maszyna wirtualna jest uruchomiona i przejrzyj te [wskazówki dotyczące rozwiązywania problemów](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 
 **Potrzebujesz dodatkowej pomocy?**

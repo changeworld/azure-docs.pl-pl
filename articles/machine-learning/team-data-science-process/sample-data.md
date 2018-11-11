@@ -1,6 +1,6 @@
 ---
-title: Przykładowe dane w kontenerów obiektów blob platformy Azure, programu SQL Server i program Hive tabel | Dokumentacja firmy Microsoft
-description: Jak eksplorować dane przechowywane w różnych enviromnents platformy Azure.
+title: Przykładowe dane w kontenerach obiektów blob platformy Azure, programu SQL Server i tabel programu Hive | Dokumentacja firmy Microsoft
+description: Instrukcje, zapoznaj się z danych przechowywanych w różnych enviromnents platformy Azure.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,27 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 0efd754936b67611a747c6c5756de92443a937e4
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 60431578ba8b5c740fe5e1124dcdad32c3cb2ede
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838003"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344091"
 ---
-# <a name="heading"></a>Przykładowe dane w kontenerów obiektów blob platformy Azure, programu SQL Server i program Hive tabel
-Ten dokument łącza do artykułów, które opisano, jak przykładowe dane, które są przechowywane w jednym z trzech różnych miejscach Azure:
+# <a name="heading"></a>Przykładowe dane w kontenerach obiektów blob platformy Azure, programu SQL Server i tabel programu Hive
 
-* **Dane w kontenerze obiektów blob platformy Azure** jest próbkowany przez programowo ją pobrać i następnie pobierania próbek z przykładowy kod języka Python.
-* **Dane programu SQL Server** jest próbkować za pomocą programy SQL i język programowania Python. 
-* **Dane tabeli hive** jest próbkować za pomocą zapytań programu Hive.
+Następujące artykuły zawierają opis przykładowe dane są przechowywane w jednej z trzech różnych lokalizacji platformy Azure:
 
-Następujące **menu** linki do tematów opisujących sposób próbkowania danych z każdej z tych środowisk magazynu Azure. 
+* [**Dane w kontenerze obiektów blob platformy Azure** ](sample-data-blob.md) są próbkowane tak, pobierając je programowo i próbkowanie go za pomocą przykładowego kodu Python.
+* [**Dane programu SQL Server** ](sample-data-sql-server.md) są próbkowane tak, przy użyciu programu SQL i języka programowania Python. 
+* [**Dane tabeli hive** ](sample-data-hive.md) są próbkowane tak, przy użyciu zapytań programu Hive.
 
-[!INCLUDE [cap-sample-data-selector](../../../includes/cap-sample-data-selector.md)]
-
-To zadanie próbkowania jest krokiem w [zespołu danych nauki procesu (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+To zadanie próbkowania jest krok [Team Data Science naukowych](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 **Dlaczego przykładowe dane?**
 
-Jeśli zestaw danych, które mają być analizowanie jest duży, zazwyczaj jest dobrym rozwiązaniem w dół przykładowych danych, aby zmniejszyć jego rozmiar mniejsze, ale reprezentatywny i łatwiejsze w zarządzaniu. To ułatwia zrozumienie danych, badanie i inżynieria funkcji. Swoją rolę w procesie Analytics Cortana jest umożliwienie szybkiego prototypy funkcji przetwarzania danych i modeli uczenia maszynowego.
+Jeśli zestaw danych, która ma zostać analizowanie jest duża, zazwyczaj przyczyną jest dobrym pomysłem jest obniżenie częstotliwości próbkowania danych, aby zmniejszyć jego rozmiar mniejszy, ale reprezentatywny i łatwiejsze w zarządzaniu. To ułatwia zrozumienie danych, poznawanie i technicznego opracowywania funkcji. Jego rolę w procesie Cortana Analytics jest umożliwienie szybkiego tworzenia prototypów funkcji do przetwarzania danych i modeli uczenia maszynowego.
 

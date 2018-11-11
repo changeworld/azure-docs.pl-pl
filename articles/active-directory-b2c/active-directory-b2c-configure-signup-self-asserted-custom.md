@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/29/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 37492e22b5615ae0b266bc8b2bb6d8f039fdaabe
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 6b2a6d84fffecbe30bd2a47c795ee6143458ee2b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336859"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345004"
 ---
 # <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Usługa Azure Active Directory B2C: Zmodyfikuj logowania się do dodawania nowych oświadczeń i konfigurowanie danych wejściowych użytkownika.
 
@@ -277,8 +277,8 @@ Zweryfikowane, adres e-mail jest domyślnie włączone w `<TechnicalProfile Id="
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dodaj nowe oświadczenie do przepływów w dotyczące logowania się do konta w sieci społecznościowej, zmieniając profili Technicalprofile wymienione poniżej. Są one używane przez konto ubezpieczenia/niepowodzenia federacyjnych logowań do zapisu i odczytu danych użytkownika za pomocą alternativeSecurityId jako lokalizatora.
-```xml
-<TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
-<TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
-```
+Jeśli zasady obsługuje kont społecznościowych, Dodaj nowe oświadczenie do przepływów w dotyczące logowania się do konta w sieci społecznościowej, zmieniając profile techniczne wymienione poniżej. Te oświadczenia są używane przez logowania do konta społecznościowego do zbierania i zapisywania danych przez użytkownika.
+
+1. Znajdź profil techniczny **ubezpieczenia SelfAsserted** i Dodaj oświadczeń wychodzących. Kolejność oświadczenia w **OutputClaims** określa kolejność, że usługa Azure AD B2C renderuje oświadczeń na ekranie. Na przykład `<OutputClaim ClaimTypeReferenceId="city" />`.
+2. Znajdź profil techniczny **AAD UserWriteUsingAlternativeSecurityId** i Dodaj oświadczenie utrwalanie. Na przykład `<PersistedClaim ClaimTypeReferenceId="city" />`.
+3. Znajdź profil techniczny **AAD UserReadUsingAlternativeSecurityId** i Dodaj oświadczeń wychodzących. Na przykład `<OutputClaim ClaimTypeReferenceId="city" />`.

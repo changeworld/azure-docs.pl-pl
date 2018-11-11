@@ -15,19 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: b80fcecf28eaaf05e7fc199a9c318fd4148b9212
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: b617ae1a1df0ed220d03e0124aa9dafd9fc2388c
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497862"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346001"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Eksplorowanie danych w usłudze Azure blob storage za pomocą usług Panda
-W tym dokumencie opisano, jak eksplorować dane, które są przechowywane w kontenerze obiektów blob platformy Azure za pomocą [pandas](http://pandas.pydata.org/) pakiet języka Python.
 
-Następujące **menu** łącza do tematów opisujących, jak używać narzędzi, aby eksplorować dane w różnych środowiskach magazynu. To zadanie jest to krok w [danych dla celów naukowych](overview.md).
+W tym artykule opisano, jak eksplorować dane, które są przechowywane w kontenerze obiektów blob platformy Azure za pomocą [pandas](http://pandas.pydata.org/) pakiet języka Python.
 
-[!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
+To zadanie jest to krok w [zespołu danych dla celów naukowych](overview.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule założono, że masz:

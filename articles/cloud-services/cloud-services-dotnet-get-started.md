@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 819a2f81ca5403a3656bf713cf0ee3ae58050a4b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 04c68308739f641e892a335832725ba87e36f7af
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003117"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242130"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Wprowadzenie do usług Azure Cloud Services i programu ASP.NET
 
 ## <a name="overview"></a>Omówienie
-W tym samouczku wyjaśniono, jak utworzyć wielowarstwową aplikację .NET z frontonem ASP.NET MVC i wdrożyć ją w [usłudze w chmurze Azure](cloud-services-choose-me.md). Aplikacja używa [bazy danych Azure SQL Database](http://msdn.microsoft.com/library/azure/ee336279), [usługi obiektów blob platformy Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) i [usługi kolejek platformy Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). [Projekt programu Visual Studio można pobrać](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) z Galerii kodu MSDN.
+W tym samouczku wyjaśniono, jak utworzyć wielowarstwową aplikację .NET z frontonem ASP.NET MVC i wdrożyć ją w [usłudze w chmurze Azure](cloud-services-choose-me.md). Aplikacja używa [bazy danych Azure SQL Database](https://msdn.microsoft.com/library/azure/ee336279), [usługi obiektów blob platformy Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) i [usługi kolejek platformy Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). [Projekt programu Visual Studio można pobrać](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) z Galerii kodu MSDN.
 
 W samouczku opisano, jak utworzyć i uruchomić aplikację lokalnie, jak wdrożyć ją na platformie Azure i uruchomić w chmurze oraz jak utworzyć ją od samego początku. Można również rozpocząć od kompilowania aplikacji od początku, a dopiero później przeprowadzić testowanie i wdrażanie.
 
@@ -36,7 +36,7 @@ Ta aplikacja to reklamowa tablica ogłoszeń. Aby utworzyć reklamę, użytkowni
 Aplikacja korzysta z [przetwarzania kolejkowego](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern), aby przekazać obciążające procesor zadania związane z tworzeniem miniatur do procesu zaplecza.
 
 ## <a name="alternative-architecture-web-apps-and-webjobs"></a>Architektura alternatywna: usługa Web Apps i zadania WebJob
-Ten samouczek pokazuje, jak uruchamiać fronton i zaplecze w usłudze w chmurze Azure. Alternatywą jest uruchomienie frontonu w [usłudze Azure Web Apps](/azure/app-service/) i używanie funkcji [zadań WebJob](http://go.microsoft.com/fwlink/?LinkId=390226) dla zaplecza. Aby zapoznać się z samouczkiem korzystającym z zadań WebJob, zobacz artykuł [Wprowadzenie do zestawu SDK zadań WebJob na platformie Azure](https://github.com/Azure/azure-webjobs-sdk/wiki). Informacje o wybieraniu usług najlepiej spełniających potrzeby scenariusza zawiera artykuł [Porównanie usług Azure: Witryny sieci Web, Cloud Services i Virtual Machines](../app-service/choose-web-site-cloud-service-vm.md).
+Ten samouczek pokazuje, jak uruchamiać fronton i zaplecze w usłudze w chmurze Azure. Alternatywą jest uruchomienie frontonu w [usłudze Azure Web Apps](/azure/app-service/) i używanie funkcji [zadań WebJob](https://go.microsoft.com/fwlink/?LinkId=390226) dla zaplecza. Aby zapoznać się z samouczkiem korzystającym z zadań WebJob, zobacz artykuł [Wprowadzenie do zestawu SDK zadań WebJob na platformie Azure](https://github.com/Azure/azure-webjobs-sdk/wiki). Informacje o wybieraniu usług najlepiej spełniających potrzeby scenariusza zawiera artykuł [Porównanie usług Azure: Witryny sieci Web, Cloud Services i Virtual Machines](../app-service/choose-web-site-cloud-service-vm.md).
 
 ## <a name="what-youll-learn"></a>Zawartość
 * Jak umożliwić tworzenie aplikacji platformy Azure na komputerze przez zainstalowanie zestawu Azure SDK.
@@ -71,7 +71,7 @@ Gdy użytkownik przesyła obraz, fronton uruchomiony w roli Sieć Web zapisuje o
 [!INCLUDE [install-sdk](../../includes/install-sdk-2017-2015-2013.md)]
 
 ## <a name="download-and-run-the-completed-solution"></a>Pobieranie i uruchamianie gotowego rozwiązania
-1. Pobierz i rozpakuj [ukończone rozwiązanie](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4).
+1. Pobierz i rozpakuj [ukończone rozwiązanie](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4).
 2. Uruchom program Visual Studio.
 3. Z menu **Plik** wybierz polecenie **Otwórz projekt**, przejdź do lokalizacji pobranego rozwiązania, a następnie otwórz plik rozwiązania.
 4. Naciśnij kombinację klawiszy CTRL+SHIFT+B w celu skompilowania rozwiązania.
@@ -81,7 +81,7 @@ Gdy użytkownik przesyła obraz, fronton uruchomiony w roli Sieć Web zapisuje o
 6. Jeśli używasz programu Visual Studio 2015 lub nowszego, zmień parametry połączenia programu SQL Server w pliku *Web.config* projektu ContosoAdsWeb i w pliku *ServiceConfiguration.Local.cscfg* projektu ContosoAdsCloudService. W każdym przypadku zmień ciąg „(localdb)\v11.0” na „(localdb)\MSSQLLocalDB”.
 7. Naciśnij klawisze CTRL+F5, aby uruchomić aplikację.
 
-    Po uruchomieniu projektu usługi w chmurze w środowisku lokalnym program Visual Studio automatycznie wywołuje *emulator obliczeń* platformy Azure i *emulator magazynu* platformy Azure. Emulator obliczeń używa zasobów komputera do symulowania środowisk roli Sieć Web i roli Proces roboczy. Emulator magazynu używa bazy danych [SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx), aby symulować działanie magazynu w chmurze Azure.
+    Po uruchomieniu projektu usługi w chmurze w środowisku lokalnym program Visual Studio automatycznie wywołuje *emulator obliczeń* platformy Azure i *emulator magazynu* platformy Azure. Emulator obliczeń używa zasobów komputera do symulowania środowisk roli Sieć Web i roli Proces roboczy. Emulator magazynu używa bazy danych [SQL Server Express LocalDB](https://msdn.microsoft.com/library/hh510202.aspx), aby symulować działanie magazynu w chmurze Azure.
 
     Podczas pierwszego uruchomienia projektu usługi w chmurze uruchomienie emulatorów może potrwać około minuty. Po zakończeniu uruchamiania emulatora w domyślnej przeglądarce otworzy się strona główna aplikacji.
 
@@ -127,7 +127,7 @@ Usługa w chmurze Azure to środowisko uruchamiania aplikacji.
 5. Wybierz region, w którym chcesz wdrożyć aplikację.
 
     To pole określa centrum danych, w którym będzie hostowana usługa w chmurze. W przypadku aplikacji produkcyjnej warto wybrać region znajdujący się najbliżej klientów. Na potrzeby tego samouczka wybierz region znajdujący się najbliżej Ciebie.
-5. Kliknij przycisk **Utwórz**.
+5. Kliknij pozycję **Utwórz**.
 
     Na poniższej ilustracji usługa w chmurze jest tworzona przy użyciu adresu URL CSvccontosoads.cloudapp.net.
 
@@ -156,7 +156,7 @@ Aplikacja uruchomiona w chmurze będzie używać bazy danych opartej na chmurze.
 9. Kliknij przycisk **Wybierz** dla nowego serwera.
 
     ![Nowy serwer usługi SQL Database](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Kliknij przycisk **Utwórz**.
+10. Kliknij pozycję **Utwórz**.
 
 ### <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
 Konto magazynu platformy Azure udostępnia zasoby służące do przechowywania danych kolejek i obiektów blob w chmurze.
@@ -179,7 +179,7 @@ W rzeczywistych aplikacjach przeważnie tworzy się oddzielne konta dla danych a
     Jeśli usługa w chmurze i konto magazynu są obsługiwane w różnych centrach danych (różnych regionach), zwiększy się opóźnienie i będą naliczane opłaty dotyczące przepustowości poza centrum danych. Przepustowość w centrum danych jest bezpłatna.
 
     Grupy koligacji Azure udostępniają mechanizm umożliwiający minimalizowanie odległości między zasobami w centrum danych, a przez to redukowanie opóźnienia. Ten samouczek nie korzysta z grup koligacji. Aby uzyskać więcej informacji, zobacz temat [Jak utworzyć grupę koligacji w Azure](https://msdn.microsoft.com/library/azure/gg715317.aspx).
-7. Kliknij przycisk **Utwórz**.
+7. Kliknij pozycję **Utwórz**.
 
     ![Nowe konto usługi Storage](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -232,7 +232,7 @@ Parametry połączenia konta magazynu platformy Azure dla projektu roli Sieć We
 1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy pozycję **ContosoAdsWeb** w obszarze **Role** w projekcie **ContosoAdsCloudService**, a następnie kliknij polecenie **Właściwości**.
 
     ![Właściwości roli](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. Kliknij kartę **Ustawienia**. W polu listy rozwijanej **Konfiguracja usługi** wybierz wartość **Chmura**.
+2. Kliknij kartę **Ustawienia**. W polu listy rozwijanej Konfiguracja usługi wybierz wartość **Chmura**.
 
     ![Konfiguracja chmury](./media/cloud-services-dotnet-get-started/sccloud.png)
 3. Wybierz wpis **StorageConnectionString**. Na prawym końcu wiersza pojawi się przycisk z wielokropkiem (**...**). Kliknij przycisk z wielokropkiem, aby otworzyć okno dialogowe **Tworzenie parametrów połączenia konta usługi Storage**.
@@ -311,7 +311,7 @@ Ustawienie `<Instances>` określa liczbę maszyn wirtualnych, na których platfo
 >
 
 ## <a name="create-the-application-from-scratch"></a>Tworzenie aplikacji od początku
-Jeśli [ukończona aplikacja](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) nie została jeszcze pobrana, zrób to teraz. Pliki z pobranego projektu będą kopiowane do nowego projektu.
+Jeśli [ukończona aplikacja](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) nie została jeszcze pobrana, zrób to teraz. Pliki z pobranego projektu będą kopiowane do nowego projektu.
 
 Tworzenie aplikacji Contoso Ads obejmuje następujące czynności:
 
@@ -549,7 +549,7 @@ queueClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSec
 imagesQueue = queueClient.GetQueueReference("images");
 ```
 
-Większość kodu kontrolera jest typowa dla pracy z modelem danych platformy Entity Framework za pomocą klasy DbContext. Wyjątkiem jest metoda HttpPost `Create`, która powoduje przekazanie pliku i zapisanie go w magazynie obiektów blob. Integrator modelu udostępnia obiekt [HttpPostedFileBase](http://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) w metodzie.
+Większość kodu kontrolera jest typowa dla pracy z modelem danych platformy Entity Framework za pomocą klasy DbContext. Wyjątkiem jest metoda HttpPost `Create`, która powoduje przekazanie pliku i zapisanie go w magazynie obiektów blob. Integrator modelu udostępnia obiekt [HttpPostedFileBase](https://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) w metodzie.
 
 ```csharp
 [HttpPost]
@@ -766,8 +766,8 @@ Aplikacja Contoso Ads została celowo uproszczona na potrzeby samouczka wprowadz
 
 Poniżej przedstawiono niektóre przykładowe aplikacje usług w chmurze, w których zastosowano więcej rzeczywistych rozwiązań dotyczących kodowania. Zostały one uporządkowane w kolejności od mniej do bardziej złożonych:
 
-* [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31). Pomysł podobny do aplikacji Contoso Ads, ale z zaimplementowaną większą liczbą funkcji i rzeczywistych rozwiązań dotyczących kodowania.
-* [Wielowarstwowa aplikacja usługi w chmurze Azure z tabelami, kolejkami i obiektami blob](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36). Obejmuje tabele usługi Azure Storage, a także obiekty blob i kolejki. Oparta na starszej wersji zestawu Azure SDK dla programu .NET aplikacja będzie wymagać pewnych modyfikacji, aby mogła współpracować z bieżącą wersją.
+* [PhluffyFotos](https://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31). Pomysł podobny do aplikacji Contoso Ads, ale z zaimplementowaną większą liczbą funkcji i rzeczywistych rozwiązań dotyczących kodowania.
+* [Wielowarstwowa aplikacja usługi w chmurze Azure z tabelami, kolejkami i obiektami blob](https://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36). Obejmuje tabele usługi Azure Storage, a także obiekty blob i kolejki. Oparta na starszej wersji zestawu Azure SDK dla programu .NET aplikacja będzie wymagać pewnych modyfikacji, aby mogła współpracować z bieżącą wersją.
 
 Aby uzyskać ogólne informacje o tworzeniu aplikacji w chmurze, zobacz [Tworzenie aplikacji w chmurze na platformie Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction).
 

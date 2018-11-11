@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: d181835c6baf5a2a40bca04feaa4c115178ba086
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: a6f18222e5683d2d9663b699a8f6bab399d4f45b
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093974"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299864"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Wymagania dotyczące usługi Azure Stack infrastruktury kluczy publicznych certyfikatów
 
@@ -42,7 +42,7 @@ Poniższa lista zawiera opis wymagań dotyczących certyfikatów, które są wym
 - Do wdrożenia i obrót, możesz użyć pojedynczego certyfikatu, obejmujące wszystkie przestrzenie nazw pól Nazwa podmiotu i alternatywnej nazwy podmiotu (SAN) certyfikatu lub można użyć poszczególne certyfikaty dla każdej przestrzeni nazw poniżej usługi Azure Stack usługi, której planujesz korzystanie z wymagają. Oba podejścia wymaga użycia symbole wieloznaczne dla punktów końcowych, w którym są one wymagane, takie jak **KeyVault** i **KeyVaultInternal**. 
 - Szyfrowanie PFX certyfikatu powinien być 3DES. 
 - Algorytm podpisu certyfikatu nie powinna być SHA1. 
-- Format certyfikatu musi być PFX, ponieważ klucze publiczne i prywatne są wymagane do zainstalowania usługi Azure Stack. 
+- Format certyfikatu musi być PFX, ponieważ klucze publiczne i prywatne są wymagane do zainstalowania usługi Azure Stack. Klucz prywatny musi mieć atrybut klucza komputera lokalnego, ustaw.
 - Szyfrowanie PFX musi być 3DES (jest to domyślne podczas eksportowania z klienta systemu Windows 10 lub magazynu certyfikatów systemu Windows Server 2016).
 - Plik pfx certyfikatu musi mieć wartość "Podpis cyfrowy" i "KeyEncipherment" w polu "Użycie klucza".
 - Plik pfx certyfikatu musi mieć wartość "Uwierzytelnianie serwera (1.3.6.1.5.5.7.3.1)" i "Uwierzytelnianie klienta (1.3.6.1.5.5.7.3.2)" w polu "Ulepszone użycie klucza".

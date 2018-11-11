@@ -3,18 +3,18 @@ title: Python funkcji zdefiniowanej przez użytkownika przy użyciu Apache Hive 
 description: Dowiedz się, jak używać języka Python określone funkcje użytkownika (UDF) z technologiami Hive i Pig w HDInsight, stosu technologii Hadoop na platformie Azure.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: c2c2a6686d5da25e5a300bc58e1cf37467737c80
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 6227b9517da3dacb18b4f9653a7012ef9ab5a4a7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646545"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232277"
 ---
 # <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>Użyj języka Python funkcje zdefiniowane użytkownika (UDF) z technologiami Hive i Pig w HDInsight
 
@@ -185,7 +185,7 @@ Gdy dane są zwracane do Pig, ma spójny schemat, zgodnie z definicją w `@outpu
 > [!IMPORTANT]
 > **SSH** kroki działają tylko z klastrem HDInsight opartych na systemie Linux. **PowerShell** kroki pracy z klastrów systemu Linux albo systemem Windows HDInsight, ale wymaga klienta Windows.
 
-### <a name="ssh"></a>SSH
+### <a name="ssh"></a>Protokół SSH
 
 Aby uzyskać więcej informacji na temat korzystania z protokołu SSH, zobacz [użycia protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -379,7 +379,7 @@ Informacje o błędzie (STDERR) oraz wynik zadania (STDOUT) również są rejest
 
 ## <a name="next"></a>Następne kroki
 
-Jeśli musisz załadować modułów języka Python, które nie są domyślnie dostępne, zobacz [sposób wdrażania modułu w usłudze Azure HDInsight](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx).
+Jeśli musisz załadować modułów języka Python, które nie są domyślnie dostępne, zobacz [sposób wdrażania modułu w usłudze Azure HDInsight](https://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx).
 
 Inne sposoby użycia Pig, Hive i aby dowiedzieć się więcej o korzystaniu z MapReduce, zobacz następujące dokumenty:
 

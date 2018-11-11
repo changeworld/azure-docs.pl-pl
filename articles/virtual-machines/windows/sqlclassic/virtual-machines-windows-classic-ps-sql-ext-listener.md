@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 10b4fec92752e44048454e8b63e90fd9b7fecba0
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 449df8e49eb63cb6e52cd4ec25dafc2bb0851347
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023189"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241774"
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Konfigurowanie odbiornika zewnętrznego dla zawsze włączonych grup dostępności na platformie Azure
 > [!div class="op_single_selector"]
@@ -127,7 +127,7 @@ Aby uzyskać dostęp do odbiornika z spoza sieci wirtualnej, należy używać r�
 
     sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
-W przeciwieństwie do poprzedniego przykładu należy użyć uwierzytelniania SQL, ponieważ obiekt wywołujący nie może używać uwierzytelniania systemu windows za pośrednictwem Internetu. Aby uzyskać więcej informacji, zobacz [zawsze włączonej grupy dostępności na maszynie Wirtualnej platformy Azure: scenariusze łączności klienta](http://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx). Podczas korzystania z uwierzytelniania SQL, upewnij się, że w obu replikach tworzenia tych samych danych logowania. Aby uzyskać więcej informacji na temat rozwiązywania problemów logowania z użyciem grup dostępności, zobacz [sposób mapowania nazwy logowania lub użyj zawartych użytkownika bazy danych SQL, aby nawiązać połączenie z innymi replikami i mapowania baz danych dostępności](http://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
+W przeciwieństwie do poprzedniego przykładu należy użyć uwierzytelniania SQL, ponieważ obiekt wywołujący nie może używać uwierzytelniania systemu windows za pośrednictwem Internetu. Aby uzyskać więcej informacji, zobacz [zawsze włączonej grupy dostępności na maszynie Wirtualnej platformy Azure: scenariusze łączności klienta](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx). Podczas korzystania z uwierzytelniania SQL, upewnij się, że w obu replikach tworzenia tych samych danych logowania. Aby uzyskać więcej informacji na temat rozwiązywania problemów logowania z użyciem grup dostępności, zobacz [sposób mapowania nazwy logowania lub użyj zawartych użytkownika bazy danych SQL, aby nawiązać połączenie z innymi replikami i mapowania baz danych dostępności](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
 
 Jeśli zawsze włączonych replik znajdują się w różnych podsieciach, klienci muszą określić **MultisubnetFailover = True** w parametrach połączenia. Skutkiem próby nawiązania połączenia równoległego do replik w różnych podsieciach. Należy pamiętać, że ten scenariusz obejmuje wdrożenia zawsze włączonej grupy dostępności między regionami.
 

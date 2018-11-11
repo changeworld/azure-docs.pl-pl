@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
-ms.openlocfilehash: 885d867d0733ef923d327d8d6a36fc1588fd4961
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: ec7b956f080837b297bac56e6237ac0672601ce7
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801016"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344488"
 ---
 # <a name="secure-azure-machine-learning-web-services-with-ssl"></a>Zabezpieczania usług sieci web Azure Machine Learning przy użyciu protokołu SSL
 
@@ -53,9 +53,8 @@ Podczas żądania certyfikatu, podaj w pełni kwalifikowana nazwa domeny (FQDN) 
 > [!TIP]
 > Jeśli urząd certyfikacji nie może dostarczyć certyfikat i klucz jako pliki zakodowane w formacie PEM, możesz użyć narzędzia takie jak [OpenSSL](https://www.openssl.org/) zmian w formacie.
 
-> [!IMPORTANT]
-> Certyfikaty z podpisem własnym należy używać tylko w celach deweloperskich. Nie powinny one być używane w środowisku produkcyjnym. Jeśli używasz certyfikatu z podpisem własnym, zobacz [korzystanie z usług sieci web za pomocą certyfikatów z podpisem własnym](#self-signed) sekcji, aby uzyskać szczegółowe instrukcje.
-
+> [!WARNING]
+> Certyfikaty z podpisem własnym należy używać tylko w celach deweloperskich. Nie powinny one być używane w środowisku produkcyjnym. Certyfikaty z podpisem własnym może powodować problemy w swoim kliencie aplikacji. Aby uzyskać więcej informacji zobacz dokumentację bibliotek sieciowych używanych w aplikacji klienckiej.
 
 ## <a name="enable-ssl-and-deploy"></a>Włącz protokół SSL i wdrażanie
 
@@ -119,91 +118,8 @@ Następnie należy zaktualizować serwer DNS, aby wskazać usługę sieci web.
 
   Aktualizowanie systemu DNS, na karcie "Konfiguracja" "Publiczny adres IP" dla klastra AKS, jak pokazano na ilustracji. Możesz znaleźć publiczny adres IP jako jeden z typów zasobów utworzonych w ramach grupy zasobów, która zawiera węzły agenta usługi AKS i innych zasobów sieciowych.
 
-  ![Usługa Azure Machine Learning: Zabezpieczanie usługi sieci web przy użyciu protokołu SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
+  ![Usługa Azure Machine Learning: Zabezpieczanie usługi sieci web przy użyciu protokołu SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)Self-
 
-## <a name="consume-authenticated-services"></a>Używanie usług uwierzytelnionego
+## <a name="next-steps"></a>Kolejne kroki
 
-### <a name="how-to-consume"></a>Jak używać 
-+ **ACI i AKS**: 
-
-  Usługami ACI i AKS usług sieci web Dowiedz się, jak korzystać z usług sieci web w następujących artykułach:
-  + [Jak wdrożyć w usłudze ACI](how-to-deploy-to-aci.md)
-
-  + [Sposób wdrażania usługi AKS](how-to-deploy-to-aks.md)
-
-+ **Aby uzyskać FPGA**:  
-
-  Poniższe przykłady pokazują, jak używać usługi FPGA uwierzytelniony w języku Python i C#.
-  Zastąp `authkey` z kluczem podstawowym lub pomocniczym, który został zwrócony podczas wdrożono usługę.
-
-  Przykład języka Python:
-    ```python
-    from amlrealtimeai import PredictionClient
-    client = PredictionClient(service.ipAddress, service.port, use_ssl=True, access_token="authKey")
-    image_file = R'C:\path_to_file\image.jpg'
-    results = client.score_image(image_file)
-    ```
-
-  Przykład C#:
-    ```csharp
-    var client = new ScoringClient(host, 50051, useSSL, "authKey");
-    float[,] result;
-    using (var content = File.OpenRead(image))
-        {
-            IScoringRequest request = new ImageRequest(content);
-            result = client.Score<float[,]>(request);
-        }
-    ```
-
-### <a name="set-the-authorization-header"></a>Ustaw nagłówek autoryzacji
-Inni klienci gRPC można uwierzytelnić żądania, ustawiając nagłówka autoryzacji. Ogólne podejście jest utworzenie `ChannelCredentials` obiekt, który łączy `SslCredentials` z `CallCredentials`. To jest dodawany do nagłówka autoryzacji żądania. Aby uzyskać więcej informacji dotyczących implementowania pomocy technicznej dla Twojego określonych nagłówków, zobacz [ https://grpc.io/docs/guides/auth.html ](https://grpc.io/docs/guides/auth.html).
-
-W poniższych przykładach pokazano, jak ustawić nagłówek w języku C# i przejdź do sekcji:
-
-+ Używanie języka C#, aby ustawić nagłówek:
-    ```csharp
-    creds = ChannelCredentials.Create(baseCreds, CallCredentials.FromInterceptor(
-                          async (context, metadata) =>
-                          {
-                              metadata.Add(new Metadata.Entry("authorization", "authKey"));
-                              await Task.CompletedTask;
-                          }));
-    
-    ```
-
-+ Korzystanie z języka Go, aby ustawić nagłówek:
-    ```go
-    conn, err := grpc.Dial(serverAddr, 
-        grpc.WithTransportCredentials(credentials.NewClientTLSFromCert(nil, "")),
-        grpc.WithPerRPCCredentials(&authCreds{
-        Key: "authKey"}))
-    
-    type authCreds struct {
-        Key string
-    }
-    
-    func (c *authCreds) GetRequestMetadata(context.Context, uri ...string) (map[string]string, error) {
-        return map[string]string{
-            "authorization": c.Key,
-        }, nil
-    }
-    
-    func (c *authCreds) RequireTransportSecurity() bool {
-        return true
-    }
-    ```
-
-<a id="self-signed"></a>
-
-## <a name="consume-services-with-self-signed-certificates"></a>Korzystanie z usług z certyfikatami z podpisem własnym
-
-Istnieją dwa sposoby, aby umożliwić klientowi uwierzytelniać się na serwerze, zabezpieczonego przy użyciu certyfikatu z podpisem własnym:
-
-* W systemie klienta ustaw `GRPC_DEFAULT_SSL_ROOTS_FILE_PATH` zmiennej środowiskowej, aby wskazać plik certyfikatu w systemie klienta.
-
-* Podczas tworzenia `SslCredentials` obiektów, Przekaż zawartość pliku certyfikatu do konstruktora.
-
-Przy użyciu jednej z metod powoduje, że gRPC użyć certyfikatu jako certyfikatu głównego.
-
-> [!IMPORTANT]
-> gRPC Akceptuj niezaufane certyfikaty. Za pomocą niezaufanego certyfikatu zakończy się niepowodzeniem z `Unavailable` kod stanu. Szczegóły dotyczące błędu zawierają `Connection Failed`.
+Dowiedz się, jak [zużywania modelu uczenia Maszynowego wdrożyć jako usługę sieci web](how-to-consume-web-service.md).

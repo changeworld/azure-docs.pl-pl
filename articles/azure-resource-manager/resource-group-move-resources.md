@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: e99d5d36fa46e9972e706d580e4dfb1d5f9e8bbc
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: c65f5364ccd4943d1d3e703ed27099408d3a2a27
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093833"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346596"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -28,11 +28,10 @@ Podczas przenoszenia zasobów, zarówno grupy źródłowej i docelowej grupy są
 Nie można zmienić lokalizacji zasobu. Przenoszenie zasobu tylko przenosi je do nowej grupy zasobów. Nowa grupa zasobów może mieć inną lokalizację, ale to nie ulega zmianie lokalizacji zasobu.
 
 > [!NOTE]
-> W tym artykule opisano sposób przenoszenia zasobów na platformie Azure istniejących kont oferty. Jeśli rzeczywiście chcesz zmienić oferty (na przykład uaktualnianie z bezpłatnej, do płatności) konto platformy Azure, musisz przekonwertować subskrypcję. 
+> W tym artykule opisano sposób przenoszenia zasobów na platformie Azure istniejących kont oferty. Jeśli rzeczywiście chcesz zmienić oferty (na przykład uaktualnianie z bezpłatnej, do płatności) konto platformy Azure, musisz przekonwertować subskrypcję.
 > * Aby uaktualnić z bezpłatnej wersji próbnej, zobacz [Zmień poziom subskrypcji bezpłatnej wersji próbnej lub programu Microsoft Imagine platformy Azure rozliczana według bieżącego użycia](..//billing/billing-upgrade-azure-subscription.md).
 > * Aby zmienić konto zgodnie z rzeczywistym użyciem, zobacz [zmienić subskrypcję platformy Azure rozliczana według bieżącego użycia do innej oferty](../billing/billing-how-to-switch-azure-offer.md).
 > * Jeśli nie można przekonwertować subskrypcję, [utworzyć żądanie pomocy technicznej platformy Azure](../azure-supportability/how-to-create-azure-support-request.md). Wybierz **zarządzania subskrypcjami** jako typ problemu.
->
 
 ## <a name="checklist-before-moving-resources"></a>Listę kontrolną przed przenoszeniem zasobów
 
@@ -42,7 +41,7 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych kroków. Dzięki spr
 
   Dla programu Azure PowerShell użyj polecenia:
 
-  ```powershell
+  ```azurepowershell-interactive
   (Get-AzureRmSubscription -SubscriptionName <your-source-subscription>).TenantId
   (Get-AzureRmSubscription -SubscriptionName <your-destination-subscription>).TenantId
   ```
@@ -63,14 +62,14 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych kroków. Dzięki spr
 
   W przypadku programu PowerShell Użyj następujących poleceń, można pobrać stanu rejestracji:
 
-  ```powershell
+  ```azurepowershell-interactive
   Set-AzureRmContext -Subscription <destination-subscription-name-or-id>
   Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
   ```
 
   Aby zarejestrować dostawcę zasobów, należy użyć:
 
-  ```powershell
+  ```azurepowershell-interactive
   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
   ```
 
@@ -112,7 +111,7 @@ Skontaktuj się z pomocą [obsługuje](https://portal.azure.com/#blade/Microsoft
 
 ## <a name="validate-move"></a>Waliduj przeniesienie
 
-[Zweryfikować operacji przeniesienia](/rest/api/resources/resources/resources_validatemoveresources) umożliwia testowanie scenariusza przenoszenia bez faktycznego przenoszenia zasobów. Ta operacja umożliwia określenie, przeniesienie, zostanie wykonane pomyślnie. Aby wykonać tę operację, musisz mieć:
+[Zweryfikować operacji przeniesienia](/rest/api/resources/resources/validatemoveresources) umożliwia testowanie scenariusza przenoszenia bez faktycznego przenoszenia zasobów. Ta operacja umożliwia określenie, przeniesienie, zostanie wykonane pomyślnie. Aby wykonać tę operację, musisz mieć:
 
 * Nazwa źródłowa grupa zasobów
 * Identyfikator zasobu docelowa grupa zasobów
@@ -325,7 +324,6 @@ Ograniczenia, które nie są jeszcze obsługiwane są następujące:
 * Nie można przenieść Virtual Machine Scale Sets przy użyciu standardowych jednostek SKU modułu równoważenia obciążenia lub standardowego publicznego adresu IP jednostki SKU
 * Utworzona na podstawie zasobów w portalu Marketplace z planami dołączone maszyny wirtualne nie można przenosić między grupami zasobów lub subskrypcji. Anulowanie aprowizacji maszyny wirtualnej w bieżącej subskrypcji i Wdróż ponownie w nowej subskrypcji.
 
-
 ## <a name="virtual-networks-limitations"></a>Wirtualne sieci ograniczenia
 
 Podczas przenoszenia sieci wirtualnej, możesz również przenieść jego zasobów zależnych. Dla bramy sieci VPN należy przenieść adresy IP, bramy sieci wirtualnej i wszystkie zasoby skojarzone z nimi połączenie. Bramy sieci lokalnej może znajdować się w innej grupie zasobów.
@@ -346,9 +344,9 @@ Podczas przenoszenia aplikacji sieci Web _w ramach tej samej subskrypcji_, nie m
 
 Jeśli chcesz przenieść certyfikatu SSL z aplikacją sieci Web, wykonaj następujące czynności:
 
-1.  Usuń przekazany certyfikat z aplikacji sieci Web.
-2.  Przenoszenie aplikacji sieci Web.
-3.  Przekaż certyfikat do przeniesionych aplikacji sieci Web.
+1. Usuń przekazany certyfikat z aplikacji sieci Web.
+2. Przenoszenie aplikacji sieci Web.
+3. Przekaż certyfikat do przeniesionych aplikacji sieci Web.
 
 ### <a name="moving-across-subscriptions"></a>Przenoszenie między subskrypcjami
 
@@ -503,7 +501,7 @@ Po ukończeniu, otrzymasz powiadomienie o wyniku.
 
 Aby przenieść istniejące zasoby do innej grupy zasobów lub subskrypcji, użyj [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) polecenia. Poniższy przykład pokazuje, jak przenieść wiele zasobów do nowej grupy zasobów.
 
-```powershell
+```azurepowershell-interactive
 $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
 $plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
 Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId

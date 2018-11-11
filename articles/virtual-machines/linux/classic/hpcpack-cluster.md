@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-ms.openlocfilehash: 2d4091d8ad6a778405ee6bb916c399e0b144f21d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4156071c36b06be586b05ee98e9eeb0a9138e4bb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441531"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246861"
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Rozpoczynanie pracy z węzłami obliczeniowymi systemu Linux w klastrze pakietu HPC Pack na platformie Azure
 Konfigurowanie [pakietu Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) klastra na platformie Azure, zawierający głównego węzła z systemem Windows Server i kilka obliczeń węzłów z systemem obsługiwanych dystrybucji systemu Linux. Poznaj opcje przenoszenia danych między węzłami systemu Linux i Windows węzłem klastra. Dowiedz się, jak przesyłanie zadań HPC systemu Linux w klastrze.
@@ -186,7 +186,7 @@ Masz kilka opcji, aby przenosić dane między węzłami systemu Linux i Windows 
 ### <a name="azure-file-storage"></a>Usługa Azure File storage
 [Plików platformy Azure](https://azure.microsoft.com/services/storage/files/) service udostępnia udziały plików, przy użyciu standardowego protokołu SMB 2.1. Maszyny wirtualne platformy Azure i usług w chmurze mogą udostępniać dane między składnikami aplikacji za pośrednictwem zainstalowanych udziałów i lokalnych aplikacje mają dostęp do danych plików w udziale za pośrednictwem interfejsu API usługi File storage. 
 
-Aby uzyskać szczegółowy opis kroków utworzyć udział plików platformy Azure i zainstalować go w węźle głównym, zobacz [Rozpoczynanie pracy z usługą Azure File storage w Windows](../../../storage/files/storage-how-to-use-files-windows.md). Aby zainstalować udział plików platformy Azure w węzłach systemu Linux, zobacz [jak używać usługi Azure File storage z systemem Linux](../../../storage/files/storage-how-to-use-files-linux.md). Aby skonfigurować utrwalanie połączeń, zobacz [Persisting połączenia do plików pakietu Microsoft Azure](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx).
+Aby uzyskać szczegółowy opis kroków utworzyć udział plików platformy Azure i zainstalować go w węźle głównym, zobacz [Rozpoczynanie pracy z usługą Azure File storage w Windows](../../../storage/files/storage-how-to-use-files-windows.md). Aby zainstalować udział plików platformy Azure w węzłach systemu Linux, zobacz [jak używać usługi Azure File storage z systemem Linux](../../../storage/files/storage-how-to-use-files-linux.md). Aby skonfigurować utrwalanie połączeń, zobacz [Persisting połączenia do plików pakietu Microsoft Azure](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx).
 
 W poniższym przykładzie należy utworzyć udział plików platformy Azure na koncie magazynu. Aby zainstalować udział w węźle głównym, otwórz wiersz polecenia i wprowadź następujące polecenia:
 
@@ -271,7 +271,7 @@ Istnieje kilka sposobów, aby przesłać zadania do klastra pakietu HPC Pack:
 
 Przesyłanie zadań w klastrze na platformie Azure za pomocą narzędzia z graficznym interfejsem użytkownika HPC Pack oraz portalu internetowego HPC są takie same jak dla Windows węzłów obliczeniowych. Zobacz [Menedżer zadania pakietu HPC Pack](https://technet.microsoft.com/library/ff919691.aspx) i [jak przesyłanie zadań z komputera klienckiego w środowisku lokalnym](../../windows/hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Aby przesyłać zadania za pomocą interfejsu API REST, zobacz [tworzenie i przesyłanie zadań za pomocą interfejsu API REST w Microsoft HPC Pack](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx). Przesyłanie zadań z klientów systemu Linux, również znaleźć przykład języka Python w [zestawu SDK pakietu HPC Pack](https://www.microsoft.com/download/details.aspx?id=47756).
+Aby przesyłać zadania za pomocą interfejsu API REST, zobacz [tworzenie i przesyłanie zadań za pomocą interfejsu API REST w Microsoft HPC Pack](https://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx). Przesyłanie zadań z klientów systemu Linux, również znaleźć przykład języka Python w [zestawu SDK pakietu HPC Pack](https://www.microsoft.com/download/details.aspx?id=47756).
 
 ## <a name="clusrun-for-linux-nodes"></a>Clusrun w przypadku węzłów systemu Linux
 Pakiet HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) narzędzie może służyć do wykonywania poleceń w węzłach systemu Linux przy użyciu wiersza polecenia lub Menedżer klastra HPC. Poniżej przedstawiono niektóre podstawowe przykłady.

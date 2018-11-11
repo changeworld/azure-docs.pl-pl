@@ -3,17 +3,17 @@ title: Tworzenie zadań przesyłania strumieniowego platformy Spark z dokładnie
 description: Jak skonfigurować przesyłania strumieniowego platformy Spark do przetwarzania zdarzeń, jeden raz i tylko jeden raz.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/26/2018
-ms.openlocfilehash: ae170e90cede26bd6a43fcc10b93fcd7490d838f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.date: 11/06/2018
+ms.openlocfilehash: 6c39eb02e9610e0020ab2abe8a192dabf0b768d9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618825"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241322"
 ---
 # <a name="create-spark-streaming-jobs-with-exactly-once-event-processing"></a>Tworzenie zadań przesyłania strumieniowego platformy Spark z dokładnie — raz zdarzenia przetwarzania
 
@@ -61,13 +61,21 @@ Punkty kontrolne są włączone w przesyłania strumieniowego platformy Spark w 
 
 1. W obiekcie StreamingContext należy skonfigurować ścieżkę magazynu na ich złączenie:
 
-    sterujący Val = nowe StreamingContext (spark, Seconds(1)) ssc.checkpoint("/path/to/checkpoints")
+    ```Scala
+    val ssc = new StreamingContext(spark, Seconds(1))
+    ssc.checkpoint("/path/to/checkpoints")
+    ```
 
     HDInsight należy zapisać te punkty kontrolne do domyślnego magazynu dołączone do klastra, usługa Azure Storage lub Azure Data Lake Store.
 
 2. Następnie określ interwał punktu kontrolnego (w sekundach) na DStream. Po każdym odstępie dane o stanie pochodną dane wejściowe zdarzenia są utrwalane w magazynie. Dane stanu utrwalonego może zmniejszyć obliczeń potrzebne podczas odbudowywania stanu ze źródła zdarzenia.
 
-    Wiersze Val = ssc.socketTextStream ("Nazwa hosta", 9999) lines.checkpoint(30) ssc.start() ssc.awaitTermination()
+    ```Scala
+    val lines = ssc.socketTextStream("hostname", 9999)
+    lines.checkpoint(30)
+    ssc.start()
+    ssc.awaitTermination()
+    ```
 
 ### <a name="use-idempotent-sinks"></a>Użyj ujścia idempotentne
 

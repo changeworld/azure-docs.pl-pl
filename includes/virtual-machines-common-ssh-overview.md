@@ -5,15 +5,15 @@ services: virtual-machines-linux
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 04/16/2018
+ms.date: 11/08/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 0363b719e2587226282257e19e58e3c4e55c2219
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: cff3d7bfb89d5b03f986da32edc148efcfb7e7bd
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47454539"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51506375"
 ---
 ## <a name="overview-of-ssh-and-keys"></a>Omówienie protokołu SSH i klucze
 
@@ -21,7 +21,7 @@ Protokół SSH jest protokołem szyfrowanego połączenia, który umożliwia bez
 
 * *Klucza publicznego* znajduje się na maszynie Wirtualnej systemu Linux lub dowolnej innej usługi, którego chcesz użyć z kryptografii klucza publicznego.
 
-* *Klucza prywatnego* jest przedstawiany do maszyny Wirtualnej systemu Linux po wprowadzeniu połączenie SSH, aby zweryfikować swoją tożsamość. Klucz prywatny należy chronić. Nie należy go udostępniać.
+* *Klucza prywatnego* na możesz system lokalny jest używany przez klienta SSH do zweryfikowania Twojej tożsamości podczas nawiązywania połączenia z maszyną Wirtualną systemu Linux. Klucz prywatny należy chronić. Nie należy go udostępniać.
 
 W zależności od zasad zabezpieczeń organizacji można ponownie użyć pojedynczego pary kluczy publiczny prywatny dostęp do wielu maszyn wirtualnych platformy Azure i usług. Nie potrzebujesz oddzielnych pary kluczy dla każdej maszyny Wirtualnej lub usługi, które chcesz uzyskać dostęp. 
 

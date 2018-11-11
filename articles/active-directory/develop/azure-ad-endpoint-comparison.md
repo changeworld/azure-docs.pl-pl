@@ -17,12 +17,12 @@ ms.date: 09/27/2018
 ms.author: andret
 ms.reviewer: hirsin, andret
 ms.custom: aaddev
-ms.openlocfilehash: e393851535c36eb604d57cc4d7c7561a3ebb201b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 215e0abe196620624dcca7f430aec4ee9b9612f2
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955449"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288207"
 ---
 # <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Porównywanie punktu końcowego v2.0 usługi Azure AD przy użyciu punktu końcowego w wersji 1.0
 
@@ -41,7 +41,7 @@ Podczas tworzenia nowej aplikacji, należy znać różnice między punktami koń
 
 * Punkty końcowe w wersji 1.0 i 2.0 także zaakceptować logowania z *[użytkowników-gości](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* katalogu usługi Azure AD dla aplikacji skonfigurowanych jako *[pojedynczej dzierżawy](single-and-multi-tenant-apps.md)* lub *wielodostępnych* aplikacji skonfigurowanych do punktu z punktem końcowym specyficznym dla dzierżawy (`https://login.microsoftonline.com/{TenantId_or_Name}`).
 
-Punktu końcowego v2.0 umożliwia pisanie aplikacji, które akceptują Zaloguj się za pomocą zarówno osobistych i kont służbowych, co daje możliwość pisania całkowicie konta niezależny od aplikacji. Na przykład jeśli aplikacja odwołuje się [programu Microsoft Graph](https://graph.microsoft.io), niektóre dodatkowe funkcje i dane będą dostępne dla konta, takie jak ich witryny programu SharePoint lub dane katalogu. Jednak wiele akcji takich jak [czytanie poczty użytkownika](https://graph.microsoft.io/docs/api-reference/v1.0/resources/message), ten sam kod mogą uzyskiwać dostęp do poczty e-mail dla zarówno osobistych i kont służbowych.
+Punktu końcowego v2.0 umożliwia pisanie aplikacji, które akceptują Zaloguj się za pomocą zarówno osobistych i kont służbowych, co daje możliwość pisania całkowicie konta niezależny od aplikacji. Na przykład jeśli aplikacja odwołuje się [programu Microsoft Graph](https://developer.microsoft.com/graph), niektóre dodatkowe funkcje i dane będą dostępne dla konta, takie jak ich witryny programu SharePoint lub dane katalogu. Jednak wiele akcji takich jak [czytanie poczty użytkownika](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/message), ten sam kod mogą uzyskiwać dostęp do poczty e-mail dla zarówno osobistych i kont służbowych.
 
 Dla punktu końcowego v2.0 można użyć pojedynczego library (MSAL) do uzyskania dostępu do konsumenta, edukacyjnych i rozwiązań enterprise.
 

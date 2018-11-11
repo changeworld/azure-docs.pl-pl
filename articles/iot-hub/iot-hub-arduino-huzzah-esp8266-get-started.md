@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: ea7754c9bf755a5fc00823629df17317be0f8901
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e49a3063d6314947c59c5ae863077748d997f2b5
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343682"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515475"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Zestaw Adafruit Feather HUZZAH ESP8266 nawiązać połączenie z usługi Azure IoT Hub w chmurze
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-![Połączenie między DHT22 Feather HUZZAH ESP8266 i Centrum IoT Hub](media/iot-hub-arduino-huzzah-esp8266-get-started/1_connection-hdt22-feather-huzzah-iot-hub.png)
+![Połączenie między DHT22 Feather HUZZAH ESP8266 i Centrum IoT Hub](./media/iot-hub-arduino-huzzah-esp8266-get-started/1_connection-hdt22-feather-huzzah-iot-hub.png)
 
 ## <a name="what-you-do"></a>Co należy zrobić
 
@@ -38,7 +38,7 @@ Zestaw Adafruit Feather HUZZAH ESP8266 nawiązać połączenia usługi IoT hub, 
 
 ## <a name="what-you-need"></a>Co jest potrzebne
 
-![Elementy wymagane dla tego samouczka](media/iot-hub-arduino-huzzah-esp8266-get-started/2_parts-needed-for-the-tutorial.png)
+![Elementy wymagane dla tego samouczka](./media/iot-hub-arduino-huzzah-esp8266-get-started/2_parts-needed-for-the-tutorial.png)
 
 Aby ukończyć tę operację, potrzebne są następujące elementy w zestawie Starter Feather HUZZAH ESP8266:
 
@@ -62,7 +62,17 @@ Następujące elementy są opcjonalne, w przypadku, gdy nie ma czujnika. Istniej
 * Breadboard
 * Przewodów jumper M/M
 
-[!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
+
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+### <a name="retrieve-connection-string-for-iot-hub"></a>Pobieranie parametrów połączenia dla Centrum IoT hub
+
+[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>Rejestrowanie nowego urządzenia w usłudze IoT hub
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="connect-feather-huzzah-esp8266-with-the-sensor-and-your-computer"></a>Łączenie Feather HUZZAH ESP8266 z czujnikiem i komputera
 
@@ -72,7 +82,7 @@ W tej sekcji możesz nawiązać czujników tablicy. Następnie możesz podłącz
 
 Użyj przewodów breadboard i jumper, aby nawiązać połączenie w następujący sposób. Jeśli nie masz czujnik, Pomiń tę sekcję, ponieważ zamiast tego użyj danych z symulowanych czujników.
 
-![Odwołanie połączenia](media/iot-hub-arduino-huzzah-esp8266-get-started/17_connections_on_breadboard.png)
+![Odwołanie połączenia](./media/iot-hub-arduino-huzzah-esp8266-get-started/17_connections_on_breadboard.png)
 
 Czujnik numery PIN można użyć następujących połączeń:
 

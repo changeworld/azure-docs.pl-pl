@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dastanfo
 ms.custom: mvc
-ms.openlocfilehash: 36d65abb26435581f3e6c9c4a9fc46bb3dd538ce
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: b740aa205982bc0c1104b59e3ea89e2d5980d461
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39362784"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240345"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Samouczek: instalowanie i tworzenie klastra usługi Service Fabric
 
@@ -37,7 +37,7 @@ Część druga serii zawiera informacje na temat wykonywania następujących czy
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>Pobieranie pakietu usługi Service Fabric dla systemu Windows Server
 
-Usługa Service Fabric udostępnia pakiet instalacyjny służący do tworzenia autonomicznych klastrów usługi Service Fabric.  [Pobierz pakiet instalacyjny](http://go.microsoft.com/fwlink/?LinkId=730690) na komputer lokalny.  Po pomyślnym pobraniu pakietu skopiuj go za pośrednictwem połączenia protokołu RDP do wystąpienia usługi EC2 i wklej go na Pulpicie.
+Usługa Service Fabric udostępnia pakiet instalacyjny służący do tworzenia autonomicznych klastrów usługi Service Fabric.  [Pobierz pakiet instalacyjny](https://go.microsoft.com/fwlink/?LinkId=730690) na komputer lokalny.  Po pomyślnym pobraniu pakietu skopiuj go za pośrednictwem połączenia protokołu RDP do wystąpienia usługi EC2 i wklej go na Pulpicie.
 
 Zaznacz plik zip, otwórz menu kontekstowe i wybierz kolejno pozycje **Wyodrębnij wszystko** > **Wyodrębnij**.  Podczas wyodrębniania plików na pulpicie zostanie wygenerowany folder o takiej samej nazwie, jaką miał plik zip.
 

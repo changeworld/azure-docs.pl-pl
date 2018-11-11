@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
-ms.date: 09/24/2018
-ms.openlocfilehash: 45aa954d2f85267b2c7c9aa2a7ba04e436765433
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
-ms.translationtype: MT
+ms.date: 11/07/2018
+ms.openlocfilehash: 212488b74ba726012966787c7b2de633414e96a4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023932"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245345"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>Potoki i usługi Azure Machine Learning
 
@@ -22,11 +22,11 @@ Ten artykuł zawiera informacje na temat potoków, które można tworzyć z zest
 
 ## <a name="what-are-machine-learning-pipelines"></a>Co to są potokach uczenia maszynowego?
 
-Machine learning (ML) potoki są używane przez analityków danych kompilacji, optymalizowanie i zarządzanie ich usługi machine learning przepływów pracy. Typowe potoku obejmuje sekwencję czynności, które obejmują następujące obszary:
-
+Za pomocą machine learning (ML) potoki, analitykami danych, inżynierami danych i informatycy mogą współpracować przy etapy:
 + Przygotowywanie danych, takich jak normalizations i przekształcenia
-+ Szkolenie modeli, takich jak szczegółowego dostosowywania parametrów hyper i weryfikacja
-+ Wdrożenie modelu i ocena  
++ Szkolenie modelu
++ Ocena modelu
++ Wdrożenie 
 
 Na poniższym diagramie przedstawiono przykład potoku:
 
@@ -38,7 +38,7 @@ Na poniższym diagramie przedstawiono przykład potoku:
 
 W przypadku potoków można zoptymalizować przepływ pracy prostotę, szybkość, przenoszenia i ponownego użycia. Podczas kompilowania potoków przy użyciu usługi Azure Machine Learning, można skoncentrować się na najlepiej znasz &mdash; uczenia maszynowego &mdash; zamiast infrastruktury.
 
-Przy użyciu etapy umożliwia ponowne uruchamianie tylko kroki, których potrzebujesz, jak dostosować i testowanie aplikacji logiki. Krok jest jednostki obliczeniowej w potoku. Jak pokazano na powyższym diagramie, zadanie przygotowania danych może obejmować wiele kroków w tym, ale nie są ograniczone do normalizacji, przekształcania, weryfikacji i cechowania.
+Przy użyciu etapy umożliwia ponowne uruchamianie tylko kroki, których potrzebujesz, jak dostosować i testowanie aplikacji logiki. Krok jest jednostki obliczeniowej w potoku. Jak pokazano na powyższym diagramie, zadanie przygotowania danych może obejmować wiele kroków w tym, ale nie są ograniczone do normalizacji, przekształcania, weryfikacji i cechowania. Źródła danych i danych pośrednich są ponownie używane w potoku, w którym zapisywane obliczenia czasu i zasobów. 
 
 Gdy potok został zaprojektowany, jest często więcej dostrajanie wokół pętli szkolenia potoku. Kiedy ponowne uruchomienie potoku wykonywania przechodzi do czynności, które konieczne będzie ponowne uruchomienie, takich jak skrypt szkolenia zaktualizowane i pomija, co się nie zmienił. Tym samym modelu dotyczy niezmienione skrypty używane do wykonywania tego kroku. 
 
@@ -59,7 +59,7 @@ Kluczowe zalety tworzenie potoków przepływów pracy uczenia maszynowego jest:
 
 Za pomocą języka Python do tworzenia potoków uczenia Maszynowego. Zestaw SDK usługi Azure Machine Learning oferuje imperatywne konstrukcje sekwencyjne i przekształcają kroki potoków, gdy obecny jest niezależne danych. Można korzystać z niego w aplikacji Jupyter notebooks lub w innym preferowanego środowiska IDE. 
 
-Dane deklaratywne zależności można zoptymalizować swoje zadania. Zestaw SDK zawiera framework wstępnie skompilowanych modułów dla typowych zadań, takich jak dane transferu, obliczenia tworzenia docelowego i modelu publikowania. Struktura można rozszerzyć do modelowania własnych Konwencji odpowiadającym poprzez implementację niestandardowej czynności, które są wielokrotnego użytku w potokach.
+Dane deklaratywne zależności można zoptymalizować swoje zadania. Zestaw SDK zawiera strukturę wstępnie skompilowanych modułów dla typowych zadań, takich jak transfer danych i publikowanie modelu. Struktura można rozszerzyć do modelowania własnych Konwencji odpowiadającym poprzez implementację niestandardowej czynności, które są wielokrotnego użytku w potokach. Obliczeniowych elementów docelowych i zasobów magazynu mogą być także zarządzane bezpośrednio z zestawu SDK.
 
 Potoki mogą być zapisywane jako szablony i którą można wdrożyć do punktu końcowego REST, dzięki czemu można zaplanować zadania wsadowe ocenianie przez lub ponownego trenowania.
 

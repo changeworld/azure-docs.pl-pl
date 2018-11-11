@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 25d13ba53eb5a8b411a557b5eaf05d278faa3733
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 3b979a9a7e93992ba593697fa9465fdadc1e58b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869316"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240396"
 ---
 # <a name="replication-with-sql-database-managed-instance"></a>Wystąpienie zarządzane w replikacji z bazy danych SQL
 
@@ -77,7 +77,7 @@ Obsługuje:
 ## <a name="configure-publishing-and-distribution-example"></a>Skonfiguruj publikowanie i dystrybucję przykład
 
 1. [Tworzenie wystąpienia usługi Azure SQL Database Managed](sql-database-managed-instance-create-tutorial-portal.md) w portalu.
-2. [Tworzenie konta usługi Azure Storage](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) dla katalogu roboczego.
+2. [Tworzenie konta usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) dla katalogu roboczego.
 
    Pamiętaj skopiować kluczy magazynu. Zobacz [wyświetlanie i kopiowanie kluczy dostępu do magazynu](../storage/common/storage-account-manage.md#access-keys
 ).
@@ -85,11 +85,11 @@ Obsługuje:
 
    W poniższych skryptów przykładzie Zastąp `<Publishing_DB>` o nazwie tej bazy danych.
 
-4. Utwórz użytkownika bazy danych przy użyciu uwierzytelniania SQL dystrybutora. Zobacz, [tworzenie użytkowników bazy danych](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Użyj bezpiecznego hasła.
+4. Utwórz użytkownika bazy danych przy użyciu uwierzytelniania SQL dystrybutora. Zobacz, [tworzenie użytkowników bazy danych](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Użyj bezpiecznego hasła.
 
    W poniższych skryptów przykład `<SQL_USER>` i `<PASSWORD>` przy użyciu tego konta serwera SQL bazy danych użytkownika i hasło.
 
-5. [Nawiąż połączenie z wystąpieniem zarządzanym bazy danych SQL](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms).
+5. [Nawiąż połączenie z wystąpieniem zarządzanym bazy danych SQL](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms).
 
 6. Uruchom następujące zapytanie, aby dodać dystrybutora i bazy danych dystrybucji.
 
@@ -197,4 +197,4 @@ Następujące funkcje nie są obsługiwane:
 
 ## <a name="see-also"></a>Zobacz też
 
-- [Co to jest wystąpienie zarządzane?](http://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)
+- [Co to jest wystąpienie zarządzane?](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)

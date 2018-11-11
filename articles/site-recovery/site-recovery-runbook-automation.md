@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: 5da623d07c34114d82c2b818a7c06420ffb9c886
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1853d8d23aeb96cda3148c6c9e7668b9c2c28924
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211115"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244019"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Dodawanie elementów runbook usługi Azure Automation do planów odzyskiwania
 W tym artykule opisano jak Azure Site Recovery integruje się z usługą Azure Automation do zwiększenia planów odzyskiwania. Plany odzyskiwania można organizować odzyskiwania maszyn wirtualnych, które są chronione przy użyciu usługi Site Recovery. Plany odzyskiwania działa zarówno na replikację do dodatkowej chmury i replikacji do platformy Azure. Plany odzyskiwania również sprawić, odzyskiwanie **spójnie dokładne**, **powtarzalne**, i **automatycznych**. W przypadku przejścia w tryb failover maszyn wirtualnych na platformie Azure, integracji z usługą Azure Automation rozszerza planów odzyskiwania. Służy do wykonywania elementów runbook, które oferują zaawansowanej automatyzacji zadań.
@@ -252,8 +252,8 @@ Inny przykład zobacz poniższy klip wideo. Pokazuje sposób odzyskiwania dwuwar
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 * [Usługa Uruchom jako konto usługi Azure Automation](../automation/automation-create-runas-account.md)
-* [Omówienie usługi Azure Automation](http://msdn.microsoft.com/library/azure/dn643629.aspx "usługi Azure Automation — omówienie")
-* [Usługa Azure Automation przykładowe skrypty](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "usługi Azure Automation przykładowe skrypty")
+* [Omówienie usługi Azure Automation](https://msdn.microsoft.com/library/azure/dn643629.aspx "usługi Azure Automation — omówienie")
+* [Usługa Azure Automation przykładowe skrypty](https://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "usługi Azure Automation przykładowe skrypty")
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Dowiedz się więcej](site-recovery-failover.md) o uruchamianiu przejścia w tryb failover.

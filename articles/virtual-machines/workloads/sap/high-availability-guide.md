@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b2f6df1e5688bf9bc47056c7b05cf6ac16026c6
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: c6dddbdbc781869ef6a3c1a0a707eeb83941b92a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634867"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239325"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure
 
@@ -504,7 +504,7 @@ W usłudze Azure Resource Manager, nie trzeba grupę zasobów platformy Azure pr
 
 W usłudze Azure Resource Manager można zainstalować wiele systemu identyfikator (SID) ASCS/SCS wystąpieniami platformy SAP w jednym klastrze. — Wiele identyfikatorów SID jest możliwe dzięki obsłudze wielu adresów IP dla każdej platformy Azure wewnętrznego modułu równoważenia obciążenia.
 
-Aby użyć modelu klasycznym wdrożeniu platformy Azure, wykonaj procedury opisane w temacie [oprogramowanie SAP NetWeaver na platformie Azure: wystąpień klastrowania SAP ASCS/SCS przy użyciu systemu Windows Server Failover Clustering na platformie Azure przy użyciu oprogramowanie SIOS DataKeeper](http://go.microsoft.com/fwlink/?LinkId=613056).
+Aby użyć modelu klasycznym wdrożeniu platformy Azure, wykonaj procedury opisane w temacie [oprogramowanie SAP NetWeaver na platformie Azure: wystąpień klastrowania SAP ASCS/SCS przy użyciu systemu Windows Server Failover Clustering na platformie Azure przy użyciu oprogramowanie SIOS DataKeeper](https://go.microsoft.com/fwlink/?LinkId=613056).
 
 > [!IMPORTANT]
 > Zdecydowanie zalecamy użycie modelu wdrażania usługi Azure Resource Manager dla instalacji SAP. Oferuje wiele korzyści, które nie są dostępne w klasycznym modelu wdrażania. Dowiedz się więcej o usłudze Azure [modeli wdrażania][virtual-machines-azure-resource-manager-architecture-benefits-arm].   

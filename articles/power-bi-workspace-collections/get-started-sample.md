@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: cd7da8d2bbd684df29432bb924bdae3cd9ac7e64
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a2e1604a51b8343d926dda3b258d38b19266deeb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044441"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246688"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Rozpoczęcie pracy z przykładem kolekcji obszarów roboczych usługi Power BI
 
@@ -26,9 +26,9 @@ Za pomocą **kolekcji obszarów roboczych pakietu Microsoft Power BI**, można z
 
 Zanim przejdziemy dalej, na którym chcesz zapisać następujące zasoby: one pomóc Ci przy integrowanie raportów usługi Power BI przykładową aplikację i własne aplikacje za.
 
-* [Przykładowa aplikacja internetowa obszaru roboczego](http://go.microsoft.com/fwlink/?LinkId=761493)
+* [Przykładowa aplikacja internetowa obszaru roboczego](https://go.microsoft.com/fwlink/?LinkId=761493)
 * [Dokumentacja usługi Power BI obszar roboczy kolekcji z interfejsu API](https://msdn.microsoft.com/library/azure/mt711507.aspx)
-* [Usługa Power BI .NET SDK ](http://go.microsoft.com/fwlink/?LinkId=746472) (dostępne za pośrednictwem NuGet)
+* [Usługa Power BI .NET SDK ](https://go.microsoft.com/fwlink/?LinkId=746472) (dostępne za pośrednictwem NuGet)
 * [Przykład osadzania przy użyciu języka JavaScript raport](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
 > [!NOTE]
@@ -38,7 +38,7 @@ Zanim przejdziemy dalej, na którym chcesz zapisać następujące zasoby: one po
 
 Przejdźmy teraz przez proces konfigurowania środowiska deweloperskiego Visual Studio, dostęp do składników potrzebnych do uruchomienia aplikacji przykładowej.
 
-1. Pobierz i Rozpakuj [kolekcji obszarów roboczych usługi Power BI — integrowanie raportu w aplikacji sieci web](http://go.microsoft.com/fwlink/?LinkId=761493) próbki w witrynie GitHub.
+1. Pobierz i Rozpakuj [kolekcji obszarów roboczych usługi Power BI — integrowanie raportu w aplikacji sieci web](https://go.microsoft.com/fwlink/?LinkId=761493) próbki w witrynie GitHub.
 2. Otwórz **embedded.sln usługi Power BI** w programie Visual Studio. Może być konieczne wykonanie **pakiet aktualizacji** polecenia w konsoli Menedżera pakietów NuGet, aby można było zaktualizować pakiety wykorzystanych w tym rozwiązaniu.
 3. Skompiluj rozwiązanie.
 4. Uruchom **ProvisionSample** aplikację konsoli. Przykładowa aplikacja konsoli możesz aprowizować obszaru roboczego i importowanie pliku PBIX.
@@ -51,7 +51,7 @@ Przejdźmy teraz przez proces konfigurowania środowiska deweloperskiego Visual 
 8. Skopiuj i Zapisz nowo utworzony **identyfikator obszaru roboczego** w dalszej części tego artykułu. Po **identyfikator obszaru roboczego** jest utworzone, możesz go znaleźć **witryny Azure portal**.
 
     ![Identyfikator obszaru roboczego w witrynie Azure portal](media/get-started-sample/workspace-id.png)
-9. Aby zaimportować plik PBIX do usługi **obszaru roboczego**, wybierz opcję **6. Importowanie pliku PBIX pulpitu do istniejącego obszaru roboczego**. Jeśli nie masz PBIX z pliku pod ręką, możesz pobrać [przykładem analizy sprzedaży PBIX](http://go.microsoft.com/fwlink/?LinkID=780547).
+9. Aby zaimportować plik PBIX do usługi **obszaru roboczego**, wybierz opcję **6. Importowanie pliku PBIX pulpitu do istniejącego obszaru roboczego**. Jeśli nie masz PBIX z pliku pod ręką, możesz pobrać [przykładem analizy sprzedaży PBIX](https://go.microsoft.com/fwlink/?LinkID=780547).
 10. Jeśli zostanie wyświetlony monit, wprowadź przyjazną nazwę dla Twojej **zestawu danych**.
 
 Powinny pojawić się odpowiedź podobna:
@@ -83,7 +83,7 @@ Przykład aplikacji sieci web jest przykładowej aplikacji, która renderuje rap
     ```
 3. Uruchom **EmbedSample** aplikacji sieci web.
 
-Po uruchomieniu **EmbedSample** aplikacji sieci web powinien zawierać w lewym panelu nawigacyjnym **raporty** menu. Aby wyświetlić raport zaimportowany, rozwiń węzeł **raporty**i kliknij raport. Jeśli został zaimportowany [przykładem analizy sprzedaży PBIX](http://go.microsoft.com/fwlink/?LinkID=780547), przykładową aplikację sieci web będzie wyglądać następująco:
+Po uruchomieniu **EmbedSample** aplikacji sieci web powinien zawierać w lewym panelu nawigacyjnym **raporty** menu. Aby wyświetlić raport zaimportowany, rozwiń węzeł **raporty**i kliknij raport. Jeśli został zaimportowany [przykładem analizy sprzedaży PBIX](https://go.microsoft.com/fwlink/?LinkID=780547), przykładową aplikację sieci web będzie wyglądać następująco:
 
 ![Przykładowe nawigacji po lewej stronie w przykładowej aplikacji](media/get-started-sample/sample-left-nav.png)
 

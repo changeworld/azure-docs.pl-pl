@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 10/01/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b1333eda0fa0bffdf3852f24414511f55acc090e
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 11cc6a69b8072fca0639da5e517a39c22645710e
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395656"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300510"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Instalowanie i używanie widoki usługi Log Analytics dla usługi Azure Active Directory
 
@@ -42,7 +42,7 @@ Aby użyć widoki usługi Log Analytics, potrzebne są:
 
 1. Przejdź do obszaru roboczego usługi Log Analytics. Aby to zrobić, najpierw należy przejść do [witryny Azure portal](https://portal.azure.com) i wybierz **wszystkich usług**. Typ **usługi Log Analytics** w polu tekstowym, a następnie wybierz pozycję **usługi Log Analytics**. Wybierz obszar roboczy kierowane dzienników aktywności, jako część wymagań wstępnych.
 2. Wybierz **Projektant widoków**, wybierz opcję **zaimportować** , a następnie wybierz **wybierz plik** do zaimportowania widoków z komputera lokalnego.
-3. Wybierz widoki, pobranego z wymagań wstępnych i wybierz **Zapisz** można zapisać importu. Zrób to dla **zdarzenia aprowizacji konta usługi Azure AD** widoku **zdarzenia logowania** widoku i **użytkownikom wykonywanie zgody** widoku.
+3. Wybierz widoki, pobranego z wymagań wstępnych i wybierz **Zapisz** można zapisać importu. Zrób to dla **zdarzenia aprowizacji konta usługi Azure AD** widoku i **zdarzenia logowania** widoku.
 
 ## <a name="use-the-views"></a>Użyj widoków
 
@@ -52,7 +52,6 @@ Aby użyć widoki usługi Log Analytics, potrzebne są:
 
     * **Usługa Azure AD inicjowania obsługi zdarzeń na koncie**: ten widok przedstawia raportów związanych z inspekcji działania obsługi, takie jak liczba nowych użytkowników zainicjowano obsługę administracyjną i problemy z aprowizowaniem, liczbę użytkowników, aktualizowane i zaktualizuj błędów oraz liczby użytkowników błędy rozliczeniu i odpowiednie.    
     * **Zdarzenia logowania**: ten widok przedstawia najbardziej odpowiednie raporty dotyczące monitorowania aktywności logowania, takich jak logowania w aplikacji, użytkowników, urządzeń, a także śledzenia liczby operacji logowania wraz z upływem czasu widok podsumowania.
-    * **Użytkownicy wykonywania wyrazić zgodę**: ten widok przedstawia raportów związanych z zgody użytkownika, takie jak zgody przyznaje przez użytkownika, logowania przez użytkowników, którzy uzyska zatwierdzenie, a także logowania przez aplikację dla wszystkich aplikacji opartych na zgody. 
 
 3. Wybierz jedną z tych widoków, aby przejść do poszczególnych raportów. Można również ustawić alerty na każdym z parametrów raportu. Na przykład możemy ustawić alert w przypadku za każdym razem, gdy występuje błąd logowania. Aby to zrobić, najpierw wybierz **zdarzenia logowania** widoku, wybierz opcję **błędy logowania wraz z upływem czasu** raportu, a następnie wybierz pozycję **Analytics** otwierających strony szczegółów rzeczywiste zapytanie za raportu. 
 

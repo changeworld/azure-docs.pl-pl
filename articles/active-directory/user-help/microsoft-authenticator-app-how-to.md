@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: a88a0d9105942502b634f3be7c3279167ea590c6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: d5ea6f18fb288711bae67b6840ddb5b8bb9942c2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393256"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245447"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Rozpoczynanie pracy z aplikacją Microsoft Authenticator
 
@@ -39,7 +39,7 @@ Aplikacja Microsoft Authenticator umożliwia również za pomocą kont innych ni
 
 ## <a name="install-the-app"></a>Zainstaluj aplikację
 
-Aplikacja Microsoft Authenticator jest dostępna dla systemów [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) i [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071). Aby uzyskać najlepsze wyniki, należy udostępnić aplikację, Otrzymuj powiadomienia, gdy pojawi się prośba. 
+Aplikacja Microsoft Authenticator jest dostępna dla systemów [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) i [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071). Aby uzyskać najlepsze wyniki, należy udostępnić aplikację, Otrzymuj powiadomienia, gdy pojawi się prośba. 
 
 ## <a name="add-accounts-to-the-app"></a>Dodaj konta do aplikacji
 
@@ -51,7 +51,7 @@ W przypadku osobistego konta Microsoft (jedno, którego używasz do logowania do
 
 ### <a name="add-a-work-or-school-account"></a>Dodaj konto służbowe
 
-1. Jeśli to możliwe, przejdź do [dodatkowej weryfikacji zabezpieczeń](http://aka.ms/mfasetup) ekranu na innym komputerze lub urządzeniu. Aby dowiedzieć się, jak uzyskać dostęp do tego ekranu, zobacz [zmiana ustawień zabezpieczeń](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page) lub skontaktuj się z administratorem.
+1. Jeśli to możliwe, przejdź do [dodatkowej weryfikacji zabezpieczeń](https://aka.ms/mfasetup) ekranu na innym komputerze lub urządzeniu. Aby dowiedzieć się, jak uzyskać dostęp do tego ekranu, zobacz [zmiana ustawień zabezpieczeń](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page) lub skontaktuj się z administratorem.
 
     >[!Note]
     >Jeśli administrator wyłączył środowisko podglądu tak zabezpieczeń informacji, możesz wykonać zgodnie z instrukcjami w [ustawić informacje zabezpieczające, aby użyć aplikacji authenticator](security-info-setup-auth-app.md) sekcji.

@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/18/2018
-ms.author: bwren, vinagara
+ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 154dedaf5e657803417e1bb113489c49f8879a26
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 427ac67b812da449333e4868e54ca36d2c6f54af
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914589"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282338"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie usługi Log Analytics zapisane wyszukiwania i alerty w rozwiązaniu do zarządzania (wersja zapoznawcza)
 
@@ -27,7 +27,7 @@ ms.locfileid: "50914589"
 > Jest to wstępne dokumentację dotyczącą tworzenia rozwiązań do zarządzania, które są obecnie dostępne w wersji zapoznawczej. Żadnego schematu opisanych poniżej ulec zmianie.   
 
 
-[Rozwiązania do zarządzania](monitoring-solutions.md) zwykle zawierają [zapisane wyszukiwania](../log-analytics/log-analytics-log-search.md) w usłudze Log Analytics do analizowania danych zbieranych przez to rozwiązanie.  Mogą również definiować [alerty](../log-analytics/log-analytics-alerts.md) powiadomić użytkownika lub automatycznie podjąć działania w odpowiedzi na problem krytyczny.  W tym artykule opisano sposób definiowania zapisanego wyszukiwania analizy dzienników i alertów w [szablonu Resource Management](../resource-manager-template-walkthrough.md) , dzięki czemu mogą być zawarte w [rozwiązań do zarządzania](monitoring-solutions-creating.md).
+[Rozwiązania do zarządzania](monitoring-solutions.md) zwykle zawierają [zapisane wyszukiwania](../log-analytics/log-analytics-queries.md) w usłudze Log Analytics do analizowania danych zbieranych przez to rozwiązanie.  Mogą również definiować [alerty](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) powiadomić użytkownika lub automatycznie podjąć działania w odpowiedzi na problem krytyczny.  W tym artykule opisano sposób definiowania zapisanego wyszukiwania analizy dzienników i alertów w [szablonu Resource Management](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) , dzięki czemu mogą być zawarte w [rozwiązań do zarządzania](monitoring-solutions-creating.md).
 
 > [!NOTE]
 > Przykłady w tym artykule użyć parametrów i zmiennych, które są wymagane lub wspólne dla rozwiązania do zarządzania i opisem w artykule [projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure](monitoring-solutions-creating.md)  
@@ -54,9 +54,9 @@ Poniższa tabela zawiera listę wersji interfejsu API dla zasobów używanych w 
 
 
 ## <a name="saved-searches"></a>Zapisane wyszukiwania
-Obejmują [zapisane wyszukiwania](../log-analytics/log-analytics-log-search.md) w ramach rozwiązania, aby umożliwić użytkownikom zapytania o dane zebrane przez rozwiązania.  Zapisane wyszukiwania są wyświetlane w obszarze **zapisane wyszukiwania** w witrynie Azure portal.  Zapisane wyszukiwanie jest także wymagane dla każdego alertu.   
+Obejmują [zapisane wyszukiwania](../log-analytics/log-analytics-queries.md) w ramach rozwiązania, aby umożliwić użytkownikom zapytania o dane zebrane przez rozwiązania.  Zapisane wyszukiwania są wyświetlane w obszarze **zapisane wyszukiwania** w witrynie Azure portal.  Zapisane wyszukiwanie jest także wymagane dla każdego alertu.   
 
-[Zapisane wyszukiwanie analizy dzienników](../log-analytics/log-analytics-log-search.md) zasoby mają typ `Microsoft.OperationalInsights/workspaces/savedSearches` i mają następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby można skopiuj i wklej następujący fragment kodu do pliku rozwiązania i Zmień nazwy parametrów. 
+[Zapisane wyszukiwanie analizy dzienników](../log-analytics/log-analytics-queries.md) zasoby mają typ `Microsoft.OperationalInsights/workspaces/savedSearches` i mają następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby można skopiuj i wklej następujący fragment kodu do pliku rozwiązania i Zmień nazwy parametrów. 
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name)]",

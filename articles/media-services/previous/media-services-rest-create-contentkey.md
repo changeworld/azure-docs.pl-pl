@@ -1,6 +1,6 @@
 ---
-title: Tworzenie kluczy zawartości z REST | Dokumentacja firmy Microsoft
-description: Informacje o sposobie tworzenia kluczy zawartości, które zapewniają bezpieczny dostęp do zasobów.
+title: Tworzenie kluczy zawartości z użyciem usług REST | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć kluczy zawartości, które zapewniają bezpieczny dostęp do zasobów.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: 83ba02aedebe69e15736975fbd73c7c7f221634f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9fb28d618a9375dec19e75d04ef0a6bc5de334b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790335"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242640"
 ---
-# <a name="create-content-keys-with-rest"></a>Tworzenie kluczy zawartości z REST
+# <a name="create-content-keys-with-rest"></a>Tworzenie kluczy zawartości z użyciem usług REST
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
@@ -30,24 +30,24 @@ ms.locfileid: "33790335"
 
 Usługa Media Services umożliwia dostarczanie zaszyfrowanych zasoby. A **ContentKey** zapewnia bezpieczny dostęp do Twojego **zasobów**s. 
 
-Podczas tworzenia nowego elementu zawartości (na przykład przed [przekazać pliki](media-services-rest-upload-files.md)), można określić następujące opcje szyfrowania: **StorageEncrypted**, **CommonEncryptionProtected**, lub **EnvelopeEncryptionProtected**. 
+Po utworzeniu nowego elementu zawartości (na przykład, zanim [przekazywanie plików](media-services-rest-upload-files.md)), można określić następujące opcje szyfrowania: **StorageEncrypted**, **CommonEncryptionProtected**, lub **EnvelopeEncryptionProtected**. 
 
-Zasoby można dostarczyć do klientów, można [skonfigurować trwałych był dynamicznie szyfrowany](media-services-rest-configure-asset-delivery-policy.md) z jednym z następujących dwie metody szyfrowania: **DynamicEnvelopeEncryption** lub  **DynamicCommonEncryption**.
+Gdy zasoby można dostarczać klientom, możesz ją [konfigurowanie dla zasobów, aby był dynamicznie szyfrowany](media-services-rest-configure-asset-delivery-policy.md) przy użyciu jednego z następujących dwóch metody szyfrowania: **DynamicEnvelopeEncryption** lub  **DynamicCommonEncryption**.
 
-Zasoby zaszyfrowanych ma ma być skojarzone z **ContentKey**s. W tym artykule opisano sposób tworzenia klucza zawartości.
+Zaszyfrowane obiekty muszą być skojarzone z **ContentKey**s. W tym artykule opisano sposób tworzenia klucza zawartości.
 
-Poniżej przedstawiono ogólne kroki podczas generowania zawartości kluczy, które skojarzysz z zasobów, które mają być szyfrowane. 
+Poniżej przedstawiono ogólne kroki do generowania kluczy zawartości, które skojarzysz z zasobami, które mają być szyfrowane. 
 
-1. Losowo Generuj 16-bajtowych klucz AES (na potrzeby szyfrowania wspólnej i koperty) lub 32-bajtowych klucz AES (w przypadku szyfrowania magazynu). 
+1. Losowo Generuj 16-bajtowy klucz szyfrowania AES (w przypadku szyfrowania typowe i koperty) lub 32-bajtowy klucz szyfrowania AES (w przypadku szyfrowania magazynu). 
    
-    Jest to klucz zawartości dla zawartości, co oznacza wszystkie pliki skojarzone z którym zasobów musi używać tego samego klucza zawartości podczas odszyfrowywania. 
-2. Wywołanie [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) i [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) metod, aby uzyskać poprawny certyfikat X.509 używany do szyfrowania klucza zawartości.
-3. Zaszyfrowanie klucza zawartości z kluczem publicznym certyfikatu X.509. 
+    Jest to klucz zawartości dla swojego elementu zawartości, co oznacza wszystkie pliki skojarzone z tego konieczność użycia tego samego klucza zawartości podczas odszyfrowywania zawartości. 
+2. Wywołaj [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) i [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) metody, aby uzyskać prawidłowy certyfikat X.509 używany do szyfrowania klucza zawartości.
+3. Szyfrowanie klucza zawartości przy użyciu klucza publicznego certyfikatu X.509. 
    
-   .NET SDK usługi Media Services używa algorytmu RSA z OAEP podczas operacji szyfrowania.  Można zobaczyć przykład w [funkcja EncryptSymmetricKeyData](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
-4. Utwórz wartość sumy kontrolnej (oparte na algorytm klucza sumy kontrolnej PlayReady AES) obliczane przy użyciu klucza identyfikator i klucz zawartości. Aby uzyskać więcej informacji, zobacz sekcję "Algorytm sumy kontrolnej kluczy AES PlayReady" dokumentu PlayReady nagłówka obiektu znajdującego się [tutaj](http://www.microsoft.com/playready/documents/).
+   Media Services .NET SDK używa algorytmu RSA z OAEP podczas wykonywania szyfrowania.  Widać w przykładzie [funkcja EncryptSymmetricKeyData](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
+4. Utwórz wartość sumy kontrolnej (oparte na algorytm klucza sumy kontrolnej PlayReady AES) obliczane przy użyciu klucza identyfikatora i klucza zawartości. Aby uzyskać więcej informacji, zobacz sekcję "Algorytm sumy kontrolnej klucz AES PlayReady" dokumentu PlayReady nagłówka obiektu znajdującego się [tutaj](https://www.microsoft.com/playready/documents/).
    
-   W poniższym przykładzie .NET oblicza sumę kontrolną, używając identyfikatora GUID części klucza identyfikator i klucz czyszczenie zawartości.
+   W poniższym przykładzie .NET oblicza sumę kontrolną, używając identyfikatora GUID części kluczowych identyfikator i klucz czyszczenia zawartości.
    
         public static string CalculateChecksum(byte[] contentKey, Guid keyId)
          {
@@ -66,21 +66,21 @@ Poniżej przedstawiono ogólne kroki podczas generowania zawartości kluczy, kt�
              Array.Copy(array, array2, 8);
              return Convert.ToBase64String(array2);
          }
-5. Utwórz klucz zawartości z **EncryptedContentKey** (konwertowana na ciąg kodowany w formacie base64), **ProtectionKeyId**, **ProtectionKeyType**,  **ContentKeyType**, i **sumy kontrolnej** wartości otrzymany w poprzednich krokach.
-6. Skojarz **ContentKey** jednostki o Twojej **zasobów** jednostki za pomocą operacji $links.
+5. Utwórz klucz zawartości za pomocą **EncryptedContentKey** (konwertowane na ciąg kodowany w formacie base64) **ProtectionKeyId**, **ProtectionKeyType**,  **ContentKeyType**, i **sumy kontrolnej** wartości otrzymane w poprzednich krokach.
+6. Skojarz **ContentKey** jednostki z usługi **zasobów** jednostki za pomocą operacji $links.
 
-W tym artykule nie opisano do wygenerowania klucza AES, szyfrowania klucza i obliczyć sumy kontrolnej. 
+Ten artykuł pokazuje, jak generowanie klucza AES, szyfrowania klucza, a następnie Oblicz sumę kontrolną. 
 
 >[!NOTE]
 
->Podczas uzyskiwania dostępu do obiektów w usłudze Media Services, należy ustawić określonych pól nagłówka i wartości w Twoich żądań HTTP. Aby uzyskać więcej informacji, zobacz [ustawień dla rozwoju interfejsu API REST usługi Media](media-services-rest-how-to-use.md).
+>Podczas uzyskiwania dostępu do jednostek w usłudze Media Services, należy ustawić określonych pól nagłówka i wartości w żądaniach HTTP. Aby uzyskać więcej informacji, zobacz [Instalatora w celu tworzenia interfejsu API REST usługi Media](media-services-rest-how-to-use.md).
 
 ## <a name="connect-to-media-services"></a>Łączenie się z usługą Media Services
 
-Aby uzyskać informacje na temat nawiązywania połączenia z interfejsu API usług AMS, zobacz [dostępu Azure Media Services API przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Aby uzyskać informacje o tym, jak połączyć się z interfejsem API usługi AMS, zobacz [dostęp do interfejsu API usługi multimediów Azure przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
-## <a name="retrieve-the-protectionkeyid"></a>Pobrać ProtectionKeyId
-Poniższy przykład pokazuje, jak pobrać ProtectionKeyId, odcisk palca certyfikatu, dla certyfikatu, którego należy użyć w przypadku szyfrowania kluczem zawartości. Wykonaj ten krok, aby się upewnić, że już ma odpowiedniego certyfikatu na tym komputerze.
+## <a name="retrieve-the-protectionkeyid"></a>Pobieranie ProtectionKeyId
+Poniższy przykład pokazuje, jak pobrać ProtectionKeyId, odcisk palca certyfikatu, aby uzyskać certyfikat którego należy użyć podczas szyfrowania klucza zawartości. Wykonaj ten krok, aby upewnić się, czy już masz odpowiedni certyfikat na komputerze.
 
 Żądanie:
 
@@ -111,8 +111,8 @@ Odpowiedź:
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String","value":"7D9BB04D9D0A4A24800CADBFEF232689E048F69C"}
 
-## <a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>Pobrać ProtectionKey ProtectionKeyId
-Poniższy przykład pokazuje, jak można pobrać certyfikatu X.509 przy użyciu ProtectionKeyId otrzymanego w poprzednim kroku.
+## <a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>Pobieranie ProtectionKey dla ProtectionKeyId
+Poniższy przykład pokazuje, jak można pobrać certyfikatu X.509 przy użyciu ProtectionKeyId otrzymany w poprzednim kroku.
 
 Żądanie:
 
@@ -148,9 +148,9 @@ Odpowiedź:
     "value":"MIIDSTCCAjGgAwIBAgIQqf92wku/HLJGCbMAU8GEnDANBgkqhkiG9w0BAQQFADAuMSwwKgYDVQQDEyN3YW1zYmx1cmVnMDAxZW5jcnlwdGFsbHNlY3JldHMtY2VydDAeFw0xMjA1MjkwNzAwMDBaFw0zMjA1MjkwNzAwMDBaMC4xLDAqBgNVBAMTI3dhbXNibHVyZWcwMDFlbmNyeXB0YWxsc2VjcmV0cy1jZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzR0SEbXefvUjb9wCUfkEiKtGQ5Gc328qFPrhMjSo+YHe0AVviZ9YaxPPb0m1AaaRV4dqWpST2+JtDhLOmGpWmmA60tbATJDdmRzKi2eYAyhhE76MgJgL3myCQLP42jDusWXWSMabui3/tMDQs+zfi1sJ4Ch/lm5EvksYsu6o8sCv29VRwxfDLJPBy2NlbV4GbWz5Qxp2tAmHoROnfaRhwp6WIbquk69tEtu2U50CpPN2goLAqx2PpXAqA+prxCZYGTHqfmFJEKtZHhizVBTFPGS3ncfnQC9QIEwFbPw6E5PO5yNaB68radWsp5uvDg33G1i8IT39GstMW6zaaG7cNQIDAQABo2MwYTBfBgNVHQEEWDBWgBCOGT2hPhsvQioZimw8M+jOoTAwLjEsMCoGA1UEAxMjd2Ftc2JsdXJlZzAwMWVuY3J5cHRhbGxzZWNyZXRzLWNlcnSCEKn/dsJLvxyyRgmzAFPBhJwwDQYJKoZIhvcNAQEEBQADggEBABcrQPma2ekNS3Wc5wGXL/aHyQaQRwFGymnUJ+VR8jVUZaC/U/f6lR98eTlwycjVwRL7D15BfClGEHw66QdHejaViJCjbEIJJ3p2c9fzBKhjLhzB3VVNiLIaH6RSI1bMPd2eddSCqhDIn3VBN605GcYXMzhYp+YA6g9+YMNeS1b+LxX3fqixMQIxSHOLFZ1G/H2xfNawv0VikH3djNui3EKT1w/8aRkUv/AAV0b3rYkP/jA1I0CPn0XFk7STYoiJ3gJoKq9EMXhit+Iwfz0sMkfhWG12/XO+TAWqsK1ZxEjuC9OzrY7pFnNxs4Mu4S8iinehduSpY+9mDd3dHynNwT4="}
 
 ## <a name="create-the-contentkey"></a>Utwórz ContentKey
-Po pobrać certyfikat X.509 i używać swojego klucza publicznego do szyfrowania klucza zawartości należy utworzyć **ContentKey** jednostki i ustaw jej właściwość odpowiednio wartości.
+Po pobrać certyfikat X.509 i użyć swojego klucza publicznego do szyfrowania klucza zawartości należy utworzyć **ContentKey** jednostki i ustaw odpowiednie wartości jej właściwości.
 
-Jedna z wartości, że należy ustawić podczas tworzenia zawartości klucza jest typem. Wybierz jedną z następujących wartości:
+Jedna z wartości, należy ustawić podczas tworzenia zawartości klucza jest typem. Wybierz jedną z następujących wartości:
 
     public enum ContentKeyType
     {
@@ -177,7 +177,7 @@ Jedna z wartości, że należy ustawić podczas tworzenia zawartości klucza jes
     }
 
 
-Poniższy przykład przedstawia sposób tworzenia **ContentKey** z **ContentKeyType** ustawić szyfrowania magazynu ("1") i **ProtectionKeyType** ustawioną wartość "0", aby wskazać, że Klucz ochrony identyfikator jest odcisk palca certyfikatu X.509.  
+Poniższy przykład pokazuje, jak utworzyć **ContentKey** z **ContentKeyType** Ustaw szyfrowania magazynu ("1") i **ProtectionKeyType** równa "0", aby wskazać, że Klucz ochrony identyfikator jest odcisk palca certyfikatu X.509.  
 
 Żądanie
 
@@ -227,8 +227,8 @@ Odpowiedź:
     "ProtectionKeyType":0,
     "Checksum":"calculated checksum"}
 
-## <a name="associate-the-contentkey-with-an-asset"></a>Skojarz ContentKey z zasobów
-Po utworzeniu ContentKey, skojarzyć ją z zawartości przy użyciu operacji $links, jak pokazano w poniższym przykładzie:
+## <a name="associate-the-contentkey-with-an-asset"></a>Skojarz ContentKey z elementem zawartości
+Po utworzeniu ContentKey, skojarzyć ją z elementów zawartości przy użyciu operacji $links, jak pokazano w poniższym przykładzie:
 
 Żądanie:
 

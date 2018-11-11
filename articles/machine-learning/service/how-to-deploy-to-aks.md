@@ -10,12 +10,12 @@ author: raymondlaghaeian
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 3ab32388e0a35f4abf3866aa0a84ee0628b0570c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: efaaa196220213877283040120d6c2eeed86dbf3
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318201"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346324"
 ---
 # <a name="how-to-deploy-models-from-azure-machine-learning-service-to-azure-kubernetes-service"></a>Jak wdrażać modele z usługi Azure Machine Learning w usłudze Azure Kubernetes Service
 
@@ -63,6 +63,9 @@ Usługa Azure Kubernetes Service korzysta z obrazów platformy Docker. Do utworz
 1. Aby skonfigurować obraz, należy utworzyć skrypt oceniania i plikiem środowiska. Aby uzyskać przykład tworzenia pliku skryptu i środowiska zobacz następujące sekcje przykładu klasyfikacji obrazów:
 
     * [Utwórz skrypt oceniania (score.py)](tutorial-deploy-models-with-aml.md#create-scoring-script)
+
+        > [!IMPORTANT]
+        > Skrypt oceniania odbiera dane przesłane przez klientów i przekazuje je do modelu w celu oceniania. Dokumentowanie struktury danych, skrypt i model oczekujesz. Posiadanie tej dokumentacji wiele ułatwia podczas tworzenia klienta do korzystania z usługi sieci web.
 
     * [Utwórz plik środowiska (myenv.yml)](tutorial-deploy-models-with-aml.md#create-environment-file) 
 
@@ -190,3 +193,7 @@ aks_service.delete()
 image.delete()
 model.delete()
 ```
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Dowiedz się, jak [zużywania modelu uczenia Maszynowego wdrożyć jako usługę sieci web](how-to-consume-web-service.md).

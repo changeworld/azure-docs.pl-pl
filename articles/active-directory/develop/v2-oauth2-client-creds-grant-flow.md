@@ -17,12 +17,12 @@ ms.date: 01/07/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 2dc1be6b861515cf34f8dd799fa732da530e82a1
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 05013905ddda232fb08e3b30892af5ac5a8320dc
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985404"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289006"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory w wersji 2.0 i przepływ poświadczeń klienta OAuth 2.0
 
@@ -56,11 +56,11 @@ Ten typ autoryzacji jest typowe dla demonów i kont usług, które wymagają dos
 Zamiast przy użyciu list kontroli dostępu, można użyć interfejsów API do udostępnienia zestaw uprawnień aplikacji. Uprawnienie aplikacji jest udzielany do aplikacji przez administratora organizacji i może służyć tylko dostęp do danych należących do organizacji i jej pracowników. Na przykład program Microsoft Graph udostępnia kilka uprawnienia aplikacji, wykonaj następujące czynności:
 
 * Odczytuj pocztę we wszystkich skrzynkach pocztowych
-* Odczyt i zapis poczty we wszystkich skrzynkach pocztowych
-* Wysyłaj pocztę jako dowolny użytkownik
-* Czytaj dane katalogu
+* Odczytuj i zapisuj wiadomości e-mail we wszystkich skrzynkach pocztowych
+* Wysyłaj wiadomości e-mail jako dowolny użytkownik
+* Odczytaj dane katalogu
 
-Aby uzyskać więcej informacji dotyczących uprawnień aplikacji, przejdź do [programu Microsoft Graph](https://graph.microsoft.io).
+Aby uzyskać więcej informacji dotyczących uprawnień aplikacji, przejdź do [programu Microsoft Graph](https://developer.microsoft.com/graph).
 
 Aby używać uprawnień aplikacji w aplikacji, wykonaj kroki, które omówimy w kolejnych sekcjach.
 

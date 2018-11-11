@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 5c16f06d0cc031cd9b51a3c6cf0beb149a19aeb4
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 9cf37e611dce5705a4c866f25afa59e5c1602ec4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001443"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282207"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Omówienie certyfikatów usług Azure Cloud Services
 Certyfikaty są używane na platformie Azure dla usług w chmurze ([usługi certyfikatów](#what-are-service-certificates)) i uwierzytelniania za pomocą interfejsu API zarządzania ([certyfikaty zarządzania](#what-are-management-certificates)). Ten temat zawiera ogólne omówienie oba typy certyfikatów, jak do [tworzenie](#create) i [wdrażanie](#deploy) je na platformie Azure.
@@ -27,6 +27,9 @@ Certyfikaty są używane na platformie Azure dla usług w chmurze ([usługi cert
 Certyfikaty używane na platformie Azure są x.509 v3 certyfikaty i może być podpisany przez inny zaufanego certyfikatu, lub może być podpisem. Certyfikat z podpisem własnym jest podpisany przez własny twórcy, w związku z tym nie jest zaufany przez domyślny. W większości przeglądarek, można zignorować ten problem. Należy używać tylko certyfikatów z podpisem własnym podczas tworzenia i testowania usługi w chmurze. 
 
 Certyfikaty używane przez platformę Azure może zawierać prywatnej lub klucza publicznego. Certyfikaty muszą odcisku palca, zapewniająca oznacza, że można je zidentyfikować w jednoznaczny sposób. To odcisk palca jest używany na platformie Azure [pliku konfiguracji](cloud-services-configure-ssl-certificate-portal.md) do identyfikowania należy używać certyfikatu której usługa w chmurze. 
+
+>[!Note]
+>Usługi Azure Cloud Services nie akceptuje AES256 SHA256 zaszyfrowany certyfikat.
 
 ## <a name="what-are-service-certificates"></a>Co to są usługi certyfikatów?
 Certyfikaty usług są dołączone do usług w chmurze i Włącz bezpieczną komunikację do i z usługi. Na przykład jeśli wdrożono rolę sieci web, należy podać certyfikat, który może uwierzytelniać narażonych punktu końcowego HTTPS. Certyfikaty usługi, jest zdefiniowany w definicji usługi, są automatycznie wdrażane na maszynę wirtualną, która jest uruchomione wystąpienie roli użytkownika. 

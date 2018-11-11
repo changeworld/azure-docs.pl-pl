@@ -15,19 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: d045bd37a4b3192672cc1bd37bc4bd14ea8d5402
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a5db14b99a81c373fbc72f523798e1f3bbdf9285
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837188"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344505"
 ---
 # <a name="load-data-into-storage-environments-for-analytics"></a>Ładowanie danych w środowiskach magazynowania do celów analizy
-Proces nauki zespołu danych wymaga danych można pozyskanych lub ładowane do różnych środowiskach innego magazynu do przetworzenia lub przeanalizowane w najlepszy sposób na każdym etapie procesu. Miejsca docelowe danych często używanych na potrzeby przetwarzania obejmują usługi Azure Blob Storage, baz danych SQL Azure, programu SQL Server na maszynie Wirtualnej platformy Azure, HDInsight (Hadoop) i usługi Azure Machine Learning. 
 
-[!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]
+Proces analizy danych zespołu wymaga, aby dane można pozyskane lub ładowany w różnych środowiskach innego magazynu należy przetworzyć lub analizowany w najlepszy sposób na każdym etapie procesu. Często używane do przetwarzania miejscami docelowymi danych obejmują usługi Azure Blob Storage, baz danych SQL Azure, programu SQL Server na maszynie Wirtualnej platformy Azure HDInsight (Hadoop) i Azure Machine Learning. 
 
-To **menu** linki do tematów opisujących sposób pozyskiwania danych w tych docelowe środowiska, w którym dane są przechowywane i przetwarzane.
+Następujące artykuły zawierają instrukcje dotyczące pozyskiwania danych w różnych środowiskach docelowych, gdzie dane są przechowywane i przetwarzane.
 
-Format techniczne i potrzeby biznesowe, a także początkową lokalizację oraz rozmiar danych określić środowiska docelowego, w których dane mają być pozyskanych w celach analizy. Nie jest nietypowe dla scenariusza wymaganych danych do przeniesienia między środowiskami kilka do osiągnięcia różnych zadań wymaganych do utworzenia modelu predykcyjnego. Ta sekwencja zadań może zawierać na przykład Eksploracja danych, przetwarzanie wstępne czyszczenia, próbkowania w dół i uczenia modelu.
+* Do/z [usługi Azure Blob Storage](move-azure-blob.md)
+* Aby [programu SQL Server na maszynie Wirtualnej platformy Azure](move-sql-server-virtual-machine.md)
+* Aby [bazy danych Azure SQL](move-sql-azure.md)
+* Aby [tabel programu Hive](move-hive-tables.md)
+* Aby [SQL partycjonowane tabele](parallel-load-sql-partitioned-tables.md)
+* Z [środowiska lokalnego programu SQL Server](move-sql-azure-adf.md)
 
+Sformatuj technicznych i potrzeb biznesowych, a także początkową lokalizację i rozmiaru danych określi środowiskach docelowych, w których dane muszą być pozyskiwane w celu osiągnięcia celów analizy. Nie jest niczym niezwykłym scenariusza wymagają dane można przenosić między kilka środowisk, aby osiągnąć różnych zadań wymaganych do konstruowania modelu predykcyjnego. Ta sekwencja zadań może zawierać na przykład eksplorację danych, przetwarzanie wstępne, czyszczenia, próbkowania w dół i szkoleń modelowych.

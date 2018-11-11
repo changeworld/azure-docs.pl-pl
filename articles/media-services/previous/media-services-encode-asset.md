@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 6695e17ec3dd9bf9ebeeb44b34e9688d3e5a1625
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: c02d3483a98c358e53964d3932944b5d2dad9c53
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249751"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240277"
 ---
 # <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>Przegląd i porównanie platformy Azure na żądanie koderów multimediów
 ## <a name="encoding-overview"></a>Omówienie kodowania
@@ -51,7 +51,7 @@ Ten artykuł zawiera krótkie omówienie na żądanie koderów multimediów i za
 [Formaty i kodery-dekodery](media-services-media-encoder-standard-formats.md)
 
 ### <a name="presets"></a>Ustawienia wstępne
-Usługi Media Encoder Standard jest skonfigurowany przy użyciu jednej wstępne kodera opisem [tutaj](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+Usługi Media Encoder Standard jest skonfigurowany przy użyciu jednej wstępne kodera opisem [tutaj](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
 
 ### <a name="input-and-output-metadata"></a>Metadane wejściowe i wyjściowe
 Opisano metadanych wejściowych koderów [tutaj](media-services-input-metadata-schema.md).

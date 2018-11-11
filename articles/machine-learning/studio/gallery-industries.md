@@ -1,6 +1,6 @@
 ---
-title: Azure rozwiązania branżowe galerii AI | Dokumentacja firmy Microsoft
-description: Odnajdywanie rozwiązania zgodne ze standardami w galerii Azure AI.
+title: Rozwiązania branżowe Galeria sztucznej Inteligencji platformy Azure | Dokumentacja firmy Microsoft
+description: Odkryj rozwiązania branżowe w galerii sztucznej Inteligencji platformy Azure.
 services: machine-learning
 documentationcenter: ''
 author: garyericson
@@ -15,36 +15,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: garye
-ms.openlocfilehash: c1ca9c45a7bd070ba0dbcee3b428f986ebac47d3
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: d64395314f73c5d359b30c15ef11bfd3078e068f
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062101"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346307"
 ---
-# <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>Poznaj rozwiązania branżowe w galerii Azure AI
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
+# <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>Odnajduj rozwiązania branżowe w galerii Azure AI
 
-## <a name="industry-specific-cortana-intelligence-solutions"></a>Branżowe Cortana Intelligence rozwiązania
-**[Branżach](https://gallery.azure.ai/industries)** sekcji galerii zgromadzono różnych zasobów, które są specyficzne dla branży, takich jak
+**[Branżach](https://gallery.azure.ai/industries)** części [galerii Azure AI](http://gallery.cortanaintelligence.com) umożliwia połączenie ze sobą różnych zasobów, które są specyficzne dla branż, takich jak
 
-* [Detaliczne](https://gallery.azure.ai/industries/retail) — Znajdź rozwiązania sprzedaży detalicznej, takie jak sprzedaż prognozowania, przewidywanie przenoszenie klienta i tworzenie modelami cenowymi.
-* [Produkcyjny](https://gallery.azure.ai/industries/manufacturing) — Znajdź produkcyjny rozwiązań, takich jak przewidywanie konserwacji sprzętu i prognozowanie cen energii.
-* [Banków](https://gallery.azure.ai/industries/banking) — Znajdź banków rozwiązań przykład przewidywanie środki ryzyka i monitorowanie w celu oszustwa online.
-* [Opieka zdrowotna](https://gallery.azure.ai/industries/healthcare) — rozwiązania opieki zdrowotnej, takich jak wykrywanie choroby i prognozowanie readmissions szpital Twoich.
+* [Handlu detalicznego](https://gallery.azure.ai/industries/retail) — Znajdź rozwiązania handlu detalicznego, takie jak sprzedaż, prognozowania, przewidywanie zmienności klientów i rozwijanie modelami cenowymi.
+* [Produkcyjny](https://gallery.azure.ai/industries/manufacturing) — Znajdź produkcyjny rozwiązań, takich jak przewidywanie konserwację i prognozowania ceny energii.
+* [Bankowe](https://gallery.azure.ai/industries/banking) — Znajdź bankowe rozwiązań, takich jak prognozowanie środki o podwyższonym ryzyku i monitorowania w celu oszustwa online.
+* [Opieka zdrowotna](https://gallery.azure.ai/industries/healthcare) — Znajdź rozwiązania opieki zdrowotnej, takich jak wykrywanie chorobom i prognozowanie liczby ponownych przyjęć szpitali.
 
-Te zasoby obejmują eksperymentów, niestandardowe moduły interfejsów API, kolekcji i innych elementów galerii, które ułatwiają tworzenie rozwiązań specyficzne dla używanego w branży.
+Te zasoby obejmują eksperymentów, niestandardowe moduły, interfejsów API, kolekcje i inne elementy galerii, które mogą pomóc Ci opracować rozwiązania w branży, nad którym pracujesz w.
 
 ## <a name="discover"></a>Wykrywanie
- Aby przejrzeć rozwiązania branżowe w galerii, otwórz [galerii](http://gallery.cortanaintelligence.com), wskaż przy użyciu myszy w **branżach** w górnej części strony głównej galerii, wybierz segment określonej gałęzi lub **Wyświetl wszystko** na stronie Przegląd wszystkich branżach.
+ Aby przejrzeć rozwiązań branżowych, w galerii, otwórz [galerii](http://gallery.cortanaintelligence.com), punkt wskaźnik myszy na **branżach** w górnej części strony głównej galerii Wybierz segment określonej gałęzi lub **Wyświetl wszystko** się Strona przeglądu wszystkich branż.
 
- Każdej stronie branży Wyświetla listę elementów galerii najpopularniejszych skojarzone z tym branżowych.
-Kliknij przycisk **zobaczyć wszystkie** Aby wyświetlić wszystkie zasoby branżowe w galerii.
-Na tej stronie można przejrzeć wszystkie zasoby w galerii. Można również przeszukać wybierając kryteria filtrowania po lewej stronie i wprowadzanie terminy wyszukiwania w górnej.
+ Każda strona branży Wyświetla listę elementów galerii najpopularniejszych skojarzone z tym branży.
+Kliknij przycisk **holograficznych** do wyświetlania wszystkich zasobów przeznaczonych dla swojej branży w galerii.
+Na tej stronie można przeglądać wszystkie zasoby w galerii. Również można przeszukiwać, wybierając kryteria filtrowania w lewej części strony i wprowadzanie wyszukiwanych terminów u góry.
 
-![Udostępnij ten element znajomych](./media/gallery-how-to-use-contribute-publish/share-links.png)
+![Udostępnij ten element ze znajomymi](./media/gallery-how-to-use-contribute-publish/share-links.png)
 
-![Dodaj komentarz własnych](./media/gallery-how-to-use-contribute-publish/comments.png)
+![Dodać swoje własne komentarze](./media/gallery-how-to-use-contribute-publish/comments.png)
 
  Kliknij dowolny element galerii, aby otworzyć stronę szczegółów elementu Aby uzyskać więcej informacji.
 

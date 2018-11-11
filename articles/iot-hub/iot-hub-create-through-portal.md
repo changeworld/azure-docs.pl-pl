@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
-ms.openlocfilehash: 8f08141f5c14a734f89ba91045767e2a36a44fd2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 21758d112cd7eaf45b8b279cf2a6f6060c44c9c1
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985609"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515849"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Tworzenie Centrum IoT przy użyciu witryny Azure portal
 
@@ -24,45 +24,7 @@ Aby skorzystać z instrukcji w tym samouczku, musisz mieć subskrypcję platform
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com). 
-
-2. Wybierz +**Utwórz zasób**, następnie wybierz **Internet of Things**.
-
-3. Kliknij przycisk **usługi Iot Hub** z listy po prawej stronie. Zobaczysz pierwszy ekran do tworzenia Centrum IoT hub.
-
-   ![Zrzut ekranu przedstawiający tworzenie Centrum w witrynie Azure portal](./media/iot-hub-create-through-portal/iot-hub-create-screen-basics.png)
-
-   Wypełnij pola.
-
-   **Subskrypcja**: Wybierz subskrypcję do użycia dla usługi IoT hub.
-
-   **Grupa zasobów**: możesz utworzyć nową grupę zasobów lub użyć istniejącego. Aby utworzyć nowe konto, kliknij **Utwórz nową** i wprowadź nazwę, której chcesz użyć. Aby użyć istniejącej grupy zasobów, kliknij **Użyj istniejącej** i wybierz grupę zasobów z listy rozwijanej.
-
-   **Region**: Wybierz region, w którym chcesz Centrum lokalizacji z listy rozwijanej.
-
-   **Nazwa centrum IoT**: umieść nazwę Centrum IoT. Ta nazwa musi być unikatowa w skali globalnej. 
-
-   [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
-
-4. Kliknij przycisk **dalej: rozmiarów i skalowania** można przejść do następnego ekranu.
-
-   ![Zrzut ekranu przedstawiający ustawienie rozmiaru i skali dla nowego centrum IoT przy użyciu witryny Azure portal](./media/iot-hub-create-through-portal/iot-hub-create-screen-size-scale.png)
-
-   Na tym ekranie możesz pobrać wartości domyślne i kliknij **przeglądu + Utwórz** u dołu. Lub można wypełnić pola, zgodnie z potrzebami.
-
-   **Ceny i warstwa skalowania**: można wybrać z kilku warstwach, w zależności od tego, ile funkcje chcesz i ile komunikatów można wysyłać za pośrednictwem tego rozwiązania na dzień. Bezpłatna warstwa jest przeznaczona do testowania i oceny. Umożliwia ona 500 urządzeń do podłączenia do usługi IoT hub i maksymalnie 8000 komunikatów dziennie. Każda subskrypcja platformy Azure można utworzyć jedno centrum IoT w ramach warstwy bezpłatna. 
-
-   **Jednostki usługi IoT Hub**: liczba komunikatów dopuszczalną na jednostkę dziennie zależy od warstwy cenowej Twojego Centrum. Na przykład chcąc usługi IoT hub do obsługi przychodzących 700 000 wiadomości, możesz wybrać dwie jednostki warstwy S1.
-
-   Aby uzyskać szczegółowe informacje na temat innych opcji warstwy, zobacz [wybierając właściwą warstwę usługi IoT Hub](iot-hub-scaling.md).
-
-   **Zaawansowane / urządzenia do chmury partycje**: Ta właściwość dotyczy liczbę jednoczesnych czytników komunikatów komunikatów z urządzenia do chmury. Większość centrów IoT potrzebuje tylko cztery partycje. 
-
-5. Kliknij przycisk **Przejrzyj + Utwórz** przejrzeć wybrane opcje. Zostanie wyświetlony podobny do tego ekranu.
-
-   ![Zrzut ekranu, przeglądając informacje dotyczące tworzenia nowego centrum IoT hub](./media/iot-hub-create-through-portal/iot-hub-create-review.png)
-
-5. Kliknij przycisk **Utwórz** do tworzenia nowego centrum IoT hub. Tworzenie Centrum zajmuje kilka minut.
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="change-the-settings-of-the-iot-hub"></a>Zmień ustawienia usługi IoT hub
 

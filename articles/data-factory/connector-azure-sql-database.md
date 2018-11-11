@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: a4de054926339985b77f110bd00f77c5c8f7d705
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: cd137462235431f0a0c1562e15a32951fe2a41c5
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957993"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346715"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Database przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -208,7 +208,7 @@ Aby skopiować dane z lub do usługi Azure SQL Database, należy ustawić **typu
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | **Typu** właściwości zestawu danych musi być równa **AzureSqlTable**. | Yes |
-| tableName | Nazwa tabeli lub widoku w wystąpieniu usługi Azure SQL Database, która połączona usługa przywołuje. | Yes |
+| tableName | Nazwa tabeli lub widoku w wystąpieniu usługi Azure SQL Database, która połączona usługa przywołuje. | Brak źródła tak dla ujścia |
 
 #### <a name="dataset-properties-example"></a>Przykład właściwości zestawu danych
 
@@ -248,7 +248,6 @@ Aby skopiować dane z usługi Azure SQL Database, należy ustawić **typu** wła
 
 - Jeśli **sqlReaderQuery** jest określona dla **SqlSource**, uruchomieniu działania kopiowania to zapytanie względem źródłowej bazy danych Azure SQL Database można pobrać danych. Lub można określić procedury przechowywanej. Określ **sqlReaderStoredProcedureName** i **storedProcedureParameters** Jeśli procedura składowana pobiera parametry.
 - Jeśli nie podasz **sqlReaderQuery** lub **sqlReaderStoredProcedureName**, kolumn zdefiniowanych w **struktury** części zestawu danych JSON są używane do Utwórz zapytanie. `select column1, column2 from mytable` działa w odniesieniu do bazy danych Azure SQL Database. Jeśli nie ma w definicji zestawu danych **struktury**, wybrano wszystkie kolumny z tabeli.
-- Kiedy używasz **sqlReaderStoredProcedureName**, nadal należy określić dummy **tableName** właściwość w zestawie danych JSON.
 
 #### <a name="sql-query-example"></a>Przykład zapytania SQL
 
@@ -588,7 +587,7 @@ Podczas kopiowania danych z lub do usługi Azure SQL Database, następujące map
 | Datetimeoffset |DateTimeOffset |
 | Dziesiętna |Dziesiętna |
 | Atrybut FILESTREAM (varbinary(max)) |Byte[] |
-| float |Podwójne |
+| Liczba zmiennoprzecinkowa |Podwójne |
 | image |Byte[] |
 | int |Int32 |
 | pieniędzy |Dziesiętna |

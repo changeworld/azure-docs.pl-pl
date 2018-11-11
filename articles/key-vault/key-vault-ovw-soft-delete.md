@@ -7,12 +7,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: ac34f03c896e9e2180b653c41faa7f7525a40e33
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 12b14b87a02619b21e80436c80a284c4011f8b33
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407879"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300323"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Omówienie usuwania nietrwałego w usłudze Azure Key Vault
 
@@ -44,7 +44,9 @@ Opcji soft-delete jest opcjonalne zachowanie usługi Key Vault i jest **nie jest
 ### <a name="purge-protection--flag"></a>Wyczyść flagę ochrony
 Przeczyść ochrony (**— ochrona przed czyszczeniem Włącz** w interfejsie wiersza polecenia platformy Azure) flaga jest domyślnie wyłączona. Gdy ta flaga jest włączona, magazynu lub obiektu w stanie usunięty, nie można przeczyścić aż do minął okres przechowywania 90 dni. Nadal można odzyskać taki magazyn lub obiektu. Ta flaga zapewnia dodano dla klientów, magazynu lub obiektu można nigdy trwale usunąć, dopóki nie upłynął okres przechowywania. Flaga ochrony przeczyszczania można włączyć tylko wtedy, gdy flaga opcji soft-delete znajduje się na lub podczas tworzenia magazynu włączyć obu opcji soft-delete i przeczyścić ochrony.
 
-[!NOTE] Warunek wstępny do włączania ochrona przed czyszczeniem to musi mieć włączone usuwanie nietrwałe. To polecenie, aby to zrobić w wersji 2 interfejsu wiersza polecenia platformy Azure
+> [!NOTE] 
+   Warunek wstępny do włączania ochrona przed czyszczeniem to musi mieć włączone usuwanie nietrwałe.
+To polecenie, aby to zrobić w wersji 2 interfejsu wiersza polecenia platformy Azure
 
 ```
 az keyvault create --name "VaultName" --resource-group "ResourceGroupName" --location westus --enable-soft-delete true --enable-purge-protection true

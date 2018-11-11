@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 2b88bd3c86d520b10c27746319f807d2f6208bfa
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 77d5d6fa9b9494c934f850d5b82a0328cead67b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048179"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245175"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak korzystać z usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB przy użyciu platformy Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -123,7 +123,7 @@ Aby dodać jednostkę, najpierw utwórz obiekt, który definiuje właściwości 
 * **PartitionKey** — określa partycję, w której jest przechowywana jednostka.
 * **RowKey** — unikatowo identyfikuje jednostkę w partycji.
 
-Klucze **PartitionKey** i **RowKey** muszą być wartościami ciągów. Aby uzyskać więcej informacji, zobacz [Understanding the Table Service Data Model (Omówienie modelu danych usługi Table Service)](http://msdn.microsoft.com/library/azure/dd179338.aspx).
+Klucze **PartitionKey** i **RowKey** muszą być wartościami ciągów. Aby uzyskać więcej informacji, zobacz [Understanding the Table Service Data Model (Omówienie modelu danych usługi Table Service)](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
 Poniżej znajduje się przykład definiowania jednostki. Pamiętaj, że element **dueDate** jest definiowany jako typ elementu **Edm.DateTime**. Określenie typu jest opcjonalne — w przypadku rezygnacji typy zostaną wywnioskowane.
 

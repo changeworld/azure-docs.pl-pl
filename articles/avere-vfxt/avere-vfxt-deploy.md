@@ -6,16 +6,16 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 359ada08f1d9df6b60fc27ca385f6003af498e17
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: eb0f5a4a4219c63334e0a5be3ea4378c3c317bec
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958613"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288105"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Wdrażanie klastra vFXT
 
-Aby utworzyć klaster vFXT, najprostszym sposobem jest użycie kontroler klastra, który jest maszyną Wirtualną, która ma wymagane skrypty, szablonów i infrastrukturę oprogramowania do tworzenia i zarządzania klastrem vFXT.
+Najprostszym sposobem utworzenia klastra vFXT na platformie Azure jest do użycia kontrolera klastra. Kontroler klastra jest maszyną Wirtualną, która zawiera wymagane skrypty, szablony i infrastrukturę oprogramowania do tworzenia i zarządzania klastrem vFXT.
 
 Wdrażanie nowego klastra vFXT obejmuje następujące kroki:
 
@@ -68,7 +68,7 @@ Podaj następujące informacje.
 
 W **BASIC** sekcji:  
 
-* **Subskrypcji** klastra
+* **Subskrypcja** klastra
 * **Grupa zasobów** klastra 
 * **Lokalizacja** 
 
@@ -82,7 +82,7 @@ W **ustawienia** sekcji:
 * Grupa zasobów sieci wirtualnej, nazwę i nazwę podsieci — wpisz nazwy istniejących zasobów (w przypadku korzystania z istniejącej sieci wirtualnej) lub nowych nazw w przypadku tworzenia nowej sieci wirtualnej
 * **Nazwa kontrolera** — Ustaw nazwę maszyny Wirtualnej kontrolera
 * Nazwa użytkownika administratora kontrolera — wartość domyślna to `azureuser`
-* Klucz SSH - Wklej klucz publiczny do skojarzenia z nazwą użytkownika administratora. Odczyt [sposób tworzenia i używania kluczy SSH](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) Jeśli potrzebujesz pomocy.
+* Klucz SSH - Wklej klucz publiczny do skojarzenia z nazwą użytkownika administratora. Odczyt [sposób tworzenia i używania kluczy SSH](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) Jeśli potrzebujesz pomocy.
 
 W obszarze **warunków i postanowień**: 
 
@@ -93,16 +93,13 @@ W obszarze **warunków i postanowień**:
 
 Kliknij przycisk **zakupu** po zakończeniu. Po pięciu lub sześciu minut Twój węzeł kontroler zostanie uruchomiona.
 
-Należy odwiedzić stronę danych wyjściowych, aby zebrać informacje potrzebne do klastra. Odczyt [dane wejściowe wymagane dla klastra tworzenia](#inputs-needed-for-cluster-creation) Aby dowiedzieć się więcej.
+Odwiedź stronę danych wyjściowych, aby zebrać informacje kontrolera, które należy utworzyć klaster. Odczyt [informacje niezbędne do utworzenia klastra](#information-needed-to-create-the-cluster) Aby dowiedzieć się więcej.
 
 ### <a name="create-controller---azure-marketplace-image"></a>Tworzenie kontrolera - obrazu z witryny Azure Marketplace
 
-Znajdź szablon kontrolera, wyszukując nazwę w portalu Azure Marketplace ``Avere``. Wybierz **vFXT Avere kontrolera Azure** szablonu. 
+Znajdź szablon kontrolera, wyszukując nazwę w portalu Azure Marketplace ``Avere``. Wybierz **vFXT Avere kontrolera Azure** szablonu.
 
 Jeśli jeszcze tego nie zrobiono, należy zaakceptować warunki i włączyć dostęp programowy do obrazu z witryny Marketplace, klikając pozycję "chcesz wdrożyć programowo?" Link poniżej **Utwórz** przycisku.
-
-> [!NOTE] 
-> W pierwszym tygodniu ogólnie dostępna (31 października - 7 listopada 2018 r.) należy użyć opcji wiersza polecenia, aby zaakceptować postanowienia dotyczące dwa obrazy oprogramowania, zamiast wykonać czynności opisane w tej procedurze. Postępuj zgodnie z instrukcjami w [zaakceptować warunki wcześniej oprogramowania](avere-vfxt-prereqs.md#accept-software-terms-in-advance). 
 
 ![Zrzut ekranu przedstawiający link do dostęp programowy, w której znajduje się poniżej przycisku Utwórz](media/avere-vfxt-deploy-programmatically.png)
 
@@ -125,7 +122,7 @@ W pierwszym panelu wypełnić lub potwierdź następujące podstawowe opcje:
   * Wybierz nazwę użytkownika/hasło lub klucz publiczny SSH (zalecane).
   
     > [!TIP] 
-    > Klucz SSH jest bezpieczniejszy. Odczyt [sposób tworzenia i używania kluczy SSH](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) Jeśli potrzebujesz pomocy. 
+    > Klucz SSH jest bezpieczniejszy. Odczyt [sposób tworzenia i używania kluczy SSH](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) Jeśli potrzebujesz pomocy. 
   * Określ nazwę użytkownika 
   * Wklej klucz SSH lub wprowadź i Potwierdź hasło
 * **Reguły portów wejściowych** — Jeśli to ustawienie przy użyciu publicznego adresu IP, otwarty port 22 (SSH)
@@ -172,29 +169,31 @@ Jeśli używasz usługi Azure Blob storage do obsługi magazynu danych zaplecza,
 
   ![Azure portal zrzut ekranu z adnotacjami, aby uzyskać instrukcje tworzenia punktu końcowego usługi](media/avere-vfxt-service-endpoint.png)
 
-## <a name="gather-needed-inputs"></a>Zbieranie wymaganych danych wejściowych
+## <a name="information-needed-to-create-the-cluster"></a>Informacje wymagane do utworzenia klastra
 
-Potrzebne są następujące informacje do utworzenia klastra. 
+Po utworzeniu kontroler klastra, upewnij się, że masz informacje potrzebne do następnych kroków. 
 
-Jeśli węzeł kontrolera jest tworzona przy użyciu szablonu usługi Resource Manager, możesz to zrobić [Pobierz informacje z danych wyjściowych szablonu](#finding-template-output). 
+Informacje wymagane do połączenia z kontrolerem: 
 
-Wymagane do połączenia z kontrolerem: 
-
-* Kontroler nazwy użytkownika i hasła lub klucza SSH
+* Nazwa użytkownika kontrolera i (hasła lub klucza SSH)
 * Adres IP kontrolera lub innej metody, aby połączyć się z kontrolerem maszyny Wirtualnej
 
-Potrzebne do tworzenia klastra: 
+Informacje o wymaganych przez klaster: 
 
 * Nazwa grupy zasobów
 * Lokalizacja platformy Azure 
 * Nazwa sieci wirtualnej
 * Nazwa podsieci
-* Nazwa roli węzła klastra
+* Nazwa roli węzła klastra — ta nazwa jest ustawiona po utworzeniu tej roli, opisano [poniżej](#create-the-cluster-node-access-role)
 * Nazwa konta magazynu, w przypadku tworzenia kontenera obiektów Blob
 
-Możesz również znaleźć brakujące informacje, przechodząc do strony informacji maszyny Wirtualnej kontrolera. Na przykład kliknij pozycję **wszystkie zasoby** i nazwy kontrolera, a następnie kliknij nazwę kontrolera, aby wyświetlić szczegóły.
+Jeśli węzeł kontrolera jest tworzona przy użyciu szablonu usługi Resource Manager, możesz pobrać informacje z [wynik szablonu](#find-template-output). 
 
-### <a name="finding-template-output"></a>Znajdowanie wynik szablonu
+Jeśli używasz obrazu z witryny Azure Marketplace do tworzenia kontrolera podanych większość z tych elementów bezpośrednio. 
+
+Znajdź wszystkie brakujące elementy, przechodząc do strony informacji maszyny Wirtualnej kontrolera. Na przykład kliknij pozycję **wszystkie zasoby** i nazwy kontrolera, a następnie kliknij nazwę kontrolera, aby wyświetlić jego szczegóły.
+
+### <a name="find-template-output"></a>Znajdź wynik szablonu
 
 Aby znaleźć te informacje z usługi Resource Manager wynik szablonu, wykonaj poniższą procedurę:
 
@@ -215,7 +214,7 @@ Aby wykonać pozostałe kroki wdrażania, musisz połączyć się z kontrolerem 
 1. Metody, aby połączyć się z kontrolerem sieci klastra zależy od konfiguracji.
 
    * Jeśli kontroler ma publiczny adres IP protokołu SSH do adresu IP kontrolera, jako nazwa użytkownika administratora należy ustawić (na przykład ``ssh azureuser@40.117.136.91``).
-   * Jeśli kontrolera nie ma publicznego adresu IP, użyj [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) lub połączenie sieci VPN z siecią wirtualną.
+   * Jeśli kontrolera nie ma publicznego adresu IP, należy użyć sieci VPN lub [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) połączenia z siecią wirtualną.
 
 1. Po zalogowaniu się do kontrolera, uwierzytelnianie, uruchamiając `az login`. Skopiuj kod uwierzytelniania podany w powłoce, a następnie użyć przeglądarki internetowej, aby załadować [ https://microsoft.com/devicelogin ](https://microsoft.com/devicelogin) i Uwierzytelnij się przy użyciu systemu Microsoft. Zwróć się do powłoki o potwierdzenie.
 
@@ -292,15 +291,18 @@ RESOURCE_GROUP=
 Zapisz plik i zamknij.
 
 ### <a name="run-the-script"></a>Uruchamianie skryptu
+
 Uruchom skrypt, wpisując nazwę pliku, który został utworzony. (Przykład: `./create-cloudbacked-cluster-west1`)  
 
-Należy rozważyć uruchomienie tego polecenia wewnątrz [terminalu multiplekser](http://linuxcommand.org/lc3_adv_termmux.php) takich jak `screen` lub `tmux` w przypadku, gdy połączenie zostanie utracone.  
+> [!TIP]
+> Należy rozważyć uruchomienie tego polecenia wewnątrz [terminalu multiplekser](http://linuxcommand.org/lc3_adv_termmux.php) takich jak `screen` lub `tmux` w przypadku, gdy połączenie zostanie utracone.  
+
 Dane wyjściowe również jest rejestrowany wpis `~/vfxt.log`.
 
 Po ukończeniu działania skryptu, skopiuj adres IP zarządzania, który jest niezbędny do administrowania klastrami.
 
 ![Dane wyjściowe wiersza polecenia skryptu wyświetlanie adres IP zarządzania blisko końca](media/avere-vfxt-mgmt-ip.png)
 
-### <a name="next-step"></a>Następny krok
+## <a name="next-step"></a>Następny krok
 
 Teraz, gdy klaster działa, i znasz jego adres IP zarządzania, możesz [nawiązać połączenie za pomocą narzędzia konfiguracji klastra](avere-vfxt-cluster-gui.md) Włączanie obsługi i Dodawanie magazynu, jeśli to konieczne.

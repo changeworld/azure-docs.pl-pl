@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/10/2018
+ms.date: 01/09/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: f52a849fee4005628fb6a8ad567d89f5046d4765
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 43a682568708ab0286328cf3e483ddc3d5cf9dd8
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968076"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515356"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak zoptymalizować inwestycję w chmurę dzięki usłudze Azure Cost Management
 
@@ -186,10 +186,6 @@ Aby uzyskać więcej informacji, zobacz [co to jest Azure rezerwacje?](../billin
 Jeśli już masz licencje systemu Windows Server lub SQL Server we wdrożeniach w środowisku lokalnym, można użyć programu korzyści użycia hybrydowego platformy Azure, można zapisać na platformie Azure. Korzyści systemu Windows Server z każdej licencji po awarii obejmuje koszt systemu operacyjnego (maksymalnie dwóch maszynach wirtualnych), a ponosisz tylko koszty według podstawowej stawki obliczeniowej. Korzystając z istniejących licencji programu SQL Server, można zapisać do 55 procent na opcjach usługi SQL Database oparty na rdzeniach wirtualnych. Opcje obejmują program SQL Server w usłudze Azure Virtual Machines i usług SQL Server Integration Services.
 
 Aby uzyskać więcej informacji, zobacz [Kalkulator korzyści użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
-
-#### <a name="monetary-commitment"></a>Zobowiązanie pieniężne
-
-Klienci, którzy podpisują umowę Enterprise Agreement, można utworzyć ponoszonych z góry zobowiązanie pieniężne firmy Microsoft. Zobowiązań pieniężnych oraz oferuje prosty sposób przydzielania budżetów do zasobów w chmurze, umożliwiają zostały obniżone stawki na platformie Azure. Zmniejszenie szybkości może prowadzić do znaczne oszczędności dla Twojej organizacji.
 
 ### <a name="other-resources"></a>Inne zasoby
 

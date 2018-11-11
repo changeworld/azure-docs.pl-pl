@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: barclayn
-ms.openlocfilehash: 31998c3b9cc151e96d0b2e0b85895603698f493b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f027ced7d6e317bfdf101cb792d9f2f2b7612242
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303222"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247748"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak Generowanie i przenoszenie chronionego przez moduł HSM kluczy dla usługi Azure Key Vault
 
@@ -61,7 +61,7 @@ Znajdują się w następujących tabeli, aby uzyskać listę wymagań wstępnych
 | Subskrypcja platformy Azure |Do utworzenia usługi Azure Key Vault, musisz mieć subskrypcję platformy Azure: [utworzyć konto bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/) |
 | Warstwy usługi Azure Key Vault — wersja Premium do obsługi kluczy chronionych przez moduł HSM |Aby uzyskać więcej informacji na temat warstw usługi i możliwości usługi Azure Key Vault, zobacz [cenami usługi Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) witryny sieci Web. |
 | Modułu HSM firmy Thales, karty inteligentne i oprogramowanie |Musi mieć dostęp do sprzętowego modułu zabezpieczeń firmy Thales i podstawowe wiedzę na temat działania sprzętowych modułów zabezpieczeń firmy Thales. Zobacz [sprzętowego modułu zabezpieczeń firmy Thales](https://www.thales-esecurity.com/msrms/buy) lista zgodnych modeli lub kupić modułu HSM, jeśli nie masz. |
-| Następujący sprzęt i oprogramowanie:<ol><li>W trybie offline x64 stacja robocza z minimalny system operacyjny Windows systemu Windows 7 oraz oprogramowaniem Thales nShield co najmniej wersji 11.50.<br/><br/>W przypadku stacji roboczych z systemem Windows 7, należy [instalacja programu Microsoft .NET Framework 4.5](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Stacji roboczej, który jest połączony z Internetem i ma system operacyjny Windows Windows 7 i [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) **minimalna wersja 1.1.0** zainstalowane.</li><li>Lub inne przenośne urządzenie pamięci masowej z co najmniej 16 MB wolnego miejsca na dysku USB.</li></ol> |Ze względów bezpieczeństwa zaleca się, że pierwszej stacji roboczej nie jest połączony z siecią. Jednak to zalecenie jest nie ograniczenia natury programistycznej.<br/><br/>Należy pamiętać, że w instrukcji, tą stacją roboczą nazywa się rozłączonej stacji roboczej.</p></blockquote><br/>Ponadto jeśli klucz dzierżawy jest dla środowiska produkcyjnego, zaleca się użyć drugiej, oddzielnej stacji roboczej do pobrania zestawu narzędzi i przesłania klucza dzierżawy. Jednak do celów testowych możesz użyć tej samej stacji roboczej jako pierwsza z nich.<br/><br/>Należy pamiętać, że w instrukcji druga stacja robocza jest nazywany stacji roboczej podłączonej do Internetu.</p></blockquote><br/> |
+| Następujący sprzęt i oprogramowanie:<ol><li>W trybie offline x64 stacja robocza z minimalny system operacyjny Windows systemu Windows 7 oraz oprogramowaniem Thales nShield co najmniej wersji 11.50.<br/><br/>W przypadku stacji roboczych z systemem Windows 7, należy [instalacja programu Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Stacji roboczej, który jest połączony z Internetem i ma system operacyjny Windows Windows 7 i [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) **minimalna wersja 1.1.0** zainstalowane.</li><li>Lub inne przenośne urządzenie pamięci masowej z co najmniej 16 MB wolnego miejsca na dysku USB.</li></ol> |Ze względów bezpieczeństwa zaleca się, że pierwszej stacji roboczej nie jest połączony z siecią. Jednak to zalecenie jest nie ograniczenia natury programistycznej.<br/><br/>Należy pamiętać, że w instrukcji, tą stacją roboczą nazywa się rozłączonej stacji roboczej.</p></blockquote><br/>Ponadto jeśli klucz dzierżawy jest dla środowiska produkcyjnego, zaleca się użyć drugiej, oddzielnej stacji roboczej do pobrania zestawu narzędzi i przesłania klucza dzierżawy. Jednak do celów testowych możesz użyć tej samej stacji roboczej jako pierwsza z nich.<br/><br/>Należy pamiętać, że w instrukcji druga stacja robocza jest nazywany stacji roboczej podłączonej do Internetu.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Generowanie i przeniesienia klucza usługi Azure Key Vault
 
@@ -101,7 +101,7 @@ Nie zamykaj okna programu Azure PowerShell.
 
 ### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>Krok 1.3. pobranie zestawu narzędzi rozwiązania BYOK usługi Azure Key Vault
 
-Przejdź do witryny Microsoft Download Center i [pobrania zestawu narzędzi rozwiązania BYOK usługi Azure Key Vault](http://www.microsoft.com/download/details.aspx?id=45345) dla regionu geograficznego lub wystąpienie platformy Azure. Aby zidentyfikować nazwę pakietu do pobrania i jego odpowiedniego skrótu pakietu algorytmu SHA-256, należy użyć następujących informacji:
+Przejdź do witryny Microsoft Download Center i [pobrania zestawu narzędzi rozwiązania BYOK usługi Azure Key Vault](https://www.microsoft.com/download/details.aspx?id=45345) dla regionu geograficznego lub wystąpienie platformy Azure. Aby zidentyfikować nazwę pakietu do pobrania i jego odpowiedniego skrótu pakietu algorytmu SHA-256, należy użyć następujących informacji:
 
 - - -
 **Stany Zjednoczone:**

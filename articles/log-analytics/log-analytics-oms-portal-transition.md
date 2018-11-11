@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 6e3026ea3aca897ab63f4ad7d72eac438fdb7199
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 8aec6ae3532acaaa5d039ee9db8745927c66957b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389115"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288785"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portal pakietu OMS na platformę Azure
 
@@ -55,7 +55,7 @@ Zapoznaj się [często zadawane pytania dotyczące przejścia z portalu pakietu 
 Zarządzanie dostępem portalu platformy Azure jest bogatsze i bardziej efektywne niż zarządzanie dostępem w portalu pakietu OMS. Zobacz [możesz zarządzać obszarami roboczymi](log-analytics-manage-access.md#manage-accounts-and-users) informacje na temat zarządzania dostępem w usłudze Log Analytics.
 
 > [!NOTE]
-> Poprzednie wersje w tym artykule stwierdził, że uprawnienia automatycznie skonwertowana z portalu pakietu OMS do witryny Azure portal. Nie są już planowane jest wprowadzenie tej konwersacji automatyczne, a następnie należy dokonać konwersji samodzielnie.
+> Poprzednie wersje w tym artykule stwierdził, że uprawnienia automatycznie skonwertowana z portalu pakietu OMS do witryny Azure portal. Ta automatyczna konwersja nie jest już jest planowane i należy dokonać konwersji samodzielnie.
 
 Już masz odpowiedni dostęp w witrynie Azure portal w tym przypadku nie trzeba wprowadzać żadnych zmian. Istnieje kilka przypadków, gdy nie masz odpowiedni dostęp w takim przypadku administrator musi przydzielić uprawnienia.
 

@@ -9,16 +9,16 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 88e7dad15a7080c4132a6983d949f9451ad5ce69
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b8263c399f287be79590860cce7036207ef2e3f7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239267"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243747"
 ---
 # <a name="what-is-happening-to-workbench-in-azure-machine-learning-preview"></a>Co się dzieje z aplikacją Workbench w usłudze Azure Machine Learning (wersja zapoznawcza)?
 
-Aplikacja Workbench i niektóre inne wczesne funkcje zostały zastąpione w wersji z września 2018 r., aby zwolnić miejsce na ulepszoną [architekturę](concept-azure-machine-learning-architecture.md). Wersja zawiera wiele znaczących aktualizacji wprowadzonych w oparciu o opinie klientów, które mają na celu udoskonalenie środowiska użytkownika. Podstawowe funkcje od przebiegów eksperymentalnych do wdrożenia modelu nie zmieniły się, ale teraz można używać niezawodnego <a href="http://aka.ms/aml-sdk" target="_blank">zestawu SDK</a> i [interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) do wykonywania zadań i potoków uczenia maszynowego.  
+Aplikacja Workbench i niektóre inne wczesne funkcje zostały zastąpione w wersji z września 2018 r., aby zwolnić miejsce na ulepszoną [architekturę](concept-azure-machine-learning-architecture.md). Wersja zawiera wiele znaczących aktualizacji wprowadzonych w oparciu o opinie klientów, które mają na celu udoskonalenie środowiska użytkownika. Podstawowe funkcje od przebiegów eksperymentalnych do wdrożenia modelu nie zmieniły się, ale teraz można używać niezawodnego <a href="https://aka.ms/aml-sdk" target="_blank">zestawu SDK</a> i [interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) do wykonywania zadań i potoków uczenia maszynowego.  
 
 Z tego artykułu dowiesz się, co się zmieniło i jak zmiany wpłynęły na zadania wykonywane obecnie przy użyciu usługi Azure Machine Learning.
 
@@ -27,7 +27,7 @@ Z tego artykułu dowiesz się, co się zmieniło i jak zmiany wpłynęły na zad
 Najnowsza wersja usługi Azure Machine Learning Service obejmuje:
 + [Uproszczony model zasobów platformy Azure](concept-azure-machine-learning-architecture.md)
 + [Nowy interfejs użytkownika portalu](how-to-track-experiments.md) służący do zarządzania eksperymentami i celami obliczeniowymi
-+ Nowy, bardziej kompleksowy <a href="http://aka.ms/aml-sdk" target="_blank">zestaw SDK</a> języka Python
++ Nowy, bardziej kompleksowy <a href="https://aka.ms/aml-sdk" target="_blank">zestaw SDK</a> języka Python
 + Nowe, rozbudowane [rozszerzenie interfejsu wiersza polecenia platformy Azure](reference-azure-machine-learning-cli.md) na potrzeby uczenia maszynowego
 
 [Architektura](concept-azure-machine-learning-architecture.md) została zaprojektowana od nowa z myślą o ułatwieniu użycia. Zamiast wielu zasobów i kont platformy Azure, będziesz potrzebować tylko aplikacji [Azure Machine Learning Service Workspace](concept-azure-machine-learning-architecture.md#workspace).  Obszary robocze można szybko tworzyć w witrynie [Azure Portal](quickstart-get-started.md).  Obszar roboczy może być używany przez wielu użytkowników do przechowywania celów obliczeniowych szkoleń i wdrożeń, eksperymentów dotyczących modeli, obrazów platformy Docker, wdrożonych modeli itd.
@@ -46,11 +46,10 @@ Z kont eksperymentowania i zarządzania modelami oraz z aplikacji Workbench moż
 
 |Etap|Szczegóły pomocy technicznej dla wcześniejszych funkcji|
 |:---:|----------------|
-|1|Możliwość tworzenia _konta usługi Eksperymentowanie w usłudze Azure Machine Learning_ i _konta usługi Zarządzanie modelami_ w witrynie Azure Portal i za pomocą interfejsu wiersza polecenia. Możliwość tworzenia środowisk obliczeniowych usługi ML z poziomu interfejsu wiersza polecenia także jest wycofywana. Jeśli masz istniejące konto, interfejs wiersza polecenia i aplikacja klasyczna Workbench na tym etapie nadal będą działać.|
-|2|Bazowe interfejsy API do tworzenia starych obszarów roboczych i projektów w klasycznej aplikacji Workbench i za pomocą interfejsu wiersza polecenia są wycofywane. Na tym etapie nadal można otwierać istniejące projekty, dodawać do nich skrypty, uruchamiać skrypty w istniejących projektach i wdrażać usługi internetowe w istniejących środowiskach obliczeniowych usługi ML.|
-|3|Pomoc techniczna dla wszystkich innych zasobów, w tym dla pozostałych interfejsów API i klasycznej aplikacji Workbench jest na tym etapie wycofywana.|
+|1|Kończy się możliwość tworzenia _konta usługi Eksperymentowanie w usłudze Azure Machine Learning_ i _konta usługi Zarządzanie modelami_ w witrynie Azure Portal i za pomocą interfejsu wiersza polecenia. Możliwość tworzenia środowisk obliczeniowych usługi ML z poziomu interfejsu wiersza polecenia także jest wycofywana. Jeśli masz istniejące konto, interfejs wiersza polecenia i aplikacja klasyczna Workbench na tym etapie nadal będą działać.|
+|2|Pomoc techniczna dla wszystkich innych zasobów, w tym dla pozostałych interfejsów API i klasycznej aplikacji Workbench jest na tym etapie wycofywana.|
 
-[Zacznij migrację](how-to-migrate.md) już dziś. Wszystkie najnowsze możliwości są dostępne za pomocą nowego zestawu <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a>, [interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) i witryny [Portal](quickstart-get-started.md).
+[Zacznij migrację](how-to-migrate.md) już dziś. Wszystkie najnowsze możliwości są dostępne za pomocą nowego zestawu <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>, [interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) i witryny [Portal](quickstart-get-started.md).
 
 ## <a name="what-about-run-histories"></a>A co z historią uruchamiania?
 
@@ -67,9 +66,9 @@ Pulpit nawigacyjny obszaru roboczego w portalu jest obsługiwany tylko w przegl�
 
 Istniejących plików przygotowywania danych nie można przenosić do najnowszej wersji, ponieważ nie mamy już aplikacji Workbench. Można jednak nadal przygotować dane do modelowania.  
 
-W przypadku mniejszych zestawów danych można używać <a href="http://aka.ms/aml-sdk" target="_blank">zestawu Data Prep SDK usługi Azure Machine Learning</a>, aby szybko przygotować dane przed rozpoczęciem modelowania. 
+W przypadku mniejszych zestawów danych można używać <a href="https://aka.ms/aml-sdk" target="_blank">zestawu Data Prep SDK usługi Azure Machine Learning</a>, aby szybko przygotować dane przed rozpoczęciem modelowania. 
 
-W przypadku dużych zestawów danych można użyć tego samego <a href="http://aka.ms/aml-sdk" target="_blank">zestawu SDK</a> albo użyć usługi Azure Databricks, aby przygotować zestawy danych big data. 
+W przypadku dużych zestawów danych można użyć tego samego <a href="https://aka.ms/aml-sdk" target="_blank">zestawu SDK</a> albo użyć usługi Azure Databricks, aby przygotować zestawy danych big data. 
 
 ## <a name="will-projects-persist"></a>Czy projekty będą utrwalane?
 
@@ -95,7 +94,7 @@ W nowszej wersji modele są wdrażane jako usługi internetowe w klastrach usłu
 
 Będą one nadal działać przez pewien czas (zobacz [oś czasu](#timeline) powyżej). Zalecamy rozpoczęcie tworzenia nowych eksperymentów i modeli przy użyciu najnowszego zestawu SDK i/lub interfejsu wiersza polecenia.
 
-W najnowszej wersji nowy zestaw SDK języka Python umożliwia interakcję z usługą Azure Machine Learning w dowolnym środowisku języka Python. Dowiedz się, jak zainstalować najnowszy <a href="http://aka.ms/aml-sdk" target="_blank">zestaw SDK</a>.  Można również użyć [zaktualizowanego rozszerzenia uczenia maszynowego dla interfejsu wiersza polecenia platformy Azure](reference-azure-machine-learning-cli.md) z bogatym zestawem poleceń `az ml`, aby pracować z usługą w dowolnym środowisku wiersza polecenia, w tym w usłudze Cloud Shell witryny Azure Portal.
+W najnowszej wersji nowy zestaw SDK języka Python umożliwia interakcję z usługą Azure Machine Learning w dowolnym środowisku języka Python. Dowiedz się, jak zainstalować najnowszy <a href="https://aka.ms/aml-sdk" target="_blank">zestaw SDK</a>.  Można również użyć [zaktualizowanego rozszerzenia uczenia maszynowego dla interfejsu wiersza polecenia platformy Azure](reference-azure-machine-learning-cli.md) z bogatym zestawem poleceń `az ml`, aby pracować z usługą w dowolnym środowisku wiersza polecenia, w tym w usłudze Cloud Shell witryny Azure Portal.
 
 ## <a name="what-about-vs-code-tools-for-ai"></a>Co się stanie z narzędziami VS Code Tools for AI?
 
@@ -105,7 +104,7 @@ W najnowszej wersji rozszerzenie Visual Studio (VS) Code Tools for AI zostało r
 
 ## <a name="what-about-domain-packages"></a>Co się stanie z pakietami domen?
 
-Pakietów domen funkcji [przetwarzania obrazów, analizy tekstu i prognozowania](../desktop-workbench/reference-python-package-overview.md) nie można używać z najnowszą wersją usługi Azure Machine Learning. Można jednak nadal kompilować i uczyć modele przetwarzania obrazów, analizy tekstu oraz prognozowania przy użyciu najnowszego zestawu <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> języka Python dla usługi Azure Machine Learning. Aby dowiedzieć się, jak przeprowadzić migrację istniejących wcześniej modeli utworzonych przy użyciu pakietów przetwarzania obrazów, analizy tekstu i prognozowania, skontaktuj się z nami pod adresem [AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com).
+Pakietów domen funkcji [przetwarzania obrazów, analizy tekstu i prognozowania](../desktop-workbench/reference-python-package-overview.md) nie można używać z najnowszą wersją usługi Azure Machine Learning. Można jednak nadal kompilować i uczyć modele przetwarzania obrazów, analizy tekstu oraz prognozowania przy użyciu najnowszego zestawu <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> języka Python dla usługi Azure Machine Learning. Aby dowiedzieć się, jak przeprowadzić migrację istniejących wcześniej modeli utworzonych przy użyciu pakietów przetwarzania obrazów, analizy tekstu i prognozowania, skontaktuj się z nami pod adresem [AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com).
 
 ## <a name="next-steps"></a>Następne kroki
 

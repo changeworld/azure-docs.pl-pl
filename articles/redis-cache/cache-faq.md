@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: c5a18a2e8d58553e49797da418f76fc3f251e003
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 21b5050996428328bfda314b2f2242ed2a766e74
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026045"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239767"
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache — często zadawane pytania
 Dowiedz się odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dla usługi Azure Redis Cache.
@@ -250,7 +250,7 @@ Można użyć dowolnego polecenia wymienione pod [polecenia Redis](http://redis.
 * `redis-cli -h <redis cache name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Narzędzia wiersza polecenia usługi Redis nie działają z portem SSL, ale można użyć narzędzia, takie jak `stunnel` nawiązania bezpiecznego połączenia narzędzi z portem SSL, postępując zgodnie z instrukcjami w [ogłoszenie dostawca stanu sesji ASP.NET dla usługi Redis (wersja zapoznawcza) Wersja](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) wpis w blogu.
+> Narzędzia wiersza polecenia usługi Redis nie działają z portem SSL, ale można użyć narzędzia, takie jak `stunnel` nawiązania bezpiecznego połączenia narzędzi z portem SSL, postępując zgodnie z instrukcjami w [ogłoszenie dostawca stanu sesji ASP.NET dla usługi Redis (wersja zapoznawcza) Wersja](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) wpis w blogu.
 >
 >
 
@@ -295,7 +295,7 @@ Redis server nie obsługuje natywnie protokołu SSL, ale nie usługi Azure Redis
 >
 >
 
-Redis narzędzi, takich jak `redis-cli` nie działają z portem SSL, ale można użyć narzędzia, takie jak `stunnel` nawiązania bezpiecznego połączenia narzędzi z portem SSL, postępując zgodnie z instrukcjami w [ogłoszenie dostawca stanu sesji ASP.NET dla usługi Redis Wersja zapoznawcza](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) wpis w blogu.
+Redis narzędzi, takich jak `redis-cli` nie działają z portem SSL, ale można użyć narzędzia, takie jak `stunnel` nawiązania bezpiecznego połączenia narzędzi z portem SSL, postępując zgodnie z instrukcjami w [ogłoszenie dostawca stanu sesji ASP.NET dla usługi Redis Wersja zapoznawcza](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) wpis w blogu.
 
 Aby uzyskać instrukcje dotyczące pobierania narzędzia pamięci podręcznej Redis, zobacz [jak uruchomić polecenia Redis?](#cache-commands) sekcji.
 

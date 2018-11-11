@@ -6,24 +6,26 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 07/13/2018
+ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: 4f1f0e95ae74ef41ed91be55f4c964671e8f723b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 3865a94192a65a2cb8a761cc1da30317f605548b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044553"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287204"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Używanie schematu CloudEvents za pomocą usługi Event Grid
 
-W uzupełnieniu do jego [domyślny schemat zdarzeń](event-schema.md), Azure Event Grid zapewnia natywną obsługę zdarzeń w [schematu CloudEvents JSON](https://github.com/cloudevents/spec/blob/master/json-format.md). [CloudEvents](http://cloudevents.io/) jest [Otwórz standardowych specyfikacji](https://github.com/cloudevents/spec/blob/master/spec.md) opisu danych zdarzeń w typowy sposób.
+W uzupełnieniu do jego [domyślny schemat zdarzeń](event-schema.md), Azure Event Grid zapewnia natywną obsługę zdarzeń w [schematu CloudEvents JSON](https://github.com/cloudevents/spec/blob/master/json-format.md). [CloudEvents](http://cloudevents.io/) jest [Otwórz specyfikacji](https://github.com/cloudevents/spec/blob/master/spec.md) opisu danych zdarzenia.
 
 CloudEvents ułatwia współdziałanie, zapewniając wspólny schemat zdarzeń do publikowania i korzystających z chmury na podstawie zdarzeń. Ten schemat umożliwia jednolitego narzędzi, sposób standardowy routing i obsługa zdarzeń i uniwersalnej sposoby deserializacji schematu zdarzeń zewnętrzne. Za pomocą wspólnego schematu można łatwiej zintegrować pracy między platformami.
 
 CloudEvents są kompilowane przez kilka [współpracowników](https://github.com/cloudevents/spec/blob/master/community/contributors.md), Microsoft, w tym za pośrednictwem [Cloud natywnych obliczenia Foundation](https://www.cncf.io/). Jest obecnie dostępna w wersji 0,1.
 
 W tym artykule opisano używanie schematu CloudEvents za pomocą usługi Event Grid.
+
+## <a name="install-preview-feature"></a>Zainstaluj funkcję w wersji zapoznawczej
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
@@ -65,15 +67,15 @@ CloudEvents v0.1 ma następujące właściwości dostępne:
 | cloudEventsVersion | Ciąg   | "0.1"                            | Wersja specyfikacji CloudEvents, który używa zdarzenia        | *przekazany przez*
 | source             | Identyfikator URI      | "/ mycontext"                     | W tym artykule opisano producenta zdarzeń                                       | temat #subject
 | Identyfikator zdarzenia            | Ciąg   | "1234-1234-1234"                 | Identyfikator zdarzenia                                                    | id
-| eventTime          | Sygnatura czasowa| "2018-04-05T17:31:00Z"           | Sygnatura czasowa gdy zdarzenie wystąpiło (opcjonalnie)                    | eventTime
+| eventTime          | Znacznik czasu| "2018-04-05T17:31:00Z"           | Sygnatura czasowa gdy zdarzenie wystąpiło (opcjonalnie)                    | eventTime
 | schemaURL          | Identyfikator URI      | „https://myschema.com”           | Link do schematu, zgodną atrybutu danych (opcjonalnie) | *nie jest używany*
-| Typ zawartości        | Ciąg   | "application/json"               | Opisz format kodowania danych (opcjonalnie)                       | *nie jest używany*
+| contentType        | Ciąg   | "application/json"               | Opisz format kodowania danych (opcjonalnie)                       | *nie jest używany*
 | Rozszerzenia         | Mapa      | {"efekt": "oceny luk w zabezpieczeniach", "extB", "vB"}  | Wszelkie dodatkowe metadane (opcjonalnie)                                 | *nie jest używany*
 | dane               | Obiekt   | {"objA": "oceny luk w zabezpieczeniach", "objB", "vB"}  | Ładunek zdarzenia (opcjonalnie)                                       | dane
 
 Aby uzyskać więcej informacji, zobacz [Specyfikacja CloudEvents](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes).
 
-Wartości nagłówków zapewniane przez schemat usługi Event Grid i schematu CloudEvents zdarzenia są takie same, z wyjątkiem produktów `content-type`. Dla schematu CloudEvents, ta wartość nagłówka jest `"content-type":"application/cloudevents+json; charset=utf-8"`. Dla schematu usługi Event Grid, że wartość nagłówka jest `"content-type":"application/json; charset=utf-8"`.
+Wartości nagłówków zapewniane przez schemat usługi Event Grid i schematu CloudEvents zdarzenia są takie same, z wyjątkiem `content-type`. Dla schematu CloudEvents, ta wartość nagłówka jest `"content-type":"application/cloudevents+json; charset=utf-8"`. Dla schematu usługi Event Grid, że wartość nagłówka jest `"content-type":"application/json; charset=utf-8"`.
 
 ## <a name="configure-event-grid-for-cloudevents"></a>Konfigurowanie usługi Event Grid dla CloudEvents
 
@@ -91,12 +93,12 @@ Dla wszystkich schematów zdarzeń usługi Event Grid wymaga weryfikacji podczas
 
 ### <a name="input-schema"></a>Schemat danych wejściowych
 
-Aby zdefiniować schemat danych wejściowych na niestandardowego tematu, aby CloudEvents, należy użyć następującego parametru w interfejsie wiersza polecenia platformy Azure podczas tworzenia niestandardowego tematu `--input-schema cloudeventv01schema`. Niestandardowy temat oczekuje teraz zdarzeń przychodzących w formacie v0.1 CloudEvents.
+Schemat danych wejściowych dla tematu niestandardowego można ustawić po utworzeniu tematu niestandardowego.
 
-Aby utworzyć temat usługi event grid, należy użyć:
+W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
-```azurecli
-# if you have not already installed the extension, do it now.
+```azurecli-interactive
+# If you have not already installed the extension, do it now.
 # This extension is required for preview features.
 az extension add --name eventgrid
 
@@ -107,24 +109,50 @@ az eventgrid topic create \
   --input-schema cloudeventv01schema
 ```
 
+W przypadku programu PowerShell użyj polecenia:
+
+```azurepowershell-interactive
+# If you have not already installed the module, do it now.
+# This module is required for preview features.
+Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
+
+New-AzureRmEventGridTopic `
+  -ResourceGroupName gridResourceGroup `
+  -Location westcentralus `
+  -Name <topic_name> `
+  -InputSchema CloudEventV01Schema
+```
+
 Bieżąca wersja CloudEvents nie obsługuje tworzenie partii zdarzeń. Do publikowania zdarzeń ze schematem CloudEvent tematu, publikować indywidualnie każdego zdarzenia.
 
 ### <a name="output-schema"></a>Schemat danych wyjściowych
 
-Aby zdefiniować schemat danych wyjściowych na subskrypcję CloudEvents, należy użyć następującego parametru w interfejsie wiersza polecenia platformy Azure podczas tworzenia subskrypcji zdarzeń `--event-delivery-schema cloudeventv01schema`. Zdarzenia dla tej subskrypcji zdarzeń są teraz być dostarczane w formacie v0.1 CloudEvents.
+Schemat danych wyjściowych można ustawić podczas tworzenia subskrypcji zdarzeń.
 
-Aby utworzyć subskrypcję zdarzeń, należy użyć:
+W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
-```azurecli
+```azurecli-interactive
+topicID=$(az eventgrid topic show --name <topic-name> -g gridResourceGroup --query id --output tsv)
+
 az eventgrid event-subscription create \
   --name <event_subscription_name> \
-  --topic-name <topic_name> \
-  -g gridResourceGroup \
+  --source-resource-id $topicID \
   --endpoint <endpoint_URL> \
   --event-delivery-schema cloudeventv01schema
 ```
 
-Bieżąca wersja CloudEvents nie obsługuje tworzenie partii zdarzeń. Subskrypcję zdarzeń, który jest skonfigurowany dla schematu CloudEvent odbiera każde zdarzenie indywidualnie. Obecnie nie można użyć wyzwalacza usługi Event Grid dla aplikacji usługi Azure Functions, gdy zdarzenie jest dostarczany za schematu CloudEvents. Należy użyć wyzwalacza HTTP. Przykłady implementacji wyzwalacza HTTP, który odbiera zdarzenia w schematu CloudEvents, zobacz [użyć wyzwalacza HTTP jako wyzwalacz usługi Event Grid](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger).
+W przypadku programu PowerShell użyj polecenia:
+```azurepowershell-interactive
+$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name <topic-name>).Id
+
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName <event_subscription_name> `
+  -Endpoint <endpoint_URL> `
+  -DeliverySchema CloudEventV01Schema
+```
+
+Bieżąca wersja CloudEvents nie obsługuje tworzenie partii zdarzeń. Subskrypcję zdarzeń, który jest skonfigurowany dla schematu CloudEvent odbiera każde zdarzenie indywidualnie. Obecnie nie można użyć wyzwalacza usługi Event Grid dla aplikacji usługi Azure Functions, gdy zdarzenie jest dostarczany za schematu CloudEvents. Użyj wyzwalacza HTTP. Przykłady implementacji wyzwalacza HTTP, który odbiera zdarzenia w schematu CloudEvents, zobacz [użyć wyzwalacza HTTP jako wyzwalacz usługi Event Grid](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

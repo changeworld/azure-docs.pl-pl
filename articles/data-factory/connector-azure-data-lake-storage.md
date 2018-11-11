@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 65495209714c37e5e166545ed7ed029e36c258c0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 2fad3ad8bc6e1c0ca87038af6c461d863065fc95
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42057540"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345967"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-preview-using-azure-data-factory-preview"></a>Kopiowanie danych do i z usługi Azure Data Lake Gen2 — wersja zapoznawcza przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -34,6 +34,9 @@ W szczególności ten łącznik obsługuje:
 
 >[!TIP]
 >Jeśli włączysz hierarchicznej przestrzeni nazw, obecnie nie ma żadnych współdziałanie operacji między obiektem Blob i interfejsów API Gen2 ADLS. W przypadku, gdy napotkasz błąd "ErrorCode = FilesystemNotFound" przy użyciu szczegółowego komunikatu jako "nie ma określonego systemu plików.", jest to spowodowane przez określony obiekt sink systemu plików została utworzona za pośrednictwem interfejsu API obiektu Blob, zamiast interfejsu API funkcji Azure Data Lake Store Gen2 w innym miejscu. Aby rozwiązać ten problem, podaj nowy system plików o nazwie, która nie istnieje jako nazwa kontenera obiektów Blob i ADF automatycznie utworzy tego systemu plików podczas kopiowania danych.
+
+>[!NOTE]
+>Jeśli użytkownik włączy _"Zezwalaj na zaufane usługi firmy Microsoft dostęp do tego konta magazynu"_ opcję w ustawieniach zapory usługi Azure Storage, za pomocą środowiska Azure Integration Runtime nawiązać połączenia z programem Data Lake Storage Gen2 zgłosi błąd "niedozwolone", jako ADF nie są traktowane jako zaufane usługi firmy Microsoft. Użyj środowiskiem Integration Runtime, ponieważ nawiązywanie połączenia za pośrednictwem.
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 
@@ -84,7 +87,7 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zesta
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość typu elementu dataset musi być równa **AzureBlobFSFile**. |Yes |
-| folderPath | Ścieżka do folderu w Gen2 magazynu programu Data Lake. Filtr z symbolami wieloznacznymi nie jest obsługiwana. Przykład: wartość rootfolder/podfolder /. |Yes |
+| folderPath | Ścieżka do folderu w Gen2 magazynu programu Data Lake. Filtr z symbolami wieloznacznymi nie jest obsługiwana. Jeśli nie zostanie określony, wskazuje katalog główny. Przykład: wartość rootfolder/podfolder /. |Nie |
 | fileName | **Filtr nazwy lub symbol wieloznaczny** dla plików w ramach określonego "folderPath". Jeśli nie określisz wartości dla tej właściwości, zestaw danych wskazuje wszystkie pliki w folderze. <br/><br/>Dla filtru, dozwolone symbole wieloznaczne są: `*` (dopasowuje zero lub więcej znaków) i `?` (dopasowuje zero lub jeden znak).<br/>— Przykład 1: `"fileName": "*.csv"`<br/>— Przykład 2: `"fileName": "???20180427.txt"`<br/>Użyj `^` jako znak ucieczki, jeśli Twoje rzeczywiste nazwy plików symboli wieloznacznych lub ten znak ucieczki wewnątrz.<br/><br/>Kiedy dla wyjściowego zestawu danych nie jest określona nazwa pliku i **preserveHierarchy** nie został określony w ujściu działania, działanie kopiowania automatycznie generuje nazwę pliku z następującym wzorcem: "*danych. [ uruchomienia działania identyfikator GUID]. [Identyfikator GUID Jeśli FlattenHierarchy]. [format skonfigurowanie]. [kompresji, jeśli skonfigurowano]* ". Przykładem jest "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". |Nie |
 | Format | Jeśli chcesz skopiować pliki się między magazynami oparte na plikach (kopia binarna), Pomiń sekcji format w definicji zestawu danych wejściowych i wyjściowych.<br/><br/>Jeśli chcesz analizować lub generowanie plików za pomocą określonego formatu są obsługiwane następujące typy plików w formacie: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, i **ParquetFormat**. Ustaw **typu** właściwości **format** do jednej z tych wartości. Aby uzyskać więcej informacji, zobacz [format tekstu](supported-file-formats-and-compression-codecs.md#text-format), [formatu JSON](supported-file-formats-and-compression-codecs.md#json-format), [Avro format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc format](supported-file-formats-and-compression-codecs.md#orc-format), i [formatu Parquet ](supported-file-formats-and-compression-codecs.md#parquet-format) sekcje. |Brak (tylko w przypadku scenariusza kopia binarna) |
 | Kompresja | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Obsługiwane typy to **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**.<br/>Są obsługiwane poziomy **optymalna** i **najszybciej**. |Nie |

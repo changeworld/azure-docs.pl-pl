@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: cynthn
-ms.openlocfilehash: bbe8059b3a239570c2c9b25586dae9adbe25312d
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e91f75299dddf0ac173499a531ea959292082a9f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931382"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246552"
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm-created-using-the-classic-deployment-model"></a>Jak zresetować swoje hasło logowania na maszynie Wirtualnej Windows utworzonych przy użyciu klasycznego modelu wdrażania lub usługi pulpitu zdalnego
 > [!IMPORTANT]
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Resource Manager i Model Klasyczny](../../../resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Możesz również [wykonać te kroki dla maszyn wirtualnych utworzonych przy użyciu modelu wdrażania usługi Resource Manager](../reset-rdp.md).
+> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../../resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Możesz również [wykonać te kroki dla maszyn wirtualnych utworzonych przy użyciu modelu wdrażania usługi Resource Manager](../reset-rdp.md).
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 
@@ -59,7 +59,7 @@ $vm = Get-AzureVM -ServiceName "myCloudService" -Name "myVM"
 write-host $vm.VM.ProvisionGuestAgent
 ```
 
-Jeśli **zapisu hosta** polecenie wyświetla **True**, jest zainstalowany Agent maszyny Wirtualnej. Jeśli zostanie wyświetlony **False**, zobacz instrukcje oraz link do pobrania w [VM Agent i rozszerzenia — część 2](http://go.microsoft.com/fwlink/p/?linkid=403947&clcid=0x409) wpis w blogu platformy Azure.
+Jeśli **zapisu hosta** polecenie wyświetla **True**, jest zainstalowany Agent maszyny Wirtualnej. Jeśli zostanie wyświetlony **False**, zobacz instrukcje oraz link do pobrania w [VM Agent i rozszerzenia — część 2](https://go.microsoft.com/fwlink/p/?linkid=403947&clcid=0x409) wpis w blogu platformy Azure.
 
 Jeśli utworzono maszynę wirtualną przy użyciu portalu, sprawdź, czy `$vm.GetInstance().ProvisionGuestAgent` zwraca **True**. W przeciwnym razie można ustawić za pomocą tego polecenia:
 
@@ -108,7 +108,7 @@ Jeśli rozszerzenie dostępu do maszyny Wirtualnej platformy Azure nie odpowiada
 
 [Rozszerzenia maszyn wirtualnych platformy Azure i funkcji](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[Nawiązać połączenie z maszyną wirtualną platformy Azure przy użyciu protokołu RDP lub SSH](http://msdn.microsoft.com/library/azure/dn535788.aspx)
+[Nawiązać połączenie z maszyną wirtualną platformy Azure przy użyciu protokołu RDP lub SSH](https://msdn.microsoft.com/library/azure/dn535788.aspx)
 
 [Rozwiązywanie problemów z połączeniami pulpitu zdalnego z maszyną wirtualną na podstawie Windows Azure](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

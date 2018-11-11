@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: cd7b475dc2bd4dade822a82f285c2e96c8d532d2
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3d9da96e5bf6c88f76089dea930b02248cfa1d24
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138192"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243798"
 ---
 # <a name="azure-storage-security-guide"></a>Przewodnik po zabezpieczeniach magazynu platformy Azure
 
@@ -479,7 +479,7 @@ Aby uzyskać więcej informacji na temat mechanizmu CORS i jak go włączyć zap
 * [Cross-Origin Resource Sharing (CORS) obsługę usług Azure Storage w witrynie MSDN](https://msdn.microsoft.com/library/azure/dn535601.aspx)
 
   Jest to dokumentacja obsługę mechanizmu CORS dla usług Azure Storage. Zawiera łącza do artykułów, stosowania do poszczególnych usług magazynu i przedstawia przykład i opisano każdy element w pliku CORS.
-* [Microsoft Azure Storage: Wprowadzenie do mechanizmu CORS](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
+* [Microsoft Azure Storage: Wprowadzenie do mechanizmu CORS](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
 
   To łącze do artykuł z bloga początkowej ogłoszenie CORS wyświetlanie i jak z niej korzystać.
 
@@ -490,7 +490,7 @@ Aby uzyskać więcej informacji na temat mechanizmu CORS i jak go włączyć zap
 
    Jeśli używasz protokołu HTTPS, który zapewnia zabezpieczenia na poziomie transportu, a następnie użyć sprawdzanie MD5 jest nadmiarowe i niepotrzebne.
 
-   Aby uzyskać więcej informacji, zapoznaj się z [Omówienie usługi Azure Blob MD5](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx).
+   Aby uzyskać więcej informacji, zapoznaj się z [Omówienie usługi Azure Blob MD5](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx).
 2. **Informacje o zgodności ze standardem FIPS dla Stanów Zjednoczonych Government?**
 
    Stany Zjednoczone informacji przetwarzania Standard FIPS (Federal) definiuje zatwierdzone do użycia przez amerykański algorytmów kryptograficznych Systemów komputerowych rządu federalnego ochrony poufnych danych. Włączanie standardu FIPS tryb na serwerze Windows lub pulpitu informuje system operacyjny powinna służyć tylko standardem FIPS algorytmów kryptograficznych. Jeśli aplikacja używa algorytmów niezgodnych, spowoduje awarię aplikacji. With.NET Framework w wersji 4.5.2 lub nowszej, aplikacja automatycznie przełącza się algorytmy kryptograficzne, aby użyć algorytmów zgodnych ze standardem FIPS, gdy komputer jest w trybie FIPS.

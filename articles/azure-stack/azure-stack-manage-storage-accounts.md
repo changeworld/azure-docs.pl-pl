@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 35c15613192ac12a7d4c64cbe28f62200724d311
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: af7500d6bf12ef34e6919aa255185a87525310b3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452279"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240719"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Zarządzanie kontami magazynu w usłudze Azure Stack
 Dowiedz się, jak zarządzać kontami magazynu w usłudze Azure Stack, aby znaleźć, odzyskiwania i odzyskać pojemność magazynu na podstawie potrzeb biznesowych.
@@ -136,8 +136,8 @@ Można także jawnie przesłonić okres przechowywania przy użyciu programu Pow
 **Aby odzyskać pojemność przy użyciu programu PowerShell:**   
 
 1. Upewnij się, że programu Azure PowerShell zainstalowany i skonfigurowany. W przeciwnym razie użyj poniższych instrukcji: 
-   * Aby zainstalować najnowszą wersję programu Azure PowerShell i skojarzyć je z subskrypcją platformy Azure, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-   Aby uzyskać więcej informacji o poleceniach cmdlet usługi Azure Resource Manager, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767)
+   * Aby zainstalować najnowszą wersję programu Azure PowerShell i skojarzyć je z subskrypcją platformy Azure, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+   Aby uzyskać więcej informacji o poleceniach cmdlet usługi Azure Resource Manager, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](https://go.microsoft.com/fwlink/?LinkId=394767)
 2. Uruchom następujące polecenia cmdlet:
 
 > [!NOTE]  

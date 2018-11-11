@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 123005a32315ba3972ed4f1c1784d3ac9460b101
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: MT
+ms.openlocfilehash: 32cebecbb9185250d7d295eab3074a76dcd6a8b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958954"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240498"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Strumieniowe przesyłanie danych diagnostycznych platformy Azure w warstwie gorąca ścieżce za pomocą usługi Event Hubs
 Narzędzie diagnostyczne systemu Azure oferuje elastyczne sposoby zbierać metryki i dzienniki z maszyn wirtualnych usługi w chmurze (VM) i przenieść wyniki do usługi Azure Storage. Począwszy od marca 2016 r. (zestaw SDK 2.9) przedział czasu możesz wysyłanie danych diagnostycznych niestandardowymi źródłami danych i transferu danych ścieżkę aktywną w ciągu kilku sekund przy użyciu [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -70,7 +70,7 @@ Domyślnie Diagnostyka Azure zawsze wysyła dzienniki i metryki na konto usługi
 
 W tym przykładzie adres URL z Centrum zdarzeń jest równa w pełni kwalifikowaną przestrzeń nazw Centrum zdarzeń: przestrzeń nazw usługi Event Hubs + "/" + Nazwa Centrum zdarzeń.  
 
-Adres URL jest wyświetlany w Centrum zdarzeń [witryny Azure portal](http://go.microsoft.com/fwlink/?LinkID=213885) na pulpicie nawigacyjnym usługi Event Hubs.  
+Adres URL jest wyświetlany w Centrum zdarzeń [witryny Azure portal](https://go.microsoft.com/fwlink/?LinkID=213885) na pulpicie nawigacyjnym usługi Event Hubs.  
 
 **Ujścia** nazwy, można ustawić dowolny prawidłowy ciąg, tak długo, jak taką samą wartość, jest stosowane konsekwentnie w całym pliku konfiguracji.
 

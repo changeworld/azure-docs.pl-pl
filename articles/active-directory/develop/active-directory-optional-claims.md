@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/05/2018
+ms.date: 11/08/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dcc27992c318a970a86f1ff5c60723daeef881b6
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 0983c2235fba0cacbda53208e5dcad5b2878619c
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914655"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345491"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Porady: dostarczanie opcjonalnych oświadczeń do aplikacji usługi Azure AD (publiczna wersja zapoznawcza)
 
@@ -42,7 +42,7 @@ Jednym z celów [punktu końcowego v2.0 usługi Azure AD](active-directory-appmo
 | Typ konta | Punkt końcowy w wersji 1.0 | Punkt końcowy v2.0  |
 |--------------|---------------|----------------|
 | Osobiste konto Microsoft  | N/d - użyty RPS biletów | Obsługa dostępne |
-| Konto Azure AD          | Obsługiwane                          | Obsługiwane z zastrzeżeniami      |
+| Konto Azure AD          | Obsługiwane                          | Obsługiwane z zastrzeżeniami |
 
 > [!IMPORTANT]
 > Aplikacje, które obsługują zarówno konta osobiste, jak i usługi Azure AD (za pośrednictwem [portalu rejestracji aplikacji](https://apps.dev.microsoft.com)) nie można użyć oświadczeń opcjonalne. Jednak aplikacje zarejestrowane dla właśnie Azure AD przy użyciu punktu końcowego v2.0 można uzyskać opcjonalnych oświadczenia, które są wymagane w manifeście. W witrynie Azure portal służy Edytor manifestu aplikacji w istniejącym **rejestracje aplikacji** środowiska, aby edytować swoje opcjonalne oświadczenia. Jednak ta funkcja nie jest jeszcze dostępna w nowym przy użyciu edytora manifestu aplikacji **rejestracje aplikacji (wersja zapoznawcza)** środowiska.
@@ -60,8 +60,6 @@ Zestaw oświadczeń opcjonalne, domyślnie dostępne do użycia przez aplikacje 
 |-----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Czas, kiedy użytkownik ostatnio uwierzytelniony. Zobacz specyfikacje OpenID Connect.| JWT        |           |  |
 | `tenant_region_scope`      | Region zasobu dzierżawy | JWT        |           | |
-| `signin_state`             | Zaloguj się w stanie oświadczeń   | JWT        |           | 6 wartości, są zwracane jako flagi:<br> "dvc_mngd": urządzenie jest zarządzane<br> "dvc_cmp": urządzenie jest zgodne<br> "dvc_dmjd": urządzenie jest przyłączone do domeny<br> "dvc_mngd_app": urządzenie jest zarządzane za pośrednictwem rozwiązania MDM<br> "inknownntwk": urządzenie jest wewnątrz znanej sieci.<br> "kmsi": Zachowaj mnie podpisane w był używany. <br> |
-| `controls`                 | Atrybut wielowartościowy elementu oświadczenia, zawierająca kontrolki sesji wymuszane przez zasady dostępu warunkowego. | JWT        |           | 3 wartości:<br> "app_res": aplikacja potrzebuje do wymuszania bardziej szczegółowe ograniczenia. <br> "ca_enf": została odroczona wymuszania dostępu warunkowego i jest nadal wymagana. <br> "no_cookie": ten token jest niewystarczająca do wymiany dla pliku cookie w przeglądarce. <br>  |
 | `home_oid`                 | Dla użytkowników-gości, identyfikator obiektu użytkownika w dzierżawie macierzystego użytkownika.| JWT        |           | |
 | `sid`                      | Identyfikator sesji, umożliwiający wylogowanie użytkownika sesji. | JWT        |           |         |
 | `platf`                    | Platforma urządzeń    | JWT        |           | Ograniczone do zarządzanych urządzeń, które można sprawdzić typ urządzenia.|
@@ -76,6 +74,7 @@ Zestaw oświadczeń opcjonalne, domyślnie dostępne do użycia przez aplikacje 
 | `xms_pl`                   | Preferowany język  | JWT ||Użytkownik preferowanego języka, jeśli ustawiona. Źródło ich głównej dzierżawy w scenariuszach dostęp gościa. Sformatowana LL DW ("en-us"). |
 | `xms_tpl`                  | Dzierżawy preferowany język| JWT | | Dzierżawy zasobów preferowanego języka, jeśli ustawiona. LL sformatowany ("PL"). |
 | `ztdid`                    | Bezobsługowa identyfikator wdrożenia | JWT | | Tożsamość urządzenia używana dla [rozwiązania Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) |
+|`email`                     | Adresy e-mail dla tego użytkownika, jeśli użytkownik ma jeden.  | JWT, SAML | | Ta wartość jest domyślnie, jeśli użytkownik Gość w dzierżawie.  Dla zarządzanych użytkowników (te wewnątrz dzierżawy) jej należy wystąpić za pomocą tego opcjonalnego roszczenia, lub w wersji 2.0, z zakresu OpenID.  Dla zarządzanych użytkowników, adres e-mail musi być ustawiona w [portalu administracyjnego usługi Office](https://portal.office.com/adminportal/home#/users).|  
 | `acct`             | Stan konta użytkowników w dzierżawie. | JWT, SAML | | Jeśli użytkownik jest członkiem dzierżawy, wartość jest `0`. Jeśli są one gościa, wartość jest `1`. |
 | `upn`                      | Oświadczenie UserPrincipalName. | JWT, SAML  |           | Mimo że to oświadczenie jest automatycznie dołączane, możesz je określić jako opcjonalnego roszczenia, aby dołączyć dodatkowe właściwości, aby zmodyfikować jego zachowanie w przypadku użytkownika gościa. <br> Dodatkowe właściwości: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash` |
 

@@ -15,21 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: a87d02732196af7471636346fa802f9a58869c95
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: a71ee9246ae21ad76be66c022dac9fe3f00ecbb5
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393577"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345236"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Przenoszenie danych do programu SQL Server na maszynie wirtualnej platformy Azure
-W tym temacie opisano opcje przenoszenia danych z plików prostych (w formatach plików CSV lub TSV) lub z lokalnego programu SQL Server do programu SQL Server na maszynie wirtualnej platformy Azure. Te zadania dotyczące przenoszenia danych do chmury są częścią zespołu danych dla celów naukowych.
+
+W tym artykule opisano opcje przenoszenia danych z plików prostych (formaty plików CSV lub TSV) lub z lokalnego programu SQL Server do programu SQL Server na maszynie wirtualnej platformy Azure. Te zadania dotyczące przenoszenia danych do chmury są częścią zespołu danych dla celów naukowych.
 
 Temat, który przedstawia opcje przenoszenia danych do usługi Azure SQL Database dla usługi Machine Learning, można zobaczyć [przenoszenie danych do usługi Azure SQL Database dla usługi Azure Machine Learning](move-sql-azure.md).
-
-**Menu** poniżej łącza do tematów opisujących sposób pozyskiwania danych w innych środowiskach docelowych, gdzie dane mogą być przechowywane i przetwarzane podczas procesu do nauki o danych zespołu (TDSP).
-
-[!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]
 
 Poniższa tabela podsumowuje Opcje przenoszenia danych do programu SQL Server na maszynie wirtualnej platformy Azure.
 

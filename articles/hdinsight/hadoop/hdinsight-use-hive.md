@@ -3,19 +3,19 @@ title: Co to jest Apache Hive i HiveQL — Azure HDInsight
 description: Apache Hive jest platformy Hadoop w systemie magazynu danych. Można tworzyć zapytania — dane przechowywane w gałęzi przy użyciu HiveQL, które podobnie do języka Transact-SQL. W tym dokumencie Dowiedz się, jak używać technologii Hive i HiveQL z usługi Azure HDInsight.
 keywords: hiveql, co to jest hive i hadoop hiveql, jak wykorzystać technologię hive, Dowiedz się, hive, co to jest gałąź
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 9f22766b0ecbaff027cf4b495624f892d4339d17
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 0401717da8c5548033bbbd7720bb1266646bbe48
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249369"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241110"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co to jest Apache Hive i HiveQL w usłudze Azure HDInsight?
 
@@ -70,7 +70,7 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 STORED AS TEXTFILE LOCATION '/example/data/';
 ```
 
-Hive obsługuje też niestandardowy **serializator/deserializers (SerDe)** złożonego lub nieregularnie strukturalnych danych. Aby uzyskać więcej informacji, zobacz [jak używać niestandardowego SerDe JSON z HDInsight](http://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx) dokumentu.
+Hive obsługuje też niestandardowy **serializator/deserializers (SerDe)** złożonego lub nieregularnie strukturalnych danych. Aby uzyskać więcej informacji, zobacz [jak używać niestandardowego SerDe JSON z HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx) dokumentu.
 
 Aby uzyskać więcej informacji na temat formatów plików obsługiwanych przez program Hive, zobacz [(ręczne) języka https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
@@ -106,7 +106,7 @@ Można również rozszerzać hive za pośrednictwem **funkcje zdefiniowane przez
 
 * [Funkcja języka C# zdefiniowanych przez użytkownika za pomocą technologii Hive](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [Jak dodać niestandardowe funkcji zdefiniowanej przez użytkownika programu Hive do HDInsight](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Jak dodać niestandardowe funkcji zdefiniowanej przez użytkownika programu Hive do HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
 * [Przykład Hive funkcji zdefiniowanej przez użytkownika, aby przekonwertować formaty daty/godziny na gałąź znacznik czasu:](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 

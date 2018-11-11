@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7470416ab5e5d71cc569db19e47d34c5a29bc063
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 1cd9e99d9f530abb34ff072a740d89bc511c64ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810469"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241518"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Cloud-zgodność z RODO Portal partnerów
 ====================================
@@ -48,6 +48,6 @@ Do zarządzania zgody w portalu Cloud Partner, są zawsze początkowo wyświetla
 
 -   [Jak i gdzie firma Microsoft wysyła klientów\' dane, w tym lokalizacje geograficzne](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
 -   [Podwykonawców, którzy mają dostęp do klientów\' danych](https://aka.ms/Online_Serv_Subcontractor_List)
--   [Szczegółowe informacje na temat środków zabezpieczeń platformy Azure zarządzane przez firmę Microsoft](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
+-   [Szczegółowe informacje na temat środków zabezpieczeń platformy Azure zarządzane przez firmę Microsoft](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
 -   [Szczegóły dotyczące programu Microsoft\'ochrony prywatności przeglądy procesu przeprowadzonych dla wszystkich produktów, w tym wszystkich usług platformy Azure](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards)
 -   [Jakie danych zbieranych przez firmę Microsoft i procesy z systemami klientów i użytkowników końcowych](https://www.microsoft.com/trustcenter/privacy/you-own-your-data)

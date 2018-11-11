@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: 7b0de5e149b8b64252f90a01f66642c15fb25ddc
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 426ebb90a0d7716b14664f874db259a0cca2aa7e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247796"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241093"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Kodowanie elementu zawartości za pomocą usługi Media Encoder Standard za pomocą platformy .NET 
 Zadania kodowania to jedna z operacji najczęściej przeprowadzanych przy użyciu usługi Media Services. Zadania kodowania są tworzone w celu konwertowania plików multimediów z jednego formatu kodowania na inny. Podczas kodowania, możesz użyć wbudowanych Media Encoder usługi Media Services. Można również użyć koder świadczonych przez partnera usługi Media Services; kodery innych firm są dostępne za pośrednictwem portalu Azure Marketplace. 
 
-W tym artykule przedstawiono sposób kodowania elementów zawartości przy użyciu Media Encoder Standard (MES) za pomocą platformy .NET. Usługi Media Encoder Standard jest skonfigurowany przy użyciu jednego z ustawień wstępnych koderów opisem [tutaj](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+W tym artykule przedstawiono sposób kodowania elementów zawartości przy użyciu Media Encoder Standard (MES) za pomocą platformy .NET. Usługi Media Encoder Standard jest skonfigurowany przy użyciu jednego z ustawień wstępnych koderów opisem [tutaj](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
 
 Zalecane jest zawsze kodowanie plików źródłowych do adaptacyjną szybkością transmisji bitów zestawu w formacie MP4, a następnie wykonać konwersję zestawu za pomocą żądany format [funkcję dynamicznego tworzenia pakietów](media-services-dynamic-packaging-overview.md). 
 
@@ -39,7 +39,7 @@ Jeśli element zawartości danych wyjściowych jest szyfrowany w magazynie, nale
 [Formaty i kodery-dekodery](media-services-media-encoder-standard-formats.md)
 
 ### <a name="mes-presets"></a>Ustawienia wstępne usługi MES
-Usługi Media Encoder Standard jest skonfigurowany przy użyciu jednego z ustawień wstępnych koderów opisem [tutaj](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+Usługi Media Encoder Standard jest skonfigurowany przy użyciu jednego z ustawień wstępnych koderów opisem [tutaj](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
 
 ### <a name="input-and-output-metadata"></a>Metadane wejściowe i wyjściowe
 Podczas kodowania wejściowego elementu (lub zasoby), za pomocą usługi MES, pobieranie elementu zawartości wyjściowej po pomyślnym zakończeniu tego kodowania zadań. Elementu zawartości wyjściowej zawiera film wideo, audio, miniatury, manifest, itp., w oparciu o ustawienia wstępne kodowania, którego używasz.

@@ -1,6 +1,6 @@
 ---
-title: Plikach multimedialnych przyspieszonych ujęć poklatkowych za pomocą usługi Azure Media Hyperlapse | Dokumentacja firmy Microsoft
-description: Azure Media Hyperlapse tworzy smooth czas, jaki upłynął wideo z pierwszą osobą lub akcji aparatu zawartości. W tym temacie pokazano, jak używać nośnika indeksatora.
+title: Hyperlapse Media pliki z usługi Azure Media Hyperlapse | Dokumentacja firmy Microsoft
+description: Usługa Azure Media Hyperlapse tworzy smooth czasu uzyskanie płynnych wideo poklatkowych na podstawie zawartości pierwszą osobą, która lub kamery akcji. W tym temacie pokazano, jak używać Media Indexer.
 services: media-services
 documentationcenter: ''
 author: asolanki
@@ -14,36 +14,36 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: adsolank
-ms.openlocfilehash: ed64a616538ed4699abc03225a2dcf27d164521f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 268e679bb052bce4c972c940333147edc5c7d721
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788487"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242589"
 ---
-# <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Plikach multimedialnych przyspieszonych ujęć poklatkowych za pomocą usługi Azure Media Hyperlapse
-Azure Media Hyperlapse jest nośnik procesora (MP) tworzącą smooth czas, jaki upłynął wideo z pierwszą osobą lub akcji aparatu zawartości.  Element równorzędny oparte na chmurze do [desktop Pro przyspieszonych ujęć poklatkowych i opartych na telefon komórkowy przyspieszonych ujęć poklatkowych Microsoft Research](http://aka.ms/hyperlapse), Hyperlapse firmy Microsoft dla usługi Azure Media Services używa bardzo dużej skali przetwarzania Media Services multimediów Azure Platforma na poziomie skalowanie i parallelize zbiorcze przyspieszonych ujęć poklatkowych przetwarzania.
+# <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Hyperlapse Media pliki z usługi Azure Media Hyperlapse
+Usługa Azure Media Hyperlapse jest nośnik procesora (MP) który tworzy smooth czasu uzyskanie płynnych wideo poklatkowych na podstawie zawartości pierwszą osobą, która lub kamery akcji.  Element równorzędny oparte na chmurze, aby [pulpitu Hyperlapse Pro Microsoft Research i telefoniczną Hyperlapse Mobile](https://aka.ms/hyperlapse), Microsoft Hyperlapse dla usługi Azure Media Services korzysta z ogromnej skali przetwarzania multimediów usługi multimediów Azure platform na poziomie skalowanie i wykonywanie równoległe zbiorczo Hyperlapse przetwarzania.
 
 > [!IMPORTANT]
-> Microsoft Hyperlapse jest zaprojektowana by najlepiej pracować na pierwszą osobą zawartości za pomocą przenoszenia aparatu. Mimo że nadal kamery może nadal działać, wydajności i jakości procesor multimediów Azure Media przyspieszonych ujęć poklatkowych nie można zagwarantować dla innych typów zawartości.
+> Microsoft Hyperlapse jest zaprojektowana by najlepiej pracować na pierwszą osobą, która zawartości za pomocą aparatu przenoszenia. Mimo że nadal aparatu nagrań z monitorowania może nadal działać, wydajności i jakości procesor multimediów Azure Media Hyperlapse nie można zagwarantować dla innych typów zawartości.
 > 
 > 
 
-Azure Media Hyperlapse zadania przyjmuje jako plik wejściowy elementu MP4, MOV lub WMV zasobów wraz z plikiem konfiguracji, który określa, które ramki wideo powinna być czas, jaki upłynął i jakie szybkości (np. pierwszych 10 000 ramek, x 2).  Dane wyjściowe są stabilnych i czas, jaki upłynął dobór wejściowego pliku wideo.
+Azure Media Hyperlapse zadania przyjmuje jako MP4, MOV lub WMV trwały plik wejściowy wraz z plikiem konfiguracji, który określa, które klatki filmu wideo powinien być czas, jaki upłynął i jakie szybkości (np. pierwszych 10 000 ramek na 2 x).  Dane wyjściowe są stabilizowanych i czas, jaki upłynął dobór wejściowego pliku wideo.
 
-## <a name="hyperlapse-an-asset"></a>Przyspieszonych ujęć poklatkowych zasobów
-Najpierw należy przesłać żądany plik wejściowy do usługi Azure Media Services.  Aby dowiedzieć się więcej na temat pojęć związanych z przekazywanie i zarządzania zawartością, przeczytaj [zarządzania zawartością artykułu](media-services-portal-vod-get-started.md).
+## <a name="hyperlapse-an-asset"></a>Przyspieszone ujęcia Poklatkowe zasobu
+Najpierw należy przekazać żądany plik wejściowy do usługi Azure Media Services.  Aby dowiedzieć się więcej na temat pojęć związanych z przekazywania i zarządzania zawartością, przeczytaj [zarządzania zawartością artykułu](media-services-portal-vod-get-started.md).
 
-### <a id="configuration"></a>Ustawienie konfiguracji dla przyspieszonych ujęć poklatkowych
-Gdy zawartość jest na koncie usługi Media Services, należy utworzyć ustawienia konfiguracji.  W poniższej tabeli opisano pola określone przez użytkownika:
+### <a id="configuration"></a>Ustawienie konfiguracji dla usługi przyspieszone ujęcia Poklatkowe
+Po zawartości w ramach konta usługi Media Services, należy utworzyć ustawienia konfiguracji.  W poniższej tabeli opisano pola określone przez użytkownika:
 
 | Pole | Opis |
 | --- | --- |
-| StartFrame |Ramka, na którym powinny one zacząć przetwarzania Hyperlapse firmy Microsoft. |
+| StartFrame |Ramka, na którym ma się zacząć przetwarzania Microsoft Hyperlapse. |
 | NumFrames |Liczba ramek do przetworzenia |
-| Szybkość |Współczynnik, z którą ma zostać przyspieszenia wejściowy plik wideo. |
+| Szybkość |Czynnik przyspieszenia wejściowego klipu wideo. |
 
-Poniżej przedstawiono przykładowy plik konfiguracji zgodność w pliku XML i JSON:
+Oto przykład zgodność pliku konfiguracji XML i JSON:
 
 **Ustawienie wstępne XML:**
 ```xml
@@ -75,14 +75,14 @@ Poniżej przedstawiono przykładowy plik konfiguracji zgodność w pliku XML i J
     }
 ```
 
-### <a id="sample_code"></a> Microsoft przyspieszonych ujęć poklatkowych przy użyciu zestawu SDK .NET usługi AMS
-Następująca metoda przekazuje plik nośnika jako zasób i tworzy zadanie z procesora Azure Media przyspieszonych ujęć poklatkowych nośnika.
+### <a id="sample_code"></a> Technologia Microsoft Hyperlapse przy użyciu zestawu SDK .NET usługi AMS
+Poniższa metoda przekazuje plik multimedialny jako zasób usługi i tworzy zadanie z procesorem multimediów Azure Media Hyperlapse.
 
 > [!NOTE]
-> CloudMediaContext ma już w zakresie o nazwie "context" dla tego kodu do pracy.  Aby dowiedzieć się więcej na ten temat, przeczytaj [zarządzania zawartością artykułu](media-services-dotnet-get-started.md).
+> CloudMediaContext powinno mieć już w zakresie o nazwie "kontekst" dla tego kodu do pracy.  Aby dowiedzieć się więcej na ten temat, przeczytaj [zarządzania zawartością artykułu](media-services-dotnet-get-started.md).
 > 
 > [!NOTE]
-> Argument ciągu "hyperConfig" powinien być konfiguracji zgodność ustawień w formacie JSON i XML, zgodnie z powyższym opisem.
+> Argument ciągu "hyperConfig" powinien traktować jako konfigurację zgodność wstępnie ustawione w formacie JSON lub XML, zgodnie z powyższym opisem.
 > 
 > 
 
@@ -213,7 +213,7 @@ Następująca metoda przekazuje plik nośnika jako zasób i tworzy zadanie z pro
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Powiązane linki
-[Przegląd analiz usługi Azure Media Services](media-services-analytics-overview.md)
+[Przegląd Analityki usługi Azure Media Services](media-services-analytics-overview.md)
 
-[W trakcie analizy multimediów Azure](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Pokazy usługi Azure Media Analytics](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

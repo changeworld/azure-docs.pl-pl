@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: autoscale
-ms.openlocfilehash: 7a3083bd757a7aa5625799724d601f99fd7e2b14
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 8491f3f61746374b67e174ca5efff2fbf2fe5fbe
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961300"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281901"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Omówienie automatycznego skalowania w Microsoft Azure Virtual Machines, Cloud Services i Web Apps
 W tym artykule opisano, jakie Microsoft Azure Skalowanie automatyczne to, jego zalety i sposób rozpoczynania korzystania z niego.  
@@ -107,8 +107,8 @@ Możesz skonfigurować automatyczne skalowanie za pomocą
 | Web Apps |[Skalowanie aplikacji sieci Web](monitoring-autoscale-get-started.md) |
 | Cloud Services |[Automatyczne skalowanie usługi w chmurze](../cloud-services/cloud-services-how-to-scale-portal.md) |
 | Maszyny wirtualne: klasyczny |[Skalowanie zestawów dostępności klasycznej maszyny wirtualnej](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
-| Virtual Machines: Zestawy skalowania Windows |[Skalowanie skalowania maszyn wirtualnych zestawów w Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-powershell.md) |
-| Maszyny wirtualne: Zestawy skalowania systemu Linux |[Skalowanie skalowania maszyn wirtualnych ustawia w systemie Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) |
+| Virtual Machines: Zestawy skalowania Windows |[Skalowanie skalowania maszyn wirtualnych zestawów w Windows](../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
+| Maszyny wirtualne: Zestawy skalowania systemu Linux |[Skalowanie skalowania maszyn wirtualnych ustawia w systemie Linux](../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
 | Virtual Machines: Przykład Windows |[Zaawansowanej konfiguracji skalowania automatycznego dla zestawów skalowania maszyn wirtualnych przy użyciu szablonów usługi Resource Manager](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
 | Usługi API Management|[Automatyczne skalowanie wystąpienia usługi Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 

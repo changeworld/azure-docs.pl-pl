@@ -8,12 +8,12 @@ ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b1e95ade4793fd7d3acf396b00ee4f7d8b81b2f8
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 734387e7ce5fc27cb88c73601bdfd0f35d04b693
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634266"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288683"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Programu Azure AD Connect: Dokumentacja programu PowerShell ADSyncTools
 Poniższa dokumentacja zawiera informacje dotyczące modułu programu PowerShell ADSyncTools.psm1, dostępnej w programie Azure AD Connect.
@@ -1102,7 +1102,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adwatermark"></a>-ADwatermark
-Jeśli już uruchomione jako Administrator domeny nie jest nie trzeba podawać poświadczeń AD ręczne wprowadzanie znaku wodnego, zamiast XML pliku, np. $ADwatermark = "TVNEUwMAAAAXyK9ir1zSAQAAAAAAAAAA(...)"
+Jeśli już uruchomione jako Administrator domeny ma nie trzeba podawać poświadczeń usługi AD.
+Ręczne wprowadzanie znaku wodnego, zamiast XML pliku, np. $ADwatermark = "TVNEUwMAAAAXyK9ir1zSAQAAAAAAAAAA(...)"
 
 ```yaml
 Type: String

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 7bb692735cb3541fb05b2c39dd7325fa74a00034
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: c9b343bba59776ca735fa5c2cbddf03ec5c92b47
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232209"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242827"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database — często zadawane pytania (FAQ)
 
@@ -27,7 +27,7 @@ Bieżąca wersja bazy danych SQL jest wersja V12. W wersji V11 został wycofany.
 
 ## <a name="what-is-the-sla-for-sql-database"></a>Co to jest umowa SLA dla usługi SQL Database
 
-Firma Microsoft gwarantuje dostępność przez 99,99% czasu, możesz korzystać z łączności między usługi Microsoft Azure SQL Database i bramą internetową firmy Microsoft niezależnie od tego, w warstwie usługi. 0,01% jest zarezerwowana do poprawki, aktualizacje i przejścia w tryb failover. Aby uzyskać więcej informacji, zobacz [SLA](http://azure.microsoft.com/support/legal/sla/). Aby uzyskać informacje o architekturze dostępność usługi Azure SQL Database, zobacz [wysokiej dostępności i Azure SQL Database](sql-database-high-availability.md).
+Firma Microsoft gwarantuje dostępność przez 99,99% czasu, możesz korzystać z łączności między usługi Microsoft Azure SQL Database i bramą internetową firmy Microsoft niezależnie od tego, w warstwie usługi. 0,01% jest zarezerwowana do poprawki, aktualizacje i przejścia w tryb failover. Aby uzyskać więcej informacji, zobacz [SLA](https://azure.microsoft.com/support/legal/sla/). Aby uzyskać informacje o architekturze dostępność usługi Azure SQL Database, zobacz [wysokiej dostępności i Azure SQL Database](sql-database-high-availability.md).
 
 ## <a name="can-i-control-when-patching-downtime-occurs"></a>Czy mogę kontrolować to sytuacji poprawek przestoju
 

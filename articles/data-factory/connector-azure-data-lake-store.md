@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 11/05/2018
 ms.author: jingwang
-ms.openlocfilehash: d8bbc3a5e4ac14ed60fcd6e5f19bdf1df03455a6
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 3b1abe60fc81ae0316e2d0552a1750129171ff5f
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817028"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345457"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Kopiowanie danych z usługi Azure Data Lake Storage Gen1 lub za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,9 +44,6 @@ W szczególności ten łącznik usługi Azure Data Lake Store obsługuje:
 > Aby zapoznać się z przewodnikiem za pomocą łącznika usługi Azure Data Lake Store, zobacz [ładowanie danych do usługi Azure Data Lake Store](load-azure-data-lake-store.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
-
->[!NOTE]
->Gdy narzędzie do kopiowania danych umożliwia tworzenie potoku kopiowania lub wykonać testowania połączenia/przechodząc folderów podczas tworzenia za pomocą interfejsu użytkownika usługi ADF, wymaga uprawnień jednostki usługi lub plik MSI, zostanie im przyznany na poziomie głównym. While, wykonania działania kopiowania można pracować tak długo, jak to uprawnienie jest przydzielane do danych do skopiowania. Jeśli potrzebujesz ograniczyć uprawnienia, możesz pominąć operacji tworzenia.
 
 Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do usługi Azure Data lake Store.
 
@@ -79,6 +76,9 @@ Aby użyć uwierzytelniania jednostki usługi, zarejestruj jednostki aplikacji w
 > Upewnij się, że można przyznać usługi głównej odpowiednie uprawnienia w usłudze Azure Data Lake Store:
 >- **Jako źródło**, w Eksploratorze danych -> dostępu, co najmniej udzielić **odczytu i wykonania** uprawnienia do listy, a następnie skopiuj pliki w folderze/podfoldery, lub **odczytu** uprawnień do kopiowania pojedynczego pliku; i wybierz opcję Dodaj do **ten folder i wszystkie obiekty podrzędne** dla cyklicznego i dodać **uprawnienia dostępu i domyślny wpis uprawnień**. Nie wymagań dotyczących kontroli dostępu na poziomie konta (IAM).
 >- **Jako obiekt sink**, w Eksploratorze danych -> dostępu, co najmniej udzielić **zapisu i wykonania** uprawnień, aby tworzyć elementy podrzędne w folderze, a następnie wybierz do dodania do **ten folder i wszystkie obiekty podrzędne** dla cyklicznego i Dodaj jako **uprawnienia dostępu i domyślny wpis uprawnień**. Jeśli używasz środowiska Azure IR można skopiować (zarówno źródła i ujścia znajdują się w chmurze), kontroli dostępu (IAM), co najmniej udzielić **czytnika** roli w celu umożliwiają usłudze Data Factory wykryć regionu Data Lake Store. Jeśli chcesz uniknąć ta rola zarządzania tożsamościami i Dostępem jawnie [tworzenie środowiska Azure IR](create-azure-integration-runtime.md#create-azure-ir) z lokalizacji usługi Data Lake Store i skojarz w Data Lake Store połączone usługi, w poniższym przykładzie.
+
+>[!NOTE]
+>Kiedy używać **narzędzia do kopiowania danych** tworzenia potoku kopiowania lub użyj **interfejsu użytkownika usługi ADF** przeprowadzenie testowania połączenia/przechodząc folderów podczas tworzenia, wymaga uprawnień jednostki usługi, zostanie im przyznany **na poziomie głównym z uprawnieniami "Execute"** w kolejności do listy folderów, począwszy od katalogu głównego. While, wykonania działania kopiowania można pracować tak długo, jak to uprawnienie jest przydzielane do danych do skopiowania. Jeśli potrzebujesz ograniczyć uprawnienia, możesz pominąć operacji tworzenia.
 
 Obsługiwane są następujące właściwości:
 
@@ -128,6 +128,9 @@ Aby użyć zarządzanych tożsamości do uwierzytelniania zasobów platformy Azu
 >- **Jako źródło**, w Eksploratorze danych -> dostępu, co najmniej udzielić **odczytu i wykonania** uprawnienia do listy, a następnie skopiuj pliki w folderze/podfoldery, lub **odczytu** uprawnień do kopiowania pojedynczego pliku; i wybierz opcję Dodaj do **ten folder i wszystkie obiekty podrzędne** dla cyklicznego i dodać **uprawnienia dostępu i domyślny wpis uprawnień**. Nie wymagań dotyczących kontroli dostępu na poziomie konta (IAM).
 >- **Jako obiekt sink**, w Eksploratorze danych -> dostępu, co najmniej udzielić **zapisu i wykonania** uprawnień, aby tworzyć elementy podrzędne w folderze, a następnie wybierz do dodania do **ten folder i wszystkie obiekty podrzędne** dla cyklicznego i Dodaj jako **uprawnienia dostępu i domyślny wpis uprawnień**. Jeśli używasz środowiska Azure IR można skopiować (zarówno źródła i ujścia znajdują się w chmurze), kontroli dostępu (IAM), co najmniej udzielić **czytnika** roli w celu umożliwiają usłudze Data Factory wykryć regionu Data Lake Store. Jeśli chcesz uniknąć ta rola zarządzania tożsamościami i Dostępem jawnie [tworzenie środowiska Azure IR](create-azure-integration-runtime.md#create-azure-ir) z lokalizacji usługi Data Lake Store i skojarz w Data Lake Store połączone usługi, w poniższym przykładzie.
 
+>[!NOTE]
+>Kiedy używać **narzędzia do kopiowania danych** tworzenia potoku kopiowania lub użyj **interfejsu użytkownika usługi ADF** przeprowadzenie testowania połączenia/przechodząc folderów podczas tworzenia, wymaga uprawnień, zostanie im przyznany **w katalogu głównym poziom dzięki uprawnienie "Execute"** w kolejności do listy folderów, począwszy od katalogu głównego. While, wykonania działania kopiowania można pracować tak długo, jak to uprawnienie jest przydzielane do danych do skopiowania. Jeśli potrzebujesz ograniczyć uprawnienia, możesz pominąć operacji tworzenia.
+
 W usłudze Azure Data Factory nie trzeba określać żadnych właściwości, oprócz ogólnych informacji Data Lake Store w połączonej usługi.
 
 **Przykład:**
@@ -159,7 +162,7 @@ Aby skopiować dane do/z usługi Azure Data Lake Store, należy ustawić właśc
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość typu elementu dataset musi być równa: **AzureDataLakeStoreFile** |Yes |
-| folderPath | Ścieżka do folderu w Data Lake Store. Filtr z symbolami wieloznacznymi nie jest obsługiwana. Przykład: wartość rootfolder/podfolder / |Yes |
+| folderPath | Ścieżka do folderu w Data Lake Store. Filtr z symbolami wieloznacznymi nie jest obsługiwana. Jeśli nie zostanie określony, wskazuje katalog główny. Przykład: wartość rootfolder/podfolder / |Nie |
 | fileName | **Filtr nazwy lub symbol wieloznaczny** dla plików w ramach określonego "folderPath". Jeśli nie określisz wartości dla tej właściwości, zestaw danych wskazuje wszystkie pliki w folderze. <br/><br/>Dla filtru, dozwolone symbole wieloznaczne są: `*` (dopasowuje zero lub więcej znaków) i `?` (dopasowuje zero lub jeden znak).<br/>— Przykład 1: `"fileName": "*.csv"`<br/>— Przykład 2: `"fileName": "???20180427.txt"`<br/>Użyj `^` jako znak ucieczki, jeśli Twoje rzeczywiste nazwy plików symboli wieloznacznych lub ten znak ucieczki wewnątrz.<br/><br/>Kiedy dla wyjściowego zestawu danych nie jest określona nazwa pliku i **preserveHierarchy** nie został określony w ujściu działania, działanie kopiowania automatycznie generuje nazwę pliku w następującym formacie: "*danych. [ uruchomienia działania identyfikator GUID]. [Identyfikator GUID Jeśli FlattenHierarchy]. [format skonfigurowanie]. [kompresji, jeśli skonfigurowano]* ". Przykładem jest "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". |Nie |
 | Format | Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych.<br/><br/>Jeśli chcesz analizować lub generowanie plików za pomocą określonego formatu są obsługiwane następujące typy plików w formacie: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](supported-file-formats-and-compression-codecs.md#text-format), [formatu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro Format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc Format](supported-file-formats-and-compression-codecs.md#orc-format), i [formatu Parquet](supported-file-formats-and-compression-codecs.md#parquet-format) sekcje. |Brak (tylko w przypadku scenariusza kopia binarna) |
 | Kompresja | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**.<br/>Są obsługiwane poziomy: **optymalna** i **najszybciej**. |Nie |

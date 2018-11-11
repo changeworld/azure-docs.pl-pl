@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: 86a14d12f6621524ef26e2a869d4be532105dc77
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a62af881efd4f6f3422db19850a0ce9987c6ae7b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732352"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245124"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Korzystanie z usługi Azure Storage z rozwiązaniem ciągłej integracji Hudson
 ## <a name="overview"></a>Przegląd
@@ -146,7 +146,7 @@ Poniżej zawiera omówienie składników usługi obiektów Blob.
 
 * **Konto magazynu**: cały dostęp do usługi Azure Storage odbywa się przez konto magazynu. Jest to najwyższy poziom przestrzeni nazw do uzyskiwania dostępu do obiektów blob. Konto może zawierać nieograniczoną liczbę kontenerów, tak długo, jak ich łączny rozmiar wynosi poniżej 100 TB.
 * **Kontener**: kontener zawiera grupowanie zestawu obiektów blob. Wszystkie obiekty blob muszą być w kontenerze. Konto może zawierać nieograniczoną liczbę kontenerów. Kontener może przechowywać nieograniczoną liczbę obiektów blob.
-* **Obiekt blob**: plik dowolnego typu i rozmiaru. Istnieją dwa typy obiektów blob, które mogą być przechowywane w usłudze Azure Storage: blokowe i stronicowe obiekty BLOB. Większość plików to blokowe obiekty BLOB. Pojedynczy blokowy obiekt blob może być maksymalnie 200 GB. W tym samouczku korzysta z blokowych obiektów blob. Stronicowe obiekty BLOB, innego typu obiektu blob, może być maksymalnie 1 TB, rozmiar i są bardziej efektywne, gdy zakresów bajtów w pliku są często modyfikowane. Aby uzyskać więcej informacji na temat obiektów blob, zobacz [omówienie blokowych obiektów blob, Uzupełnialnych obiektów blob i stronicowe obiekty BLOB](http://msdn.microsoft.com/library/azure/ee691964.aspx).
+* **Obiekt blob**: plik dowolnego typu i rozmiaru. Istnieją dwa typy obiektów blob, które mogą być przechowywane w usłudze Azure Storage: blokowe i stronicowe obiekty BLOB. Większość plików to blokowe obiekty BLOB. Pojedynczy blokowy obiekt blob może być maksymalnie 200 GB. W tym samouczku korzysta z blokowych obiektów blob. Stronicowe obiekty BLOB, innego typu obiektu blob, może być maksymalnie 1 TB, rozmiar i są bardziej efektywne, gdy zakresów bajtów w pliku są często modyfikowane. Aby uzyskać więcej informacji na temat obiektów blob, zobacz [omówienie blokowych obiektów blob, Uzupełnialnych obiektów blob i stronicowe obiekty BLOB](https://msdn.microsoft.com/library/azure/ee691964.aspx).
 * **Format adresu URL**: obiekty BLOB są adresy, przy użyciu następującego formatu adresu URL:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
@@ -162,6 +162,6 @@ Poniżej zawiera omówienie składników usługi obiektów Blob.
 * [Usługa Azure Storage SDK dla języka Java](https://github.com/azure/azure-storage-java)
 * [Dokumentacja zestawu SDK klienta usługi Azure Storage](http://dl.windowsazure.com/storage/javadoc/)
 * [Interfejs API REST usług Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Blog zespołu odpowiedzialnego za usługę Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Blog zespołu odpowiedzialnego za usługę Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/)
 
 Aby uzyskać więcej informacji, odwiedź stronę [Azure dla deweloperów języka Java](/java/azure).

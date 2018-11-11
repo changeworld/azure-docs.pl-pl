@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/30/2018
+ms.date: 11/08/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 3c0ab236dd6fce10be0a50c435f04517e14c1387
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: ec84c87e047d6426d24ef339d1247c6cb53954dd
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077599"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299423"
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy limitów przydziału w usłudze Azure Stack
 
@@ -31,15 +31,15 @@ ms.locfileid: "49077599"
 ## <a name="compute-quota-types"></a>Typy limitów przydziału obliczeniowych 
 | **Typ** | **Wartość domyślna** | **Opis** |
 | --- | --- | --- |
-| Maksymalna liczba maszyn wirtualnych | 20 | Maksymalna liczba maszyn wirtualnych, które można utworzyć subskrypcji, w tej lokalizacji. |
-| Maksymalna liczba rdzeni maszyn wirtualnych | 50 | Maksymalna liczba rdzeni, które można utworzyć subskrypcji, w tym miejscu (na przykład maszyna wirtualna A3 ma cztery rdzenie). |
+| Maksymalna liczba maszyn wirtualnych | 50 | Maksymalna liczba maszyn wirtualnych, które można utworzyć subskrypcji, w tej lokalizacji. |
+| Maksymalna liczba rdzeni maszyn wirtualnych | 100 | Maksymalna liczba rdzeni, które można utworzyć subskrypcji, w tym miejscu (na przykład maszyna wirtualna A3 ma cztery rdzenie). |
 | Maksymalna liczba zestawów dostępności | 10 | Maksymalna liczba zestawów dostępności, które mogą być tworzone w tej lokalizacji. |
-| Maksymalna liczba maszyn wirtualnych zestawów skalowania | 20 | Maksymalna liczba zestawów skalowania maszyn wirtualnych, które mogą być tworzone w tej lokalizacji. |
+| Maksymalna liczba maszyn wirtualnych zestawów skalowania | 100 | Maksymalna liczba zestawów skalowania maszyn wirtualnych, które mogą być tworzone w tej lokalizacji. |
 
 ## <a name="storage-quota-types"></a>Typy limitów przydziału magazynu 
 | **Element** | **Wartość domyślna** | **Opis** |
 | --- | --- | --- |
-| Maksymalna pojemność (GB) |500 |Pojemność pamięci masowej, które mogą być używane przez subskrypcji w tej lokalizacji. |
+| Maksymalna pojemność (GB) |2048 |Pojemność pamięci masowej, które mogą być używane przez subskrypcji w tej lokalizacji. |
 | Łączna liczba kont magazynu |20 |Maksymalna liczba kont magazynu, które można utworzyć subskrypcji, w tej lokalizacji. |
 
 > [!NOTE]  

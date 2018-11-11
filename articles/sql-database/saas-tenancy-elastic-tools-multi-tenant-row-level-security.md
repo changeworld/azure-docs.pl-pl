@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: d669e7beb2d0e41ff26408d4f71c3e1648c41e3a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6d701878886cb1d5cc20a57614a474537f06a728
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242572"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242912"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Wielodostępne aplikacje za pomocą narzędzi elastycznych baz danych i zabezpieczenia na poziomie wiersza
 
@@ -41,7 +41,7 @@ Celem jest użycie Biblioteka kliencka elastic database [routingu zależnego od 
 
 - Używanie programu Visual Studio (2012 lub nowszym)
 - Utwórz trzy bazy danych Azure SQL
-- Pobierz przykładowy projekt: [narzędzia elastyczne bazy danych SQL Azure - fragmentów z wieloma dzierżawcami](http://go.microsoft.com/?linkid=9888163)
+- Pobierz przykładowy projekt: [narzędzia elastyczne bazy danych SQL Azure - fragmentów z wieloma dzierżawcami](https://go.microsoft.com/?linkid=9888163)
   - Wprowadź informacje dla baz danych na początku **Program.cs** 
 
 Ten projekt rozszerza to opisane w [narzędzia elastyczne bazy danych SQL Azure - Entity Framework integracji](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) przez dodanie obsługi wielodostępnych fragmentu bazy danych. Projekt zostanie skompilowany prostej aplikacji konsolowej do tworzenia blogów i wpisów. Projekt obejmuje czterema dzierżawami oraz dwóch fragmentów wielodostępnych baz danych. Ta konfiguracja została przedstawiona na powyższym diagramie. 
@@ -254,7 +254,7 @@ GO
 ```
 
 > [!TIP]
-> W projekcie złożone, może być konieczne Dodaj predykat na setkach tabel, która może być żmudne. Brak procedury przechowywane pomocnika, która automatycznie generuje zasady zabezpieczeń i dodaje predykat dla wszystkich tabel w schemacie. Aby uzyskać więcej informacji, zobacz wpis w blogu [stosowanie zabezpieczeń na poziomie wiersza do wszystkich tabel - pomocnika skryptu (blog)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script).
+> W projekcie złożone, może być konieczne Dodaj predykat na setkach tabel, która może być żmudne. Brak procedury przechowywane pomocnika, która automatycznie generuje zasady zabezpieczeń i dodaje predykat dla wszystkich tabel w schemacie. Aby uzyskać więcej informacji, zobacz wpis w blogu [stosowanie zabezpieczeń na poziomie wiersza do wszystkich tabel - pomocnika skryptu (blog)](https://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script).
 
 Jeśli uruchomisz ponownie za pomocą aplikacji przykładowej, dzierżaw pojawić tylko wiersze, które należą do nich. Ponadto aplikacja nie można wstawić wierszy, które należą do innych niż ten, który został podłączony do fragmentu bazy danych dzierżaw. Ponadto aplikacji nie można zaktualizować identyfikatora dzierżawy w żadnych wierszy, które mogą być widoczne. Jeśli aplikacja próbuje wykonać jedną, zgłaszany jest DbUpdateException.
 
@@ -342,7 +342,7 @@ GO
 ### <a name="maintenance"></a>Konserwacja
 
 - **Dodawanie nowych fragmentów**: wykonanie skryptu T-SQL, aby włączyć zabezpieczenia na poziomie wiersza w żadnych nowych fragmentów, w przeciwnym razie zapytań na tych fragmentach nie są filtrowane.
-- **Dodawanie nowych tabel**: Dodaj predykat filtru i bloku zasady zabezpieczeń na wszystkich fragmentów, zawsze wtedy, gdy tworzona jest nowa tabela. W przeciwnym razie kwerendy dla nowej tabeli nie są filtrowane. To dodawanie można zautomatyzować za pomocą wyzwalacza DDL, zgodnie z opisem w [stosowanie zabezpieczeń na poziomie wiersza automatycznie z nowo utworzonego tabelami (blog)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx).
+- **Dodawanie nowych tabel**: Dodaj predykat filtru i bloku zasady zabezpieczeń na wszystkich fragmentów, zawsze wtedy, gdy tworzona jest nowa tabela. W przeciwnym razie kwerendy dla nowej tabeli nie są filtrowane. To dodawanie można zautomatyzować za pomocą wyzwalacza DDL, zgodnie z opisem w [stosowanie zabezpieczeń na poziomie wiersza automatycznie z nowo utworzonego tabelami (blog)](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx).
 
 ## <a name="summary"></a>Podsumowanie
 
@@ -358,7 +358,7 @@ Narzędzi elastycznej bazy danych i zabezpieczenia na poziomie wiersza mogą by�
 
 ## <a name="questions-and-feature-requests"></a>Pytania i sugestie funkcji
 
-Masz pytania, skontaktuj się z nami na [forum bazy danych SQL](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted). I Dodaj wszelkie żądania funkcji [forum z opiniami bazy danych SQL](https://feedback.azure.com/forums/217321-sql-database/).
+Masz pytania, skontaktuj się z nami na [forum bazy danych SQL](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted). I Dodaj wszelkie żądania funkcji [forum z opiniami bazy danych SQL](https://feedback.azure.com/forums/217321-sql-database/).
 
 
 <!--Image references-->

@@ -11,21 +11,23 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/16/2016
+ms.date: 11/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: f943f0e371b3092717a62a2e83a98211723e5302
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4b7b663b95bee12848f4afe2d2f48504a4408266
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304411"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515186"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Adnotacje na wykresy metryk w usłudze Application Insights
+
 Adnotacje na [Eksploratora metryk](app-insights-metrics-explorer.md) wykresy pokazują, w której została wdrożona nowa kompilacja lub innych istotnego zdarzenia. Ułatwiają one można łatwo sprawdzić, czy zmiany miały wpływu na wydajność aplikacji. Mogą być automatycznie tworzone przez [usługom DevOps platformy Azure, system kompilacji](https://docs.microsoft.com/azure/devops/pipelines/tasks/). Można również utworzyć adnotacje do dowolnego zdarzenia, które chcesz przez [ich tworzenia za pomocą programu PowerShell](#create-annotations-from-powershell).
 
+> [!NOTE]
+> W tym artykule odzwierciedla przestarzałego **metryki klasycznego środowiska**. Adnotacje tylko są obecnie dostępne w środowisku klasycznym i  **[skoroszyty](app-insights-usage-workbooks.md)**. Aby dowiedzieć się więcej na temat currrent metryki środowiska, należy skontaktować się [w tym artykule](../monitoring-and-diagnostics/monitoring-metric-charts.md).
+
 ![Przykład adnotacje z korelacją widoczne z czas odpowiedzi serwera](./media/app-insights-annotations/00.png)
-
-
 
 ## <a name="release-annotations-with-azure-devops-services-build"></a>Adnotacje dotyczące dzięki usługom DevOps platformy Azure kompilacji wersji
 

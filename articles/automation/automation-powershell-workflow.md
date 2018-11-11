@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4b48400920176055e7eb166c7502c06e67b29185
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 00f6f84a2065a67e999149e4b0f9e28f18e5e297
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436365"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239427"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Nauka podstawowych pojęć przepływu pracy środowiska Windows PowerShell dla elementów runbook usługi Automation
 
@@ -22,7 +22,7 @@ Elementy Runbook w usłudze Azure Automation są zaimplementowane jako przepływ
 
 Przepływ pracy to sekwencja zaprogramowanych, połączonych czynności, które wykonywania długotrwałych zadań lub do zapewnienia koordynacji wielu czynności należące do wielu urządzeń lub węzłach zarządzanych. Korzyści wynikające z przepływu pracy zamiast zwykłego skryptu obejmują możliwość jednoczesnego wykonywania akcji na wielu urządzeniach i możliwość automatycznego odzyskiwania po awarii. Przepływ pracy Windows PowerShell to skrypt środowiska Windows PowerShell, który używa programu Windows Workflow Foundation. Gdy przepływ pracy jest napisane przy użyciu składni programu Windows PowerShell, a następnie uruchomić program Windows PowerShell, jest on przetwarzany przez program Windows Workflow Foundation.
 
-Aby uzyskać szczegółowe informacje dotyczące tematów, w tym artykule, zobacz [rozpoczęcie korzystania z przepływu pracy środowiska Windows PowerShell](http://technet.microsoft.com/library/jj134242.aspx).
+Aby uzyskać szczegółowe informacje dotyczące tematów, w tym artykule, zobacz [rozpoczęcie korzystania z przepływu pracy środowiska Windows PowerShell](https://technet.microsoft.com/library/jj134242.aspx).
 
 ## <a name="basic-structure-of-a-workflow"></a>Podstawowa struktura przepływu pracy
 
@@ -45,9 +45,9 @@ Kod przepływu pracy programu PowerShell wygląda niemal identyczny kod skryptu 
 
 ### <a name="activities"></a>Działania
 
-Działanie jest konkretnym zadaniem w przepływie pracy. Tak samo, jak skrypt składa się z co najmniej jedno polecenie, przepływ pracy składa się z jednego lub więcej działań, które są wykonywane w sekwencji. Windows PowerShell Workflow automatycznie konwertuje wiele poleceń cmdlet programu Windows PowerShell do działania po uruchomieniu przepływu pracy. Po określeniu jednej z tych poleceń cmdlet w elemencie runbook odpowiadające mu działanie jest uruchamiane przez program Windows Workflow Foundation. Dla poleceń cmdlet, które nie mają odpowiadającego im działania, Windows PowerShell Workflow automatycznie uruchamia polecenie cmdlet w ramach [InlineScript](#inlinescript) działania. Istnieje zestaw poleceń cmdlet, które są wyłączone i nie można używać w przepływie pracy, chyba że zostaną jawnie umieszczone w bloku InlineScript. Aby uzyskać więcej szczegółowych informacji dotyczących tych pojęć, zobacz [używanie działań w skryptowych przepływach pracy](http://technet.microsoft.com/library/jj574194.aspx).
+Działanie jest konkretnym zadaniem w przepływie pracy. Tak samo, jak skrypt składa się z co najmniej jedno polecenie, przepływ pracy składa się z jednego lub więcej działań, które są wykonywane w sekwencji. Windows PowerShell Workflow automatycznie konwertuje wiele poleceń cmdlet programu Windows PowerShell do działania po uruchomieniu przepływu pracy. Po określeniu jednej z tych poleceń cmdlet w elemencie runbook odpowiadające mu działanie jest uruchamiane przez program Windows Workflow Foundation. Dla poleceń cmdlet, które nie mają odpowiadającego im działania, Windows PowerShell Workflow automatycznie uruchamia polecenie cmdlet w ramach [InlineScript](#inlinescript) działania. Istnieje zestaw poleceń cmdlet, które są wyłączone i nie można używać w przepływie pracy, chyba że zostaną jawnie umieszczone w bloku InlineScript. Aby uzyskać więcej szczegółowych informacji dotyczących tych pojęć, zobacz [używanie działań w skryptowych przepływach pracy](https://technet.microsoft.com/library/jj574194.aspx).
 
-Działania przepływów pracy dzielą zestaw wspólnych parametrów konfigurujących ich pracę. Aby uzyskać szczegółowe informacje o typowych parametrach przepływu pracy, zobacz [about_WorkflowCommonParameters](http://technet.microsoft.com/library/jj129719.aspx).
+Działania przepływów pracy dzielą zestaw wspólnych parametrów konfigurujących ich pracę. Aby uzyskać szczegółowe informacje o typowych parametrach przepływu pracy, zobacz [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx).
 
 ### <a name="positional-parameters"></a>Parametry pozycyjne
 
@@ -152,7 +152,7 @@ Podczas działania InlineScript mogą okazać się niezbędne w niektórych prze
 * Nie można użyć [równoległym](#parallel-processing) wewnątrz InlineScriptBlock.
 * InlineScript ma wpływ na skalowalność przepływu pracy, ponieważ utrzymuje sesję środowiska Windows PowerShell na całej długości tego bloku.
 
-Aby uzyskać więcej informacji na temat korzystania z InlineScript, zobacz [uruchamianie poleceń programu Windows PowerShell w przepływie pracy](http://technet.microsoft.com/library/jj574197.aspx) i [about_InlineScript](http://technet.microsoft.com/library/jj649082.aspx).
+Aby uzyskać więcej informacji na temat korzystania z InlineScript, zobacz [uruchamianie poleceń programu Windows PowerShell w przepływie pracy](https://technet.microsoft.com/library/jj574197.aspx) i [about_InlineScript](https://technet.microsoft.com/library/jj649082.aspx).
 
 ## <a name="parallel-processing"></a>Przetwarzanie równoległe
 
@@ -291,7 +291,7 @@ workflow CreateTestVms
 
 Nie jest to wymagane, jeśli używasz uwierzytelniania przy użyciu konta Uruchom jako skonfigurowane przy użyciu jednostki usługi.
 
-Aby uzyskać więcej informacji na temat punktów kontrolnych, zobacz [Dodawanie punktów kontrolnych do skryptowego przepływu pracy](http://technet.microsoft.com/library/jj574114.aspx).
+Aby uzyskać więcej informacji na temat punktów kontrolnych, zobacz [Dodawanie punktów kontrolnych do skryptowego przepływu pracy](https://technet.microsoft.com/library/jj574114.aspx).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

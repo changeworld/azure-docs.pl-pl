@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 24337863d4e3f8e093c2e33afbb39364ec37516d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: fd33ca723bd00b4a9c25009ef5b4f444487244f0
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50252187"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281952"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Omówienie zdarzeń filtrowania dla subskrypcji usługi Event Grid
 
@@ -57,9 +57,9 @@ Jest ze składnią pliku JSON w celu filtrowania według typu zdarzenia:
 
 Aby filtrować według wartości w polach danych oraz określić operator porównania, użyj zaawansowanych opcji filtrowania. W zaawansowanego filtrowania, należy określić:
 
-* Operator - typ porównania.
+* Operator typ — typ porównania.
 * klucz: pole danych zdarzenia, które są używane do filtrowania. Można go, liczba, wartość logiczna lub ciąg.
-* wartości — wartości do porównania z klucza.
+* wartość lub wartości — wartość lub wartości do porównania z klucza.
 
 Jest ze składnią pliku JSON dla korzystanie z zaawansowanych filtrów:
 
@@ -67,14 +67,14 @@ Jest ze składnią pliku JSON dla korzystanie z zaawansowanych filtrów:
 "filter": {
   "advancedFilters": [
     {
-      "Operator": "NumberGreaterThanOrEquals",
-      "Key": "Data.Key1",
-      "Values": 5
+      "operatorType": "NumberGreaterThanOrEquals",
+      "key": "Data.Key1",
+      "value": 5
     },
     {
-      "Operator": "StringContains",
-      "Key": "Subject",
-      "Values": ["container1", "container2"]
+      "operatorType": "StringContains",
+      "key": "Subject",
+      "values": ["container1", "container2"]
     }
   ]
 }
@@ -122,7 +122,7 @@ W przypadku zdarzeń w schemacie zdarzeń w chmurze Użyj następujących warto�
 * eventTypeVersion
 * Dane zdarzenia (na przykład Data.key1)
 
-Niestandardowy schemat danych wejściowych można użyć w polach danych zdarzeń (na przykład Data.key1 Data.key1.key2).
+Niestandardowy schemat danych wejściowych można użyć w polach danych zdarzeń (na przykład Data.key1).
 
 ### <a name="values"></a>Wartości
 
@@ -140,7 +140,7 @@ Zaawansowane filtrowanie ma następujące ograniczenia:
 * Pięć zaawansowane filtry dla subskrypcji usługi event grid
 * 512 znaków na wartość ciągu
 * Pięć wartości **w** i **nie** operatorów
-* Klucz może mieć tylko dwa poziomy zagnieżdżenia (na przykład data.key1.key2)
+* Klucz może mieć tylko jeden poziom zagnieżdżenia (na przykład data.key1)
 
 Ten sam klucz może służyć w więcej niż jeden filtr.
 

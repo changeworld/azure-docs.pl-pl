@@ -15,15 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: f87bc1d8140bea9ebb09e45d42b27e201b474026
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: ecdc6ae6c7e0c8a89d97611f41146d168bc74741
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214346"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344114"
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>Równoległy zbiorczy import danych przy użyciu tabeli partycji SQL
-Ten dokument zawiera opis sposobu tworzenia partycjonowane tabele, szybkie równoległy zbiorczy importowania danych do bazy danych programu SQL Server. Ładowanie danych big data/transferu do usługi SQL database, importowanie danych do bazy danych SQL i kolejne zapytania można zwiększyć za pomocą *partycjonowane tabele i widoki*. 
+
+W tym artykule opisano sposób tworzenia partycjonowane tabele, szybkie równoległy zbiorczy importowania danych do bazy danych programu SQL Server. Ładowanie danych big data/transferu do usługi SQL database, importowanie danych do bazy danych SQL i kolejne zapytania można zwiększyć za pomocą *partycjonowane tabele i widoki*. 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>Utwórz nową bazę danych i zestaw grup plików
 * [Utwórz nową bazę danych](https://technet.microsoft.com/library/ms176061.aspx), jeśli nie już istnieje.
@@ -102,7 +103,7 @@ Aby uzyskać więcej informacji, zobacz [tworzenie partycjonowane tabele i indek
 * [Instrukcja ALTER database](https://msdn.microsoft.com/library/bb522682.aspx) zmianę schematu rejestrowanie transakcji na BULK_LOGGED, aby zminimalizować obciążenie rejestrowania na przykład:
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* Aby przyspieszyć ładowanie danych, należy uruchomić operacji importu zbiorczego równolegle. Aby uzyskać wskazówki dotyczące zbiorczego przyspieszając w ten sposób importowania danych big Data do bazy danych programu SQL Server, zobacz [ładowanie 1TB w mniej niż 1 godzinę](http://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
+* Aby przyspieszyć ładowanie danych, należy uruchomić operacji importu zbiorczego równolegle. Aby uzyskać wskazówki dotyczące zbiorczego przyspieszając w ten sposób importowania danych big Data do bazy danych programu SQL Server, zobacz [ładowanie 1TB w mniej niż 1 godzinę](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
 
 Poniższy skrypt programu PowerShell znajduje się przykład danych równoległe ładowanie przy użyciu narzędzia BCP.
 

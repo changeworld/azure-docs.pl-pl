@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 2/1/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9b2f4dbf1e87aa5aa035bfd9071fed7be74a9c07
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 023674f05dda6c2da8edddb843277dd07a513162
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979001"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244631"
 ---
 # <a name="use-the-ai-toolkit-for-azure-iot-edge"></a>Użyj zestaw narzędzi SI dla usługi Azure IoT Edge
 
@@ -27,4 +27,4 @@ Korzystaj z zaawansowanych możliwości sztucznej inteligencji, uczenia maszynow
 
 Zestaw narzędzi SI dla usługi Azure IoT Edge to kolekcja skryptów, kodu i możliwe do wdrożenia kontenerów. Przykłady obejmują konserwacja predykcyjna, Klasyfikacja obrazów i przetwarzanie mowy, a także wdrażanie modelu niestandardowego za pomocą usługi Azure Machine Learning i Azure IoT Hub. Modele dołączone do zestawu narzędzi może być używany jako —, ale wszystkie kod źródłowy i dane są dostępne dla deweloperów dostosować zależnie od ich potrzeb.
 
-Zestaw narzędzi SI dla usługi Azure IoT Edge publicznego repozytorium GitHub znajduje się w temacie [aka.ms / — zestaw narzędzi si](http://aka.ms/AI-toolkit).
+Zestaw narzędzi SI dla usługi Azure IoT Edge publicznego repozytorium GitHub znajduje się w temacie [aka.ms / — zestaw narzędzi si](https://aka.ms/AI-toolkit).

@@ -2,19 +2,19 @@
 title: 'Zestaw narzędzi platformy Azure dla środowiska IntelliJ: tworzenie aplikacji Spark dla klastra usługi HDInsight '
 description: Azure Toolkit for IntelliJ umożliwia tworzenie aplikacji Spark napisanych w języku Scala i przesyłanie ich do klastra usługi HDInsight Spark.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/08/2018
 ms.author: maxluk
-ms.openlocfilehash: 51e1e7696ece46e63358b2ed6efa55bbf6ab01fd
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ff7cfcd56158bd38d031a29a21247fb9eb6b91f9
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420782"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289074"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for IntelliJ umożliwia tworzenie aplikacji Spark dla klastra usługi HDInsight
 
@@ -195,7 +195,7 @@ Po utworzeniu aplikacji w języku Scala, możesz go przesłać do klastra.
        > [!NOTE]
        > Aby przekazać odwołanie do JARs i odwołanie do plików pakietu, zobacz: [sposób przekazywania zasobów do klastra](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)
                          
-    * **Przekazywanie, ścieżkę**: można określić lokalizację przechowywania pliku Jar lub Scala przesyłania zasobów projektu. Istnieją trzy typy magazynu obsługiwanych: **obiektów Blob platformy Azure**, **korzystanie z platformy Spark interaktywnej sesji przekazywania artefaktów**, i **Użyj klastra domyślne konto magazynu**. Poniższy zrzut ekranu znajduje się przykład dla obiektów Blob platformy Azure.
+    * **Przekazywanie, ścieżkę**: można określić lokalizację przechowywania pliku Jar lub Scala przesyłania zasobów projektu. Istnieją trzy typy magazynu obsługiwanych: **obiektów Blob platformy Azure**, **korzystanie z platformy Spark interaktywnej sesji przekazywania artefaktów**, i **Użyj klastra domyślne konto magazynu**i **ADLS Gen1**. Poniższy zrzut ekranu znajduje się przykład dla obiektów Blob platformy Azure.
 
         ![Okno dialogowe przesyłania platformy Spark](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-upload-storage-types.png)
 
@@ -258,26 +258,25 @@ Domyślnie program Azure Toolkit for IntelliJ Wyświetla listę klastrów Spark 
 Można uruchomić lokalnego Console(Scala) Spark lub uruchomić interakcyjne Console(Scala) sesja platformy Spark usługi Livy.
 
 ### <a name="spark-local-consolescala"></a>Console(Scala) lokalnej platformy Spark
-1. Należy ręcznie dodać zależności. W menu **pliku**->**struktur projektów**->**ustawienia projektu**->**biblioteki**, następnie kliknij przycisk **+**, wybierz **z narzędzia Maven...** . Następnie wprowadź **org.apache.spark:spark-repl_2.11:2.1.0** w wyskakującym oknie dialogowym. Po dodaniu zależności w bibliotekach, należy przenieść zależności do pierwszego wiersza w **modułów** w **struktur projektów** okna. Przed przeniesieniem, zmień **zakres** do **środowiska uruchomieniowego**.
-
-    ![Lokalnej konsoli Dodawanie zależności bibliotek](./media/apache-spark-intellij-tool-plugin/local-console-add-dependency-libraries.png)
-
-    ![Przenieś konsoli lokalnej do pierwszego wiersza.](./media/apache-spark-intellij-tool-plugin/local-console-move-first-line.png)
-
-2. Jeśli użytkownik nie ma żadnych przed skonfigurować konfigurację. W **konfiguracji uruchomienia/debugowania** okna, kliknij przycisk **+** -> **usługi Azure HDInsight Spark**, wybierz kartę **lokalnie uruchomić**, wybierz klasę głównym, a następnie kliknij przycisk **OK**.
+1. Jeśli użytkownik nie ma żadnych przed skonfigurować konfigurację. W **konfiguracji uruchomienia/debugowania** okna, kliknij przycisk **+** -> **usługi Azure HDInsight Spark**, wybierz kartę **lokalnie uruchomić**i **zdalnie uruchomić w klastrze**, wybierz klasę głównym, a następnie kliknij przycisk **OK**.
 
     ![Konfiguracja zestawu w lokalnej konsoli](./media/apache-spark-intellij-tool-plugin/console-set-configuration.png)
  
-3. Otwórz plik odpowiadający plik klasy głównej, a następnie kliknij prawym przyciskiem myszy **konsoli Spark**, następnie kliknij przycisk **uruchamiania lokalnego Console(Scala) Spark**. Lub przejdź do menu **narzędzia**->**konsoli Spark**->**uruchamiania lokalnego Console(Scala) Spark** można uruchomić z konsoli.
+2. Otwórz odpowiedni plik główna klasa, a następnie kliknij prawym przyciskiem myszy **konsoli Spark**, następnie kliknij przycisk **uruchamiania lokalnego Console(Scala) Spark**. Lub przejdź do menu **narzędzia**->**konsoli Spark**->**uruchamiania lokalnego Console(Scala) Spark** można uruchomić z konsoli. Dwa okien dialogowych zostanie wyświetlony było zadawać, czy chcesz automatycznie rozwiązać zależności. Wystarczy kliknąć przycisk **automatycznie naprawić**.
+
+    ![Fix1 automatycznie platformy Spark](./media/apache-spark-intellij-tool-plugin/console-auto-fix1.png)
+
+    ![Fix2 automatycznie platformy Spark](./media/apache-spark-intellij-tool-plugin/console-auto-fix2.png)
 
     ![Punkt wejścia lokalnej platformy Spark](./media/apache-spark-intellij-tool-plugin/spark-console-local-entry-script.png)
 
-4. Po pomyślnym uruchomieniu konsoli lokalnej. Wygląda jak poniżej. Możesz zrobić coś, co jest potrzebne. Na przykład, wprowadź **sc.appName**, naciśnij klawisze ctrl + Enter, wynik zostanie wyświetlona.
+3. Po pomyślnym uruchomieniu konsoli lokalnej. Wygląda jak poniżej. Możesz zrobić coś, co jest potrzebne. Na przykład, wprowadź **sc.appName**, naciśnij klawisze ctrl + Enter, wynik zostanie wyświetlona. Czerwony przycisk, możesz zakończyć działanie konsoli lokalnej.
 
     ![Wynik lokalnej konsoli](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
 
+
 ### <a name="spark-livy-interactive-session-consolescala"></a>Platforma Spark jest Console(Scala) interaktywnej sesji usługi Livy
-Jest ona obsługiwana tylko na IntelliJ 2018.2.
+Jest ona obsługiwana tylko na IntelliJ 2018.2 i 2018.3.
 
 1. Jeśli użytkownik nie ma żadnych przed skonfigurować konfigurację. W **konfiguracji uruchomienia/debugowania** okna, kliknij przycisk **+** -> **usługi Azure HDInsight Spark**, wybierz kartę **zdalnie uruchomić w klastrze** , wybierz nazwę klastra i główna klasa, a następnie kliknij przycisk **OK**.
 
@@ -290,6 +289,11 @@ Jest ona obsługiwana tylko na IntelliJ 2018.2.
 3. Po pomyślnym uruchomieniu konsoli, możesz zrobić coś, co jest potrzebne. Na przykład, wprowadź **sc.appName**, naciśnij klawisze ctrl + Enter, wynik zostanie wyświetlona.
 
     ![Wynik interakcyjnej konsoli](./media/apache-spark-intellij-tool-plugin/interactive-console-result.png)
+
+### <a name="send-selection-to-spark-console"></a>Wyślij zaznaczenie do konsoli platformy Spark
+Wygodne jest dla Ciebie forsee wynik skryptu, wysyłając niektóre kody w lokalnej konsoli lub usługi Livy interaktywnych sesji Console(Scala). Można wyróżnić niektóre kody w pliku języka Scala, a następnie kliknij prawym przyciskiem myszy **Wyślij zaznaczenie do konsoli Spark**. Wybrane kody zostaną wysłane do konsoli i być wykonywane. Wynik pojawi się po kodzie w konsoli. Konsolę będzie sprawdzać błędy, jeśli istniejące. 
+
+   ![Wyślij zaznaczenie do konsoli platformy Spark](./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png)
 
 ## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>Konwertowanie istniejących aplikacji IntelliJ IDEA, aby użyć zestawu narzędzi platformy Azure dla środowiska IntelliJ
 Można przekonwertować istniejących Spark Scala aplikacje utworzone w ramach IntelliJ IDEA, aby był zgodny z Azure Toolkit for IntelliJ. Następnie można wtyczki przesyłanie aplikacji do klastra usługi HDInsight Spark.
@@ -333,11 +337,7 @@ Te błędy się tak zdarzyć, ponieważ rozmiar stosu nie jest wystarczająco du
 ![Dodanie opcji do pola "Opcje maszyny Wirtualnej" w programie IntelliJ](./media/apache-spark-intellij-tool-plugin/change-heap-size.png)
 
 ## <a name="faq"></a>Często zadawane pytania
-Gdy połączenie klastra, I sugerować, musisz podać poświadczenia magazynu.
-
-![Połączenia klastra, podaj poświadczenia magazynu](./media/apache-spark-intellij-tool-plugin/link-cluster-with-storage-credential-intellij.png)
-
-Istnieją dwa tryby można przesłać zadania. Jeśli nie podano poświadczeń magazynu, tryb wsadowy będzie służyć do przesyłania zadania. W przeciwnym razie będzie używany tryb interakcyjny. Jeśli klaster jest zajęty, możesz otrzymać poniższego błędu.
+Jeśli klaster jest zajęty, możesz otrzymać poniższego błędu.
 
 ![Intellij komunikat o błędzie podczas klastra zajęty](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-upload.png)
 

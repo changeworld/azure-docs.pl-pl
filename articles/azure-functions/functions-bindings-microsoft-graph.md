@@ -9,16 +9,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: fa429553caf874dd634944a5fca6cd9283194bb4
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
-ms.translationtype: MT
+ms.openlocfilehash: b77b035d829218d7416da4c6d57919e75b278e02
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251111"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288904"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Powiązania programu Microsoft Graph dla usługi Azure Functions
 
-W tym artykule opisano sposób konfigurowania i Praca z wyzwalaczami programu Microsoft Graph i powiązań w usłudze Azure Functions. Za ich pomocą można użyć usługi Azure Functions do pracy z danymi, szczegółowych informacji i zdarzeń z [programu Microsoft Graph](https://graph.microsoft.io).
+W tym artykule opisano sposób konfigurowania i Praca z wyzwalaczami programu Microsoft Graph i powiązań w usłudze Azure Functions. Za ich pomocą można użyć usługi Azure Functions do pracy z danymi, szczegółowych informacji i zdarzeń z [programu Microsoft Graph](https://developer.microsoft.com/graph).
 
 Rozszerzenie programu Microsoft Graph udostępnia następujące powiązania:
 - [Powiązania danych wejściowych tokenu uwierzytelniania](#token-input) pozwala na interakcję z dowolnym interfejsem API programu Graph firmy Microsoft.

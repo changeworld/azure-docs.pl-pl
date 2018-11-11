@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 70ee244599f926f4d6c4a36f6065a1f743de2466
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8b83650acfee638ae2a667cd0925fd91d44b80b2
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971828"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282700"
 ---
 # <a name="workspace-expression-in-log-analytics-query"></a>wyrażenie Workspace() zapytanie usługi Log Analytics
 
@@ -74,4 +74,4 @@ union
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz [wyrażenie aplikacji](workspace-expression.md) do odwoływania się do aplikacji usługi Application Insights.
-- Przeczytaj o tym, jak [danych usługi Log Analytics](../../log-analytics/log-analytics-log-search.md) są przechowywane.
+- Przeczytaj o tym, jak [danych usługi Log Analytics](../../log-analytics/log-analytics-queries.md) są przechowywane.

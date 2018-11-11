@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: garye
-ms.openlocfilehash: cd08f6a31f431900a2cb7ed9ed222409f9583b55
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 32c7fca1b56e5426bc422b816279dd0919599f0f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393375"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244004"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Ściągawka dotycząca zautomatyzowanego potoku danych dla prognoz usługi Azure Machine Learning
 **Microsoft Azure Machine Learning zautomatyzowanego potoku danych, okno ściągawka** ułatwia nawigowanie przy użyciu technologii, można użyć, aby przesłać dane do usługi Machine Learning web service, gdzie może zostać ocenione usługi analizy predykcyjnej model.
@@ -31,7 +31,7 @@ Ta ściągawka przeprowadzi Cię przez decyzji, które należy wprowadzić, jak 
 ## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>Pobierz ściągawkę potoku dane usługi Machine Learning
 Po pobraniu cheat-sheet, możesz wydrukować go w rozmiarze tabloidu (11 x 17 cali).
 
-Pobierz ściągawkę tutaj:  **[Microsoft Azure Machine Learning zautomatyzowanego potoku danych — ściągawka](http://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
+Pobierz ściągawkę tutaj:  **[Microsoft Azure Machine Learning zautomatyzowanego potoku danych — ściągawka](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
 
 ![Przegląd możliwości usługi Microsoft Azure Machine Learning Studio][op-cheat-sheet]
 

@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 8a736516a598eee051b416834d2b737211e66b96
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: b004abb3959bbfe36fc200bf762114f88f3d2ead
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429467"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345050"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>Wdrażaj usługi sieci web w usłudze Azure Container Instances 
 
@@ -48,9 +48,12 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="configure-an-image"></a>Obraz przedstawiający Konfigurowanie
 
 Skonfiguruj obraz platformy Docker, który jest używany do przechowywania wszystkich plików modelu.
-1. Utwórz skrypt oceniania (score.py) [przy użyciu tych instrukcji](tutorial-deploy-models-with-aml.md#create-scoring-script)
+1. Utwórz skrypt oceniania (score.py) [przy użyciu tych instrukcji](tutorial-deploy-models-with-aml.md#create-scoring-script).
 
-1. Utwórz plik środowiska (myenv.yml) [przy użyciu tych instrukcji](tutorial-deploy-models-with-aml.md#create-environment-file) 
+    > [!IMPORTANT]
+    > Skrypt oceniania odbiera dane przesłane przez klientów i przekazuje je do modelu w celu oceniania. Dokumentowanie struktury danych, skrypt i model oczekujesz. Posiadanie tej dokumentacji wiele ułatwia podczas tworzenia klienta do korzystania z usługi sieci web.
+
+1. Utwórz plik środowiska (myenv.yml) [przy użyciu tych instrukcji](tutorial-deploy-models-with-aml.md#create-environment-file).
 
 1. Użyj tych plików, aby skonfigurować obraz platformy Docker w języku Python za pomocą zestawu SDK w następujący sposób:
 
@@ -217,8 +220,7 @@ Ta metoda zapewnia największą kontrolę nad tworzenia i nazw składników we w
 
 Teraz można przetestować usługę sieci web.
 
-<a name='test-web-service'/>
-## <a name="test-the-web-service"></a>Test usługi sieci web
+## <a name="a-nametest-web-servicetest-the-web-service"></a><a name='test-web-service'/>Test usługi sieci web
 
 Usługa sieci web jest taka sama niezależnie od tego, którego użyto metody.  Aby uzyskać prognoz, użyj `run` metody usługi.  
 
@@ -261,4 +263,5 @@ service.delete()
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak [wdrażanie w usłudze Azure Kubernetes Service](how-to-deploy-to-aks.md) dla rozmieszczenia na większą skalę. 
+* Dowiedz się, jak [zużywania modelu uczenia Maszynowego wdrożyć jako usługę sieci web](how-to-consume-web-service.md).
+* Dowiedz się, jak [wdrażanie w usłudze Azure Kubernetes Service](how-to-deploy-to-aks.md) dla rozmieszczenia na większą skalę. 

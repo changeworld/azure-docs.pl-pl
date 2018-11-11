@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 632a91e9c76f14bceace00c9cee29a189b604464
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 6728ea6e8c8323ed3d418a018de0ad64b7af8033
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740216"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283261"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Typowe problemy z usługą Azure IoT Edge i ich rozwiązania
 
@@ -340,4 +340,6 @@ Chociaż usługi IoT Edge zapewnia rozszerzoną konfigurację do zabezpieczania 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Uważasz, że znaleziono usterkę platformy IoT Edge? [Prześlij problem](https://github.com/Azure/iotedge/issues) tak, aby mogli dalej ulepszać. 
+
+Jeśli masz więcej pytań, Utwórz [żądania pomocy technicznej](https://portal.azure.com/#create/Microsoft.Support) Aby uzyskać pomoc. 
 
