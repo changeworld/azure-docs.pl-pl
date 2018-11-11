@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 37498394bc163852d397337cf5728b4941ae45a7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d264160fb3f1c14db3379a314e60efdadb6905b5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956510"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210418"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Co to jest kontrola dostępu oparta na rolach?
 
@@ -54,7 +54,7 @@ Jeśli korzystasz z kontroli dostępu opartej na rolach, sterowanie dostępem po
 
 ![Podmiot zabezpieczeń w przypisaniu roli](./media/overview/rbac-security-principal.png)
 
-- Użytkownik — osoba mająca profil w usłudze Azure Active Directory. Można również przypisywać role do użytkowników w innych dzierżawach. Aby uzyskać informacje na temat użytkowników w innych organizacjach, zobacz [Azure Active Directory B2B (Współpraca B2B w usłudze Azure Active Directory)](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- Użytkownik — osoba mająca profil w usłudze Azure Active Directory. Można również przypisywać role do użytkowników w innych dzierżawach. Aby uzyskać informacje na temat użytkowników w innych organizacjach, zobacz [Azure Active Directory B2B (Współpraca B2B w usłudze Azure Active Directory)](../active-directory/b2b/what-is-b2b.md).
 - Grupa — zbiór użytkowników, utworzony w usłudze Azure Active Directory. W przypadku przypisania roli do grupy wszyscy użytkownicy w grupie otrzymają tę rolę. 
 - Jednostka usługi — tożsamość zabezpieczeń używana przez aplikacje lub usługi w celu uzyskania dostępu do określonych zasobów platformy Azure. Można traktować ją jako odpowiednik *tożsamości użytkownika* (nazwy użytkownika i hasła lub certyfikatu) w przypadku aplikacji.
 
@@ -130,3 +130,4 @@ Poniżej przedstawiono główne kroki wykorzystywane przez kontrolę dostępu op
 - [Szybki start: udzielanie dostępu użytkownikowi za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal](quickstart-assign-role-user-portal.md)
 - [Manage access using RBAC and the Azure portal (Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach i witryny Azure Portal)](role-assignments-portal.md)
 - [Understand the different roles in Azure (Omówienie ról na platformie Azure)](rbac-and-directory-admin-roles.md)
+- [Enterprise Cloud Adoption: Resource access management in Azure (Wdrożenie rozwiązania Enterprise Cloud: zarządzanie dostępem do zasobów na platformie Azure)](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)

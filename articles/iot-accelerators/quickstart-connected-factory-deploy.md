@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2018
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 649ce7bcd2d2e4ceb2fc397643f4dd0d3ef89c1e
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 8cb604aee39f651770cb708f8dd92b6fbc0921f5
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144517"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139018"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Szybki start: testowanie rozwiązania opartego na chmurze w celu zarządzania przemysłowymi urządzeniami IoT
 
@@ -30,15 +30,15 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="deploy-the-solution"></a>Wdrażanie rozwiązania
 
-W przypadku wdrażania akceleratora rozwiązań w ramach subskrypcji platformy Azure musisz ustawić niektóre opcje konfiguracji.
+W przypadku wdrażania akceleratora rozwiązania w ramach subskrypcji platformy Azure musisz ustawić niektóre opcje konfiguracji.
 
-Zaloguj się do witryny [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) przy użyciu poświadczeń konta platformy Azure.
+Przejdź do witryny [Akceleratory rozwiązań IoT platformy Microsoft Azure](https://www.azureiotsolutions.com) i zaloguj się przy użyciu poświadczeń konta platformy Azure.
 
-Kliknij pozycję **Wypróbuj teraz** na kafelku **Połączona fabryka**.
+Kliknij kafelek **Połączona fabryka**. Na stronie **Połączona fabryka** kliknij pozycję **Wypróbuj teraz**:
 
-![Wybieranie połączonej fabryki](./media/quickstart-connected-factory-deploy/connectedfactory.png)
+![Wypróbuj teraz](./media/quickstart-connected-factory-deploy/connectedfactory.png)
 
-Na stronie **Tworzenie rozwiązania połączonej fabryki** w polu **Nazwa rozwiązania** wpisz unikatową nazwę dla swojego akceleratora rozwiązań połączonej fabryki. Jest to nazwa grupy zasobów platformy Azure, która zawiera wszystkie zasoby akceleratora rozwiązań. Na potrzeby tego przewodnika Szybki start podamy nazwę **MyDemoConnectedFactory**.
+Na stronie **Tworzenie rozwiązania połączonej fabryki** w polu **Nazwa rozwiązania** wpisz unikatową nazwę dla swojego akceleratora rozwiązań połączonej fabryki. Jest to nazwa grupy zasobów platformy Azure, która zawiera wszystkie zasoby akceleratora rozwiązań. W tym przewodniku Szybki start jest używana nazwa **MyDemoConnectedFactory**.
 
 W polach **Subskrypcja** i **Region** wybierz wartości, których chcesz użyć do wdrożenia akceleratora rozwiązania. Zwykle jest wybierany region znajdujący się najbliżej. W tym przewodniku Szybki start używamy subskrypcji **Visual Studio Enterprise** i regionu **Wschodnie stany USA**. Musisz być [użytkownikiem lub administratorem globalnym](iot-accelerators-permissions.md) w ramach subskrypcji.
 
@@ -64,9 +64,9 @@ Kliknij pozycję **Zaakceptuj**, aby zaakceptować żądanie uprawnień. W przeg
 
 Widok domyślny to *pulpit nawigacyjny*. Korzystając z menu znajdującego się w lewej części strony, można przejść do innych obszarów portalu:
 
-[Pulpit nawigacyjny rozwiązania![](./media/quickstart-connected-factory-deploy/dashboard-inline.png)](./media/quickstart-connected-factory-deploy/dashboard-expanded.png#lightbox)
+[![Pulpit nawigacyjny rozwiązania](./media/quickstart-connected-factory-deploy/dashboard-inline.png)](./media/quickstart-connected-factory-deploy/dashboard-expanded.png#lightbox)
 
-Pulpit nawigacyjny umożliwia zarządzanie przemysłowymi urządzeniami IoT. Połączona fabryka używa hierarchii, aby pokazać globalną konfigurację fabryki. Na najwyższym poziomie hierarchii znajduje się przedsiębiorstwo, które zawiera co najmniej jedną fabrykę. Każda fabryka zawiera linie produkcyjne, a każda linia produkcyjna składa się ze stacji. Na każdym poziomie można wyświetlać ogólną wydajność sprzętu oraz kluczowe wskaźniki wydajności, publikować nowe węzły na potrzeby telemetrii i reagować na alarmy.
+Pulpit nawigacyjny umożliwia zarządzanie przemysłowymi urządzeniami IoT. Połączona fabryka używa hierarchii, aby pokazać globalną konfigurację fabryki. Najwyższym poziomem w hierarchii jest przedsiębiorstwo, który zawiera co najmniej jedną fabrykę. Każda fabryka zawiera linie produkcyjne, a każda linia produkcyjna składa się ze stacji. Na każdym poziomie można wyświetlać ogólną wydajność sprzętu oraz kluczowe wskaźniki wydajności, publikować nowe węzły na potrzeby telemetrii i reagować na alarmy.
 
 Na pulpicie nawigacyjnym są widoczne następujące informacje:
 
@@ -122,7 +122,7 @@ Jeśli Twoja subskrypcja ma dostęp do [interfejsu API usługi Mapy Bing](iot-ac
 
 ### <a name="alarms"></a>Alarmy
 
-Na panelu **Alarmy** są wyświetlane alarmy generowane wtedy, gdy zgłoszona wartość lub obliczona wartość ogólnej wydajności sprzętu bądź kluczowego wskaźnika wydajności przekroczy skonfigurowaną wartość progową. Na tym panelu pojawiają się alarmy dotyczące każdego poziomu hierarchii: od poziomu stacji do przedsiębiorstwa. Każdy alarm zawiera opis, datę, godzinę, lokalizację i liczbę wystąpień:
+Na panelu **Alarmy** są wyświetlane alarmy generowane wtedy, gdy zgłoszona wartość lub obliczona wartość ogólnej wydajności sprzętu bądź kluczowego wskaźnika wydajności przekroczy wartość progową. Na tym panelu pojawiają się alarmy dotyczące każdego poziomu hierarchii: od poziomu stacji do przedsiębiorstwa. Każdy alarm zawiera opis, datę, godzinę, lokalizację i liczbę wystąpień:
 
 [![Alarmy](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
 
@@ -137,7 +137,7 @@ Kliknij jeden z alarmów, z listy rozwijanej **Wybierz akcję** wybierz pozycję
 
 Aby dalej analizować dane alarmów, kliknij wykres na panelu alarmów.
 
-Te alarmy są generowane na podstawie reguł określonych w pliku konfiguracyjnym w akceleratorze rozwiązania. Te reguły mogą generować alarmy, gdy wartości ogólnej wydajności sprzętu lub kluczowego wskaźnika wydajności bądź wartości węzła OPC UA przekraczają skonfigurowany dla nich próg.
+Te alarmy są generowane na podstawie reguł określonych w pliku konfiguracyjnym w akceleratorze rozwiązania. Te reguły mogą generować alarmy, gdy wartości ogólnej wydajności sprzętu lub kluczowego wskaźnika wydajności bądź wartości węzła OPC UA przekraczają próg. Możesz ustawić wartość tego progu.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

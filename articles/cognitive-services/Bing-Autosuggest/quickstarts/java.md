@@ -10,20 +10,20 @@ ms.component: bing-autosuggest
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 6f79416c28631a47209558fd0c415ae79cff93bc
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: c19fa95bd5529f18a65ad466e9c6352b1be80657
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831402"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421122"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-java"></a>Przewodnik Szybki start dotyczący interfejsu API automatycznego sugerowania Bing w języku Java
 
-W tym artykule pokazano, jak korzystać z [interfejsu API automatycznego sugerowania Bing](https://azure.microsoft.com/services/cognitive-services/autosuggest/) w języku Java. Interfejs API automatycznego sugerowania Bing zwraca listę proponowanych zapytań na podstawie częściowego ciągu zapytania wprowadzanego przez użytkownika w polu wyszukiwania. Ten interfejs API jest zwykle wywoływany za każdym razem, kiedy użytkownik wpisuje nowy znak w polu wyszukiwania, a następnie wyświetla sugestie na liście rozwijanej pola wyszukiwania. W tym artykule pokazano, w jaki sposób przesłać żądanie, które zwraca sugerowane ciągi zapytania dla terminu *sail*.
+W tym artykule pokazano, jak korzystać z [interfejsu API automatycznego sugerowania Bing](https://azure.microsoft.com/services/cognitive-services/autosuggest/) przy użyciu języka Java. Interfejs API automatycznego sugerowania Bing zwraca listę proponowanych zapytań na podstawie częściowego ciągu zapytania wprowadzanego przez użytkownika w polu wyszukiwania. Ten interfejs API jest zwykle wywoływany za każdym razem, kiedy użytkownik wpisuje nowy znak w polu wyszukiwania, a następnie wyświetla sugestie na liście rozwijanej pola wyszukiwania. W tym artykule pokazano, w jaki sposób przesłać żądanie, które zwraca sugerowane ciągi zapytania dla terminu *sail*.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musisz mieć zestaw [JDK 7 lub 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), aby skompilować i uruchomić ten kod. Możesz użyć środowiska projektowego Java, jeśli masz ulubione, ale edytor tekstu również wystarczy.
+Musisz mieć zestaw [JDK 7 lub 8](https://aka.ms/azure-jdks), aby skompilować i uruchomić ten kod. Jeśli masz ulubione środowisko projektowe Java, możesz go użyć, ale edytor tekstów również wystarczy.
 
 Trzeba mieć [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do **interfejsu API automatycznego sugerowania Bing w wersji 7**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/#search) jest wystarczająca na potrzeby tego przewodnika Szybki start. Potrzebny jest klucz dostępu podany przy aktywacji bezpłatnej wersji próbnej lub klucz płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
 

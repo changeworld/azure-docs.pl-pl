@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 513a30e9e8f562d8d83ac7e18560c565d617a258
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: ce4adface65237ec6f4ed0ef8f8ba9bbdf72355c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116664"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421054"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Tworzenie pierwszej funkcji przy użyciu programu Visual Studio Code
 
@@ -42,7 +42,7 @@ Aby ukończyć ten przewodnik Szybki start:
     | Język | Wewnętrzny |
     | -------- | --------- |
     | **C#** | [Rozszerzenie C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[Narzędzia interfejsu wiersza polecenia platformy .NET Core](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)*   |
-    | **Java** | [Debuger dla języka Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Zestaw JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)<br/>[Maven 3+](https://maven.apache.org/) |
+    | **Java** | [Debuger dla języka Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3+](https://maven.apache.org/) |
     | **JavaScript** | [Node 8.0+](https://nodejs.org/)  |
 
     \* Również wymagane przez pakiet Core Tools.

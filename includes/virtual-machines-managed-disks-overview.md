@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3e660dbcbfecd57c43ecec6006581364660adb44
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 40396462cc568a4ad7dea798fc30d72dcd75fd07
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50737247"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51208953"
 ---
 # <a name="azure-managed-disks-overview"></a>Omówienie usługi Azure Managed Disks
 
@@ -69,7 +69,7 @@ Przyjrzyjmy się bliżej w tych opcji.
 
 W tym miejscu rozmiary dysków są dostępne dla dysku zarządzanego w warstwie premium:
 
-| **Premium SDD zarządzane <br>typ dysku** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60** | **P70** | **P80** |
+| **Premium SSD zarządzane <br>typ dysku** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60** | **P70** | **P80** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16 384 giB (16 TiB) | 32 767 giB (TiB) |
 

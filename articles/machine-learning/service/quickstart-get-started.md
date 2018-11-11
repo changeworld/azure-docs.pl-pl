@@ -9,16 +9,16 @@ ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
 ms.date: 09/24/2018
-ms.openlocfilehash: b81e40298eae0f0b44f37e7f8f16beaddad999a5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 624564d61a7031cee910ab98e1b327b6f0205e28
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456817"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159013"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Szybki start: rozpoczynanie pracy z usługą Azure Machine Learning w witrynie Azure Portal
 
-W tym przewodniku Szybki start utworzysz obszar roboczy usługi Azure Machine Learning przy użyciu witryny Azure Portal. Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich uczenie oraz wdrażanie za pomocą usługi Machine Learning. 
+W tym przewodniku Szybki start utworzysz obszar roboczy usługi Azure Machine Learning przy użyciu witryny Azure Portal. Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich uczenie oraz wdrażanie za pomocą usługi Machine Learning. Ten przewodnik Szybki start korzysta z zasobów w chmurze i nie wymaga żadnej instalacji. Aby zamiast tego skonfigurować własny serwer notesów Jupyter, zobacz [Szybki start: rozpoczęcie pracy z usługą Azure Machine Learning w języku Python](quickstart-create-workspace-with-python.md).
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
 
@@ -78,32 +78,9 @@ Oprócz dwóch notesów zobaczysz jeszcze plik `config.json`. Ten plik konfigura
 
 Wybierz pozycję `01.run-experiment.ipynb`, aby otworzyć notes.
 
-Aby uruchamiać komórki pojedynczo, użyj klawiszy `Shift`+`Enter`. Możesz też uruchomić cały notes, wybierając pozycje `Cells`  >  `Run All`. Gdy obok komórki jest wyświetlana gwiazdka [*], oznacza to, że komórka jest uruchomiona. Po zakończeniu działania kodu tej komórki pojawi się liczba.
+Aby uruchamiać komórki pojedynczo, użyj klawiszy `Shift`+`Enter`. Możesz też uruchomić cały notes, wybierając pozycje `Cells`  >  `Run All`. Gdy obok komórki jest wyświetlana gwiazdka [*], oznacza to, że komórka jest uruchomiona. Po zakończeniu działania kodu tej komórki pojawi się liczba. 
 
-Może zostać wyświetlony monit o zalogowanie się. Skopiuj kod z komunikatu. Następnie wybierz link i wklej kod w nowym oknie. Pamiętaj, aby nie kopiować spacji znajdującej się przed ani za kodem. Zaloguj się przy użyciu konta użytego w witrynie Azure Portal.
-
- ![Logowanie się](./media/quickstart-get-started/login.png)
-
-W notesie kod w drugim wierszu odczytuje dane z pliku `config.json` w celu nawiązania połączenia z obszarem roboczym.
-```
-ws = Workspace.from_config()
-```
-
-Trzecia komórka kodu uruchamia eksperyment o nazwie „my-first-experiment”. Użyj tej nazwy do wyszukiwania informacji o przebiegu w obszarze roboczym.
-
-```
-experiment = Experiment(workspace_object=ws, name = "my-first-experiment")
-```
-
-W ostatniej komórce notesu znajdują się wartości zapisywane w pliku dziennika.
-
-```
-# Log final results
-run.log("Final estimate: ",pi_estimate)
-run.log("Final error: ",math.pi-pi_estimate)
-```
-
-Te wartości można wyświetlić w obszarze roboczym po zakończeniu działania kodu.
+Po zakończeniu uruchamiania wszystkich komórek w notesie możesz wyświetlić zarejestrowane wartości w swoim obszarze roboczym.
 
 ## <a name="view-logged-values"></a>Wyświetlanie zarejestrowanych wartości
 
@@ -121,11 +98,11 @@ Przejrzyj informacje o wykonanym właśnie przebiegu. Przewiń stronę w dół d
 
  ![Link historii przebiegów](./media/quickstart-get-started/report.png)
 
-Zostaną wyświetlone wykresy utworzone automatycznie na podstawie zarejestrowanych wartości.  
+Zostaną wyświetlone wykresy utworzone automatycznie na podstawie zarejestrowanych wartości. Zawsze w przypadku zarejestrowania wielu wartości z tym samym parametrem nazwa wykres jest generowany automatycznie.
 
    ![Wyświetlanie historii](./media/quickstart-get-started/plots.png)
 
-Kod obliczania przybliżonej liczby pi używa wartości losowych, dlatego wykresy będą przedstawiać różne wartości.
+Kod obliczania przybliżonej liczby pi używa wartości losowych, dlatego wykresy będą przedstawiać różne wartości.  
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów 
 

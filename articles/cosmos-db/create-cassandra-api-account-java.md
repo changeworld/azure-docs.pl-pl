@@ -9,14 +9,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: b5e3d87e026b65a602b7bdf2e52365d13b21f62f
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 1220bcc8445f13a4573f1a6d3181c172799638fb
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166835"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741791"
 ---
-# <a name="create-an-azure-cosmos-db-cassandra-api-account-database-and-a-table-by-using-a-java-application"></a>Tworzenie konta, bazy danych i tabeli interfejsu API Cassandra usługi Azure Cosmos DB przy użyciu aplikacji języka Java
+# <a name="tutorial-create-an-azure-cosmos-db-cassandra-api-account-database-and-a-table-by-using-a-java-application"></a>Samouczek: tworzenie konta, bazy danych i tabeli interfejsu API Cassandra usługi Azure Cosmos DB przy użyciu aplikacji języka Java
 
 W tym samouczku przedstawiono sposób użycia aplikacji języka Java do tworzenia konta interfejsu API Cassandra w usłudze Azure Cosmos DB, dodawania bazy danych (określanej również jako przestrzeń kluczy) oraz dodawania tabeli. Aplikacja języka Java używa [sterownika Java](https://github.com/datastax/java-driver) do tworzenia bazy danych użytkowników, która zawiera szczegółowe informacje, takie jak identyfikator użytkownika, nazwa użytkownika i miasto użytkownika.  
 
@@ -33,7 +33,7 @@ Ten samouczek obejmuje następujące zadania:
 
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz  [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) . Alternatywnie można  [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)  bez subskrypcji platformy Azure — nie wymaga to opłat ani zobowiązań. 
 
-* Pobierz najnowszą wersję zestawu [Java Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
+* Pobierz najnowszą wersję zestawu [Java Development Kit (JDK)](https://aka.ms/azure-jdks) 
 
 * [Pobierz](http://maven.apache.org/download.cgi) i [zainstaluj](http://maven.apache.org/install.html) archiwum plików binarnych [Maven](http://maven.apache.org/) 
   - W systemie Ubuntu możesz uruchomić polecenie  `apt-get install maven` , aby zainstalować narzędzie Maven. 
@@ -60,7 +60,7 @@ Ten samouczek obejmuje następujące zadania:
 
 ## <a name="get-the-connection-details-of-your-account"></a>Pobieranie szczegółów połączenia konta  
 
-Pobierz informacje o parametrach połączenia z witryny Azure Portal i skopiuj je do pliku konfiguracji środowiska Java. Umożliwia to aplikacji komunikację z hostowaną bazą danych. 
+Pobierz informacje o parametrach połączenia z witryny Azure Portal i skopiuj je do pliku konfiguracji środowiska Java. Parametry połączenia umożliwiają aplikacji komunikowanie się z hostowaną bazą danych. 
 
 1. W witrynie  [Azure Portal](http://portal.azure.com/) przejdź do swojego konta usługi Azure Cosmos DB. 
 

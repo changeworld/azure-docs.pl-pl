@@ -1,6 +1,6 @@
 ---
 title: Ten przewodnik Szybki start przedstawia sposób rejestrowania urządzenia X.509 w usłudze Azure Device Provisioning Service przy użyciu języka C# | Microsoft Docs
-description: W ramach tego przewodnika Szybki start zarejestrujesz urządzenia X.509 w usłudze Azure IoT Hub Device Provisioning Service przy użyciu języka C#
+description: W tym przewodniku Szybki start używane są rejestracje grupowe. W ramach tego przewodnika Szybki start zarejestrujesz urządzenia X.509 w usłudze Azure IoT Hub Device Provisioning Service przy użyciu języka C#.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 01/21/2018
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: cf2a2dfbb46b8958e10431ba61e4bd8bc7ae18d6
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 4c466c8289d7ebde484ea627eecfcbba6a5bc4aa
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39204963"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157415"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Przewodnik Szybki start: rejestrowanie urządzeń X.509 w usłudze Device Provisioning Service przy użyciu języka C#
 

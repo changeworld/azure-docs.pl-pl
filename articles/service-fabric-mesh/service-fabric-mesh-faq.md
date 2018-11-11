@@ -11,7 +11,7 @@ ms.service: service-fabric-mesh
 manager: timlt
 ms.openlocfilehash: b32af29a123ce4d070e1bb68b5a43ba6d0d2c5e1
 ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/06/2018
 ms.locfileid: "51218478"
