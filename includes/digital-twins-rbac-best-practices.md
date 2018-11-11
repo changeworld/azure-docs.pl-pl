@@ -1,19 +1,19 @@
 ---
 title: Plik dyrektywy include
 description: Plik dyrektywy include
-services: azure-digital-twins
-author: adamgerard
-ms.service: azure-digital-twins
+services: digital-twins
+author: kingdomofends
+ms.service: digital-twins
 ms.topic: include
 ms.date: 09/27/2018
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: a03f2b4e8d216db3764af03dc06b5188289ffc92
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 215a6c9ff3fdcfe2cb38728ce100255843d6c26e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964207"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285708"
 ---
 Kontrola dostępu oparta na rolach jest strategia zabezpieczeń opartych na dziedziczenie zarządzania dostępu, uprawnień i ról. Role podrzędny dziedziczą uprawnienia z nadrzędnego ról. Ponadto można przypisać uprawnienia nie są dziedziczone z roli nadrzędnej. Mogą również można przypisać do roli dostosowywać, odpowiednio do potrzeb.
 

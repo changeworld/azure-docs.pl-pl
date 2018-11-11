@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: bwren
 ms.comopnent: ''
-ms.openlocfilehash: 6670b6648a0f38879b57b05cb3c6c6e15ca832b4
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 52d81e4f4070d8d8e13497ad39d5adf1b99470de
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958223"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007743"
 ---
 # <a name="iis-logs-in-log-analytics"></a>Dzienniki usług IIS, w usłudze Log Analytics
 Internet Information Services (IIS) aktywności użytkownika są przechowywane w plikach dziennika, które mogą być zbierane przez usługę Log Analytics.  
@@ -80,5 +80,5 @@ Poniższa tabela zawiera przykłady różnych zapytań dziennika, które pobiera
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Skonfiguruj usługę Log Analytics do gromadzenia innych [źródeł danych](log-analytics-data-sources.md) do analizy.
-* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) analizować dane zbierane z innych źródeł danych i rozwiązań.
+* Dowiedz się więcej o [dziennikach](log-analytics-queries.md) analizować dane zbierane z innych źródeł danych i rozwiązań.
 * Konfigurowanie alertów w usłudze Log Analytics w celu proaktywnego powiadamiania o ważne warunki, które można odnaleźć w dziennikach usług IIS.

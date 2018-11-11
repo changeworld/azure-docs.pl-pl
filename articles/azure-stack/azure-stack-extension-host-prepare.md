@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 11/02/2018
+ms.date: 11/09/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.openlocfilehash: 4376b9e89aeef32987f7a3bb29ca6815e941ba00
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 049e859f1d736e7c06ac5d40e33d91d1540c3d9e
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960246"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514370"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Przygotowanie do hosta rozszerzenia dla usługi Azure Stack
 
@@ -84,8 +84,7 @@ Użyj komputera, który może nawiązać połączenia z punktem końcowym usług
 
 1. Użyj komputera, który może nawiązać połączenia z punktem końcowym usługi Azure Stack uprzywilejowany dalsze czynności. Upewnij się, że dostęp do nowych plików certyfikatów z tego komputera.
 2. Otwórz program PowerShell ISE do wykonania następnego blokach skryptu
-3. Zaimportuj certyfikat do obsługi punktu końcowego. Dostosuj skryptu pod kątem danego środowiska.
-4. Zaimportuj certyfikat dla administratora hostingu punktu końcowego.
+3. Zaimportuj certyfikat dla administratora hostingu punktu końcowego.
 
     ```PowerShell  
 
@@ -104,7 +103,7 @@ Użyj komputera, który może nawiązać połączenia z punktem końcowym usług
             Import-AdminHostingServiceCert $AdminHostingCertContent $certPassword
     }
     ```
-5. Zaimportuj certyfikat dla hostingu punktu końcowego.
+4. Zaimportuj certyfikat dla hostingu punktu końcowego.
     ```PowerShell  
     $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d42aed76ecdbc2bd840e17517db2ca0b6ba11aa0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d73284ecf40b2dfcd4954c1ddee82bf92a8931b9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034437"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281799"
 ---
 # <a name="tutorial-2-identify-common-intents-and-entities"></a>Samouczek 2: identyfikowanie typowych intencji i jednostek
 W ramach tego samouczka zmodyfikujesz aplikację Human Resources. Dodaj wstępnie utworzone intencje i jednostki do aplikacji samouczka Human Resources, aby szybko zyskać funkcje przewidywania intencji i wyodrębniania danych. Nie musisz oznaczać żadnych wypowiedzi za pomocą wbudowanych jednostek, ponieważ jednostka jest wykrywana automatycznie.
@@ -48,7 +48,7 @@ Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj nast�
 ## <a name="add-prebuilt-intents"></a>Dodawanie wstępnie utworzonych intencji
 Usługa LUIS zapewnia kilka wstępnie utworzonych intencji, których celem jest ułatwienie realizacji typowych intencji użytkownika.  
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wybierz pozycję **Add prebuilt intent** (Dodaj wstępnie utworzoną intencję). 
 

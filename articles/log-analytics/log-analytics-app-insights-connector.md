@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 7f3a90bf0dad2d0e9c6d51e942d88fb933b8ed1f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 2e59286822d49abeea522b5346ba531408559a7b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961334"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014826"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Rozwiązanie do zarządzania Insights Connector aplikacji (wersja zapoznawcza)
 
@@ -267,4 +267,4 @@ To rozwiązanie nie ma zbiór przykładowe wyszukiwania dzienników wyświetlane
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Użyj [wyszukiwanie w dzienniku](log-analytics-log-search.md) Aby wyświetlić szczegółowe informacje o aplikacjach Application Insights.
+- Użyj [wyszukiwanie w dzienniku](log-analytics-queries.md) Aby wyświetlić szczegółowe informacje o aplikacjach Application Insights.

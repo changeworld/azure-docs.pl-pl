@@ -2,23 +2,23 @@
 title: Dodawanie bibliotek technologii Hive podczas tworzenia klastra HDInsight — Azure
 description: Dowiedz się, jak dodawanie bibliotek technologii Hive (pliki jar), do klastra usługi HDInsight podczas tworzenia klastra.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
+ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 40650c813efc8fe7389b0445c72007dbd97e3ce8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f9788c82e74b47d4550640a1069f6d97487eecc6
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108690"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035309"
 ---
-# <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>Dodawanie niestandardowych bibliotek technologii Hive, podczas tworzenia klastra usługi HDInsight
+# <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Dodawanie niestandardowych bibliotek technologii Hive, podczas tworzenia klastra usługi HDInsight
 
-Dowiedz się, jak i wstępne ładowanie bibliotek technologii Hive w HDInsight. Ten dokument zawiera informacje na temat korzystania z akcji skryptu do wstępnego ładowania bibliotek podczas tworzenia klastra. Biblioteki dodany, korzystając z procedury w tym dokumencie są ogólnie dostępne w gałęzi — nie ma potrzeby używania [Dodaj JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) załadować je.
+Dowiedz się, jak i wstępne ładowanie bibliotek technologii Hive HDInsight. Ten dokument zawiera informacje na temat korzystania z akcji skryptu do wstępnego ładowania bibliotek podczas tworzenia klastra. Biblioteki dodany, korzystając z procedury w tym dokumencie są ogólnie dostępne w gałęzi — nie ma potrzeby używania [Dodaj JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) załadować je.
 
 ## <a name="how-it-works"></a>Jak to działa
 

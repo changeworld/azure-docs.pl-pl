@@ -10,12 +10,12 @@ ms.component: video-indexer
 ms.topic: overview
 ms.date: 10/10/2018
 ms.author: nolachar
-ms.openlocfilehash: cf761342bb434100920c3888f2f441b9f8c8de08
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 9936cd301cc8dad88ce1a2431f9253a15ab2da7f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077920"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251257"
 ---
 # <a name="what-is-video-indexer"></a>Co to jest Video Indexer?
 
@@ -65,7 +65,7 @@ Poniżej przedstawiono kilka scenariuszy, w których usługa Video Indexer może
 
 - Zaangażowanie użytkowników — szczegółowe informacje o wideo mogą służyć do zwiększenia stopnia zaangażowania użytkowników przez ustawianie dla nich wideo na odpowiednich momentach. Jako przykład weźmy wideo edukacyjne, w którym przez pierwsze 30 minut omawiane są sfery, a przez kolejne 30 minut — ostrosłupy. Uczeń czytający o ostrosłupach będzie bardziej zadowolony, jeśli wideo będzie ustawione na znaczniku 30. minuty.
 
-Więcej informacji można znaleźć w tym [blogu](http://aka.ms/videoindexerblog).
+Więcej informacji można znaleźć w tym [blogu](https://aka.ms/videoindexerblog).
 
 ## <a name="next-steps"></a>Następne kroki
 

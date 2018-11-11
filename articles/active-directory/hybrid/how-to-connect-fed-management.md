@@ -17,12 +17,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5a36c239e296d6f393c49932f1a369d8aae80b83
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a9a7848069300d5f52d16585a55313643e02bc72
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311108"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244461"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Zarządzanie i dostosowywanie Active Directory Federation Services przy użyciu usługi Azure AD Connect
 W tym artykule opisano, jak zarządzanie i dostosowywanie Active Directory Federation Services (AD FS) przy użyciu usługi Azure Active Directory (Azure AD) Connect. Zawiera on również innych typowych zadań usług AD FS, które może być konieczne na pełną konfigurację farmy usług AD FS.
@@ -81,7 +81,7 @@ Konfigurowanie alternatywnego Identyfikatora logowania dla usług AD FS obejmuje
 
     ![Ostrzeżenie dotyczące brakuje KB na 2012 R2](./media/how-to-connect-fed-management/kbwarning.png)
 
-    Aby rozwiązać konfiguracji w przypadku brakujących KB, zainstalować wymagane [KB2919355](http://go.microsoft.com/fwlink/?LinkID=396590) i napraw za pomocą zaufania [naprawy usługi AAD i AD FS zaufania](#repairthetrust).
+    Aby rozwiązać konfiguracji w przypadku brakujących KB, zainstalować wymagane [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590) i napraw za pomocą zaufania [naprawy usługi AAD i AD FS zaufania](#repairthetrust).
 
 > [!NOTE]
 > Aby uzyskać więcej informacji na temat alternateID i kroki, aby ręcznie skonfigurować, przeczytaj [Konfigurowanie alternatywnego Identyfikatora logowania](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)
@@ -171,7 +171,7 @@ To proste dodać domenę do sfederowania z usługą Azure AD za pomocą usługi 
 
 4. Na następnej stronie kreatora zawiera listę domen usługi Azure AD, które może tworzyć federacje z katalogu lokalnego. Wybierz domenę z listy.
 
-   ![Azure AD domain](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
+   ![Domena usługi Azure AD](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
 
     Po wybraniu domeny, Kreator udostępnia odpowiednie informacje na temat dalszych działań, przyjmujące kreatora i wpływu na konfigurację. W niektórych przypadkach po wybraniu domeny, która nie jest jeszcze zweryfikowane w usłudze Azure AD, Kreator przedstawiono informacje ułatwiające weryfikowanie domeny. Zobacz [Dodawanie niestandardowej nazwy domeny do usługi Azure Active Directory](../active-directory-domains-add-azure-portal.md) Aby uzyskać więcej informacji.
 

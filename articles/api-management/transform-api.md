@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: b94f6ad4c7c6f3b5e93cdb890e053a3d1678e161
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: eab00663918eadea485aed17a91ce01e5718c36e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094432"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413676"
 ---
 # <a name="transform-and-protect-your-api"></a>Przekształcanie i ochrona interfejsu API 
 
@@ -39,9 +39,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
++ Poznaj [terminologię dotyczącą usługi Azure API Management](api-management-terminology.md).
++ Zapoznaj się z [koncepcją zasad w usłudze Azure API Management](api-management-howto-policies.md).
 + Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
 + Ponadto wykonaj zadania z następującego samouczka: [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
- 
+
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="transform-an-api-to-strip-response-headers"></a>Przekształcanie interfejsu API w celu usuwania nagłówków odpowiedzi
@@ -57,21 +59,22 @@ Aby zobaczyć oryginalną odpowiedź:
 
 1. W wystąpieniu usługi APIM wybierz pozycję **Interfejsy API** (w obszarze **API MANAGEMENT**).
 2. Kliknij pozycję **Demo Conference API** (Pokazowy interfejs API konferencji) na liście interfejsów API.
-3. Wybierz operację **GetSpeakers**.
-4. Kliknij kartę **Test** w górnej części ekranu.
-5. Naciśnij przycisk **Wyślij** u dołu ekranu. 
+3. Kliknij kartę **Test** w górnej części ekranu.
+4. Wybierz operację **GetSpeakers**.
+5. Naciśnij przycisk **Wyślij** u dołu ekranu.
 
-    Jak widać, oryginalna odpowiedź wygląda następująco:
+Oryginalna odpowiedź powinna wyglądać następująco:
 
-    ![Zasady](./media/transform-api/original-response.png)
+![Zasady](./media/transform-api/original-response.png)
 
 ### <a name="set-the-transformation-policy"></a>Ustawianie zasad przekształcania
+
+![Ustawianie zasad danych wychodzących](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png)
 
 1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
 2. W górnej części ekranu wybierz kartę **Projektowanie**.
 3. Wybierz opcję **Wszystkie operacje**.
-4. W oknie **Przetwarzanie danych wychodzących** kliknij trójkąt (obok ołówka) i wybierz pozycję **Edytor kodu**.
-     ![Edycja zasad](./media/set-edit-policies/set-edit-policies01.png)
+4. W sekcji **Przetwarzanie danych wychodzących** kliknij ikonę **</>**.
 5. Umieść kursor wewnątrz elementu **&lt;outbound&gt;**.
 6. W okienku po prawej stronie w obszarze **Zasady przekształcania** kliknij dwukrotnie opcję **+ Ustaw nagłówek HTTP** (aby wstawić dwa fragmenty kodu zasad).
 
@@ -82,8 +85,8 @@ Aby zobaczyć oryginalną odpowiedź:
         <set-header name="X-AspNet-Version" exists-action="delete" />
 
     ![Zasady](./media/transform-api/set-policy.png)
-8. Kliknij przycisk **Zapisz**.
 
+8. Kliknij przycisk **Zapisz**.
 
 ## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>Zamiana oryginalnych adresów URL w treści odpowiedzi interfejsu API w adresy URL bramy APIM
 
@@ -94,8 +97,8 @@ W tej sekcji opisano, jak ukrywać oryginalne adresy URL, które są wyświetlan
 Aby zobaczyć oryginalną odpowiedź:
 
 1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
-2. Wybierz operację **GetSpeakers**.
-3. Kliknij kartę **Test** w górnej części ekranu.
+2. Kliknij kartę **Test** w górnej części ekranu.
+3. Wybierz operację **GetSpeakers**.
 4. Naciśnij przycisk **Wyślij** u dołu ekranu. 
 
     Jak widać, oryginalna odpowiedź wygląda następująco:
@@ -107,7 +110,7 @@ Aby zobaczyć oryginalną odpowiedź:
 1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
 2. Wybierz opcję **Wszystkie operacje**.
 3. W górnej części ekranu wybierz kartę **Projektowanie**.
-4. W oknie **Przetwarzanie danych wychodzących** kliknij trójkąt (obok ołówka) i wybierz pozycję **Edytor kodu**.
+4. W sekcji **Przetwarzanie danych wychodzących** kliknij ikonę **</>**.
 5. Umieść kursor wewnątrz elementu **&lt;outbound&gt;**.
 6. W oknie po prawej stronie w obszarze **Zasady przekształcania** kliknij opcję **+ Znajdź i zastąp ciąg w treści**.
 7. Zmodyfikuj kod **find-and-replace** (w elemencie **\<outbound\>**), aby zastąpić adres URL i dopasować go do bramy APIM. Na przykład:
@@ -118,13 +121,14 @@ Aby zobaczyć oryginalną odpowiedź:
 
 W tej sekcji przedstawiono sposób dodawania zabezpieczeń do interfejsu API zaplecza poprzez konfigurowanie limitów szybkości. Na przykład możesz ograniczyć liczbę wywołań dla interfejsu API, aby nie był on nadmiernie obciążany przez deweloperów. W tym przykładzie limit jest ustawiony na 3 wywołania w ciągu 15 sekund dla każdego identyfikatora subskrypcji. Po 15 sekundach deweloper może ponowić próbę wywołania interfejsu API.
 
+![Ustawianie zasad danych przychodzących](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png)
+
 1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
 2. Wybierz opcję **Wszystkie operacje**.
 3. W górnej części ekranu wybierz kartę **Projektowanie**.
-4. W oknie **Przychodzące przetwarzanie** kliknij trójkąt (obok ołówka) i wybierz pozycję **Edytor kodu**.
-5. Umieść kursor wewnątrz elementu **&lt;inbound&gt;**.
-6. W oknie po prawej stronie w obszarze **Zasady ograniczeń dostępu** kliknij opcję **+ Ogranicz liczbę wywołań na klucz**.
-7. Zmodyfikuj kod **rate-limit-by-key** (w elemencie **\<inbound\>**) do następującego:
+4. W sekcji **Przetwarzanie danych przychodzących** kliknij ikonę **</>**. Umieść kursor wewnątrz elementu **&lt;inbound&gt;**.
+5. W oknie po prawej stronie w obszarze **Zasady ograniczeń dostępu** kliknij opcję **+ Ogranicz liczbę wywołań na klucz**.
+6. Zmodyfikuj kod **rate-limit-by-key** (w elemencie **\<inbound\>**) do następującego:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
@@ -156,8 +160,8 @@ Pozostała część tej sekcji testuje przekształcenia zasad ustawione w tym ar
 ### <a name="test-the-stripped-response-headers"></a>Testowanie usuniętych nagłówków odpowiedzi
 
 1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
-2. Kliknij operację **GetSpeakers**.
-3. Wybierz kartę **Test**.
+2. Wybierz kartę **Test**.
+3. Kliknij operację **GetSpeakers**.
 4. Kliknij pozycję **Wyślij**.
 
     Jak widać, nagłówki zostały usunięte:
@@ -167,8 +171,8 @@ Pozostała część tej sekcji testuje przekształcenia zasad ustawione w tym ar
 ### <a name="test-the-replaced-url"></a>Testowanie zamienionego adresu URL
 
 1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
-2. Kliknij operację **GetSpeakers**.
-3. Wybierz kartę **Test**.
+2. Wybierz kartę **Test**.
+3. Kliknij operację **GetSpeakers**.
 4. Kliknij pozycję **Wyślij**.
 
     Jak widać, adres URL został zastąpiony.
@@ -178,11 +182,12 @@ Pozostała część tej sekcji testuje przekształcenia zasad ustawione w tym ar
 ### <a name="test-the-rate-limit-throttling"></a>Testowanie limitu szybkości (ograniczania przepustowości)
 
 1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
-2. Kliknij operację **GetSpeakers**.
-3. Wybierz kartę **Test**.
+2. Wybierz kartę **Test**.
+3. Kliknij operację **GetSpeakers**.
 4. Naciśnij przycisk **Wyślij** trzykrotnie.
 
     Po trzykrotnym wysłaniu żądania otrzymasz odpowiedź **429 Zbyt wiele żądań**.
+
 5. Poczekaj około 15 sekund i naciśnij przycisk **Wyślij** ponownie. Teraz interfejs powinien zwrócić odpowiedź **200 OK**.
 
     ![Ograniczanie przepływności](./media/transform-api/test-throttling.png)
@@ -190,8 +195,6 @@ Pozostała część tej sekcji testuje przekształcenia zasad ustawione w tym ar
 ## <a name="video"></a>Połączenia wideo
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
-> 
-> 
 
 ## <a name="next-steps"></a>Następne kroki
 

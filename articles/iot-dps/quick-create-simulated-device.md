@@ -1,6 +1,6 @@
 ---
 title: Aprowizowanie symulowanego urządzenia TPM dla usługi Azure IoT Hub przy użyciu języka C | Microsoft Docs
-description: W tym przewodniku Szybki start utworzysz i aprowizujesz symulowane urządzenie TPM za pomocą zestawu SDK języka C dla usługi Azure IoT Hub Device Provisioning
+description: W tym przewodniku Szybki start używane są rejestracje indywidualne. W tym przewodniku Szybki start utworzysz i aprowizujesz symulowane urządzenie TPM za pomocą zestawu SDK języka C dla usługi Azure IoT Hub Device Provisioning.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 07/13/2018
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3f88da7e70ca62e14444fa742013c982daec3cc6
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: c2f5ff778b49ffb544c53b41cf515e820d646249
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633277"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157857"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Szybki start: aprowizowanie symulowanego urządzenia TPM za pomocą zestawu SDK języka C usługi Azure IoT
 
@@ -22,7 +22,13 @@ ms.locfileid: "45633277"
 
 Dzięki temu przewodnikowi Szybki start dowiesz się, jak utworzyć i uruchomić symulator urządzenia modułu TPM na maszynie deweloperskiej z systemem Windows. To symulowane urządzenie połączysz z usługą IoT Hub przy użyciu wystąpienia usługi Device Provisioning. Przykładowy kod z [zestawu SDK języka C usługi Azure IoT](https://github.com/Azure/azure-iot-sdk-c) będzie używany w celu sprawniejszego rejestrowania urządzenia z wystąpieniem usługi Device Provisioning i symulowania sekwencji rozruchu dla tego urządzenia.
 
-Jeśli nie znasz procesu automatycznego aprowizowania, zapoznaj się z tematem [Auto-provisioning concepts](concepts-auto-provisioning.md) (Pojęcia związane z automatycznym aprowizowaniem). Pamiętaj również, aby przed rozpoczęciem pracy z tym przewodnikiem Szybki start wykonać kroki przedstawione w części [Konfigurowanie usługi IoT Hub Device Provisioning za pomocą witryny Azure Portal](./quick-setup-auto-provision.md). 
+Jeśli nie znasz procesu automatycznego aprowizowania, zapoznaj się z tematem [Auto-provisioning concepts (Pojęcia związane z automatycznym aprowizowaniem)](concepts-auto-provisioning.md). Pamiętaj również, aby przed rozpoczęciem pracy z tym przewodnikiem Szybki start wykonać kroki przedstawione w części [Konfigurowanie usługi IoT Hub Device Provisioning za pomocą witryny Azure Portal](./quick-setup-auto-provision.md). 
+
+Usługa Azure IoT Device Provisioning obsługuje dwa typy rejestracji:
+- [Grupy rejestracji](concepts-service.md#enrollment-group): służą do rejestrowania wielu pokrewnych urządzeń.
+- [Rejestracje indywidualne](concepts-service.md#individual-enrollment): służą do rejestrowania pojedynczych urządzeń.
+
+W tym artykule przedstawiono rejestracje indywidualne.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

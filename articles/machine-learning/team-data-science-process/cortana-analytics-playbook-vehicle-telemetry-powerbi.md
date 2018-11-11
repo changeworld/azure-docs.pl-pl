@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: b703cb4d3ddd8b62895c9c40c7fa2fba728e884e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f86d1d74f5139458999a8c91ac35ec76ac278c8
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262284"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300935"
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Instrukcje instalacji pulpit nawigacyjny Telemetrii Analytics szablon rozwiązania usługi Power BI pojazdu
-Menu łącze do rozdziały element playbook: 
-
-[!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
 Prezentuje rozwiązanie do analizy Telemetrii pojazdów, jak dealerzy i producenci samochodów oraz firmy ubezpieczeniowe są w stanie korzystać z możliwości pakietu Cortana Intelligence. Można uzyskać w czasie rzeczywistym i predykcyjny wgląd w kondycję pojazdów i nawyki nawyki w celu poprawy obsługi klienta, badań i rozwoju i kampanii marketingowych. Te instrukcje krok po kroku przedstawiające sposób konfigurowania raportów usługi Power BI i pulpit nawigacyjny po wdrożeniu rozwiązania w ramach subskrypcji. 
+
+Aby przejrzeć podsumowanie tego rozwiązania, zobacz [podręcznik dotyczący rozwiązań analizy Telemetrii pojazdów](cortana-analytics-playbook-vehicle-telemetry.md).
+Aby zapoznać się jeszcze bardziej tego rozwiązania, zobacz [podręcznik dotyczący rozwiązań analizy Telemetrii pojazdów: szczegółami rozwiązania](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Wdrażanie [analiza Telemetrii pojazdów](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90) rozwiązania. 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: c30c233fb1d413c6a55c7ec0af8c63ca60284b86
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: d29f01c7f953ed211b429e41b844a01c67e41054
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960280"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282381"
 ---
 # <a name="scaling-throughput-in-azure-cosmos-db"></a>Skalowanie przepływności w usłudze Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Możesz aprowizować jednostek żądań na kontener Cosmos lub bazy danych Cosmo
 
 Elastyczne skalowanie przepływności, można zwiększyć lub zmniejszyć aprowizowanych jednostek RU/s w dowolnym momencie. Aby uzyskać więcej informacji, zobacz [porad aprowizowanie przepływności](set-throughput.md) i elastycznie Skaluj kontenery Cosmos i baz danych. Globalnie skalowania przepływności, można dodać lub usunąć regiony na Twoim koncie Cosmos w dowolnym momencie. Aby uzyskać więcej informacji, zobacz [instrukcje Dodawanie lub usuwanie regionów do konta usługi Cosmos](how-to-manage-database-account.md#addremove-regions-from-your-database-account). Kojarzenie wielu regionów za pomocą konta usługi Cosmos jest ważne w wielu scenariuszach uzyskanie małych opóźnień i [wysokiej dostępności](high-availability.md) na świecie.
 
-## <a name="how-throughput-scaling-works"></a>Jak działa skalowanie przepływności
+## <a name="how-provisioned-throughput-is-distributed-across-regions"></a>w jaki sposób aprowizowana przepływność jest dystrybuowane w wielu regionach
 
 Zainicjowanie obsługi RUs "R" w kontenerze Cosmos (lub bazy danych), usługi Cosmos DB gwarantuje, że "R" (RUS) są dostępne w *każdego* regionu skojarzonego z Twoim kontem Cosmos. Po dodaniu każdego nowego regionu do swojego konta usługi Cosmos DB automatycznie aprowizuje RUs "R" w nowo dodanym regionie. Operacje wykonywane wbrew kontenera usługi Cosmos jest gwarantowana można pobrać jednostek ru "R" w każdym regionie. Nie można selektywnie przypisywać jednostki zarezerwowane w określonym regionie. Jednostki zarezerwowane aprowizowaną dla kontenera Cosmos (lub bazy danych) są aprowizowane dla wszystkich regionów skojarzonych z Twoim kontem Cosmos.
 

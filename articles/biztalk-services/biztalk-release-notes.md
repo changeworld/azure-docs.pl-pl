@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: db79ee85c19e5f3cdced9b894aca48de4d7d1c42
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: f990aa086997d51e59df4285aabeccd31dcce822
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576474"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253435"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Informacje o wersji dla usługi Azure BizTalk Services
 
@@ -188,7 +188,7 @@ Rozważmy scenariusz, w którym używasz zachowania na podstawie nazwy do identy
 
 ### <a name="bridges-continue-to-process-messages-even-when-the-sql-database-is-offline"></a>Mostki w dalszym ciągu przetwarzać komunikatów, nawet wtedy, gdy baza danych SQL jest w trybie offline
 Mostków usługi BizTalk Services w dalszym ciągu przetwarzać komunikaty od pewnego czasu, nawet jeśli Microsoft Azure SQL Database (która przechowuje uruchomionej informacje, takie jak wdrożonej artefaktów i potoki), jest w trybie offline. Jest to spowodowane usługi BizTalk Services korzysta z pamięci podręcznej artefaktów i konfiguracji mostka.
-Jeśli użytkownik nie chce mostków przetwarzać komunikatów, gdy baza danych SQL jest w trybie offline, można użyć poleceń cmdlet programu PowerShell usługi BizTalk, aby zatrzymać lub wstrzymać usługi BizTalk. Zobacz [przykład zarządzania usługi BizTalk Azure](http://go.microsoft.com/fwlink/p/?LinkID=329019) dla poleceń cmdlet programu Windows PowerShell do zarządzania operacjami.  
+Jeśli użytkownik nie chce mostków przetwarzać komunikatów, gdy baza danych SQL jest w trybie offline, można użyć poleceń cmdlet programu PowerShell usługi BizTalk, aby zatrzymać lub wstrzymać usługi BizTalk. Zobacz [przykład zarządzania usługi BizTalk Azure](https://go.microsoft.com/fwlink/p/?LinkID=329019) dla poleceń cmdlet programu Windows PowerShell do zarządzania operacjami.  
 
 ### <a name="reading-the-xml-message-within-a-bridges-custom-code-component-includes-an-extra-bom-character"></a>Odczytywanie wiadomości XML w składniku kod niestandardowy Mostek zawiera nadmiarowy znak BOM
 Rozważmy scenariusz, gdzie chcesz odczytać wiadomości XML w kodzie niestandardowym mostka. Jeśli używasz System.Text.Encoding.UTF8.GetString(bytes) interfejsu API .NET nadmiarowy znak BOM znajduje się w danych wyjściowych na początku komunikatu. Tak, jeśli chcesz, aby dane wyjściowe do uwzględnienia nadmiarowy znak BOM, należy użyć ```System.IO.StreamReader().ReadToEnd()```.

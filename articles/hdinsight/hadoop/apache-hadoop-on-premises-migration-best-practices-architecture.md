@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 02db6b4691beb4bfefa3815c87cf54f350219d81
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 62e15b5845ed9faa605f978f0d2fd427c9c3ee9b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418011"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008185"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania architektury
 
@@ -113,7 +113,7 @@ Najważniejsze wskazówki magazynu metadanych HDInsight Hive są następujące:
 - Należy wziąć pod uwagę, zastępując zapytania oparte na aparacie impala LLAP zapytania.
 - Należy wziąć pod uwagę, zastępując zadań MapReduce zadań platformy Spark.
 - Należy wziąć pod uwagę, zastępując partii zadań platformy Spark o małych opóźnieniach, przy użyciu zadań platformy Spark Structured Streaming.
-- Należy rozważyć użycie organizowanie danych przy użyciu usługi Azure Data Factory (ADF) w wersji 2.0.
+- Rozważ użycie usługi Azure Data Factory (ADF) w wersji 2.0 dla danych aranżacji.
 - Do zarządzania klastrem, należy wziąć pod uwagę Ambari.
 - Zmień magazyn danych z lokalnym systemem plików HDFS WASB lub ADLS i usług AD FS dla przetwarzania skryptów.
 - Należy wziąć pod uwagę przy użyciu platformy Ranger RBAC dla tabel programu Hive i inspekcji.

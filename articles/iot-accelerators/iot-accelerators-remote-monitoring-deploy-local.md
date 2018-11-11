@@ -1,23 +1,27 @@
 ---
-title: Wdrażanie rozwiązania do monitorowania zdalnego lokalnie — Azure | Dokumentacja firmy Microsoft
-description: Ten poradnik pokazuje, jak wdrożyć zdalnego monitorowania akcelerator rozwiązań do maszyny lokalnej na potrzeby projektowania i testowania.
-author: asdonald
-manager: timlt
-ms.author: asdonald
+title: Wdrażanie rozwiązania do monitorowania zdalnego z lokalnie (przy użyciu programu Visual Studio IDE) — Azure | Dokumentacja firmy Microsoft
+description: Ten poradnik pokazuje, jak wdrożyć zdalnego akcelerator rozwiązań do monitorowania na komputerze lokalnym przy użyciu programu Visual Studio na potrzeby projektowania i testowania.
+author: avneet723
+manager: hegate
+ms.author: avneet723
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 09/26/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: d967112fc1e3630148a419c980813159e9334eb3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 5068f0277726b7c468aa24d0629c4350b60b78b5
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243542"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287612"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>Wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie
+# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie — Visual Studio
 
-W tym artykule pokazano, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego na komputerze lokalnym na potrzeby projektowania i testowania. Podejście opisane w tym artykule mikrousługi są wdrażane na lokalny kontener platformy Docker i korzysta z usługi IoT Hub, Cosmos DB i Azure Time Series Insights w chmurze. Aby dowiedzieć się, jak uruchomić akcelerator rozwiązania monitorowania zdalnego w środowisku IDE na komputerze lokalnym, zobacz [uruchamianie Mikrousług w środowisku lokalnym](https://github.com/Azure/remote-monitoring-services-java/blob/master/docs/LOCAL_DEPLOYMENT.md) w witrynie GitHub.
+[!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
+
+W tym artykule pokazano, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego na komputerze lokalnym na potrzeby projektowania i testowania. Dowiesz się, jak uruchomić mikrousługi w programie Visual Studio. Wdrożenie lokalne mikrousług używa następujących usług w chmurze: Usługa IoT Hub, Cosmos DB, usługi Azure Stream Analytics i Azure Time Series Insights usług w chmurze.
+
+Jeśli chcesz uruchomić akcelerator rozwiązania monitorowania zdalnego na platformie Docker na komputerze lokalnym, zobacz [wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie — Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -25,94 +29,90 @@ Aby wdrożyć usługi platformy Azure używane przez akcelerator rozwiązania mo
 
 Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
+### <a name="machine-setup"></a>Ustawienia komputera
+
 Aby wykonać wdrożenie lokalne, potrzebne są następujące narzędzia, które są zainstalowane na lokalnej maszynie do programowania:
 
 * [Usługa Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
-* [Narzędzia docker compose](https://docs.docker.com/compose/install/)
-* [Node.js v8](https://nodejs.org/) — to oprogramowanie jest wymagane w przypadku komputerów z systemem interfejsu wiersza polecenia, które skrypty umożliwia tworzenie zasobów platformy Azure. Nie należy używać Node.js v10.
+* [Program Visual Studio](https://visualstudio.microsoft.com/)
+* [Nginx](http://nginx.org/en/download.html)
+* [Node.js v8](https://nodejs.org/) — to oprogramowanie jest wymagane w przypadku komputerów z systemem interfejsu wiersza polecenia, które skrypty umożliwia tworzenie zasobów platformy Azure. Nie używaj Node.js v10.
 
 > [!NOTE]
-> Te narzędzia są dostępne na wielu platformach, w tym Windows i Linux oraz dla systemu iOS.
+> Program Visual Studio jest dostępna dla Windows i Mac.
 
-### <a name="download-the-source-code"></a>Pobierz kod źródłowy
+[!INCLUDE [iot-accelerators-local-setup](../../includes/iot-accelerators-local-setup.md)]
 
-Repozytorium GitHub zdalne monitorowanie kodu źródłowego zawiera pliki konfiguracji platformy Docker, których należy pobrać, konfigurowanie i uruchamianie obrazów platformy Docker, które zawierają mikrousług. Aby sklonować i utworzyć lokalną wersję repozytorium, użyj środowiska wiersza polecenia, aby przejść do odpowiedniego folderu na komputerze lokalnym, a następnie uruchom jedno z następujących poleceń:
+## <a name="run-the-microservices"></a>Uruchamianie mikrousług
 
-Aby pobrać najnowszą wersję implementacji mikrousług Java, uruchom polecenie:
+W tej sekcji uruchamiasz mikrousług monitorowania zdalnego. Działania interfejsu użytkownika sieci web, usługi symulacji urządzenia na platformie Docker i mikrousług w programie Visual Studio.
 
-```cmd/sh
-git clone https://github.com/Azure/remote-monitoring-services-java.git
+### <a name="run-the-web-ui"></a>Uruchom interfejs użytkownika sieci web
+
+W tym kroku należy uruchomić interfejs użytkownika sieci web. Przejdź do **interfejsem sieci Web** folderu w lokalnym kopię repozytorium i uruchom następujące polecenia:
+
+```cmd
+npm install
+npm start
 ```
 
-Aby pobrać najnowszą wersję implementacji mikrousługi platformy .NET, uruchom polecenie:
+### <a name="run-the-device-simulation-service"></a>Uruchom usługę symulacji urządzenia
 
-```cmd\sh
-git clone https://github.com/Azure/remote-monitoring-services-dotnet.git
+Uruchom następujące polecenie, aby uruchomić kontener platformy Docker dla usługi symulacji urządzenia. Usługa symuluje urządzeń dla rozwiązania do monitorowania zdalnego.
+
+```cmd
+<path_to_cloned_repository>\services\device-simulation\scripts\docker\run.cmd
 ```
 
-> [!NOTE]
-> Te polecenia Pobierz kod źródłowy wszystkie mikrousługi oprócz skryptów, których można używać do uruchamiania mikrousługi lokalnie. Mimo że nie ma potrzeby kodu źródłowego, aby uruchomić mikrousług na platformie Docker, kod źródłowy jest przydatne, jeśli planujesz później zmodyfikować akcelerator rozwiązań i lokalne testowanie zmian.
+### <a name="deploy-all-other-microservices-on-local-machine"></a>Wdrażaj wszystkie mikrousługi na komputerze lokalnym
 
-## <a name="deploy-the-azure-services"></a>Wdrażaj usługi platformy Azure
+Poniższe kroki pokazują, jak uruchomić mikrousług zdalnego monitorowania w programie Visual Studio 2017:
 
-Mimo że w tym artykule pokazano, jak uruchomić mikrousługi lokalnie, są one zależne od usług platformy Azure działające w chmurze. Można wdrożyć te usługi platformy Azure [ręcznie za pomocą witryny Azure portal](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Manual-steps-to-create-azure-resources-for-local-setup), lub użyć dostarczonego skryptu. W poniższych przykładach skryptów przyjęto założenie, że używasz repozytorium .NET na maszynie Windows. Jeśli pracujesz w innym środowisku, Dostosuj ścieżek, rozszerzeń plików i separatorami ścieżki odpowiednio. Aby użyć dostarczone skrypty do:
+1. Uruchom program Visual Studio 2017
+1. Otwórz **monitoring.sln zdalnego** rozwiązania **usług** folderu w lokalnej kopii repozytorium.
+1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy rozwiązanie, a następnie kliknij **właściwości**.
+1. Wybierz **typowe właściwości > Projekt startowy**.
+1. Wybierz **wiele projektów startowych** i ustaw **akcji** do **Start** dla następujących projektów:
+    * Usługa sieci Web (asa manager\WebService)
+    * Usługa sieci Web (auth\WebService)
+    * Usługa sieci Web (config\WebService)
+    * Usługa sieci Web (urządzenie telemetry\WebService)
+    * Usługa sieci Web (iothub-manager\WebService)
+    * Usługa sieci Web (magazynu adapter\WebService)
+1. Kliknij przycisk **OK** Aby zapisać wybrane opcje.
+1. Kliknij przycisk **Debuguj > Rozpocznij debugowanie** Aby skompilować i uruchomić usługi sieci web na komputerze lokalnym.
 
-### <a name="create-new-azure-resources"></a>Tworzenie nowych zasobów platformy Azure
+Każdą usługę sieci web zostanie otwarte okno przeglądarki sieci web i wiersza polecenia. W wierszu polecenia zostaną wyświetlone dane wyjściowe z uruchomioną usługę i okna przeglądarki umożliwia monitorowanie stanu. Nie zamykaj wiersz polecenia lub strony sieci web, ta akcja zatrzymuje usługę sieci web.
 
-Jeśli jeszcze nie utworzono wymaganych zasobów platformy Azure, wykonaj następujące kroki:
+### <a name="start-the-stream-analytics-job"></a>Uruchamianie zadania usługi Stream Analytics
 
-1. W środowisku wiersza polecenia i przejdź do **remote-monitoring usługi dotnet\scripts\local\launch** folderu w sklonowanej kopii repozytorium.
+Wykonaj następujące kroki, aby uruchomić zadanie usługi Stream Analytics:
 
-2. Uruchom **start.cmd** skryptu i postępuj zgodnie z monitami. Skrypt wyświetli monit o Zaloguj się do konta platformy Azure i ponownie uruchom skrypt. Skrypt następnie wyświetli monit o podanie następujących informacji:
-    * Nazwa rozwiązania.
-    * Subskrypcja platformy Azure, która ma być używana.
-    * Lokalizacja centrum danych platformy Azure do użycia.
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
+1. Przejdź do **grupy zasobów** tworzony dla rozwiązania. Nazwa grupy zasobów jest nazwa została wybrana opcja rozwiązania jest wyświetlany po uruchomieniu **start.cmd** skryptu **.
+1. Kliknij pozycję **zadania usługi Stream Analytics** na liście zasobów.
+1. W zadaniu Stream Analytics **Przegląd** kliknij **Start** przycisku. Następnie kliknij przycisk **Start** można teraz uruchomić zadania.
 
-    Skrypt tworzy grupę zasobów na platformie Azure, nazwą rozwiązania. Ta grupa zasobów zawiera zasoby platformy Azure, który korzysta z akceleratora rozwiązań.
+### <a name="configure-and-run-nginx"></a>Konfigurowanie i uruchamianie serwera NGINX
 
-3. Po ukończeniu działania skryptu, wyświetla listę zmiennych środowiskowych. Wykonaj instrukcje zawarte w danych wyjściowych polecenia do zapisania tych zmiennych do **remote-monitoring usługi dotnet\\skrypty\\lokalnego\\ENV** pliku.
+Konfigurowanie zwrotnego serwera proxy do łączenia aplikacji sieci web i mikrousług uruchomiona na komputerze lokalnym:
 
-### <a name="use-existing-azure-resources"></a>Użyj istniejących zasobów platformy Azure
+* Kopiuj **nginx.conf** plik wchodzącej w skład **webui\scripts\localhost** folder **nginx\conf** katalog_instalacji.
+* Uruchom **nginx**.
 
-Jeśli utworzono już wymaganych zasobów platformy Azure edytować definicje zmiennych środowiskowych w **remote-monitoring usługi dotnet\\skrypty\\lokalnego\\ENV** plików za pomocą wymagane wartości. **ENV** plik zawiera szczegółowe informacje o tym, gdzie można znaleźć wymaganych wartości.
+Aby uzyskać więcej informacji o uruchamianiu **nginx**, zobacz [nginx dla Windows](http://nginx.org/en/docs/windows.html).
 
-## <a name="run-the-microservices-in-docker"></a>Uruchom mikrousług na platformie Docker
+### <a name="connect-to-the-dashboard"></a>Łączenie do pulpitu nawigacyjnego
 
-Mikrousługi uruchomiona w lokalnym kontenerów platformy Docker muszą uzyskać dostęp do usług działających na platformie Azure. Można przetestować łączność z Internetem przy użyciu następującego polecenia, który małych kontenerów, które próbuje wysłać polecenie ping do adresu internetowego środowiska platformy Docker:
-
-```cmd/sh
-docker run --rm -ti library/alpine ping google.com
-```
-
-Aby uruchomić akcelerator rozwiązań, przejdź do **remote-monitoring usługi dotnet\\skrypty\\lokalnego** folder w środowisku wiersza polecenia i uruchom następujące polecenie:
-
-```cmd\sh
-docker-compose up
-```
-
-Podczas pierwszego uruchamiania tego polecenia Docker pobiera obrazy mikrousług z usługi Docker hub do tworzenia kontenerów lokalnie. W kolejnych uruchomień Docker uruchamia kontenery natychmiast.
-
-Aby wyświetlić dzienniki z kontenera, można użyć oddzielnych powłoki. Najpierw Znajdź przy użyciu Identyfikatora kontenera `docker ps -a` polecenia. Następnie użyj `docker logs {container-id} --tail 1000` Aby wyświetlić ostatnie wpisy dziennika 1000 dla określonego kontenera.
-
-Aby uzyskać dostęp do pulpitu nawigacyjnego rozwiązania monitorowania zdalnego, przejdź do [ http://localhost:8080 ](http://localhost:8080) w przeglądarce.
+Aby uzyskać dostęp do pulpitu nawigacyjnego rozwiązania monitorowania zdalnego, przejdź do [ http://localhost:9000 ](http://localhost:9000) w przeglądarce.
 
 ## <a name="clean-up"></a>Czyszczenie
 
-Aby uniknąć niepotrzebnych opłat, po zakończeniu testowania Usuń usług w chmurze z subskrypcji platformy Azure. Jest najprostszym sposobem usuwania usług, aby przejść do [witryny Azure portal](https://ms.portal.azure.com) i Usuń grupę zasobów, który został utworzony po uruchomieniu **start.cmd** skryptu.
+Aby uniknąć niepotrzebnych opłat, po zakończeniu testowania Usuń usług w chmurze z subskrypcji platformy Azure. Aby usunąć usługi, przejdź do [witryny Azure portal](https://ms.portal.azure.com) i Usuń zasób grupy, która **start.cmd** skrypt utworzony.
 
-Użyj `docker-compose down --rmi all` polecenie, aby usunąć obrazy platformy Docker i wolnego miejsca na komputerze lokalnym. Możesz także usunąć lokalną kopię repozytorium zdalne monitorowanie utworzone podczas klonowania kodu źródłowego z repozytorium GitHub.
+Możesz także usunąć lokalną kopię repozytorium zdalne monitorowanie utworzone podczas klonowania kodu źródłowego z repozytorium GitHub.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> * Skonfiguruj lokalne Środowisko deweloperskie
-> * Konfigurowanie akceleratora rozwiązań
-> * Wdrażanie akceleratora rozwiązań
-> * Zaloguj się do akceleratora rozwiązań
-
-Teraz, gdy wdrożono rozwiązanie monitorowania zdalnego, następnym krokiem jest [zapoznaj się z możliwościami pulpitu nawigacyjnego rozwiązania](quickstart-remote-monitoring-deploy.md).
-
-<!-- Next tutorials in the sequence -->
+Teraz, że udało Ci się wdrożyć rozwiązania do zdalnego monitorowania, następnym krokiem jest [zapoznaj się z możliwościami pulpitu nawigacyjnego rozwiązania](quickstart-remote-monitoring-deploy.md).

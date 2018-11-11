@@ -12,7 +12,7 @@ ms.date: 06/18/2018
 ms.author: martincoetzer
 ms.openlocfilehash: d52431b50e37101b0272e3ce4bbf91011a477775
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51252091"

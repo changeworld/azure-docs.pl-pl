@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: e22a2431ecae68278276b069bc199cfea60cd413
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 5d2edd3b4d8655133ef2835f0d0e579280123ae7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347362"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249425"
 ---
 # <a name="azure-service-fabric-support-options"></a>Opcje pomocy technicznej usługi Azure Service Fabric
 
@@ -27,7 +27,7 @@ Aby zapewnić odpowiednią obsługę klastrów usługi Service Fabric, które s�
 
 ## <a name="report-production-issues-or-request-paid-support-for-azure"></a>Zgłosić problemy w środowisku produkcyjnym lub poprosić płatnej pomocy technicznej dla platformy Azure
 
-Do zgłaszania problemów dotyczących w klastrze usługi Service Fabric wdrożonego na platformie Azure, należy otworzyć bilet pomocy technicznej [w witrynie Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) lub [portalu pomocy technicznej firmy Microsoft](http://support.microsoft.com/oas/default.aspx?prid=16146).
+Do zgłaszania problemów dotyczących w klastrze usługi Service Fabric wdrożonego na platformie Azure, należy otworzyć bilet pomocy technicznej [w witrynie Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) lub [portalu pomocy technicznej firmy Microsoft](https://support.microsoft.com/oas/default.aspx?prid=16146).
 
 Dowiedz się więcej o usługach:
  
@@ -38,7 +38,7 @@ Dowiedz się więcej o usługach:
 
 ## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>Zgłosić problemy w środowisku produkcyjnym lub poprosić płatnej pomocy technicznej dla autonomicznych, które klastrów usługi Service Fabric
 
-Dla raportowania problemy w klastrze usługi Service Fabric wdrożone lokalnie lub w innych chmurach, otwórz bilet pomocy technicznej professional na [portalu pomocy technicznej firmy Microsoft](http://support.microsoft.com/oas/default.aspx?prid=16146).
+Dla raportowania problemy w klastrze usługi Service Fabric wdrożone lokalnie lub w innych chmurach, otwórz bilet pomocy technicznej professional na [portalu pomocy technicznej firmy Microsoft](https://support.microsoft.com/oas/default.aspx?prid=16146).
 
 Dowiedz się więcej o usługach:
 

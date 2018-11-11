@@ -1,19 +1,19 @@
 ---
 title: Informacje o usłudze Azure Site Recovery | Microsoft Docs
-description: Zawiera omówienie usługi Azure Site Recovery oraz podsumowanie scenariuszy wdrażania.
+description: Zawiera omówienie usługi Azure Site Recovery oraz podsumowanie scenariuszy odzyskiwania po awarii i wdrażania migracji.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: overview
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 334b7aa3a3a174055c3741f20a4817063efd21f6
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: b03681e6205b7db24960c99a87a3c84c213884d2
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456647"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240294"
 ---
 # <a name="about-site-recovery"></a>Informacje o usłudze Site Recovery
 
@@ -58,7 +58,7 @@ Usługa Site Recovery może zarządzać replikacją dla:
 --- | ---
 **Scenariusze replikacji** | Replikowanie maszyn wirtualnych platformy Azure między regionami platformy Azure.<br/><br/>  Replikowanie lokalnych maszyn wirtualnych programu VMware, maszyn wirtualnych funkcji Hyper-V, serwerów fizycznych (z systemami Windows i Linux) oraz maszyn wirtualnych usługi Azure Stack do platformy Azure.<br/><br/> Replikowanie lokalnych maszyn wirtualnych programu VMware, maszyn wirtualnych funkcji Hyper-V zarządzanych przez program System Center VMM oraz serwerów fizycznych do lokacji dodatkowej.
 **Regiony** | Przejrzyj [regiony obsługiwane](https://azure.microsoft.com/regions/services/) na potrzeby usługi Site Recovery. |
-**Zreplikowane maszyny** | Przejrzyj wymagania dotyczące replikacji [maszyn wirtualnych platformy Azure](azure-to-azure-support-matrix.md#support-for-replicated-machine-os-versions), [lokalnych maszyn wirtualnych programu VMware i serwerów fizycznych](vmware-physical-azure-support-matrix.md#replicated-machines) oraz [lokalnych maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms).
+**Zreplikowane maszyny** | Przejrzyj wymagania dotyczące replikacji [maszyn wirtualnych platformy Azure](azure-to-azure-support-matrix.md#replicated-machine-operating-systems), [lokalnych maszyn wirtualnych programu VMware i serwerów fizycznych](vmware-physical-azure-support-matrix.md#replicated-machines) oraz [lokalnych maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms).
 **Obciążenia** | Możesz replikować dowolne obciążenia uruchomione na maszynie, która jest obsługiwana na potrzeby replikacji. Dodatkowo zespół usługi Site Recovery wykonał specyficzne dla aplikacji testowanie na potrzeby [wielu aplikacji](site-recovery-workload.md#workload-summary).
 
 

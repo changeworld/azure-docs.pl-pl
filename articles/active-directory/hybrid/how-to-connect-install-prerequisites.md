@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4dd3253b1d7ee159914f2d1fd6a8644bbc69c1f0
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 5205d7797e7d45266a4f54b842ad56f353abc6d6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092795"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252993"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Wymagania wstępne dotyczące usługi Azure AD Connect
 W tym temacie opisano wymagania wstępne i wymagania sprzętowe programu Azure AD Connect.
@@ -41,7 +41,7 @@ Zanim zainstalujesz program Azure AD Connect, istnieje kilka kwestii, które są
 
 ### <a name="on-premises-active-directory"></a>Lokalna usługa Active Directory
 * Wersja i lasu poziom funkcjonalności dla schematu usługi AD musi być Windows Server 2003 lub nowszym. Kontrolery domeny można uruchomić z dowolnej wersji, tak długo, jak są spełnione wymagania poziomu schematu i lasu.
-* Jeśli planujesz używać funkcji **funkcji zapisywania zwrotnego haseł**, kontrolery domeny musi być w systemie Windows Server 2008 (przy użyciu najnowszych SP) lub nowszej. Jeśli Twoje kontrolery domeny są 2008 (sprzed wersji R2), a następnie należy również zastosować [poprawkę KB2386717](http://support.microsoft.com/kb/2386717).
+* Jeśli planujesz używać funkcji **funkcji zapisywania zwrotnego haseł**, kontrolery domeny musi być w systemie Windows Server 2008 (przy użyciu najnowszych SP) lub nowszej. Jeśli Twoje kontrolery domeny są 2008 (sprzed wersji R2), a następnie należy również zastosować [poprawkę KB2386717](https://support.microsoft.com/kb/2386717).
 * Kontroler domeny używane przez usługę Azure AD musi być zapisywalny. Jest **nieobsługiwane** przy użyciu kontrolera RODC (kontroler domeny tylko do odczytu) i usługi Azure AD Connect nie jest zgodna z dowolnym przekierowuje zapisu.
 * Jest **nieobsługiwane** do użycia w środowisku lokalnym lasami/domenami przy użyciu "kropkowana" (nazwa zawiera kropkę ".") Nazwy NetBios.
 * Zaleca się [Włączanie Kosza usługi Active Directory](how-to-connect-sync-recycle-bin.md).
@@ -123,11 +123,11 @@ Program Azure AD Connect, zależy od Microsoft PowerShell i .NET Framework 4.5.1
   * Microsoft PowerShell jest instalowany domyślnie. Jest wymagana żadna akcja.
   * .NET framework 4.5.1 i nowszych są oferowane za pośrednictwem usługi Windows Update. Upewnij się, że zainstalowano najnowsze aktualizacje do systemu Windows Server w Panelu sterowania.
 * Windows Server 2008R2 i Windows Server 2012
-  * Najnowszą wersję programu Microsoft PowerShell jest dostępna w **Windows Management Framework 4.0**, która jest dostępna na [Microsoft Download Center](http://www.microsoft.com/downloads).
-  * .NET framework 4.5.1 i nowszych wersji są dostępne na [Microsoft Download Center](http://www.microsoft.com/downloads).
+  * Najnowszą wersję programu Microsoft PowerShell jest dostępna w **Windows Management Framework 4.0**, która jest dostępna na [Microsoft Download Center](https://www.microsoft.com/downloads).
+  * .NET framework 4.5.1 i nowszych wersji są dostępne na [Microsoft Download Center](https://www.microsoft.com/downloads).
 * Windows Server 2008
-  * Najnowszą obsługiwaną wersję programu PowerShell jest dostępna w **Windows Management Framework 3.0**, która jest dostępna na [Microsoft Download Center](http://www.microsoft.com/downloads).
-  * .NET framework 4.5.1 i nowszych wersji są dostępne na [Microsoft Download Center](http://www.microsoft.com/downloads).
+  * Najnowszą obsługiwaną wersję programu PowerShell jest dostępna w **Windows Management Framework 3.0**, która jest dostępna na [Microsoft Download Center](https://www.microsoft.com/downloads).
+  * .NET framework 4.5.1 i nowszych wersji są dostępne na [Microsoft Download Center](https://www.microsoft.com/downloads).
 
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>Włącz szyfrowanie TLS 1.2, dla programu Azure AD Connect
 Przed wersją 1.1.614.0 program Azure AD Connect domyślnie używa protokołu TLS 1.0 do szyfrowania komunikacji między serwerem aparat synchronizacji i usługi Azure AD. Można to zmienić, po skonfigurowaniu aplikacji .net do użycia protokołu TLS 1.2, domyślnie na serwerze. Więcej informacji na temat protokołu TLS 1.2, można znaleźć w [Microsoft Security Advisory 2960358](https://technet.microsoft.com/security/advisory/2960358).

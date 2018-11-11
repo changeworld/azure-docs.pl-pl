@@ -1,28 +1,28 @@
 ---
-title: Apache Spark, przesyłanie strumieniowe ze strukturą z usługi Kafka do usługi Azure Cosmos DB — usługa Azure HDInsight
+title: Apache Spark, przesyłanie strumieniowe ze strukturą z platformy Apache Kafka do usługi Azure Cosmos DB — usługa Azure HDInsight
 description: Dowiedz się, jak za pomocą Apache Spark Structured Streaming odczytywać dane z platformy Apache Kafka, a następnie przechowywać ją do usługi Azure Cosmos DB. Ten przykład obejmuje strumieniowe przesyłanie danych z platformy Spark w usłudze HDInsight za pomocą notesu Jupyter.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/26/2018
-ms.author: jasonh
-ms.openlocfilehash: 8f0a16320091f8b2efa98ee96a63801e841c082e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 159d3d1576ab3a38baaba94594b3abf04ef3ad56
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971318"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287986"
 ---
-# <a name="use-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>Za pomocą platformy Spark Structured Streaming with Kafka i Azure Cosmos DB
+# <a name="use-apache-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>Korzystanie z platformy Apache Spark Structured Streaming with Kafka i Azure Cosmos DB
 
-Dowiedz się, jak używać przesyłania strumieniowego ze strukturą platformy Spark do odczytywania danych z platformy Apache Kafka w usłudze Azure HDInsight, a następnie zapisać dane do usługi Azure Cosmos DB.
+Dowiedz się, jak za pomocą Apache Spark Structured Streaming odczytywać dane z platformy Apache Kafka w usłudze Azure HDInsight, a następnie zapisać dane do usługi Azure Cosmos DB.
 
 Usługa Azure Cosmos DB to globalnie dystrybuowana, wielomodelowa baza danych. W tym przykładzie używa interfejsu API SQL model bazy danych. Aby uzyskać więcej informacji, zobacz [usługi Azure Cosmos DB — Zapraszamy](../cosmos-db/introduction.md) dokumentu.
 
-Przesyłanie strumieniowe ze strukturą platformy Spark korzysta z aparatu przetwarzania strumienia opartego na module Spark SQL. Aparat ten umożliwia wyrażanie obliczeń strumieniowych tak samo jak obliczeń wsadowych na danych statycznych. Aby uzyskać więcej informacji o przesyłaniu strumieniowym ze strukturą, zobacz dokument [Structured Streaming Programming Guide [Alpha] (Przewodnik po programowaniu przesyłania strumieniowego ze strukturą [Alpha])](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html) w witrynie Apache.org.
+Przesyłanie strumieniowe ze strukturą platformy Spark korzysta z aparatu przetwarzania strumienia opartego na module Spark SQL. Aparat ten umożliwia wyrażanie obliczeń strumieniowych tak samo jak obliczeń wsadowych na danych statycznych. Aby uzyskać więcej informacji na temat przesyłanie strumieniowe ze strukturą, zobacz [Structured Streaming Programming Guide](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) w serwisie Apache.org.
 
 > [!IMPORTANT]
 > W tym przykładzie użyto platformy Spark 2.2 w HDInsight 3.6.
@@ -95,7 +95,7 @@ Chociaż można utworzyć sieci wirtualnej platformy Azure, platformy Kafka i Sp
 
 3. Przeczytaj **Warunki i postanowienia**, a następnie wybierz pozycję **Wyrażam zgodę na powyższe warunki i postanowienia**.
 
-4. Na koniec zaznacz opcję **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz pozycję **Kup**. Tworzenie klastrów trwa około 20 minut.
+4. Na koniec wybierz pozycję **zakupu**. Tworzenie klastrów trwa około 20 minut.
 
 > [!IMPORTANT]
 > Może potrwać do 45 minut do tworzenia klastrów, sieci wirtualnej i konta usługi Cosmos DB.

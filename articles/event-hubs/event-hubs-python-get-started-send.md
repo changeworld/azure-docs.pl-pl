@@ -2,28 +2,28 @@
 title: Wysyłanie zdarzeń do usługi Azure Event Hubs przy użyciu języka Python | Dokumentacja firmy Microsoft
 description: Rozpocznij wysyłanie zdarzeń do usługi Event Hubs przy użyciu języka Python
 services: event-hubs
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
 ms.date: 10/16/2018
-ms.author: sethm
-ms.openlocfilehash: bb77ed69ae8f2229cbd62afa545cac9f048689e8
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.author: shvija
+ms.openlocfilehash: 05feab0227633ab52f0865fa7c19a310b612eb1c
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458007"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286898"
 ---
 # <a name="send-events-to-event-hubs-using-python"></a>Wysyłanie zdarzeń do usługi Event Hubs przy użyciu języka Python
 
-Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby uzyskać szczegółowe omówienie usługi Event hubs, zobacz [Przegląd usługi Event Hubs](event-hubs-about.md) i [funkcji usługi Event Hubs](event-hubs-features.md).
+Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby zapoznać się ze szczegółowym omówieniem usługi Event Hubs, zobacz [Omówienie usługi Event Hubs](event-hubs-about.md) i [Funkcje usługi Event Hubs](event-hubs-features.md).
 
 W tym samouczku opisano sposób wysyłania zdarzeń do Centrum zdarzeń z aplikacji napisanych w języku Python. 
 
 > [!NOTE]
-> Ten przewodnik Szybki Start można pobrać jako próbki z [GitHub](https://github.com/Azure/azure-event-hubs-python/tree/master/examples), Zastąp `EventHubConnectionString` i `EventHubName` ciągi z własnymi wartościami Centrum zdarzeń i uruchomimy ją. Alternatywnie możesz wykonać kroki w tym samouczku, aby utworzyć własny.
+> Ten przewodnik Szybki start możesz pobrać jako przykład z witryny [GitHub](https://github.com/Azure/azure-event-hubs-python/tree/master/examples), zastąpić ciągi `EventHubConnectionString` i `EventHubName` wartościami swojego centrum zdarzeń, a następnie uruchomić go. Alternatywnie możesz utworzyć własne rozwiązanie, wykonując kroki opisane w tym samouczku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -33,7 +33,7 @@ Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących 
 
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Tworzenie przestrzeni nazw usługi Event Hubs i centrum zdarzeń
-Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azure.com) w celu utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z centrum zdarzeń. Aby utworzyć obszar nazw i Centrum zdarzeń, wykonaj procedurę opisaną w [w tym artykule](event-hubs-create.md), a następnie wykonaj następujące czynności w ramach tego samouczka.
+Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azure.com) w celu utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z centrum zdarzeń. Aby utworzyć przestrzeń nazw i centrum zdarzeń, wykonaj procedurę opisaną w [tym artykule](event-hubs-create.md), a następnie wykonaj następujące czynności z tego samouczka.
 
 ## <a name="install-python-package"></a>Zainstaluj pakiet języka Python
 

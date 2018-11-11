@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: 75c6b5c34559ad17f662c895352bff5a58da00d4
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b3c652baa515035fc91d2a5f7f962685b673a25e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395852"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013330"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Protokołu AMQP 1.0 w przewodnik dotyczący protokołu usługi Azure Service Bus i Event Hubs
 
@@ -225,7 +225,7 @@ Wszystkie właściwości, która aplikacja ma definiuje powinno zostać zamapowa
 | Identyfikator komunikatu |Zdefiniowane przez aplikację, dowolny identyfikator dla tego komunikatu. Używane do wykrywania duplikatów. |[Identyfikator komunikatu](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) |
 | Identyfikator użytkownika |Identyfikator użytkownika zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
 | na |Identyfikator docelowego zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |[Do](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_To) |
-| Temat |Identyfikator celu wiadomości zdefiniowanych przez aplikację, nie są interpretowane przez usługę Service Bus. |[Etykieta](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
+| temat |Identyfikator celu wiadomości zdefiniowanych przez aplikację, nie są interpretowane przez usługę Service Bus. |[Etykieta](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
 | Odpowiedz do |Wskaźnik ścieżki odpowiedzi zdefiniowany przez aplikację nie są interpretowane przez usługę Service Bus. |[replyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
 | Identyfikator korelacji |Identyfikator korelacji zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |[Identyfikator korelacji](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CorrelationId) |
 | Typ zawartości |Zdefiniowane przez aplikację wskaźnik typu zawartości dla treści nie interpretowane przez usługę Service Bus. |[Typ zawartości](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ContentType) |
@@ -380,7 +380,7 @@ Komunikat odpowiedzi zawiera następujące *właściwości aplikacji* wartości
 
 | Klucz | Optional (Opcjonalność) | Typ wartości | Wartość zawartości |
 | --- | --- | --- | --- |
-| Kod stanu: |Nie |Int |Kod odpowiedzi HTTP **[specyfikacją RFC2616]**. |
+| Kod stanu: |Nie |int |Kod odpowiedzi HTTP **[specyfikacją RFC2616]**. |
 | Opis stanu |Yes |ciąg |Opis stanu. |
 
 Klient może wywołać *put token* wielokrotnie i dla dowolnej jednostki w infrastrukturze obsługi wiadomości. Tokeny są ograniczone do bieżącego klienta i zakotwiczone w bieżącym połączeniu, co oznacza, że serwer porzuca wszystkie tokeny zachowane po spadku połączenia.

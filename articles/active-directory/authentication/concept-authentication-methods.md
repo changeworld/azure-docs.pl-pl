@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 67f99e68bc4091d076e27aee06c2851bc77e6fc7
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: d8d7850e7d5253cfec4431fed3e09f4007995494
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378928"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249697"
 ---
 # <a name="what-are-authentication-methods"></a>Jakie są metody uwierzytelniania?
 
@@ -70,20 +70,20 @@ Jeśli używasz pytań zabezpieczających, firma Microsoft zaleca używanie ich 
 * Na jaką uczelnię próbowałeś/próbowałaś się dostać, ale się nie udało?
 * Gdzie odbyło się Twoje pierwsze wesele?
 * Jak ma na drugie imię Twój ojciec?
-* Jakie jest Twoje ulubione danie?
+* Jaka jest Twoja ulubiona potrawa?
 * Jak ma na imię i nazwisko Twoja babcia od strony matki?
 * Jakie jest drugie imię Twojej matki?
 * Co to jest urodzin miesiąca i roku Twojego najstarszego rodzeństwa? (na przykład listopad 1985)
-* Jakie jest drugie imię Twojego najstarszego rodzeństwa?
+* Jak ma na drugie imię Twój najstarszy brat/siostra?
 * Jak miał na imię i nazwisko Twój dziadek od strony ojca?
 * Jakie jest drugie imię Twojego najmłodszego rodzeństwa?
 * Jak nazywała się Twoja szkoła podstawowa?
 * Jak miał na imię i nazwisko Twój najlepszy przyjaciel w dzieciństwie?
-* Jakie było imię i nazwisko Twojego pierwszego partnera lub Twojej pierwszej partnerki?
+* Jak miała na imię i nazwisko Twoja pierwsza poważna sympatia?
 * Jak miał na nazwisko Twój ulubiony nauczyciel w szkole podstawowej?
-* Jakie były marka i model Twojego pierwszego samochodu lub motocykla?
+* Jaka była marka i model Twojego pierwszego samochodu lub motocykla?
 * Jak się nazywała Twoja pierwsza szkoła?
-* Jak się nazywał szpital, w którym się urodziłeś/urodziłaś?
+* Jak nazywał się szpital Twoich narodzin?
 * Przy jakiej ulicy znajdował się Twój pierwszy dom z dzieciństwa?
 * Jak się nazywał Twój bohater z dzieciństwa?
 * Jak się nazywała Twoja ulubiona maskotka?
@@ -122,7 +122,7 @@ Firma Microsoft zaleca korzystanie z konta e-mail, który nie wymaga usługi Azu
 
 Aplikacja Microsoft Authenticator zapewnia dodatkowy poziom zabezpieczeń do pracy usługi Azure AD lub konta służbowego lub konta Microsoft.
 
-Aplikacja Microsoft Authenticator jest dostępna dla systemów [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) i [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071).
+Aplikacja Microsoft Authenticator jest dostępna dla systemów [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) i [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071).
 
 > [!NOTE]
 > Użytkownicy nie będą mieli możliwość zarejestrowania aplikacji mobilnej, gdy rejestrowanie na potrzeby samoobsługowego resetowania haseł. Zamiast tego użytkownicy mogą rejestrować się w aplikacji mobilnej na [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup) lub w wersji zapoznawczej rejestracji informacji zabezpieczeń w [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo).
@@ -193,7 +193,7 @@ Wiadomość SMS są wysyłane pod numerem telefonu komórkowego z kodem weryfika
 
 Automatyczne połączenie głosowe wykonano pod numer telefonu, których udzielasz. Odebranie połączenia i naciśnięcie przycisku # na klawiaturze telefonu w celu uwierzytelnienia
 
-## <a name="office-phone"></a>Telefon służbowy
+## <a name="office-phone"></a>Telefon biurowy
 
 Automatyczne połączenie głosowe wykonano pod numer telefonu, których udzielasz. Odebrać połączenie i naciska klawisz # na klawiaturze telefonu w celu uwierzytelnienia.
 

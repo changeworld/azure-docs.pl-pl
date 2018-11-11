@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6983b49135b5a8adbef1d0cfc5a407cb7b0c7ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0dc7daebe91199cc6c54ac5e3a2d8f43e1592a73
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960553"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282428"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB zestawu SDK środowiska Node.js dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -45,6 +45,26 @@ ms.locfileid: "46960553"
 | Bieżący obsługiwanych platform | [Node.js 6.x](https://nodejs.org/en/blog/release/v6.10.3/) — wartość wymagana w przypadku zestawu SDK w wersji 2.0.0 lub nowszym.<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [V0.10 środowiska node.js](https://nodejs.org/en/blog/release/v0.10.0/) 
 
 ## <a name="release-notes"></a>Informacje o wersji
+
+### <a name="2.0.5"/>2.0.5</a>
+* Dodaje interfejs dla węzła typu agenta. Typescript użytkownicy nie muszą już zainstalował @types/node jako zależność
+* Preferowane lokalizacje teraz są poprawnie uznawane.
+* Ulepszenia dotyczące współtworzenia dokumentacji dla deweloperów
+* Różne poprawki Literówka
+
+### <a name="2.0.4"/>2.0.4</a>
+* Poprawki typ problemu defenition wprowadzona w 2.0.3
+
+### <a name="2.0.3"/>2.0.3</a>
+* Usuń `big-integer` zależności
+* Przełącz się do dyrektywy odwołań dla typu AsyncIterable. Użytkownicy języka typescript nie trzeba dostosować ich ustawienia "lib".
+* Błąd pisowni poprawki
+
+### <a name="2.0.2"/>pkt 2.0.2</a>
+* Usuń łącza plik readme
+
+### <a name="2.0.1"/>2.0.1</a>
+* Napraw implementacji interfejsu ponownych prób
 
 ### <a name="2.0.0"/>2.0.0</a>
 * GA 2.0.0 wersję zestawu SDK języka JavaScript

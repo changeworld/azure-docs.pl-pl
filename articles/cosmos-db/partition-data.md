@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: andrl
-ms.openlocfilehash: 9e75068a1e05f12c7b887b601777227902f15ed8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5dd1926496351f5bbfe8e5b3e4d1e0b68e82d272
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238579"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283397"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partycjonowanie i skalowanie w poziomie w usłudze Azure Cosmos DB
 
@@ -29,13 +29,13 @@ Po dodaniu nowych elementów do kontenera lub przepływnością aprowizowaną dl
 
 ## <a name="physical-partitions"></a>Partycje fizyczne
 
-Kontener Cosmos skalowania przez dystrybucję dużej liczby partycji logicznej danych i przepływności. Wewnętrznie, co najmniej jedną partycję logiczne są mapowane na **partycja zasobu** składający się z zestawu replik, nazywana także zestawu replik. Każdego zestawu replik znajduje się wystąpienie aparatu bazy danych Cosmos. Zestawu replik sprawia, że dane są przechowywane w partycji zasobów trwałe, wysoce dostępny i spójne. Partycja zasobu obsługuje stały, maksymalna wielkość magazynu oraz jednostek RU. Każdej repliki partycji zasobu wchodzących w skład dziedziczy przydział magazynowania. I wszystkie repliki partycji zasobów zbiorczo obsługiwać przepływności przydzielane do partycji zasobów. Na poniższej ilustracji przedstawiono, jak logicznej partycji są mapowane na partycji zasobów, które są globalnie rozproszone:
+Kontener Cosmos skalowania przez dystrybucję dużej liczby partycji logicznej danych i przepływności. Wewnętrznie, co najmniej jedną partycję logiczne są mapowane na **partycja zasobu** składający się z zestawu replik, nazywana także zestawu replik. Każdego zestawu replik znajduje się wystąpienie aparatu bazy danych Cosmos. Zestawu replik sprawia, że dane są przechowywane w partycji zasobów trwałe, wysoce dostępny i spójne. Partycja zasobu obsługuje stały, maksymalna wielkość magazynu oraz jednostek RU. Każdej repliki partycji zasobu wchodzących w skład dziedziczy przydział magazynowania. I wszystkie repliki partycji zasobów zbiorczo obsługiwać przepływności przydzielane do partycji zasobów. Na poniższej ilustracji przedstawiono, jak logicznej partycji są mapowane na partycje fizyczne, które są globalnie rozproszone:
 
 ![Partycjonowanie usługi Azure Cosmos DB](./media/partition-data/logical-partitions.png)
 
-Przepływnością aprowizowaną dla kontenera jest równomiernie podzielone między partycjami zasobów. W związku z tym projekt klucza partycji, który nie równomierne rozłożenie żądania przepływności można utworzyć partycji "gorącymi". Gorąca partycji może spowodować ograniczanie szybkości i nieefektywne użycie aprowizowanej przepływności.
+Przepływnością aprowizowaną dla kontenera jest równomiernie podzielone między partycje fizyczne. W związku z tym projekt klucza partycji, który nie równomierne rozłożenie żądania przepływności można utworzyć partycji "gorącymi". Gorąca partycji może spowodować ograniczanie szybkości i nieefektywne użycie aprowizowanej przepływności.
 
-W przeciwieństwie do partycji logicznej partycji zasobów są wewnętrznej implementacji systemu. Nie można kontrolować, ich rozmiar, położenie, liczby lub mapowanie między partycjami logicznymi i partycji zasobów. Jednak można kontrolować liczbę partycji logicznej i dystrybucję danych i przepływności, wybierając klawisz prawo partycji.
+W odróżnieniu od partycjami logicznymi partycje fizyczne są wewnętrznej implementacji systemu. Nie można kontrolować, ich rozmiar, położenie, liczba lub mapowanie między partycjami logicznymi i partycje fizyczne. Jednak można kontrolować liczbę partycji logicznej i dystrybucję danych i przepływności, wybierając klawisz prawo partycji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

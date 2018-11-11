@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: f68dadab96e27cc7b90f44681d87ffa7cce8126b
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: e5571a0933284a52d5567db0505ecaced6c6c336
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390061"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253503"
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>Tworzenie obrazu maszyny wirtualnej w środowisku lokalnym dla portalu Azure Marketplace
 Zdecydowanie zaleca się tworzenie Azure wirtualne dyski twarde (VHD) bezpośrednio w chmurze przy użyciu protokołu Remote Desktop Protocol. Jednak jeśli trzeba, istnieje możliwość pobierania wirtualnego dysku twardego i Opracuj go za pomocą infrastruktury lokalnej.  
@@ -71,7 +71,7 @@ Po określeniu adresu URL obiektu blob, możesz pobrać wirtualny dysk twardy za
    ![Rysowanie](media/marketplace-publishing-vm-image-creation-on-premise/img07.png)
 
 ### <a name="download-a-vhd-by-using-powershell"></a>Pobieranie wirtualnego dysku twardego za pomocą programu PowerShell
-Oprócz przy użyciu witryny Azure portal, można użyć [Save-AzureVhd](http://msdn.microsoft.com/library/dn495297.aspx) polecenia cmdlet do pobierania wirtualnego dysku twardego systemu operacyjnego.
+Oprócz przy użyciu witryny Azure portal, można użyć [Save-AzureVhd](https://msdn.microsoft.com/library/dn495297.aspx) polecenia cmdlet do pobierania wirtualnego dysku twardego systemu operacyjnego.
 
         Save-AzureVhd –Source <storageURIOfVhd> `
         -LocalFilePath <diskLocationOnWorkstation> `
@@ -139,7 +139,7 @@ Utwórz kontener w następujący sposób.
 Po utworzeniu konto magazynu i kontener, możesz przekazać przygotowane dyski VHD. Można użyć programu PowerShell, narzędzia wiersza polecenia systemu Linux lub innych narzędzi do zarządzania usługi Azure Storage.
 
 ### <a name="upload-a-vhd-via-powershell"></a>Przekazywanie wirtualnego dysku twardego za pomocą programu PowerShell
-Użyj [Add-AzureVhd](http://msdn.microsoft.com/library/dn495173.aspx) polecenia cmdlet.
+Użyj [Add-AzureVhd](https://msdn.microsoft.com/library/dn495173.aspx) polecenia cmdlet.
 
         Add-AzureVhd –Destination “http://mystorageaccount.blob.core.windows.net/containername/vmsku.vhd” -LocalFilePath “C:\Users\Administrator\Desktop\vmsku.vhd”
 

@@ -8,22 +8,22 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: seguler
-ms.openlocfilehash: 065c4c4315bda209484cc1b2449980e55d4ac798
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 09703e203370a524b24f552c93161e4cb64d803d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522700"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281680"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-data-lake-storage-gen2-preview"></a>Za pomocą narzędzia Distcp do skopiowania danych między Azure Storage Blobs a Data Lake Gen2 — wersja zapoznawcza
 
-Jeśli masz klaster usługi HDInsight z dostępem do usługi Azure Data Lake Gen2 — wersja zapoznawcza, można użyć narzędzi ekosystemu platformy Hadoop, takich jak [Distcp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) do kopiowania danych **do i z** magazynu klastra HDInsight (WASB) do danych Gen2 magazynu Lake zdolne do konta. Ten artykuł zawiera instrukcje na temat za pomocą narzędzia Distcp.
+Jeśli korzystasz z klastra usługi HDInsight i zarejestrowanych w wersji zapoznawczej Azure Data Lake Storage Gen2 firmy, możesz użyć narzędzi ekosystemu platformy Hadoop, takich jak [Distcp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) do kopiowania danych **do i z** usługi klastra HDInsight storage (WASB) na konto magazynu, Data Lake magazynu Gen2 — włączone. Ten artykuł zawiera instrukcje na temat za pomocą narzędzia Distcp.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Konto usługi Azure Storage z włączoną funkcją usługi Azure Data Lake Storage (wersja zapoznawcza)**. Aby uzyskać instrukcje na temat jej tworzenia, zobacz [Tworzenie konta magazynu Azure Data Lake Gen2 — wersja zapoznawcza](quickstart-create-account.md)
-* **Klaster usługi Azure HDInsight** dzięki dostępowi do konta usługi Data Lake Storage. Zobacz [użycia usługi Azure Data Lake magazynu Gen2 za pomocą usługi Azure HDInsight clusters](use-hdi-cluster.md). Upewnij się, że włączenie pulpitu zdalnego dla klastra.
+* **Konto usługi Azure Storage za pomocą Data Lake Storage Gen2 włączoną funkcję (wersja zapoznawcza)**. Aby uzyskać instrukcje na temat jej tworzenia, zobacz [Tworzenie konta magazynu Azure Data Lake Gen2 — wersja zapoznawcza](quickstart-create-account.md)
+* **Klaster usługi Azure HDInsight** dzięki dostępowi do konta magazynu z magazynu Gen2 jeziora danych, włączone. Zobacz [użycia usługi Azure Data Lake magazynu Gen2 za pomocą usługi Azure HDInsight clusters](use-hdi-cluster.md). Upewnij się, że włączenie pulpitu zdalnego dla klastra.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>Z klastra usługi HDInsight w systemie Linux za pomocą narzędzia Distcp
 
@@ -97,4 +97,4 @@ Gdy jest duży rozmiar zestawu danych do przeniesienia (na przykład > 1 TB) lub
 
 * Narzędzia DistCp jest ograniczona do tylko jednego mapowania na plik. W związku z tym nie powinna mieć więcej liczby maperów nie znajdują się pliki. Ponieważ DistCp można przypisać tylko jednego mapowania do pliku, ogranicza to ilość współbieżności, który może służyć do kopiowania dużych plików.
 
-* W przypadku niewielkiej liczby dużych plików, następnie należy podzielić je na fragmenty plików 256 MB, które pozwalają uzyskać większą współbieżność potencjalnych. 
+* W przypadku niewielkiej liczby dużych plików, następnie należy podzielić je na fragmenty plików 256 MB, które pozwalają uzyskać większą współbieżność potencjalnych.

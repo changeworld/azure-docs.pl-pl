@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: spelluru
-ms.openlocfilehash: e66a1651a46cfaeb7fb8b232eeb7cf6a2fb8044d
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 55e97ff95245ce222ccbc2a99f6ae2882cef3715
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451226"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248779"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>Wprowadzenie do żądań HTTP połączeń hybrydowych usługi Relay na platformie .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -38,7 +38,7 @@ Połączenia hybrydowe wymagają zarówno składnika klienta, jak i składnika s
 
 Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
 
-* [Program Visual Studio 2015 lub nowszy](http://www.visualstudio.com). W przykładach znajdujących się w tym samouczku używany jest program Visual Studio 2017.
+* [Program Visual Studio 2015 lub nowszy](https://www.visualstudio.com). W przykładach znajdujących się w tym samouczku używany jest program Visual Studio 2017.
 * Subskrypcja platformy Azure.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]

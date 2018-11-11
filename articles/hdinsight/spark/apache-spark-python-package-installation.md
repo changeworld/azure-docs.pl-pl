@@ -2,19 +2,19 @@
 title: Akcja skryptu — instalowanie pakietów języka Python z rozwiązaniem Jupyter w usłudze Azure HDInsight
 description: Instrukcje krok po kroku dotyczące konfigurowania notesów programu Jupyter dostępne przy użyciu klastrów HDInsight Spark przy użyciu akcji skryptu za pomocą pakietów zewnętrznych języka python.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/09/2018
-ms.author: jasonh
-ms.openlocfilehash: c8d0b172682654c858a97b4ca2df99ec5079adaa
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: af25dcff2302827f2291d50972f09b8b5fda6cd3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041153"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255442"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Użyj akcji skryptu, aby zainstalować zewnętrznych pakietów języka Python dla notesów programu Jupyter w klastrach platformy Apache Spark w HDInsight
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Dowiedz się, jak użyć akcji skryptu, aby skonfigurować klaster Apache Spark 
 
 Możesz wyszukiwać [indeksu pakietów](https://pypi.python.org/pypi) uzyskać pełną listę pakietów, które są dostępne. Możesz również uzyskać listę dostępnych pakietów z innych źródeł. Na przykład, można zainstalować pakiety udostępniane za pośrednictwem [Anaconda](https://docs.continuum.io/anaconda/pkg-docs) lub [conda forge](https://conda-forge.org/feedstocks/).
 
-W tym artykule dowiesz się, jak zainstalować [TensorFlow](https://www.tensorflow.org/) pakietu przy użyciu akcji skryptów w klastrze i przy jego użyciu za pomocą notesu Jupyter.
+W tym artykule dowiesz się, jak zainstalować [TensorFlow](https://www.tensorflow.org/) pakietu przy użyciu akcji skryptów w klastrze i korzystać z niego za pomocą notesu Jupyter jako przykład.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Należy dysponować następującymi elementami:
@@ -44,12 +44,27 @@ Należy dysponować następującymi elementami:
    > Jeśli nie masz już klaster Spark w HDInsight w systemie Linux, możesz uruchomić akcji skryptów podczas tworzenia klastra. Odwiedź stronę dokumentacji na [sposób użyć niestandardowego skryptu akcji](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
    > 
    > 
+   
+   ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Pomoc techniczna dotycząca oprogramowania typu open-source używane w klastrach HDInsight
+
+Usługa Microsoft Azure HDInsight korzysta z ekosystemu technologii open source utworzonych na platformie Hadoop. Microsoft Azure oferuje ogólnego poziomu pomocy technicznej dla technologii open source. Aby uzyskać więcej informacji, zobacz **zakres pomocy technicznej** części [witryny sieci Web — często zadawane pytania dla pomocy technicznej Azure](https://azure.microsoft.com/support/faq/). Usługa HDInsight zapewnia dodatkowy poziom pomocy technicznej dla wbudowanych składników.
+
+Istnieją dwa typy składników typu open source, które są dostępne w usłudze HDInsight:
+
+* **Wbudowane składniki** — te składniki są wstępnie zainstalowane w klastrach HDInsight i zapewnia podstawowe funkcje klastra. Na przykład Menedżer zasobów usługi YARN, język zapytań programu Hive (HiveQL) i biblioteki mahout dostępnych należą do tej kategorii. Pełną listę składniki klastra jest dostępna w [nowości w wersjach klastra Hadoop dostarczanych przez HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning).
+* **Składniki niestandardowe** —, jako użytkownik klastra, można zainstalować lub użyj w obciążenia dowolny składnik, dostępne w społeczności lub utworzonej przez użytkownika.
+
+> [!WARNING]
+> Składniki dostarczony z klastrem usługi HDInsight są w pełni obsługiwane. Microsoft Support pomaga wyizolować i rozwiązać problemy związane z tych składników.
+>
+> Składniki niestandardowe otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Pomoc techniczna firmy Microsoft może rozwiązać ten problem, lub ich może poprosić o angażowanie dostępne kanały dla technologii "open source", gdzie znajduje się specjalistyczna dla tej technologii. Na przykład, istnieje wiele witryn społeczności, które mogą być używane, takie jak: [forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projektów Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/).
+
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Korzystanie z zewnętrznych pakietów z notesami Jupyter
 
 1. W [Portalu Azure](https://portal.azure.com/) na tablicy startowej kliknij kafelek klastra Spark (jeśli został przypięty do tablicy startowej). Możesz także przejść do klastra, wybierając polecenia **Przeglądaj wszystko** > **Klastry usługi HDInsight**.   
 
-2. W bloku klastra Spark kliknij **akcji skryptu** z okienka po lewej stronie. Uruchom niestandardową akcję, która instaluje TensorFlow w węzły główne i węzły procesu roboczego. Skrypt powłoki bash, mogą być przywoływane z: https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh odwiedź stronę dokumentacji na [sposób użyć niestandardowego skryptu akcji](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+2. W bloku klastra Spark kliknij **akcji skryptu** z okienka po lewej stronie. Użyj typu skrypt "Niestandardowy", a następnie wprowadź przyjazną nazwę dla akcji skryptu. Uruchom skrypt na **węzły główne i proces roboczy** i pozostaw puste pole parametrów. Skrypt powłoki bash, mogą być przywoływane z: https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh odwiedź stronę dokumentacji na [sposób użyć niestandardowego skryptu akcji](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
 
    > [!NOTE]
    > Istnieją dwa python instalacji w klastrze. Spark użyje Anaconda instalację języka python, znajdujący się w `/usr/bin/anaconda/bin`. Odwoływać się do tej instalacji w akcje niestandardowe za pomocą `/usr/bin/anaconda/bin/pip` i `/usr/bin/anaconda/bin/conda`.

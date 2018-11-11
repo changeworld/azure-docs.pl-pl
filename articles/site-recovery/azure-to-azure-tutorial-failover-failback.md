@@ -1,20 +1,20 @@
 ---
-title: Przełączanie w tryb failover i przywracanie po awarii maszyn wirtualnych platformy Azure replikowanych do dodatkowego regionu świadczenia usługi Azure za pomocą usługi Azure Site Recovery
-description: Dowiedz się, jak przełączyć maszyny wirtualne platformy Azure replikowane do dodatkowego regionu świadczenia usługi Azure w tryb failover i przywrócić je po awarii za pomocą usługi Azure Site Recovery
+title: Przełączanie w tryb failover i powrót po awarii maszyn wirtualnych IaaS platformy Azure replikowanych do dodatkowego regionu świadczenia usługi Azure na potrzeby odzyskiwania po awarii za pomocą usługi Azure Site Recovery.
+description: Dowiedz się, jak przełączać w tryb failover i przywracać po awarii maszyny wirtualne platformy Azure replikowane do dodatkowego regionu świadczenia usługi Azure na potrzeby odzyskiwania po awarii za pomocą usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f7d6594910f3c703c2381515c3b93eb56ff4f675
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 9917656a3bc8fd8cfe7d71786dc39d296a2449c1
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456511"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239291"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Przełączanie maszyn wirtualnych platformy Azure w tryb failover i przywracanie po awarii między regionami świadczenia usługi Azure
 
@@ -34,7 +34,7 @@ W tym samouczku opisano sposób przełączania w tryb failover jednej maszyny wi
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Ukończenie [próbnego odzyskiwania po awarii](azure-to-azure-tutorial-dr-drill.md) w celu sprawdzenia, czy wszystko działa zgodnie z oczekiwaniami.
-- Sprawdzenie właściwości maszyny wirtualnej przed uruchomieniem testu trybu failover. Maszyna wirtualna musi być zgodna z [wymaganiami platformy Azure](azure-to-azure-support-matrix.md#support-for-replicated-machine-os-versions).
+- Sprawdzenie właściwości maszyny wirtualnej przed uruchomieniem testu trybu failover. Maszyna wirtualna musi być zgodna z [wymaganiami platformy Azure](azure-to-azure-support-matrix.md#replicated-machine-operating-systems).
 
 ## <a name="run-a-failover-to-the-secondary-region"></a>Uruchamianie trybu failover w regionie pomocniczym
 

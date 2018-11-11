@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 6de1f6dfac028255a1cb49931e959c79b5fc4f40
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: e0fe2ade2e50ff549cb18f84a3c15830255ca0fb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42022496"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249595"
 ---
 # <a name="microsoft-authenticator-app"></a>Aplikacja Microsoft Authenticator
 
@@ -27,6 +27,6 @@ Aplikacja Microsoft Authenticator pomaga chronić Twoje konta za pośrednictwem 
 
 |Artykuł |Opis |
 |------|------------|
-|[Get started with the Microsoft Authenticator app (Wprowadzenie do aplikacji Microsoft Authenticator)](microsoft-authenticator-app-how-to.md)|Opisuje lokalizację i sposób pobierania i instalowania aplikacji aplikację Microsoft Authenticator dla systemów [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) i [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071).|
+|[Get started with the Microsoft Authenticator app (Wprowadzenie do aplikacji Microsoft Authenticator)](microsoft-authenticator-app-how-to.md)|Opisuje lokalizację i sposób pobierania i instalowania aplikacji aplikację Microsoft Authenticator dla systemów [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) i [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071).|
 |[Backup and recover account credentials with the Microsoft Authenticator app (Tworzenie kopii zapasowej i odzyskiwanie poświadczeń konta przy użyciu aplikacji Microsoft Authenticator)](microsoft-authenticator-app-backup-and-recovery.md)| Zawiera informacje dotyczące tworzenia kopii zapasowej i odzyskiwania poświadczeń konta za pomocą aplikacji Microsoft Authenticator.|
 |[Microsoft Authenticator app FAQ (Aplikacja Microsoft Authenticator — często zadawane pytania)](microsoft-authenticator-app-faq.md)|Zawiera odpowiedzi na często zadawane pytania dotyczące aplikacji.|

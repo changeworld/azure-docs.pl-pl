@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 10/30/2018
+ms.date: 11/02/2018
 ms.author: rolyon
-ms.openlocfilehash: 87b08ce138cde5cc70c5a80cc414c68dd7aea743
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 8fddcdbb8aa523cf3a98a8f2b203440ceedbdf06
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249837"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015214"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano sposób rozpoczęcia pracy z warunkami użytkowania.
@@ -218,7 +218,7 @@ Zasady dostępu warunkowego zaczynają obowiązywać natychmiast. W takim przypa
 
 **Pyt. Jak sprawdzić, czy i kiedy użytkownik zaakceptował warunki użytkowania?**</br>
 Odp.: zgodnie z wymaganiami bloku użycia, kliknij liczbę w obszarze **zaakceptowano**. Można również wyświetlić lub zaakceptuj działań związanych z wyszukiwaniem w usłudze Azure AD dzienniki inspekcji. Aby uzyskać więcej informacji, zobacz [wyświetlić raport, który ma zaakceptowali i odrzucili](#view-who-has-accepted-and-declined) i [usługi Azure AD Wyświetl dzienniki inspekcji](#view-azure-ad-audit-logs).
- 
+
 **Pyt. Jak długo są przechowywane informacje?**</br>
 Odp.: użytkownik liczy się w warunkach w raporcie użycia i który zaakceptowane odrzucone są przechowywane przez cały okres istnienia warunki użytkowania. Inspekcja usługi Azure AD, dzienniki są przechowywane przez 30 dni.
 
@@ -245,12 +245,15 @@ Odp. Dla aplikacji przedsiębiorstwa można utworzyć zasady dostępu warunkoweg
 
 **Pyt. Czy dla użytkownika lub aplikacji można określić wiele warunków użytkowania?**</br>
 Odp. Tak, można to zrobić, tworząc różne wersje zasad dostępu warunkowego obejmujących grupy lub aplikacje. Jeśli danego użytkownika dotyczy wiele warunków użytkowania, musi on zaakceptować je pojedynczo.
- 
+
 **Pyt. Co się stanie, jeśli użytkownik odrzuci warunki użytkowania?**</br>
 Odp. Dostęp do aplikacji zostanie zablokowany dla tego użytkownika. Użytkownik musi zalogować się ponownie i zaakceptować warunki, aby uzyskać dostęp.
- 
+
 **P: czy istnieje możliwość unaccept warunki użytkowania, które zostały wcześniej zaakceptowane?**</br>
 Odp.: możesz [przeglądu wcześniej zaakceptowane warunki użytkowania](#how-users-can-review-their-terms-of-use), ale obecnie nie istnieje sposób unaccept.
+
+**P: co się stanie, jeśli również używam warunków i postanowień usługi Intune?**</br>
+Odp.: Jeśli skonfigurowano zarówno usługi Azure AD z warunkami użytkowania i [Intune warunki i postanowienia](/intune/terms-and-conditions-create), użytkownik będzie musiał zaakceptować oba te elementy. Aby uzyskać więcej informacji, zobacz [Wybieranie odpowiedniego warunki rozwiązanie dla Twojej organizacji wpis w blogu](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

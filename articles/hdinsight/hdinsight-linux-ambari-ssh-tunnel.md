@@ -2,19 +2,19 @@
 title: Używanie protokołu SSH tunelowania do dostępu do usługi Azure HDInsight
 description: Dowiedz się, jak bezpiecznie przeglądać zasoby sieci web hostowanych w węzłach usługi HDInsight opartych na systemie Linux za pomocą tunelu SSH.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.author: jasonh
-ms.openlocfilehash: 0722a366c374bd69fd9cf97279416a60d7133428
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 0be2895bf08cc7d6aa0b2e55b62b2d6705b27725
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107673"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007300"
 ---
 # <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>Korzystanie z tunelowania SSH do uzyskania dostępu do interfejsu użytkownika sieci web Ambari, JobHistory, NameNode, Oozie i innych web UI
 
@@ -27,7 +27,7 @@ Tylko kilka kolejnych menu w Ambari działają za pośrednictwem tunelu SSH. Tyc
 Następujących interfejsów użytkownika sieci Web wymagają tunelu SSH:
 
 * JobHistory
-* nameNode
+* NameNode
 * Stosy wątków
 * Interfejs użytkownika sieci web programu Oozie
 * Interfejs użytkownika głównego interfejsu użytkownika HBase i dzienniki

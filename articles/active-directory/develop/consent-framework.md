@@ -16,22 +16,22 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: b01cd43d1c38a9db50937a6cff9b416b8c6acd0e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 942151c0ce2a3a79dbdce9b90adea721456f920f
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946480"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288479"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Platformy wyrażania zgody w usłudze Azure Active Directory
 
 Platformy wyrażania zgody usługi Azure Active Directory (Azure AD) można łatwo tworzyć wielu dzierżawców w sieci web i natywne aplikacje klienckie. Te aplikacje Zezwalaj na logowanie za pomocą kont użytkownika z dzierżawy usługi Azure AD, który jest inny niż ten, na którym aplikacja jest zarejestrowany. Mogą one również potrzebować dostępu do sieci web, interfejsów API, np. interfejsu API programu Microsoft Graph (w celu dostępu do usługi Azure AD, Intune i usługi w usłudze Office 365) i innych usług firmy Microsoft, oprócz własnych interfejsów API sieci web.
 
-Struktura opiera się na użytkownika lub administratora wyrażenia zgody na aplikację, która prosi do zarejestrowania się w jego katalogu, który może obejmować dostęp do danych katalogu. Na przykład jeśli wymaga aplikacji klienta sieci web na odczytywanie kalendarza informacje o użytkowniku z usługi Office 365, tego użytkownika jest wymagane do wyrażenia zgody aplikacji klienckiej. Po zgoda zostanie podany, aplikacja kliencka będzie do wywołania interfejsu API programu Microsoft Graph w imieniu użytkownika, skorzystaj z informacji kalendarza, zgodnie z potrzebami. [Interfejsu API Microsoft Graph](https://graph.microsoft.io) zapewnia dostęp do danych w usłudze Office 365 (np. kalendarzy i komunikaty z programu Exchange, witrynom i listom z programu SharePoint, dokumentów z poziomu usługi OneDrive, notesów z programu OneNote, zadania w aplikacji Planner i skoroszyty z W programie Excel), a także użytkownicy i grupy z usługi Azure AD i innych obiektów danych z więcej usług w chmurze firmy Microsoft.
+Struktura opiera się na użytkownika lub administratora wyrażenia zgody na aplikację, która prosi do zarejestrowania się w jego katalogu, który może obejmować dostęp do danych katalogu. Na przykład jeśli wymaga aplikacji klienta sieci web na odczytywanie kalendarza informacje o użytkowniku z usługi Office 365, tego użytkownika jest wymagane do wyrażenia zgody aplikacji klienckiej. Po zgoda zostanie podany, aplikacja kliencka będzie do wywołania interfejsu API programu Microsoft Graph w imieniu użytkownika, skorzystaj z informacji kalendarza, zgodnie z potrzebami. [Interfejsu API Microsoft Graph](https://developer.microsoft.com/graph) zapewnia dostęp do danych w usłudze Office 365 (np. kalendarzy i komunikaty z programu Exchange, witrynom i listom z programu SharePoint, dokumentów z poziomu usługi OneDrive, notesów z programu OneNote, zadania w aplikacji Planner i skoroszyty z W programie Excel), a także użytkownicy i grupy z usługi Azure AD i innych obiektów danych z więcej usług w chmurze firmy Microsoft.
 
 Platformy wyrażania zgody jest oparta na protokołu OAuth 2.0 i jego różnych przepływów, takie jak udzielić kod autoryzacji poświadczenia przydział i klienta, przy użyciu publicznego lub poufnych klientów. Za pomocą protokołu OAuth 2.0, usługi Azure AD umożliwia tworzenie wiele różnych typów aplikacji klienckich — takie jak w telefonie, tablecie, serwera lub aplikacji sieci web — i uzyskiwania dostępu do wymaganych zasobów.
 
-Aby uzyskać więcej informacji o korzystaniu z platformy wyrażania zgody z przydziałów autoryzacji OAuth 2.0, zobacz [Autoryzowanie dostępu do aplikacji sieci web przy użyciu protokołu OAuth 2.0 i usługi Azure AD](v1-protocols-oauth-code.md) i [scenariusze uwierzytelniania dla usługi Azure AD](authentication-scenarios.md). Aby uzyskać informacje na temat pobierania autoryzowanego dostępu do usługi Office 365 za pomocą programu Microsoft Graph, zobacz [uwierzytelniania aplikacji za pomocą programu Microsoft Graph](https://graph.microsoft.io/docs/authorization/auth_overview).
+Aby uzyskać więcej informacji o korzystaniu z platformy wyrażania zgody z przydziałów autoryzacji OAuth 2.0, zobacz [Autoryzowanie dostępu do aplikacji sieci web przy użyciu protokołu OAuth 2.0 i usługi Azure AD](v1-protocols-oauth-code.md) i [scenariusze uwierzytelniania dla usługi Azure AD](authentication-scenarios.md). Aby uzyskać informacje na temat pobierania autoryzowanego dostępu do usługi Office 365 za pomocą programu Microsoft Graph, zobacz [uwierzytelniania aplikacji za pomocą programu Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
 
 ## <a name="consent-experience---an-example"></a>Obsługa zgody — przykład
 

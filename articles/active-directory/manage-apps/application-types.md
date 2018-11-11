@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 754a06cc8bb9cc6e660e2ac5f01ef2c40176eb05
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: f483be5866715ddf253daefb197ae3dd87e02d99
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357132"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249102"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Nieoczekiwaną aplikację na liście aplikacji
 
@@ -59,13 +59,13 @@ Gdy filtrowana w celu **wszystkie aplikacje**, **wszystkie aplikacje** **listy**
 
 2.  Podczas rejestracji w usłudze lub logowania się do 3<sup>usług pulpitu zdalnego</sup> aplikacji innej firmy zintegrowana z usługą Azure Active Directory. Przykładem jest [Smartsheet](https://app.smartsheet.com/b/home) lub [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
 
-3.  Podczas rejestracji w usłudze lub dodanie licencji do użytkownika lub grupy do pierwszej aplikacji innych firm, takich jak [Microsoft Office 365](http://products.office.com/)
+3.  Podczas rejestracji w usłudze lub dodanie licencji do użytkownika lub grupy do pierwszej aplikacji innych firm, takich jak [Microsoft Office 365](https://products.office.com/)
 
 4.  Po dodaniu nowej rejestracji aplikacji, tworząc niestandardowej aplikacji przy użyciu [rejest aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
 
 5.  Po dodaniu nowej rejestracji aplikacji, tworząc niestandardowej aplikacji przy użyciu [portalu rejestracji aplikacji w wersji 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration#visit-the-microsoft-app-registration-portal)
 
-6.  Po dodaniu aplikacji opracowujesz przy użyciu programu Visual Studio [metod uwierzytelniania ASP.net](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) lub [podłączone usługi](http://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
+6.  Po dodaniu aplikacji opracowujesz przy użyciu programu Visual Studio [metod uwierzytelniania ASP.net](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) lub [podłączone usługi](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
 
 7.  Podczas tworzenia obiektu jednostki usługi przy użyciu [modułu Azure AD PowerShell](/powershell/azure/install-adv2?view=azureadps-2.0)
 

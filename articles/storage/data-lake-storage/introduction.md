@@ -8,24 +8,24 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 072573b16fbeebac1ec942b0be508cf901b5cd27
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: c86609ae5b993328beced468b74c7f2a1b65def4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42060198"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283618"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Wprowadzenie do usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza)
 
-Usługa Azure Data Lake Gen2 — wersja zapoznawcza to zbiór funkcji przeznaczonych do analizy danych big data, utworzone w górnej części [usługi Azure Blob storage](../blobs/storage-blobs-introduction.md). Umożliwia łączenie się z danych za pomocą obu paradygmatów magazynu plików, jak systemu i obiekt. To sprawia, że Data Lake Storage Gen2 usługa tylko oparte na chmurze wielu modalne magazynu, co umożliwia prowadzenie wartość analizy wszystkich danych.
+Usługa Azure Data Lake Gen2 — wersja zapoznawcza to zbiór funkcji przeznaczonych do analizy danych big data, wbudowane w [usługi Azure Blob storage](../blobs/storage-blobs-introduction.md). Umożliwia łączenie się z danych za pomocą obu paradygmatów magazynu plików, jak systemu i obiekt. Dodanie Data Lake Storage Gen2 sprawia, że usługi Azure Storage tylko oparte na chmurze wielu modalne platformy, co umożliwia prowadzenie wartość analizy wszystkich danych.
 
-Data Lake Storage Gen2 funkcje wszystkich klas, które są wymagane przez pełny cykl życia analizy danych. Wynika to z zbieżności możliwości naszych dwóch istniejących usług magazynu. Funkcje z [usługi Azure Data Lake Storage Gen1](../../data-lake-store/index.md), takich jak semantyki systemu plików, pliku poziom zabezpieczeń i skalowania są połączone z niskie koszty i warstwowego magazynu, wysokiej dostępności/zastosowanie funkcji i duży zestaw SDK/narzędzia ekosystem z [usługi Azure Blob storage](../blobs/storage-blobs-introduction.md). W Data Lake Storage Gen2 jakość magazynu obiektów pozostają podczas dodawania zalety interfejsu systemu plików zoptymalizowana pod kątem analizy obciążeń.
+Data Lake Storage Gen2 zapewnia wszystkich klas, które są wymagane przez pełny cykl życia analizy danych do usługi Azure Storage. Jest wynikiem zbieżności możliwości naszych dwa istniejące usługi magazynu, usługi Azure Blob Storage i Azure Data Lake Storage Gen1. Funkcje z [usługi Azure Data Lake Storage Gen1](../../data-lake-store/index.md), takich jak semantyki systemu plików, pliku poziom zabezpieczeń i skalowania są połączone z magazynem niskie koszty i warstwowego możliwości odzyskiwania wysoka dostępność/po awarii z [platformy Azure Magazynu obiektów blob](../blobs/storage-blobs-introduction.md).
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>Przeznaczona dla przedsiębiorstw analizy danych big data
 
-Data Lake Storage Gen2 to usługa magazynu podstawowego do tworzenia enterprise data Lake (EDL) na platformie Azure. Zaprojektowany od początku do obsługi wielu petabajtów informacji podczas zatwierdzeniu setki gigabity przepływności, Data Lake Storage Gen2 zapewnia prosty sposób zarządzać ogromnych ilości danych.
+Data Lake Storage Gen2 sprawia, że usługa Azure storage jako podstawa tworzenia jeziora danych przedsiębiorstwa na platformie Azure. Zaprojektowany od początku do obsługi wielu petabajtów informacji podczas zatwierdzeniu setki gigabity przepływności, Data Lake Storage Gen2 umożliwia łatwe zarządzanie ogromnych ilości danych.
 
-Podstawową cechą Data Lake Storage Gen2, to dodanie [hierarchicznej przestrzeni nazw](./namespace.md) do usługi Blob storage, która organizuje pliki/obiekty w hierarchii katalogów wydajne dostępu do danych. Hierarchiczna przestrzeń nazw umożliwia także Data Lake Storage Gen2 obsługuje zarówno magazyn obiektów i plików paradygmatów systemu w tym samym czasie. Na przykład typowych konwencji nazewnictwa magazynu obiektów używa ukośników w nazwie do naśladowania hierarchicznej struktury folderów. Ta struktura staje się rzeczywistych za pomocą Data Lake Storage Gen2. Operacje, takie jak zmiana nazwy lub usunięcie katalogu stają się operacje dotyczące metadanych atomic pojedynczego katalogu zamiast wyliczanie i przetwarzanie wszystkich obiektów, które mają prefiks nazwy katalogu.
+Podstawową część Data Lake Storage Gen2, to dodanie [hierarchicznej przestrzeni nazw](./namespace.md) do usługi Blob storage, która organizuje pliki/obiekty w hierarchii katalogów dla dostępu do danych wydajne. Hierarchiczna przestrzeń nazw umożliwia także Data Lake Storage Gen2 obsługuje zarówno magazyn obiektów i plików paradygmatów systemu w tym samym czasie. Na przykład typowych konwencji nazewnictwa magazynu obiektów używa ukośników w nazwie do naśladowania hierarchicznej struktury folderów. Ta struktura staje się rzeczywistych za pomocą Data Lake Storage Gen2. Operacje, takie jak zmiana nazwy lub usunięcie katalogu stają się operacje dotyczące metadanych atomic pojedynczego katalogu zamiast wyliczanie i przetwarzanie wszystkich obiektów, które mają prefiks nazwy katalogu.
 
 W przeszłości funkcje analizy chmurowej — było naruszenia bezpieczeństwa w zakresie wydajności, zarządzania i zabezpieczeń. Data Lake Storage Gen2 dotyczy każdego z tych aspektów w następujący sposób:
 
@@ -45,9 +45,9 @@ W przeszłości funkcje analizy chmurowej — było naruszenia bezpieczeństwa w
 
 - **Dostęp zgodny z usługi Hadoop**: Data Lake Storage Gen2 pozwala na zarządzanie i dostęp do danych, tak samo, jak za pomocą [pliku System (HDFS, Hadoop Distributed)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nowy [sterownika ABFS](./abfs-driver.md) jest dostępna w ramach wszystkich środowisk technologii Apache Hadoop, w tym [Azure HDInsight](../../hdinsight/index.yml) i [usługi Azure Databricks](../../azure-databricks/index.yml) dostępu do danych przechowywanych w usługi Data Lake Storage Gen2.
 
-- **Nadzbiór uprawnień POSIX**: model zabezpieczeń Gen2 Data Lake — w pełni obsługuje listy ACL i POSIX uprawnienia oraz niektórych dodatkowy poziom szczegółowości specyficzne dla Data Lake Storage Gen2. Ustawienia można skonfigurować za pomocą narzędzia administracyjne lub środowisk, takich jak Hive, jak i platformy Spark.
+- **Nadzbiór uprawnień POSIX**: model zabezpieczeń Data Lake Gen2 obsługuje listy ACL i POSIX uprawnienia oraz niektórych dodatkowy poziom szczegółowości specyficzne dla Data Lake Storage Gen2. Ustawienia można skonfigurować za pomocą narzędzia administracyjne lub środowisk, takich jak Hive, jak i platformy Spark.
 
-- **Niskie koszty**: Data Lake Storage Gen2 funkcji niedrogiej pojemności i transakcji. Jako przejścia danych za pośrednictwem jego pełny cykl życia, stawki rozliczeniowe zmienia zachowanie kosztów do minimum, za pomocą wbudowanych funkcji takich jak [cykl życia magazynu obiektów Blob platformy Azure](../common/storage-lifecycle-managment-concepts.md).
+- **Niskie koszty**: Data Lake Storage Gen2 oferuje ekonomiczne pojemności i transakcji. Jako przejścia danych za pośrednictwem jego pełny cykl życia, stawki rozliczeniowe zmienia zachowanie kosztów do minimum, za pomocą wbudowanych funkcji takich jak [cykl życia magazynu obiektów Blob platformy Azure](../common/storage-lifecycle-managment-concepts.md).
 
 - **Współpracuje z narzędzia magazynu obiektów Blob, struktur i aplikacje**: Data Lake Storage Gen2 w dalszym ciągu działają z szeroką gamą narzędzi, struktur i aplikacje, które istnieją już dzisiaj dla magazynu obiektów Blob.
 
@@ -70,4 +70,4 @@ Następujące artykuły opisano niektóre główne pojęcia Data Lake Storage Ge
 * [Hierarchicznej przestrzeni nazw](./namespace.md)
 * [Tworzenie konta magazynu](./quickstart-create-account.md)
 * [Tworzenie klastra usługi HDInsight przy użyciu usługi Azure Data Lake Storage Gen2](./quickstart-create-connect-hdi-cluster.md)
-* [Użyj konta usługi Azure Data Lake Storage Gen2 w usłudze Azure Databricks](./quickstart-create-databricks-account.md) 
+* [Użyj konta usługi Azure Data Lake Storage Gen2 w usłudze Azure Databricks](./quickstart-create-databricks-account.md)

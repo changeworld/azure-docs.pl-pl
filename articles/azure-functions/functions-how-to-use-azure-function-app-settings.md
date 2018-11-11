@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 18e4adb47ecf8e6d44edea873a4b3cc73492b273
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 5e34aae62f871cba2a27a292242cff8e90c67934
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301487"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228984"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Jak zarządzać aplikacji funkcji w witrynie Azure portal 
 
@@ -50,7 +50,7 @@ Czasami może być trudne do znalezienia przez zasoby w [Azure Portal]. Aby uła
 
 **Ustawienia** karta jest, gdzie można zaktualizować wersji środowiska uruchomieniowego funkcji, które są używane przez aplikację funkcji. Jest również, w których zarządzasz klucze hosta używany do ograniczania dostępu do protokołu HTTP do wszystkich funkcji obsługiwanych przez aplikację funkcji.
 
-Usługa Functions obsługuje hostingu zużycie a plany hostingu w usłudze App Service. Aby uzyskać więcej informacji, zobacz [wybierz plan prawidłowe usługi dla usługi Azure Functions](functions-scale.md). Lepsze przewidywalność planu zużycie funkcje pozwala ograniczyć użycie platformy, ustawiając dzienny limit przydziału użycia w sekundach gigabajta. Po osiągnięciu dziennego limitu przydziału użycia aplikacja funkcji zostanie zatrzymana. Aplikacja funkcji, zatrzymana w wyniku osiągnięcia limit przydziału wydatków można ją ponownie włączyć, z tym samym kontekście co ustanawiania dzienny limit przydziału wydatków. Zobacz [usługi Azure Functions stronę z cennikiem](http://azure.microsoft.com/pricing/details/functions/) szczegółowe informacje dotyczące rozliczeń.   
+Usługa Functions obsługuje hostingu zużycie a plany hostingu w usłudze App Service. Aby uzyskać więcej informacji, zobacz [wybierz plan prawidłowe usługi dla usługi Azure Functions](functions-scale.md). Lepsze przewidywalność planu zużycie funkcje pozwala ograniczyć użycie platformy, ustawiając dzienny limit przydziału użycia w sekundach gigabajta. Po osiągnięciu dziennego limitu przydziału użycia aplikacja funkcji zostanie zatrzymana. Aplikacja funkcji, zatrzymana w wyniku osiągnięcia limit przydziału wydatków można ją ponownie włączyć, z tym samym kontekście co ustanawiania dzienny limit przydziału wydatków. Zobacz [usługi Azure Functions stronę z cennikiem](https://azure.microsoft.com/pricing/details/functions/) szczegółowe informacje dotyczące rozliczeń.   
 
 ## <a name="platform-features-tab"></a>Karta funkcje platformy
 

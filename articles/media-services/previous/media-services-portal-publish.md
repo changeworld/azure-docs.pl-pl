@@ -1,6 +1,6 @@
 ---
-title: Publikowanie zawartości w portalu Azure | Dokumentacja firmy Microsoft
-description: Ten samouczek przedstawia kroki publikowania zawartości w portalu Azure.
+title: Publikowanie zawartości w witrynie Azure portal | Dokumentacja firmy Microsoft
+description: Ten samouczek przeprowadzi Cię przez kroki publikowania zawartości w witrynie Azure portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: d93bfc548134f730f4fad49a37593c861d6b6cbb
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 71b7e724158255cc979e9a08cd14c7f4412c4382
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790307"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253401"
 ---
-# <a name="publish-content-in-the-azure-portal"></a>Publikowanie zawartości w portalu Azure
+# <a name="publish-content-in-the-azure-portal"></a>Publikowanie zawartości w witrynie Azure portal
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -37,7 +37,7 @@ ms.locfileid: "33790307"
 
 Aby podać użytkownikowi adres URL, który może służyć do odtwarzania strumieniowego lub pobierania zawartości, najpierw musisz opublikować swój element zawartości przez utworzenie lokalizatora. Lokalizatory zapewniają dostęp do plików zasobów. Usługa Azure Media Services obsługuje dwa typy lokalizatorów: 
 
-* **Lokalizatory przesyłania strumieniowego (OnDemandOrigin)**. Lokalizatory przesyłania strumieniowego służą do adaptacyjnego przesyłania strumieniowego. Adaptacyjne przesyłanie strumieniowe przykładami Apple HTTP Live Streaming (HLS), Smooth Streaming firmy Microsoft i dynamicznych adaptacyjne przesyłanie strumieniowe za pośrednictwem protokołu HTTP (kreska, nazywany również MPEG-DASH). Aby utworzyć lokalizator przesyłania strumieniowego, element zawartości musi zawierać plik ism. Na przykład http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest.
+* **Lokalizatory przesyłania strumieniowego (OnDemandOrigin)**. Lokalizatory przesyłania strumieniowego służą do adaptacyjnego przesyłania strumieniowego. Przykłady adaptacyjnego przesyłania strumieniowego obejmują Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming i Dynamic Adaptive Streaming over HTTP (DASH, nazywany także MPEG-DASH). Aby utworzyć lokalizator przesyłania strumieniowego, element zawartości musi zawierać plik ism. Na przykład http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest.
 * **Lokalizatory progresywne (sygnatura dostępu współdzielonego)**. Lokalizatory progresywne służą do dostarczania wideo przy użyciu pobierania progresywnego.
 
 Aby utworzyć adres URL przesyłania strumieniowego w protokole HLS, dołącz do adresu URL ciąg *(format=m3u8-aapl)*:
@@ -56,14 +56,14 @@ Adres URL sygnatury dostępu współdzielonego ma następujący format:
 
     {blob container name}/{asset name}/{file name}/{shared access signature}
 
-Aby uzyskać więcej informacji, zobacz [dostarczanie zawartości omówienie](media-services-deliver-content-overview.md).
+Aby uzyskać więcej informacji, zobacz [omówienie dostarczania zawartości](media-services-deliver-content-overview.md).
 
 > [!NOTE]
 > Lokalizatory utworzone w witrynie Azure Portal przed marcem 2015 r. mają dwuletnią datę wygaśnięcia.  
 > 
 > 
 
-Aby zaktualizować datę wygaśnięcia na lokalizatorze, można używać [interfejsu API REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) lub [interfejs API .NET](http://go.microsoft.com/fwlink/?LinkID=533259). 
+Aby zaktualizować datę wygaśnięcia na lokalizatorze, można użyć użyj [interfejsu API REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) lub [interfejsu API platformy .NET](https://go.microsoft.com/fwlink/?LinkID=533259). 
 
 > [!NOTE]
 > Po zaktualizowaniu daty wygaśnięcia lokalizatora sygnatury dostępu współdzielonego następuje zmiana adresu URL.

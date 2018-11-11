@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: c89ba62ae104d378dc99809e2d96ac993cd2bc35
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 2a7e7f13b68f06bb6c0e9be4730c7346e43e8e5b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115972"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346579"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Migracja Contoso: ponowne hostowanie aplikacji systemu Linux w środowisku lokalnym, do maszyn wirtualnych platformy Azure i usługi Azure MySQL
 
@@ -199,7 +199,7 @@ Po przejściu w tryb failover na platformie Azure Contoso chce można było poł
 
 - Aby uzyskać dostęp za pośrednictwem Internetu, umożliwiają one SSH w systemie Linux w środowisku lokalnym maszyny Wirtualnej przed migracją.  Dla systemu Ubuntu można to zrobić za pomocą następującego polecenia: **"sudo" polecenia apt-get ssh zainstalować -y**.
 - Po włączeniu trybu failover, należy sprawdzić **diagnostykę rozruchu** Aby wyświetlić zrzut ekranu maszyny wirtualnej.
-- Jeśli to nie rozwiąże problemu, należy sprawdzić, czy maszyna wirtualna jest uruchomiona i przejrzyj te [wskazówki dotyczące rozwiązywania problemów](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+- Jeśli to nie rozwiąże problemu, należy sprawdzić, czy maszyna wirtualna jest uruchomiona i przejrzyj te [wskazówki dotyczące rozwiązywania problemów](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 **Potrzebujesz dodatkowej pomocy?**
 
@@ -399,7 +399,7 @@ Uruchamianie testu trybu failover pomaga sprawdzić, czy wszystko działa zgodni
 
 ### <a name="migrate-the-vm"></a>Migrowanie maszyny Wirtualnej
 
-Migrowanie maszyny Wirtualnej, Contoso Administratorzy creats plan odzyskiwania, który zawiera tę maszynę Wirtualną, i w trybie Failover planu na platformie Azure.
+Aby przeprowadzić migrację maszyny Wirtualnej, Administratorzy Contoso tworzy plan odzyskiwania, który zawiera maszynę Wirtualną i tryb failover planu na platformie Azure.
 
 1. Tworzenie planu i Dodaj **OSTICKETWEB** do niego.
 

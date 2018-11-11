@@ -2,19 +2,19 @@
 title: Instalowanie i używanie systemu Giraph w HDInsight (Hadoop) - Azure
 description: Dowiedz się, jak zainstalować system Giraph w klastrach HDInsight opartych na systemie Linux za pomocą akcji skryptu. Akcje skryptu umożliwiają dostosowanie do klastra podczas tworzenia, zmieniając konfigurację klastra lub instalowanie usługi i programy narzędziowe.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: jasonh
-ms.openlocfilehash: f5d7a5587d47f7601f8dc3f65318a6b7d486f58e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: 202a68d219bec3a70e50afa68228cbc6bf453518
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953297"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011667"
 ---
 # <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Zainstalować system Giraph w klastrach usługi HDInsight Hadoop, a przetwarzanie dużych wykresów za pomocą systemu Giraph
 

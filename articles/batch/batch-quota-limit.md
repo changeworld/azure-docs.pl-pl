@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 11/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25a8150a2fcf7cdd4e3c82478c0b3db3dad870b4
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a7d77c0a2ce334c9909a621c55866a67e036f9cb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887568"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282785"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Limity przydziału i limity usługi Batch
 
@@ -45,17 +45,27 @@ Jeśli planujesz uruchamianie obciążeń produkcyjnych w usłudze Batch, może 
 
 Jeśli zostało utworzone konto usługi Batch z trybem alokacji puli równa **subskrypcja użytkownika**, przydziały są stosowane w różny sposób. W tym trybie maszyn wirtualnych partii i inne zasoby są tworzone bezpośrednio w Twojej subskrypcji po utworzeniu puli. Limity przydziałów rdzeni usługi Azure Batch nie dotyczą kont utworzonych w tym trybie. Zamiast tego należy przydziały w ramach subskrypcji dla regionalne rdzeni obliczeniowych i innych zasobów są stosowane. Dowiedz się więcej o tych limitów przydziału w [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).
 
+## <a name="pool-size-limits"></a>Limity rozmiaru puli
+
+| **Zasób** | **Limit maksymalny** |
+| --- | --- |
+| **Węzłów obliczeniowych w [puli komunikacji między węzłami włączone](batch-mpi.md)**  ||
+| Tryb alokacji puli usługa Batch | 100 |
+| Tryb alokacji puli subskrypcja usługi Batch | 80 |
+| **Węzłów obliczeniowych w [pula została utworzona przy użyciu niestandardowego obrazu maszyny Wirtualnej](batch-custom-images.md)**<sup>1</sup> ||
+| Węzły dedykowane | 2000 |
+| Węzły o niskim priorytecie | 1000 |
+
+<sup>1</sup> dla puli, które są włączone komunikacji między węzłami Uwaga.
+
 ## <a name="other-limits"></a>Inne limity
 
 | **Zasób** | **Limit maksymalny** |
 | --- | --- |
-| [Współbieżnych zadań](batch-parallel-node-tasks.md) na węzeł obliczeniowy |4 x liczba rdzeni węzła |
-| [Aplikacje](batch-application-packages.md) na konto usługi Batch |20 |
-| Pakiety aplikacji na aplikację |40 |
+| [Współbieżnych zadań](batch-parallel-node-tasks.md) na węzeł obliczeniowy | 4 x liczba rdzeni węzła |
+| [Aplikacje](batch-application-packages.md) na konto usługi Batch | 20 |
+| Pakiety aplikacji na aplikację | 40 |
 | Okres istnienia zadania maksymalna | 7 dni<sup>1</sup> |
-| Węzłów obliczeniowych w [puli komunikacji między węzłami włączone](batch-mpi.md) | 100 |
-| Dedykowane węzły obliczeniowe w [pula została utworzona przy użyciu niestandardowego obrazu maszyny Wirtualnej](batch-custom-images.md) | 2500 |
-| O niskim priorytecie węzłów obliczeniowych w [pula została utworzona przy użyciu niestandardowego obrazu maszyny Wirtualnej](batch-custom-images.md) | 1000 |
 
 <sup>1</sup> maksymalny okres istnienia zadania, od momentu dodania go do zadania do jego ukończenia wynosi 7 dni. Ukończone zadania podrzędne są utrwalone przez czas nieokreślony. Dane dla zadań podrzędnych nieukończonych w ciągu maksymalnego okresu istnienia nie są dostępne.
 
@@ -115,7 +125,7 @@ Pule usługi Batch w konfiguracji maszyny wirtualnej wdrożony w sieci wirtualne
 * 1 [publiczny adres IP](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * 1 [moduł równoważenia obciążenia](../load-balancer/load-balancer-overview.md)
 
-Te zasoby są przydzielane w subskrypcji, która zawiera sieć wirtualną, podane podczas tworzenia puli usługi Batch. Te zasoby są ograniczone w subskrypcji [limity przydziałów zasobów](../azure-subscription-service-limits.md). Jeśli planujesz dużą pulę wdrożeń w sieci wirtualnej, sprawdź przydziały subskrypcji dla tych zasobów. Jeśli to konieczne, należy zażądać zwiększenia w witrynie Azure portal, wybierając **Pomoc i obsługa techniczna**.
+Te zasoby są przydzielane w subskrypcji, która zawiera sieć wirtualną, podane podczas tworzenia puli usługi Batch. Te zasoby są ograniczone przez [limity zasobów](../azure-subscription-service-limits.md) subskrypcji. Jeśli planujesz dużą pulę wdrożeń w sieci wirtualnej, sprawdź przydziały subskrypcji dla tych zasobów. Jeśli to konieczne, należy zażądać zwiększenia w witrynie Azure portal, wybierając **Pomoc i obsługa techniczna**.
 
 
 ## <a name="related-topics"></a>Powiązane tematy

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 09/27/2018
-ms.openlocfilehash: d9ff0387a1d02eb5f4684048aeed8ad0079b28ef
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 06a0f2416ecff9e2f9a21877e26487b56452d0a0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434419"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251325"
 ---
 # <a name="use-ansible-to-manage-a-linux-virtual-machine-in-azure"></a>Zarządzanie maszyną wirtualną z systemem Linux na platformie Azure za pomocą rozwiązania Ansible
 Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Rozwiązanie Ansible umożliwia zarządzanie maszynami wirtualnymi na platformie Azure, tak jak ma to miejsce w przypadku każdego innego zasobu. W tym artykule przedstawiono sposób użycia podręcznika rozwiązania Ansible do uruchomienia i zatrzymania maszyny wirtualnej z systemem Linux. 
@@ -27,7 +27,7 @@ Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zas
 ## <a name="use-ansible-to-deallocate-stop-an-azure-virtual-machine"></a>Używanie rozwiązania Ansible do cofnięcia przydziału (zatrzymania) maszyny wirtualnej na platformie Azure
 W tej sekcji pokazano, w jaki sposób użyć rozwiązania Ansible do cofnięcia przydziału (zatrzymania) maszyny wirtualnej na platformie Azure.
 
-1.  Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1.  Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1.  Otwórz usługę [Cloud Shell](/azure/cloud-shell/overview).
 
@@ -85,7 +85,7 @@ W tej sekcji pokazano, w jaki sposób użyć rozwiązania Ansible do cofnięcia 
 ## <a name="use-ansible-to-start-a-deallocated-stopped-azure-virtual-machine"></a>Używanie rozwiązania Ansible do uruchomienia maszyny wirtualnej, której przydział cofnięto (zatrzymanej maszyny wirtualnej)
 W tej sekcji pokazano, w jaki sposób użyć rozwiązania Ansible do uruchomienia maszyny wirtualnej, której przydział cofnięto (zatrzymanej maszyny wirtualnej).
 
-1.  Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1.  Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1.  Otwórz usługę [Cloud Shell](/azure/cloud-shell/overview).
 

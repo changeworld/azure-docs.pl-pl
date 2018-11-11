@@ -1,12 +1,25 @@
-## <a name="install-wordpress"></a>Zainstaluj program WordPress
+---
+author: cynthn
+ms.service: virtual-machines-linux
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 5df1f7ff44a1603dd03d1d803ae9960dc124781e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226852"
+---
+## <a name="install-wordpress"></a>Instalowanie platformy WordPress
 
-Jeśli chcesz spróbować stosu, należy zainstalować przykładową aplikację. Na przykład następujące kroki instalowania typu open source [WordPress](https://wordpress.org/) platformę do tworzenia witryn sieci Web i blogów. Inne obciążenia, aby spróbować zawierają [Drupal](http://www.drupal.org) i [Moodle](https://moodle.org/). 
+Jeśli chcesz wypróbować swój stos, zainstaluj aplikację przykładową. W ramach przykładu przedstawiono poniższe kroki, które pozwalają zainstalować platformę „open source” [WordPress](https://wordpress.org/) do tworzenia witryn internetowych i blogów. Inne obciążenia do wypróbowania to m.in. [Drupal](http://www.drupal.org) i [Moodle](https://moodle.org/). 
 
-Ten Instalator WordPress jest tylko do weryfikacji koncepcji. Aby zainstalować najnowsze WordPress w środowisku produkcyjnym z zalecanych ustawień zabezpieczeń, zobacz [dokumentacji WordPress](https://codex.wordpress.org/Main_Page). 
+Ten instalator platformy WordPress służy wyłącznie do weryfikacji koncepcji. Aby zainstalować najnowszą platformę WordPress w produkcji z zalecanymi ustawieniami zabezpieczeń, zobacz [dokumentację platformy WordPress](https://codex.wordpress.org/Main_Page). 
 
 
 
-### <a name="install-the-wordpress-package"></a>Zainstaluj pakiet WordPress
+### <a name="install-the-wordpress-package"></a>Instalowanie pakietu WordPress
 
 Uruchom następujące polecenie:
 
@@ -16,15 +29,15 @@ sudo apt install wordpress
 
 ### <a name="configure-wordpress"></a>Konfigurowanie usługi WordPress
 
-Konfigurowanie usługi WordPress, aby użyć MySQL i PHP.
+Skonfiguruj platformę WordPress pod kątem używania rozwiązań MySQL i PHP.
 
-W katalogu roboczym, Utwórz plik tekstowy `wordpress.sql` skonfigurować bazy danych MySQL platformy WordPress: 
+W katalogu roboczym utwórz plik tekstowy `wordpress.sql`, aby skonfigurować bazę danych MySQL dla platformy WordPress: 
 
 ```bash
 sudo sensible-editor wordpress.sql
 ```
 
-Dodaj następujące polecenia, zastępując hasła bazy danych wybrane do *yourPassword* (Pozostaw bez zmian wartości). Jeśli wcześniej tak skonfigurować zasadę zabezpieczeń MySQL, do sprawdzania siły hasła, upewnij się, że hasło spełnia wymagania dotyczące siły. Zapisz plik.
+Dodaj następujące polecenia, zastępując ciąg *yourPassword* swoim hasłem do bazy danych (inne wartości pozostaw bez zmian). Jeśli wcześniej skonfigurowano zasady zabezpieczeń MySQL w celu sprawdzania siły hasła, upewnij się, że hasło spełnia te wymagania. Zapisz plik.
 
 ```sql
 CREATE DATABASE wordpress;
@@ -41,18 +54,18 @@ Uruchom następujące polecenie, aby utworzyć bazę danych:
 cat wordpress.sql | sudo mysql --defaults-extra-file=/etc/mysql/debian.cnf
 ```
 
-Ponieważ plik `wordpress.sql` zawiera poświadczenia bazy danych, Usuń, po użyciu:
+Ponieważ plik `wordpress.sql` zawiera poświadczenia bazy danych, usuń go po użyciu:
 
 ```bash
 sudo rm wordpress.sql
 ```
 
-Aby skonfigurować PHP, uruchom następujące polecenie, aby otworzyć wybranym w edytorze tekstu i utworzyć plik `/etc/wordpress/config-localhost.php`:
+W celu skonfigurowania środowiska PHP uruchom następujące polecenie, aby otworzyć wybrany edytor tekstów i utworzyć plik `/etc/wordpress/config-localhost.php`:
 
 ```bash
 sudo sensible-editor /etc/wordpress/config-localhost.php
 ```
-Skopiuj następujące wiersze do pliku, zastępując hasła WordPress bazy danych dla *yourPassword* (Pozostaw bez zmian wartości). Następnie zapisz plik.
+Skopiuj następujące wiersze do pliku, zastępując ciąg *yourPassword* swoim hasłem do bazy danych platformy WordPress (inne wartości pozostaw bez zmian). Następnie zapisz plik.
 
 ```php
 <?php
@@ -65,7 +78,7 @@ define('WP_CONTENT_DIR', '/usr/share/wordpress/wp-content');
 ```
 
 
-Przenoszenie instalacji WordPress głównego dokumentu serwera sieci web:
+Przenieś instalację platformy WordPress do katalogu głównego dokumentu serwera internetowego:
 
 ```bash
 sudo ln -s /usr/share/wordpress /var/www/html/wordpress
@@ -73,6 +86,6 @@ sudo ln -s /usr/share/wordpress /var/www/html/wordpress
 sudo mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
 ```
 
-Można teraz zakończyć WordPress i publikowanie na platformie. Otwórz przeglądarkę i przejdź do `http://yourPublicIPAddress/wordpress`. Należy zastąpić publicznego adresu IP maszyny Wirtualnej. Powinien być podobny do tego obrazu.
+Teraz możesz ukończyć instalację platformy WordPress i zacząć na niej publikować. Otwórz przeglądarkę i przejdź pod adres `http://yourPublicIPAddress/wordpress`. Zastąp publiczny adres IP maszyny wirtualnej. Zawartość okna powinna wyglądać mniej więcej tak.
 
-![Strona instalacji WordPress](./media/virtual-machines-linux-tutorial-wordpress/wordpressstartpage.png)
+![Strona instalacji platformy WordPress](./media/virtual-machines-linux-tutorial-wordpress/wordpressstartpage.png)

@@ -1,134 +1,84 @@
 ---
-title: Rejestrowanie aplikacji w usłudze Azure Active Directory B2C | Microsoft Docs
-description: Jak zarejestrować aplikację w usłudze Azure Active Directory B2C
+title: Zarejestrować aplikację w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarejestrować aplikację w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 6/13/2017
+ms.date: 11/01/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4f8a5b1ceda77ef254ad0c2afb7d2316581d778e
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 8068c4a8f38cd33a1a0547f5db5079bc75c76ec1
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376400"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013415"
 ---
-# <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: rejestrowanie aplikacji
+# <a name="register-an-application-in-azure-active-directory-b2c"></a>Zarejestrować aplikację w usłudze Azure Active Directory B2C
 
-Ten samouczek szybkiego startu pomaga zarejestrować aplikację w dzierżawie usługi Microsoft Azure Active Directory (Azure AD) B2C w ciągu kilku minut. Kiedy skończysz, Twoja aplikacja będzie zarejestrowana do użycia w dzierżawie usługi Azure AD B2C.
+Tworzenie [aplikacji](active-directory-b2c-apps.md) akceptujący konsumenta, zarejestruj się i zaloguj się, musisz najpierw zarejestrować aplikację w dzierżawie usługi Azure AD B2C. Ten artykuł pomoże Ci zarejestrować aplikację w dzierżawie usługi Azure Active Directory (Azure AD) B2C w ciągu kilku minut. Kiedy skończysz, Twoja aplikacja będzie zarejestrowana do użycia w dzierżawie usługi Azure AD B2C.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby utworzyć aplikację, która akceptuje tworzenie kont i logowanie użytkowników, musisz najpierw zarejestrować aplikację w dzierżawie usługi Azure Active Directory B2C. Aby utworzyć własną dzierżawę, wykonaj kroki opisane w temacie [Tworzenie dzierżawy usługi Azure AD B2C](active-directory-b2c-get-started.md).
+Utwórz własną dzierżawę wykonując kroki opisane w [tworzenie dzierżawy usługi Azure Active Directory B2C](tutorial-create-tenant.md).
 
-Aplikacje utworzone w witrynie Azure Portal muszą być zarządzane z tej samej lokalizacji. Jeśli edytujesz aplikacje usługi Azure AD B2C przy użyciu programu PowerShell lub innego portalu, stają się one nieobsługiwane i przestają działać w usłudze Azure AD B2C. Szczegóły możesz znaleźć w sekcji [Uszkodzone aplikacje](#faulted-apps). 
+Wybierz następne kroki, w oparciu o danego typu aplikacji:
 
-W tym artykule są używane przykłady, które pomogą Ci rozpocząć pracę z naszymi przykładami. Więcej informacji o tych przykładach możesz znaleźć w kolejnych artykułach.
+- [Rejestrowanie aplikacji internetowej](#register-a-web-application)
+- [Rejestrowanie internetowego interfejsu API](#register-a-web-api)
+- [Rejestrowanie aplikacji mobilnej lub natywnej](#register-a-mobile-or-native-application)
 
-## <a name="navigate-to-b2c-settings"></a>Przechodzenie do ustawień usługi B2C
+## <a name="register-a-web-application"></a>Rejestrowanie aplikacji internetowej
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi B2C. 
+1. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
+2. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
+3. Wybierz **aplikacje**, a następnie wybierz pozycję **Dodaj**.
+4. Wprowadź nazwę aplikacji. Na przykład *testapp1*.
+5. Aby uzyskać **Uwzględnij aplikację sieci web / interfejs API sieci web** i **Zezwalaj na niejawny przepływ**, wybierz opcję **tak**.
+6. Aby uzyskać **adres URL odpowiedzi**, wprowadź punkt końcowy, w którym usługi Azure AD B2C powinna zwracać wszystkie tokeny żądane przez aplikację. Na przykład można ustawić go do lokalnego nasłuchiwania na `https://localhost:44316`. Jeśli jeszcze nie znasz numeru portu, można wprowadzić wartość symbolu zastępczego i go zmienić później.
+7. Kliknij pozycję **Utwórz**.
 
-[!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
+### <a name="create-a-client-secret"></a>Utwórz klucz tajny klienta
 
-[!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](../../includes/active-directory-b2c-portal-navigate-b2c-service.md)]
+Jeśli Twoja aplikacja wywołuje internetowy interfejs API zabezpieczony przez usługę Azure AD B2C, musisz utworzyć wpis tajny aplikacji.
 
-## <a name="choose-next-steps-based-on-your-application-type"></a>Wybierz następne kroki na podstawie typu aplikacji
+1. Wybierz **klucze** a następnie kliknij przycisk **Wygeneruj klucz**. 
+2. Wybierz **Zapisz** Aby wyświetlić klucz. Zanotuj wartość pola **Klucz aplikacji**. Użyj tej wartości jako wpisu tajnego aplikacji w kodzie Twojej aplikacji.
+3. Wybierz **dostęp do interfejsu API**, kliknij przycisk **Dodaj**i wybierz internetowy interfejs API oraz zakresy (uprawnienia).
 
-* [Rejestrowanie aplikacji internetowej](#register-a-web-app)
-* [Rejestrowanie internetowego interfejsu API](#register-a-web-api)
-* [Rejestrowanie aplikacji mobilnej lub natywnej](#register-a-mobile-or-native-app)
- 
-### <a name="register-a-web-app"></a>Rejestrowanie aplikacji internetowej
+## <a name="register-a-web-api"></a>Rejestrowanie internetowego interfejsu API
 
-[!INCLUDE [active-directory-b2c-register-web-app](../../includes/active-directory-b2c-register-web-app.md)]
+1. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
+2. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
+3. Wybierz **aplikacje**, a następnie wybierz pozycję **Dodaj**.
+4. Wprowadź nazwę aplikacji. Na przykład *testapp2*.
+5. Aby uzyskać **Uwzględnij aplikację sieci web / interfejs API sieci web** i **Zezwalaj na niejawny przepływ**, wybierz opcję **tak**.
+6. Aby uzyskać **adres URL odpowiedzi**, wprowadź punkt końcowy, w którym usługi Azure AD B2C powinna zwracać wszystkie tokeny żądane przez aplikację. Na przykład można ustawić go do lokalnego nasłuchiwania na `https://localhost:44316`. Jeśli jeszcze nie znasz numeru portu, można wprowadzić wartość symbolu zastępczego i go zmienić później.
+7. Aby uzyskać **identyfikator URI Identyfikatora aplikacji**, wprowadź identyfikator używany na potrzeby interfejsu API sieci web. Zostanie wygenerowany pełny identyfikator URI łącznie z domeną. Na przykład `https://contosotenant.onmicrosoft.com/api`.
+8. Kliknij pozycję **Utwórz**.
+9. Wybierz **opublikowane zakresy** można dodać więcej zakresów, zgodnie z potrzebami. Domyślnie `user_impersonation` jest definiowany zakres. `user_impersonation` Zakresu daje innym aplikacjom możliwość dostępu do tego interfejsu API w imieniu zalogowanego użytkownika. Jeśli chcesz, `user_impersonation` zakres można usunąć.
 
-### <a name="create-a-web-app-client-secret"></a>Tworzenie klucza tajnego klienta aplikacji internetowej
+## <a name="register-a-mobile-or-native-application"></a>Rejestrowanie aplikacji mobilnej lub natywnej
 
-Jeśli Twoja aplikacja internetowa wywołuje internetowy interfejs API zabezpieczony przez usługę Azure AD B2C, wykonaj następujące kroki:
-   1. Utwórz wpis tajny aplikacji, przechodząc do bloku **Klucze** i klikając przycisk **Wygeneruj klucz**. Zanotuj wartość pola **Klucz aplikacji**. Użyj tej wartości jako wpisu tajnego aplikacji w kodzie Twojej aplikacji.
-   2. Kliknij pozycję **Dostęp do interfejsu API**, kliknij pozycję **Dodaj** i wybierz swój internetowy interfejs API oraz zakresy (uprawnienia).
+1. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
+2. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
+3. Wybierz **aplikacje**, a następnie wybierz pozycję **Dodaj**.
+4. Wprowadź nazwę aplikacji. Na przykład *testapp3*.
+5. Aby uzyskać **Uwzględnij aplikację sieci web / interfejs API sieci web**, wybierz opcję **nie**.
+6. Aby uzyskać **Uwzględnij klienta natywnego**, wybierz opcję **tak**.
+7. Aby uzyskać **identyfikator URI przekierowania**, wprowadź [identyfikator URI przekierowania ze schematem niestandardowym](active-directory-b2c-apps.md). Upewnij się, należy wybrać dobry identyfikator URI przekierowania i nie zawierają znaków specjalnych, takich jak podkreślenia.
+8. Kliknij pozycję **Utwórz**.
 
-> [!NOTE]
-> **Klucz tajny aplikacji** jest ważnym poświadczeniem zabezpieczeń i powinien być odpowiednio zabezpieczony.
-> 
+### <a name="create-a-client-secret"></a>Utwórz klucz tajny klienta
 
-[Przejdź do **następnych kroków**](#next-steps)
+Jeśli Twoja aplikacja wywołuje internetowy interfejs API zabezpieczony przez usługę Azure AD B2C, musisz utworzyć wpis tajny aplikacji.
 
-### <a name="register-a-web-api"></a>Rejestrowanie internetowego interfejsu API
-
-[!INCLUDE [active-directory-b2c-register-web-api](../../includes/active-directory-b2c-register-web-api.md)]
-
-Kliknij przycisk **Opublikowane zakresy**, aby w razie potrzeby dodać więcej zakresów. Domyślnie jest definiowany zakres „user_impersonation”. Zakres user_impersonation daje innym aplikacjom możliwość dostępu do tego interfejsu API w imieniu zalogowanego użytkownika. Jeśli chcesz, możesz usunąć zakres user_impersonation.
-
-[Przejdź do **następnych kroków**](#next-steps)
-
-### <a name="register-a-mobile-or-native-app"></a>Rejestrowanie aplikacji mobilnej lub natywnej
-
-[!INCLUDE [active-directory-b2c-register-mobile-native-app](../../includes/active-directory-b2c-register-mobile-native-app.md)]
-
-[Przejdź do **następnych kroków**](#next-steps)
-
-## <a name="limitations"></a>Ograniczenia
-
-### <a name="choosing-a-web-app-or-api-reply-url"></a>Wybieranie aplikacji internetowej lub adresu URL odpowiedzi interfejsu API
-
-Obecnie aplikacje, które są zarejestrowane w usłudze Azure AD B2C, mają wartości adresów URL odpowiedzi ograniczone do określonego zestawu. Adres URL odpowiedzi dla aplikacji i usług internetowych musi zaczynać się od schematu `https` i wartości wszystkich adresów URL odpowiedzi muszą współużytkować jedną domenę DNS. Na przykład nie można zarejestrować aplikacji internetowej z jednym z następujących adresów URL odpowiedzi:
-
-`https://login-east.contoso.com`
-
-`https://login-west.contoso.com`
-
-System rejestracji porównuje całą nazwę DNS istniejącego adresu URL odpowiedzi z nazwą DNS dodawanego adresu URL odpowiedzi. Żądanie dodania nazwy DNS zakończy się niepowodzeniem, jeśli będzie spełniony jeden z następujących warunków:
-
-* Cała nazwa DNS nowego adresu URL odpowiedzi nie będzie zgodna z nazwą DNS istniejącego adresu URL odpowiedzi.
-* Cała nazwa DNS nowego adresu URL odpowiedzi nie jest poddomeną istniejącego adresu URL odpowiedzi.
-
-Na przykład jeśli aplikacja ma następujący adres URL odpowiedzi:
-
-`https://login.contoso.com`
-
-Można dodać do niego adres w następujący sposób:
-
-`https://login.contoso.com/new`
-
-W takim przypadku nazwa DNS jest idealnie zgodna. Można też zrobić tak:
-
-`https://new.login.contoso.com`
-
-W takim przypadku przywoływana jest poddomena DNS domeny login.contoso.com. Jeśli chcesz mieć aplikację z adresami URL odpowiedzi login-east.contoso.com i login-west.contoso.com, musisz dodać następujące adresy URL w podanej kolejności:
-
-`https://contoso.com`
-
-`https://login-east.contoso.com`
-
-`https://login-west.contoso.com`
-
-Dwa ostatnie adresy można dodać, ponieważ są poddomenami pierwszego adresu URL odpowiedzi, contoso.com.
-
-### <a name="choosing-a-native-app-redirect-uri"></a>Wybieranie identyfikatora URI przekierowania aplikacji natywnej
-
-Istnieją dwie ważne kwestie, które należy wziąć pod uwagę podczas wybierania identyfikatora URI przekierowania dla aplikacji mobilych/natywnych:
-
-* **Unikatowość**: schemat identyfikatora URI przekierowania powinien być unikatowy dla każdej aplikacji. W tym przykładzie (com.onmicrosoft.contoso.appname://przekierowanie/ścieżka) schematem jest fragment com.onmicrosoft.contoso.appname. Zalecamy stosowanie się do tego wzorca. Jeśli dwie aplikacje mają ten sam schemat, użytkownik zobaczy okno dialogowe „Wybór aplikacji”. Jeśli użytkownik dokona nieprawidłowego wyboru, logowanie nie powiedzie się.
-* **Kompletność**: identyfikator URI przekierowania musi mieć schemat i ścieżkę. Ścieżka musi zawierać co najmniej jeden ukośnik po nazwie domeny (na przykład identyfikator //contoso/ jest prawidłowy, ale identyfikator //contoso jest błędny).
-
-Upewnij się, że w identyfikatorze URI przekierowywania nie ma żadnych znaków specjalnych, takich jak podkreślenia.
-
-### <a name="faulted-apps"></a>Uszkodzone aplikacje
-
-NIE NALEŻY edytować aplikacji B2C:
-
-* W innych portalach zarządzania aplikacjami, takich jak [portal rejestracji aplikacji](https://apps.dev.microsoft.com/).
-* Korzystanie z interfejsu API programu Graph lub programu PowerShell
-
-Jeśli poddasz edycji aplikację usługi Azure AD B2C w opisany sposób i spróbujesz ponownie edytować ją za pomocą funkcji usługi Azure AD B2C w witrynie Azure Portal, stanie się ona uszkodzoną aplikacją i nie będzie można z niej korzystać w usłudze Azure AD B2C. Musisz usunąć taką aplikację i utworzyć ją ponownie.
-
-Aby usunąć aplikację, przejdź do [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/) i usuń ją tam. Aby aplikacja była widoczna, musisz być jej właścicielem (a nie tylko administratorem dzierżawy).
+1. Wybierz **klucze** a następnie kliknij przycisk **Wygeneruj klucz**. 
+2. Wybierz **Zapisz** Aby wyświetlić klucz. Zanotuj wartość pola **Klucz aplikacji**. Użyj tej wartości jako wpisu tajnego aplikacji w kodzie Twojej aplikacji.
+3. Wybierz **dostęp do interfejsu API**, kliknij przycisk **Dodaj**i wybierz internetowy interfejs API oraz zakresy (uprawnienia).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

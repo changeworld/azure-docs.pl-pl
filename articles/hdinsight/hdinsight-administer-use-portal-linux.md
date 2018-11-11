@@ -1,33 +1,33 @@
 ---
-title: Zarządzanie klastrami Hadoop w HDInsight przy użyciu witryny Azure portal
+title: Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu witryny Azure portal
 description: Dowiedz się, jak utworzyć i zarządzać klastrami HDInsight przy użyciu witryny Azure portal.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: jasonh
-ms.openlocfilehash: b00c88e526bf72f51df0d2a3d6a87fbd5bc1f991
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: b96712c3a920a70e121f0a72954680ced2ba96ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991984"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252296"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Hadoop w HDInsight przy użyciu witryny Azure portal
+# <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu witryny Azure portal
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Za pomocą [witryny Azure portal][azure-portal], można zarządzać klastrami Hadoop w usłudze Azure HDInsight. Selektor karty powyżej, aby uzyskać informacje na temat zarządzania klastrami Hadoop w HDInsight przy użyciu innych narzędzi.
+Za pomocą [witryny Azure portal][azure-portal], można zarządzać klastry platformy Apache Hadoop w usłudze Azure HDInsight. Selektor karty powyżej, aby uzyskać informacje na temat zarządzania klastrami Hadoop w HDInsight przy użyciu innych narzędzi.
 
 **Wymagania wstępne**
 
 Aby wykonać kroki opisane w tym artykule, konieczne będzie **subskrypcji platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 ## <a name="open-the-azure-portal"></a>Otwórz witrynę Azure portal
-1. Zaloguj się do [ https://portal.azure.com ](https://portal.azure.com).
+1. Zaloguj się do witryny [https://portal.azure.com](https://portal.azure.com).
 2. Po otwarciu portalu, możesz wykonywać następujące czynności:
 
    * Kliknij przycisk **Utwórz zasób** menu po lewej stronie, aby utworzyć nowy klaster:
@@ -69,7 +69,7 @@ Podczas tworzenia klastra usługi HDInsight, należy określić subskrypcji plat
 Jeśli wystąpi błąd NoRegisteredProviderFound lub błąd MissingSubscriptionRegistration, zobacz [Rozwiązywanie typowych problemów wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md).
 
 ## <a name="list-and-show-clusters"></a>Listy i wyświetlaniu klastrów
-1. Zaloguj się do [ https://portal.azure.com ](https://portal.azure.com).
+1. Zaloguj się do witryny [https://portal.azure.com](https://portal.azure.com).
 2. Kliknij przycisk **klastry HDInsight** menu po lewej stronie, aby wyświetlić listę istniejących klastrów. Jeśli nie widzisz **klastry HDInsight**, kliknij przycisk **wszystkich usług** pierwszy.
 3. Kliknij nazwę klastra. Jeśli lista klastra jest długa, możesz użyć filtrów w górnej części strony.
 4. Kliknij klaster z listy, aby znaleźć na stronie przeglądu:
@@ -81,29 +81,32 @@ Jeśli wystąpi błąd NoRegisteredProviderFound lub błąd MissingSubscriptionR
     * **Przenieś**: Przenosi klastra do innej grupy zasobów lub do innej subskrypcji.
     * **Usuń**: usuwa klaster.
 
-    **Menu po lewej stronie:**
+**Menu po lewej stronie:**
     * **Dzienniki aktywności**: Pokaż i zapytań dzienników aktywności.
     * **Kontrola dostępu (IAM)**: za pomocą przypisań ról.  Zobacz [zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../role-based-access-control/role-assignments-portal.md).
     * **Tagi**: umożliwia ustawienie pary klucz/wartość, aby zdefiniować taksonomię niestandardowych usług w chmurze. Na przykład, może utworzyć klucz o nazwie **projektu**, a następnie użyj wspólnej wartości dla wszystkich usług skojarzone z określonego projektu.
-    * **Diagnozowanie i rozwiązywanie problemów**: wyświetlić informacje dotyczące rozwiązywania problemów.
-    * **Blokuje**: Dodaj blokadę, aby zapobiec, przy czym klastra, zmodyfikowane lub usunięte.
-    * **Skrypt automatyzacji**: wyświetlanie i eksportowanie szablonu usługi Azure Resource Manager dla klastra. Obecnie można wyeksportować tylko konta magazynu Azure zależnego. Zobacz [opartych na systemie Linux z Tworzenie klastrów usługi Hadoop w HDInsight przy użyciu szablonów usługi Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
+* **Diagnozowanie i rozwiązywanie problemów**: wyświetlić informacje dotyczące rozwiązywania problemów.
     * **Przewodnik Szybki Start**: Wyświetla informacje, które ułatwia rozpoczęcie korzystania z HDInsight.
     * **Narzędzia Tools for HDInsight**: narzędzia pokrewne informacje pomocnicze o HDInsight.
-    * **Użycie rdzeni subskrypcji**: wyświetlić rdzeni używane i dostępne dla Twojej subskrypcji.
-    * **Skalowanie klastra**: zwiększyć i zmniejszyć liczbę węzłów procesu roboczego klastra. Zobacz[Skaluj klastry](hdinsight-administer-use-management-portal.md#scale-clusters).
+**Ustawienia**
+* **Rozmiar klastra**: Sprawdź, zwiększyć i zmniejszyć liczbę węzłów procesu roboczego klastra. Zobacz[Skaluj klastry](hdinsight-administer-use-management-portal.md#scale-clusters).
+    * **Limity przydziału**: wyświetlić rdzeni używane i dostępne dla Twojej subskrypcji.
     * **Logowania do klastra i protokołu SSH**: zawiera instrukcje łączenia z klastrem przy użyciu połączenia protokołu Secure Shell (SSH). Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
-    * **HDInsight Partner**: Dodaj/Usuń bieżącego partnera HDInsight.
-    * **Zewnętrzne magazyny metadanych**: Wyświetl magazyny metadanych Hive i Oozie. Magazyny metadanych można skonfigurować tylko podczas procesu tworzenia klastra. Zobacz [Użyj Magazyn metadanych Hive/programu Oozie](hdinsight-hadoop-provision-linux-clusters.md#use-hiveoozie-metastore).
-    * **Akcji skryptu**: uruchamianie programu Bash skryptów w klastrze. Zobacz [HDInsight opartych na systemie Linux z Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
-    * **Aplikacje**: HDInsight dodawania/usuwania aplikacji.  Zobacz [instalowanie niestandardowych aplikacji HDInsight](hdinsight-apps-install-custom-applications.md).
-    * **Monitorowanie**: monitorowanie klastra w usłudze Azure Log Analytics.
-    * **Właściwości**: wyświetlanie właściwości klastra.
+* **Data Lake Store Gen1**: Skonfiguruj dostęp Gen1 programu Data Lake Store.  Zobacz [Szybki Start: konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
     * **Konta magazynu**: wyświetlić klucze i kont magazynu. Konta magazynu są skonfigurowane w trakcie procesu tworzenia klastra.
-    * **Data Lake Store dostępu**: Konfigurowanie dostępu są przechowywane w usłudze Data Lake.  Zobacz [Szybki Start: konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+    * **Aplikacje**: HDInsight dodawania/usuwania aplikacji.  Zobacz [instalowanie niestandardowych aplikacji HDInsight](hdinsight-apps-install-custom-applications.md).
+    * **Akcji skryptu**: uruchamianie programu Bash skryptów w klastrze. Zobacz [HDInsight opartych na systemie Linux z Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
+    * **HDInsight Partner**: Dodaj/Usuń bieżącego partnera HDInsight.
+    * **Właściwości**: wyświetlanie właściwości klastra.
+* **Blokuje**: Dodaj blokadę, aby zapobiec, przy czym klastra, zmodyfikowane lub usunięte.
+    * **Skrypt automatyzacji**: wyświetlanie i eksportowanie szablonu usługi Azure Resource Manager dla klastra. Obecnie można wyeksportować tylko konta magazynu Azure zależnego. Zobacz [opartych na systemie Linux z Tworzenie klastrów usługi Hadoop w HDInsight przy użyciu szablonów usługi Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
+**Monitorowanie**
+* **Alters**: Zarządzanie alertami i akcje.
+    * **Metryki**: monitorować metryki klastra w usłudze Azure Log Analytics.
+* **Ustawienia diagnozy**: ustawienia, na którym będą przechowywane metryki diagnostyki **pomoc techniczna i rozwiązywanie problemów**
     * **Usługa Resource health**: zobacz [Przegląd kondycji zasobów platformy Azure](../service-health/resource-health-overview.md).
     * **Nowe żądanie pomocy technicznej**: pozwala na tworzenie biletu pomocy technicznej za pomocą techniczną firmy Microsoft.
-    
+
 6. Kliknij przycisk **właściwości**:
 
     Właściwości są następujące:
@@ -144,6 +147,15 @@ Skalowanie funkcji klastra umożliwia zmianę liczby węzłów procesu roboczego
 > Tylko klastry HDInsight w wersji 3.1.3 lub nowszej są obsługiwane. Jeśli masz pewności, jaka wersja klastra, możesz sprawdzić na stronie właściwości.  Zobacz [listy i wyświetlaniu klastrów](#list-and-show-clusters).
 >
 >
+**Skalowanie klastrów**
+
+1. Zaloguj się do [Portal][azure-portal].
+2. Kliknij przycisk **klastry HDInsight** menu po lewej stronie.
+3. Kliknij klaster, który chcesz skalować.
+3. Kliknij przycisk **skalowanie klastra**.
+4. Wprowadź **węzłów liczba procesów roboczych**. Limit liczby węzłów klastra waha się między subskrypcjami platformy Azure. Można skontaktuj się z działem pomocy technicznej dotyczącej rozliczeń w celu zwiększenia limitu.  Informacje o kosztach odzwierciedla zmiany wprowadzone do liczby węzłów.
+
+    ![HDInsight hadoop hbase storm spark skalowania](./media/hdinsight-administer-use-portal-linux/hdinsight-portal-scale-cluster.png)
 
 Wpływ zmiany liczby węzłów danych różni się dla każdego typu klastra obsługiwane przez HDInsight:
 
@@ -188,15 +200,6 @@ Wpływ zmiany liczby węzłów danych różni się dla każdego typu klastra obs
     $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
     ```
 
-**Skalowanie klastrów**
-
-1. Zaloguj się do [Portal][azure-portal].
-2. Kliknij przycisk **klastry HDInsight** menu po lewej stronie.
-3. Kliknij klaster, który chcesz skalować.
-3. Kliknij przycisk **skalowanie klastra**.
-4. Wprowadź **węzłów liczba procesów roboczych**. Limit liczby węzłów klastra waha się między subskrypcjami platformy Azure. Można skontaktuj się z działem pomocy technicznej dotyczącej rozliczeń w celu zwiększenia limitu.  Informacje o kosztach odzwierciedla zmiany wprowadzone do liczby węzłów.
-
-    ![HDInsight hadoop hbase storm spark skalowania](./media/hdinsight-administer-use-portal-linux/hdinsight-portal-scale-cluster.png)
 
 ## <a name="pauseshut-down-clusters"></a>Wstrzymywanie/zamykania klastrów
 
@@ -339,7 +342,7 @@ Zobacz [HDInsight Zarządzanie klastrami przy użyciu interfejsu użytkownika si
 ## <a name="browse-files"></a>Przeglądaj pliki
 W witrynie Azure portal, możesz przeglądać zawartość domyślny kontener.
 
-1. Zaloguj się do [ https://portal.azure.com ](https://portal.azure.com).
+1. Zaloguj się do witryny [https://portal.azure.com](https://portal.azure.com).
 2. Kliknij przycisk **klastry HDInsight** menu po lewej stronie, aby wyświetlić listę istniejących klastrów.
 3. Kliknij nazwę klastra. Jeśli lista klastra jest długa, możesz użyć filtrów w górnej części strony.
 4. Kliknij przycisk **kont magazynu** menu po lewej stronie w klastrze.

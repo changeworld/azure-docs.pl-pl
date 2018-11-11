@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 6220a794c10f43d562155adbad910694a233ec88
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: fa31397e0ecffbd245557a824bdd770724bbc91c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166025"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249884"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway-preview"></a>Samouczek: transfer danych za pomocą usługi Azure Data Box Gateway (wersja zapoznawcza)
 
@@ -146,6 +146,6 @@ W tym samouczku przedstawiono zagadnienia dotyczące usługi Data Box Gateway, t
 Przejdź do następnego samouczka, aby dowiedzieć się, jak administrować usługą Data Box Gateway.
 
 > [!div class="nextstepaction"]
-> [Administrowanie usługą Data Box Gateway za pomocą lokalnego internetowego interfejsu użytkownika](http://aka.ms/dbg-docs)
+> [Administrowanie usługą Data Box Gateway za pomocą lokalnego internetowego interfejsu użytkownika](https://aka.ms/dbg-docs)
 
 

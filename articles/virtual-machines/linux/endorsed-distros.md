@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: szark
-ms.openlocfilehash: 80a165c4533f555dce2d86f044f3caa328761123
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: b39ae6b5546e9504b9f37504c486c941ab034399
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645751"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250003"
 ---
 # <a name="linux-on-distributions-endorsed-by-azure"></a>System Linux na dystrybucje zalecane dla platformy Azure
 Etap to udostępnienie obrazów systemu Linux w witrynie Azure Marketplace. Współpracujemy z wieloma społecznościami systemu Linux, aby dodać jeszcze więcej pozycji do listy dystrybucyjnej zatwierdzone. W międzyczasie dystrybucji, które nie są dostępne w portalu Marketplace, zawsze Przenoszenie własnych Linux postępując zgodnie ze wskazówkami w temacie [tworzenie i przekazywanie wirtualnego dysku twardego zawierającego system operacyjny Linux](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
@@ -33,14 +33,14 @@ Sterowniki usługi LIS (Linux Integration) dla funkcji Hyper-V i platformą Azur
 Agent systemu Linux platformy Azure wstępnie zainstalowanym systemem obrazów portalu Azure Marketplace i są zazwyczaj dostępne z repozytorium pakietów dystrybucji. Kod źródłowy znajduje się na [GitHub](https://github.com/azure/walinuxagent).
 
   
-| Rozkład | Wersja | Sterowniki | Agent |
+| Dystrybucja | Wersja | Sterowniki | Agent |
 | --- | --- | --- | --- |
 | CentOS |CentOS 6.3+, 7.0+ |CentOS 6.3: [pobrania LIS](https://www.microsoft.com/en-us/download/details.aspx?id=55106)<p>CentOS 6.4 +: W jądrze |Pakiet: W [repozytorium](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |Jądra |Kod źródłowy: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
 | Debian |Debian 7,9 +, 8.2 + |Jądra |Pakiet: W repozytorium, w obszarze "waagent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| Oracle Linux |6.4+, 7.0+ |Jądra |Pakiet: W repozytorium, w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| Oracle Linux |6.4+, 7.0+ |Jądra |Pakiet: W repozytorium, w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | Red Hat Enterprise Linux |RHEL 6.7+, 7.1+ |Jądra |Pakiet: W repozytorium, w obszarze "WALinuxAgent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| SUSE Linux Enterprise |SLES/SLES for SAP<br>11 SP4<br>12 SP1+<br>15|Jądra |Pakiet:<p> 11 WE [chmury: narzędzia](https://build.opensuse.org/project/show/Cloud:Tools) repozytorium<br>Aby uzyskać 12 zawartych w Module "Chmura publiczna" w obszarze "python-azure-agent"<br/>Kod źródłowy: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| SUSE Linux Enterprise |SLES/SLES for SAP<br>11 SP4<br>12 SP1+<br>15|Jądra |Pakiet:<p> 11 WE [chmury: narzędzia](https://build.opensuse.org/project/show/Cloud:Tools) repozytorium<br>Aby uzyskać 12 zawartych w Module "Chmura publiczna" w obszarze "python-azure-agent"<br/>Kod źródłowy: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE |openSUSE Leap 42.2+ |Jądra |Pakiet: W [chmury: narzędzia](https://build.opensuse.org/project/show/Cloud:Tools) repozytorium w obszarze "python-azure-agent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu |Ubuntu 12.04+ **<sup>1</sup>** |Jądra |Pakiet: W repozytorium, w obszarze "walinuxagent" <br/>Kod źródłowy: [GitHub](https://github.com/Azure/WALinuxAgent) |
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 5b6d7c2e1b26d98e511f665228f7093ceac10935
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c8ab4836274506cbfdd10b21182bffaccdfbfa06
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963688"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014707"
 ---
 # <a name="expressroute-monitor"></a>Monitor usługi ExpressRoute
 
@@ -139,4 +139,4 @@ Rozwiązanie Network Performance Monitor ułatwia diagnozowanie problemów z po�
  
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Przeszukiwanie dzienników](log-analytics-log-search.md) do wyświetlania rekordów danych wydajności szczegółowe sieci.
+[Przeszukiwanie dzienników](log-analytics-queries.md) do wyświetlania rekordów danych wydajności szczegółowe sieci.

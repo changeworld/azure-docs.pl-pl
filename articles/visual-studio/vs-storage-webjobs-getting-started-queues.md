@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: f94a9d71dab4320e561d2de00af0e2af77ab4c3f
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: c3e0bd338c38165d3a372f60e12ff5ddaa05d2a0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060945"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248286"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Wprowadzenie do usługi Azure Queue storage i Visual Studio podłączone usługi (projekty, zadania WebJob)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -468,7 +468,7 @@ Dane wyjściowe z konsoli metody wywołania funkcji lub w **Main()** metoda poja
 
 Nie można połączyć dane wyjściowe konsoli z wywołania określonej metody, ponieważ konsola jest jednowątkowym, gdy wiele funkcji zadania mogą być uruchomione w tym samym czasie. Dlatego zestaw SDK udostępnia każdego wywołania funkcji wraz z obiektem dziennika Unikatowy składnik zapisywania.
 
-Aby zapisać [dzienniki śledzenia aplikacji](../app-service/web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), użyj **Console.Out** (tworzy Dzienniki oznaczone jako INFO) i **Console.Error** (tworzy Dzienniki oznaczone jako błąd). Alternatywą jest użycie [ślad lub TraceSource](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), który zawiera pełne informacje, ostrzeżenie, i krytyczne poziomy oprócz informacje i błąd. Dzienniki śledzenia aplikacji są wyświetlane w plikach dziennika aplikacji sieci web, tabele platformy Azure lub obiektów blob platformy Azure, w zależności od tego, jak skonfigurować aplikację internetową platformy Azure. Podobnie jak wszystkie dane wyjściowe konsoli, najnowsze Dzienniki aplikacji 100 również zostać wyświetlony na stronie pulpitu nawigacyjnego dla zadania WebJob nie strony dla wywołania funkcji.
+Aby zapisać [dzienniki śledzenia aplikacji](../app-service/web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), użyj **Console.Out** (tworzy Dzienniki oznaczone jako INFO) i **Console.Error** (tworzy Dzienniki oznaczone jako błąd). Alternatywą jest użycie [ślad lub TraceSource](https://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), który zawiera pełne informacje, ostrzeżenie, i krytyczne poziomy oprócz informacje i błąd. Dzienniki śledzenia aplikacji są wyświetlane w plikach dziennika aplikacji sieci web, tabele platformy Azure lub obiektów blob platformy Azure, w zależności od tego, jak skonfigurować aplikację internetową platformy Azure. Podobnie jak wszystkie dane wyjściowe konsoli, najnowsze Dzienniki aplikacji 100 również zostać wyświetlony na stronie pulpitu nawigacyjnego dla zadania WebJob nie strony dla wywołania funkcji.
 
 Dane wyjściowe konsoli zostanie wyświetlony pulpit nawigacyjny tylko wtedy, gdy program jest uruchomiony w zadaniu Azure WebJob, nie wtedy, gdy program działa lokalnie lub innego środowiska.
 
@@ -511,5 +511,5 @@ W tabeli platformy Azure **Console.Out** i **Console.Error** dzienniki wygląda�
 ![Dziennik błędów w tabeli](./media/vs-storage-webjobs-getting-started-queues/tableerror.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule udostępnił przykłady kodu, które pokazują, jak obsługiwać typowe scenariusze dotyczące pracy z kolejek systemu Azure. Aby uzyskać więcej informacji o sposobie używania usługi Azure WebJobs i zestaw SDK zadań Webjob, zobacz [zasoby dokumentacji usługi Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
+W tym artykule udostępnił przykłady kodu, które pokazują, jak obsługiwać typowe scenariusze dotyczące pracy z kolejek systemu Azure. Aby uzyskać więcej informacji o sposobie używania usługi Azure WebJobs i zestaw SDK zadań Webjob, zobacz [zasoby dokumentacji usługi Azure WebJobs](https://go.microsoft.com/fwlink/?linkid=390226).
 

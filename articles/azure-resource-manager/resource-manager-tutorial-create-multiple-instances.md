@@ -10,19 +10,19 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/18/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1cfccdf644b1748a96f7638e574c66eace8d113a
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 14dd76e60f615bce4e5b5aa52e6237615071779c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456664"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241927"
 ---
-# <a name="tutorial-create-multiple-resource-instances-using-resource-manager-templates"></a>Samouczek: tworzenie wielu wystąpień zasobów przy użyciu szablonów usługi Resource Manager
+# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Samouczek: tworzenie wielu wystąpień zasobów przy użyciu szablonów usługi Resource Manager
 
-Dowiedz się, jak wykonywać iteracje w Twoim szablonie usługi Azure Resource Manager w celu utworzenia wielu wystąpień zasobu platformy Azure. W ostatnim samouczku został zmodyfikowany istniejący szablon w celu utworzenia zaszyfrowanego konta usługi Azure Storage. W tym samouczku możesz zmodyfikować ten sam szablon w celu utworzenia trzech wystąpień konta magazynu.
+Dowiedz się, jak wykonywać iteracje w Twoim szablonie usługi Azure Resource Manager w celu utworzenia wielu wystąpień zasobu platformy Azure. W tym samouczku zmodyfikujesz szablon w celu utworzenia trzech wystąpień konta magazynu.
 
 > [!div class="checklist"]
 > * Otwieranie szablonu szybkiego startu
@@ -39,7 +39,7 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
 ## <a name="open-a-quickstart-template"></a>Otwieranie szablonu szybkiego startu
 
-Szablon używany w tym przewodniku Szybki start ma nazwę [Create a standard storage account (Tworzenie standardowego konta magazynu)](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Szablon definiuje zasób konta usługi Azure Storage.
+[Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/) to repozytorium na potrzeby szablonów usługi Resource Manager. Zamiast tworzyć szablon od podstaw, możesz znaleźć szablon przykładowy i zmodyfikować go. Szablon używany w tym przewodniku Szybki start ma nazwę [Create a standard storage account (Tworzenie standardowego konta magazynu)](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Szablon definiuje zasób konta usługi Azure Storage.
 
 1. W programie Visual Studio Code wybierz pozycję **File (Plik)**>**Open File (Otwórz plik)**.
 2. W polu **File name (Nazwa pliku)** wklej następujący adres URL:
@@ -48,20 +48,21 @@ Szablon używany w tym przewodniku Szybki start ma nazwę [Create a standard sto
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 3. Wybierz pozycję **Open (Otwórz)**, aby otworzyć plik.
-4. Wybierz pozycję **File (Plik)**>**Save As (Zapisz jako)**, aby zapisać plik jako **azuredeploy.json** na komputerze lokalnym.
+4. W szablonie zdefiniowano zasób „Microsoft.Storage/storageAccounts”. Porównaj szablon z [dokumentacją dotyczącą szablonów](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts). Warto uzyskać podstawową wiedzę na temat szablonu przed rozpoczęciem jego dostosowywania.
+5. Wybierz pozycję **File (Plik)**>**Save As (Zapisz jako)**, aby zapisać plik jako **azuredeploy.json** na komputerze lokalnym.
 
 ## <a name="edit-the-template"></a>Edytowanie szablonu
 
-Celem tego samouczka jest użycie iteracji zasobu, aby utworzyć trzy konta magazynu.  Przykładowy szablon tworzy tylko jedno konto magazynu. 
+Istniejący szablon tworzy jedno konto magazynu. Możesz dostosować szablon, aby utworzyć trzy konta magazynu.  
 
 Z poziomu programu Visual Studio Code wprowadź następujące cztery zmiany:
 
 ![Usługa Azure Resource Manager tworzy wiele wystąpień](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances.png)
 
-1. Dodaj element `copy` do definicji zasobu konta magazynu. W elemencie copy określ liczbę iteracji i nazwę tej pętli. Wartość licznika musi być dodatnią liczbą całkowitą i nie może przekraczać 800.
-2. Funkcja `copyIndex()` zwraca bieżącą iterację w pętli. Funkcja `copyIndex()` rozpoczyna liczenie od zera. Aby przesunąć wartość indeksu, możesz przekazać wartość do funkcji copyIndex(). Na przykład *copyIndex(1)*.
+1. Dodaj element `copy` do definicji zasobu konta magazynu. W elemencie copy określ liczbę iteracji i zmienną dla tej pętli. Wartość licznika musi być dodatnią liczbą całkowitą i nie może przekraczać 800.
+2. Funkcja `copyIndex()` zwraca bieżącą iterację w pętli. Jako prefiksu nazwy należy użyć indeksu. Funkcja `copyIndex()` rozpoczyna liczenie od zera. Aby przesunąć wartość indeksu, możesz przekazać wartość do funkcji copyIndex(). Na przykład *copyIndex(1)*.
 3. Usuń element **variables**, ponieważ nie jest już używany.
-4. Usuń element **outputs**.
+4. Usuń element **outputs**. Nie jest już potrzebny.
 
 Ukończony szablon wygląda następująco:
 

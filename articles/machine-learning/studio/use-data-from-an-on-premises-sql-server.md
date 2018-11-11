@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
-ms.openlocfilehash: d9d9bfc6f8571ab30804d76b9ab9490b0d2e43c7
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 4ea0a247116db521e03d7092be0bb86a6528f44d
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37934731"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346392"
 ---
 # <a name="perform-advanced-analytics-with-azure-machine-learning-using-data-from-an-on-premises-sql-server-database"></a>Wykonywanie zaawansowanych analiz za pomocą usługi Azure Machine Learning, używając danych z lokalnej bazy danych programu SQL Server
-[!INCLUDE [import-data-into-aml-studio-selector](../../../includes/machine-learning-import-data-into-aml-studio.md)]
 
 Często w przypadku przedsiębiorstw, które działają z danymi lokalnymi chce wykorzystują skali i elastyczności chmury w celu ich usługi machine learning obciążeń. Ale nie chcesz przerwać bieżącego procesów biznesowych i przepływów pracy przez przeniesienie ich danych lokalnych do chmury. Usługa Azure Machine Learning obsługuje teraz odczytywanie danych z bazy danych programu SQL Server w środowisku lokalnym i następnie szkolenia i oceniania modelu przy użyciu tych danych. Nie masz już ręcznie skopiować i synchronizowanie danych między chmurą a serwerem w środowisku lokalnym. Zamiast tego **importu danych** modułu w usłudze Azure Machine Learning Studio może teraz odczytywać bezpośrednio z lokalną bazą danych programu SQL Server do szkolenia i oceniania zadania.
 

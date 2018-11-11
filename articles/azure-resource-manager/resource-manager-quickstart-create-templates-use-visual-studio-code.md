@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 10/18/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: e8ca232f3c5664f69db800648b46abaf0822d6f1
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 092b6f2c3267a2c2cd2cc6304133134825bb7261
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458143"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230154"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Szybki start: tworzenie szablonów usługi Azure Resource Manager przy użyciu programu Visual Studio Code
 
@@ -81,15 +81,15 @@ Aby dowiedzieć się, jak edytować szablon za pomocą programu Visual Studio Co
     }
     ```
 
-    Jeśli skopiowano i wklejono kod w programie Visual Studio Code, spróbuj ponownie wpisać element **value**, aby użyć funkcji intellisense rozszerzenia Narzędzia usługi Resource Manager.
+    Jeśli skopiowano i wklejono kod w programie Visual Studio Code, spróbuj ponownie wpisać element **value**, aby użyć funkcji IntelliSense rozszerzenia Narzędzia usługi Resource Manager.
 
-    ![Funkcja intellisense programu Visual Studio Code szablonu usługi Resource Manager](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
+    ![Funkcja IntelliSense programu Visual Studio Code szablonu usługi Resource Manager](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
 
 2. Wybierz pozycję **File (Plik)**>**Save (Zapisz)**, aby zapisać plik.
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
-Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start użyjesz usługi Azure Cloud Shell. Usługa Cloud Shell obsługuje zarówno interfejs wiersza polecenia platformy Azure, jak i program Azure PowerShell. 
+Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start użyjesz usługi Azure Cloud Shell. Usługa Cloud Shell obsługuje zarówno interfejs wiersza polecenia platformy Azure, jak i program Azure PowerShell.
 
 1. Logowanie do [usługi Azure Cloud Shell](https://shell.azure.com)
 

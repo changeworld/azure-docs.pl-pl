@@ -2,19 +2,19 @@
 title: Ograniczanie dostępu przy użyciu sygnatury dostępu współdzielonego — Azure HDInsight
 description: Dowiedz się, jak ograniczyć HDInsight dostęp do danych przechowywanych w obiektach blob usługi Azure storage za pomocą sygnatur dostępu współdzielonego.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: jasonh
-ms.openlocfilehash: 76e40f5178457f366ed386dba7a1817ddde3c8ac
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 08ffc3a9eb4942cb21c0a800d493b87b016d7f87
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090232"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016188"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Ograniczania dostępu do danych w HDInsight za pomocą sygnatur dostępu współdzielonego magazynu platformy Azure
 

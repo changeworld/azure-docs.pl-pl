@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/22/2018
-ms.openlocfilehash: a5b9d711b1d53d56f31a8b32e6d86722ac02c905
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 99822fc1d99d914327a64cfb9fe8e18189f30a4f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393540"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251242"
 ---
 # <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure za pomocą rozwiązania Ansible
 Rozwiązanie Ansible umożliwia automatyczne tworzenie, konfigurowanie i wdrażanie zasobów platformy Azure przy użyciu języka deklaratywnego, za pośrednictwem *podręczników* rozwiązania Ansible. W poszczególnych sekcjach tego artykułu opisano kolejne sekcje podręcznika rozwiązania Ansible, umożliwiające tworzenie i konfigurowanie różnych aspektów maszyny wirtualnej z systemem Linux. Na końcu tego artykułu znajdziesz [kompletny podręcznik rozwiązania Ansible](#complete-sample-ansible-playbook).
@@ -205,7 +205,7 @@ Ta sekcja zawiera cały przykładowy podręcznik rozwiązania Ansible utworzony 
 
 W tej sekcji omówiono uruchamianie przykładowego podręcznika rozwiązania Ansible zaprezentowanego w tym artykule.
 
-1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otwórz usługę [Cloud Shell](/azure/cloud-shell/overview).
 

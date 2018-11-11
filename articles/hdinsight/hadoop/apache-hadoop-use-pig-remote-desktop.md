@@ -2,19 +2,19 @@
 title: Korzystanie z języka Pig z usługi Hadoop w przy użyciu pulpitu zdalnego w HDInsight — Azure
 description: Dowiedz się, jak za pomocą polecenia Pig do uruchomienia instrukcji Pig Latin za pośrednictwem połączenia pulpitu zdalnego w klastrze usługi Hadoop z systemem Windows na platformie HDInsight.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/17/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 224722c61a653eae55bc1351e91e6288bc793fb6
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 3a7dff2c44b7cc8ccd921d2371666cb19acffbb8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049867"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007233"
 ---
 # <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>Uruchamianie zadań Pig za pośrednictwem połączenia pulpitu zdalnego
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
@@ -58,7 +58,7 @@ Włączanie pulpitu zdalnego dla klastra HDInsight, a następnie nawiązać z ni
 
     <table>
     <tr>
-    <th>Oświadczenie</th><th>Wyniki działania</th>
+    <th>Instrukcja</th><th>Wyniki działania</th>
     </tr>
     <tr>
     <td>FILTEREDLEVELS = poziomie LOGLEVEL z filtru nie jest zerowa;</td><td>Usuwa wiersze, które zawierają wartości null do określenia poziomu dziennika i przechowuje wyniki w FILTEREDLEVELS.</td>

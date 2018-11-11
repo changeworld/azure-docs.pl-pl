@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 6d4f7fab0c36095d96cec0038a39744102e8972b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 535f70658593ff5a9ae1642ae7a97646e3fefb63
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433756"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288258"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Informacje dotyczące sieci środowiska App Service Environment #
 
@@ -33,7 +33,7 @@ Istnieją dwie wersje środowiska App Service Environment: ASEv1 i ASEv2. Aby uz
 
 Wywołania z ASE, które bardziej szczegółowo w Internecie należy pozostawić sieci wirtualnej przy użyciu adresu VIP przypisanych do środowiska ASE. Publiczny adres IP to adres VIP jest źródłowy adres IP dla wszystkich wywołań ze środowiska ASE, które bardziej szczegółowo w Internecie. Jeśli aplikacje w środowisku ASE wywołań do zasobów w sieci wirtualnej lub sieci VPN, źródłowy adres IP jest jeden z adresów IP w podsieci używana przez środowisko ASE. Ponieważ środowisko ASE znajduje się w sieci wirtualnej, można także przejść zasobów w ramach sieci wirtualnej bez przeprowadzania dodatkowej konfiguracji. Jeśli sieć wirtualna jest połączona z siecią lokalną, aplikacje w środowisku ASE również mieć dostęp do zasobów istnieje bez dodatkowej konfiguracji.
 
-![Zewnętrznego środowiska ASE][1] 
+![Zewnętrznego środowiska ASE][1] 
 
 W przypadku zewnętrznego środowiska ASE publicznych adresów VIP jest również punkt końcowy, który aplikacji środowiska ASE, rozwiązania dla:
 
@@ -52,7 +52,7 @@ Dostępne są następujące porty dostępu zwykła aplikacja:
 |----------|---------|-------------|
 |  HTTP/HTTPS  | Użytkownika można konfigurować |  80, 443 |
 |  FTP/FTPS    | Użytkownika można konfigurować |  21, 990, 10001-10020 |
-|  Visual Studio zdalne debugowanie  |  Użytkownika można konfigurować |  4016, 4018, 4020, 4022 |
+|  Visual Studio zdalne debugowanie  |  Użytkownika można konfigurować |  4020 4022, 4024 |
 
 Ta zasada obowiązuje, jeśli jesteś na zewnętrznym środowiskiem ASE lub w środowisku ASE z wewnętrznym modułem równoważenia obciążenia. Jeśli używasz zewnętrznego środowiska ASE, napotkasz tych portów na publicznych adresów VIP. Jeśli środowisko ASE z wewnętrznym modułem równoważenia obciążenia, napotkasz tych portów na wewnętrznego modułu równoważenia obciążenia. Jeśli port 443 jest zablokowanie, może to być wpływ na niektóre funkcje dostępne w portalu. Aby uzyskać więcej informacji, zobacz [zależności portalu](#portaldep).
 
@@ -170,7 +170,7 @@ Pierwsze dwa wymagania dla ruchu przychodzącego dla środowiska ASE funkcji są
 
 Domyślna reguła umożliwia adresów IP w sieci wirtualnej na komunikowanie się z podsieci środowiska ASE. Inną regułę domyślną umożliwia równoważenia obciążenia, znany także jako publicznych adresów VIP do komunikowania się z ASE. Aby wyświetlić domyślne reguły, wybierz **domyślne reguły** obok **Dodaj** ikony. Jeśli umieścisz Odmów, wszystkie inne reguły po pokazano reguły sieciowej grupy zabezpieczeń, uniemożliwia ruchu między adres VIP i środowisko ASE. Aby zapobiec ruchu przychodzącego z wewnątrz sieci wirtualnej, należy dodać własne reguły w celu umożliwienia ruchu przychodzącego. Korzystanie ze źródła, które są równe AzureLoadBalancer z miejsca docelowego **wszelkie** i zakres portów **\***. Ponieważ reguła sieciowej grupy zabezpieczeń jest stosowana do podsieci środowiska ASE, trzeba należeć do określonego miejsca docelowego.
 
-Jeśli adres IP przypisany do aplikacji, upewnij się, że porty pozostawić otwarty. Aby zobaczyć porty, wybierz **środowiska App Service Environment** > **adresów IP**.  
+Jeśli adres IP przypisany do aplikacji, upewnij się, że porty pozostawić otwarty. Aby zobaczyć porty, wybierz **środowiska App Service Environment** > **adresów IP**.  
 
 Wszystkie elementy, które są wyświetlane w następujących reguł ruchu wychodzącego są potrzebne, z wyjątkiem ostatniego elementu. Umożliwiają one dostęp sieciowy do zależności środowiska ASE, które zostały podane wcześniej w tym artykule. Jeśli zablokujesz któryś z nich Twoje środowisko ASE przestanie działać. Ostatni element na liście umożliwia środowiska ASE do komunikowania się z innymi zasobami w sieci wirtualnej.
 

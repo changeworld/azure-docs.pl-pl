@@ -1,6 +1,6 @@
 ---
 title: Aprowizowanie symulowanego urządzenia X.509 dla usługi Azure IoT Hub przy użyciu języka C# | Microsoft Docs
-description: Przewodnik Szybki start platformy Azure — Tworzenie i aprowizowanie symulowanego urządzenia X.509 za pomocą zestawu SDK języka C# dla usługi Azure IoT Hub Device Provisioning
+description: Przewodnik Szybki start platformy Azure — Tworzenie i aprowizowanie symulowanego urządzenia X.509 za pomocą zestawu SDK języka C# dla usługi Azure IoT Hub Device Provisioning. W tym przewodniku Szybki start używane są rejestracje indywidualne.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/09/18
@@ -10,19 +10,25 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 1d42280935c406a7af0e632434749b2b082ea8b8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ae5601cf35540b6f506521a851b4d90dfaf0a20a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039671"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156463"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Tworzenie i aprowizowanie symulowanego urządzenia X.509 za pomocą zestawu SDK języka C# dla usługi IoT Hub Device Provisioning
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 Te kroki pokazują, jak skompilować przykładowe symulowane urządzenie X.509 [zestawu SDK języka C# usługi Azure IoT Hub](https://github.com/Azure/azure-iot-sdk-csharp) na maszynie deweloperskiej z systemem operacyjnym Windows i połączyć to urządzenie symulowane z usługą Device Provisioning i Twoim centrum IoT Hub.
 
-Jeśli nie znasz procesu automatycznego aprowizowania, zapoznaj się również z tematem [Auto-provisioning concepts](concepts-auto-provisioning.md) (Pojęcia związane z automatycznym aprowizowaniem). Pamiętaj również, aby wcześniej wykonać kroki przedstawione w części [Konfigurowanie usługi IoT Hub Device Provisioning za pomocą witryny Azure Portal](./quick-setup-auto-provision.md). 
+Jeśli nie znasz procesu automatycznego aprowizowania, zapoznaj się również z tematem [Auto-provisioning concepts (Pojęcia związane z automatycznym aprowizowaniem)](concepts-auto-provisioning.md). Pamiętaj również, aby wcześniej wykonać kroki przedstawione w części [Konfigurowanie usługi IoT Hub Device Provisioning za pomocą witryny Azure Portal](./quick-setup-auto-provision.md). 
+
+Usługa Azure IoT Device Provisioning obsługuje dwa typy rejestracji:
+- [Grupy rejestracji](concepts-service.md#enrollment-group): służą do rejestrowania wielu pokrewnych urządzeń.
+- [Rejestracje indywidualne](concepts-service.md#individual-enrollment): służą do rejestrowania pojedynczych urządzeń.
+
+W tym artykule przedstawiono rejestracje indywidualne.
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
@@ -43,8 +49,8 @@ Jeśli nie znasz procesu automatycznego aprowizowania, zapoznaj się również z
 
 W tej sekcji zostanie użyty certyfikat z podpisem własnym X.509. Ważne jest, aby pamiętać o następujących kwestiach:
 
-* Certyfikaty z podpisem własnym są przeznaczone tylko do celów testowania i nie można ich używać w środowisku produkcyjnym.
-* Domyślny termin wygaśnięcia certyfikatu z podpisem własnym to 1 rok.
+* Certyfikaty z podpisem własnym są przeznaczone tylko do celów testowania i nie powinny być używane w środowisku produkcyjnym.
+* Domyślny termin wygaśnięcia certyfikatu z podpisem własnym to jeden rok.
 
 Przykładowy kod z [zestawu Azure IoT SDK dla środowiska .NET](https://github.com/Azure/azure-iot-sdk-csharp.git) zostanie użyty do utworzenia certyfikatu, który będzie używany z indywidualnym wpisem rejestracji dla urządzenia symulowanego.
 

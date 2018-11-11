@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: f98d640f032fed5f91df8e9d4fb55d3f20550339
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: c2581abc782558ca114cc3a5d4f6224d132bce5d
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883928"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139099"
 ---
 # <a name="integrate-speech-service"></a>Integrowanie usługi rozpoznawania mowy
 [Usługa rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umożliwia korzystanie z jednego żądania w celu odbierania dźwięku i zwrócenia obiektów JSON zawierających przewidywania usługi LUIS. W tym artykule pobierzesz projekt w języku C# i użyjesz go w programie Visual Studio, aby wypowiedzieć się do mikrofonu i uzyskać przewidywania usługi LUIS. Projekt wykorzystuje pakiet rozpoznawania mowy [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) dołączony jako źródło informacji. 
@@ -39,7 +39,7 @@ Ta aplikacja zawiera intencje, jednostki i wypowiedzi powiązane z domeną Human
 
 
 ## <a name="add-keyphrase-prebuilt-entity"></a>Wstępnie utworzona jednostka KeyPhrase
-Po zaimportowaniu aplikacji wybierz kolejno pozycje **Entitites** (Jednostki) i **Manage prebuilt entities** (Zarządzaj wstępnie utworzonymi jednostkami). Dodaj jednostkę **KeyPhrase**. Jednostka KeyPhrase wyodrębnia kluczową treść z wypowiedzi.
+Po zaimportowaniu aplikacji wybierz kolejno pozycje **Entitites** (Jednostki) i **Add prebuilt entities** (Dodaj wstępnie utworzoną jednostkę). Dodaj jednostkę **KeyPhrase**. Jednostka KeyPhrase wyodrębnia kluczową treść z wypowiedzi.
 
 ## <a name="train-and-publish-the-app"></a>Uczenie i publikowanie aplikacji
 1. W górnej części strony na pasku nawigacji po prawej stronie wybierz przycisk **Train** (Ucz), aby wyszkolić aplikację LUIS.

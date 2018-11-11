@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 10fb30b77cc3cd18cbb6b3def9682349474fba71
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: e879e096fb990e4567b43b1938909449820edd42
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645818"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412724"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Wyszukiwanie pobliskich punktów orientacyjnych za pomocą usługi Azure Maps
 
@@ -72,59 +72,96 @@ Interfejs API kontrolki mapy to wygodna biblioteka klienta, która ułatwia inte
 1. Na maszynie lokalnej utwórz nowy plik i nadaj mu nazwę **MapSearch.html**.
 2. Dodaj następujące składniki HTML do pliku:
 
-    ```HTML
-    <!DOCTYPE html>
-    <html lang="en">
+   ```HTML
+   <!DOCTYPE html>
+   <html>
+   <head>
+      <title>Map Search</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, user-scalable=no" />
-        <title>Map Search</title>
+      <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css" />
+      <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script>
 
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css" />
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script>
-        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.min.js?api-version=1"></script>
+      <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
+      <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=1"></script>
 
-        <style>
-            html,
-            body {
-                width: 100%;
-                height: 100%;
-                padding: 0;
-                margin: 0;
-            }
+      <script>      
+         var map, datasource, client, popup;
 
-            #map {
-                width: 100%;
-                height: 100%;
-            }
-        </style>
-    </head>
+         function GetMap(){
+            //Add Map Control JavaScript code here.
+         }
+      </script>
+      <style>
+      html,
+      body {
+         width: 100%;
+         height: 100%;
+         padding: 0;
+         margin: 0;
+      }
 
-    <body>
-        <div id="map"></div>
-        <script>
-            // Embed Map Control JavaScript code here
-        </script>
-    </body>
+      #map {
+         width: 100%;
+         height: 100%;
+      }
+      </style>
+   </head>
+   <body onload="GetMap()">
+      <div id="myMap"></div>
+   </body>
+   </html>
+   ```
 
-    </html>
-    ```
-    Zwróć uwagę, że nagłówek HTML zawiera pliki zasobów CSS i JavaScript obsługiwane przez bibliotekę kontrolek mapy platformy Azure. Zanotuj segment *script* dodany do *treści* pliku HTML. Ten segment będzie zawierać śródwierszowy kod JavaScript umożliwiający dostęp do interfejsów API usługi Azure Maps.
+   Zwróć uwagę, że nagłówek HTML zawiera pliki zasobów CSS i JavaScript obsługiwane przez bibliotekę kontrolek mapy platformy Azure. Zwróć uwagę na zdarzenie `onload` w treści strony, które spowoduje wywołanie funkcji `GetMap` po załadowaniu treści strony. Ta funkcja będzie zawierać śródwierszowy kod JavaScript umożliwiający dostęp do interfejsów API usługi Azure Maps.
 
-3. Dodaj następujący kod JavaScript do bloku *script* w pliku HTML. Zastąp ciąg **\<your account key\>** kluczem podstawowym, skopiowanym z konta usługi Maps.
+3. Dodaj następujący kod JavaScript do funkcji `GetMap` w pliku HTML. Zastąp ciąg **\<Your Azure Maps Key\>** kluczem podstawowym, skopiowanym z konta usługi Maps.
 
-    ```JavaScript
-    // Instantiate map to the div with id "map"
-    atlas.setSubscriptionKey("<your account key>");
-    var map = new atlas.Map("map");
-    ```
+   ```JavaScript
+   //Add your Azure Maps subscription key to the map SDK. Get an Azure Maps key at https://azure.com/maps
+   atlas.setSubscriptionKey('<Your Azure Maps Key>');
 
-    Ten segment inicjuje interfejs API kontrolki mapy dla klucza konta usługi Azure Maps. **Atlas** to przestrzeń nazw, która zawiera interfejs API i powiązane składniki wizualne. **Atlas.Map** udostępnia kontrolkę wizualnej i interaktywnej mapy internetowej.
+   //Initialize a map instance.
+   map = new atlas.Map('myMap');
+   ```
+
+   Ten segment inicjuje interfejs API kontrolki mapy dla klucza konta usługi Azure Maps. **atlas** to przestrzeń nazw, która zawiera interfejs API i powiązane składniki wizualne. **atlas.Map** udostępnia kontrolkę wizualnej i interaktywnej mapy internetowej. 
 
 4. Zapisz zmiany w pliku i otwórz stronę HTML w przeglądarce. Jest to najbardziej podstawowa mapa utworzona przez wywołanie **atlas.map** i użycie klucza konta.
 
    ![Wyświetlanie mapy](./media/tutorial-search-location/basic-map.png)
+
+5. W funkcji `GetMap` po zainicjowaniu mapy dodaj następujący kod JavaScript. 
+
+   ```JavaScript
+   //Wait until the map resources have fully loaded.
+   map.events.add('load', function () {
+
+      //Create a data source and add it to the map.
+      datasource = new atlas.source.DataSource();
+      map.sources.add(datasource);
+
+      //Add a layer for rendering point data.
+      var resultLayer = new atlas.layer.SymbolLayer(datasource, null, {
+         iconOptions: {
+            iconImage: 'pin-round-darkblue',
+            anchor: 'center',
+            allowOverlap: true
+         }
+      });
+      map.layers.add(resultLayer);
+
+      //Create a popup but leave it closed so we can update it and display it later.
+      popup = new atlas.Popup();
+
+      //Add a mouse over event to the result layer and display a popup when this event fires.
+      map.events.add('mouseover', resultLayer, showPopup);
+   });
+   ```
+
+   Zdarzenie ładowania jest dodawane do mapy. Zostanie ono wyzwolone po całkowitym załadowaniu zasobów mapy. W obsłudze zdarzeń ładowania mapy jest tworzone źródło danych do przechowywania danych wyników. Tworzona jest warstwa symboli, która jest następnie dołączana do źródła danych. Ta warstwa określa, jak powinny być renderowane dane wyników w źródle danych. W tym przypadku jest ona oznaczona ciemnoniebieską ikoną okrągłej pinezki wyśrodkowaną nad współrzędnymi wyników i umożliwiającą nakładanie się na inne ikony. 
 
 <a id="usesearch"></a>
 
@@ -134,110 +171,88 @@ W tej sekcji przedstawiono sposób wyszukiwania punktu orientacyjnego na mapie p
 
 ### <a name="service-module"></a>Moduł usługi
 
-1. Dodaj nową warstwę do mapy, aby wyświetlić wyniki wyszukiwania. Za kodem inicjującym mapę w bloku skryptu dodaj następujący kod Javascript.
+1. W obsłudze zdarzeń ładowania mapy utwórz wystąpienie usługi klienta, dodając następujący kod JavaScript.
 
     ```JavaScript
-    // Initialize the pin layer for search results to the map
-    var searchLayerName = "search-results";
+    //Create an instance of the services client.
+     client = new atlas.service.Client(atlas.getSubscriptionKey());
     ```
 
-2. Aby utworzyć wystąpienie usługi klienta, za kodem inicjującym mapę w bloku skryptu dodaj następujący kod Javascript.
+2. Następnie dodaj poniższy blok skryptu w celu utworzenia zapytania wyszukiwania. Ten fragment kodu używa usługi Fuzzy Search Service — podstawowego interfejsu API wyszukiwania usługi Search Service. Usługa Fuzzy Search Service obsługuje większość rozmytych danych wejściowych, takich jak adresy, miejsca i punkty orientacyjne (POI). Ten kod wyszukuje najbliższe stacje benzynowe w obrębie wybranego promienia wyszukiwania. Odpowiedź jest następnie analizowana w formacie GeoJSON i dodawana do źródła danych, co automatycznie powoduje renderowanie danych na mapie za pośrednictwem warstwy symboli. Ostatnia część skrypt ustawia widok kamery mapy za pomocą pola ograniczenia wyników z wykorzystaniem właściwości mapy [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest). Dodawane jest wypełnienie, aby skompensować wymiary pikseli ikon symboli, ponieważ pole ograniczenia jest obliczane na podstawie współrzędnych. 
+ 
+   ```JavaScript
+   //Execute a POI search query then add the results to the map.
+    client.search.getSearchPOI('gasoline station', {
+        lat: 47.6292,
+        lon: -122.2337,
+        radius: 100000
+    }).then(response => {
+        //Parse the response into GeoJSON so that the map can understand.
+        var geojsonResponse = new atlas.service.geojson.GeoJsonSearchResponse(response);
+        var results = geojsonResponse.getGeoJsonResults();
 
-    ```JavaScript
-    var client = new atlas.service.Client(MapsAccountKey);
-    ```
+        //Add the results to the data source so they can be rendered. 
+        datasource.add(results);
 
-3. Wszystkie funkcje na mapie powinny zostać załadowane po załadowaniu się mapy. Możesz to sprawdzić, umieszczając wszystkie funkcje mapy w bloku mapy eventListener. Dodaj następujące wiersze kodu, aby dodać blok [eventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) do mapy w celu sprawdzenia, czy mapa została w całości załadowana przed dodaniem funkcji.
-    
-    ```JavaScript
-         map.events.add("load", function() {
-         });
-    ```
-
-4. Dodaj następujący blok skryptu **w bloku events podczas ładowania mapy**, aby utworzyć zapytanie. Ten fragment kodu używa usługi Fuzzy Search Service — podstawowego interfejsu API wyszukiwania usługi Search Service. Usługa Fuzzy Search Service obsługuje większość rozmytych danych wejściowych, takich jak dowolna kombinacja adresu i tokenów punktu orientacyjnego (POI). Wyszukuje najbliższe stacje benzynowe w obrębie wybranego promienia wyszukiwania. Odpowiedź jest następnie przekształcana do formatu GeoJSON i konwertowana na cechy punktu, które są dodawane do mapy w formie pinezek. Ostatnia część skryptu dodaje ograniczenia zasięgu wyświetlania aparatu do mapy za pomocą właściwości [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) w usłudze Maps.
-
-    ```JavaScript
-
-            // Execute a POI search query then add pins to the map for each result once a response is received
-            client.search.getSearchFuzzy("gasoline station", {
-            lat: 47.6292,
-            lon: -122.2337,
-            radius: 100000
-            }).then(response => {
-       
-            // Parse the response into GeoJSON 
-            var geojsonResponse = new atlas.service.geojson.GeoJsonSearchResponse(response);
-
-            // Create the point features that will be added to the map as pins
-            var searchPins = geojsonResponse.getGeoJsonResults().features.map(poiResult => {
-               var poiPosition = [poiResult.properties.position.lon, poiResult.properties.position.lat];
-               return new atlas.data.Feature(new atlas.data.Point(poiPosition), {
-                name: poiResult.properties.poi.name,
-                address: poiResult.properties.address.freeformAddress,
-                position: poiPosition[1] + ", " + poiPosition[0]
-               });
-            });
-
-            // Add pins to the map for each POI
-            map.addPins(searchPins, {
-               name: searchLayerName,
-               cluster: false, 
-               icon: "pin-round-darkblue" 
-            });
-
-            // Set the camera bounds
-            map.setCameraBounds({
-               bounds: geojsonResponse.getGeoJsonResults().bbox,
-               padding: 50
-            });
+        // Set the camera bounds
+        map.setCamera({
+            bounds: results.bbox,
+            padding: 50
+        });
     });
-    ```
-5. Zapisz plik **MapSearch.html** i odśwież przeglądarkę. Mapa powinna przedstawiać Seattle ze stacjami paliw oznaczonymi za pomocą niebieskich znaczników.
+   ```
+ 
+3. Zapisz plik **MapSearch.html** i odśwież przeglądarkę. Mapa powinna przedstawiać Seattle ze stacjami paliw oznaczonymi za pomocą niebieskich znaczników.
 
    ![Wyświetlanie mapy z wynikami wyszukiwania](./media/tutorial-search-location/pins-map.png)
 
-6. Wprowadzenie następującego żądania HTTP w przeglądarce spowoduje wyświetlenie danych pierwotnych renderowanych przez mapę. Ciąg \<your account key\> zastąp kluczem podstawowym.
+4. Wprowadzenie następującego żądania HTTP w przeglądarce spowoduje wyświetlenie danych pierwotnych renderowanych przez mapę. Ciąg \<Your Azure Maps Key\> zastąp kluczem podstawowym.
 
    ```http
-   https://atlas.microsoft.com/search/fuzzy/json?api-version=1.0&query=gasoline%20station&subscription-key=<your account key>&lat=47.6292&lon=-122.2337&radius=100000
+   https://atlas.microsoft.com/search/fuzzy/json?api-version=1.0&query=gasoline%20station&subscription-key=<Your Azure Maps Key>&lat=47.6292&lon=-122.2337&radius=100000
    ```
 
 Na stronie MapSearch można teraz wyświetlić lokalizacje punktów orientacyjnych, zwracanych przez zapytanie wyszukiwania rozmytego. Do lokalizacji dodamy informacje oraz interaktywne funkcje.
 
 ## <a name="add-interactive-data"></a>Dodawanie interaktywnych danych
 
-W wynikach wyszukiwania na utworzonej mapie są używane tylko dane o szerokości i długości geograficznej. Widać jednak, że nieprzetworzone dane JSON zwracane przez usługę Search Service w usłudze Maps zawierają dodatkowe informacje o każdej stacji paliw, takie jak nazwa i adres. Dane te można zintegrować z mapą za pomocą interaktywnych wyskakujących okienek.
+W wynikach wyszukiwania na utworzonej mapie są używane tylko dane o długości i szerokości geograficznej. Widać jednak, że nieprzetworzone dane JSON zwracane przez usługę Search Service w usłudze Maps zawierają dodatkowe informacje o każdej stacji paliw, takie jak nazwa i adres. Dane te można zintegrować z mapą za pomocą interaktywnych wyskakujących okienek.
 
-1. Dodaj następujące wiersze do bloku *script*, aby utworzyć wyskakujące okienka dla punktów orientacyjnych zwróconych przez usługę Search Service:
+1. Dodaj następujące wiersze kodu do obsługi zdarzeń ładowania mapy po kodzie umożliwiającym wykonanie zapytania do usługi wyszukiwania rozmytego. Spowoduje to utworzenie wystąpienia wyskakującego okienka i dodanie zdarzenia mouseover do warstwy symboli.
 
     ```JavaScript
-    // Add a popup to the map which will display some basic information about a search result on hover over a pin
-    var popup = new atlas.Popup();
-    map.addEventListener("mouseover", searchLayerName, (e) => {
-        var popupContentElement = document.createElement("div");
-        popupContentElement.style.padding = "5px";
+   //Create a popup but leave it closed so we can update it and display it later.
+    popup = new atlas.Popup();
 
-        var popupNameElement = document.createElement("div");
-        popupNameElement.innerText = e.features[0].properties.name;
-        popupContentElement.appendChild(popupNameElement);
+    //Add a mouse over event to the result layer and display a popup when this event fires.
+    map.events.add('mouseover', resultLayer, showPopup);
+    ```
+    
+    Element **atlas.Popup** interfejsu API udostępnia okno informacyjne zakotwiczone w żądanym położeniu na mapie. 
+      
+2. W tagu *script* po funkcji `GetMap` dodaj następujący kod, aby pokazać w wyskakującym okienku informacje dotyczące wyniku, na którym umieszczono wskaźnik myszy. 
 
-        var popupAddressElement = document.createElement("div");
-        popupAddressElement.innerText = e.features[0].properties.address;
-        popupContentElement.appendChild(popupAddressElement);
+   ```JavaScript
+   function showPopup(e) {
+        //Get the properties and coordinates of the first shape that the event occured on.
+        var p = e.shapes[0].getProperties();
+        var position = e.shapes[0].getCoordinates();
 
-        var popupPositionElement = document.createElement("div");
-        popupPositionElement.innerText = e.features[0].properties.position;
-        popupContentElement.appendChild(popupPositionElement);
+        //Create HTML from properties of the selected result.
+        var html = ['<div style="padding:5px"><div><b>', p.poi.name,
+            '</b></div><div>', p.address.freeformAddress,
+            '</div><div>', position[1], ', ', position[0], '</div></div>'];
 
+        //Update the content and position of the popup.
         popup.setPopupOptions({
-            position: e.features[0].geometry.coordinates,
-            content: popupContentElement
+            content: html.join(''),
+            position: position
         });
 
+        //Open the popup.
         popup.open(map);
-    });
-    ```
-    Element **atlas.Popup** interfejsu API udostępnia okno informacyjne zakotwiczone w żądanym położeniu na mapie. Ten fragment kodu konfiguruje zawartość oraz pozycję okna podręcznego. Dodaje również odbiornik zdarzeń do kontrolki `map`, która czeka, aż _mysz_ przeniesie okno podręczne.
+   }
+   ```
 
 2. Zapisz plik i odśwież przeglądarkę. Teraz mapa w przeglądarce wyświetla wyskakujące okienka informacyjne po najechaniu kursorem na dowolny znacznik wyszukiwania.
 
@@ -255,7 +270,9 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 Przykładowy kod z tego samouczka jest dostępny tutaj:
 
-> [Search location with Azure Maps (Wyszukiwanie lokalizacji w usłudze Azure Maps)](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/search.html)
+> [Search location with Azure Maps (Wyszukiwanie lokalizacji w usłudze Azure Maps)](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
+
+[Zobacz tutaj działający przykład](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
 
 Następny samouczek przedstawia sposób wyświetlenia trasy między dwiema lokalizacjami.
 

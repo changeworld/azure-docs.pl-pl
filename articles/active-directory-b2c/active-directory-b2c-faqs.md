@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d17e7abbb3b6e4f091e19b8ab6834461dedffc71
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 8cec3d3695eaff8719757dd022951b969de99f6a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914774"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010647"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Usługa Azure AD B2C: Często zadawane pytania (FAQ) 
 Ta strona odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory (Azure AD) B2C. Wracaj aktualizacje.
 
 ### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Dlaczego nie mogę uzyskać dostępu do rozszerzenia usługi Azure AD B2C w witrynie Azure portal?
-Istnieją dwie typowe przyczyny Dlaczego rozszerzenia usługi Azure AD nie działa dla Ciebie.  Usługa Azure AD B2C wymaga usługi roli użytkownika w katalogu, aby być administratorem globalnym.  Jeśli uważasz, że powinni mieć dostęp, skontaktuj się z administratorem.  Jeśli masz uprawnienia administratora globalnego, upewnij się, że znajdują się w katalogu usługi Azure AD B2C, a nie katalog usługi Azure Active Directory.  Możesz zobaczyć instrukcje dotyczące [Tworzenie katalogu usługi Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant).
+Istnieją dwie typowe przyczyny Dlaczego rozszerzenia usługi Azure AD nie działa dla Ciebie.  Usługa Azure AD B2C wymaga usługi roli użytkownika w katalogu, aby być administratorem globalnym.  Jeśli uważasz, że powinni mieć dostęp, skontaktuj się z administratorem.  Jeśli masz uprawnienia administratora globalnego, upewnij się, że znajdują się w katalogu usługi Azure AD B2C, a nie katalog usługi Azure Active Directory.  Możesz zobaczyć instrukcje dotyczące [tworzenie dzierżawy usługi Azure AD B2C](tutorial-create-tenant.md).
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Czy można używać funkcji usługi Azure AD B2C, w ramach mojej dzierżawy usługi Azure AD istniejących, na podstawie pracownik?
 Usługa Azure AD i usługi Azure AD B2C są osobne oferty nie mogą współistnieć w tej samej dzierżawy.  Organizacja dzierżawę usługi Azure AD.  Dzierżawy usługi Azure AD B2C reprezentuje kolekcję tożsamości, które mają być używane z aplikacjami danej firmy.  Za pomocą niestandardowych zasad (w publicznej wersji zapoznawczej) usługi Azure AD B2C może tworzyć federacje z usługą Azure AD, dzięki czemu uwierzytelnienia pracowników w organizacji.
@@ -39,12 +39,12 @@ Należy zawsze tworzyć konta użytkowników dla aplikacji za pomocą rejestracj
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Dostawców tożsamości społecznościowych, które są obsługiwane teraz? Te, które planujesz obsługiwać w przyszłości?
 Obecnie obsługujemy Facebook, Google +, LinkedIn, Amazon, usługi Twitter (wersja zapoznawcza), WeChat (wersja zapoznawcza), Weibo (wersja zapoznawcza) i q (wersja zapoznawcza). Dodamy obsługę innych popularnych społecznościowych dostawców tożsamości na podstawie oczekiwań klienta.
 
-Usługa Azure AD B2C dodano również obsługę [zasady niestandardowe](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom).  Te [zasady niestandardowe](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom) umożliwia deweloperom tworzenie własnych zasad, który za pomocą dowolnego dostawcy tożsamości, która obsługuje [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) lub SAML. 
+Usługa Azure AD B2C dodano również obsługę [zasady niestandardowe](active-directory-b2c-overview-custom.md).  Te [zasady niestandardowe](active-directory-b2c-overview-custom.md) umożliwia deweloperom tworzenie własnych zasad, który za pomocą dowolnego dostawcy tożsamości, która obsługuje [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) lub SAML. 
 
 Wprowadzenie do zasad niestandardowych, sprawdzając naszych [pakiet startowy niestandardowe zasady](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack).
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Można skonfigurować zakresy, aby zebrać więcej informacji na temat użytkowników z różnych dostawców tożsamości społecznościowych?
-Nie, ale ta funkcja jest w naszym harmonogramie działania. Zakresy domyślne używane do naszego zestawu obsługiwanych dostawców tożsamości dla sieci społecznościowej są następujące:
+Nie. Zakresy domyślne używane do naszego zestawu obsługiwanych dostawców tożsamości dla sieci społecznościowej są następujące:
 
 * Facebook: wiadomości e-mail
 * Google +: wiadomości e-mail
@@ -56,7 +56,7 @@ Nie, ale ta funkcja jest w naszym harmonogramie działania. Zakresy domyślne u�
 Nie można hostować swoją aplikację w dowolnym miejscu (w chmurze lub lokalnie). Wszystko, czego potrzeba interakcji z usługą Azure AD B2C jest możliwość wysyłania i odbierania żądań HTTP na dostępny publicznie punktów końcowych.
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Mam wiele dzierżaw usługi Azure AD B2C. Jak mogę zarządzać nimi w witrynie Azure portal?
-Przed otwarciem usługi Azure AD B2C w witrynie Azure portal w menu po lewej stronie, musisz przełączyć się do katalogu w którym chcesz zarządzać.  Przełącz katalogi, klikając swoją tożsamość w prawym górnym rogu witryny Azure portal, a następnie wybierz katalog, w menu rozwijanym, pojawia się.  Aby uzyskać instrukcje krok po kroku z obrazami, zobacz [przejdź do ustawień usługi Azure AD B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
+Przed otwarciem usługi Azure AD B2C w witrynie Azure portal w menu po lewej stronie, musisz przełączyć się do katalogu w którym chcesz zarządzać.  Przełącz katalogi, klikając swoją tożsamość w prawym górnym rogu witryny Azure portal, a następnie wybierz katalog, w menu rozwijanym, pojawia się.
 
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>W jaki sposób dostosować weryfikacji wiadomości e-mail (zawartość i "od:" pole) wysyłane przez usługę Azure AD B2C?
 Możesz użyć [funkcji znakowania firmowego](../active-directory/fundamentals/customize-branding.md) Dostosowywanie zawartości wiadomości e-mail z weryfikacji. W szczególności można dostosować te dwa elementy wiadomości e-mail:
@@ -74,7 +74,7 @@ Podpis wiadomości e-mail zawiera nazwę dzierżawy usługi Azure AD B2C, podane
 1. Zmiana **nazwa** pola.
 1. Kliknij przycisk **Zapisz** w górnej części strony.
 
-Obecnie nie ma możliwości zmiany "od:" na adres e-mail. Zagłosuj [feedback.azure.com](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails) interesuje Cię Dostosowywanie treść wiadomości e-mail weryfikującej.
+Obecnie nie ma możliwości zmiany "od:" na adres e-mail.
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Jak można przeprowadzić migrację mojej istniejącej nazwy użytkownika, hasła i profile z bazy danych usługi Azure AD B2C?
 Można zapisać narzędzie do migracji, można użyć interfejsu API programu Graph usługi Azure AD. Zobacz [Przewodnik po migracji użytkownika](active-directory-b2c-user-migration.md) Aby uzyskać szczegółowe informacje.
@@ -113,8 +113,7 @@ Obecnie nie. Ta funkcja jest w naszym harmonogramie działania. Weryfikowanie Tw
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Jak usunąć moją dzierżawę usługi Azure AD B2C?
 Wykonaj następujące kroki, aby usunąć dzierżawę usługi Azure AD B2C:
 
-1. Wykonaj następujące kroki, aby [Przechodzenie do ustawień usługi Azure AD B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) w witrynie Azure portal.
-1. Przejdź do **aplikacje**, **dostawców tożsamości**, i **wszystkie zasady** i Usuń wszystkie wpisy w każdym z nich.
+1. Usuń wszystkie zasady w dzierżawie usługi Azure AD B2C.
 1. Teraz Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako Administrator subskrypcji. (Użyj tej samej pracy lub konta służbowego lub tego samego konta Microsoft, którego użyto podczas tworzenia konta na platformie Azure).
 1. Przełącz do dzierżawy usługi Azure AD B2C chcesz usunąć.
 2. Przejdź do menu po lewej stronie usługi Active Directory.

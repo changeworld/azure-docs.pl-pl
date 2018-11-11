@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
 ms.author: rogarana
-ms.openlocfilehash: 970315c5d597d691454f9dea0a76f2c0dc4a40ec
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 58e2275398216f29764d54d1a230959e86eda0b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "29360721"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253265"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Migrowanie obiektów blob między kontami magazynu przy użyciu narzędzia AzCopy w systemie Windows
 
@@ -30,7 +30,7 @@ Ten przykładowy skrypt wymaga modułu programu PowerShell dla usługi Azure Sto
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-Ten przykładowy skrypt wymaga też najnowszej wersji narzędzia [AzCopy w systemie Windows](http://aka.ms/downloadazcopy). Domyślny katalog instalacji to `C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\`
+Ten przykładowy skrypt wymaga też najnowszej wersji narzędzia [AzCopy w systemie Windows](https://aka.ms/downloadazcopy). Domyślny katalog instalacji to `C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\`
 
 Przykładowy skrypt wymaga wprowadzenia nazwy i klucza źródłowego konta magazynu, nazwy i klucza docelowego konta magazynu oraz pełnej ścieżki pliku AzCopy.exe (jeśli to narzędzie nie jest zainstalowane w katalogu domyślnym).
 

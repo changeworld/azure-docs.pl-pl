@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/03/2017
+ms.date: 10/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 45f5dc840f015793912e314ab3d47e54a409708e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 177deb779ca3e3e9575a41ab9a37bb51d5e79df8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126670"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008083"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Ochrona usługi Azure SQL i danych w usłudze Azure Security Center
 Usługa Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek.  Zalecenia odnoszą się do typów zasobów platformy Azure: maszyny wirtualne (VM), networking, SQL i dane i aplikacje.
@@ -49,12 +49,26 @@ Po kliknięciu bazy danych w celu zastosowania tego zalecenia zostanie otwarty b
 
 Aby włączyć funkcję inspekcji, zaznacz pole wyboru **WŁĄCZONE** poniżej opcji **Inspekcja**.
 
-## <a name="available-sql-service-and-data-recommendations"></a>Dostępne usługi i dane zalecenia dotyczące SQL
-| Zalecenie | Opis |
-| --- | --- |
-| [Włączanie inspekcji i wykrywania zagrożeń na serwerach SQL](security-center-enable-auditing-on-sql-servers.md) |Zaleca się włączenie inspekcji i wykrywania zagrożeń dla serwerów SQL platformy Azure (usługi Azure SQL nie obejmuje środowisko SQL uruchomionych na maszynach wirtualnych). |
-| [Włączanie inspekcji i wykrywania zagrożeń w bazach danych SQL](security-center-enable-auditing-on-sql-databases.md) |Zaleca się włączenie inspekcji i wykrywania zagrożeń dla baz danych Azure SQL (usługi Azure SQL nie obejmuje środowisko SQL uruchomionych na maszynach wirtualnych). |
-| [Włączanie funkcji Transparent Data Encryption w bazach danych SQL](security-center-enable-transparent-data-encryption.md) |Zaleca włączenie szyfrowania baz danych SQL (tylko w przypadku usługi Azure SQL). |
+## <a name="data-and-storage-recommendations"></a>Zalecenia dotyczące danych i magazynu
+
+|Typ zasobu|Wskaźnik bezpieczeństwa|Zalecenie|Opis|
+|----|----|----|----|
+|Konto magazynu|20|Wymaganie bezpiecznego transferu na konto magazynu|Bezpieczny transfer to opcja, która wymusza na koncie magazynu w celu umożliwienia akceptowania żądań tylko z bezpiecznego połączenia (HTTPS). Korzystanie z protokołu HTTPS zapewnia uwierzytelnianie między serwerem i usługi oraz chroni przesyłane dane przed atakami warstwy sieci, takich jak ataki typu man-in--middle, ochronę i przejęcie kontroli sesji.|
+|Redis|20|Włącz tylko bezpiecznych połączeń z usługą Redis Cache|Włącz tylko połączenia za pośrednictwem protokołu SSL z usługą Redis Cache. Użyj bezpiecznych połączeń zapewnia uwierzytelnianie między serwerem a usługą oraz chroni przesyłane dane przed atakami warstwy sieci, takich jak ataki typu man-in--middle, ochronę i przejęcie kontroli sesji.|
+|SQL|15|Włączanie funkcji Transparent Data Encryption w bazach danych SQL|Włącz technologię Transparent Data Encryption, aby chronić dane magazynowane i spełniać wymagania dotyczące zgodności.|
+|SQL|15|Włączanie inspekcji dla serwerów SQL|Włączanie inspekcji dla serwerów SQL platformy Azure. (Tylko w przypadku usługi azure SQL. Nie obejmuje SQL uruchomionych na maszynach wirtualnych).|
+|SQL|15|Włączanie inspekcji dla baz danych SQL|Włącz inspekcję dla baz danych Azure SQL. (Tylko w przypadku usługi azure SQL. Nie obejmuje SQL uruchomionych na maszynach wirtualnych).|
+|Usługa Data lake analytics|15|Włącz szyfrowanie danych magazynowanych usługa Data Lake Analytics|Włączanie technologii transparent data encryption chronić dane magazynowane na platformie usługi Data Lake Analytics. Szyfrowanie w spoczynku jest niewidoczna, co oznacza, że usługa Data Lake Analytics automatycznie szyfruje dane przed utrwaleniem i odszyfrowuje przed pobraniem. Nie ma zmian wymagane w aplikacji i usług, które współdziałają z usługą Data Lake Analytics z powodu szyfrowania. Szyfrowanie w spoczynku minimalizuje ryzyko utraty danych z kradzieżą fizyczną i pomaga również spełniają wymagania zgodności z przepisami.|
+|Usługi Data lake store|15|Włącz szyfrowanie danych magazynowanych na potrzeby Data Lake Store|Włączanie technologii transparent data encryption chronić dane magazynowane na platformie usługi Data Lake Store. Szyfrowanie w spoczynku jest niewidoczna, co oznacza, że Data Lake Store automatycznie szyfruje dane przed utrwaleniem i odszyfrowuje przed pobraniem. Nie trzeba wprowadzać zmian w aplikacji i usług, współpracujące z usługą Data Lake Store do obsługi szyfrowania. Szyfrowanie w spoczynku minimalizuje ryzyko utraty danych z kradzieżą fizyczną i pomaga również spełniają wymagania zgodności z przepisami.|
+|Konto magazynu|15|Włącz szyfrowanie dla konta usługi Azure Storage|Włącz szyfrowanie usługi Azure Storage dla danych magazynowanych. Szyfrowanie usługi Storage (SSE) działa przez szyfrowanie danych podczas są zapisywane do magazynu platformy Azure i odszyfrowuje przed pobierania. SSE jest obecnie dostępna tylko w przypadku usługi Azure Blob service i może służyć do blokowych obiektów blob, stronicowe obiekty BLOB i uzupełnialnych obiektów blob.|
+|Usługa Data lake analytics|5|Włącz dzienniki diagnostyki w usłudze Data Lake Analytics|Włączanie dzienników i zachowują je nawet przez rok. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci. |
+|Usługi Data lake store|5|Włącz dzienniki diagnostyki w usłudze Azure Data Lake Store|Włączanie dzienników i zachowują je nawet przez rok. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci. |
+|SQL|30|Korygowanie luk w zabezpieczeniach w bazach danych SQL|Ocena luk w zabezpieczeniach SQL skanuje bazę danych pod kątem luk w zabezpieczeniach i udostępnia wszystkich odchyleń od najlepszych rozwiązań, takich jak nieprawidłowe konfiguracje, nadmierne uprawnienia i niechronione poufnych danych. Rozpoznawanie znaleziono luki w zabezpieczeniach można znacznie zwiększyć swoje stature zabezpieczeń bazy danych.|
+|SQL|20|Aprowizowanie administrator usługi Azure AD dla programu SQL server|Aprowizuj administrator usługi Azure AD dla programu SQL server, aby włączyć uwierzytelnianie usługi Azure AD. Uwierzytelnianie usługi Azure AD umożliwia zarządzanie uprawnieniami uproszczone i scentralizowane identity management użytkowników bazy danych i innych usług firmy Microsoft.|
+|Konto magazynu|15|Wyłącz nieograniczony dostęp do konta magazynu|Przeprowadź inspekcję dostępu do sieci bez ograniczeń w ustawieniach zapory konta magazynu. Zamiast tego należy skonfigurować zasady sieci, dzięki czemu tylko aplikacje z dozwolonych sieci mogą uzyskać dostępu do konta magazynu. Aby zezwolić na połączenia z określonym Internet lub klientów lokalnych, można udzielić dostępu do ruchu z określonych sieciach wirtualnych platformy Azure lub zakresy publicznych adresów IP w Internecie.|
+|Konto magazynu|1||Migrowanie kont magazynu do nowych zasobów AzureRM|Użyj nowej usługi Azure Resource Manager w wersji 2 dla swoich kont magazynu zapewnić wzmocnienia zabezpieczeń, takich jak: silniejsze kontroli dostępu (RBAC), lepiej inspekcji, wdrażania usługi Resource Manager i nadzoru, dostęp do zarządzanych tożsamości i dostępu do magazynu kluczy dla wpisy tajne, uwierzytelnianie na podstawie usługi AD systemu Azure i obsługa tagów i grupy zasobów, aby ułatwić zarządzanie zabezpieczeniami.|
+
+
 
 ## <a name="see-also"></a>Zobacz także
 Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do innych typów zasobów platformy Azure, zobacz następujące tematy:

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 4945bf6064f2614c1779957317d21279d09e05d3
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 2a64b9fc7e2f13c3b9974e95d914a3d3b675d883
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964105"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006809"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Podręcznik informacyjny projektanta widoku kafelków w usłudze Log Analytics
 Przy użyciu projektanta widoku w usłudze Azure Log Analytics, można tworzyć widoki niestandardowe w witrynie Azure portal, które przedstawiają różne wizualizacje danych w obszarze roboczym usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla kafelków, które są dostępne w widoki niestandardowe.
@@ -179,5 +179,5 @@ Ten Kafelek zawiera zarówno wiersz, wykres ten przedstawia wiele serii z dzienn
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) do obsługi zapytań na kafelkach.
+* Dowiedz się więcej o [dziennikach](log-analytics-queries.md) do obsługi zapytań na kafelkach.
 * Dodaj [części wizualizacji](log-analytics-view-designer-parts.md) do widoku niestandardowego.

@@ -14,15 +14,15 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 34c041bf96ecc8ce7f4440d7afaa64de775baef7
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: ee0b9fad15653c9315a8bdaad9a76d8355912863
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576940"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248847"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Wprowadzenie do środowisk App Service Environment #
- 
+ 
 ## <a name="overview"></a>Omówienie ##
 
 Azure App Service Environment to funkcja usługi Azure App Service udostępniająca w pełni izolowane, dedykowane środowisko do bezpiecznego uruchamiania aplikacji usługi App Service w dużej skali. Ta funkcja umożliwia hostowanie:
@@ -73,7 +73,7 @@ Funkcja środowiska ASE polega na wdrożeniu usługi Azure App Service bezpośre
 
 [Sieciowe grupy zabezpieczeń][NSGs] ograniczają komunikację sieciową przychodzącą do podsieci, w której znajduje się środowisko ASE. Za pomocą tych grup można uruchamiać aplikacje za urządzeniami i usługami nadrzędnymi, takimi jak zapora aplikacji internetowych i sieciowi dostawcy SaaS.
 
-Aplikacje często muszą również uzyskiwać dostęp do zasobów firmy, takich jak wewnętrzne bazy danych i usługi internetowe. Jeśli środowisko ASE wdrożono w sieci wirtualnej mającej połączenie VPN z siecią lokalną, aplikacje w tym środowisku mają dostęp do zasobów lokalnych. Jest tak niezależnie od tego, czy połączenie VPN jest typu [lokacja-lokacja](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site), czy [Azure ExpressRoute](http://azure.microsoft.com/services/expressroute/).
+Aplikacje często muszą również uzyskiwać dostęp do zasobów firmy, takich jak wewnętrzne bazy danych i usługi internetowe. Jeśli środowisko ASE wdrożono w sieci wirtualnej mającej połączenie VPN z siecią lokalną, aplikacje w tym środowisku mają dostęp do zasobów lokalnych. Jest tak niezależnie od tego, czy połączenie VPN jest typu [lokacja-lokacja](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site), czy [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
 Aby uzyskać więcej informacji na temat współdziałania środowisk ASE z sieciami wirtualnymi i sieciami lokalnymi, zobacz [App Service Environment network considerations][ASENetwork] (Zagadnienia dotyczące sieci środowiska App Service Environment).
 

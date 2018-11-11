@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services - sygnalizowania upłynął metadanych w transmisji strumieniowej na żywo | Dokumentacja firmy Microsoft
-description: Określenie tej wartości opisano dwa tryby, które są obsługiwane przez usługę Media Services sygnalizowania czasu metadanych w ramach transmisji strumieniowych na żywo. Dotyczy to również obsługi sygnałów ogólnego metadanych czasu, a także SCTE 35 sygnalizowania wstawić łączenia ad.
+title: Usługi Azure Media Services — sygnalizowanie metadanych upłynął limit czasu w transmisji strumieniowej na żywo | Dokumentacja firmy Microsoft
+description: Ta specyfikacja opisano dwa tryby, które są obsługiwane przez usługę Media Services sygnalizowanie metadanych czasu w ramach transmisji strumieniowej na żywo. Obejmuje to obsługę sygnały ogólnego metadanych Przekroczono limit czasu, a także SCTE 35 sygnalizowanie do wstawienia splice — usługi ad.
 services: media-services
 documentationcenter: ''
 author: cenkdin
@@ -14,65 +14,65 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2018
 ms.author: johndeu;
-ms.openlocfilehash: 2e736872dc3e471af7c5b3f758516910a02067fe
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 827153300b9cab4ea805689b1e103bea1b334ec9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790524"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249578"
 ---
-# <a name="signaling-timed-metadata-in-live-streaming"></a>Sygnalizowanie upłynął metadanych w transmisji strumieniowej na żywo
+# <a name="signaling-timed-metadata-in-live-streaming"></a>Sygnalizowanie metadanych czasowych w transmisji strumieniowej na żywo
 
 
 ## <a name="1-introduction"></a>Wprowadzenie 1 
-W celu umożliwienia wstawiania reklam lub zdarzeń niestandardowych na odtwarzacz klienta, często nadawców upewnij stosowania metadanych czasu osadzony w wideo. Aby włączyć takie scenariusze, Media Services zapewnia obsługę transportu czasu metadanych wraz z nośnika, od momentu pozyskiwania kanału transmisji strumieniowej na żywo do aplikacji klienckiej.
-Tej specyfikacji zawiera dwa tryby, obsługiwanych przez usługę Media Services przekroczono metadanych w live sygnały przesyłania strumieniowego:
+W celu ułatwienia wstawiania reklam lub zdarzenia niestandardowe na odtwarzaczu klienta, zastosowań studyjnych często upewnij użycie metadanych czasu osadzony w wideo. Aby włączyć te scenariusze, Media Services zapewnia obsługę dla transportu czasu metadanych wraz z nośnika, oraz z punktem pozyskiwania kanału przesyłania strumieniowego na żywo do aplikacji klienckiej.
+To specyfikacja przedstawiono dwa tryby, obsługiwanych przez usługi multimediów dla czasu metadane w na żywo transmisji strumieniowej sygnały:
 
-1. [SCTE 35] sygnalizowania, który heeds zalecane praktyki otoczony [SCTE 67]
+1. Sygnalizowanie [SCTE 35], która heeds zalecane praktyki opisane przez [SCTE 67]
 
-2. Element ogólny upłynął sygnalizowania trybu wiadomości, które nie są metadanych [SCTE 35]
+2. Element ogólny upłynął limit czasu sygnalizowanie trybu wiadomości, które nie są metadane [SCTE 35]
 
 ### <a name="12-conformance-notation"></a>1.2 Notacja zgodność
-Słowa kluczowe "musisz", "Nie", "Wymagane", "SHALL", "Nie jest", "SHOULD", "Nie powinien", "Zalecane", "Może" i "OPTIONAL", w tym dokumencie są należy interpretować zgodnie z opisem w dokumencie RFC 2119
+Słowa kluczowe "musisz", "Nie", "Wymagane", "SHALL", "Nie jest", "SHOULD", "Nie powinien", "Zalecane", "Może być" i "OPCJONALNY" w tym dokumencie mają być interpretowane zgodnie z opisem w dokumencie RFC 2119
 
-### <a name="13-terms-used"></a>1.3 terminów używanych
+### <a name="13-terms-used"></a>1.3 terminy używane
 
 | Termin              | Definicja                                                                                                                                                                                                                       |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Czas prezentacji | Czas, jaki zdarzenia jest prezentowana w przeglądarce. Czas reprezentuje moment na osi czasu nośnika, że przeglądarka zobaczyć zdarzenia. Na przykład czas prezentacji wiadomości polecenia splice_info() SCTE 35 jest splice_time(). |
-| Godzina nadejścia      | Czas przychodzący komunikat o zdarzeniu. Czas zwykle różni się od czasu prezentacji zdarzenia, ponieważ wcześniejsze prezentacji zdarzenia są wysyłane wiadomości zdarzenie.                                     |
-| Śledź rozrzedzony      | nośnik śledzenia, które nie jest ciągły i jest czas został zsynchronizowany ze ścieżką nadrzędną lub formantu.                                                                                                                                    |
-| Origin            | Usługi przesyłania strumieniowego multimediów Azure                                                                                                                                                                                                |
-| Zbiornik kanału      | Usługa transmisji strumieniowej na żywo multimediów Azure                                                                                                                                                                                           |
-| HLS               | Protokół Apple HTTP transmisji strumieniowej na żywo                                                                                                                                                                                               |
-| DASH              | Dynamiczne adaptacyjne przesyłanie strumieniowe za pośrednictwem protokołu HTTP                                                                                                                                                                                             |
-| Smooth            | Smooth protokołu przesyłania strumieniowego                                                                                                                                                                                                        |
-| MPEG2 TS          | Strumienie 2 transportu MPEG                                                                                                                                                                                                         |
-| RTMP              | Protokół multimediów w czasie rzeczywistym                                                                                                                                                                                                    |
-| uimsbf            | Liczba całkowita bez znaku, najbardziej znaczących bitów najpierw.                                                                                                                                                                                    |
+| Czas prezentacji | Czas zdarzenia jest prezentowana w przeglądarce. Godziny reprezentuje moment na osi czasu nośników, że przeglądarka będą w nim wyświetlane zdarzenia. Na przykład podczas prezentacji wiadomości polecenia splice_info() SCTE 35 jest splice_time(). |
+| Godzina nadejścia      | Czas, która pojawi się komunikat o zdarzeniu. Czas zwykle różni się od czasu prezentacja wydarzenia, ponieważ komunikaty o zdarzeniach są wysyłane z wyprzedzeniem prezentacji zdarzenia.                                     |
+| Śledź rozrzedzone      | nośnik śledzenia, które nie jest ciągły i jest czas jest zsynchronizowany ze ścieżką nadrzędną lub formantu.                                                                                                                                    |
+| Origin            | Usługa przesyłania strumieniowego multimediów platformy Azure                                                                                                                                                                                                |
+| Obiekt Sink kanału      | Usługa Azure Media usługi transmisji strumieniowej na żywo                                                                                                                                                                                           |
+| HLS               | Protokół Apple HTTP Live Streaming.                                                                                                                                                                                               |
+| DASH              | Dynamiczne adaptacyjnego przesyłania strumieniowego za pośrednictwem protokołu HTTP                                                                                                                                                                                             |
+| Płynne            | Bezproblemowe protokołu przesyłania strumieniowego                                                                                                                                                                                                        |
+| MPEG2-TS          | Strumienie 2 transportu MPEG                                                                                                                                                                                                         |
+| RTMP              | Protokół multimedialnych w czasie rzeczywistym                                                                                                                                                                                                    |
+| uimsbf            | Liczba całkowita bez znaku, najbardziej znaczący bit najpierw.                                                                                                                                                                                    |
 
 -----------------------
 
-## <a name="2-timed-metadata-ingest"></a>Pozyskiwania 2 czasu metadanych
+## <a name="2-timed-metadata-ingest"></a>2 metadanych Przekroczono limit czasu odbierania
 ## <a name="21-rtmp-ingest"></a>2.1 pozyskiwania RTMP
-RTMP obsługuje wysyłane jako wiadomości sygnalizacji AMF osadzone w strumieniu RTMP sygnały czasu metadanych. W komunikatach sygnalizacji mogą być wysyłane pewien czas, zanim rzeczywistego zdarzenia lub wstawiania łączenia ad musi nastąpić. Aby obsługiwać ten scenariusz, rzeczywisty czas łączenia lub segmentu są wysyłane wiadomości utrwalenie. Aby uzyskać więcej informacji zobacz [AMF0].
+RTMP obsługuje sygnały czasu metadanych wysyłane jako komunikaty sygnalizacji AMF osadzane strumienia RTMP. Mogą być wysyłane wiadomości wskaźnika chwilę, zanim rzeczywistego zdarzenia lub splice wstawianiem musi nastąpić. Aby zapewnić obsługę tego scenariusza, rzeczywisty czas splice lub segmentów są wysyłane wiadomości ma. Aby uzyskać więcej informacji zobacz [AMF0].
 
-W poniższej tabeli opisano format AMF ładunek komunikatu, który będzie pozyskiwania Media Services.
+W poniższej tabeli opisano format ładunku komunikatu AMF, która będzie obsługiwać usługi Media Services.
 
-Nazwa komunikatu AMF może służyć do odróżnienia wielu strumieni zdarzeń z tego samego typu.  Komunikaty [SCTE 35] Nazwa komunikatu AMF musi być "onAdCue", zgodnie z zaleceniami [SCTE 67].  Wszystkie pola, które nie są wymienione poniżej muszą być ignorowane, dzięki czemu innowacji ten projekt nie jest zabronione w przyszłości.
+Nazwa komunikatu AMF może służyć do odróżniania wiele strumieni zdarzeń z tego samego typu.  Komunikaty [SCTE 35] Nazwa komunikatu AMF musi być "onAdCue", zgodnie z zaleceniami w [SCTE 67].  Wszystkie pola, które nie są wymienione poniżej powinny być ignorowane, tak aby innowacji ten projekt nie jest zabronione w przyszłości.
 
 ### <a name="signal-syntax"></a>Składnia sygnału
-Tryb prosty RTMP Media Services obsługuje pojedynczą wiadomość sygnalizacji AMF o nazwie "onAdCue" o następującym formacie:
+Tryb prosty RTMP Media Services obsługuje pojedynczą wiadomość sygnalizacji AMF o nazwie "onAdCue" w następującym formacie:
 
 ### <a name="simple-mode"></a>Tryb prosty
 
 | Nazwa pola | Typ pola | Wymagana? | Opisy                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| wskaźnik        | Ciąg     | Wymagane | Komunikaty o zdarzeniach.  Powinien być "SpliceOut", aby określić tryb prosty splice.                                              |
-| id         | Ciąg     | Wymagane | Unikatowy identyfikator opisujący łączenia lub segmentu. Identyfikuje wystąpienie tego komunikatu                            |
-| Czas trwania   | Liczba     | Wymagane | Czas trwania łączenia. Jednostki są ułamkowych części sekundy.                                                                |
-| elapsed    | Liczba     | Optional (Opcjonalność) | Gdy sygnał jest zajdą w celu zapewnienia obsługi dostrajania, to pole jest czas prezentacji, który upłynął od chwili rozpoczęcia łączenia. Jednostki są ułamkowych części sekundy. Podczas korzystania z trybu simple, ta wartość nie może przekraczać oryginalnego czas trwania łączenia.                                                  |
-| time       | Liczba     | Wymagane | Się podczas łączenia, w czasie prezentacji. Jednostki są ułamkowych części sekundy.                                     |
+| Podpowiedź        | Ciąg     | Wymagane | Komunikat zdarzenia.  Musi być "SpliceOut", aby wyznaczyć tryb prosty splice.                                              |
+| id         | Ciąg     | Wymagane | Unikatowy identyfikator, który opisujący splice lub segmentu. Określa wystąpienie tego komunikatu                            |
+| czas trwania   | Liczba     | Wymagane | Czas trwania splice. Jednostki są ułamków sekund.                                                                |
+| elapsed    | Liczba     | Optional (Opcjonalność) | Gdy sygnał jest jest powtarzany w celu zapewnienia obsługi Obejrzyj, w tym polu są prezentacji czas, jaki upłynął od chwili rozpoczęcia splice. Jednostki są ułamków sekund. Podczas korzystania z trybu simple ta wartość nie powinna przekraczać splice oryginalnego czasu trwania.                                                  |
+| time       | Liczba     | Wymagane | Jest czas splice, w czasie prezentacji. Jednostki są ułamków sekund.                                     |
 
 ---------------------------
 
@@ -80,67 +80,67 @@ Tryb prosty RTMP Media Services obsługuje pojedynczą wiadomość sygnalizacji 
 
 | Nazwa pola | Typ pola | Wymagana? | Opisy                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| wskaźnik        | Ciąg     | Wymagane | Komunikaty o zdarzeniach.  Komunikaty [SCTE 35], musi to być base64 pliku binarnego (grupa robocza IETF RFC 4648) zakodowany splice_info_section() w poszukiwaniu komunikatów do wysłania do HLS i Smooth, Dash klientów z zasadami [SCTE 67].                                              |
-| type       | Ciąg     | Wymagane | URN lub adres URL identyfikujący system komunikatów; na przykład "urn: przykład: sygnalizowania: 1.0".  Komunikaty [SCTE 35] musi to być "urn: scte:scte35:2013a:bin", aby wiadomości można wysyłać do klientów HLS i Smooth, Dash z aktualizacjami [SCTE 67].  |
-| id         | Ciąg     | Wymagane | Unikatowy identyfikator opisujący łączenia lub segmentu. Identyfikuje wystąpienie tej wiadomości.  Komunikaty z semantyki równoważne mają taką samą wartość.|
-| Czas trwania   | Liczba     | Wymagane | Czas trwania zdarzenia lub ad łączenia segmentu, jeśli znane. Jeśli jest nieznany, wartość musi mieć wartość 0.                                                                 |
-| elapsed    | Liczba     | Optional (Opcjonalność) | Gdy w celu dostrojenia powtarza się sygnał ad [SCTE 35] i to pole będzie prezentacji czas, który upłynął od chwili rozpoczęcia łączenia. Jednostki są ułamkowych części sekundy. W trybie [SCTE 35] Ta wartość może przekroczyć oryginalnego podany czas trwania łączenia lub segmentu.                                                  |
-| time       | Liczba     | Wymagane | Godzina prezentacji łączenia zdarzeń lub ad.  Prezentacja czas i czas trwania powinno odpowiadać z punktów dostępu strumienia (SAP) typu 1 lub 2, zgodnie z definicją w [ISO-14496-12] załącznika. Za wyjście HLS czas i czas trwania powinno odpowiadać granice segmentu. Czas prezentacji i czas trwania zdarzeń komunikatów w tym samym strumienia zdarzeń muszą nie mogą się pokrywać. Jednostki są ułamkowych części sekundy.
+| Podpowiedź        | Ciąg     | Wymagane | Komunikat zdarzenia.  Komunikaty [SCTE 35], musi to być base64 pliku binarnego (4648 RFC organizacji IETF) zakodowane splice_info_section() w kolejności wiadomości można wysyłać do klientów HLS i Smooth, Dash zgodne z [SCTE 67].                                              |
+| type       | Ciąg     | Wymagane | Nazwa URN lub adres URL identyfikujący system wiadomości; na przykład "urn: przykład: Sygnalizowanie: 1.0".  Komunikaty [SCTE 35] musi to być "urn: scte:scte35:2013a:bin", aby komunikaty wysyłane do klientów HLS i Smooth, Dash zgodne z [SCTE 67].  |
+| id         | Ciąg     | Wymagane | Unikatowy identyfikator, który opisujący splice lub segmentu. Określa wystąpienie tej wiadomości.  Komunikaty z semantyką równoważne mają taką samą wartość.|
+| czas trwania   | Liczba     | Wymagane | Czas trwania zdarzenia lub ad splice — segmentu, jeśli jest znany. Jeśli jest nieznana, wartość powinna być 0.                                                                 |
+| elapsed    | Liczba     | Optional (Opcjonalność) | Gdy w celu Obejrzyj powtarza się sygnale reklamowym [SCTE 35] i to pole będzie prezentacji czas, jaki upłynął od chwili rozpoczęcia splice. Jednostki są ułamków sekund. W trybie [SCTE 35] Ta wartość może przekroczyć oryginalnego określonego czasu trwania splice lub segmentu.                                                  |
+| time       | Liczba     | Wymagane | Splice — czas prezentacji zdarzenia lub ad.  Czas prezentacji i czas trwania należy wyrównać za pomocą punktów dostępu Stream (SAP) typu 1 lub 2, zgodnie z definicją w [ISO-14496-12] załącznika. Dla ruchu wychodzącego HLS czas i czas trwania powinno odpowiadać granice segmentu. Prezentacja czas i czas trwania komunikaty o różnych zdarzeniach w tej samej strumienia zdarzeń nie może nakładać. Jednostki są ułamków sekund.
 
 ---------------------------
 
 #### <a name="211-cancelation-and-updates"></a>2.1.1 anulowanie i aktualizacje
 
-Komunikaty można anulować lub zaktualizować wysyłając wiele komunikatów z tym samym czasie prezentacji i identyfikator. Czas prezentacji i identyfikator jednoznacznego zidentyfikowania zdarzenia i ostatniego komunikatu Odebrano raz określonych prezentacji spełniającego ograniczenia wstępne zbiorczego jest komunikat, który jest reagować. Zaktualizowano zdarzenie zastępuje wszystkie wcześniej odebranej wiadomości. Ograniczenie wstępne zbiorczego jest cztery sekundy. Co najmniej cztery sekund przed czasem prezentacji odebrane wiadomości będzie reagować.
+Wiadomości mogą być anulowane lub zaktualizowane przez wielu operacji wysyłania wiadomości z tym samym czasie prezentacji i identyfikatora. Czas prezentacji i identyfikator jednoznacznego zidentyfikowania zdarzenia, a ostatni komunikat odebrany przez czas określonych prezentacji, który spełnia ograniczenia wstępne wdrożenie jest komunikat, który jest podjęte. Zaktualizowane zdarzenie zastępuje wszelkie wcześniej Odebrane komunikaty. Ograniczenie wstępne wdrożenie jest czterech sekund. Co najmniej czterech sekund przed chwilą prezentacji Odebrane komunikaty zostaną podjęte.
 
-## <a name="22-fragmented-mp4-ingest-smooth-streaming"></a>2.2 pozyskiwania pofragmentowane MP4 (Smooth Streaming)
-Można znaleźć [LIVE FMP4] dla pozyskiwania wymagania dotyczące strumień na żywo. Poniższe sekcje zawierają szczegółowe informacje dotyczące pozyskiwania metadanych czasu prezentacji.  Przekroczono prezentacji metadanych jest pozyskanych jako ścieżkę rozrzedzonych jest zdefiniowany w obu Live manifestu okno serwera (zobacz MS SSTR), a pole Movie (moov).  Każdy fragment rozrzedzonych składa się z filmu fragmentu pola (moof) oraz nośnika danych ("mdat"), pole "mdat" w przypadku komunikatu binarnego.
+## <a name="22-fragmented-mp4-ingest-smooth-streaming"></a>2.2 odbierania podzielonej zawartości w formacie MP4 (Smooth Streaming)
+Można znaleźć [LIVE FMP4] pozyskiwania wymagania dotyczące transmisji strumieniowej na żywo. Poniższe sekcje zawierają szczegółowe informacje dotyczące pozyskiwania metadanych prezentacji Przekroczono limit czasu.  Przekroczono limit czasu prezentacji metadanych są pozyskiwane jako rozrzedzony śledzenie, która jest zdefiniowana w obu na żywo manifestu polu Serwer (patrz MS SSTR) i pole Movie (moov).  Poszczególne fragmenty rozrzedzone składa się filmu fragmentu pola (moof) oraz nośnika danych ("mdat"), których pole "mdat" jest komunikatu binarnego.
 
 #### <a name="221-live-server-manifest-box"></a>2.2.1 okno manifestu serwera na żywo
-Śledź rozrzedzonych musi zostać zadeklarowany w polu Live manifestu serwera z \<textstream\> wpis, a musi mieć ustawiony atrybut następujące:
+Rozrzedzony śledzenie musi być zadeklarowana w polu manifestu serwera na żywo z \<textstream\> wejścia i musi mieć następujące atrybuty zestawu:
 
 | **Nazwa atrybutu** | **Typ pola** | **Wymagane?** | **Opis**                                                                                                                                                                                                                                                 |
 |--------------------|----------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| systemBitrate      | Liczba         | Wymagane      | MUSI mieć wartość "0", wskazujący ścieżkę z nieznanego, zmienne szybkości transmisji bitów.                                                                                                                                                                                                 |
-| parentTrackName    | Ciąg         | Wymagane      | MUSI być nazwą ścieżki nadrzędnej, Śledź rozrzedzonych kody czasu są wyrównane skali czasu. Śledź nadrzędnego nie może być ścieżką rozrzedzonych.                                                                                                                    |
-| manifestOutput     | Wartość logiczna        | Wymagane      | MUSI być "prawda", aby wskazać, że rozrzedzonych Śledź zostanie osadzony w manifeście Smooth klienta.                                                                                                                                                               |
-| Podtyp            | Ciąg         | Wymagane      | MUSI być znakiem cztery kodu "Dane".                                                                                                                                                                                                                         |
-| Schemat             | Ciąg         | Wymagane      | MUSI być URN lub adresem URL identyfikujący system komunikatów; na przykład "urn: przykład: sygnalizowania: 1.0". Komunikaty [SCTE 35] musi to być "urn: scte:scte35:2013a:bin", aby wiadomości można wysyłać do klientów HLS i Smooth, Dash z aktualizacjami [SCTE 67]. |
-| TrackName          | Ciąg         | Wymagane      | MUSI być nazwą ścieżki rozrzedzone. TrackName może służyć do odróżnienia wielu strumieni zdarzeń z tego samego schematu. Każdego strumienia zdarzeń unikatowy musi mieć nazwę unikatową ścieżkę.                                                                           |
-| skali czasu          | Liczba         | Optional (Opcjonalność)      | MUSI być skali czasu ścieżki nadrzędnej.                                                                                                                                                                                                                      |
+| systemBitrate      | Liczba         | Wymagane      | MUSI być "0", wskazującą śledzenie przy użyciu nieznanego, zmiennej szybkości transmisji bitów.                                                                                                                                                                                                 |
+| parentTrackName    | Ciąg         | Wymagane      | MUSI być nazwą ścieżki nadrzędnej, kody czasowe rozrzedzone śledzenia są wyrównane do skali czasu. Śledź nadrzędny nie może być rozrzedzone śledzenia.                                                                                                                    |
+| manifestOutput     | Wartość logiczna        | Wymagane      | MUSI być "prawda", aby wskazać, czy śledzenie rozrzedzone zostanie osadzony w manifest Smooth klienta.                                                                                                                                                               |
+| Podtyp            | Ciąg         | Wymagane      | MUSI być czterech znaków kodu "Dane".                                                                                                                                                                                                                         |
+| Schemat             | Ciąg         | Wymagane      | MUSI być adres URL lub URN identyfikuje system wiadomości; na przykład "urn: przykład: Sygnalizowanie: 1.0". Komunikaty [SCTE 35] musi to być "urn: scte:scte35:2013a:bin", aby komunikaty wysyłane do klientów HLS i Smooth, Dash zgodne z [SCTE 67]. |
+| TrackName          | Ciąg         | Wymagane      | MUSI być nazwą ścieżki rozrzedzone. TrackName może służyć do odróżniania wiele strumieni zdarzeń z tego samego schematu. Każdego strumienia zdarzeń unikatowy musi mieć nazwę unikatową ścieżkę.                                                                           |
+| Skala czasu          | Liczba         | Optional (Opcjonalność)      | MUSI być skali czasu ścieżki nadrzędnej.                                                                                                                                                                                                                      |
 
 -------------------------------------
 
-### <a name="222-movie-box"></a>2.2.2 pole film
+### <a name="222-movie-box"></a>2.2.2 pole filmu
 
-Pole Movie (moov) jest zgodna Live manifestu okno serwera jako części nagłówka strumienia dla ścieżki rozrzedzone.
+Pole Movie (moov) jest zgodna na żywo manifestu polu serwer jako części nagłówka strumienia dla ścieżki rozrzedzone.
 
 Pole "moov" powinien zawierać **TrackHeaderBox (tkhd)** polu zgodnie z definicją w [ISO-14496-12], z następującymi ograniczeniami:
 
 | **Nazwa pola** | **Typ pola**          | **Wymagane?** | **Opis**                                                                                                |
 |----------------|-------------------------|---------------|----------------------------------------------------------------------------------------------------------------|
-| Czas trwania       | 64-bitowej liczby całkowitej bez znaku | Wymagane      | MUSI mieć wartość 0, ponieważ pole ścieżki ma zerowy przykłady i całkowity czas trwania próbek w polu ścieżki wynosi 0. |
+| czas trwania       | 64-bitowej nieoznaczonej liczby całkowitej | Wymagane      | POWINIEN mieć wartość 0, ponieważ pole śledzenia ma zero próbki, a całkowity czas trwania próbek w polu ścieżki wynosi 0. |
 -------------------------------------
 
 Pole "moov" powinien zawierać **HandlerBox (hdlr)** zgodnie z definicją w [ISO-14496-12], z następującymi ograniczeniami:
 
 | **Nazwa pola** | **Typ pola**          | **Wymagane?** | **Opis**   |
 |----------------|-------------------------|---------------|-------------------|
-| handler_type   | 32-bitowa liczba całkowita bez znaku | Wymagane      | POWINIEN być 'meta'. |
+| handler_type   | 32-bitowej nieoznaczonej liczby całkowitej | Wymagane      | POWINNO być 'meta'. |
 -------------------------------------
 
 Pole "stsd" powinien zawierać MetaDataSampleEntry pole o nazwie kodowania, zgodnie z definicją w [ISO-14496-12].  Na przykład wiadomości SCTE 35 kodowania nazwa powinna być "scte".
 
-### <a name="223-movie-fragment-box-and-media-data-box"></a>2.2.3 pola fragmentu filmu oraz nośnika danych
+### <a name="223-movie-fragment-box-and-media-data-box"></a>2.2.3 pola Fragment filmu oraz danych multimediów
 
-Śledź rozrzedzonych fragmenty składają się z polem fragmentu Movie (moof) i pola danych nośnika (mdat).
+Śledzenie rozrzedzone fragmenty składają się z polem Fragment filmu (moof) i pola danych nośnika (mdat).
 
-Pole MovieFragmentBox (moof) musi zawierać **TrackFragmentExtendedHeaderBox (uuid)** polu zgodnie z definicją w [MS-SSTR] z następującymi polami:
+Pole MovieFragmentBox (moof) musi zawierać **TrackFragmentExtendedHeaderBox (uuid)** polu zgodnie z definicją w [MS-SSTR] przy użyciu następujących pól:
 
 | **Nazwa pola**         | **Typ pola**          | **Wymagane?** | **Opis**                                                                               |
 |------------------------|-------------------------|---------------|-----------------------------------------------------------------------------------------------|
-| fragment_absolute_time | 64-bitowej liczby całkowitej bez znaku | Wymagane      | MUSI być Godzina nadejścia zdarzenia. Ta wartość jest wyrównywany komunikat ze ścieżką nadrzędną.   |
-| fragment_duration      | 64-bitowej liczby całkowitej bez znaku | Wymagane      | MUSI być czas trwania zdarzenia. Czas trwania może być równa zero, aby wskazać, że czas trwania jest nieznany. |
+| fragment_absolute_time | 64-bitowej nieoznaczonej liczby całkowitej | Wymagane      | MUSI być Godzina nadejścia zdarzenia. Ta wartość jest wyrównywany wiadomości ze ścieżką nadrzędną.   |
+| fragment_duration      | 64-bitowej nieoznaczonej liczby całkowitej | Wymagane      | MUSI być czas trwania zdarzenia. Czas trwania może być równa zero, aby wskazać, że czas trwania jest nieznany. |
 
 ------------------------------------
 
@@ -149,36 +149,36 @@ Pole MediaDataBox (mdat) musi mieć następujący format:
 
 | **Nazwa pola**          | **Typ pola**                   | **Wymagane?** | **Opis**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |-------------------------|----------------------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| wersja                 | 32-bitową liczbę całkowitą bez znaku (uimsbf) | Wymagane      | Określa format zawartości pola "mdat". Nierozpoznany wersji zostaną zignorowane. Obecnie tylko obsługiwana wersja to 1.                                                                                                                                                                                                                                                                                                                                                      |
-| id                      | 32-bitową liczbę całkowitą bez znaku (uimsbf) | Wymagane      | Identyfikuje wystąpienie tej wiadomości. Komunikaty z semantyki równoważne mają taką samą wartość; Przetwarzanie dowolnego pola wiadomości jedno zdarzenie o tym samym identyfikatorze jest wystarczająca.                                                                                                                                                                                                                                                                                                            |
-| presentation_time_delta | 32-bitową liczbę całkowitą bez znaku (uimsbf) | Wymagane      | Suma fragment_absolute_time, określona w TrackFragmentExtendedHeaderBox i presentation_time_delta musi być czasu prezentacji zdarzenia. Prezentacja czas i czas trwania powinno odpowiadać z punktów dostępu strumienia (SAP) typu 1 lub 2, zgodnie z definicją w [ISO-14496-12] załącznika. Za wyjście HLS czas i czas trwania powinno odpowiadać granice segmentu. Czas prezentacji i czas trwania zdarzeń komunikatów w tym samym strumienia zdarzeń muszą nie mogą się pokrywać. |
-| message                 | Tablica bajtów                       | Wymagane      | Komunikaty o zdarzeniach. Komunikatów [SCTE 35] wiadomość jest splice_info_section() binarnego, mimo że [SCTE 67] zaleca coś innego. Komunikaty [SCTE 35] musi to być splice_info_section() w poszukiwaniu komunikatów do wysłania do HLS i Smooth, Dash klientów z zasadami [SCTE 67]. Komunikatów [SCTE 35] splice_info_section() binarny jest ładunku pole "mdat", a nie jest kodowany w standardzie base64.                                                            |
+| version                 | 32-bitowa liczba całkowita bez znaku (uimsbf) | Wymagane      | Określa format zawartości pola "mdat". Nierozpoznany wersje będą ignorowane. Obecnie tylko obsługiwana wersja to 1.                                                                                                                                                                                                                                                                                                                                                      |
+| id                      | 32-bitowa liczba całkowita bez znaku (uimsbf) | Wymagane      | Określa wystąpienie tej wiadomości. Komunikaty z semantyką równoważne mają taką samą wartość; Przetwarzanie dowolnego pola komunikatu jedno zdarzenie o tym samym identyfikatorze jest wystarczająca.                                                                                                                                                                                                                                                                                                            |
+| presentation_time_delta | 32-bitowa liczba całkowita bez znaku (uimsbf) | Wymagane      | Suma fragment_absolute_time, określone w TrackFragmentExtendedHeaderBox i presentation_time_delta musi być czas prezentacji zdarzenia. Czas prezentacji i czas trwania należy wyrównać za pomocą punktów dostępu Stream (SAP) typu 1 lub 2, zgodnie z definicją w [ISO-14496-12] załącznika. Dla ruchu wychodzącego HLS czas i czas trwania powinno odpowiadać granice segmentu. Prezentacja czas i czas trwania komunikaty o różnych zdarzeniach w tej samej strumienia zdarzeń nie może nakładać. |
+| message                 | tablica bajtów                       | Wymagane      | Komunikat zdarzenia. Komunikatów [SCTE 35] komunikat jest splice_info_section() binarne, chociaż [SCTE 67] zaleca się coś innego. Komunikaty [SCTE 35] musi to być splice_info_section() w kolejności wiadomości można wysyłać do klientów HLS i Smooth, Dash zgodne z [SCTE 67]. Komunikaty [SCTE 35] binarne splice_info_section() to ładunek pole "mdat", a nie jest zakodowany w formacie base64.                                                            |
 
 ------------------------------
 
 
 ### <a name="224-cancelation-and-updates"></a>2.2.4 Anulowanie i aktualizacje
-Komunikaty można anulować lub zaktualizować wysyłając wiele komunikatów z tym samym czasie prezentacji i identyfikator.  Czas prezentacji i identyfikator jednoznacznego zidentyfikowania zdarzenia. Ostatni komunikat raz określonych prezentacji, spełniającego ograniczenia wstępne zbiorczego jest komunikat, który jest reagować. Zaktualizowano komunikat zastępuje wszystkie wcześniej odebranej wiadomości.  Ograniczenie wstępne zbiorczego jest cztery sekundy. Co najmniej cztery sekund przed czasem prezentacji odebrane wiadomości będzie reagować. 
+Wiadomości mogą być anulowane lub zaktualizowane przez wielu operacji wysyłania wiadomości z tym samym czasie prezentacji i identyfikatora.  Czas prezentacji i identyfikator jednoznacznego zidentyfikowania zdarzenia. Ostatni komunikat odebrany czas określonych prezentacji spełniającego ograniczenia wstępne wdrożenie jest komunikat, który jest podjęte. Zaktualizowano komunikat zastępuje wszelkie wcześniej Odebrane komunikaty.  Ograniczenie wstępne wdrożenie jest czterech sekund. Co najmniej czterech sekund przed chwilą prezentacji Odebrane komunikaty zostaną podjęte. 
 
 
-## <a name="3-timed-metadata-delivery"></a>3 upłynął dostarczania metadanych
+## <a name="3-timed-metadata-delivery"></a>3 upłynął limit czasu dostarczania metadanych
 
-Dane strumienia zdarzeń jest nieprzezroczysta dla usługi Media Services. Usługa Media Services jedynie przekazuje trzy informacje między punktem końcowym pozyskiwanie i punktu końcowego klienta. Następujące właściwości są dostarczane do klienta, zgodnie z [SCTE 67] i/lub klienta do przesyłania strumieniowego protokołu:
+Dane strumienia zdarzeń jest nieprzezroczysta dla usługi Media Services. Usługi Media Services przekazuje zaledwie trzech rodzajów informacji między punktu końcowego pozyskiwania i punkt końcowy klienta. Następujące właściwości są dostarczane do klienta, zgodnie z [SCTE 67] i/lub klienta przez protokół przesyłania strumieniowego:
 
 1.  Schemat — URN lub adres URL identyfikujący schemat wiadomości.
 
-2.  Czas prezentacji — czas prezentacji zdarzenia na osi czasu nośnika.
+2.  Czas prezentacji — godzina prezentacji zdarzenia na osi czasu nośników.
 
 3.  Czas trwania — czas trwania zdarzenia.
 
-4.  Identyfikator — opcjonalny unikalny identyfikator zdarzenia.
+4.  Identyfikator — opcjonalnie Unikatowy identyfikator zdarzenia.
 
 5.  Komunikat — dane zdarzenia.
 
 
-## <a name="31-smooth-streaming-delivery"></a>3.1 płynnego przesyłania strumieniowego dostarczania
+## <a name="31-smooth-streaming-delivery"></a>3.1 smooth dostarczania transmisji strumieniowej
 
-Odwoływać się do ścieżki rozrzedzonych Obsługa szczegóły w [MS-SSTR].
+Zapoznaj się z rozrzedzone śledzenie obsłudze szczegółów, w [MS-SSTR].
 
 #### <a name="smooth-client-manifest-example"></a>Przykład manifestu Smooth klienta
 ~~~ xml
@@ -220,22 +220,22 @@ Odwoływać się do ścieżki rozrzedzonych Obsługa szczegóły w [MS-SSTR].
 </SmoothStreamingMedia> 
 ~~~ 
 
-## <a name="32--apple-hls-delivery"></a>3.2 Apple HLS dostarczania
-Przekroczono metadanych dla Apple HTTP Live Streaming (HLS) może być osadzony w odtwarzania segmentu w niestandardowych tagu M3U.  Warstwy aplikacji można przeanalizować odtwarzania M3U i przetworzyć M3U tagów. Usługa Azure Media Services będą Osadź metadane czasu w tagu EXT-X-sygnalizacji zdefiniowane w [HLS].  Tag EXT-X-wskaźnika jest obecnie używana przez DynaMux komunikatów typu ADI3.  Aby umożliwić obsługę wiadomości SCTE 35 SCTE 35 i nie, należy ustawić atrybuty znacznika EXT-X-sygnalizacji zdefiniowane poniżej:
+## <a name="32--apple-hls-delivery"></a>3.2, Apple HLS dostarczania
+Przekroczono limit czasu metadanych dla firmy Apple HTTP Live Streaming (HLS) może być osadzony w listy odtwarzania segmentów w niestandardowy tag M3U.  Warstwa aplikacji można przeanalizować lista odtwarzania M3U i przetworzyć M3U tagów. Usługa Azure Media Services nastąpi osadzenie czasu metadanych w tagu EXT-X-sygnalizacji zdefiniowane w [HLS].  Tag EXT-X-wskaźnika jest obecnie używany przez DynaMux dla komunikatów typu ADI3.  Do obsługi komunikatów SCTE 35 SCTE 35 i innych, należy ustawić atrybuty znacznika EXT-X-sygnalizacji zgodnie z definicją poniżej:
 
 | **Nazwa atrybutu** | **Typ**                      | **Wymagane?**                             | **Opis**                                                                                                                                                                                                                                                                      |
 |--------------------|-------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| WSKAŹNIK                | ciąg w cudzysłowie                 | Wymagane                                  | Komunikat został zakodowany jako ciąg base64 zgodnie z opisem w [IETF RFC 4648](http://tools.ietf.org/html/rfc4648). Komunikaty [SCTE 35] to splice_info_section() kodowany w standardzie base64.                                                                                                |
-| TYP               | ciąg w cudzysłowie                 | Wymagane                                  | URN lub adres URL identyfikujący system komunikatów; na przykład "urn: przykład: sygnalizowania: 1.0". Komunikaty [SCTE 35] Typ ma specjalna wartość "scte35".                                                                                                                                |
-| ID                 | ciąg w cudzysłowie                 | Wymagane                                  | Unikatowy identyfikator zdarzenia. Jeśli nie określono Identyfikatora, gdy komunikat jest pozyskanych, usługi Azure Media Services wygeneruje Unikatowy identyfikator.                                                                                                                                          |
-| CZAS TRWANIA           | dziesiętny liczb zmiennoprzecinkowych | Wymagane                                  | Czas trwania zdarzenia. Jeśli jest nieznany, wartość musi mieć wartość 0. Jednostki są factional sekund.                                                                                                                                                                                           |
-| ELAPSED            | dziesiętny liczb zmiennoprzecinkowych | Opcjonalne, lecz wymagane dla przesuwanego okna | Jeśli do obsługi metodzie przesuwanego okna prezentacji powtarza się sygnał i to pole musi zawierać czas prezentacji, który upłynął od chwili rozpoczęcia zdarzenia. Jednostki są ułamkowych części sekundy. Ta wartość może przekroczyć oryginalnego podany czas trwania łączenia lub segmentu. |
-| CZAS               | dziesiętny liczb zmiennoprzecinkowych | Wymagane                                  | Czas prezentacji zdarzenia. Jednostki są ułamkowych części sekundy.                                                                                                                                                                                                                    |
+| PODPOWIEDŹ                | ciąg w cudzysłowach                 | Wymagane                                  | Komunikat zakodowany jako ciąg w formacie base64, zgodnie z opisem w [IETF RFC 4648](http://tools.ietf.org/html/rfc4648). Komunikaty [SCTE 35] to splice_info_section() zakodowane w formacie base64.                                                                                                |
+| TYP               | ciąg w cudzysłowach                 | Wymagane                                  | Nazwa URN lub adres URL identyfikujący system wiadomości; na przykład "urn: przykład: Sygnalizowanie: 1.0". Komunikaty [SCTE 35] typu przyjmuje specjalna wartość "scte35".                                                                                                                                |
+| ID                 | ciąg w cudzysłowach                 | Wymagane                                  | Unikatowy identyfikator zdarzenia. Jeśli nie określono Identyfikatora, gdy wiadomości są pozyskiwane, usługi Azure Media Services generuje unikatowy identyfikator.                                                                                                                                          |
+| CZAS TRWANIA           | dziesiętna liczba zmiennoprzecinkowa | Wymagane                                  | Czas trwania zdarzenia. Jeśli jest nieznana, wartość powinna być 0. Jednostki są factional sekund.                                                                                                                                                                                           |
+| ELAPSED            | dziesiętna liczba zmiennoprzecinkowa | Opcjonalne, ale wymagane dla oknem kroczącym | Jeśli do obsługi przesuwającego się okna prezentacji powtarza się sygnał i to pole musi być prezentacji czas, jaki upłynął od chwili rozpoczęcia zdarzenia. Jednostki są ułamków sekund. Ta wartość może przekroczyć oryginalnego określonego czasu trwania splice lub segmentu. |
+| CZAS               | dziesiętna liczba zmiennoprzecinkowa | Wymagane                                  | Godzina prezentacji zdarzenia. Jednostki są ułamków sekund.                                                                                                                                                                                                                    |
 
 
-Warstwa aplikacji odtwarzacza HLS zostanie użyty typ zidentyfikować format wiadomości, zdekodować komunikatu, zastosuj konwersje niezbędne czasu i przetwarzanie zdarzenia.  Zdarzenia są synchronizacji z listy odtwarzania segmentu ścieżki nadrzędnej czasu zgodnie z sygnaturą czasową zdarzenia.  Dodaje się one przed najbliższej segmentu (#EXTINF tag).
+Warstwa aplikacji odtwarzacza HLS zostanie użyty typ do identyfikowania format wiadomości, dekodowania wiadomości, zastosuj konwersje niezbędne czasu i przetworzyć zdarzenia.  Zdarzenia są synchronizowane w listy odtwarzania segmentów ścieżki nadrzędnej czasu zgodnie z sygnatura czasowa zdarzenia.  Żelem krzemionkowy przed dokładnością segmentu (#EXTINF tag).
 
-#### <a name="hls-segment-playlist-example"></a>Przykład listy odtwarzania segmentu HLS
+#### <a name="hls-segment-playlist-example"></a>Przykład listy odtwarzania segmentów HLS
 ~~~
 #EXTM3U
 #EXT-X-VERSION:4
@@ -266,48 +266,48 @@ Fragments(video=480000000,format=m3u8-aapl)
 …
 ~~~
 
-#### <a name="hls-message-handling"></a>Obsługa komunikatów HLS
+#### <a name="hls-message-handling"></a>HLS komunikatu obsługi
 
-Zdarzenia są sygnalizowane listy odtwarzania segmentu każdej ścieżki audio i wideo. Położenie znaczników EXT-X-sygnalizacji zawsze musi być bezpośrednio przed pierwszym HLS segmentu (w przypadku łączenia się lub uruchom segmentu) lub od razu po ostatnim HLS segmentu (w przypadku łączenia w lub zakończenia segmentu) do którego odwołuje się jego atrybuty oraz czas trwania, co jest wymagane przez [ HLS].
+Zdarzenia są sygnalizowane w listy odtwarzania segmentów każdej ścieżki audio i wideo. Położenie znaczników EXT-X-sygnalizacji zawsze musi być albo bezpośrednio przed wykonaniem HLS pierwszy segment (w przypadku splice się lub uruchom segmentu) czy po ostatniej HLS segmentu (w przypadku splice w lub na końcu segmentu), na które odnoszą się jego atrybuty oraz czas trwania, co jest wymagane przez [ HLS].
 
-Po włączeniu metodzie przesuwanego okna prezentacji tag EXT-X-sygnalizacji powtarza się wystarczająco często czy łączenia lub segmentu jest zawsze szczegółowo opisane odtwarzania segmentu i należy użyć atrybutu UPŁYNĘŁO wskazująca czas łączenia lub ma segmentu były aktywne, co jest wymagane przez [HLS].
+Po włączeniu przesuwającego się okna prezentacji tag EXT-X-sygnalizacji powtarza się wystarczająco często, splice lub segmentu jest zawsze w pełni opisane w listy odtwarzania segmentów, należy użyć atrybutu UPŁYNĘŁO, aby wskazać czas splice i segment zawiera byli aktywni, zgodnie z wymogami [HLS].
 
-Po włączeniu metodzie przesuwanego okna prezentacji tagi EXT-X-sygnalizacji są usuwane z listy odtwarzania segmentu, gdy czas nośnika, które odnoszą się do została wycofana poza metodzie przesuwanego okna prezentacji.
+Po włączeniu przesuwającego się okna prezentacji tagi EXT-X-sygnalizacji są usuwane z listy odtwarzania segmentów, gdy czas multimediów, które odnoszą się do została wycofana, poza przesuwającego się okna prezentacji.
 
 ## <a name="33--dash-delivery"></a>3.3 DASH dostarczania
-[DASH] zapewnia trzy sposoby sygnału zdarzenia:
+[Kreska] zawiera trzy sposoby sygnału zdarzenia:
 
-1.  Zdarzenia sygnalizuje w MPD
-2.  Zdarzenia sygnalizuje wewnątrzpasmowe w reprezentacji (przy użyciu pola wiadomości zdarzenia (emsg)
+1.  Zdarzenia sygnalizowano w MPD
+2.  Zdarzenia sygnalizowane wewnątrzpasmowe w reprezentacji (przy użyciu zdarzeń okna komunikatu (emsg)
 3.  Kombinacja 1 i 2
 
-Zdarzenia sygnalizuje w MPD są przydatne w przypadku VOD przesyłania strumieniowego, ponieważ klienci mają dostęp do wszystkich zdarzeń, natychmiast po pobraniu MPD. Rozwiązanie wewnątrzpasmowe jest przydatne w przypadku strumieniowych na żywo, ponieważ klienci nie trzeba ponownie pobrać MPD. W przypadku segmentacji na podstawie czasu klienta Określa adres URL dla następnego segmentu przez dodanie czasu trwania i sygnatury czasowej bieżącego segmentu. Że żądanie nie powiedzie się, klient założono brak ciągłości i pobiera MPD, ale w przeciwnym razie nadal przesyłania strumieniowego bez pobierania MPD.
+Zdarzenia sygnalizowano w MPD są przydatne do przesyłania strumieniowego wideo na żądanie, ponieważ klienci mają dostęp do wszystkich zdarzeń, natychmiast, gdy zostanie pobrana MPD. Rozwiązanie wewnątrzpasmowe jest przydatne w przypadku strumieniowych na żywo, ponieważ nie trzeba ponownie pobrać MPD klientów. Dla opartych na czasie segmentacji klient określa adres URL następny segment przez dodanie czasu trwania i sygnaturę czasową bieżącego segmentu. Żądanie kończy się niepowodzeniem, klient zakłada ciągłości i pliki do pobrania MPD, ale w przeciwnym razie nadal przesyłania strumieniowego bez pobierania MPD.
 
-Usługa Azure Media Services będą nie zarówno sygnalizowania MPD i wewnątrzpasmowe sygnalizowania, za pomocą pola wiadomości zdarzenie.
+Usługa Azure Media Services będą nie zarówno sygnalizowanie MPD i wewnątrzpasmowe Sygnalizowanie przy użyciu zdarzeń okno komunikatu.
 
 #### <a name="mpd-signaling"></a>Sygnalizowanie MPD
 
-Zdarzenia są sygnalizowane w MPD przy użyciu elementu EventStream, który znajduje się w elemencie okresu.
+Zdarzenia są sygnalizowane w MPD używając elementu EventStream elementu, który pojawia się w elemencie okresu.
 
-EventStream element ma następujące atrybuty:
+Element elementu EventStream ma następujące atrybuty:
 
 | **Nazwa atrybutu** | **Typ**                | **Wymagane?** | **Opis**                                                                                                                                                                                                                                                                                   |
 |--------------------|-------------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri      | ciąg                  | Wymagane      | Identyfikuje system komunikatu. Schemat ma ustawioną wartość atrybutu schematu w polu manifestu serwera na żywo. Wartość powinna być URN lub adres URL identyfikujący system komunikatów; na przykład "urn: przykład: sygnalizowania: 1.0".                                                                |
-| wartość              | ciąg                  | Optional (Opcjonalność)      | Wartość dodatkowy ciąg używany przez właścicieli schematu w celu dostosowania semantyki wiadomości. W celu rozróżnienia wielu strumieni zdarzeń z tego samego schematu, wartość musi mieć ustawioną nazwę strumienia zdarzeń (trackName dla Smooth pozyskiwania lub AMF komunikat nazwę RTMP pozyskiwania). |
-| skali czasu          | 32-bitowa liczba całkowita bez znaku | Wymagane      | Skali czasu, w impulsów na sekundę, czas i czas trwania pola w polu "emsg".                                                                                                                                                                                                       |
+| scheme_id_uri      | ciąg                  | Wymagane      | Identyfikuje schematu wiadomości. Schemat jest równa wartości atrybutu schemat w polu na żywo manifestu serwera. Wartość powinna być URN lub adres URL identyfikujący system wiadomości; na przykład "urn: przykład: Sygnalizowanie: 1.0".                                                                |
+| wartość              | ciąg                  | Optional (Opcjonalność)      | Wartość dodatkowy ciąg znaków używany przez właścicieli schematu w celu dostosowania semantyki wiadomości. W celu dokonania rozróżnienia wielu strumieni zdarzeń z tego samego schematu, wartość musi być równa nazwę strumienia zdarzeń (trackName dla protokołu Smooth pozyskiwania lub AMF nazwa komunikatu dla protokołu RTMP pozyskiwania). |
+| Skala czasu          | 32-bitowej nieoznaczonej liczby całkowitej | Wymagane      | Skala czasu, w dziesięciomilionowych częściach sekundy na sekundę, czas i czas trwania pól w polu "emsg".                                                                                                                                                                                                       |
 
 
-Zero lub więcej elementów zdarzenia są zawarte w elemencie EventStream i mają następujące atrybuty:
+Zero lub więcej elementów zdarzeń są zawarte w elemencie elementu EventStream i mają następujące atrybuty:
 
 | **Nazwa atrybutu**  | **Typ**                | **Wymagane?** | **Opis**                                                                                                                                                                                                             |
 |---------------------|-------------------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| presentation_time   | 64-bitowej liczby całkowitej bez znaku | Optional (Opcjonalność)      | MUSI być nośnika czas prezentacji zdarzenia względem początek okresu. Prezentacja czas i czas trwania powinno odpowiadać z punktów dostępu strumienia (SAP) typu 1 lub 2, zgodnie z definicją w [ISO-14496-12] załącznika. |
-| Czas trwania            | 32-bitowa liczba całkowita bez znaku | Optional (Opcjonalność)      | Czas trwania zdarzenia. Jeśli czas trwania jest nieznany, to musi być pominięte.                                                                                                                                                 |
-| id                  | 32-bitowa liczba całkowita bez znaku | Optional (Opcjonalność)      | Identyfikuje wystąpienie tej wiadomości. Komunikaty z semantyki równoważne mają taką samą wartość. Jeśli nie określono Identyfikatora, gdy komunikat jest pozyskanych, usługi Azure Media Services wygeneruje Unikatowy identyfikator.             |
+| presentation_time   | 64-bitowej nieoznaczonej liczby całkowitej | Optional (Opcjonalność)      | MUSI być typu media prezentacji godzina zdarzenia względem początku okresu. Czas prezentacji i czas trwania należy wyrównać za pomocą punktów dostępu Stream (SAP) typu 1 lub 2, zgodnie z definicją w [ISO-14496-12] załącznika. |
+| czas trwania            | 32-bitowej nieoznaczonej liczby całkowitej | Optional (Opcjonalność)      | Czas trwania zdarzenia. Jeśli czas trwania jest nieznany, to musi zostać pominięty.                                                                                                                                                 |
+| id                  | 32-bitowej nieoznaczonej liczby całkowitej | Optional (Opcjonalność)      | Określa wystąpienie tej wiadomości. Komunikaty z semantyką równoważne mają taką samą wartość. Jeśli nie określono Identyfikatora, gdy wiadomości są pozyskiwane, usługi Azure Media Services generuje unikatowy identyfikator.             |
 | Wartość elementu zdarzeń | ciąg                  | Wymagane      | Komunikat zdarzenia jako ciąg base64, zgodnie z opisem w [IETF RFC 4648](http://tools.ietf.org/html/rfc4648).                                                                                                                   |
 
-#### <a name="xml-syntax-and-example-for-dash-manifest-mpd-signaling"></a>Przykład dla kreska i składnia XML manifestu sygnalizacja (MPD)
+#### <a name="xml-syntax-and-example-for-dash-manifest-mpd-signaling"></a>Składnia XML i przykład DASH manifestu sygnalizacja (MPD)
 
 ~~~ xml
 <!-- XML Syntax -->
@@ -343,14 +343,14 @@ Zero lub więcej elementów zdarzenia są zawarte w elemencie EventStream i maj�
 ~~~
 
 >[!NOTE]
->Należy zauważyć, że ten presentationTime to czas prezentacji zdarzenia, nie Godzina nadejścia wiadomości.
+>Należy zauważyć, że ten presentationTime po raz prezentacji wydarzenia nie Godzina nadejścia wiadomości.
 >
 
-### <a name="431-in-band-event-message-box-signaling"></a>4.3.1 zdarzeń wewnątrzpasmowe komunikatu sygnalizowania pole
-Strumienia zdarzeń w paśmie wymaga MPD ma InbandEventStream element na poziomie ustawić dostosowania.  Ten element ma schemeIdUri obowiązkowy atrybut i atrybut opcjonalny skali czasu, które również znajdują się w przypadku pola wiadomości (emsg).  Pola komunikatów zdarzeń o identyfikatorach schematu, które nie są zdefiniowane w MPD nie powinny znajdować się. Jeśli klient DASH wykryje komunikat zdarzenia ze schematem, który nie jest zdefiniowany w MPD, klient powinien go zignorować.
-Okno komunikatu o zdarzeniu (emsg) zapewnia sygnalizowania ogólnego zdarzeń związanych z czasem prezentacji nośnika. Jeśli jest obecny, dowolnego pola "emsg" jest umieszczana przed dowolnego pola "moof".
+### <a name="431-in-band-event-message-box-signaling"></a>4.3.1 zdarzeń wewnątrzpasmowe komunikatu sygnalizowanie pole
+Strumienia zdarzeń w paśmie wymaga MPD posiadania elementu InbandEventStream na poziomie zestawu dostosowania.  Ten element ma atrybut schemeIdUri obowiązkowe i atrybut opcjonalny skali czasu, które również znajdują się w przypadku okna komunikatu (emsg).  Okna komunikatów zdarzeń o identyfikatorach schematu, które nie są zdefiniowane w MPD nie powinien być obecny. Jeśli klient DASH wykryje zdarzenie okno komunikatu przy użyciu schematu, który nie jest zdefiniowany w MPD, klient powinien go zignorować.
+Okno komunikatu o zdarzeniu (emsg) zapewnia sygnalizowanie ogólnego zdarzenia powiązane z czasem prezentacji nośnika. Jeśli jest obecny, dowolnego pola "emsg" jest umieszczana przed dowolnego pola "moof".
 
-### <a name="dash-event-message-box-emsg"></a>Okno komunikatu zdarzenia DASH "emsg"
+### <a name="dash-event-message-box-emsg"></a>Okno komunikatu zdarzeń DASH "emsg"
 ~~~
 Box Type: `emsg’
 Container: Segment
@@ -371,53 +371,53 @@ aligned(8) class DASHEventMessageBox extends FullBox(‘emsg’, version = 0, fl
 }
 ~~~
 
-Pola DASHEventMessageBox zdefiniowano poniżej:
+Pola DASHEventMessageBox są zdefiniowane poniżej:
 
 | **Nazwa pola**          | **Typ pola**          | **Wymagane?** | **Opis**                                                                                                                                                                                                                                                                                                                                                    |
 |-------------------------|-------------------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri           | ciąg                  | Wymagane      | Identyfikuje system komunikatu. Schemat ma ustawioną wartość atrybutu schematu w polu manifestu serwera na żywo. Wartość powinna być URN lub adres URL identyfikujący system komunikatów; na przykład "urn: przykład: sygnalizowania: 1.0". Komunikaty [SCTE 35] trwa to specjalna wartość "urn: scte:scte35:2013a:bin", mimo że [SCTE 67] zaleca coś innego. |
-| Wartość                   | ciąg                  | Wymagane      | Wartość dodatkowy ciąg używany przez właścicieli schematu w celu dostosowania semantyki wiadomości. W celu rozróżnienia wielu strumieni zdarzeń z tego samego schematu, wartość będzie ustawiana na nazwę strumienia zdarzeń (trackName dla Smooth pozyskiwania lub AMF komunikat nazwę RTMP pozyskiwania).                                                                  |
-| skali czasu               | 32-bitowa liczba całkowita bez znaku | Wymagane      | Skali czasu, w impulsów na sekundę, czas i czas trwania pola w polu "emsg".                                                                                                                                                                                                                                                                        |
-| Presentation_time_delta | 32-bitowa liczba całkowita bez znaku | Wymagane      | Nośnik różnica czasu prezentacji podczas prezentacji zdarzenia i najwcześniejszą godzinę prezentacji w tym segmencie. Prezentacja czas i czas trwania powinno odpowiadać z punktów dostępu strumienia (SAP) typu 1 lub 2, zgodnie z definicją w [ISO-14496-12] załącznika.                                                                                            |
-| event_duration          | 32-bitowa liczba całkowita bez znaku | Wymagane      | Czas trwania zdarzenia lub 0xFFFFFFFF, aby określić Nieznany czas trwania.                                                                                                                                                                                                                                                                                          |
-| Identyfikator                      | 32-bitowa liczba całkowita bez znaku | Wymagane      | Identyfikuje wystąpienie tej wiadomości. Komunikaty z semantyki równoważne mają taką samą wartość. Jeśli nie określono Identyfikatora, gdy komunikat jest pozyskanych, usługi Azure Media Services wygeneruje Unikatowy identyfikator.                                                                                                                                                    |
-| Message_data            | Tablica bajtów              | Wymagane      | Komunikaty o zdarzeniach. Komunikatów [SCTE 35] danymi wiadomości jest splice_info_section() binarnego, chociaż [SCTE 67] zaleca coś innego.                                                                                                                                                                                                                                 |
+| scheme_id_uri           | ciąg                  | Wymagane      | Identyfikuje schematu wiadomości. Schemat jest równa wartości atrybutu schemat w polu na żywo manifestu serwera. Wartość powinna być URN lub adres URL identyfikujący system wiadomości; na przykład "urn: przykład: Sygnalizowanie: 1.0". Komunikaty [SCTE 35] trwa to specjalna wartość "urn: scte:scte35:2013a:bin", mimo że [SCTE 67] zaleca się coś innego. |
+| Wartość                   | ciąg                  | Wymagane      | Wartość dodatkowy ciąg znaków używany przez właścicieli schematu w celu dostosowania semantyki wiadomości. W celu dokonania rozróżnienia wielu strumieni zdarzeń z tego samego schematu, wartość będzie ustawiana na nazwę strumienia zdarzeń (trackName dla protokołu Smooth pozyskiwania lub AMF nazwa komunikatu dla protokołu RTMP pozyskiwania).                                                                  |
+| Skala czasu               | 32-bitowej nieoznaczonej liczby całkowitej | Wymagane      | Skala czasu, w dziesięciomilionowych częściach sekundy na sekundę, czas i czas trwania pól w polu "emsg".                                                                                                                                                                                                                                                                        |
+| Presentation_time_delta | 32-bitowej nieoznaczonej liczby całkowitej | Wymagane      | Różnica czasu prezentacji nośnika podczas prezentacji wydarzenia i Najwcześniejsza godzina prezentacji, w tym segmencie. Czas prezentacji i czas trwania należy wyrównać za pomocą punktów dostępu Stream (SAP) typu 1 lub 2, zgodnie z definicją w [ISO-14496-12] załącznika.                                                                                            |
+| event_duration          | 32-bitowej nieoznaczonej liczby całkowitej | Wymagane      | Czas trwania zdarzenia lub 0xFFFFFFFF, aby określić Nieznany czas trwania.                                                                                                                                                                                                                                                                                          |
+| Identyfikator                      | 32-bitowej nieoznaczonej liczby całkowitej | Wymagane      | Określa wystąpienie tej wiadomości. Komunikaty z semantyką równoważne mają taką samą wartość. Jeśli nie określono Identyfikatora, gdy wiadomości są pozyskiwane, usługi Azure Media Services generuje unikatowy identyfikator.                                                                                                                                                    |
+| Message_data            | tablica bajtów              | Wymagane      | Komunikat zdarzenia. Komunikaty [SCTE 35] danych komunikatu jest binarny splice_info_section(), chociaż [SCTE 67] zaleca się coś innego.                                                                                                                                                                                                                                 |
 
-### <a name="332-dash-message-handling"></a>3.3.2 kreska komunikat — Obsługa
+### <a name="332-dash-message-handling"></a>3.3.2 KRESKI Obsługa komunikatów
 
-Zdarzenia są sygnalizowane wewnątrzpasmowe, w polu "emsg" dla ścieżki audio i wideo.  Sygnalizowanie występuje na wszystkie segmenty żądania, dla których presentation_time_delta wynosi 15 sekund lub mniej. Po włączeniu metodzie przesuwanego okna prezentacji komunikaty o zdarzeniach są usuwane z MPD, gdy sumę czas i czas trwania komunikatu zdarzeń jest krótszy niż czas danych nośnika w manifeście.  Innymi słowy komunikaty o zdarzeniach są usuwane z manifestu, gdy czas nośników, do którego odwołuje się operacja wycofana poza metodzie przesuwanego okna prezentacji.
+Zdarzenia są sygnalizowane wewnątrzpasmowe, w polu "emsg" dla ścieżki audio i wideo.  Sygnalizowanie występuje dla segmentu wszystkie żądania, dla których presentation_time_delta wynosi 15 sekund lub mniej. Po włączeniu przesuwającego się okna prezentacji komunikaty o zdarzeniach są usuwane z MPD, gdy sumę czas i czas trwania komunikatów o zdarzeniach jest krótszy niż czas dane multimedialne w manifeście.  Innymi słowy komunikaty o zdarzeniach są usuwane z manifestu, gdy czas multimediów, do którego odnoszą się została wycofana, poza przesuwającego się okna prezentacji.
 
 ## <a name="4-scte-35-ingest"></a>4 SCTE 35 pozyskiwania
 
-Komunikaty [SCTE 35] są pozyskanych w formacie binarnym przy użyciu schematu **"urn: scte:scte35:2013a:bin"** dla Smooth pozyskiwania i typ **"scte35"** dla protokołu RTMP pozyskiwania. Ułatwia konwersję chronometrażu [SCTE 35], który jest oparty na MPEG-2 transport stream prezentacji sygnatury czasowe (PTS), mapowanie między PTS (pts_time + pts_adjustment splice_time()) i oś czasu nośnika jest zapewniana przez (czas prezentacji zdarzeń pole fragment_absolute_time Smooth pozyskiwania i pozyskiwania pole czasu dla protokołu RTMP). Mapowanie jest niezbędne, ponieważ 33-bitową wartość PTS najedzie na około na 26,5 godzin.
+Komunikaty [SCTE 35] są pozyskiwane w formacie binarnym, przy użyciu schematu **"urn: scte:scte35:2013a:bin"** dla protokołu Smooth pozyskiwania i typ **"scte35"** dla protokołu RTMP pozyskiwania. Aby ułatwić konwersji chronometrażu [SCTE 35], która jest oparta na MPEG-2 transport stream prezentacji sygnatur czasowych (pkt), mapowanie między pkt (pts_time + pts_adjustment splice_time()) i oś czasu multimediów są dostarczane przez (czas prezentacja wydarzenia pole fragment_absolute_time dla protokołu Smooth pozyskiwać i pozyskiwania pole czasu protokołu RTMP). Mapowanie jest konieczne, ponieważ 33-bitową wartością pkt najedzie na około na 26,5 godzin.
 
-Pozyskiwania Smooth Streaming wymaga, które musi zawierać pola danych (mdat) **splice_info_section()** zdefiniowany w tabeli 8-1 [SCTE 35]. Dla protokołu RTMP pozyskiwania, atrybut sygnalizacji komunikatu AMF jest ustawiony na base64encoded **splice_info_section()**. Jeśli komunikaty ma format opisany powyżej, są one wysyłane klientom HLS i Smooth, Dash z aktualizacjami [SCTE 67].
+Pozyskiwanie Smooth Streaming wymaga, które musi zawierać pola danych (mdat) **splice_info_section()** zdefiniowany w tabeli 8-1 [SCTE 35]. Dla protokołu RTMP pozyskiwania, base64encoded ma ustawioną wartość atrybutu sygnalizacji komunikatu AMF **splice_info_section()**. Jeśli komunikaty ma format opisany powyżej, te są wysyłane do klientów HLS i Smooth, Dash zgodne z [SCTE 67].
 
 
 ## <a name="5-references"></a>Odwołania do 5
 
-**[SCTE 35]**  ANSI/SCTE 35 2013a — Program cyfrowe wstawiania kolejka wiadomości kabla, 2013a
+**[SCTE 35]**  ANSI/SCTE 35 2013a — Program cyfrowego wstawiania kolejka komunikat dla kabel, 2013a
 
-**[SCTE 67]**  ANSI/SCTE 67 2014 — zalecana praktyka dla SCTE 35: Program cyfrowych wstawiania kolejka komunikatów kabla
+**[SCTE 67]**  ANSI/SCTE 67 2014 — zalecana praktyka dla SCTE 35: programie cyfrowego wstawiania kolejka komunikatów kabla
 
-**[DASH]**  Dynamicznie 2014 — technologii informatycznych — 23009 1 ISO/IEC adaptacyjne przesyłanie strumieniowe za pośrednictwem protokołu HTTP (kreska) — część 1: formatów multimediów prezentacji opis i segmentu, wydanie 2
+**[KRESKA]**  ISO/IEC 23009 1 2014 — informacje o technologii — dynamiczne adaptacyjnego przesyłania strumieniowego za pośrednictwem protokołu HTTP (DASH) — część 1: Media prezentacji formaty opis i segmentu, wydanie 2
 
-**[HLS]**  ["HTTP transmisja strumieniowa na żywo", draft-pantos-http-live-streaming-14, 14 października 2014 r.](http://tools.ietf.org/html/draft-pantos-http-live-streaming-14)
+**[HLS]**  ["HTTP transmisja strumieniowa na żywo", draft-pantos-http-live-streaming-14, 14 października 2014 roku](http://tools.ietf.org/html/draft-pantos-http-live-streaming-14)
 
-**[MS-SSTR]**  ["Microsoft Smooth Streaming protokół", 15 maja 2014](http://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
+**[MS-SSTR]**  ["Zestawu Microsoft Smooth Streaming Protocol", 15 maja 2014 r.](https://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
 
 **[AMF0]**  ["AMF0 Format komunikatu akcji"](http://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
 
-**[LIVE-FMP4]**  [Specyfikacji pozyskiwania MP4 pofragmentowane na żywo w usłudze azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
+**[NA ŻYWO — FMP4]**  [Specyfikacja odbierania podzielonej zawartości w formacie MP4 na żywo w usłudze azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
 
-**[ISO-14496-12]**  ISO/IEC 14496-12: podstawowy nośnik ISO 12 części pliku w formacie, czwarty wersji 2012-07-15.
+**[ISO-14496-12]**  ISO/IEC 14496-12: część 12 ISO podstawowy media format plików, czwarty wersji 2012-07-15.
 
-**[RTMP]**  ["Adobe w czasie rzeczywistym obsługi wiadomości protokołu", 21 grudnia 2012](https://www.adobe.com/devnet/rtmp.html) 
+**[RTMP]**  ["Firmy adobe w czasie rzeczywistym komunikatów protokołu", 21 grudnia 2012](https://www.adobe.com/devnet/rtmp.html) 
 
 ------------------------------------------
 
 ## <a name="next-steps"></a>Kolejne kroki
-Ścieżki szkoleniowe dotyczące usługi Media widoku.
+Wyświetl usługi Media Services ścieżki szkoleniowe.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

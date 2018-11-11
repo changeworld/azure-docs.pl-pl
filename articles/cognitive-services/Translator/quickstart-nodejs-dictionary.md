@@ -1,272 +1,167 @@
 ---
-title: 'Szybki start: znajdowanie alternatywnych tłumaczeń, Node.js — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Szybki start: uzyskiwanie alternatywnych tłumaczeń, Node.js — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki start znajdziesz alternatywne tłumaczenia i przykłady terminów użytych w kontekście, korzystając z interfejsu API tłumaczenia tekstu w usłudze Translator i oprogramowania Node.js.
+description: W tym przewodniku Szybki start dowiesz się, jak można znaleźć alternatywne tłumaczenia i przykłady użycia dla określonego tekstu przy użyciu środowiska Node.js i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/21/2018
+ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 4b5857fdb7871107396ca1fd50865f317038abb5
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 191afcdfb7a401755fffc028ce4119526f1e693d
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646232"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035632"
 ---
-# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-nodejs"></a>Szybki start: znajdowanie alternatywnych tłumaczeń przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (Node.js)
+# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-with-nodejs"></a>Szybki start: uzyskiwanie alternatywnych tłumaczeń za pomocą środowiska Node.js przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator
 
-W tym przewodniku Szybki start znajdziesz szczegóły możliwych alternatywnych tłumaczeń terminów i przykłady użycia alternatywnych tłumaczeń przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
+W tym przewodniku Szybki start dowiesz się, jak można znaleźć alternatywne tłumaczenia i przykłady użycia dla określonego tekstu przy użyciu środowiska Node.js i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
+
+Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem tłumaczenia tekstu w usłudze Translator. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby uruchomić ten kod, potrzebne jest środowisko [Node.js 6](https://nodejs.org/en/download/).
+Ten przewodnik Szybki start wymaga następujących elementów:
 
-Aby korzystać z interfejsu API tłumaczenia tekstu w usłudze Translator, potrzebny jest również klucz subskrypcji. Zobacz [How to sign up for the Translator Text API (Jak zarejestrować się w interfejsie API tłumaczenia tekstu w usłudze Translator)](translator-text-how-to-signup.md).
+* Środowisko [Node w wersji 8.12.x lub nowszej](https://nodejs.org/en/)
+* Klucz subskrypcji platformy Azure na potrzeby tłumaczenia tekstu w usłudze Translator
 
-## <a name="dictionary-lookup-request"></a>Żądanie Dictionary Lookup
+## <a name="create-a-project-and-import-required-modules"></a>Tworzenie projektu i importowanie wymaganych modułów
 
-Następujący kod pobiera alternatywne tłumaczenia słowa za pomocą metody [Dictionary Lookup](./reference/v3-0-dictionary-lookup.md).
-
-1. Utwórz nowy projekt środowiska Node.js w ulubionym edytorze kodu.
-2. Dodaj kod przedstawiony poniżej.
-3. Zastąp wartość `subscriptionKey` kluczem dostępu właściwym dla Twojej subskrypcji.
-4. Uruchom program.
+Utwórz nowy projekt przy użyciu ulubionego środowiska IDE lub edytora. Następnie skopiuj ten fragment kodu do swojego projektu do pliku o nazwie `dictionary-lookup.js`.
 
 ```javascript
-'use strict';
-
-let fs = require ('fs');
-let https = require ('https');
-
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the subscriptionKey string value with your valid subscription key.
-let subscriptionKey = 'ENTER KEY HERE';
-
-let host = 'api.cognitive.microsofttranslator.com';
-let path = '/dictionary/lookup?api-version=3.0';
-
-let params = '&from=en&to=fr';
-
-let text = 'great';
-
-let response_handler = function (response) {
-    let body = '';
-    response.on ('data', function (d) {
-        body += d;
-    });
-    response.on ('end', function () {
-        let json = JSON.stringify(JSON.parse(body), null, 4);
-        console.log(json);
-    });
-    response.on ('error', function (e) {
-        console.log ('Error: ' + e.message);
-    });
-};
-
-let get_guid = function () {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-  });
-}
-
-let DictionaryLookup = function (content) {
-    let request_params = {
-        method : 'POST',
-        hostname : host,
-        path : path + params,
-        headers : {
-            'Content-Type' : 'application/json',
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
-            'X-ClientTraceId' : get_guid (),
-        }
-    };
-
-    let req = https.request (request_params, response_handler);
-    req.write (content);
-    req.end ();
-}
-
-let content = JSON.stringify ([{'Text' : text}]);
-
-DictionaryLookup (content);
+const request = require('request');
+const uuidv4 = require('uuid/v4');
 ```
 
-## <a name="dictionary-lookup-response"></a>Odpowiedź na żądanie Dictionary Lookup
+> [!NOTE]
+> Jeśli nie korzystano z tych modułów, konieczne będzie ich zainstalowanie przed uruchomieniem programu. Aby zainstalować te pakiety, uruchom polecenie `npm install request uuidv4`.
 
-Po pomyślnym przetworzeniu żądania jest zwracana odpowiedź w formacie JSON, jak pokazano na poniższym przykładzie:
+Te moduły są wymagane do utworzenia żądania HTTP i unikatowego identyfikatora dla nagłówka `'X-ClientTraceId'`.
+
+## <a name="set-the-subscription-key"></a>Ustawianie klucza subskrypcji
+
+Ten kod spróbuje odczytać klucz subskrypcji na potrzeby tłumaczenia tekstu w usłudze Translator ze zmiennej środowiskowej `TRANSLATOR_TEXT_KEY`. Jeśli nie chcesz korzystać ze zmiennych środowiskowych, możesz ustawić element `subscriptionKey` jako ciąg i oznaczyć instrukcję warunkową jako komentarz.
+
+Skopiuj ten kod do projektu:
+
+```javascript
+/* Checks to see if the subscription key is available
+as an environment variable. If you are setting your subscription key as a
+string, then comment these lines out.
+
+If you want to set your subscription key as a string, replace the value for
+the Ocp-Apim-Subscription-Key header as a string. */
+const subscriptionKey = process.env.TRANSLATOR_TEXT_KEY;
+if (!subscriptionKey) {
+  throw new Error('Environment variable for your subscription key is not set.')
+};
+```
+
+## <a name="configure-the-request"></a>Konfigurowanie żądania
+
+Metoda `request()`, udostępniona przez moduł żądania, umożliwia nam przekazanie metody HTTP, parametrów żądania adresu URL, nagłówków i treści w formacie JSON w postaci obiektu `options`. W poniższym fragmencie kodu skonfigurujemy żądanie:
+
+>[!NOTE]
+> Aby uzyskać więcej informacji na temat punktów końcowych, tras i parametrów żądania, zobacz [Translator Text API 3.0: Dictionary Lookup](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup) (Interfejs API 3.0 tłumaczenia tekstu w usłudze Translator: wyszukiwanie w słowniku).
+
+```javascript
+let options = {
+    method: 'POST',
+    baseUrl: 'https://api.cognitive.microsofttranslator.com/',
+    url: 'dictionary/lookup',
+    qs: {
+      'api-version': '3.0',
+      'from': 'en',
+      'to': 'es'
+    },
+    headers: {
+      'Ocp-Apim-Subscription-Key': subscriptionKey,
+      'Content-type': 'application/json',
+      'X-ClientTraceId': uuidv4().toString()
+    },
+    body: [{
+          'text': 'Elephants'
+    }],
+    json: true,
+};
+```
+
+### <a name="authentication"></a>Authentication
+
+Najprostszym sposobem uwierzytelniania żądania jest przekazanie klucza subskrypcji jako nagłówka `Ocp-Apim-Subscription-Key`. Ta metoda jest używana w tym przykładzie. Alternatywnie można wymienić klucz subskrypcji na token dostępu i przekazać go dalej jako nagłówek `Authorization` w celu zweryfikowania żądania. Aby uzyskać więcej informacji, zobacz [Authentication](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) (Uwierzytelnianie).
+
+## <a name="make-the-request-and-print-the-response"></a>Wysyłanie żądania i wyświetlanie odpowiedzi
+
+Następnie utworzymy żądanie przy użyciu metody `request()`. Pobiera ona obiekt `options` utworzony w poprzedniej sekcji jako pierwszy argument, a następnie wyświetla ulepszoną odpowiedź w formacie JSON.
+
+```javascript
+request(options, function(err, res, body){
+    console.log(JSON.stringify(body, null, 4));
+});
+```
+
+>[!NOTE]
+> W tym przykładzie definiujemy żądanie HTTP w obiekcie `options`. Jednak moduł żądania obsługuje również metody ułatwiające, takie jak `.post` i `.get`. Aby uzyskać więcej informacji, zobacz [Convenience methods](https://github.com/request/request#convenience-methods) (Metody ułatwiające).
+
+## <a name="put-it-all-together"></a>Zebranie wszystkich elementów
+
+To wszystko. Utworzono prosty program, który będzie wywoływał interfejs API tłumaczenia tekstu w usłudze Translator i zwracał odpowiedź w formacie JSON. Teraz nadszedł czas, aby uruchomić program:
+
+```console
+node dictionary-lookup.js
+```
+
+Jeśli chcesz porównać swój kod z naszym, kompletny przykład jest dostępny w witrynie [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS).
+
+## <a name="sample-response"></a>Przykładowa odpowiedź
 
 ```json
 [
-  {
-    "normalizedSource": "great",
-    "displaySource": "great",
-    "translations": [
-      {
-        "normalizedTarget": "grand",
-        "displayTarget": "grand",
-        "posTag": "ADJ",
-        "confidence": 0.2783,
-        "prefixWord": "",
-        "backTranslations": [
-          {
-            "normalizedText": "great",
-            "displayText": "great",
-            "numExamples": 15,
-            "frequencyCount": 34358
-          },
-          {
-            "normalizedText": "big",
-            "displayText": "big",
-            "numExamples": 15,
-            "frequencyCount": 21770
-          },
-...
+    {
+        "displaySource": "elephants",
+        "normalizedSource": "elephants",
+        "translations": [
+            {
+                "backTranslations": [
+                    {
+                        "displayText": "elephants",
+                        "frequencyCount": 1207,
+                        "normalizedText": "elephants",
+                        "numExamples": 5
+                    }
+                ],
+                "confidence": 1.0,
+                "displayTarget": "elefantes",
+                "normalizedTarget": "elefantes",
+                "posTag": "NOUN",
+                "prefixWord": ""
+            }
         ]
-      },
-      {
-        "normalizedTarget": "super",
-        "displayTarget": "super",
-        "posTag": "ADJ",
-        "confidence": 0.1514,
-        "prefixWord": "",
-        "backTranslations": [
-          {
-            "normalizedText": "super",
-            "displayText": "super",
-            "numExamples": 15,
-            "frequencyCount": 12023
-          },
-          {
-            "normalizedText": "great",
-            "displayText": "great",
-            "numExamples": 15,
-            "frequencyCount": 10931
-          },
-...
-        ]
-      },
-...
-    ]
-  }
+    }
 ]
 ```
 
-## <a name="dictionary-examples-request"></a>Żądanie Dictionary Examples
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Następujący kod pobiera kontekstowe przykłady użycia terminu ze słownika przy użyciu metody [Dictionary Examples](./reference/v3-0-dictionary-examples.md).
-
-1. Utwórz nowy projekt środowiska Node.js w ulubionym edytorze kodu.
-2. Dodaj kod przedstawiony poniżej.
-3. Zastąp wartość `subscriptionKey` kluczem dostępu właściwym dla Twojej subskrypcji.
-4. Uruchom program.
-
-```javascript
-'use strict';
-
-let fs = require ('fs');
-let https = require ('https');
-
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the subscriptionKey string value with your valid subscription key.
-let subscriptionKey = 'ENTER KEY HERE';
-
-let host = 'api.cognitive.microsofttranslator.com';
-let path = '/dictionary/examples?api-version=3.0';
-
-let params = '&from=en&to=fr';
-
-let text = 'great';
-let translation = 'formidable';
-
-let response_handler = function (response) {
-    let body = '';
-    response.on ('data', function (d) {
-        body += d;
-    });
-    response.on ('end', function () {
-        let json = JSON.stringify(JSON.parse(body), null, 4);
-        console.log(json);
-    });
-    response.on ('error', function (e) {
-        console.log ('Error: ' + e.message);
-    });
-};
-
-let get_guid = function () {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-  });
-}
-
-let DictionaryExamples = function (content) {
-    let request_params = {
-        method : 'POST',
-        hostname : host,
-        path : path + params,
-        headers : {
-            'Content-Type' : 'application/json',
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
-            'X-ClientTraceId' : get_guid (),
-        }
-    };
-
-    let req = https.request (request_params, response_handler);
-    req.write (content);
-    req.end ();
-}
-
-let content = JSON.stringify ([{'Text' : text, 'Translation' : translation}]);
-
-DictionaryExamples (content);
-```
-
-## <a name="dictionary-examples-response"></a>Odpowiedź na żądanie Dictionary Examples
-
-Po pomyślnym przetworzeniu żądania jest zwracana odpowiedź w formacie JSON, jak pokazano na poniższym przykładzie:
-
-```json
-[
-  {
-    "normalizedSource": "great",
-    "normalizedTarget": "formidable",
-    "examples": [
-      {
-        "sourcePrefix": "You have a ",
-        "sourceTerm": "great",
-        "sourceSuffix": " expression there.",
-        "targetPrefix": "Vous avez une expression ",
-        "targetTerm": "formidable",
-        "targetSuffix": "."
-      },
-      {
-        "sourcePrefix": "You played a ",
-        "sourceTerm": "great",
-        "sourceSuffix": " game today.",
-        "targetPrefix": "Vous avez été ",
-        "targetTerm": "formidable",
-        "targetSuffix": "."
-      },
-...
-    ]
-  }
-]
-```
+Jeśli klucz subskrypcji umieszczono na stałe w kodzie programu, pamiętaj, aby usunąć ten klucz subskrypcji po zakończeniu pracy z przewodnikiem Szybki start.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z kodem przykładowym z tego przewodnika Szybki start i innych, dotyczącym między innymi tłumaczenia i transliteracji, a także z innymi projektami przykładowymi dotyczącymi tłumaczenia tekstu w usłudze Translator i znajdującymi się w usłudze GitHub.
-
 > [!div class="nextstepaction"]
-> [Poznaj przykłady dla środowiska Node.js w usłudze GitHub](https://aka.ms/TranslatorGitHub?type=&language=javascript)
+> [Poznaj przykłady dla środowiska Node.js w usłudze GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS)
+
+## <a name="see-also"></a>Zobacz też
+
+Oprócz wykrywania języka interfejs API tłumaczenia tekstu w usłudze Translator może wykonywać następujące zadania:
+
+* [Tłumaczenie tekstu](quickstart-nodejs-translate.md)
+* [Transliteracja tekstu](quickstart-nodejs-transliterate.md)
+* [Identyfikowanie język na podstawie danych wejściowych](quickstart-nodejs-detect.md)
+* [Pobieranie listy obsługiwanych języków](quickstart-nodejs-languages.md)
+* [Określanie długości zdań na podstawie danych wejściowych](quickstart-nodejs-sentences.md)

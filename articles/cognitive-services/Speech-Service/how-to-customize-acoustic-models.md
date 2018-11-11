@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: tworzenie modelu akustycznego za pomocą usługi Mowa'
 titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak utworzyć model akustyczny za pomocą usługi Mowa w ramach usługi Azure Cognitive Services.
+description: Dowiedz się, jak utworzyć model akustyczny za pomocą usługi Speech Service w ramach usługi Azure Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 81449889ae9218f2b59ea48f10c676dcee9aa8b1
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 70fc9c34599f27eb5d67b79ef823f8037ae55ba9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466090"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215246"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Samouczek: tworzenie niestandardowego modelu akustycznego
 
@@ -33,9 +33,9 @@ Jeśli nie masz konta usługi Azure Cognitive Services, przed rozpoczęciem utw�
 
 Upewnij się, że Twoje konto usług Cognitive Services jest połączone z subskrypcją, otwierając stronę [Subskrypcje usługi Cognitive Services](https://cris.ai/Subscriptions).
 
-Z subskrypcją usługi Mowa utworzoną w witrynie Azure Portal możesz się połączyć, wybierając polecenie **Połącz z istniejącą subskrypcją**.
+Z subskrypcją usługi Speech Service utworzoną w witrynie Azure Portal możesz się połączyć, wybierając polecenie **Połącz z istniejącą subskrypcją**.
 
-Aby uzyskać informacje o tworzeniu subskrypcji usługi Mowa w witrynie Azure Portal, zobacz [Wypróbuj bezpłatnie usługę Mowa](get-started.md).
+Aby uzyskać informacje o tworzeniu subskrypcji usługi Speech Services w witrynie Azure Portal, zobacz [Wypróbuj bezpłatnie usługę Speech Service](get-started.md).
 
 ## <a name="prepare-the-data"></a>Przygotowywanie danych
 
@@ -53,7 +53,7 @@ Zestaw danych akustycznych na potrzeby dostosowania modelu akustycznego składa 
 * Wszystkie pliki dźwiękowe w zestawie danych powinny być przechowywane w formacie dźwiękowym WAV (RIFF).
 * Dźwięk musi mieć częstotliwość próbkowania 8 kHz lub 16 kHz, a wartości próbek powinny być przechowywane jako nieskompresowane 16-bitowe liczby całkowite ze znakiem (typu short) za pomocą kodowania PCM.
 * Obsługiwane są wyłącznie jednokanałowe pliki dźwiękowe (mono).
-* Pliki dźwiękowe muszą mieć długość od 100 mikrosekund do 1 minuty. Idealnie każdy plik dźwiękowy powinien zaczynać i kończyć się co najmniej 100 mikrosekundami ciszy; najczęściej stosuje się ciszę o długości od 500 mikrosekund do 1 sekundy.
+* Pliki audio mogą mieć długość od 100 mikrosekund do 1 minuty, chociaż idealnie powinny mieć około 10–12 sekund. Idealnie każdy plik dźwiękowy powinien zaczynać i kończyć się co najmniej 100 mikrosekundami ciszy; najczęściej stosuje się ciszę o długości od 500 mikrosekund do 1 sekundy.
 * Jeśli w danych występuje hałas w tle, zalecamy umieszczenie w danych przykładów z dłuższymi segmentami ciszy, &mdash;na przykład kilkusekundowymi&mdash;, przed zawartością z mową i/lub po niej.
 * Każdy plik dźwiękowy powinien składać się z jednej wypowiedzi &mdash; np. jednego podyktowanego zdania, jednego zapytania lub jednego zwrotu w systemie dialogowym.
 * Każdy plik dźwiękowy w zestawie danych powinien mieć unikatową nazwę pliku oraz rozszerzenie wav.
@@ -69,7 +69,7 @@ Zestaw danych akustycznych na potrzeby dostosowania modelu akustycznego składa 
 | Częstotliwość próbkowania | 8000 Hz lub 16 000 Hz |
 | Kanały | 1 (mono) |
 | Format próbki | PCM, 16-bitowe liczby całkowite |
-| Czas trwania pliku | 0,1 s < czas trwania < 60 sekund |
+| Czas trwania pliku | 0,1 s < czas trwania < 12 sekund | 
 | Otoczenie ciszą | > 0,1 s |
 | Format archiwum | zip |
 | Maksymalny rozmiar archiwum | 2 GB |
@@ -79,7 +79,7 @@ Zestaw danych akustycznych na potrzeby dostosowania modelu akustycznego składa 
 
 ## <a name="language-support"></a>Obsługa języków
 
-Aby uzyskać pełną listę języków obsługiwanych przez niestandardowe modele językowe **zamiany mowy na tekst**, zobacz [Języki obsługiwane na potrzeby usługi Mowa](language-support.md#speech-to-text).
+Aby uzyskać pełną listę języków obsługiwanych przez niestandardowe modele językowe **zamiany mowy na tekst**, zobacz [Języki obsługiwane na potrzeby usługi Speech Service](language-support.md#speech-to-text).
 
 ### <a name="transcriptions-for-the-audio-dataset"></a>Transkrypcje zestawu danych dźwiękowych
 
@@ -94,15 +94,15 @@ Transkrypcje dla wszystkich plików WAV powinny znajdować się w jednym pliku t
 > [!NOTE]
 > Transkrypcja powinna być kodowana za pomocą kodowania UTF-8 ze znacznikiem kolejności bajtów (BOM).
 
-Transkrypcje są normalizowane pod względem tekstu, aby mogły być przetwarzane przez system. Istnieją jednak pewne istotne normalizacje, które muszą być wykonane przez użytkownika _przed_ przekazaniem danych do usługi Custom Speech Service. Aby użyć odpowiedniego języka podczas przygotowywania transkrypcji, zobacz [Wskazówki dotyczące używania usługi Mowa](prepare-transcription.md).
+Transkrypcje są normalizowane pod względem tekstu, aby mogły być przetwarzane przez system. Istnieją jednak pewne istotne normalizacje, które muszą być wykonane przez użytkownika _przed_ przekazaniem danych do usługi Custom Speech Service. Aby użyć odpowiedniego języka podczas przygotowywania transkrypcji, zobacz [Wskazówki dotyczące używania usługi Speech Service](prepare-transcription.md).
 
-Wykonaj kroki w następnych sekcjach przy użyciu [portalu usługi Mowa](https://cris.ai).
+Wykonaj kroki w następnych sekcjach przy użyciu [portalu usługi Speech Service](https://cris.ai).
 
 ## <a name="import-the-acoustic-dataset"></a>Importowanie zestawu danych akustycznych
 
 Po przygotowaniu plików dźwiękowych i transkrypcji są one gotowe do zaimportowania do portalu internetowego usługi.
 
-Aby zaimportować je, najpierw upewnij się, że wykonano logowanie do [portalu usługi Mowa](https://cris.ai). Następnie z listy rozwijanej **Custom Speech** na wstążce wybierz pozycję **Adaptation data** (Dane adaptacji). Jeśli po raz pierwszy przekazujesz dane do usługi Custom Speech Service, zostanie wyświetlona pusta tabela o nazwie **Datasets** (Zestawy danych). 
+Aby zaimportować je, najpierw upewnij się, że wykonano logowanie do [portalu usługi Speech Portal](https://cris.ai). Następnie z listy rozwijanej **Custom Speech** na wstążce wybierz pozycję **Adaptation data** (Dane adaptacji). Jeśli po raz pierwszy przekazujesz dane do usługi Custom Speech Service, zostanie wyświetlona pusta tabela o nazwie **Datasets** (Zestawy danych). 
 
 W wierszu **Acoustic Datasets** (Zestawy danych akustycznych) wybierz przycisk **Importuj**, a w witrynie zostanie wyświetlona strona umożliwiająca przekazanie nowego zestawu danych.
 
@@ -153,6 +153,6 @@ W tabeli modeli akustycznych zostanie wyświetlona nowa pozycja, która odpowiad
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Pobierz subskrypcję wersji próbnej usługi Mowa](https://azure.microsoft.com/try/cognitive-services/)
+- [Pobierz subskrypcję wersji próbnej usługi Speech Services](https://azure.microsoft.com/try/cognitive-services/)
 - [Rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)
 - [Dane przykładowe Git](https://github.com/Microsoft/Cognitive-Custom-Speech-Service)

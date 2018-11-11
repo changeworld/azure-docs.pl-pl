@@ -4,7 +4,7 @@ description: W tym artykule wyjaśniono, jak usługa Azure Security Center używ
 services: security-center
 cloud: na
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 ms.assetid: ''
 ms.service: security-center
@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/13/2017
-ms.author: terrylan
-ms.openlocfilehash: b93b57d50ccf5d5dfb092bdb71820da77f345878
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 42220a94eb0d0259b8b410e7343ffbfe09e8bfa5
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295466"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007862"
 ---
 # <a name="permissions-in-azure-security-center"></a>Uprawnienia w usłudze Azure Security Center
 
-Azure Security Center korzysta z [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md), który zapewnia [wbudowane role](../role-based-access-control/built-in-roles.md) które można przypisać do użytkowników, grup i usług na platformie Azure.
+Centrum zabezpieczeń Azure używa [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md), która zapewnia [wbudowane role](../role-based-access-control/built-in-roles.md), które można przypisać do użytkowników, grup i usług Azure.
 
 Usługa Security Center ocenia konfigurację zasobów, aby zidentyfikować problemy dotyczące zabezpieczeń i luki w zabezpieczeniach. W usłudze Security Center widoczne są tylko informacje związane z zasobem, gdy masz przypisaną rolę właściciela, współautora lub czytelnika subskrypcji lub grupy zasobów, do której należy zasób.
 
@@ -44,7 +44,7 @@ Poniższa tabela przedstawia role i dozwolonych akcji w usłudze Security Center
 | Rola | Edytowanie zasad zabezpieczeń | Stosowanie zalecenia dotyczące zabezpieczeń zasobu | Odrzuć alerty i zalecenia | Wyświetl alerty i zalecenia |
 |:--- |:---:|:---:|:---:|:---:|
 | Właściciel subskrypcji | X | X | X | X |
-| Współautor subskrypcji | X | X | X | X |
+| Współautor subskrypcji | -- | X | X | X |
 | Właściciel grupy zasobów | -- | X | -- | X |
 | Współautor grupy zasobów | -- | X | -- | X |
 | Czytelnik | -- | -- | -- | X |

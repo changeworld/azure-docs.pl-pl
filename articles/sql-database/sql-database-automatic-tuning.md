@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: f9a9f3d04a3ee7a2917e04c378af135601f3eaac
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 0bde940718165f31ef06f1b09fc071e63d94c8b2
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042057"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345644"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Dostrajanie automatyczne w usłudze Azure SQL Database
 
@@ -71,7 +71,7 @@ Dostępne są następujące opcje dostrajania automatycznego dostępnych w usłu
 
 Automatyczne dostrajanie identyfikuje **CREATE INDEX**, **DROP INDEX**, i **WYMUŚ OSTATNI dobry PLAN** zaleceń, które można zoptymalizować wydajność bazy danych i przedstawia je w [Witryny azure portal](sql-database-advisor-portal.md)i udostępnia je za pośrednictwem [języka T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) i [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).
 
-Można ręcznie zastosować zalecenia dotyczące dostrajania za pomocą portalu lub umożliwić dostrajania automatycznego autonomicznie stosowanie zalecenia dotyczące dostrajania za Ciebie. Korzyści polegające na umożliwieniu systemowi autonomicznie stosowanie zalecenia dotyczące dostrajania za to, że w takim przypadku automatycznie sprawdza poprawność istnieje dodatnią korzyści na wydajność obciążeń, w przeciwnym przypadku regresji wykrycia lub zostaną automatycznie przywrócone zalecenia dostrajania. Należy pamiętać, w przypadku zapytań dotyczy dostosowywania zaleceń, które nie są często wykonywane, fazy weryfikacji może potrwać do 72 godzin zgodnie z projektem. W przypadku, gdy chcesz ręcznie zastosować dostrajania zalecenia, wydajność automatycznego sprawdzania poprawności i mechanizmy wycofanie nie są dostępne.
+Można ręcznie zastosować zalecenia dotyczące dostrajania za pomocą portalu lub umożliwić dostrajania automatycznego autonomicznie stosowanie zalecenia dotyczące dostrajania za Ciebie. Korzyści wynikające z informacją o systemie autonomicznie stosowanie zalecenia dotyczące dostrajania dla Ciebie jest automatycznie weryfikuje istnieje dodatnią korzyści na wydajność obciążeń, a w przypadku braku poprawy istotnie poprawiającą wydajność wykryto będzie Przywróć automatycznie zalecenia dostrajania. Należy pamiętać, w przypadku zapytań dotyczy dostosowywania zaleceń, które nie są często wykonywane, fazy weryfikacji może potrwać do 72 godzin zgodnie z projektem. W przypadku, gdy chcesz ręcznie zastosować dostrajania zalecenia, wydajność automatycznego sprawdzania poprawności i mechanizmy wycofanie nie są dostępne.
 
 Opcje dostrajania automatycznego można niezależnie włączać lub wyłączać na bazę danych lub można je skonfigurować na serwerach logicznych i stosowane w każdej bazie danych, która dziedziczy ustawienia z serwera. Serwerami logicznymi może dziedziczyć ustawień domyślnych platformy Azure dla ustawienia automatycznego dostrajania. Ustawień domyślnych platformy Azure, w tym momencie są ustawione na FORCE_LAST_GOOD_PLAN jest włączona, CREATE_INDEX jest włączona i DROP_INDEX jest wyłączona.
 

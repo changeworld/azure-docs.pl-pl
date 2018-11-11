@@ -1,20 +1,20 @@
 ---
-title: Migrowanie maszyn wirtualnych z usług AWS na platformę Azure za pomocą usługi Azure Site Recovery | Microsoft Docs
+title: Migrowanie maszyn wirtualnych usług AWS na platformę Azure za pomocą usługi Azure Site Recovery | Microsoft Docs
 description: W tym artykule opisano sposób migrowania maszyn wirtualnych z systemem Windows działających w usługach Amazon Web Services (AWS) na platformę Azure za pomocą usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 04e7506562d29e37abb65b7a760fbc9bd707e2c6
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: cd33b7cb45bb165a120a7efe20eba962ec75e273
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078940"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252143"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrowanie maszyn wirtualnych usług Amazon Web Services (AWS) na platformę Azure
 
@@ -119,7 +119,7 @@ Na stronie **Przygotowywanie źródła** wybierz pozycję **+ Serwer konfiguracj
 
 1. Skorzystaj z wystąpienia usługi EC2 z uruchomionym systemem Windows Server 2012 R2, aby utworzyć serwer konfiguracji i zarejestrować go w magazynie usług odzyskiwania.
 2. Skonfiguruj serwer proxy na maszynie wirtualnej wystąpienia usługi EC2, której używasz w roli serwera konfiguracji, aby możliwe było uzyskanie dostępu do [adresów URL usługi](site-recovery-support-matrix-to-azure.md).
-3. Pobierz program [Microsoft Azure Site Recovery Unified Setup](http://aka.ms/unifiedinstaller_wus). Możesz pobrać go na maszynę lokalną, a następnie skopiować na maszynę wirtualną, której używasz jako serwera konfiguracji.
+3. Pobierz program [Microsoft Azure Site Recovery Unified Setup](https://aka.ms/unifiedinstaller_wus). Możesz pobrać go na maszynę lokalną, a następnie skopiować na maszynę wirtualną, której używasz jako serwera konfiguracji.
 4. Wybierz przycisk **Pobierz**, aby pobrać klucz rejestracji magazynu. Skopiuj pobrany plik na maszynę wirtualną, której używasz jako serwera konfiguracji.
 5. Na maszynie wirtualnej kliknij prawym przyciskiem myszy pobrany plik instalatora programu Microsoft Azure Site Recovery Unified Setup, a następnie wybierz polecenie **Uruchom jako administrator**.
 

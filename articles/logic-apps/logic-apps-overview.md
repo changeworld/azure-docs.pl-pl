@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.date: 6/29/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: f9a59187b8de994e9ebfcab01ae2f3046f8f7971
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: f5b39b428b894fcf5dddc0a7435353d174d83b78
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42022994"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231206"
 ---
 # <a name="what-is-azure-logic-apps"></a>Co to jest usługa Azure Logic Apps?
 
@@ -41,7 +41,7 @@ Po każdym aktywowaniu wyzwalacza aparat usługi Logic Apps tworzy wystąpienie 
 
 ![Projektant aplikacji usługi Logic Apps — przykładowa aplikacja logiki](./media/logic-apps-overview/overview.png)
 
-Aplikacje logiki można tworzyć wizualnie za pomocą Projektanta aplikacji usługi Logic Apps dostępnego w witrynie Azure Portal za pośrednictwem przeglądarki i w programie Visual Studio. Aby zbudować kolejne niestandardowe aplikacje logiki, można utworzyć lub zmodyfikować definicje aplikacji logiki w formacie JavaScript Object Notation (JSON) w edytorze „widoku kodu”. Na potrzeby wybierania zadań można również użyć poleceń programu Azure PowerShell i szablonów usługi Azure Resource Manager. Aplikacje logiki są wdrażane i uruchamiane w chmurze na platformie Azure. Aby uzyskać bardziej szczegółowe wprowadzenie, obejrzyj film [Use Azure Enterprise Integration Services to run cloud apps at scale](https://channel9.msdn.com/Events/Connect/2017/T119/) (Korzystanie z usług Enterprise Integration Services platformy Azure na potrzeby uruchamiania aplikacji w chmurze na dużą skalę).
+Aplikacje logiki można tworzyć wizualnie za pomocą Projektanta aplikacji usługi Logic Apps dostępnego w witrynie Azure Portal za pośrednictwem przeglądarki i w programie Visual Studio. Aby zbudować kolejne niestandardowe aplikacje logiki, można utworzyć lub zmodyfikować definicje aplikacji logiki w formacie JavaScript Object Notation (JSON) w edytorze „widoku kodu”. Na potrzeby wybierania zadań można również użyć poleceń programu Azure PowerShell i szablonów usługi Azure Resource Manager. Aplikacje logiki są wdrażane i uruchamiane w chmurze na platformie Azure. Aby uzyskać bardziej szczegółowe wprowadzenie, obejrzyj film [Use Azure Enterprise Integration Services to run cloud apps at scale](https://channel9.msdn.com/Events/Connect/2017/T119/) (Korzystanie z usług Enterprise Integration Services platformy Azure na potrzeby uruchamiania aplikacji w chmurze na dużą skalę).
 
 ## <a name="why-use-logic-apps"></a>Po co korzystać z usługi Logic Apps?
 
@@ -139,7 +139,7 @@ Jeśli masz subskrypcję platformy Azure, wypróbuj ten [przewodnik Szybki start
 ## <a name="support-and-feedback"></a>Pomoc techniczna i opinie
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](http://aka.ms/logicapps-wish).
+* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Następne kroki
 

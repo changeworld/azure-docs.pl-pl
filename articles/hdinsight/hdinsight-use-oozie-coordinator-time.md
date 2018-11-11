@@ -2,20 +2,20 @@
 title: Użyj opartego na czasie koordynatora programu Oozie usługi Hadoop w HDInsight
 description: Użyj opartego na czasie koordynatora programu Oozie usługi Hadoop w HDInsight, Usługa danych big data. Dowiedz się, jak zdefiniować przepływy pracy programu Oozie i koordynatorów oraz przesyłania zadań.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
-ms.author: jasonh
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7f10990d2e4531be42f0553875bf3a01f0a23f58
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 430d5938ff8f5fcfee2239e25486459bc7a629ee
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575664"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016033"
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Użyj opartego na czasie koordynatora programu Oozie z usługą Hadoop w HDInsight do definiowania przepływów pracy i koordynowania zadań
 W tym artykule dowiesz się, jak zdefiniować przepływy pracy i koordynatorów oraz sposób wyzwalania zadania koordynatora, w oparciu o czas. Warto poświęcić na przejście [Oozie korzystanie z HDInsight] [ hdinsight-use-oozie] przed przeczytaniem tego artykułu. Oprócz programu Oozie można także zaplanować zadania przy użyciu usługi Azure Data Factory. Aby poznać usługi Azure Data Factory, zobacz [korzystanie z języka Pig i Hive z usługą Data Factory](../data-factory/transform-data.md).

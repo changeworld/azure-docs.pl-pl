@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: b4c885758f572851f058edb6e7851d650faed9f9
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 683b77e47857e4efbe2c24425953e9a3d83177f9
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38973002"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418850"
 ---
 # <a name="monitor-published-apis"></a>Monitorowanie opublikowanych interfejsów API
 
@@ -36,11 +36,10 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 W poniższym filmie wideo pokazano, jak monitorować usługę API Management przy użyciu usługi Azure Monitor. 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
->
->
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
++ Poznaj [terminologię dotyczącą usługi Azure API Management](api-management-terminology.md).
 + Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
 + Ponadto wykonaj zadania z następującego samouczka: [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
 
@@ -55,17 +54,16 @@ Usługa API Management emituje metryki co minutę, oferując wgląd w stan i kon
 * Nieautoryzowane żądania bramy: liczba żądań interfejsu API, które otrzymały kody odpowiedzi HTTP, w tym 401, 403 i 429.
 * Inne żądania bramy: liczba żądań interfejsu API, które otrzymały kody odpowiedzi HTTP nienależące do żadnej z powyższych kategorii (na przykład 418).
 
+![wykres metryk](./media/api-management-azure-monitor/apim-monitor-metrics.png)
+
 Aby uzyskać dostęp do metryk:
 
 1. Wybierz pozycję **Metryki** w menu w dolnej części strony.
 
     ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-2. Z listy rozwijanej wybierz interesujące Cię metryki (można dodać wiele metryk).  
-    Na przykład wybierz pozycje **Całkowita liczba żądań bramy** i **Żądania bramy zakończone niepowodzeniem**  z listy dostępnych metryk.
-3. Wykres przedstawia łączną liczbę wywołań interfejsu API. Pokazuje również liczbę wywołań interfejsu API zakończonych niepowodzeniem.
-
-    ![wykres metryk](./media/api-management-azure-monitor/apim-monitor-metrics.png)
+2. Z listy rozwijanej wybierz interesujące Cię metryki. Na przykład wybierz metrykę **Żądania bramy zakończone powodzeniem**. Możesz również dodać więcej metryk do wykresu.
+3. Wykres przedstawia łączną liczbę wywołań interfejsu API zakończonych powodzeniem.
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Konfigurowanie reguły alertu na potrzeby nieautoryzowanego żądania
 
@@ -102,6 +100,8 @@ Dzienniki aktywności udostępniają szczegółowe dane operacji wykonywanych w 
 
 Dostęp do dzienników aktywności można uzyskać w usłudze API Management, a dostęp do wszystkich zasobów platformy Azure — w usłudze Azure Monitor. 
 
+![dzienniki aktywności](./media/api-management-azure-monitor/apim-monitor-activity-logs.png)
+
 Aby wyświetlić dzienniki aktywności:
 
 1. Wybierz wystąpienie usługi APIM.
@@ -111,8 +111,6 @@ Aby wyświetlić dzienniki aktywności:
 
 3. Wybierz żądany zakres filtrowania i kliknij przycisk **Zastosuj**.
 
-    ![dzienniki aktywności](./media/api-management-azure-monitor/apim-monitor-activity-logs.png)
-
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 
 Dzienniki diagnostyczne zawierają bogate informacje o operacjach i błędach, które są ważne w przypadku inspekcji, a także pomagają rozwiązywać problemy. Dzienniki diagnostyczne różnią się od dzienników aktywności. Dzienniki aktywności udostępniają szczegółowe dane operacji wykonywanych w stosunku do zasobów platformy Azure. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonanych przez zasób.
@@ -120,7 +118,7 @@ Dzienniki diagnostyczne zawierają bogate informacje o operacjach i błędach, k
 Aby skonfigurować dzienniki diagnostyczne:
 
 1. Wybierz wystąpienie usługi APIM.
-2. Kliknij pozycję **Dzienniki diagnostyczne**.
+2. Kliknij pozycję **Ustawienia diagnostyczne**.
 
     ![dzienniki diagnostyczne](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 

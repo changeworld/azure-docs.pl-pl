@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: af3e2ad623d8d7bfafe676411f9ae3fbee78aab8
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 79fb9869b37e82df3f41a50e4425e7c0cd08c841
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714336"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255272"
 ---
 # <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>Techniczne wymagania wstępne dotyczące tworzenia obrazów maszyn wirtualnych w portalu Azure Marketplace
 Proces dokładnie przed rozpoczęciem przeczytaj pozwolą Ci zrozumieć, gdzie i dlaczego wykonywania kolejnych kroków. Jak to możliwe, możesz należy przygotować informacji o firmie i inne dane, Pobierz potrzebne narzędzia i/lub utworzyć zarówno składników technicznych przed rozpoczęciem procesu tworzenia oferty. Te elementy powinny być jasne z przeglądania w tym artykule.  
@@ -30,7 +30,7 @@ Należy dysponować następującymi elementami gotowe przed rozpoczęciem proces
 * W zależności od systemu operacyjnego przeznaczonych do pracy, należy zainstalować [poleceń cmdlet programu Azure PowerShell](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/WindowsAzurePowershellGet.3f.3f.3fnew.appids) lub [narzędzia interfejsu wiersza polecenia systemu Linux](https://go.microsoft.com/fwlink/?LinkId=253472&clcid=0x409) z [pliki do pobrania Azure](https://azure.microsoft.com/downloads/) strony.
 * Instalowanie Eksploratora usługi Azure Storage z witryny CodePlex.
 * Pobierz i zainstaluj narzędzie Test certyfikacji do certyfikatu platformy Azure:
-  * [http://go.microsoft.com/fwlink/?LinkID=526913](http://go.microsoft.com/fwlink/?LinkID=526913). Należy komputera z systemem Windows, aby uruchomić narzędzie certyfikacji. Jeśli nie masz komputerze z systemem Windows dostępne, można uruchomić narzędzie z maszyny Wirtualnej z systemem Windows na platformie Azure.
+  * [http://go.microsoft.com/fwlink/?LinkID=526913](https://go.microsoft.com/fwlink/?LinkID=526913). Należy komputera z systemem Windows, aby uruchomić narzędzie certyfikacji. Jeśli nie masz komputerze z systemem Windows dostępne, można uruchomić narzędzie z maszyny Wirtualnej z systemem Windows na platformie Azure.
 
 ## <a name="platforms-supported"></a>Obsługiwane platformy
 Można tworzyć oparte na platformie Azure maszyn wirtualnych w systemie Windows lub Linux. Niektóre elementy proces publikowania — takich jak tworzenie zgodnych z platformą Azure wirtualnego dysku twardego (VHD) — Korzystaj z różnych narzędzi i czynności, w zależności od systemu operacyjnego używasz:  

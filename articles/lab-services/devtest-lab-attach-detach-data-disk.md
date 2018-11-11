@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 193b66cf8bdaaefed5f073bec3ecb9050d076f19
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2e168867ed342fb0b0545b5fdc330ba790f78de0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299078"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243559"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Dołączanie lub odłączanie dysku danych do maszyny wirtualnej w usłudze Azure DevTest Labs
 [Usługa Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) zarządza kontami magazynu, skojarzonymi z dyskami danych maszyny wirtualnej. Dołącza użytkownika, nowe dane na dysku do maszyny Wirtualnej, określa typ i rozmiar dysku, która jest potrzebna, a platforma Azure utworzy i automatycznie zarządza dysku. Dysk z danymi następnie może zostać odłączona od maszyny Wirtualnej i albo ponownie dołączyć do tej samej maszyny Wirtualnej lub dołączone do innej maszyny Wirtualnej, który należy do tego samego użytkownika.
@@ -35,7 +35,7 @@ Przed dołączeniem dysk danych do maszyny Wirtualnej, przejrzyj te wskazówki:
 ### <a name="attach-a-new-disk"></a>Dołączyć nowy dysk
 Wykonaj następujące kroki, aby utworzyć i dołączyć nowy dysk danych zarządzanych do maszyny Wirtualnej w usłudze Azure DevTest Labs.
 
-1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
 1. Z listy labs wybierz żądane laboratorium. 
 1. Z listy **Moje maszyny wirtualne**, wybierz uruchomionej maszyny Wirtualnej.

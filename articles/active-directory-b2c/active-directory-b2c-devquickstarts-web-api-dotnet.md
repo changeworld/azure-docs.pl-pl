@@ -1,5 +1,5 @@
 ---
-title: Wywołaj zabezpieczonej platformy ASP.NET web api w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+title: Wywoływanie interfejsu web API platformy .NET z aplikacji sieci web platformy .NET w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Jak utworzyć aplikację sieci Web platformy .NET i wywołania internetowego interfejsu api przy użyciu tokenów dostępu usługi Azure Active Directory B2C i OAuth 2.0.
 services: active-directory-b2c
 author: davidmu1
@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 38ad6d8f3746d856d8c0a73520d55fad9d8344e6
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7296954a17b21183eb8be2744b42289522cf7f57
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157925"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012500"
 ---
-# <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Usługa Azure AD B2C: Wywoływanie internetowego interfejsu API platformy .NET z aplikacji internetowej platformy .NET
+# <a name="call-a-net-web-api-from-a-net-web-app-in-azure-active-directory-b2c"></a>Wywoływanie interfejsu web API platformy .NET z aplikacji sieci web platformy .NET w usłudze Azure Active Directory B2C
 
 Za pomocą usługi Azure AD B2C, można dodać zaawansowane funkcje obsługi tożsamości zarządzania do aplikacji sieci web i interfejsów API sieci web. W tym artykule omówiono sposób żądań tokenów dostępu i marka wywołania z aplikacji sieci web platformy .NET "Lista zadań do wykonania".NET interfejs api sieci web.
 
@@ -31,10 +31,10 @@ Ten artykuł nie obejmuje, jak zaimplementować logowania, rejestracji i zarząd
 Aby utworzyć aplikację sieci web, która wywołuje internetowy interfejs api, musisz:
 
 1. [Tworzenie dzierżawy usługi Azure AD B2C](active-directory-b2c-get-started.md).
-2. [Rejestrowanie internetowego interfejsu api](active-directory-b2c-app-registration.md#register-a-web-api).
-3. [Rejestrowanie aplikacji internetowej](active-directory-b2c-app-registration.md#register-a-web-app).
+2. [Rejestrowanie internetowego interfejsu api](active-directory-b2c-app-registration.md).
+3. [Rejestrowanie aplikacji internetowej](active-directory-b2c-app-registration.md).
 4. [Konfigurowanie zasad](active-directory-b2c-reference-policies.md).
-5. [Udzielanie uprawnień aplikacji do użycia w sieci web sieci web interfejsu api](active-directory-b2c-access-tokens.md#publishing-permissions).
+5. [Udzielanie uprawnień aplikacji do użycia w sieci web sieci web interfejsu api](active-directory-b2c-access-tokens.md).
 
 > [!IMPORTANT]
 > Aplikacja kliencka i interfejs API sieci Web muszą korzystać z tego samego katalogu usługi Azure AD B2C.

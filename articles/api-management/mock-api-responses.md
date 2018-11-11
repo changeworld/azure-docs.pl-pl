@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 916d0cf37ab3588091d4ca2d45f43a5669afe4f1
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 9b9a691cb2bce2357d184420912ab340aee534e8
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094899"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412750"
 ---
 # <a name="mock-api-responses"></a>Pozorowanie odpowiedzi interfejsu API
 
@@ -40,11 +40,15 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
++ Poznaj [terminologię dotyczącą usługi Azure API Management](api-management-terminology.md).
++ Zapoznaj się z [koncepcją zasad w usłudze Azure API Management](api-management-howto-policies.md).
++ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
 
 ## <a name="create-a-test-api"></a>Tworzenie testowego interfejsu API 
 
 Kroki opisane w tej sekcji pokazują, jak utworzyć pusty interfejs API bez zaplecza. W tej sekcji pokazano również, jak dodać operację do interfejsu API. Wywołanie operacji po wykonaniu kroków w tej sekcji powoduje błąd. Błędów nie będzie po ukończeniu kroków opisanych w sekcji „Włączanie pozorowania odpowiedzi”.
+
+![Tworzenie pustego interfejsu API](./media/mock-api-responses/03-MockAPIResponses-01-CreateTestAPI.png)
 
 1. Wybierz pozycję **Interfejsy API** w usłudze **API Management**.
 2. Z menu po lewej stronie wybierz pozycję **+ Dodaj interfejs API**.
@@ -55,19 +59,20 @@ Kroki opisane w tej sekcji pokazują, jak utworzyć pusty interfejs API bez zapl
 
 ## <a name="add-an-operation-to-the-test-api"></a>Dodawanie operacji do testowego interfejsu API
 
+![Dodawanie operacji do interfejsu API](./media/mock-api-responses/03-MockAPIResponses-02-AddOperation.png)
+
 1. Wybierz interfejs API utworzony w poprzednim kroku.
 2. Kliknij przycisk **+ Dodaj operację**.
-    ![Pozorowana odpowiedź operacji](./media/mock-api-responses/mock-api-responses-add-operation.png)
 
-    |Ustawienie|Wartość|Opis|
-    |---|---|---|
-    |**Nazwa wyświetlana**|*Wywołanie testowe*|Nazwa, która jest wyświetlana w **portalu deweloperów**.|
-    |**Adres URL** (czasownik HTTP)|GET|Możesz wybrać jeden z wstępnie zdefiniowanych czasowników HTTP.|
-    |**Adres URL** |*/test*|Ścieżka adresu URL dla interfejsu API. |
-    |**Opis**||Podaj opis operacji, który będzie służyć do zapewnienia dokumentacji dla deweloperów używających tego interfejsu API w **portalu deweloperów**.|
-    |Karta **Zapytanie**||Pozwala dodać parametry zapytania. Oprócz podawania nazwy i opisu możesz podać wartości, które mogą być przypisane do tego parametru. Jedna z wartości może być oznaczona jako domyślna (opcjonalnie).|
-    |Karta **Żądanie**||Pozwala zdefiniować typy zawartości żądania, przykłady i schematy. |
-    |Karta **Odpowiedź**|Zobacz kroki pod tą tabelą.|Zdefiniuj kody stanów odpowiedzi, typy zawartości, przykłady i schematy.|
+    | Ustawienie             | Wartość                             | Opis                                                                                                                                                                                   |
+    |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | **Nazwa wyświetlana**    | *Wywołanie testowe*                       | Nazwa, która jest wyświetlana w **portalu deweloperów**.                                                                                                                                       |
+    | **Adres URL** (czasownik HTTP) | GET                               | Możesz wybrać jeden z wstępnie zdefiniowanych czasowników HTTP.                                                                                                                                         |
+    | **Adres URL**             | */test*                           | Ścieżka adresu URL dla interfejsu API.                                                                                                                                                                       |
+    | **Opis**     |                                   | Podaj opis operacji, który będzie służyć do zapewnienia dokumentacji dla deweloperów używających tego interfejsu API w **portalu deweloperów**.                                                    |
+    | Karta **Zapytanie**       |                                   | Pozwala dodać parametry zapytania. Oprócz podawania nazwy i opisu możesz podać wartości, które mogą być przypisane do tego parametru. Jedna z wartości może być oznaczona jako domyślna (opcjonalnie). |
+    | Karta **Żądanie**     |                                   | Pozwala zdefiniować typy zawartości żądania, przykłady i schematy.                                                                                                                                  |
+    | Karta **Odpowiedź**    | Zobacz kroki pod tą tabelą. | Zdefiniuj kody stanów odpowiedzi, typy zawartości, przykłady i schematy.                                                                                                                           |
 
 3. Wybierz kartę **Odpowiedź** znajdującą się pod adresem URL, nazwą wyświetlaną i opisem pola.
 4. Kliknij pozycję **+ Dodaj odpowiedź**.
@@ -79,16 +84,25 @@ Kroki opisane w tej sekcji pokazują, jak utworzyć pusty interfejs API bez zapl
 
 ## <a name="enable-response-mocking"></a>Włączanie pozorowania odpowiedzi
 
+![Włączanie pozorowania odpowiedzi](./media/mock-api-responses/03-MockAPIResponses-03-EnableMocking.png)
+
 1. Wybierz interfejs API utworzony w kroku „Tworzenie testowego interfejsu API”.
 2. Wybierz dodaną operację testową.
 3. W oknie po prawej stronie kliknij kartę **Projekt**.
-4. W oknie **Przychodzące przetwarzanie** kliknij ikonę ołówka.
-5. Na karcie **Pozorowanie** wybierz opcję **Odpowiedzi statyczne** dla wartości **Zachowanie pozorowane**.
-6. W polu tekstowym **API Management returns the following response:** (Usługa API Management zwraca następującą odpowiedź:) wpisz tekst **200 OK, application/json**. Taki wybór oznacza, że Twój interfejs API powinien zwrócić przykład odpowiedzi zdefiniowany w poprzedniej sekcji.
+4. W oknie **Przychodzące przetwarzanie** kliknij pozycję **+ Dodaj zasady**.
+5. W galerii wybierz kafelek **Pozorowanie odpowiedzi**.
+
+    ![Kafelek zasad pozorowania odpowiedzi](./media/mock-api-responses/mock-responses-policy-tile.png)
+
+6. W polu tekstowym **Odpowiedź usługi API Management** wpisz tekst **200 OK, application/json**. Taki wybór oznacza, że Twój interfejs API powinien zwrócić przykład odpowiedzi zdefiniowany w poprzedniej sekcji.
+
     ![Włączanie pozorowania odpowiedzi](./media/mock-api-responses/mock-api-responses-set-mocking.png)
+
 7. Kliknij pozycję **Zapisz**.
 
 ## <a name="test-the-mocked-api"></a>Testowanie pozorowanego interfejsu API
+
+![Testowanie pozorowanego interfejsu API](./media/mock-api-responses/03-MockAPIResponses-04-TestMocking.png)
 
 1. Wybierz interfejs API utworzony w kroku „Tworzenie testowego interfejsu API”.
 2. Otwórz kartę **Test**.
@@ -99,15 +113,15 @@ Kroki opisane w tej sekcji pokazują, jak utworzyć pusty interfejs API bez zapl
 
 4. Wybierz pozycję **Wyślij**, aby wykonać wywołanie testowe.
 5. W obszarze **Odpowiedź HTTP** zostanie wyświetlony kod JSON podany jako przykład w pierwszej sekcji tego samouczka.
+
     ![Włączanie pozorowania odpowiedzi](./media/mock-api-responses/mock-api-responses-test-response.png)
 
 ## <a name="video"></a>Połączenia wideo
 
 > [!VIDEO https://www.youtube.com/embed/i9PjUAvw7DQ]
-> 
-> 
 
 ## <a name="next-steps"></a>Następne kroki
+
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]

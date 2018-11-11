@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 44eec21f4687d2df64c59d41cdb02c6ef2268f82
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: b5d3a735bd490468e989ac29c9f082475cc7eab3
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528701"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283375"
 ---
 # <a name="azure-data-lake-storage-gen2-preview-hierarchical-namespace"></a>Azure Data Lake Gen2 — wersja zapoznawcza hierarchiczne — przestrzeń nazw
 
-Mechanizm klucza, który umożliwia usługi Azure Data Lake Gen2 — wersja zapoznawcza zapewnienie wydajności systemu plików obiektów magazynu oraz ceny, to dodanie **hierarchicznej przestrzeni nazw**. Umożliwia to zbiór obiektów/plików, w ramach konta, które mają być organizowane w hierarchii katalogów i podkatalogów zagnieżdżonych w taki sam sposób, że system plików na komputerze jest zorganizowana. Dzięki hierarchicznej przestrzeni nazw, włączone Data Lake Storage Gen2 zapewnia skalowalność i opłacalność magazynie obiektów przy użyciu semantyki systemu plików, które są znane analytics aparatów i struktur.
+Mechanizm klucza, który umożliwia usługi Azure Data Lake Gen2 — wersja zapoznawcza zapewnienie wydajności systemu plików obiektów magazynu oraz ceny, to dodanie **hierarchicznej przestrzeni nazw**. Umożliwia to zbiór obiektów/plików, w ramach konta, które mają być organizowane w hierarchii katalogów i podkatalogów zagnieżdżonych w taki sam sposób, że system plików na komputerze jest zorganizowana. W hierarchicznej przestrzeni nazw, włączone konto magazynu staje się możliwość zapewnienia skalowalności i ekonomiczności magazynie obiektów przy użyciu semantyki systemu plików, które są znane analytics aparatów i struktur.
 
 ## <a name="the-benefits-of-the-hierarchical-namespace"></a>Korzyści wynikające z hierarchicznej przestrzeni nazw
 
@@ -26,7 +26,7 @@ Mechanizm klucza, który umożliwia usługi Azure Data Lake Gen2 — wersja zapo
 
 Następujące korzyści są skojarzone z systemami plików, które implementują hierarchicznej przestrzeni nazw za pośrednictwem danych obiektów blob:
 
-- **Niepodzielne manipulowania katalogu:** magazyny obiektów w przybliżeniu hierarchii katalogów przez przyjęcie Konwencji osadzania ukośnikami (/) w nazwie obiektu do określenia segmentów ścieżki. Gdy ta Konwencja działa w przypadku organizowania obiektów, Konwencji zapewnia nie pomocy dla akcji, takich jak przenoszenie, zmiana nazwy lub usuwanie katalogów. Bez rzeczywistego katalogów aplikacji musi przetworzyć potencjalnie milionów poszczególne obiekty BLOB do osiągnięcia poziomie katalogu zadania. Z kolei hierarchicznej przestrzeni nazw przetwarza te zadania, aktualizując pojedynczy wpis (katalog nadrzędny). 
+- **Manipulowanie Atomic katalogu:** magazyny obiektów w przybliżeniu hierarchii katalogów przez przyjęcie Konwencji osadzania ukośnikami (/) w nazwie obiektu do określenia segmentów ścieżki. Gdy ta Konwencja działa w przypadku organizowania obiektów, Konwencji zapewnia nie pomocy dla akcji, takich jak przenoszenie, zmiana nazwy lub usuwanie katalogów. Bez rzeczywistego katalogów aplikacji musi przetworzyć potencjalnie milionów poszczególne obiekty BLOB do osiągnięcia poziomie katalogu zadania. Z kolei hierarchicznej przestrzeni nazw przetwarza te zadania, aktualizując pojedynczy wpis (katalog nadrzędny).
 
     Optymalizacja znaczne jest szczególnie istotne dla wielu platform analizy danych big data. Narzędzia, takie jak Hive, Spark, itp. często zapisywać dane wyjściowe do tymczasowej lokalizacji, a następnie zmień nazwę lokalizacji podczas kończenia zadania. Bez hierarchicznej przestrzeni nazw to zmiana nazwy często może trwać dłużej, niż analizami przetworzyć sam. Mniejsze opóźnienia i zadania jest równa niższy całkowity koszt posiadania (TCO) dla obciążeń analitycznych.
 

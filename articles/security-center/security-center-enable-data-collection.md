@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/5/2018
+ms.date: 11/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: d0455e549745e743e7a8c0f65cb56a1e16dfb131
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 9100722042bfdcbee48af1fc44e294df046c828e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044080"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007216"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w usłudze Azure Security Center
 Usługa Security Center zbiera dane z maszyn wirtualnych (VM) i komputerów spoza platformy Azure do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy. Przykłady takich danych to: operacyjnych, typ i wersja, dzienniki systemu (Windows dzienniki zdarzeń), operacyjnego systemu uruchomione procesy, Nazwa maszyny, adresy IP i zalogowanego użytkownika. Program Microsoft Monitoring Agent kopiuje również pliki zrzutu awaryjnego do swojego obszaru roboczego.
@@ -87,7 +87,7 @@ Aby wybrać obszar roboczy utworzony przez usługę Security Center:
 -   Usługa Security Center spowoduje automatyczne włączenie rozwiązania Security Center w obszarze roboczym na warstwy cenowej dla subskrypcji. 
 
 > [!NOTE]
-> Obszary robocze utworzone przez usługę Security Center nie są naliczane opłaty za usługi Log Analytics. Obszary robocze utworzone przez usługę Security Center w warstwie taryfowy usługi log Analytics nie ma wpływu na rozliczenia w usłudze Security Center. Rozliczanie usługi Security Center zawsze zależy od zasad zabezpieczeń usługa Security Center i rozwiązań zainstalowane w obszarze roboczym. Dla warstwy bezpłatnej, usługa Security Center umożliwia *SecurityCenterFree* rozwiązania w domyślnym obszarze roboczym. W przypadku warstwy Standard usługi Security Center umożliwia *zabezpieczeń* rozwiązania w domyślnym obszarze roboczym.
+> Obszary robocze utworzone przez usługę Security Center w warstwie taryfowy usługi log Analytics nie ma wpływu na rozliczenia w usłudze Security Center. Rozliczanie usługi Security Center zawsze zależy od zasad zabezpieczeń usługa Security Center i rozwiązań zainstalowane w obszarze roboczym. Dla warstwy bezpłatnej, usługa Security Center umożliwia *SecurityCenterFree* rozwiązania w domyślnym obszarze roboczym. W przypadku warstwy Standard usługi Security Center umożliwia *zabezpieczeń* rozwiązania w domyślnym obszarze roboczym.
 
 Aby uzyskać więcej informacji na temat cen, zobacz [cennik usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
