@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: c69a61f19b55cd325cd594173dbf3b5f2b4576b8
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 02e69a9e3442f276e89e8515fb506ddd876ad2d2
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962932"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015778"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co to są alertów klasycznych na platformie Microsoft Azure?
 
@@ -29,7 +29,7 @@ W ciągu ostatnich usługi Azure Monitor usługi Application Insights, Log Analy
 
 Można wyświetlić alertów klasycznych tylko na ekranie użytkownika alertów klasycznych w witrynie Azure Portal. Pobierz ten ekran z **wyświetlanie alertów klasycznych** przycisk na ekranie alertów. 
 
- ![Opcje alertów w witrynie Azure portal](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png)�
+ ![Opcje alertów w witrynie Azure portal](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png)
 
 Nowe środowisko użytkownika alertów ma następujące zalety nad środowiskiem alertów klasycznych:
 -   **Lepsze systemu powiadomień** -wszystkich nowszych alertów korzystanie z grup akcji, które noszą nazwy grup powiadomienia i akcje, które mogą być ponownie używane w wielu alertów. Klasyczne alertów metryk i alertów usługi Log Analytics starsze, nie należy używać grup akcji.

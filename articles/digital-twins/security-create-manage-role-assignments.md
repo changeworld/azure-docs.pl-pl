@@ -1,6 +1,6 @@
 ---
-title: Opis bliźniaczych reprezentacji cyfrowych platformy Azure, łączność urządzeń i uwierzytelniania | Dokumentacja firmy Microsoft
-description: Za pomocą Twins cyfrowych platformy Azure do nawiązywania połączenia i uwierzytelniania urządzeń
+title: Łączność urządzeń Twins cyfrowych platformy Azure i uwierzytelniania | Dokumentacja firmy Microsoft
+description: Użyj Twins cyfrowych platformy Azure do nawiązywania połączenia i uwierzytelniania urządzeń
 author: lyrana
 manager: alinast
 ms.service: digital-twins
@@ -8,28 +8,28 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lyrana
-ms.openlocfilehash: adfb4c369ea1b324da8562a5b0b245ebdecff602
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 42c1b0fbb6d87e9ed35d4ecce3971d8512eed4d4
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324188"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012466"
 ---
-# <a name="create-and-manage-role-assignments"></a>Tworzenie i Zarządzanie przypisaniami ról
+# <a name="create-and-manage-role-assignments"></a>Tworzenie przypisań ról i zarządzanie nimi
 
 Azure Twins cyfrowego używa kontroli dostępu opartej na rolach ([RBAC](./security-role-based-access-control.md)) do zarządzania dostępem do zasobów.
 
 Obejmuje każdego przypisania roli:
 
-* **Identyfikator obiektu** (identyfikator usługi Azure Active Directory, identyfikator obiektu nazwy głównej usługi lub nazwa domeny).
-* **Typ identyfikatora obiektu**.
-* A **identyfikator definicji roli**.
-* A **ścieżkę miejsca**.
-* (W większości przypadków) usługi Azure Active Directory **identyfikator dzierżawy**.
+* **Identyfikator obiektu**: identyfikator usługi Azure Active Directory, identyfikator obiektu nazwy głównej usługi lub nazwy domeny
+* **Typ identyfikatora obiektu**
+* **Identyfikator definicji roli**
+* **Ścieżka miejsca**
+* **Identyfikator dzierżawy**: W większości przypadków, identyfikator dzierżawy usługi Azure Active Directory
 
 ## <a name="role-definition-identifiers"></a>Identyfikatorów definicji roli
 
-W poniższej tabeli przedstawiono, jakie można uzyskać, badając interfejsu API systemu/role:
+W poniższej tabeli przedstawiono, jakie można uzyskać, badając systemu/role interfejsu API.
 
 | **Rola** | **Identyfikator** |
 | --- | --- |
@@ -41,11 +41,11 @@ W poniższej tabeli przedstawiono, jakie można uzyskać, badając interfejsu AP
 | Użytkownik | b1ffdb77-c635-4E7E-ad25-948237d85b30 |
 | Specjalista ds. pomocy technicznej | 6e46958b-dc62-4e7c-990c-c3da2e030969 |
 | Instalator urządzenia | b16dd9fe-4efe-467b-8c8c-720e2ff8817c |
-| GatewayDevice | d4c69766-e9bd-4e61-BFC1-d8b6e686c7a8 |
+| Urządzenie bramy | d4c69766-e9bd-4e61-BFC1-d8b6e686c7a8 |
 
 ## <a name="supported-objectidtypes"></a>Obsługiwane ObjectIdTypes
 
-Obsługiwane `ObjectIdTypes` są:
+Obsługiwane `ObjectIdTypes`:
 
 * `UserId`
 * `DeviceId`
@@ -62,15 +62,15 @@ HTTP POST /api/v1.0/roleassignments
 
 | **Nazwa** | **Wymagane** | **Typ** | **Opis** |
 | --- | --- | --- | --- |
-| Identyfikator RoleId| Yes |ciąg | Identyfikator definicji roli. Definicje ról i ich identyfikatorów można znaleźć, badając interfejsu API systemu. |
-| Identyfikator obiektu | Yes |ciąg | Identyfikator przypisania roli, które muszą być sformatowane zgodnie z jego skojarzony typ obiektu. Aby uzyskać `DomainName` ObjectIdType, identyfikator obiektu musi zaczynać się od `“@”` znaków. |
-| objectIdType | Yes |ciąg | Typ przypisania roli. Musi mieć jedną z następujących wierszy w tej tabeli. |
-| Identyfikator dzierżawy | Różna | ciąg |Identyfikator dzierżawy. Niedozwolone dla `DeviceId` i `TenantId` ObjectIdTypes. Wymagane dla `UserId` i `ServicePrincipalId` ObjectIdTypes. Opcjonalnie na potrzeby ObjectIdType nazwa_domeny. |
-| Ścieżka * | Yes | ciąg |Ścieżka pełny dostęp do `Space` obiektu. Przykład: `/{Guid}/{Guid}` Jeśli odpowiadającym wymaga przypisania roli dla całego wykresu, należy określić `"/"` (który wyznacza katalog główny). Jednakże, który jest odradzane i **zawsze należy stosować zasadę najmniejszych uprawnień**. |
+| Identyfikator RoleId| Yes |Ciąg | Identyfikator definicji roli. Znajdź definicje ról i ich identyfikatorów, badając interfejsu API systemu. |
+| Identyfikator obiektu | Yes |Ciąg | Identyfikator przypisania roli, które muszą być sformatowane zgodnie z jego skojarzony typ obiektu. Aby uzyskać `DomainName` ObjectIdType, identyfikator obiektu musi zaczynać się od `“@”` znaków. |
+| objectIdType | Yes |Ciąg | Typ przypisania roli. Musi mieć jedną z następujących wierszy w tej tabeli. |
+| Identyfikator dzierżawy | Różna | Ciąg |Identyfikator dzierżawy. Niedozwolone dla `DeviceId` i `TenantId` ObjectIdTypes. Wymagane dla `UserId` i `ServicePrincipalId` ObjectIdTypes. Opcjonalnie na potrzeby ObjectIdType nazwa_domeny. |
+| Ścieżka * | Yes | Ciąg |Ścieżka pełny dostęp do `Space` obiektu. Może to być na przykład `/{Guid}/{Guid}`. Jeśli identyfikator wymaga przypisania roli dla całego wykresu, należy określić `"/"`. Ten znak wyznacza katalogu głównego, ale nie zaleca się jej użycie. Zawsze postępuj zgodnie z zasadą najniższych uprawnień. |
 
 ## <a name="sample-configuration"></a>Przykładowa konfiguracja
 
-Użytkownik wymaga dostępu administracyjnego do floor miejsca dzierżawy:
+W tym przykładzie użytkownik musi dostęp administracyjny do floor miejsca dzierżawy.
 
   ```JSON
     {
@@ -82,7 +82,7 @@ Użytkownik wymaga dostępu administracyjnego do floor miejsca dzierżawy:
     }
   ```
 
-Aplikacja, przebiegów przetestować scenariusze pozorowanie urządzenia i czujniki:
+W tym przykładzie aplikacja jest uruchamiana scenariuszy testowania pozorowanie urządzenia i czujniki.
 
   ```JSON
     {
@@ -94,7 +94,7 @@ Aplikacja, przebiegów przetestować scenariusze pozorowanie urządzenia i czujn
     }
   ```
 
-Do wszystkich użytkowników domeny otrzymają dostęp do odczytu dla miejsca do magazynowania, czujniki i użytkowników, w tym ich odpowiednie powiązane obiekty:
+Wszyscy użytkownicy, którzy należą do domeny otrzymują dostęp do odczytu dla miejsca do magazynowania, czujniki i użytkowników. Ten dostęp obejmuje ich odpowiednich powiązanych obiektów.
 
   ```JSON
     {
@@ -105,7 +105,7 @@ Do wszystkich użytkowników domeny otrzymają dostęp do odczytu dla miejsca do
     }
   ```
 
-Aby UZYSKAĆ przypisania roli:
+Pobierz użycie można pobrać przypisania roli.
 
 ```plaintext
 HTTP GET /api/v1/roleassignments?path={path}
@@ -115,7 +115,7 @@ HTTP GET /api/v1/roleassignments?path={path}
 | --- | --- | --- | --- | --- |
 | Ścieżka | Ścieżka | True | Ciąg | Pełna ścieżka do obszaru |
 
-Aby usunąć przypisania roli:
+Usuń umożliwia usunięcie przypisania roli.
 
 ```plaintext
 HTTP DELETE /api/v1/roleassignments/{id}

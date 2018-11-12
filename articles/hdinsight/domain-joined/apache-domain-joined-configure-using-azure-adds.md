@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/9/2018
-ms.openlocfilehash: 5707f97dff099d1ad914dcf3faa96cc287d48de9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: f0727d7ad415c718c01361cba8e8822a43298f66
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245668"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300731"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra HDInsight z pakietem Enterprise Security za pomocą usługi Azure Active Directory Domain Services
 
@@ -64,6 +64,9 @@ Po utworzeniu tożsamości zarządzanej i biorąc pod uwagę odpowiednią rolę,
 ![HDInsight zarządzane przypisania roli Operator tożsamości](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
 
 ## <a name="networking-considerations"></a>Zagadnienia dotyczące pracy w sieci
+
+> [!NOTE]
+> Azure AD DS musi zostać wdrożony w sieci wirtualnej na podstawie usługi Azure Resource Manager (ARM). Klasyczne sieci wirtualne nie są obsługiwane dla usługi Azure AD — DS. Zapoznaj się [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started-network) Aby uzyskać więcej informacji.
 
 Po włączeniu usług AD DS platformy Azure, lokalnego serwera usługi nazw domen (DNS, Domain Name System) działa na maszynach wirtualnych (VM) AD. Konfigurowanie usługi Azure usług AD DS Virtual Network (VNET) do użycia tych niestandardowych serwerów DNS. Aby znaleźć odpowiednie adresy IP, wybierz **właściwości** w obszarze **Zarządzaj** kategorii i spójrz na adresy IP na liście poniżej **adresu IP w sieci wirtualnej**.
 

@@ -2,19 +2,19 @@
 title: Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight
 description: Dowiedz się, jak używać zarządzanie zasobami klastry Spark w usłudze Azure HDInsight w celu zapewnienia lepszej wydajności.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.author: jasonh
-ms.openlocfilehash: d7395231662d79d284bdf061e651602dea392c28
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 166d52322504e57e01a4bd798252fc956c1a3e44
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051502"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014588"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight 
 
@@ -76,7 +76,7 @@ Parametry konfiguracji trzy można skonfigurować na poziomie klastra (dla wszys
 2. Wartości domyślne są dobrze cztery aplikacji Spark jednocześnie uruchomione w klastrze. Te wartości można zmienić z poziomu interfejsu użytkownika, jak pokazano na poniższym zrzucie ekranu:
 
     ![Ustaw parametry przy użyciu narzędzia Ambari](./media/apache-spark-resource-manager/set-executor-parameters.png)
-3. Kliknij przycisk **Zapisz** można zapisać zmian konfiguracji. W górnej części strony wyświetlany jest monit o ponowne uruchomienie wszystkich odpowiednich usług. Kliknij przycisk **ponowne uruchomienie**.
+3. Kliknij przycisk **Zapisz** można zapisać zmian konfiguracji. W górnej części strony wyświetlany jest monit o ponowne uruchomienie wszystkich odpowiednich usług. Kliknij przycisk **Uruchom ponownie**.
 
     ![Uruchom ponownie usługi](./media/apache-spark-resource-manager/restart-services.png)
 

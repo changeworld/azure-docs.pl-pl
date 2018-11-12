@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 2ab7e0c5d4a62b9c4fa0492b9bc9a19dfab36c74
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 774ca8d0c893a5672c7f04f3530679204b7262c6
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005057"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51513769"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analizowanie danych usługi Log Analytics w usłudze Azure Monitor
 
-Dane dzienników zbieranych przez usługi Azure Monitor są przechowywane w obszarze roboczym usługi Log Analytics, która jest oparta na [Eksploratora danych usługi Azure](/data-explorer). Gromadzi dane telemetryczne z różnych źródeł i używa [języka w Eksploratorze danych zapytań](/kusto) do pobierania i analizowania danych.
+Dane dzienników zbieranych przez usługi Azure Monitor są przechowywane w obszarze roboczym usługi Log Analytics, która jest oparta na [Eksploratora danych usługi Azure](/azure/data-explorer). Gromadzi dane telemetryczne z różnych źródeł i używa [języka w Eksploratorze danych zapytań](/azure/kusto/query) do pobierania i analizowania danych.
 
 > [!NOTE]
 > Usługa log Analytics wcześniej zostało potraktowane jako własnej usługi na platformie Azure. On teraz jest traktowane jako część usługi Azure Monitor i koncentruje się na magazynu i analizy danych dziennika przy użyciu języka zapytań. Funkcje, które były traktowane jako część usługi Log Analytics, takie jak Windows i Linux agentów do zbierania danych, widoków, aby wizualizować istniejące dane i alerty do aktywnego powiadamiania użytkownika o problemach, nie uległy zmianie, ale teraz są traktowane jako część usługi Azure Monitor.

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: cc3a835c0322aded4a92b15c1320259780ffb6d2
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 6ba2fd85e23f3a0b634319f7399f97bec9ef3954
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249224"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346426"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -114,16 +114,6 @@ Następujące kroki użycia [APT](https://wiki.debian.org/Apt) do zainstalowania
     sudo apt-get install azure-functions-core-tools
     ```
 
-### <a name="v1"></a>W wersji 1.x
-
-Środowisko uruchomieniowe 1.x funkcji korzysta z oryginalną wersję narzędzia. Ta wersja programu .NET Framework (4.7.1) i jest obsługiwana tylko na komputerach z Windows. Przed zainstalowaniem wersji 1.x narzędzia, należy najpierw [zainstalować oprogramowanie NodeJS](https://docs.npmjs.com/getting-started/installing-node), która obejmuje npm.
-
-Aby zainstalować narzędzia 1.x do wersji, użyj następującego polecenia:
-
-```bash
-npm install -g azure-functions-core-tools@v1
-```
-
 ## <a name="create-a-local-functions-project"></a>Tworzenie projektu funkcji lokalnej
 
 Katalog projektu funkcji zawiera pliki [host.json](functions-host-json.md) i [local.settings.json](#local-settings-file), wraz z podfolderów, które zawierają kod dla poszczególnych funkcji. Ten katalog jest odpowiednikiem aplikacji funkcji na platformie Azure. Aby dowiedzieć się więcej na temat funkcji strukturę folderów, zobacz [przewodnik dla deweloperów usługi Azure Functions](functions-reference.md#folder-structure).
@@ -214,7 +204,7 @@ Wartości ustawień aplikacji funkcji mogą być odczytywane w kodzie jako zmien
 
 + [Wstępnie skompilowany C#](functions-dotnet-class-library.md#environment-variables)
 + [Skryptu C# (csx)](functions-reference-csharp.md#environment-variables)
-+ [F # skrypt (.fsx)](functions-reference-fsharp.md#environment-variables)
++ [F#Skrypt (.fsx)](functions-reference-fsharp.md#environment-variables)
 + [Java](functions-reference-java.md#environment-variables) 
 + [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -288,7 +278,7 @@ Te opcje można również określić w poleceniu za pomocą następujących argu
 | Argument     | Opis                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Wersja 2.x) Generuje tego samego języka C# (csx) Szablony skryptów używane w wersji 1.x i w portalu. |
-| **`--language -l`**| Szablon, język programowania, takich jak C#, F # lub JavaScript. Ta opcja jest wymagana w wersji 1.x. W wersji 2.x, użyj tej opcji nie lub wybierz język, który pasuje do środowiska wykonawczego procesu roboczego. |
+| **`--language -l`**| Szablon, język programowania, takich jak C#, F#, czy języka JavaScript. Ta opcja jest wymagana w wersji 1.x. W wersji 2.x, użyj tej opcji nie lub wybierz język, który pasuje do środowiska wykonawczego procesu roboczego. |
 | **`--name -n`** | Nazwa funkcji. |
 | **`--template -t`** | Użyj `func templates list` polecenie, aby wyświetlić pełną listę dostępnych szablonów dla każdego z obsługiwanych języków.   |
 
