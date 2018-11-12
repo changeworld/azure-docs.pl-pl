@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9cd5789cd2ee6e167f3d3ed05c2fde077f7ec9a3
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 2043e0fc9fa63903073311856e7e8d31fb34c506
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344945"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015353"
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Usługi Azure AD B2C: Tokeny dostępu żądania
 
-Token dostępu (oznaczonego jako **dostępu\_tokenu** w odpowiedzi z usługi Azure AD B2C) jest formą token zabezpieczający, który klient może używać dostępu do zasobów, które są zabezpieczone przez [serwera autoryzacji](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-protocols#the-basics), takich jak interfejs API sieci web. Tokeny dostępu są reprezentowane jako [tokenów Jwt](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#types-of-tokens) i zawierają informacje o serwerze zamierzony zasobów i udzielone uprawnienia do serwera. Podczas wywoływania serwera zasobów, token dostępu musi być obecne w żądaniu HTTP.
+Token dostępu (oznaczonego jako **dostępu\_tokenu** w odpowiedzi z usługi Azure AD B2C) jest formą token zabezpieczający, który klient może używać dostępu do zasobów, które są zabezpieczone przez [serwera autoryzacji](active-directory-b2c-reference-protocols.md), takich jak interfejs API sieci web. Tokeny dostępu są reprezentowane jako [tokenów Jwt](active-directory-b2c-reference-tokens.md) i zawierają informacje o serwerze zamierzony zasobów i udzielone uprawnienia do serwera. Podczas wywoływania serwera zasobów, token dostępu musi być obecne w żądaniu HTTP.
 
 W tym artykule omówiono sposób konfigurowania aplikacji klienckiej i interfejs API sieci web w celu uzyskania **dostępu\_tokenu**.
 
@@ -37,22 +37,22 @@ Przed żądania tokenu dostępu, należy najpierw zarejestrować internetowy int
 ### <a name="register-a-web-api"></a>Rejestrowanie internetowego interfejsu API
 
 1. W menu funkcji usługi Azure AD B2C w witrynie Azure portal kliknij **aplikacji**.
-1. Kliknij przycisk **+ Dodaj** w górnej części menu.
-1. Wprowadź wartość **Nazwa**, która będzie opisywać aplikację na potrzeby klientów. Na przykład można wprowadzić nazwę "Interfejs API Contoso".
-1. Przestaw przełącznik **Uwzględnij aplikację internetową/internetowy interfejs API** na wartość **Tak**.
-1. Wprowadź dowolną wartość w **adresy URL odpowiedzi**. Na przykład wprowadź wartość `https://localhost:44316/`. Wartość nie ma znaczenia, ponieważ interfejs API powinien nie otrzymywać tokenu bezpośrednio z usługi Azure AD B2C.
-1. Wprowadź **identyfikator URI aplikacji**. Jest to identyfikator używany na potrzeby interfejsu API sieci Web. Na przykład wprowadź wartość w polu "Uwagi". **Identyfikator URI Identyfikatora aplikacji** będzie wówczas `https://{tenantName}.onmicrosoft.com/notes`.
-1. Kliknij pozycję **Utwórz**, aby zarejestrować aplikację.
-1. Kliknij nowo utworzoną aplikację i skopiuj globalnie unikatowy **identyfikator klienta aplikacji**, który będzie używany w dalszej części kodu.
+2. Kliknij przycisk **+ Dodaj** w górnej części menu.
+3. Wprowadź wartość **Nazwa**, która będzie opisywać aplikację na potrzeby klientów. Na przykład można wprowadzić nazwę "Interfejs API Contoso".
+4. Przestaw przełącznik **Uwzględnij aplikację internetową/internetowy interfejs API** na wartość **Tak**.
+5. Wprowadź dowolną wartość w **adresy URL odpowiedzi**. Na przykład wprowadź wartość `https://localhost:44316/`. Wartość nie ma znaczenia, ponieważ interfejs API powinien nie otrzymywać tokenu bezpośrednio z usługi Azure AD B2C.
+6. Wprowadź **identyfikator URI aplikacji**. Jest to identyfikator używany na potrzeby interfejsu API sieci Web. Na przykład wprowadź wartość w polu "Uwagi". **Identyfikator URI Identyfikatora aplikacji** będzie wówczas `https://{tenantName}.onmicrosoft.com/notes`.
+7. Kliknij pozycję **Utwórz**, aby zarejestrować aplikację.
+8. Kliknij nowo utworzoną aplikację i skopiuj globalnie unikatowy **identyfikator klienta aplikacji**, który będzie używany w dalszej części kodu.
 
 ### <a name="publishing-permissions"></a>Publikowanie uprawnień
 
 Zakresy, które są analogiczne do uprawnień, są wymagane, gdy wywołuje aplikację interfejsu API. Niektóre przykłady zakresy są "Odczyt" lub "write". Załóżmy, że chcesz, aby usługi sieci web lub aplikacji natywnej do "Odczyt" z interfejsu API. Aplikacja może wywołać usługi Azure AD B2C i żądania tokenu dostępu, który zapewnia dostęp do zakresu od "Odczyt". Aby emitować token dostępu usługi Azure AD B2C aplikacja musi mieć uprawnienie do "Odczyt" z określonego interfejsu API. Aby to zrobić, Twój interfejs API najpierw musi opublikować zakresu "Odczyt".
 
 1. W ramach usługi Azure AD B2C **aplikacje** menu Otwórz interfejsu API sieci web aplikacji ("interfejs API Contoso").
-1. Kliknij pozycję **Opublikowane zakresy**. Jest to miejsce, w którym można zdefiniować uprawnienia (zakresy), które mogą być udzielone innym aplikacjom.
-1. Dodaj **wartości zakresu** w razie (na przykład "Odczyt"). Domyślnie zostanie zdefiniowany zakres „user_impersonation”. W razie potrzeby można zignorować to. Wprowadź opis zakresu w **nazwa zakresu** kolumny.
-1. Kliknij pozycję **Zapisz**.
+2. Kliknij pozycję **Opublikowane zakresy**. Jest to miejsce, w którym można zdefiniować uprawnienia (zakresy), które mogą być udzielone innym aplikacjom.
+3. Dodaj **wartości zakresu** w razie (na przykład "Odczyt"). Domyślnie zostanie zdefiniowany zakres „user_impersonation”. W razie potrzeby można zignorować to. Wprowadź opis zakresu w **nazwa zakresu** kolumny.
+4. Kliknij pozycję **Zapisz**.
 
 > [!IMPORTANT]
 > **Nazwa zakresu** znajduje się opis **wartość zakresu**. Korzystając z zakresu, upewnij się użyć **wartość zakresu**.
@@ -62,11 +62,11 @@ Zakresy, które są analogiczne do uprawnień, są wymagane, gdy wywołuje aplik
 Gdy interfejs API jest skonfigurowany do publikowania zakresów, aplikacja kliencka musi otrzymać te zakresy za pośrednictwem witryny Azure portal.
 
 1. Przejdź do **aplikacji** w menu funkcji usługi Azure AD B2C.
-1. Zarejestruj aplikację kliencką ([aplikacji sieci web](active-directory-b2c-app-registration.md#register-a-web-app) lub [klienta natywnego](active-directory-b2c-app-registration.md#register-a-mobile-or-native-app)) Jeśli nie masz jeszcze takiego. Jeśli korzystasz z tego przewodnika jako punkt początkowy, musisz zarejestrować aplikację kliencką.
-1. Kliknij pozycję **dostęp do interfejsu API**.
-1. Kliknij pozycję **Dodaj**.
-1. Wybierz swój internetowy interfejs API oraz zakresy (uprawnienia), po którym chcesz udzielić.
-1. Kliknij przycisk **OK**.
+2. Zarejestruj aplikację kliencką ([aplikacji sieci web](active-directory-b2c-app-registration.md) lub [klienta natywnego](active-directory-b2c-app-registration.md)) Jeśli nie masz jeszcze takiego. Jeśli korzystasz z tego przewodnika jako punkt początkowy, musisz zarejestrować aplikację kliencką.
+3. Kliknij pozycję **dostęp do interfejsu API**.
+4. Kliknij pozycję **Dodaj**.
+5. Wybierz swój internetowy interfejs API oraz zakresy (uprawnienia), po którym chcesz udzielić.
+6. Kliknij przycisk **OK**.
 
 > [!NOTE]
 > Usługa Azure AD B2C nie poproś swojego klienta aplikacji użytkowników o ich zgodę. Zamiast tego wszystkie zgody znajduje się przez administratora, na podstawie uprawnień skonfigurowana między aplikacjami opisanych powyżej. Po odebraniu przyznawania uprawnień dla aplikacji wszyscy użytkownicy, którzy wcześniej mogli uzyskać to uprawnienie już nie będzie można to zrobić.
@@ -114,9 +114,9 @@ Jeśli `response_type` parametru w `/authorize` żądanie zawiera `token`, `scop
 
 W pomyślnie minted **dostępu\_tokenu** (albo `/authorize` lub `/token` punktu końcowego), następujące oświadczenia będą znajdować się:
 
-| Nazwa | Oświadczenie | Opis |
+| Name (Nazwa) | Claim | Opis |
 | --- | --- | --- |
-|Odbiorcy |`aud` |**Identyfikator aplikacji** z pojedynczego zasobu, którego token przyznaje dostęp. |
+|Grupy odbiorców |`aud` |**Identyfikator aplikacji** z pojedynczego zasobu, którego token przyznaje dostęp. |
 |Zakres |`scp` |Uprawnienia udzielone do zasobu. Wiele udzielone uprawnienia będą rozdzielone spacjami. |
 |Autoryzowane innych firm |`azp` |**Identyfikator aplikacji** aplikacji klienta, który zainicjował żądanie. |
 

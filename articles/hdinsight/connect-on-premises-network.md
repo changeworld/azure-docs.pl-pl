@@ -1,19 +1,19 @@
 ---
 title: HDInsight nawiązać połączenie z siecią lokalną — Azure HDInsight
 description: Dowiedz się, jak utworzyć klaster usługi HDInsight w usłudze Azure Virtual Network, a następnie połącz go z sieci lokalnej. Dowiedz się, jak skonfigurować rozpoznawanie nazw między HDInsight i siecią lokalną za pomocą niestandardowego serwera DNS.
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: jasonh
-ms.openlocfilehash: b9b744edbcb2abce70487c84c85a0aae71494e52
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: d8ab61d99b617f21557b6f1ef476418e25bcee55
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105872"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016934"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Łączenie usługi HDInsight z siecią lokalną
 

@@ -1,5 +1,5 @@
 ---
-title: Migrowanie z usługi Azure Access Control service | Dokumentacja firmy Microsoft
+title: Migrowanie z usługi Azure Access Control Service | Dokumentacja firmy Microsoft
 description: Poznaj opcje dotyczące przenoszenia usług i aplikacji z usługi Azure Access Control Service (ACS).
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 4fd7617bf45608cdae15919a40920ea0d214acb8
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: da114cc343d04165d5a6a2137aeb2b675258230a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407475"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015336"
 ---
-# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Instrukcje: Migrowanie z usługi Azure Access Control service
+# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Instrukcje: Migrowanie z usługi kontroli dostępu na platformie Azure
 
 Microsoft Azure Access Control Service (ACS), usługa Azure Active Directory (Azure AD) zostanie wycofana 7 listopada 2018 r. Aplikacje i usługi, które obecnie korzystanie z kontroli dostępu muszą być w pełni migrowane na inny mechanizm uwierzytelniania, następnie. W tym artykule opisano zalecenia dotyczące obecni klienci, planując wycofana korzystanie z kontroli dostępu. Obecnie nie używasz kontroli dostępu, nie trzeba podejmować żadnych działań.
 

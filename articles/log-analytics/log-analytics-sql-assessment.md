@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: be2fd826ffa658ec04bd937036e37bf55cbf65a4
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 96163188fad464bc4b94457f7061a78b3f4997a9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964139"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014503"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optymalizowanie środowiska SQL za pomocą rozwiązania sprawdzanie kondycji serwera SQL w usłudze Log Analytics
 
@@ -184,7 +184,7 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
     ```
 
     >[!NOTE]
-    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](log-analytics-log-search.md), a następnie powyższe zapytania zmienią się następujące czynności.
+    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](log-analytics-queries.md), a następnie powyższe zapytania zmienią się następujące czynności.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -209,7 +209,7 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
     ```
 
     >[!NOTE]
-    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](log-analytics-log-search.md), a następnie powyższe zapytania zmienią się następujące czynności.
+    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](log-analytics-queries.md), a następnie powyższe zapytania zmienią się następujące czynności.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -265,4 +265,4 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
 * Tak, zobacz [Zignoruj zalecenia](#ignore-recommendations) powyższej sekcji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Przeszukiwanie dzienników](log-analytics-log-search.md) Aby dowiedzieć się, jak analizować szczegółowe dane SQL Health Check i zalecenia.
+* [Przeszukiwanie dzienników](log-analytics-queries.md) Aby dowiedzieć się, jak analizować szczegółowe dane SQL Health Check i zalecenia.

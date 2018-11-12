@@ -34,7 +34,7 @@ Aby przygotować dyski twarde, za pomocą narzędzia WAImportExport, następują
 |Platforma |Wersja |
 |---------|---------|
 |.NET Framework    | 4.5.1       |
-| BitLocker        |  _          |
+| BitLocker        |  \_          |
 
 
 ## <a name="supported-storage-accounts"></a>Konta magazynu obsługiwane

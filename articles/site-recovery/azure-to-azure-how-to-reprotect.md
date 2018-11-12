@@ -8,19 +8,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 9759e209f15622d70aaa833a993234863ac1053c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: caef9a93e7d388ab55939876b7cc8344ce6370d0
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918870"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012517"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Ponowne włączanie ochrony nie powiodło się na maszynach wirtualnych platformy Azure, do regionu podstawowego
 
 
 Gdy możesz [w trybie Failover](site-recovery-failover.md) maszyn wirtualnych platformy Azure z jednego regionu do innego za pomocą [usługi Azure Site Recovery](site-recovery-overview.md), maszyny wirtualne rozruchu w regionie pomocniczym w stanie niechronionym. Powrót po awarii maszyn wirtualnych do regionu podstawowego, należy wykonać następujące czynności:
 
-- Ponowne włączanie ochrony maszyn wirtualnych w regionie pomocniczym, aby rozpoczynały się na replikację do regionu podstawowego. 
+- Ponowne włączanie ochrony maszyn wirtualnych w regionie pomocniczym, aby rozpoczynały się na replikację do regionu podstawowego.
 - Po zakończeniu ponownego włączania ochrony, replikowania maszyn wirtualnych, można przełączać je za pośrednictwem z pomocniczej do regionu podstawowego.
 
 > [!WARNING]
@@ -33,7 +33,7 @@ Gdy możesz [w trybie Failover](site-recovery-failover.md) maszyn wirtualnych pl
 
 ## <a name="reprotect-a-vm"></a>Ponowne włączanie ochrony maszyny Wirtualnej
 
-1. W **magazynu** > **zreplikowane elementy**, kliknij prawym przyciskiem myszy nieudane przez maszynę Wirtualną i wybierz **ponownego włączenia ochrony**. Kierunek ponownego włączania ochrony powinny być wyświetlane z dodatkowej do głównej. 
+1. W **magazynu** > **zreplikowane elementy**, kliknij prawym przyciskiem myszy nieudane przez maszynę Wirtualną i wybierz **ponownego włączenia ochrony**. Kierunek ponownego włączania ochrony powinny być wyświetlane z dodatkowej do głównej.
 
   ![Ponowne włączanie ochrony](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
@@ -53,7 +53,7 @@ Można dostosować następujące właściwości obiektu docelowego VMe podczas p
 |Docelowa grupa zasobów     | Zmodyfikuj docelowa grupa zasobów, w którym zostanie utworzona maszyna wirtualna. W ramach ponownego włączania ochrony docelowa maszyna wirtualna jest usuwana. Można wybrać nową grupę zasobów, pod którym chcesz utworzyć maszynę Wirtualną po włączeniu trybu failover.        |
 |Docelowa sieć wirtualna     | Nie można zmienić sieci docelowej podczas wykonywania zadania ponownego włączania ochrony. Aby zmienić sieci, ponów mapowania sieci.         |
 |Magazyn docelowy (pomocniczej maszyny Wirtualnej nie korzystają z dysków zarządzanych)     | Można zmienić konta magazynu, używanego przez maszynę Wirtualną po włączeniu trybu failover.         |
-|Repliki usługi managed disks (pomocniczej maszyny Wirtualnej korzysta z dysków zarządzanych)    | Usługa Site Recovery tworzy dyski zarządzane repliki w regionie podstawowym w celu zdublowania dysków zarządzanych pomocniczej maszyny Wirtualnej.         | 
+|Repliki usługi managed disks (pomocniczej maszyny Wirtualnej korzysta z dysków zarządzanych)    | Usługa Site Recovery tworzy dyski zarządzane repliki w regionie podstawowym w celu zdublowania dysków zarządzanych pomocniczej maszyny Wirtualnej.         |
 |Cache Storage     | Można określić konto magazynu pamięci podręcznej do użycia podczas replikacji. Domyślnie nowe konto magazynu pamięci podręcznej jest możliwe, jeśli nie istnieje.         |
 |Zestaw dostępności     |Jeśli maszynę Wirtualną w regionie pomocniczym jest częścią zestawu dostępności, możesz wybrać zestaw dostępności dla docelowej maszyny Wirtualnej w regionie podstawowym. Domyślnie usługa Site Recovery podejmie próbę odnalezienia istniejący zestaw dostępności w regionie podstawowym, a jej używać. Podczas dostosowywania można określić nowy zestaw dostępności.         |
 
@@ -62,23 +62,25 @@ Można dostosować następujące właściwości obiektu docelowego VMe podczas p
 
 Domyślnie mają miejsce następujące zdarzenia:
 
-1. Konto magazynu pamięci podręcznej jest tworzony w regionie podstawowym
+1. Konto magazynu pamięci podręcznej jest tworzony w regionie, w przypadku, gdy działa w trybie Failover maszyny Wirtualnej.
 2. Jeśli konto magazynu docelowego (oryginalnego konta magazynu w regionie podstawowym) nie istnieje, zostanie utworzony nowy. Nazwa konta magazynu przypisany jest nazwa konta magazynu używanego przez pomocniczej maszyny Wirtualnej sufiks "asr".
-3. Jeśli maszyna wirtualna używa dysków zarządzanych, zarządzane repliki dyski są tworzone w regionie podstawowym do przechowywania danych replikacji z dysków pomocniczej maszyny Wirtualnej. 
+3. Jeśli maszyna wirtualna używa dysków zarządzanych, zarządzane repliki dyski są tworzone w regionie podstawowym do przechowywania danych replikacji z dysków pomocniczej maszyny Wirtualnej.
 4. Jeśli docelowy zestaw dostępności nie istnieje, nowy jest tworzony jako część zadania ponownego włączania ochrony, jeśli jest to wymagane. Jeśli dostosowano ustawienia ponownego włączania ochrony wybranego zestawu jest używana.
 
 Gdy użytkownik zainicjuje Zadanie włączania ponownej ochrony i docelowa maszyna wirtualna istnieje, są następujące operacje:
 
-1. Wymagane składniki są tworzone w ramach ponownej ochrony. Jeśli już istnieją, są ponownie.
-2. Stronie docelowej, do których maszyna wirtualna jest wyłączona w przypadku działa.
-3. Dysku maszyny Wirtualnej po stronie docelowej jest kopiowane przez usługę Site Recovery do kontenera obiektu blob inicjatora.
-4. Po stronie docelowej maszyny Wirtualnej jest usuwany.
-5. Obiekt blob inicjatora jest używane przez bieżące źródło po stronie (informacje pomocnicze) maszyny Wirtualnej do replikacji. Daje to gwarancję, że są replikowane tylko różnice.
-6. Istotne zmiany od dysku źródłowego i obiektu blob inicjatora są synchronizowane. Może to zająć trochę czasu.
-7. Po zakończeniu zadania ponownego włączania ochrony replikacji różnicowej rozpoczyna się i tworzy punkt odzyskiwania zgodnie z zasadami replikacji.
-8. Po pomyślnym zakończeniu zadania ponownego włączania ochrony maszyny Wirtualnej przechodzi stanie chronionym.
+1. Stronie docelowej, do których maszyna wirtualna jest wyłączona w przypadku działa.
+2. Jeśli maszyna wirtualna używa dysków zarządzanych, kopię oryginalnych dysków są tworzone za pomocą "-ASRReplica" sufiks. Oryginalnych dysków są usuwane. "-ASRReplica" kopie są używane do replikacji.
+3. Jeśli maszyna wirtualna używa dysków niezarządzanych, docelowej maszyny Wirtualnej dyski danych są odłączone i używane na potrzeby replikacji. Kopię dysku systemu operacyjnego jest utworzone i dołączone na maszynie Wirtualnej. Oryginalny dysk systemu operacyjnego jest odłączona i używane na potrzeby replikacji.
+4. Od dysku źródłowego i docelowego dysku synchronizowane będą tylko zmiany. Różnice są obliczane przez porównanie obu dyskach tak i następnie przeniesiona. To potrwa kilka godzin.
+5. Po ukończeniu synchronizacji replikacja różnicowa rozpoczyna się i tworzy punkt odzyskiwania zgodnie z zasadami replikacji.
+
+Możesz wyzwolić Zadanie włączania ponownej ochrony, gdy nie istnieją docelową maszynę Wirtualną i dyski, są następujące operacje:
+1. Jeśli maszyna wirtualna używa dysków zarządzanych, dyski repliki są tworzone za pomocą "-ASRReplica" sufiks. "-ASRReplica" kopie są używane do replikacji.
+2. Jeśli maszyna wirtualna używa dysków niezarządzanych, dyski repliki są tworzone w docelowym koncie magazynu.
+3. Cały dyski są kopiowane z nieudane przez region, aby nowy region docelowy.
+4. Po ukończeniu synchronizacji replikacja różnicowa rozpoczyna się i tworzy punkt odzyskiwania zgodnie z zasadami replikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Po włączeniu ochrony maszyny Wirtualnej może zainicjować trybu failover. Przełączenie w tryb failover zamykania maszyny Wirtualnej w regionie pomocniczym tworzy i uruchamia maszynę Wirtualną w regionie podstawowym, przy użyciu przestój małych. Firma Microsoft zaleca w związku z tym wybierz godzinę i uruchomieniem testu trybu failover, ale inicjowanie pełnego trybu failover do lokacji głównej. [Dowiedz się więcej](site-recovery-failover.md) informacje o trybie failover.
-

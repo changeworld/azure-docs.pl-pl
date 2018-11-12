@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 1a135b0e17889c544a99ad677e9fa42ad6de994c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 507bbc9013d8b02084b639f8d9fac0c7d97503f4
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231886"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014282"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -368,7 +368,7 @@ Ten błąd występuje, gdy limit magazynu udziału plików platformy Azure zosta
 
     ![Zrzut ekranu przedstawiający właściwości udziału plików platformy Azure.](media/storage-sync-files-troubleshoot/file-share-limit-reached-1.png)
 
-Jeśli nie ustawiono limit przydziału udziału jest pełny, jeden sposób możliwe naprawienie tego problemu jest Przekształć każdy podfolder bieżący punkt końcowy serwera w swoich punkt końcowy serwera w ich własnych grupach oddzielne synchronizacji. W ten sposób każdy podfolder zsynchronizują się z udziałami plików platformy Azure indywidualnych.
+Jeśli nie ustawiono limit przydziału udziału jest pełny, jeden sposób możliwe naprawienie tego problemu jest przekształcić Każdy podfolder bieżący punkt końcowy serwera swój własny punkt końcowy serwera w ich własnych grupach oddzielne synchronizacji. W ten sposób każdy podfolder zsynchronizują się z udziałami plików platformy Azure indywidualnych.
 
 <a id="-2134351824"></a>**Nie można odnaleźć udziału plików platformy Azure.**  
 | | |

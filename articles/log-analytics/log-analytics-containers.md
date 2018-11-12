@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 824be21623892b8810ca4af5b885daf65bfb1594
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 087e11f906fe7f5c2fe67c43a597de8551dfc951
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959158"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013058"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Rozwiązanie do monitorowania kontenerów w usłudze Log Analytics
 
@@ -604,7 +604,7 @@ Wyszukiwanie w dzienniku zostanie otwarty, informacje o stanie kontenerów.
 
 ![Wyszukiwanie w dzienniku dla kontenerów](./media/log-analytics-containers/containers-log-search.png)
 
-W tym miejscu można edytować zapytania wyszukiwania można zmodyfikować, aby znaleźć konkretne informacje, czy interesuje Cię. Aby uzyskać więcej informacji na temat wyszukiwania w dziennikach, zobacz [przeszukiwanie dzienników w usłudze Log Analytics](log-analytics-log-search.md).
+W tym miejscu można edytować zapytania wyszukiwania można zmodyfikować, aby znaleźć konkretne informacje, czy interesuje Cię. Aby uzyskać więcej informacji na temat wyszukiwania w dziennikach, zobacz [przeszukiwanie dzienników w usłudze Log Analytics](log-analytics-queries.md).
 
 ## <a name="troubleshoot-by-finding-a-failed-container"></a>Rozwiązywanie problemów, wyszukując kontenera nie powiodło się
 
@@ -672,4 +672,4 @@ Zapisywanie zapytań jest funkcją standard w usłudze Log Analytics. Zapisując
 Po utworzeniu zapytania, które możesz się przydać, zapisz go, klikając **ulubione** w górnej części strony wyszukiwanie w dziennikach. Nie będzie można łatwo uzyskać dostępu to później **Mój pulpit nawigacyjny** strony.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Przeszukiwanie dzienników](log-analytics-log-search.md) do wyświetlania rekordów danych szczegółowych kontenera.
+* [Przeszukiwanie dzienników](log-analytics-queries.md) do wyświetlania rekordów danych szczegółowych kontenera.

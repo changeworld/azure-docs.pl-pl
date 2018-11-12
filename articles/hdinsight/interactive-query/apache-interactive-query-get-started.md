@@ -3,18 +3,18 @@ title: Używanie zapytania interakcyjnego za pomocą usługi Azure HDInsight
 description: Dowiedz się, jak używać zapytania interakcyjnego (LLAP programu Hive) z HDInsight.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: a90ec3102f3ce821193d58b6d14ca119f6d7e916
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c1af99d64f9d9a7544d98ad34da5953fdda58222
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959686"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012881"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>Używanie zapytania interakcyjnego z HDInsight
 Zapytania interakcyjnego (nazywane również funkcji LLAP programu Hive, lub [Niskie opóźnienie analitycznego przetwarzania](https://cwiki.apache.org/confluence/display/Hive/LLAP)) jest usługi Azure HDInsight [typ klastra](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Zapytanie interakcyjne obsługuje buforowanie w pamięci, co sprawia, że zapytania programu Hive, szybsze i bardziej interaktywny.

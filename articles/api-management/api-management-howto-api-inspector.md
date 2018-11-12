@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: cf9c56fa2ba75dc5b5ad4af59d111a0124f1a9df
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ff3dde8ac95b678866ba6f5216ba23357b067765
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39057331"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415886"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>Debugowanie interfejsów API za pomocą funkcji śledzenia żądań
 
@@ -34,18 +34,19 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
++ Poznaj [terminologię dotyczącą usługi Azure API Management](api-management-terminology.md).
 + Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
 + Ponadto wykonaj zadania z następującego samouczka: [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
 
 ## <a name="trace-a-call"></a>Śledzenie wywołania
 
+![Śledzenie interfejsu API](media/api-management-howto-api-inspector/06-DebugYourAPIs-01-TraceCall.png)
+
 1. Wybierz pozycję **Interfejsy API**.
 2. Kliknij pozycję **Demo Conference API** (Pokazowy interfejs API konferencji) na liście interfejsów API.
-3. Wybierz operację **GetSpeakers**.
-4. Przełącz się na kartę **Test**.
+3. Przełącz się na kartę **Test**.
+4. Wybierz operację **GetSpeakers**.
 5. Pamiętaj, aby dołączyć nagłówek HTTP o nazwie **Ocp-Apim-Trace** z wartością ustawioną na **true**.
-
-    ![Nagłówek śledzenia interfejsu API](media/api-management-howto-api-inspector/api-management-tracing-header.png)
 
     > [!NOTE]
     > Jeśli klucz subskrypcji Ocp-Apim-Subscription-Key nie zostanie wypełniony automatycznie, można go pobrać, przechodząc do portalu dla deweloperów i wyświetlając klucze na stronie profilu.
@@ -57,9 +58,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
     W sekcji **dane przychodzące** widać oryginalne żądanie odebrane przez usługę API Management od wywołującego i wszystkie zasady zastosowane do tego żądania, w tym limit szybkości i zasady set-header dodane w kroku 2.
 
     W sekcji **zaplecze** widać żądania wysłane przez usługę API Management do zaplecza interfejsu API i otrzymane odpowiedzi.
-    
+
     W sekcji **dane wychodzące** widać wszystkie zasady zastosowane do odpowiedzi przed wysłaniem ich z powrotem do wywołującego.
- 
+
     > [!TIP]
     > Przy każdym kroku widać również czas, jaki upłynął od odebrania żądania przez usługę API Management.
 

@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: c1c884e05d357db7e23574dbd31f206d6c3fe23c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 757c710ddca72ec6a1383b51a8b536d196e6cb8c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "41918368"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414488"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Bezpieczne wprowadzanie zmian niepowodujących niezgodności przy użyciu poprawek
 Gdy interfejs API jest gotowy i zaczyna być używany przez deweloperów, zazwyczaj musisz wprowadzać zmiany w tym interfejsie API i jednocześnie nie zakłócać pracy wywołującym interfejs API. Ponadto warto poinformować deweloperów o wprowadzanych zmianach. Możemy to zrobić w usłudze Azure API Management przy użyciu **poprawek**. Aby uzyskać więcej informacji, zobacz [Wersje i poprawki](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) oraz [Przechowywanie wersji interfejsu API w usłudze Azure API Management](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
@@ -36,10 +36,13 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
++ Poznaj [terminologię dotyczącą usługi Azure API Management](api-management-terminology.md).
 + Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
 + Ponadto wykonaj zadania z następującego samouczka: [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
 
 ## <a name="add-a-new-revision"></a>Dodawanie nowej poprawki
+
+![Dodawanie poprawki interfejsu API](media/api-management-getstarted-revise-api/07-AddRevisions-01-AddNewRevision.png)
 
 1. Wybierz stronę **Interfejsy API**.
 2. Z listy interfejsów API wybierz pozycję **Wersja demonstracyjna interfejsu API Conference** (lub inny interfejs API, do którego chcesz dodać poprawki).
@@ -48,8 +51,6 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
     > [!TIP]
     > Możesz też wybrać opcję **Dodaj poprawkę** w menu kontekstowym (**...**) interfejsu API.
-    
-    ![Menu poprawek w górnej części ekranu](media/api-management-getstarted-revise-api/TopMenu.PNG)
 
 5. Podaj opis nowej poprawki, aby łatwiej zapamiętać, do czego służy.
 6. Wybierz pozycję **Utwórz**
@@ -59,6 +60,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
     > Oryginalny interfejs API pozostaje w poprawce **Poprawka 1**. Jest to poprawka, którą nadal będą wywoływać użytkownicy, dopóki nie wybierzesz innej poprawki jako bieżącej.
 
 ## <a name="make-non-breaking-changes-to-your-revision"></a>Wprowadzanie w poprawce zmian niepowodujących niezgodności
+
+![Modyfikowanie poprawki](media/api-management-getstarted-revise-api/07-AddRevisions-02-MakeChanges.png)
 
 1. Z listy interfejsów API wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
 2. Wybierz kartę **Projektowanie** w górnej części ekranu.
@@ -78,6 +81,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 1. Wybierz kartę **Poprawki** w menu w górnej części strony.
 
     ![Menu poprawki na ekranie poprawek.](media/api-management-getstarted-revise-api/RevisionsMenu.PNG)
+
 2. Otwórz menu kontekstowe (**...**) dla poprawki **Poprawka 2**.
 3. Wybierz opcję **Ustaw jako bieżącą**.
 4. Zaznacz pole **Publikuj w publicznym dzienniku zmian tego interfejsu API**, jeśli chcesz publikować uwagi dotyczące tej zmiany. Podaj opis zmiany, który zobaczą deweloperzy, na przykład **Testowanie poprawek. Dodano nową operację „test”.**

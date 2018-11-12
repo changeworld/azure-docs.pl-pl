@@ -1,6 +1,6 @@
 ---
 title: Aprowizowanie symulowanego urządzenia X.509 dla usługi Azure IoT Hub przy użyciu języka Java | Microsoft Docs
-description: Przewodnik Szybki start platformy Azure — tworzenie i aprowizowanie symulowanego urządzenia X.509 za pomocą zestawu SDK urządzenia Java dla usługi IoT Hub Device Provisioning
+description: 'Przewodnik Szybki start platformy Azure: tworzenie i aprowizowanie symulowanego urządzenia X.509 za pomocą zestawu SDK urządzenia języka Java dla usługi IoT Hub Device Provisioning. W tym przewodniku Szybki start używane są rejestracje indywidualne.'
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/09/2018
@@ -10,23 +10,29 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 694c4fe10ec8f738131768d80dd70c5bd18fe223
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1c784aefca19040abb7ab34dd92dddb1ef0f28de
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040741"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418232"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Tworzenie i aprowizowanie symulowanego urządzenia X.509 za pomocą zestawu SDK urządzenia Java dla usługi IoT Hub Device Provisioning
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 Te kroki pokazują, jak zasymulować urządzenie X.509 na maszynie deweloperskiej z systemem operacyjnym Windows OS i użyć przykładowego kodu do połączenia tego symulowanego urządzenia z usługą Device Provisioning Service i Twoim centrum IoT Hub. 
 
-Jeśli nie znasz procesu automatycznego aprowizowania, zapoznaj się również z tematem [Auto-provisioning concepts](concepts-auto-provisioning.md) (Pojęcia związane z automatycznym aprowizowaniem). Pamiętaj również, aby wcześniej wykonać kroki przedstawione w części [Konfigurowanie usługi IoT Hub Device Provisioning za pomocą witryny Azure Portal](./quick-setup-auto-provision.md). 
+Jeśli nie znasz procesu automatycznego aprowizowania, zapoznaj się również z tematem [Auto-provisioning concepts (Pojęcia związane z automatycznym aprowizowaniem)](concepts-auto-provisioning.md). Pamiętaj również, aby wcześniej wykonać kroki przedstawione w części [Konfigurowanie usługi IoT Hub Device Provisioning za pomocą witryny Azure Portal](./quick-setup-auto-provision.md). 
+
+Usługa Azure IoT Device Provisioning obsługuje dwa typy rejestracji:
+- [Grupy rejestracji](concepts-service.md#enrollment-group): służą do rejestrowania wielu pokrewnych urządzeń.
+- [Rejestracje indywidualne](concepts-service.md#individual-enrollment): służą do rejestrowania pojedynczych urządzeń.
+
+W tym artykule przedstawiono rejestracje indywidualne.
 
 ## <a name="prepare-the-environment"></a>Przygotowywanie środowiska 
 
-1. Upewnij się, że na maszynie zainstalowano środowisko [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+1. Upewnij się, że na maszynie zainstalowano środowisko [Java SE Development Kit 8](https://aka.ms/azure-jdks).
 
 2. Pobierz i zainstaluj pakiet [Maven](https://maven.apache.org/install.html).
 
@@ -54,8 +60,8 @@ Jeśli nie znasz procesu automatycznego aprowizowania, zapoznaj się również z
 
 W tej sekcji zostanie użyty certyfikat z podpisem własnym X.509. Ważne jest, aby pamiętać o następujących kwestiach:
 
-* Certyfikaty z podpisem własnym są przeznaczone tylko do celów testowania i nie można ich używać w środowisku produkcyjnym.
-* Domyślny termin wygaśnięcia certyfikatu z podpisem własnym to 1 rok.
+* Certyfikaty z podpisem własnym są przeznaczone tylko do celów testowania i nie powinny być używane w środowisku produkcyjnym.
+* Domyślny termin wygaśnięcia certyfikatu z podpisem własnym to jeden rok.
 
 Przykładowy kod z [zestawu Azure IoT SDK dla środowiska Java](https://github.com/Azure/azure-iot-sdk-java.git) zostanie użyty do utworzenia certyfikatu, który będzie używany z indywidualnym wpisem rejestracji dla urządzenia symulowanego.
 
@@ -96,7 +102,7 @@ Przykładowy kod z [zestawu Azure IoT SDK dla środowiska Java](https://github.c
 
 ## <a name="simulate-the-device"></a>Symulowanie urządzenia
 
-1. W bloku podsumowania usługi Device Provisioning wybierz pozycję **Przegląd** i zanotuj _Identyfikator zakresu_ oraz _Globalny punkt końcowy usługi aprowizacji_.
+1. W bloku podsumowania usługi Device Provisioning wybierz pozycję **Przegląd** i zanotuj wartości _Identyfikator zakresu_ oraz _Globalny punkt końcowy usługi aprowizacji_.
 
     ![Informacje o usłudze](./media/java-quick-create-simulated-device-x509/extract-dps-endpoints.png)
 
@@ -163,7 +169,7 @@ Jeśli planujesz dalszą pracę z przykładem klienta urządzenia i eksplorowani
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start utworzono symulowane urządzenie X.509 na komputerze z systemem Windows. Skonfigurowano jego rejestrację w usłudze Azure IoT Hub Device Provisioning Service, a następnie automatycznie aprowizowano urządzenie w Centrum IoT. Aby dowiedzieć się, jak zarejestrować urządzenie X.509 programowo, przejdź do przewodnika Szybki start dotyczącego programowej rejestracji urządzeń X.509. 
+W tym przewodniku Szybki start utworzono symulowane urządzenie X.509 na komputerze z systemem Windows. Skonfigurowano jego rejestrację w usłudze Azure IoT Hub Device Provisioning Service, a następnie automatycznie aprowizowano urządzenie w centrum IoT. Aby dowiedzieć się, jak zarejestrować urządzenie X.509 programowo, przejdź do przewodnika Szybki start dotyczącego programowej rejestracji urządzeń X.509. 
 
 > [!div class="nextstepaction"]
 > [Przewodnik Szybki start platformy Azure — Rejestrowanie urządzenia X.509 w usłudze Azure IoT Hub Device Provisioning](quick-enroll-device-x509-java.md)

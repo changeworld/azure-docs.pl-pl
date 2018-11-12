@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f5db8c4e8137d9758113210ad433278eb8f5a2ee
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: fab4bcb62d15be11ab0a588b7a58447f05b4466a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962133"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014673"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Zbieraj i Analizuj Dzienniki aktywności platformy Azure w usłudze Log Analytics
 
@@ -100,5 +100,5 @@ Dane dzienników aktywności jest wyświetlany tylko *po* zostały skonfigurowan
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Tworzenie [alert](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) podczas określonego działania się dzieje.
-- Użyj [wyszukiwanie w dzienniku](log-analytics-log-search.md) Aby wyświetlić szczegółowe informacje z dzienników aktywności.
+- Tworzenie [alert](../monitoring-and-diagnostics/alert-metric.md) podczas określonego działania się dzieje.
+- Użyj [wyszukiwanie w dzienniku](log-analytics-queries.md) Aby wyświetlić szczegółowe informacje z dzienników aktywności.

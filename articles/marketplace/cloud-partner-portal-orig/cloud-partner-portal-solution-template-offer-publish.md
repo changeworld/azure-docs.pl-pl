@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c7c7912860568aea497e327f29a1b7b71b8f5e87
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
-ms.translationtype: MT
+ms.openlocfilehash: 5320b8d5ca7456a6f1b0fdd1372c9f39ac1edfb0
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345593"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219413"
 ---
 # <a name="publish-a-solution-template-to-azure-marketplace"></a>Publikowanie szablonu rozwiązania w portalu Azure Marketplace
 
@@ -161,7 +161,7 @@ Po zakończeniu ustawienia jednostki SKU, należy podać następujące dane paki
 
 ![Szczegóły pakietu](./media/cloud-partner-portal-publish-managed-app/newOffer_newsku_ST_package.png)
 
-- **Bieżąca wersja** — wersja pakietu, który trzeba będzie przekazać. Tagi wersji musi być w postaci X.Y.Z, gdzie X, Y i Z są liczbami całkowitymi.
+- **Bieżąca wersja** — wersja pakietu, który trzeba będzie przekazać. Należy go w formacie -...
 
 - **Plik pakietu** — ten pakiet zawiera następujące pliki, które są zapisywane w pliku zip.
 

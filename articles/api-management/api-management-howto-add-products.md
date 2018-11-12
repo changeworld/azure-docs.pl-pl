@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 0346cf456c53b14fd3c5b14b2e40eddd8b89fe4d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 0f2b45685d2976c567c16666e2ca89d334914b63
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465954"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417297"
 ---
 # <a name="create-and-publish-a-product"></a>Tworzenie i publikowanie produktu  
 
@@ -35,6 +35,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
++ Poznaj [terminologię dotyczącą usługi Azure API Management](api-management-terminology.md).
 + Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
 + Ponadto wykonaj zadania z następującego samouczka: [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
 
@@ -83,6 +84,9 @@ Przed uzyskaniem dostępu do interfejsu API deweloperzy muszą najpierw zasubskr
 2. Przejdź do karty **Interfejsy API**.
 3. Kliknij pozycję **+ Dodaj**.
 4. Wybierz interfejs API, a następnie kliknij pozycję **Wybierz**.
+
+> [!TIP]
+> Można utworzyć lub zaktualizować subskrypcję użytkownika do poziomu *produktu* przy użyciu niestandardowych kluczy subskrypcji [za pośrednictwem interfejsu API REST](https://docs.microsoft.com/rest/api/apimanagement/subscription/createorupdate) lub polecenia programu PowerShell.
 
 ## <a name="next-steps"></a>Następne kroki
 

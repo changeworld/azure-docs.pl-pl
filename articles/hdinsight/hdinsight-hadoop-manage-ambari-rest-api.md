@@ -2,19 +2,19 @@
 title: Monitorowanie i zarządzanie nimi platformy Hadoop za pomocą systemu Ambari API REST — Azure HDInsight
 description: Dowiedz się, jak używać narzędzia Ambari do monitorowania i zarządzania klastrami Hadoop w usłudze Azure HDInsight. W tym dokumencie dowiesz się, jak używać interfejsu API REST Ambari, które zostały dołączone do klastrów HDInsight.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: jasonh
-ms.openlocfilehash: d6e2bdba7e3536404f087dc468a0895d0be0c2a0
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: cd999a5bfd9f5691c1e624f7a8226eefee5709eb
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106023"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015813"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Zarządzanie klastrami HDInsight przy użyciu interfejsu API REST systemu Ambari
 

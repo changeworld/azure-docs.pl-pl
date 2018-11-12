@@ -10,20 +10,20 @@ ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 00e0b7db5bfc8b763d9b16524bd783601d1ec4d8
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 20677167c88b4e3cf326067fac7a33bede9ee4c3
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800999"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420358"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-java"></a>Szybki start: interfejs API sprawdzania pisowni Bing w środowisku Java 
 
-W tym artykule pokazano, jak używać [interfejsu API sprawdzania pisowni Bing](https://azure.microsoft.com/services/cognitive-services/spell-check/) ze środowiskiem Java. Interfejs API sprawdzania pisowni zwraca listę wyrazów, których nie rozpoznaje, oraz sugestie ich zastąpienia. Typowym sposobem korzystania z tego interfejsu API jest przesłanie tekstu, a następnie wprowadzenie sugerowanych zmian w tekście lub pokazanie ich użytkownikowi aplikacji, aby zdecydował, czy wprowadzić zmiany. W tym artykule pokazano, jak wysłać żądanie zawierające tekst „Hollo, wrld!”. Sugerowane zamiany to „Hello” i „world”.
+W tym artykule przedstawiono sposób korzystania z [interfejsu API sprawdzania pisowni Bing](https://azure.microsoft.com/services/cognitive-services/spell-check/) przy użyciu języka Java. Interfejs API sprawdzania pisowni zwraca listę wyrazów, których nie rozpoznaje, oraz sugestie ich zastąpienia. Typowym sposobem korzystania z tego interfejsu API jest przesłanie tekstu, a następnie wprowadzenie sugerowanych zmian w tekście lub pokazanie ich użytkownikowi aplikacji, aby zdecydował, czy wprowadzić zmiany. W tym artykule pokazano, jak wysłać żądanie zawierające tekst „Hollo, wrld!”. Sugerowane zamiany to „Hello” i „world”.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musisz mieć zestaw [JDK 7 lub 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), aby skompilować i uruchomić ten kod. Możesz użyć środowiska projektowego Java, jeśli masz ulubione, ale edytor tekstu również wystarczy.
+Musisz mieć zestaw [JDK 7 lub 8](https://aka.ms/azure-jdks), aby skompilować i uruchomić ten kod. Jeśli masz ulubione środowisko projektowe Java, możesz go użyć, ale edytor tekstów również wystarczy.
 
 Trzeba mieć [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do **interfejsu API sprawdzania pisowni Bing w wersji 7**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/#lang) jest wystarczająca na potrzeby tego przewodnika Szybki start. Potrzebny jest klucz dostępu podany przy aktywacji bezpłatnej wersji próbnej lub klucz płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
 

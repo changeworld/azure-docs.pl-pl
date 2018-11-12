@@ -8,18 +8,18 @@ ms.author: tanmayb
 ms.date: 10/29/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 5db215a3bf87ac42ac832a59ce39f7e72c45527f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: dbc72e040f3d68ca77c036c41612f57616d1e74e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963357"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016832"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Jako dostawca CSP tworzenie i zarządzanie aplikację Central IoT platformy Azure w imieniu klienta 
 
 Program Microsoft Cloud Solution Provider (CSP) to program Reseller firmy Microsoft. Jego celem jest zapewnienie naszych partnerów handlowych w programie, kompleksowy do odsprzedaży platformy wszystkich komercyjnych usług Online firmy Microsoft. Dowiedz się więcej o [programu Cloud Solution Provider](https://partner.microsoft.com/cloud-solution-provider).
 
-Jako dostawca CSP, można tworzyć i zarządzać aplikacjami Microsoft Azure IoT Central w imieniu klientów za pośrednictwem [Microsoft Partner Center](https://partnercenter.microsoft.com/partner/home). Gdy aplikacje usługi Azure IoT Central są tworzone w imieniu klientów przez dostawców usług kryptograficznych, podobnie jak z innymi dostawcy usług Kryptograficznych zarządzanych usług platformy Azure, CSP zarządzają rozliczeniami dla klientów. Opłaty usługi Azure IoT Central pojawi się rachunek w programie Microsoft Partner Center.
+Jako dostawca CSP, można tworzyć i zarządzać aplikacjami Microsoft Azure IoT Central w imieniu klientów za pośrednictwem [Microsoft Partner Center](https://partnercenter.microsoft.com/partner/home). Gdy aplikacje usługi Azure IoT Central są tworzone w imieniu klientów przez dostawców usług kryptograficznych, podobnie jak z innymi dostawcy usług Kryptograficznych zarządzanych usług platformy Azure, CSP zarządzają rozliczeniami dla klientów. Opłaty usługi Azure IoT Central pojawi się na rachunek w programie Microsoft Partner Center.
 
 Aby rozpocząć, zaloguj się na swoje konto w portalu dla partnerów firmy Microsoft i wybierz klienta, dla którego chcesz utworzyć aplikację usługi Azure IoT Central. Przejdź do zarządzania usługami dla klienta w lewym okienku nawigacji
 
@@ -29,7 +29,7 @@ Usługa Azure IoT Central jest wyświetlany jako usługa dostępne do administro
 
 ![Usługa Azure IoT Central dostępne na potrzeby zarządzania](media\howto-create-application-asCSP\image2.png)
 
-Zostanie wyświetlony na stronie usługi Azure IoT Central aplikacji Manager. Azure IoT Central utrzymuje kontekst pochodzi Center partnera firmy Microsoft i przejście do zarządzania tego określonego klienta. Zostanie wyświetlony to potwierdzone w nagłówku strony Menedżer aplikacji. W tym miejscu możesz przejść do istniejącej aplikacji została wcześniej utworzona dla danego klienta do zarządzania serwerem lub Utwórz nową aplikację klienta.
+Zostanie wyświetlony na stronie usługi Azure IoT Central aplikacji Manager. Azure IoT Central utrzymuje kontekst pochodzi Center partnera firmy Microsoft i przejście do zarządzania tego określonego klienta. Zostanie wyświetlony to potwierdzone w nagłówku strony Menedżer aplikacji. W tym miejscu można albo przejść do istniejącej aplikacji utworzonej miał wcześniej dla tego klienta do zarządzania lub Utwórz nową aplikację klienta.
 
 ![Tworzenie menedżera dla dostawców CSP](media\howto-create-application-asCSP\image3.png)
 
@@ -51,7 +51,7 @@ Nazwa aplikacji jest wyświetlana na **Menedżer aplikacji** strony i w ramach k
 
 Adres URL aplikacji jest link do aplikacji. Można zapisać zakładki do niego w przeglądarce lub udostępnić go innym osobom.
 
-Po wprowadzeniu nazwy aplikacji, adres URL aplikacji jest generowany automatycznie. Jeśli wolisz, możesz inny adres URL aplikacji. Każdy Azure IoT Central adres URL musi być unikatowa w obrębie usługi Azure IoT Central. Zobaczysz komunikat o błędzie, jeśli wybierzesz adres URL jest już zajęta.
+Po wprowadzeniu nazwy aplikacji, adres URL aplikacji jest generowana automatycznie. Jeśli wolisz, możesz inny adres URL aplikacji. Każdy Azure IoT Central adres URL musi być unikatowa w obrębie usługi Azure IoT Central. Zobaczysz komunikat o błędzie, jeśli wybierzesz adres URL jest już zajęta.
 
 ## <a name="directory"></a>Katalog
 

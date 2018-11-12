@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 042271594893350e4883c6dc7dbdd21d84db0520
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 5e736992b16782b87c62ccb59f88798cbce925a6
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958325"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015115"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Tworzenie niestandardowych widoków przy użyciu projektanta widoku w usłudze Log Analytics
 Przy użyciu projektanta widoku w [usługi Azure Log Analytics](log-analytics-queries.md), można tworzyć różne widoki niestandardowe w witrynie Azure portal, która pomoże Ci wizualizować dane w obszarze roboczym usługi Log Analytics. Ten artykuł zawiera omówienie Projektant widoków i procedur tworzenia i edytowania widoków niestandardowych.
@@ -42,7 +42,7 @@ Widoki, które tworzysz przy użyciu projektanta widoku zawierają elementy, kt�
 |:--- |:--- |
 | Kafelki | Są wyświetlane w obszarze roboczym usługi Log Analytics **Przegląd** strony. Każdy Kafelek Wyświetla wizualnego podsumowania widoku niestandardowego, który go reprezentuje. Każdy typ kafelka zawiera inny typ wizualizacji rekordy. Możesz wybrać Kafelek, aby wyświetlić widok niestandardowy. |
 | Widok niestandardowy | Wyświetlane po wybraniu kafelka. Każdy widok zawiera jedną lub więcej z części wizualizacji. |
-| Części wizualizacji | Prezentowanie wizualizacji danych w obszarze roboczym usługi Log Analytics, w oparciu o co najmniej jeden [dziennikach](log-analytics-log-search.md). Większość elementów obejmują nagłówka, który zawiera wizualizację wysokiego poziomu, oraz listy, który wyświetla najwyższe wyniki. Każdy typ części zawiera inny typ wizualizacji rekordów w obszarze roboczym usługi Log Analytics. Możesz wybrać elementy w części, aby wykonać wyszukiwanie w dzienniku, który zawiera szczegółową dokumentację. |
+| Części wizualizacji | Prezentowanie wizualizacji danych w obszarze roboczym usługi Log Analytics, w oparciu o co najmniej jeden [dziennikach](log-analytics-queries.md). Większość elementów obejmują nagłówka, który zawiera wizualizację wysokiego poziomu, oraz listy, który wyświetla najwyższe wyniki. Każdy typ części zawiera inny typ wizualizacji rekordów w obszarze roboczym usługi Log Analytics. Możesz wybrać elementy w części, aby wykonać wyszukiwanie w dzienniku, który zawiera szczegółową dokumentację. |
 
 
 ## <a name="work-with-an-existing-view"></a>Praca z istniejącego widoku

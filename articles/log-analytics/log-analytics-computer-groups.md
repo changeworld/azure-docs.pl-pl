@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: bb95caf7f50b52d2c423de31d4fda701f4c16b40
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f96d18c2e1a00008f2e391302a41d145d6b47efd
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963779"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016609"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Przeszukiwanie dzienników grup komputerów w usłudze Log Analytics
 
-Grupy komputerów w usłudze Log Analytics umożliwia zakresu [dziennikach](log-analytics-log-search.md) do konkretnego zestawu komputerów.  Każda grupa jest wypełniana komputerami za pomocą zapytań, który zdefiniujesz lub przez importowanie grup z różnych źródeł.  Gdy grupy jest włączona do przeszukiwania dzienników, wyniki są ograniczone do rekordy spełniające komputerów w grupie.
+Grupy komputerów w usłudze Log Analytics umożliwia zakresu [dziennikach](log-analytics-queries.md) do konkretnego zestawu komputerów.  Każda grupa jest wypełniana komputerami za pomocą zapytań, który zdefiniujesz lub przez importowanie grup z różnych źródeł.  Gdy grupy jest włączona do przeszukiwania dzienników, wyniki są ograniczone do rekordy spełniające komputerów w grupie.
 
 ## <a name="creating-a-computer-group"></a>Tworzenie grupy komputerów
 Można utworzyć grupę komputerów w usłudze Log Analytics przy użyciu dowolnej z metod w poniższej tabeli.  W poniższych sekcjach znajdują się szczegółowe informacje na temat poszczególnych metod. 
@@ -136,5 +136,5 @@ Rekord zostanie utworzony w obszarze roboczym usługi Log Analytics dla każdego
 | TimeGenerated |Data i godzina utworzenia lub aktualizacji grupy komputerów. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
+* Dowiedz się więcej o [dziennikach](log-analytics-queries.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
 

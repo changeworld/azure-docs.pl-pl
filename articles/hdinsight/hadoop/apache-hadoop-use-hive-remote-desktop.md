@@ -2,19 +2,19 @@
 title: Korzystanie z usługi Hadoop Hive i usług pulpitu zdalnego w HDInsight — Azure
 description: Dowiedz się, jak połączyć się z klastrem usługi Hadoop w HDInsight przy użyciu pulpitu zdalnego, a następnie uruchomić zapytania programu Hive przy użyciu interfejsu wiersza polecenia programu Hive.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: d8a0f1baa03d718b2a8e41d82a528a2c7a857c96
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 32fb2bc9514b911d0a1ce295eee651e4b6b6388a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250584"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015081"
 ---
 # <a name="use-hive-with-hadoop-on-hdinsight-with-remote-desktop"></a>Korzystanie z programu Hive z usługą Hadoop w HDInsight przy użyciu pulpitu zdalnego
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]

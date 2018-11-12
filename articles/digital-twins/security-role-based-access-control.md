@@ -1,5 +1,5 @@
 ---
-title: Understanding Azure cyfrowego bliźniaczych reprezentacji opartej na rolach kontrola dostępu | Dokumentacja firmy Microsoft
+title: Zrozumienie kontroli dostępu opartej na rolach Twins cyfrowych platformy Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, uwierzytelnianie w reprezentacji urządzeń cyfrowych przy użyciu kontroli dostępu opartej na rolach.
 author: lyrana
 manager: alinast
@@ -8,31 +8,40 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lyrana
-ms.openlocfilehash: 7a6d8565a0f85b4cb81d9f5f23b04fe6b2edc53e
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: b9ccdb9030a24520be8f24f757c279241f3a07e1
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324218"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014792"
 ---
 # <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
-Twins cyfrowych platformy Azure umożliwia kontrolowanie precyzyjnego dostępu do określonych danych, zasobów i akcji w grafie przestrzennych. Robi to za pośrednictwem szczegółowe zarządzanie rolami i uprawnieniami o nazwie _kontroli dostępu opartej na rolach_. Kontrola dostępu oparta na rolach składa się z _role_, lub poziom uprawnień, a _przypisań ról_, lub skojarzenie roli użytkownika lub urządzenia.
+Twins cyfrowych platformy Azure umożliwia kontrolowanie precyzyjnego dostępu do określonych danych, zasobów i akcji w grafie przestrzennych. Robi to za pośrednictwem szczegółowe zarządzanie rolami i uprawnieniami o nazwie kontroli dostępu opartej na rolach (RBAC). RBAC składa się z _role_ i _przypisań ról_. Role Określ poziom uprawnień. Przypisania ról skojarzyć roli z użytkowników lub urządzeń.
 
-Za pomocą kontroli dostępu opartej na rolach, uprawnień można udzielić do użytkownika, urządzenia, nazwę główną usługi, funkcji zdefiniowanych przez użytkownika, wszyscy użytkownicy należący do domeny lub dzierżawy. Ponadto stopnia dostępu można też dostosować.
+Korzystając z modelu RBAC uprawnienia nadane:
 
-Kontrola dostępu oparta na rolach jest unikatowa, w tym, że uprawnienia są dziedziczone w dół przestrzenne programu graph.
+- Użytkownik.
+- Urządzenie.
+- Jednostki usługi.
+- Funkcja zdefiniowana przez użytkownika. 
+- Wszyscy użytkownicy, którzy należą do domeny. 
+- Dzierżawca.
+ 
+Poziom dostępu, również można dostosować.
 
-## <a name="what-can-i-do-with-role-based-access-control"></a>Co można zrobić przy użyciu kontroli dostępu opartej na rolach?
+RBAC jest unikatowa, w tym, że uprawnienia są dziedziczone w dół przestrzenne programu graph.
 
-Deweloper może użyć opartej na rolach kontrola dostępu do:
+## <a name="what-can-i-do-with-rbac"></a>Co można zrobić za pomocą kontroli dostępu opartej na rolach?
+
+Deweloper może używać funkcji RBAC w usłudze:
 
 * Udzielić użytkownikowi możliwość zarządzania urządzeniami dla całego kompilowania lub tylko dla konkretnego pomieszczenia lub piętra.
 * Udziel administrator globalny dostęp do wszystkich węzłów przestrzenne wykresu cały wykres, czy tylko w części wykresu.
 * Udzielanie dostępu Odczyt specjalista ds. pomocy technicznej do grafu, z wyjątkiem klucze dostępu.
 * Przyznaj każdy członek domeny do odczytu wszystkich obiektów grafu.
 
-## <a name="role-based-access-control-best-practices"></a>Najlepszymi praktykami kontroli dostępu opartej na rolach
+## <a name="rbac-best-practices"></a>Najlepsze rozwiązania RBAC
 
 [!INCLUDE [digital-twins-permissions](../../includes/digital-twins-rbac-best-practices.md)]
 
@@ -40,7 +49,7 @@ Deweloper może użyć opartej na rolach kontrola dostępu do:
 
 ### <a name="role-definitions"></a>Definicje ról
 
-A **definicji roli** to zbiór uprawnień i jest czasami nazywane **roli**. Definicja roli zawiera dozwolone operacje, w tym *tworzenie*, *odczytu*, *aktualizacji*, i *Usuń*. Określa również, typy obiektów, których dotyczą te uprawnienia.
+Definicja roli to zbiór uprawnień i jest czasami nazywane roli. Listy definicji roli, z którymi dozwolone operacje, które obejmują tworzenia, odczytu, aktualizacji i usuwania. Określa również, typy obiektów, których dotyczą te uprawnienia.
 
 Następujące role są dostępne w reprezentacji urządzeń cyfrowych platformy Azure:
 
@@ -49,24 +58,24 @@ Następujące role są dostępne w reprezentacji urządzeń cyfrowych platformy 
 * **Rola Administrator urządzenia**: tworzenia, odczytu, aktualizacji i usuwania uprawnień dla urządzeń i obiektów związanych z urządzenia. Uprawnienia do odczytu dla miejsca do magazynowania.
 * **Klucz administratora**: tworzenia, odczytu, aktualizacji i usuwania uprawnień dostępu do kluczy. Uprawnienia do odczytu dla miejsca do magazynowania.
 * **Token administratora**: uprawnienia odczytu i aktualizacji dla kluczy dostępu. Uprawnienia do odczytu dla miejsca do magazynowania.
-* **Użytkownik**: uprawnienia do odczytu miejsca do magazynowania, czujniki i użytkowników, w tym odpowiadające im dotyczących obiektów.
+* **Użytkownik**: uprawnienia do odczytu miejsca do magazynowania, czujniki i użytkowników, która obejmuje odpowiadające im obiektów związanych z.
 * **Specjalista ds. obsługi**: uprawnienia do wszystkim, z wyjątkiem kluczy dostępu do odczytu.
-* **Instalator urządzenia**: uprawnienia odczytu i aktualizacji dla urządzeń i czujników, takich jak odpowiadające im powiązanych obiektów. Uprawnienia do odczytu dla miejsca do magazynowania.
-* **Urządzenie bramy**: Utwórz uprawnienie do czujników. Uprawnienia do odczytu urządzeń i czujników, odpowiadające im w tym powiązane obiekty.
+* **Instalator urządzenia**: uprawnienie odczytu i aktualizacji dla urządzeń i czujników, które zawiera odpowiednie powiązane obiekty. Uprawnienia do odczytu dla miejsca do magazynowania.
+* **Urządzenie bramy**: Utwórz uprawnienie do czujników. Uprawnienia do odczytu urządzeń i czujników, w tym odpowiadające im powiązanych obiektów.
 
 >[!NOTE]
-> *Pełne definicje dla powyższych mogą być pobierane przez wysyłanie zapytań / sytemu interfejsu API.*
+> Aby pobrać pełną definicje ról poprzedniej, zapytania systemu/role interfejsu API.
 
 ### <a name="object-types"></a>Typy obiektów
 
-`ObjectIdType` Odwołuje się do typu tożsamości, która otrzymuje jest rolą. Z wyjątkiem `DeviceId` i `UserDefinedFunctionId` typy, typy odpowiadają właściwości obiektu usługi Azure Active Directory (Azure AD):
+`ObjectIdType` Odwołuje się do typu tożsamości, daną rolę. Z wyjątkiem `DeviceId` i `UserDefinedFunctionId` typy, typy odpowiadają właściwości obiektu usługi Azure Active Directory (Azure AD):
   
 * `UserId` Typu przypisuje rolę dla użytkownika.
 * `DeviceId` Typu przypisuje rolę na urządzeniu.
-* `DomainName` Typu przypisuje rolę, aby wskazywała nazwę domeny. Każdego użytkownika mającego określoną nazwę domeny będą mieć prawa dostępu do odpowiedniej roli.
-* `TenantId` Typu przypisuje rolę do dzierżawy. Każdy użytkownik należący do określonego Identyfikatora dzierżawy usługi Azure AD będą mieć prawa dostępu do odpowiedniej roli.
+* `DomainName` Typu przypisuje rolę, aby wskazywała nazwę domeny. Każdego użytkownika mającego określoną nazwę domeny ma prawa dostępu do odpowiedniej roli.
+* `TenantId` Typu przypisuje rolę do dzierżawy. Każdy użytkownik, który należy do określonego Identyfikatora dzierżawy usługi Azure AD ma prawa dostępu do odpowiedniej roli.
 * `ServicePrincipalId` Typ roli przypisuje identyfikator obiektu jednostki usługi.
-* `UserDefinedFunctionId` Typu przypisuje rolę do funkcji zdefiniowane przez użytkownika (UDF).
+* `UserDefinedFunctionId` Typu przypisuje rolę funkcji zdefiniowanej przez użytkownika (UDF).
 
 > [!div class="nextstepaction"]
 > [Zapytania lub identyfikator obiektu użytkownika](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0)
@@ -79,9 +88,9 @@ Następujące role są dostępne w reprezentacji urządzeń cyfrowych platformy 
 
 ## <a name="role-assignments"></a>Przypisania ról
 
-Uprawnienia są przyznane do adresata, tworząc przypisania roli i odwołane przez usunięcie przypisania roli. Przypisanie roli Azure cyfrowego bliźniaczych reprezentacji kojarzy obiekt (użytkownika, dzierżawy usługi Azure AD, itp.), roli i spację. Następnie uprawnienia są przyznawane wszystkie obiekty, które należą do tego miejsca, w tym cały wykres przestrzenne znajdujące się poniżej.
+Aby udzielić uprawnień do adresata, Utwórz przypisanie roli. Aby odwołać uprawnienia, usunąć przypisanie roli. Przypisanie roli Azure cyfrowego bliźniaczych reprezentacji kojarzy obiekt, na przykład użytkownik lub dzierżawę usługi Azure AD z roli i spację. Uprawnienia są przyznawane wszystkie obiekty, które należą do tego miejsca. Miejsce obejmuje cały wykres przestrzenne znajdujące się poniżej.
 
-Na przykład, użytkownik otrzyma przypisania roli z rolą `DeviceInstaller` dla węzła głównego przestrzenne programu graph, która reprezentuje budynku. Następnie użytkownik będzie mogła odczytywać i aktualizować urządzeń nie tylko dla tego węzła, ale inne podrzędne przestrzenie w budynku.
+Na przykład, użytkownik otrzyma przypisania roli z rolą `DeviceInstaller` dla węzła głównego przestrzenne programu graph, która reprezentuje budynku. Użytkownik, a następnie może odczytywać i zaktualizuj urządzenia dla tego węzła i wszystkich innych podrzędnych miejsca do magazynowania w budynku.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

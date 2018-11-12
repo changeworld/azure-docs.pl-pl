@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/05/2018
 ms.author: raynew
-ms.openlocfilehash: b472ed1c32e64b8f8ac881c09f22590c49f39c75
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 076cd987cdc74cad07287c15ad52394ef304f251
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215365"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015370"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure
 
@@ -63,16 +63,9 @@ Usługa Site Recovery obsługuje dowolne obciążenia uruchomione na obsługiwan
 --- | ---
 Ustawienia komputera | Maszyny, które są replikowane do platformy Azure muszą spełniać [wymagania dotyczące usługi Azure](#azure-vm-requirements).
 System operacyjny Windows | 64-bitowym systemie Windows Server 2016 (Server Core, serwer ze środowiskiem pulpitu), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 z w co najmniej z dodatkiem SP1. </br></br>  [Windows Server 2008 z na co najmniej z dodatkiem SP2 — 32-bitowe i 64-bitowej](migrate-tutorial-windows-server-2008.md) (tylko migracji). </br></br> Windows 2016 Nano Server nie jest obsługiwane.
-System operacyjny Linux | Red Hat Enterprise Linux: 5.2 Aby 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0, 7.5 <br/><br/>CentOS: od 5.2 do 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0, 7.5 <br/><br/>Ubuntu 14.04 LTS server[ (obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Serwer Ubuntu 16.04 LTS[ (obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (obsługiwane wersje jądra)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 z dodatkiem SP1, SP2, z dodatkiem SP3 [ (obsługiwane wersje jądra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 z dodatkiem SP4 * </br></br>Oracle Linux 6.4, 6.5, 6.6, 6.7 systemem Red Hat zgodne jądra lub podzielenie Enterprise jądra wersji 3 (UEK3) <br/><br/></br>* *Uaktualnianie replikowanych maszyn z systemem SUSE Linux Enterprise Server 11 SP3 do SP4 nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację i włącz go ponownie po uaktualnieniu.*</br></br><b>\*\*</b> *Zapoznaj się [pomocy technicznej dla maszyn wirtualnych systemu Linux na platformie Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) uzyskiwania pomocy technicznej dla systemu Linux i technologii open source na platformie Azure. Usługa Azure Site Recovery umożliwia trybu failover i uruchamianie serwerów z systemem Linux na platformie Azure, jednak dostawcy systemu Linux może ograniczyć obsługę tylko te wersje programu ich dystrybucji, które nie osiągnęły koniec cyklu życia.*
+System operacyjny Linux | Red Hat Enterprise Linux: 5.2 Aby 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0, 7.5 <br/><br/>CentOS: od 5.2 do 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0, 7.5 <br/><br/>Ubuntu 14.04 LTS server[ (obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Serwer Ubuntu 16.04 LTS[ (obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (obsługiwane wersje jądra)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 z dodatkiem SP1, SP2, z dodatkiem SP3 [ (obsługiwane wersje jądra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 z dodatkiem SP4 * </br></br>Oracle Linux 6.4, 6.5, 6.6, 6.7 systemem Red Hat zgodne jądra lub podzielenie Enterprise jądra wersji 3 (UEK3) <br/><br/></br>— Uaktualnianie replikowanych maszyn z systemem SUSE Linux Enterprise Server 11 SP3 do SP4 nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację i włącz go ponownie po uaktualnieniu.</br></br> - [Dowiedz się więcej](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) dotyczące pomocy technicznej dla systemu Linux i technologii typu open source na platformie Azure. Usługa Site Recovery organizuje trybu failover, aby uruchomić serwerów z systemem Linux na platformie Azure. Jednak dostawcy systemu Linux może ograniczyć obsługę tylko wersje dystrybucji, które jeszcze nie osiągnęły wycofanych z eksploatacji.<br/><br/> -W dystrybucjach systemu Linux obsługiwane są tylko podstawowe jądra, które są częścią dystrybucji wersji pomocniczej wersji/aktualizacji.<br/><br/> — Uaktualnianie chronionych maszyn w głównych systemu Linux, wersji dystrybucji nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację, Uaktualnij system operacyjny i następnie włącz ponownie replikację.<br/><br/> — Serwerach z systemem Red Hat Enterprise Linux 5.2 5.11 lub CentOS 5.2 5.11 powinny mieć [składniki usługi LIS (Linux Integration)](https://www.microsoft.com/download/details.aspx?id=55106) zainstalowane maszyn rozruchu na platformie Azure.
 
 
->[!NOTE]
->
-> - W dystrybucjach systemu Linux są obsługiwane tylko podstawowe jądra, które są częścią dystrybucji wersji pomocniczej wersji/aktualizacji.
->
-> - Uaktualnianie chronionych maszyn w głównych systemu Linux, wersji dystrybucji nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację, Uaktualnij system operacyjny i następnie włącz ponownie replikację.
->
-> - Serwery z systemem Red Hat Enterprise Linux 5.2 5.11 lub CentOS 5.2 i 5.11 powinny mieć [składników systemu Linux Integration Services(LIS)](https://www.microsoft.com/en-us/download/details.aspx?id=55106) zainstalowane w kolejności rozruchu na platformie Azure maszyn.
 
 ### <a name="ubuntu-kernel-versions"></a>Wersje jądra systemu Ubuntu
 
@@ -249,7 +242,7 @@ Przenieś magazyn, sieci, maszyn wirtualnych platformy Azure między grupami zas
 --- | --- | --- | --- | ---
 Serwer konfiguracji | Służy do koordynowania komunikacji między serwerami VMware w środowisku lokalnym i platformą Azure <br/><br/> Zainstalowana na lokalnych serwerów VMware | W przypadku nowej instalacji, kliknij [tutaj](vmware-azure-deploy-configuration-server.md). W przypadku uaktualniania istniejącego składnika do najnowszej wersji, kliknij [tutaj](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
 Serwer przetwarzania|Domyślnie instalowany na serwerze konfiguracji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła je do usługi Azure Storage. Wraz z rozwojem wdrożenia, możesz dodać dodatkowe, oddzielny proces serwerów w celu obsługi większych ilości ruchu związanego z replikacją.| W przypadku nowej instalacji, kliknij [tutaj](vmware-azure-set-up-process-server-scale.md). W przypadku uaktualniania istniejącego składnika do najnowszej wersji, kliknij [tutaj](vmware-azure-manage-process-server.md#upgrade-a-process-server).
-Usługa mobilności | Koordynuje replikację między lokalną VMware serwery/serwery fizyczne i witryną Azure/pomocniczy<br/><br/> Zainstalowana na maszynie Wirtualnej VMware lub serwery fizyczne, które mają być replikowane | W przypadku nowej instalacji, kliknij [tutaj](vmware-azure-install-mobility-service.md). W przypadku uaktualniania istniejącego składnika do najnowszej wersji, kliknij [tutaj](vmware-azure-install-mobility-service.md#update-mobility-service).
+Usługa mobilności | Koordynuje replikację między lokalną VMware serwery/serwery fizyczne i witryną Azure/pomocniczy<br/><br/> Zainstalowana na maszynie Wirtualnej VMware lub serwery fizyczne, które mają być replikowane | W przypadku nowej instalacji, kliknij [tutaj](vmware-azure-install-mobility-service.md). W przypadku uaktualniania istniejącego składnika do najnowszej wersji, kliknij [tutaj](vmware-physical-mobility-service-overview.md#update-the-mobility-service).
 
 Aby poznać najnowsze funkcje i poprawki, kliknij przycisk [tutaj](https://aka.ms/latest_asr_updates).
 

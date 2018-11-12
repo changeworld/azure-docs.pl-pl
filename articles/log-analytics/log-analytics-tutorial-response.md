@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: e15f440fd1818e2d5ce1e72881b8a0f769dec8fc
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 2fbf3c902416935f0b1fff0bc423a2535f3ba077
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829906"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013000"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Odpowiadanie na zdarzenia przy użyciu alertów platformy Azure Monitor
 Alerty platformy Azure Monitor mogą identyfikować ważne informacje w repozytorium usługi Log Analytics. Są one tworzone przy użyciu reguł alertów, które automatycznie uruchamiają przeszukiwanie dzienników w regularnych odstępach czasu. Jeśli wyniki przeszukiwania dzienników pasują do danych kryteriów, zostaje utworzony rekord alertu. Ponadto można go skonfigurować tak, aby generował automatyczną odpowiedź.  Ten samouczek jest kontynuacją samouczka [Tworzenie i udostępnianie pulpitów nawigacyjnych z danymi usługi Log Analytics](log-analytics-tutorial-dashboards.md).   

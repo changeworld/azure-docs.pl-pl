@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 10/29/2018
-ms.openlocfilehash: c12683fee7022b84e097c2b71628776271611429
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 2051f37656b6717c879a24f6e06c31a0ade0b950
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210996"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012330"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Rozwiązywanie problemów z instalacją wypychaną usługi mobilności
 
@@ -73,7 +73,7 @@ Aby uzyskać **windows 2008 R2 i wcześniejsze wersje**,
   * W okienku nawigacji otwórz następujące foldery: lokalne zasady komputera, Konfiguracja użytkownika, Szablony administracyjne, Windows, składników i udostępniania w sieci.
   * W okienku szczegółów kliknij dwukrotnie **uniemożliwić użytkownikom udostępnianie plików w swoim profilu**. Aby wyłączyć ustawienia zasad grupy, a następnie włącz możliwość jego udostępniania plików, kliknij przycisk wyłączone. Kliknij przycisk OK, aby zapisać zmiany. Aby dowiedzieć się więcej, kliknij przycisk [tutaj](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
 
-Aby uzyskać **nowsze wersje**, postępuj zgodnie z instrukcjami [tutaj](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) umożliwiające udostępnianie plików i drukarek
+Aby uzyskać **nowsze wersje**, postępuj zgodnie z instrukcjami [tutaj](vmware-azure-install-mobility-service.md) umożliwiające udostępnianie plików i drukarek.
 
 ## <a name="windows-management-instrumentation-wmi-configuration-check"></a>Sprawdzenie konfiguracji Instrumentacji zarządzania Windows (WMI)
 

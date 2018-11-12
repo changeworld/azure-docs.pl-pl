@@ -3,16 +3,16 @@ title: Rozwiązywanie problemów z platformy Spark w usłudze Azure HDInsight
 description: Uzyskaj odpowiedzi na często zadawane pytania na temat pracy z usługą Apache Spark i Azure HDInsight.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 7c7f89864d9394ff4527f9a0354b9276f7c01c49
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 835a56413a4274a2be2511278b4dedd7f83c54c3
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591741"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016679"
 ---
 # <a name="troubleshoot-spark-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z platformy Spark za pomocą usługi Azure HDInsight
 

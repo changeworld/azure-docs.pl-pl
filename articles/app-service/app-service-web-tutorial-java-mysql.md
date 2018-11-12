@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: db1005bbce25b0fa3fec76e6f9428a4cdd6fa4aa
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: ec942d97e7671c0477d8d723afacb06b73565c1c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024379"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414561"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Samouczek: tworzenie aplikacji internetowej języka Java i MySQL na platformie Azure
 
@@ -47,7 +47,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 1. [Pobierz i zainstaluj narzędzie Git](https://git-scm.com/)
-1. [Pobierz i zainstaluj zestaw JDK języka Java 7 lub nowszy](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+1. [Pobierz i zainstaluj zestaw Java JDK](https://aka.ms/azure-jdks)
 1. [Pobierz, zainstaluj i uruchom oprogramowanie MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
 
 ## <a name="prepare-local-mysql"></a>Przygotowywanie lokalnego środowiska MySQL 
@@ -272,7 +272,7 @@ Gdy definicja aplikacji internetowej jest gotowa, w interfejsie wiersza poleceni
 
 W usłudze Cloud Shell ustaw konfigurację środowiska uruchomieniowego języka Java wymaganą przez aplikację przy użyciu polecenia [`az webapp config set`](/cli/azure/webapp/config#az-webapp-config-set).
 
-Następujące polecenie konfiguruje aplikację internetową do uruchamiania razem z zestawem Java 8 JDK i środowiskiem [Apache Tomcat](http://tomcat.apache.org/) 8.0.
+Następujące polecenie konfiguruje aplikację internetową do uruchamiania razem z zestawem [Java 8 JDK](https://aka.ms/azure-jdks) i serwerem [Apache Tomcat](http://tomcat.apache.org/) 8.0.
 
 ```azurecli-interactive
 az webapp config set --name <app_name> --resource-group myResourceGroup --java-version 1.8 --java-container Tomcat --java-container-version 8.0

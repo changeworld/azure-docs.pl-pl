@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 5ffe7b4c7830500e5eeeeb61c57730d9a0d9df47
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 4e2ba61ada16c922dc89d9d6c9aa6a0fce8b0941
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41920089"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414186"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Samouczek: Skalowanie aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -71,7 +71,13 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>Automatyczne skalowanie zasobników
 
-Rozwiązanie Kubernetes obsługuje [automatyczne skalowanie zasobników w poziomie][kubernetes-hpa], umożliwiające dostosowywanie liczby zasobników we wdrożeniu do użycia procesora lub innych wybranych metryk. Program [Metrics Server][metrics-server] służy do zapewniania platformie Kubernetes informacji o wykorzystaniu zasobów. Aby zainstalować program Metrics Server, sklonuj repozytorium GitHub `metrics-server` i zainstaluj przykładowe definicje zasobów. Aby wyświetlić zawartość tych definicji YAML, zobacz [program Metrics Server dla platformy Kuberenetes w wersji 1.8 lub nowszej][metrics-server-github].
+Rozwiązanie Kubernetes obsługuje [automatyczne skalowanie zasobników w poziomie][kubernetes-hpa], umożliwiające dostosowywanie liczby zasobników we wdrożeniu do użycia procesora lub innych wybranych metryk. [Serwer metryk][metrics-server] służy do zapewnienia wykorzystania zasobów w usłudze Kubernetes i jest automatycznie wdrożony w klastrach AKS w wersji 1.10 lub nowszej. Aby wyświetlić wersję klastra AKS, użyj polecenia [az aks show][az-aks-show], jak pokazano w poniższym przykładzie:
+
+```azurecli
+az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
+```
+
+Jeśli klaster AKS jest w wersji wcześniejszej niż *1.10*, zainstaluj program Metrics Server. W przeciwnym razie pomiń ten krok. Sklonuj repozytorium GitHub `metrics-server` i zainstaluj przykładowe definicje zasobów. Aby wyświetlić zawartość tych definicji YAML, zobacz [program Metrics Server dla platformy Kuberenetes w wersji 1.8 lub nowszej][metrics-server-github].
 
 ```console
 git clone https://github.com/kubernetes-incubator/metrics-server.git
@@ -112,7 +118,7 @@ Jeśli utworzono klaster Kubernetes przy użyciu poleceń z poprzedniego samoucz
 W poniższym przykładzie liczba węzłów w klastrze Kubernetes o nazwie *myAKSCluster* zostanie zwiększona do trzech. Wykonanie tego polecenia może zająć kilka minut.
 
 ```azurecli
-az aks scale --resource-group=myResourceGroup --name=myAKSCluster --node-count 3
+az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 ```
 
 Dane wyjściowe są podobne do następujących:
@@ -160,3 +166,4 @@ Przejdź do następnego samouczka, aby dowiedzieć się, jak zaktualizować apli
 [aks-tutorial-update-app]: ./tutorial-kubernetes-app-update.md
 [az-aks-scale]: /cli/azure/aks#az-aks-scale
 [azure-cli-install]: /cli/azure/install-azure-cli
+[az-aks-show]: /cli/azure/aks#az-aks-show

@@ -3,19 +3,19 @@ title: Użyj zestaw narzędzi platformy Azure dla środowiska IntelliJ z Piaskow
 description: Dowiedz się, jak używać narzędzi HDInsight w zestaw narzędzi platformy Azure dla środowiska IntelliJ z Piaskownicą Hortonworks.
 keywords: narzędzia hadoop hive zapytania, intellij, piaskownicą hortonworks, zestaw narzędzi platformy azure dla środowiska intellij
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
-ms.openlocfilehash: 02adeb46ad7533f3668f5a46ffc19b6ce5b86b6f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.author: hrasheed
+ms.openlocfilehash: 2f09bd7055b987a8647a24d4ebb6ea5a27888a53
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420731"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015591"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Korzystaj z narzędzi HDInsight dla programu IntelliJ z Piaskownicą Hortonworks
 
