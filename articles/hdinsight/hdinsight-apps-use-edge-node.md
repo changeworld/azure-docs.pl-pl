@@ -1,24 +1,24 @@
 ---
-title: Używanie pustych węzłów brzegowych w klastrach usługi Hadoop w HDInsight — Azure
+title: Używanie pustych węzłów brzegowych w klastrach usługi Apache Hadoop w HDInsight — Azure
 description: Jak dodać pustego węzła krawędzi do klastra usługi HDInsight, który może służyć jako klienta, a następnie/hosta testów aplikacji HDInsight.
 services: hdinsight
 ms.reviewer: jasonh
-author: jasonwhowell
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.author: jasonh
-ms.openlocfilehash: 1111f3c21e3c3718a9a010284a42ea469e04473d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 276f11bf889927ee74fa4e9078e147db6df78b9e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090392"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281375"
 ---
-# <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>Używanie pustych węzłów brzegowych w klastrach usługi Hadoop w HDInsight
+# <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Używanie pustych węzłów brzegowych w klastrach usługi Apache Hadoop w HDInsight
 
-Dowiedz się, jak dodać pustego węzła krawędzi do klastra usługi HDInsight. Pustego węzła krawędzi jest maszyną wirtualną systemu Linux przy użyciu tych samych narzędzi klienckich, które są zainstalowane i skonfigurowane tak jak w węzłach głównych, ale z nie usług Hadoop działających. W węźle brzegowym służy do uzyskiwania dostępu do klastra, testowania aplikację kliencką i hosting aplikacji klienckich. 
+Dowiedz się, jak dodać pustego węzła krawędzi do klastra usługi HDInsight. Pustego węzła krawędzi jest maszyną wirtualną systemu Linux przy użyciu tych samych narzędzi klienckich, które są zainstalowane i skonfigurowane tak jak w węzłach głównych, ale bez żadnych usług Apache Hadoop, systemem. W węźle brzegowym służy do uzyskiwania dostępu do klastra, testowania aplikację kliencką i hosting aplikacji klienckich. 
 
 Pustego węzła krawędzi można dodać do istniejącego klastra HDInsight, do nowego klastra podczas tworzenia klastra. Dodawanie pustego węzła krawędzi jest wykonywane przy użyciu szablonu usługi Azure Resource Manager.  W poniższym przykładzie pokazano, jak jest wykonywane przy użyciu szablonu:
 
@@ -66,7 +66,7 @@ Po utworzeniu węzeł krawędzi, możesz nawiązać połączenie z węzłem kraw
 > Jeśli używasz technologii Apache można znaleźć pomoc za pośrednictwem Apache witryny projektu na [ http://apache.org ](http://apache.org), takich jak [Hadoop](http://hadoop.apache.org/) lokacji.
 
 > [!NOTE]
-> Taki sam jak klastry, węzłów brzegowych są zarządzane poprawki.  Aby uzyskać więcej informacji, zobacz [stosowania poprawek systemu operacyjnego dla HDInsight](./hdinsight-os-patching.md).
+> Podobnie jak inne węzły klastra węzłów brzegowych są także poprawki zarządzane.  Aby uzyskać więcej informacji, zobacz [stosowania poprawek systemu operacyjnego dla HDInsight](./hdinsight-os-patching.md).
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Dodaj węzeł krawędzi do istniejącego klastra
 W tej sekcji używasz szablonu usługi Resource Manager można dodać węzła brzegowego do istniejącego klastra HDInsight.  Szablon usługi Resource Manager można znaleźć w [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/). Szablon usługi Resource Manager wymaga akcji skryptu, znajdujący się w https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. Skrypt nie wykonuje żadnych akcji.  Jest aby zademonstrować wywoływania akcji skryptu za pomocą szablonu usługi Resource Manager.
@@ -116,7 +116,7 @@ W tej sekcji użyjesz szablon usługi Resource Manager do utworzenia klastra HDI
 
 ## <a name="add-multiple-edge-nodes"></a>Dodawanie wielu węzłów brzegowych
 
-Wiele węzłów krawędzi można dodać do klastra usługi HDInsight.  Konfiguracja wielu węzłów krawędzi jest możliwe tylko przy użyciu szablonów usługi Azure Resource Manager.  Zobacz przykładowy szablon na początku tego artykułu.  Należy zaktualizować **targetInstanceCount** do odzwierciedlają liczbę węzłów brzegowych, którą chcesz utworzyć.
+Wiele węzłów krawędzi można dodać do klastra usługi HDInsight.  Konfiguracja wielu węzłów krawędzi jest możliwe tylko przy użyciu szablonów usługi Azure Resource Manager.  Zobacz przykładowy szablon na początku tego artykułu.  Należy zaktualizować **targetInstanceCount** do odzwierciedlają liczbę węzłów brzegowych, które chcesz utworzyć.
 
 ## <a name="access-an-edge-node"></a>Dostęp do węzła krawędzi
 W węźle brzegowym ssh punkt końcowy jest &lt;EdgeNodeName >.&lt; Nazwa_klastra >-ssh.azurehdinsight.net:22.  Na przykład nowy edgenode.myedgenode0914-ssh.azurehdinsight.net:22.

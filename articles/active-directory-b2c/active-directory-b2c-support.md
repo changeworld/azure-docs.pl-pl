@@ -10,23 +10,24 @@ ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4ceef533145bea75247eb26998b998552293ef63
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 04eae00d40470d5f6c992d9a0c8c9b0b49d7495f
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37450114"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007641"
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Żądania pomocy technicznej plik
 Mogą zgłaszać żądania pomocy technicznej dla usługi Azure Active Directory (Azure AD) B2C w witrynie Azure portal wykonując następujące czynności:
 
-1. [Wykonaj następujące kroki, aby przejść do bloku funkcji B2C w witrynie Azure portal](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-2. Przełącz się z dzierżawą B2C do innej dzierżawy, który ma subskrypcję platformy Azure skojarzone z nią. Zazwyczaj jest Twoja pracownika lub dzierżawą domyślne tworzone podczas tworzenia konta dla subskrypcji platformy Azure. Aby dowiedzieć się więcej, zobacz [jak związane z subskrypcją platformy Azure do usługi Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+1. Przełącz się z dzierżawą B2C do innej dzierżawy, który ma subskrypcję platformy Azure skojarzone z nią. Zazwyczaj jest Twoja pracownika lub dzierżawą domyślne tworzone podczas tworzenia konta dla subskrypcji platformy Azure. Aby dowiedzieć się więcej, zobacz [jak związane z subskrypcją platformy Azure do usługi Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
    
     ![Pomoc techniczna — przełącznika dzierżawy](./media/active-directory-b2c-support/support-switch-dir.png)
+
 3. Po przełączeniu dzierżaw, kliknij przycisk **Pomoc i obsługa techniczna**.
    
     ![Pomoc techniczna — Pomoc i obsługa techniczna](./media/active-directory-b2c-support/support-support.png)
+    
 4. Kliknij przycisk **nowe żądanie obsługi**.
    
     ![Pomoc techniczna — nowe](./media/active-directory-b2c-support/support-new.png)
@@ -48,7 +49,7 @@ Mogą zgłaszać żądania pomocy technicznej dla usługi Azure Active Directory
    * W obszarze **przekazywanie pliku**Przekaż wszystkie zrzuty ekranu i pliki, które prawdopodobnie będą pomocne przy rozwiązywaniu problemu.
      
      ![Pomoc techniczna — Problem](./media/active-directory-b2c-support/support-problem.png)
-7. W **informacje kontaktowe** bloku Dodaj swoje informacje kontaktowe. Kliknij przycisk **Utwórz**.
+7. W **informacje kontaktowe** bloku Dodaj swoje informacje kontaktowe. Kliknij pozycję **Utwórz**.
    
     ![Pomoc techniczna — skontaktuj się z](./media/active-directory-b2c-support/support-contact.png)
 8. Po przesłaniu żądania pomocy technicznej, można go monitorować, klikając **Pomoc i obsługa techniczna** na tablicy startowej, a następnie **Zarządzaj żądaniami obsługi**.

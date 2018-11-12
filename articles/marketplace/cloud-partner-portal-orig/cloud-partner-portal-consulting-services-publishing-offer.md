@@ -1,6 +1,6 @@
 ---
-title: Usługi doradcze | Dokumentacja firmy Microsoft
-description: Przewodnik do definiowania i publikowania doradcze oferty usługi.
+title: Platforma Azure i oferty usług doradczych dotyczących 365 Dynamcis | Dokumentacja firmy Microsoft
+description: Przewodnik do definiowania i publikowania platformy Azure lub Dynamcis 365 doradcze usługi ofertę w portalu Cloud Partner.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: dan-wesley
@@ -12,19 +12,29 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b3f6b9166afce9ca0cdeaa1c9dd6e10a5a976453
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 43f1e71486cedbeccb2c02388147a68756581e50
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810589"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037774"
 ---
-<a name="defining-and-publishing-your-consulting-services-offer"></a>Definiowanie i publikowanie oferty usług doradczych
-======================================================
+# <a name="azure-and-dynamics-365-consulting-service-offer"></a>Platforma Azure i oferty usług doradczych dotyczących Dynamics 365
 
-Ten przewodnik jest przeznaczony do definiowania i opublikować ofertę usługi doradcze w portalu Cloud Partner.
+<table> <tr> <td>W tej sekcji opisano sposób publikowania usługa doradcza do firmy Microsoft <a href="https://azuremarketplace.microsoft.com">portalu Azure Marketplace</a> lub <a href="https://appsource.microsoft.com">Marketplace usługi AppSource</a>. Rozwiązania oparte na programie Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://products.office.com">usługi Office 365</a>, <a href="https://powerbi.microsoft.com">usługi Power BI</a>, i <a href="https://powerapps.microsoft.com">PowerApps</a> mogą pojawić się w usłudze AppSource. Inne oferty na podstawie innych firmy Microsoft <a href="https://azure.microsoft.com/services">usług platformy Azure</a> kwalifikują się do listy w witrynie Azure Marketplace. </td> <td><img src="./media/consulting-services-publishing-offer/consulting-icon1.png"  alt="Microsoft consulting icon" /></td> </tr> </table>
+
+
+# <a name="publishing-benefits"></a>Publikowanie korzyści
+
+Publikowanie do jednej z platformach handlowych firmy Microsoft ma znaczące korzyści:
+
+- Podwyższanie poziomu firmy dzięki wykorzystaniu marki firmy Microsoft.
+- Potencjalnie Dotrzyj do ponad 100 milionów użytkowników usług Office 365 i Dynamics 365 w usłudze AppSource; dotrzeć do ponad 200 tysiące organizacji za pośrednictwem witryny Azure Marketplace.
+- Pobierz wysokiej jakości potencjalnych klientów z tych rynków.
+- Uzyskaj usługi wspierane przez zespoły pola i telesales firmy Microsoft.
+
 
 <a name="define-your-consulting-services-offer"></a>Zdefiniuj oferty usług doradczych
 -------------------------------------
@@ -52,30 +62,23 @@ Aby utworzyć nową ofertę, wykonaj następujące czynności:
 
 ### <a name="define-offer-settings"></a>Zdefiniuj ustawienia oferty
 
-Na ekranie nowa oferta pierwszym krokiem jest utworzenie tożsamości oferty.
-Tożsamość oferty składa się z trzech części:
-
-1.  Identyfikator oferty
-2.  Identyfikator wydawcy
-3.  Name (Nazwa)
-
-Każdy z tych elementów zostały omówione w poniższych sekcjach.
+Na ekranie nowa oferta pierwszym krokiem jest utworzenie tożsamości oferty.  Tożsamość oferty składa się z trzech części: **identyfikatora oferty Offer ID**, **Identyfikatora wydawcy**, i **nazwa**.  Każdy z tych elementów zostały omówione w poniższych sekcjach.
 
 #### <a name="offer-id"></a>Identyfikator oferty
 
-To jest unikatową nazwą, utworzonej po przesłaniu najpierw oferty. Musi ona zawierać tylko małe znaki alfanumeryczne, łączniki i podkreślenia. Identyfikator będą widoczne w adresie URL i wpływ na wyniki aparatu wyszukiwania. Na przykład *yourcompanyname\_exampleservice*
+Ten identyfikator jest unikatową nazwą, utworzonej po przesłaniu najpierw oferty. Musi ona zawierać tylko małe znaki alfanumeryczne, łączniki i podkreślenia. Identyfikator oferty będą widoczne w adresie URL i wpływ na wyniki aparatu wyszukiwania. Na przykład *yourcompanyname\_exampleservice*
 
-Jak pokazano w przykładzie, Identyfikatora oferty pobiera dołączany do swój identyfikator wydawcy, aby utworzyć unikatowy identyfikator. To jest udostępniany jako łącze stałe, mogą być zapisane, która jest indeksowana przez aparaty wyszukiwania.
+Jak pokazano w przykładzie, Identyfikatora oferty pobiera dołączany do Identyfikatora wydawcy do utworzenia unikatowego identyfikatora. To jest udostępniany jako łącze stałe, mogą być zapisane, która jest indeksowana przez aparaty wyszukiwania. 
 
-**Po oferta jest przeznaczona na żywo można\'zaktualizowania t**
+*Po oferta jest przeznaczona na żywo, nie można zaktualizować jej identyfikator*
 
 #### <a name="publisher-id"></a>Identyfikator wydawcy
 
-Jest to związane z Twoim kontem. Gdy użytkownik jest zalogowany przy użyciu swojego konta organizacyjnego, Twój identyfikator wydawcy pojawią się w menu rozwijanym.
+Ten identyfikator jest związane z Twoim kontem. Gdy użytkownik jest zalogowany przy użyciu swojego konta organizacyjnego, Twój identyfikator wydawcy pojawią się w menu rozwijanym.
 
 #### <a name="name"></a>Name (Nazwa)
 
-Jest to, co będzie wyświetlana jako nazwa oferty w usłudze AppSource lub witrynie Azure Marketplace.
+Ten ciąg jest o tym, co będzie wyświetlana jako nazwa oferty w usłudze AppSource lub witrynie Azure Marketplace.
 
 **Ważne:** wprowadzić tylko nazwę nazwa rzeczywistej usługi. Nie dołączaj czas trwania i typ usługi.
 
@@ -85,12 +88,12 @@ Poniższy przykład przez Edgewater Fullscope pokazuje, jak nazwa oferty jest sk
 
 Nazwa oferty składa się z czterech części:
 
--   **Czas trwania:** to zdefiniować na karcie Szczegóły Storefront edytora. Czas trwania może być wyrażona w godzinach, dniach lub tygodniach.
--   **Typ usługi:** to zdefiniować na karcie Szczegóły Storefront edytora. Typy usług są oceny, widoków, implementacja, weryfikacji koncepcji i warsztaty.
--   **Preposition:** wstawione przez recenzenta
--   **Nazwa:** jest zdefiniowana na stronie ustawień oferty.
+-   **Czas trwania:** — to zdefiniowano w **szczegóły Storefront** karta edytora. Czas trwania może być wyrażona w godzinach, dniach lub tygodniach.
+-   **Typ usługi:** — to zdefiniowano w **szczegóły Storefront** karta edytora. Typy usług `Assessment`, `Briefing`, `Implementation`, `Proof of concept`, i `Workshop`.
+-   **Preposition:** — wstawiony przez recenzenta
+-   **Nazwa:** — to zdefiniowano w **oferują ustawienia** strony.
 
-Poniższa lista zawiera kilka dobrze nazwane nazw oferty:
+Poniższa lista zawiera kilka nazw dobrze nazwane oferty:
 
 -   Podstawy dla profesjonalnych usług: 1-godzinnego widoków
 -   Platforma usług w chmurze migracji: 1-godzinnego widoków
@@ -124,7 +127,7 @@ Sekcja szczegóły oferty zawiera następujące pola:
 
 ##### <a name="offer-summary"></a>Podsumowanie oferty
 
-Podsumowanie oferty jest krótki opis oferty, zostanie wyświetlony tuż poniżej Nazwa oferty. Należy używać zwykłego tekstu, wprowadzając oferty podsumowania, a nie powinny mieć podziały wierszy. Poniżej przedstawiono dobre przykłady podsumowania oferty wraz z odpowiadającymi im nazwami oferty:
+Podsumowanie oferty jest krótki opis oferty, zostanie wyświetlony tuż poniżej Nazwa oferty. Użyj zwykłego tekstu podczas wprowadzania Podsumowanie oferty i nie powinna mieć podziały wierszy. Poniżej przedstawiono dobre przykłady podsumowania oferty wraz z odpowiadającymi im nazwami oferty:
 
 *Przykład 1*
 
@@ -153,7 +156,7 @@ Podsumowanie oferty jest krótki opis oferty, zostanie wyświetlony tuż poniże
 
 ##### <a name="offer-description"></a>Opis oferty
 
-To jest opis oferty usług doradczych. Opis dobra oferta obejmuje szczegółowymi informacjami na temat wyglądu asysty i to, co będzie end elementu dostarczanego klientowi. Wyraźnie powinny pomóc w klientów, zrozumienie, jakie korzyści.
+Opis oferty usług doradczych. Opis dobra oferta obejmuje szczegółowymi informacjami na temat wyglądu asysty i to, co będzie end elementu dostarczanego klientowi. Wyraźnie powinny pomóc w klientów, zrozumienie, jakie korzyści.
 
 Nie dołączaj łącza wiadomości e-mail lub numer telefonu do kontaktowania się w opisie oferty. Nastąpi kontakt ze mną przycisk z ofertą, który zostanie przekazany prowadzi do docelowego zarządzania potencjalny klient, który możesz zidentyfikować na ofertę.
 
@@ -161,7 +164,7 @@ Wprowadź opis oferty w formacie Markdown. Jeśli nie znasz języka znaczników 
 
 Korzystanie z tych formatów pewność, że Twoja oferta ma maksymalną czytelność dla klientów.
 
-Zachowaj krótki opis oferty i stosować limit znaków, jak jest użytkowników nie można odczytać dużo tekstu. Nadal masz opcję przekazania broszur marketingu, zestawienia i inne dokumenty, które opisują oferty więcej szczegółów.
+Zachowaj krótki opis oferty i stosować limit znaków, jak jest użytkowników nie można odczytać długie teksty. Nadal masz opcję przekazania broszur marketingu, zestawienia i inne dokumenty, które opisują oferty więcej szczegółów.
 
 Poniższy przykład pokazuje, oraz złożone opis oferty i nazwy powiązane i Podsumowanie:
 
@@ -223,7 +226,7 @@ Nowe Centrum identyfikator partnera, jeśli nie masz.
 **IDENTYFIKATOR MPN**
 
 Wprowadź klucz tajny w celu wyświetlenia podglądu oferty w usłudze AppSource przed przejściem na żywo.
-Nie jest hasłem.
+Ten identyfikator nie jest hasłem.
 
 #### <a name="listing-details"></a>Szczegółowe informacje dotyczące listy
 
@@ -287,4 +290,4 @@ Przekaż do pięciu obrazów, które zawierają więcej informacji dotyczących 
 
 Po zakończeniu oferty ustawienia, szczegóły sklepu i kontakty wybierz **Publikuj** i podaj adres e-mail. Firma Microsoft jest gotowa do opublikowania oferty, otrzymasz wiadomość e-mail, aby wyświetlić jego podgląd, zanim usługa zostanie wprowadzona na żywo. Możesz wrócić do portalu, aby sprawdzić stan oferty w dowolnym momencie w czasie.
 
-Oferty może pojawić się w "Publikuj anulowane" lub "Publikowania nie powiodło się." stan w procesie publikowania. To jest normalna część procesu i umożliwia firmie Microsoft i wprowadź zmiany do swojej oferty. Jeśli widzisz oferty "Publikowanie anulowane" pozostawić ją w tym stanie.
+Oferty może pojawić się w "Publikuj anulowane" lub "Publikowania nie powiodło się." stan w procesie publikowania. Ten stan jest normalna część procesu i umożliwia firmie Microsoft i wprowadź zmiany do swojej oferty. Jeśli widzisz oferty "Publikowanie anulowane" pozostawić ją w tym stanie.

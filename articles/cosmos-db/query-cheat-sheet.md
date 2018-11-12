@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: 432f61adaf736180a720aa23a7275e96fed4c733
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 22f8384105ed31ac2b11e0c6094b01549a270144
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696935"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230873"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Arkusze porad zapytania w usłudze Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Wybierz z pobrania rozmiarze Letter lub o rozmiarze A3.
 
 ## <a name="letter-sized-cheat-sheets"></a>Arkusze porad o rozmiarze Letter
 
-Pobierz [arkusze porad o rozmiarze letter zapytań usługi Azure Cosmos DB](http://go.microsoft.com/fwlink/?LinkId=623215) Jeśli zamierzasz drukować na papierze o rozmiarze letter (8,5 "x 11").
+Pobierz [arkusze porad o rozmiarze letter zapytań usługi Azure Cosmos DB](https://go.microsoft.com/fwlink/?LinkId=623215) Jeśli zamierzasz drukować na papierze o rozmiarze letter (8,5 "x 11").
 
 ![Azure Cosmos DB zapytania arkusze porad — wymiarach, za pomocą interfejsu API SQL, JavaScript, interfejsu API usługi MongoDB, interfejs API Gremlin i interfejsu API tabeli zapytań i functions](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
 

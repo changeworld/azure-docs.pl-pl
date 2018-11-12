@@ -26,7 +26,7 @@
 
 Od 1 kwietnia 2017 r. wszystkie rekordy zadań na Twoim koncie, które są starsze niż 90 dni zostaną automatycznie usunięte, wraz ze skojarzonymi rekordami zadań podrzędnych nawet, jeśli łączna liczba rekordów jest poniżej maksymalny limit przydziału. Jeśli chcesz zarchiwizować informacje dotyczące zadania lub zadania podrzędnego, możesz użyć kodu opisanego [tutaj](../articles/media-services/previous/media-services-dotnet-manage-entities.md).
 
-<sup>3</sup> żądania do listy zadań jednostek, maksymalnie 1000 zadania jest zwracana na żądanie. Jeśli potrzebujesz śledzić wszystkie przesłane zadania, możesz użyć opcji top/skip zgodnie z opisem w temacie [OData system query options](http://msdn.microsoft.com/library/gg309461.aspx) (Opcje zapytań systemu OData).
+<sup>3</sup> żądania do listy zadań jednostek, maksymalnie 1000 zadania jest zwracana na żądanie. Jeśli potrzebujesz śledzić wszystkie przesłane zadania, możesz użyć opcji top/skip zgodnie z opisem w temacie [OData system query options](https://msdn.microsoft.com/library/gg309461.aspx) (Opcje zapytań systemu OData).
 
 <sup>4</sup> Lokalizatory nie są przeznaczone do zarządzania kontrolą dostępu dla poszczególnych użytkowników. Aby nadać różne uprawnienia poszczególnym użytkownikom, użyj rozwiązań do zarządzania prawami cyfrowymi (DRM, Digital Rights Management). Więcej informacji znajduje się w [tej](../articles/media-services/previous/media-services-content-protection-overview.md) sekcji.
 

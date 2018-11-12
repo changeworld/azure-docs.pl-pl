@@ -1,6 +1,6 @@
 ---
-title: Wyświetl względną opóźnienia, aby regiony platformy Azure z określonych lokalizacji | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak widok względną opóźnienia między internetowi do regiony platformy Azure z określonych lokalizacji.
+title: Wyświetlanie względnej opóźnienia do regionów platformy Azure z określonych lokalizacji | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wyświetlić względne wartości opóźnienia między dostawców Internetu w regionach platformy Azure z określonych lokalizacji.
 services: network-watcher
 documentationcenter: ''
 author: jimdial
@@ -16,34 +16,34 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: a6c2ffa619eeff8b455df8a8b2157525af12c640
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 6ac37c3a53b0cc71bdab85fb86e0e85d998867aa
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
-ms.locfileid: "27600957"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300612"
 ---
-# <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Widok względny czas opóźnienia regiony platformy Azure z określonych lokalizacji
+# <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Wyświetl względnego opóźnienia do regionów platformy Azure z określonych lokalizacji
 
-W tym samouczku, jak przy użyciu platformy Azure [obserwatora sieciowego](network-watcher-monitoring-overview.md) usługi, aby określić, jakie region platformy Azure w przypadku wdrażania aplikacji lub usług w, na podstawie z informacjami demograficznymi użytkownika. Ponadto można go użyć służą do oceniania połączenia dostawcy usług Azure.  
+W tym samouczku, Dowiedz się, jak używać platformy Azure [usługi Network Watcher](network-watcher-monitoring-overview.md) service, aby pomóc zdecydować, jakie regionie platformy Azure do wdrażania aplikacji lub usługi, oparte na użytkownika demograficznych. Ponadto służy do oceniania połączenia dostawcy usług z platformą Azure.  
         
-## <a name="create-a-network-watcher"></a>Utwórz obserwatora sieciowego
+## <a name="create-a-network-watcher"></a>Tworzenie usługi network watcher
 
-Jeśli masz już obserwatora sieciowego w systemie Azure co najmniej jeden [region](https://azure.microsoft.com/regions), możesz pominąć zadania w tej sekcji. Utwórz grupę zasobów dla obserwatora sieciowego. W tym przykładzie grupa zasobów nie zostanie utworzona w regionie wschodnie stany USA, ale można utworzyć grupy zasobów w dowolnym regionie Azure.
+Jeśli masz już usługę network watcher na platformie Azure co najmniej jeden [region](https://azure.microsoft.com/regions), można pominąć zadania przedstawione w tej sekcji. Utwórz grupę zasobów dla usługi network watcher. W tym przykładzie grupa zasobów zostanie utworzona w regionie wschodnie stany USA, ale można utworzyć grupę zasobów, w dowolnym regionie systemu Azure.
 
 ```powershell
 New-AzureRmResourceGroup -Name NetworkWatcherRG -Location eastus
 ```
 
-Utwórz obserwatora sieciowego. Musi mieć obserwatora sieciowego, utworzony w co najmniej jeden region platformy Azure. W tym przykładzie obserwatora sieciowego jest tworzony w regionie wschodnie nam Azure.
+Tworzenie usługi network watcher. Konieczne jest posiadanie usługi network watcher utworzone w co najmniej jednego regionu platformy Azure. W tym przykładzie usługi network watcher zostało utworzone w regionie wschodnie stany USA Azure.
 
 ```powershell
 New-AzureRmNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG -Location eastus
 ```
 
-## <a name="compare-relative-network-latencies-to-a-single-azure-region-from-a-specific-location"></a>Porównanie opóźnienia sieciowe względną do jednego regionu Azure z określonej lokalizacji
+## <a name="compare-relative-network-latencies-to-a-single-azure-region-from-a-specific-location"></a>Porównaj opóźnienia sieciowe względnej z pojedynczym regionem platformy Azure z określonej lokalizacji
 
-Ocenę dostawcy usług lub Rozwiązywanie problemów z użytkownikiem raportowania problemu, takie jak "lokacji jest powolne," z określonej lokalizacji do regionu azure, w którym zostanie wdrożona usługa. Na przykład poniższe polecenie zwraca opóźnienia średni dostawcy usługi względna Internet między stanu Waszyngton w Stanach Zjednoczonych i regionu zachodnie nam 2 Azure od grudnia 13-15, 2017:
+Ocenę dostawców usług lub Rozwiązywanie problemów z użytkownikiem zgłoszenie problemu, takie jak "witryna była powoli," z określonej lokalizacji do regionu platformy azure, w którym wdrożono usługę. Na przykład poniższe polecenie zwraca średnie opóźnienia dostawcy względne usługi Internet między stanu Waszyngton w Stanach Zjednoczonych i regionu zachodnie stany USA 2 platformy Azure między 13 15 grudnia 2017:
 
 ```powershell
 Get-AzureRmNetworkWatcherReachabilityReport `
@@ -57,10 +57,10 @@ Get-AzureRmNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> Region, które określisz w poprzednim poleceniu nie musi być taka sama jak regionie, w którym określono po pobraniu obserwatora sieciowego. Poprzednie polecenie po prostu wymaga określenia istniejących obserwatora sieciowego. Obserwatora sieciowego można w dowolnym regionie. Jeśli można określić wartości `-Country` i `-State`, musi być prawidłowy. Wartości jest rozróżniana wielkość liter. Dane są dostępne dla ograniczonej liczby krajów, Stany i miast. Uruchom polecenia w [wyświetlić dostępne krajach, Stany miejscowości i dostawców](#view-available) Aby wyświetlić listę dostępnych krajów, miast i stanów do użycia przy użyciu poprzedniego polecenia. 
+> Region, który określisz w poprzednim poleceniu nie musi być taki sam jak region, który określiłeś, podczas pobierania usługi network watcher. Poprzednie polecenie wymaga po prostu, że podajesz istniejącej usługi network watcher. Usługa network watcher można w dowolnym regionie. W przypadku określenia wartości `-Country` i `-State`, musi być prawidłowy. Wartości jest rozróżniana wielkość liter. Dane są dostępne dla ograniczonej liczby krajów, regionów i miast. Uruchom polecenia w [wyświetlić dostępnych krajów, Stany, miasta i dostawców](#view-available) Aby wyświetlić listę dostępnych krajów, miast i stanów do użycia z poprzedniego polecenia. 
 
 > [!WARNING]
-> Należy określić datę wypadającą po 14 listopada 2017 dla `-StartTime` i `-EndTime`. Określenie daty przed 14 listopada 2017 zwraca żadnych danych. 
+> Należy określić datę w ciągu ostatnich 30 dni dla `-StartTime` i `-EndTime`. Określanie w ubiegłym spowoduje żadne dane nie zostały zwrócone.
 
 Następujące dane wyjściowe z poprzedniego polecenia:
 
@@ -102,11 +102,11 @@ ReachabilityReport : [
                      ]
 ```
 
-W wynikach zwrócona wartość **wynik** jest względny czas oczekiwania w różnych regionach i dostawców. Wynik 1 jest najgorszy opóźnienie (najwyższy), 100 jest najniższym opóźnieniu. Względne opóźnienia są uśredniane na dzień. W poprzednim przykładzie gdy ma on Wyczyść, który opóźnienia są takie same zarówno dni i że istnieje niewielkie różnice między czasem oczekiwania wynoszącym dwóch dostawców, ma także wyczyścić który opóźnienia zarówno dostawców brakuje skali 1-100. Gdy jest to zachowanie normalne, ponieważ stanu Waszyngton w Stanach Zjednoczonych fizycznie znajduje się w pobliżu regionu zachodnie nam 2 Azure, czasami wyników nie są zgodnie z oczekiwaniami. Określ większy zakres dat, tym bardziej Średni czas oczekiwania w czasie.
+W wynikach zwrócona wartość **wynik** jest względnego opóźnienia w różnych regionach i dostawców. Wynik 1 jest najgorszy opóźnienia (najwyższy), 100 jest najmniejszego opóźnienia. Względne wartości opóźnienia są uśredniane dla danego dnia. W poprzednim przykładzie podczas gdy ma ona jasno wynika, opóźnienia są takie same dni, a czy istnieje niewielkie różnice między czasem oczekiwania wynoszącym dwóch dostawców, ma także wyczyścić, opóźnienia dla obu dostawców niskie na skali 1-100. Gdy jest to oczekiwane, ponieważ stanu Waszyngton w Stanach Zjednoczonych fizycznie zbliża się w regionie zachodnie stany USA 2 platformy Azure, czasami wyniki są zgodnie z oczekiwaniami. Im większy zakres dat, które można wybrać, tym bardziej Średni czas oczekiwania, wraz z upływem czasu.
 
-## <a name="compare-relative-network-latencies-across-azure-regions-from-a-specific-location"></a>Porównanie opóźnienia sieciowe względne w różnych regionach platformy Azure z określonej lokalizacji
+## <a name="compare-relative-network-latencies-across-azure-regions-from-a-specific-location"></a>Porównaj opóźnienia sieciowe względne regionami platformy Azure z określonej lokalizacji
 
-Jeśli zamiast określania względnych opóźnienia między określonej lokalizacji i przy użyciu określonego regionu Azure `-Location`, aby określić względną opóźnienia wszystkie regiony platformy Azure z określonej lokalizacji fizycznej, możesz to zrobić za. Na przykład następujące polecenie pomoże Ci ocenić, jakie region platformy azure, aby wdrożyć usługę w, jeśli użytkownicy głównej Comcast użytkowników znajdujących się w stanie Waszyngton:
+Jeśli zamiast określania względnych opóźnienia między określonej lokalizacji i określonego regionu platformy Azure przy użyciu `-Location`chcesz wyznaczyć opóźnienia względną do wszystkich regionów platformy Azure z określonej lokalizacji fizycznej, możesz to zrobić za. Na przykład następujące polecenie pomoże Ci ocenić jakie regionie platformy azure, aby wdrożyć usługę w, jeśli użytkownicy głównej znajdują się użytkownicy Comcast, położony w stanie Waszyngton:
 
 ```powershell
 Get-AzureRmNetworkWatcherReachabilityReport `
@@ -120,19 +120,19 @@ Get-AzureRmNetworkWatcherReachabilityReport `
 ```
 
 >[!NOTE]
-W odróżnieniu od po określeniu jednej lokalizacji, jeśli nie Określ lokalizację, lub określ wiele lokalizacji, takie jak "US2 zachodnie", "Zachodnie nas", należy określić usługodawcy internetowego podczas uruchamiania polecenia. 
+W odróżnieniu od po określeniu jednej lokalizacji, jeśli nie Określ lokalizację lub określ wiele lokalizacji, na przykład "Zachodnie stany USA 2", "Zachodnie stany USA", należy określić usługodawcy internetowego przy uruchamianiu polecenia. 
 
-## <a name="view-available"></a>Wyświetl dostępne krajach, Stany miejscowości i dostawców
+## <a name="view-available"></a>Wyświetl dostępne krajów, miasta i dostawców
 
-Dane są dostępne dla określonego dostawcy usług internetowych, krajach stanów i miast. Aby wyświetlić listę wszystkich dostępnych usługodawców internetowych, krajach, Stany i miasta, które mogą wyświetlać dane, wprowadź następujące polecenie:
+Dane są dostępne dla określonego dostawcy usług internetowych, krajów, regionów i miast. Aby wyświetlić listę wszystkich dostępnych usługodawców internetowych, krajów, regionów i miast, które można wyświetlać dane, wprowadź następujące polecenie:
 
 ```powershell
 Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
 ```
 
-Danych jest dostępna tylko dla innych krajów, Stany i miasta zwrócony przez poprzednie polecenie. Poprzednie polecenie należy określić istniejącą obserwatora sieciowego. Przykład określony *NetworkWatcher_eastus* obserwatora sieciowego w grupie zasobów o nazwie *NetworkWatcherRG*, ale można określić żadnych istniejących obserwatora sieciowego. Jeśli nie masz istniejących obserwatora sieciowego, utwórz ją za wykonywanie zadań w [utworzyć obserwatora sieciowego](#create-a-network-watcher). 
+Data jest dostępna tylko dla krajów, regionów i miast zwrócony przez poprzednie polecenie. Poprzednie polecenie wymaga określenia istniejącej usługi network watcher. Przykład określony *NetworkWatcher_eastus* usługi network watcher w grupie zasobów o nazwie *NetworkWatcherRG*, ale można określić wszelkie istniejące usługi network watcher. Jeśli nie masz istniejącej usługi network watcher, utwórz ją, wykonywania zadań w [utworzyć usługę network watcher](#create-a-network-watcher). 
 
-Po uruchomieniu poprzedniego polecenia, można filtrować dane wyjściowe zwracane przez określenie prawidłowymi wartościami dla **kraju**, **stanu**, i **miasta**, jeśli to konieczne.  Na przykład aby wyświetlić listę usługodawców internetowych dostępne w Seattle, Washington, na terenie Stanów Zjednoczonych, wprowadź następujące polecenie:
+Po uruchomieniu w poprzednim poleceniu, można filtrować dane wyjściowe zwracane, określając prawidłowe wartości dla **kraju**, **stanu**, i **Miasto**, jeśli to konieczne.  Na przykład aby wyświetlić listę usługodawców internetowych dostępnych w Seattle, Waszyngton w Stanach Zjednoczonych, wprowadź następujące polecenie:
 
 ```powershell
 Get-AzureRmNetworkWatcherReachabilityProvidersList `
@@ -144,4 +144,4 @@ Get-AzureRmNetworkWatcherReachabilityProvidersList `
 ```
 
 > [!WARNING]
-> Wartość określona dla **kraju** musi być wielkich i małych. Wartości podane **stanu** i **miasta** muszą być małymi literami. Wartości muszą znajdować się dane wyjściowe zwracane po uruchomieniu polecenia bez wartości dla **kraju**, **stanu**, i **miasta**. Jeśli Określ nieprawidłowej wielkości liter, lub określ wartość **kraju**, **stanu**, lub **miasta** nie jest w dane wyjściowe zwracane po uruchomieniu polecenia bez wartości dla nich właściwości, dane wyjściowe jest pusta.
+> Wartość określona dla **kraju** musi być wielkich i małych. Wartości określone dla **stanu** i **Miasto** muszą być małymi literami. Wartości muszą znajdować się dane wyjściowe zwracane po uruchomieniu polecenia bez wartości dla **kraju**, **stanu**, i **Miasto**. Jeśli Określanie nieprawidłowej wielkości liter lub określić wartość dla **kraju**, **stanu**, lub **Miasto** który nie znajduje się w dane wyjściowe zwracane po uruchomieniu polecenia bez wartości dla tych właściwości, dane wyjściowe jest pusty.

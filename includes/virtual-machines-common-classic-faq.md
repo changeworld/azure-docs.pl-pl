@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 45a6bd349169265ef411d01a3601a27551847633
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 37dc96cf965181c5acba74449c684a08035e37b2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226928"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264229"
 ---
 W tym artykule zostały podane odpowiedzi na niektóre często zadawane przez użytkowników pytania dotyczące maszyn wirtualnych na platformie Azure utworzonych za pomocą klasycznego modelu wdrażania.
 
@@ -22,9 +22,9 @@ Tak. Aby uzyskać instrukcje dotyczące sposobu przeprowadzania migracji, zobacz
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Co mogę uruchomić na maszynie wirtualnej platformy Azure?
 Wszyscy subskrybenci mogą uruchomić oprogramowanie serwerowe na maszynie wirtualnej platformy Azure. Możesz uruchomić nowe wersje systemu Windows Server oraz różne dystrybucje systemu Linux. Aby uzyskać szczegółowe informacje na temat pomocy technicznej, zobacz:
 
-• Dla maszyn wirtualnych z systemem Windows — [pomoc techniczna dla oprogramowania serwerowego firmy Microsoft dla usługi Azure Virtual Machines](http://go.microsoft.com/fwlink/p/?LinkId=393550)
+• Dla maszyn wirtualnych z systemem Windows — [pomoc techniczna dla oprogramowania serwerowego firmy Microsoft dla usługi Azure Virtual Machines](https://go.microsoft.com/fwlink/p/?LinkId=393550)
 
-• Dla maszyn wirtualnych z systemem Linux — [dystrybucje systemu Linux zalecane dla platformy Azure](http://go.microsoft.com/fwlink/p/?LinkId=393551)
+• Dla maszyn wirtualnych z systemem Linux — [dystrybucje systemu Linux zalecane dla platformy Azure](https://go.microsoft.com/fwlink/p/?LinkId=393551)
 
 Dla obrazów klienta systemu Windows niektóre wersje systemów Windows 7 i Windows 8.1 są dostępne dla subskrybentów korzyści MSDN na platformie Azure i subskrybentów MSDN: tworzenie/testowanie — płatność zgodnie z rzeczywistym użyciem dla zadań tworzenia i testowania. Aby uzyskać szczegółowe informacje, łącznie z instrukcjami i ograniczeniami, zobacz [Windows Client images for MSDN subscribers](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/) (Obrazy klienta systemu Windows dla subskrybentów MSDN).
 
@@ -38,10 +38,10 @@ Funkcje grupy koligacji są już przestarzałe w modelu wdrażania przy użyciu 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Ile pamięci masowej mogę użyć w maszynie wirtualnej?
 Każdy dysk danych może mieć maksymalnie 1 TB. Liczba dysków danych, których możesz użyć, zależy od rozmiaru maszyny wirtualnej. Aby uzyskać szczegółowe informacje, zobacz [Sizes for virtual machines](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Rozmiary maszyn wirtualnych).
 
-Konto magazynu platformy Azure udostępnia pamięć masową dla dysku systemu operacyjnego i wszelkich dysków z danymi. Każdy dysk jest plikiem VHD przechowywanym jako stronicowy obiekt blob. Aby uzyskać szczegółowe informacje o cenach, zobacz [Szczegóły cennika magazynu](http://go.microsoft.com/fwlink/p/?LinkId=396819).
+Konto magazynu platformy Azure udostępnia pamięć masową dla dysku systemu operacyjnego i wszelkich dysków z danymi. Każdy dysk jest plikiem VHD przechowywanym jako stronicowy obiekt blob. Aby uzyskać szczegółowe informacje o cenach, zobacz [Szczegóły cennika magazynu](https://go.microsoft.com/fwlink/p/?LinkId=396819).
 
 ## <a name="which-virtual-hard-disk-types-can-i-use"></a>Jakich typów wirtualnego dysku twardego mogę używać?
-Platforma Azure obsługuje tylko stałe wirtualne dyski twarde w formacie VHD. Jeśli masz dysk VHDX, którego chcesz używać na platformie Azure, musisz najpierw dokonać jego konwersji za pomocą menedżera funkcji Hyper-V lub polecenia cmdlet [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656). Po wykonaniu tej czynności za pomocą polecenia cmdlet [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) (w trybie zarządzania usługami) przekaż dysk VHD na konto magazynu na platformie Azure, aby móc go używać z maszynami wirtualnymi.
+Platforma Azure obsługuje tylko stałe wirtualne dyski twarde w formacie VHD. Jeśli masz dysk VHDX, którego chcesz używać na platformie Azure, musisz najpierw dokonać jego konwersji za pomocą menedżera funkcji Hyper-V lub polecenia cmdlet [convert-VHD](https://go.microsoft.com/fwlink/p/?LinkId=393656). Po wykonaniu tej czynności za pomocą polecenia cmdlet [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) (w trybie zarządzania usługami) przekaż dysk VHD na konto magazynu na platformie Azure, aby móc go używać z maszynami wirtualnymi.
 
 * Aby uzyskać instrukcje dla systemu Linux, zobacz [Creating and Uploading a Virtual Hard Disk that Contains the Linux Operating System](../articles/virtual-machines/linux/classic/create-upload-vhd-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) (Tworzenie wirtualnego dysku twardego zawierającego system operacyjny Linux i przekazywanie go).
 
@@ -50,7 +50,7 @@ Pod wieloma względami są one podobne do maszyn wirtualnych „Generacji 1” f
 
 * Platforma Azure nie zapewnia dostępu do konsoli maszyny wirtualnej. Nie istnieje sposób uzyskania dostępu do maszyny wirtualnej, dopóki nie zakończy ona rozruchu.
 * Maszyny wirtualne platformy Azure w większości [rozmiarów](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) mają tylko 1 wirtualną kartę sieciową, co oznacza, że mogą mieć również tylko 1 zewnętrzny adres IP. (Rozmiary A8 i A9 używają drugiej karty sieciowej do aplikacji komunikacyjnych między wystąpieniami w ograniczonych scenariuszach).
-* Maszyny wirtualne platformy Azure nie obsługują funkcji maszyn wirtualnych 2. generacji funkcji Hyper-V. Aby uzyskać więcej informacji o tych funkcjach, zobacz [Virtual Machine Specifications for Hyper-V](http://technet.microsoft.com/library/dn592184.aspx) (Specyfikacje maszyny wirtualnej dla funkcji Hyper-V) i [Generation 2 Virtual Machine Overview](https://technet.microsoft.com/library/dn282285.aspx) (Maszyna wirtualna 2. generacji — omówienie).
+* Maszyny wirtualne platformy Azure nie obsługują funkcji maszyn wirtualnych 2. generacji funkcji Hyper-V. Aby uzyskać więcej informacji o tych funkcjach, zobacz [Virtual Machine Specifications for Hyper-V](https://technet.microsoft.com/library/dn592184.aspx) (Specyfikacje maszyny wirtualnej dla funkcji Hyper-V) i [Generation 2 Virtual Machine Overview](https://technet.microsoft.com/library/dn282285.aspx) (Maszyna wirtualna 2. generacji — omówienie).
 
 ## <a name="can-these-virtual-machines-use-my-existing-on-premises-networking-infrastructure"></a>Czy te maszyny wirtualne mogą korzystać z mojej istniejącej lokalnej infrastruktury sieci?
 Dla maszyn wirtualnych utworzonych w klasycznym modelu wdrażania możesz użyć sieci wirtualnej platformy Azure, aby rozszerzyć swoją istniejącą infrastrukturę. Podejście to przypomina konfigurowanie biura oddziału. Możesz aprowizować wirtualne sieci prywatne (VPN) na platformie Azure i zarządzać nimi oraz bezpiecznie łączyć je z lokalną infrastrukturą IT. Aby uzyskać szczegółowe informacje, zobacz [Omówienie usługi Virtual Network](../articles/virtual-network/virtual-networks-overview.md).
@@ -85,7 +85,7 @@ Termin uaktualnienie zazwyczaj oznacza przejście do nowszej wersji systemu oper
 * Dla maszyn wirtualnych z systemem Linux użyj narzędzi i procedur do zarządzania pakietem odpowiednich dla dystrybucji.
 * Dla maszyny wirtualnej z systemem Windows musisz przeprowadzić migrację serwera przy użyciu czegoś podobnego do narzędzi migracji systemu Windows Server. Nie podejmuj próby uaktualnienia systemu operacyjnego gościa, gdy znajduje się on na platformie Azure. Nie jest on obsługiwany ze względu na ryzyko utraty dostępu do maszyny wirtualnej. Jeśli problem wystąpi podczas uaktualniania, możesz utracić możliwość rozpoczynania sesji pulpitu zdalnego i nie będzie można rozwiązać problemów.
 
-Aby uzyskać ogólne informacje dotyczące narzędzi i procesów migracji systemu Windows Server, zobacz [Migrowanie ról i funkcji do systemu Windows Server](http://go.microsoft.com/fwlink/p/?LinkId=396940).
+Aby uzyskać ogólne informacje dotyczące narzędzi i procesów migracji systemu Windows Server, zobacz [Migrowanie ról i funkcji do systemu Windows Server](https://go.microsoft.com/fwlink/p/?LinkId=396940).
 
 ## <a name="whats-the-default-user-name-and-password-on-the-virtual-machine"></a>Jaka jest domyślna nazwa użytkownika i hasło na maszynie wirtualnej?
 Obrazy dostarczane przez platformę Azure nie mają wstępnie skonfigurowanej nazwy użytkownika ani hasła. Podczas tworzenia maszyny wirtualnej przy użyciu jednego z tych obrazów należy podać nazwę użytkownika i hasło, którego będziesz używać do logowania się do maszyny wirtualnej.
@@ -100,8 +100,8 @@ Dodatkowe szczegóły:
 ## <a name="can-azure-run-anti-virus-on-my-virtual-machines"></a>Czy platforma Azure może uruchamiać oprogramowanie antywirusowe na moich maszynach wirtualnych?
 Platforma Azure oferuje kilka rozwiązań dla oprogramowania antywirusowego, ale zarządzanie nimi należy do Ciebie. Na przykład możesz potrzebować oddzielnej subskrypcji oprogramowania chroniącego przed złośliwym oprogramowaniem, a następnie musisz zdecydować, kiedy uruchamiać skanowania i instalować aktualizacje. Obsługę antywirusową możesz dodać za pomocą rozszerzenia maszyny wirtualnej dla usługi firmy Microsoft chroniącej przed złośliwym kodem, programu Symantec Endpoint Protection lub agenta TrendMicro Deep Security Agent podczas tworzenia maszyny wirtualnej systemu Windows lub w późniejszym czasie. Rozszerzenia firm Symantec i TrendMicro pozwalają na korzystanie z bezpłatnej subskrypcji próbnej ograniczonej czasowo lub istniejącej subskrypcji przedsiębiorstwa. Usługa firmy Microsoft chroniąca przed złośliwym kodem jest bezpłatna. Aby uzyskać szczegółowe informacje, zobacz:
 
-* [Jak zainstalować i skonfigurować rozwiązanie Symantec Endpoint Protection na maszynie wirtualnej platformy Azure](http://go.microsoft.com/fwlink/p/?LinkId=404207)
-* [Jak zainstalować i skonfigurować rozwiązanie Security as a Service o nazwie Trend Micro Deep na maszynie wirtualnej platformy Azure](http://go.microsoft.com/fwlink/p/?LinkId=404206)
+* [Jak zainstalować i skonfigurować rozwiązanie Symantec Endpoint Protection na maszynie wirtualnej platformy Azure](https://go.microsoft.com/fwlink/p/?LinkId=404207)
+* [Jak zainstalować i skonfigurować rozwiązanie Security as a Service o nazwie Trend Micro Deep na maszynie wirtualnej platformy Azure](https://go.microsoft.com/fwlink/p/?LinkId=404206)
 * [Wdrażanie rozwiązań do ochrony przed złośliwym kodem na maszynach wirtualnych platformy Azure](https://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
 
 ## <a name="what-are-my-options-for-backup-and-recovery"></a>Jakie są możliwości tworzenia kopii zapasowych i odzyskiwania?

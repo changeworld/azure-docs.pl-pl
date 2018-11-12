@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: f064521929bdaf0565a2993e12be62a3959ad567
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: df1f8d805c950bdfbe2c18f365a450a6d630891b
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945301"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300442"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Za pomocą uprzywilejowanych punktu końcowego w usłudze Azure Stack
 
@@ -55,7 +55,7 @@ Przed przystąpieniem do wykonywania tej procedury do zintegrowanego systemu, up
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
-    - Jeśli korzystasz z ADSK, zaloguj się do rozwoju hosta zestawu.
+    - Jeśli korzystasz z ASDK, zaloguj się do rozwoju hosta zestawu.
 
 2. Na maszynie wirtualnej ze wzmocnionymi zabezpieczeniami uruchomiona na hoście cyklu życia sprzętu lub uprzywilejowanego stacji roboczej z dostępem Otwórz sesję środowiska Windows PowerShell. Uruchom następujące polecenia, aby ustanowić sesję zdalną na maszynie wirtualnej, który hostuje program ten:
  
@@ -67,7 +67,7 @@ Przed przystąpieniem do wykonywania tej procedury do zintegrowanego systemu, up
           -ConfigurationName PrivilegedEndpoint -Credential $cred
       ````
       `ComputerName` Parametr może być adres IP lub nazwa DNS jednej z maszyn wirtualnych, które obsługuje program ten. 
-    - Jeśli korzystasz z ADSK:
+    - Jeśli korzystasz z ASDK:
      
       ````PowerShell
         $cred = Get-Credential
@@ -127,7 +127,7 @@ Aby zaimportować program ten sesji na komputerze lokalnym, wykonaj następując
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
-    - Jeśli korzystasz z ADSK, zaloguj się do rozwoju hosta zestawu.
+    - Jeśli korzystasz z ASDK, zaloguj się do rozwoju hosta zestawu.
 
 2. Na maszynie wirtualnej ze wzmocnionymi zabezpieczeniami uruchomiona na hoście cyklu życia sprzętu lub uprzywilejowanego stacji roboczej z dostępem Otwórz sesję środowiska Windows PowerShell. Uruchom następujące polecenia, aby ustanowić sesję zdalną na maszynie wirtualnej, który hostuje program ten:
  
@@ -139,7 +139,7 @@ Aby zaimportować program ten sesji na komputerze lokalnym, wykonaj następując
           -ConfigurationName PrivilegedEndpoint -Credential $cred
       ````
       `ComputerName` Parametr może być adres IP lub nazwa DNS jednej z maszyn wirtualnych, które obsługuje program ten. 
-    - Jeśli korzystasz z ADSK:
+    - Jeśli korzystasz z ASDK:
      
       ````PowerShell
        $cred = Get-Credential

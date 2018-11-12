@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: f1fe45283ef2886a50bf6a36e50e7ffe42055ee2
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: e266b239a44907e8e38e60cfc217aa21e46ab17e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49312439"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264296"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Ekonomicznego magazynu w warstwie standardowa oraz zarządzane i niezarządzane dyski maszyny Wirtualnej platformy Azure
 
@@ -61,10 +61,10 @@ W tej sekcji opisano cele dotyczące skalowalności i wydajności, które należ
 | **Zasób** | **Limit domyślny** |
 |--------------|-------------------|
 | TB na konto magazynu  | 500 TB |
-| Maksymalna liczba przychodzących<sup>1</sup> na konto magazynu (nam regiony) | 10 GB/s włączenie GRS/ZRS, 20 GB/s dla magazynu LRS |
-| Maksymalna liczba wychodzących<sup>1</sup> na konto magazynu (nam regiony) | 20 GB/s włączenie RA-GRS/GRS/ZRS, 30 GB/s dla magazynu LRS |
-| Maksymalna liczba przychodzących<sup>1</sup> na konto magazynu (Europejską i regionów Azji) | 5 GB/s włączenie GRS/ZRS, 10 GB/s dla magazynu LRS |
-| Maksymalna liczba wychodzących<sup>1</sup> na konto magazynu (Europejską i regionów Azji) | 10 GB/s włączenie RA-GRS/GRS/ZRS, 15 GB/s dla magazynu LRS |
+| Maksymalna liczba przychodzących<sup>1</sup> na konto magazynu (nam regiony) | 10 GB/s włączenie GRS/ZRS, 20 GB/s dla magazynu LRS |
+| Maksymalna liczba wychodzących<sup>1</sup> na konto magazynu (nam regiony) | 20 GB/s włączenie RA-GRS/GRS/ZRS, 30 GB/s dla magazynu LRS |
+| Maksymalna liczba przychodzących<sup>1</sup> na konto magazynu (Europejską i regionów Azji) | 5 GB/s włączenie GRS/ZRS, 10 GB/s dla magazynu LRS |
+| Maksymalna liczba wychodzących<sup>1</sup> na konto magazynu (Europejską i regionów Azji) | 10 GB/s włączenie RA-GRS/GRS/ZRS, 15 GB/s dla magazynu LRS |
 | Łączna liczba żądań stawka za transakcje (w przypadku obiektu o rozmiarze 1 KB) konto magazynu | Maksymalnie 20 000 operacji We/Wy, jednostek na sekundę lub komunikatów na sekundę |
 
 <sup>1</sup> ruch przychodzący odnosi się do wszystkich danych (żądań) są wysyłane do konta magazynu. Ruch wychodzący odnosi się do wszystkich danych (żądań) wysyłanych z konta magazynu.
@@ -111,8 +111,8 @@ Dysk zarządzany jest dołączony do maszyny Wirtualnej, niektóre operacje inte
 
 Korzystając z magazynu w warstwie standardowa, zastosuj następujące zagadnienia dotyczące rozliczeń:
 
-* Rozmiar dysków/danych magazynu w warstwie standardowa niezarządzanych 
-* Dyski zarządzane w warstwie Standardowa
+* Rozmiar dysków/danych magazynu w warstwie standardowa niezarządzanych
+* Dyski zarządzane w warstwie standardowa
 * Migawki magazynu w warstwie standardowa
 * Wychodzące transfery danych
 * Transakcje
@@ -121,14 +121,16 @@ Korzystając z magazynu w warstwie standardowa, zastosuj następujące zagadnien
 
 **Usługa Managed disks:** rozliczeń dla dysków zarządzanych w warstwie standardowa zależy od rozmiaru aprowizowanego dysku. Usługi Azure maps zaprowizowany rozmiar (z zaokrągleniem) do najbliższej opcji dysków Managed Disks w określonych w poniższych tabelach. Każdy dysk zarządzany mapowany na jeden z obsługiwanych rozmiarów elastycznie i jest rozliczana w związku z tym. Na przykład jeśli Tworzenie dysku zarządzanego standardowe i określ aprowizowanego rozmiaru 200 GiB, są rozliczane zgodnie z cennikiem typ dysku S15.
 
-| **Standardowy dysk twardy zarządzane <br>typ dysku** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60** | **S70** | **S80** |
+Rozmiary oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej.
+
+| **Standardowy dysk twardy zarządzane <br>typ dysku** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16,385 giB (16 TiB) | 32 767 giB (32 TiB) |
 
 
 **Migawki**: migawek dysków w warstwie standardowa są naliczane za dodatkową pojemność posługują się migawki. Aby uzyskać informacji na temat migawek, zobacz [Tworzenie migawki obiektu Blob](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
-**Wychodzące transfery danych**: [wychodzące transfery danych](https://azure.microsoft.com/pricing/details/data-transfers/) (dane wychodzące z centrów danych platformy Azure) Naliczanie opłat za zużycie przepustowości.
+**Wychodzące transfery danych**: [wychodzące transfery danych](https://azure.microsoft.com/pricing/details/data-transfers/) (dane wychodzące z centrów danych platformy Azure) Naliczanie opłat za zużycie przepustowości.
 
 **Transakcja**: na platformie Azure obowiązuje 0.0036 $ za 100 000 transakcji dla magazynu w warstwie standardowa. Transakcje obejmują operacje odczytu i zapisu związane z magazynem.
 

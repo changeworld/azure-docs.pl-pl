@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: bf73f64cc1e1789b770d7fae5f62e0ec27425263
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 8c8f3cd67186450fdcf65c177ea0353d297a3b01
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42915453"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264096"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Generowanie pliku żądania podpisania certyfikatu
 
@@ -41,7 +41,7 @@ Następnie zarejestrujesz aplikację w firmie Apple, włączysz powiadomienia pu
 
 Aby móc wysyłać powiadomienia wypychane do aplikacji dla systemu iOS, należy zarejestrować aplikację w firmie Apple oraz zarejestrować się w usłudze powiadomień wypychanych.  
 
-1. Jeśli aplikacja nie została jeszcze zarejestrowana, przejdź do [portalu inicjowania obsługi systemu iOS](http://go.microsoft.com/fwlink/p/?LinkId=272456) w Centrum deweloperów firmy Apple, zaloguj się za pomocą identyfikatora firmy Apple, kliknij opcję **Identyfikatory**, następnie kliknij opcję **Identyfikatory aplikacji**, a na koniec kliknij znak **+**, aby zarejestrować nową aplikację.
+1. Jeśli aplikacja nie została jeszcze zarejestrowana, przejdź do [portalu inicjowania obsługi systemu iOS](https://go.microsoft.com/fwlink/p/?LinkId=272456) w Centrum deweloperów firmy Apple, zaloguj się za pomocą identyfikatora firmy Apple, kliknij opcję **Identyfikatory**, następnie kliknij opcję **Identyfikatory aplikacji**, a na koniec kliknij znak **+**, aby zarejestrować nową aplikację.
 
     ![Strona identyfikatorów aplikacji w portalu aprowizowania dla systemu iOS](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
 
@@ -111,7 +111,7 @@ Aby móc wysyłać powiadomienia wypychane do aplikacji dla systemu iOS, należy
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>Tworzenie profilu inicjowania obsługi dla aplikacji
 
-1. Po powrocie do [portalu aprowizowania dla systemu iOS](http://go.microsoft.com/fwlink/p/?LinkId=272456) wybierz pozycję **Profile aprowizacji**, wybierz pozycję **Wszystkie**, a następnie kliknij przycisk **+** (plus), aby utworzyć nowy profil. Zostanie wyświetlony kreator **dodawania profilu aprowizacji w systemie iOS**:
+1. Po powrocie do [portalu aprowizowania dla systemu iOS](https://go.microsoft.com/fwlink/p/?LinkId=272456) wybierz pozycję **Profile aprowizacji**, wybierz pozycję **Wszystkie**, a następnie kliknij przycisk **+** (plus), aby utworzyć nowy profil. Zostanie wyświetlony kreator **dodawania profilu aprowizacji w systemie iOS**:
 
     ![Lista profili aprowizacji](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
 

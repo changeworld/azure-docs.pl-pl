@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: b4fdf094653a4b16dead6397fe8e1a9f1a0258b9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 2ce6e7c796faf0c7377a33dabe1e8c05e81fde2f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162087"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280714"
 ---
 # <a name="tutorial-4-extract-exact-text-matches"></a>Samouczek 4: Wyodrębnianie dokładnych dopasowań tekstu
 W tym samouczku dowiesz się, jak uzyskać dane zgodne ze wstępnie zdefiniowaną listą elementów. Każdy element na liście może zawierać listę synonimów. W przypadku aplikacji Human Resources pracownik może być identyfikowany za pomocą kilku kluczowych informacji, takich jak nazwa, adres e-mail, numer telefonu i identyfikator TID. 
@@ -41,7 +41,7 @@ Jednostka listy jest dobrym rozwiązaniem w przypadku tego typu danych, jeśli:
 > * Publikowanie
 > * Pobieranie intencji i jednostek z punktu końcowego
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
 Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
@@ -57,7 +57,7 @@ Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj nast�
 
 ## <a name="moveemployee-intent"></a>Intencja MoveEmployee
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wybierz pozycję **Create new intent** (Utwórz nową intencję). 
 
@@ -84,7 +84,7 @@ Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj nast�
 
     Należy pamiętać, że liczba i jednostka datetimeV2 zostały dodane w poprzednim samouczku i zostaną automatycznie oznaczone etykietą, kiedy zostaną znalezione w dowolnej przykładowej wypowiedzi.
 
-    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="employee-list-entity"></a>Jednostka listy pracowników
 Teraz, gdy intencja **MoveEmployee** ma przykładowe wypowiedzi, usługa LUIS musi zrozumieć, czym jest pracownik. 

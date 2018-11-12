@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: c7c3aea53a1bbdbfc39bad568b2879311e365acd
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4d77e9b57301bea30d8a33985071c28e972a81a6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226866"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264392"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>Otwieranie portów TCP w zaporze systemu Windows dla domyślnego wystąpienia aparatu bazy danych
 1. Nawiąż połączenie z maszyną wirtualną przy użyciu pulpitu zdalnego. Aby uzyskać szczegółowe instrukcje dotyczące nawiązywania połączenia z maszyną wirtualną, zobacz [Otwieranie maszyny wirtualnej SQL przy użyciu pulpitu zdalnego](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop).
@@ -38,7 +38,7 @@ ms.locfileid: "50226866"
    
     ![Nazwa reguły](./media/virtual-machines-sql-server-connection-steps/17Rule-Name.png)
 
-Otwórz dodatkowe porty dla innych składników w zależności od potrzeb. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zapory systemu Windows w celu zezwalania na dostęp programowi SQL Server](http://msdn.microsoft.com/library/cc646023.aspx).
+Otwórz dodatkowe porty dla innych składników w zależności od potrzeb. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zapory systemu Windows w celu zezwalania na dostęp programowi SQL Server](https://msdn.microsoft.com/library/cc646023.aspx).
 
 ### <a name="configure-sql-server-to-listen-on-the-tcp-protocol"></a>Konfigurowanie programu SQL Server do nasłuchiwania w protokole TCP
 
@@ -94,5 +94,5 @@ Aby nawiązać połączenie z aparatem bazy danych z innego komputera, należy u
    ![sysadmin](./media/virtual-machines-sql-server-connection-steps/25sysadmin.png)
 9. Kliknij przycisk OK.
 
-Aby uzyskać więcej informacji na temat identyfikatorów logowania programu SQL Server, zobacz [Tworzenie identyfikatora logowania](http://msdn.microsoft.com/library/aa337562.aspx).
+Aby uzyskać więcej informacji na temat identyfikatorów logowania programu SQL Server, zobacz [Tworzenie identyfikatora logowania](https://msdn.microsoft.com/library/aa337562.aspx).
 

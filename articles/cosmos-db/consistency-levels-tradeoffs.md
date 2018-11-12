@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: mjbrown
-ms.openlocfilehash: 8f36026c7e5802994b8cf22d60c6ecea052e6382
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0e4105d6f56a8eb45a83e970c85319cf25041781
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963051"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514778"
 ---
 # <a name="availability-and-performance-tradeoffs-for-various-consistency-levels-in-azure-cosmos-db"></a>Dostępność i wydajność kompromisy dla różnych poziomów spójności w usłudze Azure Cosmos DB
 
@@ -33,20 +33,6 @@ Rozproszonych baz danych, opierając się na replikację, wysoką dostępność,
 - Na tę samą liczbę jednostek żądania sesja, spójny prefiks i poziomy spójności ostatecznej zapewnienia około 2 X odczytu przepływność w porównaniu z silną i powiązana nieaktualność.
 
 - Dla danego typu operacji zapisu, takich jak insert, replace, upsert, usuwanie, itp. przepływność zapisu dla jednostek żądania jest taka sama dla wszystkich poziomów spójności.
-
-## <a name="consistency-levels-and-durability"></a>Poziomy spójności i niezawodność
-
-Zanim operacji zapisu zostało potwierdzone, do klienta, danych jest trwałym zatwierdzeniu przez kworum replik w regionie, który akceptuje operacji zapisu. Ponadto jeśli kontener jest skonfigurowany przy użyciu zasad indeksowania spójne, indeks jest również synchronicznie zaktualizowane, replikowane i trwałym zatwierdzeniu przez kworum replik przed wysłaniem potwierdzenie operacji zapisu dla klienta.
-
-Poniższa tabela zawiera podsumowanie okno utraty danych potencjalnych awarii regionalnej dla konta usługi Cosmos, które rozciągają się kilku regionach.
-
-| **Poziom spójności** | **Potencjalne okno utraty danych w przypadku regionalnej awarii** |
-| - | - |
-| Silna | Zero |
-| Powiązana nieaktualność | Ograniczone do "nieaktualność okna" można skonfigurować na konto usługi Cosmos. |
-| Sesja | Maksymalnie 5 sekund |
-| Spójny prefiks | Maksymalnie 5 sekund |
-| Ostateczna | Maksymalnie 5 sekund |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

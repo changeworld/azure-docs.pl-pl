@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 40396462cc568a4ad7dea798fc30d72dcd75fd07
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 6ca819b20bd033cc4081fb98a0c22c23aed05a28
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51208953"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264417"
 ---
 # <a name="azure-managed-disks-overview"></a>Omówienie usługi Azure Managed Disks
 
@@ -67,21 +67,21 @@ Przyjrzyjmy się bliżej w tych opcji.
 
 **Rozmiar dysku**: opłaty za dyski zarządzane zależy od rozmiaru aprowizowanego dysku. Usługi Azure maps zaprowizowany rozmiar (z zaokrągleniem) do najbliższej opcji dysków Managed Disks w określonych w poniższych tabelach. Każdy dysk zarządzany mapowany na jeden z obsługiwanych rozmiarów elastycznie i jest rozliczana w związku z tym. Na przykład jeśli Tworzenie dysku zarządzanego standardowe i określ aprowizowanego rozmiaru 200 GB, są rozliczane zgodnie z cennikiem typ dysku S15.
 
-W tym miejscu rozmiary dysków są dostępne dla dysku zarządzanego w warstwie premium:
+Poniżej przedstawiono rozmiary dysków dla dysku zarządzanego w warstwie premium, rozmiary, oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej:
 
-| **Premium SSD zarządzane <br>typ dysku** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60** | **P70** | **P80** |
+| **Premium SSD zarządzane <br>typ dysku** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60*** | **P70*** | **P80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16 384 giB (16 TiB) | 32 767 giB (TiB) |
 
-W tym miejscu są dostępne dla dysku zarządzanego standardowy dysk SSD rozmiary dysków:
+Poniżej przedstawiono rozmiary dysków SSD w warstwie standardowa — dotyczących dysk zarządzany, rozmiary, oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej:
 
-| **Standardowy dysk SSD zarządzane <br>typ dysku** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60** | **E70** | **E80** |
+| **Standardowy dysk SSD zarządzane <br>typ dysku** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60*** | **E70*** | **E80*** |
 |------------------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Rozmiar dysku        | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16 384 giB (16 TiB) | 32 767 giB (TiB) |
 
-W tym miejscu są dostępne dla dysku zarządzanego standardowych dysków Twardych rozmiary dysków:
+W tym miejscu są dostępne dla standardowych dysków Twardych rozmiary dysków zarządzanych dysków, rozmiaru, oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej:
 
-| **Standardowy dysk twardy zarządzane <br>typ dysku** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60** | **S70** | **S80** |
+| **Standardowy dysk twardy zarządzane <br>typ dysku** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16 384 giB (16 TiB) | 32 767 giB (TiB) |
 

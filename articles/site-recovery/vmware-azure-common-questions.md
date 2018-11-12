@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 10/29/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 086acdd74932836627c600b5545bc4353052ad6f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 05f878d244647a79a2b3e9d0c789ba811dad71ee
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215450"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012109"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -59,6 +59,8 @@ Aby dowiedzieć się wprowadzenie kroki wdrażania serwera konfiguracji na włas
 ### <a name="where-do-on-premises-vms-replicate-to"></a>Gdzie są lokalne maszyny wirtualne replikowane do
 Dane są replikowane do usługi Azure storage. Po uruchomieniu trybu failover Usługa Site Recovery automatycznie tworzy maszyny wirtualne platformy Azure z konta magazynu.
 
+## <a name="replication"></a>Replikacja
+
 ### <a name="what-apps-can-i-replicate"></a>Jakie aplikacje można replikować?
 Można replikować dowolną aplikację lub obciążenia uruchomione na maszynie Wirtualnej VMware, który jest zgodny z [wymagania dotyczące replikacji](vmware-physical-azure-support-matrix.md##replicated-machines). Usługa Site Recovery obsługuje replikację z uwzględnieniem aplikacji, dzięki czemu aplikacje mogą przełączone w tryb failover i do inteligentnego stanu. Usługa Site Recovery integruje się z aplikacjami firmy Microsoft, takich jak SharePoint, Exchange, Dynamics, SQL Server i usługi Active Directory i ściśle współpracuje z wiodącymi dostawcami oprogramowania, w tym Oracle, SAP, IBM i Red Hat. [Dowiedz się więcej](site-recovery-workload.md) o ochronie obciążeń.
 
@@ -74,18 +76,17 @@ Tak, usługa ExpressRoute może służyć do replikowania maszyn wirtualnych na 
 Podczas replikacji do platformy Azure, ruch związany z replikacją osiągnie publiczne punkty końcowe konta usługi Azure Storage, dlatego tylko można replikować za pośrednictwem publicznej sieci internet przy użyciu usługi ExpressRoute (publicznej komunikacji równorzędnej) i sieci VPN nie działa.
 
 
-
-## <a name="what-are-the-replicated-vm-requirements"></a>Co to są replikowane wymagań dotyczących maszyn wirtualnych?
+### <a name="what-are-the-replicated-vm-requirements"></a>Co to są replikowane wymagań dotyczących maszyn wirtualnych?
 
 W przypadku replikacji maszyny Wirtualnej programu VMware musi działać obsługiwany system operacyjny. Ponadto maszyna wirtualna musi spełniać wymagania dotyczące maszyn wirtualnych platformy Azure. [Dowiedz się więcej](vmware-physical-azure-support-matrix.md##replicated-machines) w macierzy obsługi.
 
-## <a name="how-often-can-i-replicate-to-azure"></a>Jak często można replikować na platformę Azure?
+### <a name="how-often-can-i-replicate-to-azure"></a>Jak często można replikować na platformę Azure?
 Replikacja jest ciągłe podczas replikowania maszyn wirtualnych VMware na platformę Azure.
 
-## <a name="can-i-extend-replication"></a>Czy mogę rozszerzyć replikację
+### <a name="can-i-extend-replication"></a>Czy mogę rozszerzyć replikację
 Replikacja rozszerzona lub łańcuchowa nie jest obsługiwana. Zażądać tej funkcji w [forum z opiniami](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication).
 
-## <a name="can-i-do-an-offline-initial-replication"></a>Można zrobić początkowej replikacji offline?
+### <a name="can-i-do-an-offline-initial-replication"></a>Można zrobić początkowej replikacji offline?
 Ta funkcja nie jest obsługiwana. Zażądać tej funkcji w [forum z opiniami](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-disks"></a>Czy można wykluczyć dysków?
@@ -141,7 +142,7 @@ Zaleca się wykonywanie regularnych zaplanowanych kopii zapasowych serwera konfi
 Pliki instalacyjne są przechowywane w **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository** folderu na serwerze konfiguracji.
 
 ## <a name="how-do-i-install-the-mobility-service"></a>Jak zainstalować usługę mobilności?
-Zainstaluj na każdej maszynie Wirtualnej, którą chcesz replikować, za pomocą [instalacja wypychana](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery), lub instalacja ręczna z [interfejsu użytkownika](vmware-azure-install-mobility-service.md#install-mobility-service-manually-by-using-the-gui), lub [przy użyciu programu PowerShell](vmware-azure-install-mobility-service.md#install-mobility-service-manually-at-a-command-prompt). Alternatywnie, można wdrożyć przy użyciu narzędzia wdrażania, takich jak [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md), lub [usługi Azure Automation i DSC](vmware-azure-mobility-deploy-automation-dsc.md).
+Zainstaluj na każdej maszynie Wirtualnej, którą chcesz replikować, za pomocą [instalacja wypychana](vmware-azure-install-mobility-service.md), lub [Instalacja ręczna](vmware-physical-mobility-service-install-manual.md) z interfejsu użytkownika lub środowiska Powershell. Alternatywnie, można wdrożyć przy użyciu narzędzia wdrażania, takich jak [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md).
 
 
 

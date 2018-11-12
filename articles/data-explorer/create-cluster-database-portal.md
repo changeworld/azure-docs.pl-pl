@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 6aff31c662a845028a02cecd7a99837f92bc87e5
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 4b4230397da7d97b613b546f33a0cbb764675720
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394225"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214821"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Szybki start: tworzenie klastra i bazy danych usługi Azure Data Explorer
 
@@ -31,11 +31,11 @@ Klaster usługi Azure Data Explorer tworzy się w grupie zasobów platformy Azur
 
 1. Wybierz przycisk **Utwórz zasób** (+) w lewym górnym rogu portalu.
 
-1. Wyszukaj pozycję *Azure Data Explorer*, a następnie wybierz pozycję **Azure Data Explorer**.
+1. Wyszukaj pozycję *Azure Data Explorer*.
 
    ![Wyszukiwania zasobów](media/create-cluster-database-portal/search-resources.png)
 
-1. W prawym dolnym rogu wybierz pozycję **Utwórz**.
+1. W obszarze **Azure Data Explorer** w dolnej części ekranu wybierz pozycję **Utwórz**.
 
 1. Wprowadź unikatową nazwę klastra, wybierz swoją subskrypcję i utwórz grupę zasobów o nazwie *test-resource-group*.
 
@@ -54,7 +54,9 @@ Klaster usługi Azure Data Explorer tworzy się w grupie zasobów platformy Azur
     | Specyfikacja środowiska obliczeniowego | *D13_v2* | Na potrzeby tego przewodnika Szybki start wybierz najtańszą specyfikację. W przypadku systemu produkcyjnego wybierz specyfikację, która najlepiej odpowiada Twoim potrzebom.
     | | |
 
-1. Wybierz pozycję **Utwórz**, aby aprowizować klaster. Aprowizacja zwykle trwa około dziesięciu minut. Wybierz pozycję **Powiadomienia** (ikonę dzwonka) na pasku narzędzi, aby monitorować proces aprowizacji.
+1. Wybierz pozycję **Utwórz**, aby aprowizować klaster. Aprowizacja zwykle trwa około dziesięciu minut. Wybierz pozycję **Powiadomienia** na pasku narzędzi, aby monitorować proces aprowizacji.
+
+    ![Powiadomienia](media/create-cluster-database-portal/notifications.png)
 
 1. Po zakończeniu procesu wybierz pozycję **Powiadomienia**, a następnie **Przejdź do zasobu**.
 

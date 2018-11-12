@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 11/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1def5686933a971b1192ec58bc72d64cbc5e8931
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: 31ae13fb84453a7014b66499c983e1f52554775e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219328"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279130"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Dodawanie usług AD FS jako dostawcy tożsamości SAML, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -26,11 +26,11 @@ W tym artykule pokazano, jak włączyć logowanie dla konta użytkownika usługi
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Wykonaj kroki [wprowadzenie do zasad niestandardowych w usłudze Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
-- Upewnij się, że masz dostęp do pliku PFX certyfikatu z kluczem prywatnym, który został wystawiony przez usługi AD FS.
+- Upewnij się, że masz dostęp do pliku PFX certyfikatu z kluczem prywatnym. Można wygenerować własny certyfikat z podpisem i przekaż go do usługi Azure AD B2C. Usługa Azure AD B2C używa tego certyfikatu do podpisania żądania języka SAML wysłanego do dostawcy tożsamości SAML.
 
 ## <a name="create-a-policy-key"></a>Utwórz klucz zasad
 
-Musisz zapisać certyfikat usług AD FS w swojej dzierżawie usługi Azure AD B2C.
+Potrzebujesz przechować certyfikat w dzierżawie usługi Azure AD B2C.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
@@ -38,7 +38,7 @@ Musisz zapisać certyfikat usług AD FS w swojej dzierżawie usługi Azure AD B2
 4. Na stronie Przegląd wybierz **struktura środowiska tożsamości — wersja ZAPOZNAWCZA**.
 5. Wybierz **klucze zasad** , a następnie wybierz **Dodaj**.
 6. Aby uzyskać **opcje**, wybierz `Upload`.
-7. Wprowadź **nazwa** klucza zasad. Na przykład `ADFSSamlCert`. Prefiks `B2C_1A_` jest automatycznie dodawany do nazwy klucza.
+7. Wprowadź **nazwa** klucza zasad. Na przykład `SamlCert`. Prefiks `B2C_1A_` jest automatycznie dodawany do nazwy klucza.
 8. Przejdź do, a następnie wybierz swój plik PFX certyfikatu z kluczem prywatnym.
 9. Kliknij pozycję **Utwórz**.
 

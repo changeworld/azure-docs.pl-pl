@@ -3,7 +3,7 @@ title: Usługa Azure Service Fabric Docker Compose wdrożenia (wersja zapoznawcz
 description: Usługa Azure Service Fabric akceptuje format narzędzia Docker Compose, aby ułatwić organizowanie istniejących kontenerów za pomocą usługi Service Fabric. Ta funkcja jest obecnie w wersji zapoznawczej.
 services: service-fabric
 documentationcenter: .net
-author: mani-ramaswamy
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: ff846717287fb2b125b549f6ca0de6c7908d4c35
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.author: twhitney, subramar
+ms.openlocfilehash: 743fedd35bc45618f728ba71056f5dabc2fc1ed9
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344817"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300646"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Obsługa wdrażania Compose platformy docker w usłudze Azure Service Fabric (wersja zapoznawcza)
 

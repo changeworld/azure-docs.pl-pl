@@ -2,18 +2,18 @@
 title: Windows komputera za pomocą usługi Hadoop w HDInsight — Azure
 description: Działa z Windows komputera na platformie Hadoop w HDInsight. Zarządzanie i zapytania klastrów przy użyciu narzędzia programu PowerShell, Visual Studio i systemie Linux. Twórz rozwiązania typu big data przy użyciu platformy .NET.
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.topic: conceptual
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/17/2017
-ms.openlocfilehash: a3fbd9cca038547e92c034577042aebbac6fc1fe
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: c80c7a075b8a7735a4e9d2438c94eaac89f2b50e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39593064"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006971"
 ---
 # <a name="work-in-the-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Działa w ekosystemie usługi Hadoop w HDInsight z komputera z systemem Windows
 

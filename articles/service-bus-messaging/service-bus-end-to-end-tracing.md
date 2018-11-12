@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: lmolkova
-ms.openlocfilehash: 2e4ff84c957540aa6863cd9836b1744e73c5b2f5
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 770d8950e25431e1edc496e0710cf199b45e5847
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854885"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283839"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Rozproszonego śledzenia i korelacji, za pomocą komunikatów usługi Service Bus
 
@@ -181,7 +181,7 @@ W każdym przypadku możesz uzyskać dostęp `Activity.Current` przechowuje bie�
 
 #### <a name="logging-additional-properties"></a>Dodatkowe właściwości rejestrowania
 
-`Activty.Current` zapewnia szczegółowe kontekście bieżącej operacji i jego elementów nadrzędnych. Aby uzyskać więcej informacji, zobacz [dokumentacja działania](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) Aby uzyskać więcej informacji.
+`Activity.Current` zapewnia szczegółowe kontekście bieżącej operacji i jego elementów nadrzędnych. Aby uzyskać więcej informacji, zobacz [dokumentacja działania](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) Aby uzyskać więcej informacji.
 Instrumentacja usługi Service Bus udostępnia dodatkowe informacje w `Activity.Current.Tags` -przechowują `MessageId` i `SessionId` zawsze, gdy są one dostępne.
 
 Działania, które śledzą "Odbierz", "Odbierz" i "ReceiveDeferred" zdarzenia również może mieć `RelatedTo` tagu. Przechowuje listę odrębnych `Diagnostic-Id`(s) wiadomości, które zostały odebrane w wyniku.

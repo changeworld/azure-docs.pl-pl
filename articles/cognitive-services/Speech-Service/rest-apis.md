@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: erhopf
-ms.openlocfilehash: 7f3daf71f4d94371af5f7d98c4e03761d7217a2a
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: be2f6c49a260477e907f1f8f29f64b9eb08e6926
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025841"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038607"
 ---
 # <a name="speech-service-rest-apis"></a>Interfejsy API REST usługi mowy
 
@@ -57,10 +57,12 @@ Następujące pola są wysyłane w nagłówku żądania HTTP.
 
 ### <a name="audio-format"></a>Audio format
 
-Dźwięku w treści HTTP `POST` żądania. Należy go w formacie WAV PCM pojedynczy kanał (mono) na 16 KHz następujące formaty/kodowania 16-bitowych.
+Dźwięku w treści HTTP `POST` żądania. Musi być w jednym z formatów w tej tabeli:
 
-* Format WAV PCM koder-dekoder
-* Format OGG z kodera-dekodera DZIELE
+| Format | Koder-dekoder | Szybkość transmisji bitów | Częstotliwość próbkowania |
+|--------|-------|---------|-------------|
+| WAV | MODUŁU PCM | 16-bitowych | 16 kHz, narzędzie mono |
+| OGG | DZIELE | 16-bitowych | 16 kHz, narzędzie mono |
 
 >[!NOTE]
 >Powyższe formaty są obsługiwane za pośrednictwem interfejsu API REST i WebSocket usługi mowy. [Zestaw SDK rozpoznawania mowy](/index.yml) aktualnie obsługuje tylko WAV Formatuj przy użyciu kodera-dekodera PCM.
@@ -104,7 +106,7 @@ Poniżej przedstawiono typowe żądania.
 ```HTTP
 POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
 Accept: application/json;text/xml
-Content-Type: audio/wav; codec=audio/pcm; samplerate=16000
+Content-Type: audio/wav; codec="audio/pcm"; samplerate=16000
 Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 Host: westus.stt.speech.microsoft.com
 Transfer-Encoding: chunked

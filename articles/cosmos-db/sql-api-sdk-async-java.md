@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 09/05/2018
-ms.author: sngun
-ms.openlocfilehash: 57172927011532af9b14fa7ff09d6aad9bac1e92
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.date: 11/02/2018
+ms.author: moderakh
+ms.openlocfilehash: c8b8397e5d51b67895a6a95ed6d1611813a9aaf6
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417603"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300850"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB Async zestawu Java SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -52,6 +52,18 @@ Zestaw SDK Java Async interfejsu API SQL różni się od zestawu SDK Java dla in
 </table></br>
 
 ## <a name="release-notes"></a>Informacje o wersji
+
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+* Usunięto usterkę pakowania.
+
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+* Usunięto usterkę NPE w ścieżce ponów próbę zapisu.
+* Usunięto usterkę NPE punktu końcowego zarządzania.
+* Uaktualnione narażone zależności ([github #68](https://github.com/Azure/azure-cosmosdb-java/issues/68)).
+* Dodano obsługę rejestrowania Netty sieci do rozwiązywania problemów.
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+* Dodano obsługę wielu region zapisu.
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * Dodano obsługę serwera Proxy.
@@ -110,6 +122,9 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostan
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [2.2.2](#2.2.2) |8 listopada 2018 r.|--- |
+| [2.2.1](#2.2.1) |2 listopada 2018 r.|--- |
+| [2.2.0](#2.2.0) |22 września 2018 r.|--- |
 | [2.1.0](#2.1.0) |5 września 2018 r.|--- |
 | [2.0.1](#2.0.1) |16 sierpnia 2018 r.|--- |
 | [2.0.0](#2.0.0) |20 czerwca 2018 r.|--- |
