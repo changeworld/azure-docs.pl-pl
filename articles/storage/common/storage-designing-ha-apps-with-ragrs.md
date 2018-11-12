@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/21/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: afcda23faf4e9f0999442fa91d3c016e446c04db
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 718a8fb82c3d85baf94e2e9c316f40b964749912
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524546"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231367"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Projektowanie wysoko dostępnych aplikacji przy użyciu RA-GRS
 
@@ -149,7 +149,7 @@ Inną ważną kwestią jest sposób obsługi wielu wystąpień aplikacji, co mo�
 
 Dostępne są trzy główne opcje monitorowania częstotliwość ponownych prób w regionie podstawowym w celu ustalenia, kiedy należy przełączyć się do regionu pomocniczego i zmienić aplikację do uruchamiania w trybie tylko do odczytu.
 
-*   Dodaj program obsługi [ **ponawianie próby** ](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.retrying.aspx) zdarzenie na [ **OperationContext** ](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.aspx) żądania są przekazywane do magazynu obiektów — jest to metoda wyświetlane w tym artykule i używane w towarzyszącej próbki. Te zdarzenia są uruchamiane zawsze, gdy klient będzie ponawiać próbę żądania, które pozwalają śledzić, jak często klient napotka błędy powtarzający operację na podstawowego punktu końcowego.
+*   Dodaj program obsługi [ **ponawianie próby** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.retrying.aspx) zdarzenie na [ **OperationContext** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.aspx) żądania są przekazywane do magazynu obiektów — jest to metoda wyświetlane w tym artykule i używane w towarzyszącej próbki. Te zdarzenia są uruchamiane zawsze, gdy klient będzie ponawiać próbę żądania, które pozwalają śledzić, jak często klient napotka błędy powtarzający operację na podstawowego punktu końcowego.
 
     ```csharp 
     operationContext.Retrying += (sender, arguments) =>
@@ -160,7 +160,7 @@ Dostępne są trzy główne opcje monitorowania częstotliwość ponownych prób
     };
     ```
 
-*   W [ **Evaluate** ](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.retrypolicies.iextendedretrypolicy.evaluate.aspx) metody w niestandardowe zasady ponawiania, można uruchomić kod niestandardowy w każdym przypadku, gdy odbywa się ponowienie próby. Oprócz rejestrowania po ponowieniu próby miejsce, ta oferuje również możliwość modyfikacji swoje zachowanie ponawiania prób.
+*   W [ **Evaluate** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.retrypolicies.iextendedretrypolicy.evaluate.aspx) metody w niestandardowe zasady ponawiania, można uruchomić kod niestandardowy w każdym przypadku, gdy odbywa się ponowienie próby. Oprócz rejestrowania po ponowieniu próby miejsce, ta oferuje również możliwość modyfikacji swoje zachowanie ponawiania prób.
 
     ```csharp 
     public RetryInfo Evaluate(RetryContext retryContext,

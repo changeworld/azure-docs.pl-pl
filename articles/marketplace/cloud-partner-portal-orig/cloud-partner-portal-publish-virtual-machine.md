@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3b046022990e95e65ed02880bd3fefbd78bcad28
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d77dad52e75253de02fd079d791861356c4c5e1f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387365"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247079"
 ---
 # <a name="publish-a-virtual-machine-to-azure-marketplace"></a>Publikowanie maszyny wirtualnej w portalu Azure Marketplace
 
@@ -29,7 +29,7 @@ Ten artykuł zawiera kroki potrzebne do opublikowania oferty maszyny wirtualnej 
 
 Następujące wymagania wstępne pomoc techniczna i nietechniczna dotyczą publikowaniu maszyny wirtualnej w portalu Azure Marketplace
 
-### <a name="technical"></a>Techniczna
+### <a name="technical"></a>Technical Preview
 
 -   [Techniczne wymagania wstępne dotyczące tworzenia obrazów maszyn wirtualnych w portalu Azure Marketplace](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites)
 
@@ -37,7 +37,7 @@ Następujące wymagania wstępne pomoc techniczna i nietechniczna dotyczą publi
 
 -   [& Utwórz test z obrazu Maszynę wirtualną systemu Linux](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
 
--   [Tworzenie i przekazywanie wirtualnego dysku twardego Windows ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
+-   [Tworzenie i przekazywanie wirtualnego dysku twardego Windows ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
 
 -   [& Utwórz test maszyny Wirtualnej z systemem Windows za pomocą obrazu](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
 
@@ -60,7 +60,7 @@ Następujące wymagania wstępne pomoc techniczna i nietechniczna dotyczą publi
 
 -   Wyrażasz zgodę na warunki usługi Azure Marketplace — zasady udziału oraz Umowie wydawcy portalu.
 
--   Użytkownik zobowiązuje się do przestrzegania [warunki użytkowania](https://azure.microsoft.com/support/legal/website-terms-of-use/) , [zasady zachowania poufności informacji firmy Microsoft](http://www.microsoft.com/privacystatement/default.aspx), i [umowę programu certyfikat platformy Azure Microsoft](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
+-   Użytkownik zobowiązuje się do przestrzegania [warunki użytkowania](https://azure.microsoft.com/support/legal/website-terms-of-use/) , [zasady zachowania poufności informacji firmy Microsoft](https://www.microsoft.com/privacystatement/default.aspx), i [umowę programu certyfikat platformy Azure Microsoft](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -211,7 +211,7 @@ W tym cen w programie excel ceny dla różnych regionów są wyświetlane w walu
 
 >[!IMPORTANT]
 >-   Ceny nie można zmienić po oferty przechodzi na żywo. Jednak nadal można dodać lub usunąć obsługiwanych regionów.
->-   Cena jest obciążany opłatą za użytkownika, oprócz [Azure\'cen maszyn wirtualnych s](http://aka.ms/vmpricingdetails).
+>-   Cena jest obciążany opłatą za użytkownika, oprócz [Azure\'cen maszyn wirtualnych s](https://aka.ms/vmpricingdetails).
 >-   Ceny są ustawiane dla wszystkich regionów w walucie lokalnej przy użyciu stawek dostępnych waluty w chwili ustawienia ceny.
 >-   Aby ustawić lub wyświetlić poszczególne cena każdego regionu, eksportować arkusz cen i zaimportuj z ceny niestandardowe.
 
@@ -225,7 +225,7 @@ Następnej sekcji, aby ukończyć będzie sekcji obrazów maszyn wirtualnych. Pr
 
 -   [& Utwórz test z obrazu Maszynę wirtualną systemu Linux](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
 
--   [Tworzenie i przekazywanie wirtualnego dysku twardego Windows ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
+-   [Tworzenie i przekazywanie wirtualnego dysku twardego Windows ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
 
 -   [& Utwórz test maszyny Wirtualnej z systemem Windows za pomocą obrazu](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 3aca6e29f7701a09fa54e778da180a0ead55deb2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 253a50f50e94888a5d764e51a4ff49cc0c1424c6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240736"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253537"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Wdrażanie usługi dzielenia i scalania do przenoszenia danych między bazami danych podzielonych na fragmenty
 
@@ -63,7 +63,7 @@ Aby uzyskać szczegółowe instrukcje dotyczące konfigurowania zabezpieczeń us
 Do celów wdrożenia prosty test, na potrzeby tego samouczka to minimalny zestaw kroków konfiguracji będzie wykonywane do uruchomienia usługi i uruchomione. Kroki te włączają tylko jeden/konto komputera wykonywanie ich do komunikowania się z usługą.
 
 ### <a name="create-a-self-signed-certificate"></a>Tworzenie certyfikatu z podpisem własnym
-Utwórz nowy katalog i z tego katalogu, wykonaj następujące polecenie, używając [wiersz polecenia programisty dla programu Visual Studio](http://msdn.microsoft.com/library/ms229859.aspx) okna:
+Utwórz nowy katalog i z tego katalogu, wykonaj następujące polecenie, używając [wiersz polecenia programisty dla programu Visual Studio](https://msdn.microsoft.com/library/ms229859.aspx) okna:
 
    ```
     makecert ^
