@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 7f71e92513aedb1eb9c394c1e8f547173cfb4dbe
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 4f7955c013ce7f45ebe6db8bb23eeec92303876e
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604182"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230935"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Szybki start: konfigurowanie i pobieranie wpisów tajnych z usługi Azure Key Vault przy użyciu aplikacji internetowej .NET
 
@@ -25,7 +25,7 @@ W tym przewodniku Szybki start wykonasz kroki niezbędne do skonfigurowania apli
 > * Zapisywanie wpisu tajnego w magazynie kluczy.
 > * Pobieranie wpisu tajnego z magazynu kluczy.
 > * Tworzenie aplikacji internetowej platformy Azure.
-> * Włączanie [tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) dla aplikacji internetowej.
+> * Włączanie [tożsamości usługi zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) dla aplikacji internetowej.
 > * Przyznawanie wymaganych uprawnień w celu umożliwienia aplikacji internetowej odczytu danych z magazynu kluczy.
 
 Zanim przejdziesz dalej, zapoznaj się z [podstawowymi pojęciami](key-vault-whatis.md#basic-concepts).
@@ -33,7 +33,7 @@ Zanim przejdziesz dalej, zapoznaj się z [podstawowymi pojęciami](key-vault-wha
 >[!NOTE]
 >Usługa Key Vault to centralne repozytorium do programistycznego przechowywania wpisów tajnych. W tym celu aplikacje i użytkownicy muszą najpierw uwierzytelnić się w usłudze Key Vault — czyli podać wpis tajny. Zgodnie z najlepszymi rozwiązaniami dotyczącymi bezpieczeństwa pierwszy wpis tajny musi być okresowo obracany. 
 >
->Dzięki [tożsamościom zarządzanym dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) aplikacje uruchamiane na platformie Azure otrzymują tożsamość, która jest automatycznie zarządzana przez tę platformę. Dzięki temu można rozwiązać *początkowy problem dotyczący wpisu tajnego*, gdzie użytkownicy i aplikacje mogą postępować zgodnie z najlepszymi wskazówkami i nie muszą pamiętać o obracaniu pierwszego wpisu tajnego.
+>Dzięki [tożsamościom usługi zarządzanej dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) aplikacje uruchamiane na platformie Azure otrzymują tożsamość, która jest automatycznie zarządzana przez tę platformę. Dzięki temu można rozwiązać *początkowy problem dotyczący wpisu tajnego*, gdzie użytkownicy i aplikacje mogą postępować zgodnie z najlepszymi wskazówkami i nie muszą pamiętać o obracaniu pierwszego wpisu tajnego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

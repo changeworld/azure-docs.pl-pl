@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 11/02/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 3cb44779f376dca1844f42f346ed0fa3bfaa93cf
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 50ec49c22c64780c8f887b12eef1dd0e75c379ed
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269449"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010608"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect — często zadawane pytania
 
@@ -75,6 +75,9 @@ Nie, usługa Azure AD Connect nie obsługuje lokalnymi lasami lub domenami, któ
 
 **P: czy czystym środowisku IPv6 obsługiwane?**  
 Nie, usługa Azure AD Connect nie obsługuje czystego środowiska protokołu IPv6.
+
+**Pytanie: Mam środowisku wielu lasów i sieć między dwoma lasami używa translatora adresów Sieciowych (NAT). Jest między tymi dwoma lasami obsługiwane przy użyciu usługi Azure AD Connect?**</br>
+ Nie, za pomocą usługi Azure AD Connect za pośrednictwem translatora adresów Sieciowych nie jest obsługiwane. 
 
 ## <a name="federation"></a>Federacja
 **P: co należy zrobić, jeśli pojawia się wiadomość e-mail, który żąda do odnowienia certyfikatu usługi Office 365?**  

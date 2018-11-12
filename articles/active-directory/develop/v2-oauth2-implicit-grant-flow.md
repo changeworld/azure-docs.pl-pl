@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 1722f81c55c490d6030dd04e5907e93012051492
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d063c5e5a5b81f16d8921864ab2e2a0c3504e334
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817103"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289023"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>Protokoły — przy użyciu niejawnego przepływu aplikacji jednostronicowych w wersji 2.0
 
@@ -145,7 +145,7 @@ Po zweryfikowaniu całkowicie id_token, można rozpocząć sesji z użytkownikie
 
 ## <a name="get-access-tokens"></a>Uzyskiwanie tokenów dostępu
 
-Teraz, że logujesz się użytkownika do aplikacji jednostronicowej, możesz też uzyskać tokeny dostępu web wywoływania interfejsów API zabezpieczony przez usługę Azure AD, takie jak [programu Microsoft Graph](https://graph.microsoft.io). Nawet jeśli masz już tokenu przy użyciu `token` elementu response_type, można użyć tej metody można uzyskać tokenów do dodatkowych zasobów bez konieczności przekieruje użytkownika, aby zalogować się ponownie.
+Teraz, że logujesz się użytkownika do aplikacji jednostronicowej, możesz też uzyskać tokeny dostępu web wywoływania interfejsów API zabezpieczony przez usługę Azure AD, takie jak [programu Microsoft Graph](https://developer.microsoft.com/graph). Nawet jeśli masz już tokenu przy użyciu `token` elementu response_type, można użyć tej metody można uzyskać tokenów do dodatkowych zasobów bez konieczności przekieruje użytkownika, aby zalogować się ponownie.
 
 W normalnym przepływie uwierzytelniania OpenID Connect/OAuth, czy w tym celu zgłaszającą żądanie do v2.0 `/token` punktu końcowego. Jednak punktu końcowego v2.0 nie obsługuje żądania CORS, więc wykonywanie wywołań AJAX, pobieranie i tokenów odświeżania jest poza pytanie. Zamiast tego służy niejawny przepływ w ukrytym elemencie iframe w celu uzyskania nowych tokenów innych interfejsów API sieci web: 
 

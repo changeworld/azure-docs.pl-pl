@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 87b020e74e9eaee9a5e20acd3bb84d48e40273c6
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/29/2018
+ms.openlocfilehash: 98495c35270ea3d6d500151c8e5dfb35751d5cc5
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163702"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232141"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Przykłady programu Azure PowerShell dla usługi Azure SQL Database
 
@@ -28,7 +28,7 @@ Poniższa tabela zawiera linki do przykładowych skryptów programu Azure PowerS
 |**Tworzenie pojedynczej bazy danych i elastycznej puli**||
 | [Tworzenie pojedynczej bazy danych i konfigurowanie reguły zapory](scripts/sql-database-create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu Azure PowerShell tworzy jedną bazę danych Azure SQL Database i konfiguruje regułę zapory na poziomie serwera. |
 | [Tworzenie pul elastycznych i przenoszenie baz danych w puli](scripts/sql-database-move-database-between-pools-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ten skrypt programu PowerShell tworzy elastyczne pule usługi Azure SQL Database, przenosi bazy danych w puli i zmienia rozmiar zasobów obliczeniowych.|
-| [Tworzenie wystąpienia zarządzanego i zarządzanie nim](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) | Te skrypty interfejsu wiersza polecenia pokazują, jak utworzyć wystąpienie zarządzane i zarządzać nim przy użyciu programu Azure PowerShell |
+| [Tworzenie wystąpienia zarządzanego i zarządzanie nim](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) | Ten skrypt programu PowerShell pokazuje, jak utworzyć wystąpienie zarządzane i zarządzać nim przy użyciu programu Azure PowerShell |
 |**Konfigurowanie replikacji geograficznej i trybu failover**||
 | [Konfigurowanie pojedynczej bazy danych i wprowadzanie jej w tryb failover przy użyciu funkcji aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell umożliwia skonfigurowanie aktywnej replikacji geograficznej dla jednej bazy danych Azure SQL Database i wprowadzenie jej w tryb failover do repliki pomocniczej. |
 | [Konfigurowanie bazy danych w puli i wprowadzanie jej w tryb failover przy użyciu funkcji aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ten skrypt programu PowerShell umożliwia skonfigurowanie aktywnej replikacji geograficznej dla bazy danych Azure SQL Database w elastycznej puli SQL i wprowadzenie jej w tryb failover do repliki pomocniczej. |

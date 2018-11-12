@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/07/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 92dde19e42c1adb6d83e1708106f844f228e8989
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e286942f092d2e8c22824a18f5a6503d04a1be0c
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239354"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247559"
 ---
 # <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>Szybki start: tworzenie aplikacji internetowej w języku Java w usłudze App Service w systemie Linux
 
@@ -77,26 +77,7 @@ Następnie dodaj następującą definicję wtyczki w elemencie `<build>` pliku `
 
 
 > [!NOTE] 
-> W tym artykule pracujemy tylko z aplikacjami w języku Java umieszczonych w pakietach w postaci plików WAR. Wtyczka obsługuje również aplikacje internetowe w pakietach JAR. W przypadku tych aplikacji należy użyć następującej alternatywnej definicji wtyczki. Ta konfiguracja wdroży pakiet JAR skompilowany w systemie Maven `${project.build.directory}/${project.build.finalName}.jar` w lokalnym systemie plików.
->
->```xml
-><plugin>
->            <groupId>com.microsoft.azure</groupId>
->            <artifactId>azure-webapp-maven-plugin</artifactId>
->            <version>1.4.0</version>
->            <configuration>
->                <deploymentType>jar</deploymentType>
->
->           <!-- Web App information -->
->            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
->            <appName>${WEBAPP_NAME}</appName>
->            <region>${REGION}</region>  
->
->                <!-- Java Runtime Stack for Web App on Linux-->
->                <linuxRuntime>jre8</linuxRuntime>
->            </configuration>
->         </plugin>
->```    
+> W tym artykule pracujemy tylko z aplikacjami w języku Java umieszczonymi w pakietach w postaci plików WAR. Wtyczka obsługuje również aplikacje internetowe JAR. Odwiedź stronę [Deploy a Java SE JAR file to App Service on Linux](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) (Wdrażanie pliku JAR języka Java SE do usługi App Service w systemie Linux), aby wypróbować tę funkcję.
 
 
 Zaktualizuj następujące symbole zastępcze w konfiguracji wtyczki:
@@ -127,8 +108,8 @@ Po zakończeniu wdrażania w przeglądarce internetowej przejdź do wdrożonej a
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start użyto narzędzia Maven do utworzenia aplikacji internetowej Java, skonfigurowano wtyczkę [Maven Plugin for Azure Web Apps (wersja zapoznawcza)](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), a następnie wdrożono aplikację internetową Java w pakiecie archiwum internetowego do usługi App Service w systemie Linux. Aby dowiedzieć się więcej o używaniu języka Java na platformie Azure, kliknij poniższy link.
+W tym przewodniku Szybki start użyto narzędzia Maven do utworzenia aplikacji internetowej Java, skonfigurowano wtyczkę [Maven Plugin for Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), a następnie wdrożono aplikację Java w pakiecie archiwum internetowego do usługi App Service w systemie Linux. Aby dowiedzieć się, jak połączyć bazy danych, skonfigurować rejestrowanie i monitorowanie, skonfigurować zabezpieczenia oraz ustawić opcje środowiska uruchomieniowego, przejdź do przewodnik dla deweloperów języka Java dla usługi App Service w systemie Linux.
 
 > [!div class="nextstepaction"]
-> [Azure dla deweloperów języka Java](https://docs.microsoft.com/java/azure/)
+> [Przewodnik dla deweloperów języka Java dla usługi App Service w systemie Linux](app-service-linux-java.md)
 

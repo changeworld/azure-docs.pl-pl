@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 11/01/2018
 ms.author: jeedes
-ms.openlocfilehash: 85004852b4e67f1a3f030a5cf97abea7c16c5695
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 43ad99d4814923204b3b1993969bd6a0730530c5
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741746"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016135"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Samouczek: Integracja usługi Azure Active Directory z logowania jednokrotnego SAML JIRA przez firmy Microsoft (w wersji 5.2)
 
@@ -62,7 +62,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 **Obsługiwane wersje:**
 
 * JIRA Core i oprogramowania: 5.2
-* JIRA obsługuje również 6.0 i 7.12. Aby uzyskać więcej informacji, kliknij przycisk [logowania jednokrotnego SAML JIRA przez firmę Microsoft](jiramicrosoft-tutorial.md)
+* JIRA obsługuje również 6.0 do 7.12. Aby uzyskać więcej informacji, kliknij przycisk [logowania jednokrotnego SAML JIRA przez firmę Microsoft](jiramicrosoft-tutorial.md)
 
 ## <a name="scenario-description"></a>Opis scenariusza
 

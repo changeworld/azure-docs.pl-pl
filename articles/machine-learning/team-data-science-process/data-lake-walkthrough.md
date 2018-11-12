@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: be6bda4f5c420d1e631690fc648f982d4910e198
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 6688432342ff08d2ca177570cc6bbbe0095ccbe0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585989"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229069"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Skalowalna analiza danych w usłudze Azure Data Lake: Instruktaż end-to-end
-Ten poradnik pokazuje jak eksploracji danych i zadań klasyfikacji binarnej na przykład wyzwolenie taksówek NYC oraz taryfy zestawu danych w celu przewidywania, czy porady płatnego przez opłatę za pomocą usługi Azure Data Lake. Przeprowadza użytkownika przez kroki [zespołu danych dla celów naukowych](http://aka.ms/datascienceprocess), end-to-end, od pozyskiwanie danych do szkolenia modelu, a następnie do wdrożenia usługi sieci web, która umożliwia publikowanie modelu.
+Ten poradnik pokazuje jak eksploracji danych i zadań klasyfikacji binarnej na przykład wyzwolenie taksówek NYC oraz taryfy zestawu danych w celu przewidywania, czy porady płatnego przez opłatę za pomocą usługi Azure Data Lake. Przeprowadza użytkownika przez kroki [zespołu danych dla celów naukowych](https://aka.ms/datascienceprocess), end-to-end, od pozyskiwanie danych do szkolenia modelu, a następnie do wdrożenia usługi sieci web, która umożliwia publikowanie modelu.
 
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 [Microsoft Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/) wszystkie możliwości wymagane ułatwia analitykom danych do przechowywania danych o dowolnym rozmiarze, kształcie i szybkości, a także do przeprowadzenia przetwarzania danych, analiza zaawansowana i uczenia maszynowego, modelowanie z wysokim skalowalność w ekonomiczny sposób.   Opłaty są naliczane na podstawie dla zadania tylko wtedy, gdy rzeczywiście przetwarzania danych. Usługa Azure Data Lake Analytics obejmuje U-SQL, język, który łączy deklaratywne SQL Dzięki wszechstronnym możliwościom języka C# umożliwia skalowalne rozproszone możliwość zapytań. Umożliwia przetwarzanie danych bez struktury, stosując schematu przy odczycie, wstawianie niestandardowej logiki i funkcji zdefiniowanych przez użytkownika (UDF) i obejmuje rozszerzalności, aby umożliwić bardziej szczegółową kontrolę nad jak wykonać na dużą skalę. Aby dowiedzieć się więcej na temat zasady projektowania klas za U-SQL, zobacz [wpis w blogu programu Visual Studio](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
@@ -684,7 +684,7 @@ Pulpit nawigacyjny usług sieci web wyświetla wkrótce:
 Przez ukończenie tego instruktażu utworzono środowiska nauki o danych, umożliwiające tworzenie skalowalnych rozwiązań end-to-end w usłudze Azure Data Lake. To środowisko zostało użyte do analizowania dużych publicznego zestawu danych, poruszają canonical kroki procesu do nauki o danych z pozyskiwanie danych za pomocą szkoleń modelowych, a następnie wdrożenie modelu jako usługi sieci web. U-SQL został użyty do przetwarzania, eksplorować i przykładowe dane. Python i Hive zostały użyte do tworzenia i wdrażania modeli predykcyjnych za pomocą usługi Azure Machine Learning Studio.
 
 ## <a name="whats-next"></a>Co dalej?
-Ścieżka szkoleniowa dotycząca [Team Data Science naukowych](http://aka.ms/datascienceprocess) zawiera łącza do tematów opisujących każdy krok w procesie zaawansowanej analizy. Istnieje szereg wskazówki podzielonych na [wskazówki dotyczące procesu do nauki o danych zespołu](walkthroughs.md) strony, które pokazują, jak korzystać z zasobów i usług w różnych scenariuszach analizy predykcyjnej:
+Ścieżka szkoleniowa dotycząca [Team Data Science naukowych](https://aka.ms/datascienceprocess) zawiera łącza do tematów opisujących każdy krok w procesie zaawansowanej analizy. Istnieje szereg wskazówki podzielonych na [wskazówki dotyczące procesu do nauki o danych zespołu](walkthroughs.md) strony, które pokazują, jak korzystać z zasobów i usług w różnych scenariuszach analizy predykcyjnej:
 
 * [Zespół danych dla celów naukowych w działaniu: Korzystanie z programu SQL Data Warehouse](sqldw-walkthrough.md)
 * [Zespół danych dla celów naukowych w działaniu: przy użyciu klastrów usługi HDInsight Hadoop](hive-walkthrough.md)

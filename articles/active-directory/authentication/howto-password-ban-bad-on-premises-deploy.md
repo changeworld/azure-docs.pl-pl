@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 6599d634ec1e13715bdd34b6e8ab6fbd9f4f3e61
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 02c2b7560a0a609f6d902af78877d5f0236615d3
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50743268"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011497"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Wersja zapoznawcza: Wdrażanie ochrona za pomocą hasła usługi Azure AD
 
@@ -53,6 +53,13 @@ Gdy ta funkcja działa w trybie inspekcji rozsądnym czasie, konfigurację wymus
 * Wszystkie komputery z zainstalowanym składniki ochrony hasła usługi Azure AD w tym kontrolery domeny muszą mieć zainstalowanego środowiska uruchomieniowego języka Universal C.
 Najlepiej jest to realizowane poprzez wdrażanie poprawek w pełni maszyny za pośrednictwem usługi Windows Update. W przeciwnym razie odpowiedni pakiet aktualizacji specyficznych dla systemu operacyjnego może być zainstalowana — zobacz [aktualizacji dla uniwersalnego środowiska uruchomieniowego c. w Windows](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)
 * Łączność sieciowa musi istnieć między co najmniej jeden kontroler domeny w każdej domenie i co najmniej jeden serwer obsługujący usługę serwera proxy ochrony haseł usługi Azure AD. To połączenie musi zezwalać na kontrolerze domeny, aby uzyskiwać dostęp do portu mapowania punktu końcowego RPC (135) i port serwera RPC na usługę serwera proxy.  Port serwera RPC jest domyślnie dynamicznego portu RPC, ale można go skonfigurować (zobacz poniżej), aby korzystanie z portu statycznego.
+* Wszystkie maszyny, obsługujący usługę serwera proxy ochrony haseł usługi Azure AD, musi mieć dostęp do następujących punktów końcowych sieci:
+
+    |Endpoint |Przeznaczenie|
+    | --- | --- |
+    |`https://login.microsoftonline.com`|Żądania uwierzytelniania|
+    |`https://enterpriseregistration.windows.net`|Funkcjonalność ochrony haseł w usłudze Azure AD|
+
 * Konto administratora globalnego, można zarejestrować usługi serwera proxy ochrony hasła usługi Azure AD i lasu za pomocą usługi Azure AD.
 * Konta z uprawnieniami administratora domeny usługi Active Directory w domenie głównej lasu, aby zarejestrować lasu usługi Active Directory systemu Windows Server z usługą Azure AD.
 * Dowolnej domeny usługi Active Directory, uruchamianie kontrolera domeny oprogramowanie usługi agenta należy użyć DFSR do replikacji folderu sysvol.

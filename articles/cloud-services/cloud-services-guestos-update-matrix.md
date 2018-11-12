@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/16/2018
+ms.date: 11/08/2018
 ms.author: raiye
-ms.openlocfilehash: c153e87224c596929440d814d30b94cc49d7ba76
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 35888b205822e5d7c9576c9855610bad814901b6
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978744"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346171"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemów operacyjnych gościa platformy Azure i zgodności zestawów SDK
 Zapewnia zwalnia z aktualne informacje o najnowszych systemu operacyjnego gościa platformy Azure dla usług w chmurze. Te informacje pomagają planowanie ścieżki uaktualnienia przed wyłączeniem systemie operacyjnym gościa. Jeśli konfigurujesz role do użycia *automatyczne* aktualizacji systemu operacyjnego gościa, zgodnie z opisem w [ustawienia aktualizacji systemu operacyjnego gościa Azure][Azure Guest OS Update Settings], nie jest istotne, przeczytanie na tej stronie.
@@ -42,6 +42,9 @@ Zapewnia zwalnia z aktualne informacje o najnowszych systemu operacyjnego gości
 Nie wiesz o tym, jak zaktualizować system operacyjny gościa? Sprawdź [to] [ cloud updates] się.
 
 ## <a name="news-updates"></a>Aktualizacje wiadomości
+
+###### <a name="november-8-2018"></a>**8 listopada 2018 r.**
+System operacyjny gościa października został wydany.
 
 ###### <a name="october-12-2018"></a>**12 października 2018 r.**
 System operacyjny gościa września został wydany.
@@ -74,8 +77,9 @@ Zainstalowane środowisko .NET framework: 3.5, 4.6.2
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
+| WA-GOŚCIA-OS-5.24_201810-01 |8 listopada 2018 r. |Wpis 5.26 |
 | WA-GOŚCIA-OS-5.23_201809-01 |12 października 2018 r. |Wpis 5,25 |
-| WA-GOŚCIA-OS-5.22_201808-01 |12 września 2018 r. |Wpis 5,24 |
+|~~WA-GOŚCIA-OS-5.22_201808-01~~ |12 września 2018 r. |8 listopada 2018 r. |
 |~~WA-GOŚCIA-OS-5.21_201807-02~~ |3 sierpnia 2018 r. |12 października 2018 r. |
 |~~WA-GOŚCIA-OS-5.20_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
 |~~WA-GOŚCIA-OS-5.19_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r. |
@@ -88,8 +92,9 @@ Zainstalowane środowisko .NET framework: 3.5, 4.5.1
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
+| WA-GOŚCIA-OS-4.59_201810-01 |8 listopada 2018 r. |Wpis 4.61 |
 | WA-GOŚCIA-OS-4.58_201809-01 |12 października 2018 r. |Wpis 4.60 |
-| WA-GOŚCIA-OS-4.57_201808-01 |12 września 2018 r. |Wpis 4,59 |
+|~~WA-GOŚCIA-OS-4.57_201808-01~~ |12 września 2018 r. |8 listopada 2018 r. |
 |~~WA-GOŚCIA-OS-4.56_201807-02~~ |3 sierpnia 2018 r. |12 października 2018 r. |
 |~~WA-GOŚCIA-OS-4.55_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
 |~~WA-GOŚCIA-OS-4.54_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r. |
@@ -102,8 +107,9 @@ Zainstalowane środowisko .NET framework: 3.5, 4.5
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
+| WA-GOŚCIA-OS-3.66_201810-01 |8 listopada 2018 r. |Wpis 3.68 |
 | WA-GOŚCIA-OS-3.65_201809-01 |12 października 2018 r. |Wpis 3.67 |
-| WA-GOŚCIA-OS-3.64_201808-01 |12 września 2018 r. |Wpis 3,66 |
+|~~WA-GOŚCIA-OS-3.64_201808-01~~ |12 września 2018 r. |8 listopada 2018 r. |
 |~~WA-GOŚCIA-OS-3.63_201807-02~~ |3 sierpnia 2018 r. |12 października 2018 r. |
 |~~WA-GOŚCIA-OS-3.62_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
 |~~WA-GOŚCIA-OS-3.61_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r. |
@@ -116,8 +122,9 @@ Zainstalowane środowisko .NET framework: 3.5 (w tym w wersji 2.0 i 3.0)
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
+| WA-GOŚCIA-OS-2.79_201810-01 |8 listopada 2018 r. |Wpis 2.81 |
 | WA-GOŚCIA-OS-2.78_201809-01 |12 października 2018 r. |Wpis 2,80 |
-| WA-GOŚCIA-OS-2.77_201808-01 |12 września 2018 r. |Wpis 2.79 |
+|~~WA-GOŚCIA-OS-2.77_201808-01~~ |12 września 2018 r. |8 listopada 2018 r. |
 |~~WA-GOŚCIA-OS-2.76_201807-02~~ |3 sierpnia 2018 r. |12 października 2018 r. |
 |~~WA-GOŚCIA-OS-2.75_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
 |~~WA-GOŚCIA-OS-2.74_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r.|

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: ad5721ff7304629ba786b1fed308ccb05b4a5211
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a5deccbe87bc8de6f6438259c2a43cc4618c24ab
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962728"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016713"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Łączenie programu Configuration Manager do usługi Log Analytics
 Można połączyć środowiska programu System Center Configuration Manager z usługą Azure Log Analytics, synchronizować dane kolekcji urządzeń i odwołują się do tych kolekcji w usłudze Log Analytics i Azure Automation.  
@@ -113,7 +113,7 @@ Po zaimportowaniu kolekcje, możesz zobaczyć, na ilu komputerach za pomocą cz�
 
 ![Grupy komputerów - kartę programu SCCM](./media/log-analytics-sccm/sccm-computer-groups02.png)
 
-Po kliknięciu pojedynczo wyszukiwania zostanie otwarty, wszystkie zaimportowane grupy albo wszystkich komputerów, które należą do każdej grupy. Za pomocą [wyszukiwanie w dzienniku](log-analytics-log-search.md), możesz rozpocząć szczegółowej analizy danych programu Configuration Manager.
+Po kliknięciu pojedynczo wyszukiwania zostanie otwarty, wszystkie zaimportowane grupy albo wszystkich komputerów, które należą do każdej grupy. Za pomocą [wyszukiwanie w dzienniku](log-analytics-queries.md), możesz rozpocząć szczegółowej analizy danych programu Configuration Manager.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Użyj [wyszukiwanie w dzienniku](log-analytics-log-search.md) Aby wyświetlić szczegółowe informacje dotyczące danych programu Configuration Manager.
+* Użyj [wyszukiwanie w dzienniku](log-analytics-queries.md) Aby wyświetlić szczegółowe informacje dotyczące danych programu Configuration Manager.

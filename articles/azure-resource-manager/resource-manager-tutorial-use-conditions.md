@@ -10,21 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/18/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 552b39c520396942fa81f963c0cfa1c8c7b47db4
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 325071be56935ca02adccf69f99fa1718e3f7b91
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456970"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239427"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Samouczek: używanie warunków w szablonach usługi Azure Resource Manager
 
-Dowiedz się, jak wdrażać zasoby platformy Azure na podstawie warunków. 
+Dowiedz się, jak wdrażać zasoby platformy Azure na podstawie warunków.
 
-Scenariusz w tym samouczku jest podobny do użytego w części [Samouczek: tworzenie szablonów usługi Azure Resource Manager z zasobami zależnymi](./resource-manager-tutorial-create-templates-with-dependent-resources.md). W tym samouczku utworzysz maszynę wirtualną, sieć wirtualną i kilka innych zasobów zależnych, w tym konto magazynu. Zamiast za każdym razem tworzyć nowe konto magazynu, zezwalasz użytkownikom na utworzenie nowego konta magazynu lub użycie istniejącego. Aby osiągnąć ten cel, definiujesz dodatkowy parametr. Jeśli wartość parametru to „new”, jest tworzone nowe konto magazynu.
+W samouczku [Ustawianie kolejności wdrażania zasobów](./resource-manager-tutorial-create-templates-with-dependent-resources.md) tworzysz maszynę wirtualną, sieć wirtualną i kilka innych zasobów zależnych, w tym konto magazynu. Zamiast za każdym razem tworzyć nowe konto magazynu, zezwalasz użytkownikom na utworzenie nowego konta magazynu lub użycie istniejącego. Aby osiągnąć ten cel, definiujesz dodatkowy parametr. Jeśli wartość parametru to „new”, jest tworzone nowe konto magazynu.
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -40,7 +40,13 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
-* Program [Visual Studio Code](https://code.visualstudio.com/) z rozszerzeniem [Resource Manager Tools](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)
+* Program [Visual Studio Code](https://code.visualstudio.com/) z rozszerzeniem [Resource Manager Tools](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* Aby zwiększyć bezpieczeństwo, użyj wygenerowanego hasła dla konta administratora maszyny wirtualnej. Poniżej przedstawiono przykład służący do generowania hasła:
+
+    ```azurecli-interactive
+    openssl rand -base64 32
+    ```
+    Usługa Azure Key Vault została zaprojektowana w celu ochrony kluczy kryptograficznych i innych wpisów tajnych. Aby uzyskać więcej informacji, zobacz [Samouczek: integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager](./resource-manager-tutorial-use-key-vault.md). Zalecamy również aktualizowanie hasła co trzy miesiące.
 
 ## <a name="open-a-quickstart-template"></a>Otwieranie szablonu szybkiego startu
 
@@ -53,7 +59,16 @@ Szablony szybkiego startu platformy Azure to repozytorium na potrzeby szablonów
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 3. Wybierz pozycję **Open (Otwórz)**, aby otworzyć plik.
-4. Wybierz pozycję **Plik**>**Zapisz jako**, aby zapisać kopię pliku o nazwie **azuredeploy.json** na komputerze lokalnym.
+4. Istnieje pięć zasobów definiowanych przez szablon:
+
+    * `Microsoft.Storage/storageAccounts`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+    * `Microsoft.Network/publicIPAddresses`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+    * `Microsoft.Network/virtualNetworks`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+    * `Microsoft.Network/networkInterfaces`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+    * `Microsoft.Compute/virtualMachines`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+
+    Warto uzyskać podstawową wiedzę na temat szablonu przed rozpoczęciem jego dostosowywania.
+5. Wybierz pozycję **Plik**>**Zapisz jako**, aby zapisać kopię pliku o nazwie **azuredeploy.json** na komputerze lokalnym.
 
 ## <a name="modify-the-template"></a>Modyfikowanie szablonu
 
@@ -61,6 +76,8 @@ Wprowadź dwie zmiany do istniejącego szablonu:
 
 * Dodaj parametr nazwy konta magazynu. Użytkownicy mogą określić nazwę nowego lub istniejącego konta magazynu.
 * Dodaj nowy parametr o nazwie **newOrExisting**. Ten parametr jest używany przy wdrożeniu do określenia, czy utworzyć nowe konto magazynu, czy użyć istniejącego.
+
+Poniżej przedstawiono procedurę wprowadzania zmian:
 
 1. Otwórz plik **azuredeploy.json** w programie Visual Studio Code.
 2. W całym szablonie zastąp fragment **variables('storageAccountName')** fragmentem **parameters('storageAccountName')**.  Fragment **variables('storageAccountName')** pojawia się w trzech miejscach.
@@ -74,7 +91,7 @@ Wprowadź dwie zmiany do istniejącego szablonu:
     ```json
     "storageAccountName": {
       "type": "string"
-    },    
+    },
     "newOrExisting": {
       "type": "string", 
       "allowedValues": [
@@ -112,22 +129,26 @@ Wprowadź dwie zmiany do istniejącego szablonu:
 
 Postępuj zgodnie z instrukcjami przedstawionymi w sekcji [Wdrożenie szablonu](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template), aby wdrożyć szablon.
 
-Wdrażając szablon przy użyciu programu Azure PowerShell, należy określić jeden dodatkowy parametr:
+Wdrażając szablon przy użyciu programu Azure PowerShell, należy określić jeden dodatkowy parametr. Aby zwiększyć bezpieczeństwo, użyj wygenerowanego hasła dla konta administratora maszyny wirtualnej. Zobacz [Wymagania wstępne](#prerequisites).
 
 ```azurepowershell
+$deploymentName = Read-Host -Prompt "Enter the name for this deployment"
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
 $storageAccountName = Read-Host -Prompt "Enter the storage account name"
 $newOrExisting = Read-Host -Prompt "Create new or use existing (Enter new or existing)"
 $location = Read-Host -Prompt "Enter the Azure location (i.e. centralus)"
 $vmAdmin = Read-Host -Prompt "Enter the admin username"
-$vmPassword = Read-Host -Prompt "Enter the admin password"
+$vmPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
 $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS Label prefix"
 
 New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-$vmPW = ConvertTo-SecureString -String $vmPassword -AsPlainText -Force
-New-AzureRmResourceGroupDeployment -Name mydeployment1018 -ResourceGroupName $resourceGroupName `
-    -adminUsername $vmAdmin -adminPassword $vmPW `
-    -dnsLabelPrefix $dnsLabelPrefix -storageAccountName $storageAccountName -newOrExisting $newOrExisting `
+New-AzureRmResourceGroupDeployment -Name $deploymentName `
+    -ResourceGroupName $resourceGroupName `
+    -adminUsername $vmAdmin `
+    -adminPassword $vmPassword `
+    -dnsLabelPrefix $dnsLabelPrefix `
+    -storageAccountName $storageAccountName `
+    -newOrExisting $newOrExisting `
     -TemplateFile azuredeploy.json
 ```
 
@@ -147,7 +168,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku utworzysz szablon, który pozwoli użytkownikom wybrać między utworzeniem nowego konta magazynu a użyciem istniejącego konta magazynu. Maszyna wirtualna tworzona w tym samouczku wymaga nazwy użytkownika i hasła administratora. Zamiast przekazywać hasło podczas wdrażania, możesz wstępnie zapisać je w usłudze Azure Key Vault i pobrać podczas wdrażania. Aby dowiedzieć się, jak pobierać wpisy tajne z usługi Azure Key Vault i używać ich przy wdrożeniach na podstawie szablonu, zobacz:
+W tym samouczku utworzono szablon, który pozwala użytkownikom wybrać między utworzeniem nowego konta magazynu a użyciem istniejącego konta magazynu. Aby dowiedzieć się, jak pobierać wpisy tajne z usługi Azure Key Vault i używać ich jako haseł przy wdrożeniach na podstawie szablonu, zobacz:
 
 > [!div class="nextstepaction"]
 > [Integrowanie usługi Key Vault z wdrożeniem z użyciem szablonu](./resource-manager-tutorial-use-key-vault.md)

@@ -1,6 +1,6 @@
 ---
-title: Przykładowe zasady usługi Azure Policy — dozwolona lokalizacja komunikacji równorzędnej dla usługi Express Route | Microsoft Docs
-description: Ta zasada wymaga, aby usługa Express Route używała określonych lokalizacji komunikacji równorzędnej.
+title: Przykładowe zasady usługi Azure Policy — dozwolona lokalizacja komunikacji równorzędnej dla usługi ExpressRoute
+description: Ta zasada wymaga, aby usługa ExpressRoute używała określonych lokalizacji komunikacji równorzędnej.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -9,22 +9,22 @@ ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 00982d07662cd08c4cf3c74c7316a7f6c3361f46
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9c96810db0a3d89006d1b1613cf1489882f3c7e1
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946922"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249072"
 ---
-# <a name="allowed-peering-location-for-express-route"></a>Dozwolona lokalizacja komunikacji równorzędnej dla usługi Express Route
+# <a name="allowed-peering-location-for-expressroute"></a>Dozwolona lokalizacja komunikacji równorzędnej dla usługi ExpressRoute
 
-Ta zasada wymaga, aby usługa Express Route używała określonych lokalizacji komunikacji równorzędnej. Należy określić tablicę dozwolonych lokalizacji komunikacji równorzędnej.
+Ta zasada wymaga, aby usługa ExpressRoute używała określonych lokalizacji komunikacji równorzędnej. Należy określić tablicę dozwolonych lokalizacji komunikacji równorzędnej.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sample-template"></a>Przykładowy szablon
 
-[!code-json[main](../../../../policy-templates/samples/Network/express-route-peeringLocation/azurepolicy.json "Allowed Peering Location for Express Route")]
+[!code-json[main](../../../../policy-templates/samples/Network/express-route-peeringLocation/azurepolicy.json "Allowed Peering Location for ExpressRoute")]
 
 Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
@@ -37,7 +37,7 @@ Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-th
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition -Name "express-route-peeringLocation" -DisplayName "Allowed Peering Location for Express Route" -description "This policy enables you to specify a set of allowed peering location for express route" -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/express-route-peeringLocation/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/express-route-peeringLocation/azurepolicy.parameters.json' -Mode All
+$definition = New-AzureRmPolicyDefinition -Name "express-route-peeringLocation" -DisplayName "Allowed Peering Location for ExpressRoute" -description "This policy enables you to specify a set of allowed peering location for ExpressRoute" -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/express-route-peeringLocation/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/express-route-peeringLocation/azurepolicy.parameters.json' -Mode All
 $definition
 $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope>  -listOfLocations <Allowed Peering Locations> -PolicyDefinition $definition
 $assignment
@@ -56,7 +56,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
 ```azurecli-interactive
-az policy definition create --name 'express-route-peeringLocation' --display-name 'Allowed Peering Location for Express Route' --description 'This policy enables you to specify a set of allowed peering location for express route' --rules 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/express-route-peeringLocation/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/express-route-peeringLocation/azurepolicy.parameters.json' --mode All
+az policy definition create --name 'express-route-peeringLocation' --display-name 'Allowed Peering Location for ExpressRoute' --description 'This policy enables you to specify a set of allowed peering location for ExpressRoute' --rules 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/express-route-peeringLocation/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/express-route-peeringLocation/azurepolicy.parameters.json' --mode All
 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "express-route-peeringLocation"
 ```
@@ -71,4 +71,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zobacz więcej przykładów w temacie [Przykłady dla usługi Azure Policy](index.md)
+- Zobacz więcej przykładów w witrynie [Przykłady dla usługi Azure Policy](index.md)

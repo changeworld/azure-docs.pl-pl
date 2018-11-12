@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: sutalasi
-ms.openlocfilehash: f8f690a4f94ee56cfaa5532fa090fada1a33bddf
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4b008cc119951e50567218e332818585fb017e5a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214787"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229411"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla maszyn wirtualnych funkcji Hyper-V przy użyciu programu PowerShell i usługi Azure Resource Manager
 
@@ -24,7 +24,7 @@ W tym artykule opisano, jak replikować maszyny wirtualne funkcji Hyper-V na pla
 
 Program Azure PowerShell udostępnia polecenia cmdlet do zarządzania platformy Azure przy użyciu programu Windows PowerShell. Site Recovery poleceń cmdlet programu PowerShell, dostępne przy użyciu programu Azure PowerShell dla usługi Azure Resource Manager pomóc chronić i odzyskiwać swoje serwery na platformie Azure.
 
-Nie musisz być ekspertem programu PowerShell do użycia w tym artykule, ale należy zrozumieć podstawowe pojęcia, takie jak modułów, poleceń cmdlet i sesje. Odczyt [wprowadzenie do programu Windows PowerShell](http://technet.microsoft.com/library/hh857337.aspx), i [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](../powershell-azure-resource-manager.md).
+Nie musisz być ekspertem programu PowerShell do użycia w tym artykule, ale należy zrozumieć podstawowe pojęcia, takie jak modułów, poleceń cmdlet i sesje. Odczyt [wprowadzenie do programu Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx), i [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](../powershell-azure-resource-manager.md).
 
 > [!NOTE]
 > Partnerzy firmy Microsoft w programie Cloud Solution Provider (CSP) można skonfigurować i zarządzać ochrony serwerów klienta do ich odpowiednich subskrypcji dostawcy usług Kryptograficznych (subskrypcje dzierżawy).

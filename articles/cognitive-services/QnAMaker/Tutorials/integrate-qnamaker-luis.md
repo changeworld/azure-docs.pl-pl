@@ -10,17 +10,19 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: diberry
-ms.openlocfilehash: e0f3703d50f20b766b2ac43b96be7e001ff9bc7f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: be9d68db3a2de6327d94a73af58b669583db3f00
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957734"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287034"
 ---
 # <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Integracja usługi QnA Maker i LUIS, aby rozprowadzić bazy wiedzy
 Wraz z rozwojem dużej wiedzy usługi QnA Maker staje się trudne w utrzymaniu go jako monolityczny jeden zestaw i ma konieczności dzielenia bazy wiedzy knowledge base na mniejsze części logiczne.
 
 Mimo że jest bardzo proste tworzenie wielu baz wiedzy w usługi QnA Maker, konieczne będzie logikę przekierowywać przychodzące pytanie do odpowiedniej bazy wiedzy. Można to zrobić za pomocą usługi LUIS.
+
+W tym artykule użyto zestawu SDK programu platformy Bot Framework w wersji 3. Przeczytaj ten [artykułu platformy Bot Framework](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csharp), jeśli interesuje Cię wersja zestawu SDK w wersji 4 platformy Bot Framework tych informacji.
 
 ## <a name="architecture"></a>Architektura
 

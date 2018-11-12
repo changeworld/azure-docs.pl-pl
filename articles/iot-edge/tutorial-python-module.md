@@ -9,16 +9,16 @@ ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1316dcaf32b709dbc7c07f7d82388082d8d6e6a9
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: ab09a46c70006d1ca7996767e38d99a9208efcb5
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319646"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157874"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Samouczek: opracowywanie modułu usługi IoT Edge w języku Python i wdrażanie go na urządzeniu symulowanym
 
-Moduły usługi Azure IoT Edge umożliwiają wdrożenie kodu implementującego logikę biznesową bezpośrednio na urządzeniach usługi IoT Edge. W tym samouczku przedstawiono sposób tworzenia i wdrażania modułu usługi IoT Edge, w którym są filtrowane dane czujnika. Użyjesz symulowanego urządzenia usługi IoT Edge utworzonego podczas pracy z przewodnikami Szybki start dotyczącymi wdrażania usługi Azure IoT Edge na urządzeniu symulowanym w systemie [Windows][lnk-quickstart-win] lub [Linux][lnk-quickstart-lin]. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:    
+Moduły usługi Azure IoT Edge umożliwiają wdrożenie kodu implementującego logikę biznesową bezpośrednio na urządzeniach usługi IoT Edge. W tym samouczku przedstawiono sposób tworzenia i wdrażania modułu usługi IoT Edge, w którym są filtrowane dane czujnika. Użyjesz symulowanego urządzenia usługi IoT Edge utworzonego w ramach przewodnika Szybki start. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:    
 
 > [!div class="checklist"]
 > * Tworzenie modułu usługi IoT Edge w języku Python przy użyciu programu Visual Studio Code.
@@ -299,13 +299,3 @@ W tym samouczku został utworzony moduł usługi IoT Edge zawierający kod słu�
 > [!div class="nextstepaction"]
 > [Wdrażanie funkcji platformy Azure jako modułu](tutorial-deploy-function.md)
 > [Wdrażanie usługi Azure Stream Analytics jako modułu](tutorial-deploy-stream-analytics.md)
-
-
-<!-- Links -->
-[lnk-quickstart-win]: quickstart.md
-[lnk-quickstart-lin]: quickstart-linux.md
-
-<!-- Images -->
-[1]: ./media/tutorial-csharp-module/programcs.png
-[2]: ./media/tutorial-csharp-module/build-module.png
-[3]: ./media/tutorial-csharp-module/docker-os.png

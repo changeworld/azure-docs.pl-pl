@@ -1,6 +1,6 @@
 ---
 title: Wdrażanie rozwiązania do monitorowania zdalnego z lokalnie (przy użyciu programu Visual Studio IDE) — Azure | Dokumentacja firmy Microsoft
-description: Ten poradnik pokazuje, jak wdrożyć zdalnego monitorowania akcelerator rozwiązań do maszyny lokalnej na potrzeby projektowania i testowania.
+description: Ten poradnik pokazuje, jak wdrożyć zdalnego akcelerator rozwiązań do monitorowania na komputerze lokalnym przy użyciu programu Visual Studio na potrzeby projektowania i testowania.
 author: avneet723
 manager: hegate
 ms.author: avneet723
@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: c667782ef49f41cda8ccefc2f56e5f1265531037
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 5068f0277726b7c468aa24d0629c4350b60b78b5
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278824"
+ms.locfileid: "51287612"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie — Visual Studio
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-W tym artykule pokazano, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego na komputerze lokalnym na potrzeby projektowania i testowania. Tego artykułu dowiesz się, jak uruchomić mikrousługi w programie Visual Studio. Wdrożenie lokalne mikrousług używa następujących usług w chmurze: Usługa IoT Hub, Cosmos DB, usługi Azure Stream Analytics i Azure Time Series Insights usług w chmurze.
+W tym artykule pokazano, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego na komputerze lokalnym na potrzeby projektowania i testowania. Dowiesz się, jak uruchomić mikrousługi w programie Visual Studio. Wdrożenie lokalne mikrousług używa następujących usług w chmurze: Usługa IoT Hub, Cosmos DB, usługi Azure Stream Analytics i Azure Time Series Insights usług w chmurze.
 
 Jeśli chcesz uruchomić akcelerator rozwiązania monitorowania zdalnego na platformie Docker na komputerze lokalnym, zobacz [wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie — Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md).
 
@@ -115,14 +115,4 @@ Możesz także usunąć lokalną kopię repozytorium zdalne monitorowanie utworz
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> * Skonfiguruj lokalne Środowisko deweloperskie
-> * Konfigurowanie akceleratora rozwiązań
-> * Wdrażanie akceleratora rozwiązań
-> * Zaloguj się do akceleratora rozwiązań
-
 Teraz, że udało Ci się wdrożyć rozwiązania do zdalnego monitorowania, następnym krokiem jest [zapoznaj się z możliwościami pulpitu nawigacyjnego rozwiązania](quickstart-remote-monitoring-deploy.md).
-
-<!-- Next tutorials in the sequence -->

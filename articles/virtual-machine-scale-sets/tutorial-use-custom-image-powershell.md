@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a70bb09edb5ccaf4e216785933af80e2fcb2153a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 924fea7a8a8e6fb1ab25584a49f38b25156d1ec6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363610"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230516"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Samouczek: tworzenie niestandardowego obrazu i używanie go dla zestawów skalowania maszyn wirtualnych za pośrednictwem programu Azure PowerShell
 Podczas tworzenia zestawu skalowania należy wskazać obraz używany do wdrożenia wystąpień maszyn wirtualnych. Aby zmniejszyć liczbę zadań wykonywanych po wdrożeniu wystąpień maszyn wirtualnych, można użyć niestandardowego obrazu maszyny wirtualnej. Niestandardowy obraz maszyny wirtualnej obejmuje wszystkie wymagane instalacje i konfiguracje aplikacji. Wszystkie wystąpienia maszyn wirtualnych utworzone w zestawie skalowania używają niestandardowego obrazu maszyny wirtualnej i są gotowe do obsługi ruchu aplikacji. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -76,7 +76,7 @@ Aby dostosować maszynę wirtualną, należy zainstalować podstawowy serwer int
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Ostatnim krokiem jest uogólnienie maszyny wirtualnej w celu przygotowania jej do użycia jako obraz niestandardowy. Program Sysprep usuwa wszystkie informacje i konfiguracje osobiste oraz resetuje maszynę wirtualną do czystego stanu przeznaczonego do przyszłych wdrożeń. Aby uzyskać więcej informacji, zobacz [How to Use Sysprep: An Introduction (Używanie programu Sysprep: wprowadzenie)](http://technet.microsoft.com/library/bb457073.aspx).
+Ostatnim krokiem jest uogólnienie maszyny wirtualnej w celu przygotowania jej do użycia jako obraz niestandardowy. Program Sysprep usuwa wszystkie informacje i konfiguracje osobiste oraz resetuje maszynę wirtualną do czystego stanu przeznaczonego do przyszłych wdrożeń. Aby uzyskać więcej informacji, zobacz [How to Use Sysprep: An Introduction (Używanie programu Sysprep: wprowadzenie)](https://technet.microsoft.com/library/bb457073.aspx).
 
 Aby uogólnić maszynę wirtualną, uruchom program Sysprep i ustaw maszynę wirtualną jako gotową do użycia. Po zakończeniu zamknij maszynę wirtualną za pomocą programu Sysprep:
 

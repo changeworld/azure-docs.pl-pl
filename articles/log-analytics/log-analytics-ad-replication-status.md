@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c248e126d99c7cb83895871ec24d41ffcfd84d29
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 08d17566faa61c5dcac01a49f99f0f39eb280946
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960688"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009746"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Monitoruje stan replikacji usługi Active Directory z usługą Log Analytics
 
@@ -110,7 +110,7 @@ Po kliknięciu dowolnego elementu w wykazie, zobaczysz dodatkowe szczegóły dot
 
 ![Błędy stanu replikacji usługi AD w wynikach wyszukiwania](./media/log-analytics-ad-replication-status/oms-ad-replication-search-details.png)
 
-W tym miejscu można dalej filtrować, zmodyfikuj zapytanie wyszukiwania i tak dalej. Aby uzyskać więcej informacji o używaniu przeszukiwania dzienników, zobacz [dziennikach](log-analytics-log-search.md).
+W tym miejscu można dalej filtrować, zmodyfikuj zapytanie wyszukiwania i tak dalej. Aby uzyskać więcej informacji o używaniu przeszukiwania dzienników, zobacz [dziennikach](log-analytics-queries.md).
 
 **HelpLink** polu wyświetlany adres URL strony TechNet, z dodatkowymi szczegółami dotyczącymi tego wystąpienia określonego błędu. Można skopiować i wkleić ten link do okna przeglądarki w celu wyświetlenia informacji na temat rozwiązywania problemów i usunięciu błędu.
 
@@ -154,4 +154,4 @@ Jeśli potrzebujesz pomocy przy podłączaniu jeden z kontrolerów domeny, możn
 Jeśli nie chcesz połączyć wszystkich kontrolerów domeny, bezpośrednio do usługi Log Analytics lub System Center Operations Manager, zobacz [umożliwiające niebędącym kontrolerem domeny do przesyłania danych do usługi AD do usługi Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Użyj [przeszukiwanie dzienników w usłudze Log Analytics](log-analytics-log-search.md) Aby wyświetlić szczegółowe dane stanu replikacji usługi Active Directory.
+* Użyj [przeszukiwanie dzienników w usłudze Log Analytics](log-analytics-queries.md) Aby wyświetlić szczegółowe dane stanu replikacji usługi Active Directory.

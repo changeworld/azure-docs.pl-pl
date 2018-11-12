@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: abca81e0db565c6c84d9be9df07b46c8c338030b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: 61238482339250e45be36162e7eef252f78c74b1
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960281"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288989"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Porady: logowanie dowolnego użytkownika usługi Azure Active Directory za pomocą wzorca aplikacji wielodostępnych
 
@@ -46,9 +46,9 @@ Spójrzmy na poszczególnych kroków w artykule. Możesz też przejść bezpośr
 
 Rejestracje interfejsu API i aplikacji sieci web w usłudze Azure AD są domyślnie pojedynczej dzierżawy. Aby włączyć rejestrację wielodostępne, wyszukując **wielu gośćmi** przełączyć się **właściwości** rejestrację aplikacji w okienku [witryny Azure portal] [ AZURE-portal] i ustawieniem dla niego **tak**.
 
-Przed aplikacji wielodostępnych, usługa Azure AD wymaga identyfikator URI Identyfikatora aplikacji aplikacji mogą być globalnie unikatowa. Identyfikator URI Identyfikatora aplikacji jest jednym ze sposobów, w których aplikacja jest identyfikowana w komunikatach protokołu. W przypadku aplikacji pojedynczej dzierżawy jest wystarczająca dla URI Identyfikatora aplikacji była unikatowa w obrębie tej dzierżawy. W przypadku aplikacji wielodostępnych go musi być globalnie unikatowa dzięki usłudze Azure AD można znaleźć aplikacji we wszystkich dzierżawach. Unikatowość globalne są wymuszane, wymagając identyfikator URI Identyfikatora aplikacji ma nazwę hosta, który pasuje do zweryfikowanej domeny dzierżawy usługi Azure AD. 
+Przed aplikacji wielodostępnych, usługa Azure AD wymaga identyfikator URI Identyfikatora aplikacji aplikacji mogą być globalnie unikatowa. Identyfikator URI identyfikatora aplikacji jest jednym ze sposobów, w jaki aplikacja jest identyfikowana w komunikatach protokołu. W przypadku aplikacji pojedynczej dzierżawy wystarczy, aby identyfikator URI identyfikatora aplikacji był unikatowy w obrębie tej dzierżawy. W przypadku aplikacji wielodostępnej ten identyfikator musi być globalnie unikatowy, dzięki czemu usługa Azure AD będzie mogła znaleźć aplikację we wszystkich dzierżawach. Globalna unikatowość jest wymuszana poprzez wymaganie, aby identyfikator URI identyfikatora aplikacji miał nazwę hosta, która jest zgodna ze zweryfikowaną domeną dzierżawy usługi Azure AD. 
 
-Domyślnie aplikacje utworzone w witrynie Azure portal mają globalnie unikatowy identyfikator URI aplikacji ustaw przy tworzeniu aplikacji, ale możesz zmienić tę wartość. Na przykład, jeśli nazwa Twojej dzierżawy został contoso.onmicrosoft.com, a następnie prawidłowy identyfikator URI Identyfikatora aplikacji będzie `https://contoso.onmicrosoft.com/myapp`. Jeśli zweryfikowaną domenę dzierżawy `contoso.com`, a następnie prawidłowy identyfikator URI aplikacji będą również `https://contoso.com/myapp`. Jeśli identyfikator URI Identyfikatora aplikacji nie korzystać z tego wzoru, ustawienia aplikacji, ponieważ wielodostępnych zakończy się niepowodzeniem.
+Domyślnie aplikacje utworzone w witrynie Azure portal mają globalnie unikatowy identyfikator URI aplikacji ustaw przy tworzeniu aplikacji, ale możesz zmienić tę wartość. Na przykład, jeśli nazwa Twojej dzierżawy został contoso.onmicrosoft.com, a następnie prawidłowy identyfikator URI Identyfikatora aplikacji będzie `https://contoso.onmicrosoft.com/myapp`. Jeśli zweryfikowaną domenę dzierżawy `contoso.com`, a następnie prawidłowy identyfikator URI aplikacji będą również `https://contoso.com/myapp`. Jeśli identyfikator URI identyfikatora aplikacji nie jest zgodny z tym wzorcem, ustawienie aplikacji jako aplikacji wielodostępnej zakończy się niepowodzeniem.
 
 > [!NOTE] 
 > Rejestracje klienta natywnego także [aplikacji w wersji 2.0](./active-directory-appmodel-v2-overview.md) są wielodostępne domyślnie. Nie trzeba podejmować żadnych działań do tych rejestracji aplikacji wielodostępnych.
@@ -201,8 +201,8 @@ W tym artykule przedstawiono sposób tworzenia aplikacji, która może zalogowa�
 [AAD-Samples-MT]: https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multitenant
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
-[MSFT-Graph-overview]: https://graph.microsoft.io/en-us/docs/overview/overview
-[MSFT-Graph-permision-scopes]: https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference
+[MSFT-Graph-overview]: https://developer.microsoft.com/graph/docs/overview/overview
+[MSFT-Graph-permision-scopes]: https://developer.microsoft.com/graph/docs/concepts/permissions_reference
 
 <!--Image references-->
 [AAD-Sign-In]: ./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png

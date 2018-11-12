@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: a3019a18fe28840f69a6e14b20dddc72516aa593
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 86967f2e4c495cc0a2689dd4312b262fdb5943d9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419541"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230652"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Przekazywanie plików z urządzenia do chmury za pomocą usługi IoT Hub
 
@@ -41,7 +41,7 @@ Na końcu tego samouczka, możesz uruchomić dwie aplikacje konsolowe Java:
 * **Odczyt pliku-— powiadomienie o przekazywaniu**, która odbiera powiadomienia o przekazywania plików z usługi IoT hub.
 
 > [!NOTE]
-> Centrum IoT Hub obsługuje wiele platform urządzeń i językach (w tym C, .NET i języka Javascript) za pomocą zestawów SDK urządzeń Azure IoT. Zapoznaj się [Centrum deweloperów Azure IoT](http://azure.microsoft.com/develop/iot) instrukcje krok po kroku dotyczące sposobu Podłącz urządzenie do usługi Azure IoT Hub.
+> Centrum IoT Hub obsługuje wiele platform urządzeń i językach (w tym C, .NET i języka Javascript) za pomocą zestawów SDK urządzeń Azure IoT. Zapoznaj się [Centrum deweloperów Azure IoT](https://azure.microsoft.com/develop/iot) instrukcje krok po kroku dotyczące sposobu Podłącz urządzenie do usługi Azure IoT Hub.
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
@@ -49,7 +49,7 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 * [Maven 3](https://maven.apache.org/install.html)
 
-* Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](http://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.)
+* Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.)
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 

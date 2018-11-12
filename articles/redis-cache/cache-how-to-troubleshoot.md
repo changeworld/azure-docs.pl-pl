@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: b41fc5c41b2e0d1e5d5ba3e39c7f6063cf57c6c2
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: ff2076d678b16f4de421a2634d751d26956a400d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205786"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228865"
 ---
 # <a name="how-to-troubleshoot-azure-redis-cache"></a>Jak rozwiązywać problemy z usługi Azure Redis Cache
 Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów z następujących kategorii problemy dotyczące usługi Azure Redis Cache.
@@ -193,7 +193,7 @@ Ten komunikat o błędzie zawiera metryki, które mogą ułatwić wskaż przyczy
 | QS |67 operacji w toku zostały wysłane do serwera, ale odpowiedź nie jest jeszcze dostępna. Odpowiedzi mogą być `Not yet sent by the server` lub `sent by the server but not yet processed by the client.` |
 | qc |Zauważyliśmy już odpowiedzi na 0 lub operacji w toku, ale nie zostało oznaczone jako zakończone z powodu oczekiwania na zakończenie pętli |
 | wR |Ma aktywnego modułu zapisującego (co oznacza, że 6 niewysłane żądania nie są ignorowane) bajty/activewriters |
-| w |Nie ma żadnych aktywnych czytelników i zero bajtów dostępnych do odczytu na NIC bajty/activereaders |
+| wejście |Nie ma żadnych aktywnych czytelników i zero bajtów dostępnych do odczytu na NIC bajty/activereaders |
 
 ### <a name="steps-to-investigate"></a>Kroki, aby zbadać
 1. Zgodnie z najlepszym rozwiązaniem jest upewnij się, używają następującego wzorca łączenia podczas korzystania z klienta StackExchange.Redis.
@@ -229,7 +229,7 @@ Ten komunikat o błędzie zawiera metryki, które mogą ułatwić wskaż przyczy
    * Sprawdź, czy pojawiają się procesora CPU związane na serwerze monitorowania `CPU` [Metryka wydajności w pamięci podręcznej](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Żądań przychodzących trakcie Redis procesora CPU związane może spowodować te żądania, przekroczenie limitu czasu. Aby rozwiązać ten problem, rozkładają obciążenie na wiele fragmentów w pamięci podręcznej — wersja premium lub uaktualnienia do wersji o większym rozmiarze lub warstwie cenowej. Aby uzyskać więcej informacji, zobacz [Przekroczona przepustowość po stronie serwera](#server-side-bandwidth-exceeded).
 5. Czy istnieją polecenia dłużej przetwarzania na serwerze? Długie wykonywanie poleceń, które mają długi czas przetwarzania na serwerze usługi redis może spowodować przekroczeń limitu czasu. Oto kilka przykładów poleceń długotrwałe `mget` z dużą liczbą kluczy `keys *` lub źle napisane skryptów lua. Można połączyć się z wystąpieniem usługi Azure Redis Cache za pomocą klienta pamięci podręcznej redis-cli lub przy użyciu [konsolę pamięci podręcznej Redis](cache-configure.md#redis-console) i uruchom [dziennik wolno wykonywanych zapytań](http://redis.io/commands/slowlog) polecenie, aby sprawdzić, czy żądania trwa dłużej niż oczekiwano. Serwer redis i StackExchange.Redis są zoptymalizowane pod kątem wielu małych żądań, a nie mniej dużych żądań. Podział danych na mniejsze części może poprawić rzeczy w tym miejscu. 
    
-    Aby uzyskać informacje na temat łączenia się z punktem końcowym usługi Azure Redis Cache SSL przy użyciu usługi redis — interfejs wiersza polecenia i programu stunnel, zobacz [ogłoszenie dostawca stanu sesji ASP.NET dla wersji zapoznawczej Redis](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) wpis w blogu. Aby uzyskać więcej informacji, zobacz [dziennik wolno wykonywanych zapytań](http://redis.io/commands/slowlog).
+    Aby uzyskać informacje na temat łączenia się z punktem końcowym usługi Azure Redis Cache SSL przy użyciu usługi redis — interfejs wiersza polecenia i programu stunnel, zobacz [ogłoszenie dostawca stanu sesji ASP.NET dla wersji zapoznawczej Redis](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) wpis w blogu. Aby uzyskać więcej informacji, zobacz [dziennik wolno wykonywanych zapytań](http://redis.io/commands/slowlog).
 6. Wysokie obciążenie serwera Redis może spowodować przekroczeń limitu czasu. Można monitorować, obciążenie serwera jest monitorowanie `Redis Server Load` [Metryka wydajności w pamięci podręcznej](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Obciążenie serwera, 100 (wartość maksymalna) oznacza, że serwer redis był zajęty, bez czasu bezczynności, przetwarzanie żądań. Aby zobaczyć, jeśli niektórych żądań zajmują wszystkich funkcji serwera, uruchom polecenie Dziennik wolno wykonywanych zapytań, zgodnie z opisem w poprzednim akapicie. Aby uzyskać więcej informacji, zobacz [wysokie użycie procesora CPU / obciążenie serwera](#high-cpu-usage-server-load).
 7. Po stronie klienta, który może to być spowodowane blip sieci była dowolne inne zdarzenie? Sprawdź na kliencie (web, rola procesu roboczego lub Maszynie wirtualnej Iaas), jeśli wystąpiło zdarzenie, takie jak skalowanie liczby wystąpień klienta w górę lub w dół lub wdrażania nowej wersji klienta lub automatyczne skalowanie jest włączone? W naszych testach, znaleźliśmy tego skalowania automatycznego lub skalowania w górę/dół można przyczyny połączenia sieciowego ruchu wychodzącego mogą zostać utracone przez kilka sekund. Kod StackExchange.Redis jest odporna na takie zdarzenia i ponownie nawiąże połączenie. W tym czasie ponowne łączenie wszystkich żądań w kolejce można limit czasu.
 8. Czy były big żądanie poprzedzających kilka żądań o małym rozmiarze z usługą Redis Cache, który upłynął limit czasu? Parametr `qs` w błędzie komunikat informujący o tym ile żądań wysłanych z klienta do serwera, ale nie zostały jeszcze przetworzone odpowiedzi. Tę wartość można zachować rośnie, ponieważ StackExchange.Redis korzysta z jednego połączenia TCP i jedną odpowiedź mogą być odczytane tylko w danym momencie. Mimo że upłynął limit czasu operacji pierwsze, nie zatrzymuje danych wysyłanych z serwera, a inne żądania są blokowane, aż do ukończenia żądania dużych przyczyną przekroczenia limitów czasu. Jednym rozwiązaniem jest zminimalizować prawdopodobieństwo przekroczenia limitu czasu, zapewnia, że pamięć podręczna jest wystarczająco duży dla obciążenia i dzielenia dużych wartości na mniejsze części. Inne rozwiązanie możliwe jest użycie puli `ConnectionMultiplexer` obiektów w swoim kliencie, a następnie wybierz co najmniej załadować `ConnectionMultiplexer` wysyłając żądanie nowego. Powinno to zapobiec pojedynczego limitu czasu powoduje innych żądaniach również limit czasu.

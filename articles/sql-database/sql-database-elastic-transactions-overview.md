@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3147061f527621ba98dee84f4d347a6e883d61c0
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 02cf72bf9fe06993ef859d1789983b7611c8472e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166473"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257473"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Transakcje rozproszone w bazach danych w chmurze
 Transakcje elastyczne bazy danych usługi Azure SQL Database (baza danych SQL) umożliwiają uruchamianie transakcje obejmujące wiele baz danych w bazie danych SQL. Transakcji elastycznych baz danych dla bazy danych SQL są dostępne dla aplikacji .NET za pomocą ADO .NET oraz integracji z dobrze znanych programowania środowisko przy użyciu [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) klasy. Aby uzyskać biblioteki, zobacz [platformy .NET Framework 4.6.1 (Instalator internetowy)](https://www.microsoft.com/download/details.aspx?id=49981).
@@ -143,7 +143,7 @@ Poniższe ograniczenia mają zastosowanie obecnie do transakcji elastycznych baz
 * Transakcji w przypadku usług WCF nie są obsługiwane. Na przykład masz metody usługi WCF, który jest wykonywany transakcji. Otaczający wywołanie w zakresie transakcji nie powiedzie się jako [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Masz pytania, skontaktuj się z nami na [forum bazy danych SQL](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) i dla żądania funkcji, należy je dodać do [forum z opiniami bazy danych SQL](https://feedback.azure.com/forums/217321-sql-database/).
+Masz pytania, skontaktuj się z nami na [forum bazy danych SQL](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) i dla żądania funkcji, należy je dodać do [forum z opiniami bazy danych SQL](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png

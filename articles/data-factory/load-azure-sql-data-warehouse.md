@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 8525dd443e80bb7d67bc48cc007ab1632ee3e611
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: b8b07db6e21fb685ed76409336c98bb5f4ce5bde
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42058247"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009440"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Ładowanie danych do usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory
 
@@ -35,6 +35,7 @@ W tym artykule pokazano, jak za pomocą narzędzia Kopia fabryki danych do _ład
 
 > [!NOTE]
 > Aby uzyskać więcej informacji, zobacz [kopiowanie danych do i z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory](connector-azure-sql-data-warehouse.md).
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) przed przystąpieniem do wykonywania.

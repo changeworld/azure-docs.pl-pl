@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 261f8dfe41ece0cd56a4a71972e3142ef8440afb
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: f32dd0fb1ffd1bbd2c58f187b2dbc310a48f65ff
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918113"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011072"
 ---
 # <a name="deploy-azure-file-sync"></a>Wdrażanie usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -38,14 +38,14 @@ Zdecydowanie zaleca się przeczytanie [Planowanie wdrożenia usługi Azure Files
     > Usługa Azure File Sync nie obsługuje jeszcze programu PowerShell 6 w systemie Windows Server 2012 R2 lub Windows Server 2016.
 * Moduł AzureRM PowerShell na serwerach, które chcesz użyć usługi Azure File Sync. Aby uzyskać więcej informacji na temat instalowania modułów programu PowerShell usługi AzureRM zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Zawsze zalecamy, jest używana najnowsza wersja modułów programu Azure PowerShell. 
 
-## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Przygotowanie systemu Windows Server za pomocą usługi Azure File Sync
-Dla każdego serwera, który ma być używana przy użyciu usługi Azure File Sync, w tym każdy węzeł serwera w klastrze trybu Failover należy wyłączyć **Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer**. Jest to wymagane tylko w przypadku rejestracji serwera początkowego. Możesz ją włączyć ponownie po zarejestrowaniu serwera.
+## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Przygotowywanie systemu Windows Server do używania z usługą Azure File Sync
+Dla każdego serwera, który ma być używana przy użyciu usługi Azure File Sync, w tym każdy węzeł serwera w klastrze trybu Failover należy wyłączyć **Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer**. Jest to wymagane tylko w przypadku rejestracji serwera początkowego. Tę pozycję można włączyć ponownie po zarejestrowaniu serwera.
 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
 1. Otwórz Menedżera serwera.
 2. Kliknij przycisk **lokalnego serwera**:  
     !["Serwer lokalny" po lewej stronie interfejsu użytkownika Menedżera serwera](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
-3. Na **właściwości** okienko podrzędne, wybierz link **Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer**.  
+3. W okienku podrzędnym **Właściwości** wybierz link do funkcji **Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer**.  
     ![W okienku "Konfiguracja zwiększonych zabezpieczeń" w Interfejsie użytkownika Menedżera serwera](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-2.PNG)
 4. W **Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer** okno dialogowe, wybierz opcję **poza** dla **Administratorzy** i **użytkowników**:  
     ![Wybrana konfiguracja zwiększonych zabezpieczeń programu Internet Explorer pop — okna z "Wyłączone"](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
@@ -70,8 +70,8 @@ Stop-Process -Name iexplore -ErrorAction SilentlyContinue
 
 ---
 
-## <a name="install-the-azure-file-sync-agent"></a>Zainstaluj agenta usługi Azure File Sync
-Agent usługi Azure File Sync jest dostępna do pobrania pakiet, który umożliwia systemu Windows Server z udziału plików platformy Azure. 
+## <a name="install-the-azure-file-sync-agent"></a>Pobieranie agenta usługi Azure File Sync
+Agent usługi Azure File Sync to możliwy do pobrania pakiet, który umożliwia synchronizowanie systemu Windows Server z udziałem plików platformy Azure. 
 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
 Możesz pobrać agenta z [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257). Po ukończeniu pobierania kliknij dwukrotnie pakiet MSI, aby rozpocząć instalację agenta usługi Azure File Sync.
@@ -125,7 +125,7 @@ Remove-Item -Path ".\StorageSyncAgent.exe", ".\afstemp" -Recurse -Force
 
 ---
 
-## <a name="deploy-the-storage-sync-service"></a>Wdróż usługę synchronizacji magazynu 
+## <a name="deploy-the-storage-sync-service"></a>Wdrażanie usługi synchronizacji magazynu 
 Wdrożenie usługi Azure File Sync zaczyna się od wprowadzania **Usługa synchronizacji magazynu** zasobów w grupie zasobów w wybranej subskrypcji. Firma Microsoft zaleca, inicjowanie obsługi administracyjnej jako kilka z nich, zgodnie z potrzebami. Spowoduje utworzenie relacji zaufania między serwerami i ten zasób, a serwer można rejestrować tylko do jednej usługi synchronizacji magazynu. W rezultacie zalecane jest wdrożyć dowolną liczbę usługi synchronizacji magazynu na potrzeby oddzielnych grup serwerów. Należy pamiętać, że serwery z innego magazynu usługi synchronizacji nie mogą synchronizować ze sobą.
 
 > [!Note]
@@ -216,24 +216,24 @@ New-AzureRmStorageSyncService -StorageSyncServiceName $storageSyncName
 
 ---
 
-## <a name="register-windows-server-with-storage-sync-service"></a>Rejestr systemu Windows Server za pomocą usługi synchronizacji magazynu
-Rejestrowanie serwera z systemem Windows za pomocą usługi synchronizacji magazynu ustanawia relację zaufania między serwerem (lub klastra) i usługę synchronizacji magazynu. Serwer można rejestrować tylko do jednej usługi synchronizacji magazynu i można synchronizować z innymi serwerami i platformy Azure skojarzone z tą samą usługą synchronizacji magazynu udziałów plików.
+## <a name="register-windows-server-with-storage-sync-service"></a>Rejestrowanie systemu Windows Server za pomocą usługi synchronizacji magazynu
+Zarejestrowanie systemu Windows Server za pomocą usługi synchronizacji magazynu powoduje ustanowienie relacji zaufania między serwerem (lub klastrem) oraz usługą synchronizacji magazynu. Serwer można zarejestrować tylko w jednej usłudze synchronizacji magazynu i można go synchronizować z innymi serwerami i udziałami plików platformy Azure skojarzonymi z tą samą usługą synchronizacji magazynu.
 
 > [!Note]
-> Rejestracja serwera używa poświadczeń platformy Azure w celu utworzenia relacji zaufania między Usługa synchronizacji magazynu i systemu Windows Server, jednak później serwer tworzy i wykorzystuje swoją tożsamość, która jest prawidłowa, tak długo, jak serwer pozostaje zarejestrowany i bieżący token Shared Access Signature (SAS magazynu) jest prawidłowa. Nie można wystawić nowy token sygnatury dostępu Współdzielonego z serwerem, gdy serwer jest zarejestrowany, dlatego usunięcie serwera możliwość dostępu do udziałów plików platformy Azure, w zatrzymywanie wszelkie synchronizacji.
+> Rejestracja serwera używa poświadczeń platformy Azure w celu utworzenia relacji zaufania między Usługa synchronizacji magazynu i systemu Windows Server, jednak później serwer tworzy i używa własną tożsamość, która jest prawidłowa, tak długo, jak serwer pozostaje zarejestrowany i bieżący token Shared Access Signature (SAS magazynu) jest prawidłowa. Nie można wystawić nowy token sygnatury dostępu Współdzielonego z serwerem, gdy serwer jest zarejestrowany, dlatego usunięcie serwera możliwość dostępu do udziałów plików platformy Azure, w zatrzymywanie wszelkie synchronizacji.
 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
-Interfejs użytkownika rejestracji serwera powinno spowodować otwarcie automatycznie po zakończeniu instalacji agenta usługi Azure File Sync. Jeśli nie, można otworzyć go ręcznie z lokalizacji pliku: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Po otwarciu interfejsu użytkownika rejestracji serwera wybierz **logowania** do rozpoczęcia.
+Interfejs użytkownika rejestracji serwera powinno spowodować otwarcie automatycznie po zakończeniu instalacji agenta usługi Azure File Sync. W przeciwnym razie można otworzyć go ręcznie w lokalizacji jego pliku: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Po otwarciu interfejsu użytkownika rejestracji serwera wybierz **logowania** do rozpoczęcia.
 
 Po zalogowaniu zostanie wyświetlony monit o następujące informacje:
 
-![Zrzut ekranu przedstawiający interfejs użytkownika serwera rejestracji](media/storage-sync-files-deployment-guide/register-server-scubed-1.png)
+![Zrzut ekranu przedstawiający interfejs użytkownika rejestracji serwera](media/storage-sync-files-deployment-guide/register-server-scubed-1.png)
 
 - **Subskrypcja platformy Azure**: subskrypcji, która zawiera usługę synchronizacji magazynu (zobacz [wdrożyć usługę synchronizacji magazynu](#deploy-the-storage-sync-service)). 
 - **Grupa zasobów**: Grupa zasobów, która zawiera usługę synchronizacji magazynu.
 - **Usługa synchronizacji magazynu**: Nazwa usługi synchronizacji magazynu, z którym chcesz zarejestrować.
 
-Po wybraniu odpowiednie informacje, wybierz **zarejestrować** do ukończenia rejestracji serwera. W ramach procesu rejestracji wyświetlany jest monit o dodatkowe logowanie.
+Po wybraniu odpowiednie informacje, wybierz **zarejestrować** do ukończenia rejestracji serwera. W ramach procesu rejestracji zostanie wyświetlony monit o dodatkowe logowanie.
 
 # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
 ```PowerShell
@@ -243,7 +243,7 @@ $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $s
 ---
 
 ## <a name="create-a-sync-group-and-a-cloud-endpoint"></a>Tworzenie grupy synchronizacji i punktu końcowego w chmurze
-Grupa synchronizacji definiuje topologia synchronizacji dla zestawu plików. Punkty końcowe w ramach grupy synchronizacji są synchronizowane ze sobą. Grupa synchronizacji musi zawierać jeden punkt końcowy w chmurze, który reprezentuje udział plików platformy Azure i punkty końcowe serwera. Punkt końcowy serwera reprezentuje ścieżkę na zarejestrowanego serwera. Serwer może mieć punkty końcowe serwera w wiele grup synchronizacji. Można utworzyć dowolną liczbę grup synchronizacji należy odpowiednio opisują topologii żądaną synchronizacji.
+Grupa synchronizacji definiuje topologię synchronizacji dla zestawu plików. Punkty końcowe w ramach grupy synchronizacji są synchronizowane ze sobą. Grupa synchronizacji musi zawierać jeden punkt końcowy chmury, który reprezentuje udział plików platformy Azure, i co najmniej jeden punkt końcowy serwera. Punkt końcowy serwera reprezentuje ścieżkę na zarejestrowanego serwera. Serwer może mieć punkty końcowe serwera w wiele grup synchronizacji. Można utworzyć dowolną liczbę grup synchronizacji należy odpowiednio opisują topologii żądaną synchronizacji.
 
 Punkt końcowy w chmurze jest wskaźnikiem do udziału plików platformy Azure. Wszystkie punkty końcowe serwera zsynchronizuje się z punktem końcowym chmury, dzięki czemu punkt końcowy w chmurze z Centrum. Konto magazynu dla udziału plików platformy Azure musi znajdować się w tym samym regionie co usługa synchronizacji magazynu. Zostanie on zsynchronizowany materiałami udziału plików platformy Azure z jednym wyjątkiem: zostanie udostępniony folder specjalny porównywalne z ukrytym folderze "System Volume Information" w woluminie NTFS. Ten katalog jest nazywany ". SystemShareInformation". Zawiera on istotne synchronizację metadanych, które nie będą synchronizowane z innych punktów końcowych. Nie używać ani nie usuwaj go!
 
@@ -253,11 +253,11 @@ Punkt końcowy w chmurze jest wskaźnikiem do udziału plików platformy Azure. 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
 Aby utworzyć grupę synchronizacji w [witryny Azure portal](https://portal.azure.com/), przejdź do usługi synchronizacji magazynu, a następnie wybierz **+ grupa synchronizacji**:
 
-![Utwórz nową grupę synchronizacji w witrynie Azure portal](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
+![Tworzenie nowej grupy synchronizacji w witrynie Azure Portal](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
 
 W otwartym okienku wprowadź następujące informacje, aby utworzyć grupę synchronizacji z punktem końcowym chmury:
 
-- **Nazwa grupy synchronizacji**: Nazwa grupy synchronizacji, która ma zostać utworzony. Ta nazwa musi być unikatowa w obrębie Usługa synchronizacji magazynu, ale może być dowolna nazwa, która jest logiczną dla Ciebie.
+- **Nazwa grupy synchronizacji**: Nazwa grupy synchronizacji, która ma zostać utworzony. Ta nazwa musi być unikatowa w obrębie usługi synchronizacji magazynu, ale może być to dowolna nazwa logiczna z Twojego punktu widzenia.
 - **Subskrypcja**: subskrypcja, w której została wdrożona usługa synchronizacji magazynu w [wdrożyć usługę synchronizacji magazynu](#deploy-the-storage-sync-service).
 - **Konto magazynu**: Jeśli wybierzesz **wybierz konto magazynu**, pojawi się na nim inną okienko, w którym można wybrać konto magazynu, który ma udziału plików platformy Azure, które mają być synchronizowane ze.
 - **Udział plików platformy Azure**: Nazwa udziału plików platformy Azure, z którym mają być synchronizowane.
@@ -310,14 +310,14 @@ New-AzureRmStorageSyncCloudEndpoint `
 ---
 
 ## <a name="create-a-server-endpoint"></a>Tworzenie punktu końcowego serwera
-Punkt końcowy serwera reprezentuje konkretnej lokalizacji na zarejestrowanego serwera, takie jak folder na wolumin serwera. Punkt końcowy serwera musi być ścieżką na zarejestrowanego serwera (zamiast zainstalowanego udziału), a aby korzystać z obsługi warstw w chmurze, ścieżka musi być na woluminie bez systemu. Magazynu dołączone do sieci (NAS) nie jest obsługiwana.
+Punkt końcowy serwera reprezentuje określoną lokalizację na zarejestrowanym serwerze, taką jak folder na woluminie serwera. Punkt końcowy serwera musi być ścieżką na zarejestrowanego serwera (zamiast zainstalowanego udziału), a aby korzystać z obsługi warstw w chmurze, ścieżka musi być na woluminie bez systemu. Magazynu dołączone do sieci (NAS) nie jest obsługiwana.
 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
 Aby dodać punkt końcowy serwera, przejdź do grupy synchronizacji nowo utworzony, a następnie wybierz **Dodaj punkt końcowy serwera**.
 
 ![Dodawanie nowego punktu końcowego serwera w okienku grupy synchronizacji](media/storage-sync-files-deployment-guide/create-sync-group-2.png)
 
-W **Dodaj punkt końcowy serwera** okienku, wprowadź następujące informacje, aby utworzyć punkt końcowy serwera:
+W okienku **Dodawanie punktu końcowego serwera** wprowadź następujące informacje, aby utworzyć punkt końcowy serwera:
 
 - **Zarejestrowany serwer**: Nazwa serwera lub klastra, w której chcesz utworzyć punkt końcowy serwera.
 - **Ścieżka**: ścieżka systemu Windows Server, można synchronizować w ramach grupy synchronizacji.

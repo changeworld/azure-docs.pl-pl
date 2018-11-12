@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/11/2017
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 0285b9208247aa84f56d127e734e8a5e87048ac6
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f2f6472fc485691b95305337dd608126d001aa27
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961368"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010712"
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Źródła danych dziennika zdarzeń Windows w usłudze Log Analytics
 Dzienniki zdarzeń Windows są jedną z najbardziej typowych [źródeł danych](log-analytics-data-sources.md) do zbierania danych przy użyciu agentów Windows, ponieważ wiele aplikacji zapisu w dzienniku zdarzeń Windows.  Oprócz określenia żadnych dzienników niestandardowych utworzone przez aplikacje, które są potrzebne do monitorowania może zbierać zdarzenia z dzienników standardowych, takich jak systemu i aplikacji.
@@ -76,6 +76,6 @@ Poniższa tabela zawiera różne przykłady przeszukiwania dzienników, które p
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Skonfiguruj usługę Log Analytics do gromadzenia innych [źródeł danych](log-analytics-data-sources.md) do analizy.
-* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
+* Dowiedz się więcej o [dziennikach](log-analytics-queries.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
 * Użyj [pól niestandardowych](log-analytics-custom-fields.md) do analizowania rekordów zdarzeń do poszczególnych pól.
 * Konfigurowanie [zbieranie liczników wydajności](log-analytics-data-sources-performance-counters.md) z agentów użytkownika Windows.

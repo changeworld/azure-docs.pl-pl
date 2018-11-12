@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 2ec712dcce1295a91f552176ddcf6572d3f23ecc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8bf87f9d1d1ab6da4b034890f1fbe058199eca41
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993565"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007146"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Zaloguj się do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -147,6 +147,20 @@ Po wyświetleniu monitu wprowadź poświadczenia logowania do usługi Azure AD n
     You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.
 
 Zamknij okno przeglądarki, wróć do protokołu SSH Monituj i naciśnij klawisz **Enter** klucza. Teraz zalogowaniu się do maszyny wirtualnej systemu Linux platformy Azure przy użyciu uprawnień roli przypisaniu, takich jak *użytkownika maszyny Wirtualnej* lub *Administrator maszyny Wirtualnej*. Jeśli Twoje konto użytkownika nie zostanie przypisana *Logowanie administratora maszyny wirtualnej* roli, można użyć `sudo` do uruchamiania poleceń, które wymagają uprawnień użytkownika root.
+
+## <a name="sudo-and-aad-login"></a>Identyfikator logowania "sudo" i usługi AAD
+
+Przy pierwszym uruchomieniu "sudo", będzie zostać poproszona o uwierzytelnienie po raz drugi. Jeśli nie chcesz uwierzytelnić się ponownie do uruchomienia "sudo", można edytować plik sudo `/aad/etc/sudoers.d/aad_admins` i Zastąp ten wiersz:
+
+```bash
+%aad_admins ALL=(ALL) ALL
+```
+w tym:
+
+```bash
+%aad_admins ALL=(ALL) NOPASSWD:ALL
+```
+
 
 ## <a name="troubleshoot-sign-in-issues"></a>Rozwiązywanie problemów z rejestracją
 

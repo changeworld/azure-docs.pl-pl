@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: b7c1a378b2bd653b1a4dae12b4240c41461902cf
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 29fa8d0216ac5b986a758ef553814d53834793d9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961026"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009729"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Zbieranie danych z zebrane na agentach systemu Linux w usłudze Log Analytics
 [Zebrane](https://collectd.org/) jest demonów systemu Linux typu open source, który okresowo zbiera metryki wydajności z aplikacji i informacje o poziomie systemu. Przykładowe aplikacje obejmują maszyny wirtualnej Java (JVM), serwer MySQL i Nginx. Ten artykuł zawiera informacje dotyczące zbierania danych wydajności z zebrane w usłudze Log Analytics.
@@ -124,6 +124,6 @@ Aby zachować znanego modelu między metryk infrastruktury już zebrane przez ag
 | wartości] | CounterValue |
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
+* Dowiedz się więcej o [dziennikach](log-analytics-queries.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
 * Użyj [pól niestandardowych](log-analytics-custom-fields.md) do analizowania danych z rekordy syslog na poszczególne pola.
 

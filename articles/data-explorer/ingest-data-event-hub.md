@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: efaf551d134d339205d40966cb84f41b408559bd
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 3350c222cced036af6319cee166c53da0b14f2a9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394182"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210452"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Szybki start: pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer
 
@@ -27,7 +27,7 @@ Do ukończenia tego przewodnika Szybki start, oprócz subskrypcji platformy Azur
 
 * [Klaster testowy i baza danych](create-cluster-database-portal.md)
 
-* [Przykładowa aplikacja](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) generująca dane
+* [Przykładowa aplikacja](https://github.com/Azure-Samples/event-hubs-dotnet-ingest), która generuje dane i wysyła je do centrum zdarzeń
 
 * [Program Visual Studio 2017 w wersji 15.3.2 lub nowszej](https://www.visualstudio.com/vs/) do uruchomienia przykładowej aplikacji
 
@@ -37,9 +37,9 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-event-hub"></a>Tworzenie centrum zdarzeń
 
-W tym przewodniku Szybki start wygenerujesz przykładowe dane i wyślesz je do centrum zdarzeń. Pierwszym krokiem jest utworzenie centrum zdarzeń. Możesz to zrobić, używając szablonu usługi Azure Resource Manager (ARM) w witrynie Azure Portal.
+W tym przewodniku Szybki start wygenerujesz przykładowe dane i wyślesz je do centrum zdarzeń. Pierwszym krokiem jest utworzenie centrum zdarzeń. Możesz to zrobić, używając szablonu usługi Azure Resource Manager w witrynie Azure Portal.
 
-1. Naciśnij poniższy przycisk, aby rozpocząć wdrażanie.
+1. Użyj poniższego przycisku, aby rozpocząć wdrażanie. Zalecamy otwarcie linku w innej karcie lub oknie, aby móc wykonać pozostałe kroki w tym artykule.
 
     [![Wdrażanie na platformie Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
@@ -69,13 +69,15 @@ W tym przewodniku Szybki start wygenerujesz przykładowe dane i wyślesz je do c
 
 1. Wybierz pozycję **Zakup**, która potwierdza, że tworzysz zasoby w ramach swojej subskrypcji.
 
-1. Wybierz pozycję **Powiadomienia** (ikonę dzwonka) na pasku narzędzi, aby monitorować proces aprowizacji. Pomyślne zakończenie wdrożenia może zająć kilka minut, ale możesz teraz przejść do następnego kroku.
+1. Wybierz pozycję **Powiadomienia** na pasku narzędzi, aby monitorować proces aprowizacji. Pomyślne zakończenie wdrożenia może zająć kilka minut, ale możesz teraz przejść do następnego kroku.
+
+    ![Powiadomienia](media/ingest-data-event-hub/notifications.png)
 
 ## <a name="create-a-target-table-in-azure-data-explorer"></a>Tworzenie tabeli docelowej w usłudze Azure Data Explorer
 
 Teraz w usłudze Azure Data Explorer utworzysz tabelę, do której będą wysyłane dane z usługi Event Hubs. Tabela zostanie utworzona w klastrze i bazie danych, które były aprowizowane w sekcji **Wymagania wstępne**.
 
-1. W witrynie Azure Portal w obszarze klastra wybierz pozycję **Zapytanie**.
+1. W witrynie Azure Portal przejdź do klastra, a następnie wybierz pozycję **Zapytanie**.
 
     ![Link do aplikacji Zapytanie](media/ingest-data-event-hub/query-explorer-link.png)
 
@@ -92,11 +94,11 @@ Teraz w usłudze Azure Data Explorer utworzysz tabelę, do której będą wysył
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
     ```
-    To polecenie mapuje przychodzące dane JSON na nazwy kolumn i typy danych używane podczas tworzenia tabeli.
+    To polecenie mapuje przychodzące dane JSON na nazwy kolumn i typy danych tabeli (TestTable).
 
 ## <a name="connect-to-the-event-hub"></a>Łączenie z centrum zdarzeń
 
-Teraz połączysz się z centrum zdarzeń z usługi Azure Data Explorer, aby dane trafiające do centrum zdarzeń były przesyłane strumieniowo do tabeli testowej.
+Teraz połączysz się z centrum zdarzeń z usługi Azure Data Explorer. Po nawiązaniu tego połączenia dane trafiające do centrum zdarzeń będą przesyłane strumieniowo do tabeli testowej utworzonej we wcześniejszej części tego artykułu.
 
 1. Wybierz pozycję **Powiadomienia** na pasku narzędzi, aby sprawdzić, czy wdrożenie centrum zdarzeń zakończyło się pomyślnie.
 
@@ -118,27 +120,27 @@ Teraz połączysz się z centrum zdarzeń z usługi Azure Data Explorer, aby dan
     | Przestrzeń nazw centrum zdarzeń | Unikatowa nazwa przestrzeni nazw | Wybrana wcześniej nazwa, która identyfikuje Twoją przestrzeń nazw. |
     | Centrum zdarzeń | *test-hub* | Utworzone przez Ciebie centrum zdarzeń. |
     | Grupa konsumentów | *test-group* | Grupa konsumentów zdefiniowana w utworzonym przez Ciebie centrum zdarzeń. |
+    | Tabela docelowa | Pozostaw pole **Moje dane zawierają informacje o routingu** niezaznaczone. | Dostępne są dwie opcje routingu: *statyczny* i *dynamiczny*. W tym przewodniku Szybki start będziesz używać routingu statycznego (opcja domyślna), w którym określisz nazwę tabeli, format pliku i mapowanie. Możesz również użyć routingu dynamicznego, w przypadku którego Twoje dane zawierają niezbędne informacje o routingu. |
     | Tabela | *TestTable* | Tabela utworzona przez Ciebie w obszarze **TestDatabase**. |
     | Format danych | *JSON* | Obsługiwane są formaty JSON i CSV. |
-    | Mapowanie kolumn | *TestMapping* | Mapowanie utworzone przez Ciebie w obszarze **TestDatabase**. |
-
-    W tym przewodniku Szybki start będziesz używać *routingu statycznego* z centrum zdarzeń, w którym określisz nazwę tabeli, format pliku i mapowanie. Możesz również używać routingu dynamicznego, w którym te właściwości będą ustawiane przez aplikację.
+    | Mapowanie kolumn | *TestMapping* | Mapowanie utworzone przez Ciebie w obszarze **TestDatabase**, które mapuje przychodzące dane JSON na nazwy kolumn i typy danych tabeli **TestTable**.|
+    | | |
 
 ## <a name="copy-the-connection-string"></a>Kopiowanie parametrów połączenia
 
-Gdy uruchamiasz aplikację w celu wygenerowania przykładowych danych, potrzebujesz parametrów połączenia dla przestrzeni nazw centrum zdarzeń.
+Gdy uruchamiasz [przykładową aplikację](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) wymienioną w sekcji Wymagania wstępne, potrzebujesz parametrów połączenia dla przestrzeni nazw centrum zdarzeń.
 
 1. W obszarze utworzonej przez Ciebie przestrzeni nazw centrum zdarzeń wybierz pozycję **Zasady dostępu współużytkowanego**, a następnie pozycję **RootManageSharedAccessKey**.
 
     ![Zasady dostępu współużytkowanego](media/ingest-data-event-hub/shared-access-policies.png)
 
-1. Skopiuj zawartość pola **Parametry połączenia — klucz podstawowy**.
+1. Skopiuj zawartość pola **Parametry połączenia — klucz podstawowy**. Wkleisz ją w następnej sekcji.
 
     ![Parametry połączenia](media/ingest-data-event-hub/connection-string.png)
 
 ## <a name="generate-sample-data"></a>Generowanie danych przykładowych
 
-Po nawiązaniu połączenia między usługą Azure Data Explorer i centrum zdarzeń wygenerujesz dane za pomocą przykładowej aplikacji, która została pobrana.
+Po nawiązaniu połączenia między usługą Azure Data Explorer i centrum zdarzeń wygenerujesz dane za pomocą [przykładowej aplikacji](https://github.com/Azure-Samples/event-hubs-dotnet-ingest), która została pobrana.
 
 1. Otwórz przykładowe rozwiązanie aplikacji w programie Visual Studio.
 
@@ -156,20 +158,22 @@ Po nawiązaniu połączenia między usługą Azure Data Explorer i centrum zdarz
 
 ## <a name="review-the-data-flow"></a>Przeglądanie przepływu danych
 
+Kiedy aplikacja generuje dane, możesz teraz zobaczyć przepływ tych danych z centrum zdarzeń do tabeli w klastrze.
+
 1. W witrynie Azure Portal w obszarze centrum zdarzeń zobaczysz wzrost aktywności, gdy aplikacja jest uruchomiona.
 
     ![Wykres centrum zdarzeń](media/ingest-data-event-hub/event-hub-graph.png)
 
-1. Wróć do aplikacji i zatrzymaj ją, gdy osiągnie 99 komunikatów.
+1. Wróć do przykładowej aplikacji i zatrzymaj ją, gdy osiągnie 99 komunikatów.
 
-1. W testowej bazie danych uruchom poniższe zapytanie, aby sprawdzić, ile komunikatów zostało przekazanych do tej pory do bazy danych.
+1. Aby sprawdzić, ile komunikatów zostało przekazanych do tej pory do bazy danych, uruchom poniższe zapytanie w testowej bazie danych.
 
     ```Kusto
     TestTable
     | count
     ```
 
-1. Uruchom poniższe zapytanie, aby sprawdzić zawartość komunikatów.
+1. Aby sprawdzić zawartość komunikatów, uruchom poniższe zapytanie.
 
     ```Kusto
     TestTable

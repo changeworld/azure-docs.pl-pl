@@ -9,18 +9,18 @@ ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 1fd1ce54dea672b19baea84bbf3a40b4365093b8
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 11587d5a0520d42d554c13a525c3b57db82326aa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046222"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229479"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Debugowanie zdefiniowanych przez użytkownika kodu C#, w przypadku nieudanych zadań U-SQL
 
 U-SQL zapewnia model rozszerzeń przy użyciu języka C#. Skryptów U-SQL jest łatwe do wywołania funkcji języka C# i wykonują funkcje analityczne, które nie obsługuje języka deklaratywnego podobnego do SQL. Aby dowiedzieć się więcej rozszerzeń U-SQL, zobacz [Podręcznik programowania U-SQL](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). 
 
-W praktyce debugowanie kodu może być konieczne, ale trudno debugować rozproszone zadania z niestandardowym kodem w chmurze za pomocą plików dziennika ograniczone. [Usługa Azure Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) udostępnia funkcję o nazwie **nie można debugować wierzchołka**, która pomaga łatwiej debugowania błędów, które występują w kodzie niestandardowym. W przypadku niepowodzenia zadania U-SQL usługi śledzi stan niepowodzenia i narzędzie ułatwia do pobrania w środowisku błąd chmury na komputer lokalny do debugowania. Pobieranie lokalne przechwytuje całego środowiska chmury, w tym wszystkie dane wejściowe i kod użytkownika.
+W praktyce debugowanie kodu może być konieczne, ale trudno debugować rozproszone zadania z niestandardowym kodem w chmurze za pomocą plików dziennika ograniczone. [Usługa Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) udostępnia funkcję o nazwie **nie można debugować wierzchołka**, która pomaga łatwiej debugowania błędów, które występują w kodzie niestandardowym. W przypadku niepowodzenia zadania U-SQL usługi śledzi stan niepowodzenia i narzędzie ułatwia do pobrania w środowisku błąd chmury na komputer lokalny do debugowania. Pobieranie lokalne przechwytuje całego środowiska chmury, w tym wszystkie dane wejściowe i kod użytkownika.
 
 Poniższy klip wideo pokazuje, nie powiodło się debugowania wierzchołka w usłudze Azure Data Lake Tools for Visual Studio.
 
@@ -64,7 +64,7 @@ Istnieją dwa przypadki, że kod źródłowy języka C# są przechwytywane:
 
 Jeśli kod źródłowy jest importowany do rozwiązania, można użyć narzędzia debugowania programu Visual Studio (Czujka, zmienne itp.) do rozwiązania problemu:
 
-1. Naciśnij klawisz **F5** można rozpocząć debugowania. Kod działa, dopóki nie zostanie zatrzymana przez wyjątek.
+1. Naciśnij klawisz **F5**, aby uruchomić debugowanie. Kod działa, dopóki nie zostanie zatrzymana przez wyjątek.
 
 2. Otwórz plik kodu źródłowego i ustaw punkty przerwania, naciśnij klawisz **F5** do debugowania kodu krok po kroku.
 

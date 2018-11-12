@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: a8c7df4ba1cd919a23fc45ee165584cd9a85afed
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: ff560715f9c6aff8f50d3b20db1f3e79f3527113
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211319"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257303"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Usługa Azure Site Recovery: często zadawane pytania (FAQ)
 Ten artykuł zawiera często zadawane pytania dotyczące usługi Azure Site Recovery. Jeśli masz pytania dotyczące po przeczytaniu tego artykułu, opublikuj je na [Forum usług odzyskiwania Azure](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -99,7 +99,7 @@ Tak, [można użyć usługi ExpressRoute](concepts-expressroute-with-site-recove
 Twoje konto platformy Azure użytkownika musi mieć pewne [uprawnienia](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) Aby włączyć replikację nowej maszyny wirtualnej na platformie Azure.
 
 ### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>Czy można replikować maszyny wirtualne funkcji Hyper-V drugiej generacji do platformy Azure?
-Tak. Usługa Site Recovery konwertuje z generacji 2 do generacji 1, podczas trybu failover. W przypadku powrotu po awarii maszyny jest konwertowana do generacji 2. [Dowiedz się więcej](http://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).
+Tak. Usługa Site Recovery konwertuje z generacji 2 do generacji 1, podczas trybu failover. W przypadku powrotu po awarii maszyny jest konwertowana do generacji 2. [Dowiedz się więcej](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).
 
 ### <a name="if-i-replicate-to-azure-how-do-i-pay-for-azure-vms"></a>W przypadku replikacji do platformy Azure, jak będę płacić za maszyny wirtualne Azure?
 Podczas regularnej replikacji dane są replikowane do magazynu geograficznie nadmiarowego Azure i nie trzeba płacić żadnych opłat maszyny wirtualnej IaaS platformy Azure, zapewniając znaczącą korzyścią. Po uruchomieniu trybu failover na platformie Azure usługa Site Recovery automatycznie utworzy maszyny wirtualne Azure w modelu IaaS. Po tym zostaną naliczone opłaty za zasoby obliczeniowe, które zostaną zużyte na platformie Azure.

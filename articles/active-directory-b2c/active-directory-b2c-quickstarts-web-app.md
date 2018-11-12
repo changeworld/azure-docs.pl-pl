@@ -7,101 +7,77 @@ manager: mtillman
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 2/13/2018
+ms.date: 10/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e52674014a888913e288f7b0749d9b2e05bedf45
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: c4fa3f9cbba558cd743f85119dd9e91bd73ce062
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292790"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250604"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Szybki start: konfigurowanie logowania dla aplikacji platformy ASP.NET przy użyciu usługi Azure Active Directory B2C
 
-Usługa Azure Active Directory (Azure AD) B2C umożliwia zarządzanie tożsamościami w chmurze, chroniąc Twoją aplikację, firmę i klientów. Usługa Azure AD B2C umożliwia aplikacjom uwierzytelnianie względem kont społecznościowych i firmowych za pomocą protokołów zgodnych z otwartymi standardami.
-
-W tym przewodniku Szybki start przykładowa aplikacja platformy ASP.NET z obsługą usługi Azure AD B2C jest używana do logowania za pomocą dostawcy tożsamości społecznościowych i wywoływania chronionego internetowego interfejsu API usługi Azure AD B2C.
+Usługa Azure Active Directory (Azure AD) B2C umożliwia zarządzanie tożsamościami w chmurze, chroniąc Twoją aplikację, firmę i klientów. Usługa Azure AD B2C umożliwia aplikacjom uwierzytelnianie względem kont społecznościowych i firmowych za pomocą protokołów zgodnych z otwartymi standardami. W tym przewodniku Szybki start aplikacja platformy ASP.NET jest używana do logowania za pomocą dostawcy tożsamości społecznościowych i wywoływania chronionego internetowego interfejsu API usługi Azure AD B2C.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Program [Visual Studio 2017](https://www.visualstudio.com/downloads/) z pakietem roboczym **Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych**. 
-* Konto w sieci społecznościowej: Facebook, Google, Microsoft lub Twitter.
+- Program [Visual Studio 2017](https://www.visualstudio.com/downloads/) z pakietem roboczym **Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych**. 
+- Konto w sieci społecznościowej: Facebook, Google, Microsoft lub Twitter.
+- [Pobierz plik zip](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip) lub sklonuj przykładową aplikację internetową z usługi GitHub.
 
-## <a name="download-the-sample"></a>Pobierz przykład
+    ```
+    git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
+    ```
 
-[Pobierz plik zip](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip) lub sklonuj przykładową aplikację internetową z usługi GitHub.
+    Przykładowe rozwiązanie zawiera dwa projekty:
 
-```
-git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
-```
+    - **TaskWebApp** — aplikacja internetowa, która pozwala tworzyć i edytować listę zadań. Ta aplikacja internetowa używa zasad **rejestracji lub logowania** na potrzeby rejestrowania lub logowania użytkowników.
+    - **TaskService** — internetowy interfejs API, który obsługuje następujące funkcje listy zadań: tworzenie, odczytywanie, aktualizowanie i usuwanie. Internetowy interfejs API jest chroniony przez usługę Azure AD B2C i wywoływany przez aplikację internetową.
 
-## <a name="run-the-app-in-visual-studio"></a>Uruchamianie aplikacji w programie Visual Studio
+## <a name="run-the-application-in-visual-studio"></a>Uruchamianie aplikacji w programie Visual Studio
 
-W folderze projektu przykładowej aplikacji otwórz rozwiązanie `B2C-WebAPI-DotNet.sln` w programie Visual Studio.
+1. W folderze projektu przykładowej aplikacji otwórz rozwiązanie **B2C-WebAPI-DotNet.sln** w programie Visual Studio.
+2. Na potrzeby tego przewodnika Szybki start uruchomisz równocześnie projekty **TaskWebApp** i **TaskService**. Kliknij prawym przyciskiem myszy rozwiązanie **B2C-WebAPI-DotNet** w Eksploratorze rozwiązań i wybierz pozycję **Ustaw projekty startowe**. 
+3. Wybierz pozycję **Wiele projektów startowych** i zmień **Akcję** dla obu projektów na **Uruchom**. 
+4. Kliknij przycisk **OK**.
+5. Naciśnij klawisz **F5**, aby debugować obie aplikacje. Każda z aplikacji zostanie otwarta we własnej karcie przeglądarki:
 
-Przykładowe rozwiązanie zawiera dwa projekty:
+    - `https://localhost:44316/` — aplikacja internetowa platformy ASP.NET. W przewodniku Szybki start ta aplikacja jest używana bezpośrednio.
+    - `https://localhost:44332/` — internetowy interfejs API wywoływany przez internetową aplikację platformy ASP.NET.
 
-**Przykładowa aplikacja internetowa (TaskWebApp):** aplikacja internetowa do tworzenia i edytowania listy zadań. Ta aplikacja internetowa używa zasad **rejestracji lub logowania** na potrzeby rejestrowania lub logowania użytkowników.
+## <a name="sign-in-using-your-account"></a>Logowanie się przy użyciu swojego konta
 
-**Przykładowa aplikacja internetowego interfejsu API (TaskService):** internetowy interfejs API, który obsługuje następujące funkcje listy zadań: tworzenie, odczytywanie, aktualizowanie i usuwanie. Internetowy interfejs API jest chroniony przez usługę Azure AD B2C i wywoływany przez aplikację internetową.
+1. Kliknij pozycję **Sign up / Sign in** (Zarejestruj się / Zaloguj się) w aplikacji internetowej platformy ASP.NET, aby uruchomić przepływ pracy.
 
-Na potrzeby tego przewodnika Szybki start uruchom równocześnie projekty `TaskWebApp` i `TaskService`. 
+    ![Przykładowa aplikacja internetowa platformy ASP.NET](media/active-directory-b2c-quickstarts-web-app/web-app-sign-in.png)
 
-1. Wybierz rozwiązanie `B2C-WebAPI-DotNet` w Eksploratorze rozwiązań.
-2. W menu programu Visual Studio wybierz pozycję **Projekt > Ustaw projekty startowe...**. 
-3. Wybierz przycisk radiowy **Wiele projektów startowych**.
-4. Zmień ustawienie **Akcja** dla obu projektów na wartość **Uruchom**. Kliknij przycisk **OK**.
+    Przykład obsługuje kilka opcji rejestracji, w tym przy użyciu dostawcy tożsamości dla sieci społecznościowej, lub tworzenia konta lokalnego przy użyciu adresu e-mail. Dla tego przewodnika Szybki start należy użyć konta dostawcy tożsamości dla sieci społecznościowej Facebook, Google, Microsoft lub Twitter.
 
-Naciśnij klawisz **F5**, aby debugować obie aplikacje. Każda z aplikacji zostanie otwarta we własnej karcie przeglądarki:
-
-`https://localhost:44316/` — ta strona to internetowa aplikacja platformy ASP.NET. W przewodniku Szybki start ta aplikacja jest używana bezpośrednio.
-`https://localhost:44332/` — ta strona to internetowy interfejs API wywoływany przez internetową aplikację platformy ASP.NET.
-
-## <a name="create-an-account"></a>Tworzenie konta
-
-Kliknij link **Rejestruj / Zaloguj** w aplikacji internetowej platformy ASP.NET, aby uruchomić przepływ pracy **Rejestrowanie lub logowanie** na podstawie zasad usługi Azure AD B2C.
-
-![Przykładowa aplikacja internetowa platformy ASP.NET](media/active-directory-b2c-quickstarts-web-app/web-app-sign-in.png)
-
-Przykład obsługuje kilka opcji rejestracji, w tym przy użyciu dostawcy tożsamości dla sieci społecznościowej, lub tworzenia konta lokalnego przy użyciu adresu e-mail. Dla tego przewodnika Szybki start należy użyć konta dostawcy tożsamości dla sieci społecznościowej Facebook, Google, Microsoft lub Twitter. 
-
-### <a name="sign-up-using-a-social-identity-provider"></a>Rejestrowanie się przy użyciu dostawcy tożsamości dla sieci społecznościowej
-
-Dla przykładowej aplikacji internetowej usługa Azure AD B2C wyświetla niestandardową stronę logowania fikcyjnej marki Wingtip Toys. 
-
-1. Aby zarejestrować się przy użyciu dostawcy tożsamości dla sieci społecznościowej, kliknij przycisk dostawcy tożsamości, którego chcesz użyć.
+2. Dla przykładowej aplikacji internetowej usługa Azure AD B2C wyświetla niestandardową stronę logowania fikcyjnej marki Wingtip Toys. Aby zarejestrować się przy użyciu dostawcy tożsamości dla sieci społecznościowej, kliknij przycisk dostawcy tożsamości, którego chcesz użyć.
 
     ![Dostawca logowania lub rejestracji](media/active-directory-b2c-quickstarts-web-app/sign-in-or-sign-up-web.png)
 
     Uwierzytelniasz się (logujesz) za pomocą poświadczeń konta w sieci społecznościowej i autoryzujesz aplikację do odczytywania informacji z Twojego konta w sieci społecznościowej. Po udzieleniu dostępu aplikacji może ona pobrać informacje z profilu na koncie w sieci społecznościowej, takie jak Twoje nazwisko i miasto. 
 
-2. Zakończ proces logowania dla dostawcy tożsamości. Na przykład jeśli wybranym dostawcą jest Twitter, wprowadź swoje poświadczenia usługi Twitter i kliknij przycisk **Zaloguj się**.
-
-    ![Uwierzytelnianie i autoryzacja przy użyciu konta w sieci społecznościowej](media/active-directory-b2c-quickstarts-web-app/twitter-authenticate-authorize-web.png)
-
-    Szczegóły profilu nowego konta usługi Azure AD B2C są wstępnie wypełnione informacjami z konta społecznościowego.
-
-3. Zaktualizuj pola Nazwa wyświetlana, Stanowisko i Miasto, a następnie kliknij pozycję **Kontynuuj**.  Wprowadzone przez Ciebie wartości są używane w profilu na koncie użytkownika w usłudze Azure AD B2C.
-
-    ![Szczegóły profilu rejestracji nowego konta](media/active-directory-b2c-quickstarts-web-app/new-account-sign-up-profile-details-web.png)
-
-    Pomyślnie użyto przykładowej aplikacji internetowej korzystającej z zasad usługi Azure AD B2C do uwierzytelnienia za pomocą dostawcy tożsamości i utworzenia konta użytkownika usługi Azure AD B2C. 
+3. Zakończ proces logowania dla dostawcy tożsamości.
 
 ## <a name="edit-your-profile"></a>Edycja profilu
 
 Usługa Azure Active Directory B2C zawiera funkcję umożliwiającą użytkownikom aktualizowanie profilów. Przykładowa aplikacja internetowa używa zasad profilu edycji usługi Azure AD B2C dla przepływu pracy. 
 
-1. Na pasku menu aplikacji internetowej kliknij nazwę profilu, a następnie wybierz pozycję **Edytuj profil**, aby edytować utworzony profil.
+1. Na pasku menu aplikacji kliknij nazwę profilu, a następnie wybierz pozycję **Edit profile** (Edytuj profil), aby edytować utworzony profil.
 
     ![Edytowanie profilu](media/active-directory-b2c-quickstarts-web-app/edit-profile-web.png)
 
-2. Zmień wartości **Nazwa wyświetlana** i **Miasto**.  
-3. Kliknij pozycję **Kontynuuj**, aby zaktualizować profil. Nowa nazwa wyświetlana jest wyświetlana w prawej górnej części strony głównej aplikacji internetowej.
+2. W polu **Display name** zmień swoją nazwę wyświetlaną, a w polu **City** — miejscowość, a następnie kliknij przycisk **Continue** (Kontynuuj), aby zaktualizować profil. 
 
-## <a name="access-a-protected-web-api-resource"></a>Uzyskiwanie dostępu do zasobu chronionego internetowego interfejsu API
+    Zmienione dane są wyświetlane w prawej górnej części strony głównej aplikacji internetowej.
+
+## <a name="access-a-protected-api-resource"></a>Uzyskiwanie dostępu do chronionego zasobu interfejsu API
 
 1. Kliknij pozycję **Lista zadań do wykonania**, aby określić i zmodyfikować pozycje listy zadań do wykonania. 
 
@@ -119,9 +95,9 @@ Jeśli planujesz wypróbować inne przewodniki Szybki start lub samouczki usług
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start użyto przykładowej aplikacji platformy ASP.NET z obsługą usługi Azure AD B2C do logowania za pomocą niestandardowej strony logowania, logowania za pomocą dostawcy tożsamości dla sieci społecznościowej, utworzenia konta usługi Azure AD B2C i wywołania internetowego interfejsu API chronionego przez usługę Azure AD B2C. 
+W tym przewodniku Szybki start użyto przykładowej aplikacji platformy ASP.NET do logowania za pomocą niestandardowej strony logowania, logowania za pomocą dostawcy tożsamości dla sieci społecznościowej, utworzenia konta usługi Azure AD B2C i wywołania internetowego interfejsu API chronionego przez usługę Azure AD B2C. 
 
-Kontynuuj pracę w samouczku, aby dowiedzieć się, jak skonfigurować przykład dla platformy ASP.NET pod kątem użycia własnej dzierżawy usługi Azure AD B2C.
+Wprowadzenie do tworzenia własnej dzierżawy usługi Azure AD B2C.
 
 > [!div class="nextstepaction"]
 > [Tworzenie dzierżawy usługi Azure Active Directory B2C w witrynie Azure Portal](tutorial-create-tenant.md)

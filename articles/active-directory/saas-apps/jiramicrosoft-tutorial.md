@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 11/01/2018
 ms.author: jeedes
-ms.openlocfilehash: 7d25b072ffc41608bca9e0b23116b2eb453dd160
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: f3f7fc3b837dd4eef9bab8ff34a36329436bad9a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740352"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010732"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft"></a>Samouczek: Integracja usługi Azure Active Directory z logowania jednokrotnego SAML JIRA przez firmę Microsoft
 
@@ -43,7 +43,7 @@ Korzystać z serwera Atlassian JIRA konta Microsoft Azure Active Directory, aby 
 Aby skonfigurować integrację usługi Azure AD za pomocą logowania jednokrotnego SAML JIRA przez firmę Microsoft, potrzebne są następujące elementy:
 
 - Subskrypcji usługi Azure AD
-- JIRA podstawowych i oprogramowanie w wersji 6.0 do 7.8 lub JIRA Service Desk 3.0 3.2 powinien zainstalowany i skonfigurowany na Windows 64-bitowej wersji
+- Core programu JIRA i 6.0 oprogramowania do 7.12 lub JIRA usługi technicznej 3.0, 3.5 należy zainstalowany i skonfigurowany na Windows 64-bitowej wersji
 - Serwer programu JIRA jest obsługujące protokół HTTPS
 - Należy pamiętać, że obsługiwane wersje dla wtyczki programu JIRA są wymienione w poniżej sekcji.
 - Serwer programu JIRA jest dostępny w Internecie, szczególnie do strony logowania usługi AD Azure w celu uwierzytelniania i powinien możliwość odbierania token z usługi Azure AD
