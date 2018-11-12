@@ -3,19 +3,19 @@ title: Wysoka dostępność dla platformy Hadoop — Azure HDInsight
 description: Dowiedz się, jak klastry HDInsight poprawy niezawodności i dostępności przy użyciu dodatkowego węzła głównego. Dowiedz się, jak ma to wpływ na usług Hadoop, takich jak Ambari i Hive, oraz jak połączyć osobno do każdego węzła głównego przy użyciu protokołu SSH.
 services: hdinsight
 ms.reviewer: jasonh
-author: jasonwhowell
+author: hrasheed-msft
 keywords: Wysoka dostępność usługi hadoop
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: jasonh
-ms.openlocfilehash: 33458794ad74b367f1278364d7b4ace30f7d13a8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: d3326ef4bba5649f5420c1d92b6117d44edba47b
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953593"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281986"
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Dostępność i niezawodność klastrów Hadoop w usłudze HDInsight
 
@@ -23,8 +23,7 @@ Klastry HDInsight zapewniają dwa węzły główne, aby zwiększyć dostępnoś�
 
 Hadoop osiąga wysoką dostępność i niezawodność przez replikowanie usług i danych w wielu węzłach w klastrze. Jednak standardowymi dystrybucjami platformy hadoop zwykle mają tylko jeden węzeł główny. Ewentualnej awarii jednego węzła głównego może spowodować nieoczekiwane zatrzymanie działania klastra. HDInsight dostarcza dwóch węzłów głównych, aby zwiększyć dostępność i niezawodność usługi Hadoop.
 
-> [!IMPORTANT]
-> Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
+[!INCLUDE [windows-retirement-notice](../../includes/windows-retirement-notice.md)]
 
 ## <a name="availability-and-reliability-of-nodes"></a>Dostępność i niezawodność węzłów
 
@@ -224,7 +223,7 @@ Użyj następujących łączy, aby dowiedzieć się więcej na temat czynności 
 
 * [Dokumentacja REST systemu Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 * [Instalowanie i Konfigurowanie interfejsu wiersza polecenia Azure Classic](../cli-install-nodejs.md)
-* [Zainstaluj i skonfiguruj program Azure PowerShell](/powershell/azure/overview)
+* [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview)
 * [Zarządzanie HDInsight przy użyciu narzędzia Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Obsługa administracyjna klastrów HDInsight opartych na systemie Linux](hdinsight-hadoop-provision-linux-clusters.md)
 

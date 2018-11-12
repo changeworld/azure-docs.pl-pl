@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 6721b260960cd38b68173a5d973a5716b99a26c0
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: a6e2be02f9954a036fdcb67a15c73cc82670834b
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241212"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283567"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pul elastycznych pozwalają na zarządzanie i skalowania wielu baz danych Azure SQL
 
@@ -113,10 +113,10 @@ W przypadkach, gdy nie można użyć narzędzi, skorzystanie z następujących i
 
 1. Oszacuj liczbę jednostek Edtu lub rdzeni wirtualnych potrzebnych dla puli w następujący sposób:
 
-   Dla modelu zakupu opartego na jednostkach DTU: MAX (<*łączna liczba baz danych* X *średnie użycie jednostek DTU na bazę danych* >,<br>
+   Dla modelu zakupu opartego na jednostkach DTU: MAX (<*łączna liczba baz danych* X *średnie użycie jednostek DTU na bazę danych*>,<br>  
    <*liczba baz danych jednocześnie osiągających szczyt użycia* X *użycie szczytowe jednostek DTU na bazę danych*)
 
-   Dla modelu zakupu opartego na rdzeniach wirtualnych: MAX (<*łączna liczba baz danych* X *średnie użycie pamięci rdzeń wirtualny na bazę danych* >,<br>
+   Dla modelu zakupu opartego na rdzeniach wirtualnych: MAX (<*łączna liczba baz danych* X *średnie użycie pamięci rdzeń wirtualny na bazę danych*>,<br>  
    <*Liczba jednocześnie osiągających Szczyt użycia baz danych* X *użycie pamięci rdzeń wirtualny szczytowe na bazę danych*)
 
 2. Oszacuj miejsce do magazynowania wymagane dla puli przez dodanie liczby bajtów potrzebnych dla wszystkich baz danych w puli. Następnie określ rozmiar puli (w jednostkach eDTU), który zapewni tę ilość miejsca przechowywania.
