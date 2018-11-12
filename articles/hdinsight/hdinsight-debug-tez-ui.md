@@ -1,22 +1,22 @@
 ---
-title: Użyj interfejsu użytkownika Tez z systemem Windows HDInsight — Azure
-description: Dowiedz się, jak debugowanie zadań tez przy na podstawie Windows HDInsight HDInsight przy użyciu interfejsu użytkownika Tez.
+title: Użyj interfejsu użytkownika programu Apache Tez z systemem Windows HDInsight — Azure
+description: Dowiedz się, jak debugowanie zadań tez przy na podstawie Windows HDInsight HDInsight przy użyciu interfejsu użytkownika programu Apache Tez.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/17/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ff47d0a71e97ce4ec9fd04e1d0cb9e5592192d53
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ecb613dd2f624b9e0910a0ddcdf931f4b266aa96
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43112191"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036587"
 ---
-# <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Debugowanie zadań tez przy na HDInsight z systemem Windows przy użyciu interfejsu użytkownika Tez
+# <a name="use-the-apache-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Debugowanie zadań tez przy na podstawie Windows HDInsight przy użyciu interfejsu użytkownika Tez Apache
 Interfejsu użytkownika Tez może służyć do debugowania zadań Hive, które używają Tez jako aparatu wykonywania. Interfejsu użytkownika Tez wizualizuje zadania wykres połączonych elementów, można przejść do każdego elementu i pobierania statystyk i rejestrowania informacji.
 
 > [!IMPORTANT]
@@ -26,13 +26,13 @@ Interfejsu użytkownika Tez może służyć do debugowania zadań Hive, które u
 * Klaster HDInsight z systemem Windows. Aby uzyskać instrukcje dotyczące tworzenia nowego klastra, zobacz [rozpoczęcie korzystania z systemem Windows HDInsight](hdinsight-hadoop-tutorial-get-started-windows.md).
 
   > [!IMPORTANT]
-  > Interfejsu użytkownika Tez jest dostępna tylko w klastrach HDInsight oparte na Windows utworzonych po 8 lutego 2016 r.
+  > Interfejsu użytkownika programu Apache Tez jest dostępna tylko w klastrach HDInsight oparte na Windows utworzonych po 8 lutego 2016 r.
   >
   >
 * Klient pulpitu zdalnego z systemem Windows.
 
-## <a name="understanding-tez"></a>Opis aplikacji Tez
-Tez jest rozszerzalna struktura do przetwarzania danych w usłudze Hadoop i zapewnia większą wyższe szybkości niż tradycyjne przetwarzania MapReduce. Należy włączyć Tez, umieszczając następujący tekst jako część zapytania programu Hive:
+## <a name="understanding-apache-tez"></a>Opis Apache Tez
+Tez jest rozszerzalna struktura do przetwarzania danych na platformie Apache Hadoop i zapewnia większą wyższe szybkości niż tradycyjne przetwarzania MapReduce. Należy włączyć Tez, umieszczając następujący tekst jako część zapytania programu Hive:
 
     set hive.execution.engine=tez;
 

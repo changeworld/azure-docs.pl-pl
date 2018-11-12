@@ -1,24 +1,24 @@
 ---
-title: Widok aplikacji Tez Ambari za pomocą HDInsight — Azure
-description: Dowiedz się, jak debugowanie zadań tez przy na HDInsight przy użyciu widoku Ambari Tez.
+title: Apache Ambari Tez widok za pomocą HDInsight — Azure
+description: Dowiedz się, jak debugowanie zadań tez przy na HDInsight przy użyciu widoku Apache Ambari Tez.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 576460f4b68d670e534e0ddeed920f7ac99e1458
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: c85ad59acc8e307de05f41365855f3a9669ac2b5
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108890"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034680"
 ---
-# <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>Debugowanie zadań tez przy na HDInsight przy użyciu widoków Ambari
+# <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>Debugowanie zadań tez przy Apache na HDInsight przy użyciu widoków Ambari Apache
 
-Interfejsu sieci Web Ambari HDInsight zawiera widok Tez, który może służyć do zrozumienia i debugowanie zadań, które używają aplikacji Tez. Widok aplikacji Tez umożliwia wizualizowanie zadania jako wykres połączonych elementów, przejść do każdego elementu i pobierania statystyk i rejestrowania informacji.
+Apache Ambari internetowego interfejsu użytkownika dla HDInsight zawiera widok Apache Tez, który może służyć do zrozumienia i debugowanie zadań, które używają aplikacji Tez. Widok aplikacji Tez umożliwia wizualizowanie zadania jako wykres połączonych elementów, przejść do każdego elementu i pobierania statystyk i rejestrowania informacji.
 
 > [!IMPORTANT]
 > Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz [przechowywanie wersji składnika HDInsight](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -28,9 +28,9 @@ Interfejsu sieci Web Ambari HDInsight zawiera widok Tez, który może służyć 
 * Klaster HDInsight opartych na systemie Linux. Aby uzyskać instrukcje dotyczące tworzenia klastra, zobacz [rozpoczęcie korzystania z HDInsight opartych na systemie Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * Nowoczesna przeglądarka sieci Web, obsługująca język HTML5.
 
-## <a name="understanding-tez"></a>Opis aplikacji Tez
+## <a name="understanding-apache-tez"></a>Opis Apache Tez
 
-Tez jest rozszerzalna struktura do przetwarzania danych na platformie Hadoop, który zapewnia większe szybkości niż tradycyjne przetwarzania MapReduce. W przypadku klastrów HDInsight opartych na systemie Linux jest domyślny aparat programu Hive.
+Tez jest rozszerzalna struktura do przetwarzania danych na platformie Apache Hadoop, który zapewnia większe szybkości niż tradycyjne przetwarzania MapReduce. W przypadku klastrów HDInsight opartych na systemie Linux jest domyślny aparat programu Hive.
 
 Tez tworzy skierowany acykliczne wykresu (DAG), wykonywania działań Opisuje kolejność akcji wymaganych przez zadania. Poszczególne działania są nazywane wierzchołków i wykonaj część ogólnej zadania. Rzeczywiste wykonanie pracy opisanego przez wierzchołek nosi nazwę zadania i mogą być rozproszone na wielu węzłach w klastrze.
 

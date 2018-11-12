@@ -1,22 +1,22 @@
 ---
-title: Włączanie zrzutów sterty dla usług Hadoop w HDInsight — Azure
-description: Włączanie zrzutów sterty dla usług Hadoop z klastrów HDInsight opartych na systemie Linux na potrzeby debugowania i analizy.
+title: Włączanie zrzutów sterty dla usługi Apache Hadoop w HDInsight — Azure
+description: Włączanie zrzutów sterty dla usługi Apache Hadoop z klastrów HDInsight opartych na systemie Linux do debugowania i analizy.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 7fa0ebb1946a856d02296b4ec752113ff8fecbd5
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 966f05fba96cc829c3a11331e2a66609705f6f4f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095586"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037717"
 ---
-# <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight"></a>Włączanie zrzutów sterty dla usług Hadoop w HDInsight opartych na systemie Linux
+# <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Włączanie zrzutów sterty dla usługi Apache Hadoop w HDInsight opartych na systemie Linux
 
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
@@ -29,11 +29,11 @@ Zrzuty sterty zawierają migawkę pamięci aplikacji, w tym wartości zmiennych 
 
 Można włączyć zrzutów sterty dla następujących usług:
 
-* **hcatalog** -tempelton
-* **gałąź** — serwera hiveserver2, Magazyn metadanych, derbyserver
+* **Apache hcatalog** -tempelton
+* **Apache hive** — serwera hiveserver2, Magazyn metadanych, derbyserver
 * **mapreduce** -jobhistoryserver
-* **yarn** -resourcemanager nodemanager, timelineserver
-* **System plików hdfs** -datanode secondarynamenode, namenode
+* **Apache yarn** -resourcemanager nodemanager, timelineserver
+* **System plików hdfs Apache** -datanode secondarynamenode, namenode
 
 Możesz również włączanie zrzutów sterty dla mapy i zmniejszyć procesów uruchomionych przez HDInsight.
 
@@ -49,7 +49,7 @@ Mapowania i redukcji procesy nieco się różnią, jak te operacje są Proces po
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]
-> Firma Microsoft zaleca, aby zmodyfikować skrypty i ustawienia mapred-site.xml, jako uchwyt Ambari replikacji zmian na węzłach w klastrze przy użyciu narzędzia Ambari. Zobacz [przy użyciu Ambari](#using-ambari) sekcji, aby poznać konkretne kroki.
+> Firma Microsoft zaleca, aby zmodyfikować skrypty i ustawienia mapred-site.xml, jako uchwyt Ambari replikacji zmian na węzłach w klastrze przy użyciu Apache Ambari. Zobacz [przy użyciu Ambari](#using-ambari) sekcji, aby poznać konkretne kroki.
 
 ### <a name="enable-heap-dumps"></a>Włączanie zrzutów stosu
 

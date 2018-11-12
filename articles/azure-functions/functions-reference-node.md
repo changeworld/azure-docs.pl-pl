@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 18ff0e3fadad64f7bd7fe014a6dcec6a628ef1b9
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: f99c0fe798baa272bc2c74e8a171dd6bc7ca4304
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914556"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036550"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions JavaScript
 
@@ -109,8 +109,8 @@ module.exports = async function (context, req) {
 ## <a name="bindings"></a>Powiązania 
 W języku JavaScript [powiązania](functions-triggers-bindings.md) są konfigurowane i zdefiniowane w funkcji function.json. Funkcje wchodzić w interakcje z powiązaniami na wiele sposobów.
 
-### <a name="reading-trigger-and-input-data"></a>Dane wejściowe i odczytywania wyzwalaczy
-Wyzwalanie i powiązań wejściowych (vazby prvku `direction === "in"`) mogą być odczytywane przez funkcję na trzy sposoby:
+### <a name="inputs"></a>Dane wejściowe
+Dane wejściowe są podzielone na dwie kategorie w usłudze Azure Functions: jeden z nich to dane wejściowe wyzwalacza, a drugi to dodatkowe dane wejściowe. Wyzwalacz i inne dane wejściowe powiązania (vazby prvku `direction === "in"`) mogą być odczytywane przez funkcję na trzy sposoby:
  - **_[Zalecane]_  Jako parametry przekazywane do funkcji.** Są one przekazywane do funkcji w tej samej kolejności, które są zdefiniowane w *function.json*. Należy pamiętać, że `name` właściwości zdefiniowanych w *function.json* nie musi być zgodna z nazwą parametru, mimo że powinien on.
  
    ```javascript
@@ -137,7 +137,7 @@ Wyzwalanie i powiązań wejściowych (vazby prvku `direction === "in"`) mogą by
    };
    ```
 
-### <a name="writing-data"></a>Zapisywanie danych
+### <a name="outputs"></a>Dane wyjściowe
 Dane wyjściowe (vazby prvku `direction === "out"`) mogą być zapisywane przez funkcję na wiele sposobów. We wszystkich przypadkach `name` właściwości powiązania, zgodnie z definicją w *function.json* odpowiada nazwie elementu członkowskiego obiektu zapisywane w funkcji. 
 
 Dane można przypisać do powiązania danych wyjściowych, w jednym z następujących sposobów. Nie należy łączyć tych metod.
