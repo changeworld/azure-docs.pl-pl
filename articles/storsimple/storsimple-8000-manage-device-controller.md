@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 9a5be85b917682afeaecd67a4176edb7040d5b4b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 5e461f340e1c58f64c6d645a1e47cfd811bc4de5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215433"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261710"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>Zarządzanie przez kontrolery urządzeń StorSimple
 
@@ -117,7 +117,7 @@ Wykonaj poniższe kroki, aby zresetowania urządzenia z systemem Microsoft Azure
    
     `Reset-HcsFactoryDefault`
    
-    Aby zresetować zamiast jednego kontrolera, należy użyć [HcsFactoryDefault resetowania](http://technet.microsoft.com/library/dn688132.aspx) polecenia cmdlet z `-scope` parametru.)
+    Aby zresetować zamiast jednego kontrolera, należy użyć [HcsFactoryDefault resetowania](https://technet.microsoft.com/library/dn688132.aspx) polecenia cmdlet z `-scope` parametru.)
    
     System zostanie ponownie uruchomiony wielokrotnie. Użytkownik zostanie powiadomiony, gdy resetowanie zostało pomyślnie zakończone. W zależności od modelu systemu może potrwać 45 do 60 minut dla urządzenia 8100 i 8600 zakończyć ten proces 60 – 90 minut.
    

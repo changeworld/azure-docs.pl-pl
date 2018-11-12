@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 9fb955b6bce5b3d40def095180326fdc9aed33b1
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 2ba6fefb9c1d952fbfdb6942694d69565a299c2e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747902"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241263"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Usługa Azure Backup — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Backup.
@@ -75,7 +75,7 @@ Nie potrzebujesz oddzielnych licencji na ochronę programu VMware/funkcji Hyper-
 
 ### <a name="which-dpm-versions-are-supported"></a>Które wersje programu DPM są obsługiwane?
 
-Obsługiwane wersje programu DPM są podsumowane w [macierz obsługi](backup-azure-dpm-introduction.md#prerequisites-and-limitations). Zalecamy, aby zainstalować najnowsze aktualizacje programu DPM i uruchom [najnowszej wersji](http://aka.ms/azurebackup_agent) agenta usługi Azure Backup na serwerze programu DPM.
+Obsługiwane wersje programu DPM są podsumowane w [macierz obsługi](backup-azure-dpm-introduction.md#prerequisites-and-limitations). Zalecamy, aby zainstalować najnowsze aktualizacje programu DPM i uruchom [najnowszej wersji](https://aka.ms/azurebackup_agent) agenta usługi Azure Backup na serwerze programu DPM.
 
 ### <a name="can-i-register-the-server-to-multiple-vaults"></a>Czy można zarejestrować serwer w wielu magazynach?
 

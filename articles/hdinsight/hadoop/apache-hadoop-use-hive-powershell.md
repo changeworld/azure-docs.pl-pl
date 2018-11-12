@@ -2,19 +2,19 @@
 title: Use Hadoop Hive używanie przy użyciu programu PowerShell w HDInsight — Azure
 description: Uruchamianie zapytań programu Hive na platformie Hadoop w HDInsight przy użyciu programu PowerShell.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: jasonh
-ms.openlocfilehash: 16caee1b04b8fb3ae2e83b8105b802e121092f60
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: e02f6b17dff93ce2df1f06ad9681e3086c35300c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051780"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257871"
 ---
 # <a name="run-hive-queries-using-powershell"></a>Uruchamianie zapytań Hive przy użyciu programu PowerShell
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -83,7 +83,7 @@ Poniższe kroki pokazują, jak używać tych poleceń cmdlet do uruchamiania zad
    >
    > `Invoke-AzureRmHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
-   > Aby uzyskać więcej informacji na temat **ciągi tutaj**, zobacz <a href="http://technet.microsoft.com/library/ee692792.aspx" target="_blank">za pomocą Windows PowerShell tutaj ciągi</a>.
+   > Aby uzyskać więcej informacji na temat **ciągi tutaj**, zobacz <a href="https://technet.microsoft.com/library/ee692792.aspx" target="_blank">za pomocą Windows PowerShell tutaj ciągi</a>.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

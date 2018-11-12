@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: bb9a2a884439b00f52adfa9b7c1010a4610a77f7
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 050308e1c8de160f1671ded991e550087299ae2f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47401580"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285787"
 ---
 # <a name="ultra-ssd-preview-managed-disks-for-azure-virtual-machine-workloads"></a>Największa SSD (wersja zapoznawcza) dysków Managed Disks dla obciążeń maszyn wirtualnych platformy Azure
 
@@ -23,7 +23,7 @@ SSD Ultra platformy Azure (wersja zapoznawcza) zapewnia wysoką przepływność,
 
 **Usługa Managed Disks**: Ultra dyski SSD są dostępne tylko jako dyski Managed Disks. Nie można wdrożyć Ultra dyski SSD jako dysków niezarządzanych i stronicowych obiektów Blob. Podczas tworzenia dysku zarządzanego, należy określić, jednostki sku dysku, wpisz jako UltraSSD_LRS i rozmiaru dysku, operacje We/Wy, i użytą przepływność i Azure tworzy i zarządza dysku.  
 
-**Maszyny wirtualne**: Ultra SSD przeznaczone dla wszystkich maszyn wirtualnych platformy Azure w warstwie Premium SSD włączone jednostek SKU, jednak w czasie w wersji zapoznawczej będzie ograniczona do wystąpień maszyn wirtualnych w wersji 3 ES/DS rozmiarów maszyn wirtualnych.
+**Maszyny wirtualne**: Ultra dyski SSD są zaprojektowane do pracy z wszystkie jednostki SKU maszyny wirtualnej platformy Azure w warstwie Premium SSD włączone; ponieważ jest on aktualnie w wersji zapoznawczej, maszyny wirtualne mają rozmiar jako v3 ES/DS.
 
 **Dynamiczna konfiguracja wydajność**: Ultra SSD pozwalają dynamicznie zmieniać wydajności (operacje We/Wy i przepływność) dysku oraz potrzeby związane z obciążeniem bez konieczności ponownego uruchamiania maszyn wirtualnych.
 
@@ -55,7 +55,7 @@ W poniższej tabeli podsumowano różne konfiguracje obsługiwane dla różnych 
 
 ## <a name="pricing-and-billing"></a>Cennik i rozliczenia
 
-Korzystając z najwyższej dysków SSD, zastosuj następujące zagadnienia dotyczące rozliczeń:
+Korzystając z najwyższej dysków SSD, zostaną zastosowane następujące zagadnienia dotyczące rozliczeń:
 
 - Rozmiar dysku zarządzanego
 - Dysk zarządzany Aprowizowane operacje We/Wy
@@ -64,11 +64,11 @@ Korzystając z najwyższej dysków SSD, zastosuj następujące zagadnienia dotyc
 
 ### <a name="managed-disk-size"></a>Rozmiar dysku zarządzanego
 
-Dyski zarządzane są naliczane na rozmiarze aprowizowanego. Platforma Azure mapuje aprowizowany rozmiar (zaokrąglony w górę) na najbliższy oferowany rozmiar dysku. Aby uzyskać szczegóły dotyczące rozmiarów dysków oferowane zobacz tabelę w powyższej sekcji cele skalowalności i wydajności. Każdy dysk jest mapowany na rozmiar dysku obsługiwane i w związku z tym rozliczane godzinowo. Na przykład jeśli zainicjowano obsługę administracyjną 200 GiB Ultra dysk SSD, a następnie usunięte 20 godzin, będzie zmapowana do 256 GiB ofertę rozmiar dysku i opłata jest naliczana dla 256 GiB przez 20 godzin. Jest to niezależnie od ilości rzeczywiste dane zapisane na dysku.
+Opłaty za dyski zarządzane są naliczane na maszyny Wirtualne o rozmiarach choosed podczas provisionning nowej maszyny Wirtualnej platformy Azure. Platforma Azure mapuje aprowizowany rozmiar (zaokrąglony w górę) na najbliższy oferowany rozmiar dysku. Aby uzyskać szczegóły dotyczące rozmiarów dysków oferowane zobacz tabelę w powyższej sekcji cele skalowalności i wydajności. Każdy dysk mapowania rozmiar dysku obsługiwane i będą naliczane odpowiednio w systemie godzinowym. Na przykład jeśli zainicjowano obsługę administracyjną 200 GiB Ultra dysk SSD, a następnie usunięte 20 godzin, będzie zmapowana do 256 GiB ofertę rozmiar dysku i opłata jest naliczana dla 256 GiB przez 20 godzin. Ta karta została oparta na zużycie godzin obliczeniowych niezależnie od ilości danych, w rzeczywistości zapisane na dysku.
 
 ### <a name="managed-disk-provisioned-iops"></a>Dysk zarządzany Aprowizowane operacje We/Wy
 
-Operacje We/Wy są: liczba żądań, które aplikacja wysyła do dysków w jednej sekundy. Operacji We/Wy może być kolejno lub losowo, odczytuje lub zapisuje. Np. rozmiar dysku aprowizowane operacje We/Wy są naliczane godzinowo. Aby uzyskać szczegółowe informacje o dysku, operacje We/Wy udostępniane Zobacz tabelę w powyższej sekcji cele skalowalności i wydajności.
+Operacje We/Wy są: liczba żądań, które wysyła aplikacji do dysków na sekundę. Operacji wejścia/wyjścia można sekwencyjnego odczytu lub zapisu lub losowe odczytu lub zapisu. Na podstawie rozmiaru dysku lub liczba dysków dołączonych do maszyny Wirtualnej, to średnia liczba operacji We/Wy są naliczane godzinowo. Aby uzyskać szczegółowe informacje o dysku, operacje We/Wy udostępniane Zobacz tabelę w powyższej sekcji cele skalowalności i wydajności.
 
 ### <a name="managed-disk-provisioned-throughput"></a>Aprowizowana przepływność dysku zarządzanego
 

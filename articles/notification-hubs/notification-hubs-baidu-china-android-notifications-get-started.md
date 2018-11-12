@@ -14,12 +14,12 @@ ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: c680de254c55adaad8cedde6cf4748efd0c2c858
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d8ece15e7e8fa3b74fbefc78aea65683229712ca
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38700904"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246773"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Rozpoczynanie pracy z usługą Azure Notification Hubs przy użyciu usługi Baidu
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -31,7 +31,7 @@ Ponieważ usługa Google Play i rozwiązanie FCM (Firebase Cloud Messaging) nie 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Dla tego samouczka wymagane są następujące elementy:
 
-* Zestaw Android SDK (założono, że jest używany program Android Studio), który można pobrać z <a href="http://go.microsoft.com/fwlink/?LinkId=389797">witryny systemu Android</a>
+* Zestaw Android SDK (założono, że jest używany program Android Studio), który można pobrać z <a href="https://go.microsoft.com/fwlink/?LinkId=389797">witryny systemu Android</a>
 * [Zestaw SDK systemu Android dla powiadomień wypychanych w usłudze Baidu]
 
 > [!NOTE]
@@ -475,7 +475,7 @@ Powiadomienia wypychane są zwykle wysyłane za pośrednictwem usługi zaplecza,
 Dla uproszczenia w tym samouczku użyto aplikacji konsoli w celu zademonstrowania, w jaki sposób wysyłać powiadomienia przy użyciu zestawu .NET SDK. Zaleca się jednak, aby w następnym kroku zapoznać się z samouczkiem [Wysyłanie powiadomień push do użytkowników przy użyciu usługi Notification Hubs](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) dotyczącym wysyłania powiadomień przy użyciu zaplecza ASP.NET. 
 
 Poniżej przedstawiono różne metody wysyłania powiadomień:
-* **Interfejs REST**: powiadomienia mogą być obsługiwane na dowolnej platformie zaplecza za pomocą [interfejsu REST](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx).
+* **Interfejs REST**: powiadomienia mogą być obsługiwane na dowolnej platformie zaplecza za pomocą [interfejsu REST](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx).
 * **Zestaw SDK .NET dla usługi Microsoft Azure Notification Hubs**: w menedżerze pakietów NuGet dla programu Visual Studio uruchom polecenie [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 * **Node.js**: [Jak używać usługi Notification Hubs z poziomu środowiska Node.js](notification-hubs-nodejs-push-notification-tutorial.md).
 * **Mobile Apps**: aby zapoznać się z przykładem wysyłania powiadomień z poziomu usługi Azure App Service Mobile Apps zintegrowanej z usługą Notification Hubs, zobacz [Dodawanie powiadomień wypychanych do aplikacji mobilnej](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md).

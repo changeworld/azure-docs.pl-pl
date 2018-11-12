@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 279818e6b43e53206deb9e33591f75ef381a8962
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: f4bc90b2d1a80125ae88b4b5c4c11e42a34a985a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319986"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240430"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy i funkcji obsługiwanych przez usługę Azure Security Center
 
@@ -80,16 +80,16 @@ Obsługiwane są również maszyny wirtualne działające w usłudze w chmurze. 
 |Konfiguracje zabezpieczeń|✔|✔|✔|✔|
 |Chroniące przed złośliwym kodem|✔|✔|X|X|
 |Dostęp JIT do maszyny wirtualnej|✔|X|✔|X|
-|Funkcje adaptacyjnego sterowania aplikacjami|✔ (tylko platforma Azure)|X|X|X|
+|Funkcje adaptacyjnego sterowania aplikacjami|✔|X|X|X|
 |USŁUGI FIM|✔|✔|✔|✔|
 |Szyfrowanie dysków|✔|X|✔|X|
 |Wdrożenie innych firm|✔|X|✔|X|
 |Sieciowe grupy zabezpieczeń|✔|X|✔|X|
-|Filess V1|✔|✔|X|X|
+|Wykrywanie zagrożeń Filess|✔|✔|X|X|
 |Mapa sieci|✔|X|✔|X|
-|Zaostrzanie poziomu zabezpieczeń adaptacyjnych sieci|✔|X|✔|X|
+|Kontrolki adaptacyjne sieci|✔|X|✔|X|
 
-* Te funkcje są obecnie obsługiwane w publicznej wersji zapoznawczej.
+\* Te funkcje są obecnie obsługiwane w publicznej wersji zapoznawczej.
 
 
 ## <a name="supported-paas-features"></a>Obsługiwane funkcje PaaS
@@ -103,26 +103,17 @@ Obsługiwane są również maszyny wirtualne działające w usłudze w chmurze. 
 |Konta magazynu obiektów blob *|✔| ✔|
 |Usługi aplikacji|✔| ✔|
 |Usługi w chmurze|✔| X|
-|Pamięć podręczna Redis|✔| X|
-|Usługa Service fabric|✔| X|
-|Azure Automation|✔| X|
-|Data Lake |✔| X|
-|Magazyn kluczy|✔| X|
-|Usługa Service bus|✔| X|
-|Stream analytics|✔| X|
-|Batch|✔| X|
-|Aplikacje logiki|✔| X|
 |Sieci wirtualne|✔| Nie dotyczy|
 |Podsieci|✔| Nie dotyczy|
 |Karty interfejsów sieciowych|✔| ✔|
 |Sieciowe grupy zabezpieczeń|✔| Nie dotyczy|
 |Subskrypcja|✔| ✔|
 
-* Te funkcje są obecnie obsługiwane w publicznej wersji zapoznawczej.
+\* Te funkcje są obecnie obsługiwane w publicznej wersji zapoznawczej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Przewodnik planowania usługi Azure Security Center i](security-center-planning-and-operations-guide.md) — informacje o sposobie planowania i zagadnień projektowych podczas wdrażania usługi Azure Security Center
 - [Alerty zabezpieczeń według typu w usłudze Azure Security Center](security-center-alerts-type.md#virtual-machine-behavioral-analysis) — Dowiedz się więcej o analiza zachowania maszyny wirtualnej i awarii zrzutu pamięci analizy w usłudze Security Center
 - [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi
-- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń platformy Azure i zgodności
+- [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń platformy Azure i zgodności

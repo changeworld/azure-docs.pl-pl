@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 43f4a37ce0425503337cffa58570f3468fca6b29
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: f685b584b701d2772ec5b3915facb97f0d15658a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634256"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259177"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Przykład użycia: Ciągłe wdrażanie na maszynach wirtualnych za pomocą automatyzacji konfiguracji stanu i narzędzia Chocolatey
 
@@ -87,7 +87,7 @@ Lub brak podejście ręcznego. Struktura folderów modułu integracji programu P
 Ta migracja wymaga nieco Dostosowywanie ze strony użytkownika. Ale nie jest trudne i wykonywane tylko raz dla każdego zasobu (chyba że chcesz uaktualnić go w przyszłości.) Aby uzyskać więcej informacji na temat tworzenia modułów integracji programu PowerShell, znajduje się w artykule: [tworzenia moduły integracji usługi Azure Automation](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
 
 - Zainstaluj moduł, który należy się na stacji roboczej w następujący sposób:
-  - Zainstaluj [Windows Management Framework w wersji 5](http://aka.ms/wmf5latest) (nie wymagane dla systemu Windows 10)
+  - Zainstaluj [Windows Management Framework w wersji 5](https://aka.ms/wmf5latest) (nie wymagane dla systemu Windows 10)
   - `Install-Module –Name MODULE-NAME`    < — bierze modułu z galerii programu PowerShell
 - Skopiuj folder modułu z `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` do folderu tymczasowego
 - Usuń przykłady i dokumentację z folderu głównego

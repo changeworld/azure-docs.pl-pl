@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 09/19/2018
 ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 21fd3a33181542d86eccc4292ae68f7ce25e0a05
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 16cf679f91dae185a857813ec27441b9a4440e37
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366730"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244053"
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Zagadnienia dotyczące szablonów usługi Azure Resource Manager
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Podczas opracowywania aplikacji, jest ważne, aby zapewnić Przenoszalność szablonu między platformą Azure i usługi Azure Stack. Ten artykuł zawiera informacje dotyczące tworzenia usługi Azure Resource Manager [szablony](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf), dzięki czemu możesz prototypu w Twojej aplikacji i przetestuj wdrożenie na platformie Azure bez dostępu do środowiska usługi Azure Stack.
+Podczas opracowywania aplikacji, jest ważne, aby zapewnić Przenoszalność szablonu między platformą Azure i usługi Azure Stack. Ten artykuł zawiera informacje dotyczące tworzenia usługi Azure Resource Manager [szablony](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf), dzięki czemu możesz prototypu w Twojej aplikacji i przetestuj wdrożenie na platformie Azure bez dostępu do środowiska usługi Azure Stack.
 
 ## <a name="resource-provider-availability"></a>Dostępność dostawcy zasobów
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 4b4669ecdae474c8926a346ed02f40913cf67265
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: a73559e233f647d5bf0812a5acdf5e19f05b0858
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093495"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255425"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Rozwiązywanie problemów z ról usługi w chmurze, które można uruchomić
 Poniżej przedstawiono niektóre typowe problemy i rozwiązania związane z usług Azure Cloud Services role, których nie udało się uruchomić.
@@ -66,7 +66,7 @@ Można użyć usług pulpitu zdalnego, dostęp do roli i zdalnie wyświetlić ba
 2. Podczas wdrażania rozwiązania przy użyciu programu Visual Studio Włącz pulpit zdalny. Aby uzyskać więcej informacji, zobacz [Włącz Podłączanie pulpitu zdalnego dla roli w usługach Azure Cloud Services przy użyciu programu Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md).
 3. W portalu Microsoft Azure, gdy wystąpienie pojawi się stan **gotowe**zdalne do wystąpienia. Aby uzyskać więcej informacji na temat korzystania z pulpitu zdalnego z usługami w chmurze, zobacz [zdalny do wystąpień roli](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
 5. Zaloguj się do maszyny wirtualnej przy użyciu poświadczeń, które zostały określone podczas konfigurowania usług pulpitu zdalnego.
-6. Otwórz okno poleceń.
+6. Otwórz okno polecenia.
 7. Wpisz polecenie `IPconfig`.
 8. Zanotuj wartość adresu IPV4.
 9. Otwórz program Internet Explorer.
@@ -125,4 +125,4 @@ Po upewnieniu się, że wszystkie błędy zostały poprawione, możesz wdrożyć
 ## <a name="next-steps"></a>Kolejne kroki
 Wyświetl więcej [artykuły dotyczące rozwiązywania problemów](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) dla usług w chmurze.
 
-Aby dowiedzieć się, jak rozwiązywać problemy dotyczące ról usługi chmury przy użyciu danych diagnostycznych na komputerze modelu PaaS platformy Azure, zobacz [serię wpisów w blogu Kevina Williamson](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Aby dowiedzieć się, jak rozwiązywać problemy dotyczące ról usługi chmury przy użyciu danych diagnostycznych na komputerze modelu PaaS platformy Azure, zobacz [serię wpisów w blogu Kevina Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

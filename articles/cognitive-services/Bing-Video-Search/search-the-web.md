@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: overview
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: cf37db9bffa8b2a54a6327c29ec806e0eefc8c91
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: e48a0a056628e0c863330de792f8edfaa48aae34
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225416"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261863"
 ---
 # <a name="what-is-bing-video-search"></a>Czym jest funkcja wyszukiwania wideo Bing?
 
@@ -47,7 +47,7 @@ Wszystkie żądania muszą pochodzić z serwera.
 
 Jeśli jest to Twoje pierwsze wywoływanie dowolnego z interfejsów API Bing, nie dołączaj nagłówka identyfikatora klienta. Identyfikator klienta należy uwzględnić tylko wtedy, gdy interfejs API Bing został już wywołany i usługa Bing zwróciła identyfikator klienta dla kombinacji użytkownika i urządzenia.
 
-Aby uzyskać filmy wideo z określonej domeny, należy użyć operatora [site:](http://msdn.microsoft.com/library/ff795613.aspx) zapytania.
+Aby uzyskać filmy wideo z określonej domeny, należy użyć operatora [site:](https://msdn.microsoft.com/library/ff795613.aspx) zapytania.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
@@ -131,7 +131,7 @@ Domyślnie interfejs API wyszukiwania wideo zwraca wszystkie filmy wideo odpowie
 - [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videolength) &mdash; filtrowanie filmów wideo według długości klipu wideo (na przykład filmy wideo krótsze niż pięć minut)
 - [freshness](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#freshness) &mdash; filtrowanie filmów wideo według wieku (na przykład filmy wideo odnalezione przez usługę Bing w ostatnim tygodniu)
 
-Aby uzyskać filmy wideo z określonej domeny, należy uwzględnić operatora [site:](http://msdn.microsoft.com/library/ff795613.aspx) zapytania w ciągu zapytania.
+Aby uzyskać filmy wideo z określonej domeny, należy uwzględnić operatora [site:](https://msdn.microsoft.com/library/ff795613.aspx) zapytania w ciągu zapytania.
 
 > [!NOTE]
 > W zależności od zapytania, jeśli używasz operatora zapytania `site:`, istnieje ryzyko, że odpowiedź będzie zawierać zawartość dla dorosłych niezależnie od ustawienia [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#safesearch). Operatora `site:` używaj tylko wtedy, gdy znasz zawartość witryny i w swoim scenariuszu uwzględniasz możliwość pojawienia się zawartości dla dorosłych.

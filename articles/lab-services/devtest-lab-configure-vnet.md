@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 0141ea8a88c0322e6f56cbea56d3a43c923769af
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8fb3b4ac748fcae2e3aad5b3bfb2a893340dc61a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38687792"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256140"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Konfigurowanie sieci wirtualnej w usłudze Azure DevTest Labs
 Zgodnie z opisem w artykule [Dodawanie maszyny Wirtualnej do laboratorium](devtest-lab-add-vm.md), podczas tworzenia maszyny Wirtualnej w laboratorium, można określić skonfigurowanej sieci wirtualnej. Na przykład może być konieczne dostępu do zasobów sieci firmowej z maszynami wirtualnymi przy użyciu sieci wirtualnej, która została skonfigurowana przy użyciu usługi ExpressRoute lub sieci VPN typu lokacja lokacja.
@@ -29,7 +29,7 @@ W tym artykule opisano sposób dodawania istniejącej sieci wirtualnej do ustawi
 ## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>Konfigurowanie sieci wirtualnej dla laboratorium przy użyciu witryny Azure portal
 W poniższych krokach objaśniono przez proces dodawania istniejącej sieci wirtualnej (i podsieci) do laboratorium, dzięki czemu można używać podczas tworzenia maszyny Wirtualnej, w tym samym środowisku laboratoryjnym. 
 
-1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
 1. Z listy labs wybierz żądane laboratorium. 
 1. W okienku głównym laboratorium, wybierz **konfiguracji i zasad**.

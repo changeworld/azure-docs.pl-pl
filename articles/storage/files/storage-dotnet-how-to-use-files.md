@@ -9,12 +9,12 @@ ms.topic: hero-article
 ms.date: 11/22/2017
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: d9ec9929de6b21aeddf35faf72cf1b2f1bb4c88a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 380a7be6a42109f90da5dbd39ea557c06be4be6a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39561954"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253707"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Tworzenie oprogramowania dla usługi Azure Files przy użyciu platformy .NET
 
@@ -471,10 +471,10 @@ Poniższe linki umożliwiają uzyskanie dodatkowych informacji na temat usługi 
 
 ### <a name="reference"></a>Dokumentacja
 * [Dokumentacja biblioteki klienta usługi Storage dla programu .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx)
-* [Dokumentacja interfejsu API REST usługi plików](http://msdn.microsoft.com/library/azure/dn167006.aspx)
+* [Dokumentacja interfejsu API REST usługi plików](https://msdn.microsoft.com/library/azure/dn167006.aspx)
 
 ### <a name="blog-posts"></a>Wpisy na blogach
 * [Azure Files is now generally available (Usługa Azure Files jest teraz ogólnie dostępna)](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 * [Inside Azure Files (Za kulisami usługi Azure Files)](https://azure.microsoft.com/blog/inside-azure-file-storage/)
-* [Introducing Microsoft Azure File Service](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx) (Wprowadzenie do usługi plików platformy Microsoft Azure)
-* [Persisting connections to Microsoft Azure Files](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx) (Utrwalanie połączeń z plikami platformy Microsoft Azure)
+* [Introducing Microsoft Azure File Service](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx) (Wprowadzenie do usługi plików platformy Microsoft Azure)
+* [Persisting connections to Microsoft Azure Files](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx) (Utrwalanie połączeń z plikami platformy Microsoft Azure)

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: ef2b5fe6c9b70eaea5ab4db2d4a0ca59ff82dbb9
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 2c7e624344605b24e78962ac2b6d23278c06c0cc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391899"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255152"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Najlepsze rozwiązania dotyczące korzystania z usługi Azure Data Lake Storage Gen1
 
@@ -27,7 +27,7 @@ W tym artykule poznasz najlepsze praktyki i zagadnienia dotyczące pracy z usłu
 
 Usługa Azure Data Lake Storage Gen1 oferty POSIX kontrole dostępu i szczegółową inspekcję dla użytkowników usługi Azure Active Directory (Azure AD), grupy i jednostki usługi. Można ustawić te kontroli dostępu do istniejących plików i folderów. Kontroli dostępu można również tworzyć wartości domyślnych, które można stosować do nowych plików lub folderów. Gdy uprawnienia do istniejących folderów i obiektów podrzędnych, uprawnienia muszą być rekursywnie propagowany dla każdego obiektu. W przypadku dużej liczby plików propagowanie uprawnień może zająć dużo czasu. Czas poświęcony może wynosić między obiektami 30 – 50 przetwarzanych na sekundę. W związku z tym odpowiednio planować grup folder struktury i użytkownika. W przeciwnym razie może to spowodować nieprzewidziane opóźnienia i problemy podczas pracy z danymi. 
 
-Załóżmy, że masz folder z 100 000 obiektów podrzędnych. Jeśli nie podejmiesz dolna granica 30 obiektów przetwarzanych na sekundę, aby zaktualizować uprawnienia do całego folderu może potrwać godzinę. Szczegółowe informacje na temat Data Lake Storage Gen1 listy kontroli dostępu są dostępne pod adresem [kontrola dostępu w usługach Azure Data Lake Storage Gen1](data-lake-store-access-control.md). W celu zwiększenia wydajności dotyczące przypisywania rekursywnie list ACL służy narzędzie wiersza polecenia do usługi Azure Data Lake. Narzędzie tworzy wiele wątków i logiki nawigacji cykliczne Szybkie stosowanie list ACL do milionów plików. Narzędzie to jest dostępne dla systemów Linux i Windows, a [dokumentacji](https://github.com/Azure/data-lake-adlstool) i [pliki do pobrania](http://aka.ms/adlstool-download) dla tego narzędzia można znaleźć w witrynie GitHub. Ten sam usprawnienia dotyczące wydajności może być włączana przy własnych narzędzi napisany w języku Data Lake Storage Gen1 [.NET](data-lake-store-data-operations-net-sdk.md) i [Java](data-lake-store-get-started-java-sdk.md) zestawów SDK.
+Załóżmy, że masz folder z 100 000 obiektów podrzędnych. Jeśli nie podejmiesz dolna granica 30 obiektów przetwarzanych na sekundę, aby zaktualizować uprawnienia do całego folderu może potrwać godzinę. Szczegółowe informacje na temat Data Lake Storage Gen1 listy kontroli dostępu są dostępne pod adresem [kontrola dostępu w usługach Azure Data Lake Storage Gen1](data-lake-store-access-control.md). W celu zwiększenia wydajności dotyczące przypisywania rekursywnie list ACL służy narzędzie wiersza polecenia do usługi Azure Data Lake. Narzędzie tworzy wiele wątków i logiki nawigacji cykliczne Szybkie stosowanie list ACL do milionów plików. Narzędzie to jest dostępne dla systemów Linux i Windows, a [dokumentacji](https://github.com/Azure/data-lake-adlstool) i [pliki do pobrania](https://aka.ms/adlstool-download) dla tego narzędzia można znaleźć w witrynie GitHub. Ten sam usprawnienia dotyczące wydajności może być włączana przy własnych narzędzi napisany w języku Data Lake Storage Gen1 [.NET](data-lake-store-data-operations-net-sdk.md) i [Java](data-lake-store-get-started-java-sdk.md) zestawów SDK.
 
 ### <a name="use-security-groups-versus-individual-users"></a>Przy użyciu grup zabezpieczeń i użytkowników indywidualnych 
 

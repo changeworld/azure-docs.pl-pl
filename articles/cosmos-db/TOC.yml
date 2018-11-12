@@ -92,14 +92,20 @@ items:
       href: conflict-resolution-policies.md
     - name: Dystrybucja globalna — szczegóły działania
       href: global-dist-under-the-hood.md
-  - name: Przepływność
+  - name: Partycjonowanie
     items:
     - name: Omówienie
+      href: partitioning-overview.md
+    - name: Partycje logiczne
+      href: partition-data.md
+    - name: Tworzenie syntetycznego klucza partycji
+      href: synthetic-partition-keys.md
+  - name: Aprowizowana przepływność
+    items:
+    - name: Jednostki żądania
       href: request-units.md
-    - name: Uzyskiwanie i ustawianie przepływności
+    - name: Aprowizacja przepływności kontenerów i baz danych
       href: set-throughput.md
-  - name: Partycjonowanie i dystrybucja danych
-    href: partition-data.md
   - name: Indeksowanie
     href: indexing-policies.md
   - name: Źródło zmian
@@ -391,6 +397,8 @@ items:
     items:
     - name: Zarządzanie przy użyciu programu PowerShell
       href: manage-account-with-powershell.md
+    - name: Zarządzanie przy użyciu interfejsu wiersza polecenia platformy Azure
+      href: manage-with-cli.md
     - name: Zarządzanie przy użyciu Eksploratora usługi Storage
       href: storage-explorer.md
     - name: Zarządzanie za pomocą Eksploratora danych
@@ -427,6 +435,18 @@ items:
       href: how-to-manage-consistency.md
     - name: Zarządzanie konfliktami
       href: how-to-manage-conflicts.md
+  - name: Aprowizowana przepływność
+    items:
+    - name: Aprowizacja przepływności kontenera
+      href: how-to-provision-container-throughput.md
+    - name: Aprowizacja przepływności bazy danych
+      href: how-to-provision-database-throughput.md
+  - name: Praca z kontenerami i elementami
+    items:
+    - name: Tworzenie kontenera
+      href: how-to-create-container.md
+    - name: Wykonywanie zapytania względem kontenera
+      href: how-to-query-container.md
   - name: Najlepsze praktyki
     items:
     - name: Porady dotyczące wydajności
@@ -515,9 +535,9 @@ items:
       href: use-cases.md
     - name: Aplikacje mediów społecznościowych
       href: social-media-apps.md
-ms.openlocfilehash: bb18835e9bd413867b9cd8f7fe8c58d525c79875
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 139bf5c5edfb808e912f2da07ea1bcab57636c55
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963952"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244274"

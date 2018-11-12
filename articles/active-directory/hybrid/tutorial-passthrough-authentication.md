@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6154164aadd8ed508bfae8de8b6f3c8255111a73
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: fed1078b9a4e0ca4d0674db522f73705fa3efd0a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313481"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254491"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Samouczek: Integracja z pojedynczym lasem usługi AD przy użyciu uwierzytelniania przekazywanego (PTA)
 
@@ -193,7 +193,7 @@ Teraz musimy utworzyć dzierżawę usługi Azure AD, dzięki czemu firma Microso
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Utwórz administratora globalnego w usłudze Azure AD
 Teraz, gdy mamy już dzierżawę usługi Azure AD, utworzymy konto administratora globalnego.  To konto jest używane do utworzenia konta łącznika usługi Azure AD podczas instalacji programu Azure AD Connect.  Konta łącznika usługi Azure AD umożliwia zapisywanie informacji o usłudze Azure AD.   Aby utworzyć administratora globalnego konto, wykonaj następujące czynności.
 
-1.  W obszarze **Zarządzaj**, wybierz opcję **użytkowników**.</br>
+1.  W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy**.</br>
 ![Tworzenie](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Wybierz **wszyscy użytkownicy** , a następnie wybierz **+ nowy użytkownik**.
 3.  Podaj nazwę i nazwę użytkownika dla tego użytkownika. To będzie administratorem globalnym dla dzierżawy. Można również zmienić **roli w katalogu** do **administratora globalnego.** Można również wyświetlić hasło tymczasowe. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.</br>
@@ -244,12 +244,12 @@ Teraz zostanie zweryfikowane, że użytkownicy, którzy mieliśmy w naszym katal
 
 1. Przejdź do [witryny Azure portal](https://portal.azure.com) i zaloguj się przy użyciu konta które ma subskrypcję platformy Azure.
 2. Po lewej stronie, wybierz **usługi Azure Active Directory**
-3. W obszarze **Zarządzaj**, wybierz opcję **użytkowników**.
+3. W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy**.
 4. Sprawdź, czy widzisz nowych użytkowników w dzierżawie naszych ![synchronizacji](media/tutorial-password-hash-sync/synch1.png)
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Testowanie logujesz się przy użyciu jednego z naszych użytkowników
 
-1.  Przejdź do [http://myapps.microsoft.com](http://myapps.microsoft.com)
+1.  Przejdź do [http://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Zaloguj się przy użyciu konta użytkownika, który został utworzony w naszym nowym dzierżawcą.  Konieczne będzie zalogowanie się w następującym formacie: (user@domain.onmicrosoft.com). Użyj tego samego hasła, których użytkownik używa do logowania lokalnego.
 ![Sprawdź](media/tutorial-password-hash-sync/verify1.png)
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.author: trinadhk
-ms.openlocfilehash: 32eba23202eca1c71c4f3b01dcb364281cb2eb60
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 62b2744494fcd4d98bf75892dc95d86130dd04bb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42061050"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261744"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkcje zabezpieczeń, aby pomóc w ochronie hybrydowych kopii zapasowych, które używają usługi Azure Backup
 Coraz więcej wątpliwości dotyczących problemów z zabezpieczeniami, takich jak złośliwe oprogramowanie, przed oprogramowaniem wymuszającym okup i nieautoryzowanego dostępu. Te problemy dotyczące zabezpieczeń może być kosztowna, pod względem zarówno pieniądze, jak i dane. Aby zabezpieczyć się przed takimi atakami, kopia zapasowa Azure zapewnia funkcje zabezpieczeń, aby pomóc w ochronie hybrydowych kopii zapasowych. W tym artykule opisano, jak włączanie i używanie tych funkcji przy użyciu agenta usługi Azure Recovery Services i serwera usługi Azure Backup. Te funkcje obejmują:
@@ -114,6 +114,6 @@ Funkcje zabezpieczeń, wymienione w niniejszym artykule zapewniają mechanizmy o
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Recovery Services vault](backup-azure-vms-first-look-arm.md) Aby włączyć te funkcje.
-* [Pobierz najnowszą wersję agenta usług odzyskiwania Azure](http://aka.ms/azurebackup_agent) pomagające chronić komputery Windows i ochrony danych przed atakami.
+* [Pobierz najnowszą wersję agenta usług odzyskiwania Azure](https://aka.ms/azurebackup_agent) pomagające chronić komputery Windows i ochrony danych przed atakami.
 * [Pobieranie najnowszych kopii zapasowych serwera Azure](https://aka.ms/latest_azurebackupserver) pomagające chronić obciążenia i ochrony danych przed atakami.
 * [Pobierz UR12 for System Center 2012 R2 Data Protection Manager](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager) lub [Pobierz UR2 dla programu System Center 2016 Data Protection Manager](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager) pomagające chronić obciążenia i ochrony danych przed atakami.

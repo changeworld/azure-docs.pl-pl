@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 05/14/2018
 ms.author: danlep
-ms.openlocfilehash: f2cf26bc9f980729e74c4a4e0b4e3f4b311fd754
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ce8e2457c1d575e890174de3b9cf7faf6e16a7cb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421138"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258820"
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>Przesyłanie zadań HPC z lokalnego komputera do klastra pakietu HPC Pack wdrożonego na platformie Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -37,7 +37,7 @@ Konfigurowanie lokalnych komputera klienckiego do przesyłania zadań do [pakiet
 ## <a name="step-1-install-and-configure-the-web-components-on-the-head-node"></a>Krok 1: Instalowanie i konfigurowanie składników sieci web w węźle głównym
 Aby włączyć interfejs REST przesyłać zadania do klastra za pośrednictwem protokołu HTTPS, upewnij się, że składniki sieci web pakietu HPC Pack są skonfigurowane na węzeł główny HPC Pack. Jeśli nie są już zainstalowane, należy najpierw zainstalować składniki sieci web, uruchamiając plik instalacyjny HpcWebComponents.msi. Następnie należy skonfigurować składniki, uruchamiając skrypt środowiska PowerShell klastra HPC **HPCWebComponents.ps1 zestaw**.
 
-Szczegółowe procedury zobacz [zainstalować składniki sieci Web firmy Microsoft HPC Pack](http://technet.microsoft.com/library/hh314627.aspx).
+Szczegółowe procedury zobacz [zainstalować składniki sieci Web firmy Microsoft HPC Pack](https://technet.microsoft.com/library/hh314627.aspx).
 
 > [!TIP]
 > Niektóre szablony szybkiego startu platformy Azure, w przypadku klastrów HPC Pack Instalowanie i konfigurowanie składników sieci web w automatycznie.
@@ -169,7 +169,7 @@ Aby sprawdzić konfigurację, spróbuj uruchomionych zadań w klastrze na platfo
 1. Aby wyświetlić wyniki zadania przesłane, kliknij przycisk Identyfikator zadania, a następnie kliknij **zadania widoku** do wyświetlania danych wyjściowych polecenia (w obszarze **dane wyjściowe**).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Możesz również przesłać zadań w klastrze platformy Azure za pomocą [interfejsu API REST pakietu HPC](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx).
+* Możesz również przesłać zadań w klastrze platformy Azure za pomocą [interfejsu API REST pakietu HPC](https://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx).
 * Jeśli chcesz przesłać zadań klastra z klientów systemu Linux, zobacz przykład języka Python w [HPC Pack 2012 R2 SDK czy kod przykładowy](https://www.microsoft.com/download/details.aspx?id=41633).
 
 <!--Image references-->

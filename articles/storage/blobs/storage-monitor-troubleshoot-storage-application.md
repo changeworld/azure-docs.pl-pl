@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: ff4d39a69df90c31186153c077b1b6183a08dd34
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 1bd237d4b8ecd826caf4ba9a150f1dd50f0c5bb6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397219"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259993"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Monitorowanie i rozwiązywanie problemów aplikacji magazynu w chmurze
 
@@ -83,7 +83,7 @@ Poniższa ilustracja przedstawia przykładowy alert utworzony na podstawie symul
 
 Dane dzienników magazynu są przechowywane w zestawie obiektów blob w kontenerze obiektów blob o nazwie **$logs** na koncie magazynu. Ten kontener nie jest wyświetlany na liście wszystkich kontenerów obiektów blob na koncie, ale można wyświetlić jego zawartość po uzyskaniu do niego bezpośredniego dostępu.
 
-W tym scenariuszu należy użyć narzędzia [Microsoft Message Analyzer](http://technet.microsoft.com/library/jj649776.aspx) do interakcji z kontem usługi Azure Storage.
+W tym scenariuszu należy użyć narzędzia [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) do interakcji z kontem usługi Azure Storage.
 
 ### <a name="download-microsoft-message-analyzer"></a>Pobieranie narzędzia Microsoft Message Analyzer
 

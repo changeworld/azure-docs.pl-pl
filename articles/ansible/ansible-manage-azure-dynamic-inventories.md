@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 1b8c1ba80b4c69f36e8304cbe978452a359ac911
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 1f19d5918d81acb76936edf8989a556335a3c0df
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698082"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261268"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Zarządzanie usługi platformy Azure spisami dynamicznymi za pomocą rozwiązania Ansible
 Rozwiązanie Ansible może służyć do pobierania informacji o spisie z różnych źródeł (w tym źródeł w chmurze takich jak Azure) do *dynamiczny spis*. W tym artykule używasz [usługi Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) konfigurowanie rozwiązania Ansible Azure dynamiczne spisu w której opisano tworzenie dwóch maszyn wirtualnych, tag jednej z tych maszyn wirtualnych i zainstalować rozwiązanie Nginx otagowane maszyny wirtualnej.
@@ -26,7 +26,7 @@ Rozwiązanie Ansible może służyć do pobierania informacji o spisie z różny
 
 ## <a name="create-the-test-virtual-machines"></a>Tworzenie testowych maszyn wirtualnych
 
-1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otwórz usługę [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 

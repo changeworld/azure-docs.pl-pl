@@ -10,12 +10,12 @@ ms.date: 09/13/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: 721816d9b9da7ff5225e9c74ef7bb89207dd150a
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: e6f7d255fbfbcd740d9f3a7c2743f57cecea1abf
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979186"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298759"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack — Integracja z centrum danych — publikowanie punktów końcowych
 
@@ -76,9 +76,9 @@ Usługa Azure Stack obsługuje tylko serwery z przezroczystym serwerem proxy. W 
 |Rejestracja|https://management.azure.com|HTTPS|443|
 |Sposób użycia|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.NET|HTTPS|443|
 |Windows Defender|. wdcp.microsoft.com<br>. wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. witrynie download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>http://www.microsoft.com/pkiops/crl<br>http://www.microsoft.com/pkiops/certs<br>http://crl.microsoft.com/pki/crl/products<br>http://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
-|NTP|     |UDP|123|
-|DNS|     |TCP<br>UDP|53|
-|LISTY CRL|     |HTTP|80|
+|NTP|(Dostarczone dla wdrożenia serwera IP NTP)|UDP|123|
+|DNS|(Dostarczone dla wdrożenia serwera IP DNS)|TCP<br>UDP|53|
+|LISTY CRL|Adres URL (w ramach punktów dystrybucji listy CRL na Twój certyfikat)|HTTP|80|
 |     |     |     |     |
 
 > [!Note]  

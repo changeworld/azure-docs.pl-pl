@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/26/2018
+ms.date: 10/29/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 8a4c0c1426200e6c2d5041131fd0dd9cde4761cf
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: e3d1a79dc7dd775cea71df2f36a5f34d85f3e240
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409290"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261812"
 ---
 # <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>Samouczek: tworzenie połączenia punkt-lokacja przy użyciu usługi Azure Virtual WAN (wersja zapoznawcza)
 
@@ -79,7 +79,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 
 ## <a name="openvwan"></a>2. Tworzenie wirtualnej sieci WAN
 
-Przejdź w przeglądarce do witryny [Azure Portal](http://aka.ms/azurevirtualwanpreviewfeatures) (wersja zapoznawcza) i zaloguj się przy użyciu konta platformy Azure.
+Przejdź w przeglądarce do witryny [Azure Portal](https://aka.ms/azurevirtualwanpreviewfeatures) (wersja zapoznawcza) i zaloguj się przy użyciu konta platformy Azure.
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
@@ -111,12 +111,13 @@ Konfiguracja P2S definiuje parametry służące do łączenia z klientami zdalny
 
 ## <a name="hub"></a>5. Edytowanie przypisania koncentratora
 
-1. Na stronie Twojej wirtualnej sieci WAN kliknij opcję **Konfiguracje punkt-lokacja**.
-2. W obszarze **Koncentrator** zostanie wyświetlona lista konfiguracji, które jeszcze nie zostały podłączone do koncentratora.
-3. Wybierz konfigurację, którą chcesz skojarzyć, a następnie kliknij przycisk **Edytuj przypisanie koncentratora**.
-4. Z listy rozwijanej wybierz koncentratory, które chcesz skojarzyć z konfiguracją.
-5. Kliknij przycisk **Przypisz**. 
-6. Ukończenie operacji może potrwać maksymalnie 30 minut.
+1. Na stronie usługi Virtual WAN kliknij pozycję **Koncentratory**.
+2. Wybierz koncentrator, do którego chcesz przypisać konfigurację punkt-lokacja.
+3. Kliknij przycisk **„...”** i wybierz pozycję **Edytuj koncentrator wirtualny**
+4. Zaznacz pozycję **Uwzględnij bramę punkt-lokacja**.
+5. Wybierz pozycje **Jednostki skalowania bramy** i **Konfiguracja punkt-lokacja** wraz z **pulą adresów** dla klientów.
+6. Kliknij pozycję **Potwierdź**. 
+7. Ukończenie operacji może potrwać do 30 minut.
 
 ## <a name="vnet"></a>6. Łączenie sieci wirtualnej z koncentratorem
 
@@ -135,9 +136,10 @@ W tym kroku zostanie utworzone połączenie równorzędne pomiędzy koncentrator
 
 Użyj profilu sieci VPN, aby skonfigurować klientów.
 
-1. Na stronie Twojej wirtualnej sieci WAN kliknij opcję **Konfiguracje punkt-lokacja**.
-2. W górnej części strony kliknij polecenie **Pobierz profil punkt-lokacja**. 
-3. Po zakończeniu tworzenia pliku możesz kliknąć link, aby go pobrać.
+1. Na stronie usługi Virtual WAN kliknij pozycję **Koncentratory**.
+2. Wybierz koncentrator, dla którego chcesz pobrać profil.
+3. Kliknij przycisk **„...”** i wybierz pozycję **Pobierz profil**. 
+4. Po zakończeniu tworzenia pliku możesz kliknąć link, aby go pobrać.
 4. Aby skonfigurować klientów punkt-lokacja, należy użyć pliku profilu.
 
 ## <a name="device"></a>8. Konfigurowanie klientów punkt-lokacja

@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 11/06/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 605533f25b36a92a660301d28aa63cb2ecdd44f4
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 9ae3a17c9756a38414ee25fd24f7d12d6179e95f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37910057"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285786"
 ---
 Podczas tworzenia bramy sieci wirtualnej musisz wybrać jednostkę SKU bramy do użycia. Wybierz jednostkę SKU spełniającą Twoje wymagania na podstawie typów obciążeń, przepustowości, funkcji i umów SLA.
 
@@ -29,7 +29,7 @@ Nowa brama sieci VPN jednostki SKU usprawnić zestawy funkcji oferowane w bramac
 
 | **SKU**| **Funkcje**|
 | ---    | ---         |
-|**Podstawowe** (*)   | **Sieć VPN oparta na trasy**: 10 tuneli z P2S; nie uwierzytelniania RADIUS na potrzeby P2S; bez protokołu IKEv2 dla P2S<br>**Sieć VPN oparta na zasadach** (IKEv1): 1 tunel, bez połączeń typu punkt-lokacja|
+|**Podstawowe** (*)   | **Sieć VPN oparta na trasy**: 10 tuneli dla połączeń S2S /; nie uwierzytelniania RADIUS na potrzeby P2S; bez protokołu IKEv2 dla P2S<br>**Sieć VPN oparta na zasadach**: (IKEv1): 1 tunel S2S i połączenie; bez P2S|
 | **VpnGw1, VpnGw2 i VpnGw3** | **Sieć VPN oparta na trasy**: maksymalnie 30 tuneli (*) P2S, BGP, aktywne aktywne, niestandardowe protokołu IPsec/IKE zasady, współistnienie ExpressRoute/VPN |
 |        |             |
 

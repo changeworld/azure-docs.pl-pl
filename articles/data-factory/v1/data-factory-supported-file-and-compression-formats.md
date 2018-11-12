@@ -1,6 +1,6 @@
 ---
-title: Formaty plików i kompresji w fabryce danych Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat formatów plików obsługiwanych przez usługi fabryka danych Azure.
+title: Formaty plików i kompresji w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat formatów plików obsługiwanych przez usługę Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5afc89e774595952adf860fc6bcdc0e2403c617a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: be0377e7234e507bdc05aee2502e742dbdaa8e1c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047098"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258378"
 ---
-# <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Formaty plików i kompresji obsługiwane przez usługi fabryka danych Azure
-*Ten temat dotyczy następujące łączniki: [Amazon S3](data-factory-amazon-simple-storage-service-connector.md), [obiektów Blob platformy Azure](data-factory-azure-blob-connector.md), [Azure Data Lake Store](data-factory-azure-datalake-connector.md), [systemu plików](data-factory-onprem-file-system-connector.md), [FTP](data-factory-ftp-connector.md), [HDFS](data-factory-hdfs-connector.md), [HTTP](data-factory-http-connector.md), i [SFTP](data-factory-sftp-connector.md).*
+# <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Formaty plików i kompresji, które są obsługiwane przez usługę Azure Data Factory
+*Ten temat dotyczy następujące łączniki: [Amazon S3](data-factory-amazon-simple-storage-service-connector.md), [obiektów Blob platformy Azure](data-factory-azure-blob-connector.md), [usługi Azure Data Lake Store](data-factory-azure-datalake-connector.md), [systemu plików](data-factory-onprem-file-system-connector.md), [FTP](data-factory-ftp-connector.md), [HDFS](data-factory-hdfs-connector.md), [HTTP](data-factory-http-connector.md), i [SFTP](data-factory-sftp-connector.md).*
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi fabryka danych Azure. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji w fabryce danych](../supported-file-formats-and-compression-codecs.md).
+> Ten artykuł dotyczy wersji 1 usługi Azure Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [obsługiwane formaty plików i kompresji kodery-dekodery w usłudze Data Factory](../supported-file-formats-and-compression-codecs.md).
 
-Fabryka danych Azure obsługuje następujące typy plików w formacie:
+Usługa Azure Data Factory obsługuje następujące typy formatów plików:
 
 * [Format tekstu](#text-format)
 * [JSON format](#json-format)
@@ -35,11 +35,11 @@ Fabryka danych Azure obsługuje następujące typy plików w formacie:
 * [Parquet format](#parquet-format)
 
 ## <a name="text-format"></a>Format tekstu
-Jeśli chcesz zapisać do pliku tekstowego lub odczytu z pliku tekstowego, ustaw `type` właściwości w `format` części zestawu danych na **TextFormat**. Ponadto możesz określić następujące **opcjonalne** właściwości w sekcji `format`. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu TextFormat](#textformat-example).
+Jeśli chcesz odczytać z pliku tekstowego lub zapisać do pliku tekstowego, ustaw `type` właściwość `format` części zestawu danych na **TextFormat**. Ponadto możesz określić następujące **opcjonalne** właściwości w sekcji `format`. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu TextFormat](#textformat-example).
 
 | Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
-| columnDelimiter |Znak używany do rozdzielania kolumn w pliku. Można rozważyć Użyj rzadkich char nie do drukowania, który prawdopodobnie nie może istnieje w danych. Na przykład określić "\u0001", reprezentujący Start z pozycji (raportu o kondycji). |Dozwolony jest tylko jeden znak. Wartość **domyślna** to **przecinek (,)**. <br/><br/>Aby użyć znaków Unicode, zapoznaj się [znaków Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) można uzyskać odpowiedni kod. |Nie |
+| columnDelimiter |Znak używany do rozdzielania kolumn w pliku. Aby wziąć pod uwagę do użycia znaku nie do drukowania rzadkich nie może być prawdopodobnie występuje w danych. Na przykład określić "\u0001", który reprezentuje Start z nagłówkiem (raportu o kondycji). |Dozwolony jest tylko jeden znak. Wartość **domyślna** to **przecinek (,)**. <br/><br/>Aby użyć znaku Unicode, zobacz [znaków Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) można uzyskać odpowiedni kod. |Nie |
 | rowDelimiter |Znak używany do rozdzielania wierszy w pliku. |Dozwolony jest tylko jeden znak. Wartością **domyślną** jest dowolna z następujących wartości przy odczycie: **[„\r\n”, „\r”, „\n”]** oraz wartość **„\r\n”** przy zapisie. |Nie |
 | escapeChar |Znak specjalny służący do zmiany interpretacji ogranicznika kolumny w zawartości pliku wejściowego. <br/><br/>W przypadku tabeli nie można określić zarówno właściwości escapeChar, jak i quoteChar. |Dozwolony jest tylko jeden znak. Brak wartości domyślnej. <br/><br/>Przykład: jeśli ogranicznikiem kolumny jest przecinek (,), ale chcesz, aby znak przecinka występował w tekście (przykładowo: „Witaj, świecie”), możesz zdefiniować znak „$” jako znak ucieczki i użyć ciągu „Witaj$, świecie” w źródle. |Nie |
 | quoteChar |Znak używany do umieszczania wartości ciągu w cudzysłowie. Ograniczniki kolumny i wiersza umieszczone w cudzysłowie są traktowane jako część wartości ciągu. Ta właściwość ma zastosowanie zarówno do wejściowych, jak i wyjściowych zestawów danych.<br/><br/>W przypadku tabeli nie można określić zarówno właściwości escapeChar, jak i quoteChar. |Dozwolony jest tylko jeden znak. Brak wartości domyślnej. <br/><br/>Na przykład jeśli ogranicznikiem kolumny jest przecinek (,), ale chcesz, aby znak przecinka występował w tekście (przykład: <Witaj, świecie>), możesz zdefiniować cudzysłów (") jako znak cudzysłowu i użyć ciągu "Witaj, świecie" w źródle. |Nie |
@@ -50,7 +50,7 @@ Jeśli chcesz zapisać do pliku tekstowego lub odczytu z pliku tekstowego, ustaw
 | treatEmptyAsNull |Określa, czy ciąg pusty lub o wartości null ma być traktowany jako wartość null podczas odczytu danych z pliku wejściowego. |**True (domyślnie)**<br/>False |Nie |
 
 ### <a name="textformat-example"></a>Przykład formatu TextFormat
-W następujących definicji JSON dla zestawu danych podano niektóre właściwości opcjonalnych.
+W poniższej definicji JSON dla zestawu danych podano części właściwości opcjonalnych.
 
 ```json
 "typeProperties":
@@ -83,9 +83,9 @@ Aby użyć właściwości `escapeChar` zamiast `quoteChar`, zastąp wiersz z wł
 * Kopiujesz dane z pliku tekstowego i chcesz pominąć kilka początkowych wierszy, które nie zawierają żadnych danych bądź informacji nagłówka. Określ właściwość `skipLineCount`, aby wskazać liczbę wierszy do pominięcia. Jeśli pozostała część pliku zawiera wiersz nagłówka, możesz również określić właściwość `firstRowAsHeader`. Jeśli określono zarówno właściwość `skipLineCount`, jak i `firstRowAsHeader`, najpierw zostaną pominięte wiersze, a następnie zostaną odczytane informacje nagłówka z pliku wejściowego
 
 ## <a name="json-format"></a>JSON format
-Aby **importu/eksportu pliku JSON jako — jest do/z bazy danych Azure rozwiązania Cosmos**, zobacz [dokumentów JSON importu/eksportu](data-factory-azure-documentdb-connector.md#importexport-json-documents) sekcji w [przenoszenie danych do/z bazy danych Azure rozwiązania Cosmos](data-factory-azure-documentdb-connector.md) artykułu.
+Do **importu/eksportu plik w formacie JSON jako — importowanie / z usługi Azure Cosmos DB**, zobacz [dokumentów JSON Import/export](data-factory-azure-documentdb-connector.md#importexport-json-documents) sekcji [przenoszenie danych do i z usługi Azure Cosmos DB](data-factory-azure-documentdb-connector.md) artykułu.
 
-Jeśli chcesz przeanalizować pliku JSON lub zapisać dane w formacie JSON, ustaw `type` właściwości w `format` sekcji do **JsonFormat**. Ponadto możesz określić następujące **opcjonalne** właściwości w sekcji `format`. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu JsonFormat](#jsonformat-example).
+Jeśli chcesz analizować pliki JSON lub zapisywać dane w formacie JSON, ustaw `type` właściwość `format` sekcji **JsonFormat**. Ponadto możesz określić następujące **opcjonalne** właściwości w sekcji `format`. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu JsonFormat](#jsonformat-example).
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
@@ -97,7 +97,7 @@ Jeśli chcesz przeanalizować pliku JSON lub zapisać dane w formacie JSON, usta
 
 ### <a name="json-file-patterns"></a>Wzorce plików JSON
 
-Działanie kopiowania może przeanalizować składni wzorców następujące pliki w formacie JSON:
+Działanie kopiowania może przeanalizować poniższe wzorce plików JSON:
 
 - **Typ I: setOfObjects**
 
@@ -190,7 +190,7 @@ Działanie kopiowania może przeanalizować składni wzorców następujące plik
 
 **Przypadek 1. Kopiowanie danych z plików JSON**
 
-Zobacz następujące dwie próbki podczas kopiowania danych z plików JSON. Ogólny punktów należy pamiętać:
+Podczas kopiowania danych z plików JSON, zobacz poniższe dwa przykłady. Ogólne kwestie należy pamiętać:
 
 **Przykład 1. Wyodrębnianie danych z obiektu i tablicy**
 
@@ -227,8 +227,8 @@ i chcesz skopiować ją do tabeli usługi Azure SQL w następującym formacie pr
 
 Zestaw danych wejściowych typu **JsonFormat** jest zdefiniowany następująco: (częściowa definicja zawierająca tylko stosowne fragmenty). Więcej szczegółów:
 
-- Sekcja `structure` definiuje niestandardowe nazwy kolumn i odpowiedni typ danych podczas konwersji na dane tabelaryczne. Ta sekcja jest **opcjonalna**, o ile nie trzeba wykonać mapowania kolumn. Zobacz [mapują kolumnach dataset źródła kolumny zestawu danych docelowego](data-factory-map-columns.md) sekcji, aby uzyskać więcej informacji.
-- Właściwość `jsonPathDefinition` określa ścieżkę JSON dla każdej kolumny, wskazując, skąd mają zostać wyodrębnione dane. Aby skopiować dane z tablicy, można użyć **.property tablicy [x]** wyodrębniania wartości właściwości danego obiektu x, lub można użyć **.property tablicy [*]** Aby znaleźć wartości z dowolnych obiektów zawierających takie Właściwość.
+- Sekcja `structure` definiuje niestandardowe nazwy kolumn i odpowiedni typ danych podczas konwersji na dane tabelaryczne. Ta sekcja jest **opcjonalna**, o ile nie trzeba wykonać mapowania kolumn. Zobacz [mapowanie kolumny zestawu danych źródła do docelowego zestawu danych kolumn](data-factory-map-columns.md) sekcji, aby uzyskać więcej informacji.
+- Właściwość `jsonPathDefinition` określa ścieżkę JSON dla każdej kolumny, wskazując, skąd mają zostać wyodrębnione dane. Aby skopiować dane z tablicy, możesz użyć **tablica [x] .właściwość** do wyodrębnienia wartości danej właściwości z obiektu wskazanej, lub możesz użyć **tablica [*] .właściwość** do znalezienia wartości z wszystkich obiektów zawierających takie Właściwość.
 
 ```json
 "properties": {
@@ -300,7 +300,7 @@ i chcesz ją skopiować do tabeli Azure SQL w następującym formacie, spłaszcz
 
 Zestaw danych wejściowych typu **JsonFormat** jest zdefiniowany następująco: (częściowa definicja zawierająca tylko stosowne fragmenty). Więcej szczegółów:
 
-- Sekcja `structure` definiuje niestandardowe nazwy kolumn i odpowiedni typ danych podczas konwersji na dane tabelaryczne. Ta sekcja jest **opcjonalna**, o ile nie trzeba wykonać mapowania kolumn. Zobacz [mapują kolumnach dataset źródła kolumny zestawu danych docelowego](data-factory-map-columns.md) sekcji, aby uzyskać więcej informacji.
+- Sekcja `structure` definiuje niestandardowe nazwy kolumn i odpowiedni typ danych podczas konwersji na dane tabelaryczne. Ta sekcja jest **opcjonalna**, o ile nie trzeba wykonać mapowania kolumn. Zobacz [mapowanie kolumny zestawu danych źródła do docelowego zestawu danych kolumn](data-factory-map-columns.md) sekcji, aby uzyskać więcej informacji.
 - Właściwość `jsonNodeReference` określa, że ma zostać wykonana iteracja i ekstrakcja danych z obiektów o tym samym wzorcu w **tablicy** orderlines.
 - Właściwość `jsonPathDefinition` określa ścieżkę JSON dla każdej kolumny, wskazując, skąd mają zostać wyodrębnione dane. W tym przykładzie kolumny „ordernumber”, „orderdate” i „city” znajdują się w obiekcie głównym ze ścieżką JSON rozpoczynającą się od znaków „$.”, natomiast kolumny „order_pd” i „order_price” są zdefiniowane przy użyciu ścieżki pochodzącej od elementu tablicy bez ciągu „$.”.
 
@@ -357,7 +357,7 @@ Jeśli masz poniższej tabeli w bazie danych SQL:
 | 2 | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
-i dla każdego rekordu, możesz zapisać obiekt JSON w następującym formacie:
+i dla każdego rekordu będziesz zapisywać w obiekcie JSON w następującym formacie:
 ```json
 {
     "id": "1",
@@ -369,7 +369,7 @@ i dla każdego rekordu, możesz zapisać obiekt JSON w następującym formacie:
 }
 ```
 
-Zestaw danych wyjściowych typu **JsonFormat** jest zdefiniowany następująco: (częściowa definicja zawierająca tylko stosowne fragmenty). W szczególności `structure` sekcja definiuje nazwy właściwości niestandardowe w pliku docelowym `nestingSeparator` (domyślna to ".") są używane do identyfikowania warstwy gniazda z nazwy. Ta sekcja jest **opcjonalna**, o ile nie chcesz zmieniać nazwy właściwości na podstawie porównania z nazwą kolumny źródłowej ani zagnieżdżać właściwości.
+Zestaw danych wyjściowych typu **JsonFormat** jest zdefiniowany następująco: (częściowa definicja zawierająca tylko stosowne fragmenty). W szczególności `structure` sekcji zdefiniowano nazwy właściwości niestandardowe w pliku docelowym `nestingSeparator` (wartość domyślna to ".") są używane do identyfikowania warstwy zagnieżdżenia nazwę. Ta sekcja jest **opcjonalna**, o ile nie chcesz zmieniać nazwy właściwości na podstawie porównania z nazwą kolumny źródłowej ani zagnieżdżać właściwości.
 
 ```json
 "properties": {
@@ -414,7 +414,7 @@ Aby użyć formatu Avro w tabeli programu Hive, możesz zapoznać się z [samouc
 
 Pamiętaj o następujących kwestiach:  
 
-* [Złożone typy danych](http://avro.apache.org/docs/current/spec.html#schema_complex) nie są obsługiwane (rejestruje, wyliczeń, tablic, map, Unii i usunięciu).
+* [Złożone typy danych](http://avro.apache.org/docs/current/spec.html#schema_complex) nie są obsługiwane (rekordy, wyliczenia, tablice, mapy, unie i stała).
 
 ## <a name="orc-format"></a>ORC format
 Jeśli chcesz analizować pliki ORC lub zapisywać dane w formacie ORC, ustaw właściwość `format` `type` na wartość **OrcFormat**. Nie musisz określać żadnych właściwości w sekcji Format należącej do sekcji typeProperties. Przykład:
@@ -427,7 +427,7 @@ Jeśli chcesz analizować pliki ORC lub zapisywać dane w formacie ORC, ustaw w�
 ```
 
 > [!IMPORTANT]
-> Jeśli nie kopiujesz plików ORC **w niezmienionej postaci** między lokalnymi i chmurowymi magazynami danych, musisz zainstalować środowisko JRE 8 (Java Runtime Environment) na maszynie bramy. Brama 64-bitowa wymaga 64-bitowego środowiska JRE, natomiast brama 32-bitowa — 32-bitowego środowiska JRE. Obie wersje można znaleźć [tutaj](http://go.microsoft.com/fwlink/?LinkId=808605). Wybierz odpowiednią.
+> Jeśli nie kopiujesz plików ORC **w niezmienionej postaci** między lokalnymi i chmurowymi magazynami danych, musisz zainstalować środowisko JRE 8 (Java Runtime Environment) na maszynie bramy. Brama 64-bitowa wymaga 64-bitowego środowiska JRE, natomiast brama 32-bitowa — 32-bitowego środowiska JRE. Obie wersje można znaleźć [tutaj](https://go.microsoft.com/fwlink/?LinkId=808605). Wybierz odpowiednią.
 >
 >
 
@@ -446,7 +446,7 @@ Jeśli chcesz analizować pliki Parquet lub zapisywać dane w formacie Parquet, 
 }
 ```
 > [!IMPORTANT]
-> Jeśli nie kopiujesz plików Parquet **w niezmienionej postaci** między lokalnymi i chmurowymi magazynami danych, musisz zainstalować środowisko JRE 8 (Java Runtime Environment) na maszynie bramy. Brama 64-bitowa wymaga 64-bitowego środowiska JRE, natomiast brama 32-bitowa — 32-bitowego środowiska JRE. Obie wersje można znaleźć [tutaj](http://go.microsoft.com/fwlink/?LinkId=808605). Wybierz odpowiednią.
+> Jeśli nie kopiujesz plików Parquet **w niezmienionej postaci** między lokalnymi i chmurowymi magazynami danych, musisz zainstalować środowisko JRE 8 (Java Runtime Environment) na maszynie bramy. Brama 64-bitowa wymaga 64-bitowego środowiska JRE, natomiast brama 32-bitowa — 32-bitowego środowiska JRE. Obie wersje można znaleźć [tutaj](https://go.microsoft.com/fwlink/?LinkId=808605). Wybierz odpowiednią.
 >
 >
 
@@ -456,7 +456,7 @@ Pamiętaj o następujących kwestiach:
 * Plik Parquet ma następujące opcje związane z kompresją: NONE, SNAPPY, GZIP oraz LZO. Usługa Data Factory obsługuje odczyt danych z pliku ORC w dowolnym z tych skompresowanych formatów. Do odczytywania danych używa kodera-dekodera kompresji z metadanych. Podczas zapisywania w pliku Parquet usługa Data Factory wybiera natomiast opcję SNAPPY, która jest domyślna dla formatu Parquet. Obecnie nie ma możliwości zastąpienia tego zachowania.
 
 ## <a name="compression-support"></a>Obsługa kompresji
-Przetwarzania dużych zestawów danych może spowodować błąd We/Wy i sieci wąskich gardeł. W związku z tym skompresowane dane w magazynach można nie tylko przyspieszenie działania transfer danych w sieci i zaoszczędzić miejsce na dysku, ale również przełączyć istotne ulepszenia wydajności przetwarzania danych big data. Obecnie kompresja jest obsługiwana dla magazynów danych opartych na plikach, takich jak obiektów Blob platformy Azure lub lokalnego systemu plików.  
+Przetwarzanie dużych zestawów danych może spowodować wąskie gardła operacji We/Wy i sieć. W związku z tym skompresowane dane magazynów można nie tylko przyspieszyć transfer danych za pośrednictwem sieci i zaoszczędzić miejsce na dysku, ale również przenieść znaczące ulepszenia wydajności przetwarzania danych big data. Obecnie kompresja jest obsługiwana dla magazynów danych opartych na plikach, takich jak Azure blob Storage lub systemu plików w środowisku lokalnym.  
 
 Aby określić kompresji dla zestawu danych, użyj **kompresji** właściwość w zestawie danych JSON, jak w poniższym przykładzie:   
 
@@ -482,31 +482,31 @@ Aby określić kompresji dla zestawu danych, użyj **kompresji** właściwość 
 }  
 ```
 
-Załóżmy, że przykładowego zestawu danych jest używany jako dane wyjściowe działania kopiowania, działanie kopiowania kompresuje danych wyjściowych z kodera-dekodera GZIP przy użyciu optymalny stosunek, a następnie wpisz skompresowane dane do pliku o nazwie pagecounts.csv.gz w magazynie obiektów Blob Azure.
+Załóżmy, że przykładowy zestaw danych jest używany jako dane wyjściowe działania kopiowania, działanie kopiowania kompresuje dane wyjściowe z kodera-dekodera GZIP przy użyciu optymalnych współczynnik, a następnie wpisz skompresowane dane w pliku o nazwie pagecounts.csv.gz w usłudze Azure Blob Storage.
 
 > [!NOTE]
-> Ustawienia kompresji nie są obsługiwane dla danych w **AvroFormat**, **OrcFormat**, lub **ParquetFormat**. Podczas odczytywania plików w tych formatach, fabryki danych wykrywa i używa koder-dekoder kompresji w metadanych. Podczas zapisywania plików w tych formatach, fabryki danych wybiera domyślny koder-dekoder kompresji w tym formacie. Na przykład ZLIB OrcFormat i SNAPPY dla ParquetFormat.   
+> Ustawienia kompresji nie są obsługiwane dla danych w **AvroFormat**, **OrcFormat**, lub **ParquetFormat**. Podczas odczytywania plików w tych formatach, Data Factory wykrywa i używa kodera-dekodera kompresji w metadanych. Podczas zapisywania plików w tych formatach, Data Factory wybiera natomiast opcję domyślną kodera-dekodera kompresji dla tego formatu. Na przykład ZLIB OrcFormat i SNAPPY dla ParquetFormat.   
 
 **Kompresji** sekcji ma dwie właściwości:  
 
-* **Typ:** koder-dekoder kompresji, które mogą być **GZIP**, **Deflate**, **BZIP2**, lub **ZipDeflate**.  
-* **Poziom:** kompresji, które mogą być **optymalna** lub **najszybciej**.
+* **Typ:** kodera-dekodera kompresji, który może być **GZIP**, **Deflate**, **BZIP2**, lub **ZipDeflate**.  
+* **Poziom:** kompresji, który może być **optymalna** lub **najszybciej**.
 
-  * **Najszybszym:** operacja kompresji powinno zakończyć się tak szybko jak to możliwe, nawet jeśli nie jest optymalnie skompresowany plik wynikowy.
-  * **Optymalne**: operacja kompresji powinny być optymalnie skompresowany, nawet wtedy, gdy operacja trwa dłużej niż do ukończenia.
+  * **Najszybszy:** operacji kompresji powinno zakończyć się jak najszybciej, nawet wtedy, gdy wynikowy plik nie jest optymalnie skompresowany.
+  * **Optymalne**: operacja kompresji powinien być optymalnie skompresowany, nawet wtedy, gdy operacja trwa dłużej.
 
     Aby uzyskać więcej informacji, zobacz [poziom kompresji](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) tematu.
 
-Po określeniu `compression` właściwość w zestawie danych wejściowych JSON potoku można odczytać skompresowane dane ze źródła; i po określeniu właściwość w zestawie danych wyjściowych JSON aktywności kopiowania może zapisywać skompresowane dane do lokalizacji docelowej. Poniżej przedstawiono kilka przykładowych scenariuszy:
+Po określeniu `compression` właściwości w wejściowego zestawu danych JSON, potok może odczytać skompresowane dane ze źródła; i określając właściwość w zestawie danych wyjściowych JSON, działanie kopiowania może zapisywać dane skompresowane do miejsca docelowego. Poniżej przedstawiono kilka przykładowych scenariuszy:
 
-* Skompresowane GZIP odczytu danych z obiektów blob platformy Azure, zdekompresować i zapisać dane do bazy danych Azure SQL. Zdefiniuj wejściowy zestaw danych obiektów Blob Azure o `compression` `type` właściwość JSON jako GZIP.
-* Odczyt danych z pliku tekstowego z lokalnego systemu plików, skompresować je w formacie GZip i zapisać skompresowane dane obiektów blob platformy Azure. Zdefiniuj wyjściowy zestaw danych obiektów Blob platformy Azure z `compression` `type` właściwość JSON jako GZip.
-* Odczytaj plik zip z serwera FTP zdekompresować pliki wewnątrz i trafić tych plików do usługi Azure Data Lake Store. Zdefiniuj zestaw danych wejściowych FTP z `compression` `type` właściwość JSON jako ZipDeflate.
-* Odczytywać skompresowane GZIP danych obiektów blob platformy Azure, zdekompresować skompresować je przy użyciu BZIP2 i zapisać wynik danych obiektów blob platformy Azure. Zdefiniuj wejściowy zestaw danych obiektów Blob Azure o `compression` `type` GZIP i wyjściowy zestaw danych z ustawioną `compression` `type` ustawioną BZIP2 w takim przypadku.   
+* GZIP odczytu skompresowane dane z obiektu blob platformy Azure zdekompresować go i zapisać dane wynikowe do usługi Azure SQL database. Zdefiniuj wejściowy zestaw danych obiektów Blob platformy Azure za pomocą `compression` `type` właściwość JSON jako GZIP.
+* Odczytywanie danych z pliku tekstowego z systemu plików w środowisku lokalnym, skompresować je w formacie GZip i zapisać skompresowane dane obiektu blob platformy Azure. Zdefiniuj wyjściowego zestawu danych obiektów Blob platformy Azure za pomocą `compression` `type` właściwość JSON jako GZip.
+* Odczytaj plik zip z serwera FTP Dekompresuj ją, aby pobrać pliki wewnątrz i przejście tych plików w usłudze Azure Data Lake Store. Zdefiniuj wejściowy zestaw danych FTP za pomocą `compression` `type` właściwość JSON jako ZipDeflate.
+* Odczytywanie danych z kompresji GZIP obiektu blob platformy Azure, zdekompresować, skompresować je przy użyciu BZIP2 i zapisać dane wynikowe do usługi Azure blob. Zdefiniuj wejściowy zestaw danych obiektów Blob platformy Azure za pomocą `compression` `type` GZIP i wyjściowy zestaw danych z ustawioną `compression` `type` równa BZIP2 w tym przypadku.   
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujące artykuły dla magazynów danych obsługiwane przez usługi fabryka danych Azure:
+Zobacz następujące artykuły dotyczące magazynów opartych na plikach danych obsługiwanych przez usługę Azure Data Factory:
 
 - [Azure Blob Storage](data-factory-azure-blob-connector.md)
 - [Azure Data Lake Store](data-factory-azure-datalake-connector.md)

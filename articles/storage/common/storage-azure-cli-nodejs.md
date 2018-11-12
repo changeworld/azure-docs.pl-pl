@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: e563c7000b600bed917f42d8ffb87df883564ef8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 28c9e342aec3eb3ba61b46f4f80c7d097b0653b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979332"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258718"
 ---
 # <a name="using-the-azure-classic-cli-with-azure-storage"></a>Za pomocą klasycznego wiersza polecenia platformy Azure z usługą Azure Storage
 
@@ -122,7 +122,7 @@ export AZURE_STORAGE_CONNECTION_STRING=<connection_string>
 ```
 
 ## <a name="create-and-manage-blobs"></a>Tworzenie i zarządzanie obiektami blob
-Usługa Azure Blob storage jest usługą służącą do przechowywania dużych ilości danych niestrukturalnych, takich jak dane tekstowe lub binarne, które są dostępne z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. W tej sekcji założono, że znasz już pojęcia magazynu obiektów Blob platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [wprowadzenie do usługi Azure Blob storage przy użyciu platformy .NET](../blobs/storage-dotnet-how-to-use-blobs.md) i [pojęcia dotyczące usługi Blob](http://msdn.microsoft.com/library/azure/dd179376.aspx).
+Usługa Azure Blob storage jest usługą służącą do przechowywania dużych ilości danych niestrukturalnych, takich jak dane tekstowe lub binarne, które są dostępne z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. W tej sekcji założono, że znasz już pojęcia magazynu obiektów Blob platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [wprowadzenie do usługi Azure Blob storage przy użyciu platformy .NET](../blobs/storage-dotnet-how-to-use-blobs.md) i [pojęcia dotyczące usługi Blob](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 
 ### <a name="create-a-container"></a>Tworzenie kontenera
 Każdy obiekt blob w usłudze Azure storage musi być w kontenerze. Można utworzyć kontenera prywatnej przy użyciu `azure storage container create` polecenia:
@@ -137,7 +137,7 @@ azure storage container create mycontainer
 >
 
 ### <a name="upload-a-blob-into-a-container"></a>Przekazywanie obiektu blob do kontenera
-Azure Blob Storage obsługuje blokowe i stronicowe obiekty blob. Aby uzyskać więcej informacji, zobacz [omówienie blokowych obiektów blob, Uzupełnialnych obiektów blob i stronicowe obiekty BLOB](http://msdn.microsoft.com/library/azure/ee691964.aspx).
+Azure Blob Storage obsługuje blokowe i stronicowe obiekty blob. Aby uzyskać więcej informacji, zobacz [omówienie blokowych obiektów blob, Uzupełnialnych obiektów blob i stronicowe obiekty BLOB](https://msdn.microsoft.com/library/azure/ee691964.aspx).
 
 Aby przekazać obiekty BLOB w kontenerze, można użyć `azure storage blob upload`. Domyślnie to polecenie przekazuje pliki lokalne do blokowego obiektu blob. Aby określić typ obiektu blob, można użyć `--blobtype` parametru.
 

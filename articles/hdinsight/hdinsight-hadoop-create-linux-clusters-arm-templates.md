@@ -1,22 +1,22 @@
 ---
-title: Tworzenie klastrów usługi Hadoop przy użyciu szablonów — Azure HDInsight
+title: Tworzenie klastrów usługi Apache Hadoop przy użyciu szablonów — Azure HDInsight
 description: Dowiedz się, jak utworzyć klastry na HDInsight przy użyciu szablonów usługi Resource Manager
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 4cf516550e9f9852ec50981932c2df8f236d0358
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 4e5561c4846889f53723ed8df82d7c6268aee180
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961318"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241620"
 ---
-# <a name="create-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Tworzenie klastrów Hadoop w HDInsight przy użyciu szablonów usługi Resource Manager
+# <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Tworzenie klastrów usługi Apache Hadoop w HDInsight przy użyciu szablonów usługi Resource Manager
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 W tym artykule dowiesz się kilka sposobów tworzenia klastrów usługi Azure HDInsight przy użyciu szablonów usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażania aplikacji przy użyciu szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md). Aby dowiedzieć się więcej na temat innych narzędzi do tworzenia klastra i funkcji, kliknij selektor karty w górnej części tej strony, lub zobacz [metody tworzenia klastrów](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods).

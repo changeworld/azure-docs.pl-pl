@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/10/2018
-ms.openlocfilehash: 39bcea36f3599530413aa9fc4dbb308ee2fb1681
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.date: 11/8/2018
+ms.openlocfilehash: 9b036b74141ce2091d2e68b68d10c44a56a8696d
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49066857"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300696"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Topologie sieci na potrzeby migracji wystąpienia zarządzanego Azure SQL DB przy użyciu usługi Azure Database Migration Service
 W tym artykule omówiono różne topologie sieci, które Azure Database Migration Service można pracować zapewniając migracji kompleksowe środowisko z lokalnymi serwerami SQL do wystąpienia zarządzanego Azure SQL Database.
@@ -64,10 +64,26 @@ Użyj tej topologii sieci, jeśli dane środowisko wymaga co najmniej jedną z n
 **Wymagania**
 - Konfigurowanie [wirtualne sieci równorzędne sieci](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) między siecią Wirtualną użytą do wystąpienia zarządzanego Azure SQL Database i Azure Database Migration Service.
 
+## <a name="inbound-security-rules"></a>Reguły zabezpieczeń dla ruchu przychodzącego
+
+| **NAZWA**   | **PORT** | **PROTOKÓŁ** | **ŹRÓDŁO** | **MIEJSCE DOCELOWE** | **AKCJA** |
+|------------|----------|--------------|------------|-----------------|------------|
+| DMS_subnet | Dowolne      | Dowolne          | USŁUGA DMS PODSIECI | Dowolne             | Zezwalaj      |
+
+## <a name="outbound-security-rules"></a>Reguły zabezpieczeń dla ruchu wychodzącego
+
+| **NAZWA**                  | **PORT**                                              | **PROTOKÓŁ** | **ŹRÓDŁO** | **MIEJSCE DOCELOWE**           | **AKCJA** | **Przyczyna reguły**                                                                                                                                                                              |
+|---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| zarządzanie                | 443,9354                                              | TCP          | Dowolne        | Dowolne                       | Zezwalaj      | Komunikacja płaszczyzny zarządzania za pośrednictwem usługi service bus i usługi Azure blob storage. <br/>(Włączenie komunikacji równorzędnej firmy Microsoft, nie trzeba tej reguły.)                                                             |
+| Diagnostyka               | 12000                                                 | TCP          | Dowolne        | Dowolne                       | Zezwalaj      | Usługa DMS używa tej reguły do zbierania informacji diagnostycznych w celu rozwiązywania problemów.                                                                                                                      |
+| Źródło programu SQL server         | 1433 (lub port TCP IP, który nasłuchuje program SQL Server) | TCP          | Dowolne        | Przestrzeń adresów lokalnych | Zezwalaj      | Połączenia źródła programu SQL Server z poziomu usługi DMS <br/>(W przypadku połączenia lokacja lokacja może nie potrzebujesz tej reguły.)                                                                                       |
+| SQL Server, nazwane wystąpienie | 1434                                                  | UDP          | Dowolne        | Przestrzeń adresów lokalnych | Zezwalaj      | Wystąpienie źródła łączności z usługi DMS nazwane programu SQL Server <br/>(W przypadku połączenia lokacja lokacja może nie potrzebujesz tej reguły.)                                                                        |
+| Udział SMB                 | 445                                                   | TCP          | Dowolne        | Przestrzeń adresów lokalnych | Zezwalaj      | Udział sieciowy SMB przez usługę DMS do przechowywania kopii zapasowej plików bazy danych dla migracji do wystąpienia Zarządzanego usługi Azure SQL Database i serwerami programu SQL Server na maszynie Wirtualnej platformy Azure <br/>(W przypadku połączenia lokacja lokacja może nie potrzebujesz tej reguły). |
+| DMS_subnet                | Dowolne                                                   | Dowolne          | Dowolne        | DMS_Subnet                | Zezwalaj      |                                                                                                                                                                                                  |
 
 ## <a name="see-also"></a>Zobacz też
 - [Migrowanie programu SQL Server do wystąpienia zarządzanego bazy danych Azure SQL](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)
-- [Przegląd wymagań wstępnych dotyczących używania usługi Azure Database Migration Service](https://docs.microsoft.com/azure/dms/pre-reqs)
+- [Omówienie wymagań wstępnych dotyczących używania usługi Azure Database Migration Service](https://docs.microsoft.com/azure/dms/pre-reqs)
 - [Tworzenie sieci wirtualnej przy użyciu witryny Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
 ## <a name="next-steps"></a>Kolejne kroki

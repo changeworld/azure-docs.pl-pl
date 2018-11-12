@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: 885258379e71ea945e41c4b43c34b35b16dd4a7a
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 91a2b112000e970b73420abaa26efc7de1caa626
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42057341"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261459"
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Jak skalować usługi Azure Redis Cache
 Usługa Azure Redis Cache ma pamięci podręcznej różnych ofert, które zapewniają elastyczność przy wyborze funkcji i rozmiar pamięci podręcznej. Po utworzeniu pamięci podręcznej możesz skalować rozmiar i warstwę cenową w pamięci podręcznej, jeśli zmienią się wymagania dotyczące aplikacji. W tym artykule pokazano, jak skalować pamięć podręczną przy użyciu witryny Azure portal i narzędzi, takich jak Azure PowerShell i wiersza polecenia platformy Azure.
@@ -81,7 +81,7 @@ Aby skalować swoich wystąpień usługi Azure Redis Cache przy użyciu wiersza 
 Aby uzyskać więcej informacji na temat skalowania przy użyciu wiersza polecenia platformy Azure, zobacz [zmienić ustawienia istniejących pamięci podręcznej Redis](cache-manage-cli.md#scale).
 
 ### <a name="scale-using-maml"></a>Skalowanie przy użyciu MAML
-Skalowanie usługi Azure Redis Cache wystąpień przy użyciu [usługi Microsoft Azure Management bibliotek (MAML)](http://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/), wywołaj `IRedisOperations.CreateOrUpdate` metody i Przekaż nowy rozmiar `RedisProperties.SKU.Capacity`.
+Skalowanie usługi Azure Redis Cache wystąpień przy użyciu [usługi Microsoft Azure Management bibliotek (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/), wywołaj `IRedisOperations.CreateOrUpdate` metody i Przekaż nowy rozmiar `RedisProperties.SKU.Capacity`.
 
     static void Main(string[] args)
     {

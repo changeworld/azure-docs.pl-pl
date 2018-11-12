@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 0ec2e31ae3127d27e0f494222385e7f6d456aa65
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 248fd094a8655af2a21035267a6b8f69f268683d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231869"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262169"
 ---
 # <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do aplikacji dla programu Chrome przy użyciu usługi Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -362,7 +362,7 @@ Aplikacja dla programu Chrome jest tworzona przy użyciu języka JavaScript i mo
    * **registerWithGCM** jest procedurą obsługi kliknięcia pierwszego przycisku, który wykonuje wywołanie `chrome.gcm.register` do usługi GCM w celu zarejestrowania bieżącego wystąpienia aplikacji dla programu Chrome.
    * **registerCallback** jest funkcją wywołania zwrotnego, która jest wywoływana po zwróceniu danych przez wywołanie rejestracji w usłudze GCM.
    * **registerWithNH** jest programem obsługi kliknięcia drugiego przycisku, który dokonuje rejestracji w usłudze Notification Hubs. Pobiera on właściwości `hubName` oraz `connectionString` (określone przez użytkownika) i tworzy wywołanie rejestracji w usłudze Notification Hubs za pomocą interfejsu API REST.
-   * **splitConnectionString** i **generateSaSToken** są pomocnikami reprezentującymi implementację procesu tworzenia tokenu SaS w języku JavaScript, która musi być używana we wszystkich wywołaniach interfejsu API REST. Aby uzyskać więcej informacji, zobacz temat [Common Concepts](http://msdn.microsoft.com/library/dn495627.aspx) (Wspólne pojęcia).
+   * **splitConnectionString** i **generateSaSToken** są pomocnikami reprezentującymi implementację procesu tworzenia tokenu SaS w języku JavaScript, która musi być używana we wszystkich wywołaniach interfejsu API REST. Aby uzyskać więcej informacji, zobacz temat [Common Concepts](https://msdn.microsoft.com/library/dn495627.aspx) (Wspólne pojęcia).
    * **sendNHRegistrationRequest** jest funkcją wykonującą wywołanie interfejsu REST protokołu HTTP do usługi Azure Notification Hubs.
    * **registrationPayload** definiuje ładunek XML rejestracji. Aby uzyskać więcej informacji, zobacz temat [Create Registration NH REST API] (Interfejs API REST rejestracji w usłudze Notification Hubs). Zaktualizuj w nim identyfikator rejestracji, używając wartości odebranej z usługi GCM.
    * **client** jest wystąpieniem obiektu **XMLHttpRequest** używanym przez aplikację do tworzenia żądań POST protokołu HTTP. Zaktualizuj nagłówek `Authorization` przy użyciu elementu `sasToken`. Pomyślne wykonanie tego wywołania spowoduje zarejestrowanie tego wystąpienia aplikacji dla programu Chrome w usłudze Azure Notification Hubs.
@@ -390,7 +390,7 @@ Aplikacja dla programu Chrome jest tworzona przy użyciu języka JavaScript i mo
 W celach testowych wyślij powiadomienia wypychane programu Chrome przy użyciu aplikacji konsolowej programu .NET. 
 
 > [!NOTE]
-> Powiadomienia wypychane można wysyłać przy użyciu usługi Notification Hubs z poziomu dowolnego zaplecza za pośrednictwem publicznego <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">interfejsu REST</a>. Odwiedź [portal dokumentacji](https://azure.microsoft.com/documentation/services/notification-hubs/), aby uzyskać więcej przykładów dla różnych platform.
+> Powiadomienia wypychane można wysyłać przy użyciu usługi Notification Hubs z poziomu dowolnego zaplecza za pośrednictwem publicznego <a href="https://msdn.microsoft.com/library/windowsazure/dn223264.aspx">interfejsu REST</a>. Odwiedź [portal dokumentacji](https://azure.microsoft.com/documentation/services/notification-hubs/), aby uzyskać więcej przykładów dla różnych platform.
 > 
 > 
 

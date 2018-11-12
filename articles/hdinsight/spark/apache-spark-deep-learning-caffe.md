@@ -2,25 +2,25 @@
 title: Używanie platformy Caffe na platformie Azure HDInsight Spark na potrzeby rozproszonej uczenia głębokiego
 description: Używanie platformy Caffe na platformie Azure HDInsight Spark na potrzeby rozproszonej uczenia głębokiego
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: a7873996d83dbc79b4d44c58bd964c274f9c7709
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 71322869eb9272fb59b98a0e21b1f639129572b7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622919"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255932"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Używanie platformy Caffe na platformie Azure HDInsight Spark na potrzeby rozproszonej uczenia głębokiego
 
 
 ## <a name="introduction"></a>Wprowadzenie
 
-Uczenie głębokie ma wpływ na wszystkie elementy z branży opieki zdrowotnej do transportu do produkcji i nie tylko. Firmy zaczynają korzystać z rozwiązania trudnych problemów, takie jak do uczenia głębokiego [Klasyfikacja obrazów](http://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [rozpoznawania mowy](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)obiektu rozpoznawanie i tłumaczenia maszynowego. 
+Uczenie głębokie ma wpływ na wszystkie elementy z branży opieki zdrowotnej do transportu do produkcji i nie tylko. Firmy zaczynają korzystać z rozwiązania trudnych problemów, takie jak do uczenia głębokiego [Klasyfikacja obrazów](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [rozpoznawania mowy](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)obiektu rozpoznawanie i tłumaczenia maszynowego. 
 
 Istnieją [wiele popularnych platform](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), w tym [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), MXNet, Theano, itp. Caffe jest jednym z Najpopularniejsza poznana struktur — symboliczne sieci neuronowej (imperatywne) i powszechnie używane w wielu obszarów, takich jak przetwarzanie obrazów. Ponadto [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) łączy w sobie Caffe z platformą Apache Spark, w którym to przypadku głębokiego uczenia, które mogą być łatwo używane w istniejącym klastrze usługi Hadoop. Uczenie głębokie, wraz z potoki przetwarzania ETL platformy Spark, zmniejszenie złożoności systemu i opóźnień służy do kompletnego rozwiązania uczenia.
 

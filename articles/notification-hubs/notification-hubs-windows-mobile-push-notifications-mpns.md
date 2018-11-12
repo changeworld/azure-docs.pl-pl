@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 14b9a4ed66995a73f00234f4b25f52fccbcbe556
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e055b51af19ad3958c0c9155490c598ed0f4a80e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38562608"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235211"
 ---
 # <a name="tutorial-push-notifications-to-windows-phone-apps-by-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do aplikacji systemu Windows Phone przy użyciu usługi Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -61,7 +61,7 @@ Wykonanie czynności opisanych w tym samouczku jest wymaganiem wstępnym dla wsz
     Centrum zostało utworzone i jest skonfigurowane do wysyłania nieuwierzytelnionych powiadomień do urządzeń z systemem Windows Phone.
 
     > [!NOTE]
-    > W tym samouczku używana jest usługa MPNS w trybie nieuwierzytelnionym. W trybie nieuwierzytelnionym usługi MPNS występują ograniczenia dotyczące powiadomień, które można wysyłać do poszczególnych kanałów. Usługa Notification Hubs obsługuje [tryb uwierzytelniony usługi MPNS](http://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx), umożliwiając przekazanie certyfikatu.
+    > W tym samouczku używana jest usługa MPNS w trybie nieuwierzytelnionym. W trybie nieuwierzytelnionym usługi MPNS występują ograniczenia dotyczące powiadomień, które można wysyłać do poszczególnych kanałów. Usługa Notification Hubs obsługuje [tryb uwierzytelniony usługi MPNS](https://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx), umożliwiając przekazanie certyfikatu.
 
 ## <a name="create-a-windows-phone-application"></a>Tworzenie aplikacji systemu Windows Phone
 W tej sekcji utworzysz aplikację systemu Windows Phone, która będzie rejestrować się w centrum powiadomień. 

@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: 02fc47200157b813da4d0031effa39633719855d
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: df680469541885ab6413800ee3b9806975e34dba
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340209"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258667"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Zamówienie urządzenia zdarzenia połączeń z usługi Azure IoT Hub przy użyciu usługi Azure Cosmos DB
 
@@ -22,7 +22,7 @@ Numer sekwencji jest ciąg reprezentujący liczbę szesnastkową. Porównanie ci
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Aktywne konto platformy Azure. Jeśli go nie masz, możesz [utworzyć bezpłatne konto](http://azure.microsoft.com/pricing/free-trial/).
+* Aktywne konto platformy Azure. Jeśli go nie masz, możesz [utworzyć bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
 
 * Aktywne konto interfejsu API SQL usługi Azure Cosmos DB. Jeśli jeden nie utworzono jeszcze, zobacz [Tworzenie konta bazy danych](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#create-a-database-account) przewodnik.
 

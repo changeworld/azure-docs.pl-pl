@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: ef74ebfab9450d0aa22b5a2f3287491d96573cff
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 9c6e26b082fb52f7d23bb1a827af30483f7fbd4f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249173"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255714"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Formaty i kodeki narzędzia Media Encoder Standard
 Ten dokument zawiera listę najbardziej typowych importu i eksportu formatów plików, które za pomocą usługi Media Encoder Standard.
@@ -87,7 +87,7 @@ Obsługa mapowanie kanałów jawne/dostarczone przez użytkownika zapewnia się 
 | Program Windows Media Audio |Yes |
 | WAV/PCM |Yes |
 | [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Yes |
-| [Dziele](http://go.microsoft.com/fwlink/?LinkId=822667) |Yes |
+| [Dziele](https://go.microsoft.com/fwlink/?LinkId=822667) |Yes |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Yes |
 | AMR (adaptacyjne Multi-Rate) |Yes |
 | AES (SMPTE 331 M oraz 302 M, AES3-2003) |Nie |

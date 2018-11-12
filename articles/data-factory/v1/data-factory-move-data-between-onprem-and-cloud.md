@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b221697b7450ad1c6dac87b7a08c7db8b11810bf
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 1bf915bf702cdf9492cce1f32886c0049fbf9867
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240469"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242844"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Przenoszenie danych między źródłami lokalnymi i w chmurze przy użyciu bramy zarządzania danymi
 > [!NOTE]
@@ -47,7 +47,7 @@ W tym przewodniku należy wykonać poniższe kroki:
 ## <a name="prerequisites-for-the-tutorial"></a>Wymagania wstępne dotyczące samouczka
 Przed rozpoczęciem tego instruktażu, musisz mieć następujące wymagania wstępne:
 
-* **Subskrypcja platformy Azure**.  Jeśli nie masz subskrypcji, możesz utworzyć konto bezpłatnej wersji próbnej w zaledwie kilka minut. Zobacz [bezpłatnej wersji próbnej](http://azure.microsoft.com/pricing/free-trial/) artykuł, aby uzyskać szczegółowe informacje.
+* **Subskrypcja platformy Azure**.  Jeśli nie masz subskrypcji, możesz utworzyć konto bezpłatnej wersji próbnej w zaledwie kilka minut. Zobacz [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/) artykuł, aby uzyskać szczegółowe informacje.
 * **Konto usługi Azure Storage**. Możesz użyć magazynu obiektów blob jako **docelowego/ujścia** magazynu danych w ramach tego samouczka. Jeśli nie masz konta usługi Azure Storage, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md).
 * **SQL Server**. Użyj lokalnej bazy danych programu SQL Server jako **źródła** magazynu danych w tym samouczku. 
 

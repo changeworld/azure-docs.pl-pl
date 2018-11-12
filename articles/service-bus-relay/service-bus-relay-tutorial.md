@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: spelluru
-ms.openlocfilehash: 12902fef0a27aa0af5995d2fd6ab87d951413d1d
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 9c76e535fe0585ec6ff08a0c9dcab700d8eb5424
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857979"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262016"
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Samouczek dotyczący przekaźnika WCF platformy Azure
 
@@ -35,7 +35,7 @@ Ostatnie trzy kroki opisują sposób tworzenia aplikacji klienckiej, konfigurowa
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* [Program Microsoft Visual Studio w wersji 2015 lub nowszej](http://visualstudio.com). Ten samouczek używa Visual Studio 2017.
+* [Program Microsoft Visual Studio w wersji 2015 lub nowszej](https://visualstudio.com). Ten samouczek używa Visual Studio 2017.
 * Aktywne konto platformy Azure. Jeśli go nie masz, możesz utworzyć bezpłatne konto w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-service-namespace"></a>Tworzenie przestrzeni nazw usługi
@@ -55,7 +55,7 @@ Kontrakt usługi określa, jakie operacje (terminologia usługi sieci web dla me
 
 3. Zainstaluj pakiet NuGet magistrali usług. Ten pakiet automatycznie dodaje odwołania do bibliotek usługi Service Bus, jak również przestrzeń nazw **System.ServiceModel** usługi WCF. [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) jest przestrzenią nazw umożliwiającą programowy dostęp do podstawowych funkcji platformy WCF. Usługa Service Bus używa wielu obiektów i atrybutów usługi WCF do definiowania kontraktów usług.
 
-    W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt, a następnie kliknij przycisk **Zarządzaj pakietami NuGet...** . Kliknij kartę **Przeglądanie**, a następnie wyszukaj ciąg **WindowsAzure.ServiceBus**. Upewnij się, że nazwa projektu jest zaznaczona w polu **Wersje**. Kliknij pozycję **Zainstaluj** i zaakceptuj warunki użytkowania.
+    W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt, a następnie kliknij przycisk **Zarządzaj pakietami NuGet...** . Kliknij kartę Przeglądanie, a następnie wyszukaj ciąg **WindowsAzure.ServiceBus**. Upewnij się, że nazwa projektu jest zaznaczona w polu **Wersje**. Kliknij pozycję **Zainstaluj** i zaakceptuj warunki użytkowania.
 
     ![][3]
 4. W Eksploratorze rozwiązań kliknij dwukrotnie plik Program.cs, aby otworzyć go w edytorze, jeśli nie został jeszcze otwarty.
@@ -81,7 +81,7 @@ Kontrakt usługi określa, jakie operacje (terminologia usługi sieci web dla me
     ```
 
    > [!NOTE]
-   > Zazwyczaj przestrzeń nazw kontraktu usługi zawiera schemat nazewnictwa uwzględniający informacje o wersji. Uwzględnienie informacji o wersji w przestrzeni nazw kontraktu usługi umożliwia usługom izolowanie istotnych zmian przez zdefiniowanie nowego kontraktu usługi z nową przestrzenią nazw i ujawnienie go w nowym punkcie końcowym. W ten sposób klienci mogą nadal używać starego kontraktu usługi bez konieczności aktualizacji. Informacje o wersji mogą zawierać datę lub numer kompilacji. Aby uzyskać więcej informacji, zobacz [Service Versioning](http://go.microsoft.com/fwlink/?LinkID=180498) (Obsługa wersji usług). Schemat nazewnictwa przestrzeni nazw kontraktu usługi, używany w tym przykładzie, nie zawiera informacji o wersji.
+   > Zazwyczaj przestrzeń nazw kontraktu usługi zawiera schemat nazewnictwa uwzględniający informacje o wersji. Uwzględnienie informacji o wersji w przestrzeni nazw kontraktu usługi umożliwia usługom izolowanie istotnych zmian przez zdefiniowanie nowego kontraktu usługi z nową przestrzenią nazw i ujawnienie go w nowym punkcie końcowym. W ten sposób klienci mogą nadal używać starego kontraktu usługi bez konieczności aktualizacji. Informacje o wersji mogą zawierać datę lub numer kompilacji. Aby uzyskać więcej informacji, zobacz [Service Versioning](https://go.microsoft.com/fwlink/?LinkID=180498) (Obsługa wersji usług). Schemat nazewnictwa przestrzeni nazw kontraktu usługi, używany w tym przykładzie, nie zawiera informacji o wersji.
    >
    >
 8. W ramach `IEchoContract` interfejsu, Zadeklaruj metodę dla pojedynczej operacji `IEchoContract` kontraktu udostępnia w interfejsie i Zastosuj `OperationContractAttribute` atrybutu do metody, która ma zostać uwidoczniona jako część publicznego kontraktu przekaźnika WCF, w następujący sposób:

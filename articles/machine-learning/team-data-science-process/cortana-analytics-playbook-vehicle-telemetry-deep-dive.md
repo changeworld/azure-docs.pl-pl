@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: fc4b2d0beef1c91cd937ba901974796441657441
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8c4946ebef8d17d2016d482010768207d5e859ff
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234769"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300952"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Podręcznik dotyczący rozwiązań analizy Telemetrii pojazdów: szczegółami rozwiązania
-Menu łącze do części tego podręcznika dotyczącego: 
 
-[!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
+Ten artykuł rozwija do poszczególnych etapów przedstawiono w ramach architektury rozwiązania. Instrukcje i wskaźników do dostosowania są uwzględniane. 
 
-Ten dokument rozwija do poszczególnych etapów przedstawiono w ramach architektury rozwiązania. Instrukcje i wskaźników do dostosowania są uwzględniane. 
+Aby przejrzeć podsumowanie tego rozwiązania, zobacz [podręcznik dotyczący rozwiązań analizy Telemetrii pojazdów](cortana-analytics-playbook-vehicle-telemetry.md).
+
 
 ## <a name="data-sources"></a>Źródła danych
 Rozwiązanie korzysta z dwóch różnych źródeł danych:
@@ -675,3 +675,7 @@ Ten dokument zawiera szczegółowe szczegółów rozwiązania analizy Telemetrii
 * [Możliwości przenoszenia danych w usłudze Azure Data Factory](../../data-factory/copy-activity-overview.md)
 * [Usługa Azure działanie platformy .NET usługi fabryka danych](../../data-factory/transform-data-using-dotnet-custom-activity.md)
 * [Usługa Azure działanie platformy .NET usługi fabryka danych rozwiązania Visual Studio używane do przygotowania danych przykładowych](https://go.microsoft.com/fwlink/?LinkId=717077) 
+
+## <a name="next-steps"></a>Następne kroki
+
+Aby dowiedzieć się, jak skonfigurować raporty usługi Power BI i pulpity nawigacyjne dla tego rozwiązania, zobacz [instrukcje dotyczące konfiguracji pulpitu nawigacyjnego można przeprowadzić przy użyciu danych Telemetrycznych analizy rozwiązania szablonu usługi Power BI](cortana-analytics-playbook-vehicle-telemetry-powerbi.md).
