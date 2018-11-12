@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: d1c5c9a8709467c9f9ca87c841cffcf77a5b5f0b
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: e765739384aa7d18b95394cb0a9b2b6748174e7c
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219909"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51525660"
 ---
 <a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu klasycznego modelu wdrażania, które przypadają na jedną subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
@@ -45,7 +45,7 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Sieci wirtualne |1000 |
 | Podsieci na sieć wirtualną |3000 |
 | Komunikacja równorzędna sieci wirtualnych na sieć wirtualną |100 |
-| Serwery DNS na sieć wirtualną |25 |
+| Serwery DNS na sieć wirtualną |20 |
 | Prywatne adresy IP na sieć wirtualną |65536 |
 | Prywatne adresy IP na interfejs sieciowy |256 |
 | Współbieżne TCP lub UDP przepływy dla karty Sieciowej maszyny wirtualnej lub wystąpienia roli |500 000 |
