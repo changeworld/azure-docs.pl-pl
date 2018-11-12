@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: b565955abaae44efe20291a6e46b57a5fec941d1
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c736a9b4962de26f43dc79773149e834c37cbe85
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046562"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233409"
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>Wprowadzenie do kolekcji obszarów roboczych usługi Microsoft Power BI
 
@@ -79,7 +79,7 @@ Po utworzeniu kolekcji obszarów roboczych musisz utworzyć obszar roboczy, któ
 
 ## <a name="create-power-bi-datasets-and-reports-to-embed-into-an-app-using-power-bi-desktop"></a>Tworzenie zestawów danych i raportów usługi Power BI w celu osadzenia w aplikacji za pomocą programu Power BI Desktop
 
-Teraz, gdy masz utworzone wystąpienie usługi Power BI dla aplikacji i **klucze dostępu**, musisz utworzyć zestawy danych i raporty usługi Power BI, które mają zostać osadzone. Zestawy danych i raporty można tworzyć za pomocą programu **Power BI Desktop**. Możesz pobrać program [Power BI Desktop za darmo](https://go.microsoft.com/fwlink/?LinkId=521662). Możesz też pobrać plik z [przykładem analizy sprzedaży PBIX](http://go.microsoft.com/fwlink/?LinkID=780547), aby szybko rozpocząć pracę.
+Teraz, gdy masz utworzone wystąpienie usługi Power BI dla aplikacji i **klucze dostępu**, musisz utworzyć zestawy danych i raporty usługi Power BI, które mają zostać osadzone. Zestawy danych i raporty można tworzyć za pomocą programu **Power BI Desktop**. Możesz pobrać program [Power BI Desktop za darmo](https://go.microsoft.com/fwlink/?LinkId=521662). Możesz też pobrać plik z [przykładem analizy sprzedaży PBIX](https://go.microsoft.com/fwlink/?LinkID=780547), aby szybko rozpocząć pracę.
 
 > [!NOTE]
 > Aby dowiedzieć się więcej o sposobie używania programu **Power BI Desktop**, zobacz stronę [Getting Started With Power BI Desktop](https://powerbi.microsoft.com/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop) (Wprowadzenie do programu Power BI Desktop).

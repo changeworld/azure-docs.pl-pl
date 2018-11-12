@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/01/2018
+ms.date: 11/07/2018
 ms.author: patricka
-ms.reviewer: ''
-ms.openlocfilehash: f2d843b343fa830adf41352ae692ea98bed52ecc
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.reviewer: fiseraci
+ms.openlocfilehash: a16a6596d6bc33200f87a1dfd3b2ea5b02628e10
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713650"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277821"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Architektura tożsamości dla usługi Azure Stack
 Przed wybraniem dostawcy tożsamości do użycia z usługą Azure Stack, poznać ważne różnice między opcje usługi Azure Active Directory (Azure AD) i Active Directory Federation Services (AD FS). 
@@ -44,7 +44,7 @@ Dostawcy tożsamości, który wybierzesz można ograniczyć opcje, takie jak obs
 |Aplikacje mogą używać dostawcy tożsamości do logowania |Yes |Tak. Wymaga aplikacji federowania z lokalnego wystąpienia usług AD FS. |
 
 ## <a name="topologies"></a>Topologie
-Następujące sekcje discus różnych topologii tożsamości, które są dostępne.
+W poniższych sekcjach omówiono różne topologie tożsamości, które można użyć.
 
 ### <a name="azure-ad-single-tenant-topology"></a>Usługi Azure AD: Topologia pojedynczej dzierżawy 
 Domyślnie podczas instalowania usługi Azure Stack i używaj usługi Azure AD, Azure Stack używa topologii z jedną dzierżawą. 

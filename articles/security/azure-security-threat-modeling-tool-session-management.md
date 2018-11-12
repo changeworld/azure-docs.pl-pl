@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 97953779f1132d89c7ad07abdb4e08c0f476f4b9
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 182a0232b5317b1a375a20bdd4c6467578dc775b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841817"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232746"
 ---
 # <a name="security-frame-session-management"></a>Ramka zabezpieczeń: Zarządzanie sesjami
 | Produkt/usługę | Artykuł |
@@ -82,7 +82,7 @@ Należy również zniszczyć sesji użytkownika, wywołując metodę Session.Aba
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Azure Document DB | 
+| **Składnik**               | Baza danych Documentdb platformy Azure | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
@@ -157,7 +157,7 @@ Należy również zniszczyć sesji użytkownika, wywołując metodę Session.Aba
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | EnvironmentType — lokalnego |
-| **Odwołania**              | [httpCookies — Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/library/ms228262(v=vs.100).aspx), [HttpCookie.Secure właściwości](http://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
+| **Odwołania**              | [httpCookies — Element (ASP.NET Settings Schema)](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx), [HttpCookie.Secure właściwości](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
 | **Kroki** | Pliki cookie są zwykle dostępne jedynie do domeny, dla którego zostały zakresu. Niestety definicji "domena" nie zawierać nazwę protokołu, więc pliki cookie, które są tworzone przy użyciu protokołu HTTPS są dostępne za pośrednictwem protokołu HTTP. Do przeglądarki "bezpieczne" atrybut wskazuje, czy plik cookie należy dokonywać tylko dostępne za pośrednictwem protokołu HTTPS. Upewnij się, że wszystkie pliki cookie za pośrednictwem protokołu HTTPS, użyj **bezpiecznego** atrybutu. Przez ustawienie atrybutu wartość parametru requireSSL na wartość true w pliku web.config można wymusić wymagania. Jest preferowana, ponieważ wymuszają **bezpiecznego** atrybutu dla wszystkich bieżących i przyszłych plików cookie bez konieczności zmiany dodatkowego kodu.|
 
 ### <a name="example"></a>Przykład

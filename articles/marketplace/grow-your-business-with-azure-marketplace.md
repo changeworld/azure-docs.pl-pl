@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6c2f20f74ce90f2876ff4040d34a2ede94c92fb1
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d193cfcd03eb4e686ba829e121fbf77e2e0c18a6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577337"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233018"
 ---
 # <a name="grow-your-business-in-the-marketplace"></a>Rozwijaj swoją działalność w portalu marketplace 
 Po opublikowaniu oferty w usłudze AppSource lub w witrynie Azure Marketplace, można użyć swojej listy jako doskonała dla wspólnych działań (GTM wprowadzenie) go-to-market z firmą Microsoft. Kierowania ruchu do oferty w portalu Marketplace i pielęgnacji potencjalnych klientów w witrynie Marketplace, na przykład, są skuteczne sposoby Przyspiesz rozwój swojej firmy. 
@@ -229,7 +229,7 @@ Promuj swoją aplikację lub oferty i dostęp do więcej korzyści i zasobów, s
 
 | Korzyści | Zasoby |
 |:--- |:--- |
-| Zrealizujcie swoje korzyści Core | W ramach programu Microsoft Partner Network zyskujesz zestaw podstawowych korzyści, które może pomóc zaoszczędzić czas i pieniądze. Korzyści może również pomóc Ci zwiększanie możliwości, lepiej obsługiwać klientów i tworzyć relacje, aby dotrzeć do firmy.<br>Aby uzyskać więcej informacji na temat głównych korzyści, odwiedź stronę [głównych korzyści i wymagania](http://partner.microsoft.com/membership/core-benefits). |
+| Zrealizujcie swoje korzyści Core | W ramach programu Microsoft Partner Network zyskujesz zestaw podstawowych korzyści, które może pomóc zaoszczędzić czas i pieniądze. Korzyści może również pomóc Ci zwiększanie możliwości, lepiej obsługiwać klientów i tworzyć relacje, aby dotrzeć do firmy.<br>Aby uzyskać więcej informacji na temat głównych korzyści, odwiedź stronę [głównych korzyści i wymagania](https://partner.microsoft.com/membership/core-benefits). |
 | Zdobądź również z kompetencją Cloud Platform | Zarabiać kompetencją pomaga odróżnić samodzielnie między innymi partnerami firmy Microsoft. Zarabiać kompetencją pomaga też prezentację wiedzy technicznej i sukces klientów na rynku. Kompetencja jest wymaganiem wstępnym dla wielu programów kluczowy partner, takich jak wspólnej sprzedaży.<br> Aby uzyskać więcej informacji na temat kompetencję Cloud Platform, odwiedź stronę [kompetencję Cloud Platform](https://partner.microsoft.com/membership/cloud-platform-competency). |
 | Zostań gotowości do wspólnej sprzedaży adresu IP | Może być uprawnieni do skorzystania z adresu IP współpracy sprzedażowej program, który pozwala na współpracę bezpośrednio ze sprzedawcami firmy Microsoft i innymi partnerami, na docelowy potencjalnymi klientami i planowania konta. Rozwiązanie staje się widoczna dla sprzedawców firmy Microsoft w katalogu rozwiązania sprzedawcy. Sprzedawcami firmy Microsoft są przez współpracy i zdobywania Tobie.<br> Aby uzyskać więcej informacji na temat współpracy sprzedażowej programu, w tym wymagania kwalifikacyjne, odwiedź stronę [podwyższanie poziomu firmy](https://partner.microsoft.com/reach-customers/promote-your-business). |
 

@@ -1,25 +1,25 @@
 ---
-title: Zarządzanie klastrami usługi Hadoop za pomocą klasycznego wiersza polecenia platformy Azure — Azure HDInsight
-description: Dowiedz się, jak używać platformy Azure klasyczny interfejs wiersza polecenia do zarządzania klastrami Hadoop w usłudze Azure HDInsight.
+title: Zarządzanie klastrami Apache Hadoop za pomocą klasycznego wiersza polecenia platformy Azure — Azure HDInsight
+description: Dowiedz się, jak używać platformy Azure klasyczny interfejs wiersza polecenia do zarządzania klastrami Apache Hadoop w usłudze Azure HDInsight.
 services: hdinsight
 ms.reviewer: jasonh
-author: jasonwhowell
+author: tylerfox
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 2586b9219eb145b2033fe2d8fc64b8ae72f34eda
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: tyfox
+ms.openlocfilehash: d5d4c951bb104159730814f9b1b5820cb17f9f1a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958292"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234786"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-classic-cli"></a>Zarządzanie klastrami Hadoop w HDInsight przy użyciu klasycznego wiersza polecenia platformy Azure
+# <a name="manage-apache-hadoop-clusters-in-hdinsight-using-the-azure-classic-cli"></a>Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu klasycznego wiersza polecenia platformy Azure
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Dowiedz się, jak używać [klasyczny interfejs wiersza polecenia platformy Azure](../cli-install-nodejs.md) do zarządzania klastrami Hadoop w usłudze Azure HDInsight. Klasyczny interfejs wiersza polecenia jest zaimplementowana w środowisku Node.js. Można go używać na dowolnej platformie, która obsługuje środowisko Node.js, w tym w systemie Windows, Mac i Linux.
+Dowiedz się, jak używać [klasyczny interfejs wiersza polecenia platformy Azure](../cli-install-nodejs.md) do zarządzania klastrami Apache Hadoop w usłudze Azure HDInsight. Klasyczny interfejs wiersza polecenia jest zaimplementowana w środowisku Node.js. Można go używać na dowolnej platformie, która obsługuje środowisko Node.js, w tym w systemie Windows, Mac i Linux.
 
 [!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
@@ -86,13 +86,6 @@ azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
 ```cli
 azure hdinsight cluster enable-http-access [options] <Cluster Name> <userName> <password>
 azure hdinsight cluster disable-http-access [options] <Cluster Name>
-```
-
-## <a name="enabledisable-rdp-access-for-a-cluster"></a>Włącz/Wyłącz dostęp RDP dla klastra
-
-```cli
-azure hdinsight cluster enable-rdp-access [options] <Cluster Name> <rdpUserName> <rdpPassword> <rdpExpiryDate>
-azure hdinsight cluster disable-rdp-access [options] <Cluster Name>
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

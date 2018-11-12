@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: f468567aa67560eed972fb53669638a17778b307
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: b99874ce87c6e161fcd62ec871c6aee277ec946e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189958"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232299"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Konfigurowanie usługi IoT Hub, operacje przekazywania plików przy użyciu programu PowerShell
 
@@ -22,7 +22,7 @@ Aby użyć [pliku funkcję przekazywania w usłudze IoT Hub](iot-hub-devguide-fi
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](http://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.
+* Aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.
 
 * [Polecenia cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
 

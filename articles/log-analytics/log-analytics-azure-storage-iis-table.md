@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f88290043f750122327ddb1fd9b381b6bc24110c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 83c7862e8a9e3ce069765f81607bfbbeee272be2
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959328"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278654"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Użyj usługi Azure blob storage usług IIS i platformą Azure table Storage w przypadku zdarzeń z usługą Log Analytics
 
@@ -151,7 +151,7 @@ W ciągu 30 minut jesteś w stanie wyświetlić dane z konta magazynu w usłudze
 Użyj kroków w [konfigurowania usługi Log Analytics do indeksowania usługi Diagnostyka Azure](log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) odczytywać diagnostyki platformy Azure, które są zapisywane w usłudze table storage przy użyciu programu PowerShell.
 
 Przy użyciu programu Azure PowerShell można bardziej precyzyjnie określić zdarzenia, które są zapisywane do usługi Azure Storage.
-Aby uzyskać więcej informacji, zobacz [Włączanie diagnostyki w usłudze Azure Virtual Machines](../virtual-machines/virtual-machines-dotnet-diagnostics.md).
+Aby uzyskać więcej informacji, zobacz [Włączanie diagnostyki w usłudze Azure Virtual Machines](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
 Można włączyć i aktualizować diagnostyki platformy Azure za pomocą następującego skryptu programu PowerShell.
 Umożliwia także ten skrypt z konfiguracją niestandardowego rejestrowania.
@@ -195,4 +195,4 @@ Przejrzyj następujący przykładowy skrypt, skopiuj go, zmodyfikuj go zgodnie z
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zbieranie dzienników i metryk dla usług platformy Azure](log-analytics-azure-storage.md) obsługiwanych usług platformy Azure.
 * [Włączanie rozwiązań](../monitoring/monitoring-solutions.md) zapewniające wgląd w dane.
-* [Używają zapytań wyszukiwania](log-analytics-log-search.md) do analizowania danych.
+* [Używają zapytań wyszukiwania](log-analytics-queries.md) do analizowania danych.

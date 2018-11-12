@@ -1,20 +1,20 @@
 ---
-title: Architektura odzyskiwania po awarii serwera fizycznego/VMware, w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie składników i architektury używanych podczas odzyskiwania po awarii lokalnych maszyn wirtualnych z programu VMware lub serwerach fizycznych systemu Windows/Linux do lokacji dodatkowej programu VMware przy użyciu usługi Azure Site Recovery
+title: Architektura dla odzyskiwania po awarii serwera fizycznego/VMware do lokacji dodatkowej za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie składników i architektury używanych podczas odzyskiwania po awarii lokalnych maszyn wirtualnych z programu VMware lub serwerach fizycznych systemu Windows/Linux do lokacji dodatkowej programu VMware przy użyciu usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 16e8a9719280b55e86d1d4622a32470b37287dd4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 77387b52003923dffce7519df9cca47fad8f6e6c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215127"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007437"
 ---
-# <a name="vmware-vmphysical-server-to-vmware-disaster-recovery-architecture"></a>Serwer fizyczny/maszyn wirtualnych VMware architektury odzyskiwania po awarii programu VMware
+# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektura replikacji serwera fizycznego/VMware do lokacji dodatkowej w środowisku lokalnym
 
 W tym artykule opisano architekturę i procesem stosowanym podczas konfigurowania replikacji odzyskiwania po awarii, tryb failover i odzyskiwanie maszyn wirtualnych VMware w środowisku lokalnym (VM) lub serwerach fizycznych systemu Windows/Linux do dodatkowej lokacji programu VMware, za pomocą [platformy Azure Site Recovery](site-recovery-overview.md).
 

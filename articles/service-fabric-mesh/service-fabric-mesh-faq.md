@@ -9,12 +9,12 @@ ms.date: 06/25/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: b32af29a123ce4d070e1bb68b5a43ba6d0d2c5e1
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: f80f61cbfc1f7b719e73d7d29c6948bebe84aa6c
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218478"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278314"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Często zadawane pytania usługi Service Fabric siatki
 Usługa Azure Service Fabric Mesh to w pełni zarządzana usługa, która pozwala deweloperom na wdrażanie aplikacji mikrousług bez zarządzania maszynami wirtualnymi, magazynem i siecią. W tym artykule znajdują się odpowiedzi na często zadawane pytania.
@@ -44,7 +44,7 @@ Tak, limity przydziału dla każdej subskrypcji są ustawione w następujący sp
 
 **Jak długo można pozostawić Moja aplikacja wdrożona?**
 
-Firma Microsoft ma obecnie ograniczony okres istnienia aplikacji do dwóch dni. Jest to w celu optymalnego wykorzystania wolnych rdzeni przydzielonych do wersji zapoznawczej. W rezultacie tylko mogła działać danego wdrożenia stale w ciągu 48 godzin, po tym czasie zostaną usunięte przez system. Jeśli tak się dzieje się tak zdarzyć, można sprawdzić, czy system zamknij go, uruchamiając `az mesh app show` polecenia wiersza polecenia platformy Azure i sprawdzanie zwraca `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
+Firma Microsoft ma obecnie ograniczony okres istnienia aplikacji do dwóch dni. Jest to w celu optymalnego wykorzystania wolnych rdzeni przydzielonych do wersji zapoznawczej. W rezultacie tylko mogła działać danego wdrożenia stale w ciągu 48 godzin, po upływie których ona zostanie zamknięta przez system. Jeśli tak się dzieje się tak zdarzyć, można sprawdzić, czy system zamknij go, uruchamiając `az mesh app show` polecenia wiersza polecenia platformy Azure i sprawdzanie zwraca `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
 Na przykład: 
 
@@ -71,6 +71,10 @@ chackdan@Azure:~$ az mesh app show --resource-group myResourceGroup --name hello
   "unhealthyEvaluation": null
 }
 ```
+
+Aby kontynuować wdrażanie tej samej aplikacji do siatki, należy usunąć grupę zasobów skojarzonych z aplikacją lub indywidualnie usunąć aplikację i wszystkie pokrewne zasoby siatki (w tym sieci). 
+
+Aby usunąć grupę zasobów, użyj `az group delete <nameOfResourceGroup>` polecenia. 
 
 ## <a name="supported-container-os-images"></a>Obrazy obsługiwane kontenerów systemu operacyjnego
 Następujące obrazy systemu operacyjnego kontener może służyć w przypadku wdrażania usług.

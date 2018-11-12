@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 32be46fb0c41909ce8a8014b13843970555d366f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 32be473ab93231805cdae097e3e984a2e74da973
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056313"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233086"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Korzystanie z programu PowerShell do tworzenia maszyny wirtualnej platformy Azure z serwerem raportów pracującym w trybie macierzystym
 > [!IMPORTANT] 
@@ -90,7 +90,7 @@ W tym temacie opisano i przedstawiono wdrażanie i konfigurowanie serwera raport
 
 Aby używać protokołu HTTPS na maszynie Wirtualnej, konieczne będzie zaufany certyfikat SSL. W zależności od scenariusza można użyć jednej z następujących dwóch metod:
 
-* Ważnego certyfikatu SSL wystawionego przez urząd certyfikacji (CA) i zaufany przez firmę Microsoft. Certyfikaty głównego urzędu certyfikacji są wymagane za pośrednictwem programu certyfikatów głównych firmy Microsoft. Aby uzyskać więcej informacji na temat tego programu, zobacz [Windows i Windows Phone 8 SSL programu certyfikatów głównych (członek CAs)](http://social.technet.microsoft.com/wiki/contents/articles/14215.windows-and-windows-phone-8-ssl-root-certificate-program-member-cas.aspx) i [wprowadzenie do programu certyfikatów głównych firmy Microsoft](http://social.technet.microsoft.com/wiki/contents/articles/3281.introduction-to-the-microsoft-root-certificate-program.aspx).
+* Ważnego certyfikatu SSL wystawionego przez urząd certyfikacji (CA) i zaufany przez firmę Microsoft. Certyfikaty głównego urzędu certyfikacji są wymagane za pośrednictwem programu certyfikatów głównych firmy Microsoft. Aby uzyskać więcej informacji na temat tego programu, zobacz [Windows i Windows Phone 8 SSL programu certyfikatów głównych (członek CAs)](https://social.technet.microsoft.com/wiki/contents/articles/14215.windows-and-windows-phone-8-ssl-root-certificate-program-member-cas.aspx) i [wprowadzenie do programu certyfikatów głównych firmy Microsoft](https://social.technet.microsoft.com/wiki/contents/articles/3281.introduction-to-the-microsoft-root-certificate-program.aspx).
 * Certyfikat z podpisem własnym. Certyfikaty z podpisem własnym nie są zalecane w środowiskach produkcyjnych.
 
 ### <a name="to-use-a-certificate-created-by-a-trusted-certificate-authority-ca"></a>Do korzystania z certyfikatu, utworzony przez zaufany urząd certyfikacji (CA)
@@ -547,7 +547,7 @@ Aby sprawdzić, czy port jest otwarty, Otwórz okno programu Windows PowerShell 
 
     get-netfirewallrule | where {$_.displayname -like "*report*"} | select displayname,enabled,action
 
-## <a name="verify-the-configuration"></a>Sprawdź, czy konfiguracja
+## <a name="verify-the-configuration"></a>Sprawdzanie konfiguracji
 Aby sprawdzić, czy raport podstawowe funkcje serwera działa, otwórz przeglądarkę z uprawnieniami administracyjnymi, a następnie przejdź do następujących Menedżera serwera raportowania ad raport adresów URL:
 
 * Na maszynie Wirtualnej przejdź do adresu URL serwera raportów:

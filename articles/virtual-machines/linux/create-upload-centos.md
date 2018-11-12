@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: 5328ee7e3e3035ebce1ff9fccbfc6e9ccfd86ee8
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 171180eb373553dfa0c971b22e3cf62e450829ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888401"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233613"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu CentOS dla platformy Azure
 * [Przygotowywanie maszyny wirtualnej w wersji 6.x CentOS dla platformy Azure](#centos-6x)
@@ -29,7 +29,7 @@ ms.locfileid: "48888401"
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule założono, że już zainstalowano CentOS (lub podobny) wirtualnego dysku twardego systemu operacyjnego Linux. Istnieje wiele narzędzi do tworzenia plików VHD, na przykład rozwiązanie wirtualizacji takich jak funkcji Hyper-V. Aby uzyskać instrukcje, zobacz [należy zainstalować rolę funkcji Hyper-V i konfigurowanie maszyny wirtualnej](http://technet.microsoft.com/library/hh846766.aspx).
+W tym artykule założono, że już zainstalowano CentOS (lub podobny) wirtualnego dysku twardego systemu operacyjnego Linux. Istnieje wiele narzędzi do tworzenia plików VHD, na przykład rozwiązanie wirtualizacji takich jak funkcji Hyper-V. Aby uzyskać instrukcje, zobacz [należy zainstalować rolę funkcji Hyper-V i konfigurowanie maszyny wirtualnej](https://technet.microsoft.com/library/hh846766.aspx).
 
 **Uwagi dotyczące instalacji centOS**
 
