@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 5bc1212cc6e894cd82a60abb42f92893c0bb2d43
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: bba7c70a5078d309a55f898c24389d42a8a604ab
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579548"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035039"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>Rozwiązywanie problemów z nieprawidłową konfiguracją nazwy głównej usługi dla swojej domeny zarządzanej
 
@@ -45,7 +45,7 @@ Aby określić, która usługa podmiotów zabezpieczeń, muszą one zostać odtw
 | 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [Utwórz ponownie Brak jednostki usługi przy użyciu programu PowerShell](#recreate-a-missing-service-principal-with-powershell) |
 | 443155a6-77f3-45e3-882b-22b3a8d431fb | [Ponownie zarejestrować się do przestrzeni nazw Microsoft.AAD](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
 | abba844e-bc0e-44b0-947a-dc74e5d09022  | [Ponownie zarejestrować się do przestrzeni nazw Microsoft.AAD](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
-| d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [Jednostki usługi, które samodzielnie rozwiązać](#service-principals-that-self-correct) |
+| d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [Ponownie zarejestrować się do przestrzeni nazw Microsoft.AAD](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
 
 ## <a name="recreate-a-missing-service-principal-with-powershell"></a>Utwórz ponownie Brak jednostki usługi przy użyciu programu PowerShell
 Wykonaj następujące kroki, jeśli nazwy głównej usługi o identyfikatorze ```2565bd9d-da50-47d4-8b85-4c97f669dc36``` nie ma w katalogu usługi Azure AD.
@@ -76,7 +76,7 @@ Aby rozwiązać ten problem, wpisz następujące polecenia w oknie programu Powe
 
 
 ## <a name="re-register-to-the-microsoft-aad-namespace-using-the-azure-portal"></a>Ponownie zarejestruj się w przestrzeni nazw AAD firmy Microsoft, za pomocą witryny Azure portal
-Wykonaj następujące kroki, jeśli nazwy głównej usługi o identyfikatorze ```443155a6-77f3-45e3-882b-22b3a8d431fb``` lub ```abba844e-bc0e-44b0-947a-dc74e5d09022``` nie ma w katalogu usługi Azure AD.
+Wykonaj następujące kroki, jeśli nazwy głównej usługi o identyfikatorze ```443155a6-77f3-45e3-882b-22b3a8d431fb``` lub ```abba844e-bc0e-44b0-947a-dc74e5d09022``` lub ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` nie ma w katalogu usługi Azure AD.
 
 **Rozwiązanie:** wykonaj następujące kroki, aby przywrócić usług domenowych w Twoim katalogu:
 
@@ -85,12 +85,6 @@ Wykonaj następujące kroki, jeśli nazwy głównej usługi o identyfikatorze ``
 3. Za pomocą nawigacji po lewej stronie wybierz **dostawców zasobów**
 4. Wyszukaj "Microsoft.AAD" w tabeli i kliknij przycisk **ponownej rejestracji**
 5. Aby upewnić się, że alert nie zostanie rozwiązany, należy wyświetlić stronę kondycji dla domeny zarządzanej w ciągu dwóch godzin.
-
-
-## <a name="service-principals-that-self-correct"></a>Jednostki usługi, które samodzielnie rozwiązać
-Wykonaj następujące kroki, jeśli nazwy głównej usługi o identyfikatorze ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` nie ma w katalogu usługi Azure AD.
-
-**Rozwiązanie:** usługi domenowe Azure AD może wykryć, kiedy tego określonego Brak jednostki usługi, nieprawidłowo skonfigurowany lub został usunięty. Usługa automatycznie odtworzy tę jednostkę. Jednak musisz usunąć taką aplikację i obiekt, który działał z aplikacją usunięte, ponieważ podczas certyfikacji najedzie na, aplikacji i obiekt nie będą już mieć możliwość zostać zmodyfikowane przez nową usługę podmiotu zabezpieczeń. Spowoduje to nowy błąd w domenie. Wykonaj kroki opisane w temacie [sekcji AADDS105](#alert-aadds105-password-synchronization-application-is-out-of-date) Aby uniknąć tego problemu. Po należy sprawdzić kondycję domeny zarządzanej po dwóch godzinach, aby upewnić się, że nowa jednostka usługi została utworzona ponownie.
 
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>AADDS105 alertu: Stosowanie synchronizacji haseł jest nieaktualna
@@ -110,8 +104,8 @@ Aby rozwiązać ten problem, wpisz następujące polecenia w oknie programu Powe
 2. Usuń stare aplikacji i obiekt przy użyciu następujących poleceń programu PowerShell
 
     ```powershell
-    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
-    Remove-AzureADApplication -ObjectId $app.ObjectId
+    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
+    Remove-AzureADApplication -ObjectId $app.ObjectId
     $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
     Remove-AzureADServicePrincipal -ObjectId $app.ObjectId
     ```

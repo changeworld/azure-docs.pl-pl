@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 97e192312619455c0055a917df880cc48eb082dd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9efb08922f3e6f78266baaf8ae623dd241c09522
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978921"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037621"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing ruchu w sieci wirtualnej
 
@@ -167,7 +167,7 @@ Gdy zastąpisz prefiks adresu 0.0.0.0/0, oprócz ruchu wychodzącego z podsieci 
         - mieć możliwość translacji i przekazywania dalej adresu sieciowego lub służenia jako serwer proxy ruchu do zasobu docelowego w podsieci, a następnie zwracać ruch z powrotem do Internetu. 
     - **Brama sieci wirtualnej**: w przypadku bramy będącej bramą sieci wirtualnej usługi ExpressRoute lokalne urządzenie połączone z Internetem może dokonywać translacji i przekazywania dalej adresów sieciowych lub służyć jako serwer proxy ruchu do zasobu docelowego w podsieci za pośrednictwem [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering) usługi ExpressRoute. 
 
-Jeśli Twoja sieć wirtualna jest podłączona do bramy sieci VPN platformy Azure, nie należy kojarzyć tabeli tras z [podsiecią bramy](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) zawierającą trasy z adresem docelowym 0.0.0.0/0. Zaniedbanie tego może spowodować nieprawidłowe działanie bramy. Aby poznać więcej szczegółów, zobacz pytanie *Dlaczego niektóre porty są otwarte w mojej bramie sieci VPN?* w temacie [Brama VPN Gateway — często zadawane pytania](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#why-are-certain-ports-opened-on-my-vpn-gateway).
+Jeśli Twoja sieć wirtualna jest podłączona do bramy sieci VPN platformy Azure, nie należy kojarzyć tabeli tras z [podsiecią bramy](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) zawierającą trasy z adresem docelowym 0.0.0.0/0. Zaniedbanie tego może spowodować nieprawidłowe działanie bramy. Aby poznać więcej szczegółów, zobacz pytanie *Dlaczego niektóre porty są otwarte w mojej bramie sieci VPN?* w temacie [Brama VPN Gateway — często zadawane pytania](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gatewayports).
 
 Zobacz [DMZ between Azure and your on-premises datacenter (Sieć obwodowa między platformą Azure i lokalnym centrum danych)](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) i [DMZ between Azure and the Internet (Sieć obwodowa między platformą Azure i Internetem)](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json), aby poznać szczegóły implementacji w przypadku używania bram sieci wirtualnej i urządzeń wirtualnych między Internetem a platformą Azure.
 

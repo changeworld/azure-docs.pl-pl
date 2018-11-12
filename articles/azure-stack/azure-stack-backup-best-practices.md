@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 08d8822410545fb0ae3a2a99de00b38566c9834c
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: ec17f6923fc1c928f24fcb762daedbaea5b688ac
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42059524"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035105"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>Najlepszych rozwiązań dotyczących infrastruktury usługi Backup
 
@@ -52,9 +52,8 @@ Klucz musi być przechowywany w bezpiecznym miejscu (na przykład, publiczne us�
 
 ### <a name="backups"></a>Tworzenie kopii zapasowych
 
- - Infrastruktura kopii zapasowej kontrolera musi być wyzwalane na żądanie. Zaleca się kopia zapasowa co najmniej dwa razy dziennie.
  - Zadania tworzenia kopii zapasowej wykonać, gdy system działa, więc nie ma bez przerwy w działaniu do środowiska zarządzania lub aplikacji użytkownika. Oczekiwać, że zadania tworzenia kopii zapasowej na 20 – 40 minut dla rozwiązania, który jest uzasadnione obciążeniem.
- - Za pomocą producenta OEM, pod warunkiem instrukcji, przełączniki sieciowe ręcznego tworzenia kopii zapasowych i sprzętu hosta cyklu życia (HLH) powinny być przechowywane w tym samym udziale kopii zapasowej, gdzie dane kopii zapasowej na płaszczyźnie kontroli magazynów kopii zapasowej kontrolera infrastruktury. Rozważ przechowywanie przełącznika i konfiguracje HLH w folderze na region. Jeśli masz wiele wystąpień usługi Azure Stack, w tym samym regionie, należy wziąć pod uwagę przy użyciu identyfikatora dla każdej konfiguracji, do której należy jednostka skalowania.
+ - Korzystając z instrukcjami producenta OEM, przełączniki sieciowe ręcznego tworzenia kopii zapasowych i sprzętu hosta cyklu życia (HLH) powinny być przechowywane w tym samym udziale kopii zapasowej, gdzie dane kopii zapasowej na płaszczyźnie kontroli magazynów kopii zapasowej kontrolera infrastruktury. Rozważ przechowywanie przełącznika i konfiguracje HLH w folderze na region. Jeśli masz wiele wystąpień usługi Azure Stack, w tym samym regionie, należy wziąć pod uwagę przy użyciu identyfikatora dla każdej konfiguracji, do której należy jednostka skalowania.
 
 ### <a name="folder-names"></a>Nazwy folderów
 
@@ -95,5 +94,6 @@ System obsługuje następujące alerty:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
- - Przejrzyj materiał referencyjny dla [infrastruktura kopii zapasowej usługa](azure-stack-backup-reference.md).  
- - Włącz [infrastruktura kopii zapasowej usługa](azure-stack-backup-enable-backup-console.md).
+Przejrzyj materiał referencyjny dla [infrastruktura kopii zapasowej usługa](azure-stack-backup-reference.md).
+
+Włącz [infrastruktura kopii zapasowej usługa](azure-stack-backup-enable-backup-console.md).

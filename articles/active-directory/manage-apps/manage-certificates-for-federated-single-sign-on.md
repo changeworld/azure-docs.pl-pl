@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: jeedes
-ms.openlocfilehash: d7a5bf23f2855b43c4a2e4022568028d852c094b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 0f6e690bc80ae8004fba4faf53c0403b0cb7edd9
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719583"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035340"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Zarządzanie certyfikatami federacyjnego logowania jednokrotnego w usłudze Azure Active Directory
 W tym artykule opisano typowe pytania i informacje dotyczące certyfikatów, które tworzy usługi Azure Active Directory (Azure AD), można ustanowić federacyjnego logowania jednokrotnego (SSO) w aplikacjach SaaS. Dodawanie aplikacji z galerii aplikacji Azure AD lub przy użyciu szablonu aplikacji spoza galerii. Konfigurowanie aplikacji przy użyciu opcji federacyjnego logowania jednokrotnego.
@@ -76,11 +76,15 @@ Poniższe kroki odnawiania powinno spowodować nie znaczących przestojów dla u
 
     ![Wygeneruj nowy certyfikat](./media/manage-certificates-for-federated-single-sign-on/create_new_certficate.png)
 
-2. Wybierz odpowiednią datę i godzinę wygaśnięcia dla nowego certyfikatu, a następnie kliknij przycisk **Zapisz**.
+2. Wybierz odpowiednią datę i godzinę wygaśnięcia dla nowego certyfikatu, a następnie kliknij przycisk **Zapisz**. Wybranie daty, która pokrywa się z istniejącym certyfikatem zapewni wynosi żadnych przestojów z powodu wygaśnięcia certyfikatu. 
 
-3. Pobierz certyfikat w **certyfikat podpisywania SAML** opcji. Przekaż nowy certyfikat do ekranu konfiguracji rejestracji jednokrotnej w aplikacji SaaS. Aby dowiedzieć się, jak to zrobić dla określonej aplikacji SaaS, kliknij przycisk **samouczek konfigurowania aplikacji widoku** łącza.
+3. Jeśli aplikacja może automatycznego przerzucania certyfikatu, należy ustawić nowy certyfikat na aktywny.  Zaloguj się do aplikacji, aby sprawdzić, czy działa.
+
+4. Jeżeli aplikacja nie jest automatycznie pobrania nowego certyfikatu, ale można dojście do więcej niż jeden certyfikat podpisywania, przed upływem starego, Przekaż nowy katalog w celu aplikacji, a następnie wróć do portalu i przypisz ją aktywnego certyfikatu. 
+
+5. Jeśli aplikacja może obsługiwać tylko jeden certyfikat naraz, wybierz okno Przestój Pobierz nowy certyfikat, przekaż go do aplikacji, wróć do witryny Azure Portal i ustaw nowy certyfikat jako aktywny. 
    
-4. Aby aktywować nowy certyfikat w usłudze Azure AD, wybierz pozycję **Ustaw nowy certyfikat jako aktywny** pole wyboru i kliknij przycisk **Zapisz** znajdujący się u góry strony. Przedstawia to za pośrednictwem nowego certyfikatu po stronie usługi Azure AD. Zmiany stanu certyfikatu z **New** do **Active**. Z tego punktu Usługi Azure AD jest uruchamiany przy użyciu nowego certyfikatu podpisywania odpowiedzi. 
+6. Aby aktywować nowy certyfikat w usłudze Azure AD, wybierz pozycję **Ustaw nowy certyfikat jako aktywny** pole wyboru i kliknij przycisk **Zapisz** znajdujący się u góry strony. Przedstawia to za pośrednictwem nowego certyfikatu po stronie usługi Azure AD. Zmiany stanu certyfikatu z **New** do **Active**. Z tego punktu Usługi Azure AD jest uruchamiany przy użyciu nowego certyfikatu podpisywania odpowiedzi. 
    
     ![Wygeneruj nowy certyfikat](./media/manage-certificates-for-federated-single-sign-on/new_certificate_download.png)
 

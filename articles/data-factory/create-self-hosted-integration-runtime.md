@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: 2dc81a96f1e83c3a6b1ddee92f57b2f0bae4196d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: cae81bd2b856ae0fb4a648c03cbec1f87f222902
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248935"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038472"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i konfigurowanie własnego środowiska integration runtime
 Środowisko integration runtime (IR) to infrastruktura obliczeniowa, która używa usługi Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration runtime](concepts-integration-runtime.md).
@@ -148,6 +148,10 @@ Poniżej przedstawiono wymagania dotyczące certyfikatu TLS/SSL, używany do zab
 Można ponownie użyć istniejącej infrastrukturze środowiska uruchomieniowego Self-Hosted integration masz już skonfigurowane w usłudze data factory. Dzięki temu można utworzyć *połączone własnego środowiska integration runtime* w różnych danych fabryki, odwołując się do istniejącego własne środowisko IR (udostępniony).
 
 Aby udostępnić własne środowisko integration runtime przy użyciu programu PowerShell, zobacz [Tworzenie udostępnionego własnego środowiska integration runtime w usłudze Azure Data Factory przy użyciu programu PowerShell](create-shared-self-hosted-integration-runtime-powershell.md).
+
+Wprowadzenie 12 minutowy i pokaz działania tej funkcji Obejrzyj poniższy film wideo:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Hybrid-data-movement-across-multiple-Azure-Data-Factories/player]
 
 ### <a name="terminology"></a>Terminologia
 

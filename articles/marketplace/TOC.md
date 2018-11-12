@@ -1,5 +1,5 @@
-# [Dokumentacja witryny Azure Marketplace i usługi AppSource](index.md)  
-
+# [Dokumentacja witryny Azure Marketplace i usługi AppSource](index.md)
+## [Zasady klasyfikacji i przeglądu](./rating-review-policies.md)   
 ## [Przegląd witryny Azure Marketplace i usługi AppSource oraz ich zalety](./marketplace-publishers-guide.md)  
 
 ### [Jak zostać wydawcą w witrynie Marketplace](./become-publisher.md)  
@@ -34,6 +34,14 @@
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 
 # [Portal Cloud Partner](./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md) 
+
+## Portal zarządzania
+### [Rejestracja konta Centrum deweloperów](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
+### [Prywatne jednostki SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
+### [Wskazówki dotyczące optymalizacji pod kątem aparatów wyszukiwania](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
+### [Zarządzanie profilem wydawcy](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
+### [Zarządzanie użytkownikami](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
+### [Zgodność z RODO](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
 
 ## [Oferta maszyny wirtualnej](./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md)
 ### [Wymagania wstępne](./cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
@@ -70,8 +78,7 @@
 ### [Automate offer publishing](./cloud-partner-portal-orig/cloud-partner-portal-automate-offer-publishing.md)
 -->
 
-## Aplikacje platformy Azure
-### [Rejestracja konta Centrum deweloperów](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
+## [Oferta aplikacji platformy Azure](./cloud-partner-portal-orig/cpp-azure-app-offer.md)
 ### [Tworzenie aplikacji zarządzanej](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-publish.md)
 ### [Tworzenie szablonu rozwiązań](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md)
 ### [Publikowanie rozwiązania zarządzanego](./cloud-partner-portal-orig/cloud-partner-portal-management-solution-publish.md)
@@ -79,14 +86,12 @@
 ### [Udostępnianie oferty](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-go-live.md)
 ### [Aktualizowanie istniejącej oferty](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-update.md)
 ### [Usuwanie oferty](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-delete.md)
-### [Migrowanie oferty](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
+<!-- Obsolete ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)  -->
 
-## Aplikacje SaaS
+## [Oferta aplikacji SaaS](./cloud-partner-portal-orig/cpp-saas-app-offer.md)
 ### [Techniczny przewodnik po publikowaniu aplikacji SaaS](./cloud-partner-portal-orig/cloud-partner-portal-saas-offers-tech-publishing-guide.md)
 ### [Sprzedaż aplikacji SaaS za pośrednictwem platformy Azure](./cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions.md)
 ### [Interfejsy API aplikacji SaaS](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
-
-<!-- Legacy ## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md) -->
 
 ## [Oferta kontenerów](./cloud-partner-portal/containers/cpp-containers-offer.md)
 ### [Wymagania wstępne](./cloud-partner-portal/containers/cpp-prerequisites.md)
@@ -98,6 +103,7 @@
 ### [Tworzenie zasobów technicznych kontenera](./cloud-partner-portal/containers/cpp-create-technical-assets.md)
 ### [Publikowanie oferty kontenera](./cloud-partner-portal/containers/cpp-publish-offer.md)
 ### [Aktualizowanie istniejącej oferty](./cloud-partner-portal/containers/cpp-update-existing-offer.md)
+<!-- Legacy ## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md) -->
 
 ## [Oferta modułu usługi IoT Edge](./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md)
 ### [Wymagania wstępne](./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md)
@@ -118,24 +124,16 @@
 ### [IoT Edge module FAQ](./cloud-partner-portal-orig/cloud-partner-portal-iot-edge-module-faq.md)
 -->
 
-## Zarządzanie potencjalnymi klientami
-### [Konfigurowanie potencjalnych klientów](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)
-### [Tabela platformy Azure](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md)
-### [Dynamics](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md)
-### [Punkt końcowy HTTPS](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md)
-### [Marketo](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md)
-### [Salesforce](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md)
-
 <!-- ## [Cortana Intelligence](./cloud-partner-portal-orig/cloud-partner-portal-publish-cortana-intelligence-app.md)  -->
 
-## Dynamics 365 for Customer Engagement
+## [Oferta Dynamics 365 for Customer Engagement](./cloud-partner-portal-orig/cpp-customer-engagement-offer.md)
 ### [Tworzenie rozwiązania](./cloud-partner-portal-orig/dynamics-365-solution-preparation.md)
 ### [Tworzenie pakietu](./cloud-partner-portal-orig/appSource-package-preparation.md)
 ### [Generowanie klucza sygnatury dostępu współdzielonego](./cloud-partner-portal-orig/store-your-appSource-package-to-azure-storage-and-generate-sas-key.md)
 ### [Tworzenie oferty](./cloud-partner-portal-orig/setup-your-application-in-the-publishing-portal.md)
 ### [Publikowanie oferty](./cloud-partner-portal-orig/request-to-publish-the-app.md)
 
-## Dynamics 365 for Business Central
+## [Oferta Dynamics 365 for Business Central](./cloud-partner-portal-orig/cpp-business-central-offer.md)
 ### [Omówienie publikowania](./cloud-partner-portal-orig/d365-finance-overview-publish-your-app.md)
 ### [Tworzenie nowej oferty](./cloud-partner-portal-orig/d365-finance-create-new-offer.md)
 ### [Ustawienia oferty](./cloud-partner-portal-orig/d365-finance-create-offer-settings.md)
@@ -143,7 +141,7 @@
 ### [Szczegóły witryny sklepu](./cloud-partner-portal-orig/d365-finance-create-storefront-details.md)
 ### [Publikowanie procesów](./cloud-partner-portal-orig/d365-finance-app-publishing-process.md)
 
-## Dynamics 365 for Operations
+## [Oferta Dynamics 365 for Operations](./cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md)
 ### [Wymagania wstępne](./cloud-partner-portal-orig/pre-requisites.md)
 ### [Jak opublikować](./cloud-partner-portal-orig/manage-dynamics-365-for-operations.md)
 ### [Subskrypcja LCS](./cloud-partner-portal-orig/lcs-subscription.md)
@@ -151,6 +149,11 @@
 ### [Encje danych](./cloud-partner-portal-orig/data-entities.md)
 ### [BPM i metodologie](./cloud-partner-portal-orig/bpm-and-methodologies.md)
 ### [Witryna typu wiki z pomocą](./cloud-partner-portal-orig/help-wiki.md)
+
+## [Usługi konsultingowe](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
+## [Zarządzanie profilem wydawcy](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
+## [Zarządzanie użytkownikami](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
+## [Zgodność z RODO](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
 
 ## Wersja testowa
 ### [Co to jest wersja testowa?](./cloud-partner-portal-orig/what-is-test-drive.md)
@@ -160,12 +163,15 @@
 ### [Przekształcanie przykładów na potrzeby wersji testowej](./cloud-partner-portal-orig/transforming-examples-for-test-drive.md)
 ### [Marketing i najlepsze rozwiązania](./cloud-partner-portal-orig/marketing-and-best-practices.md)
 
-## [Usługi konsultingowe](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
-## [Zarządzanie profilem wydawcy](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
-## [Zarządzanie użytkownikami](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
-## [Zgodność z RODO](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
+## Zarządzanie potencjalnymi klientami
+### [Konfigurowanie potencjalnych klientów](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)
+### [Tabela platformy Azure](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md)
+### [Dynamics](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md)
+### [Punkt końcowy HTTPS](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md)
+### [Marketo](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md)
+### [Salesforce](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md)
 
-## Insights
+## Szczegółowe informacje o sprzedawcy
 ### [Wprowadzenie](./cloud-partner-portal-orig/si-getting-started.md)
 ### [Co nowego](./cloud-partner-portal-orig/si-changes.md)
 ### [Analiza danych internetowych](./cloud-partner-portal-orig/web-analytics.md)

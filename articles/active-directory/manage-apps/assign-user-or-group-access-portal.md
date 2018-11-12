@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 11/05/2018
 ms.author: barbkess
 ms.reviewer: luleon
-ms.openlocfilehash: f23c9976dacc1ca696772d6bf02b5d59e3e0b4d5
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ee0b14123e193f219e403d2608368c27f953013d
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369184"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037978"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory
 Aby przypisać użytkownika lub grupy do aplikacji przedsiębiorstwa, musi mieć odpowiednie uprawnienia do zarządzania aplikacji przedsiębiorstwa, a musi być administratorem globalnym katalogu.
 
 > [!NOTE]
-> Funkcje omówione w tym artykule wymaga licencji usługi Azure Active Directory Premium P1 bądź Premium P2. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory).
+> Wymagania dotyczące funkcji omówionych w tym artykule z licencjonowaniem znajdują [cennik usługi Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory).
 
 > [!NOTE]
 > For Applications firmy Microsoft (takich jak aplikacje usługi Office 365) należy użyć programu PowerShell do przypisywania użytkowników do aplikacji przedsiębiorstwa.
@@ -35,7 +35,7 @@ Aby przypisać użytkownika lub grupy do aplikacji przedsiębiorstwa, musi mieć
 ## <a name="how-do-i-assign-user-access-to-an-enterprise-app-in-the-azure-portal"></a>Jak przypisywać użytkownikom dostęp do aplikacji przedsiębiorstwa w witrynie Azure portal?
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu konta, które jest administratorem globalnym katalogu.
 2. Wybierz **wszystkich usług**wprowadź usługi Azure Active Directory w polu tekstowym, a następnie wybierz pozycję **Enter**.
-3. Na **usługi Azure Active Directory — *directoryname***  bloku (oznacza to, bloku w usłudze Azure AD dla katalogu zarządzasz), wybierz **aplikacje dla przedsiębiorstw**.
+3. Wybierz **aplikacje dla przedsiębiorstw**.
 
     ![Otwieranie aplikacji dla przedsiębiorstw](./media/assign-user-or-group-access-portal/open-enterprise-apps.png)
 4. Na **aplikacje dla przedsiębiorstw** bloku wybierz **wszystkie aplikacje**. Ta lista zawiera aplikacje, którymi można zarządzać.

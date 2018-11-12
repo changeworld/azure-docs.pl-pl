@@ -1,20 +1,20 @@
 ---
-title: Analizowanie danych serwisu Twitter przy użyciu usługi Hadoop w HDInsight — Azure
-description: Dowiedz się, jak wykorzystać technologię Hive do analizowania danych z usługi Twitter na platformie Hadoop w HDInsight w celu określenia częstotliwości użycia konkretnego wyrazu.
+title: Analizowanie danych serwisu Twitter przy użyciu technologii Apache Hadoop w HDInsight — Azure
+description: Dowiedz się, jak wykorzystać technologię Hive do analizowania danych z usługi Twitter na platformie Apache Hadoop w HDInsight w celu określenia częstotliwości użycia konkretnego wyrazu.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 294353cfcfba617ab19e703f11f35402bcf7ea82
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 39db03170d6a9c9d481b1448b54bdbd52e205921
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387585"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037299"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Analizowanie danych serwisu Twitter przy użyciu technologii Hive w HDInsight
 Społecznościowych witryn sieci Web są jednym z głównych sił kierowania do przyjęcia danych big data. Publicznych interfejsów API dostarczonych przez witryn, takich jak Twitter, są przydatne źródło danych do analizowania i zrozumienia popularnych trendów.
@@ -80,7 +80,7 @@ Pierwszym krokiem do używają protokołu OAuth ma utworzyć nową aplikację w 
    | --- | --- |
    |  Name (Nazwa) |MyHDInsightApp |
    |  Opis |MyHDInsightApp |
-   |  Witryna sieci Web |http://www.myhdinsightapp.com |
+   |  Witryna internetowa |http://www.myhdinsightapp.com |
 4. Sprawdź **tak, zgadzam**, a następnie kliknij przycisk **tworzenie aplikacji usługi Twitter**.
 5. Kliknij przycisk **uprawnienia** kartę. Domyślne uprawnienia **tylko do odczytu**. Jest to wystarczające do celów tego samouczka.
 6. Kliknij przycisk **klucze i tokeny dostępu** kartę.

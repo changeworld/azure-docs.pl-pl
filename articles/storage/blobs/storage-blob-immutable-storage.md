@@ -2,18 +2,18 @@
 title: Niezmienny magazyn obiektów blob usługi Azure Storage | Dokumentacja firmy Microsoft
 description: Usługa Azure Storage oferuje obsługę ROBAK (jednokrotnego zapisu, odczytu wielu) dla magazynu obiektów Blob (obiekt), umożliwiającą użytkownikom przechowywanie danych w stanie wymazanie, nie można modyfikować w określonym interwale.
 services: storage
-author: MichaelHauss
+author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 09/18/2018
-ms.author: mihauss
+ms.date: 11/05/2018
+ms.author: hux
 ms.component: blobs
-ms.openlocfilehash: 38e34391294e1a070d506583fbc30dcdb703bea0
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 261f66013ab9c0ba493d18b84856d17db953402e
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156905"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037005"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Store strategicznych danych biznesowych w usłudze Azure Blob storage
 
@@ -194,7 +194,7 @@ W przypadku płatności zasady przechowywania zwykłych danych będzie stosowana
 
 **Czy jest oferowany okres próbny, umożliwiający przetestowanie tej funkcji?**
 
-Tak. Podczas tworzenia zasady przechowywania na podstawie czasu jest *odblokowane* stanu. W tym stanie można żądane zmiany na okres przechowywania, np. zwiększenie lub zmniejszenie i nawet usunąć zasady. Po zablokowaniu zasady pozostaje on zablokowany nieskończoność, usunięcie uniemożliwiają. Ponadto po zablokowaniu zasad nie można skrócić okresu przechowywania. Zdecydowanie zalecamy użycie *odblokowane* stanu tylko do celów wersji próbnej i Zablokuj zasady w okresie 24-godzinnym. Poniższe wskazówki ułatwiają 17a-4(f) s i innych przepisów.
+Tak. Podczas tworzenia zasady przechowywania na podstawie czasu jest *odblokowane* stanu. W tym stanie można żądane zmiany na okres przechowywania, np. zwiększenie lub zmniejszenie i nawet usunąć zasady. Po zablokowaniu zasady pozostaje on zablokowany do momentu wygaśnięcia ważności okres przechowywania. Zapobiega to usunięcia i modyfikacji okres przechowywania. Zdecydowanie zalecamy użycie *odblokowane* stanu tylko do celów wersji próbnej i Zablokuj zasady w okresie 24-godzinnym. Poniższe wskazówki ułatwiają 17a-4(f) s i innych przepisów.
 
 **Czy ta funkcja jest dostępna w chmurach krajowych i rządowych?**
 

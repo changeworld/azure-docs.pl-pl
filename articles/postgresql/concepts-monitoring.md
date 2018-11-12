@@ -7,13 +7,13 @@ ms.author: raagyema
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/01/2018
-ms.openlocfilehash: 819c3b50c99471025e1eb2a98e47f60eee7ef518
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.date: 11/05/2018
+ms.openlocfilehash: 8ad7369bc940f682bb7c11c3ed4e3444f1bb056a
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962609"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035088"
 ---
 # <a name="monitor-and-tune"></a>Monitorowanie i dostrajanie
 Dane dotyczące serwerów monitorowania ułatwia rozwiązywanie problemów i zoptymalizować dla obciążenia. Usługa Azure Database for PostgreSQL udostępnia różne opcje monitorowania zapewniają wgląd w zachowania serwera.
@@ -56,3 +56,4 @@ Można włączyć rejestrowanie na serwerze. Te dzienniki są również dostępn
 ## <a name="next-steps"></a>Kolejne kroki
 - Zobacz [jak skonfigurować alerty](howto-alert-on-metric.md) wskazówki dotyczące tworzenia alertu na metrykę.
 - Aby uzyskać więcej informacji na temat sposobu uzyskania dostępu i eksportowanie metryk przy użyciu witryny Azure portal, interfejsu API REST lub interfejsu wiersza polecenia, zobacz [Przegląd metryk usługi Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+- Przeczytaj nasz blog na [najlepsze rozwiązania dotyczące monitorowania serwera](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/).

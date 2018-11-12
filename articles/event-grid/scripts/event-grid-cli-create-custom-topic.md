@@ -4,20 +4,19 @@ description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure �
 services: event-grid
 documentationcenter: na
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2018
+ms.date: 11/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3ed21dd54cbc572df76cea5eb6440fa1eddf4fe4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 16c6586939a6dad248cef3abdabd78faf04a2381
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31426078"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034272"
 ---
 # <a name="create-event-grid-custom-topic-with-azure-cli"></a>Tworzenie tematu niestandardowego usługi Event Grid przy użyciu interfejsu wiersza polecenia platformy Azure
 

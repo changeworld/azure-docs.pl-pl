@@ -1,23 +1,23 @@
 ---
-title: Analizowanie danych dotyczących opóźnień lotów przy użyciu usługi Hadoop w HDInsight — Azure
+title: Analizowanie danych dotyczących opóźnień lotów przy użyciu technologii Apache Hadoop w HDInsight — Azure
 description: Dowiedz się, jak utworzyć klaster usługi HDInsight, uruchom zadanie programu Hive, uruchom zadanie Sqoop i usunąć klaster za pomocą jednego skryptu środowiska Windows PowerShell.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1d39fd1cf40834781375b2c7bd6cb801ccd3cb97
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a7700de9bed7e5cfc003481a8e7d93720a767928
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091902"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036159"
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analizowanie danych dotyczących opóźnień lotów przy użyciu programu Hive w HDInsight
-Gałąź umożliwia uruchomionych zadań MapReduce usługi Hadoop za pomocą skryptów języka przypominającego SQL o nazwie  *[HiveQL][hadoop-hiveql]*, które mogą być stosowane do podsumowania, wykonywania zapytań, i analizowania dużych ilości danych.
+Gałąź umożliwia uruchamianie zadań Apache Hadoop MapReduce za pomocą skryptów języka przypominającego SQL o nazwie  *[HiveQL][hadoop-hiveql]*, które mogą być stosowane do podsumowania, wykonywanie zapytań i analizowania dużych ilości danych.
 
 > [!IMPORTANT]
 > Kroki opisane w tym dokumencie wymagają klastra HDInsight z systemem Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Informacje dotyczące kroków, współpracujących z klastrem opartych na systemie Linux, zobacz [analizowanie danych dotyczących opóźnień lotów przy użyciu programu Hive w HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md).

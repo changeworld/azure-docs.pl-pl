@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: a6928b5a849f35456a6fb7699acd7720f686c2aa
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: c4aa5786ea1dfbef32c40306de6291ebeb2fe6f8
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243065"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036142"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services — Rozwiązywanie problemów z alertami
 Ten artykuł zawiera przewodniki dotyczące rozwiązywania problemów w ramach wszystkich alertów, które mogą występować w domenie zarządzanej.
@@ -39,13 +39,15 @@ Wybierz kroki rozwiązywania problemów, które odnoszą się do Identyfikatora 
 | AADDS105 | *Jednostki usługi o identyfikatorze aplikacji "d87dcbc6-a371-462e-88e3-28ad15ec4e64" został usunięty i tworzony ponownie. Odtworzenie pozostawia za niespójne uprawnień zasobów usługi Azure AD Domain Services, potrzebne do obsługi Twojej domeny zarządzanej. Może mieć wpływ na synchronizację haseł w domenie zarządzanej.* | [Aplikacja synchronizacji haseł jest nieaktualna](active-directory-ds-troubleshoot-service-principals.md#alert-aadds105-password-synchronization-application-is-out-of-date) |
 | AADDS106 | *Twoja subskrypcja platformy Azure skojarzone z Twoją domeną zarządzaną została usunięta.  Usługi domenowe Azure AD wymaga aktywnej subskrypcji działał poprawnie.* | [Nie można odnaleźć subskrypcji platformy Azure](#aadds106-your-azure-subscription-is-not-found) |
 | AADDS107 | *Twoja subskrypcja platformy Azure skojarzone z Twoją domeną zarządzaną nie jest aktywny.  Usługi domenowe Azure AD wymaga aktywnej subskrypcji działał poprawnie.* | [Subskrypcja platformy Azure jest wyłączona.](#aadds107-your-azure-subscription-is-disabled) |
-| AADDS108 | *Usunięto zasób, który jest używany na potrzeby domeny zarządzanej. Ten zasób jest wymagany dla usług domenowych Azure AD działać prawidłowo.* | [Zasób został usunięty.](#aadds108-resources-for-your-managed-domain-cannot-be-found) |
-| AADDS109 | *Podsieć wybrana dla wdrożenia usług domenowych Azure AD jest pełny i nie ma miejsca na dodatkowy kontroler domeny, musi zostać utworzona.* | [Podsieć jest pełna](#aadds109-the-subnet-associated-with-your-managed-domain-is-full) |
-| AADDS110 | *Odkryliśmy, że podsieć sieci wirtualnej w tej domenie może nie mieć wystarczającej liczby adresów IP. Azure AD Domain Services wymaga co najmniej dwóch dostępnych adresów IP w podsieci, w której jest włączone w. Firma Microsoft zaleca posiadanie co najmniej 3 – 5 Alokacja adresów IP w obrębie podsieci. To może wystąpić, jeśli inne maszyny wirtualne są wdrażane w obrębie podsieci, w związku z tym wyczerpaniem liczby dostępnych adresów IP lub czy istnieje ograniczenie liczby dostępnych adresów IP w podsieci.* | [Nie ma wystarczającej liczby adresów IP](#aadds110-not-enough-ip-address-in-the-managed-domain) |
-| AADDS111 | *Co najmniej jeden z zasobów sieciowych, używane przez domena zarządzana nie może być obsługiwany na jak zakres docelowy został zablokowany.* | [Zasoby są zablokowane.](#aadds111-resources-are-locked) |
-| AADDS112 | *Co najmniej jeden z zasobów sieciowych, używane przez domena zarządzana nie może działać z powodu restriction(s) zasad.* | [Zasoby są bezużyteczne](#aadds112-resources-are-unusable) |
+| AADDS108 | *Subskrypcja używana przez usługę Azure AD Domain Services został przeniesiony do innego katalogu. Usługi domenowe Azure AD musi mieć aktywną subskrypcję, w tym samym katalogu, aby działać prawidłowo.* | [Katalogi przenieść subskrypcję](#aadds108-subscription-moved-directories) |
+| AADDS109 | *Usunięto zasób, który jest używany na potrzeby domeny zarządzanej. Ten zasób jest wymagany dla usług domenowych Azure AD działać prawidłowo.* | [Zasób został usunięty.](#aadds109-resources-for-your-managed-domain-cannot-be-found) |
+| AADDS110 | *Podsieć wybrana dla wdrożenia usług domenowych Azure AD jest pełny i nie ma miejsca na dodatkowy kontroler domeny, musi zostać utworzona.* | [Podsieć jest pełna](#aadds110-the-subnet-associated-with-your-managed-domain-is-full) |
+| AADDS111 | * Jednostki usługi używany przez usługi domenowe Azure AD do usługi domeny nie ma uprawnień do zarządzania zasobami w ramach subskrypcji Azure. Jednostka usługi musi uzyskać uprawnienia do obsługi Twojej domeny zarządzanej. * | [Brak jednostki usługi autoryzacji](#aadds111-service-principal-unauthorized) |
+| AADDS112 | *Odkryliśmy, że podsieć sieci wirtualnej w tej domenie może nie mieć wystarczającej liczby adresów IP. Azure AD Domain Services wymaga co najmniej dwóch dostępnych adresów IP w podsieci, w której jest włączone w. Firma Microsoft zaleca posiadanie co najmniej 3 – 5 Alokacja adresów IP w obrębie podsieci. To może wystąpić, jeśli inne maszyny wirtualne są wdrażane w obrębie podsieci, w związku z tym wyczerpaniem liczby dostępnych adresów IP lub czy istnieje ograniczenie liczby dostępnych adresów IP w podsieci.* | [Nie ma wystarczającej liczby adresów IP](#aadds112-not-enough-ip-address-in-the-managed-domain) |
 | AADDS113 | *Zasoby używane przez usługi Azure AD Domain Services zostały wykryte w nieoczekiwanym stanie i nie można go odzyskać.* | [Zasoby są nie do odzyskania](#aadds113-resources-are-unrecoverable) |
-| AADDS114 | * Usługa azure AD Domain Services, które kontrolery domeny nie są w stanie uzyskać dostęp do portu 443. Jest on potrzebny do usługi, zarządzanie i aktualizowanie domeny zarządzanej. * | [Port 442 zablokowane](#aadds114-port-443-blocked) |
+| AADDS114 | * Podsieć wybrana dla wdrożenia usług domenowych Azure AD jest nieprawidłowy i nie można użyć. * | [Podsieć jest nieprawidłowa](#aadds114-subnet-invalid) |
+| AADDS115 | *Co najmniej jeden z zasobów sieciowych, używane przez domena zarządzana nie może być obsługiwany na jak zakres docelowy został zablokowany.* | [Zasoby są zablokowane.](#aadds115-resources-are-locked) |
+| AADDS116 | *Co najmniej jeden z zasobów sieciowych, używane przez domena zarządzana nie może działać z powodu restriction(s) zasad.* | [Zasoby są bezużyteczne](#aadds116-resources-are-unusable) |
 | AADDS500 | *Domena zarządzana ostatniej synchronizacji z usługą Azure AD w dniu [date]. Użytkownicy nie mieć możliwości logowania się w domenie zarządzanej lub członkostwa w grupie może nie być zsynchronizowany z usługą Azure AD.* | [Synchronizacja nie wystąpił w chwilę](#aadds500-synchronization-has-not-completed-in-a-while) |
 | AADDS501 | *Domena zarządzana utworzenia ostatniej kopii zapasowej na [date].* | [Tworzenie kopii zapasowej nie został przełączony w chwilę](#aadds501-a-backup-has-not-been-taken-in-a-while) |
 | AADDS502 | *Certyfikat secure LDAP dla domeny zarządzanej wygaśnie w dniu [date].* | [Certyfikat secure LDAP wygasa](active-directory-ds-troubleshoot-ldaps.md#aadds502-secure-ldap-certificate-expiring) |
@@ -138,7 +140,17 @@ Azure AD Domain Services wymaga subskrypcji do funkcji i nie można przenieść 
 1. [Odnów swoją subskrypcję platformy Azure](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable).
 2. Po odnowieniu subskrypcji usługi Azure AD Domain Services otrzymasz powiadomienie z platformy Azure, aby ponownie włączyć domenę zarządzaną.
 
-## <a name="aadds108-resources-for-your-managed-domain-cannot-be-found"></a>AADDS108: Nie można odnaleźć zasobów dla domeny zarządzanej
+## <a name="aadds108-subscription-moved-directories"></a>AADDS108: Subskrypcja przeniesiona katalogów
+
+**Komunikat alertu:**
+
+*Subskrypcja używana przez usługę Azure AD Domain Services został przeniesiony do innego katalogu. Usługi domenowe Azure AD musi mieć aktywną subskrypcję, w tym samym katalogu, aby działać prawidłowo.*
+
+**Rozwiązanie:**
+
+Można przenieść subskrypcję skojarzoną z usług domenowych Azure AD, wróć do poprzedniej katalogu lub musisz [usunąć domenę zarządzaną](active-directory-ds-disable-aadds.md) z istniejącego katalogu i utwórz go w wybranym katalogu (przy użyciu nową subskrypcję lub zmień katalog usługi Azure AD Domain Services wystąpienie jest w).
+
+## <a name="aadds109-resources-for-your-managed-domain-cannot-be-found"></a>AADDS109: Nie można odnaleźć zasobów dla domeny zarządzanej
 
 **Komunikat alertu:**
 
@@ -149,15 +161,15 @@ Azure AD Domain Services wymaga subskrypcji do funkcji i nie można przenieść 
 Azure AD Domain Services tworzy określonych zasobów podczas wdrażania, aby działał prawidłowo, łącznie z publicznymi adresami IP, kart sieciowych i modułu równoważenia obciążenia. Jeśli dowolny nazwany zostaną usunięte, to powoduje, że Twojej domeny zarządzanej, znajdować się w nieobsługiwanym stanie i zapobiega Twojej domeny zarządzanej. Ten alert zostanie znaleziony, gdy osoba, która jest w stanie edytować zasoby usługi Azure AD Domain Services usuwa niezbędnych zasobów. Następujące kroki przedstawiają sposób przywracania Twojej domeny zarządzanej.
 
 1.  Przejdź do strony kondycji usług domenowych Azure AD
-  1.    Podróży [strony usług domenowych Azure AD]() w witrynie Azure portal.
+  1.    Podróży [strony usług domenowych Azure AD](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) w witrynie Azure portal.
   2.    W obszarze nawigacji po lewej stronie, kliknij przycisk **kondycji**
 2.  Zaznacz, aby sprawdzić, czy alert jest mniejszy niż 4 godziny
-  1.    Na stronie kondycji, kliknij alert o identyfikatorze **AADDS108**
+  1.    Na stronie kondycji, kliknij alert o identyfikatorze **AADDS109**
   2.    Alert będzie mieć sygnaturę czasową dla po raz pierwszy został znaleziony. Tej sygnatury czasowej jest mniejszy niż 4 godz. temu, czy istnieje ryzyko, czy usługi domenowe Azure AD można odtworzyć usuwanego zasobu.
 3.  Jeśli alert jest więcej niż 4 godziny, domena zarządzana jest w stanie odzyskać. Należy usunąć i ponownie utwórz usług domenowych Azure AD.
 
 
-## <a name="aadds109-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS109: Podsieć skojarzona z Twoją domeną zarządzaną jest pełny
+## <a name="aadds110-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS110: Podsieć skojarzona z Twoją domeną zarządzaną jest pełny
 
 **Komunikat alertu:**
 
@@ -167,8 +179,21 @@ Azure AD Domain Services tworzy określonych zasobów podczas wdrażania, aby dz
 
 Ten błąd jest nieodwracalny. Aby rozwiązać problem, należy najpierw [Usuń istniejąca domena zarządzana](active-directory-ds-disable-aadds.md) i [ponownie utworzyć domeny zarządzanej](active-directory-ds-getting-started.md)
 
+## <a name="aaddds111-service-principal-unauthorized"></a>AADDDS111: Według nazwy głównej usługi, brak autoryzacji
 
-## <a name="aadds110-not-enough-ip-address-in-the-managed-domain"></a>AADDS110: Za mało adresu IP w domenie zarządzanej
+**Komunikat alertu:**
+
+*Jednostki usługi używany przez usługi domenowe Azure AD do usługi domeny nie ma uprawnień do zarządzania zasobami w ramach subskrypcji Azure. Jednostka usługi musi uzyskać uprawnienia do obsługi Twojej domeny zarządzanej.*
+
+**Rozwiązanie:**
+
+Nasze jednostek usługi muszą mieć dostęp do zarządzania i tworzenia zasobów w domenie zarządzanej. Osoba odrzuciła dostęp do nazwy głównej usługi i obecnie jest do zarządzania zasobami. Wykonaj kroki, aby udzielić dostępu do nazwy głównej usługi.
+
+1. Przeczytaj o [RBAC kontroli i jak udzielić dostępu do aplikacji w witrynie Azure portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+2. Przegląd dostępu wszystkich użytkowników, nazwy głównej usługi o identyfikatorze ```abba844e-bc0e-44b0-947a-dc74e5d09022``` i udzielanie dostępu, którego miała miejsce odmowa przed tą datą.
+
+
+## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: Za mało adresu IP w domenie zarządzanej
 
 **Komunikat alertu:**
 
@@ -189,7 +214,27 @@ Ten błąd jest nieodwracalny. Aby rozwiązać problem, należy najpierw [Usuń 
 4. Aby przyłączania do domeny maszyn wirtualnych do nowej domeny, wykonaj [tego przewodnika](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
 5. Sprawdzanie kondycji domeny w ciągu dwóch godzin, aby upewnić się, że czynności zostały wykonane poprawnie.
 
-## <a name="aadds111-resources-are-locked"></a>AADDS111: Zasoby są zablokowane.
+## <a name="aadds113-resources-are-unrecoverable"></a>AADDS113: Zasoby są nie do odzyskania
+
+**Komunikat alertu:**
+
+*Zasoby używane przez usługi Azure AD Domain Services zostały wykryte w nieoczekiwanym stanie i nie można go odzyskać.*
+
+**Rozwiązanie:**
+
+Ten błąd jest nieodwracalny. Aby rozwiązać problem, należy najpierw [Usuń istniejąca domena zarządzana](active-directory-ds-disable-aadds.md) i [ponownie utwórz domenę zarządzaną](active-directory-ds-getting-started.md).
+
+## <a name="aadds114-subnet-invalid"></a>AADDS114: Nieprawidłowa podsieć
+
+**Komunikat alertu:**
+
+*Podsieć wybrana dla wdrożenia usług domenowych Azure AD jest nieprawidłowy i nie można użyć.*
+
+**Rozwiązanie:**
+
+Ten błąd jest nieodwracalny. Aby rozwiązać problem, należy najpierw [Usuń istniejąca domena zarządzana](active-directory-ds-disable-aadds.md) i [ponownie utwórz domenę zarządzaną](active-directory-ds-getting-started.md).
+
+## <a name="aadds115-resources-are-locked"></a>AADDS115: Zasoby są zablokowane.
 
 **Komunikat alertu:**
 
@@ -200,8 +245,7 @@ Ten błąd jest nieodwracalny. Aby rozwiązać problem, należy najpierw [Usuń 
 1.  Działania przeglądu Resource Manager dzienników z zasobów sieciowych (ten powinien zapewnić informacje na które blokada uniemożliwia modyfikowanie).
 2.  Usuń blokady zasobów i nazwy głównej usługi Azure AD Domain Services może działać na nich.
 
-
-## <a name="aadds112-resources-are-unusable"></a>AADDS112: Zasoby są bezużyteczne
+## <a name="aadds116-resources-are-unusable"></a>AADDS116: Zasoby są bezużyteczne
 
 **Komunikat alertu:**
 
@@ -209,28 +253,9 @@ Ten błąd jest nieodwracalny. Aby rozwiązać problem, należy najpierw [Usuń 
 
 **Rozwiązanie:**
 
-1.  Działania przeglądu Resource Manager dzienników z zasobów sieciowych dla domeny zarządzanej
+1.  Operacja przeglądu Resource Manager rejestruje zasobów sieciowych dla domeny zarządzanej.
 2.  Tak, aby nazwy głównej usługi AAD DS może działać na nich, obniżyć poziom ograniczeń zasad na zasoby.
 
-## <a name="aadds113-resources-are-unrecoverable"></a>AADDS113: Zasoby są nie do odzyskania
-
-**Komunikat alertu:**
-
-*Zasoby używane przez usługi Azure AD Domain Services zostały wykryte w nieoczekiwanym stanie i nie można go odzyskać.*
-
-**Rozwiązanie:**
-
-Ten błąd jest nieodwracalny. Aby rozwiązać problem, należy najpierw [Usuń istniejąca domena zarządzana](active-directory-ds-disable-aadds.md) i [ponownie utworzyć domeny zarządzanej](active-directory-ds-getting-started.md)
-
-## <a name="aadds114-port-443-blocked"></a>AADDS114: Port 443, zablokowane
-
-**Komunikat alertu:**
-
-*Azure AD Domain Services, które kontrolery domeny nie są w stanie uzyskać dostęp do portu 443. Jest on potrzebny do usługi, zarządzanie i aktualizowanie domeny zarządzanej.*
-
-**Rozwiązanie:**
-
-Zezwalać na dostęp dla ruchu przychodzącego przez port 443 na sieciową grupę zabezpieczeń dla usług domenowych Azure AD.
 
 
 ## <a name="aadds500-synchronization-has-not-completed-in-a-while"></a>AADDS500: Synchronizacji nie zostało ukończone w chwilę
@@ -255,7 +280,7 @@ Poniżej przedstawiono niektóre typowe przyczyny, dlaczego synchronizacji zatrz
 
 **Rozwiązanie:**
 
-[Sprawdzanie kondycji domeny](active-directory-ds-check-health.md) w ramach wszystkich alertów, które mogą wskazywać problemy w konfiguracji domeny zarządzanej. Czasami problemy z konfiguracją może zablokować możliwości firmy Microsoft do synchronizacji z domeną zarządzaną. Jeśli jest to możliwe rozwiązać alerty, Zaczekaj dwie godziny i sprawdź z powrotem do zobaczyć, jeśli synchronizacja została ukończona.
+[Sprawdzanie kondycji domeny](active-directory-ds-check-health.md) w ramach wszystkich alertów, które mogą wskazywać problemy w konfiguracji domeny zarządzanej. Czasami problemy z konfiguracją może zablokować możliwości firmy Microsoft, aby utworzyć kopię zapasową domeny zarządzanej. Jeśli jest to możliwe rozwiązać alerty, Zaczekaj dwie godziny i wyboru z powrotem do zobaczyć, jeśli tworzenie kopii zapasowej zostało ukończone.
 
 
 ## <a name="aadds503-suspension-due-to-disabled-subscription"></a>AADDS503: Zawieszenie z powodu wyłączonej subskrypcji

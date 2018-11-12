@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a197b3c7aa423323f984a793851a458733391e33
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 08d9566c3ce8f486465f0ed7fb5aab4419e592d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243116"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228593"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>W systemie dostawcy tożsamości SAML 2.0 (IdP) do rejestracji jednokrotnej
 
@@ -167,7 +167,7 @@ Należy włączyć komunikację między dostawcy tożsamości SAML 2.0 i usługi
 ## <a name="install-windows-powershell-for-sign-on-with-saml-20-identity-provider"></a>Instalowanie programu Windows PowerShell dla logowania jednokrotnego za pomocą dostawcy tożsamości SAML 2.0
 Po skonfigurowaniu dostawcy tożsamości SAML 2.0 do użytku z logowania jednokrotnego usługi Azure AD, następnym krokiem jest pobranie i zainstalowanie usługi Azure Active Directory modułu dla Windows PowerShell. Po zainstalowaniu użyje tych poleceń cmdlet, skonfigurowanie usługi Azure AD jako domen federacyjnych.
 
-Azure Active Directory Module for Windows PowerShell to pobierany program do zarządzania danymi organizacji w usłudze Azure AD. Ten moduł instaluje zestaw poleceń cmdlet programu Windows PowerShell; Uruchom te polecenia cmdlet, aby skonfigurować pojedynczy znak na dostęp do usługi Azure AD, a następnie pozycji do wszystkich usług w chmurze subskrybowanym przez Ciebie. Aby uzyskać instrukcje dotyczące sposobu pobierania i instalowania poleceń cmdlet zobacz [http://technet.microsoft.com/library/jj151815.aspx](http://technet.microsoft.com/library/jj151815.aspx)
+Azure Active Directory Module for Windows PowerShell to pobierany program do zarządzania danymi organizacji w usłudze Azure AD. Ten moduł instaluje zestaw poleceń cmdlet programu Windows PowerShell; Uruchom te polecenia cmdlet, aby skonfigurować pojedynczy znak na dostęp do usługi Azure AD, a następnie pozycji do wszystkich usług w chmurze subskrybowanym przez Ciebie. Aby uzyskać instrukcje dotyczące sposobu pobierania i instalowania poleceń cmdlet zobacz [http://technet.microsoft.com/library/jj151815.aspx](https://technet.microsoft.com/library/jj151815.aspx)
 
 ## <a name="set-up-a-trust-between-your-saml-identity-provider-and-azure-ad"></a>Konfigurowanie relacji zaufania między dostawcy tożsamości SAML i usługa Azure AD
 Przed rozpoczęciem konfigurowania Federacji dla domeny usługi Azure AD, musi istnieć w skonfigurowanej domenie niestandardowej. Nie można sfederować domeny domyślnej, dostarczanej przez firmę Microsoft. Domyślna domena firmy Microsoft kończy się ciągiem "onmicrosoft.com".
@@ -190,12 +190,12 @@ Poniższa procedura przeprowadzi Cię przez Konwertowanie istniejącej domeny st
 
     `<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"> <KeyDescriptor use="signing"> <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#"> <X509Data> <X509Certificate>MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate> </X509Data> </KeyInfo> </KeyDescriptor>` 
 
-Aby uzyskać więcej informacji na temat "Set-MsolDomainAuthentication", zobacz: [ http://technet.microsoft.com/library/dn194112.aspx ](http://technet.microsoft.com/library/dn194112.aspx).
+Aby uzyskać więcej informacji na temat "Set-MsolDomainAuthentication", zobacz: [ http://technet.microsoft.com/library/dn194112.aspx ](https://technet.microsoft.com/library/dn194112.aspx).
 
 >[!NOTE]
 >Należy uruchomić, użyj "$ecpUrl ="https://WS2012R2-0.contoso.com/PAOS"" tylko wtedy, gdy Konfigurowanie rozszerzenia ECP dla dostawcy tożsamości. Klienci usługi Exchange Online, z wyjątkiem aplikacji sieci Web programu Outlook (OWA) polegają na ogłoszenie na podstawie aktywnego punktu końcowego. Jeśli z SAML 2.0 STS implementuje aktywny punkt końcowy podobne do wykonania ECP firmy Shibboleth aktywny punkt końcowy może być możliwe w przypadku tych zaawansowanych klientów do interakcji z usługą Exchange Online.
 
-Po skonfigurowaniu Federacji możesz przełączyć się ponownie do "inne niż federacyjne" (lub "zarządzany"), jednak ta zmiana ta zajmuje nawet do dwóch godzin, i wymaga, przypisywanie nowego losowych haseł oparte na chmurze logowania do poszczególnych użytkowników. Przełączanie do "zarządzany" może być konieczne w niektórych scenariuszach resetowania błąd w ustawieniach. Aby uzyskać więcej informacji o konwersji domeny Zobacz: [ http://msdn.microsoft.com/library/windowsazure/dn194122.aspx ](http://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
+Po skonfigurowaniu Federacji możesz przełączyć się ponownie do "inne niż federacyjne" (lub "zarządzany"), jednak ta zmiana ta zajmuje nawet do dwóch godzin, i wymaga, przypisywanie nowego losowych haseł oparte na chmurze logowania do poszczególnych użytkowników. Przełączanie do "zarządzany" może być konieczne w niektórych scenariuszach resetowania błąd w ustawieniach. Aby uzyskać więcej informacji o konwersji domeny Zobacz: [ http://msdn.microsoft.com/library/windowsazure/dn194122.aspx ](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
 
 ## <a name="provision-user-principals-to-azure-ad--office-365"></a>Aprowizowanie podmiotami zabezpieczeń użytkownika do usługi Azure AD / usługi Office 365
 Zanim można uwierzytelniać użytkowników do usługi Office 365, możesz aprowizować usługi Azure AD z podmiotami zabezpieczeń użytkownika, które odpowiadają potwierdzenie oświadczenia języka SAML 2.0. Jeśli te podmiotami zabezpieczeń użytkownika nie są znane z usługą Azure AD z wyprzedzeniem, następnie nie można ich używać do logowania federacyjnego. Program Azure AD Connect lub środowiska Windows PowerShell może służyć do udostępniania podmiotami zabezpieczeń użytkownika.
@@ -218,7 +218,7 @@ Ta procedura pokazuje, jak dodać pojedynczego użytkownika do usługi Azure AD.
         -LicenseAssignment "samlp2test:ENTERPRISEPACK" 
         -UsageLocation "US" ` 
 
-Aby uzyskać więcej informacji na temat wyewidencjonowania "New-MsolUser" [http://technet.microsoft.com/library/dn194096.aspx](http://technet.microsoft.com/library/dn194096.aspx)
+Aby uzyskać więcej informacji na temat wyewidencjonowania "New-MsolUser" [http://technet.microsoft.com/library/dn194096.aspx](https://technet.microsoft.com/library/dn194096.aspx)
 
 >[!NOTE]
 >Wartość "UserPrinciplName" musi być zgodna wartość, która zostanie wysłana do "IDPEmail" w swojej oświadczenia języka SAML 2.0, a wartość "ImmutableID" musi być zgodna wartość wysyłana w swojej asercji "NameID".

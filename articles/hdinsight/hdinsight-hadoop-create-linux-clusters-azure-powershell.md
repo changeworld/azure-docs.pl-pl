@@ -1,20 +1,20 @@
 ---
-title: Tworzenie klastrów usługi Hadoop przy użyciu programu PowerShell — Azure HDInsight
-description: Informacje o sposobie tworzenia klastrów Hadoop, HBase, Storm i Spark w systemie Linux dla HDInsight przy użyciu programu Azure PowerShell.
+title: Tworzenie klastrów usługi Apache Hadoop przy użyciu programu PowerShell — Azure HDInsight
+description: Dowiedz się, jak utworzyć klastry Apache Hadoop, Apache HBase, Apache Storm lub Apache Spark w systemie Linux dla HDInsight przy użyciu programu Azure PowerShell.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: jasonh
-ms.openlocfilehash: ed9c486dfa548e86e558c093113011cabfd3d63c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: 76bef5fcae8e95a52b7a35fdbb657db5dde01bc3
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997424"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035190"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Tworzenie klastrów opartych na systemie Linux w HDInsight przy użyciu programu Azure PowerShell
 
