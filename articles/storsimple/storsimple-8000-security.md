@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 578fb3f8bfe68ccd9bbade0ad04f3a811a249c08
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: fb8c3fe9dd5ca207e4ae37faf9a5a1c4edfffc63
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908343"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233817"
 ---
 # <a name="storsimple-security-and-data-protection"></a>Usługa StorSimple zabezpieczeń i ochrony danych
 
@@ -35,7 +35,7 @@ Rozwiązanie Microsoft Azure StorSimple składa się z czterech głównych skła
 * **Usługa Menedżer urządzeń StorSimple hostowanych na platformie Microsoft Azure** — Usługa zarządzania, która służy do konfigurowania i aprowizacji urządzenia StorSimple.
 * **Urządzenie StorSimple** — urządzenie fizyczne zainstalowana w Twoim centrum danych. Wszystkie hosty i klientów, które generują dane połączyć się z urządzeniem StorSimple, urządzenie i zarządza danymi przenosi je do chmury platformy Azure odpowiednio.
 * **Klienci/hosty są połączone z urządzeniem** — klientów w infrastrukturze, które łączą się z urządzeniem StorSimple oraz generować dane, które muszą być chronione.
-* **Magazyn w chmurze** — lokalizacji w chmurze platformy Azure, w którym są przechowywane dane.
+* **Magazyn w chmurze** — lokalizacja w chmurze platformy Azure, w której są przechowywane dane.
 
 W poniższych sekcjach opisano funkcje zabezpieczeń StorSimple, które pomagają w ochronie każdego z tych składników oraz danych przechowywanych na nich. Zawiera także listę pytań, które mogą się pojawić w zabezpieczeń Microsoft Azure StorSimple i odpowiednich odpowiedzi.
 
@@ -43,9 +43,9 @@ W poniższych sekcjach opisano funkcje zabezpieczeń StorSimple, które pomagaj�
 
 Usługa Menedżer urządzeń StorSimple to usługa zarządzania hostowanych na platformie Microsoft Azure i umożliwia zarządzanie wszystkimi urządzeniami StorSimple, które Twoja organizacja ma zakupu. Przy użyciu poświadczeń organizacyjnych do logowania się do witryny Azure portal za pośrednictwem przeglądarki sieci web, uzyskać dostęp do usługi Menedżer urządzeń StorSimple.
 
-Dostęp do usługi Menedżer urządzeń StorSimple wymaga, że Twoja organizacja ma subskrypcję platformy Azure, która obejmuje usługi StorSimple. Subskrypcja Określa funkcje, które są dostępne w witrynie Azure portal. Jeśli Twoja organizacja ma subskrypcję platformy Azure i chcesz dowiedzieć się więcej o nich, zobacz [konta na platformie Azure jako organizacja](../active-directory/fundamentals/sign-up-organization.md).
+Dostęp do usługi Menedżer urządzeń StorSimple wymaga, że Twoja organizacja ma subskrypcję platformy Azure, która obejmuje usługi StorSimple. Subskrypcja określa funkcje, do których masz dostęp w witrynie Azure Portal. Jeśli Twoja organizacja ma subskrypcję platformy Azure i chcesz dowiedzieć się więcej o nich, zobacz [konta na platformie Azure jako organizacja](../active-directory/fundamentals/sign-up-organization.md).
 
-Ponieważ usługa Menedżer urządzeń StorSimple jest hostowana na platformie Azure, jest chroniony przy użyciu funkcji zabezpieczeń platformy Azure. Aby uzyskać więcej informacji o funkcjach zabezpieczeń zapewnianych przez Microsoft Azure, przejdź do [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/security/).
+Ponieważ usługa Menedżer urządzeń StorSimple jest hostowana na platformie Azure, jest chroniony przy użyciu funkcji zabezpieczeń platformy Azure. Aby uzyskać więcej informacji na temat funkcji zabezpieczeń platformy Microsoft Azure, zobacz [Centrum zaufania Microsoft Azure](https://azure.microsoft.com/support/trust-center/security/).
 
 ## <a name="storsimple-device-protection"></a>Ochrona urządzeń StorSimple
 
@@ -53,7 +53,7 @@ Urządzenie StorSimple jest urządzenie magazynujące hybrydowych w środowisku 
 
 Tylko autoryzowanym StorSimple, urządzenia będą mogły do dołączenia do usługi Menedżer urządzeń StorSimple, który został utworzony w ramach subskrypcji platformy Azure. Aby autoryzować urządzenia, należy zarejestrować go za pomocą usługi Menedżer urządzeń StorSimple, zapewniając klucz rejestracji usługi. Klucz rejestracji usługi jest 128-bitowego losowy klucz generowany w witrynie Azure portal.
 
-![Klucz rejestracji usługi](./media/storsimple-security/ServiceRegistrationKey.png)
+![klucz rejestracji usługi](./media/storsimple-security/ServiceRegistrationKey.png)
 
 Aby dowiedzieć się, jak uzyskać klucz rejestracji usługi, przejdź do [krok 2: uzyskanie klucza rejestracji usługi](storsimple-8000-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key).
 
@@ -121,7 +121,7 @@ Aby uzyskać więcej informacji na temat programu StorSimple Snapshot Manager, p
 Firma Microsoft zaleca, skorzystaj z poniższych wskazówek w celu zapewnienia, że haseł usługi StorSimple silnych i dobrze chronione:
 
 * Zmień hasła co trzy miesiące. Zmiana hasła jest wymuszana rocznie.
-* Należy używać silnych haseł. Aby uzyskać więcej informacji, przejdź do [tworzyć silniejsze hasła i chronić je](http://blogs.microsoft.com/cybertrust/2014/08/25/create-stronger-passwords-and-protect-them/).
+* Należy używać silnych haseł. Aby uzyskać więcej informacji, przejdź do [tworzyć silniejsze hasła i chronić je](https://blogs.microsoft.com/cybertrust/2014/08/25/create-stronger-passwords-and-protect-them/).
 * Zawsze używaj różnych haseł dla dostępu z różnych mechanizmów; Każdy z haseł, które określisz powinny być unikatowe.
 * Nie należy udostępniać hasła każdemu użytkownikowi, który nie ma uprawnień do uzyskania dostępu do urządzenia StorSimple.
 * Nie mówić o hasło przed innymi ani nie podpowiedzi na format hasła.
@@ -166,7 +166,7 @@ Klucz szyfrowania danych usługi i certyfikat szyfrowania danych nie wygasa. Jed
 
 Urządzenie StorSimple zarządza danymi dzięki przechowywaniu go w warstwach, lokalnie i w chmurze, w zależności od częstości używania. Wszystkie maszyny hosta, które są połączone z urządzeniem wysyłać dane do urządzenia, które przenosi dane w chmurze, zgodnie z potrzebami. Dane są przesyłane z urządzenia do chmury bezpiecznie za pośrednictwem Internetu. Każde urządzenie ma jeden obiekt docelowy iSCSI, który wyświetla wszystkie udostępnione woluminy na tym urządzeniu. Wszystkie dane są szyfrowane przed wysłaniem go do magazynu w chmurze. 
 
-![Klucz szyfrowania magazynu w chmurze](./media/storsimple-security/CloudStorageEncryption.png)
+![klucz szyfrowania magazynu w chmurze](./media/storsimple-security/CloudStorageEncryption.png)
 
 Aby ułatwić zapewnienie bezpieczeństwa i integralności danych przeniesione do chmury, StorSimple umożliwia definiowanie kluczy szyfrowania magazynu w chmurze w następujący sposób:
 
@@ -215,7 +215,7 @@ Menedżer urządzeń StorSimple dla serii fizycznych i wirtualnych zbiera inform
 - Użytkownicy, którzy mają dostęp do danych znajdujących się w udziałach. Lista użytkowników, którzy mają dostęp do danych udziału jest wyświetlany i mogą być wyświetlane. Ta lista są także usuwane w momencie usunięcia akcji. Dotyczy to tylko macierze wirtualne StorSimple.
  * Aby wyświetlić listę użytkowników, kto może uzyskać dostęp lub aby usunąć udział, wykonaj kroki opisane w [Zarządzanie udziałami w ramach macierzy wirtualnej StorSimple](storsimple-virtual-array-manage-shares.md)
 
-Aby uzyskać więcej informacji, przejrzyj zasady Privacy firmy Microsoft w [Centrum zaufania](https://www.microsoft.com/trustcenter).
+Aby uzyskać więcej informacji, zapoznaj się z Zasadami ochrony prywatności firmy Microsoft w [Centrum zaufania](https://www.microsoft.com/trustcenter).
 
 ## <a name="frequently-asked-questions-faq"></a>Często zadawane pytania
 

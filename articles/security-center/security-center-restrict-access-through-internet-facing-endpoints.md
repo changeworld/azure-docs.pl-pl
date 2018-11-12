@@ -3,7 +3,7 @@ title: Ograniczanie dostępu przez punkty końcowe łączące dostępnego z Inte
 description: W tym dokumencie przedstawiono sposób realizacji zalecenia w usłudze Azure Security Center **ograniczyć dostęp za pośrednictwem punktu końcowego z Internetem**.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 727d88c9-163b-4ea0-a4ce-3be43686599f
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2017
-ms.author: terrylan
-ms.openlocfilehash: 0b7de1f63f765705a78535ae04c1b844e06c029c
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 8e404651fa315f630ff190c9e70ccdd3eec7f117
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301161"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230006"
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Ograniczanie dostępu przez punkty końcowe łączące dostępnego z Internetu w usłudze Azure Security Center
 Usługa Azure Security Center zaleci, ograniczanie dostępu przez punkty końcowe dostępnego z Internetu, jeśli którakolwiek z sieciowymi grupami zabezpieczeń (NSG) z nich ma co najmniej jedną regułę ruchu przychodzącego zezwalające na dostęp z "Dowolna" źródłowy adres IP. Otwieranie dla "dowolnej" mogą umożliwić osobom atakującym dostęp do zasobów. Usługa Security Center oferuje rekomendacje dotyczące edytowania tych reguł dla ruchu przychodzącego, aby ograniczyć dostęp do źródłowych adresów IP, które faktycznie muszą mieć dostęp.
@@ -66,7 +66,7 @@ Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następując
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w Centrum zabezpieczeń Azure](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Monitorowanie rozwiązań partnerskich w Centrum zabezpieczeń Azure](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
 * [Centrum zabezpieczeń Azure — często zadawane pytania](security-center-faq.md) — odpowiedzi na najczęstsze pytania dotyczące korzystania z usługi.
-* [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/) — najnowsze informacje na temat zabezpieczeń platformy Azure.
+* [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/) — najnowsze informacje na temat zabezpieczeń platformy Azure.
 
 <!--Image references-->
 [1]: ./media/security-center-restrict-access-thru-internet-facing-endpoint/restrict-access-thru-internet-facing-endpoint.png

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 8ecef86841bcf13a469f9c0dc81f114bd54acdba
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0a5b7f93f9ac6cc5b1076881727a42fd5b95ff4b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946521"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235160"
 ---
 # <a name="what-is-azure-data-box-heavy-preview"></a>Czym jest Azure Data Box Heavy? (Wersja zapoznawcza)
 
@@ -31,7 +31,7 @@ Rozwiązanie Data Box Heavy jest obecnie w wersji zapoznawczej. Urządzenie moż
 
 > [!IMPORTANT]
 > - Rozwiązanie Data Box Heavy jest dostępne w wersji zapoznawczej. Przed wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-> - Aby zamówić urządzenie, zarejestruj się w [portalu w wersji zapoznawczej](http://aka.ms/).
+> - Aby zamówić urządzenie, zarejestruj się w [portalu w wersji zapoznawczej](https://aka.ms/).
 > - W okresie obowiązywania wersji zapoznawczej rozwiązanie Data Box Heavy może być wysyłane do klientów w Stanach Zjednoczonych i Unii Europejskiej. Aby uzyskać więcej informacji, przejdź do tematu [Dostępność regionalna](#region-availability).
 
 ## <a name="use-cases"></a>Przypadki zastosowań

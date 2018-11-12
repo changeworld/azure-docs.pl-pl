@@ -2,19 +2,19 @@
 title: Tworzenie klastrów HBase w sieci wirtualnej — platformy Azure
 description: Rozpoczęcie korzystania z bazy danych HBase w usłudze Azure HDInsight. Dowiedz się, jak tworzyć klastry HDInsight HBase w usłudze Azure Virtual Network.
 services: hdinsight,virtual-network
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.author: jasonh
-ms.openlocfilehash: a3686e99f9bab754cdc9cfc801961ea47560a111
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 183f8fd47ea5239e31f03f3aecf420cfb5842098
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43043239"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009831"
 ---
 # <a name="create-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Tworzenie klastrów HBase w HDInsight w usłudze Azure Virtual Network
 Dowiedz się, jak tworzyć klastry usługi Azure HDInsight HBase w [Azure Virtual Network][1].

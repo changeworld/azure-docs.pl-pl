@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e896392404c23e88d697d45146f802576d6045d3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: b7b8ccf7e84239db4eef0914346c453a2f205f91
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870829"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237897"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autoryzowanie dostępu do aplikacji sieci web usługi Azure Active Directory przy użyciu przepływie przyznawania kodu OAuth 2.0
 
@@ -183,7 +183,7 @@ Odpowiedź oznaczająca Powodzenie może wyglądać następująco:
 | refresh_token |Token odświeżania OAuth 2.0. Aplikacja może używać tego tokenu, można uzyskać tokenów dodatkowych dostępu po wygaśnięciu bieżącego tokenu dostępu. Odśwież tokeny są długotrwałe i pozwala zachować dostęp do zasobów przez dłuższy czas. |
 | id_token |Niepodpisane reprezentujący tokenu Web JSON (JWT) [tokenu Identyfikacyjnego](id-tokens.md). Aplikacji base64Url może zdekodować segmentów tego tokenu na żądanie informacji o użytkowniku, który jest zalogowany. Wartości w pamięci podręcznej i ich wyświetlenie aplikacji, ale nie należy polegać na nich autoryzacji lub granice zabezpieczeń. |
 
-Aby uzyskać więcej informacji na temat tokenów sieci web JSON, zobacz [Specyfikacja wersji roboczej JWT IETF](http://go.microsoft.com/fwlink/?LinkId=392344).   Aby dowiedzieć się więcej na temat `id_tokens`, zobacz [przepływ protokołu OpenID Connect 1.0](v1-protocols-openid-connect-code.md).
+Aby uzyskać więcej informacji na temat tokenów sieci web JSON, zobacz [Specyfikacja wersji roboczej JWT IETF](https://go.microsoft.com/fwlink/?LinkId=392344).   Aby dowiedzieć się więcej na temat `id_tokens`, zobacz [przepływ protokołu OpenID Connect 1.0](v1-protocols-openid-connect-code.md).
 
 ### <a name="error-response"></a>Odpowiedzi na błąd
 Błędy punktu końcowego wystawiania tokenów są kody błędów HTTP, ponieważ klient wywołuje punkt końcowy wystawiania tokenu bezpośrednio. Oprócz kod stanu HTTP punktu końcowego wystawiania tokenu usługi Azure AD zwraca dokument JSON z obiektami, które opisuje błąd.

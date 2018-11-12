@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: c10e071100410f6d5d995d88657bdd85c08a9715
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 07faf5efd1c7eec3e209a5d971185655cc949bb9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423497"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250785"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Wprowadzenie dla operatorów IT na platformie Azure
 
@@ -227,7 +227,7 @@ Aby uzyskać więcej informacji, zobacz [wgląd w użycie zasobów usługi Micro
 
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>Prognozowane koszty za pomocą kalkulatora cen.
 
-Ceny dla każdej usługi w systemie Azure jest inny. Wiele usług platformy Azure udostępniają warstw Basic, Standard i Premium. Zwykle każda warstwa ma kilka poziomów cen i wydajności. Za pomocą [online kalkulator cen](http://azure.microsoft.com/pricing/calculator), można utworzyć szacowania cen. Kalkulator zawiera elastyczność, aby oszacować koszt pojedynczego zasobu lub tej grupy zasobów.
+Ceny dla każdej usługi w systemie Azure jest inny. Wiele usług platformy Azure udostępniają warstw Basic, Standard i Premium. Zwykle każda warstwa ma kilka poziomów cen i wydajności. Za pomocą [online kalkulator cen](https://azure.microsoft.com/pricing/calculator), można utworzyć szacowania cen. Kalkulator zawiera elastyczność, aby oszacować koszt pojedynczego zasobu lub tej grupy zasobów.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
@@ -415,7 +415,7 @@ Dostępnych jest kilka opcji wdrażania konta magazynu.
 
 #### <a name="portal"></a>Portal
 
-Wdrażanie na koncie magazynu przy użyciu witryny Azure portal wymaga aktywnej subskrypcji platformy Azure i dostęp do przeglądarki sieci web. Możesz wdrożyć nowe konto magazynu do nowej lub istniejącej grupy zasobów. Po utworzeniu konta magazynu można utworzyć obiektu blob kontener lub udział plików przy użyciu portalu. Można utworzyć tabelę i programowo kolejki magazynu jednostki. Aby uzyskać więcej informacji, zobacz [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md).
+Wdrażanie na koncie magazynu przy użyciu witryny Azure portal wymaga aktywnej subskrypcji platformy Azure i dostęp do przeglądarki sieci web. Możesz wdrożyć nowe konto magazynu do nowej lub istniejącej grupy zasobów. Po utworzeniu konta magazynu można utworzyć obiektu blob kontener lub udział plików przy użyciu portalu. Można utworzyć tabelę i programowo kolejki magazynu jednostki. Aby uzyskać więcej informacji, zobacz temat [Tworzenie konta](../../storage/common/storage-quickstart-create-account.md).
 
 Oprócz wdrażania konta magazynu w witrynie Azure portal, można wdrożyć szablonu usługi Azure Resource Manager z poziomu portalu. To wdroży i skonfiguruje wszystkie zasoby, zgodnie z definicją w szablonie, w tym wszystkie konta magazynu. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 

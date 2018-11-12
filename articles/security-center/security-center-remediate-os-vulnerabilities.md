@@ -3,7 +3,7 @@ title: Skoryguj konfiguracje zabezpieczeń w usłudze Azure Security Center | Do
 description: W tym dokumencie pokazano, jak zaimplementować zalecenia usługi Azure Security Center, "Skoryguj konfiguracje zabezpieczeń".
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 991d41f5-1d17-468d-a66d-83ec1308ab79
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: 74bfc3435ad6d247dabd3a7cbf2910ede5f8c8ca
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: d4523a9e2d5a5466c1617930d14a8a2d25a0e16f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296248"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238781"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Skoryguj konfiguracje zabezpieczeń w usłudze Azure Security Center
 Usługa Azure Security Center analizuje codziennie systemu operacyjnego (OS) maszyn wirtualnych (VM) i konfigurację, która może spowodować, że maszyny wirtualne na komputerach i bardziej narażone na ataki. Usługa Security Center zaleca Rozwiąż luk w zabezpieczeniach w przypadku konfiguracji systemu operacyjnego jest niezgodny z reguły konfiguracji zabezpieczeń zaleca się zmiany tych luk w konfiguracji.
@@ -107,7 +107,7 @@ Aby dowiedzieć się więcej o usłudze Security Center, zobacz następujące za
 * Aby dowiedzieć się, jak zarządzać i reagować na alerty zabezpieczeń, zobacz [reagowanie na alerty zabezpieczeń w Centrum zabezpieczeń Azure i zarządzanie nimi](security-center-managing-and-responding-alerts.md).
 * Informacje na temat monitorowania stanu kondycji rozwiązań partnerskich, zobacz [monitorowanie rozwiązań partnerskich w usłudze Azure Security Center](security-center-partner-solutions.md).
 * Aby uzyskać odpowiedzi na często zadawane pytania dotyczące korzystania z usługi, zobacz [często zadawane pytania dotyczące usługi Azure Security Center](security-center-faq.md).
-* Aby uzyskać wpisy na blogu dotyczące zabezpieczeń platformy Azure i zgodności, zobacz [blog Azure Security](http://blogs.msdn.com/b/azuresecurity/).
+* Aby uzyskać wpisy na blogu dotyczące zabezpieczeń platformy Azure i zgodności, zobacz [blog Azure Security](https://blogs.msdn.com/b/azuresecurity/).
 
 <!--Image references-->
 [1]: ./media/security-center-remediate-os-vulnerabilities/compute-blade.png

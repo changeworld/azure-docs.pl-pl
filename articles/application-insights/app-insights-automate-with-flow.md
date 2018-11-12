@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: 60605e7bdeeef32889bc0ac104fa34bd66d4444d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 65909e13c75ae4d2577ea29f562b841a1eb20477
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962881"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256429"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Zautomatyzować procesy usługi Azure Application Insights za pomocą łącznika usługi Microsoft Flow
 
@@ -34,7 +34,7 @@ Możesz dodać również dodatkowe akcje. Microsoft Flow jest udostępnienie kil
 W tym samouczku dowiesz się, jak utworzyć przepływ, który używa algorytmu klastra automatycznie Analytics do grupy atrybutów danych dla aplikacji sieci web. Przepływ automatycznie wysyła wyniki za pośrednictwem poczty e-mail, tylko jeden przykład sposobu użycia usługi Microsoft Flow i Application Insights — analiza ze sobą. 
 
 ### <a name="step-1-create-a-flow"></a>Krok 1: Tworzenie przepływu
-1. Zaloguj się do [Microsoft Flow](http://flow.microsoft.com), a następnie wybierz pozycję **moje przepływy**.
+1. Zaloguj się do [Microsoft Flow](https://flow.microsoft.com), a następnie wybierz pozycję **moje przepływy**.
 1. Kliknij przycisk **Tworzenie przepływu od podstaw**.
 
 ### <a name="step-2-create-a-trigger-for-your-flow"></a>Krok 2: Tworzenie wyzwalacza przepływu

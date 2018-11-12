@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 90d810916599db50249a3e2ec677046c5af42a09
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 7e43a32a415e58925bda5195b3943afca315f9be
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005853"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238186"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Co to jest model usługi w chmurze i jak jest pakiet?
 Usługa w chmurze jest tworzona z trzech składników i definicji usługi *(csdef)*, konfiguracji usługi *(cscfg)*, a pakiet usługi *(cspkg)*. Zarówno **ServiceDefinition.csdef** i **ServiceConfig.cscfg** pliki są oparte na języku XML i opisz strukturę usługę w chmurze i sposobu jego konfiguracji; pod wspólną nazwą modelu. **ServicePackage.cspkg** plik zip, który jest generowany na podstawie **ServiceDefinition.csdef** i między innymi, zawiera wszystkie zależności wymagane na podstawie pliku binarnego. Platforma Azure tworzy usługi w chmurze z obu **ServicePackage.cspkg** i **ServiceConfig.cscfg**.
@@ -144,7 +144,7 @@ Pliku konfiguracji usługi nie jest dostarczana razem z aplikacją, ale zostanie
 Możesz zapoznać się z [schematu konfiguracji usługi](https://msdn.microsoft.com/library/azure/ee758710.aspx) dla lepiej poznać schematu XML, używany w tym miejscu, w tym miejscu jest jednak szybkie Omówienie elementów:
 
 **Wystąpienia**  
-Umożliwia skonfigurowanie liczby uruchomionych wystąpień roli. Aby uniemożliwić potencjalnie stają się niedostępne podczas uaktualniania usługi w chmurze, zaleca się wdrożenie więcej niż jedno wystąpienie roli przeznaczonych dla sieci web. Przez wdrożenie więcej niż jedno wystąpienie, przestrzega wytycznych w [obliczeń usługa umowy dotyczącej poziomu (SLA)](http://azure.microsoft.com/support/legal/sla/), która gwarantuje łączność zewnętrzną przez 99,95% czasu dla ról dostępnego z Internetu, gdy dwie lub więcej wystąpień roli wdrożona usługa.
+Umożliwia skonfigurowanie liczby uruchomionych wystąpień roli. Aby uniemożliwić potencjalnie stają się niedostępne podczas uaktualniania usługi w chmurze, zaleca się wdrożenie więcej niż jedno wystąpienie roli przeznaczonych dla sieci web. Przez wdrożenie więcej niż jedno wystąpienie, przestrzega wytycznych w [obliczeń usługa umowy dotyczącej poziomu (SLA)](https://azure.microsoft.com/support/legal/sla/), która gwarantuje łączność zewnętrzną przez 99,95% czasu dla ról dostępnego z Internetu, gdy dwie lub więcej wystąpień roli wdrożona usługa.
 
 **AppSettings**  
 Konfiguruje ustawienia dla uruchomionych wystąpień roli. Nazwa `<Setting>` elementów musi odpowiadać definicji ustawień w pliku definicji usługi.

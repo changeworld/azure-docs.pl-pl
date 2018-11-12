@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 22f1579b2df2acdc736ed4c1d5cee64d096c320a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a91e14afa8325e75507b2f65cd9d71ab38df4524
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635341"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235245"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Tworzenie niestandardowego obrazu maszyny wirtualnej
 
@@ -29,7 +29,7 @@ ms.locfileid: "38635341"
 
 Tworzenie obrazu niestandardowego z aprowizowanej maszyny Wirtualnej i później Użyj tego obrazu niestandardowego do tworzenia identycznych maszyn wirtualnych. Poniższe kroki ilustrują Tworzenie niestandardowego obrazu maszyny wirtualnej:
 
-1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 3174f2d6562030702b14ef1fa3708a1a4e8e373b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 103e0e353efeaf493fb1d72f03eb6ce6469cd683
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301953"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235670"
 ---
 # <a name="managing-connected-partner-solutions-with-azure-security-center"></a>Zarządzanie połączonych rozwiązań partnerskich w Centrum zabezpieczeń Azure
 W tym artykule przedstawiono sposób zarządzania i monitorowania rozwiązań połączonych zabezpieczeń w usłudze Azure Security Center.
@@ -65,7 +65,7 @@ W tym artykule przedstawiono sposób zarządzania i monitorowania rozwiązań po
 * [Integracja z partnerami i rozwiązaniami](security-center-partner-integration.md) — zapoznaj się z omówieniem integracji innych rozwiązań zabezpieczeń.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi](security-center-managing-and-responding-alerts.md) — Dowiedz się, jak zarządzać i reagować na alerty zabezpieczeń.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
-* [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
+* [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
 
 <!--Image references-->
 [1]: ./media/security-center-partner-solutions/partner-solutions-tile.png

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 00143ab1f4aaba0f700e084d9225570c28713d0d
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 020923a76c94b10165e95bb4c5950419595dff0b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42057546"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252347"
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Uruchamianie elementu runbook w usłudze Azure Automation
 Poniższa tabela pozwala określić metodę, aby uruchomić element runbook w usłudze Azure Automation, która jest najbardziej odpowiednie dla danego scenariusza. Ten artykuł zawiera szczegółowe informacje na temat uruchamianie elementu runbook za pomocą witryny Azure portal i za pomocą programu Windows PowerShell. Szczegółowe informacje na temat innych metod znajdują się w dokumentacji, która z poniższych linków.
@@ -66,7 +66,7 @@ While ($doLoop) {
 Get-AzureRmAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup –Stream Output
 ```
 
-Jeśli element runbook wymaga parametrów, a następnie należy podać je jako [hashtable](http://technet.microsoft.com/library/hh847780.aspx) gdzie klucz tablicy skrótów odpowiada nazwie parametru, a wartość jest wartością parametru. Poniższy przykład pokazuje, jak można uruchomić elementu runbook z dwoma parametrami o nazwie FirstName i LastName, liczbą całkowitą o nazwie RepeatCount i parametrem logicznym o nazwie Show. Aby uzyskać więcej informacji na temat parametrów, zobacz [parametry elementu Runbook](#Runbook-parameters) poniżej.
+Jeśli element runbook wymaga parametrów, a następnie należy podać je jako [hashtable](https://technet.microsoft.com/library/hh847780.aspx) gdzie klucz tablicy skrótów odpowiada nazwie parametru, a wartość jest wartością parametru. Poniższy przykład pokazuje, jak można uruchomić elementu runbook z dwoma parametrami o nazwie FirstName i LastName, liczbą całkowitą o nazwie RepeatCount i parametrem logicznym o nazwie Show. Aby uzyskać więcej informacji na temat parametrów, zobacz [parametry elementu Runbook](#Runbook-parameters) poniżej.
 
 ```
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}

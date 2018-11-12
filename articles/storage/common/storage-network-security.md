@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 7c01940c41067029bc3d47d19c2ded1d710cc2c6
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 51404c35b42d1c98116e74b5b7a47afe05b7d2a9
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470068"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300561"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 Usługa Azure Storage udostępnia model zabezpieczeń warstwowych, dzięki czemu możesz do zabezpieczania konta magazynu do określonego zestawu dozwolonych sieci.  Po skonfigurowaniu reguł sieci tylko aplikacje z dozwolonych sieci można uzyskiwać dostęp do konta magazynu.  Podczas wywoływania z dozwolonych sieci, aplikacje w dalszym ciągu wymagają właściwej zezwolenia (prawidłowy klucz dostępu lub tokenu sygnatury dostępu Współdzielonego) dostęp do konta magazynu.
@@ -201,7 +201,7 @@ Każde konto magazynu może obsługiwać maksymalnie 100 adresów IP reguł siec
 ### <a name="configuring-access-from-on-premises-networks"></a>Konfigurowanie dostępu do sieci lokalnej
 Aby udzielić dostępu z sieci lokalnej do swojego konta magazynu przy użyciu reguły sieci IP, należy określić adresy IP używane przez sieć z Internetem.  Aby uzyskać pomoc, skontaktuj się z administratorem sieci.
 
-Jeśli sieć jest podłączony do sieci platformy Azure za pomocą funkcji [ExpressRoute](/azure/expressroute/expressroute-introduction), każdy obwód skonfigurowano dwa publiczne adresy IP w Microsoft Edge, które są używane nawiązać połączenia z programem Microsoft Services takich jak Azure Storage przy użyciu [Publicznej komunikacji równorzędnej azure](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains).  Aby zezwalać na komunikację z obwodu do usługi Azure Storage, należy utworzyć zasady sieci IP publiczne adresy IP obwodów usługi.  Aby można było znaleźć publiczne adresy IP obwodów usługi ExpressRoute [Otwórz bilet pomocy technicznej przy użyciu usługi ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) za pośrednictwem witryny Azure portal.
+Jeśli sieć jest podłączony do sieci platformy Azure za pomocą funkcji [ExpressRoute](/azure/expressroute/expressroute-introduction), każdy obwód skonfigurowano dwa publiczne adresy IP w Microsoft Edge, które są używane nawiązać połączenia z programem Microsoft Services takich jak Azure Storage przy użyciu [Publicznej komunikacji równorzędnej azure](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains).  Aby zezwalać na komunikację z obwodu do usługi Azure Storage, należy utworzyć zasady sieci IP publiczne adresy IP obwodów usługi.  Aby można było znaleźć publiczne adresy IP obwodów usługi ExpressRoute [Otwórz bilet pomocy technicznej przy użyciu usługi ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) za pośrednictwem witryny Azure portal.
 
 
 ### <a name="managing-ip-network-rules"></a>Zarządzanie regułami sieci IP
@@ -294,7 +294,7 @@ Gdy jest włączony wyjątek "Zaufanych usług firmy Microsoft", następujące u
 |Azure Event Grid|Microsoft.EventGrid|Włączanie publikowania zdarzeń usługi Blob Storage.  [Dowiedz się więcej](https://docs.microsoft.com/azure/event-grid/overview).|
 |Azure Event Hubs|Microsoft.EventHub|Archiwizowanie danych za pomocą usługi Event Hubs Capture.  [Dowiedz się więcej](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview).|
 |Sieci systemu Azure|Microsoft.Networking|Store i analizowanie dzienników ruchu sieciowego.  [Dowiedz się więcej](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview).|
-|Azure Monitor|Microsoft.Insights| Umożliwia zapisywanie danych do konta storaage zabezpieczonej monitorowania [więcej](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks).|
+|Azure Monitor|Microsoft.Insights| Umożliwia zapisywanie danych do konta magazynu zabezpieczone monitorowania [więcej](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks).|
 |
 
 

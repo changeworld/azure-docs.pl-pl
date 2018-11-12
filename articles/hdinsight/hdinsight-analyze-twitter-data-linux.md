@@ -1,22 +1,22 @@
 ---
 title: Analizowanie danych serwisu Twitter przy użyciu Apache Hive — Azure HDInsight
-description: Dowiedz się, jak używać technologii Hive i usługi Hadoop w HDInsight do Przekształcanie nieprzetworzonych danych serwisu TWitter w tabeli programu Hive można wyszukiwać.
+description: Dowiedz się, jak używać Apache Hive i Apache Hadoop w HDInsight do Przekształcanie nieprzetworzonych danych serwisu TWitter w tabeli programu Hive można wyszukiwać.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.author: jasonh
+ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: a20f9ef6e42027cf3f499654ac8a43eee7b41854
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: d037c4fc65bc32ff183ddc7a8925cd2f51411ea0
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104082"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034630"
 ---
-# <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>Analizowanie danych serwisu Twitter przy użyciu technologii Hive i usługi Hadoop w HDInsight
+# <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Analizowanie danych serwisu Twitter przy użyciu Apache Hive i Apache Hadoop w HDInsight
 
 Dowiedz się, jak używać Apache Hive do przetwarzania danych w usłudze Twitter. Wynik jest listę użytkowników usługi Twitter, którzy wysłali większość tweety, które zawierają określony wyraz.
 
@@ -41,7 +41,7 @@ Twitter pozwala pobrać danych dla każdego tweetu jako dokument JavaScript Obje
    |:--- |:--- |
    | Name (Nazwa) |MyHDInsightApp |
    | Opis |MyHDInsightApp |
-   | Witryna sieci Web |http://www.myhdinsightapp.com |
+   | Witryna internetowa |http://www.myhdinsightapp.com |
 
 4. Sprawdź **tak, zgadzam**, a następnie kliknij przycisk **tworzenie aplikacji usługi Twitter**.
 

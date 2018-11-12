@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 403ac2fd0ab497239350c8b4a68a6b6f53bb24b4
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c79a44422944fd2049c47a6729a86d063dbcd15e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963918"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232345"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Log Analytics na platformie Microsoft Azure. Jeśli masz dodatkowe pytania dotyczące usługi Log Analytics, przejdź do strony [forum dyskusyjne](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
@@ -158,7 +158,7 @@ A. Nie, nie jest obecnie możliwe do odczytu z dowolnego tabele lub kontenerów 
 
 ### <a name="q-what-ip-addresses-does-the-log-analytics-service-use-how-do-i-ensure-that-my-firewall-only-allows-traffic-to-the-log-analytics-service"></a>PYTANIE: Adresy IP jest używana usługa Log Analytics? Jak zagwarantować, że moje zapora zezwala na tylko ruch do usługi Log Analytics?
 
-A. Usługa Log Analytics jest oparty na platformie Azure. Adresy IP analizy dziennika są w [zakresów IP centrum danych Microsoft Azure](http://www.microsoft.com/download/details.aspx?id=41653).
+A. Usługa Log Analytics jest oparty na platformie Azure. Adresy IP analizy dziennika są w [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
 Podczas wdrażania usługi zostaną wprowadzone, zmieniać rzeczywiste adresy IP usługi Log Analytics. Nazwy DNS, aby umożliwić za pośrednictwem zapory są udokumentowane w artykule [wymagania dotyczące sieciowej](log-analytics-concept-hybrid.md#network-firewall-requirements).
 
@@ -170,7 +170,7 @@ Ruch do usługi Log Analytics używa obwód usługi ExpressRoute publicznej komu
 
 ### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>PYTANIE: Czy istnieje prosty i łatwy sposób można przenieść istniejący obszar roboczy usługi Log Analytics do innej subskrypcji Azure/obszaru roboczego usługi Log Analytics?
 
-A. `Move-AzureRmResource` Polecenie cmdlet pozwala na przechodzenie obszar roboczy usługi Log Analytics i konto usługi Automation z jedną subskrypcją platformy Azure do innego. Aby uzyskać więcej informacji, zobacz [Move-AzureRmResource](http://msdn.microsoft.com/library/mt652516.aspx).
+A. `Move-AzureRmResource` Polecenie cmdlet pozwala na przechodzenie obszar roboczy usługi Log Analytics i konto usługi Automation z jedną subskrypcją platformy Azure do innego. Aby uzyskać więcej informacji, zobacz [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx).
 
 Ta zmiana może również w witrynie Azure portal.
 

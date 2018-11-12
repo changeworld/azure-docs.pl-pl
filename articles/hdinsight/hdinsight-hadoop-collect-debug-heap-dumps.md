@@ -1,25 +1,25 @@
 ---
-title: Debugowanie i analizowanie usługi Hadoop z zrzutów stosu - Azure
-description: Zbieranie zrzutów sterty dla usług Hadoop i automatycznie umieścić wewnątrz konta magazynu obiektów Blob platformy Azure do debugowania i analizy.
+title: Debugowanie i analizowanie usługi Apache Hadoop z zrzutów stosu - Azure
+description: Zbieranie zrzutów stosów na potrzeby usługi Apache Hadoop i automatycznie umieścić wewnątrz konta magazynu obiektów Blob platformy Azure do debugowania i analizy.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 35f7843ebf49e79d9045c72493bb38b218234288
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 2a399899c93addf966d3f2ec0e36d4b1c76b686f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43099771"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038311"
 ---
-# <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-hadoop-services"></a>Zbieranie zrzutów stosów w magazynie obiektów Blob, debugowanie i analizowanie usługi Hadoop
+# <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-apache-hadoop-services"></a>Zbieranie zrzutów stosów w magazynie obiektów Blob, aby debugować i analizować usługi Apache Hadoop
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-Zrzuty sterty zawierają migawkę pamięci aplikacji, w tym wartości zmiennych w czasie tworzenia zrzutu. Tak, aby były przydatne do diagnozowania problemów, które występują w czasie wykonywania. Zrzuty sterty może być automatycznie zbierane dla usług Hadoop i umieszczone wewnątrz konta magazynu obiektów Blob platformy Azure przez użytkownika w obszarze HDInsightHeapDumps /.
+Zrzuty sterty zawierają migawkę pamięci aplikacji, w tym wartości zmiennych w czasie tworzenia zrzutu. Tak, aby były przydatne do diagnozowania problemów, które występują w czasie wykonywania. Zrzuty sterty może być automatycznie zbierane dla usługi Apache Hadoop i umieszczone wewnątrz konta magazynu obiektów Blob platformy Azure przez użytkownika w obszarze HDInsightHeapDumps /.
 
 Zbieranie zrzutów stosów na potrzeby różnych usług musi być włączona dla usług w poszczególnych klastrach. Wartość domyślna dla tej funkcji jest wyłączone dla klastra. Te zrzuty stosu mogą być duże, zaleca się monitorowanie konta usługi Blob storage gdzie one są zapisywane po włączeniu kolekcji.
 
@@ -30,11 +30,11 @@ Zbieranie zrzutów stosów na potrzeby różnych usług musi być włączona dla
 ## <a name="eligible-services-for-heap-dumps"></a>Kwalifikujących się usług dla zrzutów stosu
 Można włączyć zrzutów sterty dla następujących usług:
 
-* **hcatalog** -tempelton
-* **gałąź** — serwera hiveserver2, Magazyn metadanych, derbyserver
+* **Apache hcatalog** -tempelton
+* **Apache hive** — serwera hiveserver2, Magazyn metadanych, derbyserver
 * **mapreduce** -jobhistoryserver
-* **yarn** -resourcemanager nodemanager, timelineserver
-* **System plików hdfs** -datanode secondarynamenode, namenode
+* **Apache yarn** -resourcemanager nodemanager, timelineserver
+* **System plików hdfs Apache** -datanode secondarynamenode, namenode
 
 ## <a name="configuration-elements-that-enable-heap-dumps"></a>Elementy konfiguracji, które Włączanie zrzutów stosu
 Aby włączyć zrzutów stosów na potrzeby usługi, musisz ustawić elementy prawidłowej konfiguracji w sekcji za daną usługę, która jest określona przez **service_name**.

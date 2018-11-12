@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
-ms.reviewer: asteen
-ms.openlocfilehash: 98dc3981e0f34ebfe7d8881d77b84cfe252e3f4f
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.reviewer: japere
+ms.openlocfilehash: 2d528c04a9301998220b5564330f20ed014b68d6
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357120"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036941"
 ---
-# <a name="problem-installing-the-application-proxy-agent-connector"></a>Problem podczas instalowania łącznika agenta serwera Proxy aplikacji
+# <a name="problem-installing-the-application-proxy-agent-connector"></a>Problem z instalacją łącznika agenta serwera proxy aplikacji
 
 Łącznik serwera Proxy aplikacji usługi AAD firmy Microsoft jest składnikiem domeny wewnętrznej, który używa połączeń wychodzących w celu ustanowienia łączności z końcowego dostępne w chmurze do domeny wewnętrznej.
 
@@ -63,13 +63,13 @@ Podczas instalacji łącznika nie powiedzie się, przyczyny to zwykle spowodowan
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Sprawdź, czy administrator służy do instalowania łącznika
 
-**Cel:** Sprawdź, czy administrator z prawidłowymi poświadczeniami użytkownika, który próbuje zainstalować łącznik. Obecnie użytkownik musi być administratorem globalnym dla instalacji zakończyło się sukcesem.
+**Cel:** Sprawdź, czy administrator z prawidłowymi poświadczeniami użytkownika, który próbuje zainstalować łącznik. Obecnie użytkownik musi być aplikacji administrator lub administrator globalny dla instalacji zakończyło się sukcesem.
 
 **Aby sprawdzić, czy poświadczenia są prawidłowe:**
 
 Połączyć się z <https://login.microsoftonline.com> i używać tych samych poświadczeń. Upewnij się, że użytkownik zaloguje się ponownie. Rolę użytkownika można sprawdzić, przechodząc do **usługi Azure Active Directory**  - &gt; **użytkowników i grup**  - &gt; **wszyscy użytkownicy**. 
 
-Wybierz konto użytkownika, następnie "Rola katalogu" w menu wynikowe. Sprawdź, czy wybraną rolę "Administrator globalny". Jeśli nie możesz uzyskać dostępu do żadnych stron wzdłuż tych kroków nie jesteś administratorem globalnym.
+Wybierz konto użytkownika, następnie "Rola katalogu" w menu wynikowe. Sprawdź wybraną rolę "Administrator aplikacji" lub "Administrator globalny". Jeśli nie możesz uzyskać dostępu do żadnych stron wzdłuż tych kroków, nie masz wymaganych ról.
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Omówienie łączników serwera Proxy aplikacji usługi Azure AD](application-proxy-connectors.md)

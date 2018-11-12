@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 3b1fb14fbb21876d0b3f7d98327353d54bb1cfb2
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 56d5f3b480ddb000f9118fbcc36e39817cb0bce8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42022855"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238509"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Porównanie usług App Service, Virtual Machines, Service Fabric i Cloud Services
 
@@ -47,7 +47,7 @@ W poniższej tabeli porównano możliwości usług App Service, Cloud Services, 
 | Obsługa programu WebMatrix |X | |X | | |
 | Dostęp do usług takich jak Service Bus, Storage, SQL Database |X |X |X |X | |
 | Hostowanie warstwy internetowej lub usług internetowych na potrzeby architektury wielowarstwowej |X |X |X |X | |
-| Hostowanie warstwy środkowej na potrzeby architektury wielowarstwowej |X |X |X |X |Aplikacje internetowe usługi App Service mogą bezproblemowo hostować warstwę środkową interfejsu API REST, a zadania [WebJob](http://go.microsoft.com/fwlink/?linkid=390226) umożliwiają hostowanie zadań przetwarzania w tle. Zadania WebJob możesz uruchamiać w ramach dedykowanej witryny internetowej, aby osiągnąć niezależną skalowalność warstwy. |
+| Hostowanie warstwy środkowej na potrzeby architektury wielowarstwowej |X |X |X |X |Aplikacje internetowe usługi App Service mogą bezproblemowo hostować warstwę środkową interfejsu API REST, a zadania [WebJob](https://go.microsoft.com/fwlink/?linkid=390226) umożliwiają hostowanie zadań przetwarzania w tle. Zadania WebJob możesz uruchamiać w ramach dedykowanej witryny internetowej, aby osiągnąć niezależną skalowalność warstwy. |
 | Zintegrowana obsługa programu MySQL jako usługi |X |X | | | |
 | Obsługa technologii ASP.NET, klasycznych stron ASP, Node.js, PHP, Python |X |X |X |X |Usługa Service Fabric obsługuje tworzenie frontonu internetowego za pomocą programu [ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md). Możesz także wdrożyć aplikację dowolnego typu (Node.js, Java itp.) jako [plik wykonywalny gościa](../service-fabric/service-fabric-guest-executables-introduction.md). |
 | Skalowanie w poziomie do wielu wystąpień bez konieczności ponownego wdrażania |X |X |X |X |Usługa Virtual Machines umożliwia skalowanie w poziomie do wielu wystąpień, lecz usługi działające w niej muszą być napisane pod kątem obsługi takiego skalowania. Należy skonfigurować moduł równoważenia obciążenia, który będzie kierować żądania między maszynami, i upewnić się, że w [zestawie dostępności](../virtual-machines/windows/manage-availability.md) istnieją co najmniej dwa wystąpienia maszyny wirtualnej. |

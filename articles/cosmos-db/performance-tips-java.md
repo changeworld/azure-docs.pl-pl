@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: d8d05335b62d292bf61dbd3f3d565093b21f9253
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c6c63b7b66114a8c35986b443bda78442b8edd7a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574848"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237744"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Porady dotyczące wydajności usługi Azure Cosmos DB i Java
 
@@ -25,7 +25,7 @@ ms.locfileid: "45574848"
 > * [.NET](performance-tips.md)
 > 
 
-Usługa Azure Cosmos DB jest szybka i elastyczna rozproszonej bazy danych, która miało miejsce płynne skalowanie dzięki gwarancji opóźnień i przepływności. Nie trzeba wprowadzić zmiany architektury głównych lub pisania złożonego kodu do skalowania bazy danych za pomocą usługi Azure Cosmos DB. Skalowanie w górę i w dół jest łatwe jak tworzenie jednego wywołania interfejsu API lub [wywołania metody zestaw SDK](set-throughput.md#set-throughput-java). Ponieważ usługi Azure Cosmos DB jest dostępna za pośrednictwem wywołań sieci istnieją optymalizacje po stronie klienta, które można wprowadzić do osiągnięcia maksymalnej wydajności, korzystając z [zestawu SDK Java usługi SQL](documentdb-sdk-java.md).
+Usługa Azure Cosmos DB jest szybka i elastyczna rozproszonej bazy danych, która miało miejsce płynne skalowanie dzięki gwarancji opóźnień i przepływności. Nie trzeba wprowadzić zmiany architektury głównych lub pisania złożonego kodu do skalowania bazy danych za pomocą usługi Azure Cosmos DB. Skalowanie w górę i w dół jest łatwe jak tworzenie jednego wywołania interfejsu API. Aby dowiedzieć się więcej, zobacz [sposób aprowizowania przepływności kontenerów](how-to-provision-container-throughput.md) lub [sposób aprowizowania przepływności bazy danych](how-to-provision-database-throughput.md). Ponieważ usługi Azure Cosmos DB jest dostępna za pośrednictwem wywołań sieci istnieją optymalizacje po stronie klienta, które można wprowadzić do osiągnięcia maksymalnej wydajności, korzystając z [zestawu SDK Java usługi SQL](documentdb-sdk-java.md).
 
 Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wziąć pod uwagę następujące opcje:
 
@@ -93,7 +93,8 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
 
 5. **Implementowanie wycofywania w odstępach czasu getRetryAfterInMilliseconds**
 
-    Podczas testowania wydajności, należy zwiększyć obciążenie do momentu ograniczeni mała liczba żądań. Jeśli jest dławiona, aplikacja kliencka powinna wycofywania na ograniczenie przepustowości przez dany interwał ponawiania określony serwer. Uwzględnienie wycofywania daje pewność, możesz wydać skraca czas oczekiwania między ponownymi próbami. Obsługa zasad ponawiania jest uwzględniona w wersji 1.8.0 lub nowszym z [zestawu Java SDK](documentdb-sdk-java.md). Aby uzyskać więcej informacji, zobacz [przekroczenie następującej zastrzeżone ograniczenia przepływności](request-units.md#RequestRateTooLarge) i [getRetryAfterInMilliseconds](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client_exception.getretryafterinmilliseconds).
+    Podczas testowania wydajności, należy zwiększyć obciążenie do momentu ograniczeni mała liczba żądań. Jeśli jest dławiona, aplikacja kliencka powinna wycofywania na ograniczenie przepustowości przez dany interwał ponawiania określony serwer. Uwzględnienie wycofywania daje pewność, możesz wydać skraca czas oczekiwania między ponownymi próbami. Obsługa zasad ponawiania jest uwzględniona w wersji 1.8.0 lub nowszym z [zestawu Java SDK](documentdb-sdk-java.md). Aby uzyskać więcej informacji, zobacz [getRetryAfterInMilliseconds](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client_exception.getretryafterinmilliseconds).
+
 6. **Skalowanie w poziomie obciążenia klientami**
 
     Jeśli testujesz na poziomach wysoką przepływność (> 50 000 jednostek RU/s), aplikacja kliencka może stać się wąskim gardłem ze względu na maszynie są takie same się na użycie procesora CPU lub sieci. Jeśli przekroczysz ten punkt, może nadal wypychania dalsze za pomocą konta usługi Azure Cosmos DB skalowanie aplikacji klienckich na wielu serwerach.

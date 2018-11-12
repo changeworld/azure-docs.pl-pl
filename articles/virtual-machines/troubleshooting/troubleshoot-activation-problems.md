@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: eeecf37a6cc7a0f86662f002b6f0efab5ef8c35c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 80799eb716e77a4dec02a2daf028c35589c75da0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417467"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235279"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Rozwiązywanie problemów aktywacji maszyny wirtualnej Windows Azure
 
@@ -45,9 +45,9 @@ Ogólnie rzecz biorąc problemy dotyczące aktywacji maszyny Wirtualnej platform
 ## <a name="solution"></a>Rozwiązanie
 
 >[!NOTE]
->Jeśli używasz sieci VPN lokacja lokacja i wymuszonego tunelowania, zobacz [Azure Użyj niestandardowych tras, aby umożliwić aktywacji usługi KMS przy użyciu wymuszonego tunelowania](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx). 
+>Jeśli używasz sieci VPN lokacja lokacja i wymuszonego tunelowania, zobacz [Azure Użyj niestandardowych tras, aby umożliwić aktywacji usługi KMS przy użyciu wymuszonego tunelowania](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx). 
 >
->Jeśli używasz usługi ExpressRoute i masz opublikowanych trasy domyślnej, zobacz [maszyny Wirtualnej platformy Azure może się nie powieść aktywacji za pośrednictwem usługi ExpressRoute](http://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx).
+>Jeśli używasz usługi ExpressRoute i masz opublikowanych trasy domyślnej, zobacz [maszyny Wirtualnej platformy Azure może się nie powieść aktywacji za pośrednictwem usługi ExpressRoute](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx).
 
 ### <a name="step-1-configure-the-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>Krok 1 Konfigurowanie odpowiedni klucz instalacji klienta usługi KMS (dla systemu Windows Server 2016 i Windows Server 2012 R2)
 
@@ -125,7 +125,7 @@ Tak.
  
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Co się stanie, jeśli upłynie okres aktywacji Windows? 
  
-Gdy upłynął okres prolongaty i Windows nie nadal jest aktywny, Windows Server 2008 R2 i nowszych wersjach systemu Windows zostanie wyświetlone dodatkowe powiadomienia dotyczące aktywacji. Czarne pozostaje tapetę pulpitu i Windows Update zainstaluje, zabezpieczeń i tylko aktualizacje krytyczne, ale nie opcjonalne aktualizacje. W sekcji powiadomienia w dolnej części [warunki licencjonowania](http://technet.microsoft.com/library/ff793403.aspx) strony.   
+Gdy upłynął okres prolongaty i Windows nie nadal jest aktywny, Windows Server 2008 R2 i nowszych wersjach systemu Windows zostanie wyświetlone dodatkowe powiadomienia dotyczące aktywacji. Czarne pozostaje tapetę pulpitu i Windows Update zainstaluje, zabezpieczeń i tylko aktualizacje krytyczne, ale nie opcjonalne aktualizacje. W sekcji powiadomienia w dolnej części [warunki licencjonowania](https://technet.microsoft.com/library/ff793403.aspx) strony.   
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.

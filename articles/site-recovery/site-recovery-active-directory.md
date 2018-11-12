@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 51d435d9edea5e341127cac89bc96a71c7bc8bb4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f96ed8659fc2f49b89199a813f9fab9d5f4af5a1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211897"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232175"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Konfigurowanie odzyskiwania po awarii dla usługi Active Directory i DNS
 
@@ -44,7 +44,7 @@ Usługa Site Recovery umożliwia ochronę maszyny wirtualnej, który hostuje kon
 Kontroler domeny, które są replikowane przy użyciu usługi Site Recovery jest używana do [testowanie trybu failover](#test-failover-considerations). Upewnij się, że spełnia następujące wymagania:
 
 1. Kontroler domeny jest serwerem wykazu globalnego.
-2. Kontroler domeny powinien być właścicielem roli FSMO, ról, które są wymagane podczas testowania trybu failover. W przeciwnym wypadku te role będą musiały mieć [zajętych](http://aka.ms/ad_seize_fsmo) po pracy w trybie failover.
+2. Kontroler domeny powinien być właścicielem roli FSMO, ról, które są wymagane podczas testowania trybu failover. W przeciwnym wypadku te role będą musiały mieć [zajętych](https://aka.ms/ad_seize_fsmo) po pracy w trybie failover.
 
 ### <a name="configure-vm-network-settings"></a>Konfigurowanie ustawień sieci maszyn wirtualnych
 Dla maszyny wirtualnej, który hostuje kontrolera domeny lub DNS w usłudze Site Recovery, należy skonfigurować ustawienia sieciowe w ramach **obliczenia i sieć** ustawienia zreplikowanej maszyny wirtualnej. Daje to gwarancję, że maszyna wirtualna została dołączona do odpowiedniej sieci po włączeniu trybu failover.
@@ -93,7 +93,7 @@ Większość aplikacji wymaga obecności kontrolera domeny lub serwer DNS. W zwi
 
 
 ### <a name="remove-references-to-other-domain-controllers"></a>Usuń odwołania do innych kontrolerów domeny
-Po zainicjowaniu testowy tryb failover nie uwzględniają wszystkich kontrolerów domeny w sieci testowej. Aby usunąć odwołania do innych kontrolerów domeny, które istnieją w środowisku produkcyjnym, konieczne może być [przejmowanie ról FSMO Active Directory](http://aka.ms/ad_seize_fsmo) i wykonaj [czyszczenie metadanych](https://technet.microsoft.com/library/cc816907.aspx) brakujących kontrolerów domeny .
+Po zainicjowaniu testowy tryb failover nie uwzględniają wszystkich kontrolerów domeny w sieci testowej. Aby usunąć odwołania do innych kontrolerów domeny, które istnieją w środowisku produkcyjnym, konieczne może być [przejmowanie ról FSMO Active Directory](https://aka.ms/ad_seize_fsmo) i wykonaj [czyszczenie metadanych](https://technet.microsoft.com/library/cc816907.aspx) brakujących kontrolerów domeny .
 
 
 ### <a name="issues-caused-by-virtualization-safeguards"></a>Problemy spowodowane przez zabezpieczenia wirtualizacji
@@ -180,7 +180,7 @@ Jeśli powyższe warunki są spełnione, istnieje prawdopodobieństwo, że kontr
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 
-    Aby uzyskać więcej informacji, zobacz [wyłączyć wymaganie serwera wykazu globalnego i udostępnienie do weryfikowania logowania użytkowników](http://support.microsoft.com/kb/241789).
+    Aby uzyskać więcej informacji, zobacz [wyłączyć wymaganie serwera wykazu globalnego i udostępnienie do weryfikowania logowania użytkowników](https://support.microsoft.com/kb/241789).
 
 ### <a name="dns-and-domain-controller-on-different-machines"></a>DNS i kontroler domeny na różnych maszynach
 

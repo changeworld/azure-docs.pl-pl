@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 0fe3116934ac4ab9b1e3fd3b5efcd6627df0ed3d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 072fa8978bd4f08494191708d9a71c6c112a0629
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046933"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252057"
 ---
 # <a name="whats-new-in-power-bi-workspace-collections"></a>Co nowego w kolekcjach obszarów roboczych usługi Power BI
 
@@ -72,5 +72,5 @@ Zawarte w tej wersji:
 * Zaktualizowana Przykładowa aplikacja dla wszystkich **v1.0** wywołań interfejsu API.
 * Kolekcje obszarów roboczych usługi Power BI obsługuje zestaw SDK usługi Azure, programu PowerShell i interfejsu wiersza polecenia.
 * Użytkownicy mogą eksportować dane wizualizacji **CSV**.
-* Kolekcje obszarów roboczych usługi Power BI są teraz obsługiwane w przypadku wszystkich tych samych języków/ustawień regionalnych jako Microsoft Azure. Aby dowiedzieć się więcej, zobacz [platformy Azure — języki](http://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx).
+* Kolekcje obszarów roboczych usługi Power BI są teraz obsługiwane w przypadku wszystkich tych samych języków/ustawień regionalnych jako Microsoft Azure. Aby dowiedzieć się więcej, zobacz [platformy Azure — języki](https://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx).
 

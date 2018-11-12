@@ -2,18 +2,18 @@
 title: Rozszerzanie HDInsight z usługą Virtual Network - Azure
 description: Dowiedz się, jak połączyć z usługą HDInsight do innych zasobów w chmurze lub zasobów w centrum danych za pomocą usługi Azure Virtual Network
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/08/2018
-ms.openlocfilehash: 5ee249aee5d95f22f2e1f52d6356f09ea41ccd68
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 11/06/2018
+ms.openlocfilehash: 62502e946922928b8b4179d38ce9f9ae55f9930d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945760"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238985"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
 
@@ -25,7 +25,7 @@ Dowiedz się, jak używać HDInsight przy użyciu [Azure Virtual Network](../vir
 
 * O łączeniu z danymi HDInsight są przechowywane w usłudze Azure Virtual network.
 
-* Bezpośredni dostęp do usług Hadoop, które nie są dostępne publicznie w Internecie. Na przykład interfejsów API platformy Kafka lub interfejsu API języka Java bazy danych HBase.
+* Bezpośredni dostęp do usług Apache Hadoop, które nie są dostępne publicznie w Internecie. Na przykład interfejsów API platformy Kafka lub interfejsu API języka Java bazy danych HBase.
 
 > [!WARNING]
 > Informacje przedstawione w tym dokumencie wymaga zrozumienia sieci TCP/IP. Jeśli nie jesteś zaznajomiony z sieci TCP/IP, należy partnera z osobą, która jest przed wprowadzeniem zmian w sieciach produkcyjnych.
@@ -64,7 +64,7 @@ Wykonaj kroki w tej sekcji, aby dowiedzieć się, jak dodać nowe HDInsight do i
 
     Gdy dołączony, HDInsight, zainstalowane w sieci usługi Resource Manager mogą wchodzić w interakcje z zasobami w klasycznej sieci.
 
-2. Używasz wymuszone tunelowanie? Wymuszone tunelowanie ma ustawienia podsieci, która wymusza ruch wychodzący z Internetu na urządzeniu w celu przeprowadzenia inspekcji i rejestrowania. HDInsight nie obsługuje wymuszonym tunelowaniem. Usuń, wymuszonego tunelowania przed zainstalowaniem HDInsight w podsieci lub Utwórz nową podsieć dla HDInsight.
+2. Używasz wymuszone tunelowanie? Wymuszone tunelowanie ma ustawienia podsieci, która wymusza ruch wychodzący z Internetu na urządzeniu w celu przeprowadzenia inspekcji i rejestrowania. HDInsight nie obsługuje wymuszonym tunelowaniem. Usuń, wymuszonego tunelowania przed wdrożeniem HDInsight na istniejącą podsieć lub Utwórz nową podsieć z nie wymuszonego tunelowania dla HDInsight.
 
 3. Czy używasz sieciowych grup zabezpieczeń, trasy zdefiniowane przez użytkownika lub wirtualnych urządzeń sieciowych do ograniczania ruchu do lub z sieci wirtualnej?
 
@@ -121,7 +121,7 @@ Największe wyzwanie z konfiguracją wielu sieci jest rozpoznawanie nazw między
 
 Platforma Azure udostępnia rozpoznawanie nazw dla usług platformy Azure, które są zainstalowane w sieci wirtualnej. To rozpoznawanie nazw wbudowane umożliwia HDInsight połączyć się z następującymi zasobami przy użyciu w pełni kwalifikowaną nazwę domeny (FQDN):
 
-* Zasób, który jest dostępny w Internecie. Na przykład microsoft.com, google.com.
+* Zasób, który jest dostępny w Internecie. Na przykład microsoft.com, windowsupdate.com.
 
 * Dowolnego zasobu, który znajduje się w tej samej sieci wirtualnej platformy Azure, używając __wewnętrzne nazwy DNS__ zasobu. Na przykład podczas rozpoznawania nazwy domyślnej, poniżej przedstawiono przykład przypisane do węzłów procesu roboczego HDInsight wewnętrzne nazwy DNS:
 
@@ -173,7 +173,7 @@ Aby uzyskać więcej informacji, zobacz [rozpoznawania nazw dla maszyn wirtualny
 
 ## <a name="directly-connect-to-hadoop-services"></a>Bezpośrednie łączenie z usługi Hadoop
 
-Możesz nawiązać połączenie klastrem pod adresem https://CLUSTERNAME.azurehdinsight.net. Ten adres używa publicznego adresu IP, może nie być dostępne, jeśli używano sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika do ograniczania ruchu przychodzącego z Internetu. Ponadto w przypadku wdrażania klastra w sieci wirtualnej można do niego dostęp przy użyciu prywatnych punktów końcowych https://CLUSTERNAME-int.azurehdinsight.net. Ten punkt końcowy jest rozpoznawany jako prywatny adres IP w sieci wirtualnej, aby uzyskać dostęp do klastra.
+Możesz nawiązać połączenie klastrem pod adresem https://CLUSTERNAME.azurehdinsight.net. Ten adres używa publicznego adresu IP, może nie być dostępny, jeśli używano sieciowych grup zabezpieczeń, aby ograniczyć ruch przychodzący z Internetu. Ponadto w przypadku wdrażania klastra w sieci wirtualnej można do niego dostęp przy użyciu prywatnych punktów końcowych https://CLUSTERNAME-int.azurehdinsight.net. Ten punkt końcowy jest rozpoznawany jako prywatny adres IP w sieci wirtualnej, aby uzyskać dostęp do klastra.
 
 Nawiązywanie Ambari i stron sieci web za pośrednictwem sieci wirtualnej, użyj następujących kroków:
 
@@ -213,13 +213,13 @@ Ruch sieciowy w sieciach wirtualnych platformy Azure mogą być kontrolowane za 
 * **Sieciowe grupy zabezpieczeń** (NSG) umożliwiają filtrowanie ruchu przychodzącego i wychodzącego do sieci. Aby uzyskać więcej informacji, zobacz [filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń](../virtual-network/security-overview.md) dokumentu.
 
     > [!WARNING]
-    > HDInsight nie obsługuje Ograniczanie ruchu wychodzącego.
+    > HDInsight nie obsługuje Ograniczanie ruchu wychodzącego. Powinien być dozwolony ruch wychodzący.
 
 * **Trasy zdefiniowane przez użytkownika** (UDR) określać przepływ ruchu między zasobami w sieci. Aby uzyskać więcej informacji, zobacz [trasy zdefiniowane przez użytkownika i przesyłaniu dalej IP](../virtual-network/virtual-networks-udr-overview.md) dokumentu.
 
 * **Sieciowych urządzeń wirtualnych** replikować z działaniem urządzeń, takich jak routery i zapory. Aby uzyskać więcej informacji, zobacz [urządzenia sieciowe](https://azure.microsoft.com/solutions/network-appliances) dokumentu.
 
-Jako usługa zarządzana HDInsight wymaga nieograniczony dostęp do usług platformy Azure kondycji i zarządzania w chmurze platformy Azure. Przy użyciu sieciowych grup zabezpieczeń i tras zdefiniowanych przez użytkownika, należy się upewnić, że HDInsight tych usług można nadal komunikować się z HDInsight.
+Jako usługa zarządzana HDInsight wymaga nieograniczony dostęp do kondycji usługi HDinsight i usług zarządzania, zarówno dla ruchu przychodzącego i wychodzącego z sieci Wirtualnej. Przy użyciu sieciowych grup zabezpieczeń i tras zdefiniowanych przez użytkownika, należy się upewnić, że te usługi nadal może komunikować się z klastrem HDInsight.
 
 HDInsight udostępnia usługi na kilku portów. W przypadku używania innej zapory urządzenie wirtualne, muszą zezwalać na ruch na portach używanych na potrzeby tych usług. Aby uzyskać więcej informacji zobacz sekcję [wymagane porty].
 
@@ -233,8 +233,8 @@ Jeśli planujesz użycie **sieciowe grupy zabezpieczeń** lub **trasy zdefiniowa
 
 3. Utwórz lub zmodyfikuj sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika dla podsieci, której planujesz zainstalować HDInsight do.
 
-    * __Sieciowe grupy zabezpieczeń__: Zezwalaj na __dla ruchu przychodzącego__ ruch na porcie __443__ z adresu IP adresów.
-    * __Trasy zdefiniowane przez użytkownika__: Utwórz trasę do poszczególnych adresów IP i ustaw __typu następnego przeskoku__ do __Internet__.
+    * __Sieciowe grupy zabezpieczeń__: Zezwalaj na __dla ruchu przychodzącego__ ruch na porcie __443__ z adresu IP adresów. Pozwoli to zagwarantować, usługi zarządzania usługi HDI dotrzeć do klastra z zewnętrznej sieci Wirtualnej.
+    * __Trasy zdefiniowane przez użytkownika__: Jeśli zamierzasz używać tras zdefiniowanych przez użytkownika, tworzona jest trasa dla każdego adresu IP i ustawić __typu następnego przeskoku__ do __Internet__. Należy również zezwolić wszelki ruch wychodzący z sieci Wirtualnej bez żadnych ograniczeń. Na przykład mogą kierować cały pozostały ruch do platformy Azure zapory lub sieciowych urządzeń wirtualnych (hostowanego na platformie Azure) do celów monitorowania, ale ruch wychodzący nie powinien być blokowany.
 
 Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika dokumentacji:
 
@@ -242,9 +242,9 @@ Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń lub tras 
 
 * [Trasy zdefiniowane przez użytkownika](../virtual-network/virtual-networks-udr-overview.md)
 
-#### <a name="forced-tunneling"></a>Wymuszone tunelowanie
+#### <a name="forced-tunneling-to-on-premise"></a>Wymuszonego tunelowania do środowiska lokalnego
 
-Wymuszone tunelowanie jest zdefiniowane przez użytkownika konfiguracji routingu którym cały ruch z podsieci jest zmuszony do określonej sieci lub lokalizacji, takiej jak sieć lokalną. HDInsight jest __nie__ obsługi wymuszonego tunelowania.
+Wymuszone tunelowanie jest zdefiniowane przez użytkownika konfiguracji routingu którym cały ruch z podsieci jest zmuszony do określonej sieci lub lokalizacji, takiej jak sieć lokalną. HDInsight jest __nie__ obsługi wymuszonego tunelowania do sieci lokalnej. Jeśli używasz zapory usługi Azure lub karta urządzenie wirtualne hostowane na platformie Azure, można użyć tras zdefiniowanych przez użytkownika, przekierowywanie ruchu do konta magazynu do celów monitorowania i zezwolić na cały ruch wychodzący.
 
 ## <a id="hdinsight-ip"></a> Wymaganych adresów IP
 

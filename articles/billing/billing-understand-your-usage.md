@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: cwatson
-ms.openlocfilehash: a037f4837be65eb7eac76977a3728c7357e09463
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 83891e1abdb58b4fdae65cee3689195b8f35df12
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394441"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230465"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Warunki na firma Microsoft nalicza za użycie platformy Azure szczegółowe informacje 
 
@@ -77,7 +77,7 @@ Dzienne użycie części pliku CSV zawiera szczegóły użycia, które wpływaj�
 |Użyta usługa |Usługi platformy Azure, która została użyta |
 |Grupa zasobów |Grupa zasobów, w których mierniku wdrożonej jest uruchomiony w. <br/><br/>Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). |
 |Identyfikator wystąpienia | Identyfikator miernika. <br/><br/> Identyfikator zawiera nazwę, którą określisz dla licznika podczas jej tworzenia. To nazwa zasobu albo w pełni kwalifikowanego identyfikatora zasobu. Aby uzyskać więcej informacji, zobacz [interfejsu API usługi Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources). |
-|Tagi | Tag, które można przypisać do licznika. Za pomocą tagów do grupowania rekordów rozliczeń.<br/><br/>Na przykład można użyć tagów, aby dystrybuować koszty według działu, który używa licznika. Usługi obsługujące emitowanie tagów są maszyny wirtualne, Magazyn i usługi sieciowe aprowizowane za pomocą [interfejsu API usługi Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources). Aby uzyskać więcej informacji, zobacz [organizowania zasobów platformy Azure przy użyciu tagów](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/). |
+|Tagi | Tag, które można przypisać do licznika. Za pomocą tagów do grupowania rekordów rozliczeń.<br/><br/>Na przykład można użyć tagów, aby dystrybuować koszty według działu, który używa licznika. Usługi obsługujące emitowanie tagów są maszyny wirtualne, Magazyn i usługi sieciowe aprowizowane za pomocą [interfejsu API usługi Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources). Aby uzyskać więcej informacji, zobacz [organizowania zasobów platformy Azure przy użyciu tagów](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/). |
 |Dodatkowe informacje |Metadane specyficzne dla usługi. Na przykład typ obrazu dla maszyny wirtualnej. |
 |Informacje o usłudze 1 |Nazwa projektu, który usługi należy do subskrypcji |
 |Informacje o usłudze 2 |Starszego pole, które zawiera opcjonalne metadane właściwe dla usługi |

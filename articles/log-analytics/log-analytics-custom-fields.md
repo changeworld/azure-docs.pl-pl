@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: febe5c58857aa9cee6f6cfd5855919075d10d58a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: fdac7d1fd7fbcea28d6ce8e614e4968f168566ba
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958087"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010591"
 ---
 # <a name="custom-fields-in-log-analytics"></a>Pola niestandardowe w usłudze Log Analytics
 **Pól niestandardowych** funkcji usługi Log Analytics umożliwia rozszerzanie istniejących rekordów w usłudze Log Analytics, dodając własny pola z możliwością wyszukiwania.  Niestandardowe pola są automatycznie wypełniane na podstawie danych wyodrębnionych z innych właściwości w ten sam rekord.
@@ -46,9 +46,9 @@ Poniższe sekcje zawierają procedury tworzenia pola niestandardowego.  W dolnej
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>Krok 1: określenie rekordy, które będą miały pole niestandardowe
-Pierwszym krokiem jest do identyfikowania rekordy, które umożliwią pola niestandardowego.  Początkowo [wyszukiwanie w dzienniku standardowa](log-analytics-log-search.md) , a następnie zaznacz rekord pełnić rolę usługi Log Analytics zawiera informacje z modelu.  Po określeniu, które mają do wyodrębniania danych do pola niestandardowego, **Kreator wyodrębniania pól** jest otwarty, gdzie Zweryfikuj i zoptymalizuj kryteria.
+Pierwszym krokiem jest do identyfikowania rekordy, które umożliwią pola niestandardowego.  Początkowo [wyszukiwanie w dzienniku standardowa](log-analytics-queries.md) , a następnie zaznacz rekord pełnić rolę usługi Log Analytics zawiera informacje z modelu.  Po określeniu, które mają do wyodrębniania danych do pola niestandardowego, **Kreator wyodrębniania pól** jest otwarty, gdzie Zweryfikuj i zoptymalizuj kryteria.
 
-1. Przejdź do **wyszukiwanie w dzienniku** i użyj [zapytanie, aby pobrać te rekordy](log-analytics-log-search.md) będą mieć pola niestandardowego.
+1. Przejdź do **wyszukiwanie w dzienniku** i użyj [zapytanie, aby pobrać te rekordy](log-analytics-queries.md) będą mieć pola niestandardowego.
 2. Wybierz rekord, który usługi Log Analytics będzie używany jako model do wyodrębniania danych, aby wypełnić pole niestandardowe.  Należy określić dane, które mają zostać wyodrębnione z tego rekordu, a usługi Log Analytics użyje tych informacji do określenia logiki, aby wypełnić pole niestandardowe dla wszystkich rekordów podobne.
 3. Kliknij przycisk z lewej strony właściwości text dowolnego rekordu, a następnie wybierz pozycję **Wyodrębnij pola z**.
 4. **Zostanie otwarty Kreator wyodrębniania pól**, a rekord wybrany jest wyświetlany w **głównym przykładem** kolumny.  Pole niestandardowe zostaną określone dla tych rekordów o tej samej wartości właściwości, które są wybrane.  
@@ -140,6 +140,6 @@ Teraz możemy użyć pole niestandardowe, takie jak wszystkich innych właściwo
 ![Grupuj według kwerendy](media/log-analytics-custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) tworzenie zapytań przy użyciu pól niestandardowych kryteriów.
+* Dowiedz się więcej o [dziennikach](log-analytics-queries.md) tworzenie zapytań przy użyciu pól niestandardowych kryteriów.
 * Monitor [pliki dziennika niestandardowego](log-analytics-data-sources-custom-logs.md) , analizy przy użyciu pól niestandardowych.
 

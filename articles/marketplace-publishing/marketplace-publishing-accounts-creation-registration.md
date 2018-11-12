@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: hascipio
-ms.openlocfilehash: 24dc50a6c78769877bdc07b9521a9d2e33837937
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 3b1d0a7476cff2be00aa44bb8b859261099298d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579619"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236694"
 ---
 # <a name="create-a-microsoft-developer-account"></a>Utwórz konto Microsoft Developer
 W tym artykule przedstawiono tworzenie konta niezbędne i procesu rejestracji, aby stać się zatwierdzonych Microsoft Developer Portal Azure Marketplace.
 
-## <a name="1-create-a-microsoft-account"></a>1. Utwórz konto Microsoft
+## <a name="1-create-a-microsoft-account"></a>1. Tworzenie konta Microsoft
 Aby rozpocząć proces publikowania, musisz utworzyć konto Microsoft. To konto będzie używane do zarejestrowania się w obu **Microsoft Developer Center** i **portalu wydawców Azure**. Powinna mieć tylko jedno konto Microsoft, dla ofert portalu Azure Marketplace. Nie powinien być określony dla usługi lub oferty.
 
 Adres stanowiący nazwę użytkownika powinien należeć do domeny i kontrolowany przez Twój zespół IT. Publikowanie powiązanych działań powinno być wykonywane przy użyciu tego konta.
@@ -98,7 +98,7 @@ Microsoft Developer Center jest używane do rejestrowania danych firmy, jeden ra
     ![Rysowanie](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_04.png)
 
    > [!WARNING]
-   > **"Sprzedaż — od" kraje:** sprzedawać swoje usługi w portalu Azure Marketplace, zarejestrowanych jednostki musi pochodzić z jednej z zatwierdzonych "sprzedaż — od" krajów powyżej. To ograniczenie jest ze względu na informacje dotyczące wypłat i opodatkowania. Firma Microsoft aktywnie chcą rozwiń ta lista krajów w najbliższej przyszłości, więc wkrótce. Aby uzyskać więcej informacji, zobacz [Marketplace — zasady udziału](http://go.microsoft.com/fwlink/?LinkID=526833).
+   > **"Sprzedaż — od" kraje:** sprzedawać swoje usługi w portalu Azure Marketplace, zarejestrowanych jednostki musi pochodzić z jednej z zatwierdzonych "sprzedaż — od" krajów powyżej. To ograniczenie jest ze względu na informacje dotyczące wypłat i opodatkowania. Firma Microsoft aktywnie chcą rozwiń ta lista krajów w najbliższej przyszłości, więc wkrótce. Aby uzyskać więcej informacji, zobacz [Marketplace — zasady udziału](https://go.microsoft.com/fwlink/?LinkID=526833).
    >
    >
 5. Wybierz opcję "Typ konta" jako **firmy** a następnie kliknij przycisk **dalej** przycisku.
@@ -127,7 +127,7 @@ Microsoft Developer Center jest używane do rejestrowania danych firmy, jeden ra
 9. Wprowadź swoje informacje o płatności do zapłaty dla swojego konta. Jeśli masz kod promocyjny, który obejmuje koszt rejestracji, które można wprowadzić tutaj. W przeciwnym razie Podaj informacje o karcie kredytowej (lub PayPal w obsługiwane rynki). Gdy skończysz, kliknij przycisk **dalej** można przenieść do **"Ekranu Przegląd"**.
 
     ![Rysowanie](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_09.png)
-10. Przejrzyj informacje o swoim koncie i upewnij się, że wszystko jest poprawna. Następnie przeczytaj i zaakceptuj warunki i postanowienia programu [umowie wydawcy portalu Microsoft Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=699560). Pole wyboru, aby wskazać mają przeczytanie i zaakceptowanie tych postanowień.
+10. Przejrzyj informacje o swoim koncie i upewnij się, że wszystko jest poprawna. Następnie przeczytaj i zaakceptuj warunki i postanowienia programu [umowie wydawcy portalu Microsoft Azure Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560). Pole wyboru, aby wskazać mają przeczytanie i zaakceptowanie tych postanowień.
 11. Kliknij przycisk **Zakończ** aby potwierdzić swoją rejestrację. Komunikat z potwierdzeniem będziemy wysyłać na adres e-mail.
 12. Jeśli zamierzasz opublikować tylko bezpłatnych ofert, kliknij przycisk **przejdź do portalu wydawców Azure Marketplace** i możesz przejść do sekcji 3 w tym dokumencie [Zarejestruj swoje konto w portalu wydawców](#3-register-your-account-in-the-publishing-portal).
 

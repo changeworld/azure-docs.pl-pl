@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0205552c073bf03c40da4d108256fa09e71fbbe3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 311c16ba0c6b3378fd743b77e263a5d91f8b6a37
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314755"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237099"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Odnawianie certyfikatów Federacji dla usługi Office 365 i Azure Active Directory
 ## <a name="overview"></a>Przegląd
@@ -51,9 +51,9 @@ Usługa Azure AD próbuje monitorowanie metadanych Federacji i aktualizowanie ce
 > [!IMPORTANT]
 > Jeśli używasz usług AD FS w celu zapewnienia ciągłości biznesowej, sprawdź, czy serwery mają następujące aktualizacje, tak aby nie występują błędy uwierzytelniania pod kątem znanych problemów. Zmniejsza to znane problemy serwera proxy usług AD FS dla tego odnowienia i okresy przyszłych odnawiania:
 >
-> Server 2012 R2 — [systemu Windows Server zbiorczy maj 2014](http://support.microsoft.com/kb/2955164)
+> Server 2012 R2 — [systemu Windows Server zbiorczy maj 2014](https://support.microsoft.com/kb/2955164)
 >
-> Server 2008 R2 i 2012 — [uwierzytelniania za pośrednictwem serwera proxy nie powiodło się w systemie Windows Server 2012 lub Windows 2008 R2 z dodatkiem SP1](http://support.microsoft.com/kb/3094446)
+> Server 2008 R2 i 2012 — [uwierzytelniania za pośrednictwem serwera proxy nie powiodło się w systemie Windows Server 2012 lub Windows 2008 R2 z dodatkiem SP1](https://support.microsoft.com/kb/3094446)
 >
 >
 

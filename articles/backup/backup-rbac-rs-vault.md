@@ -6,14 +6,14 @@ author: trinadhk
 manager: shreeshd
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/11/2018
+ms.date: 11/1/2018
 ms.author: trinadhk
-ms.openlocfilehash: f293f642db2bd526e761ff570ce97a33845808b7
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: cf06fc9c12493e208832596a27b479dc9dfea942
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412809"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011327"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Kontrola dostępu oparta na rolach umożliwia zarządzanie punktami odzyskiwania usługi Azure Backup
 Kontrola dostępu oparta na rolach (Role-Based Access Control, RBAC) na platformie Azure umożliwia precyzyjne zarządzanie dostępem dla platformy Azure. Przy użyciu kontroli dostępu opartej na rolach można przeprowadzić segregowanie zadań w ramach zespołu i nadać użytkownikom tylko takie uprawnienia dostępu, które są im niezbędne do wykonywania zadań.
@@ -40,23 +40,27 @@ Poniższa tabela przedstawia akcje z zakresu zarządzania kopii zapasowej i odpo
 | Włącz wykonywanie kopii zapasowej maszyn wirtualnych platformy Azure | Operator kopii zapasowych | Grupa zasobów zawierająca magazynu |
 | | Współautor maszyny wirtualnej | Zasób maszyny Wirtualnej |
 | Na żądanie kopii zapasowej maszyny Wirtualnej | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
-| Przywracanie maszyny Wirtualnej | Operator kopii zapasowych | Grupa zasobów, w którym maszyna wirtualna zostanie wdrożona |
+| Przywracanie maszyny Wirtualnej | Operator kopii zapasowych | Magazyn usługi Recovery Services |
 | | Współautor maszyny wirtualnej | Grupa zasobów, w którym maszyna wirtualna zostanie wdrożona |
+| | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopia zapasowa |
 | Przywracanie kopii zapasowych maszyn wirtualnych z dyskami niezarządzanymi | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
-| | Współautor maszyny wirtualnej | Zasób maszyny Wirtualnej |
-| | Współautor konta magazynu | Zasób konta magazynu |
+| | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopia zapasowa |
+| | Współautor konta magazynu | Zasób konta magazynu, gdzie dysków do przywrócenia |
 | Przywracanie dysków zarządzanych z kopii zapasowej maszyny Wirtualnej | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
-| | Współautor maszyny wirtualnej | Zasób maszyny Wirtualnej |
-| | Współautor konta magazynu | Zasób konta magazynu |
-| | Współautor | Grupa zasobów, do którego zostanie przywrócona dysku zarządzanego |
+| | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopia zapasowa |
+| | Współautor konta magazynu | Tymczasowe konto magazynu wybrane w ramach przywracania do przechowywania danych z magazynu przed przekonwertowaniem je do usługi managed disks |
+| | Współautor | Grupa zasobów, do którego zostanie przywrócona następująca liczba dysków zarządzanych |
 | Przywrócić pojedyncze pliki z kopii zapasowych maszyn wirtualnych | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
-| | Współautor maszyny wirtualnej | Zasób maszyny Wirtualnej |
+| | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopia zapasowa |
 | Tworzenie zasad kopii zapasowych dla kopii zapasowej maszyny Wirtualnej platformy Azure | Współautor kopii zapasowych | Zasób magazynu odzyskiwania |
 | Modyfikowanie zasad tworzenia kopii zapasowej, kopii zapasowej maszyny Wirtualnej platformy Azure | Współautor kopii zapasowych | Zasób magazynu odzyskiwania |
 | Usuwanie zasad kopii zapasowych kopii zapasowej maszyny Wirtualnej platformy Azure | Współautor kopii zapasowych | Zasób magazynu odzyskiwania |
 | Zatrzymaj kopię zapasową (z opcją zachowania danych lub usunięcie danych) w kopii zapasowej maszyny Wirtualnej | Współautor kopii zapasowych | Zasób magazynu odzyskiwania |
 | Zarejestruj się w środowisku lokalnym systemu Windows Server/klienta/serwera SCDPM lub serwera usługi Azure Backup | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
 | Usuń zarejestrowane lokalnie systemu Windows Server/klienta/serwera SCDPM lub serwera usługi Azure Backup | Współautor kopii zapasowych | Zasób magazynu odzyskiwania |
+
+> [!IMPORTANT]
+> Określ Współautor maszyny Wirtualnej w zakresie zasobów maszyny Wirtualnej, kliknij pozycję Kopia zapasowa jako część ustawień maszyny Wirtualnej zostanie otwarty ekran Włącz kopię zapasową, mimo, że maszyna wirtualna ma już kopię zapasową co wywołanie, aby sprawdzić stan kopii zapasowej działa tylko na poziomie subskrypcji. Aby tego uniknąć, należy albo przejdź do magazynu i otwórz widok elementu kopii zapasowej maszyny wirtualnej lub określ roli współautora maszyny Wirtualnej na poziomie subskrypcji. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Kontroli dostępu opartej na rolach](../role-based-access-control/role-assignments-portal.md): wprowadzenie do funkcji RBAC w witrynie Azure portal.

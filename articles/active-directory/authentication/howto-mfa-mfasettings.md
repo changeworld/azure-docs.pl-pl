@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: a66a7537632aac2190cd39f13665bcd8d4ed6ce7
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: bae31b245cb83821490564c60f67e88898af06b3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114995"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233290"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure Multi-Factor Authentication
 
@@ -362,9 +362,9 @@ Gdy użytkownicy rejestrują swoje konta dla usługi Azure Multi-Factor Authenti
 | Metoda | Opis |
 |:--- |:--- |
 | Połączenie z telefonem |Przełącza automatyczne połączenie głosowe. Użytkownik odbierze połączenie i naciska klawisz # na klawiaturze telefonu w celu uwierzytelnienia. Numer telefonu nie są zsynchronizowane z usługą Active Directory w środowisku lokalnym. |
-| Wiadomość SMS na telefon |Wysyła wiadomość SMS zawierającą kod weryfikacyjny. Użytkownik jest monitowany o wprowadź kod weryfikacyjny w interfejsie logowania. Ten proces jest nazywany jednokierunkowa wiadomość SMS. Dwukierunkowa wiadomość SMS oznacza to, czy użytkownik musi ponownie tekstu określonego kodu. Dwukierunkowa wiadomość SMS jest przestarzała i nie jest obsługiwane po 14 listopada 2018 r. Użytkownicy, którzy są skonfigurowane do obsługi dwukierunkowa wiadomość SMS są automatycznie przełączone do _połączenie numerem telefonu_ weryfikacji, w tym czasie.|
-| Powiadomienie przez aplikację mobilną |Wysyła powiadomienie wypychane na telefonie lub zarejestrowanym urządzeniu. Użytkownik przegląda powiadomienia i wybiera **Sprawdź** aby ukończyć weryfikację. Aplikacja Microsoft Authenticator jest dostępna dla [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), i [iOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
-| Kod weryfikacyjny z aplikacji mobilnej |Aplikacja Microsoft Authenticator generuje nowego kodu weryfikacyjnego OATH co 30 sekund. Użytkownik wprowadza kod weryfikacyjny w interfejsie logowania. Aplikacja Microsoft Authenticator jest dostępna dla [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), i [iOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
+| SMS na telefon |Wysyła wiadomość SMS zawierającą kod weryfikacyjny. Użytkownik jest monitowany o wprowadź kod weryfikacyjny w interfejsie logowania. Ten proces jest nazywany jednokierunkowa wiadomość SMS. Dwukierunkowa wiadomość SMS oznacza to, czy użytkownik musi ponownie tekstu określonego kodu. Dwukierunkowa wiadomość SMS jest przestarzała i nie jest obsługiwane po 14 listopada 2018 r. Użytkownicy, którzy są skonfigurowane do obsługi dwukierunkowa wiadomość SMS są automatycznie przełączone do _połączenie numerem telefonu_ weryfikacji, w tym czasie.|
+| Powiadomienie przez aplikację mobilną |Wysyła powiadomienie wypychane na telefonie lub zarejestrowanym urządzeniu. Użytkownik przegląda powiadomienia i wybiera **Sprawdź** aby ukończyć weryfikację. Aplikacja Microsoft Authenticator jest dostępna dla [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072), i [iOS](https://go.microsoft.com/fwlink/?Linkid=825073). |
+| Kod weryfikacyjny z aplikacji mobilnej |Aplikacja Microsoft Authenticator generuje nowego kodu weryfikacyjnego OATH co 30 sekund. Użytkownik wprowadza kod weryfikacyjny w interfejsie logowania. Aplikacja Microsoft Authenticator jest dostępna dla [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072), i [iOS](https://go.microsoft.com/fwlink/?Linkid=825073). |
 
 ### <a name="enable-and-disable-verification-methods"></a>Włączanie i wyłączanie metod weryfikacji
 

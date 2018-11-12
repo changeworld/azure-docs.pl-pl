@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 720b8584c201826e55099ad31667478b6aa57b27
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: bf6eca33eb1448eb84065fb7fe184d01e77feb61
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024522"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037002"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozszerzenia maszyn wirtualnych i funkcji dla systemu Linux
 
@@ -64,7 +64,7 @@ Niektóre rozszerzenia nie są obsługiwane we wszystkich systemach operacyjnych
 Pakiety rozszerzeń są pobierane z usługi Azure Storage repozytorium rozszerzeń i przekazywanie stanu rozszerzenia są wysyłane do usługi Azure Storage. Jeśli używasz [obsługiwane](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) wersji agentów, nie trzeba zezwolić na dostęp do usługi Azure Storage w regionie maszyny Wirtualnej, ponieważ agent można używać do przekierowania komunikacji z kontrolerem sieci szkieletowej platformy Azure do komunikacji agenta. Jeśli korzystasz z nieobsługiwanej wersji agenta, należy zezwolić na dostęp ruchu wychodzącego do usługi Azure storage w danym regionie z maszyny Wirtualnej.
 
 > [!IMPORTANT]
-> Zablokowanie dostępu do *168.63.129.1* przy użyciu zapory gościa, następnie rozszerzenia kończą się niepowodzeniem niezależnie od powyższych.
+> Zablokowanie dostępu do *168.63.129.16* przy użyciu zapory gościa, następnie rozszerzenia kończą się niepowodzeniem niezależnie od powyższych.
 
 Agentów należy używać tylko do pobierania pakietów rozszerzeń i stanu raportowania. Na przykład, czy instalacja rozszerzenia musi pobrać skrypt z usługi GitHub (niestandardowego skryptu) wymagany jest dostęp do usługi Azure Storage (usługa Azure Backup), następnie dodatkowe zapory i sieci zabezpieczeń grupy portów muszą być otwarte. Inne rozszerzenia mają różne wymagania, ponieważ są one aplikacje w ich własnych po prawej stronie. Dla rozszerzeń, które wymagają dostępu do usługi Azure Storage, można zezwolić na dostęp przy użyciu tagów usługi sieciowej grupy zabezpieczeń platformy Azure dla [magazynu](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 

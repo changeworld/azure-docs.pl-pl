@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: ad77f1f0a99fbdb355163e1bc83461c8c4eb75fa
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7b2dd4e97d23f37c8261e51f3f65e78436493ddc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157704"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238741"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Łączność urządzeń w usłudze Azure IoT Central
 
@@ -150,7 +150,7 @@ Aby połączyć urządzenia IoT Central przy użyciu X509 certyfikaty są zaanga
     
     Poniżej przedstawiono niektóre narzędzia wiersza polecenia narzędzia używane do generowania certyfikatów urzędu certyfikacji i certyfikatów urządzeń.
 
-    * Jeśli używasz zestawu deweloperskiego w tym miejscu jest [narzędzia wiersza polecenia](http://aka.ms/iotcentral-docs-dicetool) do generowania urzędu certyfikacji certyfikatów dodać go do swojej aplikacji IoT Central i Sprawdź certyfikaty. 
+    * Jeśli używasz zestawu deweloperskiego w tym miejscu jest [narzędzia wiersza polecenia](https://aka.ms/iotcentral-docs-dicetool) do generowania urzędu certyfikacji certyfikatów dodać go do swojej aplikacji IoT Central i Sprawdź certyfikaty. 
 
     *   Użyj tego [narzędzia wiersza polecenia](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) do
         * Tworzenie łańcucha certyfikatów (wykonaj krok 2 w dokumentacji usługi GitHub). 
@@ -165,7 +165,7 @@ Aby połączyć urządzenia IoT Central przy użyciu X509 certyfikaty są zaanga
     Program urządzenia przy użyciu inicjowania obsługi informacji o usłudze Włączanie go, aby jego szczegóły połączenia i IoT Central po przełączeniu potrzeby przypisywania aplikacji.    
 
     **Dalsze referene** 
-    *   Przykładowe zastosowanie dla [RaspberryPi.](http://aka.ms/iotcentral-docs-Raspi-releases)  
+    *   Przykładowe zastosowanie dla [RaspberryPi.](https://aka.ms/iotcentral-docs-Raspi-releases)  
 
     *   [Przykładowy klient urządzenia w C.](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)
 

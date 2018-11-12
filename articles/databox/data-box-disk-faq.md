@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 09/28/2018
+ms.date: 10/30/2018
 ms.author: alkohli
-ms.openlocfilehash: 8acb808e4b60926fbe6b3faa3fa6a7174a190884
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 5e4461a910f13c5047c4a2aadd7326c4e12c533f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094245"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238135"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Co to jest usługa Azure Data Box Disk? (Wersja zapoznawcza)
 
@@ -44,10 +44,10 @@ Dyski są szyfrowane za pomocą funkcji szyfrowania dysków Microsoft BitLocker,
 A. Jeśli masz nie więcej niż 40 TB danych, które chcesz przenieść na platformę Azure, korzystne będzie zastosowanie urządzeń Data Box Disk.
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>PYTANIE: Jaki jest koszt urządzeń Data Box Disk?
-A. W okresie obowiązywania wersji zapoznawczej urządzenia Data Box Disk są dostępne bezpłatnie. Bezpłatna jest także przesyłka, natomiast zostaną naliczone opłaty za magazyn platformy Azure.
+A. Aby uzyskać informacje o cenach urządzeń Data Box Disk, przejdź do [strony z cennikiem wersji zapoznawczej](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
 
 ### <a name="q-how-do-i-get-data-box-disks"></a>PYTANIE: Jak mogę otrzymać urządzenia Data Box Disk? 
-A.  Aby otrzymać urządzenia Azure Data Box Disk, najpierw zarejestruj się w celu skorzystania z [wersji zapoznawczej usługi Data Box Disk](http://aka.ms/AzureDataBox). Następnie zaloguj się do witryny Azure Portal i utwórz zamówienie dysków w usłudze Data Box. Podaj informacje kontaktowe i szczegóły dotyczące powiadomień. Po złożeniu zamówienia, w zależności od dostępności, dyski zostaną dostarczone do Ciebie w ciągu 10 dni.   
+A.  Aby otrzymać urządzenia Azure Data Box Disk, najpierw zarejestruj się w celu skorzystania z [wersji zapoznawczej usługi Data Box Disk](https://aka.ms/AzureDataBox). Następnie zaloguj się do witryny Azure Portal i utwórz zamówienie dysków w usłudze Data Box. Podaj informacje kontaktowe i szczegóły dotyczące powiadomień. Po złożeniu zamówienia, w zależności od dostępności, dyski zostaną dostarczone do Ciebie w ciągu 10 dni.   
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-disks-in-one-instance"></a>PYTANIE: Jaka jest maksymalna ilość danych, które mogę jednorazowo przenieść za pomocą urządzeń Data Box Disk?
 A. W przypadku 5 dysków — każdy o rozmiarze 8 TB (7 TB pojemności do wykorzystania) — maksymalna pojemność do wykorzystania to 35 TB. W związku z tym jednorazowo możesz przenieść 35 TB danych.  Aby przenieść większą ilość danych, musisz zamówić więcej dysków.

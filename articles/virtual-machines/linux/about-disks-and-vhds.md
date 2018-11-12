@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.component: disks
-ms.openlocfilehash: 53b44d47d9421f1b37aef7ca4d30c2c753b79740
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: eec7b64836819f840702bb715f4fcc0573a94b00
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218325"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251853"
 ---
 # <a name="about-disks-storage-for-azure-linux-vms"></a>Magazyn dysków dla maszyn wirtualnych systemu Linux platformy Azure — informacje
 Podobnie jak dowolny inny komputer maszyn wirtualnych na platformie Azure używać dysków jako miejsce do przechowywania systemu operacyjnego, aplikacji i danych. Wszystkie maszyny wirtualne platformy Azure ma co najmniej dwa dyski — dysk systemu operacyjnego Linux oraz dyski tymczasowe. Dysk systemu operacyjnego jest tworzone na podstawie obrazu, a dysk systemu operacyjnego i obrazu są wirtualne dyski twarde (VHD) przechowywane na koncie usługi Azure storage. Maszyny wirtualne mogą także mieć co najmniej jeden dysk danych, które również są przechowywane jako wirtualne dyski twarde.
@@ -50,10 +50,13 @@ Można dodać dysków z danymi do maszyny wirtualnej w dowolnym momencie przez *
 
 [!INCLUDE [storage-about-vhds-and-disks-windows-and-linux](../../../includes/storage-about-vhds-and-disks-windows-and-linux.md)]
 
+Rozmiary (wersja zapoznawcza), zobacz nasze [— często zadawane pytania](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) Aby dowiedzieć się, jakie regiony są one dostępne w.
+
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * [Dołączanie dysku](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) można dodać dodatkowy magazyn dla maszyny Wirtualnej.
 * [Utwórz migawkę](snapshot-copy-managed-disk.md).
 * [Konwertowanie do usługi managed disks](convert-unmanaged-to-managed-disks.md).

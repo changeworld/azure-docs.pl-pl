@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/13/2018
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: a0e2400163433ba5290525d0fe807ede624a31ed
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: c0672ddb3e6791fae3b9b8c04e9ff98827c9e22f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054370"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256735"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Transferowanie danych za pomocą narzędzia AzCopy w Windows
 AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania danych z systemu Microsoft Azure Blob, File i Table storage przy użyciu prostych poleceń zaprojektowane pod kątem optymalnej wydajności. Dane można kopiować między systemem plików i kontem magazynu lub między kontami magazynu.  
@@ -233,7 +233,7 @@ Spójrzmy na kilka sposobów, aby kopiować obiekty BLOB z jednej lokalizacji do
 AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1 /Dest:https://myaccount.blob.core.windows.net/mycontainer2 /SourceKey:key /DestKey:key /Pattern:abc.txt
 ```
 
-Podczas kopiowania obiektu blob na koncie magazynu [kopiowania po stronie serwera](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operacja została wykonana.
+Podczas kopiowania obiektu blob na koncie magazynu [kopiowania po stronie serwera](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operacja została wykonana.
 
 ### <a name="copy-a-single-blob-from-one-storage-account-to-another"></a>Skopiuj jeden obiekt blob z jednego konta magazynu do innego
 
@@ -241,7 +241,7 @@ Podczas kopiowania obiektu blob na koncie magazynu [kopiowania po stronie serwer
 AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt
 ```
 
-Podczas kopiowania obiektu blob na kontach magazynu [kopiowania po stronie serwera](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operacja została wykonana.
+Podczas kopiowania obiektu blob na kontach magazynu [kopiowania po stronie serwera](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operacja została wykonana.
 
 ### <a name="copy-a-single-blob-from-the-secondary-region-to-the-primary-region"></a>Skopiuj jeden obiekt blob z regionu pomocniczego do regionu podstawowego
 
@@ -337,21 +337,21 @@ Spójrzmy na kilka sposobów, aby skopiować pliki w udziale plików platformy A
 ```azcopy
 AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare1/ /Dest:https://myaccount2.file.core.windows.net/myfileshare2/ /SourceKey:key1 /DestKey:key2 /S
 ```
-Podczas kopiowania plików między udziałami plików [kopiowania po stronie serwera](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operacja została wykonana.
+Podczas kopiowania plików między udziałami plików [kopiowania po stronie serwera](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operacja została wykonana.
 
 ### <a name="copy-from-an-azure-file-share-to-blob-storage"></a>Kopiowanie z udziału plików platformy Azure do magazynu obiektów Blob
 
 ```azcopy
 AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare/ /Dest:https://myaccount2.blob.core.windows.net/mycontainer/ /SourceKey:key1 /DestKey:key2 /S
 ```
-Podczas kopiowania pliku z udziału plików do obiektów blob, [kopiowania po stronie serwera](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operacja została wykonana.
+Podczas kopiowania pliku z udziału plików do obiektów blob, [kopiowania po stronie serwera](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operacja została wykonana.
 
 ### <a name="copy-a-blob-from-blob-storage-to-an-azure-file-share"></a>Kopiowanie obiektu blob z magazynu obiektów Blob do udziału plików platformy Azure
 
 ```azcopy
 AzCopy /Source:https://myaccount1.blob.core.windows.net/mycontainer/ /Dest:https://myaccount2.file.core.windows.net/myfileshare/ /SourceKey:key1 /DestKey:key2 /S
 ```
-Podczas kopiowania pliku z obiektu blob do udziału plików [kopiowania po stronie serwera](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operacja została wykonana.
+Podczas kopiowania pliku z obiektu blob do udziału plików [kopiowania po stronie serwera](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operacja została wykonana.
 
 ### <a name="synchronously-copy-files"></a>Synchronicznie kopiowanie plików
 
@@ -432,7 +432,7 @@ Narzędzie AzCopy generuje plik danych JSON do kontenera obiektów blob z nastę
 
     <account name>_<table name>_<timestamp>_<volume index>_<CRC>.json
 
-Wygenerowany plik JSON w danych następuje format ładunku minimalne metadane. Szczegółowe informacje na temat tego formatu ładunek, [Format ładunku dla operacji usługi tabeli](http://msdn.microsoft.com/library/azure/dn535600.aspx).
+Wygenerowany plik JSON w danych następuje format ładunku minimalne metadane. Szczegółowe informacje na temat tego formatu ładunek, [Format ładunku dla operacji usługi tabeli](https://msdn.microsoft.com/library/azure/dn535600.aspx).
 
 Należy pamiętać, że podczas eksportowania tabele, obiekty BLOB, narzędzia AzCopy pliki do pobrania jednostki z tabeli do lokalnych danych tymczasowych plików, a następnie przekazuje te jednostki do obiektu blob. Te pliki tymczasowe dane są umieszczane w folder plików dziennika przy użyciu domyślnej ścieżki "<code>%LocalAppData%\Microsoft\Azure\AzCopy</code>", można określić opcję/Z: [dziennika pliku folder] do dziennika zmian lokalizacja folderu plików i dlatego Zmień lokalizację plików danych tymczasowych. Dane tymczasowe, których rozmiar plików, decydują rozmiar jednostek tabeli i rozmiar, określony /SplitSize opcji, mimo, że plik danych tymczasowych na dysku lokalnym jest usuwany natychmiast po został przekazany do obiektu blob, upewnij się, że masz wystarczająco lokalne Miejsce na dysku do przechowywania plików danych tymczasowych, zanim zostaną one usunięte.
 
@@ -997,10 +997,10 @@ Aby uzyskać więcej informacji na temat usługi Azure Storage i narzędzia AzCo
 
 ### <a name="azure-storage-blog-posts"></a>Wpisy blogu magazynu platformy Azure:
 * [Wprowadzenie do usługi Azure Storage Data przenoszenia Library w wersji zapoznawczej](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
-* [Narzędzia AzCopy: Wprowadzenie kopia synchroniczna i dostosowanego typu zawartości](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
-* [Narzędzia AzCopy: Przedstawienie ogólna dostępność 3.0 narzędzie AzCopy oraz wersję zapoznawczą 4.0 narzędzia AzCopy z obsługą tabela i plik](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
-* [Narzędzia AzCopy: Zoptymalizowane pod kątem scenariuszy kopiowania na dużą skalę](http://go.microsoft.com/fwlink/?LinkId=507682)
-* [Narzędzia AzCopy: Obsługa magazyn geograficznie nadmiarowy z dostępem do odczytu](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
-* [Narzędzia AzCopy: Transfer danych za pomocą trybie ponownego uruchamiania i tokenu sygnatury dostępu Współdzielonego](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
-* [Narzędzia AzCopy: Przy użyciu obiektu Blob kopiowania między konta](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
-* [Narzędzia AzCopy: Trwa przekazywanie/pobieranie plików obiektów blob platformy Azure](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
+* [Narzędzia AzCopy: Wprowadzenie kopia synchroniczna i dostosowanego typu zawartości](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
+* [Narzędzia AzCopy: Przedstawienie ogólna dostępność 3.0 narzędzie AzCopy oraz wersję zapoznawczą 4.0 narzędzia AzCopy z obsługą tabela i plik](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
+* [Narzędzia AzCopy: Zoptymalizowane pod kątem scenariuszy kopiowania na dużą skalę](https://go.microsoft.com/fwlink/?LinkId=507682)
+* [Narzędzia AzCopy: Obsługa magazyn geograficznie nadmiarowy z dostępem do odczytu](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
+* [Narzędzia AzCopy: Transfer danych za pomocą trybie ponownego uruchamiania i tokenu sygnatury dostępu Współdzielonego](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
+* [Narzędzia AzCopy: Przy użyciu obiektu Blob kopiowania między konta](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
+* [Narzędzia AzCopy: Trwa przekazywanie/pobieranie plików obiektów blob platformy Azure](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)

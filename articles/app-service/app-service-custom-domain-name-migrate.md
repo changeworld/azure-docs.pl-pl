@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: cephalin
-ms.openlocfilehash: a5d031622103183fa9aa7a3f3771a055fc16edb2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 632558760d0b4a00384763cc30de3b9241bb1ae6
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049980"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300170"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrowanie aktywnej nazwy DNS do usługi Azure App Service
 
@@ -60,6 +60,13 @@ Rekord TXT, czego potrzebujesz, zależy od rekordu DNS, które mają zostać zmi
 | \* (symbol wieloznaczny) | _awverify.\*_ | _&lt;Nazwa aplikacji >. azurewebsites.net_ |
 
 Na stronie rekordów DNS należy pamiętać, typ rekordu nazwy DNS, które mają zostać zmigrowane. Usługa App Service obsługuje mapowania CNAME i.
+
+> [!NOTE]
+> W przypadku niektórych dostawców, takich jak CloudFlare, `awverify.*` nie jest prawidłowym rekordem. Użyj `*` tylko zamiast tego.
+
+> [!NOTE]
+> Symbol wieloznaczny `*` rekordów będzie nieprawidłowa poddomeny przy użyciu rekordu CNAME istniejących. Konieczne może być jawnie utworzyć rekord TXT w każdej domenie podrzędnej.
+
 
 ### <a name="enable-the-domain-for-your-app"></a>Włącz domeny aplikacji
 

@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 076dc58876afbe309e75373a78f84a79951ec2b9
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: d7f832164a41c2107a2cb9fdca3530b1f5d785cb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056771"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253605"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Rozpoczynanie pracy z usługą Azure Blob Storage i Visual Studio podłączone usługi (usługi w chmurze projektów)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -64,7 +64,7 @@ Aby uzyskać programowy dostęp do obiektów blob w projekty usługi w chmurze, 
 
 ## <a name="create-a-container-in-code"></a>Utwórz kontener w kodzie
 > [!NOTE]
-> Niektóre interfejsy API, które wykonują wywołania się do usługi Azure Storage na platformie ASP.NET są asynchroniczne. Zobacz [programowanie asynchroniczne z Async i Await](http://msdn.microsoft.com/library/hh191443.aspx) Aby uzyskać więcej informacji. Kod w poniższym przykładzie przyjęto założenie, że używasz metody programowania asynchronicznego.
+> Niektóre interfejsy API, które wykonują wywołania się do usługi Azure Storage na platformie ASP.NET są asynchroniczne. Zobacz [programowanie asynchroniczne z Async i Await](https://msdn.microsoft.com/library/hh191443.aspx) Aby uzyskać więcej informacji. Kod w poniższym przykładzie przyjęto założenie, że używasz metody programowania asynchronicznego.
 > 
 > 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 07a86345e49081320663d7706310a71a40ace134
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: fe6251f70ae62440bbbefc8c3aa5d92d934d8ba0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302111"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249357"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Ramka zabezpieczeń: Zarządzanie konfiguracją | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -210,7 +210,7 @@ lub na poziomie aplikacji
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Część zabezpieczeń IE8 V: kompleksową ochronę](http://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx), [typ MIME](http://en.wikipedia.org/wiki/Mime_type) |
+| **Odwołania**              | [Część zabezpieczeń IE8 V: kompleksową ochronę](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx), [typ MIME](http://en.wikipedia.org/wiki/Mime_type) |
 | **Kroki** | Nagłówek X-zawartości-typ-Options jest nagłówek HTTP, która umożliwia deweloperom określić, że jego zawartość nie powinny być ten MIME. Ten nagłówek zaprojektowano w celu zmniejszenia wykrywanie MIME ataków. Dla każdej strony mogą zawierać treści, którymi można sterować użytkownika, należy użyć X nagłówka HTTP-zawartości — typ — opcje: nosniff. Aby włączyć wymagany nagłówek globalnie dla wszystkich stron w aplikacji, możesz wykonać jedną z następujących czynności|
 
 ### <a name="example"></a>Przykład

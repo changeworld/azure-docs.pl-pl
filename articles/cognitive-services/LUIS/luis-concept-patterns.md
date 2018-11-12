@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fbd11eb23b10800e115a63549f233e0239763420
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 09c869bf28b804d8fabe331c4a9c2d222accc1e5
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638153"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300374"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Wzorce zwiększenia dokładności prognozy
 Wzorce są przeznaczone do zwiększenia dokładności, gdy kilka wypowiedzi są bardzo podobne.  Wzorzec pozwala uzyskać większą precyzję dla intencji bez podawania wielu wypowiedzi więcej. 
@@ -89,7 +89,7 @@ Aby dodać **Pattern.any** jednostki do szablonu wzorca Otocz jednostki Pattern.
 W tych przykładach tytuł książki kontekstowych słów tytuł książki nie są mylące dla usługi LUIS. Usługa LUIS wie, gdzie tytułu kończy się, ponieważ jest we wzorcu i oznaczone atrybutem jednostki Pattern.any.
 
 ### <a name="explicit-lists"></a>Jawne list
-Jeśli deseń zawiera Pattern.any i składnia wzorca daje możliwość wyodrębniania niepoprawne jednostki oparte na wypowiedź, Utwórz [jawną listę](https://aka.ms/ExplicitList) za pośrednictwem tworzenia interfejsu API, aby zezwolić na wyjątek. 
+Jeśli deseń zawiera Pattern.any i składnia wzorca daje możliwość wyodrębniania niepoprawne jednostki oparte na wypowiedź, Utwórz [jawną listę](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) za pośrednictwem tworzenia interfejsu API, aby zezwolić na wyjątek. 
 
 Załóżmy, że masz wzorzec, zawierający zarówno opcjonalnych składni `[]`i składnię jednostki `{}`, są one połączone w sposób, aby wyodrębnić dane niepoprawnie.
 
@@ -102,7 +102,7 @@ Należy wziąć pod uwagę wzorzec "[Znajdź] poziomu poczty e-mail, o {subject}
 
 W powyższej tabeli wypowiedź `email about the man from La Mancha`, powinien być przedmiotem `the man from La Mancha` (tytuł książki), ale ponieważ podmiotu zawiera opcjonalne słowo `from`, niepoprawnie przewiduje się tytuł. 
 
-Aby rozwiązać ten wyjątek z wzorcem, dodać `the man from la mancha` jako dopasowanie jawną listę przy użyciu jednostki {subject} [tworzenia interfejsu API dla listy jawne](https://aka.ms/ExplicitList).
+Aby rozwiązać ten wyjątek z wzorcem, dodać `the man from la mancha` jako dopasowanie jawną listę przy użyciu jednostki {subject} [tworzenia interfejsu API dla listy jawne](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8).
 
 ### <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Składnia służąca do oznaczania opcjonalny tekst w polu wypowiedź szablonu
 Oznacz opcjonalny tekst w wypowiedź przy użyciu składni wyrażeń regularnych nawias kwadratowy, `[]`. Opcjonalny tekst można zagnieżdżać maksymalnie tylko dwa nawiasy kwadratowe nawiasy kwadratowe.
@@ -116,7 +116,7 @@ Znaków interpunkcyjnych, takie jak `.`, `!`, i `?` można zignorować przy uży
 ## <a name="patterns-only"></a>Tylko wzorców
 Usługa LUIS umożliwia aplikacji bez wypowiedzi przykład intencji. To obciążenie jest dozwolone tylko wtedy, gdy są używane wzorce. Wzorce wymagają co najmniej jedną jednostkę w każdy wzorzec. Dla aplikacji tylko do wzorca wzorzec nie powinna zawierać maszyny do opanowania jednostki, ponieważ wymagają one wypowiedzi przykład. 
 
-## <a name="best-practices"></a>Najlepsze rozwiązania
+## <a name="best-practices"></a>Najlepsze praktyki
 Dowiedz się, [najlepsze praktyki](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Kolejne kroki

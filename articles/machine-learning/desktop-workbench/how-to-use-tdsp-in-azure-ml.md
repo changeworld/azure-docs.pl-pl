@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2fd0fe55b975010a1eaafeb455d61a6cb3ebff77
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8e13ba0bcbd24dcc3cd08a0d2886f1da9d85de79
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970927"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249918"
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>Tworzenie struktury projektów za pomocą szablonu procesu do nauki o danych zespołu
 
@@ -54,7 +54,7 @@ Sprawdź następujące elementy *przed* Tworzenie nowego projektu:
 * Zawartość (inne niż co znajduje się już w folderze "dokumenty") są wymagane do mniej niż 25 MB rozmiar. Zobacz uwagi poniżej tej listy.
 * Przykład\_folderu danych jest tylko w przypadku małych plików danych (mniej niż 5 MB) za pomocą których można przetestować kod lub rozpocząć projektowanie wcześniejsze.
 * Przechowywanie plików, takich jak Word i pliki programu PowerPoint, można znacznie zwiększyć rozmiar folderu "docs". Zaleca się, że znajdowanie współpracy witrynę typu Wiki, [SharePoint](https://products.office.com/sharepoint/collaboration), lub innego zasobu współpracy do przechowywania tych plików.
-* Aby dowiedzieć się, jak do obsługi dużych plików i danych wyjściowych w usłudze Machine Learning, przeczytaj [utrwalania zmian i rozwiązywania problemów związanych z dużymi plikami](http://aka.ms/aml-largefiles).
+* Aby dowiedzieć się, jak do obsługi dużych plików i danych wyjściowych w usłudze Machine Learning, przeczytaj [utrwalania zmian i rozwiązywania problemów związanych z dużymi plikami](https://aka.ms/aml-largefiles).
 
 > [!NOTE]
 > Wszystkie związane z dokumentacją zawartość (tekst, promocjach cenowych, obrazy i inne pliki dokumentów) *nie* używane podczas wykonywania projektów, innego niż plik readme.md musi znajdować się w folderze o nazwie "docs" (tylko małe litery). Folder "docs" jest ignorowane przez wykonanie uczenia maszynowego, więc zawartość w tym folderze nie uzyskać kopiowana do celów obliczeń niepotrzebnie specjalnego folderu. Obiekty w tym folderze również nie są wliczane do limitu 25 MB rozmiar projektu. Folder "docs" jest na przykład miejsce do przechowywania plików duży obraz, potrzebnych w dokumentacji. Pliki te nadal są śledzone przez usługi Git za pomocą historii uruchamiania. 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: d75bb780a17653aaacbc74413fb4240a8052a983
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: 2d8a98e6ab38f4156b6e2f5bda81b44e1789a6ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371489"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253078"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Należy spełnić wymagania wstępne dotyczące tworzenia zawsze włączonych grup dostępności na maszynach wirtualnych platformy Azure
 
@@ -35,14 +35,14 @@ Na poniższym diagramie przedstawiono kompilacji w tym samouczku.
 
 ## <a name="review-availability-group-documentation"></a>Zapoznaj się z dokumentacją grupy dostępności
 
-Ten samouczek zakłada, że masz podstawową wiedzę na temat programu SQL Server zawsze włączonych grup dostępności. Jeśli nie jesteś zaznajomiony z tej technologii, zobacz [przegląd z zawsze włączonych grup dostępności (SQL Server)](http://msdn.microsoft.com/library/ff877884.aspx).
+Ten samouczek zakłada, że masz podstawową wiedzę na temat programu SQL Server zawsze włączonych grup dostępności. Jeśli nie jesteś zaznajomiony z tej technologii, zobacz [przegląd z zawsze włączonych grup dostępności (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
 
 
 ## <a name="create-an-azure-account"></a>Utwórz konto systemu Azure
 Musisz mieć konto platformy Azure. Możesz [bezpłatne konto platformy Azure](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US) lub [aktywować korzyści dla subskrybentów programu Visual Studio](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
-1. Zaloguj się w [Portalu Azure](http://portal.azure.com).
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
 2. Kliknij przycisk **+** można utworzyć nowego obiektu w portalu.
 
    ![Nowy obiekt](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
@@ -85,7 +85,7 @@ Aby utworzyć sieć wirtualną:
    | --- | --- |
    | **Nazwa** |autoHAVNET |
    | **Przestrzeń adresowa** |10.33.0.0/24 |
-   | **Nazwa podsieci** |Administrator |
+   | **Nazwa podsieci** |Jednostka administracyjna |
    | **Zakres adresów podsieci** |10.33.0.0/29 |
    | **Subskrypcja** |Określ subskrypcję, która ma być używana. **Subskrypcja** jest puste, jeśli masz tylko jedną subskrypcję. |
    | **Grupa zasobów** |Wybierz **Użyj istniejącej** i wybierz nazwę grupy zasobów. |
@@ -190,7 +190,7 @@ W poniższej tabeli przedstawiono ustawienia dla tych dwóch maszyn:
 | **Publiczny adres IP** |*Tej samej nazwie co maszyna wirtualna* |
 | **Sieciowa grupa zabezpieczeń** |*Tej samej nazwie co maszyna wirtualna* |
 | **Zestaw dostępności** |adavailabilityset </br>**Domeny błędów**: 2</br>**Domeny aktualizacji**: 2|
-| **Diagnostyka** |Włączono |
+| **Diagnostyka** |Enabled (Włączony) |
 | **Konto magazynu diagnostyki** |*Automatycznie utworzone* |
 
    >[!IMPORTANT]
@@ -314,8 +314,8 @@ W następnych krokach konfigurowania kont usługi Active Directory. W poniższej
 
 | |Konto instalacji<br/> |sqlserver-0 <br/>Konto programu SQL Server i usługi agenta SQL |sqlserver-1<br/>Konto programu SQL Server i usługi agenta SQL
 | --- | --- | --- | ---
-|**Imię** |Zainstaluj |SQLSvc1 | SQLSvc2
-|**SamAccountName użytkownika** |Zainstaluj |SQLSvc1 | SQLSvc2
+|**Imię** |Instalowanie |SQLSvc1 | SQLSvc2
+|**SamAccountName użytkownika** |Instalowanie |SQLSvc1 | SQLSvc2
 
 Poniższe kroki umożliwiają tworzenie każdego konta.
 
@@ -349,7 +349,7 @@ Teraz, gdy zakończysz, skonfigurowanie usługi Active Directory i obiektów uż
 
 ## <a name="create-sql-server-vms"></a>Tworzenie maszyn wirtualnych programu SQL Server
 
-Utwórz trzy dodatkowe maszyny wirtualne. To rozwiązanie wymaga dwóch maszyn wirtualnych za pomocą wystąpienia programu SQL Server. Trzeci maszyna wirtualna będzie działać jako monitor. Można użyć systemu Windows Server 2016 [monitora w chmurze](http://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness), ale pod kątem zgodności ze starszymi systemami operacyjnymi w tym dokumencie używa maszyny wirtualnej dla monitora.  
+Utwórz trzy dodatkowe maszyny wirtualne. To rozwiązanie wymaga dwóch maszyn wirtualnych za pomocą wystąpienia programu SQL Server. Trzeci maszyna wirtualna będzie działać jako monitor. Można użyć systemu Windows Server 2016 [monitora w chmurze](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness), ale pod kątem zgodności ze starszymi systemami operacyjnymi w tym dokumencie używa maszyny wirtualnej dla monitora.  
 
 Przed kontynuowaniem należy wziąć pod uwagę następujące decyzje dotyczące projektu.
 

@@ -1,6 +1,6 @@
 ---
-title: Starszej wersji Enterprise planu szczegóły cennika dla usługi Azure Application Insights | Dokumentacja firmy Microsoft
-description: Zarządzanie woluminami dane telemetryczne i monitorować kosztów w usłudze Application Insights.
+title: Starszej wersji Enterprise, plan szczegóły cennika usługi Azure Application Insights | Dokumentacja firmy Microsoft
+description: Zarządzanie woluminami danych telemetrycznych i monitorowanie kosztów w usłudze Application Insights.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -13,49 +13,49 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 65307eab0bf1b5f502f11c14c369826cd12e0966
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: b2a93c7d3b512a34ab5d2e4fd020415739466c2e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309834"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235296"
 ---
 # <a name="enterprise-plan-details"></a>Szczegóły planu Enterprise
 
-Azure Application Insights ma dwa planów cenowych: Basic i Enterprise. [Podstawowe](app-insights-pricing.md) cennik plan jest domyślny plan. Zawiera wszystkie funkcje plan Enterprise, bez ponoszenia dodatkowych kosztów. Podstawowy plan BOM przede wszystkim od ilości danych, która jest pozyskanych. 
+Usługa Azure Application Insights ma dwa plany cenowe: Basic i Enterprise. [Podstawowe](app-insights-pricing.md) plan taryfowy jest domyślny plan. Obejmuje wszystkie funkcje planu Enterprise, bez ponoszenia dodatkowych kosztów. Przede wszystkim od ilości danych, które są pozyskiwane w ramach planu podstawowego. 
 
-Enterprise plan ma opłat każdego węzła i każdego węzła otrzyma dziennych dodatków danych. W przedsiębiorstwie cenową planu, naliczane są opłaty danych pozyskanych powyżej dołączone dodatku. Jeśli używasz usługi Operations Management Suite należy wybrać Enterprise plan. 
+Enterprise plan ma opłaty za węzeł i każdy węzeł otrzyma dzienny przydział danych. W przedsiębiorstwie cennikiem, opłaty są naliczane za dane pozyskane powyżej uwzględnione dopuszczalnej wartości. Jeśli używasz pakietu Operations Management Suite, należy wybrać Enterprise plan. 
 
-Dla bieżącego cen w walucie i regionu, zobacz [usługi Application Insights wyceny](http://azure.microsoft.com/pricing/details/application-insights/).
+Dla bieżącego cenach w regionie i waluty, zobacz [cen usługi Application Insights](https://azure.microsoft.com/pricing/details/application-insights/).
 
 > [!NOTE]
-> W kwietniu 2018 firma Microsoft [wprowadzone](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nowego modelu cenowego monitorowania Azure. Ten model przyjmuje prostego modelu "z" między pełną gamę monitorowanie usług. Dowiedz się więcej o [nowy model cenowy](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), jak do [ocenić wpływ przenoszenia do tego modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) oparte na Twoich wzorców użycia i [jak zgłosić do nowego modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)
+> W kwietniu 2018 r. Firma Microsoft [wprowadzone](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nowego modelu cenowego monitorowania platformy Azure. Ten model przyjmuje prosty model "zgodnie z rzeczywistym użyciem" w pełnym portfolio monitorowanie usług. Dowiedz się więcej o [nowego modelu cen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), jak do [ocenić wpływ przenoszenia do tego modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) na podstawie Twojej wzorców użycia i [sposób dołączenia do nowego modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)
 
 ## <a name="how-the-enterprise-plan-works"></a>Jak działa Enterprise plan
 
-* Płacisz za każdym węźle, który wysyła dane telemetryczne dla wszystkich aplikacji w planie przedsiębiorstwa.
- * A *węzła* jest maszyną serwerze fizycznym lub wirtualnym lub wystąpienia platforma jako usługa roli, który jest hostem aplikacji.
- * Programowanie maszyny, przeglądarki klienta i urządzeń przenośnych nie są traktowane jako węzły.
- * Gdy aplikacja ma kilka składników, które wysyłają dane telemetryczne, takie jak usługi sieci web i zaplecza pracownika, składniki są zliczane osobno.
- * [Metryki strumień na żywo](app-insights-live-stream.md) danych nie są one uwzględniane dla celów cennik. W ramach subskrypcji z opłaty są na węzeł nie każdej aplikacji. Jeśli masz pięć węzłów, które wysyłają dane telemetryczne dotyczące 12 aplikacji jest pięć węzłów.
-* Chociaż opłaty są podane na miesiąc, są pobierane tylko w przypadku dowolnego godzinę, w którym węzeł wysyła dane telemetryczne z aplikacji. Co godzinę jest ujętego w cudzysłów opłaty miesięczne rozdzielonych 744 (liczba godzin w miesiącu dzień 31).
-* Alokację wolumin danych 200 MB na dzień znajduje się na każdym węźle, który zostanie wykryty (z godzinowe). Alokacja nieużywanych danych nie jest przenoszone z jednego dnia do następnego.
- * Jeśli jednostka ceny planu, każda subskrypcja otrzymuje dziennych dodatków danych na podstawie liczby węzłów, które wysyłania danych telemetrycznych do zasobów usługi Application Insights w tej subskrypcji. Tak Jeśli masz pięć węzłów, które wysyłają dane cały dzień, będziesz mieć puli dodatek 1 GB stosowane do wszystkich zasobów usługi Application Insights w tej subskrypcji. Nie ma znaczenia, jeśli niektóre węzły wysłać więcej danych niż inne węzły, ponieważ dołączony danych jest współużytkowana przez wszystkie węzły. Jeśli w danym dniu, zasobów usługi Application Insights otrzymywać więcej danych niż jest uwzględniona w codziennych alokacji danych dla tej subskrypcji,-GB danych nadwyżkowe opłaty. 
- * Codzienne dodatku danych jest obliczany jako liczbę godzin (przy użyciu czasu UTC) dnia każdego węzła i wysyła dane telemetryczne podzielona przez 24 pomnożona przez 200 MB. Tak, jeśli masz czterech węzłów, które wysłać dane telemetryczne w okresie 15 24 godziny, dnia, uwzględnione dane za ten dzień byłyby ((4 &#215; 15) / 24) &#215; 200 MB = 500 MB. W cenie 2.30 USD na GB dla danych nadwyżkowe opłata będzie 1,15 USD węzły wysłania 1 GB danych w tym dniu.
- * Dodatek codzienne plan przedsiębiorstwa nie jest udostępniony z aplikacjami, dla których wybrano podstawowy plan. Nieużywane dodatku nie jest przenoszone z typowymi. 
+* Płacisz za każdy węzeł, który wysyła dane telemetryczne dotyczące wszystkich aplikacji w planie Enterprise.
+ * A *węzła* jest komputer fizyczny lub wirtualny serwer lub wystąpienie roli platforma jako usługa, która jest hostem aplikacji.
+ * Komputerach deweloperskich, przeglądarek klientów i urządzeń przenośnych nie są traktowane jako węzły.
+ * Jeśli aplikacja ma kilka składników, które wysyłają dane telemetryczne, np. usługi sieci web i procesu roboczego zaplecza, składniki są zliczane osobno.
+ * [Live Stream metryki](app-insights-live-stream.md) danych nie jest liczony cennik celów. W ramach subskrypcji usługi opłaty są naliczane za węzeł, a nie aplikacji. Jeśli masz pięć węzłów, które wysyłają dane telemetryczne dla 12 aplikacji, Opłata dotyczy pięć węzłów.
+* Mimo, że opłaty są podane na miesiąc, opłaty są naliczane tylko za godziny, w których dany węzeł przesyła dane telemetryczne z aplikacji. Opłata za godziny jest cudzysłowie opłata miesięczna podzielona przez 744 (liczba godzin w miesiącu mającym 31 dni).
+* Dane woluminu alokacji wynoszącej 200 MB dziennie znajduje się w każdym węźle, który został wykryty (z dokładnością co godzinę). Niewykorzystane dane alokacji nie jest przenoszone od 1 dnia następnego.
+ * Jeśli wybierzesz Enterprise, plan taryfowy, każda subskrypcja otrzymuje dzienny przydział danych na podstawie liczby węzłów, które wysyłają dane telemetryczne do zasobów usługi Application Insights w tej subskrypcji. Dlatego jeśli masz pięć węzłów wysyłających dane, cały dzień, będziesz mieć dzienny przydział 1 GB, stosowany do wszystkich zasobów usługi Application Insights w tej subskrypcji. Nie ma znaczenia, jeśli niektóre węzły wysyła więcej danych niż inne węzły, ponieważ uwzględnione dane są dzielone między wszystkie węzły. Jeśli w danym dniu zasoby usługi Application Insights otrzymywać więcej danych niż przewiduje dzienny przydział danych dla tej subskrypcji, na GB nadwyżki danych opłaty. 
+ * Dzienny przydział danych jest obliczany jako liczba godzin w ciągu dnia (przy użyciu czasu UTC) czy każdy węzeł wysyła dane telemetryczne, podzielona przez 24 pomnożona przez 200 MB. Dlatego w przypadku czterech węzłów, które wysyłają dane telemetryczne przez 15 godzin z 24 godzin dnia uwzględnione dane na ten dzień będzie ((4 &#215; 15) / 24) &#215; 200 MB = 500 MB. W cenie za nadwyżkowe użycie danych 2.30 USD za GB opłata byłaby 1,15 USD węzły wysłać 1 GB danych tego samego dnia.
+ * Dzienny limit plan Enterprise nie zostały udostępnione aplikacji, dla których wybrano planu podstawowego. Nieużywane dopuszczalnej wartości nie jest przenoszone z typowymi. 
 
-## <a name="examples-of-how-to-determine-distinct-node-count"></a>Przykłady sposobu ustalania liczby unikatowych węzła
+## <a name="examples-of-how-to-determine-distinct-node-count"></a>Przykłady sposobu ustalania liczby unikatowych węzłów
 
-| Scenariusz                               | Łączna liczba węzłów dziennie |
+| Scenariusz                               | Łączna liczba węzeł dziennie |
 |:---------------------------------------|:----------------:|
-| 1 aplikacja za pomocą 3 wystąpienia usługi Azure App Service i 1 serwera wirtualnego | 4 |
-| 3 aplikacji uruchomionych na maszynach wirtualnych 2; zasoby usługi Application Insights dla te aplikacje są w tej samej subskrypcji i Enterprise plan | 2 | 
-| 4 aplikacji, którego zasoby aplikacji szczegółowe informacje znajdują się w tej samej subskrypcji; Każda aplikacja systemem 2 wystąpienia 16 poza godzinami szczytu i wystąpień 4, 8 godzinach szczytu | 13.33 | 
-| Usługi w chmurze z rolą proces roboczy 1 i 1 roli sieci Web, każdy uruchomiony 2 wystąpienia | 4 | 
-| 5 węzłów klastra sieci szkieletowej usług Azure z systemem mikrousług 50; Każdy mikrousługi uruchomione wystąpienia 3 | 5|
+| 1 aplikacja, korzystająca z 3 wystąpień usługi Azure App Service i 1 serwer wirtualny | 4 |
+| 3 działających na maszynach wirtualnych 2; zasoby usługi Application Insights dla tych aplikacji są w tej samej subskrypcji i Enterprise plan | 2 | 
+| 4 aplikacji, którego zasoby aplikacji szczegółowe informacje znajdują się w tej samej subskrypcji; Każda aplikacja uruchomiona 2 wystąpienia 16 poza godzinami pracy, a 4 wystąpień w godzinach szczytu 8 | 13.33 | 
+| Cloud services za pomocą roli procesu roboczego 1 oraz roli sieci Web 1, każdy uruchomiony 2 wystąpienia | 4 | 
+| 5 węzłami klastra usługi Azure Service Fabric z systemem mikrousług 50; Każda mikrousługa uruchomionych wystąpień 3 | 5|
 
-* Zliczanie dokładne węzła zależy od tego, w których zestaw SDK usługi Application Insights jest przy użyciu aplikacji. 
-  * W wersjach zestawu SDK 2,2 i nowsze, zarówno usługi Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) i [zestawu SDK sieci Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) raport każdy host aplikacji jako węzeł. Przykłady są nazwy komputera dla serwera fizycznego i hosty maszyn wirtualnych lub nazwę wystąpienia dla usługi w chmurze.  Jedynym wyjątkiem jest aplikacja, która używa tylko [.NET Core](https://dotnet.github.io/) i zestaw SDK usługi Application Insights Core. W takim przypadku tylko jeden węzeł został zgłoszony dla wszystkich hostów, ponieważ nazwa hosta nie jest dostępna. 
-  * W przypadku wcześniejszych wersji zestawu SDK [zestawu SDK sieci Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) zachowuje się jak nowsze wersje zestawu SDK, ale [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) raporty tylko jeden węzeł, niezależnie od liczby hostów aplikacji. 
-  * Jeśli aplikacja korzysta z zestawu SDK, aby ustawić **roleInstance** wartości niestandardowych, domyślnie tej samej wartości służy do określania liczba węzłów. 
-  * Jeśli używasz nowej wersji zestawu SDK w aplikacji, która jest uruchamiana z urządzeń przenośnych i komputerów klienckich, liczba węzłów może zwrócić jest bardzo duże (z powodu dużej liczby urządzeń przenośnych i komputerów klienckich). 
+* Zliczanie dokładne węzła zależy od tego, w których zestaw SDK usługi Application Insights używa aplikacja. 
+  * W wersji zestawu SDK 2,2 lub nowszą wersją, zarówno w usłudze Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) i [zestawu SDK sieci Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) zgłosić każdego hosta aplikacji jako węzeł. Przykłady to nazwa komputera dla serwera fizycznego i hostów maszyn wirtualnych lub nazwę wystąpienia dla usług w chmurze.  Jedynym wyjątkiem jest aplikacja, która używa tylko [platformy .NET Core](https://dotnet.github.io/) i podstawowego zestawu SDK usługi Application Insights. W takim przypadku tylko jeden węzeł jest zgłaszany na wszystkich hostach, ponieważ nazwa hosta nie jest dostępna. 
+  * We wcześniejszych wersjach zestawu SDK [zestawu SDK sieci Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) zachowuje się jak nowsze wersje zestawu SDK, ale [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) zgłasza tylko jeden węzeł, niezależnie od liczby hostów aplikacji. 
+  * Jeśli aplikacja używa zestawu SDK, aby ustawić **roleInstance** niestandardowej wartości domyślnie tej samej wartości służy do określania liczby węzłów. 
+  * Jeśli używasz nowej wersji zestawu SDK z aplikacji, która jest uruchamiana z urządzeń przenośnych i komputerów klienckich, liczba węzłów może zwrócić liczbę, która jest bardzo duża (z powodu dużej liczby urządzeń przenośnych i komputerów klienckich). 

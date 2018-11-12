@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2018
+ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: 8d1415e996f65f0791b3e449a61fb30053add523
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 937d0be2e86adf00ac2707d5fd57eb905dcea3fb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240209"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238328"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Rozwiązywanie problemów: Problemy z połączeniem usługi Azure point-to-site
 
@@ -221,7 +221,7 @@ Aby rozwiązać ten problem, wykonaj ponowne wdrożenie punktu do lokacji pakiet
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>Zbyt wielu klientów sieci VPN połączony na raz
 
-Dla każdej bramy sieci VPN maksymalną liczbę dozwolonych połączeń to 128. Całkowita liczba podłączonych klientów w witrynie Azure portal są widoczne.
+Osiągnięto maksymalną liczbę dozwolonych połączeń. Całkowita liczba podłączonych klientów w witrynie Azure portal są widoczne.
 
 ## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-to-the-route-table"></a>Sieci VPN typu punkt lokacja niepoprawnie dodaje trasę dla 10.0.0.0/8 do tabeli tras
 
@@ -282,7 +282,7 @@ Aby rozwiązać ten problem, Usuń stare pliki konfiguracji klienta sieci VPN z 
 
 ### <a name="symptom"></a>Objaw
 
-Gdy klient łączy się na platformie Azure przy użyciu połączenia sieci VPN typu punkt lokacja, nie można rozpoznać FQND zasobów w domenie lokalnej.
+Gdy klient łączy się na platformie Azure przy użyciu połączenia sieci VPN typu punkt lokacja, nie można rozpoznać nazwę FQDN zasobów w domenie lokalnej.
 
 ### <a name="cause"></a>Przyczyna
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/29/2018
 ms.author: markgal
-ms.openlocfilehash: 9e2ef16cffb044409b6f7f8e7785010097bcda87
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: ae02a1bcbf00a022cfd884b02141ce084f1fffa8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286656"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232464"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Planowanie infrastruktury kopii zapasowych maszyny wirtualnej na platformie Azure
 Ten artykuł zawiera wydajności i sugestii zasobu, aby ułatwić planowanie infrastruktury kopii zapasowej maszyny Wirtualnej. Definiuje również kluczowe aspekty w usłudze Kopia zapasowa; te aspekty mogą być szczególnie ważne w określaniu architektury, planowania pojemności i planowania. Jeśli masz [przygotować środowisko](backup-azure-arm-vms-prepare.md), planowania jest kolejnym krokiem przed rozpoczęciem [do tworzenia kopii zapasowych maszyn wirtualnych](backup-azure-arm-vms.md). Aby uzyskać więcej informacji na temat maszyn wirtualnych platformy Azure, zobacz [dokumentacja dotycząca maszyn wirtualnych](https://azure.microsoft.com/documentation/services/virtual-machines/). 
@@ -146,7 +146,7 @@ Nie można uruchomić rozliczeń, dopiero po zakończeniu pierwszego pomyślne t
 Rozliczenia dla określonej maszyny wirtualnej zatrzymuje tylko wtedy, gdy ochrona jest zatrzymana, a wszystkie dane kopii zapasowej zostaną usunięte. Po zatrzymaniu ochrony i nie istnieją aktywne zadania tworzenia kopii zapasowej, rozmiar Ostatnia pomyślna kopia zapasowa maszyny Wirtualnej staje się rozmiar chronionego wystąpienia, umożliwiający miesięczny rachunek.
 
 ## <a name="questions"></a>Pytania?
-Jeśli masz pytania lub jeśli brakuje Ci jakiejś funkcji, [prześlij nam opinię](http://aka.ms/azurebackup_feedback).
+Jeśli masz pytania lub jeśli brakuje Ci jakiejś funkcji, [prześlij nam opinię](https://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Tworzenie kopii zapasowych maszyn wirtualnych](backup-azure-arm-vms.md)

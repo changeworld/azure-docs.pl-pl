@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 9a902aef0f4605c51e8dbbab49639997066be705
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c8ae6ab818fe88aa5fb79a8911c0242ea3a0ec3b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961062"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012024"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Dzienniki niestandardowe w usłudze Log Analytics
 Źródło danych dzienników niestandardowych w usłudze Log Analytics można zbierać zdarzenia z plików tekstowych na komputerach z systemami Windows i Linux. Wiele aplikacji rejestrować informacje w plikach tekstowych zamiast standardowymi usługami rejestrowania, takie jak dziennik zdarzeń Windows lub Syslog.  Po zebraniu można analizować każdy rekord w Zaloguj się do poszczególnych pól za pomocą [pól niestandardowych](log-analytics-custom-fields.md) funkcji usługi Log Analytics.
@@ -182,4 +182,4 @@ Używamy pola niestandardowe, aby zdefiniować *EventTime*, *kodu*, *stan*, i *k
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Użyj [pól niestandardowych](log-analytics-custom-fields.md) przeanalizować wpisy w niestandardowych Zaloguj się do poszczególnych pól.
-* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) analizować dane zbierane z innych źródeł danych i rozwiązań.
+* Dowiedz się więcej o [dziennikach](log-analytics-queries.md) analizować dane zbierane z innych źródeł danych i rozwiązań.

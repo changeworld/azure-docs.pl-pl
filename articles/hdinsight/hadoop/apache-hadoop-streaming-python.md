@@ -3,19 +3,19 @@ title: Opracowywanie zadań MapReduce z HDInsight — Azure przesyłania strumie
 description: Dowiedz się, jak używać języka Python w transmisji strumieniowej zadań MapReduce. Hadoop udostępnia interfejs API przesyłania strumieniowego dla MapReduce do pisania w językach innych niż Java.
 services: hdinsight
 keyword: mapreduce python,python map reduce,python mapreduce
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/10/2018
-ms.author: jasonh
-ms.openlocfilehash: 8e2d13e0d9e51855bc8945db61c78a2fec736c33
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 5ed61eb05d0aa4360e042097d6b8c632c17ea59c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041714"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008729"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Opracowywanie programów MapReduce przesyłania strumieniowego HDInsight w języku Python
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 32881f815a714e355adf05c07a3cf114933f3fe9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f865768e6ebfd9e01de1bd7e69c1224b66f2ea5e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531548"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231792"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage
 ## <a name="overview"></a>Przegląd
@@ -90,7 +90,7 @@ Każda z usług Azure Storage ma wartości docelowe skalowalności pojemność (
 * [Wiadomości w kolejce na sekundę](#subheading39)  
 
 #### <a name="sub1bandwidth"></a>Cel skalowalności przepustowości dla wszystkich usług
-W czasie pisania cele przepustowości w Stanach Zjednoczonych konto magazyn geograficznie nadmiarowy (GRS) są 10 gigabity na sekundę (GB/s) dla ruchu przychodzącego (dane wysyłane do konta magazynu) i 20 GB/s dla danych wychodzących (dane wysyłane z konta magazynu). Konto magazynu lokalnie nadmiarowego (LRS), limity są wyższe — 20 GB/s dla ruchu przychodzącego i 30 GB/s dla ruchu wychodzącego.  Limity przepustowości międzynarodowych może być niższa i można znaleźć na naszej [strony cele skalowalności](http://msdn.microsoft.com/library/azure/dn249410.aspx).  Aby uzyskać więcej informacji na temat opcji nadmiarowości magazynu, zobacz linki na [przydatne zasoby](#sub1useful) poniżej.  
+W czasie pisania cele przepustowości w Stanach Zjednoczonych konto magazyn geograficznie nadmiarowy (GRS) są 10 gigabity na sekundę (GB/s) dla ruchu przychodzącego (dane wysyłane do konta magazynu) i 20 GB/s dla danych wychodzących (dane wysyłane z konta magazynu). Konto magazynu lokalnie nadmiarowego (LRS), limity są wyższe — 20 GB/s dla ruchu przychodzącego i 30 GB/s dla ruchu wychodzącego.  Limity przepustowości międzynarodowych może być niższa i można znaleźć na naszej [strony cele skalowalności](https://msdn.microsoft.com/library/azure/dn249410.aspx).  Aby uzyskać więcej informacji na temat opcji nadmiarowości magazynu, zobacz linki na [przydatne zasoby](#sub1useful) poniżej.  
 
 #### <a name="what-to-do-when-approaching-a-scalability-target"></a>Co należy zrobić podczas kontaktowania się z docelową skalowalność
 Jeśli aplikacja zbliża się do wartości docelowe skalowalności pojedynczego konta magazynu, należy rozważyć przyjęcie jedną z następujących metod:  
@@ -104,7 +104,7 @@ Jeśli aplikacja zbliża się do wartości docelowe skalowalności pojedynczego 
 Poniższe linki zawierają dodatkowe szczegóły dotyczące cele skalowalności:
 
 * Zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](storage-scalability-targets.md) uzyskać informacji na temat cele skalowalności.
-* Zobacz [replikacja usługi Azure Storage](storage-redundancy.md) oraz wpis w blogu [Opcje nadmiarowości magazynu platformy Azure i Magazyn geograficznie nadmiarowy dostęp do odczytu](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx) uzyskać informacji na temat opcji nadmiarowości magazynu.
+* Zobacz [replikacja usługi Azure Storage](storage-redundancy.md) oraz wpis w blogu [Opcje nadmiarowości magazynu platformy Azure i Magazyn geograficznie nadmiarowy dostęp do odczytu](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx) uzyskać informacji na temat opcji nadmiarowości magazynu.
 * Aby uzyskać aktualne informacje na temat cen usług platformy Azure, zobacz [cennik usługi Azure](https://azure.microsoft.com/pricing/overview/).  
 
 ### <a name="subheading47"></a>Konwencją nazewnictwa partycji
@@ -149,7 +149,7 @@ Obie te technologie mogą pomóc w uniknięciu niepotrzebne obciążenie (i wąs
 #### <a name="useful-resources"></a>Przydatne zasoby
 Aby uzyskać więcej informacji na temat sygnatury dostępu Współdzielonego, zobacz [sygnatur dostępu współdzielonego, część 1: opis modelu sygnatur dostępu Współdzielonego](../storage-dotnet-shared-access-signature-part-1.md).  
 
-Aby uzyskać więcej informacji na temat mechanizmu CORS zobacz [obsługi udostępniania zasobów między źródłami (CORS) dla usług Azure Storage](http://msdn.microsoft.com/library/azure/dn535601.aspx).  
+Aby uzyskać więcej informacji na temat mechanizmu CORS zobacz [obsługi udostępniania zasobów między źródłami (CORS) dla usług Azure Storage](https://msdn.microsoft.com/library/azure/dn535601.aspx).  
 
 ### <a name="caching"></a>Buforowanie
 #### <a name="subheading7"></a>Pobieranie danych
@@ -159,7 +159,7 @@ W niektórych przypadkach może się okazać, że aplikację można założyć, 
 
 Konfiguracja, wyszukiwania i inne dane, które są zawsze używane przez aplikację są doskonałymi kandydatami do buforowania.  
 
-Na przykład jak uzyskać właściwości obiektu blob, aby odnaleźć daty ostatniej modyfikacji przy użyciu platformy .NET, zobacz [zestawu i pobieranie właściwości oraz metadanych](../blobs/storage-properties-metadata.md). Aby uzyskać więcej informacji na temat warunkowego pliki do pobrania, zobacz [warunkowo odświeżyć lokalną kopię obiektu Blob](http://msdn.microsoft.com/library/azure/dd179371.aspx).  
+Na przykład jak uzyskać właściwości obiektu blob, aby odnaleźć daty ostatniej modyfikacji przy użyciu platformy .NET, zobacz [zestawu i pobieranie właściwości oraz metadanych](../blobs/storage-properties-metadata.md). Aby uzyskać więcej informacji na temat warunkowego pliki do pobrania, zobacz [warunkowo odświeżyć lokalną kopię obiektu Blob](https://msdn.microsoft.com/library/azure/dd179371.aspx).  
 
 #### <a name="subheading8"></a>Przekazywanie danych w plikach wsadowych
 W niektórych scenariuszach możesz agregować dane lokalnie i następnie okresowo przekaż go w zadaniu wsadowym zamiast przekazywania każdego fragmentu danych natychmiast. Na przykład aplikacja sieci web może przechowywać plik dziennika działań: aplikacji albo można przekazać szczegółowe informacje o każdym działaniu, zdarza się to jako jednostkę tabeli (co wymaga wielu operacji magazynu) lub jego można zapisać szczegółów działania w lokalnym pliku dziennika, a następnie Okresowo należy przekazać wszystkie szczegóły działań jako rozdzielonym pliku do obiektu blob. W przypadku każdego wpisu dziennika 1KB rozmiaru, możesz przekazać tysięcy w ramach jednej transakcji "Blob umieścić" (możesz przekazać obiekt blob do 64MB w rozmiarze w ramach jednej transakcji). Oczywiście, jeśli komputer lokalny ulegnie awarii przed przekazywania, potencjalnie utracisz niektóre dane dziennika: Deweloper aplikacji musi projektowania możliwości urządzeń klienckich lub błędy przekazywania.  Jeśli dane o aktywności musi zostać pobrane dla timespans (nie tylko pojedyncze działanie), BLOB są zalecane przez tabele.
@@ -178,7 +178,7 @@ Należy ustawić limit połączeń, przed otwarciem żadnych połączeń.
 
 Dla innych języków programowania zobacz dokumentację danego języka, aby określić, jak ustawić limit połączeń.  
 
-Aby uzyskać dodatkowe informacje, zobacz wpis w blogu [usług sieci Web: równoczesnych połączeń](http://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx).  
+Aby uzyskać dodatkowe informacje, zobacz wpis w blogu [usług sieci Web: równoczesnych połączeń](https://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx).  
 
 #### <a name="subheading10"></a>Zwiększ ThreadPool Min wątków, jeśli przy użyciu kodu synchronicznego przy użyciu zadań asynchronicznych
 Ten kod zwiększy wątków z puli min wątków:  
@@ -187,12 +187,12 @@ Ten kod zwiększy wątków z puli min wątków:
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-Aby uzyskać więcej informacji, zobacz [metoda ThreadPool.SetMinThreads](http://msdn.microsoft.com/library/system.threading.threadpool.setminthreads%28v=vs.110%29.aspx).  
+Aby uzyskać więcej informacji, zobacz [metoda ThreadPool.SetMinThreads](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads%28v=vs.110%29.aspx).  
 
 #### <a name="subheading11"></a>Skorzystaj z zalet platformy .NET 4.5 wyrzucania elementów bezużytecznych
 Użyj platformy .NET 4.5 lub nowszy dla aplikacji klienckiej, aby wykorzystać ulepszenia wydajności w systemie serwer wyrzucania elementów bezużytecznych.
 
-Aby uzyskać więcej informacji, zobacz artykuł [Przegląd o ulepszenia wydajności w .NET 4.5](http://msdn.microsoft.com/magazine/hh882452.aspx).  
+Aby uzyskać więcej informacji, zobacz artykuł [Przegląd o ulepszenia wydajności w .NET 4.5](https://msdn.microsoft.com/magazine/hh882452.aspx).  
 
 ### <a name="subheading12"></a>Niepowiązane równoległości
 Równoległość mogą być bardzo przydatne na potrzeby wydajności, należy zachować ostrożność, korzystając z równoległości niepowiązane (brak limitu liczby wątków i/lub żądań równoległych) przekazywanie lub pobieranie danych za pomocą wielu procesów roboczych na dostęp do wielu partycji (kontenery, kolejki, lub partycje tabeli) w tym samym koncie magazynu lub dostępu do wielu elementów w tej samej partycji. W przypadku niepowiązanych równoległości, aplikacja może być dłuższa niż możliwości urządzeń klienckich lub skalowalności konta magazynu jest przeznaczony dla skutkuje większe opóźnienia i ograniczania przepustowości.  
@@ -210,7 +210,7 @@ Należy pamiętać, że błędy związane z łącznością mogą być ponawiane 
 Biblioteki klienckie są znane błędy, które mogą ponownych prób, a które nie są. Jednak jeśli piszesz kod wykonywanych przy użyciu interfejsu API REST magazynu należy pamiętać, występują błędy, które nie powinny kolejnej próby: na przykład 400 (złe żądanie) odpowiedź wskazuje, że aplikacja kliencka wysłane żądanie, które nie może zostać przetworzona, ponieważ nie był w formularzu oczekiwane. Już to żądanie spowoduje, że tę samą odpowiedź każdym razem, dlatego nie ma sensu ponawianie próby go. Jeśli piszesz kod wykonywanych przy użyciu interfejsu API REST magazynu należy pamiętać, co oznaczają kody błędów i właściwy sposób, aby spróbować ponownie (lub nie) dla każdego z nich.  
 
 #### <a name="useful-resources"></a>Przydatne zasoby
-Aby uzyskać więcej informacji o kodach błędów magazynu, zobacz [stanu i kodów błędów](http://msdn.microsoft.com/library/azure/dd179382.aspx) w witrynie sieci web Microsoft Azure.  
+Aby uzyskać więcej informacji o kodach błędów magazynu, zobacz [stanu i kodów błędów](https://msdn.microsoft.com/library/azure/dd179382.aspx) w witrynie sieci web Microsoft Azure.  
 
 ## <a name="blobs"></a>Obiekty blob
 Oprócz sprawdzonych rozwiązań dotyczących [wszystkich usług](#allservices) opisanych powyżej, poniżej sprawdzone rozwiązania dotyczą wyłącznie na usługę blob service.  
@@ -236,7 +236,7 @@ Pierwsza kwestia, jest jednak, że podczas kopiowania między kontami magazynu, 
 
 Należy pamiętać, że kopie w obrębie tego samego konta magazynu, sama zwykle odbywa się szybko.  
 
-Aby uzyskać więcej informacji, zobacz [obiektu Blob kopiowania](http://msdn.microsoft.com/library/azure/dd894037.aspx).  
+Aby uzyskać więcej informacji, zobacz [obiektu Blob kopiowania](https://msdn.microsoft.com/library/azure/dd894037.aspx).  
 
 #### <a name="subheading18"></a>Korzystanie z narzędzia AzCopy
 Zespół usługi Azure Storage została wydana narzędzie wiersza polecenia "Narzędzia AzCopy" który jest przeznaczony do pomocy za pomocą zbiorczego transferu wiele obiektów blob do z i na kontach magazynu.  To narzędzie jest zoptymalizowany pod kątem tego scenariusza i mogą osiągnąć dużą szybkością.  Zaleca się jej użycie przekazywania masowego, pobieranie i kopiowanie scenariuszy. Aby uzyskać więcej informacji i pobierz go, zobacz [Transfer danych za pomocą wiersza polecenia Azcopy](storage-use-azcopy.md).  
@@ -266,7 +266,7 @@ Aby szybko przekazać wiele obiektów blob, przekazywanie obiektów blob w spos�
 ### <a name="subheading23"></a>Wybierając odpowiedni typ obiektu blob
 Usługa Azure Storage obsługuje dwa typy obiektów blob: *strony* obiektów blob i *bloku* obiektów blob. Dla scenariusza użycia danego typu blob wybór ten wpłynie wydajności i skalowalności rozwiązania. Blokowe obiekty BLOB są odpowiednie w przypadku, gdy użytkownik chce efektywnie przekazywanie dużych ilości danych: na przykład, aplikacja kliencka może być konieczne przekazywanie zdjęcia lub filmu wideo do usługi blob storage. Stronicowe obiekty BLOB są odpowiednie, jeśli aplikacja musi wykonać losowe operacje zapisu na danych: na przykład wirtualnych dysków twardych platformy Azure są przechowywane jako stronicowe obiekty BLOB.  
 
-Aby uzyskać więcej informacji, zobacz [omówienie blokowych obiektów blob, Uzupełnialnych obiektów blob i stronicowe obiekty BLOB](http://msdn.microsoft.com/library/azure/ee691964.aspx).  
+Aby uzyskać więcej informacji, zobacz [omówienie blokowych obiektów blob, Uzupełnialnych obiektów blob i stronicowe obiekty BLOB](https://msdn.microsoft.com/library/azure/ee691964.aspx).  
 
 ## <a name="tables"></a>Tabele
 Oprócz sprawdzonych rozwiązań dotyczących [wszystkich usług](#allservices) opisanych powyżej, poniżej sprawdzone rozwiązania mają zastosowanie szczególnie w usłudze table service.  
@@ -286,12 +286,12 @@ W tej sekcji przedstawiono kilka ustawień szybkiej konfiguracji, które można 
 #### <a name="subheading25"></a>Przy użyciu formatu JSON
 Począwszy od wersji usługi storage 2013-08-15, usłudze table service obsługuje, przy użyciu zamiast formatu AtomPub oparty na formacie XML do przesyłania danych tabeli. To może zmniejszyć rozmiary obciążeń żądań, o ile 75% i może znacznie poprawić wydajność aplikacji.
 
-Aby uzyskać więcej informacji, zobacz wpis [tabele platformy Azure firmy Microsoft: JSON: wprowadzenie](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) i [Format ładunku dla operacji usługi tabeli](http://msdn.microsoft.com/library/azure/dn535600.aspx).
+Aby uzyskać więcej informacji, zobacz wpis [tabele platformy Azure firmy Microsoft: JSON: wprowadzenie](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) i [Format ładunku dla operacji usługi tabeli](https://msdn.microsoft.com/library/azure/dn535600.aspx).
 
 #### <a name="subheading26"></a>Nagle'a wyłączone
 Algorytm Nagle'a firmy jest często stosowana w sieciach TCP/IP w celu zwiększenia wydajności sieci. Jednak nie jest optymalna w każdych okolicznościach (na przykład wysoce interaktywnych środowisk). Dla usługi Azure Storage algorytm Nagle'a firmy ma negatywny wpływ na wydajność żądań do tabel i kolejek usługi i należy ją wyłączyć, jeśli jest to możliwe.  
 
-Aby uzyskać więcej informacji, zobacz nasz wpis w blogu [algorytm Nagle'a firmy jest nie przyjazną kierunku żądań o małym rozmiarze](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx), co wyjaśnia dlaczego algorytm firmy Nagle'a źle współdziała z żądaniami, tabela i kolejka i pokazuje, jak ją wyłączyć w swoim kliencie aplikacja.  
+Aby uzyskać więcej informacji, zobacz nasz wpis w blogu [algorytm Nagle'a firmy jest nie przyjazną kierunku żądań o małym rozmiarze](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx), co wyjaśnia dlaczego algorytm firmy Nagle'a źle współdziała z żądaniami, tabela i kolejka i pokazuje, jak ją wyłączyć w swoim kliencie aplikacja.  
 
 ### <a name="schema"></a>Schemat
 Jak reprezentują i wykonuj zapytania na danych jest największy pojedynczy czynnik, który wpływa na wydajność usługi table service. Gdy każda aplikacja jest inna, w tej sekcji przedstawiono pewne ogólne sprawdzonych rozwiązań, które odnoszą się do:  
@@ -320,7 +320,7 @@ Wzorzec "Tylko dołączanie" jest jednym gdzie (większość lub wszystkie) ruch
 ##### <a name="subheading29"></a>Dane o dużym natężeniu ruchu
 Jeśli schemat partycjonowania w wyniku jedną partycję, która zawiera tylko dane o wiele bardziej używane od innych partycji, ograniczania przepływności mogą również wystąpić jako partycja zbliża się tę docelową skalowalność w jednej partycji.  Zaleca się upewnić się, że schemat partycji powoduje nie jednej partycji, zbliża się cele skalowalności.  
 
-#### <a name="querying"></a>Wykonywanie zapytań
+#### <a name="querying"></a>Wykonywanie zapytania
 W tej sekcji opisano sprawdzone rozwiązania na potrzeby wykonywania zapytań w usłudze table service.  
 
 ##### <a name="subheading30"></a>Zakres kwerendy

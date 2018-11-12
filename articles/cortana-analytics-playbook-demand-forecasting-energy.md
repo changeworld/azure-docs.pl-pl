@@ -10,15 +10,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 43a75c31c0f094bdcb7008a39140226815bda163
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 3f45f062cabaf31a10f24b01583575f5066bdaaf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390299"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231536"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Podręcznik dotyczący szablonu rozwiązań analizy Cortany na prognozowaniu popytu energii
-## <a name="executive-summary"></a>Streszczenie
+## <a name="executive-summary"></a>Podsumowanie dla kierownictwa
 W ciągu kilku ostatnich lat platforma Internetu rzeczy (IoT), alternatywnych źródeł energii i danych big data ma scalane, tworząc duże możliwości w domenie, narzędzie i energii. W tym samym czasie narzędzie i sektora energetycznego całego przejrzane zużycie spłaszczanie przy użyciu klientów wymagających lepsze sposoby kontrolowania ich wykorzystania energii. W związku z tym narzędzia i firm, inteligentne siatki znajdują się w doskonałe potrzebę wprowadzania innowacji i odnowić samodzielnie. Ponadto wiele siatki zużycia i narzędzie stają się nieaktualne i bardzo kosztowna, obsługa i zarządzanie nimi. W ciągu ostatniego roku zespół pracował nad liczby engagements w domenie energii. Podczas tych engagements wystąpił wiele przypadków, w których narzędzia lub niezależnym dostawcom oprogramowania (niezależnym dostawcom oprogramowania) została wyszukiwania do prognozowania zapotrzebowania na energię w przyszłości. Te prognozy odgrywa ważną rolę w działalności bieżące i przyszłe i stały się podstawą do różnych przypadków użycia. Należą do nich prognozy obciążenia krótkoterminowe i długoterminowe zasilania, handlu, równoważenia obciążenia, optymalizacji siatki itp. Dane big data i zaawansowanych analiz (UR) metody takie jak Machine Learning (uczenia Maszynowego) są enablers klucza do produkcji dokładnych i wiarygodnych prognozy.  
 
 W ten podręcznik umieściliśmy razem działalności biznesowej i analitycznych wskazówki potrzebne do pomyślnego tworzenia aplikacji, a następnie wdrażania zapotrzebowania na energię Prognoza rozwiązania. Te wytyczne proponowane może pomóc programy narzędziowe, naukowcom i inżynierom danych w ustaleniu w pełni zoperacjonalizowanej, oparte na chmurze, prognozowaniu popytu rozwiązań. Dla przedsiębiorstw, które po prostu uruchamiają swoje dane big data i zaawansowanych analiz podróż takie rozwiązanie może reprezentować początkowej inicjatora w ich długoterminowej strategii inteligentne siatki.
@@ -43,7 +43,7 @@ Trzecia część dokumentu opisano **implementacji technicznej** aspektów rozwi
 
 Ponadto dokument zawiera materiały referencyjne dla używanego w celu uzyskania dodatkowych znajomości domeny i technologii.
 
-Należy pamiętać, że firma Microsoft nie będą obejmować w tym dokumencie procesu głębiej do nauki o danych jest jego matematyczne i technicznych aspektów. Te informacje można znaleźć w [dokumentacji usługi Azure ML](http://azure.microsoft.com/services/machine-learning/) i [blogi](http://blogs.microsoft.com/blog/tag/azure-machine-learning/).
+Należy pamiętać, że firma Microsoft nie będą obejmować w tym dokumencie procesu głębiej do nauki o danych jest jego matematyczne i technicznych aspektów. Te informacje można znaleźć w [dokumentacji usługi Azure ML](https://azure.microsoft.com/services/machine-learning/) i [blogi](https://blogs.microsoft.com/blog/tag/azure-machine-learning/).
 
 ### <a name="target-audience"></a>Docelowi odbiorcy
 Docelowymi odbiorcami tego dokumentu jest biznesowych i personelu technicznego, którzy chcieliby uzyskać wiedzę i wiedzę na temat usługi Machine Learning na podstawie rozwiązania oraz jak te są używane przede wszystkim w domenie energii, prognozowanie.
@@ -176,7 +176,7 @@ Podstawowej formuły do obliczania korzyści finansowe popytu prognozy rozwiąza
 
 Ponieważ pakiet Cortana Intelligence Suite oferuje zgodnie z rzeczywistym użyciem modelu cen, nie ma potrzeby dla są kosztu stałego składnika na następującą formułę. Ta formuła oblicza się na podstawie miesięcznej lub rocznej codziennie.
 
-Bieżący pakiet Cortana Intelligence Suite i planów cenowych usługi uczenie Maszynowe Azure można znaleźć [tutaj](http://azure.microsoft.com/pricing/details/machine-learning/).
+Bieżący pakiet Cortana Intelligence Suite i planów cenowych usługi uczenie Maszynowe Azure można znaleźć [tutaj](https://azure.microsoft.com/pricing/details/machine-learning/).
 
 ### <a name="solution-development-process"></a>Proces projektowania rozwiązania
 Użyj cyklu rozwoju zapotrzebowania na energię prognozowania, rozwiązanie zazwyczaj polega na 4 fazy, w które udostępnimy technologie chmurowe i usług w pakiecie Cortana Intelligence.
@@ -187,7 +187,7 @@ Jest to zilustrowane na poniższym diagramie:
 
 Następujący akapit w tym artykule opisano proces ten krok 4:
 
-1. **Zbieranie danych** — wszystkie zaawansowane rozwiązanie do analizy na podstawie opiera się na danych (zobacz **interpretacji danych**). W szczególności jeśli chodzi o analizy predykcyjnej i przygotowywać trafniejsze prognozy, Polegamy na stałe, dynamicznych przepływu danych. W przypadku energii prognozowaniu popytu, te dane mogą być pobierane bezpośrednio z inteligentnych mierników lub agregowania się już w lokalnej bazie danych. Możemy również zależy od innych zewnętrznych źródeł danych, takich jak pogoda i temperatury. Ten przepływ bieżących danych należy zorganizowanych, planowane i przechowywane. [Usługa Azure Data Factory](http://azure.microsoft.com/services/data-factory/) (ADF) jest naszym głównym najważniejszą metodą roboczą dla wykonania tego zadania.
+1. **Zbieranie danych** — wszystkie zaawansowane rozwiązanie do analizy na podstawie opiera się na danych (zobacz **interpretacji danych**). W szczególności jeśli chodzi o analizy predykcyjnej i przygotowywać trafniejsze prognozy, Polegamy na stałe, dynamicznych przepływu danych. W przypadku energii prognozowaniu popytu, te dane mogą być pobierane bezpośrednio z inteligentnych mierników lub agregowania się już w lokalnej bazie danych. Możemy również zależy od innych zewnętrznych źródeł danych, takich jak pogoda i temperatury. Ten przepływ bieżących danych należy zorganizowanych, planowane i przechowywane. [Usługa Azure Data Factory](https://azure.microsoft.com/services/data-factory/) (ADF) jest naszym głównym najważniejszą metodą roboczą dla wykonania tego zadania.
 2. **Modelowanie** — dla prognoz energii dokładnych i wiarygodnych jeden rozwijania (train) i utrzymywania doskonały model, sprawia, że korzystanie z danych historycznych i wyodrębnia zrozumiałe i predykcyjne wzorce w danych. Obszar Machine Learning (ML) ma zostały rośnie szybko za pomocą bardziej zaawansowanych algorytmów rutynowo opracowywane. Usługa Azure ML Studio udostępnia doskonałe środowisko użytkownika, który ułatwia korzystanie z najbardziej zaawansowanych algorytmów uczenia Maszynowego w ramach przepływu pracy nad. Ten przepływ pracy przedstawia intuicyjne diagram przepływu i obejmuje przygotowywania danych, funkcja wyodrębniania, modelowania i ocenę modelu. Użytkownika można ściągać setki różnych modeli, które znajdują się w tym środowisku. Przed zakończeniem tej fazy analitykiem danych mają model roboczy, który jest w pełni ocenione i gotowe do wdrożenia.
    
    Poniższy diagram jest ilustrację Typowy przepływ pracy:
@@ -387,7 +387,7 @@ Poniżej przedstawiono kroki, które odbywają się jako część cykl prognozow
 7. Przewidywane dane są przechowywane w bazie danych, które są dostępne dla klienta użycie zakończenia.
 8. Klienta zużycie pobiera prognoz, stosuje je do siatki i wykorzystuje je zgodnie z przypadek użycia wymagane.
 
-Należy pamiętać, że cały cykl jest w pełni zautomatyzowane i działa zgodnie z harmonogramem. Organizowanie cały cykl danych może odbywać się przy użyciu narzędzia, takiego jak [usługi Azure Data Factory](http://azure.microsoft.com/services/data-factory/).
+Należy pamiętać, że cały cykl jest w pełni zautomatyzowane i działa zgodnie z harmonogramem. Organizowanie cały cykl danych może odbywać się przy użyciu narzędzia, takiego jak [usługi Azure Data Factory](https://azure.microsoft.com/services/data-factory/).
 
 ### <a name="end-to-end-deployment-architecture"></a>Architektura wdrożenia typu end to End
 W celu wdrożenia praktycznie energii żądanie prognozy rozwiązanie na pakiet Cortana Intelligence, musimy upewnić się, że wymagane składniki są opracowywane i poprawnie skonfigurowane.

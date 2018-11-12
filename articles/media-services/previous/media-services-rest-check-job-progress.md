@@ -4,7 +4,7 @@ description: Dowiedz się, jak śledzić postęp zadania.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a1a1f956-c035-448a-af9c-5ac15fcce9dd
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: 0065b12c9ee01bddef664e5c78a4e40af759826a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dc78dce667bf00dd6e923b86b9859e29e4a5fde6
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790286"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035003"
 ---
 # <a name="how-to-check-job-progress"></a>Porady: sprawdzanie postępu zadania
 > [!div class="op_single_selector"]
@@ -29,11 +29,11 @@ ms.locfileid: "33790286"
 > 
 > 
 
-Po uruchomieniu zadania często wymagają sposób, aby śledzić postęp zadania. Stan zadania można znaleźć przy użyciu właściwości stanu zadania. Aby uzyskać więcej informacji na temat właściwości stanu zobacz [właściwości jednostki zadania](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
+Po uruchomieniu zadania, często wymagają sposób śledzenia postępu zadań. Można sprawdzić stan zadania przy użyciu właściwości stanu zadania. Aby uzyskać więcej informacji na temat właściwości stanu, zobacz [właściwości jednostki zadania](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
 
 ## <a name="connect-to-media-services"></a>Łączenie się z usługą Media Services
 
-Aby uzyskać informacje na temat nawiązywania połączenia z interfejsu API usług AMS, zobacz [dostępu Azure Media Services API przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Aby uzyskać informacje o tym, jak połączyć się z interfejsem API usługi AMS, zobacz [dostęp do interfejsu API usługi multimediów Azure przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 
 ## <a name="check-job-progress"></a>Sprawdzanie postępu zadania
@@ -76,4 +76,4 @@ Odpowiedź:
 
 ## <a name="see-also"></a>Zobacz także
 
-[Przegląd interfejsu API REST operacji usługi Media Services](media-services-rest-how-to-use.md)
+[Omówienie interfejsu API REST usługi Media Services operacji](media-services-rest-how-to-use.md)

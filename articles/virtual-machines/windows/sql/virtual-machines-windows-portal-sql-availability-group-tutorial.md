@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 7dbbfb2d97b7015118edca3db3ae050ad07c51ee
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667451"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238079"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurowanie zawsze włączonej grupy dostępności na maszynie Wirtualnej platformy Azure ręcznie
 
@@ -35,7 +35,7 @@ Na diagramie przedstawiono kompilacji w tym samouczku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W samouczku przyjęto założenie, że masz podstawową wiedzę na temat programu SQL Server zawsze włączonych grup dostępności. Aby uzyskać więcej informacji, zobacz [przegląd z zawsze włączonych grup dostępności (SQL Server)](http://msdn.microsoft.com/library/ff877884.aspx).
+W samouczku przyjęto założenie, że masz podstawową wiedzę na temat programu SQL Server zawsze włączonych grup dostępności. Aby uzyskać więcej informacji, zobacz [przegląd z zawsze włączonych grup dostępności (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
 
 Poniższa tabela zawiera listę wymagań wstępnych, które należy wykonać przed rozpoczęciem tego samouczka:
 
@@ -119,7 +119,7 @@ SQL Server można dodać do klastra.
 
 ### <a name="add-a-cluster-quorum-file-share"></a>Dodawanie udziału plików kworum klastra
 
-W tym przykładzie klaster Windows używa udziału plików w celu utworzenia kworum klastra. Ten samouczek używa kworum Większość węzłów i plików udziału. Aby uzyskać więcej informacji, zobacz [opis konfiguracji kworum w klastrze trybu Failover](http://technet.microsoft.com/library/cc731739.aspx).
+W tym przykładzie klaster Windows używa udziału plików w celu utworzenia kworum klastra. Ten samouczek używa kworum Większość węzłów i plików udziału. Aby uzyskać więcej informacji, zobacz [opis konfiguracji kworum w klastrze trybu Failover](https://technet.microsoft.com/library/cc731739.aspx).
 
 1. Nawiązać serwerze elementu członkowskiego monitora udostępniania plików przy użyciu sesji pulpitu zdalnego.
 
@@ -168,7 +168,7 @@ Następnym etapem jest skonfigurowanie kworum klastra.
 1. Na **Wybieranie monitora kworum**, kliknij przycisk **Konfigurowanie monitora udziału plików**.
 
    >[!TIP]
-   >Windows Server 2016 obsługuje monitora w chmurze. Jeśli ten typ monitora, nie potrzebujesz pliku monitor udostępniania. Aby uzyskać więcej informacji, zobacz [wdrażanie monitora chmury dla klastra trybu Failover](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness). Ten samouczek używa monitora udziału plików, który jest obsługiwany przez starszych systemów operacyjnych.
+   >Windows Server 2016 obsługuje monitora w chmurze. Jeśli ten typ monitora, nie potrzebujesz pliku monitor udostępniania. Aby uzyskać więcej informacji, zobacz [wdrażanie monitora chmury dla klastra trybu Failover](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness). Ten samouczek używa monitora udziału plików, który jest obsługiwany przez starszych systemów operacyjnych.
 
 1. Na **Konfigurowanie monitora udostępniania plików**, wpisz ścieżkę do udziału, został utworzony. Kliknij przycisk **Dalej**.
 
@@ -515,7 +515,7 @@ Aby przetestować połączenie:
 SQLCMD automatycznie nawiązania połączenia z dowolnego wystąpienia programu SQL Server obsługuje replikę podstawową.
 
 > [!TIP]
-> Upewnij się, że port, który określisz jest otwarty na zaporze oba serwery SQL. Oba serwery wymagają regułę ruchu przychodzącego dla portu TCP, którego używasz. Aby uzyskać więcej informacji, zobacz [apletu Dodaj lub Edytuj regułę zapory](http://technet.microsoft.com/library/cc753558.aspx).
+> Upewnij się, że port, który określisz jest otwarty na zaporze oba serwery SQL. Oba serwery wymagają regułę ruchu przychodzącego dla portu TCP, którego używasz. Aby uzyskać więcej informacji, zobacz [apletu Dodaj lub Edytuj regułę zapory](https://technet.microsoft.com/library/cc753558.aspx).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

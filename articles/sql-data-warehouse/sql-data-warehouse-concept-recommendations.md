@@ -3,19 +3,19 @@ title: SQL Data Warehouse zalecenia — pojęcia | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o zaleceniach SQL Data Warehouse i jak są one generowane
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg
+manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 07/27/2018
+ms.date: 11/05/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 57bce631a570f549d46a9b0beefcb5adce4decfc
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 712eed36f3a68ee02668849207835e3c8bdb8238
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380118"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232158"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>Zalecenia dotyczące usługi SQL Data Warehouse
 
@@ -39,4 +39,28 @@ Prowadząc statystyki suboptymalny może poważnie obniżyć wydajność zapyta�
 
 - [Tworzenie i aktualizowanie statystyk tabeli](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
 
-Aby wyświetlić listę tabel, których to dotyczy, według tych zaleceń, uruchom następujące polecenie [skryptu T-SQL](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Doradcy nieprzerwanie wykonuje ten sam skrypt języka T-SQL do wygenerowania tych zaleceń.
+Aby wyświetlić listę tabel, których to dotyczy, według tych zaleceń, uruchom następujące polecenie [skryptu T-SQL](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Klasyfikator nieprzerwanie wykonuje ten sam skrypt języka T-SQL do wygenerowania tych zaleceń.
+
+## <a name="replicate-tables"></a>Replikowane tabele
+
+Zaleceń replikowanej tabeli Advisor wykrywa kandydatów tabeli na podstawie następujących właściwości fizyczne:
+
+- Replikowane rozmiar tabeli
+- Liczba kolumn
+- Typ dystrybucji tabeli
+- Liczba partycji
+
+Advisor stale wykorzystuje oparte na obciążeniu Algorytm heurystyczny, takie jak częstotliwość dostępu do tabeli, średnio zwracane wiersze i progi wokół danych magazynu, rozmiar i działanie, aby upewnić się, że wysokiej jakości zalecenia są generowane. 
+
+Poniżej opisano heurystyki na podstawie obciążenia, które można znaleźć w witrynie Azure portal. każde zalecenie dotyczące replikowanej tabeli:
+
+- Skanowanie avg — średni procent wierszy, które zostały zwrócone z tabeli dla każdego dostępu tabeli w ciągu ostatnich siedmiu dni
+- Odczyt częste, żadna aktualizacja — wskazuje, tabeli nie został zaktualizowany w ciągu ostatnich siedmiu dni, podczas wyświetlania działanie dostępu
+- Współczynnik odczyt/aktualizowanie — stosunek jak często tabeli uzyskano względem gdy zostanie zaktualizowany w ciągu ostatnich siedmiu dni
+- Działanie — mierzy użycie, w oparciu o działanie dostępu. To porównanie działania dostępu do tabeli względem tabeli średni działania dostępu w magazynie danych, w ciągu ostatnich siedmiu dni. 
+
+Obecnie usługi Advisor będzie wyświetlana tylko co najwyżej kandydatów cztery replikowanej tabeli jednocześnie z klastrowane indeksy magazynu kolumn priorytetyzowanie najwyższy działania.
+
+> [!IMPORTANT]
+> Zalecenie dotyczące replikowanej tabeli nie jest pełna weryfikacja i nie uwzględnia operacje przenoszenia danych konta. Pracujemy nad dodaniem tym jako o heurystykę, ale do tego czasu należy zawsze sprawdzić, czy obciążenie po zastosowaniu rekomendacji. Skontaktuj się z pomocą sqldwadvisor@service.microsoft.com Jeśli użytkownik zauważy zalecenia dotyczące replikowanej tabeli, które powoduje, że obciążenia, aby zbadanie. Aby dowiedzieć się więcej na temat zreplikowane tabele, odwiedź poniższą [dokumentacji](https://docs.microsoft.com/azure/sql-data-warehouse/design-guidance-for-replicated-tables#what-is-a-replicated-table).
+>
