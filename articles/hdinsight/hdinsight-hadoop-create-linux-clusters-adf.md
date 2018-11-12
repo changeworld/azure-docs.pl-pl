@@ -1,25 +1,25 @@
 ---
-title: 'Samouczek: Tworzenie klastrów usługi Hadoop na żądanie w usłudze Azure HDInsight przy użyciu usługi fabryka danych '
-description: Dowiedz się, jak tworzyć klastry usługi Hadoop na żądanie w HDInsight przy użyciu usługi Azure Data Factory.
+title: 'Samouczek: Tworzenie klastrów usługi Apache Hadoop na żądanie w usłudze Azure HDInsight przy użyciu usługi fabryka danych '
+description: Dowiedz się, jak tworzyć klastry Apache Hadoop na żądanie w HDInsight przy użyciu usługi Azure Data Factory.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: jasonh
-ms.openlocfilehash: 9e21c49e7a472830c19f61388739c35aac17c3ff
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: hrasheed
+ms.openlocfilehash: 76651874951255d9b01efdc6e91892f6852d948d
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955613"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036380"
 ---
-# <a name="tutorial-create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Samouczek: Tworzenie klastrów usługi Hadoop na żądanie w HDInsight przy użyciu usługi Azure Data Factory
+# <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Samouczek: Tworzenie na żądanie klastry platformy Apache Hadoop w HDInsight przy użyciu usługi Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-W tym artykule dowiesz się, jak utworzyć klaster Hadoop na żądanie w usłudze Azure HDInsight przy użyciu usługi Azure Data Factory. Następnie użyj potoków danych w usłudze Azure Data Factory do uruchamiania zadań Hive i usunąć klaster. Do końca tego samouczka dowiesz się, jak operacjonalizować zadania obsługi dużych ilości danych, uruchamianie, gdzie tworzenia klastra, uruchom zadanie i usuwanie klastra są wykonywane zgodnie z harmonogramem.
+W tym artykule dowiesz się, jak utworzyć klaster Apache Hadoop na żądanie w usłudze Azure HDInsight przy użyciu usługi Azure Data Factory. Następnie użyj potoków danych w usłudze Azure Data Factory do uruchamiania zadań Hive i usunąć klaster. Do końca tego samouczka dowiesz się, jak operacjonalizować zadania obsługi dużych ilości danych, uruchamianie, gdzie tworzenia klastra, uruchom zadanie i usuwanie klastra są wykonywane zgodnie z harmonogramem.
 
 Ten samouczek obejmuje następujące zadania: 
 

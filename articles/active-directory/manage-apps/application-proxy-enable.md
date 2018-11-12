@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 5227f756e807a30573733bd408144d869caac9ec
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 59ca9ca7711904fe7882aac4878bd62c597645d8
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366479"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034970"
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Rozpoczynanie pracy z usługą serwera Proxy aplikacji i zainstalować łącznik
 W tym artykule przedstawiono procedurę włączania serwera proxy aplikacji usługi Microsoft Azure AD dla katalogu w chmurze w ramach usługi Azure AD.
@@ -33,6 +33,7 @@ Wymagania umożliwiające włączenie i używanie usług serwera proxy aplikacji
 * [Subskrypcja usługi Microsoft Azure AD w warstwie Podstawowa lub Premium](../fundamentals/active-directory-whatis.md) i katalog usługi Azure AD, dla którego jesteś administratorem globalnym.
 * Serwer z systemem Windows Server 2012 R2 lub 2016, na której można zainstalować łącznik serwera Proxy aplikacji. Serwer musi być w stanie połączyć się z usługi serwera Proxy aplikacji w chmurze i lokalnych aplikacji, które publikujesz.
   * Dla logowania jednokrotnego do opublikowanej aplikacji przy użyciu ograniczonego delegowania protokołu Kerberos ta maszyna powinny przyłączane do domeny w tej samej domeny usługi AD jako aplikacje, które publikujesz. Aby uzyskać informacje, zobacz [ograniczonego delegowania protokołu Kerberos do logowania jednokrotnego przy użyciu serwera Proxy aplikacji](application-proxy-configure-single-sign-on-with-kcd.md).
+* Protokół TLS 1.2 uruchomienia w podstawowym systemie operacyjnym. Aby zmienić protokołu TLS 1.2, wykonaj kroki opisane w [włączenia protokołu TLS 1.2](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#enable-tls-12-for-azure-ad-connect). Gdy zawartość jest programu Azure AD Connect, ta procedura jest taka sama dla wszystkich klientów programu .NET.
 
 Jeśli Twoja organizacja używa serwerów proxy, aby nawiązać połączenie z Internetem, zapoznaj się z [pracy przy użyciu istniejących serwerów proxy lokalnych](application-proxy-configure-connectors-with-proxy-servers.md) szczegółowe informacje na temat ich konfigurowania, przed rozpoczęciem pracy z serwerem Proxy aplikacji.
 

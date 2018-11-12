@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: 65477f62af80511a73307204c2a6f4b5e0f409d6
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165184"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51019224"
 ---
 1. Skopiuj Instalator do folderu lokalnego (np. C:\Temp) na serwerze, który chcesz chronić. Uruchom następujące polecenia jako administrator, w wierszu polecenia:
 

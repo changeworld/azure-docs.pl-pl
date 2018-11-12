@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: c59df6c1d28df2ffc63f3760e4d1fa47bda37b83
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f3c24dbc0f5bb4d5b595799da4f1212b26f8c02a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964066"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016764"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Podręcznik informacyjny do części wizualizacji projektanta widoków w usłudze Log Analytics
 Przy użyciu projektanta widoku w usłudze Azure Log Analytics, można tworzyć widoki niestandardowe w witrynie Azure portal, które przedstawiają różne wizualizacje danych ze swojego obszaru roboczego usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla części wizualizacji, które są dostępne w widoki niestandardowe.
@@ -363,4 +363,4 @@ W poniższej tabeli opisano ustawienia progów:
 | Kolor |Kolor, który wskazuje wartość progową. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) do obsługi zapytań w części wizualizacji.
+* Dowiedz się więcej o [dziennikach](log-analytics-queries.md) do obsługi zapytań w części wizualizacji.

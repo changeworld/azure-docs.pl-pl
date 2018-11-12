@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 70372f30ffaea1fafda3f76d4754489ae89a0a7c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: cc86a18b0db67bf968006c42f5791e1ad7a093f0
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390180"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016703"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Często zadawane pytania na temat usługi Service Fabric
 
@@ -48,13 +48,9 @@ Oto kilka rzeczy, które warto przemyśleć:
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Czy węzłów usługi Service Fabric automatycznie otrzymywać aktualizacje systemu operacyjnego?
 
-Nie jest już dziś ale jest to również typowe żądanie, które chce dostarczyć platformy Azure.
+Możesz użyć [maszyn wirtualnych skalowania Ustaw automatycznej aktualizacji systemu operacyjnego obrazu](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) ogólnie dostępną funkcję już dziś.
 
-W międzyczasie, mamy [podane aplikacji](service-fabric-patch-orchestration-application.md) czy systemów operacyjnych znajdują się pod węzłami usługi Service Fabric, w którym poprawionego i aktualne.
-
-Wyzwanie z aktualizacjami systemu operacyjnego polega na tym, że zwykle wymagają ponownego uruchomienia komputera, co powoduje utratę Tymczasowa dostępność. Przez siebie, który nie jest problemem, ponieważ usługi Service Fabric automatycznie przekieruje ruch dla tych usług do innych węzłów. Jednak jeśli aktualizacje systemu operacyjnego nie są koordynowany w klastrze, istnieje ryzyko, że wiele węzłów przejdź od razu. Takie jednoczesnych ponownych rozruchów może spowodować utratę pełną dostępności, usługi lub na co najmniej dla określonej partycji (usługi stanowe).
-
-W przyszłości planujemy obsługuje zasady aktualizacji systemu operacyjnego, który jest w pełni zautomatyzowane i koordynowane między domenami aktualizacji, zapewniając, że dostępność zostaje zachowana pomimo ponownego uruchamiania i innych nieoczekiwanych awarii.
+W przypadku klastrów, które nie są uruchamiane na platformie Azure, mamy [podane aplikacji](service-fabric-patch-orchestration-application.md) do poprawiania systemów operacyjnych znajdują się pod węzłami usługi Service Fabric.
 
 ### <a name="can-i-use-large-virtual-machine-scale-sets-in-my-sf-cluster"></a>Czy można używać zestawów skalowania dużych maszyn wirtualnych, w moim klastrze SF? 
 

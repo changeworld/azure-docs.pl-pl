@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: d96058ae9415ccb361af8a281a4b65b3f69edfcd
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 7a7267faae2067a873ee11bfbf4ef3027b285a0b
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746769"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034953"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Usługi Azure Metadata Service: Zaplanowane zdarzenia dla maszyn wirtualnych Windows
 
@@ -36,13 +36,13 @@ Aby uzyskać informacje na temat usługi Scheduled Events w systemie Linux, zoba
 Wiele aplikacji mogą korzystać z czasu, aby przygotować się do obsługi maszyn wirtualnych. Czas może służyć do wykonywania określonych zadań aplikacji, które zwiększenia dostępności, niezawodności i użytkowanie w tym: 
 
 - Punkt kontrolny i przywracania
-- Opróżniania połączenia usługi
+- Opróżnianie połączeń
 - Tryb failover repliki podstawowej 
 - Usuwanie z puli modułu równoważenia obciążenia
 - Rejestrowanie zdarzeń
 - Łagodne zamykanie 
 
-Przy użyciu zaplanowanych zdarzeń aplikacji może odnajdywać podczas konserwacji będą występować i wyzwalanie zadań, aby ograniczyć jej wpływ.  
+Przy użyciu zaplanowanych zdarzeń aplikacji może odnajdywać podczas konserwacji będą występować i wyzwalanie zadań, aby ograniczyć jej wpływ. Włączanie zaplanowanych zdarzeń zapewnia maszynie wirtualnej minimalną ilość czasu przed wykonaniem związanych z konserwacją. Zobacz sekcję planowania zdarzeń poniżej szczegółowe informacje.
 
 Scheduled Events dostępne są zdarzenia w następujących przypadkach użycia:
 - Konserwacja zainicjowana platformy (np. aktualizacji systemu operacyjnego hosta)
@@ -71,7 +71,7 @@ Usługa zdarzeń według harmonogramu jest wersjonowany. Wersje są obowiązkowe
 > Poprzednich wersjach zapoznawczych zaplanowanych zdarzeń {najnowsza wersja} są obsługiwane jako parametru api-version. Ten format nie jest już obsługiwane i zostaną wycofane w przyszłości.
 
 ### <a name="enabling-and-disabling-scheduled-events"></a>Włączanie i wyłączanie zaplanowane zdarzenia
-Scheduled Events jest włączona dla czasu usługi pierwszy wprowadzone dla zdarzeń żądania. Należy oczekiwać odpowiedzi opóźnione w swoje pierwsze wywołanie do dwóch minut.
+Scheduled Events jest włączona dla czasu usługi pierwszy wprowadzone dla zdarzeń żądania. Należy oczekiwać odpowiedzi opóźnione w swoje pierwsze wywołanie do dwóch minut. Należy zbadać punktu końcowego okresowo, aby wykrywanie zdarzeń o zbliżającej się konserwacji, a także stan czynności konserwacyjnych, które są wykonywane.
 
 Scheduled Events jest wyłączona dla Twojej usługi, jeśli nie sprawia, że żądanie przez 24 godziny.
 
@@ -110,6 +110,7 @@ W przypadku których zaplanowanych zdarzeń, odpowiedź zawiera szereg zdarzeń:
     ]
 }
 ```
+DocumentIncarnation jest element ETag i zapewnia prosty sposób sprawdzić jeśli ładunek zdarzenia uległ zmianie od czasu ostatniego zapytania.
 
 ### <a name="event-properties"></a>Właściwości zdarzenia
 |Właściwość  |  Opis |
