@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 759de1c62cb9cb4aa642fa564378b1ed551d7dae
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 63967face89c12f6769d397bd5be78c23bc9f851
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239359"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259143"
 ---
 # <a name="azure-storage-security-overview"></a>Omówienie zabezpieczeń usługi Azure Storage
 
@@ -67,7 +67,7 @@ Szyfrowanie podczas transferu jest mechanizm ochrony danych podczas ich przesył
 Dowiedz się więcej o funkcji Szyfrowanie po stronie klienta:
 
 * [Szyfrowanie po stronie klienta dla usługi Microsoft Azure Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
-* [Usługa cloud security kontroluje serii: szyfrowanie danych podczas przesyłania](http://blogs.microsoft.com/cybertrust/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
+* [Usługa cloud security kontroluje serii: szyfrowanie danych podczas przesyłania](https://blogs.microsoft.com/cybertrust/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
 
 ## <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
 

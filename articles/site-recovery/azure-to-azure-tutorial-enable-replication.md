@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 63a45aa02eadd0b5739c1624af524883171a7055
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8dc6b7da77988a789de04578d6653b192f58afa8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211200"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261727"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure
 
@@ -81,9 +81,9 @@ Jeśli do sterowania ruchem wychodzącym używasz opartego na adresach URL serwe
 
 Jeśli chcesz kontrolować połączenia wychodzące przy użyciu adresów IP zamiast adresów URL, umieść na białej liście odpowiednie zakresy centrum danych, adresy usługi Office 365 oraz adresy punktów końcowych usługi dla zapór protokołu IP, serwerów proxy lub reguł sieciowej grupy zabezpieczeń.
 
-  - [Zakresy adresów IP centrum danych platformy Microsoft Azure](http://www.microsoft.com/en-us/download/details.aspx?id=41653)
-  - [Zakresy adresów IP centrum danych platformy Windows Azure w Niemczech](http://www.microsoft.com/en-us/download/details.aspx?id=54770)
-  - [Zakresy adresów IP centrum danych platformy Windows Azure w Chinach](http://www.microsoft.com/en-us/download/details.aspx?id=42064)
+  - [Zakresy adresów IP centrum danych platformy Microsoft Azure](https://www.microsoft.com/en-us/download/details.aspx?id=41653)
+  - [Zakresy adresów IP centrum danych platformy Windows Azure w Niemczech](https://www.microsoft.com/en-us/download/details.aspx?id=54770)
+  - [Zakresy adresów IP centrum danych platformy Windows Azure w Chinach](https://www.microsoft.com/en-us/download/details.aspx?id=42064)
   - [Zakresy adresów URL i IP dla usługi Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [Adresy IP punktów końcowych usługi Site Recovery](https://aka.ms/site-recovery-public-ips)
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 991dc661c40f96a1c167821d76c01ea62d62dc52
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c875793bf558013d5052f99c24d3a04a3525af5f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43089072"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253044"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Samouczek: tworzenie potoku za pomocą działania kopiowania przy użyciu interfejsu API .NET
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Potok może obejmować więcej niż jedno działanie. Dwa działania można poł
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Przejrzyj [omówienie samouczka i wymagania wstępne](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md), aby uzyskać omówienie samouczka i pełne kroki **wymagań wstępnych**.
 * Program Visual Studio w wersji 2012, 2013 lub 2015.
-* Pobierz i zainstaluj zestaw [SDK .NET Azure](http://azure.microsoft.com/downloads/).
+* Pobierz i zainstaluj zestaw [SDK .NET Azure](https://azure.microsoft.com/downloads/).
 * Azure PowerShell. Postępuj zgodnie z instrukcjami w artykule [How to install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Instalowanie i konfigurowanie programu Azure PowerShell), aby zainstalować program Azure PowerShell na komputerze. Program Azure PowerShell służy do tworzenia aplikacji Azure Active Directory.
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Tworzenie aplikacji w usłudze Azure Active Directory

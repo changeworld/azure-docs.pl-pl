@@ -1,6 +1,6 @@
 ---
-title: Informacje o wersji zestawu Azure SDK dla platformy .NET w wersji 2.6
-description: Informacje o wersji zestawu Azure SDK dla platformy .NET w wersji 2.6
+title: Informacje o wersji zestawu Azure SDK dla platformy .NET 2.6
+description: Informacje o wersji zestawu Azure SDK dla platformy .NET 2.6
 services: app-service/web
 documentationcenter: .net
 author: chrissfanos
@@ -13,89 +13,89 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 21817b09440fc98a54dc45c9129d104b01fa387d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 040eea1efd3abdbbfa65c24b2950ebece9d4acbc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23836462"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258395"
 ---
-# <a name="azure-sdk-for-net-26-release-notes"></a>Informacje o wersji zestawu Azure SDK dla platformy .NET w wersji 2.6
-Ten dokument zawiera informacje o wersji zestawu Azure SDK w wersji .NET 2.6. 
+# <a name="azure-sdk-for-net-26-release-notes"></a>Informacje o wersji zestawu Azure SDK dla platformy .NET 2.6
+Ten dokument zawiera informacje o wersji zestawu Azure SDK dla platformy .NET 2.6 wersji. 
 
-2.6 zestawu SDK platformy Azure mogą programować aplikacje usługi chmury (PaaS) przeznaczonych dla platformy .NET w wersji 4.5.2 i .NET 4.6 pod warunkiem, że ręcznie zainstalować docelowej platformy .NET Framework w roli usługi chmury. Zobacz [zainstalować program .NET dla roli usługi chmury](http://go.microsoft.com/fwlink/?LinkID=309796).
+2.6 zestawu SDK platformy Azure można tworzyć usługi aplikacji w chmurze (PaaS) przeznaczone dla platformy .NET 4.5.2 i .NET 4.6, pod warunkiem, że ręcznie zainstalować docelową aplikację .NET Framework w roli usługi w chmurze. Zobacz [zainstalować program .NET w roli usługi w chmurze](https://go.microsoft.com/fwlink/?LinkID=309796).
 
 ## <a name="service-bus-updates"></a>Aktualizacje usługi Service Bus
-* Centra zdarzeń: 
+* Usługa Event Hubs: 
   
-  * Kontrola dostępu docelowej umożliwia teraz podczas wysyłania zdarzeń w przypadku wystawianego dodatkowej wydawcę punktu końcowego usługi Event hubs.
+  * Kontrola dostępu do docelowych umożliwia teraz podczas wysyłania zdarzeń, zapewniając dodatkowe wydawcy punktu końcowego dla usługi Event Hubs.
   * Dodatkowe stabilności i usprawnienia dodane do funkcji usługi Event Hubs.
-  * Dodawanie obsługi protokołu Amqp za pośrednictwem protokołu WebSocket do obsługi wiadomości i usługi Event Hubs.
+  * Dodanie obsługi protokołu Amqp przez WebSocket, do obsługi wiadomości i centrów zdarzeń.
 
-## <a name="hdinsight-tools-for-visual-studio-updates"></a>Narzędzia HDInsight Tools for Visual Studio aktualizacji
-* **Rozszerzenie IntelliSense**: sugestię zdalnych metadanych
+## <a name="hdinsight-tools-for-visual-studio-updates"></a>Aktualizacje narzędzi HDInsight Tools for Visual Studio
+* **Rozszerzenie IntelliSense**: sugestii zdalnych metadanych
   
-    Narzędzia HDInsight Tools for Visual Studio obsługuje obecnie pobierania zdalnych metadanych podczas edycji skryptu Hive. Na przykład możesz wpisać **wybierz * FROM** i zostaną wyświetlone wszystkie nazwy tabeli. Ponadto po określeniu tabeli będą wyświetlane nazwy kolumn.
+    Narzędzia HDInsight Tools for Visual Studio obsługuje teraz pobierania zdalnych metadanych podczas edycji skryptu Hive. Na przykład można wpisać **wybierz * FROM** i będą wyświetlane wszystkie nazwy tabeli. Ponadto nazwy kolumn będą wyświetlane po określeniu tabeli.
 * **Obsługa emulatora usługi HDInsight**
   
-    Obecnie narzędzia HDInsight Tools for Visual Studio obsługują połączenia emulatorze usługi HDInsight, więc skrypty programu Hive można opracować lokalnie, bez jakichkolwiek kosztów, wykonujących te skrypty przed klastrów usługi HDInsight. 
+    Narzędzia HDInsight Tools for Visual Studio obsługują obecnie trwa łączenie z emulatorem HDInsight, dzięki czemu można tworzysz skrypty Hive lokalnie bez wprowadzania żadnych kosztów, wykonaj te skrypty przed klastry usługi HDInsight. 
   
-    Aby uzyskać więcej informacji, zapoznaj się [tego podręcznika](http://go.microsoft.com/fwlink/?LinkID=529540&clcid=0x409).
-* **Narzędzia HDInsight Tools for Visual Studio obsługują ogólnego klastrów platformy Hadoop** (wersja zapoznawcza)
+    Aby uzyskać więcej informacji, zobacz [tego podręcznika](https://go.microsoft.com/fwlink/?LinkID=529540&clcid=0x409).
+* **Narzędzia HDInsight Tools for Visual Studio obsługuje ogólny klastrów platformy Hadoop** (wersja zapoznawcza)
   
-    Narzędzia HDInsight Tools for Visual Studio obsługują teraz ogólnego klastrów platformy Hadoop, dzięki czemu można użyć narzędzia HDInsight Tools for Visual Studio wykonywać następujące czynności:
+    Narzędzia HDInsight Tools for Visual Studio obsługuje teraz ogólnego klastrów Hadoop, aby można było używać narzędzi HDInsight Tools for Visual Studio, wykonaj następujące czynności:
   
-  * połączyć się z klastrem 
-  * Pisanie zapytań Hive z rozszerzoną obsługę funkcji IntelliSense — autouzupełniania, 
-  * Wyświetl wszystkie zadania w klastra za pomocą intuicyjnego interfejsu użytkownika. 
+  * Łączenie z klastrem 
+  * Napisz zapytanie Hive o rozszerzoną obsługę funkcji IntelliSense/automatycznego uzupełniania, 
+  * Wyświetl wszystkie zadania w klastrze za pomocą intuicyjnego interfejsu użytkownika. 
     
-    Aby uzyskać więcej informacji, zapoznaj się [tego podręcznika](http://go.microsoft.com/fwlink/?LinkID=529540&clcid=0x409).
+    Aby uzyskać więcej informacji, zobacz [tego podręcznika](https://go.microsoft.com/fwlink/?LinkID=529540&clcid=0x409).
 
-## <a name="in-role-cache-updates"></a>Operacji aktualizacji pamięci podręcznej w roli
-* **Pamięć podręczna w roli** zostało zaktualizowane do używania **zestawu SDK usługi Magazyn Microsoft Azure** wersji 4.3. Do tej pory **pamięci podręcznej w roli** został przy użyciu zestawu SDK usługi Magazyn Azure w wersji 1.7.
+## <a name="in-role-cache-updates"></a>Aktualizacje w roli pamięci podręcznej
+* **Pamięć podręczna oparta na roli** został zaktualizowany do użycia **zestawu SDK usługi Microsoft Azure Storage** wersji 4.3. Do tej pory **pamięć podręczna oparta na roli** został przy użyciu zestawu SDK usługi Azure Storage w wersji 1.7.
   
-    Klientów przy użyciu 2.5 zestawu SDK platformy Azure lub poniżej należy zaktualizować do zestawu SDK platformy Azure w wersji 2.6 i przejść do nowej wersji zestawu SDK usługi Magazyn Azure. 
+    Klientów przy użyciu zestawu SDK Azure 2.5 lub poniżej należy zaktualizować do wersji 2.6 zestawu SDK platformy Azure i przejść do nowej wersji zestawu SDK usługi Azure Storage. 
   
-    W tej chwili magazynu Azure w wersji 2011-08-18 jest zaplanowane do usunięcia 1 sierpnia 2016 r. Wszelkie migracji pamięci podręcznej w roli z 2.5 zestawu SDK platformy Azure lub niższy do 2.6 musi być ukończenia tego czasu. Aby uzyskać więcej informacji na wycofanie wersji 2011-08-18 usługi Magazyn Azure, zobacz [aktualizację usuwania wersji magazynu usługi Microsoft Azure: rozszerzenie 2016](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx).
+    W tej chwili usługi Azure Storage w wersji 2011-08-18 jest zaplanowane do usunięcia 1 sierpnia 2016 r. Wszystkie migracje podręczna oparta na roli Azure SDK 2.5 lub poniżej do 2.6 musi być kompletny tego czasu. Aby uzyskać więcej informacji na temat wycofania usługi Azure Storage w wersji 2011-08-18, zobacz [Microsoft Azure Storage usługi wersji usuwania Update: rozszerzenie 2016](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx).
 
 > [!IMPORTANT]
-> Firma Microsoft jest announcing wycofanie 30 listopada 2016 dla usługi zarządzana pamięć podręczna Azure i pamięci podręcznej na roli Azure. Firma Microsoft zaleca migracji z pamięcią podręczną Redis Azure w ramach przygotowań do tego wycofania. Aby uzyskać więcej informacji na daty i wskazówki dotyczące migracji, zobacz [oferty które pamięć podręczna Azure jest dla mnie odpowiednia?](../redis-cache/cache-faq.md#which-azure-cache-offering-is-right-for-me)
+> Z przyjemnością ogłaszamy wycofanie 30 listopada 2016 r. dla usługi Azure Managed Cache Service i pamięć podręczna oparta na roli platformy Azure. Firma Microsoft zaleca przeprowadzenie migracji do usługi Azure Redis Cache w ramach przygotowania do wycofania tego. Aby uzyskać więcej informacji na temat dat i wskazówki dotyczące migracji, zobacz [oferty którego pamięć podręczna systemu Azure jest dla mnie odpowiednia?](../redis-cache/cache-faq.md#which-azure-cache-offering-is-right-for-me)
 > 
 > 
 
-## <a name="azure-app-service-tools"></a>Narzędzia usługi aplikacji Azure
+## <a name="azure-app-service-tools"></a>Narzędzia usługi Azure App Service
 Następujące elementy zostały zaktualizowane w wersji 2.6 zestawu SDK platformy Azure.
 
-* Publikowanie Azure rozszerzone i obejmują aplikacje interfejsu API Azure jako cel wdrożenia.
-* Aplikacje interfejsu API funkcji udostępniania umożliwia użytkownikom z funkcją tworzenia i inicjowania obsługi administracyjnej dla aplikacji interfejsu API.
-* W Eksploratorze serwera zmienione w celu uwzględnienia nowego węzła usługi aplikacji, przy użyciu aplikacji interfejsu API, mobilne i sieci Web pogrupowany według grupy zasobów.
-* Dodaj klienta aplikacji interfejsu API Azure gestu dodane do większości projektów C# umożliwiające automatyczne generowanie włączone Swagger interfejsu API aplikacji działających w subskrypcji platformy Azure przez użytkownika.
-* Aplikacje interfejsu API narzędzi i węzły usługi App Service w Eksploratorze serwera są dostępne w programie Visual Studio 2013 tylko. 
+* Rozszerzone i obejmują usługi Azure API Apps jako cel wdrożenia publikowania platformy Azure.
+* Aplikacje interfejsu API aprowizacji funkcji aby umożliwić użytkownikom przy użyciu funkcji tworzenia i udostępniania aplikacji interfejsu API.
+* Eksplorator serwera zmienione w celu odzwierciedlenia nowego węzła usługi App Service, za pomocą aplikacji sieci Web, mobilnych i interfejsu API, pogrupowane według grupy zasobów.
+* Dodaj gest klienta aplikacji interfejsu API platformy Azure dodane do większości C# projektów, które spowoduje włączenie automatycznego generowania aplikacji interfejsu API obsługującego strukturę Swagger działających w subskrypcji platformy Azure przez użytkownika.
+* Aplikacje interfejsu API narzędzia i usługi App Service węzły w Eksploratorze serwera są dostępne w programie Visual Studio 2013 tylko. 
 
-## <a name="azure-resource-manager-tools-updates"></a>Aktualizacje narzędzia Menedżera zasobów Azure
-Narzędzia Menedżera zasobów Azure zostały zaktualizowane do zawierają szablony maszyn wirtualnych, sieci i magazynu. Aby dołączyć nowy widok konspektu szablonów i możliwość edytowania szablonów przy użyciu fragmentów JSON została zaktualizowana JSON edytowania. Szablony wdrożone w programie Visual Studio za pomocą skryptu programu PowerShell dostarczane z projektu, więc zmiany wprowadzone do skryptu, które będą używane przez program Visual Studio.
+## <a name="azure-resource-manager-tools-updates"></a>Aktualizacje narzędzia usługi Azure Resource Manager
+Narzędzia usługi Azure resource manager zostały zaktualizowane do obejmują szablony maszyn wirtualnych, sieci i magazynu. JSON środowisko edytowania plików został zaktualizowany tak, aby uwzględnić nowy widok konspektu, szablonów i możliwość edytowania szablonów przy użyciu fragmentów kodu JSON. Szablony wdrażanych za pomocą programu Visual Studio Użyj skryptu programu PowerShell dostarczane z projektem, więc wszelkie zmiany wprowadzone do skryptu, które będą używane przez program Visual Studio.
 
-## <a name="diagnostics-improvements-for-cloud-services"></a>Ulepszenia diagnostyki dla usług w chmurze
-2.6 zestawu SDK platformy Azure wstecz wprowadzono obsługę zbierania dzienników diagnostycznych w emulatorze obliczeń platformy Azure i przekazywanie ich do tworzenia magazynu. Rejestruje wszystkie diagnostyki (w tym aplikacji śledzenia dzienników, śledzenie dzienniki systemu Windows (ETW), liczników wydajności, infrastruktury dzienniki zdarzeń dzienników i windows zdarzeń) generowane gdy aplikacja działa w emulatorze mogą zostać przeniesione do rozwoju magazynu Aby sprawdzić, czy Twoje rejestrowania diagnostyki działa na komputerze lokalnym. 
+## <a name="diagnostics-improvements-for-cloud-services"></a>Ulepszenia diagnostyki w usługach Cloud Services
+Azure SDK 2.6 powoduje zwrócenie obsługę zbierania dzienników diagnostycznych w emulatorze obliczeń platformy Azure i przekazywanie ich do tworzenia magazynu. Dzienniki wszelkie diagnostyczne (w tym śledzenie aplikacji dzienniki, zdarzenia śledzenia dla dzienników Windows (ETW), liczniki wydajności i infrastruktury dzienniki zdarzeń Dzienniki i systemu windows) generowany gdy aplikacja jest uruchomiona w emulatorze mogą zostać przeniesione do magazynem projektowym Aby sprawdzić, czy usługi rejestrowania diagnostycznego działa na komputerze lokalnym. 
 
-Teraz można określić konto magazynu diagnostyki w pliku konfiguracji (cscfg) usługi, ułatwiając użyć konta magazynu diagnostyki różne dla różnych środowisk. Brak niektórych istotnych różnic między jak parametry połączenia działał 2.4 zestawu SDK platformy Azure i 2.6 zestawu SDK platformy Azure. Aby uzyskać więcej informacji na temat użycia parametrów połączenia magazynu diagnostyki i ich wpływ projektów zobacz [Konfigurowanie diagnostyki dla usług w chmurze Azure](http://go.microsoft.com/fwlink/?LinkID=532784).
+Teraz można określić konto magazynu diagnostyki w pliku konfiguracji (cscfg) usługi, ułatwiając korzystanie z kont magazynu diagnostyki różne dla różnych środowisk. Istnieją pewne istotne różnice między w Azure SDK 2.4 i 2.6 zestawu SDK platformy Azure, jak działał parametry połączenia. Aby uzyskać więcej informacji na temat sposobu używania parametrów połączenia magazynu diagnostyki i jak wpływa na swoje projekty zobacz [Konfigurowanie diagnostyki Azure Cloud Services](https://go.microsoft.com/fwlink/?LinkID=532784).
 
-## <a name="breaking-changes"></a>Fundamentalne zmiany
-### <a name="azure-resource-manager-tools"></a>Narzędzia Menedżera zasobów Azure
-* **Projekty wdrażania chmury** typ projektu jest dostępny w 2.5 zestawu SDK platformy Azure została zmieniona na **grupy zasobów platformy Azure**.
-* **Projekty wdrażania w chmurze** typu projektów utworzonych w 2.5 zestawu SDK platformy Azure mogą być używane w wersji 2.6, ale wdrażania szablonu z programu Visual Studio zakończy się niepowodzeniem. Jednak wdrażanie przy użyciu skryptu programu PowerShell będą nadal działać tak jak poprzednio.  Aby uzyskać informacje dotyczące sposobu używania **projekty wdrażania chmury** w wersji 2.6 przeczytać ten tekst [post](http://go.microsoft.com/fwlink/?LinkID=534086).
+## <a name="breaking-changes"></a>Zmiany powodujące niezgodność
+### <a name="azure-resource-manager-tools"></a>Narzędzia usługi Azure Resource Manager
+* **Projektów wdrożeń w chmurze** dostępne w Azure SDK 2.5 dla typu projektu została zmieniona na **grupy zasobów platformy Azure**.
+* **Projekty wdrażania w chmurze** typu projektów utworzonych w usłudze Azure 2.5 SDK mogą być używane w wersji 2.6, ale wdrażania szablonu z programu Visual Studio zakończy się niepowodzeniem. Jednak wdrażanie przy użyciu skryptu programu PowerShell nadal będzie działać tak jak wcześniej.  Aby uzyskać informacje dotyczące sposobu używania **projektów wdrożeń w chmurze** w wersji 2.6 przeczytać ten tekst [wpis](https://go.microsoft.com/fwlink/?LinkID=534086).
 
 ## <a name="known-issues"></a>Znane problemy
-* Zbierania dzienników diagnostycznych w emulatorze wymaga 64-bitowym systemie operacyjnym. Dzienniki diagnostyczne nie będą zbierane podczas uruchamiania na 32-bitowym systemie operacyjnym. Nie ma to wpływu na innych funkcji emulatora. 
-* Azure 2.6 SDK wydanej w dniu 2015-4-29 ma dwa problemy: 
+* Zbieranie dzienników diagnostyki w emulatorze wymaga 64-bitowym systemie operacyjnym. Dzienniki diagnostyczne nie będą zbierane podczas uruchamiania na 32-bitowym systemie operacyjnym. Nie wpływa to na inne funkcje emulatora. 
+* Azure SDK 2.6 wydanej w dniu 2015-4-29 ma dwa problemy: 
   
-  * Nie można załadować aplikacji uniwersalnej w programie Visual Studio 2015, gdy 2.6 zestawu SDK platformy Azure został zainstalowany na komputerze.
-  * Debugowanie projektu usługi w chmurze nie powiedzie się w programie Visual Studio 2013 i Visual Studio 2015, gdy przestanie odpowiadać Visual Studio i ulega awarii podczas wyświetlania okna dialogowego z komunikatem "Konfigurowanie diagnostyki dla emulatora".
+  * Nie można załadować aplikacji uniwersalnych w programie Visual Studio 2015, Azure SDK 2.6 został zainstalowany na maszynie.
+  * Debugowanie projektu usługi w chmurze zakończy się niepowodzeniem w programie Visual Studio 2013 i Visual Studio 2015, gdzie program Visual Studio przestaje odpowiadać i ulega awarii podczas wyświetlania okna dialogowego z komunikatem "Konfigurowanie diagnostyki dla emulatora".
     
-    Aktualizacja Azure SDK w wersji 2.6 został wydany 2015-5-18. Zaktualizowana wersja jest 2.6.30508.1601; go rozwiązuje dwa problemy opisane powyżej. Można zidentyfikować kompilacji zestawu SDK z poziomu Panelu sterowania -> programy i funkcje -> Microsoft Azure Tools dla programu Microsoft Visual Studio 2013 – v 2.6. W kolumnie wersji zostaną wyświetlone numer kompilacji.
+    Aktualizacja Azure SDK 2.6 został wydany w 2015-5-18. Zaktualizowana wersja jest 2.6.30508.1601; zawiera ona poprawki dotyczące problemów dwóch opisanych powyżej. Można zidentyfikować kompilacji zestawu SDK z poziomu Panelu sterowania -> programy i funkcje -> Microsoft Azure Tools dla programu Microsoft Visual Studio 2013 — v 2.6. W kolumnie wersja wyświetli numer kompilacji.
     
-    Jeśli powyższe problemy nadal jest skierowany, zainstaluj najnowszą wersję zestawu SDK platformy Azure 2.6 dla [VS 2012](http://go.microsoft.com/fwlink/p/?linkid=323511&clcid=0x409), [VS 2013](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409) lub [VS 2015](http://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409).
+    Jeśli nadal występują powyższe problemy, zainstaluj najnowszą wersję zestawu Azure SDK 2.6 dla [VS 2012](https://go.microsoft.com/fwlink/p/?linkid=323511&clcid=0x409), [VS 2013](https://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409) lub [programu VS 2015](https://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409).
 
 ## <a name="see-also"></a>Zobacz też
-[Obsługa i wycofania informacji dla zestawu Azure SDK dla platformy .NET i interfejsów API](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
+[Pomoc techniczna i informacje o wycofaniu dla zestawu Azure SDK dla platformy .NET i interfejsów API](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
 

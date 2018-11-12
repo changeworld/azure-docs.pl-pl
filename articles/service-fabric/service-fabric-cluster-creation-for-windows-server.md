@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: dekapur
-ms.openlocfilehash: 3ce47d631e8a2ec7daf96ef95200001e5d4f8327
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: f91a6b305a3d531aa1c733685f6d896ed07054ae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818585"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257609"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Tworzenie klastra autonomicznego w systemie Windows Server
 Azure Service Fabric umożliwia tworzenie klastrów usługi Service Fabric na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server. Oznacza to, można wdrożyć i uruchamianie aplikacji usługi Service Fabric w dowolnym środowisku, które zawiera zestaw wzajemnie połączonych komputery serwera Windows, lokalnie lub za pomocą dowolnego dostawcy chmury. Usługa Service Fabric udostępnia pakiet instalacyjny służący do tworzenia klastrów usługi Service Fabric o nazwie pakietu autonomicznego w systemie Windows Server.
@@ -27,7 +27,7 @@ Azure Service Fabric umożliwia tworzenie klastrów usługi Service Fabric na ws
 W tym artykule przedstawiono procedurę tworzenia klastra autonomicznego usługi Service Fabric.
 
 > [!NOTE]
-> Pakiet systemu Windows Server to autonomiczne jest dostępne na rynku i mogą być używane we wdrożeniach produkcyjnych. Ten pakiet może zawierać nowe funkcje usługi Service Fabric, które znajdują się w "Preview". Przewiń w dół do "[funkcje dołączone do tego pakietu w wersji zapoznawczej](#previewfeatures_anchor)." sekcja na liście funkcji w wersji zapoznawczej. Możesz [pobrać kopię tej umowy licencyjnej](http://go.microsoft.com/fwlink/?LinkID=733084) teraz.
+> Pakiet systemu Windows Server to autonomiczne jest dostępne na rynku i mogą być używane we wdrożeniach produkcyjnych. Ten pakiet może zawierać nowe funkcje usługi Service Fabric, które znajdują się w "Preview". Przewiń w dół do "[funkcje dołączone do tego pakietu w wersji zapoznawczej](#previewfeatures_anchor)." sekcja na liście funkcji w wersji zapoznawczej. Możesz [pobrać kopię tej umowy licencyjnej](https://go.microsoft.com/fwlink/?LinkID=733084) teraz.
 > 
 > 
 
@@ -35,7 +35,7 @@ W tym artykule przedstawiono procedurę tworzenia klastra autonomicznego usługi
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Uzyskaj pomoc techniczną dla pakietu programu Service Fabric dla systemu Windows Server
 * Zapytaj społeczność o pakietu autonomicznego usługi Service Fabric dla systemu Windows Server w [forum usługi Azure Service Fabric](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?).
-* Otwórz bilet dla [profesjonalnej pomocy dla usługi Service Fabric](http://support.microsoft.com/oas/default.aspx?prid=16146).  Dowiedz się więcej o profesjonalnej pomocy technicznej firmy Microsoft [tutaj](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
+* Otwórz bilet dla [profesjonalnej pomocy dla usługi Service Fabric](https://support.microsoft.com/oas/default.aspx?prid=16146).  Dowiedz się więcej o profesjonalnej pomocy technicznej firmy Microsoft [tutaj](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
 * Można również uzyskać pomoc techniczną dla tego pakietu, jako część [pomocy technicznej Microsoft Premier](https://support.microsoft.com/en-us/premier).
 * Aby uzyskać więcej informacji, zobacz [opcje pomocy technicznej usługi Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
 * Do zbierania dzienników dla celów pomocy technicznej, należy uruchomić [usługi Service Fabric autonomiczny moduł zbierający dzienniki](service-fabric-cluster-standalone-package-contents.md).
@@ -44,7 +44,7 @@ W tym artykule przedstawiono procedurę tworzenia klastra autonomicznego usługi
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>Pobieranie pakietu usługi Service Fabric dla systemu Windows Server
 Aby utworzyć klaster, należy użyć pakietu Service Fabric dla systemu Windows Server (Windows Server 2012 R2 i nowszych) znaleźć tutaj: <br>
-[Pobierz Link - pakietu autonomicznego usługi Service Fabric — system Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690)
+[Pobierz Link - pakietu autonomicznego usługi Service Fabric — system Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690)
 
 Szczegółowe informacje można znaleźć na zawartość pakietu [tutaj](service-fabric-cluster-standalone-package-contents.md).
 

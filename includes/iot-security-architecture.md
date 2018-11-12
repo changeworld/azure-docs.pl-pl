@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 7407bed746f863a5daecfc98d2df89175ff35b5f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: a6564877c05dcd5c611c6bbf7a09c65ac2f1f406
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264381"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51293211"
 ---
-# <a name="internet-of-things-security-architecture"></a>Architektura zabezpieczeń Internet of Things
+# <a name="internet-of-things-iot-security-architecture"></a>Architektura zabezpieczeń Internetu rzeczy (IoT)
 
 Podczas projektowania systemu, ważne jest zrozumienie potencjalnych zagrożeń dla tego systemu i dodanie odpowiednich mechanizmów obronnych w związku z tym, ponieważ system został zaprojektowany i zaprojektowana. Należy zaprojektować produktu od samego początku z myślą o bezpieczeństwie, ponieważ zrozumienie, jak atakujący może być w stanie naruszyć bezpieczeństwo systemu, pomaga upewnić się, że odpowiednie środki zaradcze są stosowane od samego początku.
 
@@ -27,23 +27,23 @@ Celem modelowanie zagrożeń jest zrozumienie, jak osoba atakująca może być w
 
 Wiele zespołów programistycznych do doskonałą zadanie przechwytywania wymagań funkcjonalności dla systemu, które korzystną dla klientów. Jednak zidentyfikowanie-oczywisty sposób czy ktoś może wykorzystywać system jest trudniejsze. Modelowanie zagrożeń może pomóc zespołom programistycznym zrozumieć do czego służą osoba atakująca może i dlaczego. Modelowanie zagrożeń jest strukturą procesu, który tworzy decyzji projektowych dyskusji na temat zabezpieczeń w systemie, a także zmiany w projekcie zostaną wprowadzone po drodze wpływ na zabezpieczenia. Model zagrożeń jest po prostu dokumentu, niniejszy reprezentuje również idealny sposób, aby zapewnić ciągłość działalności biznesowej wiedzy, przechowywania lekcji pokazaliśmy i pomocy nowego zespołu dołączyć szybko. Na koniec wynikiem modelowanie zagrożeń jest umożliwienie innych aspektów zabezpieczeń, takich jak zobowiązań zabezpieczeń, jakie chcesz zapewnić klientom. Te zobowiązania w połączeniu z modelowanie zagrożeń informuje i dysku testowania rozwiązania Internetu rzeczy (IoT).
 
-### <a name="when-to-threat-model"></a>Kiedy model zagrożeń
+### <a name="when-to-do-threat-modeling"></a>Kiedy modelowanie wątkowości
 
 [Modelowanie zagrożeń](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx) zapewnia największą wartość w przypadku, gdy dołączyć go w fazie projektowania. Podczas projektowania, masz największą elastyczność, aby wprowadzić zmiany w celu wyeliminowania zagrożenia. Eliminując zagrożenia zgodnie z projektem jest pożądanego rezultatu. Jest znacznie prostsze niż dodawanie środki zaradcze, ich testowania i zapewnienia są zawsze aktualne, a ponadto takie eliminacji nie zawsze jest możliwe. Trudniej można eliminować zagrożenia, ponieważ produkt staje się bardziej dojrzałych i z kolei ostatecznie wymaga więcej pracy i kompromisy znacznie trudniejsze niż zagrożeń na wczesnym etapie modelowania w trakcie opracowywania.
 
-### <a name="what-to-threat-model"></a>Co należy model zagrożeń
+### <a name="what-to-consider-for-threat-modeling"></a>Weź pod uwagę modelowanie wątkowości
 
-Należy zagrożeń modelu rozwiązania jako całości, a także skupić się w następujących obszarach:
+Należy rozważyć rozwiązanie jako całości, a także skoncentrować się na następujących obszarach:
 
 * Funkcje zabezpieczeń i prywatności
 * Funkcje, których błędy są istotne zabezpieczeń
 * Funkcje, które w ogóle granicy zaufania
 
-### <a name="who-threat-models"></a>Modele kto zagrożeń
+### <a name="who-performs-threat-modeling"></a>Kto wykonuje modelowanie zagrożeń
 
 Modelowanie zagrożeń jest procesem, jak każdy inny. To dobry pomysł, aby traktować dokument modelu zagrożeń, takich jak jakikolwiek inny składnik rozwiązania i zweryfikuje go. Wiele zespołów programistycznych do doskonałą zadanie przechwytywania wymagań funkcjonalności dla systemu, które korzystną dla klientów. Jednak zidentyfikowanie-oczywisty sposób czy ktoś może wykorzystywać system jest trudniejsze. Modelowanie zagrożeń może pomóc zespołom programistycznym zrozumieć do czego służą osoba atakująca może i dlaczego.
 
-### <a name="how-to-threat-model"></a>Jak model zagrożeń
+### <a name="how-to-perform-threat-modeling"></a>Jak wykonać modelowania zagrożeń
 
 Zagrożenia, modelowanie procesu składa się z czterech krokach; dostępne są następujące czynności:
 
@@ -57,16 +57,21 @@ Zagrożenia, modelowanie procesu składa się z czterech krokach; dostępne są 
 Trzy reguły akceptacji pamiętać podczas tworzenia modelu zagrożeń:
 
 1. Utwórz diagram poza architektury referencyjnej.
-1. Uruchom najpierw szeroki zakres. Zapoznaj się z omówieniem i zrozumieć system jako całość, przed rozpoczęciem pracy głębokiego. Takie podejście pomaga upewnić się, że zostanie rozszerzony w odpowiednich miejscach.
-1. Proces dysku, nie przegap proces dysku, możesz. Znajdowanie problemu w fazie modelowania, aby go eksplorować. Rozpocznij! Nie zatwierdzanych slavishly wykonaj następujące kroki.
+
+2. Uruchom najpierw szeroki zakres. Zapoznaj się z omówieniem i zrozumieć system jako całość, przed rozpoczęciem pracy głębokiego. Takie podejście pomaga upewnić się, że zostanie rozszerzony w odpowiednich miejscach.
+
+3. Proces dysku, nie przegap proces dysku, możesz. Znajdowanie problemu w fazie modelowania, aby go eksplorować. Rozpocznij! Nie zatwierdzanych slavishly wykonaj następujące kroki.
 
 #### <a name="threats"></a>Zagrożenia
 
 Cztery podstawowe elementy model zagrożeń są:
 
 * Procesy, takie jak usługi sieci web, usług systemu Win32, i * nix demonów. Niektóre jednostki złożone (na przykład bram działających w terenie i czujniki) może być usunięte, jako proces, gdy techniczne w Przechodzenie do szczegółów w tych obszarach nie jest możliwe.
+
 * Magazyny danych (wszędzie tam, gdzie dane są przechowywane, np. plik konfiguracji lub bazy danych)
+
 * Przepływ danych (gdzie dane są przenoszone między innymi elementami w aplikacji)
+
 * Podmioty zewnętrzne (wszystkie elementy, które wchodzi w interakcję z systemem, ale nie jest pod kontrolą aplikacji, przykłady obejmują użytkowników oraz urządzeń źródła danych)
 
 Wszystkie elementy na diagramie architektury podlegają zagrożenia; w tym artykule skrót klawiszowy krok. Odczyt [modelowania zagrożeń ponownie, STRIDE](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) Aby dowiedzieć się więcej o elementach krok.
@@ -135,7 +140,7 @@ Połączone urządzenia specjalnych dokonano znaczących potencjalnych obszarów
 
 Gdy eksplorujesz wzorce interakcji, Przyjrzyj się "control urządzenia" i "urządzenie danych" na tym samym poziomie uwagi podczas modelowania zagrożeń. "Urządzenie control" mogą być klasyfikowane jako wszelkie informacje, który został dostarczony do urządzenia przez każdą stronę w celu zmiany lub wywieranie wpływu na jego zachowanie w kierunku jej stan lub stan swojego środowiska. "Dane urządzenie" mogą być klasyfikowane jako wszystkie informacje, które urządzenia emituje do drugiej strony, o stanie i zaobserwowanego stanie jego środowiska.
 
-## <a name="threat-modeling-the-azure-iot-reference-architecture"></a>Architektura referencyjna IoT platformy Azure do modelowania zagrożeń
+## <a name="performing-threat-modeling-for-the-azure-iot-reference-architecture"></a>Wykonywanie dla architektura referencyjna IoT platformy Azure do modelowania zagrożeń
 
 Firma Microsoft używa framework opisane wcześniej w celu dla usługi Azure IoT do modelowania zagrożeń. Poniższa sekcja używa konkretny przykład architektura referencyjna IoT platformy, aby zademonstrować, jak wziąć pod uwagę dla IoT do modelowania zagrożeń i jak rozwiązać zagrożeniami zidentyfikowanymi. W tym przykładzie identyfikuje cztery główne obszary koncentracji uwagi:
 

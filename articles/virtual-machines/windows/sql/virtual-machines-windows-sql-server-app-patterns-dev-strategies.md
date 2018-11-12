@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: ninarn
-ms.openlocfilehash: 18de5b3d71922effa72414a6a52b126a34076cf3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9ccf7d85b52759a3f2cd64facc6ee8d7255f0fac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722133"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253180"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Wzorce aplikacji i strategie programowania dla programu SQL Server w usłudze Azure Virtual Machines
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
@@ -236,7 +236,7 @@ Na platformie Azure, można użyć usługi Active Directory jako autonomiczny ka
 
 We wzorcu aplikacji n warstwowa hybrydowe można zaimplementować poniższy przepływ pracy w określonej kolejności:
 
-1. Zidentyfikuj aplikacje bazy danych dla przedsiębiorstw, które mają zostać przeniesione w do chmury przy użyciu [Microsoft Assessment i zestaw narzędzi do planowania (MAP)](http://microsoft.com/map). Zestaw narzędzi Mapa zbiera dane spisu i wydajności z komputerów, które są rozważane do wirtualizacji i zawiera zalecenia dotyczące wydajności i planowania oceny.
+1. Zidentyfikuj aplikacje bazy danych dla przedsiębiorstw, które mają zostać przeniesione w do chmury przy użyciu [Microsoft Assessment i zestaw narzędzi do planowania (MAP)](https://microsoft.com/map). Zestaw narzędzi Mapa zbiera dane spisu i wydajności z komputerów, które są rozważane do wirtualizacji i zawiera zalecenia dotyczące wydajności i planowania oceny.
 2. Planowanie zasobów i wykonywania na platformie Azure, takich jak konta magazynu i maszyn wirtualnych czynności konfiguracyjnych.
 3. Skonfiguruj połączenie sieciowe między siecią firmową w środowisku lokalnym i [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md). Aby skonfigurować połączenie między siecią firmową w środowisku lokalnym i maszynę wirtualną na platformie Azure, użyj jednej z następujących dwóch metod:
    

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f12a15a0d739ae6e98be3871fa8bb4104f49565c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 74cde720af012b3355b813cf6da2b2bdf10b9b8e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810955"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257211"
 ---
 # <a name="publish-a-cortana-intelligence-offer-using-the-cloud-partner-portal"></a>Publikowanie oferty pakietu Cortana Intelligence, za pomocą portalu Cloud Partner
 
@@ -29,7 +29,7 @@ W tym artykule opisano, jak opublikować ofertę pakietu Cortana Intelligence pr
 
 Cloud Partner Portal obsługuje opartej na rolach dostęp do portalu, który umożliwia współautorów do współpracy nad stawiane ofertom. Aby uzyskać więcej informacji, zobacz [chmurze Portal Zarządzanie użytkownikami](./cloud-partner-portal-manage-users.md).
 
-Można było opublikować ofertę w imieniu wydawcy konta, jedną z osób z \"właściciela\" konieczność roli zobowiązuje się do przestrzegania [warunki użytkowania](https://azure.microsoft.com/support/legal/website-terms-of-use/), [poufności informacji firmy Microsoft](http://www.microsoft.com/privacystatement/default.aspx), i [Umowa dotycząca programu certyfikat platformy Microsoft Azure](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
+Można było opublikować ofertę w imieniu wydawcy konta, jedną z osób z \"właściciela\" konieczność roli zobowiązuje się do przestrzegania [warunki użytkowania](https://azure.microsoft.com/support/legal/website-terms-of-use/), [poufności informacji firmy Microsoft](https://www.microsoft.com/privacystatement/default.aspx), i [Umowa dotycząca programu certyfikat platformy Microsoft Azure](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
 ## <a name="to-start-creating-a-cortana-inteligence-offer"></a>Aby rozpocząć tworzenie oferty Cortana Inteligence
 
@@ -216,7 +216,7 @@ Partnerzy można przekazać dwa rodzaje środowisk wersji próbnej w usłudze Ap
 
         - [Optymalizacja magazynu Neal Analytics](https://appsource.microsoft.com/product/web-apps/neal_analytics.8066ad01-1e61-40cd-bd33-9b86c65fa73a?tab=Overview&tag=CISHome)
 
-- **Wniosek o wersję próbną** (**prób prowadzone partnera / czas ładowania strony**) opcja wymaga od klientów do wypełnienia formularza informacje kontaktowe monitującą partnera. Partner następuje i zapewnia demonstracyjnym lub wersji próbnej usługi aplikacji. Aby uzyskać więcej informacji, zobacz [wskazówki wersji próbnej środowiska usługi AppSource](http://aka.ms/trialexperienceforwebapps) wideo, aby uzyskać ogólne omówienie.
+- **Wniosek o wersję próbną** (**prób prowadzone partnera / czas ładowania strony**) opcja wymaga od klientów do wypełnienia formularza informacje kontaktowe monitującą partnera. Partner następuje i zapewnia demonstracyjnym lub wersji próbnej usługi aplikacji. Aby uzyskać więcej informacji, zobacz [wskazówki wersji próbnej środowiska usługi AppSource](https://aka.ms/trialexperienceforwebapps) wideo, aby uzyskać ogólne omówienie.
 
 >[!Note]
 >Dane pokazują, że **klientów doprowadziły prób** mieć wyższej generacji potencjalnego klienta, potencjalne niż **prób prowadzone partnera**.

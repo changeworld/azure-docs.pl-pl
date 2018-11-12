@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: barclayn
-ms.openlocfilehash: 263c04fd15240f365f2325c69d5cb25aa1a539f0
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 86724ca49884f1072297ffcf4fc6498db5ae8ac3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465881"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254642"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Bezpieczeństwo i szyfrowanie danych platformy Azure, najlepsze rozwiązania
 Aby ułatwić ochronę danych w chmurze, musisz uwzględnić możliwe stany, w którym dane mogą wystąpić i kontrolki są dostępne dla tego stanu. Najlepsze rozwiązania dotyczące zabezpieczeń i szyfrowania danych platformy Azure odnoszą się do następujących stanów danych:
@@ -132,7 +132,7 @@ Zaleca się, możesz:
 - Zastosowanie etykiet, które odzwierciedlają Twoje wymagania biznesowe. Na przykład: Zastosuj etykietę o nazwie "wysoce poufne" dla wszystkich dokumentów i wiadomości e-mail, które zawierają dane top-secret, klasyfikować i chronić te dane. Następnie tylko autoryzowani użytkownicy mogą uzyskać dostęp do tych danych przy zachowaniu dowolnych ograniczeń, które określisz.
 - Konfigurowanie [rejestrowania użycia usługi Azure RMS](https://docs.microsoft.com/azure/information-protection/log-analyze-usage) tak, aby monitorować, jak Twoja organizacja używa usługi ochrony.
 
-Organizacje, które będą słabe na [klasyfikacji danych](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) i ochrona plików może być bardziej podatne na danych wyciekom lub nieprawidłowemu użyciu danych. Za pomocą odpowiedniego pliku ochrony można analizować przepływów danych, aby uzyskać wgląd w firmie, wykrywać niebezpieczne zachowania i podejmować działania naprawcze, śledzić dostęp do dokumentów i tak dalej.
+Organizacje, które będą słabe na [klasyfikacji danych](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) i ochrona plików może być bardziej podatne na danych wyciekom lub nieprawidłowemu użyciu danych. Za pomocą odpowiedniego pliku ochrony można analizować przepływów danych, aby uzyskać wgląd w firmie, wykrywać niebezpieczne zachowania i podejmować działania naprawcze, śledzić dostęp do dokumentów i tak dalej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz [zabezpieczeń platformy Azure najlepsze rozwiązania i wzorce](security-best-practices-and-patterns.md) dla więcej najważniejsze wskazówki dotyczące zabezpieczeń do użycia podczas one projektowanie, wdrażanie i zarządzanie rozwiązań w chmurze, korzystając z platformy Azure.

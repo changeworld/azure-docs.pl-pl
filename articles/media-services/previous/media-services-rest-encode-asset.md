@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 34652400acaf2efca3648bb4c7cde795861c3101
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: ada3210a59e0c3044551bee54b0a705b4b513594
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247933"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254438"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Jak kodować zasoby przy użyciu usługi Media Encoder Standard
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "50247933"
 ## <a name="overview"></a>Przegląd
 Do dostarczania wideo za pośrednictwem Internetu, trzeba skompresować nośniki. Pliki wideo cyfrowe są duże i może być zbyt duża, aby dostarczyć za pośrednictwem Internetu lub dla klientów urządzeń, aby wyświetlać się poprawnie. Kodowanie jest procesem kompresowania audio i wideo, dzięki czemu klienci mogą wyświetlać multimediów.
 
-Zadania kodowania to jedna z najbardziej typowych operacji w usłudze Azure Media Services. Zadania kodowania są tworzone w celu konwertowania plików multimediów z jednego formatu kodowania na inny. Podczas kodowania, możesz użyć kodera wbudowanej usługi Media Services (usługi Media Encoder Standard). Można również użyć koder świadczonych przez partnera usługi Media Services. Kodery innych firm są dostępne za pośrednictwem portalu Azure Marketplace. Można określić szczegóły zadania kodowania, przy użyciu predefiniowanej ciągów zdefiniowane dla usługi encoder lub za pomocą plików konfiguracji ustawienia wstępnego. Aby wyświetlić typy ustawień wstępnych, które są dostępne, zobacz [ustawienia wstępne zadań usługi Media Encoder Standard](http://msdn.microsoft.com/library/mt269960).
+Zadania kodowania to jedna z najbardziej typowych operacji w usłudze Azure Media Services. Zadania kodowania są tworzone w celu konwertowania plików multimediów z jednego formatu kodowania na inny. Podczas kodowania, możesz użyć kodera wbudowanej usługi Media Services (usługi Media Encoder Standard). Można również użyć koder świadczonych przez partnera usługi Media Services. Kodery innych firm są dostępne za pośrednictwem portalu Azure Marketplace. Można określić szczegóły zadania kodowania, przy użyciu predefiniowanej ciągów zdefiniowane dla usługi encoder lub za pomocą plików konfiguracji ustawienia wstępnego. Aby wyświetlić typy ustawień wstępnych, które są dostępne, zobacz [ustawienia wstępne zadań usługi Media Encoder Standard](https://msdn.microsoft.com/library/mt269960).
 
 Każde zadanie może mieć jedno lub więcej zadań, w zależności od rodzaju przetwarzania, które chcesz osiągnąć. Za pomocą interfejsu API REST można utworzyć zadań i ich powiązane zadania, w jeden z dwóch sposobów:
 
@@ -63,7 +63,7 @@ Aby uzyskać informacje o tym, jak połączyć się z interfejsem API usługi AM
 >
 >
 
-Poniższy przykład pokazuje, jak utworzyć i opublikuj zadania z jednego zadania zestawu do zakodowania filmu w określonym rozwiązania i jakości. Podczas kodowania za pomocą usługi Media Encoder Standard, możesz użyć ustawienia konfiguracji zadań wstępne określone [tutaj](http://msdn.microsoft.com/library/mt269960).
+Poniższy przykład pokazuje, jak utworzyć i opublikuj zadania z jednego zadania zestawu do zakodowania filmu w określonym rozwiązania i jakości. Podczas kodowania za pomocą usługi Media Encoder Standard, możesz użyć ustawienia konfiguracji zadań wstępne określone [tutaj](https://msdn.microsoft.com/library/mt269960).
 
 Żądanie:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: hascipio
-ms.openlocfilehash: 4f86d444a2f2b97fd8605d480db358813bc39fd3
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: ef19380372354b8f34343f9f94ebf6b384996f14
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714193"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261560"
 ---
 # <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>Ogólne wymagania wstępne dotyczące tworzenia oferty w portalu Azure Marketplace
 Informacje o wymaganiach wstępnych ogólne, biznesowymi do procesu, które są potrzebne, aby rozpocząć proces tworzenia oferty.
@@ -70,7 +70,7 @@ Jest to subskrypcję, która będzie używać do tworzenia obrazów maszyn wirtu
 
 ## <a name="sell-from-countries"></a>"Sprzedaż — od" kraje
 > [!WARNING]
-> Aby sprzedawać swoje usługi w portalu Azure Marketplace, upewnij się, że zarejestrowane jednostki z jednego z krajów zatwierdzonych "sprzedaż — od". To ograniczenie jest ze względu na informacje dotyczące wypłat i opodatkowania. Firma Microsoft aktywnie chcą rozwiń ta lista krajów w najbliższej przyszłości, więc wkrótce. Aby uzyskać pełną listę, zobacz 1b sekcji [zasad uczestnictwa w portalu Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833).
+> Aby sprzedawać swoje usługi w portalu Azure Marketplace, upewnij się, że zarejestrowane jednostki z jednego z krajów zatwierdzonych "sprzedaż — od". To ograniczenie jest ze względu na informacje dotyczące wypłat i opodatkowania. Firma Microsoft aktywnie chcą rozwiń ta lista krajów w najbliższej przyszłości, więc wkrótce. Aby uzyskać pełną listę, zobacz 1b sekcji [zasad uczestnictwa w portalu Azure Marketplace](https://go.microsoft.com/fwlink/?LinkID=526833).
 > 
 > 
 
