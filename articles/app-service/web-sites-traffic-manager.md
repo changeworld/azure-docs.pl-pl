@@ -1,6 +1,6 @@
 ---
-title: Kontrolowanie ruchu z usługi Azure Traffic Manager w usłudze Azure App Service
-description: Ten artykuł zawiera informacje podsumowania dla usługi Azure Traffic Manager w odniesieniu do usługi Azure App Service.
+title: Kontrolowanie ruchu w usłudze Azure App Service z usługą Azure Traffic Manager
+description: Ten artykuł zawiera podsumowanie informacji o usłudze Azure Traffic Manager, w odniesieniu do usługi Azure App Service.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -15,47 +15,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.openlocfilehash: 92ab7bf64445ff772f33a18e7f7946a7e0be333a
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 5e4dfec4bdc9deaf1a57413c1cba4ceefa5195d6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824044"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246348"
 ---
-# <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Kontrolowanie ruchu z usługi Azure Traffic Manager w usłudze Azure App Service
+# <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Kontrolowanie ruchu w usłudze Azure App Service z usługą Azure Traffic Manager
 > [!NOTE]
-> Ten artykuł zawiera informacje podsumowania dla Menedżera ruchu Microsoft Azure w odniesieniu do usługi Azure App Service. Więcej informacji na temat usługi Azure Traffic Manager sam można znaleźć, przechodząc na stronę łącza na końcu tego artykułu.
+> Ten artykuł zawiera podsumowanie informacji Microsoft Azure Traffic Manager, w odniesieniu do usługi Azure App Service. Więcej informacji na temat usługi Azure Traffic Manager sam można znaleźć, odwiedzając linki na końcu tego artykułu.
 > 
 > 
 
 ## <a name="introduction"></a>Wprowadzenie
-Usługi Azure Traffic Manager można użyć do kontrolowania sposobu żądania od klientów sieci web są dystrybuowane do aplikacji w usłudze Azure App Service. Gdy punkty końcowe usługi aplikacji są dodawane do profilu Menedżera ruchu Azure, Azure Traffic Manager przechowuje informacje o stanu aplikacji Aplikacja usługi (uruchomionej, zatrzymanej lub został usunięty), dzięki czemu można zdecydować, które z tych punktów końcowych powinny odbierać dane.
+Usługa Azure Traffic Manager służy do kontrolowania, jak żądania od klientów sieci web są dystrybuowane do aplikacji w usłudze Azure App Service. Gdy punkty końcowe usługi App Service są dodawane do profilu usługi Azure Traffic Manager, usługa Azure Traffic Manager śledzi stan aplikacji usługi App Service (uruchomiona, zatrzymana lub usunięta), dzięki czemu można zdecydować, który z tych punktów końcowych powinien odbierać ruch.
 
 ## <a name="routing-methods"></a>Metody routingu
-Usługi Azure Traffic Manager korzysta z czterech różnych metod routingu. Te metody są opisane na poniższej liście odnoszą się do usługi Azure App Service.
+Usługa Azure Traffic Manager korzysta z czterech różnych metod routingu. Te metody są opisane na poniższej liście odnoszą się do usługi Azure App Service.
 
-* **[Priorytet](../traffic-manager/traffic-manager-routing-methods.md#priority):** przy użyciu aplikacji głównej dla całego ruchu, a następnie podaj kopii zapasowych w przypadku podstawowej lub tworzenia kopii zapasowej aplikacji są niedostępne.
-* **[Ważone](../traffic-manager/traffic-manager-routing-methods.md#weighted):** rozpowszechniają ruchu zestawu aplikacji, równomiernie lub według wagi, które należy zdefiniować.
-* **[Wydajność](../traffic-manager/traffic-manager-routing-methods.md#performance):** Jeśli masz aplikacje w różnych lokalizacjach geograficznych przy użyciu tej aplikacji "najbliższy" pod względem najniższe opóźnienia sieci.
-* **[Geograficzne](../traffic-manager/traffic-manager-routing-methods.md#geographic):** bezpośredniego użytkowników do określonych aplikacji na podstawie których lokalizacji geograficznej ich zapytanie DNS pochodzi z. 
+* **[Priorytet](../traffic-manager/traffic-manager-routing-methods.md#priority):** korzystanie z aplikacji głównej dla całego ruchu, a wykonywanie kopii zapasowych w przypadku, gdy podstawowej maszyny wirtualnej lub aplikacji kopii zapasowej są niedostępne.
+* **[Ważona średnia](../traffic-manager/traffic-manager-routing-methods.md#weighted):** rozdziela ruch między zbiór aplikacji, równomiernie lub według wagi, które należy zdefiniować.
+* **[Wydajność](../traffic-manager/traffic-manager-routing-methods.md#performance):** po aplikacje znajdują się w różnych lokalizacjach geograficznych, używać "najbliższy" aplikacji pod kątem najniższych opóźnieniem sieci.
+* **[Geograficzne](../traffic-manager/traffic-manager-routing-methods.md#geographic):** bezpośrednie użytkowników do określonych aplikacji oparte na lokalizacji geograficznej, do której pochodzi swoje zapytanie DNS. 
 
-Aby uzyskać więcej informacji, zobacz [metody routingu ruchu Menedżera](../traffic-manager/traffic-manager-routing-methods.md).
+Aby uzyskać więcej informacji, zobacz [metody routingu w usłudze Traffic Manager](../traffic-manager/traffic-manager-routing-methods.md).
 
-## <a name="app-service-and-traffic-manager-profiles"></a>Usługi aplikacji i profile Menedżera ruchu
-Aby skonfigurować kontrolę ruchu aplikacji usługi App Service, Utwórz profil w usłudze Azure Traffic Manager czy używa jednego z trzech obciążenia równoważenia metod opisanych wcześniej, a następnie dodaj punkty końcowe (w tym przypadku usługi App Service) dla których chcesz kontrolować ruch do profil. Stan aplikacji (uruchomiona, zatrzymana lub usunięte) jest regularnie przekazywane do profilu, aby usługi Azure Traffic Manager można kierować ruch odpowiednio.
+## <a name="app-service-and-traffic-manager-profiles"></a>Usługa App Service i profile usługi Traffic Manager
+Aby skonfigurować kontrolę nad ruchem aplikacji usługi App Service, Utwórz profil w usłudze Azure Traffic Manager, używa jeden z trzech obciążenia równoważenia metod opisanych powyżej, a następnie dodaj punktów końcowych (w tym przypadku usługi App Service) dla których chcesz kontrolować ruch do profil. Stan aplikacji (uruchomiona, zatrzymana lub usunięta) regularnie jest przekazywany do profilu, tak aby usługi Azure Traffic Manager może skierować ruch odpowiednio.
 
-Podczas przy użyciu usługi Azure Traffic Manager przy użyciu platformy Azure, należy uwzględnić następujące kwestie:
+Podczas przy użyciu usługi Azure Traffic Manager za pomocą platformy Azure, należy uwzględnić następujące kwestie:
 
-* We wdrożeniach aplikacji tylko w obrębie tego samego regionu usługi aplikacji zawiera już trybu failover i okrężnego funkcjonalność niezależnie tryb aplikacji.
-* W przypadku wdrożeń w tym samym regionie, korzystających z usługi aplikacji — w połączeniu z innej usługi w chmurze platformy Azure można połączyć oba typy punktów końcowych na potrzeby scenariuszy hybrydowych.
-* Można określić tylko jeden punkt końcowy usługi aplikacji na region w profilu. Po wybraniu aplikacji jako punktu końcowego dla regionu co pozostałe aplikacje w tym regionie stają się niedostępne do wybrania dla tego profilu.
-* Punkty końcowe usługi aplikacji, które można określić w profilu Menedżera ruchu Azure jest wyświetlany w obszarze **nazwy domen** sekcja na stronie konfiguracji dla aplikacji w profilu, ale nie ma można konfigurować.
-* Po dodaniu aplikacji do profilu, **adres URL witryny** na pulpicie nawigacyjnym portalu stronę instalacji aplikacji wyświetla domenę niestandardową adres URL aplikacji, jeśli zdefiniowano jeden. W przeciwnym razie wyświetla adres URL profilu Menedżera ruchu (na przykład `contoso.trafficmanager.net`). Nazwa domeny bezpośrednio aplikacji i adres URL Menedżera ruchu są widoczne na stronie Konfigurowanie aplikacji w obszarze **nazwy domen** sekcji.
-* Niestandardowa nazwa domeny działa zgodnie z oczekiwaniami, ale oprócz dodanie ich do aplikacji, musisz również skonfigurować mapy DNS, aby wskazywał adres URL Menedżera ruchu. Aby uzyskać informacje o tym, jak skonfigurować niestandardową domenę na potrzeby aplikacji usługi app Service, zobacz [mapowania istniejącej nazwy DNS niestandardowej aplikacji sieci Web Azure](app-service-web-tutorial-custom-domain.md).
-* Można dodawać tylko te aplikacje, które są w trybie standard lub premium profilu Menedżera ruchu Azure.
+* Wdrożeń aplikacji tylko w tym samym regionie usługa App Service udostępnia już trybu failover i działanie okrężne funkcjonalności, bez względu na tryb aplikacji.
+* W przypadku wdrożeń w tym samym regionie, korzystających z usługi App Service w połączeniu z innej usługi w chmurze platformy Azure możesz połączyć oba typy punktów końcowych, która umożliwia realizację scenariuszy hybrydowych.
+* Można określić tylko jeden punkt końcowy usługi aplikacji, na region w profilu. Po wybraniu aplikacji jako punkt końcowy do jednego regionu, pozostałe aplikacje w danym regionie staną się niedostępne do wyboru dla tego profilu.
+* Punkty końcowe usługi App Service, które są określone w profilu usługi Azure Traffic Manager jest wyświetlany w obszarze **nazw domen** sekcji na stronie Konfiguracja aplikacji w profilu, ale nie ma można konfigurować.
+* Po dodaniu aplikacji do profilu, **adres URL witryny** na pulpicie nawigacyjnym portalu strony aplikacji Wyświetla adres URL domeny niestandardowej w aplikacji, jeśli skonfigurowano jedną. W przeciwnym razie wyświetla adres URL profilu usługi Traffic Manager (na przykład `contoso.trafficmanager.net`). Zarówno bezpośrednich nazwę domeny aplikacji i adres URL usługi Traffic Manager są widoczne na stronie konfigurowania aplikacji w ramach **nazw domen** sekcji.
+* Niestandardowa nazwa domeny działa zgodnie z oczekiwaniami, ale oprócz dodania ich do aplikacji, należy również skonfigurować na mapie DNS, aby wskazywały na adres URL usługi Traffic Manager. Aby uzyskać informacje na temat sposobu konfigurowania domeny niestandardowej na potrzeby aplikacji usługi App Service, zobacz [mapowanie istniejącej niestandardowej nazwy DNS w usłudze Azure Web Apps](app-service-web-tutorial-custom-domain.md).
+* Można dodawać tylko te aplikacje, które są w trybie standardowa lub premium do profilu usługi Azure Traffic Manager.
 
 ## <a name="next-steps"></a>Następne kroki
-Koncepcyjna i techniczne omówienie usługi Azure Traffic Manager, zobacz [Omówienie Menedżera ruchu](../traffic-manager/traffic-manager-overview.md).
+Aby uzyskać koncepcyjne i techniczne omówienie usługi Azure Traffic Manager, zobacz [Traffic Manager — omówienie](../traffic-manager/traffic-manager-overview.md).
 
-Aby uzyskać więcej informacji o korzystaniu z Menedżera ruchu z usługi aplikacji, zobacz wpisy blogu [przy użyciu usługi Azure Traffic Manager z witryn sieci Web Azure](http://blogs.msdn.com/b/waws/archive/2014/03/18/using-windows-azure-traffic-manager-with-waws.aspx) i [usługi Azure Traffic Manager teraz można zintegrować z witryn sieci Web Azure](https://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/).
+Aby uzyskać więcej informacji o korzystaniu z usługi Traffic Manager z usługą App Service, zobacz wpisy w blogu [przy użyciu usługi Azure Traffic Manager za pomocą usługi Azure Web Sites](https://blogs.msdn.com/b/waws/archive/2014/03/18/using-windows-azure-traffic-manager-with-waws.aspx) i [teraz integrację z usługi Azure Traffic Manager za pomocą usługi Azure Web Sites](https://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/).
 

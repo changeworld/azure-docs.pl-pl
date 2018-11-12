@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/03/2017
 ms.author: ryanwi
-ms.openlocfilehash: 0243f6ca96b5e2c20b40bf6e0fc11e8d760db475
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 639293a1811c35d87bd705800b8ecf62f667c0e9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053367"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246722"
 ---
 # <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>Pierwsze kroki wdrażania i aktualizowania aplikacji w klastrze lokalnym
 Zestaw SDK usługi Azure Service Fabric zawiera pełne lokalne środowisko deweloperskie, którego można użyć, aby szybko rozpocząć wdrażanie aplikacji i zarządzanie nimi w klastrze lokalnym. Z tego artykułu dowiesz się, jak utworzyć klaster lokalny, wdrożyć w nim istniejącą aplikację, a następnie uaktualnić ją do nowej wersji — a wszystko to z programu Windows PowerShell.
@@ -71,7 +71,7 @@ W tym samouczku użyto istniejącej aplikacji przykładowej (o nazwie WordCount)
     mkdir c:\ServiceFabric\
     cd c:\ServiceFabric\
     ```
-4. [Pobierz aplikację WordCount](http://aka.ms/servicefabric-wordcountapp) do utworzonej lokalizacji.  Uwaga: przeglądarka Microsoft Edge zapisuje plik z rozszerzeniem *zip*.  Zmień rozszerzenie pliku na *sfpkg*.
+4. [Pobierz aplikację WordCount](https://aka.ms/servicefabric-wordcountapp) do utworzonej lokalizacji.  Uwaga: przeglądarka Microsoft Edge zapisuje plik z rozszerzeniem *zip*.  Zmień rozszerzenie pliku na *sfpkg*.
 5. Nawiąż połączenie z klastrem lokalnym:
    
     ```powershell
@@ -139,7 +139,7 @@ Usługa Service Fabric realizuje uaktualnienia bez przestojów, ponieważ monito
 
 Nowa wersja aplikacji zlicza teraz tylko słowa zaczynające się od samogłosek. Podczas wdrażania tego uaktualnienia będzie można zaobserwować dwie zmiany w zachowaniu aplikacji. Po pierwsze szybkości narastania licznika powinna być mniejsza, ponieważ liczba zliczanych słów będzie mniejsza. Po drugie w pierwszej partycji znajdują się dwie samogłoski (A i E), a wszystkie pozostałe partycje zawierają po jednej sylabie, dlatego licznik pierwszej partycji powinien po pewnym czasie narastać szybciej niż pozostałych.
 
-1. [Pobierz pakiet WordCount w wersji 2](http://aka.ms/servicefabric-wordcountappv2) do tej samej lokalizacji, do której pobrano pakiet w wersji 1.
+1. [Pobierz pakiet WordCount w wersji 2](https://aka.ms/servicefabric-wordcountappv2) do tej samej lokalizacji, do której pobrano pakiet w wersji 1.
 2. Wróć do okna programu PowerShell i użyj w zestawie SDK polecenia uaktualniania, aby zarejestrować nową wersję w klastrze. Następnie rozpocznij uaktualnianie aplikacji fabric:/WordCount.
    
     ```powershell

@@ -8,12 +8,12 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d84df3e5e0b961b8a53044102f99205ee0fe9896
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: c4ab33f4d706eb677b2b790ff871c1fb900846ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914111"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235636"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Zrozumienie rozszerzone możliwości w trybie offline dla urządzeń usługi IoT Edge, moduły i podrzędny urządzenia (wersja zapoznawcza)
 
@@ -46,7 +46,7 @@ Poniższy przykład pokazuje, jak scenariusza użycia usługi IoT Edge działa w
 
 ## <a name="restrictions-and-limits"></a>Limity i ograniczenia
 
-Rozszerzone możliwości w trybie offline, opisane w tym artykule są dostępne w [usługi IoT Edge w wersji 1.0.2 lub nowszej](https://github.com/Azure/azure-iotedge/releases). Wcześniejszych wersjach mają jakiś podzestaw funkcji w trybie offline. Istniejące usługi IoT Edge urządzenia, które nie mają rozszerzone możliwości w trybie offline nie może zostać uaktualniona, zmieniając wersję środowiska uruchomieniowego, ale musi zostać ponownie skonfigurowany z nową tożsamość urządzenia usługi IoT Edge w celu uzyskania tych funkcji. 
+Rozszerzone możliwości w trybie offline, opisane w tym artykule są dostępne w [usługi IoT Edge wersji 1.0.4 lub nowszej](https://github.com/Azure/azure-iotedge/releases). Wcześniejszych wersjach mają jakiś podzestaw funkcji w trybie offline. Istniejące usługi IoT Edge urządzenia, które nie mają rozszerzone możliwości w trybie offline nie może zostać uaktualniona, zmieniając wersję środowiska uruchomieniowego, ale musi zostać ponownie skonfigurowany z nową tożsamość urządzenia usługi IoT Edge w celu uzyskania tych funkcji. 
 
 Rozszerzona pomoc techniczna w trybie offline jest dostępna we wszystkich regionach, w którym usługi IoT Hub jest dostępne, z wyjątkiem wschodnie stany USA i Europa Zachodnia. 
 
@@ -56,34 +56,7 @@ Urządzenia usługi IoT Edge i ich urządzeń przypisanych podrzędne może dzia
 
 ## <a name="set-up-an-edge-device"></a>Konfigurowanie urządzenia usługi Edge
 
-Dla każdego urządzenia usługi IoT Edge, który ma zostać wykonana dłuższy okres czasu w trybie offline i skonfigurować środowisko uruchomieniowe usługi IoT Edge do komunikacji za pośrednictwem protokołu MQTT. 
-
 Urządzenia usługi IoT Edge rozszerzyć jej rozszerzone możliwości w trybie offline na urządzeniach IoT podrzędnych należy zadeklarować relacji nadrzędny podrzędny w witrynie Azure portal.
-
-### <a name="set-the-upstream-protocol-to-mqtt"></a>Ustaw nadrzędnego protokołu MQTT
-
-Konfigurowanie Centrum usługi Edge i agent usługi Edge do komunikowania się z protokołu MQTT na protokół nadrzędnego. Ten protokół jest zadeklarowana za pomocą zmiennych środowiskowych w pliku manifestu wdrożenia. 
-
-W witrynie Azure portal możesz dostęp do Centrum usługi Edge i definicje modułów agenta usługi Edge, wybierając **skonfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge** przycisku Ustawianie modułów na potrzeby wdrożenia. Dla obu modułów, należy utworzyć zmienną środowiskową o nazwie **UpstreamProtocol** i ustawić jej wartość na **MQTT**. 
-
-W szablonie wdrożenia, JSON zmienne środowiskowe są deklarowane, jak pokazano w poniższym przykładzie: 
-
-```json
-"edgeHub": {
-    "type": "docker",
-    "settings": {
-        "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
-    },
-    "env": {
-        "UpstreamProtocol": {
-            "value": "MQTT"
-        }
-    },
-    "status": "running",
-    "restartPolicy": "always"
-}
-```
 
 ### <a name="assign-child-devices"></a>Przypisz urządzenia podrzędne
 

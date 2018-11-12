@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: a17260770f0b2e0a73585ce4108bd5625ac22229
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 79841887ce8413970cb7dff0ca0099d4e0745a68
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436152"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259313"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Skonfiguruj poświadczenia wdrożenia dla usługi Azure App Service
-[Usługa Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) obsługuje dwa typy poświadczeń dla [lokalne wdrożenie narzędzia Git](app-service-deploy-local-git.md) i [wdrożenia protokołu FTP/S](app-service-deploy-ftp.md). Nie są takie same, jak poświadczeń usługi Azure Active Directory.
+[Usługa Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) obsługuje dwa typy poświadczeń dla [lokalne wdrożenie narzędzia Git](app-service-deploy-local-git.md) i [wdrożenia protokołu FTP/S](app-service-deploy-ftp.md). Nie są takie same, jak poświadczeń usługi Azure Active Directory.
 
 * **Poświadczenia na poziomie użytkownika**: jeden zestaw poświadczeń dla całego konta platformy Azure. Może służyć do wdrożenia usługi App Service dla każdej aplikacji, w przypadku subskrypcji, z uprawnień dostępu do konta platformy Azure. Są to domyślny zestaw poświadczeń, skonfigurowanym w **App Services** > **&lt;nazwa_aplikacji >** > **poświadczenia wdrożenia**. Jest to opcja domyślna zestawu, który jest udostępniane w portalu graficznego interfejsu użytkownika (takie jak **Przegląd** i **właściwości** Twojej aplikacji [strony zasobu](../azure-resource-manager/resource-group-portal.md#manage-resources)).
 

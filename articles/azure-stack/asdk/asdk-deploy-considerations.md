@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 41d27b9a173cc019549f1dea0c66ffcaa51fbb10
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9cffbeae3e73682f5e76523de7ee607285c9fc75
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719447"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238630"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Zagadnienia dotyczące planowania wdrożenie usługi Azure Stack
 Przed wdrożeniem usługi Azure Stack Development Kit (ASDK), upewnij się, że komputer hosta zestaw deweloperski spełnia wymagania opisane w tym artykule.
@@ -82,7 +82,7 @@ W przypadku wdrożenia przy użyciu opcji usług AD FS, należy ponownie wdroży
 ### <a name="azure-active-directory-accounts"></a>Konta usługi Azure Active Directory
 Aby wdrożyć usługę Azure Stack przy użyciu konta usługi Azure AD, należy przygotować konta usługi Azure AD, przed uruchomieniem wdrożenia skryptu programu PowerShell. To konto staje się administratorem globalnym dla dzierżawy usługi Azure AD. Jest on używany do aprowizacji i delegować uprawnienia do aplikacji i nazwy główne usług dla wszystkich usług Azure Stack, współpracujące z usługą Azure Active Directory i interfejsu API programu Graph. Służy również jako właściciel domyślną subskrypcję dostawcy (które można później zmienić). Możesz zalogować się do portalu administratora systemu usługi Azure Stack przy użyciu tego konta.
 
-1. Utwórz konto usługi Azure AD, który jest administratorem katalogu dla co najmniej jednej usługi Azure AD. Jeśli masz już takie konto, możesz go użyć. W przeciwnym razie możesz je utworzyć za darmo na [ https://azure.microsoft.com/free/ ](http://azure.microsoft.com/pricing/free/) (w Chinach, odwiedź stronę <http://go.microsoft.com/fwlink/?LinkID=717821> zamiast). Jeśli zamierzasz później [rejestrowania usługi Azure Stack na platformie Azure](asdk-register.md), musi także mieć subskrypcję, w tym nowo utworzone konto.
+1. Utwórz konto usługi Azure AD, który jest administratorem katalogu dla co najmniej jednej usługi Azure AD. Jeśli masz już takie konto, możesz go użyć. W przeciwnym razie możesz je utworzyć za darmo na [ https://azure.microsoft.com/free/ ](https://azure.microsoft.com/pricing/free/) (w Chinach, odwiedź stronę <http://go.microsoft.com/fwlink/?LinkID=717821> zamiast). Jeśli zamierzasz później [rejestrowania usługi Azure Stack na platformie Azure](asdk-register.md), musi także mieć subskrypcję, w tym nowo utworzone konto.
    
     Zapisz te poświadczenia do użycia jako administratora usługi. To konto można skonfigurować i zarządzać nimi zasoby chmury, konta użytkowników, plany dzierżawy, limity przydziału i cennika. W portalu umożliwia ono tworzenie chmur witryn sieci Web, chmur prywatnych maszyn wirtualnych, tworzenie planów i zarządzanie subskrypcjami użytkowników.
 1. Utwórz co najmniej jedno testowe konto użytkownika w usłudze Azure AD, dzięki czemu możesz zalogować się w zestawie jako dzierżawca.

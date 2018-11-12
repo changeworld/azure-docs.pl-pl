@@ -1,6 +1,6 @@
 ---
-title: Tworzenie niestandardowe R moduły w Azure Machine Learning | Dokumentacja firmy Microsoft
-description: Szybki start do tworzenia niestandardowych modułów R w usłudze Azure Machine Learning.
+title: Tworzenie modułów Custom R w usłudze Azure Machine Learning | Dokumentacja firmy Microsoft
+description: Przewodnik Szybki start do tworzenia niestandardowych modułów R w usłudze Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -15,36 +15,36 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: 555672df5b0b86858d460ff7606bc6ca23f4f103
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 1a578e8cc05b42d05a8dfb31c0baeefb4822e3e5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834359"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261114"
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Tworzenie niestandardowych modułów R w usłudze Azure Machine Learning
-W tym temacie opisano sposób tworzenia i wdrażania niestandardowego modułu R w usłudze Azure Machine Learning. Wyjaśniono, co to są niestandardowych modułów R i które pliki są używane do definiowania ich. Go ilustruje sposób tworzenia plików, które definiują modułu i jak można zarejestrować modułu do wdrożenia w obszarze roboczym uczenia maszynowego. Elementy i atrybuty używane w definicji niestandardowego modułu następnie są opisane bardziej szczegółowo. Również omówiono sposób użycia funkcji pomocniczych, plików i wielu wyjść. 
+W tym temacie opisano sposób tworzenia i wdrażania niestandardowego modułu R w usłudze Azure Machine Learning. Wyjaśniono, czym są niestandardowych modułów R i jakie pliki są używane do definiowania ich. Przedstawia on sposób tworzenia plików, które definiują modułu i jak można zarejestrować modułu dla wdrożenia w obszarze roboczym usługi Machine Learning. Elementy i atrybuty używane w definicji niestandardowego modułu następnie są opisane bardziej szczegółowo. Również omówiono sposób użycia funkcji pomocniczych, plików i wiele wyjść. 
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="what-is-a-custom-r-module"></a>Co to jest niestandardowego modułu R?
-A **niestandardowego modułu** jest modułem zdefiniowane przez użytkownika, które można przekazać do swojego obszaru roboczego i wykonywane w ramach eksperymentu uczenia maszynowego Azure. A **niestandardowego modułu R** jest niestandardowy moduł, który wykonuje funkcję R zdefiniowane przez użytkownika. **R** to język programowania statystyczne obliczeniowych i grafiki, powszechnie używaną służące chi i dane dotyczące implementowania algorytmów. R jest obecnie jedynym obsługiwanym niestandardowe moduły, ale pomocy technicznej dla dodatkowych języków zostało zaplanowane w przyszłych wersjach językiem.
+A **niestandardowego modułu** jest modułem zdefiniowanych przez użytkownika, które mogą być przekazane do obszaru roboczego i wykonywane w ramach eksperymentu usługi Azure Machine Learning. A **niestandardowego modułu R** jest niestandardowy moduł, który wykonuje funkcję R zdefiniowanych przez użytkownika. **R** to język programowania do przeprowadzania obliczeń statystycznych i grafiki, która jest powszechnie używana przez Statystyków i analityków danych wykonywania algorytmów. Obecnie języka R jest jedynym obsługiwanym w moduły niestandardowe, ale pomocy technicznej dla dodatkowych języków jest zaplanowana do przyszłych wersji językiem.
 
-Niestandardowe moduły mają **najwyższej jakości stan** w usłudze Azure Machine Learning, w tym sensie, że mogą być używane tak samo jak inne modułu. Można je wykonać na inne moduły zawarte w opublikowanych eksperymenty lub wizualizacji. Masz kontrolę nad algorytm implementowane przez moduł, danych wejściowych i wyjściowych porty mają zostać użyte parametry modelowania i innych różne zachowania środowiska uruchomieniowego. Eksperymentu, która zawiera niestandardowe moduły również mogą być publikowane w galerii Azure AI łatwe udostępnianie.
+Moduły niestandardowe mają **najwyższej jakości stan** w usłudze Azure Machine Learning, w tym sensie, że mogą być używane tak jak każdy inny moduł. Można je wykonać z innymi modułami uwzględnione w opublikowanych eksperymentów, lub w wizualizacjach. Masz kontrolę nad algorytm implementowana przez moduł, dane wejściowe i dane wyjściowe porty mają zostać użyte, parametry modelowania i inne różne zachowanie w czasie wykonywania. Eksperyment, który zawiera niestandardowe moduły można publikować w taki sposób, w galerii sztucznej Inteligencji platformy Azure w celu łatwego udostępniania.
 
 ## <a name="files-in-a-custom-r-module"></a>Pliki w niestandardowego modułu R
-Niestandardowego modułu R jest zdefiniowane przez plik zip, który zawiera co najmniej dwa pliki:
+Niestandardowego modułu R jest definiowany przez plik zip, który zawiera co najmniej dwa pliki:
 
-* A **plik źródłowy** R funkcji udostępnianych przez moduł, który zawiera
-* **Pliku definicji XML** , który opisuje interfejs niestandardowego modułu
+* A **plik źródłowy** funkcji języka R, udostępniane przez moduł, który zawiera
+* **Pliku definicji XML** opisujący interfejs niestandardowego modułu
 
-Dodatkowe pliki pomocnicze można również uwzględnić w pliku zip, który zawiera funkcje, które są dostępne z niestandardowego modułu. Ta opcja została szczegółowo opisana w **argumenty** część sekcji odwołania **elementów w pliku definicji XML** poniższy przykład szybkiego startu.
+Dodatkowe pliki pomocnicze można również uwzględnić w pliku zip, który zawiera funkcje, które są dostępne z niestandardowego modułu. Ta opcja została omówiona w **argumenty** część sekcji odwołania **elementów w pliku definicji XML** poniższy przykład Szybki Start.
 
-## <a name="quickstart-example-define-package-and-register-a-custom-r-module"></a>Przykład Szybki Start: zdefiniuj, pakowanie i zarejestrować niestandardowego modułu R
-W tym przykładzie przedstawiono sposób tworzenia pliki wymagane przez niestandardowego modułu R, umieścić je w pliku zip, a następnie Zarejestruj moduł w obszaru roboczego uczenia maszynowego. Przykład zip pakietu i przykładowe pliki można pobrać z [CustomAddRows.zip Pobierz plik](http://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409).
+## <a name="quickstart-example-define-package-and-register-a-custom-r-module"></a>Przykład Szybki Start: definiowanie, pakowanie i rejestrowania niestandardowego modułu R
+Ten przykład ilustruje sposób utworzenia pliki wymagane przez niestandardowego modułu R, umieścić je w postaci pliku zip, a następnie zarejestrować modułu w obszarze roboczym usługi Machine Learning. Przykład zip pakietu i przykładowe pliki można pobrać z [CustomAddRows.zip Pobierz plik](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409).
 
 ## <a name="the-source-file"></a>Plik źródłowy
-Rozważmy przykładową **wierszy dodać niestandardowe** moduł, który modyfikuje standardowej implementacji **Dodawanie wierszy** moduł używany do łączenia wierszy (uwagi) z dwóch zestawów danych (danych ramki). Standardowe **Dodawanie wierszy** modułu dołącza wiersze drugi zestaw danych wejściowych w celu pierwszego użycia zestawu danych wejściowych `rbind` algorytmu. Dostosowane `CustomAddRows` funkcja podobnie akceptuje dwa zestawy danych, ale również zawierać parametr wymiany logiczną jako dodatkowe dane wejściowe. Jeśli ustawiono parametr wymiany **FALSE**, zwraca ten sam zestaw danych jako standardowej implementacji. Ale jeśli parametr wymiany jest **TRUE**, funkcji dołącza wierszy pierwszego zestawu danych wejściowych w celu drugiego zestawu danych zamiast tego. Plik CustomAddRows.R, który zawiera implementację R `CustomAddRows` funkcji udostępnianych przez **wierszy dodać niestandardowe** moduł ma następujący kod R.
+Rozważ przykład **niestandardowe Dodaj wiersze** moduł, który modyfikuje standardowej implementacji **Dodaj wiersze** moduł używany do łączenia się z dwóch zestawów danych (ramek danych), wiersze (uwagi). Standardowa **Dodaj wiersze** modułu dołącza wiersze drugi zestaw danych wejściowych na końcu pierwszego wejściowego zestawu danych za pomocą `rbind` algorytmu. Dostosowywane `CustomAddRows` funkcja podobnie akceptuje dwa zestawy danych, ale również akceptuje parametr wymiany logiczną jako dodatkowe dane wejściowe. Jeśli ustawiono parametr wymiany **FALSE**, zwraca ten sam zestaw danych, co standardowej implementacji. Ale, jeśli parametr wymiany jest **TRUE**, funkcja dołącza wierszy pierwszego zestawu danych wejściowych na końcu drugiego zestawu danych, zamiast tego. Plik CustomAddRows.R, który zawiera implementację R `CustomAddRows` funkcji udostępnianych przez **niestandardowe Dodaj wiersze** moduł ma następujący kod R.
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) 
     {
@@ -59,7 +59,7 @@ Rozważmy przykładową **wierszy dodać niestandardowe** moduł, który modyfik
     } 
 
 ### <a name="the-xml-definition-file"></a>Plik definicji XML
-Do udostępnienia to `CustomAddRows` funkcji jako moduł usługi Azure Machine Learning pliku definicji XML musi zostać utworzony do określenia jak **wierszy dodać niestandardowe** modułu powinien wyglądu i zachowania. 
+Aby udostępnić to `CustomAddRows` funkcji jako moduł usługi Azure Machine Learning pliku definicji XML musi zostać utworzony do określenia sposób, w jaki **niestandardowe Dodaj wiersze** moduł powinien wyglądały i zachowywały się. 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
@@ -94,22 +94,22 @@ Do udostępnienia to `CustomAddRows` funkcji jako moduł usługi Azure Machine L
     </Module>
 
 
-Warto zauważyć, że wartość **identyfikator** atrybuty **dane wejściowe** i **Arg** elementów w pliku XML muszą być zgodne nazwy parametrów funkcji kodu języka R w CustomAddRows.R dokładnie plików: (*dataset1*, *dataset2*, i *wymiany* w przykładzie). Podobnie, wartość **punktu wejścia** atrybutu **języka** elementu musi odpowiadać nazwie funkcji w skrypcie R dokładnie: (*CustomAddRows* w przykładzie) . 
+Koniecznie należy pamiętać, że wartość **identyfikator** atrybuty **dane wejściowe** i **Arg** elementy w pliku XML muszą być zgodne nazwy parametrów funkcji kodu języka R CustomAddRows.R pliku dokładnie: (*dataset1*, *dataset2*, i *wymiany* w przykładzie). Podobnie, wartość **punktu wejścia** atrybutu **języka** element musi dokładnie pasować nazwą funkcji w skrypcie języka R: (*CustomAddRows* w przykładzie) . 
 
-Z kolei **identyfikator** atrybutu dla **dane wyjściowe** elementu nie odpowiada zmiennych w skrypcie R. Jeśli wymagane jest więcej niż jedno wyjście, po prostu zwraca listę z funkcji R z wynikami umieszczone *w tej samej kolejności* jako **dane wyjściowe** elementy są zadeklarowane w pliku XML.
+Z kolei **identyfikator** atrybutu dla **dane wyjściowe** elementu nie odpowiada żadnych zmiennych w skrypcie języka R. Gdy wymagana jest więcej niż jedno wyjście, po prostu zwraca listę z funkcji języka R z wynikami umieszczone *w tej samej kolejności* jako **dane wyjściowe** elementy są deklarowane w pliku XML.
 
-### <a name="package-and-register-the-module"></a>Pakiet, a następnie zarejestrować modułu
-Zapisz te dwa pliki jako *CustomAddRows.R* i *CustomAddRows.xml* , a następnie do zip ze sobą dwa pliki *CustomAddRows.zip* pliku.
+### <a name="package-and-register-the-module"></a>Pakowanie i Zarejestruj moduł
+Zapisz te dwa pliki jako *CustomAddRows.R* i *CustomAddRows.xml* i następnie zip ze sobą dwa pliki do *CustomAddRows.zip* pliku.
 
-Aby zarejestrować je w obszarze roboczym Machine Learning, przejdź do obszaru roboczego w Machine Learning Studio, kliknij przycisk **+ nowy** znajdującego się na dole i wybierz polecenie **modułu -> z pakietu ZIP** przekazać nowy **Wierszy dodać niestandardowe** modułu.
+Aby zarejestrować je w obszarze roboczym usługi Machine Learning, przejdź do obszaru roboczego usługi Machine Learning Studio, kliknij przycisk **+ nowy** znajdujący się u dołu i wybierz **modułu -> z pakietu ZIP** do przekazania nowego **Niestandardowe Dodaj wiersze** modułu.
 
-![Przekaż Zip](./media/custom-r-modules/upload-from-zip-package.png)
+![Przekazywanie pliku Zip](./media/custom-r-modules/upload-from-zip-package.png)
 
-**Wierszy dodać niestandardowe** moduł jest gotowy do dostęp do eksperymentów uczenia maszynowego.
+**Niestandardowe Dodaj wiersze** modułu jest teraz gotowy do uzyskiwał dostęp do eksperymentów uczenia maszynowego.
 
 ## <a name="elements-in-the-xml-definition-file"></a>Elementy w pliku definicji XML
 ### <a name="module-elements"></a>Moduł elementów
-**Modułu** element służy do definiowania niestandardowego modułu w pliku XML. Można zdefiniować wiele modułów w jednym pliku XML przy użyciu wielu **modułu** elementów. Każdy moduł w obszarze roboczym musi mieć unikatową nazwę. Zarejestruj niestandardowego modułu o takiej samej nazwie jak istniejący moduł niestandardowych i zastępuje istniejący moduł nowym. Niestandardowe moduły można jednak zarejestrowane o takiej samej nazwie jak istniejący moduł usługi Azure Machine Learning. Jeśli tak, pojawią się one w **niestandardowy** kategorii palety modułów.
+**Modułu** element jest używany do definiowania niestandardowego modułu w pliku XML. Wiele modułów można zdefiniować w jednym pliku XML przy użyciu wielu **modułu** elementów. Każdy moduł, w obszarze roboczym musi mieć unikatową nazwę. Rejestrowanie niestandardowego modułu z taką samą nazwę jak istniejący niestandardowy moduł i zastępuje istniejący moduł nowym plikiem. Niestandardowe moduły można jednak zarejestrowane w usłudze taką samą nazwę jak istniejący moduł usługi Azure Machine Learning. Tak, jakby ta pojawiła się w **niestandardowe** kategorii części palety modułów.
 
     <Module name="Custom Add Rows" isDeterministic="false"> 
         <Owner>Microsoft Corporation</Owner>
@@ -119,7 +119,7 @@ Aby zarejestrować je w obszarze roboczym Machine Learning, przejdź do obszaru 
 W ramach **modułu** elementu, można określić dwa dodatkowe elementy opcjonalne:
 
 * **właściciela** element, który jest osadzony w module  
-* **opis** element zawierający tekst, który jest wyświetlany w szybką pomoc dla modułu i kiedy umieść kursor nad modułu w Interfejsie użytkownika Machine Learning.
+* **opis** element, który zawiera tekst po umieszczeniu wskaźnika modułu w Interfejsie użytkownika Machine Learning, która jest wyświetlana w szybką pomoc dla modułu.
 
 Zasady ograniczeń znaków w elementach modułu:
 
@@ -127,43 +127,43 @@ Zasady ograniczeń znaków w elementach modułu:
 * Zawartość **opis** element nie może przekraczać 128 znaków.
 * Zawartość **właściciela** element nie może przekraczać 32 znaków.
 
-Moduł wyniki mogą być deterministyczna lub nondeterministic.* * Domyślnie, wszystkie moduły są uważane za deterministyczna. Oznacza to mając niezmiennych zestaw parametrów wejściowych i danych, modułu powinien zwrócić tego samego eacRAND wyników lub czas functionh, który jest uruchomiony. To zachowanie, Azure Machine Learning Studio zwracające tylko moduły oznaczona jako deterministyczna, jeśli parametr lub danych wejściowych został zmieniony. Zwraca buforowane wyniki także znacznie szybsze wykonywanie eksperymentów.
+Wyniki modułu mogą być deterministyczna lub nondeterministic.* * Domyślnie, wszystkie moduły są traktowane jako deterministyczna. Oznacza to biorąc pod uwagę niezmiennych zbiór parametrów wejściowych i danych, moduł powinien zwrócić ten sam eacRAND wyników lub czas functionh uruchomienia. Biorąc pod uwagę to zachowanie, Azure Machine Learning Studio uruchomienia tylko moduły oznaczone jako deterministyczna, jeśli parametr lub zmienione dane wejściowe. Zwracanie wyników buforowanych także znacznie szybsze wykonywanie eksperymentów.
 
-Dostępne są funkcje, które są niedeterministyczne, takich jak RAND lub funkcji, która zwraca bieżącą datę lub godzinę. Jeśli niedeterministyczna funkcja korzysta z modułu, można określić, czy moduł jest deterministyczna przez ustawienie opcjonalne **isDeterministic** atrybutu **FALSE**. Dzięki temu, że moduł zostanie uruchomiona ponownie, przy każdym uruchomieniu eksperyment, nawet jeśli nie zmieniono moduł danych wejściowych i parametrów. 
+Dostępne są funkcje, które są jednoznaczne wyniki, takie jak RAND lub funkcji, która zwraca bieżącą datę lub godzinę. Jeśli niedeterministyczna funkcja korzysta z modułu, można określić, czy moduł jest niejednoznaczne, ustawienie opcjonalne **isDeterministic** atrybutu **FALSE**. Temu, że moduł ponownego uruchomienia po każdym uruchomieniu eksperymentu nawet, jeśli moduł danych wejściowych i parametry nie uległy zmianie. 
 
 ### <a name="language-definition"></a>Język definicji
-**Języka** elementu w pliku definicji XML jest używany do określenia niestandardowego modułu języka. R jest obecnie jedynym obsługiwanym językiem. Wartość **sourceFile** atrybutu musi być nazwą pliku R, który zawiera funkcji do wywołania po uruchomieniu modułu. Ten plik musi być częścią pakietu zip. Wartość **punktu wejścia** atrybut jest Nazwa wywoływanej funkcji i musi być zgodna z prawidłową funkcji zdefiniowanej przy w pliku źródłowym.
+**Języka** elementu w pliku definicji XML jest używany do określenia języka niestandardowego modułu. Obecnie języka R jest jedynym obsługiwanym językiem. Wartość **sourceFile** atrybutu musi być nazwą pliku języka R, który zawiera funkcji do wywołania po uruchomieniu modułu. Ten plik musi być częścią pakietu zip. Wartość **punktu wejścia** atrybut jest nazwę wywoływanej funkcji i musi być zgodna z prawidłową funkcją zdefiniowane za pomocą w pliku źródłowym.
 
     <Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />
 
 
 ### <a name="ports"></a>Porty
-Porty wejściowe i wyjściowe dla niestandardowego modułu są określone w elementach podrzędnych **porty** sekcja pliku definicji XML. Kolejność tych elementów określa układ doświadczonym (UX) przez użytkowników. Pierwszy element podrzędny **wejściowych** lub **dane wyjściowe** wymienionych w **porty** port wejściowy lewej w UX. Learning maszyny staje się element pliku XML
-Każdy wejściowy i port wyjściowy może być opcjonalny **opis** elementu podrzędnego, który określa tekst wyświetlany, gdy Przesuń wskaźnik myszy za pośrednictwem portu w Interfejsie użytkownika Machine Learning.
+Porty wejściowe i wyjściowe dla niestandardowego modułu są określone przez elementy podrzędne elementu **porty** sekcja pliku definicji XML. Kolejność tych elementów określa układ doświadczonym (UX) przez użytkowników. Pierwszy element podrzędny **wejściowych** lub **dane wyjściowe** na liście **porty** elementu w pliku XML, staje się port wejściowy najdalej po lewej stronie w UX. Learning maszyny
+Każdy wejściowe i port wyjściowy może mieć opcjonalną **opis** elementu podrzędnego, który określa tekst wyświetlany po najechaniu kursorem myszy portu w Interfejsie użytkownika Machine Learning.
 
-**Porty reguły**:
+**Reguły portów**:
 
-* Maksymalna liczba **porty wejściowe i wyjściowe** to 8 dla każdego.
+* Maksymalna liczba **porty wejściowe i wyjściowe** wynosi 8 dla każdego.
 
 ### <a name="input-elements"></a>Elementów wejściowych
-Porty wejściowe umożliwiają przekazywanie danych do obszaru roboczego i funkcja R. **Typy danych** obsługiwanych dla porty wejściowe są następujące: 
+Porty wejściowe umożliwiają przekazywanie danych do funkcji języka R i obszaru roboczego. **Typy danych** obsługiwanych dla porty wejściowe są następujące: 
 
-**Element DataTable:** tego typu jest przekazany do funkcji R jako data.frame. W rzeczywistości żadnych typów (na przykład plików CSV lub pliki ARFF), które są obsługiwane przez uczenia maszynowego i które są zgodne z **DataTable** są konwertowane na data.frame automatycznie. 
+**DataTable:** tego typu jest przekazywany do funkcji języka R jako data.frame. W rzeczywistości żadnych typów (na przykład, pliki CSV lub pliki ARFF), które są obsługiwane przez uczenie maszynowe i które są zgodne z **DataTable** są konwertowane na data.frame automatycznie. 
 
         <Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
             <Description>Input Dataset 1</Description>
            </Input>
 
-**Identyfikator** atrybut skojarzony z poszczególnymi **DataTable** port wejściowy musi mieć unikatową wartość i wartość ta musi odpowiadać odpowiadającego nazwany parametr w funkcji R.
-Opcjonalne **DataTable** portów, które nie są przekazywane jako dane wejściowe w eksperymencie ma wartość **NULL** przekazany do funkcji R i opcjonalnie zip, porty są ignorowane, jeśli dane wejściowe nie jest połączony. **IsOptional** atrybutu jest opcjonalny dla obu **DataTable** i **Zip** typów i jest *false* domyślnie.
+**Identyfikator** atrybut skojarzony z każdą **DataTable** port wejściowy musi mieć unikatową wartość, a ta wartość musi być zgodny odpowiadającymi mu dostawcami nazwanych parametrów w funkcji języka R.
+Opcjonalnie **DataTable** porty, które nie są przekazywane jako dane wejściowe w eksperymencie mają wartość **NULL** przekazany do funkcji języka R i opcjonalnie zip, porty są ignorowane, jeśli dane wejściowe nie jest połączony. **IsOptional** atrybut jest opcjonalny dla obu **DataTable** i **Zip** typów i jest *false* domyślnie.
 
-**ZIP:** niestandardowe moduły można zaakceptować plik zip jako dane wejściowe. Tych danych wejściowych jest rozpakowane do katalogu roboczego R funkcji
+**ZIP:** niestandardowe moduły można zaakceptować pliku zip jako dane wejściowe. Te dane wejściowe to dopiero do katalogu roboczego R funkcji
 
         <Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
             <Description>Zip files to be extracted to the R working directory.</Description>
            </Input>
 
-Dla niestandardowych modułów R identyfikator portu Zip nie musi odpowiadać żadnych parametrów funkcji R. Jest to spowodowane pliku zip jest automatycznie wyodrębniane do katalogu roboczego R.
+Dla niestandardowych modułów R identyfikator portu Zip musi odpowiadać wszelkie parametry funkcji języka R. Jest to spowodowane pliku zip jest automatycznie wyodrębniane do katalogu roboczego R.
 
 **Reguły wprowadzania:**
 
@@ -172,18 +172,18 @@ Dla niestandardowych modułów R identyfikator portu Zip nie musi odpowiadać ż
 * Wartość **nazwa** atrybutu **dane wejściowe** element nie może być dłuższa niż 64 znaki.
 * Zawartość **opis** element nie może być dłuższa niż 128 znaków
 * Wartość **typu** atrybutu **dane wejściowe** element musi być *Zip* lub *DataTable*.
-* Wartość **isOptional** atrybutu **dane wejściowe** element nie jest wymagana (i jest *false* domyślnie, gdy nie określono); ale jeśli jest określona, musi ona być *true* lub *false*.
+* Wartość **isOptional** atrybutu **dane wejściowe** element nie jest wymagana (i *false* domyślnie, gdy nie określono); ale jeśli jest określona, musi to być *true* lub *false*.
 
 ### <a name="output-elements"></a>Elementy danych wyjściowych
-**Standardowe dane wyjściowe porty:** porty dane wyjściowe są mapowane na wartości zwracanych z funkcji R, które mogą być następnie używane przez kolejne modułów. *Element DataTable* jest typ portu tylko standardowe wyjście obecnie obsługiwane. (Obsługę *uczących* i *przekształca* nadchodzi.) A *DataTable* danych wyjściowych jest zdefiniowany jako:
+**Standardowe wyjście porty:** porty dane wyjściowe są mapowane na wartości zwracane z funkcji języka R, które następnie mogą być używane przez kolejne moduły. *DataTable* jest typ portu tylko standardowe dane wyjściowe, które są obecnie obsługiwane. (Obsługa *Learners* i *przekształca* nadchodzi.) A *DataTable* dane wyjściowe jest zdefiniowana jako:
 
     <Output id="dataset" name="Dataset" type="DataTable">
         <Description>Combined dataset</Description>
     </Output>
 
-Dla danych wyjściowych w niestandardowych modułów R, wartość **identyfikator** atrybutu nie musi odpowiadać dowolny skrypt języka R, ale musi być unikatowa. Dla wyjścia pojedynczy moduł, musi być wartość zwrócona przez funkcję R *data.frame*. W celu przekazania więcej niż jeden obiekt obsługiwany typ danych, porty odpowiednie dane wyjściowe muszą być określone w pliku definicji XML i muszą być zwracane w postaci listy obiektów. Obiekty danych wyjściowych są przypisywane do danych wyjściowych porty od lewej do prawej, odzwierciedlający kolejności, w których obiekty są umieszczane w liście zwracanych.
+Aby uzyskać dane wyjściowe w niestandardowych modułów R-wartości **identyfikator** atrybut nie ma odnoszą się do żadnych czynności w skrypcie języka R, ale muszą być unikatowe. Pojedynczy moduł danych wyjściowych, wartość zwracana przez funkcję języka R musi być *data.frame*. W celu przekazania więcej niż jeden obiekt obsługiwany typ danych, porty odpowiednie dane wyjściowe muszą być określone w pliku definicji XML i muszą być zwracane w postaci listy obiektów. Obiekty danych wyjściowych są przypisywane do danych wyjściowych porty od lewej do prawej, odzwierciedlający kolejność, w których obiekty są umieszczane na liście zwracanych.
 
-Na przykład, jeśli chcesz zmodyfikować **wierszy dodać niestandardowe** modułu do oryginalnego dwóch zestawów danych wyjściowych *dataset1* i *dataset2*, oprócz sprzężonych nowy zestaw danych *dataset*, (w kolejności od lewej do prawej, jako: *dataset*, *dataset1*, *dataset2*), następnie zdefiniuj porty wyjścia w CustomAddRows.xml pliku w następujący sposób:
+Na przykład, jeśli chcesz zmodyfikować **niestandardowe Dodaj wiersze** modułu w danych wyjściowych, oryginalnym dwa zestawy danych *dataset1* i *dataset2*, oprócz dołączonym do nowego zestawu danych *dataset*, (w kolejności od lewej do prawej, jako: *dataset*, *dataset1*, *dataset2*), następnie zdefiniuj porty wyjścia w CustomAddRows.xml pliku w następujący sposób:
 
     <Ports> 
         <Output id="dataset" name="Dataset Out" type="DataTable"> 
@@ -204,7 +204,7 @@ Na przykład, jeśli chcesz zmodyfikować **wierszy dodać niestandardowe** modu
     </Ports> 
 
 
-I zwracają listę obiektów w postaci listy we właściwej kolejności w "CustomAddRows.R":
+I zwracają listę obiektów na liście w odpowiedniej kolejności w "CustomAddRows.R":
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
         if (swap) { dataset <- rbind(dataset2, dataset1)) } 
@@ -213,7 +213,7 @@ I zwracają listę obiektów w postaci listy we właściwej kolejności w "Custo
     return (list(dataset, dataset1, dataset2)) 
     } 
 
-**Wizualizacja danych wyjściowych:** można także określić port wyjściowy typu *wizualizacji*, który zawiera dane wyjściowe z R grafiki urządzenia i konsola danych wyjściowych. Ten port nie jest częścią dane wyjściowe funkcji R i nie zakłóca kolejność inne typy portów danych wyjściowych. Aby dodać port wizualizacji na niestandardowe moduły, Dodaj **dane wyjściowe** element o wartości *wizualizacji* dla jego **typu** atrybutu:
+**Wizualizację danych wyjściowych:** można także określić port wyjściowy danego typu *wizualizacji*, która wyświetla dane wyjściowe z języka R grafiki urządzenia i konsoli danych wyjściowych. Ten port nie jest częścią dane wyjściowe funkcji języka R i nie kolidują z zamówieniem inne typy danych wyjściowych portów. Aby dodać port wizualizacji niestandardowych modułów **dane wyjściowe** element z wartością *wizualizacji* dla jego **typu** atrybutu:
 
     <Output id="deviceOutput" name="View Port" type="Visualization">
       <Description>View the R console graphics device output.</Description>
@@ -227,12 +227,12 @@ I zwracają listę obiektów w postaci listy we właściwej kolejności w "Custo
 * Wartość **typu** atrybutu **dane wyjściowe** element musi być *wizualizacji*.
 
 ### <a name="arguments"></a>Argumenty
-Dodatkowe dane mogą zostać przekazane do funkcji R za pośrednictwem modułu parametrów, które są zdefiniowane w **argumenty** elementu. Te parametry są wyświetlane w okienku po prawej stronie właściwości interfejsu użytkownika nie jest Machine Learning, w przypadku wybrania modułu. Argumenty może być dowolną z obsługiwanych typów lub można utworzyć niestandardowe wyliczenie w razie potrzeby. Podobnie jak **porty** elementów, **argumenty** elementy mogą mieć opcjonalny **opis** element, który określa tekst, który jest wyświetlany, gdy wskaźnik myszy nad Nazwa parametru.
-Opcjonalne właściwości dla modułu, na przykład defaultValue minValue i maxValue może zostać dodana do wszystkich argumentów jako atrybuty **właściwości** elementu. Prawidłowe właściwości dla **właściwości** elementu są zależne od typu argumentu i opisano z typami argumentów obsługiwanych w następnej sekcji. Argumenty z **isOptional** ustawioną właściwość **"true"** nie wymagają od użytkownika wprowadzenia wartości. Jeśli wartość nie zostanie przekazany do argumentu, argument nie jest przekazany do funkcji punktu wejścia. Argumenty funkcji punktu wejścia, które są opcjonalne muszą być jawnie obsługiwany przez funkcję, np. domyślna wartość NULL w definicji funkcji punktu wejścia. Opcjonalny argument będzie tylko wymuszać innych ograniczeń argumentu, tj. min lub max, jeśli wartość jest podana przez użytkownika.
-Zgodnie z wejściami i wyjściami jest krytyczny, że każdego z parametrów ma unikatowy identyfikator skojarzony z nimi. W naszym przykładzie szybki start został skojarzony identyfikator i parametru *wymiany*.
+Dodatkowe dane mogą być przekazywane do funkcji języka R za pomocą parametrów modułów, które są zdefiniowane w **argumenty** elementu. Te parametry są wyświetlane w okienku po prawej stronie właściwości interfejsu użytkownika Machine Learning w przypadku wybrania modułu. Argumenty mogą być dowolny z obsługiwanych typów lub można utworzyć niestandardowe wyliczenia, gdy potrzebne. Podobnie jak **porty** elementów, **argumenty** elementów może mieć opcjonalną **opis** element, który określa tekst wyświetlany po umieszczeniu wskaźnika myszy Nazwa parametru.
+Opcjonalne właściwości dla modułu, takie jak właściwość defaultValue, minValue i maxValue można dodać do dowolnego argumentu jako atrybuty do **właściwości** elementu. Prawidłowe właściwości dla **właściwości** elementu zależą od typu argumentu i opisano z typami argumentów obsługiwanych w następnej sekcji. Argumenty ze **isOptional** właściwością **"true"** nie wymagają od użytkownika wprowadzenia wartości. Jeśli nie podano wartości argumentu, argument nie jest przekazywany do funkcji punktu wejścia. Argumenty funkcję punktu wejścia, które są opcjonalne muszą być jawnie obsługiwany przez funkcję, np. przypisana wartość domyślna wartość NULL w definicji funkcji punktu wejścia. Opcjonalny argument będzie tylko wymuszać innych ograniczeń argumentu, czyli min lub max, jeśli wartość jest podana przez użytkownika.
+Podobnie jak w przypadku danych wejściowych i wyjściowych, jest krytyczny, że każdego z parametrów ma unikatowy identyfikator skojarzonych z nimi. W naszym przykładzie szybki start został skojarzony identyfikator/parametr *wymiany*.
 
 ### <a name="arg-element"></a>ARG — element
-Parametr modułu jest definiowana za pomocą **Arg** elementem podrzędnym **argumenty** sekcja pliku definicji XML. W przypadku elementów podrzędnych w **porty** sekcji kolejność parametrów w **argumenty** sekcja definiuje układu w UX. Parametry są wyświetlane od góry w dół w Interfejsie użytkownika w tej samej kolejności, w którym są zdefiniowane w pliku XML. Typy obsługiwane przez usługi Machine Learning parametrów są wyświetlane tutaj. 
+Parametr modułu jest definiowana za pomocą **Arg** element podrzędny elementu **argumenty** sekcja pliku definicji XML. Podobnie jak w przypadku elementów podrzędnych w **porty** sekcji kolejność parametrów w **argumenty** sekcja definiuje układ w najlepsze środowisko użytkownika. Parametry są wyświetlane od góry w dół w Interfejsie użytkownika w tej samej kolejności, w którym są zdefiniowane w pliku XML. Poniżej przedstawiono typy obsługiwanych przez usługę uczenia maszynowego dla parametrów. 
 
 **int** — parametr (32-bitowy) typu Liczba całkowita.
 
@@ -244,7 +244,7 @@ Parametr modułu jest definiowana za pomocą **Arg** elementem podrzędnym **arg
 
 * *Opcjonalne właściwości*: **min**, **max**, **domyślne** i **isOptional**
 
-**Podwójna** — parametr typu double.
+**podwójne** — parametr typu double.
 
     <Arg id="doubleValue1" name="Double Param" type="double">
         <Properties min="0.000" max="0.999" default="0.3" />
@@ -254,7 +254,7 @@ Parametr modułu jest definiowana za pomocą **Arg** elementem podrzędnym **arg
 
 * *Opcjonalne właściwości*: **min**, **max**, **domyślne** i **isOptional**
 
-**wartość logiczna** — parametrem logicznym reprezentowanego przez pole wyboru w UX.
+**wartość logiczna** — parametr logiczny, który jest reprezentowany przez pole wyboru w najlepsze środowisko użytkownika.
 
     <Arg id="boolValue1" name="Boolean Param" type="bool">
         <Properties default="true" />
@@ -263,7 +263,7 @@ Parametr modułu jest definiowana za pomocą **Arg** elementem podrzędnym **arg
 
 
 
-* *Opcjonalne właściwości*: **domyślne** — wartość false, gdy nie jest ustawiona
+* *Opcjonalne właściwości*: **domyślne** — FAŁSZ Jeśli nieustawiona
 
 **ciąg**: ciąg standardowy
 
@@ -274,7 +274,7 @@ Parametr modułu jest definiowana za pomocą **Arg** elementem podrzędnym **arg
 
 * *Opcjonalne właściwości*: **domyślne** i **isOptional**
 
-**ColumnPicker**: parametr wybór kolumny. Ten typ renderowania w środowiska użytkownika jako selektora kolumn. **Właściwości** element jest tu używany do określenia identyfikatora portu, z której są wybierane kolumny, której typ port docelowy musi być *DataTable*. Wynik kolumnę zaznaczenia jest przekazany do funkcji R jako listę ciągów zawierającą nazwy zaznaczonej kolumny. 
+**ColumnPicker**: parametr wybór kolumny. Ten typ jest renderowany w Interfejsie jako selektor kolumn. **Właściwość** element jest tutaj używany do określenia identyfikatora portu, z której kolumny są zaznaczone, gdzie typ port docelowy musi być *DataTable*. Wynik wybór kolumn jest przekazany do funkcji języka R jako listę ciągów zawierającą nazwy zaznaczonej kolumnie. 
 
         <Arg id="colset" name="Column set" type="ColumnPicker">      
           <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
@@ -282,7 +282,7 @@ Parametr modułu jest definiowana za pomocą **Arg** elementem podrzędnym **arg
         </Arg>
 
 
-* *Wymagane właściwości*: **portId** — identyfikator elementu danych wejściowych jest zgodny z typem *DataTable*.
+* *Wymagane właściwości*: **identyfikator portu** -zgodny z identyfikatorem elementu danych wejściowych z typem *DataTable*.
 * *Opcjonalne właściwości*:
   
   * **allowedTypes** — filtry kolumny typów, z której można wybrać. Prawidłowe wartości to: 
@@ -295,7 +295,7 @@ Parametr modułu jest definiowana za pomocą **Arg** elementem podrzędnym **arg
     * Cecha
     * Wynik
     * Wszyscy
-  * **domyślne** -prawidłowy domyślny wybór selektor kolumn obejmują: 
+  * **domyślne** — obejmują opcje prawidłowy domyślny wybór kolumny: 
     
     * Brak
     * NumericFeature
@@ -319,7 +319,7 @@ Parametr modułu jest definiowana za pomocą **Arg** elementem podrzędnym **arg
     * AllScore
     * Wszyscy
 
-**Lista rozwijana**: listę wyliczany określone przez użytkownika (rozwijaną). Elementy listy rozwijanej są określane w **właściwości** przy użyciu elementu **elementu** elementu. **Identyfikator** dla każdego **elementu** musi być unikatowa i prawidłową zmienną R. Wartość **nazwa** z **elementu** służy jako tekst, który zostanie wyświetlony i wartość, która została przekazana do funkcji R.
+**Lista rozwijana**: na liście wyliczany określonych przez użytkownika (rozwijanej). Określono w elementach rozwijanych **właściwości** elementu za pomocą **elementu** elementu. **Identyfikator** dla każdego **elementu** musi być unikatowa i prawidłową zmienną R. Wartość **nazwa** z **elementu** zarówno jako tekst, który zostanie wyświetlony i wartość, która jest przekazywana do funkcji języka R.
 
     <Arg id="color" name="Color" type="DropDown">
       <Properties default="red">
@@ -331,17 +331,17 @@ Parametr modułu jest definiowana za pomocą **Arg** elementem podrzędnym **arg
     </Arg>    
 
 * *Opcjonalne właściwości*:
-  * **domyślne** — wartość domyślna właściwości musi być zgodna z wartość spośród **elementu** elementów.
+  * **domyślne** — wartość domyślną właściwość musi być zgodna z wartością identyfikatora z jednego z **elementu** elementów.
 
 ### <a name="auxiliary-files"></a>Pliki pomocnicze
-Każdego pliku, który znajduje się w pliku ZIP niestandardowego modułu będzie można używać w czasie wykonywania. Wszelkich struktur katalogów obecne są zachowywane. Oznacza to, czy plik sourcing działa takie same lokalnie i w usłudze Azure Machine Learning na wykonanie. 
+Dowolny plik, który znajduje się w pliku ZIP niestandardowego modułu będzie dostępna do użycia w czasie wykonywania. Wszelkich struktur katalogów obecne są zachowywane. Oznacza to, ten plik, określania źródła działa takie same lokalnie, jak i wykonywania usługi Azure Machine Learning. 
 
 > [!NOTE]
-> Zwróć uwagę, że wszystkie pliki są wyodrębniane do katalogu 'src', powinien mieć wszystkie ścieżki ' src / "prefiks.
+> Należy zauważyć, że wszystkie pliki są wyodrębniane do katalogu "src", więc powinny mieć wszystkie ścieżki "src /" prefiks.
 > 
 > 
 
-Załóżmy na przykład, że chcesz usunąć wszystkie wiersze z NAs z zestawu danych, a także usunąć wszystkie zduplikowane wiersze przed wyprowadzanie go do CustomAddRows i zostały już zapisane funkcję R, która robi to w pliku RemoveDupNARows.R:
+Na przykład załóżmy, że chcesz usunąć wszystkie wiersze z NAs z zestawu danych, a także usunąć wszelkie zduplikowane wiersze przed podawania go do CustomAddRows, i zostały już wpisane funkcji języka R, tak, że w pliku RemoveDupNARows.R:
 
     RemoveDupNARows <- function(dataFrame) {
         #Remove Duplicate Rows:
@@ -350,7 +350,7 @@ Załóżmy na przykład, że chcesz usunąć wszystkie wiersze z NAs z zestawu d
         finalDataFrame <- dataFrame[complete.cases(dataFrame),]
         return(finalDataFrame)
     }
-Może pobierać plików pomocniczych RemoveDupNARows.R w funkcji CustomAddRows:
+Można źródłowego pliku pomocniczego RemoveDupNARows.R w funkcji CustomAddRows:
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
         source("src/RemoveDupNARows.R")
@@ -365,11 +365,11 @@ Może pobierać plików pomocniczych RemoveDupNARows.R w funkcji CustomAddRows:
 
 Następnie przekaż plik zip zawierający "CustomAddRows.R", "CustomAddRows.xml" i "RemoveDupNARows.R" jako niestandardowego modułu R.
 
-## <a name="execution-environment"></a>Środowiska wykonawczego
-Środowisko wykonanie skryptu języka R używa tej samej wersji R jako **wykonanie skryptu języka R** modułu i używać tego samego domyślne pakiety. Można również dodać dodatkowe pakiety języka R do niestandardowego modułu przez włączenie ich do pakietu zip niestandardowego modułu. Wystarczy załadować je w skrypcie R tak jak w środowisku R. 
+## <a name="execution-environment"></a>Środowisko wykonawcze
+Środowisko do wykonywania skryptu języka R korzysta z tej samej wersji języka R jako **wykonanie skryptu języka R** modułu i używać tych samych domyślne pakiety. Dodatkowe pakiety R można również dodać do Twojego niestandardowego modułu, umieszczając je w pakiecie niestandardowego modułu w pliku zip. Po prostu załadować je w skrypcie języka R tak jak w środowisku R. 
 
 **Ograniczenia środowiska wykonawczego** obejmują:
 
-* System plików nie trwała: pliki napisane po uruchomieniu niestandardowego modułu nie są zachowywane w wielu uruchomień tego samego modułu.
-* Nie dostępu do sieci
+* System plików-trwałe: pliki zapisane po uruchomieniu niestandardowego modułu nie są utrwalane w wielu uruchomień tego samego modułu.
+* Brak dostępu do sieci
 

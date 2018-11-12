@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/12/2018
 ms.author: ryanwi,mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 443d37f5b45db9495c09d68300c9ea4978466eb9
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: fe6df20d294a3b1802d396085c36a6587dc45730
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388232"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249085"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Samouczek: wdrażanie aplikacji usługi Service Fabric w klastrze na platformie Azure
 
@@ -87,7 +87,7 @@ W przypadku subskrypcji platformy Azure otwórz ten port za pomocą reguły modu
 
 Klastry testowe to bezpłatne, ograniczone czasowo klastry usługi Service Fabric hostowane na platformie Azure i obsługiwane przez zespół usługi Service Fabric. Za ich pomocą każdy może wdrażać aplikacje i poznawać platformę. Klaster używa jednego certyfikatu z podpisem własnym na potrzeby zabezpieczeń między węzłami oraz między klientem a węzłem.
 
-Zaloguj się i [dołącz do klastra z systemem Windows](http://aka.ms/tryservicefabric). Aby pobrać certyfikat PFX na komputer, wybierz link **PFX**. Wybierz link **Jak nawiązać połączenie z zabezpieczonym klastrem testowym?** i skopiuj hasło certyfikatu. Certyfikat, hasło certyfikatu oraz wartość pola **Punkt końcowy połączenia** będą używane w kolejnych krokach.
+Zaloguj się i [dołącz do klastra z systemem Windows](https://aka.ms/tryservicefabric). Aby pobrać certyfikat PFX na komputer, wybierz link **PFX**. Wybierz link **Jak nawiązać połączenie z zabezpieczonym klastrem testowym?** i skopiuj hasło certyfikatu. Certyfikat, hasło certyfikatu oraz wartość pola **Punkt końcowy połączenia** będą używane w kolejnych krokach.
 
 ![Plik PFX i punkt końcowy połączenia](./media/service-fabric-quickstart-dotnet/party-cluster-cert.png)
 

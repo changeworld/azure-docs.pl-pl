@@ -12,15 +12,15 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 695da176d2bc86fd67608cc28d14cf15a7728980
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 58b109651408a51ca7505c92d3875de63aae2cc6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161492"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261931"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Biblioteka kliencka elastic Database przy użyciu platformy Entity Framework
-Ten dokument przedstawia zmiany w aplikacji Entity Framework, które są wymagane w celu integracji z [narzędzi elastycznej bazy danych](sql-database-elastic-scale-introduction.md). Koncentruje się na tworzenie [procesu zarządzania mapą fragmentów](sql-database-elastic-scale-shard-map-management.md) i [routingu zależnego od danych](sql-database-elastic-scale-data-dependent-routing.md) z platformą Entity Framework **Code First** podejście. [Kod najpierw — Nowa baza danych](http://msdn.microsoft.com/data/jj193542.aspx) samouczek dla platformy EF służy jako przykład uruchomionych w tym dokumencie. Przykładowy kod, towarzyszący ten dokument jest częścią narzędzi elastycznej bazy danych zestaw przykładów w Visual Studio Code Samples.
+Ten dokument przedstawia zmiany w aplikacji Entity Framework, które są wymagane w celu integracji z [narzędzi elastycznej bazy danych](sql-database-elastic-scale-introduction.md). Koncentruje się na tworzenie [procesu zarządzania mapą fragmentów](sql-database-elastic-scale-shard-map-management.md) i [routingu zależnego od danych](sql-database-elastic-scale-data-dependent-routing.md) z platformą Entity Framework **Code First** podejście. [Kod najpierw — Nowa baza danych](https://msdn.microsoft.com/data/jj193542.aspx) samouczek dla platformy EF służy jako przykład uruchomionych w tym dokumencie. Przykładowy kod, towarzyszący ten dokument jest częścią narzędzi elastycznej bazy danych zestaw przykładów w Visual Studio Code Samples.
 
 ## <a name="downloading-and-running-the-sample-code"></a>Pobieranie i uruchamianie przykładowego kodu
 Aby pobrać kod, w tym artykule:
@@ -169,9 +169,9 @@ Poniższy przykład kodu ilustruje, jak można używać dla zasad ponawiania SQL
             } 
         }); 
 
-**SqlDatabaseUtils.SqlRetryPolicy** w powyższym kodzie jest zdefiniowany jako **SqlDatabaseTransientErrorDetectionStrategy** z liczbą ponowień równą 10 i 5 sekund czas między ponownymi próbami oczekiwania. Ta metoda jest podobna do wskazówek dotyczących EF i transakcje zainicjowanego przez użytkownika (zobacz [ograniczenia dotyczące ponawiania strategii wykonywania (od wersji EF6)](http://msdn.microsoft.com/data/dn307226). Zarówno sytuacje wymagają, że program aplikacji określa zakres, do którego funkcja zwraca wyjątek przejściowy: Aby ponownie otworzyć transakcji albo (jak pokazano) ponownie utwórz kontekst od prawidłowego konstruktora, który używa Biblioteka kliencka elastic database.
+**SqlDatabaseUtils.SqlRetryPolicy** w powyższym kodzie jest zdefiniowany jako **SqlDatabaseTransientErrorDetectionStrategy** z liczbą ponowień równą 10 i 5 sekund czas między ponownymi próbami oczekiwania. Ta metoda jest podobna do wskazówek dotyczących EF i transakcje zainicjowanego przez użytkownika (zobacz [ograniczenia dotyczące ponawiania strategii wykonywania (od wersji EF6)](https://msdn.microsoft.com/data/dn307226). Zarówno sytuacje wymagają, że program aplikacji określa zakres, do którego funkcja zwraca wyjątek przejściowy: Aby ponownie otworzyć transakcji albo (jak pokazano) ponownie utwórz kontekst od prawidłowego konstruktora, który używa Biblioteka kliencka elastic database.
 
-Potrzeba kontroli, gdzie przejściowych wyjątków zająć USA w zakresie także wyklucza stosowanie wbudowanych **SqlAzureExecutionStrategy** dostarczany z programem EF. **SqlAzureExecutionStrategy** będzie ponownie otworzyć połączenie, ale używa **OpenConnectionForKey** ominięcie weryfikacji, które jest wykonywane jako część **OpenConnectionForKey**wywołania. Zamiast tego przykład kodu używa wbudowanej **DefaultExecutionStrategy** również dostarczany z programem EF. W przeciwieństwie do **SqlAzureExecutionStrategy**, działa prawidłowo w połączeniu z zasady ponawiania z obsługi błędów przejściowych. Zasady wykonywania jest ustawiony **ElasticScaleDbConfiguration** klasy. Należy zauważyć, że podjęliśmy decyzję o nie należy używać **DefaultSqlExecutionStrategy** ponieważ sugeruje, za pomocą **SqlAzureExecutionStrategy** przypadku przejściowych wyjątków — które mogłyby prowadzić do nieprawidłowego zachowania zgodnie z opisem. Aby uzyskać więcej informacji na temat zasad ponawiania różnych i EF, zobacz [odporności połączenia w programie EF](http://msdn.microsoft.com/data/dn456835.aspx).     
+Potrzeba kontroli, gdzie przejściowych wyjątków zająć USA w zakresie także wyklucza stosowanie wbudowanych **SqlAzureExecutionStrategy** dostarczany z programem EF. **SqlAzureExecutionStrategy** będzie ponownie otworzyć połączenie, ale używa **OpenConnectionForKey** ominięcie weryfikacji, które jest wykonywane jako część **OpenConnectionForKey**wywołania. Zamiast tego przykład kodu używa wbudowanej **DefaultExecutionStrategy** również dostarczany z programem EF. W przeciwieństwie do **SqlAzureExecutionStrategy**, działa prawidłowo w połączeniu z zasady ponawiania z obsługi błędów przejściowych. Zasady wykonywania jest ustawiony **ElasticScaleDbConfiguration** klasy. Należy zauważyć, że podjęliśmy decyzję o nie należy używać **DefaultSqlExecutionStrategy** ponieważ sugeruje, za pomocą **SqlAzureExecutionStrategy** przypadku przejściowych wyjątków — które mogłyby prowadzić do nieprawidłowego zachowania zgodnie z opisem. Aby uzyskać więcej informacji na temat zasad ponawiania różnych i EF, zobacz [odporności połączenia w programie EF](https://msdn.microsoft.com/data/dn456835.aspx).     
 
 #### <a name="constructor-rewrites"></a>Konstruktor modyfikacji oprogramowania
 Powyższe przykłady kodu ilustrują, domyślny konstruktor ponownie zapisuje wymaganej dla aplikacji, aby można było używać routingu zależnego od danych z programu Entity Framework. Poniższa tabela stanowi uogólnienie takie podejście do innych konstruktorów. 

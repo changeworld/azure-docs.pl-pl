@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 29e918733cc72010aa6aa5c0f42d613331eec2a2
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 6796ecd272c7a1ed1d29c89fbe06c87dc2d4601b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044726"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242810"
 ---
 # <a name="api-management-transformation-policies"></a>Zasady transformacji usługi API Management
-Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](http://go.microsoft.com/fwlink/?LinkID=398186).
+Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
 
 ##  <a name="TransformationPolicies"></a> Zasady transformacji
 
@@ -83,7 +83,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |Data analizy|Po ustawieniu `false` wartości dat, po prostu są kopiowane podczas przekształcania|Nie|true|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** dla ruchu przychodzącego, ruchu wychodzącego, — błąd
 
@@ -127,7 +127,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |consider-accept-header|Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> — wartość true — zastosowania konwersji, jeśli w żądaniu nagłówka Accept żądania XML.<br />— wartość false — Zawsze stosuj konwersji.|Nie|true|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** dla ruchu przychodzącego, ruchu wychodzącego, — błąd
 
@@ -162,7 +162,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |na|Ciąg zastępujący. Określ zero długość ciąg zastępujący usunąć ciąg wyszukiwania.|Yes|ND|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** zaplecza dla ruchu przychodzącego, wychodzący — błąd
 
@@ -193,7 +193,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |redirect-content-urls|Element główny.|Yes|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** dla ruchu przychodzącego, ruchu wychodzącego
 
@@ -269,7 +269,7 @@ W tym przykładzie zasady kieruje żądanie do usługi zaplecza Service fabric, 
 |Nazwa SF odbiornika|Dotyczy tylko gdy wewnętrznej bazy danych jest usługi Service Fabric i jest określony przy użyciu "backend-id". Usług Reliable Services usługi Service Fabric umożliwia tworzenie wiele odbiorników w usłudze. Ten atrybut jest używany do wybierz określony odbiornik, gdy wewnętrznej bazy danych usługi Reliable Service ma więcej niż jeden odbiornik. Jeśli ten atrybut nie jest określony, API Management spróbuje użyć odbiornika bez nazwy. Odbiornik bez nazwy jest typowy dla usług Reliable Services, który ma tylko jeden odbiornik. |Nie|ND|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** zaplecza dla ruchu przychodzącego
 
@@ -308,12 +308,12 @@ W tym przykładzie zasady kieruje żądanie do usługi zaplecza Service fabric, 
 
 ```xml
 <set-body>
-@{ 
-    string inBody = context.Request.Body.As<string>(preserveContent: true); 
-    if (inBody[0] =='c') { 
-        inBody[0] = 'm'; 
-    } 
-    return inBody; 
+@{ 
+    string inBody = context.Request.Body.As<string>(preserveContent: true); 
+    if (inBody[0] =='c') { 
+        inBody[0] = 'm'; 
+    } 
+    return inBody; 
 }
 </set-body>
 ```
@@ -321,14 +321,14 @@ W tym przykładzie zasady kieruje żądanie do usługi zaplecza Service fabric, 
 #### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accesing-it-later-in-the-pipeline-will-result-in-an-exception"></a>Przykład: dostęp do treści jako jobject zostanie opróżniony. Należy pamiętać, że ponieważ rezerwujesz firma Microsoft nie oryginalnego treści żądania, w dalszej części potoku spowoduje wyjątek w celu dostępu.
 
 ```xml
-<set-body> 
-@{ 
-    JObject inBody = context.Request.Body.As<JObject>(); 
-    if (inBody.attribute == <tag>) { 
-        inBody[0] = 'm'; 
-    } 
-    return inBody.ToString(); 
-} 
+<set-body> 
+@{ 
+    JObject inBody = context.Request.Body.As<JObject>(); 
+    if (inBody.attribute == <tag>) { 
+        inBody[0] = 'm'; 
+    } 
+    return inBody.ToString(); 
+} 
 </set-body>
 
 ```
@@ -439,7 +439,7 @@ OriginalUrl.
 
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** dla ruchu przychodzącego, ruchu wychodzącego, wewnętrznej bazy danych
 
@@ -510,7 +510,7 @@ OriginalUrl.
 |name|Określa nazwę nagłówka do ustawienia.|Yes|ND|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** zaplecza dla ruchu przychodzącego, wychodzący — błąd
 
@@ -570,7 +570,7 @@ OriginalUrl.
 |name|Określa nazwę parametru zapytania do ustawienia.|Yes|ND|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** zaplecza dla ruchu przychodzącego
 
@@ -648,7 +648,7 @@ OriginalUrl.
 |copy-unmatched-params|Określa, czy parametry zapytania w żądaniu przychodzącym nie znajduje się w oryginalnym szablonie adres URL są dodawane do adresu URL zdefiniowane w szablonie ponownego napisania|Nie|true|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** dla ruchu przychodzącego
 
@@ -712,7 +712,7 @@ OriginalUrl.
 |{1|Elemencie głównym arkusza stylów. Wszystkie elementy i atrybuty zdefiniowane w ramach zgodne ze standardem [specyfikację XSLT](http://www.w3.org/TR/xslt)|Yes|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** dla ruchu przychodzącego, ruchu wychodzącego
 
