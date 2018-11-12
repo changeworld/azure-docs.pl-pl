@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3b6b505be4a0084059d8c37a21099a784cacbed1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: af36f033dbca6c9f594b3568bfe7567a959e2d2f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414135"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237156"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Szczegółowe kroki rozwiązywania problemów połączeń usług pulpitu zdalnego do maszyn wirtualnych Windows na platformie Azure
 Ten artykuł zawiera szczegółowe kroki rozwiązywania problemów, aby zdiagnozować i rozwiązać złożone błędy usług pulpitu zdalnego na podstawie Windows maszyn wirtualnych platformy Azure.
@@ -130,7 +130,7 @@ Ponów próbę połączenia z komputera. Jeśli nadal nie można nawiązać poł
 * Zapora Windows lub inna zapora lokalnego ma regułę dla ruchu wychodzącego, co uniemożliwia ruchu pulpitu zdalnego.
 * Wykrywanie włamań lub oprogramowania uruchamianego na maszynie wirtualnej platformy Azure do monitorowania sieci uniemożliwia połączeń pulpitu zdalnego.
 
-W przypadku maszyn wirtualnych utworzonych za pomocą klasycznego modelu wdrażania można użyć sesji zdalnej programu Azure PowerShell do maszyny wirtualnej platformy Azure. Najpierw należy zainstalować certyfikat dla maszyny wirtualnej usługi hostingu w chmurze. Przejdź do [Konfigurowanie bezpiecznego środowiska PowerShell dostępu zdalnego do maszyn wirtualnych platformy Azure](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) i Pobierz **InstallWinRMCertAzureVM.ps1** plik skryptu na komputerze lokalnym.
+W przypadku maszyn wirtualnych utworzonych za pomocą klasycznego modelu wdrażania można użyć sesji zdalnej programu Azure PowerShell do maszyny wirtualnej platformy Azure. Najpierw należy zainstalować certyfikat dla maszyny wirtualnej usługi hostingu w chmurze. Przejdź do [Konfigurowanie bezpiecznego środowiska PowerShell dostępu zdalnego do maszyn wirtualnych platformy Azure](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) i Pobierz **InstallWinRMCertAzureVM.ps1** plik skryptu na komputerze lokalnym.
 
 Następnie zainstaluj program Azure PowerShell, jeśli jeszcze nie. Zobacz artykuł [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
 

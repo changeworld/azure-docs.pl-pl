@@ -10,23 +10,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: maquaran
-ms.openlocfilehash: 3c97c89bde40357981d82dce8dd53febff25c8f3
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: bc31c7ebec7c1f7a02be65b15805fb48b1ef275d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239886"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260316"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB w zastosowaniach społecznościowych
 Mieszkających w wysoce wzajemnie połączonych społeczeństwa oznacza, że w pewnym momencie w życiu staje się częścią **sieci społecznościowej**. Używasz sieci społecznościowych, Utrzymuj znajomych, współpracowników, rodziny lub czasami udostępniać swoją pasję osoby o wspólnych zainteresowaniach.
 
 Jako inżynierów lub deweloperów, możesz zastanawiać się, jak te sieci przechowywania i łączenia danych, lub może nawet mieć zostały nadzorowania do utworzenia lub yourselves architektury nowej sieci społecznościowych na rynek niche określonych. Gdy powstaje znaczące pytanie: jak te dane są przechowywane?
 
-Załóżmy, że tworzysz nowe i shiny sieciach społecznościowych, gdzie użytkownicy może umieszczać artykuły z powiązanych nośniki, takie jak obrazy, wideo lub nawet music. Użytkownicy mogą komentarze dotyczące wpisów i zapewniają punktów dla klasyfikacji. Będzie kanału informacyjnego wpisów, które użytkownicy zobaczą i mieć możliwość interakcji z na stronie docelowej głównej witryny sieci Web. To nie brzmi złożone (na początku), ale dla uproszczenia, Przyjrzyjmy się tam zatrzymać (można delve do źródła danych niestandardowych użytkownika dotyczy relacji, ale przekracza on celem tego artykułu).
+Załóżmy, że tworzysz nowe i shiny sieciach społecznościowych, gdzie użytkownicy może umieszczać artykuły z powiązanych nośniki, takie jak obrazy, wideo lub nawet music. Użytkownicy mogą komentarze dotyczące wpisów i zapewniają punktów dla klasyfikacji. Będzie kanału informacyjnego wpisów, które użytkownicy zobaczą i mieć możliwość interakcji z na stronie docelowej głównej witryny sieci Web. Ta metoda nie brzmi złożone (na początku), ale dla uproszczenia, Przyjrzyjmy się tam zatrzymać (można delve do źródła danych niestandardowych użytkownika dotyczy relacji, ale przekracza on celem tego artykułu).
 
 Tak jak można to przechowywać i gdzie?
 
-Wiele osób może masz doświadczenie w bazach danych SQL lub co najmniej ma pojęcie [relacyjnych, modelowanie danych](https://en.wikipedia.org/wiki/Relational_model) i może być kuszące rozpocznie się rysowanie podobny do poniższego:
+Być może masz doświadczenie w bazach danych SQL lub masz pojęcie [relacyjnych, modelowanie danych](https://en.wikipedia.org/wiki/Relational_model) i może rozpocząć rysowania coś w następujący sposób:
 
 ![Diagram pokazujący względne model relacyjny](./media/social-media-apps/social-media-apps-sql.png) 
 
@@ -34,9 +34,9 @@ Struktura danych doskonale znormalizowane i łatwa... który skalowania.
 
 Nie uzyskasz mnie niewłaściwego Prócz tego pracowałam z bazami danych SQL swojego życia, są one wspaniałe, ale jak firmach wzorzec, praktyki i oprogramowanie nie jest idealny dla każdego scenariusza.
 
-Dlaczego SQL w tym scenariuszu najlepszy wybór? Przyjrzyjmy się struktury pojedynczy wpis, jeśli chciałem pokazać tego wpisu w witrynie sieci Web lub aplikacji, będzie trzeba to zrobić zapytanie o... Aby wyświetlić jeden pojedynczy wpis, teraz obraz strumień wpisy, które dynamicznie obciążenia i są wyświetlane na ekranie i można napotkać, gdzie użyję po prostu osiem sprzężeń tabel (!).
+Dlaczego SQL w tym scenariuszu najlepszy wybór? Przyjrzyjmy się struktury pojedynczy wpis, jeśli chciałem pokazać tego wpisu w witrynie sieci Web lub aplikacji, będzie trzeba to zrobić zapytanie o... Po dołączeniu do ośmiu tables(!) tak, aby wyświetlić jeden pojedynczy wpis, obraz strumień wpisy, które dynamicznie obciążenia i są wyświetlane na ekranie, może być Zobaczmy, gdzie użyję.
 
-Można oczywiście Użyj wystąpienia SQL, inwestują z wystarczająco dużo mocy rozwiązania tysiące zapytań za pomocą tych wielu sprzężeń, aby obsługiwać zawartość, ale naprawdę, dlaczego chcesz, gdy istnieje prostszy rozwiązania?
+Można użyć inwestują wystąpienia SQL z wystarczająco dużo mocy rozwiązania tysiące zapytań w wielu połączeń do obsługi zawartości, ale naprawdę, dlaczego chcesz, gdy istnieje prostszy rozwiązania?
 
 ## <a name="the-nosql-road"></a>Drogowa NoSQL
 Ten artykuł przeprowadzi Cię do modelowania danych platform społecznościowych dzięki bazie danych NoSQL Azure [usługi Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) w ekonomiczny sposób, korzystając z innych usługi Azure Cosmos DB funkcje, takie jak [interfejs API Gremlin](../cosmos-db/graph-introduction.md). Za pomocą [NoSQL](https://en.wikipedia.org/wiki/NoSQL) podejście, przechowywania danych w formacie JSON i stosowanie [denormalizacja](https://en.wikipedia.org/wiki/Denormalization), wcześniej skomplikowane wpis mogą zostać przekształcone w jednym [dokumentu](https://en.wikipedia.org/wiki/Document-oriented_database):
@@ -59,7 +59,7 @@ Ten artykuł przeprowadzi Cię do modelowania danych platform społecznościowyc
         ]
     }
 
-I można uzyskać za pomocą jednego zapytania, a także nie połączeń. Jest to znacznie bardziej niezwykle proste, a budget-wise, wymaga mniej zasobów, aby osiągnąć lepszą jakość.
+I można uzyskać za pomocą jednego zapytania, a także nie połączeń. To zapytanie jest znacznie niezwykle proste, a budget-wise, wymaga mniej zasobów, aby osiągnąć lepszą jakość.
 
 Usługa Azure Cosmos DB upewnia się, że wszystkie właściwości są indeksowane za pomocą jego automatycznego indeksowania, co jeszcze może być [dostosowane](indexing-policies.md). Podejście schematów umożliwiają przechowywanie dokumentów za pomocą różnych i dynamiczne struktur, może być jutro mają wpisy, aby wyświetlić listę kategorii lub hasztagi skojarzonych z nimi, Cosmos DB będzie obsługiwać nowe dokumenty za pomocą dodane atrybuty z żadnego dodatkowego nakładu pracy wymagane przez firmę Microsoft.
 
@@ -216,12 +216,12 @@ Teraz, gdy mam możesz podłączone prawdopodobnie będzie traktować należy ni
 
 Aby osiągnąć dowolnego z tych scenariuszy usługi Machine Learning, można użyć [usługi Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) pozyskiwać dane z różnych źródeł i użyj [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) do przetwarzania informacji i generuje danych wyjściowych, który może przetworzone przez usługi Azure Machine Learning.
 
-Innym dostępną opcją jest użycie [usług Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services) do analizowania zawartości; nie tylko można możesz im lepiej zrozumieć użytkowników (poprzez analizowanie zapisują z [interfejsu API analizy tekstu](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)), ale można również wykrywanie niepożądanych lub dojrzała zawartości i podejmowanie odpowiednich działań dzięki [interfejs API przetwarzania obrazów](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api). Usługi cognitive Services zawiera wiele rozwiązań poza pole, które nie wymagają dowolnego rodzaju wiedzy uczenia maszynowego do użycia.
+Innym dostępną opcją jest użycie [usług Azure Cognitive Services](https://www.microsoft.com/cognitive-services) do analizowania zawartości; nie tylko można możesz im lepiej zrozumieć użytkowników (za pośrednictwem analizowanie zapisują za pomocą [interfejsu API analizy tekstu](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)), ale można również wykrywanie niepożądanych lub dojrzała zawartości i podejmowanie odpowiednich działań dzięki [interfejs API przetwarzania obrazów](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api). Usługi cognitive Services zawiera wiele rozwiązań poza pole, które nie wymagają dowolnego rodzaju wiedzy uczenia maszynowego do użycia.
 
 ## <a name="a-planet-scale-social-experience"></a>W środowisku społecznościowych w skali globalnej
 Jest ostatni, ale nie najmniej artykułu ważne I muszą spełnić: **skalowalność**. Podczas projektowania architektury, który ma zasadnicze znaczenie, czy poszczególne składniki można skalować samodzielnie, albo ponieważ trzeba przetworzyć większej ilości danych lub ponieważ większego zasięgu geograficznego (lub obu!). Szczęście osiągnięcie złożonym zadaniem jest **gotową** za pomocą usługi Cosmos DB.
 
-Usługa cosmos DB obsługuje [dynamiczne partycjonowanie](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/) out-of--box przez automatyczne tworzenie partycji na podstawie danego **klucza partycji** (zdefiniowany jako jeden z atrybutów w dokumentach). Definiowanie odpowiedniego klucza partycji muszą być wykonane w czasie projektowania i mając na względzie [najlepsze praktyki](../cosmos-db/partition-data.md#designing-for-partitioning) dostępne; społecznościowe środowisko, w przypadku strategii partycjonowania muszą być dopasowane do sposobu zapytania (odczyty w tej samej partycja jest pożądane) i zapis (uniknąć "aktywne" Dzięki rozdzieleniu zapisy na wielu partycjach). Niektóre opcje są: partycji na podstawie danych czasowych klucza (dzień/miesiąc/tydzień), zawartości kategorii, regionu geograficznego, przez użytkownika. to wszystko zależy sposób będzie wykonywania zapytań o dane i wyświetl ją w swoje środowisko społecznościowe. 
+Usługa cosmos DB obsługuje [dynamiczne partycjonowanie](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/) out-of--box przez automatyczne tworzenie partycji na podstawie danego **klucza partycji** (zdefiniowany jako jeden z atrybutów w dokumentach). Definiowanie odpowiedniego klucza partycji musi odbywać się w czasie projektowania, aby dowiedzieć się więcej, zobacz [wybierz klucz partycji prawo](partitioning-overview.md#choose-partitionkey) artykułu. Społecznościowe środowisko, w przypadku strategii partycjonowania muszą być dopasowane do sposobu zapytania (operacje odczytu w ramach tej samej partycji są pożądane) i zapis (uniknąć "aktywne" Dzięki rozdzieleniu zapisy na wielu partycjach). Niektóre opcje są: partycji na podstawie danych czasowych klucza (dzień/miesiąc/tydzień), zawartości kategorii, regionu geograficznego, przez użytkownika. to wszystko zależy sposób będzie wykonywania zapytań o dane i wyświetl ją w swoje środowisko społecznościowe. 
 
 Jedną z interesujące punktu warto zauważyć, jest, że usługi Cosmos DB będzie uruchamiać zapytania (w tym [agregacje](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)) we wszystkich partycji, nie trzeba dodawać wszelka logika wzroście rozmiaru danych.
 

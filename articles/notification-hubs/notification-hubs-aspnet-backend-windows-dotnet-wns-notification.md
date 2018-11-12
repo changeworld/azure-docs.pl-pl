@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
 ms.author: dimazaid
-ms.openlocfilehash: ee0e78402515a733731e6faf21b09886674cda51
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d2d0e878aed5b200852e56a29ce0430305d4efc6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452417"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251546"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień do konkretnych użytkowników przy użyciu usługi Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
@@ -222,7 +222,7 @@ W tej sekcji aktualizujesz kod w projekcie utworzonym na potrzeby samouczka [Sam
     ```
 1. Kliknij prawym przyciskiem myszy projekt **WindowsApp**, kliknij polecenie **Dodaj**, a następnie kliknij polecenie **Klasa**. Nadaj klasie nazwę **RegisterClient.cs**, a następnie kliknij przycisk **OK**, aby wygenerować klasę.
    
-   Ta klasa opakowuje wywołania REST wymagane do kontaktowania się z zapleczem aplikacji, aby przeprowadzać rejestrację na potrzeby powiadomień push. Ponadto zapisuje lokalnie identyfikatory *registrationId* utworzone przez centrum powiadomień zgodnie z opisem w sekcji [Rejestrowanie z poziomu zaplecza aplikacji](http://msdn.microsoft.com/library/dn743807.aspx). Klasa używa tokenu autoryzacji przechowywanego w magazynie lokalnym po kliknięciu przycisku **Login and register** (Zaloguj i zarejestruj się).
+   Ta klasa opakowuje wywołania REST wymagane do kontaktowania się z zapleczem aplikacji, aby przeprowadzać rejestrację na potrzeby powiadomień push. Ponadto zapisuje lokalnie identyfikatory *registrationId* utworzone przez centrum powiadomień zgodnie z opisem w sekcji [Rejestrowanie z poziomu zaplecza aplikacji](https://msdn.microsoft.com/library/dn743807.aspx). Klasa używa tokenu autoryzacji przechowywanego w magazynie lokalnym po kliknięciu przycisku **Login and register** (Zaloguj i zarejestruj się).
 2. Dodaj następujące instrukcje `using` na początku pliku RegisterClient.cs:
 
     ```csharp   

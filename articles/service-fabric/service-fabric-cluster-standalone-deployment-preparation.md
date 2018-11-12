@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 7357577ea7aff467288578673110b1a6dda7ccef
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: c505feb20321d785a86cad0422470aa5c9a4311b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391051"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259092"
 ---
 <a id="preparemachines"></a>
 
@@ -74,7 +74,7 @@ Poniżej przedstawiono niektóre specyfikacje zalecane dla każdego komputera, k
 Administrator klastra, wdrażanie i konfigurowanie klastra musi mieć [uprawnień administratora](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) na poszczególnych maszynach. Usługi Service Fabric nie można zainstalować na kontrolerze domeny.
 
 ## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Pobieranie pakietu autonomicznego usługi Service Fabric dla systemu Windows Server
-[Pobierz Link - pakietu autonomicznego usługi Service Fabric — system Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690) i Rozpakuj pakiet maszyną wdrożenia, który nie jest częścią klastra lub do jednej z maszyn, które będzie częścią klastra.
+[Pobierz Link - pakietu autonomicznego usługi Service Fabric — system Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690) i Rozpakuj pakiet maszyną wdrożenia, który nie jest częścią klastra lub do jednej z maszyn, które będzie częścią klastra.
 
 ## <a name="modify-cluster-configuration"></a>Modyfikowanie konfiguracji klastra
 Tworzenie klastra autonomicznego należy utworzyć autonomiczny klaster ClusterConfig.json pliku konfiguracji, który opisuje specyfikacji klastra. Można utworzyć pliku konfiguracji na tych szablonach adrese Poniższy link. <br>

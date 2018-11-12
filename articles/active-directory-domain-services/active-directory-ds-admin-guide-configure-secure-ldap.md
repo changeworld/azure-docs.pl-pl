@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: 9188e7a8dc5364592772b95c302c59a16bfad2be
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: 850b721cfa78dde23ebc11944bf023de8798cec9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50754073"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236957"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurowanie bezpiecznego protokołu LDAP (LDAPS) dla domeny zarządzanej usług domenowych Azure AD
 W tym artykule pokazano, jak włączyć bezpieczny Lightweight Directory dostępu protokołu (LDAPS) dla domeny zarządzanej usług domenowych Azure AD. Protokół Secure LDAP jest także znana jako "LDAP Lightweight Directory Access Protocol () za pośrednictwem Secure Sockets Layer (SSL) / zabezpieczeń TLS (Transport Layer)".
@@ -45,7 +45,7 @@ Przed włączeniem bezpiecznego protokołu LDAP, należy uzyskać prawidłowy ce
 
 1. **Zaufanych wystawców** — certyfikat musi być wystawiony przez urząd certyfikacji zaufany przez komputery, na nawiązywanie połączeń z domeny zarządzanej przy użyciu protokołu secure LDAP. Ten urząd może być publiczny urząd certyfikacji (CA) lub urzędu certyfikacji przedsiębiorstwa ufa tych komputerów.
 2. **Okres istnienia** — certyfikat musi być ważny przez co najmniej ciągu następnych 3 – 6 miesięcy. Dostęp do Twojej domeny zarządzanej Secure LDAP jest zakłócone. po wygaśnięciu certyfikatu.
-3. **Nazwa podmiotu** -nazwa podmiotu certyfikatu musi być nazwą domeny zarządzanej. Na przykład w nazwie domeny "contoso100.com" Nazwa podmiotu certyfikatu musi być "contoso100.com". 
+3. **Nazwa podmiotu** -nazwa podmiotu certyfikatu musi być Twojej domeny zarządzanej. Na przykład w nazwie domeny "contoso100.com" Nazwa podmiotu certyfikatu musi być "contoso100.com". Ustaw nazwę DNS (alternatywnej nazwy podmiotu) na nazwy z symbolami wieloznacznymi dla domeny zarządzanej.
 4. **Użycie klucza** — certyfikat musi być skonfigurowany do następujących zastosowań - podpisów cyfrowych i szyfrowanie klucza.
 5. **Cel certyfikatu** — musi to być prawidłowy do uwierzytelniania serwera SSL.
 
@@ -83,7 +83,7 @@ Na komputerze z systemem Windows otwórz nowe okno programu PowerShell jako **ad
 $lifetime=Get-Date
 New-SelfSignedCertificate -Subject contoso100.com `
   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
-  -Type SSLServerAuthentication -DnsName *.contoso100.com
+  -Type SSLServerAuthentication -DnsName *.contoso100.com, contoso100.com
 ```
 
 W poprzednim przykładzie "contoso100.com" należy zastąpić nazwę domeny DNS z domeny zarządzanej. Na przykład, jeśli utworzono domeny zarządzanej, o nazwie "contoso100.onmicrosoft.com", Zamień "contoso100.com" w atrybucie podmiotu "contoso100.onmicrosoft.com" i "*. contoso100.com" w atrybucie DnsName za pomocą "*. contoso100.onmicrosoft.com ").

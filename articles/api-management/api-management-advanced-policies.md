@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: cc327695a91a39c4d910a4f2421b22cc3b100627
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 803fa89145d3a38b2df34666754fe8949a74eb53
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747885"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262339"
 ---
 # <a name="api-management-advanced-policies"></a>Usługa API Management zaawansowane zasady
-Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](http://go.microsoft.com/fwlink/?LinkID=398186).
+Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
 
 ##  <a name="AdvancedPolicies"></a> Zasady zaawansowane
 
@@ -136,7 +136,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |warunek = "wyrażenie logiczne &#124; logiczna stała"|Wyrażenia logicznego lub stałą oceniane podczas zawierający `when` deklaracja zasad jest oceniany.|Yes|
 
 ###  <a name="ChooseUsage"></a> Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** zaplecza dla ruchu przychodzącego, wychodzący — błąd
 
@@ -247,7 +247,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |Wykonaj przekierowania = "true &#124; false"|Określa, czy przekierowania z usługi zaplecza są następuje bramy zwracane do obiektu wywołującego.|Nie|false|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** wewnętrznej bazy danych
 -   **Zakresy zasad:** wszystkie zakresy
@@ -294,7 +294,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |Maksymalna liczba|Liczba całkowita. Określa maksymalną liczbę żądań, które mogą wprowadzać zasady.|Yes|ND|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** zaplecza dla ruchu przychodzącego, wychodzący — błąd
 
@@ -345,7 +345,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |Klucz partycji|Określa wartość do przypisania partycji podczas wysyłania wiadomości.|Opcjonalny. Ten atrybut nie mogą być używane, jeśli `partition-id` jest używany.|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** zaplecza dla ruchu przychodzącego, wychodzący — błąd
 
@@ -387,7 +387,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Typ zawartości|Określa `Content-Type` wartości nagłówka odpowiedzi i jest używany do wybierania odpowiednich przykład lub schematu.|Nie|Brak|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** dla ruchu przychodzącego, ruchu wychodzącego, — błąd
 
@@ -452,7 +452,7 @@ status code and media type. If no example or schema found, the content is empty.
 > Gdy `interval`, `max-interval` i `delta` są określone, **wykładniczego** interwał ponawiania prób algorytm ma być stosowany, gdy czas oczekiwania między ponownymi próbami rośnie wykładniczo od wartości `interval` do wartość `max-interval` zgodnie z poniższym forumula - `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`.
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) . Należy pamiętać, że ograniczenia użycia zasady podrzędne będą dziedziczone przez te zasady.
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) . Należy pamiętać, że ograniczenia użycia zasady podrzędne będą dziedziczone przez te zasady.
 
 -   **Sekcje zasad:** zaplecza dla ruchu przychodzącego, wychodzący — błąd
 
@@ -500,7 +500,7 @@ status code and media type. If no example or schema found, the content is empty.
 |response-variable-name|Nazwa zmiennej kontekstu odwołania, na przykład nadrzędnej [żądań wysłania](api-management-advanced-policies.md#SendRequest) zasad i zawierający `Response` obiektu|Opcjonalny.|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** zaplecza dla ruchu przychodzącego, wychodzący — błąd
 
@@ -572,7 +572,7 @@ status code and media type. If no example or schema found, the content is empty.
 |istnieje akcja|Określa, jakie działania podejmowane w momencie nagłówek jest już określony. Ten atrybut musi mieć jedną z następujących wartości.<br /><br /> -override - zastępuje wartość istniejący nagłówek.<br />-skip — nie zastępuje istniejącą wartość nagłówka.<br />-dołączania - dołącza wartość do istniejącej wartości nagłówka.<br />-delete - Usuwa nagłówek z żądania.<br /><br /> Po ustawieniu `override` rejestrowanie wiele wpisów z tej samej nazwie wyników w nagłówku ustawiania zgodnie ze wszystkich wpisów, (które zostaną wyświetlone wiele razy); tylko wymienioną wartość zostanie ustawiona w wyniku.|Nie|zastąpienie|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** zaplecza dla ruchu przychodzącego, wychodzący — błąd
 
@@ -656,7 +656,7 @@ status code and media type. If no example or schema found, the content is empty.
 |istnieje akcja|Określa, jakie działania podejmowane w momencie nagłówek jest już określony. Ten atrybut musi mieć jedną z następujących wartości.<br /><br /> -override - zastępuje wartość istniejący nagłówek.<br />-skip — nie zastępuje istniejącą wartość nagłówka.<br />-dołączania - dołącza wartość do istniejącej wartości nagłówka.<br />-delete - Usuwa nagłówek z żądania.<br /><br /> Po ustawieniu `override` rejestrowanie wiele wpisów z tej samej nazwie wyników w nagłówku ustawiania zgodnie ze wszystkich wpisów, (które zostaną wyświetlone wiele razy); tylko wymienioną wartość zostanie ustawiona w wyniku.|Nie|zastąpienie|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** zaplecza dla ruchu przychodzącego, wychodzący — błąd
 
@@ -695,7 +695,7 @@ Zwróć uwagę na użycie [właściwości](api-management-howto-properties.md) j
 |password="string"|Hasło używane do uwierzytelniania przy użyciu serwera proxy.|Nie|ND|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** dla ruchu przychodzącego
 
@@ -747,7 +747,7 @@ Zwróć uwagę na użycie [właściwości](api-management-howto-properties.md) j
 |set — metoda|Element główny. Wartość elementu określa metodę HTTP.|Yes|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** dla ruchu przychodzącego, na błąd
 
@@ -794,7 +794,7 @@ Zwróć uwagę na użycie [właściwości](api-management-howto-properties.md) j
 |reason="string"|Opis powodu zwróciło kod stanu.|Yes|ND|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** zaplecze wychodzących, — błąd
 -   **Zakresy zasad:** wszystkie zakresy
@@ -829,7 +829,7 @@ Zwróć uwagę na użycie [właściwości](api-management-howto-properties.md) j
 |wartość|Wartość zmiennej. Może to być wyrażenie lub wartość literału.|Yes|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** zaplecza dla ruchu przychodzącego, wychodzący — błąd
 -   **Zakresy zasad:** wszystkie zakresy
@@ -895,7 +895,7 @@ Zwróć uwagę na użycie [właściwości](api-management-howto-properties.md) j
 |source|Literał ciągu jest zrozumiały dla przeglądarki danych śledzenia i Określanie źródła wiadomości.|Yes|ND|
 
 ### <a name="usage"></a>Sposób użycia
- Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .
+ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .
 
 -   **Sekcje zasad:** zaplecza dla ruchu przychodzącego, wychodzący — błąd
 
@@ -963,7 +963,7 @@ Zwróć uwagę na użycie [właściwości](api-management-howto-properties.md) j
 
 ### <a name="usage"></a>Sposób użycia
 
-Ta zasada może służyć w następujących zasadach [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Sekcje zasad:** dla ruchu przychodzącego, ruchu wychodzącego, wewnętrznej bazy danych
 -   **Zakresy zasad:** wszystkie zakresy

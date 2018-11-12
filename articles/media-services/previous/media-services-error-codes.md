@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 43e2b2b7f398e8adce0760678c6f0a5208c24c34
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: d485195b868b6cbca587c736ac02663491742cdb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240532"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236878"
 ---
 # <a name="azure-media-services-error-codes"></a>Kody błędów usługi Azure Media Services
 Korzystając z usługi Microsoft Azure Media Services, usługi, w zależności od problemów, takich jak tokeny uwierzytelniania wygasa do akcji, które nie są obsługiwane w usłudze Media Services może zostać wyświetlony kody błędów HTTP. Poniżej przedstawiono listę **kody błędów HTTP** , mogą być zwrócone przez usługi Media Services i możliwych przyczyn ich.  
@@ -117,7 +117,7 @@ Aby obsłużyć tego błędu, zaleca się przy użyciu logiki ponawiania wykład
 > 
 
 ## <a name="see-also"></a>Zobacz też
-[Kody błędów zarządzania usługi Media Services](http://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
+[Kody błędów zarządzania usługi Media Services](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
 
 ## <a name="next-steps"></a>Kolejne kroki
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

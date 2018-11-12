@@ -9,12 +9,12 @@ ms.service: event-hubs
 ms.topic: article
 ms.date: 10/07/2018
 ms.author: shvija
-ms.openlocfilehash: 4e0f762a69451ce0dc9ec00db5992fce0707f275
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 9bd1649c0ec89abf660865971314becb6580852f
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282445"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300679"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Usługa Event Hubs — często zadawane pytania
 
@@ -50,7 +50,7 @@ Event Hubs w warstwie standardowa warstwa obsługuje obecnie maksymalny okres pr
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Jak monitorować mojej usługi Event Hubs?
 Usługa Event Hubs emituje wyczerpujący metryki, które zapewniają stan zasobów w celu [usługi Azure Monitor](../azure-monitor/overview.md). Pozwalają one również ocenić ogólną kondycję usługi Event Hubs, nie tylko na poziomie przestrzeni nazw, ale także na poziomie jednostki. Dowiedz się więcej o funkcji monitorowania, które jest oferowana w przypadku [usługi Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
 
-## <a name="apache-kakfa-integration"></a>Integracja Apache Kakfa
+## <a name="apache-kafka-integration"></a>Integracja platformy Apache Kafka
 
 ### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>Jak zintegrować mojej istniejącej aplikacji platformy Kafka z usługą Event Hubs?
 Usługa Event Hubs udostępnia punkt końcowy platformy Kafka, używany przy użyciu aplikacji platformy Apache Kafka, na podstawie istniejących. Zmiana konfiguracji jest wszystko, co jest wymagane do środowisko PaaS platformy Kafka. Zapewnia zamiast uruchamiania klastra Kafka. Usługa Event Hubs obsługuje Apache Kafka w wersji 1.0 i nowszych wersji klienta i współdziała z istniejącej aplikacji platformy Kafka, narzędzi i struktur. Aby uzyskać więcej informacji, zobacz [usługi Event Hubs dla platformy Kafka repozytorium](https://github.com/Azure/azure-event-hubs-for-kafka).

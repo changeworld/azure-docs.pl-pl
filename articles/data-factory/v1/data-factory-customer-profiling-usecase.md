@@ -14,15 +14,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b60e4f3547e049dc35c08ce115bdfcbbf6ebb18a
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 5345ca3a9c2f35b45669a3a54ecb42ca627cde32
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056508"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259823"
 ---
 # <a name="use-case---customer-profiling"></a>Przypadek użycia — profilowanie klientów
-Usługa Azure Data Factory jest jednym z wielu usług, używaną do zaimplementowania pakietu Cortana Intelligence z akceleratorami rozwiązań.  Aby uzyskać więcej informacji na temat pakietu Cortana Intelligence, odwiedź stronę [pakietu Cortana Intelligence](http://www.microsoft.com/cortanaanalytics). W tym dokumencie opisano prosty przypadek użycia, aby pomóc Ci rozpocząć pracę z zrozumienie, jak usługi Azure Data Factory można rozwiązywania typowych problemów analitycznych.
+Usługa Azure Data Factory jest jednym z wielu usług, używaną do zaimplementowania pakietu Cortana Intelligence z akceleratorami rozwiązań.  Aby uzyskać więcej informacji na temat pakietu Cortana Intelligence, odwiedź stronę [pakietu Cortana Intelligence](https://www.microsoft.com/cortanaanalytics). W tym dokumencie opisano prosty przypadek użycia, aby pomóc Ci rozpocząć pracę z zrozumienie, jak usługi Azure Data Factory można rozwiązywania typowych problemów analitycznych.
 
 ## <a name="scenario"></a>Scenariusz
 Contoso to firma gier, który tworzy gry dla wielu platform: gier, konsole, dłoni skierowanej do urządzenia i komputery osobiste (komputery). Ponieważ gracze tych gier, dużej ilości danych dziennika jest generowany, umożliwiający śledzenie wzorców użycia, styl gier i preferencji użytkownika.  W połączeniu z demograficznych, regionalne i dane produktów Contoso można wykonać analizy, które przeprowadzą ich o tym, jak można poprawić funkcjonalność z perspektywy graczy zakupów docelowej je w ramach uaktualnień i gry. 

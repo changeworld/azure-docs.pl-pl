@@ -8,12 +8,12 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: ae5334dcb93e34569131ab51dca99c310831082d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6a73ef058a76152678099eca3f1bd15590b0b03d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052091"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238798"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Uruchamianie i testowanie U-SQL przy użyciu zestawu SDK usługi Azure Data Lake U-SQL
 
@@ -36,7 +36,7 @@ Zestaw SDK danych U-SQL Lake wymaga następujących zależności:
 
     ![Narzędzia Data Lake Tools for Visual Studio SDK systemu Windows 10 do uruchamiania lokalnego](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-    - Zainstaluj [usługi Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs). Możesz znaleźć, to wstępnie spakowane zestawy Visual C++ i Windows SDK plików w C:\Program Files (x86) \Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK. W tym przypadku kompilator lokalnego języka U-SQL nie można automatycznie odnaleźć zależności. Należy określić ścieżkę CppSDK dla niego. Możesz skopiować pliki do innej lokalizacji lub użyć go jako jest.
+    - Zainstaluj [usługi Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs). Możesz znaleźć, to wstępnie spakowane zestawy Visual C++ i Windows SDK plików w C:\Program Files (x86) \Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK. W tym przypadku kompilator lokalnego języka U-SQL nie można automatycznie odnaleźć zależności. Należy określić ścieżkę CppSDK dla niego. Możesz skopiować pliki do innej lokalizacji lub użyć go jako jest.
 
 ## <a name="understand-basic-concepts"></a>Zrozumieć podstawowe pojęcia
 
@@ -351,8 +351,8 @@ publiczne LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 |InputDir|ciąg|Katalog dla danych wejściowych|
 |MessagePath|ciąg|Ścieżka pliku zrzutu wiadomości|
 |OutputDir|ciąg|Katalog danych wyjściowych|
-|Równoległość|Int|Równoległość topologii w celu uruchomienia algebry|
-|ParentPid|Int|Identyfikator PID elementu nadrzędnego, na którym usługa monitoruje aby wyjść, równa 0 lub ujemne, aby zignorować|
+|Równoległość|int|Równoległość topologii w celu uruchomienia algebry|
+|ParentPid|int|Identyfikator PID elementu nadrzędnego, na którym usługa monitoruje aby wyjść, równa 0 lub ujemne, aby zignorować|
 |ResultPath|ciąg|Ścieżka pliku zrzutu wyniku|
 |RuntimeDir|ciąg|Katalogu środowiska uruchomieniowego|
 |ScriptPath|ciąg|Gdzie można znaleźć skryptu|
@@ -362,7 +362,7 @@ publiczne LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 |WorkDir|ciąg|Preferowany katalog roboczy|
 
 
-**— Metoda**
+**Metoda**
 
 |Metoda|Opis|Wróć|Parametr|
 |------|-----------|------|---------|

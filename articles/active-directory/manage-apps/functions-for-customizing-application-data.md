@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: 7a7f959f54281dcce5b8d1349f5d6607f0e5da30
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
-ms.translationtype: MT
+ms.openlocfilehash: d8e390fc185c3cb0b63bcea56feb4b133652673d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345797"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258837"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Pisanie wyrażeń do mapowania atrybutów w usłudze Azure Active Directory
 Podczas konfigurowania, inicjowania obsługi administracyjnej aplikacji SaaS, jest jeden z typów mapowania atrybutów, które można określić mapowanie wyrażenia. W tym przypadku trzeba napisać wyrażenia podobne do skryptu, która pozwala na przekształcanie danych użytkowników w formatach, które są bardziej akceptowalne dla aplikacji SaaS.
@@ -37,7 +37,7 @@ Składnia wyrażeń do mapowania atrybutów jest przypominający języka Visual 
 * Dla stałych ciągów Jeśli potrzebujesz kreski ułamkowej odwróconej (\) lub cudzysłowu (") w ciągu go należy użyć znaków ucieczki symbolem kreski ułamkowej odwróconej (\). Na przykład: "Nazwa firmy: \"Contoso\""
 
 ## <a name="list-of-functions"></a>Lista funkcji
-[Dołącz](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [Dołącz](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [nie](#not) &nbsp; &nbsp; &nbsp; &nbsp; [Zastąp](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Przełącznika](#switch)
+[Dołącz](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [Dołącz](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [nie](#not) &nbsp; &nbsp; &nbsp; &nbsp; [Zastąp](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Przełącznika](#switch)
 
 - - -
 ### <a name="append"></a>Append
@@ -152,24 +152,6 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 | **Szablon** |Optional (Opcjonalność) |Ciąg |Gdy **szablonu** wartość zostanie podana, firma Microsoft będzie szukał **oldValue** wewnątrz szablonu i zastąp go wartością źródłową. |
 
 - - -
-### <a name="selectuniquevalue"></a>SelectUniqueValue
-**Funkcja:**<br> SelectUniqueValue (uniqueValueRule1, uniqueValueRule2 uniqueValueRule3...)
-
-**Opis:**<br> Wymaga co najmniej dwa argumenty, które są definiowane przy użyciu wyrażeń zasad generowania unikatową wartość. Funkcja ocenia każdą regułę, a następnie sprawdza wartość generowane unikatowość w katalogu/aplikacji docelowej. Pierwszy unikatową wartość znalezione, zostanie zwrócony jeden. Jeśli wszystkie wartości już istnieje w docelowej, wpis będzie pobrać zdeponowane i przyczynę pobiera rejestrowane w dziennikach inspekcji. Nie ma żadnych górnej granicy liczby argumentów, które mogą być podane.
-
-> [!NOTE]
->1. To jest funkcja najwyższego poziomu, nie mogą być zagnieżdżone.
->2. Ta funkcja jest przeznaczone tylko do użytku z Tworzenie wpisu. Podczas korzystania z atrybutem, ustaw **zastosować mapowanie** właściwości **tylko podczas tworzenia obiektu**.
-
-
-**Parametry:**<br> 
-
-| Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
-| --- | --- | --- | --- |
-| ** uniqueValueRule1... uniqueValueRuleN ** |Co najmniej 2 są wymagane, nie górnej granicy |Ciąg | Lista reguł generowania unikatową wartość do oceny |
-
-
-- - -
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **Funkcja:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
@@ -256,7 +238,6 @@ NormalizeDiacritics([givenName])
 * **Dane wyjściowe**: "Zoe"
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Dane wyjściowe daty w postaci ciągu w określonym formacie
-
 Chcesz wysłać daty do aplikacji SaaS w określonym formacie. <br>
 Na przykład chcesz formatować daty dla usługi ServiceNow.
 
@@ -270,7 +251,6 @@ Na przykład chcesz formatować daty dla usługi ServiceNow.
 * **DANE WYJŚCIOWE**: "2015-01-23"
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Zastąp wartość, na podstawie zestawu wstępnie zdefiniowanych opcji
-
 Musisz zdefiniować strefy czasowej użytkownika, na podstawie kodu stanu, przechowywane w usłudze Azure AD. <br>
 Jeśli kod stanu nie odpowiada żadnemu z wstępnie zdefiniowanych opcji, należy użyć wartości domyślnej "Australia/Sydney".
 
@@ -282,26 +262,6 @@ Jeśli kod stanu nie odpowiada żadnemu z wstępnie zdefiniowanych opcji, należ
 
 * **Dane wejściowe** (stan): "QLD"
 * **Dane wyjściowe**: "Australia/Brisbane"
-
-### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Generowanie unikatową wartość dla atrybutu userPrincipalName (UPN)
-
-Oparte na użytkownika imię, drugie imię i nazwisko, należy do generowania wartości atrybutu nazwy UPN i sprawdzić jego unikatowości w katalogu docelowym AD przed przypisaniem wartości do atrybutu nazwy UPN.
-
-**Wyrażenie:** <br>
-
-    SelectUniqueValue( 
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com")
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
-    )
-
-**Przykładowe dane wejściowe/wyjściowe:**
-
-* **Dane wejściowe** (PreferredFirstName): "John"
-* **Dane wejściowe** (PreferredLastName): "Kowalski"
-* **Dane wyjściowe**: "John.Smith@contoso.com" Jeśli wartość nazwy UPN John.Smith@contoso.com jeszcze nie istnieje w katalogu
-* **Dane wyjściowe**: "J.Smith@contoso.com" Jeśli wartość nazwy UPN John.Smith@contoso.com już istnieje w katalogu
-* **Dane wyjściowe**: "Jo.Smith@contoso.com" Jeśli powyższe dwie wartości nazwy UPN już istnieje w katalogu
 
 ## <a name="related-articles"></a>Powiązane artykuły
 * [Automatyzowanie użytkownika aprowizacji/Deprovisioning do aplikacji SaaS](user-provisioning.md)

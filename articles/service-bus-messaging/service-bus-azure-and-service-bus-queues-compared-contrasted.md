@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: f48e9a5600dca1e13d6ee94a675d5bc824915118
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 0254762de49f37c591a7847fe9b40b3ecbabe1bd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393965"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261064"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Kolejki magazynu i kolejek usługi Service Bus — porównanie
 W tym artykule przeanalizowano różnice i podobieństwa dwóch typów kolejek oferowanych przez Microsoft Azure już dzisiaj: kolejki magazynu i kolejek usługi Service Bus. Dzięki tym informacjom można porównać odpowiednie technologie i świadomie wybrać rozwiązanie, które najlepiej odpowiada danym potrzebom.
@@ -70,7 +70,7 @@ W tej sekcji przedstawiono porównanie, niektóre z podstawowych funkcji usługi
 | Kolejność gwarancji |**Nie** <br/><br>Aby uzyskać więcej informacji zobacz pierwszą uwagi w części "Informacje dodatkowe".</br> |**Tak - pierwszej wejściu — pierwszy na wyjściu (FIFO)**<br/><br>(przy użyciu komunikatów sesji) |
 | Gwarancja dostarczenia |**Co najmniej jednokrotne** |**Co najmniej jednokrotne**<br/><br/>**Większość jednocześnie** |
 | Niepodzielna operacja pomocy technicznej |**Nie** |**Tak**<br/><br/> |
-| Odbieranie zachowanie |**Nieblokujące**<br/><br/>(kończy natychmiast, jeśli zostanie znaleziony żaden nowy komunikat) |**Blokowanie z lub bez limitu czasu**<br/><br/>(oferuje długim sondowaniem lub ["Comet techniki"](http://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Nieblokujące**<br/><br/>(przy użyciu platformy .NET API tylko zarządzany) |
+| Odbieranie zachowanie |**Nieblokujące**<br/><br/>(kończy natychmiast, jeśli zostanie znaleziony żaden nowy komunikat) |**Blokowanie z lub bez limitu czasu**<br/><br/>(oferuje długim sondowaniem lub ["Comet techniki"](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Nieblokujące**<br/><br/>(przy użyciu platformy .NET API tylko zarządzany) |
 | Interfejsu API wypychania stylu |**Nie** |**Tak**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) i **OnMessage** sesje interfejsu API platformy .NET. |
 | Tryb odbierania |**Odbierz & dzierżawy** |**Odbierz & blokady**<br/><br/>**Odbieranie i Usuń** |
 | Tryb wyłączności |**Na podstawie dzierżawy** |**Na podstawie blokady** |
@@ -131,7 +131,7 @@ W tej sekcji porównuje kolejki magazynu i kolejek usługi Service Bus z punktu 
 | Kryteria porównania | Kolejki magazynu | Kolejki usługi Service Bus |
 | --- | --- | --- |
 | Maksymalny rozmiar kolejki |**500 TB**<br/><br/>(maksymalnie [pojedynczy pojemności konta magazynu](../storage/common/storage-introduction.md#queue-storage)) |**1 GB do 80 GB**<br/><br/>(zdefiniowane podczas tworzenia kolejki i [włączenie partycjonowania](service-bus-partitioning.md) – zobacz sekcję "Informacje dodatkowe") |
-| Maksymalny rozmiar wiadomości |**64 KB**<br/><br/>(48 KB w przypadku korzystania z **Base64** kodowania)<br/><br/>Platforma Azure obsługuje duże komunikaty, łącząc kolejki i obiekty BLOB — w tym momencie można umieścić w kolejce do 200 GB dla pojedynczego elementu. |**256 KB** lub **1 MB**<br/><br/>(łącznie z nagłówka i treści, nagłówek maksymalny rozmiar: 64 KB).<br/><br/>Zależy od [warstwy usług](service-bus-premium-messaging.md). |
+| Maksymalny rozmiar komunikatu |**64 KB**<br/><br/>(48 KB w przypadku korzystania z **Base64** kodowania)<br/><br/>Platforma Azure obsługuje duże komunikaty, łącząc kolejki i obiekty BLOB — w tym momencie można umieścić w kolejce do 200 GB dla pojedynczego elementu. |**256 KB** lub **1 MB**<br/><br/>(łącznie z nagłówka i treści, nagłówek maksymalny rozmiar: 64 KB).<br/><br/>Zależy od [warstwy usług](service-bus-premium-messaging.md). |
 | Maksymalny czas wygaśnięcia wiadomości. |**Nieskończona** (począwszy od wersji interfejsu api 2017-07-27) |**TimeSpan.Max** |
 | Maksymalna liczba kolejek |**Unlimited (nieograniczony)** |**10,000**<br/><br/>(na przestrzeń nazw usług) |
 | Maksymalna liczba współbieżnych klientów |**Unlimited (nieograniczony)** |**Unlimited (nieograniczony)**<br/><br/>(100 limit współbieżnych połączeń dotyczą tylko komunikacji oparte na protokole TCP) |

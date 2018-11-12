@@ -10,18 +10,18 @@ ms.component: recommendations
 ms.topic: overview
 ms.date: 02/15/2018
 ms.author: luisca
-ms.openlocfilehash: 59529806c322176c1d85c273a99682eaa7c13e41
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 8bdcc7ef4bbe2a769899a6db3e540e8d493e6ced
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222670"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250122"
 ---
 # <a name="recommendations-api-discontinued"></a>Interfejs API zaleceń (nieobsługiwany)
 
 Interfejs API zaleceń w wersji zapoznawczej nie jest już aktywnie programowany i został oficjalnie wycofany w dniu 15 lutego. 
 
-Jako alternatywę rozważ użycie nowego [szablonu rozwiązania zaleceń](http://aka.ms/recopcs) typu open-source, który umożliwia hostowanie aparatu zaleceń w obrębie własnej subskrypcji platformy Azure. Szablon ten obsługuje podstawowe scenariusze interfejsu API zaleceń, zapewniając równocześnie swobodę wdrażania w dowolnym regionie platformy Azure i dokładniejszą kontrolę zasobów obliczeniowych używanych do uczenia modeli i obsługi zaleceń. 
+Jako alternatywę rozważ użycie nowego [szablonu rozwiązania zaleceń](https://aka.ms/recopcs) typu open-source, który umożliwia hostowanie aparatu zaleceń w obrębie własnej subskrypcji platformy Azure. Szablon ten obsługuje podstawowe scenariusze interfejsu API zaleceń, zapewniając równocześnie swobodę wdrażania w dowolnym regionie platformy Azure i dokładniejszą kontrolę zasobów obliczeniowych używanych do uczenia modeli i obsługi zaleceń. 
 
 Aby dowiedzieć się więcej na temat szablonu rozwiązania zaleceń, zapoznaj się z [dokumentacją](https://github.com/Microsoft/Product-Recommendations). 
 

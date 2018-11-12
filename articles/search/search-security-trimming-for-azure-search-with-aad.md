@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: e19f1a63c478d17154a24c14f6700e2fb07f2467
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: ea69befb1084b08352eb3cf38db0364c5c82c45b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42060708"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237064"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Filtry zabezpieczeń do przycinania wyniki usługi Azure Search przy użyciu tożsamości usługi Active Directory
 
@@ -28,7 +28,7 @@ W tym artykule opisano następujące zadania:
 - Wysłać żądanie wyszukiwania za pomocą grupy identyfikatorów filtru
 
 >[!NOTE]
-> Przykładowe fragmenty kodu, w tym artykule są napisane w języku C#. Pełny kod źródłowy można znaleźć [w usłudze GitHub](http://aka.ms/search-dotnet-howto). 
+> Przykładowe fragmenty kodu, w tym artykule są napisane w języku C#. Pełny kod źródłowy można znaleźć [w usłudze GitHub](https://aka.ms/search-dotnet-howto). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
