@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 2efaae7794cf5f12719d3d1420d9db6903592559
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 7ef7f6548cd3dd838889fd51ff0521428bbbc2aa
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913193"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282683"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Zbieranie danych w usłudze Log Analytics przy użyciu elementu runbook usługi Azure Automation
 Znacznej ilości danych w usłudze Log Analytics może zbierać z różnych źródeł, w tym [źródeł danych](../log-analytics/log-analytics-data-sources.md) na agentach, a także [dane zbierane z platformy Azure](../log-analytics/log-analytics-azure-storage.md).  Istnieją scenariusze, chociaż wymagających zbierania danych, która nie jest dostępny za pośrednictwem tych standardowych źródeł.  W takich przypadkach można użyć [interfejsu API modułu zbierającego dane HTTP](../log-analytics/log-analytics-data-collector-api.md) można zapisać danych do usługi Log Analytics za pomocą dowolnego klienta interfejsu API REST.  Typowe metodę w celu zbierania danych używa elementu runbook w usłudze Azure Automation.   
@@ -145,7 +145,7 @@ Usługa Azure Automation obejmuje środowisko do [przetestować element runbook]
     ![Wpis w danych wyjściowych](media/monitoring-runbook-datacollect/post-output.png)
 
 ## <a name="5-verify-records-in-log-analytics"></a>5. Weryfikowanie rekordów w usłudze Log Analytics
-Gdy element runbook została ukończona w teście i upewnieniu się, że pomyślnie Odebrano dane wyjściowe, można sprawdzić, czy rekordy zostały utworzone przy użyciu [przeszukiwania dzienników w usłudze Log Analytics](../log-analytics/log-analytics-log-search.md).
+Gdy element runbook została ukończona w teście i upewnieniu się, że pomyślnie Odebrano dane wyjściowe, można sprawdzić, czy rekordy zostały utworzone przy użyciu [przeszukiwania dzienników w usłudze Log Analytics](../log-analytics/log-analytics-queries.md).
 
 ![Dane wyjściowe dziennika](media/monitoring-runbook-datacollect/log-output.png)
 
@@ -198,7 +198,7 @@ Po utworzeniu harmonogramu, musisz podać wartości parametrów, które będą u
 8. Kliknij przycisk **OK**. 
 
 ## <a name="9-verify-runbook-starts-on-schedule"></a>9. Sprawdź element runbook uruchamia zgodnie z harmonogramem
-Za każdym, gdy element runbook jest uruchamiany, [tworzone jest zadanie](../automation/automation-runbook-execution.md) i wszelkie dane wyjściowe rejestrowane.  W rzeczywistości są one tych samych zadań, które zbiera elementu runbook.  Aby sprawdzić, czy element runbook uruchamiany zgodnie z oczekiwaniami, sprawdzając zadania elementu runbook, po upływie czasu rozpoczęcia dla harmonogramu.
+Za każdym razem, gdy element runbook jest uruchamiany, [tworzone jest zadanie](../automation/automation-runbook-execution.md) i wszelkie dane wyjściowe rejestrowane.  W rzeczywistości są one tych samych zadań, które zbiera elementu runbook.  Aby sprawdzić, czy element runbook uruchamiany zgodnie z oczekiwaniami, sprawdzając zadania elementu runbook, po upływie czasu rozpoczęcia dla harmonogramu.
 
 ![Stanowiska](media/monitoring-runbook-datacollect/jobs.png)
 

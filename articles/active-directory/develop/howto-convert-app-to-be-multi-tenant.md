@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: 61238482339250e45be36162e7eef252f78c74b1
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
-ms.translationtype: HT
+ms.openlocfilehash: 6581081f0f34f73c915f0b026a3ed50816f6731f
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288989"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298947"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Porady: logowanie dowolnego użytkownika usługi Azure Active Directory za pomocą wzorca aplikacji wielodostępnych
 
@@ -118,7 +118,7 @@ Niektóre uprawnienia mogą wyrażono zgodę przez zwykłego użytkownika, a inn
 
 Uprawnień dotyczących tylko aplikacji zawsze wymagają zgody administratora dzierżawy. Jeśli Twoja aplikacja żąda uprawnienia tylko do aplikacji, a użytkownik próbuje zalogować się do aplikacji, jest wyświetlany komunikat o błędzie, informujący o tym, że użytkownik nie jest w stanie do wyrażenia zgody.
 
-Niektóre uprawnienia delegowane również wymagają zgody administratora dzierżawy. Na przykład możliwość zapisania z powrotem do usługi Azure AD jako zalogowany użytkownik wymaga zgody administratora dzierżawy. Jak uprawnień dotyczących tylko aplikacji Jeśli zwykły użytkownik próbuje zalogować się do aplikacji, która żąda uprawnienia delegowanego, który wymaga zgody administratora aplikacji otrzymuje informację o błędzie. Czy uprawnienie wymaga zgody administratora jest określany przez dewelopera, opublikowane zasobu, która znajduje się w dokumentacji dla zasobu. W dokumentacji uprawnienia [interfejsu API usługi Azure AD Graph] [ AAD-Graph-Perm-Scopes] i [interfejsu API Microsoft Graph] [ MSFT-Graph-permision-scopes] wskazują, uprawnienia, które wymagają administratora wyrażenie zgody.
+Niektóre uprawnienia delegowane również wymagają zgody administratora dzierżawy. Na przykład możliwość zapisania z powrotem do usługi Azure AD jako zalogowany użytkownik wymaga zgody administratora dzierżawy. Jak uprawnień dotyczących tylko aplikacji Jeśli zwykły użytkownik próbuje zalogować się do aplikacji, która żąda uprawnienia delegowanego, który wymaga zgody administratora aplikacji otrzymuje informację o błędzie. Czy uprawnienie wymaga zgody administratora jest określany przez dewelopera, opublikowane zasobu, która znajduje się w dokumentacji dla zasobu. W dokumentacji uprawnienia [interfejsu API usługi Azure AD Graph] [ AAD-Graph-Perm-Scopes] i [interfejsu API Microsoft Graph] [ MSFT-Graph-permission-scopes] wskazują, uprawnienia, które wymagają administratora wyrażenie zgody.
 
 Jeśli aplikacja używa uprawnień, które wymagają zgody administratora, musisz mieć gest, takich jak przycisk lub łącze, gdzie administrator może zainicjować akcji. Żądania, Twoja aplikacja przesyła ta akcja jest zwykle OAuth2/OpenID Connect żądanie autoryzacji, która obejmuje również `prompt=admin_consent` parametr ciągu zapytania. Gdy administrator wyraził zgodę i nazwy głównej usługi jest tworzony w dzierżawie klienta, kolejne żądania logowania nie ma potrzeby `prompt=admin_consent` parametru. Ponieważ administrator podjęto decyzję, że żądane uprawnienia są dopuszczalne, żaden użytkownik w dzierżawie monit o zgodę od tego momentu.
 
@@ -184,7 +184,7 @@ W tym artykule przedstawiono sposób tworzenia aplikacji, która może zalogowa�
 * [Obiekty aplikacji i obiektów nazw głównych usług][AAD-App-SP-Objects]
 * [Integrowanie aplikacji z usługą Azure Active Directory][AAD-Integrating-Apps]
 * [Omówienie platformy wyrażania zgody][AAD-Consent-Overview]
-* [Zakresy uprawnień interfejsu API Microsoft Graph][MSFT-Graph-permision-scopes]
+* [Zakresy uprawnień interfejsu API Microsoft Graph][MSFT-Graph-permission-scopes]
 * [Zakresy uprawnień w usłudze Azure AD Graph API][AAD-Graph-Perm-Scopes]
 
 <!--Reference style links IN USE -->
@@ -202,7 +202,7 @@ W tym artykule przedstawiono sposób tworzenia aplikacji, która może zalogowa�
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
 [MSFT-Graph-overview]: https://developer.microsoft.com/graph/docs/overview/overview
-[MSFT-Graph-permision-scopes]: https://developer.microsoft.com/graph/docs/concepts/permissions_reference
+[MSFT-Graph-permission-scopes]: https://developer.microsoft.com/graph/docs/concepts/permissions_reference
 
 <!--Image references-->
 [AAD-Sign-In]: ./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png

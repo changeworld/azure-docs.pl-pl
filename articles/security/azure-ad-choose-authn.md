@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: a322edbc6825261dde0fd926a362ca037739e06e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f1fd60774f5790a514e540984812fc1aaf6e38e0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388062"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238917"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wybierz metodę uwierzytelniania odpowiednie dla Twojego rozwiązania tożsamości hybrydowej usługi Azure Active Directory 
 
@@ -68,6 +68,18 @@ Poniższa sekcja pomoże Ci zdecydować, której metody uwierzytelniania jest od
 ## <a name="decision-tree"></a>Drzewo decyzyjne
 
 ![Drzewo decyzyjne uwierzytelniania w usłudze Azure AD](media/azure-ad/azure-ad-authn-image1.png)
+
+Szczegółowe informacje dotyczące decyzji pytania:
+
+1. Usługa Azure AD może obsłużyć logowania dla użytkowników bez polegania na składniki lokalne do weryfikowania haseł.
+2. Usługa Azure AD oddać logowania użytkownika do dostawcy uwierzytelniania zaufanych, takich jak usługi AD FS firmy Microsoft.
+3. Jeśli trzeba zastosować zasady zabezpieczeń usługi Active Directory poziomie użytkownika, takie jak konto wygasło, wyłączone konto, hasło wygasło, logowania, konta zablokowane i godziny logowania dla poszczególnych użytkowników, usługa Azure AD wymaga niektórych składników w środowisku lokalnym.
+4. Funkcje logowania nieobsługiwane natywnie przez usługę Azure AD:
+   * Zaloguj się przy użyciu kart inteligentnych lub certyfikatów.
+   * Zaloguj się przy użyciu serwera usługi MFA w środowisku lokalnym.
+   * Zaloguj się przy użyciu 3rd rozwiązanie uwierzytelniania innej firmy.
+   * Połączenia obejmujące wiele lokacji lokalnych rozwiązań uwierzytelniania.
+5. Usługa Azure AD Identity Protection wymaga synchronizacji skrótów haseł, niezależnie od tego, w jakiej metody logowania wybierzesz, aby zapewnić raportu "Użytkownicy z ujawnionymi poświadczeniami". Organizacje mogą tryb failover do synchronizacji skrótów haseł, jeśli ich podstawowej metody logowania nie powiedzie się i została skonfigurowana przed wystąpieniem zdarzenia awarii.
 
 ## <a name="detailed-considerations"></a>Opis szczegółowych zagadnień
 
@@ -207,4 +219,4 @@ W dzisiejszym świecie zagrożeń są obecne 24 godziny na dobę i pochodzić z 
 
 [Rozpoczynanie pracy](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad) z usługą Azure AD i wdróż rozwiązanie uwierzytelniania odpowiednie dla Twojej organizacji.
 
-Jeśli myślisz o migracji z federacyjnego uwierzytelniania w chmurze, Dowiedz się więcej o [zmiana metody logowania](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#changing-the-user-sign-in-method). Aby ułatwić planowanie i implementowanie migracji, należy użyć [planów wdrożenia tych projektów](http://aka.ms/deploymentplans).
+Jeśli myślisz o migracji z federacyjnego uwierzytelniania w chmurze, Dowiedz się więcej o [zmiana metody logowania](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#changing-the-user-sign-in-method). Aby ułatwić planowanie i implementowanie migracji, należy użyć [planów wdrożenia tych projektów](https://aka.ms/deploymentplans).

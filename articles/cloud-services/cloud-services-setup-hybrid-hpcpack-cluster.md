@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie klastra HPC Pack hybrydowe na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak i do skonfigurowania hybrydowego wysokiej wydajności (HPC) klastrów obliczeniowych mały Użyj Microsoft HPC Pack i Azure
+title: Konfigurowanie hybrydowego klastra HPC Pack na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować mały hybrydowego obliczeń (HPC) klastra o wysokiej wydajności. za pomocą pakietu Microsoft HPC Pack i na platformie Azure
 services: cloud-services
 documentationcenter: ''
 author: dlepow
@@ -15,208 +15,208 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: danlep
-ms.openlocfilehash: ad5c13723eef352148a40e3e7f4f2ff616867296
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 55dfd7e5ea93ae941d73612cc70ed82d48db725a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2017
-ms.locfileid: "23985310"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236742"
 ---
-# <a name="set-up-a-hybrid-high-performance-computing-hpc-cluster-with-microsoft-hpc-pack-and-on-demand-azure-compute-nodes"></a>Skonfiguruj hybrydowych wysokiej wydajności obliczeniowej klastra (HPC) z pakietu Microsoft HPC Pack i węzłów obliczeń platformy Azure na żądanie
-Umożliwia Microsoft HPC Pack 2012 R2 i Azure skonfigurować małe, hybrydowego wysokiej wydajności obliczeniowej klastra (HPC). Klastra wyświetlane w tym artykule składa się z węzłem głównym HPC Pack lokalnymi i niektóre wyliczenia węzłów wdrażanie na żądanie w systemie Azure usługa w chmurze. Następnie można uruchomić zadania obliczeń w klastrze hybrydowego.
+# <a name="set-up-a-hybrid-high-performance-computing-hpc-cluster-with-microsoft-hpc-pack-and-on-demand-azure-compute-nodes"></a>Konfigurowanie hybrydowego klastra obliczeń o wysokiej wydajności za pomocą pakietu Microsoft HPC Pack i węzłów obliczeniowych platformy Azure na żądanie
+Skonfigurować małe, hybrydowych obliczeń o wysokiej wydajności (HPC) klastra za pomocą pakietu Microsoft HPC Pack 2012 R2 i na platformie Azure. Klaster przedstawione w tym artykule zawiera węzeł główny HPC Pack do środowiska lokalnego i niektóre obliczeniowe węzły, które można wdrożyć na żądanie na platformie Azure usługa w chmurze. Następnie można uruchomić zadania obliczeniowe w klastrze hybrydowym.
 
-![Klaster HPC hybrydowego][Overview] 
+![Hybrydowego klastra HPC][Overview] 
 
-Ten samouczek pokazuje, jednym z podejść, czasem nazywana klastrem "serii w chmurze" na potrzeby uruchamiania aplikacji obliczeniowych skalowalne, na żądanie zasobów platformy Azure.
+W tym samouczku pokazano jedno z podejść, czasami nazywane "dużego ruchu do chmury," klaster na potrzeby uruchamiania aplikacji intensywnie korzystających z obliczeń skalowalne i na żądanie zasobów platformy Azure.
 
-Ten samouczek zakłada nie doświadczenie z lub klastry obliczeniowe HPC Pack. Ma ona tylko pomogą Ci we wdrażaniu klastra obliczeniowego hybrydowego szybko w celach demonstracyjnych. Zagadnienia i czynności, aby wdrożyć klaster HPC Pack hybrydowe na większą skalę w środowisku produkcyjnym lub użyć HPC Pack 2016, zobacz [szczegółowe wskazówki](http://go.microsoft.com/fwlink/p/?LinkID=200493). W innych sytuacjach pakietem HPC łącznie z automatycznego wdrażania klastra na maszynach wirtualnych Azure, zobacz [opcje klastra HPC z pakietem Microsoft HPC w systemie Azure](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+W tym samouczku przyjęto założenie, nie musisz mieć doświadczenia, klastry obliczeniowe lub pakietu HPC Pack. Jej celem jest tylko pomocne we wdrażaniu hybrydowy klaster obliczeniowy szybko w celach demonstracyjnych. Zagadnień i sposobów wdrażania hybrydowego klastra HPC Pack na większą skalę w środowisku produkcyjnym lub użyć zestawu HPC Pack 2016, zobacz [szczegółowe wskazówki](https://go.microsoft.com/fwlink/p/?LinkID=200493). W innych sytuacjach za pomocą pakietu HPC Pack w tym automatyczne wdrożenie klastra na maszynach wirtualnych platformy Azure, zobacz [opcji klastra HPC za pomocą pakietu Microsoft HPC Pack na platformie Azure](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * **Subskrypcja platformy Azure** — Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/) w zaledwie kilka minut.
-* **Na komputerze lokalnym systemem Windows Server 2012 R2 lub Windows Server 2012** -używa tego komputera jako węzła głównego klastra HPC. Jeśli nie są już systemem Windows Server, musisz pobrać i zainstalować [wersji ewaluacyjnej](https://www.microsoft.com/evalcenter/evaluate-windows-server-2012-r2).
+* **Na komputerze lokalnym systemem Windows Server 2012 R2 lub Windows Server 2012** — korzystać z tego komputera jako węzłem głównym klastra HPC. Jeśli nie są jeszcze uruchomiony system Windows Server, można go pobrać i zainstalować [wersję ewaluacyjną](https://www.microsoft.com/evalcenter/evaluate-windows-server-2012-r2).
   
-  * Komputer musi należeć do domeny usługi Active Directory. Do celów testowych można skonfigurować węzła głównego komputer jako kontroler domeny. Aby dodać rolę serwera usług domenowych w usłudze Active Directory, a następnie Podwyższ węzła głównego komputer jako kontroler domeny, zobacz dokumentację dla systemu Windows Server.
-  * Aby obsługiwać HPC Pack, systemu operacyjnego muszą zostać zainstalowane w jednym z tych języków: angielski, japoński lub angielski, chiński (uproszczony).
-  * Sprawdź, czy krytycznych i ważne aktualizacje są instalowane.
-* **HPC Pack 2012 R2** - [Pobierz](http://go.microsoft.com/fwlink/p/?linkid=328024) instalacji pakietu do najnowszej wersji bezpłatnie i skopiuj pliki na komputerze węzła głównego. Wybierz pliki instalacyjne, w tym samym języku co instalacji systemu Windows Server.
+  * Komputer musi należeć do domeny usługi Active Directory. Do celów testowych można skonfigurować komputer węzłem jako kontroler domeny. Aby dodać rolę serwera usług domenowych Active Directory i przyczyniają się do komputera z węzłem głównym jako kontroler domeny, zobacz dokumentację dla systemu Windows Server.
+  * Aby zapewnić obsługę pakietu HPC Pack, należy zainstalowany system operacyjny w jednym z tych języków: angielski, japoński lub chiński (uproszczony).
+  * Sprawdź, czy są zainstalowane ważne aktualizacje krytyczne.
+* **HPC Pack 2012 R2** - [Pobierz](https://go.microsoft.com/fwlink/p/?linkid=328024) instalacji pakietu do najnowszej wersji bezpłatna i skopiuj pliki do komputera węzła głównego. Wybierz pliki instalacyjne, w tym samym języku co instalacji systemu Windows Server.
 
     >[!NOTE]
-    > Jeśli chcesz użyć HPC Pack 2016 zamiast HPC Pack 2012 R2, są wymagane dodatkowe czynności konfiguracyjne. Zobacz [szczegółowe wskazówki](http://go.microsoft.com/fwlink/p/?LinkID=200493).
+    > Dodatkowa konfiguracja jest potrzebna, jeśli chcesz użyć zestawu HPC Pack 2016 zamiast HPC Pack 2012 R2. Zobacz [szczegółowe wskazówki](https://go.microsoft.com/fwlink/p/?LinkID=200493).
     > 
-* **Konto domeny** — to konto musi mieć uprawnienia administratora lokalnego w węźle głównym HPC Pack instalacji.
-* **Połączenie TCP na porcie 443** z węzłem głównym na platformie Azure.
+* **Konto domeny** — to konto musi mieć prawa administratora lokalnego na węzeł główny do zainstalowania pakietu HPC Pack.
+* **Łączność TCP na porcie 443** z węzła głównego do platformy Azure.
 
-## <a name="install-hpc-pack-on-the-head-node"></a>Zainstaluj w węźle głównym HPC Pack
-Microsoft HPC Pack należy najpierw zainstalować na komputerze lokalnym systemem Windows Server. Ten komputer staje się węzła głównego klastra.
+## <a name="install-hpc-pack-on-the-head-node"></a>Instalowanie pakietu HPC Pack na węzeł główny
+Możesz najpierw zainstalować pakiet Microsoft HPC Pack na komputerze w środowisku lokalnym z systemem Windows Server. Ten komputer staje się z węzłem głównym klastra.
 
-1. Zaloguj się do węzła głównego przy użyciu konta domeny, które ma uprawnienia administratora lokalnego.
+1. Zaloguj się do węzła głównego przy użyciu konta domeny mającego uprawnienia administratora lokalnego.
 
-2. Uruchom Kreatora instalacji pakietu HPC, uruchamiając polecenie Setup.exe z plików instalacyjnych HPC Pack.
+2. Uruchom Kreatora instalacji pakietu HPC Pack, uruchamiając polecenie Setup.exe przy użyciu plików instalacyjnych pakietu HPC Pack.
 
-3. Na **Instalator HPC Pack 2012 R2** kliknij **nowej instalacji lub dodawania nowych funkcji do istniejącej instalacji**.
+3. Na **Instalator HPC Pack 2012 R2** ekranu, kliknij przycisk **nowa instalacja lub Dodaj nowe funkcje do istniejącej instalacji**.
 
     ![HPC Pack 2012 Instalatora][install_hpc1]
 
-4. Na **strony Umowy użytkownika oprogramowania Microsoft**, kliknij przycisk **dalej**.
+4. Na **strony umowę z użytkownikiem oprogramowania Microsoft**, kliknij przycisk **dalej**.
 
-5. Na **Wybieranie typu instalacji** kliknij przycisk **utworzenie nowego klastra HPC, tworząc węzła głównego**, a następnie kliknij przycisk **dalej**.
+5. Na **Wybieranie typu instalacji** kliknij **utworzenie nowego klastra HPC, tworząc węzła głównego**, a następnie kliknij przycisk **dalej**.
 
-6. Kreator przeprowadza kilku testów przed instalacją. Kliknij przycisk **dalej** na **reguły instalacji** strony, jeśli wszystkie testy zostały zaliczone pomyślnie. W przeciwnym razie zapoznaj się z informacjami i wprowadź niezbędne zmiany w danym środowisku. Następnie ponownie uruchom testy lub w razie potrzeby uruchom Kreatora instalacji ponownie.
-7. Na **konfiguracji bazy danych HPC** upewnij się, że **Head, węzła** jest zaznaczone dla wszystkich baz danych HPC, a następnie kliknij przycisk **dalej**. 
+6. Kreator uruchamia się wiele testów przed instalacją. Kliknij przycisk **dalej** na **reguły instalacji** strony, jeśli wszystkie testy zostały zakończone pomyślnie. W przeciwnym razie zapoznaj się z informacjami, pod warunkiem i wprowadź niezbędne zmiany w danym środowisku. Następnie uruchom ponownie testy, lub w razie potrzeby uruchom Kreatora instalacji ponownie.
+7. Na **konfiguracji bazy danych HPC** strony, upewnij się, że **węzeł główny** jest zaznaczone dla wszystkich baz danych HPC, a następnie kliknij przycisk **dalej**. 
 
     ![Konfiguracja bazy danych][install_hpc4]
 
-8. Zaakceptuj domyślne na pozostałych stronach kreatora. Na **zainstalować wymagane składniki** kliknij przycisk **zainstalować**.
+8. Zaakceptuj domyślne wartości na pozostałych stronach kreatora. Na **zainstalować wymagane składniki** kliknij **zainstalować**.
    
     ![Instalowanie][install_hpc6]
 
-9. Po zakończeniu instalacji, usuń zaznaczenie pola wyboru **Uruchom Menedżera klastra HPC** , a następnie kliknij przycisk **Zakończ**. (Można uruchomić Menedżera klastra HPC w kolejnym kroku.)
+9. Po zakończeniu instalacji, usuń zaznaczenie pola wyboru **Uruchom Menedżera klastra HPC** a następnie kliknij przycisk **Zakończ**. (Możesz rozpocząć Menedżer klastra HPC w późniejszym kroku.)
    
     ![Zakończ][install_hpc7]
 
 ## <a name="prepare-the-azure-subscription"></a>Przygotowanie subskrypcji platformy Azure
-Wykonaj poniższe kroki w [portalu Azure](https://portal.azure.com) z subskrypcją platformy Azure. Po wykonaniu tych czynności można wdrożyć węzły platformy Azure z węzłem głównym lokalnymi. 
+Wykonaj poniższe kroki w [witryny Azure portal](https://portal.azure.com) z subskrypcją platformy Azure. Po wykonaniu tych czynności można wdrożyć węzły na platformie Azure z węzłem głównym w środowisku lokalnym. 
   
   > [!NOTE]
-  > Również Zanotuj identyfikator subskrypcji platformy Azure, która jest potrzebna później. Identyfikator znajduje się w **subskrypcje** w portalu.
+  > Ponadto Zanotuj identyfikator subskrypcji platformy Azure, w którym będą potrzebne później. Identyfikator znajduje się w **subskrypcje** w portalu.
   > 
 
-### <a name="upload-the-default-management-certificate"></a>Przekaż domyślnego certyfikatu zarządzania
-HPC Pack instaluje certyfikat z podpisem własnym na węzła głównego o nazwie certyfikatu domyślne Microsoft HPC Azure Management, który można przekazać jako certyfikat zarządzania platformy Azure. Ten certyfikat jest dostępne w celu wdrożenia testowania i weryfikacja koncepcji bezpiecznego połączenia między węzłem głównym i platformą Azure.
+### <a name="upload-the-default-management-certificate"></a>Przekaż domyślny certyfikat zarządzania
+Pakiet HPC Pack instaluje certyfikat z podpisem własnym w węźle głównym o nazwie certyfikat zarządzania Azure domyślne HPC firmy Microsoft, można przekazać jako certyfikat zarządzania platformy Azure. Ten certyfikat znajduje się do testowania i weryfikacji koncepcji wdrożenia do zabezpieczenia połączenia między węzłem głównym i platformą Azure.
 
-1. Na komputerze węzła głównego, zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Na komputerze węzła głównego, zaloguj się do [witryny Azure portal](https://portal.azure.com).
 
 2. Kliknij przycisk **subskrypcje** > *your_subscription_name*.
 
-3. Kliknij przycisk **certyfikaty zarządzania** > **przekazać**.
+3. Kliknij przycisk **certyfikaty zarządzania** > **przekazywanie**.
 
-4. Przeglądaj w węźle głównym dla pliku 2012\Bin\hpccert.cer C:\Program Files\Microsoft HPC Pack. Następnie kliknij przycisk **przekazać**.
+4. Przeglądaj w węźle głównym dla pliku 2012\Bin\hpccert.cer C:\Program Files\Microsoft HPC Pack. Następnie kliknij przycisk **przekazywanie**.
 
    
-**Domyślne HPC Azure Management** certyfikatu zostanie wyświetlony na liście certyfikatów zarządzania.
+**Domyślne HPC Azure Management** certyfikat zostanie wyświetlony na liście certyfikatów zarządzania.
 
 ### <a name="create-an-azure-cloud-service"></a>Tworzenie usługi w chmurze platformy Azure
 > [!NOTE]
-> Aby uzyskać najlepszą wydajność należy utworzyć usługi w chmurze i konto magazynu (w kolejnym kroku) w tym samym regionie geograficznym.
+> Aby uzyskać najlepszą wydajność należy utworzyć usługę w chmurze i konto magazynu (w dalszej części) w tym samym regionie geograficznym.
 > 
 > 
 
-1. W portalu kliknij **usługi (klasyczne) w chmurze** > **+ Dodaj**.
+1. W portalu, kliknij przycisk **Cloud services (wersja klasyczna)** > **+ Dodaj**.
 
-2.  Wpisz nazwę DNS dla usługi, wybierz grupę zasobów i lokalizację, a następnie kliknij **Utwórz**.
+2.  Wpisz nazwę DNS dla usługi, wybierz grupę zasobów i lokalizację, a następnie kliknij przycisk **Utwórz**.
 
 
 ### <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
-1. W portalu kliknij **kont magazynu (klasyczne)** > **+ Dodaj**.
+1. W portalu, kliknij przycisk **konta magazynu (klasyczne)** > **+ Dodaj**.
 
-2. Wpisz nazwę konta, a następnie wybierz **klasycznego** modelu wdrażania.
+2. Wpisz nazwę konta, a następnie wybierz pozycję **klasycznego** modelu wdrażania.
 
-3. Wybierz grupę zasobów i lokalizację i pozostaw innych ustawień na wartości domyślne. Następnie kliknij pozycję **Utwórz**.
+3. Wybierz grupę zasobów i lokalizacji i pozostaw ustawienia domyślne wartości. Następnie kliknij pozycję **Utwórz**.
 
-## <a name="configure-the-head-node"></a>Skonfiguruj węzła głównego
-Aby użyć Menedżera klastra HPC, aby wdrożyć węzły platformy Azure i do przesyłania zadań, należy najpierw wykonać pewne czynności konfiguracyjne wymagane klastra.
+## <a name="configure-the-head-node"></a>Konfigurowanie węzła głównego
+Aby wdrożyć węzły na platformie Azure i przesyłania zadań, należy użyć Menedżera klastra HPC, należy najpierw wykonać pewne czynności konfiguracyjne wymagane klastra.
 
-1. W węźle głównym Uruchom Menedżera klastra HPC. Jeśli **wybierz węzeł Head** zostanie wyświetlone okno dialogowe, kliknij przycisk **komputera lokalnego**. **Listy zadań do wykonania wdrożenia** pojawi się.
+1. W węźle głównym Uruchom Menedżera klastra HPC. Jeśli **wybierz węzeł główny** pojawi się okno dialogowe, kliknij przycisk **komputera lokalnego**. **Listy zadań do wykonania wdrożenia** pojawia się.
 
-2. W obszarze **wymagane zadania wdrażania**, kliknij przycisk **konfiguracji sieci**.
+2. W obszarze **wymagane zadania związane z wdrażaniem**, kliknij przycisk **skonfigurować sieć**.
    
     ![Konfigurowanie sieci][config_hpc2]
 
-3. W Kreatorze konfiguracji sieci wybierz **wszystkie węzły tylko w sieci przedsiębiorstwa** (topologia 5). Ta konfiguracja sieci jest najprostsza dla celów demonstracyjnych.
+3. W Kreatorze konfiguracji sieci wybierz **wszystkie węzły tylko w sieci przedsiębiorstwa** (topologia 5). Ta konfiguracja sieci jest najprostszym dla celów demonstracyjnych.
    
     ![Topologia 5][config_hpc3]
    
-4. Kliknij przycisk **dalej** zaakceptować wartości domyślne na pozostałych stronach kreatora. Następnie na **przeglądu** , kliknij pozycję **Konfiguruj** w celu ukończenia konfiguracji sieci.
+4. Kliknij przycisk **dalej** aby zaakceptować domyślne wartości na pozostałych stronach kreatora. Następnie na **przeglądu** kliknij pozycję **Konfiguruj** w celu ukończenia konfiguracji sieci.
 
 5. W **listy zadań do wykonania wdrożenia**, kliknij przycisk **poświadczenia instalacji**.
 
-6. W **poświadczeń instalacji** oknie dialogowym wpisz poświadczenia konta domeny, które zostały użyte do zainstalowania HPC Pack. Następnie kliknij przycisk **OK**. 
+6. W **poświadczenia instalacji** okna dialogowego wpisz poświadczenia konta domeny, które umożliwia zainstalowanie pakietu HPC Pack. Następnie kliknij przycisk **OK**. 
    
     ![Poświadczenia instalacji][config_hpc6]
    
-7. W **listy zadań do wykonania wdrożenia**, kliknij przycisk **skonfigurować nazewnictwa nowe węzły**.
+7. W **listy zadań do wykonania wdrożenia**, kliknij przycisk **konfigurowanie nazw nowych węzłów**.
 
-8. W **Określ węzeł nazwy serii** okna dialogowego Zaakceptuj domyślne nazwy serii i kliknij przycisk **OK**. Ukończenia tego kroku, nawet jeśli węzły platformy Azure, dodane w tym samouczku są nazywane automatycznie.
+8. W **Określ serii nazw węzła** okna dialogowego pole, zaakceptuj wartość domyślną nazewnictwa serii i kliknij przycisk **OK**. Mimo że Azure węzły, które możesz dodać w tym samouczku są nazywane automatycznie, należy wykonać ten krok.
    
-    ![Węzeł nazewnictwa][config_hpc8]
+    ![Nadawanie nazw węzła][config_hpc8]
    
-9. W **listy zadań do wykonania wdrożenia**, kliknij przycisk **Tworzenie szablonu węzła**. Później w samouczku używasz szablonu węzła Aby dodać węzły platformy Azure do klastra.
+9. W **listy zadań do wykonania wdrożenia**, kliknij przycisk **Tworzenie szablonu węzła**. W dalszej części samouczka używasz szablonu węzła można dodać węzły platformy Azure do klastra.
 
-10. W węźle Kreator tworzenia szablonu wykonaj następujące czynności:
+10. W węźle Kreatora tworzenia szablonu wykonaj następujące czynności:
     
-    a. Na **wybierz typ szablonu węzła** kliknij przycisk **szablonu węzła w systemie Windows Azure**, a następnie kliknij przycisk **dalej**.
+    a. Na **wybierz typ szablonu węzła** kliknij **szablonu węzła usługi Windows Azure**, a następnie kliknij przycisk **dalej**.
     
-    ![Szablon węzła][config_hpc10]
+    ![Węzeł szablonu][config_hpc10]
     
-    b. Kliknij przycisk **dalej** zaakceptować domyślną nazwę szablonu.
+    b. Kliknij przycisk **dalej** do Zaakceptuj domyślną nazwę szablonu.
     
-    c. Na **Podaj informacje o subskrypcji** wprowadź identyfikator subskrypcji platformy Azure (dostępne w danych konta platformy Azure). Następnie w **certyfikat zarządzania**, wyszukaj **domyślne Microsoft HPC Azure Management.** Następnie kliknij przycisk **Next** (Dalej).
+    c. Na **Podaj informacje o subskrypcji** strony, wprowadź swój identyfikator subskrypcji platformy Azure (dostępna w informacje o Twoim koncie platformy Azure). Następnie w **certyfikat zarządzania**, Przeglądaj w poszukiwaniu **domyślne Microsoft HPC Azure Management.** Następnie kliknij przycisk **Next** (Dalej).
     
-    ![Szablon węzła][config_hpc12]
+    ![Węzeł szablonu][config_hpc12]
     
     d. Na **Podaj informacje o usłudze** wybierz usługę w chmurze i konto magazynu, który został utworzony w poprzednim kroku. Następnie kliknij przycisk **Next** (Dalej).
     
-    ![Szablon węzła][config_hpc13]
+    ![Węzeł szablonu][config_hpc13]
     
-    e. Kliknij przycisk **dalej** zaakceptować wartości domyślne na pozostałych stronach kreatora. Następnie na **przeglądu** , kliknij pozycję **Utwórz** do utworzenia szablonu węzła.
+    e. Kliknij przycisk **dalej** aby zaakceptować domyślne wartości na pozostałych stronach kreatora. Następnie na **przeglądu** kliknij pozycję **Utwórz** tworzenia szablonu węzła.
     
     > [!NOTE]
-    > Domyślnie szablon Azure węzła zawiera ustawienia umożliwiające uruchamianie (udostępniania) i zatrzymywanie węzłów ręcznie, za pomocą Menedżera klastra HPC. Opcjonalnie można skonfigurować harmonogram uruchamiania i zatrzymywania automatycznie węzły platformy Azure.
+    > Domyślnie szablon węzeł platformy Azure zawiera ustawienia umożliwiające uruchamianie (zainicjować obsługi administracyjnej) i zatrzymywanie węzły ręcznie, przy użyciu Menedżera klastra HPC. Opcjonalnie można skonfigurować harmonogram w celu uruchamiania i zatrzymywania automatycznie węzły na platformie Azure.
     > 
     > 
 
-## <a name="add-azure-nodes-to-the-cluster"></a>Dodaj węzły platformy Azure do klastra
-Teraz można użyć szablonu węzła, aby dodać węzły platformy Azure do klastra. Dodawania węzłów do klastra są przechowywane informacje o ich konfiguracji, tak aby (zainicjować obsługi administracyjnej) można uruchomić je w dowolnym momencie w usłudze w chmurze. Subskrypcja tylko pobiera obciążony węzły platformy Azure po uruchomionych wystąpień w usłudze w chmurze.
+## <a name="add-azure-nodes-to-the-cluster"></a>Dodaj węzły na platformie Azure do klastra
+Teraz można dodać węzły platformy Azure do klastra należy użyć szablonu węzła. Dodawania węzłów do klastra są przechowywane informacje o ich konfiguracji, tak, aby uruchomić (zainicjować obsługi administracyjnej) je w dowolnym momencie w usłudze w chmurze. Twoja subskrypcja pobiera naliczane tylko za węzły na platformie Azure po uruchomieniu wystąpienia w usłudze w chmurze.
 
 Wykonaj następujące kroki, aby dodać dwa węzły małych.
 
-1. W Menedżerze klastra HPC, kliknij przycisk **węzła zarządzania** (nazywane **zarządzanie zasobami** w bieżącej wersji pakietu HPC) > **Dodaj węzeł**.
+1. W Menedżerze klastra HPC, kliknij przycisk **zarządzania węzłami** (o nazwie **zarządzania zasobami** w bieżących wersjach pakietu HPC Pack) > **Dodaj węzeł**.
    
     ![Dodaj węzeł][add_node1]
 
-2. W Kreatorze dodawania węzła na **wybierz metodę wdrożenia** kliknij przycisk **węzłów dodać systemu Windows Azure**, a następnie kliknij przycisk **dalej**.
+2. W Kreatorze dodawania węzłów na **wybierz metodę wdrożenia** kliknij **węzłów Dodaj platformy Windows Azure**, a następnie kliknij przycisk **dalej**.
    
-    ![Dodaj węzeł Azure][add_node1_1]
+    ![Dodaj węzeł platformy Azure][add_node1_1]
 
-3. Na **określ nowe węzły** wybierz wcześniej utworzony szablon Azure węzeł (nazywany domyślnie **domyślny szablon AzureNode**). Następnie określ **2** węzłów rozmiar **małych**, a następnie kliknij przycisk **dalej**.
+3. Na **określ nowe węzły** stronie, wybierz szablon węzeł platformy Azure, który został wcześniej utworzony (o nazwie domyślnie **domyślnego szablonu AzureNode**). Następnie określ **2** węzłów o rozmiarze **małych**, a następnie kliknij przycisk **dalej**.
    
-    ![Określ węzły][add_node2]
+    ![Określ węzłów][add_node2]
    
-4. Na **Kończenie pracy Kreatora dodawania węzłów** kliknij przycisk **Zakończ**.
+4. Na **Kończenie pracy Kreatora dodawania węzłów** kliknij **Zakończ**.
     
-     Dwa węzły platformy Azure o nazwie **AzureCN 0001** i **AzureCN 0002**, zostaną wyświetlone w Menedżerze klastra HPC. Są w **wdrożone nie** stanu.
+     Dwa węzły platformy Azure, o nazwie **AzureCN 0001** i **AzureCN 0002**, pojawiają się w Menedżerze klastra HPC. Oba są w **wdrożone nie** stanu.
    
-    ![Dodanych węzłach][add_node3]
+    ![Dodano węzłów][add_node3]
 
-## <a name="start-the-azure-nodes"></a>Uruchom węzły platformy Azure
-Jeśli chcesz korzystać z zasobów klastra na platformie Azure, należy użyć Menedżera klastra HPC do uruchomienia węzłów (zainicjować obsługi administracyjnej) platformy Azure i umieść je w tryb online.
+## <a name="start-the-azure-nodes"></a>Rozpocznij węzły na platformie Azure
+Jeśli chcesz korzystać z zasobów klastra na platformie Azure umożliwia Menedżer klastrów HPC uruchomienie węzłów (zainicjować obsługi administracyjnej) platformy Azure i przełączyć w tryb online.
 
-1. W Menedżerze klastra HPC, kliknij przycisk **węzła zarządzania** (nazywane **zarządzanie zasobami** w bieżącej wersji pakietu HPC) i wybierz węzły platformy Azure.
+1. W Menedżerze klastra HPC, kliknij przycisk **zarządzania węzłami** (o nazwie **zarządzania zasobami** w bieżących wersjach pakietu HPC Pack) i wybierz węzły na platformie Azure.
 
 2. Kliknij przycisk **Start**, a następnie kliknij przycisk **OK**.
    
-   ![Uruchom węzłów][add_node4]
+   ![Uruchomienie węzłów][add_node4]
    
-    Węzły przejście do **inicjowania obsługi administracyjnej** stanu. Wyświetl dziennik inicjowania obsługi administracyjnej, aby śledzić postęp inicjowania obsługi administracyjnej.
+    Węzły przejście do **aprowizacji** stanu. Wyświetl dziennik inicjowania obsługi administracyjnej w celu śledzenia postępu inicjowania obsługi administracyjnej.
    
-    ![Zainicjuj obsługę węzłów][add_node6]
+    ![Aprowizacja węzłów][add_node6]
 
-3. Po kilku minutach węzłów Azure zakończyć inicjowanie obsługi i znajdują się w **Offline** stanu. W tym stanie wystąpień ról są uruchomione, ale jeszcze nie może zaakceptować zadań klastra.
+3. Po kilku minutach zakończyć aprowizację węzłów platformy Azure i są w **Offline** stanu. W tym stanie wystąpienia roli są uruchomione, ale nie może jeszcze akceptować zadań klastra.
 
-4. Aby upewnić się, że uruchomiona są wystąpień roli w portalu Azure kliknij **usługi w chmurze (klasyczne)** > *your_cloud_service_name*.
+4. Aby upewnić się, że wystąpienia roli są uruchomione w witrynie Azure portal kliknij pozycję **usług w chmurze (klasyczne)** > *your_cloud_service_name*.
    
-   Powinny pojawić się dwa **HpcWorkerRole** wystąpień (węzłów) w usłudze. HPC Pack automatycznie wdraża dwa **HpcProxy** wystąpień (rozmiar średnia liczba godzin) do obsługi komunikacji między węzłem głównym i platformą Azure.
+   Powinny zostać wyświetlone dwa **HpcWorkerRole** wystąpienia (węzły) działające w usłudze. Pakiet HPC Pack również automatycznie wdraża dwa **HpcProxy** wystąpień (rozmiar średni) w celu obsługi komunikacji między węzłem głównym i platformą Azure.
 
-   ![Uruchomione wystąpienia][view_instances1]
+   ![Uruchamianie wystąpień][view_instances1]
 
-5. Aby wyświetlić Azure węzły w tryb online w celu uruchomienia zadań klastra, wybierz węzły, kliknij prawym przyciskiem myszy, a następnie kliknij **przejdź do trybu Online**.
+5. Aby przywrócić węzłów platformy Azure w trybie online do obsługi zadań klastra, zaznacz węzły, kliknij prawym przyciskiem myszy, a następnie kliknij **przejdź do trybu Online**.
    
     ![Węzły w trybie offline][add_node7]
    
     Menedżer klastrów HPC wskazuje, że węzły są w **Online** stanu.
 
-## <a name="run-a-command-across-the-cluster"></a>Uruchom polecenie w ramach klastra
-Aby sprawdzić instalację, należy użyć HPC Pack **clusrun** polecenie do uruchomienia polecenia lub aplikacji na co najmniej jednym węźle klastra. Prosty przykład użyć **clusrun** można pobrać konfiguracji IP węzły platformy Azure.
+## <a name="run-a-command-across-the-cluster"></a>Uruchom polecenie w klastrze
+Aby sprawdzić instalację, należy użyć pakietu HPC Pack **clusrun** polecenie, aby uruchomić polecenie lub aplikacji na jeden lub więcej węzłów klastra. Prostym przykładem użycia **clusrun** można pobrać konfiguracji IP węzły na platformie Azure.
 
 1. W węźle głównym Otwórz wiersz polecenia jako administrator.
 
@@ -224,52 +224,52 @@ Aby sprawdzić instalację, należy użyć HPC Pack **clusrun** polecenie do uru
    
     `clusrun /nodes:azurecn* ipconfig`
 
-3. Jeśli zostanie wyświetlony monit, wprowadź hasło administratora klastra. Powinny pojawić się podobne do następujących danych wyjściowych polecenia.
+3. Po wyświetleniu monitu wprowadź hasło administratora klastra. Polecenie dane wyjściowe powinny być podobne do następujących.
    
     ![Clusrun][clusrun1]
 
 ## <a name="run-a-test-job"></a>Uruchom zadanie testowe
-Teraz przesłać zadanie testów, które działa w klastrze hybrydowego. W tym przykładzie jest zadaniem proste parametrycznych (typ obliczenia leżą równoległe). W tym przykładzie jest uruchamiany podzadania zwiększających całkowitą do siebie samego za pomocą **ustawić /a** polecenia. Wszystkie węzły w klastrze przyczyniają się do zakończenia podzadań liczb całkowitych od 1 do 100.
+Teraz można przesłać zadania testowego, który działa w klastrze hybrydowym. W tym przykładzie jest proste parametrycznych zadań (typ obliczenia równoległe). W tym przykładzie jest uruchamiany podzadań, które dodać liczbę całkowitą do siebie samego przy użyciu **set /a** polecenia. Wszystkie węzły w klastrze składają się na zakończenie podzadania liczb całkowitych z zakresu od 1 do 100.
 
-1. W Menedżerze klastra HPC, kliknij przycisk **zadania zarządzania** > **nowe zadanie parametrycznych odchylenia**.
+1. W Menedżerze klastra HPC, kliknij przycisk **zadań zarządzania** > **nowe zadanie Parametric Sweep**.
    
     ![Nowe zadanie][test_job1]
 
-2. W **nowe zadanie parametrycznych odchylenia** okna dialogowego, **wiersza polecenia**, typ `set /a *+*` (Zastępowanie domyślnego wiersza polecenia pojawi się). Pozostaw wartości domyślne dla pozostałych ustawień, a następnie kliknij przycisk **przesyłania** można przesłać zadania.
+2. W **nowe zadanie Parametric Sweep** dialogowym **wiersza polecenia**, typ `set /a *+*` (Zastępowanie domyślnego wiersza polecenia, który pojawia się). Pozostaw wartości domyślne pozostałych ustawień, a następnie kliknij przycisk **przesyłania** Aby przesłać zadanie.
    
     ![Parametrycznych][param_sweep1]
 
 3. Po zakończeniu zadania, kliknij dwukrotnie **Moje zadania odchylenia** zadania.
 
-4. Kliknij przycisk **zadania widoku**, a następnie kliknij przycisk podzadania, aby wyświetlić obliczeniowej danych wyjściowych w tym samym poziomie.
+4. Kliknij przycisk **zadania widoku**, a następnie kliknij przycisk w podzadanie do wyświetlania danych wyjściowych obliczeniowego tego podzadania.
    
-    ![Wyniki zadań][view_job361]
+    ![Wyniki zadania][view_job361]
 
-5. Aby zobaczyć, który węzeł wykonać obliczenia na tym samym poziomie, kliknij **przydzielone węzłów**. (Klastra mogą być wyświetlane nazwy innego węzła).
+5. Aby zobaczyć, który węzeł wykonywane obliczenia na tym samym poziomie, kliknij **przydzielonych węzłów**. (Klaster może wyświetlać nazwę innego węzła).
    
-    ![Wyniki zadań][view_job362]
+    ![Wyniki zadania][view_job362]
 
-## <a name="stop-the-azure-nodes"></a>Zatrzymaj węzły platformy Azure
-Po wypróbowanie klastra, należy zatrzymać węzły platformy Azure, aby uniknąć niepotrzebnych opłat do Twojego konta. Ten krok zatrzymuje usługę w chmurze i usuwa wystąpień roli platformy Azure.
+## <a name="stop-the-azure-nodes"></a>Zatrzymaj węzły na platformie Azure
+Po klastra możesz wypróbować, Zatrzymaj węzłów platformy Azure, aby uniknąć niepotrzebnych opłat do swojego konta. W tym kroku zatrzymuje usługę w chmurze i usuwa wystąpień roli platformy Azure.
 
-1. W Menedżerze klastra HPC w **węzła zarządzania** (nazywane **zarządzanie zasobami** w poprzednich wersjach programu HPC Pack), wybierz oba węzły platformy Azure. Następnie kliknij przycisk **zatrzymać**.
+1. W Menedżerze klastra HPC w **zarządzania węzłami** (o nazwie **zarządzania zasobami** w poprzednich wersjach pakietu HPC Pack), wybierz oba węzły na platformie Azure. Następnie kliknij przycisk **zatrzymać**.
    
     ![Zatrzymaj węzłów][stop_node1]
 
-2. W **zatrzymania systemu Windows Azure węzłów** okno dialogowe, kliknij przycisk **zatrzymać**. 
+2. W **węzłów zatrzymania usługi Windows Azure** okno dialogowe, kliknij przycisk **zatrzymać**. 
    
-3. Węzły przejście do **zatrzymywanie** stanu. Po upływie kilku minut, Menedżer klastra HPC pokazuje, że węzły są **wdrożone nie**.
+3. Węzły przejście do **zatrzymywanie** stanu. Po kilku minutach, Menedżer klastra HPC wskazuje, że węzły są **wdrożone nie**.
    
     ![Węzły Niewdrożone][stop_node4]
 
-4. Aby upewnić się, że wystąpień roli nie są już uruchomione na platformie Azure w portalu Azure kliknij **usługi (klasyczne) w chmurze** > *your_cloud_service_name*. Brak wystąpień są wdrażane w środowisku produkcyjnym. 
+4. Aby upewnić się, że wystąpienia roli nie są już uruchomione na platformie Azure w witrynie Azure portal kliknij **Cloud services (wersja klasyczna)** > *your_cloud_service_name*. Brak wystąpień są wdrażane w środowisku produkcyjnym. 
    
-    Na tym kończy się samouczka.
+    Na tym kończy się tego samouczka.
 
-## <a name="next-steps"></a>Następne kroki
-* Zapoznaj się z dokumentacją dla [HPC Pack](https://technet.microsoft.com/library/cc514029).
-* Aby skonfigurować hybrydowe wdrożenie klastra HPC Pack na większą skalę, zobacz [serii do wystąpień roli procesu roboczego platformy Azure z pakietem Microsoft HPC](http://go.microsoft.com/fwlink/p/?LinkID=200493).
-* Inne sposoby tworzenia klastra HPC Pack na platformie Azure, w tym za pomocą szablonów usługi Azure Resource Manager dla [opcje klastra HPC z pakietem Microsoft HPC w systemie Azure](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="next-steps"></a>Kolejne kroki
+* Zapoznaj się z dokumentacją dla [pakietu HPC Pack](https://technet.microsoft.com/library/cc514029).
+* Do skonfigurowania hybrydowego wdrożenia klastra pakietu HPC Pack na większą skalę, zobacz [serii do wystąpień roli procesu roboczego platformy Azure za pomocą pakietu Microsoft HPC Pack](https://go.microsoft.com/fwlink/p/?LinkID=200493).
+* Inne sposoby tworzenia klastra pakietu HPC Pack na platformie Azure, w tym za pomocą szablonów usługi Azure Resource Manager, zobacz [opcji klastra HPC za pomocą pakietu Microsoft HPC Pack na platformie Azure](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 
 [Overview]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/hybrid_cluster_overview.png

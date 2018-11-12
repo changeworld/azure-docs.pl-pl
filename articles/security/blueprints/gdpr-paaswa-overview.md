@@ -8,19 +8,19 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: c51ce44d1f6c2dcacaed09a490e46ad3af1ec9dc
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 916b2177e6963ce51e644c2bcf9204cb1e110349
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406691"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236588"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-gdpr"></a>Zabezpieczenia platformy Azure i zgodności planu — aplikacja sieci Web PaaS dla rozporządzenia RODO
 
 ## <a name="overview"></a>Przegląd
 Ogólne rozporządzenie o ochronie danych (RODO) zawiera wiele wymagań dotyczących zbierania, przechowywania i przy użyciu informacji osobistych, w tym jak organizacjom identyfikowanie i zabezpieczanie danych osobowych, uwzględnić wymagania dotyczące przezroczystości, wykrywania i raportu naruszenia danych osobowych i szkolenie zachowania personel i innych pracowników. RODO zapewnia większą kontrolę nad ich danych osobowych użytkowników indywidualnych i nakłada wiele nowych zobowiązań w organizacji, które zbierania, obsługiwać lub analizować dane osobowe. Rozporządzenie GDPR nakłada nowe zasady dotyczące organizacji oferujących towary i usługi osobom w Unii Europejskiej (UE) lub że zbierać i analizować dane związane z osobami mieszkającymi w UE. Niezależnie od tego, w którym znajduje się organizacja stosuje się GDPR.
 
-Firma Microsoft zaprojektowała platformy Azure za pomocą wiodących w branży środki bezpieczeństwa i zasady zachowania poufności informacji w celu ochrony danych w chmurze, w tym kategorie danych osobowych identyfikowane przez rozporządzenie GDPR. Firmy Microsoft [warunków umowy](http://aka.ms/Online-Services-Terms) zatwierdzić Microsoft wymagania procesorów.
+Firma Microsoft zaprojektowała platformy Azure za pomocą wiodących w branży środki bezpieczeństwa i zasady zachowania poufności informacji w celu ochrony danych w chmurze, w tym kategorie danych osobowych identyfikowane przez rozporządzenie GDPR. Firmy Microsoft [warunków umowy](https://aka.ms/Online-Services-Terms) zatwierdzić Microsoft wymagania procesorów.
 
 Tych samych zabezpieczeń platformy Azure i zgodności plan zawiera wskazówki dotyczące wdrażania platformy jako usługi (PaaS) środowiska odpowiednie dla prostej aplikacji sieci web dostępnym z Internetu. To rozwiązanie przedstawia sposób, w którym klienci mogą spełniać określone wymagania w zakresie zabezpieczeń i zgodności rozporządzenia rodo i służy jako podstawa do tworzenia i konfigurowanie własnych rozwiązań aplikacji sieci web PaaS na platformie Azure. Klienci mogą korzystać z tej architektury referencyjnej i postępuj zgodnie z firmy Microsoft [czterech kroków procesu](https://aka.ms/gdprebook) w podróży do zgodności z rozporządzeniem GDPR:
 1. Odnajdywanie: Zidentyfikować dane osobowe, które istnieje, oraz jej lokalizację.

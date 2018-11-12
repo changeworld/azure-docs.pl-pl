@@ -3,18 +3,18 @@ title: Nawiązywanie połączenia przy użyciu sieci wirtualnych — Azure HDIns
 description: Dowiedz się, jak łączyć się bezpośrednio do platformy Kafka w HDInsight przy użyciu usługi Azure Virtual Network. Dowiedz się, jak połączyć się z platformy Kafka z klientami programowania przy użyciu bramy sieci VPN lub klientów w sieci lokalnej za pomocą urządzenia bramy sieci VPN.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2018
-ms.openlocfilehash: 973563a0c9a986bb4dec785b4521566acb657d15
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.openlocfilehash: da98873b133d69d78271494b991b67caea1d5a11
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042398"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283074"
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Nawiązać połączenie z platformą Kafka w HDInsight przy użyciu sieci wirtualnej platformy Azure
 
@@ -35,7 +35,7 @@ HDInsight nie zezwala na bezpośrednie połączenie z platformą Kafka za pośre
     2. Tworzenie bramy sieci VPN, który korzysta z konfiguracji lokacja lokacja. Konfiguracja używana w tym dokumencie nawiązuje połączenie z urządzeniem bramy sieci VPN w sieci lokalnej.
     3. Tworzenie serwera DNS w sieci wirtualnej.
     4. Konfigurowanie składnika przesyłanie dalej między serwerem DNS w każdej sieci.
-    5. Instalowanie platformy Kafka na HDInsight w sieci wirtualnej.
+    5. Utwórz platformy Kafka w klastrze HDInsight w sieci wirtualnej.
 
     Aby uzyskać więcej informacji, zobacz [Połącz z platformą Kafka z siecią lokalną](#on-premises) sekcji. 
 
@@ -43,8 +43,8 @@ HDInsight nie zezwala na bezpośrednie połączenie z platformą Kafka za pośre
 
     1. Utwórz sieć wirtualną.
     2. Utwórz bramę sieci VPN, która używa konfiguracji punkt lokacja. Ta konfiguracja może służyć z klientami z systemem MacOS i Windows.
-    3. Instalowanie platformy Kafka na HDInsight w sieci wirtualnej.
-    4. Do celów reklamowych adresów IP, należy skonfigurować platformy Kafka. Ta konfiguracja umożliwia klientom nawiązywanie połączenia przy użyciu adresów IP zamiast nazwy domeny.
+    3. Utwórz platformy Kafka w klastrze HDInsight w sieci wirtualnej.
+    4. Do celów reklamowych adresów IP, należy skonfigurować platformy Kafka. Ta konfiguracja umożliwia klientom nawiązywanie połączenia przy użyciu brokera adresów IP zamiast nazwy domeny.
     5. Pobierz i korzystania z klienta sieci VPN w systemie programistycznym.
 
     Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia z platformą Kafka za pomocą klienta sieci VPN](#vpnclient) sekcji.
