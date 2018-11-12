@@ -3,7 +3,7 @@ title: Program Azure AD Connect Health — diagnozowanie błędów synchronizacj
 description: W tym dokumencie opisano proces diagnozowania błędów synchronizacji zduplikowanym atrybutem i potencjalnych awarii scenariuszy obiektu oddzielonego bezpośrednio w witrynie Azure portal.
 services: active-directory
 documentationcenter: ''
-author: zhiweiw
+author: zhiweiwangmsft
 manager: maheshu
 editor: billmath
 ms.service: active-directory
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: zhiweiw
-ms.openlocfilehash: 2d525056f42b35c573943a4db281c8a74605a4c5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c077e8592157b5c09dd1bc99934afd9f687b1da1
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315259"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282530"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Zdiagnozować i rozwiązać błędy synchronizacji zduplikowanym atrybutem
 
