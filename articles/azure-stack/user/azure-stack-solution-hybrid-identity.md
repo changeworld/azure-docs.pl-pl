@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 7cea11f448f20ace2dd50454834e60ce3a3c3b70
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: e1ace09ba293cf80b2dbbe8f746eb7fd5bc8d7cb
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584272"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036397"
 ---
 # <a name="tutorial-configure-hybrid-cloud-identity-for-azure-and-azure-stack-applications"></a>Samouczek: Konfigurowanie tożsamość w chmurze hybrydowej dla aplikacji platformy Azure i usługi Azure Stack
 
@@ -74,7 +74,7 @@ Instalacja usługi Azure Stack jest podłączony do usługi Azure Active Directo
 Aby połączyć z usługą Azure Stack przy użyciu kodu, umożliwia punkty końcowe interfejsu API usługi Azure Resource Manager uzyskać uwierzytelnianie i punkty końcowe programu graph dla tej instalacji usługi Azure Stack, a następnie uwierzytelniania za pomocą żądania REST. Przykładowa aplikacja kliencka można znaleźć na [GitHub](https://github.com/shriramnat/HybridARMApplication).
 
 >[!Note]
->Jeśli zestaw Azure SDK dla języka wybranego nie obsługuje profilami interfejsu API platformy Azure, zestawu SDK mogą nie działać z usługą Azure Stack. Aby dowiedzieć się więcej o profilach interfejsu API platformy Azure, zobacz [Zarządzanie profilami wersji interfejsu API](https://docs.microsoft.com/da-dk/azure/azure-stack/user/azure-stack-version-profiles) artykułu.
+>Jeśli zestaw Azure SDK dla języka wybranego nie obsługuje profilami interfejsu API platformy Azure, zestawu SDK mogą nie działać z usługą Azure Stack. Aby dowiedzieć się więcej o profilach interfejsu API platformy Azure, zobacz [Zarządzanie profilami wersji interfejsu API](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles) artykułu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

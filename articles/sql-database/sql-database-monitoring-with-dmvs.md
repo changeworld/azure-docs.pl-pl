@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: df3062349ac384b92eeaf9483310cd5d3b48921f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c690e9b864d4b2b378814b478ea4918a9f75fbba
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238560"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288531"
 ---
 # <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>Monitorowanie usługi Azure SQL Database przy użyciu dynamicznych widoków zarządzania
 
@@ -333,7 +333,7 @@ ORDER BY start_time ASC;
 
 ## <a name="identify-memory-grant-wait-performance-issues"></a>Identyfikowanie pamięci grant oczekiwania problemy z wydajnością
 
-Jeśli najwyższego oczekiwania typu `RESOURCE_SEMAHPORE` i nie masz wysokiego problem procesora CPU, pamięci, przyznaj oczekiwania problem może być.
+Jeśli najwyższego oczekiwania typu `RESOURCE_SEMAHPORE` i nie masz problemem wysokiego użycia procesora CPU, może być pamięci udzielić problem oczekiwania.
 
 ### <a name="determine-if-a-resourcesemahpore-wait-is-a-top-wait"></a>Sprawdza, czy `RESOURCE_SEMAHPORE` oczekiwania jest najważniejsze oczekiwania
 

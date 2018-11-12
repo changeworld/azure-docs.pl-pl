@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: ea926a64e3df853d6845266ff20255b76d9ff387
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: fbfe7255f2b848187c74fd832f349186eef5eaef
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386726"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287578"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Za pomocą połączone i zagnieżdżone szablony, podczas wdrażania zasobów platformy Azure
 
@@ -27,7 +27,7 @@ Aby wdrożyć swoje rozwiązanie, służy pojedynczy szablon lub szablon główn
 
 Dla małych i średnich rozwiązania pojedynczy szablon jest łatwiejsze do zrozumienia i utrzymania. Można wyświetlić wszystkich zasobów i wartości w jednym pliku. W przypadku zaawansowanych scenariuszy połączone Szablony umożliwiają podzielenie rozwiązania do elementów docelowych i ponowne użycie szablonów.
 
-Korzystając z dołączonego szablonu, utworzysz głównego szablonu, który odbiera wartości parametrów podczas wdrażania. Szablon głównego zawiera połączonymi szablonami i przekazuje wartości do tych szablonów, zgodnie z potrzebami.
+Korzystając z połączonymi szablonami, można utworzyć głównego szablonu, który odbiera wartości parametrów podczas wdrażania. Szablon głównego zawiera połączonymi szablonami i przekazuje wartości do tych szablonów, zgodnie z potrzebami.
 
 Aby zapoznać się z samouczkiem, zobacz [samouczek: Tworzenie szablonów usługi połączonej usługi Azure Resource Manager](./resource-manager-tutorial-create-linked-templates.md).
 

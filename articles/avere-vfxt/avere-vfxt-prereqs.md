@@ -6,14 +6,14 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 823bf50a54ff43fa95f7136c137e3d8f3303c3e0
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d32c664049b7e7c1231e78c552e7c61d016fbe84
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634095"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286762"
 ---
-# <a name="prepare-to-create-the-avere-vfxt"></a>Przygotowanie do tworzenia Avere vFXT
+# <a name="prepare-to-create-the-avere-vfxt"></a>Przygotowanie do utworzenia systemu Avere vFXT
 
 W tym artykule opisano zadania wstępne do tworzenia klastra vFXT Avere.
 
@@ -59,10 +59,10 @@ Musi mieć wystarczającego limitu przydziału dla następujących składników 
 
 |Składnik platformy Azure|Przydział|
 |----------|-----------|
-|Maszyny wirtualne|3 D16s_v3 lub E32s_v3|
-|Magazyn SSD w warstwie Premium|200 GB systemu operacyjnego spację i 1 TB miejsca w pamięci podręcznej 4 TB na węzeł |
+|Maszyny wirtualne|3 lub więcej maszyny wirtualne D16s_v3 lub E32s_v3|
+|Magazyn SSD w warstwie Premium|200 GB na system operacyjny i od 1 TB do 4 TB miejsca obszaru pamięci podręcznej na węzeł |
 |Konto magazynu (opcjonalnie) |v2|
-|Wewnętrznej bazy danych magazynu danych (opcjonalnie) |Jeden nowy kontener obiektów Blob LRS |
+|Magazyn zaplecza danych (opcjonalnie) |Jeden nowy kontener obiektów Blob LRS |
 
 ## <a name="accept-software-terms-in-advance"></a>Zaakceptuj warunki wcześniej oprogramowania
 
@@ -80,11 +80,10 @@ Aby zaakceptować oprogramowania wcześniej warunków:
     az account set --subscription abc123de-f456-abc7-89de-f01234567890
    ```
 
-1. Wykonaj to polecenie, aby zaakceptować warunki usługi i włączyć dostęp programowy do vFXT Avere obrazów oprogramowania platformy Azure: 
+1. Wykonaj to polecenie, aby zaakceptować warunki usługi i włączyć dostęp programowy do vFXT Avere obrazu oprogramowania platformy Azure: 
 
    ```azurecli
    az vm image accept-terms --urn microsoft-avere:vfxt:avere-vfxt-controller:latest
-   az vm image accept-terms --urn microsoft-avere:vfxt:avere-vfxt-node:latest
    ```
 
 ## <a name="next-step-create-the-vfxt-cluster"></a>Następny krok: Tworzenie klastra vFXT

@@ -1,6 +1,6 @@
 ---
 title: Wdrażanie rozwiązania do monitorowania zdalnego lokalnie — Docker — Azure | Dokumentacja firmy Microsoft
-description: Ten poradnik pokazuje, jak wdrożyć zdalnego monitorowania akcelerator rozwiązań do maszyny lokalnej na potrzeby projektowania i testowania.
+description: Ten poradnik pokazuje, jak wdrożyć zdalnego akcelerator rozwiązań do monitorowania na maszynę lokalną za pomocą platformy Docker na potrzeby projektowania i testowania.
 author: avneet723
 manager: hegate
 ms.author: avneet723
@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 91f43473a5648be5264038993f43b61887e0c363
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 46cd16c1667d3b33501c1b5680baabf243509f67
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/08/2018
-ms.locfileid: "51284979"
+ms.locfileid: "51288548"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie - platformy Docker
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-W tym artykule pokazano, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego na komputerze lokalnym na potrzeby projektowania i testowania. Artykuł pokazuje, jak wdrażanie mikrousług na lokalnym kontenerów platformy Docker. Wdrożenie lokalne mikrousług używa następujących usług w chmurze: Usługa IoT Hub, Cosmos DB, usługi Azure Stream Analytics i Azure Time Series Insights usług w chmurze.
+W tym artykule pokazano, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego na komputerze lokalnym na potrzeby projektowania i testowania. Nauczysz się wdrażanie mikrousług na lokalnym kontenerów platformy Docker. Wdrożenie lokalne mikrousług używa następujących usług w chmurze: Usługa IoT Hub, Cosmos DB, usługi Azure Stream Analytics i Azure Time Series Insights usług w chmurze.
 
 Jeśli chcesz uruchomić akcelerator rozwiązania monitorowania zdalnego w środowisku IDE na komputerze lokalnym, zobacz [wdrażanie programu Visual Studio zdalne monitorowanie akceleratora rozwiązań lokalnie -](iot-accelerators-remote-monitoring-deploy-local.md).
 
@@ -70,13 +70,13 @@ docker-compose up
 Podczas pierwszego uruchamiania tego polecenia Docker pobiera obrazy mikrousług z usługi Docker hub do tworzenia kontenerów lokalnie. Na następujące przebiegi Docker uruchamia kontenery natychmiast.
 
 > [!TIP]
-> Często publikujemy nowych obrazów platformy Docker za pomocą nowych funkcji. Następujący zestaw poleceń, aby oczyścić można użyć lokalnego kontenerów platformy Docker i odpowiednie obrazy przed pobierania najnowszych te. 
+> Firma Microsoft publikuje często nowych obrazów platformy Docker za pomocą nowych funkcji. Następujący zestaw poleceń, aby oczyścić można użyć lokalnego kontenerów platformy Docker i odpowiednie obrazów przed pobierania najnowszych te:
 
-```cmd/sh
-docker list
-docker rm <list_of_containers>
-docker rmi <list_of_images>
-```
+    ```cmd/sh
+    docker list
+    docker rm <list_of_containers>
+    docker rmi <list_of_images>
+    ```
 
 Aby wyświetlić dzienniki z kontenera, można użyć oddzielnych powłoki. Najpierw Znajdź przy użyciu Identyfikatora kontenera `docker ps` polecenia. Następnie użyj `docker logs {container-id} --tail 1000` ostatnich 1000 zapisy określonego kontenera.
 
@@ -101,14 +101,4 @@ Użyj `docker-compose down --rmi all` polecenie, aby usunąć obrazy platformy D
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> * Skonfiguruj lokalne Środowisko deweloperskie
-> * Konfigurowanie akceleratora rozwiązań
-> * Wdrażanie akceleratora rozwiązań
-> * Zaloguj się do akceleratora rozwiązań
-
 Teraz, że udało Ci się wdrożyć rozwiązania do zdalnego monitorowania, następnym krokiem jest [zapoznaj się z możliwościami pulpitu nawigacyjnego rozwiązania](quickstart-remote-monitoring-deploy.md).
-
-<!-- Next tutorials in the sequence -->

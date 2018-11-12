@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 420ec288b81e0bb12ae9f61a5eaf03880205cc55
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 04639e6d27854d9c25b97936b163cfaaa25fc375
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247984"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287442"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurowanie aplikacji OpenID/OAuth za pomocą galerii aplikacji Azure AD
 
@@ -84,7 +84,7 @@ Platformy wyrażania zgody w usłudze Azure AD służy do tworzenia, wielodostę
 
 Struktura opiera się na użytkownika lub administratora wyrażenia zgody na aplikację, która prosi do zarejestrowania się w jego katalogu. Rejestracja może obejmować, uzyskiwanie dostępu do danych katalogu. Po zgoda zostanie podany, aplikacja kliencka może wywołania interfejsu API programu Microsoft Graph w imieniu użytkownika i skorzystaj z informacji, zgodnie z potrzebami.
 
-[Interfejsu API Microsoft Graph](https://graph.microsoft.io/) zapewnia dostęp do danych w usłudze Office 365, takie jak:
+[Interfejsu API Microsoft Graph](https://developer.microsoft.com/graph/) zapewnia dostęp do danych w usłudze Office 365, takie jak:
 
 - Kalendarze i komunikaty z programu Exchange.
 - Witryny i listy z poziomu programu SharePoint.

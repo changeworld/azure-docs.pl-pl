@@ -10,26 +10,28 @@ ms.component: translator-text
 ms.topic: overview
 ms.date: 05/10/2018
 ms.author: erhopf
-ms.openlocfilehash: 6c89ff41531b130843eb288b98ffe7def1d8915e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 9d1c5fac9e305e397e0184653e6d8965f9098ee3
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645056"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037451"
 ---
 # <a name="what-is-translator-text-api"></a>Czym jest interfejs API tłumaczenia tekstu w usłudze Translator?
 
-Interfejs API tłumaczenia tekstu w usłudze Translator można bez trudu zintegrować z aplikacjami, witrynami internetowymi, narzędziami i innymi rozwiązaniami, aby umożliwić tworzenie środowisk użytkownika w [ponad 60 językach](languages.md). Za jego pomocą można tłumaczyć teksty w różnych językach na dowolnej platformie sprzętowej i w dowolnym systemie operacyjnym.
+Interfejs API tłumaczenia tekstu w usłudze Translator można łatwo zintegrować w aplikacjach, witrynach internetowych, narzędziach i rozwiązaniach. Umożliwia on dodawanie wielojęzycznych środowisk użytkowników w [ponad 60 językach](languages.md) i może być używany na dowolnej platformie sprzętowej z dowolnym systemem operacyjnym na potrzeby tłumaczenia tekstów w różnych językach.
 
 Interfejs API tłumaczenia tekstu w usłudze Translator to część [kolekcji interfejsów API usług Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=ai) platformy Azure, zbioru algorytmów uczenia maszynowego i sztucznej inteligencji w chmurze, który można łatwo wykorzystać w swoich projektach programistycznych.
 
 ## <a name="about-microsoft-translator"></a>Microsoft Translator — informacje
 
-Microsoft Translator to oparta na chmurze usługa tłumaczenia maszynowego. Rdzeniem tej usługi są: interfejs API tłumaczenia tekstu w usłudze Translator oraz [interfejs API tłumaczenia mowy w usłudze Translator](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-translation), które współpracują z różnymi produktami i usługami firmy Microsoft, a także są używane przez tysiące firm na całym świecie w ich aplikacjach i przepływach pracy, co pozwala ich zawartości na dotarcie do odbiorców na całym świecie.
+Microsoft Translator to oparta na chmurze usługa tłumaczenia maszynowego. Rdzeniem usługi jest interfejs API tłumaczenia tekstu w usłudze Translator, który współpracuje z wieloma produktami i usługami firmy Microsoft, a także jest używany przez tysiące firm na całym świecie w ich aplikacjach i przepływach pracy, co pozwala ich zawartości na dotarcie do odbiorców na całym świecie.
 
-Tłumaczenie mowy jest również dostępne za pośrednictwem [usługi Cognitive Services Speech w wersji zapoznawczej](https://docs.microsoft.com/azure/cognitive-services/speech-service/), która łączy istniejący interfejs API tłumaczenia mowy w usłudze Translator, interfejs API rozpoznawania mowy Bing oraz usługę Custom Speech Service (w wersji zapoznawczej) w ujednoliconą i całkowicie dostosowywalną usługę.  
+Tłumaczenie mowy obsługiwane przez interfejs API tłumaczenia tekstu w usłudze Translator jest również dostępne za pośrednictwem usługi [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/). Łączy ona funkcje interfejsu API tłumaczenia mowy w usłudze Translator, interfejsu API rozpoznawania mowy Bing oraz usługi Custom Speech Service (w wersji zapoznawczej) w ujednoliconej i w pełni dostosowywalnej usłudze. Usługa rozpoznawania mowy zastępuje interfejs API tłumaczenia mowy w usłudze Translator, który zostanie zlikwidowany 15 października 2019 r.
 
-Dowiedz się więcej o [usłudze Microsoft Translator](https://www.microsoft.com/en-us/translator/home.aspx)
+## <a name="language-support"></a>Obsługa języków
+
+Usługa Microsoft Translator zapewnia obsługę wielu języków na potrzeby tłumaczenia, transliteracji, wykrywania języka i słowników. Aby uzyskać pełną listę, zobacz [obsługiwane języki](language-support.md). Możesz również uzyskać dostęp do listy programowo przy użyciu [interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).  
 
 ## <a name="language-customization"></a>Dostosowywanie języka
 

@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7a630de281932358b0cecf841dc745a4d818aad4
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4d00da4adf3069069a66c02e391f0a1a3298ac29
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424174"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299677"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Blokowanie zasobów w celu uniemożliwienia nieoczekiwanych zmian 
 
@@ -104,7 +104,7 @@ Poniższy przykład przedstawia szablon, który tworzy plan usługi app service,
 
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroup -Name sitegroup -Location southcentralus
 New-AzureRmResourceGroupDeployment -ResourceGroupName sitegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/lock.json -hostingPlanName plan0103
 ```
@@ -121,37 +121,37 @@ Blokady możesz wdrożyć zasoby przy użyciu programu Azure PowerShell przy uż
 
 Aby zablokować zasobu, podaj nazwę zasobu, jego typ zasobu i nazwy grupy zasobów.
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceLock -LockLevel CanNotDelete -LockName LockSite -ResourceName examplesite -ResourceType Microsoft.Web/sites -ResourceGroupName exampleresourcegroup
 ```
 
 Aby zablokować grupę zasobów, podaj nazwę grupy zasobów.
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceLock -LockName LockGroup -LockLevel CanNotDelete -ResourceGroupName exampleresourcegroup
 ```
 
 Aby uzyskać informacje na temat blokady, należy użyć [Get AzureRmResourceLock](/powershell/module/azurerm.resources/get-azurermresourcelock). Aby uzyskać wszystkie blokady w ramach subskrypcji, użyj:
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmResourceLock
 ```
 
 Aby uzyskać wszystkie blokady dla zasobu, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmResourceLock -ResourceName examplesite -ResourceType Microsoft.Web/sites -ResourceGroupName exampleresourcegroup
 ```
 
 Aby uzyskać wszystkie blokady dla grupy zasobów, użyj:
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmResourceLock -ResourceGroupName exampleresourcegroup
 ```
 
 Aby usunąć blokadę, należy użyć:
 
-```powershell
+```azurepowershell-interactive
 $lockId = (Get-AzureRmResourceLock -ResourceGroupName exampleresourcegroup -ResourceName examplesite -ResourceType Microsoft.Web/sites).LockId
 Remove-AzureRmResourceLock -LockId $lockId
 ```

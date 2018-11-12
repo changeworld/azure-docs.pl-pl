@@ -2,19 +2,19 @@
 title: Użyj akcji skryptu, aby zainstalować platformę Solr w HDInsight opartych na systemie Linux — Azure
 description: Dowiedz się, jak zainstalować platformę Solr w klastrach opartych na systemie Linux usługi HDInsight Hadoop za pomocą akcji skryptu.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
-ms.openlocfilehash: 205983344be8ae5bbe566a208ceb862b2e93cb8d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 1c8c63e10e62af60e09af729b115cc675dae7205
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093101"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009406"
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Instalowanie i korzystanie z platformy Solr w klastrach usługi HDInsight Hadoop
 

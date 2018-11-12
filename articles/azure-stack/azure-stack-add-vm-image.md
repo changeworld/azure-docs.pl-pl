@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 11/05/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 7a5c6875f080655e69f549e45ec474958128754f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: a0dc3405cc0e1deb25c1f2772a5018dad95b87e9
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575817"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036601"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Udostępnić obraz maszyny wirtualnej w usłudze Azure Stack
 
@@ -30,7 +30,7 @@ W usłudze Azure Stack można udostępnić obrazy maszyn wirtualnych dla użytko
 
 ## <a name="add-a-vm-image-through-the-portal"></a>Dodaj obraz maszyny Wirtualnej za pośrednictwem portalu
 
-> [!NOTE]
+> [!NOTE]  
 > Przy użyciu tej metody należy utworzyć osobno elementu portalu Marketplace.
 
 Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu obiektów blob. Przygotowywanie obrazu systemu operacyjnego Windows lub Linux w formacie VHD (nie VHDX), a następnie przekazać obraz na konto magazynu na platformie Azure lub usługi Azure Stack. Jeśli obraz został już przekazany do magazynu obiektów blob na platformie Azure lub usługi Azure Stack, możesz pominąć krok 1.
@@ -39,7 +39,7 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 
    - Usługa Azure Stack, tylko obsługuje generowanie jeden (1) maszyna wirtualna w dysku stałego wirtualnego dysku twardego formatu. Stałym formacie struktury dysku logicznego liniowo w pliku, tak że Przesunięcie X na dysku jest przechowywany w obiekcie blob z przesunięciem X. Małe stopka na końcu obiektu blob opisuje właściwości wirtualnego dysku twardego. Aby upewnić się, jeśli dysk jest stała, należy użyć [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) polecenia programu PowerShell.  
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     >  Usługa Azure Stack nie obsługuje dysków dynamicznych wirtualnych dysków twardych. Zmiana rozmiaru dysku dynamicznego, który jest dołączony do maszyny Wirtualnej spowoduje, że maszyna wirtualna w stanie niepowodzenia. Aby rozwiązać ten problem, należy usunąć maszynę Wirtualną bez usuwania dysku maszyny Wirtualnej, obiektu blob dysku VHD na koncie magazynu. Konwertowania wirtualnego dysku twardego z dysk dynamiczny na dysk stały i ponownie utworzyć maszynę wirtualną.
 
    * Jest bardziej wydajne do przekazania obrazu do magazynu obiektów blob usługi Azure Stack, niż na platformie Azure blob storage ponieważ zajmuje mniej czasu, aby wypchnąć obraz do repozytorium obrazów usługi Azure Stack.

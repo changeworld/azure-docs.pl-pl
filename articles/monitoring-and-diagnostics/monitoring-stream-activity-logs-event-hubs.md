@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: af8248bb68068c20d62a2d8cc1e86fd9997a740c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 41965c4a498cfa4c1f0dfefaf7615e43083eb94c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962967"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011837"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Stream dziennika aktywności platformy Azure do usługi Event Hubs
 Można przesyłać strumieniowo [dziennika aktywności platformy Azure](monitoring-overview-activity-logs.md) niemal w czasie rzeczywistym do aplikacji przez:
@@ -39,10 +39,10 @@ Aby zaktualizować profil dziennika dziennika aktywności do uwzględnienia, prz
 ### <a name="via-the-azure-portal"></a>W witrynie Azure portal
 1. Przejdź do **dziennika aktywności** sekcji przy użyciu **wszystkich usług** wyszukiwania po lewej stronie portalu.
    
-   ![Wybierając dziennik aktywności z listy usług w portalu](./media/monitoring-stream-activity-logs-event-hubs/activity.png)
-2. Wybierz **wyeksportować** znajdujący się u góry dziennika.
+   ![Wybierając dziennik aktywności z listy usług w portalu](./media/monitoring-stream-activity-logs-event-hubs/activity-logs-portal-navigate-v2.png)
+2. Wybierz **Eksportuj do Centrum zdarzeń** znajdujący się u góry dziennika.
    
-   ![Przycisk Eksportuj w portalu](./media/monitoring-stream-activity-logs-event-hubs/export.png)
+   ![Przycisk Eksportuj w portalu](./media/monitoring-stream-activity-logs-event-hubs/activity-logs-portal-export-v2.png)
 
    Należy pamiętać, że wybrane ustawienia filtru w przypadku zastosowania podczas wyświetlania dziennika aktywności w poprzednim widoku nie mają wpływu na ustawienia eksportu. To są tylko do filtrowania, zobacz podczas przeglądania dziennika aktywności w portalu.
 3. W wyświetlonej sekcji wybierz **we wszystkich regionach**. Nie należy wybierać poszczególnych regionów.

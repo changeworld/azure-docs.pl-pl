@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2edaea1cfb02b250b27c47d58b6c1d1ef6501480
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: df020fc3a4e2f57730dea7329b08e1e46660e610
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420272"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037043"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Dostosowywanie ustawień środowiska Azure-SSIS integration Runtime
 
@@ -141,7 +141,7 @@ Dostosowywanie środowiska IR Azure-SSIS, potrzebne są następujące elementy:
 
        1. A `.NET FRAMEWORK 3.5` folder zawierający niestandardowe Instalatora, aby zainstalować starszą wersję programu .NET Framework, które mogą być wymagane dla niestandardowych składników w każdym węźle usługi Azure-SSIS IR.
 
-       1. `AAS` Folder, który zawiera niestandardowe ustawienia do instalowania bibliotek klienta na każdym węźle środowiska IR Azure-SSIS, pozwalających na korzystanie z usług Analysis Services zadań połączyć się z wystąpieniem usługi Azure Analysis Services (AAS) przy użyciu uwierzytelniania jednostki usługi. Najpierw pobierz najnowsze **MSOLAP (amd64)** i **AMO** instalatory bibliotek/Windows klienta — na przykład `x64_15.0.900.108_SQL_AS_OLEDB.msi` i `x64_15.0.900.108_SQL_AS_AMO.msi` — od [tutaj](https://docs.microsoft.com/en-us/azure/analysis-services/analysis-services-data-providers), następnie przekazać je wszystkie razem z `main.cmd` do kontenera.  
+       1. `AAS` Folder, który zawiera niestandardowe ustawienia do instalowania bibliotek klienta na każdym węźle środowiska IR Azure-SSIS, pozwalających na korzystanie z usług Analysis Services zadań połączyć się z wystąpieniem usługi Azure Analysis Services (AAS) przy użyciu uwierzytelniania jednostki usługi. Najpierw pobierz najnowsze **MSOLAP (amd64)** i **AMO** instalatory bibliotek/Windows klienta — na przykład `x64_15.0.900.108_SQL_AS_OLEDB.msi` i `x64_15.0.900.108_SQL_AS_AMO.msi` — od [tutaj](https://docs.microsoft.com/azure/analysis-services/analysis-services-data-providers), następnie przekazać je wszystkie razem z `main.cmd` do kontenera.  
 
        1. A `BCP` folder zawierający niestandardowe Instalatora, aby zainstalować narzędzia wiersza polecenia programu SQL Server (`MsSqlCmdLnUtils.msi`), w tym programu do kopiowania zbiorczego (`bcp`), w każdym węźle usługi Azure-SSIS IR.
 

@@ -12,39 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 11/5/2018
 ms.author: rkarlin
-ms.openlocfilehash: fc521db9ad753c4162b65abfd2f9f23c318fa994
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 3a377441758fcd7dd91deefb5cae91579e881498
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46131322"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007060"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Poprawa bezpiecznego ocenę w usłudze Azure Security Center
 
 
-W przypadku tak wiele usług oferuje korzyści w zakresie zabezpieczeń jest często wiadomo, jakie czynności umożliwiające najpierw bezpieczny i wzmocnione obciążenia. Wynik bezpiecznej usłudze Azure Security Center monitoruje zalecenia w zakresie zabezpieczeń i priorytetem je, aby było wiadomo, które zalecenia, aby najpierw wykonać pomaga znaleźć najpoważniejsze luk w zabezpieczeniach, dzięki czemu można określić priorytet badania. Bezpieczne wynik jest narzędzie miary, które pomaga utrwalanie zabezpieczeń do osiągnięcia bezpiecznego obciążenia.
-
-[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
-
+W przypadku tak wiele usług oferuje korzyści w zakresie zabezpieczeń jest często wiadomo, jakie czynności umożliwiające najpierw bezpieczny i wzmocnione obciążenia. Wynik bezpiecznej platformy Azure monitoruje zalecenia w zakresie zabezpieczeń i ich priorytetem, aby było wiadomo, które zalecenia, aby najpierw wykonać. Dzięki temu można znaleźć najpoważniejsze luk w zabezpieczeniach, dzięki czemu można określić priorytet badania. Bezpieczne wynik jest narzędziem, które pomaga ocenić poziomu bezpieczeństwa obciążenia.
 
 ![Bezpieczny pulpit nawigacyjny wynik](./media/security-center-secure-score/secure-score-dashboard.png)
 
 ## <a name="secure-score-calculation"></a>Zabezpieczanie obliczania wyniku
 
-Usługa Security Center naśladuje pracy analityka zabezpieczeń, przeglądania zalecenia w zakresie zabezpieczeń i stosowanie zaawansowanych algorytmów do ustalenia, jak niezwykle istotne jest poszczególne zalecenia.
-Usługi Azure Security center stale monitoruje możesz aktywne zalecenia i oblicza bezpiecznego ocenę na ich podstawie, wynik zalecenie jest tworzony na podstawie jego ważności i zabezpieczenia najlepszych rozwiązań, które będzie miało wpływ na bezpieczeństwo obciążenia najbardziej.
+Usługa Security Center naśladuje pracy przez analityka zabezpieczeń, przeglądania zalecenia w zakresie zabezpieczeń i stosowanie zaawansowanych algorytmów do ustalenia, jak niezwykle istotne jest poszczególne zalecenia.
+Usługi Azure Security center stale monitoruje możesz aktywne zalecenia i oblicza bezpiecznego ocenę na ich podstawie, wynik zalecenie jest tworzony na podstawie jego ważności i najlepszych rozwiązań dotyczących zabezpieczeń, które będzie miało wpływ na bezpieczeństwo obciążenia najbardziej.
 
-**Secure wynik** jest obliczenia oparte na stosunek między zasoby w dobrej kondycji i łączna liczba zasobów. Jeśli liczba zasoby w dobrej kondycji jest równa łączna liczba zasobów, zostanie wyświetlony maksymalna ocena bezpiecznego 50. Spróbuj pobrać ocenę bezpiecznego bliżej max wynik, napraw zasoby w złej kondycji, postępując zgodnie z zaleceniami.
+Usługa Security Center zapewnia także **secure ogólną ocenę**. 
 
-Security Center zapewnia także ogólną ocenę bezpieczne. 
-
-**Zabezpieczanie ogólny wynik** jest nagromadzenia wszystkie zalecenia. Możesz wyświetlić ogólną bezpiecznego ocenę w Twojej subskrypcji lub grupy zarządzania, w zależności od tego, możesz wybrać. Wynik będzie zależeć od wybrano subskrypcji i aktywne zalecenia w ramach tych subskrypcji.
+**Zabezpieczanie ogólny wynik** jest nagromadzenia wyniki zalecenia. Możesz wyświetlić ogólną bezpiecznego ocenę w Twojej subskrypcji lub grupy zarządzania, w zależności od tego, możesz wybrać. Wynik będzie zależeć od wybrano subskrypcji i aktywne zalecenia w ramach tych subskrypcji.
 
  
-
-Aby sprawdzić, które zalecenia są najbardziej wpływ na ocenę bezpieczny, zalecenia największy wpływ pierwsze 3 mogą być wyświetlane na pulpicie nawigacyjnym usługi Security Center, lub można sortować zalecenia za pomocą bloku listę zaleceń dotyczących **bezpiecznego wynik wpływ** kolumny.
+Zalecenia dotyczące największy trzy pierwsze aby sprawdzić, które zalecenia dotyczące najbardziej wpływ na ocenę bezpieczny, mogą być wyświetlane na pulpicie nawigacyjnym usługi Security Center lub można sortować zalecenia za pomocą bloku listę zaleceń dotyczących **bezpiecznego wynik wpływ** kolumny.
 
 
 Aby wyświetlić ocenę ogólną bezpiecznego:
@@ -59,16 +53,16 @@ Aby wyświetlić ocenę ogólną bezpiecznego:
 
 Ponadto aby wyświetlić poszczególne wyniki bezpieczne, można znaleźć je w bloku poszczególne zalecenia.  
 
-**Zalecenie secure wynik** jest obliczenia oparte na stosunek między zasoby w dobrej kondycji i łączna liczba zasobów. Jeśli liczba zasoby w dobrej kondycji jest równa łączna liczba zasobów, zostanie wyświetlony maksymalna ocena bezpiecznego zalecenia. Spróbuj pobrać ocenę bezpiecznego bliżej max wynik, Usuń zasoby w złej kondycji, wykonując czynności zaradczych.
+**Zalecenie secure wynik** jest obliczenia oparte na stosunek między zasoby w dobrej kondycji i łączna liczba zasobów. Liczba zasoby w dobrej kondycji jest równa łączna liczba zasobów, otrzymują maksymalna wynik bezpiecznego zalecenia 50. Spróbuj pobrać ocenę bezpiecznego bliżej max wynik, napraw zasoby w złej kondycji, postępując zgodnie z zaleceniami.
 
-**Wpływ rekomendacji** umożliwia sprawdzenie, ile bezpiecznego ocenę poprawi Jeśli zastosujesz kroków zaleceń. Na przykład jeśli Twój bezpieczny wynik jest 42 i **wpływ rekomendacji** + 3, wykonanie kroków opisanych w zaleceniu, bezpieczne ocenę poprawi przestanie 45.
+**Wpływ rekomendacji** umożliwia sprawdzenie, ile zwiększa ocenę bezpieczne w przypadku zastosowania kroków zaleceń. Na przykład, jeśli bezpieczne ocenę 42 i **wpływ rekomendacji** jest + 3, wykonując czynności opisane w zaleceniu, poprawić ocenę przestanie 45.
 
 Zalecenie przedstawia zagrożenia, które obciążenia jest narażony na, jeśli nie zostaną podjęte kroki korygowania.
 
 ![wynik bezpiecznego poszczególne zalecenia](./media/security-center-secure-score/indiv-recommendation-secure-score.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Ten artykuł pokazuje, jak zwiększyć, używając poziom zabezpieczeń **bezpiecznego wynik** w usłudze Azure Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
+Ten artykuł pokazuje, jak zwiększyć, używając poziom zabezpieczeń **bezpiecznego wynik** w usłudze Azure Security Center. Aby dowiedzieć się więcej o usłudze Security Center, zobacz:
 
 * [Centrum zabezpieczeń Azure — często zadawane pytania](security-center-faq.md) — odpowiedzi na najczęstsze pytania dotyczące korzystania z usługi.
 * [Monitorowanie kondycji zabezpieczeń w Centrum zabezpieczeń Azure](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.

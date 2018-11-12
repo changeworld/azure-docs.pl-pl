@@ -10,27 +10,28 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/18/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a3fc3e0cc30b379c84ac0ba12f733d2db4e41587
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 79572a364c2346ffd567cab7d3633ae398715210
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945794"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239956"
 ---
-# <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>Samouczek: tworzenie szablonu usługi Azure Resource Manager na potrzeby wdrażania szyfrowanego konta magazynu
+# <a name="tutorial-deploy-an-encrypted-azure-storage-account-with-resource-manager-template"></a>Samouczek: wdrażanie zaszyfrowanego konta usługi Azure Storage przy użyciu szablonu usługi Resource Manager
 
-Dowiedz się, jak znaleźć informacje niezbędne do ukończenia szablonu usługi Azure Resource Manager.
+Dowiedz się, jak znaleźć informacje o schemacie szablonu i używać tych informacji do tworzenia szablonów usługi Azure Resource Manager.
 
-W tym samouczku użyjesz szablonu podstawowego z szablonów szybkiego startu platformy Azure, aby utworzyć konto usługi Azure Storage.  Korzystając z dokumentacji referencyjnej szablonu, możesz dostosować szablon podstawowy, aby utworzyć szyfrowane konto magazynu.
+W tym samouczku użyjesz szablonu podstawowego z szablonów szybkiego startu platformy Azure. Korzystając z dokumentacji referencyjnej szablonu, możesz dostosować szablon podstawowy, aby utworzyć zaszyfrowane konto usługi Storage.
 
 Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
 > * Otwieranie szablonu szybkiego startu
 > * Informacje o szablonie
+> * Znajdowanie dokumentacji szablonu
 > * Edytowanie szablonu
 > * Wdrożenie szablonu
 
@@ -44,7 +45,7 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
 ## <a name="open-a-quickstart-template"></a>Otwieranie szablonu szybkiego startu
 
-Szablon używany w tym przewodniku Szybki start ma nazwę [Create a standard storage account (Tworzenie standardowego konta magazynu)](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Szablon definiuje zasób konta usługi Azure Storage.
+[Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/) to repozytorium na potrzeby szablonów usługi Resource Manager. Zamiast tworzyć szablon od podstaw, możesz znaleźć szablon przykładowy i zmodyfikować go. Szablon używany w tym przewodniku Szybki start ma nazwę [Create a standard storage account (Tworzenie standardowego konta magazynu)](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Szablon definiuje zasób konta usługi Azure Storage.
 
 1. W programie Visual Studio Code wybierz pozycję **File (Plik)**>**Open File (Otwórz plik)**.
 2. W polu **File name (Nazwa pliku)** wklej następujący adres URL:
@@ -57,58 +58,22 @@ Szablon używany w tym przewodniku Szybki start ma nazwę [Create a standard sto
 
 ## <a name="understand-the-schema"></a>Informacje o schemacie
 
-W programie VS Code zwiń szablon do poziomu głównego. Masz najprostszą strukturę z następującymi elementami:
+1. W programie VS Code zwiń szablon do poziomu głównego. Masz najprostszą strukturę z następującymi elementami:
 
-![Najprostsza struktura szablonu usługi Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-simplest-structure.png)
+    ![Najprostsza struktura szablonu usługi Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-simplest-structure.png)
 
-* **$schema**: określ lokalizację pliku schematu JSON, który opisuje wersję języka szablonu.
-* **contentVersion**: określ dowolną wartość dla tego elementu, aby udokumentować znaczące zmiany w szablonie.
-* **parameters**: określ wartości zapewniane podczas wykonania wdrożenia, aby dostosować wdrożenie zasobu.
-* **variables**: określ wartości używane jako fragmenty JSON w szablonie, aby uprościć wyrażenia języka szablonu.
-* **resources**: określ typy zasobów, które są wdrażane lub aktualizowane w grupie zasobów.
-* **outputs**: określ wartości, które są zwracane po wdrożeniu.
+    * **$schema**: określ lokalizację pliku schematu JSON, który opisuje wersję języka szablonu.
+    * **contentVersion**: określ dowolną wartość dla tego elementu, aby udokumentować znaczące zmiany w szablonie.
+    * **parameters**: określ wartości zapewniane podczas wykonania wdrożenia, aby dostosować wdrożenie zasobu.
+    * **variables**: określ wartości używane jako fragmenty JSON w szablonie, aby uprościć wyrażenia języka szablonu.
+    * **resources**: określ typy zasobów, które są wdrażane lub aktualizowane w grupie zasobów.
+    * **outputs**: określ wartości, które są zwracane po wdrożeniu.
 
-## <a name="use-parameters"></a>Używanie parametrów
+2. Rozwiń element **resources**. Jest tam zdefiniowany zasób `Microsoft.Storage/storageAccounts`. Ten szablon tworzy nieszyfrowane konto usługi Storage.
 
-Parametry umożliwiają dostosowanie wdrożenia poprzez podanie wartości dopasowanych do danego środowiska. Parametry zdefiniowane w szablonie są używane podczas ustawiania wartości dla konta magazynu.
+    ![Definicja konta magazynu szablonu usługi Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resource.png)
 
-![Parametry szablonu usługi Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-parameters.png)
-
-W tym szablonie zdefiniowano dwa parametry. Zwróć uwagę na funkcję szablonu używaną w parametrze location.defaultValue:
-
-```json
-"defaultValue": "[resourceGroup().location]",
-```
-
-Funkcja resourceGroup() zwraca obiekt reprezentujący bieżącą grupę zasobów. Aby uzyskać listę funkcji szablonu, zobacz [Funkcje szablonu usługi Azure Resource Manager](./resource-group-template-functions.md).
-
-Aby użyć parametrów zdefiniowanych w szablonie:
-
-```json
-"location": "[parameters('location')]",
-"name": "[parameters('storageAccountType')]"
-```
-
-## <a name="use-variables"></a>Używanie zmiennych
-
-Zmienne umożliwiają tworzenie wartości, których można używać w całym szablonie. Zmienne pomagają w redukowaniu złożoności szablonu.
-
-![Zmienne szablonu usługi Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-variables.png)
-
-Ten szablon definiuje jedną zmienną, *storageAccountName*. W definicji użyto dwóch funkcji szablonu:
-
-- **concat()**: łączy ciągi. Aby uzyskać więcej informacji, zobacz [concat](./resource-group-template-functions-string.md#concat).
-- **uniqueString()**: tworzy deterministyczny ciąg skrótu w oparciu o wartości podane jako parametry. Każde konto magazynu platformy Azure musi mieć unikatową nazwę dla całej platformy Azure. Ta funkcja udostępnia unikatowy ciąg. Aby uzyskać informacje o innych funkcjach ciągów, zobacz [Funkcje ciągów](./resource-group-template-functions-string.md).
-
-Aby użyć zmiennej zdefiniowanej w szablonie:
-
-```json
-"name": "[variables('storageAccountName')]"
-```
-
-## <a name="edit-the-template"></a>Edytowanie szablonu
-
-Celem tego samouczka jest zdefiniowanie szablonu w celu utworzenia zaszyfrowanego konta magazynu.  Na podstawie przykładowego szablonu można utworzyć tylko podstawowe, niezaszyfrowane konto magazynu. Aby znaleźć konfigurację związaną z szyfrowaniem, możesz zajrzeć do dokumentacji szablonu dla konta usługi Azure Storage.
+## <a name="find-the-template-reference"></a>Znajdowanie dokumentacji szablonu
 
 1. Przejdź do pozycji [Szablony platformy Azure](https://docs.microsoft.com/azure/templates/).
 2. W polu **Filtruj według tytułu** wprowadź ciąg **konta magazynu**.
@@ -120,17 +85,52 @@ Celem tego samouczka jest zdefiniowanie szablonu w celu utworzenia zaszyfrowaneg
 
     ```json
     "encryption": {
-        "keySource": "Microsoft.Storage",
+      "services": {
+        "blob": {
+          "enabled": boolean
+        },
+        "file": {
+          "enabled": boolean
+        }
+      },
+      "keySource": "string",
+      "keyvaultproperties": {
+        "keyname": "string",
+        "keyversion": "string",
+        "keyvaulturi": "string"
+      }
+    },
+    ```
+
+    Na tej samej stronie internetowej następujący opis potwierdza, że obiekt `encryption` jest używany do tworzenia szyfrowanego konta magazynu.
+
+    ![Szyfrowanie konta magazynu w odwołaniu do szablonu usługi Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts-encryption.png)
+
+    Istnieją dwa sposoby zarządzania kluczem szyfrowania. Można użyć kluczy szyfrowania zarządzanych przez firmę Microsoft za pomocą szyfrowania usługi Storage lub użyć własnych kluczy szyfrowania. W celu uproszczenia w tym samouczku używasz opcji `Microsoft.Storage`, więc nie musisz tworzyć usługi Azure Key Vault.
+
+    ![Obiekt szyfrowania konta magazynu w odwołaniu do szablonu usługi Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts-encryption-object.png)
+
+    Obiekt szyfrowania powinien wyglądać następująco:
+
+    ```json
+    "encryption": {
         "services": {
             "blob": {
                 "enabled": true
+            },
+            "file": {
+              "enabled": true
             }
-        }
+        },
+        "keySource": "Microsoft.Storage"
     }
     ```
-5. Z poziomu programu Visual Studio Code zmodyfikuj szablon, aby ostateczny element resources wyglądał następująco:
-    
-    ![Zasoby szyfrowanego konta magazynu w szablonie usługi Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
+
+## <a name="edit-the-template"></a>Edytowanie szablonu
+
+Z poziomu programu Visual Studio Code zmodyfikuj szablon, aby element resources wyglądał następująco:
+
+![Zasoby szyfrowanego konta magazynu w szablonie usługi Resource Manager](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 

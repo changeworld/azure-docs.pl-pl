@@ -7,31 +7,31 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: saudas
-ms.openlocfilehash: d8da717b83b43395309c695a4f9edaeda8144a8b
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: a17e2fa4bef6890d59f7e66c6ede349f8dee3b8a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379199"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280457"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Obsługiwane wersje rozwiązania Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
-Społeczność rozwiązania Kubernetes zwalnia wersje pomocnicze mniej więcej trzy miesiące. Wersje te obejmują nowe funkcje i ulepszenia. Zwalnia poprawki są częściej (czasami co tydzień), a są przeznaczone wyłącznie dla krytycznych poprawek błędów w wersji pomocniczej. Wersje te poprawki zawierają poprawki luk w zabezpieczeniach lub główne usterki wpływające na ochronę dużej liczby klientów i produktów, działających w oparciu o rozwiązania Kubernetes w środowisku produkcyjnym.
+Społeczność platformy Kubernetes wydaje wersje pomocnicze średnio co trzy miesiące. Te wydania zawierają nowe funkcje i ulepszenia. Wydania poprawek odbywają się częściej (czasami co tydzień) i mają na celu naprawienie tylko krytycznych usterek w wersji pomocniczej. Wersje te poprawki zawierają poprawki luk w zabezpieczeniach lub główne usterki wpływające na ochronę dużej liczby klientów i produktów, działających w oparciu o rozwiązania Kubernetes w środowisku produkcyjnym.
 
-Nowe rozwiązania Kubernetes, wersja pomocnicza jest udostępniana w [acs-engine] [ acs-engine] od pierwszego dnia. Cel poziomu usługi AKS w usługi (SLO) obiekty docelowe, zwalniając wersję pomocniczą dla usługi AKS klastry w ciągu 30 dni, z zastrzeżeniem stabilności wersji.
+Nowe rozwiązania Kubernetes, wersja pomocnicza jest udostępniana w [acs-engine] [ acs-engine] od pierwszego dnia. Docelowe poziomy usług (SLO, Service Level Objective) usługi AKS wydają wersję pomocniczą dla klastrów AKS w ciągu 30 dni, w zależności od stabilności wydania.
 
-## <a name="kubernetes-version-support-policy"></a>Zasady pomocy technicznej wersji rozwiązania Kubernetes
+## <a name="kubernetes-version-support-policy"></a>Zasady obsługi wersji platformy Kubernetes
 
-AKS obsługuje cztery wersje pomocnicze platformy kubernetes:
+Usługa AKS obsługuje cztery wersje pomocnicze platformy Kubernetes:
 
 - Bieżąca wersja pomocnicza, która jest ogólnie nadrzędnego (n)
-- Trzy poprzednie wersje pomocnicze. Wszystkie obsługiwane wersje pomocnicze obsługuje również dwa stabilne poprawki.
+- Trzy poprzednie wersje pomocnicze. Każda obsługiwana wersja pomocnicza obsługuje także dwie stabilne poprawki.
 
 Na przykład, jeśli wprowadzono AKS *1.11.x* obecnie Pomoc techniczna jest świadczona również dla *1.10.a* + *1.10.b*, *1.9.c* + *1.9d*, *1.8.e* + *1.8F* (gdzie wersji własną literą poprawki są dwie kompilacje najnowszy stabilny).
 
-Jeśli wprowadzono nową wersję pomocniczą najstarsze pomocniczej wersji i poprawki wersji obsługiwane zostały wycofane. 15 dni przed wprowadzeniem nowych wersji pomocniczej i wycofanie mającej się ukazać wersji jest podana za pośrednictwem kanałów aktualizacji usługi Azure. W przykładzie powyżej gdzie *1.11.x* jest zwolniony, wycofane wersje są *1.7.g* + *1.7.h*.
+Po wprowadzeniu nowej wersji pomocniczej obsługa najstarszej wersji pomocniczej i wydań poprawek jest wycofywana. 15 dni przed wprowadzeniem nowych wersji pomocniczej i wycofanie mającej się ukazać wersji anons jest nawiązywane za pomocą [kanałów aktualizacji usługi Azure][azure-update-channel]. W przykładzie powyżej gdzie *1.11.x* jest zwolniony, wycofane wersje są *1.7.g* + *1.7.h*.
 
-Podczas wdrażania klastra usługi AKS w portalu lub przy użyciu wiersza polecenia platformy Azure, klaster ma zawsze wartość n-1 wersji pomocniczej i najnowszych poprawek. Na przykład, jeśli obsługuje AKS *1.11.x*, *1.10.a* + *1.10.b*, *1.9.c* + *1.9 d*, *1.8.e* + *1.8F*, jest wersja domyślna dla nowych klastrów *1.10.b*.
+Podczas wdrażania klastra AKS w portalu lub za pomocą interfejsu wiersza polecenia platformy Azure klaster jest zawsze ustawiany na wersję pomocniczą n-1 i najnowszą poprawkę. Na przykład, jeśli obsługuje AKS *1.11.x*, *1.10.a* + *1.10.b*, *1.9.c* + *1.9 d* , *1.8.e* + *1.8F*, jest wersja domyślna dla nowych klastrów *1.10.b*.
 
 ## <a name="list-currently-supported-versions"></a>Lista aktualnie obsługiwane wersje
 
@@ -85,6 +85,7 @@ Aby uzyskać informacje na temat uaktualniania klastra, zobacz [Uaktualnianie kl
 
 <!-- LINKS - External -->
 [acs-engine]: https://github.com/Azure/acs-engine
+[azure-update-channel]: https://azure.microsoft.com/updates/?product=kubernetes-service
 
 <!-- LINKS - Internal -->
 [aks-upgrade]: upgrade-cluster.md

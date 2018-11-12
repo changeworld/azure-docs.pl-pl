@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 11/05/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 90a5be07b6939df1850bb1574c71254bb896f004
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 6d981d9dc7433d957819d0beb6aa6265882f1890
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093836"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037400"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -35,7 +35,7 @@ Na poniższym diagramie przedstawiono koncepcyjny widok działania i przepływu 
 
 ![Przepływ procesu zarządzania aktualizacjami](media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Rozwiązanie Update Management może służyć do natywnie dołączanie maszyn w wielu subskrypcji w ramach tej samej dzierżawy. Zarządzanie maszynami w innej dzierżawie, należy najpierw dodać je jako [maszyny spoza platformy Azure](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine).
+Rozwiązanie Update Management może służyć do natywnie dołączanie maszyn w wielu subskrypcji w ramach tej samej dzierżawy.
 
 CVE po wersji może potrwać 2 – 3 godziny poprawki pojawienie się maszyn z systemem Linux dla oceny.  W przypadku maszyn Windows zajmuje 12 – 15 godzin poprawki do wyświetlenia dla oceny po udostępnieniu.
 

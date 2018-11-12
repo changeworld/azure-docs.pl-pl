@@ -1,22 +1,22 @@
 ---
-title: Zarządzanie klastrami Hadoop w HDInsight przy użyciu zestawu SDK platformy .NET — Azure
-description: Dowiedz się, jak wykonywać zadania administracyjne dla klastrów Hadoop w HDInsight przy użyciu zestawu .NET SDK HDInsight.
+title: Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu zestawu SDK platformy .NET — Azure
+description: Dowiedz się, jak wykonywać zadania administracyjne dla klastrów Apache Hadoop w HDInsight przy użyciu zestawu .NET SDK HDInsight.
 services: hdinsight
 ms.reviewer: jasonh
-author: jasonwhowell
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 0d8238d5f1dca15aaba0f8f5a6580df97164006a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: a7c06d53e3823bd81707608f566f581fa44638fc
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110803"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037766"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Zarządzanie klastrami Hadoop w HDInsight przy użyciu zestawu .NET SDK
+# <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu zestawu .NET SDK
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
 Dowiedz się, jak zarządzać klastrami HDInsight przy użyciu [HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
@@ -142,12 +142,12 @@ Skalowanie funkcji klastra umożliwia zmianę liczby węzłów procesu roboczego
 
 Wpływ zmianę liczby węzłów danych dla każdego typu klastra obsługiwane przez HDInsight:
 
-* Hadoop
+* Apache Hadoop
   
     Możesz bezproblemowo zwiększyć liczbę węzłów procesu roboczego w klastrze usługi Hadoop, w którym jest uruchomiony bez wywierania wpływu na wszystkie oczekujące lub uruchomione zadania. Nowe zadania należy dostarczyć również w przypadku, gdy operacja jest w toku. Błędy trwaniem skalowania bez problemu zmieniała są obsługiwane, dzięki czemu klaster zawsze pozostanie w stanie działać.
   
     Gdy klaster Hadoop jest skalowane w dół dzięki zmniejszeniu liczby węzłów danych, zostaną ponownie uruchomione niektóre z tych usług w klastrze. To powoduje, że wszystkie uruchomione i oczekujące zadania na zakończenie operacji skalowania. Można jednak ponownie przesłać zadania po zakończeniu operacji.
-* HBase
+* Apache HBase
   
     Możesz bezproblemowo Dodawanie lub usuwanie węzłów do klastra HBase jest uruchomiona. Serwery regionalne automatycznie są równoważone w ciągu kilku minut od zakończenia operacji skalowania. Można jednak również ręcznie równoważyć serwerów regionalnych, logując się do węzła głównego klastra i uruchamiając następujące polecenia z okna wiersza polecenia:
   
@@ -156,7 +156,7 @@ Wpływ zmianę liczby węzłów danych dla każdego typu klastra obsługiwane pr
     >hbase shell
     >balancer
     ```
-* Storm
+* Apache Storm
   
     Bezproblemowo można dodać lub usunąć węzły danych z klastrem Storm, jest uruchomiona. Jednak po pomyślnym zakończeniu operacji skalowania, konieczne będzie ponowne zrównoważenie topologii.
   
@@ -192,9 +192,9 @@ Klastry HDInsight mają następujące usługi sieci web HTTP (wszystkie te usłu
 
 * ODBC
 * JDBC
-* Ambari
-* Oozie
-* Templeton
+* Apache Ambari
+* Apache Oozie
+* Apache Templeton
 
 Domyślnie te usługi są przyznawane dostępu. Możesz można odwołać/Udziel dostępu. Aby można było odwołać:
 
@@ -246,19 +246,19 @@ foreach (var key in results.Configuration.Keys)
 
 Zobacz [przykłady uruchamiania technologii MapReduce usługi Hadoop w HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
 
-**Do przesyłania zadań Hive** 
+**Aby przesłać zadania technologii Hive** 
 
 Zobacz [uruchamianie zapytań Hive przy użyciu zestawu .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 
-**Aby przesłać zadania Pig**
+**Aby przesłać zadania Apache Pig**
 
 Zobacz [zadania Pig Uruchom przy użyciu zestawu .NET SDK](hadoop/apache-hadoop-use-pig-dotnet-sdk.md).
 
-**Do przesyłania zadań narzędzia Sqoop**
+**Do przesyłania zadań z wykorzystaniem narzędzia Apache Sqoop**
 
 Zobacz [z HDInsight przy użyciu narzędzia Sqoop](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
 
-**Aby przesłać zadania programu Oozie**
+**Aby przesłać zadania programu Apache Oozie**
 
 Zobacz [Użyj Oozie z usługą Hadoop, aby zdefiniować i uruchomić przepływ pracy w HDInsight](hdinsight-use-oozie-linux-mac.md).
 

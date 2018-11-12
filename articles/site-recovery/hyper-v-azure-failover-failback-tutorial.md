@@ -1,29 +1,29 @@
 ---
-title: Przechodzenie do trybu failover i powrót po awarii maszyn wirtualnych funkcji Hyper-V replikowanych na platformie Azure za pomocą usługi Site Recovery | Microsoft Docs
-description: Dowiedz się, jak wprowadzić maszyny wirtualne funkcji Hyper-V w tryb failover na platformie Azure i przywrócić je po awarii do lokacji lokalnej za pomocą usługi Azure Site Recovery
+title: Przechodzenie do trybu failover i powrót po awarii maszyn wirtualnych funkcji Hyper-V podczas odzyskiwania po awarii na platformie Azure za pomocą usługi Site Recovery | Microsoft Docs
+description: Dowiedz się, jak przejść do trybu failover i powrócić po awarii maszyn wirtualnych funkcji Hyper-V podczas odzyskiwania po awarii na platformie Azure za pomocą usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 31de654e6746cecf5aedabbfe481ab99b2aa3510
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6dde345e360dc304578b626ee2678dd51fe56dc6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49076987"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210520"
 ---
-# <a name="failover-and-failback-hyper-v-vms-replicated-to-azure"></a>Przechodzenie do trybu failover i powrót po awarii maszyn wirtualnych funkcji Hyper-V replikowanych na platformie Azure
+# <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Przechodzenie do trybu failover i powrót po awarii maszyn wirtualnych funkcji Hyper-V replikowanych na platformie Azure
 
 W tym samouczku omówiono sposób wprowadzania maszyny wirtualnej funkcji Hyper-V w tryb failover na platformie Azure. Po wprowadzeniu maszyny w tryb failover można przywrócić ją po awarii do lokacji lokalnej, gdy ta będzie znów dostępna. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Sprawdzanie właściwości maszyny Hyper-V pod kątem zgodności z wymaganiami platformy Azure
 > * Przełączanie do trybu failover na platformie Azure
-> * Powrót po awarii z platformy Azure do lokacji lokalnej
+> * Powrót po awarii z platformy Azure do środowiska lokalnego
 > * Odwrotna replikacja lokalnych maszyn wirtualnych w celu ponownego rozpoczęcia replikacji na platformie Azure
 
 Jest to piąty samouczek z tej serii. Założono w nim, że zostały już wykonane zadania z poprzednich samouczków.    

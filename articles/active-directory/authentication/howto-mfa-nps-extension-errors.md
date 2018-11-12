@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 4097fab5610bf4bee6c14c65d3b45e0de818a0cc
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 58bb3ae39ecd5631508ca1d09bf1d9d8f4d75063
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160913"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036669"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Komunikatami o błędach z rozszerzenia serwera NPS dla usługi Azure Multi-Factor Authentication
 
@@ -30,6 +30,7 @@ Jeśli wystąpią błędy rozszerzenia serwera NPS dla usługi Azure Multi-Facto
 | **ESTS_TOKEN_ERROR** | Postępuj zgodnie z instrukcjami w [Rozwiązywanie problemów z rozszerzenia serwera NPS dla usługi MFA](howto-mfa-nps-extension.md#troubleshooting) do badania certyfikatu klienta i biblioteki ADAL token problemów. |
 | **HTTPS_COMMUNICATION_ERROR** | Serwer NPS nie może otrzymywać odpowiedzi z usługi Azure MFA. Sprawdź, czy zapory są otwarte dwukierunkowo dla ruchu do i z https://adnotifications.windowsazure.com |
 | **HTTP_CONNECT_ERROR** | Na serwerze, który uruchamia rozszerzenia serwera NPS, upewnij się, że może osiągnąć https://adnotifications.windowsazure.com i https://login.microsoftonline.com/. Jeśli te lokacje nie są ładowane, rozwiązywać problemy z łącznością, na tym serwerze. |
+| **Rozszerzenia serwera NPS dla usługi Azure MFA:** <br> Rozszerzenia serwera NPS dla usługi Azure MFA wykonuje tylko dodatkowej uwierzytelnianie żądań usługi Radius w stanie AccessAccept. Żądanie dla użytkownika username ze stanem odpowiedzi AccessReject, ignorowanie żądania. | Ten błąd zazwyczaj odzwierciedla niepowodzenia uwierzytelniania w AD lub serwer NPS nie może otrzymywać odpowiedzi z usługi Azure AD. Sprawdź, czy zapory są otwarte dwukierunkowo dla ruchu do i z https://adnotifications.windowsazure.com i https://login.microsoftonline.com przy użyciu portu 80 i 443. Jest również ważne sprawdzić, czy na karcie DIAL-IN uprawnień dostępu do sieci, ustawienie ma wartość "kontroli dostępu za pomocą zasad sieciowych NPS". |
 | **REGISTRY_CONFIG_ERROR** | Brak klucza w rejestrze dla aplikacji, która może być spowodowane [skrypt programu PowerShell](howto-mfa-nps-extension.md#install-the-nps-extension) nie można uruchomić po zakończeniu instalacji. Komunikat o błędzie powinien zawierać Brak klucza. Upewnij się, że masz klucza pod HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa. |
 | **REQUEST_FORMAT_ERROR** <br> Brak obowiązkowego atrybutu userName\Identifier Radius żądanie usługi RADIUS. Sprawdź, czy odbiera żądań usługi RADIUS serwera NPS | Ten błąd zazwyczaj odzwierciedla problem z instalacją. Rozszerzenia serwera NPS musi być zainstalowany na serwerach NPS, które mogą odbierać żądań usługi RADIUS. Serwery NPS, które są zainstalowane jako zależności usług, takich jak brama usług pulpitu zdalnego i usługi RRAS nie odbierania żądań radius. Rozszerzenia serwera NPS nie działa podczas instalacji za pośrednictwem takiego instalacje i występuje, ponieważ nie może odczytać dane z żądania uwierzytelniania. |
 | **REQUEST_MISSING_CODE** | Upewnij się, że Protokół szyfrowania hasła między serwerami zasad Sieciowych i NAS obsługuje dodatkowej metody uwierzytelniania używanej. **PAP** obsługuje wszystkie metody uwierzytelniania usługi Azure MFA w chmurze: połączenie telefoniczne, wiadomość tekstowa jednokierunkowe, powiadomienie aplikacji mobilnej i kod weryfikacyjny aplikacji mobilnej. **CHAPV2** i **EAP** obsługi połączeń telefonicznych i powiadomienia przez aplikacje mobilne. |

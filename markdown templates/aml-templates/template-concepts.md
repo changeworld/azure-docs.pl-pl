@@ -1,6 +1,6 @@
 ---
-title: POJĘCIA takie jak usługi sieci Web w usłudze Azure Machine Learning 59 znaków lub mniej. Uwzględnij nazwę usługi Azure Machine Learning. W tym miejscu tytuł testu https://moz.com/learn/seo/title-tag
-description: Ten ciąg opisuje artykułu w 115 do 145 znaków. Użyj optymalizacji dla aparatów wyszukiwania rodzaj zlecenia akcji w tym miejscu. takich jak — Dowiedz się, jak to zrobić to i przy użyciu słowa klienta. Te informacje są wyświetlane na wbudowanym strony wyszukiwania z sygnaturą daty artykułu. Jeśli Twoje akapit wprowadzenie opisuje celem tego artykułu, można go edytować w tym miejscu dla długości.
+title: KONCEPCJA takich jak usługi sieci Web w usłudze Azure Machine Learning w 59 znaków lub mniej. Na przykład nazwa usługi Azure Machine Learning. Tytuł testów w tym miejscu https://moz.com/learn/seo/title-tag
+description: Ten ciąg opis artykułu w 115, 145 znaków. W tym miejscu użyć optymalizacji dla aparatów wyszukiwania rodzaj zlecenia akcji. takie jak — Dowiedz się, jak to zrobić, to i używania wyrazów klienta. Te informacje są wyświetlane na tekście strony wyszukiwania z sygnaturą daty artykułu. Jeśli Twoje akapit wprowadzający opisuje przeznaczenie tego artykułu, można go tutaj edytować długości.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -10,29 +10,29 @@ ms.author: your-msft-alias
 author: your-github-account-name
 ms.date: 04/10/2018
 ms.openlocfilehash: 759e76a75fffeb31d38439f59b219ad48ebf6277
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793126"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009255"
 ---
-# <a name="this-is-the-h1-and-the-article-title-that-shows-on-the-web"></a>Jest to H1 i tytuł artykułu, który zawiera w sieci web
+# <a name="this-is-the-h1-and-the-article-title-that-shows-on-the-web"></a>Jest to H1 i tytułu artykułu, który pokazuje, w sieci web
 
 ## <a name="section-here-h2"></a>W tym miejscu sekcji H2 
 W tym miejscu akapitu. 
 **To wyrażenie jest pogrubiony**
-*ta fraza jest kursywą*
+*frazy jest kursywa*
 
-Jest to [hiperłącza do artykułu](template-concepts.md)
+Jest to [hiperlink do artykułu](template-concepts.md)
 
-Jest to obrazu:
+Jest to obraz:
 
 ![Jest to opis obrazu](media/overview-what-is-azure-ml/aml-concepts.png)
 
 ## <a name="section-here-h2"></a>W tym miejscu sekcji H2
 Ta tabela ma nagłówki:
 
-|Kolumna1  |Kolumna2  |Column3  |
+|Kolumna1  |Kolumna2  |Kolumna3  |
 |---------|---------|---------|
 |Row1|Wartość 1|Wartość A|
 |Row2|Wartość 2|Wartość B|
@@ -43,25 +43,25 @@ Jest to lista numerowana:
 
 1. Pierwszy element
 
-   Być tego samego odstępy jako pierwszy element numerowane tworzone jest wcięcie tego akapitu.
+   Do tych samych odstępów jako pierwszy element numerowane tworzone jest wcięcie tego akapitu.
 
 2. Drugi element
-   - to zdanie jest punktor
-   - to zdanie jest inny punktor
+   - To pole następujące zdanie jest punktora
+   - To pole następujące zdanie jest inny punktora
 
 3. Trzeci element
 
 4. Element do przodu
 
-5. Element piąty
+5. Piąty element
 
-## <a name="this-list-is-bulleted-list"></a>Ta lista jest lista punktowana:
+## <a name="this-list-is-bulleted-list"></a>Ta lista jest listy punktowanej:
 - Element 1
 - Element 2
 - Element 3
-  - Podelementu 1
-  - Podelementu 2
+  - Element podrzędny 1
+  - Element podrzędny 2
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać informacje dotyczące uczenia maszynowego, zobacz [inny artykuł](template-concepts.md)
+Aby uzyskać informacji na temat usługi machine learning, zobacz [inny artykuł](template-concepts.md)

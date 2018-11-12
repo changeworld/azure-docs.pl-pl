@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9c2b5db4fe35227600e7ab8d94f2cc8701cf529b
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 469d97385fd86952c2d287e2b5d15d7470a9e34e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963780"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008338"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>Zbieraj alerty z programów Nagios i Zabbix w usłudze Log Analytics z agenta usługi Log Analytics dla systemu Linux 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
@@ -80,7 +80,7 @@ Aby zbierać alerty na Nagios serwerze, wykonaj następujące czynności.
 
 
 ## <a name="alert-records"></a>Rekordy alertów
-Rekordy alertów można pobrać z programów Nagios i Zabbix przy użyciu [dziennikach](log-analytics-log-search.md) w usłudze Log Analytics.
+Rekordy alertów można pobrać z programów Nagios i Zabbix przy użyciu [dziennikach](log-analytics-queries.md) w usłudze Log Analytics.
 
 ### <a name="nagios-alert-records"></a>Rekordy Nagios alertu
 
@@ -119,4 +119,4 @@ Zgłoś alert, ma rekordów zbieranych przez Zabbix **typu** z **alertu** i **sy
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [alerty](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) w usłudze Log Analytics.
-* Dowiedz się więcej o [dziennikach](log-analytics-log-search.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
+* Dowiedz się więcej o [dziennikach](log-analytics-queries.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 

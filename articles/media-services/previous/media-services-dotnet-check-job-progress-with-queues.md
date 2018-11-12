@@ -1,10 +1,10 @@
 ---
-title: Używać magazynu kolejek Azure monitorować powiadomienia zadania usługi Media Services z platformą .NET | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać magazynu kolejek Azure monitorować powiadomienia zadania usługi Media Services. Przykładowy kod jest napisany w języku C# i używa SDK usługi Media Services dla platformy .NET.
+title: Usługa Azure Queue storage do monitorowania powiadomień dotyczących zadań usługi Media Services przy użyciu platformy .NET | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać usługi Azure Queue storage do monitorowania powiadomień dotyczących zadania usługi Media Services. Przykładowy kod jest zapisywany C# i używa Media Services SDK dla platformy .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: f535d0b5-f86c-465f-81c6-177f4f490987
 ms.service: media-services
@@ -12,59 +12,59 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: 5b0e3155023cb8ac4d359e440b561ae5c61a9195
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5ddee0ca94535688a0634ef8575f3aedad649a43
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788662"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037502"
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Użyj magazynu kolejek Azure, aby monitorować powiadomienia zadania usługi Media Services przy użyciu platformy .NET
-Po uruchomieniu zadania kodowania, często wymagają sposób, aby śledzić postęp zadania. Można skonfigurować usługi Media Services w celu dostarczenia powiadomienia do [magazynu kolejek Azure](../../storage/storage-dotnet-how-to-use-queues.md). Uzyskiwanie powiadomień z magazynu kolejek można monitorować postęp zadania. 
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Usługa Azure Queue storage do monitorowania powiadomień dotyczących zadań usługi Media Services przy użyciu platformy .NET
+Po uruchomieniu zadania kodowania, często wymagają sposób śledzenia postępu zadań. Można skonfigurować usługi Media Services w celu dostarczenia powiadomienia [Azure Queue storage](../../storage/storage-dotnet-how-to-use-queues.md). Aby monitorować postęp zadania, otrzymywanie powiadomień z usługi Queue storage. 
 
-Komunikaty dostarczone do kolejki magazynu można uzyskać z dowolnego miejsca na świecie. Architektura wiadomości kolejki magazynu jest niezawodnych i wysokiej skalowalności. Sondowanie magazynu kolejek wiadomości jest zalecane w przypadku innych metod.
+Wiadomości dostarczone do usługi Queue storage jest możliwy z dowolnego miejsca na świecie. Architektura komunikatów kolejki magazynu jest niezawodny i wysoce skalowalne. Zaleca się sondowania magazyn kolejek komunikatów, za pośrednictwem za pomocą innych metod.
 
-Typowy scenariusz co do nasłuchiwania na powiadomienia usługi Media Services jest Jeśli tworzysz system zarządzania zawartością, które należy wykonać kilka dodatkowych zadań po kodowania zadanie zostało ukończone (na przykład w celu wyzwalania następnego kroku w przepływie pracy, lub do publikowania zawartość).
+Jeden typowy scenariusz, w celu nasłuchiwania na powiadomienia usługi Media Services jest, jeśli tworzysz system zarządzania zawartością, który trzeba wykonać pewne dodatkowe zadania po zadania kodowania zostanie ukończone (na przykład do następnego kroku w przepływie pracy lub opublikować wyzwalacza zawartość).
 
-W tym artykule pokazano, jak pobrać powiadomień wiadomości z kolejki magazynu.  
+W tym artykule pokazano, jak można uzyskać powiadomienia z usługi Queue storage.  
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
-Podczas tworzenia aplikacji usługi Media Services, które używać magazynu kolejek, należy wziąć pod uwagę następujące:
+Podczas tworzenia aplikacji usługi Media Services, które używają usługi Queue storage, należy wziąć pod uwagę następujące czynności:
 
-* Magazyn kolejek nie ma gwarancji, najpierw w pierwszym poza dostarczania uporządkowanego (FIFO). Aby uzyskać więcej informacji, zobacz [kolejek Azure i porównać kolejki magistrali usług Azure i Contrasted](https://msdn.microsoft.com/library/azure/hh767287.aspx).
-* Magazyn kolejek nie jest usługi wypychania. Trzeba wykonać sondowanie kolejki.
-* Może mieć dowolną liczbę kolejek. Aby uzyskać więcej informacji, zobacz [interfejsu API REST usługi kolejki](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).
-* Magazyn kolejek ma pewnych ograniczeń i charakterystykę pod uwagę. Te ustawienia zostały opisane w [kolejek Azure i porównać kolejki magistrali usług Azure i Contrasted](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
+* Usługa queue storage zapewnia gwarancję pierwszy wejściu — pierwszy na wyjściu (FIFO) uporządkowane dostarczania. Aby uzyskać więcej informacji, zobacz [kolejek platformy Azure i usługi Azure Service Bus kolejek w porównaniu i Contrasted](https://msdn.microsoft.com/library/azure/hh767287.aspx).
+* Usługa queue storage nie jest usługą wypychania. Należy wykonać sondowanie kolejki.
+* Może mieć dowolną liczbę kolejek. Aby uzyskać więcej informacji, zobacz [interfejsu API REST usługi kolejek](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).
+* Usługa queue storage ma pewne ograniczenia i szczegółowych informacji pod uwagę. Te ustawienia zostały opisane w [kolejek platformy Azure i usługi Azure Service Bus kolejek w porównaniu i Contrasted](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
 
-## <a name="net-code-example"></a>Przykład kodu platformy .NET
+## <a name="net-code-example"></a>Przykładowy kod platformy .NET
 
 Przykład kodu w tej sekcji wykonuje następujące czynności:
 
-1. Definiuje **EncodingJobMessage** klasy, który jest mapowany na format powiadomienia w wiadomości. Kod deserializuje komunikatów odebranych z kolejki, do obiektów **EncodingJobMessage** typu.
-2. Ładuje informacje o koncie usługi Media Services i magazynu z pliku app.config. Przykład kodu wykorzystuje te informacje do tworzenia **CloudMediaContext** i **CloudQueue** obiektów.
+1. Definiuje **EncodingJobMessage** klasę, która mapuje na format komunikatu powiadomienia. Kod deserializuje komunikatów odebranych z kolejki do obiektów **EncodingJobMessage** typu.
+2. Ładuje informacje o koncie usługi Media Services i magazynu z pliku app.config. Przykład kodu używa tych informacji do utworzenia **CloudMediaContext** i **CloudQueue** obiektów.
 3. Tworzy kolejkę, która odbiera powiadomienia dotyczące zadania kodowania.
-4. Tworzy punktu końcowego powiadomienia, który jest zamapowany do kolejki.
-5. Dołącza punktu końcowego powiadomienia do zadania, a następnie przesyła zadania kodowania. Może mieć wiele punktów końcowych powiadomień dołączone do zadania.
-6. Przekazuje **NotificationJobState.FinalStatesOnly** do **AddNew** metody. (W tym przykładzie opiszemy tylko Stany końcowego przetwarzania zadania.)
+4. Tworzy punkt końcowy powiadomienia, który jest mapowany do kolejki.
+5. Dołącza punktu końcowego powiadomienia do zadania, a następnie przesyła je zadania kodowania. Może mieć wiele punktów końcowych powiadomień dołączone do zadania.
+6. Przebiegi **NotificationJobState.FinalStatesOnly** do **działają funkcje AddNew** metody. (W tym przykładzie firma Microsoft jest zainteresowany wyłącznie końcowego stany przetwarzania zadań.)
 
         job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
-7. W przypadku przekazania **NotificationJobState.All**, możesz pobrać wszystkie następujące powiadomienia o zmianie stanu: umieszczonych w kolejce, zaplanowane przetwarzania i gotowe. Jak wspomniano wcześniej, magazyn kolejek gwarantuje jednak uporządkowanego dostarczenia. Kolejność wiadomości, należy użyć **sygnatury czasowej** właściwości (zdefiniowanego w **EncodingJobMessage** typu w poniższym przykładzie). Możliwe są zduplikowane wiadomości. Aby sprawdzić, czy duplikaty, użyj **właściwość ETag** (zdefiniowanego w **EncodingJobMessage** typu). Istnieje również możliwość, że niektóre powiadomienia o zmianie stanu uzyskać pominięte.
-8. Oczekuje na zadanie na uzyskanie dostępu do stan zakończenia sprawdzając kolejki co 10 sekund. Usuwa wiadomości po zostały przetworzone.
+7. W przypadku przekazania **NotificationJobState.All**, otrzymasz wszystkie następujące powiadomienia o zmianach stanu: umieszczonych w kolejce, zaplanowane, przetwarzania i gotowe. Jak wspomniano wcześniej, Queue storage gwarantuje jednak uporządkowane dostarczanie. Kolejność komunikatów, należy użyć **sygnatura czasowa** właściwości (wobec **EncodingJobMessage** typu w poniższym przykładzie). Możliwe są zduplikowane komunikaty. Aby sprawdzić, czy duplikaty, należy użyć **właściwość ETag** (wobec **EncodingJobMessage** typu). Istnieje również możliwość, że Pobierz pominięto niektóre powiadomienia o zmianie stanu.
+8. Czeka na zadanie przejść do stanu Gotowe, sprawdzając kolejki co 10 sekund. Usuwa wiadomości po ich przetworzeniu.
 9. Usuwa kolejkę i punktu końcowego powiadomienia.
 
 > [!NOTE]
-> Zalecanym sposobem monitorować stan zadania jest nasłuchiwanie komunikatów powiadomień, jak pokazano w poniższym przykładzie:
+> Zalecanym sposobem monitorować stan zadania jest przez nasłuchiwanie w komunikaty powiadomień, jak pokazano w poniższym przykładzie:
 >
-> Alternatywnie można sprawdzić stanu zadania za pomocą **IJob.State** właściwości.  Komunikat z powiadomieniem o zakończeniu zadania może pojawić się przed stanu na **IJob** ustawiono **Zakończono**. **IJob.State** właściwość odzwierciedla stan dokładne z niewielkie opóźnienie.
+> Alternatywnie, można sprawdzić na stan zadania przy użyciu **IJob.State** właściwości.  Komunikat z powiadomieniem o zakończeniu zadania może pojawić się przed stanu na **IJob** ustawiono **Zakończono**. **IJob.State** właściwość odzwierciedla, dokładny stan z niewielkie opóźnienie.
 >
 >
 
 ### <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
 
 1. Skonfiguruj środowisko projektowe i wypełnij plik app.config przy użyciu informacji dotyczących połączenia, zgodnie z opisem w sekcji [Projektowanie usługi Media Services na platformie .NET](media-services-dotnet-how-to-use.md). 
-2. Utwórz nowy folder (folder może być dowolnym miejscu na dysku lokalnym) i skopiuj plik MP4 pliku, który chcesz zakodować i przesłany strumieniowo lub pobrać progresywnie. W tym przykładzie ścieżka "C:\Media" jest używana.
+2. Utwórz nowy folder (folder może być dowolnym miejscu na dysku lokalnym) i skopiuj plik MP4, który chcesz kodować i strumieniowo lub pobrać progresywnie. W tym przykładzie ścieżka "C:\Media" jest używana.
 3. Dodaj odwołanie do **System.Runtime.Serialization** biblioteki.
 
 ### <a name="code"></a>Kod
@@ -338,7 +338,7 @@ namespace JobNotification
 }
 ```
 
-Powyższy przykład utworzone następujące dane wyjściowe: wartości będą się różnić.
+Poprzedni przykład utworzone następujące dane wyjściowe: wartości będą się różnić.
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4

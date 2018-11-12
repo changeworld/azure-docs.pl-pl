@@ -12,21 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 17fd9907a5e3e3f4485b35c8e74d6e46fecb7fda
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 01c8f864d25a35d42abcd624e31728f4fee0d80c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303510"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012075"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorowanie tożsamości i dostępu w usłudze Azure Security Center (wersja zapoznawcza)
 Ten artykuł ułatwia korzystanie z usługi Azure Security Center w celu monitorowania tożsamości i dostępu użytkowników.
 
 > [!NOTE]
 > Monitorowanie tożsamości i dostępu jest dostępna w wersji zapoznawczej i jest dostępna tylko w warstwie standardowa usługi Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
->
 >
 
 Tożsamość powinna być warstwą kontroli w Twoim przedsiębiorstwie, a ochrona tożsamości powinna stanowić najwyższy priorytet. Zabezpieczeń obwodowych powstał z obwód sieci obwodowej tożsamości. Zabezpieczenia staje się mniej o obronie sieci i więcej o obronie dane, a także zarządzanie zabezpieczeniami aplikacji i użytkowników. Dzisiaj, w związku z przeniesieniem większej ilości danych i aplikacji do chmury, tożsamość staje się nową strefą.
@@ -56,7 +55,7 @@ Aby kontynuować, wybierz **tożsamość i dostęp** w obszarze **zasobów** lub
 
 ![Pulpit nawigacyjny usługi Security Center][1]
 
-## <a name="monitor-identity-and-access"></a>Monitorowanie tożsamości i dostępu
+## <a name="monitor-identity-and-access"></a>Monitorowanie tożsamość i dostępu
 W obszarze **tożsamość i dostęp**, istnieją dwie karty:
 
 - **Omówienie**: zaleceniami zostały zidentyfikowane przez usługę Security Center.
@@ -107,18 +106,25 @@ W obszarze **subskrypcje**, znajduje się lista subskrypcji. W pierwszej kolumni
 ## <a name="recommendations"></a>Zalecenia
 Używany jako odwołanie w tabeli poniżej, aby lepiej zrozumieć dostępne zalecenia dotyczące tożsamości i dostępu, a każdy z nich działanie w przypadku zastosowania.
 
-| Zalecenie | Opis |
-| --- | --- |
-| Wyznaczenie więcej niż jednego właściciela subskrypcji | Zaleca się wyznaczenie więcej niż jednego właściciela subskrypcji w celu posiadania nadmiarowości dostępu administratora. |
-| Wyznacz maksymalnie 3 właścicieli w ramach subskrypcji | Zaleca się wyznaczenie mniejszej niż 3 właścicieli subskrypcji, aby zmniejszyć ryzyko naruszenia przez właściciela z naruszonymi zabezpieczeniami. |
-| Włącz usługę MFA dla kont z uprawnieniami właściciela subskrypcji | Zaleca się włączenie uwierzytelniania wieloskładnikowego (MFA) dla wszystkich kont subskrypcji z uprawnieniami administratora w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów. |
-| Włącz usługę MFA dla kont z uprawnieniami do zapisu w ramach subskrypcji | Zaleca się włączenie uwierzytelniania wieloskładnikowego (MFA) dla wszystkich kont subskrypcji z uprawnieniami do zapisu w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów. |
-| Włącz usługę MFA dla kont z uprawnieniami do odczytu w ramach subskrypcji | Zaleca się włączenie uwierzytelniania wieloskładnikowego (MFA) dla wszystkich kont subskrypcji z uprawnieniami do odczytu w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów. |
-| Usuń konta zewnętrzne z uprawnieniami do odczytu z subskrypcji | Zaleca się, usuń konta zewnętrzne z uprawnieniami do odczytu z subskrypcji, aby uniknąć niemonitorowanego dostępu. |
-| Usuń konta zewnętrzne z uprawnieniami do zapisu z subskrypcji | Zaleca się, usuń konta zewnętrzne z uprawnieniami do zapisu z subskrypcji, aby uniknąć niemonitorowanego dostępu. |
-| Usuń konta zewnętrzne z uprawnieniami właściciela z subskrypcji | Zaleca się, usuń konta zewnętrzne z uprawnieniami właściciela z subskrypcji, aby uniknąć niemonitorowanego dostępu. |
-| Usuń przestarzałe konta z subskrypcji | Zaleca, które można usunąć przestarzałe konta z subskrypcji. |
-| Usuń przestarzałe konta z uprawnieniami właściciela z subskrypcji | Zaleca, które można usunąć przestarzałe konta z uprawnieniami właściciela z subskrypcji. |
+|Typ zasobu|Wskaźnik bezpieczeństwa|Zalecenie|Opis|
+|----|----|----|----|
+|Subskrypcja|50|Włącz usługę MFA dla aplikacji platformy Azure do zarządzania konta z uprawnieniami właściciela subskrypcji|Włączanie usługi Multi-Factor Authentication (MFA) dla wszystkich kont subskrypcji z uprawnieniami administratora w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.|
+|Subskrypcja|50|Włączyć usługę security center w subskrypcji |Włączyć usługę Security center na wszystkie swoje subskrypcje, umożliwienia zaawansowanego wykrywania zagrożeń, JIT, listę dozwolonych aplikacji i zalecenia dotyczące zaawansowanych |
+|Subskrypcja|50|Włącz security center w warstwie standardowa w ramach Twojej subskrypcji |Włączyć usługę Security center w warstwie standardowa na wszystkie swoje subskrypcje, umożliwienia zaawansowanego wykrywania zagrożeń, JIT, listę dozwolonych aplikacji i zalecenia dotyczące zaawansowanych.|
+|Subskrypcja|40|Włącz usługę MFA dla kont aplikacji do zarządzania platformy Azure z uprawnieniami do zapisu w ramach subskrypcji|Włączanie usługi Multi-Factor Authentication (MFA) dla wszystkich kont subskrypcji z uprawnieniami do zapisu w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.|
+|Subskrypcja|30|Usuń konta zewnętrzne z uprawnieniami właściciela z subskrypcji|Usuń konta zewnętrzne z uprawnieniami właściciela z subskrypcji, aby uniknąć niemonitorowanego dostępu. |
+|Subskrypcja|30|Włącz usługę MFA dla kont aplikacji do zarządzania platformy Azure z uprawnieniami do odczytu w ramach subskrypcji|Włączanie usługi Multi-Factor Authentication (MFA) dla wszystkich kont subskrypcji z uprawnieniami do odczytu w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.|
+|Subskrypcja|25|Usuń konta zewnętrzne z uprawnieniami do zapisu z subskrypcji|Usuń konta zewnętrzne z uprawnieniami do zapisu z subskrypcji, aby uniknąć niemonitorowanego dostępu. |
+|Subskrypcja|20|Usuń przestarzałe konta z uprawnieniami właściciela z subskrypcji|Usuń przestarzałe konta z uprawnieniami właściciela z subskrypcji.|
+|Subskrypcja|5|Usuń przestarzałe konta z subskrypcji|Usuń przestarzałe konta z subskrypcji, aby umożliwić dostęp do tylko bieżąca liczba użytkowników. |
+|Subskrypcja|5|Wyznaczenie więcej niż jednego właściciela subskrypcji|Wyznaczenie więcej niż jednego właściciela subskrypcji w celu posiadania nadmiarowości dostępu administratora.|
+|Subskrypcja|5|Wyznacz maksymalnie 3 właścicieli w ramach subskrypcji|Wyznaczanie mniejszej niż 3 właścicieli subskrypcji, aby zmniejszyć ryzyko naruszenia zabezpieczeń przez właściciela z naruszonymi zabezpieczeniami.|
+|Magazyn kluczy|5|Włączanie dzienników diagnostycznych w usłudze Key Vault|Włączanie dzienników i zachowują je nawet przez rok. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci. |
+|Subskrypcja|15|Usuń konta zewnętrzne z uprawnieniami do odczytu z subskrypcji|Usuń konta zewnętrzne z uprawnieniami do odczytu z subskrypcji, aby uniknąć niemonitorowanego dostępu.|
+|Subskrypcja|1|Podawanie szczegółów dotyczących kontaktu ds. zabezpieczeń|Podaj informacje kontaktowe zabezpieczeń dla każdej subskrypcji. Informacje kontaktowe są e-mail adres i numer telefonu. Informacje są używane z Tobą, jeśli nasz zespół ds. zabezpieczeń wykryje, że Twoje zasoby zostały naruszone.|
+
+> ! [UWAGA] Jeśli utworzono zasady dostępu warunkowego, który wymaga uwierzytelniania Wieloskładnikowego, ale ma wykluczenia Ustaw oceny zalecenia usługi Security Center MFA uwzględnia zasady niezgodne, ponieważ umożliwia niektórzy użytkownicy zalogować się do platformy Azure bez użycia usługi MFA.
+>
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do innych typów zasobów platformy Azure, zobacz następujące tematy:
