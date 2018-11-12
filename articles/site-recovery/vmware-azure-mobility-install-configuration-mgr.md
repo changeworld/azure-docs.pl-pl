@@ -3,15 +3,15 @@ title: Automatyzowanie instalacji usługi mobilności Azure Site Recovery do odz
 description: Ten artykuł pomaga zautomatyzować Instalowanie usługi mobilności w programie System Center Configuration Manager do odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych do platformy Azure przy użyciu Site Recovery.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: f14c02404dae5a923aabcd2df8279a6150c42f57
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8cf657b17b7607a8b56869edeabe37e1c5caf219
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215297"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012279"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Proces instalacji usługi mobilności z System Center Configuration Manager
 

@@ -2,19 +2,19 @@
 title: Migracja z HDInsight z systemem Windows do HDInsight opartych na systemie Linux — platformy Azure
 description: Dowiedz się, jak przeprowadzić migrację z klastra HDInsight z systemem Windows w klastrze HDInsight opartych na systemie Linux.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.author: jasonh
-ms.openlocfilehash: ee97d2005752c9e0cd40de238d1f4a946bb9ee3d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: 3f0c912d1489884e0fef87e495d91486f3b1fc67
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948421"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010069"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migracja z klastra HDInsight z systemem Windows do klastra opartego na systemie Linux
 
