@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: 00a2c0d50a2476995dfb0d16d0cdbc5bd0ec313b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: c5677dc07326fa16960e0d748f88e26f259c0485
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139001"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262281"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informacje o kluczach, wpisów tajnych i certyfikatów
 
@@ -398,7 +398,7 @@ Wystawca certyfikatu można było utworzyć w usłudze Key Vault, musisz pomyśl
 
     -   Udostępnia konfigurację, który ma być używany do utworzenia obiektu wystawca dostawcy w usłudze key vault  
 
-Aby uzyskać więcej informacji na temat tworzenia obiektów wystawcy w portalu certyfikatów, zobacz [blogu certyfikaty magazynu kluczy](http://aka.ms/kvcertsblog)  
+Aby uzyskać więcej informacji na temat tworzenia obiektów wystawcy w portalu certyfikatów, zobacz [blogu certyfikaty magazynu kluczy](https://aka.ms/kvcertsblog)  
 
 Usługa Key Vault umożliwia utworzenie wielu obiektów wystawcy z konfiguracją dostawcy inną wystawcy. Po utworzeniu obiektu wystawcy jego nazwę można odwoływać się do jednej lub wielu zasad certyfikatu. Odwołanie do obiektu wystawcy powoduje, że usługi Key Vault, aby użyć konfiguracji określonych w obiekcie wystawcy, podczas żądania x509 certyfikatu od dostawcy urzędu certyfikacji podczas tworzenia certyfikatu i odnawiania.  
 

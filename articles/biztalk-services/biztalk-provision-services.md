@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 61776b19ba0ee273b78e3b0a6f610e5701251dd0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fe56b84b881b2afce9da9a7f7dfe4637c3494aa8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26632724"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261965"
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>Tworzenie usługi BizTalk Services przy użyciu portalu Azure
 
@@ -28,7 +28,7 @@ ms.locfileid: "26632724"
 > [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 > [!TIP]
-> Do zalogowania się do portalu Azure potrzebne jest konto Azure i subskrypcja platformy Azure. Jeśli nie masz konta, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Zobacz [Bezpłatna wersja próbna platformy Azure](http://go.microsoft.com/fwlink/p/?LinkID=239738).
+> Do zalogowania się do portalu Azure potrzebne jest konto Azure i subskrypcja platformy Azure. Jeśli nie masz konta, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Zobacz [Bezpłatna wersja próbna platformy Azure](https://go.microsoft.com/fwlink/p/?LinkID=239738).
 
 
 ## <a name="CreateService"></a>Tworzenie usługi BizTalk
@@ -84,16 +84,16 @@ Wymagania te nie dotyczą wersji bezpłatnej.
 <br/><br/>
 Konto platformy Azure może mieć wiele subskrypcji i może być zarządzane przez dowolną osobę, która ma odpowiednie uprawnienia. Na przykład właściciel konta Azure tworzy subskrypcję o nazwie <em>BizTalkServiceSubscription</em> i nadaje administratorom usługi BizTalk w firmie (na przykład ContosoBTSAdmins@live.com) prawo dostępu do niej. W tym scenariuszu administratorzy usługi BizTalk logują się do platformy Azure i mają pełne prawa administratora do wszystkich hostowanych usług w ramach subskrypcji, łącznie z usługą Azure BizTalk Services. Administratorzy usługi BizTalk nie są właścicielami konta Azure i dlatego nie mają dostępu do żadnych informacji dotyczących rozliczeń.
 <br/><br/>Więcej informacji znajduje się w artykule 
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=267577">Zarządzanie subskrypcjami i kontami usługi Storage na platformie Azure</a>.
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=267577">Zarządzanie subskrypcjami i kontami usługi Storage na platformie Azure</a>.
 </td>
 </tr>
 <tr>
-<td>Usługa Azure SQL Database</td>
+<td>Azure SQL Database</td>
 <td>Przechowuje tabele, widoki i procedury składowane używane przez usługę BizTalk, w tym dane śledzenia.
 <br/><br/>
 Podczas tworzenia usługi BizTalk można użyć istniejącego serwera Azure SQL Server, bazy danych SQL Azure lub automatycznie utworzyć nowy serwer bądź nową bazę danych.
 <br/><br/>
-Skala bazy danych SQL zostaje automatycznie skonfigurowana. Zwykle dla usługi BizTalk domyślna skala jest wystarczająca. Zmiana skali ma wpływ na cenę. Zobacz artykuł <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=234930"> Accounts and Billing in Azure SQL Database</a>
+Skala bazy danych SQL zostaje automatycznie skonfigurowana. Zwykle dla usługi BizTalk domyślna skala jest wystarczająca. Zmiana skali ma wpływ na cenę. Zobacz artykuł <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=234930"> Accounts and Billing in Azure SQL Database</a>
  (Konta i rozliczenia w bazie danych SQL Azure)<br/><br/>
 <strong>Uwagi</strong>
 <br/>
@@ -123,7 +123,7 @@ Domyślne ustawienia usługi Storage są wystarczające dla usługi BizTalk.
 <br/><br/>
 Podczas tworzenia konta usługi Storage następuje automatyczne utworzenie klucza podstawowego i klucza pomocniczego. Klucze te kontrolują dostęp do konta usługi Storage. Usługa BizTalk automatycznie używa klucza podstawowego.
 <br/><br/>
-Więcej informacji znajduje się w artykule <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285671"> Storage</a>.
+Więcej informacji znajduje się w artykule <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=285671"> Storage</a>.
 </td>
 </tr>
 
@@ -165,7 +165,7 @@ Połączenia hybrydowe są używane do łączenia witryny sieci Web Azure lub us
  Więcej informacji, m.in. na temat tworzenia połączeń hybrydowych i zarządzania nimi, znajduje się w artykule [Hybrid Connections](integration-hybrid-connection-overview.md) (Połączenia hybrydowe).
 
 ## <a name="next-steps"></a>Następne kroki
-Po utworzeniu usługi BizTalk zapoznaj się z różnymi [usługami BizTalk Services: kartami Pulpit nawigacyjny, Monitor i Skala](biztalk-dashboard-monitor-scale-tabs.md). Usługa BizTalk jest gotowa dla aplikacji. Aby rozpocząć tworzenie aplikacji, przejdź do artykułu [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197) (Usługa Azure BizTalk Services).
+Po utworzeniu usługi BizTalk zapoznaj się z różnymi [usługami BizTalk Services: kartami Pulpit nawigacyjny, Monitor i Skala](biztalk-dashboard-monitor-scale-tabs.md). Usługa BizTalk jest gotowa dla aplikacji. Aby rozpocząć tworzenie aplikacji, przejdź do artykułu [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197) (Usługa Azure BizTalk Services).
 
 ## <a name="see-also"></a>Zobacz też
 * [BizTalk Services: Editions Chart (Usługa BizTalk Services: zestawienie wersji)](biztalk-editions-feature-chart.md)<br/>
@@ -173,7 +173,7 @@ Po utworzeniu usługi BizTalk zapoznaj się z różnymi [usługami BizTalk Servi
 * [BizTalk Services: Backup and Restore (Usługa BizTalk Services: tworzenie kopii zapasowej i przywracanie)](biztalk-backup-restore.md)<br/>
 * [BizTalk Services: Throttling (Usługa BizTalk Services: ograniczanie przepływności)](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk Services: Issuer Name and Issuer Key (Usługa BizTalk Services: nazwa i klucz wydawcy)](biztalk-issuer-name-issuer-key.md)<br/>
-* [Jak rozpocząć pracę z zestawem SDK usługi Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Jak rozpocząć pracę z zestawem SDK usługi Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 * [Połączenia hybrydowe](integration-hybrid-connection-overview.md)
 
 [NewBizTalkService]: ./media/biztalk-provision-services/WABS_NewBizTalkService.png

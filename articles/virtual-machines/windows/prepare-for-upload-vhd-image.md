@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/10/2018
 ms.author: genli
-ms.openlocfilehash: f9b950b1d85f50331d556a54b4237d78ec5c07ac
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 4d30cca0106e52706326bfd91a2d0dfb0a64ca04
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388173"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258463"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Przygotowywanie wirtualnego dysku twardego Windows lub VHDX można przekazać na platformę Azure
 Przed przekazaniem Windows maszyn wirtualnych (VM) ze środowiska lokalnego w systemie Microsoft Azure, należy przygotować wirtualny dysk twardy (VHD lub VHDX). Platforma Azure obsługuje **tylko maszyny wirtualne generacji 1** są w formacie pliku wirtualnego dysku twardego oraz mieć stały dysk o rozmiarze. Maksymalny dozwolony rozmiar wirtualnego dysku twardego jest 1,023 GB. Możesz również przekonwertować generacji 1 maszyny Wirtualnej z VHDX pliku system do wirtualnego dysku twardego i z dynamicznie powiększających się dysków na stałych rozmiarach. Ale nie można zmienić generacji maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [generacji 1 lub 2 należy utworzyć maszyny Wirtualnej w funkcji Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -48,7 +48,7 @@ Po przekonwertowaniu dysku, utwórz maszynę Wirtualną, która korzysta z dysk�
 >Polecenia w tym artykule muszą być uruchamiane w sesji programu PowerShell z podwyższonym poziomem uprawnień.
 
 ### <a name="convert-disk-by-using-powershell"></a>Konwertuj dysk przy użyciu programu PowerShell
-Można przekonwertować dysk wirtualny, używając [Convert-VHD](http://technet.microsoft.com/library/hh848454.aspx) polecenia w programie Windows PowerShell. Wybierz **Uruchom jako administrator** podczas uruchamiania programu PowerShell. 
+Można przekonwertować dysk wirtualny, używając [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) polecenia w programie Windows PowerShell. Wybierz **Uruchom jako administrator** podczas uruchamiania programu PowerShell. 
 
 Następujące przykładowe polecenie konwertuje z dysku VHDX do wirtualnego dysku twardego, dynamicznie powiększających się dysków na stałym rozmiarze:
 
@@ -58,7 +58,7 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 W tym poleceniu, zastępując wartość "— ścieżki" ze ścieżką do wirtualnego dysku twardego, który chcesz przekonwertować, a wartość "-Ścieżka_docelowa" z nową ścieżkę i nazwę dysku przekonwertowana.
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>Konwersja z formatu dysku VMDK programu VMware
-W przypadku obrazu maszyny Wirtualnej Windows [format pliku VMDK](https://en.wikipedia.org/wiki/VMDK), przekonwertuj go na dysku VHD za pomocą [konwerter maszyn wirtualnych Microsoft](https://www.microsoft.com/download/details.aspx?id=42497). Aby uzyskać więcej informacji, zobacz artykuł z bloga [sposób konwertowania VMDK programu VMware do wirtualnego dysku twardego funkcji Hyper-V](http://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx).
+W przypadku obrazu maszyny Wirtualnej Windows [format pliku VMDK](https://en.wikipedia.org/wiki/VMDK), przekonwertuj go na dysku VHD za pomocą [konwerter maszyn wirtualnych Microsoft](https://www.microsoft.com/download/details.aspx?id=42497). Aby uzyskać więcej informacji, zobacz artykuł z bloga [sposób konwertowania VMDK programu VMware do wirtualnego dysku twardego funkcji Hyper-V](https://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx).
 
 ## <a name="set-windows-configurations-for-azure"></a>Ustawianie konfiguracji Windows na platformie Azure
 
@@ -377,7 +377,7 @@ Aby uzyskać więcej informacji o tym, jak utworzyć maszynę Wirtualną na pods
 - [Tworzenie maszyny Wirtualnej na podstawie wyspecjalizowanego dysku](create-vm-specialized.md)
 - [Tworzenie maszyny Wirtualnej na podstawie wyspecjalizowanego dysku wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
-Jeśli chcesz utworzyć uogólnionego obrazu, należy uruchomić programu sysprep. Aby uzyskać więcej informacji na temat narzędzia Sysprep, zobacz [sposobu użycia programu Sysprep: wprowadzenie](http://technet.microsoft.com/library/bb457073.aspx). 
+Jeśli chcesz utworzyć uogólnionego obrazu, należy uruchomić programu sysprep. Aby uzyskać więcej informacji na temat narzędzia Sysprep, zobacz [sposobu użycia programu Sysprep: wprowadzenie](https://technet.microsoft.com/library/bb457073.aspx). 
 
 Nie każda rola lub aplikacji, która jest zainstalowana na komputerze z systemem Windows obsługuje to uogólnienie. Dlatego przed uruchomieniem tej procedury zapoznaj się z następującym artykułem, aby upewnić się, że roli tego komputera jest obsługiwana przez program sysprep. Aby uzyskać więcej informacji [Obsługa narzędzia Sysprep dla ról serwera](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
 
@@ -401,7 +401,7 @@ Nie każda rola lub aplikacji, która jest zainstalowana na komputerze z systeme
 ## <a name="complete-recommended-configurations"></a>Dokończ konfigurację zalecane
 Następujące ustawienia nie wpływają na przekazywanie wirtualnego dysku twardego. Jednak zdecydowanie zaleca się je skonfigurować.
 
-* Zainstaluj [agenta na maszynach wirtualnych platformy Azure](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Następnie można włączyć rozszerzenia maszyn wirtualnych. Rozszerzenia maszyn wirtualnych wdrożyć najbardziej krytycznych funkcje, które być może chcesz używać z maszynami wirtualnymi takie jak resetowanie haseł, konfigurowania protokołu RDP i tak dalej. Aby uzyskać więcej informacji, zobacz:
+* Zainstaluj [agenta na maszynach wirtualnych platformy Azure](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Następnie można włączyć rozszerzenia maszyn wirtualnych. Rozszerzenia maszyn wirtualnych wdrożyć najbardziej krytycznych funkcje, które być może chcesz używać z maszynami wirtualnymi takie jak resetowanie haseł, konfigurowania protokołu RDP i tak dalej. Aby uzyskać więcej informacji, zobacz:
 
     - [Agent maszyny Wirtualnej i rozszerzenia — część 1](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/)
     - [Agent maszyny Wirtualnej i rozszerzenia — część 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)

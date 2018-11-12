@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d9dbf816d4fd0d9f6044ebeea9a23a60adcc5bc8
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 1e9ca18d2075d40f6f55bc84723f79ae7e10850b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044607"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261217"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Elementy zawartości połączenia w usłudze Azure Automation
 
 Zasób połączenia usługi Automation zawiera informacje wymagane do połączenia z zewnętrzną usługą lub aplikacją z elementu runbook lub konfiguracji DSC. Może to obejmować informacje wymagane do uwierzytelniania, takiego jak nazwę użytkownika i hasło, oprócz informacji o połączeniu, takich jak adres URL lub port. Wartość połączenia jest zachowanie wszystkich właściwości do łączenia się z określonej aplikacji w jeden zasób, w przeciwieństwie do wielu zmiennych. Użytkownik może edytować wartości połączenia w jednym miejscu, a nazwa połączenia można przekazać do elementu runbook lub konfiguracji DSC w jeden parametr. Właściwości połączenia można uzyskać w element runbook lub konfiguracji DSC przy użyciu **Get AutomationConnection** działania. 
 
-Podczas tworzenia połączenia należy określić *typu połączenia*. Typ połączenia to szablon, który definiuje zestaw właściwości. Połączenie definiuje wartości dla każdej właściwości zdefiniowane w jej typ połączenia. Typy połączeń są dodawane do usługi Azure Automation w modułach integracji lub utworzone za pomocą [interfejsu API usługi Azure Automation](http://msdn.microsoft.com/library/azure/mt163818.aspx) Jeśli moduł integracji zawiera typ połączenia i jest importowany do konta usługi Automation. W przeciwnym razie należy utworzyć plik metadanych, aby określić typ połączenia usługi Automation.  Aby uzyskać więcej informacji dotyczących tego, zobacz [moduły integracji](automation-integration-modules.md).  
+Podczas tworzenia połączenia należy określić *typu połączenia*. Typ połączenia to szablon, który definiuje zestaw właściwości. Połączenie definiuje wartości dla każdej właściwości zdefiniowane w jej typ połączenia. Typy połączeń są dodawane do usługi Azure Automation w modułach integracji lub utworzone za pomocą [interfejsu API usługi Azure Automation](https://msdn.microsoft.com/library/azure/mt163818.aspx) Jeśli moduł integracji zawiera typ połączenia i jest importowany do konta usługi Automation. W przeciwnym razie należy utworzyć plik metadanych, aby określić typ połączenia usługi Automation.  Aby uzyskać więcej informacji dotyczących tego, zobacz [moduły integracji](automation-integration-modules.md).  
 
 >[!NOTE]
 >Bezpiecznych zasobów w usłudze Azure Automation obejmują poświadczeń, certyfikatów, połączeń i szyfrowane zmienne. Te zasoby są zaszyfrowane i przechowywane w usłudze Azure Automation za pomocą Unikatowy klucz, który jest generowany dla każdego konta usługi automation. Ten klucz jest przechowywany w usłudze Key Vault. Przed zapisaniem zabezpieczonym zasobem, klucz jest ładowane z usługi Key Vault i następnie używany do szyfrowania elementu zawartości.
@@ -70,7 +70,7 @@ Funkcja w poniższej tabeli umożliwia dostęp do połączeń w elemencie runboo
 
 ### <a name="to-create-a-new-connection-with-windows-powershell"></a>Aby utworzyć nowe połączenie przy użyciu programu Windows PowerShell
 
-Utwórz nowe połączenie za pomocą środowiska Windows PowerShell przy użyciu [New AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) polecenia cmdlet. To polecenie cmdlet ma parametr o nazwie **ConnectionFieldValues** który oczekuje, że [tabeli mieszania](http://technet.microsoft.com/library/hh847780.aspx) definiowanie wartości dla każdej właściwości zdefiniowane przez typ połączenia.
+Utwórz nowe połączenie za pomocą środowiska Windows PowerShell przy użyciu [New AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) polecenia cmdlet. To polecenie cmdlet ma parametr o nazwie **ConnectionFieldValues** który oczekuje, że [tabeli mieszania](https://technet.microsoft.com/library/hh847780.aspx) definiowanie wartości dla każdej właściwości zdefiniowane przez typ połączenia.
 
 Jeśli znasz automatyzację [konta Uruchom jako](automation-sec-configure-azure-runas-account.md) do uwierzytelniania elementów runbook przy użyciu jednostki usługi, skrypt programu PowerShell, podana jako alternatywę do tworzenia konta Uruchom jako z portalu, tworzy nowe połączenie zasób za pomocą następujących przykładowych poleceniach.  
 
@@ -84,7 +84,7 @@ Można użyć skryptu, aby utworzyć zasób połączenia, ponieważ podczas twor
   
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Połączenie runbook lub konfiguracji DSC
 
-Możesz pobrać połączenie runbook lub konfiguracji DSC przy użyciu **Get AutomationConnection** polecenia cmdlet.  Nie można użyć [Get AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection) działania.  To działanie pobiera wartości różnych pól w połączeniu i zwraca je jako [tabeli mieszania](http://go.microsoft.com/fwlink/?LinkID=324844) której następnie można za pomocą odpowiednich poleceń w elemencie runbook lub konfiguracji DSC.
+Możesz pobrać połączenie runbook lub konfiguracji DSC przy użyciu **Get AutomationConnection** polecenia cmdlet.  Nie można użyć [Get AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection) działania.  To działanie pobiera wartości różnych pól w połączeniu i zwraca je jako [tabeli mieszania](https://go.microsoft.com/fwlink/?LinkID=324844) której następnie można za pomocą odpowiednich poleceń w elemencie runbook lub konfiguracji DSC.
 
 ### <a name="textual-runbook-sample"></a>Przykład tekstowy element runbook
 

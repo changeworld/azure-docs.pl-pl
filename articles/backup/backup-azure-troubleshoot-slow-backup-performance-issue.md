@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: ab338964a67991c0e97bf218f8aa004e0e5dfe38
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f24a60ab9bdcf1231085de4edeeb89ce1edf4e80
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418250"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248473"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Rozwiązywanie problemów związanych z powolnym tworzeniem kopii zapasowych plików i folderów w usłudze Azure Backup
 Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów, dzięki którym możesz diagnozować przyczyny niskiej wydajności tworzenia kopii zapasowych plików i folderów, podczas korzystania z usługi Azure Backup. Gdy używasz agenta usługi Azure Backup do tworzenia kopii zapasowych plików, proces tworzenia kopii zapasowej może potrwać dłużej niż oczekiwano. To opóźnienie może być spowodowany przez jedną lub więcej z następujących czynności:
@@ -23,7 +23,7 @@ Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów, dzięki kt
 * [Agenta usługi Backup jest uruchomiona na maszynie wirtualnej platformy Azure (VM).](#cause3)  
 * [Wykonujesz kopie zapasowe dużą liczbą plików (w milionach).](#cause4)
 
-Przed rozpoczęciem rozwiązywania problemów, firma Microsoft zaleca pobierzesz i zainstalujesz [najnowszą wersję agenta usługi Kopia zapasowa Azure](http://aka.ms/azurebackup_agent). Ułatwiamy częste aktualizacje agenta kopii zapasowej do rozwiązywania różnych problemów, Dodaj funkcje i zwiększyć wydajność.
+Przed rozpoczęciem rozwiązywania problemów, firma Microsoft zaleca pobierzesz i zainstalujesz [najnowszą wersję agenta usługi Kopia zapasowa Azure](https://aka.ms/azurebackup_agent). Ułatwiamy częste aktualizacje agenta kopii zapasowej do rozwiązywania różnych problemów, Dodaj funkcje i zwiększyć wydajność.
 
 Ponadto zdecydowanie zalecamy przejrzenie [— często zadawane pytania dla usługi Azure Backup](backup-azure-backup-faq.md) się upewnić, że nie występują dowolne typowe problemy z konfiguracją.
 

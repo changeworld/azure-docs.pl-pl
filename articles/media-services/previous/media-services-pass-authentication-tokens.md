@@ -1,6 +1,6 @@
 ---
-title: Przekazywanie tokenów uwierzytelniania do usługi Azure Media Services | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wysyłać tokeny uwierzytelniania z klienta do usługi dostarczania klucza usługi Azure Media Services
+title: Przekazywanie tokenów uwierzytelniania usługi Azure Media Services | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wysyłać tokeny uwierzytelniania od klienta do usługi dostarczania kluczy usługi Azure Media Services
 services: media-services
 keywords: token uwierzytelniania w usłudze Content protection DRM,
 documentationcenter: ''
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: dwgeo
-ms.openlocfilehash: b6aca2928465b73e35ac15f01bb776b1f69add0b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 204a2122f38306f2c883436fb13397b45fd91980
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788452"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254625"
 ---
-# <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Dowiedz się, jak klienci przekazywania tokenów do usługi dostarczania klucza usługi Azure Media Services
-Klienci często dotyczy jak odtwarzacza można przekazać tokenów do usługi Azure Media Services klucza dostawy do weryfikacji, odtwarzacza można uzyskać klucz. Usługa Media Services obsługuje simple web token (SWT) i formatuje tokenu Web JSON (JWT). Token uwierzytelniania jest stosowane do dowolnego typu klucza, niezależnie od tego, czy używać wspólnego szyfrowania lub szyfrowania koperty Advanced Encryption (Standard AES) w systemie.
+# <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Dowiedz się, jak klienci przekazywanie tokenów usługi dostarczania kluczy usługi Azure Media Services
+Klienci często pytają, jak Odtwarzacz można przekazać tokenów do usługi dostarczania kluczy usługi Azure Media Services w celu weryfikacji, gracz może uzyskać klucz. Usługa Media Services obsługuje prosty token sieci web (SWT) i formatuje tokenu Web JSON (JWT). Token uwierzytelniania są stosowane do dowolnego typu klucza, niezależnie od tego, czy używać wspólnych lub szyfrowania Advanced Encryption Standard (AES) koperty w systemie.
 
- W zależności od player i platformy, które są przeznaczone można przekazać tokenu do odtwarzacza w następujący sposób:
+ W zależności od platformy docelowej i odtwarzacza można przekazać token za pomocą odtwarzacza w następujący sposób:
 
-- Za pomocą nagłówek autoryzacji HTTP.
+- Za pomocą nagłówka autoryzacji HTTP.
     > [!NOTE]
-    > Prefiks "Bearer" oczekuje na specyfikacji protokołu OAuth 2.0. Odtwarzacz przykładowy token konfiguracji znajduje się na Azure Media Player [strony pokaz](http://ampdemo.azureedge.net/). Aby ustawić źródło wideo, wybierz **AES (JWT Token)** lub **AES (SWT Token)**. Token jest przekazywany za pośrednictwem nagłówek autoryzacji.
+    > Prefiks "Bearer" oczekuje na specyfikacji protokołu OAuth 2.0. Odtwarzacz próbki, przy użyciu tokenu konfiguracji znajduje się na usługi Azure Media Player [strona pokazu](http://ampdemo.azureedge.net/). Aby ustawić źródło wideo, wybierz **AES (tokenu JWT)** lub **AES (SWT tokenu)**. Token jest przekazywany za pośrednictwem nagłówka autoryzacji.
 
-- Poprzez dodanie adresu URL parametr z zapytania "tokenu = tokenvalue."  
+- Przez dodanie ich do adresu URL zapytania parametr "token = tokenvalue."  
     > [!NOTE]
-    > Prefiks "Bearer" nie jest oczekiwany. Ponieważ token jest wysyłany przy użyciu adresu URL, należy do ochrony ciąg tokena. Oto kod przykładowy C#, który pokazuje, jak to zrobić:
+    > Prefiks "Bearer" nie jest oczekiwany. Token jest wysyłany przy użyciu adresu URL, dlatego musisz bilecie ciąg tokenu. Oto C# przykładowego kodu, który pokazuje, jak to zrobić:
 
     ```csharp
     string armoredAuthToken = System.Web.HttpUtility.UrlEncode(authToken);
@@ -42,7 +42,7 @@ Klienci często dotyczy jak odtwarzacza można przekazać tokenów do usługi Az
     ```
 
 - Za pomocą pola CustomData.
-Ta opcja jest używana tylko nabycia licencji PlayReady przy użyciu pola CustomData żądania pozyskiwania licencji PlayReady. W takim przypadku token musi znajdować się w dokumencie XML zgodnie z opisem w tym miejscu:
+Ta opcja służy do tylko nabycie licencji PlayReady przy użyciu pola CustomData żądania pozyskiwania licencji PlayReady. W tym przypadku token musi znajdować się w dokumencie XML zgodnie z opisem w tym miejscu:
 
     ```xml
     <?xml version="1.0"?>
@@ -50,9 +50,9 @@ Ta opcja jest używana tylko nabycia licencji PlayReady przy użyciu pola Custom
         <Token></Token> 
     </CustomData>
     ```
-    Umieść token uwierzytelniania w elemencie tokenu.
+    Umieść swój token uwierzytelniania w elemencie tokenu.
 
-- Za pomocą listy HTTP Live Streaming (HLS). Jeśli trzeba skonfigurować token uwierzytelniania w przypadku AES + HLS odtwarzania na iOS/Safari, nie istnieje sposób można wysyłać bezpośrednio w tokenie. Aby uzyskać więcej informacji na temat sposobu alternatywny listy odtwarzania tego scenariusza, zobacz [wpis w blogu](http://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+- Za pomocą alternatywnej listy odtwarzania HTTP Live Streaming (HLS). Jeśli musisz skonfigurować uwierzytelnianie przy użyciu tokenów AES + HLS odtwarzania na iOS/Safari, nie można wysyłać bezpośrednio w tokenie. Aby uzyskać więcej informacji na temat sposobu alternatywny listy odtwarzania, aby umożliwić wykonanie tego scenariusza, zobacz ten [wpis w blogu](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

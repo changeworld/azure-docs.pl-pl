@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 844440d22bc0a524e9e61bde457ee9f43fd367b2
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6cab6559cb38b7d6d1dc2105b694acbcac85108c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444616"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262050"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Obsługiwane formaty plików i kompresji koderów-dekoderów w usłudze Azure Data Factory
 
@@ -434,7 +434,7 @@ Jeśli chcesz analizować pliki ORC lub zapisywać dane w formacie ORC, ustaw w�
 ```
 
 > [!IMPORTANT]
-> Dla kopiowania upoważniony przez własne środowisko IR np. między lokalizacją lokalną i chmurą magazyny danych, jeśli nie kopiujesz plików ORC **jako — jest**, należy zainstalować środowisko JRE 8 (Java Runtime Environment) na komputerze Podczerwieni. IR 64-bitowego wymaga 64-bitowego środowiska JRE. Obie wersje można znaleźć [tutaj](http://go.microsoft.com/fwlink/?LinkId=808605).
+> Dla kopiowania upoważniony przez własne środowisko IR np. między lokalizacją lokalną i chmurą magazyny danych, jeśli nie kopiujesz plików ORC **jako — jest**, należy zainstalować środowisko JRE 8 (Java Runtime Environment) na komputerze Podczerwieni. IR 64-bitowego wymaga 64-bitowego środowiska JRE. Obie wersje można znaleźć [tutaj](https://go.microsoft.com/fwlink/?LinkId=808605).
 >
 
 Pamiętaj o następujących kwestiach:
@@ -478,7 +478,7 @@ Jeśli chcesz analizować pliki Parquet lub zapisywać dane w formacie Parquet, 
 ```
 
 > [!IMPORTANT]
-> Dla kopiowania upoważniony przez własne środowisko IR np. między lokalizacją lokalną i chmurą magazyny danych, jeśli nie kopiujesz plików Parquet **jako — jest**, należy zainstalować środowisko JRE 8 (Java Runtime Environment) na komputerze Podczerwieni. IR 64-bitowego wymaga 64-bitowego środowiska JRE. Obie wersje można znaleźć [tutaj](http://go.microsoft.com/fwlink/?LinkId=808605).
+> Dla kopiowania upoważniony przez własne środowisko IR np. między lokalizacją lokalną i chmurą magazyny danych, jeśli nie kopiujesz plików Parquet **jako — jest**, należy zainstalować środowisko JRE 8 (Java Runtime Environment) na komputerze Podczerwieni. IR 64-bitowego wymaga 64-bitowego środowiska JRE. Obie wersje można znaleźć [tutaj](https://go.microsoft.com/fwlink/?LinkId=808605).
 >
 
 Pamiętaj o następujących kwestiach:

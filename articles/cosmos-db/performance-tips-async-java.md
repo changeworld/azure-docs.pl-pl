@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: 48555dc8d1cc027cb771e0ba0678c6cb12d6785f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 233296a825653938da158fc70952c7fe7931498c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697979"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261829"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Porady dotyczące wydajności dla usługi Azure Cosmos DB i Java (asynchroniczny)
 
@@ -65,7 +65,7 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
 
 5. **Implementowanie wycofywania w odstępach czasu getRetryAfterInMilliseconds**
 
-    Podczas testowania wydajności, należy zwiększyć obciążenie do momentu ograniczeni mała liczba żądań. Jeśli jest dławiona, aplikacja kliencka powinna wycofywania interwał ponawiania określony serwer. Uwzględnienie wycofywania daje pewność, możesz wydać skraca czas oczekiwania między ponownymi próbami. Aby uzyskać więcej informacji, zobacz [przekroczenie następującej zastrzeżone ograniczenia przepływności](request-units.md#RequestRateTooLarge) i DocumentClientException.getRetryAfterInMilliseconds.
+    Podczas testowania wydajności, należy zwiększyć obciążenie do momentu ograniczeni mała liczba żądań. Jeśli jest dławiona, aplikacja kliencka powinna wycofywania interwał ponawiania określony serwer. Uwzględnienie wycofywania daje pewność, możesz wydać skraca czas oczekiwania między ponownymi próbami. 
 6. **Skalowanie w poziomie obciążenia klientami**
 
     Jeśli testujesz na poziomach wysoką przepływność (> 50 000 jednostek RU/s), aplikacja kliencka może stać się wąskim gardłem ze względu na maszynie są takie same się na użycie procesora CPU lub sieci. Jeśli przekroczysz ten punkt, może nadal wypychania dalsze za pomocą konta usługi Azure Cosmos DB skalowanie aplikacji klienckich na wielu serwerach.

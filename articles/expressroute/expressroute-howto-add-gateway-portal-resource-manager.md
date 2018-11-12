@@ -1,6 +1,6 @@
 ---
-title: 'Dodaj bramę sieci wirtualnej do sieci wirtualnej dla usługi ExpressRoute: Portal: Azure | Dokumentacja firmy Microsoft'
-description: W tym artykule przedstawiono dodawania bramy sieci wirtualnej do już utworzonego sieci wirtualnej Menedżera zasobów dla usługi ExpressRoute.
+title: 'Dodawanie bramy sieci wirtualnej do sieci wirtualnej dla usługi ExpressRoute: portalu: Azure | Dokumentacja firmy Microsoft'
+description: Ten artykuł przeprowadzi dodawania bramy sieci wirtualnej do sieci wirtualnej usługi Resource Manager zostały już utworzone dla usługi ExpressRoute.
 documentationcenter: na
 services: expressroute
 author: cherylmc
@@ -15,45 +15,45 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2017
 ms.author: cherylmc
-ms.openlocfilehash: 2bd0cf8be87937044ad515a2c6f253b1711bb2bf
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 6198c8723ccbb225a4cc60526e66f4651390b26c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23850868"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255697"
 ---
-# <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Konfigurowanie bramy sieci wirtualnej dla usługi przy użyciu portalu Azure
+# <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Konfigurowanie bramy sieci wirtualnej dla usługi ExpressRoute za pomocą witryny Azure portal
 > [!div class="op_single_selector"]
 > * [Resource Manager — witryna Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 > * [Resource Manager — program PowerShell](expressroute-howto-add-gateway-resource-manager.md)
-> * [Classic — PowerShell](expressroute-howto-add-gateway-classic.md)
-> * [Video - portalu Azure](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
+> * [Klasyczny — PowerShell](expressroute-howto-add-gateway-classic.md)
+> * [Wideo — witryna Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
 > 
 > 
 
-W tym artykule przedstawiono kroki, aby dodać bramę sieci wirtualnej istniejące sieci wirtualnej. W tym artykule przedstawiono kroki umożliwiające dodawanie, zmienianie rozmiaru i usunąć bramę sieci wirtualnej (VNet) dla istniejącej sieci wirtualnej. Kroki dla tej konfiguracji są przeznaczone dla sieci wirtualnych, które zostały utworzone przy użyciu modelu wdrażania usługi Resource Manager, który będzie używany w konfiguracji usługi ExpressRoute. Aby uzyskać więcej informacji na temat bram sieci wirtualnej i ustawień konfiguracji bramy ExpressRoute, zobacz [temat bram sieci wirtualnej dla usługi ExpressRoute](expressroute-about-virtual-network-gateways.md). 
+W tym artykule przedstawiono kroki Aby dodać bramę sieci wirtualnej dla istniejących sieci wirtualnej. W tym artykule przedstawiono kroki, aby dodać, zmienić rozmiar lub usunąć bramę sieci wirtualnej (VNet) wstępnie istniejącej sieci wirtualnej. W krokach dla tej konfiguracji są przeznaczone na potrzeby sieci wirtualnych, które zostały utworzone przy użyciu modelu wdrażania usługi Resource Manager, który będzie używany w konfiguracji usługi ExpressRoute. Aby uzyskać więcej informacji na temat bram sieci wirtualnej i ustawienia konfiguracji bramy usługi ExpressRoute, zobacz [o bramach sieci wirtualnej dla usługi ExpressRoute](expressroute-about-virtual-network-gateways.md). 
 
 
 ## <a name="before-beginning"></a>Przed rozpoczęciem
 
-Kroki dla tego zadania użyć sieci wirtualnej na podstawie wartości na poniższej liście odwołania konfiguracji. W naszym przykładzie kroki możemy Użyj tej listy. Możesz skopiować listę i użyj go jako odwołanie, zastąpionymi wartościami z własnego.
+Kroki opisane w tym celu użyć sieci wirtualnej na podstawie wartości na poniższej liście konfiguracji odniesienia. Używamy tej listy w naszym przykładzie krokach. Możesz skopiować listy, które będzie używany jako odwołanie, zastępując wartości swoimi własnymi.
 
 **Lista odwołań konfiguracji**
 
 * Nazwa sieci wirtualnej = "TestVNet"
-* Przestrzeń adresową sieci wirtualnej = 192.168.0.0/16
-* Nazwa podsieci = "FrontEnd" 
-    * Przestrzeń adresów podsieci = "192.168.1.0/24"
+* Przestrzeń adresowa sieci wirtualnej = 192.168.0.0/16
+* Nazwa podsieci = "Fronton" 
+    * Przestrzeń adresowa podsieci = "192.168.1.0/24"
 * Grupa zasobów = "TestRG"
 * Lokalizacja = "Wschodnie stany USA"
-* Nazwa podsieci bramy: "GatewaySubnet" zawsze nazwę podsieci bramy *GatewaySubnet*.
-    * Przestrzeń adresów podsieci bramy = "192.168.200.0/26"
+* Nazwa podsieci bramy: "Gatewaysubent" podsieć bramy należy zawsze nazywać *GatewaySubnet*.
+    * Przestrzeń adresową podsieci bramy = "192.168.200.0/26"
 * Nazwa bramy = "ERGW"
-* Nazwa IP bramy = "MyERGWVIP"
-* Typ bramy = "ExpressRoute" tego typu jest wymagany dla konfiguracji usługi ExpressRoute.
+* Nazwa adresu IP bramy = "MyERGWVIP"
+* Typ bramy "ExpressRoute" = tego typu jest wymagany dla konfiguracji usługi ExpressRoute.
 * Nazwa publicznego adresu IP bramy = "MyERGWVIP"
 
-Możesz wyświetlić [wideo](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) te kroki przed rozpoczęciem konfiguracji.
+Możesz wyświetlić [wideo](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) z następujących czynności przed rozpoczęciem konfiguracji.
 
 ## <a name="create-the-gateway-subnet"></a>Tworzenie podsieci bramy
 
@@ -64,7 +64,7 @@ Możesz wyświetlić [wideo](http://azure.microsoft.com/documentation/videos/azu
     ![Dodawanie podsieci bramy](./media/expressroute-howto-add-gateway-portal-resource-manager/addgwsubnet.png "Dodawanie podsieci bramy")
 
 
-4. **Nazwa** dla podsieci zostanie automatycznie wypełniona wartością „GatewaySubnet”. Ta wartość jest wymagana, aby platforma Azure mogła rozpoznać podsieć jako podsieć bramy. Dostosuj automatycznie wypełnione wartości w polu **Zakres adresów** do wymagań konfiguracji. Zaleca się utworzenie podsieci bramy z /27 lub większy (/ 26, / 25, itp.). Następnie kliknij przycisk **OK** Aby zapisać wartości i Utwórz podsieć bramy.
+4. **Nazwa** dla podsieci zostanie automatycznie wypełniona wartością „GatewaySubnet”. Ta wartość jest wymagana, aby platforma Azure mogła rozpoznać podsieć jako podsieć bramy. Dostosuj automatycznie wypełnione wartości w polu **Zakres adresów** do wymagań konfiguracji. Zaleca się utworzenie podsieci bramy/27 lub większej (/ 26, / 25 itp.). Następnie kliknij przycisk **OK** Zapisz wartości i utworzyć podsieć bramy.
 
     ![Dodawanie podsieci](./media/expressroute-howto-add-gateway-portal-resource-manager/addsubnetgw.png "Dodawanie podsieci")
 
@@ -87,4 +87,4 @@ Możesz wyświetlić [wideo](http://azure.microsoft.com/documentation/videos/azu
 14. Kliknij przycisk **Utwórz**, aby rozpocząć tworzenie bramy. Ustawienia zostaną zweryfikowane i brama zostanie wdrożona. Tworzenie bramy sieci wirtualnej może potrwać do 45 minut.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po utworzeniu bramy sieci wirtualnej sieci wirtualnej można połączyć z obwodem usługi ExpressRoute. Zobacz [połączyć sieć wirtualną z obwodem usługi ExpressRoute](expressroute-howto-linkvnet-portal-resource-manager.md).
+Po utworzeniu bramy sieci wirtualnej, możesz połączyć sieć wirtualną z obwodem usługi ExpressRoute. Zobacz [łączenie sieci wirtualnej z obwodem usługi ExpressRoute](expressroute-howto-linkvnet-portal-resource-manager.md).

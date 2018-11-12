@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: ce1e3818edea6e0fdaedd33b6ec0c3214f475340
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 80208c83c96ba78db052017c2baa3bc0db63953f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048560"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258854"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Zabezpieczenia na poziomie wierszy przy użyciu kolekcji obszarów roboczych usługi Power BI
 
@@ -35,7 +35,7 @@ Aby móc korzystać z zabezpieczeń RLS, ważne jest, aby zrozumieć trzech gł�
 
 ### <a name="example"></a>Przykład
 
-W pozostałej części tego artykułu udostępniamy przykład tworzenia zabezpieczeń RLS, a następnie wykorzystywania ich w osadzonej aplikacji. Przedstawiony przykład używa [próbka analizy handlu detalicznego](http://go.microsoft.com/fwlink/?LinkID=780547) pliku PBIX.
+W pozostałej części tego artykułu udostępniamy przykład tworzenia zabezpieczeń RLS, a następnie wykorzystywania ich w osadzonej aplikacji. Przedstawiony przykład używa [próbka analizy handlu detalicznego](https://go.microsoft.com/fwlink/?LinkID=780547) pliku PBIX.
 
 ![Przykładowy raport sprzedaży](media/row-level-security/scenario-2.png)
 
@@ -87,7 +87,7 @@ Teraz filtry również mogą przepływać z tabeli Sales, aby **elementu** tabel
 1. **Plik** -> **opcje i ustawienia** -> **funkcje w wersji zapoznawczej** -> **Włącz filtrowanie krzyżowe w obu kierunkach dla zapytania bezpośredniego** .
 2. **Plik** -> **opcje i ustawienia** -> **zapytania bezpośredniego** -> **Zezwalaj na nieograniczone miary w trybie zapytania bezpośredniego**.
 
-Aby dowiedzieć się więcej na temat dwukierunkowe filtrowanie krzyżowe, Pobierz [dwukierunkowe filtrowanie krzyżowe w SQL Server Analysis Services 2016 oraz programie Power BI Desktop](http://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional%20cross-filtering%20in%20Analysis%20Services%202016%20and%20Power%20BI.docx) oficjalny dokument.
+Aby dowiedzieć się więcej na temat dwukierunkowe filtrowanie krzyżowe, Pobierz [dwukierunkowe filtrowanie krzyżowe w SQL Server Analysis Services 2016 oraz programie Power BI Desktop](https://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional%20cross-filtering%20in%20Analysis%20Services%202016%20and%20Power%20BI.docx) oficjalny dokument.
 
 To opakowuje pracy, które należy wykonać w programie Power BI Desktop, ale ma jednego więcej element pracy musi odbywać się na poziomie reguł zdefiniowanych pracy w Power BI Embedded. Użytkownicy są uwierzytelnieni i autoryzowani przez aplikację i tokenów aplikacji są używane do udzielania użytkownikom dostępu do konkretnego raportu Power BI Embedded. Power BI Embedded nie ma żadnych konkretnych informacji o tym, kim jest użytkownik. Zabezpieczenia na poziomie wiersza musisz przekazać dodatkowy kontekst jako część Twojego tokenu aplikacji:
 

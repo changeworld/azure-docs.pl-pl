@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/5/2018
 ms.author: terrylan
-ms.openlocfilehash: 3c198ea44953c0b2e72a544cd0e83b6592d9a81f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0b38c6895421b43d6f80e0c34cc23b379a673559
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032082"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261948"
 ---
 # <a name="setting-security-policies-in-security-center-or-in-azure-policy"></a>Ustawianie zasad zabezpieczeń w usłudze Security Center lub usługa Azure Policy
 
@@ -125,6 +125,6 @@ W tym artykule przedstawiono sposób konfigurowania zasad zabezpieczeń w usłud
 * [Monitorowanie rozwiązań partnerskich w usłudze Azure Security Center](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
 * [Uzyskiwanie wglądu na poziomie dzierżawy w usłudze Azure Security Center](security-center-management-groups.md) — informacje na temat sposobu konfigurowania grup zarządzania dla usługi Azure Security Center. 
 * [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
-* [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
+* [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
 
 Aby dowiedzieć się więcej na temat usługi Azure Policy, zobacz [Co to jest Azure Policy?](../azure-policy/azure-policy-introduction.md)

@@ -3,7 +3,7 @@ title: Dodaj zaporę następnej generacji w usłudze Azure Security Center | Dok
 description: W tym dokumencie przedstawiono sposób implementowania zaleceń Centrum zabezpieczeń Azure **Dodaj zaporę następnej generacji** i **traffice o trasy przez zaporę nowej generacji tylko**.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 48b99015-4db8-4ce8-85e4-b544c0fa203e
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2017
-ms.author: terrylan
-ms.openlocfilehash: ff5c667318f961dddcab02cb1b2b679285d8c790
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: a0f472d32e878412532927327a36fe674d4cf6bb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44294021"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261676"
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Dodaj zaporę następnej generacji w usłudze Azure Security Center
 Usługa Azure Security Center może zalecić sytuacja: dodajesz zaporę nowej generacji (nowej NGFW) od partnera firmy Microsoft, aby zwiększyć Twoje zabezpieczenia. Ten dokument zawiera opis przykładu przekonamy się jak to zrobić.
@@ -68,7 +68,7 @@ Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następując
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Monitorowanie rozwiązań partnerskich w Centrum zabezpieczeń Azure](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
-* [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń platformy Azure i zgodności.
+* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń platformy Azure i zgodności.
 
 <!--Image references-->
 [1]: ./media/security-center-add-next-gen-firewall/add-next-gen-firewall.png

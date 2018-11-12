@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/11/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c84470936dfc9610f23dacb55d8d8643a2651f71
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f60fde6f0066cf88bd1bd942e475fe410ff16581
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948404"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256532"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Szybki start: wdrażanie kontenerów systemu Linux w usłudze Service Fabric
 
@@ -52,7 +52,7 @@ cd service-fabric-containers/Linux/container-tutorial/Voting
 
 Aby wdrożyć aplikację na platformie Azure, potrzebujesz klastra usługi Service Fabric używanego do uruchamiania aplikacji. Klastry testowe oferują prosty sposób szybkiego tworzenia klastra usługi Service Fabric. Klastry testowe to bezpłatne, ograniczone czasowo klastry usługi Service Fabric hostowane na platformie Azure i obsługiwane przez zespół usługi Service Fabric. Klastry testowe pozwalają wdrażać aplikacje i uzyskiwać informacje o platformie. Klaster używa jednego certyfikatu z podpisem własnym na potrzeby zabezpieczeń między węzłami oraz między klientem a węzłem.
 
-Zaloguj się i dołącz do [klastra systemu Linux](http://aka.ms/tryservicefabric). Pobierz certyfikat PFX na komputer, klikając link **PFX**. Kliknij link **ReadMe**, aby znaleźć hasło certyfikatu i instrukcje dotyczące konfigurowania różnych środowisk do użycia certyfikatu. Pozostaw otwarte strony **Powitalna** i **ReadMe**, ponieważ będziesz korzystać z niektórych instrukcji w poniższej procedurze.
+Zaloguj się i dołącz do [klastra systemu Linux](https://aka.ms/tryservicefabric). Pobierz certyfikat PFX na komputer, klikając link **PFX**. Kliknij link **ReadMe**, aby znaleźć hasło certyfikatu i instrukcje dotyczące konfigurowania różnych środowisk do użycia certyfikatu. Pozostaw otwarte strony **Powitalna** i **ReadMe**, ponieważ będziesz korzystać z niektórych instrukcji w poniższej procedurze.
 
 > [!Note]
 > Liczba klastrów testowych dostępnych na godzinę jest ograniczona. Jeśli wystąpi błąd podczas próby tworzenia konta umożliwiającego korzystanie z klastra testowego, możesz poczekać, a następnie spróbować ponownie. Możesz też wykonać kroki opisane w artykule [Create a Service Fabric cluster on Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md) (Tworzenie klastra usługi Service Fabric na platformie Azure), aby utworzyć klaster usługi w swojej subskrypcji.

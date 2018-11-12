@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: d93fc81241053418ea2ff0576d50cbaefa0df9fb
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bba03d8e62c481e9eb5cce8468a6a84f5e492d2f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428559"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253996"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Omówienie agenta maszyny wirtualnej na platformie Azure
 Agent maszyny wirtualnej usług Microsoft Azure (Agent maszyny Wirtualnej) jest bezpieczne, uproszczonego procesu, który zarządza interakcją maszyny wirtualnej (VM) z kontrolerem sieci szkieletowej platformy Azure. Agent maszyny wirtualnej odgrywa podstawową rolę w procesie włączania i wykonywania rozszerzeń maszyny wirtualnej platformy Azure. Rozszerzenia maszyny Wirtualnej Włącz konfigurację po wdrożeniu maszyny wirtualnej, takie jak instalowanie i konfigurowanie oprogramowania. Rozszerzenia maszyn wirtualnych również włączyć funkcje odzyskiwania, takie jak zresetować hasło administracyjne maszyny wirtualnej. Bez agenta maszyny Wirtualnej platformy Azure nie można uruchomić rozszerzenia maszyn wirtualnych.
@@ -60,7 +60,7 @@ Rozruch maszyny Wirtualnej musi mieć PA zainstalowane na maszynie Wirtualnej, W
 Jeśli nie masz zainstalowanych agentów, nie można używać niektórych usług platformy Azure, takich jak usługi Azure Backup lub zabezpieczeń platformy Azure. Te usługi wymagają rozszerzenia do zainstalowania. Jeśli wdrożono maszynę Wirtualną bez WinGA można zainstalować najnowszą wersję agenta, w dalszej części.
 
 ### <a name="manual-installation"></a>Instalacja ręczna
-Agent maszyny Wirtualnej Windows można zainstalować ręcznie za pomocą pakietu Instalatora Windows. Ręczna instalacja może być konieczne utworzenie niestandardowego obrazu maszyny Wirtualnej, który jest wdrożony na platformie Azure. Aby ręcznie zainstalować agenta maszyny Wirtualnej Windows, [pobrać Instalatora agenta maszyny Wirtualnej](http://go.microsoft.com/fwlink/?LinkID=394789).
+Agent maszyny Wirtualnej Windows można zainstalować ręcznie za pomocą pakietu Instalatora Windows. Ręczna instalacja może być konieczne utworzenie niestandardowego obrazu maszyny Wirtualnej, który jest wdrożony na platformie Azure. Aby ręcznie zainstalować agenta maszyny Wirtualnej Windows, [pobrać Instalatora agenta maszyny Wirtualnej](https://go.microsoft.com/fwlink/?LinkID=394789).
 
 Agent maszyny Wirtualnej mogą być instalowane przez dwukrotne kliknięcie pliku Instalatora Windows. Automatyczna lub z instalacji nienadzorowanej instalacji agenta maszyny Wirtualnej uruchom następujące polecenie:
 

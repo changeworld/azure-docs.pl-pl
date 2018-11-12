@@ -9,12 +9,12 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/19/2017
-ms.openlocfilehash: 83f7f29471d49c4dbbf1630b4e8e9006144638cc
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5b7f454fed6206ac57799d6f1e86152cd52dc9e9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31797791"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254421"
 ---
 # <a name="query-your-azure-search-index-using-the-net-sdk"></a>Tworzenie zapytań względem indeksu usługi Azure Search przy użyciu zestawu .NET SDK
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ W tym artykule opisano tworzenie zapytań względem indeksu przy użyciu [zestaw
 Przed rozpoczęciem pracy z tym przewodnikiem należy [utworzyć indeks usługi Azure Search](search-what-is-an-index.md) i [wypełnić go danymi](search-what-is-data-import.md).
 
 > [!NOTE]
-> Cały przykładowy kod przedstawiony w tym artykule został napisany w języku C#. Pełny kod źródłowy można znaleźć [w usłudze GitHub](http://aka.ms/search-dotnet-howto). Można również poczytać o [zestawie SDK platformy .NET dla usługi Azure Search](search-howto-dotnet-sdk.md), aby uzyskać bardziej szczegółowe omówienie przykładowego kodu.
+> Cały przykładowy kod przedstawiony w tym artykule został napisany w języku C#. Pełny kod źródłowy można znaleźć [w usłudze GitHub](https://aka.ms/search-dotnet-howto). Można również poczytać o [zestawie SDK platformy .NET dla usługi Azure Search](search-howto-dotnet-sdk.md), aby uzyskać bardziej szczegółowe omówienie przykładowego kodu.
 
 ## <a name="identify-your-azure-search-services-query-api-key"></a>Identyfikowanie klucza api-key zapytania usługi Azure Search
 Po utworzeniu indeksu usługi Azure Search wszystko jest już prawie gotowe do wysyłania zapytań przy użyciu zestawu .NET SDK. Najpierw musisz uzyskać jeden z kluczy api-key zapytania, który został wygenerowany dla aprowizowanej usługi wyszukiwania. Zestaw .NET SDK przesyła ten klucz przy każdorazowym wysłaniu żądania do usługi. Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
@@ -49,7 +49,7 @@ W celu tworzenia zapytań względem indeksu można użyć dowolnego klucza zapyt
 ## <a name="create-an-instance-of-the-searchindexclient-class"></a>Tworzenie wystąpienia klasy SearchIndexClient
 Aby wysyłać zapytania przy użyciu zestawu .NET SDK usługi Azure Search, konieczne jest utworzenie wystąpienia klasy `SearchIndexClient`. Ta klasa ma kilka konstruktorów. Ten, który nas interesuje, przyjmuje jako parametry nazwę usługi wyszukiwania, nazwę indeksu i obiekt `SearchCredentials`. `SearchCredentials` opakowuje klucz interfejsu API.
 
-Poniższy kod tworzy nową klasę `SearchIndexClient` dla indeksu „hotels” (utworzonego w ramach instrukcji zawartych w temacie [Create an Azure Search index using the .NET SDK](search-create-index-dotnet.md) [Tworzenie indeksu usługi Azure Search przy użyciu zestawu .NET SDK]) za pomocą wartości nazwy usługi wyszukiwania i klucza api-key, które są przechowywane w pliku konfiguracji aplikacji (`appsettings.json` w przypadku [przykładowej aplikacji](http://aka.ms/search-dotnet-howto)):
+Poniższy kod tworzy nową klasę `SearchIndexClient` dla indeksu „hotels” (utworzonego w ramach instrukcji zawartych w temacie [Create an Azure Search index using the .NET SDK](search-create-index-dotnet.md) [Tworzenie indeksu usługi Azure Search przy użyciu zestawu .NET SDK]) za pomocą wartości nazwy usługi wyszukiwania i klucza api-key, które są przechowywane w pliku konfiguracji aplikacji (`appsettings.json` w przypadku [przykładowej aplikacji](https://aka.ms/search-dotnet-howto)):
 
 ```csharp
 private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
@@ -166,5 +166,5 @@ Search the entire index for the term 'motel':
 ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Description (French): Hôtel le moins cher en ville      Name: Roach Motel       Category: Budget        Tags: [motel, budget]   Parking included: yes   Smoking allowed: yes    Last renovated on: 4/28/1982 12:00:00 AM +00:00 Rating: 1/5     Location: Latitude 49.678581, longitude -122.131577
 ```
 
-W powyższym przykładowym kodzie użyto konsoli do wyświetlenia wyników wyszukiwania. W podobny sposób musisz wyświetlić wyniki wyszukiwania w swojej aplikacji. Zapoznaj się z [tym przykładem w witrynie GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample), aby zobaczyć, jak wyświetlić wyniki wyszukiwania w aplikacji sieci Web opartej na platformie ASP.NET MVC.
+W powyższym przykładowym kodzie użyto konsoli do wyświetlenia wyników wyszukiwania. W podobny sposób musisz wyświetlić wyniki wyszukiwania w swojej aplikacji. Zapoznaj się z [tym przykładem w witrynie GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample), aby zobaczyć, jak wyświetlić wyniki wyszukiwania w aplikacji internetowej opartej na platformie ASP.NET MVC.
 

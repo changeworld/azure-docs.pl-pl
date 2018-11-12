@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: ba84d297420ca5a9b75b4cfa432373d3070e0d01
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 2028de68b3c50f24c46bfafd804b00e84301a9d7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125248"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256599"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Rozwiązywanie problemów z aplikacją sieci web w usłudze Azure App Service przy użyciu programu Visual Studio
 ## <a name="overview"></a>Przegląd
-W tym samouczku pokazano, jak używać narzędzi programu Visual Studio, aby pomóc w debugowaniu aplikacji sieci web w [usługi App Service](http://go.microsoft.com/fwlink/?LinkId=529714), uruchamiając w [tryb debugowania](https://docs.microsoft.com/visualstudio/debugger/) zdalne lub, wyświetlając Dzienniki aplikacji i dzienników serwera internetowego.
+W tym samouczku pokazano, jak używać narzędzi programu Visual Studio, aby pomóc w debugowaniu aplikacji sieci web w [usługi App Service](https://go.microsoft.com/fwlink/?LinkId=529714), uruchamiając w [tryb debugowania](https://docs.microsoft.com/visualstudio/debugger/) zdalne lub, wyświetlając Dzienniki aplikacji i dzienników serwera internetowego.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -36,7 +36,7 @@ Dowiesz się:
 * Jak wyświetlić dzienniki serwera sieci web, w tym szczegółowe komunikaty o błędach i śledzenie żądań zakończonych niepowodzeniem.
 * Jak wysyłać dzienniki diagnostyczne do usługi Azure Storage konta, a je wyświetlić.
 
-Jeśli masz program Visual Studio Ultimate, można również użyć [IntelliTrace](http://msdn.microsoft.com/library/vstudio/dd264915.aspx) do debugowania. IntelliTrace nie została uwzględniona w tym samouczku.
+Jeśli masz program Visual Studio Ultimate, można również użyć [IntelliTrace](https://msdn.microsoft.com/library/vstudio/dd264915.aspx) do debugowania. IntelliTrace nie została uwzględniona w tym samouczku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym samouczku działa środowisko programistyczne, projekt sieci web i aplikacji sieci web platformy Azure, który został skonfigurowany w [Rozpoczynanie pracy z platformą Azure i programu ASP.NET](app-service-web-get-started-dotnet-framework.md). Dla sekcji zadań Webjob, konieczne będzie aplikacji, który zostanie utworzony w [Rozpoczynanie pracy z usługą Azure WebJobs SDK][GetStartedWJ].
@@ -48,7 +48,7 @@ W samouczku przyjęto założenie, że używasz programu Visual Studio 2017.
 Dzienniki przesyłania strumieniowego funkcja działa tylko dla aplikacji przeznaczonych dla środowiska .NET Framework 4 lub nowszej.
 
 ## <a name="sitemanagement"></a>Konfiguracja aplikacji sieci Web i zarządzanie nim
-Program Visual Studio zapewnia dostęp do podzbioru funkcji zarządzania aplikacji sieci web i ustawienia konfiguracji dostępne w [witryny Azure portal](http://go.microsoft.com/fwlink/?LinkId=529715). W tej sekcji dowiesz się, co jest dostępne przy użyciu **Eksploratora serwera**. Aby wyświetlić najnowsze funkcje integracji platformy Azure, wypróbuj **programu Cloud Explorer** również. Możesz otworzyć zarówno systemu windows z **widoku** menu.
+Program Visual Studio zapewnia dostęp do podzbioru funkcji zarządzania aplikacji sieci web i ustawienia konfiguracji dostępne w [witryny Azure portal](https://go.microsoft.com/fwlink/?LinkId=529715). W tej sekcji dowiesz się, co jest dostępne przy użyciu **Eksploratora serwera**. Aby wyświetlić najnowsze funkcje integracji platformy Azure, wypróbuj **programu Cloud Explorer** również. Możesz otworzyć zarówno systemu windows z **widoku** menu.
 
 1. Jeśli nie są już zalogowano do platformy Azure w programie Visual Studio, kliknij prawym przyciskiem myszy **Azure** i wybierz pozycję Połącz z **subskrypcję platformy Microsoft Azure** w **Eksploratora serwera**.
 
@@ -59,7 +59,7 @@ Program Visual Studio zapewnia dostęp do podzbioru funkcji zarządzania aplikac
    >
    >
 
-    Aby uzyskać więcej informacji na temat nawiązywania połączenia z zasobami platformy Azure z programu Visual Studio, zobacz [Zarządzanie kontami, subskrypcjami i rolami administracyjnymi](http://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert).
+    Aby uzyskać więcej informacji na temat nawiązywania połączenia z zasobami platformy Azure z programu Visual Studio, zobacz [Zarządzanie kontami, subskrypcjami i rolami administracyjnymi](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert).
 2. W **Eksploratora serwera**, rozwiń węzeł **Azure** i rozwiń **usługi App Service**.
 3. Rozwiń grupę zasobów, która obejmuje aplikacji sieci web, który został utworzony w [tworzenie aplikacji internetowej ASP.NET na platformie Azure](app-service-web-get-started-dotnet-framework.md), a następnie kliknij prawym przyciskiem myszy węzeł aplikacji sieci web i kliknij **ustawienia widoku**.
 
@@ -253,13 +253,13 @@ Jeśli funkcja [napisał dzienniki](https://github.com/Azure/azure-webjobs-sdk/w
 ```
 * Jeśli okaże się, że debuger nie wkroczyć do kodu, który chcesz debugować, trzeba będzie zmienić ustawienie tylko mój kod.  Aby uzyskać więcej informacji, zobacz [Określ, czy w celu debugowania tylko kodu użytkownika przy użyciu tylko mój kod w programie Visual Studio](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
 * Czasomierz uruchamia się na serwerze, po włączeniu funkcji debugowania zdalnego, a po upływie 48 godzin tej funkcji jest automatycznie wyłączana. Ze względów bezpieczeństwa i wydajności odbywa się to ograniczenie 48 godzin. Można łatwo włączyć tę funkcję ponownie dowolną liczbę razy. Zaleca się pozostawienie ją wyłączoną, gdy nie są aktywnego debugowania.
-* Można ręcznie dołączyć debuger do dowolnego procesu nie tylko procesu sieci web app (w3wp.exe). Aby uzyskać więcej informacji o sposobie używania trybu debugowania w programie Visual Studio, zobacz [debugowania w programie Visual Studio](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx).
+* Można ręcznie dołączyć debuger do dowolnego procesu nie tylko procesu sieci web app (w3wp.exe). Aby uzyskać więcej informacji o sposobie używania trybu debugowania w programie Visual Studio, zobacz [debugowania w programie Visual Studio](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx).
 
 ## <a name="logsoverview"></a>Przegląd dzienników diagnostycznych
 Aplikację platformy ASP.NET, która działa w aplikacji sieci web platformy Azure można utworzyć następujące rodzaje dzienników:
 
 * **Dzienniki śledzenia aplikacji**<br/>
-  Aplikacja tworzy te dzienniki przez wywołanie metody [System.Diagnostics.Trace](http://msdn.microsoft.com/library/system.diagnostics.trace.aspx) klasy.
+  Aplikacja tworzy te dzienniki przez wywołanie metody [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx) klasy.
 * **Dzienniki serwera sieci Web**<br/>
   Serwer sieci web tworzy wpis dziennika dla każdego żądania HTTP do aplikacji sieci web.
 * **Dzienniki komunikat szczegółowy komunikat o błędzie**<br/>
@@ -340,7 +340,7 @@ public ActionResult Contact()
 ```
 
 `WebPageTraceListener` Umożliwiają wyświetlanie dane wyjściowe śledzenia, przechodząc do `/trace.axd`.
-3. Dodaj <a href="http://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">element śledzenia</a> w obszarze `<system.web>` w pliku Web.config, takim jak poniższy:
+3. Dodaj <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">element śledzenia</a> w obszarze `<system.web>` w pliku Web.config, takim jak poniższy:
 
 ``` xml
 <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
@@ -475,7 +475,7 @@ Wszystkie dzienniki, które można monitorować w **dane wyjściowe** okna możn
     ![Pobrany plik](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png)
 
    * Dzienniki śledzenia aplikacji znajdują się w *.txt* pliki *LogFiles\Application* folderu.
-   * Dzienniki serwera sieci Web znajdują się w *.log* pliki *LogFiles\http\RawLogs* folderu. Można użyć narzędzia, takie jak [analizator dzienników](http://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) do wyświetlania i modyfikowania tych plików.
+   * Dzienniki serwera sieci Web znajdują się w *.log* pliki *LogFiles\http\RawLogs* folderu. Można użyć narzędzia, takie jak [analizator dzienników](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) do wyświetlania i modyfikowania tych plików.
    * Dzienniki komunikat szczegółowy komunikat o błędzie znajdują się w *.html* pliki *LogFiles\DetailedErrors* folderu.
 
     ( *Wdrożeń* folder jest tworzonych przez kontroli źródła, publikowanie; nie ma niczego związanych z publikowaniem w programie Visual Studio. *Git* folder jest dający zapisy związane z kontrolą źródła publikowania i plików dziennika usługi transmisji strumieniowej.)  
@@ -554,7 +554,7 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
 
      ![Storage logs in table view](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracelogtableview.png)
 
-     This view shows additional fields you don't see in any other views. This view also enables you to filter logs by using special Query Builder UI for constructing a query. For more information, see Working with Table Resources - Filtering Entities in [Browsing Storage Resources with Server Explorer](http://msdn.microsoft.com/library/ff683677.aspx).
+     This view shows additional fields you don't see in any other views. This view also enables you to filter logs by using special Query Builder UI for constructing a query. For more information, see Working with Table Resources - Filtering Entities in [Browsing Storage Resources with Server Explorer](https://msdn.microsoft.com/library/ff683677.aspx).
 14. To look at the details for a single row, double-click one of the rows.
 
      ![Trace table in Server Explorer](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracetablerow.png)
@@ -624,17 +624,17 @@ Wiesz, jak Visual Studio można łatwo wyświetlić dzienniki utworzone przez ap
 Aby uzyskać więcej informacji na temat rozwiązywania problemów z aplikacjami sieci web w usłudze Azure App Service zobacz następujące zasoby:
 
 * [Jak monitorować aplikacje sieci web](web-sites-monitor.md)
-* [Badanie przecieków pamięci w usłudze Azure Web Apps za pomocą programu Visual Studio 2013](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx). Wpis w blogu ALM firmy Microsoft o funkcjach programu Visual Studio do analizowania problemów pamięci zarządzanej.
+* [Badanie przecieków pamięci w usłudze Azure Web Apps za pomocą programu Visual Studio 2013](https://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx). Wpis w blogu ALM firmy Microsoft o funkcjach programu Visual Studio do analizowania problemów pamięci zarządzanej.
 * [Narzędzia online aplikacji sieci web platformy Azure należy wiedzieć o](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/). Wpis na blogu autorstwa Amitowi firmy Apple.
 
 Aby uzyskać pomoc dotyczącą określonego zapytania dotyczące rozwiązywania problemów należy uruchomić wątku w jednym z następujących forów:
 
 * [Forum platformy Azure w witrynie programu ASP.NET](http://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
-* [Forum platformy Azure w witrynie MSDN](http://social.msdn.microsoft.com/Forums/windowsazure/).
+* [Forum platformy Azure w witrynie MSDN](https://social.msdn.microsoft.com/Forums/windowsazure/).
 * [StackOverflow.com](http://www.stackoverflow.com).
 
 ### <a name="debugging-in-visual-studio"></a>Debugowanie w programie Visual Studio
-Aby uzyskać więcej informacji o sposobie używania trybu debugowania w programie Visual Studio, zobacz [debugowania w programie Visual Studio](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx) i [debugowania porady dotyczące programu Visual Studio 2010](http://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
+Aby uzyskać więcej informacji o sposobie używania trybu debugowania w programie Visual Studio, zobacz [debugowania w programie Visual Studio](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx) i [debugowania porady dotyczące programu Visual Studio 2010](http://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
 
 ### <a name="remote-debugging-in-azure"></a>Zdalne debugowanie na platformie Azure
 Aby uzyskać więcej informacji na temat debugowania zdalnego dla usługi Azure web apps i WebJobs zobacz następujące zasoby:
@@ -644,21 +644,21 @@ Aby uzyskać więcej informacji na temat debugowania zdalnego dla usługi Azure 
 * [Wprowadzenie do zdalnego debugowania w usłudze Azure App Service Web Apps, część 3 — wiele wystąpień środowiska i GIT](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
 * [Zadania Webjob debugowania (wideo)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
-Jeśli aplikacja internetowa używa interfejsu API sieci Web platformy Azure lub usługi mobilnej zaplecza, i chcesz debugować go, zobacz [debugowania zaplecza platformy .NET w programie Visual Studio](http://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx).
+Jeśli aplikacja internetowa używa interfejsu API sieci Web platformy Azure lub usługi mobilnej zaplecza, i chcesz debugować go, zobacz [debugowania zaplecza platformy .NET w programie Visual Studio](https://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx).
 
 ### <a name="tracing-in-aspnet-applications"></a>Śledzenie w aplikacjach ASP.NET
 Brak dostępnych nie dokładne i aktualne wprowadzenia do śledzenia ASP.NET w Internecie. Najlepiej, które można wykonać jest wprowadzenie starego materiałów wprowadzające napisane z myślą o formularzy sieci Web ponieważ MVC nie został jeszcze istnieje w celu uzupełnienia, za pomocą nowszej blogu publikuje koncentrujących się na konkretnych problemów. Pewne dobre miejsca, aby rozpocząć są następujące zasoby:
 
 * [Monitorowanie i Telemetria (tworzenie rzeczywistych aplikacji w chmurze dzięki platformie Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).<br>
   Książka elektroniczna rozdziału z zaleceniami dotyczącymi śledzenie w aplikacjach w chmurze platformy Azure.
-* [Śledzenie na platformie ASP.NET](http://msdn.microsoft.com/library/ms972204.aspx)<br/>
+* [Śledzenie na platformie ASP.NET](https://msdn.microsoft.com/library/ms972204.aspx)<br/>
   Stary, ale nadal dobry zasobem dla wstęp do tematu.
-* [Obiekty nasłuchujące śledzenia](http://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
-  Informacje o detektorów śledzenia, ale nie wspomina o identyfikatorach [WebPageTraceListener](http://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx).
-* [Wskazówki: Integrowanie śledzenie na platformie ASP.NET z włączonym śledzeniem System.Diagnostics](http://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
+* [Obiekty nasłuchujące śledzenia](https://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
+  Informacje o detektorów śledzenia, ale nie wspomina o identyfikatorach [WebPageTraceListener](https://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx).
+* [Wskazówki: Integrowanie śledzenie na platformie ASP.NET z włączonym śledzeniem System.Diagnostics](https://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
   W tym artykule jest także stare, ale zawiera pewne dodatkowe informacje, które wprowadzające artykuł nie obejmuje.
-* [Śledzenie widoki ASP.NET MVC Razor](http://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
-  Oprócz śledzenia w widokami Razor, wpis wyjaśniono również, jak utworzyć filtr błędu w celu rejestrowania wszystkich nieobsługiwanych wyjątków w aplikacji MVC. Aby uzyskać informacje o sposobie rejestrowania wszystkich nieobsługiwanych wyjątków w aplikacji formularzy sieci Web, zobacz przykład plik Global.asax w [kompletny przykład obsługi błędu](http://msdn.microsoft.com/library/bb397417.aspx) w witrynie MSDN. W MVC lub Web Forms Aby rejestrować pewne wyjątki, ale pozwól domyślna struktura obsługi zaczęły obowiązywać dla nich można było wyłapać i zgłoś ponownie jak w poniższym przykładzie:
+* [Śledzenie widoki ASP.NET MVC Razor](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
+  Oprócz śledzenia w widokami Razor, wpis wyjaśniono również, jak utworzyć filtr błędu w celu rejestrowania wszystkich nieobsługiwanych wyjątków w aplikacji MVC. Aby uzyskać informacje o sposobie rejestrowania wszystkich nieobsługiwanych wyjątków w aplikacji formularzy sieci Web, zobacz przykład plik Global.asax w [kompletny przykład obsługi błędu](https://msdn.microsoft.com/library/bb397417.aspx) w witrynie MSDN. W MVC lub Web Forms Aby rejestrować pewne wyjątki, ale pozwól domyślna struktura obsługi zaczęły obowiązywać dla nich można było wyłapać i zgłoś ponownie jak w poniższym przykładzie:
 
 ``` c#
 try
@@ -684,12 +684,12 @@ Ponadto, nie musisz za pomocą programu ASP.NET lub `System.Diagnostics` śledze
 ### <a name="analyzing-web-server-logs"></a>Analizowanie dzienników serwera internetowego
 Aby uzyskać więcej informacji na temat analizowania dzienników serwera internetowego Zobacz następujące zasoby:
 
-* [LogParser](http://www.microsoft.com/download/details.aspx?id=24659)<br/>
+* [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
   Narzędzie do wyświetlania danych w dzienniki serwera sieci web (*.log* plików).
 * [Rozwiązywanie problemów z wydajnością usług IIS lub błędy aplikacji przy użyciu LogParser ](http://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Wprowadzenie do narzędzia Analizator dzienników, które służy do analizowania dzienników serwera internetowego.
-* [Wpisy na blogu, Robert McMurray przy użyciu LogParser](http://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
-* [Kod stanu HTTP w usługach IIS 7.0, IIS 7.5 i IIS 8.0](http://support.microsoft.com/kb/943891)
+* [Wpisy na blogu, Robert McMurray przy użyciu LogParser](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
+* [Kod stanu HTTP w usługach IIS 7.0, IIS 7.5 i IIS 8.0](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>Analizowanie dzienników śledzenia nieudanych żądań
 Witryny sieci Web Microsoft TechNet zawiera [za pomocą śledzenia nieudanych żądań](http://www.iis.net/learn/troubleshoot/using-failed-request-tracing) sekcji, które mogą być przydatne do zrozumienia sposobu używania tych dzienników. Jednak ta dokumentacja koncentruje się głównie na konfigurowaniu śledzenia niepomyślnych żądań w usługach IIS, czego nie możesz zrobić w usłudze Azure Web Apps.

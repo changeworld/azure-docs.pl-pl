@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: dd11c50940dc35524b6d10c6043e906cc813498d
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 6de0d29895a6d12d3a5aa761c0c4c5148f62dd81
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748293"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256276"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Przygotowanie do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure
 
@@ -182,8 +182,8 @@ Jeśli masz problemy z tworzeniem kopii zapasowej maszyny Wirtualnej platformy A
 
 | **Operacja** | **Windows** | **Linux** |
 | --- | --- | --- |
-| Instalowanie agenta maszyny wirtualnej |Pobierz i zainstaluj [plik MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Do ukończenia procesu instalacji niezbędne są uprawnienia administratora. |<li> Zainstaluj najnowszą wersję [agenta systemu Linux](../virtual-machines/extensions/agent-linux.md). Do ukończenia procesu instalacji niezbędne są uprawnienia administratora. Zaleca się zainstalowanie agenta ze swojego repozytorium dystrybucji. Firma Microsoft **nie zaleca się** Instalowanie agenta maszyny Wirtualnej systemu Linux bezpośrednio z serwisu github.  |
-| Aktualizowanie agenta maszyny wirtualnej |Aktualizowanie agenta maszyny wirtualnej jest równie proste, jak ponowne zainstalowanie [plików binarnych agenta maszyny wirtualnej](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Upewnij się, że żadna operacja tworzenia kopii zapasowej nie jest uruchomiona podczas aktualizowania agenta maszyny wirtualnej. |Postępuj zgodnie z instrukcjami dotyczącymi [aktualizowania agenta maszyny wirtualnej systemu Linux ](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Zalecamy aktualizowanie agenta ze swojego repozytorium dystrybucji. Firma Microsoft **nie zaleca się** aktualizowania agenta maszyny Wirtualnej systemu Linux bezpośrednio z serwisu github.<br>Upewnij się, że podczas aktualizowania agenta maszyny wirtualnej żadna operacja tworzenia kopii zapasowej nie jest uruchomiona. |
+| Instalowanie agenta maszyny wirtualnej |Pobierz i zainstaluj [plik MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Do ukończenia procesu instalacji niezbędne są uprawnienia administratora. |<li> Zainstaluj najnowszą wersję [agenta systemu Linux](../virtual-machines/extensions/agent-linux.md). Do ukończenia procesu instalacji niezbędne są uprawnienia administratora. Zaleca się zainstalowanie agenta ze swojego repozytorium dystrybucji. Firma Microsoft **nie zaleca się** Instalowanie agenta maszyny Wirtualnej systemu Linux bezpośrednio z serwisu github.  |
+| Aktualizowanie agenta maszyny wirtualnej |Aktualizowanie agenta maszyny wirtualnej jest równie proste, jak ponowne zainstalowanie [plików binarnych agenta maszyny wirtualnej](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Upewnij się, że żadna operacja tworzenia kopii zapasowej nie jest uruchomiona podczas aktualizowania agenta maszyny wirtualnej. |Postępuj zgodnie z instrukcjami dotyczącymi [aktualizowania agenta maszyny wirtualnej systemu Linux ](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Zalecamy aktualizowanie agenta ze swojego repozytorium dystrybucji. Firma Microsoft **nie zaleca się** aktualizowania agenta maszyny Wirtualnej systemu Linux bezpośrednio z serwisu github.<br>Upewnij się, że podczas aktualizowania agenta maszyny wirtualnej żadna operacja tworzenia kopii zapasowej nie jest uruchomiona. |
 | Sprawdzanie poprawności instalacji agenta maszyny wirtualnej |<li>Przejdź do folderu *C:\WindowsAzure\Packages* w maszynie wirtualnej Azure. <li>Powinien znajdować się w nim plik WaAppAgent.exe.<li> Kliknij plik prawym przyciskiem myszy, przejdź do opcji **Właściwości**, a następnie wybierz kartę **Szczegóły**. W polu Wersja produktu powinna znajdować się wartość 2.6.1198.718 lub wyższa. |ND |
 
 ### <a name="backup-extension"></a>Rozszerzenie kopii zapasowej
@@ -194,7 +194,7 @@ Usługa Backup instaluje rozszerzenie kopii zapasowej, czy maszyna wirtualna jes
 ## <a name="establish-network-connectivity"></a>Ustanowienie połączenia z siecią
 Aby zarządzać migawki maszyny Wirtualnej, rozszerzenie kopii zapasowej, musi mieć łączność platformy Azure publicznych adresów IP. Bez odpowiednie połączenie z Internetem limit czasu żądań HTTP maszyny wirtualnej, a operacja tworzenia kopii zapasowej nie powiedzie się. Jeśli wdrożenie ma ograniczenia dostępu w miejscu — przy użyciu sieciowej grupy zabezpieczeń (NSG), na przykład wybierz jedną z tych opcji, aby zapewni przejrzystą ścieżkę ruchu kopii zapasowej:
 
-* [Lista dozwolonych adresów IP centrum danych platformy Azure zakresy](http://www.microsoft.com/download/details.aspx?id=41653).
+* [Lista dozwolonych adresów IP centrum danych platformy Azure zakresy](https://www.microsoft.com/download/details.aspx?id=41653).
 * Wdrażanie serwera proxy HTTP dla routingu ruchu.
 
 Podczas wybierania opcji wad i zalet należą do zakresu od możliwości zarządzania, kontrolę i kosztów.
@@ -205,7 +205,7 @@ Podczas wybierania opcji wad i zalet należą do zakresu od możliwości zarząd
 | Użyj serwera proxy HTTP |Zapewnia szczegółową kontrolę na serwerze proxy magazynu dozwolone adresy URL.<br><br>Pojedynczy punkt internet dostępu do maszyn wirtualnych.<br><br>Nie może ulec zmianie adresów IP platformy Azure. |Dodatkowe koszty uruchamiania maszyn wirtualnych z oprogramowaniem serwera proxy. |
 
 ### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>Zakresy adresów IP dozwolonych centrum danych platformy Azure
-Do listy dozwolonych zakresów adresów IP centrum danych platformy Azure, zobacz [witryny sieci Web Azure](http://www.microsoft.com/download/details.aspx?id=41653) szczegółowe informacje na temat zakresów adresów IP i instrukcje.
+Do listy dozwolonych zakresów adresów IP centrum danych platformy Azure, zobacz [witryny sieci Web Azure](https://www.microsoft.com/download/details.aspx?id=41653) szczegółowe informacje na temat zakresów adresów IP i instrukcje.
 
 Zezwalaj na połączenia do magazynu w określonym regionie przy użyciu [tagów usług](../virtual-network/security-overview.md#service-tags). Upewnij się, że reguła, która umożliwia uzyskanie dostępu do konta magazynu ma wyższy priorytet niż regułę, która blokuje dostęp do Internetu.
 
@@ -305,7 +305,7 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 ```
 
 ## <a name="questions"></a>Pytania?
-Jeśli masz pytania lub w przypadku dowolnej funkcji, które mają być wyświetlane uwzględnione, [Prześlij nam swoją opinię](http://aka.ms/azurebackup_feedback).
+Jeśli masz pytania lub w przypadku dowolnej funkcji, które mają być wyświetlane uwzględnione, [Prześlij nam swoją opinię](https://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Teraz, kiedy przygotowania środowiska do tworzenia kopii zapasowej maszyny Wirtualnej, jest kolejnym krokiem logicznego, aby utworzyć kopię zapasową. Planowania artykuł zawiera bardziej szczegółowe informacje o tworzeniu kopii zapasowych maszyn wirtualnych.

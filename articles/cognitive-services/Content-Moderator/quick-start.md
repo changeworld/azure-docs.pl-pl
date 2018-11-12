@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: f25434814a7fb3d0f49cab539b394970c9bcfb3b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 79fe761bc6d8bb9561701fd11b06b010bf3454f6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023444"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260010"
 ---
 # <a name="quickstart-get-familiar-with-content-moderator"></a>Szybki Start: Zapoznać się z usługi Content Moderator
 
@@ -26,7 +26,7 @@ W tym przewodniku Szybki Start użyjesz online Content Moderator narzędzie do p
 - Przeglądarki sieci web
 
 ## <a name="set-up-the-review-tool"></a>Skonfiguruj narzędzie do przeglądu
-Narzędzie do przeglądu Content Moderator to narzędzia opartego na sieci web, umożliwiająca ludzi recenzentom cognitive service o pomoc w podejmowaniu decyzji. W tym przewodniku konieczne będzie przejście przez krótki proces konfigurowania narzędzie do przeglądu, aby zobaczyć, jak działa Usługa Content Moderator. Przejdź do [narzędzie do przeglądu Content Moderator](http://contentmoderator.cognitive.microsoft.com/) lokacji i zarejestruj.
+Narzędzie do przeglądu Content Moderator to narzędzia opartego na sieci web, umożliwiająca ludzi recenzentom cognitive service o pomoc w podejmowaniu decyzji. W tym przewodniku konieczne będzie przejście przez krótki proces konfigurowania narzędzie do przeglądu, aby zobaczyć, jak działa Usługa Content Moderator. Przejdź do [narzędzie do przeglądu Content Moderator](https://contentmoderator.cognitive.microsoft.com/) lokacji i zarejestruj.
 
 ![Strona główna Moderator zawartości](images/homepage.PNG)
 
@@ -48,7 +48,7 @@ Prześlij zawartość na potrzeby moderowania. Wewnętrznie narzędzie do przegl
 
 ## <a name="review-moderation-tags"></a>Przejrzyj Moderowanie tagów
 
-Przejrzyj tagi zastosowane moderowania. Widać, jakie znaczniki zostały zastosowane do zawartości i wynik był w każdej kategorii.
+Przejrzyj tagi zastosowane moderowania. Widać, jakie znaczniki zostały zastosowane do zawartości i wynik był w każdej kategorii. Zobacz [obraz](image-moderation-api.md), [tekstu](text-moderation-api.md), i [wideo](video-moderation-api.md) wskazują Moderowanie tematy, aby dowiedzieć się więcej na temat tagów różną zawartość.
 
 ![Przegląd wyników](images/reviewresults_text.png)
 
@@ -70,4 +70,4 @@ Ewentualnie wykonaj kolejne kroki, aby rozpocząć korzystanie z interfejsów AP
 Dowiedz się, jak używać interfejsy API moderowania samodzielnie w swojej aplikacji.
 - Implementowanie Moderowanie obrazów. Użyj [Konsola interfejsu API](try-image-api.md) lub [ C# Szybki Start](image-moderation-quickstart-dotnet.md) do skanowania obrazów i wykrywania potencjalnych dorosłych i zawartości erotycznej przy użyciu tagów, oceny zaufania i inne wyodrębnionych informacji.
 - Implementowanie Moderowanie tekstu. Użyj [Konsola interfejsu API](try-text-api.md) lub użyj [ C# Szybki Start](text-moderation-quickstart-dotnet.md) do skanowania zawartości tekstu dla wulgaryzmy klasyfikacji wspomagane maszynowo niepotrzebnego tekstu (wersja zapoznawcza) i identyfikowalnych danych dane osobowe. 
-- Moderowanie filmów wideo w życie. Użyj [ C# Szybki Start](video-moderation-api.md) do skanowania filmów wideo i wykrywanie potencjalnych zawartości dla dorosłych. 
+- Moderowanie filmów wideo w życie. Postępuj zgodnie z [przewodnik dotyczący instrukcje Moderowanie wideo C# ](video-moderation-api.md) do skanowania filmów wideo i wykrywanie potencjalnych zawartości dla dorosłych. 

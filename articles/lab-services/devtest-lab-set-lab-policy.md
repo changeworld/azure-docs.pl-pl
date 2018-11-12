@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 212afbd605e3a16da7be2c04492ec41875ff5b75
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 378eb8c1f2070e8f4b28c221369938e2ff04e2f3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666843"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255184"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Zarządzanie wszystkimi zasadami dla laboratorium w usłudze Azure DevTest Labs
 
@@ -27,7 +27,7 @@ Usługa Azure DevTest Labs umożliwia decydują o koszcie i zminimalizować stra
 ## <a name="set-allowed-virtual-machine-sizes"></a>Zestaw dozwolone rozmiary maszyn wirtualnych
 Zasad do ustawiania dozwolonych rozmiarów maszyn wirtualnych pomaga zminimalizować straty laboratorium, dzięki czemu można określić rozmiary maszyn wirtualnych, które są dozwolone w środowisku laboratoryjnym. Jeśli zasada ta jest aktywna, tylko rozmiary maszyn wirtualnych z tej listy może służyć do tworzenia maszyn wirtualnych.
 
-1. W [witryny Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040), wybierz laboratorium, a następnie wybierz **konfiguracji i zasad**.
+1. W [witryny Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040), wybierz laboratorium, a następnie wybierz **konfiguracji i zasad**.
 
     ![Dostęp do konfiguracji i zasad laboratorium](./media/devtest-lab-set-lab-policy/policies-menu.png)
 
