@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 08/01/2018
 ms.author: shvija
-ms.openlocfilehash: 5493819efb32fa594cf27695b2ab5d1273225756
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: f3f9abfb8373e7257237b39d16dfb3f36259ddd5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429899"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281918"
 ---
 # <a name="what-is-azure-event-hubs"></a>Co to jest usługa Azure Event Hubs?
 
@@ -60,7 +60,7 @@ Korzystając z usługi Event Hubs, możesz zacząć od strumieni danych liczonyc
 
 Usługa [Event Hubs dla ekosystemów platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) umożliwia klientom i aplikacjom platformy [Apache Kafka (w wersji 1.0 lub nowszej)](https://kafka.apache.org/) komunikowanie się z usługą Event Hubs bez konieczności zarządzania klastrami.
  
-Rozbudowany ekosystem dostępny za pomocą różnych [języków (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) umożliwia łatwe rozpoczęcie przetwarzania strumieni danych w usłudze Event Hubs. Wszystkie obsługiwane języki klienta zapewniają integrację niskiego poziomu.
+Rozbudowany ekosystem dostępny za pomocą różnych [języków (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) umożliwia łatwe rozpoczęcie przetwarzania strumieni danych w usłudze Event Hubs. Wszystkie obsługiwane języki klienta zapewniają integrację niskiego poziomu. Ten ekosystem umożliwia również bezproblemową integrację z usługami platformy Azure, takimi jak Stream Analytics i Azure Functions, umożliwiając tworzenie architektur bezserwerowych.
 
 ## <a name="key-architecture-components"></a>Główne składniki architektury
 

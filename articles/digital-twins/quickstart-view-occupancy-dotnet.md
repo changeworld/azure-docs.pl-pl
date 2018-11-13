@@ -8,20 +8,24 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/02/2018
+ms.date: 11/7/2018
 ms.author: alinast
-ms.openlocfilehash: e0b47b1322a520ad8b09fd2fe2967e628b5e4e03
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 6e83ca543937948ad8028969cceca0f8787972c9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322875"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281222"
 ---
 # <a name="quickstart-find-available-rooms-using-azure-digital-twins"></a>Szybki start: wyszukiwanie dostępnych pomieszczeń przy użyciu usługi Azure Digital Twins
 
 Usługa Azure Digital Twins umożliwia odtworzenie cyfrowego obrazu środowiska fizycznego. Mając taki obraz, możesz otrzymywać powiadomienia o zdarzeniach w tym środowisku i dostosować sposoby reagowania na nie. 
 
 W tym przewodniku Szybki start użyto [dwóch przykładowych aplikacji platformy .NET](https://github.com/Azure-Samples/digital-twins-samples-csharp) w celu utworzenia cyfrowego obrazu wymyślonego biurowca oraz pokazano, jak znaleźć dostępne pomieszczenia w tym budynku. Za pomocą usługi Digital Twins możesz skojarzyć ze swoim środowiskiem wiele czujników. Poza dostępnością pomieszczenia możesz również określić, czy jakość powietrza w tym pomieszczeniu jest optymalna, korzystając z symulowanego czujnika dwutlenku węgla. Jedna z przykładowych aplikacji wygeneruje losowe dane czujnika, aby ułatwić Ci wizualizację tego scenariusza.
+
+Poniższy klip wideo zawiera podsumowanie konfiguracji przewodnika Szybki start:
+
+> [!VIDEO https://www.youtube.com/embed/1izK266tbMI]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -36,7 +40,7 @@ W tym przewodniku Szybki start użyto [dwóch przykładowych aplikacji platformy
 
 Utwórz nowe wystąpienie usługi Digital Twins w witrynie [Portal](https://portal.azure.com), wykonując kroki opisane w tej sekcji.
 
-[!INCLUDE [create-digital-twins-portal](../../includes/create-digital-twins-portal.md)]
+[!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
 
 ## <a name="set-permissions-for-your-app"></a>Ustawianie uprawnień dla aplikacji
 

@@ -1,6 +1,6 @@
 ---
-title: Zrozumienie klientów w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
-description: Samouczek dotyczący programu Azure Application Insights, aby zrozumieć, jak klienci korzystają z aplikacji.
+title: Poznawanie zachowań klientów w usłudze Azure Application Insights | Microsoft Docs
+description: Samouczek dotyczący korzystania z usługi Application Insights, dzięki któremu dowiesz się, jak klienci używają aplikacji.
 keywords: ''
 services: application-insights
 author: mrbullwinkle
@@ -10,25 +10,25 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: db61c300ad82270e59d315fa3372d9e4390c7a21
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 6d4f96a2c1d288648543a92614cab0f8cf5ee2ea
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2017
-ms.locfileid: "24099025"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256004"
 ---
-# <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Użyj Azure Application Insights, aby zrozumieć, jak klienci używają aplikacji
+# <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Korzystanie z usługi Azure Application Insights, aby dowiedzieć się, jak klienci używają aplikacji
 
-Azure Application Insights zbiera informacje o użyciu, aby lepiej zrozumieć, jak użytkownicy korzystają z Twojej aplikacji.  Ten samouczek przedstawia różne zasoby, które można analizować te informacje.  Dowiesz się jak:
+Usługa Azure Application Insights zbiera informacje o użyciu, aby pomóc zrozumieć, jak użytkownicy korzystają z aplikacji.  Ten samouczek przeprowadzi Cię przez różne zasoby umożliwiające przeanalizowanie tych informacji.  Poznasz następujące czynności:
 
 > [!div class="checklist"]
-> * Analizować szczegółowe informacje dotyczące użytkowników uzyskujących dostęp do aplikacji
-> * Użyj informacji o sesji, aby przeanalizować, jak klienci korzystają z aplikacji
-> * Zdefiniuj Lejki, które pozwalają porównać Twojej aktywności użytkownika odpowiednią do ich rzeczywistego działania 
-> * Utwórz skoroszyt skonsolidować wizualizacje i zapytań do pojedynczego dokumentu
-> * Grupy użytkowników podobne do przeanalizowania razem
-> * Więcej informacji o użytkownikach, którzy są wracając do aplikacji
-> * Sprawdź, jak użytkownicy nawigują między aplikacji
+> * Analizowanie informacji o użytkownikach uzyskujących dostęp do aplikacji
+> * Analizowanie sposobów używania aplikacji przez klientów przy użyciu informacji o sesji
+> * Definiowanie lejków, które pozwalają porównać oczekiwaną aktywność użytkowników z ich rzeczywistą aktywnością 
+> * Tworzenie skoroszytu w celu skonsolidowania wizualizacji i zapytań w jednym dokumencie
+> * Grupowanie podobnych użytkownikom w celu wspólnego analizowania ich
+> * Sprawdzanie, którzy użytkownicy wracają do aplikacji
+> * Sprawdzanie, jak użytkownicy nawigują w aplikacji
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -38,133 +38,133 @@ W celu ukończenia tego samouczka:
 - Zainstaluj program [Visual Studio 2017](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
     - Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
     - Tworzenie aplikacji na platformie Azure
-- Pobierz i zainstaluj [Visual Studio Debugger migawki](http://aka.ms/snapshotdebugger).
-- Wdrażanie aplikacji .NET na platformie Azure i [włączyć zestaw SDK usługi Application Insights](app-insights-asp-net.md). 
-- [Wysłać dane telemetryczne z aplikacji](app-insights-usage-overview.md#send-telemetry-from-your-app) dodawania widoków niestandardowych zdarzeń/strony
-- Wyślij [kontekstu użytkownika](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context) śledzenia, co użytkownik wykona wraz z upływem czasu i pełni wykorzystywać funkcje użycia.
+- Pobierz i zainstaluj rozszerzenie [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
+- Wdróż aplikację .NET na platformie Azure i [włącz zestaw Application Insights SDK](app-insights-asp-net.md). 
+- [Wyślij dane telemetryczne z aplikacji](app-insights-usage-overview.md#send-telemetry-from-your-app) w celu dodania niestandardowych zdarzeń/wyświetleń strony
+- Wyślij [kontekst użytkownika](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context), aby śledzić działania użytkownika w czasie i w pełni wykorzystać możliwości funkcji użycia.
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
-Zaloguj się do portalu Azure pod adresem [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="get-information-about-your-users"></a>Uzyskać informacje na temat użytkowników
-**Użytkowników** panel umożliwia zrozumieć ważne informacje dotyczące użytkowników w różny sposób. Umożliwia Panel zrozumieć takie informacje jak gdzie użytkownicy nawiązują połączenie z szczegóły swoich klientów, a obszary aplikacji uzyskiwany jest dostęp. 
+## <a name="get-information-about-your-users"></a>Pobieranie informacji o użytkownikach
+Panel **Użytkownicy** pozwala analizować na różne sposoby ważne informacje o użytkownikach. Można w nim znaleźć takie informacje jak lokalizacja, z której użytkownicy nawiązują połączenie, szczegóły klienta i obszary aplikacji, do których użytkownicy uzyskują dostęp. 
 
-1. Wybierz **usługi Application Insights** , a następnie wybierz subskrypcję.
-2. Wybierz **użytkowników** w menu.
-3. Widok domyślny pokazuje liczbę unikatowych użytkowników podłączonych do aplikacji w ciągu ostatnich 24 godzin.  Możesz zmienić przedział czasu i ustawić różnych kryteriów filtrowania tych informacji.
+1. Wybierz pozycję **Application Insights**, a następnie wybierz swoją subskrypcję.
+2. Wybierz pozycję **Użytkownicy** z menu.
+3. Widok domyślny przedstawia liczbę unikatowych użytkowników, którzy połączyli się z aplikacją w ciągu ostatnich 24 godzin.  Możesz zmienić przedział czasu i ustawić inne kryteria filtrowania tych informacji.
 
-    ![Konstruktor kwerend](media\app-insights-tutorial-users\QueryBuilder.png)
+    ![Konstruktor zapytań](media\app-insights-tutorial-users\QueryBuilder.png)
 
-6. Kliknij przycisk **podczas** listy rozwijanej i zmień przedział czasu na 7 dni.  Zwiększa to dane zawarte w różnych wykresów w panelu.
+6. Kliknij listę rozwijaną **Podczas** i zmień przedział czasu na 7 dni.  Powoduje to zwiększenie ilości danych na różnych wykresach w panelu.
 
-    ![Zmień zakres czasu](media\app-insights-tutorial-users\TimeRange.png)
+    ![Zmiana zakresu czasu](media\app-insights-tutorial-users\TimeRange.png)
 
-4. Kliknij przycisk **podział według** listy rozwijanej, aby dodać podział według właściwości użytkownika do wykresu.  Wybierz **kraj lub region**.  Wykres zawiera te same dane, ale umożliwia wyświetlenie podział liczbę użytkowników, dla każdego kraju.
+4. Kliknij listę rozwijaną **Podział według**, aby dodać do wykresu podział według właściwości użytkownika.  Wybierz pozycję **Kraj lub region**.  Wykres zawiera te same dane, ale umożliwia wyświetlanie informacji o podziale liczby użytkowników w poszczególnych krajach.
 
-    ![Wykres kraj lub Region](media\app-insights-tutorial-users\CountryorRegion.png)
+    ![Wykres dla kraju lub regionu](media\app-insights-tutorial-users\CountryorRegion.png)
 
-5. Umieść kursor na różnych słupki na wykresie i należy pamiętać, że liczba dla każdego kraju odzwierciedla reprezentowany przez ten pasek tylko przedział czasu.
-6. Obejrzyj **Insights** kolumnę po prawej, które wykonywać analizy na podstawie danych użytkownika.  Zapewnia informacje, takie jak liczba unikatowych sesji w ciągu okresu i rekordy z wspólnych właściwości, które tworzą znaczących danych użytkownika 
+5. Umieść kursor na różnych słupkach wykresu i zwróć uwagę, że wartości poszczególnych krajów odzwierciedlają tylko przedział czasu reprezentowany przez ten słupek.
+6. Spójrz na kolumnę **Szczegółowe informacje** po prawej stronie, która umożliwia analizowanie danych użytkowników.  Zawiera ona takie informacje jak liczba unikatowych sesji w danym okresie i rekordy ze wspólnymi właściwościami, które tworzą znaczącą część danych użytkowników. 
 
-    ![Informacje na temat technologii kolumny](media\app-insights-tutorial-users\insights.png)
+    ![Kolumna szczegółowych informacji](media\app-insights-tutorial-users\insights.png)
 
 
-## <a name="analyze-user-sessions"></a>Analizowanie sesji użytkownika
-**Sesji** panelu jest podobny do **użytkowników** panelu.  Gdzie **użytkowników** pomaga w zrozumieniu szczegółów dotyczących użytkowników, uzyskiwanie dostępu do aplikacji, **sesji** pomaga w zrozumieniu sposobu używania aplikacji przez użytkowników.  
+## <a name="analyze-user-sessions"></a>Analizowanie sesji użytkowników
+Panel **Sesje** jest podobny do panelu **Użytkownicy**.  Panel **Użytkownicy** pozwala poznać informacje o użytkownikach, którzy uzyskują dostęp do aplikacji, natomiast panel **Sesje** pomaga w zrozumieniu sposobu używania aplikacji przez użytkowników.  
 
-1. Wybierz **sesji** w menu.
-2. Obejrzyj wykres i należy pamiętać, że mają te same opcje służące do filtrowania i podziału danych jako w **użytkowników** panelu.
+1. Wybierz pozycję **Sesje** z menu.
+2. Spójrz na wykres i zwróć uwagę, że są dostępne te same opcje filtrowania i dzielenia danych co w panelu **Użytkownicy**.
 
-    ![Konstruktor kwerend sesji](media\app-insights-tutorial-users\SessionsBuilder.png)
+    ![Konstruktor zapytań sesji](media\app-insights-tutorial-users\SessionsBuilder.png)
 
-3. **Próbki te sesje** w okienku po prawej stronie listy sesji, które zawierają dużą liczbę zdarzeń.  Są to interesujące sesji do analizy.
+3. Okienko **Przykłady tych sesji** po prawej stronie zawiera listę sesji z dużą liczbą zdarzeń.  Są to sesje, które warto przeanalizować.
 
-    ![Przykładowe te sesje](media\app-insights-tutorial-users\SessionsSample.png)
+    ![Przykłady tych sesji](media\app-insights-tutorial-users\SessionsSample.png)
 
-4. Kliknij jedną z sesji, aby wyświetlić jego **osi czasu sesji**, który zawiera wszystkie akcje w sesji.  Może to pomóc w identyfikacji informacje, takie jak sesje z dużej liczby wyjątków.
+4. Kliknij jedną z sesji, aby wyświetlić **oś czasu sesji**, która zawiera informacje o każdej akcji w ramach sesji.  Może to ułatwić znajdowanie takich informacji jak sesje z dużą liczbą wyjątków.
 
     ![Oś czasu sesji](media\app-insights-tutorial-users\SessionsTimeline.png)
 
 ## <a name="group-together-similar-users"></a>Grupowanie podobnych użytkowników
-A **kohorty** jest zestawem groupd użytkowników o podobnej charakterystyce.  Można użyć stado można filtrować dane w innych paneli, co umożliwia analizowania określonych grup użytkowników.  Na przykład można analizować tylko użytkownicy, którzy ukończone zakupu.
+**Kohorta** to zestaw grup użytkowników o podobnej charakterystyce.  Kohorty umożliwiają filtrowanie danych w innych panelach, co pozwala analizować poszczególne grupy użytkowników.  Można na przykład analizować tylko użytkowników, którzy ukończyli zakup.
 
-1.  Wybierz **stado** w menu.
-2.  Kliknij przycisk **nowy** do utworzenia nowego kohorty.
-3.  Wybierz **kto używane** listy rozwijanej i wybierz akcję.  Tylko użytkownicy, którzy wykonać tej akcji w obrębie przedział czasu raportu zostaną uwzględnione.
+1.  Wybierz pozycję **Kohorty** z menu.
+2.  Kliknij przycisk **Nowa**, aby utworzyć nową kohortę.
+3.  Wybierz listę rozwijaną **którzy korzystali** i wybierz akcję.  Zostaną uwzględnieni tylko użytkownicy, którzy wykonali tę akcję w przedziale czasu raportu.
 
-    ![Kohorty, który wykonał określone akcje](media\app-insights-tutorial-users\CohortsDropdown.png)
+    ![Kohorta, która wykonała określone akcje](media\app-insights-tutorial-users\CohortsDropdown.png)
 
-4.  Wybierz **użytkowników** w menu.
-5.  W **Pokaż** listy rozwijanej wybierz kohorty właśnie utworzony.  Dane wykresu są ograniczone do tych użytkowników.
+4.  Wybierz pozycję **Użytkownicy** z menu.
+5.  Z listy rozwijanej **Pokaż** wybierz kohortę, którą właśnie utworzono.  Dane wykresu są ograniczone do tych użytkowników.
 
-    ![Kohorty w narzędziu użytkownicy](media\app-insights-tutorial-users\UsersCohort.png)
+    ![Kohorta w narzędziu użytkowników](media\app-insights-tutorial-users\UsersCohort.png)
 
 
-## <a name="compare-desired-activity-to-reality"></a>Porównanie odpowiednie działanie w rzeczywistości
-Gdy poprzednie panele są fokus na to, co zostało użytkowników aplikacji, **Lejki** skupić się na co ma być czy użytkowników.  Rozdzielacz reprezentuje zestaw kroków w aplikacji i procent użytkowników, którzy przenoszenia między krokami.  Na przykład można utworzyć rozdzielacz mierzy procent użytkowników łączących się z aplikacji wyszukiwania produktu.  Możesz sprawdzić procent użytkowników, którzy dodać tego produktu do koszyka zakupów i procent osób zakończyć zakupu.
+## <a name="compare-desired-activity-to-reality"></a>Porównywanie oczekiwanej aktywności z rzeczywistą aktywnością
+Powyższe panele dotyczą wykonanych działań użytkowników aplikacji, natomiast panel **Lejki** zawiera działania, które użytkownicy mają wykonać.  Lejek reprezentuje zestaw kroków w aplikacji i procent użytkowników, którzy przechodzą między krokami.  Można na przykład utworzyć lejek, który pozwala zmierzyć procent użytkowników łączących się z aplikacją i wyszukujących produkt.  Spowoduje to wyświetlenie procentu użytkowników, którzy dodali produkt do koszyka oraz procent użytkowników, którzy ukończyli zakup.
 
-1. Wybierz **Lejki** menu, a następnie kliknij polecenie **nowy**. 
+1. Wybierz pozycję **Lejki** z menu, a następnie kliknij pozycję **Nowy**. 
 
     ![](media\app-insights-tutorial-users\funnelsnew.png)
 
-2. Wpisz w **Lejkowy nazwa**.
-3. Utwórz rozdzielacz z co najmniej dwa kroki, wybierając akcję dla każdego kroku.  Listę akcji jest oparty na podstawie danych użycia zbieranych przez usługę Application Insights.
+2. Wpisz **nazwę lejka**.
+3. Utwórz lejek z co najmniej dwoma krokami przez wybranie akcji dla każdego kroku.  Lista akcji została utworzona na podstawie danych użycia zebranych przez usługę Application Insights.
 
     ![](media\app-insights-tutorial-users\funnelsedit.png)
 
-4. Kliknij przycisk **zapisać** Aby zapisać lejka, a następnie przejrzyj wyniki.  W oknie po prawej stronie lejka wyświetlane najbardziej typowe zdarzenia przed pierwsze działanie i po ostatniej aktywności ułatwią zrozumienie tendencji użytkownika wokół określonej sekwencji.
+4. Kliknij pozycję **Zapisz**, aby zapisać lejek, a następnie wyświetl jego wyniki.  W oknie po prawej stronie lejka są wyświetlane najczęściej występujące zdarzenia przed pierwszym działaniem i po ostatnim działaniu, aby lepiej zrozumieć tendencje użytkowników dotyczące określonej sekwencji.
 
     ![](media\app-insights-tutorial-users\funnelsright.png)
 
 
-## <a name="learn-which-customers-return"></a>Dowiedz się, którzy zwracać
-**Przechowywania** pomaga w zrozumieniu użytkowników, którzy są powracające do aplikacji.  
+## <a name="learn-which-customers-return"></a>Sprawdzanie, którzy klienci wracają
+Panel **Przechowywanie** ułatwia sprawdzenie, którzy użytkownicy wrócą do aplikacji.  
 
-1. Wybierz **przechowywania** w menu.
-2. Domyślnie przeanalizowane informacje zawiera użytkowników, którzy wykonać dowolną akcję, a następnie zwracany do wykonywania dowolnych akcji.  Ten filtr, można zmienić na dowolnym include, na przykład tylko tych użytkowników, którzy zwracane po zakończeniu zakupu.
+1. Wybierz pozycję **Przechowywanie** z menu.
+2. Domyślnie przeanalizowane informacje obejmują użytkowników, którzy wykonali dowolną akcję, a następnie wrócili do wykonywania dowolnych akcji.  Możesz zmienić ten filtr, aby uwzględnić dowolne dane, na przykład tylko użytkowników, którzy wrócili po ukończeniu zakupu.
 
     ![](media\app-insights-tutorial-users\retentionquery.png)
 
-3. Zwracanie użytkowników spełniających kryteria są wyświetlane w graficznym i tabeli formularza dla innego czasu trwania.  Typowy wzorzec jest stopniowego upuszczania zwracany użytkowników w czasie.  Gwałtowny spadek z jednego okresu do następnego może podnieść znaczenie. 
+3. Wracający użytkownicy spełniający kryteria są wyświetlani w formie grafiki i tabeli dla różnych czasów trwania.  Typowy wzorzec dotyczy stopniowego spadku liczby wracających użytkowników w czasie.  Nagły spadek między okresami może wymagać uwagi. 
 
     ![](media\app-insights-tutorial-users\retentiongraph.png)
 
-## <a name="analyze-user-navigation"></a>Analizowanie nawigacji użytkownika
-A **przepływu użytkownika** wizualizuje, jak użytkownicy nawigują między stronami i funkcji aplikacji.  Pomaga to w odpowiedzi na pytania, takie jak gdzie zwykle przenieść użytkowników z określonej strony, jak one zazwyczaj zakończyć działanie aplikacji i czy istnieją wszystkie akcje, które są regularnie powtarzać.
+## <a name="analyze-user-navigation"></a>Analizowanie nawigacji użytkowników
+**Przepływ użytkownika** wizualnie przedstawia, jak użytkownicy nawigują między stronami i funkcjami aplikacji.  Dzięki temu można na przykład dowiedzieć się, gdzie użytkownicy zwykle przechodzą z określonej strony, jak zazwyczaj zamykają aplikację oraz czy istnieją akcje powtarzane regularnie.
 
-1.  Wybierz **użytkownika przepływów** w menu.
-2.  Kliknij przycisk **nowy** utworzyć nowy przepływ użytkownika, a następnie kliknij przycisk **Edytuj** Aby edytować jego szczegóły.
-3.  Zwiększ **zakres czasu** do 7 dni, a następnie wybierz zdarzenie początkowej.  Przepływ zostanie śledzenia sesji użytkownika, rozpoczynających się od tego zdarzenia.
+1.  Wybierz pozycję **Przepływy użytkowników** z menu.
+2.  Kliknij pozycję **Nowy**, aby utworzyć nowy przepływ użytkownika, a następnie kliknij pozycję **Edytuj**, aby edytować jego szczegóły.
+3.  Zwiększ **zakres czasu** do 7 dni, a następnie wybierz zdarzenie początkowe.  Przepływ będzie śledzić sesje użytkownika, które rozpoczynają się od tego zdarzenia.
 
     ![](media\app-insights-tutorial-users\flowsedit.png)
 
-4.  Przepływ użytkownika jest wyświetlane i można zobaczyć ścieżki innego użytkownika i liczby sesji.  Niebieski linie wskazują akcję użytkownika wykonywane po bieżącej akcji.  Czerwona linia wskazuje koniec sesji użytkownika.
+4.  Zostanie wyświetlony przepływ użytkownika wraz ze ścieżkami użytkowników i liczbami ich sesji.  Niebieskie linie wskazują akcję, którą użytkownik wykonał po bieżącej akcji.  Czerwona linia wskazuje koniec sesji użytkownika.
 
     ![](media\app-insights-tutorial-users\flows.png)
 
-5.  Usuń zdarzenia z przepływu, klikając przycisk **x** w rogu akcji, a następnie kliknij przycisk **Tworzenie wykresu**.  Wykres jest rysowany ponownie z uwzględnieniem dowolnych wystąpień tego zdarzenia usunięte.  Kliknij przycisk **Edytuj** aby zobaczyć, że zdarzenie zostało teraz dodane do **wykluczone zdarzenia**.
+5.  Aby usunąć zdarzenie z przepływu, kliknij pozycję **x** w rogu akcji, a następnie kliknij pozycję **Utwórz wykres**.  Wykres zostanie narysowany ponownie z uwzględnieniem wystąpień usuniętego zdarzenia.  Kliknij pozycję **Edytuj**. Spowoduje to dodanie zdarzenia do listy **Wykluczone zdarzenia**.
 
     ![](media\app-insights-tutorial-users\flowsexclude.png)
 
 ## <a name="consolidate-usage-data"></a>Konsolidowanie danych użycia
-**Skoroszyty** łączyć wizualizacje danych, zapytania analityczne i tekstu w dokumentach interaktywnego.  Skoroszyty służy do grupowania typowych informacji o użyciu, Konsoliduj określonego zdarzenia lub raportować do zespołu na użycie aplikacji.
+**Skoroszyty** łączą wizualizacje danych, zapytania analityczne i tekst w interakcyjnych dokumentach.  Umożliwiają one grupowanie typowych danych użycia, konsolidowanie informacji dotyczących określonego zdarzenia oraz raportowanie zespołowi użycia aplikacji.
 
-1.  Wybierz **skoroszytów** w menu.
-2.  Kliknij przycisk **nowy** Aby utworzyć nowy skoroszyt.
-3.  Zapytanie jest już pod warunkiem, że zawierającej wszystkie dane użycia w ostatni dzień wyświetlany w postaci wykresu słupkowego.  Użyj tego zapytania, ręcznie go edytować lub kliknij przycisk **przykładowe zapytania** można wybierać inne przydatne zapytania.
+1.  Wybierz pozycję **Skoroszyty** z menu.
+2.  Kliknij pozycję **Nowy**, aby utworzyć nowy skoroszyt.
+3.  Zostanie wyświetlone zapytanie zawierające wszystkie dane użycia z ostatniego dnia w formie wykresu słupkowego.  Możesz użyć tego zapytania, ręcznie je edytować lub kliknąć pozycję **Przykładowe zapytania**, aby wybrać inne przydatne zapytania.
 
     ![](media\app-insights-tutorial-users\samplequeries.png)
 
-4.  Kliknij przycisk **zakończeniu edytowania**.
-5.  Kliknij przycisk **Edytuj** w górnym okienku można edytować tekst w górnej części skoroszytu.  To jest sformatowany przy użyciu języka znaczników markdown.
+4.  Kliknij przycisk **Zakończono edytowanie**.
+5.  Kliknij przycisk **Edytuj** w górnym okienku, aby edytować tekst u góry skoroszytu.  Jest on sformatowany za pomocą języka Markdown.
 
     ![](media\app-insights-tutorial-users\markdown.png)
 
-6.  Kliknij przycisk **dodawania użytkowników** można dodać, wykres o informacje o użytkowniku.  Edytuj szczegóły wykresu, a następnie kliknij przycisk **zakończeniu edytowania** go zapisać.
+6.  Kliknij pozycję **Dodaj użytkowników**, aby dodać wykres z informacjami o użytkowniku.  Jeśli chcesz, edytuj szczegóły wykresu, a następnie kliknij pozycję **Zakończono edytowanie**, aby zapisać wykres.
 
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz, kiedy znasz już sposobu analizowania użytkowników, przejdź do następnego samouczkiem, aby dowiedzieć się, jak tworzyć niestandardowe pulpity nawigacyjne, łączące tego informacje z innych przydatnych danych aplikacji.
+Wiesz już, jak analizować użytkowników, więc możesz przejść do następnego samouczka, aby dowiedzieć się, jak tworzyć niestandardowe pulpity nawigacyjne, które łączą te informacje z innymi przydatnymi danymi dotyczącymi aplikacji.
 
 > [!div class="nextstepaction"]
-> [Tworzyć niestandardowe pulpity nawigacyjne](app-insights-tutorial-dashboards.md)
+> [Tworzenie niestandardowych pulpitów nawigacyjnych](app-insights-tutorial-dashboards.md)

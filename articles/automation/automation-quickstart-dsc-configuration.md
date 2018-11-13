@@ -7,16 +7,16 @@ ms.component: dsc
 keywords: dsc, konfiguracja, automatyzacja
 author: KrisBash
 ms.author: krbash
-ms.date: 12/17/2017
+ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 959171963bcdc721c81823fcf4f9769174b32636
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 7a9e394213ef40b995cb048c71f14a190e5e7970
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34053719"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243696"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurowanie maszyny wirtualnej systemu Linux za pomocą DSC
 
@@ -30,20 +30,20 @@ Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warun
 * Konto usługi Azure Automation. Aby uzyskać instrukcje dotyczące tworzenia konta Uruchom jako usługi Azure Automation, zobacz [Konto Uruchom jako platformy Azure](automation-sec-configure-azure-runas-account.md).
 * Maszyna wirtualna usługi Azure Resource Manager (nie klasycznej) z systemem Red Hat Enterprise Linux, CentOS lub Oracle Linux. Aby uzyskać instrukcje dotyczące tworzenia maszyny wirtualnej, zobacz [Create your first Linux virtual machine in the Azure portal](../virtual-machines/linux/quick-create-portal.md) (Tworzenie pierwszej maszyny wirtualnej systemu Linux w witrynie Azure Portal)
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
-Zaloguj się do platformy Azure na stronie https://portal.azure.com
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+Zaloguj się do platformy Azure w witrynie https://portal.azure.com
 
 ## <a name="onboard-a-virtual-machine"></a>Dołączanie maszyny wirtualnej
 Istnieje wiele różnych metod dołączania maszyny i włączania konfiguracji żądanego stanu. Ten Szybki start obejmuje dołączanie za pomocą konta automatyzacji. Możesz dowiedzieć się więcej o innych metodach dołączania maszyn do konfiguracji żądanego stanu, czytając artykuł o [dołączaniu](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding).
 
 1. W okienku po lewej stronie witryny Azure Portal wybierz pozycję **Konta automatyzacji**. Jeśli nie widać jej w okienku po lewej stronie, kliknij pozycję **Wszystkie usługi** i wyszukaj ją w wynikowym widoku.
 1. Na liście wybierz konto automatyzacji.
-1. W okienku po lewej stronie konta automatyzacji wybierz pozycję **Węzły DSC**.
-1. Kliknij opcję menu **Dodaj maszynę wirtualną platformy Azure**
-1. Znajdź maszynę wirtualną, dla której chcesz włączyć DSC. Aby znaleźć określoną maszynę wirtualną, możesz użyć opcji pola wyszukiwania i filtra.
-1. Kliknij maszynę wirtualną, a następnie wybierz pozycję **Połącz**
-1. Wybierz ustawienia DSC odpowiednie dla maszyny wirtualnej. Jeśli konfiguracja została już przygotowana, możesz określić to jako *Nazwa konfiguracji węzła*. Możesz ustawić [tryb konfiguracji](https://docs.microsoft.com/powershell/dsc/metaconfig), aby sterować zachowaniem konfiguracji maszyny.
-1. Kliknij przycisk **OK**.
+1. W okienku po lewej stronie konta usługi Automation wybierz pozycję **Konfiguracja stanu (DSC)**.
+2. Kliknij pozycję **Dodaj**, aby otworzyć stronę wybierania maszyny wirtualnej.
+3. Znajdź maszynę wirtualną, dla której chcesz włączyć DSC. Aby znaleźć określoną maszynę wirtualną, możesz użyć opcji pola wyszukiwania i filtra.
+4. Kliknij maszynę wirtualną, a następnie wybierz pozycję **Połącz**
+5. Wybierz ustawienia DSC odpowiednie dla maszyny wirtualnej. Jeśli konfiguracja została już przygotowana, możesz określić to jako *Nazwa konfiguracji węzła*. Możesz ustawić [tryb konfiguracji](https://docs.microsoft.com/powershell/dsc/metaconfig), aby sterować zachowaniem konfiguracji maszyny.
+6. Kliknij przycisk **OK**.
 
 ![Dołączanie maszyny wirtualnej platformy Azure do konfiguracji DSC](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
 
@@ -101,10 +101,10 @@ configuration LAMPServer {
 
 Aby zaimportować konfigurację:
 
-1. W okienku po lewej stronie konta automatyzacji wybierz pozycję **Konfiguracje DSC**.
-1. Kliknij opcję menu, aby **Dodać konfigurację**
-1. Wybierz *Plik konfiguracji* zapisany w poprzednim kroku
-1. Kliknij przycisk **OK**.
+1. W okienku po lewej stronie konta usługi Automation wybierz pozycję **Konfiguracja stanu (DSC)**, a następnie kliknij kartę **Konfiguracje**.
+2. Kliknij pozycję **+ Dodaj**
+3. Wybierz *Plik konfiguracji* zapisany w poprzednim kroku
+4. Kliknij przycisk **OK**.
 
 ## <a name="compile-a-configuration"></a>Kompilacja konfiguracji
 
@@ -112,18 +112,16 @@ Konfiguracja DSC musi zostać skompilowana do konfiguracji węzła (dokument MOF
 
 Aby skompilować konfigurację:
 
-1. W okienku po lewej stronie konta automatyzacji wybierz pozycję **Konfiguracje DSC**.
+1. W okienku po lewej stronie konta usługi Automation wybierz pozycję **Konfiguracja stanu (DSC)**, a następnie kliknij kartę **Konfiguracje**.
 1. Wybierz konfigurację zaimportowaną w poprzednim kroku „LAMPServer”
 1. W opcjach menu kliknij pozycję **Kompiluj**, a następnie **Tak**
 1. W widoku konfiguracji zobaczysz w kolejce nowe *zadanie kompilacji*. Po pomyślnym zakończeniu zadania możesz przejść do następnego kroku. Jeśli są jakiekolwiek błędy, możesz kliknąć zadanie kompilacji, aby uzyskać więcej informacji.
-
-![Stan zadania kompilacji](./media/automation-quickstart-dsc-configuration/dsc-compilationjob.png)
 
 ## <a name="assign-a-node-configuration"></a>Przypisywanie konfiguracji węzła
 
 Skompilowaną *konfigurację węzła* można przypisać do węzłów DSC. Przypisanie powoduje zastosowanie konfiguracji do maszyny i monitoruje (lub automatycznie koryguje) dowolne odstępstwo od tej konfiguracji.
 
-1. W okienku po lewej stronie konta automatyzacji wybierz pozycję **Węzły DSC**
+1. W okienku po lewej stronie konta usługi Automation wybierz pozycję **Konfiguracja stanu (DSC)**, a następnie kliknij kartę **Węzły**.
 1. Wybierz węzeł, do którego chcesz przypisać konfigurację
 1. Kliknij pozycję **Przypisywanie konfiguracji węzła**
 1. Wybierz pozycje *Konfiguracja węzła* - **LAMPServer.localhost** — aby przypisać i kliknij przycisk **OK**
@@ -133,7 +131,7 @@ Skompilowaną *konfigurację węzła* można przypisać do węzłów DSC. Przypi
 
 ## <a name="viewing-node-status"></a>Wyświetlanie stanu węzła
 
-Stan wszystkich zarządzanych węzłów można znaleźć w widoku **Węzły DSC** konta automatyzacji. Możesz filtrować wyświetlane dane według stanu, konfiguracji węzła lub nazwy wyszukiwania. 
+Stan wszystkich węzłów zarządzanych można wyświetlić, wybierając pozycję **Konfiguracja stanu (DSC)**, a następnie kartę **Węzły** na koncie usługi Automation. Możesz filtrować wyświetlane dane według stanu, konfiguracji węzła lub nazwy wyszukiwania.
 
 ![Stan węzła DSC](./media/automation-quickstart-dsc-configuration/dsc-node-status.png)
 

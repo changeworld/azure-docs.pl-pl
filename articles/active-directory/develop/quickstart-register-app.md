@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
+ms.date: 11/02/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: e4e667c9a9490d164b9fb1c90580ceb30989a7dc
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: f0220c244bd5ed48393e2f81b7dd8a62fd0423be
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988874"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912998"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform-preview"></a>Szybki start: rejestrowanie aplikacji za pomocą platformy tożsamości firmy Microsoft (wersja zapoznawcza)
 
 Deweloperzy w przedsiębiorstwach i dostawcy oprogramowania jako usługi (SaaS) mogą tworzyć komercyjne usługi w chmurze lub aplikacje biznesowe i integrować je z platformą tożsamości firmy Microsoft, aby zapewnić bezpieczne logowanie i autoryzację dla swoich usług.
 
-Ten przewodnik Szybki start przedstawia dodawanie i rejestrowanie aplikacji w witrynie Azure Portal, co umożliwia jej integrację z platformą tożsamości firmy Microsoft.
+Ten przewodnik Szybki start przedstawia dodawanie i rejestrowanie aplikacji w środowisku **Rejestracje aplikacji (wersja zapoznawcza)** w witrynie Azure Portal, co umożliwia jej integrację z platformą tożsamości firmy Microsoft.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
@@ -36,7 +36,7 @@ Aby rozpocząć pracę, musisz wyrazić zgodę na użycie środowiska w wersji z
 ## <a name="register-a-new-application-using-the-azure-portal"></a>Rejestrowanie nowej aplikacji w witrynie Azure Portal
 
 1. Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
+1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na wybraną dzierżawę usługi Azure AD.
 1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory**, a następnie pozycję **Rejestracje aplikacji (wersja zapoznawcza) > Nowa rejestracja**.
 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
 
@@ -45,7 +45,7 @@ Aby rozpocząć pracę, musisz wyrazić zgodę na użycie środowiska w wersji z
 
         | Obsługiwane typy konta | Opis |
         |-------------------------|-------------|
-        | **Konta tylko w tym katalogu organizacyjnym** | Wybierz tę opcję, jeśli tworzysz aplikację biznesową. Ta opcja nie jest dostępna, jeśli aplikacja nie jest rejestrowana w katalogu.<br><br>Ta opcja mapuje do usługi Azure AD tylko aplikację jednodostępną.<br><br>Jest to opcja domyślna, chyba że rejestrujesz aplikację poza katalogiem. W przypadkach, gdy aplikacja jest rejestrowana poza katalogiem, wartość domyślna to aplikacja wielodostępna usługi Azure AD i konta osobiste Microsoft. |
+        | **Konta tylko w tym katalogu organizacyjnym** | Wybierz tę opcję, jeśli kompilujesz aplikację biznesową. Ta opcja nie jest dostępna, jeśli aplikacja nie jest rejestrowana w katalogu.<br><br>Ta opcja mapuje do usługi Azure AD tylko aplikację jednodostępną.<br><br>Jest to opcja domyślna, chyba że rejestrujesz aplikację poza katalogiem. W przypadkach, gdy aplikacja jest rejestrowana poza katalogiem, wartość domyślna to aplikacja wielodostępna usługi Azure AD i konta osobiste Microsoft. |
         | **Konta w dowolnym katalogu organizacyjnym** | Wybierz tę opcję, jeśli aplikacja jest przeznaczona dla wszystkich klientów biznesowych i edukacyjnych.<br><br>Ta opcja mapuje do usługi Azure AD tylko aplikację wielodostępną.<br><br>Jeśli aplikacja jest zarejestrowana w usłudze Azure AD jako jednodostępna, możesz ją zaktualizować do aplikacji wielodostępnej usługi Azure AD i z powrotem za pomocą bloku **Uwierzytelnianie**. |
         | **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft** | Wybierz tę opcję, aby przeznaczyć aplikację dla najszerszego możliwego grona klientów.<br><br>Ta opcja mapuje do usługi Azure AD aplikację wielodostępną i konta osobiste Microsoft.<br><br>Jeśli aplikacja jest zarejestrowana jako aplikacja wielodostępna usługi Azure AD z kontami osobistymi Microsoft, nie możesz zmienić tego w interfejsie użytkownika. Zamiast tego musisz użyć edytora manifestu aplikacji, aby zmienić obsługiwane typy konta. |
 
@@ -59,7 +59,7 @@ Aby rozpocząć pracę, musisz wyrazić zgodę na użycie środowiska w wersji z
 
     [![Rejestrowanie nowej aplikacji w witrynie Azure Portal](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
 
-Usługa Azure AD przypisze aplikacji unikatowy identyfikator, po czym nastąpi przeniesienie do strony **Przegląd** aplikacji. Aby dodać kolejne możliwości do aplikacji, możesz wybrać inne opcje konfiguracji, w tym znakowanie, certyfikaty i wpisy tajne, uprawnienia interfejsu API i więcej.
+Usługa Azure AD przypisze do aplikacji unikatowy identyfikator (klienta), po czym nastąpi przeniesienie do strony **Przegląd** aplikacji. Aby dodać kolejne możliwości do aplikacji, możesz wybrać inne opcje konfiguracji, w tym znakowanie, certyfikaty i wpisy tajne, uprawnienia interfejsu API i więcej.
 
 [![Strona Przegląd nowo zarejestrowanej aplikacji](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
 

@@ -8,34 +8,36 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2018
-ms.openlocfilehash: 02b98cb22d897fc9599f6e44ddc57ef4211b0893
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: e3c165c87d6c179141f2ddd44f00f0f62a84b285
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410840"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912870"
 ---
-# <a name="manage-web-traffic-with-azure-application-gateway-using-ansible-preview"></a>Zarządzanie ruchem internetowym przy użyciu usługi Azure Application Gateway za pomocą rozwiązania Ansible (wersja zapoznawcza)
-Usługa [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/) to moduł równoważenia obciążenia ruchu internetowego, który umożliwia zarządzanie ruchem kierowanym do aplikacji internetowych. 
+# <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible-preview"></a>Zarządzanie ruchem internetowym przy użyciu usługi Azure Application Gateway za pomocą rozwiązania Ansible (wersja zapoznawcza)
 
-Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. W tym artykule przedstawiono sposób zastosowania rozwiązania Ansible do tworzenia bramy usługi Azure Application Gateway i używania jej do zarządzania ruchem dwóch serwerów internetowych działających w wystąpieniach kontenera platformy Azure. 
+Usługa [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/) to moduł równoważenia obciążenia ruchu internetowego, który umożliwia zarządzanie ruchem kierowanym do aplikacji internetowych.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Rozwiązanie Ansible ułatwia automatyzowanie wdrażania i konfigurowania zasobów w środowisku. Ten artykuł przedstawia sposób tworzenia bramy aplikacji za pomocą rozwiązania Ansible. Dowiesz się również, jak za pomocą bramy zarządzać ruchem do dwóch serwerów internetowych działających w wystąpieniach kontenera platformy Azure.
+
+Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 > [!div class="checklist"]
 > * Konfigurowanie sieci
-> * Tworzenie dwóch wystąpień kontenera platformy Azure przy użyciu obrazu httpd
-> * Tworzenie bramy aplikacji przy użyciu powyższych wystąpień kontenera platformy Azure w puli zaplecza
-
+> * Tworzenie dwóch wystąpień kontenera platformy Azure przy użyciu obrazów HTTPD
+> * Tworzenie bramy aplikacji współdziałającej z wystąpieniami kontenera platformy Azure w puli serwerów
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 - **Subskrypcja Azure** — jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Rozwiązanie Ansible 2.7 jest wymagane do uruchamiania następujących przykładowych podręczników w ramach tego samouczka. Rozwiązanie Ansible RC w wersji 2.7 możesz zainstalować, uruchamiając polecenie `sudo pip install ansible[azure]==2.7.0rc2`. Rozwiązanie Ansible w wersji 2.7 zostanie wydane w październiku 2018 r. Po tym czasie nie trzeba będzie tutaj określać wersji, ponieważ wersją domyślną będzie wersja 2.7. 
+> Rozwiązanie Ansible 2.7 jest wymagane do uruchamiania następujących przykładowych elementów playbook w ramach tego samouczka. Rozwiązanie Ansible 2.7 RC można zainstalować, uruchamiając polecenie `sudo pip install ansible[azure]==2.7.0rc2`. Po wydaniu rozwiązania Ansible 2.7 nie trzeba będzie określać wersji.
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+
 Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.  
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie **myResourceGroup** w lokalizacji **eastus**.
@@ -52,15 +54,17 @@ Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie **myResourceGroup
         location: "{{ location }}"
 ```
 
-Zapisz powyższy podręcznik jako plik *rg.yml*. Aby uruchomić podręcznik, użyj polecenia **ansible-playbook** w następujący sposób:
+Zapisz ten element playbook jako plik *rg.yml*. Aby uruchomić element playbook, użyj polecenia **ansible-playbook** w następujący sposób:
+
 ```bash
 ansible-playbook rg.yml
 ```
 
-## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych 
-Aby brama aplikacji mogła komunikować się z innymi zasobami, należy utworzyć sieć wirtualną. 
+## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych
 
-Poniższy przykład tworzy sieć wirtualną o nazwie **myVNet**, podsieć o nazwie **myAGSubnet** i publiczny adres IP o nazwie **myAGPublicIPAddress** z domeną o nazwie **mydomain**. 
+Najpierw utwórz sieć wirtualną, aby brama aplikacji mogła komunikować się z innymi zasobami.
+
+Poniższy przykład tworzy sieć wirtualną o nazwie **myVNet**, podsieć o nazwie **myAGSubnet** i publiczny adres IP o nazwie **myAGPublicIPAddress** z domeną o nazwie **mydomain**.
 
 ```yml
 - hosts: localhost
@@ -98,13 +102,15 @@ Poniższy przykład tworzy sieć wirtualną o nazwie **myVNet**, podsieć o nazw
         domain_name_label: "{{ publicip_domain }}"
 ```
 
-Zapisz powyższy podręcznik jako plik *vnet_create.yml*. Aby uruchomić podręcznik, użyj polecenia **ansible-playbook** w następujący sposób:
+Zapisz ten element playbook jako plik *vnet_create.yml*. Aby uruchomić element playbook, użyj polecenia **ansible-playbook** w następujący sposób:
+
 ```bash
 ansible-playbook vnet_create.yml
 ```
 
-## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
-W tym przykładzie utworzysz dwa wystąpienia kontenera platformy Azure za pomocą obrazów httpd do użycia jako serwery zaplecza dla bramy aplikacji.  
+## <a name="create-servers"></a>Tworzenie serwerów
+
+Ten przykład przedstawia sposób tworzenia dwóch wystąpień kontenera platformy Azure za pomocą obrazów HTTPD do użycia jako serwerów internetowych bramy aplikacji.  
 
 ```yml
 - hosts: localhost
@@ -147,22 +153,22 @@ W tym przykładzie utworzysz dwa wystąpienia kontenera platformy Azure za pomoc
               - 80
 ```
 
-Zapisz powyższy podręcznik jako plik *aci_create.yml*. Aby uruchomić podręcznik, użyj polecenia **ansible-playbook** w następujący sposób:
+Zapisz ten element playbook jako plik *aci_create.yml*. Aby uruchomić element playbook, użyj polecenia **ansible-playbook** w następujący sposób:
+
 ```bash
 ansible-playbook aci_create.yml
 ```
 
 ## <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
 
-Utwórzmy teraz bramę aplikacji. Poniższy przykład tworzy bramę aplikacji o nazwie **myAppGateway** z konfiguracją zaplecza, frontonu i protokołu HTTP.  
+Poniższy przykład przedstawia sposób tworzenia bramy aplikacji o nazwie **myAppGateway** z konfiguracjami zaplecza, frontonu i protokołu HTTP.  
 
-> [!div class="checklist"]
-> * Parametr **appGatewayIP** zdefiniowany w bloku **gateway_ip_configurations** — odwołanie do podsieci jest wymagane do konfiguracji adresu IP bramy. 
-> * Parametr **appGatewayBackendPool** zdefiniowany w bloku **backend_address_pools** — brama aplikacji musi mieć co najmniej jedną pulę adresów zaplecza. 
-> * Parametr **appGatewayBackendHttpSettings** zdefiniowany w bloku **backend_http_settings_collection** — określa, że port 80 i protokół HTTP są używane do komunikacji. 
-> * Parametr **appGatewayHttpListener** zdefiniowany w bloku **backend_http_settings_collection** — domyślny odbiornik skojarzony z pulą appGatewayBackendPool. 
-> * Parametr **appGatewayFrontendIP** zdefiniowany w bloku **frontend_ip_configurations** — przypisuje adres myAGPublicIPAddress do odbiornika appGatewayHttpListener. 
-> * Parametr **rule1** zdefiniowany w bloku **request_routing_rules** — domyślna reguła rozsyłania, która jest skojarzona z odbiornikiem appGatewayHttpListener. 
+* Element **appGatewayIP** jest definiowany w bloku **gateway_ip_configurations**. Odwołanie do podsieci jest wymagane do konfiguracji adresu IP bramy.
+* Element **appGatewayBackendPool** jest definiowany w bloku **backend_address_pools**. Brama aplikacji musi mieć co najmniej jedną pulę adresów zaplecza.
+* Element **appGatewayBackendHttpSettings** jest definiowany w bloku **backend_http_settings_collection**. Określa on, że do komunikacji jest używany port 80 i protokół HTTP.
+* Element **appGatewayHttpListener** jest definiowany w bloku **backend_http_settings_collection**. Jest to domyślny odbiornik skojarzony z pulą appGatewayBackendPool.
+* Element **appGatewayFrontendIP** jest definiowany w bloku **frontend_ip_configurations**. Przypisuje on adres myAGPublicIPAddress do odbiornika appGatewayHttpListener.
+* Element **rule1** jest definiowany w bloku **request_routing_rules**. Jest to domyślna reguła rozsyłania skojarzona z odbiornikiem appGatewayHttpListener.
 
 ```yml
 - hosts: localhost
@@ -246,22 +252,23 @@ Utwórzmy teraz bramę aplikacji. Poniższy przykład tworzy bramę aplikacji o 
             name: rule1
 ```
 
-Zapisz powyższy podręcznik jako plik *appgw_create.yml*. Aby uruchomić podręcznik, użyj polecenia **ansible-playbook** w następujący sposób:
+Zapisz ten element playbook jako plik *appgw_create.yml*. Aby uruchomić element playbook, użyj polecenia **ansible-playbook** w następujący sposób:
+
 ```bash
 ansible-playbook appgw_create.yml
 ```
 
-Tworzenie bramy aplikacji może potrwać kilka minut. 
+Tworzenie bramy aplikacji może potrwać kilka minut.
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-W powyższym przykładowym podręczniku dotyczącym zasobów sieci domena o nazwie **mydomain** została utworzona w regionie **eastus**. Teraz możesz przejść do przeglądarki i wpisać adres `http://mydomain.eastus.cloudapp.azure.com`. Powinna zostać wyświetlona następująca strona potwierdzająca, że usługa Application Gateway działa zgodnie z oczekiwaniami.
+W przykładowym elemencie playbook dotyczącym zasobów sieci domena o nazwie **mydomain** została utworzona w regionie **eastus**. Przejdź do adresu `http://mydomain.eastus.cloudapp.azure.com` w przeglądarce. Jeśli zostanie wyświetlona poniższa strona, bramy aplikacji działa zgodnie z oczekiwaniami.
 
-![Uzyskiwanie dostępu do usługi Application Gateway](media/ansible-create-configure-application-gateway/applicationgateway.PNG)
+![Pomyślnie zakończony test działającej bramy aplikacji](media/ansible-create-configure-application-gateway/applicationgateway.PNG)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie potrzebujesz tych zasobów, możesz je usunąć, uruchamiając poniższy przykład. Usunie on grupę zasobów o nazwie **myResourceGroup**. 
+Jeśli nie potrzebujesz tych zasobów, możesz je usunąć przez uruchomienie następującego kodu. Usuwa on grupę zasobów o nazwie **myResourceGroup**.
 
 ```yml
 - hosts: localhost
@@ -274,11 +281,13 @@ Jeśli nie potrzebujesz tych zasobów, możesz je usunąć, uruchamiając poniż
         state: absent
 ```
 
-Zapisz powyższy podręcznik jako plik *rg_delete*.yml. Aby uruchomić podręcznik, użyj polecenia **ansible-playbook** w następujący sposób:
+Zapisz ten element playbook jako plik *rg_delete.yml*. Aby uruchomić element playbook, użyj polecenia **ansible-playbook** w następujący sposób:
+
 ```bash
 ansible-playbook rg_delete.yml
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-> [!div class="nextstepaction"] 
+
+> [!div class="nextstepaction"]
 > [Rozwiązanie Ansible na platformie Azure](https://docs.microsoft.com/azure/ansible/)

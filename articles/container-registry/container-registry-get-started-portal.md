@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 03/03/2018
+ms.date: 11/06/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a75d7e599b10b1d56bd41db1d6785dace67d5d06
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 1e039c465bf37e0ee5ca1db5837798680e27463d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857843"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278671"
 ---
 # <a name="quickstart-create-a-container-registry-using-the-azure-portal"></a>Szybki start: tworzenie rejestru kontenerów za pomocą witryny Azure Portal
 
@@ -27,11 +27,11 @@ Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
 
-Wybierz pozycję **Utwórz zasób** > **Kontenery** > **Azure Container Registry**.
+Wybierz pozycję **Utwórz zasób** > **Kontenery** > **Rejestr kontenerów**.
 
 ![Tworzenie rejestru kontenerów w witrynie Azure Portal][qs-portal-01]
 
-Wprowadź wartości w polach **Nazwa rejestru** i **Grupa zasobów**. Nazwa rejestru musi być unikatowa w obrębie platformy Azure i może zawierać od 5 do 50 znaków alfanumerycznych. Utwórz nową grupę zasobów o nazwie `myResourceGroup`, a w polu **SKU** wybierz opcję „Basic” (Podstawowa). Wybierz przycisk **Utwórz**, aby wdrożyć wystąpienie usługi ACR.
+Wprowadź wartości w polach **Nazwa rejestru** i **Grupa zasobów**. Nazwa rejestru musi być unikatowa w obrębie platformy Azure i może zawierać od 5 do 50 znaków alfanumerycznych. Na potrzeby tego przewodnika Szybki start utwórz w lokalizacji `West US` nową grupę zasobów o nazwie `myResourceGroup`, a dla opcji **SKU** wybierz wartość „Podstawowa”. Wybierz przycisk **Utwórz**, aby wdrożyć wystąpienie usługi ACR.
 
 ![Tworzenie rejestru kontenerów w witrynie Azure Portal][qs-portal-03]
 
@@ -71,29 +71,29 @@ Aby wypchnąć obrazu do usługi Azure Container Registry, najpierw musisz mieć
 docker pull microsoft/aci-helloworld
 ```
 
-Przed wypchnięciem obrazu do rejestru musisz otagować obraz przy użyciu nazwy serwera logowania usługi ACR. Aby dodać tag do obrazu, użyj polecenia [docker tag][docker-tag]. Zastąp element *login server* zapisaną wcześniej nazwą serwera logowania.
+Przed wypchnięciem obrazu do rejestru musisz otagować obraz przy użyciu nazwy serwera logowania usługi ACR. Aby dodać tag do obrazu, użyj polecenia [docker tag][docker-tag]. Zastąp element *login server* zapisaną wcześniej nazwą serwera logowania. Dodaj element *repository name*, na przykład o wartości **`myrepo`**, aby obraz mógł zostać umieszczony w repozytorium.
 
 ```bash
-docker tag microsoft/aci-helloworld <login server>/aci-helloworld:v1
+docker tag microsoft/aci-helloworld <login server>/<repository name>/aci-helloworld:v1
 ```
 
-Na koniec użyj polecenia [docker push][docker-push], aby wypchnąć obraz do wystąpienia usługi ACR. Zastąp element *login server* nazwą serwera logowania wystąpienia usługi ACR.
+Na koniec użyj polecenia [docker push][docker-push], aby wypchnąć obraz do wystąpienia usługi ACR. Zastąp element *login server* nazwą serwera logowania wystąpienia usługi ACR, a element *repository name* nazwą repozytorium używaną w poprzednim poleceniu.
 
 ```bash
-docker push <login server>/aci-helloworld:v1
+docker push <login server>/<repository name>/aci-helloworld:v1
 ```
 
 Dane wyjściowe z pomyślnie ukończonego polecenia `docker push` są podobne do następujących:
 
 ```
-The push refers to a repository [uniqueregistryname.azurecr.io/aci-helloworld]
-7c701b1aeecd: Pushed
-c4332f071aa2: Pushed
-0607e25cc175: Pushed
+The push refers to repository [specificregistryname.azurecr.io/myrepo/aci-helloworld]
+31ba1ebd9cf5: Pushed
+cd07853fe8be: Pushed
+73f25249687f: Pushed
 d8fbd47558a8: Pushed
 44ab46125c35: Pushed
 5bef08742407: Pushed
-v1: digest: sha256:f2867748615cc327d31c68b1172cc03c0544432717c4d2ba2c1c2d34b18c62ba size: 1577
+v1: digest: sha256:565dba8ce20ca1a311c2d9485089d7ddc935dd50140510050345a1b0ea4ffa6e size: 1576
 ```
 
 ## <a name="list-container-images"></a>Tworzenie listy obrazów kontenerów
@@ -114,7 +114,7 @@ Z wyświetlonego menu kontekstowego wybierz pozycję **Uruchom wystąpienie**:
 
 ![Menu kontekstowe uruchamiania usługi ACI][qs-portal-11]
 
-Wypełnij pole **Nazwa kontenera**, upewnij się, że wybrana jest poprawna subskrypcja, wybierz istniejącą **grupę zasobów**: „myResourceGroup”, a następnie kliknij przycisk **OK** w celu uruchomienia wystąpienia kontenera platformy Azure.
+Wypełnij pole **Nazwa kontenera**, upewnij się, że wybrana jest poprawna subskrypcja i wybierz istniejącą **grupę zasobów**: „myResourceGroup”. Upewnij się, że włączono opcję „Publiczny adres IP” przez ustawienie jej na wartość **Tak**, a następnie kliknij przycisk **OK**, aby uruchomić wystąpienie kontenera platformy Azure.
 
 ![Opcje uruchamiania wdrażania w usłudze ACI][qs-portal-12]
 
@@ -136,7 +136,7 @@ Gdy kontener będzie w stanie **Uruchomiono**, w ulubionej przeglądarce przejd�
 
 Aby wyczyścić zasoby, przejdź do grupy zasobów **myResourceGroup** w portalu. Po załadowaniu grupy zasobów kliknij pozycję **Usuń grupę zasobów** w celu usunięcia grupy zasobów, usługi Azure Container Registry i wszystkich wystąpień kontenerów platformy Azure.
 
-![Tworzenie rejestru kontenerów w witrynie Azure Portal][qs-portal-08]
+![Usuwanie grupy zasobów w witrynie Azure Portal][qs-portal-08]
 
 ## <a name="next-steps"></a>Następne kroki
 

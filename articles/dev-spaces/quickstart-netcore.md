@@ -1,22 +1,21 @@
 ---
 title: Tworzenie obszaru deweloperskiego Kubernetes w chmurze | Microsoft Docs
 titleSuffix: Azure Dev Spaces
-author: ghogen
+author: iainfoulds
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
-ms.author: ghogen
+ms.author: iainfou
 ms.date: 09/26/2018
 ms.topic: quickstart
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-manager: douge
-ms.openlocfilehash: abceef1d73cafdc24099f9ac9ca67bb36e7e96d1
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: f4c17f1f2d36e23fa4a3c1625e3da33b6fb4625d
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318065"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978216"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-vs-code"></a>Szybki start: tworzenie obszaru deweloperskiego Kubernetes za pomocą usługi Azure Dev Spaces (platforma .NET Core i program VS Code)
 
@@ -34,7 +33,7 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 - Subskrypcja platformy Azure. Jeśli nie masz, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free).
 - [Program Visual Studio Code](https://code.visualstudio.com/download)
 - [Interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) w wersji 2.0.43 lub nowszej.
-- Klaster Kubernetes z uruchomioną platformą Kubernetes 1.9.6 lub nowszą w regionie EastUS, CentralUS, WestUS2, WestEurope, CanadaCentral lub CanadaEast z włączonym **routingiem aplikacji protokołu HTTP**.
+- Klaster Kubernetes z uruchomioną platformą Kubernetes 1.9.6 lub nowszą w regionie EastUS, EastUS2, CentralUS, WestUS2, WestEurope, SoutheastAsia, CanadaCentral lub CanadaEast z włączonym **routingiem aplikacji protokołu HTTP**.
 
     ```cmd
     az group create --name MyResourceGroup --location <region>

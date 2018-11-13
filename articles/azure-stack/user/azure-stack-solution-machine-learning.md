@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 28ff8dbf073596e5f9565c56ae903af6af68f3e2
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 59696245dc33302c65aee5a39dc856926347b8fb
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353720"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569118"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Samouczek: Tworzenie przeglądarki edge rozwiązanie uczenia maszynowego z platformą Azure i usługi Azure Stack
 
@@ -1175,7 +1175,7 @@ Z podsystemu Windows dla systemu Linux sesji Użyj następujących poleceń, aby
 
 ### <a name="create-a-service-principal-in-azure-ad"></a>Tworzenie jednostki usługi w usłudze Azure AD
 
-1.  Zaloguj się do globalnej [ *witryny Azure portal*](http://www.poartal.azure.com/).
+1.  Zaloguj się do globalnej [ *witryny Azure portal*](http://portal.azure.com/).
 
 2.  Zaloguj się przy użyciu dzierżawy usługi Azure AD skojarzonego z wystąpieniem usługi Azure Stack.
 

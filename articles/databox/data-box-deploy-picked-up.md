@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/03/2018
+ms.date: 10/30/2018
 ms.author: alkohli
-ms.openlocfilehash: 7676360d71dab4da58693221645517c69b56dff8
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 42ed9091ff7ab8059ba253f62726b30899d6e697
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49090692"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036059"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Samouczek: wysyłka zwrotna urządzenia Azure Data Box i weryfikowanie przekazania danych na platformę Azure
 
@@ -51,11 +51,16 @@ Po zakończeniu tej weryfikacji urządzenie Data Box zostanie podłączone do si
 
 Po zakończeniu kopiowania danych stan zamówienia zmieni się na **Zakończone**.
 
-Sprawdź, czy dane znajdują się na kontach magazynu, zanim usuniesz je ze źródła. 
+Sprawdź, czy dane znajdują się na kontach magazynu, zanim usuniesz je ze źródła. Po skopiowaniu danych na urządzenie Data Box są one zależnie od typu przekazywane do jednej z poniższych ścieżek w ramach konta usługi Azure Storage.
+
+- W przypadku blokowych obiektów blob i stronicowych obiektów blob: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
+- W przypadku usługi Azure Files: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
+
+Możesz też przejść do swojego konta usługi Azure Storage w witrynie Azure Portal i nawigować z poziomu tej witryny.
 
 ## <a name="erasure-of-data-from-data-box"></a>Wymazywanie danych z urządzenia Data Box
  
- Po zakończeniu przekazywania danych na platformę Azure dane z dysków urządzenia Data Box są bezpiecznie wymazywane zgodnie z wytycznymi [NIST SP 800-88 Revision 1](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi). 
+Po zakończeniu przekazywania danych na platformę Azure dane z dysków urządzenia Data Box są bezpiecznie wymazywane zgodnie z wytycznymi [NIST SP 800-88 Revision 1](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi). 
 
 ## <a name="next-steps"></a>Następne kroki
 

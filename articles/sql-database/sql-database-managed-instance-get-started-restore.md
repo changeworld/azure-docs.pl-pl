@@ -11,15 +11,15 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: fa9686e7f9ca7f14a51ea2b9c313dd69a2e40cec
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.date: 11/01/2018
+ms.openlocfilehash: bc27ece2eddc842a81698aaa685cbe6d63c6a1df
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362258"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912258"
 ---
-# <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Przywracanie kopii zapasowej bazy danych do wystąpienia zarządzanego usługi Azure SQL Database
+# <a name="quickstart-restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Szybki start: przywracanie kopii zapasowej bazy danych do wystąpienia zarządzanego usługi Azure SQL Database
 
 W tym przewodniku Szybki start przedstawiono sposób przywracania kopii zapasowej bazy danych przechowywanej w usłudze Azure Blob Storage do wystąpienia zarządzanego przy użyciu pliku kopii zapasowej World Wide Importers — Standard. Ta metoda wymaga pewnych przestojów w działaniu. 
 

@@ -23,6 +23,10 @@ items:
     items:
     - name: Najlepsze rozwiązania dotyczące usługi Azure Cost Management
       href: cost-mgt-best-practices.md
+  - name: Przewodniki z instrukcjami
+    items:
+    - name: Przypisywanie dostępu do danych
+      href: assign-access-acm-data.md
   - name: Dokumentacja
     items:
     - name: Interfejs API REST usługi Azure Cost Management
@@ -45,7 +49,7 @@ items:
     items:
     - name: Omówienie
       items:
-      - name: Co to jest platforma Cloudyn?
+      - name: Czym jest Cloudyn?
         href: overview.md
     - name: Przewodniki Szybki start
       items:
@@ -103,9 +107,9 @@ items:
         href: cost-mgt-faq.md
       - name: Skontaktuj się z pomocą techniczną platformy Cloudyn
         href: support-request-cost-management.md
-ms.openlocfilehash: 807d6f6b0364a9299dbe667b655f3863632971ee
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 287c21eb76f2dbf41adadfc8c0467633d0e9cf82
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800592"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514914"

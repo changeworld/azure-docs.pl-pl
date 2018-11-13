@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 31ef8577a2304091fc4df1b394555c4b30fcf96e
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 027b370d2497822dcbd6f3958556357957f9e8f5
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166445"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964666"
 ---
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
@@ -19,7 +19,7 @@ Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzureR
 Connect-AzureRmAccount
 ```
 
-Jeśli nie wiesz, której lokalizacji użyć, możesz wyświetlić listę dostępnych lokalizacji. Po wyświetleniu listy znajdź lokalizację, której chcesz użyć. W tym przykładzie użyto lokalizacji **eastus**. Zapisz ją w zmiennej i używaj tej zmiennej, dzięki czemu będzie można zmieniać lokalizację w jednym miejscu.
+Jeśli nie wiesz, której lokalizacji użyć, możesz wyświetlić listę dostępnych lokalizacji. Wyświetl listę lokalizacji przy użyciu poniższego przykładu kodu i znajdź lokalizację, której chcesz użyć. W tym przykładzie użyto lokalizacji **eastus**. Zapisz lokalizację w zmiennej i używaj tej zmiennej, aby zmieniać lokalizację w jednym miejscu.
 
 ```powershell
 Get-AzureRmLocation | select Location 
@@ -37,13 +37,13 @@ New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Utwórz standardowe konto magazynu ogólnego przeznaczenia z replikacją LRS za pomocą polecenia [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount), a następnie pobierz kontekst konta magazynu, który definiuje konto magazynu do użycia. Wykonując działania względem konta magazynu, możesz odwoływać się do kontekstu, zamiast wielokrotnie podawać poświadczenia. W tym przykładzie tworzone jest konto magazynu o nazwie *mystorageaccount* z magazynem lokalnie nadmiarowym (LRS, locally redundant storage) i szyfrowaniem obiektów blob (domyślnie włączone).
+Utwórz standardowe konto magazynu ogólnego przeznaczenia z replikacją LRS za pomocą polecenia [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). Następnie pobierz kontekst konta magazynu, który definiuje konto magazynu do użycia. Wykonując działania względem konta magazynu, odwołuj się do kontekstu, zamiast wielokrotnie przekazywać poświadczenia. Użyj poniższego przykładu, aby utworzyć konto magazynu o nazwie *mystorageaccount* z magazynem lokalnie nadmiarowym (LRS) i szyfrowaniem obiektów blob (włączonym domyślnie).
 
 ```powershell
 $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Name "mystorageaccount" `
-  -Location $location `
   -SkuName Standard_LRS `
+  -Location $location `
   -Kind Storage
 
 $ctx = $storageAccount.Context

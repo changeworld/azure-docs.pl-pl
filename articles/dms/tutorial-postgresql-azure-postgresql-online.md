@@ -1,5 +1,5 @@
 ---
-title: Używanie usługi Azure Database Migration Service do przeprowadzania migracji programu PostgreSQL do usługi Azure Database for MySQL w trybie online | Microsoft Docs
+title: 'Samouczek: używanie usługi Azure Database Migration Service do przeprowadzania migracji programu PostgreSQL do usługi Azure Database for MySQL w trybie online | Microsoft Docs'
 description: Dowiedz się, w jaki sposób przeprowadzić migrację w trybie online z lokalnego programu PostgreSQL do usługi Azure Database for PostgreSQL za pomocą usługi Azure Database Migration Service.
 services: dms
 author: HJToland3
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 09/26/2018
-ms.openlocfilehash: 51103f6661be22e355aafe01783af5afddd51f54
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 004db061e721f0169491e98bd8e7cdd86e08bb01
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182471"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963604"
 ---
-# <a name="migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Migrowanie bazy danych PostgreSQL do usługi Azure Database for PostgreSQL w trybie online przy użyciu usługi DMS
+# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Samouczek: migrowanie bazy danych PostgreSQL do usługi Azure Database for PostgreSQL w trybie online przy użyciu usługi DMS
 Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu PostgreSQL do usługi [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) z minimalnym przestojem. Innymi słowy migrację można przeprowadzić przy minimalnych przestojach w działaniu aplikacji. W tym samouczku przeprowadzisz migrację przykładowej bazy danych **DVD Rental** z lokalnego wystąpienia programu PostgreSQL 9.6 do usługi Azure Database for PostgreSQL za pomocą działania migracji w trybie online w usłudze Azure Database Migration Service.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:

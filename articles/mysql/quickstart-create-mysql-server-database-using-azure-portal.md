@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 09/12/2018
-ms.openlocfilehash: f26cadf28205359b111a8f92b8fadcbd9f26f958
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 11/01/2018
+ms.openlocfilehash: b413636f173a682ed74bf92688126d33d429839e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407625"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959226"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Tworzenie serwera usługi Azure Database for MySQL za pomocą witryny Azure Portal
 
@@ -98,20 +98,9 @@ Aby znaleźć te wartości, wykonaj następujące czynności:
 W tym przykładzie nazwa serwera to **myserver4demo.mysql.database.azure.com**, a identyfikator logowania administratora serwera to **myadmin@mydemoserver**.
 
 ## <a name="connect-to-mysql-by-using-the-mysql-command-line-tool"></a>Nawiązywanie połączenia z serwerem MySQL za pomocą narzędzia wiersza polecenia mysql
-Istnieje wiele aplikacji, za pomocą których można nawiązać połączenie z serwerem usługi Azure Database for MySQL. 
+Nawiąż połączenia z serwerem za pomocą narzędzia wiersza polecenia **mysql.exe**. Program MySQL możesz pobrać [stąd](https://dev.mysql.com/downloads/) i zainstalować go na swoim komputerze. 
 
-Użyjmy najpierw narzędzia wiersza polecenia [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html), aby zilustrować procedurę nawiązywania połączenia z serwerem. Możesz użyć przeglądarki internetowej i usługi Azure Cloud Shell w opisany sposób bez instalowania żadnego dodatkowego oprogramowania. Jeśli masz zainstalowane lokalnie narzędzie mysql, możesz nawiązać połączenie także lokalnie.
-
-1. Uruchom usługę Azure Cloud Shell za pomocą ikony terminalu (**>_**) w prawej górnej części witryny Azure Portal.
-![Symbol terminalu usługi Azure Cloud Shell](./media/quickstart-create-mysql-server-database-using-azure-portal/7-cloud-console.png)
-
-2.  Usługa Azure Cloud Shell zostanie otwarta w przeglądarce, umożliwiając wpisywanie poleceń powłoki Bash.
-
-   ![Wiersz polecenia — przykładowy wiersz polecenia mysql](./media/quickstart-create-mysql-server-database-using-azure-portal/8-bash.png)
-
-3. W wierszu polecenia usługi Cloud Shell nawiąż połączenie z serwerem usługi Azure Database for MySQL, wpisując wiersz polecenia mysql.
-
-    Następujący format służy do łączenia z serwerem usługi Azure Database for MySQL przy użyciu narzędzia mysql:
+1. Następujący format służy do łączenia z serwerem usługi Azure Database for MySQL przy użyciu narzędzia mysql:
 
     ```bash
     mysql --host <fully qualified server name> --user <server admin login name>@<server name> -p
@@ -119,7 +108,7 @@ Użyjmy najpierw narzędzia wiersza polecenia [mysql](https://dev.mysql.com/doc/
 
     Na przykład następujące polecenie umożliwia połączenie z przykładowym serwerem:
 
-    ```azurecli-interactive
+    ```bash
     mysql --host mydemoserver.mysql.database.azure.com --user myadmin@mydemoserver -p
     ```
 
@@ -149,7 +138,7 @@ Użyjmy najpierw narzędzia wiersza polecenia [mysql](https://dev.mysql.com/doc/
     mysql>
     ```
     > [!TIP]
-    > Jeśli konfiguracja zapory nie umożliwia dostępu do adresu IP usługi Azure Cloud Shell, wystąpi następujący błąd:
+    > Jeśli konfiguracja zapory nie umożliwia dostępu do adresu IP klienta, wystąpi następujący błąd:
     >
     > BŁĄD 2003 (28000): Klient o adresie IP 123.456.789.0 nie może uzyskać dostępu do serwera.
     >
@@ -178,7 +167,7 @@ Użyjmy najpierw narzędzia wiersza polecenia [mysql](https://dev.mysql.com/doc/
     SHOW DATABASES;
     ```
 
-7.  Wpisz polecenie `\q`, a następnie wybierz klawisz **Enter**, aby zamknąć narzędzie mysql. Po wykonaniu tych czynności możesz zamknąć usługę Azure Cloud Shell.
+7.  Wpisz polecenie `\q`, a następnie wybierz klawisz **Enter**, aby zamknąć narzędzie mysql. 
 
 Nawiązano połączenie z serwerem usługi Azure Database for MySQL i utworzono pustą bazę danych użytkownika. Przejdź do następnej sekcji, w której przedstawiono podobne ćwiczenie. Następne ćwiczenie polega na nawiązaniu połączenia z tym samym serwerem przy użyciu innego popularnego narzędzia — MySQL Workbench.
 

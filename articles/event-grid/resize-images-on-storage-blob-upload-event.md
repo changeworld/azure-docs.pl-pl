@@ -3,7 +3,7 @@ title: Używanie usługi Azure Event Grid do automatyzowania zmiany rozmiaru prz
 description: Usługa Azure Event Grid może być wyzwalana przy przekazywaniu obiektów blob do usługi Azure Storage. W ten sposób można wysyłać obrazy przekazane do usługi Azure Storage do innych usług, takich jak Azure Functions, zmieniać ich rozmiar i wprowadzać inne ulepszenia.
 services: event-grid, functions
 author: ggailey777
-manager: cfowler
+manager: jpconnoc
 editor: ''
 ms.service: event-grid
 ms.tgt_pltfrm: na
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 2d94389ade02cb6e61f192e9b9e8adb8f8ceec31
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 2a60084577255b9aa88700509129b8d917c43a79
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585581"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282513"
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>Automatyzowanie zmiany rozmiaru przekazanych obrazów za pomocą usługi Event Grid
 
@@ -158,19 +158,18 @@ Subskrypcja zdarzeń wskazuje, które zdarzenia generowane przez dostawcę mają
 
 3. Użyj ustawień subskrypcji zdarzeń w sposób określony w tabeli poniżej.
     
-    ![Tworzenie subskrypcji zdarzeń z funkcji w witrynie Azure Portal](./media/resize-images-on-storage-blob-upload-event/event-subscription-create-flow.png)
+    ![Tworzenie subskrypcji zdarzeń z funkcji w witrynie Azure Portal](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
     | Ustawienie      | Sugerowana wartość  | Opis                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Nazwa** | imageresizersub | Nazwa identyfikująca nową subskrypcję zdarzeń. | 
     | **Typ tematu** |  Konta magazynu | Wybierz dostawcę zdarzeń konta usługi Storage. | 
     | **Subskrypcja** | Twoja subskrypcja platformy Azure | Domyślnie jest wybrana Twoja bieżąca subskrypcja platformy Azure.   |
     | **Grupa zasobów** | myResourceGroup | Wybierz pozycję **Użyj istniejącej** i wybierz grupę zasobów używaną w tym samouczku.  |
-    | **Wystąpienie** |  Konto usługi Blob Storage |  Wybierz utworzone konto usługi Blob Storage. |
+    | **Zasób** |  Konto usługi Blob Storage |  Wybierz utworzone konto usługi Blob Storage. |
     | **Typy zdarzeń** | Utworzony obiekt blob | Anuluj zaznaczenie wszystkich typów innych niż **Utworzony obiekt blob**. Tylko typy zdarzeń `Microsoft.Storage.BlobCreated` są przekazywane do funkcji.| 
-    | **Typ subskrybenta** |  Webhook |  Możesz wybrać element Webhook lub usługę Event Hubs. |
+    | **Typ subskrybenta** |  generowany automatycznie |  Wstępnie zdefiniowany jako element webhook. |
     | **Punkt końcowy subskrybenta** | generowany automatycznie | Użyj automatycznie wygenerowanego adresu URL punktu końcowego. | 
-    | **Filtr prefiksu** | /blobServices/default/containers/images/blobs/ | Filtruje zdarzenia magazynu do tylko tych, które dotyczą kontenera **images**.| 
+    | **Nazwa** | imageresizersub | Nazwa identyfikująca nową subskrypcję zdarzeń. | 
 
 4. Kliknij pozycję **Utwórz**, aby dodać subskrypcję zdarzeń. Spowoduje to utworzenie subskrypcji zdarzeń, która wyzwala funkcję `imageresizerfunc` po dodaniu obiektu blob do kontenera *images*. Funkcja zmieni rozmiar obrazów i doda je do kontenera *thumbnails*.
 

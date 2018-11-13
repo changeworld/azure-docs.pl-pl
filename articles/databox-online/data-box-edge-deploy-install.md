@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/08/2018
+ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 21ac3de793f5ce559c3a03de2a09f11ccb86b12a
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 6bd3c1b2cdbd83673a181ee7e088adb39749036e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167362"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963850"
 ---
 # <a name="tutorial-install-azure-data-box-edge-preview"></a>Samouczek: instalowanie usługi Azure Data Box Edge (wersja zapoznawcza)
 
@@ -111,8 +111,14 @@ Przed rozpoczęciem podłączania kabli urządzenia będą potrzebne następują
 
 - Urządzenie fizyczne Edge, rozpakowane i zamontowane na stojaku.
 - Dwa kable zasilające. 
-- Dwa kable sieciowe 1-GbE RJ-45 i cztery kable miedziane 25-GbE SFP+.
+- Co najmniej jeden kabel sieciowy 1-GbE RJ-45 służący do łączenia z interfejsem zarządzania. Istnieją dwa interfejsy sieciowe 1-GbE: jeden do zarządzania i drugi stanowiący interfejs danych w urządzeniu.
+- Jeden miedziany kabel 25-GbE SFP+ dla każdego interfejsu sieciowego danych do skonfigurowania. Co najmniej jeden sieciowy interfejs danych — PORT 2, PORT 3, PORT 4, PORT 5 lub PORT 6 — musi być połączony z Internetem (łączność z platformą Azure).
 - Dostęp do dwóch jednostek dystrybucji zasilania (zalecane).
+
+> [!NOTE]
+> - Jeśli łączysz tylko jeden interfejs sieciowy danych, zalecamy, aby do wysyłania danych na platformę Azure używać interfejsu sieciowego 25-GbE, takiego jak PORT 3, PORT 4, PORT 5 lub PORT 6. 
+> - Aby uzyskiwać najlepszą wydajność i obsługiwać duże ilości danych, rozważ połączenie wszystkich portów danych.
+> - Urządzenie Edge powinno być połączone z siecią centrum danych, aby mogło pozyskiwać dane z serwerów źródła danych. 
 
 Urządzenie Edge jest wyposażone w 8 dysków SSD NVMe. Na przednim panelu znajdują się diody LED stanu i przyciski zasilania. Z tyłu urządzenia znajdują się nadmiarowe zasilacze. Urządzenie ma sześć interfejsów sieciowych: dwa interfejsy 1 Gb/s i cztery interfejsy 25 Gb/s. Jest także wyposażone w kontroler zarządzania płytą główną (BMC). Zidentyfikuj różne porty na tylnym panelu montażowym urządzenia.
  
@@ -123,13 +129,7 @@ Wykonaj poniższe kroki, aby podłączyć kable urządzenia do sieci i zasilania
 1. Podłącz kable zasilające do poszczególnych zasilaczy w obudowie. Aby zapewnić wysoką dostępność, zainstaluj i podłącz oba zasilacze do różnych źródeł zasilania.
 2. Podłącz kable zasilające do jednostek dystrybucji zasilania stojaka. Upewnij się, że dwa zasilacze korzystają z oddzielnych źródeł zasilania.
 3. Połącz interfejs sieciowy 1 GbE PORT 1 z komputerem używanym do konfigurowania urządzenia fizycznego. PORT 1 jest dedykowanym interfejsem zarządzania.
-4. Połącz interfejs sieciowy 1 GbE PORT 2 z siecią centrum danych/Internetem za pomocą kabli sieciowych RJ-45. 
-5. Połącz cztery interfejsy sieciowe 25 GbE PORT 3, PORT 4, PORT 5 i PORT 6 z siecią centrum danych/Internetem za pomocą miedzianych kabli SFP+. 
-
-> [!NOTE]
-> - Co najmniej jeden sieciowy interfejs danych — PORT 2, PORT 3, PORT 4, PORT 5 lub PORT 6 musi być połączony z Internetem (łączność z platformą Azure). 
-> - Zalecamy, aby do wysyłania danych na platformę Azure używać interfejsu sieciowego 25 GbE, takiego jak PORT 3, PORT 4, PORT 5 lub PORT 6. 
-> - Urządzenie Edge powinno być połączone z siecią centrum danych, aby mogło pozyskiwać dane z serwerów źródła danych.  
+4. Co najmniej jeden PORT 2, PORT 3, PORT 4, PORT 5 lub PORT 6 łączący z Internetem/siecią centrum danych. W przypadku łączenia za pomocą portu PORT 2 użyj kabla sieciowego RJ-45. W przypadku interfejsów sieciowych 25-GbE użyj miedzianych kabli SFP+.  
 
 
 ## <a name="next-steps"></a>Następne kroki

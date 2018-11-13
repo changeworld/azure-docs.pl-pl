@@ -9,16 +9,16 @@ ms.reviewer: jasonwhowell
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/27/2018
-ms.openlocfilehash: 96114270c246e23db0423dec7871e4c24fe1be10
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 5c1684f7367aec2d283cd6ad310657def49dd3cb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024363"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282564"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks
 
-W tym samouczku wykonasz operację wyodrębniania, przekształcania i ładowania danych (ETL), aby przenieść dane z usługi Azure Data Lake Storage 2. generacji w wersji zapoznawczej do usługi Azure SQL Data Warehouse za pomocą usługi Azure Databricks.
+W tym samouczku wykonasz operację wyodrębniania, przekształcania i ładowania danych (ETL), aby przenieść dane z konta usługi Azure Storage z włączoną usługą Azure Data Lake Storage Gen2 do usługi Azure SQL Data Warehouse za pomocą usługi Azure Databricks.
 
 Poniższa ilustracja przedstawia przepływ aplikacji:
 
@@ -52,7 +52,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Tworzenie obszaru roboczego usługi Azure Databricks
 
-W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witryny Azure Portal. 
+W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witryny Azure Portal.
 
 1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** > **Analiza** > **Azure Databricks**.
 
@@ -138,7 +138,7 @@ Następnym krokiem jest przekazanie na konto magazynu przykładowego pliku danyc
 
 2. Następnie przekaż przykładowe dane do konta magazynu. Metoda używana do przekazywania danych na konto magazynu różni się w zależności od tego, czy została włączona usługa hierarchicznej przestrzeni nazw.
 
-    Jeśli włączono usługę hierarchicznej przestrzeni nazw na koncie usługi Azure Storage 2. generacji, możesz przekazać dane przy użyciu usługi Azure Data Factory, narzędzia Distcp lub narzędzia AzCopy (wersja 10). Narzędzie AzCopy w wersji 10 jest dostępne tylko dla klientów korzystających z wersji zapoznawczej. Aby użyć narzędzia AzCopy, wklej poniższy kod w oknie polecenia:
+    Jeśli włączono usługę hierarchicznej przestrzeni nazw na koncie usługi Azure Storage, możesz przekazać dane przy użyciu usługi Azure Data Factory, narzędzia Distcp lub narzędzia AzCopy (wersja 10). Narzędzie AzCopy w wersji 10 jest aktualnie dostępne tylko w wersji zapoznawczej. Aby użyć narzędzia AzCopy, wklej poniższy kod w oknie polecenia:
 
     ```bash
     set ACCOUNT_NAME=<ACCOUNT_NAME>
@@ -333,7 +333,7 @@ Po ukończeniu tego samouczka możesz zakończyć działanie klastra. Aby to zro
 
 ![Zatrzymywanie klastra usługi Databricks](./media/handle-data-using-databricks/terminate-databricks-cluster.png "Zatrzymywanie klastra usługi Databricks")
 
-Jeśli nie zakończysz działania klastra ręcznie, zostanie on automatycznie zatrzymany, o ile podczas tworzenia klastra zaznaczono pole wyboru **Zakończ po __ min nieaktywności**. W takim przypadku nieaktywny klaster automatycznie zatrzymuje się po określonym czasie.
+Jeśli nie zakończysz działania klastra ręcznie, zostanie on automatycznie zatrzymany, o ile podczas tworzenia klastra zaznaczono pole wyboru **Zakończ po __ min aktywności**. W takim przypadku nieaktywny klaster automatycznie zatrzymuje się po określonym czasie.
 
 ## <a name="next-steps"></a>Następne kroki
 

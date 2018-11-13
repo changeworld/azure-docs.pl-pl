@@ -1,0 +1,224 @@
+---
+title: Dowiedz się, jak zarządzać spójnością w usłudze Azure Cosmos DB
+description: Dowiedz się, jak zarządzać spójnością w usłudze Azure Cosmos DB
+services: cosmos-db
+author: christopheranderson
+ms.service: cosmos-db
+ms.topic: sample
+ms.date: 10/17/2018
+ms.author: chrande
+ms.openlocfilehash: be2c68922221af848c9e484d03527d02808c071a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283822"
+---
+# <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Zarządzanie poziomami spójności w usłudze Azure Cosmos DB
+
+W tym artykule opisano różne sposoby ustawiania spójności domyślnej, zastępowania tej spójności na urządzeniu klienckim, ręcznego zarządzania tokenami sesji i interpretowania metryki PBS (Probabilistically Bounded Staleness).
+
+## <a name="configure-the-default-consistency-level"></a>Konfigurowanie domyślnego poziomu spójności
+
+Domyślny poziom spójności to taki, którego klienci będą używać domyślnie. Może on być zastępowany przez klientów.
+
+### <a name="cli"></a>Interfejs wiersza polecenia
+
+```bash
+# create with a default consistency
+az cosmosdb create --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Strong
+
+# update an existing account's default consistency
+az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level BoundedStaleness
+```
+
+### <a name="powershell"></a>PowerShell
+
+Poniższy przykład tworzy nowe konto usługi Cosmos DB z włączoną wielowzorcowością w regionach Wschodnie stany USA i Zachodnie stany USA z domyślnymi zasadami zgodności Powiązana nieaktualność o maksymalnym interwale nieaktualności równym 10 sekund i maksymalnej tolerowanej liczbie żądań nieaktualności równej 200.
+
+```azurepowershell-interactive
+$locations = @(@{"locationName"="East US"; "failoverPriority"=0},
+             @{"locationName"="West US"; "failoverPriority"=1})
+
+$iprangefilter = ""
+
+$consistencyPolicy = @{"defaultConsistencyLevel"="BoundedStaleness";
+                       "maxIntervalInSeconds"= "10";
+                       "maxStalenessPrefix"="200"}
+
+$CosmosDBProperties = @{"databaseAccountOfferType"="Standard";
+                        "locations"=$locations;
+                        "consistencyPolicy"=$consistencyPolicy;
+                        "ipRangeFilter"=$iprangefilter;
+                        "enableMultipleWriteLocations"="true"}
+
+New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+  -ApiVersion "2015-04-08" `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "East US" `
+  -Name "myCosmosDbAccount" `
+  -Properties $CosmosDBProperties
+```
+
+### <a name="portal"></a>Portal
+
+Aby wyświetlić lub zmodyfikować domyślny poziom spójności, zaloguj się do witryny Azure Portal. Znajdź swoje konto usługi Cosmos DB i otwórz okienko **Domyślna spójność**. W tym okienku wybierz nowy domyślny poziom spójności, a następnie kliknij przycisk Zapisz.
+
+![Obraz menu spójności w witrynie Azure Portal](./media/how-to-manage-consistency/consistency-settings.png)
+
+## <a name="override-the-default-consistency-level"></a>Zastępowanie domyślnego poziomu spójności
+
+Klienci mogą zastąpić domyślny poziom spójności, który jest ustawiony przez usługę. Można to zrobić dla całego klienta lub dla poszczególnych żądań.
+
+### <a id="override-default-consistency-dotnet"></a>.NET SDK
+
+```csharp
+// Override consistency at the client level
+ConsistencyPolicy consistencyPolicy = new ConsistencyPolicy
+    {
+        DefaultConsistencyLevel = ConsistencyLevel.BoundedStaleness,
+        MaxStalenessIntervalInSeconds = 5,
+        MaxStalenessPrefix = 100
+    };
+documentClient = new DocumentClient(new Uri(endpoint), authKey, connectionPolicy, consistencyPolicy);
+
+// Override consistency at the request level via request options
+RequestOptions requestOptions = new RequestOptions { ConsistencyLevel = ConsistencyLevel.Strong };
+
+var response = await client.CreateDocumentAsync(collectionUri, document, requestOptions);
+```
+
+### <a id="override-default-consistency-java-async"></a>Java Async SDK
+
+```java
+// Override consistency at the client level
+ConnectionPolicy policy = new ConnectionPolicy();
+
+AsyncDocumentClient client =
+        new AsyncDocumentClient.Builder()
+                .withMasterKey(this.accountKey)
+                .withServiceEndpoint(this.accountEndpoint)
+                .withConsistencyLevel(ConsistencyLevel.Eventual)
+                .withConnectionPolicy(policy).build();
+```
+
+### <a id="override-default-consistency-java-sync"></a>Java Sync SDK
+
+```java
+// Override consistency at the client level
+ConnectionPolicy connectionPolicy = new ConnectionPolicy();
+DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy, ConsistencyLevel.Strong);
+```
+
+### <a id="override-default-consistency-javascript"></a>Node.js/JavaScript/TypeScript SDK
+
+```javascript
+// Override consistency at the client level
+const client = new CosmosClient({
+  /* other config... */
+  consistencyLevel: ConsistencyLevel.Strong
+});
+
+// Override consistency at the request level via request options
+const { body } = await item.read({ consistencyLevel: ConsistencyLevel.Eventual });
+```
+
+### <a id="override-default-consistency-python"></a>Python SDK
+
+```python
+# Override consistency at the client level
+connection_policy = documents.ConnectionPolicy()
+client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Strong)
+```
+
+## <a name="utilize-session-tokens"></a>Korzystanie z tokenów sesji
+
+Jeśli chcesz ręcznie zarządzać tokenami sesji, możesz uzyskiwać je z odpowiedzi i ustawiać je dla poszczególnych żądań. Jeśli nie istnieje potrzeba ręcznego zarządzania tokenami sesji, nie musisz używać poniższych przykładów. Jeśli nie ustawisz tokenu sesji samodzielnie, zestaw SDK będzie automatycznie śledzić tokeny sesji i używać najnowszego.
+
+### <a id="utilize-session-tokens-dotnet"></a>.NET SDK
+
+```csharp
+var response = await client.ReadDocumentAsync(
+                UriFactory.CreateDocumentUri(databaseName, collectionName, "SalesOrder1"));
+string sessionToken = response.SessionToken;
+
+RequestOptions options = new RequestOptions();
+options.SessionToken = sessionToken;
+var response = await client.ReadDocumentAsync(
+                UriFactory.CreateDocumentUri(databaseName, collectionName, "SalesOrder1"), options);
+```
+
+### <a id="utilize-session-tokens-java-async"></a>Java Async SDK
+
+```java
+// Get session token from response
+RequestOptions options = new RequestOptions();
+options.setPartitionKey(new PartitionKey(document.get("mypk")));
+Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
+readObservable.single()           // we know there will be one response
+  .subscribe(
+      documentResourceResponse -> {
+          System.out.println(documentResourceResponse.getSessionToken());
+      },
+      error -> {
+          System.err.println("an error happened: " + error.getMessage());
+      });
+
+// Resume the session by setting the session token on RequestOptions
+RequestOptions options = new RequestOptions();
+requestOptions.setSessionToken(sessionToken);
+Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
+```
+
+### <a id="utilize-session-tokens-java-sync"></a>Java Sync SDK
+
+```java
+// Get session token from response
+ResourceResponse<Document> response = client.readDocument(documentLink, null);
+String sessionToken = response.getSessionToken();
+
+// Resume the session by setting the session token on the RequestOptions
+RequestOptions options = new RequestOptions();
+options.setSessionToken(sessionToken);
+ResourceResponse<Document> response = client.readDocument(documentLink, options);
+```
+
+### <a id="utilize-session-tokens-javascript"></a>Node.js/JavaScript/TypeScript SDK
+
+```javascript
+// Get session token from response
+const { headers, item } = await container.items.create({ id: "meaningful-id" });
+const sessionToken = headers["x-ms-session-token"];
+
+// Immediately or later, you can use that sessionToken from the header to resume that session.
+const { body } = await item.read({ sessionToken });
+```
+
+### <a id="utilize-session-tokens-python"></a>Python SDK
+
+```python
+// Get the session token from the last response headers
+item = client.ReadItem(item_link)
+session_token = client.last_response_headers["x-ms-session-token"]
+
+// Resume the session by setting the session token on the options for the request
+options = {
+    "sessionToken": session_token
+}
+item = client.ReadItem(doc_link, options)
+```
+
+## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Monitorowanie metryki PBS (Probabilistically Bounded Staleness)
+
+Aby wyświetlić metrykę PBS, przejdź do swojego konta usługi Cosmos DB w witrynie Azure Portal, a następnie otwórz okienko **Metryki**. W tym okienku kliknij kartę **Spójność** i spójrz na wykres o nazwie „**Probability of strongly consistent reads based on your workload (see PBS)**” (Prawdopodobieństwo silnie spójnych odczytów na podstawie obciążenia (patrz PBS)).
+
+![Obraz wykresu metryki PBS w witrynie Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
+
+Aby wyświetlić tę metrykę, użyj menu metryki usługi Cosmos DB. Nie będzie ona widoczna w środowisku metryk monitorowania platformy Azure.
+
+## <a name="next-steps"></a>Następne kroki
+
+Korzystając z poniższych dokumentów, możesz dowiedzieć się więcej o zarządzaniu konfliktami danych lub przejść do następnego kluczowego pojęcia w usłudze Cosmos DB:
+
+* [Jak zarządzać konfliktami między regionami](how-to-manage-conflicts.md)
+* [Partycjonowanie i dystrybucja danych](partition-data.md)

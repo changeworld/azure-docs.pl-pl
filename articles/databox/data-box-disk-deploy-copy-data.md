@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 10/09/2018
+ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7bc8b3ba415f8fe701098a9fa7e51d60ffb9df4e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 807453d6af67fd2dccf06a1b4a2beaca47dc865a
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092460"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913824"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Samouczek: kopiowanie danych na urządzenie Azure Data Box Disk i ich weryfikacja
 
@@ -31,14 +31,15 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Przed rozpoczęciem upewnij się, że:
 - Ukończono samouczek [Instalowanie i konfigurowanie urządzenia Azure Data Box Disk](data-box-disk-deploy-set-up.md).
 - Twoje dyski są odblokowane i podłączone do komputera klienckiego.
-- Na komputerze klienckim używanym do kopiowania danych na dyski musi być uruchomiony [obsługiwany system operacyjny](data-box-disk-system-requirements.md).
+- Na komputerze klienckim używanym do kopiowania danych na dyski musi być uruchomiony [obsługiwany system operacyjny](data-box-disk-system-requirements.md##supported-operating-systems-for-clients).
+- Upewnij się, że typ magazynu wybrany na potrzeby danych jest jednym z [obsługiwanych typów magazynu](data-box-disk-system-requirements.md#supported-storage-types).
 
 
 ## <a name="copy-data-to-disks"></a>Kopiowanie danych na dyski
 
 Aby podłączyć urządzenia Data Box Disk do komputera i skopiować na nie dane, wykonaj poniższe czynności.
 
-1. Wyświetl zawartość odblokowanego dysku. 
+1. Wyświetl zawartość odblokowanego dysku.
 
     ![Wyświetlanie zawartości dysku](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
  
@@ -229,7 +230,7 @@ Po zakończeniu kopiowania danych należy sprawdzić ich poprawność.
 
 Aby zweryfikować dane, wykonaj następujące czynności:
 
-1. Uruchom polecenie `DataBoxDiskValidation.cmd` w celu walidacji sumy kontrolnej w folderze *AzureImportExport* na dysku. 
+1. Uruchom polecenie `DataBoxDiskValidation.cmd` w celu zweryfikowania sumy kontrolnej w folderze *DataBoxDiskImport* na dysku. 
     
     ![Dane wyjściowe narzędzia walidacji dysków Data Box Disk](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 

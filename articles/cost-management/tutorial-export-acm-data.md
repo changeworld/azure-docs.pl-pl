@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 0765e79b90eed49742f5eead33063907eb1db1f4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7f93a225db845840545b761d812f5a8a81f76f91
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030850"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913567"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Samouczek: eksportowanie danych i zarządzanie nimi
 
@@ -46,7 +46,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 ## <a name="create-a-daily-export"></a>Tworzenie codziennego eksportu
 
-Zarządzanie kosztami i rozliczenia &gt; wybierz subskrypcję lub grupę zasobów w ramach subskrypcji &gt; Eksportuj &gt; **Dodaj**.
+Zarządzanie kosztami i rozliczenia &gt; Cost Management &gt; wybierz subskrypcję lub grupę zasobów w ramach subskrypcji &gt; Eksportuj &gt; **Dodaj**.
 
 Wpisz nazwę eksportu i określ subskrypcję, konto magazynu platformy Azure, kontener i katalog magazynu plików lub kontener obiektów blob, a następnie kliknij przycisk **Utwórz**.
 

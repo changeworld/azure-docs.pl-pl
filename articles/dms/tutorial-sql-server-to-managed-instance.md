@@ -1,5 +1,5 @@
 ---
-title: Przeprowadzanie migracji do wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi DMS | Microsoft Docs
+title: 'Samouczek: przeprowadzanie migracji do wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi DMS | Microsoft Docs'
 description: Dowiedz się, w jaki sposób przeprowadzić migrację z lokalnego programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database za pomocą usługi Azure Database Migration Service.
 services: dms
 author: pochiraju
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 445d4a50cdb0780e7aff5331f0ba9e70aae44e25
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: f6b77f3a2b78d037e74bbca9a3624c9fa62c5d8b
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945165"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961878"
 ---
-# <a name="migrate-sql-server-to-azure-sql-database-managed-instance-offline-using-dms"></a>Migracja programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database w trybie offline przy użyciu usługi DMS
+# <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-offline-using-dms"></a>Samouczek: migracja programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database w trybie offline przy użyciu usługi DMS
 Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu SQL Server do [wystąpienia zarządzanego usługi Azure SQL Database](../sql-database/sql-database-managed-instance.md). Dodatkowe metody, które mogą wymagać ręcznej pracy, są dostępne w artykule [SQL Server instance migration to Azure SQL Database Managed Instance (Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database)](../sql-database/sql-database-managed-instance-migrate.md).
 
 W tym samouczku przeprowadzisz migrację bazy danych **Adventureworks2012** z lokalnego wystąpienia programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database, używając usługi Azure Database Migration Service.

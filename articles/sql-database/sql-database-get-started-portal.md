@@ -11,15 +11,15 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/07/2018
-ms.openlocfilehash: 0e7ea33fa775bfba934d68d7cbcdd754880c3e55
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 11/01/2018
+ms.openlocfilehash: 66ee4ac8fe946696d6760891a086a672fa9fc412
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165011"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914605"
 ---
-# <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Tworzenia bazy danych SQL platformy Azure w witrynie Azure Portal
+# <a name="quickstart-create-an-azure-sql-database-in-the-azure-portal"></a>Szybki start: tworzenie bazy danych Azure SQL Database w witrynie Azure Portal
 
 Ten przewodnik Szybki start zawiera szczegółowe instrukcje dotyczące tworzenia bazy danych SQL Database na platformie Azure przy użyciu [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md). Usługa Azure SQL Database to oferta typu „baza danych jako usługa”, która pozwala na uruchamianie i skalowanie baz danych SQL Server o wysokiej dostępności w chmurze. Ten przewodnik Szybki start pokazuje, jak rozpocząć pracę od utworzenia bazy danych SQL, a następnie wykonywać zapytania za pomocą witryny Azure Portal.
 

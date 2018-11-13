@@ -1,5 +1,5 @@
 ---
-title: Przeprowadzanie migracji online z programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi Azure Database Migration Service | Microsoft Docs
+title: 'Samouczek: przeprowadzanie migracji online z programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi Azure Database Migration Service | Microsoft Docs'
 description: Dowiedz się, w jaki sposób przeprowadzić migrację online z lokalnego programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database za pomocą usługi Azure Database Migration Service.
 services: dms
 author: pochiraju
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 4d46a438708e2e72d625f5104293b4605f7b096d
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: ab869e53810f049593803d58b3df75d0c083bbd2
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946083"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962898"
 ---
-# <a name="migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>Migracja online programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi DMS
+# <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>Samouczek: migracja online programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi DMS
 Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu SQL Server do [wystąpienia zarządzanego usługi Azure SQL Database](../sql-database/sql-database-managed-instance.md) z minimalnym czasem przestoju. Dodatkowe metody, które mogą wymagać ręcznej pracy, są dostępne w artykule [SQL Server instance migration to Azure SQL Database Managed Instance (Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database)](../sql-database/sql-database-managed-instance-migrate.md).
 
 >[!IMPORTANT]
@@ -145,7 +145,7 @@ Po utworzeniu wystąpienia usługi znajdź je w witrynie Azure Portal, otwórz j
 
 3. Podaj **nazwę użytkownika bazy danych SQL** i **hasło**, aby nawiązać połączenie z docelowym wystąpieniem wystąpienia zarządzanego usługi Azure SQL Database.
 
-       ![Select Target](media\tutorial-sql-server-to-managed-instance-online\dms-target-details3.png)
+    ![Wybieranie obiektu docelowego](media\tutorial-sql-server-to-managed-instance-online\dms-target-details3.png)
 
 2.  Wybierz pozycję **Zapisz**.
 

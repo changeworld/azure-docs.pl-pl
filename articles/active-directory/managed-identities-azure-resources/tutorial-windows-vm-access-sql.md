@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 11/07/2018
 ms.author: daveba
-ms.openlocfilehash: 57f9def09f498c3fc644cbee979d5ae552f2206c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 61b176f4f1fccbb975ee53de497d5afcc8ede060
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46369497"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238118"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Samouczek: używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej systemu Windows w celu uzyskania dostępu do usługi Azure SQL
 
@@ -29,9 +29,8 @@ W tym samouczku przedstawiono sposób używania tożsamości przypisanej przez s
 
 > [!div class="checklist"]
 > * Udzielanie maszynie wirtualnej dostępu do serwera Azure SQL
-> * Tworzenie grupy w usłudze Azure AD i ustawianie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej jako członka grupy
 > * Włączanie uwierzytelniania usługi Azure AD na potrzeby serwera SQL
-> * Tworzenie w bazie danych użytkownika zawartego, który będzie reprezentować grupę usługi Azure AD
+> * Tworzenie w bazie danych zawartego użytkownika, który będzie reprezentować tożsamość maszyny wirtualnej przypisaną przez system
 > * Uzyskiwanie tokenu dostępu przy użyciu tożsamości maszyny wirtualnej oraz używanie go do wysyłania zapytań do serwera Azure SQL
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -48,74 +47,16 @@ W tym samouczku przedstawiono sposób używania tożsamości przypisanej przez s
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>Udzielanie maszynie wirtualnej dostępu do bazy danych na serwerze Azure SQL
 
-Teraz możesz udzielić maszynie wirtualnej dostępu do bazy danych na serwerze Azure SQL.  W tym kroku możesz użyć istniejącego serwera SQL lub utworzyć nowy serwer.  Aby utworzyć nowy serwer i bazę danych przy użyciu witryny Azure Portal, wykonaj ten [przewodnik Szybki start usługi Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal). W [dokumentacji usługi Azure SQL ](https://docs.microsoft.com/azure/sql-database/) dostępne są również przewodniki Szybki start, które używają interfejsu wiersza polecenia platformy Azure oraz programu Azure PowerShell.
+Aby udzielić maszynie wirtualnej dostępu do bazy danych na serwerze SQL platformy Azure, możesz użyć istniejącego serwera SQL lub utworzyć nowy.  Aby utworzyć nowy serwer i bazę danych przy użyciu witryny Azure Portal, wykonaj ten [przewodnik Szybki start usługi Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal). W [dokumentacji usługi Azure SQL ](https://docs.microsoft.com/azure/sql-database/) dostępne są również przewodniki Szybki start, które używają interfejsu wiersza polecenia platformy Azure oraz programu Azure PowerShell.
 
-Istnieją trzy kroki związane z udzielaniem maszynie wirtualnej dostępu do bazy danych:
-1.  Utwórz grupę w usłudze Azure AD i ustaw przypisaną przez system tożsamość zarządzaną maszyny wirtualnej jako członka grupy.
-2.  Włącz uwierzytelnianie usługi Azure AD na potrzeby serwera SQL.
-3.  Utwórz **zawartego użytkownika** w bazie danych, który będzie reprezentować grupę usługi Azure AD.
+Istnieją dwa kroki związane z udzielaniem maszynie wirtualnej dostępu do bazy danych:
 
-> [!NOTE]
-> Zazwyczaj tworzy się zawartego użytkownika, który jest mapowany bezpośrednio do przypisanej przez system tożsamości zarządzanej maszyny wirtualnej.  Obecnie usługa Azure SQL nie zezwala na mapowanie jednostki usługi Azure AD reprezentującej przypisaną przez system tożsamość zarządzaną na maszynie wirtualnej do zawartego użytkownika.  W ramach obsługiwanego obejścia możesz ustawić przypisaną przez system tożsamość zarządzaną na maszynie wirtualnej jako członka grupy usługi Azure AD, a następnie utworzyć zawartego użytkownika w bazie danych, który reprezentuje grupę.
-
-
-## <a name="create-a-group-in-azure-ad-and-make-the-vms-system-assigned-managed-identity-a-member-of-the-group"></a>Tworzenie grupy w usłudze Azure AD i ustawianie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej jako członka grupy
-
-Możesz użyć istniejącej grupy usługi Azure AD lub utworzyć nową grupę przy użyciu programu Azure AD PowerShell.  
-
-Najpierw zainstaluj moduł [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2). Następnie zaloguj się przy użyciu polecenia `Connect-AzureAD` i uruchom następujące polecenie, aby utworzyć grupę, a następnie zapisz ją w zmiennej:
-
-```powershell
-$Group = New-AzureADGroup -DisplayName "VM managed identity access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-```
-
-Dane wyjściowe wyglądają podobnie do poniższych, co również umożliwia sprawdzenie wartości zmiennej:
-
-```powershell
-$Group = New-AzureADGroup -DisplayName "VM managed identity access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-$Group
-ObjectId                             DisplayName          Description
---------                             -----------          -----------
-6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM managed identity access to SQL
-```
-
-Następnie dodaj do grupy przypisaną przez system tożsamość zarządzaną maszyny wirtualnej.  Potrzebujesz identyfikatora **ObjectId** przypisanej przez system tożsamości zarządzanej, który możesz pobrać przy użyciu programu Azure PowerShell.  Najpierw pobierz program [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Następnie zaloguj się przy użyciu polecenia `Connect-AzureRmAccount` i uruchom poniższe polecenia, aby:
-- upewnić się, że kontekst sesji jest ustawiony na żądaną subskrypcję platformy Azure, jeżeli masz ich wiele;
-- wyświetlić listę dostępnych zasobów w subskrypcji platformy Azure, aby zweryfikować prawidłową grupę zasobów i nazwy maszyn wirtualnych.
-- Pobierz właściwości przypisanej przez system tożsamości zarządzanej maszyny wirtualnej, korzystając z odpowiednich wartości dla `<RESOURCE-GROUP>` i `<VM-NAME>`.
-
-```powershell
-Set-AzureRMContext -subscription "bdc79274-6bb9-48a8-bfd8-00c140fxxxx"
-Get-AzureRmResource
-$VM = Get-AzureRmVm -ResourceGroup <RESOURCE-GROUP> -Name <VM-NAME>
-```
-
-Dane wyjściowe wyglądają podobnie do poniższych, co również umożliwia sprawdzenie identyfikatora obiektu jednostki usługi przypisanej przez system tożsamości zarządzanej maszyny wirtualnej:
-```powershell
-$VM = Get-AzureRmVm -ResourceGroup DevTestGroup -Name DevTestWinVM
-$VM.Identity.PrincipalId
-b83305de-f496-49ca-9427-e77512f6cc64
-```
-
-Teraz dodaj do grupy przypisaną przez system tożsamość zarządzaną maszyny wirtualnej.  Możesz dodać tylko jednostkę usługi do grupy przy użyciu programu Azure AD PowerShell.  Uruchom następujące polecenie:
-```powershell
-Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId $VM.Identity.PrincipalId
-```
-
-Jeżeli później również zbadasz członkostwo grupy, dane wyjściowe będą wyglądać następująco:
-
-```powershell
-Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId $VM.Identity.PrincipalId
-Get-AzureAdGroupMember -ObjectId $Group.ObjectId
-
-ObjectId                             AppId                                DisplayName
---------                             -----                                -----------
-b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTestWinVM
-```
+1.  Włącz uwierzytelnianie usługi Azure AD na potrzeby serwera SQL.
+2.  Tworzenie w bazie danych **zawartego użytkownika**, który będzie reprezentować tożsamość maszyny wirtualnej przypisaną przez system.
 
 ## <a name="enable-azure-ad-authentication-for-the-sql-server"></a>Włączanie uwierzytelniania usługi Azure AD na potrzeby serwera SQL
 
-Teraz po utworzeniu grupy i dodaniu przypisanej przez system tożsamości zarządzanej maszyny wirtualnej do członkostwa możesz [skonfigurować uwierzytelnianie usługi Azure AD dla serwera SQL](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server) przy użyciu następujących instrukcji:
+[Skonfiguruj uwierzytelnianie usługi Azure AD dla serwera SQL](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server), wykonując następujące czynności:
 
 1.  W witrynie Azure Portal wybierz opcję **Serwery SQL** z lewego paska nawigacyjnego.
 2.  Kliknij serwer SQL, aby włączyć go do uwierzytelniania usługi Azure AD.
@@ -124,7 +65,7 @@ Teraz po utworzeniu grupy i dodaniu przypisanej przez system tożsamości zarzą
 5.  Wybierz konto użytkownika usługi Azure AD, które zostanie administratorem serwera, i kliknij przycisk **Wybierz**.
 6.  Na pasku poleceń kliknij przycisk **Zapisz**.
 
-## <a name="create-a-contained-user-in-the-database-that-represents-the-azure-ad-group"></a>Tworzenie w bazie danych użytkownika zawartego, który będzie reprezentować grupę usługi Azure AD
+## <a name="create-a-contained-user-in-the-database-that-represents-the-vms-system-assigned-identity"></a>Tworzenie w bazie danych zawartego użytkownika, który będzie reprezentować tożsamość maszyny wirtualnej przypisaną przez system
 
 W tym kroku będziesz potrzebować programu [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). Przed rozpoczęciem pomocne może być sprawdzenie następujących artykułów, aby uzyskać podstawowe informacje o integracji usługi Azure AD:
 
@@ -140,17 +81,23 @@ W tym kroku będziesz potrzebować programu [Microsoft SQL Server Management Stu
 7.  Kliknij przycisk **Połącz**.  Zakończ proces logowania.
 8.  W **Eksploratorze obiektów** rozwiń folder **Bazy danych**.
 9.  Kliknij prawym przyciskiem myszy bazę danych użytkownika, a następnie kliknij pozycję **Nowe zapytanie**.
-10.  W oknie zapytania wpisz następujący wiersz, a następnie kliknij przycisk **Wykonaj** na pasku narzędzi:
+10. W oknie zapytania wpisz następujący wiersz, a następnie kliknij przycisk **Wykonaj** na pasku narzędzi:
+
+    > [!NOTE]
+    > Element `VMName` w poniższym poleceniu to nazwa maszyny wirtualnej, dla której w sekcji wymagań wstępnych włączono tożsamość przypisaną przez system.
     
      ```
-     CREATE USER [VM managed identity access to SQL] FROM EXTERNAL PROVIDER
+     CREATE USER [VMName] FROM EXTERNAL PROVIDER
      ```
     
-     Polecenie powinno zakończyć się pomyślnie, tworząc zawartego użytkownika grupy.
+     Polecenie powinno zakończyć się pomyślnie, tworząc zawartego użytkownika na potrzeby tożsamości maszyny wirtualnej przypisanej przez system.
 11.  Wyczyść okno zapytania, wpisz następujący wiersz, a następnie kliknij przycisk **Wykonaj** na pasku narzędzi:
+
+    > [!NOTE]
+    > Element `VMName` w poniższym poleceniu to nazwa maszyny wirtualnej, dla której w sekcji wymagań wstępnych włączono tożsamość przypisaną przez system.
      
      ```
-     ALTER ROLE db_datareader ADD MEMBER [VM managed identity access to SQL]
+     ALTER ROLE db_datareader ADD MEMBER [VMName]
      ```
 
      Polecenie powinno zakończyć się pomyślnie, udzielając zawartemu użytkownikowi prawa do odczytu całej bazy danych.

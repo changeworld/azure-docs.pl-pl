@@ -8,27 +8,27 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 10/12/2018
+ms.date: 11/06/2018
 ms.author: fmegen
-ms.openlocfilehash: 80ddef79392acb677555ed795bf429f5ec0266a0
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 2b39084443690b99391268acb6352763657e2a3c
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467263"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218580"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-service-sdk"></a>Szybki start: rozpoznawanie mowy w języku Java w systemie Windows lub Linux przy użyciu zestawu SDK usługi Mowa
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-W tym artykule utworzysz aplikację konsolową w języku Java przy użyciu [zestawu SDK usługi Mowa](speech-sdk.md). Transkrypcja mowy na tekst będzie się odbywać w czasie rzeczywistym z mikrofonu komputera. Aplikacja jest kompilowana przy użyciu pakietu Maven zestawu SDK usługi Mowa i środowiska IDE Eclipse Java (wersja 4.8) w systemie Windows w wersji 64-bitowej lub Ubuntu Linux 16.04. Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
+W tym artykule utworzysz aplikację konsolową w języku Java przy użyciu [zestawu SDK usługi Mowa](speech-sdk.md). Transkrypcja mowy na tekst będzie się odbywać w czasie rzeczywistym z mikrofonu komputera. Aplikacja jest kompilowana przy użyciu pakietu Maven zestawu Speech SDK i środowiska IDE Eclipse Java (wersja 4.8) w systemie Windows w wersji 64-bitowej lub Ubuntu Linux 16.04. Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
 
 > [!NOTE]
 > Aby uzyskać informacje dotyczące zestawu Speech Devices SDK oraz urządzenia Roobo, zobacz [Speech Devices SDK](speech-devices-sdk.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskrypcji usługi Mowa. Możesz go uzyskać bezpłatnie. Aby uzyskać szczegółowe informacje, zobacz temat [Wypróbuj bezpłatnie usługę Mowa](get-started.md).
+Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskrypcji usługi rozpoznawania mowy. Możesz go uzyskać bezpłatnie. Aby uzyskać szczegółowe informacje, zobacz temat [Wypróbuj bezpłatnie usługę Mowa](get-started.md).
 
 
 ## <a name="create-and-configure-project"></a>Tworzenie i konfigurowanie projektu
@@ -70,11 +70,11 @@ W przypadku korzystania z systemu Ubuntu 16.04 przed uruchomieniem środowiska E
 
 1. Otwórz plik **pom.xml** i edytuj go.
 
-   * Na końcu pliku przed tagiem zamykającym `</project>` utwórz element `repositories` z odwołaniem do repozytorium narzędzia Maven dla zestawu SDK usługi Mowa, jak pokazano poniżej:
+   * Na końcu pliku przed tagiem zamykającym `</project>` utwórz element `repositories` z odwołaniem do repozytorium narzędzia Maven dla zestawu Speech SDK, jak pokazano poniżej:
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
 
-  * Dodaj również element `dependencies` z zestawem SDK usługi Mowa w wersji 1.0.1 jako zależność:
+  * Dodaj również element `dependencies` z zestawem SDK usługi Mowa w wersji 1.1.0 jako zależność:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
 
@@ -111,10 +111,10 @@ Poszukaj tego przykładu w folderze `quickstart/java-jre`.
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Recognize intents from speech by using the Speech SDK for Java](how-to-recognize-intents-from-speech-java.md) (Rozpoznawanie intencji z mowy przy użyciu zestawu SDK usługi Mowa dla języka Java)
+> [Recognize intents from speech by using the Speech SDK for Java](how-to-recognize-intents-from-speech-java.md) (Rozpoznawanie intencji z mowy przy użyciu zestawu Speech SDK mowy dla języka Java)
 
 ## <a name="see-also"></a>Zobacz też
 
-- [Translate speech with the Cognitive Services Speech SDK for C#](how-to-translate-speech-csharp.md) (Tłumaczenie mowy za pomocą zestawu SDK usługi Mowa z usługi Cognitive Services dla języka C#)
+- [Translate speech with the Cognitive Services Speech SDK for C#](how-to-translate-speech-csharp.md) (Tłumaczenie mowy za pomocą zestawu Speech SDK usługi Cognitive Services dla języka C#)
 - [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
 - [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)

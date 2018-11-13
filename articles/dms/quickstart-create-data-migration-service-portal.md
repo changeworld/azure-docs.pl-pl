@@ -1,5 +1,5 @@
 ---
-title: Tworzenie wystąpienia usługi Azure Database Migration Service przy użyciu witryny Azure Portal | Microsoft Docs
+title: 'Szybki start: tworzenie wystąpienia usługi Azure Database Migration Service przy użyciu witryny Azure Portal | Microsoft Docs'
 description: Używanie witryny Azure Portal do tworzenia wystąpienia usługi Azure Database Migration Service
 services: database-migration
 author: pochiraju
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/09/2018
-ms.openlocfilehash: 662543a0717fbddb8eaefb5938f36adc88f4f3f2
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 7df19efc52f0771a10535c10625dd959a6edc90a
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883758"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958019"
 ---
-# <a name="create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Tworzenie wystąpienia usługi Azure Database Migration Service przy użyciu witryny Azure Portal
+# <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Szybki start: tworzenie wystąpienia usługi Azure Database Migration Service przy użyciu witryny Azure Portal
 W tym przewodniku Szybki start utworzysz wystąpienie usługi Azure Database Migration Service przy użyciu witryny Azure Portal.  Po utworzeniu usługi możesz jej użyć do migracji danych z lokalnego programu SQL Server do bazy danych Azure SQL.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.

@@ -9,12 +9,12 @@ ms.date: 07/26/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 7e8a12a215c94102f6b08262f129faebf9cfcde9
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: c30f4b9de279f8c02b7f6bc7fa7d9765972899b1
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115628"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50977435"
 ---
 # <a name="set-up-the-service-fabric-mesh-cli"></a>Konfigurowanie interfejsu wiersza polecenia usługi Service Fabric mesh
 Interfejs wiersza polecenia usługi Service Fabric Mesh jest wymagany do wdrażania zasobów i zarządzania nimi w usłudze Service Fabric Mesh. 
@@ -37,7 +37,10 @@ Aby zaktualizować istniejący moduł interfejsu wiersza polecenia usługi Azure
 ```azurecli-interactive
 az extension update --name mesh
 ```
+## <a name="next-steps"></a>Następne kroki
 
 Skonfigurować możesz również [środowisko deweloperskie w systemie Windows](service-fabric-mesh-howto-setup-developer-environment-sdk.md).
+
+Znajdź odpowiedzi na [typowe pytania i problemy](service-fabric-mesh-faq.md).
 
 [azure-cli-install]: /cli/azure/install-azure-cli

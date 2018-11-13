@@ -5,15 +5,15 @@ services: functions
 author: ggailey777
 ms.service: functions
 ms.topic: include
-ms.date: 08/26/2018
+ms.date: 11/02/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: f3fa6c75fdaf30d13231bc3072bd671614c9a668
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: b290cada86401d91313939a7673998810cb82551
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650694"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51028147"
 ---
 1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Opublikuj**.
 
@@ -22,6 +22,9 @@ ms.locfileid: "49650694"
     ![Wybieranie miejsca docelowego publikacji](./media/functions-vstools-publish/functions-visual-studio-publish-profile.png)
 
     W przypadku włączenia opcji **Uruchom z archiwum ZIP** Twoja aplikacja funkcji na platformie Azure będzie uruchamiana bezpośrednio z pakietu wdrożeniowego. Aby uzyskać więcej informacji, zobacz [Uruchamianie funkcji Azure Functions z pliku pakietu](../articles/azure-functions/run-functions-from-deployment-package.md).
+     
+    >[!CAUTION]
+    >Po wybraniu pozycji **Wybierz istniejącą** wszystkie pliki w istniejącej aplikacji funkcji na platformie Azure zostaną zastąpione przez pliki z projektu lokalnego. Tej opcji należy używać tylko w przypadku ponownego publikowania aktualizacji do istniejącej aplikacji funkcji.
 
 3. Jeśli program Visual Studio nie został jeszcze połączony z kontem platformy Azure, wybierz pozycję **Dodaj konto...**.
 

@@ -12,12 +12,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 07a079e00963f1f5aff96369649e2e4fb248aae0
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: fdee336298212f2536c2408e49f40e25e2c24161
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986002"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227692"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>Tworzenie pierwszej funkcji z poziomu wiersza polecenia
 
@@ -108,17 +108,19 @@ Po utworzeniu aplikacji funkcji interfejs wiersza polecenia platformy Azure wyś
 }
 ```
 
-## <a name="configure-the-function-app"></a>Konfigurowanie aplikacji funkcji
+### <a name="configure-the-function-app-nodejs"></a>Konfigurowanie aplikacji funkcji (środowisko Node.js)
 
-Narzędzia Core Tools w wersji 2.x tworzą projekty za pomocą szablonów środowiska uruchomieniowego 2.x usługi Azure Functions. W związku z tym należy się upewnić, że na platformie Azure jest używane środowisko uruchomieniowe w wersji 2.x. Określenie dla ustawienia aplikacji `FUNCTIONS_WORKER_RUNTIME` wartości `~2` powoduje powiązanie aplikacji funkcji z najnowszą wersją 2.x. Skonfiguruj ustawienia aplikacji za pomocą polecenia [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set).
+Podczas tworzenia aplikacji funkcji w języku JavaScript ważne jest wybranie odpowiedniej wersji środowiska Node.js. Wersja 2.x środowiska uruchomieniowego funkcji wymaga środowiska Node.js w wersji 8.x. Ustawienie aplikacji `WEBSITE_NODE_DEFAULT_VERSION` kontroluje wersję środowiska Node.js, która jest używana przez aplikację funkcji na platformie Azure. Użyj polecenia [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set), aby ustawić wersję środowiska Node.js na wartość `8.11.1`.
 
 W poniższym poleceniu interfejsu wiersza polecenia platformy Azure wartość „<app_name>” to nazwa Twojej aplikacji funkcji.
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <app_name> \
 --resource-group myResourceGroup \
---settings FUNCTIONS_WORKER_RUNTIME=~2
+--settings WEBSITE_NODE_DEFAULT_VERSION=8.11.1
 ```
+
+Sprawdź nowe ustawienie w danych wyjściowych.
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
@@ -127,3 +129,4 @@ az functionapp config appsettings set --name <app_name> \
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 [!INCLUDE [functions-quickstart-next-steps-cli](../../includes/functions-quickstart-next-steps-cli.md)]
+

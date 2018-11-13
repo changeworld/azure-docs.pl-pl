@@ -9,18 +9,18 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 2dae7938c63ee141ea6705ab4c324882f575e298
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 41f25496d089a5c6487176afee01f7cb06330794
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426876"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281561"
 ---
-# <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Szybki start: tworzenie konta magazynu usługi Azure Data Lake Storage 2. generacji w wersji zapoznawczej
+# <a name="quickstart-create-a-storage-account-for-analytics"></a>Szybki start: tworzenie konta magazynu na potrzeby analizy
 
-Konta usługi Azure Data Lake Storage 2. generacji w wersji zapoznawczej [obsługują usługę hierarchicznych przestrzeni nazw](introduction.md), która udostępnia natywny system plików oparty na katalogach przystosowany do pracy z rozproszonym systemem plików usługi Hadoop (HDFS, Hadoop Distributed File System). Dostęp do danych usługi Data Lake Storage 2. generacji z systemu plików HDFS można uzyskiwać za pośrednictwem [sterownika ABFS](abfs-driver.md).
+Konta magazynu z włączoną usługą Data Lake Storage Gen2 w wersji zapoznawczej [obsługują usługę hierarchicznych przestrzeni nazw](introduction.md), która udostępnia natywny system plików oparty na katalogach, przystosowany do pracy z rozproszonym systemem plików usługi Hadoop (HDFS, Hadoop Distributed File System). Dostęp do danych usługi Data Lake Storage 2. generacji z systemu plików HDFS można uzyskiwać za pośrednictwem [sterownika ABFS](abfs-driver.md).
 
-Aby włączyć możliwości usługi Data Lake Storage 2. generacji na koncie magazynu, [wypełnij ankietę dotyczącą wersji zapoznawczej, aby zażądać dostępu](https://aka.ms/adlsgen2signup). Po zatwierdzeniu będziesz mieć możliwość utworzenia nowego konta usługi Data Lake Storage 2. generacji. W tym przewodniku Szybki start przedstawiono sposób tworzenia konta przy użyciu [witryny Azure Portal](https://portal.azure.com/) lub [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) albo za pośrednictwem [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
+Aby włączyć możliwości usługi Data Lake Storage 2. generacji na koncie magazynu, [wypełnij ankietę dotyczącą wersji zapoznawczej, aby zażądać dostępu](https://aka.ms/adlsgen2signup). Po zatwierdzeniu będziesz mieć możliwość utworzenia konta magazynu z włączoną usługą Data Lake Storage Gen2. W tym przewodniku Szybki start przedstawiono sposób tworzenia konta przy użyciu [witryny Azure Portal](https://portal.azure.com/) lub [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) albo za pośrednictwem [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
 
 > [!NOTE]
 > Interfejs użytkownika tworzenia konta w witrynie Azure Portal jest aktualizowany po zatwierdzeniu możliwości tworzenia konta usługi Data Lake Storage 2. generacji przez użytkownika. W ten sam sposób argumenty programu PowerShell i interfejsu wiersza polecenia powiązane z usługą Data Lake Storage 2. generacji działają tylko po zatwierdzeniu użytkownika do korzystania z wersji zapoznawczej.
@@ -51,7 +51,7 @@ Ten przycisk służy do uruchamiania interaktywnej powłoki, której możesz uż
 
 Interfejs wiersza polecenia platformy Azure możesz również zainstalować i używać go lokalnie. Ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.38 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
-## <a name="overview-of-creating-an-azure-data-lake-storage-gen2-account"></a>Omówienie tworzenia konta usługi Azure Data Lake Storage 2. generacji
+## <a name="create-a-storage-account-with-azure-data-lake-storage-gen2-enabled"></a>Tworzenie konta magazynu z włączoną usługą Azure Data Lake Storage Gen2
 
 Przed utworzeniem konta musisz najpierw utworzyć grupę zasobów, która działa jako kontener logiczny tworzonych kont magazynu lub innych zasobów platformy Azure. Jeśli chcesz oczyścić zasoby utworzone w tym przewodniku Szybki start, możesz po prostu usunąć grupę zasobów. Usunięcie grupy zasobów powoduje również usunięcie skojarzonego konta magazynu i wszystkich innych zasobów skojarzonych z tą grupą zasobów. Aby uzyskać więcej informacji dotyczących grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 
@@ -135,7 +135,7 @@ Następnie ponownie uruchom powłokę.
 Aby utworzyć nową grupę zasobów za pomocą programu PowerShell, użyj polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup): 
 
 > [!NOTE]
-> > Hierarchiczna przestrzeń nazw jest obecnie dostępna we wszystkich regionach publicznych, ale nie jest dostępna w żadnym z regionów prywatnych. Jest ona obecnie niedostępna w suwerennych chmurach.
+> > Hierarchiczna przestrzeń nazw jest obecnie dostępna we wszystkich regionach publicznych. Jest ona obecnie niedostępna w suwerennych chmurach.
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -222,6 +222,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start zostało utworzone konto magazynu usługi Data Lake Storage 2. generacji. Aby dowiedzieć się, jak przekazywać i pobierać obiekty blob z konta magazynu i do niego, przejdź do przewodnika Szybki start dotyczącego magazynu obiektów blob.
+W tym przewodniku Szybki start utworzono konto magazynu z funkcjami usługi Data Lake Storage Gen2. Aby dowiedzieć się, jak przekazywać i pobierać obiekty blob z konta magazynu i do niego, przejdź do przewodnika Szybki start dotyczącego magazynu obiektów blob.
 
 * [Przenoszenie danych do oraz z usługi Azure Blob Storage za pomocą usługi AzCopy](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azcopy)

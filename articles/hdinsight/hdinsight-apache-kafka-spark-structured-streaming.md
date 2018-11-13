@@ -1,24 +1,24 @@
 ---
-title: 'Samouczek: przesyłanie strumieniowe ze strukturą na platformie Apache Spark za pomocą platformy Kafka — Azure HDInsight '
+title: 'Samouczek: przesyłanie strumieniowe ze strukturą na platformie Apache Spark za pomocą platformy Apache Kafka — Azure HDInsight '
 description: Dowiedz się, jak wymieniać dane z platformą Apache Kafka za pomocą przesyłania strumieniowego platformy Apache Spark. Ten samouczek obejmuje przesyłanie strumieniowe danych z platformy Spark w usłudze HDInsight za pomocą notesu Jupyter.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 05/08/2018
-ms.author: jasonh
-ms.openlocfilehash: 11169e45d5fbdc5e51b81c06d814524a7b09c614
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 83e277eceea2df746de6f6e9a33130989e2d874d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108293"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278365"
 ---
-# <a name="tutorial-use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Samouczek: używanie przesyłania strumieniowego ze strukturą platformy Apache Spark za pomocą platformy Kafka w usłudze HDInsight
+# <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Samouczek: używanie strumieni ze strukturą platformy Apache Spark z platformą Kafka w usłudze HDInsight
 
-W tym samouczku przedstawiono sposób użycia przesyłania strumieniowego platformy Spark do odczytywania i zapisywania danych przy użyciu platformy Apache Kafka w usłudze Azure HDInsight.
+W tym samouczku przedstawiono sposób użycia przesyłania strumieniowego platformy Apache Spark do odczytywania i zapisywania danych przy użyciu platformy Apache Kafka w usłudze Azure HDInsight.
 
 Przesyłanie strumieniowe ze strukturą platformy Spark korzysta z aparatu przetwarzania strumienia opartego na module Spark SQL. Aparat ten umożliwia wyrażanie obliczeń strumieniowych tak samo jak obliczeń wsadowych na danych statycznych. 
 

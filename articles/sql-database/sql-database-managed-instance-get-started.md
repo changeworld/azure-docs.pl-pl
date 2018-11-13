@@ -11,15 +11,15 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: Carlrab
 manager: craigg
-ms.date: 09/23/2018
-ms.openlocfilehash: c0c249ffe426e86049024122d9cbf786bb677220
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 11/01/2018
+ms.openlocfilehash: 3eadc2d233fd1716716c323f4c7087ee8363c67c
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160642"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912326"
 ---
-# <a name="create-an-azure-sql-database-managed-instance"></a>Tworzenie wystąpienia zarządzanego usługi Azure SQL Database
+# <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Szybki start: tworzenie wystąpienia zarządzanego usługi Azure SQL Database
 
 Ten przewodnik Szybki start przeprowadzi Cię przez proces tworzenia [wystąpienia zarządzanego](sql-database-managed-instance.md) usługi Azure SQL Database w witrynie Azure Portal. 
 
@@ -89,3 +89,4 @@ Po pomyślnym ukończeniu wdrażania przejrzyj utworzone zasoby i pobierz w peł
   - Aby skorzystać z samouczka przedstawiającego sposób łączenia wystąpienia zarządzanego z maszyny wirtualnej platformy Azure, zobacz [Configure an Azure virtual machine connection](sql-database-managed-instance-configure-vm.md) (Konfigurowanie połączenia maszyny wirtualnej platformy Azure).
   - Aby skorzystać z przewodnika Szybki start przedstawiającego sposób łączenia wystąpienia zarządzanego z poziomu lokalnego komputera klienckiego za pomocą połączenia typu punkt-lokacja, zobacz [Konfigurowanie połączenia punkt-lokacja](sql-database-managed-instance-configure-p2s.md).
 - Aby przywrócić istniejącą bazę danych programu SQL ze środowiska lokalnego do wystąpienia zarządzanego, możesz użyć [usługi Azure Database Migration Service (DMS) na potrzeby migracji](../dms/tutorial-sql-server-to-managed-instance.md) lub [polecenia T-SQL RESTORE](sql-database-managed-instance-get-started-restore.md) w celu przywrócenia z pliku kopii zapasowej bazy danych.
+- Aby uzyskać informacje na temat zaawansowanego monitorowania wydajności bazy danych wystąpienia zarządzanego z wbudowaną analizą rozwiązywania problemów, zobacz [Monitorowanie usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md)

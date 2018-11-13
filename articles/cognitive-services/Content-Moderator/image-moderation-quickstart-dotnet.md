@@ -1,56 +1,53 @@
 ---
-title: 'Szybki start: sprawdzanie zawartości obrazów przy użyciu języka C# — Content Moderator'
+title: 'Szybki start: analizowanie zawartości obrazu pod kątem niepożądanego materiału w języku C#'
 titlesuffix: Azure Cognitive Services
-description: Jak sprawdzić zawartość obrazu przy użyciu zestawu SDK usługi Content Moderator dla języka C#
+description: Opis sposobu analizowania zawartości obrazu pod kątem różnych rodzajów niepożądanego materiału przy użyciu zestawu SDK pakietu Content Moderator dla platformy .NET
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: quickstart
-ms.date: 10/10/2018
+ms.date: 10/26/2018
 ms.author: sajagtap
-ms.openlocfilehash: 4973d78eac02aed42689bf5742155c375d5f78ae
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 8f407a42ab2e1538193206dec1955257a5f9940a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309301"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005499"
 ---
-# <a name="quickstart-check-image-content-in-c"></a>Szybki start: sprawdzanie zawartości obrazów przy użyciu języka C# 
+# <a name="quickstart-analyze-image-content-for-objectionable-material-in-c"></a>Szybki start: analizowanie zawartości obrazu pod kątem niepożądanego materiału w języku C#
 
-Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z zestawu [SDK Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/), który umożliwia sprawdzanie obrazu jednocześnie pod kątem: 
-
-- zawartości dla dorosłych lub zawartości erotycznej,
-- możliwego do wyodrębnienia tekstu,
-- ludzkich twarzy.
+Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z [zestawu SDK pakietu Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dowiesz się, jak wyszukiwać zawartość dla dorosłych lub erotyczną, tekst możliwy do wyodrębnienia i ludzkie twarze w celu moderowania potencjalnie niepożądanego materiału.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-## <a name="sign-up-for-content-moderator-services"></a>Zarejestruj się w usługach Content Moderator
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Zanim użyjesz usług Content Moderator za pomocą interfejsu API REST lub zestawu SDK, potrzebujesz klucza interfejsu API oraz regionu swojego konta interfejsu API. Oba te elementy uzyskasz, dodając subskrypcję usługi Content Moderator w witrynie [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator).
-
-## <a name="create-your-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
-
-1. Dodaj nowy projekt **Aplikacja konsoli (.NET Framework)** do rozwiązania.
-
-   W przykładowym kodzie nadaj projektowi nazwę **ImageModeration**.
-
-1. Wybierz ten projekt jako pojedynczy projekt startowy rozwiązania.
+- Klucz subskrypcji pakietu Content Moderator. Aby subskrybować pakiet Content Moderator i uzyskać klucz, postępuj zgodnie z instrukcjami z tematu [Create a Cognitive Services account (Tworzenie konta usług Cognitive Services)](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+- Dowolna wersja programu [Visual Studio 2015 lub 2017](https://www.visualstudio.com/downloads/)
 
 
-### <a name="install-required-packages"></a>Instalowanie wymaganych pakietów
+> [!NOTE]
+> Ten przewodnik korzysta z subskrypcji pakietu Content Moderator w warstwie Bezpłatna. Aby uzyskać informacje na temat funkcji oferowanych w poszczególnych warstwach subskrypcji, zobacz stronę [cennika i limitów](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/).
 
-Zainstaluj następujące pakiety NuGet:
+## <a name="create-the-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-- Microsoft.Azure.CognitiveServices.ContentModerator
-- Microsoft.Rest.ClientRuntime
-- Newtonsoft.Json
+1. W programie Visual Studio utwórz nowy projekt **Aplikacja konsoli (.NET Framework)** i nadaj jej nazwę **ImageModeration**. 
+1. Jeśli w rozwiązaniu istnieją inne projekty, wybierz ten projekt jako pojedynczy projekt startowy.
+1. Pobierz wymagane pakiety NuGet. Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań i wybierz pozycję **Zarządzaj pakietami NuGet**, a następnie znajdź i zainstaluj następujące pakiety:
+    - Microsoft.Azure.CognitiveServices.ContentModerator
+    - Microsoft.Rest.ClientRuntime
+    - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizowanie programu za pomocą instrukcji
+## <a name="add-image-moderation-code"></a>Dodawanie kodu moderowania obrazów
 
-Dodaj następujące instrukcje `using`.
+Następnie skopiujesz kod z tego przewodnika i wkleisz go do projektu, aby zaimplementować podstawowy scenariusz moderowania zawartości.
+
+### <a name="include-namespaces"></a>Uwzględnianie przestrzeni nazw
+
+Dodaj następujące instrukcje `using` na początku pliku *Program.cs*.
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
@@ -65,44 +62,24 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usługi Content Moderator
 
-Dodaj następujący kod, aby utworzyć klienta usługi Content Moderator dla Twojej subskrypcji.
-
-> [!IMPORTANT]
-> Zaktualizuj pola **AzureRegion** i **CMSubscriptionKey** wartościami identyfikatora regionu i klucza subskrypcji.
+Dodaj następujący kod do pliku *Program.cs*, aby utworzyć dostawcę klienta usługi Content Moderator dla subskrypcji. W tej samej przestrzeni nazw dodaj kod wraz z klasą **Program**. Następnie trzeba będzie zaktualizować pola **AzureRegion** i **CMSubscriptionKey** przy użyciu wartości identyfikatora regionu i klucza subskrypcji.
 
 ```csharp
-/// <summary>
-/// Wraps the creation and configuration of a Content Moderator client.
-/// </summary>
-/// <remarks>This class library contains insecure code. If you adapt this 
-/// code for use in production, use a secure method of storing and using
-/// your Content Moderator subscription key.</remarks>
+// Wraps the creation and configuration of a Content Moderator client.
 public static class Clients
 {
-    /// <summary>
-    /// The region/location for your Content Moderator account, 
-    /// for example, westus.
-    /// </summary>
+    // The region/location for your Content Moderator account, 
+    // for example, westus.
     private static readonly string AzureRegion = "YOUR API REGION";
 
-    /// <summary>
-    /// The base URL fragment for Content Moderator calls.
-    /// </summary>
+    // The base URL fragment for Content Moderator calls.
     private static readonly string AzureBaseURL =
         $"https://{AzureRegion}.api.cognitive.microsoft.com";
 
-    /// <summary>
-    /// Your Content Moderator subscription key.
-    /// </summary>
+    // Your Content Moderator subscription key.
     private static readonly string CMSubscriptionKey = "YOUR API KEY";
 
-    /// <summary>
-    /// Returns a new Content Moderator client for your subscription.
-    /// </summary>
-    /// <returns>The new client.</returns>
-    /// <remarks>The <see cref="ContentModeratorClient"/> is disposable.
-    /// When you have finished using the client,
-    /// you should dispose of it either directly or indirectly. </remarks>
+    // Returns a new Content Moderator client for your subscription.
     public static ContentModeratorClient NewClient()
     {
         // Create and initialize an instance of the Content Moderator API wrapper.
@@ -114,93 +91,63 @@ public static class Clients
 }
 ```
 
-### <a name="initialize-application-specific-settings"></a>Inicjowanie ustawień specyficznych dla aplikacji
+### <a name="set-up-input-and-output-targets"></a>Konfigurowanie wejściowych i wyjściowych elementów docelowych
 
-Dodaj następujące pola statyczne do klasy **Program** w pliku Program.cs.
+Dodaj następujące pola statyczne do klasy **Program** w pliku _Program.cs_. Spowoduje to określenie plików na potrzeby zawartości obrazów wejściowych i zawartości wyjściowego kodu JSON.
 
 ```csharp
-///<summary>
-///The name of the file that contains the image URLs to evaluate.
-///</summary>
-///<remarks>You will need to create an input file and update 
-///this path accordingly. Paths are relative to the execution directory.
-///</remarks>
+//The name of the file that contains the image URLs to evaluate.
 private static string ImageUrlFile = "ImageFiles.txt";
 
-///<summary>
 ///The name of the file to contain the output from the evaluation.
-///</summary>
-///<remarks>Paths are relative to the execution directory.
-///</remarks>
 private static string OutputFile = "ModerationOutput.json";
 ```
 
-Utwórz plik wejściowy _ImageFiles.txt_ i dodaj adresy URL obrazów do analizy. W tym przewodniku Szybki start użyto następujących dwóch adresów URL w celu wygenerowania przykładowych danych wyjściowych.
-- https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
-- https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
+Musisz utworzyć plik wejściowy *_ImageFiles.txt*, a następnie odpowiednio zaktualizować jego ścieżkę (ścieżki względne są względne wobec katalogu wykonywania). Otwórz plik _ImageFiles.txt_ i dodaj adresy URL obrazów do moderowania. Ten przewodnik Szybki start używa następujących adresów URL jako przykładowych danych wejściowych.
+```
+https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
+https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
+```
 
-## <a name="create-a-class-to-handle-results"></a>Tworzenie klasy do obsługi wyników
+### <a name="create-a-class-to-handle-results"></a>Tworzenie klasy do obsługi wyników
 
-Dodaj następującą klasę do klasy **Program**. Użyjesz wystąpienia tej klasy, aby zarejestrować wyniki moderowania poszczególnych przeglądanych obrazów.
+Dodaj następujący kod do pliku *Program.cs* wraz z klasą **Program** w tej samej przestrzeni nazw. Użyjesz wystąpienia tej klasy, aby zarejestrować wyniki moderowania poszczególnych przeglądanych obrazów.
 
 ```csharp
-/// <summary>
-/// Contains the image moderation results for an image, 
-/// including text and face detection results.
-/// </summary>
+// Contains the image moderation results for an image, 
+// including text and face detection results.
 public class EvaluationData
 {
-    /// <summary>
-    /// The URL of the evaluated image.
-    /// </summary>
+    // The URL of the evaluated image.
     public string ImageUrl;
 
-    /// <summary>
-    /// The image moderation results.
-    /// </summary>
+    // The image moderation results.
     public Evaluate ImageModeration;
 
-    /// <summary>
-    /// The text detection results.
-    /// </summary>
+    // The text detection results.
     public OCR TextDetection;
 
-    /// <summary>
-    /// The face detection results;
-    /// </summary>
+    // The face detection results;
     public FoundFaces FaceDetection;
 }
 ```
 
-## <a name="create-the-image-evaluation-method"></a>Tworzenie metody do oceny obrazu
+### <a name="define-the-image-evaluation-method"></a>Definiowanie metody oceny obrazu
 
-Dodaj następującą metodę do klasy **Program**. Ta metoda ocenia pojedynczy obraz i zwraca wyniki oceny.
-
-> [!NOTE]
-> Klucz usługi Content Moderator ma limit liczby żądań na sekundę (RPS), a w razie przekroczenia tego limitu zestaw SDK zgłasza wyjątek z kodem błędu 429. Limit klucza warstwy bezpłatnej wynosi 1 RPS.
+Dodaj następującą metodę do klasy **Program**. Ta metoda ocenia pojedynczy obraz na trzy różne sposoby i zwraca wyniki oceny. Jeśli chcesz dowiedzieć się więcej o sposobie działania poszczególnych operacji, kliknij link w sekcji [Następne kroki](#next-steps).
 
 ```csharp
-/// <summary>
-/// Evaluates an image using the Image Moderation APIs.
-/// </summary>
-/// <param name="client">The Content Moderator API wrapper to use.</param>
-/// <param name="imageUrl">The URL of the image to evaluate.</param>
-/// <returns>Aggregated image moderation results for the image.</returns>
-/// <remarks>This method throttles calls to the API.
-/// Your Content Moderator service key will have a requests per second (RPS)
-/// rate limit, and the SDK will throw an exception with a 429 error code 
-/// if you exceed that limit. A free tier key has a 1 RPS rate limit.
-/// </remarks>
+// Evaluates an image using the Image Moderation APIs.
 private static EvaluationData EvaluateImage(
   ContentModeratorClient client, string imageUrl)
 {
-    var url = new ImageUrl("URL", imageUrl.Trim());
+    var url = new BodyModel("URL", imageUrl.Trim());
 
     var imageData = new EvaluationData();
 
     imageData.ImageUrl = url.Value;
 
-  // Evaluate for adult and racy content.
+    // Evaluate for adult and racy content.
     imageData.ImageModeration =
         client.ImageModeration.EvaluateUrlInput("application/json", url, true);
     Thread.Sleep(1000);
@@ -219,18 +166,9 @@ private static EvaluationData EvaluateImage(
 }
 ```
 
-Metoda **EvaluateUrlInput** jest otoką dla interfejsu API REST moderowania obrazów.
-Zwracana wartość zawiera obiekt zwrócony z wywołania interfejsu API.
+### <a name="load-the-input-images"></a>Ładowanie obrazów wejściowych
 
-Metoda **OCRUrlInput** jest otoką dla interfejsu API REST wyodrębniania tekstu z obrazu.
-Zwracana wartość zawiera obiekt zwrócony z wywołania interfejsu API.
-
-Metoda **FindFacesUrlInput** jest otoką dla interfejsu API REST rozpoznawania twarzy na obrazach.
-Zwracana wartość zawiera obiekt zwrócony z wywołania interfejsu API.
-
-## <a name="evaluate-the-images-in-your-code"></a>Ocenianie obrazów w kodzie
-
-Dodaj następujący kod do metody **Main**.
+Dodaj następujący kod do metody **Main** w klasie **Program**. Spowoduje to utworzenie programu do pobierania danych oceny dla każdego adresu URL obrazu w pliku wejściowym. Te dane są następnie zapisywane w pojedynczym pliku wyjściowym.
 
 ```csharp
 // Create an object to store the image moderation results.
@@ -265,9 +203,9 @@ using (StreamWriter outputWriter = new StreamWriter(OutputFile, false))
 }
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>Uruchamianie programu i przeglądanie danych wyjściowych
+## <a name="run-the-program"></a>Uruchamianie programu
 
-Otwórz plik _ModerationOutput.json_, aby wyświetlić zawartość wyjściową. Powinna ona wyglądać podobnie do poniższej zawartości. Należy pamiętać, że każdy obraz ma inne sekcje `ImageModeration`, `FaceDetection` i `TextDetection`, co odpowiada trzem wywołaniom interfejsu API w ramach metody **EvaluateImage**.
+Program zapisze dane ciągu JSON w pliku _ModerationOutput.json_. Przykładowe obrazy używane w tym przewodniku Szybki start powodują wygenerowanie następujących danych wyjściowych. Należy pamiętać, że każdy obraz ma inne sekcje `ImageModeration`, `FaceDetection` i `TextDetection`, co odpowiada trzem wywołaniom interfejsu API w ramach metody **EvaluateImage**.
 
 ```json
 [{
@@ -451,6 +389,9 @@ Otwórz plik _ModerationOutput.json_, aby wyświetlić zawartość wyjściową. 
 }]
 ```
 
-## <a name="next-steps---get-the-source-code"></a>Następne kroki — uzyskiwanie kodu źródłowego
+## <a name="next-steps"></a>Następne kroki
 
-Pobierz zestaw [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązanie programu Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych przewodników Szybki start usługi Content Moderator dla platformy .NET i rozpocznij pracę nad integracją.
+W tym przewodniku Szybki start utworzono prostą aplikację platformy .NET, która zwraca odpowiednie informacje o danym obrazie przykładowym dzięki użyciu usługi Content Moderator. Następnie dowiedz się więcej na temat znaczenia różnych flag i klasyfikacji, aby móc podejmować decyzje dotyczące potrzebnych danych oraz sposobu ich obsługi przez aplikację.
+
+> [!div class="nextstepaction"]
+> [Przewodnik dotyczący moderowania obrazów](image-moderation-api.md)

@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 07/02/2018
-ms.openlocfilehash: b5b0c1dd6f241d9b76ff766adc221c3fcb36ee1a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 11/01/2018
+ms.openlocfilehash: 2ab5b7a5b17daef00cb62f69a7d2a798c18456bb
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47062708"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912955"
 ---
-# <a name="use-python-to-query-an-azure-sql-database"></a>Korzystanie z języka Python do wykonywania zapytań w bazie danych Azure SQL
+# <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Szybki start: korzystanie z języka Python do wykonywania zapytań w bazie danych Azure SQL
 
  W tym przewodniku Szybki start pokazano, jak używać języka [Python](https://python.org) w celu nawiązywania połączenia z usługą Azure SQL Database, a następnie, korzystając z instrukcji Transact-SQL, wysyłać zapytania o dane. Aby uzyskać dalsze informacje na temat zestawu SDK, zapoznaj się z naszą dokumentacją [referencyjną](https://docs.microsoft.com/python/api/overview/azure/sql), [przykładem](https://github.com/mkleehammer/pyodbc/wiki/Getting-started) pyodbc i repozytorium GitHub [pyodbc](https://github.com/mkleehammer/pyodbc/wiki/).
 

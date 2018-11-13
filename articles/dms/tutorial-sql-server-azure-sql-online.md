@@ -1,5 +1,5 @@
 ---
-title: Używanie usługi Azure Database Migration Service do przeprowadzania migracji w trybie online z programu SQL Server do usługi Azure SQL Database | Microsoft Docs
+title: 'Samouczek: używanie usługi Azure Database Migration Service do przeprowadzania migracji w trybie online z programu SQL Server do usługi Azure SQL Database | Microsoft Docs'
 description: Dowiedz się, w jaki sposób przeprowadzić migrację w trybie online z lokalnego programu SQL Server do usługi Azure SQL Database za pomocą usługi Azure Database Migration Service.
 services: dms
 author: pochiraju
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: adf9f40e351ca642ca3e8eabe1e5eb7850f1f00d
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: be6a5c444444c9482b921ea7fd68bf26ac10a2a2
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945539"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958937"
 ---
-# <a name="migrate-sql-server-to-azure-sql-database-online-using-dms"></a>Przeprowadzanie migracji z programu SQL Server do usługi Azure SQL Database w trybie online przy użyciu usługi DMS
+# <a name="tutorial-migrate-sql-server-to-azure-sql-database-online-using-dms"></a>Samouczek: przeprowadzanie migracji z programu SQL Server do usługi Azure SQL Database w trybie online przy użyciu usługi DMS
 Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu SQL Server do usługi [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) przy minimalnym przestoju. W tym samouczku przeprowadzisz migrację bazy danych **Adventureworks2012** przywróconej do lokalnego wystąpienia programu SQL Server 2016 (lub nowszej wersji) do usługi Azure SQL Database, używając usługi Azure Database Migration Service.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:

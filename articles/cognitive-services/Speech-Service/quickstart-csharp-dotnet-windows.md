@@ -1,31 +1,37 @@
 ---
-title: 'Szybki start: rozpoznawanie mowy w języku C# na platformie .NET Framework w systemie Windows za pomocą zestawu SDK usługi Mowa'
+title: 'Szybki start: rozpoznawanie i transkrypcja mowy, .NET Framework (Windows) — usługa Mowa'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak rozpoznawać mowę w języku C# na platformie .NET Framework w systemie Windows za pomocą zestawu SDK usługi Mowa
+description: Korzystając z tego przewodnika, możesz utworzyć aplikację konsolową zamieniającą mowę na tekst przy użyciu programu .NET Framework dla systemu Windows oraz zestawu SDK usługi Mowa. Następnie za pomocą mikrofonu komputera będzie możliwa transkrypcja mowy na tekst w czasie rzeczywistym.
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 11/05/2018
 ms.author: wolfma
-ms.openlocfilehash: 06d4a41a4a67d077f8d79eee68938dff65adf0e8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 2dd001ebebd5cdf90d7d0b8163a85a5f83c855f6
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468521"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281298"
 ---
-# <a name="quickstart-recognize-speech-in-c-under-net-framework-on-windows-by-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku C# na platformie .NET Framework w systemie Windows za pomocą zestawu SDK usługi Mowa
+# <a name="quickstart-recognize-and-transcribe-speech-using-the-speech-sdk-and-net-framework-windows"></a>Szybki start: rozpoznawanie i transkrypcja mowy przy użyciu zestawu SDK usługi Mowa i programu .NET Framework (Windows)
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-W tym artykule utworzysz aplikację konsolową języka C# dla platformy .NET Framework w systemie Windows za pomocą [zestawu SDK usługi Mowa](speech-sdk.md). Transkrypcja mowy na tekst będzie odbywać się w czasie rzeczywistym z mikrofonu komputera. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu SDK usługi Mowa](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
+Korzystając z tego przewodnika, możesz utworzyć aplikację konsolową zamieniającą mowę na tekst przy użyciu programu .NET Framework dla systemu Windows oraz zestawu SDK usługi Mowa. Następnie za pomocą mikrofonu komputera będzie możliwa transkrypcja mowy na tekst w czasie rzeczywistym.
+
+Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z włączoną usługą Mowa firmy Microsoft. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started), aby uzyskać klucz subskrypcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskrypcji usługi Mowa. Możesz go uzyskać bezpłatnie. Aby uzyskać szczegółowe informacje, zobacz temat [Try the Speech service for free](get-started.md) (Wypróbuj bezpłatnie usługę Mowa).
+Aby ukończyć ten projekt, będą potrzebne następujące elementy:
+
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* Klucz subskrypcji dla usługi Mowa
+* Dostęp do mikrofonu komputera
 
 ## <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
@@ -33,40 +39,40 @@ Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskry
 
 ## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
 
-1. Otwórz plik `Program.cs` i zastąp cały jego kod poniższym kodem.
+1. Otwórz plik `Program.cs` i zastąp automatycznie wygenerowany kod następującym przykładem:
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
-1. W tym samym pliku zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji usługi Mowa.
+1. Znajdź i zastąp ciąg `YourSubscriptionKey` swoim kluczem subskrypcji usługi Mowa.
 
-1. Zastąp także ciąg `YourServiceRegion` [regionem](regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
+1. Znajdź i zastąp ciąg `YourServiceRegion` [regionem](regions.md) skojarzonym z Twoją subskrypcją. Jeśli na przykład używasz bezpłatnej wersji próbnej, region to `westus`.
 
 1. Zapisz zmiany w projekcie.
 
 ## <a name="build-and-run-the-app"></a>Kompilowanie i uruchamianie aplikacji
 
-1. Skompiluj aplikację. Na pasku menu wybierz kolejno pozycje **Kompiluj** > **Kompiluj rozwiązanie**. Kod powinien teraz zostać skompilowany bez błędów.
+1. Na pasku menu wybierz kolejno pozycje **Kompiluj** > **Kompiluj rozwiązanie**. Kod powinien teraz zostać skompilowany bez błędów.
 
     ![Zrzut ekranu aplikacji Visual Studio z wyróżnioną opcją Kompiluj rozwiązanie](media/sdk/qs-csharp-dotnet-windows-08-build.png "Kompilacja ukończona pomyślnie")
 
-1. Uruchom aplikację. Na pasku menu wybierz kolejno pozycje **Debuguj** > **Rozpocznij debugowanie** lub naciśnij klawisz **F5**.
+1. Na pasku menu wybierz pozycję **Debuguj** > **Rozpocznij debugowanie** lub naciśnij klawisz **F5**, aby uruchomić aplikację.
 
-    ![Zrzut ekranu aplikacji programu Visual Studio aplikacji z wyróżnioną opcją Rozpocznij debugowanie](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "Uruchamianie aplikacji do debugowania")
+    ![Zrzut ekranu aplikacji Visual Studio z wyróżnioną opcją Rozpocznij debugowanie](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "Uruchamianie aplikacji do debugowania")
 
-1. Zostanie wyświetlone okno konsoli z monitem o wypowiedzenie słów. Wypowiedz zwrot lub zdanie w języku angielskim. Mowa zostanie przesłana do usługi Mowa i transkrybowana na tekst, który zostanie wyświetlony w tym samym oknie.
+1. Zostanie wyświetlone okno konsoli z prośbą o wypowiedź. Powiedz coś w języku angielskim. Wypowiedź będzie przesyłana do usługi Mowa i transkrybowana na tekst w czasie rzeczywistym. Wynik zostanie wyświetlony w konsoli.
 
     ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym ukończeniu rozpoznawania](media/sdk/qs-csharp-dotnet-windows-10-console-output.png "Dane wyjściowe konsoli po pomyślnym ukończeniu rozpoznawania")
 
 [!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Poszukaj tego przykładu w folderze `quickstart/csharp-dotnet-windows`.
+Kod jest dostępny w folderze `quickstart/csharp-dotnet-windows`.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Recognize intents from speech by using the Speech SDK for C#](how-to-recognize-intents-from-speech-csharp.md) (Rozpoznawanie intencji z mowy przy użyciu zestawu SDK usługi Mowa dla języka C#)
+> [Recognize intents from speech by using the Speech SDK for C#](how-to-recognize-intents-from-speech-csharp.md) (Rozpoznawanie intencji z mowy przy użyciu zestawu Speech SDK dla języka C#)
 
 ## <a name="see-also"></a>Zobacz też
 
-- [Translate speech with the Cognitive Services Speech SDK for C#](how-to-translate-speech-csharp.md) (Tłumaczenie mowy za pomocą zestawu SDK usługi Mowa z usługi Cognitive Services dla języka C#)
+- [Translate speech with the Cognitive Services Speech SDK for C#](how-to-translate-speech-csharp.md) (Tłumaczenie mowy za pomocą zestawu Speech SDK usługi Cognitive Services dla języka C#)
 - [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
 - [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)

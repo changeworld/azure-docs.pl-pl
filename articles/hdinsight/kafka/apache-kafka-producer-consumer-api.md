@@ -2,19 +2,19 @@
 title: 'Samouczek: korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka — Azure HDInsight '
 description: Informacje o sposobie korzystania z interfejsów API producentów i odbiorców platformy Apache Kafka w usłudze HDInsight. W tym samouczku dowiesz się, jak używać tych interfejsów API na platformie Kafka w usłudze HDInsight z poziomu aplikacji Java.
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: dhgoelmsft
+ms.author: dhgoel
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 04/16/2018
-ms.openlocfilehash: f757db47ff91537405b04dbc949797f5855b7952
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.date: 11/06/2018
+ms.openlocfilehash: 2a441e3cd90eba8fc2b1201671047cfcd9d277a6
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416175"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277736"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Samouczek: korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka
 
@@ -56,14 +56,14 @@ Po zainstalowaniu środowiska Java i zestawu JDK na deweloperskiej stacji robocz
 
 ## <a name="set-up-your-deployment-environment"></a>Konfigurowanie środowiska wdrażania
 
-Ten samouczek wymaga platformy Kafka w usłudze HDInsight 3.6. Aby dowiedzieć się, jak utworzyć platformę Kafka w klastrze usługi HDInsight, zobacz dokument [Wprowadzenie do platformy Apache Kafka w usłudze HDInsight](apache-kafka-get-started.md).
+Ten samouczek wymaga platformy Apache Kafka w usłudze HDInsight 3.6. Aby dowiedzieć się, jak utworzyć platformę Kafka w klastrze usługi HDInsight, zobacz dokument [Wprowadzenie do platformy Apache Kafka w usłudze HDInsight](apache-kafka-get-started.md).
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
 Przykładowa aplikacja znajduje się pod adresem [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) w podkatalogu `Producer-Consumer`. Ta aplikacja składa się zasadniczo z czterech plików:
 
 * `pom.xml`: w tym pliku są definiowane zależności projektu, wersja języka Java i metody pakowania.
-* `Producer.java`: ten plik wysyła 1 milion (1 000 000) losowych zdań do platformy Kafka przy użyciu interfejsu API producenta.
+* `Producer.java`: ten plik wysyła losowe zdania do platformy Kafka przy użyciu interfejsu API producenta.
 * `Consumer.java`: ten plik korzysta z interfejsu API odbiorcy do odczytywania danych z platformy Kafka i przekazywania ich do wyjścia STDOUT.
 * `Run.java`: interfejs wiersza polecenia używany do uruchamiania kodu producenta i odbiorcy.
 
@@ -92,160 +92,45 @@ Należy zrozumieć następujące ważne kwestie dotyczące pliku `pom.xml`:
 
 ### <a name="producerjava"></a>Producer.java
 
-Producent komunikuje się z hostami brokera platformy Kafka (węzłami procesu roboczego) na potrzeby przechowywania danych w temacie platformy Kafka. Poniższy fragment kodu pochodzi z pliku `Producer.java`:
+Producent komunikuje się z hostami brokera platformy Kafka (węzłami procesu roboczego) i wysyła dane do tematu platformy Kafka. Poniższy fragment kodu pochodzi z pliku [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) z [repozytorium GitHub](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) i przedstawia sposób ustawiania właściwości producenta:
 
 ```java
-package com.microsoft.example;
-
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import java.util.Properties;
-import java.util.Random;
-import java.io.IOException;
-
-public class Producer
-{
-    public static void produce(String brokers) throws IOException
-    {
-
-        // Set properties used to configure the producer
-        Properties properties = new Properties();
-        // Set the brokers (bootstrap servers)
-        properties.setProperty("bootstrap.servers", brokers);
-        // Set how to serialize key/value pairs
-        properties.setProperty("key.serializer","org.apache.kafka.common.serialization.StringSerializer");
-        properties.setProperty("value.serializer","org.apache.kafka.common.serialization.StringSerializer");
-        KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
-
-        // So we can generate random sentences
-        Random random = new Random();
-        String[] sentences = new String[] {
-                "the cow jumped over the moon",
-                "an apple a day keeps the doctor away",
-                "four score and seven years ago",
-                "snow white and the seven dwarfs",
-                "i am at two with nature"
-        };
-
-        String progressAnimation = "|/-\\";
-        // Produce a bunch of records
-        for(int i = 0; i < 1000000; i++) {
-            // Pick a sentence at random
-            String sentence = sentences[random.nextInt(sentences.length)];
-            // Send the sentence to the test topic
-            producer.send(new ProducerRecord<String, String>("test", sentence));
-            String progressBar = "\r" + progressAnimation.charAt(i % progressAnimation.length()) + " " + i;
-            System.out.write(progressBar.getBytes());
-        }
-    }
-}
+Properties properties = new Properties();
+// Set the brokers (bootstrap servers)
+properties.setProperty("bootstrap.servers", brokers);
+// Set how to serialize key/value pairs
+properties.setProperty("key.serializer","org.apache.kafka.common.serialization.StringSerializer");
+properties.setProperty("value.serializer","org.apache.kafka.common.serialization.StringSerializer");
+KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 ```
-
-Ten kod łączy się z hostami brokera platformy Kafka (węzłami procesu roboczego), a następnie wysyła 1 000 000 zdań na platformę Kafka przy użyciu interfejsu API producenta.
 
 ### <a name="consumerjava"></a>Consumer.java
 
-Odbiorca komunikuje się z hostami brokera platformy Kafka (węzłami procesu roboczego) i odczytuje rekordy w pętli. Poniższy fragment kodu pochodzi z pliku `Consumer.java`:
+Odbiorca komunikuje się z hostami brokera platformy Kafka (węzłami procesu roboczego) i odczytuje rekordy w pętli. Poniższy fragment kodu z pliku [Consumer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Consumer.java) ustawia właściwości odbiorcy:
 
 ```java
-package com.microsoft.example;
+KafkaConsumer<String, String> consumer;
+// Configure the consumer
+Properties properties = new Properties();
+// Point it to the brokers
+properties.setProperty("bootstrap.servers", brokers);
+// Set the consumer group (all consumers must belong to a group).
+properties.setProperty("group.id", groupId);
+// Set how to serialize key/value pairs
+properties.setProperty("key.deserializer","org.apache.kafka.common.serialization.StringDeserializer");
+properties.setProperty("value.deserializer","org.apache.kafka.common.serialization.StringDeserializer");
+// When a group is first created, it has no offset stored to start reading from. This tells it to start
+// with the earliest record in the stream.
+properties.setProperty("auto.offset.reset","earliest");
 
-import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import java.util.Properties;
-import java.util.Arrays;
-
-public class Consumer {
-    public static void consume(String brokers, String groupId) {
-        // Create a consumer
-        KafkaConsumer<String, String> consumer;
-        // Configure the consumer
-        Properties properties = new Properties();
-        // Point it to the brokers
-        properties.setProperty("bootstrap.servers", brokers);
-        // Set the consumer group (all consumers must belong to a group).
-        properties.setProperty("group.id", groupId);
-        // Set how to serialize key/value pairs
-        properties.setProperty("key.deserializer","org.apache.kafka.common.serialization.StringDeserializer");
-        properties.setProperty("value.deserializer","org.apache.kafka.common.serialization.StringDeserializer");
-        // When a group is first created, it has no offset stored to start reading from. This tells it to start
-        // with the earliest record in the stream.
-        properties.setProperty("auto.offset.reset","earliest");
-        consumer = new KafkaConsumer<>(properties);
-
-        // Subscribe to the 'test' topic
-        consumer.subscribe(Arrays.asList("test"));
-
-        // Loop until ctrl + c
-        int count = 0;
-        while(true) {
-            // Poll for records
-            ConsumerRecords<String, String> records = consumer.poll(200);
-            // Did we get any?
-            if (records.count() == 0) {
-                // timeout/nothing to read
-            } else {
-                // Yes, loop over records
-                for(ConsumerRecord<String, String> record: records) {
-                    // Display record and count
-                    count += 1;
-                    System.out.println( count + ": " + record.value());
-                }
-            }
-        }
-    }
-}
+consumer = new KafkaConsumer<>(properties);
 ```
 
 W tym kodzie odbiorca jest skonfigurowany do odczytywania od początku tematu (właściwość `auto.offset.reset` jest ustawiona na wartość `earliest`).
 
 ### <a name="runjava"></a>Run.java
 
-Plik `Run.java` udostępnia interfejs wiersza polecenia uruchamiający kod producenta lub odbiorcy. Jako parametr należy podać informacje o hoście brokera platformy Kafka. Opcjonalnie można dołączyć wartość identyfikatora grupy, który jest używany przez proces odbiorcy. Jeśli tworzysz wiele wystąpień odbiorcy za pomocą tego samego identyfikatora grupy, obciążenie operacjami odczytu z tematu będzie równoważone.
-
-```java
-package com.microsoft.example;
-
-import java.io.IOException;
-import java.util.UUID;
-
-// Handle starting producer or consumer
-public class Run {
-    public static void main(String[] args) throws IOException {
-        if(args.length < 2) {
-            usage();
-        }
-
-        // Get the brokers
-        String brokers = args[1];
-        switch(args[0].toLowerCase()) {
-            case "producer":
-                Producer.produce(brokers);
-                break;
-            case "consumer":
-                // Either a groupId was passed in, or we need a random one
-                String groupId;
-                if(args.length == 3) {
-                    groupId = args[2];
-                } else {
-                    groupId = UUID.randomUUID().toString();
-                }
-                Consumer.consume(brokers, groupId);
-                break;
-            default:
-                usage();
-        }
-        System.exit(0);
-    }
-    // Display usage
-    public static void usage() {
-        System.out.println("Usage:");
-        System.out.println("kafka-example.jar <producer|consumer> brokerhosts [groupid]");
-        System.exit(1);
-    }
-}
-```
+Plik [Run.Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) udostępnia interfejs wiersza polecenia uruchamiający kod producenta lub odbiorcy. Jako parametr należy podać informacje o hoście brokera platformy Kafka. Opcjonalnie można dołączyć wartość identyfikatora grupy, który jest używany przez proces odbiorcy. Jeśli tworzysz wiele wystąpień odbiorcy za pomocą tego samego identyfikatora grupy, obciążenie operacjami odczytu z tematu będzie równoważone.
 
 ## <a name="build-and-deploy-the-example"></a>Kompilowanie i wdrażanie przykładu
 
@@ -289,19 +174,13 @@ public class Run {
     2. Aby uzyskać hosty brokera platformy Kafka i hosty usługi ZooKeeper, użyj następujących poleceń. Po wyświetleniu monitu wprowadź hasło dla konta logowania klastra (administratora).
     
         ```bash
-        export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
         export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
         ```
 
     3. Aby utworzyć temat `test`, użyj następującego polecenia:
 
         ```bash
-        /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
-        ```
-    4. W celu utworzenia tematu można również użyć pliku jar. Na przykład, aby utworzyć temat `test2`, użyj następującego polecenia:
-
-        ```bash
-        java -jar kafka-producer-consumer.jar create test2 $KAFKABROKERS
+        java -jar kafka-producer-consumer.jar create test $KAFKABROKERS
         ```
 
 3. Aby uruchomić producenta i zapisać dane w temacie, użyj następującego polecenia:
@@ -339,7 +218,7 @@ indow -h 'java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS mygr
 
 To polecenie używa polecenia `tmux`, aby podzielić terminal na dwie kolumny. W każdej kolumnie jest uruchamiany odbiorca z tą samą wartością identyfikatora grupy. Kiedy odbiorcy zakończą odczytywanie, można zauważyć, że każdy z nich odczytał tylko część rekordów. Użyj klawiszy __Ctrl + C __ dwa razy, aby zakończyć polecenie `tmux`.
 
-Użycie przez klientów w tej samej grupie jest obsługiwane przez partycje tematu. Utworzony wcześniej temat `test` ma osiem partycji. Jeśli zostanie uruchomionych ośmiu odbiorców, każdy z nich będzie odczytywał rekordy z jednej partycji tematu.
+Użycie przez klientów w tej samej grupie jest obsługiwane przez partycje tematu. W tym przykładowym kodzie utworzony wcześniej temat `test` ma osiem partycji. Jeśli zostanie uruchomionych ośmiu odbiorców, każdy z nich będzie odczytywał rekordy z jednej partycji tematu.
 
 > [!IMPORTANT]
 > Grupa odbiorców nie może zawierać więcej wystąpień odbiorców niż partycji. W tym przykładzie jedna grupa odbiorców może zawierać maksymalnie ośmiu odbiorców, ponieważ tyle partycji znajduje się w temacie. Może też istnieć wiele grup odbiorców — każda z nich może zawierać maksymalnie ośmiu odbiorców.

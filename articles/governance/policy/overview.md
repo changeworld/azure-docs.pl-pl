@@ -4,17 +4,17 @@ description: Azure Policy to usługa platformy Azure, która umożliwia tworzeni
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 11/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: dbdffc7a6f77f3f34ce7937c60eb7a53e5f72590
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c016e21ff59d5f68afee79b2159218d10e90a7ec
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961284"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252823"
 ---
 # <a name="what-is-azure-policy"></a>Co to jest Azure Policy?
 
@@ -35,12 +35,14 @@ Zasady skupiają się na właściwościach zasobów podczas ich wdrażania i dla
 
 ### <a name="rbac-permissions-in-azure-policy"></a>Uprawnienia RBAC w usłudze Azure Policy
 
-Usługa Azure Policy ma uprawnienia reprezentowane jako operacje u dwóch różnych dostawców zasobów:
+Usługa Azure Policy ma kilka uprawnień, znanych jako operacje, w ramach dwóch dostawców zasobów:
 
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
-- [Microsoft.PolicyInsight](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
+- [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Niektóre z ról wbudowanych mają różne poziomy uprawnień do zasobów usługi Azure Policy. Należą do nich poziomy **Administrator zabezpieczeń**, który umożliwia zarządzanie przypisaniami i definicjami zasad, ale nie umożliwia wyświetlania informacji o zgodności, oraz **Czytelnik**, który umożliwia odczytywanie szczegółów przypisań i definicji zasad, ale nie umożliwia wprowadzania zmian ani wyświetlania informacji o zgodności. Gdy **właściciel** ma pełne prawa, **współautor** nie ma żadnych uprawnień usługi Azure Policy. Aby udzielić uprawnień do wyświetlania szczegółów zgodności zasad, utwórz [rolę niestandardową](../../role-based-access-control/custom-roles.md).
+Wiele wbudowanych ról udziela uprawnień zasobom usługi Azure Policy. Rola **współautora zasad zasobów (wersja zapoznawcza)** obejmuje większość operacji usługi Azure Policy, a rola **właściciela** obejmuje pełne uprawnienia. Zarówno **współautor**, jak i **czytelnik** mogą odczytywać wszystkie szczegółowe informacje na temat usługi Azure Policy, ale **współautor** może także wyzwolić korygowanie.
+
+Jeśli żadna z wbudowanych ról nie ma wymaganych uprawnień, należy utworzyć [rolę niestandardową](../../role-based-access-control/custom-roles.md).
 
 ## <a name="policy-definition"></a>Definicja zasad
 

@@ -1,30 +1,30 @@
 ---
-title: Tworzenie funkcji integrującej się z usługą Azure Logic Apps | Microsoft Docs
+title: Tworzenie funkcji integrującej się z usługą Azure Logic Apps
 description: Utwórz funkcję integrującą się z usługą Azure Logic Apps i usługami Azure Cognitive Services, aby kategoryzować tonację w tweetach i wysyłać powiadomienia, gdy poziom nastrojów (tonacji) będzie niski.
 services: functions, logic-apps, cognitive-services
 keywords: workflow, cloud apps, cloud services, business processes, system integration, enterprise application integration, EAI
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
 ms.service: azure-functions
 ms.topic: tutorial
-ms.date: 09/24/2018
-ms.author: glenga
+ms.date: 11/06/2018
+ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 79a02115a449c710778e4c69f470efc3ebebae53
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 4c9f92f80275d04cd1bab408213fd02abf5c9139
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087053"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279402"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Tworzenie funkcji integrującej się z usługą Azure Logic Apps
 
 Usługa Azure Functions integruje się z usługą Azure Logic Apps w Projektancie aplikacji usługi Logic Apps. Ta integracja umożliwia używanie mocy obliczeniowej usługi Functions w aranżacjach z innymi usługami platformy Azure oraz innych dostawców. 
 
-W tym samouczku pokazano, jak za pomocą usługi Functions z usługami Logic Apps i Microsoft Cognitive Services na platformie Azure analizować tonację we wpisach w usłudze Twitter. Funkcja wyzwalana przez protokół HTTP kategoryzuje tweety jako zielone, żółte lub czerwone na podstawie wyniku tonacji. W razie wykrycia niskiego poziomu tonacji wysyłana jest wiadomość e-mail. 
+W tym samouczku pokazano, jak za pomocą usługi Functions z usługami Logic Apps i Microsoft Cognitive Services na platformie Azure uruchamiać analizę tonacji we wpisach w usłudze Twitter. Funkcja wyzwalana przez protokół HTTP kategoryzuje tweety jako zielone, żółte lub czerwone na podstawie wyniku tonacji. W razie wykrycia niskiego poziomu tonacji wysyłana jest wiadomość e-mail. 
 
-![ilustracja: pierwsze dwa kroki aplikacji w Projektancie aplikacji usługi Logic Apps](media/functions-twitter-email/designer1.png)
+![ilustracja: pierwsze dwa kroki aplikacji w Projektancie aplikacji usługi Logic Apps](media/functions-twitter-email/00-logic-app-overview.png)
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -40,7 +40,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 + Aktywne konto w usłudze [Twitter](https://twitter.com/). 
 + Konto usługi [Outlook.com](https://outlook.com/) (do wysyłania powiadomień).
-+ Do wykonania czynności przedstawionych w tym temacie są wymagane zasoby utworzone w temacie [Tworzenie pierwszej funkcji w witrynie Azure Portal](functions-create-first-azure-function.md).  
++ Do wykonania czynności przedstawionych w tym artykule są wymagane zasoby utworzone w temacie [Tworzenie pierwszej funkcji w witrynie Azure Portal](functions-create-first-azure-function.md).  
 Jeśli jeszcze tego nie zrobiono, wykonaj teraz te kroki, aby utworzyć aplikację funkcji.
 
 ## <a name="create-a-cognitive-services-resource"></a>Tworzenie zasobu usług Cognitive Services
@@ -51,9 +51,9 @@ Interfejsy API usług Cognitive Services są dostępne na platformie Azure jako 
 
 2. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
 
-3. Kliknij pozycję **Sztuczna inteligencja i analiza** > **Interfejs API analizy tekstu**. Następnie użyj ustawień określonych w tabeli, zaakceptuj warunki i wybierz opcję **Przypnij do pulpitu nawigacyjnego**.
+3. Kliknij kolejno pozycje **SI i uczenie maszynowe** > **Analiza tekstu**. Następnie użyj ustawień określonych w tabeli, aby utworzyć zasób.
 
-    ![Tworzenie strony zasobu usług Cognitive](media/functions-twitter-email/cog_svcs_resource.png)
+    ![Tworzenie strony zasobu usług Cognitive](media/functions-twitter-email/01-create-text-analytics.png)
 
     | Ustawienie      |  Sugerowana wartość   | Opis                                        |
     | --- | --- | --- |
@@ -62,11 +62,15 @@ Interfejsy API usług Cognitive Services są dostępne na platformie Azure jako 
     | **Warstwa cenowa** | F0 | Rozpocznij od najniższej warstwy. Gdy wyczerpią się wywołania, przeskaluj do wyższego poziomu.|
     | **Grupa zasobów** | myResourceGroup | Użyj tej samej grupy zasobów dla wszystkich usług w tym samouczku.|
 
-4. Kliknij przycisk **Utwórz**, aby utworzyć zasób. Po jego utworzeniu wybierz nowy zasób usług Cognitive Services przypięty do pulpitu nawigacyjnego. 
+4. Kliknij przycisk **Utwórz**, aby utworzyć zasób. 
 
-5. W kolumnie nawigacji po lewej stronie kliknij pozycję **Klucze**, a następnie skopiuj wartość pozycji **Klucz 1** i zapisz ją. Ten klucz umożliwia łączenie aplikacji logiki z interfejsem API usług Cognitive Services. 
+5. Kliknij pozycję **Przegląd** i skopiuj wartość **Punkt końcowy** do edytora tekstów. Ta wartość jest używana podczas tworzenia połączenia z interfejsem API usług Cognitive Services.
+
+    ![Ustawienia usług Cognitive Services](media/functions-twitter-email/02-cognitive-services.png)
+
+6. W kolumnie nawigacji po lewej stronie kliknij pozycję **Klucze**, a następnie skopiuj wartość pozycji **Klucz 1** i zapisz ją w edytorze tekstów. Ten klucz umożliwia łączenie aplikacji logiki z interfejsem API usług Cognitive Services. 
  
-    ![Klucze](media/functions-twitter-email/keys.png)
+    ![Klucze usług Cognitive Services](media/functions-twitter-email/03-cognitive-serviecs-keys.png)
 
 ## <a name="create-the-function-app"></a>Tworzenie aplikacji funkcji
 
@@ -76,23 +80,15 @@ Usługa Functions zapewnia doskonały sposób na odciążanie przetwarzania zada
 
 ## <a name="create-an-http-triggered-function"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP  
 
-1. Rozwiń aplikację funkcji i kliknij przycisk **+** obok pozycji **Funkcje**. Jeśli jest to pierwsza funkcja w aplikacji funkcji, wybierz pozycję **Funkcja niestandardowa**. Spowoduje to wyświetlenie pełnego zestawu szablonów funkcji.
+1. Rozwiń aplikację funkcji i kliknij przycisk **+** obok pozycji **Funkcje**. Jeśli jest to pierwsza funkcja w aplikacji funkcji, wybierz pozycję **W portalu**.
 
-    ![Strona szybkiego rozpoczynania pracy z usługą Functions w witrynie Azure Portal](media/functions-twitter-email/add-first-function.png)
+    ![Strona szybkiego rozpoczynania pracy z usługą Functions w witrynie Azure Portal](media/functions-twitter-email/05-function-app-create-portal.png)
 
-2. W polu wyszukiwania wpisz `http`, a następnie wybierz język **C#** dla szablonu wyzwalacza HTTP. 
+2. Następnie wybierz pozycję **Element webhook i interfejs API** i kliknij pozycję **Utwórz**. 
 
-    ![Wybieranie wyzwalacza HTTP](./media/functions-twitter-email/select-http-trigger-portal.png)
+    ![Wybieranie wyzwalacza HTTP](./media/functions-twitter-email/06-function-webhook.png)
 
-    Wszystkie kolejne funkcje dodane do aplikacji funkcji używają szablonów języka C#.
-
-3. Wpisz **nazwę** funkcji, wybierz pozycję `Function` na liście **[Poziom uwierzytelniania](functions-bindings-http-webhook.md#http-auth)**, a następnie wybierz przycisk **Utwórz**. 
-
-    ![Tworzenie funkcji wyzwalanej przez protokół HTTP](./media/functions-twitter-email/select-http-trigger-portal-2.png)
-
-    Spowoduje to utworzenie funkcji skryptu w języku C# przy użyciu szablonu wyzwalacza HTTP. Kod zostanie wyświetlony w nowym oknie jako `run.csx`.
-
-4. Zastąp zawartość pliku `run.csx` poniższym kodem, a następnie kliknij przycisk **Zapisz**:
+3. Zastąp zawartość pliku `run.csx` poniższym kodem, a następnie kliknij przycisk **Zapisz**:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -131,7 +127,7 @@ Usługa Functions zapewnia doskonały sposób na odciążanie przetwarzania zada
 
 4. Aby przetestować tę funkcję, kliknij przycisk **Testuj** przy prawej krawędzi, co spowoduje rozwinięcie karty testu. Wpisz wartość `0.2` w polu **Treść żądania**, a następnie kliknij przycisk **Uruchom**. W treści odpowiedzi jest zwracana wartość **RED** (Czerwony). 
 
-    ![Testowanie funkcji w witrynie Azure Portal](./media/functions-twitter-email/test.png)
+    ![Testowanie funkcji w witrynie Azure Portal](./media/functions-twitter-email/07-function-test.png)
 
 Została utworzona funkcja kategoryzująca wyniki tonacji. Następnie należy utworzyć aplikację logiki, która zintegruje funkcję z usługą Twitter i interfejsem API usług Cognitive Services. 
 
@@ -139,11 +135,11 @@ Została utworzona funkcja kategoryzująca wyniki tonacji. Następnie należy ut
 
 1. W witrynie Azure Portal kliknij przycisk **Nowy** znajdujący się w lewym górnym rogu tej witryny.
 
-2. Kliknij pozycję **Integracja dla przedsiębiorstw** > **Aplikacja logiki**. Następnie użyj ustawień określonych w tabeli, wybierz opcję **Przypnij do pulpitu nawigacyjnego** i kliknij przycisk **Utwórz**.
+2. Kliknij kolejno pozycje **Sieć Web** > **Aplikacja logiki**.
  
-4. Następnie wpisz **nazwę**, na przykład `TweetSentiment`,użyj ustawień określonych w tabeli, zaakceptuj warunki i wybierz opcję **Przypnij do pulpitu nawigacyjnego**.
+3. Następnie wpisz wartość **Nazwa**, taką jak `TweetSentiment`, i użyj ustawień określonych w tabeli.
 
-    ![Tworzenie aplikacji logiki w witrynie Azure Portal](./media/functions-twitter-email/new_logic_app.png)
+    ![Tworzenie aplikacji logiki w witrynie Azure Portal](./media/functions-twitter-email/08-logic-app-create.png)
 
     | Ustawienie      |  Sugerowana wartość   | Opis                                        |
     | ----------------- | ------------ | ------------- |
@@ -151,11 +147,11 @@ Została utworzona funkcja kategoryzująca wyniki tonacji. Następnie należy ut
     | **Grupa zasobów** | myResourceGroup | Wybierz tę samą istniejącą grupę zasobów co wcześniej. |
     | **Lokalizacja** | Wschodnie stany USA | Wybierz bliską lokalizację. |    
 
-4. Wybierz opcję **Przypnij do pulpitu nawigacyjnego** i kliknij przycisk **Utwórz**, aby utworzyć aplikację logiki. 
+4. Po wprowadzeniu odpowiednich wartości ustawień kliknij pozycję **Utwórz** w celu utworzenia aplikacji logiki. 
 
 5. Po utworzeniu aplikacji kliknij nową aplikację logiki przypiętą do pulpitu nawigacyjnego. Następnie w Projektancie aplikacji usługi Logic Apps przewiń w dół i kliknij szablon **Pusta aplikacja logiki**. 
 
-    ![Szablon pustej aplikacji usługi Logic Apps](media/functions-twitter-email/blank.png)
+    ![Szablon pustej aplikacji usługi Logic Apps](media/functions-twitter-email/09-logic-app-create-blank.png)
 
 Teraz za pomocą Projektanta aplikacji usługi Logic Apps możesz dodać do aplikacji usługi i wyzwalacze.
 
@@ -167,13 +163,13 @@ Najpierw utwórz połączenie z kontem w usłudze Twitter. Aplikacja logiki sond
 
 2. Użyj ustawień wyzwalacza usługi Twitter określonych w tabeli. 
 
-    ![Ustawienia łącznika usługi Twitter](media/functions-twitter-email/azure_tweet.png)
+    ![Ustawienia łącznika usługi Twitter](media/functions-twitter-email/10-tweet-settings.png)
 
     | Ustawienie      |  Sugerowana wartość   | Opis                                        |
     | ----------------- | ------------ | ------------- |
     | **Wyszukiwany tekst** | #Azure | Użyj hasztagu dostatecznie popularnego, aby wygenerować nowe tweety w wybranym interwale. Jeśli używasz warstwy bezpłatnej, a hasztag jest zbyt popularny, możesz szybko zużyć przydział transakcji w interfejsie API usług Cognitive Services. |
-    | **Częstotliwość** | Minuta | Jednostka częstotliwości używana do sondowania usługi Twitter.  |
     | **Interwał** | 15 | Czas między żądaniami usługi Twitter w jednostkach częstotliwości. |
+    | **Częstotliwość** | Minuta | Jednostka częstotliwości używana do sondowania usługi Twitter.  |
 
 3.  Kliknij przycisk **Zapisz** w celu połączenia się z kontem usługi Twitter. 
 
@@ -183,31 +179,37 @@ Teraz aplikacja jest połączona z usługą Twitter. Następnie należy połącz
 
 1. Kliknij pozycję **Nowy krok**, a następnie pozycję **Dodaj akcję**.
 
-    ![Nowy krok, a następnie pozycja Dodaj akcję](media/functions-twitter-email/new_step.png)
+2. W obszarze **Wybierz akcję** wpisz **Analiza tekstu**, a następnie kliknij akcję **Wykryj tonację**.
+    
+    ![Nowy krok, a następnie pozycja Dodaj akcję](media/functions-twitter-email/11-detect-sentiment.png)
 
-2. W obszarze **Wybierz akcję** kliknij pozycję **Analiza tekstu**, a następnie akcję **Wykryj tonację**.
+3. Wpisz nazwę połączenia, taką jak `MyCognitiveServicesConnection`, wklej klucz interfejsu API usług Cognitive Services i punkt końcowy usług Cognitive Services zapisane w edytorze tekstów, a następnie kliknij pozycję **Utwórz**.
 
-    ![Wykrywanie tonacji](media/functions-twitter-email/detect_sent.png)
+    ![Nowy krok, a następnie pozycja Dodaj akcję](media/functions-twitter-email/12-connection-settings.png)
 
-3. Wpisz nazwę połączenia, na przykład `MyCognitiveServicesConnection`, wklej klucz dla zapisanego interfejsu API usług Cognitive Services i kliknij przycisk **Utwórz**.  
+4. Następnie wprowadź **Tekst tweetu** w polu tekstowym i kliknij pozycję **Nowy krok**.
 
-4. Kliknij pozycję **Tekst do przeanalizowania** > **Tekst tweetu**, a następnie kliknij przycisk **Zapisz**.  
-
-    ![Wykrywanie tonacji](media/functions-twitter-email/ds_tta.png)
+    ![Definiowanie tekstu do przeanalizowania](media/functions-twitter-email/13-analyze-tweet-text.png)
 
 Skonfigurowano już wykrywanie tonacji, więc można dodać połączenie z funkcją wykorzystującą dane wyjściowe wyniku tonacji.
 
 ## <a name="connect-sentiment-output-to-your-function"></a>Łączenie danych wyjściowych tonacji z funkcją
 
-1. W Projektancie aplikacji usługi Logic Apps kliknij pozycję **Nowy krok** > **Dodaj akcję**, a następnie pozycję **Azure Functions**. 
+1. W projektancie usługi Logic Apps kliknij kolejno pozycje **Nowy krok** > **Dodaj akcję**, zastosuj filtr **Azure Functions** i kliknij pozycję **Wybierz funkcję platformy Azure**.
 
-2. Kliknij pozycję **Wybierz funkcję platformy Azure** i wybierz utworzoną wcześniej funkcję **CategorizeSentiment**.  
+    ![Wykrywanie tonacji](media/functions-twitter-email/14-azure-functions.png)
+  
+4. Wybierz aplikację funkcji, która została utworzona wcześniej.
 
-    ![Okno Azure Functions z wyświetloną pozycją Wybierz funkcję platformy Azure](media/functions-twitter-email/choose_fun.png)
+    ![Wybieranie funkcji](media/functions-twitter-email/15-select-function.png)
 
-3. W polu **Treść żądania** kliknij pozycję **Score** (Wynik), a następnie pozycję **Zapisz**.
+5. Wybierz funkcję, która została utworzona na potrzeby tego samouczka.
 
-    ![Wynik](media/functions-twitter-email/trigger_score.png)
+    ![Wybieranie funkcji](media/functions-twitter-email/16-select-function.png)
+
+4. W polu **Treść żądania** kliknij pozycję **Score** (Wynik), a następnie pozycję **Zapisz**.
+
+    ![Wynik](media/functions-twitter-email/17-function-input-score.png)
 
 Teraz funkcja jest wyzwalana po wysłaniu wyniku tonacji z aplikacji logiki. Funkcja zwraca aplikacji logiki kategorię kodowaną kolorem. Następnie zostanie dodane powiadomienie e-mail wysyłane w razie zwrócenia przez funkcję wartości tonacji **RED** (Czerwony). 
 
@@ -217,26 +219,28 @@ Ostatnia część przepływu pracy polega na wyzwoleniu wiadomości e-mail, gdy 
 
 1. W Projektancie aplikacji usługi Logic Apps kliknij pozycję **Nowy krok** > **Dodaj połączenie**. 
 
+    ![Dodaj warunek do aplikacji logiki.](media/functions-twitter-email/18-add-condition.png)
+
 2. Kliknij pozycję **Wybierz wartość**, a następnie pozycję **Treść**. Wybierz pozycję **jest równe**, kliknij pozycję **Wybierz wartość** i wpisz `RED`, a następnie kliknij przycisk **Zapisz**. 
 
-    ![Dodaj warunek do aplikacji logiki.](media/functions-twitter-email/condition.png)
+    ![Wybierz akcję dla warunku.](media/functions-twitter-email/19-condition-settings.png)    
 
 3. W obszarze **Jeśli prawda** kliknij pozycję **Dodaj akcję**, wyszukaj `outlook.com`, kliknij pozycję **Wyślij wiadomość e-mail** i zaloguj się na koncie w usłudze Outlook.com.
-    
-    ![Wybierz akcję dla warunku.](media/functions-twitter-email/outlook.png)
+
+    ![Skonfiguruj wiadomość e-mail do wysłania oraz akcję jej wysyłania.](media/functions-twitter-email/20-add-outlook.png)
 
     > [!NOTE]
     > Jeśli nie masz konta usługi Outlook.com, możesz wybrać inny łącznik, taki jak usługi Gmail lub programu Outlook w usłudze Office 365.
 
 4. W akcji **Wyślij wiadomość e-mail** użyj ustawień poczty e-mail określonych w tabeli. 
 
-    ![Skonfiguruj wiadomość e-mail do wysłania oraz akcję jej wysyłania.](media/functions-twitter-email/send_email.png)
-
-    | Ustawienie      |  Sugerowana wartość   | Opis  |
-    | ----------------- | ------------ | ------------- |
-    | **Do** | Wpisz adres e-mail | Adres e-mail, na który będą wysyłane powiadomienia. |
-    | **Temat** | Wykryto negatywną tonację tweetów  | Wiersz tematu powiadomienia w wiadomości e-mail.  |
-    | **Treść** | Tekst tweetu, lokalizacja | Kliknij parametry **Tekst tweetu** i **Lokalizacja**. |
+    ![Skonfiguruj wiadomość e-mail do wysłania oraz akcję jej wysyłania.](media/functions-twitter-email/21-configure-email.png)
+    
+| Ustawienie      |  Sugerowana wartość   | Opis  |
+| ----------------- | ------------ | ------------- |
+| **Do** | Wpisz adres e-mail | Adres e-mail, na który będą wysyłane powiadomienia. |
+| **Temat** | Wykryto negatywną tonację tweetów  | Wiersz tematu powiadomienia w wiadomości e-mail.  |
+| **Treść** | Tekst tweetu, lokalizacja | Kliknij parametry **Tekst tweetu** i **Lokalizacja**. |
 
 5.  Kliknij pozycję **Zapisz**.
 
@@ -248,7 +252,7 @@ Przepływ pracy jest gotowy, można więc włączyć aplikację logiki i przyjrz
 
 2. W lewej kolumnie kliknij pozycję **Przegląd**, aby zobaczyć stan aplikacji logiki. 
  
-    ![Stan wykonania aplikacji logiki](media/functions-twitter-email/over1.png)
+    ![Stan wykonania aplikacji logiki](media/functions-twitter-email/22-execution-history.png)
 
 3. Opcjonalnie: kliknij jeden z przebiegów, aby wyświetlić szczegóły wykonania.
 
@@ -258,11 +262,17 @@ Przepływ pracy jest gotowy, można więc włączyć aplikację logiki i przyjrz
 
 5. Po wykryciu potencjalnie negatywnej tonacji otrzymasz wiadomość e-mail. Jeśli wiadomość e-mail nie nadeszła, możesz tak zmienić kod funkcji, aby wartość RED (Czerwony) była zwracana zawsze:
 
-        return req.CreateResponse(HttpStatusCode.OK, "RED");
+    ```csharp
+    return (ActionResult)new OkObjectResult("RED");
+    ```
 
     Po zweryfikowaniu powiadomień e-mail przywróć pierwotną postać kodu:
 
-        return req.CreateResponse(HttpStatusCode.OK, category);
+    ```csharp
+    return requestBody != null
+        ? (ActionResult)new OkObjectResult(category)
+        : new BadRequestObjectResult("Please pass a value on the query string or in the request body");
+    ```
 
     > [!IMPORTANT]
     > Po ukończeniu tego samouczka najlepiej jest wyłączyć aplikację logiki. Wyłączenie aplikacji pozwala uniknąć naliczania opłat za wykonania i zużywania transakcji w interfejsie API usług Cognitive Services.
@@ -271,7 +281,7 @@ Teraz wiesz już, jak łatwe jest integrowanie usługi Functions w przepływie p
 
 ## <a name="disable-the-logic-app"></a>Wyłączanie aplikacji logiki
 
-Aby wyłączyć aplikację logiki, kliknij pozycję **Przegląd**, a następnie pozycję **Wyłącz** w górnej części ekranu. Spowoduje to zatrzymanie uruchamiania aplikacji logiki i naliczania opłat bez usuwania aplikacji. 
+Aby wyłączyć aplikację logiki, kliknij pozycję **Przegląd**, a następnie pozycję **Wyłącz** w górnej części ekranu. Wyłączenie aplikacji spowoduje jej zatrzymanie oraz przerwanie naliczania opłat bez usuwania aplikacji.
 
 ![Dzienniki funkcji](media/functions-twitter-email/disable-logic-app.png)
 

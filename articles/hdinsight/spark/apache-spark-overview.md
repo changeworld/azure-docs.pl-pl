@@ -2,19 +2,19 @@
 title: Co to jest platforma Apache Spark w usłudze Azure HDInsight
 description: Ten artykuł przedstawia wprowadzenie do platformy Spark w usłudze HDInsight i różne scenariusze korzystania z klastra Spark w usłudze HDInsight.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: overview
 ms.date: 05/07/2018
-ms.author: jasonh
-ms.openlocfilehash: 7bc7c95c0d15e0c33f7f9a705fb47d27f9daacec
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.author: hrasheed
+ms.openlocfilehash: 20d44e05725b034326398c967efbd997433d5200
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378721"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230550"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Co to jest platforma Apache Spark w usłudze Azure HDInsight
 
@@ -55,7 +55,7 @@ Klastry Spark w usłudze HDInsight obejmują następujące składniki, które s�
 * [Notes Jupyter](https://jupyter.org)
 * [Notes Zeppelin](http://zeppelin-project.org/)
 
-Klastry Spark w usłudze HDInsight obejmują też [sterownik ODBC](http://go.microsoft.com/fwlink/?LinkId=616229) zapewniający łączność z klastrami Spark w usłudze HDInsight z poziomu narzędzi do analizy biznesowej, takich jak Microsoft Power BI.
+Klastry Spark w usłudze HDInsight obejmują też [sterownik ODBC](https://go.microsoft.com/fwlink/?LinkId=616229) zapewniający łączność z klastrami Spark w usłudze HDInsight z poziomu narzędzi do analizy biznesowej, takich jak Microsoft Power BI.
 
 ## <a name="spark-cluster-architecture"></a>Architektura klastra Spark
 

@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 7e2225a173562be28840cb0a66913b9f8c9657ff
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4608e9ec0cd67b6c0f7ac23e27761b0355a5d738
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962049"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50911868"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v10-endpoint"></a>Szybki start: rejestrowanie aplikacji z punktem końcowym usługi Azure Active Directory w wersji 1.0
 
@@ -31,7 +31,10 @@ Deweloperzy w przedsiębiorstwach i dostawcy oprogramowania jako usługi (SaaS, 
 
 Każda aplikacja, która ma korzystać z funkcji usługi Azure AD, musi najpierw zostać zarejestrowana w dzierżawie usługi Azure AD. Proces rejestracji obejmuje przekazanie do usługi Azure AD szczegółów aplikacji, takich jak adres URL, pod którym jest zlokalizowana, adres URL do wysyłania odpowiedzi po uwierzytelnieniu użytkownika, identyfikator URI służący do zidentyfikowania aplikacji i tak dalej.
 
-W tym przewodniku Szybki start dowiesz się, jak dodać i zarejestrować aplikację w usłudze Azure AD.
+Z tego przewodnika Szybki start dowiesz się, jak dodać i zarejestrować aplikację w usłudze Azure AD przy użyciu istniejącego środowiska **Rejestracje aplikacji** w witrynie Azure Portal.
+
+> [!NOTE]
+> Rejestrujesz nową aplikację? Wypróbuj nowe środowisko **Rejestracje aplikacji (wersja zapoznawcza)** w witrynie Azure Portal. Aby rozpocząć pracę, zobacz [Rejestrowanie aplikacji (wersja zapoznawcza)](quickstart-register-app.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 224a0ab83720bb9605f2dad9c2612630e90fea2a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: a05ab716c8aea958e13ebba0dc9ceb09bf3d7cce
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341739"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913533"
 ---
 # <a name="quickstart-translator-speech-api-with-c"></a>Szybki start: interfejs API tłumaczenia mowy w usłudze Translator — C# 
 <a name="HOLTop"></a>
@@ -26,7 +26,7 @@ W tym artykule pokazano, jak używać interfejsu API tłumaczenia mowy w usłudz
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do uruchamiania tego kodu w systemie Windows jest potrzebny [program Visual Studio 2017](https://www.visualstudio.com/downloads/). (Można korzystać z bezpłatnej wersji Community Edition).
+Do uruchamiania tego kodu w systemie Windows jest potrzebny [program Visual Studio 2017](https://www.visualstudio.com/downloads/). (Można korzystać z bezpłatnej wersji Community Edition). Jeśli używasz systemu Mac OS lub Linux, możesz również użyć edytora tekstów [Visual Studio Code] (https://code.visualstudio.com/Download) jako alternatywy.
 
 Plik wav o nazwie „speak.wav” musi znajdować się w tym samym folderze co plik wykonywalny, który skompilujesz przy użyciu poniższego kodu. Ten plik wav powinien być plikiem zapisanym w standardzie PCM, o 16-bitowej rozdzielczości, częstotliwości 16 kHz w formacie mono.
 

@@ -1,5 +1,5 @@
 ---
-title: Przeprowadzanie migracji z programu SQL Server do usługi Azure SQL Database w trybie offline za pomocą usługi Azure Database Migration Service | Microsoft Docs
+title: 'Samouczek: przeprowadzanie migracji z programu SQL Server do usługi Azure SQL Database w trybie offline za pomocą usługi Azure Database Migration Service | Microsoft Docs'
 description: Dowiedz się, w jaki sposób przeprowadzić migrację z lokalnego programu SQL Server do usługi Azure SQL Database w trybie offline za pomocą usługi Azure Database Migration Service.
 services: dms
 author: pochiraju
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 6b8b6994b810db939a5e690d16d3c5d2f1a0825f
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 783785a73b3a6a99126b07f3759be540fe3098d8
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945403"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959243"
 ---
-# <a name="migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Przeprowadzanie migracji z programu SQL Server do usługi Azure SQL Database w trybie offline przy użyciu usługi DMS
+# <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Samouczek: przeprowadzanie migracji z programu SQL Server do usługi Azure SQL Database w trybie offline przy użyciu usługi DMS
 Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu SQL Server do usługi [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). W tym samouczku przeprowadzisz migrację bazy danych **Adventureworks2012** przywróconej do lokalnego wystąpienia programu SQL Server 2016 (lub nowszej wersji) do usługi Azure SQL Database, używając usługi Azure Database Migration Service.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:

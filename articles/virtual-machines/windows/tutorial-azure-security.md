@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0fd843b150148057399a4e05f5e25a728cd4ae56
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7cf3db5020d6a100ca6afdd5a1dccd522189720d
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298514"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978506"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Samouczek: monitorowanie maszyn wirtualnych z systemem Windows za pomocą usługi Azure Security Center
 
@@ -133,7 +133,7 @@ W tym samouczku skonfigurowano usługę Azure Security Center, a następnie spra
 > * Wyświetlanie problemów z kondycją konfiguracji i ich rozwiązywanie
 > * Przeglądanie wykrytych zagrożeń
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak utworzyć potok ciągłej integracji/ciągłego wdrażania za pomocą usługi Azure DevOps oraz maszyny wirtualnej z systemem Windows i z uruchomionymi usługami IIS.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zainstalować stos rozwiązania SQL&#92;IIS&#92;.NET na dwóch maszynach wirtualnych z systemem Windows.
 
 > [!div class="nextstepaction"]
-> [Azure Pipelines(./tutorial-vsts-iis-cicd.md)
+> [Stos SQL&#92;IIS&#92;.NET](tutorial-iis-sql.md)

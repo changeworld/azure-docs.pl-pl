@@ -11,15 +11,15 @@ author: David-Engel
 ms.author: v-daveng
 ms.reviewer: MightyPen
 manager: craigg
-ms.date: 09/07/2018
-ms.openlocfilehash: 94da0ad79b0e01f3baa7f20661e45f873c742fd6
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 11/01/2018
+ms.openlocfilehash: c270fef40b732f170add32ef52eeadc790d8cd83
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063374"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913511"
 ---
-# <a name="use-go-to-query-an-azure-sql-database"></a>Korzystanie z języka Go do wykonywania zapytań w bazie danych Azure SQL Database
+# <a name="quickstart-use-go-to-query-an-azure-sql-database"></a>Szybki start: korzystanie z języka Go do wykonywania zapytań w bazie danych Azure SQL Database
 
 W tym przewodniku Szybki start przedstawiono sposób nawiązywania połączeń z bazą danych Azure SQL Database za pomocą języka [Go](https://godoc.org/github.com/denisenkom/go-mssqldb). Ponadto przedstawiono instrukcje języka Transact-SQL umożliwiające wykonywanie zapytań i modyfikowanie danych.
 

@@ -1,36 +1,38 @@
 ---
-title: Wdrażanie i konfigurowanie usługi Azure Firewall przy użyciu witryny Azure Portal
+title: 'Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal'
 description: W ramach tego samouczka dowiesz się, jak wdrożyć i skonfigurować usługę Azure Firewall przy użyciu witryny Azure Portal.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/30/2018
+ms.date: 11/6/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 47a04df843ec307b54cc1d6597f9a3cf8668e291
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 4873da97b790df98b6d10ae8b7a57fc39b534755
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238832"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278586"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal
 
-Usługa Azure Firewall ma dwa typy reguł do kontrolowania wychodzącego dostępu:
+Kontrolowanie dostępu do sieciowego ruchu wychodzącego jest ważną częścią ogólnego planu zabezpieczeń sieci. Może na przykład zajść konieczność ograniczenia dostępu do witryn internetowych lub do wychodzących adresów IP i udostępnionych portów.
 
-- **Reguły aplikacji**
+Jednym ze sposobów kontrolowania dostępu do sieciowego ruchu wychodzącego z podsieci platformy Azure jest użycie usługi Azure Firewall. Za pomocą usługi Azure Firewall można skonfigurować następujące reguły:
 
-   Umożliwiają skonfigurowanie w pełni kwalifikowanych nazw domen (FQDN), do których można uzyskać dostęp z podsieci. Na przykład można zezwolić na dostęp do domeny *github.com* z podsieci.
-- **Reguły sieci**
-
-   Umożliwiają skonfigurowanie reguł zawierających adres źródłowy, protokół, port docelowy i adres docelowy. Na przykład można utworzyć regułę zezwalającą na ruch na porcie 53 (DNS) do adresu IP serwera DNS z podsieci.
+* Reguły aplikacji, które definiują w pełni kwalifikowane nazwy domen (FQDN), do których można uzyskać dostęp z podsieci.
+* Reguły sieci, które definiują adres źródłowy, protokół, port docelowy i adres docelowy.
 
 Ruch sieciowy podlega skonfigurowanym regułom zapory podczas kierowania ruchu sieciowego do zapory jako bramy domyślnej podsieci.
 
-Reguły aplikacji i sieci są przechowywane w *kolekcjach reguł*. Kolekcja reguł to lista reguł, które mają tę samą akcję i priorytet.  Kolekcja reguł sieci to lista reguł sieci, a kolekcja reguł aplikacji to lista reguł aplikacji.
+W tym samouczku utworzysz uproszczoną pojedynczą sieć wirtualną z trzema podsieciami w celu łatwego wdrażania. W przypadku wdrożeń produkcyjnych zalecany jest [model typu gwiazda](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke), w którym zapora znajduje się we własnej sieci wirtualnej, a serwery obciążeń znajdują się w wirtualnych sieciach równorzędnych w tym samym regionie z co najmniej jedną podsiecią.
 
-Aby dowiedzieć się więcej na temat logiki przetwarzania reguł usługi Azure Firewall, zobacz [Azure Firewall rule processing logic (Logika przetwarzania reguł usługi Azure Firewall)](rule-processing.md).
+- **AzureFirewallSubnet** — w tej podsieci znajduje się zapora.
+- **Workload-SN** — w tej podsieci znajduje się serwer obciążeń. Ruch sieciowy tej podsieci przechodzi przez zaporę.
+- **Jump-SN** — w tej podsieci znajduje się serwer przesiadkowy. Serwer przesiadkowy ma publiczny adres IP, z którym możesz nawiązać połączenie przy użyciu pulpitu zdalnego. Stamtąd możesz połączyć się (przy użyciu innego pulpitu zdalnego) z serwerem obciążeń.
+
+![Infrastruktura sieci samouczka](media/tutorial-firewall-rules-portal/Tutorial_network.png)
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -38,29 +40,22 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Konfigurowanie testowego środowiska sieciowego
 > * Wdrażanie zapory
 > * Tworzenie trasy domyślnej
-> * Konfigurowanie reguł aplikacji
-> * Konfigurowanie reguł sieci
+> * Konfigurowanie aplikacji w celu umożliwienia dostępu do witryny github.com
+> * Konfigurowanie reguły sieci w celu umożliwienia dostępu do zewnętrznych serwerów DNS
 > * Testowanie zapory
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-W tym samouczku utworzysz pojedynczą sieć wirtualną z trzema podsieciami:
-- **FW-SN** — w tej podsieci znajduje się zapora.
-- **Workload-SN** — w tej podsieci znajduje się serwer obciążeń. Ruch sieciowy tej podsieci przechodzi przez zaporę.
-- **Jump-SN** — w tej podsieci znajduje się serwer przesiadkowy. Serwer przesiadkowy ma publiczny adres IP, z którym możesz nawiązać połączenie przy użyciu pulpitu zdalnego. Stamtąd możesz połączyć się (przy użyciu innego pulpitu zdalnego) z serwerem obciążeń.
-
-![Infrastruktura sieci samouczka](media/tutorial-firewall-rules-portal/Tutorial_network.png)
-
-W tym samouczku jest używana uproszczona konfiguracja sieci w celu łatwego wdrażania. W przypadku wdrożeń produkcyjnych zalecany jest [model typu gwiazda](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke), w którym zapora znajduje się we własnej sieci wirtualnej, a serwery obciążeń znajdują się w wirtualnych sieciach równorzędnych w tym samym regionie z co najmniej jedną podsiecią.
-
-## <a name="set-up-the-network-environment"></a>Konfigurowanie środowiska sieciowego
+## <a name="set-up-the-network"></a>Konfigurowanie sieci
 
 Najpierw utwórz grupę zasobów zawierającą zasoby wymagane do wdrożenia zapory. Następnie utwórz sieć wirtualną, podsieci i serwery do obsługi testowania.
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
+Grupa zasobów zawiera wszystkie zasoby wymagane w tym samouczku.
+
 1. Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http://portal.azure.com).
-2. Na stronie głównej witryny Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij pozycję **Dodaj**.
+2. Na stronie głównej witryny Azure Portal kliknij pozycję **Grupy zasobów** > **Dodaj**.
 3. W polu **Nazwa grupy zasobów** wpisz **Test-FW-RG**.
 4. W polu **Subskrypcja** wybierz subskrypcję.
 5. W polu **Lokalizacja grupy zasobów** wybierz lokalizację. Wszystkie kolejne zasoby, które utworzysz, muszą znajdować się w tej samej lokalizacji.
@@ -68,13 +63,15 @@ Najpierw utwórz grupę zasobów zawierającą zasoby wymagane do wdrożenia zap
 
 ### <a name="create-a-vnet"></a>Tworzenie sieci wirtualnej
 
+Ta sieć wirtualna będzie zawierać trzy podsieci.
+
 1. Na stronie głównej witryny Azure Portal kliknij pozycję **Wszystkie usługi**.
 2. W obszarze **Sieć** kliknij pozycję **Sieci wirtualne**.
 3. Kliknij pozycję **Add** (Dodaj).
 4. W polu **Nazwa** wpisz wartość **Test-FW-VN**.
 5. W polu **Przestrzeń adresowa** wpisz wartość **10.0.0.0/16**.
 6. W polu **Subskrypcja** wybierz subskrypcję.
-7. W obszarze **Grupa zasobów** wybierz pozycję **Użyj istniejącej**, a następnie wybierz pozycję **Test-FW-RG**.
+7. W obszarze **Grupa zasobów** wybierz pozycję **Użyj istniejącej** > **Test-FW-RG**.
 8. W polu **Lokalizacja** wybierz tę samą lokalizację, która była używana poprzednio.
 9. W obszarze **Podsieci** w polu **Nazwa** wpisz wartość **AzureFirewallSubnet**. Zapora będzie znajdować się w tej podsieci, a nazwą podsieci **musi** być AzureFirewallSubnet.
 10. W polu **Zakres adresów** wpisz wartość **10.0.1.0/24**.
@@ -87,9 +84,9 @@ Najpierw utwórz grupę zasobów zawierającą zasoby wymagane do wdrożenia zap
 
 Następnie należy utworzyć podsieci dla serwera przesiadkowego oraz podsieci dla serwerów obciążeń.
 
-1. Na stronie głównej witryny Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij pozycję **Test-FW-RG**.
+1. Na stronie głównej witryny Azure Portal kliknij pozycję **Grupy zasobów** > **Test-FW-RG**.
 2. Kliknij sieć wirtualną **Test-FW-VN**.
-3. Kliknij pozycję **Podsieci**, a następnie kliknij pozycję **+Podsieć**.
+3. Kliknij pozycję **Podsieci** > **+Podsieć**.
 4. W polu **Nazwa** wpisz wartość **Workload-SN**.
 5. W polu **Zakres adresów** wpisz wartość **10.0.2.0/24**.
 6. Kliknij przycisk **OK**.
@@ -102,14 +99,14 @@ Teraz utwórz maszyny wirtualne przesiadkową i obciążeń, a następnie umieś
 
 1. Na stronie głównej witryny Azure Portal kliknij pozycję **Wszystkie usługi**.
 2. W obszarze **Obliczanie** kliknij pozycję **Maszyny wirtualne**.
-3. Kliknij przycisk **Dodaj** i kliknij pozycję **system Windows Server**, kliknij pozycję **Windows Server 2016 Datacenter**, a następnie kliknij pozycję **Utwórz**.
+3. Kliknij kolejno pozycje **Dodaj** > **Windows Server** > **Windows Server 2016 Datacenter** > **Utwórz**.
 
 **Podstawy**
 
 1. W obszarze **Nazwa** wpisz wartość **Srv-Jump**.
 5. Wpisz nazwę użytkownika i hasło.
 6. W polu **Subskrypcja** wybierz subskrypcję.
-7. W obszarze **Grupa zasobów** kliknij opcję **Użyj istniejącej**, a następnie wybierz pozycję **Test-FW-RG**.
+7. W obszarze **Grupa zasobów** kliknij opcję **Użyj istniejącej** > **Test-FW-RG**.
 8. W polu **Lokalizacja** wybierz tę samą lokalizację, która była używana poprzednio.
 9. Kliknij przycisk **OK**.
 
@@ -143,9 +140,11 @@ Skorzystaj z informacji w poniższej tabeli, aby skonfigurować **ustawienia** d
 
 ## <a name="deploy-the-firewall"></a>Wdrażanie zapory
 
+Wdróż zaporę w sieci wirtualnej.
+
 1. Na stronie głównej portalu kliknij pozycję **Utwórz zasób**.
 2. Kliknij pozycję **Sieć**, a po liście **Polecane** kliknij pozycję **Zobacz wszystko**.
-3. Kliknij pozycję **Zapora**, a następnie kliknij pozycję **Utwórz**. 
+3. Kliknij pozycję **Zapora** > **Utwórz**. 
 4. Na stronie **Tworzenie zapory** strony skorzystaj z poniższej tabeli, aby skonfigurować zaporę:
    
    |Ustawienie  |Wartość  |
@@ -166,7 +165,7 @@ Skorzystaj z informacji w poniższej tabeli, aby skonfigurować **ustawienia** d
 
 ## <a name="create-a-default-route"></a>Tworzenie trasy domyślnej
 
-Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodzącego, aby przejść przez zaporę.
+Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodzącego, aby przechodziła przez zaporę.
 
 1. Na stronie głównej witryny Azure Portal kliknij pozycję **Wszystkie usługi**.
 2. W obszarze **Sieć** kliknij pozycję **Tabele tras**.
@@ -177,15 +176,12 @@ Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodz
 7. W polu **Lokalizacja** wybierz tę samą lokalizację, która była używana poprzednio.
 8. Kliknij pozycję **Utwórz**.
 9. Kliknij przycisk **Odśwież**, a następnie kliknij tabelę tras **Firewall-route**.
-10. Kliknij pozycję **Podsieci**, a następnie kliknij pozycję **Skojarz**.
-11. Kliknij pozycję **Sieć wirtualna**, a następnie wybierz pozycję **Test-FW-VN**.
-12. W polu **Podsieć** kliknij pozycję **Workload-SN**.
-
-    > [!IMPORTANT]
-    > Upewnij się, że wybrano tylko podsieć **Workload-SN** dla tej trasy. W przeciwnym razie zapora nie będzie działać poprawnie.
+10. Kliknij pozycję **Podsieci** > **Skojarz**.
+11. Kliknij pozycję **Sieć wirtualna** > **Test-FW-VN**.
+12. W polu **Podsieć** kliknij pozycję **Workload-SN**. Upewnij się, że wybrano tylko podsieć **Workload-SN** dla tej trasy. W przeciwnym razie zapora nie będzie działać poprawnie.
 
 13. Kliknij przycisk **OK**.
-14. Kliknij pozycję **Trasy**, a następnie kliknij pozycję **Dodaj**.
+14. Kliknij pozycję **Trasy** > **Dodaj**.
 15. W polu **Nazwa trasy** wpisz wartość **FW-DG**.
 16. W polu **Prefiks adresu** wpisz wartość **0.0.0.0/0**.
 17. W obszarze **Typ następnego skoku** wybierz pozycję **Urządzenie wirtualne**.
@@ -194,7 +190,9 @@ Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodz
 18. W polu **Adres następnego skoku** wpisz wcześniej zanotowany prywatny adres IP zapory.
 19. Kliknij przycisk **OK**.
 
-## <a name="configure-application-rules"></a>Konfigurowanie reguł aplikacji
+## <a name="configure-an-application-rule"></a>Konfigurowanie reguły aplikacji
+
+Jest to reguła aplikacji, która umożliwia ruchowi wychodzącemu dostęp do witryny github.com.
 
 1. Otwórz pozycję **Test-FW-RG** i kliknij zaporę **Test-FW01**.
 2. Na stronie **Test-FW01** w obszarze **Ustawienia** kliknij pozycję **Reguły**.
@@ -204,13 +202,15 @@ Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodz
 6. W polu **Akcja** wybierz opcję **Zezwalaj**.
 7. W obszarze **Reguły** w polu **Nazwa** wpisz wartość **AllowGH**.
 8. W polu **Adresy źródłowe** wpisz wartość **10.0.2.0/24**.
-9. W polu **Protocol:port** wpisz wartość **http, https**. 
+9. W polu **Protocol:port** wpisz wartość **http, https**.
 10. W polu **Docelowa nazwa FQDN** wpisz wartość **github.com**
 11. Kliknij pozycję **Add** (Dodaj).
 
 Usługa Azure Firewall zawiera wbudowaną kolekcję reguł dla nazw FQDN infrastruktury, które domyślnie są dozwolone. Te nazwy FQDN są specyficzne dla platformy i nie można ich używać do innych celów. Aby uzyskać więcej informacji, zobacz [Infrastrukturalne nazwy FQDN](infrastructure-fqdns.md).
 
-## <a name="configure-network-rules"></a>Konfigurowanie reguł sieci
+## <a name="configure-a-network-rule"></a>Konfigurowanie reguły sieci
+
+Jest to reguła sieci, która umożliwia ruchowi wychodzącemu dostęp do dwóch adresów IP na porcie 53 (DNS).
 
 1. Kliknij pozycję **Dodaj kolekcję reguł sieci**.
 2. W polu **Nazwa** wpisz wartość **Net-Coll01**.
@@ -226,7 +226,7 @@ Usługa Azure Firewall zawiera wbudowaną kolekcję reguł dla nazw FQDN infrast
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>Zmienianie podstawowego i pomocniczego adresu DNS dla interfejsu sieciowego **Srv-Work**
 
-Do celów testowych w tym samouczku skonfigurujesz podstawowe i pomocnicze adresy DNS. Nie jest to ogólne wymaganie usługi Azure Firewall. 
+Do celów testowych w tym samouczku skonfigurujesz podstawowe i pomocnicze adresy DNS. Nie jest to ogólne wymaganie usługi Azure Firewall.
 
 1. W witrynie Azure Portal otwórz grupę zasobów **Test-FW-RG**.
 2. Kliknij interfejs sieciowy dla maszyny wirtualnej **Srv-Work**.
@@ -238,11 +238,13 @@ Do celów testowych w tym samouczku skonfigurujesz podstawowe i pomocnicze adres
 
 ## <a name="test-the-firewall"></a>Testowanie zapory
 
+Teraz przetestuj zaporę, aby się upewnić, że działa ona zgodnie z oczekiwaniami.
+
 1. W witrynie Azure Portal sprawdź ustawienia sieci dla maszyny wirtualnej **Srv-Work** i zanotuj prywatny adres IP.
 2. Połącz pulpit zdalny z maszyną wirtualną **Srv-Jump**, a następnie z tego miejsca otwórz połączenie pulpitu zdalnego z prywatnym adresem IP **Srv-Work**.
 
 5. Otwórz program Internet Explorer i przejdź do http://github.com.
-6. Kliknij przycisk **OK** i **Zamknij** dla alertów zabezpieczeń.
+6. Kliknij przyciski **OK** > **Zamknij** dla alertów zabezpieczeń.
 
    Powinna zostać wyświetlona strona główna usługi GitHub.
 
@@ -260,17 +262,6 @@ Teraz upewnij się, czy reguły zapory działają:
 Możesz zachować zasoby zapory na potrzeby kolejnego samouczka, a jeśli nie będą już potrzebne, możesz usunąć grupę zasobów **Test-FW-RG**, aby usunąć wszystkie zasoby związane z zaporą.
 
 ## <a name="next-steps"></a>Następne kroki
-
-W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> * Konfigurowanie sieci
-> * Tworzenie zapory
-> * Tworzenie trasy domyślnej
-> * Konfigurowanie reguł zapory aplikacji i sieci
-> * Testowanie zapory
-
-Następnie możesz monitorować dzienniki usługi Azure Firewall.
 
 > [!div class="nextstepaction"]
 > [Samouczek: monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)

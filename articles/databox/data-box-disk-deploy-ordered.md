@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/04/2018
+ms.date: 11/05/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: bd90d3c4c9207374d6a6085df6a3962ef42b68a9
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: fae5771afea742b2746c32e1ed6ae88c511876e6
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091438"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037961"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk-preview"></a>Samouczek: zamawianie usługi Azure Data Box Disk (wersja zapoznawcza)
 
-Azure Data Box Disk to hybrydowe rozwiązanie w chmurze, które umożliwia importowanie danych lokalnych na platformę Azure szybko, łatwo i bez problemów. Możesz przenieść dane na dyski półprzewodnikowe (SSD) dostarczone przez firmę Microsoft i wysłać te dyski z powrotem. Te dane są następnie przekazywane na platformę Azure. 
+Azure Data Box Disk to hybrydowe rozwiązanie w chmurze, które umożliwia importowanie danych lokalnych na platformę Azure szybko, łatwo i bez problemów. Możesz przenieść dane na dyski półprzewodnikowe (SSD) dostarczone przez firmę Microsoft i wysłać te dyski z powrotem. Te dane są następnie przekazywane na platformę Azure.
 
 W tym samouczku opisano sposób zamawiania usługi Azure Data Box Disk. Ten samouczek zawiera informacje dotyczące:
 
@@ -34,7 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 > - Usługa Data Box Disk jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 > - W okresie obowiązywania wersji zapoznawczej urządzenie Data Box Disk może być wysyłane do klientów w Stanach Zjednoczonych, Europie Zachodniej i Północnej, Kanadzie i Australii. Aby uzyskać więcej informacji, przejdź do tematu [Dostępność regionalna](data-box-disk-overview.md#region-availability).
 
-## <a name="sign-up"></a>Rejestrowanie 
+## <a name="sign-up"></a>Rejestrowanie
 
 Usługa Data Box Disk jest dostępna w wersji zapoznawczej i musisz utworzyć jej konto. Wykonaj poniższe kroki, aby utworzyć konto usługi Data Box:
 
@@ -64,7 +64,7 @@ Wykonaj poniższe czynności w witrynie [Azure Portal](https://aka.ms/azuredatab
     |Docelowy region platformy Azure|Wybierz region platformy Azure, do którego chcesz przenieść dane.|
 
   
-5.  Wybierz pozycję **Data Box Disk**. Maksymalna pojemność rozwiązania w pojedynczym zamówieniu obejmującym 5 dysków to 35 TB. W przypadku większych ilości danych można utworzyć wiele zamówień. 
+5.  Wybierz pozycję **Data Box Disk**. Maksymalna pojemność rozwiązania w pojedynczym zamówieniu obejmującym 5 dysków to 35 TB. W przypadku większych ilości danych można utworzyć wiele zamówień.
 
      ![Wybieranie opcji Data Box Disk](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
 
@@ -77,6 +77,7 @@ Wykonaj poniższe czynności w witrynie [Azure Portal](https://aka.ms/azuredatab
     |Docelowy region platformy Azure| Wybierz region swojego konta magazynu.<br> Obecnie są obsługiwane konta magazynu we wszystkich regionach USA, regionach Europa Zachodnia i Europa Północna, Kanadzie i Australii. |
     |Konta magazynu|W oparciu o wybrany region platformy Azure wybierz z listy filtrowanej istniejące konto magazynu. <br>Można również utworzyć nowe konto ogólnego przeznaczenia w wersji 1 lub konto ogólnego przeznaczenia w wersji 2. |
     |Szacowany rozmiar danych w terabajtach (TB)| Wprowadź szacowany rozmiar w TB. <br>W zależności od rozmiaru danych firma Microsoft wysyła odpowiednią liczbę dysków SSD o pojemności 8 TB (7 TB pojemności do wykorzystania). <br>Maksymalna pojemność do wykorzystania na 5 dyskach to maksymalnie 35 TB. |
+    |Klucz dostępu dla dysków| Jeśli zaznaczono opcję **Użyj niestandardowego klucza dostępu zamiast tego wygenerowanego przez platformę Azure**, podaj klucz dostępu dla dysków. <br> Podaj klucz alfanumeryczny zawierający od 12 do 32 znaków, w tym co najmniej jedną cyfrę i jeden znak specjalny. Dozwolone są następujące znaki specjalne: `@?_+`. <br> Tę opcję możesz pominąć i do odblokowywania dysków korzystać z klucza dostępu wygenerowanego przez platformę Azure.|
 
 13. Kliknij przycisk **Dalej**. 
 

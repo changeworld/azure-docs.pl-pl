@@ -1,40 +1,44 @@
 ---
 title: Wypróbowywanie i uruchamianie symulacji urządzenia na platformie Azure | Microsoft Docs
-description: W tym przewodniku Szybki start wdrożysz akcelerator rozwiązania do symulacji urządzenia usługi Azure IoT. Utworzysz symulację przy użyciu pulpitu nawigacyjnego rozwiązania.
-author: dominicbetts
+description: W tym przewodniku Szybki start wdrożysz symulację urządzenia usługi IoT Azure i uruchomisz symulację
+author: troyhopwood
 manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/05/2018
-ms.author: dobett
-ms.openlocfilehash: 549a1b867ad35c6de42969722ba5a2bd28c8f99a
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.date: 09/28/2018
+ms.author: troyhop
+ms.openlocfilehash: a109f3536ea8709313de3d1d6d17ce69c5652289
+ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213160"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50753937"
 ---
-# <a name="quickstart-deploy-and-run-a-cloud-based-device-simulation-solution"></a>Szybki start: wdrażanie i uruchamianie rozwiązania do symulacji urządzenia opartego na chmurze
+# <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Szybki start: wdrażanie i uruchamianie symulacji urządzenia usługi IoT na platformie Azure
 
-W tym przewodniku Szybki start pokazano, w jaki sposób wdrożyć akcelerator rozwiązania do symulacji urządzenia usługi Azure IoT w celu przetestowania rozwiązania IoT. Po wdrożeniu akceleratora rozwiązania należy użyć strony **Symulacja**, aby utworzyć i uruchomić symulację.
+W tym przewodniku Szybki start przedstawiono sposób wdrażania symulacji urządzenia usługi Azure IoT w celu przetestowania rozwiązania usługi IoT. Po wdrożeniu akceleratora rozwiązań możesz uruchomić przykładową symulację, aby rozpocząć pracę.
 
 Do wykonania kroków tego przewodnika Szybki start jest potrzebna aktywna subskrypcja platformy Azure.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="deploy-the-solution"></a>Wdrażanie rozwiązania
+## <a name="deploy-device-simulation"></a>Wdrażanie symulacji urządzenia
 
-W przypadku wdrażania akceleratora rozwiązań w ramach subskrypcji platformy Azure musisz ustawić niektóre opcje konfiguracji.
+W przypadku wdrażania symulacji urządzenia w ramach subskrypcji platformy Azure musisz ustawić niektóre opcje konfiguracji.
 
 Zaloguj się do witryny [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) przy użyciu poświadczeń konta platformy Azure.
 
-Kliknij przycisk **Wypróbuj teraz**  na kafelku **Symulacja urządzenia**.
+Kliknij kafelek **Symulacja urządzenia**:
 
 ![Wybieranie symulacji urządzenia](./media/quickstart-device-simulation-deploy/devicesimulation.png)
 
-Na stronie **Tworzenie rozwiązania Symulacja urządzenia** wpisz unikatową **nazwę rozwiązania**. Zanotuj nazwę rozwiązania — jest to nazwa grupy zasobów platformy Azure, która zawiera wszystkie zasoby rozwiązania.
+Kliknij pozycję **Wypróbuj teraz** na stronie opisu symulacji urządzenia:
+
+![Klikanie pozycji Wypróbuj teraz](./media/quickstart-device-simulation-deploy/devicesimulationPDP.png)
+
+Na stronie **Tworzenie rozwiązania Symulacja urządzenia** wpisz unikatową **nazwę rozwiązania**.
 
 W polach **Subskrypcja** i **Region** wybierz wartości, których chcesz użyć do wdrożenia akceleratora rozwiązania. Zwykle jest wybierany region znajdujący się najbliżej. Musisz być [użytkownikiem lub administratorem globalnym](iot-accelerators-permissions.md) w ramach subskrypcji.
 
@@ -46,55 +50,49 @@ Kliknij przycisk **Utwórz rozwiązanie**, aby rozpocząć aprowizację rozwiąz
 
 ## <a name="sign-in-to-the-solution"></a>Logowanie się do rozwiązania
 
-Po zakończeniu procesu aprowizacji możesz zalogować się na pulpicie nawigacyjnym akceleratora rozwiązania do symulacji urządzenia.
+Po zakończeniu procesu aprowizacji możesz zalogować się do wystąpienia symulacji urządzenia, klikając przycisk **Uruchom**:
 
-Na stronie **Aprowizowane rozwiązania** kliknij nowy akcelerator rozwiązania do symulacji urządzenia:
+![Otwieranie symulacji urządzenia](./media/quickstart-device-simulation-deploy/choosenew.png)
 
-![Wybieranie nowego rozwiązania](./media/quickstart-device-simulation-deploy/choosenew.png)
+Kliknij pozycję **Zaakceptuj**, aby zaakceptować żądanie uprawnień. W przeglądarce zostanie wyświetlony pulpit nawigacyjny rozwiązania do symulacji urządzenia.
 
-Możesz przejrzeć informacje o akceleratorze rozwiązania do symulacji urządzenia w wyświetlonym panelu. Wybierz pozycję **Pulpit nawigacyjny rozwiązania**, aby wyświetlić akcelerator rozwiązania do symulacji urządzenia:
+Po pierwszym otwarciu zostanie wyświetlony pulpit nawigacyjny symulacji urządzenia z przewodnikiem **Wprowadzenie**. Kliknij pierwszy kafelek, aby otworzyć przykładową symulację. Jeśli zamkniesz przewodnik **Wprowadzenie**, możesz otworzyć **prostą przykładową symulację** na pulpicie nawigacyjnym, klikając jej kafelek:
 
-![Panel rozwiązania](./media/quickstart-device-simulation-deploy/solutionpanel.png)
+![Pulpit nawigacyjny rozwiązania](./media/quickstart-device-simulation-deploy/GettingStarted.png)
 
-Kliknij pozycję **Zaakceptuj**, aby zaakceptować żądanie uprawnień. W przeglądarce zostanie wyświetlony pulpit nawigacyjny rozwiązania do symulacji urządzenia:
+## <a name="sample-simulation"></a>Przykładowa symulacja
 
-[![Pulpit nawigacyjny rozwiązania](./media/quickstart-device-simulation-deploy/solutiondashboard-inline.png)](./media/quickstart-device-simulation-deploy/solutiondashboard-expanded.png#lightbox)
-
-## <a name="configure-the-simulation"></a>Konfigurowanie symulacji
-
-Pulpit nawigacyjny umożliwia skonfigurowanie i uruchomienie symulacji. Użyj wartości z poniższej tabeli, aby skonfigurować symulację:
+Ponieważ jest to symulacja przykładowa, nie można jej edytować. Symulacja jest konfigurowana z następującymi ustawieniami:
 
 | Ustawienie             | Wartość                       |
 | ------------------- | --------------------------- |
 | Docelowa usługa IoT Hub      | Użyj dostarczonej wstępnie usługi IoT Hub |
-| Model urządzenia        | Chiller                     |
+| Model urządzenia        | Ciężarówka                       |
 | Liczba urządzeń   | 10                          |
 | Częstotliwość telemetrii | 10 sekund                  |
-| Czas trwania symulacji | 5 minut                   |
+| Czas trwania symulacji | Uruchamianie bez ograniczeń            |
 
-[![Konfiguracja symulacji](./media/quickstart-device-simulation-deploy/simulationconfig-inline.png)](./media/quickstart-device-simulation-deploy/simulationconfig-expanded.png#lightbox)
+![Konfiguracja symulacji](./media/quickstart-device-simulation-deploy/SampleSimulation.png)
 
 ## <a name="run-the-simulation"></a>Uruchamianie symulacji
 
-Kliknij pozycję **Rozpocznij symulację**. Symulacja będzie działała przez wybrany czas. Możesz w dowolnym momencie zatrzymać symulację, klikając pozycję **Zatrzymaj symulację**. Symulacja przedstawia statystyki dotyczące bieżącego uruchomienia. Kliknij pozycję **Wyświetl metryki usługi IoT Hub w witrynie Azure Portal**, aby zapoznać się z metrykami zgłoszonymi przez centrum IoT Hub:
+Kliknij pozycję **Rozpocznij symulację**. Symulacja będzie uruchamiana bez ograniczeń zgodnie z konfiguracją. Możesz w dowolnym momencie zatrzymać symulację, klikając pozycję **Zatrzymaj symulację**. Symulacja przedstawia statystyki dotyczące bieżącego uruchomienia.
 
-[![Przebieg symulacji](./media/quickstart-device-simulation-deploy/simulationrun-inline.png)](./media/quickstart-device-simulation-deploy/simulationrun-expanded.png#lightbox)
+![Przebieg symulacji](./media/quickstart-device-simulation-deploy/runningsimulation.png)
 
-Możesz uruchomić tylko jedną symulację jednocześnie z jednego aprowizowanego wystąpienia akceleratora rozwiązania.
+Z poziomu wystąpienia symulacji urządzenia w danym momencie można uruchomić tylko jedną symulację urządzenia.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli planujesz dalsze działanie, akcelerator rozwiązania do symulacji urządzenia powinien pozostać wdrożony.
+Jeśli planujesz dalsze działanie, symulacja urządzenia powinna pozostać wdrożona.
 
-Jeśli akcelerator rozwiązań nie jest już potrzebny, usuń go na stronie [Aprowizowane rozwiązania](https://www.azureiotsolutions.com/Accelerators#dashboard), wybierając go, a następnie klikając pozycję **Usuń rozwiązanie**:
+Jeśli symulacja urządzenia nie jest już potrzebna, usuń ją na stronie [Aprowizowane rozwiązania](https://www.azureiotsolutions.com/Accelerators#dashboard), klikając jej kafelek, a następnie klikając pozycję **Usuń rozwiązanie**:
 
 ![Usuwanie rozwiązania](media/quickstart-device-simulation-deploy/deletesolution.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start wdrożono akcelerator rozwiązania do symulacji urządzenia i uruchomiono symulację urządzenia IoT.
-
-Aby dowiedzieć się, jak używać już istniejącego centrum IoT Hub w symulacji, zapoznaj się z następującymi instrukcjami:
+W tym przewodniku Szybki start wdrożono symulację urządzenia i uruchomiono przykładową symulację urządzenia usługi IoT.
 
 > [!div class="nextstepaction"]
-> [Use an existing IoT hub with the Device Simulation solution accelerator (Używanie istniejącego centrum IoT Hub z akceleratorem rozwiązania do symulacji urządzenia)](iot-accelerators-device-simulation-choose-hub.md)
+> [Utwórz symulację z co najmniej jednym typem urządzenia](iot-accelerators-device-simulation-create-simulation.md)

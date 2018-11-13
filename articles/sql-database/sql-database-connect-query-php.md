@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 2fc7b961df003fe05bc4ad4e49b9debb74c952fd
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 11/01/2018
+ms.openlocfilehash: 08bbe22cf0435f667e1fd065e9f747c2c9a92c94
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063238"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914179"
 ---
-# <a name="use-php-to-query-an-azure-sql-database"></a>Korzystanie z języka PHP do wykonywania zapytań w bazie danych Azure SQL
+# <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Szybki start: korzystanie z języka PHP do wykonywania zapytań w bazie danych Azure SQL
 
 W tym przewodniku Szybki start pokazano, jak używać [języka PHP](http://php.net/manual/en/intro-whatis.php) w celu utworzenia programu służącego do nawiązywania połączenia z usługą Azure SQL Database, a następnie, korzystając z instrukcji Transact-SQL, wysyłać zapytania o dane.
 

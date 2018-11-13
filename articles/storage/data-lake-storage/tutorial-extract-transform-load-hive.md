@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: 23478a1f72a4b74bcacf27d3b18116250eb6bfff
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4e7b6d5c2f84f7d385709dc780507c262081757a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984657"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280595"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>Samouczek: wyodrębnianie, przekształcanie i ładowanie danych przy użyciu oprogramowania Apache Hive w usłudze Azure HDInsight
 
@@ -67,7 +67,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="upload-data-to-an-hdinsight-cluster"></a>Przekazywanie danych do klastra usługi HDInsight
 
-Istnieje wiele sposobów przekazywania danych do magazynu skojarzonego z klastrem usługi HDInsight. W tej sekcji przekażesz dane za pomocą polecenia `scp`. Aby zapoznać się z innymi sposobami przekazywania danych, zobacz [Use Distcp to copy data between Azure Storage Blobs and Data Lake Storage Gen2 Preview (Kopiowanie danych między usługami Azure Blob Storage i Data Lake Storage 2. generacji w wersji zapoznawczej za pomocą narzędzia Distcp)](use-distcp.md).
+Istnieje wiele sposobów przekazywania danych do magazynu skojarzonego z klastrem usługi HDInsight. W tej sekcji przekażesz dane za pomocą polecenia `scp`. Aby poznać inne sposoby przekazywania danych, zobacz [Use Distcp to copy data between an existing storage account and a new storage account with Data Lake Storage Gen2 enabled](use-distcp.md) (Używanie narzędzia DistCp do kopiowania danych między istniejącym i nowym kontem magazynu z włączoną usługą Data Lake Storage Gen2).
 
 1. Otwórz wiersz polecenia i użyj następującego polecenia, aby przekazać plik zip do węzła głównego klastra usługi HDInsight:
 

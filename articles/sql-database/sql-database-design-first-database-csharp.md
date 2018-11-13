@@ -11,15 +11,15 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 manager: craigg-msft
-ms.date: 06/07/2018
-ms.openlocfilehash: 504fae03e06632f5960bfe0761cc0167b9e1d3fb
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 11/01/2018
+ms.openlocfilehash: 82cf0303019d2cbb620c442fd6f750f733930f84
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465222"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912343"
 ---
-# <a name="design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>Projektowanie bazy danych SQL na platformie Azure i nawiązywanie połączenia za pomocą języka C&#x23; i narzędzia ADO.NET
+# <a name="tutorial-design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>Samouczek: projektowanie bazy danych SQL na platformie Azure i nawiązywanie połączenia za pomocą języka C&#x23; i narzędzia ADO.NET
 
 Usługa Azure SQL Database to relacyjna baza danych oferowana jako usługa (DBaaS, database-as-a service) na platformie Microsoft Cloud (Azure). Z tego samouczka dowiesz się, jak przy użyciu witryny Azure Portal i narzędzia ADO.NET w programie Visual Studio wykonać następujące czynności:
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/25/2018
+ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: c3c0d9bb6da00272cc7da0ad9f4fae978552c39b
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 48bedff0cd09c3f0dbffdabe6a94847d035a0cf9
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352614"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963935"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Samouczek: konfigurowanie dołączania hybrydowego do usługi Azure Active Directory dla domen zarządzanych
 
@@ -140,6 +140,9 @@ Jeśli część urządzeń dołączonych do domeny to urządzenia z systemem Win
  
 - Konfigurowanie ustawień lokalnego intranetu na potrzeby rejestracji urządzeń
 
+- Kontrolowanie urządzeń z systemem Windows niższego poziomu 
+
+
 ### <a name="update-device-settings"></a>Aktualizacja ustawień urządzenia 
 
 Aby zarejestrować urządzenia z systemem Windows niższego poziomu, należy upewnić się, że skonfigurowano ustawienia urządzeń umożliwiające użytkownikom rejestrowanie urządzeń w usłudze Azure AD. W witrynie Azure Portal możesz znaleźć te ustawienia w obszarze:
@@ -163,6 +166,12 @@ Aby pomyślnie przeprowadzić dołączenie hybrydowe do usługi Azure AD dla urz
 - `https://autologon.microsoftazuread-sso.com`.
 
 Ponadto musisz włączyć opcję **Zezwalaj na aktualizacje na pasku stanu za pomocą skryptu** w lokalnej strefie intranetu użytkownika.
+
+
+### <a name="control-windows-down-level-devices"></a>Kontrolowanie urządzeń z systemem Windows niższego poziomu 
+
+Aby zarejestrować urządzenia z systemem Windows niższego poziomu, musisz pobrać i zainstalować pakiet Instalatora Windows (msi) z Centrum pobierania. Aby uzyskać więcej informacji, kliknij [tutaj](hybrid-azuread-join-control.md#control-windows-down-level-devices). 
+
 
 ## <a name="verify-the-registration"></a>Weryfikacja rejestracji
 

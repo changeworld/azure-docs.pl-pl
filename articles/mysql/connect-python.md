@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 7eef3d71a35b5016e48e519b95c2573fbe3390e7
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 54b25aa141da15224d5d8034ba54783d3633f5be
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265109"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914740"
 ---
 # <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Usługa Azure Database for MySQL: nawiązywanie połączeń z danymi i wykonywanie na nich zapytań za pomocą języka Python
 Ten przewodnik Szybki start przedstawia sposób nawiązywania połączeń z usługą Azure Database for MySQL za pomocą języka [Python](https://python.org). Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych na platformach Mac OS, Ubuntu Linux i Windows. W tym temacie założono, że wiesz już, jak opracowywać zawartość za pomocą języka Python, i dopiero zaczynasz pracę z usługą Azure Database for MySQL.
@@ -27,7 +27,11 @@ Ten przewodnik Szybki start jako punktu wyjścia używa zasobów utworzonych w j
 - [Tworzenie serwera usługi Azure Database for MySQL za pomocą interfejsu wiersza polecenia platformy Azure](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 ## <a name="install-python-and-the-mysql-connector"></a>Instalowanie języka Python i łącznika programu MySQL
-Zainstaluj język [Python](https://www.python.org/downloads/) i [łącznik programu MySQL dla języka Python](https://dev.mysql.com/downloads/connector/python/) na swojej maszynie. W zależności od używanej platformy wykonaj kroki w odpowiedniej sekcji:
+Zainstaluj język [Python](https://www.python.org/downloads/) i [łącznik programu MySQL dla języka Python](https://dev.mysql.com/downloads/connector/python/) na swojej maszynie. W zależności od używanej platformy wykonaj poniższe kroki z odpowiedniej sekcji. 
+
+> [!NOTE]
+> W tym przewodniku Szybki start jest używane pierwotne podejście do wykonywania zapytań języka SQL w celu nawiązania łączenia z bazą danych MySQL i uruchamiania w niej zapytań. W przypadku korzystania z platformy internetowej należy użyć łącznika zalecanego dla tej platformy. Na przykład zaleca się używanie łącznika [mysqlclient](https://pypi.org/project/mysqlclient/) z programem Django.
+>
 
 ### <a name="windows"></a>Windows
 1. Pobierz i zainstaluj język Python w wersji 2.7 z witryny [python.org](https://www.python.org/downloads/windows/). 
@@ -56,7 +60,7 @@ Zainstaluj język [Python](https://www.python.org/downloads/) i [łącznik progr
 
    ```bash
    pip install mysql-connector-python-rf
-   ```
+   ``` 
 
 ## <a name="get-connection-information"></a>Pobieranie informacji o połączeniu
 Pobierz informacje o połączeniu potrzebne do nawiązania połączenia z usługą Azure Database for MySQL. Potrzebna jest w pełni kwalifikowana nazwa serwera i poświadczenia logowania.
@@ -66,7 +70,6 @@ Pobierz informacje o połączeniu potrzebne do nawiązania połączenia z usług
 3. Kliknij nazwę serwera.
 4. Po przejściu do panelu **Przegląd** serwera zanotuj **nazwę serwera** i **nazwę logowania administratora serwera**. Jeśli zapomnisz hasła, możesz również je zresetować z poziomu tego panelu.
  ![Nazwa serwera usługi Azure Database for MySQL](./media/connect-python/1_server-overview-name-login.png)
-   
 
 ## <a name="run-python-code"></a>Uruchamianie kodu języka Python
 - Wklej kod do pliku tekstowego, a następnie zapisz plik w folderze projektu z rozszerzeniem py, takim jak C:\pythonmysql\createtable.py lub /home/username/pythonmysql/createtable.py.

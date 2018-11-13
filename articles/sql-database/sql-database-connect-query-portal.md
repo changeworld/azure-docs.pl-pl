@@ -12,15 +12,15 @@ author: AyoOlubeko
 ms.author: ayolubek
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/10/2018
-ms.openlocfilehash: bd956348a26d32687e1ff76f0ffcc58cc9dcf932
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 11/01/2018
+ms.openlocfilehash: d7b5c6b95cd11cd90f9d326e03e787a7196dcfd0
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241722"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913159"
 ---
-# <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Witryna Azure Portal: używanie edytora zapytań SQL do nawiązywania połączenia i wykonywania zapytań o dane
+# <a name="quickstart-azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Szybki start: witryna Azure Portal: używanie edytora zapytań SQL do nawiązywania połączenia i wykonywania zapytań o dane
 
 Edytor zapytań SQL jest przeglądarkowym narzędziem do wykonywania zapytań, które zapewnia wydajny i nieskomplikowany sposób wykonywania zapytań SQL do bazy danych Azure SQL lub magazynu danych Azure SQL bez opuszczania witryny Azure Portal. W tym przewodniku Szybki start pokazano, jak używać edytora zapytań w celu nawiązywania połączenia z bazą danych SQL, a następnie, korzystając z instrukcji Transact-SQL, wysyłać zapytania o dane oraz wstawiać, aktualizować i usuwać dane z bazy danych.
 

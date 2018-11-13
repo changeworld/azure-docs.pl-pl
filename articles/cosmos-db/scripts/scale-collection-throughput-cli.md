@@ -1,25 +1,17 @@
 ---
 title: Skrypt interfejsu wiersza polecenia platformy Azure — skalowanie przepływności kontenera usługi Azure Cosmos DB | Microsoft Docs
-description: Przykład skryptu interfejsu wiersza polecenia platformy Azure — skalowanie przepływności kontenera usługi Azure Cosmos DB
-services: cosmos-db
-documentationcenter: cosmosdb
-author: SnehaGunda
-manager: kfile
-tags: azure-service-management
+description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — skalowanie przepływności kontenera usługi Azure Cosmos DB
+author: markjbrown
 ms.service: cosmos-db
-ms.custom: mvc
-ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: cosmosdb
-ms.workload: database
-ms.date: 05/23/2018
-ms.author: sngun
-ms.openlocfilehash: 8cd8ba674040454138ba236d9e6f7d96b33cf1d4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/26/2018
+ms.author: mjbrown
+ms.openlocfilehash: 4eafc94349acaedeee72edb408d5cea43eae92c3
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973990"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005635"
 ---
 # <a name="scale-azure-cosmos-db-container-throughput-using-the-azure-cli"></a>Skalowanie przepływności kontenera usługi Azure Cosmos DB przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -27,36 +19,18 @@ Ten przykład skaluje przepływność dowolnego rodzaju kontenera usługi Azure 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten temat będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten temat będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
-[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/scale-cosmosdb-throughput/scale-cosmosdb-throughput.sh?highlight=40-46 "Scale Azure Cosmos DB throughput")]
-
-Powyższy przykładowy skrypt umożliwia utworzenie i skalowanie stałej kolekcji. Jeśli chcesz utworzyć i skalować kolekcję o nieograniczonej pojemności magazynu, musisz: 
- 
-* utworzyć kolekcję z co najmniej 1000 jednostek RU/s i 
-* określić klucz partycji podczas tworzenia kolekcji. 
-
-Następujące polecenie ilustruje przykład tworzenia kolekcji o nieograniczonej pojemności magazynu:
-
-```cli
-az cosmosdb collection create \
-    --collection-name $collectionName \
-    --name $name \
-    --db-name $databaseName \
-    --resource-group $resourceGroupName \
-    --throughput 1000
-    --partition-key-path /deviceId
-
-```
+[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/scale-cosmosdb-throughput/scale-cosmosdb-throughput.sh "Scale Azure Cosmos DB throughput")]
 
 ## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia
 
 Po wykonaniu przykładowego skryptu możesz uruchomić następujące polecenie, aby usunąć grupę zasobów i wszystkie skojarzone z nią zasoby.
 
 ```azurecli-interactive
-az group delete --name myResourceGroup
+az group delete --name $resourceGroupName
 ```
 
 ## <a name="script-explanation"></a>Objaśnienia dla skryptu
@@ -66,11 +40,14 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | Polecenie | Uwagi |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [az cosmosdb update](https://docs.microsoft.com/cli/azure/cosmosdb#az-cosmosdb-update) | Aktualizuje konto usługi Azure Cosmos DB. |
-| [az group delete](https://docs.microsoft.com/cli/azure/group#az-group-delete) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
+| [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Tworzy konto usługi Azure Cosmos DB. |
+| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Tworzy bazę danych usługi Azure Cosmos DB. |
+| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Tworzy kontener usługi Azure Cosmos DB. |
+| [az cosmosdb collection update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) | Aktualizuje kontener usługi Azure Cosmos DB. |
+| [az group delete](/cli/azure/group#az-group-delete) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
+Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 
 Więcej przykładów skryptów interfejsu wiersza polecenia usługi Azure Cosmos DB można znaleźć w [dokumentacji interfejsu wiersza polecenia usługi Azure Cosmos DB](../cli-samples.md).

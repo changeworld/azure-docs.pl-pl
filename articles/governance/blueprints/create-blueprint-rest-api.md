@@ -4,21 +4,21 @@ description: Usługa Azure Blueprints umożliwia tworzenie, definiowanie i wdra�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 11/07/2018
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: b873ee869b2044977ebefcfd65331567c24e7ec8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b600eeff0482944a8b9b18ad39c23ee6ea4700ce
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974208"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283550"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definiowanie i przypisywanie strategii platformy Azure przy użyciu interfejsu API REST
 
-Znajomość sposobu tworzenia i przypisywania strategii na platformie Azure umożliwia organizacji definiowanie typowych wzorców spójności oraz tworzenie konfiguracji wielokrotnego użytku, które można szybko wdrażać, w oparciu o szablony usługi Resource Manager, zasady, zabezpieczenia itd. Z tego samouczka dowiesz się, jak za pomocą usługi Azure Blueprints wykonywać niektóre typowe zadania związane z tworzeniem, publikowaniem i przypisywaniem strategii w organizacji, takie jak:
+Znajomość sposobu tworzenia i przypisywania strategii umożliwia definiowanie typowych wzorców tworzenia konfiguracji wielokrotnego użytku, które można szybko wdrażać, w oparciu o szablony usługi Resource Manager, zasady, zabezpieczenia itd. Z tego samouczka dowiesz się, jak za pomocą usługi Azure Blueprints wykonywać niektóre typowe zadania związane z tworzeniem, publikowaniem i przypisywaniem strategii w organizacji, takie jak:
 
 > [!div class="checklist"]
 > - Tworzenie nowej strategii i dodawanie różnych obsługiwanych artefaktów
@@ -33,6 +33,8 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="getting-started-with-rest-api"></a>Wprowadzenie do interfejsu API REST
 
 Jeśli jeszcze nie znasz interfejsu API REST, zacznij od przejrzenia [dokumentacji interfejsu API REST platformy Azure](/rest/api/azure/), aby uzyskać ogólny opis interfejsu API REST, a w szczególności identyfikatora URI żądania i treści żądania. W tym artykule te pojęcia służą do podawania wskazówek dotyczących pracy z usługą Azure Blueprints, dlatego praktyczna wiedza na ich temat jest niezbędna. Narzędzia, między innymi takie jak [ARMClient](https://github.com/projectkudu/ARMClient), mogą automatycznie obsługiwać autoryzację i są zalecane dla początkujących.
+
+Aby uzyskać informacje o specyfikacjach strategii, zobacz [Interfejs API REST usługi Azure Blueprints](/rest/api/blueprints/).
 
 ### <a name="rest-api-and-powershell"></a>Interfejs API REST i program PowerShell
 
@@ -59,7 +61,7 @@ Zastąp parametr `{subscriptionId}` w zmiennej **$restUri** powyżej, aby uzyska
 
 ## <a name="create-a-blueprint"></a>Tworzenie strategii
 
-Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utworzenie strategii z dostępnych zasobów. W tym przykładzie utwórz strategię o nazwie „MyBlueprint”, aby skonfigurować przypisania ról i zasad dla subskrypcji, dodaj grupę zasobów oraz utwórz przypisanie roli i szablonu usługi Resource Manager w grupie zasobów.
+Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utworzenie strategii z dostępnych zasobów. Utworzymy strategię o nazwie „MyBlueprint” służącą do konfigurowania przypisań ról i zasad dla subskrypcji. Następnie dodamy grupę zasobów, szablon usługi Resource Manager i przypisanie roli w grupie zasobów.
 
 > [!NOTE]
 > Gdy używasz interfejsu API REST, w pierwszej kolejności jest tworzony obiekt _strategii_. Dla każdego _artefaktu_ zawierającego parametry, który ma zostać dodany, parametry _strategii_ początkowej muszą zostać zdefiniowane wcześniej.
@@ -69,7 +71,7 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
 - `{YourMG}` — zastąp nazwą swojej grupy zarządzania
 - `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
 
-1. Utwórz obiekt _strategii_ początkowej. **Treść żądania** zawiera właściwości strategii, wszystkie grupy zasobów, które mają zostać utworzone, oraz wszystkie parametry poziomu strategii, które są określane podczas przypisywania i używane przez artefakty dodane w kolejnych krokach.
+1. Utwórz obiekt _strategii_ początkowej. **Treść żądania** zawiera właściwości strategii, wszystkie grupy zasobów, które mają zostać utworzone, oraz wszystkie parametry poziomu strategii. Parametry są określane podczas przypisywania i używane przez artefakty dodane w kolejnych krokach.
 
    - Identyfikator URI interfejsu API REST
 
@@ -148,7 +150,7 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
      }
      ```
 
-1. Dodaj przypisanie zasad w subskrypcji. **Treść żądania** definiuje _rodzaj_ artefaktu, właściwości, które dostosowują się do definicji inicjatywy lub zasad, oraz konfiguruje przypisanie zasad tak, aby były używane zdefiniowane parametry strategii, które zostaną skonfigurowane podczas przypisywania strategii.
+1. Dodaj przypisanie zasad w subskrypcji. **Treść żądania** definiuje _rodzaj_ artefaktu, właściwości, które dostosowują się do definicji inicjatywy lub zasad, oraz konfiguruje przypisanie zasad tak, aby używało zdefiniowanych parametrów strategii, które zostaną skonfigurowane podczas przypisywania strategii.
 
    - Identyfikator URI interfejsu API REST
 
@@ -176,7 +178,7 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
      }
      ```
 
-1. Dodaj kolejne przypisanie zasad dla tagu magazynu (używając ponownie parametru _storageAccountType_) w subskrypcji. Ten dodatkowy artefakt przypisania zasad pokazuje, że parametr zdefiniowany w strategii może być używany przez więcej niż jeden artefakt. W tym przykładzie parametr **storageAccountType** służy do ustawiania w grupie zasobów tagu zawierającego informacje o koncie magazynu, które zostanie utworzone w następnym kroku.
+1. Dodaj kolejne przypisanie zasad dla tagu magazynu (używając ponownie parametru _storageAccountType_) w subskrypcji. Ten dodatkowy artefakt przypisania zasad pokazuje, że parametr zdefiniowany w strategii może być używany przez więcej niż jeden artefakt. W tym przykładzie parametr **storageAccountType** służy do określania tagu w grupie zasobów. Ta wartość zawiera informacje o koncie magazynu, które zostanie tworzone w następnym kroku.
 
    - Identyfikator URI interfejsu API REST
 
@@ -204,7 +206,7 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
      }
      ```
 
-1. Dodaj szablon w grupie zasobów. **Treść żądania** dla szablonu usługi Resource Manager zawiera zwykły składnik JSON szablonu, definiuje docelową grupę zasobów za pomocą wartości **properties.resourceGroup** i ponownie używa parametrów strategii **storageAccountType**, **tagName** i **tagValue**, dostarczając je wszystkie do szablonu. Parametry strategii udostępnia się w szablonie, definiując wartość **properties.parameters**, a w pliku JSON szablonu ta para klucz/wartość służy do iniekcji wartości. Nazwy parametrów strategii i szablonu mogą być takie same, ale wprowadziliśmy inne, aby lepiej zilustrować sposób ich przekazywania ze strategii do artefaktu szablonu.
+1. Dodaj szablon w grupie zasobów. **Treść żądania** dla szablonu usługi Resource Manager zawiera normalny składnik JSON szablonu i definiuje docelową grupę zasobów za pomocą wartości **properties.resourceGroup**. Szablon używa również wielokrotnie parametrów strategii **storageAccountType**, **tagName** i **tagValue**, przekazując każdy z nich do szablonu. Parametry strategii są udostępniane w szablonie dzięki zdefiniowaniu wartości **properties.parameters**, a w pliku JSON szablonu ta para klucz-wartość służy do iniekcji wartości. Nazwy parametrów strategii i szablonu mogą być takie same, ale wprowadziliśmy inne, aby lepiej zilustrować sposób ich przekazywania ze strategii do artefaktu szablonu.
 
    - Identyfikator URI interfejsu API REST
 
@@ -325,7 +327,7 @@ Wartość zmiennej `{BlueprintVersion}` jest ciągiem liter, cyfr i łączników
 
 ## <a name="assign-a-blueprint"></a>Przypisywanie strategii
 
-Po opublikowaniu strategii przy użyciu interfejsu API REST można przypisać ją do subskrypcji. Przypisz utworzoną przez siebie strategię do jednej z subskrypcji w Twojej hierarchii grup zarządzania. **Treść żądania** określa strategię, która ma zostać przypisana, dostarcza nazwę i lokalizację do wszystkich grup zasobów w definicji strategii oraz podaje wszystkie parametry, które zostały zdefiniowane w strategii i są używane przez co najmniej jeden dołączony artefakt.
+Po opublikowaniu strategii przy użyciu interfejsu API REST można przypisać ją do subskrypcji. Przypisz utworzoną przez siebie strategię do jednej z subskrypcji w Twojej hierarchii grup zarządzania. **Treść żądania** określa strategię, która ma zostać przypisana, dostarcza nazwę i lokalizację do wszystkich grup zasobów w definicji strategii oraz podaje wszystkie parametry zdefiniowane w strategii i używane przez co najmniej jeden dołączony artefakt.
 
 1. Podaj jednostce usługi Azure Blueprint rolę **Właściciel** w subskrypcji docelowej. Identyfikator aplikacji jest statyczny (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), ale identyfikator jednostki usługi różni się w zależności od dzierżawy. Szczegółowych informacji na temat dzierżawy można żądać, używając poniższego interfejsu API REST. Korzysta on z [interfejsu API programu Graph usługi Azure Active Directory](../../active-directory/develop/active-directory-graph-api.md), który ma inną autoryzację.
 
@@ -388,7 +390,7 @@ Po opublikowaniu strategii przy użyciu interfejsu API REST można przypisać j�
 
 ## <a name="unassign-a-blueprint"></a>Cofanie przypisania strategii
 
-Strategie można usunąć z subskrypcji, jeśli nie są już potrzebne lub zostały zastąpione nowszymi strategiami zawierającymi zaktualizowane wzorce, zasady i projekty. Po usunięciu strategii artefakty przypisane w jej ramach są pozostawiane. Aby usunąć przypisanie strategii, wykonaj następującą operację interfejsu API REST:
+Strategię można usunąć z subskrypcji. Usunięcie często przeprowadza się, gdy zasoby artefaktu przestają być potrzebne. Po usunięciu strategii artefakty przypisane w jej ramach są pozostawiane. Aby usunąć przypisanie strategii, wykonaj następującą operację interfejsu API REST:
 
 - Identyfikator URI interfejsu API REST
 

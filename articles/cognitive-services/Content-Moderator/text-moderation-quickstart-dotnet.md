@@ -1,56 +1,51 @@
 ---
-title: 'Szybki Start: Sprawdź zawartości tekstowej w języku C# - Content Moderator'
+title: 'Szybki start: analizowanie zawartości tekstowej pod kątem niepożądanego materiału w języku C#'
 titlesuffix: Azure Cognitive Services
-description: Jak sprawdzić zawartość tekstu przy użyciu zestawu SDK Moderator zawartości dla języka C#
+description: Opis sposobu analizowania zawartości tekstowej pod kątem różnych rodzajów niepożądanego materiału przy użyciu zestawu SDK pakietu Content Moderator dla platformy .NET
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: conceptual
-ms.date: 10/10/2018
+ms.topic: quickstart
+ms.date: 10/31/2018
 ms.author: sajagtap
-ms.openlocfilehash: ae795ad823c32bc83669d5e98e3fd922500741d4
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
-ms.translationtype: MT
+ms.openlocfilehash: 0540a81db93570928dd33b66a69b6883b2df0cd9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309216"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007692"
 ---
-# <a name="quickstart-check-text-content-in-c"></a>Szybki Start: Sprawdź zawartości tekstowej w języku C# 
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Szybki start: analizowanie zawartości tekstowej pod kątem niepożądanego materiału w języku C# 
 
-Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z zestawu [SDK Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) do następujących zastosowań:
-
-- Wykrywać potencjalne wulgaryzmy w tekście do filtrowania na podstawie terminu
-- Modele oparte na nauce maszyny, aby użyć [klasyfikowania tekst](text-moderation-api.md#classification) na trzy kategorie.
-- Wykryj identyfikowalne dane osobowe (PII), takich jak Stany Zjednoczone i Zjednoczone Królestwo numery telefonów, adresy e-mail i Stanów Zjednoczonych, adresów pocztowych.
-- Normalizuj literówki tekstu i Autokorekty
+Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z [zestawu SDK pakietu Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dowiesz się, jak przeprowadzać filtrowanie oparte na terminach w zawartości tekstowej oraz jej klasyfikację w celu moderowania potencjalnie niepożądanego materiału.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-## <a name="sign-up-for-content-moderator-services"></a>Zarejestruj się w usługach Content Moderator
+## <a name="prerequisites"></a>Wymagania wstępne
+- Klucz subskrypcji pakietu Content Moderator. Aby subskrybować pakiet Content Moderator i uzyskać klucz, postępuj zgodnie z instrukcjami z tematu [Create a Cognitive Services account (Tworzenie konta usług Cognitive Services)](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+- Dowolna wersja programu [Visual Studio 2015 lub 2017](https://www.visualstudio.com/downloads/)
 
-Zanim użyjesz usługi Content Moderator za pośrednictwem interfejsu API REST lub zestawu SDK, potrzebny będzie klucz subskrypcji. Subskrybowanie usługi Content Moderator w [witryny Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) uzyskanie takiego.
+> [!NOTE]
+> Ten przewodnik korzysta z subskrypcji pakietu Content Moderator w warstwie Bezpłatna. Aby uzyskać informacje na temat funkcji oferowanych w poszczególnych warstwach subskrypcji, zobacz stronę [cennika i limitów](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/).
 
-## <a name="create-your-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
+## <a name="create-the-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-1. Dodaj nowy projekt **Aplikacja konsoli (.NET Framework)** do rozwiązania.
+1. W programie Visual Studio utwórz nowy projekt **Aplikacja konsoli (.NET Framework)** i nadaj jej nazwę **TextModeration**. 
+1. Jeśli w rozwiązaniu istnieją inne projekty, wybierz ten projekt jako pojedynczy projekt startowy.
+1. Pobierz wymagane pakiety NuGet. Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań i wybierz pozycję **Zarządzaj pakietami NuGet**, a następnie znajdź i zainstaluj następujące pakiety:
+    - Microsoft.Azure.CognitiveServices.ContentModerator
+    - Microsoft.Rest.ClientRuntime
+    - Newtonsoft.Json
 
-   W przykładowym kodzie, nadaj projektowi nazwę **TextModeration**.
+## <a name="add-text-moderation-code"></a>Dodawanie kodu moderowania tekstu
 
-1. Wybierz ten projekt jako pojedynczy projekt startowy rozwiązania.
+Następnie skopiujesz kod z tego przewodnika i wkleisz go do projektu, aby zaimplementować podstawowy scenariusz moderowania zawartości.
 
-### <a name="install-required-packages"></a>Instalowanie wymaganych pakietów
+### <a name="include-namespaces"></a>Uwzględnianie przestrzeni nazw
 
-Zainstaluj następujące pakiety NuGet:
-
-- Microsoft.Azure.CognitiveServices.ContentModerator
-- Microsoft.Rest.ClientRuntime
-- Newtonsoft.Json
-
-### <a name="update-the-programs-using-statements"></a>Aktualizowanie programu za pomocą instrukcji
-
-Dodaj następujący kod `using` instrukcji. 
+Dodaj następujące instrukcje `using` na początku pliku *Program.cs*.
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
@@ -65,44 +60,24 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usługi Content Moderator
 
-Dodaj następujący kod, aby utworzyć klienta usługi Content Moderator dla Twojej subskrypcji.
-
-> [!IMPORTANT]
-> Zaktualizuj pola **AzureRegion** i **CMSubscriptionKey** wartościami identyfikatora regionu i klucza subskrypcji.
+Dodaj następujący kod do pliku *Program.cs*, aby utworzyć dostawcę klienta usługi Content Moderator dla subskrypcji. W tej samej przestrzeni nazw dodaj kod wraz z klasą **Program**. Następnie trzeba będzie zaktualizować pola **AzureRegion** i **CMSubscriptionKey** przy użyciu wartości identyfikatora regionu i klucza subskrypcji.
 
 ```csharp
-/// <summary>
-/// Wraps the creation and configuration of a Content Moderator client.
-/// </summary>
-/// <remarks>This class library contains insecure code. If you adapt this 
-/// code for use in production, use a secure method of storing and using
-/// your Content Moderator subscription key.</remarks>
+// Wraps the creation and configuration of a Content Moderator client.
 public static class Clients
 {
-    /// <summary>
-    /// The region/location for your Content Moderator account, 
-    /// for example, westus.
-    /// </summary>
+    // The region/location for your Content Moderator account, 
+    // for example, westus.
     private static readonly string AzureRegion = "YOUR API REGION";
 
-    /// <summary>
-    /// The base URL fragment for Content Moderator calls.
-    /// </summary>
+    // The base URL fragment for Content Moderator calls.
     private static readonly string AzureBaseURL =
         $"https://{AzureRegion}.api.cognitive.microsoft.com";
 
-    /// <summary>
-    /// Your Content Moderator subscription key.
-    /// </summary>
+    // Your Content Moderator subscription key.
     private static readonly string CMSubscriptionKey = "YOUR API KEY";
 
-    /// <summary>
-    /// Returns a new Content Moderator client for your subscription.
-    /// </summary>
-    /// <returns>The new client.</returns>
-    /// <remarks>The <see cref="ContentModeratorClient"/> is disposable.
-    /// When you have finished using the client,
-    /// you should dispose of it either directly or indirectly. </remarks>
+    // Returns a new Content Moderator client for your subscription.
     public static ContentModeratorClient NewClient()
     {
         // Create and initialize an instance of the Content Moderator API wrapper.
@@ -114,29 +89,19 @@ public static class Clients
 }
 ```
 
-### <a name="initialize-application-specific-settings"></a>Inicjowanie ustawień specyficznych dla aplikacji
+### <a name="set-up-input-and-output-targets"></a>Konfigurowanie wejściowych i wyjściowych elementów docelowych
 
-Dodaj następujące pola statyczne do klasy **Program** w pliku Program.cs.
+Dodaj następujące pola statyczne do klasy **Program** w pliku _Program.cs_. Spowoduje to określenie plików na potrzeby zawartości tekstu wejściowego i zawartości wyjściowego kodu JSON.
 
 ```csharp
-/// <summary>
-/// The name of the file that contains the text to evaluate.
-/// </summary>
-/// <remarks>You will need to create an input file and update this path
-/// accordingly. Relative paths are relative to the execution directory.</remarks>
+// The name of the file that contains the text to evaluate.
 private static string TextFile = "TextFile.txt";
 
-/// <summary>
-/// The name of the file to contain the output from the evaluation.
-/// </summary>
-/// <remarks>Relative paths are relative to the execution directory.</remarks>
+// The name of the file to contain the output from the evaluation.
 private static string OutputFile = "TextModerationOutput.txt";
 ```
 
-Użyliśmy następujący tekst jako dane wejściowe dla tego przewodnika Szybki Start.
-
-> [!NOTE]
-> Nieprawidłowy numer ubezpieczenia społecznego w następujący przykładowy tekst jest celowe. Celem jest przekazać przykładowe dane wejściowe i wyjściowe formatu.
+Musisz utworzyć plik wejściowy *TextFile.txt*, a następnie odpowiednio zaktualizować jego ścieżkę (ścieżki względne są względne wobec katalogu wykonywania). Otwórz plik _TextFile.txt_ i dodaj tekst moderowania. Ten przewodnik Szybki start używa następującego przykładowego tekstu:
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
@@ -144,9 +109,15 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 0800 820 3300. Also, 999-99-9999 looks like a social security number (SSN).
 ```
 
-## <a name="add-code-to-load-and-evaluate-the-input-text"></a>Dodaj kod, aby załadować i ocena tekst wejściowy
+### <a name="load-the-input-text"></a>Ładowanie tekstu wejściowego
 
-Dodaj następujący kod do metody **Main**.
+Dodaj następujący kod do metody **Main**. Metoda **ScreenText** to niezbędna operacja. Jej parametry określają, które operacje moderowania zawartości zostaną wykonane. W tym przykładzie metoda została skonfigurowana do wykonywania następujących czynności:
+- Wykrywanie potencjalnych przekleństw w tekście.
+- Normalizowanie tekstu i automatyczne poprawianie błędów pisowni.
+- Wykrywanie danych osobowych (PII, personally identifiable information), takich jak numery telefonów w Stanach Zjednoczonych i Zjednoczonym Królestwie, adresy e-mail i adresy pocztowe w Stanach Zjednoczonych.
+- Używanie modeli opartych na uczeniu maszynowym do klasyfikowania tekstu w ramach trzech kategorii.
+
+Jeśli chcesz dowiedzieć się więcej o sposobie działania operacji, kliknij link w sekcji [Następne kroki](#next-steps).
 
 ```csharp
 // Load the input text.
@@ -154,6 +125,8 @@ string text = File.ReadAllText(TextFile);
 Console.WriteLine("Screening {0}", TextFile);
 
 text = text.Replace(System.Environment.NewLine, " ");
+byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(text);
+MemoryStream stream = new MemoryStream(byteArray);
 
 // Save the moderation results to a file.
 using (StreamWriter outputWriter = new StreamWriter(OutputFile, false))
@@ -161,12 +134,12 @@ using (StreamWriter outputWriter = new StreamWriter(OutputFile, false))
     // Create a Content Moderator client and evaluate the text.
     using (var client = Clients.NewClient())
     {
-        // Screen the input text: check for profanity, classify the text into three categories,
-        // do autocorrect text, and check for personally identifying
-        // information (PII)
+        // Screen the input text: check for profanity,
+        // autocorrect text, check for personally identifying
+        // information (PII), and classify the text into three categories
         outputWriter.WriteLine("Autocorrect typos, check for matching terms, PII, and classify.");
         var screenResult =
-        client.TextModeration.ScreenText("eng", "text/plain", text, true, true, null, true);
+        client.TextModeration.ScreenText("text/plain", stream, "eng", true, true, null, true);
         outputWriter.WriteLine(
                 JsonConvert.SerializeObject(screenResult, Formatting.Indented));
     }
@@ -175,12 +148,9 @@ using (StreamWriter outputWriter = new StreamWriter(OutputFile, false))
 }
 ```
 
-> [!NOTE]
-> Klucz usługi Content Moderator ma limit liczby żądań na sekundę (RPS), a w razie przekroczenia tego limitu zestaw SDK zgłasza wyjątek z kodem błędu 429. Jeśli za pomocą klucza warstwy bezpłatnej, liczba żądań jest ograniczona do jednego żądania na sekundę.
+## <a name="run-the-program"></a>Uruchamianie programu
 
-## <a name="run-the-program-and-review-the-output"></a>Uruchamianie programu i przeglądanie danych wyjściowych
-
-Przykładowe dane wyjściowe dla programu, gdyż zapisany w pliku dziennika to:
+Program zapisze dane ciągu JSON w pliku _TextModerationOutput.txt_. Przykładowy tekst używany w tym przewodniku Szybki start powoduje wygenerowanie następujących danych wyjściowych:
 
 ```json
 Autocorrect typos, check for matching terms, PII, and classify.
@@ -268,6 +238,9 @@ Autocorrect typos, check for matching terms, PII, and classify.
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Pobierz zestaw [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązanie programu Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych przewodników Szybki start usługi Content Moderator dla platformy .NET i rozpocznij pracę nad integracją.
+W tym przewodniku Szybki start utworzono prostą aplikację platformy .NET, która zwraca odpowiednie informacje o danym tekście przykładowym dzięki użyciu usługi Content Moderator. Następnie dowiedz się więcej na temat znaczenia różnych flag i klasyfikacji, aby móc podejmować decyzje dotyczące potrzebnych danych oraz sposobu ich obsługi przez aplikację.
+
+> [!div class="nextstepaction"]
+> [Przewodnik dotyczący moderowania tekstu](text-moderation-api.md)

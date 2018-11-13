@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: fd9dfaa2042cae0923c919f4e76d7b59a170918e
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: c46a9f827bdeeaf7a2b9897b262484f64f83b9a8
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46466034"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283465"
 ---
 # <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Samouczek: uzyskiwanie dostępu do danych usługi Azure Data Lake Storage Gen2 w wersji zapoznawczej za pomocą usługi Azure Databricks i platformy Spark
 
-Z tego samouczka dowiesz się, jak uruchamiać w klastrze usługi Azure Databricks zapytania platformy Apache Spark dotyczące danych na koncie z możliwością obsługi usługi Azure Data Lake Storage Gen2 w wersji zapoznawczej.
+Z tego samouczka dowiesz się, jak uruchamiać w klastrze usługi Azure Databricks zapytania platformy Apache Spark dotyczące danych na koncie magazynu platformy Azure z włączoną usługą Azure Data Lake Storage Gen2 w wersji zapoznawczej.
 
 > [!div class="checklist"]
 > * Tworzenie klastra usługi Databricks
@@ -31,9 +31,9 @@ W tym samouczku przedstawiono sposób używania danych dotyczących lotów udost
 > [!NOTE]
 > Kliknij pole wyboru **Prezipped file** (Wstępnie spakowany plik), aby zaznaczyć wszystkie pola danych. Pobrane dane będą miały rozmiar wielu gigabajtów, ale taka ilość danych jest potrzebna do analizy.
 
-## <a name="create-an-azure-data-lake-storage-gen2-account"></a>Tworzenie konta usługi Azure Data Lake Storage 2. generacji
+## <a name="create-an-azure-storage-account-with-analytic-capabilities"></a>Tworzenie konta magazynu platformy Azure z możliwościami analitycznymi
 
-Aby rozpocząć, utwórz nowe [konto usługi Azure Data Lake Storage 2. generacji](quickstart-create-account.md) i nadaj mu unikatową nazwę. Następnie przejdź do tego konta magazynu i pobierz ustawienia konfiguracji.
+Aby rozpocząć, utwórz nowe [konto magazynu z możliwościami analitycznymi](quickstart-create-account.md) i nadaj mu unikatową nazwę. Następnie przejdź do tego konta magazynu i pobierz ustawienia konfiguracji.
 
 1. W obszarze **Ustawienia** kliknij pozycję **Klucze dostępu**.
 2. Kliknij przycisk **Kopiuj** obok pozycji **klucz1**, aby skopiować wartość klucza.
@@ -137,11 +137,12 @@ dbutils.fs.help()
 dbutils.fs.put(source + "/temp/1.txt", "Hello, World!", True)
 dbutils.fs.ls(source + "/temp/parquet/flights")
 ```
-Przy użyciu tego przykładowego kodu możesz eksplorować hierarchię systemu plików HDFS na przykładzie danych przechowywanych na koncie usługi Azure Data Lake Storage Gen2.
+
+Przy użyciu tego przykładowego kodu możesz eksplorować hierarchię systemu plików HDFS na przykładzie danych przechowywanych na koncie magazynu z włączoną usługą Azure Data Lake Storage Gen2.
 
 ## <a name="query-the-data"></a>Wykonywanie zapytań na danych
 
-Następnie możesz rozpocząć wykonywanie zapytań dotyczących danych przekazanych do magazynu usługi Azure Data Lake. Wprowadź każdy z poniższych bloków kodu w komórce **Cmd 1** i naciśnij klawisze **Cmd + Enter**, aby uruchomić skrypt języka Python.
+Następnie możesz rozpocząć wykonywanie zapytań dotyczących danych przekazanych na swoje konto magazynu. Wprowadź każdy z poniższych bloków kodu w komórce **Cmd 1** i naciśnij klawisze **Cmd + Enter**, aby uruchomić skrypt języka Python.
 
 ### <a name="simple-queries"></a>Proste zapytania
 
