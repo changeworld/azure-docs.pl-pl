@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: markgal
-ms.openlocfilehash: 9fad5876ce177129d6178052916843b94b33ccf1
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: c9b3b027a52a6847c566c385c304edc195f7fdda
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445471"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250700"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorowanie magazynów usługi Recovery Services i zarządzanie nimi
 
@@ -296,4 +296,4 @@ Odpowiedź 3. Tak. W następujących sytuacjach nie są wysyłane powiadomienia.
 ## <a name="next-steps"></a>Kolejne kroki
 * [Przywracanie systemu Windows Server lub klienta Windows z platformy Azure](backup-azure-restore-windows-server.md)
 * Aby dowiedzieć się więcej o usłudze Azure Backup, zobacz [Azure Backup — omówienie](backup-introduction-to-azure-backup.md)
-* Odwiedź stronę [Forum usługi Azure Backup](http://go.microsoft.com/fwlink/p/?LinkId=290933)
+* Odwiedź stronę [Forum usługi Azure Backup](https://go.microsoft.com/fwlink/p/?LinkId=290933)

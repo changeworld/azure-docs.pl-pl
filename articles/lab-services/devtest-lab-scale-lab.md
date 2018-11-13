@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5a179c0c6b777ee6b2afdd0f2e9267d247665d8d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 00f64deaa5e02f9bb74baaf86bfdf71690a3345d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38675969"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248252"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Skalowanie w usłudze DevTest Labs limity przydziału i ograniczenia
 Podczas pracy w usłudze DevTest Labs, może się okazać, że nie istnieją pewne domyślne limity do niektórych zasobów platformy Azure, które mogą mieć wpływ na usługi DevTest Labs. Limity te są nazywane **przydziały**.
@@ -35,7 +35,7 @@ Przykładowo Każda subskrypcja ma domyślny limit przydziału rdzeni 20. Dlateg
 ## <a name="view-your-usage-and-quotas"></a>Wyświetlanie użycia i przydziałów
 Te kroki pokazują, jak wyświetlić bieżące limity przydziału w subskrypcji dla określonych zasobów platformy Azure i zobacz, jaki procent każdy przydział były używane.
 
-1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Wybierz **więcej usług**, a następnie wybierz pozycję **rozliczeń** z listy.
 1. W bloku rozliczenia Wybierz subskrypcję.
 4. Wybierz **użycie i przydziały**.
@@ -49,7 +49,7 @@ Te kroki pokazują, jak wyświetlić bieżące limity przydziału w subskrypcji 
 ## <a name="requesting-more-resources-in-your-subscription"></a>Żądanie więcej zasobów w ramach subskrypcji
 Jeśli przekroczysz limit przydziału, domyślny limit zasobów w ramach subskrypcji można zwiększyć do maksymalnego limitu, zgodnie z opisem w [limity usług i subskrypcji platformy Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 
-Te kroki pokazują, jak można zażądać zwiększenia limitu przydziału, za pośrednictwem [witryny Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+Te kroki pokazują, jak można zażądać zwiększenia limitu przydziału, za pośrednictwem [witryny Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Wybierz **więcej usług**, wybierz opcję **rozliczeń**, a następnie wybierz pozycję **użycie i przydziały**.
 1. W użycie i przydziały bloku wybierz **żądanie zwiększenia** przycisku.

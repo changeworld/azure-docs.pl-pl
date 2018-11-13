@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 862143aec0ac54abb3c62677c5a1ab1c15007edb
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b58d6315c4399a7bb23514eb90ab5a94acda2592
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405569"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249034"
 ---
 # <a name="azure-security-technical-capabilities"></a>Możliwości techniczne zabezpieczeń platformy Azure
 
@@ -238,7 +238,7 @@ Usługa Azure Disk Encryption nie jest obecnie obsługiwane na PaaS w wersji 1. 
 
 Większość usług ma podejmować próbę korzystać z szyfrowania dostawcy zasobów magazynu. Niektóre usługi musi wykonaj jawne szyfrowania, na przykład dowolny trwały materiału klucza (certyfikaty, główny / głównym kluczy) muszą być przechowywane w usłudze Key Vault.
 
-Jeśli obsługuje szyfrowanie po stronie usługi za pomocą kluczy zarządzanych przez klienta musi istnieć sposób dla klienta pobrać klucz dla nas. Obsługiwane i zalecanym sposobem wykonania tego zadania dzięki integracji z platformy Azure klucz magazynu (AKV). W tym przypadku klienci mogą dodać i zarządzać swoimi kluczami w usłudze Azure Key Vault. Klient dowiedzieć się, jak używać AKV za pośrednictwem [wprowadzenie do usługi Key Vault](http://go.microsoft.com/fwlink/?linkid=521402).
+Jeśli obsługuje szyfrowanie po stronie usługi za pomocą kluczy zarządzanych przez klienta musi istnieć sposób dla klienta pobrać klucz dla nas. Obsługiwane i zalecanym sposobem wykonania tego zadania dzięki integracji z platformy Azure klucz magazynu (AKV). W tym przypadku klienci mogą dodać i zarządzać swoimi kluczami w usłudze Azure Key Vault. Klient dowiedzieć się, jak używać AKV za pośrednictwem [wprowadzenie do usługi Key Vault](https://go.microsoft.com/fwlink/?linkid=521402).
 
 Aby zintegrować z usługą Azure Key Vault, należy dodać kod, aby poprosić o klucz z AKV, gdy są potrzebne do odszyfrowywania.
 
@@ -283,7 +283,7 @@ Podczas planowania wdrożenia usługi Azure RMS zalecamy wykonanie poniższych c
 
 - Tworzenie [szablonów niestandardowych](https://technet.microsoft.com/library/dn642472.aspx) odzwierciedlające Twoje wymagania biznesowe. Na przykład: szablon dla danych najwyższego wpisu tajnego, który ma zostać zastosowany we wpisie tajnym wszystkie najważniejsze związane z wiadomości e-mail.
 
-Organizacje, które będą słabe na [klasyfikacji danych](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) i ochrona plików może być bardziej podatne na wycieku danych. Bez prawidłowego pliku ochrony organizacji nie będzie można uzyskać wgląd w prowadzoną działalność, monitorować nadużycia i zapobiec nieautoryzowanym dostępem do plików.
+Organizacje, które będą słabe na [klasyfikacji danych](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) i ochrona plików może być bardziej podatne na wycieku danych. Bez prawidłowego pliku ochrony organizacji nie będzie można uzyskać wgląd w prowadzoną działalność, monitorować nadużycia i zapobiec nieautoryzowanym dostępem do plików.
 
 > [!Note]
 > Możesz dowiedzieć się więcej na temat usługi Azure RMS, przeczytaj artykuł [wprowadzenie do usługi Azure Rights Management](https://technet.microsoft.com/library/jj585016.aspx).
@@ -408,7 +408,7 @@ Za pomocą usługi Log Analytics można zarządzać dowolne wystąpienie w chmur
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) umożliwia monitorowanie przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Te dane mogą obejmować zdarzenia, dane wydajności i niestandardowe dane dostarczane przez interfejs API. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu.
+[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) umożliwia monitorowanie przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Te dane mogą obejmować zdarzenia, dane wydajności i niestandardowe dane dostarczane przez interfejs API. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu.
 
 ![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 
@@ -452,7 +452,7 @@ Aplikacje w chmurze są złożone z wielu ruchomych elementów. Monitorowanie za
 
 Inspekcja zabezpieczeń sieci jest wykrywanie luk w zabezpieczeniach sieci przy zapewnieniu zgodności z zabezpieczeniami IT i modelu przepisami nadzoru. Widok grupy zabezpieczeń można pobrać skonfigurowanego sieciowej grupy zabezpieczeń i reguł zabezpieczeń, a także obowiązujących reguł zabezpieczeń. Z listą reguł stosowanych możesz określić, że porty są otwarte i ss sieci luk w zabezpieczeniach.
 
-### <a name="network-watcher"></a>Obserwator sieci
+### <a name="network-watcher"></a>Usługa Network watcher
 
 [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher) to regionalna usługa, która pozwala na monitorowanie i diagnozowanie warunków na poziomie sieci w, do i z platformy Azure. Diagnostyka sieci i narzędzi do wizualizacji dostępne w usłudze Network Watcher pomagają zrozumieć, diagnozowanie i uzyskiwanie szczegółowych informacji do sieci na platformie Azure. Ta usługa obejmuje przechwytywanie pakietów, następny przeskok, przepływu dla adresu IP Sprawdź widok grup zabezpieczeń, dzienników przepływu sieciowych grup zabezpieczeń. Scenariusz poziomu monitorowania udostępnia widok typu end to end zasobów sieciowych, w przeciwieństwie do monitorowania zasobów poszczególnych sieci.
 

@@ -10,32 +10,42 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 11/06/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: cb2e5286eb8e910b555e221242a735f00dff4778
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 1fde0fbd6673becb1307502060c4143fc98affcb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182828"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249731"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Wyświetlanie i przypisywania ról administratora w usłudze Azure Active Directory
 
 Można teraz wyświetlić i Zarządzaj wszystkimi członkami ról administratora w portalu Azure Active Directory. Jeśli często zarządzać przypisaniami ról, będzie prawdopodobnie wolisz tego środowiska. A jeśli użytkownik nigdy nie "Co ewidencjonuj te role naprawdę robią?", można wyświetlić szczegółową listę uprawnień dla każdej z ról administratora usługi Azure AD.
 
-To proste zobaczyć, jak również własnych uprawnień. Kliknij przycisk **Twoja rola** Uzyskaj szybki dostęp do strony użytkownika, aby uzyskać listę wszystkich aktywnych ról przypisanych. Kliknij przycisk wielokropka po prawej stronie każdego wiersza, aby otworzyć szczegółowy opis roli.
+## <a name="view-all-roles"></a>Wyświetl wszystkie role
+
+W usłudze Azure Active Directory, zaznacz **role i Administratorzy** Aby wyświetlić listę wszystkich dostępnych ról. 
+
+Kliknij przycisk wielokropka po prawej stronie każdego wiersza, aby otworzyć szczegółowy opis roli.
 
 ![Lista ról w portalu usługi Azure AD](./media/directory-manage-roles-portal/role-list.png)
 
-Wybierz wiersz dla roli wyświetlić użytkowników przypisanych do roli. Możesz wybrać **zarządzania w usłudze PIM** dla dodatkowe funkcje zarządzania. Administratorzy ról uprzywilejowanych mogą zmienić "Stałe" (zawsze aktywny w roli) przypisania na "Kwalifikujących" (w roli, tylko wtedy, gdy z podwyższonym poziomem uprawnień). Jeśli nie masz usługi PIM, możesz również zaznaczyć **zarządzania w usłudze PIM** się skorzystać z wersji próbnej. Privileged Identity Management wymaga [planu licencjonowania usługi Azure AD Premium P2](../privileged-identity-management/subscription-requirements.md).
+## <a name="view-my-roles"></a>Wyświetl moje role
+
+Jest łatwe wyświetlić także własnych uprawnień. Wybierz **Twoja rola** na **role i Administratorzy** strony, aby zobaczyć ról, które są aktualnie przypisane do użytkownika.
+
+## <a name="view-assignments-for-a-role"></a>Wyświetl przypisania roli
+
+Kliknij rolę, aby wyświetlić użytkowników przypisanych do roli. Możesz wybrać **zarządzania w usłudze PIM** dla dodatkowe funkcje zarządzania. Administratorzy ról uprzywilejowanych mogą zmienić "Stałe" (zawsze aktywny w roli) przypisania na "Kwalifikujących" (w roli, tylko wtedy, gdy z podwyższonym poziomem uprawnień). Jeśli nie masz usługi PIM, możesz również zaznaczyć **zarządzania w usłudze PIM** się skorzystać z wersji próbnej. Privileged Identity Management wymaga [planu licencjonowania usługi Azure AD Premium P2](../privileged-identity-management/subscription-requirements.md).
 
 ![Lista członków roli administratora](./media/directory-manage-roles-portal/member-list.png)
 
 Jeśli jesteś administratorem globalnym lub administratorem ról uprzywilejowanych, możesz łatwo dodać lub usunąć członków, filtrowanie listy lub zaznaczeniu elementu członkowskiego, aby zobaczyć ich aktywnym przypisane role.
 
-## <a name="view-role-permissions"></a>Wyświetlanie uprawnień roli
+## <a name="view-a-users-role-permissions"></a>Wyświetlanie uprawnień roli użytkownika
 
 Podczas wyświetlania członków roli, wybierz **opis** aby zobaczyć pełną listę uprawnień udzielonych przez przypisanie roli. Strona zawiera linki do dodatkowej dokumentacji w celu ułatwienia zarządzania ról w katalogu.
 

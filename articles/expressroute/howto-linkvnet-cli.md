@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: anzaman,cherylmc
-ms.openlocfilehash: 8e896b70d0da143151d57b45e62a5c14d4d4e3b0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1db8a85f40182d954fdd711b203a6ee42aecc694
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969607"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248915"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Łączenie sieci wirtualnej z obwodem usługi ExpressRoute za pomocą interfejsu wiersza polecenia
 
@@ -30,7 +30,7 @@ Ten artykuł ułatwia łączenia sieci wirtualnych (Vnet) platformy Azure obwoda
 > * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [Program PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Interfejs wiersza polecenia platformy Azure](howto-linkvnet-cli.md)
-> * [Wideo — witryna Azure portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [Wideo — witryna Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > * [PowerShell (klasyczny)](expressroute-howto-linkvnet-classic.md)
 > 
 
