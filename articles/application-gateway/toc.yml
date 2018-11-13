@@ -124,12 +124,12 @@ items:
         href: redirect-internal-site-powershell.md
       - name: Interfejs wiersza polecenia platformy Azure
         href: redirect-internal-site-cli.md
+    - name: Przekierowywanie ruchu sieciowego przy użyciu programu Azure PowerShell
+      href: tutorial-url-redirect-powershell.md
   - name: Obsługa wielu dzierżaw
     items:
     - name: Konfigurowanie obsługi wielu dzierżaw
       href: create-web-app.md
-  - name: Przekierowywanie ruchu sieciowego przy użyciu programu Azure PowerShell
-    href: tutorial-url-redirect-powershell.md
   - name: Niestandardowe sondy
     items:
     - name: Portal
@@ -182,9 +182,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-application-gateway
   - name: Często zadawane pytania
     href: application-gateway-faq.md
-ms.openlocfilehash: 7105df03e8dbef1f225c26c4b52243100118782f
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 7ff35fcd83defcd0b239601f4edc6ac88d059884
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944261"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567268"
