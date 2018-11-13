@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: 24b6beec8ecda993667464be5c74dab50fd93201
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: MT
+ms.openlocfilehash: 49682a2d9ec5d3ce7c2139dc8b2e2fd6a1c3ec18
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278892"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236791"
 ---
 # <a name="provision-throughput-for-cosmos-db-containers-and-databases"></a>Aprowizowanie przepływności baz danych i kontenerów usługi Cosmos DB
 
@@ -27,7 +27,7 @@ Ustawienie aprowizowaną przepływność na kontenerze jest powszechnie używan�
 
 Zalecane jest, można skonfigurować przepływność na poziomie szczegółowości kontenera podczas mają gwarancji wydajności dla kontenera.
 
-Przepływność aprowizowana w kontenerze Cosmos jest równomiernie rozłożone między partycjami logicznymi kontenera. Ponieważ jedną lub więcej partycji logicznej kontenera są hostowane przez partycję zasobu, partycje fizyczne należeć wyłącznie do kontenera i obsługuje przepływnością aprowizowaną dla kontenera. Na poniższej ilustracji przedstawiono, jak partycja zasobu hostuje jedną lub więcej partycji logicznej kontenera:
+Przepływność aprowizowana w kontenerze Cosmos jest równomiernie rozłożone między partycjami logicznymi kontenera. Ponieważ jedną lub więcej partycji logicznej kontenera są hostowane przez partycję zasobu, partycji zasobów należeć wyłącznie do kontenera i obsługuje przepływnością aprowizowaną dla kontenera. Na poniższej ilustracji przedstawiono, jak partycja zasobu hostuje jedną lub więcej partycji logicznej kontenera:
 
 ![Partycja zasobu](./media/set-throughput/resource-partition.png)
 
@@ -49,7 +49,7 @@ Zaleca się skonfigurować przepływność w bazie danych, podczas udostępniani
 
 W dowolnym czasie, przepływność przydzielanych do kontenera w bazie danych jest rozłożona na wszystkie partycje logiczne tego kontenera. W przypadku kontenerów udostępnianie aprowizowaną przepływność w bazie danych nie umożliwiają selektywne stosowanie przepływności do określonego kontenera lub partycji logicznej. Jeśli obciążenie na partycji logicznej zużywa więcej niż z przepływnością, którą jest przydzielany do określonej partycji logicznej, operacji będzie ograniczone szybkości. Sytuacji ograniczania szybkości, można zwiększyć przepływność dla całego kontenera lub spróbuj ponownie wykonać operację. Aby uzyskać więcej informacji na temat partycjonowania, zobacz [partycjami logicznymi](partition-data.md).
 
-Wiele partycji logicznej udostępnianie przepływnością aprowizowaną do bazy danych może być hostowana na partycji pojedynczego zasobu. Podczas jednej partycji logicznej kontenera zawsze ma zakres partycji zasobów, partycjami logicznymi oznaczonym literą "L", "C" kontenery udostępnianie aprowizowanej przepływności bazy danych można mapowane i hostowane na partycje fizyczne "R". Na poniższej ilustracji przedstawiono, jak partycja zasobu może zawierać co najmniej jedną partycję logiczne, które należą do różnych kontenerów w bazie danych:
+Wiele partycji logicznej udostępnianie przepływnością aprowizowaną do bazy danych może być hostowana na partycji pojedynczego zasobu. Podczas jednej partycji logicznej kontenera zawsze ma zakres partycji zasobów, partycjami logicznymi oznaczonym literą "L", "C" kontenery udostępnianie aprowizowanej przepływności bazy danych można mapowane i hostowane na partycji zasobów "R". Na poniższej ilustracji przedstawiono, jak partycja zasobu może zawierać co najmniej jedną partycję logiczne, które należą do różnych kontenerów w bazie danych:
 
 ![Partycja zasobu](./media/set-throughput/resource-partition2.png)
 
