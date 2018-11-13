@@ -5,14 +5,14 @@ services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/12/2018
 ms.author: alkohli
-ms.openlocfilehash: bf5c6c805a99845cdd427817ac72b3f5d3245389
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: c28eaf22d05bfda5085f9e269bda85ca0d46a7d3
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345746"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578131"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>Porównaj StorSimple przy użyciu usługi Azure File Sync i krawędź pola danych opcje transferu danych 
  
@@ -37,5 +37,5 @@ Ten dokument zawiera omówienie opcji do transferu danych lokalnych do platformy
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [krawędzi urządzenia Azure Data Box](/azure/databox-online/data-box-edge-overview.md) i [urządzenia Azure Data Box bramy](/azure/databox-online/data-box-gateway-overview.md)
-- Dowiedz się więcej o [usługi Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide.md)
+- Dowiedz się więcej o [krawędzi urządzenia Azure Data Box](/azure/databox-online/data-box-edge-overview) i [urządzenia Azure Data Box bramy](/azure/databox-online/data-box-gateway-overview)
+- Dowiedz się więcej o [usługi Azure File Sync](/azure/storage/files/storage-sync-files-deployment-guide)

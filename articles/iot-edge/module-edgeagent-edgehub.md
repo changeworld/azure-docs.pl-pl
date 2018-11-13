@@ -2,18 +2,18 @@
 title: Dokumentacja usługi Azure IoT EdgeAgent i EdgeHub | Dokumentacja firmy Microsoft
 description: Przejrzyj określonych właściwości i ich wartości dla edgeAgent i edgeHub bliźniaczych reprezentacjach modułów
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ecc48adfeef30a777ae4d96c9b996c8bcdfea12d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 01e1942b12de126aa34130f5a4b77dd0fb958aa6
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247814"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568924"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Właściwości agenta usługi Edge i bliźniaczych reprezentacjach modułów Centrum usługi Edge
 

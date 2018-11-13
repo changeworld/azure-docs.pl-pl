@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 4dac0ed85500e4339f6389f05113dfd68b72c5ff
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: da9319934068709d5635352fdbd52c3ca6ac49be
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244342"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568890"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Usuwanie serwerów i wyłączanie ochrony
 
@@ -173,7 +173,7 @@ Hosty funkcji Hyper-V, które nie są zarządzane przez program VMM są zbierane
 
     > [!NOTE]
     > Jeśli została wybrana opcja **Usuń** opcji, a następnie tun następujących skryptów, aby wyczyścić ustawień replikacji w środowisku lokalnym serwerze programu VMM.
-3. Uruchom ten skrypt na źródłowym serwerze programu VMM przy użyciu programu PowerShell (wymagane uprawnienia administratora) z konsoli programu VMM. Zastąp symbol zastępczy **SQLVM1** o nazwie maszyny wirtualnej.
+3. Uruchom ten skrypt na źródłowym serwerze programu VMM przy użyciu programu PowerShell (wymagane są uprawnienia administratora) z konsoli programu VMM. Zastąp symbol zastępczy **SQLVM1** o nazwie maszyny wirtualnej.
 
         $vm = get-scvirtualmachine -Name "SQLVM1"
         Set-SCVirtualMachine -VM $vm -ClearDRProtection
@@ -194,7 +194,7 @@ Hosty funkcji Hyper-V, które nie są zarządzane przez program VMM są zbierane
 > [!NOTE]
 > Jeśli została wybrana opcja **Usuń** opcji, a następnie tun następujących skryptów, aby wyczyścić ustawień replikacji w środowisku lokalnym serwerze programu VMM.
 
-3. Uruchom ten skrypt na źródłowym serwerze programu VMM przy użyciu programu PowerShell (wymagane uprawnienia administratora) z konsoli programu VMM. Zastąp symbol zastępczy **SQLVM1** o nazwie maszyny wirtualnej.
+3. Uruchom ten skrypt na źródłowym serwerze programu VMM przy użyciu programu PowerShell (wymagane są uprawnienia administratora) z konsoli programu VMM. Zastąp symbol zastępczy **SQLVM1** o nazwie maszyny wirtualnej.
 
          $vm = get-scvirtualmachine -Name "SQLVM1"
          Set-SCVirtualMachine -VM $vm -ClearDRProtection

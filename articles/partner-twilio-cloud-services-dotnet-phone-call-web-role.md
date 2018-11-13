@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 9433cbaba774237bc739106af410dd8d3dd7308f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 83f648b67ae4f8e6fb964d82c245f1c7ba475542
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025718"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568544"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Jak nawiązać połączenie telefoniczne w roli sieci web na platformie Azure za pomocą usługi Twilio
 Ten przewodnik pokazuje, jak wykonać wywołanie ze strony sieci web hostowanych na platformie Azure za pomocą usługi Twilio. Wynikowa aplikacja monituje o nawiązać połączenie za pomocą podanej liczbie i wiadomość, jak pokazano na poniższym zrzucie ekranu.

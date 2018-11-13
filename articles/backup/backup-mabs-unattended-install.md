@@ -1,31 +1,31 @@
 ---
-title: Instalacja dyskretna z serwera usługi Kopia zapasowa Azure w wersji 2
-description: Za pomocą skryptu programu PowerShell do przeprowadzenia instalacji dyskretnej v2 serwer kopii zapasowej Azure. Ten rodzaj instalacji jest również nazywany instalacji nienadzorowanej.
+title: Instalacja dyskretna z usługi Azure Backup Server w wersji 2
+description: Użyj skryptu programu PowerShell do przeprowadzenia instalacji dyskretnej usługi Azure Backup Server w wersji 2. Tego rodzaju instalacji jest również nazywany instalacji nienadzorowanej.
 services: backup
 author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/30/2017
+ms.date: 11/06/2018
 ms.author: markgal
-ms.openlocfilehash: 126c1971d83a8874c096caf407231fb6dee2ff59
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3e106d7f669cf14014114ed0fe63651a1a2fe0eb
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606413"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578121"
 ---
-# <a name="run-an-unattended-installation-of-azure-backup-server-v2"></a>Uruchamianie nienadzorowanej instalacji serwera usługi Kopia zapasowa Azure w wersji 2
+# <a name="run-an-unattended-installation-of-azure-backup-server"></a>Uruchomić nienadzorowaną instalację serwera usługi Azure Backup
 
-Dowiedz się, jak uruchomić nienadzorowaną instalację serwera usługi Kopia zapasowa Azure w wersji 2. 
+Dowiedz się, jak uruchomić nienadzorowaną instalację serwera usługi Azure Backup.
 
-Te kroki nie są stosowane, jeśli instalujesz serwer kopii zapasowej Azure w wersji 1.
+Te kroki nie są stosowane, jeśli instalujesz Azure Backup Server w wersji 1.
 
-## <a name="install-backup-server-v2"></a>Zainstaluj serwer zapasowy v2
+## <a name="install-backup-server"></a>Zainstaluj serwer kopii zapasowych
 
-1. Na serwerze, który jest hostem serwera usługi Kopia zapasowa Azure w wersji 2 Utwórz plik tekstowy. (Można utworzyć pliku, w Notatniku lub w innym edytorze tekstów.) Zapisz plik jako MABSSetup.ini. 
+1. Na serwerze, który obsługuje usługi Azure Backup Server w wersji 2 lub nowszym, Utwórz plik tekstowy. (Można utworzyć pliku, w Notatniku lub w innym edytorze tekstu.) Zapisz plik jako MABSSetup.ini.
 
-2. Wklej następujący kod w pliku MABSSetup.ini. Zamień tekst w nawiasie (\< \>) z wartościami z używanego środowiska. Następujący tekst jest przykładem:
+2. Wklej następujący kod w pliku MABSSetup.ini. Zastąp tekst w nawiasie (\< \>) wartościami z używanego środowiska. Poniższy tekst znajduje się przykład:
 
   ```
   [OPTIONS]
@@ -48,22 +48,22 @@ Te kroki nie są stosowane, jeśli instalujesz serwer kopii zapasowej Azure w we
   UseExistingSQL=<1/0 use or do not use existing SQL>
   ```
 
-3. Zapisz plik. Następnie w wierszu polecenia z podwyższonym poziomem uprawnień na serwerze instalacji, wprowadź polecenie:
+3. Zapisz plik. Następnie w podwyższonym wierszu polecenia na serwerze instalacji wpisz to polecenie:
 
   ```
   start /wait <cdlayout path>/Setup.exe /i  /f <.ini file path>/setup.ini /L <log path>/setup.log
   ```
 
-Można użyć tych flag do instalacji:</br>
-**/f**: ścieżka pliku ini</br>
+Podczas instalacji, można użyć tych flag:</br>
+**/f**: ścieżka do pliku ini</br>
 **/l**: ścieżka dziennika</br>
 **/i**: ścieżka instalacji</br>
 **/x**: Odinstaluj ścieżki</br>
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po zainstalowaniu serwera kopii zapasowej, Dowiedz się, jak przygotować serwer lub Włącz ochronę obciążeń.
+Po zainstalowaniu serwera usługi Backup, Dowiedz się, jak przygotować serwer lub rozpoczęciu ochrony obciążeń.
 
-- [Przygotowanie serwera kopii zapasowej obciążeń](backup-azure-microsoft-azure-backup.md)
-- [Użyj kopii zapasowej serwera, aby utworzyć kopię zapasową serwera VMware](backup-azure-backup-server-vmware.md)
-- [Utwórz kopię zapasową serwera umożliwia tworzenie kopii zapasowych programu SQL Server](backup-azure-sql-mabs.md)
-- [Dodaj nowoczesnych magazynu kopii zapasowej do tworzenia kopii zapasowej serwera](backup-mabs-add-storage.md)
+- [Przygotowywanie obciążeń serwera usługi Backup](backup-azure-microsoft-azure-backup.md)
+- [Tworzenie kopii zapasowej serwera VMware przy użyciu kopii zapasowej serwera](backup-azure-backup-server-vmware.md)
+- [Tworzenie kopii zapasowych programu SQL Server przy użyciu kopii zapasowej serwera](backup-azure-sql-mabs.md)
+- [Dodaj Modern Backup Storage do tworzenia kopii zapasowej serwera](backup-mabs-add-storage.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/017/2018
 ms.author: zarhoads
-ms.openlocfilehash: 1c784721d103ca623f6e9bac5ec1281beeb70074
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: ad5ceeef170e38bf6368c54894b20245d10b74ee
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468327"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578199"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Synchronizacja czasu dla maszyn wirtualnych Windows na platformie Azure
 
@@ -40,6 +40,8 @@ Dokładność zegara komputera jest pomiarowym na blisko zegara komputera jest s
 Hosty platformy Azure są synchronizowane wewnętrznych serwerów czasu firmy Microsoft, które przyjmują czasu z urządzeń należących do firmy Microsoft warstwy 1, przy użyciu anten GPS. Maszyny wirtualne na platformie Azure albo mogą być zależne od ich host do przekazania dokładnego czasu (*hosta czasu*) do maszyny Wirtualnej lub maszyny Wirtualnej może bezpośrednio pobierać czas z czasem serwera lub jako kombinację obu tych. 
 
 Maszyna wirtualna interakcji z hostem może również wpływać na zegara. Podczas [pamięci zachowywanie konserwacji](maintenance-and-updates.md#memory-preserving-maintenance), maszyny wirtualne są wstrzymane przez maksymalnie 30 sekund. Na przykład przed rozpoczęciem konserwacji zegar maszyny Wirtualnej zawiera 10:00:00 AM i obowiązuje 28 sekundach. Po wznowieniu działania maszyny Wirtualnej, zegar na maszynie Wirtualnej nadal będą wyświetlane 10:00:00 AM, który będzie 28 sekundach wyłączone. Prawidłowe w tym celu usługa VMICTimeSync monitoruje co dzieje się na hoście i wyświetla monit o zmiany do wykonania na maszynach wirtualnych wyrównania.
+
+Usługa VMICTimeSync działa w trybie próbki lub synchronizacji i wpływają tylko do przodu zegara. W trybie próbki, wymagająca W32time, należy uruchomić usługę VMICTimeSync sonduje hosta co 5 sekund i zawiera przykłady czasu W32time. Co około 30 sekund, usługę W32time przyjmuje najnowszej próbki czasu i używa go do wywierania wpływu na zegarze gościa. Trybu synchronizacji aktywuje, jeśli zostało wznowione gościa lub zegara gościa drifts więcej niż 5 sekund za zegara hosta. W przypadkach, w którym jest prawidłowo uruchomiona usługa W32time ostatnim przypadku powinno nigdy się wydarzyć.
 
 Bez pracy synchronizacji czasu, zegar na maszynie Wirtualnej może wzrosnąć błędy. Gdy istnieje tylko jedna maszyna wirtualna, efekt mogą nie być istotne, chyba że obciążenie wymaga bardzo dokładnych. Jednak w większości przypadków, firma Microsoft ma wielu, wzajemnie połączonych maszyn wirtualnych, które umożliwiają śledzenie transakcji i spójne całe wdrożenie wymaga czasu czasu. Gdy czas między maszynami wirtualnymi jest inny, można uzyskać następujące skutki:
 

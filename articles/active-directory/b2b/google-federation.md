@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 11/07/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 396fb947a95ebc634ab0dea24d20f35126bc006e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 5bc94b6fe69a9ffec11fcbab952a6f8aa3e2259a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389449"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569009"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Dodaj Google jako dostawcy tożsamości dla użytkowników-gości B2B
 
@@ -43,15 +43,21 @@ Najpierw utwórz nowy projekt w konsoli deweloperów Google, aby otrzymać klien
 
    ![Poświadczenia interfejsu API Google](media/google-federation/google-api.png)
  
-4. Wybierz **ekran zgody Oauth** kartę, a następnie wprowadź **nazwa produktu pokazywana użytkownikom**. (Pozostaw inne ustawienia). Wybierz pozycję **Zapisz**.
+4. Wybierz **ekran zgody OAuth** kartę, a następnie wprowadź **Nazwa aplikacji**. (Pozostaw inne ustawienia).
 
    ![Ekran zgody Google OAuth](media/google-federation/google-oauth-consent-screen.png)
 
-5. Wybierz **poświadczenia** kartę. W **Utwórz poświadczenia** menu, wybierz **identyfikator klienta OAuth**.
+5. Przewiń do **autoryzacji domen** sekcji, a następnie wprowadź microsoftonline.com.
+
+   ![Sekcja autoryzowanych domen](media/google-federation/google-oauth-authorized-domains.png)
+
+6. Wybierz pozycję **Zapisz**.
+
+7. Wybierz **poświadczenia** kartę. W **Utwórz poświadczenia** menu, wybierz **identyfikator klienta OAuth**.
 
    ![Poświadczenia interfejsu API Google](media/google-federation/google-api-credentials.png)
 
-6. W obszarze **typ aplikacji**, wybierz **aplikacji sieci Web**, a następnie w obszarze **identyfikatory URI przekierowania autoryzowanych**, wprowadź następujące identyfikatory URI:
+8. W obszarze **typ aplikacji**, wybierz **aplikacji sieci Web**, a następnie w obszarze **identyfikatory URI przekierowania autoryzowanych**, wprowadź następujące identyfikatory URI:
    - `https://login.microsoftonline.com` 
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(gdzie `<directory id>` jest Twój identyfikator katalogu)
    
@@ -60,7 +66,7 @@ Najpierw utwórz nowy projekt w konsoli deweloperów Google, aby otrzymać klien
 
    ![Utwórz identyfikator klienta OAuth](media/google-federation/google-create-oauth-client-id.png)
 
-7. Wybierz pozycję **Utwórz**. Skopiuj identyfikator klienta i klucz tajny klienta, która będzie używana podczas dodawania dostawcy tożsamości w portalu usługi Azure AD.
+9. Wybierz pozycję **Utwórz**. Skopiuj identyfikator klienta i klucz tajny klienta, która będzie używana podczas dodawania dostawcy tożsamości w portalu usługi Azure AD.
 
    ![OAuth klienta identyfikator i klucz tajny klienta](media/google-federation/google-auth-client-id-secret.png)
 

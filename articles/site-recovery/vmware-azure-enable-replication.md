@@ -1,8 +1,18 @@
 ---
-Tytuł: Włączanie replikacji maszyn wirtualnych programu VMware na potrzeby odzyskiwania po awarii programu VMware na platformę Azure za pomocą usługi Azure Site Recovery | Microsoft Docs description: w tym artykule opisano sposób włączania replikacji maszyn wirtualnych programu VMware do odzyskiwania po awarii na platformie Azure przy użyciu usługi Azure Site Recovery.
-Autor: asgang ms.service: Usługa site recovery ms.date: ms.topic 07 06 2018: koncepcyjny ms.author: asgang
-
-
+title: Włączanie replikacji maszyn wirtualnych programu VMware na potrzeby odzyskiwania po awarii programu VMware na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób włączania replikacji maszyn wirtualnych programu VMware do odzyskiwania po awarii na platformie Azure przy użyciu usługi Azure Site Recovery.
+author: asgang
+ms.service: site-recovery
+ms.date: 07/06/2018
+ms.topic: conceptual
+ms.author: asgang
+ms.openlocfilehash: c6c5aeece9e49a44654d63a7dc243991a62f2d9a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566367"
+---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Włącz replikację na platformę Azure dla maszyn wirtualnych VMware
 
 
@@ -68,10 +78,7 @@ Podczas replikowania maszyn wirtualnych programu VMware:
     ![Włączanie replikacji](./media/vmware-azure-enable-replication/enable-replication7.png)
 14. Kliknij pozycję **Włącz replikację**. Możesz śledzić postęp zadania **Włącz ochronę** w pozycji **Ustawienia** > **Zadania** > **Zadania usługi Site Recovery**. Po uruchomieniu zadania **Sfinalizuj ochronę** maszyna jest gotowa do przejścia w tryb failover.
 
-> [!NOTE]
-> Jeśli komputer jest gotowy do instalacji w trybie wypychania, po włączeniu ochrony jest zainstalowany składnik usługi mobilności. Po zainstalowaniu składnika na komputerze zadanie ochrony rozpoczyna się i kończy się niepowodzeniem. Po awarii należy ręcznie ponownie uruchomić maszynę. Po ponownym uruchomieniu zadanie ochrony rozpoczyna się od nowa i następuje Replikacja początkowa.
->
->
+
 
 ## <a name="view-and-manage-vm-properties"></a>Wyświetlanie właściwości maszyny wirtualnej i zarządzanie nimi
 

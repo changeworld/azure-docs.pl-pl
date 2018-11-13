@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f08d5732939e853785e2cce1d1e9ed8eea7f9ad7
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: c21a5c5b23b709ce6683c51cf96f0e6ff89efc78
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543143"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568680"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego sprawdzania poprawności w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Profil techniczny sprawdzania poprawności jest zwykłe profilu technicznego z k
 }
 ```
 
-Oświadczenia, które są zwróconej z profilu technicznego sprawdzania poprawności są dodawane do zbioru oświadczeń. W następnym profile techniczne sprawdzania poprawności, można użyć tych oświadczeń.
+Oświadczenia, które są zwracane z profilu technicznego sprawdzania poprawności są dodawane do zbioru oświadczeń. W następnym profile techniczne sprawdzania poprawności, można użyć tych oświadczeń.
 
 Profile techniczne sprawdzanie poprawności są wykonywane w kolejności, w jakiej występują w **ValidationTechnicalProfiles** elementu. Można skonfigurować w profilu technicznym weryfikacji, czy wykonywanie żadnych kolejnych weryfikacji profile techniczne powinno być kontynuowane, jeśli profil techniczny weryfikacji zgłasza błąd lub zakończy się pomyślnie.  
 
@@ -53,8 +53,8 @@ Samodzielnie profilu technicznego mogą definiować profilu technicznego sprawdz
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | Identyfikator odwołania | Yes | Identyfikator profilu technicznego już zdefiniowane w zasadach lub zasady nadrzędne. |
-|ContinueOnError|Nie| Wskazująca, czy sprawdzanie poprawności wszystkie profile techniczne kolejnych weryfikacji powinno być kontynuowane, jeśli ten profil techniczny validaiton zgłasza błąd. Wartości dozwoloną: `true` lub `false` (ustawienie domyślne, zostanie zatrzymane przetwarzanie dalszych weryfikacji profile i komunikat o błędzie). 
-|ContinueOnSuccess | Nie | Wskazująca, czy Weryfikacja profile żadnych kolejnych weryfikacji powinno być kontynuowane, jeśli ten profil techniczny sprawdzania poprawności zakończy się pomyślnie. Wartości dozwoloną: `true` lub `false`. Wartość domyślna to `true`, co oznacza, że przetwarzanie dalszych profilów sprawdzania poprawności będzie kontynuowane. |
+|ContinueOnError|Nie| Wskazująca, czy sprawdzanie poprawności wszystkie profile techniczne kolejnych weryfikacji powinno być kontynuowane, jeśli ten profil techniczny validaiton zgłasza błąd. Możliwe wartości: `true` lub `false` (ustawienie domyślne, zostanie zatrzymane przetwarzanie dalszych weryfikacji profile i komunikat o błędzie). 
+|ContinueOnSuccess | Nie | Wskazująca, czy Weryfikacja profile żadnych kolejnych weryfikacji powinno być kontynuowane, jeśli ten profil techniczny sprawdzania poprawności zakończy się pomyślnie. Możliwe wartości: `true` lub `false`. Wartość domyślna to `true`, co oznacza, że przetwarzanie dalszych profilów sprawdzania poprawności będzie kontynuowane. |
 
 **ValidationTechnicalProfile** element zawiera następującego elementu:
 
@@ -81,8 +81,8 @@ Samodzielnie profilu technicznego mogą definiować profilu technicznego sprawdz
 Poniższy przykład używa tych profilów pomoc sprawdzania poprawności: 
 
 1. Pierwszy profil techniczny weryfikacji sprawdza poświadczenia użytkownika i nie Kontynuuj, jeśli błąd wystąpi, takie jak nieprawidłowa nazwa użytkownika lub nieprawidłowe hasło. 
-2. Dalej weryfikacji profilu technicznego, nie jest wykonywany czy oświadczenia userType nie istnieje, czy wartością userType jest `Partner`. Profil techniczny sprawdzania poprawności podejmie próbę odczytuj profil użytkownika z bazy danych klientów wewnętrznych i kontynuuje, jeśli wystąpi błąd, takich jak interfejs API REST usługi nie niedostępny lub dowolnego błędu wewnętrznego.
-3. Ostatnie sprawdzanie poprawności profilu technicznego, nie jest wykonywany czy oświadczenia userType nie istniało, czy wartością userType jest `Customer`. Profil techniczny weryfikacji próbuje odczytuj profil użytkownika z bazy danych partnera wewnętrzny i kontynuuje, jeśli wystąpi błąd, takich jak interfejs API REST usługi nie niedostępny lub dowolnego błędu wewnętrznego.
+2. Dalej weryfikacji profilu technicznego, nie jest wykonywany czy oświadczenia userType nie istnieje, czy wartością userType jest `Partner`. Profil techniczny sprawdzania poprawności podejmie próbę odczytuj profil użytkownika z bazy danych klientów wewnętrznych i kontynuuje, jeśli wystąpi błąd, takich jak Usługa interfejsu API REST jest niedostępna lub dowolnego błędu wewnętrznego.
+3. Ostatnie sprawdzanie poprawności profilu technicznego, nie jest wykonywany czy oświadczenia userType nie istniało, czy wartością userType jest `Customer`. Profil techniczny weryfikacji próbuje odczytuj profil użytkownika z bazy danych partnera wewnętrzny i kontynuuje, jeśli wystąpi błąd, takich jak Usługa interfejsu API REST jest niedostępna lub dowolnego błędu wewnętrznego.
 
 ```XML
 <ValidationTechnicalProfiles>

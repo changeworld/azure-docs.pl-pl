@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: reference
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 21bda39c8b014b13fef0b96f554c4dff91b72743
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 283a042bb8ea32f8f6db9bebb211bc2762a3a4c1
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287051"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578079"
 ---
 # <a name="api-reference"></a>Dokumentacja interfejsu API
 

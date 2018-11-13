@@ -1,3 +1,16 @@
+---
+author: dlepow
+ms.service: container-service
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: danlep
+ms.openlocfilehash: 7dee92ffd183b852d48bcb150ba3c1ba8d5d0380
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569052"
+---
 # <a name="make-a-remote-connection-to-a-kubernetes-dcos-or-docker-swarm-cluster"></a>Nawiązywanie zdalnego połączenia z klastrem Kubernetes, DC/OS lub Docker Swarm
 Po utworzeniu klastra usługi Azure Container Service należy połączyć się z klastrem, aby wdrożyć obciążenia i zarządzać nimi. W tym artykule opisano sposób nawiązywania połączenia z główną maszyną wirtualną klastra z komputera zdalnego. 
 
@@ -137,7 +150,7 @@ ssh -fNL 2375:localhost:2375 -p 2200 azureuser@acsexamplemgmt.japaneast.cloudapp
 > Upewnij się, że nie ma innego procesu lokalnego powiązanego z portem 2375. Jeśli na przykład demon platformy Docker jest uruchomiony lokalnie, domyślnie jest używany port 2375. Jeśli to konieczne, możesz określić port lokalny inny niż 2375.
 >
 
-Teraz możesz uzyskać dostęp do klastra Docker Swarm za pomocą interfejsu wiersza polecenia platformy Docker w systemie lokalnym. Aby uzyskać instrukcje dotyczące instalacji, zobacz [Instalowanie platformy Docker](https://docs.docker.com/engine/installation/).
+Teraz możesz uzyskać dostęp do klastra Docker Swarm za pomocą interfejsu wiersza polecenia platformy Docker w systemie lokalnym. Aby uzyskać instrukcje dotyczące instalacji, zobacz [Zainstaluj platformę Docker](https://docs.docker.com/engine/installation/).
 
 Ustaw dla zmiennej środowiskowej DOCKER_HOST port lokalny skonfigurowany dla tunelu. 
 

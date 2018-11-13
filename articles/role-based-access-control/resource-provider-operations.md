@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 10/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 7d044559d72b07dc86a5ee1c2269452a9059de61
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fd5b0637ab21c9859f2ed06a96c69b51f4681097
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471513"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569288"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -77,7 +77,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ADHybridHealthService/addsservices/action | Utwórz nowy las dla dzierżawy. |
 > | Akcja | Microsoft.ADHybridHealthService/addsservices/addomainservicemembers/read | Pobiera wszystkie serwery dla określonej nazwy usługi. |
 > | Akcja | Microsoft.ADHybridHealthService/addsservices/alerts/read | Pobiera szczegóły alertów dla lasu, takich jak alertid alertu zgłoszone Data, ostatni wykryte, alertu opis alertu, ostatniego alertu, zaktualizowaną poziomu, alertów stanu, alertów, rozwiązywanie problemów z łączami itp. |
-> | Akcja | Microsoft.ADHybridHealthService/addsservices/configuration/read | Pobiera konfigurację usługi w lesie. Przykład — nazwa lasu poziom Functionla, nazewnictwa domeny głównego roli FSMO, roli FSMO wzorca schematu itp. |
+> | Akcja | Microsoft.ADHybridHealthService/addsservices/configuration/read | Pobiera konfigurację usługi w lesie. Przykład — nazwa lasu poziom funkcjonalności nazewnictwa domeny głównego roli FSMO, roli FSMO wzorca schematu itp. |
 > | Akcja | Microsoft.ADHybridHealthService/addsservices/delete | Usuwa usługę i jej serwery oraz dane dotyczące kondycji. |
 > | Akcja | Microsoft.ADHybridHealthService/addsservices/dimensions/read | Pobiera szczegóły domen i lokacji w lesie. Stan kondycji przykładu, aktywne alerty rozwiązane alerty, właściwości, takie jak poziom funkcjonalności domeny, lasu, wzorzec infrastruktury, kontrolera PDC, etc wzorca RID.  |
 > | Akcja | Microsoft.ADHybridHealthService/addsservices/features/userpreference/read | Pobiera ustawienia preferencji użytkownika dla tego lasu.<br>Przykład — MetricCounterName, takie jak ldapsuccessfulbinds ntlmauthentications, kerberosauthentications, addsinsightsagentprivatebytes, ldapsearches.<br>Ustawienia interfejsu użytkownika wykresy itd. |
@@ -104,7 +104,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ADHybridHealthService/reports/badpassword/read | Pobiera listę nieudane próby wprowadzenia hasła dla wszystkich użytkowników w Active Directory Federation Services. |
 > | Akcja | Microsoft.ADHybridHealthService/reports/badpassworduseridipfrequency/read | Pobiera identyfikator URI sygnatury dostępu Współdzielonego obiektów Blob zawierający stan i ostateczną wynikiem nowo dodawanych do kolejki zadania raportowania dla częstotliwości nieprawidłowo podawali nazwę użytkownika/hasło prób na identyfikator użytkownika na adres IP na dzień dla danej dzierżawy. |
 > | Akcja | Microsoft.ADHybridHealthService/reports/consentedtodevopstenants/read | Pobiera listę DevOps wyraził zgodę dzierżaw. Zwykle używane przez dział pomocy technicznej. |
-> | Akcja | Microsoft.ADHybridHealthService/reports/isdevops/read | Pobiera wartość wskazującą, czy wheather teannt jest wyraził zgodę metodyki DevOps, czy nie. |
+> | Akcja | Microsoft.ADHybridHealthService/reports/isdevops/read | Pobiera wartość wskazującą, czy teannt jest wyraził zgodę metodyki DevOps, czy nie. |
 > | Akcja | Microsoft.ADHybridHealthService/reports/selectdevopstenant/read | Aktualizuje userid(objectid) dla dzierżawy ops wybranego deweloperów. |
 > | Akcja | Microsoft.ADHybridHealthService/reports/selecteddeployment/read | Pobiera wybrane wdrożenie do danej dzierżawy. |
 > | Akcja | Microsoft.ADHybridHealthService/reports/tenantassigneddeployment/read | Podany identyfikator dzierżawy pobiera dzierżawy lokalizacji magazynu. |
@@ -240,7 +240,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ApiManagement/service/apis/products/read | Pobierz wszystkie produkty, których interfejs API jest częścią |
 > | Akcja | Microsoft.ApiManagement/service/apis/read | Pobierz listę wszystkich zarejestrowanych interfejsów API lub Pobierz szczegóły interfejsu API |
 > | Akcja | Microsoft.ApiManagement/service/apis/releases/delete | Usuwa wszystkie wersje wersji interfejsu API lub usunąć interfejsu API |
-> | Akcja | Microsoft.ApiManagement/service/apis/releases/read | Pobierz wersje interfejsu API lub Pobierz szczegóły reelase interfejsu API |
+> | Akcja | Microsoft.ApiManagement/service/apis/releases/read | Pobierz wersje interfejsu API lub Pobierz szczegółowe informacje o wersji interfejsu API |
 > | Akcja | Microsoft.ApiManagement/service/apis/releases/write | Tworzenie nowej wersji interfejsu API lub aktualizacji istniejącej wersji interfejsu API |
 > | Akcja | Microsoft.ApiManagement/service/apis/revisions/delete | Usuwa wszystkie poprawki interfejsu API |
 > | Akcja | Microsoft.ApiManagement/service/apis/revisions/read | Pobierz wersje należących do interfejsu API |
@@ -395,7 +395,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | --- | --- | --- |
 > | Akcja | Microsoft.Authorization/checkAccess/action | Sprawdza, czy element wywołujący ma autoryzację do wykonania określonej akcji |
 > | Akcja | Microsoft.Authorization/classicAdministrators/delete | Usuwa administratora z subskrypcji. |
-> | Akcja | Microsoft.Authorization/classicAdministrators/operationstatuses/read | Pobiera administrator stany opreation subskrypcji. |
+> | Akcja | Microsoft.Authorization/classicAdministrators/operationstatuses/read | Pobiera stany operacji administratora dla subskrypcji. |
 > | Akcja | Microsoft.Authorization/classicAdministrators/read | Odczytuje administratorów dla subskrypcji. |
 > | Akcja | Microsoft.Authorization/classicAdministrators/write | Dodaje lub modyfikuje administratora dla subskrypcji. |
 > | Akcja | Microsoft.Authorization/denyAssignments/delete | Usuń przypisanie odmowy w podanym zakresie. |
@@ -729,7 +729,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Cache/redis/patchSchedules/read | Pobiera harmonogram stosowania poprawek pamięci podręcznej Redis Cache |
 > | Akcja | Microsoft.Cache/redis/patchSchedules/write | Modyfikuj harmonogram stosowania poprawek pamięci podręcznej Redis Cache |
 > | Akcja | Microsoft.Cache/redis/read | Wyświetl ustawienia i konfigurację pamięci podręcznej Redis w portalu zarządzania |
-> | Akcja | Microsoft.Cache/redis/recommendations/read | Odczyt z usługi Azure Redis Cache zalecenia |
+> | Akcja | Microsoft.Cache/redis/recommendations/read | Odczytaj rekomendacje dotyczące usługi Azure Redis Cache |
 > | Akcja | Microsoft.Cache/redis/regenerateKey/action | Zmień wartość kluczy dostępu pamięci podręcznej Redis w portalu zarządzania |
 > | Akcja | Microsoft.Cache/redis/start/action | Uruchom wystąpienie pamięci podręcznej. |
 > | Akcja | Microsoft.Cache/redis/start/action | Uruchom wystąpienie pamięci podręcznej. |
@@ -857,12 +857,12 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ClassicCompute/domainNames/capabilities/read | Pokazuje możliwości nazwy domeny |
 > | Akcja | Microsoft.ClassicCompute/domainNames/delete | Usuwa nazwy domen dla zasobów. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/read | Pokazuje miejsca wdrożenia. |
-> | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/roles/read | Uzyskiwanie roli na miejsce wdrożenia nazwy domeny |
-> | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/roles/roleinstances/read | Pobierz wystąpienie roli dla roli w miejsce wdrożenia nazwy domeny |
+> | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/roles/read | Pobierz rolę w miejscu wdrożenia nazwy domeny |
+> | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/roles/roleinstances/read | Pobierz wystąpienie roli dla roli w miejscu wdrożenia nazwy domeny |
 > | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/state/read | Pobierz stan miejsca wdrożenia. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/state/write | Dodaj stan miejsca wdrożenia. |
-> | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/upgradedomain/read | Pobierz domeny uaktualnień dla miejsca wdrożenia od nazwy domeny |
-> | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/upgradedomain/write | Aktualizowanie domeny uaktualnień dla miejsca wdrożenia od nazwy domeny |
+> | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/upgradedomain/read | Pobierz domenę uaktualnienia dla miejsca wdrożenia w nazwie domeny |
+> | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/upgradedomain/write | Zaktualizuj domenę uaktualnienia dla miejsca wdrożenia w nazwie domeny |
 > | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/write | Tworzy lub aktualizuje wdrożenie. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/extensions/delete | Usuwa rozszerzenia nazwy domeny. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/extensions/operationStatuses/read | Odczytuje stan operacji dla rozszerzeń nazw domen. |
@@ -975,7 +975,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ClassicNetwork/networkSecurityGroups/delete | Usuwa sieciową grupę zabezpieczeń. |
 > | Akcja | Microsoft.ClassicNetwork/networkSecurityGroups/operationStatuses/read | Odczytuje stan operacji dla grupy zabezpieczeń sieci. |
 > | Akcja | Microsoft.ClassicNetwork/networksecuritygroups/providers/Microsoft.Insights/diagnosticSettings/read | Pobiera ustawienia diagnostyczne sieciowych grup zabezpieczeń |
-> | Akcja | Microsoft.ClassicNetwork/networksecuritygroups/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienia diagnostyki sieciowych grup zabezpieczeń. Ta operacja jest uzupełniana przez dostawcę zasobów usługi Insights. |
+> | Akcja | Microsoft.ClassicNetwork/networksecuritygroups/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienia diagnostyczne, ta operacja jest uzupełniana przez dostawcę zasobów usługi insights sieciowe grupy zabezpieczeń. | 
 > | Akcja | Microsoft.ClassicNetwork/networksecuritygroups/providers/Microsoft.Insights/logDefinitions/read | Pobiera zdarzenia dla sieciowej grupy zabezpieczeń |
 > | Akcja | Microsoft.ClassicNetwork/networkSecurityGroups/read | Pobiera sieciową grupę zabezpieczeń. |
 > | Akcja | Microsoft.ClassicNetwork/networkSecurityGroups/securityRules/delete | Usuwa regułę zabezpieczeń. |
@@ -1029,7 +1029,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ClassicNetwork/virtualNetworks/remoteVirtualNetworkPeeringProxies/read | Pobiera zdalny serwer proxy komunikacji równorzędnej sieci wirtualnej. |
 > | Akcja | Microsoft.ClassicNetwork/virtualNetworks/remoteVirtualNetworkPeeringProxies/write | Dodaje lub aktualizuje zdalny serwer proxy komunikacji równorzędnej sieci wirtualnej. |
 > | Akcja | Microsoft.ClassicNetwork/virtualNetworks/subnets/associatedNetworkSecurityGroups/delete | Usuwa sieciową grupę zabezpieczeń skojarzoną z podsiecią. |
-> | Akcja | Microsoft.ClassicNetwork/virtualNetworks/subnets/associatedNetworkSecurityGroups/operationStatuses/read | Odczytuje stan operacji dla grupy zabezpieczeń sieci skojarzonej z podsiecią sieci wirtualnej. |
+> | Akcja | Microsoft.ClassicNetwork/virtualNetworks/subnets/associatedNetworkSecurityGroups/operationStatuses/read | Odczytuje stan operacji dla skojarzonej sieciowej grupy zabezpieczeń podsieci sieci wirtualnej. |
 > | Akcja | Microsoft.ClassicNetwork/virtualNetworks/subnets/associatedNetworkSecurityGroups/read | Pobiera sieciową grupę zabezpieczeń skojarzoną z podsiecią. |
 > | Akcja | Microsoft.ClassicNetwork/virtualNetworks/subnets/associatedNetworkSecurityGroups/write | Dodaje sieciową grupę zabezpieczeń skojarzoną z podsiecią. |
 > | Akcja | Microsoft.ClassicNetwork/virtualNetworks/validateMigration/action | Weryfikuje migrację sieci wirtualnej |
@@ -1100,7 +1100,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.CognitiveServices/accounts/skus/read | Odczytuje jednostki SKU dostępne dla istniejącego zasobu. |
 > | Akcja | Microsoft.CognitiveServices/accounts/usages/read | Pobierz użycie przydziału dla istniejącego zasobu. |
 > | Akcja | Microsoft.CognitiveServices/accounts/write | Zapisuje konta interfejsów API. |
-> | Akcja | Microsoft.CognitiveServices/locations/checkSkuAvailability/action | Odczytuje dostępne jednostki SKU na potrzeby subskrypcji. |
+> | Akcja | Microsoft.CognitiveServices/locations/checkSkuAvailability/action | Odczytuje dostępne jednostki SKU dla subskrypcji. |
 > | Akcja | Microsoft.CognitiveServices/Operations/read | Lista wszystkich dostępnych operacji |
 > | Akcja | Microsoft.CognitiveServices/register/action | Rejestruje subskrypcję dla usług Cognitive Services |
 > | Akcja | Microsoft.CognitiveServices/skus/read | Odczytuje dostępne jednostki SKU dla usług Cognitive Services. |
@@ -1141,8 +1141,8 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Compute/images/write | Tworzy nowy obraz lub aktualizuje istniejący obraz |
 > | Akcja | Microsoft.Compute/locations/capsOperations/read | Pobiera stan operacji asynchronicznej Caps |
 > | Akcja | Microsoft.Compute/locations/diskOperations/read | Pobiera stan operacji asynchronicznej dysku |
-> | Akcja | Microsoft.Compute/locations/logAnalytics/getRequestRateByInterval/action | Twórz dzienniki będzie wyświetlana łączna liczba żądań, przedział czasu do pomocy ograniczania diagnostyki. |
-> | Akcja | Microsoft.Compute/locations/logAnalytics/getThrottledRequests/action | Twórz dzienniki, aby wyświetlić agregacje ograniczenia żądań, pogrupowanych według ResourceName, OperationName lub zastosowane zasady ograniczania. |
+> | Akcja | Microsoft.Compute/locations/logAnalytics/getRequestRateByInterval/action | Utwórz dzienniki, aby pokazać całkowitą liczbę żądań według przedziału czasu w celu ułatwienia diagnostyki ograniczania. |
+> | Akcja | Microsoft.Compute/locations/logAnalytics/getThrottledRequests/action | Utwórz dzienniki, aby pokazać zagregowane wartości ograniczonych żądań pogrupowane według wartości ResourceName lub OperationName albo zastosowanych zasad ograniczania. |
 > | Akcja | Microsoft.Compute/locations/operations/read | Pobiera stan operacji asynchronicznej |
 > | Akcja | Microsoft.Compute/locations/publishers/artifacttypes/offers/read | Pobrać właściwości oferty obrazu platformy |
 > | Akcja | Microsoft.Compute/locations/publishers/artifacttypes/offers/skus/read | Pobrać właściwości jednostki SKU obrazu platformy |
@@ -1343,13 +1343,13 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
 > | Akcja | Microsoft.ContainerService/containerServices/delete | Usuwa usługę kontenera |
-> | Akcja | Microsoft.ContainerService/containerServices/read | Usługi kontenerów |
+> | Akcja | Microsoft.ContainerService/containerServices/read | Pobierz usługę kontenera |
 > | Akcja | Microsoft.ContainerService/containerServices/write | Tworzy nową usługę kontenera lub aktualizuje istniejącą |
 > | Akcja | Microsoft.ContainerService/locations/operationresults/read | Pobiera stan wynik operacji asynchronicznej |
 > | Akcja | Microsoft.ContainerService/locations/operations/read | Pobiera stan operacji asynchronicznej |
 > | Akcja | Microsoft.ContainerService/locations/orchestrators/read | Wyświetla listę obsługiwanych koordynatorów |
 > | Akcja | Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action | Pobierz profil dostępu do klastra zarządzanego według nazwy roli przy użyciu poświadczeń listy |
-> | Akcja | Microsoft.ContainerService/managedClusters/accessProfiles/read | Pobieranie profilu dostępu do zarządzanego klastra według nazwy roli |
+> | Akcja | Microsoft.ContainerService/managedClusters/accessProfiles/read | Pobierz profil dostępu do klastra zarządzanego według nazwy roli |
 > | Akcja | Microsoft.ContainerService/managedClusters/delete | Usuwa klaster zarządzany |
 > | Akcja | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Lista poświadczeń clusterAdmin zarządzanego klastra |
 > | Akcja | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Lista poświadczeń clusterUser zarządzanego klastra |
@@ -1503,7 +1503,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DataBox/jobs/bookShipmentPickUp/action | Umożliwia zarezerwowanie odbioru w celu wysyłki zwrotnej. |
 > | Akcja | Microsoft.DataBox/jobs/cancel/action | Anuluje zamówienie będące w toku. |
 > | Akcja | Microsoft.DataBox/jobs/delete | Usuwanie zamówienia |
-> | Akcja | Microsoft.DataBox/jobs/listCredentials/action | Wyświetla listę poświadczeń nieszyfrowanych, związanych z zamówieniem. |
+> | Akcja | Microsoft.DataBox/jobs/listCredentials/action | Wyświetla listę niezaszyfrowanych poświadczeń związanych z zamówieniem. |
 > | Akcja | Microsoft.DataBox/jobs/read | Wyświetl listę lub Pobierz zamówienia |
 > | Akcja | Microsoft.DataBox/jobs/write | Utwórz lub zaktualizuj zamówienia |
 > | Akcja | Microsoft.DataBox/locations/availableSkus/action | Ta metoda zwraca listę dostępnych jednostek SKU. |
@@ -2290,7 +2290,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.Insights/ActionGroups/Delete | Usuwanie grupy akcji |
+> | Akcja | Microsoft.Insights/ActionGroups/Delete | Usuń grupę akcji |
 > | Akcja | Microsoft.Insights/ActionGroups/Read | Odczytaj grupę akcji |
 > | Akcja | Microsoft.Insights/ActionGroups/Write | Utwórz lub zaktualizuj grupę akcji |
 > | Akcja | Microsoft.Insights/ActivityLogAlerts/Activated/Action | Aktywowano alert dotyczący dziennika aktywności |
@@ -2376,8 +2376,8 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Insights/eventtypes/digestevents/Read | Typ zdarzeń zarządzania — odczytaj podsumowanie |
 > | Akcja | Microsoft.Insights/eventtypes/values/Read | Odczytaj zdarzenia dziennika aktywności |
 > | Akcja | Microsoft.Insights/ExtendedDiagnosticSettings/Delete | Usuń ustawienie diagnostyczne dzienników przepływu sieci |
-> | Akcja | Microsoft.Insights/ExtendedDiagnosticSettings/Read | Przeczytaj ustawienie diagnostyczne dzienników przepływu sieci |
-> | Akcja | Microsoft.Insights/ExtendedDiagnosticSettings/Write | Utwórz lub zaktualizuj ustawienie diagnostyczne dzienników przepływu sieci |
+> | Akcja | Microsoft.Insights/ExtendedDiagnosticSettings/Read | Odczytaj ustawienie diagnostyczne dziennika przepływu sieci |
+> | Akcja | Microsoft.Insights/ExtendedDiagnosticSettings/Write | Utwórz lub zaktualizuj ustawienie diagnostyczne dziennika przepływu sieci |
 > | Akcja | Microsoft.Insights/ListMigrationDate/Action | Odzyskaj datę migracji subskrypcji |
 > | Akcja | Microsoft.Insights/ListMigrationDate/Read | Odzyskaj datę migracji subskrypcji |
 > | Akcja | Microsoft.Insights/LogDefinitions/Read | Przeczytaj definicje dzienników |
@@ -2533,7 +2533,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Insights/MetricAlerts/Delete | Usuń alert dotyczący metryki |
 > | Akcja | Microsoft.Insights/MetricAlerts/Read | Odczytaj alert dotyczący metryki |
 > | Akcja | Microsoft.Insights/MetricAlerts/Status/Read | Stanu alertu metryki odczytu |
-> | Akcja | Microsoft.Insights/MetricAlerts/Write | Utwórz lub zaktualizuj alertu metryki |
+> | Akcja | Microsoft.Insights/MetricAlerts/Write | Utwórz lub zaktualizuj alert dotyczący metryki |
 > | Akcja | Microsoft.Insights/MetricDefinitions/Microsoft.Insights/Read | Przeczytaj definicje metryk |
 > | Akcja | Microsoft.Insights/MetricDefinitions/providers/Microsoft.Insights/Read | Przeczytaj definicje metryk |
 > | Akcja | Microsoft.Insights/MetricDefinitions/Read | Przeczytaj definicje metryk |
@@ -2542,13 +2542,13 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Element DataAction | Microsoft.Insights/Metrics/Write | Metryki zapisu |
 > | Akcja | Microsoft.Insights/MigrateToNewpricingModel/Action | Migruj subskrypcję do nowego modelu cen |
 > | Akcja | Microsoft.Insights/Operations/Read | Operacje odczytu |
-> | Akcja | Microsoft.Insights/Register/Action | Zarejestruj dostawcę Microsoft Insights |
+> | Akcja | Microsoft.Insights/Register/Action | Zarejestruj dostawcę usługi Microsoft Insights |
 > | Akcja | Microsoft.Insights/RollbackToLegacyPricingModel/Action | Wycofaj subskrypcję do starszego modelu cen |
 > | Akcja | Microsoft.Insights/ScheduledQueryRules/Delete | Usuwanie reguły zaplanowanego zapytania |
 > | Akcja | Microsoft.Insights/ScheduledQueryRules/Read | Odczytywanie reguły zaplanowanego zapytania |
 > | Akcja | Microsoft.Insights/ScheduledQueryRules/Write | Zapisywanie reguły zaplanowanego zapytania |
-> | Akcja | Microsoft.Insights/Tenants/Register/Action | Inicjuje dostawcę Microsoft Insights |
-> | Akcja | Microsoft.Insights/Unregister/Action | Zarejestruj dostawcę Microsoft Insights |
+> | Akcja | Microsoft.Insights/Tenants/Register/Action | Inicjuje dostawcę usługi Microsoft Insights |
+> | Akcja | Microsoft.Insights/Unregister/Action | Zarejestruj dostawcę usługi Microsoft Insights |
 > | Akcja | Microsoft.Insights/Webtests/Delete | Usuwanie konfiguracji testu internetowego |
 > | Akcja | Microsoft.Insights/Webtests/GetToken/Read | Odczytywanie tokenu testu internetowego |
 > | Akcja | Microsoft.Insights/Webtests/MetricDefinitions/Read | Odczytywanie definicji metryk testu internetowego |
@@ -2904,10 +2904,10 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Logic/integrationServiceEnvironments/join/action | Dołącza środowisko usługi integracji. |
 > | Akcja | Microsoft.Logic/integrationServiceEnvironments/managedApis/apiOperations/read | Odczytuje operację zarządzanego interfejsu API środowiska usługi integracji. |
 > | Akcja | Microsoft.Logic/integrationServiceEnvironments/managedApis/read | Odczytuje zarządzany interfejs API środowiska usługi integracji. |
-> | Akcja | Microsoft.Logic/integrationServiceEnvironments/providers/Microsoft.Insights/metricDefinitions/read | Odczytuje integracji definicje metryk środowiska usługi. |
+> | Akcja | Microsoft.Logic/integrationServiceEnvironments/providers/Microsoft.Insights/metricDefinitions/read | Odczytuje definicje metryk środowiska usługi integracji. |
 > | Akcja | Microsoft.Logic/integrationServiceEnvironments/read | Odczytuje środowisko usługi integracji. |
 > | Akcja | Microsoft.Logic/integrationServiceEnvironments/write | Tworzy lub aktualizuje środowisko usługi integracji. |
-> | Akcja | Microsoft.Logic/locations/workflows/recommendOperationGroups/action | Pobiera przepływu pracy, zalecamy grupy operacji. |
+> | Akcja | Microsoft.Logic/locations/workflows/recommendOperationGroups/action | Pobiera grupy operacji polecenia przepływu pracy. |
 > | Akcja | Microsoft.Logic/locations/workflows/validate/action | Sprawdza poprawność przepływu pracy. |
 > | Akcja | Microsoft.Logic/operations/read | Pobiera operację. |
 > | Akcja | Microsoft.Logic/register/action | Rejestruje dostawcę zasobów Microsoft.Logic dla danej subskrypcji. |
@@ -3453,7 +3453,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/networkSecurityGroups/delete | Usuwa sieciową grupę zabezpieczeń |
 > | Akcja | Microsoft.Network/networkSecurityGroups/join/action | Dołącza sieciowej grupy zabezpieczeń |
 > | Akcja | Microsoft.Network/networksecuritygroups/providers/Microsoft.Insights/diagnosticSettings/read | Pobiera ustawienia diagnostyczne sieciowych grup zabezpieczeń |
-> | Akcja | Microsoft.Network/networksecuritygroups/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienia diagnostyki sieciowych grup zabezpieczeń. Ta operacja jest uzupełniana przez dostawcę zasobów usługi Insights. |
+> | Akcja | Microsoft.Network/networksecuritygroups/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienia diagnostyczne, ta operacja jest uzupełniana przez dostawcę zasobów usługi insights sieciowe grupy zabezpieczeń. |
 > | Akcja | Microsoft.Network/networksecuritygroups/providers/Microsoft.Insights/logDefinitions/read | Pobiera zdarzenia dla sieciowej grupy zabezpieczeń |
 > | Akcja | Microsoft.Network/networkSecurityGroups/read | Pobiera definicję grupy zabezpieczeń sieci |
 > | Akcja | Microsoft.Network/networkSecurityGroups/securityRules/delete | Usuwa regułę zabezpieczeń |
@@ -3573,7 +3573,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/trafficManagerProfiles/nestedEndpoints/read | Pobiera zagnieżdżone punkt końcowy, który należy do profilu usługi Traffic Manager, w tym wszystkich właściwości tego punktu końcowego zagnieżdżonych. |
 > | Akcja | Microsoft.Network/trafficManagerProfiles/nestedEndpoints/write | Dodaj nowy punkt końcowy zagnieżdżone w istniejący profil usługi Traffic Manager, lub zaktualizuj właściwości istniejącego zagnieżdżone punktu końcowego w tym profilu usługi Traffic Manager. |
 > | Akcja | Microsoft.Network/trafficManagerProfiles/providers/Microsoft.Insights/diagnosticSettings/read | Pobiera ustawienia diagnostyczne usługi Traffic Manager |
-> | Akcja | Microsoft.Network/trafficManagerProfiles/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienia diagnostyczne usługi Traffic Manager, ta operacja jest uzupełniana przez dostawcę zasobów szczegółowych informacji. |
+> | Akcja | Microsoft.Network/trafficManagerProfiles/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienia diagnostyczne, ta operacja jest uzupełniana przez dostawcę zasobów szczegółowych informacji usługi Traffic Manager. |
 > | Akcja | Microsoft.Network/trafficManagerProfiles/providers/Microsoft.Insights/logDefinitions/read | Pobiera zdarzenia z usługi Traffic Manager |
 > | Akcja | Microsoft.Network/trafficManagerProfiles/providers/Microsoft.Insights/metricDefinitions/read | Pobiera dostępne metryki dla usługi Traffic Manager. |
 > | Akcja | Microsoft.Network/trafficManagerProfiles/read | Pobieranie konfiguracji profilu usługi Traffic Manager. W tym ustawienia DNS, ustawienia routingu ruchu, ustawienia monitorowania punktu końcowego i listy punktów końcowych kierowany przez ten profil usługi Traffic Manager. |
@@ -3599,7 +3599,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/virtualnetworkgateways/getvpnclientipsecparameters/Action | Uzyskać Ipsec klienta VPN parametrów VirtualNetworkGateway P2S klienta. |
 > | Akcja | Microsoft.Network/virtualnetworkgateways/getvpnprofilepackageurl/Action | Pobiera adres URL pakietu profilu vpn wstępnie wygenerowanego klienta |
 > | Akcja | Microsoft.Network/virtualNetworkGateways/providers/Microsoft.Insights/diagnosticSettings/read | Pobiera ustawienia diagnostyczne bramy sieci wirtualnej |
-> | Akcja | Microsoft.Network/virtualNetworkGateways/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienia diagnostyczne bramy sieci wirtualnej, ta operacja jest uzupełniana przez dostawcę zasobów szczegółowych informacji. |
+> | Akcja | Microsoft.Network/virtualNetworkGateways/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienia diagnostyczne, ta operacja jest uzupełniana przez dostawcę zasobów szczegółowych informacji bramy sieci wirtualnej. |
 > | Akcja | Microsoft.Network/virtualNetworkGateways/providers/Microsoft.Insights/logDefinitions/read | Pobiera zdarzenia dla bramy sieci wirtualnej |
 > | Akcja | Microsoft.Network/virtualNetworkGateways/providers/Microsoft.Insights/metricDefinitions/read | Pobiera dostępne metryki dla bramy sieci wirtualnej |
 > | Akcja | Microsoft.Network/virtualNetworkGateways/read | Pobiera element VirtualNetworkGateway |
@@ -4284,9 +4284,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Resourcehealth/healthevent/Resolved/action | Oznacza zmianę stanu kondycji dla określonego zasobu |
 > | Akcja | Microsoft.Resourcehealth/healthevent/Updated/action | Oznacza zmianę stanu kondycji dla określonego zasobu |
 > | Akcja | Microsoft.ResourceHealth/impactedResources/read | Pobierz zasoby objęte wpływem dla danej subskrypcji |
-> | Akcja | Microsoft.ResourceHealth/Operations/read | Pobierz operacje dostępne dla ResourceHealth firmy Microsoft |
+> | Akcja | Microsoft.ResourceHealth/Operations/read | Pobierz operacje dostępne dla usługi Microsoft ResourceHealth |
 > | Akcja | Microsoft.ResourceHealth/register/action | Rejestruje subskrypcję na potrzeby usługi Microsoft Resource Health |
-> | Akcja | Microsoft.ResourceHealth/unregister/action | Wyrejestrowuje subskrypcję ResourceHealth firmy Microsoft |
+> | Akcja | Microsoft.ResourceHealth/unregister/action | Wyrejestrowuje subskrypcję z usługi Microsoft ResourceHealth |
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 
@@ -4906,7 +4906,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Storage/storageAccounts/fileServices/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienia diagnostyczne dla zasobu. |
 > | Akcja | Microsoft.Storage/storageAccounts/fileServices/providers/Microsoft.Insights/logDefinitions/read | Pobiera definicję dziennika dla usługi File Service |
 > | Akcja | Microsoft.Storage/storageAccounts/fileServices/providers/Microsoft.Insights/metricDefinitions/read | Uzyskaj listę definicji metryk magazynu firmy Microsoft. |
-> | Akcja | Microsoft.Storage/storageAccounts/lastsynctime/read | Zwraca czas ostatniej synchronizacji dla konta magazynu |
+> | Akcja | Microsoft.Storage/storageAccounts/lastsynctime/read | Zwraca czas ostatniej synchronizacji konta magazynu |
 > | Akcja | Microsoft.Storage/storageAccounts/listAccountSas/action | Zwraca token sygnatury dostępu współdzielonego konta dla określonego konta magazynu. |
 > | Akcja | Microsoft.Storage/storageAccounts/listkeys/action | Zwraca klucze dostępu dla podanego konta magazynu. |
 > | Akcja | Microsoft.Storage/storageAccounts/listServiceSas/action | Zwraca token sygnatury dostępu współdzielonego usługi dla określonego konta magazynu. |
@@ -4929,7 +4929,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Storage/storageAccounts/queueServices/write | Zwraca wynik ustawienia właściwości usługi kolejki |
 > | Akcja | Microsoft.Storage/storageAccounts/read | Zwraca listę kont magazynu bądź pobiera właściwości dla podanego konta magazynu. |
 > | Akcja | Microsoft.Storage/storageAccounts/regeneratekey/action | Generuje ponownie klucze dostępu dla podanego konta magazynu. |
-> | Akcja | Microsoft.Storage/storageAccounts/revokeUserDelegationKeys/action | Odwołuje wszystkie klucze delegowania użytkownika dla określonego konta magazynu. |
+> | Akcja | Microsoft.Storage/storageAccounts/revokeUserDelegationKeys/action | Odwołuje wszystkie klucze delegowania użytkowników dla określonego konta magazynu. |
 > | Akcja | Microsoft.Storage/storageAccounts/services/diagnosticSettings/write | Utwórz lub zaktualizuj ustawienia diagnostyczne konta magazynu. |
 > | Akcja | Microsoft.Storage/storageAccounts/tableServices/providers/Microsoft.Insights/diagnosticSettings/read | Pobiera ustawienia diagnostyczne dla zasobu. |
 > | Akcja | Microsoft.Storage/storageAccounts/tableServices/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienia diagnostyczne dla zasobu. |

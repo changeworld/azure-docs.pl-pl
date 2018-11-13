@@ -1,28 +1,41 @@
-Jeśli chcesz domeny, możesz kupić domen na [portalu zarządzania Azure](https://portal.azure.com) bezpośrednio. Wykonaj następujące kroki, aby kupić nazw domen i przypisać do aplikacji sieci web.
+---
+author: cephalin
+ms.service: app-service-web
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: cephalin
+ms.openlocfilehash: ce949caa2b80c08f1015ee21c00197d6a95103c2
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564856"
+---
+Chcąc domenę, możesz kupić domen na [portalu zarządzania systemu Azure](https://portal.azure.com) bezpośrednio. Nazwy domen i przypisać do swojej aplikacji sieci web, wykonaj następujące kroki.
 
-1. W przeglądarce otwórz [portalu zarządzania Azure](https://portal.azure.com).
-2. W **aplikacje sieci Web** kliknij nazwę aplikacji sieci web, wybierz pozycję **ustawienia**, a następnie wybierz **domen niestandardowych i SSL**
+1. Otwórz w przeglądarce, [portalu zarządzania systemu Azure](https://portal.azure.com).
+2. W **aplikacji sieci Web** kliknij nazwę aplikacji sieci web, wybierz pozycję **ustawienia**, a następnie wybierz pozycję **domeny niestandardowe i protokół SSL**
    
     ![](./media/custom-dns-web-site/dncmntask-cname-6.png)
-3. W **domen niestandardowych i SSL** bloku, kliknij przycisk **kupić domen**.
+3. W **domeny niestandardowe i protokół SSL** bloku kliknij **kupowanie domen**.
    
     ![](./media/custom-dns-web-site/dncmntask-cname-buydomains-1.png)
-4. W **kupić domen** bloku, użyj pola tekstowego, aby wprowadzić nazwę domeny, które chcesz kupić. Sugerowane dostępnych domen będą wyświetlane tylko nam wszystkim zdmuchnąć pola tekstowego. Wybierz domenę, które chcesz kupić.
+4. W **zakup domen** bloku, użyj pola tekstowego, aby wprowadzić nazwę domeny, które chcesz kupić. Sugerowane dostępnych domen będą wyświetlane tylko nam wszystkim zdmuchnąć pola tekstowego. Wybierz domenę, które chcesz kupić.
    
    ![](./media/custom-dns-web-site/dncmntask-cname-buydomains-2.png)
 5. Kliknij przycisk **informacje kontaktowe** i wypełnij formularz informacji kontaktowych w domenie.
    
    ![](./media/custom-dns-web-site/dncmntask-cname-buydomains-3.png)
-6. Kliknij przycisk **wybierz** na **kupić domen** bloku, następnie zobacz informacje o zakupie na **potwierdzenia zakupu** bloku. Zaakceptuj postanowienia prawne i kliknięcie **kupić**, Twoje zamówienie zostanie przesłane, i można monitorować proces zakupu na **powiadomienia**.
+6. Kliknij przycisk **wybierz** na **zakup domen** bloku, następnie zostaną wyświetlone informacje o zakupie **potwierdzenie zakupu** bloku. Zaakceptuj postanowienia prawne i kliknięcie **Kup**, Twoje zamówienie zostanie przesłany i możesz monitorować proces zakupu na **powiadomień**.
    
    ![](./media/custom-dns-web-site/dncmntask-cname-buydomains-4.png)
    
    ![](./media/custom-dns-web-site/dncmntask-cname-buydomains-5.png)
-7. Jeśli możesz pomyślnie uporządkowane domeny, można zarządzać domeny i przypisać do aplikacji sieci web. Kliknij przycisk **"..."** po prawej stronie domeny. Następnie możesz **anulować zakup** lub **domeny Zarządzaj**. Kliknij przycisk **domeny Zarządzaj**, następnie firma Microsoft może powiązać **poddomeny** do aplikacji sieci web na **domeny Zarządzaj** bloku.
+7. Jeśli pomyślnie uporządkowanych domeny można Zarządzanie domeną i przypisać do swojej aplikacji sieci web. Kliknij przycisk **"..."** po prawej stronie domenę. Następnie możesz **anulowania zakupu** lub **domeny Zarządzaj**. Kliknij przycisk **domeny zarządzania**, firma Microsoft może powiązać, a następnie **poddomeny** do naszej aplikacji sieci web na **domeny Zarządzaj** bloku.
    
     ![](./media/custom-dns-web-site/dncmntask-cname-buydomains-6.png)
    
-    Po zakończeniu konfiguracji niestandardowej nazwy domeny będzie wyświetlane w **powiązań z nazwami hostów** części aplikacji sieci web.
+    Po zakończeniu konfiguracji niestandardowej nazwy domeny zostaną wyświetlone w **powiązania nazwy hosta** części aplikacji sieci web.
 
-W tym momencie można wprowadzić nazwę domeny niestandardowej w przeglądarce i zobaczyć, czy go pomyślnie przejście do aplikacji sieci web.
+W tym momencie można wprowadzić nazwę domeny niestandardowej w przeglądarce i zobacz, że jej pomyślnie spowoduje przejście do aplikacji sieci web.
 

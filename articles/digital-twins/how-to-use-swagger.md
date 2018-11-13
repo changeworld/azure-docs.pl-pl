@@ -6,20 +6,23 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 11/12/2018
 ms.author: adgera
-ms.openlocfilehash: 69b8f64574427a6b3d3d2cf0312eac88d86e5907
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0fae059db53668da2d71906bbe94e9dabae931bc
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960207"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578590"
 ---
 # <a name="use-azure-digital-twins-swagger"></a>Użyj platformy Swagger Twins cyfrowych platformy Azure
 
 Każde elastycznie wystąpienie Twins cyfrowych platformy Azure zawiera swój własny automatycznie wygenerowaną dokumentację referencyjną struktury Swagger.
 
 [Struktury swagger](https://swagger.io/), lub [OpenAPI](https://www.openapis.org/), łączy w sobie złożone informacje interfejsu API do zasobów odwołanie interakcyjne i niezależny od języka. Struktury swagger zawiera materiały referencyjne krytycznych, o których ładunki JSON, metody HTTP i punkty końcowe służące do wykonywania operacji dotyczących interfejsu API.
+
+> [!IMPORTANT]
+> Obsługa uwierzytelniania struktury Swagger jest tymczasowo wyłączona w publicznej wersji zapoznawczej.
 
 ## <a name="swagger-summary"></a>Podsumowanie swagger
 
@@ -43,10 +46,10 @@ Aby uzyskać dostęp własne wygenerowaną dokumentację struktury Swagger inter
 https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
 ```
 
-| Nazwa atrybutu niestandardowego | Zamień na |
+| Nazwa niestandardowa | Zamień na |
 | --- | --- |
-| *yourInstanceName* | Nazwa wystąpienia usługi Azure cyfrowego bliźniaczych reprezentacji |
-| *yourLocation* | Który region serwer wystąpienie usługi jest hostowana na |
+| yourInstanceName | Nazwa wystąpienia usługi Azure cyfrowego bliźniaczych reprezentacji |
+| yourLocation | Który region serwer wystąpienie usługi jest hostowana na |
 
 ## <a name="reference-material"></a>Materiały referencyjne
 
@@ -104,7 +107,10 @@ Przykłady obejmują również kody błędów, aby ułatwić debugowanie lub ule
 
 ## <a name="swagger-oauth-20-authorization"></a>Struktury swagger autoryzacji OAuth 2.0
 
-Aby przetestować interaktywnie żądania w odniesieniu do zasobów interfejsu API chronionego przez OAuth 2.0, zobacz temat [oficjalną dokumentacją](https://swagger.io/docs/specification/authentication/oauth2/).
+Aby dowiedzieć się więcej o testowaniu interaktywnie żądania chronione przez OAuth 2.0, zobacz [oficjalną dokumentacją](https://swagger.io/docs/specification/authentication/oauth2/).
+
+> [!NOTE]
+> Obsługa uwierzytelniania OAuth 2.0 jest tymczasowo wyłączona w publicznej wersji zapoznawczej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

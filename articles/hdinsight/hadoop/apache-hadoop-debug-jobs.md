@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 694129fa39a84deac118c35da52a0617fe805d6c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 7600ff1a11435ee079fef80ecfa5ad88de1b4750
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261153"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569026"
 ---
 # <a name="analyze-hadoop-logs"></a>Analizowanie dzienników usługi Hadoop
 
@@ -131,7 +131,7 @@ Aby ułatwić użytkownikom usługi Hadoop w usłudze Azure HDInsight zrozumieć
 
 Niektóre z tych komunikatów o błędach można także znaleźć w witrynie Azure portal, gdy jest używany do zarządzania klastrami HDInsight. Jednak mogą występować inne komunikaty o błędach są mniej szczegółowe ze względu na ograniczenia dotyczące działań zaradczych, w tym kontekście. Inne komunikaty o błędach są udostępniane w kontekstach, gdzie jest oczywiste, środki zaradcze. 
 
-### <a id="AtleastOneSqlMetastoreMustBeProvided"></a>AtleastOneSqlMetastoreMustBeProvided
+### <a id="AtLeastOneSqlMetastoreMustBeProvided"></a>AtLeastOneSqlMetastoreMustBeProvided
 * **Opis**: Podaj szczegóły bazy danych Azure SQL dla co najmniej jeden składnik, aby można było używać niestandardowych ustawień dla gałęzi i Oozie magazyny metadanych.
 * **Środki zaradcze**: użytkownik musi podać prawidłowe metadanych SQL Azure i ponowić próbę żądania.  
 

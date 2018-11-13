@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: e2dd9b1d6031d8c8695ff6821e9af4e464ef270a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d38b4e511defbb50dd5f74ae72e71d3316a57b3c
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009355"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567132"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Zapisu systemu plików HDFS z systemu Storm Apache na HDInsight
 
@@ -198,7 +198,7 @@ Aby wyświetlić dane, użyj następującego polecenia:
 
 Zostanie wyświetlona lista plików utworzonych przez tej topologii.
 
-Poniżej przedstawiono przykładowy danych zwróconej przez poprzednie polecenia:
+Poniżej przedstawiono przykładowy dane zwrócone przez poprzednie polecenia:
 
     Found 30 items
     -rw-r-----+  1 sshuser sshuser       488000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-0-1488568403092.txt

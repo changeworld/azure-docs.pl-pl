@@ -2,24 +2,20 @@
 title: Jak skonfigurować hasło logowania jednokrotnego dla applicationn spoza galerii | Dokumentacja firmy Microsoft
 description: Jak skonfigurować niestandardowe aplikację spoza galerii pod kątem bezpiecznej opartego na hasłach logowanie jednokrotne, gdy nie znajduje się w galerii aplikacji usługi Azure AD
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 11/12/2018
 ms.author: barbkess
-ms.openlocfilehash: 37ac3b5fb680a9966f5b8f3da43a2b3013554557
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d880a142b54d253cc1522b3dcc521c86119e0997
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356936"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578403"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Jak skonfigurować hasło logowania jednokrotnego dla aplikacji spoza galerii
 
@@ -115,7 +111,6 @@ Aby skonfigurować logowanie jednokrotne dla aplikacji, wykonaj następujące kr
 
 11. Ponadto, możesz także podać poświadczenia w imieniu użytkownika, wybierając wiersze użytkowników i klikając **poświadczenia aktualizacji** i wprowadzić nazwę użytkownika i hasło w imieniu użytkowników. W przeciwnym razie użytkownicy monit o podanie poświadczeń, się po uruchomieniu.
 
-12. **Opcjonalnie:** dla niektórych aplikacji mediów społecznościowych, takich jak Twitter i Facebook, istnieje również możliwość włączenia automatycznego przerzucania hasła dla aplikacji w wybranej częstotliwości. Aby włączyć tę, wybierz opcję **chcę, aby usługa Azure AD automatycznie zarządzała tego użytkownika lub hasło grupy** podczas wprowadzania poświadczeń w imieniu użytkownika lub grupy. Następnie wybierz pozycję **częstotliwość przerzucania (w tygodniach)**.
 
 ## <a name="assign-a-user-to-an-application-directly"></a>Bezpośrednio przypisać użytkownika do aplikacji
 

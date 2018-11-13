@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: eb0f5a4a4219c63334e0a5be3ea4378c3c317bec
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: c8bad3642f1e98cac3857d536f539554235e1a51
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288105"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578641"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Wdrażanie klastra vFXT
 
@@ -90,6 +90,7 @@ W obszarze **warunków i postanowień**:
 
   > [!NOTE] 
   > Jeśli nie jesteś właścicielem subskrypcji, mieć właściciela, zaakceptuj warunki dla przez następujące wstępnie wymagane kroki [zaakceptować warunki wcześniej oprogramowania](avere-vfxt-prereqs.md#accept-software-terms-in-advance). 
+
 
 Kliknij przycisk **zakupu** po zakończeniu. Po pięciu lub sześciu minut Twój węzeł kontroler zostanie uruchomiona.
 
@@ -225,7 +226,9 @@ Aby wykonać pozostałe kroki wdrażania, musisz połączyć się z kontrolerem 
 ## <a name="create-the-cluster-node-access-role"></a>Tworzenie roli dostęp do węzła klastra
 
 > [!NOTE] 
-> Jeśli nie jesteś właścicielem subskrypcji, a rola nie został już utworzony, mają właściciela subskrypcji, wykonaj następujące kroki, lub użyj procedury [tworzenie roli dostęp do środowiska uruchomieniowego klastra vFXT Avere bez kontrolera](avere-vfxt-pre-role.md).
+> * Jeśli nie jesteś właścicielem subskrypcji, a rola nie został już utworzony, mają właściciela subskrypcji, wykonaj następujące kroki, lub użyj procedury [tworzenie roli dostęp do środowiska uruchomieniowego klastra vFXT Avere bez kontrolera](avere-vfxt-pre-role.md).
+> 
+> * Użytkownicy wewnętrzni firmy Microsoft należy używać istniejącej roli o nazwie "Operator środowiska uruchomieniowego klastra Avere" zamiast próby, aby je utworzyć. 
 
 [Kontrola dostępu oparta na rolach](https://docs.microsoft.com/azure/role-based-access-control/) (RBAC) umożliwia węzłów klastra vFXT autoryzacji do wykonania niezbędnych zadań.  
 

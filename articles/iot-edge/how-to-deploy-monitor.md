@@ -3,18 +3,18 @@ title: Wdrażanie, monitorowanie modułów dla usługi Azure IoT Edge | Dokument
 description: Zarządzanie modułów, które działają na urządzeniach brzegowych
 keywords: ''
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c6700dc4bc0cc458e34e129b2468daad88ecc8be
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 6ebd2a4e24a5f0bd9a9adad97bf26ae61219c8e0
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393461"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566249"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę przy użyciu witryny Azure portal
 
@@ -106,7 +106,7 @@ Użyj właściwości tagi z urządzeniami pod kątem konkretnych urządzeń, kt�
 Ponieważ wielu wdrożeń będących częścią mogą odnosić się do tego samego urządzenia, należy nadać kontu każdego wdrożenia numer priorytetu. Jeśli nigdy nie są zgodne, usługa wins wdrożenia o najwyższym priorytecie (wyższe wartości wskazują wyższy priorytet). Jeśli dwa wdrożenia mają ten sam numer priorytet, ten, który został utworzony w większości ostatnio wins. 
 
 1. Wprowadź dodatnią liczbę całkowitą dla wdrożenia **priorytet**. W przypadku, gdy co najmniej dwa wdrożenia są przeznaczone dla tego samego urządzenia, będą stosowane wdrożenie o najwyższej wartości liczbowe dla priorytetu.
-1. Wprowadź **warunek docelowy** do określenia urządzeń, które zostaną objęte tego wdrożenia. Warunek opiera się na tagów bliźniaczych reprezentacji urządzeń lub zgłoszonych właściwości bliźniaczej reprezentacji urządzenia, a powinien być zgodny z formatem wyrażenia. Na przykład `tags.environment='test'` lub `properties.reported.devicemodel='4000x'`. 
+1. Wprowadź **warunek docelowy** do określenia urządzeń, które zostaną objęte tego wdrożenia. Warunek opiera się na tagów bliźniaczych reprezentacji urządzeń lub zgłoszonych właściwości bliźniaczej reprezentacji urządzenia, a powinien być zgodny z formatem wyrażenia. Na przykład `tags.environment='test'` lub `properties.reported.devicemodel='4000x'`. 
 1. Wybierz **dalej** można przenieść do ostatniego kroku.
 
 ### <a name="step-5-review-template"></a>Krok 5: Przegląd szablonu
@@ -123,14 +123,14 @@ Aby wyświetlić szczegóły wdrożenia i monitorowania urządzeń, w których j
 
    ![Wyświetl wdrożenia usługi IoT Edge](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
-1. Sprawdź, czy lista wdrożenia. Dla każdego wdrożenia można wyświetlić następujące informacje:
+1. Sprawdź, czy lista wdrożenia. Dla każdego wdrożenia można wyświetlić następujące informacje:
    * **Identyfikator** — Nazwa wdrożenia.
    * **Warunek docelowy** -tag używane do definiowania urządzeń docelowych.
    * **Priorytet** — numer priorytetu, przypisanych do wdrożenia.
    * **Metryki systemu** - **docelowych** określa liczbę bliźniaczych reprezentacji urządzeń w usłudze IoT Hub, który odpowiada warunkowi określania wartości docelowej i **zastosowano** określa liczbę urządzeń, które mają Gdyby zawartości wdrożenia są stosowane do ich bliźniaczych reprezentacjach modułów usługi IoT Hub. 
    * **Metryki urządzenia** — liczba urządzeń brzegowych we wdrożeniu raportowania sukcesów lub błędów środowiska uruchomieniowego klienta usługi IoT Edge.
    * **Godzina utworzenia** -sygnaturę czasową od utworzenia wdrożenia. Sygnatura czasowa jest używany na przerwanie ties, gdy dwa wdrożenia mają ten sam priorytet. 
-2. Wybierz wdrożenie, które chcesz monitorować.  
+2. Wybierz wdrożenie, które chcesz monitorować.  
 3. Sprawdź szczegóły wdrożenia. Można użyć karty, aby poznać szczegóły wdrożenia.
 
 ## <a name="modify-a-deployment"></a>Zmodyfikuj wdrożenie
@@ -151,10 +151,10 @@ Aby zmodyfikować wdrożenie, użyj następujących kroków:
    ![Wyświetl wdrożenia usługi IoT Edge](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Wybierz wdrożenie, które chcesz zmodyfikować. 
-1. Aktualizowanie następujące pola: 
-   * Warunek docelowy 
-   * Etykiety 
-   * Priorytet 
+1. Aktualizowanie następujące pola: 
+   * Warunek docelowy 
+   * Etykiety 
+   * Priorytet 
 1. Wybierz pozycję **Zapisz**.
 1. Postępuj zgodnie z instrukcjami w [monitorowania wdrożeń](#monitor-a-deployment) obejrzeć zmiany wprowadzane. 
 
@@ -170,7 +170,7 @@ Po usunięciu wdrożenia żadnych urządzeń przyjmują ich dalej wdrożenia naj
 
 1. Użyj pola wyboru, aby wybrać wdrożenie, które chcesz usunąć. 
 1. Wybierz pozycję **Usuń**.
-1. Monit dowiesz się, że ta akcja spowoduje usunięcie tego wdrożenia i powrócić do poprzedniego stanu dla wszystkich urządzeń.  Oznacza to, że wdrożenie o niższym priorytecie zostaną zastosowane.  Jeśli jest przeznaczona żadnych innych wdrożeń, zostaną usunięte żadne moduły. Jeśli chcesz usunąć wszystkie moduły na urządzeniu, Utwórz wdrożenie z modułów, zerowego i wdrożyć ją na tych samych urządzeń. Wybierz **tak** aby kontynuować. 
+1. Monit dowiesz się, że ta akcja spowoduje usunięcie tego wdrożenia i powrócić do poprzedniego stanu dla wszystkich urządzeń.  Oznacza to, że wdrożenie o niższym priorytecie zostaną zastosowane.  Jeśli jest przeznaczona żadnych innych wdrożeń, zostaną usunięte żadne moduły. Jeśli chcesz usunąć wszystkie moduły na urządzeniu, Utwórz wdrożenie z modułów, zerowego i wdrożyć ją na tych samych urządzeń. Wybierz **tak** aby kontynuować. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

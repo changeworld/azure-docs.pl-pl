@@ -4,17 +4,17 @@ description: Używanie programu Visual Studio 2017 do tworzenia i debugowania mo
 services: iot-edge
 keywords: ''
 author: shizn
-manager: timlt
+manager: philmea
 ms.author: xshi
 ms.date: 09/24/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: ab4dd1186715fde51fbf188ace902c8092d192d0
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 091eb6af871cc53dff3459c55c668e8ffb227984
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647191"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567472"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>Używanie programu Visual Studio 2017 do tworzenia i debugowania modułów języka C# dla usługi Azure IoT Edge (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ Narzędzia usługi Azure IoT Edge dla programu Visual Studio zapewnia następuj�
 
 W tym artykule pokazano, jak tworzyć moduły usługi IoT Edge w języku C# za pomocą narzędzi usługi Azure IoT Edge dla programu Visual Studio 2017. Poznasz również sposób wdrażania projektu do Twojego urządzenia usługi Azure IoT Edge.
 
-## <a name="prerequisites"></a>Wstępnie wymagane składniki
+## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule założono, że używasz komputera lub maszyny wirtualnej z systemem Windows jako komputerze deweloperskim. Urządzenia usługi IoT Edge może być inny urządzenia fizycznego.
 
 Ponieważ w tym artykule używa programu Visual Studio 2017, jako narzędzia programistyczne główny, zainstaluj program Visual Studio. I upewnij się, że dołączasz **obciążenie programistyczne platformy Azure** w instalacji programu Visual Studio 2017. Możesz [modyfikowanie programu Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2017) i Dodaj obciążenie programistyczne platformy Azure.

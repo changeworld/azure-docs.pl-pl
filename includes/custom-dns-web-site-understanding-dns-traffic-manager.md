@@ -1,25 +1,38 @@
-System nazw domen (DNS) jest używana do lokalizowania rzeczy w Internecie. Na przykład podczas wprowadzania adresu w przeglądarce, lub kliknij łącze na stronie sieci web, używa DNS, tłumaczenie domeny na adres IP. Adres IP jest sortowania jak ulicę, ale nie jest bardzo człowieka przyjazny. Na przykład jest znacznie łatwiejsze do zapamiętania nazwę DNS, takich jak **contoso.com** niż do zapamiętania adresu IP, takie jak 192.168.1.88 lub 2001:0:4137:1f67:24a2:3888:9cce:fea3.
+---
+author: cephalin
+ms.service: app-service-web
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: cephalin
+ms.openlocfilehash: 73e95f6259c916b06fe61cb47fd36beac4c7a427
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572519"
+---
+System nazw domen (DNS) jest używana do lokalizowania rzeczy w Internecie. Na przykład podczas wprowadzania adresu w przeglądarce lub kliknij łącze na stronie sieci web używa DNS, tłumaczenie domenę na adres IP. Adres IP jest swoistego, takie jak adres ulicy, ale nie jest bardzo ludzi przyjazna. Na przykład jest znacznie łatwiejsze do zapamiętania nazwę DNS, takich jak **contoso.com** niż do zapamiętania adresu IP, takich jak 192.168.1.88 lub 2001:0:4137:1f67:24a2:3888:9cce:fea3.
 
-DNS system jest oparty na *rekordów*. Rejestruje skojarzenia określony *nazwa*, takich jak **contoso.com**, adres IP lub nazwa DNS innej. W przypadku aplikacji, takich jak przeglądarki sieci web, wyszukiwania nazw w systemie DNS, znajduje rekord i używa niezależnie od wskazuje jako adres. Wartość, która wskazuje jest adresem IP, wartości będą używać przeglądarki. Wskazuje na inną nazwę DNS, aplikacja ma robić rozpoznawania. Ostatecznie rozpoznawanie nazw zakończy adresu IP.
+DNS system jest oparty na *rekordów*. Rejestruje skojarzenia określonego *nazwa*, takich jak **contoso.com**, za pomocą adresu IP lub nazwa DNS innej. W przypadku aplikacji, takich jak przeglądarki sieci web, wyszukuje nazwy w systemie DNS, znajduje rekord i używa, niezależnie od rodzaju wskazuje jako adres. Jeśli wartość, która wskazuje jest adres IP, Przeglądarka użyje tej wartości. Jeśli wskazuje on na inną nazwę DNS, aplikacja ma robić rozdzielczości. Ostatecznie rozpoznawanie nazw zakończy się adresu IP.
 
-Podczas tworzenia witryny sieci Web platformy Azure, nazwa DNS jest automatycznie przypisany do lokacji. Ta nazwa ma postać  **&lt;yoursitename&gt;. azurewebsites.net**. Podczas dodawania witryny sieci Web jako punkt końcowy usługi Azure Traffic Manager, następnie jest dostępna za pośrednictwem witryny sieci Web  **&lt;yourtrafficmanagerprofile&gt;. trafficmanager.net** domeny.
+Kiedy tworzysz witrynę sieci Web platformy Azure, nazwa DNS jest automatycznie przypisywany do lokacji. Ta nazwa mają postać  **&lt;yoursitename&gt;. azurewebsites.net**. Po dodaniu witryny sieci Web jako punkt końcowy usługi Azure Traffic Manager, witryny sieci Web jest dostępna za pośrednictwem  **&lt;yourtrafficmanagerprofile&gt;. trafficmanager.net** domeny.
 
 > [!NOTE]
-> Gdy witryny sieci Web jest skonfigurowany jako punkt końcowy Menedżera ruchu, użyje **. trafficmanager.net** adresów podczas tworzenia rekordów DNS.
+> Gdy witryny sieci Web jest skonfigurowany jako punkt końcowy usługi Traffic Manager, użyje **. trafficmanager.net** adresów, podczas tworzenia rekordów DNS.
 > 
-> Można używać tylko rekordy CNAME z Menedżera ruchu
+> Można używać tylko rekordy CNAME z usługą Traffic Manager
 > 
 > 
 
-Są również wiele typów rekordów, każda z własnych funkcji i ograniczeń, ale dla witryn sieci Web skonfigurowana do jako punkty końcowe usługi Traffic Manager, tylko Dbamy o jeden; *CNAME* rekordów.
+Są również wiele typów rekordów, każdy z nich swoje własne funkcje i ograniczenia, ale dla witryn sieci Web skonfigurowanych do jako punkty końcowe usługi Traffic Manager, tylko Dbamy o jeden; *CNAME* rekordów.
 
-### <a name="cname-or-alias-record"></a>Rekord CNAME lub Alias
-Rekord CNAME mapuje *określonych* nazwy DNS, takich jak **mail.contoso.com** lub **www.contoso.com**, do innej nazwy domeny (canonical). W przypadku za pomocą Menedżera ruchu Azure witryn sieci Web, nazwa kanoniczna domeny jest  **&lt;moja_aplikacja >. trafficmanager.net** nazwę domeny profilu usługi Traffic Manager. Po utworzeniu nazwy CNAME tworzy alias dla  **&lt;moja_aplikacja >. trafficmanager.net** nazwy domeny. Wpis CNAME rozwiąże adres IP Twojego  **&lt;moja_aplikacja >. trafficmanager.net** automatycznie, nazwa domeny, jeśli zmieni adres IP witryny sieci Web, nie trzeba podejmować żadnych działań.
+### <a name="cname-or-alias-record"></a>Rekord CNAME, Alias lub
+Mapuje rekord CNAME *określonych* nazwy DNS, takich jak **mail.contoso.com** lub **www.contoso.com**, do innej nazwy domeny (canonical). W przypadku usługi Azure Websites przy użyciu usługi Traffic Manager jest nazwa domeny canonical  **&lt;MojaAplikacja >. trafficmanager.net** nazwę domeny profilu usługi Traffic Manager. Po utworzeniu tego rekordu CNAME tworzy alias dla  **&lt;MojaAplikacja >. trafficmanager.net** nazwy domeny. Wpis CNAME zostanie rozpoznana jako adres IP Twojego  **&lt;MojaAplikacja >. trafficmanager.net** nazwę domeny na automatycznie, więc jeśli zmieni adres IP witryny sieci Web, nie trzeba podejmować żadnych działań.
 
-Po odebraniu ruchu na Menedżera ruchu następnie przekierowuje ruch do witryny sieci Web przy użyciu metody, które nie jest skonfigurowana do równoważenia obciążenia. To jest całkowicie niewidoczne dla odwiedzający witrynę sieci Web. Użytkownik widzi tylko nazwy domeny niestandardowej w przeglądarce.
+Po odebraniu na usługi Traffic Manager ruchu następnie kieruje ruch do witryny sieci Web przy użyciu metody, który jest skonfigurowany do równoważenia obciążenia. Jest to całkowicie niewidoczne odwiedzający witrynę sieci Web. Użytkownicy będą widzieć tylko niestandardowej nazwy domeny w swojej przeglądarce.
 
 > [!NOTE]
-> Niektóre rejestratorów domeny umożliwiają tylko mapy poddomen, gdy przy użyciu rekordu CNAME, takich jak **www.contoso.com**, a nie głównego nazwy, takie jak **contoso.com**. Aby uzyskać więcej informacji na rekordy CNAME, zobacz w dokumentacji dostarczonej przez rejestratora, <a href="http://en.wikipedia.org/wiki/CNAME_record">wpis Wikipedia rekordu CNAME</a>, lub <a href="http://tools.ietf.org/html/rfc1035">nazwy domen IETF - wdrażania i specyfikację</a> dokumentu.
+> Mapowanie poddomeny przy użyciu rekordu CNAME, takich jak Zezwalaj tylko niektóre rejestratorów domeny **www.contoso.com**i nie główne nazwy, takie jak **contoso.com**. Aby uzyskać więcej informacji na temat rekordów CNAME, zobacz temat w dokumentacji dostarczonej przez rejestrator, <a href="http://en.wikipedia.org/wiki/CNAME_record">Wikipedia wpis rekordu CNAME</a>, lub <a href="http://tools.ietf.org/html/rfc1035">nazw domen IETF — implementacja i specyfikacja</a> dokumentu.
 > 
 > 
 

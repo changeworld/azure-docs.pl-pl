@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: a28168291c79dc54feb5ff572c609cdfb09a187f
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 37fb4c330004ce87afd900d9cafebb337261ec06
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515594"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568237"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizacja usługi Azure Stack 1808
 
@@ -219,6 +219,8 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
    - *Węzeł jednostka skalowania jest w trybie offline*
    
   Uruchom [AzureStack testu](azure-stack-diagnostic-test.md) polecenia cmdlet, aby sprawdzić kondycję wystąpień roli infrastruktury i skalowanie węzłów jednostki. Brak problemów w przypadku wykrycia przez [AzureStack testu](azure-stack-diagnostic-test.md), można zignorować te alerty. W przypadku wykrycia problemu można spróbować uruchomić wystąpienie roli infrastruktury lub węzła przy użyciu portalu administracyjnego lub programu PowerShell.
+
+  Ten problem jest rozwiązany w najnowszej [wersji poprawki 1808](https://support.microsoft.com/help/4471992/), dlatego należy tę poprawkę należy zainstalować, jeśli występują problem.
 
 <!-- 1264761 - IS ASDK --> 
 - Użytkownik może widzieć alerty dla **kondycji kontrolera** składnik, który ma następujące informacje:  

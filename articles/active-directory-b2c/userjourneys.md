@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 65b34a49006e6a2f9be003414498d9a8fc9955ae
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 231a3e87692e47ec33f8a613832acf5102257c96
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161828"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567064"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -49,8 +49,7 @@ Aby zdefiniować trasach użytkownika obsługiwany przez zasady, **podróży uż
 
 Podróż użytkownika jest reprezentowany jako sekwencja aranżacji, która musi występować za pośrednictwem transakcja zakończona powodzeniem. Jeśli którykolwiek z kroków zakończy się niepowodzeniem, transakcja nie powiedzie się. Te kroki aranżacji odwoływać się bloki konstrukcyjne i dostawców oświadczeń są dozwolone w pliku zasad. Wszystkie kroki aranżacji, które odpowiada, aby wyświetlić lub renderowania środowisko użytkownika również odwołuje się do odpowiedniego identyfikatora definicji zawartości.
 
-Kroki Orchestration można conditionaly ecxetuted, w oparciu o warunkach wstępnych zdefiniowane w elemencie kroku aranżacji. Examle można sprawdzić wykonać krok aranżacji, tylko wtedy, gdy istnieje określonych oświadczeń, lub czy roszczenie jest równy lub nie z podaną wartością. 
-
+Kroki Orchestration można conditionaly wykonywane, warunki wstępne zdefiniowane w elemencie kroku aranżacji w oparciu. Examle można sprawdzić wykonać krok aranżacji, tylko wtedy, gdy istnieje określonych oświadczeń, lub czy roszczenie jest równy lub nie z podaną wartością. 
 
 Aby określić uporządkowaną listą kroków aranżacji **OrchestrationSteps** element zostanie dodany jako część zasad. Ten element jest wymagany.
 
@@ -66,7 +65,7 @@ Aby określić uporządkowaną listą kroków aranżacji **OrchestrationSteps** 
 | --------- | -------- | ----------- |
 | Zamówienie | Yes | Kolejność etapów aranżacji. | 
 | Typ | Yes | Typ kroku aranżacji. Możliwe wartości: <ul><li>**Elemencie ClaimsProviderSelection** — wskazuje, że kroku aranżacji przedstawia informacje o różnych dostawców oświadczeń użytkownikowi wybrać jeden z nich.</li><li>**CombinedSignInAndSignUp** — wskazuje, że kroku aranżacji przedstawia połączone mediów społecznościowych strona rejestracji dla kont logowania i lokalnych.</li><li>**Elementu ClaimsExchange** — wskazuje, że kroku aranżacji wymienia oświadczenia, za pomocą dostawcy oświadczeń.</li><li>**SendClaims** — wskazuje, że kroku aranżacji wysyła oświadczenia do jednostki uzależnionej przy użyciu tokenu wystawionego przez wystawcę oświadczenia.</li></ul> | 
-| ContentDefinitionReferenceId | Nie | Identyfikator [zawartości definicji](contentdefinitions.md) skojarzony z tym krokiem aranżacji. Zazwyczaj identyfikator odwołania definicji zawartości jest zdefiniowany w profilu technicznym samodzielnie. Gdy usługa Azure AD B2C musi wyświetlić coś bez profilu technicznego istnieją jednak przypadki. Istnieją dwa przykłady, jeśli typ kroku aranżacji jest jednym z follwing: `ClaimsProviderSelection` lub `CombinedSignInAndSignUp`. Usługa Azure AD B2C wymaganych, aby wyświetlić wyboru dostawcy tożsamości bez profilu technicznego. | 
+| ContentDefinitionReferenceId | Nie | Identyfikator [zawartości definicji](contentdefinitions.md) skojarzony z tym krokiem aranżacji. Zazwyczaj identyfikator odwołania definicji zawartości jest zdefiniowany w profilu technicznym samodzielnie. Gdy usługa Azure AD B2C musi wyświetlić coś bez profilu technicznego istnieją jednak przypadki. Istnieją dwa przykłady, jeśli typ kroku aranżacji jest jednym z następujących czynności: `ClaimsProviderSelection` lub `CombinedSignInAndSignUp`. Usługa Azure AD B2C wymaganych, aby wyświetlić wyboru dostawcy tożsamości bez profilu technicznego. | 
 | CpimIssuerTechnicalProfileReferenceId | Nie | Typ kroku aranżacji jest `SendClaims`. Ta właściwość określa identyfikator profilu technicznego dotyczącego dostawcy oświadczeń, który wystawia token dla jednostki uzależnionej.  Jeśli brak, jest tworzony token nie jednostki uzależnionej ze stron. |
 
 

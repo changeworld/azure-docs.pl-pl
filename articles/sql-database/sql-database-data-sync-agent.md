@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 11/08/2018
-ms.openlocfilehash: 9e873de5899f0cf84fe76b70ffb70b38638055ef
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.date: 11/12/2018
+ms.openlocfilehash: 08585b795b8c407bc66162a961fca92777f78076
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299898"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578625"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Agent synchronizacji danych do usługi Azure SQL Data Sync
 
@@ -31,8 +31,14 @@ Aby pobrać agenta synchronizacji danych, przejdź do [agenta synchronizacji dan
 
 Aby zainstalować agenta synchronizacji danych w trybie dyskretnym z poziomu wiersza polecenia, wprowadź polecenie podobne do poniższego przykładu. Sprawdź nazwę pliku pliku .msi pobrane i podać własne wartości dla **TARGETDIR** i **SERVICEACCOUNT** argumentów.
 
+- Jeśli nie podano wartości dla **TARGETDIR**, wartość domyślna to `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0`.
+
+- Jeśli podasz `LocalSystem` jako wartość **SERVICEACCOUNT**, Użyj uwierzytelniania programu SQL Server podczas konfigurowania agenta Aby nawiązać połączenie z lokalnym serwerem SQL.
+
+- Jeśli zostaną podane konto użytkownika domeny lub lokalnego konta użytkownika jako wartość **SERVICEACCOUNT**, należy również podać hasło za pomocą **SERVICEPASSWORD** argumentu. Na przykład `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
+
 ```cmd
-msiexec /i SQLDataSyncAgent-2.0--ENU.msi TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn 
+msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
 ```
 
 ## <a name="sync-data-with-sql-server-on-premises"></a>Synchronizowanie danych za pomocą programu SQL Server w środowisku lokalnym
@@ -91,10 +97,10 @@ Jeśli chcesz uruchomić lokalnego agenta za pomocą innego komputera niż aktua
 
 - **Przyczyna**. Wiele scenariuszy mogą być przyczyną tego błędu. Aby określić konkretną przyczynę tego błędu, sprawdź dzienniki.
 
-- **Rozpoznawanie**. Aby znaleźć określone przyczynę niepowodzenia, należy wygenerować i spójrz na dzienniki Instalatora Windows. Można włączyć rejestrowanie w wierszu polecenia. Na przykład jeśli pobrany plik AgentServiceSetup.msi jest LocalAgentHost.msi, generowanie i przejrzyj pliki dziennika przy użyciu następujących wierszy polecenia:
+- **Rozpoznawanie**. Aby znaleźć określone przyczynę niepowodzenia, należy wygenerować i spójrz na dzienniki Instalatora Windows. Można włączyć rejestrowanie w wierszu polecenia. Na przykład, jeśli jest pobranego pliku instalacyjnego `SQLDataSyncAgent-2.0-x86-ENU.msi`, generowania i przejrzyj pliki dziennika przy użyciu następujących wierszy polecenia:
 
-    -   Dla instalacji: `msiexec.exe /i SQLDataSyncAgent-Preview-ENU.msi /l\*v LocalAgentSetup.InstallLog`
-    -   Aby uzyskać odinstalowuje: `msiexec.exe /x SQLDataSyncAgent-se-ENU.msi /l\*v LocalAgentSetup.InstallLog`
+    -   Dla instalacji: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+    -   Aby uzyskać odinstalowuje: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
 
     Można również włączyć rejestrowanie dla wszystkich instalacji, które są wykonywane przez Instalatora Windows. Artykuł bazy wiedzy Microsoft Knowledge Base [sposobach włączania rejestrowania zdarzeń Instalatora Windows](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) umożliwia rozwiązanie jednego kliknięcia, aby włączyć rejestrowanie dla Instalatora Windows. Umożliwia także lokalizacją dzienników.
 
@@ -275,6 +281,8 @@ SqlDataSyncAgentCommand.exe -action "registerdatabase" -serverName localhost -da
 ```
 
 ### <a name="unregister-a-database"></a>Wyrejestruj bazy danych
+
+Korzystając z tego polecenia można wyrejestrować bazy danych, jej deprovisions bazy danych całkowicie. Jeśli bazy danych należy inne grupy synchronizacji, ta operacja powoduje przerwanie innych grup synchronizacji.
 
 #### <a name="usage"></a>Sposób użycia
 

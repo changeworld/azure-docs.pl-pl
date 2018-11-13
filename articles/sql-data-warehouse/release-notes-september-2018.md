@@ -1,5 +1,5 @@
 ---
-title: Usługi Azure SQL danych magazynu Release Notes Röse 2018 | Dokumentacja firmy Microsoft
+title: Usługa Azure SQL Data Warehouse — informacje o wersji września 2018 r. | Dokumentacja firmy Microsoft
 description: Informacje o wersji dla usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: twounder
@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 10/08/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: f2fe1bc06f4122a1d27b22288784b3db167c300c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: f8073fd746bc02c23efab914c45c61830942a677
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321703"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577986"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Wrzesień 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w września 2018 r.

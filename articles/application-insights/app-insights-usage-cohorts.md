@@ -14,12 +14,12 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 35737b91d8ef0b58223f51530f56408df1c7eb8e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d8bb7a975bd5bab8698d20e5d21514b79945eac6
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138796"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564922"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorty
 
@@ -49,9 +49,9 @@ Zespół definiuje zaangażowania użytkowników jako dowolny użytkownik użyje
     Istnieją trzy parametry, ta kohorta:
     * **Działania**, gdy wybierzesz, które zdarzenia i wyświetlenia stron liczone jako "użycie".
     * **Okres**, definicja miesiąca.
-    * **UsedAtleastCustom**, liczba razy użytkownicy musieli używać coś w przedziale czasu, zliczania jako biorący udział.
+    * **UsedAtLeastCustom**, liczba razy użytkownicy musieli używać coś w przedziale czasu, zliczania jako biorący udział.
 
-4. Zmiana **UsedAtleastCustom** do **5 + dni**i pozostawić **okres** domyślny 28 dni.
+4. Zmiana **UsedAtLeastCustom** do **5 + dni**i pozostawić **okres** domyślny 28 dni.
 
     ![Oznacza zaangażowanie użytkowników](.\media\app-insights-usage-cohorts\003.png)
 

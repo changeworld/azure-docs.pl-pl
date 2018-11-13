@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 10/29/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 05f878d244647a79a2b3e9d0c789ba811dad71ee
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 2436a4e75045200a8d2f48586e31ebfa0c03705a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012109"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566265"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -110,6 +110,8 @@ Serwer konfiguracji działa lokalnie składniki usługi Site Recovery, w tym:
 - Serwer przetwarzania, który działa jako brama replikacji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła go do usługi Azure storage., serwer przetwarzania instaluje także usługę Mobility na maszynach wirtualnych, o których mają być replikowane i przeprowadza automatyczne odnajdywanie lokalnych maszyn wirtualnych programu VMware.
 - Serwer główny serwer docelowy, który służy do obsługi replikacji danych podczas powrotu po awarii z platformy Azure.
 
+[Dowiedz się więcej](vmware-azure-architecture.md) dotyczące składników serwera konfiguracji i procesów.
+
 ### <a name="where-do-i-set-up-the-configuration-server"></a>Gdzie skonfigurować serwer konfiguracji?
 Potrzebujesz jednego o wysokiej dostępności lokalnych zasobów programu VMware maszyny Wirtualnej serwera konfiguracji.
 
@@ -126,15 +128,35 @@ Nie. Aby to zrobić, należy skonfigurować serwer konfiguracji w każdym region
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>Czy można hostować serwer konfiguracji na platformie Azure?
 Ile jest to możliwe maszyna wirtualna Azure, które działają na serwerze konfiguracji musi komunikować się z lokalną infrastrukturą programu VMware i maszyn wirtualnych. To jest dodawanie opóźnienia i mieć wpływ na trwającą replikację.
 
-
-### <a name="where-can-i-get-the-latest-version-of-the-configuration-server-template"></a>Gdzie można uzyskać najnowszą wersję szablonu serwera konfiguracji?
-Pobierz najnowszą wersję z [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
-
 ### <a name="how-do-i-update-the-configuration-server"></a>Jak zaktualizować serwer konfiguracji?
-Należy zainstalować pakiety zbiorcze aktualizacji. Można znaleźć informacje o najnowszych aktualizacji w [strona aktualizacji witryny typu wiki](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+[Dowiedz się więcej o](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) aktualizację serwera konfiguracji. Można znaleźć informacje o najnowszych aktualizacji w [aktualizacje platformy Azure, strona](https://azure.microsoft.com/updates/?product=site-recovery). Można również bezpośrednio pobrać najnowszą wersję serwera konfiguracji z [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
 
 ### <a name="should-i-backup-the-deployed-configuration-server"></a>Należy utworzyć kopię zapasową serwera wdrożonej konfiguracji?
 Zaleca się wykonywanie regularnych zaplanowanych kopii zapasowych serwera konfiguracji. Pomyślne powrotu po awarii powrót po awarii maszyny wirtualnej musi istnieć w bazie danych serwera konfiguracji, a serwer konfiguracji musi być uruchomiona w stanie połączonym. Dowiedz się więcej na temat typowych zadań zarządzania serwerem konfiguracji [tutaj](vmware-azure-manage-configuration-server.md).
+
+### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>Gdy jestem konfigurowania serwera konfiguracji, można pobrać i ręczne instalowanie programu MySQL?
+Tak. Pobierz MySQL i umieść go w **C:\Temp\ASRSetup** folderu. Następnie zainstalować go ręcznie. Podczas konfigurowania serwera konfiguracji maszyny Wirtualnej i zaakceptuj warunki, MySQL będzie wyświetlana jako **zainstalowane** w **Pobierz i zainstaluj**.
+
+### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>Można I uniknąć pobierania MySQL, ale pozwól Site Recovery zainstaluj go?
+Tak. Pobierz Instalator MySQL i umieść go w **C:\Temp\ASRSetup** folderu.  Po skonfigurowaniu serwera konfiguracji maszyny Wirtualnej, należy zaakceptować warunki i kliknąć **Pobierz i zainstaluj**, portal użyje Instalator dodaje zainstalować oprogramowanie MySQL.
+ 
+### <a name="canl-i-use-the-configuration-server-vm-for-anything-else"></a>CanL używam serwera konfiguracji maszyny Wirtualnej na nic innego?
+Nie, możesz należy używać tylko maszyny Wirtualnej serwera konfiguracji. 
+
+### <a name="can-i-change-the-vault-registered-in-the-configuration-server"></a>Czy można zmienić magazynu zarejestrowany na serwerze konfiguracji?
+Nie. Po zarejestrowaniu magazynu z serwera konfiguracji nie można zmienić.
+
+### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>Do odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych można użyć tego samego serwera konfiguracji
+Tak, ale należy pamiętać, ten komputer fizyczny można tylko można ponownie do maszyny Wirtualnej VMware.
+
+### <a name="where-can-i-download-the-passphrase-for-the-configuration-server"></a>Gdzie można pobrać hasła dla serwera konfiguracji?
+[Zapoznaj się z tym artykułem](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase) Aby dowiedzieć się więcej o pobieraniu hasło.
+
+### <a name="where-can-i-download-vault-registration-keys"></a>Gdzie można pobrać klucze rejestracyjne magazynu?
+
+W **magazyn usług Recovery Services**, **zarządzanie** > **infrastruktura usługi Site Recovery** > **serwery konfiguracji**. W **serwerów**, wybierz opcję **Pobierz klucz rejestracji** można pobrać pliku poświadczeń magazynu.
+
+
 
 ## <a name="mobility-service"></a>Usługa mobilności
 

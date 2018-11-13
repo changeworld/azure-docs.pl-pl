@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: ceab1293b5bd1fbae9088783651d0effa8c5a78a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5e6e534aaa833d7c66216896765d20cdcf50a461
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449006"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568204"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu logowania jednokrotnego Kantega, aby uzyskać Bambus
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD przy użyciu logowania jednokrotnego Kantega, aby uzyskać Bambus, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Usługa rejestracji Jednokrotnej Kantega dla Bambus logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację Kantega Usługa rejestracji Jednokrotnej dla Bamb
 
 **Aby dodać Kantega Usługa rejestracji Jednokrotnej dla Bambus z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -263,7 +263,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Bambus, musi by�
 
     ![Dodawanie pracownika](./media/kantegassoforbamboo-tutorial/user1.png) 
 
-1. Kliknij przycisk **użytkowników**. W obszarze **Dodaj użytkownika** sekcji, wykonaj czynności follwing:
+1. Kliknij przycisk **użytkowników**. W obszarze **Dodaj użytkownika** sekcji, wykonaj poniższe czynności:
 
     ![Dodawanie pracownika](./media/kantegassoforbamboo-tutorial/user2.png) 
 

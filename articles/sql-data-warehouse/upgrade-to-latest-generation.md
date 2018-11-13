@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/22/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9b2c5fa38d0ad21a374d3e5acee8534aeb9c0384
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: fe1f2e026aaa4260d34b9b1cb96064053af1c3c7
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580552"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568016"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optymalizowanie wydajności przez zmianę warstwy dla usługi SQL Data Warehouse
 Uaktualnij usługi Azure SQL Data Warehouse do najnowszej generacji architektura sprzętu i magazynowania na platformie Azure.
@@ -45,13 +45,17 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="start-the-upgrade"></a>Uruchom operację uaktualniania
 
-1. Przejdź do usługi obliczenia zoptymalizowane pod kątem Gen1 danych warstwy magazynu w witrynie Azure portal i wybierz polecenie **uaktualnienie do Gen2**: ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+1. Przejdź do usługi obliczenia zoptymalizowane pod kątem Gen1 danych warstwy magazynu w witrynie Azure portal i wybierz polecenie **uaktualnienie do Gen2** karty na karcie zadania: ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+    
+> [!NOTE]
+> Jeśli nie widzisz **uaktualnienie do Gen2** karty, na karcie zadania, do typu Twojej subskrypcji jest ograniczona w bieżącym regionie. [Wyślij bilet pomocy technicznej](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) można pobrać listy dozwolonych Twojej subskrypcji.
 
 2. Domyślnie **wybierz poziom wydajności sugerowane** dla magazynu danych na podstawie Twój bieżący poziom wydajności w warstwie obliczenia zoptymalizowane pod kątem Gen1 przy użyciu mapowania poniżej:
     
    | Zoptymalizowane pod kątem Gen1 warstwa wystąpień obliczeniowych | Zoptymalizowane pod kątem Gen2 warstwa wystąpień obliczeniowych |
    | :----------------------: | :-------------------: |
-   |      DW100 – DW1000      |        DW1000c        |
+   |      DW100 — WARTOŚCI DW600       |        DW500c         |
+   |          DW1000          |        DW1000c        |
    |          DW1200          |        DW1500c        |
    |          DW1500          |        DW1500c        |
    |          DW2000          |        DW2000c        |

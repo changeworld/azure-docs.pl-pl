@@ -7,110 +7,89 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 1e8bad9a7a194c96c39be0ab4f1c2f40d79031ea
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 683f8ef89b02679d1f3f1a66f867f0dde757ada1
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209605"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564973"
 ---
-# <a name="map-virtual-networks-in-different-azure-regions"></a>Mapowanie sieci wirtualnych w różnych regionach platformy Azure
+# <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Konfigurowanie mapowania sieci i adresowania IP dla sieci wirtualnych
 
-
-W tym artykule opisano sposób mapowania dwa wystąpienia usługi Azure Virtual Network znajduje się w różnych regionach platformy Azure ze sobą. Mapowanie sieci zapewnia, że po utworzeniu replikowanej maszyny wirtualnej w regionie platformy Azure w lokalizacji docelowej maszyny wirtualnej jest tworzony także na sieć wirtualną, która jest mapowana do sieci wirtualnej w źródłowej maszyny wirtualnej.  
+W tym artykule opisano sposób mapowania dwóch wystąpień z sieciami wirtualnymi platformy Azure (Vnet) znajduje się w różnych regionach platformy Azure oraz konfigurowanie adresów IP między sieciami. Mapowanie sieci zapewnia, że zreplikowanej maszyny Wirtualnej jest tworzony w lokalizacji docelowej usługi Azure region jest tworzony w sieci wirtualnej, która jest mapowana do sieci wirtualnej źródłowej maszyny Wirtualnej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed mapowaniem sieci, upewnij się, że utworzono [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md) zarówno w regionie źródłowym, jak i docelowego regionu platformy Azure.
 
-## <a name="map-virtual-networks"></a>Mapowanie sieci wirtualnych
+Przed mapowaniem sieci powinny mieć [sieciami wirtualnymi platformy Azure](../virtual-network/virtual-networks-overview.md) w źródle i określania elementów docelowych regionów platformy Azure. 
 
-Aby zamapować siecią wirtualną platformy Azure, który znajduje się w jednym regionie platformy Azure (Sieć źródłowa) do sieci wirtualnej, który znajduje się w innym regionie (sieci docelowej), maszyn wirtualnych platformy Azure, przejdź do **infrastruktura usługi Site Recovery**  >  **Mapowania sieci**. Tworzenie mapowania sieci.
+## <a name="set-up-network-mapping"></a>Konfigurowanie mapowania sieci
 
-![Okno mapowania sieci — Tworzenie mapowania sieci](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
+Mapowania sieci w następujący sposób:
 
+1. W **infrastruktura usługi Site Recovery**, kliknij przycisk **+ mapowanie sieci**.
 
-W poniższym przykładzie maszyna wirtualna jest uruchomiona w regionie Azja Wschodnia. Maszyna wirtualna jest replikowana do regionu Azja południowo-wschodnia.
+    ![ Tworzenie mapowania sieci](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
 
-Aby utworzyć mapowanie sieci z regionu Azja Wschodnia, w regionie Azja południowo-wschodnia, wybierz lokalizacji sieciowej, źródło i lokalizację sieci docelowej. Następnie wybierz przycisk **OK**.
+3. W **Dodawanie mapowania sieci**, wybierz źródło i lokalizacje docelowe. W naszym przykładzie źródło maszyny Wirtualnej jest uruchomiona w regionie Azja Wschodnia i są replikowane do regionu Azja południowo-wschodnia.
 
-![Dodaj okno mapowanie sieci — wybierz lokalizacje źródłowa i docelowa Sieć źródłowa](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
+    ![Wybierz źródło i cel ](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
+3. Teraz Utwórz mapowanie sieci w przeciwny katalogu. W naszym przykładzie źródło będzie teraz Azja południowo-wschodnia, a lokalizacją docelową będzie Azja Wschodnia.
 
-
-Powtórz poprzedni proces tworzenia mapowania sieci z regionu Azja południowo-wschodnia, w regionie Azja Wschodnia.
-
-![Dodaj okienko mapowania sieci — wybierz lokalizacje źródłowe i docelowe dla sieci docelowej](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
+    ![Dodaj okienko mapowania sieci — wybierz lokalizacje źródłowe i docelowe dla sieci docelowej](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
 
 
-## <a name="map-a-network-when-you-enable-replication"></a>Mapowanie sieci, po włączeniu replikacji
+## <a name="map-networks-when-you-enable-replication"></a>Mapuj sieci po włączeniu replikacji
 
-Podczas replikowania maszyny wirtualnej między regionami platformy Azure do innego regionu po raz pierwszy, jeśli nie istnieje żadne mapowanie sieci, można ustawić sieci docelowej po skonfigurowaniu replikacji. Zależnie od tego ustawienia, usługi Azure Site Recovery tworzy mapowania sieci z regionu źródłowego do regionu docelowego i region docelowy region źródła.   
+Jeśli nie zostały przygotowane, mapowanie sieci, przed rozpoczęciem konfigurowania odzyskiwania po awarii dla maszyn wirtualnych platformy Azure, można określić obiekt docelowy sieci, gdy zostanie [Skonfiguruj i Włącz replikację](azure-to-azure-how-to-enable-replication.md). Po wykonaniu tej następujące konsekwencje:
 
-![Skonfiguruj ustawienia w okienku — Wybieranie lokalizacji docelowej](./media/site-recovery-network-mapping-azure-to-azure/network-mapping4.png)
+- Oparte na docelowym, którą wybierzesz, Usługa Site Recovery automatycznie tworzy mapowania sieci ze źródła do docelowego regionu, a także z docelowej do regionu źródłowego.
+- Domyślnie usługa Site Recovery tworzy sieć w regionie docelowym, który jest identyczny ze źródłową siecią. Usługa Site Recovery dodaje **— asr** jako sufiks do nazwy źródłowej sieci. Można dostosować sieci docelowej.
+- Jeśli już wystąpiła mapowanie sieci, nie można zmienić docelowej sieci wirtualnej, po włączeniu replikacji. Aby zmienić docelowej sieci wirtualnej, musisz zmodyfikować istniejące mapowanie sieci.
+- Jeśli zmodyfikujesz mapowania sieci z regionu, A do regionu B, upewnij się, również zmodyfikować mapowania sieci z regionu B do regionu A.]
 
-Domyślnie usługa Site Recovery tworzy sieć w regionie docelowym, który jest identyczny ze źródłową siecią. Usługa Site Recovery tworzy sieć, dodając **— asr** jako sufiks do nazwy źródłowej sieci. Aby wybrać sieć, która została już utworzona, zaznacz **Dostosuj**.
+## <a name="specify-a-subnet"></a>Określ podsieć
 
-![Dostosowywanie okienka ustawień target - Nazwa docelowej grupy zasobów zestawu i nazwa wirtualnej sieci docelowej](./media/site-recovery-network-mapping-azure-to-azure/network-mapping5.png)
+Podsieć docelowa wybrania maszyny Wirtualnej na podstawie nazwy podsieci źródłowej maszyny Wirtualnej.
 
-Jeśli już wystąpiła mapowanie sieci, nie można zmienić docelowej sieci wirtualnej, po włączeniu replikacji. W takim przypadku można zmienić docelowa sieć wirtualna, należy zmodyfikować istniejące mapowanie sieci.  
+- Jeśli podsieć z taką samą nazwę jak podsieci maszyny Wirtualnej źródłowego jest dostępny w sieci docelowej, podsieci jest ustawiona dla docelowej maszyny Wirtualnej.
+- Jeśli podsieć o takiej samej nazwie nie istnieje w sieci docelowej, podsieci pierwszy w kolejności alfabetycznej jest ustawiony jako podsieci docelowej.
+- Można modyfikować w **obliczenia i sieć** ustawień dla maszyny Wirtualnej.
 
-![Dostosowywanie docelowy okienka ustawień - Ustaw nazwę grupy zasobów docelowych](./media/site-recovery-network-mapping-azure-to-azure/network-mapping6.png)
-
-![Modyfikowanie okienka mapowania sieci — zmodyfikuj istniejącą nazwę docelowej sieci wirtualnej](./media/site-recovery-network-mapping-azure-to-azure/modify-network-mapping.png)
-
-> [!IMPORTANT]
-> Jeśli zmodyfikujesz mapowania sieci z regionu, A do regionu B, upewnij się, również zmodyfikować mapowania sieci z regionu B do regionu A.
->
->
+    ![Obliczenia i sieć obliczenia okno właściwości](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
 
 
-## <a name="subnet-selection"></a>Wybór podsieci
-Podsieci docelowej maszyny wirtualnej jest zaznaczone, na podstawie nazwy podsieci źródłowej maszyny wirtualnej. Jeśli podsieć, która ma taką samą nazwę jak źródłowa maszyna wirtualna jest dostępny w sieci docelowej, podsieci jest ustawiona dla docelowej maszyny wirtualnej. Jeśli podsieć o takiej samej nazwie nie istnieje w sieci docelowej, alfabetycznie pierwszej podsieci jest ustawiony jako podsieci docelowej.
+## <a name="set-up-ip-addressing-for-target-vms"></a>Konfigurowanie adresowania IP dla docelowych maszyn wirtualnych
 
-Aby zmodyfikować podsieci, przejdź do **obliczenia i sieć** ustawień dla maszyny wirtualnej.
+Adres IP dla każdego interfejsu Sieciowego docelowej maszyny wirtualnej są skonfigurowane w następujący sposób:
 
-![Obliczenia i sieć obliczenia okno właściwości](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
-
-
-## <a name="ip-address"></a>Adres IP
-
-Adres IP dla każdego interfejsu sieciowego docelowej maszyny wirtualnej jest ustawiona, zgodnie z opisem w poniższych sekcjach.
-
-### <a name="dhcp"></a>DHCP
-Jeśli do interfejsu sieciowego źródłowej maszyny wirtualnej korzysta z protokołu DHCP, do interfejsu sieciowego docelowej maszyny wirtualnej jest również ustawiona na korzystania z usługi DHCP.
-
-### <a name="static-ip-address"></a>Statyczny adres IP
-Jeśli do interfejsu sieciowego źródłowej maszyny wirtualnej używa statycznego adresu IP, do interfejsu sieciowego docelowej maszyny wirtualnej jest również ustawiona na używanie statycznego adresu IP. W poniższych sekcjach opisano, jak statyczny adres IP jest ustawiony.
-
-### <a name="ip-assignment-behavior-during-failover"></a>Zachowanie przypisywania adresów IP podczas trybu Failover
-#### <a name="1-same-address-space"></a>1. Tą samą przestrzenią adresów
-
-Jeśli podsieć źródłowa i docelowa podsieć ma tą samą przestrzenią adresów, adres IP interfejsu sieciowego źródłowej maszyny wirtualnej jest ustawiony jako docelowy adres IP. Jeśli ten sam adres IP nie jest dostępna, następny dostępny adres IP jest ustawiony jako docelowy adres IP.
-
-#### <a name="2-different-address-spaces"></a>2. Różne przestrzenie adresowe
-
-Jeśli podsieć źródłowa i docelowa podsieć ma różne przestrzenie adresowe, następnym dostępnym adresem IP w podsieci docelowej jest ustawiony jako docelowy adres IP.
+- **DHCP**: Jeśli karta sieciowa źródłowej maszyny Wirtualnej korzysta z protokołu DHCP, kart interfejsu Sieciowego docelowej maszyny Wirtualnej jest również ustawiona do używania protokołu DHCP.
+- **Statyczny adres IP**: Jeśli karta sieciowa źródłowej maszyny Wirtualnej używa statycznego adresu IP, docelowej karty Sieciowej maszyny Wirtualnej będzie również użyć statycznego adresu IP.
 
 
-### <a name="ip-assignment-behavior-during-test-failover"></a>Zachowanie przypisywania adresów IP podczas testowania trybu Failover
-#### <a name="1-if-the-target-network-chosen-is-the-production-vnet"></a>1. Jeśli wybrana sieć docelowa jest w sieci wirtualnej w środowisku produkcyjnym
-- Adres IP odzyskiwania (docelowy adres IP) będzie statyczny adres IP, ale jej **nie będzie ten sam adres IP** jako zarezerwowane dla trybu Failover.
-- Przypisany adres IP będzie następnego dostępnego adresu IP od końca zakresu adresów podsieci.
-- Dla np. Jeśli jest skonfigurowany jako statyczny adres IP źródłowej maszyny Wirtualnej: 10.0.0.19 i testowy tryb Failover podjęto próbę przy użyciu skonfigurowanego produkcyjnego środowiska sieciowego: ***odzyskiwania po awarii PROD znajdującymi***, przy użyciu zakresu podsieci co 10.0.0.0/24. </br>
-Maszyna wirtualna trybie failed-over zostaną przypisane przy użyciu - następnego dostępnego adresu IP od końca zakresu adresów podsieci, która jest: 10.0.0.254 </br>
+## <a name="ip-address-assignment-during-failover"></a>Przypisywanie adresów IP podczas trybu failover
 
-**Uwaga:** terminologii **sieci wirtualnej w środowisku produkcyjnym** jest określana "Sieć docelowa" zamapowanych podczas konfiguracji odzyskiwania po awarii.
-#### <a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2. Jeśli wybrana sieć docelowa nie jest w sieci wirtualnej w środowisku produkcyjnym, ale ma z tego samego zakresu podsieci w sieci w środowisku produkcyjnym
-
-- Adres IP odzyskiwania (docelowy adres IP) będzie statyczny adres IP z **ten sam adres IP** (czyli skonfigurować statyczny adres IP) jako zarezerwowane dla trybu Failover. Pod warunkiem, że ten sam adres IP jest dostępna.
-- Jeśli skonfigurowane statyczny adres IP jest już przypisana do niektórych innych maszyn wirtualnych/urządzeń, IP odzyskiwania będzie następnego dostępnego adresu IP od końca zakresu adresów podsieci.
-- Dla np. Jeśli jest skonfigurowany jako statyczny adres IP źródłowej maszyny Wirtualnej: podjęto 10.0.0.19 i testu pracy awaryjnej z sieci testowej: ***odzyskiwania po awarii bez-PROD-znajdującymi***, za pomocą tego samego zakresu podsieci co produkcyjnego środowiska sieciowego - 10.0.0.0/24. </br>
-  Maszyna wirtualna trybie failed-over zostaną przypisane przy użyciu następujących statyczny adres IP </br>
-    - skonfigurować statyczny adres IP: 10.0.0.19, jeśli adres IP jest dostępny.
-    - Następny dostępny adres IP: Użyj 10.0.0.254, jeśli adres IP 10.0.0.19 znajduje się już w.
+**Źródłowe i docelowe podsieci** | **Szczegóły**
+--- | ---
+Tą samą przestrzenią adresów | Adres IP źródłowej maszyny Wirtualnej karty Sieciowej jest ustawiony jako element docelowy adres IP karty Sieciowej maszyny Wirtualnej.<br/><br/> Jeśli adres nie jest dostępna, następny dostępny adres IP jest ustawiany jako element docelowy.
+Różnymi przestrzeniami adresowymi<br/><br/> Następnym dostępnym adresem IP w podsieci docelowej jest ustawiany jako element docelowy adres karty Sieciowej maszyny Wirtualnej.
 
 
-Aby zmodyfikować docelowy adres IP dla każdego interfejsu sieciowego, przejdź do **obliczenia i sieć** ustawień dla maszyny wirtualnej.</br>
-Najlepszym rozwiązaniem jest zawsze zalecane jest wybranie sieci testowej przeprowadzenie testu pracy awaryjnej.
+
+## <a name="ip-address-assignment-during-test-failover"></a>Przypisywanie adresów IP podczas testowania trybu failover
+
+**Sieć docelowa** | **Szczegóły**
+--- | ---
+Docelowa sieć jest siecią wirtualną w tryb failover | -Docelowy adres IP jest statyczna, ale nie jako ten sam adres IP zarezerwowane dla trybu failover.<br/><br/>  -Przypisanego adresu jest następnym dostępnym adresem od końca zakresu podsieci.<br/><br/> Na przykład: Jeśli źródłowy adres IP jest 10.0.0.19 i trybu failover sieć używa zakresu 10.0.0.0/24, a następnie dalej adresu IP przypisanego do docelowej maszyny Wirtualnej jest 10.0.0.254.
+Sieć docelowa nie jest trybem failover sieci wirtualnej | -Docelowy adres IP będzie statycznych przy użyciu tego samego adresu IP dla trybu failover.<br/><br/>  -Jeśli ten sam adres IP jest już przypisany, adres IP jest kolejny dostępne pod adresem eeach zakresu podsieci.<br/><br/> Na przykład: Jeśli statyczny adres IP źródła 10.0.0.19 i trybu failover znajduje się w sieci, które nie są sieci trybu failover, w której zakres 10.0.0.0/24, to statyczny adres IP docelowej będą 10.0.0.0.19, jeśli jest dostępny, i w przeciwnym razie będzie 10.0.0.254.
+
+- Przełączenie w tryb failover w sieci wirtualnej jest sieci docelowej, która została wybrana, podczas konfigurowania odzyskiwania po awarii.
+- Firma Microsoft zaleca, zawsze używać innych produkcyjnego środowiska sieciowego do testowania trybu failover.
+- Możesz zmodyfikować docelowy adres IP w **obliczenia i sieć** ustawienia maszyny wirtualnej.
+
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Przegląd [wskazówki dotyczące replikowania maszyn wirtualnych platformy Azure networking](site-recovery-azure-to-azure-networking-guidance.md).
+- Przegląd [sieć wskazówki](site-recovery-azure-to-azure-networking-guidance.md) do odzyskiwania po awarii maszyny Wirtualnej platformy Azure.
+- [Dowiedz się więcej](site-recovery-retain-ip-azure-vm-failover.md) o zachowaniu adresy IP po włączeniu trybu failover.
+
+Jeśli wybrana sieć docelowa sieć wirtualna trybu failover"i 2nd punkt powiedzieć"Jeśli sieć docelowa wybrana jest inna niż sieć trybu failover, ale ma tego samego zakresu podsieci co sieć wirtualną w tryb failover"

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 11/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 141f29ea1c7ebdd8208dda6bc39a60f7873dab7d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: de24e8b308c6adf3f69caae4ab671f57fc2f6b8c
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977846"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51565058"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Konfigurowanie klientów OpenVPN dla bramy sieci VPN platformy Azure (wersja zapoznawcza)
 
@@ -29,29 +29,53 @@ Sprawdź, że zostały wykonane kroki konfigurowania OpenVPN dla bramy sieci VPN
 ## <a name="windows"></a>Klienci Windows
 
 1. Pobieranie i instalowanie klienta OpenVPN z oficjalnego [OpenVPN witryny sieci Web](https://openvpn.net/index.php/open-source/downloads.html).
-2. Pobierz profil sieci VPN dla bramy. Można to zrobić na karcie Konfiguracja punkt lokacja w witrynie Azure portal lub "New-AzureRmVpnClientConfiguration" w programie PowerShell.
-3. Rozpakuj profilu. Następnie otwórz plik konfiguracyjny vpnconfig.ovpn z folderu OpenVPN w Notatniku.
-4. Wypełnij sekcji P2S klienta certyfikatu z kluczem publicznym certyfikatu klienta o P2S za pomocą kodowania base64. W certyfikacie sformatowane PEM wystarczy otworzyć plik cer i skopiuj nad kluczem base64 między nagłówki certyfikatu. W tym miejscu należy poznać sposób eksportowania certyfikatu można pobrać zakodowanego klucza publicznego.
-5. Wypełnij sekcję klucza prywatnego przy użyciu klucza prywatnego certyfikatu klienta o P2S za pomocą kodowania base64. Aby uzyskać informacje o tym, jak można wyodrębnić klucza prywatnego, zobacz [wyeksportować klucz](vpn-gateway-certificates-point-to-site.md#clientexport).
-6. Nie zmieniaj wszelkie inne pola. Użyj wypełniony w konfiguracji w danych wejściowych klienta nawiązać połączenia z siecią VPN.
-7. Skopiuj plik vpnconfig.ovpn do folderu C:\Program Files\OpenVPN\config.
-8. Kliknij prawym przyciskiem myszy ikonę OpenVPN na pasku zadań i kliknij przycisk Połącz.
+2. Pobierz profil sieci VPN dla bramy. Można to zrobić na karcie Konfiguracja punktu do lokacji w witrynie Azure portal lub "New-AzureRmVpnClientConfiguration" w programie PowerShell.
+3. Rozpakuj profil. Następnie otwórz *vpnconfig.ovpn* pliku konfiguracji z folderu OpenVPN za pomocą Notatnika.
+4. [Eksportuj](vpn-gateway-certificates-point-to-site.md#clientexport) certyfikatu klienta P2S, utworzony i przekazany do konfiguracji P2S w bramie.
+5. Wyodrębnij klucz prywatny i odcisk palca base64 z *PFX*. Istnieje wiele sposobów, aby to zrobić. Przy użyciu biblioteki OpenSSL na maszynie jest jednym ze sposobów. *Profileinfo.txt* plik zawiera klucz prywatny i odcisk palca urzędu certyfikacji i certyfikatu klienta. Pamiętaj użyć odcisk palca certyfikatu klienta.
+
+  ```
+  openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
+  ```
+6. Otwórz *profileinfo.txt* w Notatniku. Aby uzyskać odcisk palca certyfikatu klienta (podrzędne), zaznacz tekst (łącznie z i od) "---BEGIN CERTIFICATE---" i "---koniec certyfikatu---" dla elementu podrzędnego certyfikatu, a następnie skopiuj go. Certyfikat podrzędnego można zidentyfikować, sprawdzając = podmiotu / linii.
+7. Przełącz się do *vpnconfig.ovpn* plik otwarty w Notatniku od kroku 3. Znajdź sekcję wskazaną poniżej Zamień wszystko pomiędzy "cert" i "/ cert".
+
+  ```
+  # P2S client certificate
+  # please fill this field with a PEM formatted cert
+  <cert>
+  $CLIENTCERTIFICATE
+  </cert>
+  ```
+8.  Otwórz *profileinfo.txt* w Notatniku. Aby uzyskać klucz prywatny, zaznacz tekst (łącznie z i od) "---BEGIN PRIVATE KEY---" i "---BEGIN PRIVATE KEY---" i skopiuj go.
+9.  Wróć do pliku vpnconfig.ovpn w programie Notatnik i Znajdź w tej sekcji. Wklej klucz prywatny, zastępując wszystko pomiędzy i "klucz" i "/ klucza".
+
+  ```
+  # P2S client root certificate private key
+  # please fill this field with a PEM formatted key
+  <key>
+  $PRIVATEKEY
+  </key>
+  ```
+10. Nie zmieniaj innych pól. Użyj konfiguracji wprowadzonej w danych wejściowych klienta, aby nawiązać połączenie z siecią VPN.
+11. Skopiuj plik vpnconfig.ovpn do folderu C:\Program Files\OpenVPN\config.
+12. Kliknij prawym przyciskiem myszy ikonę OpenVPN na pasku zadań i kliknij przycisk Połącz.
 
 ## <a name="mac"></a>Klienci na komputery Mac
 
 1. Pobieranie i instalowanie klienta OpenVPN, takich jak [TunnelBlik](https://tunnelblick.net/downloads.html). 
 2. Pobierz profil sieci VPN dla bramy. Można to zrobić na karcie Konfiguracja punktu do lokacji w witrynie Azure portal lub za pomocą "New-AzureRmVpnClientConfiguration" w programie PowerShell.
-3. Rozpakuj profilu. Otwórz plik konfiguracji vpnconfig.ovpn z folderu OpenVPN w Notatniku.
-4. Wypełnij sekcji P2S klienta certyfikatu z kluczem publicznym certyfikatu klienta o P2S za pomocą kodowania base64. W certyfikacie sformatowane PEM wystarczy otworzyć plik cer i skopiuj nad kluczem base64 między nagłówki certyfikatu. Zobacz [wyeksportować klucz publiczny](vpn-gateway-certificates-point-to-site.md#cer) informacji o sposobie eksportowania certyfikatu można pobrać zakodowanego klucza publicznego.
-5. Wypełnij sekcję klucza prywatnego przy użyciu klucza prywatnego certyfikatu klienta o P2S za pomocą kodowania base64. Zobacz [Eksportuj klucz prywatny](https://www.geotrust.eu/en/support/manuals/microsoft/all+windows+servers/export+private+key+or+certificate/) informacji o tym, jak można wyodrębnić klucza prywatnego.
-6. Nie zmieniaj wszelkie inne pola. Użyj wypełniony w konfiguracji w danych wejściowych klienta nawiązać połączenia z siecią VPN.
+3. Rozpakuj profil. Otwórz plik konfiguracji vpnconfig.ovpn z folderu OpenVPN w Notatniku.
+4. W sekcji certyfikatu klienta P2S wprowadź klucz publiczny certyfikatu klienta P2S w formacie base64. W przypadku certyfikatu w formacie PEM można po prostu otworzyć plik cer i skopiować klucz w formacie base64 znajdujący się pomiędzy nagłówkami certyfikatów. Zobacz [wyeksportować klucz publiczny](vpn-gateway-certificates-point-to-site.md#cer) informacji o sposobie eksportowania certyfikatu można pobrać zakodowanego klucza publicznego.
+5. W sekcji klucza prywatnego wprowadź klucz prywatny certyfikatu klienta P2S w formacie base64. Zobacz [Eksportuj klucz prywatny](https://www.geotrust.eu/en/support/manuals/microsoft/all+windows+servers/export+private+key+or+certificate/) informacji o tym, jak można wyodrębnić klucza prywatnego.
+6. Nie zmieniaj innych pól. Użyj konfiguracji wprowadzonej w danych wejściowych klienta, aby nawiązać połączenie z siecią VPN.
 7. Kliknij dwukrotnie plik profilu, aby utworzyć profil w tunnelblik.
 8. Uruchom Tunnelblik z folderu aplikacji.
 9. Kliknij ikonę Tunneblik na pasku zadań i połącz wyboru.
 
 ## <a name="linux"></a>Klienci systemu Linux
 
-1. Otwórz nową sesję terminala. Można otworzyć nową sesję, naciskając klawisz "Ctrl + Alt + t", w tym samym czasie
+1. Otwórz nową sesję terminala. Możesz otworzyć nową sesję, naciskając klawisz "Ctrl + Alt + t", w tym samym czasie.
 2. Wprowadź następujące polecenie, aby zainstalować wymagane składniki:
 
   ```
@@ -59,21 +83,52 @@ Sprawdź, że zostały wykonane kroki konfigurowania OpenVPN dla bramy sieci VPN
   sudo apt-get -y install network-manager-openvpn
   sudo service network-manager restart
   ```
-3. Pobierz profil sieci VPN dla bramy. Można to zrobić, na karcie Konfiguracja punktu do lokacji w witrynie Azure portal lub za pomocą "New-AzureRmVpnClientConfiguration" w programie PowerShell.
-4. Wypełnij sekcję klucza prywatnego przy użyciu klucza prywatnego certyfikatu klienta o P2S za pomocą kodowania base64. Zobacz [Eksportuj klucz prywatny](https://www.geotrust.eu/en/support/manuals/microsoft/all+windows+servers/export+private+key+or+certificate/) informacji o tym, jak można wyodrębnić klucza prywatnego.
-5. Nawiązywanie połączenia przy użyciu wiersza polecenia, wpisz następujące polecenie:
+3. Pobierz profil sieci VPN dla bramy. Można to zrobić na karcie Konfiguracja punktu do lokacji w witrynie Azure portal.
+4.  [Eksportuj](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site#clientexport) certyfikatu klienta P2S, utworzony i przekazany do konfiguracji P2S w bramie. 
+5. Wyodrębnij klucz prywatny i odcisk palca base64 z plik pfx. Istnieje wiele sposobów, aby to zrobić. Przy użyciu biblioteki OpenSSL na komputerze jest jednym ze sposobów.
+
+    ```
+    openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
+    ```
+  *Profileinfo.txt* plik będzie zawierać klucz prywatny i odcisk palca urzędu certyfikacji i certyfikatu klienta. Pamiętaj użyć odcisk palca certyfikatu klienta.
+
+6. Otwórz *profileinfo.txt* w edytorze tekstów. Aby uzyskać odcisk palca certyfikatu klienta (podrzędne), zaznacz tekst, włącznie z i od "---początek certyfikatu---" i "---koniec certyfikatu---" dla elementu podrzędnego certyfikatu, a następnie skopiuj go. Certyfikat podrzędnego można zidentyfikować, sprawdzając = podmiotu / linii.
+
+7.  Otwórz *vpnconfig.ovpn* plików i Znajdź sekcję wskazaną poniżej. Zamień wszystko pomiędzy i "cert" i "/ cert".
+
+    ```
+    # P2S client certificate
+    # please fill this field with a PEM formatted cert
+    <cert>
+    $CLIENTCERTIFICATE
+    </cert>
+    ```
+8.  Otwórz profileinfo.txt w edytorze tekstów. Aby uzyskać klucz prywatny, zaznacz tekst, włącznie z i od "---początek klucza prywatnego---" i "---BEGIN PRIVATE KEY---" i skopiuj go.
+
+9.  Otwórz plik vpnconfig.ovpn w edytorze tekstów i Znajdź w tej sekcji. Wklej klucz prywatny, zastępując wszystko pomiędzy i "klucz" i "/ klucza".
+
+    ```
+    # P2S client root certificate private key
+    # please fill this field with a PEM formatted key
+    <key>
+    $PRIVATEKEY
+    </key>
+    ```
+
+10. Nie zmieniaj innych pól. Użyj konfiguracji wprowadzonej w danych wejściowych klienta, aby nawiązać połączenie z siecią VPN.
+11. Nawiązywanie połączenia przy użyciu wiersza polecenia, wpisz następujące polecenie:
   
   ```
   Sudo openvpn –config <name and path of your VPN profile file>
   ```
-5. Nawiązywanie połączenia przy użyciu graficznego interfejsu użytkownika, przejdź do ustawień systemu.
-6. Kliknij przycisk **+** można dodać nowe połączenie VPN.
-7. W obszarze **dodać sieci VPN**, wybierz **Importuj z pliku...**
-8. Przejdź do pliku profilu i kliknij dwukrotnie plik lub wybierz **Otwórz**
-9. Kliknij przycisk **Dodaj** na **dodać sieci VPN** okna.
+12. Nawiązywanie połączenia przy użyciu graficznego interfejsu użytkownika, przejdź do ustawień systemu.
+13. Kliknij przycisk **+** można dodać nowe połączenie VPN.
+14. W obszarze **dodać sieci VPN**, wybierz **Importuj z pliku...**
+15. Przejdź do pliku profilu i kliknij dwukrotnie plik lub wybierz **Otwórz**.
+16. Kliknij przycisk **Dodaj** na **dodać sieci VPN** okna.
   
   ![Importuj z pliku](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
-10. Można połączyć, wyłączając sieć VPN **ON** na **ustawienia sieciowe** strony, lub równy podanemu ikonę sieci na pasku zadań.
+17. Można połączyć, wyłączając sieć VPN **ON** na **ustawienia sieciowe** strony, lub równy podanemu ikonę sieci na pasku zadań.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

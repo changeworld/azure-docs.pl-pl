@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f11012c90ab2b82e945fdb67e224783c3f05c6dd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2dd6ebb9e2f35eccae3b267402a4ef9b0e1b2dbe
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237557"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567166"
 ---
 # <a name="introduction-to-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Azure
 ## <a name="overview"></a>Przegląd
@@ -59,9 +59,9 @@ Funkcje wymienione w następstwie są funkcje, które można przeglądać w celu
 | [Bezpieczna platforma](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [Prywatność i kontrolek](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[Zgodność](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [Przezroczystości](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
 | [Cykl projektowania zabezpieczeń](https://www.microsoft.com/en-us/sdl/)wewnętrznej inspekcji | [Zarządzanie danymi przez cały czas](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [Centrum zaufania](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Jak firma Microsoft zabezpiecza dane klienta z usługami platformy Azure](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
-| [Obowiązkowe szkolenia w zakresie zabezpieczeń, kontroli tła](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Kontrolowanie lokalizacji danych](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Typowe kontrolki Centrum](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Jak zarządzać lokalizacji danych w usługach platformy Azure przez firmy Microsoft](http://azuredatacentermap.azurewebsites.net/)|
+| [Obowiązkowe szkolenia w zakresie zabezpieczeń, sprawdzanie w tle](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Kontrolowanie lokalizacji danych](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Typowe kontrolki Centrum](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Jak zarządzać lokalizacji danych w usługach platformy Azure przez firmy Microsoft](http://azuredatacentermap.azurewebsites.net/)|
 | [Testy penetracyjne](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [włamań i DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement), [inspekcji i rejestrowania](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [Zapewnia dostęp do danych na swoich warunkach](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [Usługi w chmurze powodu starannością listy kontrolnej](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Kto w firmie Microsoft uzyskiwać dostęp do danych, na jakich zasadach](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
-| [Stan centra danych w kompozycji](https://www.microsoft.com/en-us/cloud-platform/global-datacenters), bezpieczeństwo fizyczne [zabezpieczenia sieci](https://docs.microsoft.com/azure/security/security-network-overview) | [Odpowiadanie na organom ścigania](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Zgodność z przepisami według usługi, lokalizacji i przemysł](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Jak firma Microsoft zabezpiecza dane klienta z usługami platformy Azure](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
+| [Centrum danych najnowocześniejsze](https://www.microsoft.com/en-us/cloud-platform/global-datacenters), bezpieczeństwo fizyczne [zabezpieczenia sieci](https://docs.microsoft.com/azure/security/security-network-overview) | [Odpowiadanie na organom ścigania](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Zgodność z przepisami według usługi, lokalizacji i przemysł](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Jak firma Microsoft zabezpiecza dane klienta z usługami platformy Azure](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
 |  [Reagowania na zdarzenia zabezpieczeń](https://aka.ms/SecurityResponsepaper), [udostępnione odpowiedzialności](https://aka.ms/sharedresponsibility) |[Rygorystyczne standardy ochrony prywatności](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Przejrzyj certyfikaty związane z usługami platformy Azure, Centrum przezroczystości](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
 
 
@@ -345,7 +345,7 @@ Poprawek i aktualizacji stanowić podstawę znajdowaniem i naprawianiem potencja
 ### <a name="azure-security-center"></a>Azure Security Center
 Usługa Security Center ułatwia zapobieganie zagrożeniom, ich wykrywanie i reagowanie na nie, a przy tym zapewnia lepszy wgląd i większą kontrolę w zakresie bezpieczeństwa zasobów na platformie Azure. Zapewnia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami subskrypcji platformy Azure, pomaga wykrywać zagrożenia, które w przeciwnym razie mogłyby pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań z zakresu zabezpieczeń.
 
-## <a name="identify-and-access-management"></a>Identyfikowanie i zarządzanie dostępem
+## <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
 
 Zabezpieczanie systemów, aplikacji i danych rozpoczyna się przy użyciu kontroli dostępu na podstawie tożsamości. Funkcje zarządzania tożsamościami i dostępem, które są wbudowane w produktów firmy Microsoft i usługi chronić organizacyjne i osobiste informacje przed nieautoryzowanym dostępem jednocześnie przyspieszając dostępna dla uprawnionych użytkowników zawsze i wszędzie tam, gdzie one potrzebny.
 

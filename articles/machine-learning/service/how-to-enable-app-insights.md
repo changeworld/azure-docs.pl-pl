@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: 962090340cad6bcd95245cffe16c25f08a98226b
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 285486d5fe641d49ee21d7340b62f83d75862553
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300765"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578303"
 ---
 # <a name="monitor-your-azure-machine-learning-models-in-production-with-application-insights"></a>Monitorowanie usługi Azure Machine Learning modeli w środowisku produkcyjnym za pomocą usługi Application Insights
 
@@ -24,6 +24,10 @@ W tym artykule dowiesz się, jak skonfigurować usługi Azure Application Insigh
 * Liczba wyjątków.
 
 [Dowiedz się więcej o usłudze Application Insights](../../application-insights/app-insights-overview.md). 
+
+>[!NOTE]
+> Kod w tym artykule został przetestowany przy użyciu zestawu SDK usługi Azure Machine Learning wersji 0.1.74
+
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).

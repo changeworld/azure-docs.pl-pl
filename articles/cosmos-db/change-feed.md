@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 09f827e8784fe2a97c587524d70baf76ae4458ba
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: ad2032345332519713b177596df0556e4c35c18c
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741865"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567744"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Praca ze zmianą Obsługa kanału informacyjnego w usłudze Azure Cosmos DB
 
@@ -177,7 +177,7 @@ Biblioteką procesora zestawienia zmian upraszcza zmiany odczytu w partycji i wi
 
 Po lewej stronie klient został uruchomiony w pierwszej i jego uruchomienia, monitorowania, które wszystkie partycje, a następnie drugiego klienta została uruchomiona, a następnie pierwszy porzuciła niektóre dzierżawy do drugiego klienta. Jak widać, to jest dobre rozwiązanie sposób rozdzielania pracy między różnych komputerów i klientów.
 
-Należy pamiętać, że jeśli masz dwa bez użycia serwera funtions Azure monitorowania tej samej kolekcji i przy użyciu tej samej dzierżawy, a następnie dwie funkcje mogą wystąpić różne dokumenty, w zależności od sposobu bibliotece procesora postanawia proces przekazywania partycje.
+Należy pamiętać, że jeśli masz dwa bezserwerowej usługa Azure functions monitorowania tej samej kolekcji i przy użyciu tej samej dzierżawy dwie funkcje mogą odbieraj różnymi dokumentami, w zależności od sposobu bibliotece procesora decyduje się na przetwarzanie partycji.
 
 <a id="understand-cf"></a>
 ### <a name="understanding-the-change-feed-processor-library"></a>Opis zmiany źródła danych z biblioteką procesora

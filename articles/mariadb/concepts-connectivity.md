@@ -3,19 +3,19 @@ title: Obsługa błędów przejściowych łączności dla usługi Azure Database
 description: Dowiedz się, jak obsługiwać błędy przejściowe łączności dla usługi Azure Database dla serwera MariaDB.
 keywords: połączenia z serwerem MySQL, parametry połączenia, problemy z łącznością, błąd przejściowy, błąd połączenia
 services: mariadb
-author: janeng
+author: jan-eng
 ms.author: janeng
 manager: kfile
 editor: jasonwhowell
 ms.service: mariadb
 ms.topic: article
 ms.date: 11/09/2018
-ms.openlocfilehash: 90b253fda55a903f22068ebac0c6c3fff5ad8347
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 203401e3842912169371f315048f6930c8dc80eb
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51347708"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568101"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mariadb"></a>Obsługa błędów przejściowych łączności dla usługi Azure Database dla serwera MariaDB
 

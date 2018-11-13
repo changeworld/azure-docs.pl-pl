@@ -1,3 +1,16 @@
+---
+author: sdwheeler
+ms.service: azure-powershell
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: sewhee
+ms.openlocfilehash: 5f224ab3b0040bcba6b99d8db744e9dbde4a63c9
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572535"
+---
 ## <a name="setting-up-powershell-for-resource-manager-templates"></a>Konfigurowanie programu PowerShell dla szablonów usługi Resource Manager
 Zanim użyjesz programu Azure PowerShell z usługą Resource Manager, musisz mieć prawo programu Windows PowerShell i wersji programu Azure PowerShell.
 
