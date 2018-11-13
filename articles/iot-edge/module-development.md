@@ -2,18 +2,18 @@
 title: Tworzenie modułów dla usługi Azure IoT Edge | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak utworzyć niestandardowe moduły dla usługi Azure IoT Edge
 author: kgremban
-manager: philmea
+manager: timlt
 ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cb97e2cf6d554753f64afc76de84f43e38443909
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
-ms.translationtype: MT
+ms.openlocfilehash: 2513624aecff652e8a952b3255faf2ab9366f21a
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567234"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288700"
 ---
 # <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules"></a>Zrozumienie wymagań i narzędzia do tworzenia modułów usługi IoT Edge
 
