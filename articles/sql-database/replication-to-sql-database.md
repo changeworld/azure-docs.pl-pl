@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: abf41f48ffa08867fd0f06ff88da00ca65286803
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 44d6135c8a259d3d4c791d359136963483088c5a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515713"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567897"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikacja bazy danych SQL pojedynczych i puli baz danych
 
@@ -65,7 +65,7 @@ Można skonfigurować replikacji programu SQL Server do pojedynczych i puli baz 
 
 1. Utwórz publikację Replikacja transakcyjna bazy danych programu SQL Server w środowisku lokalnym.  
 2. W programie SQL Server w środowisku lokalnym, użyj **Kreatora nowej subskrypcji** lub instrukcji Transact-SQL, aby utworzyć powiadomienie wypychane do subskrypcji usługi Azure SQL Database.  
-3. W usłudze Azure SQL Database początkowy zestaw danych jest migawką, tworzonego przez agenta migawek i rozproszonych i stosowane przez agenta dystrybucji.   
+3. Z jednej puli baz danych i w usłudze Azure SQL Database początkowy zestaw danych jest migawką, tworzonego przez agenta migawek i rozproszonych i stosowane przez agenta dystrybucji. Azure SQL Database Managed Instance również użyć kopii zapasowej bazy danych Aby zapełnić bazę danych subskrybenta.
 
 ### <a name="data-migration-scenario"></a>Scenariusz migracji danych  
 

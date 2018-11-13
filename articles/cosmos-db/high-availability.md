@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: cef3eef86cbb4abde5005f7a5bc278f9cd831b64
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 7ea379516c6e636abd1309416374be75bcdbb686
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515271"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578743"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Wysoka dostępność dzięki usłudze Azure Cosmos DB
 
@@ -55,17 +55,7 @@ Regionalnej awarii nie są niczym niezwykłym, a usługi Azure Cosmos DB zapewni
 
 - Kont w jednym regionie mogą zostać utracone po awarii regionalnej dostępności. Zalecane jest, aby skonfigurować co najmniej dwóch regionach (najlepiej, co najmniej dwa regiony zapisu) przy użyciu konta usługi Cosmos w celu zapewnienia wysokiej dostępności przez cały czas.
 
-### <a name="durability-following-a-regional-disaster"></a>Trwałości po regionalnej awarii
-
-Zanim operacji zapisu zostało potwierdzone, do klienta, danych jest trwałym zatwierdzeniu przez kworum replik w regionie, który akceptuje operacji zapisu. W poniższej tabeli przedstawiono potencjalne okno utraty danych dla poszczególnych poziomów spójności po ulegnie nieodwracalnej awarii regionalnej awarii dla konta usługi Cosmos obejmujące wiele regionów.
-
-| **Poziom spójności** | **Potencjalne okno utraty danych po awarii regionalnej** |
-| - | - |
-| Silna | Zero |
-| Powiązana nieaktualność | Ograniczone do "nieaktualność okna" można skonfigurować na konto usługi Cosmos. |
-| Sesja | Maksymalnie 5 sekund |
-| Spójny prefiks | Maksymalnie 5 sekund |
-| Ostateczna | Maksymalnie 5 sekund |
+- Nawet w przypadku bardzo rzadkie i niefortunne gdy region platformy Azure jest trwale nieodwracalny, istnieje nie ryzyko utraty danych skonfigurowanie Twojego konta usługi Cosmos wielu regionów za pomocą domyślnego poziomu spójności silne. W przypadku region zapisu trwale nieodwracalny, dla kont Cosmos w wielu regionach skonfigurowano spójności powiązana nieaktualność potencjalnych okno utraty danych jest ograniczony do okna nieaktualność; w sesji, poziom spójny prefiks i spójność ostateczna potencjalnych okno utraty danych jest ograniczony do maksymalnie pięć sekund.
 
 ## <a name="building-highly-available-applications"></a>Tworzenie aplikacji o wysokiej dostępności
 

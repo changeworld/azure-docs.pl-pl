@@ -2,18 +2,18 @@
 title: Automatyczna obsługa usługi Azure IoT Edge urządzenia przy użyciu usługi DPS - Linux | Dokumentacja firmy Microsoft
 description: Użyj symulowanego modułu TPM na maszynie Wirtualnej systemu Linux do testowania, inicjowanie obsługi administracyjnej urządzeń Azure IoT Edge
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6d0d2adfb4a727ec93db6d44e6a3e8f923760b91
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 703dedc69e491377ce0890610a2882ab95ae6e5a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739672"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51565075"
 ---
 # <a name="create-and-provision-an-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Tworzenie i aprowizowanie urządzenia usługi Edge z wirtualnego TPM na maszynie wirtualnej systemu Linux
 

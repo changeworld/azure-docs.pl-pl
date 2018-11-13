@@ -1,28 +1,41 @@
+---
+author: dlepow
+ms.service: container-service
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: danlep
+ms.openlocfilehash: c5200e7e4d5550f26343fab1561c214ee19d6741
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572528"
+---
 # <a name="container-service-frequently-asked-questions"></a>Często zadawane pytania dotyczące usługi Container Service
 
 ## <a name="orchestrators"></a>Koordynatorzy
 
-### <a name="which-container-orchestrators-do-you-support-on-azure-container-service"></a>Których koordynatorów kontenerów obsługuje usługa Azure Container Service? 
+### <a name="which-container-orchestrators-do-you-support-on-azure-container-service"></a>Których koordynatorów kontenerów obsługuje usługa Azure Container Service? 
 
 Obsługiwane są następujące usługi typu open source: DC/OS, Docker Swarm i Kubernetes. Aby uzyskać więcej informacji, zapoznaj się z [omówieniem](../articles/container-service/kubernetes/container-service-intro-kubernetes.md).
- 
-### <a name="do-you-support-docker-swarm-mode"></a>Czy tryb Docker Swarm jest obsługiwany? 
+ 
+### <a name="do-you-support-docker-swarm-mode"></a>Czy tryb Docker Swarm jest obsługiwany? 
 
-Obecnie tryb Swarm nie jest obsługiwany, ale znajduje się w planie usług. 
+Obecnie tryb Swarm nie jest obsługiwany, ale znajduje się w planie usług. 
 
-### <a name="does-azure-container-service-support-windows-containers"></a>Czy usługa Azure Container Service obsługuje kontenery z systemem Windows?  
+### <a name="does-azure-container-service-support-windows-containers"></a>Czy usługa Azure Container Service obsługuje kontenery z systemem Windows?  
 
 Obecnie kontenery systemu Linux są obsługiwane przy użyciu wszystkich koordynatorów. Obsługa kontenerów systemu Windows przy użyciu usługi Kubernetes jest dostępna w wersji zapoznawczej.
 
-### <a name="do-you-recommend-a-specific-orchestrator-in-azure-container-service"></a>Czy zalecane jest korzystanie z określonego koordynatora w usłudze Azure Container Service? 
+### <a name="do-you-recommend-a-specific-orchestrator-in-azure-container-service"></a>Czy zalecane jest korzystanie z określonego koordynatora w usłudze Azure Container Service? 
 Ogólnie nie zalecamy korzystania z określonego koordynatora. Jeśli masz doświadczenie w pracy z jednym z obsługiwanych koordynatorów, możesz zastosować go w usłudze Azure Container Service. Trendy danych sugerują jednak, że platforma DC/OS została sprawdzona podczas produkcji w przypadku obciążeń danych Big Data i IoT, usługa Kubernetes jest dobrym rozwiązaniem w przypadku natywnych obciążeń w chmurze, a usługa Docker Swarm jest znana z możliwości integrowania z narzędziami Docker oraz prostego procesu uczenia się.
 
-W zależności od swojego scenariusza możesz również kompilować niestandardowe rozwiązania kontenerów i zarządzać nimi przy użyciu innych usług Azure. Usługi te to: [Virtual Machines](../articles/virtual-machines/linux/overview.md), [Service Fabric](../articles/service-fabric/service-fabric-overview.md), [Web Apps](../articles/app-service/app-service-web-overview.md) i [Batch](../articles/batch/batch-technical-overview.md).  
+W zależności od swojego scenariusza możesz również kompilować niestandardowe rozwiązania kontenerów i zarządzać nimi przy użyciu innych usług Azure. Usługi te to: [Virtual Machines](../articles/virtual-machines/linux/overview.md), [Service Fabric](../articles/service-fabric/service-fabric-overview.md), [Web Apps](../articles/app-service/app-service-web-overview.md) i [Batch](../articles/batch/batch-technical-overview.md).  
 
-### <a name="what-is-the-difference-between-azure-container-service-and-acs-engine"></a>Jaka jest różnica między usługą Azure Container Service i aparatem usługi ACS? 
+### <a name="what-is-the-difference-between-azure-container-service-and-acs-engine"></a>Jaka jest różnica między usługą Azure Container Service i aparatem usługi ACS? 
 Azure Container Service to usługa platformy Azure z umową SLA, która oferuje funkcje działające w witrynie Azure Portal, narzędziach wiersza polecenia platformy Azure oraz interfejsach API platformy Azure. Usługa ta umożliwia szybkie implementowanie klastrów z uruchomionymi standardowymi narzędziami koordynowania kontenerów i stosunkowo niewielką liczbą opcji konfiguracji do wyboru oraz zarządzanie nimi. 
 
-[Aparat usługi ACS](http://github.com/Azure/acs-engine) to projekt typu open source, który umożliwia użytkownikom zaawansowanym dostosowywanie konfiguracji klastra na dowolnym poziomie. Ta zdolność do zmiany konfiguracji infrastruktury i oprogramowania oznacza, że w przypadku aparatu usługi ACS nie oferujemy umowy SLA. Obsługa odbywa się za pośrednictwem projektu typu open source w usłudze GitHub, a nie przez oficjalne kanały firmy Microsoft. 
+[Aparat usługi ACS](http://github.com/Azure/acs-engine) to projekt typu open source, który umożliwia użytkownikom zaawansowanym dostosowywanie konfiguracji klastra na dowolnym poziomie. Ta zdolność do zmiany konfiguracji infrastruktury i oprogramowania oznacza, że w przypadku aparatu usługi ACS nie oferujemy umowy SLA. Obsługa odbywa się za pośrednictwem projektu typu open source w usłudze GitHub, a nie przez oficjalne kanały firmy Microsoft. 
 
 Dodatkowe informacje można znaleźć w naszych [zasadach wsparcia dla kontenerów](https://support.microsoft.com/en-us/help/4035670/support-policy-for-containers).
 
@@ -47,16 +60,16 @@ Możesz utworzyć klaster z 1, 3 lub 5 węzłami głównymi. Możesz wybrać mak
 > W przypadku większych klastrów i w zależności od rozmiaru maszyny wirtualnej wybranego dla węzłów może być konieczne zwiększenie limitu przydziału rdzeni w ramach subskrypcji. Aby zażądać zwiększenia limitu przydziału, otwórz bezpłatnie [żądanie obsługi klienta online](../articles/azure-supportability/how-to-create-azure-support-request.md). Jeśli używasz [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/), możesz użyć ograniczonej liczby rdzeni obliczeniowych platformy Azure.
 > 
 
-### <a name="how-do-i-increase-the-number-of-masters-after-a-cluster-is-created"></a>Jak mogę zwiększyć liczbę wzorców po utworzeniu klastra? 
+### <a name="how-do-i-increase-the-number-of-masters-after-a-cluster-is-created"></a>Jak mogę zwiększyć liczbę wzorców po utworzeniu klastra? 
 Po utworzeniu klastra liczba wzorców jest stała i nie można jej zmienić. Podczas tworzenia klastra najlepiej wybrać wiele wzorców wysokiej dostępności.
 
-### <a name="how-do-i-increase-the-number-of-agents-after-a-cluster-is-created"></a>Jak mogę zwiększyć liczbę agentów po utworzeniu klastra? 
+### <a name="how-do-i-increase-the-number-of-agents-after-a-cluster-is-created"></a>Jak mogę zwiększyć liczbę agentów po utworzeniu klastra? 
 Liczbę agentów można skalować w klastrze za pomocą witryny Azure Portal lub narzędzi wiersza polecenia. Zobacz [Scale an Azure Container Service cluster](../articles/container-service/kubernetes/container-service-scale.md) (Skalowanie klastra usługi Azure Container Service).
 
-### <a name="what-are-the-urls-of-my-masters-and-agents"></a>Jakie są adresy URL moich wzorców i agentów? 
+### <a name="what-are-the-urls-of-my-masters-and-agents"></a>Jakie są adresy URL moich wzorców i agentów? 
 Adresy URL zasobów klastra w usłudze Azure Container Service opierają się na podanym prefiksie nazwy DNS i nazwie regionu platformy Azure wybranego do wdrożenia. Na przykład w pełni kwalifikowana nazwa domeny (FQDN) węzła głównego ma następującą postać:
 
-``` 
+``` 
 DNSnamePrefix.AzureRegion.cloudapp.azure.net
 ```
 
@@ -71,23 +84,23 @@ Często używane adresy URL dla klastra można znaleźć w witrynie Azure Portal
 ### <a name="how-do-i-upgrade-the-orchestrator-after-deployment"></a>Jak uaktualnić koordynatora po wdrożeniu?
 
 Obecnie usługa Azure Container Service nie oferuje narzędzi umożliwiających uaktualnianie wersji koordynatora wdrożonego w klastrze. Jeśli usługa Container Service obsługuje nowszą wersję, można wdrożyć nowy klaster. Inna opcja to miejscowe uaktualnienie klastra przy użyciu narzędzi specyficznych dla koordynatora, jeśli są dostępne. Na przykład zobacz [DC/OS Upgrading](https://dcos.io/docs/1.8/administration/upgrading/) (Uaktualnianie rozwiązania DC/OS).
- 
+ 
 ### <a name="where-do-i-find-the-ssh-connection-string-to-my-cluster"></a>Gdzie mogę znaleźć parametry połączenia SSH z moim klastrem?
 
 Parametry połączenia można znaleźć w witrynie Azure Portal lub za pomocą narzędzia wiersza polecenia platformy Azure. 
 
-1. W portalu przejdź do grupy zasobów dla wdrożenia klastra.  
+1. W portalu przejdź do grupy zasobów dla wdrożenia klastra.  
 
-2. Kliknij pozycję **Przegląd** i kliknij link dla pozycji **Wdrożenia** w obszarze **Podstawy**. 
+2. Kliknij pozycję **Przegląd** i kliknij link dla pozycji **Wdrożenia** w obszarze **Podstawy**. 
 
-3. W bloku **Historia wdrażania** kliknij wdrożenie z nazwą rozpoczynającą się od **microsoft acs**, po której następuje data wdrożenia. Przykład: microsoft-acs-201701310000.  
+3. W bloku **Historia wdrażania** kliknij wdrożenie z nazwą rozpoczynającą się od **microsoft acs**, po której następuje data wdrożenia. Przykład: microsoft-acs-201701310000.  
 
-4. Na stronie **Podsumowanie** w obszarze **Dane wyjściowe** znajduje się kilka linków klastra. Element **SSHMaster0** zawiera parametry połączenia SSH z pierwszym wzorcem w klastrze usługi kontenera. 
+4. Na stronie **Podsumowanie** w obszarze **Dane wyjściowe** znajduje się kilka linków klastra. Element **SSHMaster0** zawiera parametry połączenia SSH z pierwszym wzorcem w klastrze usługi kontenera. 
 
 Jak wspomniano wcześniej, do wyszukania nazwy FQDN wzorca można również użyć narzędzi platformy Azure. Utwórz połączenie SSH z wzorcem, używając nazwy FQDN wzorca i nazwy użytkownika podanej podczas tworzenia klastra. Na przykład:
 
 ```bash
-ssh userName@masterFQDN –A –p 22 
+ssh userName@masterFQDN –A –p 22 
 ```
 
 Aby uzyskać więcej informacji, zobacz [Łączenie z klastrem usługi Azure Container Service](../articles/container-service/kubernetes/container-service-connect.md).

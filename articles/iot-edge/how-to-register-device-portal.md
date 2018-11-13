@@ -1,51 +1,51 @@
 ---
-title: Zarejestruj nowe urządzenie brzegowe IoT Azure (portal) | Dokumentacja firmy Microsoft
-description: Użyj portalu Azure, aby zarejestrować nowe urządzenie brzegowe IoT
+title: Rejestrowanie nowego urządzenia usługi Azure IoT Edge (portal) | Dokumentacja firmy Microsoft
+description: Użyj witryny Azure portal, aby zarejestrować nowe urządzenie usługi IoT Edge
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 06/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b61594469df33e11c23c9cbe0b9542da374fefa3
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 6657203c76bc03a262fbcbd30b5bf74b5be140eb
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036034"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577502"
 ---
-# <a name="register-a-new-azure-iot-edge-device-from-the-azure-portal"></a>Zarejestrować nowe urządzenie brzegowe IoT Azure w portalu Azure
+# <a name="register-a-new-azure-iot-edge-device-from-the-azure-portal"></a>Rejestrowanie nowego urządzenia usługi Azure IoT Edge w witrynie Azure portal
 
-Przed użyciem urządzenia IoT Azure IoT krawędzi, musisz zarejestrować ich przy użyciu Centrum IoT. Po zarejestrowaniu urządzenia, pojawi się ciąg połączenia, który może służyć do konfigurowania Twojego urządzenia pod kątem obciążeń krawędzi. 
+Zanim użyjesz urządzeń IoT za pomocą usługi Azure IoT Edge, musisz zarejestrować ich przy użyciu usługi IoT hub. Po zarejestrowaniu urządzenia, pojawi się parametry połączenia, który może służyć do konfigurowania urządzenia pod kątem obciążeń krawędzi. 
 
-W tym artykule pokazano, jak zarejestrować nowe urządzenie brzegowe IoT przy użyciu portalu Azure.
+W tym artykule pokazano, jak zarejestrować nowe urządzenie usługi IoT Edge przy użyciu witryny Azure portal.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Centrum IoT](../iot-hub/iot-hub-create-through-portal.md) w Twojej subskrypcji platformy Azure. 
+* [Usługi IoT hub](../iot-hub/iot-hub-create-through-portal.md) w subskrypcji platformy Azure. 
 
-## <a name="create-a-device"></a>Utwórz urządzenie
+## <a name="create-a-device"></a>Tworzenie urządzenia
 
-W portalu Azure IoT krawędzi urządzenia są tworzone i zarządzane oddzielnie od urządzeń, nawiązać połączenia z Centrum IoT, które nie są włączone krawędzi. 
+W witrynie Azure portal urządzenia usługi IoT Edge są tworzone i zarządzane oddzielnie od urządzenia, nawiązać połączenie z Centrum IoT, które nie są włączone usługi edge. 
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com) i przejdź do Centrum IoT. 
-2. Wybierz **krawędzi IoT** z menu.
-3. Wybierz **Dodaj urządzenia IoT**. 
-4. Podaj identyfikator urządzenia opisowy. 
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do Centrum IoT hub. 
+2. Wybierz **usługi IoT Edge** z menu.
+3. Wybierz **Dodaj urządzenie usługi IoT Edge**. 
+4. Podaj identyfikator opisu urządzenia. 
 5. Wybierz pozycję **Zapisz**. 
 
 ## <a name="view-all-devices"></a>Wyświetl wszystkie urządzenia
 
-Są wyświetlane wszystkie włączone krawędzi urządzenia, które nawiązać połączenia z Centrum IoT **krawędzi IoT** strony. 
+Wszystkie włączone krawędzi urządzenia, łączących się z Centrum IoT hub są wyświetlane na **usługi IoT Edge** strony. 
 
-## <a name="retrieve-the-connection-string"></a>Parametry połączenia
+## <a name="retrieve-the-connection-string"></a>Pobieranie parametrów połączenia
 
-Gdy wszystko jest gotowe skonfigurować urządzenie, należy parametry połączenia, która łączy urządzenie fizyczne z swoją tożsamość w Centrum IoT.
+Gdy wszystko będzie gotowe skonfigurować urządzenie, należy parametry połączenia, która łączy urządzenie fizyczne za pomocą jej tożsamości w usłudze IoT hub.
 
-1. Z **krawędzi IoT** w portalu kliknij pozycję z listy urządzenia brzegowe identyfikator urządzenia. 
-2. Skopiuj wartość jednej **parametry połączenia — klucz podstawowy** lub **parametry połączenia — klucz pomocniczy**. 
+1. Z **usługi IoT Edge** strony w portalu, kliknij pozycję identyfikator urządzenia, z listy urządzeń brzegowych. 
+2. Skopiuj wartość albo **parametry połączenia (klucz podstawowy)** lub **parametry połączenia (klucz pomocniczy)**. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak [Wdrażanie modułów na urządzenie z portalu Azure](how-to-deploy-modules-portal.md)
+Dowiedz się, jak [wdrażać moduły do urządzenia przy użyciu witryny Azure portal](how-to-deploy-modules-portal.md)

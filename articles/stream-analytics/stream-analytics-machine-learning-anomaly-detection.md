@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: a2bf6ef44a8698e802d9bbc25689988498c55f13
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 3f6d6f700ccf232dacb512f22dd1f9fb5d870740
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300272"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567047"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Wykrywanie anomalii w usłudze Azure Stream Analytics
 
@@ -131,7 +131,7 @@ Omówmy teraz obliczeń strangeness szczegółowo (przyjmowane jest, istnieje ze
    - Krzywa, jeśli nachylenie jest ujemna  
    - 0, w przeciwnym razie  
 
-Gdy jest obliczana wartość strangeness przychodzącym zdarzeniu, wartość martingale jest obliczana na podstawie wartości strangeness (zobacz [blogu usługi Machine Learning](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/) Aby uzyskać szczegółowe informacje, w jaki sposób jest obliczana wartość martingale). Ta wartość martingale jest zwracany jako wyniku anomalii. Wartość martingale zwiększa się wolno w odpowiedzi na dziwne wartości, która umożliwia wykrywanie pozostaje niezawodne sporadyczne zmian i zmniejsza fałszywych alertów. Ma on również przydatne właściwości: 
+Gdy jest obliczana wartość strangeness przychodzącym zdarzeniu, wartość martingale jest obliczana na podstawie wartości strangeness (zobacz [blogu usługi Machine Learning](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/) Aby uzyskać szczegółowe informacje, w jaki sposób jest obliczana wartość martingale). Ta wartość martingale jest zwracana jako wyniku anomalii. Wartość martingale zwiększa się wolno w odpowiedzi na dziwne wartości, która umożliwia wykrywanie pozostaje niezawodne sporadyczne zmian i zmniejsza fałszywych alertów. Ma on również przydatne właściwości: 
 
 Prawdopodobieństwo [istnieje t takich tego M<sub>t</sub> > λ] < 1/λ, gdzie M<sub>t</sub> -wartość martingale błyskawiczne t i λ jest rzeczywistą wartość. Na przykład, jeśli alert po M<sub>t</sub>> 100, a następnie prawdopodobieństwa wyników fałszywie dodatnich jest mniejsza niż 1/100.  
 

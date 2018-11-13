@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7c7671578dc22926dabfe7735038186ab1c2c2b3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 75b3934a7329b4e83a0f36f79bbc8365eaf8a086
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263915"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572504"
 ---
 # <a name="standard-ssd-managed-disks-for-azure-virtual-machine-workloads"></a>Standardowy dysk SSD Managed Disks dla obciążeń maszyn wirtualnych platformy Azure
 
@@ -46,9 +46,9 @@ Poniższa tabela zawiera rozmiary dysków, które są obecnie oferowane dla SSD 
 |E70 *    |16 384 giB      |Do 2000       |Maks. 500 MiB na sekundę        |
 |E80 *    |32 767 giB      |Do 2000       |Maks. 500 MiB na sekundę        |
 
-Standardowe dyski SSD są przeznaczone zapewnienie milisekundowe opóźnienia w przypadku większości operacji We/Wy i operacje We/Wy i Przepływność w granicach opisano w powyższej tabeli. Rzeczywiste operacje We/Wy i przepływność będzie zależeć czasami w zależności od wzorców ruchu. Standardowe dyski SSD będą oferują bardziej spójną wydajność niż dyski HDD, z mniejszymi opóźnieniami.
+Standardowe dyski SSD są przeznaczone zapewnienie milisekundowe opóźnienia w przypadku większości operacji We/Wy i operacje We/Wy i Przepływność w granicach opisano w powyższej tabeli 99% czasu. Rzeczywiste operacje We/Wy i przepływność będzie zależeć czasami w zależności od wzorców ruchu. Standardowe dyski SSD będą oferują bardziej spójną wydajność niż dyski HDD, z mniejszymi opóźnieniami.
 
-Dyski SSD w warstwie Premium z drugiej strony, mają lepszą wydajność niż standardowe dyski SSD, z niskimi opóźnieniami, wysoka operacje We/Wy/przepływność i jeszcze lepszą zgodność z aprowizowaną wydajność dysku. To typ dysku zalecane dla obciążeń produkcyjnych krytycznych. Jeśli obciążenie wymaga obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach, należy rozważyć użycie magazynu Premium Storage.
+Dyski SSD w warstwie Premium z drugiej strony, mają lepszą wydajność niż standardowe dyski SSD, z niskimi opóźnieniami, wysoka operacje We/Wy/przepływność i jeszcze lepszą zgodność z aprowizowaną wydajność dysku. Premium SSD jest typ dysku zalecane dla obciążeń produkcyjnych krytycznych. Jeśli obciążenie wymaga obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach, należy rozważyć użycie magazynu Premium Storage.
 
 Np. dyski Premium SSD standardowe dyski SSD Użyj rozmiar jednostki we/wy 256 KiB. Transferowanych danych jest mniejsza niż 256 KiB, jest uznawane za 1 jednostkę operacji We/Wy. Większego rozmiaru operacji We/Wy są liczone jako wiele operacji We/Wy o rozmiarze 256 KiB. Na przykład 1100 operacji We/Wy KiB jest traktowana jako pięć jednostki we/wy.
 

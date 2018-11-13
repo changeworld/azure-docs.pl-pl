@@ -1,3 +1,16 @@
+---
+author: SnehaGunda
+ms.service: cosmos-db
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: sngun
+ms.openlocfilehash: 99dddd86c9348c9791d3012b382298bb020e63c9
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572520"
+---
 **1. Jak klienci zgłasza Ustępujący zestawu SDK?**
 
 Firma Microsoft zapewni 12-miesięcznego powiadomienie w celu obsługi Ustępujący zestawu SDK w celu ułatwienia płynne przejście do obsługiwanym zestawem SDK. Co więcej klienci zostaną powiadomieni za pośrednictwem różnych komunikacji kanały — portalu zarządzania systemu Azure, Centrum deweloperów, wpis w blogu i bezpośrednią komunikację można przypisać administratorów usługi.

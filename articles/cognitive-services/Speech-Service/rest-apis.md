@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 11/12/2018
 ms.author: erhopf
-ms.openlocfilehash: be2f6c49a260477e907f1f8f29f64b9eb08e6926
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a8aa2600c8f3bcbc9d2ebc7f55ac0d2f038d8ecd
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038607"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566622"
 ---
 # <a name="speech-service-rest-apis"></a>Interfejsy API REST usługi mowy
 
@@ -127,14 +127,43 @@ Kod HTTP|Znaczenie|Możliwa przyczyna
 
 ### <a name="json-response"></a>Odpowiedź w formacie JSON
 
-Wyniki są zwracane w formacie JSON. `simple` Format obejmuje tylko następujące pola najwyższego poziomu.
+Wyniki są zwracane w formacie JSON. W zależności od parametry zapytania `simple` lub `detailed` zwracany format.
+
+#### <a name="the-simple-format"></a>`simple` Formatu 
+
+Ten format zawiera następujące pola najwyższego poziomu.
 
 |Nazwa pola|Zawartość|
 |-|-|
-|`RecognitionStatus`|Stan, takich jak `Success` rozpoznawania się pomyślnie. Zobacz następną tabelę.|
+|`RecognitionStatus`|Stan, takich jak `Success` rozpoznawania się pomyślnie. Zobacz ten [tabeli](rest-apis.md#recognitionstatus).|
 |`DisplayText`|Rozpoznany tekst po wielkość liter, znaki interpunkcyjne, tekst odwrotny normalizacji (Konwersja tekstu mówionego na krótszą formularzy, takich jak 200, "200" lub "odzyskiwania po awarii. Smith""lekarzem Smith"), a wulgaryzmów maskowania. Istnieje tylko w przypadku powodzenia.|
 |`Offset`|Czas (w jednostkach 100-nanosekundowych), jaką rozpoznawanym mowy rozpoczyna się w strumienia audio.|
 |`Duration`|Czas trwania (w jednostkach 100-nanosekundowych) rozpoznawaną mowy w strumienia audio.|
+
+#### <a name="the-detailed-format"></a>`detailed` Formatu 
+
+Ten format zawiera następujące pola najwyższego poziomu.
+
+|Nazwa pola|Zawartość|
+|-|-|
+|`RecognitionStatus`|Stan, takich jak `Success` rozpoznawania się pomyślnie. Zobacz ten [tabeli](rest-apis.md#recognition-status).|
+|`Offset`|Czas (w jednostkach 100-nanosekundowych), jaką rozpoznawanym mowy rozpoczyna się w strumienia audio.|
+|`Duration`|Czas trwania (w jednostkach 100-nanosekundowych) rozpoznawaną mowy w strumienia audio.|
+|`NBest`|Lista alternatywnych interpretacji tych samych mowy, oceniane od najbardziej prawdopodobne w do najmniej prawdopodobne. Zobacz [opis NBest](rest-apis.md#nbest).|
+
+#### <a name="nbest"></a>NBest
+
+`NBest` Pola znajduje się lista alternatywnych interpretacji tych samych mowy, randze spośród wszystkich dokumentów z największym prawdopodobieństwem najmniej prawdopodobne. Pierwszy wpis jest taki sam jak wynik rozpoznawania głównego. Każdy wpis zawiera następujące pola:
+
+|Nazwa pola|Zawartość|
+|-|-|
+|`Confidence`|Współczynnik ufności wpisu od 0,0 (nie zaufania) 1.0 (pełne zaufanie)
+|`Lexical`|Leksykalne formularza rozpoznany tekst: rzeczywistymi słowami został rozpoznany.
+|`ITN`|Znormalizowane tekstu odwrotność ("") forma kanoniczna rozpoznany, za pomocą telefonu liczb, liczby, skróty ("lekarzem smith" do "odzyskiwania po awarii smith") i inne zastosowane przekształcenia.
+|`MaskedITN`| Formularz podczas przy użyciu maskowania wulgaryzmów stosowane, jeśli jest to wymagane.
+|`Display`| Formularz wyświetlania rozpoznany tekst, znaki interpunkcyjne i dodaje wielkie litery.
+
+#### <a name="recognitionstatus"></a>RecognitionStatus
 
 `RecognitionStatus` Pole może zawierać następujących wartości.
 
@@ -148,17 +177,6 @@ Wyniki są zwracane w formacie JSON. `simple` Format obejmuje tylko następując
 
 > [!NOTE]
 > Jeśli audio składa się tylko z wulgaryzmów i `profanity` parametr zapytania ma wartość `remove`, usługa nie zwróciła wynik mowy.
-
-
-`detailed` Format obejmuje te same pola jako `simple` formacie wraz z `NBest` pola. `NBest` Pola znajduje się lista alternatywnych interpretacji tych samych mowy, randze spośród wszystkich dokumentów z największym prawdopodobieństwem najmniej prawdopodobne. Pierwszy wpis jest taki sam jak wynik rozpoznawania głównego. Każdy wpis zawiera następujące pola:
-
-|Nazwa pola|Zawartość|
-|-|-|
-|`Confidence`|Współczynnik ufności wpisu od 0,0 (nie zaufania) 1.0 (pełne zaufanie)
-|`Lexical`|Leksykalne formularza rozpoznany tekst: rzeczywistymi słowami został rozpoznany.
-|`ITN`|Znormalizowane tekstu odwrotność ("") forma kanoniczna rozpoznany, za pomocą telefonu liczb, liczby, skróty ("lekarzem smith" do "odzyskiwania po awarii smith") i inne zastosowane przekształcenia.
-|`MaskedITN`| Formularz podczas przy użyciu maskowania wulgaryzmów stosowane, jeśli jest to wymagane.
-|`Display`| Formularz wyświetlania rozpoznany tekst, znaki interpunkcyjne i dodaje wielkie litery. Taki sam jak `DisplayText` w wyniku najwyższego poziomu.
 
 ### <a name="sample-responses"></a>Przykład odpowiedzi
 

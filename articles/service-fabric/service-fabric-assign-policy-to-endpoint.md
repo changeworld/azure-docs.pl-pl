@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: 8d5017cbd2177d080e5cef3d99a9f6b62eae08d5
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: dac15f0b96e9e295f92f250fe387e5b6ba9ae000
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978965"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567608"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Przypisywanie zasad dostępu zabezpieczeń dla punktów końcowych HTTP i HTTPS
 Jeśli zastosujesz zasady Uruchom jako i manifestu usługi deklaruje zasobów punkt końcowy HTTP, należy określić **SecurityAccessPolicy**.  **SecurityAccessPolicy** gwarantuje, że porty przydzielone do tych punktów końcowych poprawnie są ograniczone do konta użytkownika, który działa jako usługa. W przeciwnym razie **http.sys** ma dostęp do usługi i uzyskujesz błędy z wywołania od klienta. Poniższy przykład dotyczy punktu końcowego o nazwie konto serwer Customer1 **Nazwapunktukoncowego**, co daje pełne prawa dostępu.

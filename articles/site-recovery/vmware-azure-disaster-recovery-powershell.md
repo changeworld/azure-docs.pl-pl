@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 07/06/2018
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 631225e6e0a7bb3bc42741e2761e3746c001c217
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 50dcd2a6a2c8dc703b4c8c0ee8fb6270e0840581
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211642"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566469"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure przy użyciu programu PowerShell
 
@@ -23,7 +23,8 @@ Omawiane kwestie:
 > [!div class="checklist"]
 > - Utwórz magazyn usługi Recovery Services i Ustaw kontekst magazynu.
 > - Sprawdź poprawność rejestracji serwera w magazynie.
-> - Skonfiguruj replikację, łącznie z zasadami replikacji. Dodawanie serwera vCenter i odnajdywanie maszyn wirtualnych. > — Dodawanie serwera vCenter i odnajdywanie 
+> - Skonfiguruj replikację, łącznie z zasadami replikacji. Dodawanie serwera vCenter i odnajdywanie maszyn wirtualnych. 
+> - Dodawanie serwera vCenter i odnajdywanie 
 > - Tworzenie konta magazynu do przechowywania danych replikacji i zreplikować maszyny wirtualne.
 > - Wykonaj przejście w tryb failover. Konfigurowanie ustawień trybu failover, wykonaj ustawienia e replikowania maszyn wirtualnych.
 
@@ -93,7 +94,7 @@ Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
    ```
 
 4. Użyj klucza rejestracji pobranego magazynu i wykonaj kroki opisane w artykułach z podanych poniżej w celu ukończenia instalacji i rejestracji serwera konfiguracji.
-   - [Wybranie celów ochrony](vmware-azure-set-up-source.md#choose-your-protection-goals)
+   - [Wybranie celów ochrony](vmware-azure-set-up-source.md#choose-protection-goals)
    - [Konfigurowanie środowiska źródłowego](vmware-azure-set-up-source.md#set-up-the-configuration-server) 
 
 ### <a name="set-the-vault-context"></a>Ustaw kontekst magazynu

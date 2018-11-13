@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: cb1c525527f7261c10b502a25b3cab3db89dd85f
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 8ce75efae2d735c5653f9dae72c670b0714351ac
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515144"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567954"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pięć kroków do zabezpieczania infrastruktury tożsamości
 
@@ -51,8 +51,6 @@ Wszystko jest gotowe? Zacznijmy listy kontrolnej.
 Większości naruszeń zabezpieczeń przedsiębiorstwa pochodzą z kontem naruszona za pomocą jednej z kilku metod, takich jak hasła osłony, powtarzanie naruszenia lub wyłudzania informacji. Dowiedz się więcej na temat tych ataków, w tym filmie pokazano (45 min):
 > [!VIDEO https://www.youtube.com/embed/uy0j1_t5Hd4]
 
-Jeśli użytkownicy w Twoim systemie tożsamości korzysta słabe hasła i nie wzmocnienia je przy użyciu uwierzytelniania wieloskładnikowego, nie jest kwestią lub gdy można pobrać naruszenia zabezpieczeń — po prostu "jak często."
-
 ### <a name="make-sure-your-organization-use-strong-authentication"></a>Upewnić się, że Twoja organizacja Użyj silnego uwierzytelniania
 
 Biorąc pod uwagę częstotliwość hasła odgadnąć, phished, kradzieży ze złośliwym oprogramowaniem lub używane ponownie, ma kluczowe znaczenie dla kopii hasło z pewnego rodzaju silnych poświadczeń — Dowiedz się więcej o [usługi Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication).
@@ -69,7 +67,7 @@ Firma Microsoft zaleca przyjęcie następujące zasady nowoczesnych hasła, na p
 2. Wyłącz zasady wygasania, które zachęcić użytkowników do łatwe do odgadnięcia haseł, takich jak **Summer2018!**
 3. Wyłącz wymagania dotyczące znaków kompozycji i uniemożliwić użytkownikom wybór często zaatakowane hasła, ponieważ powodują użytkownikom na wybór podstawienia przewidywalne znaków w haśle.
 
-Możesz użyć [programu PowerShell, aby zapobiec wygaśnięciu hasła](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy) dla użytkowników po utworzeniu tożsamości w usłudze Azure AD bezpośrednio. Hybrydowe organizacje powinny wdrożyć te zasady przy użyciu [ustawienia zasad grupy domeny] (https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10) lub [programu Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy).
+Możesz użyć [programu PowerShell, aby zapobiec wygaśnięciu hasła](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy) dla użytkowników po utworzeniu tożsamości w usłudze Azure AD bezpośrednio. Hybrydowe organizacje powinny wdrożyć te zasady przy użyciu [ustawienia zasad grupy domeny](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10)) lub [programu Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy).
 
 ### <a name="protect-against-leaked-credentials-and-add-resilience-against-outages"></a>Ochrona przed ujawnionymi poświadczeniami i dodać odporność na awarie
 

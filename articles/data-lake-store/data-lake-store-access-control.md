@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: fce96cf5be9e70863fd75e5d4b3045bc49f638cf
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 08991829c9c3d628b5028e04dbd4836647d94826
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432627"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567489"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen1
 
@@ -128,9 +128,11 @@ Użytkownik, który utworzył element, jest automatycznie właścicielem element
 
 Na listach ACL w modelu POSIX każdy użytkownik jest skojarzony z „grupą główną”. Przykładowo użytkownik „Alicja” może należeć do grupy „Finanse”. Alicja może również należeć do wielu grup, ale jedna grupa jest zawsze wyznaczona jako jej grupa główna. W modelu POSIX, gdy Alicja tworzy plik, na grupę będącą właścicielem tego pliku zostaje ustawiona jej grupa główna. W tym przypadku jest to grupa „Finanse”. Grupa będąca właścicielem w przeciwnym razie działa podobnie do przypisanych uprawnień dla innych użytkowników/grup.
 
-**Assiging grupa będąca właścicielem dla nowego pliku lub folderu**
+Ponieważ ma skojarzone z użytkownikami w Data Lake Storage Gen1 nie "grupą główną", grupa będąca właścicielem jest przypisany zgodnie z poniższymi instrukcjami.
 
-* **Przypadek 1**: folder główny „/”. Ten folder jest tworzony po utworzeniu konta Data Lake Storage Gen1. W takim przypadku grupa będąca właścicielem jest ustawiana na użytkownika, który utworzył konto.
+**Przypisywanie grupa będąca właścicielem dla nowego pliku lub folderu**
+
+* **Przypadek 1**: folder główny „/”. Ten folder jest tworzony po utworzeniu konta Data Lake Storage Gen1. W takim przypadku grupa będąca właścicielem jest równa identyfikator GUID wszystko od zera.  Ta wartość nie zezwala na dostęp do wszystkich.  Symbol zastępczy jest do tego czasu, które grupa jest przypisana.
 * **Przypadek 2** (każdy inny przypadek): gdy tworzony jest nowy element, grupa będąca właścicielem jest kopiowana z folderu nadrzędnego.
 
 **Zmiana grupy będącej właścicielem**
@@ -140,7 +142,9 @@ Grupę będącą właścicielem może zmienić:
 * użytkownik będący właścicielem, jeśli jest on również członkiem grupy docelowej.
 
 > [!NOTE]
-> Grupa będąca właścicielem *nie może* zmienić list kontroli dostępu do pliku lub folderu.  Gdy grupa będąca właścicielem zostanie ustawiona na użytkownika, który utworzył konto w przypadku folderu głównego (**Przypadek 1** powyżej), jedno konto użytkownika nie może zapewnić uprawnień za pośrednictwem grupy będącej właścicielem.  Możesz przypisać te uprawnienia do prawidłowej grupy użytkowników, jeśli ma to zastosowanie.
+> Grupa będąca właścicielem *nie może* zmienić list kontroli dostępu do pliku lub folderu.
+>
+> W przypadku kont utworzone przed września 2018 r. grupa będąca właścicielem została ustawiona na użytkownika, który utworzył konto w przypadku folderu głównego elementu **przypadek 1**powyżej.  Pojedyncze konto użytkownika nie jest prawidłową zapewnić uprawnień za pośrednictwem grupy będącej właścicielem, dlatego nie uprawnienia są przyznawane przez to ustawienie domyślne. To uprawnienie można przypisać do prawidłowej grupy użytkowników.
 
 
 ## <a name="access-check-algorithm"></a>Algorytm kontroli dostępu
