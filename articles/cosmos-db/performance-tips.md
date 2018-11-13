@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: a805294ecb416d18f3ce13981d26a7d25cd5a204
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 3e724301d235db49ab9332dedc877d7315460ecc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432855"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256174"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności dla usługi Azure Cosmos DB i platformy .NET
 
@@ -25,7 +25,7 @@ ms.locfileid: "47432855"
 > * [.NET](performance-tips.md)
 > 
 
-Usługa Azure Cosmos DB jest szybka i elastyczna rozproszonej bazy danych, która miało miejsce płynne skalowanie dzięki gwarancji opóźnień i przepływności. Nie trzeba wprowadzić zmiany architektury głównych lub pisania złożonego kodu do skalowania bazy danych za pomocą usługi Azure Cosmos DB. Skalowanie w górę i w dół jest łatwe jak tworzenie jednego wywołania interfejsu API lub [wywołania metody zestaw SDK](set-throughput.md#set-throughput-sdk). Ponieważ usługi Azure Cosmos DB jest dostępna za pośrednictwem wywołań sieci istnieją optymalizacje po stronie klienta, które można wprowadzić do osiągnięcia maksymalnej wydajności, korzystając z [zestawu .NET SDK SQL](documentdb-sdk-dotnet.md).
+Usługa Azure Cosmos DB jest szybka i elastyczna rozproszonej bazy danych, która miało miejsce płynne skalowanie dzięki gwarancji opóźnień i przepływności. Nie trzeba wprowadzić zmiany architektury głównych lub pisania złożonego kodu do skalowania bazy danych za pomocą usługi Azure Cosmos DB. Skalowanie w górę i w dół jest łatwe jak tworzenie jednego wywołania interfejsu API. Aby dowiedzieć się więcej, zobacz [sposób aprowizowania przepływności kontenerów](how-to-provision-container-throughput.md) lub [sposób aprowizowania przepływności bazy danych](how-to-provision-database-throughput.md). Ponieważ usługi Azure Cosmos DB jest dostępna za pośrednictwem wywołań sieci istnieją optymalizacje po stronie klienta, które można wprowadzić do osiągnięcia maksymalnej wydajności, korzystając z [zestawu .NET SDK SQL](documentdb-sdk-dotnet.md).
 
 Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wziąć pod uwagę następujące opcje:
 
@@ -118,7 +118,7 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
     W niektórych przypadkach może pomóc zmniejszyć częstotliwość uruchamiania operacji wyrzucania elementów bezużytecznych. Na platformie .NET, należy ustawić [gcserver —](https://msdn.microsoft.com/library/ms229357.aspx) na wartość true.
 6. **Implementowanie wycofywania w odstępach czasu RetryAfter**
 
-    Podczas testowania wydajności, należy zwiększyć obciążenie do momentu ograniczeni mała liczba żądań. Jeśli jest dławiona, aplikacja kliencka powinna wycofywania na ograniczenie przepustowości przez dany interwał ponawiania określony serwer. Uwzględnienie wycofywania daje pewność, możesz wydać skraca czas oczekiwania między ponownymi próbami. Obsługa zasad ponawiania i jest dołączone w wersji 1.8.0 powyżej SQL [.NET](sql-api-sdk-dotnet.md) i [Java](sql-api-sdk-java.md), wersji 1.9.0 i nowsze wersje z [Node.js](sql-api-sdk-node.md) i [językaPython](sql-api-sdk-python.md), a wszystkie obsługiwane wersje [platformy .NET Core](sql-api-sdk-dotnet-core.md) zestawów SDK. Aby uzyskać więcej informacji, zobacz [przekroczenie następującej zastrzeżone ograniczenia przepływności](request-units.md#RequestRateTooLarge) i [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
+    Podczas testowania wydajności, należy zwiększyć obciążenie do momentu ograniczeni mała liczba żądań. Jeśli jest dławiona, aplikacja kliencka powinna wycofywania na ograniczenie przepustowości przez dany interwał ponawiania określony serwer. Uwzględnienie wycofywania daje pewność, możesz wydać skraca czas oczekiwania między ponownymi próbami. Obsługa zasad ponawiania i jest dołączone w wersji 1.8.0 powyżej SQL [.NET](sql-api-sdk-dotnet.md) i [Java](sql-api-sdk-java.md), wersji 1.9.0 i nowsze wersje z [Node.js](sql-api-sdk-node.md) i [językaPython](sql-api-sdk-python.md), a wszystkie obsługiwane wersje [platformy .NET Core](sql-api-sdk-dotnet-core.md) zestawów SDK. Aby uzyskać więcej informacji [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
     
     W wersji 1,19 i nowszych zestawu .NET SDK istnieje mechanizm rejestrować dodatkowych informacji diagnostycznych i rozwiązywanie problemów z opóźnieniem, jak pokazano w następującym przykładzie. Umożliwia rejestrowanie diagnostyczne ciągów dla żądania, które mają wyższe opóźnienie odczytu. Przechwycone ciągu diagnostycznych pomoże poznać liczbę razy zaobserwowane 429s dla danego żądania.
     ```csharp
