@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 8591e723cad1c44e9cc8d00008485e6b304fc4d3
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9b6fd9a1eb9e5b27f62507e58f9b1a85caa92dea
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283374"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625423"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Jak dołączyć Azure Monitor wykrywający sytuacje, maszyny wirtualne (wersja zapoznawcza)
-W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla maszyn wirtualnych w celu monitorowania kondycji systemu operacyjnego w maszynach wirtualnych platformy Azure oraz wykrywanie i mapowanie zależności aplikacji, które może być hostowana na nich.  
+W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla maszyn wirtualnych w celu monitorowania kondycji systemu operacyjnego w maszynach wirtualnych platformy Azure i zestawów skalowania maszyn wirtualnych i maszyn wirtualnych w danym środowisku, łącznie z odnajdywania oraz mapowania zależności aplikacji może być hostowana na nich.  
 
 Włączanie usługi Azure Monitor dla maszyn wirtualnych odbywa się przy użyciu jednej z następujących metod i szczegółowe informacje na temat korzystania z poszczególnych metod znajdują się w dalszej części tego artykułu.  
 
@@ -50,16 +50,12 @@ Obszar roboczy usługi Log Analytics w następujących regionach jest obecnie ob
 
 Jeśli nie masz obszaru roboczego, możesz utworzyć ją przy użyciu [wiersza polecenia platformy Azure](../log-analytics/log-analytics-quick-create-workspace-cli.md)za pośrednictwem [PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md)w [witryny Azure portal](../log-analytics/log-analytics-quick-create-workspace.md), lub za pomocą [usługi Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md).  Jeśli włączasz monitorowania dla pojedynczej maszyny Wirtualnej platformy Azure w witrynie Azure portal, masz możliwość utworzenia obszaru roboczego w trakcie tego procesu.  
 
-Aby włączyć rozwiązanie, musisz być członkiem roli Współautor usługi Log Analytics. Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego usługi Log Analytics, zobacz [możesz zarządzać obszarami roboczymi](../log-analytics/log-analytics-manage-access.md).
-
-[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
-
 Włączanie rozwiązania w skali scenariusz najpierw wymaga skonfigurowania następujących w obszarze roboczym usługi Log Analytics:
 
-* Zainstaluj **ServiceMap** i **InfrastructureInsights** rozwiązania
-* Konfiguruj obszar roboczy usługi Log Analytics można zebrać liczników wydajności
+* Zainstaluj **ServiceMap** i **InfrastructureInsights** rozwiązania. Tylko można to zrobić za pomocą szablonu usługi Azure Resource Manager zawarte w tym artykule.   
+* Konfiguruj obszar roboczy usługi Log Analytics, można zebrać liczników wydajności.
 
-Aby skonfigurować obszar roboczy dla tego scenariusza, zobacz [obszaru roboczego analizy dzienników Instalatora](#setup-log-analytics-workspace).
+Do obszaru roboczego w celu skonfigurowania w scenariuszu skalowania, zobacz [obszaru roboczego analizy dzienników Instalatora dla we wdrożeniu skalowania](#setup-log-analytics-workspace).
 
 ### <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 
@@ -148,20 +144,16 @@ W poniższej tabeli wymieniono systemy operacyjne Windows i Linux, które są ob
 |12 Z DODATKIEM SP2 | 4.4. * |
 |12 Z DODATKIEM SP3 | 4.4. * |
 
-### <a name="hybrid-environment-connected-sources"></a>Środowisko hybrydowe połączone źródła
-Usługa Azure Monitor dla maszyn wirtualnych mapy dane są pobierane z Microsoft Dependency agent. Agent zależności zależy od usługi Log Analytics agent do połączenia z usługi Log Analytics i w związku z tym, system musi mieć agenta usługi Log Analytics, zainstalować i skonfigurować za pomocą agenta zależności. W poniższej tabeli opisano połączone źródła obsługiwanych przez funkcję mapy w środowisku hybrydowym.
+### <a name="microsoft-dependency-agent"></a>Program Microsoft Dependency agent
+Usługa Azure Monitor dla maszyn wirtualnych mapy dane są pobierane z Microsoft Dependency agent. Agent zależności zależy od usługi Log Analytics agent do połączenia z usługi Log Analytics i w związku z tym, system musi mieć agenta usługi Log Analytics, zainstalować i skonfigurować za pomocą agenta zależności. Po włączeniu usługi Azure Monitor dla maszyn wirtualnych z jednej maszyny wirtualnej platformy Azure lub korzystając z metody we wdrożeniu skalowania rozszerzenia agenta zależności maszyn wirtualnych platformy Azure jest używana do zainstalowania agenta w ramach tego procesu dołączania. W środowisku hybrydowym agenta zależności można pobrać i zainstalować ręcznie lub za pomocą metody automatycznego wdrażania do tych maszyn wirtualnych hostowanych poza platformą Azure.  
+
+W poniższej tabeli opisano połączone źródła obsługiwanych przez funkcję mapy w środowisku hybrydowym.
 
 | Połączone źródło | Obsługiwane | Opis |
 |:--|:--|:--|
-| Agenci dla systemu Windows | Yes | Oprócz [agenta usługi Log Analytics dla Windows](../log-analytics/log-analytics-concept-hybrid.md), agenci Windows wymagają Microsoft Dependency agent. Zobacz [obsługiwane systemy operacyjne](#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
-| Agenci dla systemu Linux | Yes | Oprócz [agenta usługi Log Analytics dla systemu Linux](../log-analytics/log-analytics-concept-hybrid.md), agenci dla systemu Linux wymaga program Microsoft Dependency agent. Zobacz [obsługiwane systemy operacyjne](#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
+| Agenci dla systemu Windows | Yes | Oprócz [agenta usługi Log Analytics dla Windows](../log-analytics/log-analytics-agent-overview.md), agenci Windows wymagają Microsoft Dependency agent. Zobacz [obsługiwane systemy operacyjne](#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
+| Agenci dla systemu Linux | Yes | Oprócz [agenta usługi Log Analytics dla systemu Linux](../log-analytics/log-analytics-agent-overview.md), agenci dla systemu Linux wymaga program Microsoft Dependency agent. Zobacz [obsługiwane systemy operacyjne](#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
 | Grupa zarządzania programu System Center Operations Manager | Nie | |  
-
-Na Windows, Microsoft Monitoring Agent (MMA) jest używane zarówno przez System Center Operations Manager i usługi Log Analytics zbieranie i wysyłanie danych monitorowania. System Center Operations Manager i usługi Log Analytics zawiera różne out-gotową do wersji agenta. Każda z tych wersji może raportować do programu System Center Operations Manager, do usługi Log Analytics lub do obu miejsc.  
-
-W systemie Linux agent usługi Log Analytics dla systemu Linux zbiera informacje i wysyła dane do usługi Log Analytics monitorowania.   
-
-Jeśli komputery Windows lub Linux bezpośrednio nie może połączyć się z usługą, należy skonfigurować agenta usługi Log Analytics do łączenia z usługą Log Analytics, za pomocą bramy pakietu OMS. Aby uzyskać więcej informacji na temat sposobu wdrażania i konfigurowania bramy pakietu OMS, zobacz [połączyć komputery bez dostępu do Internetu za pomocą bramy pakietu OMS](../log-analytics/log-analytics-oms-gateway.md).  
 
 Z następującej lokalizacji można pobrać agenta zależności.
 
@@ -170,63 +162,23 @@ Z następującej lokalizacji można pobrać agenta zależności.
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.1 | 55030ABF553693D8B5112569FB2F97D7C54B66E9990014FC8CC43EFB70DE56C6 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.1 | 43C75EF0D34471A0CBCE5E396FFEEF4329C9B5517266108FA5D6131A353D29FE |
 
-## <a name="diagnostic-and-usage-data"></a>Dane diagnostyczne i dane dotyczące użycia
-Firma Microsoft automatycznie zbiera dane dotyczące użycia i wydajności przez korzystanie z usługi Azure Monitor. Firma Microsoft używa tych danych do zapewniania i poprawiania jakości, bezpieczeństwa i integralności usługi. Aby zapewnić dokładne i wydajne funkcje do rozwiązywania problemów, dane z funkcji mapy zawiera informacje o konfiguracji oprogramowania, takie jak system operacyjny i wersję, adres IP, nazwę DNS i nazwę stacji roboczej. Firma Microsoft gromadzi nazwisk, adresów ani innych informacji kontaktowych.
+## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
+Następującego typu dostępu musi mieć uprawnienia dla użytkowników, aby można było włączyć i funkcje w usłudze Azure Monitor są dostępne dla maszyn wirtualnych.  
+  
+- Aby włączyć rozwiązanie, musisz być dodany jako członek roli Współautor usługi Log Analytics.  
 
-Aby uzyskać więcej informacji na temat zbierania i wykorzystywania danych, zobacz [Microsoft Online Services Privacy Statement](https://go.microsoft.com/fwlink/?LinkId=512132).
+- Aby wyświetlić wydajność, kondycji i mapowanie danych, musisz dodany jako członek roli Czytelnik monitorowania dla maszyny Wirtualnej platformy Azure i obszar roboczy usługi Log Analytics, skonfigurowane za pomocą usługi Azure Monitor dla maszyn wirtualnych.   
 
-[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
-
-## <a name="performance-counters-enabled"></a>Liczniki wydajności włączone
-Usługa Azure Monitor dla maszyn wirtualnych służy do konfigurowania obszaru roboczego usługi Log Analytics można zebrać liczników wydajności, używane przez to rozwiązanie.  Poniższa tabela zawiera listę obiektów i liczników skonfigurowane przez to rozwiązanie, które są zbierane co 60 sekund.
-
-### <a name="windows-performance-counters"></a>Liczniki wydajności systemu Windows
-
-|Nazwa obiektu |Nazwa licznika |  
-|------------|-------------|  
-|Dysk logiczny |% Wolnego miejsca |  
-|Dysk logiczny |Średni Czas dysku w s/Odczyt |  
-|Dysk logiczny |Średni Dysku w s/Transfer |  
-|Dysk logiczny |Średni Dysku w s/Zapis |  
-|Dysk logiczny |Bajty dysku/s |  
-|Dysk logiczny |Bajty odczytu z dysku/s |  
-|Dysk logiczny |Odczyty dysku/s |  
-|Dysk logiczny |Transfery dyskowe/s |  
-|Dysk logiczny |Bajty zapisu na dysku/s |  
-|Dysk logiczny |Zapisy dysku/s |  
-|Dysk logiczny |Wolne megabajty |  
-|Memory (Pamięć) |Dostępna pamięć (MB) |  
-|Karta sieciowa |Bajty odebrane/s |  
-|Karta sieciowa |Bajty wysłane/s |  
-|Procesor |Czas procesora (%) |  
-
-### <a name="linux-performance-counters"></a>Liczniki wydajności systemu Linux
-
-|Nazwa obiektu |Nazwa licznika |  
-|------------|-------------|  
-|Dysk logiczny |Procent wykorzystania miejsca |  
-|Dysk logiczny |Bajty odczytu z dysku/s |  
-|Dysk logiczny |Odczyty dysku/s |  
-|Dysk logiczny |Transfery dyskowe/s |  
-|Dysk logiczny |Bajty zapisu na dysku/s |  
-|Dysk logiczny |Zapisy dysku/s |  
-|Dysk logiczny |Wolne megabajty |  
-|Dysk logiczny |Bajty dysku logicznego/s |  
-|Memory (Pamięć) |Dostępna pamięć (MB) |  
-|Sieć |Całkowita liczba odebranych bajtów |  
-|Sieć |Całkowita liczba przesłanych bajtów |  
-|Procesor |Czas procesora (%) |  
-
-## <a name="sign-in-to-azure-portal"></a>Logowanie do witryny Azure Portal
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com). 
+Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego usługi Log Analytics, zobacz [możesz zarządzać obszarami roboczymi](../log-analytics/log-analytics-manage-access.md).
 
 ## <a name="enable-from-the-azure-portal"></a>Korzystanie z witryny Azure portal
 Aby włączyć monitorowanie maszyny wirtualnej platformy Azure w witrynie Azure portal, wykonaj następujące czynności:
 
-1. W witrynie Azure portal wybierz **maszyn wirtualnych**. 
-2. Z listy wybierz maszynę wirtualną. 
-3. Na stronie maszyny Wirtualnej w **monitorowanie** zaznacz **Insights (wersja zapoznawcza)**.
-4. Na **Insights (wersja zapoznawcza)** wybierz opcję **Wypróbuj teraz usługę**.
+1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com). 
+2. W witrynie Azure portal wybierz **maszyn wirtualnych**. 
+3. Z listy wybierz maszynę wirtualną. 
+4. Na stronie maszyny Wirtualnej w **monitorowanie** zaznacz **Insights (wersja zapoznawcza)**.
+5. Na **Insights (wersja zapoznawcza)** wybierz opcję **Wypróbuj teraz usługę**.
 
     ![Włączanie usługi Azure Monitor dla maszyn wirtualnych dla maszyny Wirtualnej](./media/monitoring-vminsights-onboard/enable-vminsights-vm-portal-01.png)
 
@@ -241,7 +193,13 @@ Po włączeniu monitorowania może zająć około 10 minut, zanim będzie można
 
 
 ## <a name="on-boarding-at-scale"></a>Proces wdrażania na dużą skalę
-W tej sekcji instrukcje dotyczące wykonania podczas wdrażania skalowania usługi Azure Monitor dla maszyn wirtualnych przy użyciu tych zasad platformy Azure lub za pomocą programu Azure PowerShell.  To pierwszy krok wymagany do skonfigurowania obszaru roboczego usługi Log Analytics.  
+W tej sekcji instrukcje dotyczące wykonania podczas wdrażania skalowania usługi Azure Monitor dla maszyn wirtualnych przy użyciu tych zasad platformy Azure lub za pomocą programu Azure PowerShell.  
+
+Podsumowanie są kroki, które należy wykonać, aby wstępnie skonfigurować obszaru roboczego usługi Log Analytics, zanim będzie można kontynuować przy dołączaniu do maszyn wirtualnych.
+
+1. Utwórz nowy obszar roboczy, jeśli nie już istnieje, może służyć do obsługi usługi Azure Monitor dla maszyn wirtualnych. Przegląd [możesz zarządzać obszarami roboczymi](../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json) przed utworzeniem nowego obszaru roboczego, aby poznać zagadnienia dotyczące kosztów, zarządzania i zgodności przed kontynuowaniem.       
+2. Włącz liczniki wydajności w obszarze roboczym dla kolekcji w systemie Linux i Windows maszyn wirtualnych.
+3. Zainstalować i włączyć **ServiceMap** i **InfrastructureInsights** rozwiązania w Twoim obszarze roboczym.  
 
 ### <a name="setup-log-analytics-workspace"></a>Konfigurowanie obszaru roboczego usługi Log Analytics
 Jeśli nie masz obszaru roboczego usługi Log Analytics, zapoznaj się z dostępnych metod, które są zalecane w obszarze [wymagania wstępne](#log-analytics) sekcji, aby go utworzyć.  
@@ -337,7 +295,7 @@ Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpie
     ```
 
 ### <a name="enable-using-azure-policy"></a>Włącz przy użyciu usługi Azure Policy
-Aby włączyć usługi Azure Monitor dla maszyn wirtualnych na dużą skalę, która zapewnia spójne zgodności i automatyczne włączanie dla nowych maszyn wirtualnych aprowizowane, [usługi Azure Policy](../governance/policy/overview.md) jest zalecane. Te zasady:
+Aby włączyć usługi Azure Monitor dla maszyn wirtualnych na dużą skalę, która zapewnia spójne zgodności i automatyczne włączanie dla nowych maszyn wirtualnych aprowizowane, [usługi Azure Policy](../azure-policy/azure-policy-introduction.md) jest zalecane. Te zasady:
 
 * Wdrażanie agenta usługi Log Analytics i agenta zależności 
 * Raport dotyczący wyniki sprawdzania zgodności 
@@ -573,14 +531,16 @@ Failed: (0)
 ## <a name="enable-for-hybrid-environment"></a>Włącz dla środowiska hybrydowego
 W tej sekcji opisano sposób dołączania maszyn wirtualnych lub fizycznych komputerów są hostowane w centrum danych lub inne środowiska chmury na potrzeby monitorowania usługi Azure Monitor dla maszyn wirtualnych.  
 
-Usługi Azure Monitor dla agenta zależności mapy maszyn wirtualnych nie przesyła wszystkie dane, a nie wymaga wprowadzania zmian w zapory i porty. Danych na mapie są zawsze przesyłane przez agenta usługi Log Analytics w usłudze Azure Monitor, bezpośrednio lub za pośrednictwem [bramy pakietu OMS](../log-analytics/log-analytics-oms-gateway.md) Jeśli Twoje informatyczne zasady zabezpieczeń nie pozwalają komputerom w sieci, aby nawiązać połączenie z Internetem.
+Usługi Azure Monitor dla agenta zależności mapy maszyn wirtualnych nie przesyła wszystkie dane, a nie wymaga wprowadzania zmian w zapory i porty. Dane mapy są zawsze przesyłane przez agenta usługi Log Analytics w usłudze Azure Monitor, bezpośrednio lub za pośrednictwem [bramy pakietu OMS](../log-analytics/log-analytics-oms-gateway.md) Jeśli Twoje informatyczne zasady zabezpieczeń nie pozwalają komputerom w sieci, aby nawiązać połączenie z Internetem.
 
-Przegląd wymagań i metod wdrażania [agenta Log Analytics w systemie Linux i Windows](../log-analytics/log-analytics-concept-hybrid.md).
+Przegląd wymagań i metod wdrażania [agenta Log Analytics w systemie Linux i Windows](../log-analytics/log-analytics-agent-overview.md).  
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
 Skrócona kroki:
 
 1. Zainstaluj agenta programu Log Analytics dla Windows lub Linux
-2. Instalowanie usługi Azure Monitor dla agenta zależności mapy maszyn wirtualnych
+2. Pobierz i zainstaluj usługi Azure Monitor dla agenta zależności mapy maszyn wirtualnych dla [Windows](https://aka.ms/dependencyagentwindows) lub [Linux](https://aka.ms/dependencyagentlinux).
 3. Włączyć zbieranie liczników wydajności
 4. Dołączanie monitora platformy Azure dla maszyn wirtualnych
 
@@ -723,6 +683,52 @@ Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpie
     ```
 Po włączeniu monitorowania może zająć około 10 minut, zanim będzie można wyświetlić stan kondycji i metryki dla komputera hybrydowych. 
 
+## <a name="performance-counters-enabled"></a>Liczniki wydajności włączone
+Usługa Azure Monitor dla maszyn wirtualnych służy do konfigurowania obszaru roboczego usługi Log Analytics można zebrać liczników wydajności, używane przez to rozwiązanie.  Poniższa tabela zawiera listę obiektów i liczników skonfigurowane przez to rozwiązanie, które są zbierane co 60 sekund.
+
+### <a name="windows-performance-counters"></a>Liczniki wydajności systemu Windows
+
+|Nazwa obiektu |Nazwa licznika |  
+|------------|-------------|  
+|Dysk logiczny |% Wolnego miejsca |  
+|Dysk logiczny |Średni Czas dysku w s/Odczyt |  
+|Dysk logiczny |Średni Dysku w s/Transfer |  
+|Dysk logiczny |Średni Dysku w s/Zapis |  
+|Dysk logiczny |Bajty dysku/s |  
+|Dysk logiczny |Bajty odczytu z dysku/s |  
+|Dysk logiczny |Odczyty dysku/s |  
+|Dysk logiczny |Transfery dyskowe/s |  
+|Dysk logiczny |Bajty zapisu na dysku/s |  
+|Dysk logiczny |Zapisy dysku/s |  
+|Dysk logiczny |Wolne megabajty |  
+|Memory (Pamięć) |Dostępna pamięć (MB) |  
+|Karta sieciowa |Bajty odebrane/s |  
+|Karta sieciowa |Bajty wysłane/s |  
+|Procesor |Czas procesora (%) |  
+
+### <a name="linux-performance-counters"></a>Liczniki wydajności systemu Linux
+
+|Nazwa obiektu |Nazwa licznika |  
+|------------|-------------|  
+|Dysk logiczny |Procent wykorzystania miejsca |  
+|Dysk logiczny |Bajty odczytu z dysku/s |  
+|Dysk logiczny |Odczyty dysku/s |  
+|Dysk logiczny |Transfery dyskowe/s |  
+|Dysk logiczny |Bajty zapisu na dysku/s |  
+|Dysk logiczny |Zapisy dysku/s |  
+|Dysk logiczny |Wolne megabajty |  
+|Dysk logiczny |Bajty dysku logicznego/s |  
+|Memory (Pamięć) |Dostępna pamięć (MB) |  
+|Sieć |Całkowita liczba odebranych bajtów |  
+|Sieć |Całkowita liczba przesłanych bajtów |  
+|Procesor |Czas procesora (%) |  
+
+## <a name="diagnostic-and-usage-data"></a>Dane diagnostyczne i dane dotyczące użycia
+Firma Microsoft automatycznie zbiera dane dotyczące użycia i wydajności przez korzystanie z usługi Azure Monitor. Firma Microsoft używa tych danych do zapewniania i poprawiania jakości, bezpieczeństwa i integralności usługi. Aby zapewnić dokładne i wydajne funkcje do rozwiązywania problemów, dane z funkcji mapy zawiera informacje o konfiguracji oprogramowania, takie jak system operacyjny i wersję, adres IP, nazwę DNS i nazwę stacji roboczej. Firma Microsoft gromadzi nazwisk, adresów ani innych informacji kontaktowych.
+
+Aby uzyskać więcej informacji na temat zbierania i wykorzystywania danych, zobacz [Microsoft Online Services Privacy Statement](https://go.microsoft.com/fwlink/?LinkId=512132).
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 ## <a name="next-steps"></a>Kolejne kroki
 
 Przy użyciu funkcji monitorowania, włączone dla maszyny wirtualnej, te informacje są dostępne dla analizy dzięki usłudze Azure Monitor dla maszyn wirtualnych.  Aby dowiedzieć się, jak korzystać z funkcji Health, zobacz [widok usługi Azure Monitor kondycji maszyn wirtualnych](monitoring-vminsights-health.md), lub aby obejrzeć zależności odnalezionych aplikacji, zobacz [widok usługi Azure Monitor dla maszyn wirtualnych jest mapowany](monitoring-vminsights-maps.md).  

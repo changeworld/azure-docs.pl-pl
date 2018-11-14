@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.component: common
-ms.openlocfilehash: 1b949d2baedc7a7da3230212e267c3ac98b30bbd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 64e7b6ad79fc26f8ab2ba796bbca2909417b113c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239546"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51626001"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -197,7 +197,7 @@ Użytkownicy twojej aplikacji może powiadomić użytkownika o błędów zgłosz
 Przydatne dla zrozumienia, związane z magazynowaniem kodów stanu i błędów są następujące zasoby:
 
 * [Typowe kody błędów interfejsu API REST](https://msdn.microsoft.com/library/azure/dd179357.aspx)
-* [Kody błędów usługi obiektów blob](https://msdn.microsoft.com/library/azure/dd179439.aspx)
+* [Kody błędów usługi Blob Service](https://msdn.microsoft.com/library/azure/dd179439.aspx)
 * [Kody błędów usługi kolejki](https://msdn.microsoft.com/library/azure/dd179446.aspx)
 * [Kody błędów usługi tabeli](https://msdn.microsoft.com/library/azure/dd179438.aspx)
 * [Kody błędów usługi plików](https://msdn.microsoft.com/library/azure/dn690119.aspx)
@@ -642,7 +642,7 @@ Aplikacja kliencka należy używać nazwy unikatowe kontenerów, zawsze wtedy, g
 Należy pamiętać, że te operacje zostały zakończone powodzeniem i w związku z tym nie ma wpływu na inne metryki, takie jak dostępność. Niektóre operacje, wykonana pomyślnie, ale która może skutkować niepowodzeniem kodów stanu HTTP należą:
 
 * **ResourceNotFound** (nie znaleziono 404), na przykład z żądania GET do obiektu blob, który nie istnieje.
-* **ResouceAlreadyExists** (409 Konflikt), na przykład z **CreateIfNotExist** operacji, w której zasób już istnieje.
+* **ResourceAlreadyExists** (409 Konflikt), na przykład z **CreateIfNotExist** operacji, w której zasób już istnieje.
 * **ConditionNotMet** (nie zmodyfikował 304), na przykład z operacją warunkowego, np. gdy klient wysyła **ETag** wartość i HTTP **If-None-Match** nagłówka żądania obrazu, tylko wtedy, gdy ma ona od ostatniej operacji zostały zaktualizowane.
 
 Można znaleźć listę typowe kody błędów interfejsu API REST, które zwracają usług magazynu, na stronie [typowe kody błędów interfejsu API REST](https://msdn.microsoft.com/library/azure/dd179357.aspx).
