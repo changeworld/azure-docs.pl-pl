@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: 6ade1d584fad05e33a72a0ff5099378a9cf7f29f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8e1494594546c432123b8b1b98d646e8637eea99
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214583"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622843"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej przy użyciu programu PowerShell (Resource Manager)
 
@@ -21,7 +21,7 @@ W tym artykule pokazano, jak do automatyzowania czynności w przypadku replikacj
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Przegląd [składnikach i architekturze scenariusza](hyper-v-vmm-architecture.md).
+- Zapoznaj się ze [składnikami i architekturą scenariusza](hyper-v-vmm-architecture.md).
 - Zapoznaj się z [wymaganiami dotyczącymi obsługi](site-recovery-support-matrix-to-sec-site.md) wszystkich składników.
 - Upewnij się, że program Virtual Machine Manager, serwery i hosty funkcji Hyper-V są zgodne z [obsługi wymagań związanych z](site-recovery-support-matrix-to-sec-site.md).
 - Upewnij się, że maszyny wirtualne mają być replikowane są zgodne z [replikowane maszyny obsługi](site-recovery-support-matrix-to-sec-site.md).
@@ -31,18 +31,18 @@ W tym artykule pokazano, jak do automatyzowania czynności w przypadku replikacj
 
 [Mapowanie sieci](hyper-v-vmm-network-mapping.md) mapowania między w środowisku lokalnym sieci maszyn wirtualnych programu Virtual Machine Manager w źródłową i docelową. Mapowanie wykonuje następujące czynności:
 
-- Maszyny wirtualne łączy się z odpowiedniego obiektu docelowego, sieci maszyn wirtualnych po pracy awaryjnej. 
-- Optymalnie umieszcza maszyny wirtualne replik na serwerach hostów funkcji Hyper-V docelowych. 
+- Łączy maszyny wirtualne z odpowiednimi docelowymi sieciami maszyn wirtualnych po przejściu w tryb failover. 
+- Optymalnie umieszcza repliki maszyn wirtualnych na docelowych serwerach hostów funkcji Hyper-V. 
 - Jeśli nie skonfigurujesz mapowania sieci, maszyn wirtualnych repliki nie będzie połączony z siecią maszyny Wirtualnej po włączeniu trybu failover.
 
 Program Virtual Machine Manager, należy przygotować w następujący sposób:
 
 * Upewnij się, że masz [sieci logiczne programu Virtual Machine Manager](https://docs.microsoft.com/system-center/vmm/network-logical) na serwerach źródłowym i docelowym, program Virtual Machine Manager:
 
-    - Sieci logicznej na serwerze źródłowym powinna być skojarzona z chmurą źródła, w którym znajdują się hosty funkcji Hyper-V.
-    - Sieci logicznej na serwerze docelowym powinna być skojarzona z chmurę docelową.
-* Upewnij się, że masz [sieci maszyn wirtualnych](https://docs.microsoft.com/system-center/vmm/network-virtual) na serwerach źródłowym i docelowym, program Virtual Machine Manager. Sieci maszyn wirtualnych powinna być połączona z siecią logiczną, w każdej lokalizacji.
-* Łączenie maszyn wirtualnych na hostach funkcji Hyper-V źródłowej do źródłowej sieci maszyny Wirtualnej. 
+    - Sieć logiczna na serwerze źródłowym powinna być skojarzona z chmurą źródłową, w której znajdują się hosty funkcji Hyper-V.
+    - Sieć logiczna na serwerze docelowym powinna być skojarzona z chmurą docelową.
+* Upewnij się, że masz [sieci maszyn wirtualnych](https://docs.microsoft.com/system-center/vmm/network-virtual) na serwerach źródłowym i docelowym, program Virtual Machine Manager. Sieci maszyn wirtualnych powinny być połączone z siecią logiczną w każdej lokalizacji.
+* Połącz maszyny wirtualne na źródłowych hostach funkcji Hyper-V ze źródłową siecią maszyny wirtualnej. 
 
 ## <a name="prepare-for-powershell"></a>Przygotowanie środowiska PowerShell
 
@@ -73,7 +73,7 @@ Upewnij się, że jest gotowa do użytku programu Azure PowerShell:
         New-AzureRmResourceGroup -Name #ResourceGroupName -Location #location
 2. Utwórz nowy magazyn usługi Recovery Services. Zapisz obiekt magazynu w zmiennej na później. 
 
-        $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResouceGroupName #ResourceGroupName -Location #location
+        $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
    
     Po utworzeniu za pomocą polecenia cmdlet Get-AzureRMRecoveryServicesVault można pobrać obiektu magazynu.
 

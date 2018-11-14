@@ -12,26 +12,42 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/06/2017
+ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: a0f2cc0d76ef3c857bb7c13f46f1397f05b60977
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 40562c77cf38ad316d64f68b54dd4174dae6da1a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232447"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614476"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Samouczek dotyczący usługi Azure WCF Relay REST
-
 W tym samouczku opisano, jak utworzyć prostą aplikację hosta przekaźnika usługi Azure, która uwidacznia interfejs REST. Interfejs REST umożliwia klientowi sieci Web, takiemu jak przeglądarka sieci Web, uzyskiwanie dostępu do interfejsów API usługi Service Bus za pomocą żądań HTTP.
 
 W tym samouczku użyto usługi Windows Communication Foundation (WCF) modelu programowania interfejsu REST do utworzenia usługi REST w usłudze Azure Relay. Aby uzyskać więcej informacji, zobacz [Model programowania interfejsu REST usługi WCF](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) oraz [Projektowanie i implementowanie usług](/dotnet/framework/wcf/designing-and-implementing-services) w dokumentacji usługi WCF.
 
-## <a name="step-1-create-a-namespace"></a>Krok 1. Tworzenie przestrzeni nazw
+W tym samouczku można wykonać następujące czynności:
+
+> [!div class="checklist"]
+> * Tworzenie przestrzeni nazw usługi Relay.
+> * Definiowanie kontraktu usługi WCF opartego na protokole REST
+> * Implementowanie kontraktu opartego na protokole REST programu WCF
+> * Hostowanie i uruchamianie usługi WCF opartego na protokole REST
+> * Uruchamianie i testowanie usługi
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
+
+- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+- [Program Visual Studio 2015 lub nowszy](http://www.visualstudio.com). W przykładach znajdujących się w tym samouczku używany jest program Visual Studio 2017.
+- Zestaw Azure SDK dla platformy .NET. Zainstaluj go z [strony pobierania zestawu SDK](https://azure.microsoft.com/downloads/).
+
+## <a name="create-a-relay-namespace"></a>Tworzenie przestrzeni nazw usługi Relay
 
 Aby rozpocząć korzystanie z funkcji przekazywania na platformie Azure, należy najpierw utworzyć przestrzeń nazw usługi. Przestrzeń nazw zapewnia kontener określania zakresu na potrzeby adresowania zasobów platformy Azure w aplikacji. Postępuj zgodnie z [instrukcjami podanymi w tym miejscu](relay-create-namespace-portal.md), aby utworzyć przestrzeń nazw przekazywania.
 
-## <a name="step-2-define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Krok 2: Definiowanie kontraktu usługi WCF opartego na protokole REST za pomocą usługi Azure Relay
+## <a name="define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Definiowanie kontraktu usługi WCF opartego na protokole REST za pomocą usługi Azure Relay
 
 Podczas tworzenia usługi WCF opartego na interfejsie REST należy zdefiniować kontrakt. Kontrakt określa operacje obsługiwane przez hosta. Operacja usługi może być rozumiana jako metoda usługi sieci Web. Kontrakty są tworzone przez definiowanie interfejsu C++, C# lub Visual Basic. Każda metoda w interfejsie odpowiada określonej operacji usługi. W odniesieniu do każdego interfejsu należy zastosować atrybut [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute), a w odniesieniu do każdej operacji należy zastosować atrybut [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute). Jeśli metoda w interfejsie z atrybutem [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) nie ma atrybutu [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute), nie jest uwidaczniana. Kod używany do wykonywania tych zadań podano w przykładzie zamieszczonym na końcu procedury.
 
@@ -136,7 +152,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## <a name="step-3-implement-a-rest-based-wcf-service-contract-to-use-service-bus"></a>Krok 3. Implementowanie kontraktu usługi WCF opartego na interfejsie REST do użycia z usługą Service Bus
+## <a name="implement-the-rest-based-wcf-service-contract"></a>Implementowanie kontraktu usługi WCF opartego na protokole REST
 Tworzenie przekaźnika WCF opartego na interfejsie REST usługi wymaga, należy najpierw utworzyć kontrakt definiowany przy użyciu interfejsu. Następnym krokiem jest zaimplementowanie interfejsu. Jest to związane z utworzeniem klasy o nazwie **ImageService** implementującej interfejs **IImageContract** zdefiniowany przez użytkownika. Po zaimplementowaniu kontraktu należy skonfigurować interfejs przy użyciu pliku App.config. Plik konfiguracji zawiera niezbędne informacje o aplikacji, takie jak nazwa usługi, Nazwa kontraktu i typ protokołu używanego do komunikacji z usługą przekazywania. Kod używany do wykonywania tych zadań podano w przykładzie zamieszczonym po procedurze.
 
 Podobnie jak w poprzednich krokach jest bardzo mała różnica między implementacją kontraktu opartego na interfejsie REST i kontraktu usługi WCF Relay.
@@ -430,7 +446,7 @@ Poniższy kod przedstawia plik App.config skojarzony z usługą.
 </configuration>
 ```
 
-## <a name="step-4-host-the-rest-based-wcf-service-to-use-azure-relay"></a>Krok 4: Hostowanie usługi WCF opartego na protokole REST w celu użycia usługi Azure Relay
+## <a name="host-the-rest-based-wcf-service-to-use-azure-relay"></a>Hostowanie usługi WCF opartego na interfejsie REST do użycia usługi Azure Relay
 W tym kroku opisano sposób uruchamiania usługi sieci web za pomocą aplikacji konsolowej przy użyciu przekaźnika WCF. Pełny kod napisany w tym kroku podano w przykładzie poniżej procedury.
 
 ### <a name="to-create-a-base-address-for-the-service"></a>Aby utworzyć podstawowy adres usługi
@@ -476,7 +492,7 @@ W tym kroku opisano sposób uruchamiania usługi sieci web za pomocą aplikacji 
     host.Close();
     ```
 
-## <a name="example"></a>Przykład
+### <a name="example"></a>Przykład
 Poniższy przykład zawiera kontrakt usługi i implementację z poprzednich kroków samouczka i hostuje usługę w aplikacji konsolowej. Skompiluj następujący kod do pliku wykonywalnego o nazwie ImageListener.exe.
 
 ```csharp
@@ -551,7 +567,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-### <a name="compiling-the-code"></a>Kompilowanie kodu
+## <a name="run-and-test-the-service"></a>Uruchamianie i testowanie usługi
 Po utworzeniu rozwiązania należy wykonać następujące polecenie, aby uruchomić aplikację:
 
 1. Naciśnij klawisz **F5** lub przejdź do lokalizacji pliku wykonywalnego (ImageListener\bin\Debug\ImageListener.exe), aby uruchomić usługę. Nie zatrzymuj aplikacji, ponieważ będzie ona wymagana do wykonania kolejnego kroku.

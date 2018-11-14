@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 11/08/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 91f75fdbe7bc7c66bbe581e9d4b295467acd4cd5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b4476579665b0e6b574827d1bec06233560038a8
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989672"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621092"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Jak włączyć aplikacje klienta natywnego do interakcji z serwera proxy aplikacji
 
@@ -98,4 +98,4 @@ Po biblioteki ADAL jest edytowany przy użyciu tych parametrów, użytkownicy po
 
 Aby uzyskać więcej informacji o przepływie aplikacja natywna, zobacz [aplikacji natywnej do interfejsu API sieci web](../develop/native-app.md)
 
-Dowiedz się więcej o konfigurowaniu [logowanie jednokrotne dla serwera Proxy aplikacji](application-proxy-single-sign-on.md)
+Dowiedz się więcej o konfigurowaniu [logowanie jednokrotne dla serwera Proxy aplikacji](what-is-single-sign-on.md#single- sign-on-methods)

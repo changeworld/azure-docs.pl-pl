@@ -1,6 +1,6 @@
 ---
 title: Limity zasobów bazy danych SQL platformy Azure — serwer logiczny | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie limitów zasobów usługi Azure SQL Database dla pojedynczych baz danych i baz danych w puli przy użyciu pul elastycznych. Umożliwia także informacja, co się stanie, gdy te limity zasobów są osiągnięty lub przekroczony.
+description: Ten artykuł zawiera omówienie serwera logicznego usługi Azure SQL Database limity zasobów dla pojedynczych baz danych i baz danych w puli przy użyciu pul elastycznych. Umożliwia także informacja, co się stanie, gdy te limity zasobów są osiągnięty lub przekroczony.
 services: sql-database
 ms.service: sql-database
 ms.subservice: ''
@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan,moslake
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: b48c090cc67d4557140b5734f1a5e1f763b271ab
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 11/13/2018
+ms.openlocfilehash: a423f5c112faa615b7888dacfa20f9ff8f6a595a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829567"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51620902"
 ---
-# <a name="sql-database-resource-limits-for-single-and-pooled-databases-on-a-logical-server"></a>Limity zasobów bazy danych SQL Database dla pojedynczych i puli baz danych na serwerze logicznym 
+# <a name="sql-database-resource-limits-for-single-and-pooled-databases"></a>Limity zasobów bazy danych SQL Database dla pojedynczych i puli baz danych
 
 Ten artykuł zawiera omówienie limitów zasobów bazy danych SQL Database dla pojedynczych i puli baz danych na serwerze logicznym. Umożliwia także informacja, co się stanie, gdy te limity zasobów są osiągnięty lub przekroczony.
 
@@ -35,18 +35,17 @@ Ten artykuł zawiera omówienie limitów zasobów bazy danych SQL Database dla p
 | Maksymalna liczba serwerów na subskrypcję w dowolnym regionie | 200 |  
 | Jednostka DTU / przydziału liczby jednostek eDTU na serwerze | 54,000 |  
 | Rdzeń wirtualny przydziału na server/wystąpienie | 540 |
-| Maksymalna liczba pul na serwer | ograniczone przez liczbę jednostek Dtu lub rdzeni wirtualnych |
+| Maksymalna liczba pul na serwer | Ograniczone przez liczbę jednostek Dtu lub rdzeni wirtualnych. Na przykład jeśli każda pula ma 1000 jednostek Dtu, następnie pojedynczego serwera obsługują 54 pul.|
 ||||
 
 > [!NOTE]
-> Aby uzyskać więcej /eDTU limitu przydziału, przydziału pamięci rdzeń wirtualny lub większej liczby serwerów niż domyślny, można przesłać nowe żądanie pomocy technicznej w witrynie Azure portal dla subskrypcji z typem problemu "Limit przydziału". Wartość DTU / limitu przydziału i bazy danych na serwer liczby jednostek eDTU ogranicza liczbę pule elastyczne na serwerze. 
-
+> Aby uzyskać więcej /eDTU limitu przydziału, przydziału pamięci rdzeń wirtualny lub większej liczby serwerów niż domyślny, można przesłać nowe żądanie pomocy technicznej w witrynie Azure portal dla subskrypcji z typem problemu "Limit przydziału". Wartość DTU / limitu przydziału i bazy danych na serwer liczby jednostek eDTU ogranicza liczbę pule elastyczne na serwerze.
 > [!IMPORTANT]
 > Ponieważ liczba baz danych zbliża się do limitu na każdym serwerze logicznym, mogą wystąpić następujące czynności:
 > - Zwiększenie opóźnienia w uruchamianiu zapytań bazy danych master.  Dotyczy to widoków dane statystyczne wykorzystania zasobów, takich jak sys.resource_stats.
 > - Zwiększenie opóźnienia w operacji zarządzania i renderowanie portalu punkty widzenia, obejmujące wyliczanie baz danych na serwerze.
 
-## <a name="what-happens-when-database-resource-limits-are-reached"></a>Co się stanie po osiągnięciu limitów zasobów bazy danych?
+## <a name="what-happens-when-database-resource-limits-are-reached"></a>Co się stanie po osiągnięciu limitów zasobów bazy danych
 
 ### <a name="compute-dtus-and-edtus--vcores"></a>Obliczeniowe (jednostki Dtu i Edtu / rdzeni wirtualnych)
 
@@ -66,11 +65,12 @@ Gdy wystąpią wykorzystania miejsca wysoka, opcje środki zaradcze:
 - W przypadku bazy danych w puli elastycznej następnie też bazy danych można przenosić poza pulę, aby jej miejsca do magazynowania nie jest współużytkowane z innymi bazami danych.
 - Zmniejszanie bazy danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md)
 
-### <a name="sessions-and-workers-requests"></a>Sesje i procesów roboczych (żądań) 
+### <a name="sessions-and-workers-requests"></a>Sesje i procesów roboczych (żądań)
 
-Maksymalna liczba sesji i procesy robocze są określane przez warstwę usług i obliczenia rozmiaru (jednostki Dtu i Edtu). Nowe żądania są odrzucane po osiągnięciu limitu sesji lub proces roboczy, a klienci otrzymują komunikat o błędzie. Chociaż można kontrolować liczbę połączeń, które są dostępne przez aplikację, liczba współbieżnych procesów roboczych jest często trudniejsze do oszacowania i sterowania. Jest to szczególnie istotne w okresach szczytowego obciążenia po osiągnięciu limitów zasobów bazy danych i procesów roboczych, ustawianie ze względu na dłużej uruchomionych zapytań. 
+Maksymalna liczba sesji i procesy robocze są określane przez warstwę usług i obliczenia rozmiaru (jednostki Dtu i Edtu). Nowe żądania są odrzucane po osiągnięciu limitu sesji lub proces roboczy, a klienci otrzymują komunikat o błędzie. Chociaż można kontrolować liczbę połączeń, które są dostępne przez aplikację, liczba współbieżnych procesów roboczych jest często trudniejsze do oszacowania i sterowania. Jest to szczególnie istotne w okresach szczytowego obciążenia po osiągnięciu limitów zasobów bazy danych i procesów roboczych, ustawianie ze względu na dłużej uruchomionych zapytań.
 
 Gdy wystąpią wysokie wykorzystanie sesji lub proces roboczy, opcje środki zaradcze:
+
 - Zwiększenie usługi warstwy lub obliczenia rozmiaru bazy danych lub elastycznej puli. Zobacz [skalowanie pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) i [skalowanie elastycznej puli zasobów](sql-database-elastic-pool-scale.md).
 - Optymalizacja zapytania, aby zmniejszyć wykorzystanie zasobów każdej kwerendy, jeśli przyczyną zwiększonej wykorzystanie jest z powodu rywalizacji o zasoby obliczeniowe. Aby uzyskać więcej informacji, zobacz [zapytania dostrajania/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 

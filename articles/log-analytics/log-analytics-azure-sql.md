@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: b20a142007b3422d071de47410f4c9cdd1ff62a7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5eb398cf981edbcfe9b98ee89c3dd4e12b3f758f
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006740"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615497"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorowanie usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics (wersja zapoznawcza)
 
@@ -291,4 +291,4 @@ W trakcie można używać bezpłatnie rozwiązanie ma zastosowanie użycie dane 
 
 - Użyj [wyszukiwań w dziennikach](log-analytics-queries.md) w usłudze Log Analytics, aby wyświetlić szczegółowe dane usługi Azure SQL.
 - [Tworzenie własnych pulpitów nawigacyjnych](log-analytics-dashboards.md) Pokazywanie danych Azure SQL.
-- [Tworzenie alertów](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) po wystąpieniu określonych zdarzeń usługi Azure SQL.
+- [Tworzenie alertów](../monitoring-and-diagnostics/monitoring-overview-alerts.md) po wystąpieniu określonych zdarzeń usługi Azure SQL.

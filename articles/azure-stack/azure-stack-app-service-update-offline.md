@@ -12,21 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: f48872d1853dfd4c40022f42c8e237973ac70fe6
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: c91f92a519c91f4c0fe32ed102c5bb9fab528868
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42056976"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614813"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>W trybie offline aktualizacji usługi Azure App Service w usłudze Azure Stack
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Dotyczą aktualizacji 1807 system zintegrowany z usługi Azure Stack można też wdrażać najnowszy zestaw Azure Stack development kit przed wdrożeniem usługi Azure App Service 1.3.
+> Dotyczą aktualizacji 1809 system zintegrowany z usługi Azure Stack można też wdrażać najnowszy zestaw Azure Stack development kit przed wdrożeniem usługi Azure App Service 1.4.
 >
 >
 
@@ -44,7 +44,7 @@ Postępując zgodnie z instrukcjami w tym artykule, możesz uaktualnić [dostawc
 
 Aby uaktualnić dostawcy zasobów usługi App Service w środowisku usługi Azure Stack, należy wykonać następujące zadania:
 
-1. Pobierz [Instalatora usługi App Service](https://aka.ms/appsvcupdate3installer)
+1. Pobierz [Instalatora usługi App Service](https://aka.ms/appsvcupdate4installer)
 2. Utwórz pakiet uaktualnienia w trybie offline.
 3. Uruchom Instalatora usługi App Service (appservice.exe), a następnie zakończyć uaktualnianie.
 
@@ -93,7 +93,7 @@ Aby uaktualnić usługi App Service w środowisku bez połączenia, należy najp
 
 5. Przejrzyj i zaakceptuj postanowienia licencyjne innych firm, a następnie kliknij przycisk **dalej**.
 
-6. Upewnij się, że punkt końcowy usługi Azure Stack usługi Azure Resource Manager i dzierżawy usługi Active Directory informacje są poprawne. Jeśli domyślne ustawienia są używane podczas wdrażania usługi Azure Stack Development Kit, możesz zaakceptować wartości domyślne w tym miejscu. Jednak jeśli dostosowano opcji podczas wdrażania usługi Azure Stack, możesz edytować wartości w tym oknie, w celu odzwierciedlenia zmiany. Na przykład, jeśli używasz sufiks domeny *mycloud.com*, należy zmienić punkt końcowy usługi Azure Stack usługi Azure Resource Manager *management.region.mycloud.com*. Po upewnieniu się informacje, kliknij przycisk **dalej**.
+6. Upewnij się, że punkt końcowy usługi Azure Stack usługi Azure Resource Manager i dzierżawy usługi Active Directory informacje są poprawne. Jeśli domyślne ustawienia są używane podczas wdrażania usługi Azure Stack Development Kit, możesz zaakceptować wartości domyślne w tym miejscu. Jednak jeśli dostosowano opcji podczas wdrażania usługi Azure Stack, możesz edytować wartości w tym oknie. Na przykład, jeśli używasz sufiks domeny *mycloud.com*, należy zmienić punkt końcowy usługi Azure Stack usługi Azure Resource Manager *management.region.mycloud.com*. Po upewnieniu się informacje, kliknij przycisk **dalej**.
 
     ![Informacje o chmurze usługi Azure Stack][3]
 
@@ -104,7 +104,7 @@ Aby uaktualnić usługi App Service w środowisku bez połączenia, należy najp
         * Jeśli używasz usługi Active Directory Federation Services (AD FS) zapewniają konta administratora. Na przykład *cloudadmin@azurestack.local*. Wprowadź hasło, a następnie kliknij przycisk **Sign In**.
    2. W **usługi Azure Stack subskrypcje** wybierz opcję **domyślne subskrypcję dostawcy**.
    3. W **lokalizacje usługi Azure Stack** wybierz lokalizację, do której odnosi się do regionu jest wdrażany na. Na przykład wybierz **lokalnego** Jeśli Twoje wdrożenie usługi Azure Stack Development Kit.
-   4. Jeśli istniejące wdrożenie usługi App Service zostanie odnalezione, następnie zasobów grupy i konta magazynu będzie być wypełnione i wyszarzone.
+   4. W przypadku wykrycia istniejącego wdrożenia usługi App Service następnie zasobów grupy i konta magazynu będzie być wypełnione i wyszarzone.
    5. Kliknij przycisk **dalej** do Przejrzyj podsumowanie uaktualnienia.
 
     ![Wykryto instalacji usługi App Service][4]
