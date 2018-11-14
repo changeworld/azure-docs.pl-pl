@@ -48,10 +48,8 @@ items:
     href: how-to-manage-workspace.md
   - name: Konfigurowanie środowiska deweloperskiego 
     items:
-    - name: Wybieranie środowiska
-      displayName: local, remote
-      href: how-to-choose-a-dev-environment.md
     - name: Konfigurowanie środowiska
+      displayName: local, remote
       href: how-to-configure-environment.md
     - name: VS Code Tools for AI
       displayName: Visual Studio Code, vscode
@@ -129,6 +127,9 @@ items:
       href: how-to-enable-app-insights.md
   - name: Zarządzanie przydziałami zasobów
     href: how-to-manage-quotas.md
+  - name: Używanie interfejsu wiersza polecenia uczenia maszynowego
+    displayName: cli, command line, command-line
+    href: reference-azure-machine-learning-cli.md
 - name: Dokumentacja
   items:
   - name: Zestaw SDK uczenia maszynowego
@@ -137,8 +138,6 @@ items:
     href: http://aka.ms/data-prep-sdk
   - name: Zestaw SDK do monitorowania
     href: https://aka.ms/aml-monitoring-sdk
-  - name: Interfejs wiersza polecenia uczenia maszynowego
-    href: reference-azure-machine-learning-cli.md
 - name: Zasoby
   items:
   - name: Harmonogram działania dla platformy Azure
@@ -358,9 +357,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Stare problemy
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 8519a04730105537d5bd8639da54afafdf76590b
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 87379b773b353f4f384252a9840f1e75d595e37b
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345017"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613634"

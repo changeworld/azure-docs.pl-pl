@@ -10,18 +10,18 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 762997492d18e9b14525dc6a196f98815f27fbbb
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 4492324b174c97325f40110b7500d5b0e99a926b
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979509"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623948"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Dokumentacja składni w usłudze Azure Cosmos DB SQL
 
-Środowisko usługi Azure Cosmos DB obsługuje wykonywanie zapytań względem dokumentów za pomocą dobrze znanych SQL (Structured Query Language), takich jak gramatyka za pośrednictwem hierarchiczne dokumentów JSON bez konieczności jawnego schematu lub tworzenia indeksów pomocniczych. Ten artykuł zawiera dokumentacja odwołania/składni język zapytań SQL, które są zgodne z kontami interfejsu API SQL. Przewodnik SQL zapytań z przykładowych danych w temacie [wysyłania zapytań dotyczących danych usługi Azure Cosmos DB](sql-api-sql-query.md).  
+Środowisko usługi Azure Cosmos DB obsługuje wykonywanie zapytań względem dokumentów za pomocą dobrze znanych SQL (Structured Query Language), takich jak gramatyka za pośrednictwem hierarchiczne dokumentów JSON bez konieczności jawnego schematu lub tworzenia indeksów pomocniczych. Ten artykuł zawiera dokumentację dotyczącą składni języka zapytania SQL, które są zgodne z kontami interfejsu API SQL. Aby uzyskać wskazówki dotyczące przykładowych zapytań SQL, zobacz [zapytań SQL w usłudze Cosmos DB](sql-api-sql-query.md).  
   
-Odwiedź stronę [Plac zabaw dla zapytań](http://www.documentdb.com/sql/demo) gdzie możesz wypróbować usługę Azure Cosmos DB i uruchamiać zapytania SQL względem naszego zestawu danych.  
+Odwiedź stronę [Plac zabaw dla zapytań](http://www.documentdb.com/sql/demo) gdzie Wypróbuj usługę Cosmos DB i uruchamiać zapytania SQL względem naszego zestawu danych.  
   
 ## <a name="select-query"></a>Wybierz zapytanie  
 Każdego zapytania, który składa się z klauzuli SELECT i opcjonalnie FROM a klauzulach WHERE w standardy ANSI SQL. Zwykle dla każdego zapytania do źródła w klauzuli FROM są wyliczane. Następnie w klauzuli WHERE filtrowaniu na "source" do pobrania podzbioru dokumentów JSON. Na koniec klauzuli SELECT jest używany do projektu wymagane wartości JSON na liście wyboru. W sekcji Konwencji składni wyszczególniono w Konwencji używanych do opisywania instrukcji "SELECT". Aby uzyskać przykłady, zobacz [przykładowe zapytanie SELECT](sql-api-sql-query.md#SelectClause)
@@ -60,7 +60,7 @@ Należy pamiętać, że to różni się od kolejności, w jakiej występują w s
 
 ### <a name="whitespace-characters-and-comments"></a>Białych znaków i komentarze  
 
-Wszystkie białe znaki, które nie są częścią ciągów w cudzysłowach lub identyfikator w cudzysłowach nie są częścią gramatyki języka i są ignorowane podczas analizowania.  
+Wszystkie znaki białe znaki, które nie są częścią ciągów w cudzysłowach lub identyfikator w cudzysłowach nie są częścią gramatyki języka i są ignorowane podczas analizowania.  
 
 Język zapytań obsługuje komentarze style języka T-SQL, takich jak  
 
@@ -69,7 +69,7 @@ Język zapytań obsługuje komentarze style języka T-SQL, takich jak
 Gdy białych znaków i komentarze nie ma żadnego znaczenia w gramatyce, muszą one używane do oddzielania tokenów. Na przykład: `-1e5` chwilę jednego tokenu, liczba jest`: – 1 e5` minus token następuje numer 1 i identyfikatora e5.  
 
 ##  <a name="bk_select_query"></a> Klauzula SELECT  
-Muszą być uporządkowane klauzule w instrukcji SELECT, jak pokazano powyżej. Jeden opcjonalna klauzula można pominąć. Jednak gdy klauzule opcjonalne są używane, musi występować w odpowiedniej kolejności. Aby uzyskać przykłady, zobacz [przykładowe zapytanie SELECT](sql-api-sql-query.md#SelectClause)
+Muszą być uporządkowane klauzule w instrukcji SELECT, jak pokazano powyżej. Jeden opcjonalna klauzula można pominąć. Jednak gdy klauzule opcjonalne są używane, musi występować w odpowiedniej kolejności. Aby uzyskać przykłady, zobacz [przykładowe zapytanie SELECT](sql-api-sql-query.md#SelectClause).
 
 **Składnia**  
 
@@ -112,7 +112,7 @@ SELECT <select_specification>
   
 `SELECT *` Składnia jest prawidłowa, jeśli klauzula FROM zadeklarował dokładnie jeden alias. `SELECT *` udostępnia projekcji tożsamości, które mogą być przydatne, jeśli brak projekcji nie jest konieczne. Wybierz * jest prawidłowa, jeśli klauzula FROM określono tylko i wyłącznie jedno źródło danych wejściowych.  
   
-Należy pamiętać, że `SELECT <select_list>` i `SELECT *` są "sugar składni" i można również wyrazić za pomocą prostych instrukcji "SELECT", jak pokazano poniżej.  
+Zarówno `SELECT <select_list>` i `SELECT *` są "sugar składni" i można również wyrazić za pomocą prostych instrukcji "SELECT", jak pokazano poniżej.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
@@ -132,7 +132,7 @@ Należy pamiętać, że `SELECT <select_list>` i `SELECT *` są "sugar składni"
 [Klauzula SELECT](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a> FROM — klauzula  
-Określa źródło lub połączone źródła. Klauzula FROM jest opcjonalny, jeśli źródło jest filtrowana lub przewidywany później w zapytaniu. Ta klauzula ma na celu określania źródła danych, na którym zapytanie musi działać. Często jest źródłem w całej kolekcji, ale zamiast tego można określić podzbiór kolekcji. Jeśli ta klauzula nie jest określony, inne klauzule nadal będą wykonywane tak, jakby klauzuli FROM podane pojedynczego dokumentu. Aby uzyskać przykłady, zobacz [z przykładów — klauzula](sql-api-sql-query.md#FromClause)
+Określa źródło lub połączone źródła. Klauzula FROM jest opcjonalny, jeśli źródło jest filtrowana lub przewidywany później w zapytaniu. Ta klauzula ma na celu określania źródła danych, na którym zapytanie musi działać. Zazwyczaj całego kontenera jest źródłem, ale zamiast tego można określić podzbiór kontenera. Jeśli ta klauzula nie jest określony, inne klauzule nadal będą wykonywane tak, jakby klauzuli FROM podane pojedynczego dokumentu. Aby uzyskać przykłady, zobacz [z przykładów — klauzula](sql-api-sql-query.md#FromClause)
   
 **Składnia**  
   
@@ -143,98 +143,98 @@ FROM <from_specification>
         <from_source> {[ JOIN <from_source>][,...n]}  
   
 <from_source> ::=   
-          <collection_expression> [[AS] input_alias]  
-        | input_alias IN <collection_expression>  
+          <container_expression> [[AS] input_alias]  
+        | input_alias IN <container_expression>  
   
-<collection_expression> ::=   
+<container_expression> ::=   
         ROOT   
-     | collection_name  
+     | container_name  
      | input_alias  
-     | <collection_expression> '.' property_name  
-     | <collection_expression> '[' "property_name" | array_index ']'  
+     | <container_expression> '.' property_name  
+     | <container_expression> '[' "property_name" | array_index ']'  
 ```  
   
 **Argumenty**  
   
 - `<from_source>`  
   
-  Określa źródło danych, z lub bez aliasu. Jeśli nie określono aliasu, zostanie wywnioskowany z `<collection_expression>` za pomocą następujących reguł:  
+  Określa źródło danych, z lub bez aliasu. Jeśli nie określono aliasu, zostanie wywnioskowany z `<container_expression>` za pomocą następujących reguł:  
   
-  -  Jeśli wyrażenie ma nazwa_kolekcji, nazwa_kolekcji będzie używany jako alias.  
+  -  Jeśli wyrażenie ma container_name, container_name będzie używany jako alias.  
   
-  -  Jeśli wyrażenie ma `<collection_expression>`, property_name, a następnie property_name zostanie użyta jako alias. Jeśli wyrażenie ma nazwa_kolekcji, nazwa_kolekcji będzie używany jako alias.  
+  -  Jeśli wyrażenie ma `<container_expression>`, property_name, a następnie property_name zostanie użyta jako alias. Jeśli wyrażenie ma container_name, container_name będzie używany jako alias.  
   
 - AS `input_alias`  
   
-  Określa, że `input_alias` to zbiór wartości zwracanych przez wyrażenie kolekcji źródłowej.  
+  Określa, że `input_alias` to zbiór wartości zwróconych z podstawowego wyrażenia kontenera.  
  
 - `input_alias` INDIE  
   
-  Określa, że `input_alias` powinny reprezentować zbiór wartości uzyskane przez Iterowanie wszystkie elementy tablicy tablic zwracanym przez wyrażenie kolekcji źródłowej. Dowolna wartość zwracanych przez wyrażenie kolekcji źródłowej, który nie jest tablicą jest ignorowany.  
+  Określa, że `input_alias` powinny reprezentować zbiór wartości uzyskane przez Iterowanie wszystkie elementy tablicy każdej macierzy zwracanym przez wyrażenie bazowego kontenera. Każda wartość zwracana przez bazowego wyrażenie kontenera, który nie jest tablicą jest ignorowany.  
   
-- `<collection_expression>`  
+- `<container_expression>`  
   
-  Określa wyrażenie kolekcji ma być używany do pobierania dokumentów.  
+  Określa wyrażenie kontenera, który ma być używany do pobierania dokumentów.  
   
 - `ROOT`  
   
-  Określa, że w tym dokumencie mają zostać pobrane z domyślnej kolekcji aktualnie połączonych.  
+  Określa, że dany dokument powinny zostać pobrane z domyślnego kontenera aktualnie połączonych.  
   
-- `collection_name`  
+- `container_name`  
   
-  Określa, że w tym dokumencie mają zostać pobrane z określonej kolekcji. Nazwa kolekcji musi odpowiadać Nazwa kolekcji połączone obecnie z usługą.  
+  Określa, że w tym dokumencie mają zostać pobrane z podanego kontenera. Nazwa kontenera musi odpowiadać nazwie kontenera połączone obecnie z usługą.  
   
 - `input_alias`  
   
   Określa, że w tym dokumencie mają zostać pobrane ze źródła, zdefiniowane przez podany alias.  
   
-- `<collection_expression> '.' property_`  
+- `<container_expression> '.' property_`  
   
-  Określa dokumentu powinny zostać pobrane, uzyskując dostęp do `property_name` właściwości lub indeks_tablicy elementu tablicy, dla wszystkich dokumentów, pobierane przez określone wyrażenie kolekcji.  
+  Określa dokumentu powinny zostać pobrane, uzyskując dostęp do `property_name` właściwości lub indeks_tablicy elementu tablicy, dla wszystkich dokumentów, pobierane przez określone wyrażenie kontenera.  
   
-- `<collection_expression> '[' "property_name" | array_index ']'`  
+- `<container_expression> '[' "property_name" | array_index ']'`  
   
-  Określa dokumentu powinny zostać pobrane, uzyskując dostęp do `property_name` właściwości lub indeks_tablicy elementu tablicy, dla wszystkich dokumentów, pobierane przez określone wyrażenie kolekcji.  
+  Określa dokumentu powinny zostać pobrane, uzyskując dostęp do `property_name` właściwości lub indeks_tablicy elementu tablicy, dla wszystkich dokumentów, pobierane przez określone wyrażenie kontenera.  
   
 **Uwagi**  
   
-Wszystkie aliasy podany lub wnioskowany w `<from_source>(`s) musi być unikatowa. Składnia `<collection_expression>.`property_name jest taka sama jak `<collection_expression>' ['"property_name"']'`. Jednak te ostatnie składni można użyć, jeśli nazwa właściwości zawiera znaki inne niż identyfikator.  
+Wszystkie aliasy podany lub wnioskowany w `<from_source>(`s) musi być unikatowa. Składnia `<container_expression>.`property_name jest taka sama jak `<container_expression>' ['"property_name"']'`. Jednak te ostatnie składni można użyć, jeśli nazwa właściwości zawiera znak — identyfikator.  
   
 ### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>Obsługa brakujących elementów tablicy i wartości niezdefiniowanego nie ma właściwości
   
-Wyrażenie kolekcji uzyskuje dostęp do właściwości lub elementów tablicy i wartości nie istnieje, ta wartość będą ignorowane i nie przetwarzane dalej.  
+Wyrażenie kontenerów uzyskuje dostęp do właściwości lub elementów tablicy i wartości nie istnieje, ta wartość będą ignorowane i nie przetwarzane dalszych.  
   
-### <a name="collection-expression-context-scoping"></a>Wyznaczanie zakresu kontekście wyrażenia kolekcji  
+### <a name="container-expression-context-scoping"></a>Wyznaczanie zakresu kontekście wyrażenia kontenera  
   
-Wyrażenie kolekcji mogą być zakresem kolekcji lub dokumentu o określonym zakresie:  
+Wyrażenie kontener może być należące do kontenera lub zakresu w dokumencie:  
   
--   Wyrażenie jest kolekcja należące do zakresu, jeśli bazowe źródło wyrażenia kolekcji jest albo głównego lub `collection_name`. Takie wyrażenie reprezentuje zestaw dokumenty pobierane z kolekcji bezpośrednio, a nie jest zależna od przetwarzania innych wyrażeń w kolekcji.  
+-   Wyrażenie jest kontenerów należące do zakresu, jeśli bazowe źródło wyrażenia kontenera jest albo głównego lub `container_name`. Takie wyrażenie reprezentuje zestaw dokumenty pobierane z kontenera bezpośrednio, a nie jest zależna od przetwarzania innych wyrażeń kontenera.  
   
--   Wyrażenie jest dokument należące do zakresu, jeśli bazowe źródło wyrażeniu kolekcji jest `input_alias` wprowadzone wcześniej w zapytaniu. Takie wyrażenie reprezentuje zestaw dokumentów uzyskanych przez obliczenie wyrażenia kolekcji w zakresie każdego dokumentu należących do zestawu, skojarzone z tą kolekcją aliasem.  Wynikowy zestaw będzie Unii zestawów uzyskany w wyniku obliczenia wyrażenia kolekcji dla wszystkich dokumentów w podstawowym zestawie.  
+-   Wyrażenie jest dokument należące do zakresu, jeśli bazowe źródło wyrażenia kontenera jest `input_alias` wprowadzone wcześniej w zapytaniu. Takie wyrażenie reprezentuje zestaw dokumentów uzyskanych przez obliczenie wyrażenia kontenera w zakresie każdego dokumentu należących do zestawu skojarzonych z danym kontenerem aliasem.  Wynikowy zestaw będzie Unii zestawów uzyskany w wyniku obliczenia wyrażenia kontenera dla poszczególnych dokumentów w podstawowym zestawie.  
   
 ### <a name="joins"></a>Sprzężenia 
   
-W bieżącej wersji usługi Azure Cosmos DB obsługuje sprzężeń wewnętrznych. Zapowiadane są sprzężenia dodatkowe możliwości. 
+W bieżącej wersji usługi Cosmos DB obsługuje sprzężeń wewnętrznych. Zapowiadane są sprzężenia dodatkowe możliwości. 
 
 Sprzężenia wewnętrzne spowodować pełny iloczyn wektorowy zestawy uczestniczących w sprzężenia. Wynikiem sprzężenia sposób N jest zestaw spójnych kolekcji N-elementowej, gdzie każda wartość w spójnej kolekcji jest skojarzony z aliasem, ustaw udział w sprzężeniu i jest dostępny, odwołując się do tego aliasu w innych klauzul. Aby uzyskać przykłady, zobacz [przykłady — słowo kluczowe sprzężenia](sql-api-sql-query.md#Joins)
   
 Ocena sprzężenia zależy od zakresu kontekstu uczestniczących w programie zestawów:  
   
--  Sprzężenia między kolekcji zestawu A i należące do kolekcji zestawu B, wyniki w produkcie między wszystkie elementy w zestawach, A i B.
+-  Sprzężenia między kontenera — zestawu A i należące do kontenera zestawu B, wyniki w produkcie między wszystkie elementy w zestawach, A i B.
   
 -   Sprzężenie zestaw A i zakresu w dokumencie zestawu B, wynikiem sumę wszystkich zestawów uzyskane poprzez ocenę zakresu w dokumencie zestawu B dla każdego dokumentu z zestawu A.  
   
- W bieżącej wersji więcej niż jedno wyrażenie należące do kolekcji jest obsługiwana przez procesor zapytań.  
+ W bieżącej wersji więcej niż jedno wyrażenie zakresu kontenera jest obsługiwana przez procesor zapytań.  
   
 ### <a name="examples-of-joins"></a>Przykłady połączeń  
   
 Spójrzmy na następujący klauzuli FROM: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
- Pozwól każdego źródła, zdefiniuj `input_alias1, input_alias2, …, input_aliasN`. Ta klauzula FROM zwraca zestaw (krotki wartości N) N-krotek. Każda krotka zawiera wartości utworzone przez wszystkie aliasy kolekcji Iterowanie po ich odpowiednich zestawów.  
+ Pozwól każdego źródła, zdefiniuj `input_alias1, input_alias2, …, input_aliasN`. Ta klauzula FROM zwraca zestaw (krotki wartości N) N-krotek. Każda krotka zawiera wartości utworzone przez wszystkie aliasy kontenera Iterowanie po ich odpowiednich zestawów.  
   
 **Przykład 1** -2 źródeł  
   
-- Pozwól `<from_source1>` kolekcji należące i reprezentują zestawu {A, B, C}.  
+- Pozwól `<from_source1>` kontenerów należące i reprezentują zestawu {A, B, C}.  
   
 - Pozwól `<from_source2>` się dokument o zakresie odwołujące się do input_alias1 i reprezentują zestawów:  
   
@@ -252,7 +252,7 @@ Spójrzmy na następujący klauzuli FROM: `<from_source1> JOIN <from_source2> JO
   
 **Przykład 2** -3 źródła  
   
-- Pozwól `<from_source1>` kolekcji należące i reprezentują zestawu {A, B, C}.  
+- Pozwól `<from_source1>` kontenerów należące i reprezentują zestawu {A, B, C}.  
   
 - Pozwól `<from_source2>` być zakresem dokument odwołuje się do `input_alias1` i reprezentują zestawów:  
   
@@ -279,9 +279,9 @@ Spójrzmy na następujący klauzuli FROM: `<from_source1> JOIN <from_source2> JO
   
 **Przykład 3** -3 źródła  
   
-- Pozwól < from_source1 > być zakresem kolekcji i reprezentują zestawu {A, B, C}.  
+- Pozwól < from_source1 > być należące do kontenera i reprezentują zestawu {A, B, C}.  
   
-- Pozwól `<from_source1>` kolekcji należące i reprezentują zestawu {A, B, C}.  
+- Pozwól `<from_source1>` kontenerów należące i reprezentują zestawu {A, B, C}.  
   
 - Pozwól < from_source2 > być zakresu w dokumencie input_alias1 odwołujący się i reprezentują zestawów:  
   
@@ -371,12 +371,12 @@ ORDER BY <sort_specification>
   
  **Uwagi**  
   
- Natomiast gramatyki zapytań obsługuje wiele kolejność według właściwości, w czasie wykonywania zapytań usługi Azure Cosmos DB obsługuje sortowanie wyłącznie w odniesieniu do jednej właściwości i wyłącznie w odniesieniu do nazw właściwości, czyli nie względem obliczone właściwości. Sortowanie wymaga również, że zasady indeksowania zawiera indeks zakresu dla właściwości i określonego typu, z maksymalną dokładnością. Zajrzyj do dokumentacji zasad indeksowania, aby uzyskać więcej informacji.  
+ Gramatyki zapytań obsługuje wiele kolejność według właściwości, w czasie wykonywania zapytania usługi Cosmos DB obsługuje sortowanie wyłącznie w odniesieniu do jednej właściwości i wyłącznie w odniesieniu do nazw właściwości (nie względem obliczone właściwości). Sortowanie wymaga również, że zasady indeksowania zawiera indeks zakresu dla właściwości i określonego typu, z maksymalną dokładnością. Zajrzyj do dokumentacji zasad indeksowania, aby uzyskać więcej informacji.  
   
 ##  <a name="bk_scalar_expressions"></a> Wyrażenia skalarne  
  Wyrażenie skalarne, które jest kombinacją symboli i operatorów, które mogą być obliczane w celu uzyskania pojedynczej wartości. Proste wyrażenia może być stałe, odwołania do właściwości, odwołania do elementu tablicy, odwołania do aliasu lub wywołania funkcji. Proste wyrażenia można łączyć w złożonych wyrażeń przy użyciu operatorów. Aby uzyskać przykłady, zobacz [przykłady wyrażenia skalarne](sql-api-sql-query.md#scalar-expressions)
   
- Szczegółowe informacje na temat wartości, które wyrażenie skalarne, które mogą mieć, [stałe](#bk_constants) sekcji.  
+ Szczegółowe informacje na temat wartości, które mogą mieć wyrażenie skalarne, [stałe](#bk_constants) sekcji.  
   
  **Składnia**  
   
@@ -424,7 +424,7 @@ ORDER BY <sort_specification>
   
 -   `<scalar_expression>'['"property_name"|array_index']'`  
   
-     Reprezentuje wartość właściwości o nazwie `property_name` lub elementu tablicy za pomocą indeksu `array_index` obiektu/tablicy. Jeśli indeks tablicy właściwości/nie istnieje lub indeks tablicy właściwości/odwołuje się do wartości, która nie jest/Tablica obiektów, wyrażenie przyjmuje wartość niezdefiniowana.  
+     Reprezentuje wartość właściwości o nazwie `property_name` lub elementu tablicy za pomocą indeksu `array_index` obiektu/tablicy. Jeśli indeks tablicy właściwości/nie istnieje, lub odwołanie do indeksu tablicy/właściwości na wartość, która nie jest/Tablica obiektów, a następnie wyrażenie ma wartość niezdefiniowaną wartość.  
   
 -   `unary_operator <scalar_expression>`  
   
@@ -440,7 +440,7 @@ ORDER BY <sort_specification>
   
 -   `udf_scalar_function`  
   
-     Nazwa użytkownika zdefiniowana funkcja skalarna.  
+     Nazwa funkcji skalarnej zdefiniowanej przez użytkownika.  
   
 -   `builtin_scalar_function`  
   
@@ -460,7 +460,7 @@ ORDER BY <sort_specification>
   
  **Uwagi**  
   
- Podczas wywoływania wbudowanych lub użytkownika definiowania funkcji skalarnej musi być zdefiniowany w argumentach. Jeśli którykolwiek z argumentów jest niezdefiniowana, nie zostanie wywołana funkcja, a wynik jest niezdefiniowany.  
+ Podczas wywoływania funkcji skalarnej wbudowany lub zdefiniowany przez użytkownika muszą być zdefiniowane wszystkie argumenty. Jeśli którykolwiek z argumentów jest niezdefiniowana, nie zostanie wywołana funkcja, a wynik jest niezdefiniowany.  
   
  Podczas tworzenia obiektu, dowolnej właściwości, która jest przypisana wartość niezdefiniowana zostanie pominięty i nie są objęte utworzony obiekt.  
   
@@ -517,9 +517,9 @@ ORDER BY <sort_specification>
   
  **Uwagi**  
   
- W usłudze Azure Cosmos DB typy wartości, często nie są znane, dopóki nie są faktycznie są pobierane z bazy danych. Aby można było obsługiwać zapewnienia ich wydajnego wykonywania zapytań, większość operatorów mają wymagania dotyczące typu strict. Również operatory samodzielnie, nie należy wykonywać konwersje niejawne.  
+ Typy wartości w usłudze Cosmos DB, często nie są znane, dopóki nie są one pobierane z bazy danych. Aby można było obsługiwać zapewnienia ich wydajnego wykonywania zapytań, większość operatorów mają wymagania dotyczące typu strict. Również operatory samodzielnie, nie należy wykonywać konwersje niejawne.  
   
- Oznacza to, że zapytania, takich jak: Wybierz * z katalogu głównego r r.Age gdzie = 21 zwróci tylko dokumentów za pomocą właściwości wiek równą liczbie 21. Dokumenty z właściwością wiek równa "21" lub ciągu "0021", nie będą zgodne jako wyrażenie "21" = 21 ocenia do niezdefiniowanego. Umożliwia to lepsze wykorzystanie indeksów, ponieważ wyszukiwania określonej wartości (czyli numer 21) jest szybsze niż wyszukiwanie nieokreśloną liczbę potencjalnych dopasowania (tj. liczba 21 lub ciągi "21", "021", "21.0"...). To różni się od sposobu JavaScript ocenia operatory na wartości różnych typów.  
+ Oznacza to, że zapytania, takich jak: Wybierz * z katalogu głównego r r.Age gdzie = 21 zwróci tylko dokumentów za pomocą właściwości wiek równą liczbie 21. Dokumenty z właściwością wiek równa "21" lub ciągu "0021", nie będą zgodne jako wyrażenie "21" = 21 ocenia do niezdefiniowanego. Umożliwia to lepsze wykorzystanie indeksów, ponieważ wyszukiwania określonej wartości (takie jak numer 21) jest szybsze niż wyszukiwanie nieokreśloną liczbę potencjalnych dopasowuje (liczby 21 lub ciągi "21", "021", "21.0"...). To różni się od sposobu JavaScript ocenia operatory na wartości różnych typów.  
   
  **Tablice i obiekty równości i porównania**  
   
@@ -632,7 +632,7 @@ ORDER BY <sort_specification>
 |\uXXXX|Znak Unicode, zdefiniowane przez 4 cyfr szesnastkowych.|U+XXXX|  
   
 ##  <a name="bk_query_perf_guidelines"></a> Wytyczne dotyczące wydajności zapytań  
- Aby zapytanie w celu wykonania wydajne dla dużych kolekcji powinna korzystać filtry, które mogą być udostępniane za pośrednictwem jednego lub kilku indeksów.  
+ Aby zapytanie w celu wykonania wydajne dla dużych kontenera powinna korzystać filtry, które mogą być udostępniane za pośrednictwem jednego lub kilku indeksów.  
   
  Poniższe filtry zostaną uwzględnione podczas wyszukiwania indeksu:  
   
@@ -640,15 +640,15 @@ ORDER BY <sort_specification>
   
 -   Operatory zakresu (<, \<=, >, > =) przy użyciu wyrażenie ścieżki dokumentu a number — stałe.  
   
--   Wyrażenie ścieżki dokumentu oznacza dowolne Wyrażenie identyfikujące stałe ścieżki w dokumentach z kolekcji bazy danych.  
+-   Wyrażenie ścieżki dokumentu oznacza dowolne wyrażenie, które identyfikuje ścieżkę stałej w dokumentach z kontenera, w której istnieje odwołanie.  
   
  **Wyrażenie ścieżki dokumentu**  
   
- Wyrażenia ścieżka dokumentu są wyrażeniami, ścieżkę właściwości lub tablicy oceniających indeksatora za pośrednictwem dokumentu pochodzące z bazy danych kolekcji dokumentów. Ta ścieżka może służyć do identyfikowania lokalizacji wartości filtru bezpośrednio z poziomu dokumenty w kolekcji bazy danych.  
+ Wyrażenia ścieżka dokumentu są wyrażeniami, ścieżkę właściwości lub tablicy oceniających indeksatora za pośrednictwem dokumentu pochodzące z bazy danych dokumentów kontenerów. Ta ścieżka może służyć do identyfikowania lokalizacji wartości filtru bezpośrednio z poziomu dokumenty w kontenerze bazy danych.  
   
  Wyrażenie wziąć pod uwagę wyrażenie ścieżki dokumentu należy:  
   
-1.  Odwołanie do kolekcji głównym bezpośrednio.  
+1.  Odwołanie do głównego kontenerów bezpośrednio.  
   
 2.  Odwołanie do właściwości lub stała indeksatora tablicy niektóre wyrażenia ścieżka dokumentu  
   
@@ -674,15 +674,15 @@ ORDER BY <sort_specification>
     |[.. .n]|Wskazuje, że poprzedni element może być powtarzane n liczbę razy. Wystąpienia są rozdzielane odstępami.|  
   
 ##  <a name="bk_built_in_functions"></a> Funkcje wbudowane  
- Usługa Azure Cosmos DB udostępnia wiele wbudowanych funkcji SQL. Poniżej przedstawiono kategorie funkcji wbudowanych.  
+ Usługa cosmos DB udostępnia wiele wbudowanych funkcji SQL. Poniżej przedstawiono kategorie funkcji wbudowanych.  
   
 |Funkcja|Opis|  
 |--------------|-----------------|  
 |[Funkcje matematyczne](#bk_mathematical_functions)|Funkcje matematyczne wykonywanie obliczeń, zazwyczaj na podstawie wartości wejściowych, które są przekazywane jako argumenty i zwraca wartość liczbową.|  
 |[Typ funkcji sprawdzania](#bk_type_checking_functions)|Funkcje sprawdzania typu pozwalają sprawdzić typ wyrażenia w ramach zapytania SQL.|  
 |[Funkcje ciągów](#bk_string_functions)|Funkcje ciągów wykonania operacji na wartość ciągu wejściowego i zwraca ciąg, wartość liczbowa lub Boolean.|  
-|[Funkcje tablicy](#bk_array_functions)|Funkcje tablicy wykonywania operacji na tablicy wartości wejściowej i zwrócenie liczbowych, wartość logiczną lub tablicy.|  
-|[Funkcje przestrzenne](#bk_spatial_functions)|Funkcje przestrzenne wykonania operacji na wartości wejściowej obiektu przestrzennego i zwracają wartość liczbowa lub Boolean.|  
+|[Funkcje tablicy](#bk_array_functions)|Funkcje tablicy w trakcie operacji na tablicy wartości wejściowej i liczbowa zwracana, atrybut typu wartość logiczna lub wartości tablicy.|  
+|[Funkcje przestrzenne](#bk_spatial_functions)|Funkcje przestrzenne wykonania operacji na podstawie wartości wejściowe obiektu przestrzennego i zwracają wartość liczbowa lub Boolean.|  
   
 ###  <a name="bk_mathematical_functions"></a> Funkcje matematyczne  
  Następujące funkcje każdego wykonywanie obliczeń, zazwyczaj na podstawie wartości wejściowych, które są przekazywane jako argumenty i zwraca wartość liczbową.  
@@ -1761,7 +1761,7 @@ SELECT
 ```  
   
 ####  <a name="bk_is_primitive"></a> IS_PRIMITIVE  
- Zwraca wartość logiczną wskazującą, czy podstawowy typu z określonego wyrażenia (string, Boolean, liczbowych lub ma wartość null).  
+ Zwraca wartość logiczną wskazującą, czy podstawowy typu z określonego wyrażenia (string, Boolean, liczbowych lub wartość null).  
   
  **Składnia**  
   
@@ -2697,7 +2697,7 @@ SELECT
 ```  
  
 ###  <a name="bk_spatial_functions"></a> Funkcje przestrzenne  
- Następujące funkcje skalarne wykonania operacji na wartości wejściowej obiektu przestrzennego i zwracają wartość liczbowa lub Boolean.  
+ Następujące funkcje skalarne wykonania operacji na podstawie wartości wejściowe obiektu przestrzennego i zwracają wartość liczbowa lub Boolean.  
   
 ||||  
 |-|-|-|  
@@ -2808,7 +2808,7 @@ ST_INTERSECTS (<spatial_expr>, <spatial_expr>)
   
  **Przykłady**  
   
- Poniższy przykład pokazuje, jak odnaleźć wszystkie obszary, które przecinają z danym wielokąta.  
+ Poniższy przykład pokazuje, jak można znaleźć wszystkich obszarów, które przecinają z danym wielokąta.  
   
 ```  
 SELECT a.id   
@@ -2904,7 +2904,7 @@ SELECT ST_ISVALIDDETAILED({
 ```  
   
 ## <a name="next-steps"></a>Kolejne kroki  
- [Składnia SQL i zapytania SQL usługi Azure Cosmos DB](sql-api-sql-query.md)   
- [Dokumentacja usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)  
-  
-  
+
+- [Składnia SQL i zapytania SQL usługi Cosmos DB](sql-api-sql-query.md)
+
+- [Dokumentacja usługi cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)  

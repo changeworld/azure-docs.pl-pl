@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 10/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fd5b0637ab21c9859f2ed06a96c69b51f4681097
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 4f2fc320d0d66e19ec8a1e591377c482a7ec64d9
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569288"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51626137"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -3188,7 +3188,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
 > | Akcja | Microsoft.Migrate/locations/assessmentOptions/read | Pobiera opcje oceny, które są dostępne w danej lokalizacji |
-> | Akcja | Microsoft.Migrate/locations/checknameavailability/action | Sprawdź dostępność nazwy zasobu dla danej subskrypcji w danej lokalizacji |
+> | Akcja | Microsoft.Migrate/locations/checknameavailability/action | Służy do sprawdzania dostępności nazwy zasobów w danej subskrypcji w danej lokalizacji |
 > | Akcja | Microsoft.Migrate/Operations/read | Wyświetla operacje dostępne dla dostawcy zasobów Microsoft.Migrate |
 > | Akcja | Microsoft.Migrate/projects/assessments/read | Wyświetla listę ocen w projekcie |
 > | Akcja | Microsoft.Migrate/projects/delete | Usuwa projekt |

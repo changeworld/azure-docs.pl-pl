@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 59696245dc33302c65aee5a39dc856926347b8fb
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 8a5ca4f94a6f1186b6d1a26b1c7e12357cd9e799
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569118"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616371"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Samouczek: Tworzenie przeglądarki edge rozwiązanie uczenia maszynowego z platformą Azure i usługi Azure Stack
 
@@ -992,7 +992,7 @@ Aparat platformy Docker musi być uruchomiony lokalnie, aby możliwe było wykon
 1.  Upewnij się, że dostawca zasobów platformy Azure **Microsoft.ContainerRegistry** jest zarejestrowany w ramach subskrypcji. Zarejestruj tego dostawcę zasobów przed utworzeniem środowisko w kroku 3. Sprawdź, czy został on już zarejestrowany przy użyciu następującego polecenia:
 
     ```CLI
-        az provider list --query "\[\].{Provider:namespace, Status:registrationState}" --out table
+        az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
     ```
 
     Wyświetl te dane wyjściowe:
@@ -1271,10 +1271,8 @@ W środowisku WSL, uruchom następujące polecenia, aby zainstalować narzędzie
 
 ```Bash  
     apt-get update && apt-get install -y apt-transport-https
-    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-    cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
-    deb http://apt.kubernetes.io/ kubernetes-xenial main
-    EOF
+    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add
+    sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
     apt-get update
     apt-get install -y kubectl
 ```

@@ -70,6 +70,8 @@ items:
     href: ../environment/intro.md
   - name: Przewodnik dla deweloperów języka Java
     href: app-service-linux-java.md
+  - name: Java Enterprise — przewodnik
+    href: app-service-java-enterprise.md
   - name: Przychodzące i wychodzące adresy IP
     href: ../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Uwierzytelnianie i autoryzacja
@@ -240,9 +242,9 @@ items:
         href: ../app-service-web-open-source-technologies-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: Często zadawane pytania dotyczące konfiguracji i zarządzania
         href: ../app-service-web-configuration-and-management-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-ms.openlocfilehash: 08da442462083f86ba3c1c5a493d4fe97c760595
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 7597b4ca76c16510458dee8e43072001f1d8b928
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978011"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621813"
