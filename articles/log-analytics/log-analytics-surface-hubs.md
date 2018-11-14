@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5f07488e526a15fb067d6ea7a265d069fbe3aee3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5601c6c5b85b144b853c40e89c81a22f87b7880f
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009559"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614999"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Monitorowanie urządzeń Surface Hub z usługą Log Analytics, aby śledzić ich kondycję
 
@@ -84,8 +84,8 @@ Monitorowanie usługi urządzeń Surface Hub przy użyciu usługi Log Analytics 
 
    ![Pulpicie nawigacyjnym urządzenia Surface Hub](./media/log-analytics-surface-hubs/surface-hub-dashboard.png)
 
-Możesz utworzyć [alerty](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) oparte na istniejące lub niestandardowych wyszukiwań w dziennikach. Korzystanie z danych, które usługa Log Analytics zbiera z usługi urządzeń Surface Hub, możesz wyszukać problemów i powiązane alerty warunki, które definiują dla urządzeń.
+Możesz utworzyć [alerty](../monitoring-and-diagnostics/monitoring-overview-alerts.md) oparte na istniejące lub niestandardowych wyszukiwań w dziennikach. Korzystanie z danych, które usługa Log Analytics zbiera z usługi urządzeń Surface Hub, możesz wyszukać problemów i powiązane alerty warunki, które definiują dla urządzeń.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Użyj [przeszukiwanie dzienników w usłudze Log Analytics](log-analytics-queries.md) Aby przeglądać szczegółowe dane na urządzeniu Surface Hub.
-* Tworzenie [alerty](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) być powiadamiana wystąpić problemy z usługi urządzeń Surface Hub.
+* Tworzenie [alerty](../monitoring-and-diagnostics/monitoring-overview-alerts.md) być powiadamiana wystąpić problemy z usługi urządzeń Surface Hub.

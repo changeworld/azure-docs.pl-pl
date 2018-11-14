@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 11/08/2018
 ms.author: tulasim
-ms.openlocfilehash: 88e55468c4018b73cb26087c4fbbdbee65cd5db3
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: e6c654b00ee6be0ed87feb0fb2a5ccba38e5cbe4
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515526"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624881"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Źródła danych dla zawartości usługi QnA Maker
 
@@ -131,6 +131,10 @@ Importowanie bazy wiedzy zastępuje zawartości istniejącej bazie wiedzy knowle
 ## <a name="editorially-add-to-knowledge-base"></a>Przez jej tradycyjne zredagowanie dodać do bazy wiedzy
 
 Jeśli nie masz już istniejącą zawartość do wypełniania bazy wiedzy knowledge base, możesz dodać znacznie przez jej tradycyjne zredagowanie w QnA Maker wiedzy. Dowiedz się, jak można zaktualizować bazy wiedzy [tutaj](../How-To/edit-knowledge-base.md).
+
+## <a name="formatting-considerations"></a>Zagadnienia dotyczące formatowania
+
+Po zaimportowaniu pliku lub adres URL jest konwertowane do języka Markdown i przechowywane w tym formacie. Jeśli proces konwersji nie jest poprawnie konwersji łącza w Twoich plików i adresy URL, na należy edytować pytań i odpowiedzi **Edytuj** strony. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

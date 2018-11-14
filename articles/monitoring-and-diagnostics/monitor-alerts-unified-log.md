@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f6f94f12fc0a639743f310638af0f0b6ac0d2932
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 51bdc228e27d643cfda75d1e21bc8ea45fe09e3c
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958156"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613294"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Alerty dzienników w usłudze Azure Monitor
-Ten artykuł zawiera szczegółowe informacje o alertów dzienników są jednym z typów alertów, które obsługują [Azure Alerts](monitoring-overview-unified-alerts.md) i zezwolić użytkownikom na stosowanie platforma analiz platformy Azure jako podstawa dla alertów.
+Ten artykuł zawiera szczegółowe informacje o alertów dzienników są jednym z typów alertów, które obsługują [Azure Alerts](monitoring-overview-alerts.md) i zezwolić użytkownikom na stosowanie platforma analiz platformy Azure jako podstawa dla alertów.
 
 Alert dziennika składa się z wyszukiwania w dziennikach reguł utworzonych dla [usługi Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events). Aby dowiedzieć się więcej na temat jej użycia, zobacz [Tworzenie alertów dziennika na platformie Azure](alert-log.md)
 
@@ -120,6 +120,6 @@ Ceny dla dziennika alertów jest podany w [cennik usługi Azure Monitor](https:/
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [Tworzenie alertów dziennika na platformie Azure](alert-log.md).
 * Zrozumienie [elementami webhook w dzienniku alertów na platformie Azure](monitor-alerts-unified-log-webhook.md).
-* Dowiedz się więcej o [alertów platformy Azure](monitoring-overview-unified-alerts.md).
+* Dowiedz się więcej o [alertów platformy Azure](monitoring-overview-alerts.md).
 * Dowiedz się więcej o [usługi Application Insights](../application-insights/app-insights-analytics.md).
 * Dowiedz się więcej o [usługi Log Analytics](../log-analytics/log-analytics-queries.md).    

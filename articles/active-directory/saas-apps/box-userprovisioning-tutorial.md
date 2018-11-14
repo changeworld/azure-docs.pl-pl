@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
-ms.openlocfilehash: f7fa4c9b0926d796c0c12b39d0056fe72e4028c7
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 3dac1d18a021c8d6c1b6e3db370c60b9aa782f1c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349028"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625355"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie pole dla automatycznej aprowizacji użytkowników
 
@@ -51,11 +51,11 @@ Przed Skonfiguruj i włącz usługę aprowizacji, musisz zdecydować, jakie uży
 
 [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-## <a name="assign-users-and-groups"></a>Przypisywanie użytkowników i grup
+## <a name="assign-users-and-groups"></a>Przypisz użytkowników i grupy
 **Pole > Użytkownicy i grupy** kartę w witrynie Azure portal umożliwia określenie, którzy użytkownicy i grupy może być przyznany dostęp do pola. Przypisywanie użytkowników lub grupy powoduje, że wystąpienia następujących czynności:
 
 * Usługa Azure AD umożliwia przypisany użytkownik (albo przez przypisania bezpośredniego lub członkostwa w grupie) do uwierzytelniania w usłudze Box. Jeśli użytkownik nie jest przypisany, usługi Azure AD nie zezwala na go o zalogowanie się do pola i zwraca błąd, na stronie logowania w usłudze Azure AD.
-* Do użytkownika zostanie dodany Kafelek aplikacji dla pola [uruchamiania aplikacji](../manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users).
+* Do użytkownika zostanie dodany Kafelek aplikacji dla pola [uruchamiania aplikacji](../manage-apps/end-user-experiences.md).
 * Po włączeniu automatycznej aprowizacji następnie przypisanych użytkowników i/lub grup są dodawane do inicjowania obsługi administracyjnej kolejki, aby być automatycznie udostępnione.
   
   * Jeśli tylko obiekty użytkownika zostały skonfigurowane do zainicjowania obsługi administracyjnej, następnie wszystkich bezpośrednio przypisanych użytkowników są umieszczane w kolejce inicjowania obsługi administracyjnej i wszystkich użytkowników, którzy są członkami żadnych przypisanych grup są umieszczane w kolejce inicjowania obsługi administracyjnej. 

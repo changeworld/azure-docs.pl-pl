@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: asgang
-ms.openlocfilehash: c1cc8769617e4c9cd823b1e44d60c49b73f4bdb9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 0ac90d8ef29d4293a5eeb5f932687788320c218e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289715"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615800"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-ongoing-replication-issues"></a>Rozwiązywanie problemów trwającej replikacji maszyny Wirtualnej platformy Azure do platformy Azure
 
@@ -56,12 +56,6 @@ Dysk w warstwie Premium P10 lub P15 | 16 KB | 4 MB/s |  336 GB na dysk
 Dysk w warstwie Premium P10 lub P15 | 32 KB lub większy | 8 MB/s | 672 GB na dysk
 Dysk w warstwie Premium P20, P30, P40 lub P50 | 8 KB    | 5 MB/s | 421 GB na dysk
 Dysk w warstwie Premium P20, P30, P40 lub P50 | 16 KB lub większy |10 MB/s | 842 GB na dysk
-
-
-**Źródłowy współczynnik zmian danych** | **Limit maksymalny**
----|---
-Średni współczynnik zmian danych na maszynę wirtualną| 25 MB/s
-Szczytowy współczynnik zmian danych na wszystkich dyskach na maszynie wirtualnej | 54 MB/s
 
 ### <a name="solution"></a>Rozwiązanie
 Należy rozumiemy, że usługi Azure Site Recovery ma zmienić limitów szybkości na podstawie typu dysku danych. Aby dowiedzieć się, czy ten problem ma charakter cykliczny chwilowo, ważne jest, aby znaleźć wzorzec stawka dotyczy maszyny wirtualnej zmian danych.

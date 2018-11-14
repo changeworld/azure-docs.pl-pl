@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2018
+ms.date: 11/12/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc7510fdc635de03ac4dd4f64118bc5be040e969
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 29a2be1735561d31f934f1353a336b5e4d198227
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719413"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622197"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory
 
@@ -31,9 +31,9 @@ Galeria aplikacji usługi Azure Active Directory zawiera listę aplikacji, któr
 Klienci z [usługi Azure Active Directory — wersja Premium](../fundamentals/active-directory-whatis.md) licencji również uzyskać te dodatkowe możliwości:
 
 * Samoobsługowa integracja dowolnej aplikacji, która obsługuje dostawców tożsamości SAML 2.0 (zainicjowanego przez dostawcę usług lub inicjowane przez dostawcę tożsamości)
-* Samoobsługowa integracja dowolnej aplikacji sieci web, który jest oparty na języku HTML strony logowania za pomocą [SSO oparte na hasłach](what-is-single-sign-on.md#password-based-single-sign-on)
+* Samoobsługowa integracja dowolnej aplikacji sieci web, który jest oparty na języku HTML strony logowania za pomocą [SSO oparte na hasłach](what-is-single-sign-on.md#password-based-sso)
 * Samoobsługowe połączenia aplikacji, które używają protokołu Standard SCIM do inicjowania obsługi użytkowników ([opisane w tym miejscu](use-scim-to-provision-users-and-groups.md))
-* Możliwość dodawania łączy do dowolnej aplikacji w [uruchamianie aplikacji usługi Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) lub [panelu dostępu usługi Azure AD](what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)
+* Możliwość dodawania łączy do dowolnej aplikacji w [uruchamianie aplikacji usługi Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) lub [panelu dostępu usługi Azure AD](what-is-single-sign-on.md#linked-sso)
 
 Może to obejmować nie tylko aplikacje SaaS, które używają, ale ma nie jeszcze została uruchomiona w galerii aplikacji usługi Azure AD, ale aplikacje sieci web innych firm, które Twoja organizacja została wdrożona do serwerów, które możesz kontrolować, zarówno w chmurze lub lokalnie.
 
@@ -165,7 +165,7 @@ Po przechwyceniu strony logowania, można przypisać użytkowników i grup i po�
 ## <a name="existing-single-sign-on"></a>Istniejące logowanie jednokrotne
 Wybierz tę opcję, aby dodać łącze do aplikacji w celu portalu panelu dostępu usługi Azure AD lub Office 365 Twojej organizacji. Służy to do dodawania łączy do aplikacji niestandardowe sieci web, które obecnie używają usługi Azure Active Directory Federation Services (lub innej usługi federacyjnej) zamiast usługi Azure AD do uwierzytelniania. Lub można dodać linków bezpośrednich do określonej strony programu SharePoint lub innych stron sieci web, które mają być wyświetlane w panelach dostępu użytkowników. 
 
-Po wybraniu **dalej**, użytkownik jest monitowany o podanie adresu URL aplikacji, aby połączyć. Po zakończeniu użytkowników i grup można przypisać do aplikacji, co powoduje, że są wyświetlane w aplikacji [uruchamianie aplikacji usługi Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) lub [panelu dostępu usługi Azure AD](what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users) dla tych użytkowników.
+Po wybraniu **dalej**, użytkownik jest monitowany o podanie adresu URL aplikacji, aby połączyć. Po zakończeniu użytkowników i grup można przypisać do aplikacji, co powoduje, że są wyświetlane w aplikacji [uruchamianie aplikacji usługi Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) lub [panelu dostępu usługi Azure AD](end-user-experiences.md) dla tych użytkowników.
 
 > [!NOTE] 
 > Możesz przekazać logo kafelka na potrzeby aplikacji przy użyciu **Przekaż Logo** znajdujący się na **Konfiguruj** kartę dla aplikacji. 

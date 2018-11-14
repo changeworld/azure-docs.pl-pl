@@ -12,24 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2018
+ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: 3a9f27a92a4bc808ff9bcf04b66523a92f1bcf03
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 3fe268b6491a2a3cc1237173506ef5a91beb7d26
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356964"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625085"
 ---
-# <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>Jak wybrać typ aplikacji do użycia podczas dodawania aplikacji
+# <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Wybieranie typu aplikacji, podczas dodawania aplikacji w usłudze Azure Active Directory
+Zapoznaj się z czterech typów aplikacji, które można dodać do usługi Azure Active Directory (Azure AD). Podczas dodawania aplikacji w usłudze Azure Active Directory, zostanie wyświetlony monit wybrać jeden typ cztery aplikacji. 
 
-Ten artykuł ułatwia zrozumienie cztery główne typy aplikacji, które można zintegrować z usługą Azure AD:
-
-* Co to jest obsługiwany przez każdy z nich
-* Dlaczego może wybrać aplikację
-* Jak skonfigurować podstawowe właściwości tych aplikacji, np. jak użytkownicy będą **aprowizowane**, lub co **logowanie jednokrotne** technologii do użycia.
-
-## <a name="supported-application-types-in-azure-ad"></a>Typy aplikacji obsługiwanych w usłudze Azure AD
+## <a name="what-are-the-types-of-applications"></a>Co to są typy aplikacji?
 
 Usługa Azure AD obsługuje cztery typy aplikacji głównej, które można dodać za pomocą **Dodaj** funkcja dostępna w ramach **aplikacje dla przedsiębiorstw**. Należą do nich:
 
@@ -41,7 +36,7 @@ Usługa Azure AD obsługuje cztery typy aplikacji głównej, które można doda�
 
 -   **Aplikacje spoza galerii** — Przenoszenie własnych aplikacji! Dowolny link sieci web, który ma, każda aplikacja, która renderuje pole nazwy użytkownika i hasła, obsługuje protokoły SAML lub OpenID Connect lub obsługuje standard SCIM, którą chcesz zintegrować, aby logowanie jednokrotne z usługą Azure AD.
 
-## <a name="features-and-capabilities-supported-by-all-the-preceding-application-types"></a>Funkcje i możliwości obsługiwany przez wszystkich powyższych typów aplikacji
+## <a name="features-and-capabilities-supported-by-the-application-types"></a>Funkcje i możliwości obsługiwany przez typy aplikacji
 
 Następujące funkcje są obsługiwane przez żaden z powyższych typów cztery aplikacji w usłudze Azure AD:
 

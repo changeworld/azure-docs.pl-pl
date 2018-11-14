@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 301ae251413cc174f115479e9ebef2310aa83ba7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: c99099c9b0fdf485bcf1db1d00b23e1e119ec557
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162446"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614161"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny SAML w zasadach niestandardowych usługi Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Usługa Azure Active Directory (Azure AD) B2C umożliwia dostawcy tożsamości SAML 2.0. W tym artykule opisano szczegóły profilu technicznego do interakcji z dostawcy oświadczeń, który obsługuje ten standardowy protokół. Z języka SAML profilu technicznego, który może tworzyć federacje z SAML opartą na dostawcy tożsamości, takich jak usługi AD FS i Salesforce, umożliwiając użytkownikom Zaloguj się przy użyciu istniejącej społecznościowych i tożsamościami w przedsiębiorstwie.
+Usługa Azure Active Directory (Azure AD) B2C umożliwia dostawcy tożsamości SAML 2.0. W tym artykule opisano szczegóły profilu technicznego do interakcji z dostawcy oświadczeń, który obsługuje ten standardowy protokół. Za pomocą profil techniczny SAML, który może tworzyć federacje za pomocą dostawcy tożsamości SAML na podstawie, takich jak usługi AD FS i Salesforce, umożliwiając użytkownikom korzystanie z logowania za pomocą ich istniejących społecznościowej lub przedsiębiorstwa tożsamości.
 
 ## <a name="metadata-exchange"></a>Wymiany metadanych
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: b9b6c67930e251302f397e199c65f949997a25cf
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 72d324e0b5fe0c50dadc076306c9167c0492290a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637977"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625593"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metryki usługi Azure Storage w usłudze Azure Monitor
 
@@ -334,7 +334,7 @@ Usługa Azure Storage udostępnia następujące metryki pojemności w usłudze A
 | ------------------- | ----------------- |
 | UsedCapacity | Ilość miejsca używanego przez konta magazynu. W przypadku kont magazynu w warstwie standardowa jest sumą pojemność wykorzystana przez obiektów blob, tabel, plików i kolejek. Dla kont usługi premium storage i kont usługi Blob storage jest taka sama jak BlobCapacity. <br/><br/> Jednostka: bajty <br/> Typ agregacji: łączna liczba <br/> Przykład: 1024 |
 
-### <a name="blob-storage"></a>Magazyn obiektów blob
+### <a name="blob-storage"></a>Blob Storage
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
@@ -391,7 +391,7 @@ Usługa Azure Storage obsługuje następujące wymiary metryk w usłudze Azure M
 | Wartość ResponseType | Typ odpowiedzi transakcji. Dostępne wartości to: <br/><br/> <li>ServerOtherError: Inne błędy po stronie serwera, z wyjątkiem opisano te </li> <li> ServerBusyError: Uwierzytelnić żądania, które spowodowało zwrócenie kodu stanu HTTP 503. </li> <li> ServerTimeoutError: Upłynął limit czasu uwierzytelnionego żądania, które spowodowało zwrócenie kodu stanu HTTP 500. Przekroczono limit czasu z powodu błędu serwera. </li> <li> AuthorizationError: Uwierzytelnionego żądania, które nie powiodło się z powodu nieautoryzowanego dostępu do danych lub wystąpił błąd autoryzacji. </li> <li> NetworkError: Uwierzytelnionego żądania, które nie powiodło się z powodu błędów sieci. Najczęściej występuje, gdy klient zamyka przedwcześnie połączenie przed jego wygaśnięciem limitu czasu. </li> <li>    ClientThrottlingError: Błąd ograniczania przepływności po stronie klienta. </li> <li> ClientTimeoutError: Upłynął limit czasu uwierzytelnionego żądania, które spowodowało zwrócenie kodu stanu HTTP 500. Jeśli limit czasu sieci klienta lub limit czasu żądania jest ustawiony na mniejszą wartość niż oczekiwano, usługi magazynu, jest oczekiwany limitu czasu. W przeciwnym razie zostanie zgłoszone jako ServerTimeoutError. </li> <li> ClientOtherError: Inne błędy po stronie klienta, z wyjątkiem tych opisane. </li> <li> Sukcesu: Pomyślne żądania|
 | GeoType | Transakcja z podstawowy lub pomocniczy klastra. Dostępne wartości obejmują podstawowe i pomocnicze. Dotyczy ona dostęp do odczytu geograficznie nadmiarowy Storage(RA-GRS) podczas odczytywania obiektów ze dodatkowej dzierżawy. |
 | ApiName | Nazwa operacji. Na przykład: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Aby uzyskać wszystkie nazwy operacji, zobacz [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md). |
-| Uwierzytelnianie | Typ uwierzytelniania używany w transakcji. Dostępne wartości to: <br/> <li>AccountKey: Transakcja jest uwierzytelniana przy użyciu klucza konta magazynu.</li> <li>Sygnatury dostępu Współdzielonego: Transakcja jest uwierzytelniana przy użyciu sygnatury dostępu współdzielonego.</li> <li>OAuth: Transakcja jest uwierzytelniana przy użyciu tokenów dostępu protokołu OAuth.</li> <li>Anonimowe: Transakcji zażądano anonimowo. Nie zawiera żądania wstępnego.</li> <li>AnonymousPreflight: Transakcja jest żądania wstępnego.</li> |
+| Authentication | Typ uwierzytelniania używany w transakcji. Dostępne wartości to: <br/> <li>AccountKey: Transakcja jest uwierzytelniana przy użyciu klucza konta magazynu.</li> <li>Sygnatury dostępu Współdzielonego: Transakcja jest uwierzytelniana przy użyciu sygnatury dostępu współdzielonego.</li> <li>OAuth: Transakcja jest uwierzytelniana przy użyciu tokenów dostępu protokołu OAuth.</li> <li>Anonimowe: Transakcji zażądano anonimowo. Nie zawiera żądania wstępnego.</li> <li>AnonymousPreflight: Transakcja jest żądania wstępnego.</li> |
 
 W przypadku wymiarów pomocnicze metryki należy określić wartości wymiaru, aby wyświetlić odpowiednie wartości metryk. Na przykład, jeśli przyjrzymy się **transakcji** wartość dla pomyślnej odpowiedzi, trzeba filtrować **ResponseType** wymiaru przy użyciu **Powodzenie**. Lub jeśli przyjrzymy się **BlobCount** wartość dla blokowych obiektów Blob, trzeba filtrować **BlobType** wymiaru przy użyciu **BlockBlob**.
 
@@ -404,6 +404,10 @@ Starsze metryki są dostępne równolegle za pomocą metryk usługi Azure Monito
 **Usługi Azure Storage obsługuje metryki dla dysków zarządzanych lub dysków niezarządzanych?**
 
 Nie, usługi Azure Compute obsługuje metryki na dyskach. Zobacz [artykułu](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/) Aby uzyskać więcej informacji.
+
+**Jak zamapować i Migrowanie klasycznej metryki o nowe metryki?**
+
+Można znaleźć szczegółowe mapowanie między klasycznym metryki i nowe metryki w [migracji metryk usługi Azure Storage](./storage-metrics-migration.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

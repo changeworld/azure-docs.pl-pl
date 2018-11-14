@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: sikoo
 ms.component: files
-ms.openlocfilehash: a11e0a1c20617f3065d5b3f8cf59d67cf7aa0179
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a0f427ef84a6540522f521cd365e2422a70eb0cd
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48243099"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623655"
 ---
 # <a name="cloud-tiering-overview"></a>Omówienie obsługi warstw w chmurze
 Chmura warstw to opcjonalna funkcja usługi Azure File Sync, w których często używanych plików są buforowane lokalnie na serwerze, podczas gdy inne pliki są organizowane w warstwy do usługi Azure Files na podstawie ustawień zasad. Gdy plik jest warstwowe, filtru systemu plików usługi Azure File Sync (StorageSync.sys) zamienia plik lokalnie wskaźnik lub punkt ponownej analizy. Punkt ponownej analizy reprezentuje adres URL do pliku w usłudze Azure Files. Plik warstwowy zawiera zarówno atrybut "offline", jak i atrybut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS ustawiony w systemie plików NTFS, dzięki czemu aplikacje innych firm można bezpiecznie zidentyfikować pliki warstwowe.
@@ -31,6 +31,8 @@ Usługa Azure File Sync nie obsługuje warstw pliki mniejsze niż 64 KiB, zmniej
 ### <a name="how-does-cloud-tiering-work"></a>Jak pracy obsługi warstw w chmurze?
 Filtr systemu Azure File Sync mapy "cieplnej" przestrzeni nazw jest oparta na każdy punkt końcowy serwera. Monitoruje ona dostęp (operacje odczytu i zapisu) wraz z upływem czasu, a następnie w oparciu o częstotliwość i powracający dostępu, przypisuje na ciepło wyniku do każdego pliku. Często używanych plików, który niedawno został otwarty będą uznawane za gorąca, plik, który jest ledwie modyfikacji i nie była używana przez pewien czas zostanie uznane za superpaska. Gdy woluminu plików na serwerze przekroczy próg wolnego miejsca na woluminie, ustawione, będzie warstwy niezbędnym pliki do usługi Azure Files, dopóki nie zostanie spełniony swoje procent wolnego miejsca.
 
+W wersjach 4.0 i powyżej agenta usługi Azure File Sync można również określić zasad daty w każdym punkcie końcowym serwera będzie warstwy wszystkie pliki, które nie otwierane ani modyfikowane w ciągu określonej liczby dni.
+
 <a id="afs-volume-free-space"></a>
 ### <a name="how-does-the-volume-free-space-tiering-policy-work"></a>Jak działa zasad obsługi poziomów warstw wolnego miejsca na woluminie?
 Wolne miejsce w woluminie jest ilość wolnego miejsca, którą chcesz aby zarezerwować na woluminie, na którym znajduje się punkt końcowy serwera. Na przykład jeśli wolne miejsce w woluminie jest ustawiona na 20% na woluminie, który ma jeden punkt końcowy serwera, się do 80 procent miejsca na woluminie będą zajmowany przez ostatnio używanych plików, przy użyciu pozostałych plików, które nie mieszczą się w tym obszarze warstwy do platformy Azure. Wolne miejsce w woluminie ma zastosowanie na poziomie woluminu, a nie na poziomie poszczególnych katalogów lub grup synchronizacji. 
@@ -43,11 +45,21 @@ Gdy punkt końcowy serwera jest nowo aprowizowany i podłączony do udziału pli
 ### <a name="how-is-volume-free-space-interpreted-when-i-have-multiple-server-endpoints-on-a-volume"></a>Jak wolne miejsce w woluminie interpretowania mam wiele punktów końcowych serwera na woluminie?
 Jeśli istnieje więcej niż jeden punkt końcowy serwera na woluminie, próg wolnego miejsca na efektywne woluminu jest największy wolne miejsce w woluminie określona dla dowolnego punktu końcowego serwera, w tym woluminie. Pliki będą umieszczane w taki sposób, zgodnie z ich wzorce użycia niezależnie od tego, z którym punktem końcowym serwera, do którego należą. Na przykład jeśli masz dwa punkty końcowe serwera na woluminie Punk końcowy 1 i Endpoint2, gdzie Punk końcowy 1 ma próg wolnego miejsca na wolumin o 25%, a Endpoint2 próg wolnego miejsca na woluminie 50% próg wolnego miejsca na woluminie zarówno punkty końcowe serwera będzie 50%. 
 
+<a id="date-tiering-policy"></a>
+### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Jak zasad obsługi poziomów warstw Data działa w połączeniu z ilością wolnego miejsca wolumin, zasady warstw? 
+Podczas włączania obsługi warstw na punkt końcowy serwera w chmurze, możesz ustawić zasady wolnego miejsca na woluminie. Zawsze pierwszeństwo przed wszystkie inne zasady, w tym zasady Data. Opcjonalnie można włączyć daty, które zasady dla każdego punktu końcowego serwera na czy wolumin, co oznacza że tylko pliki dostępne (to znaczy odczytać lub zapisywane) w zakresie dni, w których te zasady opisują będą przechowywane lokalne, ze wszystkimi plikami staler warstwowego. Należy pamiętać, że zasad wolnego miejsca na woluminie zawsze pierwszeństwo i gdy nie ma wystarczającej ilości wolnego miejsca na woluminie, aby zachować dowolną liczbę dni, przez które plików zgodnie z opisem w zasadach daty, usługi Azure File Sync będzie nadal warstw najzimniejszym plików do woluminu bezpłatne procent miejsca jest spełniony.
+
+Na przykład załóżmy, że zasady obsługi warstw na podstawie daty 60 dni i zasady wolnego miejsca na woluminie 20%. Jeśli po zastosowaniu zasad daty, jest mniej niż 20% wolnego miejsca na wolumin, zasady wolnego miejsca na woluminie zaczną działać, a zastępują zasady daty. W rezultacie zostanie więcej plików z zasadami warstwowej, taki sposób, że ilość danych przechowywane na serwerze może zostać skrócony z 60 dni dla danych do 45 dni. Z drugiej strony tych zasad spowoduje to wymuszenie obsługi warstw na pliki, które wykroczy poza swój zakres czasu, nawet jeżeli nie Osiągnięto próg wolnego miejsca — dzięki czemu pliku, który jest 61 dni będą umieszczane, nawet jeśli wolumin jest pusty.
+
 <a id="volume-free-space-guidelines"></a>
 ### <a name="how-do-i-determine-the-appropriate-amount-of-volume-free-space"></a>Jak określić odpowiednią ilość wolnego miejsca na woluminie?
 Ilość danych, należy zachować lokalnego zależy od kilku czynników: przepustowości, wzorzec dostępu do zestawu danych i budżetu. W przypadku połączeń o niskiej przepustowości można przechowywać więcej danych lokalnych, aby upewnić się, że ma minimalne opóźnienie dla użytkowników. W przeciwnym razie możesz oprzeć je na współczynnik zmian danych w danym okresie. Na przykład jeśli poinformować, że około 10% zmian zestaw danych 1 TB lub aktywnie jest dostępny co miesiąc, a następnie może chcesz zachować 100 GB lokalnego więc użytkownik są nie często odwoływania plików. Jeśli wolumin jest 2TB, a następnie chcesz zachować 5% (lub 100 GB) lokalnych, co oznacza, pozostałe 95% jest swoje procent wolnego miejsca na woluminie. Jednak zalecamy sytuacja: dodajesz buforu dla okresów wyższe zmian — innymi słowy, począwszy od niższy procent wolnego miejsca na woluminie, a następnie dostosowując go w razie potrzeby później. 
 
 Przechowywanie większej ilości danych lokalnych oznacza niższe koszty ruchu wychodzącego zgodnie z mniejszą liczbę plików będzie można wycofać z platformy Azure, ale wymaga również obsługa większej ilości magazynu w środowisku lokalnym, który zawiera swój własny kosztów. Po utworzeniu wystąpienia usługi Azure File Sync wdrożone, można sprawdzić ruch wychodzący konta magazynu w przybliżeniu ocenić, czy ustawienia wolnego miejsca na woluminie są odpowiednie dla Twojego użycia. Zakładając, że konto magazynu zawiera tylko usługi Azure pliku synchronizacji punkt końcowy w chmurze (czyli Twojej udziału synchronizacji), a następnie wyjście wysoki oznacza, że wiele plików są odwoływanego z chmury, należy rozważyć zwiększenie lokalnej pamięci podręcznej.
+
+<a id="how-long-until-my-files-tier"></a>
+### <a name="ive-added-a-new-server-endpoint-how-long-until-my-files-on-this-server-tier"></a>Ja dodałem jeszcze nowy punkt końcowy serwera. Jak długo, aż do moich plików w tej warstwie serwera?
+W wersjach 4.0 i powyżej agenta usługi Azure File Sync, gdy pliki zostały przekazane do udziału plików platformy Azure one będą umieszczane zgodnie z zasadami tak szybko, jak następnego uruchomienia sesji warstw, co się stanie, co godzinę. Starsze wersje agentów warstw może trwać do 24 godzin do wykonania.
 
 <a id="is-my-file-tiered"></a>
 ### <a name="how-can-i-tell-whether-a-file-has-been-tiered"></a>Jak sprawdzić, czy plik został warstwy?

@@ -11,21 +11,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: fcbc924675a97a17b4fcfdf0e1ac39ad5aae9ffd
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: e8a75afe2c7dbe91c7c98d0d35c319088f40748f
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218512"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612682"
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>Aktualizacja usługi Azure App Service w usłudze Azure Stack
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
 > [!IMPORTANT]  
-> Dotyczą aktualizacji 1807 system zintegrowany z usługi Azure Stack można też wdrażać najnowszy zestaw Azure Stack development kit przed wdrożeniem usługi Azure App Service 1.3.
+> Dotyczą aktualizacji 1809 system zintegrowany z usługi Azure Stack można też wdrażać najnowszy zestaw Azure Stack development kit przed wdrożeniem usługi Azure App Service 1.4.
 >
 >
 
@@ -33,7 +33,6 @@ Postępując zgodnie z instrukcjami w tym artykule, możesz uaktualnić [dostawc
 
 > [!IMPORTANT]  
 > Przed uruchomieniem uaktualniania, upewnij się, że zostały już wykonane [wdrożenia usługi Azure App Service dla dostawcy zasobów usługi Azure Stack](azure-stack-app-service-deploy.md)
-
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>Uruchom Instalatora dostawcy zasobów usługi App Service
 
@@ -53,7 +52,7 @@ W trakcie tego procesu uaktualniania wykonują następujące czynności:
 
 Aby uaktualnić wdrożenie usługi App Service w usłudze Azure Stack, wykonaj następujące kroki:
 
-1. Pobierz [Instalatora usługi App Service](https://aka.ms/appsvcupdate3installer)
+1. Pobierz [Instalatora usługi App Service](https://aka.ms/appsvcupdate4installer)
 
 2. Uruchom appservice.exe jako administrator
 
@@ -65,7 +64,7 @@ Aby uaktualnić wdrożenie usługi App Service w usłudze Azure Stack, wykonaj n
 
 5. Przejrzyj i zaakceptuj postanowienia licencyjne innych firm, a następnie kliknij przycisk **dalej**.
 
-6. Upewnij się, że punkt końcowy usługi Azure Stack usługi Azure Resource Manager i dzierżawy usługi Active Directory informacje są poprawne. Jeśli domyślne ustawienia są używane podczas wdrażania usługi Azure Stack Development Kit, możesz zaakceptować wartości domyślne w tym miejscu. Jednak jeśli dostosowano opcji podczas wdrażania usługi Azure Stack, możesz edytować wartości w tym oknie, w celu odzwierciedlenia zmiany. Na przykład, jeśli używasz sufiks domeny *mycloud.com*, należy zmienić punkt końcowy usługi Azure Stack usługi Azure Resource Manager *management.region.mycloud.com*. Po upewnieniu się informacje, kliknij przycisk **dalej**.
+6. Upewnij się, że punkt końcowy usługi Azure Stack usługi Azure Resource Manager i dzierżawy usługi Active Directory informacje są poprawne. Jeśli domyślne ustawienia są używane podczas wdrażania usługi Azure Stack Development Kit, możesz zaakceptować wartości domyślne w tym miejscu. Jednak jeśli dostosowano opcji podczas wdrażania usługi Azure Stack, możesz edytować wartości w tym oknie. Na przykład, jeśli używasz sufiks domeny *mycloud.com*, należy zmienić punkt końcowy usługi Azure Stack usługi Azure Resource Manager *management.region.mycloud.com*. Po upewnieniu się informacje, kliknij przycisk **dalej**.
 
     ![Informacje o chmurze usługi Azure Stack][2]
 
@@ -76,7 +75,7 @@ Aby uaktualnić wdrożenie usługi App Service w usłudze Azure Stack, wykonaj n
         * Jeśli używasz usługi Active Directory Federation Services (AD FS) zapewniają konta administratora. Na przykład *cloudadmin@azurestack.local*. Wprowadź hasło, a następnie kliknij przycisk **Sign In**.
    2. W **usługi Azure Stack subskrypcje** wybierz opcję **domyślne subskrypcję dostawcy**.
    3. W **lokalizacje usługi Azure Stack** wybierz lokalizację, do której odnosi się do regionu jest wdrażany na. Na przykład wybierz **lokalnego** Jeśli Twoje wdrożenie usługi Azure Stack Development Kit.
-   4. Jeśli istniejące wdrożenie usługi App Service zostanie odnalezione, następnie zasobów grupy i konta magazynu będzie być wypełnione i wyszarzone.
+   4. W przypadku wykrycia istniejącego wdrożenia usługi App Service następnie zasobów grupy i konta magazynu będzie być wypełnione i wyszarzone.
    5. Kliknij przycisk **dalej** do Przejrzyj podsumowanie uaktualnienia.
 
     ![Wykryto instalacji usługi App Service][3]

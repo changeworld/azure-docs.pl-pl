@@ -13,24 +13,21 @@ ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 05/10/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 68028fd1ba116251860e5c370e9e9ce61fd314bb
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 601169cc62a99438f661adc06ab166b545606edb
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47107006"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624594"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Zasady przechowywania raportów w usłudze Azure Active Directory
 
+Ten artykuł zawiera informacje o zasadach przechowywania danych dla raportów innego działania w usłudze Azure Active Directory. 
 
-Ten artykuł zawiera odpowiedzi na często zadawane pytania w połączeniu z przechowywaniem danych dla raportów innego działania w usłudze Azure Active Directory. 
-
-### <a name="q-how-can-you-get-the-collection-of-activity-data-started"></a>P: jak można uzyskać zbierania danych działania pracę?
-
-**ODP.:**
+### <a name="when-does-azure-ad-start-collecting-data"></a>Gdy usługa Azure AD zacząć zbierać dane?
 
 | Wersja usługi Azure AD | Rozpoczęcia zbierania |
 | :--              | :--   |
@@ -38,25 +35,21 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania w połączeniu z prz
 | Usługa Azure AD — warstwa Bezpłatna | Przy pierwszym otwarciu [bloku Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) lub użyj [interfejsy API raportowania](https://aka.ms/aadreports)  |
 
 ---
-### <a name="q-when-is-your-activity-data-available-in-the-azure-portal"></a>Pyt. kiedy dane o aktywności są dostępne w witrynie Azure portal
 
-**ODP.:**
+### <a name="when-is-the-activity-data-available-in-the-azure-portal"></a>Gdy dane o aktywności jest dostępna w witrynie Azure portal?
 
 - **Od razu** — Jeśli już pracy z raportami w witrynie Azure portal.
 - **W ciągu 2 godzin** — Jeśli jeszcze nie jest włączone raportowanie w portalu Azure.
 
 ---
 
-### <a name="q-how-can-you-get-the-collection-of-security-signals-started"></a>P: jak można uzyskać kolekcja sygnałów zabezpieczeń pracę?  
+### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Gdy usługi Azure AD rozpocząć zbieranie danych sygnału zabezpieczeń?  
 
-**Odp.:** sygnały zabezpieczeń procesu zbierania rozpoczyna się po użytkownik zgody na korzystanie z Centrum usługi Identity Protection. 
-
+Sygnały zabezpieczeń procesu zbierania rozpoczyna się po użytkownik zgody na korzystanie z **Centrum usługi Identity Protection**. 
 
 ---
 
-### <a name="q-for-how-long-is-the-collected-data-stored"></a>P: na jak długo zebrane dane są przechowywane?
-
-**ODP.:**
+### <a name="how-long-does-azure-ad-store-the-data"></a>Jak długo w usłudze Azure AD są przechowywane dane?
 
 **Raporty aktywności**    
 

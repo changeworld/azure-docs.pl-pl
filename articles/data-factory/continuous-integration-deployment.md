@@ -10,18 +10,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 11/12/2018
 ms.author: douglasl
-ms.openlocfilehash: 94633ce2f11f9efa99f1ad44820abd5aecdec923
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 60c715e97f6b1d2046fb4050ae41b27146c0610a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457214"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623799"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Ciągła integracja i dostarczanie (CI/CD) w usłudze Azure Data Factory
 
-Ciągła Integracja jest rozwiązaniem polegającym na każdej ze zmian gotowe do testowania Twojej bazy kodu i automatycznie możliwie jak najszybciej. Ciągłe dostarczanie poniżej, testy, które będzie się działo podczas ciągłej integracji i wypychanie zmian do systemu przejściowych lub produkcyjnych.
+Ciągła Integracja jest rozwiązaniem polegającym na każdej ze zmian gotowe do testowania Twojej bazy kodu i automatycznie możliwie jak najszybciej. Ciągłe dostarczanie poniżej, testy, które będzie się działo podczas ciągłej integracji i wypychanie zmian do systemu przejściowych lub produkcyjnych.
 
 Usługi Azure Data Factory ciągła integracja i dostarczanie oznacza, że przenoszenie potoków usługi Data Factory z jednego środowiska (rozwoju, testowania, produkcji) do innego. Celu ciągłej integracji i dostarczania umożliwia integrację interfejs użytkownika usługi Data Factory przy użyciu szablonów usługi Azure Resource Manager. Interfejs użytkownika usługi Data Factory można wygenerować szablonu usługi Resource Manager, po wybraniu **szablonu ARM** opcje. Po wybraniu **szablonu ARM wyeksportować**, portalu generuje szablonu usługi Resource Manager dla usługi data factory i pliku konfiguracji, który zawiera wszystkie ciągi połączeń i innych parametrów. Następnie należy utworzyć jeden plik konfiguracji dla poszczególnych środowisk (tworzenia, testowania, produkcji). Główny plik szablonu usługi Resource Manager pozostaje taka sama dla wszystkich środowisk.
 
@@ -75,11 +75,11 @@ Poniżej przedstawiono procedurę konfigurowania wersji potoki usługi Azure, wi
 
 ### <a name="requirements"></a>Wymagania
 
--   Subskrypcji platformy Azure, połączone z Team Foundation Server lub repozytoriów platformy Azure przy użyciu [ *punktu końcowego usługi Azure Resource Manager*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
+-   Subskrypcji platformy Azure, połączone z Team Foundation Server lub repozytoriów platformy Azure przy użyciu [*punktu końcowego usługi Azure Resource Manager*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
 
 -   Data Factory z skonfigurowano integrację z Git repozytoriów platformy Azure.
 
--   [Usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) zawierające wpisy tajne.
+-    [Usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) zawierające wpisy tajne.
 
 ### <a name="set-up-an-azure-pipelines-release"></a>Ustawianie wersji potoki usługi Azure
 
@@ -832,6 +832,48 @@ else {
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Parametry niestandardowe za pomocą szablonu usługi Resource Manager
 
 Można zdefiniować niestandardowe parametry szablonu usługi Resource Manager. Po prostu musisz mieć w pliku o nazwie `arm-template-parameters-definition.json` w folderze głównym repozytorium. (Nazwa pliku musi odpowiadać nazwie, pokazano poniżej, dokładnie.) Data Factory próbuje odczytać plik, niezależnie od gałęzi, w którym aktualnie pracujesz w, ale nie tylko z gałęzi współpracy. Jeśli plik nie zostanie znaleziony, Data Factory używa domyślnych parametrów i wartości.
+
+### <a name="syntax-of-a-custom-parameters-file"></a>Składnia plików niestandardowych parametrów
+
+Oto niektóre wytyczne do użycia podczas tworzenia pliku parametrów niestandardowych. Zapoznaj się z przykładami tej składni, zobacz następującą sekcję [przykładowy plik niestandardowych parametrów](#sample).
+
+1. W przypadku określania tablicy w pliku definicji, wskazujesz, że dopasowania właściwości w szablonie jest tablicą. Fabryka danych wykonuje iterację przez wszystkich obiektów w tablicy przy użyciu definicji określony w pierwszym obiekcie tablicy. Drugi obiekt ciągu, staje się nazwę właściwości, która jest używana jako nazwa parametru dla każdej iteracji.
+
+    ```json
+    ...
+    "Microsoft.DataFactory/factories/triggers": {
+        "properties": {
+            "pipelines": [{
+                    "parameters": {
+                        "*": "="
+                    }
+                },
+                "pipelineReference.referenceName"
+            ],
+            "pipeline": {
+                "parameters": {
+                    "*": "="
+                }
+            }
+        }
+    },
+    ...
+    ```
+
+2. Po ustawieniu wartości nazwy właściwości na `*`, możesz wskazać, że szablon do użycia wszystkich właściwości na tym poziomie, z wyjątkiem tych jawnie zdefiniowany.
+
+3. Wartość właściwości jest ustawiony jako ciąg, wskazują, chcesz zdefiniować parametry właściwości. Użyj formatu `<action>:<name>:<stype>`.
+    1.  `<action>` może być jedną z następujących znaków: 
+        1.  `=`  oznacza, że Zachowaj bieżącą wartość jako wartość domyślna parametru.
+        2.  `-` oznacza, że nie jest przechowywana wartość domyślna parametru.
+        3.  `|` jest przypadkiem szczególnym dotyczących wpisów tajnych w usłudze Azure Key Vault dla parametrów połączenia.
+    2.  `<name>` jest nazwą parametru. Jeśli `<name`> jest pusta, zajmuje Nazwa parametru 
+    3.  `<stype>` jest to typ parametru. Jeśli `<stype>` jest pusta, domyślny typ to ciąg.
+4.  Jeśli wprowadzasz `-` znak na początku nazwy parametru, pełna nazwa parametru jest obcinana do Menedżera zasobów `<objectName>_<propertyName>`.
+Na przykład `AzureStorage1_properties_typeProperties_connectionString` został skrócony do `AzureStorage1_connectionString`.
+
+
+### <a name="sample"></a> Przykładowy plik niestandardowych parametrów
 
 Poniższy przykład przedstawia przykładowy plik parametrów. Użyj tego przykładu jako odwołanie, aby utworzyć plik niestandardowych parametrów. Jeśli plik, który podasz nie jest w nieprawidłowym formacie JSON, Data Factory generuje komunikat o błędzie w konsoli przeglądarki i powraca do domyślnych parametrów i wartości widocznych na interfejs użytkownika usługi Data Factory.
 

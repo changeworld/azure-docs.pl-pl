@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 60ecc2bc1d700c223d4a52b05e3b9362241f3f82
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a4d62dd0bc984ce80324b405ddd0dcb625694b21
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414620"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612577"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Rozszerzanie alertów usługi Log Analytics do usługi Azure Alerts
 Niedawno, dopóki nie usługi Azure Log Analytics uwzględnione własną funkcję alertu, która może aktywnie powiadomić użytkownika o warunków opartych na danych usługi Log Analytics. Możesz zarządzać reguły alertów w portalu Microsoft Operations Management Suite. Nowe środowisko alertów ma teraz zintegrowane alertów w różnych usługach w systemie Microsoft Azure. Ta opcja jest dostępna jako **alerty** w ramach usługi Azure Monitor w witrynie Azure portal obsługuje alerty z dzienników aktywności, metryk i dzienników z usługi Log Analytics i Azure Application Insights. 
@@ -60,5 +60,5 @@ Możesz nadal tworzyć alerty z [interfejsu API usługi Log Analytics](../log-an
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej o narzędziach do [zainicjować rozszerzanie alertów z usługi Log Analytics na platformie Azure](monitoring-alerts-extend-tool.md).
-* Dowiedz się więcej o [środowisko Azure Alerts](monitoring-overview-unified-alerts.md).
+* Dowiedz się więcej o [środowisko Azure Alerts](monitoring-overview-alerts.md).
 * Dowiedz się, jak utworzyć [alerty dzienników w alertach Azure](monitor-alerts-unified-log.md).

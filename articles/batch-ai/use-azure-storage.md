@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a2b6b3334176cb6fdd86c17b4d11cb03a42dd4bf
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 42697f7f4bb8c6b9ef785eef0fe2f5f33b2b38a7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731806"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615607"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>Store dane wejściowe zadania usługi Batch AI i danych wyjściowych za pomocą usługi Azure Storage
 
@@ -30,7 +30,7 @@ Usługa Azure Storage to rozwiązanie do magazynowania w chmurze firmy Microsoft
 
 W przypadku wybrania usługi Azure Storage dla środowiska usługi Batch AI, zaleca się przechowywanie plików wejściowych (takich jak zestawy danych) w kontenerze obiektów Blob, który ma wyższą przepływność, i szkolenia dane wyjściowe są przechowywane w udziale plików, który obsługuje przesyłania strumieniowego (umożliwiając Odczytywanie danych wyjściowych dzienników po uruchomieniu zadania jednocześnie). 
 
-Zanim użyjesz usługi Azure Storage, należy najpierw [Tworzenie konta usługi Azure Storage](../storage/common/storage-quickstart-create-account.md). Usługa Batch AI obsługuje instalowanie woluminów z obu ogólnego przeznaczenia w wersji 1 (GPv1) i ogólnego przeznaczenia w wersji 2 (GPv2) usługi Azure Storage kont. Konto usługi Azure Storage można przechowywać wiele kontenerów obiektów Blob lub wystąpienia udziału plików. Wybierając typ konta magazynu do utworzenia, weź pod uwagę wymagania dotyczące kosztów i wydajności. Aby uzyskać więcej informacji, zobacz [Przegląd konta usługi Azure storage](../storage/common/storage-account-overview.md). 
+Zanim użyjesz usługi Azure Storage, należy najpierw [Tworzenie konta usługi Azure Storage](../storage/common/storage-quickstart-create-account.md). Usługa Batch AI obsługuje instalowanie woluminów z obu ogólnego przeznaczenia w wersji 1 (GPv1) i ogólnego przeznaczenia w wersji 2 (GPv2) usługi Azure Storage kont. Konto usługi Azure Storage można przechowywać wiele kontenerów obiektów Blob lub wystąpienia udziału plików. Wybierając typ konta magazynu do utworzenia, weź pod uwagę wymagania dotyczące kosztów i wydajności. Aby uzyskać więcej informacji, zobacz [Omówienie konta magazynu platformy Azure](../storage/common/storage-account-overview.md). 
 
 Aby utworzyć kontener obiektów Blob i Przekaż swój zestaw danych do kontenera obiektów Blob platformy Azure, wybierz jedną z następujących metod:
 - [Witryna Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md) przekazywania z graficznym interfejsem użytkownika sieci web. Aby przekazać małą liczbę plików, witryna Azure portal udostępnia najprostszy operacji.
@@ -98,7 +98,7 @@ Jeśli skrypt szkolenia wymaga znajomości ścieżki, należy przekazać go jako
 
 ### <a name="abbreviate-input-paths"></a>Skrócić ścieżek wejściowych
 
-Aby skrócić ścieżek wejściowych jako zmienną środowiskową, należy użyć `inputDirectories` właściwości usługi `job.json` pliku (lub `models.JobCreateParamters.input_directories` korzystania z zestawu SDK sztucznej Inteligencji usługi Batch). Schemat `inputDirectories` jest:
+Aby skrócić ścieżek wejściowych jako zmienną środowiskową, należy użyć `inputDirectories` właściwości usługi `job.json` pliku (lub `models.JobCreateParameters.input_directories` korzystania z zestawu SDK sztucznej Inteligencji usługi Batch). Schemat `inputDirectories` jest:
 
 ```json
 {
@@ -115,7 +115,7 @@ Aby uzyskać więcej informacji, zobacz [tutaj](https://github.com/Azure/BatchAI
 
 ### <a name="abbreviate-output-paths"></a>Skrócić ścieżek danych wyjściowych
 
-Aby skrócić zmiennej środowiskowej ścieżki w danych wyjściowych, należy użyć `outputDirectories` właściwości usługi `job.json` pliku (lub `models.JobCreateParamters.output_directories` korzystania z zestawu SDK sztucznej Inteligencji usługi Batch). Przy użyciu tej metody można uproszczenie ścieżki dla plików wyjściowych. Schemat `outputDirectories` jest:
+Aby skrócić zmiennej środowiskowej ścieżki w danych wyjściowych, należy użyć `outputDirectories` właściwości usługi `job.json` pliku (lub `models.JobCreateParameters.output_directories` korzystania z zestawu SDK sztucznej Inteligencji usługi Batch). Przy użyciu tej metody można uproszczenie ścieżki dla plików wyjściowych. Schemat `outputDirectories` jest:
 
 ```json
 {
@@ -135,7 +135,7 @@ Aby uzyskać więcej informacji, zobacz [tutaj](https://github.com/Azure/BatchAI
 
 ### <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal
 
-Azure portal to wygodny sposób, aby wyświetlić dane wyjściowe zadania za pomocą Eksploratora plików graficznego interfejsu użytkownika. Jednakże jeśli chcesz wyświetlić dane wyjściowe Stdout i Stderr lub ścieżki w `outputDirectories`, pliki są umieszczane w ścieżce automatycznie wygenerowany w woluminie magazynu platformy Azure. Aby uzyskać więcej informacji, zobacz poniżej.
+Azure portal to wygodny sposób, aby wyświetlić dane wyjściowe zadania za pomocą Eksploratora plików graficznego interfejsu użytkownika. Jednakże jeśli chcesz wyświetlić dane wyjściowe Stdout i Stderr lub ścieżki w `outputDirectories`, pliki są umieszczane w ścieżce automatycznie wygenerowany w woluminie magazynu platformy Azure. Więcej informacji można znaleźć poniżej.
 
 ### <a name="access-stdout-and-stderr-output"></a>Dostęp do strumienia wyjściowego Stdout i Stderr danych wyjściowych
 

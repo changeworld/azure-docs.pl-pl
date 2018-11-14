@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 08f08d926a9e27e421ff8db46051d8a1e7229041
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: aa745d827db7633dc9f8601f65fa31dfadbb4076
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166886"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614059"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Dodaj dostawcę zasobów usługi App Service do usługi Azure Stack
 
@@ -28,7 +28,7 @@ ms.locfileid: "49166886"
 Użyj się ze wskazówkami w tym artykule, aby wdrożyć usługi App Service w usłudze Azure Stack.
 
 > [!IMPORTANT]  
-> Zastosowanie aktualizacji 1807 do systemu Azure Stack zintegrowane, lub wdrożyć najnowszą usługi Azure Stack Development Kit (ASDK) przed wdrożeniem usługi Azure App Service 1.3.
+> Zastosowanie aktualizacji 1809 do systemu Azure Stack zintegrowane, lub wdrożyć najnowszą usługi Azure Stack Development Kit (ASDK) przed wdrożeniem usługi Azure App Service 1.4.
 
 Zapewnić użytkownikom możliwość tworzenia aplikacji interfejsu API sieci web i. Aby zezwolić użytkownikom na tworzenie tych aplikacji, należy:
 
@@ -74,8 +74,8 @@ Aby wdrożyć dostawcy zasobów usługi App Service, wykonaj następujące kroki
 
    b. W **usługi Azure Stack subskrypcje**, wybierz opcję **domyślne subskrypcję dostawcy**.
 
-     >[!NOTE]
-     >Obecnie usługa App Service można wdrożyć tylko do **domyślne subskrypcję dostawcy**.
+     > [!IMPORTANT]  
+     > Usługa App Service **musi** można wdrożyć **domyślne subskrypcję dostawcy**.
 
    c. W **lokalizacje usługi Azure Stack**, wybierz lokalizację, do której odnosi się do regionu jest wdrażany na. Na przykład wybierz **lokalnego** Jeśli Twoje wdrożenie usługi Azure Stack Development Kit.
 
@@ -198,7 +198,7 @@ Aby wdrożyć dostawcy zasobów usługi App Service, wykonaj następujące kroki
 
 1. W portalu administracyjnym usługi Azure Stack, przejdź do **administrowanie — usługa App Service**.
 
-2. W obszarze Przegląd w polu Stan zaznacz, aby zobaczyć, że **stan** pokazuje **wszystkie role są gotowe**.
+2. W obszarze Przegląd, w obszarze Stan zaznacz, aby zobaczyć, że **stan** Wyświetla **wszystkie role są gotowe**.
 
     ![Zarządzanie App Service](media/azure-stack-app-service-deploy/image12.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Samouczek dotyczący usługi Azure Service Bus WCF Relay | Dokumentacja firmy Microsoft
+title: Udostępnianie lokalnych usług REST programu WCF do zewnętrznego klienta za pomocą usługi Azure WCF Relay | Dokumentacja firmy Microsoft
 description: Utwórz aplikację klienta i usługi przy użyciu przekaźnika WCF.
 services: service-bus-relay
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2017
+ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 9c76e535fe0585ec6ff08a0c9dcab700d8eb5424
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6927788fa79c567222a199064f5b375546ecf9ad
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262016"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615480"
 ---
-# <a name="azure-wcf-relay-tutorial"></a>Samouczek dotyczący przekaźnika WCF platformy Azure
+# <a name="expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Udostępnianie lokalnych usług REST programu WCF do zewnętrznego klienta przy użyciu przekaźnika WCF platformy Azure
 
 W tym samouczku opisano sposób tworzenia prostego klienta WCF Relay, aplikacji i usług przy użyciu usługi Azure Relay. Z podobnego samouczka dotyczącego, który używa [komunikatów usługi Service Bus](../service-bus-messaging/service-bus-messaging-overview.md), zobacz [Rozpoczynanie pracy z kolejkami usługi Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
@@ -31,19 +31,32 @@ Po zapoznaniu się z sekwencją tematów w tym samouczku będziesz mieć uruchom
 
 Ostatnie trzy kroki opisują sposób tworzenia aplikacji klienckiej, konfigurowania aplikacji klienckiej oraz tworzenia i użycia klienta, który może uzyskać dostęp do funkcji hosta.
 
+W tym samouczku można wykonać następujące czynności:
+
+> [!div class="checklist"]
+> * Tworzenie przestrzeni nazw usługi Relay.
+> * Tworzenie kontraktu usługi WCF
+> * Implementowanie kontraktu usługi WCF
+> * Hostowanie i uruchamianie usługi WCF do zarejestrowania w usłudze Relay
+> * Tworzenie klienta platformy WCF dla kontraktu usługi
+> * Konfigurowanie klienta platformy WCF
+> * Implementowanie klienta platformy WCF
+> * Uruchamianie aplikacji. 
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do wykonania kroków tego samouczka niezbędne są następujące elementy:
+Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
 
-* [Program Microsoft Visual Studio w wersji 2015 lub nowszej](https://visualstudio.com). Ten samouczek używa Visual Studio 2017.
-* Aktywne konto platformy Azure. Jeśli go nie masz, możesz utworzyć bezpłatne konto w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/free/).
+- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+- [Program Visual Studio 2015 lub nowszy](http://www.visualstudio.com). W przykładach znajdujących się w tym samouczku używany jest program Visual Studio 2017.
+- Zestaw Azure SDK dla platformy .NET. Zainstaluj go z [strony pobierania zestawu SDK](https://azure.microsoft.com/downloads/).
 
-## <a name="create-a-service-namespace"></a>Tworzenie przestrzeni nazw usługi
+## <a name="create-a-relay-namespace"></a>Tworzenie przestrzeni nazw usługi Relay
+Pierwszym krokiem jest utworzenie przestrzeni nazw i uzyskanie [sygnatury dostępu współdzielonego (SAS)](../service-bus-messaging/service-bus-sas.md) klucza. Przestrzeń nazw wyznacza granice aplikacji dla każdej aplikacji widocznej za pośrednictwem usługi relay. Klucz sygnatury dostępu współdzielonego jest automatycznie generowany przez system po utworzeniu przestrzeni nazw usługi. Kombinacja przestrzeni nazw usługi i klucza sygnatury dostępu Współdzielonego dostarcza poświadczenia dla platformy Azure w celu uwierzytelniania dostępu do aplikacji.
 
-Pierwszym krokiem jest utworzenie przestrzeni nazw i uzyskanie [sygnatury dostępu współdzielonego (SAS)](../service-bus-messaging/service-bus-sas.md) klucza. Przestrzeń nazw wyznacza granice aplikacji dla każdej aplikacji widocznej za pośrednictwem usługi relay. Klucz sygnatury dostępu współdzielonego jest automatycznie generowany przez system po utworzeniu przestrzeni nazw usługi. Kombinacja przestrzeni nazw usługi i klucza sygnatury dostępu Współdzielonego dostarcza poświadczenia dla platformy Azure w celu uwierzytelniania dostępu do aplikacji. Postępuj zgodnie z [instrukcjami podanymi w tym miejscu](relay-create-namespace-portal.md), aby utworzyć przestrzeń nazw przekazywania.
+[!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
 ## <a name="define-a-wcf-service-contract"></a>Definiowanie kontraktu usługi WCF
-
 Kontrakt usługi określa, jakie operacje (terminologia usługi sieci web dla metod lub funkcji) usługa obsługuje. Kontrakty są tworzone przez definiowanie interfejsu C++, C# lub Visual Basic. Każda metoda w interfejsie odpowiada określonej operacji usługi. W odniesieniu do każdego interfejsu należy zastosować atrybut [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx), a w odniesieniu do każdej operacji należy zastosować atrybut [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx). Jeśli metoda w interfejsie z atrybutem [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) nie ma atrybutu [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx), nie jest ujawniana. Kod dla tych zadań podano w przykładzie zamieszczonym na końcu procedury. Kontrakty i usługi bardziej szczegółowo omówiono w artykule [Projektowanie i implementowanie usług](https://msdn.microsoft.com/library/ms729746.aspx) w dokumentacji platformy WCF.
 
 ### <a name="create-a-relay-contract-with-an-interface"></a>Tworzenie kontraktu usługi relay za pomocą interfejsu
@@ -51,13 +64,13 @@ Kontrakt usługi określa, jakie operacje (terminologia usługi sieci web dla me
 1. Otwórz program Visual Studio jako administrator, klikając prawym przyciskiem myszy ikonę programu w menu **Start**, a następnie wybierając polecenie **Uruchom jako administrator**.
 2. Utwórz nowy projekt aplikacji konsoli. Kliknij menu **Plik** i wybierz pozycję **Nowy**, a następnie kliknij pozycję **Projekt**. W oknie dialogowym **Nowy projekt** kliknij pozycję **Visual C#** (jeśli pozycja **Visual C#** nie jest wyświetlana, sprawdź w obszarze **Inne języki**). Kliknij przycisk **Aplikacja konsoli (.NET Framework)** szablonu i nadaj mu nazwę **EchoService**. Kliknij przycisk **OK**, aby utworzyć projekt.
 
-    ![][2]
+    ![Tworzenie aplikacji konsolowej][2]
 
 3. Zainstaluj pakiet NuGet magistrali usług. Ten pakiet automatycznie dodaje odwołania do bibliotek usługi Service Bus, jak również przestrzeń nazw **System.ServiceModel** usługi WCF. [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) jest przestrzenią nazw umożliwiającą programowy dostęp do podstawowych funkcji platformy WCF. Usługa Service Bus używa wielu obiektów i atrybutów usługi WCF do definiowania kontraktów usług.
 
     W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt, a następnie kliknij przycisk **Zarządzaj pakietami NuGet...** . Kliknij kartę Przeglądanie, a następnie wyszukaj ciąg **WindowsAzure.ServiceBus**. Upewnij się, że nazwa projektu jest zaznaczona w polu **Wersje**. Kliknij pozycję **Zainstaluj** i zaakceptuj warunki użytkowania.
 
-    ![][3]
+    ![Pakiet usługi Service Bus][3]
 4. W Eksploratorze rozwiązań kliknij dwukrotnie plik Program.cs, aby otworzyć go w edytorze, jeśli nie został jeszcze otwarty.
 5. Dodaj następujące instrukcje using na początku pliku:
 
@@ -231,7 +244,7 @@ Poniższy kod przedstawia podstawowy format pliku App.config skojarzonego z host
 </configuration>
 ```
 
-## <a name="host-and-run-a-basic-web-service-to-register-with-the-relay-service"></a>Hostowanie i uruchamianie usługi sieci web podstawowe do zarejestrowania w usłudze relay
+## <a name="host-and-run-the-wcf-service-to-register-with-the-relay-service"></a>Hostowanie i uruchamianie usługi WCF do zarejestrowania w usłudze relay
 
 W tym kroku opisano sposób uruchamiania usługi Azure Relay.
 
@@ -501,7 +514,7 @@ W tym kroku zostanie utworzony plik App.config dla podstawowej aplikacji klienck
     Ten krok określa nazwę punktu końcowego i kontrakt zdefiniowany w usłudze i fakt, że aplikacja kliencka używa protokołu TCP do komunikowania się z usługi Azure Relay. Nazwa punktu końcowego jest używana w następnym kroku do powiązania tej konfiguracji pliku końcowego z identyfikatorem URI usługi.
 5. Kliknij przycisk **pliku**, następnie kliknij przycisk **Zapisz wszystko**.
 
-## <a name="example"></a>Przykład
+### <a name="example"></a>Przykład
 
 Poniższy kod przedstawia plik App.config dla klienta Echo.
 
@@ -607,7 +620,7 @@ Jedną z głównych różnic jest jednak czy aplikacja kliencka używa kanał na
     channelFactory.Close();
     ```
 
-## <a name="example"></a>Przykład
+### <a name="example"></a>Przykład
 
 Wypełniony kod powinien zostać wyświetlony następujący, przedstawiający sposób tworzenia aplikacji klienckiej, jak wywoływać operacje usługi oraz sposobu zamykania klienta po wywołaniu operacji zostało zakończone.
 
@@ -714,13 +727,10 @@ namespace Microsoft.ServiceBus.Samples
 12. Możesz kontynuować wysyłanie wiadomości tekstowych z klienta do usługi w ten sposób. Po zakończeniu naciśnij klawisz Enter w oknach konsoli klienta i usługi, aby zamknąć obie aplikacje.
 
 ## <a name="next-steps"></a>Kolejne kroki
+Przejdź do następującego samouczka: 
 
-W tym samouczku przedstawiono sposób tworzenia klienta usługi Azure Relay, aplikacji i usług za pomocą funkcji przekaźnika WCF usługi Service Bus. Z podobnego samouczka dotyczącego, który używa [komunikatów usługi Service Bus](../service-bus-messaging/service-bus-messaging-overview.md), zobacz [Rozpoczynanie pracy z kolejkami usługi Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
-
-Aby dowiedzieć się więcej na temat usługi Azure Relay, zobacz następujące tematy.
-
-* [Omówienie usługi Azure Relay](relay-what-is-it.md)
-* [Jak używać usługi przekaźnika WCF przy użyciu platformy .NET](relay-wcf-dotnet-get-started.md)
+> [!div class="nextstepaction"]
+>[Udostępnianie lokalnych usług REST programu WCF do klienta spoza sieci](service-bus-relay-rest-tutorial.md)
 
 [2]: ./media/service-bus-relay-tutorial/create-console-app.png
 [3]: ./media/service-bus-relay-tutorial/install-nuget.png

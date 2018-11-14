@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/19/2018
 ms.author: rafats
-ms.openlocfilehash: cfd1160d1592c03eea94e3c4d04fdc5754eca671
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ed97a2c31897d1e5e61421ea489a35af377f4f37
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056239"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621449"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Zabezpieczanie dostępu do danych usługi Azure Cosmos DB
 Ten artykuł zawiera omówienie zabezpieczania dostępu do danych przechowywanych w [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
@@ -40,7 +40,7 @@ Każde konto obejmuje dwa klucze główne: klucz podstawowy i klucz pomocniczy. 
 
 Oprócz dwa klucze główne konto usługi Cosmos DB istnieją dwa klucze tylko do odczytu. Klucze tylko do odczytu Zezwalaj tylko na operacje odczytu dla konta. Klucze tylko do odczytu nie zapewnia dostępu do odczytu zasobów uprawnień.
 
-Podstawowa, pomocnicza, tylko do odczytu, a klucze główne odczytu i zapisu mogą być pobierane i ponownie wygenerowane za pomocą witryny Azure portal. Aby uzyskać instrukcje, zobacz [wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu](manage-account.md#keys).
+Podstawowa, pomocnicza, tylko do odczytu, a klucze główne odczytu i zapisu mogą być pobierane i ponownie wygenerowane za pomocą witryny Azure portal. Aby uzyskać instrukcje, zobacz [wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu](manage-with-cli.md#regenerate-account-key).
 
 ![Kontrola dostępu (IAM) w witrynie Azure portal — prezentacja zabezpieczeń bazy danych NoSQL](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
 
@@ -196,5 +196,4 @@ Usługa Azure Cosmos DB umożliwia wyszukiwanie, wybierz, modyfikować i usuwać
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby dowiedzieć się więcej na temat zabezpieczeń bazy danych Cosmos DB, zobacz [Cosmos DB: bazy danych zabezpieczeń](database-security.md).
-* Aby dowiedzieć się więcej o zarządzaniu kluczy głównych i tylko do odczytu, zobacz [jak zarządzać kontem usługi Azure Cosmos DB](manage-account.md#keys).
 * Aby dowiedzieć się, jak skonstruować tokenach autoryzacji usługi Azure Cosmos DB, zobacz [kontrolę dostępu do zasobów usługi Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f36d08a397836f17ec25a61e77cb1db5ce10b9d4
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: d4b4d99ac943749faaca8cd699b1455795b9c399
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945064"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625798"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Dostosowywanie interfejsu użytkownika aplikacji za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -99,17 +99,13 @@ Aby utworzyć publicznego kontenera w usłudze Blob storage, wykonaj następują
 
 Konfigurowanie magazynu obiektów Blob na potrzeby udostępniania zasobów między źródłami, wykonując następujące czynności:
 
->[!NOTE]
->Chcesz wypróbować funkcji dostosowywania interfejsu użytkownika, korzystając z naszych przykładowy kod HTML i CSS zawartości? Udostępniliśmy [Narzędzie Pomocnik proste](active-directory-b2c-reference-ui-customization-helper-tool.md) która przekazuje i konfiguruje naszej przykładowej zawartości na konto usługi Blob storage. Jeśli używasz narzędzia, przejdź do sekcji [zmodyfikować niestandardowe zasady rejestracji lub logowania](#modify-your-sign-up-or-sign-in-custom-policy).
-
-1. Na **magazynu** bloku, w obszarze **ustawienia**, otwórz **CORS**.
-2. Kliknij pozycję **Add** (Dodaj).
-3. Aby uzyskać **dozwolone źródła**, należy wpisać gwiazdkę (\*).
-4. W **dozwolonych zleceń** listy rozwijanej, wybierz **UZYSKAĆ** i **opcje**.
-5. Aby uzyskać **dozwolone nagłówki**, należy wpisać gwiazdkę (\*).
-6. Aby uzyskać **udostępniane nagłówki**, wpisz znak gwiazdki (\*).
-7. Aby uzyskać **maksymalny wiek (sekundy)**, typ **200**.
-8. Kliknij pozycję **Add** (Dodaj).
+1. Wybierz z menu **CORS**.
+2. Aby uzyskać **dozwolone źródła**, wprowadź `your-tenant-name.b2clogin.com`. Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C. Na przykład `fabrikam.b2clogin.com`.
+3. Aby uzyskać **dozwolone metody**, zaznacz zarówno pozycję `GET` i `OPTIONS`.
+4. Aby uzyskać **dozwolone nagłówki**, wprowadź znak gwiazdki (*).
+5. Aby uzyskać **udostępniane nagłówki**, wprowadź znak gwiazdki (*).
+6. Aby uzyskać **maksymalny wiek**, wprowadź 200.
+7. Kliknij pozycję **Zapisz**.
 
 ## <a name="test-cors"></a>Testowanie mechanizmu CORS
 

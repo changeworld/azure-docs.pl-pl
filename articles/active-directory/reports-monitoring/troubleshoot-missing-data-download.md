@@ -13,18 +13,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 01/15/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9138da42eeb87e45b86be10aff67792ee6de09b4
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 2607c5dacf6f261f27e7805e02df189a2753404c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055409"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625656"
 ---
-# <a name="i-cant-find-any-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>Nie można znaleźć żadnych danych w dziennikach aktywności usługi Azure Active Directory, pobrany
-
+# <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>Nie mogę znaleźć wszystkie dane w dziennikach aktywności usługi Azure Active Directory, pobrany
 
 ## <a name="symptoms"></a>Objawy
 
@@ -32,15 +31,15 @@ Pobrano dzienniki aktywności (inspekcji lub logowania), ale nie widać wszystki
 
  ![Raportowanie](./media/troubleshoot-missing-data-download/01.png)
  
-
 ## <a name="cause"></a>Przyczyna
 
 Podczas pobierania dzienników aktywności w witrynie Azure portal ograniczamy skalowanie do 5000 rekordów posortowanych według najnowsze na początku. 
 
 ## <a name="resolution"></a>Rozwiązanie
 
-Można wykorzystać [interfejsy API raportowania usługi Azure AD](concept-reporting-api.md), aby pobrać do miliona rekordów z dowolnego okresu. Naszym Zalecanym podejściem jest do uruchomienia skryptu, zgodnie z harmonogramem, który wywołuje interfejsy API raportowania w celu pobrania rekordów w sposób przyrostowy okresie (na przykład codziennie lub co tydzień).
+Można wykorzystać [interfejsy API raportowania usługi Azure AD](concept-reporting-api.md), aby pobrać do miliona rekordów z dowolnego okresu. Naszym Zalecanym podejściem jest [za pomocą skryptu zgodnie z harmonogramem](tutorial-signin-logs-download-script.md) , wywołuje interfejsy API raportowania w celu pobrania rekordów w sposób przyrostowy okresie (na przykład codziennie lub co tydzień). 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz temat[Azure Active Directory reporting FAQ](reports-faq.md) (Często zadawane pytania dotyczące raportowania usługi Azure Active Directory).
+
+* [Usługa Azure Active Directory raporty — często zadawane pytania](reports-faq.md)
 

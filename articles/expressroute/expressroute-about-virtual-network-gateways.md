@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: bc48101decce9a92a01b8e6958bed08850a94b7e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 8776a07f4fb1ffcc573bfedace38280576fa3184
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241399"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622974"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>Informacje o bramach sieci wirtualnej dla usługi ExpressRoute
 Brama sieci wirtualnej jest używany do wysyłania ruchu sieciowego między sieciami wirtualnymi platformy Azure i lokalizacjami lokalnymi. Można użyć wirtualnej Brama sieci może służyć do usługi ExpressRoute ruchu lub ruch sieci VPN. Ten artykuł koncentruje się na bramy sieci wirtualnej usługi ExpressRoute.
@@ -43,19 +43,19 @@ W poniższej tabeli przedstawiono typy bram i szacowaną parametrów. Ta tabela 
 > 
 >
 
-### <a name="zrgw"></a>Strefowo nadmiarowe bramy jednostki SKU (wersja zapoznawcza)
+### <a name="zrgw"></a>Strefowo nadmiarowe jednostki SKU bramy.
 
 Można także wdrożyć bramy usługi ExpressRoute w strefach dostępności platformy Azure. To fizycznie i logicznie oddzielone w różnych strefach dostępności w celu ochrony łączności sieci środowiska lokalnego do platformy Azure przed awariami poziomu strefy.
 
 ![Strefowo nadmiarowe bramę usługi ExpressRoute](./media/expressroute-about-virtual-network-gateways/zone-redundant.png)
 
-Strefowo nadmiarowe bramy używają określonych nowej jednostki SKU bramy dla bramy usługi ExpressRoute. Nowe jednostki SKU są obecnie dostępne w **publicznej wersji zapoznawczej**.
+Strefowo nadmiarowe bramy używają określonych nowej jednostki SKU bramy dla bramy usługi ExpressRoute.
 
 * ErGw1AZ
 * ErGw2AZ
 * ErGw3AZ
 
-Nowe jednostki SKU bramy obsługują także inne opcje wdrażania, aby możliwie najlepiej odpowiadały potrzebom użytkownika. Podczas tworzenia bramy sieci wirtualnej przy użyciu nowej jednostki SKU bramy, masz również możliwość wdrożenia bramy z określonej strefy. Jest to określane jako bramy strefowych. Podczas wdrażania bramy strefowych, wszystkie wystąpienia bramy są wdrażane w tej samej strefie dostępności. Aby zarejestrować się w wersji zapoznawczej, zobacz [Tworzenie bramy sieci wirtualnej strefowo nadmiarowe](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md).
+Nowe jednostki SKU bramy obsługują także inne opcje wdrażania, aby możliwie najlepiej odpowiadały potrzebom użytkownika. Podczas tworzenia bramy sieci wirtualnej przy użyciu nowej jednostki SKU bramy, masz również możliwość wdrożenia bramy z określonej strefy. Jest to określane jako bramy strefowych. Podczas wdrażania bramy strefowych, wszystkie wystąpienia bramy są wdrażane w tej samej strefie dostępności. 
 
 ## <a name="resources"></a>Polecenia cmdlet programu PowerShell i interfejsów API REST
 Aby uzyskać dodatkowe zasoby techniczne i wymagań określonej składni, korzystając z interfejsów API REST i poleceń cmdlet programu PowerShell dla konfiguracji bramy sieci wirtualnej zobacz następujące strony:
@@ -69,3 +69,5 @@ Aby uzyskać dodatkowe zasoby techniczne i wymagań określonej składni, korzys
 Zobacz [Omówienie usługi ExpressRoute](expressroute-introduction.md) Aby uzyskać więcej informacji o konfiguracjach dostępnego połączenia.
 
 Zobacz [Tworzenie bramy sieci wirtualnej dla usługi ExpressRoute](expressroute-howto-add-gateway-resource-manager.md) Aby uzyskać więcej informacji o tworzeniu bramy usługi ExpressRoute.
+
+Zobacz [Tworzenie bramy sieci wirtualnej strefowo nadmiarowe](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md) Aby uzyskać więcej informacji o konfigurowaniu bram strefowo nadmiarowe.

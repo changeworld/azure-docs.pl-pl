@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c13da6ff7c864ffa365dbad33d6eb0cf2e35fa42
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 7aeb9a9557694f8773af4fe67f47950bf82afe87
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42058194"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621415"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Zasobów certyfikatów w usłudze Azure Automation
 
@@ -92,7 +92,7 @@ Poniższy przykład kodu pokazuje, jak dodać certyfikat do usługi w chmurze w 
 ```powershell-interactive
 $serviceName = 'MyCloudService'
 $cert = Get-AutomationCertificate -Name 'MyCertificate'
-$certPwd = Get-AzureRmAutomationVariable -ResourceGroupName "ResouceGroup01" `
+$certPwd = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyCertPassword'
 Add-AzureCertificate -ServiceName $serviceName -CertToDeploy $cert
 ```

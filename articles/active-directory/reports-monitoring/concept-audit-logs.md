@@ -13,41 +13,39 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 04/19/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b6fa26cb7947658af77496831d7239b4331aa1f2
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 883f521040c67cb8fe9578bc5c490bc3dfccba28
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42055089"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624662"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące inspekcji w portalu usługi Azure Active Directory 
 
-Dzięki raportom w usłudze Azure Active Directory (Azure AD) możesz uzyskać wszystkie informacje, które pomogą ustalić działanie środowiska.
+W przypadku raportów z usługi Azure Active Directory (Azure AD) możesz uzyskać informacje, które trzeba ustalić środowiska.
 
-Architektura raportowania w usłudze Azure AD obejmuje następujące składniki:
+Architektura raportowania składa się z następujących składników:
 
 - **Działanie** 
-    - **Działania związane z logowaniem** — informacje na temat użycia zarządzanych aplikacji i działania użytkownika związane z logowaniem
-    - **Dzienniki inspekcji** — udostępnia możliwość śledzenia wszystkich zmian wprowadzanych przez różne funkcje usługi Azure AD za pomocą dzienników. Dzienniki inspekcji zawierają na przykład zmiany wprowadzone dla wszelkich zasobów w usłudze Azure AD, takich jak użytkownicy, aplikacje, grupy, role, zasady, uwierzytelnienia itp.
+    - **Operacje logowania** — [raporcie logowań](concept-sign-ins.md) zawiera informacje na temat użycia zarządzanych aplikacji i użytkownika działań logowania.
+    - **Dzienniki inspekcji** — udostępnia możliwość śledzenia wszystkich zmian wprowadzanych przez różne funkcje usługi Azure AD za pomocą dzienników. Przykłady dzienników inspekcji zmiany wprowadzone do wszystkich zasobów w usłudze Azure AD, takie jak dodawanie lub usuwanie użytkowników, aplikacji, grup, ról i zasad.
 - **Bezpieczeństwo** 
-    - **Ryzykowne logowania** — ryzykowne logowanie jest wskaźnikiem próby logowania, które mogło zostać wykonane przez osobę, która nie jest prawowitym właścicielem konta użytkownika. Aby uzyskać więcej informacji, zobacz Ryzykowne logowania.
-    - **Użytkownicy oflagowani w związku z ryzykiem** — ryzykowny użytkownik jest wskaźnikiem konta użytkownika, którego bezpieczeństwo mogło zostać naruszone. Aby uzyskać więcej informacji, zobacz Użytkownicy oflagowani w związku z ryzykiem.
+    - **Ryzykowne logowania** — [ryzykowne logowania](concept-risky-sign-ins.md) jest wskaźnikiem próby logowania, które mogły zostać wykonane przez osobę, która nie jest prawowitym właścicielem konta użytkownika. 
+    - **Użytkownicy oflagowani w związku z ryzykiem** — [ryzykowny użytkownik](concept-user-at-risk.md) jest wskaźnikiem konta użytkownika, który może być zabezpieczenia mogły zostać naruszone.
 
-Ten temat zawiera przegląd działań dotyczących inspekcji.
+Ten artykuł zawiera omówienie raport z audytu.
  
 ## <a name="who-can-access-the-data"></a>Kto ma dostęp do danych?
-* Użytkownicy w roli administratora zabezpieczeń lub czytelnika zabezpieczeń
-* Administratorzy globalni
-* Poszczególni użytkownicy (inni niż administratorzy) mogą wyświetlać dane na temat własnych działań
 
+* Użytkownicy w **polu zabezpieczeń**, **Czytelnik zabezpieczeń** lub **administratora globalnego** ról
+* Ponadto wszyscy użytkownicy (inni niż administratorzy) widoczne własnych działań inspekcji
 
 ## <a name="audit-logs"></a>Dzienniki inspekcji
 
-Dzienniki inspekcji w usłudze Azure Active Directory dostarczają informacji na temat aktywności systemu pod kątem zgodności.  
-Pierwszym punktem wejścia do wszystkich danych inspekcji jest pozycja **Dzienniki inspekcji** znajdująca się w sekcji **Aktywność** usługi **Azure Active Directory**.
+Inspekcja usługi Azure AD dzienniki dostarczają informacji na temat aktywności systemu pod kątem zgodności. Aby uzyskać dostęp do raportu inspekcji, zaznacz **dzienniki inspekcji** w **działania** części **usługi Azure Active Directory**. 
 
 ![Dzienniki inspekcji](./media/concept-audit-logs/61.png "Dzienniki inspekcji")
 
@@ -68,15 +66,14 @@ Dzięki temu możesz wyświetlić dodatkowe pola lub usunąć pola, które są j
 
 ![Dzienniki inspekcji](./media/concept-audit-logs/21.png "Dzienniki inspekcji")
 
-
-Klikając pozycję w widoku listy, możesz uzyskać wszystkie szczegóły na jej temat.
+Wybierz element w widoku listy, aby uzyskać więcej szczegółowych informacji.
 
 ![Dzienniki inspekcji](./media/concept-audit-logs/22.png "Dzienniki inspekcji")
 
 
 ## <a name="filtering-audit-logs"></a>Dzienniki inspekcji filtrowania
 
-Aby zawęzić zgłaszane dane do odpowiedniego poziomu, możesz odfiltrować dane inspekcji przy użyciu następujących pól:
+Można filtrować dane inspekcji na następujące pola:
 
 - Zakres dat
 - Zainicjowane przez (aktor)
@@ -85,7 +82,6 @@ Aby zawęzić zgłaszane dane do odpowiedniego poziomu, możesz odfiltrować dan
 - Działanie
 
 ![Dzienniki inspekcji](./media/concept-audit-logs/23.png "Dzienniki inspekcji")
-
 
 Filtr **Zakres dat** umożliwia zdefiniowanie przedziału czasu dla zwracanych danych.  
 Możliwe wartości:
@@ -97,7 +93,7 @@ Możliwe wartości:
 
 Po wybraniu niestandardowego przedziału czasu możesz skonfigurować godzinę rozpoczęcia i zakończenia.
 
-Filtr **Zainicjowane przez** umożliwia określenie nazwy aktora lub jego głównej nazwy użytkownika (UPN, user principal name).
+**Inicjowane przez** Filtr pozwala na określenie nazwy aktora lub uniwersalnych głównej nazwy (UPN).
 
 Filtr **Kategoria** umożliwia wybranie jednego z następujących filtrów:
 
@@ -129,10 +125,9 @@ Jeśli wybierzesz opcję **Grupa** w pozycji **Typ zasobu działania**, uzyskasz
 - O365
 
 
-Filtr **Działanie** jest oparty na wybranej kategorii i typie zasobu działania. Możesz wybrać konkretne działanie, które chcesz zobaczyć, lub wybrać wszystkie działania. 
+**Działania** filtru jest oparty na kategorii i działań wybór typów zasobów wprowadzeniu. Możesz wybrać konkretne działanie, które chcesz zobaczyć, lub wybrać wszystkie działania. 
 
-Listę wszystkich działań związanych z inspekcją można uzyskać przy użyciu interfejsu API programu Graph https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta, gdzie $tenantdomain to nazwa Twojej domeny. Jest ona również przedstawiona w artykule [Zdarzenia raportów inspekcji](concept-audit-logs.md).
-
+Listę wszystkich działań związanych z inspekcją można uzyskać przy użyciu interfejsu API programu Graph https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta, gdzie $tenantdomain to nazwa Twojej domeny. Jest ona również przedstawiona w artykule [Zdarzenia raportów inspekcji](reference-audit-activities.md).
 
 ## <a name="audit-logs-shortcuts"></a>Skróty dzienników inspekcji
 
@@ -171,23 +166,21 @@ Za pomocą raportów inspekcji opartych na aplikacjach można uzyskać odpowiedz
 
 * Jakie aplikacje zostały dodane lub zaktualizowane?
 * Jakie aplikacje zostały usunięte?
-* Czy usługa w ramach aplikacji została zmieniona?
+* Zmieniono nazwę główną usługi dla aplikacji?
 * Czy nazwy aplikacji zostały zmienione?
 * Kto udzielił zezwolenia dla aplikacji?
 
-Jeśli chcesz przeglądać dane inspekcji dotyczące aplikacji, możesz skorzystać z widoku filtrowanego znajdującego się w obszarze **Dzienniki inspekcji** w sekcji **Aktywność** bloku **Aplikacje dla przedsiębiorstw**. Ten punkt wejścia ma wartość **Aplikacje dla przedsiębiorstw** wstępnie wybraną dla opcji **Typ zasobu działania**.
+Jeśli chcesz przeglądać dane inspekcji dotyczące aplikacji, możesz znaleźć widoku filtrowanego znajdującego się w obszarze **dzienniki inspekcji** w **działania** części **aplikacje dla przedsiębiorstw** blok. Ten punkt wejścia ma **aplikacje dla przedsiębiorstw** instalowane jako **typ zasobu działania**.
 
 ![Dzienniki inspekcji](./media/concept-audit-logs/134.png "Dzienniki inspekcji")
 
-Możesz odfiltrować ten widok, aby wyświetlić tylko **grupy** lub **użytkowników**.
+Możesz filtrować ten widok w dół do **grup** lub **użytkowników**.
 
 ![Dzienniki inspekcji](./media/concept-audit-logs/25.png "Dzienniki inspekcji")
 
 
-
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Omówienie funkcji raportowania można znaleźć w temacie [Raporty w usłudze Azure Active Directory](overview-reports.md).
-
-- Aby uzyskać pełną listę wszystkich działań inspekcji, zobacz artykuł[Azure AD audit activity reference (Informacje o działaniach inspekcji usługi Azure AD)](reference-audit-activities.md)
-
+- [Informacje o działaniach inspekcji usługi Azure AD](reference-audit-activities.md)
+- [Usługa Azure AD zgłasza odwołanie do przechowywania](reference-reports-data-retention.md)
+- [Odwołanie opóźnienia dzienników w usłudze Azure AD](reference-reports-latencies.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7761b6f034eae6b23be51930a1498957debafe8b
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 3e792eb9ab2e2902bfc9c84db7c1c344fb0cf67f
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566588"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622350"
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analizowanie danych dotyczących opóźnień lotów przy użyciu programu Hive w HDInsight
 Gałąź umożliwia uruchamianie zadań Apache Hadoop MapReduce za pomocą skryptów języka przypominającego SQL o nazwie  *[HiveQL][hadoop-hiveql]*, które mogą być stosowane do podsumowania, wykonywanie zapytań i analizowania dużych ilości danych.
@@ -639,7 +639,7 @@ Aby uzyskać pełną listę poleceń HiveQL, zobacz [języka definicji danych Hi
     catch{Connect-AzureRmAccount}
     #EndRegion
 
-    #region - Create and validate Azure resouce group
+    #region - Create and validate Azure resource group
     try{
         Get-AzureRmResourceGroup -Name $resourceGroupName
     }

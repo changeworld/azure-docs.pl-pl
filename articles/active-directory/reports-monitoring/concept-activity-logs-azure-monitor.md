@@ -1,6 +1,6 @@
 ---
 title: Dzienniki aktywności usługi Azure Active Directory w usłudze Azure Monitor (wersja zapoznawcza) | Microsoft Docs
-description: Omówienie dzienników aktywności usługi Azure Active Directory w usłudze Azure Monitor (wersja zapoznawcza)
+description: Wprowadzenie do usługi Azure Active Directory działania dzienników w usłudze Azure Monitor (wersja zapoznawcza)
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -13,30 +13,30 @@ ms.topic: concept
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3a4fc814a40bf370a137a2045c6218d3ee4b8778
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 760110d0ac359f6b7f135bf869e2520b8028ba6e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395653"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625440"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Dzienniki aktywności usługi Azure AD w usłudze Azure Monitor (wersja zapoznawcza)
 
-Możesz teraz kierować dzienniki aktywności usługi Azure Active Directory (Azure AD) na własne konto magazynu lub do centrum zdarzeń przy użyciu usługi Azure Monitor. Publiczna wersja zapoznawcza dzienników usługi Azure Active Directory w usłudze Azure Monitor umożliwia:
+Dzienniki aktywności usługi Azure Active Directory (Azure AD) mogą teraz kierować do kilku punktów końcowych długi okres przechowywania i danych szczegółowych informacji. Publiczna wersja zapoznawcza usługi Azure AD dzienników w usłudze Azure Monitor umożliwia:
 
-* Archiwizowanie dzienników inspekcji dla konta usługi Azure Storage, co pozwala przechowywać dane przez długi czas.
-* Przesyłanie strumieniowe dzienników inspekcji do centrum zdarzeń platformy Azure na potrzeby analizy przeprowadzanej przy użyciu popularnych narzędzi do zarządzania informacjami i zdarzeniami zabezpieczeń (SIEM), takich jak Splunk i QRadar.
-* Integrowanie dzienników inspekcji z niestandardowymi rozwiązaniami dziennika przez przesyłanie ich strumieniowo do centrum zdarzeń.
+* Archiwum usługi Azure AD dzienników aktywności do konta usługi Azure storage, aby zachować dane przez długi czas.
+* Stream usługi Azure AD Dzienniki aktywności do Centrum zdarzeń platformy Azure na potrzeby analizy, za pomocą popularnych narzędzi Security Information and Event Management (SIEM), takie jak Splunk i QRadar.
+* Integrowanie usługi Azure AD dzienników aktywności z własnych rozwiązań dziennika niestandardowego przez przesyłanie strumieniowe je do Centrum zdarzeń.
 * Dzienniki aktywności wysyłania usługi Azure AD do usługi Log Analytics, aby umożliwić rozbudowane wizualizacje, monitorowania i alertów dla połączonych danych.
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 ## <a name="supported-reports"></a>Obsługiwane raporty
 
-Przy użyciu tej funkcji można przekierowywać dzienniki aktywności dotyczące inspekcji i dzienniki aktywności dotyczące logowań na konto usługi Azure Storage, do centrum zdarzeń lub niestandardowego rozwiązania. 
+Może kierować usługi Azure AD inspekcji dzienników i dzienników logowania do konta magazynu platformy Azure, Centrum zdarzeń, usługi Log Analytics lub niestandardowe rozwiązania przy użyciu tej funkcji. 
 
 * **Dzienniki inspekcji**: [raport działań dotyczący dzienników inspekcji](concept-audit-logs.md) zapewnia dostęp do historii wszystkich zadań wykonanych w dzierżawie.
 * **Dzienniki logowania**: przy użyciu [raportu działań dotyczącego logowań](concept-sign-ins.md) można określić, kto wykonał zadania zgłoszone w dziennikach inspekcji.
@@ -101,25 +101,19 @@ Aby przejrzeć koszty związane z zarządzaniem obszaru roboczego usługi Log An
 
 Ta sekcja zawiera odpowiedzi na często zadawane pytania i znane problemy z dziennikami usługi Azure AD w usłudze Azure Monitor.
 
-**Pytanie: Gdzie mam zacząć?** 
-
-**Odpowiedź**: W tym artykule opisano elementy potrzebne do wdrożenia tej funkcji. Po spełnieniu wymagań wstępnych przejdź do samouczków, które mogą pomóc skonfigurować dzienniki i skierować je do centrum zdarzeń.
-
----
-
 **Pytanie: Które dzienniki są uwzględnione?**
 
 **Odpowiedź:** Za pomocą tej funkcji można przekierowywać dzienniki logowań i dzienniki inspekcji, chociaż zdarzenia inspekcji związane z usługąB2C nie są obecnie uwzględniane. Aby dowiedzieć się, jakie typy dzienników i które oparte na funkcjach dzienniki są obecnie obsługiwane, zapoznaj się ze [schematem dziennika inspekcji](reference-azure-monitor-audit-log-schema.md) i [schematem dziennika logowania](reference-azure-monitor-sign-ins-log-schema.md). 
 
 ---
 
-**Pytanie: Jak szybko po wykonaniu akcji odpowiednie dzienniki pojawiają się w centrach zdarzeń?**
+**P: jak najszybciej po wykonaniu akcji odpowiednimi dziennikami pojawią się w mojej Centrum zdarzeń?**
 
 **Odpowiedź**: Dzienniki powinny być widoczne w centrum zdarzeń w ciągu dwóch do pięciu minut po wykonaniu akcji. Aby uzyskać więcej informacji na temat usługi Event Hubs, zobacz [Co to jest usługa Azure Event Hubs?](../../event-hubs/event-hubs-about.md)
 
 ---
 
-**Pytanie: Jak szybko po wykonaniu akcji odpowiednie dzienniki pojawiają się na kontach magazynu?**
+**P: jak najszybciej po wykonaniu akcji odpowiednimi dziennikami pojawi się na moim koncie usługi storage?**
 
 **Odpowiedź:** W przypadku kont usługi Azure Storage opóźnienie wynosi od 5 do 15 minut po wykonaniu akcji.
 

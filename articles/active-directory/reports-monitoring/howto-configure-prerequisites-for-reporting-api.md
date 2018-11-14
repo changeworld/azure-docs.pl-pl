@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 05/07/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8d610dc74b7e2ef10295bc0a3407cf7c3d781b51
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: f72d15707d9f56b9e9b5a5d527d1204007c40afa
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42060194"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621976"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Wymagania wstępne dotyczące dostępu do usługi Azure Active Directory, interfejsu API raportowania
 
@@ -31,14 +31,12 @@ Interfejs API raportowania używa [OAuth](https://msdn.microsoft.com/library/azu
 
 Aby przygotować Ci dostęp do interfejsu API raportowania, należy:
 
-1. Przypisz role
-2. Rejestrowanie aplikacji
-3. Udzielenie uprawnień
-4. Zbieranie ustawień konfiguracji
+1. [Przypisywanie ról](#assign-roles)
+2. [Rejestrowanie aplikacji](#register-an-application)
+3. [Udziel uprawnień](#grant-permissions)
+4. [Zbieranie ustawień konfiguracji](#gather-configuration-settings)
 
-
-
-## <a name="assign-roles"></a>Przypisz role
+## <a name="assign-roles"></a>Przypisywanie ról
 
 Aby uzyskać dostęp do danych raportowania za pomocą interfejsu API, musisz mieć jedną z następujących ról, które są przypisane:
 
@@ -49,34 +47,31 @@ Aby uzyskać dostęp do danych raportowania za pomocą interfejsu API, musisz mi
 - Administrator globalny
 
 
-
-
 ## <a name="register-an-application"></a>Rejestrowanie aplikacji
 
-Musisz zarejestrować aplikację, nawet jeśli uzyskujesz dostęp do interfejsu API raportowania za pomocą skryptu. Daje to **identyfikator aplikacji**, który jest wymagany przez wywołanie autoryzacji i umożliwia swój kod, aby odbierać tokeny.
+Musisz zarejestrować aplikację, nawet jeśli uzyskujesz dostęp do interfejsu API raportowania za pomocą skryptu. Daje to **identyfikator aplikacji**, co jest wymagane dla autoryzacji wywołań i umożliwia swój kod, aby odbierać tokeny.
 
-Aby skonfigurować katalog na dostęp do interfejsu API raportowania usługi Azure AD, musisz zarejestrować się do witryny Azure portal przy użyciu konta administratora platformy Azure, który jest również członkiem **administratora globalnego** rola katalogu w dzierżawie usługi Azure AD.
+Aby skonfigurować katalog na dostęp do interfejsu API raportowania usługi Azure AD, musisz się zalogować do [witryny Azure portal](https://portal.azure.com) przy użyciu konta administratora platformy Azure, który jest również członkiem **administratora globalnego** rola katalogu w ramach dzierżawy usługi Azure AD.
 
 > [!IMPORTANT]
-> Aplikacje działające w ramach poświadczeń z uprawnieniami "Administrator", takich jak to mogą być bardzo skuteczne, więc upewnij się zabezpieczyć poświadczenia Identyfikatora/wpisów tajnych aplikacji.
+> Aplikacje działające w ramach poświadczeń z uprawnieniami administratora może być bardzo skuteczne, dlatego Pamiętaj o zapewnienie Identyfikatora aplikacji i wpisu tajnego poświadczeń w bezpiecznej lokalizacji.
 > 
 
+**Aby zarejestrować aplikację usługi Azure AD:**
 
-**Aby zarejestrować aplikację usługi Azure Active Directory:**
-
-1. W [witryny Azure portal](https://portal.azure.com), w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory**.
+1. W [witryny Azure portal](https://portal.azure.com), wybierz opcję **usługi Azure Active Directory** z okienka nawigacji po lewej stronie.
    
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. Na **usługi Azure Active Directory** kliknij **rejestracje aplikacji**.
+2. W **usługi Azure Active Directory** wybierz opcję **rejestracje aplikacji**.
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
 
-3. Na **rejestracje aplikacji** w pasku narzędzi u góry, kliknij **rejestrowanie nowej aplikacji**.
+3. Z **rejestracje aplikacji** wybierz opcję **rejestrowanie nowej aplikacji**.
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/03.png)
 
-4. Na **Utwórz** strony, wykonaj następujące czynności:
+4. W **Utwórz** strony, wykonaj następujące czynności:
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
@@ -86,7 +81,7 @@ Aby skonfigurować katalog na dostęp do interfejsu API raportowania usługi Azu
 
     c. W **adres URL logowania** polu tekstowym wpisz `https://localhost`.
 
-    d. Kliknij pozycję **Utwórz**. 
+    d. Wybierz pozycję **Utwórz**. 
 
 
 ## <a name="grant-permissions"></a>Udzielenie uprawnień 
@@ -95,60 +90,55 @@ W zależności od interfejsu API, którego chcesz uzyskać dostęp musisz przyzn
 
 | Interfejs API | Uprawnienie |
 | --- | --- |
-| Windows Azure Active Directory | Odczytuj dane katalogu |
+| Windows Azure Active Directory | Odczytaj dane katalogu |
 | Microsoft Graph | Odczytywać wszystkie dane dziennika inspekcji |
 
 
 ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/36.png)
 
-
 W poniższej sekcji przedstawiono kroki dla obu interfejsów API. Jeśli nie chcesz uzyskać dostęp do jednego z interfejsów API, można pominąć kroki powiązane.
- 
 
 **Aby udzielić uprawnień aplikacji do użycia interfejsów API:**
 
-1. Na **rejestracje aplikacji** na liście aplikacji, kliknij polecenie **aplikacji interfejsu API raportowania usługi**.
-
-2. Na **aplikacji interfejsu API raportowania usługi** w pasku narzędzi u góry, kliknij **ustawienia**. 
+1. Wybierz swoją aplikację z **rejestracje aplikacji** strony i wybierz **ustawienia**. 
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-3. Na **ustawienia** kliknij **wymagane uprawnienia**. 
+2. Na **ustawienia** wybierz opcję **wymagane uprawnienia**. 
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-4. Na **wymagane uprawnienia** strony w **API** kliknij **Windows Azure Active Directory**. 
+3. Na **wymagane uprawnienia** strony w **API** kliknij **Windows Azure Active Directory**. 
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
-5. Na **Włącz dostęp za pomocą** wybierz opcję **Odczyt danych katalogu** i usuń zaznaczenie opcji **Zaloguj się i odczytuj profil użytkownika**. 
+4. Na **Włącz dostęp za pomocą** wybierz opcję **Odczyt danych katalogu** i usuń zaznaczenie opcji **Zaloguj się i odczytuj profil użytkownika**. 
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
-6. Na pasku narzędzi u góry kliknij **Zapisz**.
+5. Na pasku narzędzi u góry kliknij **Zapisz**.
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
-7. Na **wymagane uprawnienia** w pasku narzędzi u góry, kliknij **Dodaj**.
+6. Na **wymagane uprawnienia** w pasku narzędzi u góry, kliknij **Dodaj**.
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/32.png)
 
-8. Na **dostępu Dodaj interfejs API** kliknij **wybierz interfejs API**.
+7. Na **dostępu Dodaj interfejs API** kliknij **wybierz interfejs API**.
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/31.png)
 
-9. Na **wybierz interfejs API** kliknij **programu Microsoft Graph**, a następnie kliknij przycisk **wybierz**.
+8. Na **wybierz interfejs API** kliknij **programu Microsoft Graph**, a następnie kliknij przycisk **wybierz**.
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/33.png)
 
-10. Na **Włącz dostęp za pomocą** wybierz opcję **odczytywać wszystkie dane dziennika inspekcji**, a następnie kliknij przycisk **wybierz**.  
+9. Na **Włącz dostęp za pomocą** wybierz opcję **odczytywać wszystkie dane dziennika inspekcji**, a następnie kliknij przycisk **wybierz**.  
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/34.png)
 
+10. Na **dostępu Dodaj interfejs API** kliknij **gotowe**.  
 
-11. Na **dostępu Dodaj interfejs API** kliknij **gotowe**.  
-
-12. Na **wymagane uprawnienia** strony, na pasku narzędzi u góry. Kliknij przycisk **Udziel uprawnień**, a następnie kliknij przycisk **tak**.
+11. Na **wymagane uprawnienia** strony, na pasku narzędzi u góry. Kliknij przycisk **Udziel uprawnień**, a następnie kliknij przycisk **tak**.
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/17.png)
 
@@ -167,11 +157,11 @@ Te wartości będą potrzebne podczas konfigurowania wywołania interfejsu API r
 
 **Aby uzyskać nazwy domeny:**
 
-1. W [witryny Azure portal](https://portal.azure.com), w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory**.
+1. W [witryny Azure portal](https://portal.azure.com), w okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory**.
    
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. Na **usługi Azure Active Directory** kliknij **niestandardowe nazwy domen**.
+2. Na **usługi Azure Active Directory** wybierz opcję **niestandardowe nazwy domen**.
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
 
@@ -186,12 +176,11 @@ Te wartości będą potrzebne podczas konfigurowania wywołania interfejsu API r
    
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. Na **rejestracje aplikacji** na liście aplikacji, kliknij polecenie **aplikacji interfejsu API raportowania usługi**.
+2. Wybierz swoją aplikację z **rejestracje aplikacji** strony.
 
-3. Na **aplikacji interfejsu API raportowania usługi** strony, u **identyfikator aplikacji**, kliknij przycisk **kliknij, aby skopiować**.
+3. Ze strony aplikacji, przejdź do **identyfikator aplikacji** i wybierz **kliknij, aby skopiować**.
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
-
 
 
 ### <a name="get-your-applications-client-secret"></a>Pobierz klucz tajny klienta aplikacji
@@ -203,17 +192,15 @@ Aby uzyskać klucz tajny klienta aplikacji, musisz utworzyć nowy klucz i zapisa
    
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. Na **rejestracje aplikacji** na liście aplikacji, kliknij polecenie **aplikacji interfejsu API raportowania usługi**.
+2.  Wybierz swoją aplikację z **rejestracje aplikacji** strony.
 
-
-3. Na **aplikacji interfejsu API raportowania usługi** w pasku narzędzi u góry, kliknij **ustawienia**. 
+3. Na pasku narzędzi u góry, na stronie aplikacji wybierz **ustawienia**. 
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-4. Na **ustawienia** strony w **dostępu APIR** kliknij **klucze**. 
+4. Na **ustawienia** stronie **dostęp do interfejsu API** kliknij **klucze**. 
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/12.png)
-
 
 5. Na **klucze** strony, wykonaj następujące czynności:
 
@@ -231,6 +218,5 @@ Aby uzyskać klucz tajny klienta aplikacji, musisz utworzyć nowy klucz i zapisa
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Pobieranie danych przy użyciu usługi Azure Active Directory, interfejsu API raportowania przy użyciu certyfikatów](tutorial-access-api-with-certificates.md)
-* [Pierwsze wrażenie dotyczące interfejsów API raportowania](concept-reporting-api.md)
 * [Dokumentacja interfejsu API inspekcji](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
 * [Raport aktywności logowania, dokumentacja interfejsu API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)

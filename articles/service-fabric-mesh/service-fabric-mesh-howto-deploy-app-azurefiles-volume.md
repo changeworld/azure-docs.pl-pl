@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/09/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3b350deff2883761af6a3a2b3c5c9ef22235bde0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: cb5b421c1bcfe888d65335f3ab7f67bed80eec34
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42060802"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614263"
 ---
 # <a name="store-state-in-an-azure-service-fabric-mesh-application-by-mounting-an-azure-files-based-volume-inside-the-container"></a>Stan Store w aplikacji usługi Azure Service Fabric siatki, instalowania usługi Azure Files na podstawie woluminu w kontenerze
 
@@ -62,10 +62,10 @@ Tworzenie aplikacji i powiązanych zasobów przy użyciu następującego polecen
 
 `storageAccountKey` Parametr szablonu jest ciągiem bezpiecznym. Go nie będą wyświetlane w stan wdrożenia i `az mesh service show` poleceń. Upewnij się, że jest poprawnie określona w następującym poleceniu.
 
-Następujące polecenie służy do wdrażania aplikacji systemu Linux za pomocą [szablonu mesh_rp.linux.json](https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.linux.json). Aby wdrożyć aplikację Windows, należy użyć [szablonu mesh_rp.windows.json](https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.windows.json). Należy pamiętać, czy większych obrazów kontenerów może potrwać dłużej wdrożenia.
+Następujące polecenie służy do wdrażania aplikacji systemu Linux za pomocą [szablonu counter.azurefilesvolume.linux.json](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json). Aby wdrożyć aplikację Windows, należy użyć [szablonu counter.azurefilesvolume.windows.json](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.windows.json). Należy pamiętać, czy większych obrazów kontenerów może potrwać dłużej wdrożenia.
 
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.linux.json  --parameters "{\"location\": {\"value\": \"eastus\"}, \"fileShareName\": {\"value\": \"<fileShareName>\"}, \"storageAccountName\": {\"value\": \"<storageAccountName>\"}, \"storageAccountKey\": {\"value\": \"<storageAccountKey>\"}}"
+az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json  --parameters "{\"location\": {\"value\": \"eastus\"}, \"fileShareName\": {\"value\": \"<fileShareName>\"}, \"storageAccountName\": {\"value\": \"<storageAccountName>\"}, \"storageAccountKey\": {\"value\": \"<storageAccountKey>\"}}"
 ```
 
 W ciągu kilku minut polecenie powinny zwracać z `counterApp has been deployed successfully on counterAppNetwork with public ip address <IP Address>`
@@ -97,5 +97,5 @@ az group delete --resource-group myResourceGroup
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Wyświetlanie usługi Azure Files woluminu przykładowej aplikacji na [GitHub](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter).
-- Aby dowiedzieć się więcej o modelu zasobów sieci szkieletowej usług, zobacz [siatki modelu zasobów usługi Service Fabric](service-fabric-mesh-service-fabric-resources.md).
-- Aby dowiedzieć się więcej na temat usługi Service Fabric siatki, przeczytaj [Omówienie usługi Service Fabric siatki](service-fabric-mesh-overview.md).
+- Aby dowiedzieć się więcej o modelu zasobów usługi Service Fabric, zobacz [Model zasobów usługi Service Fabric Mesh](service-fabric-mesh-service-fabric-resources.md).
+- Aby dowiedzieć się więcej na temat usługi Service Fabric Mesh, przeczytaj [omówienie usługi Service Fabric Mesh](service-fabric-mesh-overview.md).

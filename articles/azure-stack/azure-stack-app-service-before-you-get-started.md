@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 786f6ca3b3a1ad26d36c751c54d3cf69ae1d2fd4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 4f669d44582c47cc6c7c090627f957288fee0f1a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240872"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615878"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack
 
@@ -28,7 +28,7 @@ ms.locfileid: "50240872"
 Przed wdrożeniem usługi Azure App Service w usłudze Azure Stack, należy wykonać kroki wymagań wstępnych, w tym artykule.
 
 > [!IMPORTANT]
-> Zastosowanie aktualizacji 1807 do systemu Azure Stack zintegrowane, lub wdrożyć najnowszą usługi Azure Stack Development Kit (ASDK) przed wdrożeniem usługi Azure App Service 1.3.
+> Zastosowanie aktualizacji 1809 do systemu Azure Stack zintegrowane, lub wdrożyć najnowszą usługi Azure Stack Development Kit (ASDK) przed wdrożeniem usługi Azure App Service 1.4.
 
 ## <a name="download-the-installer-and-helper-scripts"></a>Pobieranie skryptów Instalatora i pomocnika
 
@@ -44,6 +44,10 @@ Przed wdrożeniem usługi Azure App Service w usłudze Azure Stack, należy wyko
    - Remove-AppService.ps1
    - Folder modułów
      - GraphAPI.psm1
+
+## <a name="syndicate-the-custom-script-extension-from-the-marketplace"></a>Zespól rozszerzenia niestandardowego skryptu z witryny Marketplace
+
+Usługa Azure App Service w usłudze Azure Stack wymaga v1.9.0 rozszerzenia niestandardowego skryptu.  Musi mieć rozszerzenie [zespolone z witryny Marketplace](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) przed rozpoczęciem wdrażania lub uaktualnienie usługi Azure App Service w usłudze Azure Stack
 
 ## <a name="high-availability"></a>Wysoka dostępność
 
@@ -61,7 +65,7 @@ Otwórz sesję programu PowerShell z podwyższonym poziomem uprawnień na komput
 
 Uruchom *Get AzureStackRootCert.ps1* skryptów z folderu, w którym została rozpakowana skrypty pomocnika. Skrypt utworzy certyfikat główny, w tym samym folderze co skrypt, który potrzebuje tworzenia certyfikatów usługi App Service.
 
-Po uruchomieniu następującego polecenia programu PowerShell należy przewidzieć AzureStack\CloudAdmin uprzywilejowanych punktu końcowego i poświadczenia.
+Po uruchomieniu następującego polecenia programu PowerShell, należy przewidzieć AzureStack\CloudAdmin uprzywilejowanych punktu końcowego i poświadczenia.
 
 ```PowerShell
     Get-AzureStackRootCert.ps1
@@ -151,6 +155,9 @@ Certyfikat tożsamości musi zawierać podmiotem, który odpowiada następujący
 
 ## <a name="virtual-network"></a>Sieć wirtualna
 
+> [!NOTE]
+> Wstępne tworzenie niestandardowa sieć wirtualna jest opcjonalne, ponieważ usługi Azure App Service w usłudze Azure Stack można utworzyć wymagane sieci wirtualnej, ale konieczne będzie komunikować się z języków SQL i serwera plików przy użyciu publicznych adresów IP.
+
 Usługa Azure App Service w usłudze Azure Stack umożliwia wdrażanie dostawcy zasobów do istniejącej sieci wirtualnej lub umożliwia tworzenie sieci wirtualnej jako część wdrożenia. Korzystanie z istniejącej sieci wirtualnej umożliwia użycie wewnętrznych adresów IP, aby nawiązać połączenie serwera plików i programu SQL server wymagane przez usługę Azure App Service w usłudze Azure Stack. Sieć wirtualna musi być skonfigurowany z następujących podsieci i zakres adresów, przed zainstalowaniem usługi Azure App Service w usłudze Azure Stack:
 
 Sieć wirtualna - /16
@@ -167,12 +174,20 @@ Podsieci
 
 Usługa Azure App Service wymaga użycia serwera plików. W przypadku wdrożeń produkcyjnych serwera plików musi być skonfigurowane wysoko dostępne i zdolne do obsługi błędów.
 
+### <a name="quickstart-template-for-file-server-for-deployments-of-azure-app-service-on-asdk"></a>Szablon szybkiego startu dla serwera plików w przypadku wdrożeń usługi Azure App Service na ASDK.
+
 W przypadku usługi Azure Stack Development Kit tylko w przypadku wdrożeń, można użyć [przykładowy szablon wdrożenia usługi Azure Resource Manager](https://aka.ms/appsvconmasdkfstemplate) do wdrożenia skonfigurowano jednowęzłowy serwer plików. Serwer plików z pojedynczym węzłem będzie należeć do grupy roboczej.
+
+### <a name="quickstart-template-for-highly-available-file-server-and-sql-server"></a>Szablon szybkiego startu dla serwera o wysokiej dostępności plików i programu SQL Server
+
+A [szablon szybkiego startu architektury odwołanie](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) jest teraz dostępna, który będzie wdrożyć serwer plików, programu SQL Server, usługi Active Directory do obsługi infrastruktury w sieci wirtualnej jest skonfigurowany do obsługi wysoko dostępne wdrożenie programu Usługa Azure App Service w usłudze Azure Stack.  
+
+### <a name="steps-to-deploy-a-custom-file-server"></a>Kroki, aby wdrożyć serwer plików niestandardowe
 
 >[!IMPORTANT]
 > Jeśli wybierzesz do wdrożenia usługi App Service w istniejącej sieci wirtualnej, serwer plików powinny być wdrażane w osobnej podsieci z usługi App Service.
 
-### <a name="provision-groups-and-accounts-in-active-directory"></a>Aprowizowanie grup i kont w usłudze Active Directory
+#### <a name="provision-groups-and-accounts-in-active-directory"></a>Aprowizowanie grup i kont w usłudze Active Directory
 
 1. Utwórz następujące grupy zabezpieczeń globalnych usługi Active Directory:
 
@@ -195,7 +210,7 @@ W przypadku usługi Azure Stack Development Kit tylko w przypadku wdrożeń, mo�
    - Dodaj **FileShareOwner** do **FileShareOwners** grupy.
    - Dodaj **FileShareUser** do **FileShareUsers** grupy.
 
-### <a name="provision-groups-and-accounts-in-a-workgroup"></a>Aprowizowanie grup i kont w grupie roboczej
+#### <a name="provision-groups-and-accounts-in-a-workgroup"></a>Aprowizowanie grup i kont w grupie roboczej
 
 >[!NOTE]
 > Gdy konfigurujesz serwer plików, uruchom następujące polecenia z **wiersza polecenia administratora**. <br>***Nie należy używać programu PowerShell.***
@@ -225,7 +240,7 @@ W przypadku użycia szablonu usługi Azure Resource Manager, użytkownicy, zosta
    net localgroup FileShareOwners FileShareOwner /add
    ```
 
-### <a name="provision-the-content-share"></a>Aprowizowanie udział zawartości
+#### <a name="provision-the-content-share"></a>Aprowizowanie udział zawartości
 
 Udział zawartości zawiera zawartość witryny sieci Web w dzierżawie. Procedura do udostępniania zawartości udostępnionej na pojedynczy serwer plików jest taka sama dla środowisk usługi Active Directory, jak i grupy roboczej. Ale różni się dla klastra trybu failover w usłudze Active Directory.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 0c22072d0eaa328fdf786421344e8ef2caaa575c
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 31ce23bf6249ef21a2c9fe515b78cdd6ebea9b9c
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515662"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614383"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji sieci web w usłudze Azure App Service
 ## <a name="overview"></a>Przegląd
@@ -73,16 +73,16 @@ Domyślnie dzienniki nie są automatycznie usuwane (z wyjątkiem produktów **re
 > Jeśli użytkownik [ponowne generowanie kluczy dostępu do konta magazynu](../storage/common/storage-create-storage-account.md), musisz zresetować konfigurację rejestrowania odpowiednich do używania kluczy zaktualizowane. W tym celu:
 >
 > 1. W **Konfiguruj** karcie należy ustawić funkcji rejestrowania odpowiednich **poza**. Zapisywanie ustawień użytkownika.
-> 2. Włącz rejestrowanie na obiekt blob konta magazynu lub tabelę ponownie. Zapisywanie ustawień użytkownika.
+> 2. Włącz rejestrowanie na obiekt blob z konta magazynu ponownie. Zapisywanie ustawień użytkownika.
 >
 >
 
-Dowolną kombinację systemu plików, usługi table storage lub usługi blob storage można włączyć w tym samym czasie i mieć osobny dziennik konfiguracje poziomu. Na przykład możesz rejestrować błędy i ostrzeżenia do magazynu obiektów blob jako rozwiązaniem długoterminowym rejestrowania podczas włączania rejestrowania w systemie plików z poziomem pełne.
+Dowolne kombinacje file system lub usługi blob Storage można włączyć w tym samym czasie i mieć osobny dziennik konfiguracje poziomu. Na przykład możesz rejestrować błędy i ostrzeżenia do magazynu obiektów blob jako rozwiązaniem długoterminowym rejestrowania podczas włączania rejestrowania w systemie plików z poziomem pełne.
 
-Gdy wszystkie trzy lokalizacje magazynu zapewnić tym samym podstawowe informacje dotyczące zarejestrowanych zdarzeń **magazyn tabel** i **magazynu obiektów blob** rejestrować dodatkowe informacje, takie jak identyfikator wystąpienia, identyfikator wątku i bardziej szczegółowe sygnatura czasowa (format taktu) niż rejestrowania **system plików**.
+Gdy zarówno w lokalizacji magazynu zapewnia te same informacje podstawowe dla zarejestrowanych zdarzeń **magazynu obiektów blob** rejestruje informacje dodatkowe, takie jak identyfikator wystąpienia, identyfikator wątku i bardziej szczegółową sygnatura czasowa (format taktu) niż rejestrowania **system plików**.
 
 > [!NOTE]
-> Informacje przechowywane w **magazyn tabel** lub **magazynu obiektów blob** może zostać oceniony jedynie przy użyciu klienta usługi storage lub aplikacji, która bezpośrednio może współpracować z tych systemów magazynowania. Na przykład programu Visual Studio 2013 zawiera Eksploratora magazynu, który może służyć do zapoznaj się z tabelą lub obiektem blob storage i HDInsight dostęp do danych przechowywanych w magazynie obiektów blob. Możesz również zapisywać dane aplikacji, która uzyskuje dostęp do usługi Azure Storage przy użyciu jednej z [zestawami SDK Azure](https://azure.microsoft.com/downloads/).
+> Informacje przechowywane w **magazynu obiektów blob** może zostać oceniony jedynie przy użyciu klienta usługi storage lub aplikacji, która bezpośrednio może współpracować z tych systemów magazynowania. Na przykład programu Visual Studio 2013 zawiera Eksploratora magazynu, który może służyć do eksplorowania usługi blob storage i HDInsight dostęp do danych przechowywanych w magazynie obiektów blob. Możesz również zapisywać dane aplikacji, która uzyskuje dostęp do usługi Azure Storage przy użyciu jednej z [zestawami SDK Azure](https://azure.microsoft.com/downloads/).
 >
 
 ## <a name="download"></a> Porady: pobieranie dzienników
@@ -159,7 +159,7 @@ Aby odfiltrować typów określonego dziennika, takich jak HTTP, użyj **— śc
 
 ## <a name="understandlogs"></a> Porady: zrozumienie dzienniki diagnostyczne
 ### <a name="application-diagnostics-logs"></a>Dzienniki diagnostyki aplikacji
-Usługa Application diagnostics przechowuje informacje w określonym formacie dla aplikacji .NET, w zależności od tego, czy są przechowywane dzienniki, aby system plików, usługi table storage lub blob storage. Podstawowy zestaw przechowywanych danych jest taka sama we wszystkich trzech typów magazynów — Data i godzina wystąpienia zdarzenia, identyfikator procesu, który zdarzenia, typ zdarzenia (informacje, ostrzeżenie, błąd) oraz komunikatów o zdarzeniach.
+Usługa Application diagnostics przechowuje informacje w określonym formacie dla aplikacji .NET, w zależności od tego, czy są przechowywane dzienniki do pliku systemu lub blob storage. Podstawowy zestaw przechowywanych danych jest taka sama we wszystkich trzech typów magazynów — Data i godzina wystąpienia zdarzenia, identyfikator procesu, który zdarzenia, typ zdarzenia (informacje, ostrzeżenie, błąd) oraz komunikatów o zdarzeniach.
 
 **System plików**
 
@@ -173,27 +173,9 @@ Na przykład zdarzenie błędu zostanie wyświetlony podobny do poniższego przy
 
 Logowanie do systemu plików zawiera podstawowe informacje z trzech dostępnych metod udostępnia tylko czasu, identyfikator procesu, poziom zdarzenia i komunikat.
 
-**Table Storage**
-
-Gdy logujesz się do usługi table storage, dodatkowe właściwości są używane do ułatwienia wyszukiwania danych przechowywanych w tabeli, a także bardziej szczegółowe informacje o zdarzeniu. Następujące właściwości (kolumn) są używane dla każdej jednostki (wiersz) w tabeli.
-
-| Nazwa właściwości | Format wartości / |
-| --- | --- |
-| PartitionKey |Data/godzina zdarzenia w formacie yyyyMMddHH |
-| RowKey |Wartość identyfikatora GUID, który unikatowo identyfikuje tę jednostkę |
-| Znacznik czasu |Data i godzina wystąpienia zdarzenia |
-| EventTickCount |Data i godzina wystąpienia zdarzenia, format taktu (większą precyzję) |
-| ApplicationName |Nazwa aplikacji sieci web |
-| Poziom |Poziom zdarzenia (na przykład błąd, ostrzeżenie, informacje) |
-| Identyfikator zdarzenia |Identyfikator zdarzenia tego zdarzenia<p><p>Wartość domyślna to 0, jeśli żaden określony |
-| Identyfikator wystąpienia |Wystąpienie aplikacji sieci web, która wystąpiła nawet w |
-| Identyfikator PID |Identyfikator procesu |
-| identyfikatora TID |Identyfikator wątku wątku, który jest generowane zdarzenie |
-| Komunikat |Komunikat szczegółów zdarzenia |
-
 **Blob Storage**
 
-Gdy logujesz się do magazynu obiektów blob, dane są przechowywane w formacie wartości rozdzielanych przecinkami (CSV). Podobnie jak magazyn tabel dodatkowe pola są rejestrowane w celu zapewnienia bardziej szczegółowe informacje o zdarzeniu. Następujące właściwości są używane dla każdego wiersza w woluminie CSV:
+Gdy logujesz się do magazynu obiektów blob, dane są przechowywane w formacie wartości rozdzielanych przecinkami (CSV). Dodatkowe pola są rejestrowane w celu zapewnienia bardziej szczegółowe informacje o zdarzeniu. Następujące właściwości są używane dla każdego wiersza w woluminie CSV:
 
 | Nazwa właściwości | Format wartości / |
 | --- | --- |

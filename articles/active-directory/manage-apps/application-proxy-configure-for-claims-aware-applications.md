@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/04/2017
+ms.date: 11/08/2018
 ms.author: barbkess
-ms.reviewer: harshja
-ms.openlocfilehash: cf92b5b6ee3c6a529a43e7fa4cfeeb09954ad9ea
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.reviewer: japere
+ms.openlocfilehash: bb04f1965764413c474c2e0d057d77d5d30edd07
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365395"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623115"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Praca z aplikacji obsługujących oświadczenia na serwerze Proxy aplikacji
 [Aplikacje obsługujące oświadczenia](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) wykonania przekierowania do Usługa tokenu zabezpieczającego (STS). Usługa STS żąda poświadczeń użytkownika w zamian za token, a następnie przekierowuje użytkownika do aplikacji. Istnieje kilka sposobów, aby włączyć serwer Proxy aplikacji do pracy z tymi przekierowania. Aby skonfigurować wdrożenie aplikacji z obsługą oświadczeń, należy użyć w tym artykule. 
@@ -54,7 +54,7 @@ Jeśli wszystkie wewnętrzne adresy URL dla aplikacji są w pełni kwalifikowane
    ![Dodawanie punktu końcowego — ustaw wartość zaufanego adresu URL — zrzut ekranu](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Włączanie logowania jednokrotnego na](application-proxy-single-sign-on.md) dla aplikacji, które nie obsługują oświadczeń
+* [Włączanie logowania jednokrotnego na](configure-single-sign-on-portal.md) dla aplikacji, które nie obsługują oświadczeń
 * [Włącz aplikacje klienta natywnego do interakcji z serwera proxy aplikacji](application-proxy-configure-native-client-application.md)
 
 

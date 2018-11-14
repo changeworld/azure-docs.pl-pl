@@ -1,5 +1,5 @@
 ---
-title: Zapytania SQL pod kątem usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
+title: Zapytania SQL w usłudze Azure Cosmos DB | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o składni języka SQL, pojęć dotyczących baz danych i zapytań SQL usługi Azure Cosmos DB. SQL może być używany jako język zapytań JSON w usłudze Azure Cosmos DB.
 keywords: Składnia SQL, zapytanie sql, zapytania sql, język zapytań json, pojęć dotyczących baz danych i zapytania sql, funkcje agregujące
 services: cosmos-db
@@ -10,27 +10,27 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/10/2018
+ms.date: 11/02/2018
 ms.author: laviswa
-ms.openlocfilehash: 22b31e7df4e11f8f98877a8497b533203dcc26b3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8799371c911f3e120cb8654bf26fa933b17e4b3c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233307"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623412"
 ---
-# <a name="query-azure-cosmos-db-data-with-sql-queries"></a>Wykonywanie zapytań dotyczących danych usługi Azure Cosmos DB za pomocą zapytań SQL
+# <a name="sql-queries-in-azure-cosmos-db"></a>Zapytania SQL w usłudze Azure Cosmos DB
 
-Microsoft Azure Cosmos DB obsługuje tworzenie zapytań dla dokumentów przy użyciu języka SQL (Structured Query Language) jako język zapytań JSON na kontach interfejsu API SQL. Podczas projektowania język zapytań usługi Azure Cosmos DB, są uważane za dwóch celów:
+Usługa Azure Cosmos DB obsługuje wykonywanie zapytań przy użyciu programu SQL (Structured Query Language) jako język zapytań JSON dla baz danych Cosmos interfejsu API SQL. Podczas projektowania języka zapytań dla bazy danych Cosmos interfejsu API SQL, zostały uznane za dwóch celów:
 
-* Zamiast inventing nowego języka zapytań, wprowadziliśmy usługa Azure Cosmos DB obsługuje język SQL, jednym z najbardziej znanych i popularnych języków zapytania. Azure Cosmos DB SQL zapewnia model programowania formalne zaawansowane zapytania przez dokumentów JSON.  
+* Zamiast inventing nowego języka zapytań, Cosmos DB obsługuje SQL, jednym z najbardziej znanych i popularnych języków zapytania. SQL usługi cosmos DB zapewnia model programowania formalne zaawansowane zapytania przez dane JSON.  
 
-* Usługa Azure Cosmos DB przy użyciu języka JavaScript w modelu programowania jako podstawa język zapytań. Interfejs API SQL zostaje umieszczone w systemie typów języka JavaScript, Obliczanie wyrażenia i wywołania funkcji. To umożliwiłoby przewiduje naturalnych modelu programowania projekcje relacyjnych, hierarchicznych nawigacji między dokumentów JSON, samodzielnie sprzężeń, zapytań przestrzennych i wywołania funkcji zdefiniowanych przez użytkownika (UDF), napisanych w całości w języku JavaScript, m.in. 
+* Usługa cosmos DB przy użyciu języka JavaScript w modelu programowania jako podstawa język zapytań. Interfejs API SQL zostaje umieszczone w systemie typów języka JavaScript, Obliczanie wyrażenia i wywołania funkcji. Dzięki temu model programowania naturalnych projekcje relacyjnych, hierarchicznych nawigacji dokumentów JSON, samodzielnie sprzężeń, zapytań przestrzennych i wywołania funkcji zdefiniowanych przez użytkownika (UDF), napisanych w całości w języku JavaScript, m.in.
 
-W tym artykule przedstawiono kilka przykładów zapytań SQL za pomocą prostych dokumentów JSON. Aby uzyskać informacje dotyczące składni języka SQL usługi Azure Cosmos DB, zobacz [dokumentacja składni SQL](sql-api-sql-query-reference.md) artykułu. 
+W tym artykule opisano za pośrednictwem przykłady zapytań SQL usługi Cosmos DB przy użyciu prostych dokumentów JSON. Aby dowiedzieć się więcej na temat składni języka SQL usługi Cosmos DB, zobacz [dokumentacja składni SQL](sql-api-sql-query-reference.md).
 
 ## <a id="GettingStarted"></a>Wprowadzenie do poleceń SQL
-Utworzymy dwie proste dokumentów JSON i zapytania względem tych danych. Należy wziąć pod uwagę dwa dokumenty JSON dotyczące rodziny, wstawić tych dokumentów JSON do kolekcji i następnie utworzyć zapytanie względem danych. Tu mamy JSON prostych dokumentów dla rodziny Andersen i Wakefield, nadrzędne, podrzędne (i ich zwierzęta), adres i informacje o rejestracji. Dokument ma ciągi, liczby, wartości logicznych, tablic i zagnieżdżonych właściwości. 
+Umożliwia tworzenie dwóch prostych dokumentów JSON, zawierająca opis rodzin i tworzenie zapytań dotyczących tych danych. Po wstawieniu te dwa dokumenty w kontenerze Cosmos, możemy rozpocząć wykonywania zapytań o dane. Poniżej Definiujemy prostą dokumentów JSON dla rodziny Andersen i Wakefield. Każdy dokument zawiera ciągi, liczby, wartości logicznych, tablic i zagnieżdżonych właściwości.
 
 **Dokument1**  
 
@@ -44,8 +44,8 @@ Utworzymy dwie proste dokumentów JSON i zapytania względem tych danych. Należ
   ],
   "children": [
      {
-         "firstName": "Henriette Thaulow", 
-         "gender": "female", 
+         "firstName": "Henriette Thaulow",
+         "gender": "female",
          "grade": 5,
          "pets": [{ "givenName": "Fluffy" }]
      }
@@ -89,9 +89,9 @@ W tym miejscu jest drugi dokument z jedną różnicą subtelne — `givenName` i
 }
 ```
 
-Teraz Wypróbujmy kilka zapytań dotyczących tych danych, aby poznać niektóre z kluczowych aspektów języka zapytania SQL usługi Azure Cosmos DB. 
+Teraz Wypróbujmy kilka zapytań dotyczących tych danych, aby dowiedzieć się więcej na temat niektórych kluczowych aspektów języka zapytania SQL usługi Cosmos DB.
 
-**Zapytanie1**: na przykład, następujące zapytanie zwraca dokumenty, których pole id `AndersenFamily`. Ponieważ jest ono `SELECT *`, dane wyjściowe zapytania są kompletnym dokumentem JSON, aby dowiedzieć się więcej na temat składni, zobacz [instrukcji SELECT](sql-api-sql-query-reference.md#select-query):
+**Zapytanie1**: następujące zapytanie zwraca dokumenty, dla których pole id odpowiada `AndersenFamily`. Ponieważ jest ono `SELECT *`, dane wyjściowe zapytania są kompletnym dokumentem JSON. Aby dowiedzieć się więcej o składni zapytań, zobacz [instrukcji SELECT](sql-api-sql-query-reference.md#select-query):
 
 ```sql
     SELECT * 
@@ -121,7 +121,7 @@ Teraz Wypróbujmy kilka zapytań dotyczących tych danych, aby poznać niektóre
     }]
 ```
 
-**Kwerenda2** : teraz Rozważmy przypadek, gdy będziemy musieli ponownie sformatować dane wyjściowe JSON w innym kształcie. To zapytanie projektów obiekt JSON z dwoma wybrane pola Nazwisko i Miasto, gdy adres miasto ma taką samą nazwę jak stan. W tym przypadku pasuje do "NY, NY".   
+**Kwerenda2** : teraz Rozważmy przypadek, gdy będziemy musieli ponownie sformatować dane wyjściowe JSON. Ta kwerenda zwraca obiekt JSON z dwoma wybranych pól, nazwisko i Miasto, dokumentów, w których miejscowość i Województwo są identyczne. W tym przypadku "NY, NY" jest dopasowanie.
 
 ```sql
     SELECT {"Name":f.id, "City":f.address.city} AS Family 
@@ -159,15 +159,15 @@ Teraz Wypróbujmy kilka zapytań dotyczących tych danych, aby poznać niektóre
     ]
 ```
 
-Poniżej przedstawiono kilka aspektów języka zapytań usługi Cosmos DB przy użyciu przykładów, które w tym samouczku do tej pory:  
+Niektórych ważnych aspektów język zapytań SQL usługi Cosmos DB za pomocą przykładów w tym samouczku do tej pory:  
 
-* Ponieważ interfejs API SQL działa na wartości JSON, dotyczy drzewa ukształtowane jednostki zamiast wierszy i kolumn. W związku z tym, języka pozwala odwoływać się do węzłów drzewa na dowolnym poziomie dowolnego, takie jak `Node1.Node2.Node3…..Nodem`, podobnie jak relacyjna baza danych SQL odwołujące się do dwóch części odwołanie `<table>.<column>`.   
+* Ponieważ interfejs API SQL działa na wartości JSON, dotyczy drzewa ukształtowane jednostki zamiast wierszy i kolumn. W związku z tym, języka pozwala odwoływać się do węzłów drzewa na dowolnym poziomie dowolnego, takie jak `Node1.Node2.Node3…..Nodem`, podobnie jak relacyjna baza danych SQL odwołujące się do dwóch części odwołanie `<table>.<column>`.
 
-* Język structured query language współpracuje z danych bez schematu. W związku z tym system typu musi być dynamicznie powiązane. To samo wyrażenie może przynieść różnych typów w różnych dokumentach. Wynik zapytania jest prawidłową wartością JSON, ale nie musi być stały schemat.  
+* Interfejs API SQL w programach danych bez schematu. W związku z tym system typu musi być dynamicznie powiązane. To samo wyrażenie może przynieść różnych typów podczas oceny w różnych dokumentach. Wynik zapytania jest prawidłową wartością JSON, ale nie musi być typu z określonego schematu.
 
-* Usługa Azure Cosmos DB obsługuje strict dokumentów JSON. Oznacza to, że system typów i wyrażenia są ograniczone do czynienia tylko z typami JSON. Zapoznaj się [specyfikacji formatu JSON](http://www.json.org/) Aby uzyskać więcej informacji.  
+* Usługa cosmos DB obsługuje strict dokumentów JSON. Oznacza to, że system typów i wyrażenia są ograniczone do czynienia tylko z typami JSON. Zapoznaj się [specyfikacji formatu JSON](http://www.json.org/) Aby uzyskać więcej informacji.  
 
-* Kolekcja usługi Cosmos DB jest kontenerem dokumentów JSON bez schematu. Relacje w encji danych wewnątrz i pomiędzy dokumenty w kolekcji są przechwytywane niejawnie przez zawierania a nie przez klucz podstawowy i relacje klucza obcego. Jest to ważnym aspektem wspomnieć w świetle sprzężeń wewnątrz dokumentu omówione w dalszej części tego artykułu.
+* Kontener Cosmos jest kontenerem dokumentów JSON bez schematu. Relacje w encji danych wewnątrz i pomiędzy dokumentów w kontenerze są przechwytywane niejawnie przez zawierania a nie przez klucz podstawowy i relacje klucza obcego. Jest to ważnym aspektem wspomnieć w świetle sprzężeń wewnątrz dokumentu omówione w dalszej części tego artykułu.
 
 ## <a id="SelectClause"></a>SELECT — klauzula
 
@@ -264,17 +264,19 @@ Przyjrzyjmy się rola `$1` tutaj. `SELECT` Klauzuli musi utworzyć obiekt JSON, 
 
 ## <a id="FromClause"></a>FROM — klauzula
 
-OD < from_specification > klauzula jest opcjonalny, jeśli źródło jest filtrowana lub przewidywany później w zapytaniu. Aby dowiedzieć się więcej na temat składni, zobacz [SKŁADNIĘ](sql-api-sql-query-reference.md#bk_from_clause). Zapytanie, takich jak `SELECT * FROM Families` wskazuje, że całą kolekcję rodzin źródła, względem którego ma zostać wyliczenia. Specjalny identyfikator główny może służyć do reprezentowania kolekcji zamiast nazwę kolekcji. Poniższa lista zawiera reguły, które są wymuszane na zapytanie:
+OD < from_specification > klauzula jest opcjonalny, jeśli źródło jest filtrowana lub przewidywany później w zapytaniu. Aby dowiedzieć się więcej na temat składni, zobacz [SKŁADNIĘ](sql-api-sql-query-reference.md#bk_from_clause). Zapytanie, takich jak `SELECT * FROM Families` wskazuje, że cały kontener rodzin źródła, względem którego ma zostać wyliczenia. Specjalny identyfikator główny może służyć do reprezentowania kontenera zamiast nazwy kontenera.
 
-* Kolekcja może być aliasem, taką jak `SELECT f.id FROM Families AS f` lub po prostu `SELECT f.id FROM Families f`. W tym miejscu `f` jest odpowiednikiem `Families`. `AS` jest opcjonalnym słowem kluczowym na alias identyfikator.  
+Poniższa lista zawiera reguły, które są wymuszane na zapytanie:
 
-* Jeden raz, ponieważ nie można powiązać oryginalnego źródła. Na przykład `SELECT Families.id FROM Families f` ma nieprawidłową składnię, ponieważ już nie można rozpoznać identyfikatora "Rodzin".  
+* Kontener może być aliasem, taką jak `SELECT f.id FROM Families AS f` lub po prostu `SELECT f.id FROM Families f`. W tym miejscu `f` jest aliasem `Families`. `AS` jest opcjonalnym słowem kluczowym na alias identyfikator.  
+
+* Jeden raz, ponieważ nie można powiązać oryginalnego źródła. Na przykład `SELECT Families.id FROM Families f` ma nieprawidłową składnię, ponieważ identyfikator "Rodzin" nie można rozpoznać po jego alias.  
 
 * Wszystkie właściwości, które muszą być przywoływane musi być w pełni kwalifikowana. W przypadku braku zgodności ścisłego schematu ta wartość jest wymuszana w celu uniknięcia niejednoznaczne powiązań. W związku z tym `SELECT id FROM Families f` ma nieprawidłową składnię, ponieważ właściwość `id` nie jest powiązany.
 
 ### <a name="get-subdocuments-using-from-clause"></a>Pobieranie dokumentów podrzędnych za pomocą klauzuli FROM
 
-Źródła można zmniejszyć w taki sposób, aby mniejszego podzestawu. Na przykład do wyliczania tylko poddrzewo poszczególnych dokumentów, subroot można następnie stają się źródła, jak pokazano w poniższym przykładzie:
+Źródła można wybrać w taki sposób, aby być podzbiorem. Na przykład można wyliczyć poddrzewa, źródła można określić jak pokazano w poniższym przykładzie:
 
 **Zapytanie**
 
@@ -316,7 +318,7 @@ OD < from_specification > klauzula jest opcjonalny, jeśli źródło jest filtro
     ]
 ```
 
-Powyższy przykład tablicy są używane jako źródło, obiekt może być również używana jako źródło, w którym jest przedstawionego w poniższym przykładzie: wszystkie prawidłową wartość JSON (nie jest niezdefiniowany) znajdujący się w źródle uznaje się do włączenia w wyniku zapytania. Jeśli nie masz niektórych rodzin `address.state` wartości, są one wyłączone w wyniku zapytania.
+Powyższy przykład tablicy są używane jako źródło, obiekt może również jako źródło, jak pokazano w poniższym przykładzie. Wszelkie prawidłową wartość JSON (nie jest niezdefiniowany) znajdujący się w źródle uznaje się do włączenia w wyniku zapytania. Jeśli nie masz niektórych rodzin `address.state` wartości, są wykluczone z wyników zapytania.
 
 **Zapytanie**
 
@@ -335,7 +337,7 @@ Powyższy przykład tablicy są używane jako źródło, obiekt może być równ
 ```
 
 ## <a id="WhereClause"></a>Klauzula WHERE
-Klauzula WHERE (**`WHERE <filter_condition>`**) jest opcjonalny. Określa, że warunki, dokumenty JSON dostarczony przez źródło musi spełniać, aby być dołączone do wyniku. Dowolny dokument JSON musi być określone warunki "true", aby zostały uznane za na wynik. Klauzula WHERE jest używana przez warstwę indeksu w celu określenia najmniejszy bezwzględne podzbiór dokumentów źródła, które mogą być częścią wynik. Aby dowiedzieć się więcej na temat składni, zobacz [składni gdzie](sql-api-sql-query-reference.md#bk_where_clause).
+Klauzula WHERE (**`WHERE <filter_condition>`**) jest opcjonalny. Określa, że warunki, dokumenty JSON dostarczony przez źródło musi spełniać, aby być dołączone do wyniku. Dowolny dokument JSON musi być określone warunki "true", aby zostały uznane za na wynik. Klauzula WHERE jest używana przez warstwę indeksu w celu określenia najmniejszy podzbiór dokumentów źródła, które mogą być częścią wynik. Aby dowiedzieć się więcej na temat składni, zobacz [składni gdzie](sql-api-sql-query-reference.md#bk_where_clause).
 
 Następujące zapytanie żąda dokumentów, które zawierają właściwość name, którego wartością jest `AndersenFamily`. Dowolny dokument, który nie ma właściwości name, lub gdy nie jest zgodna wartość `AndersenFamily` jest wykluczona. 
 
@@ -366,10 +368,10 @@ Następujące operatory dwuargumentowe są obecnie obsługiwane i mogą być uż
 |**Typ operatora**  |**Wartości**  |
 |---------|---------|
 |Operacje arytmetyczne    |   +,-,*,/,%   |
-|bitowe  |   |, &, ^, <<>>,, >>> (zero wypełnienia przesunięcia bitowego w prawo)      |
+|bitowe  |   , &, ^, &lt; &lt;, &gt; &gt;, &gt; &gt; &gt; (zero wypełnienia przesunięcia bitowego w prawo)      |
 |Logiczne   |   AND, OR, NOT      |
 |Porównanie   |    =, !=, &lt;, &gt;, &lt;=, &gt;=, <>     |
-|Ciąg  |  || (Połącz)       |
+|Ciąg  |  \|\| (Połącz)       |
 
 Spójrzmy na kilka zapytań przy użyciu operatorów binarnych.
 
@@ -925,7 +927,7 @@ GÓRNY — słowo kluczowe może służyć do Ogranicz liczbę wartości z zapyt
 TOP może służyć z wartością stałą (jak pokazano powyżej) lub z wartością zmiennej za pomocą sparametryzowanych zapytań. Aby uzyskać więcej informacji zobacz poniższe sparametryzowanych zapytań.
 
 ## <a id="Aggregates"></a>Funkcje agregujące
-Można również wykonać agregacji w `SELECT` klauzuli. Funkcje agregujące wykonywanie obliczeń na zestaw wartości i zwraca wartość typu single. Na przykład następujące zapytanie zwraca liczbę rodziny dokumentów w kolekcji.
+Można również wykonać agregacji w `SELECT` klauzuli. Funkcje agregujące wykonywanie obliczeń na zestaw wartości i zwraca wartość typu single. Na przykład następujące zapytanie zwraca liczbę rodziny dokumentów w kontenerze.
 
 **Zapytanie**
 
@@ -992,7 +994,7 @@ Agregacje, można również przeprowadzić za pośrednictwem wyników iterację 
 >
 
 ## <a id="OrderByClause"></a>Klauzula ORDER BY
-Tak jak w ANSI SQL, można dołączyć opcjonalny klauzuli Order By podczas wykonywania zapytania. Klauzula mogą zawierać opcjonalny argument ASC/DESC określić kolejność, w której można pobrać wyniki.
+LikJust jak ANSI SQL, można uwzględnić opcjonalne klauzuli Order By podczas wykonywania zapytania. Klauzula mogą zawierać opcjonalny argument ASC/DESC określić kolejność, w której można pobrać wyniki.
 
 Na przykład w tym miejscu jest zapytanie, które pobiera rodziny, w kolejności według nazwy miasta rezydentnego.
 
@@ -1085,7 +1087,7 @@ Dodano nową konstrukcję za pośrednictwem **w** — słowo kluczowe w interfej
     ]
 ```
 
-Teraz Przyjrzyjmy się inne zapytanie, który wykonuje iterację przez elementy podrzędne w kolekcji. Należy zauważyć różnicę w tablicy danych wyjściowych. Ten przykład dzieli `children` i spłaszcza wyniki w jedną.  
+Teraz Przyjrzyjmy się inne zapytanie, który wykonuje iterację przez elementy podrzędne w kontenerze. Należy zauważyć różnicę w tablicy danych wyjściowych. Ten przykład dzieli `children` i spłaszcza wyniki w jedną.  
 
 **Zapytanie**
 
@@ -1159,7 +1161,7 @@ Można również wykonać agregacji za pośrednictwem wyniku tablicy iteracji. N
 ### <a id="Joins"></a>Sprzężenia
 W relacyjnej bazie danych ważne jest konieczność join między tabelami. Jest logiczną następstwem do projektowania znormalizowaną schematów. Sprzecznie tego interfejsu API SQL dotyczy modelu dane denormalizowane dokumentów bez schematu. Jest logicznym odpowiednikiem metod na "samosprzężenie".
 
-Składnia, która obsługuje język jest sprzężenia JOIN < from_source2 > < from_source1 >... Dołącz do < from_sourceN >. Ogólne, to zwraca zestaw elementów **N**- krotności (krotki o **N** wartości). Każda krotka zawiera wartości utworzone przez wszystkie aliasy kolekcji Iterowanie po ich odpowiednich zestawów. Innymi słowy jest to pełny iloczyn wektorowy zestawy uczestniczących w sprzężeniu.
+Składnia, która obsługuje język jest sprzężenia JOIN < from_source2 > < from_source1 >... Dołącz do < from_sourceN >. Ogólne, to zwraca zestaw elementów **N**- krotności (krotki o **N** wartości). Każda krotka zawiera wartości utworzone przez wszystkie aliasy kontenera Iterowanie po ich odpowiednich zestawów. Innymi słowy jest to pełny iloczyn wektorowy zestawy uczestniczących w sprzężeniu.
 
 W poniższych przykładach pokazano, jak działa klauzuli JOIN. W poniższym przykładzie wynik jest pusty, ponieważ iloczyn wektorowy poszczególnych dokumentów ze źródła i pusty zestaw jest pusty.
 
@@ -1321,17 +1323,17 @@ W następnym przykładzie istnieje dodatkowy filtr na `pet`. Nie obejmuje to wsz
 ```
 
 ## <a id="JavaScriptIntegration"></a>Integracja z językiem JavaScript
-Usługa Azure Cosmos DB zapewnia model programowania do wykonywania logiki aplikacji JavaScript na podstawie bezpośrednio w kolekcjach pod względem procedur składowanych i wyzwalaczy. Dzięki temu zarówno dla:
+Usługa cosmos DB zapewnia model programowania do wykonywania logiki aplikacji JavaScript na podstawie bezpośrednio na kontenery pod względem procedur składowanych i wyzwalaczy. Dzięki temu zarówno dla:
 
-* Możliwości transakcyjne operacje CRUD o wysokiej wydajności i zapytania względem dokumentów w kolekcji na podstawie głęboka Integracja środowiska uruchomieniowego JavaScript bezpośrednio wewnątrz aparatu bazy danych. 
-* Fizyczne modelowanie przepływu sterowania, zmienną zakresu, przypisania i integracji z transakcjami bazy danych w nim elementów podstawowych obsługi wyjątków. Aby uzyskać więcej informacji na temat obsługi usługi Azure Cosmos DB Integracja z językiem JavaScript można znaleźć w dokumentacji programowania po stronie serwera języka JavaScript.
+* Możliwości transakcyjne operacje CRUD o wysokiej wydajności i zapytania względem dokumentów w kontenerze na podstawie głęboka Integracja środowiska uruchomieniowego JavaScript bezpośrednio wewnątrz aparatu bazy danych. 
+* Fizyczne modelowanie przepływu sterowania, zmienną zakresu, przypisania i integracji z transakcjami bazy danych w nim elementów podstawowych obsługi wyjątków. Aby uzyskać więcej informacji na temat obsługi usługi Cosmos DB Integracja z językiem JavaScript zapoznaj się dokumentacją programowania po stronie serwera języka JavaScript.
 
 ### <a id="UserDefinedFunctions"></a>Funkcje zdefiniowane przez użytkownika (UDF)
 Wraz z typów już zdefiniowanych w tym artykule interfejs API SQL zapewnia obsługę dla zdefiniowane funkcje użytkownika (UDF). W szczególności funkcje skalarne zdefiniowane przez użytkownika są obsługiwane, gdzie deweloperzy mogą przekazać argumenty, zero lub wiele i zwraca wynik jeden argument, który jest ponownie. Każdy z tych argumentów są sprawdzane pod kątem trwa prawne wartości JSON.  
 
 Składania SQL jest rozszerzony do obsługi niestandardowej logiki aplikacji za pomocą tych funkcji, zdefiniowane przez użytkownika. Funkcje zdefiniowane przez użytkownika można zarejestrować za pomocą interfejsu SQL API i odwoływać jako elementu zapytania SQL. W rzeczywistości funkcje zdefiniowane przez użytkownika exquisitely są przeznaczone do wywołania przez zapytania. Jako następstwem ten wybór funkcje zdefiniowane przez użytkownika nie mają dostępu do obiektu kontekstu, które mają inne typy JavaScript (procedury składowane i wyzwalacze). Ponieważ zapytania są wykonywane jako tylko do odczytu, można uruchomić na maszynie podstawowej lub w replikach pomocniczych. W związku z tym funkcje zdefiniowane przez użytkownika są przeznaczone do uruchamiania w replikach pomocniczych, w przeciwieństwie do innych typów języka JavaScript.
 
-Poniżej przedstawiono przykładowy sposób funkcji zdefiniowanej przez użytkownika mogą być rejestrowane w bazie danych usługi Cosmos DB, w szczególności w ramach kolekcji dokumentów.
+Poniżej przedstawiono przykładowy sposób funkcji zdefiniowanej przez użytkownika można zarejestrować Cosmos bazę danych, a w szczególności w ramach kontenera dokumentu.
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction
@@ -1456,7 +1458,7 @@ Usługa cosmos DB, na mocy bycia bazy danych JSON, rysuje równoleżników przy 
 
 W interfejsie API SQL w odróżnieniu od tradycyjnych SQL typy wartości, często nie są znane dopóki wartość są pobierane z bazy danych. W celu wydajnego wykonywania zapytań, większość operatorów mają wymagania dotyczące typu strict. 
 
-Interfejs API SQL nie wykonuje konwersje niejawne, w przeciwieństwie do języka JavaScript. Na przykład zapytanie takie jak `SELECT * FROM Person p WHERE p.Age = 21` pasuje do dokumentów, które zawierają właściwość wiek, którego wartość to 21. Innych dokumentów, których właściwość wiek odpowiada prawdopodobnie nieskończone odmiany ciągów "21" lub inne, takie jak "021", "21.0", "0021", "00021", nie będzie można dopasować itp. Pozwala to w przeciwieństwie JavaScript, w których wartości ciągu są niejawnie rzutować na liczby (na podstawie operatora, np: ==). Ten wybór jest kluczowe znaczenie dla efektywnego indeksu dopasowywania w interfejsie API SQL. 
+Interfejs API SQL nie wykonuje konwersje niejawne, w przeciwieństwie do języka JavaScript. Na przykład zapytanie takie jak `SELECT * FROM Person p WHERE p.Age = 21` pasuje do dokumentów, które zawierają właściwość wiek, którego wartość to 21. Innych dokumentów, których właściwość wiek odpowiada prawdopodobnie nieskończone odmiany ciągów "21" lub inne, takie jak "021", "21.0", "0021", "00021", nie będzie można dopasować itp. To jest w przeciwieństwie do języka JavaScript, w których wartości ciągu są niejawnie rzutowany na numery (na podstawie operatora, np: ==). Ten wybór jest kluczowe znaczenie dla efektywnego indeksu dopasowywania w interfejsie API SQL. 
 
 ## <a name="parameterized-sql-queries"></a>Sparametryzowane zapytania SQL
 Usługa cosmos DB obsługuje zapytania z parametrami wyrażone za pomocą znanej \@ notacji. SQL — sparametryzowane zapewnia niezawodne obsługiwanie i anulowania zapewnianego element z danych wprowadzonych przez użytkownika, co uniemożliwia przypadkowe ujawnienie danych przez wstrzyknięcie kodu SQL. 
@@ -1806,7 +1808,7 @@ Funkcje przestrzenne może służyć do wykonywania zapytań dotyczących odleg�
     }]
 ```
 
-Aby uzyskać więcej informacji na temat obsługi dane geograficzne w usłudze Cosmos DB, zobacz [pracę z danymi dane geograficzne w usłudze Azure Cosmos DB](geospatial.md). To wszystko na funkcje przestrzenne i składnia SQL usługi Cosmos DB. Teraz Przyjrzyjmy się w sposób wysyłania zapytań do działania i sposób jej interakcji z użyciem składni LINQ widzieliśmy do tej pory.
+Aby uzyskać więcej informacji na temat obsługi dane geograficzne w usłudze Cosmos DB, zobacz [Praca z danymi dane geograficzne w usłudze Cosmos DB](geospatial.md). To wszystko na funkcje przestrzenne i składnia SQL usługi Cosmos DB. Teraz Przyjrzyjmy się w sposób wysyłania zapytań do działania i sposób jej interakcji z użyciem składni LINQ widzieliśmy do tej pory.
 
 ## <a id="Linq"></a>LINQ do interfejsu API SQL
 LINQ to model programowania .NET i wyraża obliczenie jako kwerendy dla strumieni obiektów. Usługa cosmos DB udostępnia bibliotekę klienta interfejsu za pomocą LINQ przez ułatwienie konwersji między obiektami JSON i platformy .NET i mapowanie podzbiór zapytań LINQ do zapytań usługi Cosmos DB. 
@@ -2138,14 +2140,14 @@ W zapytaniem zagnieżdżonym zapytanie wewnętrzne są stosowane do każdego ele
 ## <a id="ExecutingSqlQueries"></a>Wykonywanie zapytań SQL
 Usługa cosmos DB udostępnia zasoby za pośrednictwem interfejsu API REST, który można wywoływać za pomocą dowolnego języka realizującego żądania HTTP/HTTPS. Ponadto usługi Cosmos DB oferuje biblioteki programistyczne dla kilku popularnych języków, takich jak .NET, Node.js, JavaScript i Python. Interfejs API REST i różnych bibliotek obsługują wykonywanie zapytań za pomocą języka SQL. Zestaw .NET SDK obsługuje LINQ podczas badania oprócz SQL.
 
-Poniższe przykłady pokazują, jak tworzyć zapytania i przesłać go do konta bazy danych Cosmos DB.
+Poniższe przykłady pokazują, jak utworzyć zapytanie i prześlij go do konta Cosmos.
 
 ### <a id="RestAPI"></a>INTERFEJS API REST
-Usługa cosmos DB oferuje otwarte model programowania RESTful przy użyciu protokołu HTTP. Konta bazy danych mogą być udostępniane przy użyciu subskrypcji platformy Azure. Model zasobów usługi Cosmos DB zawiera zestaw zasobów w ramach konta bazy danych, z których każdy jest adresy logicznych i stabilnych identyfikatora URI. Zestaw zasobów, jest określany jako źródła danych w tym dokumencie. Konto bazy danych zawiera zestaw baz danych, każdy z nich zawierający wiele kolekcji, a każdy z których umożliwiłoby zawiera dokumenty, funkcje zdefiniowane przez użytkownika i innych typów zasobów.
+Usługa cosmos DB oferuje otwarte model programowania RESTful przy użyciu protokołu HTTP. Konta usługi cosmos mogą być udostępniane przy użyciu subskrypcji platformy Azure. Model zasobów usługi Cosmos DB zawiera zestaw zasobów w ramach konta usługi Cosmos, z których każdy jest adresy logicznych i stabilnych identyfikatora URI. Zestaw zasobów, jest określany jako źródła danych w tym dokumencie. Konta usługi Cosmos składa się z zestawu baz danych, każdy z nich zawierający wiele kontenerów, każdy z których umożliwiłoby zawiera dokumenty, funkcje zdefiniowane przez użytkownika i innych typów zasobów.
 
 Model interakcji podstawowa przy użyciu tych zasobów jest za pomocą polecenia HTTP GET, PUT, POST i DELETE przy użyciu ich standardowego interpretacji. Czasownik WPIS jest używany do tworzenia nowego zasobu, wykonywanie procedury przechowywanej lub zapytania usługi Cosmos DB. Zapytania są zawsze operacji tylko do odczytu przy użyciu efektów ubocznych.
 
-W poniższych przykładach pokazano WPIS dla interfejsu API SQL zapytanie wykonywane względem kolekcji, zawierający dwie przykładowe dokumenty gdy poznaliśmy już do tej pory. Zapytanie ma filtr prosty na nazwy właściwości JSON. Zwróć uwagę na użycie `x-ms-documentdb-isquery` i Content-Type: `application/query+json` nagłówki, aby wskazać, czy operacja się zapytania.
+W poniższych przykładach pokazano WPIS dla interfejsu API SQL zapytanie wykonywane względem kontener zawierający dwa przykładowe dokumenty gdy poznaliśmy już do tej pory. Zapytanie ma filtr prosty na nazwy właściwości JSON. Zwróć uwagę na użycie `x-ms-documentdb-isquery` i Content-Type: `application/query+json` nagłówki, aby wskazać, czy operacja się zapytania.
 
 **Żądanie**
 
@@ -2271,11 +2273,11 @@ Drugi przykład przedstawia bardziej złożonego zapytania, które zwraca wiele 
 
 Jeśli wyniki zapytania nie mieści się na jednej stronie wyników, a następnie interfejsu API REST zwraca token kontynuacji za pośrednictwem `x-ms-continuation-token` nagłówka odpowiedzi. Klienci mogą stronicowanie wyników, łącznie z nagłówkiem w kolejnych wyników. Można także kontrolować liczbę wyników na stronę za pośrednictwem `x-ms-max-item-count` numer nagłówka. Jeśli określona kwerenda ma funkcję agregacji, takich jak `COUNT`, a następnie na stronie zapytania mogą zwracać częściowo zagregowaną wartość za pośrednictwem strony wyników. Klienci, należy wykonać agregacji drugiego poziomu, za pośrednictwem tych wyników do wygenerowania wyników końcowych, na przykład, Suma za pośrednictwem liczby zwracanych w poszczególnych stron, aby zwrócić łączna liczba.
 
-Aby zarządzać zasadami spójności danych dla zapytania, należy użyć `x-ms-consistency-level` nagłówek, np. wszystkie żądania interfejsu API REST. W celu zapewnienia spójności sesji jest wymagane również echo najnowsze `x-ms-session-token` nagłówek Cookie żądania zapytania. Zasady indeksowania kolekcji kwerendy także mogą mieć wpływ na spójność wyników zapytania. Za pomocą domyślne ustawienia zasad indeksowania, zbierania danych indeks jest zawsze aktualny wraz z zawartością dokumentu i wyników zapytania pasuje spójności dla danych. Jeśli na leniwy przestała obowiązywać zasady indeksowania zapytania mogą zwracać wyniki starych. Aby uzyskać więcej informacji, zobacz [poziomów spójności systemu Azure Cosmos DB][consistency-levels].
+Aby zarządzać zasadami spójności danych dla zapytania, należy użyć `x-ms-consistency-level` nagłówek, np. wszystkie żądania interfejsu API REST. W celu zapewnienia spójności sesji jest wymagane również echo najnowsze `x-ms-session-token` nagłówek Cookie żądania zapytania. Zapytanie o kontenera zasad indeksowania także mogą mieć wpływ na spójność wyników zapytania. Za pomocą domyślne ustawienia zasad indeksowania, dla kontenerów indeks jest zawsze aktualny wraz z zawartością dokumentu i wyniki zapytania pasuje spójności dla danych. Jeśli na leniwy przestała obowiązywać zasady indeksowania zapytania mogą zwracać wyniki starych. Aby uzyskać więcej informacji, zobacz [poziomów spójności usługi Cosmos DB][consistency-levels].
 
-Jeśli skonfigurowane zasady indeksowania w kolekcji nie obsługuje określonego zapytania, serwer usługi Azure Cosmos DB zwraca 400 "złe żądanie". Ta wartość jest zwracana dla zapytania zakresowe względem ścieżki skonfigurowane dla wyszukiwań wyznaczania wartości skrótu (równości), a dla ścieżek, które jawnie wykluczone z indeksowania. `x-ms-documentdb-query-enable-scan` Nagłówka można określić, aby zezwolić na zapytanie, aby przeprowadzić skanowanie, gdy indeks nie jest dostępna.
+Jeśli skonfigurowane zasady indeksowania w kontenerze nie obsługuje określonego zapytania, serwer usługi Cosmos DB zwraca 400 "złe żądanie". Ta wartość jest zwracana dla zapytania zakresowe względem ścieżki skonfigurowane dla wyszukiwań wyznaczania wartości skrótu (równości), a dla ścieżek, które jawnie wykluczone z indeksowania. `x-ms-documentdb-query-enable-scan` Nagłówka można określić, aby zezwolić na zapytanie, aby przeprowadzić skanowanie, gdy indeks nie jest dostępna.
 
-Możesz uzyskać szczegółowe metryki na wykonanie zapytania, ustawiając `x-ms-documentdb-populatequerymetrics` nagłówka do `True`. Aby uzyskać więcej informacji, zobacz [metryki zapytania SQL usługi Azure Cosmos DB](sql-api-sql-query-metrics.md).
+Możesz uzyskać szczegółowe metryki na wykonanie zapytania, ustawiając `x-ms-documentdb-populatequerymetrics` nagłówka do `True`. Aby uzyskać więcej informacji, zobacz [metryki zapytania SQL usługi Cosmos DB](sql-api-sql-query-metrics.md).
 
 ### <a id="DotNetSdk"></a>C# (.NET) SDK
 Zestaw .NET SDK obsługuje zarówno LINQ, jak i SQL zapytań. Poniższy przykład pokazuje, jak wykonać zapytanie filtru proste wprowadzono we wcześniejszej części tego dokumentu.
@@ -2364,12 +2366,12 @@ Następny przykład pokazuje sprzężenia, wyrażonych za pośrednictwem LINQ Se
 
 Klient modelu .NET automatycznie wykonuje iterację przez wszystkie strony wyników zapytania w blokach instrukcji foreach, jak pokazano powyżej. Opcje zapytania zostanie wprowadzony w sekcji interfejsu API REST są również dostępne w przy użyciu zestawu .NET SDK `FeedOptions` i `FeedResponse` klas w metodzie CreateDocumentQuery. Liczbę stron, które mogą być kontrolowane za pomocą `MaxItemCount` ustawienie. 
 
-Można także jawnie kontrolować stronicowania, tworząc `IDocumentQueryable` przy użyciu `IQueryable` obiektu, a następnie, czytając` ResponseContinuationToken` wartości i przekazywania ich z powrotem jako `RequestContinuationToken` w `FeedOptions`. `EnableScanInQuery` można ustawić tak, aby włączyć skanowanie, gdy zapytanie nie może być obsługiwana przez skonfigurowane zasady indeksowania. W przypadku kolekcji podzielonych na partycje, można użyć `PartitionKey` do uruchomienia zapytania względem pojedynczej partycji (Chociaż usługi Cosmos DB można automatycznie prowadzenie to tekst zapytania), a `EnableCrossPartitionQuery` do uruchamiania zapytań, które mogą wymagać można uruchamiać wiele partycji. 
+Można także jawnie kontrolować stronicowania, tworząc `IDocumentQueryable` przy użyciu `IQueryable` obiektu, a następnie, czytając` ResponseContinuationToken` wartości i przekazywania ich z powrotem jako `RequestContinuationToken` w `FeedOptions`. `EnableScanInQuery` można ustawić tak, aby włączyć skanowanie, gdy zapytanie nie może być obsługiwana przez skonfigurowane zasady indeksowania. W przypadku partycjonowanego kontenerów, można użyć `PartitionKey` do uruchomienia zapytania względem pojedynczej partycji (Chociaż usługi Cosmos DB można automatycznie prowadzenie to tekst zapytania), i `EnableCrossPartitionQuery` do uruchamiania zapytań, które mogą wymagać można uruchamiać wiele partycji. 
 
-Zapoznaj się [przykładów usługi Azure Cosmos DB .NET](https://github.com/Azure/azure-documentdb-net) więcej przykładów, zawierający zapytania. 
+Zapoznaj się [przykłady dla platformy .NET usługi DB Cosmos](https://github.com/Azure/azure-documentdb-net) więcej przykładów, zawierający zapytania. 
 
 ### <a id="JavaScriptServerSideApi"></a>Interfejs API języka JavaScript po stronie serwera
-Usługa cosmos DB zapewnia model programowania do wykonywania logiki aplikacji JavaScript na podstawie bezpośrednio w kolekcji przy użyciu procedur składowanych i wyzwalaczy. Logika JavaScript zarejestrowany na poziomie kolekcji następnie mogą wyzwalać operacje bazy danych na operacje na dokumentach w danej kolekcji. Te operacje są opakowane w transakcje ACID otoczenia.
+Usługa cosmos DB zapewnia model programowania do wykonywania logiki aplikacji JavaScript na podstawie bezpośrednio na kontenery przy użyciu procedur składowanych i wyzwalaczy. Logika JavaScript zarejestrowany na poziomie kontenera następnie mogą wyzwalać operacje bazy danych na operacje na dokumentach danego kontenera. Te operacje są opakowane w transakcje ACID otoczenia.
 
 Poniższy przykład pokazuje, jak queryDocuments w serwerze JavaScript API służą do zapytania z wewnątrz procedur składowanych i wyzwalaczy.
 

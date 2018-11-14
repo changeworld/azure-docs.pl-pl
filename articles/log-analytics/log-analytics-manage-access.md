@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 796e10053df79f8f7106d98dd9c9be6083d9f719
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: de464cfeca01e492139e8bf9679d8f9876eedda6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964156"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625627"
 ---
 # <a name="manage-workspaces"></a>Zarządzanie obszarami roboczymi
 
@@ -239,7 +239,7 @@ Nowy plan taryfowy jest wyświetlany na wstążce portalu pakietu OMS w górnej 
 ![Wstążka pakietu OMS](./media/log-analytics-manage-access/data-plan-changed.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby zbierać dane z komputerów w centrum danych lub z innego środowiska chmury, zobacz [Collect data from computers in your environment with Log Analytics (Zbieranie danych z komputerów w używanym środowisku za pomocą usługi Log Analytics)](log-analytics-concept-hybrid.md).
+* Zobacz [omówienie agenta usługi Log Analytics](log-analytics-agent-overview.md) do zbierania danych z komputerów w centrum danych lub w innym środowisku chmury.
 * Aby skonfigurować zbieranie danych z maszyn wirtualnych platformy Azure, zobacz [Zbieranie danych dotyczących infrastruktury Azure Virtual Machines](log-analytics-quick-collect-azurevm.md).  
 * [Dodaj rozwiązania Log Analytics z galerii rozwiązań](../monitoring/monitoring-solutions.md), aby dodać funkcje i zebrać dane.
 

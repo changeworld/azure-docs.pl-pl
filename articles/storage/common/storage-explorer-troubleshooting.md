@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: 4f0558f9619aa06557cf89e885154f6326d4b150
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: ec12da6ccd5b681c85da87d53f944fc4430149b5
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281782"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616201"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów z Eksploratora usługi Storage platformy Azure
 
@@ -81,7 +81,7 @@ Systemu macOS pęku kluczy czasami może przejść do stanu, który powoduje, ż
 * Uruchom program Storage Explorer
 * Jeśli okno uwierzytelniania jest pusty, zaczekaj co najmniej jedną minutę przed zamknięciem okna dialogowego uwierzytelniania.
 * Upewnij się, że usługi serwera proxy i certyfikatu, że ustawienia są poprawnie skonfigurowane dla komputera i Eksploratora usługi Storage.
-* Jeśli znajdują się na Windows i mieć dostęp do programu Visual Studio 2017 na tym samym komputerze i logowania, zaloguj się do programu Visual Studio 2017. Po pomyślnym zalogowaniu do programu Visual Studio 2017 należy otworzyć Eksploratora usługi Storage i wyświetlenia ekranu konto użytkownika w panelu konta. 
+* Jeśli znajdują się na Windows i mieć dostęp do programu Visual Studio 2017 na tym samym komputerze i logowania, zaloguj się do programu Visual Studio 2017. Po pomyślnym zalogowaniu do programu Visual Studio 2017 należy otworzyć Eksploratora usługi Storage i wyświetlenia ekranu konto użytkownika w panelu konta.
 
 Jeśli żadna z tych metod działa [Otwórz problem w serwisie GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
@@ -115,6 +115,8 @@ Najpierw upewnij się, że następujące wprowadzone informacje są poprawne:
 
 * Adres URL serwera proxy i numer portu
 * Nazwa użytkownika i hasło, jeśli jest to wymagane przez serwer proxy
+
+Należy pamiętać, że Eksplorator usługi Storage nie obsługuje plik PAC do konfigurowania ustawień serwera proxy.
 
 ### <a name="common-solutions"></a>Typowe rozwiązania
 

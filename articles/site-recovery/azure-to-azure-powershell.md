@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/02/2018
 ms.author: sutalasi
-ms.openlocfilehash: e8f1753b6978c6e94082af426bc3dae075eb7837
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: f75c9a9b9cd258ad2c4e071593126697d41e4071
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567557"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624407"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure przy użyciu programu Azure PowerShell
 
@@ -148,7 +148,7 @@ Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $Vaultsettingsfile.File
 
 ```
 ```
-ResourceName         ResourceGroupName ResourceNamespace          ResouceType
+ResourceName         ResourceGroupName ResourceNamespace          ResourceType
 ------------         ----------------- -----------------          -----------
 a2aDemoRecoveryVault a2ademorecoveryrg Microsoft.RecoveryServices Vaults     
 ```

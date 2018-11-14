@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09dd046f9dc7d6b73207ab1ab739e913a8ed5b92
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b7839fc498b54d2128528c8d655d78bb759a7cd5
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282054"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612443"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Zaprojektować i zbudować rozwiązanie do zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
@@ -54,7 +54,7 @@ Jeśli potrzebujesz danych, która nie jest dostępna za pośrednictwem dowolnyc
 Należy zdefiniować żadnych zapytań, które prawdopodobnie będą pomocne dla użytkowników, nawet jeśli nie są one używane przez wszystkie widoki i alerty.  Te będą dostępne dla nich jako zapisane wyszukiwania w portalu, a można również uwzględnić je w [części wizualizacji zapytań listy](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part) w widoku niestandardowym.
 
 ### <a name="alerts"></a>Alerty
-[Alerty w usłudze Log Analytics](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) zidentyfikować problemy za pośrednictwem [dziennikach](#log-searches) względem danych w repozytorium.  One powiadomić użytkownika lub automatycznie uruchomić akcję w odpowiedzi. Należy zidentyfikować różnych warunków alertów dla aplikacji i umieścić odpowiednie reguły alertów w pliku rozwiązania.
+[Alerty w usłudze Log Analytics](../monitoring-and-diagnostics/monitoring-overview-alerts.md) zidentyfikować problemy za pośrednictwem [dziennikach](#log-searches) względem danych w repozytorium.  One powiadomić użytkownika lub automatycznie uruchomić akcję w odpowiedzi. Należy zidentyfikować różnych warunków alertów dla aplikacji i umieścić odpowiednie reguły alertów w pliku rozwiązania.
 
 Jeśli ten problem można rozwiązać potencjalnie przy użyciu zautomatyzowanego procesu, następnie zazwyczaj utworzysz element runbook w usłudze Azure Automation, aby to skorygować.  Większość usług platformy Azure można zarządzać za pomocą [poleceń cmdlet](/powershell/azure/overview) której element runbook będzie wykorzystywać do wykonywania takich funkcji.
 

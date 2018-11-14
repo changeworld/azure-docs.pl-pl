@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: d514728b892126522a73827bb79952612f34704b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 071e4694bc3e2a8dc70a199fe7d6021332693b88
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014027"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613872"
 ---
 # <a name="data-sources-in-log-analytics"></a>Źródła danych w usłudze Log Analytics
 Log Analytics zbiera dane z połączonych źródeł i zapisuje go w obszarze roboczym usługi Log Analytics.  Dane, które są zbierane z każdego jest definiowany przez źródeł danych, które konfigurujesz.  Dane w usłudze Log Analytics są przechowywane jako zestaw rekordów.  Każde źródło danych tworzy rekordy określonego typu, za pomocą poszczególnych typów posiadanie swój własny zestaw właściwości.
@@ -69,4 +69,4 @@ Wszystkie dane zebrane przez usługę Log Analytics jest przechowywane w obszarz
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [rozwiązania](../monitoring/monitoring-solutions.md) , dodawanie funkcji do usługi Log Analytics i również zbierać dane do obszaru roboczego.
 * Dowiedz się więcej o [dziennikach](log-analytics-queries.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
-* Konfigurowanie [alerty](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) celu proaktywnego powiadamiania o krytyczne dane zbierane z innych źródeł danych i rozwiązań.
+* Konfigurowanie [alerty](../monitoring-and-diagnostics/monitoring-overview-alerts.md) celu proaktywnego powiadamiania o krytyczne dane zbierane z innych źródeł danych i rozwiązań.

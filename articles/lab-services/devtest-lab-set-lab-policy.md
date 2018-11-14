@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 378eb8c1f2070e8f4b28c221369938e2ff04e2f3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: aa0ffbd69e73ddbef72e0eabf79f2736079c3d23
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255184"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622027"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Zarządzanie wszystkimi zasadami dla laboratorium w usłudze Azure DevTest Labs
 
-Usługa Azure DevTest Labs umożliwia decydują o koszcie i zminimalizować straty w laboratorium, Zarządzanie zasadami (ustawienia) w każdym środowisku laboratoryjnym. W tym artykule omówiono szczegółowo w instrukcje krok po kroku Ustaw każdej zasady.  
+Azure DevTest Labs umożliwia, decydują o koszcie i minimalizuje odpadów w laboratorium, umożliwiając zarządzanie zasadami (ustawienia) w każdym środowisku laboratoryjnym. W tym artykule omówiono szczegółowo w instrukcje krok po kroku Ustaw każdej zasady.  
 
 ## <a name="set-allowed-virtual-machine-sizes"></a>Zestaw dozwolone rozmiary maszyn wirtualnych
 Zasad do ustawiania dozwolonych rozmiarów maszyn wirtualnych pomaga zminimalizować straty laboratorium, dzięki czemu można określić rozmiary maszyn wirtualnych, które są dozwolone w środowisku laboratoryjnym. Jeśli zasada ta jest aktywna, tylko rozmiary maszyn wirtualnych z tej listy może służyć do tworzenia maszyn wirtualnych.
@@ -42,54 +42,78 @@ Zasad do ustawiania dozwolonych rozmiarów maszyn wirtualnych pomaga zminimalizo
 1. Wybierz pozycję **Zapisz**.
 
 ## <a name="set-virtual-machines-per-user"></a>Zestaw maszyn wirtualnych na użytkownika
-Zasady dla **maszyn wirtualnych na użytkownika** pozwala określić maksymalną liczbę maszyn wirtualnych, które mogą być tworzone przez użytkownika. Jeśli użytkownik próbuje utworzyć lub oświadczeń maszyny Wirtualnej, po osiągnięciu limitu użytkownik, komunikat o błędzie wskazuje, że maszyna wirtualna nie może być utworzony zgłoszone. 
+Zasady dla **maszyn wirtualnych na użytkownika** umożliwia określenie liczby maszyn wirtualnych, które mogą być tworzone przez użytkownika. Jeśli użytkownik próbuje utworzyć lub oświadczeń maszyny Wirtualnej, po osiągnięciu limitu użytkownik, komunikat o błędzie wskazuje, że maszyna wirtualna nie może być utworzony zgłoszone. 
 
 1. W laboratorium **konfiguracji i zasad** okienku wybierz **maszyn wirtualnych na użytkownika**.
    
     ![Maszyny wirtualne na użytkownika](./media/devtest-lab-set-lab-policy/max-vms-per-user.png)
 
-1. Wybierz **tak** ograniczyć liczbę maszyn wirtualnych na użytkownika. Jeśli chcesz ograniczyć liczbę maszyn wirtualnych na użytkownika, wybierz opcję **nie**. Jeśli wybierzesz **tak**, podaj wartość liczbową wskazującą maksymalną liczbę maszyn wirtualnych, które mogą być tworzone lub zgłoszone przez użytkownika. 
+1. Wybierz **tak** ograniczyć liczbę maszyn wirtualnych na użytkownika. Jeśli chcesz ograniczyć liczbę maszyn wirtualnych na użytkownika, wybierz opcję **nie**. Jeśli wybierzesz **tak**, podaj wartość liczbową określającą liczbę maszyn wirtualnych, które mogą być tworzone lub zgłoszone przez użytkownika. 
 
-1. Wybierz **tak** Aby ograniczyć liczbę maszyn wirtualnych używających dysków SSD (dysk SSD). Jeśli nie chcesz ograniczyć liczbę maszyn wirtualnych, które można używać dysków SSD, wybierz **nie**. Jeśli wybierzesz **tak**, wprowadź wartość wskazującą maksymalną liczbę maszyn wirtualnych, które mogą być tworzone przy użyciu dysków SSD. 
+1. Wybierz **tak** Aby ograniczyć liczbę maszyn wirtualnych używających dysków SSD (dysk SSD). Jeśli nie chcesz ograniczyć liczbę maszyn wirtualnych, które można używać dysków SSD, wybierz **nie**. Jeśli wybierzesz **tak**, wprowadź wartość określającą liczbę maszyn wirtualnych, które mogą być tworzone przy użyciu dysków SSD. 
 
 1. Wybierz pozycję **Zapisz**.
 
 ## <a name="set-virtual-machines-per-lab"></a>Zestaw maszyn wirtualnych na laboratorium
-Zasady dla **maszyn wirtualnych na laboratorium** pozwala określić maksymalną liczbę maszyn wirtualnych, które mogą być tworzone w bieżącym środowisku laboratoryjnym. Jeśli użytkownik próbuje utworzyć maszynę Wirtualną, po osiągnięciu limitu laboratorium, komunikat o błędzie wskazuje, nie można utworzyć maszyny Wirtualnej. 
+Zasady dla **maszyn wirtualnych na laboratorium** umożliwia określenie liczby maszyn wirtualnych, które mogą być tworzone w bieżącym środowisku laboratoryjnym. Jeśli użytkownik podejmie próbę utworzenia maszyny Wirtualnej, po osiągnięciu limitu laboratorium, komunikat o błędzie wskazuje, nie można utworzyć maszyny Wirtualnej. 
 
 1. W laboratorium **konfiguracji i zasad** okienku wybierz **maszyn wirtualnych na laboratorium**.
    
     ![Maszyn wirtualnych na laboratorium](./media/devtest-lab-set-lab-policy/max-vms-per-lab.png)
 
-1. Wybierz **tak** ograniczyć liczbę maszyn wirtualnych na laboratorium. Jeśli chcesz ograniczyć liczbę maszyn wirtualnych na laboratorium, wybierz opcję **nie**. Jeśli wybierzesz **tak**, podaj wartość liczbową wskazującą maksymalną liczbę maszyn wirtualnych, które mogą być tworzone lub zgłoszone przez użytkownika. 
+1. Wybierz **tak** ograniczyć liczbę maszyn wirtualnych na laboratorium. Jeśli chcesz ograniczyć liczbę maszyn wirtualnych na laboratorium, wybierz opcję **nie**. Jeśli wybierzesz **tak**, podaj wartość liczbową określającą liczbę maszyn wirtualnych, które mogą być tworzone lub zgłoszone przez użytkownika. 
 
-1. Wybierz **tak** Aby ograniczyć liczbę maszyn wirtualnych używających dysków SSD (dysk SSD). Jeśli nie chcesz ograniczyć liczbę maszyn wirtualnych, które można używać dysków SSD, wybierz **nie**. Jeśli wybierzesz **tak**, wprowadź wartość wskazującą maksymalną liczbę maszyn wirtualnych, które mogą być tworzone przy użyciu dysków SSD. 
+1. Wybierz **tak** Aby ograniczyć liczbę maszyn wirtualnych używających dysków SSD (dysk SSD). Jeśli nie chcesz ograniczyć liczbę maszyn wirtualnych, które można używać dysków SSD, wybierz **nie**. Jeśli wybierzesz **tak**, wprowadź wartość określającą liczbę maszyn wirtualnych, które mogą być tworzone przy użyciu dysków SSD. 
 
 1. Wybierz pozycję **Zapisz**.
 
-## <a name="set-auto-shutdown"></a>Zestaw automatycznego zamykania
+## <a name="set-auto-shutdown"></a>Ustaw automatyczne zamknięcie
 Zasady automatycznego zamykania, ułatwia minimalizację strat laboratorium, umożliwiając umożliwia określenie czasu zamykania maszyn wirtualnych w tym laboratorium.
 
-1. W laboratorium **konfiguracji i zasad** okienku wybierz **automatycznego zamykania**.
+1. W laboratorium **konfiguracji i zasad** okienku wybierz **automatyczne zamknięcie**.
    
-    ![Automatyczne zamykanie](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
+    ![Automatyczne zamknięcie](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
 
 1. Wybierz **na** można włączyć te zasady i **poza** go wyłączyć.
 
 1. Włączenie tych zasad, określ czas (i strefy czasowej) do zamykania wszystkich maszyn wirtualnych w bieżącym środowisku laboratoryjnym.
 
-1. Określ **tak** lub **nie** dla opcji wysłać powiadomienie z 15 minut przed chwilą określonego automatycznego zamykania. Jeśli wybierzesz **tak**, wprowadź punkt końcowy adres URL elementu webhook lub adres e-mail, określający, którego powiadomienia mają być opublikowane lub wysyłane. Użytkownik odbiera powiadomienie i znajduje się opcja opóźnienie zamknięcia systemu.
+1. Określ **tak** lub **nie** dla opcji wysłać powiadomienie z 15 minut przed upływem czasu zamknięcia określona automatycznie. Jeśli wybierzesz **tak**, wprowadź punkt końcowy adres URL elementu webhook lub adres e-mail, określający, którego powiadomienia mają być opublikowane lub wysyłane. Użytkownik odbiera powiadomienie i znajduje się opcja można odroczyć zamknięcia systemu.
 
    Aby uzyskać więcej informacji na temat elementów webhook, zobacz [Tworzenie elementu webhook lub interfejsu API usługi Azure Function](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
 
 1. Wybierz pozycję **Zapisz**.
 
-Domyślnie po włączeniu te zasady mają zastosowanie do wszystkich maszyn wirtualnych w bieżącym środowisku laboratoryjnym. Aby usunąć ustawienie z określonej maszyny Wirtualnej, otwórz okienko zarządzania maszyny Wirtualnej i zmień jego **automatycznego zamykania** ustawienie.
+Domyślnie po włączeniu te zasady mają zastosowanie do wszystkich maszyn wirtualnych w bieżącym środowisku laboratoryjnym. Aby usunąć ustawienie z określonej maszyny Wirtualnej, otwórz okienko zarządzania maszyny Wirtualnej i zmień jego **automatyczne zamknięcie** ustawienie.
 
-## <a name="set-auto-start"></a>Zestaw do automatycznego uruchamiania
-Zasady automatycznego uruchamiania umożliwia określenie, uruchomienia maszyn wirtualnych w bieżącym środowisku laboratoryjnym.  
+## <a name="set-auto-shutdown-policy"></a>Ustawienie automatycznego zamykania zasad
+Jako właściciel laboratorium możesz skonfigurować harmonogram zamykania dla wszystkich maszyn wirtualnych w środowisku laboratoryjnym. Dzięki temu można zmniejszyć koszty z uruchomiono (Bezczynność) maszyn, które nie są używane. Można wymusić zasady zamykanie na wszystkich maszyn wirtualnych laboratorium centralnie, ale także zapisać użytkownicy laboratorium nakład pracy od skonfigurowania harmonogramu dla poszczególnych maszyn. Ta funkcja pozwala ustawić zasady w dogodnym laboratorium od oferty nie kontroli Pełna kontrola dla użytkowników laboratorium. Jako właściciel laboratorium możesz skonfigurować te zasady, wykonując następujące czynności:
 
-1. W laboratorium **konfiguracji i zasad** okienku wybierz **Auto-start**.
+1. Na stronie głównej dla swojego laboratorium wybierz **konfiguracji i zasad**.
+2. Wybierz **automatyczne zamknięcie zasad** w **harmonogramy** części menu po lewej stronie.
+3. Wybierz jedną z opcji. Poniższe sekcje zapewniają więcej szczegółów na temat tych opcji: Ustawianie zasad mają zastosowanie tylko do nowych maszyn wirtualnych utworzonych w laboratorium, a nie już istniejących maszyn wirtualnych. 
+
+    ![Opcje zasad zamykania automatycznie](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
+
+### <a name="user-sets-a-schedule-and-can-opt-out"></a>Użytkownik ustawia harmonogram i zrezygnować z niego
+Jeśli ustawisz środowiska laboratoryjnego do tych zasad, użytkownicy laboratorium można zastąpić, lub zrezygnować z harmonogramu laboratorium. Tej opcji użytkownicy laboratorium przyznaje pełną kontrolę nad harmonogramem zamykania automatycznie ich maszyn wirtualnych. Użytkownicy laboratorium Zobacz nie zmieni się ich maszyn wirtualnych automatycznego zamykania harmonogram strony.
+
+![Opcja zasad zamykania Auto - 1](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-1.png)
+
+### <a name="user-sets-a-schedule-and-cannot-opt-out"></a>Użytkownik ustawia harmonogram i nie można zrezygnować
+Jeśli ustawisz środowiska laboratoryjnego do tych zasad, użytkownicy laboratorium mogą przesłaniać harmonogram laboratorium. Jednak nie mogą zrezygnować z automatycznego zamykania zasad. Ta opcja zapewnia się, że do każdej maszyny w środowisku laboratoryjnym w ramach automatycznego zamykania harmonogramu. Użytkownicy laboratorium można zaktualizować automatycznego zamykania harmonogramu ich maszyn wirtualnych i Konfigurowanie powiadomień zamykanie systemu.
+
+![Opcja zasad zamykania Auto - 2](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-2.png)
+
+### <a name="user-has-no-control-over-the-schedule-set-by-lab-admin"></a>Użytkownik nie ma kontroli nad harmonogramu ustalonego przez administratora laboratorium
+Jeśli ustawisz środowiska laboratoryjnego do tych zasad, użytkownicy laboratorium nie można zastąpić, lub zrezygnować z harmonogramu laboratorium. Ta opcja oferuje administratora laboratorium pełną kontrolę na harmonogram dla każdej maszyny w środowisku laboratoryjnym. Użytkownicy laboratorium można skonfigurować tylko automatyczne zamknięcie powiadomienia dla swoich maszyn wirtualnych.
+
+![Opcja zasad zamykania Auto - 3](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
+
+## <a name="set-autostart"></a>Ustaw automatyczne uruchamianie
+Zasady autostart pozwala określić, kiedy mają być uruchamiane maszyny wirtualne w bieżącym środowisku laboratoryjnym.  
+
+1. W laboratorium **konfiguracji i zasad** okienku wybierz **Autostart**.
    
     ![Automatyczne uruchamianie](./media/devtest-lab-set-lab-policy/auto-start.png)
 
@@ -99,7 +123,7 @@ Zasady automatycznego uruchamiania umożliwia określenie, uruchomienia maszyn w
 
 4. Wybierz pozycję **Zapisz**.
 
-Po włączeniu tych zasad nie są automatycznie stosowane do maszyn wirtualnych w bieżącym środowisku laboratoryjnym. Aby zastosować to ustawienie do określonej maszyny Wirtualnej, otwórz okienko zarządzania maszyny Wirtualnej i zmień jego **Auto-start** ustawienie.
+Po włączeniu tych zasad nie są automatycznie stosowane do maszyn wirtualnych w bieżącym środowisku laboratoryjnym. Aby zastosować to ustawienie do określonej maszyny Wirtualnej, otwórz okienko zarządzania maszyny Wirtualnej i zmień jego **Autostart** ustawienie.
 
 ## <a name="set-expiration-date"></a>Ustaw datę wygaśnięcia
 Można ustawić wygaśnięcie datę, gdy użytkownik [utworzyć maszynę Wirtualną](devtest-lab-add-vm.md). W **Zaawansowane ustawienia**, wybierz ikonę kalendarza, aby określić datę, na którym maszyna wirtualna zostanie automatycznie usunięty. Domyślnie nigdy nie wygasa maszyny Wirtualnej.

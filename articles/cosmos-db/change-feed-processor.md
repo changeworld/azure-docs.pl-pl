@@ -1,0 +1,78 @@
+---
+title: Praca z zmiany źródła danych z biblioteką procesora w usłudze Azure Cosmos DB
+description: Za pomocą zmian usługi Azure Cosmos DB kanału informacyjnego bibliotece procesora.
+author: rafats
+manager: kfile
+ms.service: cosmos-db
+ms.devlang: dotnet
+ms.topic: conceptual
+ms.date: 11/06/2018
+ms.author: rafats
+ms.openlocfilehash: 9d427a8001112e4994597b86579d85156f94a870
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51629382"
+---
+# <a name="using-the-azure-cosmos-db-change-feed-processor-library"></a>Za pomocą zmian usługi Azure Cosmos DB źródła danych z biblioteką procesora
+
+[Zmian usługi Azure Cosmos DB kanału informacyjnego w bibliotece procesora](sql-api-sdk-dotnet-changefeed.md) ułatwia dystrybucję przetwarzanie zdarzeń w wielu odbiorców. Ta biblioteka upraszcza zmiany odczytywania różnych partycji i wiele wątków działających równolegle.
+
+Główną zaletą biblioteką procesora zestawienia zmian jest nie trzeba zarządzać każdej partycji i token kontynuacji i nie trzeba ręcznie sondować każdego kontenera.
+
+Biblioteką procesora zestawienia zmian upraszcza zmiany odczytu w partycji i wiele wątków działających równolegle. Automatycznie zarządza odczytu zmiany na partycje przy użyciu mechanizmu dzierżawy. Jak widać na poniższej ilustracji, jeśli zaczniesz dwóch klientów, którzy korzystają z zestawienia bibliotece procesora zmian, ich podzielić pracę między sobą. W miarę postępu w celu zwiększenia liczby klientów mogą zachować podzielenie pracy między sobą.
+
+![Za pomocą usługi Azure Cosmos DB zmiany źródła danych z biblioteką procesora](./media/change-feed-processor/change-feed-output.png)
+
+Po lewej stronie klient został uruchomiony w pierwszej i jego uruchomienia, monitorowania, które wszystkie partycje, a następnie drugiego klienta została uruchomiona, a następnie pierwszy porzuciła niektóre dzierżawy do drugiego klienta. Jest to wydajny sposób rozpraszających między różnych komputerów i klientów.
+
+Jeśli masz dwie funkcje platformy Azure bez serwera monitorowania tego samego kontenera i przy użyciu tej samej dzierżawy, te dwie funkcje może zostać różnymi dokumentami, w zależności od sposobu bibliotece procesora decyduje się na przetwarzanie partycji.
+
+## <a name="implementing-the-change-feed-processor-library"></a>Wprowadzanie zmian źródła danych z biblioteką procesora
+
+Istnieją cztery główne składniki wdrażania zestawienia bibliotece procesora zmian: 
+
+1. **Monitorowane kontenera:** monitorowanych kontener ma danych, z którego jest generowany zestawienia zmian. Wszystkie operacje wstawiania i zmiany do monitorowanych kontenera są odzwierciedlane w zestawienia zmian w kontenerze.
+
+1. **Kontener dzierżawy:** współrzędnych kontenera dzierżawy przetwarzania zestawienia zmian na wielu procesów roboczych. Oddzielny kontener jest używany do przechowywania dzierżaw przy użyciu jednej dzierżawy dla każdej partycji. Jest lepiej jest przechowywać ten kontener dzierżawy na innym koncie z regionem zapisu bliżej na którym działa zestawienia procesora zmian. Obiekt dzierżawy zawiera następujące atrybuty:
+
+   * Właściciel: Określa hosta, który jest właścicielem dzierżawy.
+
+   * Kontynuacja: Określa położenie (token kontynuacji) Zmień źródło danych dla określonej partycji.
+
+   * Sygnatura czasowa: Czas ostatniego dzierżawy została zaktualizowana; Sygnatura czasowa może służyć do sprawdzania, czy dzierżawa jest uznawany za wygasły.
+
+1. **Host procesora:** każdy host Określa, ile partycje do przetworzenia na podstawie liczby wystąpień hostów mają aktywne dzierżawy.
+
+   * Podczas uruchamiania hosta, uzyskuje dzierżawę, aby zrównoważyć obciążenie na wszystkich hostach. Host okresowo odnowieniu dzierżawy, więc dzierżawy pozostają aktywne.
+
+   * Punkty kontrolne hosta ostatni token kontynuacji do dzierżawy dla każdego do odczytu. Aby zapewnić bezpieczeństwo współbieżności, hosta sprawdza, czy element ETag dla każdej aktualizacji dzierżawy. Obsługiwane są również inne strategie punktu kontrolnego.
+
+   * Podczas zamykania systemu host zwalnia wszystkie dzierżawy, ale zachowuje informacji kontynuacji, dzięki czemu może wznowić działanie czytania od przechowywanej punktu kontrolnego później.
+
+   Obecnie liczby hostów nie może być większa niż liczba partycji (dzierżawy).
+
+1. **Konsumenci:** użytkowników lub pracowników, są wątki, które wykonują przetwarzania zestawienia zmian inicjowane przez każdego hosta. Każdy host procesor może mieć wielu odbiorców. Każdy odbiorca odczytuje zmiany źródła danych z partycji, który jest przypisany do powiadamia o jego hosta zmiany i Wygasłe dzierżawy.
+
+Aby jeszcze lepiej zrozumieć sposób tych czterech elementów kanału informacyjnego zmian pracy procesora ze sobą, Spójrzmy na przykład na poniższym diagramie. Monitorowane kolekcja przechowuje dokumenty i używa "Miejscowość" jako klucza partycji. Widzimy, że niebieski partycja zawiera dokumenty z polem "Miejscowość" od "A-E" i tak dalej. Istnieją dwa hosty, każdy z dwóch odbiorców podczas odczytywania z cztery partycje równolegle. Strzałki oznaczają odbiorców podczas odczytywania z określonego miejsca w zestawienia zmian. W pierwszej partycji niebieskim ciemniejsze reprezentuje nieprzeczytane zmiany, gdy jasnoniebieski reprezentuje zmiany już odczytu na kanał informacyjny zmian. Hosty używają kolekcję dzierżaw, do przechowywania wartości "kontynuacja", aby śledzić bieżącą pozycję odczytu dla każdego użytkownika.
+
+![Przykład procesora zestawienia zmian](./media/change-feed-processor/changefeedprocessor.png)
+
+### <a name="change-feed-and-provisioned-throughput"></a>Kanał informacyjny zmian i aprowizowanej przepływności
+
+Opłaty są naliczane za RU, gdyż przenoszenie danych do i z kontenerów Cosmos zawsze wykorzystuje jednostki zarezerwowane. Opłaty są naliczane za ru zużywanych przez kontener dzierżawy.
+
+## <a name="additional-resources"></a>Zasoby dodatkowe
+
+* [Biblioteką procesora zestawienia zmian w usłudze Azure Cosmos DB](sql-api-sdk-dotnet-changefeed.md)
+* [Pakiet nugGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)
+* [Dodatkowe przykłady w witrynie GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor)
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Można teraz kontynuować, aby dowiedzieć się więcej na temat zmiany źródła danych w następujących artykułach:
+
+* [Omówienie Kanał informacyjny zmian](change-feed.md)
+* [Sposoby na odczytywanie zestawienia zmian](read-change-feed.md)
+* [Za pomocą zmian źródła danych za pomocą usługi Azure Functions](change-feed-functions.md)

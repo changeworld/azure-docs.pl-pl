@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 4f542f313b1c55ea68532efcbd6da780caae399f
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: f4acec3db7d74b969c55e725d9ec1c5f063b552c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572502"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51628184"
 ---
 # <a name="securing-docker-containers-in-azure-container-service"></a>Zabezpieczanie kontenerów Docker w usłudze Azure Container Service
 
@@ -56,7 +56,7 @@ Każdy koordynator dostępny w usłudze Azure Container Service ma własne wzgl�
 
 Aby uzyskać dodatkowe informacje na temat zabezpieczeń poszczególnych koordynatorów, zobacz następujące zasoby:
 
-* **Kubernetes**: [Security Best Practices for Kubernetes Deployment (Kubernetes: najlepsze rozwiązania dotyczące zabezpieczeń na potrzeby wdrażania rozwiązania Kubernetes)](http://blog.kubernetes.io/2016/08/security-best-practices-kubernetes-deployment.html)
+* **Kubernetes**: [Security Best Practices for Kubernetes Deployment (Kubernetes: najlepsze rozwiązania dotyczące zabezpieczeń na potrzeby wdrażania rozwiązania Kubernetes)](https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/)
 
 * **DC/OS**: [Securing Your Cluster (DC/OS: zabezpieczanie klastra)](https://dcos.io/docs/1.8/administration/securing-your-cluster/)
 

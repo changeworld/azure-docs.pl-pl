@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/02/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: fcdc14534e833ee394645e19cf8bc4bd9d6a7aaa
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 6ed1d9fc810bfa14beed83609d13c1010d479ed9
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961147"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622249"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Łączenie programu Operations Manager z usługą Log Analytics
-Aby obsługiwać istniejącą inwestycję w programie System Center Operations Manager i korzystać z rozszerzonych możliwości usługi Log Analytics, można zintegrować program Operations Manager z obszarem roboczym usługi Log Analytics. Umożliwi to wykorzystanie szans sprzedaży usługi Log Analytics przy ciągłym korzystaniu z programu Operations Manager do wykonywania następujących czynności:
+Aby zachować istniejącą inwestycję w [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) i rozszerzone możliwości za pomocą usługi Log Analytics, Operations Manager można zintegrować z obszaru roboczego usługi Log Analytics. Umożliwi to wykorzystanie szans sprzedaży usługi Log Analytics przy ciągłym korzystaniu z programu Operations Manager do wykonywania następujących czynności:
 
 * Monitorowanie kondycji usług IT za pomocą programu Operations Manager
 * Utrzymywanie integracji z rozwiązaniami ITSM obsługującymi zarządzanie zdarzeniami i problemami
@@ -44,7 +44,7 @@ Przed rozpoczęciem sprawdź następujące wymagania.
 
 * Usługa log Analytics obsługuje tylko System Center Operations Manager 1807, Operations Manager 1801, Operations Manager 2016 Operations Manager 2012 SP1 UR6 lub nowszej, a programu Operations Manager 2012 R2 UR2 lub nowszej. Obsługa serwera proxy została dodana w programach Operations Manager 2012 SP1 UR7 i Operations Manager 2012 R2 UR3.
 * Wszystkie agenty programu Operations Manager muszą spełniać minimalne wymagania dotyczące obsługi. Upewnij się, że agenci są przy minimalnej aktualizacji, w przeciwnym razie komunikacji agenta Windows może zakończyć się niepowodzeniem i generować błędy w dzienniku zdarzeń programu Operations Manager.
-* Obszar roboczy usługi Log Analytics. Aby uzyskać więcej informacji, przejrzyj [łączenia komputerów ze środowiska usługi Log Analytics](log-analytics-concept-hybrid.md).
+* Obszar roboczy usługi Log Analytics. Aby uzyskać więcej informacji, przejrzyj [Omówienie obszaru roboczego usługi Log Analytics](log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json) ).
 * Uwierzytelnianie na platformie Azure przy użyciu konta będącego członkiem [roli Współautor usługi Log Analytics](log-analytics-manage-access.md#manage-accounts-and-users).  
 
 >[!NOTE]

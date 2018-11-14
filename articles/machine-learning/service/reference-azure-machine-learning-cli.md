@@ -1,118 +1,141 @@
 ---
-title: Rozszerzenie interfejsu wiersza polecenia usługi Azure Machine Learning — informacje
-description: Więcej informacji na temat machine learning rozszerzenie interfejsu wiersza polecenia dla usługi Azure Machine Learning.
+title: Jak używać rozszerzenia interfejsu wiersza polecenia usługi Azure Machine Learning
+description: Dowiedz się więcej o rozszerzenie interfejsu wiersza polecenia usługi Azure Machine Learning dla wiersza polecenia platformy Azure. Wiersza polecenia platformy Azure jest narzędziem wiersza polecenia dla wielu platform, która umożliwia pracę z zasobami w chmurze platformy Azure. Rozszerzenie usługi Machine Learning umożliwia pracę z usługą Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
-ms.topic: reference
+ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 09/24/2018
-ms.openlocfilehash: 45ed1867d6d151250340bb21450b4b0d9b00e993
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f5c74055747cacbede479e12397bbb66ac74d10e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243151"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615640"
 ---
-# <a name="what-is-the-azure-machine-learning-cli"></a>Co to jest interfejsu wiersza polecenia usługi Azure Machine Learning?
+# <a name="use-the-azure-machine-learning-cli-extension"></a>Rozszerzenie interfejsu wiersza polecenia usługi Azure Machine Learning
 
-Rozszerzenie usługi Azure Machine Learning interfejs wiersza polecenia (CLI) jest dla deweloperów korzystających z usługi Azure Machine Learning i analityków danych. Umożliwia ona szybko Automatyzuj przepływy pracy programu machine learning i umieść je w środowisku produkcyjnym, takich jak:
+Interfejsu wiersza polecenia usługi Azure Machine Learning to rozszerzenie [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), interfejs wiersza polecenia dla wielu platform na platformie Azure. To rozszerzenie zawiera polecenia służące do pracy z usługą Azure Machine Learning z poziomu wiersza polecenia. Umożliwia tworzenia skryptów automatyzujących przepływy pracy uczenia maszynowego. Na przykład można utworzyć skrypty, które wykonują następujące czynności:
+
 + Uruchamianie eksperymentów w celu tworzenia modeli uczenia maszynowego
 
 + Zarejestruj modele uczenia maszynowego do użycia przez klientów
 
 + Pakowanie, wdrażanie i śledzenia w cyklu życia modeli usługi machine learning
 
-Tym interfejsu wiersza polecenia platformy uczenia maszynowego jest rozszerzeniem [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) i został zbudowany na podstawie oparta na środowisku Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> dla usługi Azure Machine Learning.
+Interfejs wiersza polecenia nie jest zamiennikiem dla zestawu SDK usługi Azure Machine Learning. To narzędzie służy do uzupełniające zoptymalizowane pod kątem obsługi wysoce sparametryzowanych zadań, takich jak:
+
+* Tworzenie zasobów obliczeniowych
+
+* przesyłanie eksperymentu sparametryzowane
+
+* Rejestracja modelu
+
+* Tworzenie obrazu
+
+* Wdrażanie usługi
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+* [Wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
 > [!NOTE]
-> Interfejs wiersza polecenia jest obecnie dostępna w wczesną wersję zapoznawczą i zostaną zaktualizowane.
+> Aby korzystać z interfejsu wiersza polecenia, musi mieć subskrypcję platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="installing-and-uninstalling"></a>Instalowanie i odinstalowywanie
+## <a name="install-the-extension"></a>Instalowanie rozszerzenia
 
-Możesz zainstalować interfejs wiersza polecenia za pomocą tego polecenia w naszym indeksie PyPi w wersji zapoznawczej:
-```AzureCLI
+Aby zainstalować rozszerzenie interfejsu wiersza polecenia Machine Learning, użyj następującego polecenia:
+
+```azurecli-interactive
 az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-0.1.68-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
 ```
 
-Możesz usunąć za pomocą tego polecenia interfejsu wiersza polecenia:
-```AzureCLI
+Po wyświetleniu monitu wybierz `y` można zainstalować rozszerzenia.
+
+Aby sprawdzić, czy rozszerzenie zostało zainstalowane, użyj następującego polecenia, aby wyświetlić listę określonych ML podpoleceń polecenia:
+
+```azurecli-interactive
+az ml -h
+```
+
+> [!TIP]
+> Aby zaktualizować rozszerzenie, należy najpierw __Usuń__ , a następnie __zainstalować__ go. Spowoduje to zainstalowanie najnowszej wersji.
+
+## <a name="remove-the-extension"></a>Usuń rozszerzenie
+
+Aby usunąć rozszerzenie interfejsu wiersza polecenia, użyj następującego polecenia:
+
+```azurecli-interactive
 az extension remove -n azure-cli-ml
 ```
 
-Można zaktualizować wiersza polecenia przy użyciu **Usuń** i **Dodaj** powyższych kroków.
+## <a name="resource-management"></a>Zarządzanie zasobami
 
-## <a name="using-the-cli-vs-the-sdk"></a>Przy użyciu interfejsu wiersza polecenia lub zestawu SDK
-Interfejs wiersza polecenia jest lepiej nadaje się do usługi automation przez osobę operacji deweloperskich lub jako część potoku ciągłej integracji i dostarczania. Jest zoptymalizowany do obsługi zadań rzadkich i wysoce sparametryzowanych. 
+Poniższe polecenia pokazują, jak zarządzać zasoby używane przez usługi Azure Machine Learning przy użyciu interfejsu wiersza polecenia.
 
-Przykłady:
-- obliczenia, inicjowanie obsługi administracyjnej
-- przesyłanie eksperymentu sparametryzowane
-- Rejestracja modelu, tworzenie obrazu
-- Wdrażanie usługi
 
-Analitycy danych, zaleca się używania zestawu SDK usługi Azure ML.
++ Utwórz obszar roboczy usługi Azure Machine Learning:
 
-## <a name="common-machine-learning-cli-commands"></a>Typowe usługi machine learning poleceń interfejsu wiersza polecenia
-> [!NOTE]
-> Przykładowe pliki, można użyć, aby pomyślnie wykonać poniższych poleceń można znaleźć [tutaj.](https://github.com/Azure/MachineLearningNotebooks/tree/cli/cli)
-
-Bogaty zestaw `az ml` polecenia, aby korzystać z usługi w dowolnym środowisku wiersza polecenia, w tym Azure portal usługa cloud shell.
-
-Poniżej przedstawiono przykładowe Typowe polecenia:
-
-### <a name="workspace-creation--compute-setup"></a>Konfiguracja tworzenia & obliczeń obszaru roboczego
-
-+ Tworzenie usługi Azure Machine Learning service obszaru roboczego, zasób najwyższego poziomu dla usługi machine learning.
-   ```AzureCLI
+   ```azurecli-interactive
    az ml workspace create -n myworkspace -g myresourcegroup
    ```
 
-+ Ustaw interfejs wiersza polecenia i domyślnie używają tego obszaru roboczego.
-   ```AzureCLI
++ Ustaw domyślnego obszaru roboczego:
+
+   ```azurecli-interactive
    az configure --defaults aml_workspace=myworkspace group=myresourcegroup
    ```
 
 + Tworzenie maszyny wirtualnej DSVM (maszyny Wirtualnej analizy danych). Można również utworzyć klastrów BatchAI dla rozproszonego szkolenia lub klastry usługi AKS na potrzeby wdrożenia.
-  ```AzureCLI
+
+
+  ```azurecli-interactive
   az ml computetarget setup dsvm -n mydsvm
   ```
 
-### <a name="experiment-submission"></a>Przesyłanie eksperymentu
-+ Dołącz do projektu (konfiguracji uruchamiania) przesyłania eksperymentu. Służy do śledzenia przebiegów eksperymentu.
-  ```AzureCLI
-  az ml project attach --experiment-name myhistory
-  ```
+## <a name="experiments"></a>Eksperymenty
 
-+ Przysyłanie eksperymentu korzystająca z usługi Azure Machine Learning w elemencie docelowym obliczeniowych wybranych przez użytkownika. W tym przykładzie będą wykonywane względem środowisku obliczeniowym lokalnego. Upewnij się, że plik środowiska conda przechwytuje zależności języka python.
+Poniższe polecenia pokazują, jak pracować z eksperymentów przy użyciu interfejsu wiersza polecenia:
 
-  ```AzureCLI
-  az ml run submit -c local train.py
-  ```
+* Dołączanie projektu (Uruchom konfigurację) przed przesłaniem eksperymentu:
 
-+ Wyświetlanie listy przesłanych eksperymentów.
-```AzureCLI
-az ml history list
-```
+    ```azurecli-interactive
+    az ml project attach --experiment-name myhistory
+    ```
 
-### <a name="model-registration-image-ceation--deployment"></a>Rejestracja modelu, ceation obrazu i wdrożenie
+* Rozpocznij przebieg eksperymentu. Korzystając z tego polecenia, należy określić obliczeniowego elementu docelowego. W tym przykładzie `local` korzysta z komputera lokalnego do nauczenia modelu, przy użyciu `train.py` skryptu:
 
-+ Zarejestruj model za pomocą usługi Azure Machine Learning.
-  ```AzureCLI
+    ```azurecli-interactive
+    az ml run submit -c local train.py
+    ```
+
+* Wyświetlanie listy przesłanych eksperymentów:
+
+    ```azurecli-interactive
+    az ml history list
+    ```
+
+## <a name="model-registration-image-creation--deployment"></a>Rejestracja modelu, tworzenie obrazu i wdrożenie
+
+Poniższe polecenia pokazują, jak rejestrowanie uczonego modelu, a następnie wdrożyć go jako usługę produkcyjną:
+
++ Zarejestruj model przy użyciu usługi Azure Machine Learning:
+
+  ```azurecli-interactive
   az ml model register -n mymodel -m sklearn_regression_model.pkl
   ```
 
-+ Utwórz obraz zawiera Twoje modelu uczenia maszynowego i zależności. 
-  ```AzureCLI
++ Utwórz obraz, który zawiera Twoje modelu uczenia maszynowego i zależności: 
+
+  ```azurecli-interactive
   az ml image create container -n myimage -r python -m mymodel:1 -f score.py -c myenv.yml
   ```
 
-+ Spakowane model jest wdrażany elementów docelowych, łącznie z usługami ACI i AKS.
-  ```AzureCLI
++ Wdrażanie obrazu obliczeniowego elementu docelowego:
+
+  ```azurecli-interactive
   az ml service create aci -n myaciservice --image-id myimage:1
   ```
-    
-## <a name="full-command-list"></a>Pełne polecenie listy
-Rozszerzenie interfejsu wiersza polecenia (i ich obsługiwanych parametrów) można znaleźć pełną listę poleceń, uruchamiając ```az ml COMMANDNAME -h```. 

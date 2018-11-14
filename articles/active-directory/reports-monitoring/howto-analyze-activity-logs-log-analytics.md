@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 09/28/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d3809c2615c1d73d0c4c80bafba77614aac6b17e
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 2f0f5341ba6818f375d463638979c68689519227
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395652"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624203"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-log-analytics-preview"></a>Analizowanie usługi Azure AD dzienników aktywności z usługą Log Analytics (wersja zapoznawcza)
 
@@ -97,7 +97,7 @@ Możesz również pobrać wstępnie skompilowanych widoki usługi Log Analytics 
 * **Zdarzenia logowania**: ten widok przedstawia najbardziej odpowiednie raporty dotyczące monitorowania aktywności logowania, takich jak logowania w aplikacji, użytkowników, urządzeń, a także śledzenia liczby operacji logowania wraz z upływem czasu widok podsumowania.
 * **Użytkownicy wykonywania wyrazić zgodę**: ten widok przedstawia raportów związanych z zgody użytkownika, takie jak zgody przyznaje przez użytkownika, logowania przez użytkowników, którzy uzyska zatwierdzenie, a także logowania przez aplikację dla wszystkich aplikacji opartych na zgody. 
 
-Dowiedz się, jak [Instalowanie i używanie widoki usługi Log Analytics dla usługi Azure AD działania dzienniki](howto-install-use-log-analytics-views.md). 
+Dowiedz się, jak [zainstalować widoki usługi Log Analytics dla dzienników aktywności usługi Azure AD i używać ich](howto-install-use-log-analytics-views.md). 
 
 
 ## <a name="next-steps"></a>Kolejne kroki

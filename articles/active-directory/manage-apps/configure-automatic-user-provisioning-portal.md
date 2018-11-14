@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/26/2017
+ms.date: 11/13/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 95d2f65e99b37b38f99ec5a750d74828661fe7ee
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 13ce1a7c9008a7893892e5d7e6b67a243c381c9f
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349147"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622010"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Zarządzanie kontami użytkowników, inicjowanie obsługi administracyjnej dla aplikacji dla przedsiębiorstw w witrynie Azure portal
-W tym artykule opisano sposób używania [witryny Azure portal](https://portal.azure.com) Zarządzanie aprowizacją konta użytkownika automatyczne i cofanie aprowizacji dla aplikacji, które go obsługują, szczególnie te, które zostały dodane z kategorii "proponowane" [ Galeria aplikacji w usłudze Azure Active Directory](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery). Aby dowiedzieć się więcej na temat inicjowania obsługi administracyjnej konta użytkowników i sposób jej działania, zobacz [Automatyzowanie aprowizacji użytkowników oraz anulowania zastrzeżenia do aplikacji SaaS w usłudze Azure Active Directory](user-provisioning.md).
+W tym artykule opisano sposób używania [witryny Azure portal](https://portal.azure.com) Zarządzanie aprowizacją konta użytkownika automatyczne i cofanie aprowizacji dla aplikacji, które go obsługują. Aby dowiedzieć się więcej na temat inicjowania obsługi administracyjnej konta użytkowników i sposób jej działania, zobacz [Automatyzowanie aprowizacji użytkowników oraz anulowania zastrzeżenia do aplikacji SaaS w usłudze Azure Active Directory](user-provisioning.md).
 
 ## <a name="finding-your-apps-in-the-portal"></a>Znajdowanie aplikacji w portalu
-Wszystkie aplikacje, które są skonfigurowane dla logowania jednokrotnego w katalogu, administrator katalogu przy użyciu [galerii aplikacji usługi Azure Active Directory](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery), można wyświetlać i zarządzać w [witryny Azure portal](https://portal.azure.com). Aplikacje można znaleźć w **wszystkich usług** &gt; **aplikacje dla przedsiębiorstw** sekcji w portalu. Aplikacje dla przedsiębiorstw to aplikacje, które są wdrażane i używane w organizacji.
+Wszystkie aplikacje, które są skonfigurowane do obsługi logowania jednokrotnego w katalogu można wyświetlać i zarządzać w [witryny Azure portal](https://portal.azure.com). Aplikacje można znaleźć w **wszystkich usług** &gt; **aplikacje dla przedsiębiorstw** sekcji w portalu. Aplikacje dla przedsiębiorstw to aplikacje, które są wdrażane i używane w organizacji.
 
 ![Okienko aplikacje dla przedsiębiorstw](./media/configure-automatic-user-provisioning-portal/enterprise-apps-pane.png)
 
@@ -77,7 +77,5 @@ Ta sekcja zawiera dodatkowe szczegóły dotyczące działania usługi aprowizacj
 
 Podano linki **aprowizacji raport aktywności** zapewniający dziennik wszystkich użytkowników i grup utworzonych, zaktualizowano i usunięto między usługi Azure AD a aplikacją docelową i **raportobłędachaprowizacji** zawierający bardziej szczegółowe komunikaty o błędach dla obiektów użytkowników i grup, których nie udało się odczytać, utworzone, zaktualizowane lub usunięte. 
 
-## <a name="feedback"></a>Opinia
 
-Pamiętaj o opinie dostępne! Opinie i pomysły dotyczące poprawy **portalu administracyjnego** części naszych [forum z opiniami](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Zespół inżynierów jest podekscytowani o tworzeniu nowego ciekawostki codziennie, a następnie użyj wskazówek z kształtem i zdefiniować, co należy utworzyć w następnej kolejności.
 

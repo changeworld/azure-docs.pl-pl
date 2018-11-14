@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 11/08/2018
 ms.author: magoedte
-ms.openlocfilehash: ff870f948acaae14ba772e14d48b27683f0bf07e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 7d65752787e65eeabf203f9bdc3ea11a1569f8a1
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091695"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613379"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Azure Monitor dla maszyn wirtualnych. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do strony [forum dyskusyjne](https://feedback.azure.com/forums/34192--general-feedback) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
@@ -93,6 +93,11 @@ Gdy wprowadziliśmy ulepszenia do mapy do obsługi dużych i złożonych konfigu
 ## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Dlaczego Wykres sieci na karcie Wydajność wygląda inaczej niż wykresu sieci, na stronie Omówienie maszyny Wirtualnej platformy Azure?
 
 Strona przeglądu Maszynie wirtualnej platformy Azure Wyświetla wykresy oparte na hosta pomiaru działań w maszynie Wirtualnej gościa.  Wykresu sieci na omówienie maszyny Wirtualnej platformy Azure tylko Wyświetla ruch sieciowy będą naliczane.  Obejmuje to ruch między sieciami wirtualnymi.  Dane i wykresy wyświetlane dla usługi Azure Monitor dla maszyn wirtualnych na podstawie danych z maszyny Wirtualnej gościa i wykresach sieci są wyświetlane wszystkie TCP/IP ruchu przychodzącego i wychodzącego do tej maszyny Wirtualnej, w tym między sieciami wirtualnymi.
+
+## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Czy ich ograniczenia, jeśli jestem na Log Analytics bezpłatnego planu cenowego?
+Jeśli skonfigurowano usługi Azure Monitor z obszaru roboczego usługi Log Analytics przy użyciu *bezpłatna* warstwy cenowej, usługi Azure Monitor dla funkcji mapy maszyn wirtualnych obsługują tylko pięć maszyn połączonych połączone z obszarem roboczym. W przypadku pięciu maszyn wirtualnych podłączone do obszaru roboczego warstwy bezpłatna rozłączyć jednej z maszyn wirtualnych, a następnie później Połącz z nową maszynę Wirtualną, nowa maszyna wirtualna nie jest monitorowane i widoczne na stronie mapy.  
+
+W tej sytuacji, zostanie wyświetlony monit o **Wypróbuj teraz usługę** opcji otwieranie maszyny Wirtualnej i wybrania **Insights (wersja zapoznawcza)** z okienka po lewej stronie, nawet po jego zainstalowaniu już na maszynie Wirtualnej.  Jednak monit nie jest z opcjami jak zwykle może wystąpić, jeśli ta maszyna wirtualna nie zostały dołączone do usługi Azure Monitor dla maszyn wirtualnych. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Przegląd [dołączanie usługi Azure Monitor dla maszyn wirtualnych](monitoring-vminsights-onboard.md) , aby zrozumieć wymagania i metody, aby włączyć monitorowanie maszyn wirtualnych.

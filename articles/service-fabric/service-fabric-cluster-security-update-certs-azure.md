@@ -3,7 +3,7 @@ title: Zarządzanie certyfikatami w klastrze usługi Azure Service Fabric | Doku
 description: W tym artykule opisano, jak dodawać nowe certyfikaty, certyfikat przerzucania i Usuń certyfikat do / z klastra usługi Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/23/2018
-ms.author: chackdan
-ms.openlocfilehash: ad32bd521975312b72aa55fc44e9b4d213519a07
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 11/13/2018
+ms.author: aljo-microsoft
+ms.openlocfilehash: cca48e78278cf234d6f6062eadac4f85ecbcb79b
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567880"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625933"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Dodawanie lub usuwanie certyfikatów dla klastra usługi Service Fabric na platformie Azure
 Zalecane jest, zapoznaj się z jak Usługa Service Fabric używa certyfikatów X.509, a następnie należy zapoznać się z [scenariusze zabezpieczeń klastra](service-fabric-cluster-security.md). Należy zrozumieć certyfikat klastra i do czego służy, zanim przejdziesz dalej.
@@ -175,7 +175,7 @@ W celu ułatwienia następujące wzdłuż przykładowe 5-VM-1 — elementy NodeT
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Edytuj plik szablonu, aby odzwierciedlić nowe parametry, z którą dodałeś powyżej
-Jeśli używasz próbkę z [repozytorium git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) z nich skorzystać, można uruchomić do wprowadzania zmian w przykładowe 5-VM-1 — elementy NodeType — Secure.paramters_Step2.JSON 
+Jeśli używasz próbkę z [repozytorium git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) z nich skorzystać, można uruchomić do wprowadzania zmian w przykładowe 5-VM-1 — elementy NodeType — Secure.parameters_Step2.JSON 
 
 Edycja parametru szablonu usługi Resource Manager pliku i dodaj dwa nowe parametry secCertificateThumbprint i secCertificateUrlValue. 
 
@@ -221,11 +221,11 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <R
 Oto przykład wypełnionego tego samego narzędzia.
 
 ```powershell
-$ResouceGroup2 = "chackosecure5"
+$ResourceGroup2 = "chackosecure5"
 $TemplateFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure_Step2.json"
 $TemplateParmFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure.parameters_Step2.json"
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $ResouceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResouceGroup2
+New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResourceGroup2
 
 ```
 

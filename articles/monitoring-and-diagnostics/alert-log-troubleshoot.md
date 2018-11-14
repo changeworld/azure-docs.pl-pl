@@ -8,55 +8,58 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 5572c80879584e7f6df650263ae455a134ee4088
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 68488788f73c9662b5d1eaa3b670f2120941defc
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283601"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616490"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Rozwiązywanie problemów z alertami dzienników w usłudze Azure Monitor  
-
 ## <a name="overview"></a>Przegląd
-Ten artykuł pokazuje, że obsługa typowych problemów występujących podczas konfigurowania alertów dzienników w usłudze Azure monitor. I zapewnić rozwiązanie na często zadawane pytania dotyczące funkcji lub konfiguracji alertów dzienników. Termin **alertów dzienników** do opisania alerty, gdy sygnał jest zapytanie niestandardowe na podstawie [usługi Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-analytics.md). Dowiedz się więcej o funkcji, terminologii i typów z [rejestrowania alertów — omówienie](monitor-alerts-unified-log.md).
+W tym artykule pokazano, jak rozwiązywanie typowych problemów występujących podczas konfigurowania alertów dzienników w usłudze Azure monitor. Zapewnia również rozwiązania często zadawane pytania dotyczące funkcji lub konfiguracji alertów dzienników. 
+
+Termin **alertów dzienników** do opisania alerty, że ognia na podstawie niestandardowych zapytania w [usługi Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-analytics.md). Dowiedz się więcej o funkcji, terminologii i typy w [rejestrowania alertów — omówienie](monitor-alerts-unified-log.md).
 
 > [!NOTE]
-> W tym artykule nie bierze pod uwagę przypadków, gdy reguła alertu zostanie wyświetlone jako wyzwolone w witrynie Azure portal i powiadomienia za pośrednictwem skojarzonych grup akcji. W takich przypadkach można znaleźć szczegółowe informacje w artykule na [grup akcji](monitoring-action-groups.md).
+> W tym artykule nie bierze pod uwagę przypadków, gdy witryna Azure portal Wyświetla i alertu wyzwolona reguła i powiadomień, wykonywane przez skojarzonych grup akcji. W takich przypadkach można znaleźć szczegółowe informacje w artykule na [grup akcji](monitoring-action-groups.md).
 
 
 ## <a name="log-alert-didnt-fire"></a>Alert dziennika nie został uruchomiony
 
-Dlaczego niektóre typowe przyczyny są szczegółowe dalej skonfigurowanych [reguł alertów dzienników w usłudze Azure Monitor](alert-log.md) nie wyzwalane podczas wyświetlania w [Azure Alerts](monitoring-alerts-managing-alert-states.md), gdy spodziewasz się ona do uruchomienia. 
+Poniżej przedstawiono niektóre typowe przyczyny, dlaczego skonfigurowanego [reguł alertów dzienników w usłudze Azure Monitor](alert-log.md) nie wyświetla stan [jako *wyzwolone* Oczekiwano](monitoring-alerts-managing-alert-states.md). 
 
 ### <a name="data-ingestion-time-for-logs"></a>Czas wprowadzania danych dla dzienników
-Dziennika alertów działa przez okresowe uruchamianie zapytania klienta na podstawie [usługi Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-analytics.md). Oba są obsługiwane przez możliwości analizy, który przetwarza ogromne ilości danych dzienników i oferuje funkcję na tym samym. Jak usługa Log Analytics obejmuje przetwarzanie wielu terabajtów z tysięcy klientów i z różnorodnych źródeł danych na całym świecie — usługa jest podatny na czas opóźnienia. Aby uzyskać więcej informacji, zobacz [czas wprowadzania danych w usłudze Log Analytics](../log-analytics/log-analytics-data-ingestion-time.md).
+Alert dziennika okresowo działa na podstawie zapytania [usługi Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-analytics.md). Ponieważ usługi Log Analytics przetwarza wielu terabajtów danych od tysięcy klientów z różnych źródeł na całym świecie, usługa jest podatny na różnych opóźnienie czasowe. Aby uzyskać więcej informacji, zobacz [czas wprowadzania danych w usłudze Log Analytics](../log-analytics/log-analytics-data-ingestion-time.md).
 
-Aby wyeliminować opóźnienie pozyskiwania danych, które mogą wystąpić w usłudze Log Analytics lub dzienników usługi Application Insights alert dziennika czeka i ponawia próbę po pewnym czasie, kiedy go stwierdza, że dane nie są jeszcze pozyskiwane w okresie alertów. Alerty dziennika ma zestaw wykładniczo zwiększa czas oczekiwania, aby upewnij się, że poczekamy czasu niezbędne dane można pozyskać przez usługę Log Analytics. Dlatego jeśli dzienniki żądanych przez reguły alertów dzienników jest narażony na opóźnienia pozyskiwania, następnie alertu dziennika wyzwoli tylko wtedy, gdy dane są dostępne w usługi Log Analytics po pozyskiwania i po odstępu czasu wykładniczego z powodu dziennika usługa alertu dotyczącego ponawianie próby wiele razy w międzyczasie .
+Aby zminimalizować opóźnienie pozyskiwania danych, system czeka i ponawia zapytanie alertu wiele razy, jeśli stwierdzi, że potrzebne dane nie są jeszcze pozyskiwane. System ma wykładniczo zwiększa czasu oczekiwania. Dziennik alertów wyzwalaczy tylko po danych jest dostępna, więc ich opóźnienie może być spowodowany pozyskiwanie danych wolnego dziennika. 
 
 ### <a name="incorrect-time-period-configured"></a>Skonfigurowano nieprawidłowy okres.
-Zgodnie z opisem w artykule na [terminologii dla dziennika alertów](monitor-alerts-unified-log.md#log-search-alert-rule---definition-and-types), okres czasu określona w konfiguracji określa zakres czasu dla zapytania. Zapytanie zwraca tylko te rekordy, które zostały utworzone w tym zakresie czasu. Okres ogranicza dane pobrana dla zapytania dotyczącego dziennika zapobiec nadużyciu i zmierzone dowolnego polecenia na czas (np. temu) używanych w zapytaniu dziennika. 
-*Na przykład jeśli okres czasu jest ustawiony na 60 minut, a zapytanie jest uruchomione o 13:15, tylko rekordy utworzone z zakresu od 12:15:00 do 13:15 czasu jest zwracana do wykonania zapytania dotyczącego dziennika. Jeśli zapytanie dziennika korzysta z czasu polecenia, takie jak temu teraz 1d, zapytanie dziennika zostanie uruchomione tylko dla danych zakresu od 12:15:00 do 13:15:00 - tak, jakby istnieją dane dla ostatnich 60 minut. A nie przez siedem dni, danych, jak to określono w dzienniku zapytań.*
+Zgodnie z opisem w artykule na [terminologii dla dziennika alertów](monitor-alerts-unified-log.md#log-search-alert-rule---definition-and-types), czas okresu określone w konfiguracji określa zakres czasu dla zapytania. Zapytanie zwraca tylko te rekordy, które zostały utworzone w tym zakresie czasu. Okres ogranicza dane pobrana dla zapytania dotyczącego dziennika zapobiec nadużyciu i zmierzone dowolnego polecenia na czas (np. temu) używanych w zapytaniu dziennika. 
+*Na przykład jeśli okres czasu jest ustawiony na 60 minut, a zapytanie jest uruchomione o 13:15, tylko rekordy utworzone z zakresu od 12:15:00 do 13:15 czasu są używane do zapytania dotyczącego dziennika. Jeśli zapytanie dziennika korzysta z czasu polecenia podobnego *temu (1d)*, zapytanie nadal tylko używa danych między 12:15 PM i 13:15 czasu, ponieważ w okresie jest równa tego interwału.*
 
-Oparte na logice zapytania, sprawdź, jeśli podano odpowiedni okres czasu w konfiguracji. Na przykład, o których wspomniano wcześniej Jeśli dziennik zapytanie używa temu (1d), przedstawione przy użyciu zielonego znacznika — a następnie przedziale czasu powinna być ustawiona do 24 godzin lub 1440 minut (co zostało wskazane na czerwono), zapewnienie dostarczone zapytanie jest wykonywany poprawnie przewidywanych.
-    ![Okres](./media/monitor-alerts-unified/LogAlertTimePeriod.png)
+Dlatego sprawdzanie okresu w konfiguracji zgodnego z zapytaniem. Na przykład, o których wspomniano wcześniej, jeśli używa zapytania dotyczącego dziennika *temu (1d)* pokazany z zielonym znacznikiem to okres czasu powinien być ustawiony do 24 godzin lub 1440 minut (jak wskazano w czerwony), aby upewnić się, wykonuje zapytanie, zgodnie z oczekiwaniami.
+
+![Okres](./media/monitor-alerts-unified/LogAlertTimePeriod.png)
 
 ### <a name="suppress-alerts-option-is-set"></a>Pomiń alerty ustawiono opcję
-Zgodnie z opisem w kroku 8 artykułu na [tworzenia reguł alertów dzienników w witrynie Azure portal](alert-log.md#managing-log-alerts-from-the-azure-portal), alertu dziennika udostępnia opcję konfigurowania automatycznych pomijanie reguły alertu i zapobiec powiadomień/wyzwalacza przez określony czas. Pomiń alerty opcji spowoduje, że alert dziennika do wykonania podczas nie wyzwolenie akcji grupy przez czas określony w **Pomiń alerty** opcji, a więc użytkownik może mieć wrażenie tego alertu nie fire, chociaż w rzeczywistości zostało pominięte, zgodnie z konfiguracją .
-    ![Pomiń alerty](./media/monitor-alerts-unified/LogAlertSuppress.png)
+Zgodnie z opisem w kroku 8 artykułu na [tworzenia reguł alertów dzienników w witrynie Azure portal](alert-log.md#managing-log-alerts-from-the-azure-portal), podaj alertów dzienników **Pomiń alerty** opcję Pomiń akcje wyzwalania i powiadomień w skonfigurowanym czas. Co w efekcie użytkownik może uznać, że alert nie fire w rzeczywistości go zostały, ale zostało pominięte.  
+
+![Pomiń alerty](./media/monitor-alerts-unified/LogAlertSuppress.png)
 
 ### <a name="metric-measurement-alert-rule-is-incorrect"></a>Reguła alertu pomiaru metryki jest nieprawidłowy
-Typ metryki pomiaru reguł alertów dzienników jest podtypem alertów dzienników, funkcje specjalne, które z kolei wykorzystuje ograniczeń składni zapytań alertu. Alert dziennika pomiar metryki, że reguła wymaga danych wyjściowych zapytanie alertu, aby zapewnić szeregów czasowych metryki — tabelę zawierającą różne równej wielkości okresy wraz z odpowiednimi wartościami elementy AggregatedValue obliczane. Ponadto użytkownicy mogą wybierać znajdują się w tabeli dodatkowe zmienne, wraz z elementy AggregatedValue, takich jak komputer, węzeł itp. można sortować przy użyciu danych z tabeli.
+**Alerty dzienników pomiar metryki** jest podtypem alertów dzienników, które mają specjalne funkcje i składnia ograniczeniami zapytanie alertu. Pomiar metryki reguł alertów dzienników wymaga kwerendy, dane wyjściowe jako szeregów czasowych metryki; oznacza to tabelę zawierającą różne równie o rozmiarze okresach czasu oraz odpowiadające im wartości zagregowanych. Ponadto użytkownicy mogą wybierać ma dodatkowe zmienne tabeli obok elementy AggregatedValue. Te zmienne mogą służyć do sortowania tabeli. 
 
-Na przykład załóżmy, że reguł alertów dzienników pomiar metryki został skonfigurowany jako:
+Na przykład załóżmy, że regułę alertu pomiaru metryki dziennika został skonfigurowany jako:
 - Zapytanie było: `search *| summarize AggregatedValue = count() by $table, bin(timestamp, 1h)`  
 - okresu o długości 6 godzin
 - Próg wynoszący 50
 - Logika alertu trzy kolejne naruszenia
 - Łączny na wybrany jako $table
 
-Teraz, ponieważ w poleceniu użyliśmy podsumowanie … oraz podać dwie zmienne: sygnatura czasowa & $table; Alert usługi wybierze $table "Agregacji po" - zasadniczo sortowanie tabeli wyników według pola: $table - pokazany poniżej i Wyświetlę wielu elementy AggregatedValue dla każdej tabeli wpisz (na przykład availabilityResults) w celu sprawdzenia, jeśli było kolejne naruszenia 3 lub więcej.
+Ponieważ polecenie zawiera *... Sumuj według* oraz podać dwie zmienne (sygnatura czasowa & $table), system wybiera $table do "Agregacji po". Sortuje tabelę wyników za pomocą pola *$table* pokazany poniżej i następnie przegląda wielu elementy AggregatedValue dla każdego typu tabeli (na przykład availabilityResults), aby zobaczyć, jeśli było kolejne naruszenia 3 lub więcej.
 
-   ![Metryki pomiaru wykonywania zapytań z wieloma wartościami](./media/monitor-alerts-unified/LogMMQuery.png)
+![Metryki pomiaru wykonywania zapytań z wieloma wartościami](./media/monitor-alerts-unified/LogMMQuery.png)
 
 Jak "Łączna od" jest $table — dane są sortowane według kolumny $table (jak kolor czerwony); Firma Microsoft grupy i Znajdź typ pola "Agregacji po" (to znaczy) $table — na przykład: wartości availabilityResults jest traktowany jako jeden wykres na jednostkę (jako wyróżnione w kolorze pomarańczowym). W tym wykres wartość na jednostkę — usługa alertu dotyczącego wyszukuje trzy kolejne naruszenia występujących (jak pokazano w kolorze zielonym) dla alertu, które będą wyzwalane dla wartości z tabeli "availabilityResults". Podobnie jeśli w dowolnej innej wartości $table jeśli są widoczne trzy kolejne naruszenia — inny powiadomień o alertach będą wyzwalane przez takie same; przy użyciu alertów usługi automatycznie sortowania wartości w jedną kreślenia/jednostkę (tak jak w kolorze pomarańczowym) według czasu.
 
@@ -85,4 +88,5 @@ Przedstawionego na **zapytanie do wykonania** sekcja jest jakie dziennika alertu
 
 * Dowiedz się więcej o [alerty dzienników w alertów platformy Azure](monitor-alerts-unified-log.md)
 * Dowiedz się więcej o [usługi Application Insights](../application-insights/app-insights-analytics.md)
-* Dowiedz się więcej o [usługi Log Analytics](../log-analytics/log-analytics-queries.md). 
+* Dowiedz się więcej o [usługi Log Analytics](../log-analytics/log-analytics-overview.md). 
+

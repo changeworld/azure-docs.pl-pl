@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: erhopf
-ms.openlocfilehash: 5adc0e39c271b71d6c003eaba6cb5b8a71531bd7
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: c1eeee35869f29170a7f15b1d9e2c1ee69a6314d
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471445"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622520"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Obsługa języka i regionu dla interfejsu API mowy usługi
 
@@ -160,7 +160,7 @@ Dostosowanie głos jest dostępna dla US English (en US), kontynent, chiński (z
 
 ## <a name="speech-translation"></a>Tłumaczenie mowy
 
-**Tłumaczenia mowy** API obsługę innych języków tłumaczenia mowy do rozpoznawania mowy i rozpoznawania mowy na tekst. Język źródłowy zawsze musi być z poniższej tabeli języka mowy. Dostępne języki docelowej zależą od tego, czy element docelowy tłumaczenia jest mowy lub tekstu.
+**Tłumaczenia mowy** API obsługę innych języków tłumaczenia mowy do rozpoznawania mowy i rozpoznawania mowy na tekst. Język źródłowy zawsze musi być z poniższej tabeli języka mowy. Dostępne języki docelowej zależą od tego, czy element docelowy tłumaczenia jest mowy lub tekstu. Może być tłumaczenie mowy przychodzących do więcej niż [60 języków](https://www.microsoft.com/translator/business/languages/). Podzbiór tych języków są dostępne dla [synteza mowy](language-support.md#text-languages). 
 
 ### <a name="speech-languages"></a>Języki mowy
 
@@ -210,7 +210,7 @@ Dostosowanie głos jest dostępna dla US English (en US), kontynent, chiński (z
 | Indonezyjski      | `id`          |
 | Włoski      | `it`          |
 | Japoński      | `ja`          |
-| Swahili      | `sw`          |
+| Suahili      | `sw`          |
 | Klingon      | `tlh`          |
 | Klingon (plqaD)      | `tlh-Qaak`          |
 | Koreański      | `ko`          |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: af3d2b997a4d58f2d32705c55151c4cf13bdcc7c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: ac96de2669a75a5966650afc0b49cc2f926537fa
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095482"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614212"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Aby poznać składniki aplikacji przy użyciu usługi Azure Monitor mapy maszyny wirtualne (wersja zapoznawcza)
 Wyświetlanie składniki odnalezionych aplikacji na maszynach wirtualnych Windows i Linux, działające na platformie Azure w środowisku można zaobserwować na dwa sposoby, za pomocą usługi Azure Monitor w przypadku maszyn wirtualnych z maszyny wirtualnej, który jest bezpośrednio lub grupami maszyn wirtualnych za pomocą usługi Azure Monitor. 
@@ -52,7 +52,7 @@ Aby włączyć funkcję Map do wyświetlenia powiązanych alertów, Utwórz regu
 - Zawiera klauzulę do grupy według komputera (na przykład **komputera interwał 1 minutę**).
 - Wybierz alert w oparciu metryki pomiaru.
 
-Aby uzyskać więcej informacji o alertach platformy Azure i tworzenia reguł alertów, zobacz [Unified alertów w usłudze Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)
+Aby uzyskać więcej informacji o alertach platformy Azure i tworzenia reguł alertów, zobacz [Unified alertów w usłudze Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
 
 **Legendy** opcji w prawym górnym rogu w tym artykule opisano symboli i role na mapie.  Aby powiększyć bliższe spojrzenie na mapie, a następnie przenieść it wokół kontrolki powiększania u dołu po prawej stronie strony ustawia poziom powiększenia i rozmiaru strony do rozmiaru bieżącej strony.  
 

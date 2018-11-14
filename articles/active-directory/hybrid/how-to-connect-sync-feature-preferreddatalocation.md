@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 951ac39e1bb6ce050da26fa8ff3f93fd4e27e7d7
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 1dfc01d0f2f0f5f3eae58fd6c889fee3ad306135
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318394"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623031"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Synchronizacja programu Azure Active Directory Connect: Konfigurowanie Preferowana lokalizacja danych dla zasobów usługi Office 365
 Celem tego tematu jest przeprowadzi Cię przez Konfigurowanie atrybutu Preferowana lokalizacja danych podczas synchronizacji usługi Azure Active Directory (Azure AD) Connect. Gdy ktoś będzie korzystać z możliwości wielu regionów geograficznych w usłudze Office 365 możesz użyć tego atrybutu do wyznaczenia lokalizacja geograficzna użytkownika danych usługi Office 365. (Warunki *region* i *geograficznie* są używane zamiennie.)
@@ -31,7 +31,7 @@ Domyślnie zasobów usług Office 365 dla użytkowników, znajdują się w tej s
 Przez ustawienie atrybutu **preferredDataLocation**, można zdefiniować geograficznej użytkownika. Możesz mieć użytkownika usługi Office 365 zasoby, takie jak skrzynki pocztowej i OneDrive, w tym samym obszarze geograficznym, jako użytkownik i nadal masz jedną dzierżawę dla całej organizacji.
 
 > [!IMPORTANT]
-> Wielu regionów geograficznych jest obecnie dostępny dla klientów z co najmniej 2500 subskrypcji usługi Office 365 Services. Skontaktuj się z przedstawicielem firmy Microsoft, aby uzyskać szczegółowe informacje.
+> Wielu regionów geograficznych jest obecnie dostępny dla klientów z co najmniej 5000 subskrypcji usługi Office 365 Services. Skontaktuj się z przedstawicielem firmy Microsoft, aby uzyskać szczegółowe informacje.
 >
 >
 

@@ -8,16 +8,16 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: f531be5a814ed1805a2938daec1d210f9daccfa5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 400ac3232b7e7dcd594734d818e3cafef09188fd
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949778"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614552"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Tworzenie bramy sieci wirtualnej strefowo nadmiarowy w strefy dostępności platformy Azure
 
-Można wdrożyć bramy sieci VPN i ExpressRoute w strefach dostępności Azure. To zapewniają elastyczność, skalowalność i większą dostępność bramy sieci wirtualnej. Wdrażanie bramy w strefach dostępności Azure fizycznie i logicznie dzieli bramy w danym regionie, przy jednoczesnej ochronie łączności sieci środowiska lokalnego do platformy Azure przed awariami poziomu strefy. Aby uzyskać informacje, zobacz [o bramach sieci wirtualnej strefowo nadmiarowe](about-zone-redundant-vnet-gateways.md) i [strefy dostępności platformy Azure o](../availability-zones/az-overview.md).
+Można wdrożyć bramy sieci VPN i ExpressRoute w strefach dostępności platformy Azure. To zapewniają elastyczność, skalowalność i większą dostępność bramy sieci wirtualnej. Wdrażanie bramy w strefach dostępności Azure fizycznie i logicznie dzieli bramy w danym regionie, przy jednoczesnej ochronie łączności sieci środowiska lokalnego do platformy Azure przed awariami poziomu strefy. Aby uzyskać informacje, zobacz [o bramach sieci wirtualnej strefowo nadmiarowe](about-zone-redundant-vnet-gateways.md) i [strefy dostępności platformy Azure o](../availability-zones/az-overview.md).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 

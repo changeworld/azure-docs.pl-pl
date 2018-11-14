@@ -11,61 +11,58 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 05/23/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 13d81e655b98771d985277974bd3081437e2a3e8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c43497a69b3188b4bc38e91b6ff9b1cc8b6bd21a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255783"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624152"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Rozwiązywanie problemów dotyczących użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory
 
-Dzięki raportom o zabezpieczeniach w usłudze Azure Active Directory (Azure AD) możesz uzyskać wgląd w prawdopodobieństwo naruszenia bezpieczeństwa kont użytkowników w środowisku. Użytkownik oznaczonych flagą ryzyka jest wskaźnikiem konta użytkownika, który może być zabezpieczenia mogły zostać naruszone.
+Dzięki raportom o zabezpieczeniach w usłudze Azure Active Directory (Azure AD) można mierzyć prawdopodobieństwo naruszenia bezpieczeństwa kont użytkowników w danym środowisku. Użytkownik oznaczonych flagą ryzyka jest wskaźnikiem konta użytkownika, który może być zabezpieczenia mogły zostać naruszone.
 
 Firma Microsoft dokłada starań, aby pomóc zapewnić bezpieczne środowisko. W ramach tego zobowiązania firma Microsoft stale monitoruje działania, które są nietypowe lub zgodne ze znanymi wzorcami ataków. 
 
-
-Gdy zostaną wykryte nietypowe działania, które mogą wskazywać na nieautoryzowany dostęp do pewnych kont Twoich użytkowników, otrzymasz powiadomienia umożliwiające podjęcie działań. Dostarczanie powiadomień nie oznacza, że systemy firmy Microsoft w jakikolwiek sposób zostały naruszone.
- 
+W przypadku wykrycia nietypowych działań, które mogą wskazywać na nieautoryzowany dostęp do pewnych kont Twoich użytkowników, otrzymasz powiadomienia umożliwiające podjęcie działań. Nie oznacza to, że systemy firmy Microsoft zostały złamane.
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>Uzyskiwanie dostępu do raportu dotyczącego użytkowników oflagowanych w związku z ryzykiem
 
-Możesz przejrzeć użytkowników oflagowanych z powodu ryzyka, korzystając z powiązanego [raportu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk) w usłudze Azure Active Directory (AD). Jeśli nie masz subskrypcji usługi Azure AD, możesz przejść przez proces subskrypcji jednorazowej bez ponoszenia kosztów na stronie [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD). W tym raporcie możesz wykonywać różne akcje:
+Możesz przejrzeć użytkowników oznaczonych flagą ryzyka za pośrednictwem [raport dotyczący narażonych użytkowników](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk) w witrynie Azure portal. Jeśli nie masz usługi Azure AD, możesz zapisać się za darmo w [ https://aka.ms/AccessAAD ](https://aka.ms/AccessAAD). 
+
+Od użytkowników oflagowanych w raporcie o podwyższonym ryzyku można wykonać następujące czynności dla każdego użytkownika:
 
 - Wygenerować hasło tymczasowe
 - Wymagać od użytkownika bezpiecznego zresetowania hasła przy następnym logowaniu
 - Odrzucić ryzyko związane z użytkownikiem bez podejmowania żadnej akcji korygowania.
 
-Aby uzyskać więcej informacji, zobacz [raport o zabezpieczeniach dotyczący użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory](concept-user-at-risk.md).
+Aby uzyskać więcej informacji, zobacz [użytkowników oflagowanych w raporcie o zabezpieczeniach ryzyka](concept-user-at-risk.md).
 
 ### <a name="azure-ad-subscription-for-office-365-customers"></a>Subskrypcja usługi Azure AD dla klientów usługi Office 365
 
-Po wykonaniu tych czynności możesz użyć poświadczeń usługi Office 365 do uzyskania dostępu do Centrum administracyjnego platformy Azure. Po uaktywnieniu dostępu do usługi Azure AD nastąpi przekierowanie do portalu usługi Azure AD. Na poziomie subskrypcji podstawowej ilość szczegółów udostępnianych w raportach jest ograniczona. Dodatkowe dane i analizy będą dostępne dla subskrybentów platformy Azure w wersji Premium.
+Można również użyć poświadczeń usługi Office 365 dostęp do **Centrum administracyjnego platformy Azure**. Po uaktywnieniu dostępu do usługi Azure AD nastąpi przekierowanie do portalu usługi Azure AD. Na poziomie subskrypcji podstawowej ilość szczegółów udostępnianych w raportach jest ograniczona. Dodatkowe dane i analizy będą dostępne dla subskrybentów platformy Azure w wersji Premium.
 
+Aby uzyskać dostęp do **użytkownicy oflagowani w związku z ryzykiem** raportów w Centrum administracyjnym usługi Office 365:
 
-**Aby uzyskać dostęp do raportów o użytkownikach oflagowanych w związku z ryzykiem w Centrum administracyjnym usługi Office 365:**
-
-1.  W menu nawigacji po lewej stronie kliknij pozycję **Centra administracyjne**. 
-2.  Kliknij pozycję **Azure AD**.
+1.  W menu nawigacji po lewej stronie wybierz **centra administracyjne**. 
+2.  Wybierz **usługi Azure AD**.
 3.  Zaloguj się do **Centrum administracyjnego usługi Azure Active Directory**.
-4.  Jeśli u góry strony zostanie wyświetlony baner z komunikatem **Zapoznaj się z nowym portalem**, kliknij link.
-4.  W menu nawigacji po lewej stronie kliknij pozycję **Azure Active Directory**. 
-5.  W okienku nawigacji w obszarze **Zabezpieczenia** kliknij pozycję **Użytkownicy oflagowani w związku z ryzykiem**.
-
-Przejrzyj wyświetlane w tym miejscu informacje. Należy zresetować hasło dla każdego konta, które jest tutaj wymienione. 
+4.  Jeśli w górnej części strony, który jest wyświetlany komunikat zostanie wyświetlony Baner z **zapoznaj się z nowym portalem**, wybierz link.
+4.  W menu nawigacji po lewej stronie wybierz **usługi Azure Active Directory**. 
+5.  W okienku nawigacji wybierz **użytkownicy oflagowani w związku z ryzykiem** z **zabezpieczeń** sekcji.
 
 ## <a name="remediation-actions"></a>Akcje naprawcze
 
 Wykonaj następujące akcje, aby pomóc usunąć zagrożenie z kont i zabezpieczyć swoje środowisko:
 
-1.  [Zweryfikuj](https://aka.ms/MFAValid) poprawność informacji dla uwierzytelniania wieloskładnikowego i samoobsługowego resetowania hasła. 
-2.  [Włącz](https://aka.ms/MFAuth) uwierzytelnianie wieloskładnikowe dla wszystkich użytkowników. 
-3.  Za pomocą tego [skryptu korygującego](https://aka.ms/remediate) dla każdego dotkniętego konta możesz automatycznie wykonać następujące kroki: 
+1.  [Sprawdź poprawność poprawnych informacji](http://aka.ms/MFAValid) uwierzytelniania wieloskładnikowego i samoobsługowego hasła zresetować. 
+2.  [Włącz uwierzytelnianie wieloskładnikowe](http://aka.ms/MFAuth) dla wszystkich użytkowników. 
+3.  Użyj tego [skrypt korygujący](http://aka.ms/remediate) dla każdego dotkniętego konta, aby automatycznie wykonać następujące czynności: 
 
-    a. Zresetować hasło do zabezpieczania konta i skasować aktywne sesje.
+    a. Zresetuj hasło do zabezpieczania konta i skasować aktywne sesje.
 
     b. Usunąć delegatów skrzynki pocztowej.
 
@@ -79,22 +76,20 @@ Wykonaj następujące akcje, aby pomóc usunąć zagrożenie z kont i zabezpiecz
 
     g. Włączyć inspekcję skrzynki pocztowej.
 
-    h. Utworzyć dziennik inspekcji do sprawdzenia przez administratora.
+    h. Utworzyć dziennik inspekcji dla administratora przejrzeć.
 
 4. Zbadaj dzierżawę usługi Office 365 i pozostałą infrastrukturę IT, łącznie z przeglądem wszystkich ustawień dzierżawy, kont użytkowników i ustawień konfiguracji poszczególnych użytkowników pod kątem ewentualnych modyfikacji. Sprawdź, czy wskaźniki metod trwałości oraz wskaźniki intruza mogą korzystać z początkowego stopnia w celu uzyskania poświadczeń sieci VPN lub dostępu do innych zasobów organizacji. 
 
-5.  W ramach badania należy rozważyć, czy powinno się lub czy bezwzględnie trzeba powiadomić organy rządowe, w tym uprawnione organy ścigania.
+5.  W ramach badania rozważ, czy należy powiadomić organy rządowe, w tym organom ścigania.
 
 Ponadto wykonaj następujące czynności:
 
-- Przeczytaj i wdróż te [wskazówki](https://aka.ms/fixaccount) dotyczące rozwiązywania nietypowych działań. 
-- [Włącz potok inspekcji](https://aka.ms/improvesecurity), aby pomóc analizować działania w Twojej dzierżawie. Po wykonaniu tych czynności magazyn inspekcji rozpoczyna zapełnianie wszystkich dzienników aktywności. W tym momencie możesz również wykorzystać [funkcje wyszukiwania i badania Centrum zabezpieczeń i zgodności](https://aka.ms/sccsearch). 
-- Użyj tego [skryptu](https://aka.ms/mailboxaudit1), aby włączyć inspekcję skrzynki pocztowej dla wszystkich kont. 
-- Przejrzyj reguły delegowania uprawnień i przekazywania poczty dla wszystkich skrzynek pocztowych. Do wykonania tego zadania możesz użyć tego [skryptu programu PowerShell](https://aka.ms/delegateforwardrules). 
-
-
+- Przeczytaj i wdróż te [wskazówki dotyczące rozwiązywania nietypowych działań](http://aka.ms/fixaccount). 
+- [Włącz potok inspekcji](http://aka.ms/improvesecurity) aby pomóc analizować działania w ramach dzierżawy. Po wykonaniu tych czynności, Magazyn inspekcji rozpoczyna zapełnianie dzienników aktywności. W tym momencie można również korzystać z [zasobów wyszukiwania i badania Centrum zabezpieczeń i zgodności firmy](http://aka.ms/sccsearch). 
+- Użyj tego [skrypt, aby włączyć inspekcję skrzynki pocztowej](http://aka.ms/mailboxaudit1) dla wszystkich kont. 
+- Przejrzyj reguły delegowania uprawnień i przekazywania poczty dla wszystkich skrzynek pocztowych. Do wykonania tego zadania możesz użyć tego [skryptu programu PowerShell](http://aka.ms/delegateforwardrules). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać więcej informacji na temat ochrony tożsamości w usłudze Azure Active Directory, zobacz [Ochrona tożsamości w usłudze Azure Active Directory](../active-directory-identityprotection.md).
-
+* [Usługa Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+* [Użytkowników oznaczonych flagą ryzyka](concept-user-at-risk.md)

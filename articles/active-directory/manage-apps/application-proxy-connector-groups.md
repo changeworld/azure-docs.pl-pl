@@ -2,7 +2,6 @@
 title: Publikowanie aplikacji w oddzielnych sieciach i miejsc w serwera Proxy aplikacji usługi Azure AD za pomocą grupy łączników | Dokumentacja firmy Microsoft
 description: Opisano, jak utworzyć i zarządzać grupami łączników serwera Proxy aplikacji usługi Azure AD.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
@@ -11,16 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 11/08/2018
 ms.author: barbkess
-ms.reviewer: harshja
-ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: e149df09bf424d33fa9abdf8108b3b79534a8599
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.reviewer: japere
+ms.openlocfilehash: aebb042c065652bef568f6bc1be2ee8bfde43988
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364977"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622637"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikuj aplikacje w oddzielnych sieciach i miejsc za pomocą grupy łączników
 
@@ -86,14 +84,14 @@ Za pomocą grup łączników serwera Proxy aplikacji usługi Azure AD należy w�
 Większość klientów, które wdrożyły usługę serwera Proxy aplikacji korzystają z jego możliwości logowanie jednokrotne (SSO), wykonując delegowanie ograniczone protokołu Kerberos (KCD). Aby to osiągnąć, łącznik programu urządzenia muszą być przyłączone do domeny, które można delegować użytkowników do aplikacji. Ograniczonego delegowania protokołu Kerberos obsługuje funkcje między lasami. Jednak dla przedsiębiorstw, które mają różne środowisk wielu lasów, bez zaufania między nimi, pojedynczy łącznik nie może służyć do wszystkich lasów. 
 
 W tym przypadku łączniki dla mogą być wdrożone w każdym lesie i ustaw do obsługi aplikacji, które zostały opublikowane ma obsługiwać tylko użytkowników określonych lasu. Każda grupa łączników reprezentuje innym lesie. Podczas gdy dzierżawy i większość środowiska jest jednolita dla wszystkich lasów, można przypisać użytkowników ze swoimi aplikacjami lasu za pomocą grup usługi Azure AD.
- 
+ 
 ### <a name="disaster-recovery-sites"></a>Lokacjach odzyskiwania po awarii
 
 Istnieją dwa różne podejścia, które można wykonać przy użyciu lokacji odzyskiwania po awarii, w zależności od sposobu implementacji Lokacje:
 
 * Jeśli lokacji odzyskiwania po awarii jest wbudowana w trybie aktywny / aktywny, gdzie jest tak samo jak w lokacji głównej i ma tej samej sieci i ustawienia usług AD, można utworzyć łączniki w lokacji odzyskiwania po awarii w tej samej grupie łącznika lokacji głównej. Dzięki temu usługa Azure AD do wykrywania przejścia w tryb failover.
 * Jeśli lokacja odzyskiwania po awarii jest oddzielony od lokacji głównej, można utworzyć grupę inny łącznik w lokacji odzyskiwania po awarii, a jedną (1) aplikacje kopii zapasowej lub 2) ręcznie przekierować istniejących aplikacji do grupy łączników odzyskiwania po awarii zgodnie z potrzebami.
- 
+ 
 ### <a name="serve-multiple-companies-from-a-single-tenant"></a>Obsłużyć wiele firm z pojedynczej dzierżawy
 
 Istnieje wiele różnych sposobów implementowania modelu, w którym dostawca pojedynczą usługę wdraża i obsługuje usługę Azure AD powiązane usługi dla wielu firm. Grupy łączników pomoc administratora oddzielenie czynności związanych z łączników i aplikacji w różnych grupach. Jednym ze sposobów, które jest odpowiednie dla małych firm, jest pojedynczej usłudze Azure AD dzierżawy podczas różnych firm mają własne nazwy domeny i sieci. Dotyczy to również M i scenariuszy i sytuacji jeśli pojedynczy dzielenia IT służy kilka przedsiębiorstw ze względów prawnych lub pracy. 
@@ -101,7 +99,7 @@ Istnieje wiele różnych sposobów implementowania modelu, w którym dostawca po
 ## <a name="sample-configurations"></a>Przykładowe konfiguracje
 
 Przykłady, które można zaimplementować: następujące grupy łączników.
- 
+ 
 ### <a name="default-configuration--no-use-for-connector-groups"></a>Domyślna konfiguracja — nie na użytek grupy łączników
 
 Jeśli nie używasz grupy łączników, konfigurację będzie wyglądać następująco:
@@ -109,7 +107,7 @@ Jeśli nie używasz grupy łączników, konfigurację będzie wyglądać następ
 ![Usługi Azure AD nie grupy łączników](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
  
 Ta konfiguracja jest wystarczająca dla małych wdrożeń i testy. Może ona również działać dobrze w przypadku, jeśli organizacja dysponuje siecią płaską topologii.
- 
+ 
 ### <a name="default-configuration-and-an-isolated-network"></a>Domyślna konfiguracja i sieci izolowanej
 
 Ta konfiguracja jest unowocześnienia domyślna, w którym znajduje się określoną aplikację działającą w sieci izolowanej, takich jak sieć wirtualna IaaS: 
@@ -127,6 +125,6 @@ W poniższym przykładzie firma ma dwoma centrami danych, A i B, za pomocą dwa 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Omówienie łączników serwera Proxy aplikacji usługi Azure AD](application-proxy-connectors.md)
-* [Włączanie logowania jednokrotnego](application-proxy-single-sign-on.md)
+* [Włączanie logowania jednokrotnego](what-is-single-sign-on.md)
 
 

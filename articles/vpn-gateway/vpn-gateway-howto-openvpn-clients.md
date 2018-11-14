@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: de24e8b308c6adf3f69caae4ab671f57fc2f6b8c
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 7d76827a4e4ba4ccb7a146c5f8282000d143eb35
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565058"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624441"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Konfigurowanie klientów OpenVPN dla bramy sieci VPN platformy Azure (wersja zapoznawcza)
 
@@ -38,7 +38,7 @@ Sprawdź, że zostały wykonane kroki konfigurowania OpenVPN dla bramy sieci VPN
   openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
   ```
 6. Otwórz *profileinfo.txt* w Notatniku. Aby uzyskać odcisk palca certyfikatu klienta (podrzędne), zaznacz tekst (łącznie z i od) "---BEGIN CERTIFICATE---" i "---koniec certyfikatu---" dla elementu podrzędnego certyfikatu, a następnie skopiuj go. Certyfikat podrzędnego można zidentyfikować, sprawdzając = podmiotu / linii.
-7. Przełącz się do *vpnconfig.ovpn* plik otwarty w Notatniku od kroku 3. Znajdź sekcję wskazaną poniżej Zamień wszystko pomiędzy "cert" i "/ cert".
+7. Przełącz się do *vpnconfig.ovpn* plik otwarty w Notatniku od kroku 3. Znajdź sekcję wskazaną poniżej i Zamień wszystko pomiędzy "cert" i "/ cert".
 
   ```
   # P2S client certificate
@@ -119,7 +119,7 @@ Sprawdź, że zostały wykonane kroki konfigurowania OpenVPN dla bramy sieci VPN
 11. Nawiązywanie połączenia przy użyciu wiersza polecenia, wpisz następujące polecenie:
   
   ```
-  Sudo openvpn –config <name and path of your VPN profile file>
+  sudo openvpn –-config <name and path of your VPN profile file>
   ```
 12. Nawiązywanie połączenia przy użyciu graficznego interfejsu użytkownika, przejdź do ustawień systemu.
 13. Kliknij przycisk **+** można dodać nowe połączenie VPN.

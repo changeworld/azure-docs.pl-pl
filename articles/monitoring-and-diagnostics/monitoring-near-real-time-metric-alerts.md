@@ -8,16 +8,17 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 15ecbcafd3397b425b669a48f19bee6073b71149
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 89b412a58291dd542b38cd0cbfa1288795024151
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279793"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613719"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Obsługiwane zasobów dla alertów dotyczących metryk w usłudze Azure Monitor
 
-Usługa Azure Monitor obsługuje teraz nowego typu alertu metryki, która ma znaczące korzyści w starszej wersji [klasycznego alertów dotyczących metryk](alert-metric-classic.md). Metryki są dostępne dla [obszerne listy usług systemu Azure](monitoring-supported-metrics.md). Nowszych alertów obsługuje podzbiór (rosnący) typów zasobów. W tym artykule wymieniono tego podzbioru.
+Platforma Azure obsługuje teraz Monitor [nowego typu alertu Metryka](monitoring-overview-alerts.md) mającego znaczące korzyści w starszej wersji [klasycznego alertów dotyczących metryk](monitoring-overview-alerts-classic.md). Metryki są dostępne dla [obszerne listy usług systemu Azure](monitoring-supported-metrics.md). Nowszych alertów obsługuje podzbiór (rosnący) typów zasobów. W tym artykule wymieniono tego podzbioru.
+
 
 Umożliwia także nowszych alertów metryk dotyczących popularnych dzienników usługi Log Analytics, wyodrębnić jako metryki. Aby uzyskać więcej informacji, Wyświetl [alerty metryki dla dzienników](monitoring-metric-alerts-logs.md).
 
@@ -120,6 +121,6 @@ Operację POST zawiera następujące ładunek w formacie JSON i schematu dla wsz
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o nowym [alerty środowisko](monitoring-overview-unified-alerts.md).
+* Dowiedz się więcej o nowym [alerty środowisko](monitoring-overview-alerts.md).
 * Dowiedz się więcej o [alerty dzienników w usłudze Azure](monitor-alerts-unified-log.md).
 * Dowiedz się więcej o [alertów na platformie Azure](monitoring-overview-alerts.md).

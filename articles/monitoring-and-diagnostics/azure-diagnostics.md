@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: a40917ec24ede1107f7d8ae7f5fb2f0f03d1094c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7da75e052aaf36d0f59a5f23c28e42c0e4661b0a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278331"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615251"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co to jest rozszerzenie diagnostyki platformy Azure
 Rozszerzenie diagnostyki platformy Azure jest agenta w systemie Azure umożliwia zbieranie danych diagnostycznych na rozmieszczonej aplikacji. Rozszerzenie diagnostyki można użyć z wielu różnych źródeł. Obecnie obsługiwane wartości to usługa w chmurze (klasyczne) w sieci Web i ról procesów roboczych, maszyny wirtualne, zestawy skalowania maszyn wirtualnych i Service Fabric. Inne usługi platformy Azure jest diagnostyki różnych metod. Zobacz [monitorowania na platformie Azure — omówienie](../azure-monitor/overview.md).
@@ -47,7 +47,7 @@ Można również wysłać go do [usługi Application Insights](../application-in
 ### <a name="azure-monitor"></a>Azure Monitor
 Istnieje również możliwość wysyłania danych do usługi Azure Monitor. W tej chwili zlew ma zastosowanie tylko do liczników wydajności. Umożliwia wysyłanie liczniki wydajności zebrane na maszynie Wirtualnej, zestawu skalowania maszyn wirtualnych, lub w chmurze Usługa do usługi Azure Monitor jako metryki niestandardowe. Obsługuje ujścia usługi Azure Monitor:
 * Pobieranie wszystkich liczników wydajności wysyłane do usługi Azure Monitor za pośrednictwem [metryk usługi Azure Monitor interfejsów API.](https://docs.microsoft.com/rest/api/monitor/)
-* Alertów dla wszystkich liczników wydajności wysyłane do usługi Azure Monitor w nowej witrynie [ujednolicone środowisko alertów](monitoring-overview-unified-alerts.md) w usłudze Azure Monitor
+* Alertów dla wszystkich liczników wydajności wysyłane do usługi Azure Monitor w nowej witrynie [ujednolicone środowisko alertów](monitoring-overview-alerts.md) w usłudze Azure Monitor
 * Traktowanie operator symbolu wieloznacznego w liczniki wydajności jako wymiar "Wystąpienie" w swoje metryki.  Na przykład, gdy zostały zebrane "dysk logiczny (\*) / DiskWrites na sekundę" licznik będzie mieć możliwość filtrowania i podział wymiaru "Wystąpienie" do kreślenia lub alertu na zapisy dysku/s dla każdego dysku logicznego na maszynie Wirtualnej (C: D:, itp.)
 
 Aby dowiedzieć się więcej na temat konfigurowania tego obiektu sink, zapoznaj się [dokumentacji schemat usługi Diagnostyka Azure.](azure-diagnostics-schema-1dot3-and-later.md)

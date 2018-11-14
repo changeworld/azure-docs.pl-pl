@@ -13,64 +13,62 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 01/15/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bf50dbf942dc7a82afbb60455be45b6c4b287ccd
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: a76486eaf2f9df8eb47b8bb73f1577324152a80f
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782179"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623302"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Rozwiązywanie problemów z działanie usługi Azure Active Directory rejestruje błędy pakietu zawartości 
 
 |  |
 |--|
-|Obecnie pakiet zawartości usługi Azure AD w usłudze Power BI używa interfejsów API programu Graph usługi Azure AD do pobierania danych z dzierżawą usługi Azure AD. W rezultacie może zostać wyświetlony niektóre różnice między danymi, które są dostępne w pakiecie zawartości i dane pobrane przy użyciu [interfejsów API programu Microsoft Graph dla raportowania](concept-reporting-api.md). |
+|Obecnie pakiet zawartości usługi Power BI dla usługi Azure AD używa interfejsów API programu Graph usługi Azure AD do pobierania danych z dzierżawy usługi Azure AD. W rezultacie mogą występować różnice między danymi dostępnymi w pakiecie zawartości i danymi pobranymi przy użyciu [interfejsów API programu Microsoft Graph do raportowania](concept-reporting-api.md). |
 |  |
 
-Podczas pracy z pakietu zawartości usługi Power BI dla usługi Azure Active Directory w wersji zapoznawczej, jest możliwe, że wystąpiły następujące błędy: 
+Podczas pracy z pakietu zawartości usługi Power BI dla usługi Azure Active Directory (Azure AD), możliwe jest wystąpiły następujące błędy: 
 
 - [Odświeżanie nie powiodło się](troubleshoot-content-pack.md#refresh-failed) 
 - [Nie można zaktualizować poświadczeń źródła danych](troubleshoot-content-pack.md#failed-to-update-data-source-credentials) 
-- [Importowanie danych trwa zbyt długo](troubleshoot-content-pack.md#importing-of-data-is-taking-too-long) 
- 
+- [Importowanie danych trwa zbyt długo](troubleshoot-content-pack.md#importing-of-data-is-taking-too-long)  
 Ten artykuł zawiera informacje na temat możliwych przyczyn i jak naprawić te błędy.
- 
+ 
 ## <a name="refresh-failed"></a>Odświeżanie nie powiodło się 
- 
+ 
 **Jak ten błąd jest udostępniane**: wiadomości E-mail z usługi Power BI lub stan niepowodzenia w historii odświeżania. 
 
 
 | Przyczyna | Jak naprawić |
 | ---   | ---        |
-| Odśwież błędu, który może być spowodowane błędy, jeśli poświadczenia użytkowników, nawiązywania połączenia z pakietem zawartości zostały resetowania, ale nie są aktualizowane w ustawieniach połączenia pakietu zawartości. | W usłudze Power BI Znajdź zestaw danych, odpowiadający pulpitu nawigacyjnego dzienników działanie usługi Azure Active Directory (działanie usługi Azure Active Directory dzienniki), wybierz pozycję Zaplanuj odświeżanie, a następnie wprowadź poświadczenia usługi Azure AD. |
-| Odświeżanie może zakończyć się niepowodzeniem z powodu problemów z danych podstawowych pakietu zawartości. | Utwórz bilet pomocy technicznej. Aby uzyskać więcej informacji, zobacz [jak uzyskać pomoc techniczną dotyczącą usługi Azure Active Directory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
+| Odśwież błędu, który może być spowodowane błędy, jeśli poświadczenia użytkowników, nawiązywania połączenia z pakietem zawartości zostały resetowania, ale nie są aktualizowane w ustawieniach połączenia pakietu zawartości. | W usłudze Power BI, Znajdź zestaw danych, odpowiadający pulpitu nawigacyjnego dzienników aktywności usługi Azure AD (**rejestruje działanie usługi Azure Active Directory**), wybierz harmonogram odświeżania, a następnie wprowadź swoje poświadczenia usługi Azure AD. |
+| Odświeżanie może zakończyć się niepowodzeniem z powodu problemów z danych podstawowych pakietu zawartości. | [Bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md).|
  
- 
+ 
 ## <a name="failed-to-update-data-source-credentials"></a>Nie można zaktualizować poświadczeń źródła danych 
- 
-**Jak ten błąd jest udostępniane**: W usłudze Power BI, nawiązywania połączenia z pakietem zawartości dzienników (wersja zapoznawcza) działanie usługi Azure Active Directory. 
+ 
+**Jak ten błąd jest udostępniane**: W usłudze Power BI, gdy połączysz się działanie usługi Azure AD dzienniki pakietu zawartości. 
 
 | Przyczyna | Jak naprawić |
 | ---   | ---        |
-| Użytkownik nawiązujący połączenie nie jest administratorem globalnym lub Czytelnik zabezpieczeń lub administratorem zabezpieczeń. | Użyj konta administratora globalnego lub Czytelnik zabezpieczeń lub Administrator zabezpieczeń do dostępu do pakietów zawartości. |
-| Dzierżawy nie jest dzierżawą usługi Premium lub nie ma co najmniej jeden użytkownik mający licencję Premium pliku. | Utwórz bilet pomocy technicznej. Aby uzyskać więcej informacji, zobacz [jak uzyskać pomoc techniczną dotyczącą usługi Azure Active Directory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
+| Użytkownik nawiązujący połączenie nie jest administratorem globalnym lub Czytelnik zabezpieczeń lub administrator zabezpieczeń. | Użyj konta administratora globalnego lub Czytelnik zabezpieczeń lub administrator zabezpieczeń do dostępu do pakietów zawartości. |
+| Dzierżawy nie jest dzierżawą usługi Premium lub nie ma co najmniej jeden użytkownik mający licencję Premium pliku. | [Bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md).|
  
 
- 
 
-## <a name="importing-of-data-is-taking-too-long"></a>Importowanie danych trwa zbyt długo 
- 
-**Jak ten błąd jest udostępniane**: W usłudze Power BI po połączeniu pakietu zawartości, proces importowania danych rozpoczyna się przygotować pulpitu nawigacyjnego dla dziennika działanie usługi Azure Active Directory. Zostanie wyświetlony komunikat: "*importowanie danych...* "  
+## <a name="data-import-is-too-slow"></a>Importowanie danych jest zbyt wolno 
+ 
+**Jak ten błąd jest udostępniane**: W usłudze Power BI po połączeniu z pakietem zawartości, proces importowania danych rozpoczyna się przygotować pulpitu nawigacyjnego do działania usługi Azure AD dzienniki. Zostanie wyświetlony komunikat: **importowanie danych...**  bez żadnych dalszych postępów.  
 
 | Przyczyna | Jak naprawić |
 | ---   | ---        |
-| W zależności od rozmiaru dzierżawy usługi tego kroku może potrwać od kilka minut do 30 minut. | Po prostu o cierpliwość. Jeśli komunikat nie zmienia się na wyświetlanie pulpitu nawigacyjnego w ciągu godziny, zgłoś bilet pomocy technicznej. Aby uzyskać więcej informacji, zobacz [jak uzyskać pomoc techniczną dotyczącą usługi Azure Active Directory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
+| W zależności od rozmiaru dzierżawy usługi ten krok może potrwać od kilku minut do 30 minut. | Jeśli komunikat nie zmienia się na wyświetlanie pulpitu nawigacyjnego w ciągu godziny, [bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md).|
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby zainstalować pakiet zawartości Power BI dla usługi Azure Active Directory w wersji zapoznawczej, kliknij przycisk [tutaj](https://powerbi.microsoft.com/blog/azure-active-directory-meets-power-bi/).
-
-
+* [Zainstaluj pakiet contect usługi Power BI dla usługi Azure AD raportów](quickstart-install-power-bi-content-pack.md).
+* [Użyj zawartości pakietu dla usługi Azure AD raportów umożliwia wizualizowanie danych usługi Power BI](howto-power-bi-content-pack.md)
+* [Jak uzyskać pomoc techniczną dla usługi Azure Active Directory](../fundamentals/active-directory-troubleshooting-support-howto.md)

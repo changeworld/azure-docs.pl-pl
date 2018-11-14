@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c79a44422944fd2049c47a6729a86d063dbcd15e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e2a931b14719775ac3d901591b6424d9c9e9ee10
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232345"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625831"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Log Analytics na platformie Microsoft Azure. Jeśli masz dodatkowe pytania dotyczące usługi Log Analytics, przejdź do strony [forum dyskusyjne](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
@@ -160,7 +160,7 @@ A. Nie, nie jest obecnie możliwe do odczytu z dowolnego tabele lub kontenerów 
 
 A. Usługa Log Analytics jest oparty na platformie Azure. Adresy IP analizy dziennika są w [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
-Podczas wdrażania usługi zostaną wprowadzone, zmieniać rzeczywiste adresy IP usługi Log Analytics. Nazwy DNS, aby umożliwić za pośrednictwem zapory są udokumentowane w artykule [wymagania dotyczące sieciowej](log-analytics-concept-hybrid.md#network-firewall-requirements).
+Podczas wdrażania usługi zostaną wprowadzone, zmieniać rzeczywiste adresy IP usługi Log Analytics. Nazwy DNS, aby umożliwić za pośrednictwem zapory są udokumentowane w artykule [wymagania dotyczące sieciowej](log-analytics-agent-overview.md#network-firewall-requirements).
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>PYTANIE: Usługa ExpressRoute jest używana do łączenia się z platformy Azure. Moje ruchu usługi Log Analytics używa Moje połączenie usługi ExpressRoute?
 

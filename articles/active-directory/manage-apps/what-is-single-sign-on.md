@@ -1,199 +1,183 @@
 ---
-title: Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory? | Microsoft Docs
-description: Usługa Azure Active Directory, aby włączyć logowanie jednokrotne do wszystkich aplikacje sieci web i SaaS, które są potrzebne dla firm.
+title: Logowanie jednokrotne do aplikacji — Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wybrać jedną metodę logowania jednokrotnego, podczas konfigurowania aplikacji w usłudze Azure Active Directory (Azure AD). Użyj logowania jednokrotnego, dzięki czemu użytkownicy nie muszą zapamiętywać hasła do każdej aplikacji i uprościć administrowanie zarządzania kontami.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
-editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.component: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 11/12/2018
 ms.author: barbkess
-ms.reviewer: asmalser
-ms.custom: it-pro
-ms.openlocfilehash: 72665ed4c25d2719ac5030bce59157a3ccd9dec7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.reviewer: arvindh
+ms.openlocfilehash: 5dedef82fcae2b50a58af924f5748c900adf96e0
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236010"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624611"
 ---
-# <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?
-Logowanie jednokrotne oznacza, że będzie mogła uzyskać dostęp do wszystkich aplikacji i zasobów potrzebnych do prowadzenia działalności, logując się tylko wtedy, gdy za pomocą jednego konta użytkownika. Po zalogowaniu możesz uzyskać dostęp do wszystkich aplikacji bez konieczności uwierzytelnienia (na przykład, wpisz hasło) po raz drugi.
+# <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory
+Dowiedz się, jak wybrać najbardziej odpowiedni pojedynczej metody logowania jednokrotnego, podczas konfigurowania aplikacji w usłudze Azure Active Directory (Azure AD). 
 
-Wiele organizacji korzystają z możliwości oprogramowania jako usługi (SaaS) aplikacje takie jak usługi Office 365, Box i Salesforce, który na produktywność użytkownika końcowego. W przeszłości personel IT musi indywidualnie tworzenia i aktualizowania kont użytkowników w każdej aplikacji SaaS, a użytkownicy muszą pamiętać hasła dla każdej aplikacji SaaS.
+- **Za pomocą logowania jednokrotnego**użytkownicy logują się drugi raz z jednego konta na urządzeniach przyłączonych do domeny dostępu do zasobów, oprogramowanie jako usługa (SaaS) aplikacje, firmy i aplikacji sieci web. Po zalogowaniu się użytkownika można uruchamiać aplikacje z poziomu portalu usługi Office 365 lub Azure AD MyApps panelu dostępu. Administratorzy mogą scentralizowane zarządzanie kontami użytkowników i automatycznie dodawała lub usuwała użytkownikom dostęp do aplikacji na podstawie przynależności do grupy. 
 
-Usługa Azure Active Directory rozszerza w lokalnej usłudze Active Directory w chmurze, umożliwiając użytkownikom za pomocą ich podstawowego konta organizacyjnego nie tylko zalogować się do swoich urządzeń przyłączonych do domeny i zasobów firmy, ale również wszystkie sieci web i aplikacji SaaS niezbędny do swojej pracy.
+- **Bez rejestracji jednokrotnej**, użytkownicy muszą zapamiętywać hasła specyficzne dla aplikacji i zaloguj się do każdej aplikacji. Dział IT musi pracowników do tworzenia i aktualizowania konta użytkowników dla każdej aplikacji, takich jak usługi Office 365, Box i Salesforce. Użytkownicy potrzebują do haseł oraz poświęcić czas, aby zalogować się do poszczególnych aplikacji.
 
-Więc nie tylko użytkowników nie trzeba zarządzać wiele zestawów nazwy użytkowników i hasła, aplikacjach dostępu mogą być automatycznie aprowizowane lub cofanie aprowizacji oparte na ich członków grupy w organizacji, a także ich stan jako pracownika. Usługa Azure Active Directory wprowadza zabezpieczeniami i dostępem formantów nadzoru, które pozwalają na centralnie zarządzać dostępem użytkowników w aplikacjach SaaS.
+W tym artykule opisano pojedynczej metody logowania jednokrotnego i ułatwia w wybór najlepszej metody dla twojej aplikacji.
 
-Usługa Azure AD umożliwia łatwą integrację z wieloma współczesnych popularne aplikacje SaaS; zapewnia zarządzanie tożsamościami i dostępem i umożliwia użytkownikom logowanie jednokrotne do aplikacji bezpośrednio lub odkrywanie ich i uruchamianie z portalu, takiego jak usługi Office 365 lub w panelu dostępu usługi Azure AD.
+## <a name="choosing-a-single-sign-on-method"></a>Wybieranie jednej metody logowania jednokrotnego
 
-Architektura integracji składa się z następujących czterech głównych bloków konstrukcyjnych:
+Istnieje kilka sposobów, aby skonfigurować aplikację pod kątem logowania jednokrotnego. Wybieranie metody logowania jednokrotnego dla aplikacji zależy od tego, jak aplikacja jest skonfigurowana do uwierzytelniania. Wszystkie pojedynczego logowania jednokrotnego metody, z wyjątkiem wyłączona, automatyczne logowanie użytkowników do aplikacji bez konieczności drugiego logowania.  
 
-* Logowanie jednokrotne umożliwia użytkownikom dostęp do swoich aplikacji SaaS, w oparciu o swoje konta organizacyjne w usłudze Azure AD. Logowanie jednokrotne jest, co pozwala użytkownikom na uwierzytelnianie aplikacji przy użyciu jednego konta organizacji.
-* Inicjowanie obsługi użytkowników umożliwia inicjowanie obsługi użytkowników i anulowania obsługi administracyjnej do obiektu docelowego, który SaaS na podstawie zmian wprowadzonych w systemie Windows Server Active Directory i/lub usługi Azure AD. Konto elastycznie to, co pozwala użytkownikowi uzyskanie autoryzacji do po uwierzytelnieniu za pomocą logowania jednokrotnego za pomocą aplikacji.
-* Zarządzanie dostępem do aplikacji scentralizowany dostęp do aplikacji pojedynczy punkt SaaS umożliwia portalu Azure i zarządzania, z możliwością delegować uprawnienia do podejmowania decyzji na dostęp do aplikacji i zatwierdzenia do wszystkich osób w organizacji
-* Jednolite raportowanie i monitorowania aktywności użytkownika w usłudze Azure AD
+- Aplikacje w chmurze za pomocą metod SAML, opartego na hasłach, połączone lub wyłączone dla logowania jednokrotnego. SAML to najbezpieczniejsza opcja pojedynczej metody logowania jednokrotnego.
+- Aplikacje lokalne uwierzytelniania można użyć opartego na hasłach, zintegrowane Windows opartej na nagłówkach, połączone lub wyłączone metody logowania jednokrotnego. Opcje w środowisku lokalnym działa, gdy aplikacje są skonfigurowane dla serwera Proxy aplikacji. 
 
-## <a name="how-does-single-sign-on-with-azure-active-directory-work"></a>Jak działa logowanie jednokrotne z usługą Azure Active Directory?
-Gdy użytkownicy logują się do aplikacji, przejściu przez proces uwierzytelniania gdzie są one wymagane, aby potwierdzić, że są one Załóżmy, że są one. Bez logowania jednokrotnego ten proces uwierzytelniania jest zazwyczaj wykonywane przez wprowadzenie hasła, które są przechowywane na poziomie aplikacji, a użytkownicy muszą znać hasło.
+Ten schemat blokowy pomaga określić, które pojedynczej metody logowania jednokrotnego jest najlepszego w danej sytuacji. 
 
-Usługa Azure AD obsługuje trzy różne sposoby, aby zalogować się do aplikacji:
+![Wybierz metodę rejestracji jednokrotnej](./media/what-is-single-sign-on/choose-single-sign-on-method.png)
 
-* **Federacyjne logowanie jednokrotne** umożliwia aplikacjom przekierowanie do usługi Azure AD do uwierzytelniania użytkowników zamiast monitowania o własne hasło. Federacyjne logowanie jednokrotne jest obsługiwana w przypadku aplikacji, które obsługują protokoły, takie jak SAML 2.0, WS-Federation i OpenID Connect i jest najszerszym tryb logowania jednokrotnego.
-* **Na podstawie hasła logowania jednokrotnego** umożliwia bezpieczne przechowywanie haseł aplikacji i oparte na metodzie powtórzeń przy użyciu rozszerzenia przeglądarki sieci web lub aplikacji mobilnej. Oparte na hasłach logowania jednokrotnego wykorzystuje istniejący proces udostępniany przez aplikację, ale umożliwia administratorowi Zarządzanie hasłami i wymaga aby użytkownik znał hasło.
-* **Połączone logowanie jednokrotne** umożliwia usłudze Azure AD i wykorzystać wszystkie istniejące logowanie jednokrotne zostało skonfigurowane dla aplikacji, ale umożliwia te aplikacje, być połączone z portali panelu dostępu usługi Office 365 lub Azure AD i umożliwia również dodatkowe Raportowanie w usłudze Azure AD, gdy istnieje uruchomienia aplikacji.
+Poniższa tabela zawiera podsumowanie pojedynczej metody logowania jednokrotnego i linki, aby uzyskać więcej szczegółów. 
 
-Po użytkownik został uwierzytelniony przy użyciu aplikacji, muszą mieć rekord konta zainicjowane w aplikacji, która informuje aplikację, w których uprawnienia i poziom dostępu wewnątrz aplikacji. Aprowizacja ten rekord konta może mieć miejsce, automatycznie lub może być wykonywane ręcznie przez administratora przed dostępu rejestracji jednokrotnej jest podany przez użytkownika.
+| Metoda rejestracji jednokrotnej | Typy aplikacji | Kiedy stosować |
+| :------ | :------- | :----- |
+| [SAML](#saml-sso) | Tylko w chmurze | Użyj protokołu SAML, jeśli to możliwe. SAML działa, gdy aplikacje są skonfigurowane do używania jednego z protokołów języka SAML.|
+| [Oparte na hasłach](#password-based-sso) | w chmurze i lokalnych | Opcja używana podczas aplikacja uwierzytelnia się za pomocą nazwy użytkownika i hasła. Oparte na hasłach logowanie jednokrotne umożliwia bezpieczną aplikację przechowywanie i powtarzanie haseł przy użyciu rozszerzenia przeglądarki sieci web lub aplikacji mobilnej. Ta metoda wykorzystuje istniejący proces logowania udostępniany przez aplikację, ale umożliwia administratorowi Zarządzanie hasłami. |
+| [Połączone](#linked-sso) | w chmurze i lokalnych | Użyj połączonego logowania jednokrotnego, gdy aplikacja jest skonfigurowana dla logowania jednokrotnego w innym identyfikacji dostawcy usługi. Ta opcja nie powoduje dodania logowanie jednokrotne do aplikacji. Jednak aplikacja może już logowanie jednokrotne implementowane za pomocą innej usługi, takie jak Active Directory Federation Services.|
+| [Disabled (Wyłączone)](#disabled-sso) | w chmurze i lokalnych | Używanie wyłączone logowanie jednokrotne, gdy aplikacja nie jest gotowe do skonfigurowania dla logowania jednokrotnego. Użytkownicy muszą wprowadzić swoją nazwę użytkownika i hasło, za każdym razem, gdy ich uruchomić tę aplikację.|
+| [Uwierzytelnianie zintegrowane Windows (IWA)](#integrated-windows-authentication-iwa-sso) | tylko lokalnie | Ta metoda pojedynczego logowania jednokrotnego dla aplikacji, które używają [zintegrowane Windows Authentication (Zintegrowane)](/aspnet/web-api/overview/security/integrated-windows-authentication), lub aplikacji obsługujących oświadczenia. Łączniki serwera Proxy aplikacji używają delegowanie ograniczone protokołu Kerberos (KCD) do uwierzytelniania użytkowników w aplikacji. | 
+| [Na podstawie nagłówka](#header-based-sso) | tylko lokalnie | Jeśli aplikacja używa nagłówków do uwierzytelniania, należy użyć opartej na nagłówkach logowania jednokrotnego. Opartej na nagłówkach logowanie jednokrotne wymaga oprogramowanie PingAccess dla usługi Azure Active Directory. Serwer Proxy aplikacji używa usługi Azure AD można uwierzytelnić użytkownika, a następnie przekazuje ruch za pośrednictwem usługi łącznika.  | 
 
- Szczegółowe informacje na temat tych pojedynczego trybów logowania jednokrotnego i aprowizacji poniżej.
+## <a name="saml-sso"></a>LOGOWANIA JEDNOKROTNEGO SAML
+Za pomocą **SAML logowania jednokrotnego**, usługa Azure AD uwierzytelnia się do aplikacji przy użyciu konta usługi Azure AD. Usługa Azure AD komunikuje się informacji logowania jednokrotnego do aplikacji za pośrednictwem protokołu połączenia. Za pomocą opartej na SAML logowania jednokrotnego możesz mapować użytkowników do ról aplikacji, na podstawie reguł zdefiniowanych w swoje oświadczenia języka SAML
 
-### <a name="federated-single-sign-on"></a>Federacyjne logowanie jednokrotne
-Federacyjne logowanie jednokrotne umożliwia użytkownikom automatyczne logowanie do aplikacji SaaS innych firm przez usługę Azure AD, podając dane konta użytkownika z usługi Azure AD w organizacji.
+Opartej na SAML logowania jednokrotnego jest:
 
-W tym scenariuszu użytkownik ma już zalogowany w usłudze Azure AD, gdy chcesz uzyskać dostęp do zasobów, które są kontrolowane przez w przypadku aplikacji SaaS innych firm Federacji eliminuje potrzebę użytkownik może być ponownie uwierzytelniany.
+- Bezpieczniejsze niż hasła logowania jednokrotnego, a wszystkie inne logowania jednokrotnego metody.
+- Nasze zalecaną metodą rejestracji jednokrotnej.
 
-Usługa Azure AD można obsługuje federacyjnego logowania jednokrotnego przy użyciu aplikacji obsługujących SAML 2.0, WS-Federation, lub OpenID connect protokołów.
+Opartej na SAML logowania jednokrotnego jest obsługiwana dla aplikacji, które korzystają z dowolnych z tych protokołów:
 
-Zobacz również: [zarządzaniu certyfikatami federacyjnego logowania jednokrotnego](manage-certificates-for-federated-single-sign-on.md)
+- SAML 2.0
+- WS-Federation
+- OpenID connect
 
-### <a name="password-based-single-sign-on"></a>Logowanie jednokrotne oparte na hasłach
-Konfigurowanie opartego na hasłach logowanie jednokrotne umożliwia użytkownikom automatyczne logowanie do aplikacji SaaS innych firm przez usługę Azure AD, podając dane konta użytkownika z aplikacji SaaS innych firm w organizacji. Po włączeniu tej funkcji usługi Azure AD zbiera i bezpiecznie przechowa Twoje informacje o koncie użytkownika i powiązane hasło.
+Aby skonfigurować aplikację do opartej na SAML logowania jednokrotnego, zobacz [opartej na SAML skonfigurować logowanie jednokrotne](configure-single-sign-on-portal.md). Ponadto wiele aplikacji ma [samouczki specyficzne dla aplikacji](../saas-apps/tutorial-list.md) który krok po kroku przez skonfigurowanie opartej na SAML logowania jednokrotnego dla określonych aplikacji. 
 
-Usługa Azure AD może obsługiwać opartego na hasłach logowanie jednokrotne dla dowolnej aplikacji opartej na chmurze, który jest oparty na języku HTML strony logowania. Za pomocą wtyczki przeglądarki niestandardowych, AAD automatyzuje proces logowania za pośrednictwem bezpiecznego pobierania poświadczeń aplikacji, takie jak nazwa użytkownika i hasło z katalogu i wprowadza te poświadczenia do strony logowania w aplikacji w imieniu użytkownika. Istnieją dwa przypadki użycia:
+Aby uzyskać więcej informacji o tym, jak działa protokół SAML, zobacz [pojedynczego logowania jednokrotnego protokołu SAML](../develop/single-sign-on-saml-protocol.md).
 
-1. **Administrator zarządza poświadczeniami** — Administratorzy mogą tworzyć i zarządzać poświadczenia aplikacji i przypisz tych poświadczeń do użytkowników lub grupy, którzy potrzebują dostępu do aplikacji. W takich przypadkach użytkownik końcowy musi znać poświadczenia, ale nadal uzyskuje dostęp pojedynczego logowania jednokrotnego do aplikacji po prostu, klikając je w swoich panelach dostępu lub za pośrednictwem podany link. Ten proces umożliwia zarówno zarządzania cyklem życia poświadczeń przez administratora, a także wygodę dla użytkowników końcowych, zgodnie z którą nie muszą pamiętać lub zarządzać hasłami specyficzny dla aplikacji. Poświadczenia są zaciemniony plikach użytkownika końcowego podczas automatycznego logowania; jednak są one z technicznego punktu widzenia wykrywane przez użytkownika przy użyciu narzędzia do debugowania w sieci web, a użytkownikom i administratorom należy stosować te same zasady zabezpieczeń, tak, jakby poświadczenia zostały przedstawione bezpośrednio przez użytkownika. Poświadczenia administratora są przydatne, gdy zapewnianie dostępu do konta, która jest współużytkowana przez wielu użytkowników, takich jak mediów społecznościowych i aplikacji do udostępniania dokumentów.
-2. **Użytkownik zarządza poświadczeniami** — Administratorzy mogą przypisywać aplikacje do użytkowników lub grup i zezwolić użytkownikom końcowym o wprowadzenie poświadczeń bezpośrednio na uzyskiwanie dostępu do aplikacji po raz pierwszy w swoich panelach dostępu. Spowoduje to utworzenie wygodę dla użytkowników końcowych, zgodnie z którą nie muszą ciągle wprowadzać haseł specyficzny dla aplikacji za każdym razem, mogą uzyskiwać dostęp do aplikacji. Użytkownicy mogą nadal Zarządzam ich hasłami, aktualizowanie i usuwanie ich odpowiednio do potrzeb. Ten przypadek użycia może również służyć jako kamień przechodzenia krok po kroku do zarządzanie administracyjne poświadczeń, według której administrator może ustawić nowe poświadczenia dla aplikacji w przyszłości bez konieczności zmieniania aplikacji środowisko dostępu użytkownika końcowego.
+## <a name="password-based-sso"></a>Usługa rejestracji Jednokrotnej z opartego na hasłach
+Za pomocą opartego na hasłach logowania jednokrotnego aplikacja uwierzytelnia się do aplikacji przy użyciu nazwy użytkownika i hasła. Użytkownicy końcowi Zaloguj się do czasu aplikacji pierwszy, mogą uzyskać do niego dostęp. Po pierwsze logowanie jednokrotne usługi Azure Active Directory zawiera nazwę użytkownika i hasło do aplikacji. 
 
-W obu przypadkach poświadczenia są przechowywane w stanie zaszyfrowane w katalogu i są tylko przekazywane za pośrednictwem protokołu HTTPS w trakcie zautomatyzowanego procesu logowania. Za pomocą opartego na hasłach logowanie jednokrotne, usługa Azure AD oferuje wygodny dostęp do rozwiązania do zarządzania tożsamościami dla aplikacji, które nie są w stanie obsługiwać protokoły federacji.
+Na podstawie hasła logowania jednokrotnego używa istniejącego procesu uwierzytelniania udostępniany przez aplikację. Po włączeniu hasła logowania jednokrotnego dla aplikacji usługi Azure AD zbiera i OS x bezpiecznie przechowa nazwy użytkownika i hasła dla aplikacji. Poświadczenia użytkownika są przechowywane w stanie zaszyfrowane w katalogu. 
 
-Usługa rejestracji Jednokrotnej z opartego na hasłach opiera się na rozszerzenia przeglądarki do bezpiecznego pobierania aplikacji i informacje specyficzne dla użytkownika z usługi Azure AD i zastosować je do usługi. Większość aplikacji SaaS innych firm, które są obsługiwane przez usługę Azure AD obsługują tę funkcję.
+Użyj opartego na hasłach logowania jednokrotnego po:
 
-W przypadku logowania jednokrotnego opartego na hasłach może być przeglądarki przez użytkownika końcowego:
-* Internet Explorer 11 — Windows 7 lub nowszy
-* Edge w systemie Windows 10 Anniversary Edition lub nowszy 
-* Chrome — W systemie Windows 7 lub nowszy i System MacOS x lub nowszym
-* Firefox 26.0 lub później — w Windows XP z dodatkiem SP2 lub nowszy oraz w systemie Mac OS X 10,6 lub nowszej
+- Aplikacja nie może obsługiwać pojedynczego logowania jednokrotnego protokołu SAML.
+- Aplikacja uwierzytelnia się za pomocą nazwy użytkownika i hasło zamiast tokenami dostępu i nagłówki.
 
-### <a name="linked-single-sign-on"></a>Połączone logowanie jednokrotne
-Podczas konfigurowania logowania jednokrotnego dla aplikacji, witryny Azure portal zapewnia trzecią opcję z "połączone logowanie jednokrotne". Ta opcja umożliwia po prostu administratorem, aby utworzyć link do aplikacji i umieść ją na panelu dostępu dla wybranych użytkowników.
+Oparte na hasłach logowanie jednokrotne jest obsługiwana dla dowolnej aplikacji opartej na chmurze, który jest oparty na języku HTML strony logowania. Użytkownik może użyć dowolnej z poniższych przeglądarek:
 
-Na przykład w przypadku aplikacji, która jest skonfigurowana do uwierzytelniania użytkowników za pomocą Active Directory Federation Services 2.0, administrator może użyć opcji "połączone logowanie jednokrotne" Aby utworzyć link do niego w panelu dostępu. Gdy użytkownicy uzyskują dostęp do łącza, są uwierzytelniani, za pomocą Active Directory Federation Services 2.0 lub dowolnego istniejącego pojedynczego logowania jednokrotnego rozwiązania jest udostępniany przez aplikację.
+- Internet Explorer 11 w systemie Windows 7 lub nowszy
+- Edge w systemie Windows 10 Anniversary Edition lub nowszy 
+- Dla programu Chrome w Windows 7 lub nowszy, a system MacOS x lub nowszym
+- Firefox 26.0 lub nowszej dla systemu Windows XP SP2 lub nowszy i w systemie Mac OS X 10.6 lub nowszej
 
-### <a name="user-provisioning"></a>Aprowizowanie użytkowników
-Wybierz aplikacje usługi Azure AD umożliwia automatyczne użytkownika aprowizację i anulowanie obsługi kont w innych aplikacji SaaS pochodzących od w witrynie Azure portal przy użyciu informacji o tożsamości systemu Windows Server Active Directory lub Azure AD. Po użytkownik otrzyma uprawnienia w usłudze Azure AD dla jednego z tych aplikacji, konta mogą być automatycznie tworzone (udostępnione) w lokalizacji docelowej aplikacji SaaS.
+Aby skonfigurować dla opartego na hasłach logowania jednokrotnego aplikacji w chmurze, zobacz [skonfigurować wniosek o hasło logowania jednokrotnego](application-sign-in-problem-password-sso-gallery.md#configure-the-application-for-password-single-sign-on).
 
-Gdy użytkownik zostanie usunięty lub jego informacje zmian w usłudze Azure AD, tych zmian również są odzwierciedlane w aplikacji SaaS. Oznacza to, że zarządzanie cyklem życia tożsamości automatyczne konfigurowanie umożliwia administratorom sterować i zapewnić zautomatyzowaną aprowizację i cofanie aprowizacji w aplikacjach SaaS. W usłudze Azure AD ta Automatyzacja zarządzania cyklem życia tożsamości jest włączane przez Inicjowanie obsługi użytkowników.
+Aby skonfigurować aplikację lokalną pod kątem logowania jednokrotnego za pośrednictwem serwera Proxy aplikacji, zobacz [hasło vaulting dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji](application-proxy-configure-single-sign-on-password-vaulting.md)
 
-Aby dowiedzieć się więcej, zobacz [automatyczna Aprowizacja użytkowników i anulowania zastrzeżenia do aplikacji SaaS](user-provisioning.md)
+### <a name="managing-credentials-for-password-based-sso"></a>Zarządzanie poświadczeniami opartego na hasłach logowania jednokrotnego
 
-## <a name="get-started-with-the-azure-ad-application-gallery"></a>Rozpoczynanie pracy z galerii aplikacji usługi Azure AD
-Chcesz zacząć? Do wdrożenia logowania jednokrotnego między usługą Azure AD oraz aplikacje SaaS, które Twoja organizacja używa, przestrzegać następujących wytycznych.
+W celu uwierzytelnienia użytkownika do aplikacji usługi Azure AD umożliwia pobranie poświadczeń użytkownika z katalogu i wejścia stronę logowania w aplikacji.  Usługi Azure AD bezpiecznie przekazuje poświadczenia użytkownika przy użyciu rozszerzenia przeglądarki sieci web lub aplikacji mobilnej. Ten proces umożliwia administratorowi Zarządzanie poświadczeniami użytkownika i nie wymaga użytkownikom na zapamiętywanie hasła.
 
-### <a name="using-the-azure-ad-application-gallery"></a>Za pomocą galerii aplikacji usługi Azure AD
-[Galeria aplikacji usługi Azure Active Directory](https://azure.microsoft.com/marketplace/active-directory/all/) daje dostęp do listy aplikacji, które obsługujących formę logowanie jednokrotne z usługą Azure Active Directory.
+> [!IMPORTANT]
+> Poświadczenia są zaciemniony w plikach użytkownika końcowego podczas zautomatyzowanego procesu logowania. Poświadczenia są jednak wykrywalny przy użyciu narzędzia do debugowania w sieci web. Użytkownicy i Administratorzy muszą wykonać te same zasady zabezpieczeń tak, jakby zostały wprowadzone poświadczenia bezpośrednio przez użytkownika.
 
-![Galeria aplikacji online platformy Azure](media/what-is-single-sign-on/onlineappgallery.png)
+Hasła do każdej aplikacji albo można zarządzać przez administratora usługi Azure AD lub przez użytkowników.
 
-Poniżej przedstawiono kilka wskazówek, służące do znajdowania aplikacji, jakie funkcje, które obsługują:
+Gdy poświadczenia zarządza administrator usługi Azure AD:  
 
-* Usługa Azure AD obsługuje automatyczne aprowizację i anulowanie obsługi dla wszystkich aplikacji "Proponowany" w [Galeria aplikacji usługi Azure Active Directory](https://azure.microsoft.com/marketplace/active-directory/all/).
-* Listę aplikacji federacyjnych przeznaczone do obsługi federacyjnego logowania jednokrotnego przy użyciu protokołu, takie jak SAML, WS-Federation i OpenID Connect można znaleźć [tutaj](https://social.technet.microsoft.com/wiki/contents/articles/20235.azure-active-directory-application-gallery-federated-saas-apps.aspx).
+- Użytkownik nie musi zresetować lub Zapamiętaj nazwę użytkownika i hasło. Użytkownikowi dostęp do aplikacji, klikając je w swoich panelach dostępu lub za pośrednictwem podany link.
+- Administrator mogą wykonywać zadania zarządzania, przy użyciu poświadczeń. Na przykład administrator można zaktualizować dostępu do aplikacji, zgodnie z członkostwa w grupach użytkowników i stanu.
+- Administrator może użyć poświadczeń administracyjnych, aby zapewnić dostęp do aplikacji współużytkowane przez wielu użytkowników. Na przykład administrator można zezwolić na każdy, kto może uzyskiwać dostęp do aplikacji na dostęp do mediów społecznościowych i aplikacji do udostępniania dokumentu.
 
-Po znalezieniu aplikacji, możesz rozpocząć zgodnie z instrukcjami krok po kroku w galerii aplikacji i w witrynie Azure portal umożliwia logowanie jednokrotne.
+Gdy użytkownik końcowy zarządza poświadczeniami:
 
-### <a name="application-not-in-the-gallery"></a>Aplikacja nie ma w galerii?
-Jeśli aplikacja nie zostanie znaleziony w galerii aplikacji usługi Azure AD, masz następujące opcje:
+- Użytkownicy mogą zarządzać swoich haseł, aktualizowanie i usuwanie ich odpowiednio do potrzeb. 
+- Administratorzy mogą nadal Ustaw nowe poświadczenia dla aplikacji.
 
-* **Dodaj aplikację spoza listy używasz** — kategoria niestandardowe w galerii aplikacji w witrynie Azure portal umożliwia łączenie nieznajdujące się na liście aplikacji, które Twoja organizacja używa. Możesz dodać dowolnej aplikacji, który obsługuje SAML 2.0 jako aplikacji federacyjnych lub dowolnej aplikacji, który jest oparty na języku HTML strony logowania jako hasło logowania jednokrotnego aplikacji. Aby uzyskać więcej informacji znajduje się w artykule na [Dodawanie własnych aplikacji](configure-federated-single-sign-on-non-gallery-applications.md).
-* **Dodaj własną aplikację, tworzysz** — Jeśli opracowano aplikację samodzielnie, postępuj zgodnie z wytycznymi podanymi w dokumentacji dla deweloperów usługi Azure AD, aby zaimplementować federacyjnego logowania jednokrotnego lub interfejs API programu graph aprowizacji przy użyciu usługi Azure AD. Aby uzyskać więcej informacji zobacz następujące zasoby:
-  
-  * [Scenariusze uwierzytelniania dla usługi Azure AD](../develop/authentication-scenarios.md)
-  * [https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet)
-  * [https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet)
-  * [https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore](https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore)
-* **Żądanie integracji aplikacji** -żądania pomocy technicznej dla aplikacji przy użyciu [forum opinii w usłudze Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory/).
 
-### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
-Rozszerzenie usługi Active Directory w witrynie Azure portal służy do konfigurowania aplikacji logowania jednokrotnego. Pierwszym krokiem musisz wybrać katalog z sekcji usługi Active Directory w portalu:
+## <a name="linked-sso"></a>Połączona usługa rejestracji Jednokrotnej
+Połączone logowanie umożliwia usłudze Azure AD w celu zapewnienia logowania jednokrotnego do aplikacji, która jest już skonfigurowane logowanie jednokrotne w innej usłudze. Połączonych aplikacji może znajdować się użytkownikom końcowym w portalu usługi Office 365 lub portalu usługi Azure AD MyApps. Na przykład użytkownik może uruchomić aplikację, która jest skonfigurowana na potrzeby logowania jednokrotnego w Active Directory Federation Services 2.0 (AD FS) z portalu usługi Office 365. Dodatkowe raportowania jest również dostępna dla połączonych aplikacji, które będą uruchamiane w portalu usługi Office 365 lub portalu usługi Azure AD MyApps. 
 
-![](./media/what-is-single-sign-on/azuremgmtportal.png)
+Użyj połączonego logowania jednokrotnego do:
 
-Aby zarządzać aplikacji SaaS innych firm, można przełączyć się na karcie aplikacje w wybranym katalogu. Ten widok umożliwia administratorom:
+- Zapewnić spójne środowisko użytkownika podczas migrowania aplikacji w danym okresie czasu. W przypadku migrowania aplikacji do usługi Azure Active Directory, można użyć połączonego logowania jednokrotnego, szybkie publikowanie łączy do wszystkich aplikacji, które zamierzasz migrować.  Użytkownicy mogą znaleźć wszystkie linki w [portalu MyApps](../user-help/active-directory-saas-access-panel-introduction.md) lub [uruchamiania aplikacji usługi Office 365](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a). Użytkownicy nie będą o tym, że użyteczną połączonych aplikacji lub migrowanych aplikacji.  
 
-* Dodawanie nowych aplikacji z galerii usługi Azure AD, a także aplikacje, które tworzysz
-* Usuń zintegrowanych aplikacji
-* Zarządzanie aplikacjami, które już zintegrowano
+Po użytkownik został uwierzytelniony przy użyciu połączonych aplikacji, rekord konta musi zostać utworzona przed użytkownika końcowego podano dostępu rejestracji jednokrotnej. Inicjowanie obsługi administracyjnej ten rekord konta można albo automatycznie są wykonywane lub może być wykonywane ręcznie przez administratora.
 
-Typowe zadania administracyjne dla aplikacji SaaS innych firm są:
+## <a name="disabled-sso"></a>Wyłączone logowania jednokrotnego
 
-* Włączanie logowania jednokrotnego z usługą Azure AD przy użyciu hasła logowania jednokrotnego lub, jeśli są dostępne dla obiektu docelowego SaaS, Federacyjna usługa rejestracji Jednokrotnej
-* Opcjonalnie włączenie użytkownika Inicjowanie obsługi administracyjnej dla użytkownika aprowizację i anulowanie obsługi (Zarządzanie cyklem życia tożsamości)
-* W przypadku aplikacji 
-* w przypadku, gdy użytkownik aprowizacja jest włączona, Wybieranie użytkowników, którzy mają dostęp do tej aplikacji
+Wyłączony tryb oznacza, że logowanie jednokrotne nie jest używana dla aplikacji. Gdy logowanie jednokrotne jest wyłączone, użytkownicy może być konieczne dwukrotnego uwierzytelnienia. Po pierwsze uwierzytelnianie użytkowników do usługi Azure AD, a następnie zaloguj aplikacji. 
 
-W przypadku aplikacji galerii, które obsługują federacyjnego logowania jednokrotnego Konfiguracja zwykle wymaga podania dodatkowe ustawienia konfiguracji, takich jak certyfikaty i metadane utworzyć relację zaufania federacji między aplikacji innych firm i Azure AD. Kreator konfiguracji przedstawiono szczegółowe informacje i zapewnia łatwy dostęp do danych specyficznych dla aplikacji SaaS i instrukcje.
+Używanie wyłączone tryb rejestracji jednokrotnej:
 
-Dla aplikacji galerii, które obsługują automatyczne aprowizowanie użytkowników należy nadać uprawnienia usługi Azure AD do zarządzania kontami usługi w aplikacji SaaS. Jako minimum musisz podać poświadczenia usługi Azure AD ma być użyte podczas uwierzytelniania za pośrednictwem aplikacji docelowej. Czy trzeba podać dodatkowe ustawienia konfiguracji, zależy od wymagań aplikacji.
+- Jeśli nie jesteś gotowy do integracji aplikacji za pomocą usługi Azure AD logowanie jednokrotne, lub
+- Jeśli testujesz inne aspekty aplikacji, lub
+- Jako warstwy zabezpieczeń do aplikacji w środowisku lokalnym, który nie wymaga od użytkowników uwierzytelniania. Z wyłączoną użytkownik musi uwierzytelnić. 
 
-## <a name="deploying-azure-ad-integrated-applications-to-users"></a>Wdrażanie aplikacji zintegrowanych z usługą AD systemu Azure dla użytkowników
-Usługi Azure AD oferuje kilka sposobów dostosowania do wdrażania aplikacji dla użytkowników końcowych w organizacji:
+## <a name="integrated-windows-authentication-iwa-sso"></a>Zintegrowane uwierzytelnianie Windows (IWA) logowania jednokrotnego
 
-* Panel dostępu usługi Azure AD
-* Uruchamianie aplikacji usługi Office 365
-* Bezpośrednie logowanie do aplikacji federacyjnych
-* Linki bezpośrednie do federacyjnych, opartych na hasłach lub istniejących aplikacjach
+Serwer Proxy aplikacji usługi Azure AD umożliwia logowanie jednokrotne (SSO) do aplikacji, które używają [zintegrowane Windows Authentication (Zintegrowane)](/aspnet/web-api/overview/security/integrated-windows-authentication), lub aplikacji obsługujących oświadczenia. Jeśli aplikacja używa IWA, serwer Proxy aplikacji uwierzytelnia się do aplikacji za pomocą delegowanie ograniczone protokołu Kerberos (KCD). Dla aplikacji obsługujących oświadczenia i relacje zaufania usługi Azure Active Directory logowania jednokrotnego działa, ponieważ użytkownik został już uwierzytelniony za pomocą usługi Azure AD.
 
-Metody, które chcesz wdrożyć w organizacji jest uznania.
+W trybie zintegrowane uwierzytelnianie Windows pojedynczego logowania jednokrotnego:
 
-### <a name="azure-ad-access-panel"></a>Panel dostępu usługi Azure AD
-Panel dostępu w https://myapps.microsoft.com jest oparte na sieci web portalu, który umożliwia użytkownikowi końcowemu za pomocą konta organizacyjnego usługi Azure Active Directory, aby wyświetlić i uruchamiania aplikacji opartych na chmurze do których zostały one udzielony dostęp administrator usługi Azure AD. Jeśli użytkownik końcowy za pomocą [usługi Azure Active Directory — wersja Premium](https://azure.microsoft.com/pricing/details/active-directory/), możesz również korzystać z funkcji zarządzania grupami samoobsługi za pomocą panelu dostępu.
+- Aby zapewnić logowanie jednokrotne do aplikacji w środowisku lokalnym, który uwierzytelnia IWA. 
 
-![Panel dostępu usługi Azure AD](media/what-is-single-sign-on/azure-ad-access-panel.png)
+Aby skonfigurować aplikację lokalną dla IWA, zobacz [ograniczonego delegowania protokołu Kerberos do logowania jednokrotnego do aplikacji przy użyciu serwera Proxy aplikacji](application-proxy-configure-single-sign-on-with-kcd.md). 
 
-Panel dostępu różni się w witrynie Azure portal i nie wymaga, aby użytkownicy mieli subskrypcję platformy Azure lub usługi Office 365.
+### <a name="how-single-sign-on-with-kcd-works"></a>Jak logowanie jednokrotne za pomocą działania ograniczonego delegowania protokołu Kerberos
+Ten diagram opisano przepływ, gdy użytkownik uzyskuje dostęp do aplikacji w środowisku lokalnym, która używa IWA.
 
-Aby uzyskać więcej informacji na panelu dostępu do usługi Azure AD, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
+![Diagram przepływu uwierzytelniania AAD firmy Microsoft](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
-### <a name="office-365-application-launcher"></a>Uruchamianie aplikacji usługi Office 365
-W przypadku organizacji, które zostały wdrożone usługi Office 365, aplikacje przypisane do użytkowników za pomocą usługi Azure AD pojawiają się w portalu usługi Office 365 w https://portal.office.com/myapps. To sprawia, że można łatwo i wygodnie dla użytkowników w organizacji można uruchomić aplikacji bez konieczności używania drugiej portalu i jest zalecaną aplikację uruchamiania rozwiązania dla organizacji przy użyciu usługi Office 365.
+1. Użytkownik musi wprowadzić adres URL, aby uzyskać dostęp do aplikacji lokalnych za pośrednictwem serwera Proxy aplikacji.
+2. Serwer Proxy aplikacji przekierowuje żądanie do usług uwierzytelniania usługi Azure AD, aby preauthenticate. W tym momencie usługa Azure AD ma zastosowanie wszelkich mających zastosowanie uwierzytelniania i zasady autoryzacji, takie jak uwierzytelnianie wieloskładnikowe. Jeśli użytkownik zostanie zweryfikowana, usługi Azure AD tworzy token i wysyła go do użytkownika.
+3. Użytkownik przekazuje token do serwera Proxy aplikacji.
+4. Serwer Proxy aplikacji weryfikuje token i pobiera główną nazwę użytkownika (UPN) z tokenu. Żądanie, nazwy UPN i głównej nazwy usługi (SPN) następnie wysyła do łącznika usługi za pośrednictwem uwierzytelnionych dually bezpiecznego kanału.
+5. Łącznik używa negocjacji delegowanie ograniczone protokołu Kerberos (KCD) za pomocą lokalnej usługi AD, personifikacji użytkownika w celu pobrania tokenu protokołu Kerberos do aplikacji.
+6. Usługi Active Directory wysyła ten token protokołu Kerberos, do łącznika aplikacji.
+7. Łącznik wysyła oryginalne żądanie do serwera aplikacji, za pomocą tokenu protokołu Kerberos, otrzymanego z usługi AD.
+8. Aplikacja wysyła odpowiedź do łącznika, która jest zwracana do serwera Proxy aplikacji usługi a na koniec do użytkownika.
 
-![](./media/what-is-single-sign-on/officeapphub.png)
+## <a name="header-based-sso"></a>Usługa rejestracji Jednokrotnej w opartej na nagłówkach
 
-Aby uzyskać więcej informacji na temat uruchamiania aplikacji usługi Office 365, zobacz [aplikacji są wyświetlane w obszarze uruchamiania aplikacji usługi Office 365](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher).
+Opartej na nagłówkach logowania jednokrotnego działa w przypadku aplikacji, które nagłówki HTTP jest używany do uwierzytelniania. Ta metoda logowania jednokrotnego używa usługi uwierzytelniania innej firmy o nazwie PingAccess. Użytkownik musi jedynie do uwierzytelniania w usłudze Azure AD. 
 
-### <a name="direct-sign-on-to-federated-apps"></a>Bezpośrednie logowanie do aplikacji federacyjnych
-Większość aplikacji federacyjnych obsługuje SAML 2.0, WS-Federation i OpenID connect również pomocy technicznej przez użytkowników na poziomie aplikacji, a następnie Pobierz zalogowany za pomocą usługi Azure AD przez automatyczne przekierowanie lub klikając łącze do logowania. Jest to określane jako dostawca usług-zainicjowania logowania jednokrotnego, a większość aplikacji federacyjnych w galerii aplikacji usługi Azure AD obsługuje tego (znajduje się dokumentacja połączone za pomocą Kreatora konfiguracji rejestracji logowania jednokrotnego aplikacji w witrynie Azure portal, aby uzyskać szczegółowe informacje).
+Użyj opartej na nagłówkach logowania jednokrotnego po:
 
-![](./media/what-is-single-sign-on/workdaymobile.png)
+- Serwer Proxy aplikacji i PingAccess są skonfigurowane dla aplikacji
 
-### <a name="direct-sign-on-links-for-federated-password-based-or-existing-apps"></a>Łącza bezpośrednie logowania federacyjnego, opartego na hasłach lub istniejących aplikacji
-Usługa Azure AD obsługuje również pojedynczego logowania jednokrotnego łączy bezpośrednich dla poszczególnych aplikacji, które obsługują opartego na hasłach logowanie jednokrotne połączonej logowania jednokrotnego i jakiejkolwiek formy federacyjnego logowania jednokrotnego.
+Aby skonfigurować uwierzytelnianie oparte na nagłówek, zobacz [opartej na nagłówkach uwierzytelniania dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji](application-proxy-configure-single-sign-on-with-ping-access.md). 
 
-Te łącza są specjalnie przygotowane adresów URL, które wysyłają użytkownika przez proces logowania w usłudze Azure AD dla określonej aplikacji bez konieczności uruchamiania użytkownik je z usługi Azure AD dostęp do panelu lub usługi Office 365. Te pojedynczego logowania jednokrotnego adresy URL można znaleźć w obszarze karty Pulpit nawigacyjny wstępnie zintegrowanych aplikacji w sekcji usługi Active Directory w witrynie Azure Portal, jak pokazano na poniższym zrzucie ekranu.
+### <a name="what-is-pingaccess-for-azure-ad"></a>Co to jest oprogramowanie PingAccess dla usługi Azure AD?
 
-![](./media/what-is-single-sign-on/deeplink.png)
+Przy użyciu PingAccess dla usługi Azure AD, użytkownicy mogą dostęp i jednym logowanie jednokrotne do aplikacji, które używające nagłówków na potrzeby uwierzytelniania. Serwer Proxy aplikacji traktuje te aplikacje, takie jak każdy inny, za pomocą usługi Azure AD do uwierzytelniania dostępu i następnie przekazywanie ruchu za pośrednictwem usługi łącznika. Po wystąpieniu uwierzytelniania usługi PingAccess tłumaczy token dostępu usługi Azure AD na format nagłówka, które są wysyłane do aplikacji.
 
-Te linki można kopiować i wkleić z dowolnego miejsca, chcesz udostępnić Link umożliwiający zalogowanie się do wybranej aplikacji. Może to być w wiadomości e-mail lub w dowolnym opartych na sieci web portalu niestandardowym skonfigurowanej dla dostępu aplikacji użytkownika. Oto przykład z usługi Azure AD bezpośrednie pojedynczy adres URL logowania do usługi Twitter:
+Użytkownicy nie będą zauważyć nic innego po zalogowaniu się do użycia aplikacje firmowe. One nadal pracować z dowolnego miejsca na dowolnym urządzeniu. Łączniki serwera Proxy aplikacji bezpośrednie zdalny ruch do wszystkich aplikacji i będą one nadal równoważenia obciążenia automatycznie.
 
-`https://myapps.microsoft.com/signin/Twitter/230848d52c8745d4b05a60d29a40fced`
+### <a name="how-do-i-get-a-license-for-pingaccess"></a>Jak uzyskać licencję na oprogramowanie PingAccess?
 
-Podobnie jak adresów URL specyficznych dla organizacji do obsługi panelu dostępu, można dostosować ten adres URL, dodając jeden aktywny lub zweryfikowanych domen dla katalogu po nazwie domeny myapps.microsoft.com. Gwarantuje to, że wszelkie znakowanie organizacji jest ładowany bezpośrednio na stronie logowania bez użytkownik nie musi najpierw wprowadź swój identyfikator użytkownika:
+Ponieważ ten scenariusz jest oferowana za pośrednictwem usługi Azure Active Directory i PingAccess, potrzebujesz licencji dla obu usług. Jednak subskrypcje usługi Azure Active Directory — wersja Premium obejmują licencję PingAccess podstawowe, który obejmuje maksymalnie 20 aplikacji. Należy opublikować więcej niż 20 aplikacji opartej na nagłówkach, można uzyskać dodatkową licencję z usługą PingAccess. 
 
-`https://myapps.microsoft.com/contosobuild.com/signin/Twitter/230848d52c8745d4b05a60d29a40fced`
-
-Po kliknięciu autoryzowanym użytkownikiem na jednym z poniższych linków, specyficzne dla aplikacji, są najpierw Zobacz ich organizacji strony logowania (przy założeniu, że ich nie jest już zalogowany), a po zalogowaniu nastąpi przekierowanie do swoich aplikacji bez konieczności zatrzymywania w panelu dostępu, najpierw. Jeśli użytkownik nie ma dostępu do aplikacji, takich jak rozszerzenie przeglądarki logowania jednokrotnego opartego na hasłach, wymagania wstępne łącze będzie monitował użytkownika można zainstalować brakujące rozszerzenia. Adres URL linku również pozostaje na stałym, jeśli zmiany jednej konfiguracji logowania jednokrotnego dla aplikacji.
-
-Te linki pełnić te same mechanizmy kontroli dostępu do panelu dostępu i usługi Office 365, a tylko tych użytkowników lub grupy, którzy zostali przypisani do aplikacji w witrynie Azure portal będzie mógł pomyślnie wykonać uwierzytelnienia. Jednak każdy użytkownik, który nie jest autoryzowany, zostanie wyświetlony komunikat wyjaśniający, że nie przyznano dostęp i podano łącza do załadowania panelu dostępu, aby wyświetlić dostępne aplikacje, dla których mają dostęp.
+Aby uzyskać więcej informacji, zobacz [Wersje usługi Azure Active Directory](../fundamentals/active-directory-whatis.md).
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](../saas-apps/tutorial-list.md)
-* [Konfigurowanie rozwiązania Cloud Discovery](/cloud-app-security/set-up-cloud-discovery)
-* [Wprowadzenie do zarządzania dostępem do aplikacji](what-is-access-management.md)
-* [Porównanie możliwości zarządzania tożsamości zewnętrznych w usłudze Azure AD](../active-directory-b2b-compare-b2c.md)
+* [Samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory](../saas-apps/tutorial-list.md)
+* [Samouczek dotyczący konfigurowania logowania jednokrotnego](configure-single-sign-on-portal.md)
+* [Wprowadzenie do zarządzanie dostępem do aplikacji](what-is-access-management.md)
+* Link pobierania: [plan wdrażania rejestracji jednokrotnej](http://aka.ms/SSODeploymentPlan).
 
 

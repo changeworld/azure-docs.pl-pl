@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: 90f5caa13bf95fb5298a06bda5a03e9bc17bcb1a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 782de7dc6e099fade0d2f1099ac19b9398562023
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945182"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622095"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Wizualizuj dane z usługi Azure Cosmos DB przy użyciu łącznika usługi Power BI
 
@@ -76,11 +76,11 @@ Spowoduje pobranie danych swe dzieła z konta usługi Azure Cosmos DB i wizualiz
 
 5. Na **łącznik w wersji zapoznawczej** kliknij **Kontynuuj**. **Usługi Azure Cosmos DB** zostanie wyświetlone okno.
 
-6. Określ URL punktu końcowego konta usługi Azure Cosmos DB będzie chcesz pobrać dane, jak pokazano poniżej, a następnie kliknij przycisk **OK**. Aby użyć własnego konta, możesz pobrać adres URL w polu identyfikatora URI w **[klucze](manage-account.md#keys)** bloku witryny Azure portal. Możesz opcjonalnie podaj nazwę bazy danych, a nazwa kolekcji lub umożliwia Nawigator wybierz bazę danych i kolekcji do identyfikowania, skąd pochodzą dane.
+6. Określ URL punktu końcowego konta usługi Azure Cosmos DB będzie chcesz pobrać dane, jak pokazano poniżej, a następnie kliknij przycisk **OK**. Aby użyć własnego konta, możesz pobrać adres URL w polu identyfikatora URI w **klucze** bloku witryny Azure portal. Możesz opcjonalnie podaj nazwę bazy danych, a nazwa kolekcji lub umożliwia Nawigator wybierz bazę danych i kolekcji do identyfikowania, skąd pochodzą dane.
    
-7. Jeśli łączysz się ten punkt końcowy po raz pierwszy, zostanie wyświetlony monit o klucz konta. Dla konta użytkownika, należy pobrać klucza z **klucza podstawowego** pole w **[klucze tylko do odczytu](manage-account.md#keys)** bloku witryny Azure portal. Wprowadź odpowiedni klucz, a następnie kliknij przycisk **Connect**.
+7. Jeśli łączysz się ten punkt końcowy po raz pierwszy, zostanie wyświetlony monit o klucz konta. Dla konta użytkownika, należy pobrać klucza z **klucza podstawowego** pole w **klucze tylko do odczytu** bloku witryny Azure portal. Wprowadź odpowiedni klucz, a następnie kliknij przycisk **Connect**.
    
-   Zalecamy użycie klucza tylko do odczytu, podczas tworzenia raportów. Zapobiega to niepotrzebnym ujawnieniem klucz główny na potencjalne zagrożenia bezpieczeństwa. Klucz tylko do odczytu jest dostępny z [klucze](manage-account.md#keys) bloku witryny Azure portal. 
+   Zalecamy użycie klucza tylko do odczytu, podczas tworzenia raportów. Zapobiega to niepotrzebnym ujawnieniem klucz główny na potencjalne zagrożenia bezpieczeństwa. Klucz tylko do odczytu jest dostępny z **klucze** bloku witryny Azure portal. 
     
 8. Gdy konto zostanie pomyślnie połączony, **Nawigator** zostanie wyświetlone okienko. **Nawigator** pokazuje listę baz danych w ramach konta.
 

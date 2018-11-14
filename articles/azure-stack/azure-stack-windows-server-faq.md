@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: 91404f01a1a675ac59898336ef8aa81e1d2638b6
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: bf70f9a74b58758e03800d7f6fb92a8f8754828a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/13/2018
-ms.locfileid: "51579239"
+ms.locfileid: "51613099"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>System Windows Server w usłudze Azure Stack Portal Marketplace — często zadawane pytania
 
@@ -38,7 +38,7 @@ Następnie, jeśli wszystkie zestawy skalowania maszyn wirtualnych odwołują si
 Firma Microsoft oferuje dwie wersje obrazów systemu Windows Server w portalu Azure Marketplace stosu:
 
 - **Płatność proporcjonalna używasz**: te obrazy Uruchom liczniki Windows pełną cenę. 
-   Kto powinien używać: korzystającymi z umową EA *model rozliczeń za użycie*; Dostawcy usług kryptograficznych, którzy nie chcą korzystanie z licencjonowania w ramach umowy SPLA.
+   Kto powinien używać: Klienci z umową Enterprise Agreement (EA), którzy korzystają *model rozliczeń za użycie*; Dostawcy usług kryptograficznych, którzy nie chcą korzystanie z licencjonowania w ramach umowy SPLA.
 - **Bring Your Own License (BYOL)**: tych obrazów uruchamiania podstawowe liczniki.
    Kto powinien używać: umową EA z licencji systemu Windows Server; Dostawcy usług kryptograficznych, którzy korzystają z licencji w ramach umowy SPLA.
 
@@ -52,7 +52,7 @@ Najpierw usuń wersję nieodpowiednią za pośrednictwem witryny Marketplace zar
 
 Zobacz [konwersji maszyn wirtualnych dzięki korzyściom z powrotem do płatności](../virtual-machines/windows/hybrid-use-benefit-licensing.md#powershell-1).
 
-### <a name="what-if-i-have-an-older-image-and-my-user-forgot-to-check-the-i-have-a-license-box-or-we-use-our-own-images-and-we-do-have-ea-entitlement"></a>Co zrobić, jeśli masz starszą obrazu i Moje użytkownik zapomniał Sprawdź pole "Mam licencję" lub firma Microsoft korzystanie z własnych obrazów i mamy prawa EA?
+### <a name="what-if-i-have-an-older-image-and-my-user-forgot-to-check-the-i-have-a-license-box-or-we-use-our-own-images-and-we-do-have-enterprise-agreement-entitlement"></a>Co zrobić, jeśli masz starszą obrazu i Moje użytkownik zapomniał Sprawdź pole "Mam licencję" lub firma Microsoft korzystanie z własnych obrazów i mamy uprawnienie umowy Enterprise Agreement?
 
 Zobacz [przekonwertować istniejącą Maszynę wirtualną przy użyciu usługi Azure korzyści użycia hybrydowego dla systemu Windows Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md#convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server). Należy pamiętać, że korzyść użycia hybrydowego platformy Azure nie ma zastosowania do usługi Azure Stack, ale Zastosuj efekt tego ustawienia.
 
@@ -60,7 +60,7 @@ Zobacz [przekonwertować istniejącą Maszynę wirtualną przy użyciu usługi A
 
 Tych obrazów należy stosować **licenseType** parametru, dzięki czemu są one płatności, jak używasz. Ten parametr zostanie ustawiony (odpowiedź Zobacz poprzednie często zadawane pytania). Dotyczy to tylko systemu Windows Server oprogramowania nie warstwowej produktów, takich jak SQL, które wymagają model dostarczania własnej licencji. Płatność zgodnie z korzystanie z licencjonowania nie ma zastosowania do oprogramowania warstwowej.
 
-### <a name="i-have-an-ea-and-i-create-my-own-images-how-do-i-make-sure-they-are-billed-correctly"></a>Masz umowy EA i utworzyć własne obrazy; jak upewnić się, że są one rozliczane prawidłowo?
+### <a name="i-have-an-enterprise-agreement-ea-and-will-be-using-my-ea-windows-server-license-how-do-i-make-sure-images-are-billed-correctly"></a>Mam umowy Enterprise Agreement (EA) i będzie korzystać z moją licencję EA systemu Windows Server; jak upewnić się, że obrazy są naliczane poprawnie?
 
 Możesz dodać **licenseType: Windows_Server** w szablonie usługi Azure Resource Manager. To ustawienie, należy dodać do każdego bloku zasobu maszyny wirtualnej.
 

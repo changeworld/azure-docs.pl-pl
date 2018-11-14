@@ -11,26 +11,22 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2611c25764503551c4da918d06bcaabe315cbf7c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 6ace11cf3704ddbd503c0202d45874670476198e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963085"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624831"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Poziomy spójności w usłudze Azure Cosmos DB
 
 Rozproszonych baz danych, opierając się na replikację, wysoką dostępność, małych opóźnień, czy oba rodzaje, wprowadzić podstawowe zależnościami między spójności odczytu, a dostępność, opóźnienia i przepływności. Większość komercyjnego rozproszonych baz danych, poproś deweloperów dokonać wyboru między dwoma modelami spójności extreme: wysoki poziom spójności i spójności ostatecznej. Gdy [atomowych](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) lub modelu silnej spójności jest standardy programowania danych, dodaje wymaga początkowo dużej ilości cena czas oczekiwania (w stanie stabilnym) i ograniczoną dostępnością (podczas awarii). Z drugiej strony spójność ostateczną zapewnia większą dostępność i lepszą wydajność, ale jest trudny do aplikacji.
 
-Wyjaśnienie pojęcia spójności danych jako liczne opcje zamiast dwoma skrajnymi poziomami zbliża się do usługi cosmos DB. Mimo że wysoki poziom spójności i spójności ostatecznej po obu stronach spektrum, istnieją spójności wyborze technologii odpowiedniej wzdłuż spektrum. Te opcje spójności umożliwiają deweloperom opcje dokładne i szczegółową skutków ubocznych dotyczących wysokiej dostępności lub wydajności. Usługa cosmos DB umożliwiły deweloperom do wyboru spośród pięciu dobrze zdefiniowanych modeli spójności (najsilniejszej do najsłabszej) — spektrum spójności **silne**, **powiązana nieaktualność**, **sesji** , **spójny prefiks**, i **ostatecznej**. Każda z tych modeli spójności jest dobrze zdefiniowany i intuicyjny i może służyć do określonych scenariuszy w rzeczywistych warunkach. Każda z pięcioma modelami spójności oferuje [wpływ na dostępność i wydajność](consistency-levels-tradeoffs.md) i jest wspierana przez kompleksowe umowy SLA.
+Wyjaśnienie pojęcia spójności danych jako liczne opcje zamiast dwoma skrajnymi poziomami zbliża się do usługi cosmos DB. Mimo że wysoki poziom spójności i spójności ostatecznej po obu stronach spektrum, istnieją spójności wyborze technologii odpowiedniej wzdłuż spektrum. Te opcje spójności umożliwiają deweloperom opcje dokładne i szczegółową skutków ubocznych dotyczących wysokiej dostępności lub wydajności. Usługa cosmos DB umożliwiły deweloperom do wyboru spośród pięciu dobrze zdefiniowanych modeli spójności (najsilniejszej do najsłabszej) — spektrum spójności **silne**, **powiązana nieaktualność**, **sesji** , **spójny prefiks**, i **ostatecznej**. Każda z tych modeli spójności jest dobrze zdefiniowany i intuicyjny i może służyć do określonych scenariuszy w rzeczywistych warunkach. Każda z pięcioma modelami spójności oferuje [wpływ na dostępność i wydajność](consistency-levels-tradeoffs.md) i jest wspierana przez kompleksowe umowy SLA. Na poniższej ilustracji przedstawiono poziomów spójności różnych jako liczne:
 
 ![Spójność o szerokim zakresie funkcji](./media/consistency-levels/five-consistency-levels.png)
 
-Poziomy spójności są niezależne od regionu. Poziom spójności konta usługi Cosmos DB gwarantuje dla wszystkich operacji odczytu, niezależnie od tego, następujące właściwości:
-
-- Region, z którego odczyty i zapisy są obsługiwane
-- Przez liczbę regionów skojarzonych z Twoim kontem Cosmos
-- Czy Twoje konto jest skonfigurowane z jednym lub wielu regionach zapisu
+Poziomy spójności są niezależne od regionu. Poziom spójności konta usługi Cosmos DB gwarantuje dla wszystkich operacji niezależnie od określonego regionu, w którym odczyty i zapisy są one obsługiwane, przez liczbę regionów skojarzonych z Twojego konta usługi Cosmos lub tego, czy Twoje konto jest skonfigurowane za pomocą jednego odczytu lub wiele regionów zapisu.
 
 ## <a name="scope-of-the-read-consistency"></a>Zakres spójność odczytu
 

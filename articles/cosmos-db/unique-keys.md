@@ -7,12 +7,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: andrl
-ms.openlocfilehash: 36b57fd98de206641422d80bf3ea3d2a3853f578
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 006d0ef28d82a7648a56b3bf871c5a3afd6a55a6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252568"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624424"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Unikatowe klucze w usłudze Azure Cosmos DB
 
@@ -48,17 +48,6 @@ Unikatowe klucze można zdefiniować tylko wtedy, gdy trwa tworzenie kontenera C
 * Rozrzedzony unikatowe klucze nie są obsługiwane. Jeśli brakuje niektórych wartości unikatową ścieżkę, będą one traktowane jako wartości null, które biorą udział w ograniczenie unikatowości. Dzięki temu może istnieć tylko pojedynczy element z wartością null do spełnienia tego ograniczenia.
 
 * Unikatowe nazwy kluczy uwzględniają wielkość liter. Na przykład należy wziąć pod uwagę kontenera za pomocą klucza ograniczenia unique równa /address/zipcode. Jeśli dane mają pola o nazwie kod pocztowy, Cosmos DB wstawia "null", jako unikatowy klucz ponieważ "Kod pocztowy" nie jest taka sama jak "Kod pocztowy". Ze względu na to wielkość liter nie można wstawić wszystkie rekordy z kod pocztowy, ponieważ duplikat "null" będzie narusza unikatowe ograniczenie klucza.
-
-## <a name="supported-apis-and-sdks"></a>Obsługiwane interfejsy API i zestawów SDK
-
-Funkcja unikatowe klucze jest obecnie obsługiwane przez następujące Cosmos DB funkcje interfejsu API i zestawów SDK klienta: 
-
-|Sterowniki klienta|Interfejs API SQL|Interfejs API rozwiązania Cassandra|Interfejs API usługi MongoDB|Interfejs API języka Gremlin|Interfejs API tabel|
-|---|---|---|---|---|---|
-|.NET|Yes|Nie|Yes|Nie|Nie|
-|Java|Yes|Nie|Yes|Nie|Nie|
-|Python|Yes|Nie|Yes|Nie|Nie|
-|Węzeł/JS|Yes|Nie|Yes|Nie|Nie|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

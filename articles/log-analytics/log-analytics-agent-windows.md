@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a16230b6f51f0ce93f4a9bf53591abbcd6b4bd3b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 4e99656319f543fb40d8509cb4ae9e1c25cfc75b
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283686"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622486"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Łączenie komputerów Windows do usługi Log Analytics na platformie Azure
 
@@ -35,7 +35,7 @@ Agenta można zainstalować przy użyciu jednej z następujących metod. Większ
 * Skrypt programu PowerShell.
 * Szablon usługi Resource Manager dla maszyn wirtualnych z systemem Windows w środowisku lokalnym w usłudze Azure Stack.  
 
-Aby poznać obsługiwaną konfigurację, przejrzyj tematy dotyczące [obsługiwanych systemów operacyjnych Windows](log-analytics-concept-hybrid.md#supported-windows-operating-systems) oraz [konfiguracji zapory sieciowej](log-analytics-concept-hybrid.md#network-firewall-requirements).
+Aby poznać obsługiwaną konfigurację, przejrzyj tematy dotyczące [obsługiwanych systemów operacyjnych Windows](log-analytics-agent-overview.md#supported-windows-operating-systems) oraz [konfiguracji zapory sieciowej](log-analytics-agent-overview.md#network-firewall-requirements).
 
 ## <a name="obtain-workspace-id-and-key"></a>Uzyskiwanie identyfikatora i klucza obszaru roboczego
 Przed zainstalowaniem programu Microsoft Monitoring Agent dla systemu Windows potrzebne są identyfikator i klucz obszaru roboczego usługi Log Analytics.  Te informacje są wymagane podczas instalacji z poszczególnych metod instalacji w celu poprawnego skonfigurowania agenta i upewnij się, że może się skutecznie komunikować z usługi Log Analytics na platformie Azure komercyjnych i w chmurze dla instytucji rządowych USA.  

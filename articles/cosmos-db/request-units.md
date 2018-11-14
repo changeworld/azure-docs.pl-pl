@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: rimman
-ms.openlocfilehash: eabfe503d9b92252ada0014eba4c83390dd6fd97
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 709cd16c7eee30dd2d88ea87b5f704ad20530ffb
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236079"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621347"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Jednostki żądań w usłudze Azure Cosmos DB
 
@@ -52,8 +52,8 @@ Podczas szacowania, liczba jednostek RU/s do aprowizowania, warto wziąć pod uw
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [Aprowizowanie przepływności baz danych i kontenerów usługi Cosmos DB](set-throughput.md)
-* Dowiedz się więcej o [partycjami logicznymi](partition-data.md)
-* Dowiedz się więcej o [skalowanie przepływności](scaling-throughput.md)
+* Dowiedz się więcej o [przepływności inicjowania obsługi administracyjnej baz danych i kontenerów usługi Cosmos DB](set-throughput.md)
+* Dowiedz się więcej o [Llogical partycji](partition-data.md)
+* Dowiedz się więcej o [globalnie skalowania aprowizowanej przepływności.](scaling-throughput.md)
 * Dowiedz się, [jak aprowizować przepływność na kontenerze Cosmos](how-to-provision-container-throughput.md)
 * Dowiedz się, [jak aprowizować przepływność mierzoną w bazie danych Cosmos](how-to-provision-database-throughput.md)

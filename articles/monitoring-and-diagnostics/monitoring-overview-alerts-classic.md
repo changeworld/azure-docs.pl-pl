@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 02e69a9e3442f276e89e8515fb506ddd876ad2d2
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e7622ffcfbaca4f83f0b5233159fc94720148365
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015778"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614144"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co to są alertów klasycznych na platformie Microsoft Azure?
 
@@ -55,7 +55,7 @@ Istnieją dwa typy alertów klasycznych dostępne - alertów dotyczących metryk
 
 * **Alerty dziennika aktywności klasycznego** -przesyłania strumieniowego alertu dziennika, która wyzwala po wygenerowaniu zdarzenia dziennika aktywności, że dopasowania filtrowania kryteria, które zostały przypisane. Te alerty mają tylko jeden stan "Aktywowano", ponieważ aparat alertów po prostu dotyczy kryteria filtrowania wszelkie nowe zdarzenie. Te alerty mogą służyć do otrzymywania powiadomień w przypadku nowego zdarzenia usługi Service Health, lub gdy użytkownik lub aplikacja wykonuje operację w ramach subskrypcji, na przykład "Usuń maszynę wirtualną".
 
-W przypadku dzienników diagnostycznych danych dostępne za pośrednictwem usługi Azure Monitor kierować dane do usługi Log Analytics (dawniej OMS) i użyj alertu zapytań usługi Log Analytics. Zaloguj korzysta teraz Analytics [nowych alertów — metoda](monitoring-overview-unified-alerts.md) 
+W przypadku dzienników diagnostycznych danych dostępne za pośrednictwem usługi Azure Monitor kierować dane do usługi Log Analytics (dawniej OMS) i użyj alertu zapytań usługi Log Analytics. Zaloguj korzysta teraz Analytics [nowych alertów — metoda](monitoring-overview-alerts.md) 
 
 Poniższy diagram przedstawia źródeł danych w usłudze Azure Monitor i, pod względem koncepcyjnym, jak może generować alerty zniżki w stosunku do tych danych.
 

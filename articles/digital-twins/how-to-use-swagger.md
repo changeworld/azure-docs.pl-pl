@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 11/13/2018
 ms.author: adgera
-ms.openlocfilehash: 0fae059db53668da2d71906bbe94e9dabae931bc
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 737c33f6b8cdf9bcb2530816601ff9b5eb994087
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578590"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624254"
 ---
 # <a name="use-azure-digital-twins-swagger"></a>Użyj platformy Swagger Twins cyfrowych platformy Azure
 
@@ -36,20 +36,7 @@ Struktury swagger zawiera podsumowanie interaktywnego interfejsu API, który zaw
 
 Struktury swagger jest wygodne narzędzie na potrzeby programowania i testowania wywołania interfejsu API zarządzania.
 
-> [!TIP]
-> Rzucić okiem struktury Swagger jest dostarczany, aby zademonstrować tę funkcję interfejsu API zestawu.
-> Jest ona hostowana na [docs.westcentralus.azuresmartspaces.net/management/swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger).
-
-Aby uzyskać dostęp własne wygenerowaną dokumentację struktury Swagger interfejsu API zarządzania na:
-
-```plaintext
-https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
-```
-
-| Nazwa niestandardowa | Zamień na |
-| --- | --- |
-| yourInstanceName | Nazwa wystąpienia usługi Azure cyfrowego bliźniaczych reprezentacji |
-| yourLocation | Który region serwer wystąpienie usługi jest hostowana na |
+[!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 ## <a name="reference-material"></a>Materiały referencyjne
 

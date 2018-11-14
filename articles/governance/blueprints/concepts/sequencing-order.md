@@ -4,16 +4,16 @@ description: Informacje o cyklu życia, które przechodzi planu i szczegółowe 
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 11/12/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 4adf427727e7244bbde64a673e7353c1f8270c8a
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: fcfffe6094361c8b47b1cc7ce42cb79561261b15
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094582"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51620599"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Zrozumienie sekwencję wdrażania w plany usługi Azure
 
@@ -47,6 +47,9 @@ W ramach każdej **grupy zasobów** artefaktu, w następującej kolejności sekw
 Podczas redagowania dużych schematy, może być konieczne dla zasobów w określonej kolejności. Najczęstszym wzorcem użycia tego scenariusza jest, gdy plan zawiera kilka szablonów usługi Azure Resource Manager. Plany obsługi tego wzorca, umożliwiając kolejności sekwencjonowania należy zdefiniować.
 
 Kolejność odbywa się przez definiowanie `dependsOn` właściwości w formacie JSON. Tylko plan (dla grup zasobów) i obiekty artefaktu obsługują tej właściwości. `dependsOn` jest tablicą ciągów nazw artefaktów, które określonego artefaktu musi zostać utworzona przed jego tworzenia.
+
+> [!NOTE]
+> **Grupa zasobów** obsługuje artefaktów `dependsOn` właściwości, ale nie może być celem `dependsOn` przez dowolny typ artefaktu.
 
 ### <a name="example---blueprint-with-ordered-resource-group"></a>Przykład — planu z grupą zasobów uporządkowany
 

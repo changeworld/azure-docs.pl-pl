@@ -1,187 +1,52 @@
 ---
-title: Wygasanie danych w usłudze Azure Cosmos DB przy użyciu czasu wygaśnięcia | Dokumentacja firmy Microsoft
+title: Wygasanie danych w usłudze Azure Cosmos DB przy użyciu czasu wygaśnięcia
 description: Czas wygaśnięcia Microsoft Azure Cosmos DB zapewnia możliwość wprowadzenia dokumentów automatycznie usuwane z systemu po upływie określonego czasu.
-services: cosmos-db
-keywords: czas wygaśnięcia
-author: SnehaGunda
-manager: kfile
+author: markjbrown
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/29/2017
-ms.author: sngun
-ms.openlocfilehash: 2cae74224a9d59939175ac7e43d4d6b183ca3933
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.date: 11/14/2018
+ms.author: mjbrown
+ms.openlocfilehash: c08c171e3a95b0d0f408660a7ec9021ca0323fbd
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050748"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621280"
 ---
-# <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Wygasanie danych w kolekcjach usługi Azure Cosmos DB automatycznie przy użyciu czasu wygaśnięcia
-Aplikacje można tworzyć i przechowywać ogromne ilości danych. Niektóre z tych danych, takich jak maszyny wygenerowanych zdarzeń danych, dzienników i użytkownika sesji informacji przydaje się tylko na czas określony czas. Gdy dane będą nadwyżki na potrzeby aplikacji, jest bezpieczne przeczyścić dane i zmniejszyć wymagania magazynu aplikacji.
+# <a name="time-to-live-for-azure-cosmos-db-data"></a>Czas wygaśnięcia danych usługi Azure Cosmos DB
 
-"Czas wygaśnięcia" lub czas wygaśnięcia Microsoft Azure Cosmos DB zapewnia możliwość wprowadzenia dokumentów automatycznie usuwane z bazy danych, po upływie określonego czasu. Domyślny czas wygaśnięcia można ustawić na poziomie kolekcji i zastąpione na podstawie poszczególnych dokumentów. Po ustawieniu TTL jako domyślnego kolekcji lub na poziomie dokumentu Cosmos DB automatycznie usunie dokumenty znajdujące się po upływie tego czasu w sekundach, od czasu ostatniej modyfikacji.
+Z czasem wygaśnięcia lub "Time to Live" usługi Azure Cosmos DB zapewnia możliwość automatycznie usunąć elementy z kontenera po upływie pewnego czasu. Domyślnie można ustawić czas na żywo na poziomie kontenera i zastąp wartość na podstawie poszczególnych elementów. Po ustawieniu czas wygaśnięcia w kontenerze, lub na poziomie elementu, usługi Azure Cosmos DB automatycznie usunie te elementy po okresie od czasu ostatniej modyfikacji. Wartość czasu wygaśnięcia skonfigurowano w ciągu kilku sekund. Podczas konfigurowania czasu wygaśnięcia, system automatycznie usunie wygasłych elementów na podstawie wartości TTL, w przeciwieństwie do operacji usuwania, jawnie wydawanego przez aplikację klienta.
 
-Czas wygaśnięcia w usłudze Azure Cosmos DB używa przesunięcie względem ostatniej modyfikacji dokumentu. W tym używa `_ts` pola, które istnieje w każdym dokumencie. Pola _ts jest sygnatura czasowa typu unix epoki reprezentujący datę i godzinę. `_ts` Jest ono aktualizowane za każdym razem, gdy dokument zostanie zmodyfikowany. 
+## <a name="time-to-live-for-containers-and-items"></a>Czas wygaśnięcia dla kontenerów i elementów
 
-## <a name="ttl-behavior"></a>Zachowanie czasu wygaśnięcia
-Funkcja czas wygaśnięcia jest kontrolowana przez właściwości TTL na dwóch poziomach — na poziomie kolekcji i poziomie dokumentu. Wartości są ustawiane w ciągu kilku sekund i są traktowane jako różnicowych z `_ts` czy dokument został ostatnio zmodyfikowany.
+Wartość czasu wygaśnięcia jest ustawiany w ciągu kilku sekund, a zostanie on zinterpretowany jako zmian od czasu ostatniej modyfikacji elementu. Można ustawić czas wygaśnięcia w kontenerze lub elementu w kontenerze:
 
-1. DefaultTTL dla kolekcji
-   
-   * Jeśli brak (lub ustawionej na wartość null) dokumenty nie są usuwane automatycznie.
-   * Jeśli istnieje, a wartość jest równa "-1" = nieskończonej — dokumenty nie wygasa domyślnie
-   * Jeśli istnieje, a wartość jest ustawiona na niektórych numer ("n") — dokumenty wygasają "n" (w sekundach) po ostatniej modyfikacji
-2. Czas wygaśnięcia dokumentów: 
-   
-   * Właściwość dotyczy tylko wtedy, gdy dla kolekcji nadrzędnej DefaultTTL.
-   * Zastępuje wartość DefaultTTL kolekcji nadrzędnej.
+1. **Czas wygaśnięcia w kontenerze** (można ustawić przy użyciu `DefaultTimeToLive`):
 
-Jak najszybciej wygasł dokumentu (`ttl`  +  `_ts` < = bieżący czas serwera), dokument zostanie oznaczony jako "wygasła." Operacja nie może być w tych dokumentach, po upływie tego czasu i będzie można wykluczyć z wyników wszelkie zapytania wykonywane. Dokumenty są fizycznie usunięte z systemu i są usuwane w tle używana w późniejszym czasie. To nie używa żadnego [jednostek żądań (ru)](request-units.md) z budżetu kolekcji.
+   - Jeśli brak (lub ustawionej na wartość null), elementy nie są automatycznie wygasł.
 
-Powyższe logiki można wyświetlać w poniższej tabeli:
+   - Jeśli istnieje, a wartość jest równa "-1", jest równa nieskończonej — elementy nie wygasają domyślnie.
 
-|  | DefaultTTL brakuje nie nastavit kolekcji | DefaultTTL = -1 w kolekcji | DefaultTTL = n' w kolekcji |
-| --- |:--- |:--- |:--- |
-| Czas wygaśnięcia Brak dokumentu |Nie ma niczego do zastąpić na poziomie dokumentu, ponieważ dokumentu i kolekcji mają koncepcja czasu wygaśnięcia. |Wygaśnie żaden dokument w tej kolekcji. |Dokumenty w tej kolekcji wygaśnie po n interwał "upływa. |
-| Czas wygaśnięcia = -1 w dokumencie |Nie ma niczego do zastąpić na poziomie dokumentu, ponieważ kolekcja nie definiuje właściwości DefaultTTL, którą można zastąpić dokumentu. Wartość TTL dokumentu jest niezinterpretowane przez system. |Wygaśnie żaden dokument w tej kolekcji. |Nigdy nie wygasa dokumentu z czasem wygaśnięcia = 1 w tej kolekcji. Inne dokumenty wygasną po upływie n "Interwał. |
-| Czas wygaśnięcia = n dokumentu |Nie ma niczego do zastąpić na poziomie dokumentu. Wartość TTL dokumentu jest niezinterpretowane przez system. |Dokument z czasem wygaśnięcia = n wygasną po upływie n interwał, w ciągu kilku sekund. Inne dokumenty będą dziedziczyć z przedziału od -1 i nigdy nie wygasa. |Dokument z czasem wygaśnięcia = n wygasną po upływie n interwał, w ciągu kilku sekund. Inne dokumenty będą dziedziczyć n "Interwał z kolekcji. |
+   - Jeśli istnieje, a wartość jest równa niektóre numer ("n") — elementy wygasają "n" sekund po ich ostatniej modyfikacji.
 
-## <a name="configuring-ttl"></a>Konfigurowanie czasu wygaśnięcia
-Domyślny czas wygaśnięcia jest domyślnie wyłączona, we wszystkich kolekcjach usługi Cosmos DB i na wszystkich dokumentach. Czas wygaśnięcia można ustawić programowo lub za pomocą witryny Azure portal. Aby skonfigurować czas wygaśnięcia z witryny Azure portal, wykonaj następujące kroki:
+2. **Czas wygaśnięcia elementu** (można ustawić przy użyciu `TimeToLive`):
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) i przejdź do swojego konta usługi Azure Cosmos DB.  
+   - Ta właściwość ma zastosowanie tylko wtedy, gdy `DefaultTimeToLive` jest obecny i nie jest ustawiona na wartość null dla kontenera nadrzędnego.
 
-2. Przejdź do kolekcji, w której chcesz ustawić wartość TTL, otwórz **skalowanie i ustawienia** okienka. Widać, że czas wygaśnięcia jest domyślnie ustawiona na **poza**. Można go zmienić **na (Brak wartości domyślnej)** lub **na**.
+   - Jeśli jest obecna, zastępuje ona `DefaultTimeToLive` wartość kontenera nadrzędnego.
 
-   **Wyłącz** — dokumenty nie są usuwane automatycznie.  
-   **na (Brak wartości domyślnej)** — ta opcja umożliwia ustawienie wartości TTL "-1" (bez ograniczeń czasowych) oznacza to, dokumenty nie wygasa domyślnie.  
-   **na** — dokumenty wygasają "n" sekund po ostatniej modyfikacji.  
+## <a name="time-to-live-configurations"></a>Czas do konfiguracji na żywo
 
-   ![Ustaw czas wygaśnięcia](./media/time-to-live/set-ttl-in-portal.png)
+* Jeśli czas wygaśnięcia jest równa "n" w kontenerze, elementy w danym kontenerze będzie tracą ważność po n sekund.  Jeśli istnieją elementy w tym samym kontenerze, które mają czas wprowadzenia na na żywo, ustawioną wartość -1 (wskazującą, że nie wygasną) lub jeśli niektóre elementy przesłonili czas wygaśnięcia ustawienie z różnymi liczbami, te elementy wygasają w oparciu skonfigurowana wartość czasu wygaśnięcia. 
 
-## <a name="enabling-ttl"></a>Włączanie czas wygaśnięcia
-Aby włączyć TTL w kolekcji lub dokumentów w kolekcji, należy ustawić właściwość DefaultTTL kolekcji na wartość -1 lub różna od zera dodatnia. Ustawienia DefaultTTL-1 oznacza, że domyślny wszystkie dokumenty w kolekcji, nieskończoność na żywo, ale usługi Cosmos DB monitorować tej kolekcji dokumentów, które ma zastąpić to ustawienie domyślne.
+* Jeśli czas wygaśnięcia nie jest ustawiona na kontenerze, czas wygaśnięcia elementu w tym kontenerze jest ignorowany. 
 
-    DocumentCollection collectionDefinition = new DocumentCollection();
-    collectionDefinition.Id = "orders";
-    collectionDefinition.PartitionKey.Paths.Add("/customerId");
-    collectionDefinition.DefaultTimeToLive =-1; //never expire by default
+* Jeśli czas wygaśnięcia w kontenerze jest ustawiony na wartość -1, element w tym kontenerze, który ma czas na żywo wartość n, wygasną po upływie n sekund, a pozostałe elementy nie wygasną. 
 
-    DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionAsync(
-        UriFactory.CreateDatabaseUri(databaseName),
-        collectionDefinition,
-        new RequestOptions { OfferThroughput = 20000 });
-
-## <a name="configuring-default-ttl-on-a-collection"></a>Konfigurowanie domyślnego czasu wygaśnięcia na kolekcję
-Jesteś w stanie skonfigurować domyślny czas wygaśnięcia na poziomie kolekcji. Aby ustawić czas wygaśnięcia w kolekcji, należy podać różna od zera dodatnia wskazujący okres, w ciągu kilku sekund wygaśnie wszystkie dokumenty w kolekcji po ostatniej modyfikacji sygnatura czasowa dokumentu (`_ts`). Alternatywnie można ustawić domyślną wartość-1, co oznacza, że wszystkie dokumenty wstawione do kolekcji będą znajdować się na czas nieokreślony domyślnie.
-
-    DocumentCollection collectionDefinition = new DocumentCollection();
-    collectionDefinition.Id = "orders";
-    collectionDefinition.PartitionKey.Paths.Add("/customerId");
-    collectionDefinition.DefaultTimeToLive = 90 * 60 * 60 * 24; // expire all documents after 90 days
-    
-    DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionAsync(
-        "/dbs/salesdb",
-        collectionDefinition,
-        new RequestOptions { OfferThroughput = 20000 });
-
-
-## <a name="setting-ttl-on-a-document"></a>Ustawienie czasu wygaśnięcia do dokumentu
-Oprócz skonfigurowania domyślny czas wygaśnięcia w kolekcji, można ustawić określonego czasu wygaśnięcia na poziomie dokumentu. W ten sposób spowoduje zastąpienie domyślnej kolekcji.
-
-* Aby ustawić czas wygaśnięcia na dokument, musisz podać różna od zera dodatnia, co oznacza okres, w ciągu kilku sekund do wygaśnięcia dokumentu po ostatniej modyfikacji sygnatura czasowa dokumentu (`_ts`).
-* Jeśli dokument nie ma czasu wygaśnięcia pola, domyślne w kolekcji zostaną zastosowane.
-* Jeśli czas wygaśnięcia jest wyłączona na poziomie kolekcji, pola Czas wygaśnięcia w dokumencie zostaną zignorowane, aż do czasu wygaśnięcia ponownie włączenia w kolekcji.
-
-Poniżej przedstawiono fragment przedstawiająca sposób ustawić czas wygaśnięcia TTL w dokumencie:
-
-    // Include a property that serializes to "ttl" in JSON
-    public class SalesOrder
-    {
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
-        
-        [JsonProperty(PropertyName="cid")]
-        public string CustomerId { get; set; }
-        
-        // used to set expiration policy
-        [JsonProperty(PropertyName = "ttl", NullValueHandling = NullValueHandling.Ignore)]
-        public int? TimeToLive { get; set; }
-        
-        //...
-    }
-    
-    // Set the value to the expiration in seconds
-    SalesOrder salesOrder = new SalesOrder
-    {
-        Id = "SO05",
-        CustomerId = "CO18009186470",
-        TimeToLive = 60 * 60 * 24 * 30;  // Expire sales orders in 30 days 
-    };
-
-
-## <a name="extending-ttl-on-an-existing-document"></a>Rozszerzanie TTL dla istniejącego dokumentu
-Możesz zresetować czasu wygaśnięcia do dokumentu, wykonując żadnych operacji zapisu dokumentu. Spowoduje to ustawienie ustawi `_ts` do bieżącej godziny i odliczanie do wygaśnięcia dokumentu, zgodnie z ustawieniem `ttl`, rozpoczną się ponownie. Jeśli chcesz zmienić `ttl` dokumentu, można zaktualizować pola, tak jak inne pola do ustawienia.
-
-    response = await client.ReadDocumentAsync(
-        "/dbs/salesdb/colls/orders/docs/SO05"), 
-        new RequestOptions { PartitionKey = new PartitionKey("CO18009186470") });
-    
-    Document readDocument = response.Resource;
-    readDocument.TimeToLive = 60 * 30 * 30; // update time to live
-    
-    response = await client.ReplaceDocumentAsync(readDocument);
-
-## <a name="removing-ttl-from-a-document"></a>Usuwanie TTL dokumentu
-Jeśli nie chcesz już tego dokumentu do wygaśnięcia czasu wygaśnięcia została ustawiona w dokumencie, następnie można pobrać dokumentu, usuń pola Czas wygaśnięcia i zastąpić dokument na serwerze. Po usunięciu pola Czas wygaśnięcia z dokumentu domyślnego kolekcji zostaną zastosowane. Aby zatrzymać dokumentu przed wygaśnięciem, a nie dziedziczą z kolekcji należy następnie ustaw wartość czasu wygaśnięcia na -1.
-
-    response = await client.ReadDocumentAsync(
-        "/dbs/salesdb/colls/orders/docs/SO05"), 
-        new RequestOptions { PartitionKey = new PartitionKey("CO18009186470") });
-    
-    Document readDocument = response.Resource;
-    readDocument.TimeToLive = null; // inherit the default TTL of the collection
-    
-    response = await client.ReplaceDocumentAsync(readDocument);
-
-## <a name="disabling-ttl"></a>Wyłączenie czasu wygaśnięcia
-Wyłączenie czasu wygaśnięcia całkowicie w kolekcji i Zatrzymaj proces w tle z szukasz wygasłe dokumenty Właściwość DefaultTTL kolekcji powinny być usuwane. Usunięcie tej właściwości jest inny niż ustawienie go na -1. Ustawienie na wartość-1 oznacza, że nowe dokumenty dodawane do kolekcji, nieskończoność na żywo, ale można ją zastąpić w określonych dokumentach w kolekcji. Usunięcie tej właściwości z kolekcji oznacza, że żaden dokument wygaśnie, nawet w przypadku dokumentów, które zostały jawnie przesłonięte wcześniejszy domyślny.
-
-    DocumentCollection collection = await client.ReadDocumentCollectionAsync("/dbs/salesdb/colls/orders");
-    
-    // Disable TTL
-    collection.DefaultTimeToLive = null;
-    
-    await client.ReplaceDocumentCollectionAsync(collection);
-
-<a id="ttl-and-index-interaction"></a> 
-## <a name="ttl-and-index-interaction"></a>Czas wygaśnięcia i indeks interakcji
-Dodanie lub zmiana ustawienie czasu wygaśnięcia kolekcji zmienia podstawowego indeksu. Po zmianie wartości TTL z poza się na kolekcji jest ponownie indeksowane. Podczas wprowadzania zmian zasad indeksowania, przy włączonym trybie indeksowania spójne, użytkownicy nie zauważyć zmiany do indeksu. Podczas indeksowania tryb ustawiono z opóźnieniem, indeks jest zawsze przechwytywanie i po zmianie wartości TTL indeksu są odtwarzane od podstaw. Po zmodyfikowaniu wartości TTL i tryb indeksu jest równa z opóźnieniem, zapytania wykonywane podczas odbudowywanie indeksu nie zwracają pełną lub niepoprawne wyniki.
-
-Aby uzyskać dokładne dane zwrócone, nie należy zmieniać wartości TTL podczas indeksowania tryb jest ustawiony na z opóźnieniem. W idealnym spójne indeks powinien zostać dobrany zapewnić spójne wyniki. 
-
-## <a name="faq"></a>Często zadawane pytania
-**Jaki będzie TTL koszt mnie?**
-
-Istnieje ustawienie czasu wygaśnięcia do dokumentu bez żadnych dodatkowych kosztów.
-
-**Jak długo potrwa można usunąć dokumentu, gdy czas wygaśnięcia jest uruchomiona?**
-
-Dokumenty są wygasłe natychmiast, gdy czas wygaśnięcia jest włączony i nie będzie dostępny za pośrednictwem operacji CRUD lub interfejsami API zapytań. 
-
-**Zostanie wartość TTL dokumentu ma żadnego wpływu na opłaty RU**
-
-Nie, nie będzie żadnego wpływu na RU opłaty usunięcia wygasłych dokumentów przy użyciu czasu wygaśnięcia w usłudze Cosmos DB.
-
-**Funkcją czasu wygaśnięcia dotyczą tylko całe dokumenty, czy można unieważnić wartości właściwości pojedynczego dokumentu?**
-
-Czas wygaśnięcia ma zastosowanie do całego dokumentu. Jeśli chcesz tylko części dokumentu wygaśnie, następnie zalecane jest, prowadzenie część głównego dokumentu do innego dokumentu "połączone", a następnie użyć czasu wygaśnięcia na wyodrębniony dokumentu.
-
-**Funkcja TTL ma szczególne wymagania indeksowania?**
-
-Tak. Kolekcja musi mieć [zestawu zasad indeksowania](indexing-policies.md) spójność lub leniwy. Ustawiany DefaultTTL w kolekcji za pomocą indeksowania zestaw None spowoduje błąd, podobnie jak próby wyłączyć indeksowanie w kolekcji zawierającej DefaultTTL, został już ustawiony.
+Usuwanie elementów, w oparciu o czas wygaśnięcia jest bezpłatne. Nie ma żadnych dodatkowych kosztów (czyli nie dodatkowych jednostek żądań są używane) w momencie usunięcia elementu wyniku z upływem czasu wygaśnięcia.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej o usłudze Azure Cosmos DB, zapoznaj się z usługą [ *dokumentacji* ](https://azure.microsoft.com/documentation/services/cosmos-db/) strony.
 
+Dowiedz się, jak skonfigurować Kafelek, aby na żywo w następujących artykułach:
+
+* [Jak skonfigurować czas wygaśnięcia](how-to-time-to-live.md)

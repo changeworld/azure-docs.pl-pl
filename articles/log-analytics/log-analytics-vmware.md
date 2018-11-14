@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: fe2407f67e2ef7a2eb14105db0fef10917f34ba9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5c9f37d326d66e69e87ec846ca6f22d1788203f5
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005227"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613991"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Rozwiązanie monitorowanie VMware (wersja zapoznawcza) w usłudze Log Analytics
 
@@ -165,7 +165,7 @@ Zapisywanie zapytań wyszukiwania jest funkcją standard w usłudze Log Analytic
 ![DockerDashboardView](./media/log-analytics-vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Tworzenie alertów na podstawie zapytania
-Po utworzeniu zapytania, można użyć zapytań ostrzega w przypadku wystąpienia określonych zdarzeń. Zobacz [alertów w usłudze Log Analytics](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) informacji o tym, jak tworzyć alerty. Przykłady alertów zapytania i inne przykłady zapytań, zobacz [monitorowanie VMware przy użyciu usługi Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) wpis w blogu.
+Po utworzeniu zapytania, można użyć zapytań ostrzega w przypadku wystąpienia określonych zdarzeń. Zobacz [alertów w usłudze Log Analytics](../monitoring-and-diagnostics/monitoring-overview-alerts.md) informacji o tym, jak tworzyć alerty. Przykłady alertów zapytania i inne przykłady zapytań, zobacz [monitorowanie VMware przy użyciu usługi Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) wpis w blogu.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Co muszę na ESXi hosta ustawienie? Jaki wpływ będzie miał na Moje bieżącego środowiska?
@@ -208,4 +208,4 @@ Może istnieć kilka przyczyn:
 ## <a name="next-steps"></a>Kolejne kroki
 * Użyj [wyszukiwań w dziennikach](log-analytics-queries.md) w usłudze Log Analytics, aby wyświetlić szczegółowe VMware obsługi danych.
 * [Tworzenie własnych pulpitów nawigacyjnych](log-analytics-dashboards.md) przedstawiający dane hosta VMware.
-* [Tworzenie alertów](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) po wystąpieniu określonych zdarzeń hostów VMware.
+* [Tworzenie alertów](../monitoring-and-diagnostics/monitoring-overview-alerts.md) po wystąpieniu określonych zdarzeń hostów VMware.

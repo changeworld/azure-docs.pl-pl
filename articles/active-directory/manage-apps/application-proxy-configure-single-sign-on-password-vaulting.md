@@ -8,25 +8,23 @@ manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/20/2017
+ms.date: 11/12/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: fa12dd5e9dbe25bad947abed5ab1c732d231b25c
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 8cdb5b89bf43d3265f3f9c73d29708f11e17b21c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39362826"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624033"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Hasło vaulting dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji
 
 Usługa Azure Active Directory serwera Proxy aplikacji pomaga zwiększyć wydajność przez pracowników zdalnych można bezpiecznie uzyskiwać do nich dostęp, zbyt publikowania lokalnych aplikacji. W witrynie Azure portal możesz również skonfigurować logowanie jednokrotne (SSO) do tych aplikacji. Użytkownicy potrzebują tylko do uwierzytelniania za pomocą usługi Azure AD, a ich dostęp do Twoich aplikacji enterprise bez konieczności ponownego zalogowania.
 
-Serwer Proxy aplikacji obsługuje kilka [pojedynczego logowania jednokrotnego tryby](application-proxy-single-sign-on.md). Logowanie na podstawie hasła jest przeznaczony dla aplikacji, które używają kombinacji nazwy użytkownika i hasła do uwierzytelniania. Podczas konfigurowania opartego na hasłach logowania jednokrotnego dla aplikacji, użytkownicy muszą zalogować się do aplikacji lokalnej jeden raz. Po tym usługi Azure Active Directory są przechowywane informacje logowania i automatycznie przekazuje go do aplikacji w przypadku użytkowników dostępu zdalnego. 
+Serwer Proxy aplikacji obsługuje kilka [pojedynczego logowania jednokrotnego tryby](what-is-single-sign-on.md#choosing-a-single-sign-on-method). Logowanie na podstawie hasła jest przeznaczony dla aplikacji, które używają kombinacji nazwy użytkownika i hasła do uwierzytelniania. Podczas konfigurowania opartego na hasłach logowania jednokrotnego dla aplikacji, użytkownicy muszą zalogować się do aplikacji lokalnej jeden raz. Po tym usługi Azure Active Directory są przechowywane informacje logowania i automatycznie przekazuje go do aplikacji w przypadku użytkowników dostępu zdalnego. 
 
 Powinna już opublikowania i przetestować aplikację za pomocą serwera Proxy aplikacji. Jeśli nie, wykonaj kroki opisane w [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md) następnie wróć tutaj. 
 
@@ -56,5 +54,5 @@ Przejdź do zewnętrznego adresu URL, który został skonfigurowany dla dostępu
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przeczytaj na temat innych sposobów implementowania [logowania jednokrotnego przy użyciu serwera Proxy aplikacji](application-proxy-single-sign-on.md)
+- Przeczytaj na temat innych sposobów implementowania [logowanie jednokrotne](what-is-single-sign-on.md)
 - Dowiedz się więcej o [zagadnienia dotyczące zabezpieczeń do uzyskiwania dostępu do aplikacji, które zdalnie za pomocą serwera Proxy aplikacji usługi Azure AD](application-proxy-security.md)

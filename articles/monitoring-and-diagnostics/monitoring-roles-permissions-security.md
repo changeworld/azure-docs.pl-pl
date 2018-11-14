@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 6a197cf5667e1668b2007a5f552b813cb8ed68d3
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: caa1b4b3bf1f9b8fb1a34bd58dde04f13fbc6c88
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957832"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614570"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń za pomocą usługi Azure Monitor
 Wiele zespołów należy ściśle regulowania dostępu do danych monitorowania i ustawień. Na przykład, jeśli posiadasz elementy członkowskie zespołu, którzy pracują wyłącznie na temat monitorowania (pracowników działu pomocy technicznej, inżynierom devops) lub korzystając z dostawcą usługi zarządzanej, można przyznać im dostęp do danych monitorowania tylko jednocześnie ograniczając możliwość tworzenia, modyfikowania, lub Usuń zasoby. W tym artykule pokazano, jak szybko wbudowana rola RBAC monitorowania są stosowane do użytkownika na platformie Azure lub utworzyć własne niestandardowe rolę dla użytkownika, który musi mieć ograniczone uprawnienia monitorowania. Następnie omówiono zagadnienia dotyczące zabezpieczeń na zasoby dotyczące usługi Azure Monitor i jak można ograniczyć dostęp do danych, które zawierają.
@@ -25,7 +25,7 @@ Usługa Azure Monitor wbudowane role mają na celu ograniczenia dostępu do zaso
 Osoby z przypisaną rolą Czytelnik monitorowania można wyświetlić wszystkie dane monitorowania w ramach subskrypcji, ale nie można zmodyfikować dowolnego zasobu lub edytować wszelkie ustawienia związane z monitorowania zasobów. Ta rola jest odpowiednia dla użytkowników w organizacji, takie jak operacje lub pomocy technicznej inżynierów, którzy muszą mieć możliwość:
 
 * Wyświetlać pulpity nawigacyjne monitorowania w portalu i Utwórz swoje własne prywatne pulpity nawigacyjne monitorowania.
-* Wyświetl reguły alertu zdefiniowane w [Azure Alerts](monitoring-overview-unified-alerts.md)
+* Wyświetl reguły alertu zdefiniowane w [Azure Alerts](monitoring-overview-alerts.md)
 * Zapytanie dotyczące korzystania z metryk [interfejsu API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931930.aspx), [poleceń cmdlet programu PowerShell](insights-powershell-samples.md), lub [międzyplatformowego interfejsu wiersza polecenia](insights-cli-samples.md).
 * Wyślij zapytanie do dziennika aktywności przy użyciu portalu, interfejsu API REST usługi Azure Monitor, poleceń cmdlet programu PowerShell lub wieloplatformowego interfejsu wiersza polecenia.
 * Widok [ustawień diagnostycznych](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) dla zasobu.
@@ -51,7 +51,7 @@ Osoby przypisane do roli Współautor monitorowania można wyświetlić wszystki
 * Publikuj monitorowania pulpitów nawigacyjnych jako udostępniony pulpit nawigacyjny.
 * Ustaw [ustawień diagnostycznych](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) dla resource.*
 * Ustaw [profil dziennika](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) dla subscription.*
-* Działanie reguły alertów i ustawienia za pośrednictwem [Azure Alerts](monitoring-overview-unified-alerts.md).
+* Działanie reguły alertów i ustawienia za pośrednictwem [Azure Alerts](monitoring-overview-alerts.md).
 * Utwórz testy sieci web usługi Application Insights i składników.
 * Obszar roboczy usługi Log Analytics listy udostępnionych kluczy.
 * Włącz lub wyłącz pakietów intelligence Pack usługi Log Analytics.

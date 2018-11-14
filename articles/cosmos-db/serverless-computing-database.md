@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 7348f76ab0d5a1057e9fd929e8a55dd0a9e99eb6
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 39b071c258a7aab3f8f0287ef2ce581a8f1b333e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140980"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623160"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Bezserwerowa baza danych obliczeń z użyciem usługi Azure Cosmos DB i Azure Functions
 
@@ -98,7 +98,7 @@ W implementacji sprzedaży detalicznej gdy użytkownik dodaje element do koszyka
 
 **Implementacja:** wyzwalaczy wielu usługi Azure Cosmos DB nasłuchiwanie jeden kontener
 
-1. Wiele funkcji platformy Azure można utworzyć przez dodanie Wyzwalacze usługi Azure Cosmos DB do każdego — które nasłuchują do tej samej zmienić źródło danych koszyka zakupów. Należy pamiętać, że gdy wiele funkcji słuchać takie same zestawienia zmian Nowa kolekcja dzierżawy jest wymagana dla każdej funkcji. Aby uzyskać więcej informacji o kolekcjach dzierżawy, zobacz [informacje o bibliotece procesora zestawienia zmian](change-feed.md#understand-cf).
+1. Wiele funkcji platformy Azure można utworzyć przez dodanie Wyzwalacze usługi Azure Cosmos DB do każdego — które nasłuchują do tej samej zmienić źródło danych koszyka zakupów. Należy pamiętać, że gdy wiele funkcji słuchać takie same zestawienia zmian Nowa kolekcja dzierżawy jest wymagana dla każdej funkcji. Aby uzyskać więcej informacji o kolekcjach dzierżawy, zobacz [informacje o bibliotece procesora zestawienia zmian](change-feed-processor.md).
 2. Zawsze, gdy nowy element zostanie dodany do użytkowników, koszyk, każda funkcja niezależnie zostanie wywołany przez źródło z kontenera koszyka zakupów zmian.
     * Jedna funkcja może używać zawartość koszyka bieżącej, aby zmienić sposób wyświetlania innych elementów, które użytkownik może być zainteresowany.
     * Inna funkcja może być aktualizowana sumy spisu.

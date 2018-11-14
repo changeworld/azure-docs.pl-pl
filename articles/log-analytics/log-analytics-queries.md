@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 774ca8d0c893a5672c7f04f3530679204b7262c6
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 0a8a1ab41972aa2ae184b900c2dab94ec58f3e7c
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51513769"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612758"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analizowanie danych usługi Log Analytics w usłudze Azure Monitor
 
@@ -41,12 +41,12 @@ Wymagane jest zapytanie dziennika, aby pobrać wszystkie dane z usługi Log Anal
 Różne sposoby, że używany jest program zapytań w usłudze Log Analytics są następujące:
 
 - **Portals.** Można wykonać analizy interakcyjnej danych dziennika w [witryny Azure portal](log-analytics-log-search-portals.md).  Dzięki temu można edytować zapytania i analizować wyniki w różnych formatach i wizualizacji.  
-- **Reguły alertów.** [Reguły alertów](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) aktywnego identyfikowania problemów z danych w obszarze roboczym.  Każda reguła alertu opiera się na wyszukiwanie w dzienniku, który jest automatycznie uruchamiane w regularnych odstępach czasu.  Wyniki są kontrolowane, aby określić, jeśli utworzony alert.
+- **Reguły alertów.** [Reguły alertów](../monitoring-and-diagnostics/monitoring-overview-alerts.md) aktywnego identyfikowania problemów z danych w obszarze roboczym.  Każda reguła alertu opiera się na wyszukiwanie w dzienniku, który jest automatycznie uruchamiane w regularnych odstępach czasu.  Wyniki są kontrolowane, aby określić, jeśli utworzony alert.
 - **Pulpity nawigacyjne.** Możesz przypiąć wyniki dowolnego zapytania do [pulpitu nawigacyjnego platformy Azure]() co pozwala użytkownikowi na wizualizować dane dzienników i metryk ze sobą i opcjonalnie udostępniać innym użytkownikom usługi Azure. 
 - **Widoki.**  Możesz utworzyć wizualizacje danych, które mają zostać uwzględnione w pulpitami nawigacyjnymi użytkownika za pomocą [Projektant widoków](log-analytics-view-designer.md).  Dziennik zapytań zawierają dane używane przez [Kafelki](log-analytics-view-designer-tiles.md) i [części wizualizacji](log-analytics-view-designer-parts.md) w każdym widoku.  
 - **Eksportowanie.**  Podczas importowania danych z obszaru roboczego usługi Log Analytics do programu Excel lub [usługi Power BI](log-analytics-powerbi.md), Utwórz zapytanie dziennika do definiowania danych do wyeksportowania.
 - **PowerShell.** Skrypt programu PowerShell można uruchomić z wiersza polecenia lub element runbook usługi Automation, która używa [Get AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) do pobierania danych z usługi Log Analytics.  To polecenie cmdlet wymaga zapytanie w celu określenia danych do pobrania.
-- **Interfejsu API usługi log Analytics.**  [Zaloguj się interfejs API wyszukiwania usługi Log Analytics](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) umożliwia dowolnego klienta interfejsu API REST do pobierania danych dziennika z obszaru roboczego.  Żądanie interfejsu API zawiera zapytanie, które jest uruchamiane Log Analytics w celu określenia danych do pobrania.
+- **Interfejsu API usługi log Analytics.**  [Zaloguj się interfejs API wyszukiwania usługi Log Analytics](../monitoring-and-diagnostics/monitoring-overview-alerts.md) umożliwia dowolnego klienta interfejsu API REST do pobierania danych dziennika z obszaru roboczego.  Żądanie interfejsu API zawiera zapytanie, które jest uruchamiane Log Analytics w celu określenia danych do pobrania.
 
 ![Wyszukiwanie w Dzienniku](media/log-analytics-queries/queries-overview.png)
 

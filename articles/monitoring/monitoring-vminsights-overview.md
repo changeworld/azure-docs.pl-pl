@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 11/07/2018
 ms.author: magoedte
-ms.openlocfilehash: e39954f9155419e0dea019203efa22ba0d654f92
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 8629c27d4a039a702da5f76170fc312dadccaf6a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093687"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612086"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Co to jest usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)?
 
-Usługa Azure Monitor dla maszyn wirtualnych monitoruje usługi Azure virtual machines (VM) na dużą skalę, analizując wydajności i kondycji Windows i maszyn wirtualnych systemu Linux, łącznie z różnych procesów i wzajemnie połączonych zależności od innych zasobów i procesów zewnętrznych. Rozwiązanie obejmuje obsługę monitorowania wydajności i zależności aplikacji w przypadku maszyn wirtualnych hostowanych lokalnie lub innego dostawcy chmury.  Obejmuje trzy kluczowe funkcje do tego wglądu w szczegółowe dane:
+Usługa Azure Monitor dla maszyn wirtualnych monitoruje usługi Azure virtual machines (VM) i zestawy skalowania maszyn wirtualnych platformy Azure na dużą skalę, analizując wydajności i kondycji Windows i maszyn wirtualnych systemu Linux, łącznie z różnych procesów i wzajemnie połączonych zależności od innych zasoby i procesy zewnętrzne. Rozwiązanie obejmuje obsługę monitorowania wydajności i zależności aplikacji w przypadku maszyn wirtualnych hostowanych lokalnie lub innego dostawcy chmury. Obejmuje trzy kluczowe funkcje do tego wglądu w szczegółowe dane:
 
 * Logiczne składniki maszyn wirtualnych platformy Azure, systemem operacyjnym Windows i Linux są mierzone w oparciu o określone kryteria kondycji wstępnie skonfigurowanych i alertów na po spełnieniu warunku ocenione.  
 * Podstawowe metryki wydajności procesora, pamięci, dysku i karty sieciowej w systemie operacyjnym gościa maszyny Wirtualnej są zbierane i znajdujące się w predefiniowanych popularne wykresy wydajności.
@@ -36,7 +36,7 @@ Te funkcje są podzielone na trzy perspektyw:
 * Mapa
 
 >[!NOTE]
->Funkcja kondycji jest obecnie oferowana tylko maszyn wirtualnych platformy Azure.
+>Obecnie funkcję kondycji jest oferowana tylko dla maszyn wirtualnych platformy Azure i skalowania maszyn wirtualnych zestawów. Wydajność i mapy obsługuje maszyny wirtualne platformy Azure i maszyn wirtualnych hostowanych w danym środowisku lub innych dostawców chmury.
 >
 
 Integracja z usługą Log Analytics oferuje zaawansowane agregacji, filtrowanie i możliwość wykonywania analizy trendu danych wraz z upływem czasu. Kompleksowe monitorowanie obciążenia nie mogą być osiągnięte samodzielnie za pomocą usługi Azure Monitor, Usługa Service Map lub usługi Log Analytics.  
@@ -52,9 +52,9 @@ DevOps można skutecznie dostarczać przewidywalnej wydajności i dostępności 
 
 ## <a name="data-usage"></a>Użycie danych 
 
-Dołączanie usługi Azure Monitor dla maszyn wirtualnych, danych zbieranych przez maszyny wirtualne jest zaraz po pozyskiwane i przechowywane w usłudze Azure Monitor.  Usługa Azure Monitor dla maszyn wirtualnych są naliczane opłaty za dane pozyskiwane i przechowywane szeregu kryteriów kondycji tworzone metryki reguły monitorowanych, alertu szeregów czasowych, powiadomienia wysyłane za opublikowane w usłudze Azure Monitor [stronę z cennikiem](https://azure.microsoft.com/pricing/details/monitor/)
+Dołączanie usługi Azure Monitor dla maszyn wirtualnych, danych zbieranych przez maszyny wirtualne jest zaraz po pozyskiwane i przechowywane w usłudze Azure Monitor. Usługa Azure Monitor dla maszyn wirtualnych są naliczane opłaty za dane pozyskiwane i przechowywane szeregu kryteriów kondycji tworzone metryki reguły monitorowanych, alertu szeregów czasowych, powiadomienia wysyłane za opublikowane w usłudze Azure Monitor [stronę z cennikiem](https://azure.microsoft.com/pricing/details/monitor/)
 
-Rozmiar dziennika w zależności od długości parametrów liczników i może zwiększyć liczbę dysków logicznych i karty sieciowe.  Jeśli masz już obszar roboczy ale są zbierane następujące liczniki, istnieje nie będzie żadnych zduplikowanych opłaty stosowane.  Jeśli używane są rozwiązania Service Map, jedyna zmiana, który będzie wyświetlony jest dodatkowe połączenie danych wysyłanych do usługi Azure Monitor.
+Rozmiar dziennika w zależności od długości parametrów liczników i może zwiększyć liczbę dysków logicznych i karty sieciowe. Jeśli masz już obszar roboczy ale są zbierane następujące liczniki, istnieje nie będzie żadnych zduplikowanych opłaty stosowane. Jeśli używane są rozwiązania Service Map, jedyna zmiana, który będzie wyświetlony jest dodatkowe połączenie danych wysyłanych do usługi Azure Monitor.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Przegląd [dołączanie usługi Azure Monitor dla maszyn wirtualnych](monitoring-vminsights-onboard.md) , aby zrozumieć wymagania i metody, aby włączyć monitorowanie maszyn wirtualnych.

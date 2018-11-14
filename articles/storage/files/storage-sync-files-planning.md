@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 0c9c254625ccca27a3525c45da0303f5e045ef44
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a2864ca743adf4ced1418630940146fed21b7fd5
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914332"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625304"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -191,19 +191,9 @@ Na serwerze, na którym jest zainstalowany agent usługi Azure File Sync za pomo
 Jeśli chmura warstw jest włączona w punkcie końcowym serwera, pliki, które są rozmieszczone warstwowo są pominięty i nie są indeksowane przez Windows Search. Pliki warstwowe nie są poprawnie indeksowane.
 
 ### <a name="antivirus-solutions"></a>Programy antywirusowe
-Ponieważ oprogramowanie antywirusowe polega na skanowanie plików do znanego złośliwego kodu, antywirusowe może powodować odwołania pliki warstwowe. Ponieważ pliki warstwowe mają ustawiony atrybut "offline", firma Microsoft zaleca konsultacji z dostawcą oprogramowania, aby dowiedzieć się, jak skonfigurować swoje rozwiązanie do pomijają odczytywanie plików trybu offline. 
+Ponieważ oprogramowanie antywirusowe polega na skanowanie plików do znanego złośliwego kodu, antywirusowe może powodować odwołania pliki warstwowe. W wersjach 4.0 i powyżej agenta usługi Azure File Sync pliki warstwowe bezpiecznego zestaw FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS atrybutów Windows. Firma Microsoft zaleca konsultacji z dostawcą oprogramowania, aby dowiedzieć się, jak skonfigurować swoje rozwiązanie, aby pominąć odczytywanie plików za pomocą tego zestawu atrybutów (wiele zrobiła to automatycznie).
 
-Znane następujących rozwiązań do obsługi zostanie pominięty, pliki trybu offline:
-
-- [Usługa Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
-    - Usługa Windows Defender automatycznie pomija odczytu plików, które mają ustawiony atrybut trybu offline. Firma Microsoft po przetestowaniu Defender i zidentyfikować niewielki problem w jednym: po dodaniu serwera do istniejącej grupy synchronizacji, pliki mniejsze niż 800 bajtów zostaną odwołane (pobieranego) na nowym serwerze. Pliki te pozostaną na nowym serwerze i nie będą umieszczane, ponieważ nie spełniają warstw wymagany rozmiar (> 64kb).
-- [System Center Endpoint Protection (SCEP)](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
-    - SCEP działa tak samo, jak usługa Defender; Zobacz powyżej
-- [Symantec Endpoint Protection](https://support.symantec.com/en_US/article.tech173752.html)
-- [McAfee EndPoint Security](https://kc.mcafee.com/resources/sites/MCAFEE/content/live/PRODUCT_DOCUMENTATION/26000/PD26799/en_US/ens_1050_help_0-00_en-us.pdf) (patrz "Skanuj tylko potrzebnych składników do" na stronie 90 PDF)
-- [Kaspersky Anti-Virus](https://support.kaspersky.com/4684)
-- [Sophos programu Endpoint Protection](https://community.sophos.com/kb/en-us/40102)
-- [TrendMicro OfficeScan](https://success.trendmicro.com/solution/1114377-preventing-performance-or-backup-and-restore-issues-when-using-commvault-software-with-osce-11-0#collapseTwo) 
+Rozwiązania firmy Microsoft wewnętrznych oprogramowania antywirusowego, usługa Windows Defender i System Center Endpoint Protection (SCEP), zarówno automatycznie pominięcia odczytu plików, które mają ustawiony ten atrybut. Firma Microsoft zostały one przetestowane i zidentyfikować niewielki problem w jednym: po dodaniu serwera do istniejącej grupy synchronizacji, pliki mniejsze niż 800 bajtów zostaną odwołane (pobieranego) na nowym serwerze. Pliki te pozostaną na nowym serwerze i nie będą umieszczane, ponieważ nie spełniają warstw wymagany rozmiar (> 64kb).
 
 ### <a name="backup-solutions"></a>Rozwiązania tworzenia kopii zapasowych
 Takich jak rozwiązania antywirusowe rozwiązania tworzenia kopii zapasowych może spowodować wycofanie plików warstwowych. Zalecamy używanie rozwiązania tworzenia kopii zapasowych w chmurze do tworzenia kopii zapasowej udziału plików platformy Azure, a nie lokalnie instalowanym produktem kopii zapasowej.

@@ -13,32 +13,31 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 04/19/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 818f4f4d8ea51cb278190d6e41953f0b04b2e995
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 4d86bcf99d5b4cf2b04980e72a2bd0a422233dc3
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42055355"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622878"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Informacje o działaniach inspekcji usługi Azure AD
 
-Dzięki raportom w usłudze Azure Active Directory (Azure AD) możesz uzyskać wszystkie informacje, które pomogą ustalić działanie środowiska.
+W przypadku raportów z usługi Azure Active Directory (Azure AD) możesz uzyskać informacje, które trzeba ustalić środowiska.
 
 Architektura raportowania w usłudze Azure AD obejmuje następujące składniki:
 
-- **Działanie** 
-    - **Działania związane z logowaniem** — informacje na temat użycia zarządzanych aplikacji i działania użytkownika związane z logowaniem
-    - **Dzienniki inspekcji** — udostępnia możliwość śledzenia wszystkich zmian wprowadzanych przez różne funkcje usługi Azure AD za pomocą dzienników. Działania umieszczane w dziennikach inspekcji to na przykład zmiany wprowadzone w dowolnych zasobach usługi Azure AD, takich jak użytkownicy, aplikacje, grupy, role, zasady, uwierzytelnienia itp.
-- **Bezpieczeństwo** 
-    - **Ryzykowne logowania** — ryzykowne logowanie jest wskaźnikiem próby logowania, które mogło zostać wykonane przez osobę, która nie jest prawowitym właścicielem konta użytkownika. Aby uzyskać więcej informacji, zobacz Ryzykowne logowania.
-    - **Użytkownicy oflagowani w związku z ryzykiem** — ryzykowny użytkownik jest wskaźnikiem konta użytkownika, którego bezpieczeństwo mogło zostać naruszone. Aby uzyskać więcej informacji, zobacz Użytkownicy oflagowani w związku z ryzykiem.
+- **Raporty aktywności** 
+    - [Operacje logowania](concept-sign-ins.md) — zawiera informacje na temat użycia zarządzanych aplikacji i użytkownika działań logowania
+    - [Dzienniki inspekcji](concept-audit-logs.md) — udostępnia możliwość śledzenia wszystkich zmian wprowadzanych przez różne funkcje usługi Azure AD za pomocą dzienników. 
+    
+- **Raporty dotyczące zabezpieczeń** 
+    - [Ryzykowne logowania](concept-risky-sign-ins.md) — ryzykowne logowanie jest wskaźnikiem próby logowania, które mogło zostać wykonane przez osobę, która nie jest prawowitym właścicielem konta użytkownika. 
+    - [Użytkownicy oflagowani w związku z ryzykiem](concept-user-at-risk.md) — ryzykowny użytkownik jest wskaźnikiem konta użytkownika, którego bezpieczeństwo mogło zostać naruszone. 
 
 W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w dziennikach inspekcji.
- 
-
 
 ## <a name="access-reviews"></a>Przeglądy dostępu
 
@@ -72,9 +71,6 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Zarządzanie użytkownikami|Pobieranie aplikacji w wersji 1|
 |Zarządzanie użytkownikami|Pobieranie aplikacji w wersji 2|
 |Zarządzanie użytkownikami|Pobieranie aplikacji w wersji 2|
-
-
-
 
 ## <a name="account-provisioning"></a>Aprowizacja kont
 
@@ -593,13 +589,8 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Zarządzanie zasadami|Użytkownik zarejestrowany do samoobsługowego resetowania haseł|
 
 
-
-
 ## <a name="next-steps"></a>Kolejne kroki
 
-Omówienia:
-
-- Omówienie raportowania zawiera artykuł [Azure Active Directory Reporting Guide (Przewodnik po raportach usługi Azure Active Directory)](overview-reports.md).
-
-- Omówienie raportów działań inspekcji zawiera artykuł [Audit activity reports in the Azure Active Directory portal (Raporty dotyczące działań inspekcji w portalu usługi Azure Active Directory)](concept-audit-logs.md). 
-
+- [Usługa Azure AD Raporty Omówienie](overview-reports.md).
+- [Raport dzienników inspekcji](concept-audit-logs.md). 
+- [Programowy dostęp do raportów usługi Azure AD](concept-reporting-api.md)

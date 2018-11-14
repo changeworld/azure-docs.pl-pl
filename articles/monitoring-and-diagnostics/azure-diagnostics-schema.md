@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 603ed12bf74f2d75543fd7e60834e695138c991d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: dbe2619b99fdc5281375e2c6c1300432d9a4cbb9
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963805"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616133"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Usługa Azure wersji schematu konfiguracji rozszerzenia diagnostyki i Historia
 Indeksy tej strony wersje Schemat rozszerzenia diagnostyki Azure dostarczana jako część programu Microsoft Azure SDK.  
@@ -67,7 +67,7 @@ Różne wersje diagnostyki platformy Azure Użyj innej konfiguracji schematów.
 ### <a name="diagnostics-extension-111"></a>Rozszerzenie diagnostyki 1.11
 Dodano obsługę dla ujścia usługi Azure Monitor. Ten obiekt sink ma zastosowanie tylko do liczników wydajności. Umożliwia wysyłanie liczniki wydajności zebrane na maszynie Wirtualnej, zestawu skalowania maszyn wirtualnych lub usługi w chmurze do usługi Azure Monitor jako metryki niestandardowe. Obsługuje ujścia usługi Azure Monitor:
 * Pobieranie wszystkich liczników wydajności wysyłane do usługi Azure Monitor za pośrednictwem [metryk usługi Azure Monitor interfejsów API.](https://docs.microsoft.com/rest/api/monitor/metrics/list)
-* Alertów dla wszystkich liczników wydajności wysyłane do usługi Azure Monitor w nowej witrynie [ujednolicone środowisko alertów](monitoring-overview-unified-alerts.md) w usłudze Azure Monitor
+* Alertów dla wszystkich liczników wydajności wysyłane do usługi Azure Monitor w nowej witrynie [ujednolicone środowisko alertów](monitoring-overview-alerts.md) w usłudze Azure Monitor
 * Traktowanie operator symbolu wieloznacznego w liczniki wydajności jako wymiar "Wystąpienie" w swoje metryki. Na przykład, gdy zostały zebrane "dysk logiczny (\*) / DiskWrites na sekundę" licznik będzie mieć możliwość filtrowania i podział wymiaru "Wystąpienie" do kreślenia lub alertu na zapisy dysku/s dla każdego dysku logicznego (C: D:, itp.)
 
 Usługa Azure Monitor jest definiowana jako nowy obiekt sink w konfiguracji rozszerzenia diagnostyki

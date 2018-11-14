@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: e765739384aa7d18b95394cb0a9b2b6748174e7c
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 3a7c91f4a83cd69bdb87ffaccce555b04eca67cc
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51525660"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51597638"
 ---
 <a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu klasycznego modelu wdrażania, które przypadają na jedną subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
@@ -49,7 +49,7 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Prywatne adresy IP na sieć wirtualną |65536 |
 | Prywatne adresy IP na interfejs sieciowy |256 |
 | Współbieżne TCP lub UDP przepływy dla karty Sieciowej maszyny wirtualnej lub wystąpienia roli |500 000 |
-| Interfejsy sieciowe (karta sieciowa) |24000 |
+| Interfejsy sieciowe (karta sieciowa) |65536 |
 | Sieciowe grupy zabezpieczeń (NSG) |5000 |
 | Reguły sieciowej grupy zabezpieczeń na sieciową grupę zabezpieczeń |1000 |
 | Adresy IP i zakresów określonych dla źródła lub miejsca docelowego w grupie zabezpieczeń |4000 |
@@ -64,28 +64,27 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Konfiguracji wzorca TAP interfejsu sieciowego na PODSŁUCHU sieci wirtualnej |100 |
 
 #### <a name="publicip-address"></a>Publiczne ograniczeń adresów IP
-
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
-| Publiczne adresy IP — dynamiczny |200 (podstawowe) |kontakt z pomocą techniczną |
+| Publiczne adresy IP — dynamiczny |1000 (podstawowe) |kontakt z pomocą techniczną |
 | Publiczne adresy IP — statyczny |200 (podstawowe) |kontakt z pomocą techniczną |
 | Publiczne adresy IP — statyczny |200 (standardowa) |kontakt z pomocą techniczną |
 
 #### <a name="load-balancer"></a>Limity usługi równoważenia obciążenia
 Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu usługi Azure Resource Manager, które przypadają na region na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md)
 
-| Zasób | Limit domyślny | Limit maksymalny |
+| Zasób | Limit domyślny |
 | --- | --- | --- |
-| Moduły równoważenia obciążenia | 100 | 1000 |
-| Zasady dla każdego zasobu, Basic | 250 | 250 |
-| Zasady dla każdego zasobu i Standard | 1500 | 1500 |
-| Zasady na konfigurację adresu IP | 299 |299 |
-| Konfiguracja adresu IP frontonu, Basic | 10 | 200 |
-| Konfiguracja adresu IP frontonu i Standard | 10 | 600 |
-| Pula zaplecza, Basic | 100, pojedynczy zestaw dostępności | 100, pojedynczy zestaw dostępności |
-| Pula zaplecza i Standard | 1000, pojedynczy sieci wirtualnej | 1000, pojedynczy sieci wirtualnej |
-| Zasoby zaplecza na moduł równoważenia obciążenia, Standard * | 150 | 150 |
-| Zaświadczanie o kondycji portów, standardowe | 1 na wewnętrznych frontonu | 1 na wewnętrznych frontonu |
+| Moduły równoważenia obciążenia | 1000 | 
+| Zasady dla każdego zasobu, Basic | 250 |
+| Zasady dla każdego zasobu i Standard | 1500 | 
+| Zasady na konfigurację adresu IP | 299 |
+| Konfiguracja adresu IP frontonu, Basic | 200 |
+| Konfiguracja adresu IP frontonu i Standard | 600 |
+| Pula zaplecza, Basic | 100, pojedynczy zestaw dostępności |
+| Pula zaplecza i Standard | 1000, pojedynczy sieci wirtualnej |
+| Zasoby zaplecza na moduł równoważenia obciążenia, Standard * | 150 |
+| Zaświadczanie o kondycji portów, standardowe | 1 na wewnętrznych frontonu |
 
 ** Maksymalnie 150 zasoby dowolną kombinację autonomiczne maszyny wirtualne, zestawy dostępności i zestawy skalowania maszyn wirtualnych.
 

@@ -7,14 +7,14 @@ manager: shivamg
 keywords: Usługa Azure backup server; można chronić obciążenia; Tworzenie kopii zapasowych obciążeń
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 11/13/2018
 ms.author: adigan; kasinh
-ms.openlocfilehash: 602b7b2a81ec727c9acaf86165867daa20370947
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: e1ed8b1f62eeb52d65ba178c8ca13f94b57da6f0
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578726"
+ms.locfileid: "51616320"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalowanie i uaktualnianie usługi Azure Backup Server
 > [!div class="op_single_selector"]
@@ -169,18 +169,20 @@ Po zakończeniu procesu wyodrębniania pole wyboru, aby uruchomić świeżo wyod
 
    **Konfiguracja ręczna**
 
-    > [!IMPORTANT]
+   Gdy używasz własnego wystąpienia programu SQL Server, upewnij się, że dodasz BUILTIN\Administratorzy do roli administratora systemu do bazy danych master.
 
-    > Po skonfigurowaniu serwera usługi Mab, ręcznie po przeprowadzeniu konfiguracji, upewnij się, że *IsInitialized* usług SSRS zostaje ustalona *True*. Gdy ta jest ustawiona na wartość True, serwera usługi Mab założono, że usługi SSRS jest już skonfigurowany i pozwoli na pominięcie konfiguracji usługi SSRS.
+    **Konfiguracja usługi SSRS z programem SQL 2017**
 
-    > Konfiguracji usługi SSRS, należy użyć następujących wartości:
+    Korzystając z własnego wystąpienia programu SQL 2017, musisz ręcznie skonfigurować usługi SSRS. Po przeprowadzeniu konfiguracji usługi SSRS, upewnij się, że *IsInitialized* usług SSRS zostaje ustalona *True*. Gdy ta jest ustawiona na wartość True, serwera usługi Mab założono, że usługi SSRS jest już skonfigurowany i pozwoli na pominięcie konfiguracji usługi SSRS.
 
-      >- Konto usługi: Użyj konta wbudowanego powinna być Usługa sieciowa
-    >- Adres URL usługi sieci Web: 'Katalogu wirtualnego' powinien być ReportServer_MSDPMINSTANCE
-    > - Baza danych: DatabaseName powinny być ReportServer$ MSDPMINSTANCE
-    > - Adres URL portalu sieci Web: 'Katalogu wirtualnego' powinien być Reports_MSDPMINSTANCE
+    Konfiguracji usługi SSRS, należy użyć następujących wartości:
 
-    > [Dowiedz się więcej](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) o konfiguracji usługi SSRS.
+        - Service Account: ‘Use built-in account’ should be Network Service
+        - Web Service URL: ‘Virtual Directory’ should be ReportServer_<SQLInstanceName>
+        - Database: DatabaseName should be ReportServer$<SQLInstanceName>
+        - Web Portal URL: ‘Virtual Directory’ should be Reports_<SQLInstanceName>
+
+    [Dowiedz się więcej](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) o konfiguracji usługi SSRS.
 
 4. Podaj lokalizację instalacji plików serwera kopia zapasowa Microsoft Azure, a następnie kliknij przycisk **dalej**.
 
@@ -323,6 +325,8 @@ Aby uaktualnić serwera usługi Mab, wykonaj następujące kroki:
   > [!IMPORTANT]
 
   >  W ramach uaktualnienia programu SQL 2017 możemy utworzyć kopię zapasową klucze szyfrowania programu SQL i odinstalowania usług raportowania. Po uaktualnieniu serwera SQL service(14.0.6827.4788) raportowania jest zainstalowana i klucze szyfrowania zostaną przywrócone.
+
+ > Podczas ręcznego konfigurowania SQL 2017, zobacz *konfiguracji usługi SSRS z programem SQL 2017* sekcji zgodnie z instrukcjami instalacji.
 
 3. Aktualizowanie agentów ochrony na serwerach chronionych.
 4. Tworzenie kopii zapasowych powinno być kontynuowane bez konieczności ponownego uruchomienia serwerów produkcyjnych.

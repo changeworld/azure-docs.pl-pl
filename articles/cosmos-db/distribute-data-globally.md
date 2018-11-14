@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: 4aa5e4ff46eeaa4e8d8c723f626dd1f1193fd12a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: cc7bd6bab76ee6617a2594cb0b84ace3f6f3dafc
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281612"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622129"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db"></a>Dane globalne dystrybucji za pomocą usługi Azure Cosmos DB
 
@@ -36,7 +36,7 @@ Wiele aplikacji będą mogli korzystać z ulepszeniami wydajności, które pocho
 
 **Twórz aplikacje o wysokiej dostępności**: uruchamianie bazy danych w wielu regionach, zwiększa to dostępność bazy danych. Jeśli jeden region jest niedostępny, innych regionach będzie automatycznie obsługiwać żądań aplikacji. Usługa Azure Cosmos DB oferuje 99,999% dostępność odczytu i zapisu dla baz danych w wielu regionach.
 
-**Ciągłość działania podczas awarii regionalnego**: usługi Azure Cosmos DB obsługuje [automatycznej pracy awaryjnej](how-to-manage-database-account.md#enable-automatic-failover-for-your-cosmos-account) podczas regionalnej awarii. Ponadto podczas regionalnej awarii usługi Cosmos DB w dalszym ciągu Obsługa opóźnienia, dostępności, spójności i przepływności umowy SLA. Aby zagwarantować, że całej aplikacji o wysokiej dostępności, usługi Azure Cosmos DB oferuje ręcznej pracy awaryjnej z interfejsu API w celu symulacji awarii regionalnej. Za pomocą tego interfejsu API, można wykonać ćwiczenia ciągłości zwykłe czynności biznesowe.
+**Ciągłość działania podczas awarii regionalnego**: usługi Azure Cosmos DB obsługuje [automatycznej pracy awaryjnej](how-to-manage-database-account.md#automatic-failover) podczas regionalnej awarii. Ponadto podczas regionalnej awarii usługi Cosmos DB w dalszym ciągu Obsługa opóźnienia, dostępności, spójności i przepływności umowy SLA. Aby zagwarantować, że całej aplikacji o wysokiej dostępności, usługi Azure Cosmos DB oferuje ręcznej pracy awaryjnej z interfejsu API w celu symulacji awarii regionalnej. Za pomocą tego interfejsu API, można wykonać ćwiczenia ciągłości zwykłe czynności biznesowe.
 
 **Globalne Odczyt i zapis skalowalność**: możliwości wielu wzorców, można elastycznie skalowanie odczytu i zapisu przepływności na całym świecie. Funkcja wielu wzorców gwarantuje, że przepływność, którą aplikacja konfiguruje się w bazie danych Azure Cosmos DB lub kontener jest wydana we wszystkich regionach i chroniony przez [finansowo umowy SLA](https://aka.ms/acdbsla).
 

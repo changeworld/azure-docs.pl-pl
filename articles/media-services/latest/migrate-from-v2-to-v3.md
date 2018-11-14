@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 11/07/2018
 ms.author: juliako
-ms.openlocfilehash: 1c8bacf4c6cb22240609fb9f5dc0c3c456bc4531
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 8c3ff4af3b556614d0b2179dceed6cabd9cbabff
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287544"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616014"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji do przenoszenia z usługi Media Services v2 do v3
 
@@ -59,6 +59,7 @@ Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej w
 * Zestawy SDK w wersji 3 są teraz całkowicie niezależni od zestawu SDK usługi Storage, co daje większą kontrolę nad wersję zestawu SDK usługi Storage ma być używany i eliminuje problemy z wersjonowaniem. 
 * W interfejsach API w wersji 3 są wszystkie kodowania szybkości transmisji bitów w bitach na sekundę. Stanowi to odmianę v2, które ustawienia wstępne usługi Media Encoder Standard. Na przykład szybkości transmisji bitów w wersji 2 będzie można określić jako 128 (KB/s), ale w wersji 3 byłoby 128000 (bity/sekundę). 
 * AssetFiles jednostek, AccessPolicies i IngestManifests nie istnieją w wersji 3.
+* Właściwość IAsset.ParentAssets nie istnieje w wersji 3.
 * Kluczy zawartości nie jest już jednostki, jest teraz właściwość StreamingLocator.
 * Obsługa siatki zdarzeń zastępuje NotificationEndpoints.
 * Następujące jednostki zostały zmienione.

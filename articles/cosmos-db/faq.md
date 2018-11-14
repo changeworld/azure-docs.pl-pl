@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 3f0bf2c6c58afbbf9a1256fa5901591e535fe20c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 258d00bcc99165108979ef1679c195a6d2b2d98a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250768"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623064"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB — często zadawane pytania
 ## <a name="azure-cosmos-db-fundamentals"></a>Podstawy usługi Azure Cosmos DB
@@ -100,7 +100,7 @@ Do subskrypcji Wypróbuj usługę Azure Cosmos DB mają zastosowanie następują
 Usługa Azure Cosmos DB jest dostępna w witrynie Azure portal. Najpierw należy utworzyć konto subskrypcji platformy Azure. Po zalogowaniu do subskrypcji platformy Azure można dodać interfejs API SQL, interfejs API Gremlin, interfejs API tabel, interfejsu API usługi MongoDB lub konto interfejsu API rozwiązania Cassandra.
 
 ### <a name="what-is-a-master-key"></a>Co to jest klucz główny?
-Klucz główny jest tokenem zabezpieczającym dostęp do wszystkich zasobów dla konta. Osoby, które mają klucz ma uprawnienia odczytu i zapisu do wszystkich zasobów w ramach konta bazy danych. Podczas dystrybucji kluczy głównych należy zachować ostrożność. Podstawowy klucz główny i pomocniczy klucz główny są dostępne na **klucze** bloku [witryny Azure portal][azure-portal]. Aby uzyskać więcej informacji na temat kluczy, zobacz [Wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu](manage-account.md#keys).
+Klucz główny jest tokenem zabezpieczającym dostęp do wszystkich zasobów dla konta. Osoby, które mają klucz ma uprawnienia odczytu i zapisu do wszystkich zasobów w ramach konta bazy danych. Podczas dystrybucji kluczy głównych należy zachować ostrożność. Podstawowy klucz główny i pomocniczy klucz główny są dostępne na **klucze** bloku [witryny Azure portal][azure-portal]. Aby uzyskać więcej informacji na temat kluczy, zobacz [Wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu](manage-with-cli.md#list-account-keys).
 
 ### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>Co to są regiony, które można ustawić PreferredLocations? 
 Wartość PreferredLocations można ustawić do dowolnego z regionów świadczenia usługi Azure, w których usługi Cosmos DB jest dostępna. Aby uzyskać listę dostępnych regionów, zobacz [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/).

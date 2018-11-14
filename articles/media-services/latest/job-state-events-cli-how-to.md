@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: juliako
-ms.openlocfilehash: 84f8a45f4755eb478c7ec8074796a6f732800922
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 16f964c6f881777e0217979a329610902b29a87b
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564905"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612628"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Tworzenie i monitorowanie zdarzeń usługi Media Services za pomocą usługi Event Grid przy użyciu wiersza polecenia platformy Azure
 
@@ -24,12 +24,14 @@ Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule używas
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Mieć aktywną subskrypcję platformy Azure.
+- Aktywna subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Zainstaluj i użyć interfejsu wiersza polecenia lokalnie, ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
+
+    Obecnie nie wszystkie [interfejsu wiersza polecenia usługi Media Services v3](https://aka.ms/ams-v3-cli-ref) polecenia działają w usłudze Azure Cloud Shell. Zalecane jest użycie interfejsu wiersza polecenia lokalnie.
+
 - [Utwórz konto usługi Media Services](create-account-cli-how-to.md).
 
     Upewnij się, że należy pamiętać, wartości, które były używane nazwy grupy zasobów i nazwę konta usługi Media Services.
-
-- Zainstaluj [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Możesz również użyć usługi [Azure Cloud Shell](https://shell.azure.com/bash).
 
 ## <a name="create-a-message-endpoint"></a>Tworzenie punktu końcowego komunikatów
 
@@ -45,19 +47,11 @@ Jeśli przełączysz się do witryny "Przeglądarka usługi Azure Event Grid" wi
    
 [!INCLUDE [event-grid-register-provider-portal.md](../../../includes/event-grid-register-provider-portal.md)]
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
-
-Zaloguj się w witrynie [Azure Portal](http://portal.azure.com), a następnie uruchom usługę **CloudShell**, aby wykonywać polecenia interfejsu wiersza polecenia, jak pokazano w następnych krokach.
-
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
-
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten temat wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
-
 ## <a name="set-the-azure-subscription"></a>Ustawianie subskrypcji platformy Azure
 
 W poniższym poleceniu podaj identyfikator subskrypcji platformy Azure, który ma być używany dla konta usługi Media Services. Listę subskrypcji, do których masz dostęp, możesz wyświetlić, przechodząc do obszaru [Subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
-```azurecli-interactive
+```azurecli
 az account set --subscription mySubscriptionId
 ```
 
@@ -69,7 +63,7 @@ Zastąp `<event_subscription_name>` unikatową nazwę subskrypcji zdarzeń. Aby 
 
 1. Pobierz identyfikator zasobu
 
-    ```azurecli-interactive
+    ```azurecli
     amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
     ```
 
@@ -81,7 +75,7 @@ Zastąp `<event_subscription_name>` unikatową nazwę subskrypcji zdarzeń. Aby 
 
 2. Subskrybowanie do zdarzeń
 
-    ```azurecli-interactive
+    ```azurecli
     az eventgrid event-subscription create \
     --resource-id $amsResourceId \
     --name <event_subscription_name> \

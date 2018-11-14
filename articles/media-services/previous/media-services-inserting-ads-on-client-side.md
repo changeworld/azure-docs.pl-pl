@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 0ca9c7ff1ac4cfbb50f251679286a933429bf03f
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 71ac963f00993f8a66d41a8d6f3f67528d9c0583
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903051"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625153"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Wstawianie reklam po stronie klienta
 Ten artykuł zawiera informacje na temat sposobu Wstaw różnego rodzaju reklam po stronie klienta.
@@ -107,7 +107,7 @@ Liniowy reklam, mogą być wyświetlane w określonej kolejności. Aby to zrobi�
           <Description>Unknown</Description>
           <Survey></Survey>
           <Error></Error>
-          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad1trackingResouce]]></Impression>
+          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad1trackingResource]]></Impression>
           <Creatives>
             <Creative id="video" sequence="0" AdID="">
               <Linear>
@@ -127,7 +127,7 @@ Liniowy reklam, mogą być wyświetlane w określonej kolejności. Aby to zrobi�
           <Description>Unknown</Description>
           <Survey></Survey>
           <Error></Error>
-          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad2trackingResouce]]></Impression>
+          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad2trackingResource]]></Impression>
           <Creatives>
             <Creative id="video" sequence="0" AdID="">
               <Linear>
@@ -160,7 +160,7 @@ Reklamy nieliniowych są określone w <Creative> również element. W poniższym
     </Creative>
 ```
 
-<**NonLinearAds**> element może zawierać jeden lub więcej <**NonLinear**> elementy, z których każdy może opisywać nieliniowych ad. <**NonLinear**> element Określa zasób dla nieliniowych ad. Zasób może być <**StaticResouce**>, <**IFrameResource**>, lub <**HTMLResouce**>. <**Staticresource —**> w tym artykule opisano zasobów innych niż HTML i definiuje atrybut creativeType, który określa sposób wyświetlania zasobu:
+<**NonLinearAds**> element może zawierać jeden lub więcej <**NonLinear**> elementy, z których każdy może opisywać nieliniowych ad. <**NonLinear**> element Określa zasób dla nieliniowych ad. Zasób może być <**staticresource —**>, <**IFrameResource**>, lub <**HTMLResource**>. <**Staticresource —**> w tym artykule opisano zasobów innych niż HTML i definiuje atrybut creativeType, który określa sposób wyświetlania zasobu:
 
 Image/gif, image/jpeg, image/png — zasób jest wyświetlana w formacie HTML <**img**> tag.
 

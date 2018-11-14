@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 7937f3d0db414d7a9cc2adaefd4324d49d734fcb
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 49d68a28180c384a181f29e41c12a5e32bd76aee
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280677"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625219"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Uznanie autorstwa użycia klienta partnerów platformy Azure
 
@@ -126,14 +126,14 @@ Identyfikator GUID jest unikatowy numer, zawierającej 32 cyfry szesnastkowe. Ab
 > [!Note]
 > Jest zdecydowanie zaleca się używanie [formie generator GUID usługi Azure Storage](https://aka.ms/StoragePartners) do utworzenia z identyfikatorem GUID. Aby uzyskać więcej informacji, zobacz nasze [— często zadawane pytania](#faq).
 
-Utwórz unikatowy identyfikator GUID dla każdego kanału oferty i dystrybucji. Jeśli są wdrażane dwa rozwiązania przy użyciu szablonu i każdej z nich jest dostępna w witrynie Azure Marketplace i w witrynie GitHub, musisz utworzyć cztery identyfikatorów GUID:
+Firma Microsoft zaleca się utworzenie Unikatowy identyfikator GUID dla każdego kanału oferty i dystrybucji dla każdego produktu. Możesz zdecydować się na użycie jednego identyfikatora GUID wielu kanałach dystrybucji produktu, jeśli nie chcesz, raportowanie do podzielenia. 
 
-*   Oferty w portalu Azure Marketplace 
-*   Oferty, A w witrynie GitHub
-*   Oferta B w witrynie Azure Marketplace 
-*   Oferta B w witrynie GitHub
+Jeśli wdrożenie produktu za pomocą szablonu i jest dostępna zarówno portalu Azure Marketplace i w witrynie GitHub, można tworzyć i zarejestruj 2 unikatowych identyfikatorów GUID:
 
-Raportowanie będzie odbywać się przez wartość partnera (identyfikator partnera firmy Microsoft) i identyfikator GUID. 
+*   Produkt w witrynie Azure Marketplace 
+*   Produkt A w witrynie GitHub
+
+Raportowanie będzie odbywać się przez wartość partnera (identyfikator partnera firmy Microsoft) i identyfikatory GUID. 
 
 Można także śledzić identyfikatorów GUID na bardziej szczegółowym poziomie, takie jak SKU, których jednostek SKU są wariantów oferty.
 

@@ -12,21 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 4b6ad2e237d73d5d8ca414bffc3a679ee552105f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 54ceadc8173526e8638e70c8c859109eea157fa7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718733"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614042"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Dodaj dostawcę zasobów usługi App Service do odłączonego środowiska usługi Azure Stack, zabezpieczone przez usługi AD FS
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Dotyczą aktualizacji 1807 system zintegrowany z usługi Azure Stack można też wdrażać najnowszy zestaw Azure Stack development kit przed wdrożeniem usługi Azure App Service 1.3.
+> Dotyczą aktualizacji 1809 system zintegrowany z usługi Azure Stack można też wdrażać najnowszy zestaw Azure Stack development kit przed wdrożeniem usługi Azure App Service 1.4.
 >
 >
 
@@ -84,8 +84,7 @@ Aby wdrożyć usługi App Service w środowisku bez połączenia, należy najpie
     2. W **usługi Azure Stack subskrypcje** wybierz opcję **domyślne subskrypcję dostawcy**.
     
     > [!NOTE]
-    > Usługa App Service można wdrażać tylko w **domyślne subskrypcję dostawcy** w tej chwili.  W przyszłej aktualizacji usługi App Service zostanie wdrożona na nową subskrypcję pomiaru wprowadzone w usłudze Azure Stack w wersji 1804 i wszystkie istniejące wdrożenia będą migrowane do tej nowej subskrypcji również.
-    >
+    > Usługa App Service można wdrażać tylko w **domyślne subskrypcję dostawcy**.
     >
     
     3. W **lokalizacje usługi Azure Stack** wybierz lokalizację, do której odnosi się do regionu jest wdrażany na. Na przykład wybierz **lokalnego** Jeśli Twoje wdrożenie usługi Azure Stack Development Kit.
@@ -170,7 +169,7 @@ Aby wdrożyć usługi App Service w środowisku bez połączenia, należy najpie
     ![Instalator usługi App Service][14]
 
     > [!NOTE]
-    > **Windows Server 2016 Core nie jest obrazem obsługiwanych platform do użycia z usługą Azure App Service w usłudze Azure Stack.  Nie należy używać obrazów ocenę dla wdrożeń produkcyjnych.  Usługa Azure App Service w usłudze Azure Stack wymaga, że Microsoft.NET 3.5.1 SP1 została aktywowana w obrazie używane w ramach wdrożenia.   Portal Marketplace zespolone systemu Windows Server 2016, obrazy nie mają włączenia tej funkcji.**
+    > **Windows Server 2016 Core nie jest obrazem obsługiwanych platform do użycia z usługą Azure App Service w usłudze Azure Stack.  Nie należy używać obrazów ocenę dla wdrożeń produkcyjnych.  Usługa Azure App Service w usłudze Azure Stack wymaga, że Microsoft.NET 3.5.1 SP1 została aktywowana w obrazie używane w ramach wdrożenia.   Portal Marketplace zespolone systemu Windows Server 2016, obrazy nie mają włączenia tej funkcji, w związku z tym należy utworzyć i używać obrazu systemu Windows Server 2016 za pomocą wstępnie włączeniu tej opcji.**
 
 14. W **wybierz obraz platformy** wybierz obraz maszyny wirtualnej usługi wdrażania systemu Windows Server 2016 od tych, które są dostępne w dostawcy zasobów obliczeniowych w chmurze usługi App Service. Kliknij przycisk **Dalej**.
 
@@ -198,7 +197,7 @@ Aby wdrożyć usługi App Service w środowisku bez połączenia, należy najpie
 
 1. W portalu administracyjnym usługi Azure Stack, przejdź do **administrowanie — usługa App Service**.
 
-2. W obszarze Przegląd w polu Stan zaznacz, aby zobaczyć, że **stan** pokazuje **wszystkie role są gotowe**.
+2. W obszarze Przegląd, w obszarze Stan zaznacz, aby zobaczyć, że **stan** Wyświetla **wszystkie role są gotowe**.
 
     ![Zarządzanie App Service](media/azure-stack-app-service-deploy/image12.png)
     

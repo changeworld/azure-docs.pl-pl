@@ -12,20 +12,26 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: report-monitor
-ms.date: 05/14/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e4aa4a87bec8f737405c90bb42bdb5fc60cb379a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6c1b9fabe89d254524006a21e3a422221791022d
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233001"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625270"
 ---
 # <a name="azure-active-directory-risk-events"></a>Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory
 
-Większość naruszenia zabezpieczeń ma miejsce, gdy osoby atakujące uzyskują dostęp do środowiska, kradzież tożsamości użytkownika. Wykrywanie tożsamości ze złamanymi zabezpieczeniami jest nie łatwym zadaniem. Usługa Azure Active Directory korzysta z algorytmów uczenia maszynowego adaptacyjne i algorytmy heurystyczne wykryć podejrzane akcje, które są powiązane z kontami użytkowników. Każdej wykrytej podejrzanych działań są przechowywane w rekord nazywany *zdarzenie o podwyższonym ryzyku*.
+Większość naruszenia zabezpieczeń ma miejsce, gdy osoby atakujące uzyskują dostęp do środowiska, kradzież tożsamości użytkownika. Wykrywanie tożsamości ze złamanymi zabezpieczeniami jest nie łatwym zadaniem. Usługa Azure Active Directory korzysta z algorytmów uczenia maszynowego adaptacyjne i algorytmy heurystyczne wykryć podejrzane akcje, które są powiązane z kontami użytkowników. Każdej wykrytej podejrzanych działań są przechowywane w rekord nazywany **zdarzenie o podwyższonym ryzyku**.
 
+Istnieją dwa miejsca, w którym przejrzeć zdarzenia ryzyka zgłaszanej:
+
+ - **Raportowanie usługi Azure AD** -zdarzeń o podwyższonym ryzyku są częścią zabezpieczeń usługi Azure AD raportów. Aby uzyskać więcej informacji, zobacz [raport zabezpieczeń dotyczący narażonych użytkowników](concept-user-at-risk.md) i [raport zabezpieczeń dotyczący ryzykownych logowań](concept-risky-sign-ins.md).
+
+ - **Usługa Azure AD Identity Protection** -zdarzeń o podwyższonym ryzyku są również częścią możliwości raportowania [usługi Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+    
 Obecnie usługa Azure Active Directory wykrywa sześć typów zdarzeń o podwyższonym ryzyku:
 
 - [Użytkownicy z ujawnionymi poświadczeniami](#leaked-credentials) 
@@ -35,18 +41,18 @@ Obecnie usługa Azure Active Directory wykrywa sześć typów zdarzeń o podwyż
 - [Logowania z adresów IP z podejrzaną aktywnością](#sign-ins-from-ip-addresses-with-suspicious-activity) 
 - [Logowania z nieznanych lokalizacji](#sign-in-from-unfamiliar-locations) 
 
-
 ![Zdarzenie o podwyższonym ryzyku](./media/concept-risk-events/91.png)
 
-Szczegółowe informacje, uzyskasz na zdarzenie wykryte zagrożenie jest powiązany ze swoją subskrypcją usługi Azure AD. Za pomocą wersji Azure AD Premium P2 otrzymasz najbardziej szczegółowe informacje na temat wszystkie wykrycia bazowego. Za pomocą wersji Azure AD Premium P1 wykrywania, które nie są objęte licencja są wyświetlane jako zdarzenie o podwyższonym ryzyku **logowania z dodatkowym ryzykiem wykryto**.
+Szczegółowe informacje, uzyskasz na zdarzenie wykryte zagrożenie jest powiązany ze swoją subskrypcją usługi Azure AD. 
 
+* Za pomocą **wersji usługi Azure AD Premium P2**, uzyskać najbardziej szczegółowe informacje na temat wszystkie wykrycia bazowego. 
+* Za pomocą **wersji Azure AD Premium P1**, wykrywania, które nie są objęte licencja są traktowane jako zdarzenie o podwyższonym ryzyku **logowania z dodatkowym ryzykiem wykryto**.
 
-Ten artykuł zawiera możesz szczegółowo omówiono zdarzeń o podwyższonym ryzyku, jakie są i jak ich używać do ochrony Twojej tożsamości usługi Azure AD.
-
+Natomiast wykrywanie zdarzeń o podwyższonym ryzyku już reprezentuje istotnym elementem ochrony tożsamości, masz również opcję, aby ręcznie rozwiązać je lub zaimplementować automatycznych odpowiedzi przez skonfigurowanie zasad dostępu warunkowego. Aby uzyskać więcej informacji, zobacz [usługi Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
 ## <a name="risk-event-types"></a>Rodzaje ryzykownych zdarzeń
 
-Właściwości typu zdarzenia o podwyższonym ryzyku jest dla został utworzony identyfikator podejrzanego działania rekord zdarzenia o podwyższonym ryzyku.
+**Typ zdarzenia ryzyka** właściwości jest identyfikatorem podejrzanych działań, które utworzono rekord zdarzenia o podwyższonym ryzyku.
 
 Ciągłe inwestycje firmy Microsoft w procesie wykrywania prowadzić do:
 
@@ -55,19 +61,18 @@ Ciągłe inwestycje firmy Microsoft w procesie wykrywania prowadzić do:
 
 ### <a name="leaked-credentials"></a>Ujawnione poświadczenia
 
-Przestępców przestępcami cybernetycznymi naruszenia zabezpieczeń prawidłowe haseł uprawnionych użytkowników, często współużytkować tych poświadczeń. Zazwyczaj jest to zrobić, publikując je publicznie na ciemny witryn sieci web lub wklej lub handlem lub sprzedaży poświadczeń na czarnym rynku. Microsoft wyciek poświadczeń usługi uzyskuje nazwę użytkownika / hasło pary przez monitorowanie publicznych i ciemny witryn sieci web i Praca z:
+Gdy przestępcami cybernetycznymi naruszenia zabezpieczeń prawidłowe haseł uprawnionych użytkowników, często udostępniać tych poświadczeń. Zazwyczaj jest to zrobić, publikując je publicznie na ciemny witryn sieci web lub wklej lub handlem lub sprzedaży poświadczeń na czarnym rynku. Microsoft wyciek poświadczeń usługi uzyskuje nazwę użytkownika / hasło pary przez monitorowanie publicznych i ciemny witryn sieci web i Praca z:
 
 - Badacze
 - Organom ścigania
 - Zespoły zabezpieczeń w firmie Microsoft
 - Innych zaufanych źródeł 
 
-Gdy usługa uzyskuje nazwę użytkownika / hasło pary one są sprawdzane w odniesieniu bieżącego prawidłowe poświadczenia użytkowników usługi AAD. Gdy zostanie znalezione dopasowanie, oznacza to, że został złamany hasła użytkownika, a *wyciek poświadczeń zdarzenie o podwyższonym ryzyku* zostanie utworzony.
+Gdy usługa uzyskuje nazwę użytkownika / hasło pary one są sprawdzane w odniesieniu bieżącego prawidłowe poświadczenia użytkowników usługi AAD. Gdy zostanie znalezione dopasowanie, oznacza to, że został złamany hasła użytkownika, a **wyciek poświadczeń zdarzenie o podwyższonym ryzyku** zostanie utworzony.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Logowania z anonimowych adresów IP
 
 Ten typ zdarzenia o podwyższonym ryzyku identyfikuje użytkowników, którzy zalogowali się pomyślnie się z adresu IP, który został zidentyfikowany jako adres IP anonimowego serwera proxy. Te serwery proxy są wykorzystywane przez osoby, które chcą ukryć adres IP swojego urządzenia i mogą być używane do złośliwego działania.
-
 
 ### <a name="impossible-travel-to-atypical-locations"></a>Niemożliwa podróż do nietypowych lokalizacji
 
@@ -86,12 +91,11 @@ Identity Protection wykrywa logowania z nieznanych lokalizacji również na uwie
 Ten typ zdarzenia o podwyższonym ryzyku identyfikuje logowania z urządzeń zainfekowany złośliwym oprogramowaniem, które są znane z aktywnej komunikacji z serwerem bot. Jest to określane przez skorelowanie adresów IP na urządzeniu użytkownika względem adresów IP, które zostały kontaktu z usługą serwera bota. 
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Logowania z adresów IP związanych z podejrzanymi działaniami
-Ten typ zdarzenia o podwyższonym ryzyku identyfikuje adresów IP, z których dużą liczbę nieudanych prób logowania były widoczne, na wielu kontach użytkowników w krótkim okresie. Wzorzec ruchu jest charakterystyczny dla adresów IP używanych przez osoby atakujące i jest silne wskazuje, czy konta są już lub mają być narażone na ataki. Jest to algorytmu uczenia maszynowego, które ignoruje oczywiste "*fałszywych alarmów*", takie jak adresy IP są regularnie używane przez innych użytkowników w organizacji.  System ma wstępny okres uczenia wynoszący 14 dni, w którym uczy się zachowanie logowania nowego użytkownika i nowej dzierżawy.
-
+Ten typ zdarzenia o podwyższonym ryzyku identyfikuje adresów IP, z których dużą liczbę nieudanych prób logowania były widoczne, na wielu kontach użytkowników w krótkim okresie. Wzorzec ruchu jest charakterystyczny dla adresów IP używanych przez osoby atakujące i jest silne wskazuje, czy konta są już lub mają być narażone na ataki. To jest machine learning algorytmu, który ignoruje oczywiste fałszywych alarmów, takie jak adresy IP, które są regularnie używane przez innych użytkowników w organizacji.  System ma wstępny okres uczenia wynoszący 14 dni, w którym uczy się zachowanie logowania nowego użytkownika i nowej dzierżawy.
 
 ## <a name="detection-type"></a>Typ wykrywania
 
-Właściwość type wykrywania jest wskaźnika (w czasie rzeczywistym lub w trybie Offline) dla przedziału czasu wykrycia zdarzenia o podwyższonym ryzyku. Obecnie większość zdarzeń o podwyższonym ryzyku są wykrywane w trybie offline w ramach operacji przetwarzania końcowego po wystąpieniu zdarzenia o podwyższonym ryzyku.
+Wykrywanie właściwość type jest wskaźnikiem (**w czasie rzeczywistym** lub **Offline**) dla przedziału czasu wykrycia zdarzenia o podwyższonym ryzyku. Obecnie większość zdarzeń o podwyższonym ryzyku są wykrywane w trybie offline w ramach operacji przetwarzania końcowego po wystąpieniu zdarzenia o podwyższonym ryzyku.
 
 W poniższej tabeli wymieniono ilość czasu potrzebnego dla typu wykrywania do powiązanego raportu:
 
@@ -115,7 +119,7 @@ Typy zdarzeń o podwyższonym ryzyku, który wykrywa usługi Azure Active Direct
 
 ## <a name="risk-level"></a>Poziom ryzyka
 
-Poziom ryzyka własności zdarzenie o podwyższonym ryzyku jest wskaźnikiem (wysoki, średni lub niski) na poziomie ważności i zaufania zdarzenie o podwyższonym ryzyku. Ta właściwość pomaga określić priorytety akcje, które należy podjąć. 
+Właściwość zdarzenia o podwyższonym ryzyku w systemach z poziomu ryzyka jest wskaźnik (**wysokiej**, **średni**, lub **niski**) na poziomie ważności i zaufania zdarzenie o podwyższonym ryzyku. Ta właściwość pomaga określić priorytety akcje, które należy podjąć. 
 
 Ważność zdarzenia o podwyższonym ryzyku reprezentuje siłę sygnału jako predykcyjne naruszenia tożsamości. Zaufania oznacza możliwość wyników fałszywie dodatnich. 
 
@@ -151,40 +155,19 @@ Nieznanych lokalizacji można podać silne wskazanie, czy osoba atakująca ma mo
 
 ### <a name="sign-ins-from-infected-devices"></a>Logowania z zainfekowanych urządzeń
 
-To zdarzenie o podwyższonym ryzyku identyfikuje adresów IP, nie urządzeń użytkowników. Jeśli kilka urządzeń znajdują się za pojedynczy adres IP, a tylko niektóre są kontrolowane przez sieć bot, logowania z innymi urządzeniami Moje wyzwalacz to zdarzenie niepotrzebnie, dlatego do tego zdarzenia o podwyższonym ryzyku klasyfikowania jako **niski**.  
+To zdarzenie o podwyższonym ryzyku identyfikuje adresów IP, nie urządzeń użytkowników. Jeśli kilka urządzeń znajdują się za pojedynczy adres IP, a tylko niektóre są kontrolowane przez sieć bot, logowania z innymi urządzeniami Moje wyzwalacz to zdarzenie niepotrzebnie, dlatego to zdarzenie o podwyższonym ryzyku są klasyfikowane jako **niski**.  
 
-Firma Microsoft zaleca się z nim, a skanowanie wszystkich urządzeń użytkownika. Jest również możliwe, że jest zainfekowany urządzeń osobistych użytkownika lub jak wspomniano wcześniej, że ktoś inny używał zainfekowanego urządzenia z tego samego adresu IP jako użytkownik. Zainfekowanych urządzeń są często zainfekowanych przez złośliwe oprogramowanie, które nie zostały zidentyfikowane przez oprogramowanie antywirusowe i może również oznaczać jako płynność nawyków, które mogą być przyczyną infekują urządzenia.
+Firma Microsoft zaleca się z nim, a skanowanie wszystkich urządzeń użytkownika. Jest również możliwe, że jest zainfekowany urządzenia osobiste użytkownika, lub czy ktoś inny używał zainfekowanego urządzenia z tego samego adresu IP jako użytkownik. Zainfekowanych urządzeń są często zainfekowanych przez złośliwe oprogramowanie, które nie zostały zidentyfikowane przez oprogramowanie antywirusowe, a także oznaczać wszelkie płynność nawyków, które mogą być przyczyną urządzenia infekują.
 
 Aby uzyskać więcej informacji na temat adresów przed infekcjami złośliwym oprogramowaniem, zobacz [Malware Protection Center](https://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409).
-
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Logowania z adresów IP związanych z podejrzanymi działaniami
 
 Firma Microsoft zaleca, skontaktuj się z użytkownika, aby sprawdzić, czy rzeczywiście podpisane z adresu IP, która została oznaczona jako podejrzanej. Poziom ryzyka dla tego typu zdarzenia to "**średni**" kilka urządzeń może być za ten sam adres IP, podczas gdy tylko niektóre mogą być odpowiedzialne za podejrzanych działań. 
 
 
- 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zdarzenia o podwyższonym ryzyku są podstawą ochrony tożsamości usługi Azure AD. Usługa Azure AD obecnie może wykryć sześć zdarzeń o podwyższonym ryzyku: 
-
-
-| Typ zdarzenia o podwyższonym ryzyku | Poziom ryzyka | Typ wykrywania |
-| :-- | --- | --- |
-| [Użytkownicy z ujawnionymi poświadczeniami](#leaked-credentials) | Wysoka | Offline |
-| [Logowania z anonimowych adresów IP](#sign-ins-from-anonymous-ip-addresses) | Medium | Czas rzeczywisty |
-| [Niemożliwa podróż do nietypowych lokalizacji](#impossible-travel-to-atypical-locations) | Medium | Offline |
-| [Logowania z nieznanych lokalizacji](#sign-in-from-unfamiliar-locations) | Medium | Czas rzeczywisty |
-| [Logowania z zainfekowanych urządzeń](#sign-ins-from-infected-devices) | Małe | Offline |
-| [Logowania z adresów IP z podejrzaną aktywnością](#sign-ins-from-ip-addresses-with-suspicious-activity) | Medium | Offline|
-
-Gdzie można znaleźć zdarzenia o podwyższonym ryzyku, które zostały wykryte w danym środowisku
-Istnieją dwa miejsca, w którym przejrzeć zdarzenia ryzyka zgłaszanej:
-
- - **Raportowanie usługi Azure AD** -zdarzeń o podwyższonym ryzyku są częścią zabezpieczeń usługi Azure AD raportów. Aby uzyskać więcej informacji, zobacz [raport zabezpieczeń dotyczący narażonych użytkowników](concept-user-at-risk.md) i [raport zabezpieczeń dotyczący ryzykownych logowań](concept-risky-sign-ins.md).
-
- - **Usługa Azure AD Identity Protection** -zdarzeń o podwyższonym ryzyku są również częścią [usługi Azure Active Directory Identity Protection przez](../active-directory-identityprotection.md) możliwości raportowania.
-    
-
-Natomiast wykrywanie zdarzeń o podwyższonym ryzyku już reprezentuje istotnym elementem ochrony tożsamości, masz również opcję, aby ręcznie rozwiązać je albo nawet zaimplementować automatycznych odpowiedzi przez skonfigurowanie zasad dostępu warunkowego. Aby uzyskać więcej informacji, zobacz z [usługi Azure Active Directory Identity Protection przez](../active-directory-identityprotection.md).
- 
+* [Raport zabezpieczeń dotyczący narażonych użytkowników](concept-user-at-risk.md)
+* [Raport zabezpieczeń dotyczący ryzykownych logowań](concept-risky-sign-ins.md)
+* [Azure AD Identity Protection](../active-directory-identityprotection.md).

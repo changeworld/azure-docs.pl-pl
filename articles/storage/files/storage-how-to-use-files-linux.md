@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: bbd250e9ee987403d670b2605fdb8deda8c19092
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 4b844fe50623782f23c1819c14eb7626eb9506cf
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782058"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614953"
 ---
-# <a name="use-azure-files-with-linux"></a>Używać usługi Azure Files z systemem Linux
+# <a name="use-azure-files-with-linux"></a>Używanie usługi Azure Files z systemem Linux
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można instalować w dystrybucjach systemu Linux przy użyciu [klienta jądra SMB](https://wiki.samba.org/index.php/LinuxCIFS). W tym artykule przedstawiono dwa sposoby instalowania udziału plików platformy Azure: na żądanie przy użyciu `mount` polecenia oraz na rozruch, tworząc wpis w `/etc/fstab`.
 
 > [!NOTE]  
@@ -117,7 +117,7 @@ ms.locfileid: "43782058"
     fi
     ```
 
-4. **Zmień uprawnienia do pliku poświadczeń, aby tylko główny może odczytać lub zmodyfikować pliku hasła.** Ponieważ klucz konta magazynu jest zasadniczo hasło właścicielami administratora dla konta magazynu, ustawienie uprawnień dla pliku, który w taki sposób, że tylko główny mogą uzyskiwać dostęp do ważne jest, aby niższe uprawnienia użytkowników nie może pobrać klucza konta magazynu.   
+4. **Zmień uprawnienia do pliku poświadczeń, aby tylko główny może odczytać lub zmodyfikować pliku hasła.** Ponieważ klucz konta magazynu jest zasadniczo hasło właścicielami administratora dla konta magazynu, ustawienie uprawnień dla pliku, który w taki sposób, że tylko główny mogą uzyskiwać dostęp do ważne jest, aby niższe uprawnienia użytkowników nie można pobrać klucza konta magazynu.   
 
     ```bash
     sudo chmod 600 /etc/smbcredentials/<storage-account-name>.cred

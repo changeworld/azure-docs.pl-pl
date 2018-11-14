@@ -1,21 +1,35 @@
+---
+author: vhorne
+ms.service: application-gateway
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: victorh
+ms.openlocfilehash: 44f9400a1ecebd3c204ec0b891c5d7fe01bdfd25
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51628181"
+---
 | Zasób | Limit domyślny | Uwaga |
 | --- | --- | --- |
-| Application Gateway |50 na subskrypcję | Maksymalna 1000 |
+| Application Gateway |1000 na subskrypcję | |
 | Konfiguracja adresu IP frontonu |2 |1 publiczna i 1 prywatna |
-| Porty frontonu |20 | |
-| Pule adresów zaplecza |20 | |
-| Serwery zaplecza na pulę |100 | |
-| Odbiorniki HTTP |20 | |
-| Reguły równoważenia obciążenia HTTP |200 |Liczba odbiorników HTTP * n, n = 10 domyślnie |
-| Ustawienia zaplecza HTTP |20 |1 na pulę adresów zaplecza |
-| Wystąpienia na bramę |10 | Dla większej liczby wystąpień należy otworzyć bilet pomocy technicznej |
-| Certyfikaty SSL |20 |1 na odbiorniki HTTP |
-| Certyfikaty uwierzytelniania |5 | Maksymalnie 10 |
+| Porty frontonu |40 | |
+| Pule adresów zaplecza |40 | |
+| Serwery zaplecza na pulę |1200 | |
+| Odbiorniki HTTP |40 | |
+| Reguły równoważenia obciążenia HTTP |400 |Liczba odbiorników HTTP * n |
+| Ustawienia zaplecza HTTP |40 | |
+| Wystąpienia na bramę |75 | |
+| Certyfikaty SSL |40 |1 na odbiorniki HTTP |
+| Certyfikaty uwierzytelniania |40 | |
 | Minimalny limit czasu żądania |1 sekunda | |
 | Maksymalny limit czasu żądania |24 godzin | |
 | Liczba witryn |20 |1 na odbiorniki HTTP |
 | Mapy adresów URL na odbiornik |1 | |
-|Maksymalna reguł opartych na ścieżkach na adres URL mapy|100|
+| Maksymalna reguł opartych na ścieżkach na adres URL mapy|100|
+| Konfiguracje przekierowania |40| |
 | Połączeń współbieżnych protokołu WebSocket. |5000| |
 |Maksymalna długość adresu URL|8000|
 | Maksymalny rozmiar przekazywanych plików Standard |2 GB | |

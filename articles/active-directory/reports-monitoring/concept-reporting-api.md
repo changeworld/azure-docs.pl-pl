@@ -13,38 +13,40 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 05/07/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1e6ad35702b15090202278cfdead62b245040302
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 860d602ecba257ed9015d1e080e5dcb1aa5ab872
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309624"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624628"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Rozpoczynanie pracy z usługą Azure Active Directory, interfejsu API raportowania
 
-Usługa Azure Active Directory oferuje szereg [raporty](overview-reports.md). Dane z tych raportów mogą być bardzo przydatne w aplikacjach, takich jak systemy SIEM oraz narzędzia do inspekcji i analizy biznesowej. 
+Usługa Azure Active Directory oferuje szereg [raporty](overview-reports.md), zawierający informacje przydatne w przypadku aplikacji, takich jak systemy SIEM, inspekcji i narzędzia do analizy biznesowej. 
 
-Za pomocą interfejsu API raportowania usługi Azure AD, możesz uzyskać programowy dostęp do danych za pomocą zestawu interfejsów API, oparte na protokole REST. Te interfejsy API można wywoływać przy użyciu różnych języków i narzędzi do programowania.
+Za pomocą interfejsu API programu Microsoft Graph dla raportów usługi Azure AD, możesz uzyskać programowy dostęp do danych za pomocą zestawu interfejsów API, oparte na protokole REST. Te interfejsy API można wywoływać przy użyciu różnych języków i narzędzi do programowania.
 
-Ten artykuł zawiera plan działania do uzyskiwania dostępu do danych raportowania przy użyciu powiązanych interfejsu API.
+Ten artykuł zawiera omówienie interfejsu API raportowania, w tym o metodach dostępu do niego.
 
 Jeśli napotkasz problemy, zobacz [jak uzyskać pomoc techniczną dotyczącą usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
 
-Ten artykuł ma zastosowanie do interfejsu API programu Graph usługi Azure AD.  Aby podobnych informacji związanych z interfejsu API Microsoft Graph, zobacz [typ zasobu directoryAudit](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/directoryaudit).
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby uzyskać dostęp do interfejsu API raportowania, nawet jeśli planujesz uzyskiwanie dostępu do interfejsu API za pomocą skryptu, należy:
+Dostęp do raportowania interfejsu API, z lub bez interwencji użytkownika, należy:
 
 1. Przypisz role (Administrator globalny Czytelnik zabezpieczeń, administratora zabezpieczeń)
 2. Rejestrowanie aplikacji
 3. Udzielenie uprawnień
 4. Zbieranie ustawień konfiguracji
 
-Aby uzyskać szczegółowe instrukcje, zobacz [wymagania wstępne dotyczące dostępu do usługi Azure Active Directory reporting API](howto-configure-prerequisites-for-reporting-api.md).
+Aby uzyskać szczegółowe instrukcje, zobacz [wymagania wstępne dotyczące dostępu do usługi Azure Active Directory reporting API](howto-configure-prerequisites-for-reporting-api.md). 
+
+## <a name="api-endpoints"></a>Punkty końcowe interfejsu API 
+
+Punkt końcowy interfejsu API Microsoft Graph dla dzienników inspekcji jest `https://graph.microsoft.com/beta/auditLogs/directoryAudits` i punkt końcowy interfejsu API Microsoft Graph do logowania jest `https://graph.microsoft.com/beta/auditLogs/signIns`. Aby uzyskać więcej informacji, zobacz [inspekcji dokumentacja interfejsu API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) i [logowania dokumentacja interfejsu API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
 
 ## <a name="apis-with-graph-explorer"></a>Interfejsy API za pomocą Eksploratora programu Graph
 
@@ -60,11 +62,10 @@ Za pomocą usługi Azure AD Reporting API certyfikaty Jeśli planowane jest pobr
 
 Aby uzyskać szczegółowe instrukcje, zobacz [pobieranie danych przy użyciu usługi Azure API raportowania usługi AD z certyfikatami](tutorial-access-api-with-certificates.md).
 
-
 ## <a name="next-steps"></a>Kolejne kroki
 
- * [Dokumentacja interfejsu API inspekcji](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
- * [Raport aktywności logowania, dokumentacja interfejsu API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+ * [Wymagania wstępne dotyczące dostępu do interfejsu API raportowania](howto-configure-prerequisites-for-reporting-api.md) 
+ * [Pobieranie danych przy użyciu usługi Azure AD interfejsu API raportowania przy użyciu certyfikatów](tutorial-access-api-with-certificates.md)
  * [Rozwiązywanie problemów z błędami w usłudze Azure AD, interfejsu API raportowania](troubleshoot-graph-api.md)
 
 

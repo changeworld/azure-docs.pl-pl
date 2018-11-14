@@ -27,7 +27,7 @@ items:
       href: concept-azure-ad-connect-sync-declarative-provisioning.md
     - name: Opis wyrażeń związanych z aprowizacją deklaratywną
       href: concept-azure-ad-connect-sync-declarative-provisioning-expressions.md
-    - name: Omówienie konfiguracji domyślnej
+    - name: Opis konfiguracji domyślnej
       href: concept-azure-ad-connect-sync-default-configuration.md
     - name: Opis użytkowników i kontaktów
       href: concept-azure-ad-connect-sync-user-and-contacts.md
@@ -301,9 +301,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: Informacje o module ADConnectivityTools
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 7295dce3e9077a41000d3a0a98f9b74bfdcc3ef2
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: afbccd00900c22a2567d69b0e494311875b0868c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346619"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621636"
