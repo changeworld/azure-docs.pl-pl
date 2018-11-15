@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/16/2017
-ms.openlocfilehash: 73b594aaabd814108dfce813b53a4ea865336e63
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a9d3b92b9cb3334c8c52a9127a2fab92d187e3d9
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985067"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687439"
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Usługa Azure Stream Analytics w usłudze IoT Edge (wersja zapoznawcza)
 
@@ -71,13 +71,17 @@ Kontener magazynu jest wymagane w celu eksportowania zapytania ASA skompilowane 
 
 1. W witrynie Azure portal należy utworzyć nowe "Zadanie usługi Stream Analytics". [Bezpośredni link, aby utworzyć nowe zadanie ASA w tym miejscu](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob).
 
-2. Na ekranie tworzenia wybierz **krawędzi** jako **Środowisko hostingu** (zobacz poniższy obraz) ![Tworzenie zadania](media/stream-analytics-edge/ASAEdge_create.png)
+2. Na ekranie tworzenia wybierz **krawędzi** jako **Środowisko hostingu** (zobacz poniższy obraz)
+
+   ![Tworzenie zadania](media/stream-analytics-edge/ASAEdge_create.png)
 3. Definicja zadania
     1. **Zdefiniuj strumieni danych wejściowych**. Umożliwia zdefiniowanie jednego lub kilku strumienie wejściowe dla zadania.
     2. Zdefiniuj dane referencyjne (opcjonalnie).
     3. **Definiowanie danych wyjściowych strumieni**. Umożliwia zdefiniowanie jednego lub wielu strumieni danych wyjściowych dla zadania. 
     4. **Zdefiniuj zapytanie o**. Zdefiniuj zapytanie o ASA, w chmurze za pomocą wbudowanego edytora. Kompilator automatycznie sprawdza, czy składnia włączone dla przeglądarki edge ASA. Możesz również przetestować zapytanie, przekazując przykładowych danych. 
+
 4. Ustaw informacje o kontenerze magazynu w **ustawienia usługi IoT Edge** menu.
+
 5. Ustawienia opcjonalne
     1. **Określanie kolejności zdarzeń**. W portalu, można skonfigurować zasady poza kolejnością. Dokumentacja jest dostępna [tutaj](https://msdn.microsoft.com/library/azure/mt674682.aspx?f=255&MSPPError=-2147217396).
     2. **Ustawienia regionalne**. Ustaw internalization format.
@@ -181,20 +185,27 @@ Co jest obecny, obsługiwana jest tylko wejście strumienia i typy danych wyjśc
 
 
 ##### <a name="reference-data"></a>Dane referencyjne
-Dane referencyjne (znany także jako tabela odnośnika) jest ograniczone zestaw danych, który jest statyczny lub powolne, zmieniając charakter. Służy do wyszukiwania lub skorelowane ze strumienia danych. Aby korzystać z danych referencyjnych w ramach zadania usługi Azure Stream Analytics, będzie na ogół służy [Dołącz dane odwołanie](https://msdn.microsoft.com/library/azure/dn949258.aspx) w zapytaniu. Aby uzyskać więcej informacji, zobacz [ASA dokumentacji dotyczącej danych referencyjnych](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-use-reference-data).
+Dane referencyjne (znany także jako tabela odnośnika) jest ograniczone zestaw danych, który jest statyczny lub powolne, zmieniając charakter. Służy do wyszukiwania lub skorelowane ze strumienia danych. Aby korzystać z danych referencyjnych w ramach zadania usługi Azure Stream Analytics, będzie na ogół służy [Dołącz dane odwołanie](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) w zapytaniu. Aby uzyskać więcej informacji, zobacz [użycie danych referencyjnych dla wyszukiwania w usłudze Stream Analytics](stream-analytics-use-reference-data.md).
 
-Aby użyć danych referencyjnych ASA na urządzeniach brzegowych Iot, wykonaj następujące kroki: 
-1. Utwórz nowe dane wejściowe dla zadania
+Tylko dane referencyjne lokalnych jest obsługiwane. Gdy zadanie jest wdrożone na urządzeniu usługi IoT Edge, ładuje danych referencyjnych ze ścieżki plików zdefiniowanych przez użytkownika.
+
+Aby utworzyć zadanie z danymi referencyjnymi w programie Edge:
+
+1. Utwórz nowe dane wejściowe dla zadania.
+
 2. Wybierz **dane referencyjne** jako **typ źródła**.
-3. Ustaw ścieżkę do pliku. Ścieżka do pliku powinna być **bezwzględne** ścieżka pliku na urządzeniu ![odwoływać się do tworzenia danych](media/stream-analytics-edge/ReferenceData.png)
-4. Włącz **udostępnione dyski** w konfiguracji platformy Docker i upewnij się, że dysk jest włączona, przed rozpoczęciem wdrażania.
 
-Aby uzyskać więcej informacji, zobacz [Docker for Windows w tej dokumentacji](https://docs.docker.com/docker-for-windows/#shared-drives).
+3. Ma odwołanie do pliku danych gotowe na urządzeniu. Dla kontenera Windows umieścić do referencyjnego pliku danych na dysku lokalnym, a następnie udostępniać dysku lokalnego kontenera platformy Docker. Dla kontenera systemu Linux należy utworzyć wolumin platformy Docker i wypełnić plik danych do woluminu.
 
-> [!Note]
-> W tej chwili tylko odwołanie do lokalnych danych jest obsługiwana.
+4. Ustaw ścieżkę do pliku. Na urządzeniu z systemem windows za pomocą ścieżki bezwzględnej. W przypadku urządzeń z systemem Linux Użyj ścieżki na woluminie.
 
+![Nowe wejściowych danych referencyjnych dla zadania usługi Azure Stream Analytics w usłudze IoT Edge](./media/stream-analytics-edge/ReferenceDataNewInput.png)
 
+Dane referencyjne w aktualizacji usługi IoT Edge jest wyzwalana przez wdrożenie. Po wyzwoleniu moduł ASA wybiera zaktualizowane dane bez konieczności zatrzymywania uruchomionego zadania.
+
+Istnieją dwa sposoby, aby zaktualizować dane referencyjne:
+* Aktualizuj odwołanie do ścieżki danych w ramach zadania ASA w witrynie Azure portal.
+* Aktualizuj wdrożenie usługi IoT Edge.
 
 
 ## <a name="license-and-third-party-notices"></a>Bieżąca licencja i uwagi dotyczące innych firm

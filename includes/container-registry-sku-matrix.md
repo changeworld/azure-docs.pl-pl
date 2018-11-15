@@ -1,3 +1,16 @@
+---
+author: dlepow
+ms.service: container-registry
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: danlep
+ms.openlocfilehash: 286159aee00b018d0cacae3858f92cdf0e79cfbc
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572534"
+---
 | SKU | Opis |
 |---|---|
 | Podstawowa | Zoptymalizowany pod kątem kosztów punkt wejścia dla deweloperów poznających usługę Azure Container Registry. Rejestry w warstwie Podstawowa mają te same możliwości programowe co w warstwach Standardowa i Premium (integracja uwierzytelniania usługi Azure Active Directory, usuwanie obrazu i elementy webhook), istnieją jednak ograniczenia dotyczące wielkości i użycia. |
