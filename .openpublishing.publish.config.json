@@ -205,7 +205,7 @@
       "url": "https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts",
       "branch": "master",
       "branch_mapping": {}
-    },  
+    },
     {
       "path_to_root": "media-services-v3-dotnet-tutorials",
       "url": "https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials",
@@ -275,6 +275,30 @@
     {
       "path_to_root": "cognitive-services-java-sdk-samples",
       "url": "https://github.com/Azure-Samples/cognitive-services-java-sdk-samples",
+      "branch": "master",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "aml-sdk-samples",
+      "url": "https://github.com/Azure/MachineLearningNotebooks",
+      "branch": "sdk-codetest",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cognitive-services-vision-csharp-sdk-quickstarts",
+      "url": "https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts",
+      "branch": "master",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cognitive-face-csharp-sample",
+      "url": "https://github.com/Azure-Samples/Cognitive-Face-CSharp-sample",
+      "branch": "master",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cognitive-services-face-android-detect",
+      "url": "https://github.com/Azure-Samples/cognitive-services-face-android-detect",
       "branch": "master",
       "branch_mapping": {}
     }
