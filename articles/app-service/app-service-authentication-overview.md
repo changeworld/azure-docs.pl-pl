@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
-ms.openlocfilehash: 6aa7f8c3b9d21d9c55aee3ce49f2bc140769a855
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 27726f261b2d9c88f1544a6e66ea352fbb98d253
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408068"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685671"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service
 
@@ -92,7 +92,7 @@ Po włączeniu uwierzytelniania i autoryzacji przy użyciu jednego z tych dostaw
 Przepływ uwierzytelniania jest taka sama dla wszystkich dostawców, ale różnią się zależnie od tego, czy chcesz zalogować się przy użyciu dostawcy SDK:
 
 - Bez dostawcy SDK: aplikacja deleguje logowania federacyjnego do usługi App Service. Zazwyczaj jest to w przypadku aplikacji przeglądarki, które może powodować dostawcy strony logowania do użytkownika. Kod serwera zarządza procesem logowania, dzięki czemu jest również nazywany _skierowane do serwera usługi flow_ lub _przepływ serwera_. Ten przypadek ma zastosowanie do aplikacji sieci web. Ma również zastosowanie do aplikacji natywnych, które logują użytkowników przy użyciu zestawu SDK klienta funkcji Mobile Apps, ponieważ zestaw SDK spowoduje otwarcie widoku sieci web do logują użytkowników przy użyciu uwierzytelniania usługi App Service. 
-- Za pomocą dostawcy SDK: aplikacji, loguje się użytkownik ręcznie, a następnie przesyła je token uwierzytelniania w usłudze App Service do sprawdzania poprawności. Zazwyczaj jest to w przypadku aplikacji bez przeglądarki, które użytkownik nie widzi strony logowania dla dostawcy. Kod aplikacji zarządza procesem logowania, dzięki czemu jest również nazywany _skierowane do klientów usługi flow_ lub _przepływ klienta_. Ten przypadek ma zastosowanie do interfejsów API REST, [usługi Azure Functions](../azure-functions/functions-overview.md)oraz klientów języka JavaScript w przeglądarkach, jak również aplikacje sieci web, które muszą większą elastyczność w procesie logowania. Ma również zastosowanie do natywnych aplikacji mobilnych, które logują użytkowników przy użyciu zestawu SDK w dostawcy.
+- Za pomocą dostawcy SDK: ręcznie logowania użytkowników w dostawcy aplikacji, a następnie przesyła je token uwierzytelniania w usłudze App Service do sprawdzania poprawności. Zazwyczaj jest to w przypadku aplikacji bez przeglądarki, które użytkownik nie widzi strony logowania dla dostawcy. Kod aplikacji zarządza procesem logowania, dzięki czemu jest również nazywany _skierowane do klientów usługi flow_ lub _przepływ klienta_. Ten przypadek ma zastosowanie do interfejsów API REST, [usługi Azure Functions](../azure-functions/functions-overview.md)oraz klientów języka JavaScript w przeglądarkach, jak również aplikacje sieci web, które muszą większą elastyczność w procesie logowania. Ma również zastosowanie do natywnych aplikacji mobilnych, które logują użytkowników przy użyciu zestawu SDK w dostawcy.
 
 > [!NOTE]
 > Wywołania z aplikacji przeglądarki zaufane w usłudze App Service wywołuje innego interfejsu API REST w usłudze App Service lub [usługi Azure Functions](../azure-functions/functions-overview.md) mogą być uwierzytelniane przy użyciu usługi flow skierowane do serwera. Aby uzyskać więcej informacji, zobacz [dostosowywać uwierzytelnianie i autoryzacja w usłudze App Service](app-service-authentication-how-to.md).
@@ -103,7 +103,7 @@ W poniższej tabeli przedstawiono kroki przepływu uwierzytelniania.
 | Krok | Bez dostawcy zestawu SDK | Za pomocą dostawcy zestawu SDK |
 | - | - | - |
 | 1. Logowanie użytkownika | Przekierowuje klienta do `/.auth/login/<provider>`. | Kod klienta loguje użytkownika bezpośrednio z zestawem SDK dostawcy i odbiera token uwierzytelniania. Aby uzyskać informacje Zobacz dokumentację dostawcy. |
-| 2. Uwierzytelnianie końcowe | Dostawca przekierowuje klienta do `/.auth/login/<provider>/callback`. | Kod klienta publikuje tokenu od dostawcy, aby `/.auth/login/<provider>` do sprawdzania poprawności. |
+| 2. Uwierzytelnianie końcowe | Dostawca przekierowuje klienta do `/.auth/login/<provider>/callback`. | Kod klienta [publikuje tokenu od dostawcy](app-service-authentication-how-to.md#validate-tokens-from-providers) do `/.auth/login/<provider>` do sprawdzania poprawności. |
 | 3. Ustanowić sesja uwierzytelniona | Usługa App Service dodaje uwierzytelnionego plik cookie odpowiedzi. | Usługa App Service zwraca swój własny token uwierzytelniania dla kodu klienta. |
 | 4. Udostępnianie zawartości uwierzytelnionego | Klient dołącza plik cookie uwierzytelniania w kolejnych żądań (automatycznie obsługiwane przez przeglądarki). | Kod klienta stanowi token uwierzytelniania w `X-ZUMO-AUTH` nagłówka (automatycznie obsługiwane przez zestawy SDK klientów Mobile Apps). |
 

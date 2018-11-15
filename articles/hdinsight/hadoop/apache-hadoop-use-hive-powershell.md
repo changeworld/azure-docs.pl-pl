@@ -1,6 +1,6 @@
 ---
-title: Use Hadoop Hive używanie przy użyciu programu PowerShell w HDInsight — Azure
-description: Uruchamianie zapytań programu Hive na platformie Hadoop w HDInsight przy użyciu programu PowerShell.
+title: Use Apache Hive przy użyciu programu PowerShell w HDInsight — Azure
+description: Uruchamianie zapytań programu Hive na platformie Apache Hadoop w HDInsight przy użyciu programu PowerShell.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,24 +9,24 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: e02f6b17dff93ce2df1f06ad9681e3086c35300c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d29199c5e1534e3f98fbdbb73799840cf9c9e75f
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257871"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633115"
 ---
-# <a name="run-hive-queries-using-powershell"></a>Uruchamianie zapytań Hive przy użyciu programu PowerShell
+# <a name="run-apache-hive-queries-using-powershell"></a>Uruchamianie zapytania usługi Apache Hive przy użyciu programu PowerShell
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Ten dokument zawiera przykład przy użyciu programu Azure PowerShell w trybie grupy zasobów platformy Azure do uruchamiania zapytań programu Hive na platformie Hadoop w klastrze HDInsight.
+Ten dokument zawiera przykład przy użyciu programu Azure PowerShell w trybie grupy zasobów platformy Azure do uruchamiania zapytań programu Hive na platformie Apache Hadoop w klastrze HDInsight.
 
 > [!NOTE]
 > Ten dokument zawiera szczegółowy opis działania instrukcje HiveQL, które są używane w przykładach. Informacje na temat HiveQL, który jest używany w tym przykładzie można zobaczyć [korzystanie z programu Hive z usługą Hadoop w HDInsight](hdinsight-use-hive.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Opartą na systemie Linux platformą Hadoop w wersji klastra HDInsight 3.4 lub nowszą.
+* Linux Apache Hadoop oparte na wersji klastra HDInsight 3.4 lub nowszą.
 
   > [!IMPORTANT]
   > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).

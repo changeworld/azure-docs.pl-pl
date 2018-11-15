@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/9/2018
-ms.openlocfilehash: f0727d7ad415c718c01361cba8e8822a43298f66
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 8b92191b60f8eb7e3c63f465926b434e205ef1b4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300731"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684753"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra HDInsight z pakietem Enterprise Security za pomocą usługi Azure Active Directory Domain Services
 
@@ -22,7 +22,7 @@ Klastry Enterprise Security pakietu (ESP) zapewniają dostęp wielu użytkownik�
 W tym artykule dowiesz się, jak skonfigurować klaster HDInsight przy użyciu ESP przy użyciu Azure Active Directory Domain Services (Azure AD DS).
 
 >[!NOTE]
->ESP jest ogólnie w HDI 3.6 dla platformy Spark, interaktywny i Hadoop. ESP dla typów klastrów HBase i Kafka jest w wersji zapoznawczej.
+>ESP jest w wersji ogólnie dostępnej w usłudze HDI 3.6 dla platformy Spark, interaktywny i Apache Hadoop. ESP dla typów klastrów HBase i Kafka jest w wersji zapoznawczej.
 
 ## <a name="enable-azure-ad-ds"></a>Włączanie usługi Azure AD DS
 
@@ -66,7 +66,7 @@ Po utworzeniu tożsamości zarządzanej i biorąc pod uwagę odpowiednią rolę,
 ## <a name="networking-considerations"></a>Zagadnienia dotyczące pracy w sieci
 
 > [!NOTE]
-> Azure AD DS musi zostać wdrożony w sieci wirtualnej na podstawie usługi Azure Resource Manager (ARM). Klasyczne sieci wirtualne nie są obsługiwane dla usługi Azure AD — DS. Zapoznaj się [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started-network) Aby uzyskać więcej informacji.
+> Azure AD DS musi zostać wdrożony w sieci wirtualnej na podstawie usługi Azure Resource Manager (ARM). Klasyczne sieci wirtualne nie są obsługiwane dla usługi Azure AD — DS. Zapoznaj się [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-network) Aby uzyskać więcej informacji.
 
 Po włączeniu usług AD DS platformy Azure, lokalnego serwera usługi nazw domen (DNS, Domain Name System) działa na maszynach wirtualnych (VM) AD. Konfigurowanie usługi Azure usług AD DS Virtual Network (VNET) do użycia tych niestandardowych serwerów DNS. Aby znaleźć odpowiednie adresy IP, wybierz **właściwości** w obszarze **Zarządzaj** kategorii i spójrz na adresy IP na liście poniżej **adresu IP w sieci wirtualnej**.
 

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 83a36c81ad88ccb37fe4a258f895b1e1cbe9299f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6f93d7c4b76d635a221c2711ce9d4ef0de2286f6
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311017"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687405"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne: techniczne
 
@@ -79,8 +79,8 @@ Przepływ logowania na komputerze klienckim natywnych jest następująca:
 
 1. Użytkownik próbuje uzyskać dostęp do natywnych aplikacji (na przykład klient programu Outlook) z przyłączonym do domeny urządzenia firmowe w sieci firmowej.
 2. Jeśli użytkownik nie jest już zalogowany, aplikacji natywnej pobiera nazwa użytkownika z sesji Windows urządzenia.
-3. Aplikacja wysyła nazwę użytkownika do usługi Azure AD i pobiera punktu końcowego MEX WS-Trust Twojej dzierżawy.
-4. Następnie aplikacja wykonuje zapytanie punktu końcowego MEX WS-Trust, aby sprawdzić, czy zintegrowane uwierzytelnianie punkt końcowy jest dostępny.
+3. Aplikacja wysyła nazwę użytkownika do usługi Azure AD i pobiera punktu końcowego MEX WS-Trust Twojej dzierżawy. Ten punkt końcowy protokołu WS-Trust jest używany wyłącznie przez funkcję bezproblemowe logowanie Jednokrotne, a nie jest ogólnej implementacji protokołu WS-Trust w usłudze Azure AD.
+4. Następnie aplikacja wykonuje zapytanie punktu końcowego MEX WS-Trust, aby sprawdzić, czy zintegrowane uwierzytelnianie punkt końcowy jest dostępny. Punkt końcowy zintegrowanego uwierzytelniania jest używany wyłącznie przez funkcję bezproblemowe logowanie Jednokrotne.
 5. Jeśli krok 4 zakończy się powodzeniem, wystawiono wyzwanie protokołu Kerberos.
 6. Jeśli aplikacja jest w stanie pobrać biletu protokołu Kerberos, przekazuje go do endpoint zintegrowane uwierzytelnianie usługi Azure AD.
 7. Usługa Azure AD odszyfrowuje biletu protokołu Kerberos i zweryfikuje go.

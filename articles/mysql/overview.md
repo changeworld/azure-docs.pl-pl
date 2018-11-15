@@ -1,69 +1,68 @@
 ---
-title: Omówienie bazy danych Azure usługa relacyjnej bazy danych MySQL
-description: Omówienie bazy danych Azure usługa relacyjnej bazy danych MySQL.
+title: Omówienie usługi Azure Database for usługa relacyjnej bazy danych MySQL
+description: Omówienie usługi Azure Database for MySQL usługa relacyjnej bazy danych.
 services: mysql
+ms.service: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
 editor: jasonwhowell
-ms.service: mysql
-ms.topic: article
-ms.date: 06/02/2018
 ms.custom: mvc
-ms.openlocfilehash: b7af709c4175ecd6100de6d638ac9862488a7190
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.topic: article
+ms.date: 11/14/2018
+ms.openlocfilehash: 4d0d78b978f6454170b52a95f538f143b9f24505
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266350"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684804"
 ---
-# <a name="what-is-azure-database-for-mysql"></a>Co to jest Azure bazy danych MySQL?
-Bazy danych platformy Azure dla programu MySQL to usługa relacyjnej bazy danych w chmurze firmy Microsoft, na podstawie [MySQL Community Edition](https://www.mysql.com/products/community/) aparatu bazy danych. Bazy danych platformy Azure dla programu MySQL zapewnia:
+# <a name="what-is-azure-database-for-mysql"></a>Co to jest Azure Database for MySQL?
+Usługa Azure Database for MySQL to usługa relacyjnej bazy danych w chmurze firmy Microsoft, w oparciu o [MySQL Community Edition](https://www.mysql.com/products/community/) aparatu bazy danych, w wersji 5.6 i w wersji 5.7. Usługa Azure Database for MySQL oferuje:
 
 - Wbudowana wysoka dostępność bez dodatkowych kosztów
 - Przewidywalna wydajność dzięki płatnościom zgodnym z rzeczywistym użyciem
-- Skala zgodnie z potrzebami w ciągu kilku sekund.
+- Skalowanie zgodnie z potrzebami w ciągu kilku sekund.
 - Zabezpieczenia zapewniające ochronę przesyłanych oraz magazynowanych poufnych danych
 - Automatyczne tworzenie kopii zapasowych i funkcja przywracania do punktu w czasie do 35 dni
 - Mechanizmy zabezpieczeń i zgodności klasy korporacyjnej
 
-Te możliwości wymagają prawie nie administracji i wszystkie są udostępniane bez ponoszenia dodatkowych kosztów. Umożliwiają one skupić się na tworzenie aplikacji szybki i skraca czas na rynek zamiast przydzielania cenny czas i zasoby do zarządzania maszynami wirtualnymi i infrastruktury. Ponadto można utworzyć aplikację z narzędziami open source i platformy wybór dostarczać o szybkości i wydajności wymaga dane biznesowe, wszystko to bez konieczności rozwijania nowych umiejętności.
+Powyższe możliwości prawie w ogóle nie wymagają administracji i są udostępniane bez żadnych dodatkowych kosztów. Dzięki nim możesz skoncentrować się na szybkim tworzeniu aplikacji i skracaniu czasu wejścia na rynek, a nie na poświęcaniu cennego czasu i cennych zasobów na zarządzanie maszynami wirtualnymi i infrastrukturą. Ponadto możesz kontynuować tworzenie aplikacji przy użyciu tych samych wybranych przez siebie narzędzi typu open source oraz platformy w celu dostarczania zawartości z wymaganą szybkością i skutecznością bez konieczności uczenia się nowych umiejętności.
 
-![Azure bazy danych MySQL diagram koncepcyjny](media/overview/1-azure-db-for-mysql-conceptual-diagram.png)
+![Usługa Azure Database for MySQL — diagram koncepcyjny](media/overview/1-azure-db-for-mysql-conceptual-diagram.png)
 
-Ten artykuł zawiera wprowadzenie do bazy danych Azure dla programu MySQL podstawowych pojęć i funkcje dotyczące wydajności, skalowalności i możliwości zarządzania, wraz z łączami, aby poznać szczegóły. Zobacz te przewodniki Szybki start, aby rozpocząć pracę:
+Ten artykuł stanowi wprowadzenie do usługi Azure Database for MySQL — podstawowe pojęcia i funkcje dotyczące wydajności, skalowalności i możliwości zarządzania za pomocą łącza, aby poznać szczegóły. Zobacz te przewodniki Szybki start, aby rozpocząć pracę:
 - [Tworzenie serwera usługi Azure Database for MySQL za pomocą witryny Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Tworzenie serwera usługi Azure Database for MySQL za pomocą interfejsu wiersza polecenia platformy Azure](quickstart-create-mysql-server-database-using-azure-cli.md)
 
 Aby uzyskać zestaw przykładów interfejsu wiersza polecenia platformy Azure, zobacz:
-- [Przykładów dla interfejsu wiersza polecenia platformy Azure dla bazy danych Azure dla programu MySQL](sample-scripts-azure-cli.md)
+- [Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Database for MySQL](sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Dostosowanie wydajności i skalowania w kilka sekund
-Baza danych Azure dla usługi MySQL zapewnia kilka warstwy usług: Basic, ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci. Każda z warstw oferuje inną wydajność i różne możliwości w celu obsługi różnych obciążeń bazy danych, zarówno niewielkich, jak i ogromnych. Możesz utworzyć swoją pierwszą aplikację na podstawie małej bazy danych za jedynie kilka dolarów miesięcznie, a następnie dostosować skalowanie do potrzeb rozwiązania. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów. Zapłacisz tylko za potrzebne zasoby i tylko wtedy, gdy będą używane. Aby uzyskać szczegółowe informacje, zobacz [Warstwy cenowe](concepts-service-tiers.md).
+Usługa Azure Database for MySQL oferuje kilka warstwy usług: podstawowa, ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci. Każda z warstw oferuje inną wydajność i różne możliwości w celu obsługi różnych obciążeń bazy danych, zarówno niewielkich, jak i ogromnych. Możesz utworzyć swoją pierwszą aplikację na podstawie małej bazy danych za jedynie kilka dolarów miesięcznie, a następnie dostosować skalowanie do potrzeb rozwiązania. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów. Zapłacisz tylko za potrzebne zasoby i tylko wtedy, gdy będą używane. Zobacz [warstw cenowych](concepts-service-tiers.md) Aby uzyskać szczegółowe informacje.
 
 ## <a name="monitoring-and-alerting"></a>Monitorowanie i zgłaszanie alertów
-Jak podjąć decyzję o tym, kiedy należy regulować w górę i w dół? Możesz użyć wbudowanych wydajności monitorowania oraz alertów funkcji, z ocen wydajności oparte na vCores. Za pomocą tych narzędzi, można szybko ocenić wpływ vCores skalowania w górę lub w dół na podstawie Twoich potrzeb wydajności bieżącego lub planowane. Aby uzyskać szczegółowe informacje, zobacz [Alerty](howto-alert-on-metric.md).
+Jak podjąć decyzję o tym, kiedy należy regulować w górę i w dół? Możesz użyć wbudowanych funkcji monitorowania wydajności i alertów w połączeniu z ocenami wydajności opartymi na rdzeniach wirtualnych. Za pomocą tych narzędzi możesz szybko ocenić wpływ skalowania rdzeni wirtualnych w górę lub w dół na podstawie bieżących lub przewidywanych wymagań dotyczących wydajności. Aby uzyskać szczegółowe informacje, zobacz [Alerty](howto-alert-on-metric.md).
 
 ## <a name="keep-your-app-and-business-running"></a>Zapewnienie działania aplikacji i firmy
-Umowa dotycząca poziomu usług (SLA) o czołowej w branży dostępności 99,99% dla platformy Azure, która jest obsługiwana przez globalną sieć centrów danych zarządzanych przez firmę Microsoft, pomaga zapewnić działanie aplikacji przez 24 godziny na dobę, 7 dni w tygodniu. Z każdym Azure bazy danych MySQL serwera możesz korzystać z zabezpieczeń, odporność na uszkodzenia i ochrony danych, w przeciwnym razie należy kupić lub projektowanie, tworzenie i zarządzanie. Z bazy danych Azure dla programu MySQL w momencie przywracania służy do odzyskania serwera do wcześniejszego stanu, nawet sprzed 35 dni.
+Umowa dotycząca poziomu usług (SLA) o czołowej w branży dostępności 99,99% dla platformy Azure, która jest obsługiwana przez globalną sieć centrów danych zarządzanych przez firmę Microsoft, pomaga zapewnić działanie aplikacji przez 24 godziny na dobę, 7 dni w tygodniu. Z każdego serwera Azure Database for MySQL możesz skorzystać z wbudowanych rozwiązań zabezpieczeń, odporności na uszkodzenia i ochrony danych, które w przeciwnym razie trzeba byłoby kupić lub zaprojektować, tworzenia i zarządzania. Usługa Azure Database for MySQL — możesz użyć przywracania do punktu w czasie, aby odzyskać serwer do wcześniejszego stanu — nawet sprzed 35 dni.
 
 ## <a name="secure-your-data"></a>Zabezpieczanie danych
-Usługi Azure bazy danych ma tradycję zabezpieczeń danych, który podtrzymuje bazy danych Azure dla programu MySQL, dzięki funkcjom ograniczania dostępu, ochrony danych na rest i w ruchu, które ułatwiają monitorowanie aktywności. Odwiedź [Centrum zaufania Azure](https://www.microsoft.com/en-us/trustcenter/security), aby uzyskać informacje o zabezpieczeniach platformy Azure.
+Usługi bazy danych platformy Azure mają tradycje zabezpieczeń danych, które przestrzega — Azure Database for MySQL, dzięki funkcjom ograniczania dostępu, ochrony danych magazynowanych i magazynowanych i ułatwiają monitorowanie aktywności. Odwiedź [Centrum zaufania Azure](https://www.microsoft.com/en-us/trustcenter/security), aby uzyskać informacje o zabezpieczeniach platformy Azure.
 
-Bazy danych Azure dla usługi MySQL używa szyfrowania magazynu dla danych na rest. Dane, w tym kopie zapasowe, są szyfrowane na dysku (z wyjątkiem plików tymczasowych, które są tworzone przez aparat podczas uruchamiania zapytań). Usługa korzysta z 256-bitowego szyfru AES zawartego w szyfrowaniu magazynu platformy Azure, a klucze są zarządzane przez system. Szyfrowanie magazynu jest zawsze włączone i nie można go wyłączyć.
+Usługa Azure Database for MySQL — używa szyfrowania magazynu dla magazynowanych danych. Dane, w tym kopie zapasowe, są szyfrowane na dysku (z wyjątkiem plików tymczasowych utworzonych przez aparat podczas uruchamiania zapytań). Usługa korzysta z 256-bitowego szyfru AES zawartego w szyfrowaniu magazynu platformy Azure, a klucze są zarządzane przez system. Szyfrowanie magazynu jest zawsze włączone i nie można go wyłączyć.
 
-Domyślnie program Azure bazy danych dla usługi MySQL jest skonfigurowany do żądania [zabezpieczeń połączenia SSL](./concepts-ssl-connection-security.md) dla danych w ruchu w sieci. Wymuszanie połączenia SSL między serwerem bazy danych i aplikacji klienckich pomaga chronić przed atakami "man w środku" szyfrując strumienia danych między serwerem i aplikacji. Opcjonalnie możesz wyłączyć wymaganie protokołu SSL dla połączeń z usługą bazy danych, jeśli Twoja aplikacja kliencka nie obsługuje łączności SSL.
+Domyślnie usługa Azure Database for MySQL jest skonfigurowany do żądania [zabezpieczenia połączenia SSL](./concepts-ssl-connection-security.md) dla danych magazynowanych za pośrednictwem sieci. Wymuszanie połączeń SSL między serwerem bazy danych a aplikacjami klienckimi ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją. Opcjonalnie możesz wyłączyć wymaganie protokołu SSL dla połączeń z usługą bazy danych, jeśli Twoja aplikacja kliencka nie obsługuje łączności SSL.
 
 ## <a name="contacts"></a>Kontakty
-W przypadku jakichkolwiek pytań lub sugestie dotyczące pracy z bazą danych Azure dla programu MySQL, może być wysłanie wiadomości e-mail do bazy danych Azure dla zespołu MySQL ([ @Ask bazy danych platformy Azure dla programu MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Należy pamiętać, że nie jest alias pomocy technicznej.
+W przypadku jakichkolwiek pytań lub sugestie, które mogą się pojawić w pracę z usługą Azure Database for MySQL, Wyślij wiadomość e-mail do usługi Azure Database dla MySQL zespołu ([ @Ask Azure DB dla MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Należy pamiętać, że nie jest to alias pomocy technicznej.
 
-Ponadto należy wziąć pod uwagę następujące punkty kontaktu, zależnie od potrzeb:
-- Do kontaktowania się z pomocą techniczną platformy Azure, [założyć zgłoszenie w portalu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Aby rozwiązać problem z Twoim kontem, pliku [żądania obsługi](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) w portalu Azure.
-- Aby przekazać opinię lub poproś o nowe funkcje, Utwórz wpis za pośrednictwem [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
+Ponadto, w zależności od potrzeb, należy wziąć pod uwagę następujące punkty kontaktowe:
+- Aby skontaktować się z pomocą techniczną platformy Azure, [wyślij zgłoszenie z witryny Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Aby rozwiązać problem z Twoim kontem, wyślij [żądanie obsługi](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) w portalu Azure Portal.
+- Aby przekazać opinię lub poprosić o nowe funkcje, utwórz wpis w platformie [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po przeczytaniu wprowadzenia do bazy danych platformy Azure dla programu MySQL i udzielenie odpowiedzi na pytanie "Co to jest Azure bazy danych na MySQL?", możesz przystąpić do:
-- Zobacz stronę cen. koszt porównania i kalkulatory. [Cennik](https://azure.microsoft.com/pricing/details/mysql/)
-- Rozpoczynanie pracy przez utworzenie pierwszego serwera. [Tworzenie serwera usługi Azure Database for MySQL za pomocą witryny Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
-- Tworzenie pierwszej aplikacji za pomocą preferowany język: [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md)  |  [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [przejdź](./connect-go.md)
+Skoro już przeczytaj wprowadzenie do usługi Azure Database for MySQL i udzielenie odpowiedzi na pytanie "Co to jest Azure Database dla MySQL?", możesz przystąpić do:
+- Odwiedzenie strony cennika zawierającej porównania kosztów i kalkulatory. [Cennik](https://azure.microsoft.com/pricing/details/mysql/)
+- Rozpoczęcie pracy przez utworzenie pierwszego serwera. [Tworzenie serwera usługi Azure Database for MySQL za pomocą witryny Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
+- Utwórz swoją pierwszą aplikację przy użyciu preferowanego języka: [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [językaRuby](./connect-ruby.md)  |  [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [przejdź](./connect-go.md)

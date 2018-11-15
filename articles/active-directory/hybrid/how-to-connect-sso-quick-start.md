@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c16da55540faaf165faa592c3565b317a8eab922
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 6d6b8d2bddcd3ac622a2a5f51ebe78cbecc29c29
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914094"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687337"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne: Szybki start
 
@@ -91,7 +91,7 @@ Wykonaj te instrukcje, aby sprawdzić, prawidłowo włączona bezproblemowe logo
 ![Witryna Azure portal: okienko program Azure AD Connect](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> Bezproblemowe logowanie Jednokrotne tworzy konto komputera o nazwie `AZUREADSSOACC` (który reprezentuje usługę Azure AD) w swojej lokalnej usłudze Active Directory (AD) w każdym lesie usługi AD. To konto komputera jest wymagany dla funkcja działała. Przenieś `AZUREADSSOACC` konta komputera do organizacji jednostki Organizacyjnej przechowywania innych kont do zapewnienia, że odbywa się w taki sam sposób i nie zostanie usunięta.
+> Bezproblemowe logowanie Jednokrotne tworzy konto komputera o nazwie `AZUREADSSOACC` (który reprezentuje usługę Azure AD) w swojej lokalnej usłudze Active Directory (AD) w każdym lesie usługi AD. To konto komputera jest wymagany dla funkcja działała. Jeśli używane są architektur Pass--Hash i ograniczania ryzyka kradzieży poświadczeń w Twoim środowisku w środowisku lokalnym, upewnij się, że `AZUREADSSOACC` konto komputera nie znajdą się w kontenerze kwarantanny. Wprowadź odpowiednie zmiany, aby utworzyć konto komputera w kontenerze komputerów. Po bezproblemowe logowanie Jednokrotne zostało pomyślnie włączone w kreatorze program Azure AD Connect, przenieść `AZUREADSSOACC` konta komputera do organizacji jednostki Organizacyjnej gdzie innych kont odbywa się w celu zapewnienia, że nie jest usuwany przypadkowo.
 
 ## <a name="step-3-roll-out-the-feature"></a>Krok 3: Wdrażanie tej funkcji
 

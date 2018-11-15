@@ -1,5 +1,5 @@
 ---
-title: Dostosowywanie uwierzytelnianie i autoryzacja w usłudze Azure App Service | Dokumentacja firmy Microsoft
+title: Zaawansowane zastosowania uwierzytelniania i autoryzacji w usłudze Azure App Service | Dokumentacja firmy Microsoft
 description: Pokazuje, jak dostosować uwierzytelnianie i autoryzacja w usłudze App Service i uzyskać różne tokeny i oświadczenia użytkownika.
 services: app-service
 documentationcenter: ''
@@ -11,18 +11,18 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 11/08/2018
 ms.author: cephalin
-ms.openlocfilehash: 629a76ab5610625e14780d7b5c57d3979c2224c9
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: e1109ec8cc98c7e5fc72d7f56ade19968b0056cc
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344174"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685331"
 ---
-# <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Dostosowywanie uwierzytelnianie i autoryzacja w usłudze Azure App Service
+# <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Zaawansowane zastosowania uwierzytelniania i autoryzacji w usłudze Azure App Service
 
-W tym artykule pokazano, jak dostosować [uwierzytelnianie i autoryzacja w usłudze App Service](app-service-authentication-overview.md)oraz do zarządzania tożsamościami z poziomu aplikacji. 
+W tym artykule przedstawiono sposób dostosowania wbudowanego [uwierzytelnianie i autoryzacja w usłudze App Service](app-service-authentication-overview.md)oraz do zarządzania tożsamościami z poziomu aplikacji. 
 
 Aby szybko rozpocząć pracę, zobacz jeden z następujących samouczków:
 
@@ -58,6 +58,48 @@ Aby przekierować użytkownika po-konta logowania do niestandardowego adresu URL
 
 ```HTML
 <a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
+```
+
+## <a name="validate-tokens-from-providers"></a>Sprawdzanie poprawności tokenów z dostawców
+
+W skierowane do klienta logowania, ręcznie loguje użytkownika z dostawcą aplikacji, a następnie przesyła je token uwierzytelniania w usłudze App Service do sprawdzania poprawności (zobacz [przepływ uwierzytelniania](app-service-authentication-overview.md#authentication-flow)). Weryfikacji, ten sam faktycznie nie przyznać dostęp do zasobów żądaną aplikację, ale pomyślnej weryfikacji zapewni tokenu sesji, który umożliwia dostęp do zasobów aplikacji. 
+
+Aby zweryfikować token dostawcy, aplikację usługi app Service należy najpierw skonfigurować przy użyciu wybranego dostawcy. W czasie wykonywania, po pobraniu tokenu uwierzytelniania za pośrednictwem swojego usługodawcy, Opublikuj token do `/.auth/login/<provider>` do sprawdzania poprawności. Na przykład: 
+
+```
+POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
+Content-Type: application/json
+
+{"id_token":"<token>","access_token":"<token>"}
+```
+
+Format tokenu nieznacznie się w zależności od dostawcy. Zobacz poniższą tabelę, aby uzyskać szczegółowe informacje:
+
+| Dostawca wartości | W treści żądania wymagany | Komentarze |
+|-|-|-|
+| `aad` | `{"access_token":"<access_token>"}` | |
+| `microsoftaccount` | `{"access_token":"<token>"}` | `expires_in` Właściwość jest opcjonalna. <br/>Podczas żądania tokenu z usługami Live, zawsze żądania `wl.basic` zakresu. |
+| `google` | `{"id_token":"<id_token>"}` | `authorization_code` Właściwość jest opcjonalna. Jeśli zostanie określony, jego można również opcjonalnie towarzyszyć `redirect_uri` właściwości. |
+| `facebook`| `{"access_token":"<user_access_token>"}` | Użyj prawidłowego [token dostępu użytkownika](https://developers.facebook.com/docs/facebook-login/access-tokens) z usługi Facebook. |
+| `twitter` | `{"access_token":"<access_token>", "access_token_secret":"<acces_token_secret>"}` | |
+| | | |
+
+Jeśli token dostawcy zostanie pomyślnie zweryfikowana, interfejs API zwraca `authenticationToken` w treści odpowiedzi, czyli tokenu sesji. 
+
+```json
+{
+    "authenticationToken": "...",
+    "user": {
+        "userId": "sid:..."
+    }
+}
+```
+
+Po utworzeniu tego tokenu sesji, mogą uzyskać dostęp zasobów chronionej aplikacji, dodając `X-ZUMO-AUTH` nagłówka do żądań HTTP. Na przykład: 
+
+```
+GET https://<appname>.azurewebsites.net/api/products/1
+X-ZUMO-AUTH: <authenticationToken_value>
 ```
 
 ## <a name="sign-out-of-a-session"></a>Wyloguj się z sesji
@@ -119,9 +161,9 @@ Aplikację można również uzyskać więcej informacji na temat uwierzytelnione
 
 W kodzie serwera tokenów właściwe dla dostawcy są wprowadzane w nagłówku żądania, dzięki czemu można łatwo z nich korzystać. W poniższej tabeli przedstawiono nazwy możliwe nagłówków tokenu:
 
-| | |
+| Dostawca | Nazwy nagłówków |
 |-|-|
-| Azure Active Directory | `X-MS-TOKEN-AAD-ID-TOKEN` <br/> `X-MS-TOKEN-AAD-ACCESS-TOKEN` <br/> `X-MS-TOKEN-AAD-EXPIRES-ON`  <br/> `X-MS-TOKEN-AAD-REFRESH-TOKEN` |
+| Usługa Azure Active Directory | `X-MS-TOKEN-AAD-ID-TOKEN` <br/> `X-MS-TOKEN-AAD-ACCESS-TOKEN` <br/> `X-MS-TOKEN-AAD-EXPIRES-ON`  <br/> `X-MS-TOKEN-AAD-REFRESH-TOKEN` |
 | Token usługi Facebook | `X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN` <br/> `X-MS-TOKEN-FACEBOOK-EXPIRES-ON` |
 | Google | `X-MS-TOKEN-GOOGLE-ID-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-ACCESS-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-EXPIRES-ON` <br/> `X-MS-TOKEN-GOOGLE-REFRESH-TOKEN` |
 | Konto Microsoft | `X-MS-TOKEN-MICROSOFTACCOUNT-ACCESS-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-EXPIRES-ON` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-AUTHENTICATION-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-REFRESH-TOKEN` |

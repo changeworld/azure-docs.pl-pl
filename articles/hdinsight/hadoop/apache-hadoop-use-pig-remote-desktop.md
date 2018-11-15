@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z języka Pig z usługi Hadoop w przy użyciu pulpitu zdalnego w HDInsight — Azure
-description: Dowiedz się, jak za pomocą polecenia Pig do uruchomienia instrukcji Pig Latin za pośrednictwem połączenia pulpitu zdalnego w klastrze usługi Hadoop z systemem Windows na platformie HDInsight.
+title: Apache Pig za pomocą pulpitu zdalnego w HDInsight — Azure
+description: Dowiedz się, jak polecenie Pig służy do uruchomienia instrukcji Apache Pig Latin za pośrednictwem połączenia pulpitu zdalnego w klastrze Apache Hadoop oparte na Windows na platformie HDInsight.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3a7dff2c44b7cc8ccd921d2371666cb19acffbb8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9ab3c5399263e301760b7822488fe00145149d2a
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007233"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633346"
 ---
-# <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>Uruchamianie zadań Pig za pośrednictwem połączenia pulpitu zdalnego
+# <a name="run-apache-pig-jobs-from-a-remote-desktop-connection"></a>Uruchamiać zadania Apache Pig za pośrednictwem połączenia pulpitu zdalnego
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Ten dokument zawiera wskazówki dotyczące korzystania z polecenia Pig do uruchomienia instrukcji Pig Latin za pośrednictwem połączenia pulpitu zdalnego w klastrze HDInsight z systemem Windows. Pig Latin umożliwia tworzenie aplikacji MapReduce poprzez opisanie przekształcenia danych zamiast mapowania i redukcji funkcji.
+Ten dokument zawiera wskazówki dotyczące korzystania z polecenia Apache Pig do uruchomienia instrukcji Pig Latin za pośrednictwem połączenia pulpitu zdalnego w klastrze HDInsight z systemem Windows. Pig Latin umożliwia tworzenie aplikacji MapReduce poprzez opisanie przekształcenia danych zamiast mapowania i redukcji funkcji.
 
 > [!IMPORTANT]
 > Pulpit zdalny jest dostępna tylko w klastrach HDInsight, które używają Windows jako systemu operacyjnego. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
@@ -58,7 +58,7 @@ Włączanie pulpitu zdalnego dla klastra HDInsight, a następnie nawiązać z ni
 
     <table>
     <tr>
-    <th>Instrukcja</th><th>Wyniki działania</th>
+    <th>Oświadczenie</th><th>Wyniki działania</th>
     </tr>
     <tr>
     <td>FILTEREDLEVELS = poziomie LOGLEVEL z filtru nie jest zerowa;</td><td>Usuwa wiersze, które zawierają wartości null do określenia poziomu dziennika i przechowuje wyniki w FILTEREDLEVELS.</td>

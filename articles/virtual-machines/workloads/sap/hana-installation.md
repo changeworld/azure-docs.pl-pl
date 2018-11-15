@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 160cc4fb3ccdabfd76e228c447ad179b3616d195
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ad04b229e4c6ace3f87ba6e800c0a7c82eb76d92
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231104"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633958"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak zainstalować i skonfigurować oprogramowanie SAP HANA (duże wystąpienia) na platformie Azure
 
@@ -170,7 +170,7 @@ Wolumin HANA/log/kopia zapasowa nie powinien być woluminem dla kopii zapasowych
 
 Oprócz magazynu, który jest dostarczany możesz zakupić dodatkową pojemność wielokrotność 1 TB. Ten dodatkowy magazyn można dodać jako nowe woluminy do dużego wystąpienia platformy HANA.
 
-Zestawu dokumentacji podczas dołączania z platformą SAP HANA w usłudze Azure service management klient określa identyfikator (UID) użytkownika i grupy (GID) identyfikator dla grupy użytkowników i sapsys sidadm (na przykład: 1000,500) podczas instalacji systemu SAP HANA, należy użyć te same wartości. Ponieważ użytkownik chce wdrożyć wiele wystąpień HANA w jednostce, uzyskasz wiele zestawów woluminów (jeden zestaw dla każdego wystąpienia). W rezultacie w czasie wdrażania należy zdefiniować następujące czynności:
+Zestawu dokumentacji podczas dołączania z platformą SAP HANA w usłudze Azure service management klient określa identyfikator (UID) użytkownika i grupy (GID) identyfikator dla grupy użytkowników i sapsys sidadm (na przykład: 1000,500). Podczas instalacji systemu SAP HANA należy użyć te same wartości. Ponieważ użytkownik chce wdrożyć wiele wystąpień HANA w jednostce, uzyskasz wiele zestawów woluminów (jeden zestaw dla każdego wystąpienia). W rezultacie w czasie wdrażania należy zdefiniować następujące czynności:
 
 - Identyfikator SID różnych wystąpieniach HANA (sidadm pochodzi od niego).
 - Rozmiary pamięci różnych wystąpień platformy HANA. Rozmiar pamięci na wystąpienie definiuje rozmiar woluminów w każdym zestawie pojedynczy wolumin.

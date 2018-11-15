@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: ea9167404034911a0e917374fbdb9962da1578d5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b5a06cff653007568b4ab2b44624b6314413f8a6
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257837"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636071"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w usłudze Azure App Service
 <a name="Overview"></a>
 
-Podczas wdrażania Twojej aplikacji sieci web, aplikacji sieci web w systemie Linux, zaplecze dla aplikacji mobilnych i aplikacji interfejsu API [usługi App Service](https://go.microsoft.com/fwlink/?LinkId=529714), można wdrożyć do gniazda wdrażane pojedynczo, zamiast domyślnego miejscem produkcyjnym podczas pracy w **standardowa** lub **Premium** warstwę planu usługi App Service. Miejsca wdrożenia to rzeczywiście aktywne aplikacje z własnymi nazwami hosta. Elementy zawartości i konfiguracji aplikacji można wymieniać między 2 miejscami wdrożenia, w tym także miejscem produkcyjnym. Wdrażanie aplikacji w taki sposób, aby miejsce wdrożenia ma następujące zalety:
+Podczas wdrażania Twojej aplikacji sieci web, aplikacji sieci web w systemie Linux, zaplecze dla aplikacji mobilnych i aplikacji interfejsu API [usługi App Service](https://go.microsoft.com/fwlink/?LinkId=529714), można wdrożyć do gniazda wdrażane pojedynczo, zamiast domyślnego miejscem produkcyjnym podczas pracy w **standardowa**, **Premium**, lub **izolowany** warstwę planu usługi App Service. Miejsca wdrożenia to rzeczywiście aktywne aplikacje z własnymi nazwami hosta. Elementy zawartości i konfiguracji aplikacji można wymieniać między 2 miejscami wdrożenia, w tym także miejscem produkcyjnym. Wdrażanie aplikacji w taki sposób, aby miejsce wdrożenia ma następujące zalety:
 
 * Można sprawdzić poprawność zmian aplikacji w miejscu przejściowym wdrożenia, zanim zamienisz z miejscem produkcyjnym.
 * Najpierw wdrażanie aplikacji w miejscu i zamianę go w środowisku produkcyjnym gwarantuje, że wszystkie wystąpienia elementu gniazda są przygotowaniu przed zamianą na środowisko produkcyjne. Pozwala to wyeliminować przestój w przypadku wdrażania aplikacji. Przekierowywanie ruchu jest bezproblemowe i żadne żądania nie są usuwane w wyniku operacji wymiany. Ta całego przepływu pracy można zautomatyzować, konfigurując [automatycznej wymiany](#Auto-Swap) podczas wymiany wstępnego sprawdzania poprawności nie jest potrzebna.
@@ -36,7 +36,7 @@ Każda warstwa planu usługi App Service obsługuje szereg różnych miejsc wdro
 <a name="Add"></a>
 
 ## <a name="add-a-deployment-slot"></a>Dodaj miejsce wdrożenia
-Aplikacja musi być uruchomiona w **standardowa** lub **Premium** warstwy w kolejności, aby włączyć wielu miejsc wdrożenia.
+Aplikacja musi być uruchomiona w **standardowa**, **Premium**, lub **izolowany* warstwy w kolejności, aby włączyć wielu miejsc wdrożenia.
 
 1. W [witryny Azure Portal](https://portal.azure.com/), otwórz aplikacji [bloku zasobów](../azure-resource-manager/resource-group-portal.md#manage-resources).
 2. Wybierz **miejsc wdrożenia** opcji, a następnie kliknij przycisk **Dodaj miejsce**.
@@ -44,7 +44,7 @@ Aplikacja musi być uruchomiona w **standardowa** lub **Premium** warstwy w kole
     ![Dodaj nowe miejsce wdrożenia][QGAddNewDeploymentSlot]
    
    > [!NOTE]
-   > Jeśli aplikacja nie znajduje się już w **standardowa** lub **Premium** warstwy, otrzymasz komunikat informujący o obsługiwanych warstw, umożliwiające publikowanie etapowe. W tym momencie masz możliwość dokonania wyboru **uaktualnienia** i przejdź do **skalowania** kartę aplikacji przed kontynuowaniem.
+   > Jeśli aplikacja nie znajduje się już w **standardowa**, **Premium**, lub **izolowany* warstwy, otrzymasz komunikat informujący o obsługiwanych warstw, umożliwiające publikowanie etapowe. W tym momencie masz możliwość dokonania wyboru **uaktualnienia** i przejdź do **skalowania** kartę aplikacji przed kontynuowaniem.
    > 
    > 
 3. W **Dodaj miejsce** bloku, nazwij gniazda, a następnie wybierz, czy chcesz sklonować konfiguracji aplikacji z innego istniejącego miejsca wdrożenia. Kliknij znacznik wyboru, aby kontynuować.

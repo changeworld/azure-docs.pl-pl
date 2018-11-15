@@ -1,6 +1,6 @@
 ---
-title: MapReduce z platformą Hadoop w HDInsight
-description: Dowiedz się, jak uruchamiać zadania MapReduce w usłudze Hadoop w klastrach HDInsight.
+title: MapReduce z platformą Apache Hadoop w HDInsight
+description: Dowiedz się, jak uruchamiać zadania MapReduce na technologii Apache Hadoop w klastrach HDInsight.
 services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: f9dea4c965f64576f839a39b813e4361b166ffe6
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c9a4a0944c51cb8c6f6d91cd153580a17a9b7898
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015166"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632665"
 ---
-# <a name="use-mapreduce-in-hadoop-on-hdinsight"></a>Korzystanie z technologii MapReduce usługi Hadoop w HDInsight
+# <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>Korzystanie z technologii MapReduce na platformie Apache Hadoop w HDInsight
 
 Dowiedz się, jak uruchamiać zadania MapReduce w klastrach HDInsight. Skorzystaj z poniższej tabeli, aby odnaleźć różne sposoby, że MapReduce mogą być używane z HDInsight:
 
@@ -32,7 +32,7 @@ Dowiedz się, jak uruchamiać zadania MapReduce w klastrach HDInsight. Skorzysta
 
 ## <a id="whatis"></a>Co to jest MapReduce
 
-Hadoop MapReduce to platforma oprogramowania do pisania zadań, które przetwarzają duże ilości danych. Dane wejściowe jest podzielony na niezależne fragmenty. Każdego fragmentu są przetwarzane równolegle na węzłach w klastrze. Zadania MapReduce składa się z dwóch funkcji:
+Apache Hadoop MapReduce to platforma oprogramowania do pisania zadań, które przetwarzają duże ilości danych. Dane wejściowe jest podzielony na niezależne fragmenty. Każdego fragmentu są przetwarzane równolegle na węzłach w klastrze. Zadania MapReduce składa się z dwóch funkcji:
 
 * **Mapowania**: zużywa dane wejściowe, analizuje je (zwykle przy użyciu filtrowania i sortowania operacji) i emituje krotek (pary klucz wartość)
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 00fde1145b038f3bf82e3dbc5e1dc967e1865ad6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7b460efbdc50c5b243c3ef78bad568b720e75e59
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234929"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51635561"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Zestaw przekierowania adresów URL z usługi b2clogin.com dla usługi Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ Po skonfigurowaniu dostawcy tożsamości dla rejestracji i logowania w aplikacji
 Korzystanie z usługi b2clogin.com zapewnia dodatkowe korzyści, takich jak:
 
 - Pliki cookie nie są już są współużytkowane z innymi usługami firmy Microsoft.
-- Adresami URL nie będzie zawierać odniesienie do firmy Microsoft. Na przykład `https://your-tenant-name.b2clogin.com/tfp/your-tenant-ID/policyname/v2.0/.well-known/openid-configuration`.
+- Adresami URL nie będzie zawierać odniesienie do firmy Microsoft. Na przykład `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`.
 
 Należy wziąć pod uwagę te ustawienia, które może być konieczna zmiana podczas korzystania z usługi b2clogin.com:
 

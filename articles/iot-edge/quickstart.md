@@ -2,19 +2,19 @@
 title: 'Szybki start: usługa Azure IoT Edge + system Windows | Microsoft Docs'
 description: Wypróbuj usługę Azure IoT Edge, uruchamiając analizy na symulowanym urządzeniu Edge
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 08/02/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 50c430d22f58ce9d2c122c630df1689c18e50aad
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 16c5b15612acebacfa034c6c55dd053a21eac0d2
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946168"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566334"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Szybki start: wdrażanie pierwszego modułu IoT Edge z witryny Azure Portal do urządzenia z systemem Windows — wersja zapoznawcza
 

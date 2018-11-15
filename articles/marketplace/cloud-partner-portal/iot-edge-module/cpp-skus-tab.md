@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a216f3ddd89ad92dbbae617c51d5fc9c478c0c03
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 205fd258ed397f5a9588773549368fc3c4aec058
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431444"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684821"
 ---
 # <a name="iot-edge-module-skus-tab"></a>Karty jednostki SKU modułu usługi IoT Edge
 
@@ -90,7 +90,7 @@ Poniższa tabela opisuje przeznaczenie, zawartości i formatowania w przypadku p
 
 ## <a name="sku-content"></a>Zawartość jednostki SKU
 
-Pod obrazami modułu krawędzi Podaj informacje potrzebne do przekazania modułu usługi IoT Edge.
+W obszarze **obrazy modułu krawędzi**, podaj informacje, należy przekazać modułu usługi IoT Edge.
 
 Przekaż nam dostęp do Twojego [usługi Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR), który zawiera usługi IoT Edge modułu obrazu tak, aby firma Microsoft może przekazać go, a także zaświadczasz, go. Po opublikowaniu, moduł usługi IoT Edge zostaną skopiowane i rozpowszechniane za pośrednictwem rejestru publicznego kontenera pracujących w portalu Azure Marketplace.
 

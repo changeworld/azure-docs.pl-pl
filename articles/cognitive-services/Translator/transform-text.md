@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: ccef55d56286cde47d23dbf2703c15fcf375e266
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 9586ffac2fc1f4d3e0a03d0e20052ad16b88cbe9
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646953"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684789"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>Jak użyć metody TransformText
 
@@ -31,7 +31,7 @@ Metoda jest usługą RESTful przy użyciu GET za pośrednictwem protokołu HTTP.
 | Parametr | Opis |
 |:---|:---|
 | Nagłówek uwierzytelnienia | **Wymagane** nagłówka HTTP używany do identyfikowania aplikacji. Użyj klucza: "Autoryzacja" i wartość: "Bearer" + "" + tokenu dostępu. Szczegółowe informacje można znaleźć tutaj.|
-| język | **Wymagane** ciąg reprezentujący kod języka. Ten parametr obsługuje tylko język angielski przy użyciu **en** jako nazwę języka.|
+| language | **Wymagane** ciąg reprezentujący kod języka. Ten parametr obsługuje tylko język angielski przy użyciu **en** jako nazwę języka.|
 | category | **Opcjonalnie** ciąg zawierający kategorii lub domeny tłumaczenia. Ten parametr obsługuje tylko opcja domyślna **ogólne**.|
 | zdania | **Wymagane** zdania, który chcesz naprawić. |
 
@@ -179,7 +179,7 @@ namespace MicrosoftTranslatorSdk.HttpSamples
             //If clientid or client secret has special characters, encode before sending request
             this.request = string.Format("grant_type=client_credentials&client_id={0}&client_secret={1}&scope=http://api.microsofttranslator.com", HttpUtility.UrlEncode(clientId), HttpUtility.UrlEncode(clientSecret));
             this.token = HttpPost(DatamarketAccessUri, this.request);
-            //renew the token every specfied minutes
+            //renew the token every specified minutes
             accessTokenRenewer = new Timer(new TimerCallback(OnTokenExpiredCallback), this, TimeSpan.FromMinutes(RefreshTokenDuration), TimeSpan.FromMilliseconds(-1));
         }
         public AdmAccessToken GetAccessToken()

@@ -1,6 +1,6 @@
 ---
 title: Co to jest Apache Hive i HiveQL — Azure HDInsight
-description: Apache Hive jest platformy Hadoop w systemie magazynu danych. Można tworzyć zapytania — dane przechowywane w gałęzi przy użyciu HiveQL, które podobnie do języka Transact-SQL. W tym dokumencie Dowiedz się, jak używać technologii Hive i HiveQL z usługi Azure HDInsight.
+description: Apache Hive jest system magazynu danych dla usługi Apache Hadoop. Można tworzyć zapytania — dane przechowywane w gałęzi przy użyciu HiveQL, które podobnie do języka Transact-SQL. W tym dokumencie Dowiedz się, jak używać technologii Hive i HiveQL z usługi Azure HDInsight.
 keywords: hiveql, co to jest hive i hadoop hiveql, jak wykorzystać technologię hive, Dowiedz się, hive, co to jest gałąź
 services: hdinsight
 author: hrasheed-msft
@@ -10,16 +10,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 0401717da8c5548033bbbd7720bb1266646bbe48
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d7b29980321f04d1ad9325580bc48ab944f60d1c
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241110"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633720"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co to jest Apache Hive i HiveQL w usłudze Azure HDInsight?
 
-[Apache Hive](http://hive.apache.org/) to system magazynu danych dla platformy Hadoop. Gałąź umożliwia dane podsumowań, zapytań i analizy danych. Zapytania programu hive są zapisywane w HiveQL, który jest językiem zapytań, podobnych do bazy danych SQL.
+[Apache Hive](http://hive.apache.org/) to system magazynu danych dla usługi Apache Hadoop. Gałąź umożliwia dane podsumowań, zapytań i analizy danych. Zapytania programu hive są zapisywane w HiveQL, który jest językiem zapytań, podobnych do bazy danych SQL.
 
 Gałąź pozwala na strukturę projektu w dużej mierze pozbawionych struktury danych. Po zdefiniowaniu struktury, można użyć HiveQL do wykonywania zapytań o dane bez znajomości języka Java lub MapReduce.
 

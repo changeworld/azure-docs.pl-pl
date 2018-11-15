@@ -10,12 +10,12 @@ ms.date: 01/31/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 7ce5c7007414bfe8e17727c25de9712e7993dc1e
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 19a715812f1250523fd050ac8b80dee9ec664be4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263756"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686266"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Obsługa błędów i wyjątków w usłudze Azure Logic Apps
 
@@ -73,7 +73,7 @@ Lub można ręcznie określić zasady ponawiania w `inputs` sekcji akcję lub wy
 
 | Wartość | Typ | Opis |
 |-------|------|-------------|
-| <*Typ zasad ponawiania*> | Ciąg | Typ zasad ponawiania, którego chcesz użyć: "default", "none", "fixed" lub "wykładniczego" | 
+| <*Typ zasad ponawiania*> | Ciąg | Typ zasad ponawiania, którego chcesz użyć: `default`, `none`, `fixed`, lub `exponential` | 
 | <*Interwał ponawiania prób*> | Ciąg | Interwał ponawiania, w którym należy użyć wartości [formatu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Minimalna odbywa się domyślnie `PT5S` i maksymalny interwał `PT1D`. Gdy używasz zasady o interwale wykładniczym, można określić różne wartości minimalne i maksymalne. | 
 | <*ponownych prób*> | Liczba całkowita | Liczba ponownych prób, które musi należeć do zakresu od 1 do 90 | 
 ||||
@@ -221,9 +221,9 @@ Limity zakresów, zobacz [limity i Konfiguracja](../logic-apps/logic-apps-limits
 
 ### <a name="get-context-and-results-for-failures"></a>Pobieranie kontekstu i wyników błędów
 
-Mimo że wychwytywanie błędów z zakresu jest przydatne, również można kontekstu, które pomagają zrozumieć, dokładnie akcje, które nie powiodło się oraz wszelkie błędy lub kodów stanu, które zostały zwrócone. "@result()" Wyrażenie dostarcza kontekst dotyczący wyniku wszystkie akcje w zakresie.
+Mimo że wychwytywanie błędów z zakresu jest przydatne, również można kontekstu, które pomagają zrozumieć, dokładnie akcje, które nie powiodło się oraz wszelkie błędy lub kodów stanu, które zostały zwrócone. `@result()` Wyrażenie dostarcza kontekst dotyczący wyniku wszystkie akcje w zakresie.
 
-"@result()" Wyrażenie akceptuje pojedynczy parametr (nazwa zakresu) i zwraca tablicę wszystkich wyników akcji z tego zakresu. Te obiekty działania obejmują takie same atrybuty jak  **@actions()** obiektu, takiego jak akcja ma czas rozpoczęcia, czas zakończenia, stanu, danych wejściowych, identyfikatory korelacji i danych wyjściowych. Aby wysłać kontekst dla akcji, które nie powiodło się w zakresie, może łatwo łączyć  **@result()** funkcją **runAfter** właściwości.
+`@result()` Wyrażenie akceptuje pojedynczy parametr (nazwa zakresu) i zwraca tablicę wszystkich wyników akcji z tego zakresu. Te obiekty działania obejmują takie same atrybuty jak  **@actions()** obiektu, takiego jak akcja ma czas rozpoczęcia, czas zakończenia, stanu, danych wejściowych, identyfikatory korelacji i danych wyjściowych. Aby wysłać kontekst dla akcji, które nie powiodło się w zakresie, może łatwo łączyć  **@result()** funkcją **runAfter** właściwości.
 
 Aby uruchomić akcję dla każdej akcji w zakresie, który ma **nie powiodło się** wyniku i filtrowania tablicy wyników w dół, aby akcje zakończone niepowodzeniem, Sparuj  **@result()** z **[Filtruj tablicę](../connectors/connectors-native-query.md)** akcji i [ **dla każdego** ](../logic-apps/logic-apps-control-flow-loops.md) pętli. Możesz pobrać tablicy przefiltrowanych wyników i wykonaj akcję dla każdej awarii za pomocą **dla każdego** pętli. 
 
@@ -270,22 +270,22 @@ Oto przykład, a następnie szczegółowy opis, który wysyła żądanie HTTP PO
 
 Poniżej przedstawiono szczegółowy przewodnik opisujący, co się stanie, w tym przykładzie:
 
-1. Aby uzyskać wynik z wszystkich akcji wewnątrz "My_Scope" **Filtruj tablicę** Akcja używa tego wyrażenia filtru: "@result(My_Scope)"
+1. Aby uzyskać wynik z wszystkich akcji wewnątrz "My_Scope" **Filtruj tablicę** Akcja używa tego wyrażenia filtru: `@result('My_Scope')`
 
-2. Warunek dla **Filtruj tablicę** jest dowolnym "@result()" element, który ma stan równa **niepowodzenie**. Ten warunek filtrowanie tablicy, która zawiera wszystkich wyników akcji z "My_Scope" do tablicy przy użyciu tylko wyniki Akcja zakończona niepowodzeniem.
+2. Warunek dla **Filtruj tablicę** jest dowolnym `@result()` element, który ma stan równa **niepowodzenie**. Ten warunek filtrowanie tablicy, która zawiera wszystkich wyników akcji z "My_Scope" do tablicy przy użyciu tylko wyniki Akcja zakończona niepowodzeniem.
 
 3. Wykonaj **dla każdego** pętla akcji na *filtrowane tablicy* danych wyjściowych. W tym kroku wykonuje akcję dla każdego wyniku akcji nie powiodło się, które wcześniej zostały przefiltrowane.
 
    W przypadku niepowodzenia jednej akcji w zakresie akcje **dla każdego** pętli, które są wykonywane tylko raz. 
    Wiele zakończonych niepowodzeniem akcje mogą spowodować jedną akcję na błąd.
 
-4. Wysyłanie żądania HTTP POST w **dla każdego** elementu treści odpowiedzi, który jest "@item() ['wyniki'] ["treść"]" wyrażenia. 
+4. Wysyłanie żądania HTTP POST w **dla każdego** elementu treść odpowiedzi, czyli `@item()['outputs']['body']` wyrażenia. 
 
-   "@result()" Kształt element jest taka sama jak "@actions()" kształt i można go przeanalizować taki sam sposób.
+   `@result()` Kształt element jest taka sama jak `@actions()` kształt i można go przeanalizować taki sam sposób.
 
-5. Obejmują dwa Nagłówki niestandardowe o nazwie Akcja zakończona niepowodzeniem ("@item() [name]") i nieudane Uruchom klienta, identyfikator śledzenia ("@item() [clientTrackingId]").
+5. Obejmują dwa Nagłówki niestandardowe o nazwie Akcja zakończona niepowodzeniem (`@item()['name']`) i nieudane Uruchom klienta, identyfikator śledzenia (`@item()['clientTrackingId']`).
 
-Odwołanie, Oto przykład pojedynczej "@result()" elementu, przedstawiający **nazwa**, **treści**, i **clientTrackingId** właściwości, które są analizowane w ciągu poprzednich przykład. Poza metodą **dla każdego** akcji "@result()" zwraca informacje o tych obiektów.
+Odwołanie, Oto przykład pojedynczej `@result()` elementu, przedstawiający **nazwa**, **treści**, i **clientTrackingId** właściwości, które są analizowane w ciągu poprzednich przykład. Poza metodą **dla każdego** akcji `@result()` zwraca informacje o tych obiektów.
 
 ```json
 {

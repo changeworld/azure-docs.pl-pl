@@ -13,21 +13,22 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 09/05/2018
+ms.date: 11/13/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: aff20cba3bc07924f669420a8c367613b41111a1
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 35b3e6d59cdb1edc59aa211954b8a69a3ce51bc5
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49076104"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632209"
 ---
 # <a name="tutorial-create-and-test-a-subscription"></a>Samouczek: tworzenie i testowanie subskrypcji
-W tym samouczku dowiesz się, jak utworzyć subskrypcję zawierającą oferty i przetestuj. Dla testu będzie zalogować się do portalu użytkowników usługi Azure Stack jako administrator w chmurze, subskrybowaniu oferty, a następnie utwórz maszynę wirtualną.
+
+W tym samouczku dowiesz się, jak utworzyć subskrypcję zawierającą oferty i przetestuj. Dla testu Zaloguj się do aplikacji portal użytkowników usługi Azure Stack jako administrator chmury subskrybowaniu oferty, a następnie utwórz maszynę wirtualną.
 
 > [!TIP]
-> Dla bardziej zaawansowanych próbnego, możesz [Utwórz subskrypcję dla danego użytkownika](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm#create-a-subscription-as-a-cloud-operator) i następnie zaloguj się jako ten użytkownik w aplikacji portal użytkowników. 
+> Dla bardziej zaawansowanych próbnego, możesz [Utwórz subskrypcję dla danego użytkownika](../azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator) a następnie zaloguj się jako ten użytkownik w aplikacji portal użytkowników. 
 
 W tym samouczku dowiesz się, jak subskrybować ofertę usługi Azure Stack.
 
@@ -38,48 +39,49 @@ Co dowiesz się:
 > * Testowanie oferty
 
 ## <a name="subscribe-to-an-offer"></a>Subskrybowanie oferty
-Aby subskrybować ofertę jako użytkownik, należy zalogować się do portalu użytkownika usługi Azure Stack do odnajdywania usługi oferowane przez operatora infrastruktury Azure Stack.
 
-1. Zaloguj się do portalu użytkowników, a następnie kliknij przycisk **Uzyskaj subskrypcję**.
+Aby subskrybować ofertę jako użytkownik, logowaniu do portalu użytkowników usługi Azure Stack do odnajdywania usługi oferowane przez operatora infrastruktury Azure Stack.
+
+1. Zaloguj się do użytkownika w portalu i wybierz pozycję **Uzyskaj subskrypcję**.
 
    ![Uzyskaj subskrypcję](media/azure-stack-subscribe-services/get-subscription.png)
 
-2. W polu **Nazwa wyświetlana** wpisz nazwę subskrypcji. Następnie kliknij przycisk **oferują** można wybrać jedną z dostępnych ofert w **wybierz ofertę** sekcji, a następnie kliknij przycisk **Utwórz**.
+2. W polu **Nazwa wyświetlana** wpisz nazwę subskrypcji. Następnie wybierz pozycję **oferują** wybrać jeden z dostępnych ofert w **wybierz ofertę** sekcji. Następnie wybierz przycisk **Utwórz**.
 
    ![Tworzenie oferty](media/azure-stack-subscribe-services/create-subscription.png)
 
    > [!TIP]
    > Teraz musisz odświeżyć portal użytkowników, aby rozpocząć korzystanie z subskrypcji.
 
-3. Aby wyświetlić subskrypcji, którą utworzono, kliknij **wszystkich usług**.  Następnie w obszarze **ogólne** wybierz kategorię **subskrypcje**, a następnie wybierz nową subskrypcję. Po subskrybowaniu oferty, Odśwież portal aby zobaczyć, jeśli nowe usługi zostały zawarte w ramach nowej subskrypcji. W tym przykładzie **maszyn wirtualnych** został dodany.
+3. Zaznacz, aby wyświetlić subskrypcji, którą utworzono **wszystkich usług**. Następnie w obszarze **ogólne** wybierz kategorię **subskrypcje**, a następnie wybierz nową subskrypcję. Po subskrybowaniu oferty, Odśwież portal aby zobaczyć, jeśli nowe usługi zostały zawarte w ramach nowej subskrypcji. W tym przykładzie **maszyn wirtualnych** został dodany.
 
    ![Widok subskrypcji](media/azure-stack-subscribe-services/view-subscription.png)
 
-
 ## <a name="test-the-offer"></a>Testowanie oferty
-Po zalogowaniu się do portalu użytkowników, możesz przetestować ofertę, inicjowanie obsługi administracyjnej maszyny wirtualnej za pomocą nowych możliwości subskrypcji. 
+
+Gdy zalogowany do portalu użytkowników, możesz przetestować ofertę, obsługi maszyny wirtualnej za pomocą nowych możliwości subskrypcji. 
 
 > [!NOTE]
 > Ten test wymaga, czy maszyny Wirtualnej z systemem Windows Server 2016 Datacenter najpierw został dodany do portalu marketplace usługi Azure Stack. 
 
 1. Zaloguj się do portalu użytkowników.
 
-2. W aplikacji portal użytkowników, kliknij przycisk **maszyn wirtualnych** > **Dodaj** > **systemu Windows Server 2016 Datacenter**, a następnie kliknij przycisk **Create** .
+2. W aplikacji portal użytkowników, wybierz **maszyn wirtualnych**, następnie **Dodaj**, następnie **systemu Windows Server 2016 Datacenter**, a następnie kliknij przycisk **Utwórz**.
 
-3. W **podstawy** sekcji, wpisz **nazwa**, **nazwa_użytkownika**, i **hasło**, wybierz **subskrypcji**, Tworzenie **grupy zasobów** (lub wybierz istniejącą grupę), a następnie kliknij przycisk **OK**.
+3. W **podstawy** sekcji, wpisz **nazwa**, **nazwa_użytkownika**, i **hasło**, wybierz **subskrypcji**, Tworzenie **grupy zasobów** (lub wybierz istniejącą grupę), a następnie wybierz pozycję **OK**.
 
-4. W **wybierz rozmiar** kliknij **standardowa A1**, a następnie kliknij przycisk **wybierz**.  
+4. W **wybierz rozmiar** zaznacz **standardowa A1**, a następnie kliknij przycisk **wybierz**.  
 
-5. W bloku ustawienia, zaakceptuj wartości domyślne, a następnie kliknij przycisk **OK**.
+5. W **ustawienia** bloku, zaakceptuj wartości domyślne i wybierz **OK**.
 
 6. W **Podsumowanie** kliknij **OK** do utworzenia maszyny wirtualnej.  
 
-7. Aby wyświetlić swoją nową maszyną wirtualną, kliknij **maszyn wirtualnych**, a następnie wyszukaj nową maszynę wirtualną i kliknij jego nazwę.
+7. Aby wyświetlić swoją nową maszyną wirtualną, wybierz **maszyn wirtualnych**, a następnie wyszukaj nową maszynę wirtualną i kliknij jego nazwę.
 
     ![Wszystkie zasoby](media/azure-stack-subscribe-services/view-vm.png)
 
 > [!NOTE]
-> Wdrażanie maszyny wirtualnej potrwa kilka minut.
+> Wdrażanie maszyny wirtualnej trwa kilka minut.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

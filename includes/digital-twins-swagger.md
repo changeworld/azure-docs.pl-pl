@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/13/2018
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: beae54dc36225dd26b4eb1d1a8f89d1005a33e93
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: fa99fa3b6ae9e809718121787cc986d02bcf824b
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626341"
+ms.locfileid: "51678210"
 ---
 > [!TIP]
 > Rzucić okiem struktury Swagger jest dostarczany, aby zademonstrować tę funkcję interfejsu API zestawu.
@@ -22,10 +22,10 @@ ms.locfileid: "51626341"
 Aby uzyskać dostęp własne wygenerowaną dokumentację struktury Swagger interfejsu API zarządzania na:
 
 ```plaintext
-https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
+https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Nazwa niestandardowa | Zamień na |
+| Name (Nazwa) | Zamień na |
 | --- | --- |
-| yourInstanceName | Nazwa wystąpienia usługi Azure cyfrowego bliźniaczych reprezentacji |
-| yourLocation | Który region serwer wystąpienie usługi jest hostowana na |
+| YOUR_INSTANCE_NAME | Nazwa wystąpienia usługi Azure cyfrowego bliźniaczych reprezentacji |
+| YOUR_LOCATION | Który region serwer wystąpienie usługi jest hostowana na |

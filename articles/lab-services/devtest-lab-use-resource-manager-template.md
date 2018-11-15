@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 99d835d1d0e18bf62d6e64b7e5af45b6c53d809e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4fd9f76223adba20028288b46037586f8f54fd1a
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239512"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686385"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Tworzenie maszyn wirtualnych przy użyciu szablonu usługi Azure Resource Manager 
 
@@ -42,7 +42,7 @@ Istnieją dwa sposoby tworzenia maszyn wirtualnych w usłudze DevTest Labs przy 
 
    Maszyny wirtualne w tym samym środowisku można zarządzać razem i udostępnić ten sam cykl życia. Użytkownicy z przypisaną rolą użytkownika DevTest Labs można utworzyć środowiska za pomocą tych szablonów, tak długo, jak administrator skonfigurował laboratorium w ten sposób.
 
-W dalszej części tego artykułu opisano szablonów usługi Resource Manager, które używają Mirosoft.DevTestLab/labs/virtualmachines. Są one używane przez administratorów laboratorium do automatyzacji tworzenia maszyny Wirtualnej w laboratorium (na przykład maszyny wirtualne przejęcia) lub generowania złotego obrazu (na przykład fabrycznie obrazu).
+W dalszej części tego artykułu opisano szablonów usługi Resource Manager, które używają Microsoft.DevTestLab/labs/virtualmachines. Są one używane przez administratorów laboratorium do automatyzacji tworzenia maszyny Wirtualnej w laboratorium (na przykład maszyny wirtualne przejęcia) lub generowania złotego obrazu (na przykład fabrycznie obrazu).
 
 [Najlepsze rozwiązania dotyczące tworzenia szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) oferuje wiele wytycznych i sugestie ułatwiające tworzenie szablonów usługi Azure Resource Manager, które jest niezawodne i łatwe w użyciu.
 

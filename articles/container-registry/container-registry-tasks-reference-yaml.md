@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 11/13/2018
 ms.author: danlep
-ms.openlocfilehash: a26b766c18ea2b14796af796abe7f36aa4fc1c66
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: de543798702137905ee5243c6ca8e502152f9c44
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854953"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634383"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Odwołanie do zadania usługi ACR: YAML
 
@@ -112,7 +112,7 @@ steps:
       [property]: [value]
 ```
 
-`build` Typ kroku obsługuje następujące parametry:
+`build` Typ kroku obsługuje parametry w tabeli poniżej. `build` Typ kroku obsługuje również wszystkich opcji kompilacji [kompilacji platformy docker](https://docs.docker.com/engine/reference/commandline/build/) polecenia, takie jak `--build-arg` do ustawiania zmiennych w czasie kompilacji.
 
 | Parametr | Opis | Optional (Opcjonalność) |
 | --------- | ----------- | :-------: |
@@ -122,7 +122,7 @@ steps:
 
 ### <a name="properties-build"></a>Właściwości: kompilacji
 
-`build` Typ kroku obsługuje następujące właściwości można znaleźć szczegółowe informacje o tych właściwości w [właściwości krok zadania](#task-step-properties) dalszej części tego artykułu.
+`build` Typ kroku obsługuje następujące właściwości. Można znaleźć szczegółowe informacje o tych właściwości w [właściwości krok zadania](#task-step-properties) dalszej części tego artykułu.
 
 | | | |
 | -------- | ---- | -------- |

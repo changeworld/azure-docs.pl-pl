@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ced100f0bdd20841648ca84dfcab1847bdcd3096
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: d7097886b746c225bb420f9a96e2b7ef5c95c913
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362487"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684743"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Śledzenie zachowania użytkowników w usłudze Azure Active Directory B2C przy użyciu usługi Application Insights
 
@@ -31,7 +31,7 @@ Gdy używasz usługi Azure Active Directory (Azure AD) B2C wraz z usługi Azure 
 
 ## <a name="how-it-works"></a>Jak to działa
 
-Struktura środowiska tożsamości w usłudze Azure AD B2C zawiera dostawcę `Handler="Web.TPEngine.Providers.UserJourneyContextProvider, Web.TPEngine, Version=1.0.0.0`. Wysyła dane zdarzenia bezpośrednio do usługi Application Insights przy użyciu klucza Instrumentacji dostarczane do usługi Azure AD B2C.
+Struktura środowiska tożsamości w usłudze Azure AD B2C zawiera dostawcę `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`. Wysyła dane zdarzenia bezpośrednio do usługi Application Insights przy użyciu klucza Instrumentacji dostarczane do usługi Azure AD B2C.
 
 Profil techniczny używa tego dostawcy, aby zdefiniować określone zdarzenie z usługi Azure AD B2C. Profil, który określa nazwę zdarzenia, oświadczenia, które są rejestrowane i klucz instrumentacji. Na potrzeby publikowania zdarzenia, profilu technicznego jest dodawane jako `orchestration step`, lub jako `validation technical profile` w podróży użytkownika niestandardowego.
 

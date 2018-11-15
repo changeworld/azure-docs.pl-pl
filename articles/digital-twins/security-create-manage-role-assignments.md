@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 11/13/2018
 ms.author: lyrana
-ms.openlocfilehash: 42c1b0fbb6d87e9ed35d4ecce3971d8512eed4d4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f032e3ebf6a10411057cd6d41df0cad6248f328b
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012466"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636241"
 ---
 # <a name="create-and-manage-role-assignments"></a>Tworzenie przypisań ról i zarządzanie nimi
 
@@ -26,6 +26,8 @@ Obejmuje każdego przypisania roli:
 * **Identyfikator definicji roli**
 * **Ścieżka miejsca**
 * **Identyfikator dzierżawy**: W większości przypadków, identyfikator dzierżawy usługi Azure Active Directory
+
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
 ## <a name="role-definition-identifiers"></a>Identyfikatorów definicji roli
 
@@ -57,7 +59,7 @@ Obsługiwane `ObjectIdTypes`:
 ## <a name="create-a-role-assignment"></a>Utwórz przypisanie roli
 
 ```plaintext
-HTTP POST /api/v1.0/roleassignments
+HTTP POST YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
 | **Nazwa** | **Wymagane** | **Typ** | **Opis** |
@@ -108,22 +110,22 @@ Wszyscy użytkownicy, którzy należą do domeny otrzymują dostęp do odczytu d
 Pobierz użycie można pobrać przypisania roli.
 
 ```plaintext
-HTTP GET /api/v1/roleassignments?path={path}
+HTTP GET YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
 | **Nazwa** | **W** | **Wymagane** |    **Typ** |  **Opis** |
 | --- | --- | --- | --- | --- |
-| Ścieżka | Ścieżka | True | Ciąg | Pełna ścieżka do obszaru |
+| YOUR_PATH | Ścieżka | True | Ciąg |    Pełna ścieżka do obszaru |
 
 Usuń umożliwia usunięcie przypisania roli.
 
 ```plaintext
-HTTP DELETE /api/v1/roleassignments/{id}
+HTTP DELETE YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ID
 ```
 
 | **Nazwa** | **W** | **Wymagane** | **Typ** | **Opis** |
 | --- | --- | --- | --- | --- |
-| ID | Ścieżka | True | Ciąg |   Identyfikator przypisania roli |
+| YOUR_ROLE_ID | Ścieżka | True | Ciąg | Identyfikator przypisania roli |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

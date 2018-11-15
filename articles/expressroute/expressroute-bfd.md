@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 8/17/2018
 ms.author: rambala
-ms.openlocfilehash: 97ac49ff5cc50621fd902f77c2543a428c7e8bae
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 6d941bf810a45e8808f83c4df701a856f664c7ef
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384756"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51631663"
 ---
 # <a name="configure-bfd-over-expressroute"></a>Konfigurowanie BFD za pośrednictwem usługi ExpressRoute
 
@@ -67,7 +67,7 @@ Poniżej przedstawiono przykładową konfigurację PE (przy użyciu Cisco IOS XE
 
 ## <a name="bfd-timer-negotiation"></a>Negocjowanie czasomierza BFD
 
-Między komputerami równorzędnymi BFD wolniejsze z dwoma komputerami określają szybkość transmisji. 300 MS można ustawić Msee BFD transmisji/odbierania w odstępach czasu. Konfigurując wyższych wartości, możesz wymusić interwałami dłuższe; jednak nie krótszy.
+Między komputerami równorzędnymi BFD wolniejsze z dwoma komputerami określają szybkość transmisji. 300 MS można ustawić Msee BFD transmisji/odbierania w odstępach czasu. W niektórych scenariuszach może ustawić interwał wyższa wartość 750 milisekund. Konfigurując wyższych wartości, możesz wymusić interwałami dłuższe; jednak nie krótszy.
 
 >[!NOTE]
 >Jeśli skonfigurowano obwodów komunikacji równorzędnej prywatnej magazynu geograficznie nadmiarowego usługi ExpressRoute lub użyć protokołu IPSec lokacja-lokacja sieci VPN, łączności przechowywania kopii zapasowych dla prywatnej komunikacji równorzędnej usługi ExpressRoute; Włączanie BFD za pośrednictwem prywatnej komunikacji równorzędnej może pomóc trybu failover szybciej, zgodnie z błędem łączności usługi ExpressRoute. 

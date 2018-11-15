@@ -8,16 +8,16 @@ ms.date: 11/12/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a110c0a938e56c8ac276e0efed22ea3af23f111a
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 06dec64a55aaece4cd67ebf0485e34aa206a8936
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578539"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633737"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Ciągła integracja i ciągłe wdrażanie w usłudze Azure IoT Edge
 
-W tym artykule przedstawiono sposób korzystania z funkcji ciągłego wdrażania usługom DevOps platformy Azure i programu Microsoft Team Foundation Server (TFS) i ciągłej integracji do tworzenia, testowania i wdrażania aplikacji, szybko i skutecznie do usługi Azure IoT Edge. 
+Można łatwo adaptacji metodyki DevOps za pomocą aplikacji usługi Azure IoT Edge przy użyciu [Azure IoT Edge dla platformy Azure potoki](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) lub [wtyczki usługi Azure IoT Edge dla serwera Jenkins](https://plugins.jenkins.io/azure-iot-edge). W tym artykule przedstawiono, jak używasz ciągłej integracji i ciągłego wdrażania funkcji Azure potoki i Microsoft Team Foundation Server (TFS), aby skompilować, testowanie i wdrażanie aplikacji do usługi Azure IoT Edge, w szybko i skutecznie. 
 
 W tym artykule dowiesz się jak:
 * Tworzenie i sprawdź w przykładowym rozwiązaniu IoT Edge.
@@ -42,28 +42,28 @@ W tej sekcji utworzysz przykładowe usługi IoT Edge rozwiązania zawierającego
 
 3. Przykład rozwiązania usługi IoT Edge jest teraz gotowy. Domyślnego języka C# modułu działa jako moduł potok komunikatów. W `deployment.template.json`, zostanie wyświetlony, to rozwiązanie zawiera dwa moduły. Komunikat zostanie wygenerowane z `tempSensor` moduł i zostanie bezpośrednio przekazać w potoku za pomocą `FilterModule`, następnie wysyłane do usługi IoT hub.
 
-4. Zapisz te projekty, a następnie zaewidencjonować je w repozytorium DevOps platformy Azure lub na serwerze TFS.
+4. Zapisz te projekty, a następnie zaewidencjonować je w repozytorium repozytoriów platformy Azure lub na serwerze TFS.
     
 > [!NOTE]
 > Aby uzyskać więcej informacji o korzystaniu z repozytoriów platformy Azure, zobacz [udostępnić swój kod za pomocą programu Visual Studio i repozytoria, Azure](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts).
 
 
-## <a name="configure-azure-pipeline-for-continuous-integration"></a>Konfiguruje potok Azure w celu zapewnienia ciągłej integracji
-W tej sekcji opisano tworzenie potoku kompilacji, który jest skonfigurowany do automatycznego uruchamiania podczas ewidencjonowania zmiany przykładowe rozwiązanie IoT Edge i pokaże kompilacji dzienniki w potoku usługi Azure.
+## <a name="configure-azure-pipelines-for-continuous-integration"></a>Konfigurowanie potoków usługi Azure do ciągłej integracji
+W tej sekcji opisano tworzenie potoku kompilacji, który jest skonfigurowany do automatycznego uruchamiania podczas ewidencjonowania zmiany przykładowe rozwiązanie IoT Edge i pokaże kompilacji loguje się potoki usługi Azure.
 
-1. Zaloguj się do Twojej organizacji DevOps platformy Azure (**https://**_— konta_**. visualstudio.com**), a następnie otwórz projekt, gdzie sprawdzane w przykładowej aplikacji.
+1. Zaloguj się do Twojej organizacji DevOps platformy Azure ( **https://dev.azure.com/{your organizacji} /**), a następnie otwórz projekt, gdzie sprawdzane w przykładowej aplikacji.
 
     ![Kod ewidencjonowania](./media/how-to-ci-cd/init-project.png)
 
-1. Odwiedź stronę [usługi Azure IoT Edge dla potoku usługi Azure](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) w witrynie Azure Marketplace metodyki DevOps. Kliknij przycisk **Pobierz bezpłatnie** i wykonaj instrukcje kreatora, aby zainstalować to rozszerzenie Twojej organizacji DevOps platformy Azure lub pobrać do TFS.
+1. Odwiedź stronę [usługi Azure IoT Edge dla systemu Azure potoków](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) w witrynie Azure Marketplace metodyki DevOps. Kliknij przycisk **Pobierz bezpłatnie** i wykonaj instrukcje kreatora, aby zainstalować to rozszerzenie Twojej organizacji DevOps platformy Azure lub pobrać do TFS.
 
     ![Instalowanie rozszerzenia](./media/how-to-ci-cd/install-extension.png)
 
-1. W swojej DevOps platformy Azure, otwórz **kompilowanie i wydawanie** Centrum i w **kompilacje** kartę, wybrać **+ nowy potok**. Lub, jeśli masz już potoki kompilacji, wybierz opcję **+ nowy** przycisku.
+1. Potoki usługi Azure, otwórz **kompilowanie i wydawanie** Centrum i w **kompilacje** kartę, wybrać **+ nowy potok**. Lub, jeśli masz już potoki kompilacji, wybierz opcję **+ nowy** przycisku.
 
     ![Nowy potok](./media/how-to-ci-cd/add-new-build.png)
 
-1. Po wyświetleniu monitu wybierz **DevOps Git platformy Azure** typ źródła. Następnie wybierz projekt, repozytorium i gałąź, na którym znajduje się kod. Wybierz **nadal**.
+1. Po wyświetleniu monitu wybierz **Git** typ źródła. Następnie wybierz projekt, repozytorium i gałąź, na którym znajduje się kod. Wybierz **nadal**.
 
     ![Wybierz usługi git](./media/how-to-ci-cd/select-vsts-git.png)
 
@@ -98,8 +98,8 @@ W tej sekcji opisano tworzenie potoku kompilacji, który jest skonfigurowany do 
     Zapisz nowy potok kompilacji. Kliknij przycisk **Zapisz**.
 
 
-## <a name="configure-azure-pipeline-for-continuous-deployment"></a>Konfigurowanie potoku usługi Azure do ciągłego wdrażania
-W tej sekcji utworzysz potok wersji, który jest skonfigurowany do automatycznego uruchamiania podczas potok kompilacji umieszcza artefaktów i ukazują dzienników wdrażania w potoku usługi Azure.
+## <a name="configure-azure-pipelines-for-continuous-deployment"></a>Konfigurowanie Azure potoków ciągłego wdrażania
+W tej sekcji utworzysz potok wersji, który jest skonfigurowany do automatycznego uruchamiania podczas potok kompilacji umieszcza artefaktów i ukazują dzienników wdrażania w potokach platformy Azure.
 
 1. W **wersji** kartę, wybrać **+ nowy potok**. Lub, jeśli masz już potoki wydań, wybierz opcję **+ nowy** przycisku.  
 
@@ -165,7 +165,7 @@ W tej sekcji utworzysz potok wersji, który jest skonfigurowany do automatyczneg
     
 ## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>Sprawdź IoT Edge ciągłej integracji/ciągłego wdrażania z kompilacją a potoki wersji
 
-W tej sekcji spowoduje wyzwolenie kompilacji zapewnienie potoku ciągłej integracji/ciągłego Dostarczania pracy. Sprawdź wynik za pomocą portalu DevOps platformy Azure. 
+W tej sekcji spowoduje wyzwolenie kompilacji zapewnienie potoku ciągłej integracji/ciągłego Dostarczania pracy. Następnie sprawdź, że wdrożenie zakończy się pomyślnie.
 
 1. Aby wyzwolić zadanie kompilacji, możesz wypchnięciu zatwierdzenia do repozytorium kodu źródłowego lub ręcznie wyzwolić ją. Możesz wyzwolić zadanie kompilacji w potoku kompilacji, klikając **kolejki** przycisku tak jak w poniższym zrzucie ekranu.
 

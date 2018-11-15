@@ -10,22 +10,22 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c99099c9b0fdf485bcf1db1d00b23e1e119ec557
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 347a437a9f45f29348e97c616c985764135e5427
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614161"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687473"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny SAML w zasadach niestandardowych usługi Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Usługa Azure Active Directory (Azure AD) B2C umożliwia dostawcy tożsamości SAML 2.0. W tym artykule opisano szczegóły profilu technicznego do interakcji z dostawcy oświadczeń, który obsługuje ten standardowy protokół. Za pomocą profil techniczny SAML, który może tworzyć federacje za pomocą dostawcy tożsamości SAML na podstawie, takich jak usługi AD FS i Salesforce, umożliwiając użytkownikom korzystanie z logowania za pomocą ich istniejących społecznościowej lub przedsiębiorstwa tożsamości.
+Usługa Azure Active Directory (Azure AD) B2C umożliwia dostawcy tożsamości SAML 2.0. W tym artykule opisano szczegóły profilu technicznego do interakcji z dostawcy oświadczeń, który obsługuje ten standardowy protokół. Z języka SAML profilu technicznego może tworzyć federacje z SAML opartą na dostawcy tożsamości, takich jak [usług AD FS](active-directory-b2c-custom-setup-adfs2016-idp.md) i [Salesforce](active-directory-b2c-setup-sf-app-custom.md), umożliwiając użytkownikom korzystanie z logowania za pomocą ich istniejących społecznościowej lub przedsiębiorstwa tożsamości.
 
 ## <a name="metadata-exchange"></a>Wymiany metadanych
 
-Metadane są informacje używane w protokole SAML do udostępnienia konfiguracji strony SAML, takich jak dostawcy usług lub dostawcy tożsamości. Metadane definiuje lokalizacji usług, takich jak logowanie i wylogowanie, certyfikaty, metoda logowania i nie tylko. Dostawca tożsamości używa metadanych wiedzieć, jak nawiązać połączenia z usługą Azure AD B2C. Metadane jest konfigurowana w formacie XML i może być podpisana przy użyciu podpisu cyfrowego, tak aby drugiej strony można zweryfikować integralność metadanych. Usługa Azure AD B2C Federację za pomocą dostawcy tożsamości SAML, działa jako dostawca usług inicjowanie żądanie języka SAML i oczekiwania na odpowiedź SAML. A w niektórych przypadkach, z wyjątkiem niechciane uwierzytelnianie SAML, która jest także znana jako dostawcy tożsamości inicjowane. 
+Metadane są informacje używane w protokole SAML do udostępnienia konfiguracji strony SAML, takich jak dostawcy usług lub dostawcy tożsamości. Metadane definiuje lokalizacji usług, takich jak logowanie i wylogowanie, certyfikaty, metoda logowania i nie tylko. Dostawca tożsamości używa metadanych wiedzieć, jak nawiązać połączenia z usługą Azure AD B2C. Metadane jest konfigurowana w formacie XML i może być podpisana przy użyciu podpisu cyfrowego, tak aby drugiej strony można zweryfikować integralność metadanych. Usługa Azure AD B2C Federację za pomocą dostawcy tożsamości SAML, działa jako dostawca usług inicjowanie żądanie języka SAML i oczekiwania na odpowiedź SAML. A w niektórych przypadkach akceptuje niechciane uwierzytelnianie SAML, która jest także znana jako dostawcy tożsamości inicjowane. 
 
 Metadane można skonfigurować w obie strony jako "Statyczne metadane" lub "Dynamiczne metadane". W trybie statycznym możesz skopiować cały metadanych z jednej strony i ustaw ją w drugą stronę. W trybie dynamicznym należy ustawić adres URL metadanych, podczas gdy druga strona odczytuje konfigurację dynamicznie. Zasady są takie same, metadane profilu technicznego usługi Azure AD B2C w dostawcy tożsamości oraz ustawić metadanych dostawcy tożsamości w usłudze Azure AD B2C.
 
@@ -34,14 +34,14 @@ Każdy dostawca tożsamości SAML ma innych czynności, aby ujawnić, Ustaw dost
 Poniższy przykład przedstawia adresu URL metadanych SAML profilu technicznego usługi Azure AD B2C:
 
 ```
-https://login.microsoftonline.com/te/your-tenant/your-policy/samlp/metadata?idptp=your-technical-profile
+https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
 Zastąp następujące wartości:
 
-- **Twojej dzierżawy** nazwą dzierżawy, takich jak usługi tenant.onmicrosoft.com
+- **Nazwa Twojej dzierżawy** nazwą dzierżawy, takich jak fabrikam.b2clogin.com.
 - **Usługi zasad** nazwą zasady. Użyj zasad, w którym można skonfigurować profil techniczny SAML dostawcy lub zasadę, która dziedziczy tych zasad.
-- **Twój profil techniczny** nazwą profilu technicznego dostawcy tożsamości SAML
+- **Twój profil techniczny** nazwą profilu technicznego dostawcy tożsamości SAML.
 
 ## <a name="digital-signing-certificates-exchange"></a>Cyfrowej wymiany certyfikatów podpisywania
 

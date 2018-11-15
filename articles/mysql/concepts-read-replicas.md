@@ -7,13 +7,13 @@ ms.author: andrela
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/30/2018
-ms.openlocfilehash: b4e79723072a19f2637bea16d0534cb85588e9e3
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.date: 11/13/2018
+ms.openlocfilehash: 82f80fc1342f0c76cb880b020dcd835a23635b0a
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412452"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632564"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Odczytu replik w usłudze Azure Database for MySQL
 
@@ -60,12 +60,15 @@ Serwer funkcji replica są tworzone przy użyciu tej samej konfiguracji serwera 
 - Okres przechowywania kopii zapasowej
 - Opcja nadmiarowości kopii zapasowej
 - Wersja aparatu programu MySQL
+- Reguły zapory
 
 Po utworzeniu repliki można zmienić warstwę cenową (z wyjątkiem do i z Basic), obliczenia generacji, rdzenie wirtualne, Magazyn i przechowywania kopii zapasowych, niezależnie od serwera głównego.
 
 ### <a name="master-server-configuration"></a>Konfiguracja serwera głównego
 
-Jeśli wzorzec konfiguracji serwera (np.) rdzenie wirtualne lub magazyn) jest aktualizowany, można również zaktualizować konfiguracji tych replik, większa lub równa wartości. Bez tego serwera repliki może nie być w stanie na bieżąco ze zmianami wprowadzonymi do poziomu głównego i może ulec awarii w wyniku. 
+Jeśli wzorzec konfiguracji serwera (np.) rdzenie wirtualne lub magazyn) jest aktualizowany, można również zaktualizować konfiguracji tych replik, większa lub równa wartości. Bez tego serwera repliki może nie być w stanie na bieżąco ze zmianami wprowadzonymi do poziomu głównego i może ulec awarii w wyniku.
+
+Nowe reguły zapory dodane do serwera głównego, po utworzeniu serwera repliki nie są replikowane do repliki. Repliki powinien być zaktualizowany o również tej nowej reguły zapory.
 
 ### <a name="deleting-the-master-server"></a>Usuwanie serwera głównego
 
@@ -87,7 +90,4 @@ Użytkownicy na serwerze głównym są replikowane do odczytu replik. Tekst moż
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, jak [tworzenie i zarządzanie nimi odczytu replik w witrynie Azure portal](howto-read-replicas-portal.md)
-
-<!--
-- Learn how to [create and manage read replicas using the Azure CLI](howto-read-replicas-using-cli.md)
--->
+- Dowiedz się, jak [tworzenie i zarządzanie nimi odczytu repliki przy użyciu wiersza polecenia platformy Azure](howto-read-replicas-cli.md)

@@ -1,5 +1,5 @@
 ---
-title: Praca z technologią Hive w HDInsight (Hadoop) — Azure przy użyciu widoków Ambari
+title: Praca z technologią Hive w HDInsight (Apache Hadoop) — Azure przy użyciu widoków Ambari Apache
 description: Dowiedz się, jak przesłać zapytania Hive przy użyciu programu Hive widoku z przeglądarki sieci web. Widok programu Hive jest częścią Interfejsu sieci Web Ambari, które są dostarczane z klastra usługi HDInsight opartych na systemie Linux.
 services: hdinsight
 author: hrasheed-msft
@@ -9,22 +9,22 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: c481889eda53ff46a8899676da2529fe4165dfd5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1328119917276b8135c4a6d4188b67bcff2fc069
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233160"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632751"
 ---
-# <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>Używanie widoku Hive narzędzia Ambari z platformą Hadoop w HDInsight
+# <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Użyj widoku Hive narzędzia Ambari Apache przy użyciu technologii Apache Hadoop w HDInsight
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Dowiedz się, jak uruchamianie zapytań Hive przy użyciu widoku Hive narzędzia Ambari. Hive View pozwala na tworzenie, optymalizowanie i uruchamianie zapytań Hive z poziomu przeglądarki sieci web.
+Dowiedz się, jak uruchamianie zapytań Hive przy użyciu widoku Hive narzędzia Ambari Apache. Hive View pozwala na tworzenie, optymalizowanie i uruchamianie zapytań Hive z poziomu przeglądarki sieci web.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Opartą na systemie Linux platformą Hadoop w wersji klastra HDInsight 3.4 lub nowszą.
+* Linux Apache Hadoop oparte na wersji klastra HDInsight 3.4 lub nowszą.
 
   > [!IMPORTANT]
   > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).

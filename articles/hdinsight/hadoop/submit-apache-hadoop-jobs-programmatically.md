@@ -1,6 +1,6 @@
 ---
-title: Przesyłanie zadań Hadoop w usłudze HDInsight
-description: Dowiedz się, jak przesyłanie zadań Hadoop w usłudze Azure HDInsight.
+title: Przesyłanie zadań usługi Apache Hadoop w HDInsight
+description: Dowiedz się, jak można przesłać zadania technologii Apache Hadoop w usłudze Azure HDInsight.
 ms.reviewer: jasonh
 services: hdinsight
 ms.author: hrasheed
@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 9a764814028c1858139e2439c674c176d4e754ba
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 633a5c26711b7ef9f891455c6712b77238fd3a62
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009144"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51631970"
 ---
 # <a name="submit-hadoop-jobs-in-hdinsight"></a>Przesyłanie zadań Hadoop w usłudze HDInsight
 
-Za przesyłanie zadań Hadoop w usłudze Azure HDInsight przy użyciu zestawu .NET SDK Microsoft HDInsight, curl lub programu Azure PowerShell.
+Możesz przesłać zadania technologii Apache Hadoop w usłudze Azure HDInsight przy użyciu zestawu .NET SDK Microsoft HDInsight, curl lub programu Azure PowerShell.
 
 ## <a name="resources"></a>Zasoby
 

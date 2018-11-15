@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d341f7328eb4a977d266c25f6746d4173393b54e
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ef0becd55df43d7ae648a4cbaa5e1a2358fc1910
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887225"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636938"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie logowania dla wielu dzierżaw usługi Azure Active Directory za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-W tym artykule dowiesz się, jak włączyć logowanie użytkowników przy użyciu punktu końcowego z wieloma dzierżawami usługi Azure Active Directory (Azure AD) przy użyciu [zasady niestandardowe](active-directory-b2c-overview-custom.md) w usłudze Azure AD B2c. Dzięki temu użytkownicy z wieloma dzierżawcami usługi Azure AD, aby zalogować się do usługi Azure AD B2C, bez konieczności konfigurowania techniczne dostawcy dla każdej dzierżawy. Jednak gościa elementów członkowskich w dowolnym z tych dzierżaw **nie będzie** można logować się. W tym należy [skonfigurować oddzielnie każdą dzierżawę](active-directory-b2c-setup-aad-custom.md).
+W tym artykule dowiesz się, jak włączyć logowanie użytkowników przy użyciu punktu końcowego z wieloma dzierżawami usługi Azure Active Directory (Azure AD) przy użyciu [zasady niestandardowe](active-directory-b2c-overview-custom.md) w usłudze Azure AD B2C. Dzięki temu użytkownicy z wieloma dzierżawcami usługi Azure AD, aby zalogować się do usługi Azure AD B2C, bez konieczności konfigurowania techniczne dostawcy dla każdej dzierżawy. Jednak gościa elementów członkowskich w dowolnym z tych dzierżaw **nie będzie** można logować się. W tym należy [skonfigurować oddzielnie każdą dzierżawę](active-directory-b2c-setup-aad-custom.md).
 
 >[!NOTE]
 >`Contoso.com` Służy do organizacyjne dzierżawy usługi Azure AD i `fabrikamb2c.onmicrosoft.com` służy jako dzierżawy usługi Azure AD B2C w poniższych instrukcjach.
@@ -185,7 +185,7 @@ Teraz, gdy przycisk w miejscu, należy połączyć akcji. Akcja, w tym przypadku
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Tworzenie aplikacji usługi Azure AD B2C
 
-Za pomocą usługi Azure AD B2c odbywa się przy użyciu aplikacji utworzonej w dzierżawie. W tej sekcji przedstawiono kroki opcjonalne, które możesz wykonać, aby utworzyć aplikację testu, jeśli jeszcze tego nie zrobiłeś.
+Za pomocą usługi Azure AD B2C odbywa się przy użyciu aplikacji utworzonej w dzierżawie. W tej sekcji przedstawiono kroki opcjonalne, które możesz wykonać, aby utworzyć aplikację testu, jeśli jeszcze tego nie zrobiłeś.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.

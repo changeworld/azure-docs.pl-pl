@@ -1,6 +1,6 @@
 ---
 title: Tworzenie udostępnionego własnego środowiska integration runtime w usłudze Azure Data Factory przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć udostępnione własnego środowiska integration runtime w usłudze Azure Data Factory, która umożliwia dostęp do fabryki danych wielu środowiska integration runtime.
+description: Dowiedz się, jak utworzyć udostępnione własnego środowiska integration runtime w usłudze Azure Data Factory, aby wiele fabryk danych mogą uzyskiwać dostęp do środowiska integration runtime.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: d7f3fbcb3235c8c620876e68a62f3e491770779d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: b32ea4293daa9206c6b0da4bdee777677c5d340d
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50252138"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685518"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory-with-powershell"></a>Tworzenie udostępnionego własnego środowiska integration runtime w usłudze Azure Data Factory przy użyciu programu PowerShell
 
-Ten przewodnik krok po kroku dowiesz się, jak utworzyć udostępnione własnego środowiska integration runtime (IR) w usłudze Azure Data Factory przy użyciu programu Azure PowerShell. Następnie przy użyciu udostępnionego własnego środowiska integration runtime w innej usłudze data factory. W tym samouczku wykonasz następujące czynności: 
+Ten przewodnik krok po kroku dowiesz się, jak utworzyć udostępnione własnego środowiska integration runtime w usłudze Azure Data Factory przy użyciu programu Azure PowerShell. Następnie przy użyciu udostępnionego własnego środowiska integration runtime w innej usłudze data factory. W tym samouczku wykonasz następujące kroki: 
 
 1. Tworzenie fabryki danych. 
 1. Utwórz własne środowisko Integration Runtime.
@@ -33,18 +33,16 @@ Ten przewodnik krok po kroku dowiesz się, jak utworzyć udostępnione własnego
 
 - **Subskrypcja platformy Azure**. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/). 
 
-- Zainstalowanie programu **Azure PowerShell**. Postępuj zgodnie z instrukcjami w [Instalowanie programu Azure PowerShell na Windows](/powershell/azure/install-azurerm-ps). Uruchom skrypt, aby utworzyć Self-Hosted integration runtime, które mogą być współużytkowane z innymi fabryki danych za pomocą programu PowerShell. 
+- Zainstalowanie programu **Azure PowerShell**. Postępuj zgodnie z instrukcjami w [Instalowanie programu Azure PowerShell na Windows przy użyciu funkcji PowerShellGet](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-6.11.0). Uruchom skrypt, aby utworzyć Self-Hosted integration runtime, które mogą być współużytkowane z innymi fabryki danych za pomocą programu PowerShell. 
 
-> [!NOTE]
-> Aby uzyskać listę regionów świadczenia usługi Azure, w których Data Factory jest dostępna, wybierz regiony, które Cię interesują na następującej stronie: [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
+> [!NOTE]  
+> Aby uzyskać listę regionów świadczenia usługi Azure, w których Data Factory jest dostępna, wybierz regiony, które Cię interesują na [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
-1. Uruchom program Windows PowerShell ISE.
+1. Uruchom środowisko Windows PowerShell Integrated Scripting Environment (ISE).
 
-1. Utwórz zmienne.
-
-    Skopiuj i wklej poniższy skrypt i Zastąp zmienne (SubscriptionName, ResourceGroupName itp.) przy użyciu rzeczywistych wartości. 
+1. Utwórz zmienne. Skopiuj i wklej poniższy skrypt. Zastąp zmienne, takie jak **SubscriptionName** i **ResourceGroupName**, przy użyciu rzeczywistych wartości: 
 
     ```powershell
     # If input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
@@ -65,9 +63,7 @@ Ten przewodnik krok po kroku dowiesz się, jak utworzyć udostępnione własnego
     $LinkedIntegrationRuntimeDescription = "[Description for Linked Integration Runtime]"
     ```
 
-1. Zaloguj się i wybierz subskrypcję.
-
-    Dodaj następujący kod do skryptu, które mogą się zalogować, a następnie wybierz swoją subskrypcję platformy Azure:
+1. Zaloguj się i wybierz subskrypcję. Dodaj następujący kod do skryptu, które mogą się zalogować, a następnie wybierz swoją subskrypcję platformy Azure:
 
     ```powershell
     Connect-AzureRmAccount
@@ -76,9 +72,10 @@ Ten przewodnik krok po kroku dowiesz się, jak utworzyć udostępnione własnego
 
 1. Utwórz grupę zasobów i fabryki danych.
 
-    *(Ten krok jest opcjonalny. Jeśli masz już fabryki danych, Pomiń ten krok).* 
+    > [!NOTE]  
+    > Ten krok jest opcjonalny. Jeśli masz już fabryki danych, Pomiń ten krok. 
 
-    Utwórz [grupę zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) za pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy. Poniższy przykład tworzy grupę zasobów o nazwie `myResourceGroup` w lokalizacji WestEurope. 
+    Tworzenie [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) przy użyciu [New-AzureRmResourceGroup](https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.11.0) polecenia. Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy. Poniższy przykład tworzy grupę zasobów o nazwie `myResourceGroup` w lokalizacji WestEurope: 
 
     ```powershell
     New-AzureRmResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -94,7 +91,8 @@ Ten przewodnik krok po kroku dowiesz się, jak utworzyć udostępnione własnego
 
 ## <a name="create-a-self-hosted-integration-runtime"></a>Tworzenie własnego środowiska Integration Runtime
 
-*(Ten krok jest opcjonalny. Jeśli masz już własne środowisko integration runtime, którą chcesz udostępnić innym fabryki danych, Pomiń ten krok).*
+> [!NOTE]  
+> Ten krok jest opcjonalny. Jeśli masz już własne środowisko integration runtime, którą chcesz udostępnić innym fabryki danych, Pomiń ten krok.
 
 Uruchom następujące polecenie, aby utworzyć własne środowisko integration runtime:
 
@@ -132,7 +130,8 @@ Odpowiedź zawiera klucz uwierzytelniania dla tego własnego środowiska integra
 
 ### <a name="create-another-data-factory"></a>Tworzenie innej fabryki danych
 
-*(Ten krok jest opcjonalny. Jeśli masz już fabryki danych, z którym chcesz się podzielić, Pomiń ten krok).*
+> [!NOTE]  
+> Ten krok jest opcjonalny. Jeśli masz już fabryki danych, który chcesz udostępnić, Pomiń ten krok.
 
 ```powershell
 $factory = Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
@@ -141,9 +140,9 @@ $factory = Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
 ```
 ### <a name="grant-permission"></a>Udziel uprawnień
 
-Udziel uprawnienia do usługi Data Factory, który ma dostęp do własnego środowiska integration runtime został utworzony i zarejestrowany.
+Udziel uprawnień do usługi data factory, który ma dostęp do własnego środowiska integration runtime został utworzony i zarejestrowany.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Pomiń ten krok nie jest!
 
 ```powershell
@@ -171,7 +170,7 @@ Teraz można użyć tego połączone środowisko IR w dowolnym połączonej usł
 
 ## <a name="revoke-integration-runtime-sharing-from-a-data-factory"></a>Odwołaj środowiska integration runtime, udostępnianie danych z usługi data factory
 
-Aby odwołać dostęp usługi data factory dostęp do udostępnionego integration runtime, można uruchomić następujące polecenie:
+Aby odwołać dostęp usługi data factory z udostępnionego integration runtime, uruchom następujące polecenie:
 
 ```powershell
 Remove-AzureRMRoleAssignment `
@@ -180,7 +179,7 @@ Remove-AzureRMRoleAssignment `
     -Scope $SharedIR.Id
 ```
 
-Aby usunąć istniejące połączone środowisko integration runtime, można uruchom następujące polecenie przed udostępnionego integration runtime:
+Aby usunąć istniejące połączone środowisko integration runtime, uruchom następujące polecenie przed udostępnionego integration runtime:
 
 ```powershell
 Remove-AzureRmDataFactoryV2IntegrationRuntime `
@@ -193,6 +192,6 @@ Remove-AzureRmDataFactoryV2IntegrationRuntime `
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przegląd pojęć środowiska uruchomieniowego integracji w [Integration runtime w usłudze Azure Data Factory](concepts-integration-runtime.md).
+- Przegląd [pojęcia dotyczące środowiska uruchomieniowego integracji usługi Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/concepts-integration-runtime).
 
-- Dowiedz się, jak utworzyć własne środowisko integration runtime w witrynie Azure portal w [tworzenie i konfigurowanie własnego środowiska integration runtime](create-self-hosted-integration-runtime.md).
+- Dowiedz się, jak [Tworzenie własnego środowiska integration runtime w witrynie Azure portal](https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime).

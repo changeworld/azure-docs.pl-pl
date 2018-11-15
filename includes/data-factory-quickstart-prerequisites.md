@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/01/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 4b209953e957d0c2892bc5c6bca7a577992c5dee
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: c1ae8e1d06fca79b586208a3eaee0c5d26975ea1
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843060"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51628180"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -63,7 +63,7 @@ W tej sekcji utworzysz kontener obiektów blob o nazwie **adftutorial** w usłud
    ![Wprowadzanie nazwy kontenera](media/data-factory-quickstart-prerequisites/new-container-dialog.png)
 4. Wybierz pozycję **adftutorial** na liście kontenerów. 
 
-   ![Wybieranie kontenera](media/data-factory-quickstart-prerequisites/seelct-adftutorial-container.png)
+   ![Wybieranie kontenera](media/data-factory-quickstart-prerequisites/select-adftutorial-container.png)
 5. Na stronie **Kontener** wybierz pozycję **Przekaż** na pasku narzędzi.  
 
    ![Przycisk Przekaż](media/data-factory-quickstart-prerequisites/upload-toolbar-button.png)

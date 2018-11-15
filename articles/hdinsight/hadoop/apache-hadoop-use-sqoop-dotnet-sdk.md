@@ -1,6 +1,6 @@
 ---
-title: Uruchamianie zadań Sqoop przy użyciu platformy .NET i HDInsight — Azure
-description: Dowiedz się, jak używać zestawu SDK .NET HDInsight do uruchamiania narzędzia Sqoop importu i eksportu między klastrem Hadoop a bazą danych Azure SQL database.
+title: Uruchamiać zadania Apache Sqoop przy użyciu platformy .NET i HDInsight — Azure
+description: Dowiedz się, jak używać zestawu SDK .NET HDInsight do uruchamiania narzędzia Apache Sqoop importu i eksportu między klastrem usługi Apache Hadoop a bazą danych Azure SQL database.
 keywords: zadania narzędzia sqoop
 ms.reviewer: jasonh
 services: hdinsight
@@ -10,17 +10,17 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 423934dee0b490bb12522cec6d37393a1ec5e2f4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0b8d408482f1f6e2bcd25182208a46d28f7b4f7a
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014877"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633042"
 ---
-# <a name="run-sqoop-jobs-by-using-net-sdk-for-hadoop-in-hdinsight"></a>Uruchamianie zadań Sqoop przy użyciu zestawu SDK platformy .NET dla usługi Hadoop w HDInsight
+# <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Uruchamiać zadania Apache Sqoop przy użyciu zestawu SDK platformy .NET dla usługi Apache Hadoop w HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Dowiedz się, jak uruchamiać zadania Sqoop w HDInsight w celu importowania i eksportowania między klastra usługi HDInsight i Azure SQL database lub SQL Server za pomocą zestawu .NET SDK usługi Azure HDInsight.
+Dowiedz się, jak uruchamiać zadania Apache Sqoop w HDInsight w celu importowania i eksportowania między klastra usługi HDInsight i Azure SQL database lub SQL Server za pomocą zestawu .NET SDK usługi Azure HDInsight.
 
 > [!NOTE]
 > Chociaż procedury opisane w tym artykule można używać z oboma klastra HDInsight z systemem Windows lub opartych na systemie Linux, działają tylko z klienta Windows. Aby wybrać inne metody, selektor karty w górnej części tego artykułu.

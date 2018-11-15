@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: c3ab241e42c431ae4e95e8154343a949bb9e596e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2d8741f6c65002d7f3701784e5fffe67b0e9bf50
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970180"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287238"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Szybki start: logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji dla systemu Android
 
@@ -30,7 +30,7 @@ ms.locfileid: "46970180"
 
 Jeśli tworzysz aplikację dla systemu Android, firma Microsoft umożliwia łatwe logowanie użytkowników w usłudze Azure Active Directory (Azure AD). Usługa Azure AD umożliwia aplikacji uzyskanie dostępu do danych użytkowników za pośrednictwem programu Microsoft Graph lub Twojego własnego chronionego internetowego interfejsu API.
 
-Biblioteka ADAL dla systemu Android umożliwia aplikacji rozpoczęcie korzystania z usługi [Microsoft Azure Cloud](https://cloud.microsoft.com) &  i [interfejsu API programu Microsoft Graph](https://graph.microsoft.io) dzięki obsłudze [kont usługi Microsoft Azure Active Directory](https://azure.microsoft.com/services/active-directory/) korzystających z protokołu OAuth 2.0 i OpenID Connect, będących standardem w branży.
+Biblioteka ADAL dla systemu Android umożliwia aplikacji rozpoczęcie korzystania z usługi [Microsoft Azure Cloud](https://cloud.microsoft.com) &  i [interfejsu API programu Microsoft Graph](https://developer.microsoft.com/graph) dzięki obsłudze [kont usługi Microsoft Azure Active Directory](https://azure.microsoft.com/services/active-directory/) korzystających z protokołu OAuth 2.0 i OpenID Connect, będących standardem w branży.
 
 W tym przewodniku Szybki start zawarto informacje na temat wykonywania następujących czynności:
 

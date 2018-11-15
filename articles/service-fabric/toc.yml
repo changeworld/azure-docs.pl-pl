@@ -233,16 +233,20 @@ items:
       href: service-fabric-deploy-anywhere.md
     - name: Zabezpieczenia klastra
       href: service-fabric-cluster-security.md
-    - name: Skalowanie
-      href: service-fabric-cluster-scaling.md
     - name: Różnice między funkcjami w systemach Linux i Windows
       href: service-fabric-linux-windows-differences.md
     - name: Klastry na platformie Azure
       items:
       - name: Typy węzłów i usługa VM Scale Sets
         href: service-fabric-cluster-nodetypes.md
+      - name: Skalowanie
+        href: service-fabric-cluster-scaling.md
       - name: Wzorce sieci klastra
         href: service-fabric-patterns-networking.md
+    - name: Klastry autonomiczne
+      items:
+      - name: Skalowanie
+        href: service-fabric-cluster-scaling-standalone.md
     - name: Menedżer zasobów klastra
       items:
       - name: Omówienie usługi Resource Manager dla klastra
@@ -763,9 +767,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: a7549a3544fb40527e0526bfb5c7db424b0d014a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 810c04b2d6b2b5e7a8db64e21c10225ccddcb117
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567812"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634281"

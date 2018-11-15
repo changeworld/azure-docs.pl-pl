@@ -1,5 +1,5 @@
 ---
-title: Hive za pomocą narzędzi Data Lake (Hadoop) dla programu Visual Studio — Azure HDInsight
+title: Apache Hive za pomocą narzędzi Data Lake (Apache Hadoop) dla programu Visual Studio — Azure HDInsight
 description: Dowiedz się, jak używać Data Lake tools for Visual Studio do uruchomienia zapytania usługi Apache Hive przy użyciu technologii Apache Hadoop w usłudze Azure HDInsight.
 services: hdinsight
 author: hrasheed-msft
@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4cc2012e40fad9e1343804149cdffaa3a1ab9db4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bfb53ddf666426253cce08e6f09a5297f5d2f4d3
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011089"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634111"
 ---
-# <a name="run-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Uruchamianie zapytań Hive przy użyciu narzędzi Data Lake tools for Visual Studio
+# <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Uruchamianie zapytania usługi Apache Hive przy użyciu narzędzi Data Lake tools for Visual Studio
 
-Dowiedz się, jak za pomocą narzędzi Data Lake tools dla programu Visual Studio zapytań technologii Hive. Narzędzia Data Lake pozwala na łatwe tworzenie, przesyłania i monitorowania zapytań programu Hive z usługą Hadoop w usłudze Azure HDInsight.
+Dowiedz się, jak za pomocą narzędzi Data Lake tools dla programu Visual Studio zapytań technologii Hive. Narzędzia Data Lake pozwala na łatwe tworzenie, przesyłania i monitorowania zapytania Hive w celu Apache Hadoop w usłudze Azure HDInsight.
 
 ## <a id="prereq"></a>Wymagania wstępne
 
-* Klaster usługi Azure HDInsight (Hadoop w HDInsight)
+* Klaster usługi Azure HDInsight (Hadoop Apache na HDInsight)
 
   > [!IMPORTANT]
   > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).

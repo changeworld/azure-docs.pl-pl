@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: glenga
-ms.openlocfilehash: 0ed488cd717bc1548b26dcf8ff5f200a62710132
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: a92a4183962f71005577478bf27df9b5fb945acf
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584892"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634366"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Adresy IP w usłudze Azure Functions
 
@@ -55,6 +55,8 @@ Alternatywny sposób, aby znaleźć dostępne adresy IP ruchu wychodzącego jest
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
 ```
+> [!NOTE]
+> Gdy aplikacja funkcji, które jest uruchamiane na [planu zużycie](functions-scale.md#consumption-plan) jest skalowana, nowy zakres wychodzące adresy IP można przypisać. Podczas uruchamiania na planie zużycie, może być konieczne dozwolonych całego centrum danych.
 
 ## <a name="data-center-outbound-ip-addresses"></a>Wychodzące adresy IP centrum danych
 

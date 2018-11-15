@@ -2,19 +2,19 @@
 title: 'Szybki start: usługa Azure IoT Edge + system Linux | Microsoft Docs'
 description: Z tego przewodnika Szybki start dowiesz się, jak zdalnie wdrożyć wstępnie skompilowany kod na urządzeniu z usługą IoT Edge.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 08/14/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a774873872d4b41c4ef5c005946db6b2a1b4e39e
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a392c4c20e54081ae5e4876b7c718759b8200ce5
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955279"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566435"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Szybki start: wdrażanie pierwszego modułu usługi IoT Edge na urządzeniu z systemem Linux x64
 

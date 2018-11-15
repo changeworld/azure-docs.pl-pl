@@ -6,14 +6,14 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 11/13/2018
 ms.author: stefanmsft
-ms.openlocfilehash: 852b2d35ae605f5529d162d52655fd258ca07c5a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: ac7664e94c6e02ab90dbb1b32a54c8234614afe2
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946100"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636275"
 ---
 # <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Jak debugować problemy związane z funkcjami zdefiniowanymi przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -42,12 +42,12 @@ Po wysłaniu danych telemetrycznych, otwiera się usługi Azure Log Analytics na
 
 ```Kusto
 AzureDiagnostics
-| where CorrelationId = 'yourCorrelationIdentifier'
+| where CorrelationId = 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
-| Nazwa atrybutu niestandardowego | Zamień |
+| Wartość zapytania | Zamień na |
 | --- | --- |
-| *yourCorrelationIdentifier* | Identyfikator korelacji, który został określony na dane zdarzeń |
+| YOUR_CORRELATION_IDENTIFIER | Identyfikator korelacji, który został określony na dane zdarzeń |
 
 Jeśli zalogujesz się funkcji zdefiniowanych przez użytkownika, tych dzienników będą wyświetlane w wystąpieniu usługi Azure Log Analytics z kategorią `UserDefinedFunction`. Aby je pobrać, wprowadź następujące warunki zapytania w usłudze Azure Log Analytics:
 
@@ -62,6 +62,8 @@ Aby uzyskać więcej informacji o operacjach zaawansowanych zapytań, zobacz [wp
 
 Diagnozowanie i identyfikuje typowe problemy są ważne podczas rozwiązywania problemów z rozwiązania. Kilka typowych problemów napotykanych podczas opracowywania funkcje zdefiniowane przez użytkownika zestawiono poniżej.
 
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
+
 ### <a name="ensure-a-role-assignment-was-created"></a>Upewnij się, że utworzono przypisania roli
 
 Bez przypisania roli, utworzone w ramach interfejsu API zarządzania funkcja zdefiniowana przez użytkownika nie będą dostępne wykonuje wszystkie działania, takie jak wysyłanie powiadomień, pobierania metadanych, i ustawienie obliczonych wartości w ramach topologii.
@@ -69,13 +71,12 @@ Bez przypisania roli, utworzone w ramach interfejsu API zarządzania funkcja zde
 Sprawdź, czy przydział roli istnieje funkcji zdefiniowanych przez użytkownika za pomocą usługi API Management:
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/roleassignments?path=/&traverse=Down&objectId=yourUserDefinedFunctionId
+GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| Nazwa atrybutu niestandardowego | Zamień |
+| Parametr | Zamień na |
 | --- | --- |
-| *yourManagementApiUrl* | Pełna ścieżka adresu URL dla interfejsu API zarządzania  |
-| *yourUserDefinedFunctionId* | Identyfikator funkcji zdefiniowanej przez użytkownika do pobrania przypisań ról|
+| *YOUR_USER_DEFINED_FUNCTION_ID* | Identyfikator funkcji zdefiniowanej przez użytkownika do pobrania przypisań ról|
 
 Jeśli nie przypisania roli są pobierane, postępuj zgodnie z tego artykułu na [jak można utworzyć przypisania roli, funkcji zdefiniowanych przez użytkownika](./how-to-user-defined-functions.md).
 
@@ -84,14 +85,13 @@ Jeśli nie przypisania roli są pobierane, postępuj zgodnie z tego artykułu na
 Przy użyciu następującego wywołania interfejsu API zarządzania wystąpieniami danego Twins cyfrowych platformy Azure można określić, czy dany dopasowywania ma zastosowanie do danego czujnika.
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/matchers/yourMatcherIdentifier/evaluate/yourSensorIdentifier?enableLogging=true
+GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
 ```
 
-| Nazwa atrybutu niestandardowego | Zamień |
+| Parametr | Zamień na |
 | --- | --- |
-| *yourManagementApiUrl* | Pełna ścieżka adresu URL dla interfejsu API zarządzania  |
-| *yourMatcherIdentifier* | Identyfikator dopasowywania, którą chcesz ocenić |
-| *yourSensorIdentifier* | Identyfikator czujnik, który chcesz ocenić |
+| *YOUR_MATCHER_IDENTIFIER* | Identyfikator dopasowywania, którą chcesz ocenić |
+| *YOUR_SENSOR_IDENTIFIER* | Identyfikator czujnik, który chcesz ocenić |
 
 Odpowiedź:
 
@@ -109,13 +109,12 @@ Odpowiedź:
 Przy użyciu następującego wywołania interfejsu API zarządzania wystąpieniami danego Twins cyfrowych platformy Azure można określić identyfikatory funkcji zdefiniowanych przez użytkownika, które będą wyzwalane przez dany czujnik przychodzących danych telemetrycznych:
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/sensors/yourSensorIdentifier/matchers?includes=UserDefinedFunctions
+GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
 ```
 
-| Nazwa atrybutu niestandardowego | Zamień |
+| Parametr | Zamień na |
 | --- | --- |
-| *yourManagementApiUrl* | Pełna ścieżka adresu URL dla interfejsu API zarządzania  |
-| *yourSensorIdentifier* | Identyfikator czujnik, który będzie wysyłać dane telemetryczne |
+| *YOUR_SENSOR_IDENTIFIER* | Identyfikator czujnik, który będzie wysyłać dane telemetryczne |
 
 Odpowiedź:
 

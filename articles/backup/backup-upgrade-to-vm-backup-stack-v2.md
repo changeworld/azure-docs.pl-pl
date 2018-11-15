@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/3/2018
 ms.author: trinadhk
-ms.openlocfilehash: 20c1606d4d6a1ddd43426731e5498d1bee47f2e3
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c65cfedd398bbb18d65f36a3f2a768e11443687a
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962541"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636513"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Uaktualnianie do stosu kopii zapasowych maszyn wirtualnych platformy Azure w wersji 2
 
@@ -86,15 +86,42 @@ Uruchom następujące polecenia cmdlet z terminala PowerShell z podwyższonym po
     ```
     PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
     ```
+### <a name="cli"></a>Interfejs wiersza polecenia
+Uruchom następujące polecenia z poziomu powłoki:
+1.  Zaloguj się do konta platformy Azure:
+
+    ```
+    az login
+    ```
+
+2.  Wybierz subskrypcję, której chcesz zarejestrować:
+
+    ```
+    az account set --subscription "Subscription Name"
+    ```
+
+3.  Zarejestruj tej subskrypcji:
+
+    ```
+    az feature register --namespace Microsoft.RecoveryServices --name InstantBackupandRecovery
+    ```
 
 ## <a name="verify-that-the-upgrade-is-finished"></a>Sprawdź, czy zakończeniu uaktualniania
+### <a name="powershell"></a>PowerShell
 Z poziomu terminalu programu PowerShell z podwyższonym poziomem uprawnień uruchom następujące polecenie cmdlet:
 
 ```
 Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
-Jeśli wyświetlany jest tekst "Zarejestrowane", Twoja subskrypcja jest uaktualniany do modelu wdrażania usługi Resource Manager stosu kopii zapasowej maszyny Wirtualnej.
+### <a name="cli"></a>Interfejs wiersza polecenia
+Z ashell uruchom następujące polecenie:
+
+```
+az feature show --namespace Microsoft.RecoveryServices --name InstantBackupandRecovery
+```
+
+Jeśli wyświetlany jest tekst "Zarejestrowane", Twoja subskrypcja jest uaktualniany do stosu kopii zapasowej w wersji 2.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 

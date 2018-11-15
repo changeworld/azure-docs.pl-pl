@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 07/26/2018
+ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 7c6445624b2c03497c881b0c34bac8256fa28a98
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: aa1d98f5ea2db0cc549b60e33769c8628181721b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302047"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686606"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Usługa SQL Data Warehouse limity pojemności
 Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse.
@@ -35,7 +35,7 @@ Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse
 |:--- |:--- |:--- |
 | Database (Baza danych) |Maks. rozmiar | Gen1: 240 TB skompresowane na dysku. Ta przestrzeń jest niezależna od miejsca na bazę danych tempdb lub dziennika, a w związku z tym ta przestrzeń jest dedykowany do tablic stałych.  Kompresja klastrowanego magazynu kolumn szacuje się na 5 X.  Kompresja ta umożliwia bazy danych do około 1 PB, w przypadku wszystkich tabel klastrowanego magazynu kolumn (domyślny typ tabeli). <br/><br/> Gen2: 240TB magazynu wierszy i nieograniczony magazyn tabel magazynu kolumn |
 | Tabela |Maks. rozmiar |60 TB skompresowane na dysku |
-| Tabela |Tabele dla bazy danych |10 000 |
+| Tabela |Tabele dla bazy danych | 100 000 |
 | Tabela |Kolumn w tabeli |1024 kolumn |
 | Tabela |Liczba bajtów na kolumnę |Zależne od kolumny [— typ danych](sql-data-warehouse-tables-data-types.md). Limit wynosi 8000 dla typów danych char, 4000 nvarchar, czy za 2 GB dla typów danych MAX. |
 | Tabela |Bajtów na wiersz, zdefiniowanego rozmiaru |8060 bajtów<br/><br/>Liczba bajtów na wiersz jest obliczana w taki sam sposób, podobnie jak w przypadku programu SQL Server przy użyciu kompresji strony. Podobnie jak SQL Server, SQL Data Warehouse obsługuje magazynu przepełnienie wierszy, które umożliwia **kolumn o zmiennej długości** ma zostać wypchnięty pozawierszową. Gdy o zmiennej długości wierszy są przekazywane pozawierszową, tylko 24-bajtowy główny znajduje się w głównym rekordzie. Aby uzyskać więcej informacji, zobacz [przepełnienie wiersza danych przekraczających rozmiarze 8 KB](https://msdn.microsoft.com/library/ms186981.aspx). |
@@ -69,7 +69,7 @@ Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse
 | SELECT |Kolumn na sprzężenia |1024 kolumn<br/><br/>Program może nigdy nie więcej niż 1024 kolumn sprzężenia. Nie ma żadnej gwarancji, że zawsze masz 1024. Jeśli plan sprzężenia wymaga tabelę tymczasową przy użyciu więcej kolumn niż wynik sprzężenia, limitu 1024 stosuje się do tabeli tymczasowej. |
 | SELECT |Bajtów na grupy według kolumn. |8060<br/><br/>Kolumny w klauzuli GROUP BY nie może przekraczać 8060 bajtów. |
 | SELECT |Liczba bajtów na kolumny w klauzuli ORDER BY |8060 bajtów<br/><br/>Kolumny w klauzuli ORDER BY nie może przekraczać 8060 bajtów |
-| Identyfikatory na instrukcję |Liczba identyfikatorów odwołania |65,535<br/><br/>Usługa SQL Data Warehouse ogranicza liczbę identyfikatorów, które mogą być zawarte w jednym wyrażeniu zapytania. Przekroczenie tego numeru powoduje błąd programu SQL Server 8632. Aby uzyskać więcej informacji, zobacz [błąd wewnętrzny: Osiągnięto limit usług wyrażeń] [błąd wewnętrzny: Osiągnięto limit usług wyrażeń]. |
+| Identyfikatory na instrukcję |Liczba identyfikatorów odwołania |65,535<br/><br/>Usługa SQL Data Warehouse ogranicza liczbę identyfikatorów, które mogą być zawarte w jednym wyrażeniu zapytania. Przekroczenie tego numeru powoduje błąd programu SQL Server 8632. Aby uzyskać więcej informacji, zobacz [błąd wewnętrzny: Osiągnięto limit usług wyrażeń](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
 | Literały ciągu | Liczba literał ciągu w instrukcji | 20,000 <br/><br/>Usługa SQL Data Warehouse ogranicza liczbę stałych ciągów w jednym wyrażeniu zapytania. Przekroczenie tego numeru powoduje błąd programu SQL Server 8632.|
 
 ## <a name="metadata"></a>Metadane

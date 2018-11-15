@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 265d34c91a8c803256e718899f5b6ce2738a88e5
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: ecb95f0440751a6cdbf81dbf02c62bed6b5e780b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956435"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286694"
 ---
 # <a name="about-v20"></a>Informacje o wersji 2.0
 
@@ -32,7 +32,7 @@ Punkt końcowy i platforma w wersji 2.0 znajdują się w wersji zapoznawczej i s
 
 Środowisko deweloperskie witryny Azure Portal zostało znacznie rozbudowane. Obecnie obejmuje wszystkie Twoje aplikacje utworzone za pomocą biblioteki ADAL lub MSAL i jest bardziej użyteczne.
 
-W przeszłości deweloperzy aplikacji, którzy chcieli obsługiwać zarówno osobiste konta Microsoft, jak i konta służbowe z poziomu usługi Azure Active Directory (Azure AD), musieli zintegrować je z dwoma oddzielnymi systemami. Punkt końcowy i platforma w wersji 2.0 zawierają wersję interfejsu API uwierzytelniania, która upraszcza ten proces. Umożliwia on logowanie się z obu typów kont dzięki pojedynczej integracji. Aplikacje, które używają punktu końcowego w wersji 2.0, mogą również korzystać z interfejsów API REST z [interfejsu API programu Microsoft Graph](https://graph.microsoft.io), używając obu typów kont.
+W przeszłości deweloperzy aplikacji, którzy chcieli obsługiwać zarówno osobiste konta Microsoft, jak i konta służbowe z poziomu usługi Azure Active Directory (Azure AD), musieli zintegrować je z dwoma oddzielnymi systemami. Punkt końcowy i platforma w wersji 2.0 zawierają wersję interfejsu API uwierzytelniania, która upraszcza ten proces. Umożliwia on logowanie się z obu typów kont dzięki pojedynczej integracji. Aplikacje, które używają punktu końcowego w wersji 2.0, mogą również korzystać z interfejsów API REST z [interfejsu API programu Microsoft Graph](https://developer.microsoft.com/graph), używając obu typów kont.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -56,10 +56,10 @@ Uzyskaj szczegółowe informacje na temat wersji 2.0:
 
 * [Dokumentacja protokołów w wersji 2.0](active-directory-v2-protocols.md)
 * [Dokumentacja tokenów dostępu](access-tokens.md)
-* [Dokumentacja tokenów `id_tokens`](id-tokens.md)
+* [Dokumentacja tokenów identyfikatorów](id-tokens.md)
 * [Dokumentacja bibliotek uwierzytelniania w wersji 2.0](reference-v2-libraries.md)
-* [Zakresy i zgody w wersji 2.0](v2-permissions-and-consent.md)
-* [Interfejs API programu Microsoft Graph](https://graph.microsoft.io)
+* [Uprawnienia i wyrażanie zgody w wersji 2.0](v2-permissions-and-consent.md)
+* [Interfejs API programu Microsoft Graph](https://developer.microsoft.com/graph)
 
 > [!NOTE]
 > Jeśli musisz logować się tylko do kont służbowych i szkolnych z poziomu usługi Azure Active Directory, zacznij od [przewodnika dewelopera usługi Azure AD](v1-overview.md). Punkt końcowy w wersji 2.0 jest przeznaczony do użycia przez deweloperów, którzy potrzebują logowania się do osobistych kont Microsoft.

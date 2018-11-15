@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 4bc655f1e9da00a42c60e1ab763c5503b393d4a1
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: fa5ce7264fd003e0a49d6408acae070577879cdd
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646307"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686623"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Najlepsze rozwiązania dotyczące funkcji SQL Data Sync 
 
@@ -48,7 +48,7 @@ Usługa Azure SQL Database obsługuje tylko jeden zestaw poświadczeń. Aby wyko
 -   Zmienić poświadczenia dla różnych etapów (na przykład *credentials1* instalacji i *credentials2* dla trwających).  
 -   Zmiana uprawnień poświadczeń (oznacza to, Zmień uprawnienia po skonfigurowaniu synchronizacji).
 
-## <a name="setup"></a>Instalacja
+## <a name="setup"></a>Konfigurowanie
 
 ### <a name="database-considerations-and-constraints"></a> Kwestie i ograniczenia
 
@@ -94,7 +94,7 @@ SQL Data Sync ma następujące ograniczenia dotyczące autoprovisioning:
 -   UPDATE CASCADE i ON DELETE CASCADE akcje na ograniczenia klucza obcego nie są odtwarzane w tabelach docelowych.
 -   W przypadku kolumn dziesiętnego lub liczbowego o dokładności większej niż 28 SQL Data Sync może wystąpić problem przepełnienia konwersji podczas synchronizacji. Zaleca się ograniczenie dokładność dziesiętnego lub liczbowego kolumn do 28 lub mniej.
 
-#### <a name="recommendations"></a>Rekomendacje
+#### <a name="recommendations"></a>Zalecenia
 
 -   Tylko wtedy, gdy są wypróbowanie usługi, należy użyć funkcji autoprovisioning SQL Data Sync.  
 -   W środowisku produkcyjnym obsługi administracyjnej schematu bazy danych.
@@ -114,7 +114,7 @@ Aby zminimalizować czas oczekiwania, zachować baza danych koncentratora blisko
 
 Zastosowanie poprzedniego wytyczne do złożonych synchronizacji konfiguracji grupy, takie jak te, które są różne scenariusze przedsiębiorstwa do chmury i z chmury do chmury.
 
-## <a name="sync"></a>Synchronizacja
+## <a name="sync"></a>Sync
 
 ### <a name="avoid-a-slow-and-costly-initial-synchronization"></a> Należy unikać powolne i kosztownych początkowej synchronizacji
 
@@ -219,13 +219,18 @@ Jeśli spróbujesz usunąć bazę danych, a następnie Edytuj grupę synchroniza
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat SQL Data Sync zobacz:
 
--   [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)](sql-database-sync-data.md)
--   [Set up Azure SQL Data Sync (Konfigurowanie usługi Azure SQL Data Sync)](sql-database-get-started-sql-data-sync.md)
--   [Monitor Azure SQL Data Sync with Log Analytics (Monitorowanie usługi Azure SQL Data Sync za pomocą usługi Log Analytics)](sql-database-sync-monitor-oms.md)
--   [Troubleshoot issues with Azure SQL Data Sync (Rozwiązywanie problemów z usługą Azure SQL Data Sync)](sql-database-troubleshoot-data-sync.md)  
--   Pełne przykładowe skrypty programu PowerShell przedstawiające sposób konfigurowania usługi SQL Data Sync:  
-    -   [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)  
-    -   [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)  
+-   Przegląd — [synchronizowanie danych w wielu bazach danych w chmurze i lokalnych przy użyciu usługi Azure SQL Data Sync](sql-database-sync-data.md)
+-   Konfiguruj synchronizację danych
+    - W portalu — [samouczek: Konfigurowanie SQL Data Sync na synchronizowanie danych między Azure SQL Database i programu SQL Server w środowisku lokalnym](sql-database-get-started-sql-data-sync.md)
+    - Z programem PowerShell
+        -  [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
+-   Dane synchronizacji Agent - [danych synchronizacji agenta dla usługi Azure SQL Data Sync](sql-database-data-sync-agent.md)
+-   Monitor — [monitorowanie SQL Data Sync za pomocą usługi Log Analytics](sql-database-sync-monitor-oms.md)
+-   Rozwiązywanie problemów — [Rozwiązywanie problemów z usługą Azure SQL Data Sync](sql-database-troubleshoot-data-sync.md)
+-   Aktualizowanie schematu synchronizacji
+    -   Za pomocą instrukcji języka Transact-SQL - [Automatyzowanie replikacji zmian schematu w usłudze Azure SQL Data Sync](sql-database-update-sync-schema.md)
+    -   Za pomocą programu PowerShell — [Użyj programu PowerShell do aktualizacji schematu synchronizacji w istniejącej grupie synchronizacji](scripts/sql-database-sync-update-schema.md)
 
 Aby uzyskać więcej informacji o usłudze SQL Database zobacz:
 

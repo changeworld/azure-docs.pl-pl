@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 3b38cc265b4adfb301dc1165e02b17a8aa7c9589
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f344424c372f65cd8bfe5779cc65f0e866e58a11
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252551"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633975"
 ---
 # <a name="how-to-use-alternative-inputs"></a>Jak używać alternatywnego danych wejściowych
 
@@ -137,9 +137,11 @@ Dodajmy alternatywne dane wejściowe do okna dialogowego pierwszego:
     3. Kliknij przycisk Prześlij zmiany.
 4. Kliknij, aby w okienku po lewej stronie wybierz pozycję "denver":
     1. Dodaj alternatywne danych wejściowych wprowadź "denver".
-    2. Wprowadź "Prognozowanie austin".
-        - Pełne wyrażenie jest wyróżniona. Kliknij frazy, a następnie czerwony znak x. Następnie wybierz austin, a następnie kliknij polecenie miasta.
-        - Kliknij przycisk Prześlij zmiany
+    1. Wprowadź "Prognozowanie austin".
+        - Pojawi się komunikat o błędzie: "Odmiany tekstu musi zawierać takie same jednostki wykryte jako oryginalny tekst wejściowy".
+        - Kliknij wyraz "austin".
+        - Pojawi się okno podręczne, umożliwiające wybranie jednostki dla "austin". Kliknij przycisk **Miasto**.
+        - Kliknij przycisk Prześlij zmiany.
     1. Kliknij przycisk Gotowe, co spowoduje modelu doskonalenie.
 
 ![](../media/tutorial8_altcities.png)

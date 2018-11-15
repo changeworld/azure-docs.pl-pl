@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: ea69befb1084b08352eb3cf38db0364c5c82c45b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b134bc2529bf11557ddb1778b87f127db8da650c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237064"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684641"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Filtry zabezpieczeń do przycinania wyniki usługi Azure Search przy użyciu tożsamości usługi Active Directory
 
@@ -98,7 +98,7 @@ await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
 ### <a name="step-4-cache-the-groups-identifiers"></a>Krok 4: Buforowanie identyfikatorów grup
-Opcjonalnie Aby zmniejszyć opóźnienia sieci, można buforować skojarzenia grupy użytkowników tak, aby podczas wystawiania żądania wyszukiwania grup są zwracane z pamięci podręcznej, zapisywanie w obie strony do usługi AAD. Można użyć (interfejs API usługi Batch AAD) [https://developer.microsoft.com/graph/docs/concepts/json_batching] wysyłanie pojedynczego żądania Http, w których wielu użytkowników i Tworzenie pamięci podręcznej.
+Opcjonalnie Aby zmniejszyć opóźnienia sieci, można buforować skojarzenia grupy użytkowników tak, aby podczas wystawiania żądania wyszukiwania grup są zwracane z pamięci podręcznej, zapisywanie w obie strony do usługi AAD. Możesz użyć [interfejsu API usługi Batch AAD](https://developer.microsoft.com/graph/docs/concepts/json_batching) wysyłanie pojedynczego żądania Http, w których wielu użytkowników i Tworzenie pamięci podręcznej.
 
 Program Microsoft Graph jest przeznaczony do obsługi dużej liczby żądań. Jeśli wystąpi zbyt dużej liczby żądań, programu Microsoft Graph kończy się niepowodzeniem żądania z kodem stanu HTTP 429. Aby uzyskać więcej informacji, zobacz [ograniczania programu Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/throttling).
 
