@@ -7,12 +7,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: b788490d588c217d97786f9306baad3083a9c03f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: a7c2d1e41fa4ac26854e2e6ab57184cd6ed0bd0c
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629385"
+ms.locfileid: "51633686"
 ---
 # <a name="how-to-access-azure-cosmos-db-resources-from-virtual-networks"></a>Jak uzyskać dostęp do zasobów usługi Azure Cosmos DB z sieciami wirtualnymi
 
@@ -31,7 +31,7 @@ Poniżej opisano sposób konfigurowania punktu końcowego usługi sieci Wirtualn
 
 ### <a name="configure-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>Skonfiguruj punkt końcowy usługi dla istniejącej sieci wirtualnej platformy Azure i podsieci
 
-1. Z **wszystkie zasoby** bloku sieci wirtualnej, możesz znaleźć chcesz zabezpieczyć.
+1. Z **wszystkie zasoby** bloku Znajdź konto Azure Cosmos chcesz zabezpieczyć.
 
 1. Wybierz **zapory i sieci wirtualne** z poziomu menu ustawień i wybierz dostęp z **wybrane sieci**.
 
@@ -42,7 +42,7 @@ Poniżej opisano sposób konfigurowania punktu końcowego usługi sieci Wirtualn
    ![Wybierz sieć wirtualną i podsieć](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
 
 
-1. Po włączeniu na koncie usługi Azure Cosmos zezwala tylko ruchu z tego wybrana podsieć. Sieć wirtualną i podsieć, którą dodałeś powinien pojawić się, jak pokazano na poniższym zrzucie ekranu:
+1. Po włączeniu dostępu z sieci wirtualnej do konta usługi Azure Cosmos zezwala tylko ruchu z tego wybrana podsieć. Sieć wirtualną i podsieć, którą dodałeś powinien pojawić się, jak pokazano na poniższym zrzucie ekranu:
 
    ![sieć wirtualną i podsieć został pomyślnie skonfigurowany](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
 
@@ -183,6 +183,10 @@ Aby skonfigurować punkt końcowy usługi do konta usługi Azure Cosmos DB przy 
 1. Aktualizowanie istniejącego konta usługi Azure Cosmos z podsiecią list ACL
 
    ```azurecli-interactive
+
+   name="<Azure Cosmos account name>"
+   resourceGroupName="<Resource group name>"
+
    az cosmosdb update \
       --name $name \
     --resource-group $resourceGroupName \

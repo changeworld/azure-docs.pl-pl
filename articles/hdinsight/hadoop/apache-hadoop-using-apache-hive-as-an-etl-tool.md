@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
-ms.openlocfilehash: cd62083bc7bd0254084f0fc209540de929c25d06
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c26b4700f32ce4e0bd8327e862d31df8fea2439d
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042257"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632547"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Użyj Apache Hive jako narzędzia do wyodrębniania, przekształcania i ładowania (ETL)
 
-Zazwyczaj należy czyszczenie i transformowanie przychodzące dane przed załadowaniem ich do miejsca docelowego odpowiednie do analizy. Operacje wyodrębniania, przekształcania i ładowania (ETL) są używane do przygotowania danych i załadowania ich do miejsca docelowego danych.  Gałąź w HDInsight można odczytu danych bez struktury, przetwarzania danych, zgodnie z potrzebami i następnie załadować dane do magazynu danych relacyjnych, dla systemy podejmowania decyzji. W przypadku tej metody dane są wyodrębnione ze źródła i przechowywane w magazynie skalowalne, takie jak obiekty BLOB usługi Azure Storage lub Azure Data Lake Store. Dane są następnie przekształcane przy użyciu sekwencji zapytań programu Hive i na koniec przygotowane w gałęzi w ramach przygotowania do zbiorczego ładowania do docelowego magazynu danych.
+Zazwyczaj należy czyszczenie i transformowanie przychodzące dane przed załadowaniem ich do miejsca docelowego odpowiednie do analizy. Operacje wyodrębniania, przekształcania i ładowania (ETL) są używane do przygotowania danych i załadowania ich do miejsca docelowego danych.  Apache Hive on HDInsight można odczytać danych bez struktury, przetwarzania danych, zgodnie z potrzebami i następnie załadować dane do magazynu danych relacyjnych, dla systemy podejmowania decyzji. W przypadku tej metody dane są wyodrębnione ze źródła i przechowywane w magazynie skalowalne, takie jak obiekty BLOB usługi Azure Storage lub Azure Data Lake Store. Dane są następnie przekształcane przy użyciu sekwencji zapytań programu Hive i na koniec przygotowane w gałęzi w ramach przygotowania do zbiorczego ładowania do docelowego magazynu danych.
 
 ## <a name="use-case-and-model-overview"></a>Użyj przypadków i modelu — omówienie
 

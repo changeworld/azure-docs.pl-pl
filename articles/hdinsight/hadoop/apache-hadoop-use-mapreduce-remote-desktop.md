@@ -1,6 +1,6 @@
 ---
-title: MapReduce i Pulpit zdalny z usługą Hadoop w HDInsight — Azure
-description: Dowiedz się, jak nawiązać połączenie z platformą Hadoop w HDInsight i uruchamianie zadań MapReduce za pomocą usług pulpitu zdalnego.
+title: MapReduce i Pulpit zdalny przy użyciu technologii Apache Hadoop w HDInsight — Azure
+description: Dowiedz się, jak nawiązać połączenie z platformą Apache Hadoop w HDInsight i uruchamianie zadań MapReduce za pomocą usług pulpitu zdalnego.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ee87bd5743307ea5b9ee3ca1258e8cd985a095c5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b8cd389bee98058e5362a217268fb53d6aaf3424
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012932"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634485"
 ---
-# <a name="use-mapreduce-in-hadoop-on-hdinsight-with-remote-desktop"></a>Korzystanie z technologii MapReduce usługi Hadoop w HDInsight przy użyciu pulpitu zdalnego
+# <a name="use-mapreduce-in-apache-hadoop-on-hdinsight-with-remote-desktop"></a>Korzystanie z technologii MapReduce na platformie Apache Hadoop w HDInsight przy użyciu pulpitu zdalnego
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-W tym artykule dowiesz się, jak nawiązać połączenie z usługi Hadoop w klastrze HDInsight przy użyciu pulpitu zdalnego, a następnie uruchomienie zadania MapReduce za pomocą polecenia Hadoop.
+W tym artykule dowiesz się, jak nawiązać połączenie z technologii Apache Hadoop w klastrze HDInsight przy użyciu pulpitu zdalnego, a następnie uruchomienie zadania MapReduce za pomocą polecenia Hadoop.
 
 > [!IMPORTANT]
 > Pulpit zdalny jest dostępna tylko w klastrach HDInsight z systemem Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).

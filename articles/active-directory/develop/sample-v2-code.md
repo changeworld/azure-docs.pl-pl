@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ef4bffe3aca05afbdf579b34ddb85c58095b3f3b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 4a2cb6fa310cc56b4c5ccb1cb625b88431f70783
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138212"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633856"
 ---
 # <a name="azure-active-directory-code-samples-v20-endpoint"></a>Przykłady kodu usługi Azure Active Directory (punktu końcowego v2.0)
 
@@ -62,7 +62,7 @@ Poniższe przykłady ilustrują, aplikacje sieci web, które logują się użytk
 
  Platforma | Użytkownikom zalogowanie się tylko | Użytkownikom zalogowanie się i wymaga programu Microsoft Graph
  -------- | ------------------- | ---------------------------------
-![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)<p/>Platforma ASP.NET Core 2.0 | [aspnetcore-aplikacji sieci Web — openidconnect — v2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) | Przykładowe takie same w [signInAndCallMsGraph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/signInAndCallMsGraph) gałęzi
+![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)<p/>Platforma ASP.NET Core 2.1 | [aspnetcore-aplikacji sieci Web — openidconnect — v2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) | Przykładowe takie same w [aspnetcore2-2-signInAndCallGraph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/aspnetcore2-2-signInAndCallGraph) gałęzi
 ![ASP.NET](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET | [Przewodnik Szybki Start platformy ASP.NET](https://GitHub.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) <p/> [polecenia DotNet-aplikacji sieci Web — openidconnect — v2](https://GitHub.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [DotNet-admin ograniczone — zakresy — v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) <p/>[Program MSGraph — szkolenia — aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 ![Node.js](media/sample-v2-code/logo_nodejs.png)  |                   | [Przewodnik Szybki Start platformy node.js](https://github.com/azureadquickstarts/appmodelv2-webapp-openidconnect-nodejs)
 ![Ruby](media/sample-v2-code/logo_ruby.png) |                   | [Program MSGraph — szkolenia — rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp)
