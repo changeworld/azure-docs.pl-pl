@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/13/2018
-ms.openlocfilehash: 520656297fd2f31f02d127e8662c26617a42db83
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.date: 11/14/2018
+ms.openlocfilehash: 9cbe88a44ba598a22fab628ae01605ac9d63bece
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629113"
+ms.locfileid: "51632632"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Umożliwia Rozwiązywanie problemów z łącznością dla usługi Azure SQL Database Resource Health
 
@@ -73,7 +73,7 @@ Infrastruktura platformy Azure okresowo przeprowadza planowaną konserwację —
 
 Reconfigurations są traktowane jako przejściowe warunki, a oczekuje się od czasu do czasu. Te zdarzenia mogą być wywoływane przez błędy ładowania równoważenia lub oprogramowanie i sprzęt. Każda aplikacja kliencka produkcji, który nawiązuje połączenie z usługą bazy danych w chmurze powinny implementować logikę ponawiania niezawodne połączenia, z logiki wycofywania, może pomóc rozwiązać tych sytuacji, a powinien ogólnie przezroczystego błędy użytkownikowi końcowemu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [Logika ponawiania próby dla błędów przejściowych](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)
 - [Rozwiązywanie problemów, diagnozowanie i zapobieganie błędom połączeń SQL](./sql-database-connectivity-issues.md)

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 025202d25d3057f3db7d015faba349a1fe642d4c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 400f266b1f63de675b9cefae289878dbef0a278c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637869"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685654"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory uwierzytelnianie przekazywane: Często zadawane pytania
 
@@ -79,6 +79,23 @@ Jeśli nie skonfigurowano funkcję zapisywania zwrotnego haseł dla określonego
 ## <a name="can-the-pass-through-authentication-agents-communicate-over-an-outbound-web-proxy-server"></a>Można agentów uwierzytelniania przekazywanego komunikują się za pośrednictwem serwera proxy ruchu wychodzącego sieci web?
 
 Tak. Funkcja autowykrywania serwera Proxy sieci Web (WPAD) jest włączone w środowisku w środowisku lokalnym, agentów uwierzytelniania automatycznie próbę zlokalizowania i używać serwera proxy sieci web w sieci.
+
+Jeśli nie masz WPAD w danym środowisku, można dodać informacje o serwerze proxy (jak pokazano poniżej), umożliwia agenta uwierzytelniania przekazywanego, do komunikowania się z usługą Azure AD:
+- Skonfiguruj informacje dotyczące serwera proxy w programie Internet Explorer, przed zainstalowaniem agenta uwierzytelniania przekazywanego na serwerze. Pozwoli to ukończyć instalację agenta uwierzytelniania, ale będzie nadal wyświetlany jako **nieaktywny** w portalu administracyjnym.
+- Na serwerze przejdź do "C:\Program Files\Microsoft Azure AD Connect Agent uwierzytelniania".
+- Edytuj plik konfiguracji "AzureADConnectAuthenticationAgentService" i dodaj następujące wiersze (Zastąp "http://contosoproxy.com:8080" za pomocą adresu serwera proxy rzeczywiste):
+
+```
+   <system.net>
+      <defaultProxy enabled="true" useDefaultCredentials="true">
+         <proxy
+            usesystemdefault="true"
+            proxyaddress="http://contosoproxy.com:8080"
+            bypassonlocal="true"
+         />
+     </defaultProxy>
+   </system.net>
+```
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>Czy można zainstalować dwóch lub większej liczby agentów uwierzytelniania przekazywanego, na tym samym serwerze?
 

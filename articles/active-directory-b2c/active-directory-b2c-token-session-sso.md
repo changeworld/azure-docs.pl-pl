@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0058ce8316fa8202cf53eaa1048a44b77efdecb5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 15064e90690064e67b296e7a46749f27773c0814
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012449"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636904"
 ---
 # <a name="token-session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Tokenów, sesji i konfiguracji pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C
 
@@ -26,9 +26,9 @@ Ta funkcja umożliwia szczegółową kontrolę na [-policy podstawę](active-dir
 - Formaty ważne oświadczenia w tokeny zabezpieczające emitowane przez usługę Azure AD B2C.
 - Logowanie jednokrotne (SSO) zachowanie w wielu aplikacji i zasad w dzierżawie usługi Azure AD B2C.
 
-Wbudowane zasady umożliwia tej funkcji w katalogu usługi Azure AD B2C w następujący sposób:
+Można użyć tej funkcji, z każdym typem zasad, ale w tym przykładzie pokazano, jak korzystać z funkcji za pomocą zasad rejestracji lub logowania. Wbudowane zasady umożliwia tej funkcji w katalogu usługi Azure AD B2C w następujący sposób:
 
-1. Kliknij przycisk **zasady rejestracji lub logowania**. * Uwaga: Możesz użyć tej funkcji z każdym typem zasad, nie tylko w ** rejestracji lub logowania zasady ***.
+1. Kliknij przycisk **zasady rejestracji lub logowania**.
 2. Otwórz zasady, klikając go. Na przykład kliknąć **B2C_1_SiUpIn**.
 3. Kliknij przycisk **Edytuj** w górnej części menu.
 4. Kliknij przycisk **tokenu, sesji i konfiguracji rejestracji jednokrotnej**.

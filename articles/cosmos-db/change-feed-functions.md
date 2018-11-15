@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rimman
-ms.openlocfilehash: ece1c123cad8403358dcc3b3626bf4b2cd756e25
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 943cd79237290cd91d56cc1c51f5d773cdb16634
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629097"
+ms.locfileid: "51636394"
 ---
 # <a name="how-to-use-azure-cosmos-db-change-feed-with-azure-functions"></a>Jak używać usługi Azure Cosmos DB zmiany źródła danych za pomocą usługi Azure Functions
 
@@ -41,7 +41,7 @@ Usługa Azure Functions sonduje zmiany kanału informacyjnego zmian w sposób ci
 
 Jeśli dokument odbierze wiele zmian w tym samym interwale, który miał wyzwalacza do sondowania pod kątem nowych zmian, może pojawić się najnowszą wersję dokumentu a nie do pośredniego.
 
-Jeśli chcesz do sondowania zmian źródła danych dla mniej niż 5 sekund, na przykład, dla każdej sekundzie można skonfigurować godziny sondowania "feedPollDelay", zobacz [kompletna Konfiguracja](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations?view=azure-dotnet#Microsoft_Azure_Documents_Client_ConnectionPolicy_PreferredLocations). Jest on zdefiniowany w milisekundach z domyślną 5000. Sondowanie, możliwe jest mniejsza niż 1 sekundę, ale nie jest to zalecane, ponieważ zostanie uruchomiona, przy użyciu większej ilości pamięci procesora CPU.
+Jeśli chcesz sondować zmiany źródła danych dla mniej niż 5 sekund, na przykład, przez co sekundę, można skonfigurować godziny sondowania "feedPollDelay", zobacz [kompletna Konfiguracja](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations?view=azure-dotnet#Microsoft_Azure_Documents_Client_ConnectionPolicy_PreferredLocations). Jest on zdefiniowany w milisekundach z domyślną 5000. Sondowanie, możliwe jest mniejsza niż 1 sekundę, ale nie jest to zalecane, ponieważ zostanie uruchomiona, przy użyciu większej ilości pamięci procesora CPU.
 
 ### <a name="can-multiple-azure-functions-read-one-containers-change-feed"></a>Wiele funkcji Azure przeczytasz Kanał informacyjny zmian jednego kontenera?
 

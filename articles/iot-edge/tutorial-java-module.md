@@ -3,18 +3,18 @@ title: Samouczek usługi Azure IoT Edge dla języka Java | Microsoft Docs
 description: W tym samouczku pokazano, jak utworzyć moduł usługi IoT Edge za pomocą kodu języka Java i wdrożyć go na urządzeniu brzegowym.
 services: iot-edge
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ed0605fbab4be0e0eb960b3b840e72f5fba2e8c8
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d5201f3b2a0a3548b1f9eaf4a3f6c6b0fe160d18
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413778"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567710"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-and-deploy-to-your-simulated-device"></a>Samouczek: programowanie modułu usługi IoT Edge w języku Java i wdrażanie go na urządzeniu symulowanym
 

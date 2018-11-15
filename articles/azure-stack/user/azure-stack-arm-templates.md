@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 11/14/2018
 ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: d520a33fd6729f4a9d4778cfdb8d3380c9ac09b0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 38e85ede1e984aa3d26fe509d68b4582d11b6c26
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237846"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636224"
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Korzystanie z szablonów usługi Azure Resource Manager w usłudze Azure Stack
 
@@ -34,7 +34,7 @@ Następujące szablony szybkiego startu są dostępne na [GitHub](https://aka.ms
 
 ## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>Wdrażanie programu SharePoint Server (bez — wysokiej dostępności wdrożenia)
 
-Za pomocą rozszerzenia DSC programu PowerShell do [utworzyć farmę programu SharePoint Server 2013](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/sharepoint-2013-non-ha) zawierającą następujące zasoby:
+Za pomocą rozszerzenia DSC programu PowerShell do [utworzyć farmę programu SharePoint Server 2013](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) zawierającą następujące zasoby:
 
 * Sieć wirtualna
 * Trzy konta magazynu
@@ -45,7 +45,7 @@ Za pomocą rozszerzenia DSC programu PowerShell do [utworzyć farmę programu Sh
 
 ## <a name="deploy-ad-non-high-availability-deployment"></a>Wdrażanie AD (inne niż wysokiej — dostępność — wdrożenia)
 
-Za pomocą rozszerzenia DSC programu PowerShell do [Tworzenie serwera kontrolera domeny usługi AD](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/ad-non-ha) zawierającą następujące zasoby:
+Za pomocą rozszerzenia DSC programu PowerShell do [Tworzenie serwera kontrolera domeny usługi AD](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/ad-non-ha) zawierającą następujące zasoby:
 
 * Sieć wirtualna
 * Jedno konto magazynu
@@ -54,7 +54,7 @@ Za pomocą rozszerzenia DSC programu PowerShell do [Tworzenie serwera kontrolera
 
 ## <a name="deploy-adsql-non-high-availability-deployment"></a>Wdrażanie AD/SQL (inne niż wysokiej — dostępność — wdrożenia)
 
-Za pomocą rozszerzenia DSC programu PowerShell do [Tworzenie autonomicznego serwera SQL Server 2014](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/sql-2014-non-ha) zawierającą następujące zasoby:
+Za pomocą rozszerzenia DSC programu PowerShell do [Tworzenie autonomicznego serwera SQL Server 2014](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2014-non-ha) zawierającą następujące zasoby:
 
 * Sieć wirtualna
 * Dwa konta magazynu
@@ -68,11 +68,11 @@ Konfigurowanie istniejącej maszyny wirtualnej lokalnego Configuration Manager (
 
 ## <a name="create-a-virtual-machine-from-a-user-image"></a>Tworzenie maszyny wirtualnej na podstawie obrazu użytkownika
 
-[Tworzenie maszyny wirtualnej na podstawie obrazu użytkownika niestandardowego](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/101-vm-from-user-image). Ten szablon wdraża również sieć wirtualną (z systemem DNS), publiczny adres IP i interfejsu sieciowego.
+[Tworzenie maszyny wirtualnej na podstawie obrazu użytkownika niestandardowego](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-from-user-image). Ten szablon wdraża również sieć wirtualną (z systemem DNS), publiczny adres IP i interfejsu sieciowego.
 
 ## <a name="basic-virtual-machine"></a>Podstawowa maszyna wirtualna
 
-[Wdrażanie maszyny Wirtualnej z systemem Windows](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/101-simple-windows-vm) zawierającej sieć wirtualną (z systemem DNS), publiczny adres IP i interfejsu sieciowego.
+[Wdrażanie maszyny Wirtualnej z systemem Windows](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-simple-windows-vm) zawierającej sieć wirtualną (z systemem DNS), publiczny adres IP i interfejsu sieciowego.
 
 ## <a name="cancel-a-running-template-deployment"></a>Anuluj uruchomione wdrożenie szablonu
 

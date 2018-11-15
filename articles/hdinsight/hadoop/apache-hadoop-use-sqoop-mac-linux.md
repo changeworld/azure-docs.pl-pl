@@ -1,6 +1,6 @@
 ---
-title: Apache Sqoop przy użyciu usługi Hadoop — Azure HDInsight
-description: Dowiedz się, jak importować i eksportować pomiędzy platformą Hadoop w HDInsight a bazą danych Azure SQL Database przy użyciu narzędzia Apache Sqoop.
+title: Apache Sqoop przy użyciu technologii Apache Hadoop — Azure HDInsight
+description: Dowiedz się, jak do importowania i eksportowania między Apache Hadoop w HDInsight a bazą danych Azure SQL Database przy użyciu narzędzia Apache Sqoop.
 keywords: hadoop, sqoop, sqoop
 services: hdinsight
 author: hrasheed-msft
@@ -10,18 +10,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.openlocfilehash: 6aa5627a0b5e8cb29f0ec68b948084a0bed30529
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bb6ad52f008ddeec5d3ecd3b0fdbc80dbf627101
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259449"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685926"
 ---
-# <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-on-hdinsight-and-sql-database"></a>Do importowania i eksportowania danych pomiędzy platformą Hadoop w HDInsight i usługa SQL Database przy użyciu narzędzia Apache Sqoop
+# <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Przy użyciu narzędzia Apache Sqoop do importowania i eksportowania danych między Apache Hadoop w HDInsight a bazą danych SQL
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Dowiedz się, jak importować i eksportować między klaster Hadoop w usłudze Azure HDInsight a bazą danych Azure SQL Database lub programu Microsoft SQL Server przy użyciu narzędzia Apache Sqoop. Kroki opisane w tej dokumentów użyj `sqoop` polecenia bezpośrednio z węzłem głównym klastra Hadoop. Protokół SSH umożliwia łączenie z węzłem głównym, a następnie uruchom polecenia w tym dokumencie.
+Dowiedz się, jak importować i eksportować między klastra Apache Hadoop w usłudze Azure HDInsight a bazą danych Azure SQL Database lub programu Microsoft SQL Server przy użyciu narzędzia Apache Sqoop. Kroki opisane w tej dokumentów użyj `sqoop` polecenia bezpośrednio z węzłem głównym klastra Hadoop. Protokół SSH umożliwia łączenie z węzłem głównym, a następnie uruchom polecenia w tym dokumencie.
 
 > [!IMPORTANT]
 > Kroki opisane w tym dokumencie pracować tylko z klastrami HDInsight, które używają systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
@@ -170,7 +170,6 @@ Teraz masz pokazaliśmy, jak przy użyciu narzędzia Sqoop. Aby dowiedzieć się
 [hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 [sqldatabase-get-started]: ../sql-database-get-started.md
-[sqldatabase-create-configue]: ../sql-database-create-configure.md
 
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
 [powershell-install]: /powershell/azureps-cmdlets-docs

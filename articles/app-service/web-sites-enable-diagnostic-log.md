@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 31ce23bf6249ef21a2c9fe515b78cdd6ebea9b9c
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 8a58f8722b41944a7be02254e0f00682575c1bbb
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614383"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636972"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji sieci web w usłudze Azure App Service
 ## <a name="overview"></a>Przegląd
@@ -159,7 +159,9 @@ Aby odfiltrować typów określonego dziennika, takich jak HTTP, użyj **— śc
 
 ## <a name="understandlogs"></a> Porady: zrozumienie dzienniki diagnostyczne
 ### <a name="application-diagnostics-logs"></a>Dzienniki diagnostyki aplikacji
-Usługa Application diagnostics przechowuje informacje w określonym formacie dla aplikacji .NET, w zależności od tego, czy są przechowywane dzienniki do pliku systemu lub blob storage. Podstawowy zestaw przechowywanych danych jest taka sama we wszystkich trzech typów magazynów — Data i godzina wystąpienia zdarzenia, identyfikator procesu, który zdarzenia, typ zdarzenia (informacje, ostrzeżenie, błąd) oraz komunikatów o zdarzeniach.
+Usługa Application diagnostics przechowuje informacje w określonym formacie dla aplikacji .NET, w zależności od tego, czy są przechowywane dzienniki do pliku systemu lub blob storage. 
+
+Podstawowy zestaw przechowywanych danych jest taka sama w przypadku obu typów magazynu — Data i godzina wystąpienia zdarzenia, identyfikator procesu, który zdarzenia, typ zdarzenia (informacje, ostrzeżenie, błąd) oraz komunikatów o zdarzeniach. Korzystanie z systemu plików na potrzeby przechowywania dzienników jest przydatne, gdy potrzebujesz uzyskać natychmiastowy dostęp do rozwiązania problemu, ponieważ pliki dziennika są aktualizowane niemal natychmiast. Blob storage jest używany do archiwizacji, ponieważ pliki są buforowane, a następnie opróżniany do kontenera magazynu, zgodnie z harmonogramem.
 
 **System plików**
 
@@ -195,7 +197,7 @@ Dane przechowywane w obiekcie blob powinien wyglądać podobnie do poniższego p
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
 
 > [!NOTE]
-> Pierwszy wiersz dziennika zawiera nagłówki kolumn, reprezentowane w tym przykładzie.
+> Dla platformy ASP.NET Core rejestrowanie odbywa się przy użyciu [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) dostawcy dzienniku dodatkowe depozyty dostawcy plików w kontenerze obiektów blob. Aby uzyskać więcej informacji, zobacz [platformy ASP.NET Core rejestrowania na platformie Azure](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#logging-in-azure).
 >
 >
 

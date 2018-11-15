@@ -1,5 +1,5 @@
 ---
-title: Uruchom przykłady technologii MapReduce usługi Hadoop na HDInsight — Azure
+title: Uruchom przykłady Apache Hadoop MapReduce w HDInsight — Azure
 description: Rozpocznij pracę w plikach jar zawarte w HDInsight przy użyciu przykładów technologii MapReduce. Łączenie z klastrem za pomocą protokołu SSH, a następnie uruchom przykładowe zadania za pomocą polecenia Hadoop.
 keywords: jar przykład hadoop, hadoop przykłady jar, przykłady technologii mapreduce usługi hadoop, przykłady technologii mapreduce
 services: hdinsight
@@ -10,18 +10,18 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 37ba412d9463ccf4cdd18c842910c3c6f5349ef2
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 283171fa00837a8a7b4e0a13d7bca5645cf63a83
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007098"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633069"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Uruchamianie przykładów technologii MapReduce zawarte w HDInsight
 
 [!INCLUDE [samples-selector](../../../includes/hdinsight-run-samples-selector.md)]
 
-Dowiedz się, jak i uruchamianie przykładów technologii MapReduce się z platformą Hadoop w HDInsight.
+Dowiedz się, jak i uruchamianie przykładów technologii MapReduce dołączonej usługi Apache Hadoop w HDInsight.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

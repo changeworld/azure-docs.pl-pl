@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: afed471694dd66adfc285965433a1efd92d1653b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 03961cab8bcf71a9db69937257385db5d3b500d8
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945099"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684107"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie polecenie Zaloguj się przy użyciu dostawcy Salesforce SAML za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-W tym artykule dowiesz się, jak włączyć logowania dla użytkowników z organizacji Salesforce za pomocą [zasady niestandardowe](active-directory-b2c-overview-custom.md) w usłudze Azure Active Directory (Azure AD) B2C.
+W tym artykule dowiesz się, jak włączyć logowania dla użytkowników z organizacji Salesforce za pomocą [zasady niestandardowe](active-directory-b2c-overview-custom.md) w usłudze Azure Active Directory (Azure AD) B2C. Włącz logowanie, dodając [profil techniczny SAML](saml-technical-profile.md) do zasad niestandardowych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

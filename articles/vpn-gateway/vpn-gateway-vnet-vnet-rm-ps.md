@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: a6bdafffb11fce40ecdd876105e17edd2660c751
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: d890aabd6b0acad324ef4b632daaed1db6452ac5
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466907"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686963"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurowanie połączenia bramy sieci VPN między sieciami wirtualnymi przy użyciu programu PowerShell
 
@@ -125,7 +125,7 @@ W przykładach stosujemy następujące wartości:
 1. Zadeklaruj swoje zmienne. W poniższym przykładzie zmienne są deklarowane przy użyciu wartości podanych dla tego ćwiczenia. W większości przypadków należy zastąpić wartości własnymi. Można jednak użyć tych zmiennych, aby wykonać opisane kroki w celu zapoznania się z tego typu konfiguracją. Jeśli jest taka konieczność, zmodyfikuj zmienne, a następnie skopiuj je i wklej do konsoli programu PowerShell.
 
   ```powershell
-  $Sub1 = "Replace_With_Your_Subcription_Name"
+  $Sub1 = "Replace_With_Your_Subscription_Name"
   $RG1 = "TestRG1"
   $Location1 = "East US"
   $VNetName1 = "TestVNet1"
@@ -323,7 +323,7 @@ Ten krok należy wykonać w kontekście nowej subskrypcji. Tę część procedur
 1. Zadeklaruj swoje zmienne. Należy pamiętać o zastąpieniu przykładowych wartości tymi, które mają zostać użyte w danej konfiguracji.
 
   ```powershell
-  $Sub5 = "Replace_With_the_New_Subcription_Name"
+  $Sub5 = "Replace_With_the_New_Subscription_Name"
   $RG5 = "TestRG5"
   $Location5 = "Japan East"
   $VnetName5 = "TestVNet5"

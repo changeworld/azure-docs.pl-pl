@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8d5e29b89d65bc8777feac0c496b3253bc2a6763
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 42b0a2440fa459fa31a7d6e137d124883646c205
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278994"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686014"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Tworzenie klastrów opartych na systemie Linux w HDInsight przy użyciu witryny Azure portal
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -65,7 +65,7 @@ Witryna Azure portal udostępnia większość właściwości klastra. Przy użyc
 
     * Kliknij przycisk **Dalej**.
 
-4. W **zabezpieczeń i sieci**, można Połącz klaster z siecią wirtualną, korzystając z podanej listy rozwijanej. Wybierz sieć wirtualną platformy Azure i podsieć, jeśli chcesz umieścić klastra w sieci wirtualnej. Aby uzyskać informacji na temat używania HDInsight z siecią wirtualną, łącznie z określonymi wymaganiami konfiguracji sieci wirtualnej, zobacz [HDInsight rozszerzanie możliwości za pomocą usługi Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md). Jeśli chcesz używać **pakiet Enterprise Security**, można również wykonać instrukcje w tym miejscu: [Konfigurowanie klastra HDInsight z pakietem Enterprise Security za pomocą usługi Azure Active Directory Domain Services](https://docs.microsoft.com/en-us/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
+4. W **zabezpieczeń i sieci**, można Połącz klaster z siecią wirtualną, korzystając z podanej listy rozwijanej. Wybierz sieć wirtualną platformy Azure i podsieć, jeśli chcesz umieścić klastra w sieci wirtualnej. Aby uzyskać informacji na temat używania HDInsight z siecią wirtualną, łącznie z określonymi wymaganiami konfiguracji sieci wirtualnej, zobacz [HDInsight rozszerzanie możliwości za pomocą usługi Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md). Jeśli chcesz używać **pakiet Enterprise Security**, można również wykonać instrukcje w tym miejscu: [Konfigurowanie klastra HDInsight z pakietem Enterprise Security za pomocą usługi Azure Active Directory Domain Services](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
 
 5. Aby uzyskać **magazynu**, określ, czy usługi Azure Storage (WASB) lub usługi Data Lake Storage jako magazynu domyślnego. Przyjrzyj się poniższej tabeli, aby uzyskać więcej informacji.
 

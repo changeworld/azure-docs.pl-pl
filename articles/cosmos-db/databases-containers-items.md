@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 195686a924d784327c72bcd09a1a50a563e444de
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: d834b7f43d961400e2d5080a46cf921d719f3393
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629076"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684862"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Praca z baz danych Azure Cosmos, kontenery i elementów
 
@@ -94,12 +94,10 @@ Kontener usługi Azure Cosmos obsługuje następujące operacje przy użyciu dow
 | **Operacja** | **Interfejs wiersza polecenia platformy Azure** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi MongoDB** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Wyliczanie kontenerów w bazie danych | Tak* | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
-| Przeczytaj kontenera | Tak* | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
-| Utwórz nowy kontener | Tak* | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
-| Aktualizacja kontenera | Tak* | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
-| Usuwanie kontenera | Tak* | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
-
-\* Będzie dostępna w styczniu 2019 r.
+| Przeczytaj kontenera | Yes | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
+| Utwórz nowy kontener | Yes | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
+| Aktualizacja kontenera | Yes | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
+| Usuwanie kontenera | Yes | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
 
 ## <a name="azure-cosmos-items"></a>Usługa Azure Cosmos elementów
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: b206b49914a448aa3fc9da63f72cca91f9f9ade1
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 703a865eca90deabcb6bbc64a75fc2bad52b43b7
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218971"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288003"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1---preview"></a>Integracja z siecią wirtualną w usłudze Azure Data Lake Storage Gen1 — wersja zapoznawcza
 
@@ -29,8 +29,6 @@ Ta funkcja umożliwia zabezpieczenie konta usługi Data Lake Storage przed zagro
 Integracja z siecią wirtualną w usłudze Data Lake Storage Gen1 wykorzystuje zabezpieczenia punktu końcowego usługi sieci wirtualnej pomiędzy siecią wirtualną a usługą Azure Active Directory (Azure AD) do wygenerowania dodatkowych oświadczeń zabezpieczeń w tokenie dostępu. Te oświadczenia są następnie używane do uwierzytelniania sieci wirtualnej na koncie usługi Data Lake Storage Gen1 i uzyskania dostępu.
 
 > [!NOTE]
-> Ta technologia jest dostępna w wersji zapoznawczej. Nie zalecamy stosowania jej w środowiskach produkcyjnych.
->
 > Korzystanie z tych funkcji nie wiąże się z dodatkowymi opłatami. Konto jest rozliczane według stawki standardowej dla usługi Data Lake Storage Gen1. Aby uzyskać więcej informacji, zobacz [cennik](https://azure.microsoft.com/pricing/details/data-lake-store/?cdn=disable). Zapoznaj się z [cennikiem](https://azure.microsoft.com/pricing/#product-picker) pozostałych usług platformy Azure, z których korzystasz.
 
 ## <a name="scenarios-for-virtual-network-integration-for-data-lake-storage-gen1"></a>Scenariusze dotyczące integracji z siecią wirtualną w usłudze Data Lake Storage Gen1

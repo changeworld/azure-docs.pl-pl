@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 49aa1226de53a1d8f13e0f4f1e79f37f6bfa21ee
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 53ef96b561ccaa1480125f2c509381e980084b7a
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300493"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636697"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Analiza serii czasu w Eksploratorze danych platformy Azure
 
@@ -57,10 +57,10 @@ demo_make_series1
 | render timechart 
 ```
 
-- Użyj [ `make-series` ](https://docs.microsoft.com/azure/kusto/query/make-seriesoperator) operatora, aby utworzyć zestaw trzech szeregów czasowych, gdzie:
+- Użyj [ `make-series` ](/azure/kusto/query/make-seriesoperator) operatora, aby utworzyć zestaw trzech szeregów czasowych, gdzie:
     - `num=count()`: czas serii ruchu
     - `range(min_t, max_t, 1h)`: szeregu czasowego jest tworzony w pojemnikach 1 godziny w zakresie czasu (najstarszej i najnowszej znacznikami czasu rekordy tabeli)
-    - `default=0`: Określ metody fill brak pojemników, utworzyć serii czasu. Można również użyć [ `series_fill_const()` ](https://docs.microsoft.com/azure/kusto/query/series-fill-constfunction), [ `series_fill_forward()` ](https://docs.microsoft.com/azure/kusto/query/series-fill-forwardfunction), [ `series_fill_backward()` ](https://docs.microsoft.com/azure/kusto/query/series-fill-backwardfunction) i [ `series_fill_linear()` ](https://docs.microsoft.com/azure/kusto/query/series-fill-linearfunction) zmian
+    - `default=0`: Określ metody fill brak pojemników, utworzyć serii czasu. Można również użyć [ `series_fill_const()` ](/azure/kusto/query/series-fill-constfunction), [ `series_fill_forward()` ](/azure/kusto/query/series-fill-forwardfunction), [ `series_fill_backward()` ](/azure/kusto/query/series-fill-backwardfunction) i [ `series_fill_linear()` ](/azure/kusto/query/series-fill-linearfunction) zmian
     - `byOsVer`: partycję według systemu operacyjnego
 - Struktura danych szeregu czasowego rzeczywisty jest tablicy liczbowej zagregowane wartości dla każdego kwantu czasu. Używamy `render timechart` wizualizacji.
 
@@ -71,14 +71,14 @@ W powyższej tabeli mamy trzy partycje. Możemy utworzyć oddzielne szeregów: W
 ## <a name="time-series-analysis-functions"></a>Funkcje analizy serii czasu
 
 W tej sekcji możemy wykonać serię typowych przetwarzania funkcji.
-Po utworzeniu zestawu szeregów czasowych ADX obsługuje coraz większej liczby funkcji do przetwarzania i analizowania ich, które znajdują się w [dokumentacja macierzy magazynowych serii czasu](https://docs.microsoft.com/azure/kusto/query/machine-learning-and-tsa). Opiszemy kilka funkcji reprezentatywny dla przetwarzanie i analizowanie danych szeregów czasowych.
+Po utworzeniu zestawu szeregów czasowych ADX obsługuje coraz większej liczby funkcji do przetwarzania i analizowania ich, które znajdują się w [dokumentacja macierzy magazynowych serii czasu](/azure/kusto/query/machine-learning-and-tsa). Opiszemy kilka funkcji reprezentatywny dla przetwarzanie i analizowanie danych szeregów czasowych.
 
 ### <a name="filtering"></a>Filtrowanie
 
 Filtrowanie jest powszechną praktyką w sygnał przetwarzania i użyteczna dla szeregów czasowych, zadania przetwarzania (na przykład smooth sygnał generujące dużo alertów, zmienianie wykrycia).
 - Istnieją dwa ogólne funkcje filtrowania:
-    - [`series_fir()`](https://docs.microsoft.com/azure/kusto/query/series-firfunction): Stosowanie filtru jako część. Używany do obliczania proste przenoszenie średnią i różnice między szeregu czasowym na potrzeby wykrywania zmian.
-    - [`series_iir()`](https://docs.microsoft.com/azure/kusto/query/series-iirfunction): Stosowanie filtru IIR. Używane dla Wygładzanie wykładnicze i zbiorcze sum.
+    - [`series_fir()`](/azure/kusto/query/series-firfunction): Stosowanie filtru jako część. Używany do obliczania proste przenoszenie średnią i różnice między szeregu czasowym na potrzeby wykrywania zmian.
+    - [`series_iir()`](/azure/kusto/query/series-iirfunction): Stosowanie filtru IIR. Używane dla Wygładzanie wykładnicze i zbiorcze sum.
 - `Extend` Szeregi czasowe, dodając nową ruchoma średnia serię rozmiar pojemników 5 (o nazwie *ma_num*) do kwerendy:
 
 ```kusto
@@ -95,8 +95,8 @@ demo_make_series1
 ### <a name="regression-analysis"></a>Analizę regresji
 
 Obsługuje ADX segmentowanych analizę regresji liniowej do oszacowania trend szeregów czasowych.
-- Użyj [series_fit_line()](https://docs.microsoft.com/azure/kusto/query/series-fit-linefunction) aby dopasować najlepsze linii szeregów czasowych do wykrywania ogólny trend.
-- Użyj [series_fit_2lines()](https://docs.microsoft.com/azure/kusto/query/series-fit-2linesfunction) do wykrywania zmian trendów, względem punktu odniesienia, które są przydatne w scenariuszach monitorowania.
+- Użyj [series_fit_line()](/azure/kusto/query/series-fit-linefunction) aby dopasować najlepsze linii szeregów czasowych do wykrywania ogólny trend.
+- Użyj [series_fit_2lines()](/azure/kusto/query/series-fit-2linesfunction) do wykrywania zmian trendów, względem punktu odniesienia, które są przydatne w scenariuszach monitorowania.
 
 Przykład `series_fit_line()` i `series_fit_2lines()` funkcji w zapytaniu serii czasu:
 
@@ -128,8 +128,9 @@ demo_series3
 
 ![Sezonowość serii czasu](media/time-series-analysis/time-series-seasonality.png)
 
-- Użyj [series_periods_detect()](https://docs.microsoft.com/azure/kusto/query/series-periods-detectfunction) próbę automatycznego wykrycia okresy w szeregu czasowym. 
-- Użyj [series_periods_validate()](https://docs.microsoft.com/azure/kusto/query/series-periods-validatefunction) gdy wiemy, czy metryka powinna mieć określone okresy odrębne i chcemy sprawdzić, czy istnieją one.
+- Użyj [series_periods_detect()](/azure/kusto/query/series-periods-detectfunction) próbę automatycznego wykrycia okresy w szeregu czasowym. 
+- Użyj [series_periods_validate()](/azure/kusto/query/series-periods-validatefunction) gdy wiemy, czy metryka powinna mieć określone okresy odrębne i chcemy sprawdzić, czy istnieją one.
+
 > [!NOTE]
 > Jeśli nie istnieją określone okresy distinct jest anomalii
 
@@ -150,7 +151,7 @@ Funkcja wykrywa dzienne i tygodniowe sezonowość. Codziennie ocenia mniejsza ni
 
 ### <a name="element-wise-functions"></a>Funkcje element-Wise
 
-Operacji arytmetycznych i logicznych może odbywać się na szeregu czasowego. Za pomocą [series_subtract()](https://docs.microsoft.com/azure/kusto/query/series-subtractfunction) możemy obliczania serii pozostałego czasu, który jest, różnica między oryginalnego pierwotne metryk i wygładzone jednego i poszukaj anomalii w pozostałych sygnał:
+Operacji arytmetycznych i logicznych może odbywać się na szeregu czasowego. Za pomocą [series_subtract()](/azure/kusto/query/series-subtractfunction) możemy obliczania serii pozostałego czasu, który jest, różnica między oryginalnego pierwotne metryk i wygładzone jednego i poszukaj anomalii w pozostałych sygnał:
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -165,7 +166,9 @@ demo_make_series1
 
 ![Czas serii operacji](media/time-series-analysis/time-series-operations.png)
 
-Niebieski: Szeregi czasowe oryginalnego Red: wygładzone szeregów czasowych zielony: serii pozostałego czasu
+- Niebieski: oryginalna szeregów czasowych
+- Czerwony: wygładzone szeregów czasowych
+- Zielony: Szeregi czasowe resztkowe
 
 ## <a name="time-series-workflow-at-scale"></a>Przepływ pracy z serii czasu w odpowiedniej skali
 
@@ -255,6 +258,6 @@ demo_many_series1
 |   | Lokalizacja 15 | -3207352159611332166 | 1151 | -102743.910227889 |
 |   | Lokalizacja 13 | -3207352159611332166 | 1249 | -86303.2334644601 |
 
-W niespełna dwie minuty w której liczba odczytu nagle porzucony ADX wykryto dwa szeregów czasowych nietypowe (poza 23115).
+W niespełna dwie minuty ADX analizowane w ponad 20 000 szeregów czasowych i wykryto dwa szeregów czasowych nietypowe, w których nagle porzucony odczytu liczby.
 
 Te zaawansowane możliwości w połączeniu z wysoką wydajność ADX Podaj unikatowe i zaawansowane rozwiązanie do analizy serii czasowych.

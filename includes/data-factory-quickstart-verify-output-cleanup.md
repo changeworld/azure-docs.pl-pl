@@ -1,3 +1,16 @@
+---
+author: linda33wj
+ms.service: data-factory
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: jingwang
+ms.openlocfilehash: 831a72fff0931d116a669060b160f51fde6e1d3e
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572527"
+---
 ## <a name="verify-the-output"></a>Sprawdzanie danych wyjściowych
 Potok automatycznie tworzy folder wyjściowy w kontenerze obiektów blob adftutorial. Następnie kopiuje plik emp.txt z folderu wejściowego do folderu wyjściowego. 
 

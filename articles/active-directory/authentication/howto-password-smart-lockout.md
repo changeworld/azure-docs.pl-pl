@@ -5,25 +5,33 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 11/12/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 9ea91f70a72b812803a20244bb4445b76b133b0c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 957aa05efab68f9531fb6576de775aa9901ab44d
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296163"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685807"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Usługa Azure Active Directory, inteligentnej blokady
 
 Inteligentnej blokady blokowania złośliwych podmiotów, którzy są próby odgadnięcia hasła użytkowników lub używać metod siłowych korzysta z rozwiązań inteligentnych w chmurze. Tej analizy może być rozpoznawany logowań pochodzących z prawidłowych użytkowników i je traktować inaczej niż te, które osoby atakujące i innych nieznanych źródeł. Blokada Smart blokuje osoby atakujące, pozwalając użytkownikom w dalszym ciągu dostęp do swoich kont i produktywności jednocześnie.
 
-Domyślnie inteligentnej blokady blokady z konta prób logowania przez minutę po 10 nieudanych próbach. Blokady konta po każdej kolejne nieudane próby logowania, jedną minutę przy pierwszym i dłuższy w przypadku kolejnych prób.
+Domyślnie inteligentnej blokady blokady z konta prób logowania przez minutę po 10 nieudanych prób. Blokady konta po każdej kolejne nieudane próby logowania, jedną minutę przy pierwszym i dłuższy w przypadku kolejnych prób.
+
+* Blokada Smart śledzi ostatnie trzy skróty nieprawidłowe hasło, aby uniknąć reincrementing licznik blokady. Jeśli ktoś wprowadzi nieprawidłowe hasło wiele razy, to zachowanie nie spowoduje konta do blokady.
+   * Ta funkcja nie jest dostępna dla klientów przy użyciu uwierzytelniania przekazywanego włączone.
 
 Inteligentnej blokady jest zawsze włączona dla wszystkich klientów usługi Azure AD przy użyciu ustawień domyślnych, które oferują odpowiedniej kombinacji zabezpieczeń i użyteczności. Dostosowanie ustawień inteligentnej blokady, na wartości specyficzne dla Twojej organizacji wymaga usługi Azure AD podstawowa lub wyższej licencji dla użytkowników.
+
+Za pomocą inteligentnej blokady nie gwarantuje, że oryginalny użytkownik będzie nigdy nie będzie blokowane. Gdy inteligentnej blokady blokady konta użytkownika, spróbujemy najlepsze blokady użytkownika oryginalnego. Usługa blokady próbuje upewnij się, że nieupoważnione osoby nie może uzyskać dostępu do konta oryginalnego użytkowników.  
+
+* Każde centrum danych usługi Azure Active Directory śledzi blokady niezależnie. Użytkownik będzie miał (threshold_limit * datacenter_count) liczba prób, jeśli użytkownik naciśnie każde centrum danych.
+* Inteligentnej blokady używa znanych vs nieznanej lokalizacji w celu rozróżnienia między nieuprawnione i użytkownikiem, oryginalnym. Lokalizacje znane i nieznanych mają oddzielne blokada liczników.
 
 Blokada Smart można zintegrować z hybrydowych wdrożeń, przy użyciu synchronizacji skrótów haseł lub uwierzytelniania przekazywanego, aby chronić lokalnych kont usługi Active Directory są zablokowane przez osoby atakujące. Przez odpowiednie ustawienie zasad inteligentnej blokady w usłudze Azure AD, ataków można odfiltrowane zanim osiągną one w lokalnej usłudze Active Directory.
 

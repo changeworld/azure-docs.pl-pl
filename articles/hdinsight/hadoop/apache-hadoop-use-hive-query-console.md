@@ -1,6 +1,6 @@
 ---
-title: Use Hadoop Hive w konsoli zapytań w HDInsight — Azure
-description: Dowiedz się, jak uruchamianie zapytań programu Hive w klastrze usługi HDInsight Hadoop z poziomu przeglądarki przy użyciu konsoli kwerendy oparte na sieci web.
+title: Use Apache Hive, w konsoli zapytań w HDInsight — Azure
+description: Dowiedz się, jak uruchomić zapytania usługi Apache Hive w klastrze usługi HDInsight Hadoop z poziomu przeglądarki przy użyciu konsoli kwerendy oparte na sieci web.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4083ceca8c9181c8acb1a90e782cb5bca981e684
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: da270792c8987ff43c422c5b03eb8b789b8bda5e
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013976"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634594"
 ---
-# <a name="run-hive-queries-using-the-query-console"></a>Uruchamianie zapytań Hive przy użyciu konsoli zapytań
+# <a name="run-apache-hive-queries-using-the-query-console"></a>Uruchamianie zapytania usługi Apache Hive przy użyciu konsoli zapytań
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-W tym artykule dowiesz się, jak korzystanie z konsoli zapytań HDInsight uruchamia zapytania Hive w klastrze usługi HDInsight Hadoop z poziomu przeglądarki.
+W tym artykule dowiesz się, jak korzystać z konsoli zapytań HDInsight do uruchomienia zapytania usługi Apache Hive w klastrze usługi HDInsight Hadoop z poziomu przeglądarki.
 
 > [!IMPORTANT]
 > Z konsoli zapytań HDInsight jest dostępna tylko w klastrach HDInsight z systemem Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).

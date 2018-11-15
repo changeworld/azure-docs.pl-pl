@@ -1,6 +1,6 @@
 ---
-title: 'Konfigurowanie protokołu BGP na bramy sieci VPN platformy Azure: Menedżer zasobów: programu PowerShell | Dokumentacja firmy Microsoft'
-description: W tym artykule przedstawiono konfigurowanie protokołu BGP z bramy sieci VPN platformy Azure przy użyciu usługi Azure Resource Manager i programu PowerShell.
+title: 'Konfigurowanie protokołu BGP w bramach sieci VPN platformy Azure: usługi Resource Manager: PowerShell | Dokumentacja firmy Microsoft'
+description: W tym artykule przedstawiono konfigurowanie protokołu BGP z bramami sieci VPN Azure przy użyciu usługi Azure Resource Manager i programu PowerShell.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -15,50 +15,50 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: fc9337188fd439082c4aa34f0cbebe3eb2da5d99
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4eb62786522dd1ad7cbf1d5668a4c4493028733c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31603221"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684345"
 ---
-# <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Jak można skonfigurować protokołu BGP na bramy sieci VPN platformy Azure przy użyciu programu PowerShell
-W tym artykule przedstawiono kroki, aby włączyć protokół BGP dla połączenia sieci VPN typu lokacja-lokacja (S2S) między lokalizacjami i połączenia do wirtualnymi przy użyciu modelu wdrażania usługi Resource Manager i programu PowerShell.
+# <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Jak skonfigurować protokół BGP w bramach sieci VPN Azure przy użyciu programu PowerShell
+W tym artykule przedstawiono kroki, aby włączyć protokół BGP dla połączenia sieci VPN typu lokacja-lokacja (S2S) między środowiskami lokalnymi i połączenia sieć wirtualna-sieć wirtualna za pomocą modelu wdrażania usługi Resource Manager i programu PowerShell.
 
 ## <a name="about-bgp"></a>BGP — informacje
-BGP to standardowy protokół routingu używany często w Internecie do wymiany informacji o routingu i osiągalności między dwiema lub wieloma sieciami. Protokół BGP umożliwia bramy sieci VPN platformy Azure i lokalnymi urządzeń sieci VPN, nazywany elementów równorzędnych BGP lub sąsiadów do programu exchange "tras" informujących zarówno bramy na dostępność i uzyskiwanie dla tych prefiksów przechodzić przez bramy lub routery związane. Protokół BGP umożliwia również włączenie routingu tranzytowego między wieloma sieciami poprzez propagowanie tras, których brama BGP uczy się od jednego elementu równorzędnego BGP, we wszystkich innych elementach równorzędnych BGP.
+BGP to standardowy protokół routingu używany często w Internecie do wymiany informacji o routingu i osiągalności między dwiema lub wieloma sieciami. Protokół BGP umożliwia bram Azure VPN Gateway i lokalnych urządzeń sieci VPN, o nazwie elementów równorzędnych protokołu BGP lub sąsiednimi wymianę "tras" zawierających obu bram informacje na temat dostępności i osiągalności tych prefiksów za pośrednictwem bram lub routerów związane. Protokół BGP umożliwia również włączenie routingu tranzytowego między wieloma sieciami poprzez propagowanie tras, których brama BGP uczy się od jednego elementu równorzędnego BGP, we wszystkich innych elementach równorzędnych BGP.
 
-Zobacz [Omówienie protokołu BGP z bramy sieci VPN Azure](vpn-gateway-bgp-overview.md) dla omówione więcej korzyści BGP i zrozumieć wymagania techniczne i zagadnienia dotyczące użycia protokołu BGP.
+Zobacz [Omówienie protokołu BGP z bramami sieci VPN Azure](vpn-gateway-bgp-overview.md) do więcej dyskusji na temat korzyści użycia protokołu BGP i zrozumienie wymagań technicznych oraz kwestii związanych z przy użyciu protokołu BGP.
 
-## <a name="getting-started-with-bgp-on-azure-vpn-gateways"></a>Wprowadzenie do korzystania z protokołu BGP w bramach sieci VPN platformy Azure
+## <a name="getting-started-with-bgp-on-azure-vpn-gateways"></a>Wprowadzenie do protokołu BGP w bramach sieci VPN platformy Azure
 
-W tym artykule przedstawiono kroki umożliwiające wykonywanie następujących zadań:
+Ten artykuł przeprowadzi Cię przez kroki, aby wykonać następujące zadania:
 
-* [Część 1 - Włącz protokół BGP dla bramy sieci VPN platformy Azure](#enablebgp)
-* [Część 2 - ustanowić połączenia między lokalizacjami z protokołem BGP](#crossprembgp)
-* [Część 3 — ustanowienie połączenia do wirtualnymi z protokołem BGP](#v2vbgp)
+* [Część 1. Włączanie protokołu BGP dla bramy sieci VPN platformy Azure](#enablebgp)
+* [Część 2 — ustanowić połączenia między środowiskami lokalnymi za pomocą protokołu BGP](#crossprembgp)
+* [Część 3 — ustanowienia połączenia sieć wirtualna-sieć wirtualna za pomocą protokołu BGP](#v2vbgp)
 
-Każda część instrukcji formularzy podstawowego bloku konstrukcyjnego włączenia protokołu BGP w połączenie sieciowe. Po ukończeniu wszystkich trzech części kompilacji topologii jak pokazano na poniższym diagramie:
+Każda część instrukcji stanowi podstawowy blok konstrukcyjny włączania protokołu BGP w łączność sieciową. Jeśli wykonasz wszystkich trzech części, tworzysz topologii, jak pokazano na poniższym diagramie:
 
 ![Topologii protokołu BGP](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crosspremv2v.png)
 
-Możesz łączyć części ze sobą w celu kompilacji przesyłania bardziej złożonymi, hop wielu, sieci, która odpowiada Twoim potrzebom.
+Można połączyć części ze sobą, aby tworzyć bardziej złożone, z wieloma przeskokami tranzytowej sieci, który odpowiada Twoim potrzebom.
 
-## <a name ="enablebgp"></a>Część 1 — Konfigurowanie protokołu BGP dla bramy sieci VPN platformy Azure
-Kroki konfiguracji Ustaw parametry BGP bramy sieci VPN platformy Azure, jak pokazano na poniższym diagramie:
+## <a name ="enablebgp"></a>Część 1 — Konfigurowanie protokołu BGP bramy sieci VPN platformy Azure
+Kroki konfiguracji Skonfiguruj parametry protokołu BGP bramy sieci VPN platformy Azure, jak pokazano na poniższym diagramie:
 
-![Protokół BGP bramy](./media/vpn-gateway-bgp-resource-manager-ps/bgp-gateway.png)
+![Brama BGP](./media/vpn-gateway-bgp-resource-manager-ps/bgp-gateway.png)
 
 ### <a name="before-you-begin"></a>Przed rozpoczęciem
 * Sprawdź, czy masz subskrypcję platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure, możesz aktywować [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
-* Zainstaluj polecenia cmdlet programu PowerShell usługi Azure Resource Manager. Aby uzyskać więcej informacji na temat instalowania poleceń cmdlet programu PowerShell, zobacz artykuł [How to install and configure Azure PowerShell](/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell). 
+* Zainstaluj polecenia cmdlet programu Azure PowerShell Resource Manager. Aby uzyskać więcej informacji na temat instalowania poleceń cmdlet programu PowerShell, zobacz artykuł [How to install and configure Azure PowerShell](/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell). 
 
-### <a name="step-1---create-and-configure-vnet1"></a>Krok 1 — Tworzenie i konfigurowanie VNet1
+### <a name="step-1---create-and-configure-vnet1"></a>Krok 1 — Tworzenie i konfigurowanie sieci VNet1
 #### <a name="1-declare-your-variables"></a>1. Zadeklarowanie zmiennych
-W tym ćwiczeniu Rozpoczniemy przez zadeklarowanie naszych zmiennych. Poniższy przykład deklaruje zmienne przy użyciu wartości dla tego testu. Podczas konfigurowania produktu należy pamiętać o zastąpieniu ich odpowiednimi wartościami. Tych zmiennych można użyć, aby wykonać opisane kroki w celu zapoznania się z tego typu konfiguracją. Zmodyfikuj zmienne, a następnie skopiuj je i wklej do konsoli programu PowerShell.
+Na potrzeby tego ćwiczenia Rozpoczniemy od zadeklarowania zmiennych. Poniższy przykład deklaruje zmienne przy użyciu wartości na potrzeby tego ćwiczenia. Podczas konfigurowania produktu należy pamiętać o zastąpieniu ich odpowiednimi wartościami. Tych zmiennych można użyć, aby wykonać opisane kroki w celu zapoznania się z tego typu konfiguracją. Zmodyfikuj zmienne, a następnie skopiuj je i wklej do konsoli programu PowerShell.
 
 ```powershell
-$Sub1 = "Replace_With_Your_Subcription_Name"
+$Sub1 = "Replace_With_Your_Subscription_Name"
 $RG1 = "TestBGPRG1"
 $Location1 = "East US"
 $VNetName1 = "TestVNet1"
@@ -79,8 +79,8 @@ $Connection12 = "VNet1toVNet2"
 $Connection15 = "VNet1toSite5"
 ```
 
-#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Połączyć subskrypcję i Utwórz nową grupę zasobów
-Aby używać poleceń cmdlet Menedżera zasobów, upewnij się, że można przełączyć do trybu programu PowerShell. Więcej informacji znajduje się w temacie [Using Windows PowerShell with Resource Manager](../powershell-azure-resource-manager.md) (Używanie programu Windows PowerShell z usługą Resource Manager).
+#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Połączyć subskrypcję i utworzyć nową grupę zasobów
+Za pomocą poleceń cmdlet usługi Resource Manager, upewnij się, że przełączanie do trybu programu PowerShell. Więcej informacji znajduje się w temacie [Using Windows PowerShell with Resource Manager](../powershell-azure-resource-manager.md) (Używanie programu Windows PowerShell z usługą Resource Manager).
 
 Otwórz konsolę programu PowerShell i połącz się ze swoim kontem. Użyj poniższego przykładu w celu łatwiejszego nawiązania połączenia:
 
@@ -91,7 +91,7 @@ New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```
 
 #### <a name="3-create-testvnet1"></a>3. Utworzenie sieci TestVNet1
-Poniższy przykład tworzy sieć wirtualną o nazwie TestVNet1 i trzy podsieci, co GatewaySubnet o nazwie jedną o nazwie frontonu i jedną o nazwie wewnętrznej bazy danych. Podczas zastępowania wartości ważne jest, aby podsieć bramy zawsze nosiła nazwę GatewaySubnet. W przypadku nadania jej innej nazwy proces tworzenia bramy zakończy się niepowodzeniem.
+Poniższy przykład tworzy sieć wirtualną o nazwie sieci TestVNet1 oraz trzy podsieci, nazwy GatewaySubnet, jeden frontonu o nazwie i jeden o nazwie wewnętrznej bazy danych. Podczas zastępowania wartości ważne jest, aby podsieć bramy zawsze nosiła nazwę GatewaySubnet. W przypadku nadania jej innej nazwy proces tworzenia bramy zakończy się niepowodzeniem.
 
 ```powershell
 $fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1 $besub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
@@ -100,9 +100,9 @@ $gwsub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix
 New-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
 ```
 
-### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>Krok 2 — Tworzenie bramy sieci VPN dla TestVNet1 z parametrami BGP
-#### <a name="1-create-the-ip-and-subnet-configurations"></a>1. Tworzenie konfiguracji adresów IP i podsieci
-Następnie zostaje przesłane żądanie przydzielenia publicznego adresu IP do bramy, która zostanie utworzona dla sieci wirtualnej. Zostanie również definiować wymagane podsieci i konfiguracje adresów IP.
+### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>Krok 2 — Tworzenie bramy sieci VPN dla sieci TestVNet1 z parametrami protokołu BGP
+#### <a name="1-create-the-ip-and-subnet-configurations"></a>1. Utwórz konfiguracje adresów IP i podsieci
+Następnie zostaje przesłane żądanie przydzielenia publicznego adresu IP do bramy, która zostanie utworzona dla sieci wirtualnej. Należy również zdefiniować wymagana podsieć i konfiguracje adresów IP.
 
 ```powershell
 $gwpip1 = New-AzureRmPublicIpAddress -Name $GWIPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
@@ -113,21 +113,21 @@ $gwipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 -Subn
 ```
 
 #### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. Tworzenie bramy sieci VPN z numerem AS
-Utwórz bramę sieci wirtualnej dla sieci TestVNet1. Protokół BGP wymaga bramy sieci VPN opartej na trasach, a także parametr dodanie - Asn, aby ustawić właściwość ASN (AS Number) dla TestVNet1. Jeśli parametr numer ASN nie jest ustawiona, jest przypisany numer ASN 65515. Tworzenie bramy może potrwać co najmniej 30 minut.
+Utwórz bramę sieci wirtualnej dla sieci TestVNet1. Protokół BGP wymaga bramy sieci VPN opartej na trasach, a także dodawanie parametru, - Asn, aby ustawić numer ASN (numer AS) dla sieci TestVNet1. Jeśli parametr numer ASN nie jest ustawiony, zostanie przypisany numer ASN 65515. Tworzenie bramy może potrwać co najmniej 30 minut.
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku HighPerformance -Asn $VNet1ASN
 ```
 
 #### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>3. Uzyskaj adres IP elementu równorzędnego protokołu BGP platformy Azure
-Po utworzeniu bramy należy uzyskać adres IP elementu równorzędnego protokołu BGP dla bramy sieci VPN platformy Azure. Ten adres jest potrzebne do skonfigurowania bramy sieci VPN platformy Azure jako element równorzędny BGP dla lokalnego urządzenia sieci VPN.
+Po utworzeniu bramy, należy uzyskać adres IP elementu równorzędnego protokołu BGP bramy sieci VPN platformy Azure. Ten adres jest wymagane do skonfigurowania bramy Azure VPN Gateway, jako element równorzędny BGP dla lokalnych urządzeń sieci VPN.
 
 ```powershell
 $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
 $vnet1gw.BgpSettingsText
 ```
 
-Ostatnie polecenie pokazuje odpowiednich konfiguracji protokołu BGP dla bramy sieci VPN platformy Azure; na przykład:
+Ostatnie polecenie pokazuje odpowiednich konfiguracji protokołu BGP bramy sieci VPN platformy Azure; na przykład:
 
 ```powershell
 $vnet1gw.BgpSettingsText
@@ -138,13 +138,13 @@ $vnet1gw.BgpSettingsText
 }
 ```
 
-Po utworzeniu bramy można użyć tej bramy do nawiązywania połączenia między lokalizacjami lub wirtualnymi do połączenia z protokołem BGP. Poniższe sekcje przeprowadzenie kroki, aby ukończyć wykonywania.
+Po utworzeniu bramy można użyć tej bramy można ustanowić połączenia między środowiskami lokalnymi lub połączenia sieć wirtualna-sieć wirtualna za pomocą protokołu BGP. Poniższe sekcje opisano kroki, aby ukończyć wykonywania.
 
-## <a name ="crossprembbgp"></a>Część 2 - ustanowić połączenia między lokalizacjami z protokołem BGP
+## <a name ="crossprembbgp"></a>Część 2 — ustanowić połączenia między środowiskami lokalnymi za pomocą protokołu BGP
 
-Nawiązanie połączenia między różnymi lokalizacjami, musisz utworzyć bramy sieci lokalnej do reprezentowania lokalnego urządzenia sieci VPN i połączenia bramy sieci VPN bramy sieci lokalnej. Gdy istnieją artykuły, które pomagają tych kroków, ten artykuł zawiera dodatkowe właściwości, które są wymagane, aby określić parametry konfiguracji protokołu BGP.
+Aby nawiązać połączenie między środowiskami lokalnymi, musisz utworzyć bramy sieci lokalnej do reprezentowania swoje lokalne urządzenie sieci VPN i połączenia do łączenia bramy sieci VPN z bramy sieci lokalnej. Gdy istnieją artykułów, które przeprowadzą Cię przez następujące kroki, ten artykuł zawiera dodatkowe właściwości, które są wymagane, aby określić parametry konfiguracji protokołu BGP.
 
-![Protokół BGP dla między lokalizacjami](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crossprem.png)
+![Protokół BGP dla między środowiskami lokalnymi](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crossprem.png)
 
 Przed kontynuowaniem upewnij się, że zostały wykonane [część 1](#enablebgp) tego ćwiczenia.
 
@@ -152,7 +152,7 @@ Przed kontynuowaniem upewnij się, że zostały wykonane [część 1](#enablebgp
 
 #### <a name="1-declare-your-variables"></a>1. Zadeklarowanie zmiennych
 
-Tego ćwiczenia w dalszym ciągu przy tworzeniu konfiguracji przedstawione na diagramie. Należy pamiętać o zastąpieniu przykładowych wartości tymi, które mają zostać użyte w danej konfiguracji.
+To ćwiczenie w dalszym ciągu kompilacji konfiguracji przedstawionej na diagramie. Należy pamiętać o zastąpieniu przykładowych wartości tymi, które mają zostać użyte w danej konfiguracji.
 
 ```powershell
 $RG5 = "TestBGPRG5"
@@ -164,17 +164,17 @@ $LNGASN5 = 65050
 $BGPPeerIP5 = "10.52.255.254"
 ```
 
-Kilka rzeczy do uwzględnienia dotyczącymi parametrów bramy sieci lokalnej:
+Kilka rzeczy, aby informacje dotyczące parametrów bramy sieci lokalnej:
 
-* Brama sieci lokalnej może być w tej samej lub innej lokalizacji i grupy zasobów jako brama sieci VPN. Ten przykład przedstawia je w różnych grupach zasobów w różnych lokalizacjach.
-* Minimalna prefiks, musisz zadeklarować dla bramy sieci lokalnej jest adres hosta, adresu IP elementu równorzędnego protokołu BGP na urządzeniu sieci VPN. W takim przypadku jest /32 prefiksu "10.52.255.254/32".
-* Przypomnienia należy użyć innego protokołu BGP numerów ASN między lokalnymi sieciami i sieci wirtualnej platformy Azure. Jeśli są one takie same, musisz zmienić numer ASN Twojej sieci wirtualnej, jeśli lokalnego urządzenia sieci VPN używa już właściwość ASN do elementu równorzędnego z innych sąsiadów BGP.
+* Brama sieci lokalnej może być w tej samej lub innej lokalizacji i grupie zasobów co Brama sieci VPN. Ten przykład przedstawia je w różnych grupach zasobów w różnych lokalizacjach.
+* To minimalny prefiks, czego potrzebujesz do deklarowania bramy sieci lokalnej jest adres hosta, adresu IP elementu równorzędnego protokołu BGP na twoim urządzeniu sieci VPN. W tym przypadku jest/32 prefiksu "10.52.255.254/32".
+* Przypominamy należy użyć innego ASN protokołu BGP między sieciami lokalnymi a siecią wirtualną platformy Azure. Jeśli są one takie same, należy zmienić numer ASN Twojej sieci wirtualnej, jeśli Twoje lokalne urządzenie sieci VPN używa już numer ASN nawiązać komunikację równorzędną z innymi sąsiadów protokołu BGP.
 
 Przed kontynuowaniem upewnij się, że nadal masz połączenie z subskrypcją 1.
 
-#### <a name="2-create-the-local-network-gateway-for-site5"></a>2. Tworzenie bramy sieci lokalnej dla Site5
+#### <a name="2-create-the-local-network-gateway-for-site5"></a>2. Utwórz bramę sieci lokalnej dla Site5
 
-Pamiętaj utworzyć grupę zasobów, jeśli nie został utworzony, przed utworzeniem bramy sieci lokalnej. Zwróć uwagę, dwie dodatkowe parametry dla bramy sieci lokalnej: numer Asn i BgpPeerAddress.
+Pamiętaj utworzyć grupę zasobów, jeśli nie został utworzony, przed utworzeniem bramy sieci lokalnej. Zwróć uwagę, dwa dodatkowe parametry dla bramy sieci lokalnej: numer Asn i BgpPeerAddress.
 
 ```powershell
 New-AzureRmResourceGroup -Name $RG5 -Location $Location5
@@ -182,7 +182,7 @@ New-AzureRmResourceGroup -Name $RG5 -Location $Location5
 New-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP5 -AddressPrefix $LNGPrefix50 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP5
 ```
 
-### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>Krok 2 — połączenie bramy sieci wirtualnej i Brama sieci lokalnej
+### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>Krok 2 — połączenie bramy sieci wirtualnej i bramy sieci lokalnej
 
 #### <a name="1-get-the-two-gateways"></a>1. Pobierz dwóch bram
 
@@ -191,15 +191,15 @@ $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $
 $lng5gw  = Get-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG5
 ```
 
-#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. Utwórz TestVNet1 Site5 połączenia
+#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. Utwórz sieć TestVNet1 Site5 połączenia
 
-W tym kroku należy utworzyć połączenie z TestVNet1 do Site5. Należy określić "-wartość $True" Aby włączyć protokół BGP dla tego połączenia. Jak już wspomniano, istnieje możliwość połączenia zarówno protokołu BGP, jak i z systemem innym niż BGP dla tej samej bramy sieci VPN platformy Azure. Jeśli protokół BGP jest włączony we właściwości połączenia, Azure nie włączyć protokół BGP dla tego połączenia, nawet jeśli parametry protokołu BGP jest już skonfigurowane na obu bram.
+W tym kroku zostanie utworzone połączenie z sieci wirtualnej TestVNet1 do Site5. Należy określić "-EnableBGP $True" można włączyć protokołu BGP dla tego połączenia. Jak już wspomniano, istnieje możliwość połączenia protokołu BGP i protokołów innych niż BGP dla tej samej bramy sieci VPN platformy Azure. Chyba, że Protokół BGP jest włączony we właściwości połączenia, Azure nie włączyć protokół BGP dla tego połączenia, nawet jeśli Protokół BGP parametry zostały już skonfigurowane na obu bram.
 
 ```powershell
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
 ```
 
-Poniższy przykład zawiera listę parametrów wprowadzone w sekcji konfiguracji protokołu BGP na lokalnego urządzenia sieci VPN w tym ćwiczeniu:
+Poniższy przykład wyświetla parametry, które możesz wprowadzić do sekcji konfiguracji protokołu BGP na twoim urządzeniu sieci VPN w środowisku lokalnym na potrzeby tego ćwiczenia:
 
 ```
 
@@ -212,21 +212,21 @@ Poniższy przykład zawiera listę parametrów wprowadzone w sekcji konfiguracji
 - eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
 ```
 
-Po kilku minutach zostanie nawiązane połączenie, a sesji komunikacji równorzędnej BGP rozpoczyna się po nawiązaniu połączenia IPsec.
+Po kilku minutach zostanie nawiązane połączenie, i sesji komunikacji równorzędnej protokołu BGP raz rozpoczyna protokołu IPsec, połączenie zostanie nawiązane.
 
-## <a name ="v2vbgp"></a>Część 3 — ustanowienie połączenia do wirtualnymi z protokołem BGP
+## <a name ="v2vbgp"></a>Część 3 — ustanowienia połączenia sieć wirtualna-sieć wirtualna za pomocą protokołu BGP
 
-W tej sekcji dodaje połączenie do wirtualnymi z obsługą protokołu BGP, jak pokazano na poniższym diagramie:
+W tej sekcji dodaje połączenia sieć wirtualna-sieć wirtualna za pomocą protokołu BGP, jak pokazano na poniższym diagramie:
 
-![Protokół BGP dla sieci wirtualnej do sieci wirtualnej](./media/vpn-gateway-bgp-resource-manager-ps/bgp-vnet2vnet.png)
+![Protokół BGP dla sieci wirtualnej między sieciami wirtualnymi](./media/vpn-gateway-bgp-resource-manager-ps/bgp-vnet2vnet.png)
 
-Poniższe instrukcje nadal z poprzednich kroków. Należy wykonać [części I](#enablebgp) do tworzenia i konfigurowania TestVNet1 i bramy sieci VPN z protokołem BGP. 
+Poniższe instrukcje są kontynuacją z poprzednich kroków. Należy wykonać [części I](#enablebgp) tworzenie i konfigurowanie sieci TestVNet1 i bramę VPN z protokołem BGP. 
 
 ### <a name="step-1---create-testvnet2-and-the-vpn-gateway"></a>Krok 1 — Tworzenie TestVNet2 i bramy sieci VPN
 
-Należy się upewnić, że przestrzeń adresową nową sieć wirtualną TestVNet2, nie mogą się pokrywać ze wszystkimi zakresy sieci wirtualnej.
+Należy się upewnić, że przestrzeń adresów IP nowej sieci wirtualnej TestVNet2, nie nakłada się z żadnym z zakresów w Twojej sieci wirtualnej.
 
-W tym przykładzie sieci wirtualne należą do tej samej subskrypcji. Można skonfigurować do wirtualnymi połączeń między różnych subskrypcji. Aby uzyskać więcej informacji, zobacz [skonfigurować połączenia do wirtualnymi](vpn-gateway-vnet-vnet-rm-ps.md). Upewnij się, że możesz dodać "-wartość $True" podczas tworzenia połączenia, aby włączyć protokół BGP.
+W tym przykładzie sieci wirtualne należą do tej samej subskrypcji. Można skonfigurować połączenia sieć wirtualna-sieć wirtualna między różnymi subskrypcjami. Aby uzyskać więcej informacji, zobacz [Konfigurowanie połączenia sieć wirtualna-sieć wirtualna](vpn-gateway-vnet-vnet-rm-ps.md). Upewnij się, możesz dodać "-EnableBgp $True" podczas tworzenia połączeń, aby włączyć protokół BGP.
 
 #### <a name="1-declare-your-variables"></a>1. Zadeklarowanie zmiennych
 
@@ -253,7 +253,7 @@ $Connection21 = "VNet2toVNet1"
 $Connection12 = "VNet1toVNet2"
 ```
 
-#### <a name="2-create-testvnet2-in-the-new-resource-group"></a>2. Utwórz TestVNet2 w nowej grupy zasobów
+#### <a name="2-create-testvnet2-in-the-new-resource-group"></a>2. Utwórz TestVNet2 w nowej grupie zasobów
 
 ```powershell
 New-AzureRmResourceGroup -Name $RG2 -Location $Location2
@@ -265,9 +265,9 @@ $gwsub2 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName2 -AddressPrefix
 New-AzureRmVirtualNetwork -Name $VNetName2 -ResourceGroupName $RG2 -Location $Location2 -AddressPrefix $VNetPrefix21,$VNetPrefix22 -Subnet $fesub2,$besub2,$gwsub2
 ```
 
-#### <a name="3-create-the-vpn-gateway-for-testvnet2-with-bgp-parameters"></a>3. Tworzenie bramy sieci VPN dla TestVNet2 z parametrami BGP
+#### <a name="3-create-the-vpn-gateway-for-testvnet2-with-bgp-parameters"></a>3. Tworzenie bramy sieci VPN dla TestVNet2 z parametrami protokołu BGP
 
-Żądaj publicznego adresu IP do przydzielenia do bramy utworzysz sieci wirtualnej i zdefiniuj wymagane podsieci i konfiguracje adresów IP.
+Żądanie publicznego adresu IP do przydzielenia do bramy, należy utworzyć dla sieci wirtualnej i definiowania wymagane podsieci i konfiguracje adresów IP.
 
 ```powershell
 $gwpip2    = New-AzureRmPublicIpAddress -Name $GWIPName2 -ResourceGroupName $RG2 -Location $Location2 -AllocationMethod Dynamic
@@ -277,15 +277,15 @@ $subnet2   = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -Virtua
 $gwipconf2 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName2 -Subnet $subnet2 -PublicIpAddress $gwpip2
 ```
 
-Utwórz bramę sieci VPN z numerem AS. Należy zmienić domyślny numer ASN w Twojej bramy sieci VPN platformy Azure. Numery ASN dla połączonych sieci wirtualnych musi być inna, aby włączyć protokół BGP i routing tranzytowy.
+Tworzenie bramy sieci VPN, z numerem AS. Konieczne jest przesłonięcie domyślny numer ASN na bram sieci VPN platformy Azure. Numery ASN dla połączonych sieci wirtualnych muszą być różne, aby włączyć protokół BGP i routing tranzytowy.
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Location2 -IpConfigurations $gwipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard -Asn $VNet2ASN
 ```
 
-### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>Krok 2 — Połącz bram TestVNet1 i TestVNet2
+### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>Krok 2 — połączenie bram sieci wirtualnej TestVNet1 i TestVNet2
 
-W tym przykładzie zarówno bramy znajdują się w tej samej subskrypcji. Ten krok można wykonać w tej samej sesji programu PowerShell.
+W tym przykładzie obie bramy znajdują się w tej samej subskrypcji. Po ukończeniu tego kroku, w tej samej sesji programu PowerShell.
 
 #### <a name="1-get-both-gateways"></a>1. Pobierz obu bram
 
@@ -296,9 +296,9 @@ $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $R
 $vnet2gw = Get-AzureRmVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2
 ```
 
-#### <a name="2-create-both-connections"></a>2. Utwórz zarówno połączenia
+#### <a name="2-create-both-connections"></a>2. Tworzenie zarówno połączeń
 
-W tym kroku utworzysz połączenie z TestVNet1 TestVNet2 i połączenie z TestVNet2 do TestVNet1.
+W tym kroku zostanie utworzone połączenie z sieci wirtualnej TestVNet1 TestVNet2 i połączenie z TestVNet2 do sieci TestVNet1.
 
 ```powershell
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection12 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet2gw -Location $Location1 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3' -EnableBgp $True
@@ -311,11 +311,11 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupNam
 > 
 > 
 
-Po wykonaniu tych kroków, połączenie zostanie nawiązane po kilku minutach. Sesja komunikacji równorzędnej BGP działa po zakończeniu połączenia do wirtualnymi.
+Po wykonaniu tych kroków, połączenie zostanie nawiązane po kilku minutach. Sesja komunikacji równorzędnej protokołu BGP działa po ukończeniu połączenia sieć wirtualna-sieć wirtualna.
 
-Jeśli ukończono wszystkie trzy elementy w tym ćwiczeniu zostały ustalone następujące topologii sieci:
+Jeśli ukończono wszystkie trzy części tego ćwiczenia upewnieniu się, następująca topologia sieci:
 
-![Protokół BGP dla sieci wirtualnej do sieci wirtualnej](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crosspremv2v.png)
+![Protokół BGP dla sieci wirtualnej między sieciami wirtualnymi](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crosspremv2v.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

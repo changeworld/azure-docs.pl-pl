@@ -10,12 +10,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: 67dbab911acdc80da30abd9a35247912300a3fb1
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 616895db281efe802c93c7ee0009e7b28d0f6092
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978557"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515067"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Rozpoczęcie pracy w usłudze Azure Dev Spaces za pomocą platformy .NET Core
 
@@ -72,7 +72,7 @@ az group create --name MyResourceGroup --location <region>
 Utwórz klaster Kubernetes za pomocą następującego polecenia:
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing
+az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing --generate-ssh-keys
 ```
 
 Utworzenie klastra trwa kilka minut.

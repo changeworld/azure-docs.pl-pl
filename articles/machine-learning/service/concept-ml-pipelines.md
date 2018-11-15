@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 11/07/2018
-ms.openlocfilehash: 59a35cd7ca3af446853d518fc7e7d48d2321ff10
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 099b59cde4ee438f16b9d7e77bd81c004006cb71
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278977"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684872"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>Potoki i usługi Azure Machine Learning
 
@@ -44,7 +44,7 @@ Gdy potok został zaprojektowany, jest często więcej dostrajanie wokół pętl
 
 Za pomocą usługi Azure Machine Learning używając różnych zestawów narzędzi i platform, takich jak Microsoft Cognitive Toolkit lub TensorFlow dla każdego kroku w potoku. Współrzędne platformy Azure między różnymi [celów obliczeń](concept-azure-machine-learning-architecture.md) używać tak, aby pośrednie dane mogą być udostępniane podrzędnego obliczeniowych elementów docelowych łatwe. 
 
-Możesz [śledzić metryki dla eksperymentów potoku](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-track-experiments) bezpośrednio w witrynie Azure portal. 
+Możesz [śledzić metryki dla eksperymentów potoku](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) bezpośrednio w witrynie Azure portal. 
 
 ## <a name="key-advantages"></a>Najważniejsze zalety
 

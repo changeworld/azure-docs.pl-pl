@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 6729a0e3ccbb96dc178925bbab4cfbf8189c4a14
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: ebbb12a6454a093ad0ac3b3cc30eb489eeef21ec
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278263"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687218"
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Optymalizowanie zapytań technologii Hive w usłudze Azure HDInsight
 
@@ -72,7 +72,7 @@ Niektóre kwestie partycjonowania:
 
 * **Czy nie ma pod partycji** -partycjonowania w kolumnach za pomocą tylko kilku wartości może spowodować, że kilka partycji. Na przykład partycjonowania na płeć tworzy tylko dwie partycje można utworzyć (głosu męskiego i żeńskiego), w związku z tym tylko zredukowaniem opóźnień, maksymalnie o połowę.
 * **Nie przez partycję** — na y. Tworzenie partycji kolumn przy użyciu unikatowej wartości (na przykład nazwa użytkownika) powoduje, że wiele partycji. Za pośrednictwem partycji powoduje, że wiele obciążenia na namenode klastra nie pozostał do obsługi dużej liczby katalogów.
-* **Należy unikać niesymetryczność danych** — należy uważnie wybierać klucz partycji, aby wszystkie partycje mają rozmiar nieparzystych. Na przykład partycjonowania na *stanu* kolumny może spowodować przesunięcie rozkład danych. Ponieważ stan Kalifornia populacji prawie 30 x, że z Vermont, rozmiar partycjonowania jest potencjalnie niesymetryczna i wydajność będzie zależeć znacznie.
+* **Należy unikać niesymetryczność danych** — należy uważnie wybierać klucz partycji, aby wszystkie partycje mają rozmiar nieparzystych. Na przykład partycjonowania na *stanu* kolumny może spowodować przesunięcie rozkład danych. Ponieważ stan Kalifornia populacji prawie 30 x, że z Vermont, rozmiar partycji jest potencjalnie niesymetryczna i wydajność będzie zależeć znacznie.
 
 Aby utworzyć tabelę partycji, użyj *podzielona na partycje według* klauzuli:
 

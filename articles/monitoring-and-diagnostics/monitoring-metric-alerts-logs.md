@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 55b86e0d23936e47a82aedf213e20eb6dec3d56d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 66a10cdd6324147509bcb45dad9e9b40b5335fef
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621823"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684920"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Tworzenie alertów metryk dla dzienników w usłudze Azure Monitor  
 
@@ -48,7 +48,7 @@ Metryki dla dzienników zebranych dotyczące działania danych usługi Log Analy
 1. **Aktywny obszar roboczy usługi Log Analytics**: prawidłowego i aktywnego obszaru roboczego usługi Log Analytics musi być obecny. Aby uzyskać więcej informacji, zobacz [Utwórz obszar roboczy usługi Log Analytics w witrynie Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
 2. **Agent jest skonfigurowany dla obszaru roboczego usługi Log Analytics**: Agent musi być skonfigurowana dla maszyn wirtualnych platformy Azure (i/lub) lokalnych maszyn wirtualnych do wysyłania danych do obszaru roboczego analizy dzienników, używane w poprzednim kroku. Aby uzyskać więcej informacji, zobacz [Log Analytics — omówienie agenta](../monitoring/monitoring-overview-azure-agents.md).
 3. **Zainstalowano obsługiwanych rozwiązań do analizy dzienników**: usługi Log Analytics, rozwiązanie powinno być skonfigurowane i wysyłania danych do obszaru roboczego usługi Log Analytics — obsługiwane są rozwiązania [liczniki wydajności dla Windows i Linux](../log-analytics/log-analytics-data-sources-performance-counters.md), [Rekordy pulsu agenta kondycji](../monitoring/monitoring-solution-agenthealth.md), [rozwiązanie Update management, i [dane zdarzenia](../log-analytics/log-analytics-data-sources-windows-events.md).
-4. **Konfigurowana do wysyłania dzienników rozwiązań do analizy dziennika**: rozwiązanie usługi Upgrade Analytics dziennika powinien mieć wymagane dzienniki/dane odpowiadające [metryki obsługiwane dla obszarów roboczych usługi Log Analytics](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces) włączone. Na przykład w przypadku *% dostępnej pamięci* licznika jego muszą być skonfigurowane w [liczniki wydajności](../log-analytics/log-analytics-data-sources-performance-counters.md) rozwiązania pierwszy.
+4. **Konfigurowana do wysyłania dzienników rozwiązań do analizy dziennika**: rozwiązanie Log Analytics mają wymagane dzienniki/dane odpowiadające [metryki obsługiwane dla obszarów roboczych usługi Log Analytics](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces) włączone. Na przykład w przypadku *% dostępnej pamięci* licznika jego muszą być skonfigurowane w [liczniki wydajności](../log-analytics/log-analytics-data-sources-performance-counters.md) rozwiązania pierwszy.
 
 ## <a name="configuring-metric-alert-for-logs"></a>Konfigurowanie alertu metryki dla dzienników
  alerty metryk mogą być tworzone i zarządzane przy użyciu witryny Azure portal, szablonów usługi Resource Manager, interfejs API REST, programu PowerShell i wiersza polecenia platformy Azure. Ponieważ alerty metryki dla dzienników po wariant alertów dotyczących metryk — wymagania wstępne są wykonywane, można utworzyć alertu metryki dla dzienników dla określonego obszaru roboczego usługi Log Analytics. Wszystkie właściwości i funkcje związane z [ alertów dotyczących metryk](monitoring-near-real-time-metric-alerts.md) będą one dotyczyć alertów metryk, dzienników, a także, w tym schemat ładunek, limity przydziału stosowane i rozliczane ceny.
@@ -101,7 +101,7 @@ Aby osiągnąć takie same, jeden można korzystać z przykładu szablonu Azure 
             "type": "string",
             "defaultValue": "true",
             "metadata": {
-                "description": "Specifies whether the log convertion rule is enabled"
+                "description": "Specifies whether the log conversion rule is enabled"
             }
         },
         "convertRuleMetric": {

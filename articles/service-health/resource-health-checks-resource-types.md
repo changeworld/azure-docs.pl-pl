@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 633501b03a362fbd07e14e308e18488f03af5af5
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 6f02e20efbcb34d1f70f9f10acbe5bb3800cb4d2
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069214"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683955"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy zasobów i kontrole kondycji w usłudze Azure resource health
 Poniżej znajduje się pełna lista wszystkich testów, które są wykonywane w usłudze resource health według typów zasobów.
@@ -100,6 +100,11 @@ Poniżej znajduje się pełna lista wszystkich testów, które są wykonywane w 
 |Wykonane testy|
 |---|
 |<ul><li> Można wykonać operacji środowiska uruchomieniowego, takich jak rejestracji, instalacji lub wysyłania w przestrzeni nazw?</li></ul>|
+
+## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capacities
+|Wykonane testy|
+|---|
+|<ul><li>Jest zasobem pojemności pracę?</li><li>Czy wszystkie obciążenia działa?</li></ul>|
 
 ## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
 |Wykonane testy|

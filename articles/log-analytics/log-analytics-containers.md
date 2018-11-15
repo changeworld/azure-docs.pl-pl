@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 6bde2fb0fc9534d170be1d755856f6f779e47d7c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 575b3ec5e729b325cad216ae463063acbb68f20b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625865"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685943"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Rozwiązanie do monitorowania kontenerów w usłudze Log Analytics
 
@@ -108,7 +108,7 @@ Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiąz
     - Jeśli masz środowisko Red Hat OpenShift, zapoznaj się z [konfigurowania agenta usługi Log Analytics dla Red Hat OpenShift](#configure-an-oms-agent-for-red-hat-openshift).
     - Jeśli masz klaster usługi Kubernetes przy użyciu usługi Azure Container Service:
        - Przegląd [konfigurowania agenta Log Analytics w systemie Linux dla platformy Kubernetes](#configure-an-oms-linux-agent-for-kubernetes).
-       - Przegląd [Konfigurowanie agenta Windows usługi Upgrade Analytics dziennika dla rozwiązania Kubernetes](#configure-an-oms-windows-agent-for-kubernetes).
+       - Przegląd [Konfigurowanie agenta Log Analytics Windows dla rozwiązania Kubernetes](#configure-an-oms-windows-agent-for-kubernetes).
        - Przegląd [Użyj narzędzia Helm, aby wdrożyć agenta Log Analytics na platformie Kubernetes z systemem Linux](#use-helm-to-deploy-oms-agent-on-linux-kubernetes).
     - Jeśli istnieje klastra usługi Azure Container Service DC/OS, dowiedzieć się więcej o [monitorowanie klastra usługi Azure Container Service DC/OS z usługą Log Analytics](../container-service/dcos-swarm/container-service-monitoring-oms.md).
     - Jeśli masz środowisku trybu Docker Swarm, dowiedzieć się więcej o [Konfigurowanie agenta usługi Log Analytics dla rozwiązania Docker Swarm](#configure-an-oms-agent-for-docker-swarm).

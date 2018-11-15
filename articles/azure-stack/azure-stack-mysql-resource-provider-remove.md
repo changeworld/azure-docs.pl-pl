@@ -11,30 +11,36 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/14/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: dcd1c40717cb35fe4daa9ab9e2c66f334ffff5fe
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 7d3b0e179972464a1ed857c576ca8a7c8fc2e162
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361502"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686810"
 ---
 # <a name="remove-the-mysql-resource-provider"></a>Usuwanie dostawcy zasobów bazy danych MySQL
 
 Zanim usuniesz dostawcy zasobów bazy danych MySQL, należy usunąć wszystkie zależności dostawcy. Należy także kopię pakiet wdrożeniowy, który został użyty do zainstalowania dostawcy zasobów.
 
+  |Minimalna wersja usługi Azure Stack|Wersja MySQL RP|
+  |-----|-----|
+  |Wersja 1808 (1.1808.0.97)|[MySQL RP wersji 1.1.30.0](https://aka.ms/azurestacksqlrp11300)|
+  |W wersji 1804 (1.0.180513.1)|[MySQL RP wersji 1.1.24.0](https://aka.ms/azurestackmysqlrp11240)
+  |     |     |
+
 ## <a name="dependency-cleanup"></a>Oczyszczanie zależności
 
 Istnieje kilka zadań oczyszczania, aby zrobić przed uruchomieniem skryptu DeployMySqlProvider.ps1, aby usunąć dostawcę zasobów.
 
-Dzierżawcy jest odpowiedzialny za następujące zadania oczyszczania:
+Użytkownicy dzierżawy usługi Azure Stack jest odpowiedzialny za następujące zadania oczyszczania:
 
 * Usuń wszystkie swoje bazy danych od dostawcy zasobów. (Usuwanie baz danych dzierżawy nie powoduje usunięcia danych.)
 * Aby wyrejestrować się z przestrzeni nazw dostawcy.
 
-Administrator jest odpowiedzialna za następujące zadania oczyszczania:
+Operator usługi Azure Stack jest odpowiedzialny za następujące zadania oczyszczania:
 
 * Usuwa serwerami hostingu z karty MySQL.
 * Usuwa dowolne plany, które odwołują się karta MySQL.

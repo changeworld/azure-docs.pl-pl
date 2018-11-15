@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/24/2018
 ms.author: sethm
 ms.reviewer: scottnap
-ms.openlocfilehash: bcdd5b6d28a6c08b7b36e170fcb7d184fcf65eb0
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: d215af253471258e487dadcfae0cfd7edafd1c26
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024464"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634655"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>Łączenie usługi Azure Stack na platformie Azure przy użyciu sieci VPN
 
@@ -62,7 +62,7 @@ Najpierw utwórz zasobów sieciowych na platformie Azure. Poniższe instrukcje p
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta platformy Azure.
 2. W aplikacji portal użytkowników, wybierz **+ Utwórz zasób**.
 3. Przejdź do **Marketplace**, a następnie wybierz pozycję **sieć**.
-4. Wybierz **sieć wirtualna**.
+4. Wybierz pozycję **Sieć wirtualna**.
 5. Użyj informacji z tabeli konfiguracji sieci, aby zidentyfikować wartości dla platformy Azure **nazwa**, **przestrzeń adresowa**, **Nazwa podsieci**, i **adres podsieci zakres**.
 6. Aby uzyskać **grupy zasobów**, Utwórz nową grupę zasobów, lub jeśli już masz, wybierz **Użyj istniejącej**.
 7. Wybierz **lokalizacji** Twojej sieci wirtualnej.  Jeśli używasz przykładowych wartości, wybierz opcję **wschodnie stany USA** lub użyj innej lokalizacji.
@@ -89,7 +89,7 @@ Najpierw utwórz zasobów sieciowych na platformie Azure. Poniższe instrukcje p
 3. Wybierz z listy zasobów sieciowych, **bramy sieci wirtualnej**.
 4. W **nazwa**, typ **Azure-GW**.
 5. Aby wybrać sieć wirtualną, wybrać **sieć wirtualna**. Następnie wybierz pozycję **AzureVnet** z listy.
-6. Wybierz **publiczny adres IP**. Gdy **wybierz publiczny adres IP** zostanie otwarta sekcja, wybierz opcję **Utwórz nową**.
+6. Wybierz pozycję **Publiczny adres IP**. Gdy **wybierz publiczny adres IP** zostanie otwarta sekcja, wybierz opcję **Utwórz nową**.
 7. W **nazwa**, typ **Azure-GW-PiP**, a następnie wybierz pozycję **OK**.
 8. Domyślnie dla **typu sieci VPN**, **oparte na trasach** jest zaznaczone. Zachowaj **oparte na trasach** typu sieci VPN.
 9. Upewnij się, że wartości w polach **Subskrypcja** i **Lokalizacja** są poprawne. Możesz przypiąć zasób do pulpitu nawigacyjnego. Wybierz pozycję **Utwórz**.
@@ -127,7 +127,7 @@ Teraz Utwórz maszynę wirtualną na platformie Azure i umieść je w podsieci m
 
 1. W witrynie Azure portal wybierz **+ Utwórz zasób**.
 2. Przejdź do **Marketplace**, a następnie wybierz pozycję **obliczenia**.
-3. Z listy obrazów maszyn wirtualnych wybierz **systemu Windows Server 2016 Datacenter Oval** obrazu.
+3. Z listy obrazów maszyn wirtualnych wybierz **systemu Windows Server 2016 Datacenter — wersja próbna** obrazu.
 4. Na **podstawy** sekcji dla **nazwa**, typ **AzureVM**.
 5. Wpisz prawidłową nazwę użytkownika i hasło. Użyjesz tego konta do logowania się do maszyny wirtualnej, po jego utworzeniu.
 6. Podaj **subskrypcji**, **grupy zasobów**, i **lokalizacji**, a następnie wybierz pozycję **OK**.
@@ -157,7 +157,7 @@ Administrator usługi może Zaloguj się jako użytkownik Aby przetestować plan
     ![Utwórz nową sieć wirtualną](media/azure-stack-connect-vpn/image3.png)
 
 3. Przejdź do **Marketplace**, a następnie wybierz pozycję **sieć**.
-4. Wybierz **sieć wirtualna**.
+4. Wybierz pozycję **Sieć wirtualna**.
 5. Dla **nazwa**, **przestrzeń adresowa**, **Nazwa podsieci**, i **zakres adresów podsieci**, użyj wartości z tabeli konfiguracji sieci.
 6. W **subskrypcji**, pojawi się w subskrypcji, która została utworzona wcześniej.
 7. Aby uzyskać **grupy zasobów**, możesz utworzyć grupę zasobów lub jeśli już istnieje, wybrać **Użyj istniejącej**.
@@ -227,7 +227,7 @@ Aby sprawdzić połączenie sieci VPN, Utwórz dwie maszyny wirtualne: jeden na 
 
 1. W witrynie Azure portal wybierz **+ Utwórz zasób**.
 2. Przejdź do **Marketplace**, a następnie wybierz pozycję **obliczenia**.
-3. Z listy obrazów maszyn wirtualnych wybierz **systemu Windows Server 2016 Datacenter Oval** obrazu.
+3. Z listy obrazów maszyn wirtualnych wybierz **systemu Windows Server 2016 Datacenter — wersja próbna** obrazu.
 4. Na **podstawy** sekcji w **nazwa**, typ **Azs-VM**.
 5. Wpisz prawidłową nazwę użytkownika i hasło. Użyjesz tego konta do logowania się do maszyny Wirtualnej, po jego utworzeniu.
 6. Podaj **subskrypcji**, **grupy zasobów**, i **lokalizacji**, a następnie wybierz pozycję **OK**.

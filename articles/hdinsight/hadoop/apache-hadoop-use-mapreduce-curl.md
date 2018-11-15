@@ -1,6 +1,6 @@
 ---
-title: Używanie MapReduce i połączeniu z usługą Hadoop w HDInsight — Azure
-description: Dowiedz się, jak i zdalne uruchamianie zadań MapReduce z usługą Hadoop w HDInsight przy użyciu programu Curl.
+title: Używanie MapReduce i Curl przy użyciu technologii Apache Hadoop w HDInsight — Azure
+description: Dowiedz się, jak i zdalne uruchamianie zadań MapReduce z usługą Apache Hadoop w HDInsight przy użyciu programu Curl.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 496b7dacdb30507fe5eb2d4d7c5602003a944269
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: afa9b57d9c0e2acf81b5307273ac038e92073655
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010902"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632298"
 ---
-# <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-rest"></a>Uruchamianie zadań MapReduce z usługą Hadoop w HDInsight przy użyciu usługi REST
+# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Wykonywanie zadań MapReduce z usługą Apache Hadoop w HDInsight przy użyciu interfejsu REST
 
-Dowiedz się, jak uruchamiać zadania MapReduce w usłudze Hadoop w klastrze HDInsight za pomocą interfejsu API REST usługi WebHCat. Narzędzie curl jest używany do pokazują, jak możesz porozmawiać z HDInsight przy użyciu surowego żądania HTTP do uruchamiania zadań MapReduce.
+Dowiedz się, jak uruchamiać zadania MapReduce na technologii Apache Hadoop w klastrze HDInsight za pomocą interfejsu API REST usługi WebHCat. Narzędzie curl jest używany do pokazują, jak możesz porozmawiać z HDInsight przy użyciu surowego żądania HTTP do uruchamiania zadań MapReduce.
 
 > [!NOTE]
 > Jeśli znasz już przy użyciu serwerów opartą na systemie Linux platformą Hadoop, ale dopiero zaczynasz korzystać z HDInsight, zobacz [co musisz wiedzieć o opartych na systemie Linux z platformą Hadoop w HDInsight](../hdinsight-hadoop-linux-information.md) dokumentu.
