@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: 7a3545e3fdf37f33db4c3b77be6cf6d5db0f6aef
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e44d267fcc9986c5e215fc4844f49b28918a3111
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973579"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711926"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Wizualizowanie danych z usługi Azure Monitor
 Ten artykuł zawiera podsumowanie dostępnych metod w celu wizualizacji danych przechowywanych w usłudze Azure Monitor. Obejmuje to [metryki w magazynie Azure metryki](../monitoring/monitoring-data-collection.md#metrics) i [rejestrować dane w usłudze Log Analytics](../monitoring/monitoring-data-collection.md#logs). 
@@ -50,7 +50,7 @@ Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitor
 - Ograniczone kontekstowych Przechodzenie do szczegółów.
 
 ## <a name="azure-monitor-views"></a>Widoki usługi Azure Monitor
-[Widoki w usłudze Azure Monitor](../log-analytics/log-analytics-view-designer.md) pozwalają na tworzenie niestandardowych wizualizacji przy użyciu dane dzienników przechowywane w usłudze Log Analytics. Są one używane przez [rozwiązania do monitorowania](../monitoring/monitoring-solutions.md) przedstawienie danych pobierają.
+[Widoki w usłudze Azure Monitor](../log-analytics/log-analytics-view-designer.md) pozwalają na tworzenie niestandardowych wizualizacji przy użyciu dane dzienników przechowywane w usłudze Log Analytics. Są one używane przez [rozwiązania do monitorowania](../azure-monitor/insights/solutions.md) przedstawienie danych pobierają.
 
 ![Widok](media/visualizations/view.png)
 

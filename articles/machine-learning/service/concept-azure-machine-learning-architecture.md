@@ -9,12 +9,12 @@ ms.author: haining
 author: hning86
 ms.reviewer: larryfr
 ms.date: 10/24/2018
-ms.openlocfilehash: 95f74b23b9d0c89966347f066041b23f64f3b82c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0acf41cc0a2673ba665d1815b493df928fa4507d
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210690"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706810"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: pojęcia i architektura
 
@@ -156,9 +156,9 @@ Eksperyment to zbiór wielu uruchomień z danego skryptu. Zawsze należy do obsz
 
 Na przykład z użyciem eksperymentu zobacz [Szybki Start: wprowadzenie do usługi Azure Machine Learning](quickstart-get-started.md) dokumentu.
 
-## <a name="pipelines"></a>Potoki
+## <a name="pipeline"></a>Potok
 
-Potoki są używane do tworzenia i zarządzania nimi przepływy pracy, które łączyć usługi machine learning faz. Na przykład potok może obejmować przygotowywania danych, szkolenie modelu, wdrożenie modelu i fazy wnioskowania. Każda faza może obejmować wiele kroków, z których każdy może uruchamiane w różnych celów obliczeń.
+Potoki usługi Machine learning służą do tworzenia i zarządzania nimi przepływy pracy, które łączyć usługi machine learning faz. Na przykład potok może obejmować przygotowywania danych, szkolenie modelu, wdrożenie modelu i fazy wnioskowania. Każda faza może obejmować wiele kroków, z których każdy może uruchamiane w różnych celów obliczeń.
 
 Aby uzyskać więcej informacji na temat potoków uczenia maszynowego za pomocą tej usługi, zobacz artykuł [potoków i Azure Machine Learning](concept-ml-pipelines.md).
 

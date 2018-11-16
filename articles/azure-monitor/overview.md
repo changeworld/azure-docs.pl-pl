@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 0f17cf7f2ef655f482b08b5c7163c0d85be77ce5
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 3de1939ec4004c2709fb0e366fb492462cf2d216
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068706"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710770"
 ---
 # <a name="azure-monitor-overview"></a>Omówienie usługi Azure Monitor
 
@@ -67,7 +67,7 @@ Usługa Azure Monitor może zbierać dane dzienników z dowolnego klienta REST p
 
 
 ## <a name="insights"></a>Insights
-Dane monitorowania jest przydatna, jeśli można zwiększyć wgląd w działanie środowiska obliczeniowego. Usługa Azure Monitor obejmuje kilka funkcji i narzędzi, które zapewniają cenne informacje dotyczące aplikacji i innych zasobów, których one zależą. [Monitorowanie rozwiązań](../monitoring/monitoring-solutions.md) i funkcje, takie jak [usługi Application Insights](../application-insights/app-insights-overview.md) i szczegółowe informacje o kontenerze zapewniają wgląd w różnych aspektów aplikacji i określonych usług platformy Azure. 
+Dane monitorowania jest przydatna, jeśli można zwiększyć wgląd w działanie środowiska obliczeniowego. Usługa Azure Monitor obejmuje kilka funkcji i narzędzi, które zapewniają cenne informacje dotyczące aplikacji i innych zasobów, których one zależą. [Monitorowanie rozwiązań](../azure-monitor/insights/solutions.md) i funkcje, takie jak [usługi Application Insights](../application-insights/app-insights-overview.md) i szczegółowe informacje o kontenerze zapewniają wgląd w różnych aspektów aplikacji i określonych usług platformy Azure. 
 
 ### <a name="application-insights"></a>Application Insights
 [Usługa Application Insights](../application-insights/app-insights-overview.md) monitoruje dostępność, wydajność i użycie aplikacji sieci web, czy są one hostowane w chmurze lub lokalnie. Wykorzystuje platformę analiz zaawansowanych danych w usłudze Log Analytics, zapewniają wgląd do działania aplikacji i diagnozować błędy bez oczekiwania na zgłoszenie ich przez użytkownika. Usługa Application Insights obejmuje punkty połączenia z szeroką gamą narzędzi programistycznych i integruje się z programem Visual Studio w celu lepszego wspierania procesów metodyki DevOps.
@@ -86,9 +86,9 @@ Usługa Azure Monitor maszyny Wirtualnej insights monitoruje usługi Azure virtu
 ![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>Rozwiązania do monitorowania
-[Monitorowanie rozwiązań](../monitoring/monitoring-solutions.md) w usłudze Azure Monitor są spakowane zestawy logiki ze szczegółowymi informacjami dla określonej aplikacji lub usługi. One zbierać dane do usługi Log Analytics oraz innych danych monitorowania za pomocą [zapytania](../log-analytics/log-analytics-queries.md) do analizy i [widoków](../log-analytics/log-analytics-view-designer.md) wizualizacji. Rozwiązania do monitorowania są [udostępnianych przez firmę Microsoft](../monitoring/monitoring-solutions-inventory.md) i jej partnerów, aby zapewnić monitorowanie dla różnych usług platformy Azure i innych aplikacji.
+[Monitorowanie rozwiązań](../azure-monitor/insights/solutions.md) w usłudze Azure Monitor są spakowane zestawy logiki ze szczegółowymi informacjami dla określonej aplikacji lub usługi. One zbierać dane do usługi Log Analytics oraz innych danych monitorowania za pomocą [zapytania](../log-analytics/log-analytics-queries.md) do analizy i [widoków](../log-analytics/log-analytics-view-designer.md) wizualizacji. Rozwiązania do monitorowania są [udostępnianych przez firmę Microsoft](../azure-monitor/insights/solutions-inventory.md) i jej partnerów, aby zapewnić monitorowanie dla różnych usług platformy Azure i innych aplikacji.
 
-![Rozwiązania do monitorowania](../monitoring/media/monitoring-solutions/overview.png)
+![Rozwiązania do monitorowania](media/overview/solutions-overview.png)
 
 ## <a name="responding-to-critical-situations"></a>Reagowanie w sytuacjach krytycznych
 Oprócz umożliwienia interakcyjne analizowanie danych monitorowania, to efektywne rozwiązanie monitorowania musi być w stanie aktywnie reagować na krytyczne warunki określone w danych, które są zbierane. To może to być wysłanie tekst lub wiadomości e-mail do administratora odpowiedzialnego za badanie problemu. Lub można uruchomić zautomatyzowany proces, który próbuje rozwiązać warunek błędu.

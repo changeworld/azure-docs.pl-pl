@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: bba008bc6d1214aa4b2ca7cc609586a3d18159fd
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 534c47e1c3189258617505808f7a8c7b2e3a3c6e
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613617"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711042"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Rozwiązanie usługi alert Management w usłudze Azure Log Analytics
 
@@ -36,7 +36,7 @@ To rozwiązanie działa ze wszystkimi rekordami w repozytorium usługi Log Analy
 - W przypadku alertów programu System Center Operations Manager [Połącz grupę zarządzania programu Operations Manager do obszaru roboczego usługi Log Analytics](log-analytics-om-agents.md).  Alerty utworzone w programie System Center Operations Manager są importowane do usługi Log Analytics.  
 
 ## <a name="configuration"></a>Konfigurowanie
-Dodawanie rozwiązania do zarządzania alertami z obszarem roboczym usługi Log Analytics przy użyciu procesu opisanego w [Dodawanie rozwiązań](../monitoring/monitoring-solutions.md). Nie są wymagane żadne dalsze czynności konfiguracyjne.
+Dodawanie rozwiązania do zarządzania alertami z obszarem roboczym usługi Log Analytics przy użyciu procesu opisanego w [Dodawanie rozwiązań](../azure-monitor/insights/solutions.md). Nie są wymagane żadne dalsze czynności konfiguracyjne.
 
 ## <a name="management-packs"></a>Pakiety administracyjne
 Jeśli grupa zarządzania programu System Center Operations Manager jest połączona z obszarem roboczym usługi Log Analytics, następujące pakiety administracyjne są instalowane w programie System Center Operations Manager po dodaniu tego rozwiązania.  Nie istnieje żadna konfiguracja ani Obsługa pakiety administracyjne wymagane.

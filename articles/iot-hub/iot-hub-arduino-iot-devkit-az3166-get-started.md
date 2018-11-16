@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 08/27/2018
 ms.author: rangv
-ms.openlocfilehash: 55901d6f3bcbf5511b6921939fdcba03972efed3
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: d6cbd2992968a57cfba99117e9f1fc1ab9b5b5b3
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182845"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711841"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit az3166 usługi nawiązać połączenie z usługi Azure IoT Hub
 
@@ -195,7 +195,7 @@ Teraz wszystko jest ustawione przy użyciu przygotowywanie i konfigurowanie śro
 1. W nowym oknie otwartym projekcie, kliknij przycisk `F1` aby otworzyć paletę poleceń, typ i wybierz **IoT Workbench: chmura**, a następnie wybierz **świadczenia usługi Azure**. Postępuj zgodnie z przewodnika krok po kroku do zakończenia inicjowania obsługi usługi Azure IoT Hub i utworzenie urządzenia.
     ![Aprowizowanie chmury](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/cloud-provision.png)
 
-1. Kliknij przycisk `F1` aby otworzyć paletę poleceń, typ i wybierz **IoT Workbench: urządzenie**, a następnie wybierz **konfiguracji ustawień urządzenia > Wybierz parametry połączenia urządzenia Centrum IoT**.
+1. Kliknij przycisk `F1` aby otworzyć paletę poleceń, typ i wybierz **IoT Workbench: urządzenie**, a następnie wybierz **konfiguracji ustawień urządzenia > Parametry połączenia urządzenia konfiguracji > Wybierz IoT Hub parametry połączenia urządzenia**.
 
 1. Na Mxchip, przytrzymaj wciśnięty **przycisk A**, wypychania i wersji **resetowania** przycisk, a następnie zwolnij **przycisk A**. Twoje Mxchip przechodzi w tryb konfiguracji i zapisuje parametry połączenia.
     ![Parametry połączenia](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/connection-string.png)

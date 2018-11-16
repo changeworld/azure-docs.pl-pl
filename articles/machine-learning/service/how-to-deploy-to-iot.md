@@ -10,12 +10,12 @@ author: shivanipatel
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 7d706cf71761496fd740c729224ee4331eeb2911
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: dc6119bdca850a71064795a80f3087c15189a2e5
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091627"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710005"
 ---
 # <a name="prepare-to-deploy-models-on-iot-edge"></a>Przygotowywanie do wdrażania modeli na brzegowych urządzeniach IoT
 
@@ -27,7 +27,7 @@ Przed przystąpieniem do wdrażania modelu na urządzeniu usługi edge, umożliw
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://aka.ms/AMLfree).
 
 * Obszar roboczy usługi Azure Machine Learning. Aby go utworzyć, użyj kroków w [wprowadzenie do usługi Azure Machine Learning](quickstart-get-started.md) dokumentu.
 

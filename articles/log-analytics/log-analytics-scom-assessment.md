@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c17c14b015531bf3f978ac30b013c80ad5be779e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 210e8a80d19f84058a059a3cfe34a14e037507db
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006519"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712368"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optymalizowanie środowiska za pomocą rozwiązania System Center Operations Manager Health Check (wersja zapoznawcza)
 
@@ -212,7 +212,7 @@ Każdy zalecenie obejmuje wskazówki na temat ważnych. Skorzystać z poniższyc
 
 ## <a name="use-health-check-focus-area-recommendations"></a>Sprawdzanie kondycji Użyj zaleceń obszar koncentracji uwagi
 
-Korzystać z rozwiązania sprawdzania kondycji, w usłudze Log Analytics, musisz mieć zainstalowane oprogramowanie. Aby dowiedzieć się więcej o instalowaniu rozwiązania, zobacz [zainstalować rozwiązanie do zarządzania](../monitoring/monitoring-solutions.md). Po jego zainstalowaniu, można wyświetlić podsumowanie zalecenia za pomocą kafelka System Center Operations Manager Health Check na **Przegląd** strony dla obszaru roboczego w witrynie Azure portal.
+Korzystać z rozwiązania sprawdzania kondycji, w usłudze Log Analytics, musisz mieć zainstalowane oprogramowanie. Aby dowiedzieć się więcej o instalowaniu rozwiązania, zobacz [zainstalować rozwiązanie do zarządzania](../azure-monitor/insights/solutions.md). Po jego zainstalowaniu, można wyświetlić podsumowanie zalecenia za pomocą kafelka System Center Operations Manager Health Check na **Przegląd** strony dla obszaru roboczego w witrynie Azure portal.
 
 Wyświetlanie ocen zgodności podsumowania dla Twojej infrastruktury, a następnie wejdź do zalecenia.
 

@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: a4689093508c3287e60da9d4668393e71211fbdd
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 0dbf8a44007fbba39f6ac4c20e375a6d13ac9021
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405706"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711076"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indeksowanie obiektów blob JSON za pomocą indeksatora obiektów blob usługi Azure Search
 W tym artykule pokazano, jak skonfigurować indeksator obiektów blob usługi Azure Search można wyodrębnić zawartości ze strukturą z obiektów blob JSON w usłudze Azure Blob storage.
@@ -24,11 +24,8 @@ Obiektów blob JSON w usłudze Azure Blob storage są zazwyczaj pojedynczego dok
 | Dokument JSON | parsingMode | Opis | Dostępność |
 |--------------|-------------|--------------|--------------|
 | Jeden na obiekt blob | `json` | Analizuje obiektów blob JSON jako jeden fragment tekstu. Każdy obiekt blob JSON staje się pojedynczym dokumencie usługi Azure Search. | Ogólnie dostępna w obu [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) i [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) interfejsów API. |
-| Wiele na obiekt blob | `jsonArray` | Analizuje tablicę JSON w obiekcie blob, w którym każdy element tablicy staje się oddzielny dokument usługi Azure Search.  | W wersji zapoznawczej w [REST api-version =`2017-11-11-Preview` ](search-api-2017-11-11-preview.md) i [.NET SDK w wersji zapoznawczej](https://aka.ms/search-sdk-preview). |
+| Wiele na obiekt blob | `jsonArray` | Analizuje tablicę JSON w obiekcie blob, w którym każdy element tablicy staje się oddzielny dokument usługi Azure Search.  | Ogólnie dostępna w obu [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) i [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) interfejsów API. |
 
-> [!Note]
-> Interfejsy API (wersja zapoznawcza) są przeznaczone do testowania i oceny, a nie powinny być używane w środowiskach produkcyjnych.
->
 
 ## <a name="setting-up-json-indexing"></a>Konfigurowanie indeksowania JSON
 Indeksowanie obiektów blob JSON jest podobny do wyodrębniania zwykłego dokumentu w przepływie pracy trzyczęściowej wspólne dla wszystkich indeksatorów w usłudze Azure Search.
@@ -103,9 +100,9 @@ W pełni określonego żądania może wyglądać w następujący sposób:
 
 Jak wspomniano, mapowań pól nie są wymagane. Podany indeks z "text", "datePublished i"tags"pola, obiekt blob indeksator może wywnioskować poprawne mapowania bez pola mapowania znajduje się w żądaniu.
 
-## <a name="how-to-parse-json-arrays-preview"></a>Jak analizować tablice notacji JSON (wersja zapoznawcza)
+## <a name="how-to-parse-json-arrays"></a>Jak analizować tablice notacji JSON
 
-Alternatywnie możesz zdecydować się na funkcję w wersji zapoznawczej tablicy JSON. Ta możliwość jest przydatna, gdy zawierają obiekty BLOB *Tablica obiektów JSON*, i chcesz, aby każdy element, aby stać się oddzielny dokument usługi Azure Search. Na przykład biorąc pod uwagę następujący obiekt blob JSON, które możesz wypełnić indeksu usługi Azure Search przy użyciu trzech oddzielnych dokumentów, każdy z pola "id" i "text".  
+Alternatywnie można wybrać funkcję tablicy JSON. Ta możliwość jest przydatna, gdy zawierają obiekty BLOB *Tablica obiektów JSON*, i chcesz, aby każdy element, aby stać się oddzielny dokument usługi Azure Search. Na przykład biorąc pod uwagę następujący obiekt blob JSON, które możesz wypełnić indeksu usługi Azure Search przy użyciu trzech oddzielnych dokumentów, każdy z pola "id" i "text".  
 
     [
         { "id" : "1", "text" : "example 1" },
@@ -115,9 +112,9 @@ Alternatywnie możesz zdecydować się na funkcję w wersji zapoznawczej tablicy
 
 ### <a name="indexer-definition-for-a-json-array"></a>Definicja indeksatora dla tablicy JSON
 
-Dla tablicy JSON, żądanie indexer używa interfejsu API w wersji zapoznawczej i `jsonArray` analizatora. Są to tylko dwa wymagania specyficzne dla tablicy indeksowanie obiektów blob JSON.
+Dla tablicy JSON, żądanie indeksator używa `jsonArray` analizatora. Są to tylko dwa wymagania specyficzne dla tablicy indeksowanie obiektów blob JSON.
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

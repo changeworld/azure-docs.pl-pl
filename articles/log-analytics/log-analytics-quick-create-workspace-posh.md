@@ -15,12 +15,12 @@ ms.topic: conceptal
 ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 11307e3c0dbf831a03b5f7685b8e44f03f8d242e
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1df88e18a6065f9d3917f1f59e0743f71bee71e5
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957232"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710760"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Utwórz obszar roboczy usługi Log Analytics przy użyciu programu Azure PowerShell
 
@@ -131,4 +131,4 @@ Teraz, gdy masz dostępnego obszaru roboczego, możesz skonfigurować zbieranie 
 * Aby włączyć zbieranie danych z zasobów platformy Azure Diagnostyka Azure lub usługi Azure storage, zobacz [zbieranie dzienników platformy Azure usługi i metryk do użycia w usłudze Log Analytics](log-analytics-azure-storage.md).  
 * Dodaj [programu System Center Operations Manager jako źródła danych](log-analytics-om-agents.md) do zbierania danych z agentów raportujących do grupy zarządzania programu Operations Manager i zapisać ją w obszarze roboczym usługi Log Analytics.  
 * Połącz [programu Configuration Manager](log-analytics-sccm.md) do zaimportowania komputerów, które są członkami kolekcji w hierarchii.  
-* Przegląd [rozwiązań do zarządzania](../monitoring/monitoring-solutions.md) dostępne i jak dodać lub usunąć rozwiązanie z obszaru roboczego.
+* Przegląd [rozwiązań do zarządzania](../azure-monitor/insights/solutions.md) dostępne i jak dodać lub usunąć rozwiązanie z obszaru roboczego.

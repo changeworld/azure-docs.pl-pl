@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: d8f2fd40712017cb7f44156b8735ee93e123fcd2
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9645833d939ffedf70185eb33c3d84ca181b9d6a
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016152"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711977"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Rozwiązanie na platformie Azure Key Vault Analytics w usłudze Log Analytics
 
@@ -38,7 +38,7 @@ Aby skorzystać z rozwiązania, należy włączyć rejestrowanie diagnostyki us�
 ## <a name="install-and-configure-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
 Użyj poniższych instrukcji, aby zainstalować i skonfigurować rozwiązanie Azure Key Vault:
 
-1. Włączanie rozwiązania usługi Azure Key Vault z [portalu Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) lub przy użyciu procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](../monitoring/monitoring-solutions.md).
+1. Włączanie rozwiązania usługi Azure Key Vault z [portalu Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) lub przy użyciu procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](../azure-monitor/insights/solutions.md).
 2. Włączanie rejestrowania diagnostycznego dla zasobów usługi Key Vault monitorować, za pomocą [portal](#enable-key-vault-diagnostics-in-the-portal) lub [programu PowerShell](#enable-key-vault-diagnostics-using-powershell)
 
 ### <a name="enable-key-vault-diagnostics-in-the-portal"></a>Włącz diagnostykę usługi Key Vault w portalu
@@ -136,7 +136,7 @@ W stycznia 2017 r. zmienić sposób obsługiwane przesyłania dzienników z usł
 Aby użyć zaktualizowane rozwiązanie:
 
 1. [Konfigurowanie diagnostyki, wysyłane bezpośrednio do usługi Log Analytics z usługi Key Vault](#enable-key-vault-diagnostics-in-the-portal)  
-2. Włączanie rozwiązania usługi Azure Key Vault przy użyciu procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](../monitoring/monitoring-solutions.md)
+2. Włączanie rozwiązania usługi Azure Key Vault przy użyciu procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](../azure-monitor/insights/solutions.md)
 3. Zaktualizuj wszelkie zapisane zapytania, pulpity nawigacyjne lub alerty, aby użyć nowego typu danych
   + Typ jest zmiana z: KeyVaults do AzureDiagnostics. Do filtrowania Key Vault dzienniki, można użyć typu zasobu.
   - Zamiast: `KeyVaults`, użyj `AzureDiagnostics | where ResourceType'=="VAULTS"`

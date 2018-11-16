@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 43a682568708ab0286328cf3e483ddc3d5cf9dd8
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 8958d2cde9f40aa1a7370894614a54bbd604bce7
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515356"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706334"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak zoptymalizować inwestycję w chmurę dzięki usłudze Azure Cost Management
 
@@ -26,12 +26,12 @@ Usługa Azure Cost Management zapewnia narzędzia do planowania, analizowania i 
 Usługa Cost management organizacji problemu i powinna być trwająca praktyka, która rozpoczyna się przed można kupować zasobów w chmurze. Aby pomyślnie wdrożyć Zarządzanie kosztami i Optymalizowanie kosztów, Twoja organizacja musi:
 
 - Należy przygotować za pomocą odpowiednich narzędzi w celu osiągnięcia sukcesu
-- Odpowiedzialność za koszty
+- Odpowiada za koszty
 - Podejmij odpowiednią akcję, aby zoptymalizować wydatki
 
 Trzy grupy kluczy opisane poniżej, muszą być wyrównane w Twojej organizacji, aby upewnić się, czy pomyślnie Zarządzanie kosztami.
 
-- **Finanse** -osoby odpowiedzialne za zatwierdzanie budge żądań w całej organizacji, oparte na chmurze wydatków prognozy. One zapłacić rachunku odpowiedniego i przypisać koszty do różnych zespołów na zapewnienie odpowiedzialności.
+- **Finanse** -osób odpowiedzialnych za zatwierdzanie żądań budżetu w organizacji oparte na chmurze wydatków prognozy. One zapłacić rachunku odpowiedniego i przypisać koszty do różnych zespołów na zapewnienie odpowiedzialności.
 - **Menedżerowie** — biznesowe osoby podejmujące decyzje w organizacji, które są niezbędne do zrozumienia chmury wydatków, aby znaleźć najlepszy wydatków wyników.
 - **Zespoły aplikacji mogą** — inżynierów zarządzania zasobami chmury na podstawie codziennych, tworzenia usług w celu spełnienia potrzeb organizacji użytkownika. Te zespoły muszą mieć możliwość dostarczania największych korzyści z ich budżetów zdefiniowane.
 
@@ -46,7 +46,7 @@ Kompleksowe, ponoszonych z góry planowania pozwala na dostosowywanie użycie ch
 - Jaki problem biznesowy jestem rozwiązywania?
 - Wzorce użycia, jakie oczekiwać od Moje zasoby?
 
-Twoje odpowiedzi pomogą wybierz ofertę, który jest odpowiedni dla Ciebie. Określają one infrastruktury i sposobie ich użycia, aby zmaksymalizować wydajność platformy Azure.
+Twoje odpowiedzi pomogą wybierz oferty, które są dla Ciebie odpowiednia. Określają one infrastruktury i sposobie ich użycia, aby zmaksymalizować wydajność platformy Azure.
 
 #### <a name="visibility"></a>Widoczność
 
@@ -62,7 +62,7 @@ Działanie, aby ograniczyć wydatki. Maksymalne wykorzystanie go na podstawie ot
 
 #### <a name="iteration"></a>Iteracja
 
-Wszyscy w Twojej organizacji muszą angażować się w cyklu życia zarządzania kosztami. Muszą one pozostać zajmujących się na bieżąco, aby zoptymalizować koszty. Można rygorystyczne o ten proces iteracyjny i przypisz ją klucza dzierżawy odpowiada chmury nadzoru w Twojej organizacji.
+Wszyscy w Twojej organizacji muszą angażować się w cyklu życia zarządzania kosztami. Muszą one pozostać zaangażowanych w sposób ciągły, aby zoptymalizować koszty. Być rygorystyczne o ten proces iteracyjny i ułatwiają obejmując nadzoru odpowiada chmury w organizacji.
 
 ![Podstawowe zasady](./media/cost-mgt-best-practices/principles.png)
 
@@ -157,7 +157,7 @@ Użyj poniższych metod Optymalizowanie wydatków.
 
 ### <a name="cut-out-waste"></a>Wytnij strat
 
-Po wdrożeniu infrastruktury na platformie Azure, koniecznie upewnij się, że jest on używany. Najprostszym sposobem zacznij oszczędzać natychmiast jest przejrzeć swoje zasoby i usunąć z nich, które nie są używane. Z tego miejsca należy określić, że Twoje zasoby są używane w jak najbardziej wydajny.
+Po wdrożeniu infrastruktury na platformie Azure, koniecznie upewnij się, że jest on używany. Najprostszym sposobem zacznij oszczędzać natychmiast jest przejrzeć swoje zasoby i usunąć z nich, które nie są używane. W tym miejscu należy określić, jeśli zasoby są używane jak najbardziej wydajny.
 
 #### <a name="azure-advisor"></a>Azure Advisor
 
@@ -177,7 +177,7 @@ Platforma Azure oferuje wiele rabatów, które Twoja organizacja powinna korzyst
 
 #### <a name="azure-reservations"></a>Rezerwacje platformy Azure
 
-Rezerwacje platformy Azure umożliwia Ci Zapłać z góry za rok lub wydajność obliczeniowa trzech lat maszyny wirtualnej lub bazy danych SQL. Wstępnie płacenia pozwoli uzyskać rabat na zasoby, których używasz. Azure rezerwacji może znacznie zmniejszyć Twojej maszyny wirtualnej lub koszty operacji obliczeniowych bazy danych SQL — do 72% przy cenach zgodnie z rzeczywistym użyciem w — jeden rok lub trzy lata podejmowania z góry zobowiązań. rezerwacje Podaj rozliczeń rabat, a nie wpływają na stan środowiska uruchomieniowego maszyn wirtualnych ani baz danych SQL.
+Rezerwacje platformy Azure umożliwiają Zapłać z góry za rok lub trzech lat maszyny wirtualnej lub bazy danych SQL moc obliczeniową. Wstępnie płacenia pozwoli uzyskać rabat na zasoby, których używasz. Azure rezerwacji może znacznie zmniejszyć Twojej maszyny wirtualnej lub koszty operacji obliczeniowych bazy danych SQL — do 72% na ceny zgodnie z rzeczywistym użyciem dzięki jeden rok lub trzy lata zobowiązań z góry. rezerwacje Podaj rozliczeń rabat, a nie wpływają na stan środowiska uruchomieniowego maszyn wirtualnych ani baz danych SQL.
 
 Aby uzyskać więcej informacji, zobacz [co to jest Azure rezerwacje?](../billing/billing-save-compute-costs-reservations.md).
 

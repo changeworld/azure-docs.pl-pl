@@ -10,22 +10,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 06/16/2017
+ms.date: 11/14/2018
 ms.author: danlep
-ms.openlocfilehash: f562a6647cadbde6c46eba87b180dfb4cbb3fb90
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 549be57b52fa88efa8c3850d131563fea2a7c65e
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126316"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706130"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Utrwalanie danych zadań do usługi Azure Storage za pomocą interfejsu API usługi Batch
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
-Począwszy od wersji 2017-05-01, interfejs API usługi Batch obsługuje utrwalanie danych wyjściowych do usługi Azure Storage dla zadań i Menedżera zadań uruchamianych w pulach w konfiguracji maszyny wirtualnej. Po dodaniu zadania, można wskazać kontener w usłudze Azure Storage jako lokalizacja docelowa dla danych wyjściowych zadania podrzędnego. Po zakończeniu zadania usługi Batch następnie zapisuje wszelkie dane wyjściowe do tego kontenera.
+Interfejs API usługi Batch obsługuje utrwalanie danych wyjściowych do usługi Azure Storage dla zadań i Menedżera zadań uruchamianych w pulach w konfiguracji maszyny wirtualnej. Po dodaniu zadania, można wskazać kontener w usłudze Azure Storage jako lokalizacja docelowa dla danych wyjściowych zadania podrzędnego. Po zakończeniu zadania usługi Batch następnie zapisuje wszelkie dane wyjściowe do tego kontenera.
 
-Zaletą korzystania z interfejsu API usługi Batch można utrwalić dane wyjściowe zadania jest, że nie ma potrzeby modyfikowania aplikacji, w którym zadanie jest uruchomione. Zamiast tego za pomocą kilku prostych modyfikacji do aplikacji klienckiej, jednak można utrwalić dane wyjściowe zadania podrzędnego z kodem, który tworzy zadanie.   
+Zaletą korzystania z interfejsu API usługi Batch można utrwalić dane wyjściowe zadania jest, że nie ma potrzeby modyfikowania aplikacji, w którym zadanie jest uruchomione. Zamiast tego za pomocą kilku zmian do aplikacji klienta, umożliwia utrwalanie danych wyjściowych zadania podrzędnego z w ramach tego samego kodu, który tworzy zadanie.
 
 ## <a name="when-do-i-use-the-batch-service-api-to-persist-task-output"></a>Kiedy używać interfejsu API usługi Batch można utrwalić dane wyjściowe zadania?
 
@@ -36,7 +36,10 @@ Usługa Azure Batch udostępnia więcej niż jeden sposób, aby zachować dane w
 - Chcesz zachować dane wyjściowe do kontenera usługi Azure Storage przy użyciu dowolnej nazwie.
 - Aby zachować dane wyjściowe do kontenera usługi Azure Storage, o nazwie zgodnie z opisem w [standardowe konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). 
 
-Jeśli scenariusz różni się od przedstawionych powyżej, może być konieczne należy wziąć pod uwagę innego podejścia. Na przykład interfejs API usługi Batch obecnie nie obsługuje przesyłania strumieniowego danych wyjściowych do usługi Azure Storage, podczas gdy zadanie jest uruchomione. Do strumienia wyjściowego, należy wziąć pod uwagę za pomocą biblioteki Konwencji plików usługi Batch, dostępna dla platformy .NET. W przypadku języków należy zaimplementować własnego rozwiązania. Aby uzyskać więcej informacji na temat innych opcji utrwalanie danych wyjściowych zadania, zobacz [utrwalanie danych wyjściowych zadań i zadań w usłudze Azure Storage](batch-task-output.md). 
+> [!NOTE]
+> Interfejs API usługi Batch nie obsługuje utrwalanie danych od zadania uruchomione w przypadku pul utworzonych za pomocą konfiguracji usługi w chmurze. Aby uzyskać informacji o zadaniu utrwalanie danych wyjściowych z pul uruchamianie konfiguracji usługi w chmurze, zobacz [utrwalanie danych i zadań do usługi Azure Storage za pomocą biblioteki Konwencji plików usługi Batch dla platformy .NET w celu utrwalenia ](batch-task-output-file-conventions.md).
+
+Jeśli scenariusz różni się od przedstawionych powyżej, może być konieczne należy wziąć pod uwagę innego podejścia. Na przykład interfejs API usługi Batch obecnie nie obsługuje przesyłania strumieniowego danych wyjściowych do usługi Azure Storage, podczas gdy zadanie jest uruchomione. Do strumienia wyjściowego, należy wziąć pod uwagę za pomocą biblioteki Konwencji plików usługi Batch, dostępna dla platformy .NET. W przypadku języków należy zaimplementować własnego rozwiązania. Aby uzyskać więcej informacji na temat innych opcji utrwalanie danych wyjściowych zadania, zobacz [utrwalanie danych wyjściowych zadań i zadań w usłudze Azure Storage](batch-task-output.md).
 
 ## <a name="create-a-container-in-azure-storage"></a>Tworzenie kontenera w usłudze Azure Storage
 
@@ -64,14 +67,14 @@ string containerSasToken = container.GetSharedAccessSignature(new SharedAccessBl
     Permissions = SharedAccessBlobPermissions.Write
 });
 
-string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken; 
+string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 ```
 
 ## <a name="specify-output-files-for-task-output"></a>Określ pliki wyjściowe dla danych wyjściowych zadania
 
-Aby określić pliki wyjściowe dla zadania, należy utworzyć kolekcję [Plik_wyjściowy](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) obiektów i przypisz ją do [CloudTask.OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) właściwości po utworzeniu zadania. 
+Aby określić pliki wyjściowe dla zadania, należy utworzyć kolekcję [Plik_wyjściowy](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) obiektów i przypisz ją do [CloudTask.OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) właściwości po utworzeniu zadania.
 
-Poniższy przykład kodu .NET tworzy zadanie, które zapisuje liczb losowych do pliku o nazwie `output.txt`. W przykładzie jest tworzony plik wyjściowy dla `output.txt` są zapisywane w kontenerze. W przykładzie jest tworzony również pliki wyjściowe dla wszystkich plików dziennika, pasujących do wzorca plik `std*.txt` (_np._, `stdout.txt` i `stderr.txt`). Adres URL kontenera wymaga sygnatury dostępu Współdzielonego, który został utworzony wcześniej w kontenerze. Usługa Batch używa sygnatury dostępu Współdzielonego w celu uwierzytelnienia dostępu do kontenera: 
+Następujące C# przykładowy kod tworzy zadanie, które zapisuje liczb losowych do pliku o nazwie `output.txt`. W przykładzie jest tworzony plik wyjściowy dla `output.txt` są zapisywane w kontenerze. W przykładzie jest tworzony również pliki wyjściowe dla wszystkich plików dziennika, pasujących do wzorca plik `std*.txt` (_np._, `stdout.txt` i `stderr.txt`). Adres URL kontenera wymaga sygnatury dostępu Współdzielonego, który został utworzony wcześniej w kontenerze. Usługa Batch używa sygnatury dostępu Współdzielonego w celu uwierzytelnienia dostępu do kontenera:
 
 ```csharp
 new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,100000) DO (ECHO !RANDOM!)) > output.txt\"")
@@ -101,7 +104,7 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 
 Kiedy określasz plik wyjściowy, możesz użyć [OutputFile.FilePattern](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) właściwości w celu określenia wzorzec pliku do dopasowania. Wzorzec pliku może odpowiadać, zerowego pliki, pojedynczy plik lub zestaw plików, które są tworzone przez zadanie.
 
-**FilePattern** właściwość obsługuje standardowy system plików symboli wieloznacznych `*` (dla wersji niecyklicznego odpowiada) i `**` (dla wersji odpowiada cyklicznego). Na przykład na powyższym przykładowym kodzie jest Określa wzorzec pliku do dopasowania `std*.txt` niecyklicznie: 
+**FilePattern** właściwość obsługuje standardowy system plików symboli wieloznacznych `*` (dla wersji niecyklicznego odpowiada) i `**` (dla wersji odpowiada cyklicznego). Na przykład na powyższym przykładowym kodzie jest Określa wzorzec pliku do dopasowania `std*.txt` niecyklicznie:
 
 `filePattern: @"..\std*.txt"`
 
@@ -113,7 +116,7 @@ Aby przekazać jeden plik, określ wzorzec pliku z bez symboli wieloznacznych. N
 
 [OutputFileUploadOptions.UploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition#Microsoft_Azure_Batch_OutputFileUploadOptions_UploadCondition) właściwości zezwala warunkowego przekazywania plików wyjściowych. Jest to typowy scenariusz można przekazać jeden zestaw plików, jeśli zadanie zakończy się powodzeniem, a inny zbiór plików, jeśli zakończy się niepowodzeniem. Na przykład można przekazać plików pełnego dziennika tylko wtedy, gdy zadanie nie powiedzie się i kończy pracę z kodem zakończenia różny od zera. Podobnie można przekazać pliki wyników, tylko wtedy, gdy zadanie zakończy się powodzeniem, ponieważ te pliki mogą być brakujące lub niekompletne, w razie niepowodzenia zadania.
 
-Przykładowy kod powyżej zestawy **UploadCondition** właściwości **TaskCompletion**. To ustawienie określa, że plik można przekazać po zakończeniu zadania, niezależnie od wartości Kod zakończenia. 
+Przykładowy kod powyżej zestawy **UploadCondition** właściwości **TaskCompletion**. To ustawienie określa, że plik można przekazać po zakończeniu zadania, niezależnie od wartości Kod zakończenia.
 
 `uploadCondition: OutputFileUploadCondition.TaskCompletion`
 
@@ -145,10 +148,9 @@ https://myaccount.blob.core.windows.net/mycontainer/task2/output.txt
 
 Aby uzyskać więcej informacji na temat katalogów wirtualnych w usłudze Azure Storage, zobacz [wyświetlanie listy obiektów blob w kontenerze](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container).
 
-
 ## <a name="diagnose-file-upload-errors"></a>Diagnozuj błędy przekazywania plików
 
-Jeśli przekazywanie plików wyjściowych do usługi Azure Storage kończy się niepowodzeniem, a następnie zadanie przechodzi do **Ukończono** stanu i [TaskExecutionInformation.FailureInformation](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation#Microsoft_Azure_Batch_TaskExecutionInformation_FailureInformation) właściwość jest ustawiona. Sprawdź **FailureInformation** właściwości w celu określenia, jakie błędu. Na przykład w tym miejscu jest błąd występujący podczas przekazywania pliku, jeśli nie można odnaleźć kontenera: 
+Jeśli przekazywanie plików wyjściowych do usługi Azure Storage kończy się niepowodzeniem, a następnie zadanie przechodzi do **Ukończono** stanu i [TaskExecutionInformation.FailureInformation](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation#Microsoft_Azure_Batch_TaskExecutionInformation_FailureInformation) właściwość jest ustawiona. Sprawdź **FailureInformation** właściwości w celu określenia, jakie błędu. Na przykład w tym miejscu jest błąd występujący podczas przekazywania pliku, jeśli nie można odnaleźć kontenera:
 
 ```
 Category: UserError

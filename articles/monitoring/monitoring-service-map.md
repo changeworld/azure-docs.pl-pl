@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 0f3bc7302bc28a9bef288e5e5e0b9b891a08b8dd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ea804899b04dad88ceeac14793d226cca47fc5c1
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252925"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713252"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Za pomocą rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Przy użyciu mapy usługi w taki sposób, które z nich można przeglądać serwery: jako wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami, czas oczekiwania na połączenie przychodzące i wychodzące i portami w dowolnej architekturze połączenia TCP, bez konieczności konfiguracji wymagane inne niż Instalacja agenta.
@@ -27,7 +27,7 @@ Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i 
 W tym artykule opisano szczegóły dotyczące dołączania i przy użyciu mapy usługi. Aby uzyskać informacje dotyczące konfigurowania rozwiązania Service Map i dołączania agentów, zobacz [konfigurowania rozwiązania Service Map rozwiązanie na platformie Azure]( monitoring-service-map-configure.md).
 
 >[!NOTE]
->Jeśli masz już wdrożone rozwiązania Service Map, można teraz również wyświetlić map w usłudze Azure Monitor dla maszyn wirtualnych, który zawiera dodatkowe funkcje, aby monitorować wydajność i kondycja maszyny Wirtualnej. Aby dowiedzieć się więcej, zobacz [usługi Azure Monitor dla maszyn wirtualnych — omówienie](monitoring-vminsights-overview.md).
+>Jeśli masz już wdrożone rozwiązania Service Map, można teraz również wyświetlić map w usłudze Azure Monitor dla maszyn wirtualnych, który zawiera dodatkowe funkcje, aby monitorować wydajność i kondycja maszyny Wirtualnej. Aby dowiedzieć się więcej, zobacz [usługi Azure Monitor dla maszyn wirtualnych — omówienie](../azure-monitor/insights/vminsights-overview.md).
 
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
@@ -161,10 +161,10 @@ Połączenia zakończone niepowodzeniem są wyświetlane w mapach rozwiązania S
 
 Omówienie połączenia zakończone niepowodzeniem mogą pomóc w rozwiązywaniu problemów, sprawdzanie poprawności migracji, analizy zabezpieczeń i architektury ogólny opis. Połączenia zakończone niepowodzeniem są czasami nieszkodliwe, ale często wskazują bezpośrednio do problemu, takie jak środowisko pracy awaryjnej, nagle staje się niedostępny lub dwie warstwy aplikacji nie będzie w stanie komunikować się po migracji do chmury.
 
-## <a name="client-groups"></a>Grup klientów
+## <a name="client-groups"></a>Grupy klientów
 Grupy klienta są pola na mapie, które reprezentują komputerów klienckich, które nie mają agenci zależności. Pojedynczą grupę klienta reprezentuje klientów dla poszczególnych proces lub komputera.
 
-![Grup klientów](media/monitoring-service-map/client-groups.png)
+![Grupy klientów](media/monitoring-service-map/client-groups.png)
 
 Aby wyświetlić adresy IP serwerów z grupy klientów, wybierz grupę. Zawartość grupy są wymienione w **właściwości grupy klientów** okienka.
 
@@ -497,7 +497,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ## <a name="rest-api"></a>Interfejs API REST
 Wszystkie dane serwera, proces i zależności na mapie usługi są dostępne za pośrednictwem [interfejsu API REST mapy usługi](https://docs.microsoft.com/rest/api/servicemap/).
 
-## <a name="diagnostic-and-usage-data"></a>Dane diagnostyczne i użycia
+## <a name="diagnostic-and-usage-data"></a>Dane diagnostyczne i dane dotyczące użycia
 Firma Microsoft automatycznie zbiera dane dotyczące użycia i wydajności przez korzystanie z usługi mapy usługi. Firma Microsoft używa tych danych do zapewniania i poprawiania jakości, bezpieczeństwa i integralności usługi mapy usługi. Aby zapewnić dokładne i wydajne funkcje do rozwiązywania problemów, dane obejmują informacje o konfiguracji oprogramowania, takie jak system operacyjny i wersję, adres IP, nazwę DNS i nazwę stacji roboczej. Firma Microsoft gromadzi nazwisk, adresów ani innych informacji kontaktowych.
 
 Aby uzyskać więcej informacji na temat zbierania i wykorzystywania danych, zobacz [Microsoft Online Services Privacy Statement](https://go.microsoft.com/fwlink/?LinkId=512132).

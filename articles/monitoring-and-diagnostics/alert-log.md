@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f7122c6147af2ed1af1f3b5e08458fd73f9aef6d
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 74b9673d7ef9dedbcc34682d4707103e696bece3
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279110"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711705"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor  
 
@@ -132,7 +132,7 @@ Dlatego dalszej części tego artykułu zawierają szczegółowe informacje na t
 ### <a name="azure-resource-template-for-log-analytics"></a>Szablonu zasobów platformy Azure dla usługi Log Analytics
 Alerty dzienników usługi Log Analytics są tworzone przez reguły alertów, uruchamianych zapisanej operacji wyszukiwania w regularnych odstępach czasu. Jeśli wyniki zapytania dopasowania określone kryteria, zostaje utworzony rekord alertu i są uruchamiane co najmniej jednej akcji. 
 
-Szablon zasobu usługi Log analytics, zapisane wyszukiwania i alertów usługi Log analytics są dostępne w sekcji dokumentacji usługi Log Analytics. Aby dowiedzieć się więcej, zobacz [Dodawanie usługi Log Analytics zapisane wyszukiwania i alerty](../monitoring/monitoring-solutions-resources-searches-alerts.md); w tym przykłady ilustrujące, jak również szczegóły schematu.
+Szablon zasobu usługi Log analytics, zapisane wyszukiwania i alertów usługi Log analytics są dostępne w sekcji dokumentacji usługi Log Analytics. Aby dowiedzieć się więcej, zobacz [Dodawanie usługi Log Analytics zapisane wyszukiwania i alerty](../azure-monitor/insights/solutions-resources-searches-alerts.md); w tym przykłady ilustrujące, jak również szczegóły schematu.
 
 ### <a name="azure-resource-template-for-application-insights"></a>Szablonu zasobów platformy Azure dla usługi Application Insights
 Alert dziennika dla zasobów usługi Application Insights ma typ `Microsoft.Insights/scheduledQueryRules/`. Aby uzyskać więcej informacji na temat tego typu zasobu, zobacz [usługi Azure Monitor — zaplanowane reguły dokumentację interfejsu API zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).

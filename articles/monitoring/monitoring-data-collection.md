@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 8aa79d66801ff30fedc725913696d5cfa3c9626f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 0cdc0b69405d726a7a661fb3e204e4f3ff8e50a5
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282835"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713201"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Dane monitorowania zbierane przez usługi Azure Monitor
 [Usługa Azure Monitor](../azure-monitor/overview.md) jest to usługa, która pomaga monitorować Twoje aplikacje i zasoby korzystają z. Decydujące znaczenie dla tej funkcji jest przechowywanie danych telemetrycznych i innych danych z monitorowanych zasobów. Ten artykuł zawiera pełny opis jak te dane są przechowywane i używane przez usługi Azure Monitor.
@@ -140,7 +140,7 @@ Usługa log Analytics może zbierać dane z różnych źródeł, zarówno w obr�
 - [Dzienniki aktywności](../log-analytics/log-analytics-activity.md) z zasobów platformy Azure, które obejmują informacje o swojej konfiguracji i kondycji i [dzienniki diagnostyczne](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) zapewniające wgląd w ich działania.
 - Agenci na [Windows](../log-analytics/log-analytics-windows-agent.md) i [Linux](../log-analytics/log-analytics-quick-collect-linux-computer.md) maszyn wirtualnych, które wysyłają dane telemetryczne z systemu operacyjnego gościa i aplikacji do usługi Log Analytics zgodnie z opisem w [źródeł danych](../log-analytics/log-analytics-data-sources.md) , należy skonfigurować.
 - Dane aplikacji są zbierane przez [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/).
-- Danych zapewniające wgląd w określonej aplikacji lub usługi [rozwiązania do monitorowania](../monitoring/monitoring-solutions.md) lub funkcje, takie jak szczegółowe informacje o kontenerze, szczegółowych informacji z maszyny Wirtualnej lub grupy zasobów w szczegółowe informacje.
+- Danych zapewniające wgląd w określonej aplikacji lub usługi [rozwiązania do monitorowania](../monitoring/../azure-monitor/insights/solutions.md) lub funkcje, takie jak szczegółowe informacje o kontenerze, szczegółowych informacji z maszyny Wirtualnej lub grupy zasobów w szczegółowe informacje.
 - Dane zabezpieczeń gromadzone przez [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/).
 - [Metryki](#metrics) z zasobów platformy Azure. Dzięki temu można przechowywać metryki, przez czas dłuższy niż 93 dni i Analizuj je z innymi danymi dziennika.
 - Zapisane dane telemetryczne [usługi Azure Storage](../log-analytics/log-analytics-azure-storage-iis-table.md).

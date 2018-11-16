@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 57ffb30296e5dbede11e23c40041c42e00444c4c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 13748bf23ee70bfa77e15e7112b450637a231742
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686998"
+ms.locfileid: "51710719"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>Identyfikator partnera linku do kont systemu Azure
 
@@ -124,7 +124,7 @@ Dołącz do dyskusji w [społeczności partnerów firmy Microsoft](https://aka.m
 
 **Kto może połączyć Identyfikatora partnera?**
 
-Każdy użytkownik z organizacji partnerskiej, zarządza zasobu klienta można połączyć Identyfikatora partnera na koncie.
+Każdy użytkownik z organizacji partnerskiej, który zarządza zasobami platformy Azure przez klienta można połączyć Identyfikatora partnera na koncie.
 
 **Po identyfikator partnera jest połączony można go zmienić?**
 

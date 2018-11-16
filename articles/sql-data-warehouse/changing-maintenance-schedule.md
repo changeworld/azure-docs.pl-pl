@@ -7,22 +7,22 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 10/07/2018
+ms.date: 10/15018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 428b9970471c9365812639e251810c571698a574
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 75384aed8c354cf2d549d92cdb75f87038f33ab8
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49425963"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713269"
 ---
 # <a name="change-a-maintenance-schedule"></a>Zmień harmonogram konserwacji 
 
 ## <a name="portal"></a>Portal
 Harmonogram konserwacji można zaktualizować lub zmienić w dowolnym momencie. Jeśli wybrane wystąpienie przechodzi w danym cyklu konserwacji aktywne, ustawienia zostaną zapisane. Zapoznasz się aktywne w okresie konserwacji zidentyfikowanych dalej. [Dowiedz się więcej](https://docs.microsoft.com/azure/service-health/resource-health-overview) dotyczące monitorowania usługi data warehouse w czasie wykonywania zdarzeń związanych z konserwacją active. 
 
-Mimo że harmonogramy konserwacji platformy Azure w wersji zapoznawczej, możesz wybrać dwa okna obsługi w okresie siedmiu dni. Każde okno obsługi może być trzech do ośmiu godzin. Konserwacji może nastąpić w dowolnej chwili, w ramach okna obsługi, ale nie zostanie wykonana poza okna czasowe bez wcześniejszego powiadomienia. Jako usługa wdraża nowy kod z magazynem danych, będzie również występować krótki utraty łączności. 
+Aby użyć harmonogramy konserwacji, musisz wybrać dwa okna obsługi w okresie siedmiu dni. Każde okno obsługi może być trzech do ośmiu godzin. Konserwacji może nastąpić w dowolnej chwili, w ramach okna obsługi, ale nie zostanie wykonana poza okna czasowe bez wcześniejszego powiadomienia. Jako usługa wdraża nowy kod z magazynem danych, będzie również występować krótki utraty łączności. 
 
 ## <a name="identifying-the-primary-and-secondary-windows"></a>Identyfikowanie podstawowe i pomocnicze systemu windows
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/08/2018
+ms.date: 11/15/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
-ms.openlocfilehash: ec84c87e047d6426d24ef339d1247c6cb53954dd
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 17326fa60160e084d4c30347b1a765d1f80d01f5
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299423"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711535"
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy limitów przydziału w usłudze Azure Stack
 
@@ -35,6 +35,8 @@ ms.locfileid: "51299423"
 | Maksymalna liczba rdzeni maszyn wirtualnych | 100 | Maksymalna liczba rdzeni, które można utworzyć subskrypcji, w tym miejscu (na przykład maszyna wirtualna A3 ma cztery rdzenie). |
 | Maksymalna liczba zestawów dostępności | 10 | Maksymalna liczba zestawów dostępności, które mogą być tworzone w tej lokalizacji. |
 | Maksymalna liczba maszyn wirtualnych zestawów skalowania | 100 | Maksymalna liczba zestawów skalowania maszyn wirtualnych, które mogą być tworzone w tej lokalizacji. |
+| Maksymalną pojemność dysku zarządzanego w warstwie standardowa (w GB) | 2048 | Maksymalna pojemność standardowych dysków zarządzanych, które mogą być tworzone w tej lokalizacji. |
+| Maksymalną pojemność dysku zarządzanego w warstwie premium (w GB) | 2048 | Maksymalna pojemność premium usługa managed disks, które mogą być tworzone w tej lokalizacji. |
 
 ## <a name="storage-quota-types"></a>Typy limitów przydziału magazynu 
 | **Element** | **Wartość domyślna** | **Opis** |
@@ -49,13 +51,13 @@ ms.locfileid: "51299423"
 ## <a name="network-quota-types"></a>Typy przydziałów sieci
 | **Element** | **Wartość domyślna** | **Opis** |
 | --- | --- | --- |
-| Maksymalna liczba publicznych adresów IP |50 |Maksymalna liczba publicznych adresów IP, który subskrypcji można utworzyć w tej lokalizacji. |
-| Maksymalna liczba sieci wirtualnych |50 |Maksymalna liczba sieci wirtualnych, które można utworzyć subskrypcji, w tej lokalizacji. |
-| Maksymalna liczba bram sieci wirtualnej |1 |Maksymalna liczba bram sieci wirtualnej (bram sieci VPN), które subskrypcji można utworzyć w tej lokalizacji. |
-| Maksymalna liczba połączeń sieciowych |2 |Maksymalna liczba połączeń sieciowych (point-to-point lub site-to-site), które subskrypcji można utworzyć we wszystkich bram sieci wirtualnej w tej lokalizacji. |
+| Maksymalna publicznych adresów IP |50 |Maksymalna liczba publicznych adresów IP, który subskrypcji można utworzyć w tej lokalizacji. |
+| Maksymalna sieci wirtualnych |50 |Maksymalna liczba sieci wirtualnych, które można utworzyć subskrypcji, w tej lokalizacji. |
+| Bramy sieci wirtualnej |1 |Maksymalna liczba bram sieci wirtualnej (bram sieci VPN), które subskrypcji można utworzyć w tej lokalizacji. |
+| Połączenia sieciowe maksymalna |2 |Maksymalna liczba połączeń sieciowych (point-to-point lub site-to-site), które subskrypcji można utworzyć we wszystkich bram sieci wirtualnej w tej lokalizacji. |
 | Moduły równoważenia obciążenia maksymalna |50 |Maksymalna liczba modułów równoważenia obciążenia, które subskrypcji można utworzyć w tej lokalizacji. |
-| Maksymalna liczba kart sieciowych |100 |Maksymalna liczba interfejsów sieciowych, które można utworzyć subskrypcji, w tej lokalizacji. |
-| Maksymalna liczba sieciowych grup zabezpieczeń |50 |Maksymalna liczba sieciowych grup zabezpieczeń, które subskrypcji można utworzyć w tej lokalizacji. |
+| Maksymalna kart sieciowych |100 |Maksymalna liczba interfejsów sieciowych, które można utworzyć subskrypcji, w tej lokalizacji. |
+| Grupy zabezpieczeń sieci |50 |Maksymalna liczba sieciowych grup zabezpieczeń, które subskrypcji można utworzyć w tej lokalizacji. |
 
 ## <a name="view-an-existing-quota"></a>Wyświetlanie istniejących limitu przydziału
 1. Na domyślny pulpit nawigacyjny portalu administracyjnym, należy znaleźć **dostawców zasobów** kafelka.

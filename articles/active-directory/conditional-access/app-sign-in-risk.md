@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 07/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 65f740e23b68727bdffa4a966518b1581fb5b0a6
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: a3c5c26f43fddf5d23df3bee0b0511e865b7e71b
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604369"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705926"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Szybki Start: Blokuje dostęp po wykryciu zagrożenia sesji przy użyciu dostępu warunkowego usługi Azure Active Directory  
 
@@ -38,7 +38,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
-Aby ukończyć ten scenariusz, w ramach tego samouczka, potrzebne są:
+Do ukończenia scenariusza z tego samouczka są potrzebne następujące elementy:
 
 - **Dostęp do wersji Azure AD Premium P2** — dostęp warunkowy jest funkcja Azure AD Premium P1, należy wersji P2, ponieważ scenariusz, w tym przewodniku Szybki Start wymaga Identity Protection. 
 
@@ -81,7 +81,7 @@ W tej sekcji przedstawiono sposób tworzenia zasad dostępu warunkowego wymagany
 
 **Aby skonfigurować zasady dostępu warunkowego:**
 
-1. Zaloguj się do Twojej [witryny Azure portal](https://portal.azure.com) jako administratora globalnego, administratora zabezpieczeń lub administrator dostępu warunkowego.
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
 
 2. W witrynie Azure portal, w lewym pasku nawigacyjnym kliknij **usługi Azure Active Directory**. 
 
@@ -168,7 +168,7 @@ W tej sekcji przedstawiono sposób tworzenia zasad dostępu warunkowego wymagany
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Oceń symulowane logowania
 
-Teraz, gdy skonfigurowano zasady dostępu warunkowego, prawdopodobnie chcesz wiedzieć, czy działa zgodnie z oczekiwaniami. Pierwszym krokiem używać dostępu warunkowego **co zrobić, jeśli narzędzie zasad** do symulowania logowania dla użytkownika testowego. Symulacja szacuje wpływ tym logowania ma zasady i generuje raport symulacji.  
+Teraz, gdy skonfigurowano zasady dostępu warunkowego, prawdopodobnie chcesz wiedzieć, czy działają one zgodnie z oczekiwaniami. Pierwszym krokiem używać dostępu warunkowego **co zrobić, jeśli narzędzie zasad** do symulowania logowania dla użytkownika testowego. Symulacja szacuje wpływ tego logowania na zasady i generuje raport symulacji.  
 
 Po uruchomieniu **co zrobić, jeśli narzędzie zasad** w tym scenariuszu **zablokować dostęp dla poziomu średniego ryzyka** powinny zostać wyświetlone w obszarze **zasad, które będą stosowane**. 
 
@@ -212,7 +212,7 @@ Gdy nie są już potrzebne, Usuń użytkownika testowego, w przeglądarce sieci 
 
     ![Uwierzytelnianie wieloskładnikowe](./media/app-sign-in-risk/33.png)
 
-- Aby uzyskać instrukcje, aby usunąć przeglądarki Tor, zobacz [odinstalowywanie](https://tb-manual.torproject.org/en-US/uninstalling.html).
+- Aby uzyskać instrukcje, aby usunąć przeglądarki Tor, zobacz [odinstalowywanie](https://tb-manual.torproject.org/uninstalling/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

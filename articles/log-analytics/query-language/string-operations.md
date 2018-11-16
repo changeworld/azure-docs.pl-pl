@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 6ac697fa12b56840e5dc361500f81e2b7e2ce11a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2bf5593507d99f6fb45994eb73333b21ca8904a5
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950254"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706317"
 ---
 # <a name="working-with-strings-in-log-analytics-queries"></a>Praca z ciągami zapytań usługi Log Analytics
 
@@ -42,7 +42,7 @@ Wartości ciągu są ujęte w nawiasy przy użyciu znaków cudzysłowu pojedyncz
 print "this is a 'string' literal in double \" quotes"
 ```
 
-Aby zapobiec "\\" z działającym jako znak ucieczki, należy dodać "@" jako prefiksu parametry:
+Aby zapobiec "\\"z działającym jako znak ucieczki, Dodaj"\@" jako prefiksu parametry:
 
 ```Kusto
 print @"C:\backslash\not\escaped\with @ prefix"

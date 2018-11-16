@@ -15,12 +15,12 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: 388337fa80d174cb17dae12fa9d5f2fbdfe7e737
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: bcdc665c59a900d4c57d03140654fffec26af0eb
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347787"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706759"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debugowanie opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure Active Directory
 
@@ -32,7 +32,7 @@ Zaleca się zainstalowanie [Moje zabezpieczenia aplikacji logowania rozszerzenia
 Aby pobrać i zainstalować Moje zabezpieczenia aplikacji logowania rozszerzenia, użyj jednej z poniższych linków.
 
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Krawędź](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
 - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 

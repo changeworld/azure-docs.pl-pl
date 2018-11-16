@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 09/20/2018
+ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: c2ed79673af3563ae62f516057a174770cda99e9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 9d26c1d923294a149a57ef28ca03e77dfc2e1c87
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427866"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711909"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Umożliwia zarządzanie aktualizacjami usługi i konserwacja harmonogramy konserwacji
 
@@ -27,7 +27,7 @@ Wszystkie nowo utworzone Azure SQL Data Warehouse wystąpienia będą mieć harm
 
 Każde okno obsługi może być trzech do ośmiu godzin. Konserwacji może nastąpić w dowolnej chwili, w oknie. Jak usługa wdraża nowy kod z magazynem danych, należy się spodziewać krótki utraty łączności. 
 
-W trakcie okresu zapoznawczego funkcji należy zidentyfikować podstawowe i pomocnicze systemu windows w ramach zakresów dni. Wszystkie operacje konserwacji powinno zostać zakończone w ciągu okna zaplanowanej konserwacji. Nie obsługi będzie miała miejsce poza określonym oknami bez wcześniejszego powiadomienia. Jeśli magazyn danych jest wstrzymany podczas zaplanowanej konserwacji, zostaną zaktualizowane podczas operacji wznowienia.  
+Aby użyć tej funkcji należy zidentyfikować podstawowych i pomocniczych okna zakresów dni. Wszystkie operacje konserwacji powinno zostać zakończone w ciągu okna zaplanowanej konserwacji. Nie obsługi będzie miała miejsce poza określonym oknami bez wcześniejszego powiadomienia. Jeśli magazyn danych jest wstrzymany podczas zaplanowanej konserwacji, zostaną zaktualizowane podczas operacji wznowienia.  
 
 
 ## <a name="alerts-and-monitoring"></a>Alerty i monitorowanie

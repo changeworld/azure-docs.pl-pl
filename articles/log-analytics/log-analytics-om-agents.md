@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c8bba283a0c3fde75966ae123023e50d497abd5a
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
-ms.translationtype: HT
+ms.openlocfilehash: ebd5c06b8174c9838a398e97439671e4d3f4c518
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687558"
+ms.locfileid: "51713490"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Łączenie programu Operations Manager z usługą Log Analytics
 Aby zachować istniejącą inwestycję w [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) i rozszerzone możliwości za pomocą usługi Log Analytics, Operations Manager można zintegrować z obszaru roboczego usługi Log Analytics. Umożliwi to wykorzystanie szans sprzedaży usługi Log Analytics przy ciągłym korzystaniu z programu Operations Manager do wykonywania następujących czynności:
@@ -331,6 +331,6 @@ W przyszłości, jeśli planujesz ponowne nawiązywanie połączenia grupy zarz�
 * W najnowszym pakiecie zbiorczym aktualizacji zastosowanym w grupie zarządzania. Dla programu Operations Manager 2012 folderem źródłowym jest folder ` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups`, a dla wersji 2012 R2 jest to folder `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dodać funkcje i zebrać dane, zobacz [Add Log Analytics solutions from the Solutions Gallery](../monitoring/monitoring-solutions.md) (Dodawanie rozwiązania Log Analytics z galerii rozwiązań).
+Aby dodać funkcje i zebrać dane, zobacz [Add Log Analytics solutions from the Solutions Gallery](../azure-monitor/insights/solutions.md) (Dodawanie rozwiązania Log Analytics z galerii rozwiązań).
 
 

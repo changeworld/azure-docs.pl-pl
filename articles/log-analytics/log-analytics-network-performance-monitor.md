@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: a38532d7a411080feb637549288bdad036a11153
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 78d081fe3ba2bfa4b598dfb0cc62c03d66d3d356
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011055"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712317"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor rozwiązanie na platformie Azure
 
@@ -103,7 +103,7 @@ Rozwiązanie Network Performance Monitor używa transakcji syntetycznych do moni
 
 ### <a name="configure-the-solution"></a>Skonfiguruj rozwiązanie 
 
-1. Dodaj rozwiązanie Network Performance Monitor do obszaru roboczego z [portalu Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Możesz też użyć procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](../monitoring/monitoring-solutions.md). 
+1. Dodaj rozwiązanie Network Performance Monitor do obszaru roboczego z [portalu Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Możesz też użyć procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](../azure-monitor/insights/solutions.md). 
 2. Otwórz obszar roboczy usługi Log Analytics, a następnie wybierz pozycję **Przegląd** kafelka. 
 3. Wybierz **rozwiązania Network Performance Monitor** Kafelek z komunikatem *rozwiązanie wymaga dodatkowej konfiguracji*.
 

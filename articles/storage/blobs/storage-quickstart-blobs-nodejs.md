@@ -1,31 +1,33 @@
 ---
-title: 'Szybki start: przekazywanie, pobieranie i wyświetlanie obiektów blob za pomocą środowiska Node.js — Azure Storage'
-description: Utwórz konto magazynu i kontener w magazynie obiektów (blob). Następnie przy użyciu biblioteki klienta platformy Node.js przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
+title: Jak utworzyć obiekt blob w usłudze Azure Storage przy użyciu zestawu SDK środowiska Node.js w wersji 2
+description: Utwórz konto magazynu i kontener w magazynie obiektów (blob). Następnie użyj biblioteki klienta usługi Azure Storage dla środowiska Node.js w wersji 2 do przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
-ms.topic: quickstart
-ms.date: 09/20/2018
+ms.topic: conceptual
+ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: 267218b4b958251e6748fbae17ca1ac267cf3287
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: d47878502816a0a61829859cc166c125448a2850
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140591"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710889"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu platformy Node.js
+# <a name="how-to-upload-download-and-list-blobs-using-nodejs-sdk-v2"></a>Jak przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu zestawu SDK środowiska Node.js w wersji 2
 
-Dzięki temu przewodnikowi Szybki start dowiesz się, w jaki sposób za pomocą środowiska Node.js przekazywać, pobierać i wyświetlać listę obiektów blob oraz zarządzać kontenerami w usłudze Azure Blob Storage.
+W tym przewodniku dowiesz się, jak przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą środowiska Node.js kontenerów i zarządzanie nimi za pomocą usługi Azure Blob storage.
 
-Do wykonania kroków tego przewodnika Szybki start jest potrzebna [subskrypcja platformy Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+## <a name="prerequisites"></a>Wymagania wstępne
 
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+Tworzenie konta usługi Azure storage w [witryny Azure portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). Aby uzyskać pomoc przy tworzeniu konta, zobacz [Tworzenie konta magazynu](../common/storage-quickstart-create-account.md).
 
 ## <a name="download-the-sample-application"></a>Pobieranie przykładowej aplikacji
 
-[Przykładowa aplikacja](https://github.com/Azure-Samples/storage-blobs-node-quickstart.git) używana w tym przewodniku Szybki start to prosta aplikacja konsolowa Node.js. Aby rozpocząć, sklonuj repozytorium na swoją maszynę przy użyciu następującego polecenia:
+[Przykładowa aplikacja](https://github.com/Azure-Samples/storage-blobs-node-quickstart.git) jest prosta aplikacja konsolowa Node.js. Aby rozpocząć, sklonuj repozytorium na swoją maszynę przy użyciu następującego polecenia:
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-node-quickstart.git
@@ -72,7 +74,7 @@ Container "demo" is deleted
 Done
 ```
 
-Pamiętaj, że jeśli w tym przewodniku Szybki start używasz nowego konta magazynu, nazwy kontenerów mogą nie pojawić się pod etykietą „*Kontenery*”.
+Jeśli używasz nowego konta magazynu w tym przykładzie, a następnie mogą nie być widoczne wszystkie nazwy kontenera wymienione pod etykietą "*kontenery*".
 
 ## <a name="understanding-the-code"></a>Omówienie kodu
 Pierwsze wyrażenie jest używane do ładowania wartości do zmiennych środowiskowych.
@@ -351,9 +353,9 @@ Zobacz dodatkowe zasoby używane podczas tworzenia aplikacji Node.js z magazynem
 - Aby uzyskać więcej informacji na temat biblioteki klienta Node.js, zobacz [dokumentację interfejsu API platformy Node.js](https://docs.microsoft.com/javascript/api/overview/azure/storage).
 - Zapoznaj się z [przykładami użycia usługi Blob Storage](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=nodejs&term=blob) napisanymi przy użyciu biblioteki klienta Node.js.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku Szybki start przedstawiono metodę przekazywania pliku między dyskiem lokalnym i usługą Azure Blob Storage przy użyciu środowiska Node.js. Aby dowiedzieć się więcej na temat pracy z usługą Blob Storage, przejdź do repozytorium GitHub.
+W tym artykule przedstawiono sposób przekazywania plików między dyskiem lokalnym i usługą Azure Blob storage przy użyciu środowiska Node.js. Aby dowiedzieć się więcej na temat pracy z usługą Blob Storage, przejdź do repozytorium GitHub.
 
 > [!div class="nextstepaction"]
 > [Zestaw SDK usługi Azure Storage dla repozytorium języka JavaScript](https://github.com/Azure/azure-storage-node)

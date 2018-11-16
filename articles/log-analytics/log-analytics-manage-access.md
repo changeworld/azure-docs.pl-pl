@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: de464cfeca01e492139e8bf9679d8f9876eedda6
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 14a33a6480cdb2dbc19b912d51eebda386c55d75
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625627"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713167"
 ---
 # <a name="manage-workspaces"></a>Zarządzanie obszarami roboczymi
 
@@ -241,5 +241,5 @@ Nowy plan taryfowy jest wyświetlany na wstążce portalu pakietu OMS w górnej 
 ## <a name="next-steps"></a>Kolejne kroki
 * Zobacz [omówienie agenta usługi Log Analytics](log-analytics-agent-overview.md) do zbierania danych z komputerów w centrum danych lub w innym środowisku chmury.
 * Aby skonfigurować zbieranie danych z maszyn wirtualnych platformy Azure, zobacz [Zbieranie danych dotyczących infrastruktury Azure Virtual Machines](log-analytics-quick-collect-azurevm.md).  
-* [Dodaj rozwiązania Log Analytics z galerii rozwiązań](../monitoring/monitoring-solutions.md), aby dodać funkcje i zebrać dane.
+* [Dodaj rozwiązania Log Analytics z galerii rozwiązań](../azure-monitor/insights/solutions.md), aby dodać funkcje i zebrać dane.
 

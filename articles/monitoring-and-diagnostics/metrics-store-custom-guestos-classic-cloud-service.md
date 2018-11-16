@@ -8,14 +8,15 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 30b08062aa360c4a43dc1bfe9f574447b58521f5
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 7f10495e22cf6750fdc5891d760885a238175da8
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095215"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711786"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Wysyłanie metryk systemu operacyjnego gościa, aby metryki usługi Azure Monitor przechowywać klasycznej usługi w chmurze 
+
 Dzięki usłudze Azure Monitor [rozszerzenie diagnostyki](azure-diagnostics.md), można zbierać metryki i dzienniki z systemu operacyjnego gościa (systemu operacyjnego gościa) uruchomiona w ramach maszyny wirtualnej, usługa w chmurze lub klaster usługi Service Fabric. Rozszerzenie może wysyłać telemetrię do [wielu różnych lokalizacjach.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
 W tym artykule opisano proces wysyłania metryki wydajności systemu operacyjnego gościa dla usługi Azure Cloud Services klasycznego do usługi Azure Monitor metryki magazynu. Począwszy od wersji 1.11 diagnostyki, można napisać metryki bezpośrednio do usługi Azure Monitor przechowywać metryki, którym już zbieranymi metrykami standardowa platforma. 
@@ -23,16 +24,14 @@ W tym artykule opisano proces wysyłania metryki wydajności systemu operacyjneg
 Przechowywanie ich w tej lokalizacji umożliwia dostęp do tych samych czynności, które mogą uzyskać większej liczby metryk platformy. Akcje obejmują niemal w czasie rzeczywistym alertów, wykresów i routing, dostęp z interfejsu API REST i nie tylko.  W przeszłości rozszerzenie diagnostyki zapisano do usługi Azure Storage, ale nie do magazynu danych usługi Azure Monitor.  
 
 Proces, który jest opisany w tym artykule dotyczy tylko liczniki wydajności w usługach Azure Cloud Services. To nie zadziała, aby uzyskać inne metryki niestandardowe. 
-   
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Musi być [administratorów usługi lub administratorów współpracujących](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator.md) w subskrypcji platformy Azure. 
+- Musi być [administratorów usługi lub administratorów współpracujących](~/articles/billing/billing-add-change-azure-subscription-administrator.md) w subskrypcji platformy Azure. 
 
 - Twoja subskrypcja musi być zarejestrowana w [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#portal). 
 
 - Musisz mieć [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) lub [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) zainstalowane.
-
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>Aprowizacja konta magazynu i usługi chmury 
 
@@ -42,15 +41,13 @@ Proces, który jest opisany w tym artykule dotyczy tylko liczniki wydajności w 
 
    ![Klucze kont magazynu](./media/metrics-store-custom-guestos-classic-cloud-service/storage-keys.png)
 
-
-
 ## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi 
 
 Tworzenie jednostki usługi w dzierżawie usługi Azure Active Directory zgodnie z instrukcjami podanymi w [w obsłudze portalu do tworzenia aplikacji i usługi jednostki, które mogą uzyskiwać dostęp do zasobów usługi Azure Active Directory](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Należy pamiętać o następujących, gdy zamierzasz przez ten proces: 
 
-  - Możesz umieścić dowolny adres URL dla adresu URL logowania.  
-  - Utwórz nowy wpis tajny klienta dla tej aplikacji.  
-  - Zapisz klucz i identyfikator klienta do użycia w kolejnych krokach.  
+- Możesz umieścić dowolny adres URL dla adresu URL logowania.  
+- Utwórz nowy wpis tajny klienta dla tej aplikacji.  
+- Zapisz klucz i identyfikator klienta do użycia w kolejnych krokach.  
 
 Nadaj aplikacji utworzonej w poprzednim kroku *wydawcy metryki monitorowania* uprawnienia do zasobów, aby emitować metryk. Jeśli planujesz korzystanie z aplikacji do emitowania metryki niestandardowe w odniesieniu do wielu zasobów, można przyznać te uprawnienia na poziomie grupy lub subskrypcji zasobów.  
 
@@ -136,7 +133,7 @@ Na koniec w konfiguracji prywatnej, należy dodać *konta usługi Azure Monitor*
     </AzureMonitorAccount> 
 </PrivateConfig> 
 ```
- 
+
 Zapisz ten plik diagnostyki lokalnie.  
 
 ## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>Wdrażanie rozszerzenia diagnostyki usługi w chmurze 
@@ -153,19 +150,19 @@ Poniższe polecenia umożliwiają przechowywanie szczegółów konta magazynu, k
 $storage_account = <name of your storage account from step 3> 
 $storage_keys = <storage account key from step 3> 
 ```
- 
+
 Podobnie Ustaw ścieżkę pliku diagnostyki do zmiennej za pomocą następującego polecenia:
 
 ```PowerShell
 $diagconfig = “<path of the Diagnostics configuration file with the Azure Monitor sink configured>” 
 ```
- 
+
 Wdróż rozszerzenie diagnostyki usługi w chmurze przy użyciu pliku diagnostyki za pomocą ujścia usługi Azure Monitor skonfigurowany przy użyciu następującego polecenia:  
 
 ```PowerShell
 Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -StorageAccountName $storage_account -StorageAccountKey $storage_keys -DiagnosticsConfigurationPath $diagconfig 
 ```
- 
+
 > [!NOTE] 
 > Jest nadal wymagane, aby podać konto magazynu w ramach instalacji rozszerzenia diagnostyki. Wszystkie dzienniki lub liczniki wydajności, które są określone w pliku konfiguracji diagnostyki są zapisywane do podanego konta magazynu.  
 
@@ -190,7 +187,5 @@ Wymiar, filtrowania i dzielenia możliwości umożliwia wyświetlanie całkowite
  ![Metryki witryny Azure portal](./media/metrics-store-custom-guestos-classic-cloud-service/metrics-graph.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 - Dowiedz się więcej o [metryki niestandardowe](metrics-custom-overview.md).
-
-
-

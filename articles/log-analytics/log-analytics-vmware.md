@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5c9f37d326d66e69e87ec846ca6f22d1788203f5
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4dd56a55789952be0c1f72fb2d31b08b95ad10c8
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613991"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712436"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Rozwiązanie monitorowanie VMware (wersja zapoznawcza) w usłudze Log Analytics
 
@@ -36,7 +36,7 @@ Rozwiązanie korzysta z funkcji natywnej syslog hosta ESXi w celu wypychania dan
 ## <a name="install-and-configure-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
 Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie.
 
-* Dodaj rozwiązanie monitorowanie VMware do subskrypcji przy użyciu procesu opisanego w [zainstalować rozwiązanie do zarządzania](../monitoring/monitoring-solutions.md#install-a-management-solution).
+* Dodaj rozwiązanie monitorowanie VMware do subskrypcji przy użyciu procesu opisanego w [zainstalować rozwiązanie do zarządzania](../azure-monitor/insights/solutions.md#install-a-management-solution).
 
 #### <a name="supported-vmware-esxi-hosts"></a>Obsługiwane hosty VMware ESXi
 vSphere hosta ESXi 5.5, 6.0 i 6.5

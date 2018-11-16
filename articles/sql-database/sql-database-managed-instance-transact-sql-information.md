@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 10/24/2018
-ms.openlocfilehash: c51df7aeef136fee42b061cd422cc62d67f33e96
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 31b09818f901ecf957364ae77fd8c6e636b04342
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258922"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712147"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
@@ -427,7 +427,7 @@ Następujące zmienne, funkcje i widoki zwracają różne wyniki:
 
 Każde wystąpienie zarządzane musi 35 TB pamięci masowej zarezerwowane dla miejsca na dysku Premium platformy Azure, a każdego pliku bazy danych znajduje się na innym dysku fizycznym. Rozmiary dysków może być 128 GB, 256 GB, 512 GB, 1 TB lub 4 TB. Nieużywane miejsce na dysku nie jest rozliczany, ale suma rozmiarów dysków w warstwie Premium platformy Azure nie może przekraczać 35 TB. W niektórych przypadkach wystąpienia zarządzanego, które nie wymagają 8 TB w sumie może przekraczać 35 TB Azure limit rozmiaru magazynu, z powodu wewnętrznego fragmentacji.
 
-Na przykład wystąpienie zarządzane mogą mieć jeden plik 1,2 TB, rozmiar, który jest umieszczony na dysku 4 TB i rozmiar ins 1 GB 248 pliki są umieszczone na oddzielnych dyskach 128 GB. W tym przykładzie:
+Na przykład wystąpienie zarządzane mogą mieć jeden plik 1,2 TB, rozmiar, który jest umieszczony na dysku 4 TB i pliki 248 każdy 1 GB w rozmiarze, które są umieszczone na oddzielnych dyskach 128 GB. W tym przykładzie:
 
 - rozmiar magazynu całkowitego miejsca na dysku jest 1-4 TB + 248 × 128 GB = 35 TB.
 - łączne miejsce zarezerwowane dla baz danych w wystąpieniu jest 1 x 1,2 TB + 248 x 1 GB = 1,4 TB pojemności.

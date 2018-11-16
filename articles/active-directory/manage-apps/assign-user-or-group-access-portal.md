@@ -2,25 +2,21 @@
 title: Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
 description: Jak wybrać aplikację przedsiębiorstwa, aby przypisać użytkownika lub grupy do niej w usłudze Azure Active Directory
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 11/15/2018
 ms.author: barbkess
 ms.reviewer: luleon
-ms.openlocfilehash: ee0b14123e193f219e403d2608368c27f953013d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b6b7408b4efe4c3271ea2ddeb63a499bee670976
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037978"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711314"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory
 Aby przypisać użytkownika lub grupy do aplikacji przedsiębiorstwa, musi mieć odpowiednie uprawnienia do zarządzania aplikacji przedsiębiorstwa, a musi być administratorem globalnym katalogu.
@@ -32,7 +28,7 @@ Aby przypisać użytkownika lub grupy do aplikacji przedsiębiorstwa, musi mieć
 > For Applications firmy Microsoft (takich jak aplikacje usługi Office 365) należy użyć programu PowerShell do przypisywania użytkowników do aplikacji przedsiębiorstwa.
 
 
-## <a name="how-do-i-assign-user-access-to-an-enterprise-app-in-the-azure-portal"></a>Jak przypisywać użytkownikom dostęp do aplikacji przedsiębiorstwa w witrynie Azure portal?
+## <a name="assign-a-user-to-an-app---portal"></a>Przypisz użytkownika do aplikacji — portal
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu konta, które jest administratorem globalnym katalogu.
 2. Wybierz **wszystkich usług**wprowadź usługi Azure Active Directory w polu tekstowym, a następnie wybierz pozycję **Enter**.
 3. Wybierz **aplikacje dla przedsiębiorstw**.
@@ -51,7 +47,25 @@ Aby przypisać użytkownika lub grupy do aplikacji przedsiębiorstwa, musi mieć
 10. Na **Dodaj przydziału** bloku wybierz **roli**. Następnie na **wybierz rolę** bloku, wybierz rolę do zastosowania do wybranych użytkowników lub grup, a następnie wybierz **OK** znajdujący się u dołu bloku.
 11. Na **Dodaj przydziału** bloku wybierz **przypisać** znajdujący się u dołu bloku. Przypisani użytkownicy lub grupy mają uprawnienia zdefiniowane przez wybraną rolę dla tej aplikacji przedsiębiorstwa.
 
-## <a name="how-do-i-assign-a-user-to-an-enterprise-app-using-powershell"></a>Jak przypisać użytkownika do aplikacji przedsiębiorstwa przy użyciu programu PowerShell?
+## <a name="allow-all-users-to-access-an-app---portal"></a>Zezwala wszystkim użytkownikom na dostęp do aplikacji — portal
+Aby umożliwić wszystkim użytkownikom dostępu do aplikacji:
+
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu konta, które jest administratorem globalnym katalogu.
+2. Wybierz **wszystkich usług**wprowadź usługi Azure Active Directory w polu tekstowym, a następnie wybierz pozycję **Enter**.
+3. Wybierz **aplikacje dla przedsiębiorstw**.
+4. Na **aplikacje dla przedsiębiorstw** bloku wybierz **wszystkie aplikacje**. Ta lista zawiera aplikacje, którymi można zarządzać.
+5. Na **aplikacje w przedsiębiorstwie — wszystkie aplikacje** bloku, wybierz aplikację.
+6. Na ***appname*** bloku wybierz **właściwości**.
+7. Na  ***appname* — właściwości** ustawić bloku **wymagane przypisanie użytkownika?** ustawienie **nie**. 
+
+**Wymagane przypisanie użytkownika?** opcji:
+
+- Nie wpływa na informację określającą, czy aplikacja jest wyświetlana na panelu dostępu do aplikacji. Aby wyświetlić aplikację w panelu dostępu, należy przypisać do użytkowników lub grupy do aplikacji.
+- Tylko funkcje z aplikacjami w chmurze, które są skonfigurowane dla protokołu SAML logowania jednokrotnego, a aplikacje skonfigurowane za pomocą serwera Proxy aplikacji lokalnych. Zobacz [logowanie jednokrotne dla aplikacji](what-is-single-sign-on.md).
+- Wymaga się, że użytkownicy wyrazić zgodę na aplikację. Administrator można udzielić zgody dla wszystkich użytkowników.  Zobacz [Konfiguruj sposób użytkownicy końcowi zgoda na aplikację](configure-user-consent.md).
+
+
+## <a name="assign-a-user-to-an-app---powershell"></a>Przypisz użytkownika do aplikacji — PowerShell
 
 1. Otwórz wiersz polecenia programu Windows PowerShell.
 

@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 0dd7a5d5159144c6b1a050ff4c0443b181976738
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 0b346756349c483dea32ec31827a653bd9b777cf
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39124958"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705943"
 ---
 # <a name="how-to-scale-out-indexing-in-azure-search"></a>Jak skalowalnego w poziomie indeksowanie w usłudze Azure Search
 
@@ -21,7 +21,7 @@ Wzrostu ilości danych lub przetwarzania zmienią się potrzeby, może się okaz
 
 Jako pierwszy krok w kierunku spotkania zwiększone zapotrzebowanie, zaleca się zwiększenie [skalowalność i wydajność](search-capacity-planning.md) w granicach istniejącej usługi. 
 
-Drugi etap, jeśli użyjesz [indeksatory](search-indexer-overview.md), dodaje mechanizmy skalowalnych indeksowania. Indeksatory pochodzą z wbudowanych harmonogram, który pozwala na działka limit indeksowania w regularnych odstępach czasu lub rozszerzyć przetwarzanie ponad 24-godzinnego przedziału czasu. Ponadto w połączeniu z definicji źródła danych, indeksatorów pomóc Ci osiągnąć formularza równoległości, partycjonowanie danych i używając harmonogramów można wykonać równolegle.
+Drugi etap, jeśli użyjesz [indeksatory](search-indexer-overview.md), dodaje mechanizmy skalowalne indeksowania. Indeksatory pochodzą z wbudowanych harmonogram, który pozwala na działka limit indeksowania w regularnych odstępach czasu lub rozszerzyć przetwarzanie ponad 24-godzinnego przedziału czasu. Ponadto w połączeniu z definicji źródła danych, indeksatorów pomóc Ci osiągnąć formularza równoległości, partycjonowanie danych i używając harmonogramów można wykonać równolegle.
 
 ### <a name="scheduled-indexing-for-large-data-sets"></a>Zaplanowane indeksowania dla dużych zestawów danych
 

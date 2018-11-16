@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 463c74638b0e50348b8c9454334b7457e7b570e6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 418a98e0b5eeed6bc5b94ca78b8636116620b614
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283890"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705416"
 ---
 # <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Usługa Azure Cosmos DB globalną dystrybucję - kulisy
 
@@ -81,5 +81,5 @@ Semantyka pięcioma modelami spójności w usłudze Cosmos DB są opisane [tutaj
 Następnie Dowiedz się, jak skonfigurować dystrybucję globalną, korzystając z następującymi artykułami:
 
 * [Jak skonfigurować klientów dla wielu](how-to-manage-database-account.md#configure-clients-for-multi-homing)
-* [Jak dodawanie/usuwanie regionów ze swojej bazy danych](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [Dodać lub usunąć regiony z Twojego konta usługi Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Jak utworzyć zasady rozpoznawania konfliktu niestandardowego konta interfejsu API SQL](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

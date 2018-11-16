@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 11/15/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4c5f99ed9d20076e3e25ebca261253e576572786
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 6d4a6b7aa2ad236fba6a8ea0b01578b4843d11f3
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354261"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712929"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Interfejsy API protokołu HTTP w funkcje trwałe (usługa Azure Functions)
 
@@ -95,6 +95,7 @@ Wszystkie interfejsy API protokołu HTTP implementowany przez rozszerzenie wype�
 | createdTimeFrom  | Ciąg zapytania    | Parametr opcjonalny. Jeśli zostanie określony, filtruje listę zwracane wystąpienia, które zostały utworzone na lub po podanej sygnaturze czasowej ISO8601.|
 | createdTimeTo    | Ciąg zapytania    | Parametr opcjonalny. Jeśli zostanie określony, filtruje listę zwracane wystąpienia, które zostały utworzone w lub przed podaną sygnaturą czasową ISO8601.|
 | runtimeStatus    | Ciąg zapytania    | Parametr opcjonalny. Jeśli zostanie określony, filtry listę wystąpień zwrócona na podstawie ich stanu środowiska uruchomieniowego. Aby wyświetlić listę wartości stanu środowiska uruchomieniowego możliwe, zobacz [zapytań wystąpień](durable-functions-instance-management.md) tematu. |
+| top    | Ciąg zapytania    | Parametr opcjonalny. Jeśli zostanie określony, podzielić wyniki kwerendy na stronach i ograniczać maksymalną liczbę wyników na stronę. |
 
 `systemKey` jest klucz autoryzacji wygenerowany automatycznie przez hosta usługi Azure Functions. W szczególności nieograniczony dostęp do rozszerzenia zadań trwałe interfejsów API i można zarządzać w taki sam sposób jak [inne klucze autoryzacji](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). Najprostszym sposobem odnajdywanie `systemKey` wartość przy użyciu `CreateCheckStatusResponse` API wymienionych wcześniej.
 
@@ -291,6 +292,26 @@ Oto przykład ładunków odpowiedzi, takich jak stan aranżacji (sformatowane, a
 > [!NOTE]
 > Ta operacja może być bardzo kosztowna pod względem operacji We/Wy do usługi Azure Storage, jeśli jest dostępnych wiele wierszy w tabeli wystąpień. Szczegółowe informacje na temat wystąpienia tabeli znajdują się w [wydajności i skali w funkcje trwałe (usługi Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-perf-and-scale#instances-table) dokumentacji.
 > 
+
+#### <a name="request-with-paging"></a>Żądania z stronicowania
+
+Możesz ustawić `top` parametru, aby podzielić wyniki kwerendy na stronach.
+
+Funkcje wersji 1.0 format żądania jest następująca:
+
+```http
+GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&top={top}
+```
+
+Format funkcje w wersji 2.0 ma te same parametry, ale nieco inny prefiks adresu URL: 
+
+```http
+GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&top={top}
+```
+
+Jeśli istnieje następnej strony, token kontynuacji jest zwracany w nagłówku odpowiedzi.  Nazwa nagłówka jest `x-ms-continuation-token`.
+
+Jeśli ustawisz wartość tokenu kontynuacji w nagłówku żądania dalej, można uzyskać następnej strony.  Ten klucz w nagłówku żądania jest `x-ms-continuation-token`.
 
 
 ### <a name="raise-event"></a>Wywołaj zdarzenie

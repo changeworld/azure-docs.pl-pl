@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 83c7862e8a9e3ce069765f81607bfbbeee272be2
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 3d1170845968cd5c9d4a4c09c9906dea962138d7
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278654"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712963"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Użyj usługi Azure blob storage usług IIS i platformą Azure table Storage w przypadku zdarzeń z usługą Log Analytics
 
@@ -194,5 +194,5 @@ Przejrzyj następujący przykładowy skrypt, skopiuj go, zmodyfikuj go zgodnie z
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zbieranie dzienników i metryk dla usług platformy Azure](log-analytics-azure-storage.md) obsługiwanych usług platformy Azure.
-* [Włączanie rozwiązań](../monitoring/monitoring-solutions.md) zapewniające wgląd w dane.
+* [Włączanie rozwiązań](../azure-monitor/insights/solutions.md) zapewniające wgląd w dane.
 * [Używają zapytań wyszukiwania](log-analytics-queries.md) do analizowania danych.

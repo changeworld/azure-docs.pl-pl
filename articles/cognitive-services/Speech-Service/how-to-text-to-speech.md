@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: erhopf
-ms.openlocfilehash: 162b690d4b371cfe76738cd83ce484a3062d139f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 16b7de909ce57a7f8d3cea54a59996dc6f0a6ba0
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469921"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712011"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Użyj "Tekst na mowę" usługi mowy
 
@@ -92,7 +92,7 @@ Jeśli wystąpi błąd, używane są poniższe kody stanu. Treść odpowiedzi b�
 429|Zbyt wiele żądań|Przekroczono limit przydziału lub liczbę żądań dozwoloną przez subskrypcję.
 |502|Zła brama    | Problem z siecią lub po stronie serwera. Może również oznaczać nieprawidłowy nagłówek.
 
-Aby uzyskać więcej informacji na tekście interfejsu API REST usługi rozpoznawania mowy, zobacz [interfejsów API REST](rest-apis.md#text-to-speech).
+Aby uzyskać więcej informacji na tekście interfejsu API REST usługi rozpoznawania mowy, zobacz [interfejsów API REST](rest-apis.md#text-to-speech-api).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

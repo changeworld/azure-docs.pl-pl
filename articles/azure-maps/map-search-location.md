@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 78ffa42bcf57b7163afc13b2550abdbae240ef00
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: cf27864d691fe2fe13c9483348fb2abed121874d
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729243"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713507"
 ---
 # <a name="show-search-results-on-the-map"></a>Pokaż wyniki wyszukiwania na mapie
 
@@ -31,7 +31,7 @@ Pierwszy blok kodu tworzy obiekt mapy i inicjuje usługi klienta. Możesz zobacz
 
 Drugi blok kodu używa [interfejsu API wyszukiwania rozmytego usługi Azure Maps](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) wyszukiwanie punktu orientacyjnego. Wyszukiwanie rozmyte interfejsu API może obsługiwać dowolną kombinację rozmyte danych wejściowych. Odpowiedź z usługi wyszukiwania rozmytego, następnie jest analizowany w formacie GeoJSON, używając [getGeoJsonSearchResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonsearchresponse?view=azure-iot-typescript-latest#geojsonsearchresponse) metody. Numery PIN zostaną następnie dodane do mapy, aby pokazać punktów orientacyjnych na mapie.
 
-Ostatni blok kodu dostosowuje granice aparatu mapy za pomocą mapy [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) właściwości.
+Ostatni blok kodu dostosowuje granice aparatu mapy za pomocą mapy [setCameraBounds](/javascript/api/azure-maps-control/atlas.map#setcamerabounds-cameraboundsoptions-) właściwości.
 
 ## <a name="make-a-search-request-via-xmlhttprequest"></a>Wyślij żądanie wyszukiwania za pomocą XMLHttpRequest
 
@@ -44,7 +44,7 @@ Drugi blok kodu dodaje warstwy wyniki wyszukiwania na mapie. Warstwa wyniki wysz
 
 Trzeci bloku kodu wysyła [XMLHttpRequest](https://xhr.spec.whatwg.org/) do [interfejs API usługi Azure Maps rozmyte wyszukiwania](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) wyszukiwanie punktu orientacyjnego. Wyszukiwanie rozmyte interfejsu API może obsługiwać dowolną kombinację rozmyte danych wejściowych.
 
-Ostatni blok kodu analizowania odpowiedzi i dostosowuje dostosowuje granice aparatu mapy za pomocą mapy [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) do renderowania numerów PIN wynik.
+Ostatni blok kodu analizowania odpowiedzi i dostosowuje dostosowuje granice aparatu mapy za pomocą mapy [setCameraBounds](/javascript/api/azure-maps-control/atlas.map#setcamerabounds-cameraboundsoptions-) do renderowania numerów PIN wynik.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -62,6 +62,6 @@ Zobacz następujące artykuły, aby uzyskać przykłady pełnego kodu:
 
 > [!div class="nextstepaction"]
 > [Uzyskiwanie informacji na podstawie współrzędnych](./map-get-information-from-coordinate.md)
-
+<!-- Comment added to suppress false positive warning -->
 > [!div class="nextstepaction"]
 > [Wyświetlanie instrukcji dotyczących trasy od A do B](./map-route.md)

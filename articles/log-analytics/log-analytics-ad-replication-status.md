@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 08d17566faa61c5dcac01a49f99f0f39eb280946
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3092e8edf16e271826aef95575d92749b29f8b56
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009746"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711518"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Monitoruje stan replikacji usługi Active Directory z usługą Log Analytics
 
@@ -34,7 +34,7 @@ Pakiet rozwiązań stan replikacji usługi AD regularnie monitoruje środowiska 
 Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie.
 
 * Konieczne jest zainstalowanie agentów na kontrolerach domeny, które są członkami domeny, która ma zostać obliczone. Alternatywnie należy zainstalować agentów na serwerach członkowskich i konfigurować agentów do przesyłania danych replikacji usługi AD do usługi Log Analytics. Aby dowiedzieć się, jak połączyć komputery Windows do usługi Log Analytics, zobacz [Windows łączenie komputerów do usługi Log Analytics](log-analytics-windows-agent.md). Jeśli kontroler domeny jest już częścią istniejącego środowiska programu System Center Operations Manager, który chcesz połączyć z usługą Log Analytics, zobacz [łączenie programu Operations Manager do usługi Log Analytics](log-analytics-om-agents.md).
-* Dodaj rozwiązanie stan replikacji usługi Active Directory do obszaru roboczego usługi Log Analytics przy użyciu procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](../monitoring/monitoring-solutions.md).  Nie są wymagane żadne dalsze czynności konfiguracyjne.
+* Dodaj rozwiązanie stan replikacji usługi Active Directory do obszaru roboczego usługi Log Analytics przy użyciu procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](../azure-monitor/insights/solutions.md).  Nie są wymagane żadne dalsze czynności konfiguracyjne.
 
 ## <a name="ad-replication-status-data-collection-details"></a>Szczegóły kolekcji danych stanu replikacji usługi AD
 W poniższej tabeli przedstawiono metody zbierania danych i inne szczegóły dotyczące jak zbierane są dane dotyczące stanu replikacji usługi AD.

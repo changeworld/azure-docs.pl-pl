@@ -8,10 +8,14 @@ items:
   expanded: true
 - name: Przewodniki Szybki start
   items:
-  - name: Korzystanie z zestawu .NET SDK
+  - name: Korzystanie z zestawu SDK klienta
     items:
     - name: Wykrywanie twarzy na obrazie
-      href: QuickStarts/csharp-detect-sdk.md
+      items:
+      - name: C#
+        href: QuickStarts/csharp-detect-sdk.md
+      - name: Python
+        href: Tutorials/FaceAPIinPythonTutorial.md
   - name: Korzystanie z interfejsu API REST
     items:
     - name: Wykrywanie twarzy na obrazie
@@ -44,10 +48,6 @@ items:
       href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Pierwsze aplikacje interfejsu API rozpoznawania twarzy
-    items:
-    - name: Python
-      href: Tutorials/FaceAPIinPythonTutorial.md
   - name: Wykrywanie twarzy na obrazie
     href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
   - name: Identyfikowanie twarzy na obrazie
@@ -104,9 +104,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Informacje o wersji
     href: ReleaseNotes.md
-ms.openlocfilehash: 46fc3f747b6b9048ac0422ae30fc538fdcbc33f8
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 0cc51a9f242b479d24c05e1167e8609d4111bc32
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51631409"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686500"

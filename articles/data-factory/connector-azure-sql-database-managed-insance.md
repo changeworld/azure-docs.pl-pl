@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 11/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 87ca7c10095f12c82137b6287fbb895c97676062
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 561e672436c38cd0b3e637b794662483fc630676
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49459065"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706725"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-using-azure-data-factory"></a>Kopiowanie danych do i z bazy danych wystąpienia zarządzanego Azure SQL przy użyciu usługi Azure Data Factory
 
@@ -115,7 +115,7 @@ Aby skopiować dane z/do wystąpienia zarządzanego Azure SQL Database, należy 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość typu elementu dataset musi być równa: **SqlServerTable** | Yes |
-| tableName |Nazwa tabeli lub widoku w wystąpieniu bazy danych, które połączona usługa przywołuje. | Yes |
+| tableName |Nazwa tabeli lub widoku w wystąpieniu bazy danych, które połączona usługa przywołuje. | Brak źródła tak dla ujścia |
 
 **Przykład**
 
@@ -155,7 +155,6 @@ Aby skopiować dane z wystąpienia zarządzanego Azure SQL Database, należy ust
 
 - Jeśli **sqlReaderQuery** określono SqlSource uruchomieniu działania kopiowania to zapytanie względem źródła wystąpienia zarządzanego, aby uzyskać dane. Alternatywnie, można określić procedury składowanej, określając **sqlReaderStoredProcedureName** i **storedProcedureParameters** (jeśli jest to procedura składowana pobiera parametry).
 - Jeśli właściwość "sqlReaderQuery" lub "sqlReaderStoredProcedureName" nie jest określona, kolumny zdefiniowane w sekcji "strukturę" zestaw danych JSON służą do utworzenia kwerendy (`select column1, column2 from mytable`) w celu uruchomienia wystąpienia zarządzanego. Definicja zestawu danych nie ma "strukturę", wszystkie kolumny są wybierane z tabeli.
-- Kiedy używasz **sqlReaderStoredProcedureName**, nadal należy określić dummy **tableName** właściwość w zestawie danych JSON.
 
 **Przykład: Użycie zapytania SQL**
 
@@ -491,7 +490,7 @@ Podczas kopiowania danych z i do wystąpienia zarządzanego Azure SQL Database, 
 | Datetimeoffset |DateTimeOffset |
 | Dziesiętna |Dziesiętna |
 | Atrybut FILESTREAM (varbinary(max)) |Byte[] |
-| float |Podwójne |
+| Liczba zmiennoprzecinkowa |Podwójne |
 | image |Byte[] |
 | int |Int32 |
 | pieniędzy |Dziesiętna |

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 442371ffc63e32906d9faafc3b803bb5e6386905
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9aa90c5a99da70aa0803aad4894e928a422b8fcf
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283448"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712249"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Często zadawane pytania dotyczące przejścia z portalu pakietu OMS do witryny Azure portal dla użytkowników usługi Log Analytics
 Usługi log Analytics swój własny portal o nazwie portalu pakietu OMS początkowo użyty do zarządzania jej konfiguracji i analizowania zebranych danych.  Wszystkie funkcje z tego portalu został przeniesiony do witryny Azure portal gdzie będą opracowywane.
@@ -82,7 +82,7 @@ Zarządzanie większość ustawień podłączone źródło w **Zaawansowane usta
 | Serwery z systemem Linux   | **Zaawansowane ustawienia** menu dla obszaru roboczego. |
 | Azure Storage     | **Zaawansowane ustawienia** menu dla obszaru roboczego. |
 | System Center     | **Zaawansowane ustawienia** menu dla obszaru roboczego. |
-| Office 365        | Zobacz [dokumentację dotyczącą rozwiązania do zarządzania usługi Office 365](../monitoring/monitoring-solution-office-365.md) szczegółowe informacje dotyczące konfiguracji. |
+| Office 365        | Zobacz [dokumentację dotyczącą rozwiązania do zarządzania usługi Office 365](../azure-monitor/insights/solution-office-365.md) szczegółowe informacje dotyczące konfiguracji. |
 | Telemetria systemu Windows | Menu Ustawienia dla rozwiązania. Zobacz [Windows Analytics w witrynie Azure portal](/windows/deployment/update/windows-analytics-azure-portal) szczegółowe informacje dotyczące konfiguracji. |
 | Łącznik ITSM    | Zobacz [połączenia narzędzia ITSM produktów/usług za pomocą łącznika zarządzania usługami IT](../log-analytics/log-analytics-itsmc-connections.md) instrukcje dotyczące łączenia usługi ITSM za pomocą usługi Log Analytics. |
 
@@ -107,7 +107,7 @@ Większość ustawień danych zarządzania w **Zaawansowane ustawienia** menu dl
 Zarządzanie rozwiązaniami w **rozwiązania** menu dla obszaru roboczego. 
 
 ## <a name="how-do-i-install-and-remove-management-solutions"></a>Jak zainstalować i usuwanie rozwiązań do zarządzania?
-W portalu pakietu OMS zainstalowaniu rozwiązania do zarządzania z galerii rozwiązań i usunąć je z **ustawienia**. W witrynie Azure portal [instalacji rozwiązania do zarządzania](../monitoring/monitoring-solutions.md#install-a-management-solution) w portalu Azure Marketplace. [Usuwanie rozwiązania](../monitoring/monitoring-solutions.md#remove-a-management-solution) na liście zainstalowane rozwiązania.
+W portalu pakietu OMS zainstalowaniu rozwiązania do zarządzania z galerii rozwiązań i usunąć je z **ustawienia**. W witrynie Azure portal [instalacji rozwiązania do zarządzania](../azure-monitor/insights/solutions.md#install-a-management-solution) w portalu Azure Marketplace. [Usuwanie rozwiązania](../azure-monitor/insights/solutions.md#remove-a-management-solution) na liście zainstalowane rozwiązania.
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>Jak tworzyć i zarządzać alertami
 Reguły alertów na podstawie zapytań usługi Log Analytics zarządza się teraz w [ujednolicone środowisko alertów](../monitoring-and-diagnostics/alert-metric.md). Zobacz [sposób rozszerzyć alerty z usługą Log Analytics do usługi Azure Alerts](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md) Aby uzyskać szczegółowe informacje dotyczące konfigurowania i używania alertów w witrynie Azure portal.
@@ -126,5 +126,5 @@ Przez ograniczony czas możesz uzyskiwać dostęp portalu za pośrednictwem tego
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Znalezienie i zainstalowanie rozwiązania do zarządzania](../monitoring/monitoring-solutions.md) przy użyciu witryny Azure portal.
+- [Znalezienie i zainstalowanie rozwiązania do zarządzania](../azure-monitor/insights/solutions.md) przy użyciu witryny Azure portal.
 - Dowiedz się więcej o [przeszukiwania dzienników w witrynie Azure portal](log-analytics-log-search-portals.md).

@@ -2,25 +2,21 @@
 title: Omówienie łączników serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
 description: Zawiera podstawowe informacje dotyczące łączników serwera Proxy aplikacji usługi Azure AD.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/17/2018
+ms.date: 11/15/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.custom: it-pro
-ms.openlocfilehash: 62738cda8ce37ec7ca50e1e3f285dc71a37113f7
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 66fb98c166c8a0f4cec9f3b7e7be73fce6466b50
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036041"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713116"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Omówienie łączników serwera Proxy aplikacji usługi Azure AD
 
@@ -32,7 +28,23 @@ ms.locfileid: "51036041"
 
 ## <a name="requirements-and-deployment"></a>Wymagania i wdrożenia
 
-Aby pomyślnie wdrożyć serwer Proxy aplikacji, co najmniej jeden łącznik jest wymagany, ale zaleca się co najmniej dwóch pod kątem większej odporności. Łącznik można zainstalować na maszynie 2016 lub Windows Server 2012 R2. Łącznik musi mieć możliwość komunikacji z usługi Serwer Proxy aplikacji, a także aplikacji lokalnych, które można opublikować. Serwer Proxy aplikacji wymaga również protokołu TLS 1.2, uruchomione w podstawowym systemie operacyjnym. Aby zmienić protokołu TLS 1.2, wykonaj kroki opisane w [włączenia protokołu TLS 1.2](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#enable-tls-12-for-azure-ad-connect). Gdy zawartość jest programu Azure AD Connect, ta procedura jest taka sama dla wszystkich klientów programu .NET.
+Aby pomyślnie wdrożyć serwer Proxy aplikacji, co najmniej jeden łącznik jest wymagany, ale zaleca się co najmniej dwóch pod kątem większej odporności. Łącznik można zainstalować na maszynie 2016 lub Windows Server 2012 R2. Łącznik musi mieć możliwość komunikacji z usługi Serwer Proxy aplikacji, a także aplikacji lokalnych, które można opublikować. 
+
+### <a name="windows-server"></a>Windows server
+Wymagany serwer z systemem Windows Server 2012 R2 lub nowszym na której można zainstalować łącznik serwera Proxy aplikacji. Serwer musi łączyć się z usługi serwera Proxy aplikacji na platformie Azure i aplikacji lokalnych, które publikujesz.
+
+Systemu windows server musi mieć protokół TLS 1.2, włączone, przed zainstalowaniem łącznika serwera Proxy aplikacji. Istniejące łączniki z wersjami starszymi niż 1.5.612.0 będą w dalszym ciągu działać we wcześniejszych wersjach TLS do odwołania. Aby włączyć protokół TLS 1.2:
+
+1. Ustaw następujące klucze rejestru:
+    
+    ```
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SchUseStrongCrypto"=dword:00000001
+    ```
+
+2. Uruchom ponownie serwer
+
 
 Aby uzyskać więcej informacji na temat wymagania sieciowe dotyczące serwera łącznika zobacz [Rozpoczynanie pracy z usługą serwera Proxy aplikacji i zainstalować łącznik](application-proxy-enable.md).
 

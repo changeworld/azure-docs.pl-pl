@@ -10,37 +10,31 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mahilleb
-ms.openlocfilehash: 088e581da7511797a0f39959d867c6298262462a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 8d36036332e939075ffac8763bec9c23d8e4a3f7
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242334"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712895"
 ---
-# <a name="regions-of-the-speech-service"></a>Regiony usługi mowy
+# <a name="speech-service-supported-regions"></a>Usługa rozpoznawania mowy obsługiwane regiony
 
-Usługa rozpoznawania mowy jest dostępna w różnych regionach.
-Po utworzeniu subskrypcji można wybrać dostępny region, w zależności od potrzeb.
+Usługa mowy umożliwia aplikacji konwertowanie dźwięku na tekst, wykonać tłumaczenie mowy i konwertowania tekstu na mowę. Usługa jest dostępna w wielu regionach za pomocą punktów końcowych unikatowy zestaw SDK rozpoznawania mowy i interfejsów API REST.
 
-Korzystając z subskrypcją, masz konto dla wybranego regionu.
-
-## <a name="rest-api"></a>Interfejs API REST
-
-Użyj interfejsu API REST, aby wybrać poprawne punkty końcowe specyficzne dla regionu.
-Zobacz [interfejsów API REST](rest-apis.md) Aby uzyskać szczegółowe informacje.
+Należy upewnić się, że punkt końcowy, który odpowiada regionie dla Twojej subskrypcji.
 
 ## <a name="speech-sdk"></a>Zestaw SDK rozpoznawania mowy
 
 W [zestawu SDK usługi mowy](speech-sdk.md), regiony są określane jako ciąg (na przykład, jako parametr do `SpeechConfig.FromSubscription` mowy zestawu SDK dla języka C#).
 
-### <a name="regions-for-speech-recognition-and-translation"></a>Regiony usługi rozpoznawania mowy i tłumaczenia
+### <a name="speech-recognition-and-translation"></a>Rozpoznawanie mowy i tłumaczenia
 
-W poniższej tabeli wymieniono dostępne regiony dla **rozpoznawania mowy** i **tłumaczenia**.
+Zestaw SDK rozpoznawania mowy jest dostępna w regionach w celu **rozpoznawania mowy** i **tłumaczenia**:
 
   Region | Parametr zestaw SDK rozpoznawania mowy | Portal dostosowania mowy
  ------|-------|--------
  Zachodnie stany USA | `westus` | https://westus.cris.ai
- Zachodnie stany USA 2 | `westus2` | https://westus2.cris.ai 
+ Zachodnie stany USA 2 | `westus2` | https://westus2.cris.ai
  Wschodnie stany USA | `eastus` | https://eastus.cris.ai
  Wschodnie stany USA 2 | `eastus2` | https://eastus2.cris.ai
  Azja Wschodnia | `eastasia` | https://eastasia.cris.ai
@@ -49,8 +43,26 @@ W poniższej tabeli wymieniono dostępne regiony dla **rozpoznawania mowy** i **
  Europa Zachodnia | `westeurope` | https://westeurope.cris.ai
 
 
-### <a name="regions-for-intent-recognition"></a>Regiony dla rozpoznawanie intencji
+### <a name="intent-recognition"></a>Rozpoznawanie intencji
+
+**Rozpoznawanie intencji** udziałów zestaw SDK rozpoznawania mowy regiony obsługują z użyciem usługi LUIS. Aby uzyskać pełną listę dostępnych regionów, zobacz [publikowania regionów i punkty końcowe — usługi LUIS](https://docs.microsoft.comazure/cognitive-services/luis/luis-reference-regions)
 
 Dostępne regiony dla **rozpoznawanie intencji** za pośrednictwem mowy usługi SDK są wymienione na [strony region usługi Language Understanding](/azure/cognitive-services/luis/luis-reference-regions).
-Dla każdego regionu publikowania na liście z odpowiadającym mu parametrem zestaw SDK rozpoznawania mowy w regionie jest określana jako pierwszą część nazwy domeny, punktu końcowego.
-Na przykład użyć `westus` do określenia publikowania regionu zachodnie stany USA.
+
+Dla każdego regionu publikowania na liście, użyj podanych **nazwa regionu interfejsu API**. Na przykład użyć `westus` regionu zachodnie stany USA.
+
+## <a name="rest-apis"></a>Interfejsy API REST
+
+Usługa rozpoznawania mowy udostępnia również punkty końcowe REST dla żądania zamiany mowy na tekst i zamiany tekstu na mowę.
+
+### <a name="speech-to-text"></a>Zamiana mowy na tekst
+
+Aby uzyskać dokumentację referencyjną mowy na tekst, zobacz [interfejsów API REST](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#speech-to-text).
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+
+### <a name="text-to-speech"></a>Zamiana tekstu na mowę
+
+Aby uzyskać dokumentację referencyjną zamiany tekstu na mowę, zobacz [interfejsów API REST](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#speech-to-text).
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

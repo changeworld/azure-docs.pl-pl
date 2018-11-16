@@ -8,34 +8,51 @@ manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/26/2018
+ms.date: 11/14/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 59ca9ca7711904fe7882aac4878bd62c597645d8
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 9a869055613da6465a9beda9b8edc1bf812b6dfe
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034970"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712113"
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Rozpoczynanie pracy z usługą serwera Proxy aplikacji i zainstalować łącznik
-W tym artykule przedstawiono procedurę włączania serwera proxy aplikacji usługi Microsoft Azure AD dla katalogu w chmurze w ramach usługi Azure AD.
+W tym artykule przedstawiono kroki, aby włączyć serwer Proxy aplikacji w usłudze Azure Active Directory (Azure AD).
 
 Jeśli nie masz jeszcze pamiętać o korzyści z zabezpieczeń i wydajności serwera Proxy aplikacji udostępnia w Twojej organizacji, Dowiedz się więcej o [jak zapewnić bezpieczny dostęp zdalny do aplikacji lokalnych](application-proxy.md).
 
-## <a name="application-proxy-prerequisites"></a>Wymagania wstępne serwera proxy aplikacji
-Wymagania umożliwiające włączenie i używanie usług serwera proxy aplikacji:
+## <a name="prerequisites"></a>Wymagania wstępne
+Aby włączyć serwer Proxy aplikacji, potrzebne są:
 
-* [Subskrypcja usługi Microsoft Azure AD w warstwie Podstawowa lub Premium](../fundamentals/active-directory-whatis.md) i katalog usługi Azure AD, dla którego jesteś administratorem globalnym.
-* Serwer z systemem Windows Server 2012 R2 lub 2016, na której można zainstalować łącznik serwera Proxy aplikacji. Serwer musi być w stanie połączyć się z usługi serwera Proxy aplikacji w chmurze i lokalnych aplikacji, które publikujesz.
-  * Dla logowania jednokrotnego do opublikowanej aplikacji przy użyciu ograniczonego delegowania protokołu Kerberos ta maszyna powinny przyłączane do domeny w tej samej domeny usługi AD jako aplikacje, które publikujesz. Aby uzyskać informacje, zobacz [ograniczonego delegowania protokołu Kerberos do logowania jednokrotnego przy użyciu serwera Proxy aplikacji](application-proxy-configure-single-sign-on-with-kcd.md).
-* Protokół TLS 1.2 uruchomienia w podstawowym systemie operacyjnym. Aby zmienić protokołu TLS 1.2, wykonaj kroki opisane w [włączenia protokołu TLS 1.2](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#enable-tls-12-for-azure-ad-connect). Gdy zawartość jest programu Azure AD Connect, ta procedura jest taka sama dla wszystkich klientów programu .NET.
+* A [subskrypcji usługi Microsoft Azure AD podstawowa lub premium](https://azure.microsoft.com/pricing/details/active-directory). 
+* Konto administratora aplikacji.
 
-Jeśli Twoja organizacja używa serwerów proxy, aby nawiązać połączenie z Internetem, zapoznaj się z [pracy przy użyciu istniejących serwerów proxy lokalnych](application-proxy-configure-connectors-with-proxy-servers.md) szczegółowe informacje na temat ich konfigurowania, przed rozpoczęciem pracy z serwerem Proxy aplikacji.
+### <a name="windows-server"></a>Windows server
+Wymagany serwer z systemem Windows Server 2012 R2 lub nowszym na której można zainstalować łącznik serwera Proxy aplikacji. Serwer musi łączyć się z usługi serwera Proxy aplikacji na platformie Azure i aplikacji lokalnych, które publikujesz.
+
+Systemu windows server musi mieć protokół TLS 1.2, włączone, przed zainstalowaniem łącznika serwera Proxy aplikacji. Istniejące łączniki z wersjami starszymi niż 1.5.612.0 będą w dalszym ciągu działać we wcześniejszych wersjach TLS do odwołania. Aby włączyć protokół TLS 1.2:
+
+1. Ustaw następujące klucze rejestru:
+    
+    ```
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SchUseStrongCrypto"=dword:00000001
+    ```
+
+2. Uruchom ponownie serwer
+
+Logowanie jednokrotne do aplikacji, które używają delegowania Contrained protokołu Kerberos (KCD) serwer Windows i aplikacji, które są publikowane na potrzeby znajdować się w tej samej domenie usługi Active Directory. Aby uzyskać więcej informacji, zobacz [ograniczonego delegowania protokołu Kerberos do logowania jednokrotnego przy użyciu serwera Proxy aplikacji](application-proxy-configure-single-sign-on-with-kcd.md).
+  
+### <a name="proxy-servers"></a>Serwery proxy
+
+Jeśli Twoja organizacja używa serwerów proxy, aby nawiązać połączenie z Internetem, należy skonfigurować je dla serwera Proxy aplikacji.  Aby uzyskać więcej informacji, zobacz [pracy przy użyciu istniejących serwerów proxy lokalnych](application-proxy-configure-connectors-with-proxy-servers.md). 
+
+
 
 ## <a name="open-your-ports"></a>Otwieranie z portów
 

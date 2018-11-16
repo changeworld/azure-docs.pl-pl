@@ -6,14 +6,14 @@ author: trinadhk
 manager: shreeshd
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/1/2018
+ms.date: 11/14/2018
 ms.author: trinadhk
-ms.openlocfilehash: cf06fc9c12493e208832596a27b479dc9dfea942
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: de7c00717349a1c814c5a13508adb11879aa10a5
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011327"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51704651"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Kontrola dostępu oparta na rolach umożliwia zarządzanie punktami odzyskiwania usługi Azure Backup
 Kontrola dostępu oparta na rolach (Role-Based Access Control, RBAC) na platformie Azure umożliwia precyzyjne zarządzanie dostępem dla platformy Azure. Przy użyciu kontroli dostępu opartej na rolach można przeprowadzić segregowanie zadań w ramach zespołu i nadać użytkownikom tylko takie uprawnienia dostępu, które są im niezbędne do wykonywania zadań.
@@ -36,12 +36,12 @@ Poniższa tabela przedstawia akcje z zakresu zarządzania kopii zapasowej i odpo
 
 | Operacja zarządzania | Minimalna rola RBAC wymagane | Wymagany zakres |
 | --- | --- | --- |
-| Utwórz magazyn usługi Recovery Services | Współautor | Grupa zasobów zawierająca magazynu |
+| Tworzenie magazynu usługi Recovery Services | Współautor | Grupa zasobów zawierająca magazynu |
 | Włącz wykonywanie kopii zapasowej maszyn wirtualnych platformy Azure | Operator kopii zapasowych | Grupa zasobów zawierająca magazynu |
 | | Współautor maszyny wirtualnej | Zasób maszyny Wirtualnej |
 | Na żądanie kopii zapasowej maszyny Wirtualnej | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
 | Przywracanie maszyny Wirtualnej | Operator kopii zapasowych | Magazyn usługi Recovery Services |
-| | Współautor maszyny wirtualnej | Grupa zasobów, w którym maszyna wirtualna zostanie wdrożona |
+| | Współautor | Grupa zasobów, w którym maszyna wirtualna zostanie wdrożona |
 | | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopia zapasowa |
 | Przywracanie kopii zapasowych maszyn wirtualnych z dyskami niezarządzanymi | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
 | | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopia zapasowa |

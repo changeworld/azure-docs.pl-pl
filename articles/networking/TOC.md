@@ -35,7 +35,7 @@
 # Instrukcje
 ## Łączność z Internetem
 ### [Serwery publiczne równoważenia obciążenia sieciowego](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Serwery publiczne równoważenia obciążenia aplikacji](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Serwery publiczne równoważenia obciążenia aplikacji](../application-gateway/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Ochrona aplikacji internetowej](../application-gateway/application-gateway-web-application-firewall-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Rozłożenie ruchu na wiele lokalizacji](../traffic-manager/traffic-manager-configure-geographic-routing-method.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ## Łączność wewnętrzna

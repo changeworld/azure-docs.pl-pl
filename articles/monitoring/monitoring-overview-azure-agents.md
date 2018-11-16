@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: d07a89163d10026851dc26812ac248d92d6d5e8a
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: eb8356b659647ec73be121f8a05ab5e1e8d5837f
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684175"
+ms.locfileid: "51710145"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Omówienie usługi Azure, agentów monitorowania 
 Microsoft Azure oferuje wiele sposobów, aby zbierać różne typy danych z maszyn wirtualnych z systemem Microsoft Windows i Linux hostowanych na platformie Azure, centrum danych lub innych dostawców rozwiązań w chmurze. Są trzy typy dostępnych do monitorowania maszyn wirtualnych agentów:
@@ -60,7 +60,7 @@ W przypadku zaawansowanego monitorowania, gdy potrzebujesz więcej niż zbierani
 Jeśli chcesz, należy użyć agenta usługi Log Analytics:
 
 * Zbieraj dane z różnych źródeł, zarówno w obrębie platformy Azure, innych dostawców rozwiązań w chmurze i zasobów lokalnych. 
-* Przy użyciu jednej z usługi Azure Monitor, takich jak monitorowanie rozwiązań [usługi Azure Monitor dla maszyn wirtualnych](../monitoring/monitoring-vminsights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json), [usługi Azure Monitor dla kontenerów](../monitoring/monitoring-container-insights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json)itp.  
+* Przy użyciu jednej z usługi Azure Monitor, takich jak monitorowanie rozwiązań [usługi Azure Monitor dla maszyn wirtualnych](../monitoring/../azure-monitor/insights/vminsights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json), [usługi Azure Monitor dla kontenerów](../monitoring/../azure-monitor/insights/container-insights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json)itp.  
 * Użyj jednej z innych usług zarządzania systemu Azure, takich jak [usługi Azure Security Center](../security-center/security-center-intro.md), [usługi Azure Automation](../automation/automation-intro.md)itp.
 
 Wcześniej kilka usług platformy Azure były powiązane jako *pakietu Operations Management Suite*, a w rezultacie agenta usługi Log Analytics jest udostępniany w usługach w tym usługi Azure Security Center i Azure Automation.  Obejmuje to pełny zestaw funkcji, które oferują one, zapewniając kompleksowe zarządzanie całym ich cyklu życia maszynach wirtualnych platformy Azure.  Przedstawiono kilka przykładów:
@@ -71,7 +71,7 @@ Wcześniej kilka usług platformy Azure były powiązane jako *pakietu Operation
 * Usługi systemu Azure, takich jak [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/) i [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/), która natywnie przechowują swoje dane bezpośrednio w usłudze Log Analytics.  
 
 ## <a name="dependency-agent"></a>Agent zależności
-Agent zależności został opracowany jako część rozwiązania mapy usługi, który pierwotnie został zewnętrznie opracowany przez firmę Microsoft. [Usługa Service Map](../monitoring/monitoring-service-map.md) i [usługi Azure Monitor dla maszyn wirtualnych](monitoring-vminsights-overview.md) wymaga agenta zależności w Windows i Linux maszyn wirtualnych i integruje się z usługą agenta usługi Log Analytics zbiera odnalezione dane dotyczące procesów uruchomionych na wirtualny Maszyna i zależności w procesie zewnętrznym. Ona te dane są przechowywane w usłudze Log Analytics i wizualizuje odnalezionych powiązanych elementów.
+Agent zależności został opracowany jako część rozwiązania mapy usługi, który pierwotnie został zewnętrznie opracowany przez firmę Microsoft. [Usługa Service Map](../monitoring/monitoring-service-map.md) i [usługi Azure Monitor dla maszyn wirtualnych](../azure-monitor/insights/vminsights-overview.md) wymaga agenta zależności w Windows i Linux maszyn wirtualnych i integruje się z usługą agenta usługi Log Analytics zbiera odnalezione dane dotyczące procesów uruchomionych na wirtualny Maszyna i zależności w procesie zewnętrznym. Ona te dane są przechowywane w usłudze Log Analytics i wizualizuje odnalezionych powiązanych elementów.
 
 Może być konieczne kombinację tych agentów do monitorowania maszyny Wirtualnej. Agentów można zainstalować obok siebie jako rozszerzeń platformy Azure, jednak w systemie Linux, agenta usługi Log Analytics *musi* można zainstalować pierwszy lub — w przeciwnym razie instalacja zakończy się niepowodzeniem. 
 

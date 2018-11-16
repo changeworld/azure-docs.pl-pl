@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 11/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 3ecbef3b3063ceb413b852f8000b44a85d28d08e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8bd64aaa51faf968c0c7ae374daad3de4ca3a343
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142434"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706861"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Tworzenie i zarządzanie nimi w usłudze Azure Lab Services szablonu klasy
 Szablon w laboratorium to podstawowy obraz maszyny wirtualnej, który służy do tworzenia maszyn wirtualnych wszystkich użytkowników. Możesz skonfigurować maszynę wirtualną szablonu dokładnie tak jak chcesz dla użytkowników laboratorium. Możesz podać nazwę i opis szablonu, które będą widoczne dla użytkowników laboratorium. Następnie możesz opublikować szablonu, aby udostępnić użytkownikom laboratorium wystąpień szablonu maszyny Wirtualnej. Gdy opublikujesz szablon, usługa Azure Lab Services utworzy maszyny wirtualne w laboratorium przy użyciu tego szablonu. Liczba maszyn wirtualnych utworzonych w ramach tego procesu jest taka sama jak maksymalna liczba użytkowników, którzy mogą korzystać z laboratorium. Tę liczbę można ustawić w zasadach użytkowania laboratorium. Wszystkie maszyny wirtualne mają taką samą konfigurację jak szablon.
@@ -88,16 +88,14 @@ Najpierw należy skonfigurować i publikowanie szablonu podczas tworzenia labora
 ## <a name="set-up-a-template-after-creating-a-lab"></a>Konfigurowanie szablonu, po utworzeniu laboratorium 
 Możesz też skonfigurować szablon, po utworzeniu laboratorium.   
 
-### <a name="set-template-title-and-description"></a>Ustaw szablon tytuł i opis
-1. W sekcji **Szablon** wybierz pozycję **Edytuj** (ikona ołówka) dla szablonu. 
-2. W oknie **Widok użytkownika** wprowadź **tytuł** szablonu.
-3. Wprowadź **opis** szablonu.
-4. Wybierz pozycję **Zapisz**.
+## <a name="set-or-update-template-title-and-description"></a>Ustawianie lub zaktualizować szablon tytuł i opis
+Wykonaj następujące kroki, aby ustawić tytuł i opis po raz pierwszy i zaktualizować je później. 
 
-    ![Opis laboratorium używanego podczas zajęć](../media/how-to-manage-classroom-labs/lab-description.png)
+1. W **szablonu** sekcji, przesuń wskaźnik myszy **nazwa** szablonu lub **opis** szablonu, a następnie wybierz ją. 
+2. Wprowadź **nową nazwę** lub **nowy opis** dla szablonu, a następnie naciśnij klawisz **ENTER**.
 
-### <a name="set-up-the-template-vm"></a>Konfigurowanie maszyny wirtualnej szablonu
- Nawiąż połączenie z maszyną wirtualną szablonu i zainstaluj na niej wszelkie wymagane oprogramowanie przed udostępnieniem jej swoim uczniom. 
+## <a name="set-up-or-update-a-template-vm"></a>Konfigurowanie lub zaktualizować szablon maszyny Wirtualnej
+ Nawiąż połączenie z maszyną wirtualną szablonu i zainstaluj na niej wszelkie wymagane oprogramowanie przed udostępnieniem jej swoim uczniom. Wykonaj następujące kroki, aby skonfigurować szablon maszyny Wirtualnej po raz pierwszy lub zaktualizować maszyny Wirtualnej. 
 
 1. Zaczekaj, aż maszyna wirtualna szablonu będzie gotowa. Gdy będzie gotowa, przycisk **Uruchom** powinien być włączony. Aby uruchomić maszynę wirtualną, wybierz przycisk **Uruchom**.
 
@@ -112,7 +110,7 @@ Możesz też skonfigurować szablon, po utworzeniu laboratorium.
     ![Zatrzymywanie maszyny wirtualnej szablonu](../media/tutorial-setup-classroom-lab/stop-template-vm.png)
 
 
-## <a name="publish-the-template"></a>Publikowanie szablonu 
+## <a name="publish-the-template-vm"></a>Publikowanie maszyny wirtualnej szablonu
 Jeśli nie Publikuj szablonu podczas tworzenia laboratorium, możesz opublikować go później. Przed opublikowaniem, możesz nawiązać połączenie z szablonu maszyny Wirtualnej i zaktualizować go przy użyciu dowolnego oprogramowania. Gdy opublikujesz szablon, usługa Azure Lab Services utworzy maszyny wirtualne w laboratorium przy użyciu tego szablonu. Liczba maszyn wirtualnych utworzonych w ramach tego procesu jest taka sama jak maksymalna liczba użytkowników, którzy mogą korzystać z laboratorium. Tę liczbę można ustawić w zasadach użytkowania laboratorium. Wszystkie maszyny wirtualne mają taką samą konfigurację jak szablon. 
 
 1. Wybierz pozycję **Publikuj** w sekcji **Szablon**. 
@@ -125,7 +123,7 @@ Jeśli nie Publikuj szablonu podczas tworzenia laboratorium, możesz opublikowa�
 4. Przejdź do strony **Maszyny wirtualne** i sprawdź, czy są widoczne maszyny wirtualne o stanie **Nie przypisano**. Te maszyny wirtualne nie zostały jeszcze przypisane do uczniów. 
 
     ![Maszyny wirtualne](../media/tutorial-setup-classroom-lab/virtual-machines.png)
-5. Poczekaj, aż maszyny wirtualne zostaną utworzone. Powinny mieć stan **Zatrzymano**. Z poziomu tej strony możesz uruchomić maszynę wirtualną ucznia, połączyć się z maszyną wirtualną, zatrzymać maszynę wirtualną i usunąć maszynę wirtualną. Maszyny wirtualne możesz uruchomić na tej stronie lub pozwolić, aby zrobili to uczniowie. 
+5. Poczekaj, aż maszyny wirtualne zostaną utworzone. Powinny mieć stan **Zatrzymano**. Z poziomu tej strony możesz uruchomić maszynę wirtualną ucznia, połączyć się z maszyną wirtualną, zatrzymać maszynę wirtualną i usunąć maszynę wirtualną. Można uruchomić je na tej stronie lub pozwolić swoim uczniom, uruchom maszyny wirtualne. 
 
     ![Maszyny wirtualne w stanie Zatrzymano](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
@@ -147,7 +145,9 @@ Po opublikowaniu szablonu możesz wciąż się łączyć z szablonu maszyny Wirt
     ![Pomyślnie ponownie opublikować](../media/how-to-create-manage-template/republish-success.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Wprowadzenie do konfigurowania laboratorium przy użyciu usługi Azure Lab Services:
+Zobacz następujące artykuły:
 
-- [Konfigurowanie laboratorium na potrzeby zajęć](how-to-manage-classroom-labs.md)
-- [Konfigurowanie laboratorium](../tutorial-create-custom-lab.md)
+- [Jako administrator tworzenie i zarządzanie kontami laboratorium](how-to-manage-lab-accounts.md)
+- [Jako właściciel laboratorium tworzenie i zarządzanie laboratoriami](how-to-manage-classroom-labs.md)
+- [Jako właściciel laboratorium Konfigurowanie i kontrolowanie użycia laboratorium](how-to-configure-student-usage.md)
+- [Jako użytkownik laboratorium dostęp do laboratoriów na potrzeby zajęć](how-to-use-classroom-lab.md)

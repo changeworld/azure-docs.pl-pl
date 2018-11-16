@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 3160e8252ca8a5bed63d0fe9a9cdf84b1b5c6158
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 153d70f8fadfc0dbc3c9fba74c92862bab1ee7cb
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629069"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711824"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Zbieranie danych dziennika przy użyciu agenta usługi Azure Log Analytics
 
@@ -126,4 +126,4 @@ Na przykład: `https://user01:password@proxy01.contoso.com:30443`
 
 * Dowiedz się więcej o [rejestrowania zapytań](log-analytics-queries.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
 
-* Dowiedz się więcej o [rozwiązania do monitorowania](../monitoring/monitoring-solutions.md) , dodawanie funkcji do usługi Azure Monitor i również zbierać dane do obszaru roboczego usługi Log Analytics.
+* Dowiedz się więcej o [rozwiązania do monitorowania](../azure-monitor/insights/solutions.md) , dodawanie funkcji do usługi Azure Monitor i również zbierać dane do obszaru roboczego usługi Log Analytics.

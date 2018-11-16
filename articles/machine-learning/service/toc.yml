@@ -10,6 +10,7 @@ items:
     displayName: architecture
     href: concept-azure-machine-learning-architecture.md
   - name: Co się dzieje z aplikacją Workbench?
+    displayName: desktop
     href: overview-what-happened-to-workbench.md
   expanded: true
 - name: Przewodniki Szybki start
@@ -32,7 +33,7 @@ items:
   items:
   - name: Notesy Jupyter (GitHub)
     displayName: example, examples
-    href: http://aka.ms/aml-notebooks
+    href: https://aka.ms/aml-notebooks
 - name: Pojęcia
   items:
   - name: Zarządzanie modelami
@@ -49,7 +50,7 @@ items:
   - name: Konfigurowanie środowiska deweloperskiego 
     items:
     - name: Konfigurowanie środowiska
-      displayName: local, remote
+      displayName: local, remote, azure notebooks, notebook, jupyter, dsvm
       href: how-to-configure-environment.md
     - name: VS Code Tools for AI
       displayName: Visual Studio Code, vscode
@@ -71,7 +72,7 @@ items:
   - name: Szkolenie modeli
     items:
     - name: Konfigurowanie środowisk szkoleniowych
-      displayName: compute target, train
+      displayName: compute target, dsvm, Data Science Virtual Machine, batchai, batch ai, local, cluster, aci, container instance, databricks, data lake, lake, hdi, hdinsights
       href: how-to-set-up-training-targets.md
     - name: Uzyskiwanie dostępu do danych w ramach szkolenia
       href: how-to-access-data.md
@@ -83,11 +84,12 @@ items:
       - name: TensorFlow
         href: how-to-train-tensorflow.md
     - name: Dostrajanie hiperparametrów
+      displayName: parameter
       href: how-to-tune-hyperparameters.md
     - name: Śledzenie eksperymentów i metryk
       href: how-to-track-experiments.md
   - name: Automatyzacja uczenia maszynowego
-    displayName: automl
+    displayName: automl, auto ml
     href: how-to-automated-ml.md
     items:
     - name: Konfigurowanie uczenia automatycznego
@@ -101,6 +103,7 @@ items:
   - name: Wdrażanie modeli
     items:
     - name: Gdzie należy wdrażać modele
+      displayName: publish
       href: how-to-deploy-and-where.md
     - name: Wdrażanie w usłudze ACI
       displayName: Azure Container Instances
@@ -126,17 +129,21 @@ items:
     - name: Monitorowanie za pomocą usługi Application Insights
       href: how-to-enable-app-insights.md
   - name: Zarządzanie przydziałami zasobów
+    displayName: limits
     href: how-to-manage-quotas.md
   - name: Używanie interfejsu wiersza polecenia uczenia maszynowego
-    displayName: cli, command line, command-line
+    displayName: cli, command line, command-line, az,
     href: reference-azure-machine-learning-cli.md
 - name: Dokumentacja
   items:
   - name: Zestaw SDK uczenia maszynowego
-    href: http://aka.ms/aml-sdk
+    displayName: api, core, package
+    href: https://aka.ms/aml-sdk
   - name: Zestaw SDK do przygotowywania danych
-    href: http://aka.ms/data-prep-sdk
+    displayName: api, preparation, package
+    href: https://aka.ms/data-prep-sdk
   - name: Zestaw SDK do monitorowania
+    displayName: api, package
     href: https://aka.ms/aml-monitoring-sdk
 - name: Zasoby
   items:
@@ -147,12 +154,14 @@ items:
   - name: Dostępność regionalna
     href: https://azure.microsoft.com/regions/services/
   - name: Informacje o wersji
+    displayName: what's new
     href: azure-machine-learning-release-notes.md
   - name: Znane problemy
     href: resource-known-issues.md
   - name: Uzyskiwanie pomocy technicznej
     href: support-for-aml-services.md
   - name: Eksportowanie i usuwanie danych
+    displayName: gdpr
     href: how-to-export-delete-data.md
   - name: Przestarzała dokumentacja
     items:
@@ -161,7 +170,7 @@ items:
       href: how-to-migrate.md
     - name: Eksportowanie lub usuwanie danych konta (przestarzałe)
       href: ../desktop-workbench/export-delete-experimentation-model-management-data-dsr.md
-    - name: Przewodnik Szybki start aplikacji Workbench
+    - name: Przewodnik Szybki start aplikacji Workbench (przestarzałe)
       href: ../desktop-workbench/quickstart-installation.md
     - name: 'Samouczek 1: przygotowywanie danych'
       href: ../desktop-workbench/tutorial-classifying-iris-part-1.md
@@ -357,9 +366,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Stare problemy
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 87379b773b353f4f384252a9840f1e75d595e37b
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 62bc2016ec9294c00f20587cb6f6f7af7bafa599
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613634"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706657"

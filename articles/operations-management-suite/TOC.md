@@ -28,8 +28,8 @@
 ### [Ocena internetowej linii bazowej](../security-center/security-center-customize-os-security-config.md)
 
 ## Korzystanie z rozwiązań
-### [Rozwiązania do zarządzania](../monitoring/monitoring-solutions.md)
-### [Rozwiązania docelowe](../monitoring/monitoring-solution-targeting.md)
+### [Rozwiązania do zarządzania](../azure-monitor/insights/solutions.md)
+### [Rozwiązania docelowe](../azure-monitor/insights/solution-targeting.md)
 ### Wgląd w dane i analiza
 #### [Ocena usługi AD](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Stan replikacji usługi AD](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -57,12 +57,12 @@
 #### [Ocena oprogramowania chroniącego przed złośliwym kodem](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 ## Tworzenie rozwiązań
-### [Projektowanie i tworzenie](../monitoring/monitoring-solutions-creating.md)
-### [Plik rozwiązania](../monitoring/monitoring-solutions-solution-file.md)
-### [Zasoby do automatyzacji](../monitoring/monitoring-solutions-resources-automation.md)
-### [Wyszukiwanie w dzienniku i alerty](../monitoring/monitoring-solutions-resources-searches-alerts.md)
-### [Widoki](../monitoring/monitoring-solutions-resources-views.md)
-### [Najlepsze praktyki](../monitoring/monitoring-solutions-best-practices.md)
+### [Projektowanie i tworzenie](../azure-monitor/insights/solutions-creating.md)
+### [Plik rozwiązania](../azure-monitor/insights/solutions-solution-file.md)
+### [Zasoby do automatyzacji](../azure-monitor/insights/solutions-resources-automation.md)
+### [Wyszukiwanie w dzienniku i alerty](../azure-monitor/insights/solutions-resources-searches-alerts.md)
+### [Widoki](../azure-monitor/insights/solutions-resources-views.md)
+### [Najlepsze praktyki](../azure-monitor/insights/solutions-best-practices.md)
 
 ## Scenariusze zarządzania
 ### [Zbieranie danych analitycznych z elementu runbook](../monitoring/monitoring-runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)

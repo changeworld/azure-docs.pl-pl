@@ -2,8 +2,7 @@
 title: Usługa Azure GPU N-series driver Setup for Konfiguracja Windows | Dokumentacja firmy Microsoft
 description: Jak skonfigurować sterowniki procesora GPU NVIDIA dla maszyn wirtualnych serii N z systemem Windows Server lub Windows na platformie Azure
 services: virtual-machines-windows
-documentationcenter: ''
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4d259c7f9a139b3c31d96e75d588c7be162189c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 551d9da51abaeddfd22c72748a552ba0ae155de6
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033264"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51707015"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Instalowanie sterowników procesora GPU NVIDIA na maszynach wirtualnych serii N z systemem Windows 
 
@@ -51,13 +50,13 @@ Aby zbadać stan urządzenia procesora GPU, uruchom [nvidia smi](https://develop
 
 1. Otwórz wiersz polecenia i zmień **C:\Program Files\NVIDIA Corporation\NVSMI** katalogu.
 
-2. Uruchom polecenie `nvidia-smi`. Jeśli jest zainstalowany sterownik zostanie wyświetlone dane wyjściowe podobne do następującego. Należy pamiętać, że **GPU Util** pokazuje **0%** , chyba że obciążenie procesora GPU są aktualnie uruchomione na maszynie Wirtualnej. Twoja wersja sterownika i szczegóły procesora GPU mogą różnić się od wyświetlonych.
+2. Uruchom polecenie `nvidia-smi`. Jeśli sterownik jest zainstalowany, pojawi się dane wyjściowe podobne do następujących. **GPU Util** pokazuje **0%** , chyba że obciążenie procesora GPU są aktualnie uruchomione na maszynie Wirtualnej. Twoja wersja sterownika i szczegóły procesora GPU mogą różnić się od wyświetlonych.
 
 ![Stan urządzenia NVIDIA](./media/n-series-driver-setup/smi.png)  
 
 ## <a name="rdma-network-connectivity"></a>Połączenie sieciowe RDMA
 
-Łączności sieciowej RDMA można włączyć na maszynach wirtualnych z serii N funkcją RDMA, takie jak NC24r wdrożonych w tym samym zestawie dostępności lub w pojedynczej grupy umieszczania w zestawie skalowania maszyn wirtualnych. Aby zainstalować sterowniki urządzeń sieciowych Windows, które umożliwiają łączność RDMA, należy dodać rozszerzenie HpcVmDrivers. Aby dodać rozszerzenie maszyny Wirtualnej do maszyny Wirtualnej serii N z obsługą funkcji RDMA, należy użyć [programu Azure PowerShell](/powershell/azure/overview) poleceń cmdlet usługi Azure Resource Manager.
+Połączenie sieciowe RDMA można włączyć dla obsługą dostępu RDMA maszyn wirtualnych serii N, takich jak NC24r wdrożonych w tym samym zestawie dostępności lub w pojedynczej grupy umieszczania w zestawie skalowania maszyn wirtualnych. Aby zainstalować sterowniki urządzeń sieciowych Windows, które umożliwiają łączność RDMA, należy dodać rozszerzenie HpcVmDrivers. Aby dodać rozszerzenie maszyny Wirtualnej do maszyny Wirtualnej serii N z obsługą funkcji RDMA, należy użyć [programu Azure PowerShell](/powershell/azure/overview) poleceń cmdlet usługi Azure Resource Manager.
 
 Aby zainstalować najnowszą wersję 1.1 rozszerzenia HpcVMDrivers obsługą dostępu RDMA istniejącej maszyny wirtualnej o nazwie myVM w regionie zachodnie stany USA:
   ```PowerShell

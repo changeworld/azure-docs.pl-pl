@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: fab4bcb62d15be11ab0a588b7a58447f05b4466a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 84c54ece905d0a3d68779e498a5bb66f555c08d5
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014673"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712878"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Zbieraj i Analizuj Dzienniki aktywności platformy Azure w usłudze Log Analytics
 
@@ -67,7 +67,7 @@ W przeciwieństwie do większości innych rozwiązań usługi Log Analytics dane
 
 Wykonaj poniższe kroki, aby skonfigurować rozwiązanie Activity Log Analytics dla obszarów roboczych.
 
-1. Włącz rozwiązanie Activity Log Analytics z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) lub przy użyciu procesu opisanego w [Add Log Analytics solutions from the Solutions Gallery (Dodawanie rozwiązań usługi Log Analytics z galerii rozwiązań)](../monitoring/monitoring-solutions.md).
+1. Włącz rozwiązanie Activity Log Analytics z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) lub przy użyciu procesu opisanego w [Add Log Analytics solutions from the Solutions Gallery (Dodawanie rozwiązań usługi Log Analytics z galerii rozwiązań)](../azure-monitor/insights/solutions.md).
 2. Konfigurowanie dzienników aktywności, aby przejść do obszaru roboczego usługi Log Analytics.
     1. W witrynie Azure portal, wybierz swój obszar roboczy, a następnie kliknij przycisk **dziennik aktywności platformy Azure**.
     2. Dla każdej subskrypcji kliknij nazwę subskrypcji.  

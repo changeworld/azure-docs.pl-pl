@@ -70,38 +70,6 @@ items:
   expanded: true
 - name: Pojęcia
   items:
-  - name: Praca z kontem usługi Azure Cosmos
-    href: account-overview.md
-  - name: Kontenery i elementy
-    items:
-    - name: Praca z bazami danych, kontenerami i elementami
-      href: databases-containers-items.md
-    - name: Indeksowanie
-      items:
-      - name: Omówienie
-        href: index-overview.md
-      - name: Zasady indeksowania
-        href: index-policy.md
-      - name: Typy indeksów
-        href: index-types.md
-      - name: Ścieżki indeksów
-        href: index-paths.md
-    - name: Źródło zmian
-      items:
-      - name: Omówienie
-        href: change-feed.md
-      - name: Odczytywanie zestawienia zmian
-        href: read-change-feed.md
-      - name: Procesor zestawienia zmian
-        href: change-feed-processor.md
-      - name: Zestawienie zmian w usłudze Azure Functions
-        href: change-feed-functions.md
-    - name: Czas wygaśnięcia
-      href: time-to-live.md
-    - name: Ograniczenia unikatowych kluczy
-      href: unique-keys.md
-    - name: Transakcje i optymistyczna współbieżność
-      href: database-transactions-optimistic-concurrency.md
   - name: Dystrybucja globalna
     items:
     - name: Omówienie
@@ -136,6 +104,38 @@ items:
       href: request-units.md
     - name: Aprowizacja przepływności kontenerów i baz danych
       href: set-throughput.md
+  - name: Praca z kontem usługi Azure Cosmos
+    href: account-overview.md
+  - name: Kontenery i elementy
+    items:
+    - name: Praca z bazami danych, kontenerami i elementami
+      href: databases-containers-items.md
+    - name: Indeksowanie
+      items:
+      - name: Omówienie
+        href: index-overview.md
+      - name: Zasady indeksowania
+        href: index-policy.md
+      - name: Typy indeksów
+        href: index-types.md
+      - name: Ścieżki indeksów
+        href: index-paths.md
+    - name: Źródło zmian
+      items:
+      - name: Omówienie
+        href: change-feed.md
+      - name: Odczytywanie zestawienia zmian
+        href: read-change-feed.md
+      - name: Procesor zestawienia zmian
+        href: change-feed-processor.md
+      - name: Zestawienie zmian w usłudze Azure Functions
+        href: change-feed-functions.md
+    - name: Czas wygaśnięcia
+      href: time-to-live.md
+    - name: Ograniczenia unikatowych kluczy
+      href: unique-keys.md
+    - name: Transakcje i optymistyczna współbieżność
+      href: database-transactions-optimistic-concurrency.md
   - name: Bezpieczeństwo
     items:
     - name: Omówienie
@@ -567,9 +567,9 @@ items:
       href: use-cases.md
     - name: Aplikacje mediów społecznościowych
       href: social-media-apps.md
-ms.openlocfilehash: 786829ec3052672c4a931d6a31452a3d96058fcd
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 9a9aed84f75d9db93ec02bbfa681412dd1fa97da
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636564"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706392"

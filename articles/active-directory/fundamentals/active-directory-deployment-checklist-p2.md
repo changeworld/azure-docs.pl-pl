@@ -10,28 +10,28 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: ''
-ms.openlocfilehash: 7931cd8a6f8b3de826e8dd563a837f80fc15d88a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 86561cd835a36282ca1b38638ab4372c6b360617
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315119"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705655"
 ---
 # <a name="azure-active-directory-premium-p2-licensing-feature-checklist"></a>Usługa Azure Active Directory Premium P2 licencjonowania lista funkcji
 
-Może wydawać się czasochłonnym do wdrożenia usługi Azure Active Directory (Azure AD) w Twojej organizacji i przechowuj w bezpiecznym miejscu. W tym artykule identyfikuje niektóre typowe zadania, klienci pomocne w ciągu 30 dni, 90 dni lub nowszych zwiększyć ich poziom bezpieczeństwa. Nawet organizacji, którzy już wdrożyli usługę Azure AD umożliwia ta lista kontrolna: Upewnij się, że pojawiają się one w pełni wykorzystać ich inwestycję.
+Może wydawać się trudne do wdrożenia usługi Azure Active Directory (Azure AD) w Twojej organizacji i przechowuj w bezpiecznym miejscu. W tym artykule identyfikuje niektóre typowe zadania, które przydatne klientów. Klientów zwykle wykonać te zadania w ciągu 30 dni, 90 dni lub znajduje się poza, aby zwiększyć ich poziom zabezpieczeń. Nawet organizacji, którzy już wdrożyli usługę Azure AD umożliwia ta lista kontrolna: Upewnij się, że przygotowujesz się one w pełni wykorzystać ich inwestycję.
 
 Infrastruktura tożsamości dobrze zaplanowane i są wykonywane drogę do bardziej bezpiecznego dostępu wydajność obciążeń i danych tylko przez funkcje uwierzytelniania użytkowników i urządzeń.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W przewodniku przyjęto założenie, że masz licencje usługi Azure AD Premium P2, pakietu Enterprise Mobility + Security E5, Microsoft 365 E5 lub pakietu równoważne licencji.
+W tym przewodniku założono, że masz licencje usługi Azure AD Premium P2, pakietu Enterprise Mobility + Security E5, Microsoft 365 E5 lub podobnego pakietu licencji.
 
 [Licencjonowanie usługi Azure AD](https://azure.microsoft.com/pricing/details/active-directory/)
 
-[Microsoft 365 Enterprise](https://www.microsoft.com/licensing/product-licensing/microsoft-365-enterprise.aspx)
+[Microsoft 365 Enterprise](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 
-[Enterprise Mobility + Security](https://www.microsoft.com/licensing/product-licensing/enterprise-mobility-security.aspx)
+[Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 
 ## <a name="plan-and-deploy-day-1-30"></a>Planowanie i wdrażanie: 1 – 30 dni
 

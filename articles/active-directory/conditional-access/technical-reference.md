@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 445611338b0b2895d83626e8cf450dc8d1cb27a6
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2f9075cef671128cacc37f16e8bf29bf0f60401d
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406403"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706283"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Informacje dotyczące ustawień dostępu warunkowego w usłudze Azure Active Directory
 
@@ -125,13 +125,13 @@ To ustawienie działa ze wszystkimi przeglądarkami. Jednak do zasad urządzenia
 
 | System operacyjny                     | Przeglądarki                            | Pomoc techniczna     |
 | :--                    | :--                                 | :-:         |
-| Windows 10             | Internet Explorer, Microsoft Edge, Chrome     | ![Zaznacz][1] |
+| Windows 10             | Internet Explorer i Microsoft Edge, Chrome     | ![Zaznacz][1] |
 | Windows 8 / 8.1        | Program Internet Explorer, Chrome           | ![Zaznacz][1] |
 | Windows 7              | Program Internet Explorer, Chrome           | ![Zaznacz][1] |
 | iOS                    | Safari, usługa Intune Managed Browser      | ![Zaznacz][1] |
 | Android                | Chrome, usługa Intune Managed Browser      | ![Zaznacz][1] |
-| Windows Phone          | Program Internet Explorer, usługi Edge             | ![Zaznacz][1] |
-| Windows Server 2016    | Program Internet Explorer, usługi Edge             | ![Zaznacz][1] |
+| Windows Phone          | Program Internet Explorer, Microsoft Edge             | ![Zaznacz][1] |
+| Windows Server 2016    | Program Internet Explorer, Microsoft Edge             | ![Zaznacz][1] |
 | Windows Server 2016    | Chrome                              | Wkrótce |
 | Windows Server 2012 R2 | Program Internet Explorer, Chrome           | ![Zaznacz][1] |
 | Windows Server 2008 R2 | Program Internet Explorer, Chrome           | ![Zaznacz][1] |

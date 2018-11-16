@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 7ef7f6548cd3dd838889fd51ff0521428bbbc2aa
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f9acdacfad25a2154a23055dce136984177242e0
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282683"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713014"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Zbieranie danych w usłudze Log Analytics przy użyciu elementu runbook usługi Azure Automation
 Znacznej ilości danych w usłudze Log Analytics może zbierać z różnych źródeł, w tym [źródeł danych](../log-analytics/log-analytics-data-sources.md) na agentach, a także [dane zbierane z platformy Azure](../log-analytics/log-analytics-azure-storage.md).  Istnieją scenariusze, chociaż wymagających zbierania danych, która nie jest dostępny za pośrednictwem tych standardowych źródeł.  W takich przypadkach można użyć [interfejsu API modułu zbierającego dane HTTP](../log-analytics/log-analytics-data-collector-api.md) można zapisać danych do usługi Log Analytics za pomocą dowolnego klienta interfejsu API REST.  Typowe metodę w celu zbierania danych używa elementu runbook w usłudze Azure Automation.   
@@ -213,7 +213,7 @@ Za każdym razem, gdy element runbook jest uruchamiany, [tworzone jest zadanie](
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Użyj [Projektant widoków](../log-analytics/log-analytics-view-designer.md) utworzyć widok, wyświetlanie danych zebranych w repozytorium usługi Log Analytics.
-- Pakiet w elemencie runbook [rozwiązania do zarządzania](monitoring-solutions-creating.md) do dystrybucji do klientów.
+- Pakiet w elemencie runbook [rozwiązania do zarządzania](../azure-monitor/insights/solutions-creating.md) do dystrybucji do klientów.
 - Dowiedz się więcej o [usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics/).
 - Dowiedz się więcej o [usługi Azure Automation](https://docs.microsoft.com/azure/automation/).
 - Dowiedz się więcej o [interfejsu API modułu zbierającego dane HTTP](../log-analytics/log-analytics-data-collector-api.md).

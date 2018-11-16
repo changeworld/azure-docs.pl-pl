@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 38d54d6d568b3cbacbf62f1d9f4dd3feec083287
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 7a1bcde635d890384e660435845c42f016738e00
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389602"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687065"
 documentType: LandingData
 title: Moduł równoważenia obciążenia
 metadata:
@@ -13,12 +13,12 @@ metadata:
   meta.description: Learn how to use Azure Load Balancer. Quickstarts, tutorials, samples, and more, show you how to deploy a load balancer and load balance traffic to and from virtual machines and cloud resources, and in cross-premises virtual networks.
   services: load-balancer
   author: KumudD
-  manager: jeconnoc
+  manager: twooley
   ms.service: load-balancer
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/19/2018
+  ms.date: 11/14/2018
   ms.author: kumud
 abstract:
   description: Dowiedz się, jak korzystać z usługi Azure Load Balancer. Przewodniki Szybki start, samouczki, przykłady i inne zasoby przedstawiają sposób wdrażania modułu równoważenia obciążenia i równoważenia obciążenia ruchu w sieciach wirtualnych obejmujących wiele lokalizacji oraz kierowanego do i z maszyn wirtualnych i zasobów w chmurze.
@@ -49,7 +49,7 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-manage-portal">Tworzenie modułu równoważenia obciążenia i zarządzanie nim</a>
+    - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-manage-portal">Równoważenie obciążenia ruchem internetowym przez skierowanie go do maszyn wirtualnych</a>
     - html: <a href="/azure/load-balancer/tutorial-load-balancer-basic-internal-portal">Równoważenie obciążenia ruchem wewnętrznym przez skierowanie go do maszyn wirtualnych</a>
     - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal">Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności</a>
     - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal">Równoważenie obciążenia maszyn wirtualnych w określonej strefie dostępności</a>

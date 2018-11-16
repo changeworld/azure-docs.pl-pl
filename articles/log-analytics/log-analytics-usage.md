@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: ad3deaad8c069cfb11bb0eb997d886807ecdb0f8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a881ea18558e49656dc165d1545250bffeac4303
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006502"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713083"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analizowanie użycia danych w usłudze Log Analytics
 
@@ -163,19 +163,19 @@ Wykonaj następujące kroki, aby zmniejszyć wolumin zebranych danych dziennikó
 | Dzienniki zdarzeń                 | Zmień [konfigurację dziennika zdarzeń](log-analytics-data-sources-windows-events.md) w następujący sposób: <br> — Zmniejsz liczbę gromadzonych danych dzienników zdarzeń <br> — Zbieraj wyłącznie zdarzenia o wymaganym poziomie. Na przykład nie zbieraj zdarzeń na poziomie *Informacje*. |
 | Dziennik systemu                     | Zmień [konfigurację dziennika systemu](log-analytics-data-sources-syslog.md) w następujący sposób: <br> — Zmniejsz liczbę urządzeń, z których zbierane są dane <br> — Zbieraj wyłącznie zdarzenia o wymaganym poziomie. Na przykład nie zbieraj zdarzeń na poziomie *Informacje* i *Debugowanie*. |
 | AzureDiagnostics           | Zmień kolekcję dziennika zasobów, aby: <br> — zmniejszyć liczbę dzienników zasobów wysyłanych do usługi Log Analytics, <br> — zbierać tylko wymagane dzienniki. |
-| Dane rozwiązań z komputerów, które nie wymagają rozwiązania | Użyj funkcji [określania celu rozwiązania](../monitoring/monitoring-solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów. |
+| Dane rozwiązań z komputerów, które nie wymagają rozwiązania | Użyj funkcji [określania celu rozwiązania](../azure-monitor/insights/solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów. |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>Sprawdzanie, czy liczba węzłów przekracza oczekiwania
 Jeśli użytkownik pracuje na *na węzeł (usługi Log Analytics)* warstwy cenowej, opłaty są naliczane na podstawie liczby węzłów i rozwiązań. Aby sprawdzić, z ilu węzłów poszczególnych ofert korzystasz, przejdź do sekcji *ofert* pulpitu nawigacyjnego Użycie.<br><br> ![pulpit nawigacyjny Użycie](./media/log-analytics-usage/log-analytics-usage-offerings.png)<br><br>
 
 Kliknij opcję **Zobacz wszystko**, aby wyświetlić pełną listę komputerów, które wysyłają dane dla wybranej oferty.
 
-Użyj funkcji [określania celu rozwiązania](../monitoring/monitoring-solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów.
+Użyj funkcji [określania celu rozwiązania](../azure-monitor/insights/solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Zobacz temat [Wyszukiwanie w dziennikach w usłudze Log Analytics](log-analytics-queries.md), aby dowiedzieć się, jak korzystać z języka wyszukiwania. Możesz użyć zapytań wyszukiwania w celu przeprowadzenia dodatkowej analizy danych użycia.
 * Wykonaj kroki opisane w sekcji dotyczącej [tworzenia nowego alertu dziennika](../monitoring-and-diagnostics/alert-metric.md), aby otrzymywać powiadomienie, gdy kryteria wyszukiwania zostaną spełnione.
-* Użyj funkcji [określania celu rozwiązania](../monitoring/monitoring-solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów.
+* Użyj funkcji [określania celu rozwiązania](../azure-monitor/insights/solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów.
 * Aby skonfigurować efektywne zasady zbierania zdarzeń zabezpieczeń, przejrzyj [zasady filtrowania usługi Azure Security Center](../security-center/security-center-enable-data-collection.md).
 * Zmień [konfigurację licznika wydajności](log-analytics-data-sources-performance-counters.md).
 * Aby zmodyfikować ustawienia zbierania zdarzeń, przejrzyj [konfigurację dziennika zdarzeń](log-analytics-data-sources-windows-events.md).

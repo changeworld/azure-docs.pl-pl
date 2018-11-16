@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 66a10cdd6324147509bcb45dad9e9b40b5335fef
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 6fa59c8fe296d2aa76b9b61d57393829289d2280
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684920"
+ms.locfileid: "51710570"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Tworzenie alertów metryk dla dzienników w usłudze Azure Monitor  
 
@@ -22,7 +22,7 @@ Platforma Azure obsługuje monitorowanie [typu alertu Metryka](monitoring-near-r
 
 Popularne dzienników usługi Log Analytics, wyodrębnić jako metryki jako część metryk z dzienników w tym zasobów na platformie Azure lub lokalnie, można użyć alertów dotyczących metryk. Poniżej wymieniono obsługiwane rozwiązania usługi Log Analytics:
 - [Liczniki wydajności](../log-analytics/log-analytics-data-sources-performance-counters.md) maszyn Windows i Linux
-- [Rekordy pulsu dla kondycji agenta](../monitoring/monitoring-solution-agenthealth.md)
+- [Rekordy pulsu dla kondycji agenta](../azure-monitor/insights/solution-agenthealth.md)
 - [Zarządzanie aktualizacjami](../automation/automation-update-management.md) rekordów
 - [Dane zdarzenia](../log-analytics/log-analytics-data-sources-windows-events.md) dzienników
  
@@ -47,7 +47,7 @@ Dane metryk z popularnych dzienników jest przekazywany w potoku przed jego prze
 Metryki dla dzienników zebranych dotyczące działania danych usługi Log Analytics, że należy ustawić włączone i dostępne:
 1. **Aktywny obszar roboczy usługi Log Analytics**: prawidłowego i aktywnego obszaru roboczego usługi Log Analytics musi być obecny. Aby uzyskać więcej informacji, zobacz [Utwórz obszar roboczy usługi Log Analytics w witrynie Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
 2. **Agent jest skonfigurowany dla obszaru roboczego usługi Log Analytics**: Agent musi być skonfigurowana dla maszyn wirtualnych platformy Azure (i/lub) lokalnych maszyn wirtualnych do wysyłania danych do obszaru roboczego analizy dzienników, używane w poprzednim kroku. Aby uzyskać więcej informacji, zobacz [Log Analytics — omówienie agenta](../monitoring/monitoring-overview-azure-agents.md).
-3. **Zainstalowano obsługiwanych rozwiązań do analizy dzienników**: usługi Log Analytics, rozwiązanie powinno być skonfigurowane i wysyłania danych do obszaru roboczego usługi Log Analytics — obsługiwane są rozwiązania [liczniki wydajności dla Windows i Linux](../log-analytics/log-analytics-data-sources-performance-counters.md), [Rekordy pulsu agenta kondycji](../monitoring/monitoring-solution-agenthealth.md), [rozwiązanie Update management, i [dane zdarzenia](../log-analytics/log-analytics-data-sources-windows-events.md).
+3. **Zainstalowano obsługiwanych rozwiązań do analizy dzienników**: usługi Log Analytics, rozwiązanie powinno być skonfigurowane i wysyłania danych do obszaru roboczego usługi Log Analytics — obsługiwane są rozwiązania [liczniki wydajności dla Windows i Linux](../log-analytics/log-analytics-data-sources-performance-counters.md), [Rekordy pulsu agenta kondycji](../azure-monitor/insights/solution-agenthealth.md), [rozwiązanie Update management, i [dane zdarzenia](../log-analytics/log-analytics-data-sources-windows-events.md).
 4. **Konfigurowana do wysyłania dzienników rozwiązań do analizy dziennika**: rozwiązanie Log Analytics mają wymagane dzienniki/dane odpowiadające [metryki obsługiwane dla obszarów roboczych usługi Log Analytics](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces) włączone. Na przykład w przypadku *% dostępnej pamięci* licznika jego muszą być skonfigurowane w [liczniki wydajności](../log-analytics/log-analytics-data-sources-performance-counters.md) rozwiązania pierwszy.
 
 ## <a name="configuring-metric-alert-for-logs"></a>Konfigurowanie alertu metryki dla dzienników
