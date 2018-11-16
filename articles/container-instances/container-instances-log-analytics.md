@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 5d3ba4ac4a86b6051ea5dafbff8c038c9198108c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7f4af06222141eb0e143e67ba4bfcdcb2f5f92fa
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279555"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614008"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Rejestrowanie wystąpienia kontenera za pomocą usługi Azure Log Analytics
 
@@ -134,8 +134,9 @@ ContainerInstanceLog_CL
 
 Aby uzyskać więcej informacji dotyczących wykonywania zapytań dla dzienników i konfigurowania alertów w usłudze Azure Log Analytics, zobacz:
 
-* [Understanding log searches in Log Analytics](../log-analytics/log-analytics-queries.md) (Interpretacja przeszukiwania dzienników w usłudze Log Analytics)
-* [Unified alerts in Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) (Ujednolicone alerty na platformie Azure Monitor)
+* [Understanding log searches in Log Analytics](../log-analytics/log-analytics-log-search.md) (Interpretacja przeszukiwania dzienników w usłudze Log Analytics)
+* [Unified alerts in Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md) (Ujednolicone alerty na platformie Azure Monitor)
+
 
 ### <a name="monitor-container-cpu-and-memory"></a>Monitorowanie procesora i pamięci kontenera
 

@@ -1,6 +1,6 @@
 ---
 title: Wyodrębnianie, przekształcanie i ładowanie (ETL) na dużą skalę — Azure HDInsight
-description: Dowiedz się, jak ETL jest używany w HDInsight przy użyciu usługi Hadoop.
+description: Dowiedz się, jak ETL jest używany w HDInsight przy użyciu technologii Apache Hadoop.
 services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 6af55bf8311efc14687ee16c3226988fd730081d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 17aeb847a2c701abf03b46d47e34d13b6fb27316
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049006"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633329"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Wyodrębnianie, przekształcanie i ładowanie (ETL) na dużą skalę
 
-Wyodrębniania, przekształcania i ładowania (ETL) to proces, za pomocą którego danych uzyskanych z różnych źródeł, zebranych w lokalizacji, czyszczenia i przetwarzane i ostatecznie załadowane do magazynu danych, z którego mogą być przeszukiwane. Starszych procesów ETL importowania danych, usunięcie go w miejscu, a następnie zapisać ją w aparacie relacyjnej bazie danych. HDInsight szerokiej gamy składników ekosystemu Hadoop obsługuje wykonywanie ETL na dużą skalę. 
+Wyodrębniania, przekształcania i ładowania (ETL) to proces, za pomocą którego danych uzyskanych z różnych źródeł, zebranych w lokalizacji, czyszczenia i przetwarzane i ostatecznie załadowane do magazynu danych, z którego mogą być przeszukiwane. Starszych procesów ETL importowania danych, usunięcie go w miejscu, a następnie zapisać ją w aparacie relacyjnej bazie danych. HDInsight szerokiej gamy składników ekosystemu Apache Hadoop obsługuje wykonywanie ETL na dużą skalę. 
 
 Użycie HDInsight w proces ETL można podsumować w tym potoku:
 

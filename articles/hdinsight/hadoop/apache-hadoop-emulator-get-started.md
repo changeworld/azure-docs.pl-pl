@@ -1,6 +1,6 @@
 ---
-title: Dowiedz się, używając piaskownica usługi Hadoop — emulator — Azure HDInsight
-description: 'Aby rozpocząć, informacje o użyciu ekosystemu platformy Hadoop, skonfigurowaniem piaskownica usługi Hadoop firmy Hortonworks na maszynie wirtualnej platformy Azure. '
+title: Dowiedz się, przy użyciu technologii Apache Hadoop piaskownicy — emulator — Azure HDInsight
+description: 'Aby rozpocząć, nauka o korzystaniu z ekosystemem Apache Hadoop, skonfigurowaniem piaskownica usługi Hadoop firmy Hortonworks na maszynie wirtualnej platformy Azure. '
 keywords: emulator usługi hadoop, piaskownica usługi hadoop
 ms.reviewer: jasonh
 services: hdinsight
@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: add1833671b995e747af6a447c65114d1add76e9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: fc5f27ee17ba750e47c5609d9deb94d7f7c9dd8a
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013109"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51631561"
 ---
-# <a name="get-started-with-a-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Rozpoczynanie pracy z usługą piaskownica usługi Hadoop, emulator na maszynie wirtualnej
+# <a name="get-started-with-a-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Rozpoczynanie pracy z piaskownicą Apache Hadoop, emulator na maszynie wirtualnej
 
-Dowiedz się, jak zainstalować piaskownica usługi Hadoop firmy Hortonworks na maszynie wirtualnej, aby dowiedzieć się więcej na temat ekosystemu platformy Hadoop. Piaskownica udostępnia lokalne Środowisko deweloperskie Aby dowiedzieć się więcej na temat usługi Hadoop, Hadoop Distributed pliku System (HDFS) i przesłania zadania. Po przejściu na platformie Hadoop, można uruchomić za pomocą usługi Hadoop na platformie Azure przez utworzenie klastra usługi HDInsight. Aby uzyskać więcej informacji na temat rozpocząć pracę, zobacz [Rozpoczynanie pracy z platformą Hadoop w HDInsight](apache-hadoop-linux-tutorial-get-started.md).
+Dowiedz się, jak zainstalować piaskownicy usługi Apache Hadoop firmy Hortonworks na maszynie wirtualnej, aby dowiedzieć się więcej na temat ekosystemu platformy Hadoop. Piaskownica udostępnia lokalne Środowisko deweloperskie Aby dowiedzieć się więcej na temat usługi Hadoop, Hadoop Distributed pliku System (HDFS) i przesłania zadania. Po przejściu na platformie Hadoop, można uruchomić za pomocą usługi Hadoop na platformie Azure przez utworzenie klastra usługi HDInsight. Aby uzyskać więcej informacji na temat rozpocząć pracę, zobacz [Rozpoczynanie pracy z platformą Hadoop w HDInsight](apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * [Oracle VirtualBox](https://www.virtualbox.org/). Pobierz i zainstaluj go z [tutaj](https://www.virtualbox.org/wiki/Downloads).

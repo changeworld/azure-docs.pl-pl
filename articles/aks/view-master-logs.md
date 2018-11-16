@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: iainfou
-ms.openlocfilehash: c3256b2b1e8be0e883d0f7b47e66ab1fee95b042
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 5f151db9cb2cf7a5ef242f777cd2ad1820c856a8
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138173"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636692"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Włączyć i przejrzeć Kubernetes węzła głównego dzienników w usłudze Azure Kubernetes Service (AKS)
 
@@ -42,7 +42,7 @@ W poniższym przykładzie przedstawiono zrzut ekranu portalu *ustawień diagnost
 ![Włącz obszar roboczy Log Analytics dla klastra usługi AKS w Log Analytics](media/view-master-logs/enable-oms-log-analytics.png)
 
 >[!NOTE]
->Obszary robocze OMS są teraz nazywane obszarów roboczych usługi Log Analytics.
+>Obszary robocze OMS są teraz nazywane obszarami roboczymi usługi Log Analytics.
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Harmonogram zasobnik testowych w klastrze usługi AKS
 
@@ -116,7 +116,7 @@ Aby ułatwić analizowanie danych dzienników, w poniższej tabeli przedstawiono
 | *resourceId*             | Zasobów platformy Azure, który dziennika |
 | *czas*                   | Sygnatura czasowa po dziennika został przekazany |
 | *category*               | Nazwa kontenera/składnika Generowanie dziennika |
-| *OperationName*          | Zawsze *Microsoft.ContainerService/managedClusters/diagnositicLogs/Read* |
+| *OperationName*          | Zawsze *Microsoft.ContainerService/managedClusters/diagnosticLogs/Read* |
 | *Properties.log*         | Pełny tekst dziennika ze składnika |
 | *Properties.stream*      | *strumienia wyjściowego stderr* lub *stdout* |
 | *Properties.pod*         | Nazwa zasobnika dziennik pochodzi z |

@@ -1,3 +1,16 @@
+---
+author: SnehaGunda
+ms.service: cosmos-db
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: sngun
+ms.openlocfilehash: 30efb963f34ff567c70d845a4a8891ead285b178
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572491"
+---
 Jeśli nie zamierzasz w przyszłości korzystać z tej aplikacji i nie chcesz, aby zostały naliczone jakiekolwiek opłaty, wykonaj następujące czynności w celu usunięcia wszystkich zasobów w ramach tego przewodnika Szybki start:
 
 1. W witrynie Azure Portal wybierz **grupy zasobów** daleko po lewej stronie, a następnie wybierz utworzoną grupę zasobów.  

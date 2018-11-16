@@ -9,18 +9,18 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: larryfr
 ms.date: 10/30/2018
-ms.openlocfilehash: 0ad39048a6b175a30ac7c5cdc346d0858c3719ef
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 75faf344c64dc330a98b836a8852b42531645c49
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621874"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685178"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Korzystanie z modelu usługi Azure Machine Learning, wdrożyć jako usługę sieci web
 
 Wdrażanie modelu usługi Azure Machine Learning w postaci usługi sieci web tworzy interfejs API REST. Można wysyłać dane do tego interfejsu API i odbierać prognozowania zwracane przez model. W tym dokumencie, Dowiedz się, jak utworzyć klientów przy użyciu usługi sieci web C#, Go, Java i Python.
 
-Usługi sieci web jest tworzona podczas wdrażania obrazu do wystąpienia kontenera platformy Azure, usługi Azure Kubernetes Service lub Project Brainwave (Tablice bramek programowane). Obrazy są tworzone na podstawie zarejestrowane modele i plik oceniania. Identyfikator URI używany do uzyskiwania dostępu do usługi sieci web można pobrać przy użyciu [zestawu SDK usługi Azure Machine Learning](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/intro?view=azure-ml-py). Jeśli włączono uwierzytelnianie umożliwia także zestaw SDK można pobrać klucze uwierzytelniania.
+Usługi sieci web jest tworzona podczas wdrażania obrazu do wystąpienia kontenera platformy Azure, usługi Azure Kubernetes Service lub Project Brainwave (Tablice bramek programowane). Obrazy są tworzone na podstawie zarejestrowane modele i plik oceniania. Identyfikator URI używany do uzyskiwania dostępu do usługi sieci web można pobrać przy użyciu [zestawu SDK usługi Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Jeśli włączono uwierzytelnianie umożliwia także zestaw SDK można pobrać klucze uwierzytelniania.
 
 Jest ogólny przepływ pracy podczas tworzenia klienta, który korzysta z uczenia Maszynowego usługi sieci web:
 
@@ -33,7 +33,7 @@ Jest ogólny przepływ pracy podczas tworzenia klienta, który korzysta z uczeni
 > [!NOTE]
 > Zestaw SDK usługi Azure Machine Learning można uzyskać informacji usługi sieci web. To jest zestaw SDK języka Python. Gdy jest używany do pobierania informacji o usługach sieci web, można użyć dowolnego języka, można utworzyć klienta dla usługi.
 
-Informacje o połączeniu dla usługi sieci web mogą być pobierane przy użyciu zestawu SDK usługi Azure Machine Learning. [Azureml.core.Webservice](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) klasa udostępnia informacje niezbędne do utworzenia klienta. Następujące `Webservice` właściwości, które są przydatne podczas tworzenia aplikacji klienckiej:
+Informacje o połączeniu dla usługi sieci web mogą być pobierane przy użyciu zestawu SDK usługi Azure Machine Learning. [Azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) klasa udostępnia informacje niezbędne do utworzenia klienta. Następujące `Webservice` właściwości, które są przydatne podczas tworzenia aplikacji klienckiej:
 
 * `auth_enabled` — Jeśli włączono uwierzytelnianie `True`; w przeciwnym razie `False`.
 * `scoring_uri` Adres interfejsu API REST.
@@ -51,7 +51,7 @@ Istnieją trzy sposoby, aby pobrać te informacje dotyczące wdrożonymi usługa
     print(service.scoring_uri)
     ```
 
-* Możesz użyć `Webservice.list` można pobrać listy wdrożonych usług sieci web dla modeli w obszarze roboczym. Można dodać filtry, aby zawęzić listę informacje zwrócone. Aby uzyskać więcej informacji o tym, co może zostać wykonane filtrowanie, zobacz [Webservice.list](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#list) dokumentację referencyjną.
+* Możesz użyć `Webservice.list` można pobrać listy wdrożonych usług sieci web dla modeli w obszarze roboczym. Można dodać filtry, aby zawęzić listę informacje zwrócone. Aby uzyskać więcej informacji o tym, co może zostać wykonane filtrowanie, zobacz [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#list) dokumentację referencyjną.
 
     ```python
     services = Webservice.list(ws)
@@ -82,7 +82,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Jeśli konieczne jest ponowne wygenerowanie klucza, użyj [ `service.regen_key` ](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#regen-key).
+> Jeśli konieczne jest ponowne wygenerowanie klucza, użyj [ `service.regen_key` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#regen-key).
 
 ## <a name="request-data"></a>Żądanie danych
 

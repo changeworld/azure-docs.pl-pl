@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: d4b7d8ec5cb162e5fc844f107fbd5eb08fb00639
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: bf5bc66ce55b0b9d6095cd395a11f68b40af1639
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353537"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685722"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -28,7 +28,7 @@ W tym artykule opisano często zadawane pytania zgłoszone przez społeczność 
 
 P: jak należy strumienia do urządzeń z systemem iOS firmy Apple
 
-Odpowiedź: Dodaj "(format = m3u8-aapl)" Ścieżka "/ Manifest" część adresu URL, aby poinformować serwer pochodzenia przesyłania strumieniowego do zwrócenia wstecz zawartości HLS do użycia w systemie iOS firmy Apple urządzenia z natywnym (Aby uzyskać szczegółowe informacje, zobacz (dostarczania zawartości) [ Media-services dostarczanie — zawartość — overview.md]),
+Odpowiedź: Dodaj "(format = m3u8-aapl)" Ścieżka "/ Manifest" część adresu URL, aby poinformować serwer pochodzenia przesyłania strumieniowego do zwrócenia wstecz zawartości HLS do użycia w systemie iOS firmy Apple urządzenia z natywnym (Aby uzyskać więcej informacji, zobacz [dostarczania zawartości](media-services-deliver-content-overview.md)),
 
 P: jak można skalować, indeksowanie?
 

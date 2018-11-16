@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: alinast
-ms.openlocfilehash: 33190472215e7a02b94951a73054ebe3e1994e54
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6a757dca48dc3ff41adfe6f8802fad40e7a4ca81
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623914"
+ms.locfileid: "51636836"
 ---
 # <a name="how-to-use-user-defined-functions-in-azure-digital-twins"></a>Jak używać funkcji zdefiniowanych przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -44,7 +44,7 @@ Dopasowujące jednostki są obiektami programu graph, określających, funkcje z
 Następujące dopasowywania przykład zwraca wartość true na wszelkie zdarzenia telemetrii czujników z `"Temperature"` jako wartość typu danych. Możesz utworzyć wiele dopasowujące jednostki w funkcji zdefiniowanej przez użytkownika:
 
 ```plaintext
-POST yourManagementApiUrl/matchers
+POST YOUR_MANAGEMENT_API_URL/matchers
 {
   "Name": "Temperature Matcher",
   "Conditions": [
@@ -72,20 +72,20 @@ Po utworzeniu dopasowujące jednostki przekazywanie fragmentu kodu funkcji z nas
 > - Treść jest wieloczęściowej wiadomości:
 >   - Pierwsza część dotyczy metadane potrzebne dla funkcji zdefiniowanej przez użytkownika.
 >   - Druga część jest logiki obliczeń JavaScript.
-> - W **userDefinedBoundary** sekcji i Zastąp **SpaceId** i **Machers** wartości.
+> - W **USER_DEFINED_BOUNDARY** sekcji i Zastąp **SpaceId** i **Machers** wartości.
 
 ```plaintext
-POST yourManagementApiUrl/userdefinedfunctions with Content-Type: multipart/form-data; boundary="userDefinedBoundary"
+POST YOUR_MANAGEMENT_API_URL/userdefinedfunctions with Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"
 ```
 
 | Wartość parametru | Zamień na |
 | --- | --- |
-| *userDefinedBoundary* | Nazwa wieloczęściowy granice zawartości |
+| *USER_DEFINED_BOUNDARY* | Nazwa granice zawartości wieloczęściowej wiadomości |
 
 ### <a name="body"></a>Treść
 
 ```plaintext
---userDefinedBoundary
+--USER_DEFINED_BOUNDARY
 Content-Type: application/json; charset=utf-8
 Content-Disposition: form-data; name="metadata"
 
@@ -95,7 +95,7 @@ Content-Disposition: form-data; name="metadata"
   "Description": "The contents of this udf will be executed when matched against incoming telemetry.",
   "Matchers": ["YOUR_MATCHER_IDENTIFIER"]
 }
---userDefinedBoundary
+--USER_DEFINED_BOUNDARY
 Content-Disposition: form-data; name="contents"; filename="userDefinedFunction.js"
 Content-Type: text/javascript
 
@@ -103,7 +103,7 @@ function process(telemetry, executionContext) {
   // Code goes here.
 }
 
---userDefinedBoundary--
+--USER_DEFINED_BOUNDARY--
 ```
 
 | Wartość | Zamień na |
@@ -189,7 +189,7 @@ Musimy utworzyć przypisania roli dla funkcji zdefiniowanej przez użytkownika d
 1. Zapytanie dla ról i Uzyskaj identyfikator roli którą chcesz przypisać do funkcji zdefiniowanej przez użytkownika. Przekazać go do **RoleId**:
 
     ```plaintext
-    GET yourManagementApiUrl/system/roles
+    GET YOUR_MANAGEMENT_API_URL/system/roles
     ```
 
 1. **Identyfikator obiektu** będzie identyfikator funkcji zdefiniowanej przez użytkownika, który został utworzony wcześniej.
@@ -197,17 +197,17 @@ Musimy utworzyć przypisania roli dla funkcji zdefiniowanej przez użytkownika d
 1. Skopiuj zwracanego `spacePaths` wartość. Użyjesz, w poniższym kodzie:
 
     ```plaintext
-    GET yourManagementApiUrl/spaces?name=yourSpaceName&includes=fullpath
+    GET YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
     | Wartość parametru | Zamień na |
     | --- | --- |
-    | *yourSpaceName* | Nazwa miejsca, do których chcesz używać |
+    | *YOUR_SPACE_NAME* | Nazwa miejsca, do których chcesz używać |
 
 1. Wklej zwrócony `spacePaths` wartością do **ścieżki** można utworzyć przypisania roli funkcji zdefiniowanej przez użytkownika:
 
     ```plaintext
-    POST yourManagementApiUrl/roleassignments
+    POST YOUR_MANAGEMENT_API_URL/roleassignments
     {
       "RoleId": "YOUR_DESIRED_ROLE_IDENTIFIER",
       "ObjectId": "YOUR_USER_DEFINED_FUNCTION_ID",

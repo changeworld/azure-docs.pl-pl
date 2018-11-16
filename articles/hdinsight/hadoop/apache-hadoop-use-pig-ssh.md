@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z języka Pig z usługi Hadoop przy użyciu protokołu SSH w klastrze usługi HDInsight — Azure
-description: Dowiedz się, jak się połączyć z klastra Hadoop opartego na systemie Linux przy użyciu protokołu SSH, a następnie użyj polecenia Pig do uruchomienia instrukcji Pig Latin interaktywnie lub w trybie wsadowym.
+title: Use Apache Pig przy użyciu protokołu SSH w klastrze usługi HDInsight — Azure
+description: Dowiedz się, jak połączyć do klastra Apache Hadoop oparte na systemie Linux przy użyciu protokołu SSH, a następnie użyj polecenia Pig do uruchomienia instrukcji Pig Latin interaktywnie lub w trybie wsadowym.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1deb44fecad6c120dd1e8f82cec36bff6353fc0b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6bcd2d299d3816c17265eef658ff1f01409828a1
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51003884"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632226"
 ---
-# <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>Uruchamianie zadania Pig w klastrze opartych na systemie Linux przy użyciu polecenia Pig (SSH)
+# <a name="run-apache-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>Uruchamiać zadania Apache Pig klastrze opartych na systemie Linux przy użyciu polecenia Pig (SSH)
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Dowiedz się, jak interaktywnie Uruchom zadania Pig z połączenia SSH z klastrem HDInsight. Język programowania Pig Latin służy do opisywania przekształceń, które są stosowane do danych wejściowych żądaną produktu wyjściowego.
+Dowiedz się, jak interaktywnie uruchamiać zadania Apache Pig z połączenia SSH do klastra usługi HDInsight. Język programowania Pig Latin służy do opisywania przekształceń, które są stosowane do danych wejściowych żądaną produktu wyjściowego.
 
 > [!IMPORTANT]
 > Kroki opisane w tym dokumencie wymagają klastra HDInsight opartych na systemie Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).

@@ -7,12 +7,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 91f24bf90f3e1a8a0c383a5820c6816748090807
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 3f35779337082b7280398bd13ef870c74f3ec082
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629101"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685994"
 ---
 # <a name="optimizing-autovacuum-on-azure-database-for-postgresql-server"></a>Optymalizacja autovacuum w usłudze Azure Database dla serwera PostgreSQL 
 W tym artykule opisano, jak skutecznie zoptymalizować autovacuum w usłudze Azure Database for PostgreSQL.
@@ -50,7 +50,7 @@ autovacuum_vacuum_cost_limit|Określa wartość limitu koszt, który będzie uż
 autovacuum_vacuum_cost_delay|Określa wartość opóźnienia kosztów, który będzie używany podczas automatycznej operacji ODKURZAJĄCY. Jeśli określono wartość -1, zostanie użyta wartość vacuum_cost_delay regularne. Wartość domyślna to 20 MS. Ten parametr można ustawić tylko w pliku postgresql.conf lub w wierszu polecenia serwera. To ustawienie można przesłonić dla poszczególnych tabel, zmieniając parametry magazynu tabel.|20 ms
 autovacuum_nap_time|Określa, że minimalne opóźnienie między autovacuum działa na dowolnej określonej bazy danych. W każdej Rundy demona sprawdza, czy baza danych i wydaje polecenia ODKURZAJĄCY i ANALIZOWANIE, zgodnie z potrzebami dla tabel w tej bazie danych. Opóźnienie jest mierzony w sekundach, a wartość domyślna to jedna minuta (1 min). Ten parametr można ustawić tylko w pliku postgresql.conf lub w wierszu polecenia serwera.|15 s
 autovacuum_max_workers|Określa maksymalną liczbę procesów autovacuum (inne niż uruchamiania autovacuum), które mogą być uruchomione jednocześnie. Wartość domyślna to trzy. Ten parametr można ustawić tylko podczas uruchamiania serwera.|3
-Powyższe Konfiguracje mogą być aktualizowane przy użyciu witryny Azure portal lub interfejsu wiersza polecenia platformy Azure.
+Powyższe ustawienia można zastąpić dla poszczególnych tabel, zmieniając parametry magazynu tabel.  
 
 ## <a name="autovacuum-cost"></a>Koszt Autovacuum
 Poniżej przedstawiono "koszty" próżniowej operacji:

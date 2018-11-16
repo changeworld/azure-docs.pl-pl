@@ -1,6 +1,6 @@
 ---
 title: Używanie języka C# za pomocą technologii MapReduce w usłudze Hadoop w HDInsight — Azure
-description: Dowiedz się, jak używać języka C# do tworzenia rozwiązań MapReduce z usługą Hadoop w usłudze Azure HDInsight.
+description: Dowiedz się, jak używać C# do tworzenia rozwiązań MapReduce z usługą Apache Hadoop w usłudze Azure HDInsight.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,21 +9,21 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4cf68ba16cf19a20686f323832ccd7e7d1b543bb
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a5f6f09ee6c8504b64cad7ef5313501a65907a90
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010953"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632598"
 ---
-# <a name="use-c-with-mapreduce-streaming-on-hadoop-in-hdinsight"></a>Za pomocą języka C# MapReduce przesyłania strumieniowego w usłudze Hadoop w HDInsight
+# <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Użyj C# o MapReduce, przesyłanie strumieniowe na technologii Apache Hadoop w HDInsight
 
 Dowiedz się, jak używać języka C# do tworzenia rozwiązania MapReduce na HDInsight.
 
 > [!IMPORTANT]
 > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz [przechowywanie wersji składnika HDInsight](../hdinsight-component-versioning.md).
 
-Przesyłanie strumieniowe usługi Hadoop to narzędzie, które umożliwia uruchomienie zadania MapReduce, za pomocą skryptu lub pliku wykonywalnego. W tym przykładzie .NET jest używane do implementowania mapowania i reduktor liczba rozwiązania programu word.
+Przesyłanie strumieniowe Apache Hadoop to narzędzie, które umożliwia uruchomienie zadania MapReduce, za pomocą skryptu lub pliku wykonywalnego. W tym przykładzie .NET jest używane do implementowania mapowania i reduktor liczba rozwiązania programu word.
 
 ## <a name="net-on-hdinsight"></a>.NET na HDInsight
 

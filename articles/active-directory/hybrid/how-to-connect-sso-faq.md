@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d445a4673245b4c6d1986d099113beba79d136bb
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e3f08b80b891ad277794ae5a07c3662dab2f2c16
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315245"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687456"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne: często zadawane pytania
 
@@ -46,7 +46,7 @@ Poniżej zamieszczono niepełna lista aplikacji, które można wysyłać te para
 | -- | -- |
 | Panel dostępu | https://myapps.microsoft.com/contoso.com |
 | Program Outlook w sieci Web | https://outlook.office365.com/contoso.com |
-| Portal usługi Office 365 | https://portal.office.com?domain_hint=contoso.com |
+| Portale usługi Office 365 | https://portal.office.com?domain_hint=contoso.com, https://www.office.com?domain_hint=contoso.com |
 
 Ponadto użytkownicy uzyskują dyskretnej środowisko logowania jednokrotnego, jeśli aplikacja wysyła żądań logowania gośćmi punktami końcowymi usługi Azure AD — czyli https://login.microsoftonline.com/contoso.com/<..> lub https://login.microsoftonline.com/<tenant_ID>/<..> — zamiast usługi Azure AD wspólnego punktu końcowego — czyli https://login.microsoftonline.com/common/<...>. Poniżej zamieszczono niepełna lista aplikacji, które tego rodzaju żądań logowania.
 

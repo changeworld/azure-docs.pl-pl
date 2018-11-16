@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2018
 ms.author: wolfma
-ms.openlocfilehash: 2dd001ebebd5cdf90d7d0b8163a85a5f83c855f6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 502f59c88808480f26e6ea5a6d2c5b362c78869b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281298"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683503"
 ---
 # <a name="quickstart-recognize-and-transcribe-speech-using-the-speech-sdk-and-net-framework-windows"></a>Szybki start: rozpoznawanie i transkrypcja mowy przy użyciu zestawu SDK usługi Mowa i programu .NET Framework (Windows)
 
@@ -23,7 +23,7 @@ ms.locfileid: "51281298"
 
 Korzystając z tego przewodnika, możesz utworzyć aplikację konsolową zamieniającą mowę na tekst przy użyciu programu .NET Framework dla systemu Windows oraz zestawu SDK usługi Mowa. Następnie za pomocą mikrofonu komputera będzie możliwa transkrypcja mowy na tekst w czasie rzeczywistym.
 
-Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z włączoną usługą Mowa firmy Microsoft. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started), aby uzyskać klucz subskrypcji.
+Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z włączoną usługą Mowa firmy Microsoft. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started), aby uzyskać klucz subskrypcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

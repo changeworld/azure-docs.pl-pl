@@ -1,6 +1,6 @@
 ---
-title: Uruchamianie zapytań Hive przy użyciu HDInsight platformy .NET SDK — platformy Azure
-description: Dowiedz się, jak można przesłać zadania Hadoop do usługi Azure HDInsight Hadoop przy użyciu zestawu .NET SDK HDInsight.
+title: Uruchamianie zapytania usługi Apache Hive przy użyciu HDInsight platformy .NET SDK — platformy Azure
+description: Dowiedz się, jak można przesłać zadania technologii Apache Hadoop do usługi Azure HDInsight Apache Hadoop przy użyciu zestawu .NET SDK HDInsight.
 ms.reviewer: jasonh
 services: hdinsight
 author: hrasheed-msft
@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5cababaa7c808969e6e24a70581f54639f269621
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 790cc11e3d4cf1d0260b1099efd82bdddec85785
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016016"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634570"
 ---
-# <a name="run-hive-queries-using-hdinsight-net-sdk"></a>Uruchamianie zapytań Hive przy użyciu zestawu .NET SDK HDInsight
+# <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Uruchamianie zapytania usługi Apache Hive przy użyciu zestawu .NET SDK HDInsight
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Dowiedz się, jak przesłać zapytania Hive przy użyciu zestawu .NET SDK HDInsight. Napisz program C#, można przesłać zapytania programu Hive w taki sposób, aby uzyskać listę tabel programu Hive i wyświetlić wyniki.
+Dowiedz się, jak przesyłać zapytania usługi Apache Hive przy użyciu zestawu .NET SDK HDInsight. Napisz program C#, można przesłać zapytania programu Hive w taki sposób, aby uzyskać listę tabel programu Hive i wyświetlić wyniki.
 
 > [!NOTE]
 > Kroki opisane w tym artykule, należy wykonać w kliencie Windows. Instrukcje dotyczące używania systemu Linux, OS X lub klienta systemu Unix do pracy z programu Hive selektor karty wyświetlane w górnej części tego artykułu.
@@ -27,7 +27,7 @@ Dowiedz się, jak przesłać zapytania Hive przy użyciu zestawu .NET SDK HDInsi
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed przystąpieniem do wykonywania w tym artykule, musi mieć następujące elementy:
 
-* **Klaster Hadoop w HDInsight**. Zobacz [rozpoczęcie korzystania z opartą na systemie Linux platformą Hadoop w HDInsight](apache-hadoop-linux-tutorial-get-started.md).
+* **Klaster platformy Apache Hadoop w HDInsight**. Zobacz [rozpoczęcie korzystania z opartą na systemie Linux platformą Hadoop w HDInsight](apache-hadoop-linux-tutorial-get-started.md).
 
     > [!WARNING]
     > Od 15 września 2017 r. zestawu .NET SDK HDInsight obsługuje tylko zwracanie wyników zapytania programu Hive z konta usługi Azure Storage. Jeśli używasz w tym przykładzie z klastrem usługi HDInsight, który używa usługi Azure Data Lake Store jako podstawowy magazyn, nie można pobrać wyników wyszukiwania za pomocą zestawu .NET SDK.

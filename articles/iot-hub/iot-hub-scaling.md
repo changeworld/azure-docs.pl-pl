@@ -1,19 +1,19 @@
 ---
 title: Skalowanie usługi Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Jak skalować usługi IoT hub do obsługi przepływność przewidywanego komunikatów i żądanych funkcji. Zawiera podsumowanie obsługiwana przepływność dla każdej warstwy i opcje dotyczące dzielenia na fragmenty.
-author: kgremban
+author: wesmc7777
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
-ms.author: kgremban
-ms.openlocfilehash: d98a890cfb6bd388477ff3f14b81c8df02ece879
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.author: wesmc
+ms.openlocfilehash: c37492a42322ffc386751c4c63b981c9d93a72f6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287969"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633380"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybrać właściwą warstwę usługi IoT Hub dla Twojego rozwiązania
 
@@ -31,7 +31,7 @@ Każda warstwa usługi IoT Hub jest dostępna w trzech rozmiarach, na podstawie 
 
 Warstwy standardowa usługi IoT Hub umożliwia korzystanie z wszystkich funkcji i jest wymagana dla dowolnego rozwiązania IoT, które chcą ułatwić korzystanie z możliwości komunikacji dwukierunkowej. Warstwa podstawowa umożliwia podzbiór funkcji i jest przeznaczona dla rozwiązań IoT, które potrzebują tylko komunikację jednokierunkową z urządzeń do chmury. Obie warstwy oferują te same funkcje zabezpieczeń i uwierzytelniania.
 
-Po utworzeniu Centrum IoT hub, możesz uaktualnić z warstwy podstawowa do warstwy standard bez przerywania istniejących. Aby uzyskać więcej informacji, zobacz [uaktualnianie Centrum IoT hub](iot-hub-upgrade.md). Limit maksymalny partycji dla usługi IoT Hub w warstwie podstawowa jest 8, a w warstwie standardowa wynosi 32. Większość centrów IoT potrzebuje tylko 4 partycjami. Limit partycji jest wybierany, gdy usługa IoT Hub zostanie utworzona i odnosi się komunikaty urządzenie chmura z liczbą jednoczesnych czytników tych komunikatów. Ta wartość zmienia się podczas migracji z warstwy podstawowa do warstwy standardowa. Należy również zauważyć, że tylko jeden typ [wersji](https://azure.microsoft.com/pricing/details/iot-hub/) w obrębie warstwy można wybrać dla każdej usługi IoT Hub. Na przykład można utworzyć usługi IoT Hub przy użyciu wielu jednostek S1, ale nie kombinację jednostek z różnych wersji, takich jak S1 i B3 lub warstwy S1 i S2.
+Tylko jeden typ [wersji](https://azure.microsoft.com/pricing/details/iot-hub/) w obrębie warstwy można wybrać dla każdej usługi IoT Hub. Na przykład można utworzyć usługi IoT Hub przy użyciu wielu jednostek S1, ale nie kombinację jednostek z różnych wersji, takich jak S1 i B3 lub warstwy S1 i S2.
 
 | Możliwości | Warstwa Podstawowa | Warstwa standardowa |
 | ---------- | ---------- | ------------- |
@@ -47,7 +47,22 @@ Po utworzeniu Centrum IoT hub, możesz uaktualnić z warstwy podstawowa do warst
 
 Centrum IoT oferuje bezpłatną warstwę, która jest przeznaczona do testowania i oceny. Zawiera wszystkie funkcje warstwy standardowa, ale ograniczone limity obsługi komunikatów. Nie można uaktualnić z warstwy bezpłatna, podstawowa lub standardowa. 
 
-### <a name="iot-hub-rest-apis"></a>Interfejsy API REST usługi IoT Hub
+
+## <a name="partitions"></a>Partycje
+
+Usługa Azure IoT Hubs zawiera wiele kluczowych elementów związanych z [usługi Azure Event Hubs](../event-hubs/event-hubs-features.md), w tym [partycje](../event-hubs/event-hubs-features.md#partitions). Strumienie zdarzeń dla centrów IoT Hub zwykle są wypełniane przy użyciu przychodzących danych telemetrycznych zgłoszonych przez różnych urządzeń IoT. Partycje strumienia zdarzeń służy do zmniejszenia rywalizacji, które występują, gdy jednocześnie odczytu i zapisu do strumieni zdarzeń. 
+
+Limit partycji jest wybierany, gdy usługa IoT Hub zostanie utworzona i nie można zmienić. Limit maksymalny partycji centrów iot Hub w warstwie podstawowa jest 8, a w warstwie standardowa wartość maksymalna to 32. Większość centrów IoT potrzebuje tylko 4 partycjami. Aby uzyskać więcej informacji na temat określania partycji, zobacz często zadawane pytania Event Hubs [partycje ile potrzebuję?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
+
+
+## <a name="tier-upgrade"></a>Uaktualnienie warstwy
+
+Po utworzeniu Centrum IoT hub, możesz uaktualnić z warstwy podstawowa do warstwy standard bez przerywania istniejących. Aby uzyskać więcej informacji, zobacz [uaktualnianie Centrum IoT hub](iot-hub-upgrade.md).
+
+Konfiguracja partycji zmienia się podczas migracji z warstwy podstawowa do warstwy standardowa.
+
+
+## <a name="iot-hub-rest-apis"></a>Interfejsy API REST usługi IoT Hub
 
 Różnica w obsługiwanych możliwości między warstwami podstawowa i standardowa usługi IoT Hub oznacza, że niektóre wywołania interfejsu API nie będą działać z hubs w warstwie podstawowa. W poniższej tabeli przedstawiono, które interfejsy API są dostępne: 
 

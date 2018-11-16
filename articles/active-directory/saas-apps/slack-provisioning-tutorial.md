@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: 7d6056987ee05f68eecf026e954327a2f62cf886
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 83155e448f350618446fb22bf52e831b1cc8d499
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348909"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636547"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Slack do automatycznej aprowizacji użytkowników
 
@@ -57,7 +57,7 @@ Przed Skonfiguruj i włącz usługę aprowizacji, należy zdecydować, jakie uż
 
 Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytkownika w Slack aprowizujący interfejs API i konfigurowanie inicjowania obsługi usługi do tworzenia, aktualizacji i wyłączyć przypisany kontach użytkownika w programie Slack, w oparciu o użytkownika i przypisanie do grupy w usłudze Azure AD.
 
-**Porada:** można też włączyć opartej na SAML logowania jednokrotnego dla Slack, zgodnie z instrukcjami podanymi w (witryna Azure portal) [https://portal.azure.com]. Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełnienie siebie nawzajem.
+**Porada:** można też włączyć opartej na SAML logowania jednokrotnego dla Slack, zgodnie z instrukcjami podanymi w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełnienie siebie nawzajem.
 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Aby skonfigurować automatyczne aprowizowaniem kont użytkowników do Slack w usłudze Azure AD:

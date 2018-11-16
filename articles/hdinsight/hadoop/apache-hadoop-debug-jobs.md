@@ -1,5 +1,5 @@
 ---
-title: 'Debugowanie usługi Hadoop w HDInsight: wyświetlanie dzienników i interpretowanie komunikatów o błędach - Azure '
+title: 'Debugowanie usługi Apache Hadoop w HDInsight: wyświetlanie dzienników i interpretowanie komunikatów o błędach - Azure '
 description: Więcej informacji na temat komunikatów o błędach, które może zostać wyświetlony, gdy administrowanie usługą HDInsight przy użyciu programu PowerShell oraz czynności, które można wykonać w celu odzyskania.
 services: hdinsight
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 7600ff1a11435ee079fef80ecfa5ad88de1b4750
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1589a5c1cab5a37322249762c840620d9ba4fc7e
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569026"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634638"
 ---
 # <a name="analyze-hadoop-logs"></a>Analizowanie dzienników usługi Hadoop
 
-Każdy klaster Hadoop w usłudze Azure HDInsight ma konto usługi Azure storage używany jako domyślny system plików. Konto magazynu jest określane jako domyślne konto magazynu. Klaster używa usługi Azure Table storage i Blob storage na domyślne konto magazynu do przechowywania swoich dzienników.  Aby dowiedzieć się, domyślne konto magazynu dla klastra, zobacz [Zarządzanie klastrów usługi Hadoop w HDInsight](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account). Dzienniki nadal na koncie magazynu, nawet po klaster jest usuwany.
+Każdy klaster Apache Hadoop w usłudze Azure HDInsight ma konto usługi Azure storage używany jako domyślny system plików. Konto magazynu jest określane jako domyślne konto magazynu. Klaster używa usługi Azure Table storage i Blob storage na domyślne konto magazynu do przechowywania swoich dzienników.  Aby dowiedzieć się, domyślne konto magazynu dla klastra, zobacz [Zarządzanie klastrów usługi Hadoop w HDInsight](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account). Dzienniki nadal na koncie magazynu, nawet po klaster jest usuwany.
 
 ## <a name="logs-written-to-azure-tables"></a>Dzienniki zapisane tabele platformy Azure
 
@@ -315,4 +315,4 @@ Niektóre z tych komunikatów o błędach można także znaleźć w witrynie Azu
 
 * [Debugowanie zadań tez przy na HDInsight przy użyciu widoków Ambari](../hdinsight-debug-ambari-tez-view.md)
 * [Włączanie zrzutów sterty dla usług Hadoop w HDInsight opartych na systemie Linux](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [Zarządzanie klastrami HDInsight przy użyciu interfejsu użytkownika sieci Web systemu Ambari](../hdinsight-hadoop-manage-ambari.md)
+* [Zarządzanie klastrami HDInsight przy użyciu internetowego interfejsu użytkownika usługi Ambari](../hdinsight-hadoop-manage-ambari.md)

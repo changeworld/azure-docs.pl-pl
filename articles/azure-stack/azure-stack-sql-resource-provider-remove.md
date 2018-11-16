@@ -11,31 +11,40 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/14/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: f5aa67ad0588e3f42e68056c8ffca97767975e8b
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: b7af23ccdd379aac9959bb9993fc1781a44e705e
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361485"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684030"
 ---
 # <a name="remove-the-sql-resource-provider"></a>Usuwanie dostawcy zasobów bazy danych SQL
 
 Zanim usuniesz dostawcy zasobów bazy danych SQL, należy usunąć wszystkie zależności dostawcy. Należy także kopię pakiet wdrożeniowy, który został użyty do zainstalowania dostawcy zasobów.
 
-Istnieje kilka zadań oczyszczania zrobić przed uruchomieniem _DeploySqlProvider.ps1_ skrypt, aby usunąć dostawcę zasobów.
-Dzierżawcy jest odpowiedzialny za następujące zadania oczyszczania:
+  |Minimalna wersja usługi Azure Stack|Wersja SQL RP|
+  |-----|-----|
+  |Wersja 1808 (1.1808.0.97)|[SQL RP wersji 1.1.30.0](https://aka.ms/azurestacksqlrp11300)|
+  |W wersji 1804 (1.0.180513.1)|[SQL RP wersji 1.1.24.0](https://aka.ms/azurestacksqlrp11240)
+  |     |     |
+
+## <a name="dependency-cleanup"></a>Oczyszczanie zależności
+
+Istnieje kilka zadań oczyszczania, aby zrobić przed uruchomieniem skryptu DeploySqlProvider.ps1, aby usunąć dostawcę zasobów.
+
+Użytkownicy dzierżawy usługi Azure Stack jest odpowiedzialny za następujące zadania oczyszczania:
 
 * Usuń wszystkie swoje bazy danych od dostawcy zasobów. (Usuwanie baz danych dzierżawy nie powoduje usunięcia danych.)
-* Aby wyrejestrować się z przestrzeni nazw dostawcy zasobów.
+* Aby wyrejestrować się z przestrzeni nazw dostawcy.
 
-Administrator jest odpowiedzialna za następujące zadania oczyszczania:
+Operator usługi Azure Stack jest odpowiedzialny za następujące zadania oczyszczania:
 
-* Usuwa serwerami hostingu z dostawcy zasobów bazy danych SQL.
-* Usuwa wszystkie plany odwołujące się do dostawcy zasobów bazy danych SQL.
-* Usuwa wykorzystani limitów przydziałów, które są skojarzone z dostawcy zasobów bazy danych SQL.
+* Usuwa serwerami hostingu z karty MySQL.
+* Usuwa dowolne plany, które odwołują się karta MySQL.
+* Usuwa wykorzystani limitów przydziałów, które są skojarzone z kartą MySQL.
 
 ## <a name="to-remove-the-sql-resource-provider"></a>Aby usunąć dostawcy zasobów bazy danych SQL
 

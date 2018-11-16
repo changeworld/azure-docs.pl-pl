@@ -1,6 +1,6 @@
 ---
 title: Łączenie z usługą Azure HDInsight przy użyciu narzędzi Data Lake Tools for Visual Studio
-description: Dowiedz się, jak zainstalować narzędzia Data Lake Tools for Visual Studio oraz korzystać z nich, aby połączyć się z klastrami Hadoop w usłudze Azure HDInsight, a następnie uruchomić zapytania programu Hive.
+description: Dowiedz się, jak zainstalować i Data Lake Tools for Visual Studio umożliwiają łączenie się z klastrami Apache Hadoop w usłudze Azure HDInsight, a następnie uruchom zapytania programu Hive.
 keywords: hadoop tools,hive query,visual studio,visual studio hadoop
 services: hdinsight
 author: hrasheed-msft
@@ -10,16 +10,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive, hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 281c3744dc311fdced20f810e0a9f2b233076472
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 670de3f61047bcc8b168863f5981e41084225ec4
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247147"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634672"
 ---
-# <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-hive-queries"></a>Łączenie z usługą Azure HDInsight i uruchamianie zapytań programu Hive przy użyciu narzędzi Data Lake Tools for Visual Studio
+# <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Użyj narzędzi Data Lake Tools for Visual Studio, aby nawiązać połączenie z usługi Azure HDInsight i uruchomić zapytania usługi Apache Hive
 
-Dowiedz się, jak korzystać z narzędzi Data Lake Tools for Visual Studio (nazywanych również narzędziami usług Azure Data Lake i Stream Analytics for Visual Studio), aby połączyć się z klastrami Hadoop w usłudze [Azure HDInsight](../hdinsight-hadoop-introduction.md) i przesłać zapytania Hive. 
+Dowiedz się, jak używać narzędzi Data Lake Tools dla programu Visual Studio (nazywanych również Azure Data Lake i Stream Analytics Tools for Visual Studio) aby połączyć się z klastrami Apache Hadoop w [Azure HDInsight](../hdinsight-hadoop-introduction.md) i przesłać zapytania Hive. 
 
 Aby uzyskać więcej informacji na temat korzystania z usługi HDInsight, zobacz artykuły [Introduction to HDInsight](../hdinsight-hadoop-introduction.md) (Wprowadzenie do usługi HDInsight) i [Get started with HDInsight](apache-hadoop-linux-tutorial-get-started.md) (Rozpoczynanie pracy z usługą HDInsight). 
 

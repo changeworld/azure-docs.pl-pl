@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 11/13/2018
 ms.author: alinast
-ms.openlocfilehash: de1ead165e1db3f78591f093edcc33781b9f4c78
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 95f01c9338afbf2ab5381001e4ab480185cedaeb
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624186"
+ms.locfileid: "51636887"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Modele obiektów cyfrowego bliźniaczych reprezentacji i analizy przestrzennej wykresu
 
@@ -79,13 +79,13 @@ W przypadku wdrożenia usługi cyfrowego reprezentacji urządzeń w Twojej subsk
 Po wdrożeniu cyfrowego bliźniaczych elementów z [witryny Azure portal](https://portal.azure.com), [Swagger](https://swagger.io/tools/swagger-ui/) URL interfejsów API Management jest generowany automatycznie. Pojawi się w witrynie Azure portal w **Przegląd** sekcji w następującym formacie.
 
 ```plaintext
-https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
+https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Nazwa atrybutu niestandardowego | Zamień na |
+| Name (Nazwa) | Zamień na |
 | --- | --- |
-| **yourInstanceName** | Nazwa wystąpienia usługi cyfrowego bliźniaczych reprezentacji |
-| **yourLocation** | Który region serwer wystąpienie usługi jest hostowana na |
+| YOUR_INSTANCE_NAME | Nazwa wystąpienia usługi cyfrowego bliźniaczych reprezentacji |
+| YOUR_LOCATION | Który region serwer wystąpienie usługi jest hostowana na |
 
  Pełny format adresu URL pojawia się na tej ilustracji.
 

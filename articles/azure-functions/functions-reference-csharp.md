@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 6c9172140691f7107d3907ab86938d879989a6c0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: d1127834732a6fc82e0331370a6c4173e9f61dcf
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748242"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685416"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure funkcje języka C# (csx) skrypt dokumentacja dla deweloperów
 
@@ -376,34 +376,27 @@ Aby uzyskać informacje na temat przekazywania plików do folderu funkcji, zobac
 Katalog, który zawiera plik skryptu funkcji jest automatycznie obserwowanych zmian do zestawów. Aby obejrzeć zestawu zmian w innych katalogach, dodaj je do `watchDirectories` listy w [host.json](functions-host-json.md).
 
 ## <a name="using-nuget-packages"></a>Za pomocą pakietów NuGet
+Do korzystania z pakietów NuGet w C# funkcji, a następnie przekaż *extensions.csproj* plik do folderu funkcji w systemie plików aplikacji funkcji. Oto przykład *extensions.csproj* pliku, który dodaje odwołanie do *Microsoft.ProjectOxford.Face* wersji *1.1.0*:
 
-W celu korzystania z pakietów NuGet w funkcji języka C#, przekazać *project.json* plik do folderu funkcji w systemie plików aplikacji funkcji. Oto przykład *project.json* pliku, który dodaje odwołanie do Microsoft.ProjectOxford.Face wersji 1.1.0:
-
-```json
-{
-  "frameworks": {
-    "net46":{
-      "dependencies": {
-        "Microsoft.ProjectOxford.Face": "1.1.0"
-      }
-    }
-   }
-}
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net46</TargetFramework>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Microsoft.ProjectOxford.Face" Version="1.1.0" />
+    </ItemGroup>
+</Project>
 ```
-
-Na platformie Azure funkcji 1.x tylko .NET Framework 4.6 jest obsługiwany, dlatego upewnij się, że Twoje *project.json* plik Określa `net46` jak pokazano poniżej.
-
-Podczas przekazywania *project.json* plik, środowisko uruchomieniowe pobiera pakiety i automatycznie dodaje odwołania do zestawów pakietu. Nie trzeba dodawać `#r "AssemblyName"` dyrektywy. Aby użyć typów zdefiniowanych w pakietach NuGet; wystarczy dodać wymagane `using` instrukcje, aby Twoje *run.csx* pliku. 
-
-W środowisko uruchomieniowe usługi Functions, przywracanie pakietów NuGet działa przez porównanie `project.json` i `project.lock.json`. Jeśli sygnatury daty i godziny plików **nie** uruchamia programu jest zgodne, przywracanie pakietów NuGet i plików do pobrania NuGet zaktualizowane pakiety. Jednak jeśli sygnatury daty i godziny plików **czy** dopasowania NuGet nie wykonaj operację przywracania. W związku z tym `project.lock.json` nie powinny być wdrażane, ponieważ powoduje on pakietu NuGet, aby pominąć Przywracanie pakietu. Aby uniknąć wdrażanie pliku blokady, Dodaj `project.lock.json` do `.gitignore` pliku.
 
 Aby użyć NuGet niestandardowego źródła danych, określ źródła danych w *Nuget.Config* plik w folderze głównym aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [zachowania programu NuGet Konfigurowanie](/nuget/consume-packages/configuring-nuget-behavior).
 
-### <a name="using-a-projectjson-file"></a>Przy użyciu pliku project.json
+### <a name="using-a-extensionscsproj-file"></a>Przy użyciu pliku extensions.csproj
 
 1. Otwarcie funkcji w witrynie Azure portal. Karta dzienniki są wyświetlane dane wyjściowe instalacji pakietu.
-2. Aby przekazać plik project.json, użyj jednej z metod opisanych w [jak zaktualizować pliki aplikacji funkcji](functions-reference.md#fileupdate) w temacie Dokumentacja dla deweloperów usługi Azure Functions.
-3. Po *project.json* plik zostanie przekazany, zobaczysz, że dane wyjściowe podobne do poniższego przykładu w funkcji użytkownika przesyłania strumieniowego dziennika:
+2. Można przekazać *extensions.csproj* pliku, użyj jednej z metod opisanych w [jak zaktualizować pliki aplikacji funkcji](functions-reference.md#fileupdate) w temacie Dokumentacja dla deweloperów usługi Azure Functions.
+3. Po *extensions.csproj* plik zostanie przekazany, zobaczysz, że dane wyjściowe podobne do poniższego przykładu w funkcji użytkownika przesyłania strumieniowego dziennika:
 
 ```
 2016-04-04T19:02:48.745 Restoring packages.
@@ -413,7 +406,7 @@ Aby użyć NuGet niestandardowego źródła danych, określ źródła danych w *
 2016-04-04T19:02:50.261 C:\DWASFiles\Sites\facavalfunctest\LocalAppData\NuGet\Cache
 2016-04-04T19:02:50.261 https://api.nuget.org/v3/index.json
 2016-04-04T19:02:50.261
-2016-04-04T19:02:50.511 Restoring packages for D:\home\site\wwwroot\HttpTriggerCSharp1\Project.json...
+2016-04-04T19:02:50.511 Restoring packages for D:\home\site\wwwroot\HttpTriggerCSharp1\extensions.csproj...
 2016-04-04T19:02:52.800 Installing Newtonsoft.Json 6.0.8.
 2016-04-04T19:02:52.800 Installing Microsoft.ProjectOxford.Face 1.1.0.
 2016-04-04T19:02:57.095 All packages are compatible with .NETFramework,Version=v4.6.

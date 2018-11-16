@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 0129f186736ad2e4d6ea5c94c632bab73b92002c
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 56256a6c10ecb0d06dfd6194668b9c32c5540c0e
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514693"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683904"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: Często zadawane pytania
 
@@ -28,9 +28,9 @@ Poniżej przedstawiono listę typowych błędów, które mogą wystąpić i ich 
 
 | **Komunikat**                                                                                                                                                                                    | **Przyczyna**                                                                                                    | **Rozdzielczość**                                                                                                                                                                                                       |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `gatk4-promo` nie włączono dla swojego konta. Aby uzyskać więcej informacji zobacz https://docs.microsoft.com/en-us/azure/genomics/frequently-asked-questions-genomics                               | Próbujesz uruchomić GATK4 przepływy pracy z usługą Microsoft Genomics bez aktywowany.       | Odwiedź stronę [tutaj](https://aka.ms/msgatk4) umożliwiający aktywację konta usługi. Należy pamiętać, że wersja próbna wygaśnie z końcem roku kalendarzowego 2018 r. Nie można aktywować konto dla przebiegów promocyjne po tej dacie. |
-| Dziękujemy za podjęcie próby `gatk4-promo`. Okres próbny zakończył się. Aby uzyskać więcej informacji https://docs.microsoft.com/en-us/azure/genomics/frequently-asked-questions-genomics                  | Wersja próbna GATK4 wygasł na koniec roku kalendarzowego i próby wywołania `gatk4-promo` nazwa_procesu.  | Przełącz parametru nazwa_procesu, `gatk4`, zamiast `gatk4-promo`. To jest wersja gatk4 oficjalne, a przepływ pracy zostanie naliczona, jeśli użyjesz tego parametru.                                         |
-| Dziękujemy za podjęcie próby `gatk4-promo` wykorzystano wszystkie przydzielone przebiegów. Aby uzyskać więcej informacji zobacz https://docs.microsoft.com/en-us/azure/genomics/frequently-asked-questions-genomics | Pomyślnie przesłano wszystkie swoje 20 promocyjne działa przez GATK4.                               | Prześlij wszystkie nowe gatk4 działa z wartością argumentu nazwa_procesu `gatk4` zamiast `gatk4-promo`. Przepływ pracy zostanie naliczony podczas korzystania z tego parametru.                                                          |        
+| `gatk4-promo` nie włączono dla swojego konta. Aby uzyskać więcej informacji zobacz https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics                               | Próbujesz uruchomić GATK4 przepływy pracy z usługą Microsoft Genomics bez aktywowany.       | Odwiedź stronę [tutaj](https://aka.ms/msgatk4) umożliwiający aktywację konta usługi. Należy pamiętać, że wersja próbna wygaśnie z końcem roku kalendarzowego 2018 r. Nie można aktywować konto dla przebiegów promocyjne po tej dacie. |
+| Dziękujemy za podjęcie próby `gatk4-promo`. Okres próbny zakończył się. Aby uzyskać więcej informacji https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics                  | Wersja próbna GATK4 wygasł na koniec roku kalendarzowego i próby wywołania `gatk4-promo` nazwa_procesu.  | Przełącz parametru nazwa_procesu, `gatk4`, zamiast `gatk4-promo`. To jest wersja gatk4 oficjalne, a przepływ pracy zostanie naliczona, jeśli użyjesz tego parametru.                                         |
+| Dziękujemy za podjęcie próby `gatk4-promo` wykorzystano wszystkie przydzielone przebiegów. Aby uzyskać więcej informacji zobacz https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics | Pomyślnie przesłano wszystkie swoje 20 promocyjne działa przez GATK4.                               | Prześlij wszystkie nowe gatk4 działa z wartością argumentu nazwa_procesu `gatk4` zamiast `gatk4-promo`. Przepływ pracy zostanie naliczony podczas korzystania z tego parametru.                                                          |        
 
 
 ## <a name="can-i-run-gatk4-workflows-on-microsoft-genomics-without-signing-up-for-the-gatk4-promotion"></a>Można uruchomić przepływy pracy GATK4 usłudze Microsoft Genomics bez rejestrowania się w celu promowania GATK4?

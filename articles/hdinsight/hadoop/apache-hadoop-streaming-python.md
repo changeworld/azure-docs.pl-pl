@@ -1,6 +1,6 @@
 ---
 title: Opracowywanie zadań MapReduce z HDInsight — Azure przesyłania strumieniowego w języku Python
-description: Dowiedz się, jak używać języka Python w transmisji strumieniowej zadań MapReduce. Hadoop udostępnia interfejs API przesyłania strumieniowego dla MapReduce do pisania w językach innych niż Java.
+description: Dowiedz się, jak używać języka Python w transmisji strumieniowej zadań MapReduce. Apache Hadoop udostępnia interfejs API przesyłania strumieniowego dla MapReduce do pisania w językach innych niż Java.
 services: hdinsight
 keyword: mapreduce python,python map reduce,python mapreduce
 author: hrasheed-msft
@@ -10,20 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5ed61eb05d0aa4360e042097d6b8c632c17ea59c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d6a9de293d62ec6f25bd3a665d5ced5a1ac671ae
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008729"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634026"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Opracowywanie programów MapReduce przesyłania strumieniowego HDInsight w języku Python
 
-Dowiedz się, jak używać języka Python w transmisji strumieniowej działania MapReduce. Hadoop udostępnia interfejs API przesyłania strumieniowego dla MapReduce, która pozwala na zapis mapy i zmniejszyć funkcji w językach innych niż Java. Kroki opisane w tym dokumencie zaimplementować mapy i zmniejszyć składniki w języku Python.
+Dowiedz się, jak używać języka Python w transmisji strumieniowej działania MapReduce. Apache Hadoop udostępnia interfejs API przesyłania strumieniowego dla MapReduce, która pozwala na zapis mapy i zmniejszyć funkcji w językach innych niż Java. Kroki opisane w tym dokumencie zaimplementować mapy i zmniejszyć składniki w języku Python.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Opartą na systemie Linux platformą Hadoop w klastrze HDInsight
+* Apache Hadoop oparte na systemie Linux w klastrze HDInsight
 
   > [!IMPORTANT]
   > Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5611830d4d9950a7781062997b13555d95d8e703
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: affef85c917804f0b99200dcfa8e53f6d08fcbe4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625967"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684226"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Używanie technologii Oozie z usługą Hadoop, aby zdefiniować i uruchomić przepływ pracy w HDInsight
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -63,7 +63,7 @@ Przed rozpoczęciem tego samouczka, konieczne jest posiadanie następujących el
 
 ## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Definiowanie przepływu pracy programu Oozie i powiązane skrypt HiveQL
 Definicje przepływów pracy programu Oozie są zapisywane w hPDL (język definicji procesu XML). Domyślna nazwa pliku przepływu pracy jest *workflow.xml*. Poniżej znajduje się plik przepływu pracy, którego używasz w tym samouczku.
-
+```xml
     <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
         <start to = "RunHiveScript"/>
 
@@ -118,7 +118,7 @@ Definicje przepływów pracy programu Oozie są zapisywane w hPDL (język defini
 
         <end name="end"/>
     </workflow-app>
-
+```
 Istnieją dwie akcje zdefiniowane w przepływie pracy. Akcja do rozpoczęcia jest *RunHiveScript*. Jeśli akcja zostanie pomyślnie uruchomione, jest następnej akcji *RunSqoopExport*.
 
 RunHiveScript ma kilka zmiennych. Możesz przekazać wartości, gdy prześlesz zadanie Oozie ze swojej stacji roboczej przy użyciu programu Azure PowerShell.
@@ -191,7 +191,7 @@ Skrypt programu PowerShell w tej sekcji wykonuje następujące czynności:
     Badanie wyników zadania programu OOzie, należy użyć programu Visual Studio lub innych narzędzi do łączenia z usługą Azure SQL Database.
 
 Oto skrypt.  Skrypt można uruchomić z programu Windows PowerShell ISE. Musisz skonfigurować zmienne pierwsze 7.
-
+```powershell
     #region - provide the following values
 
     $subscriptionID = "<Enter your Azure subscription ID>"
@@ -200,7 +200,7 @@ Oto skrypt.  Skrypt można uruchomić z programu Windows PowerShell ISE. Musisz 
     $sqlDatabaseLogin = "<Enter SQL Database Login Name>"
     $sqlDatabasePassword = "<Enter SQL Database Login Password>"
 
-    # HDInsight cluster HTTP user credential used for creating and connectin
+    # HDInsight cluster HTTP user credential used for creating and connecting
     $httpUserName = "admin"  # The default name is "admin"
     $httpPassword = "<Enter HDInsight Cluster HTTP User Password>"
 
@@ -529,8 +529,8 @@ Oto skrypt.  Skrypt można uruchomić z programu Windows PowerShell ISE. Musisz 
     $response = Invoke-RestMethod -Method Get -Uri $clusterUriStatus -Credential $httpCredential -OutVariable $OozieServerStatus
 
     $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
-    $oozieServerSatus = $jsonResponse[0].("systemMode")
-    Write-Host "Oozie server status is $oozieServerSatus."
+    $oozieServerStatus = $jsonResponse[0].("systemMode")
+    Write-Host "Oozie server status is $oozieServerStatus."
 
     # create Oozie job
     Write-Host "Sending the following Payload to the cluster:" -ForegroundColor Green
@@ -570,7 +570,7 @@ Oto skrypt.  Skrypt można uruchomić z programu Windows PowerShell ISE. Musisz 
     Write-Host "$(Get-Date -format 'G'): $oozieJobId is in $JobStatus state!" -ForegroundColor Green
 
     #endregion
-
+```
 
 **Aby ponownie uruchomić tego samouczka**
 
@@ -580,7 +580,7 @@ Aby ponownie uruchomić przepływ pracy, należy usunąć następujące elementy
 * Dane w tabeli log4jLogsCount
 
 Poniżej przedstawiono przykładowy skrypt programu PowerShell, którego można używać:
-
+```powershell
     $resourceGroupName = "<AzureResourceGroupName>"
 
     $defaultStorageAccountName = "<AzureStorageAccountName>"
@@ -610,6 +610,7 @@ Poniżej przedstawiono przykładowy skrypt programu PowerShell, którego można 
     $cmd.executenonquery()
 
     $conn.close()
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku pokazano, jak zdefiniować przepływ pracy programu Oozie i sposób uruchamiania zadania programu Oozie przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz następujące artykuły:
@@ -647,7 +648,6 @@ W tym samouczku pokazano, jak zdefiniować przepływ pracy programu Oozie i spos
 
 [hdinsight-develop-mapreduce]:hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
 
-[sqldatabase-create-configue]: ../sql-database-create-configure.md
 [sqldatabase-get-started]: ../sql-database-get-started.md
 
 [azure-management-portal]: https://portal.azure.com/

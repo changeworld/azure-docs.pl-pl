@@ -1,6 +1,6 @@
 ---
-title: Używanie języka C# z technologiami Hive i Pig w usłudze Hadoop w HDInsight — Azure
-description: Dowiedz się, jak używać funkcji języka C# zdefiniowanych przez użytkownika (UDF) przy użyciu technologii Hive i Pig przesyłania strumieniowego w usłudze Azure HDInsight.
+title: Użyj C# za pomocą programu Apache Hive i Apache Pig na technologii Apache Hadoop w HDInsight — Azure
+description: Dowiedz się, jak używać C# funkcje zdefiniowane przez użytkownika (UDF) przy użyciu Apache Hive i Apache Pig przesyłania strumieniowego w usłudze Azure HDInsight.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8011a9b8009abd2688d76dc3f1cda84ca453fde1
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 2ef88fff1313a0e7b1aa0abb502629512daaf636
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014690"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633839"
 ---
-# <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>C# funkcje zdefiniowane przez użytkownika za pomocą technologii Hive i Pig przesyłania strumieniowego w usłudze Hadoop w HDInsight
+# <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>Użyj C# funkcje zdefiniowane przez użytkownika przy użyciu Apache Hive i Apache Pig, przesyłanie strumieniowe na technologii Apache Hadoop w HDInsight
 
-Dowiedz się, jak używać funkcji języka C# zdefiniowanych przez użytkownika (UDF) przy użyciu Apache Hive i Pig na HDInsight.
+Dowiedz się, jak używać C# funkcje zdefiniowane przez użytkownika (UDF) przy użyciu Apache Hive i Pig Apache na HDInsight.
 
 > [!IMPORTANT]
 > Kroki opisane w tym dokumencie działają z klastrami HDInsight opartych na systemie Linux i systemem Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz [przechowywanie wersji składnika HDInsight](../hdinsight-component-versioning.md).

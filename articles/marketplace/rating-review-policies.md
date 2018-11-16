@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: qianw211
-ms.openlocfilehash: 3679981a335c380b54d7349d16f94bb7e5e1fee3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1ab00e51aa8677f71990cf3da8bf01c9ab62ce4c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258871"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683141"
 ---
 # <a name="azure-appsource-and-marketplace-review-policies"></a>Azure AppSource i Portal Marketplace Przejrzyj zasady
 
@@ -52,12 +52,3 @@ Ocena i przejrzyj zasady dla platformy Azure w usłudze AppSource i Portal Marke
 * Upewnij się, że punkt widzenia wyrażone w recenzji zrównoważonych oraz neutralne.
 * Należy pamiętać, księgowania forum publiczne i podejmowanie odpowiednich działań.
 
-## <a name="review-guidelines-for-publishers"></a>Wytyczne dotyczące sklepu dla wydawców
-
-* Nie umieszczaj zawartość, która może być naruszenie [usługi AppSource i portalu Azure Marketplace, przejrzyj zasady](./rating-review-policies.md).
-* Nie dołączaj dowolnej zawartości marketingowej anonsów w komentarzu.
-* Nie korzystaj z promocji innymi aplikacjami lub usługami w komentarzu.
-* Twoja odpowiedź powinna bezpośrednio związane specyficzne dla aplikacji i Przegląd.
-* Nie używaj zwięzłych odpowiedzi, a nie publikowały zwięzłych komentarze na wiele opinii.
-* Nie manipulować przeglądy w dowolny sposób oraz oferowania zapłaty ani premie dla recenzentów, aby zmienić klasyfikację lub przeglądów.
-* Zawsze należy proces łagodnego i należy wziąć pod uwagę, czy spełnione klientów są najlepsze promotorom aplikacji.

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 4c409dfcfba14093d5e2cf28df4bb6c5d1bd9533
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: a5837a922f14a779260ad6719b01a9c882eb5768
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725976"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622945"
 ---
 # <a name="restart-vms"></a>Ponowne uruchamianie maszyn wirtualnych
 
@@ -37,7 +37,7 @@ Pierwszy sposób powoduje ponowne uruchomienie wszystkich maszyn wirtualnych w g
 az vm restart --ids $(az vm list --resource-group myResourceGroup --query "[].id" -o tsv)
 ```
 
-Drugi sposób powoduje pobranie oznakowanych maszyn wirtualnych przy użyciu polecenia `az resouce list` i filtrów do zasobów będących maszynami wirtualnymi oraz ponowne uruchomienie tych maszyn wirtualnych.
+Drugi sposób powoduje pobranie oznakowanych maszyn wirtualnych przy użyciu polecenia `az resource list` i filtrów do zasobów będących maszynami wirtualnymi oraz ponowne uruchomienie tych maszyn wirtualnych.
 
 ```bash
 az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)

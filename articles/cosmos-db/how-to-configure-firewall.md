@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: e1253d4a43e45fc7df7efbb6d5f9dd4176957ca2
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: d9a00bccb83fc60c96594ffacc5abde98c0f8470
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629096"
+ms.locfileid: "51632586"
 ---
 # <a name="how-to-configure-ip-firewall-for-your-azure-cosmos-account"></a>Instrukcje konfigurowania zapory adresów IP dla konta usługi Azure Cosmos
 
@@ -109,6 +109,10 @@ Aby skonfigurować kontrolę dostępu do konta usługi Azure Cosmos, należy okr
 Następujące polecenie przedstawia sposób tworzenia konta usługi Azure Cosmos przy użyciu kontroli dostępu IP: 
 
 ```azurecli-interactive
+
+name="<Azure Cosmos account name>"
+resourceGroupName="<Resource group name>"
+
 az cosmosdb create \
   --name $name \
   --kind GlobalDocumentDB \
