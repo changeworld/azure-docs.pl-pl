@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: d99b5d1fdca39466d5e09ca077329b7ffa8622bc
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: ac317eaa4c7e69e4a01fe932569b999e502bc3cf
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568856"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822436"
 ---
 # <a name="manage-process-servers"></a>Zarządzanie serwerami przetwarzania
 
@@ -31,7 +31,41 @@ Uaktualnij serwer przetwarzania, uruchomiony w środowisku lokalnym lub na platf
 > [!NOTE]
   Zazwyczaj gdy używasz obrazu z galerii platformy Azure do utworzenia serwera przetwarzania na platformie Azure na potrzeby powrotu po awarii jest uruchomiona najnowsza dostępna wersja. Usługa Site Recovery zespołów wersji poprawki i ulepszenia w regularnych odstępach czasu i zalecamy serwerów przetwarzania zapewnianie aktualności.
 
+## <a name="balance-the-load-on-process-server"></a>Równoważenie obciążenia na serwerze przetwarzania
 
+Aby równoważyć obciążenie między dwoma serwerami procesu
+
+1. Przejdź do **magazyn usług Recovery Services** > **zarządzanie** > **infrastruktura usługi Site Recovery** > **dla Maszyn VMware i fizycznych** > **serwery konfiguracji**.
+2. Kliknij na serwerze konfiguracji, do którego zarejestrowano serwerów przetwarzania.
+3. Lista serwerów procesu zarejestrowanych serwerów configuration są dostępne na stronie.
+4. Kliknij na serwerze przetwarzania, na którym chcesz zmodyfikować obciążenia.
+
+    ![DSM](media/vmware-azure-manage-process-server/LoadBalance.png)
+
+5. Można użyć **Równoważenie obciążenia** lub **przełącznika** opcji, co zostało opisane poniżej, dla każdego wymagania.
+
+### <a name="load-balance"></a>Równoważenie obciążenia
+
+Za pomocą tej opcji można wybrać co najmniej jednej maszyny wirtualnej i można je przenieść na inny serwer przetwarzania.
+
+1. Kliknij pozycję **Równoważenie obciążenia**, wybierz docelowy serwer przetwarzania z listy rozwijanej. Kliknij przycisk **OK**.
+
+    ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
+
+2. Kliknij pozycję **wybierz maszyny**, wybierz maszyny wirtualne, które chcesz przenieść z bieżącego serwera przetwarzania do docelowego serwera przetwarzania. Szczegółowe informacje o zmianie uśrednianie danych są wyświetlane na każdej maszynie wirtualnej.
+3. Kliknij przycisk **OK**. Monitorowanie postępu zadania w obszarze **magazyn usługi Recovery Services** > **monitorowanie** > **zadania usługi Site Recovery**.
+4. W ciągu 15 minut zmieniony, aby odzwierciedlić po pomyślnym zakończeniu tej operacji lub [Odśwież serwer konfiguracji](vmware-azure-manage-configuration-server.md#refresh-configuration-server) efekt natychmiastowy.
+
+### <a name="switch"></a>Przełącznik
+
+Za pomocą tej opcji całe obciążenie chroniony w obszarze serwer przetwarzania jest przenoszona do innego serwera przetwarzania.
+
+1. Kliknij pozycję **przełącznika**wybierz docelowy serwer przetwarzania, kliknij przycisk **OK**.
+
+    ![Przełącznik](media/vmware-azure-manage-process-server/Switch.PNG)
+
+2. Monitorowanie postępu zadania w obszarze **magazyn usługi Recovery Services** > **monitorowanie** > **zadania usługi Site Recovery**.
+3. W ciągu 15 minut zmieniony, aby odzwierciedlić po pomyślnym zakończeniu tej operacji lub [Odśwież serwer konfiguracji](vmware-azure-manage-configuration-server.md#refresh-configuration-server) efekt natychmiastowy.
 
 ## <a name="reregister-a-process-server"></a>Zarejestruj ponownie serwer przetwarzania
 

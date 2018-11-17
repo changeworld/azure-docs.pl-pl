@@ -1,10 +1,11 @@
 ---
 title: Rozwiązywanie problemów z ponownego trenowania usługi sieci web Azure Machine Learning klasycznego | Dokumentacja firmy Microsoft
-description: Zidentyfikować i rozwiązać typowe problemy napotkano, gdy są ponownego trenowania modelu dla usługi sieci Web Azure Machine Learning.
+description: Zidentyfikować i rozwiązać typowe problemy z napotkano w przypadku, gdy są ponownego szkolenia modelu dla usługi sieci Web Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 75cac53c-185c-437d-863a-5d66d871921e
@@ -15,92 +16,92 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
-ms.openlocfilehash: 989bf010320501050a37fbf2f0799f50a5a3e2ba
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2afbeef4a9c79a5d5c57718ff0bfbebc9b063f7a
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835777"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820481"
 ---
-# <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>Rozwiązywanie problemów z ponownego trenowania usługi sieci web Azure Machine Learning klasycznego
-## <a name="retraining-overview"></a>Ponownego trenowania — omówienie
-Podczas wdrażania eksperyment predykcyjny jako usługę sieci web oceniania jest statyczny modelu. Wraz ze wzrostem dostępności nowych danych lub w przypadku interfejsu API klienta ma własne dane modelu musi być retrained. 
+# <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>Rozwiązywanie problemów z ponownym szkoleniem usługi sieci web Azure Machine Learning klasycznego
+## <a name="retraining-overview"></a>Ponowne szkolenie — omówienie
+Podczas wdrażania eksperyment predykcyjny jako usługę sieci web oceniania jest model statyczny. Gdy nowe dane staje się dostępna lub konsumenta interfejsu API ma swoje własne dane, model musi być retrained. 
 
-Aby uzyskać pełny przewodnik proces ponownego trenowania klasycznym usługi sieci web, zobacz [Retrain Machine Learning modeli programowo](retrain-models-programmatically.md).
+Aby uzyskać szczegółowy przewodnik proces ponownego trenowania klasycznej usługi sieci web, zobacz [Retrain Machine uczenia modeli programowo](retrain-models-programmatically.md).
 
 ## <a name="retraining-process"></a>Proces ponownego trenowania
-Musisz ponownie ucz usługi sieci web, należy dodać niektóre dodatkowe elementy:
+Gdy konieczne jest ponowne szkolenie usługi sieci web, należy dodać pewne dodatkowe elementy:
 
-* Usługa sieci web wdrożone z eksperymentów szkolenia. Eksperyment musi mieć **wyjście usługi sieci Web** modułu dołączony do danych wyjściowych **Train Model** modułu.  
+* Wdrożone z eksperymentu szkolenia usługi sieci web. Eksperyment musi mieć **danych wyjściowych usługi sieci Web** modułu dołączony do danych wyjściowych **Train Model** modułu.  
   
-    ![Wyjście usługi sieci web należy dołączyć do modelu pociągu.][image1]
-* Nowy punkt końcowy dodane do oceniania usługi sieci web.  Można dodać punktu końcowego, programowo przy użyciu przykładowy kod odwołuje się do modeli Retrain Machine Learning programowo tematu lub za pośrednictwem portalu usługi sieci Web systemu Azure Machine Learning.
+    ![Dołączanie danych wyjściowych usługi sieci web do train model modelu.][image1]
+* Nowy punkt końcowy dodane do oceniania usługi sieci web.  Można dodać punkt końcowy, w sposób programowy za pomocą przykładowego kodu, do którego odwołuje się modeli Retrain Machine Learning programowo tematu lub za pośrednictwem portalu usług sieci Web Azure Machine Learning.
 
-Następnie można przykładowy kod C# z strona pomocy interfejsu API usługi sieci Web szkolenia retrain modelu. Po zostały obliczone wyniki i uzyskaniu je, należy zaktualizować trenowanego modelu oceniania usługi sieci web przy użyciu nowego punktu końcowego, który został dodany.
+Następnie można użyć przykładu C# kod ze strony pomocy interfejsu API szkolenia usługi sieci Web, ponowne szkolenie modelu. Gdy zostały obliczone wyniki i przebiegła pomyślnie z nimi, należy zaktualizować uczony model oceniania usługi sieci web przy użyciu nowego punktu końcowego, który został dodany.
 
-Wszystkie elementy w miejscu główne kroki, które należy wykonać, aby ponownie ucz modelu są w następujący sposób:
+Wszystkie elementy w miejscu główne kroki, które należy wykonać, aby ponowne szkolenie modelu są w następujący sposób:
 
-1. Wywoływanie usługi sieci Web szkolenia: wywołanie jest do wsadowe wykonywanie usługi (BES), nie żądanie odpowiedzi usługi (RR). Przykładowy kod C# na stronie pomocy interfejsu API służy do wywoływania. 
-2. Znajdź wartości dla *BaseLocation*, *RelativeLocation*, i *SasBlobToken*: te wartości są zwracane w danych wyjściowych z połączenia z usługą sieci Web szkolenia. 
-   ![Wyświetlanie danych wyjściowych ponownego trenowania próbki i wartości BaseLocation, RelativeLocation i SasBlobToken.][image6]
-3. Zaktualizuj dodano punkt końcowy usługi sieci web oceniania za pomocą nowego trenowanego modelu: przy użyciu przykładowy kod podany w modelach Retrain Machine Learning programowo, zaktualizuj nowy punkt końcowy, dodane do oceniania modelu z nowo trenowanego modelu z Usługa sieci Web szkolenia.
+1. Wywoływanie usługi sieci Web szkolenia: wywołanie się do usługi Batch Execution Service (BES), nie Request Response Service (RRS). Można korzystać z przykładu C# kodu na stronie pomocy interfejsu API, aby wykonać wywołanie. 
+2. Znajdź wartości *BaseLocation*, *RelativeLocation*, i *SasBlobToken*: te wartości są zwracane w danych wyjściowych z wywołania do usługi sieci Web szkolenia. 
+   ![Wyświetlanie danych wyjściowych przykładu ponownego trenowania i BaseLocation, RelativeLocation i SasBlobToken wartości.][image6]
+3. Zaktualizuj dodano punkt końcowy z usługi internetowej przyznawania ocen w nowym uczonego modelu: przy użyciu przykładowy kod podany w modelach Retrain Machine Learning programowo, zaktualizuj nowy punkt końcowy został dodany do oceniania modelu przy użyciu nowo uczonego modelu z Usługa sieci Web szkolenia.
 
-## <a name="common-obstacles"></a>Typowych wąskich gardeł
+## <a name="common-obstacles"></a>Typowych przeszkód
 ### <a name="check-to-see-if-you-have-the-correct-patch-url"></a>Sprawdź, czy masz poprawny adres URL poprawki
-POPRAWKA adres URL, którego używasz, musi być skojarzony z nowego oceniania punktu końcowego, dodane do oceniania usługi sieci web. Istnieje wiele sposobów, aby uzyskać adres URL poprawki:
+Stosowanie poprawek do adresu URL używanego musi być skojarzony z nowego oceniania punktu końcowego, dodane do usługi internetowej przyznawania ocen. Istnieje wiele sposobów, aby uzyskać adres URL poprawki:
 
 **Opcja 1: programowo**
 
 Aby uzyskać poprawny adres URL poprawki:
 
-1. Uruchom [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) przykładowy kod.
+1. Uruchom [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) przykładowego kodu.
 2. Z danych wyjściowych AddEndpoint znaleźć *HelpLocation* wartości i skopiuj adres URL.
    
-   ![HelpLocation w danych wyjściowych próbki addEndpoint.][image2]
-3. Wklej adres URL do przeglądarki, aby przejść do strony, która zawiera łącza pomocy dla usługi sieci web.
-4. Kliknij przycisk **aktualizacji zasobów** łącze, aby otworzyć stronę pomocy poprawki.
+   ![HelpLocation w danych wyjściowych przykładu addEndpoint.][image2]
+3. Wklej adres URL do przeglądarki, aby przejść do strony, który zawiera linki pomocy dla usługi sieci web.
+4. Kliknij przycisk **aktualizacja zasobów** link, aby otworzyć stronę pomocy poprawki.
 
-**Opcja 2: Korzystanie z portalu usługi sieci Web systemu Azure Machine Learning**
+**Opcja 2: Korzystanie z portalu usług sieci Web Azure Machine Learning**
 
-1. Zaloguj się do [usługi sieci Web systemu Azure Machine Learning](https://services.azureml.net/) portalu.
-2. Kliknij przycisk **usług sieci Web** lub **usług sieci Web klasycznego** u góry.
-4. Kliknij przycisk oceniania korzystasz z usługi sieci web (Jeśli nie zmodyfikujesz domyślnej nazwy usługi sieci web, go będą kończyć się "[Exp Punktacja."]).
+1. Zaloguj się do [usług sieci Web Azure Machine Learning](https://services.azureml.net/) portalu.
+2. Kliknij przycisk **usług sieci Web** lub **klasycznych usług sieci Web** u góry.
+4. Kliknij pracujesz z usługi internetowej przyznawania ocen (Jeśli nie zmodyfikujesz domyślną nazwę usługi sieci web, przestanie ona w "[Exp Punktacja.]").
 5. Kliknij przycisk **+ nowy**.
-6. Po dodaniu punktu końcowego, kliknij nazwę punktu końcowego.
-7. W obszarze **poprawki** adres URL, kliknij przycisk **pomocy interfejsu API** otworzyć stosowania poprawek strony pomocy.
+6. Po dodaniu punktu końcowego kliknij nazwę punktu końcowego.
+7. W obszarze **poprawki** adresu URL, kliknij przycisk **pomocy interfejsu API** o otwarcie strony pomocy stosowania poprawek.
 
 > [!NOTE]
-> Jeśli dodano punkt końcowy z usługą sieci Web szkolenia zamiast predykcyjnej usługi sieci Web, zostanie wyświetlony następujący błąd, po kliknięciu **aktualizacji zasobów** łącza: "Przepraszamy, ale ta funkcja nie jest obsługiwana lub dostępna w Ten kontekst. Ta usługa sieci Web ma nie nadaje się do aktualizacji zasobów. Firma Microsoft Przepraszamy za utrudnienia i działają na ułatwieniu ten przepływ pracy".
+> Po dodaniu punktu końcowego z usługą sieci Web szkolenia zamiast predykcyjne usługi sieci Web, zostanie wyświetlony następujący błąd, po kliknięciu **aktualizacja zasobów** łącze: "Niestety, ale ta funkcja nie jest obsługiwana lub dostępna w Ten kontekst. Ta usługa sieci Web ma nie można zaktualizować zasobów. Firma Microsoft Przepraszamy za utrudnienia i działają na poprawę tego przepływu pracy".
 > 
 > 
 
-Strona pomocy poprawki zawiera adres URL poprawka, należy użyć i udostępnia przykładowy kod, którego można użyć w celu wywołania go.
+Strona pomocy poprawki zawiera adres URL poprawki, należy użyć i zawiera przykładowy kod, który można użyć w celu wywołania go.
 
 ![Adres URL poprawki.][image5]
 
 ### <a name="check-to-see-that-you-are-updating-the-correct-scoring-endpoint"></a>Sprawdź, czy aktualizujesz właściwego punktu końcowego oceniania
-* Nie poprawka usługę sieci web szkolenia: operacja poprawki musi zostać wykonana na oceniania usługi sieci web.
-* Poprawka nie jest domyślny punkt końcowy usługi sieci web: operacja poprawki musi zostać wykonana na nowe oceniania końcowy usługi sieci web dodany.
+* Nie patch usługi sieci web szkolenia: operacja patch musi zostać wykonana na usługi internetowej przyznawania ocen.
+* Nie patch domyślny punkt końcowy usługi sieci web: operacja patch musi zostać wykonana na nowe oceniania sieci web usługi punktu końcowego, który został dodany.
 
-Możesz sprawdzić, usługi sieci web, która znajduje się punkt końcowy na, przechodząc na stronę usługi sieci Web portalu. 
+Aby sprawdzić, które usługi sieci web punktu końcowego jest włączone przechodzenia do portalu usług sieci Web. 
 
 > [!NOTE]
-> Upewnij się, że punkt końcowy jest dodawany do predykcyjnej usługi sieci Web nie usługę sieci Web szkolenia. Jeśli zostały poprawnie wdrożone zarówno szkolenia, jak i usługi sieci Web predykcyjnej, powinny pojawić się dwie usługi WWW, na liście. Predykcyjnej usługi sieci Web powinien kończyć się "[exp predykcyjnych.]".
+> Upewnij się, że chcesz dodać punkt końcowy do predykcyjnej usługi sieci Web nie szkolenia usługi sieci Web. Jeśli zostały poprawnie wdrożone szkoleniowe i predykcyjne usługi sieci Web, powinny pojawić się dwie usługi sieci web w osobnych na liście. Predykcyjne usługi sieci Web powinien kończyć się znakiem "[exp predykcyjne.]".
 > 
 > 
 
-1. Zaloguj się do [usługi sieci Web systemu Azure Machine Learning](https://services.azureml.net/) portalu.
-2. Kliknij przycisk **usług sieci Web** lub **usług sieci Web klasycznego**.
-3. Wybierz usługę sieci Web predykcyjnej.
+1. Zaloguj się do [usług sieci Web Azure Machine Learning](https://services.azureml.net/) portalu.
+2. Kliknij przycisk **usług sieci Web** lub **klasycznych usług sieci Web**.
+3. Wybierz swoje predykcyjną usługę sieci Web.
 4. Sprawdź, czy nowy punkt końcowy został dodany do usługi sieci web.
 
-### <a name="check-that-your-workspace-is-in-the-same-region-as-the-web-service"></a>Sprawdź, czy obszar roboczy znajduje się w tym samym regionie co usługa sieci web
-1. Zaloguj się do [Studio uczenia maszynowego](https://studio.azureml.net/).
-2. U góry kliknij przycisk listy rozwijanej obszarów roboczych.
+### <a name="check-that-your-workspace-is-in-the-same-region-as-the-web-service"></a>Upewnij się, że Twój obszar roboczy jest w tym samym regionie co usługa sieci web
+1. Zaloguj się do [usługi Machine Learning Studio](https://studio.azureml.net/).
+2. U góry strony kliknij listę rozwijaną listę swoich obszarów roboczych.
 
    ![Machine learning region interfejsu użytkownika.][image4]
 
-3. Upewnij się, region, który znajduje się w obszarze roboczym.
+3. Sprawdź, region, który znajduje się w obszarze roboczym.
 
 <!-- Image Links -->
 

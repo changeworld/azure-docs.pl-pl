@@ -1,10 +1,11 @@
 ---
-title: 'Krok 2: Prześlij dane do eksperymentu uczenia maszynowego | Dokumentacja firmy Microsoft'
-description: 'Krok 2 opracowanie wskazówki rozwiązanie predykcyjne: przekazywanie przechowywanych danych publicznych do usługi Azure Machine Learning Studio.'
+title: 'Krok 2: Przekazywanie danych do eksperymentu usługi Machine Learning | Dokumentacja firmy Microsoft'
+description: 'Krok 2 programowanie przewodnik rozwiązania do analizy predykcyjnej: przekazywanie przechowywanych danych publicznych do usługi Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 9f4bc52e-9919-4dea-90ea-5cf7cc506d85
@@ -15,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: dfa6ae8011da0299c270035b8b781d70a8e80119
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b320f7cfcad9a61d67c5785596744f5851313a1a
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835794"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824663"
 ---
 # <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-experiment"></a>Przewodnik, krok 2. Przekazywanie istniejących danych do eksperymentu usługi Azure Machine Learning
-Jest to drugi etap wskazówki, [tworzenie rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md)
+Jest to drugi etap tego przewodnika, [tworzenia rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 
 1. [Tworzenie obszaru roboczego usługi Machine Learning](walkthrough-1-create-ml-workspace.md)
 2. **Przekazywanie istniejących danych**
@@ -33,44 +34,44 @@ Jest to drugi etap wskazówki, [tworzenie rozwiązania analizy predykcyjnej w us
 6. [Dostęp do usługi sieci Web](walkthrough-6-access-web-service.md)
 
 - - -
-Aby opracować model predykcyjny dla oceny ryzyka kredytowego, potrzebujemy możemy użyć do nauczenia i przetestowania następnie modelu danych. W ramach tego przewodnika użyjemy "UCI Statlog (niemieckim dane środki) zestawu danych" z repozytorium UC Irvine Machine Learning. Możesz go znaleźć tutaj:  
+Aby opracować model predykcyjny dla oceny ryzyka kredytowego, potrzebujemy dane, które możemy użyć szkolenie, a następnie przetestować model. W tym przewodniku użyjemy "UCI Statlog (danych środków) Data Set" z repozytorium UC Irvine Machine Learning. Możesz go znaleźć tutaj:  
 <a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
 
 Użyjemy plik o nazwie **german.data**. Pobierz ten plik na lokalnym dysku twardym.  
 
-**German.data** dataset zawiera wiersze 20 zmiennych dla 1000 ostatnich kandydatów do uznania. Te zmienne 20 reprezentują zestaw funkcji zestawu danych ( *wektor funkcji*), zapewniające cechy identyfikacyjne dla każdego zgłaszającego kredytowej. Dodatkowe kolumny w każdym wierszu reprezentuje kandydata ryzyka kredytowego obliczeniowej, z 700 kandydatami zidentyfikowane jako niskie ryzyko kredytowe i 300 jako wysokiego ryzyka.
+**German.data** zestaw danych zawiera wiersze 20 zmienne dla 1000 ostatnich kandydatów kredytu. Te zmienne 20 reprezentują zestaw funkcji, zestawu danych ( *wektor funkcji*), zapewniającą cechy identyfikacyjne dla każdego zgłaszającego środków. Dodatkową kolumnę w każdym wierszu reprezentuje ryzyka kredytowego obliczeniowe wnioskodawca, z 700 kandydatami zidentyfikowane jako niskie ryzyko kredytowe i 300 jako wysokiego ryzyka.
 
-UCI witryny sieci Web zawiera opis atrybutów wektor funkcji dla tych danych. W tym informacji finansowych, historii kredytów status zatrudnienia i informacje osobiste. Dla każdego zgłaszającego klasyfikacji binarnej został podany, wskazującą, czy są one niski lub wysoki ryzyka karty kredytowej. 
+Witryny sieci Web UCI zawiera opis atrybutów wektor funkcja dla tych danych. Obejmuje to informacje finansowe, Historia kredytów, status zatrudnienia i dane osobowe. Dla każdego zgłaszającego binarne klasyfikacji została danej, wskazująca, czy są one działania niskiej lub wysokie ryzyko kredytowe. 
 
-Użyjemy tych danych do uczenia modelu analizy predykcyjnej. Gdy skończymy, naszego modelu powinno być możliwe do akceptowania wektor funkcji dla nowej osoby i prognozowania, czy użytkownik jest ryzyko kredytowe niski i wysoki.  
+Użyjemy tych danych do nauczenia modelu analizy predykcyjnej. Gdy wszystko jest gotowe, nasz model powinien móc zaakceptować wektor funkcji dla poszczególnych nowych i przewidywania, czy użytkownik jest ryzyko kredytowe niskie lub wysokie.  
 
-Oto interesujące dołączony. Opis zestawu danych w witrynie sieci Web UCI wymienia co kosztuje, jeśli firma Microsoft misclassify ryzyko kredytowe osoby.
-Jeśli model przewiduje ryzyko kredytowe wysokiej osobie, która jest rzeczywiście niskie ryzyko kredytowe modelu wprowadził błędną klasyfikację.
-Ale odwrotnej błędną klasyfikację jest pięć razy droższy instytucji finansowych: Jeśli model przewiduje niskie ryzyko kredytowe osoby, która jest rzeczywiście ryzyko kredytowe wysokiej.
+Oto interesujące akcentem. Opis zestawu danych w witrynie sieci Web UCI uwagi, co jej koszty, jeśli firma Microsoft misclassify ryzyko kredytowe osoby.
+Jeśli model przewiduje ryzyko kredytowe wysokiej osobie, która jest faktycznie niskie ryzyko kredytowe, modelu biznesowego uczyniło system błędu klasyfikacji.
+Ale odwrotnej błędu klasyfikacji jest pięć razy bardziej kosztowne instytucji finansowej: Jeśli model przewiduje niskie ryzyko kredytowe osobie, która jest faktycznie ryzyko kredytowe wysoka.
 
-Dlatego chcemy nauczenia modelu, aby koszt ten ostatni typ błędu klasyfikacji jest pięć razy wyższa niż misclassifying inny sposób.
-Prostym sposobem to zrobić podczas uczenia modelu w naszym doświadczeniu jest duplikując (pięć razy) zapisów reprezentujących ktoś z ryzyko kredytowe wysoki. Następnie jeśli model klasyfikuje ktoś jako niskie ryzyko kredytowe, gdy są faktycznie wysokiego ryzyka, model nie tego samego błędu klasyfikacji pięć razy raz dla każdego duplikatu. To spowoduje zwiększenie kosztów tego błędu w wynikach szkolenia.
+Dlatego chcemy szkolenie nasz model, aby koszt tego typu ostatniego błędu klasyfikacji jest pięć razy wyższa niż misclassifying inny sposób.
+Prostym sposobem na to zrobić podczas uczenia modelu w naszym doświadczeniu jest duplikując (pięć razy) tych wpisów, które reprezentują inna osoba z ryzyko kredytowe wysoka. Następnie jeśli model klasyfikuje ktoś jako niskie ryzyko kredytowe, gdy są one faktycznie wysokiego ryzyka, model nie tego samego błędu klasyfikacji pięć razy raz dla wszystkich duplikatów. Takie rozwiązanie zwiększy koszty wystąpienia tego błędu w wynikach szkolenia.
 
 
-## <a name="convert-the-dataset-format"></a>Konwertuj w formacie zestawu danych
-Oryginalnego zestawu danych w formacie oddzielone puste. Usługa Machine Learning Studio działa lepiej z pliku wartości rozdzielanych przecinkami (CSV), więc będzie nie możemy przekonwertować zestawu danych, zastępując spacje przecinkami.  
+## <a name="convert-the-dataset-format"></a>Konwertuj format zestawu danych
+Oryginalnego zestawu danych w formacie oddzielone od podstaw. Usługa Machine Learning Studio sprawdzi się najlepiej przy użyciu pliku wartości rozdzielanych przecinkami (CSV), dzięki czemu firma Microsoft będzie przekonwertować zestawu danych, zastępując miejsca do magazynowania za pomocą przecinków.  
 
-Istnieje wiele sposobów, aby przekonwertować te dane. Jednym ze sposobów jest za pomocą następującego polecenia programu Windows PowerShell:   
+Istnieje wiele sposobów, aby przekonwertować te dane. Jednym ze sposobów polega na użyciu następującego polecenia programu Windows PowerShell:   
 
     cat german.data | %{$_ -replace " ",","} | sc german.csv  
 
-Innym sposobem jest za pomocą polecenia mniejszyć Unix:  
+Innym sposobem jest za pomocą polecenia sed Unix:  
 
     sed 's/ /,/g' german.data > german.csv  
 
-W obu przypadkach firma Microsoft opracowała przecinkami wersja danych w pliku o nazwie **german.csv** który możemy użyć w naszym doświadczeniu.
+W obu przypadkach utworzyliśmy rozdzielonych przecinkami wersji dane w pliku o nazwie **german.csv** , firma Microsoft można używać w naszym eksperymentu.
 
-## <a name="upload-the-dataset-to-machine-learning-studio"></a>Przekaż zestawu danych do usługi Machine Learning Studio
+## <a name="upload-the-dataset-to-machine-learning-studio"></a>Przekaż zestaw danych w usłudze Machine Learning Studio
 Po danych został przekonwertowany do formatu CSV, należy przekazać go do usługi Machine Learning Studio. 
 
-1. Otwórz stronę główną Machine Learning Studio ([https://studio.azureml.net](https://studio.azureml.net)). 
+1. Otwórz stronę główną usługi Machine Learning Studio ([https://studio.azureml.net](https://studio.azureml.net)). 
 
-2. Kliknij menu ![Menu][1] w lewym górnym rogu okna kliknij **usługi Azure Machine Learning**, wybierz pozycję **Studio**i zaloguj się.
+2. Kliknij menu ![Menu][1] w lewym górnym rogu okna kliknij **usługi Azure Machine Learning**, wybierz opcję **Studio**i zaloguj się.
 
 3. Kliknij przycisk **+ nowy** w dolnej części okna.
 
@@ -80,25 +81,25 @@ Po danych został przekonwertowany do formatu CSV, należy przekazać go do usł
 
     ![Dodaj zestaw danych z pliku lokalnego][2]
 
-6. W **przekazać nowy zestaw danych** okna dialogowego, kliknij przycisk **Przeglądaj** i Znajdź **german.csv** utworzony plik.
+6. W **przekazać nowy zestaw danych** okno dialogowe, kliknij przycisk **Przeglądaj** i Znajdź **german.csv** utworzony plik.
 
-7. Wprowadź nazwę dla zestawu danych. W ramach tego przewodnika wywołać ją "Dane karty kredytowej niemiecki UCI".
+7. Wprowadź nazwę dla zestawu danych. W tym przewodniku wywołać ją "Dane karty kredytowej niemiecki UCI".
 
-8. Dla typu danych, wybierz **ogólnego pliku CSV bez nagłówka (. nh.csv)**.
+8. Dla typu danych, wybierz **ogólny plik CSV, bez nagłówka (. nh.csv)**.
 
 9. Dodaj opis, jeśli chcesz.
 
 10. Kliknij przycisk **OK** znacznik wyboru.  
 
-    ![Przekaż zestawu danych][3]
+    ![Przekaż zestaw danych][3]
 
-To przekazywanie danych do modułu zestawu danych, które firma Microsoft może używać w eksperymencie.
+To przekazywanie danych do modułu zestawu danych, której używamy w eksperymencie.
 
-Możesz zarządzać zestawów danych, które przekazanego do Studio, klikając **zestawów danych** kartę z lewej strony okna Studio.
+Możesz zarządzać zestawów danych, które zostało przesłane do Studio, klikając **zestawów danych** karty po lewej stronie okna Studio.
 
-![Zarządzanie zbiory danych][4]
+![Zarządzanie zestawami danych][4]
 
-Aby uzyskać więcej informacji o importowaniu inne typy danych do eksperymentu, zobacz [importowanie danych szkoleniowych w usłudze Azure Machine Learning Studio](import-data.md).
+Aby uzyskać więcej informacji na temat importowania inne typy danych do eksperymentu, zobacz [importowanie danych szkoleniowych do usługi Azure Machine Learning Studio](import-data.md).
 
 **Następnie: [Tworzenie nowego eksperymentu](walkthrough-3-create-new-experiment.md)**
 

@@ -1,68 +1,69 @@
 ---
-title: Wyświetlanie i usuwanie danych z galerii Azure AI | Dokumentacja firmy Microsoft
-description: Można wyeksportować i usuwać dane użytkowników w produkcie z galerii AI Azure za pomocą interfejsu lub interfejs API AI galerii wykazu. W tym artykule opisano sposób.
+title: Wyświetl i Usuń dane z galerii Azure AI | Dokumentacja firmy Microsoft
+description: Możesz wyeksportować i usuwania danych użytkownika w ramach produktu przy użyciu galerii sztucznej Inteligencji Azure za pomocą interfejsu lub interfejs API wykazu galerii sztucznej Inteligencji. W tym artykule przedstawiono, jak.
 services: machine-learning
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: cgronlun
 ms.reviewer: jmartens, mldocs
 ms.service: machine-learning
 ms.component: studio
 ms.topic: conceptual
 ms.date: 05/25/2018
-ms.openlocfilehash: bc6ffa912d7914c8662dbde623e04947540ac149
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 557896dd31f9a8acfe1ca630142be25a1d8cd5b8
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655612"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820583"
 ---
-# <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Wyświetl i Usuń dane użytkownika w produktu z galerii Azure AI
+# <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Wyświetlanie i usunąć dane użytkownika w produkcie z galerii sztucznej Inteligencji platformy Azure
 
-Wyświetlać i usuwać dane użytkownika w produktu z galerii AI Azure za pomocą interfejsu lub interfejs API wykazu galerii AI. W tym artykule wyjaśniono sposób.
+Można wyświetlić i usunąć dane użytkowników w ramach produktu z galerii sztucznej Inteligencji platformy Azure przy użyciu interfejsu lub interfejs API wykazu galerii sztucznej Inteligencji. W tym artykule wyjaśniono sposób.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="view-your-data-in-ai-gallery-with-the-ui"></a>Wyświetlanie danych w galerii AI przy użyciu interfejsu użytkownika
+## <a name="view-your-data-in-ai-gallery-with-the-ui"></a>Wyświetlanie danych w galerii sztucznej Inteligencji za pomocą interfejsu użytkownika
 
-Można wyświetlić elementy, które są publikowane za pośrednictwem witryny galerii Azure AI interfejsu użytkownika. Użytkownicy mogą wyświetlać publiczny i nieznajdujące się na liście rozwiązania, projekty eksperymenty i innych opublikowanych elementów:
+Można wyświetlić elementy, które są publikowane za pośrednictwem interfejsu użytkownika witryny galerii sztucznej Inteligencji platformy Azure. Użytkownicy mogą wyświetlać, zarówno publiczne, jak i spoza listy rozwiązań, projektów, eksperymenty i inne elementy opublikowane:
 
-1.  Zaloguj się do [galerii Azure AI](https://gallery.azure.ai/).
-2.  Kliknij obraz profilu w prawym górnym rogu, a następnie nazwę konta do załadowania strony swojego profilu.
-3.  Strony profilu Wyświetla wszystkie elementy opublikowany w galerii, w tym wpisy nieznajdujące się na liście.
+1.  Zaloguj się do [Galeria sztucznej Inteligencji platformy Azure](https://gallery.azure.ai/).
+2.  Kliknij obraz profilu w prawym górnym rogu, a następnie nazwę konta, aby załadować stronę profilu.
+3.  Strona profilu Wyświetla wszystkie elementy opublikowanych w galerii łącznie z wpisy nieznajdujące się na liście.
 
-## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>Aby wyświetlić dane za pomocą interfejsu API katalogu galerii AI
+## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>Wyświetl dane usługi przy użyciu interfejsu API wykazu galerii sztucznej Inteligencji
 
-Można programowo wyświetlać danych zbieranych za pośrednictwem API katalogu AI galerii, która jest dostępna w https://catalog.cortanaanalytics.com/entities. Aby wyświetlić dane, należy uzyskać identyfikator autora. Aby wyświetlić nieznajdujące się na liście jednostek za pośrednictwem interfejsu API katalogu, należy tokenu dostępu.
+Można programowo wyświetlać danych zbieranych za pośrednictwem API wykazu galerii sztucznej Inteligencji, dostępnej pod adresem https://catalog.cortanaanalytics.com/entities. Aby wyświetlić dane, należy uzyskać identyfikator autora. Aby wyświetlić nieznajdujące się na liście jednostek za pomocą interfejsu API wykazu, konieczne jest token dostępu.
 
 Wykaz odpowiedzi są zwracane w formacie JSON.
 
-### <a name="get-an-author-id"></a>Pobierz identyfikator autora
-Identyfikator autora jest oparta na adres e-mail używany w przypadku publikowania do galerii Azure AI. Nie zmienia ono:
+### <a name="get-an-author-id"></a>Uzyskiwanie Identyfikatora autora
+Identyfikator Autor opiera się na adres e-mail używany w przypadku publikowania do galerii sztucznej Inteligencji platformy Azure. Nie zmienia się on:
 
-1.  Zaloguj się do [galerii Azure AI](https://gallery.azure.ai/).
-2.  Kliknij obraz profilu w prawym górnym rogu, a następnie nazwę konta do załadowania strony swojego profilu.
-3.  Adres URL na pasku adresu Wyświetla alfanumeryczne następujący identyfikator `authorId=`. Na przykład dla adresu URL: `https://gallery.cortanaintelligence.com/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+1.  Zaloguj się do [Galeria sztucznej Inteligencji platformy Azure](https://gallery.azure.ai/).
+2.  Kliknij obraz profilu w prawym górnym rogu, a następnie nazwę konta, aby załadować stronę profilu.
+3.  Adres URL w pasku adresu Wyświetla alfanumeryczne następujący identyfikator `authorId=`. Na przykład adres URL: `https://gallery.cortanaintelligence.com/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
         
     Identyfikator Autor: `99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
-### <a name="get-your-access-token"></a>Uzyskaj token dostępu
+### <a name="get-your-access-token"></a>Uzyskiwanie tokenu dostępu
 
-Należy tokenu dostępu, aby wyświetlić nieznajdujące się na liście jednostek za pośrednictwem interfejsu API katalogu. Użytkownicy bez tokenu dostępu, nadal można wyświetlać, publiczny jednostek i inne informacje o użytkowniku.
+Należy tokenu dostępu, aby wyświetlić nieznajdujące się na liście jednostek za pomocą interfejsu API wykazu. Bez tokenu dostępu użytkownicy nadal mogą wyświetlać podmiotów publicznych i inne informacje o użytkowniku.
 
-Aby uzyskać token dostępu, należy sprawdzić `DataLabAccessToken` nagłówka żądania HTTP, przeglądarka sprawia, że do interfejsu API katalogu, logując się:
+Aby uzyskać token dostępu, należy sprawdzić `DataLabAccessToken` nagłówka żądania HTTP z przeglądarki sprawia, że do interfejsu API katalogu po zalogowaniu się:
 
-1.  Zaloguj się do [galerii Azure AI](https://gallery.azure.ai/).
-2.  Kliknij obraz profilu w prawym górnym rogu, a następnie nazwę konta do załadowania strony swojego profilu.
-3.  Otwórz okienko narzędzi deweloperskich przeglądarki, naciskając klawisz F12, wybierz kartę sieci i Odśwież stronę. 
-4. Filtrowanie żądań na ciąg *katalogu* , wpisując polecenie w polu tekstowym filtru.
-5.  W żądaniach wysyłanych do adresu URL `https://catalog.cortanaanalytics.com/entities`, Znajdź żądania GET i zaznacz pozycję *nagłówki* kartę. Przewiń w dół do *nagłówkami żądań* sekcji.
-6.  Pod nagłówkiem `DataLabAccessToken` jest tokenem alfanumeryczne. Aby zabezpieczyć dane, nie należy współużytkować ten token.
+1.  Zaloguj się do [Galeria sztucznej Inteligencji platformy Azure](https://gallery.azure.ai/).
+2.  Kliknij obraz profilu w prawym górnym rogu, a następnie nazwę konta, aby załadować stronę profilu.
+3.  Otwórz okienko narzędzi dla deweloperów przeglądarki, naciskając klawisz F12, wybierz kartę sieci i Odśwież stronę. 
+4. Filtrowanie żądań w ciągu *katalogu* , wpisując w polu tekstowym filtru.
+5.  W żądaniach wysyłanych do adresu URL `https://catalog.cortanaanalytics.com/entities`żądanie GET Znajdź i zaznacz *nagłówki* kartę. Przewiń w dół do *nagłówkami żądań* sekcji.
+6.  W obszarze nagłówka `DataLabAccessToken` jest token alfanumeryczny. Aby zachować bezpieczeństwo danych, nie udostępniaj tego tokenu.
 
 ### <a name="view-user-information"></a>Wyświetlanie informacji o użytkowniku
-Za pomocą Identyfikatora autora uzyskano w poprzednich krokach, należy przejrzeć informacje w profilu użytkownika przez zastąpienie `[AuthorId]` następujący adres URL:
+Przy użyciu Identyfikatora autora, masz w poprzednich krokach, aby wyświetlić informacje w profilu użytkownika, zastępując `[AuthorId]` następujący adres URL:
 
     https://catalog.cortanaanalytics.com/users/[AuthorID]
 
@@ -77,9 +78,9 @@ Zwraca odpowiedź, takich jak:
 
 ### <a name="view-public-entities"></a>Wyświetl jednostki publiczne
 
-Interfejs API wykazu przechowuje informacje dotyczące opublikowanych jednostki do galerii AI Azure, które można również wyświetlić bezpośrednio na [AI galerii witryny sieci Web](https://gallery.azure.ai/). 
+Interfejs API wykazu przechowuje informacje dotyczące opublikowanych jednostki można również wyświetlić bezpośrednio w galerii Azure AI [witryny sieci Web galerii sztucznej Inteligencji](https://gallery.azure.ai/). 
 
-Aby wyświetlić opublikowanej jednostek, skorzystaj z następującego adresu URL, zastępując `[AuthorId]` o identyfikatorze autora uzyskanych w [uzyskiwanie Identyfikatora autora](#get-an-author-ID) powyżej.
+Aby wyświetlić opublikowane jednostki, odwiedź następujący adres URL, zastępując `[AuthorId]` o identyfikatorze Autor uzyskane w [płatnika Autor](#get-an-author-ID) powyżej.
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
 
@@ -87,13 +88,13 @@ Na przykład:
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'
 
-### <a name="view-unlisted-and-public-entities"></a>Wyświetlanie obiektów nieznajdujących się na liście i publiczny
+### <a name="view-unlisted-and-public-entities"></a>Wyświetlanie jednostek nieznajdujące się na liście i publicznych
 
-To zapytanie wyświetla tylko publiczne jednostki. Aby wyświetlić wszystkie Twoje encje, w tym nieznajdujące się na liście widocznych dostęp tokenu uzyskanego z poprzedniej sekcji.
+To zapytanie wyświetla tylko publiczne jednostki. Aby wyświetlić wszystkie swoje jednostki, w tym nieznajdujące się na liście, zapewniają dostęp token uzyskany w poprzedniej sekcji.
 
-1.  Przy użyciu narzędzia, takiego jak [Postman](https://www.getpostman.com), Utwórz żądanie HTTP GET do adresu URL katalogu w sposób opisany w [uzyskać tokenu dostępu](#get-your-access-token).
-2.  Utwórz nagłówek żądania HTTP o nazwie `DataLabAccessToken`, wartość tokenu dostępu.
-3.  Przesyłanie żądania HTTP.
+1.  Za pomocą narzędzia, takiego jak [Postman](https://www.getpostman.com), Utwórz żądanie HTTP GET do adresu URL katalogu w sposób opisany w [uzyskiwanie tokenu dostępu](#get-your-access-token).
+2.  Utwórz nagłówek żądania HTTP o nazwie `DataLabAccessToken`, z wartością ustawioną na wartość tokenu dostępu.
+3.  Prześlij żądanie HTTP.
 
 > [!TIP]
-> Jeśli nieznajdujące się na liście jednostek nie są wyświetlane w odpowiedzi z interfejsu API katalogu, użytkownik może być nieprawidłowy lub wygasły token dostępu. Wylogować się z galerii AI Azure, a następnie powtórz kroki opisane w [uzyskać tokenu dostępu](#get-your-access-token) do odnawiania tokenu. 
+> Jeśli nieznajdujące się na liście jednostek nie są wyświetlane w odpowiedzi z interfejsu API wykazu, użytkownik może być nieprawidłowy lub wygasły token dostępu. Wyloguj się z galerii sztucznej Inteligencji platformy Azure, a następnie powtórz kroki opisane w [uzyskiwanie tokenu dostępu](#get-your-access-token) do odnowienia tokenu. 

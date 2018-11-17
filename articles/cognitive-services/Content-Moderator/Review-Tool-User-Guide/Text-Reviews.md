@@ -1,6 +1,6 @@
 ---
-title: Przejrzyj tekst w zawartości moderatora Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak sprawdzić tekst w moderatora zawartości, aby wyświetlić jego wynik i wykryto tagów. Skorzystaj z informacji, aby ustalić, czy zawartość jest odpowiednia.
+title: Przejrzyj tekst w usłudze Azure Content Moderator | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przeglądać tekstu w pakiecie Content Moderator, aby wyświetlić jego wynik i wykryto tagów. Skorzystaj z informacji, aby ustalić, czy zawartość jest odpowiednia.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,27 +9,27 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: sajagtap
-ms.openlocfilehash: cb8774395b7374677e8de3b80630a2d4abf490f9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 60a8d03a6562c9a66c2f6781ebbc330c989b343e
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346961"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852099"
 ---
 # <a name="review-text"></a>Przegląd tekstu
 
-Umożliwia przeglądanie tekstu przy użyciu wyniki moderatora zawartości platformy Azure i wykryto tagów. Skorzystaj z informacji do ustalenia, czy zawartość jest odpowiedni. 
+Można użyć usługi Azure Content Moderator do przeglądania tekstu przy użyciu wyniki, a wykryto tagów. Skorzystaj z informacji w celu ustalenia, czy zawartość jest odpowiedni. 
 
-## <a name="select-or-enter-the-text-to-review"></a>Wybierz lub wprowadź tekst do przeglądu
+## <a name="select-or-enter-the-text-to-review"></a>Wybierz lub wprowadź tekst, aby zapoznać się z
 
-W zawartości moderatora wybierz **spróbuj** kartę. Następnie wybierz opcję **tekst** opcję, aby przejść do ekranu startowego łagodzenia tekstu. Wprowadź tekst lub Prześlij domyślny tekst przykładowy łagodzenia automatycznych tekstu. Możesz wprowadzić maksymalnie 1024 znaki.
+W pakiecie Content Moderator, wybierz **spróbuj** kartę. Następnie wybierz **tekstu** opcję, aby przejść do ekranu startowego Moderowanie tekstu. Wpisz dowolny tekst lub Prześlij zdarzenie zawiera domyślny tekst przykładowy Moderowanie tekstu automatycznych. Możesz wprowadzić maksymalnie 1024 znaki.
 
 ## <a name="get-ready-to-review-results"></a>Przygotowanie do przeglądania wyników
 
-Narzędzie przeglądu najpierw wywołuje interfejs API łagodzenia tekstu. Następnie generuje przeglądami tekstu przy użyciu tagów wykryte. Narzędzie przeglądu odpowiada wyników klasyfikacji dla Twojego zespołu uwagi.
+Narzędzie do przeglądu, najpierw wywołuje interfejs API moderowania tekstu. Następnie generuje przeglądy tekstu przy użyciu tagów wykryte. Narzędzie do przeglądu dopasowuje wyniki oceny uwagi zespołu.
 
 ## <a name="review-text-results"></a>Przejrzyj wyniki tekstu
 
-Szczegółowe wyniki są wyświetlane w systemie windows. Wyniki zawierają wykryto tagów i warunków, które zostały zwrócone przez interfejs API łagodzenia tekstu. Aby przełączyć stan zaznaczenia tag, zaznacz tag. Możesz także pracować z dowolnego znaczniki niestandardowe, które zostały utworzone.
+Szczegółowe wyniki są wyświetlane w oknach. Wyniki zawierają tagi wykryte i warunki, które zostały zwrócone przez interfejs API moderowania tekstu. Aby przełączyć stan zaznaczenia tagu, wybierz znacznik. Może również współdziałać za pomocą tagów niestandardowych, które zostały utworzone.
 
-![Przejrzyj wyniki tekstu](images/3-review-text-2.png)
+![Zrzut ekranu przedstawiający narzędzie do przeglądu oflagowane tekstu w oknie przeglądarki Chrome](../images/reviewresults_text.png)

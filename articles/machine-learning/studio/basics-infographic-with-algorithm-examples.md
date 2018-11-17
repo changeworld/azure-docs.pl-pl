@@ -5,7 +5,8 @@ keywords: podstawy uczenia maszyny, algorytmami, usługi machine learning dla po
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: cf4e2308-9285-4adc-9f00-408e3ee7931b
@@ -16,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 8ef67add44428e08a1851a039e7e8c2c747e930d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8292a3cf7c65ccb6809481a8f099dd9ce4f5e0d5
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253860"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820923"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Grafika informacyjna do pobrania: podstawy uczenia maszynowego z przykładowymi algorytmami
 Pobierz to omówienie informacyjna łatwych do zrozumienia podstawy uczenia maszyny, aby dowiedzieć się więcej na temat popularnych algorytmów odpowiedzi na często zadawane pytania dotyczące machine learning. Algorytmami pomóc początkującym learning maszyny, zrozumieć, jakie algorytmy będzie używany wraz z ich używania.

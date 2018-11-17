@@ -1,10 +1,11 @@
 ---
-title: 'Krok 3: Tworzenie nowego eksperymentu uczenia maszynowego | Dokumentacja firmy Microsoft'
-description: 'Krok 3 opracowanie wskazówki rozwiązanie predykcyjne: Tworzenie nowego eksperymentu uczenia w usłudze Azure Machine Learning Studio.'
+title: 'Krok 3: Tworzenie nowego eksperymentu usługi Machine Learning | Dokumentacja firmy Microsoft'
+description: 'Krok 3 programowanie przewodnik rozwiązania do analizy predykcyjnej: Tworzenie nowego eksperymentu szkolenia w usłudze Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
@@ -15,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 95000f9fb57b95bf1edcda9abfba3668b5f5b523
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2fdeab83d1e668fbbb68155c1695ffb40d71c15b
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835743"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824442"
 ---
 # <a name="walkthrough-step-3-create-a-new-azure-machine-learning-experiment"></a>Przewodnik, krok 3. Tworzenie nowego eksperymentu usługi Azure Machine Learning
-Jest to trzeci krok wskazówki, [tworzenie rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md)
+Jest to trzeci krok tego przewodnika, [tworzenia rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 
 1. [Tworzenie obszaru roboczego usługi Machine Learning](walkthrough-1-create-ml-workspace.md)
 2. [Przekazywanie istniejących danych](walkthrough-2-upload-data.md)
@@ -33,106 +34,106 @@ Jest to trzeci krok wskazówki, [tworzenie rozwiązania analizy predykcyjnej w u
 6. [Dostęp do usługi sieci Web](walkthrough-6-access-web-service.md)
 
 - - -
-Następnym krokiem w ramach tego przewodnika jest tworzenie eksperymentu w usłudze Machine Learning Studio, która używa zestawu danych, które możemy przekazać.  
+Następnym krokiem w tym instruktażu jest tworzenie eksperymentu w usłudze Machine Learning Studio, który używa zestawu danych, które możemy przekazać.  
 
-1. W Studio, kliknij przycisk **+ nowy** w dolnej części okna.
+1. W programie Studio, kliknij **+ nowy** w dolnej części okna.
 2. Wybierz **EKSPERYMENTU**, a następnie wybierz pozycję "Pusty eksperyment". 
 
     ![Tworzenie nowego eksperymentu][0]
 
-2. Wybierz domyślną nazwę eksperymentu w górnej części obszaru roboczego i zmień jego nazwę, wpisując tekst opisowy.
+2. Wybierz domyślną nazwę eksperymentu w górnej części kanwy, a następnie zmień jego nazwę na opisową nazwę.
 
-    ![Zmień nazwę eksperymentu][5]
+    ![Zmienianie nazwy eksperymentu][5]
    
    > [!TIP]
-   > Dobrym rozwiązaniem, aby wypełnić jest **Podsumowanie** i **opis** do eksperymentu w **właściwości** okienka. Te właściwości zapewniają możliwość dokumentu eksperyment, dzięki czemu każdy, kto analizuje go później będzie zrozumiałe, cele i metodologii.
+   > Jest dobrą praktyką, aby wypełnić **Podsumowanie** i **opis** eksperymentu w **właściwości** okienka. Te właściwości zapewniają możliwość dokumentu eksperymentu, tak aby każdy, kto przegląda go później będzie zrozumiałe, cele i metodologii.
    > 
    > ![Właściwości eksperymentu][6]
    > 
-3. Na palecie modułów z lewej strony obszaru roboczego eksperymentu, rozwiń węzeł **zapisane zestawów danych**.
-4. Znaleźć zestaw danych został utworzony w obszarze **Moje zestawów danych** i przeciągnij go do obszaru roboczego. Możesz również znaleźć zestaw danych, wprowadzając nazwę w **wyszukiwania** pole powyżej palety.  
+3. W palety modułów, z lewej strony obszaru roboczego eksperymentu, rozwiń **zapisane zestawów danych**.
+4. Znajdowanie zestawu danych utworzonego w ramach **Moje zestawy danych** i przeciągnij go na kanwie. Możesz również znaleźć zestaw danych, wprowadzając nazwę w **wyszukiwania** polu nad palety.  
 
     ![Dodaj zestaw danych do eksperymentu][7]
 
-## <a name="prepare-the-data"></a>Przygotowanie danych
-Można wyświetlić pierwszych 100 wierszy danych i niektóre informacje statystyczne dla całego zestawu danych: kliknij port wyjściowy zestaw danych (małe koło u dołu) i wybierz **Visualize**.  
+## <a name="prepare-the-data"></a>Przygotowywanie danych
+Możesz wyświetlić pierwszych 100 wierszy danych i niektóre informacje statystyczne dla całego zestawu danych: kliknij port wyjściowy zestawu danych (mały okrąg w dolnej części), a następnie wybierz pozycję **Visualize**.  
 
-Ponieważ plik danych nie został dostarczony z nagłówków kolumn, Studio udostępnił ogólnego nagłówki (Col1, Col2, *itp.*). Dobrym nagłówki nie są niezbędne do tworzenia modelu, ale to na łatwiejsze do pracy z danymi w eksperymencie. Ponadto możemy po pewnym czasie publikowania tego modelu w usłudze sieci web, nagłówki zidentyfikować kolumny do użytkownika usługi.  
+Ponieważ plik danych nie został dostarczony z nagłówkami kolumn, Studio udostępnił nagłówki ogólnego (Col1, Col2, *itp.*). Dobre nagłówki nie są niezbędne do tworzenia modelu, ale mogą ułatwić pracę z danymi w eksperymencie. Ponadto po opublikowaniu tego modelu po pewnym czasie w usłudze sieci web, nagłówki pomagać w identyfikacji kolumn tak, aby użytkownik usługi.  
 
-Można dodać nagłówków kolumn za pomocą [edytowanie metadanych] [ edit-metadata] modułu.
-Możesz użyć [edytowanie metadanych] [ edit-metadata] modułu, aby zmienić metadane skojarzone z zestawu danych. W takim przypadku stosujemy go udostępnia więcej przyjazne nazwy dla nagłówków kolumn. 
+Możemy dodać nagłówków kolumn za pomocą [edytować metadane] [ edit-metadata] modułu.
+Możesz użyć [edytować metadane] [ edit-metadata] modułu, aby zmienić metadane skojarzone z zestawu danych. W tym przypadku używamy go udostępnia więcej przyjazne nazwy dla nagłówków kolumn. 
 
-Aby użyć [edytowanie metadanych][edit-metadata], należy najpierw określić, które kolumny do zmodyfikowania (w tym przypadku wszystkie z nich.) Następnie określ akcję do wykonania na podstawie tych kolumn (w tym przypadku zmiana nagłówków kolumn.)
+Aby użyć [edytować metadane][edit-metadata], należy najpierw określić kolumny, które można modyfikować (w tym przypadku wszystkie z nich.) Następnie określ akcję do wykonania na podstawie tych kolumn (w tym przypadku zmiana nagłówków kolumn.)
 
-1. Na palecie modułów, wpisz "metadanych" **wyszukiwania** pole. [Edytowanie metadanych] [ edit-metadata] pojawia się na liście modułów.
+1. W palety modułów, wpisz "metadane" **wyszukiwania** pole. [Edytować metadane] [ edit-metadata] pojawia się na liście modułów.
 
-2. Kliknij i przeciągnij [edytowanie metadanych] [ edit-metadata] modułu kanwę i upuść ją poniżej dodaliśmy wcześniej zestawu danych.
+2. Kliknij i przeciągnij [edytować metadane] [ edit-metadata] modułu na kanwę i upuść je poniżej zestawu danych, dodaliśmy wcześniej.
 
-3. Zestaw danych, aby połączyć [edytowanie metadanych][edit-metadata]: kliknij port wyjściowy zestaw danych (małe koło w dolnej części zestawu danych), przeciągnij, aby port wejściowy z [edytowanie metadanych] [ edit-metadata] (małe koło w górnej części modułu) następnie zwolnij przycisk myszy. Zestaw danych i modułu pozostały połączone, nawet w przypadku przenoszenia jednej na kanwie.
+3. Łączenie zestawu danych na [edytować metadane][edit-metadata]: kliknij port wyjściowy zestawu danych (mały okrąg w dolnej części zestawu danych), przeciągnij portem wejściowym [edytować metadane] [ edit-metadata] (mały okrąg w górnej części modułu) zwolnij przycisk myszy. Zestaw danych i modułu pozostały połączone, nawet wtedy, gdy albo zmieniają położenie w obszarze roboczym.
    
    Eksperyment powinien teraz wyglądać mniej więcej tak:  
    
-   ![Dodawanie metadanych edycji][1]
+   ![Dodawanie, edytowanie metadanych][1]
    
-   Czerwony wykrzyknik wskazuje, że firma Microsoft nie zostało to jeszcze ustawiony właściwości dla tego modułu. Robimy tego dalej.
+   Czerwony wykrzyknik wskazuje, że firma Microsoft nie został ustawiony właściwości dla tego modułu. Możemy to zrobić to w następnym kroku.
    
    > [!TIP]
-   > Aby dodać komentarz do modułu, kliknij dwukrotnie moduł i wpisz tekst. Pozwoli to od razu sprawdzić rolę modułu w eksperymencie. W takim przypadku kliknij dwukrotnie [edytowanie metadanych] [ edit-metadata] moduł i wpisz komentarz "Dodaj nagłówki kolumn". Kliknij gdziekolwiek na kanwę, aby zamknąć okno tekstu. Aby wyświetlić komentarz, kliknij strzałkę w dół w module.
+   > Aby dodać komentarz do modułu, kliknij dwukrotnie moduł i wpisz tekst. Pozwoli to od razu sprawdzić rolę modułu w eksperymencie. W tym przypadku kliknij dwukrotnie [edytować metadane] [ edit-metadata] moduł i wpisz komentarz "Dodaj nagłówki kolumn". Kliknij, gdzie indziej na kanwę, aby zamknąć pole tekstowe. Aby wyświetlić komentarz, kliknij strzałkę w dół w module.
    > 
-   > ![Edytuj moduł metadanych z komentarzem dodane][8]
+   > ![Edytuj metadane modułu za pomocą dodano komentarz][8]
    > 
-4. Wybierz [edytowanie metadanych][edit-metadata], a następnie w **właściwości** kliknij w okienku po prawej stronie kanwy **Uruchom selektor kolumn**.
+4. Wybierz [edytować metadane][edit-metadata], a następnie w **właściwości** kliknij w okienku po prawej stronie kanwy, **uruchamianie selektora kolumn**.
 
-5. W **wybierz kolumny** okno dialogowe, wybierz wszystkie wiersze w **dostępne kolumny** i kliknij przycisk > Aby przenieść je na **wybrane kolumny**.
-   Okno dialogowe powinien wyglądać następująco:
+5. W **wybierz kolumny** okno dialogowe, wybierz wszystkie wiersze w **dostępnych kolumn** i kliknij pozycję > Aby przenieść je na **wybrane kolumny**.
+   Okno dialogowe powinno wyglądać następująco:
 
-   ![Selektor kolumn z wybrano wszystkich kolumn][2]
+   ![Selektor kolumn ze wszystkimi kolumnami wybrane][2]
 
 6. Kliknij przycisk **OK** znacznik wyboru.
 
-7. W **właściwości** okienka, poszukaj **nowych nazw kolumn** parametru. W tym miejscu wprowadź listę nazw 21 kolumn w zestawie danych, oddzielonych przecinkami i kolejność kolumn. Można uzyskać nazwy kolumn w dokumentacji zestawu danych w witrynie sieci Web UCI, lub dla wygody można skopiować i wkleić poniżej:  
+7. Ponownie **właściwości** okienku i wyszukaj **nowych nazw kolumn** parametru. W tym polu wprowadź listę nazw 21 kolumn w zestawie danych, rozdzielonych przecinkami i kolejność kolumn. Nazwy kolumn można uzyskać w dokumentacji zestawu danych w witrynie sieci Web UCI lub dla wygody można skopiować i wkleić następującej listy:  
    
        Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
    
-   W okienku właściwości wygląda następująco:
+   Zawartość okienka właściwości wygląda następująco:
    
    ![Właściwości metadanych edycji][3]
 
 > [!TIP]
-> Jeśli chcesz sprawdzić nagłówki kolumn, należy uruchomić eksperyment (kliknij **Uruchom** poniżej obszaru roboczego eksperymentu). Po zakończeniu pracy (zielony znacznik wyboru jest wyświetlane na [edytowanie metadanych][edit-metadata]), kliknij port wyjściowy [edytowanie metadanych] [ edit-metadata] modułu, i wybierz **Visualize**. Dane wyjściowe każdy moduł jest widoczny w taki sam sposób, aby wyświetlić postęp danych za pośrednictwem eksperymentu.
+> Jeśli chcesz sprawdzić nagłówki kolumn, uruchamianie eksperymentu (kliknij **Uruchom** poniżej obszaru roboczego eksperymentu). Po zakończeniu pracy (zielony znacznik wyboru pojawia się na [edytować metadane][edit-metadata]), kliknij port wyjściowy [edytować metadane] [ edit-metadata] modułu i wybierz **Visualize**. Możesz wyświetlić dane wyjściowe każdego modułu w taki sam sposób, aby wyświetlić postęp danych przy użyciu eksperymentu.
 > 
 > 
 
-## <a name="create-training-and-test-datasets"></a>Tworzenie szkolenia i testowanie zbiory danych
-Potrzebujemy niektórych danych do nauczenia modelu, a niektóre testowania go.
-Dlatego w następnym kroku eksperyment, możemy podzielić zestawu danych na dwa oddzielne zestawy danych: jeden dla uczenie modelu, a drugi do testowania go.
+## <a name="create-training-and-test-datasets"></a>Tworzenie, szkolenie i testowanie zestawów danych
+Potrzebujemy niektórych danych do nauczenia modelu, a niektóre do testowania.
+Aby w następnym kroku eksperymentu, możemy podzielić zestawu danych dwa oddzielne zestawy danych: jeden dla szkolenia nasz model, a drugi dla testowania.
 
-Aby to zrobić, używamy [podziału danych] [ split] modułu.  
+Aby to zrobić, użyjemy [podziału danych] [ split] modułu.  
 
-1. Znajdź [podziału danych] [ split] modułu, przeciągnij go do obszaru roboczego i połącz go z [edytowanie metadanych] [ edit-metadata] modułu.
+1. Znajdź [podziału danych] [ split] modułu, przeciągnij go na kanwie, a następnie połącz go [edytować metadane] [ edit-metadata] modułu.
 
-2. Domyślnie współczynnik rozdzielania wynosi 0,5 i **podziału Randomized** ustawiono parametr. Oznacza, że losowe pół danych wyjściowych za pośrednictwem jednego portu [podziału danych] [ split] modułu i połowy przez innych. Te parametry można dostosować, jak również **Random seed** parametr, aby zmienić podziału między celów szkoleniowych i testów danych. Na przykład możemy pozostaw je jako — jest.
+2. Domyślnie, współczynnik rozdzielania wynosi 0,5 i **podziału Randomized** zestaw parametrów. Oznacza, że w połowie losowe dane dane wyjściowe za pośrednictwem jednego portu [podziału danych] [ split] modułu, a połowa za pośrednictwem innych. Można dostosować te parametry, jak również **Random seed** parametru, aby zmienić podziału między szkolenie i testowanie danych. W tym przykładzie pozostawimy jako-to.
    
    > [!TIP]
-   > Właściwość **ułamek wierszy w pierwszym wyjściowy zestaw danych** Określa, ile danych jest wysyłany za pośrednictwem *po lewej stronie* output portu. Na przykład jeśli ustawisz stosunek 0,7 70% danych wówczas dane wyjściowe za pośrednictwem lewy port i 30% za pośrednictwem prawy port.  
+   > Właściwość **ułamek wierszy w pierwszym zestawie danych wyjściowych** Określa, ile danych jest dane wyjściowe za pośrednictwem *po lewej stronie* portu wyjściowego. Na przykład jeśli ustawisz stosunek 0,7 następnie 70% danych jest dane wyjściowe za pośrednictwem portu po lewej stronie i 30% przez prawy port.  
    > 
    > 
 
-3. Kliknij dwukrotnie [podziału danych] [ split] moduł i wpisz komentarz, "danych szkoleniowych/testowania podzielić 50%". 
+3. Kliknij dwukrotnie [podziału danych] [ split] modułu i wprowadź komentarz, "szkolenia i testowania danych podziału 50%". 
 
-Możemy użyć danych wyjściowych z [podziału danych] [ split] modułu jednak firma Microsoft, takich jak, ale ta funkcja pozwala wybrać wykorzystywać dane po lewej stronie, ponieważ dane szkoleniowe i prawa testowania jako dane wyjściowe.  
+Możemy użyć danych wyjściowych z [podziału danych] [ split] modułu jednak firma Microsoft, takich jak, ale Wybierzmy o używaniu lewej wyjście danych szkoleniowych i po prawej stronie testowania jako dane wyjściowe.  
 
-Jak wspomniano w [poprzedniego kroku](walkthrough-2-upload-data.md), misclassifying ryzyko kredytowe wysokiej jako niski koszt jest pięć razy wyższa niż koszt misclassifying niskie ryzyko kredytowe jako wysoki. Aby to uwzględniać, możemy wygenerować nowy zestaw danych, które odzwierciedla tej funkcji koszt. W nowy zestaw danych każdy przykład wysokiego ryzyka są replikowane pięć razy podczas każdego przykład niskiego ryzyka nie jest replikowany.   
+Jak wspomniano w [poprzedniego kroku](walkthrough-2-upload-data.md), misclassifying ryzyko kredytowe wysokiej jako niski koszt wynosi pięć razy wyższy niż koszt misclassifying niskie ryzyko kredytowe jako wysoki. Aby to uwzględniać, firma Microsoft wygenerować nowy zestaw danych, który odzwierciedla tę funkcję, kosztów. W nowym zestawie danych każdy przykład wysokiego ryzyka są replikowane pięć razy podczas każdego przykład niskiego ryzyka nie jest replikowany.   
 
-Możemy replikacja za pomocą kodu języka R:  
+Robimy to replikacji przy użyciu kodu języka R:  
 
-1. Znajdź i przeciągnij [wykonanie skryptu języka R] [ execute-r-script] modułu na kanwie eksperymentu. 
+1. Znajdowanie i przeciąganie [wykonanie skryptu języka R] [ execute-r-script] modułu do obszaru roboczego eksperymentu. 
 
-2. Połącz lewy port wyjściowy [podziału danych] [ split] modułu do pierwszego portu wejściowego ("Dataset1") z [wykonanie skryptu języka R] [ execute-r-script] modułu.
+2. Połącz lewy port wyjściowy [podziału danych] [ split] pierwszy portem wejściowym ("Dataset1") przez moduł [wykonanie skryptu języka R] [ execute-r-script] modułu.
 
-3. Kliknij dwukrotnie [wykonanie skryptu języka R] [ execute-r-script] modułu, a następnie wprowadź komentarz, "Ustaw korekty kosztu".
+3. Kliknij dwukrotnie [wykonanie skryptu języka R] [ execute-r-script] modułu i wprowadź komentarz, "Zestaw Korekta kosztu".
 
-4. W **właściwości** okienku usunąć domyślny tekst w **skrypt języka R** parametr, a następnie wprowadź ten skrypt:
+4. W **właściwości** okienku Usuń domyślny tekst w **skrypt języka R** parametru i wprowadź ten skrypt:
    
        dataset1 <- maml.mapInputPort(1)
        data.set<-dataset1[dataset1[,21]==1,]
@@ -140,30 +141,30 @@ Możemy replikacja za pomocą kodu języka R:
        for (i in 1:5) data.set<-rbind(data.set,pos)
        maml.mapOutputPort("data.set")
 
-    ![Skrypt języka R w module wykonanie skryptu języka R][9]
+    ![Skrypt języka R w module wykonywania skryptu języka R][9]
 
-Konieczne tej samej operacji replikacji dla każdego produktu [podziału danych] [ split] modułu, aby dane szkolenia i testowania mieć takiego samego dostosowania kosztów. Najprostszym sposobem, w tym celu jest duplikując [wykonanie skryptu języka R] [ execute-r-script] modułu właśnie wprowadziliśmy i połączenia jej z drugiej output port [podziału danych] [ split] modułu.
+Musimy tej samej operacji replikacji dla każdego danych wyjściowych [podziału danych] [ split] modułu, aby dane szkolenia i testowania mają ten sam korekty kosztów. W tym celu najłatwiej duplikując [wykonanie skryptu języka R] [ execute-r-script] modułu, firma Microsoft wykonane i łączy ją do innego danych wyjściowych port [podziału danych] [ split] modułu.
 
-1. Kliknij prawym przyciskiem myszy [wykonanie skryptu języka R] [ execute-r-script] moduł i zaznacz **kopiowania**.
+1. Kliknij prawym przyciskiem myszy [wykonanie skryptu języka R] [ execute-r-script] modułu, a następnie wybierz pozycję **kopiowania**.
 
-2. Kliknij prawym przyciskiem myszy obszaru roboczego eksperymentu, a następnie wybierz **Wklej**.
+2. Kliknij prawym przyciskiem myszy obszaru roboczego eksperymentu, a następnie wybierz pozycję **Wklej**.
 
-3. Przeciągnij nowy moduł w określonej pozycji, a następnie połącz portem wyjściowym prawo [podziału danych] [ split] na pierwszy port wejściowy tego nowego modułu [wykonanie skryptu języka R] [ execute-r-script] modułu. 
+3. Nowy moduł przeciągnij w odpowiednie miejsce, a następnie połącz port wyjściowy prawo [podziału danych] [ split] pierwszy port wejściowy to nowy moduł [wykonanie skryptu języka R] [ execute-r-script] modułu. 
 
-4. W dolnej części obszaru roboczego, kliknij przycisk **Uruchom**. 
+4. W dolnej części obszaru roboczego kliknij **Uruchom**. 
 
 > [!TIP]
-> Kopii modułu wykonania skryptu języka R zawiera sam skrypt jako oryginalnego modułu. Podczas kopiowania i wklejania modułu na kanwie kopię zachowuje wszystkie właściwości oryginału.  
+> Kopię modułu wykonywania skryptu języka R zawiera ten sam skrypt jako oryginalnego modułu. Podczas kopiowania i wklejania modułu na kanwie kopii zachowuje wszystkie właściwości oryginału.  
 > 
 > 
 
-Naszym doświadczeniu teraz wygląda następująco:
+Nasz eksperyment teraz wygląda następująco:
 
-![Dodanie modułu podziału i skrypty języka R][4]
+![Dodawanie modułu dzielenia i skrypty języka R][4]
 
-Aby uzyskać więcej informacji na używanie skryptów języka R w eksperymentów, zobacz [rozszerzanie eksperymentu z R](extend-your-experiment-with-r.md).
+Aby uzyskać więcej informacji na temat używania skryptów języka R w eksperymenty zobacz [rozszerzanie eksperymentu przy użyciu języka R](extend-your-experiment-with-r.md).
 
-**Następnie: [pociągu i Ewaluacja modeli](walkthrough-4-train-and-evaluate-models.md)**
+**Następnie: [szkolenie i Ewaluacja modeli](walkthrough-4-train-and-evaluate-models.md)**
 
 [0]: ./media/walkthrough-3-create-new-experiment/create-new-experiment.png
 [5]: ./media/walkthrough-3-create-new-experiment/rename-experiment.png

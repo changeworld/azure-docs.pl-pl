@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/11/2018
 ms.author: raynew
-ms.openlocfilehash: e8f41ef44adbd72e8ab16329d5fec94c08df2fe7
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 8096f1b5b29c0445d8bae85fb56e2735469184d4
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568458"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823949"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyn wirtualnych programu VMware
 
@@ -222,9 +222,16 @@ Dla wdrożenia serwera konfiguracji, które maja 2016 r. Data ważności certyfi
 2. Data ważności jest wyświetlany w obszarze **Kondycja serwera Configuration**.
 3. Wybierz **odnawiania certyfikatów**.
 
-## <a name="update-windows-licence"></a>Licencja Windows Update
+## <a name="refresh-configuration-server"></a>Odśwież serwer konfiguracji
 
-Licencja dostarczane z szablonu pakietu OVF jest pozwolenia oceny prawidłowe przez 180 dni. Dla nieprzerwaną pracę, musisz aktywować Windows za pomocą kupowane licencji.
+1. W witrynie Azure portal przejdź do **magazyn usługi Recovery Services** > **Zarządzaj** > **infrastruktura usługi Site Recovery**  >   **Dla maszyn VMware i fizycznych** > **serwery konfiguracji**
+2. Kliknij na serwerze konfiguracji, którą chcesz odświeżyć.
+3. W bloku ze szczegółowymi informacjami wybrana konfiguracja serwera, kliknij **więcej** > **Odśwież serwer**.
+4. Monitorowanie postępu zadania w obszarze **magazyn usługi Recovery Services** > **monitorowanie** > **zadania usługi Site Recovery**.
+
+## <a name="update-windows-license"></a>Aktualizuj licencję Windows
+
+Licencja dostarczane z szablonu pakietu OVF jest ocena prawidłowe przez 180 dni. Dla nieprzerwaną pracę, musisz aktywować Windows uzyskiwanych licencją.
 
 ## <a name="failback-requirements"></a>Wymagania dotyczące powrotu po awarii
 

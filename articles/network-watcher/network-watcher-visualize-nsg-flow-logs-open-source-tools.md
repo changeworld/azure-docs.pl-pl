@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 6debfaed28be2b5dee5e24a443b791f75f7bea8f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 10f76ea58b859611483c99c2f4accec607bc2939
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634196"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822912"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Wizualizowanie dzienników przepływów Azure Network Watcher NSG przy użyciu narzędzi typu open source
 
 Dzienniki przepływu sieciowej grupy zabezpieczeń zawierają informacje, który może służyć zrozumieć przychodzący i wychodzący ruch IP na grupy zabezpieczeń sieci. Te dzienniki przepływu Pokaż przepływy wychodzące i przychodzące na podstawie poszczególnych reguł, przepływ ma zastosowanie do karty Sieciowej, 5 elementowe spójne kolekcje informacji o przepływie (źródłowy i docelowy adres IP, Port źródłowy i docelowy, Protocol), oraz czy ruch był dozwolony.
 
 Te dzienniki przepływu może być trudne do ręcznego analizowania i uzyskiwania wglądu w. Istnieje jednak kilka narzędzi typu open source, które mogą pomóc wizualizację tych danych. W tym artykule zapewni rozwiązania w celu wizualizacji tych dzienników przy użyciu programu Elastic Stack, które umożliwią szybkie indeksu wizualizowanie i przepływ dzienniki na pulpicie nawigacyjnym rozwiązania Kibana.
+
+> [!Warning]  
+> Poniższe kroki pracy z dzienników przepływu w wersji 1. Aby uzyskać więcej informacji, zobacz [wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md). Poniższe instrukcje nie będzie działać w wersji 2 pliki dziennika, bez żadnych modyfikacji.
 
 ## <a name="scenario"></a>Scenariusz
 

@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: bcd67d2e879d199296289dbaef2141ba659b2412
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1f8807094c6e93cf55467e76e0fa2b617ec3d5fb
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032684"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822878"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Dzienniki przepływu visualizing sieciową grupę zabezpieczeń z usługą Power BI
 
 Dzienniki przepływu sieciowej grupy zabezpieczeń umożliwiają wyświetlanie informacji o przychodzący i wychodzący ruch IP na grupy zabezpieczeń sieci. Przepływ są Pokaż dzienniki przepływy wychodzące i przychodzące na podstawie reguły w poszczególnych kart Sieciowych przepływ ma zastosowanie do 5-elementowych informacji o przepływie (źródłowy i docelowy adres IP, Port źródłowy i docelowy, Protocol), oraz czy ruch był dozwolony.
 
 Może być trudne uzyskać wgląd w dane rejestrowania usługi flow, przeszukując ręcznie pliki dziennika. W tym artykule firma Microsoft zapewnia rozwiązanie wizualizacji najnowszych dzienników przepływu i Dowiedz się więcej o ruchu w sieci.
+
+> [!Warning]  
+> Poniższe kroki pracy z dzienników przepływu w wersji 1. Aby uzyskać więcej informacji, zobacz [wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md). Poniższe instrukcje nie będzie działać w wersji 2 pliki dziennika, bez żadnych modyfikacji.
 
 ## <a name="scenario"></a>Scenariusz
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 003335aad0452e7a2dbfff49ed29a6b99b5d54d2
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 30f20e2671b4428f08c38eeb93ec90f0b745eea6
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089633"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819121"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Skonfigurowanie sieciowej grupy zabezpieczeń dzienników przepływów przy użyciu interfejsu API REST
 
@@ -30,6 +30,9 @@ ms.locfileid: "39089633"
 > - [Interfejs API REST](network-watcher-nsg-flow-logging-rest.md)
 
 Dzienniki przepływu sieciowej grupy zabezpieczeń są funkcją usługi Network Watcher, który służy do wyświetlania informacji na temat przychodzący i wychodzący ruch IP sieciowej grupy zabezpieczeń. Te dzienniki przepływu są zapisywane w formacie json i Pokaż przepływy wychodzące i przychodzące na podstawie reguły w poszczególnych kart Sieciowych, przepływ, który ma zastosowanie do 5-elementowych informacji o przepływie (źródłowy/docelowy adres IP, Port źródłowy i docelowy, Protocol), a jeśli zezwolenie lub odrzucenie ruchu sieciowego.
+
+> [!NOTE] 
+> Dzienniki przepływu w wersji 2 są dostępne tylko w centralnej nam regionie zachodnim. Konfiguracja jest dostępna za pośrednictwem witryny Azure Portal i interfejsu API REST. Włączanie w wersji 2 spowoduje dzienniki w nieobsługiwany region dzienników w wersji 1, zwrócone do swojego konta magazynu.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -46,7 +49,7 @@ Scenariusz, w tym artykule pokazano, jak włączać, wyłączać i dzienników p
 
 W tym scenariuszu wykonasz następujące czynności:
 
-* Włączanie dzienników przepływu
+* Włączanie dzienników przepływu (wersja 2)
 * Wyłącz dzienników przepływów
 * Stan dzienników przepływu zapytania
 
@@ -69,7 +72,7 @@ armclient post "https://management.azure.com//subscriptions/${subscriptionId}/pr
 
 ## <a name="enable-network-security-group-flow-logs"></a>Dzienniki przepływów Włączanie sieciowych grup zabezpieczeń
 
-Na poniższym przykładzie przedstawiono polecenie, aby włączyć dzienniki przepływu:
+Na poniższym przykładzie przedstawiono polecenie, aby włączyć dzienniki przepływu w wersji 2. Zastąp pole "version" "1" dla wersji 1:
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -86,7 +89,11 @@ $requestBody = @"
     'retentionPolicy' : {
             days: 5,
             enabled: true
-        }
+        },
+    'format': {
+        'type': 'JSON',
+        'version': 2
+    }
     }
 }
 "@
@@ -105,6 +112,10 @@ Odpowiedź zwrócona z poprzedniego przykładu, jest następujący:
     "retentionPolicy": {
       "days": 5,
       "enabled": true
+    },
+    "format": {
+    "type": "JSON",
+    "version": 2
     }
   }
 }
@@ -129,7 +140,11 @@ $requestBody = @"
     'retentionPolicy' : {
             days: 5,
             enabled: true
-        }
+        },
+    'format': {
+        'type': 'JSON',
+        'version': 2
+    }
     }
 }
 "@
@@ -148,6 +163,10 @@ Odpowiedź zwrócona z poprzedniego przykładu, jest następujący:
     "retentionPolicy": {
       "days": 5,
       "enabled": true
+    },
+    "format": {
+    "type": "JSON",
+    "version": 2
     }
   }
 }
@@ -182,6 +201,10 @@ Oto przykład odpowiedzi zwróconej:
    "retentionPolicy": {
       "days": 5,
       "enabled": true
+    },
+    "format": {
+    "type": "JSON",
+    "version": 2
     }
   }
 }

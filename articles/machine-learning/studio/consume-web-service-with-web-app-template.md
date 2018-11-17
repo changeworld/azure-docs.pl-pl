@@ -1,11 +1,12 @@
 ---
-title: Korzystać z usługi sieci web uczenie maszynowe przy użyciu szablonu aplikacji sieci web | Dokumentacja firmy Microsoft
-description: Użyj szablonu aplikacji sieci web w portalu Azure Marketplace, aby korzystać z usługi sieci web predykcyjnej w usłudze Azure Machine Learning.
-keywords: Usługa sieci Web, operationalization, interfejsu API REST, uczenia maszynowego
+title: Korzystania z usługi internetowej Machine Learning za pomocą szablonu aplikacji sieci web | Dokumentacja firmy Microsoft
+description: Użyj szablonu aplikacji sieci web w witrynie Azure Marketplace z predykcyjna usługa internetowa Azure Machine Learning.
+keywords: Usługa sieci Web, operacjonalizacja, interfejs API REST usługi machine learning
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: e0d71683-61b9-4675-8df5-09ddc2f0d92d
@@ -16,55 +17,55 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 03729a5b94b355869367e7f356e299f9afe38f75
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 56c4e5956790ac61a6ae608d61aa61e7dc2e6975
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835002"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823728"
 ---
-# <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Korzystać z usługi sieci web uczenie maszynowe Azure przy użyciu szablonu aplikacji sieci web
+# <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Korzystanie z usługi sieci web Azure Machine Learning za pomocą szablonu aplikacji sieci web
 
-Możesz utworzyć model predykcyjny i go wdrożyć jako usługę sieci web platformy Azure przy użyciu:
+Mogą tworzyć model predykcyjny i wdrożyć go jako usługę sieci web platformy Azure przy użyciu:
 - Azure Machine Learning Studio.
 - Narzędzia, takie jak R lub Python. 
 
-Po wykonaniu tej można uzyskać dostępu do modelu operationalized przy użyciu interfejsu API REST.
+Po tym modelu zoperacjonalizowanej dostęp przy użyciu interfejsu API REST.
 
-Istnieje wiele sposobów, aby korzystać z interfejsu API REST i uzyskania dostępu do usługi sieci web. Na przykład można napisać aplikację w języku C#, R lub Python za pomocą przykładowy kod wygenerowany przez po wdrożeniu usługi sieci web. (Przykładowy kod jest dostępny w [portal usługi sieci Web usługi Machine Learning](https://services.azureml.net/quickstart) lub na pulpicie nawigacyjnym usługi sieci web w usłudze Machine Learning Studio.) Lub może używać do przykładowego skoroszytu programu Microsoft Excel utworzony w tym samym czasie.
+Istnieje szereg sposobów korzystania z interfejsu API REST i uzyskać dostęp do usługi sieci web. Na przykład napisać aplikację w C#, R lub Python przy użyciu przykładowego kodu automatycznie wygenerowanego podczas wdrażania usługi sieci web. (Przykładowy kod jest dostępny w [portalu usług sieci Web Machine Learning](https://services.azureml.net/quickstart) lub pulpicie nawigacyjnym usługi sieci web w usłudze Machine Learning Studio.) Możesz też przykładowy skoroszyt programu Excel utworzony w tym samym czasie.
 
-Ale jest najszybszym i Najprostszym sposobem uzyskania dostępu do usługi sieci web za pomocą szablonów aplikacji sieci web dostępnych w [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/web-applications/all/).
+Ale to najszybszy i najłatwiejszy sposób dostęp do usługi sieci web za pomocą szablonów aplikacji sieci web dostępnych w [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/web-applications/all/).
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="azure-machine-learning-web-app-templates"></a>Szablony aplikacji sieci web w usłudze Azure Machine Learning
-Szablony aplikacji sieci web dostępne w portalu Azure Marketplace można utworzyć aplikacji sieci web niestandardowego, który zna usługi sieci web dane wejściowe i oczekiwanych rezultatów. Wszystko, co należy zrobić to uzyskania dostępu do aplikacji sieci web do usługi sieci web i danych, a reszta szablonu.
+Szablony aplikacji sieci web dostępnych w witrynie Azure Marketplace można utworzyć niestandardową aplikację internetową znający usługę sieci web dane wejściowe i oczekiwanych wyników. To wszystko, co należy zrobić, uzyskania dostępu do aplikacji sieci web do usługi sieci web i danych, a szablon zajmie się resztą.
 
 Dostępne są dwa szablony:
 
-* [Szablon aplikacji sieci Web usługi Azure ML żądań i odpowiedzi](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)
-* [Szablon aplikacji partii zadań Azure ML wykonywania usługi sieci Web](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)
+* [Szablon aplikacji sieci Web usługi Azure ML odpowiedź na żądanie](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)
+* [Usługa Azure Batch ML — szablonu aplikacji sieci Web usługi wykonywania](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)
 
-Każdy szablon tworzy przykładowej aplikacji ASP.NET przy użyciu identyfikatora URI interfejsu API i klucz dla usługi sieci web. Szablon następnie wdraża aplikację jako witryny sieci Web na platformie Azure. 
+Każdy szablon służy do tworzenia przykładowej aplikacji platformy ASP.NET za pomocą identyfikatora URI interfejsu API i klucza dla usługi sieci web. Szablon następnie aplikacja jest wdrażana jako witryny sieci Web na platformie Azure. 
 
-Szablon usługi żądań i odpowiedzi (RR) do tworzenia aplikacji sieci web, który służy do wysyłania pojedynczy wiersz danych z usługą sieci web, umożliwiającej uzyskanie pojedynczego wyniku. Szablon usługi wykonywania wsadowego (BES) tworzy służącego do wysyłania wiele wierszy danych, aby uzyskać wyniki wiele aplikacji sieci web.
+Szablon usługi odpowiedź na żądanie (RRS) umożliwia utworzenie aplikacji sieci web, które można użyć, aby wysłać pojedynczy wiersz danych do usługi sieci web, umożliwiającej uzyskanie pojedynczego wyniku. Szablon usługi Batch Execution Service (BES) tworzy aplikację internetową, która służy do wysyłania wiele wierszy danych, aby wyświetlić wyniki wielu.
 
-Kodowanie nie jest wymagana do używania tych szablonów. Wystarczy podać klucz interfejsu API i identyfikator URI, a szablon tworzy aplikację.
+Bez kodowania jest wymagana do używania tych szablonów. Po prostu podać klucz interfejsu API i identyfikator URI, a szablon tworzy aplikację.
 
-Aby uzyskać klucz interfejsu API i adres URL żądania usługi sieci web:
+Aby uzyskać klucz interfejsu API i identyfikator URI żądania usługi sieci web:
 
-1. W [usług sieci Web portalu](https://services.azureml.net/quickstart), wybierz pozycję **usług sieci Web** u góry. Lub dla usługi sieci web klasycznego, należy wybrać **klasycznym usługi sieci Web**.
+1. W [portalu usług sieci Web](https://services.azureml.net/quickstart), wybierz opcję **usług sieci Web** u góry. Lub klasyczna usługa sieci web, można wybrać **klasycznych usług sieci Web**.
 2. Wybierz usługę sieci web, który chcesz uzyskać dostęp.
-3. Dla usługi sieci web klasycznego należy wybrać punkt końcowy, który chcesz uzyskać dostęp.
-4. Wybierz **Consume** u góry.
+3. Klasyczna usługa sieci web wybierz punkt końcowy, który chcesz uzyskać dostęp.
+4. Wybierz **zużywania** u góry.
 5. Skopiuj klucz podstawowy lub pomocniczy i zapisz go.
-6. Jeśli tworzysz szablon RRS, skopiuj **żądań i odpowiedzi** identyfikatora URI i zapisz go. Jeśli tworzysz szablon usługi BES, skopiuj **żądań wsadowych** identyfikatora URI i zapisz go.
+6. Jeśli tworzysz szablon RRS, skopiuj **odpowiedź na żądanie** identyfikatora URI i zapisz go. Jeśli tworzysz szablon usługi BES Skopiuj **żądań wsadowych** identyfikatora URI i zapisz go.
 
 
-## <a name="how-to-use-the-request-response-service-template"></a>Jak przy użyciu szablonu usługi żądań i odpowiedzi
-Wykonaj następujące kroki, aby użyć szablonu aplikacji sieci web rekordów zasobów, jak pokazano na poniższym diagramie.
+## <a name="how-to-use-the-request-response-service-template"></a>Sposób używania szablonu usługi odpowiedź na żądanie
+Wykonaj następujące kroki, aby użyć szablonu aplikacji sieci web RRS, jak pokazano na poniższym diagramie.
 
-![Proces szablon rekordy zasobów sieci web][image1]
+![Proces, aby użyć szablonu sieci web RRS][image1]
 
 
 <!--    ![API Key][image3] -->
@@ -76,57 +77,57 @@ Wykonaj następujące kroki, aby użyć szablonu aplikacji sieci web rekordów z
     ![Request URI][image4] -->
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz **nowy**, wyszukaj i wybierz **aplikacji sieci Web usługi Azure ML żądanie-odpowiedź**, a następnie wybierz **Utwórz**. 
+2. Wybierz **nowy**, wyszukiwanie i wybieranie **usługi Azure ML odpowiedź na żądanie usługi Web App**, a następnie wybierz pozycję **Utwórz**. 
 3. W **Utwórz** okienka:
    
-   * Nadaj unikatową nazwę aplikacji sieci web. Adres URL aplikacji sieci web będzie tej nazwy, a następnie **. azurewebsites.net**. Na przykład **http://carprediction.azurewebsites.net**.
-   * Wybierz subskrypcję platformy Azure i usługi, w których jest uruchomiona usługa sieci web.
+   * Nadaj aplikacji sieci web unikatową nazwę. Adres URL aplikacji sieci web będzie to nazwa, następuje **. azurewebsites.net**. Na przykład **http://carprediction.azurewebsites.net**.
+   * Wybierz subskrypcję platformy Azure i usług, w których jest uruchomiona usługa sieci web.
    * Wybierz pozycję **Utwórz**.
      
    ![Tworzenie aplikacji internetowej][image5]
 
-4. Po zakończeniu Azure wdrażanie aplikacji sieci web wybierz **adres URL** w ustawieniach aplikacji sieci web strony na platformie Azure, lub wprowadź adres URL w przeglądarce sieci web. Na przykład wprowadź **http://carprediction.azurewebsites.net**.
-5. Podczas pierwszego uruchomienia aplikacji sieci web, pyta o **adresu URL przesyłania interfejsu API** i **klucz interfejsu API**. Wprowadź wartości, które zostały wcześniej zapisane (żądanie identyfikatora URI i klucz API,). Wybierz **przesłać**.
+4. Po zakończeniu Azure podczas wdrażania aplikacji sieci web, wybierz **adresu URL** w ustawieniach aplikacji sieci web na platformie Azure, lub strony wprowadź adres URL w przeglądarce sieci web. Na przykład, wprowadź **http://carprediction.azurewebsites.net**.
+5. Po uruchomieniu pierwszych aplikacji sieci web, prosi o **adresu URL interfejsu API wpisu** i **klucz interfejsu API**. Wprowadź wartości, które zostały wcześniej zapisane (żądanie identyfikatora URI i klucz API,). Wybierz **przesłać**.
      
-   ![Wprowadź post identyfikator URI i klucz API][image6]
+   ![Po wprowadź identyfikator URI i klucz API][image6]
 
-6. Aplikacja sieci web jest wyświetlana jego **konfiguracji aplikacji sieci Web** strony z bieżącymi ustawieniami usługi sieci web. Tutaj można wprowadzić zmiany ustawień, które korzysta z aplikacji sieci web.
+6. Aplikacja sieci web jest wyświetlana jego **konfigurację aplikacji sieci Web** strony z bieżącymi ustawieniami usługi sieci web. W tym miejscu można wprowadzić zmiany do ustawień, których używa aplikacja sieci web.
    
    > [!NOTE]
-   > Zmiana ustawień w tym miejscu zmienia tylko ich tej aplikacji sieci web. Go nie powoduje zmiany ustawień domyślnych usługi sieci web. Na przykład w przypadku zmiany tekstu w **opis** w tym miejscu nie zmienia opis wyświetlane na pulpicie nawigacyjnym usługi sieci web w usłudze Machine Learning Studio.
+   > Zmiana ustawień w tym miejscu zmienia tylko je dla tej aplikacji sieci web. Go nie powoduje zmiany ustawień domyślnych usługi sieci web. Na przykład w przypadku zmiany tekstu w **opis** w tym miejscu nie zmienia opis wyświetlany na pulpicie nawigacyjnym usługi sieci web w usłudze Machine Learning Studio.
    > 
    > 
    
-    Gdy wszystko będzie gotowe, wybierz **zapisać zmiany**, a następnie wybierz **przejdź do strony głównej**.
+    Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz zmiany**, a następnie wybierz pozycję **przejdź do strony głównej**.
 
-7. Na stronie głównej można wprowadzić wartości do wysłania do usługi sieci web. Wybierz **przesyłania** gdy wszystko będzie gotowe, i zostanie zwrócony wynik.
+7. Na stronie głównej można wprowadzić wartości do wysłania do usługi sieci web. Wybierz **przesyłania** gdy wszystko będzie gotowe, a wynik zostanie zwrócony.
 
-Jeśli chcesz powrócić do **konfiguracji** strony, przejdź do **setting.aspx** strony aplikacji sieci web. Na przykład, przejdź do **http://carprediction.azurewebsites.net/setting.aspx**. Zostanie wyświetlony monit o ponowne wprowadzenie klucza interfejsu API. Należy to dostęp do strony Ustawienia i aktualizować.
+Jeśli chcesz powrócić do **konfiguracji** strony, przejdź do **setting.aspx** stronie aplikacji sieci web. Na przykład, przejdź do **http://carprediction.azurewebsites.net/setting.aspx**. Zostanie wyświetlony monit ponownie wprowadź klucz interfejsu API. Potrzebujesz, aby uzyskać dostęp do strony Ustawienia i aktualizować.
 
-Można zatrzymać, ponownie uruchomić lub usunąć aplikacji sieci web w portalu Azure, takich jak każda inna aplikacja sieci web. Tak długo, jak działa, możesz przejść na adres domowej sieci web i wprowadź nowe wartości.
+Możesz zatrzymać, ponownie uruchomić lub usunąć aplikacji sieci web w witrynie Azure portal, jak dowolną inną aplikację sieci web. Tak długo, jak działa, możesz przejść do adresu internetowego głównego i wprowadź nowe wartości.
 
-## <a name="how-to-use-the-batch-execution-service-template"></a>Jak przy użyciu szablonu usługi wykonywania wsadowego
-Można użyć szablonu aplikacji sieci web usługi BES w taki sam sposób jak rekordy zasobów szablonu. Różnica polega na tym, że można użyć utworzonej aplikacji sieci web do przesyłania wiele wierszy danych i odbierania wiele wyników.
+## <a name="how-to-use-the-batch-execution-service-template"></a>Jak używać szablonu usługę wykonywania wsadowego
+Za pomocą szablonu aplikacji sieci web usługi BES w taki sam sposób jak rekordy zasobów szablonu. Różnica polega na tym, czy można użyć utworzonej aplikacji sieci web możesz przesłać wiele wierszy danych i otrzymywać wiele wyników.
 
-Wartości wejściowe dla usługi sieci web wykonywania wsadowego mogą pochodzić z usługi Azure Storage lub pliku lokalnego. Wyniki są przechowywane w kontenerze magazynu Azure. Należy więc, kontener magazynu Azure do przechowywania wyników, które zwraca aplikacji sieci web. Należy również przygotowywanie danych wejściowych.
+Wartości wejściowe dla usługi sieci web wykonywanie wsadowe mogą pochodzić z usługi Azure Storage lub lokalny plik. Wyniki są przechowywane w kontenerze usługi Azure storage. Dlatego należy kontenera usługi Azure storage do przechowywania wyników, które zwraca aplikacji sieci web. Należy również przygotowywanie danych wejściowych.
 
 ![Proces, aby użyć szablonu sieci web usługi BES][image2]
 
-1. Postępuj zgodnie z tą samą procedurą, aby utworzyć aplikację sieci web usługi BES, podobnie jak w przypadku szablonu rekordy zasobów. Jednak w takim przypadku przejdź do [szablonu aplikacji sieci Web Azure ML partii wykonywania usługi](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) aby otworzyć szablon usługi BES w portalu Azure Marketplace. Wybierz **tworzenie aplikacji sieci Web**.
+1. Wykonaj tę samą procedurę do tworzenia aplikacji sieci web usługi BES, jak w przypadku szablonu rekordy zasobów. Ale w takim przypadku przejdź do [szablonu aplikacji sieci Web Azure ML partii wykonywania usługi](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) aby otworzyć szablon usługi BES w witrynie Azure Marketplace. Wybierz **tworzenie aplikacji sieci Web**.
 
-2. Aby określić, w którym wyniki przechowywane, wprowadź informacje o kontenerze docelowego na stronie głównej aplikacji sieci web. Również określić, gdzie aplikacja sieci web można uzyskać wartości wejściowe: w pliku lokalnym lub w kontenerze magazynu Azure.
+2. Aby określić, w którym wyniki, przechowywane, wprowadź informacje kontener docelowy, na stronie głównej aplikacji sieci web. Również określić, gdzie w aplikacji sieci web można uzyskać wartości wejściowe: w pliku lokalnym lub w kontenerze usługi Azure storage.
    Wybierz **przesłać**.
    
-   ![Informacje o magazynu][image7]
+   ![Informacje dotyczące magazynu][image7]
 
-Aplikacja sieci web wyświetla stronę o stanie zadania. Po zakończeniu zadania można pobrać lokalizacji wyników w magazynie obiektów Blob Azure. Istnieje również możliwość pobierania wyniki do pliku lokalnego.
+Aplikacja sieci web wyświetla stronę o stanie zadania. Po zakończeniu zadania możesz uzyskać lokalizację wyników w usłudze Azure Blob storage. Istnieje również możliwość pobierania wyniki do pliku lokalnego.
 
 ## <a name="for-more-information"></a>Więcej informacji
-Aby dowiedzieć się więcej o:
+Aby dowiedzieć się więcej:
 
-* Tworzenie eksperymentu uczenia maszynowego o usłudze Machine Learning Studio, zobacz [Tworzenie pierwszego eksperymentu w usłudze Azure Machine Learning Studio](create-experiment.md).
-* Jak wdrożyć jako usługę sieci web eksperymentu uczenia maszynowego, zobacz [wdrażanie usługi sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md).
-* Inne sposoby uzyskania dostępu do usługi sieci web, zobacz [jak korzystać z usługi sieci web Azure Machine Learning](consume-web-services.md).
+* Tworzenie eksperymentu usługi machine learning za pomocą usługi Machine Learning Studio, zobacz [Tworzenie pierwszego eksperymentu w usłudze Azure Machine Learning Studio](create-experiment.md).
+* Jak wdrożyć eksperymentu usługi machine learning jako usługę sieci web, zobacz [wdrażanie usługi sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md).
+* Inne sposoby uzyskania dostępu do usługi sieci web, zobacz [sposobu korzystania z usługi sieci web Azure Machine Learning](consume-web-services.md).
 
 [image1]: media/consume-web-service-with-web-app-template/rrs-web-template-flow.png
 [image2]: media/consume-web-service-with-web-app-template/bes-web-template-flow.png

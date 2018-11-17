@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: b01dafcda9ed8fe14e3f0d50daf25bae1658faee
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: e5b2f071370ec6551e05960c708e2b83918d83ff
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282632"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821382"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Używanie danych monitorowania na platformie Azure
 
@@ -46,6 +46,6 @@ Na platformie Azure łączymy dane monitorowania w jednym miejscu dzięki usłud
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [metryk usługi Azure Monitor](../monitoring/monitoring-data-collection.md)
+- Dowiedz się więcej o [metryk usługi Azure Monitor](../azure-monitor/platform/data-collection.md)
 - Dowiedz się więcej o [dziennika aktywności platformy Azure](monitoring-overview-activity-logs.md)
 - Dowiedz się więcej o [dzienniki diagnostyczne platformy Azure](monitoring-overview-of-diagnostic-logs.md)

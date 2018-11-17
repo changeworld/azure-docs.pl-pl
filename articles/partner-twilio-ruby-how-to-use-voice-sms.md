@@ -14,12 +14,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 41b5383dd319f2cb6fad4316e963f86dd7a4bc61
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 128eff5f628a0a4bf9f67e988ab7d3e2f22ed767
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036612"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823745"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Sposób użycia usługi Twilio dla połączeń głosowych i SMS funkcji w języku Ruby
 Ten przewodnik pokazuje sposób wykonywania typowych zadań programistycznych w usłudze interfejsu API usługi Twilio, na platformie Azure. Omówione scenariusze obejmują tworzenie połączenia telefonicznego i wysyłanie wiadomości wiadomości usługi (SMS). Aby uzyskać więcej informacji na temat usługi Twilio i używania połączeń głosowych i wiadomości SMS w swoich aplikacjach, zobacz [następne kroki](#NextSteps) sekcji.
@@ -146,7 +146,7 @@ Jeśli open up `http://yourdomain.cloudapp.net/make_call` w przeglądarce, któr
 
 Trzeci parametr (`url`) jest adresem URL, który żąda Twilio, aby uzyskać instrukcje, co należy zrobić po nawiązaniu połączenia. W takim przypadku firma Microsoft konfiguracji, a adres URL (`http://yourdomain.cloudapp.net`), zwraca prosty dokument TwiML i używa `<Say>` zlecenie pewne zamiany tekstu na mowę i powiedzieć "Hello małp", aby osobę otrzymania wywołania.
 
-## <a id="howto_recieve_sms"></a>Porady: Odbierz wiadomość SMS
+## <a id="howto_receive_sms"></a>Porady: odbieranie wiadomości SMS
 W poprzednim przykładzie mamy zainicjowane **wychodzących** połączeń telefonicznych. Ten czas, użyjemy numer telefonu Twilio z dużą dozą podczas rejestracji do procesu **przychodzących** wiadomości SMS.
 
 Po pierwsze, zaloguj się do Twojej [pulpit nawigacyjny Twilio][twilio_account]. Kliknij pozycję "Cyfry" w górnym okienku nawigacji, a następnie kliknij polecenie numer usługi Twilio, do którego zostały podane. Zostaną wyświetlone dwa adresy URL, które można skonfigurować. Adres URL żądania adresie URL żądania głosowe i wiadomość SMS. Są to adresy URL, które wywołuje Twilio, zawsze, gdy rozmowy telefonicznej lub wiadomości SMS są wysyłane do numeru. Adresy URL są również określane jako "web hooks".

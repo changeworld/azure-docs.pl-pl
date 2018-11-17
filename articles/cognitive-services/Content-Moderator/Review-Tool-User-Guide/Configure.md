@@ -1,6 +1,6 @@
 ---
-title: Skonfiguruj ustawienia narzędzia przeglądu zawartości moderatora | Dokumentacja firmy Microsoft
-description: Skonfiguruj lub pobrać zespołu, tagi, łączniki, przepływy pracy i poświadczeń.
+title: Konfiguruj ustawienia narzędzia przeglądu Content Moderator | Dokumentacja firmy Microsoft
+description: Konfigurowanie lub zespołu, tagi, łączniki, przepływy pracy i poświadczeń.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,47 +9,47 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: a3432a1d8f424fbe78570f47b774c6e7942e16b1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2ffed5e561cf9988ec10ecb7e10318d148281057
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346956"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51851542"
 ---
-# <a name="about-review-tool-settings"></a>Ustawienia narzędzia przeglądu — informacje #
+# <a name="review-tool-settings"></a>Przejrzyj ustawienia narzędzia #
 
-Na karcie Ustawienia na pulpicie nawigacyjnym narzędzie przeglądu, jest łatwy do definiowania i zmienić wiele składników.
+Na karcie ustawień na pulpicie nawigacyjnym narzędzia przeglądu, jest łatwy do definiowania i zmienić wiele składników.
 
-![Ustawienia przeglądu moderatora zawartości](images/settings-1.png)
+![Content Moderator Przejrzyj ustawienia](images/settings-1.png)
 
-## <a name="team-and-subteams"></a>Zespołu i Subteams ## 
+## <a name="team-and-subteams"></a>Zespół i zespoły podrzędne ## 
 
-Zarządzanie zespołu i subteams na tej karcie. Może mieć tylko jeden zespół, ale można [tworzenie wielu subteams](subteams.md) i wysyłanie zaproszeń do elementów członkowskich w przyszłości. Po ma wysyłane zaprasza, można monitorować je, zmienianie uprawnień dla członków zespołu i zapraszanie innych użytkowników. Po członków zespołu został zatwierdzony zaproszenie, można przypisać te elementy członkowskie do różnych subteams. Można ustawić członków zespołu role administratorów lub osoby dokonujące przeglądu: Administratorzy mogą zapraszać innych użytkowników podczas nie osoby dokonujące przeglądu.
+Zarządzanie zespołu i zespoły podrzędne za pomocą tej karty. Może mieć tylko jeden zespół, ale możesz [tworzenie wielu zespoły podrzędne](subteams.md) i Wyślij zaproszenia do elementów członkowskich w przyszłości. Po zaproszeń zostały wysłane, można monitorować je, zmienić uprawnienia dla członków zespołu i zapraszać innych użytkowników. Po członkowie zespołu mają zaakceptował Twoje zaproszenie, można przypisać te elementy członkowskie, aby różne zespoły podrzędne. Możesz ustawić ról członków zespołu do administratorów lub recenzentów: Administratorzy mogą zapraszać innych użytkowników, gdy recenzenci nie.
 
-![Ustawienia zespołu moderatora zawartości](images/settings-2-team.png)
+![Content Moderator ustawienia zespołu](images/settings-2-team.png)
 
 ## <a name="tags"></a>Tagi ##
 
-Jest to, gdzie można [Zdefiniuj niestandardowe tagi](tags.md) wprowadzając krótki kod, nazwę i opis dla tagów. Po jej utworzeniu, jest ona dostępna w recenzji. Tagi różne dla różnych przeglądami służą przez włączenie widoczności i Włącz.
+Jest to, gdzie można [zdefiniować niestandardowe tagi](tags.md) , wprowadzając krótki kod, nazwę i opis dla swoich tagów. Po jej utworzeniu, jest ona dostępna podczas przeglądów. Przez włączenie widoczności i Włącz, można użyć różnych znaczników dla różnych recenzji.
 
-![Ustawienia tagów moderatora zawartości](images/settings-3-tags.png)
+![Pakiet Content Moderator tagów ustawienia](images/settings-3-tags.png)
 
 ## <a name="connectors"></a>Łączniki ##
 
-Przepływy pracy Dodawanie funkcji za pomocą łączników do komunikowania się za pomocą narzędzia przeglądu. Narzędzie przeglądu wywołuje interfejsy API moderatora zawartości z domyślnego przepływu pracy dla moderowanie zawartości. Gdy zarejestrujesz się narzędzie przejrzyj go auto przepisy poświadczenia moderatora interfejsu API. Obsługuje ona również integrowanie innych łącznika interfejsów API, jak długo łącznika jest dostępna. Wprowadzono kilka łączników dostępne poza pole.
+Przepływy pracy Dodawanie funkcji za pomocą łączników do komunikowania się za pomocą narzędzia do przeglądu. Narzędzie do przeglądu wywołuje interfejsy API Moderator zawartości przy użyciu domyślnego przepływu pracy dla moderowanie zawartości. Gdy rejestrujesz się narzędzie do przeglądu go auto przepisy poświadczenia Moderator, interfejsu API. Obsługuje ona również integracji innych interfejsów API, łącznika tak długo, jak łącznik jest dostępna. Udostępniliśmy kilka łączników poza pole.
 
-[Kartę łączniki](connectors.md) zarządzają łączników. Można dodać lub usunąć łączników i znaleźć klucza subskrypcji danego łącznika. Kliknij przycisk Połącz je dodać do niestandardowych przepływów pracy. 
+[Kartą łączników](connectors.md) zarządzają łączników. Można dodać lub usuwanie łączników i znaleźć swój klucz subskrypcji dla określonego łącznika. Kliknij pozycję Połącz, aby dodać je do niestandardowych przepływów pracy. 
 
-![Ustawienia łączniki moderatora zawartości](images/settings-4-connectors.png)
+![Moderator łączników ustawienia zawartości](images/settings-4-connectors.png)
 
 ## <a name="workflows"></a>Przepływy ##
 
-Zarządzaj przepływami pracy, na karcie przepływów pracy. Przepływy pracy można przetestować, przekazując przykładowy plik. Możesz również [Zdefiniuj niestandardowe przepływy pracy](workflows.md) obrazu i tekstu przy użyciu dostępnych łączników interfejsu API (znajdujący się na karcie łączniki). 
+Zarządzaj przepływami pracy, na karcie przepływów pracy. Aby przetestować przepływów pracy, przekazywanie przykładowego pliku. Możesz również [Definiowanie niestandardowych przepływów pracy](workflows.md) obrazów i tekstu przy użyciu dostępnych łączników interfejsu API (znajdujący się na karcie łączniki). 
 
-![Ustawienia przepływu pracy moderatora zawartości](images/settings-5-workflows.png)
+![Content Moderator ustawienia przepływu pracy](images/settings-5-workflows.png)
 
 ## <a name="credentials"></a>Poświadczenia ##
 
-Ta karta zapewnia szybki dostęp do klucz subskrypcji moderatora zawartości, konieczne będzie korzystanie z interfejsów API, uwzględnione z moderatora zawartości (łagodzenia obrazu, tekst łagodzenia Zarządzanie listami, przepływu pracy i przejrzyj interfejsów API).
+Ta karta zapewnia szybki dostęp do klucz subskrypcji pakietu Content Moderator, musisz użyć uwzględnione interfejsy API pakietu Content moderator (Moderowanie obrazów, Moderowanie tekstu, zarządzanie listami, przepływu pracy i przeglądu interfejsów API).
  
-![Poświadczenia moderatora zawartości](images/settings-6-credentials.png)
+![Poświadczenia usługi Content Moderator](images/settings-6-credentials.png)

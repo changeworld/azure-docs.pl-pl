@@ -1,11 +1,12 @@
 ---
-title: Skopiuj innych danych nauki przykłady — usługi Azure Machine Learning | Dokumentacja firmy Microsoft
-description: 'Tajemnice handlowe, dane nauki: inne osoby do pracy można pobrać. Pobierz przykłady learning maszyny z galerii AI Azure.'
-keywords: Przykłady analizy danych, machine learning przykład algorytm klastrowanie przykład algorytm klastrowanie
+title: Skopiuj innych nauki przykładów danych — usługa Azure Machine Learning | Dokumentacja firmy Microsoft
+description: 'Tajemnice handlowe do nauki o danych: Uzyskaj innych do pracy za Ciebie. Pobieranie przykładów uczenia maszynowego w galerii sztucznej Inteligencji platformy Azure.'
+keywords: przykłady do nauki o danych, machine learning przykład algorytm klastrowanie przykład algorytm klastrowanie
 services: machine-learning
 documentationcenter: na
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cjgronlund
 ms.assetid: ec2be823-c325-4ad8-b8b2-3e664f1a44b4
@@ -16,86 +17,86 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
-ms.openlocfilehash: 84c6f4a1cedc0a04ee820f1de60f51e653f28425
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 66af7e21943fb82826717ffef6e6ed153f1f5dd7
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833883"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823524"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopiowanie pracy innych osób w celu przeprowadzenia analizy danych
-## <a name="video-5-data-science-for-beginners-series"></a>Wideo 5: Nauki danych serii dla początkujących
-Jeden tajemnice handlowe, dane nauki otrzymuje inne osoby do pracy dla Ciebie. Znajdź klastrowania przykład algorytmu w galerii Azure AI do użycia na potrzeby własne eksperymentu uczenia maszynowego.
+## <a name="video-5-data-science-for-beginners-series"></a>Wideo 5: Analiza danych dla początkujących serii
+Jedną z tajemnice handlowe do nauki o danych otrzymuje inni użytkownicy będą mogli wykonywać swoją pracę za Ciebie. Znajdź klastrowania przykład algorytm w galerii sztucznej Inteligencji platformy Azure na potrzeby własnych eksperymentu uczenia maszynowego.
 
 > [!IMPORTANT]
-> **Cortana Intelligence Gallery** zmieniono **galerii Azure AI**. W związku z tym tekst i obrazy, w tym wykaz nieznacznie różnić wideo, która używa nazwy wcześniejsze.
+> **Cortana Intelligence Gallery** zmieniono **galerii Azure AI**. W rezultacie tekstu i obrazów w tej transkrypcji różnią się nieco od wideo, który używa poprzednia nazwa.
 >
 
-Aby uzyskać wykorzystanie serii, obejrzyj je wszystkie. [Przejdź do listy filmów wideo](#other-videos-in-this-series)
+Aby maksymalnie wykorzystać możliwości serii, obejrzyj je wszystkie. [Przejdź do listy filmów wideo](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/player]
 >
 >
 
-## <a name="other-videos-in-this-series"></a>Inne pliki wideo w tej serii
-*Nauki danych dla początkujących* jest szybkie wprowadzenie do analizy danych w pięciu krótkie wideo.
+## <a name="other-videos-in-this-series"></a>Inne filmy wideo w tej serii
+*Przetwarzanie danych dla początkujących* jest szybkie wprowadzenie do nauki o danych w pięciu krótkich filmach wideo.
 
-* Wideo 1: [danych nauki odpowiedzi na pytania 5](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek.)*
-* Wideo 2: [jest gotowy do analizy danych danych?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 s 56 min)*
-* Wideo 3: [Zadaj pytanie może odpowiedzieć z danymi](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 s 17 min)*
-* Wideo 4: [prognozowania odpowiedzi z modelu prostego](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 s 42 min)*
-* Wideo 5: Kopiowanie pracy innych osób nauki danych
+* Wideo 1: [5 pytań, analiza danych daje odpowiedzi](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek.)*
+* Wideo 2: [czy Twoje dane są gotowe na analizę danych?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek.)*
+* Wideo 3: [Zadaj pytanie, można odpowiedzieć za pomocą danych](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek.)*
+* Wideo 4: [Prognozowanie odpowiedzi za pomocą prostego modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sek.)*
+* Wideo 5: Kopiowanie pracy innych osób w celu przeprowadzenia analizy danych
 
-## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>Zapis: Kopiowanie pracy innych osób nauki danych
-"Nauki danych dla początkujących." piąty wideo w serii — Zapraszamy!
+## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>Zapis: Kopiowanie pracy innych osób w celu przeprowadzenia analizy danych
+Zapraszamy do zapoznania się piąty wideo z serii "Przetwarzanie danych dla początkujących."
 
-W tym przypadku dowiesz się, miejsce do znajdowania przykłady, których można przekazania z jako punktu wyjścia do pracy własne. Może być lepsze wykorzystanie ten film, jeśli najpierw obejrzeć wideo wcześniej w tej serii.
+W tym, co odkryjesz miejsce do przykładów wyszukiwania, które można zapożyczonych z jako punktu wyjścia dla własnej pracy. Jeśli najpierw Obejrzyj wcześniej filmów wideo w tej serii, możesz otrzymać maksymalnie wykorzystać ten film wideo.
 
-Jeden tajemnice handlowe, dane nauki otrzymuje inne osoby do pracy dla Ciebie.
+Jedną z tajemnice handlowe do nauki o danych otrzymuje inni użytkownicy będą mogli wykonywać swoją pracę za Ciebie.
 
 ## <a name="find-examples-in-the-azure-ai-gallery"></a>Znajdź przykłady w galerii Azure AI
 
-Firma Microsoft jest oparta na chmurze usługa o nazwie [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) bardzo Zapraszamy spróbuj bezpłatnie. Zapewnia ona obszar roboczy w przypadku, gdy możesz eksperymentować z algorytmów uczenia maszynowego różnych oraz, jeśli masz już rozwiązania określone, będzie można uruchomić jako usługę sieci web.
+Firma Microsoft zapewnia oparte na chmurze usługi o nazwie [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) już Zapraszamy do bezpłatnego wypróbowania. Zapewnia ona obszar roboczy w przypadku, gdy możesz eksperymentować z algorytmów uczenia maszynowego różnych oraz, jeśli masz określone rozwiązania, możesz uruchomić go jako usługę sieci web.
 
-Coś jest częścią tej usługi o nazwie  **[galerii Azure AI](https://gallery.cortanaintelligence.com/)**. Zawiera zasoby, łącznie z kolekcją usługi Azure Machine Learning eksperymenty lub modeli, które osoby utworzone i przyczyniły się do innych użytkowników. Te eksperymenty są to dobry sposób na myśli i twardych pracy innych ułatwiających rozpoczęcie pracy na własnych rozwiązań. Wszyscy jest Zapraszamy do przeglądania przy jego użyciu.
+Ta usługa jest to coś o nazwie  **[galerii Azure AI](https://gallery.cortanaintelligence.com/)**. Zawiera zasoby, w tym zestaw eksperymentów w usłudze Azure Machine Learning i modeli, które osoby mają wbudowane i przyczyniały się innym użytkownikom. Te doświadczenia to doskonały sposób myślenia i trudną pracę innych osób, aby rozpocząć pracę na własnych rozwiązań. Wszyscy jest Zapraszamy do przeglądania przez nią.
 
 ![Galeria sztucznej inteligencji platformy Azure](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
-Jeśli klikniesz przycisk **eksperymenty** u góry, zobaczysz liczba najbardziej aktualne i popularne eksperymenty w galerii. Można przeszukiwać reszty eksperymentów, klikając **Przeglądaj wszystko** w górnej części ekranu i można wprowadzić terminy wyszukiwania i wybrać filtry wyszukiwania.
+Jeśli klikniesz **eksperymentów** u góry strony, zobaczysz liczbę najbardziej aktualne i popularne eksperymenty w galerii. Możesz wyszukać rest eksperymentów, klikając **Przeglądaj wszystkie** w górnej części ekranu, i można wprowadzić terminy wyszukiwania, a następnie wybierz filtry wyszukiwania.
 
-## <a name="find-and-use-a-clustering-algorithm-example"></a>Znajdowanie i używanie klastrowania przykład algorytmu
-Tak, na przykład, załóżmy, że chcesz zobaczyć przykład jak klaster działa, możesz wyszukać **"klaster odchylenia"** eksperymentów.
+## <a name="find-and-use-a-clustering-algorithm-example"></a>Wyszukiwanie i korzystanie z klastrowania przykład algorytm
+Tak, na przykład załóżmy, że chcesz zobaczyć przykład jak klaster działa, dzięki czemu możesz wyszukać **"klastrowanie odchylenia"** eksperymentów.
 
-![Wyszukaj klastrowanie eksperymenty](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/search-for-clustering-experiments.png)
+![Wyszukaj klastrowania eksperymentów](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/search-for-clustering-experiments.png)
 
-W tym miejscu jest interesujące którego ktoś przyczyniły się do galerii.
+Oto co interesujące, osoba mówiąca w galerii.
 
 ![Klastrowanie eksperymentu](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment.png)
 
-Kliknięcie tego doświadczenia i pobrać strony sieci web, który opisuje pracy, w którym wykonano to współautora, wraz z niektórych ich wyników.
+Kliknij przycisk tego eksperymentu, a otrzymasz strona internetowa, która zawiera opis pracy, którą Współautor tego, czy wraz z niektórych ich wyników.
 
 ![Klastrowanie eksperymentu opis strony](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment-description-page.png)
 
-Powiadomienie linku **Otwórz w Studio**.
+Powiadomienie łącza, który mówi **Otwórz w programie Studio**.
 
 ![Otwórz w Studio przycisku](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
 
-Kliknięciu na tej i zajmuje mnie prawo, aby **Azure Machine Learning Studio**. Tworzy kopię eksperyment i umieszczenie go we własnych obszaru roboczego. W tym dla współautorów zestawu danych, przetwarzanie, który tak, wszystkie algorytmy, które są używane, i jak zapisane wyniki.
+Mogę kliknąć, i potrzebny mnie za prawo do usunięcia **Azure Machine Learning Studio**. Tworzy kopię eksperymentu i umieszcza go w własnego obszaru roboczego. W tym właściciela wkładu zestawu danych, przetwarzanie, które tak, wszystkie algorytmy, które są używane i jak zapisać wyniki.
 
-![Otwórz eksperyment galerii w usłudze Machine Learning Studio — przykład algorytm klastrowanie](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
+![Otwórz eksperyment galerii w usłudze Machine Learning Studio — klastrowania przykład algorytm](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
 
-I już punkt początkowy. I wymienić swoje własne dane i wykonać własne Dostosowywanie modelu. Daje mnie rozpoczęcia pracy i pozwala kompilacji na pracy osoby znające naprawdę co robią.
+I już punkt początkowy. Mogę wymienić ich własne dane i czy moje własne Dostosowywanie modelu. Dzięki temu mnie rozpoczęcia pracy i pozwala tworzyć na pracy osób, które rzeczywiście wiesz, co robią.
 
-## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>Znaleźć eksperymenty, które przedstawiają machine learning techniki
-Istnieją inne eksperymenty w [galerii Azure AI](https://gallery.cortanaintelligence.com) zostały które przyczyniły się specjalnie w celu zapewnienia porad przykłady dla nowych użytkowników programu analizy danych. Na przykład istnieje eksperymentu w galerii, który demonstruje sposób obsługi brakujące wartości ([metody obsługi brakujące wartości](https://gallery.cortanaintelligence.com/Experiment/Methods-for-handling-missing-values-1)). Prowadzi użytkownika przez 15 różne sposoby zastępując wartości puste i zawiera informacje o zalet każda metoda i kiedy należy używać go.
+## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>Znaleźć eksperymenty, które pokazują techniki uczenia maszyny
+Istnieją inne eksperymenty w [galerii Azure AI](https://gallery.cortanaintelligence.com) , zostały zamieszczone specjalnie w celu zapewnienia przykłady porad dla osób, które są nowe, zaawansowane dane naukowe. Na przykład istnieje eksperymentu w galerii, który demonstruje sposób obsługi brakujące wartości ([metody obsługi brakujące wartości](https://gallery.cortanaintelligence.com/Experiment/Methods-for-handling-missing-values-1)). Prowadzi użytkownika przez 15 różne sposoby podstawiając wartości puste i zawiera informacje o korzyści każda metoda i kiedy go używać.
 
-![Otwórz eksperymenty w galerii w usłudze Machine Learning Studio - metod dla brakujących wartości](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
+![Eksperymenty w galerii, Otwórz w usłudze Machine Learning Studio — metody dla brakujących wartości](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
 
-[Galerii Azure AI](https://gallery.cortanaintelligence.com) jest miejscem, aby znaleźć eksperymenty pracy, które służy jako punkt początkowy dla własnych rozwiązań.
+[Galeria sztucznej Inteligencji platformy Azure](https://gallery.cortanaintelligence.com) jest miejscem, aby znaleźć eksperymenty pracy, w których można użyć jako punktu wyjścia dla własnych rozwiązań.
 
-Należy koniecznie zapoznaj się z innych plików wideo "Danych nauki dla początkujących" z Microsoft Azure Machine Learning.
+Pamiętaj sprawdzić inne filmy wideo "Data Science dla początkujących" z usługi Microsoft Azure Machine Learning.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Spróbuj pierwszego eksperymentu analizy danych przy użyciu usługi Azure Machine Learning](create-experiment.md)
-* [Wprowadzenie do uczenia maszynowego w systemie Microsoft Azure](what-is-machine-learning.md)
+* [Spróbuj pierwszy eksperyment dotyczący przetwarzania danych, za pomocą usługi Azure Machine Learning](create-experiment.md)
+* [Wprowadzenie do usługi Machine Learning na Microsoft Azure](what-is-machine-learning.md)

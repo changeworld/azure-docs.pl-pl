@@ -1,10 +1,11 @@
 ---
-title: 'Krok 6: Dostęp do usługi Machine Learning Web | Dokumentacja firmy Microsoft'
-description: 'Krok 6 opracowanie wskazówki rozwiązanie predykcyjne: dostęp do usługi sieci Web Azure Machine Learning active.'
+title: 'Krok 6: Dostęp do usługi Machine Learning w sieci Web | Dokumentacja firmy Microsoft'
+description: 'Krok 6 programowanie przewodnik rozwiązania do analizy predykcyjnej: dostęp do usługi active Azure Machine Learning w sieci Web.'
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 6a65c89a-40ab-4673-8dd8-8eee0a150e3b
@@ -15,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: be63a04d0fe71039b19eb6bc0678a319f622a811
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: abb94165d08a9f4e45924d71ed11a088d662339e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836708"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822163"
 ---
 # <a name="walkthrough-step-6-access-the-azure-machine-learning-web-service"></a>Przewodnik, krok 6. Dostęp do usługi sieci Web Azure Machine Learning
 
-Jest to ostatni krok wskazówki, [tworzenie rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md)
+Jest to ostatni krok tego przewodnika, [tworzenia rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 
 1. [Tworzenie obszaru roboczego usługi Machine Learning](walkthrough-1-create-ml-workspace.md)
 2. [Przekazywanie istniejących danych](walkthrough-2-upload-data.md)
@@ -34,20 +35,20 @@ Jest to ostatni krok wskazówki, [tworzenie rozwiązania analizy predykcyjnej w 
 6. **Dostęp do usługi sieci Web**
 
 - - -
-Usługi sieci web, która używa modelu prognozowania ryzyko kredytowe wdrożyliśmy w poprzednim kroku, w tym przewodniku. Teraz użytkownicy mogą wysyłać dane do niego i otrzymywania wyników. 
+W poprzednim kroku, w tym przewodniku wdrożyliśmy usługę internetową, która używa nasz model prognozowania ryzyko kredytowe. Teraz użytkownicy będą mogli wysyłać dane i otrzymywania wyników. 
 
-Usługa sieci Web jest usługą sieci web platformy Azure, która umożliwia odbieranie i zwrócić dane przy użyciu interfejsów API REST w jeden z dwóch sposobów:  
+Usługi sieci Web to usługa sieci web platformy Azure, która może odbierać i zwracać dane przy użyciu interfejsów API REST w jeden z dwóch sposobów:  
 
-* **Żądanie/odpowiedź** — użytkownik wysyła co najmniej jeden wiersz danych środki do usługi przy użyciu protokołu HTTP, a usługa odpowiada z jednego lub więcej zestawów wyników.
-* **Wykonywanie wsadowe** — użytkownik przechowuje jednego lub większej liczby wierszy danych środki na platformie Azure blob, a następnie wysyła lokalizacji obiektu blob do usługi. Usługa wyników wszystkich wierszy danych w blob danych wejściowych, przechowuje wyniki w innym obiekcie blob i zwraca adres URL tego kontenera.  
+* **Żądanie/odpowiedź** — użytkownik wysyła co najmniej jeden wiersz danych środków do usługi przy użyciu protokołu HTTP, a usługa odpowiada za pomocą co najmniej jeden zestaw wyników.
+* **Wykonywanie wsadowe** — użytkownik przechowuje jeden lub więcej wierszy danych środków na platformie Azure, obiektów blob, a następnie wysyła lokalizacji obiektu blob do usługi. Usługa ocenia wszystkie wiersze danych w danych wejściowych obiektów blob, wyniki są zapisywane w inny obiekt blob i zwraca adres URL tego kontenera.  
 
-Jest najszybszym i Najprostszym sposobem uzyskania dostępu do usługi sieci web klasycznego za pośrednictwem [aplikacji sieci Web usługi Azure ML żądanie-odpowiedź](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/) lub [szablonu aplikacji sieci Web Azure ML partii wykonywania usługi](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/).
+Jest to najszybszy i najłatwiejszy sposób dostęp do klasycznej usługi sieci web, za pośrednictwem [usługi Azure ML odpowiedź na żądanie usługi Web App](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/) lub [szablonu aplikacji sieci Web Azure ML partii wykonywania usługi](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/).
 
-Te szablony aplikacji sieci web można utworzyć aplikacji sieci web niestandardowego, który zna usługi sieci web dane wejściowe i co zwróci. Wszystko, co należy zrobić to zapewniają dostęp do danych i usługi sieci web, a reszta szablonu.
+Te szablony aplikacji sieci web można tworzyć niestandardową aplikację internetową znający usługę sieci web dane wejściowe i co zwróci. To wszystko, co należy zrobić, zapewniają dostęp do danych i usługi sieci web, a szablon zajmie się resztą.
 
-Aby uzyskać więcej informacji na temat używania szablonów aplikacji sieci web, zobacz [korzystać z usługi Azure Machine Learning w sieci Web przy użyciu szablonu aplikacji sieci web](consume-web-service-with-web-app-template.md).
+Aby uzyskać więcej informacji na temat korzystania z szablonów aplikacji internetowych, zobacz [korzystanie z usługi Azure Machine Learning w sieci Web za pomocą szablonu aplikacji sieci web](consume-web-service-with-web-app-template.md).
 
-Można również zaprojektować aplikacji niestandardowej do uzyskania dostępu do usługi sieci web przy użyciu kodu starter dostarczany w R, C# i języki programowania Python.
+Możesz również tworzyć niestandardowe aplikacje do uzyskania dostępu do usługi sieci web przy użyciu kodu startowego dostarczany w języku R, C#, i języki programowania w języku Python.
 
-Można znaleźć szczegółowe informacje w [jak korzystać z usługi sieci Web Azure Machine Learning](consume-web-services.md).
+Można znaleźć szczegółowe informacje w [jak korzystanie z usługi Azure Machine Learning w sieci Web](consume-web-services.md).
 

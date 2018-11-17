@@ -15,18 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: 3030fdcec95d91b75974465ad30f707837263367
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 08d3d59d20ea80065e8f0238f90579bb268c3723
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414781"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823048"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Zarządzanie i analizowanie dzienników przepływów grupy zabezpieczeń sieci na platformie Azure przy użyciu usługi Network Watcher i z narzędzia Graylog
 
 [Dzienników przepływu grupy zabezpieczeń sieci](network-watcher-nsg-flow-logging-overview.md) informacje, które można użyć, aby zrozumieć przychodzący i wychodzący ruch IP dla interfejsów sieciowych platformy Azure. Dzienniki przepływów Pokaż przepływy wychodzące i przychodzące na na podstawie reguł grupy zabezpieczeń sieci, interfejs sieciowy przepływ ma zastosowanie do 5-elementowe spójne kolekcje informacji (źródłowy/docelowy adres IP, Port źródłowy i docelowy, Protocol) na temat przepływu, a jeśli zezwolenie lub odrzucenie ruchu .
 
 Może mieć wiele grup zabezpieczeń sieci w sieci, z włączono rejestrowanie usługi flow. Kilka grup zabezpieczeń sieci z włączone rejestrowanie przepływu można tworzyć i kłopotliwe przeanalizować oraz uzyskiwanie szczegółowych informacji z dzienników. Ten artykuł zawiera rozwiązanie, aby centralnie zarządzać te dzienniki sieciowych grup zabezpieczeń usługi flow przy użyciu z narzędzia Graylog, Zarządzanie dziennikami "open source" oraz narzędzia do analizy i Logstash, potok przetwarzania danych po stronie serwera "open source".
+
+> [!Warning]
+> Poniższe kroki pracy z dzienników przepływu w wersji 1. Aby uzyskać więcej informacji, zobacz [wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md). Poniższe instrukcje nie będzie działać w wersji 2 pliki dziennika, bez żadnych modyfikacji.
 
 ## <a name="scenario"></a>Scenariusz
 

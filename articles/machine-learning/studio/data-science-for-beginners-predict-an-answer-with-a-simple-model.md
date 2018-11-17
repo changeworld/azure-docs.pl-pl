@@ -1,11 +1,12 @@
 ---
-title: Przewidywanie odpowiedzi z modelu regresji proste — usługi Azure Machine Learning | Dokumentacja firmy Microsoft
-description: Jak utworzyć model regresji proste do prognozowania cen w nauce danych dla początkujących 4 wideo. Obejmuje regresji liniowej z danych docelowych.
-keywords: Tworzenie modelu, modelu prostego, prognozowanie cen, model regresji proste
+title: Prognozowanie odpowiedzi za pomocą modelu regresji proste — usługa Azure Machine Learning | Dokumentacja firmy Microsoft
+description: Jak utworzyć model regresji prosty, aby przewidzieć cenę w zakresie analizy danych dla początkujących 4 wideo. Obejmuje regresji liniowej z danych docelowych.
+keywords: Tworzenie modelu, prosty model, prognozowanie cen, uczenia modelu regresji prosty
 services: machine-learning
 documentationcenter: na
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cjgronlund
 ms.assetid: a28f1fab-e2d8-4663-aa7d-ca3530c8b525
@@ -16,122 +17,122 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: ad1b8369358f7811a02d344fdc0306662413a404
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: d1e7667d30eecab2e1a3328fdc68ef528823e695
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833829"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824204"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Prognozowanie odpowiedzi za pomocą prostego modelu
-## <a name="video-4-data-science-for-beginners-series"></a>Wideo 4: Nauki danych serii dla początkujących
-Dowiedz się, jak utworzyć model regresji proste do prognozowania cen romb w nauce danych dla początkujących 4 wideo. Firma Microsoft będzie Rysuj modelu regresji z danych docelowych.
+## <a name="video-4-data-science-for-beginners-series"></a>Wideo 4: Analiza danych dla początkujących serii
+Dowiedz się, jak utworzyć model regresji proste przewidzieć cenę romb w zakresie analizy danych dla początkujących 4 wideo. Firma Microsoft wyciąga modelu regresji przy użyciu danych docelowych.
 
-Aby uzyskać wykorzystanie serii, obejrzyj je wszystkie. [Przejdź do listy filmów wideo](#other-videos-in-this-series)
+Aby maksymalnie wykorzystać możliwości serii, obejrzyj je wszystkie. [Przejdź do listy filmów wideo](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-predict-an-answer-with-a-simple-model/player]
 >
 >
 
-## <a name="other-videos-in-this-series"></a>Inne pliki wideo w tej serii
-*Nauki danych dla początkujących* jest szybkie wprowadzenie do analizy danych w pięciu krótkie wideo.
+## <a name="other-videos-in-this-series"></a>Inne filmy wideo w tej serii
+*Przetwarzanie danych dla początkujących* jest szybkie wprowadzenie do nauki o danych w pięciu krótkich filmach wideo.
 
-* Wideo 1: [danych nauki odpowiedzi na pytania 5](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek.)*
-* Wideo 2: [jest gotowy do analizy danych danych?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 s 56 min)*
-* Wideo 3: [Zadaj pytanie może odpowiedzieć z danymi](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 s 17 min)*
-* Wideo 4: Odpowiedź z prostego modelu prognozowania
-* Wideo 5: [skopiuj pracy innych osób nauki danych](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek.)*
+* Wideo 1: [5 pytań, analiza danych daje odpowiedzi](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek.)*
+* Wideo 2: [czy Twoje dane są gotowe na analizę danych?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek.)*
+* Wideo 3: [Zadaj pytanie, można odpowiedzieć za pomocą danych](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek.)*
+* Wideo 4: Prognozowanie odpowiedzi za pomocą prostego modelu
+* Wideo 5: [kopiowanie pracy innych osób w celu przeprowadzenia analizy danych](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek.)*
 
-## <a name="transcript-predict-an-answer-with-a-simple-model"></a>Zapis: Przewidywanie odpowiedzi z modelu prostego
-Witamy w czwartym wideo w "danych nauki dla początkujących" serii. W tym przypadku firma Microsoft budowanie prostego modelu i prognozowanie.
+## <a name="transcript-predict-an-answer-with-a-simple-model"></a>Zapis: Prognozowanie odpowiedzi za pomocą prostego modelu
+Witamy w czwartym wideo w "Data Science for Beginners" serii. W tym, co możemy zbudowania prostego modelu i prognozowania.
 
-A *modelu* jest uproszczone artykuł o naszych danych. Będzie można wyświetlić I znaczenie.
+A *modelu* jest uproszczone artykuł o naszych danych. Czy mogę pokazano, co mam na myśli.
 
-## <a name="collect-relevant-accurate-connected-enough-data"></a>Zbieranie odpowiednich, dokładne, połączenie, jest za mało danych
-Załóżmy, że chcę sklep romb. Mam pierścień, który należał do mojego babcia z ustawieniem dla romb 1.35 karatach i chcę uzyskać informacje o tym, jaki będzie koszt. Muszę zrobić Notatnik i pióra do magazynu Biżuteria i I Zanotuj cen wszystkich diamentów w przypadku i ile porównać w carats. Począwszy od pierwszego romb - carats 1.01 jego i 7,366 $.
+## <a name="collect-relevant-accurate-connected-enough-data"></a>Zbierz odpowiednie, dokładne i połączone, wystarczającej ilości danych
+Załóżmy, że chcę sklep romb. Mam pierścień, który należał do mojego ma z ustawieniem dla romb 1.35 daszka i chcę, aby poznać ile będzie kosztować. Przyjmuję do Notatnika i pióra do magazynu Biżuteria i Zapisz I ceny wszystkich karo w przypadku i ile porównać w carats. Począwszy od pierwszego romb - carats 1.01 jego i 7,366 $.
 
-Teraz przejdź i zrób to inne diamentowego w magazynie.
+Teraz przejść i zrób to dla wszystkich diamenty w magazynie.
 
-![Kolumny danych romb](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/diamond-data.png)
+![Liczba kolumn danych romb](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/diamond-data.png)
 
-Zwróć uwagę, że naszej listy ma dwie kolumny. Każda kolumna ma inny atrybut — wagę carats i cen — oraz każdy wiersz jest pojedynczego punktu danych reprezentujący pojedynczego romb.
+Należy zauważyć, że listy ma dwie kolumny. Każda kolumna ma inny atrybut — waga carats i cena — oraz każdy wiersz jest pojedynczego punktu danych reprezentujący pojedynczego romb.
 
-Faktycznie utworzyliśmy małą tutaj — zestawu danych tabeli. Zwróć uwagę, że spełnia kryteriów jakości:
+Faktycznie utworzyliśmy małego zestawu danych w tym miejscu — tabeli. Zwróć uwagę, że spełnia on nasze kryteria jakości:
 
-* Dane są **odpowiednich** -wagi ostatecznie jest powiązana do ceny
-* Ma ona **dokładne** -możemy double-checked ceny, które firma Microsoft Zapisz
+* Dane są **odpowiednie** -wagi zdecydowanie jest powiązany do ceny
+* Ma ona **dokładne** — firma Microsoft double-checked ceny, które firma Microsoft Zapisz
 * Ma ona **połączone** — istnieją nie spacji w dowolnej z tych kolumn
-* I jak zajmiemy się tym, ma **za mało** odpowiedź na pytanie naszych
+* I, zobaczymy, ma ona **wystarczająco dużo** odpowiedź na pytanie naszej
 
 ## <a name="ask-a-sharp-question"></a>Zadaj pytanie sharp
-Obecnie firma Microsoft będzie stanowić naszych zapytania w sposób sharp: "będzie kosztem, jaki kupić romb karatach 1.35?"
+Teraz firma Microsoft będzie stanowić naszego zapytania w sposób sharp: "ile będzie kosztować kupić romb 1.35 daszka?"
 
-Naszej listy nie ma romb 1.35 karatach, dlatego firma Microsoft będzie konieczne Użyj pozostałej części danych, aby uzyskać odpowiedzi na pytanie.
+Listy nie ma romb 1.35 daszka, dlatego odpowiemy na potrzeby uzyskania odpowiedzi na pytanie na pozostałe dane.
 
-## <a name="plot-the-existing-data"></a>Istniejących danych
-W pierwszej kolejności robimy jest poziomej linii numer o nazwie osi, do wykresu wag. Zakres wag jest 0-2, dlatego firma Microsoft będzie rysowanie linii obejmujący zakresu i umieścić znaczniki dla każdego połowa karatach.
+## <a name="plot-the-existing-data"></a>Istniejące dane wykresu
+Pierwszą rzeczą, jaką wykonamy jest rysowanie linii poziomej liczbę, o nazwie osi do wykresu wag. Zakres wag jest 0 do 2, dzięki czemu firma Microsoft będzie narysować linię uwzględniającą zakres i umieścić znaczniki dla każdego połowa daszka.
 
-Firma Microsoft będzie dalej Rysuj osi pionowej do rejestrowania ceny i podłącz go do osi poziomej wagi. Są to w jednostkach kwoty. Teraz mamy zestaw współrzędnych osi.
+Następnie firma Microsoft wyciąga osi pionowej rejestrowania ceny i połączyć ją do osi poziomej wagi. Są to w jednostkach dolarów. Teraz mamy zestaw współrzędnych osi.
 
-![Osie wagi i cen](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/weight-and-price-axes.png)
+![Osie wagi i ceny](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/weight-and-price-axes.png)
 
-Chcemy się teraz pobrać te dane i włącz go do *wykres punktowy*. Jest to dobry sposób na wizualizowania wartości liczbowych zestawów danych.
+Omówimy teraz wykonać tych danych i włączyć go do *wykres punktowy*. Jest to doskonały sposób wizualizować zestawów danych liczbowych.
 
-Dla pierwszego punktu danych Firma Microsoft eyeball pionowych linii w 1.01 carats. Następnie możemy eyeball poziomych linii w 7,366 $. Jeżeli spełniają one możemy zwrócić kropką. Reprezentuje naszym pierwszym romb.
+Dla pierwszego punktu danych Firma Microsoft eyeball pionu podczas 1.01 carats. Następnie możemy eyeball linii poziomej w 7,366 $. Jeżeli spełniają one możemy zwrócić pojedynczego znaku kropki. Reprezentuje naszym pierwszym romb.
 
-Teraz możemy przejść przez każdego romb na tej liście i tak samo postąpić. Kiedy jesteśmy za pośrednictwem jest będziemy mieć: licznych kropkami, jeden dla każdej romb.
+Teraz możemy przejść przez każdy rombu na tej liście i zrobić to samo. Gdy będziemy za pośrednictwem to otrzymujemy: wiele kropki, po jednym dla każdego romb.
 
 ![Wykres punktowy](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/scatter-plot.png)
 
-## <a name="draw-the-model-through-the-data-points"></a>Rysuj modelu punktów danych
-Teraz można spojrzeć na squint i kropek kolekcji wygląda jak linia fat, rozmytego. Możemy zająć naszych znacznika i rysowanie linii prostej za jego pośrednictwem.
+## <a name="draw-the-model-through-the-data-points"></a>Rysowanie modelu za pośrednictwem punktów danych
+Jeśli spojrzysz na squint i kropek, Kolekcja wygląda teraz następująco linię fat, rozmytego. Możemy pobrać naszych znacznika i narysuj prostej przy jego użyciu.
 
-Za pomocą rysowania linii, utworzyliśmy *modelu*. Należy traktować jako biorąc rzeczywistych i wersji simplistic kreskówki go. Teraz kreskówki jest nieprawidłowy — wiersza nie jest akceptowana wszystkich punktów danych. Jednak jest przydatne uproszczenia.
+Za pomocą rysowania linii, utworzyliśmy *modelu*. Myśl o tym jako biorąc rzeczywistych i jego wersji kreskówki uproszczony. Teraz kreskówki jest nieprawidłowy — wiersz nie jest akceptowana przez wszystkie punkty danych. Jednak jest to przydatne uproszczenie.
 
 ![Regresji liniowej](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/linear-regression-line.png)
 
-Fakt, że wszystkie punkty nie przechodzą dokładnie wiersz jest OK. Analityków danych opisano to przez informujący, że jest model — jest to wiersz - i następnie każdego punktu ma kilka *szumu* lub *wariancji* skojarzonych z nim. Podstawowej relacji doskonałe, a następnie istnieje świata niepowtarzalne, rzeczywistych, w której dodaje szumu i niedokładność.
+Fakt, że wszystkie kropki nie są kierowane dokładnie za pośrednictwem wiersza jest OK. Naukowcy wyjaśnić to przez informujący o tym, że istnieje model — jest to wiersz — i następnie każdej kropce ma kilka *szumu* lub *wariancji* skojarzonych z nim. Istnieje relacja podstawowej doskonałe i ma niepowtarzalne świata rzeczywistego, dodającego hałasu i niepewność.
 
-Ponieważ próbujemy odpowiedzi na pytanie *ile?* jest to *regresji*. I dlatego firma Microsoft korzysta z prostej, jest *regresji liniowej*.
+Ponieważ chcemy znaleźć odpowiedź na pytanie *ile?* jest to nazywane *regresji*. A ponieważ używamy linię prostą jest *regresji liniowej*.
 
 ## <a name="use-the-model-to-find-the-answer"></a>Użyj modelu, aby znaleźć odpowiedzi
-Teraz mamy modelu i poprosimy go naszych pytanie: jaka będzie romb 1.35 karatach koszt?
+Teraz mamy modelu i firma Microsoft Zadaj pytanie naszej: ile romb 1.35 daszka będzie kosztować?
 
-Odpowiedzi na pytanie naszych, firma Microsoft oka 1.35 carats i rysowanie linii pionowej. Gdzie go przecina wiersza modelu możemy eyeball linii poziomej osi dolara ($). Trafienia jego prawej strony na 10 000. Wysięgnik! To odpowiedź: romb 1.35 karatach koszty około 10 000.
+Odpowiedź z naszej pytanie, firma Microsoft oka 1.35 carats i rysowania pionowych linii. Gdzie go przecięcie wiersza modelu, firma Microsoft eyeball linii poziomej do osi dolara. Trafienia w zasięgu 10 000. Nagle! To odpowiedź na pytanie: romb 1.35 daszka koszt wynosi około 10 000 USD.
 
-![Znajdź odpowiedzi na modelu](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/find-the-answer.png)
+![Znajdź odpowiedzi na podstawie modelu](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/find-the-answer.png)
 
 ## <a name="create-a-confidence-interval"></a>Utwórz przedział ufności
-Jest fizyczne do zastanawiasz się, jak dokładne jest to prognozowania. Jest grupowaniu można sprawdzić, czy romb 1.35 karatach będzie bardzo bliski 10 000, lub znacznie większej lub mniejszej. Aby ustalić tę możliwość, umożliwia Rysuj koperty wokół regresji, który zawiera większość punktów. Ten koperty jest wywoływana naszych *przedział ufności*: jesteśmy pretty pewność, że ceny mieszczą się w tym koperty, ponieważ w ciągu ostatnich większość z nich. Firma Microsoft Rysuj dwóch więcej poziome linie, z których wiersza 1.35 karatach przecina góry i u dołu tej koperty.
+To fizyczne, aby dowiedzieć się, jak dokładne jest to prognozy. Jest grupowaniu można sprawdzić, czy romb 1.35 daszka będzie bardzo blisko 10 000 USD, lub o wiele wyższą lub niższą. Aby znaleźć tę możliwość, Narysujmy koperty wokół regresji, który zawiera większość punktów. Nazywa się to koperty naszych *interwał ufności*: jesteśmy dość pewność, że ceny mieszczą się w tym kopercie, ponieważ w ciągu ostatnich większość z nich. Firma Microsoft można narysować dwa więcej poziome linie z miejsca przecięcia wiersza 1.35 daszka, u góry i u dołu tego schematu envelope.
 
-![Przedział ufności](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/confidence-interval.png)
+![Interwał ufności](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/confidence-interval.png)
 
-Teraz możemy powiedzieć coś o naszych przedział ufności: możemy powiedzieć bez obaw czy cena romb 1.35 karatach jest około $ 10 000 -, ale może być możliwie jak $8000 i może być możliwie jak 12 000.
+Teraz możemy coś powiedzieć o naszych interwał ufności: będzie można powiedzieć bez obaw, cena romb 1.35 daszka jest około $ 10 000 -, ale może być możliwie jak $8000 i może być możliwie jak 12 000.
 
-## <a name="were-done-with-no-math-or-computers"></a>Skończymy, bez matematyczne lub komputerów
-Robiliśmy, jakie analityków danych uzyskać płatną zrobić i robiliśmy tylko za pomocą rysowania:
+## <a name="were-done-with-no-math-or-computers"></a>Firma Microsoft będzie gotowe, bez matematyczne lub komputerów
+Przeprowadziliśmy Zarabiaj, jakie analitykom danych wykonaj, a następnie Robiliśmy to po prostu za pomocą rysowania:
 
-* Firma Microsoft zadawane pytania firma Microsoft może odpowiedzi z danymi
-* Budujemy *modelu* przy użyciu *regresji liniowej*
-* Wprowadziliśmy *prognozowania*, wraz z *przedział ufności*
+* Firma Microsoft zadał pytanie firma Microsoft może odpowiedzieć za pomocą danych
+* Utworzyliśmy *modelu* przy użyciu *regresji liniowej*
+* Wprowadziliśmy *prognozowania*, wraz z *interwał ufności*
 
-I nie używamy matematyczne lub komputerów Aby wykonać to zadanie.
+I użyliśmy matematyczne lub komputerów, aby to zrobić.
 
-Teraz, jeśli tak samo, jak gdyby było więcej informacji...
+Teraz, gdyby miał więcej informacji, takie jak...
 
-* Przecięcie romb
-* kolory (jak blisko romb jest jest białe)
+* Wytnij rombu
+* kolory (jak blisko rombu jest on biały)
 * Liczba dołączenia w romb
 
-.. .i firma musiałaby większą liczbę kolumn. W takim przypadku matematyczne staje się przydatne. Jeśli masz więcej niż dwie kolumny jest trudna do rysowania kropki w dokumencie. Obliczenia umożliwia bardzo dobrze nadające się tego wiersza lub tej płaszczyzny do danych.
+.. .i firma Microsoft musiałaby większą liczbę kolumn. W takim przypadku matematyczne staje się przydatne. Jeśli masz więcej niż dwie kolumny, jest trudny do rysowania kropki na papierze. Obliczenia umożliwia bardzo dobrze nadające się tego wiersza lub że płaszczyzny danych.
 
-Ponadto jeśli zamiast tylko kilku karo, było dwa tysiące lub dwóch milionów, a następnie wykonaj pracy znacznie szybciej z komputerem.
+Ponadto jeśli zamiast tylko niewielki podzbiór diamenty, mieliśmy dwa tysiące lub miliony dwa, a następnie wykonaj pracę znacznie szybciej z komputerem.
 
-Obecnie zajmowaliśmy sposób wykonywania regresji liniowej i wprowadziliśmy prognozowania, przy użyciu danych.
+Obecnie mówiliśmy o tym, jak zrobić regresji liniowej i wprowadziliśmy prognozowania, przy użyciu danych.
 
-Należy koniecznie zapoznaj się z innych plików wideo "Danych nauki dla początkujących" z Microsoft Azure Machine Learning.
+Pamiętaj sprawdzić inne filmy wideo "Data Science dla początkujących" z usługi Microsoft Azure Machine Learning.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Spróbuj pierwszego eksperymentu analizy danych z usługi Machine Learning Studio](create-experiment.md)
-* [Wprowadzenie do uczenia maszynowego w systemie Microsoft Azure](what-is-machine-learning.md)
+* [Spróbuj pierwszy eksperyment dotyczący przetwarzania danych, za pomocą usługi Machine Learning Studio](create-experiment.md)
+* [Wprowadzenie do usługi Machine Learning na Microsoft Azure](what-is-machine-learning.md)

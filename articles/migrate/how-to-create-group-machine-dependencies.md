@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: raynew
-ms.openlocfilehash: de093976a318b2658ff4009f4c5e314851f66b81
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9ec69b474f72115f2104060b6f55af1992c31517
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403813"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819308"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Grupowanie maszyn za pomocą mapowania zależności maszyn
 
@@ -72,7 +72,7 @@ Aby zainstalować agenta na maszynie z systemem Linux:
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-Dowiedz się więcej o obsłudze agenta zależności [Windows](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems) i [Linux](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems) systemów operacyjnych.
+Dowiedz się więcej o obsłudze agenta zależności [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) i [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) systemów operacyjnych.
 
 [Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) dotyczące wykorzystania skryptów do zainstalowania agenta zależności.
 

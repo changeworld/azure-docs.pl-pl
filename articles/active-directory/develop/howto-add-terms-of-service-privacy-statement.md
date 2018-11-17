@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 2195a43665f99e8388b13fc6dc3e528496bd3901
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: b1276ab227f4bf65483fb2cdec57c759573bc7c5
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242691"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853595"
 ---
 # <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>Warunków użytkowania usługi i zasady zachowania poufności dla zarejestrowanych aplikacji usługi Azure Active Directory
 
@@ -64,10 +64,10 @@ Jeśli warunki usługi i zasady zachowania poufności są gotowe, można dodać 
 
 Jeśli aplikacja jest zarejestrowana w witrynie Azure portal, wykonaj następujące kroki.
 
-1. Zaloguj się do witryny  [Azure Portal](https://portal.azure.com/).
-2. Przejdź do **rejestracje aplikacji** sekcji i wybierz swoją aplikację.
-3. Otwórz **właściwości** części aplikacji.
-4. Wypełnij **URL warunki usługi** i **adres URL zasad zachowania poufności informacji** pola.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+2. Przejdź do **rejestracje aplikacji** sekcji i wybierz swoją aplikację.
+3. Otwórz **właściwości** części aplikacji.
+4. Wypełnij **URL warunki usługi** i **adres URL zasad zachowania poufności informacji** pola.
 5. Zapisz zmiany.
 
     ![Sekcja właściwości aplikacji z warunkami adresy URL poufności informacji usług i ochrony prywatności](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
@@ -76,9 +76,9 @@ Jeśli aplikacja jest zarejestrowana w witrynie Azure portal, wykonaj następuj�
 
 Wykonaj następujące kroki, jeśli aplikacja jest zarejestrowana w portalu rejestracji aplikacji lub Centrum deweloperów.
 
-1. Zaloguj się do [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/).
-2. Wybierz aplikację, a następnie przewiń listę do **profilu** sekcji.
-3. Wypełnij **URL warunki usługi** i **adres URL zasad zachowania poufności informacji** pola.
+1. Zaloguj się do [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/).
+2. Wybierz aplikację, a następnie przewiń listę do **profilu** sekcji.
+3. Wypełnij **URL warunki usługi** i **adres URL zasad zachowania poufności informacji** pola.
 4. Zapisz zmiany.
 
     ![Sekcji profilu aplikacji z warunkami usługi i ochrona prywatności adresów URL, instrukcja](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)

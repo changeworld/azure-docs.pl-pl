@@ -1,5 +1,5 @@
 ---
-title: Zrozumienie wyniki sprawdzania agenta w usłudze Azure Update Management
+title: Zrozumienie wyniki sprawdzania agenta Windows w usłudze Azure Update Management
 description: Dowiedz się, jak rozwiązywać problemy z agentem rozwiązania Update Management.
 services: automation
 author: georgewallace
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 20323afe79ad3de1e3dfccd4752c4f7e28d22266
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 33ae9160cd173ae594407220390c4dab1806fa94
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095375"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824136"
 ---
-# <a name="understand-the-agent-check-results-in-update-management"></a>Zrozumienie wyniki sprawdzania agenta w zarządzania aktualizacjami
+# <a name="understand-the-windows-agent-check-results-in-update-management"></a>Zrozumienie wyniki wyboru agenta Windows do zarządzania aktualizacjami
 
 Może istnieć wiele funkcji przemawiających swoje maszyny spoza platformy Azure nie jest widoczny **gotowe** w zarządzania aktualizacjami. W zarządzania aktualizacjami można sprawdzić kondycję agenta hybrydowy proces roboczy, aby określić pierwotny problem. W tym artykule omówiono sposób uruchomić narzędzie do rozwiązywania problemów w witrynie Azure portal i w scenariuszach w trybie offline.
 
@@ -47,10 +47,6 @@ Sprawdzanie systemu operacyjnego, sprawdza, czy hybrydowego procesu roboczego Ru
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Obsługuje tylko zaktualizować oceny.         |
 |Windows Server 2008 R2 z dodatkiem SP1 lub nowszy     |.NET framework 4.5.1 lub nowszy jest wymagany. ([Pobierz program .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 lub nowszy jest wymagany. ([Pobierz platformę WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Programu Windows PowerShell 5.1 jest zalecane w celu zwiększenia niezawodności.  ([Pobierz platformę WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
-|CentOS 6 (x86/x64) i 7 (x64)      | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji. Oparte na klasyfikacji poprawek wymaga "yum", aby zwrócić dane zabezpieczeń, która CentOS nie ma gotowych.         |
-|Red Hat Enterprise 6 (x86/x64) i 7 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
-|SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
-|Ubuntu 14.04 LTS, 16.04 LTS i 18.04 LTS — x86/x64 64      |Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.         |
 
 ### <a name="net-451"></a>PLATFORMĘ .NET 4.5.1
 

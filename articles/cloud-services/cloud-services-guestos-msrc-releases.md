@@ -11,17 +11,52 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/12/2018
+ms.date: 11/15/2018
 ms.author: raiye
-ms.openlocfilehash: 19f9584c86993942e949716e14d2190fc5b31ce0
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: c2ff5d79c59a08c6ed808312027dc69aee910224
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578777"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854275"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Security Response Center (MSRC) stosowane do systemu operacyjnego gościa platformy Azure. Wyszukaj w tym artykule, aby określić, jeśli dana aktualizacja ma zastosowanie do systemu operacyjnego gościa, którego używasz. Aktualizacje zawsze przenoszone w konkretnym [rodziny] [ family-explain] były one wprowadzone w.
+
+## <a name="november-2018-guest-os"></a>System operacyjny gościa listopada 2018 r.
+
+>[!NOTE]
+>System operacyjny gościa listopada jest obecnie wdrażana do maszyn wirtualnych usługi chmury, które są skonfigurowane dla aktualizacji automatycznych. Po zakończeniu wprowadzania tej wersji będą dostępne dla ręczne aktualizacje za pośrednictwem usługi Azure portal i plików konfiguracji. Następujące poprawki znajdują się w systemie operacyjnym gościa listopada. Ta lista może ulec zmianie.
+
+| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| --- | --- | --- | --- | --- |
+| ReL 18 – 11 | [4466536] | Internet Explorer | 2,80, 3.67, 4.60 | 13 listopada 2018 r. |
+| ReL 18 – 11 | [4467694] | Flash | 3.67, 4.60, 5,25 | 13 listopada 2018 r. |
+| ReL 18 – 11 | [4467106] | Zabezpieczeń Windows | 2,80 | 13 listopada 2018 r. |
+| ReL 18 – 11 | [4467678] | Zabezpieczeń Windows | 3.67 | 13 listopada 2018 r. |
+| ReL 18 – 11 | [4467703] | Zabezpieczeń Windows | 4.60 | 13 listopada 2018 r. |
+| ReL 18 – 11 | [4467691] | Zabezpieczenia systemu Windows 10 | 5.25 | 13 listopada 2018 r. |
+| ND | [3173426] | Aktualizacja stosu obsługi | 3.67 | 12 lipca 2016 r. |
+| ND | [4465659] | Aktualizacja stosu obsługi | 5.25 | 13 listopada 2018 r. |
+| ND | [4462923] | Pakiet zbiorczy października niezwiązane z zabezpieczeniami | 2,80 | 9 października 2018 r. |
+| ND | [4462929] | Pakiet zbiorczy października niezwiązane z zabezpieczeniami | 3.67 | 9 października 2018 r. |
+| ND | [4462926] | Pakiet zbiorczy października niezwiązane z zabezpieczeniami | 4.60 | 9 października 2018 r. |
+| ND | [3109976] | Podkładki zgodności aplikacji | 4.60 | 12 kwietnia 2016 r. |
+| ND | [4457037] | Podkładki zgodności aplikacji | 4.60| 12 czerwca 2018 r. |
+
+[4466536]: http://support.microsoft.com/kb/4466536
+[4467694]: http://support.microsoft.com/kb/4467694
+[4467106]: http://support.microsoft.com/kb/4467106
+[4467678]: http://support.microsoft.com/kb/4467678
+[4467703]: http://support.microsoft.com/kb/4467703
+[4467691]: http://support.microsoft.com/kb/4467691
+[3173426]: http://support.microsoft.com/kb/3173426
+[4465659]: http://support.microsoft.com/kb/4465659
+[4462923]: http://support.microsoft.com/kb/4462923
+[4462929]: http://support.microsoft.com/kb/4462929
+[4462926]: http://support.microsoft.com/kb/4462926
+[3109976]: http://support.microsoft.com/kb/3109976
+[4457037]: http://support.microsoft.com/kb/4457037
 
 ## <a name="october-2018-guest-os"></a>System operacyjny gościa października 2018 r.
 

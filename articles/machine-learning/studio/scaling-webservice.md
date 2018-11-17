@@ -4,10 +4,11 @@ description: Dowiedz się, jak zwiększyć współbieżność usługi sieci web 
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
-keywords: Azure uczenia maszynowego, usług sieci web operationalization skalowania, punkt końcowy, współbieżności
+keywords: usługi Azure machine learning, usługi sieci web, operacjonalizacja, skalowanie, punkt końcowy współbieżności
 ms.assetid: c2c51d7f-fd2d-4f03-bc51-bf47e6969296
 ms.service: machine-learning
 ms.component: studio
@@ -16,30 +17,30 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.openlocfilehash: 2f950d93c0d923e20451eb1622dd4b1393f343a7
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f0b639d27dd5114c47bd5a1cfa0f6a72a6d78d83
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835903"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824187"
 ---
 # <a name="scaling-an-azure-machine-learning-web-service-by-adding-additional-endpoints"></a>Skalowanie usługi sieci web Azure Machine Learning, dodając dodatkowe punkty końcowe
 > [!NOTE]
-> W tym temacie opisano techniki dotyczy **klasycznego** usługi Machine Learning w sieci Web. 
+> W tym temacie opisano technikach do zastosowania **klasycznego** usługi Machine Learning w sieci Web. 
 > 
 > 
 
-Domyślnie każdy opublikowane usługi sieci Web jest skonfigurowany do obsługi 20 równoczesnych żądań i może być możliwie jak 200 równoczesnych żądań. Usługa Azure Machine Learning automatycznie optymalizuje ustawienie, aby osiągnąć optymalną wydajność dla usługi sieci web i portalu wartość jest ignorowana. 
+Domyślnie każdy opublikowanej usługi sieci Web jest skonfigurowany do obsługi 20 równoczesnych żądań i może być możliwie jak 200 równoczesnych żądań. Usługa Azure Machine Learning optymalizuje automatycznie ustawienie, aby zapewnić najlepszą wydajność za daną usługę sieci web i portalu wartość jest ignorowana. 
 
-Jeśli planujesz do wywołania interfejsu API z obciążeniem wyższa niż wartość maksymalnej liczby równoczesnych wywołań 200 będzie obsługiwać, należy utworzyć wiele punktów końcowych na tej samej usługi sieci Web. Następnie można losowo dystrybucji obciążenia we wszystkich z nich.
+Jeśli planujesz wywołania interfejsu API za pomocą wyższe obciążenie niż wartość maksymalna liczba współbieżnych wywołań 200 będzie obsługiwać, należy utworzyć wiele punktów końcowych w tej samej usługi sieci Web. Następnie można losowo dystrybuować swoje obciążenia na wszystkich z nich.
 
-Skalowanie usługi sieci Web jest typowych zadań. Niektóre przyczyny skalowania mają obsługuje więcej niż 200 równoczesnych żądań, Zwiększ dostępność za pośrednictwem wiele punktów końcowych lub podaj oddzielne punkty końcowe usługi sieci web. Skali można zwiększyć przez dodanie dodatkowych punktów końcowych usługi sieci Web za pośrednictwem [Usługa sieci Web systemu Azure Machine Learning](https://services.azureml.net/) portalu.
+Skalowanie usługi sieci Web jest typowym zadaniem. Niektóre przyczyny skalowania to do obsługi ponad 200 równoczesnych żądań, zwiększyć dostępność za pośrednictwem wielu punktów końcowych lub podaj oddzielne punkty końcowe usługi sieci web. Można zwiększyć skalę, dodając dodatkowe punkty końcowe usługi sieci Web za pośrednictwem [usługi sieci Web Azure Machine Learning](https://services.azureml.net/) portalu.
 
-Aby uzyskać więcej informacji na temat dodawania nowych punktów końcowych, zobacz [tworzenie punktów końcowych](create-endpoint.md).
+Aby uzyskać więcej informacji na temat dodawania nowych punktów końcowych, zobacz [tworzenia punktów końcowych](create-endpoint.md).
 
-Należy zwrócić uwagę przy użyciu liczba wysokiej współbieżności mogą być szkodliwe, jeśli nie jest wywołanie interfejsu API z odpowiednio wysoki współczynnik. Sporadyczne przekroczeń limitu czasu i/lub nagłego mogą zobaczyć w opóźnienie umieszczenie stosunkowo niska obciążenia na interfejs API skonfigurowane dla wysokie obciążenie.
+Należy zwrócić uwagę przy użyciu liczba współbieżności wysokiej mogą być szkodliwe, jeśli one nie wywołuje metody interfejsu API przy użyciu odpowiednio dużej szybkości. Sporadyczne przekroczeń limitu czasu i/lub wartości graniczne mogą zobaczyć w opóźnienie umieszczenie stosunkowo małym obciążeniu dla interfejsu API skonfigurowany dla dużym obciążeniem.
 
-Synchroniczne interfejsy API są zazwyczaj używane w sytuacjach, w których jest potrzebne małe opóźnienia. W tym miejscu opóźnienia oznacza czas przyjmuje dla jednego żądania interfejsu API, a nie konto do wszelkich opóźnień sieci. Załóżmy, że masz interfejsu API z opóźnieniem 50 ms. Pełni korzystać z dostępnej pojemności z poziomu ograniczania wysokiej i maksymalnej liczby równoczesnych wywołań = 20, należy wywołać tego interfejsu API 20 * 1000 / 50 = 400 razy na sekundę. Dodatkowo to rozszerzenie, maksymalnej liczby równoczesnych wywołań 200 pozwala wywoływać razy 4000 interfejsu API na sekundę, przy założeniu opóźnienia 50 ms.
+Synchroniczne interfejsy API są zwykle używane w sytuacjach, w którym pożądane jest o małych opóźnieniach. W tym miejscu opóźnienia oznacza czasu zajmuje dla interfejsu API zakończyć jedno żądanie, a nie konta dla dowolnej opóźnienia sieci. Załóżmy, że masz interfejs API z opóźnieniem 50 ms. Pełni korzystać z dostępnej pojemności z poziom przepustowości wysokiej i maksymalna liczba współbieżnych wywołań = 20, należy wywołać tego interfejsu API 20 * 1000 / 50 = 400 godzin w ciągu sekundy. Dodatkowo to rozszerzenie, maksymalna liczba współbieżnych wywołań 200 pozwala wywoływać razy 4000 interfejsu API na sekundę, zakładając, że opóźnienie 50 ms.
 
 <!--Image references-->
 [1]: ./media/scaling-webservice/machlearn-1.png

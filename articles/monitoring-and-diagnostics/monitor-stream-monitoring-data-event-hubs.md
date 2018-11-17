@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 0c85b65e9b6eabcb5c74e1d178c0f26235cdf624
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 4c6765e54dc881c35e344f111e82721be0852052
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961827"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823762"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne
 
@@ -71,7 +71,7 @@ Aby przesyłanie danych z dziennika aktywności platformy Azure do przestrzeni n
 
 Zasoby platformy Azure tworzą dwa rodzaje danych monitorowania:
 1. [Dzienniki diagnostyczne zasobu](./monitoring-overview-of-diagnostic-logs.md)
-2. [Metryki](../monitoring/monitoring-data-collection.md)
+2. [Metryki](../azure-monitor/platform/data-collection.md)
 
 Oba typy danych są wysyłane do Centrum zdarzeń za pomocą ustawienie diagnostyczne zasobu. [Postępuj zgodnie z tego przewodnika](./monitoring-stream-diagnostic-logs-to-event-hubs.md) skonfigurować ustawienie diagnostyczne zasobu definiuje od określonego zasobu. Ustaw ustawienie diagnostyczne zasobu dla każdego zasobu, z której chcesz zbierać dzienniki.
 

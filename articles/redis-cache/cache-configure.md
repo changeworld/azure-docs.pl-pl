@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: 58e913aa2b4a89a573f6d901803979e662c27af2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 39c72dde6bcfec2879efd05a1769ad443c9ffd2f
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954045"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823966"
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Jak skonfigurować usługi Azure Redis Cache
 W tym temacie opisano konfiguracje, które są dostępne dla wystąpień usługi Azure Redis Cache. W tym temacie omówiono również domyślną konfigurację serwera Redis wystąpień usługi Azure Redis Cache.
@@ -353,7 +353,7 @@ Kliknij przycisk **reguły alertów** Konfigurowanie alertów w oparciu o metryk
 
 ### <a name="diagnostics"></a>Diagnostyka
 
-Domyślnie są metryki pamięci podręcznej w usłudze Azure Monitor [przechowywane przez 30 dni](../monitoring/monitoring-data-collection.md#metrics) a następnie usuwane. Aby zachować swoje metryki pamięci podręcznej przez czas dłuższy niż 30 dni, kliknij przycisk **diagnostyki** do [Konfigurowanie konta magazynu](cache-how-to-monitor.md#export-cache-metrics) używany do przechowywania diagnostykę pamięci podręcznej.
+Domyślnie są metryki pamięci podręcznej w usłudze Azure Monitor [przechowywane przez 30 dni](../azure-monitor/platform/data-collection.md#metrics) a następnie usuwane. Aby zachować swoje metryki pamięci podręcznej przez czas dłuższy niż 30 dni, kliknij przycisk **diagnostyki** do [Konfigurowanie konta magazynu](cache-how-to-monitor.md#export-cache-metrics) używany do przechowywania diagnostykę pamięci podręcznej.
 
 >[!NOTE]
 >Oprócz archiwizacji metryk pamięci podręcznej do magazynu, możesz również [przekazywać je strumieniowo do Centrum zdarzeń lub wysłać je do usługi Log Analytics](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md).

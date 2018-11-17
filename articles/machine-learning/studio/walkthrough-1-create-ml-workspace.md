@@ -1,10 +1,11 @@
 ---
 title: 'Krok 1: Tworzenie obszaru roboczego usługi Machine Learning | Dokumentacja firmy Microsoft'
-description: 'Krok 1 opracowanie wskazówki rozwiązanie predykcyjne: Dowiedz się, jak skonfigurować nowy obszar roboczy usługi Azure Machine Learning Studio.'
+description: 'Krok 1 programowanie przewodnik rozwiązania do analizy predykcyjnej: Dowiedz się, jak skonfigurować nowy obszar roboczy usługi Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: b3c97e3d-16ba-4e42-9657-2562854a1e04
@@ -15,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: f6f6ed67a1ddde3d8f3102a8f7032dc03b0e91b9
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7b4fa13551b08e157e835cbdd21cedbf4d989305
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835818"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822963"
 ---
 # <a name="walkthrough-step-1-create-a-machine-learning-workspace"></a>Przewodnik, krok 1. Tworzenie obszaru roboczego usługi Machine Learning
-Jest to pierwsze tego przewodnika, [tworzenie rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md).
+Jest to pierwszy krok tego przewodnika, [tworzenia rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md).
 
 1. **Tworzenie obszaru roboczego usługi Machine Learning**
 2. [Przekazywanie istniejących danych](walkthrough-2-upload-data.md)
@@ -35,18 +36,18 @@ Jest to pierwsze tego przewodnika, [tworzenie rozwiązania analizy predykcyjnej 
 - - -
 <!-- This needs to be updated to refer to the new way of creating workspaces in the Ibiza portal -->
 
-Aby korzystać z usługi Machine Learning Studio, należy mieć obszaru roboczego programu Microsoft Azure Machine Learning. Ten obszar roboczy zawiera narzędzia potrzebne do tworzenia i publikowania eksperymentów oraz zarządzania nimi.  
+Aby korzystać z usługi Machine Learning Studio, musisz mieć obszar roboczy Microsoft Azure Machine Learning. Ten obszar roboczy zawiera narzędzia potrzebne do tworzenia i publikowania eksperymentów oraz zarządzania nimi.  
 
-Administrator dla subskrypcji platformy Azure musi utworzyć obszaru roboczego, a następnie dodać możesz jako właściciela lub współautora. Aby uzyskać więcej informacji, zobacz [tworzenie i udostępnianie obszaru roboczego uczenia maszynowego Azure](create-workspace.md).
+Wymaga administratora dla subskrypcji platformy Azure do utworzenia obszaru roboczego i dodanie Cię jako właściciela lub współautora. Aby uzyskać więcej informacji, zobacz [tworzenie i udostępnianie obszaru roboczego usługi Azure Machine Learning](create-workspace.md).
 
-Po utworzeniu obszaru roboczego usługi Machine Learning Studio Otwórz ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Jeśli masz więcej niż jeden obszar roboczy, można wybrać obszar roboczy na pasku narzędzi w prawym górnym rogu okna.
+Po utworzeniu obszaru roboczego, należy otworzyć usługi Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Jeśli masz więcej niż jednego obszaru roboczego, można wybrać obszar roboczy na pasku narzędzi w prawym górnym rogu okna.
 
-![Wybierz obszar roboczy w Studio][2]
+![Wybierz obszar roboczy w programie Studio][2]
 
 > [!TIP]
-> Jeśli wprowadzono właściciela obszaru roboczego, można udostępniać eksperymentów, nad którymi pracuje przez zapraszanie innych osób do obszaru roboczego. Można to zrobić w usłudze Machine Learning Studio na **ustawienia** strony. Wystarczy konta Microsoft lub konta organizacyjnego dla każdego użytkownika.
+> Jeśli zostały wprowadzone właściciela obszaru roboczego, możesz udostępniać eksperymentów, nad którymi pracuje zapraszając inne osoby do obszaru roboczego. Można to zrobić w usłudze Machine Learning Studio na **ustawienia** strony. Wystarczy konto Microsoft lub konto organizacyjne dla każdego użytkownika.
 > 
-> Na **ustawienia** kliknij przycisk **użytkowników**, następnie kliknij przycisk **ZAPROSIĆ użytkowników więcej** w dolnej części okna.
+> Na **ustawienia** kliknij **użytkowników**, następnie kliknij przycisk **ZAPROŚ więcej użytkowników** w dolnej części okna.
 > 
 > 
 

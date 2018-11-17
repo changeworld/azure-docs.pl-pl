@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 13748bf23ee70bfa77e15e7112b450637a231742
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.openlocfilehash: 342e182466d2fe704c5ee188e35dece0abaeea02
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710719"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823099"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>Identyfikator partnera linku do kont systemu Azure
 
@@ -43,7 +43,7 @@ Jeśli masz dostęp do zasobów przez klienta, usługa witryny Azure portal, pro
 
 2. Zaloguj się do Portalu Azure.
 
-3. Wprowadź identyfikator partnera firmy Microsoft Partner ten identyfikator jest [Network(MPN) partnera firmy Microsoft](https://partner.microsoft.com/) ID organizacji.
+3. Wprowadź identyfikator partnera firmy Microsoft Partner ten identyfikator jest [Microsoft Partner Network (MPN)](https://partner.microsoft.com/) ID organizacji.
 
   ![Zrzut ekranu pokazujący identyfikator partnera linku](./media/billing-link-partner-id/link-partner-ID.PNG)
 

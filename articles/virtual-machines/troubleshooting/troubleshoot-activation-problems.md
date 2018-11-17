@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/31/2018
+ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 80799eb716e77a4dec02a2daf028c35589c75da0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b14a98ce22979182ec27ba5dc849f9535fa2b387
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235279"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824306"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Rozwiązywanie problemów aktywacji maszyny wirtualnej Windows Azure
 
@@ -29,7 +29,7 @@ Jeśli masz problemy podczas aktywacji maszyny wirtualnej Windows Azure (VM), kt
 Platforma Azure używa różnych punktów końcowych dla aktywacji usługi KMS w zależności od regionu chmury, w którym znajduje się maszyna wirtualna. Korzystając z tego przewodnika rozwiązywania problemów, należy użyć odpowiednich punktów końcowych usługi KMS, która ma zastosowanie do regionu.
 
 * Regiony w chmurze publicznej platformy Azure: kms.core.windows.net:1688
-* Regiony chmur krajowych platformy Azure (Chiny): kms.core.chinacloudapi.cn:1688
+* Regiony platformy Azure chmury krajowe — firmą 21Vianet w Chinach: kms.core.chinacloudapi.cn:1688
 * Regiony chmur krajowych platformy Azure (Niemcy): kms.core.cloudapi.de:1688
 * Chmury krajowe regionach Administracja USA —: kms.core.usgovcloudapi.net:1688
 
@@ -84,8 +84,7 @@ Ten krok nie ma zastosowania do Windows 2012 lub Windows 2008 R2. Używa ona fun
 3. Upewnij się, że maszyna wirtualna jest skonfigurowany do używania z właściwym serwerem usługi KMS z usługi Azure. Aby to zrobić, uruchom następujące polecenie:
   
     ```
-    iex “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms
-    kms.core.windows.net:1688
+    iex "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
     Polecenie powinna zwrócić: Nazwa maszyny usługi zarządzania kluczami pomyślnie ustawiono na kms.core.windows.net:1688.
 

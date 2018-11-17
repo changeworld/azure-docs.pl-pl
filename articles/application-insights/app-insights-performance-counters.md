@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: e5915f18799386ae92019073fb50dac96da107ea
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 92cbd3570d48bf12d603f68593465aafed62985c
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960110"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852320"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Liczniki wydajności systemu w usłudze Application Insights
 Windows oferuje szeroką gamę [liczniki wydajności](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) takich jak zajętość procesora CPU, pamięci, dysku i użycia sieci. Można również definiować własne. [Usługa Application Insights](app-insights-overview.md) można wyświetlić te liczniki wydajności, jeśli aplikacja jest uruchomiona w środowisku usług IIS na hosta w środowisku lokalnym lub maszynie wirtualnej, do których masz dostęp administracyjny. Wykresy określają zasoby dostępne dla działającej aplikacji, a może pomóc ustalić niezrównoważonego obciążenia między wystąpieniami serwera.
@@ -96,7 +96,7 @@ Lub możesz zrobić to samo za pomocą metryk niestandardowych, który został u
 ## <a name="performance-counters-in-analytics"></a>Liczniki wydajności w usłudze Analytics
 Można wyszukiwać i wyświetlać raporty dotyczące licznika wydajności w [analizy](app-insights-analytics.md).
 
-**Liczniki wydajności** udostępnia schematu `category`, `counter` nazwy i `instance` nazwę każdego licznika wydajności.  W danych telemetrycznych dla każdej aplikacji ll możesz zobaczyć tylko liczniki dla tej aplikacji. Na przykład aby zobaczyć, jakie liczniki są dostępne: 
+**Liczniki wydajności** udostępnia schematu `category`, `counter` nazwy i `instance` nazwę każdego licznika wydajności.  W danych telemetrycznych dla każdej aplikacji zobaczysz tylko liczniki dla tej aplikacji. Na przykład aby zobaczyć, jakie liczniki są dostępne: 
 
 ![Liczniki wydajności w usłudze Application Insights analytics](./media/app-insights-performance-counters/analytics-performance-counters.png)
 

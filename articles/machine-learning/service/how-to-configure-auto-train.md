@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 5a539aebc9b1ccb5f52f89d511fc992ee6a24c81
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5c75b462c3b1201eb70c1028c748def5da114b92
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008950"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823303"
 ---
 # <a name="configure-your-automated-machine-learning-experiment"></a>Skonfiguruj Twoje zautomatyzowane eksperymentu uczenia maszynowego
 
@@ -192,7 +192,7 @@ Właściwość |  Opis | Wartość domyślna
 `max_time_sec` |    Ogranicza czas (w sekundach), jaki zajmuje konkretnej iteracji. Jeśli iteracji przekroczy określony, pobiera anulowane tej iteracji. W przeciwnym razie zestaw, a następnie iteracji będzie nadal działać, dopóki zostanie zakończone. |   Brak
 `n_cross_validations`   |Liczba podziałów krzyżowego sprawdzania poprawności| Brak
 `validation_size`   |Rozmiar sprawdzania poprawności, Ustaw jako wartość procentowa próbki szkolenia.|  Brak
-`preprocess` | PRAWDA/FAŁSZ <br/>Wartość true włącza eksperymentów do wykonywania przetwarzania wstępnego w danych wejściowych. Poniżej przedstawiono część przetwarzania wstępnego<li>Brak danych: Imputes brakujące dane numeryczne ze średnią, tekst z większości wystąpienia </li><li>Wartości podzielonych na kategorie: Jeśli typ danych liczbowych i liczba unikatowych wartości jest mniejsza niż 5 procent, konwertuje do hot jednego procesu kodowania </li><li>Itp. Aby uzyskać pełną listę wyboru [repozytorium GitHub](https://aka.ms/aml-notebooks)</li><br/>Uwaga: Jeśli dane są rozrzedzonej nie można użyć wstępnie Przetwórz = true | False | 
+`preprocess` | PRAWDA/FAŁSZ <br/>Wartość true włącza eksperymentów do wykonywania przetwarzania wstępnego w danych wejściowych. Poniżej przedstawiono część przetwarzania wstępnego<li>Brak danych: Imputes, Brak danych liczbowych ze średnią, tekst z większości wystąpienia </li><li>Wartości podzielonych na kategorie: Jeśli typ danych liczbowych i liczba unikatowych wartości jest mniejsza niż 5 procent, konwertuje do hot jednego procesu kodowania </li><li>Itp. Aby uzyskać pełną listę wyboru [repozytorium GitHub](https://aka.ms/aml-notebooks)</li><br/>Uwaga: Jeśli dane są rozrzedzonej nie można użyć wstępnie Przetwórz = true |  False | 
 `blacklist_algos`   | Automatyczne eksperymentu uczenia Maszynowego ma wiele różnych algorytmów, które podejmuje próby. Skonfiguruj automatyczne uczenia Maszynowego, aby wykluczyć niektóre algorytmy z eksperymentu. Parametr jest przydatne, jeśli masz świadomość, że algorytmy nie działają dobrze sprawdza się w zestawie danych. Z wyjątkiem algorytmów można skrócić zasobów obliczeniowych i czasu szkoleń.<br/>Dozwolone wartości klasyfikacji<br/><li>Regresja logistyczna</li><li>Klasyfikator SGD</li><li>MultinomialNB</li><li>BernoulliNB</li><li>SVM</li><li>LinearSVM</li><li>kNN</li><li>DT</li><li>RF</li><li>dodatkowe drzew</li><li>ulepszanie gradientu</li><li>lgbm_classifier</li><br/>Dozwolone wartości regresji<br/><li>Elastyczne netto</li><li>Regresor zwiększenie gradientu</li><li>Regresor DT</li><li>regresor kNN</li><li>Hurtowi Lasso</li><li>Regresor SGD</li><li>Regresor RF</li><li>regresor dodatkowe drzew</li>|   Brak
 `verbosity` |Określa poziom rejestrowania, z użyciem informacji są pełne i najbardziej krytyczne jest najmniej.<br/>Dozwolone wartości to:<br/><li>logging.INFO</li><li>rejestrowanie. OSTRZEŻENIE</li><li>rejestrowanie. BŁĄD</li><li>rejestrowanie. KRYTYCZNE</li>  | logging.INFO</li> 
 `X` | Wszystkie funkcje do jego trenowanie za pomocą |  Brak

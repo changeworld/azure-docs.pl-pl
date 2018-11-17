@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.author: garye
-ms.openlocfilehash: d64395314f73c5d359b30c15ef11bfd3078e068f
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.custom: (previous ms.author garye)
+ms.author: amlstudiodocs
+ms.openlocfilehash: a042455f8077335c202cfa6a4c72840235054007
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346307"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820566"
 ---
 # <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>Odnajduj rozwiązania branżowe w galerii Azure AI
 

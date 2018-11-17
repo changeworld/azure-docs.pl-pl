@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/17/2018
+ms.date: 11/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e06b9ff2134c0bd1fb1ee8515827e9e8c06a3108
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9c7a1ec33f82239a5b95e9bf116fe35694d9df36
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008474"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852864"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Wykonaj wyszukiwanie w dzienniku między zasobami w usłudze Log Analytics  
 
@@ -101,6 +101,36 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 | where UpdateState == "Needed"
 | summarize dcount(Computer) by Classification
 ```
+
+## <a name="using-cross-resource-query-for-multiple-resources"></a>Przy użyciu zapytania obejmujące wiele zasobów dla wielu zasobów
+Korelowanie danych z wielu usługi Log Analytics i zasoby usługi Application Insights za pomocą zapytania obejmujące wiele zasobów, zapytanie może stać się złożona i trudne w utrzymaniu. Powinny wykorzystywać [funkcji w usłudze Log Analytics](query-language/functions.md) do oddzielania logiki zapytania od zakres zasobów kwerendy, co upraszcza strukturę zapytania. Poniższy przykład pokazuje, jak można monitorować wiele zasobów usługi Application Insights i zwizualizować liczbę żądań zakończonych niepowodzeniem według nazwy aplikacji. 
+
+Utwórz zapytanie, podobnie do poniższego, który odwołuje się do zakresu zasobów usługi Application Insights. `withsource= SourceApp` Polecenie dodaje kolumny, która określa nazwę aplikacji, które są wysyłane dziennika. [Zapisz zapytanie jako funkcja](query-language/functions.md#create-a-function) z aliasem _applicationsScoping_.
+
+```Kusto
+// crossResource function that scopes my Application Insights resources
+union withsource= SourceApp
+app('Contoso-app1').requests, 
+app('Contoso-app2').requests,
+app('Contoso-app3').requests,
+app('Contoso-app4').requests,
+app('Contoso-app5').requests
+```
+
+
+
+Możesz teraz [funkcja ta](query-language/functions.md#use-a-function) zapytania obejmujące wiele zasobów, podobnie do poniższego. Alias funkcji _applicationsScoping_ zwraca złożenie tabeli żądań z określonych aplikacji. Zapytanie, a następnie filtruje dla żądań zakończonych niepowodzeniem i umożliwia wizualizowanie trendów przez aplikację. _Przeanalizować_ operator jest opcjonalny w tym przykładzie. Wyodrębnia nazwę aplikacji z _SourceApp_ właściwości.
+
+```Kusto
+applicationsScoping 
+| where timestamp > ago(12h)
+| where success == 'False'
+| parse SourceApp with * '(' applicationName ')' * 
+| summarize count() by applicationName, bin(timestamp, 1h) 
+| sort by count_ desc 
+| render timechart
+```
+![Wykres czasu](media/log-analytics-cross-workspace-search/chart.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -5,23 +5,23 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 11/15/2018
 ms.author: danlep
-ms.openlocfilehash: 4492e05339c72c371eb2c935d0397b469440c4f6
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: b2b6da1739aa97f69f5744905564f638309a587f
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632696"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854326"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Uruchamianie wieloetapowych kompilacji, testów i zadania poprawki w zadaniach usługi ACR
 
-Zadania wieloetapowe rozszerzyć możliwości kompilacji i wypychania pojedynczy obraz ACR zadania za pomocą wieloetapowych przepływów pracy opartych na systemie wielu container. Zadania wieloetapowe umożliwia kompilowanie i wypychanie kilka obrazów w serii lub równolegle i uruchomić tych obrazów poleceń w ramach pojedynczego zadania uruchamiania. Każdy krok definiuje obraz kontenera kompilacji lub operację wypychania i można również zdefiniować wykonywania kontenera. Każdy krok w zadaniu wieloetapowego używa kontener jako jego środowiska wykonawczego.
+Zadania wieloetapowe rozszerzyć możliwości kompilacji i wypychania pojedynczy obraz ACR zadania za pomocą wieloetapowych przepływów pracy opartych na systemie wielu container. Zadania wieloetapowe umożliwia kompilowanie i wypychanie kilka obrazów w serii lub równolegle. Następnie uruchom te obrazy jako polecenia w ramach jednego zadania uruchamiania. Każdy krok definiuje obraz kontenera kompilacji lub operację wypychania i można również zdefiniować wykonywania kontenera. Każdy krok w zadaniu wieloetapowego używa kontener jako jego środowiska wykonawczego.
 
 > [!IMPORTANT]
 > Jeśli wcześniej utworzono zadania za pomocą wersji zapoznawczej przy użyciu polecenia `az acr build-task`, trzeba je utworzyć ponownie przy użyciu polecenia [az acr task][az-acr-task].
 
-Na przykład można uruchomić zadanie z krokami, które automatyzują następujące czynności:
+Na przykład można uruchomić zadanie z krokami, które automatyzują logiki poniższym:
 
 1. Tworzenie obrazu aplikacji sieci web
 1. Uruchamianie kontenera aplikacji internetowej
@@ -37,11 +37,11 @@ Wszystkie kroki są wykonywane w ramach platformy Azure, Odciążanie pracy zaso
 
 ## <a name="common-task-scenarios"></a>Typowe scenariusze zadania
 
-Zadania wieloetapowe obsługi takich scenariuszy jak poniżej:
+Zadania wieloetapowe obsługi takich scenariuszy jak Poniższa logika:
 
 * Tworzenie tagu, a następnie Wypchnij jednego lub więcej obrazów kontenera, w serii lub równolegle.
 * Uruchom, a następnie przechwycić wyniki pokrycia testu i kodu jednostki.
-* Uruchom, a następnie przechwycić testy funkcjonalne. Zadania rejestru Azure container Registry obsługuje uruchamianie wielu kontenerów, wykonanie serii żądań między nimi.
+* Uruchom, a następnie przechwycić testy funkcjonalne. Zadania rejestru Azure container Registry obsługuje więcej niż jednego kontenera wykonanie serii żądań między nimi.
 * Wykonaj opartego na zadaniach wykonania, w tym wstępnie lub używanego po nim kroki kompilacji obrazu kontenera.
 * Należy wdrożyć co najmniej jeden kontener z aparatem swoje ulubione wdrożenia do środowiska docelowego.
 
@@ -176,5 +176,5 @@ Odwołanie do zadania wieloetapowe a podane tutaj przykłady można znaleźć:
 
 <!-- LINKS - Internal -->
 [az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-run]: /cli/azure/acr/run#az-acr-run
-[az-acr-task]: /cli/azure/acr#az-acr-task
+[az-acr-run]: /cli/azure/acr#az-acr-run
+[az-acr-task]: /cli/azure/acr/task

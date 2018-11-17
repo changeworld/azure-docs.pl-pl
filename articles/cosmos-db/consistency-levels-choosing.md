@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: mjbrown
-ms.openlocfilehash: f51673e628798f2c92e4ef7cf9327f4d5c6e5370
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 2fc21ffde5f3f4b84b2ed025cba5d228e592343f
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51704686"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823422"
 ---
 # <a name="choose-the-right-consistency-level-for-your-application"></a>Wybierz poziom spójności odpowiednie dla twojej aplikacji
 
@@ -52,7 +52,7 @@ Możesz uzyskać lepsze gwarancje spójności w praktyce. Gwarancje spójności 
 
 * Dla pozostałych poziomów spójności trzy okno nieaktualność jest dużym stopniu zależy od obciążenia. Na przykład, jeśli żadne operacje zapisu w bazie danych, operacji odczytu z **ostatecznej**, **sesji**, lub **spójny prefiks** poziomów spójności jest prawdopodobne te same wyniki operacji odczytu z poziomem silnej spójności.
 
-Jeśli konto usługi Cosmos DB jest skonfigurowany z poziomem spójności niż wysoki poziom spójności, można znaleźć prawdopodobieństwo, że klienci mogą otrzymać silnych i spójnych odczytów dla swoich obciążeń spoglądając na Probabilistyczne powiązana nieaktualność książek Telefonicznych metryki. Ta metryka jest widoczna w witrynie Azure portal, aby dowiedzieć się więcej, zobacz [monitorować metryki probabilistically powiązana nieaktualność](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
+Jeśli konto usługi Cosmos DB jest skonfigurowany z poziomem spójności niż wysoki poziom spójności, można znaleźć prawdopodobieństwo, że klienci mogą otrzymać silnych i spójnych odczytów dla swoich obciążeń spoglądając na Probabilistyczne powiązana nieaktualność książek Telefonicznych metryki. Ta metryka jest widoczna w witrynie Azure portal, aby dowiedzieć się więcej, zobacz [metryki Monitor Probabilistically powiązana nieaktualność książek Telefonicznych](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
 
 Probabilistyczne powiązana nieaktualność pokazuje, jak ostateczną spójność ostateczną. Ta metryka zapewnia wgląd w jak często można uzyskać spójności silniejsza niż poziomu spójności, który aktualnie skonfigurowane na konto usługi Cosmos DB. Innymi słowy można wyświetlić prawdopodobieństwo (mierzonego w milisekundach) uzyskiwanie zdecydowanie spójnych odczytów dla kombinacji zapisu i regionów odczytu.
 
@@ -63,4 +63,4 @@ Dowiedz się więcej na temat poziomów spójności w następujących artykułac
 * [Mapowanie na poziomie spójności między Cosmos DB z interfejsów API](consistency-levels-across-apis.md)
 * [Dostępność i wydajność kompromisy dla różnych poziomów spójności](consistency-levels-tradeoffs.md)
 * [Jak zarządzać tokenu sesji aplikacji](how-to-manage-consistency.md#utilize-session-tokens)
-* [Monitoruj metryki probabilistically powiązana nieaktualność](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)
+* [Monitoruj metryki Probabilistically powiązana nieaktualność książek Telefonicznych](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)

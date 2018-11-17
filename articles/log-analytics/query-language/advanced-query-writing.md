@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/16/2018
+ms.date: 11/15/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 2f9868abd0eb8bf96928aeba6f96c10bcb91c4e2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3bb7e9837f74fd04d38cc77a9504cc26c6dcf803
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958561"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854190"
 ---
 # <a name="writing-advanced-queries-in-log-analytics"></a>Zapisywanie zaawansowanych zapytań w usłudze Log Analytics
 
@@ -76,28 +76,6 @@ Event
 | extend USTimeGenerated = utc_to_us_date_format(TimeGenerated)
 | project TimeGenerated, USTimeGenerated, Source, Computer, EventLevel, EventData 
 ```
-
-## <a name="functions"></a>Funkcje
-Można zapisać zapytania alias funkcji, dzięki czemu mogą być przywoływane przez inne zapytania. Na przykład następujące standardowe zapytanie zwraca wszystkie brakujące aktualizacje zabezpieczeń, zgłaszane w ciągu ostatniego dnia:
-
-```Kusto
-Update
-| where TimeGenerated > ago(1d) 
-| where Classification == "Security Updates" 
-| where UpdateState == "Needed"
-```
-
-Można zapisać to zapytanie jako funkcja i nadaj aliasem, takie jak _security_updates_last_day_. Następnie można go do innego zapytania wyszukiwania związanych z SQL niezbędnych aktualizacji zabezpieczeń:
-
-```Kusto
-security_updates_last_day | where Title contains "SQL"
-```
-
-Aby zapisać zapytanie jako funkcję, wybierz pozycję **Zapisz** przycisku w portalu i zmień **Zapisz jako** do _funkcja_. Alias funkcji może zawierać litery, cyfry i znaki podkreślenia, ale musi rozpoczynać się od litery lub znaku podkreślenia.
-
-> [!NOTE]
-> Zapisywanie funkcji jest możliwe w zapytań usługi Log Analytics, ale obecnie nie zapytania usługi Application Insights.
-
 
 ## <a name="print"></a>Drukowanie
 `print` zwraca tabelę z jedną kolumnę i pojedynczego wiersza, jako wynik obliczeń. Jest to często używane w sytuacjach wymagających calcuation proste. Na przykład, aby znaleźć bieżącą godzinę w PST, a następnie dodaj kolumnę z EST:

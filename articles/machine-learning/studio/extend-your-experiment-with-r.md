@@ -1,10 +1,11 @@
 ---
-title: Rozszerzanie eksperymentu z R | Dokumentacja firmy Microsoft
-description: Jak rozszerzyć funkcjonalność usługi Azure Machine Learning Studio za pomocą języka R przy użyciu modułu wykonania skryptu języka R.
+title: Rozszerzanie eksperymentu przy użyciu języka R | Dokumentacja firmy Microsoft
+description: Jak rozszerzyć funkcjonalność usługi Azure Machine Learning Studio za pomocą języka R przy użyciu modułu wykonywania skryptu języka R.
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 2c038a45-ba4d-42ea-9a88-e67391ef8c0a
@@ -15,34 +16,34 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 1f05119d94611df2e75afc3a56d9682d1149326c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 3767d7e48d1760b7b7453b1708118caa305652d9
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834478"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823881"
 ---
 # <a name="extend-your-experiment-with-r"></a>Rozszerzanie eksperymentu przy użyciu języka R
-Funkcje usługi Azure Machine Learning Studio za pomocą języka R można rozszerzyć za pomocą [wykonanie skryptu języka R] [ execute-r-script] modułu.
+Funkcje usługi Azure Machine Learning Studio za pośrednictwem języka R można rozszerzyć za pomocą [wykonanie skryptu języka R] [ execute-r-script] modułu.
 
-Ten moduł akceptuje wiele zestawów danych wejściowych i daje jednego zestawu danych jako dane wyjściowe. Możesz wpisać skrypt języka R w **skrypt języka R** parametr [wykonanie skryptu języka R] [ execute-r-script] modułu.
+Ten moduł przyjmuje wiele zestawów danych wejściowych i daje jednego zestawu danych jako dane wyjściowe. Możesz wpisać skrypt języka R do **skrypt języka R** parametru [wykonanie skryptu języka R] [ execute-r-script] modułu.
 
-Aby dostęp do każdego portu wejściowego modułu przy użyciu kodu podobne do następujących:
+Każdy z portem wejściowym modułu jest dostęp za pomocą kodu podobne do następujących:
 
     dataset1 <- maml.mapInputPort(1)
 
-## <a name="listing-all-currently-installed-packages"></a>Wyświetlanie listy wszystkich aktualnie zainstalowane pakiety
+## <a name="listing-all-currently-installed-packages"></a>Wyświetlanie listy wszystkich obecnie zainstalowanych pakietów
 Lista zainstalowanych pakietów można zmienić. Lista obecnie zainstalowanych pakietów można znaleźć w [R pakiety obsługiwanych przez usługi Azure Machine Learning](https://msdn.microsoft.com/library/azure/mt741980.aspx).
 
-Możesz również można uzyskać pełną, bieżącą listę zainstalowanych pakietów wprowadzając następujący kod do [wykonanie skryptu języka R] [ execute-r-script] modułu:
+Możesz także uzyskać pełne, bieżąca lista zainstalowanych pakietów, wprowadzając następujący kod do [wykonanie skryptu języka R] [ execute-r-script] modułu:
 
     out <- data.frame(installed.packages(,,,fields="Description"))
     maml.mapOutputPort("out")
 
-To wysyła listę pakietów do portem wyjściowym [wykonanie skryptu języka R] [ execute-r-script] modułu.
-W celu wyświetlenia listy pakietów połączenia takich jak moduł konwersji [Konwertuj do formatu CSV] [ convert-to-csv] po lewej stronie danymi wyjściowymi [wykonanie skryptu języka R] [ execute-r-script] modułu Uruchom eksperyment, a następnie kliknij dane wyjściowe moduł konwersji i wybierz **Pobierz**. 
+To wysyła listę pakietów do portu wyjściowego [wykonanie skryptu języka R] [ execute-r-script] modułu.
+Aby wyświetlić listę pakietów, połączyć moduł konwersji takich jak [Konwertuj do formatu CSV] [ convert-to-csv] do lewej wyjście [wykonanie skryptu języka R] [ execute-r-script] modułu Uruchom eksperyment, a następnie kliknij wyjście modułu konwersji i wybierz **Pobierz**. 
 
-![Pobieranie danych wyjściowych modułu "Konwertuj do CSV"](./media/extend-your-experiment-with-r/download-package-list.png)
+![Pobierz dane wyjściowe modułu "Konwertuj do pliku CSV"](./media/extend-your-experiment-with-r/download-package-list.png)
 
 
 <!--

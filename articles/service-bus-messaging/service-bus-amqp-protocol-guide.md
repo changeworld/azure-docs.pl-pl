@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: b3c652baa515035fc91d2a5f7f962685b673a25e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0801e3a0e9217ab0855d09df8a054926b488d759
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013330"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821552"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Protokołu AMQP 1.0 w przewodnik dotyczący protokołu usługi Azure Service Bus i Event Hubs
 
@@ -243,7 +243,7 @@ Istnieje kilka innych usługi Service bus komunikat właściwości, które nie s
 | Klucz mapy adnotacji | Sposób użycia | Nazwa interfejsu API |
 | --- | --- | --- |
 | x zoptymalizowany pod kątem zaplanowane-umieścić w kolejce — w czasie | Deklaruje co komunikat powinien pojawić się w jednostce |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
-| x — zoptymalizowany pod kątem klucza partycji | Klucz zdefiniowanych przez aplikację, które określają, które partycji komunikat powinny znaleźć się w. | [właściwości partitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
+| x — zoptymalizowany pod kątem klucza partycji | Klucz zdefiniowanych przez aplikację, które określają, które partycji komunikat powinny znaleźć się w. | [Właściwości PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
 | x — zoptymalizowany pod kątem — za pośrednictwem klucza partycji | Zdefiniowane przez aplikację klucza partycji wartość, gdy transakcja jest używany do wysyłania komunikatów za pośrednictwem kolejki transferu. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
 | x zoptymalizowany pod kątem umieszczonych w kolejce — w czasie | Zdefiniowane przez usługę czasu UTC reprezentujący rzeczywisty czas enqueuing wiadomości. Dane wejściowe są ignorowane na. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
 | x — zoptymalizowany pod kątem — — numer sekwencyjny | Zdefiniowane przez usługę unikatowy numer przypisany do wiadomości. | [sequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
@@ -258,7 +258,7 @@ Operacje są pogrupowane według identyfikatora `txn-id`.
 
 Do interakcji z transakcji, klient działa jako `transaction controller` , która kontroluje operacje, które powinny być zgrupowane razem. Usługa Service Bus pełni rolę `transactional resource` i wykonuje pracę, zgodnie z żądaniem `transaction controller`.
 
-Klient i usługa komunikują się za pośrednictwem `control link` , która została ustanowiona przez klienta. `declare` i `discharge` komunikaty są wysyłane przez kontroler za pośrednictwem łącza kontroli można przydzielić i odpowiednio realizowania transakcji (nie przedstawiają one granic transakcji pracy). Rzeczywiste Wyślij i Odbierz nie odbywa się to łącze. Każdej żądanej operacji transakcji jest jawnie oznaczone symbolem żądaną `txn-id` i w związku z tym może wystąpić na dowolny link w połączeniu. Jeśli łącze kontroli jest zamknięty, gdy istnieją transakcje zakończona, utworzone przez siebie, następnie wszystkie takie natychmiast wycofywania transakcji, a próby wykonania dalszych transakcji pracy na ich doprowadzi do błędu. Wiadomości na formant łącza nie może być wstępnie uregulowane.
+Klient i usługa komunikują się za pośrednictwem `control link` , która została ustanowiona przez klienta. `declare` i `discharge` komunikaty są wysyłane przez kontroler za pośrednictwem łącza kontroli można przydzielić i odpowiednio realizowania transakcji (nie przedstawiają one granic transakcji pracy). Ten Link nie jest wykonywana rzeczywistych operacji wysyłania i odbierania. Każdej żądanej operacji transakcji jest jawnie oznaczone symbolem żądaną `txn-id` i w związku z tym może wystąpić na dowolny link w połączeniu. Jeśli łącze kontroli jest zamknięty, gdy istnieją transakcje zakończona, utworzone przez siebie, następnie wszystkie takie natychmiast wycofywania transakcji, a próby wykonania dalszych transakcji pracy na ich doprowadzi do błędu. Wiadomości na formant łącza nie może być wstępnie uregulowane.
 
 Każde połączenie musi zainicjować link własny kontroli w taki sposób, aby mieć możliwość rozpoczęcia i zakończenia transakcji. Usługa definiuje specjalny docelowy, który działa jako `coordinator`. Klient/kontroler ustanawia łącze kontroli do tego obiektu docelowego. Formant łącza jest poza granicami jednostki, oznacza to, że tego samego łącza kontroli może służyć do inicjowania i zwalnia transakcje dla wielu jednostek.
 

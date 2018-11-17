@@ -10,12 +10,12 @@ ms.author: netahw
 author: nhaiby
 ms.date: 05/07/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 97d988332a2c5234cb260cef29f195f0fecfee45
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 73f95280cc02b6f891c4ef67cd11084768d7d282
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994942"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853017"
 ---
 # <a name="build-and-deploy-text-classification-models-with-azure-machine-learning"></a>Tworzenie i wdrażanie modeli klasyfikacji tekstu za pomocą usługi Azure Machine Learning
 
@@ -436,7 +436,7 @@ Zazwyczaj należy ustawić parametry przed dopasowania modelu.
 
 Poniższe przykłady kodu przedstawiające do nauczenia modelu używając parametrów domyślnych potoku i modelu. 
 
-Aby zobaczyć, jakie parametry są włączone w "text_word_ngrams", użyj [get_step_param_names_by_name](https://docs.microsoft.com/python/api/tatk.core.base_text_model.basetextmodel). Ta funkcja zwraca parametry, takie jak małe litery, input_col, output_col i tak dalej. 
+Aby zobaczyć, jakie parametry są włączone w "text_word_ngrams", użyj [get_step_param_names_by_name](/python/api/msft-tatk/tatk.core.base_text_model.basetextmodel#get-step-param-names-by-name). Ta funkcja zwraca parametry, takie jak małe litery, input_col, output_col i tak dalej. 
 
 ```python
 text_classifier.get_step_param_names_by_name("text_word_ngrams")
@@ -625,7 +625,7 @@ Zastosuj Klasyfikator tekstu przeszkolonych na zestawy danych testowych do gener
 </div>
 
 ## <a name="evaluate-model-performance"></a>Ocena wydajności modelu
-[Moduł oceny](https://docs.microsoft.com/python/api/tatk.evaluation) ocenia dokładność klasyfikatora uczonego tekstu dla zestawu danych testowych. Funkcja evaluate generuje macierz pomyłek i zapewnia wynik F1 — makro.
+[Moduł oceny](/python/api/msft-tatk/tatk.evaluation) ocenia dokładność klasyfikatora uczonego tekstu dla zestawu danych testowych. Funkcja evaluate generuje macierz pomyłek i zapewnia wynik F1 — makro.
 
 ```python
  text_classifier.evaluate(df_test)          

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: cwatson
-ms.openlocfilehash: c39dcdc0c4a89aa01c31dde1c5354ef1d4afe91d
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 7418bc8095ffa640d70dff562d7683f0748ce38e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395570"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821416"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Anulowanie subskrypcji platformy Azure
 
@@ -44,7 +44,7 @@ Jeśli anulujesz płatnego planu pomocy technicznej systemu Azure, nadal są roz
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>Co się stanie po mogę anulować moją subskrypcję?
 
-Anulowanie, rozliczanie kończy się natychmiast. Jednak może potrwać do 10 minut, zanim show anulowania w portalu.
+Anulowanie, rozliczanie kończy się natychmiast. Jednak może potrwać do 10 minut anulowania wyświetlić w portalu.
 
 Po tym usługi zostaną wyłączone. Oznacza to maszyny wirtualne są dezalokowany tymczasowe adresy IP są zwalniane, i magazynu jest tylko do odczytu.
 

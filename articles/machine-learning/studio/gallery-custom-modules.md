@@ -4,7 +4,8 @@ description: Dowiedz się, modułów usługi niestandardowe machine learning w g
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 16037a84-dad0-4a8c-9874-a1d3bd551cf0
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
-ms.openlocfilehash: fe58b335a029e558ce29871483589908f17c03cd
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 6f92f3d81889bf79db21b5f24cb98963e4eafdb4
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345695"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821178"
 ---
 # <a name="discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Odnajdywanie modułów usługi niestandardowe machine learning w galerii Azure AI
 

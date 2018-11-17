@@ -12,24 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 11/15/2018
 ms.author: roiyz
-ms.openlocfilehash: f7c7877768e2dc06e73f8c91016edd521151a11c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 85ac478bf753d5bb0aed96eca538e48525354eff
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056218"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823796"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Procesor GPU NVIDIA sterownika rozszerzenia dla Windows
 
 ## <a name="overview"></a>Przegląd
 
-To rozszerzenie instaluje sterowniki procesora GPU firmy NVIDIA na maszynach wirtualnych serii N Windows. W zależności od rodziny maszyn wirtualnych rozszerzenia instaluje sterowniki CUDA lub SIATKĘ. Po zainstalowaniu NVIDIA wewnętrzne sterowniki przy użyciu tego rozszerzenia, jesteś akceptowanie i zgodę na warunki umowy licencyjnej firmy NVIDIA. W procesie instalacji maszyny wirtualnej może ponowny rozruch, aby ukończyć instalację sterownika.
+To rozszerzenie instaluje sterowniki procesora GPU firmy NVIDIA na maszynach wirtualnych serii N Windows. W zależności od rodziny maszyn wirtualnych rozszerzenia instaluje sterowniki CUDA lub SIATKĘ. Po zainstalowaniu NVIDIA wewnętrzne sterowniki przy użyciu tego rozszerzenia akceptowanie i wyrażenie zgody na warunki [Umowa licencyjna użytkownika oprogramowania firmy NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330). W procesie instalacji maszyny Wirtualnej może ponowny rozruch, aby ukończyć instalację sterownika.
 
 Rozszerzenie jest również dostępna do zainstalowania sterowników procesora GPU NVIDIA na [maszyny wirtualne z serii N Linux](hpccompute-gpu-linux.md).
-
-Warunki umowy licencyjnej użytkownika oprogramowania firmy NVIDIA znajdują się w folderze- https://go.microsoft.com/fwlink/?linkid=874330
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -45,7 +43,7 @@ To rozszerzenie obsługuje następujące OSs:
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
 
-Rozszerzenie Microsoft Azure dla sterowników procesora GPU NVIDIA wymaga, docelowej maszyny wirtualnej jest połączony z Internetem i mają dostęp.
+Rozszerzenie Microsoft Azure dla sterowników procesora GPU NVIDIA wymaga, aby docelowa maszyna wirtualna jest połączony z Internetem, a następnie mają dostęp.
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
@@ -71,15 +69,23 @@ Następujący kod JSON zawiera schemat dla rozszerzenia.
 }
 ```
 
-### <a name="property-values"></a>Wartości właściwości
+### <a name="properties"></a>Właściwości
 
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | data |
+| apiVersion | 2015-06-15 | date |
 | Wydawcy | Microsoft.HpcCompute | ciąg |
 | type | NvidiaGpuDriverWindows | ciąg |
-| typeHandlerVersion | 1.2 | Int |
+| typeHandlerVersion | 1.2 | int |
 
+### <a name="settings"></a>Ustawienia
+
+Wszystkie ustawienia są opcjonalne. Zachowanie domyślne jest Zainstaluj najnowszy sterownik obsługiwane zgodnie z wymaganiami.
+
+| Name (Nazwa) | Opis | Wartość domyślna | Prawidłowe wartości | Typ danych |
+| ---- | ---- | ---- | ---- | ---- |
+| driverVersion | NV: Wersja sterownika siatki<br> NC/ND: Wersja sterownika CUDA | najnowsza | SIATKA: "391.81", "391.58", "391.03"<br> CUDA: "398.75", "397.44", "390.85" | ciąg |
+| installGridND | Zainstaluj sterownik siatki na maszyny wirtualne z serii ND | false | wartość true, false | wartość logiczna |
 
 ## <a name="deployment"></a>Wdrożenie
 
@@ -129,6 +135,8 @@ Set-AzureRmVMExtension
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
+Poniższy przykład odzwierciedla w powyższym przykładzie ARM i programu PowerShell i dodaje także ustawienia niestandardowe na przykład do instalowania sterowników innych niż domyślne. W szczególności instaluje określonego sterownika siatki nawet wtedy, gdy seria ND maszyna wirtualna jest aprowizowana.
+
 ```azurecli
 az vm extension set `
   --resource-group myResourceGroup `
@@ -137,6 +145,8 @@ az vm extension set `
   --publisher Microsoft.HpcCompute `
   --version 1.2 `
   --settings '{ `
+    "driverVersion": "391.03",
+    "installGridND": true
   }'
 ```
 

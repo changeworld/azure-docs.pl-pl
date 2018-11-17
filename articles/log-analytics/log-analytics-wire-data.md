@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: ae34cc869dfb286a5a60f59fdab8733f611a6ec7
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.openlocfilehash: 1fc2bb8fae744bb72f4fb77dc69d11f41d4480e6
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712164"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822358"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Rozwiązanie Dane o komunikacji sieciowej 2.0 (wersja zapoznawcza) w usłudze Log Analytics
 
@@ -60,8 +60,8 @@ Rozwiązanie Dane o komunikacji sieciowej pobiera swoje dane z agenta Microsoft 
 
 | **Połączone źródło** | **Obsługiwane** | **Opis** |
 | --- | --- | --- |
-| Agenci dla systemu Windows | Yes | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z komputerów z agentami systemu Windows. <br><br> Oprócz [agenta usługi Log Analytics dla Windows](log-analytics-agent-windows.md), agenci Windows wymagają Microsoft Dependency Agent. Zobacz [obsługiwane systemy operacyjne](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
-| Agenci dla systemu Linux | Yes | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z komputerów z agentami systemu Linux.<br><br> Oprócz [agenta usługi Log Analytics dla systemu Linux](log-analytics-quick-collect-linux-computer.md), agenci dla systemu Linux wymaga Microsoft Dependency Agent. Zobacz [obsługiwane systemy operacyjne](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
+| Agenci dla systemu Windows | Yes | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z komputerów z agentami systemu Windows. <br><br> Oprócz [agenta usługi Log Analytics dla Windows](log-analytics-agent-windows.md), agenci Windows wymagają Microsoft Dependency Agent. Zobacz [obsługiwane systemy operacyjne](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
+| Agenci dla systemu Linux | Yes | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z komputerów z agentami systemu Linux.<br><br> Oprócz [agenta usługi Log Analytics dla systemu Linux](log-analytics-quick-collect-linux-computer.md), agenci dla systemu Linux wymaga Microsoft Dependency Agent. Zobacz [obsługiwane systemy operacyjne](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
 | Grupa zarządzania programu System Center Operations Manager | Yes | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z agentów systemu Windows i Linux w połączonej [grupie zarządzania programu System Center Operations Manager](log-analytics-om-agents.md). <br><br> Wymagane jest bezpośrednie połączenie z komputera agenta programu System Center Operations Manager do usługi Log Analytics. |
 | Konto magazynu Azure | Nie | Rozwiązanie Dane o komunikacji sieciowej gromadzi dane z komputerów agenta, więc nie ma od niego żadnych danych do gromadzenia z usługi Azure Storage. |
 

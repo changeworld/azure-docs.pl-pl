@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: jeedes
-ms.openlocfilehash: ff9f3186602b9047e53fb78edbf52c2c0d9ee574
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 796ed1cb0fde6b29a931099336fd91e2e931fc29
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423593"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820499"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>Samouczek: Integracja usługi Azure Active Directory z Sedgwick CMS
 
@@ -38,7 +38,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD z Sedgwick CMS, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - System CMS Sedgwick logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Aby skonfigurować integrację cms Sedgwick w usłudze Azure AD, należy dodać 
 
 **Aby dodać Sedgwick CMS z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -134,7 +134,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/sedgwickcms-tutorial/tutorial_general_400.png)
 
-1. Aby skonfigurować logowanie jednokrotne na **Sedgwick CMS** stronie, musisz wysłać pobrany **XML metadanych** do [Sedgwick CMS zespołem pomocy technicznej](https://www.sedgwick.com/contact/Pages/contactform.aspx). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Aby skonfigurować logowanie jednokrotne na **Sedgwick CMS** stronie, musisz wysłać pobrany **XML metadanych** do [Sedgwick CMS zespołem pomocy technicznej](https://www.sedgwick.com/help). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 > [!TIP]
 > Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -173,7 +173,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
   
 ### <a name="create-a-sedgwick-cms-test-user"></a>Tworzenie użytkownika testowego Sedgwick CMS
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Sedgwick CMS. Praca z [zespołem pomocy technicznej Sedgwick CMS](https://www.sedgwick.com/contact/Pages/contactform.aspx) Aby dodać użytkowników do platformy Sedgwick CMS. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.  
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Sedgwick CMS. Praca z [zespołem pomocy technicznej Sedgwick CMS](https://www.sedgwick.com/help) Aby dodać użytkowników do platformy Sedgwick CMS. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.  
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

@@ -1,46 +1,51 @@
 ---
-title: Ciągłe wdrażanie usługi Jenkins za pomocą usługi Azure Kubernetes Service (AKS)
-description: Dowiedz się, jak zautomatyzować proces ciągłego wdrażania przy użyciu narzędzia Jenkins, wdrażanie i uaktualnianie konteneryzowanych aplikacji w usłudze Azure Kubernetes Service (AKS)
+title: Samouczek — wdrażanie z repozytorium GitHub do usługi Azure Kubernetes Service (AKS) przy użyciu narzędzia Jenkins
+description: Konfigurowanie narzędzia Jenkins dla ciągłej integracji (CI) z serwisu GitHub i ciągłe wdrażanie (CD) do usługi Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
 ms.service: container-service
+author: iainfoulds
+ms.author: iainfou
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: iainfou
-ms.openlocfilehash: 5417e59f15ffcf48cc2af27044355d2bb5c9edaf
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: d252e275280ed2a5c2129f6b228e9989a33b37fd
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087699"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853635"
 ---
-# <a name="create-a-continuous-deployment-pipeline-with-jenkins-and-azure-kubernetes-service-aks"></a>Utwórz potok ciągłego wdrażania za pomocą systemu Jenkins i usługi Azure Kubernetes Service (AKS)
+# <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>Samouczek: Wdrażanie z repozytorium GitHub do usługi Azure Kubernetes Service (AKS) przy użyciu narzędzia Jenkins ciągłej integracji i ciągłego wdrażania
 
-Aby szybko wdrażać aktualizacje do aplikacji w usłudze Azure Kubernetes Service (AKS), często używane ciągłej integracji i ciągłego dostarczania (CI/CD) platformy. Na platformie ciągłej integracji/ciągłego wdrażania zatwierdzenia kodu można uruchomić nową kompilację kontenera, który jest następnie używany do wdrażania wystąpienia zaktualizowaną aplikację. W tym artykule używasz narzędzia Jenkins jako platformy ciągłej integracji/ciągłego Dostarczania kompilacji i wypychanie obrazów kontenera do usługi Azure Container Registry (ACR), a następnie uruchamiać te aplikacje w usłudze AKS. Omawiane kwestie:
+W tym samouczku wdraża przykładową aplikację z witryny GitHub i [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes) klastra przez skonfigurowanie ciągłej integracji (CI) i ciągłe wdrażanie (CD) w usłudze Jenkins. Dzięki temu po zaktualizowaniu aplikacji przez wypychanie zatwierdzeń do repozytorium GitHub, Jenkins automatycznie uruchamia nową kompilację kontenera, wypychanie obrazów kontenera do usługi Azure Container Registry (ACR), a następnie uruchamia aplikację w usłudze AKS. 
+
+W tym samouczku wykonasz następujące zadania:
 
 > [!div class="checklist"]
-> * Wdrożysz przykładową aplikację głosowania na platformie Azure z klastrem usługi AKS
-> * Tworzenie podstawowego wystąpienia usługi Jenkins
-> * Skonfiguruj poświadczenia dla serwera Jenkins na interakcję z usługą ACR
-> * Tworzenie zadania kompilacji usługi Jenkins i webhook usługi GitHub dla zautomatyzowanych kompilacji
-> * Testowanie potoku ciągłej integracji/ciągłego wdrażania, aby zaktualizować aplikację w usłudze AKS w oparciu o zatwierdzenia kodu GitHub
+> * Wdróż przykładową aplikację głosowania na platformie Azure z klastrem usługi AKS.
+> * Tworzenie podstawowego projektu usługi Jenkins.
+> * Skonfiguruj poświadczenia dla serwera Jenkins na interakcję z rejestru Azure container Registry.
+> * Utwórz element webhook usługi GitHub dla zautomatyzowanych kompilacji i zadania kompilacji usługi Jenkins.
+> * Testowanie potoku ciągłej integracji/ciągłego wdrażania, aby zaktualizować aplikację w usłudze AKS w oparciu o zatwierdzenia kodu GitHub.
 
-## <a name="before-you-begin"></a>Przed rozpoczęciem
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Następujące elementy jest niezbędna, aby wykonać kroki opisane w tym artykule.
+Do ukończenia tego samouczka, potrzebne są następujące elementy:
 
 - Podstawową wiedzę na temat usługi Kubernetes, Git, ciągłej integracji/ciągłego Dostarczania i kontenera obrazów
 
-- [Klastra AKS] [ aks-quickstart] i `kubectl` skonfigurowano [poświadczeń klastra usługi AKS][aks-credentials].
-- [Rejestru Azure Container Registry (ACR)][acr-quickstart], nazwę serwera logowania usługi ACR i klastrem AKS skonfigurowany tak, aby [uwierzytelnianie za pomocą rejestru ACR] [ acr-authentication].
+- [Klastra AKS] [ aks-quickstart] i `kubectl` skonfigurowano [poświadczeń klastra usługi AKS][aks-credentials]
+
+- [Rejestru Azure Container Registry (ACR)][acr-quickstart], nazwę serwera logowania usługi ACR i klastrem AKS skonfigurowany tak, aby [uwierzytelnianie za pomocą rejestru ACR][acr-authentication]
 
 - Wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej zainstalowany i skonfigurowany. Uruchom `az --version` Aby znaleźć wersję. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
-- [Zainstalowana platforma docker] [ docker-install] w systemie deweloperskim.
-- Konto usługi GitHub [osobisty token dostępu GitHub][git-access-token]i zainstalowanego w systemie deweloperskim klienta Git.
+
+- [Zainstalowana platforma docker] [ docker-install] w systemie deweloperskim
+
+- Konto usługi GitHub [osobisty token dostępu GitHub][git-access-token]i zainstalowanego w systemie deweloperskim klienta usługi Git
 
 - Jeśli podasz własne narzędzia Jenkins wystąpienia, a nie w tym przykładzie inicjowanych przez skrypty sposób wdrażania narzędzia Jenkins, usługi Jenkins wystąpienia potrzeb [platformy Docker zainstalowany i skonfigurowany] [ docker-install] i [kubectl][kubectl-install].
 
-## <a name="prepare-the-application"></a>Przygotowywanie aplikacji
+## <a name="prepare-your-app"></a>Przygotowywanie aplikacji
 
 W tym artykule używamy przykładową aplikację głosowania na platformie Azure, który zawiera interfejs sieci web hostowanych w zasobników przynajmniej jednego i drugiego zasobnik obsługującego magazyn Redis do przechowywania danych tymczasowych. Zanim włączysz Jenkins i usługi AKS w przypadku zautomatyzowanych wdrożeń, najpierw ręcznie przygotować i wdrożyć aplikację głosowania na platformie Azure w klastrze AKS. To ręczne wdrożenie jest wersja 1 aplikacji i pozwala zobaczyć aplikację w akcji.
 

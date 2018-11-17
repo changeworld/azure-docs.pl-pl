@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 41e3f38817abbdd0cab9ab2c72d39cb6f3f69531
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 062308622e3170a4eb8f75a96300f04f683a90e7
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978182"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820362"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Rozwiązywanie typowych problemów w usłudze Azure Container Instances
 
@@ -205,6 +205,9 @@ Ten błąd wskazuje, że z powodu dużego obciążenia w regionie, w którym pr�
 ## <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Nie można nawiązać połączenie z podstawowego interfejsu API Docker lub uruchamiaj kontenery uprzywilejowanych
 
 Usługa Azure Container Instances nie ujawnia bezpośredni dostęp do podstawowej infrastruktury, który jest hostem grupy kontenerów. Obejmuje to dostęp do interfejsu API platformy Docker zainstalowany na hoście kontenera, a uprzywilejowanych kontenerów. Jeśli potrzebujesz interakcji platformy Docker, sprawdź [Dokumentacja referencyjna REST](https://aka.ms/aci/rest) obsługuje interfejs API ACI. Jeśli jest coś, co jest Brak, Prześlij żądanie na [fora z opiniami ACI](https://aka.ms/aci/feedback).
+
+## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>Adresy IP mogą być niedostępne z powodu niezgodnej portów
+Usługa Azure Container Instances nie obsługuje obecnie portu mapowania takich jak za pomocą konfiguracji regularnych platformy docker, jednak ta poprawka znajduje się w planie. Jeśli okaże się adresy IP nie są dostępne, gdy uznasz, że powinno być, upewnij się, został skonfigurowany obraz kontenera do nasłuchiwania tych samych portów, należy udostępnić w grupie kontenerów za pomocą `ports` właściwości.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się, jak [pobrać dzienniki kontenera i zdarzenia](container-instances-get-logs.md) debugować swoje kontenery.

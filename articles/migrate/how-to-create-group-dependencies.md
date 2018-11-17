@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 2d2688799b1a0b4518b9c91bbc530936c834c5e3
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 352ff105f5cd443fba74e05ebce22c14f08e63a0
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407440"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823677"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Uściślanie zawartości grupy za pomocą mapowania zależności grupy
 
@@ -71,7 +71,7 @@ Aby zainstalować agenta na maszynie z systemem Linux:
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-Dowiedz się więcej o obsłudze agenta zależności [Windows](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems) i [Linux](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems) systemów operacyjnych.
+Dowiedz się więcej o obsłudze agenta zależności [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) i [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) systemów operacyjnych.
 
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>Dostosować grupę, w oparciu o wizualizacji zależności
 Agenci zainstalowani na wszystkich komputerach w grupie możesz wizualizować zależności grupy i dostosuj je, wykonując poniższe kroki.

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: a56cb92dc8870bf3fff6de0b1d5d907a0898c216
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 56fbb5d45e55e63ae887d915367cfc649e531095
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364299"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820226"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurowanie kontroli dostępu opartej na rolach w akceleratora rozwiązania monitorowania zdalnego
 
@@ -23,29 +23,33 @@ Ten artykuł zawiera informacje o sposobie konfigurowania kontroli dostępu opar
 
 Przy pierwszym wdrożeniu rozwiązania do zdalnego monitorowania, dostępne są dwie role: **administratora** i **tylko do odczytu**.
 
-Żaden użytkownik w **administratora** rola ma pełny dostęp do rozwiązania. Użytkownik w **tylko do odczytu** roli nie może wykonać żadnej z następujących zadań:
+Żaden użytkownik w **administratora** rola ma pełny dostęp do rozwiązania, w tym następujące uprawnienia poniżej. Użytkownik w **tylko do odczytu** roli będzie miał dostęp tylko do wyświetlania rozwiązania.
 
-- Alarmy aktualizacji
-- Usuń alarmów
-- Tworzenie urządzenia
-- Aktualizowanie urządzenia
-- Usuwanie urządzeń
-- Tworzenie grup urządzeń
-- Aktualizowanie grup urządzeń
-- Usuwanie grupy urządzeń
-- Tworzenie reguł
-- Reguły aktualizacji
-- Usuń reguły
-- Tworzenie zadań
-- Rozwiązanie Update SIM management
+| Uprawnienie            | Jednostka administracyjna | Tylko do odczytu |
+|----------------       |-------|-----------|
+| Wyświetl rozwiązania         | Yes   | Yes       |
+| Alarmy aktualizacji         | Yes   | Nie        |
+| Usuń alarmów         | Yes   | Nie        |
+| Tworzenie urządzenia        | Yes   | Nie        |
+| Aktualizowanie urządzenia        | Yes   | Nie        |
+| Usuwanie urządzeń        | Yes   | Nie        |
+| Tworzenie grup urządzeń  | Yes   | Nie        |
+| Aktualizowanie grup urządzeń  | Yes   | Nie        |
+| Usuwanie grupy urządzeń  | Yes   | Nie        |
+| Tworzenie reguł          | Yes   | Nie        |
+| Reguły aktualizacji          | Yes   | Nie        |
+| Usuń reguły          | Yes   | Nie        |
+| Tworzenie zadań           | Yes   | Nie        |
+| Rozwiązanie Update SIM management | Yes   | Nie        |
 
-Osoba, która wdraża rozwiązanie monitorowania zdalnego jest automatycznie przypisywana do **administratora** roli i właściciela aplikacji usługi Azure Active Directory. Jako właściciel aplikacji należy przypisać role do innych użytkowników w witrynie Azure portal.
+Domyślnie użytkownik, który wdrożono rozwiązanie jest przypisywany **administratora** roli i właściciela aplikacji usługi Azure Active Directory. Jako właściciel aplikacji należy przypisać role do innych użytkowników za pośrednictwem witryny Azure portal. Jeśli chcesz, aby inny użytkownik, aby przypisać role w rozwiązaniu, również muszą zostać ustawione jako właściciel aplikacji w witrynie Azure portal.
 
-Jeśli chcesz, aby inny użytkownik, aby przypisać role w rozwiązaniu, również muszą zostać ustawione jako właściciel aplikacji w witrynie Azure portal.
+> [!NOTE]
+> Użytkownik będący wdrożono rozwiązanie **tylko osoba** kto może wyświetlać natychmiast po jego został utworzony. Aby udzielić osobom dostępu umożliwiającego wyświetlanie aplikacji jako tylko do odczytu, administrator lub rolę niestandardową, zobacz następujące instrukcje poniżej na dodawać i usuwać użytkowników.
 
 ## <a name="add-or-remove-users"></a>Dodawanie lub usuwanie użytkowników
 
-Użyj witryny Azure portal, aby dodać lub usunąć użytkownika z rozwiązania do zdalnego monitorowania. Następujące kroki użycia [aplikacja dla przedsiębiorstw usługi Azure Active Directory](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) , została utworzona automatycznie podczas wdrażania rozwiązania do zdalnego monitorowania.
+Jako właściciel aplikacji usługi Azure Active Directory można użyć witryny Azure portal, aby dodać lub usunąć użytkownika do roli z rozwiązania do zdalnego monitorowania. Następujące kroki użycia [aplikacja dla przedsiębiorstw usługi Azure Active Directory](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) utworzony podczas wdrażania rozwiązania do zdalnego monitorowania.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 

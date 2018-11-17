@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 07/27/201
 ms.author: v-jamebr
-ms.openlocfilehash: c590c9d1ccbbb84a76ba09021a97464ec85c5784
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 2f84550c83c646b44f4a59c3ae506df7c18d1555
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506269"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852983"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Instalowanie i konfigurowanie zwrotnego serwera proxy w usłudze Azure Service Fabric
 Zwrotny serwer proxy to opcjonalna usługa Azure Service Fabric, która ułatwia mikrousług działającego w klastrze usługi Service Fabric, odnajdywanie i komunikować się z innymi usługami, które mają punktów końcowych http. Aby dowiedzieć się więcej, zobacz [zwrotny serwer proxy w usłudze Azure Service Fabric](service-fabric-reverseproxy.md). W tym artykule przedstawiono sposób instalowania i konfigurowania zwrotny serwer proxy w klastrze. 
@@ -231,7 +231,7 @@ Poniższe kroki pokazują, ustawienia Aby użyć, aby włączyć zwrotny serwer 
 
    Aby dowiedzieć się więcej na temat konfigurowania i zarządzania certyfikatami dla klastrów autonomicznych, jak również szczegółowe informacje o konfigurowaniu certyfikatów służących do zabezpieczania zwrotny serwer proxy, zobacz [X509 zabezpieczenia oparte na certyfikatach](./service-fabric-windows-cluster-x509-security.md).
 
-Po zmodyfikowaniu pliku ClusterConfig.json, aby włączyć zwrotny serwer proxy, postępuj zgodnie z instrukcjami [Uaktualnij konfigurację klastra](./service-fabric-cluster-upgrade-windows-server.md#upgrade-the-cluster-configuration) wypychanie zmian do klastra.
+Po zmodyfikowaniu pliku ClusterConfig.json, aby włączyć zwrotny serwer proxy, postępuj zgodnie z instrukcjami [Uaktualnij konfigurację klastra](service-fabric-cluster-config-upgrade-windows-server.md) wypychanie zmian do klastra.
 
 
 ## <a name="expose-reverse-proxy-on-a-public-port-through-azure-load-balancer"></a>Udostępnianie zwrotny serwer proxy na publicznym porcie za pośrednictwem usługi Azure Load Balancer
@@ -332,7 +332,7 @@ Na przykład można ustawić wartość **DefaultHttpRequestTimeout** umożliwiaj
    }
    ``` 
 
-Aby uzyskać więcej informacji na temat aktualizowania ustawień sieci szkieletowej dla klastrów platformy Azure, zobacz [dostosować ustawienia klastra przy użyciu szablonów usługi Resource Manager](./service-fabric-cluster-fabric-settings.md#customize-cluster-settings-using-resource-manager-templates). W przypadku klastrów autonomicznych, zobacz [Dostosuj ustawienia klastra dla autonomicznych klastrów](./service-fabric-cluster-fabric-settings.md#customize-cluster-settings-for-standalone-clusters). 
+Aby uzyskać więcej informacji na temat aktualizowania ustawień sieci szkieletowej dla klastrów platformy Azure, zobacz [dostosować ustawienia klastra przy użyciu szablonów usługi Resource Manager](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych, zobacz [Dostosuj ustawienia klastra dla autonomicznych klastrów](service-fabric-cluster-config-upgrade-windows-server.md). 
 
 Kilka ustawień sieci szkieletowej są używane nawiązywania bezpiecznej komunikacji między zwrotny serwer proxy i usługami. Aby uzyskać szczegółowe informacje o te ustawienia, zobacz [nawiązywanie połączenia z bezpiecznej usłudze przy użyciu zwrotnego serwera proxy](service-fabric-reverseproxy-configure-secure-communication.md).
 

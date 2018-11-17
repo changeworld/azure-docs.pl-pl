@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie Netsuite dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Netsuite.
+title: 'Samouczek: Konfigurowanie Netsuite OneWorld dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Netsuite OneWorld.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: e14f74f3dd6d49b882dedcb2ae01029a50a459a3
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 81e590297283a8fe88d9257e201259056a3e3744
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346750"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823859"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Netsuite na potrzeby automatycznej aprowizacji użytkowników
 
-Celem tego samouczka jest pokazanie czynności, które należy wykonać w Netsuite i Azure AD w celu automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure AD do Netsuite.
+Celem tego samouczka jest pokazanie czynności, które należy wykonać w Netsuite OneWorld i Azure AD, do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure AD do Netsuite.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
 
 *   Dzierżawy usługi Azure Active directory.
-*   Netsuite logowania jednokrotnego włączonych subskrypcji.
-*   Konto użytkownika w Netsuite z uprawnieniami administratora zespołu.
+*   Subskrypcja Netsuite OneWorld. Należy pamiętać, że automatyczna aprowizacja użytkowników jest obecnie obsługiwane tylko w przypadku NetSuite OneWorld.
+*   Konto użytkownika w Netsuite z uprawnieniami administratora.
 
-## <a name="assigning-users-to-netsuite"></a>Przypisywanie użytkowników do Netsuite
+## <a name="assigning-users-to-netsuite-oneworld"></a>Przypisywanie użytkowników do Netsuite OneWorld
 
 Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście Inicjowanie obsługi administracyjnej konta użytkowników są synchronizowane tylko użytkowników i grup, które "przypisano" do aplikacji w usłudze Azure AD.
 
@@ -41,7 +41,7 @@ Przed Skonfiguruj i włącz usługę aprowizacji, musisz zdecydować, jakie uży
 
 [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-netsuite"></a>Ważne wskazówki dotyczące przypisywania użytkowników do Netsuite
+### <a name="important-tips-for-assigning-users-to-netsuite-oneworld"></a>Ważne wskazówki dotyczące przypisywania użytkowników do Netsuite OneWorld
 
 *   Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do Netsuite do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
 

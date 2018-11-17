@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 526ba73858322ee41f649a338f22226da6af33e7
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c5b05b4ce33222ee9dd84950066b3bd36ea315de
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964084"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824867"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure nawiązać połączenie narzędzia ITSM za pomocą łącznika zarządzania usługami IT
 
@@ -157,13 +157,13 @@ Pulpit nawigacyjny zawiera również informacje dotyczące stanu łącznika, kt�
 
 Można również wizualizować zdarzenia zsynchronizowane, względem których to dotyczy komputerów, w ramach rozwiązania mapy usługi.
 
-Usługa Service Map automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Umożliwia ona wyświetlenie Twoich serwerów zgodnie z nich myślisz — jako wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami i portami w dowolnej architekturze połączenia TCP bez konieczności konfiguracji wymagane inne niż Instalacja agenta. [Dowiedz się więcej](../monitoring/monitoring-service-map.md).
+Usługa Service Map automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Umożliwia ona wyświetlenie Twoich serwerów zgodnie z nich myślisz — jako wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami i portami w dowolnej architekturze połączenia TCP bez konieczności konfiguracji wymagane inne niż Instalacja agenta. [Dowiedz się więcej](../azure-monitor/insights/service-map.md).
 
 Jeśli używasz rozwiązania mapy usługi, można wyświetlić elementy działu usług, które są tworzone w rozwiązania ITSM, jak pokazano w poniższym przykładzie:
 
 ![Ekran analiza dziennika](media/log-analytics-itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-Więcej informacji: [mapy usługi](../monitoring/monitoring-service-map.md)
+Więcej informacji: [mapy usługi](../azure-monitor/insights/service-map.md)
 
 
 ## <a name="additional-information"></a>Dodatkowe informacje

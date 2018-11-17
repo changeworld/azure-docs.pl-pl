@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: ae033b944e93fe90392af9b17de883d791d3e4dc
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 521bf044f280b91f668d42d760ba2a726b555f12
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958606"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822674"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Szczegółowa diagnostyka dla aplikacji internetowych i usług dzięki usłudze Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Dlaczego muszę usługi Application Insights?
@@ -82,7 +82,7 @@ Główne kategorie danych są:
 ## <a name="case-study-real-madrid-fc"></a>Analiza przypadku: Real Madryt F.C.
 Usługa sieci web [Real Madryt Football Club](http://www.realmadrid.com/) służy około 450 milionom fanów z całego świata. Fanów uzyskać do niego dostęp zarówno za pośrednictwem przeglądarki sieci web i aplikacje mobilne Club. Fanów można nie tylko Zarezerwuj biletów, ale również dostęp do klipów informacji i wideo na wyniki, graczy i nadchodzących gry. Za pomocą filtrów można wyszukiwania, takie jak liczby celów oceniane. Dostępne są także łącza do mediów społecznościowych. Środowisko użytkownika jest wysoce spersonalizowanych i został zaprojektowany jako komunikacja dwukierunkowa, dzięki którym można zaangażować fanów.
 
-Rozwiązanie [system usług i aplikacji w systemie Microsoft Azure to](https://www.microsoft.com/en-us/enterprise/microsoftcloud/realmadrid.aspx). Skalowalność to kluczowe: ruch jest zmienna i mogą dotrzeć bardzo dużej ilości danych, podczas i wokół dopasowań.
+Rozwiązanie [system usług i aplikacji w systemie Microsoft Azure to](https://www.microsoft.com/inculture/sports/real-madrid/). Skalowalność to kluczowe: ruch jest zmienna i mogą dotrzeć bardzo dużej ilości danych, podczas i wokół dopasowań.
 
 Rzeczywiste Madryt, ważne jest do monitorowania wydajności systemu. Usługa Azure Application Insights oferuje kompleksowy wgląd w systemie, zapewniając niezawodne i wysoki poziom usługi. 
 

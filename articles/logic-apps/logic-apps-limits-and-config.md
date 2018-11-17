@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 10/11/2018
-ms.openlocfilehash: f4d8030918804dc30437aae34de87615ce7e82b5
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.date: 11/16/2018
+ms.openlocfilehash: 62235c0c06621169997cc4ad16816c0a4d638e78
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346705"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853833"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limity i informacje o konfiguracji dla usługi Azure Logic Apps
 
@@ -323,9 +323,10 @@ Wszystkie aplikacje logiki w regionie, użyj tych samych zakresów adresów IP. 
 
 ### <a name="managed-connectors"></a>Zarządzane łączniki
 
-Do obsługi wywołania, [łączników zarządzanych przez firmę Microsoft](../connectors/apis-list.md) upewnij, tak skonfigurowany, konfiguracje zapory obejmują one te wychodzące adresy IP na podstawie regionów wówczas, gdy istnieją aplikacje Logic Apps.
+Do obsługi wywołania, [łączników zarządzanych przez firmę Microsoft](../connectors/apis-list.md) upewnij, tak skonfigurowany, konfiguracje zapory obejmują one wszystkie wychodzące adresy IP określone dla regionów, gdy istnieją aplikacje Logic Apps. Aby uzyskać [Azure dla instytucji rządowych](/azure-government/documentation-government-welcome) i [Azure China 21Vianet](/azure/china/china-welcome), zastrzeżone adresy IP dla łączników nie są obecnie dostępne.
 
 > [!IMPORTANT]
+> 
 > Jeśli masz istniejące konfiguracje, zaktualizuj je **możliwie jak przed 1 września 2018** tak aby dołączyć i pasują do adresów IP na tej liście dla regionów, gdy istnieją aplikacje Logic Apps. 
 > 
 > Usługa Logic Apps nie obsługuje bezpośredniego połączenia z konta usługi Azure storage za pośrednictwem zapór. Aby uzyskać dostęp do tych kont magazynu, użyj tutaj jedną z opcji: 

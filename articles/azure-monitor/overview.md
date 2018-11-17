@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 3de1939ec4004c2709fb0e366fb492462cf2d216
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.openlocfilehash: 6a3e33fe74199f0b9c02c6924d5e5e41b37f385c
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710770"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820974"
 ---
 # <a name="azure-monitor-overview"></a>Omówienie usługi Azure Monitor
 
@@ -27,14 +27,14 @@ Usługa Azure Monitor maksymalizuje dostępność i wydajność aplikacji, zapew
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
 ## <a name="overview"></a>Przegląd
-Poniższy diagram zawiera widok wysokiego poziomu usługi Azure Monitor. W środku diagramu są magazynów danych dla metryki i dzienniki, które są dwa podstawowe typy danych używany przez usługi Azure Monitor. Po lewej stronie są [źródeł, które zbierają dane telemetryczne z różnych monitorowanych zasobów](../monitoring/monitoring-data-sources.md) i wypełnić [magazyny danych](../monitoring/monitoring-data-collection.md). Po prawej stronie są różne funkcje, które usługi Azure Monitor wykonuje się za pomocą tego zebranych danych, takich jak analiza, alertów i przesyłania strumieniowego z systemami zewnętrznymi.
+Poniższy diagram zawiera widok wysokiego poziomu usługi Azure Monitor. W środku diagramu są magazynów danych dla metryki i dzienniki, które są dwa podstawowe typy danych używany przez usługi Azure Monitor. Po lewej stronie są [źródeł, które zbierają dane telemetryczne z różnych monitorowanych zasobów](../azure-monitor/platform/data-sources.md) i wypełnić [magazyny danych](../azure-monitor/platform/data-collection.md). Po prawej stronie są różne funkcje, które usługi Azure Monitor wykonuje się za pomocą tego zebranych danych, takich jak analiza, alertów i przesyłania strumieniowego z systemami zewnętrznymi.
 
 
 ![Omówienie usługi Azure Monitor](media/overview/overview.png)
 
 
 ## <a name="monitoring-data-platform"></a>Platforma danych monitorowania
-Wszystkie dane zebrane przez usługi Azure Monitor pasuje do jednej z dwóch typów podstawowych, [metryk i dzienników](../monitoring/monitoring-data-collection.md). [Metryki](../monitoring/monitoring-data-collection.md#metrics) są wartości liczbowe, które opisują niektóre aspekty systemu w określonym punkcie w czasie. Są one uproszczone i zdolność do obsługi scenariuszy w czasie rzeczywistym w pobliżu. [Dzienniki](../monitoring/monitoring-data-collection.md#logs) zawierają różne rodzaje danych zorganizowanych w rekordy z różnymi zestawami właściwości dla każdego typu. Dane telemetryczne, np. zdarzeniami i śladami są przechowywane jako dzienniki dodatkowo na dane wydajności, aby wszystkie można zbudować do analizy.
+Wszystkie dane zebrane przez usługi Azure Monitor pasuje do jednej z dwóch typów podstawowych, [metryk i dzienników](../azure-monitor/platform/data-collection.md). [Metryki](../azure-monitor/platform/data-collection.md#metrics) są wartości liczbowe, które opisują niektóre aspekty systemu w określonym punkcie w czasie. Są one uproszczone i zdolność do obsługi scenariuszy w czasie rzeczywistym w pobliżu. [Dzienniki](../azure-monitor/platform/data-collection.md#logs) zawierają różne rodzaje danych zorganizowanych w rekordy z różnymi zestawami właściwości dla każdego typu. Dane telemetryczne, np. zdarzeniami i śladami są przechowywane jako dzienniki dodatkowo na dane wydajności, aby wszystkie można zbudować do analizy.
 
 Dla wielu zasobów platformy Azure zostaną wyświetlone dane zebrane przez usługi Azure Monitor po prawej stronie na ich stronie Przegląd w witrynie Azure portal. Mają się z dowolną maszyną wirtualną, na przykład, a zobaczysz kilka wykresów, wyświetlanie metryk wydajności. Kliknij dowolne wykresy, aby otworzyć je w [Eksplorator metryk](../monitoring-and-diagnostics/monitoring-metric-charts.md) w witrynie Azure portal, co pozwala na wykresie wartości wielu metryk wraz z upływem czasu.  Można wyświetlać wykresy interakcyjnie lub przypiąć je do pulpitu nawigacyjnego, aby wyświetlić je z innymi wizualizacjami.
 
@@ -145,6 +145,6 @@ Wiele interfejsów API dostępnych do odczytu i zapisu metryk i dzienników z us
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej o usługach:
 
-* [Metryki i dzienniki](../monitoring/monitoring-data-collection.md) dla danych zbieranych przez usługi Azure Monitor.
-* [Źródła danych](../monitoring/monitoring-data-sources.md) dla jak wysyłanie danych telemetrycznych w różnych składników aplikacji.
+* [Metryki i dzienniki](../azure-monitor/platform/data-collection.md) dla danych zbieranych przez usługi Azure Monitor.
+* [Źródła danych](../azure-monitor/platform/data-sources.md) dla jak wysyłanie danych telemetrycznych w różnych składników aplikacji.
 * [Log Analytics](../log-analytics/log-analytics-queries.md) do analizowania zebranych danych.

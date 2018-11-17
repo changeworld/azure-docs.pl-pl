@@ -14,12 +14,12 @@ ms.date: 10/26/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 8c5da669d490bf295c4066854ac1173bcc79ad5e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 0c8fe0759e115288e9f8cc2ea313f6dc3dc89b6b
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686130"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854010"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w usłudze Azure Active Directory
 
@@ -179,11 +179,6 @@ W poniższych tabelach opisano określone uprawnienia w usłudze Azure Active Di
 ### <a name="application-administrator"></a>Administrator aplikacji
 Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębiorstwa oraz zarządzać nimi.
 
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
 | **Akcje** | **Opis** |
 | --- | --- |
 | Microsoft.AAD.Directory/Applications/Audience/Update | Aktualizowanie właściwości applications.audience w usłudze Azure Active Directory. |
@@ -223,11 +218,6 @@ Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębior
 ### <a name="application-developer"></a>Deweloper aplikacji
 Rejestracje aplikacji można tworzyć niezależnie od "Użytkownicy mogą rejestrować aplikacje" ustawienie.
 
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
 | **Akcje** | **Opis** |
 | --- | --- |
 | microsoft.aad.directory/applications/createAsOwner | Tworzenie aplikacji w usłudze Azure Active Directory. Twórca nie zostanie dodany jako pierwszy właściciela, a utworzony obiekt zmniejsza limit przydziału 250 utworzonych obiektów twórcy. |
@@ -237,11 +227,6 @@ Rejestracje aplikacji można tworzyć niezależnie od "Użytkownicy mogą rejest
 
 ### <a name="billing-administrator"></a>Administrator rozliczeń
 Może wykonywać typowe zadania związane z rozliczeniami, takie jak aktualizowanie informacji o płatności.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
 
   > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
@@ -263,11 +248,6 @@ Może wykonywać typowe zadania związane z rozliczeniami, takie jak aktualizowa
 Można uzyskać dostęp i zarządzać nimi, Zarządzanie pulpitem narzędzi i usług, w tym w usłudze Intune.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
-  > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
@@ -283,11 +263,6 @@ Można uzyskać dostęp i zarządzać nimi, Zarządzanie pulpitem narzędzi i us
 
 ### <a name="cloud-application-administrator"></a>Administrator aplikacji w chmurze
 Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębiorstwa (z wyjątkiem serwera proxy aplikacji) oraz zarządzać nimi.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
 
 | **Akcje** | **Opis** |
 | --- | --- |
@@ -327,11 +302,6 @@ Może tworzyć wszystkie aspekty rejestracji aplikacji i aplikacji przedsiębior
 ### <a name="cloud-device-administrator"></a>Administrator urządzenia w chmurze
 Pełny dostęp do zarządzania urządzeniami w usłudze Azure AD.
 
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
 | **Akcje** | **Opis** |
 | --- | --- |
 | Microsoft.AAD.Directory/Devices/DELETE | Usuwanie urządzeń w usłudze Azure Active Directory. |
@@ -344,11 +314,6 @@ Pełny dostęp do zarządzania urządzeniami w usłudze Azure AD.
 
 ### <a name="company-administrator"></a>Administrator firmy
 Może zarządzać wszystkimi aspektami usług Azure AD i Microsoft korzystających z tożsamości usługi Azure AD.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia z roli.
-  >
-  >
 
   > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
@@ -411,11 +376,6 @@ Może zarządzać wszystkimi aspektami usług Azure AD i Microsoft korzystający
 Może odczytywać konfigurację i raporty zgodności oraz zarządzać nimi w usługach Azure AD i Office 365.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
-  > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
@@ -435,11 +395,6 @@ Może odczytywać konfigurację i raporty zgodności oraz zarządzać nimi w us�
 ### <a name="conditional-access-administrator"></a>Administrator dostępu warunkowego
 Może zarządzać możliwościami dostępu warunkowego.
 
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
 | **Akcje** | **Opis** |
 | --- | --- |
 | microsoft.aad.directory/policies/conditionalAccess/basic/read | Odczytywanie właściwości policies.conditionalAccess w usłudze Azure Active Directory. |
@@ -452,11 +407,6 @@ Może zarządzać możliwościami dostępu warunkowego.
 
 ### <a name="crm-service-administrator"></a>Administrator usługi CRM
 Może zarządzać wszystkimi aspektami produktu Dynamics 365.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
 
   > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
@@ -476,11 +426,6 @@ Może zarządzać wszystkimi aspektami produktu Dynamics 365.
 Może zatwierdzać żądania pomocy technicznej firmy Microsoft dotyczące uzyskania dostępu do danych organizacyjnych klienta.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
-  > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
@@ -493,11 +438,6 @@ Może zatwierdzać żądania pomocy technicznej firmy Microsoft dotyczące uzysk
 ### <a name="device-administrators"></a>Administratorzy urządzenia
 Członkowie tej roli są dodawane do grupy Administratorzy lokalni na urządzeniach przyłączonych do usługi AD systemu Azure.
 
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
 | **Akcje** | **Opis** |
 | --- | --- |
 | microsoft.aad.directory/groupSettings/basic/read | Odczytywanie właściwości podstawowych w elemencie groupSettings w usłudze Azure Active Directory. |
@@ -505,11 +445,6 @@ Członkowie tej roli są dodawane do grupy Administratorzy lokalni na urządzeni
 
 ### <a name="directory-readers"></a>Odczytywanie katalogów
 Może odczytywać informacje o katalogu podstawowego. Przyznawania dostępu do aplikacji, nie przeznaczone dla użytkowników.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia z roli.
-  >
-  >
 
 | **Akcje** | **Opis** |
 | --- | --- |
@@ -570,11 +505,6 @@ Może odczytywać informacje o katalogu podstawowego. Przyznawania dostępu do a
 ### <a name="directory-synchronization-accounts"></a>Konta synchronizacji katalogu
 Używane tylko przez usługę Azure AD Connect.
 
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia z roli.
-  >
-  >
-
 | **Akcje** | **Opis** |
 | --- | --- |
 | microsoft.aad.directory/organization/dirSync/update | Aktualizowanie właściwości organization.dirSync w usłudze Azure Active Directory. |
@@ -604,11 +534,6 @@ Używane tylko przez usługę Azure AD Connect.
 ### <a name="directory-writers"></a>Zapisywanie katalogów
 Może odczytywać i zapisywać informacje katalogu podstawowego. Przyznawania dostępu do aplikacji, nie przeznaczone dla użytkowników.
 
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
 | **Akcje** | **Opis** |
 | --- | --- |
 | Microsoft.AAD.Directory/groups/Create | Tworzenie grup w usłudze Azure Active Directory. |
@@ -630,11 +555,6 @@ Może odczytywać i zapisywać informacje katalogu podstawowego. Przyznawania do
 
 ### <a name="exchange-service-administrator"></a>Administrator usługi Exchange
 Może zarządzać wszystkimi aspektami produktu Exchange.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
 
   > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
@@ -659,11 +579,6 @@ Może zarządzać wszystkimi aspektami produktu Exchange.
 ### <a name="guest-inviter"></a>Osoba zapraszająca gościa
 Może zapraszać użytkowników-gości niezależnie od ustawienia „członkowie mogą zapraszać gości”.
 
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia z roli.
-  >
-  >
-
 | **Akcje** | **Opis** |
 | --- | --- |
 | microsoft.aad.directory/users/appRoleAssignments/read | Odczytywanie właściwości users.appRoleAssignments w usłudze Azure Active Directory. |
@@ -682,11 +597,6 @@ Może zapraszać użytkowników-gości niezależnie od ustawienia „członkowie
 ### <a name="helpdesk-administrator"></a>Administrator pomocy technicznej
 Może resetować hasła dla użytkowników niebędących administratorami i administratorów pomocy.
 
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
 | **Akcje** | **Opis** |
 | --- | --- |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Unieważnianie wszystkich tokenów odświeżania użytkowników w usłudze Azure Active Directory. |
@@ -699,11 +609,6 @@ Może resetować hasła dla użytkowników niebędących administratorami i admi
 
 ### <a name="information-protection-administrator"></a>Administrator usługi Information Protection
 Może zarządzać wszystkimi aspektami produktu Azure Information Protection.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
 
   > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
@@ -720,11 +625,6 @@ Może zarządzać wszystkimi aspektami produktu Azure Information Protection.
 
 ### <a name="intune-service-administrator"></a>Administrator usługi Intune
 Może zarządzać wszystkimi aspektami produktu Intune.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
 
   > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
@@ -761,11 +661,6 @@ Może zarządzać wszystkimi aspektami produktu Intune.
 ### <a name="license-administrator"></a>Administrator licencji
 Można zarządzać licencje produktów dla użytkowników i grup.
 
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
 | **Akcje** | **Opis** |
 | --- | --- |
 | microsoft.aad.directory/users/assignLicense | Zarządzanie licencjami użytkowników w usłudze Azure Active Directory. |
@@ -776,11 +671,6 @@ Można zarządzać licencje produktów dla użytkowników i grup.
 
 ### <a name="lync-service-administrator"></a>Administrator usługi Lync
 Może zarządzać wszystkimi aspektami produktu Skype dla firm.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
 
   > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
@@ -800,11 +690,6 @@ Może zarządzać wszystkimi aspektami produktu Skype dla firm.
 Może czytać wiadomości i aktualizacje dla swojej organizacji tylko w Centrum wiadomości usługi Office 365. 
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
-  > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
@@ -816,11 +701,6 @@ Może czytać wiadomości i aktualizacje dla swojej organizacji tylko w Centrum 
 
 ### <a name="partner-tier1-support"></a>Pomoc techniczna dla partnerów (warstwa 1)
 Nie używaj — nie są przeznaczone do użytku ogólnego.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
 
   > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
@@ -853,11 +733,6 @@ Nie używaj — nie są przeznaczone do użytku ogólnego.
 
 ### <a name="partner-tier2-support"></a>Pomoc techniczna dla partnerów (warstwa 2)
 Nie używaj — nie są przeznaczone do użytku ogólnego.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
 
   > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
@@ -895,11 +770,6 @@ Nie używaj — nie są przeznaczone do użytku ogólnego.
 Może zarządzać wszystkimi aspektami produktu Power BI.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
-  > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
@@ -917,11 +787,6 @@ Może zarządzać wszystkimi aspektami produktu Power BI.
 Mogą zarządzać przypisaniami ról w usłudze Azure AD i wszystkimi aspektami Privileged Identity Management.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
-  > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
@@ -933,11 +798,6 @@ Mogą zarządzać przypisaniami ról w usłudze Azure AD i wszystkimi aspektami 
 
 ### <a name="reports-reader"></a>Czytnik raportów
 Może odczytywać raporty logowania i inspekcji.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
 
   > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
@@ -954,11 +814,6 @@ Może odczytywać raporty logowania i inspekcji.
 
 ### <a name="security-administrator"></a>Administrator zabezpieczeń
 Może odczytywać informacje o zabezpieczeniach i raporty oraz zarządzać konfiguracją w usłudze Azure AD i Office 365.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
 
   > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
@@ -988,11 +843,6 @@ Może odczytywać informacje o zabezpieczeniach i raporty oraz zarządzać konfi
 Może odczytywać informacje zabezpieczające i raporty o zabezpieczeniach w usługach Azure AD i Office 365.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
-  > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
@@ -1012,11 +862,6 @@ Może odczytywać informacje zabezpieczające i raporty o zabezpieczeniach w us�
 Może odczytywać informacje o kondycji usług i zarządzać biletami pomocy technicznej.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
-  > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
@@ -1031,11 +876,6 @@ Może odczytywać informacje o kondycji usług i zarządzać biletami pomocy tec
 
 ### <a name="sharepoint-service-administrator"></a>Administrator usługi programu SharePoint
 Może zarządzać wszystkimi aspektami usługi SharePoint.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
 
   > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
@@ -1061,11 +901,6 @@ Może zarządzać wszystkimi aspektami usługi SharePoint.
 Może zarządzać funkcjami rozmów telefonicznych i spotkań w ramach usługi Microsoft Teams.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
-  > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
@@ -1084,11 +919,6 @@ Może zarządzać funkcjami rozmów telefonicznych i spotkań w ramach usługi M
 Może rozwiązywać problemy z komunikacją w usłudze Teams przy użyciu zaawansowanych narzędzi.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
-  > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
@@ -1104,11 +934,6 @@ Może rozwiązywać problemy z komunikacją w usłudze Teams przy użyciu zaawan
 Może rozwiązywać problemy z komunikacją w usłudze Teams przy użyciu podstawowych narzędzi.
 
   > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
-
-  > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
@@ -1122,11 +947,6 @@ Może rozwiązywać problemy z komunikacją w usłudze Teams przy użyciu podsta
 
 ### <a name="teams-service-administrator"></a>Administrator usługi Teams
 Może zarządzać usługą Microsoft Teams.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
 
   > [!NOTE]
   > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
@@ -1152,11 +972,6 @@ Może zarządzać usługą Microsoft Teams.
 
 ### <a name="user-account-administrator"></a>Administrator kont użytkowników
 Może zarządzać wszystkimi aspektami użytkowników i grup, w tym resetowaniem haseł dla administratorów z ograniczonymi uprawnieniami.
-
-  > [!NOTE]
-  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
-  >
-  >
 
 | **Akcje** | **Opis** |
 | --- | --- |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 8b12e3cdc53b926f660e12b7cf4b79a8cb6f40c2
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 25e70b3a685f3b777a74c4cc6bf0e56dd37741a7
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960161"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821518"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Rozwiązywanie problemów z błędu ogólnego protokołu RDP w maszynie Wirtualnej platformy Azure
 
@@ -65,7 +65,7 @@ Aby rozwiązać ten problem, [Utwórz kopię zapasową dysku systemu operacyjneg
 
 ### <a name="serial-console"></a>Konsola szeregowa
 
-#### <a name="step-1-turn-on-remote-desktop"></a>Krok 1: Włączanie pulpitu zdalnego
+#### <a name="step-1-open-cmd-instance-in-serial-console"></a>Krok 1: Otwórz CMD wystąpienia w konsoli szeregowej
 
 1. Dostęp do [konsoli szeregowej](serial-console-windows.md) , wybierając **pomoc techniczna i rozwiązywanie problemów** > **Konsola szeregowa (wersja zapoznawcza)**. Jeśli ta funkcja jest włączona na maszynie Wirtualnej, możesz połączyć maszynę Wirtualną pomyślnie.
 

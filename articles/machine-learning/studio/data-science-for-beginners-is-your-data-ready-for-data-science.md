@@ -1,11 +1,12 @@
 ---
-title: Czy Twoje dane są gotowe na analizę danych? Ocena danych - Azure Machine Learning | Dokumentacja firmy Microsoft
-description: Cztery kryteria danych trzeba spełnić, aby być gotowa do analizy danych. Ten plik wideo ma konkretnego przykłady ułatwiające oceny podstawowe dane.
-keywords: odpowiednie dane oceny danych, należy przygotować danych kryteria danych, danych gotowe
+title: Czy Twoje dane są gotowe na analizę danych? Ocena danych — usługa Azure Machine Learning | Dokumentacja firmy Microsoft
+description: Cztery kryteria dane muszą spełnić, aby przystąpić do analizy danych. To wideo zawiera konkretne przykłady ułatwiające wykonywanie podstawowych danych oceny.
+keywords: odpowiednie dane, oceniać dane, należy przygotować dane, kryteria danych, dane gotowe
 services: machine-learning
 documentationcenter: na
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cjgronlund
 ms.assetid: d502062c-da70-4b21-9054-0bfd9902612e
@@ -16,98 +17,98 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 5ab3c7716485053432240cb74be8ebc60c9ad274
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7709f4f299f5cfc112d60910178bd68d115d8521
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834621"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51818986"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Czy Twoje dane są gotowe na analizę danych?
-## <a name="video-2-data-science-for-beginners-series"></a>Wideo 2: Nauki danych serii dla początkujących
-Dowiedz się, jak można obliczyć wartości danych, aby upewnić się, że spełnia on podstawowe kryteria gotowość do analizy danych.
+## <a name="video-2-data-science-for-beginners-series"></a>Wideo 2: Analiza danych dla początkujących serii
+Dowiedz się, jak do analizowania danych w taki sposób, aby upewnić się, że spełnia ono kryteriów podstawowa jest gotowy do nauki o danych.
 
-Aby uzyskać wykorzystanie serii, obejrzyj je wszystkie. [Przejdź do listy filmów wideo](#other-videos-in-this-series)
+Aby maksymalnie wykorzystać możliwości serii, obejrzyj je wszystkie. [Przejdź do listy filmów wideo](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/SupervisionNotRequired/9/player]
 >
 >
 
-## <a name="other-videos-in-this-series"></a>Inne pliki wideo w tej serii
-*Nauki danych dla początkujących* jest szybkie wprowadzenie do analizy danych w pięciu krótkie wideo.
+## <a name="other-videos-in-this-series"></a>Inne filmy wideo w tej serii
+*Przetwarzanie danych dla początkujących* jest szybkie wprowadzenie do nauki o danych w pięciu krótkich filmach wideo.
 
-* Wideo 1: [danych nauki odpowiedzi na pytania 5](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek.)*
-* Wideo 2: Jest gotowy do analizy danych danych?
-* Wideo 3: [Zadaj pytanie może odpowiedzieć z danymi](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 s 17 min)*
-* Wideo 4: [prognozowania odpowiedzi z modelu prostego](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 s 42 min)*
-* Wideo 5: [skopiuj pracy innych osób nauki danych](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek.)*
+* Wideo 1: [5 pytań, analiza danych daje odpowiedzi](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek.)*
+* Wideo 2: Czy dane są gotowe do analizy danych?
+* Wideo 3: [Zadaj pytanie, można odpowiedzieć za pomocą danych](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek.)*
+* Wideo 4: [Prognozowanie odpowiedzi za pomocą prostego modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sek.)*
+* Wideo 5: [kopiowanie pracy innych osób w celu przeprowadzenia analizy danych](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek.)*
 
-## <a name="transcript-is-your-data-ready-for-data-science"></a>Zapis: Jest gotowy do analizy danych danych?
-— Zapraszamy! "Jest danych gotowe do analizy danych?" drugi wideo w serii *nauki danych dla początkujących*.  
+## <a name="transcript-is-your-data-ready-for-data-science"></a>Zapis: Czy dane są gotowe do analizy danych?
+"Czy dane są gotowe do analizy danych?" — Zapraszamy! drugi wideo z serii *przetwarzanie danych dla początkujących*.  
 
-Przed nauki danych można nadać odpowiedzi, który ma, należy nadać mu niektórych materiałów raw wysokiej jakości do pracy z. Podobnie jak wprowadzenie składników rozpoczęcia z lepsze produktu końcowego pizza, tym lepiej. 
+Przed analiza danych daje odpowiedzi, który ma, należy nadać mu niektóre surowce wysokiej jakości do pracy z. Podobnie jak tworzenie głosi, tym lepsze składników, który jest uruchamiany z tym lepsze produktu końcowego. 
 
 ## <a name="criteria-for-data"></a>Kryteria dla danych
-W nauce danych istnieją niektórych składników, które muszą być pobierane razem w tym:
+W zakresie analizy danych istnieją niektóre składniki, które muszą zostać pobrane ze sobą w tym:
 
-* Odpowiednie
+* Istotne
 * Połączono
 * Dokładne
-* Aby pracować z
+* Wystarczająco dużo, aby pracować z
 
-## <a name="is-your-data-relevant"></a>Dotyczy danych?
-Pierwszy składnik — należy więc dane.
+## <a name="is-your-data-relevant"></a>Czy Twoje dane są istotne?
+Dlatego pierwszy składnik — należy danych, która jest odpowiednia.
 
-![Istotne dane, a dane nie ma znaczenia — oceny danych](./media/data-science-for-beginners-is-your-data-ready-for-data-science/relevant-and-irrelevant-data.png)
+![Odpowiednie dane, a dane nie ma znaczenia — ocena danych](./media/data-science-for-beginners-is-your-data-ready-for-data-science/relevant-and-irrelevant-data.png)
 
-Po lewej stronie tabela przedstawia poziom alkohol krwi siedmiu osób przetestowane poza pasek Boston, Sox czerwony średnią batting ich ostatniego gry, w i cen mleka w najbliższej sklepie.
+Po lewej stronie w tabeli przedstawiono poziom alkoholu krwi siedem osób przetestowane poza pasek Boston, średnia batting Red Sox w ich ostatnich gry i cena mleka w najbliższej sklepie.
 
-To są wszystkie dane doskonale uzasadnionych. Błąd tylko jego jest, że nie jest odpowiedni. Nie ma żadnej oczywiste zależności między te liczby. Jeśli określono bieżącej ceny i średnia batting Sox czerwony, nie istnieje sposób można odgadnąć ich zawartość alkoholu krwi.
+Jest to wszystkie dane bez zarzutu uzasadnione. Błąd tylko jego jest, że nie jest istotne. Nie ma widocznych relacji między tymi liczbami. Jeśli osoba udostępniła Ci bieżąca cena mleka oraz średnią batting Sox czerwony, nie ma możliwości można odgadnąć ich zawartość alkoholu krwi.
 
-Teraz wyglądać w tabeli po prawej stronie. Tym razem treści każda osoba masowej zmierzono oraz liczbę napojów one właśnie.  Numery w każdym wierszu teraz mają zastosowanie do siebie. Jeśli I udostępniła Ci Moje treści masowej oraz liczby Margaritas I właśnie, można utworzyć wynik w mojej krwi alkohol zawartości.
+Teraz sprawdźmy tabeli po prawej stronie. Tym razem treści każda osoba urządzeń pamięci masowej został zmierzony, a także liczbę w przeddzień one wystąpiły.  Liczby w każdym wierszu są teraz odpowiednie do siebie nawzajem. Jeśli I udostępniła Ci Moje treści urządzeń pamięci masowej oraz liczby Margaritas miałem, można dokonać przewidywanie Moje krwi alkoholu zawartości.
 
 ## <a name="do-you-have-connected-data"></a>Czy nawiązano połączenie danych?
 Następny składnik jest połączonych danych.
 
-![Połączenia danych, a dane bez połączenia — kryteria danych danych gotowe](./media/data-science-for-beginners-is-your-data-ready-for-data-science/connected-vs-disconnected-data.png)
+![Połączenia danych, a odłączonego dane — kryteria danych gotowe](./media/data-science-for-beginners-is-your-data-ready-for-data-science/connected-vs-disconnected-data.png)
 
-Oto niektóre dane dotyczące jakości hamburgers: kraty temperatury, waga patty i ocenę w lokalnym żywności magazyn. Jednak zauważyć luk w tabeli po lewej stronie.
+Poniżej przedstawiono niektóre istotne dane dotyczące jakości hamburgers: gril temperatury, waga patty i oceny w lokalnym żywności magazine. Zauważmy jednak luki w tabeli po lewej stronie.
 
-Brak niektórych wartości większość zestawów danych. Jest często mają luk w następujący sposób i sposoby ich obejścia. Jednak jeśli istnieje za dużo Brak, dane rozpocznie się wyglądały jak ser Szwajcaria.
+Większość zestawów danych brakuje niektórych wartości. Jest często mają luk w następujący sposób i sposoby ich obejścia. Ale jeśli istnieje zbyt wiele Brak, dane zaczynają się wyglądać Swiss miejscowych serów.
 
-Jeśli Szukaj w tabeli po lewej stronie ma tak dużo brakujące dane, trudno jest opracowywane dowolnego rodzaju relacji między rusztem temperatury i patty wagi. Ten przykład przedstawia bez połączenia danych.
+W przypadku tabeli po lewej stronie, istnieje tak wiele brakuje danych, trudno jest opracowywane dowolnego rodzaju relację między rusztem temperatury i patty wagi. Ten przykład przedstawia danych odłączonych.
 
-Tabeli po prawej stronie, jednak jest zapełniony i ukończenia — przykład połączonych danych.
+Tabela po prawej stronie, jednak jest zapełniony i ukończenia — przykład połączonych danych.
 
-## <a name="is-your-data-accurate"></a>Dane są dokładne?
-Następny składnik jest dokładności. Poniżej przedstawiono cztery miejsc docelowych trafień.
+## <a name="is-your-data-accurate"></a>Czy Twoje dane są dokładne?
+Następny składnik jest dokładności. Poniżej przedstawiono cztery elementy docelowe, aby trafić.
 
-![Dokładne dane a niedokładne dane — kryteria danych](./media/data-science-for-beginners-is-your-data-ready-for-data-science/inaccurate-vs-accurate-data.png)
+![Dokładne dane, a niedokładne dane — kryteria danych](./media/data-science-for-beginners-is-your-data-ready-for-data-science/inaccurate-vs-accurate-data.png)
 
-Szukaj w celu, w prawym górnym rogu. Brak ścisłej grupowania prawo wokół oka byków. Oczywiście jest dokładna. Dziwnie danego języka nauki danych wydajności z prawej strony docelowej poniżej jest traktowana jako dokładne.
+Spójrz na obiekt docelowy w prawym górnym rogu. Brak ścisłej grupowania bezpośrednio wokół oka byków. Oczywiście, są dokładne. Dziwnie danego języka do nauki o danych wydajności po prawej stronie docelowej poniżej jest również uważana za dokładne.
 
-Jeśli zmapowaniu Centrum te strzałki, zobaczysz, że bardzo jest bliski oka byków. Strzałki są rozproszone wszystkie wokół docelowej, więc są traktowane jako nieprecyzyjna, ale jest wyśrodkowywana wokół oka byków, są traktowane jako dokładne.
+W przypadku zamapowany się na środku tych strzałek widział się bardzo blisko oka byków. Strzałki są rozłożyć wszystkie wokół obiektu docelowego, aby były uważane za nieprecyzyjny, ale one wyśrodkowany wokół byków oka, aby były uważane dokładne.
 
-Teraz wyglądać w lewym górnym docelowej. W tym miejscu strzałki bardzo blisko siebie osiągnęła ścisłej grupowania. Są one dokładne, ale są one nieprawidłowe, ponieważ Centrum jest sposób poza oka byków. Strzałki w lewym dolnym rogu docelowej są nieprawidłowe i niedokładna. Ten archer wymaga więcej rozwiązań.
+Teraz sprawdźmy lewy górny element docelowy. W tym miejscu strzałki bardzo blisko siebie trafień ścisłej grupowania. Są one dokładne, ale są one niedokładne, ponieważ Centrum jest sposób wyłączyć oka byków. Strzałki w lewym dolnym docelowej są niedokładne i niedokładna. Ten archer wymaga więcej rozwiązaniem.
 
-## <a name="do-you-have-enough-data-to-work-with"></a>Masz za mało danych do pracy z?
-Na koniec składnik #4 jest wystarczającą ilość danych.
+## <a name="do-you-have-enough-data-to-work-with"></a>Czy masz wystarczającą ilość danych do pracy?
+Na koniec składnik #4 jest wystarczających danych.
 
-![Masz za mało danych do analizy? Ocena danych](./media/data-science-for-beginners-is-your-data-ready-for-data-science/barely-enough-data.png)
+![Czy masz wystarczającą ilość danych na potrzeby analizy Ocena danych](./media/data-science-for-beginners-is-your-data-ready-for-data-science/barely-enough-data.png)
 
-Pomyśl o każdego punktu danych w tabeli jako pędzla w malowania. Jeśli masz tylko niektóre z nich może być niewyraźny rysowania — jest stwierdzić, co to jest.
+Pomyśl o każdego punktu danych w tabeli jako pędzla, w stolik. Jeśli masz tylko kilka z nich, rysowania może być niewyraźny — trudno stwierdzić, co to jest.
 
-Jeśli dodasz kilka więcej pociągnięć Twojej rysowania uruchamia uzyskać nieco ostrzejszy.
+Jeśli dodasz kilka więcej pędzlem, Twoje malowania rozpoczyna się uzyskać nieco ostrzejsze.
 
-Jeśli masz pociągnięć prawie za mało widoczne są tylko do niektórych szerokie decyzje. Jest to miejsce, które można znaleźć? Wygląda na to jasny, to wygląda czystej wody — tak, będącą, gdzie użyjemy na urlop.
+W przypadku ledwie wystarczająco dużo pociągnięć widoczne tylko wystarczająco dużo, aby niektóre decyzje dotyczące szerokiego. Jest innym miejscu, które mogę odwiedzić? Wygląda na to jasne, to wygląda czystej wody — tak, który jest, gdzie użyję na urlopie.
 
-Jak dodać więcej danych obraz staje się jaśniejszy i bardziej szczegółowe decyzje. Teraz można przyjrzeć się trzy hotels na lewym bank. Można zauważyć architektury funkcje co na pierwszym planie. Można nawet pozostać na trzeci floor z powodu widoku.
+W miarę dodawania większej ilości danych obraz staje się bardziej zrozumiały, i uzyskać bardziej szczegółowy decyzje. Teraz możesz obejrzeć trzy hoteli na bank po lewej stronie. Można zauważyć funkcji architektury jeden na pierwszym planie. Możesz nawet wybrać pozostanie w trzecim floor ze względu na widok.
 
-Dane, które jest odpowiednie, połączony, dokładne i wystarczająco, należy mieć wszystkie składniki wymagane do wykonania niektórych nauki wysokiej jakości danych.
+Z danymi, które są istotne, połączone, dokładne i wystarczająco, możesz mieć wszystkie składniki wymagane do wykonania niektórych nauki o danych wysokiej jakości.
 
-Należy koniecznie zapoznaj się z czterech wideo w *nauki danych dla początkujących* z Microsoft Azure Machine Learning.
+Należy zapoznać się z czterech wideo w *przetwarzanie danych dla początkujących* z usługi Microsoft Azure Machine Learning.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Spróbuj pierwszego eksperymentu analizy danych z usługi Machine Learning Studio](create-experiment.md)
-* [Wprowadzenie do uczenia maszynowego w systemie Microsoft Azure](what-is-machine-learning.md)
+* [Spróbuj pierwszy eksperyment dotyczący przetwarzania danych, za pomocą usługi Machine Learning Studio](create-experiment.md)
+* [Wprowadzenie do usługi Machine Learning na Microsoft Azure](what-is-machine-learning.md)

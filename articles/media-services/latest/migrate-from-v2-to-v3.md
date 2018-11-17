@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 11/07/2018
+ms.date: 11/15/2018
 ms.author: juliako
-ms.openlocfilehash: 8c3ff4af3b556614d0b2179dceed6cabd9cbabff
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 41ad4b26247fa8037de01ff956921146a2238abc
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616014"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823391"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji do przenoszenia z usługi Media Services v2 do v3
 
@@ -65,9 +65,7 @@ Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej w
 * Następujące jednostki zostały zmienione.
     * JobOutput zadań zastępuje i jest teraz częścią zadania.
     * StreamingLocator zastępuje lokalizatora.
-    * Element LiveEvent zastępuje kanału.
-        
-        Rozliczenia LiveEvents opiera się na licznikach kanału na żywo. Aby uzyskać więcej informacji, zobacz [na żywo, przesyłanie strumieniowe Przegląd](live-streaming-overview.md#billing) i [ceny](https://azure.microsoft.com/pricing/details/media-services/).
+    * Element LiveEvent zastępuje kanału.<br/>Rozliczenia LiveEvents opiera się na licznikach kanału na żywo. Aby uzyskać więcej informacji, zobacz [na żywo, przesyłanie strumieniowe Przegląd](live-streaming-overview.md#billing) i [ceny](https://azure.microsoft.com/pricing/details/media-services/).
     * LiveOutput zastępuje Program.
 * LiveOutputs nie musiały zostać uruchomione w sposób jawny, start przy tworzeniu i Zatrzymaj po usunięciu. Programy działały inaczej w interfejsach API w wersji 2, mieli oni ma zostać uruchomiony po utworzeniu.
 
@@ -75,10 +73,7 @@ Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej w
 
 Interfejs API w wersji 3 ma następujące luki funkcji w odniesieniu do interfejsu API w wersji 2. Do wypełniania luk jest w toku.
 
-* [Koder w warstwie Premium](../previous/media-services-premium-workflow-encoder-formats.md) i starszego [media analytics procesorów](../previous/media-services-analytics-overview.md) (Azure Media Services Indexer 2 — wersja zapoznawcza, usługi Face Redactor itp.) nie są dostępne za pośrednictwem v3.
-
-    Klienci, którzy chcą przeprowadzić migrację z 1 indeksatora multimediów lub 2 (wersja zapoznawcza) można użyć od razu AudioAnalyzer wstępnie ustawione w interfejsie API w wersji 3.  To nowe ustawienie wstępne zawiera więcej funkcji niż starsze 1 indeksatora multimediów lub 2. 
-
+* [Koder w warstwie Premium](../previous/media-services-premium-workflow-encoder-formats.md) i starszego [media analytics procesorów](../previous/media-services-analytics-overview.md) (Azure Media Services Indexer 2 — wersja zapoznawcza, usługi Face Redactor itp.) nie są dostępne za pośrednictwem v3.<br/>Klienci, którzy chcą przeprowadzić migrację z 1 indeksatora multimediów lub 2 (wersja zapoznawcza) można użyć od razu AudioAnalyzer wstępnie ustawione w interfejsie API w wersji 3.  To nowe ustawienie wstępne zawiera więcej funkcji niż starsze 1 indeksatora multimediów lub 2. 
 * Wiele zaawansowanych funkcji usługi Media Encoder Standard w interfejsach API w wersji 2 nie są obecnie dostępne w wersji 3, takich jak:
     * Przycinanie (dla scenariuszy, na żądanie i na żywo)
     * Łączenie zasobów
@@ -103,13 +98,12 @@ W poniższej tabeli przedstawiono różnice kodu między v2 i v3 dla typowych sc
 ## <a name="known-issues"></a>Znane problemy
 
 * Obecnie nie można użyć witryny Azure portal do zarządzania zasobami v3. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-sdk), interfejsu wiersza polecenia lub w jednym z obsługiwanych zestawów SDK.
-* Obecnie jednostek zarezerwowanych multimediów może zarządzać tylko przy użyciu interfejsu API w wersji 2 usługi Media Services. Aby uzyskać więcej informacji, zobacz [skalowanie przetwarzania multimediów](../previous/media-services-scale-media-processing-overview.md).
+* Należy aprowizować jednostek zarezerwowanych multimediów (lokalizacje MRU) na Twoim koncie w celu kontrolowania współbieżność i wydajności zadań, szczególnie te, które obejmujące wideo lub Audio analizy. Aby uzyskać więcej informacji, zobacz [Scaling Media Processing](../previous/media-services-scale-media-processing-overview.md) (Skalowanie przetwarzania multimediów). Można zarządzać za pomocą lokalizacje MRU [interfejsu wiersza polecenia 2.0 dla usługi Media Services v3](media-reserved-units-cli-how-to.md)przy użyciu [witryny Azure portal](../previous/media-services-portal-scale-media-processing.md), lub za pomocą[ interfejsów API w wersji 2](../previous/media-services-dotnet-encoding-units.md). Musisz aprowizować lokalizacje MRU, czy używasz usługi Media Services v2 lub v3 interfejsów API.
 * Jednostki usługi Media Services, utworzone w wersji 3, interfejs API nie mogą być zarządzane przez interfejsy API wersji 2.  
 * Nie zaleca się Zarządzanie jednostkami, które zostały utworzone za pomocą interfejsów API w wersji 2, za pośrednictwem interfejsów API w wersji 3. Poniżej przedstawiono przykłady różnic, wchodzące jednostkami w dwóch wersjach niezgodne:   
     * Zadania i zadania utworzone w wersji 2 nie są wyświetlane w wersji 3, ponieważ nie są one powiązane z zadaniami transformacji. Zalecane jest, aby przełączyć się do wersji 3 transformacje i zadania. Będzie konieczności monitor porządkowych w wersji 2 zadania podczas przełączenie okres względnie krótkim czasie.
-    * Kanały i programy utworzone za pomocą wersji 2, (które są mapowane na LiveEvents i LiveOutputs w wersji 3) nie może kontynuować, zarządzane w wersji 3. Zalecane jest, aby przełączyć się do v3 LiveEvents i LiveOutputs na wygodne Zatrzymaj kanał.
-    
-        Obecnie nie można migrować, stale uruchomione kanały.  
+    * Kanały i programy utworzone za pomocą wersji 2, (które są mapowane na LiveEvents i LiveOutputs w wersji 3) nie może kontynuować, zarządzane w wersji 3. Zalecane jest, aby przełączyć się do v3 LiveEvents i LiveOutputs na wygodne Zatrzymaj kanał.<br/>Obecnie nie można migrować, stale uruchomione kanały.  
+
 > [!NOTE]
 > Zakładki w tym artykule i zachować sprawdzania dostępności aktualizacji.
 

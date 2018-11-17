@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: f68bf05ef9749794c78898e4464489e7cfb358ff
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 32dbef04febb1f3a0cdd8654fc5ec1c5c367439e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231386"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820005"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Wdrażanie aplikacji w usłudze Azure App Service przy użyciu protokołu FTP/S
 
@@ -66,7 +66,7 @@ Aby zwiększyć bezpieczeństwo należy zezwalać FTP za pośrednictwem protoko�
 
 Na stronie zasobów aplikacji w [witryny Azure portal](https://portal.azure.com), wybierz opcję **ustawienia aplikacji** w nawigacji po lewej stronie.
 
-Aby wyłączyć nieszyfrowanego protokołu FTP, wybierz **FTPS tylko**. Aby całkowicie wyłączyć FTP i FTPS, wybierz **wyłączyć**. Po skończeniu kliknij przycisk **Zapisz**. Jeśli przy użyciu **FTPS tylko** muszą wymuszać protokół TLS 1.1 lub wyższą, przechodząc do **ustawienia protokołu SSL** bloku aplikacji sieci web. Protokół TLS 1.0 jest nieobsługiwane w przypadku **FTPS tylko**.
+Aby wyłączyć nieszyfrowanego protokołu FTP, wybierz **FTPS tylko**. Aby całkowicie wyłączyć FTP i FTPS, wybierz **wyłączyć**. Po skończeniu kliknij przycisk **Zapisz**. Jeśli przy użyciu **FTPS tylko** muszą wymuszać protokół TLS 1.2 lub nowszej, przechodząc do **ustawienia protokołu SSL** bloku aplikacji sieci web. Protokół TLS 1.0 i 1.1, nie są obsługiwane za pomocą **FTPS tylko**.
 
 ![Wyłączanie protokołu FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 

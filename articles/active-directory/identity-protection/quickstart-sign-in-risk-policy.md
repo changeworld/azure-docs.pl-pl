@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 6879822e8451e6170bf17fff4ab66b672f711a93
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 09528aab5f694aa017f9f16e2675d3c36c1bead3
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632391"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822148"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Szybki Start: Blokuje dostęp po wykryciu zagrożenia sesji przy użyciu usługi Azure Active Directory Identity Protection  
 
@@ -38,7 +38,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
-Aby ukończyć ten scenariusz, w ramach tego samouczka, potrzebne są:
+Do ukończenia scenariusza z tego samouczka są potrzebne następujące elementy:
 
 - **Dostęp do wersji Azure AD Premium P2** -Azure AD Identity Protection to funkcja usługi Azure AD Premium P2. 
 
@@ -122,6 +122,6 @@ Gdy nie będą już potrzebne, Usuń użytkownika testowego, w przeglądarce sie
 
 - Jeśli nie wiesz, jak usunąć użytkownika usługi Azure AD, zobacz [jak dodać lub usunąć użytkowników](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 
-- Aby uzyskać instrukcje, aby usunąć przeglądarki Tor, zobacz [odinstalowywanie](https://tb-manual.torproject.org/en-US/uninstalling.html).
+- Aby uzyskać instrukcje, aby usunąć przeglądarki Tor, zobacz [odinstalowywanie](https://tb-manual.torproject.org/uninstalling/).
 
 

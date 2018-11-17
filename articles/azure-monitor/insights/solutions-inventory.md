@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: cb230dad22e6b0d67a4d6a589e9fba00560a9264
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.openlocfilehash: ebbedb38256c997f39e30e27aa29139dc2496fd1
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715536"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819257"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Szczegóły zbierania danych dla rozwiązań do zarządzania na platformie Azure
 Ten artykuł zawiera listę [rozwiązań do zarządzania](solutions.md) udostępnianych przez firmę Microsoft wraz z łączami do ich szczegółowej dokumentacji.  Zawiera także informacje o ich metody i częstotliwość zbierania danych w usłudze Log Analytics.  Identyfikowanie różnych rozwiązaniach dostępnych i zrozumienie wymagań połączenia i przepływu danych dla rozwiązań do zarządzania różnych, można użyć informacji w tym artykule. 
@@ -66,7 +66,7 @@ Wyjaśnienie kolumn są następujące:
 | [Analiza usługi Office 365 (wersja zapoznawcza)](solution-office-365.md) |Windows | | | | | |na powiadomienie |
 | **Rozwiązanie do zarządzania** | **Platforma** | **Agent monitorowania firmy Microsoft** | **Agent programu Operations Manager** | **Magazyn platformy Azure** | **Wymagane programu Operations Manager?** | **Danych agenta programu Operations Manager wysyłane za pośrednictwem grupy zarządzania** | **Częstotliwość zbierania** |
 | [Analiza usługi Service Fabric](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |Windows | | |&#8226; | | |5 minut |
-| [Mapa usługi](../../monitoring/monitoring-service-map.md) | System Windows i Linux | &#8226; | &#8226; |  |  |  | 15 sekund |
+| [Mapa usługi](../../azure-monitor/insights/service-map.md) | System Windows i Linux | &#8226; | &#8226; |  |  |  | 15 sekund |
 | [Ocena serwera SQL](../../log-analytics/log-analytics-sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 dni |
 | [SurfaceHub](../../log-analytics/log-analytics-surface-hubs.md) |Windows |&#8226; | | | | |Po dostarczeniu |
 | [Ocena programu System Center Operations Manager (wersja zapoznawcza)](../../log-analytics/log-analytics-scom-assessment.md) | Windows | &#8226; | &#8226; |  |  | &#8226; | 7 dni |

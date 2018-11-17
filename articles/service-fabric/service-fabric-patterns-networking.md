@@ -1,6 +1,6 @@
 ---
 title: Wzorce sieci dla usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: W tym artykule opisano typowe wzorce sieciowych dla sieci szkieletowej usług oraz sposobu tworzenia klastra przy użyciu funkcji obsługi sieci platformy Azure.
+description: W tym artykule opisano typowe wzorce sieci dla usługi Service Fabric oraz sposób tworzenia klastra przy użyciu funkcji sieci platformy Azure.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,41 +14,41 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: b180e62804b875ca4547a9d09f19efff32ae0cd9
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2fce90f971d13b94c73012d4089cca05739c5440
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207227"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853714"
 ---
-# <a name="service-fabric-networking-patterns"></a>Wzorce sieci sieci szkieletowej usług
-Klaster sieci szkieletowej usług Azure można zintegrować z innymi funkcjami sieci platformy Azure. W tym artykule zostanie przedstawiony zostanie sposób tworzenia klastrów korzystających z następujących funkcji:
+# <a name="service-fabric-networking-patterns"></a>Wzorce sieci usługi Service Fabric
+Klaster usługi Azure Service Fabric można zintegrować z inne funkcje sieci platformy Azure. W tym artykule pokazujemy, jak tworzyć klastry, korzystających z następujących funkcji:
 
 - [Istniejącej sieci wirtualnej lub podsieci](#existingvnet)
-- [Statycznego publicznego adresu IP](#staticpublicip)
+- [Statyczny publiczny adres IP](#staticpublicip)
 - [Moduł równoważenia obciążenia tylko do wewnętrznego](#internallb)
 - [Moduł równoważenia obciążenia wewnętrznych i zewnętrznych](#internalexternallb)
 
-Sieć szkieletowa usług jest uruchamiany w zestaw skali maszyny wirtualnej standardowego. Wszystkie funkcje są dostępne w zestawie skalowania maszyn wirtualnych, korzystania z klastra sieci szkieletowej usług. Sieci sekcje szablonów usługi Azure Resource Manager zestawy skalowania maszyny wirtualnej i sieci szkieletowej usług są identyczne. Po wdrożeniu do istniejącej sieci wirtualnej jest łatwo wdrożyć inne funkcje sieci, takich jak usługa Azure ExpressRoute, Brama sieci VPN platformy Azure, sieciowej grupy zabezpieczeń i sieci wirtualnej komunikacji równorzędnej.
+Usługa Service Fabric działa w zestawie skalowania maszyny wirtualnej standardowego. Wszystkie funkcje, które można używać w zestawie skalowania maszyn wirtualnych, korzystania z klastra usługi Service Fabric. Części sieci szablonów usługi Azure Resource Manager dla zestawów skalowania maszyn wirtualnych i Service Fabric są identyczne. Po wdrożeniu do istniejącej sieci wirtualnej jest łatwo wdrożyć inne funkcje sieci, takich jak usługi Azure ExpressRoute, Brama sieci VPN platformy Azure, sieciowej grupy zabezpieczeń i komunikacji równorzędnej sieci wirtualnej.
 
-Sieć szkieletowa usług to inaczej niż inne funkcje sieci w jednym aspekcie. [Portalu Azure](https://portal.azure.com) wewnętrznie używa dostawcy zasobów sieci szkieletowej usług do wywołania do klastra, aby uzyskać informacje na temat węzłów i aplikacji. Dostawcy zasobów sieci szkieletowej usług wymaga publicznie dostępnym dla ruchu przychodzącego dostępu do portu bramy HTTP (port 19080, domyślnie) dotyczące punktu zarządzania. [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) używa punkt końcowy zarządzania do zarządzania klastrem. Dostawcy zasobów sieci szkieletowej usług również używa tego portu do wyszukiwania informacji o klastrze, aby wyświetlić w portalu Azure. 
+Usługa Service Fabric jest niż inne funkcje sieci w jednym z aspektów. [Witryny Azure portal](https://portal.azure.com) wewnętrznie używa dostawcy zasobów usługi Service Fabric w celu wywołania do klastra, aby uzyskać informacje na temat węzłów i aplikacji. Dostawca zasobów usługi Service Fabric wymaga publicznie dostępu przychodzącego do portu bramy protokołu HTTP (port 19080, domyślnie) na punkt końcowy zarządzania. [Narzędzie Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) używa punktu końcowego zarządzania w celu zarządzania klastrem. Dostawcy zasobów usługi Service Fabric używa również ten port do wyszukiwania informacji o klastrze, aby wyświetlić w witrynie Azure portal. 
 
-Jeśli port 19080 nie jest dostępny od dostawcy zasobów sieci szkieletowej usług, takich jak wiadomość *węzłów nie można odnaleźć* pojawia się w portalu i listy węzeł i aplikacja zostanie wyświetlona pusta. Jeśli chcesz wyświetlić klastrem w portalu Azure, moduł równoważenia obciążenia musi ujawniać publicznego adresu IP i swojej grupy zabezpieczeń sieciowych muszą zezwalać na ruch przychodzący port 19080. Jeśli ustawienia nie spełnia te wymagania, stan klastra nie wyświetlany w portalu Azure.
+Jeśli portem 19080 nie jest dostępny od dostawcy zasobów usługi Service Fabric, wiadomości, takich jak *węzłów nie można odnaleźć* pojawia się w portalu i listy węzłów i aplikacja pojawi się pusta. Jeśli chcesz zobaczyć klastrem w witrynie Azure portal, moduł równoważenia obciążenia musi ujawniać publicznego adresu IP i sieciowej grupy zabezpieczeń muszą zezwalać na przychodzący ruch na porcie 19080. Jeśli ustawienia nie spełnia tych wymagań, witryny Azure portal nie wyświetla stan klastra.
 
 ## <a name="templates"></a>Szablony
 
-Wszystkie szablony usługi sieć szkieletowa znajdują się w [GitHub](https://github.com/Azure/service-fabric-scripts-and-templates/tree/master/templates/networking). Powinno być możliwe do wdrażania szablonów jako — za pomocą następujących poleceń programu PowerShell. Jeśli wdrażasz istniejącego szablonu usługi Azure Virtual Network lub statycznego publicznego szablon adresu IP, najpierw przeczytać artykuł [początkowej instalacji](#initialsetup) sekcji tego artykułu.
+Wszystkie szablony usługi Service Fabric znajdują się w [GitHub](https://github.com/Azure/service-fabric-scripts-and-templates/tree/master/templates/networking). Powinno być możliwe do wdrożenia szablony jako — przy użyciu następujących poleceń programu PowerShell. Jeśli wdrażasz istniejącego szablonu usługi Azure Virtual Network lub statyczny publiczny szablon adresu IP, najpierw zapoznaj się z [początkowej instalacji](#initialsetup) dalszej części tego artykułu.
 
 <a id="initialsetup"></a>
-## <a name="initial-setup"></a>Początkowej konfiguracji
+## <a name="initial-setup"></a>Konfiguracja początkowa
 
-### <a name="existing-virtual-network"></a>Istniejącej sieci wirtualnej
+### <a name="existing-virtual-network"></a>Istniejąca sieć wirtualna
 
-W poniższym przykładzie Rozpoczniemy z istniejącą siecią wirtualną o nazwie ExistingRG sieci wirtualnej, w **ExistingRG** grupy zasobów. Podsieć nosi nazwę domyślny. Te zasoby domyślne są tworzone podczas tworzenia standardowych maszyny wirtualnej (VM) za pomocą portalu Azure. Można utworzyć sieci wirtualnej i podsieci bez tworzenia maszyny Wirtualnej, ale dodawania klastra do istniejącej sieci wirtualnej głównym celem jest zapewnienie łączności sieciowej do innych maszyn wirtualnych. Tworzenie maszyny Wirtualnej zapewnia dobrym przykładem sposobu istniejącej sieci wirtualnej zwykle jest używana. Jeśli klaster sieci szkieletowej usług używa tylko do wewnętrznego modułu równoważenia obciążenia, bez publicznego adresu IP, możesz użyć maszyny Wirtualnej i jej publicznego adresu IP jako bezpieczny *skoku pole*.
+W poniższym przykładzie Zaczniemy z istniejącej sieci wirtualnej o nazwie ExistingRG między sieciami wirtualnymi, w **ExistingRG** grupy zasobów. Podsieć nosi nazwę domyślną. Te zasoby domyślne są tworzone podczas tworzenia standardowych maszyny wirtualnej (VM) za pomocą witryny Azure portal. Można utworzyć sieć wirtualną i podsieć, bez tworzenia maszyny Wirtualnej, ale głównym celem dodawania klastrze do istniejącej sieci wirtualnej jest zapewnienie łączności sieciowej do innych maszyn wirtualnych. Tworzenie maszyny Wirtualnej zapewnia dobrym przykładem sposobu istniejącej sieci wirtualnej zwykle jest używana. Jeśli klaster usługi Service Fabric używa tylko wewnętrznego modułu równoważenia obciążenia, bez publicznego adresu IP, możesz użyć maszyny Wirtualnej i jej publicznego adresu IP jako bezpieczny *okno przeskoku*.
 
-### <a name="static-public-ip-address"></a>Statycznego publicznego adresu IP
+### <a name="static-public-ip-address"></a>Statyczny publiczny adres IP
 
-Statycznego publicznego adresu IP jest zazwyczaj zasobów dedykowanych, zarządzanym oddzielnie z maszyny Wirtualnej lub maszyny wirtualne, który jest przypisany do. Jego obsługa została zainicjowana w dedykowanej grupy zasobów sieciowych (a nie w zasobie klastra usługi sieć szkieletowa grupy sam). Utwórz statycznego publicznego adresu IP o nazwie staticIP1 w tej samej grupie zasobów ExistingRG, w portalu Azure lub za pomocą programu PowerShell:
+Statyczny publiczny adres IP jest ogólnie jest dedykowanym zasobem, zarządzanym oddzielnie z maszyny Wirtualnej lub maszyny wirtualne, które jest przypisany do. Zainicjowano w dedykowanej grupie zasobów sieciowych (w przeciwieństwie do zasobu klastra usługi Service Fabric grupowania, sam). Utwórz statyczny publiczny adres IP o nazwie staticIP1 w tej samej grupie zasobów ExistingRG, w witrynie Azure portal lub przy użyciu programu PowerShell:
 
 ```powershell
 PS C:\Users\user> New-AzureRmPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG -Location westus -AllocationMethod Static -DomainNameLabel sfnetworking
@@ -72,14 +72,14 @@ DnsSettings              : {
                            }
 ```
 
-### <a name="service-fabric-template"></a>Szablon usługi sieć szkieletowa
+### <a name="service-fabric-template"></a>Szablon usługi Service Fabric
 
-W przykładach w niniejszym artykule używamy template.json sieci szkieletowej usług. Standardowy Kreator portalu służy do pobrania szablonu z portalu, przed utworzeniem klastra. Można również użyć jednej z [przykładowy szablon](https://github.com/Azure-Samples/service-fabric-cluster-templates), takiej jak [bezpiecznego klastra sieci szkieletowej usług pięcioma węzłami](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure).
+W przykładach w tym artykule używamy template.json usługi Service Fabric. Można użyć standardowego kreatora portalu, aby pobrać szablon z poziomu portalu, przed przystąpieniem do tworzenia klastra. Możesz również użyć jednej z [przykładowe szablony](https://github.com/Azure-Samples/service-fabric-cluster-templates), takiej jak [bezpiecznego klastra usługi Service Fabric z pięcioma węzłami](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure).
 
 <a id="existingvnet"></a>
 ## <a name="existing-virtual-network-or-subnet"></a>Istniejącej sieci wirtualnej lub podsieci
 
-1. Zmień parametr podsieci nazwę istniejącą podsieć, a następnie dodaj dwa nowe parametry, aby odwołać istniejącej sieci wirtualnej:
+1. Zmień wartość parametru podsieci nazwę istniejącej podsieci, a następnie dodaj dwa nowe parametry, aby odwoływać się do istniejącej sieci wirtualnej:
 
     ```
         "subnet0Name": {
@@ -106,15 +106,20 @@ W przykładach w niniejszym artykule używamy template.json sieci szkieletowej u
             },*/
     ```
 
+2. Komentarz `nicPrefixOverride` atrybutu `Microsoft.Compute/virtualMachineScaleSets`, ponieważ w przypadku korzystania z istniejącej podsieci i wyłączono tej zmiennej w kroku 1.
 
-2. Zmień `vnetID` zmiennej, aby wskazywała istniejącą siecią wirtualną:
+    ```
+            /*"nicPrefixOverride": "[parameters('subnet0Prefix')]",*/
+    ```
+
+3. Zmiana `vnetID` zmiennej, aby wskazywała istniejącą sieć wirtualną:
 
     ```
             /*old "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",*/
             "vnetID": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingVNetRGName'), '/providers/Microsoft.Network/virtualNetworks/', parameters('existingVNetName'))]",
     ```
 
-3. Usuń `Microsoft.Network/virtualNetworks` z Twoich zasobów, dlatego Azure nie Utwórz nową sieć wirtualną:
+4. Usuń `Microsoft.Network/virtualNetworks` z Twoich zasobów, dlatego Azure nie tworzy nową sieć wirtualną:
 
     ```
     /*{
@@ -144,7 +149,7 @@ W przykładach w niniejszym artykule używamy template.json sieci szkieletowej u
     },*/
     ```
 
-4. Komentarz sieci wirtualnej z `dependsOn` atrybutu `Microsoft.Compute/virtualMachineScaleSets`, więc nie zależą od tworzenia nowej sieci wirtualnej:
+5. Komentarz dla sieci wirtualnej z `dependsOn` atrybutu `Microsoft.Compute/virtualMachineScaleSets`, dzięki czemu użytkownik nie należy polegać na temat tworzenia nowej sieci wirtualnej:
 
     ```
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -158,27 +163,27 @@ W przykładach w niniejszym artykule używamy template.json sieci szkieletowej u
 
     ```
 
-5. Wdrażanie szablonu:
+6. Wdrażanie szablonu:
 
     ```powershell
     New-AzureRmResourceGroup -Name sfnetworkingexistingvnet -Location westus
     New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingexistingvnet -TemplateFile C:\SFSamples\Final\template\_existingvnet.json
     ```
 
-    Po wdrożeniu sieci wirtualnej powinna zawierać nowego zestawu skalowania maszyn wirtualnych. Typ węzła zestawu skali maszyny wirtualnej powinny być widoczne istniejącej sieci wirtualnej i podsieci. Na polecenie ping nowej skali ustawić maszyn wirtualnych i maszynę Wirtualną, która została już w sieci wirtualnej dostępu do można zostać używać protokołu RDP (Remote Desktop):
+    Po wdrożeniu sieci wirtualnej powinno obejmować nowego zestawu skalowania maszyn wirtualnych. Typ węzła zestawu skali maszyny wirtualnej powinien być wyświetlony w istniejącej sieci wirtualnej i podsieci. Można również uzyskiwać protokołu RDP (Remote Desktop) dostęp do maszyny Wirtualnej, która była już w sieci wirtualnej, a następnie wysłać polecenie ping nowej skali maszyn wirtualnych w zestawie:
 
     ```
     C:>\Users\users>ping 10.0.0.5 -n 1
     C:>\Users\users>ping NOde1000000 -n 1
     ```
 
-Na przykład innego, zobacz [, który nie jest specyficzne dla platformy Service Fabric](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet).
+Inny przykład, zobacz [taki, który nie jest specyficzne dla usługi Service Fabric](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet).
 
 
 <a id="staticpublicip"></a>
-## <a name="static-public-ip-address"></a>Statycznego publicznego adresu IP
+## <a name="static-public-ip-address"></a>Statyczny publiczny adres IP
 
-1. Dodawanie parametrów nazwę istniejącej grupy zasobów statycznego adresu IP, nazwa i Pełna nazwa domeny (FQDN):
+1. Dodawanie parametrów nazwę istniejącej grupy zasobów statycznych adresów IP, nazwy i w pełni kwalifikowaną nazwę domeny (FQDN):
 
     ```
     "existingStaticIPResourceGroup": {
@@ -192,7 +197,7 @@ Na przykład innego, zobacz [, który nie jest specyficzne dla platformy Service
     }
     ```
 
-2. Usuń `dnsName` parametru. (Statyczny adres IP już istnieje.)
+2. Usuń `dnsName` parametru. (Statyczny adres IP już ma jeden).
 
     ```
     /*
@@ -202,13 +207,13 @@ Na przykład innego, zobacz [, który nie jest specyficzne dla platformy Service
     */
     ```
 
-3. Dodawanie zmiennej, aby odwołać istniejących statyczny adres IP:
+3. Dodawanie zmiennej można odwoływać się do istniejącego statyczny adres IP:
 
     ```
     "existingStaticIP": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingStaticIPResourceGroup'), '/providers/Microsoft.Network/publicIPAddresses/', parameters('existingStaticIPName'))]",
     ```
 
-4. Usuń `Microsoft.Network/publicIPAddresses` z Twoich zasobów, dlatego Azure nie Utwórz nowy adres IP:
+4. Usuń `Microsoft.Network/publicIPAddresses` z Twoich zasobów, dlatego Azure nie tworzy nowego adresu IP:
 
     ```
     /*
@@ -230,7 +235,7 @@ Na przykład innego, zobacz [, który nie jest specyficzne dla platformy Service
     }, */
     ```
 
-5. Komentarz adresu IP z `dependsOn` atrybutu `Microsoft.Network/loadBalancers`, więc nie zależą od tworzenia nowego adresu IP:
+5. Komentarz do adresu IP z `dependsOn` atrybutu `Microsoft.Network/loadBalancers`, dzięki czemu użytkownik nie należy polegać na utworzenie nowego adresu IP:
 
     ```
     "apiVersion": "[variables('lbIPApiVersion')]",
@@ -244,7 +249,7 @@ Na przykład innego, zobacz [, który nie jest specyficzne dla platformy Service
     "properties": {
     ```
 
-6. W `Microsoft.Network/loadBalancers` zasobów, zmień `publicIPAddress` elementu `frontendIPConfigurations` istniejących statyczny adres IP zamiast nowo utworzone odwołanie do:
+6. W `Microsoft.Network/loadBalancers` zasobów, zmień `publicIPAddress` elementu `frontendIPConfigurations` można odwoływać się do istniejącego statyczny adres IP zamiast nowo utworzony:
 
     ```
                 "frontendIPConfigurations": [
@@ -260,7 +265,7 @@ Na przykład innego, zobacz [, który nie jest specyficzne dla platformy Service
                     ],
     ```
 
-7. W `Microsoft.ServiceFabric/clusters` zasobów, zmień `managementEndpoint` do nazwy FQDN DNS statycznego adresu IP. Jeśli używane są bezpieczne klastra, upewnij się, możesz zmienić *http://* do *https://*. (Należy pamiętać, że ten krok ma zastosowanie tylko do klastrów sieci szkieletowej usług. Jeśli korzystasz z zestawu skalowania maszyn wirtualnych, Pomiń ten krok.)
+7. W `Microsoft.ServiceFabric/clusters` zasobów, zmień `managementEndpoint` do nazwy FQDN DNS statyczny adres IP. Jeśli używasz zabezpieczonego klastra upewnij się, możesz zmienić *http://* do *https://*. (Zwróć uwagę, że ten krok ma zastosowanie tylko w klastrach usługi Service Fabric. Jeśli używasz zestawu skalowania maszyn wirtualnych, Pomiń ten krok).
 
     ```
                     "fabricSettings": [],
@@ -280,14 +285,14 @@ Na przykład innego, zobacz [, który nie jest specyficzne dla platformy Service
     New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingstaticip -TemplateFile C:\SFSamples\Final\template\_staticip.json -existingStaticIPResourceGroup $staticip.ResourceGroupName -existingStaticIPName $staticip.Name -existingStaticIPDnsFQDN $staticip.DnsSettings.Fqdn
     ```
 
-Po wdrożeniu widać, że moduł równoważenia obciążenia jest powiązany z publiczny statyczny adres IP z innej grupy zasobów. Punktu końcowego połączenia klienta usługi Service Fabric i [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) punkt końcowy nazwy FQDN DNS statyczny adres IP.
+Po wdrożeniu możesz zobaczyć, że moduł równoważenia obciążenia jest powiązana z publiczny statyczny adres IP z grupy zasobów. Punkt końcowy połączenia klienta usługi Service Fabric i [narzędzia Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) punkt programu endpoint dla nazwy FQDN DNS statyczny adres IP.
 
 <a id="internallb"></a>
 ## <a name="internal-only-load-balancer"></a>Moduł równoważenia obciążenia tylko do wewnętrznego
 
-W tym scenariuszu zastępuje zewnętrznej usługi równoważenia obciążenia w sieci szkieletowej usług domyślnego szablonu usługi równoważenia obciążenia wewnętrznych. Konsekwencje dla portalu Azure i dostawcy zasobów usługi Service Fabric można zobaczyć w poprzedniej sekcji.
+W tym scenariuszu zamienia zewnętrznym modułem równoważenia obciążenia w szablonie usługi Service Fabric domyślnego modułu równoważenia obciążenia wyłącznie wewnętrznym. Konsekwencje dla witryny Azure portal i dostawcy zasobów usługi Service Fabric zobacz temat w poprzedniej sekcji.
 
-1. Usuń `dnsName` parametru. (Nie jest wymagana.)
+1. Usuń `dnsName` parametru. (Nie jest potrzebna.)
 
     ```
     /*
@@ -297,7 +302,7 @@ W tym scenariuszu zastępuje zewnętrznej usługi równoważenia obciążenia w 
     */
     ```
 
-2. Opcjonalnie Jeśli używasz statyczną metodą przydziału, można dodać parametr statyczny adres IP. Jeśli używasz metody przydzielania, nie trzeba wykonać ten krok.
+2. Opcjonalnie Jeśli używasz metody alokacji statycznej, można dodać parametrem statyczny adres IP. Jeśli używasz metody dynamicznej alokacji, nie musisz wykonać ten krok.
 
     ```
             "internalLBAddress": {
@@ -306,7 +311,7 @@ W tym scenariuszu zastępuje zewnętrznej usługi równoważenia obciążenia w 
             }
     ```
 
-3. Usuń `Microsoft.Network/publicIPAddresses` z Twoich zasobów, dlatego Azure nie Utwórz nowy adres IP:
+3. Usuń `Microsoft.Network/publicIPAddresses` z Twoich zasobów, dlatego Azure nie tworzy nowego adresu IP:
 
     ```
     /*
@@ -328,7 +333,7 @@ W tym scenariuszu zastępuje zewnętrznej usługi równoważenia obciążenia w 
     }, */
     ```
 
-4. Usuń adres IP `dependsOn` atrybutu `Microsoft.Network/loadBalancers`, więc nie zależą od tworzenia nowego adresu IP. Dodawanie sieci wirtualnej `dependsOn` atrybutu, ponieważ zależy od podsieci z sieci wirtualnej usługi równoważenia obciążenia:
+4. Usuń adres IP `dependsOn` atrybutu `Microsoft.Network/loadBalancers`, dzięki czemu użytkownik nie należy polegać na utworzenie nowego adresu IP. Dodaj sieć wirtualną `dependsOn` atrybutu, ponieważ moduł równoważenia obciążenia zależy od teraz podsieci z sieci wirtualnej:
 
     ```
                 "apiVersion": "[variables('lbApiVersion')]",
@@ -341,7 +346,7 @@ W tym scenariuszu zastępuje zewnętrznej usługi równoważenia obciążenia w 
                 ],
     ```
 
-5. Zmiana modułu równoważenia obciążenia `frontendIPConfigurations` z przy użyciu `publicIPAddress`, przy użyciu podsieci i `privateIPAddress`. `privateIPAddress` używa wstępnie zdefiniowanych statyczne wewnętrzne adresy IP. Aby korzystać z dynamicznego adresu IP, należy usunąć `privateIPAddress` elementu, a następnie zmień `privateIPAllocationMethod` do **dynamiczne**.
+5. Zmiana modułu równoważenia obciążenia `frontendIPConfigurations` ustawienie z przy użyciu `publicIPAddress`, za pomocą podsieci i `privateIPAddress`. `privateIPAddress` używa wstępnie zdefiniowanych statyczne wewnętrzne adresy IP. Aby użyć dynamicznego adresu IP, Usuń `privateIPAddress` elementu, a następnie zmień `privateIPAllocationMethod` do **dynamiczne**.
 
     ```
                 "frontendIPConfigurations": [
@@ -362,7 +367,7 @@ W tym scenariuszu zastępuje zewnętrznej usługi równoważenia obciążenia w 
                     ],
     ```
 
-6. W `Microsoft.ServiceFabric/clusters` zasobów, zmień `managementEndpoint` aby wskazywał adres usługi równoważenia obciążenia wewnętrznego. Jeśli używasz bezpiecznego klastra, upewnij się, można zmienić *http://* do *https://*. (Należy pamiętać, że ten krok ma zastosowanie tylko do klastrów sieci szkieletowej usług. Jeśli korzystasz z zestawu skalowania maszyn wirtualnych, Pomiń ten krok.)
+6. W `Microsoft.ServiceFabric/clusters` zasobów, zmień `managementEndpoint` wskaż adres usługi równoważenia obciążenia wewnętrznego. Jeśli korzystasz z zabezpieczonym klastrem, upewnij się, możesz zmienić *http://* do *https://*. (Zwróć uwagę, że ten krok ma zastosowanie tylko w klastrach usługi Service Fabric. Jeśli używasz zestawu skalowania maszyn wirtualnych, Pomiń ten krok).
 
     ```
                     "fabricSettings": [],
@@ -378,16 +383,16 @@ W tym scenariuszu zastępuje zewnętrznej usługi równoważenia obciążenia w 
     New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
     ```
 
-Po wdrożeniu przez moduł równoważenia obciążenia używa prywatnego 10.0.0.250 statyczny adres IP. Jeśli masz inną maszynę w tej samej sieci wirtualnej, można przejść do wewnętrznej [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) punktu końcowego. Należy pamiętać, że łączy się jednym z węzłów za usługą równoważenia obciążenia.
+Po wdrożeniu modułu równoważenia obciążenia używa prywatnego 10.0.0.250 statyczny adres IP. Jeśli masz inną maszynę w tej samej sieci wirtualnej, możesz przejść do wewnętrznego [narzędzia Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) punktu końcowego. Należy pamiętać, że nawiązuje połączenie z jednym z węzłów za modułem równoważenia obciążenia.
 
 <a id="internalexternallb"></a>
 ## <a name="internal-and-external-load-balancer"></a>Moduł równoważenia obciążenia wewnętrznych i zewnętrznych
 
-W tym scenariuszu można rozpoczynać się od istniejącego typu jednowęzłowej zewnętrznej usługi równoważenia obciążenia i Dodaj wewnętrznego modułu równoważenia obciążenia dla tego samego typu węzła. Tylko do modułu równoważenia obciążenia w jednej można przypisać portu zaplecza, połączony z pulą adresów zaplecza. Wybierz, które usługa równoważenia obciążenia będzie miał porty Twojej aplikacji i które usługa równoważenia obciążenia mają zarządzania punktów końcowych (porty 19000 i 19080). Jeśli punkty końcowe zarządzania zostanie umieszczony na wewnętrzny moduł równoważenia obciążenia, należy pamiętać zasobów sieci szkieletowej usług ograniczenia dostawcy opisem we wcześniejszej części tego artykułu. W tym przykładzie używamy, zarządzania, punktów końcowych zachowana na zewnętrznej usługi równoważenia obciążenia. Możesz również dodać port aplikacji portu 80 i umieść ją na wewnętrzny moduł równoważenia obciążenia.
+W tym scenariuszu rozpoczynać istniejącego modułu równoważenia obciążenia zewnętrznych typu z jednym węzłem i Dodaj wewnętrznego modułu równoważenia obciążenia dla tego samego typu węzła. Port zaplecza, połączony z pulą adresów zaplecza można przypisać tylko do modułu równoważenia obciążenia. Wybierz, w której moduł równoważenia obciążenia będzie miał porty Twojej aplikacji, a które modułu równoważenia obciążenia będzie miał punktami końcowymi usługi zarządzania (porty 19000 i 19080). W przypadku punktów końcowych zarządzania zostanie umieszczony na wewnętrznego modułu równoważenia obciążenia, należy pamiętać, zasobów usługi Service Fabric ograniczenia dostawcy z opisem we wcześniejszej części tego artykułu. W tym przykładzie używamy, zarządzania, punktów końcowych pozostają w module równoważenia obciążenia zewnętrznych. Możesz również dodać port 80 port aplikacji i umieść ją na wewnętrznego modułu równoważenia obciążenia.
 
-W klastrze typu węzła dwa jest jednego typu węzła w zewnętrznej usługi równoważenia obciążenia. Typ węzła znajduje się na wewnętrzny moduł równoważenia obciążenia. Do używania klastrze dwóch węzłów typu w szablonie typu węzła dwa utworzonych przez portal (który pochodzi z modułami równoważenia obciążenia dwa), Przełącz drugi modułu równoważenia obciążenia do wewnętrznego modułu równoważenia obciążenia. Aby uzyskać więcej informacji, zobacz [modułu równoważenia obciążenia tylko do wewnętrznego](#internallb) sekcji.
+W klastrze typu węzła dwóch jeden typ węzła jest na zewnętrznym modułem równoważenia obciążenia. Typ węzła znajduje się na wewnętrznego modułu równoważenia obciążenia. Korzystanie z klastra typ węzła dwóch, w szablonie dwóch węzłów typu w portalu zostały utworzone, (które pochodzą z dwoma modułami równoważenia obciążenia), Przełącz drugi moduł równoważenia obciążenia do wewnętrznego modułu równoważenia obciążenia. Aby uzyskać więcej informacji, zobacz [tylko do wewnętrznego równoważenia](#internallb) sekcji.
 
-1. Dodaj parametr adres IP usługi równoważenia statyczna obciążenia wewnętrznego. (Aby uzyskać informacje powiązane z użyciem dynamicznego adresu IP, zobacz wcześniejszej części tego artykułu).
+1. Dodaj parametr adres IP modułu równoważenia statycznego wczytywnia wewnętrznego. (Aby uzyskać informacje powiązane z użyciem dynamiczny adres IP, zobacz wcześniejsze sekcje w tym artykule).
 
     ```
             "internalLBAddress": {
@@ -396,9 +401,9 @@ W klastrze typu węzła dwa jest jednego typu węzła w zewnętrznej usługi ró
             }
     ```
 
-2. Dodaj parametr port 80 aplikacji.
+2. Dodaj parametr portu 80 w aplikacji.
 
-3. Dodaj wewnętrzne wersji istniejącej sieci zmiennych, skopiuj i wklej je, a następnie dodaj "-Int" do nazwy:
+3. Dodaj wewnętrzne wersje istniejących sieci zmiennych, skopiuj i wklej je, a następnie dodaj "-Int" do nazwy:
 
     ```
     /* Add internal load balancer networking variables */
@@ -411,7 +416,7 @@ W klastrze typu węzła dwa jest jednego typu węzła w zewnętrznej usługi ró
             /* Internal load balancer networking variables end */
     ```
 
-4. Po uruchomieniu z szablonem generowanych przez portal, który korzysta z aplikacji portu 80, domyślny szablon portalu dodaje AppPort1 (port 80) w zewnętrznej usługi równoważenia obciążenia. W takim przypadku usuń AppPort1 z zewnętrznej usługi równoważenia obciążenia `loadBalancingRules` i sond, dzięki czemu można dodać go do wewnętrznego modułu równoważenia obciążenia:
+4. W przypadku uruchomienia przy użyciu szablonu wygenerowanych przez portal, która korzysta z aplikacji portu 80, domyślnego szablonu portalu dodaje AppPort1 (port 80) w module równoważenia obciążenia zewnętrznych. W takim przypadku usuń AppPort1 z zewnętrznym modułem równoważenia obciążenia `loadBalancingRules` sond i, dzięki czemu można dodać go do wewnętrznego modułu równoważenia obciążenia:
 
     ```
     "loadBalancingRules": [
@@ -488,7 +493,7 @@ W klastrze typu węzła dwa jest jednego typu węzła w zewnętrznej usługi ró
     "inboundNatPools": [
     ```
 
-5. Dodaj drugi `Microsoft.Network/loadBalancers` zasobów. Podobny do wewnętrznego modułu równoważenia obciążenia utworzony w [modułu równoważenia obciążenia tylko do wewnętrznego](#internallb) sekcji, ale używa "-Int" zmienne usługi równoważenia obciążenia i implementuje tylko aplikacji portu 80. Spowoduje to również usunięcie `inboundNatPools`, aby zachować punktów końcowych protokołu RDP na publiczny moduł równoważenia obciążenia. Protokół RDP na wewnętrzny moduł równoważenia obciążenia, przenieść `inboundNatPools` z zewnętrznego modułu równoważenia obciążenia wewnętrznego usługi równoważenia obciążenia:
+5. Dodaj drugą `Microsoft.Network/loadBalancers` zasobów. Będzie on podobny do wewnętrznego modułu równoważenia obciążenia utworzony w [tylko do wewnętrznego równoważenia](#internallb) sekcji, ale używa "-Int" zmiennych modułu równoważenia obciążenia i implementuje tylko aplikacji port 80. Spowoduje to również usunięcie `inboundNatPools`, aby zachować punktów końcowych protokołu RDP na publiczny moduł równoważenia obciążenia. Protokół RDP na wewnętrznego modułu równoważenia obciążenia, przenieść `inboundNatPools` z zewnętrznego module równoważenia obciążenia do tego wewnętrznego modułu równoważenia obciążenia:
 
     ```
             /* Add a second load balancer, configured with a static privateIPAddress and the "-Int" load balancer variables. */
@@ -573,7 +578,7 @@ W klastrze typu węzła dwa jest jednego typu węzła w zewnętrznej usługi ró
             },
     ```
 
-6. W `networkProfile` dla `Microsoft.Compute/virtualMachineScaleSets` zasobów, dodać puli adresów zaplecza wewnętrznego:
+6. W `networkProfile` dla `Microsoft.Compute/virtualMachineScaleSets` zasobu, Dodawanie puli adresów zaplecza wewnętrznego:
 
     ```
     "loadBalancerBackendAddressPools": [
@@ -595,7 +600,7 @@ W klastrze typu węzła dwa jest jednego typu węzła w zewnętrznej usługi ró
     New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternalexternallb -TemplateFile C:\SFSamples\Final\template\_internalexternalLB.json
     ```
 
-Po wdrożeniu widać dwie usługi równoważenia obciążenia w grupie zasobów. Po przejściu do usługi równoważenia obciążenia widać publicznego adresu IP adres i zarządzania punktów końcowych (porty 19000 i 19080) przypisany do publicznego adresu IP. Możesz również sprawdzić statyczne wewnętrzne IP adres i aplikacji punktu końcowego (port 80) przypisany do wewnętrznego modułu równoważenia obciążenia. Obie usługi równoważenia obciążenia, użyj tej samej puli zaplecza zestaw skali maszyny wirtualnej.
+Po wdrożeniu możesz zobaczyć dwa moduły równoważenia obciążenia w grupie zasobów. Jeśli możesz przeglądać modułów równoważenia obciążenia, zostanie wyświetlony publicznego adresu IP adres i zarządzania punktów końcowych (porty 19000 i 19080) przypisany publiczny adres IP. Widać również statyczne wewnętrzny adres i aplikacji punktu końcowego adresu IP (port 80) przypisany do wewnętrznego modułu równoważenia obciążenia. Oba moduły równoważenia obciążenia, użyj tej samej puli zaplecza zestawu skalowania maszyn wirtualnych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Tworzenie klastra](service-fabric-cluster-creation-via-arm.md)

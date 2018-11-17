@@ -4,7 +4,8 @@ description: Odnajduj rozwiązania w galerii sztucznej Inteligencji platformy Az
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: c0be3f10-9e54-4fc1-b5df-725c2e919f65
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: cb02ed61ea050c17bc7e6dc0ebc724f29f885dd7
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 8c67263feff4ac89b786f6d71d78d0a5fbe17b5b
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344339"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820464"
 ---
 # <a name="discover-solutions-in-the-azure-ai-gallery"></a>Odnajduj rozwiązania w galerii Azure AI
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: e55d161b7c95118736f4443c3fed0312418feee7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 898d7cf6cdded08cd09c4b1f1f845473af1650a3
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441939"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824010"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>Samouczek: Integracja usługi Azure Active Directory z Leapsome
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Leapsome, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Leapsome logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację Leapsome w usłudze Azure AD, należy dodać Leap
 
 **Aby dodać Leapsome z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -134,7 +134,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | Obraz | Adres URL obrazu pracownika | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
 
     > [!Note]
-    > Wartość atrybutu obraz nie jest prawdziwe. Zaktualizuj tę wartość za pomocą adresu URL rzeczywisty obraz. Aby uzyskać to wartość, skontaktuj się z [zespołem pomocy technicznej klienta Leapsome](mailto:support@leapsome.com).
+    > Wartość atrybutu obraz nie jest prawdziwe. Zaktualizuj tę wartość za pomocą adresu URL rzeczywisty obraz. Aby uzyskać to wartość, skontaktuj się z [zespołem pomocy technicznej klienta Leapsome](mailto:support@leapsome.com).
     
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
@@ -176,7 +176,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. Kopiuj **adres URL logowania (polecenie użytkowników w tym miejscu Rozpocznij logowania)** wartość i wklej go w **adres URL logowania** polu tekstowym w **Leapsome domena i adresy URL** sekcji w witrynie Azure portal.
 
-    c. Kopiuj **adres URL odpowiedzi (recieves odpowiedź od dostawcy tożsamości)** wartość i wklej go w **adres URL odpowiedzi** polu tekstowym w **Leapsome domena i adresy URL** sekcji w witrynie Azure portal.
+    c. Kopiuj **adres URL odpowiedzi (odbiera odpowiedź od dostawcy tożsamości)** wartość i wklej go w **adres URL odpowiedzi** polu tekstowym w **Leapsome domena i adresy URL** sekcji w witrynie Azure portal.
 
     d. W **rejestracji Jednokrotnej adres URL logowania (udostępnione przez dostawcę tożsamości)** pola tekstowego, Wklej wartość **SAML pojedynczego logowania jednokrotnego usługi adresu URL**, który został skopiowany z witryny Azure portal.
 
@@ -218,7 +218,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="create-a-leapsome-test-user"></a>Tworzenie użytkownika testowego Leapsome
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Leapsome. Praca z [zespołem pomocy technicznej klienta Leapsome](mailto:support@leapsome.com) można dodać użytkowników lub domeny, który musi być umieszczona na białej liście na platformie Leapsome. Jeśli domena jest dodawany przez zespół, użytkownicy będą automatycznie aprowizowany platformę Leapsome. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Leapsome. Praca z [zespołem pomocy technicznej klienta Leapsome](mailto:support@leapsome.com) można dodać użytkowników lub domeny, który musi być umieszczona na białej liście na platformie Leapsome. Jeśli domena jest dodawany przez zespół, użytkownicy będą automatycznie aprowizowany platformę Leapsome. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: e317a9c3cea800e05fbf3d2df73c124d2e7ffd23
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 9bb703f822a9b9cafe8318bfb7f7cc64c3854868
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457667"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853663"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -193,7 +193,7 @@ Jeśli piszesz dzienniki w kodzie funkcji ich kategorii jest "Funkcja".
 
 ### <a name="log-levels"></a>Poziomy dziennika
 
-Rejestrator usługi Azure functions obejmuje również *poziom dziennika* przy każdym logowaniu. [LogLevel](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loglevel#Microsoft_Extensions_Logging_LogLevel) jest wyliczeniem, a kod liczby całkowitej wskazuje względne znaczenie:
+Rejestrator usługi Azure functions obejmuje również *poziom dziennika* przy każdym logowaniu. [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) jest wyliczeniem, a kod liczby całkowitej wskazuje względne znaczenie:
 
 |LogLevel    |Kod|
 |------------|---|

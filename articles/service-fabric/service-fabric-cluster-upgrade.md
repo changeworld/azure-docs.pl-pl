@@ -1,6 +1,6 @@
 ---
 title: Uaktualnianie klastra usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Uaktualnienie usługi Service Fabric kodu i/lub konfiguracji, która działa w klastrze usługi Service Fabric, włącznie z ustawieniem trybu aktualizacji klastra, uaktualnianie certyfikaty, dodawanie portów aplikacji, wykonując poprawek systemu operacyjnego i tak dalej. Czego możesz oczekiwać, gdy wykonywane są uaktualnienia?
+description: Więcej informacji na temat uaktualniania wersji lub konfiguracji klastra usługi Service Svice Fabric platformy Azure.  W tym artykule opisano ustawienia klastra tryb aktualizacji uaktualnianie certyfikaty, dodawanie portów aplikacji, wykonując poprawek systemu operacyjnego i czego mogą oczekiwać podczas uaktualnienia są wykonywane
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
@@ -12,114 +12,28 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/10/2017
+ms.date: 11/12/2018
 ms.author: aljo
-ms.openlocfilehash: 2fd62f8709bddfd981f4b1358c97d0acbaf7f12d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: a864d6423dc530857009e58a2fa90f0fa2cbc84f
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269107"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853289"
 ---
-# <a name="upgrade-an-azure-service-fabric-cluster"></a>Uaktualnianie klastra usługi Azure Service Fabric
-> [!div class="op_single_selector"]
-> * [Klaster usługi Azure](service-fabric-cluster-upgrade.md)
-> * [Klaster autonomiczny](service-fabric-cluster-upgrade-windows-server.md)
-> 
-> 
+# <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Uaktualnianie i aktualizowanie klastra usługi Azure Service Fabric
 
 Dla każdego nowoczesnego systemu projektowanie pod kątem możliwość jest kluczem do osiągnięcia długoterminowym sukcesie produktu. Klaster usługi Azure Service Fabric jest zasobem, który właścicielem, ale jest częściowo zarządzany przez firmę Microsoft. W tym artykule opisano, co jest zarządzana automatycznie i samodzielnie skonfigurować.
 
 ## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>Kontrolowanie wersja sieci szkieletowej, która działa w klastrze
-Można ustawić do klastra, aby otrzymywać uaktualnienia sieci szkieletowej automatyczne, zgodnie z ich wydaniu przez firmę Microsoft lub możesz wybrać wersję obsługiwanych w sieci szkieletowej, że chcesz użyć do klastra, aby znajdować się na.
 
-Można to zrobić, ustawienia konfiguracji klastra "element upgradeMode" w portalu lub przy użyciu usługi Resource Manager w momencie utworzenia lub nowszych na działającym klastrem 
-
-> [!NOTE]
-> Upewnij się, że utrzymywania klastra usługi zawsze uruchomiona wersja obsługiwana w sieci szkieletowej. Gdy firma Microsoft ogłaszamy wydanie nowej wersji usługi Service fabric, poprzednia wersja jest oznaczony do zakończenia wsparcia po co najmniej 60 dni od tego dnia. Nowe wersje są anonsowane [na blogu zespołu usługi Service fabric](https://blogs.msdn.microsoft.com/azureservicefabric/). Nowa wersja jest dostępna dla wybrany. 
-> 
-> 
+Upewnij się, że utrzymywania klastra usługi zawsze uruchomiona wersja obsługiwana w sieci szkieletowej. Gdy firma Microsoft ogłaszamy wydanie nowej wersji usługi Service fabric, poprzednia wersja jest oznaczony do zakończenia wsparcia po co najmniej 60 dni od tego dnia. Nowe wersje są ogłaszane na blogu zespołu usługi Service fabric. Nowa wersja jest dostępna dla wybrany.
 
 14 dni przed wygaśnięciem wersji, którą klaster działa, zdarzenie kondycji jest generowany tak, że przełączenie klastra w wskazuje ostrzegawczy stan kondycji. Klaster będzie pozostawał w stanie ostrzeżenia, dopóki nie można uaktualnić do wersji obsługiwanej sieci szkieletowej.
 
-### <a name="setting-the-upgrade-mode-via-portal"></a>Ustawienie Tryb uaktualniania za pośrednictwem portalu
-Podczas tworzenia klastra, można ustawić automatyczne lub ręczne klastra.
+Można ustawić do klastra, aby otrzymywać uaktualnienia sieci szkieletowej automatyczne, zgodnie z ich wydaniu przez firmę Microsoft lub możesz wybrać wersję obsługiwanych w sieci szkieletowej, że chcesz użyć do klastra, aby znajdować się na.  Aby dowiedzieć się więcej, przeczytaj [uaktualniania wersji usługi Service Fabric klastra](service-fabric-cluster-upgrade-version-azure.md).
 
-![Create_Manualmode][Create_Manualmode]
-
-Można ustawić klastra automatyczne lub ręczne, gdy w klastrze na żywo, za pomocą środowiska zarządzania. 
-
-#### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal"></a>Uaktualnianie do nowej wersji w klastrze, który jest ustawiany w trybie ręcznej za pośrednictwem portalu.
-Aby przeprowadzić uaktualnienie do nowej wersji, wszystko, co należy zrobić to wybierz dostępnej wersji z listy rozwijanej, a następnie zapisz. Uaktualnienia sieci szkieletowej pobiera rozpoczęła się automatycznie. Zasady dotyczące kondycji klastra (kombinację kondycji węzła i kondycji wszystkich aplikacji uruchomionych w klastrze) są przestrzegane podczas uaktualniania.
-
-Jeśli zasady dotyczące kondycji klastra nie są spełnione, uaktualnienie zostanie wycofana. Przewiń w dół tego dokumentu, aby dowiedzieć się więcej na temat ustawiania tych zasad niestandardowych kondycji. 
-
-Po rozwiązaniu problemów, które spowodowało wycofywania, musisz zainicjować aktualizację ponownie, wykonując te same kroki co wcześniej.
-
-![Manage_Automaticmode][Manage_Automaticmode]
-
-### <a name="setting-the-upgrade-mode-via-a-resource-manager-template"></a>Ustawienie Tryb uaktualniania za pomocą szablonu usługi Resource Manager
-Dodaj konfigurację "element upgradeMode" w definicji zasobu Microsoft.ServiceFabric/clusters i ustaw opcję "clusterCodeVersion" na jedną z wersji obsługiwanych w sieci szkieletowej, jak pokazano poniżej, a następnie wdrożyć szablon. Prawidłowe wartości dla "element upgradeMode" to "Ręczny" lub "Automatyczny"
-
-![ARMUpgradeMode][ARMUpgradeMode]
-
-#### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>Uaktualnianie do nowej wersji w klastrze, który jest ustawiany w trybie ręcznie za pomocą szablonu usługi Resource Manager.
-Gdy klaster jest w trybie ręcznej, aby uaktualnić do nowej wersji Zmień "clusterCodeVersion" do obsługiwanej wersji i wdrożyć ją. Wdrożenie szablonu kopnięć uaktualnienia sieci szkieletowej pobiera rozpoczęła się automatycznie. Zasady dotyczące kondycji klastra (kombinację kondycji węzła i kondycji wszystkich aplikacji uruchomionych w klastrze) są przestrzegane podczas uaktualniania.
-
-Jeśli zasady dotyczące kondycji klastra nie są spełnione, uaktualnienie zostanie wycofana. Przewiń w dół tego dokumentu, aby dowiedzieć się więcej na temat ustawiania tych zasad niestandardowych kondycji. 
-
-Po rozwiązaniu problemów, które spowodowało wycofywania, musisz zainicjować aktualizację ponownie, wykonując te same kroki co wcześniej.
-
-### <a name="get-list-of-all-available-version-for-all-environments-for-a-given-subscription"></a>Pobierz listę wszystkich dostępnych wersji dla wszystkich środowisk w ramach danej subskrypcji
-Uruchom następujące polecenie, a powinna pojawić się dane wyjściowe podobne do poniższego.
-
-"supportExpiryUtc" informuje, kiedy Twoja danego wydania wygaśnie lub utracił ważność. Najnowsza wersja ma prawidłową datę — ma wartość "9999-12-31T23:59:59.9999999", po prostu oznacza to, że data wygaśnięcia nie jest jeszcze ustawiony.
-
-```REST
-GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/locations/{{location}}/clusterVersions?api-version=2016-09-01
-
-Example: https://management.azure.com/subscriptions/1857f442-3bce-4b96-ad95-627f76437a67/providers/Microsoft.ServiceFabric/locations/eastus/clusterVersions?api-version=2016-09-01
-
-Output:
-{
-                  "value": [
-                    {
-                      "id": "subscriptions/35349203-a0b3-405e-8a23-9f1450984307/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/5.0.1427.9490",
-                      "name": "5.0.1427.9490",
-                      "type": "Microsoft.ServiceFabric/environments/clusterVersions",
-                      "properties": {
-                        "codeVersion": "5.0.1427.9490",
-                        "supportExpiryUtc": "2016-11-26T23:59:59.9999999",
-                        "environment": "Windows"
-                      }
-                    },
-                    {
-                      "id": "subscriptions/35349203-a0b3-405e-8a23-9f1450984307/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/4.0.1427.9490",
-                      "name": "5.1.1427.9490",
-                      "type": " Microsoft.ServiceFabric/environments/clusterVersions",
-                      "properties": {
-                        "codeVersion": "5.1.1427.9490",
-                        "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
-                        "environment": "Windows"
-                      }
-                    },
-                    {
-                      "id": "subscriptions/35349203-a0b3-405e-8a23-9f1450984307/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/4.4.1427.9490",
-                      "name": "4.4.1427.9490",
-                      "type": " Microsoft.ServiceFabric/environments/clusterVersions",
-                      "properties": {
-                        "codeVersion": "4.4.1427.9490",
-                        "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
-                        "environment": "Linux"
-                      }
-                    }
-                  ]
-                }
-
-
-```
-
-## <a name="fabric-upgrade-behavior-when-the-cluster-upgrade-mode-is-automatic"></a>Zachowanie uaktualnienia sieci szkieletowej, gdy tryb uaktualniania klastra jest automatyczny
+## <a name="fabric-upgrade-behavior-during-automatic-upgrades"></a>Sieć szkieletowa uaktualniać zachowanie podczas automatycznych uaktualnień
 Firma Microsoft udostępnia kodu sieci szkieletowej i konfiguracji, która działa w klastrze platformy Azure. Wykonamy automatycznych uaktualnień monitorowanych oprogramowania na zgodnie z potrzebami. Te uaktualnienia może być kod i/lub konfiguracji. Aby upewnić się, że aplikacja niska bez wpływu i minimalne wpływu na te uaktualnienia, możemy przeprowadzić uaktualnienia w następujących faz:
 
 ### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>Faza 1: Uaktualnianie jest przeprowadzane przy użyciu wszystkich zasad dotyczących kondycji klastra
@@ -149,7 +63,7 @@ Będziemy próbować wykonać uaktualnienie samej kilka razy w przypadku uaktual
 Jeśli zasady dotyczące kondycji klastra są spełnione, uaktualnienie jest uznawany za pomyślny i oznaczone jako ukończone. Może to nastąpić podczas uaktualniania początkowej lub dowolne powtórkami uaktualniania na tym etapie. Nie ma żadnych e-mail z potwierdzeniem pomyślnego przebiegu.
 
 ### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>Faza 3 — Uaktualnianie jest przeprowadzane przy użyciu zasady dotyczące kondycji agresywne
-Te zasady dotyczące kondycji, w tej fazie są przeznaczone dla ukończenie uaktualnienia, a nie kondycji aplikacji. Uaktualnianie klastra bardzo mało znajdą się w tej fazie. Jeśli na tym etapie klaster, istnieje duże prawdopodobieństwo, że aplikacja staje się nieprawidłowy, i/lub utratę dostępności.
+Te zasady dotyczące kondycji, w tej fazie są przeznaczone dla ukończenie uaktualnienia, a nie kondycji aplikacji. Uaktualnianie klastra kilka znajdą się w tej fazie. Jeśli na tym etapie klaster, istnieje duże prawdopodobieństwo, że aplikacja staje się nieprawidłowy, i/lub utratę dostępności.
 
 Podobnie jak w pozostałych faz, fazy 3 uaktualnienia Przejdź jedną domenę uaktualnienia w danym momencie.
 
@@ -159,56 +73,35 @@ Wiadomość e-mail z te informacje są wysyłane do właściciela subskrypcji, o
 
 Jeśli zasady dotyczące kondycji klastra są spełnione, uaktualnienie jest uznawany za pomyślny i oznaczone jako ukończone. Może to nastąpić podczas uaktualniania początkowej lub dowolne powtórkami uaktualniania na tym etapie. Nie ma żadnych e-mail z potwierdzeniem pomyślnego przebiegu.
 
-## <a name="cluster-configurations-that-you-control"></a>Konfiguracje klastra, które możesz kontrolować
-Oprócz możliwości ustawiania tożsamości klastra w tryb uaktualniania, Oto konfiguracje, które mogą być zmieniane na działającym klastrem.
+## <a name="manage-certificates"></a>Zarządzanie certyfikatami
+Usługa Service Fabric używa [serwera certyfikatu x.509](service-fabric-cluster-security.md) określić podczas tworzenia klastra do zabezpieczania komunikacji między węzłami klastra i uwierzytelniania klientów. Dodawanie, aktualizowanie lub usuwanie certyfikatów klastra i klienta w [witryny Azure portal](https://portal.azure.com) lub przy użyciu interfejsu wiersza polecenia programu PowerShell/Azure.  Aby dowiedzieć się więcej, przeczytaj [Dodawanie lub usuwanie certyfikatów](service-fabric-cluster-security-update-certs-azure.md)
 
-### <a name="certificates"></a>Certyfikaty
-Można dodać nowe lub łatwo usunąć certyfikaty dla klastra i klientów za pośrednictwem portalu. Zapoznaj się [tego dokumentu, aby uzyskać szczegółowe instrukcje](service-fabric-cluster-security-update-certs-azure.md)
+## <a name="open-application-ports"></a>Porty otwartych aplikacji
+Porty aplikacji można zmienić, zmieniając właściwości zasobu modułu równoważenia obciążenia, które są skojarzone z typem węzła. Można użyć witryny Azure portal, lub można użyć interfejsu wiersza polecenia programu PowerShell/Azure. Aby uzyskać więcej informacji, przeczytaj [Otwórz porty aplikacji dla klastra](create-load-balancer-rule.md).
 
-![Zrzut ekranu pokazujący odciski palców certyfikatu w witrynie Azure portal.][CertificateUpgrade]
+## <a name="define-node-properties"></a>Zdefiniuj właściwości węzła
+Czasami możesz chcieć upewnij się, że niektóre obciążenia uruchamiane tylko na niektóre rodzaje węzłów w klastrze. Na przykład niektóre obciążenia mogą wymagać procesorów GPU lub dyski SSD, podczas gdy inne nie. Dla każdego z typów węzłów w klastrze można dodać właściwości niestandardowe węzła do węzłów klastra. Ograniczeniami dotyczącymi umieszczania są instrukcje dołączone do poszczególnych usług, które wybierz co najmniej jedną właściwość węzła. Ograniczeniami dotyczącymi umieszczania definiują, gdzie należy uruchamiać usług.
 
-### <a name="application-ports"></a>Porty aplikacji
-Porty aplikacji można zmienić, zmieniając właściwości zasobu modułu równoważenia obciążenia, które są skojarzone z typem węzła. Mogą korzystać z portalu lub programu PowerShell usługi Resource Manager można używać bezpośrednio.
+Szczegółowe informacje dotyczące korzystania z ograniczeniami dotyczącymi umieszczania, właściwości węzła i sposób definiowania ich można odczytać [— właściwości węzła i ograniczeniami dotyczącymi umieszczania](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
 
-Aby otworzyć nowy port na wszystkich maszynach wirtualnych w typ węzła, wykonaj następujące czynności:
-
-1. Dodaj nową sondę do odpowiedniej usługi równoważenia obciążenia.
-   
-    Jeśli wdrożono klaster przy użyciu portalu, moduły równoważenia obciążenia są nazywane "LB Nazwa grupy zasobów — NodeTypename", jeden dla każdego typu węzła. Ponieważ nazwy modułu równoważenia obciążenia są unikatowe tylko w obrębie grupy zasobów, najlepiej w przypadku wyszukiwania ich w określonej grupie zasobów.
-   
-    ![Zrzut ekranu przedstawiający dodawanie sondy do modułu równoważenia obciążenia w portalu.][AddingProbes]
-2. Dodaj nową regułę modułu równoważenia obciążenia.
-   
-    Dodaj nową regułę do tego samego modułu równoważenia obciążenia za pomocą sondowania, który został utworzony w poprzednim kroku.
-   
-    ![Dodawanie nowej reguły do modułu równoważenia obciążenia w portalu.][AddingLBRules]
-
-### <a name="placement-properties"></a>Właściwości umieszczania
-Dla każdego typu węzła możesz dodać niestandardowe właściwości umieszczania, które chcesz użyć w swoich aplikacjach. Element NodeType to właściwość domyślną, która może korzystać bez dodawania go jawnie.
-
-> [!NOTE]
-> Aby uzyskać szczegółowe informacje związane z użyciem ograniczeniami dotyczącymi umieszczania, właściwości węzła i sposób definiowania ich, można znaleźć w sekcji "Ograniczenia i węzła właściwości umieszczania" w dokumencie Menedżer zasobów klastra usługi w sieci szkieletowej na [opisujące klastra](service-fabric-cluster-resource-manager-cluster-description.md).
-> 
-> 
-
-### <a name="capacity-metrics"></a>Metryki wydajności
+## <a name="add-capacity-metrics"></a>Dodawanie metryki pojemności
 Dla każdego typu węzła możesz dodać niestandardowe metryki pojemności, którą chcesz używać w aplikacjach w celu raportowania obciążenia. Szczegółowe informacje dotyczące użycia metryki pojemności w celu raportowania obciążenia można odwoływać się do dokumentów, Menedżer zasobów klastra usługi w sieci szkieletowej na [opisujący Twój klaster](service-fabric-cluster-resource-manager-cluster-description.md) i [metryki i obciążenia](service-fabric-cluster-resource-manager-metrics.md).
 
-### <a name="fabric-upgrade-settings---health-polices"></a>Zasady kondycji ustawienia uaktualniania sieci szkieletowej —
-Można określić, że kondycja niestandardowe zasady dla uaktualnienie sieci szkieletowej. Jeśli ustawisz klastra do sieci szkieletowej automatycznych uaktualnień, następnie te zasady stosowane do fazy 1 uaktualnienia automatyczne sieci szkieletowej.
+## <a name="set-health-policies-for-automatic-upgrades"></a>Ustaw zasady dotyczące kondycji automatycznych uaktualnień
+Można określić zasady dotyczące kondycji niestandardowych do uaktualnienia sieci szkieletowej. Jeśli ustawisz klastra do sieci szkieletowej automatycznych uaktualnień, następnie te zasady stosowane do fazy 1 uaktualnienia automatyczne sieci szkieletowej.
 Jeśli ustawiono klastra dla sieci szkieletowej ręcznego uaktualnienia, te zasady zastosowana podczas wybierania nowej wersji, wyzwalając systemu, aby uruchamiał uaktualnienia sieci szkieletowej w klastrze. Jeśli nie zastąpisz zasady, są używane wartości domyślne.
 
 Można określić zasady dotyczące kondycji niestandardowych lub Przejrzyj bieżące ustawienia w bloku "uaktualnienia sieci szkieletowej", wybierając pozycję Zaawansowane ustawienia uaktualniania. Przejrzyj następujący obraz na temat. 
 
 ![Zarządzanie zasadami kondycji niestandardowe][HealthPolices]
 
-### <a name="customize-fabric-settings-for-your-cluster"></a>Dostosowywanie ustawień sieci szkieletowej dla klastra
-Zapoznaj się [ustawienia sieci szkieletowej klastra w sieci szkieletowej usługi](service-fabric-cluster-fabric-settings.md) co i jak można je dostosować.
+## <a name="customize-fabric-settings-for-your-cluster"></a>Dostosowywanie ustawień sieci szkieletowej dla klastra
+Wiele różnych ustawień konfiguracji można dostosować w taki sposób, w klastrze, takich jak poziom niezawodności właściwości klastra i węzła. Aby uzyskać więcej informacji, przeczytaj [ustawień sieci szkieletowej klastra usługi Service Fabric](service-fabric-cluster-fabric-settings.md).
 
-### <a name="os-patches-on-the-vms-that-make-up-the-cluster"></a>Poprawek systemu operacyjnego na maszynach wirtualnych, które tworzą klaster
-Zapoznaj się [Patch Orchestration Application](service-fabric-patch-orchestration-application.md) które można wdrożyć w klastrze można instalować poprawki z witryny Windows Update w zorganizowany sposób przechowywania usług dostępnych przez cały czas. 
+## <a name="patch-the-os-in-the-cluster-nodes"></a>Stosowanie poprawek systemu operacyjnego w węzłach klastra
+Aplikacja orchestration patch (POA) jest aplikacja usługi Service Fabric, który automatyzuje systemu operacyjnego poprawek w klastrze usługi Service Fabric, bez przestojów. [Patch Orchestration Application dla Windows](service-fabric-patch-orchestration-application.md) lub [Patch Orchestration aplikacji dla systemu Linux](service-fabric-patch-orchestration-application-linux.md) można wdrożyć w klastrze do instalowania poprawek w zorganizowany sposób przy jednoczesnym zachowaniu usług dostępne przez cały czas. 
 
-### <a name="os-upgrades-on-the-vms-that-make-up-the-cluster"></a>Uaktualnienia systemu operacyjnego na maszynach wirtualnych, które tworzą klaster
+## <a name="os-upgrades-on-the-vms-that-make-up-the-cluster"></a>Uaktualnienia systemu operacyjnego na maszynach wirtualnych, które tworzą klaster
 Jeśli musisz uaktualnić obrazu systemu operacyjnego na maszynach wirtualnych klastra, należy je jedną maszynę Wirtualną w danym momencie. Użytkownik ponosi odpowiedzialność za dla uaktualnienie — obecnie jest brak automatyzacji dla tego.
 
 ## <a name="next-steps"></a>Kolejne kroki

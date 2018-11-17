@@ -4,7 +4,8 @@ description: Nowe funkcje, które są dostępne w usłudze Azure Machine Learnin
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: ddc716ed-2615-4806-bf27-6c9a5662a7f2
@@ -15,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2018
-ms.openlocfilehash: 2f990ce30b66392e8a649e4e88b21457d9fe223b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 894aa55f2101c728fb39bbe6d84875dec9843ab9
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212662"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823065"
 ---
 # <a name="whats-new-in-azure-machine-learning-studio"></a>What's New in Azure Machine Learning Studio
 
-## <a name="october-2018"></a>Października 2018 r.
+## <a name="october-2018"></a>Październik 2018 r.
 
 Aparat języka R w [wykonanie skryptu języka R](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script) modułu została dodana nowa wersja środowiska uruchomieniowego języka R — Microsoft R Open (MRO) 3.4.4. MRO 3.4.4 zależy od typu open-source CRAN R 3.4.4 i dlatego jest zgodny z pakietami, które współpracuje z danej wersji języka R.  Dowiedz się więcej o obsługiwane pakiety języka R w artykule "[pakiety języka R obsługiwanych przez usługi Azure Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/r-packages-supported-by-azure-machine-learning#bkmk_List)".
 

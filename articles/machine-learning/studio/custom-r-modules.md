@@ -4,7 +4,8 @@ description: Przewodnik Szybki start do tworzenia niestandardowych modułów R w
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
@@ -15,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: 1a578e8cc05b42d05a8dfb31c0baeefb4822e3e5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b920f0ae3acd253c0f1f698ae4415e5b759ef762
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261114"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819342"
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Tworzenie niestandardowych modułów R w usłudze Azure Machine Learning
 W tym temacie opisano sposób tworzenia i wdrażania niestandardowego modułu R w usłudze Azure Machine Learning. Wyjaśniono, czym są niestandardowych modułów R i jakie pliki są używane do definiowania ich. Przedstawia on sposób tworzenia plików, które definiują modułu i jak można zarejestrować modułu dla wdrożenia w obszarze roboczym usługi Machine Learning. Elementy i atrybuty używane w definicji niestandardowego modułu następnie są opisane bardziej szczegółowo. Również omówiono sposób użycia funkcji pomocniczych, plików i wiele wyjść. 
@@ -132,7 +133,7 @@ Wyniki modułu mogą być deterministyczna lub nondeterministic.* * Domyślnie, 
 Dostępne są funkcje, które są jednoznaczne wyniki, takie jak RAND lub funkcji, która zwraca bieżącą datę lub godzinę. Jeśli niedeterministyczna funkcja korzysta z modułu, można określić, czy moduł jest niejednoznaczne, ustawienie opcjonalne **isDeterministic** atrybutu **FALSE**. Temu, że moduł ponownego uruchomienia po każdym uruchomieniu eksperymentu nawet, jeśli moduł danych wejściowych i parametry nie uległy zmianie. 
 
 ### <a name="language-definition"></a>Język definicji
-**Języka** elementu w pliku definicji XML jest używany do określenia języka niestandardowego modułu. Obecnie języka R jest jedynym obsługiwanym językiem. Wartość **sourceFile** atrybutu musi być nazwą pliku języka R, który zawiera funkcji do wywołania po uruchomieniu modułu. Ten plik musi być częścią pakietu zip. Wartość **punktu wejścia** atrybut jest nazwę wywoływanej funkcji i musi być zgodna z prawidłową funkcją zdefiniowane za pomocą w pliku źródłowym.
+**Języka** elementu w pliku definicji XML jest używany do określenia języka niestandardowego modułu. Obecnie język R jest jedynym obsługiwanym językiem. Wartość **sourceFile** atrybutu musi być nazwą pliku języka R, który zawiera funkcji do wywołania po uruchomieniu modułu. Ten plik musi być częścią pakietu zip. Wartość **punktu wejścia** atrybut jest nazwę wywoływanej funkcji i musi być zgodna z prawidłową funkcją zdefiniowane za pomocą w pliku źródłowym.
 
     <Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />
 

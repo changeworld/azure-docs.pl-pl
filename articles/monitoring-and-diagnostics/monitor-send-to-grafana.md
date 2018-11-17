@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: ''
-ms.openlocfilehash: 533fbfc42939299f99699a13513cd3b55c89cabc
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: b3b4b1f637eae87e9b21c81cf645c642d2043d4c
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957288"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821892"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorowanie usług platformy Azure w narzędzia Grafana
 Usługi platformy Azure i aplikacje od teraz można również monitorować [Grafana](https://grafana.com/) przy użyciu [wtyczki źródła danych usługi Azure Monitor](https://grafana.com/plugins/grafana-azure-monitor-datasource). Wtyczka zbiera dane dotyczące wydajności aplikacji zbierane przez zestaw SDK usługi Application Insights, a także dane infrastruktury udostępniane przez usługi Azure Monitor. Następnie można wyświetlić te dane na pulpicie nawigacyjnym Grafana.
@@ -128,4 +128,4 @@ Opłaty są naliczane, gdy maszyny wirtualne są uruchomione, czy używasz ich l
 2. Na stronie grupy zasobów, kliknij przycisk **Usuń**, typ **Grafana** w polu tekstowym, a następnie kliknij przycisk **Usuń**.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Przegląd metryk usługi Azure Monitor](../monitoring/monitoring-data-collection.md)
+* [Przegląd metryk usługi Azure Monitor](../azure-monitor/platform/data-collection.md)

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: f42e7c2e564f660df1e88c63c00a9f04db7c8116
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d62559561bf7e8e2dc2a882543d7fa7fc45a7499
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240107"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821093"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD
 
@@ -84,7 +84,7 @@ Etap 1 planu koncentruje się na krytyczne zadania, które są szybkie i łatwe 
 
 Jeśli usługi Azure AD Privileged Identity Management (PIM) nie została już włączona, zrób to w ramach dzierżawy w środowisku produkcyjnym. Po włączeniu Privileged Identity Management otrzymasz powiadomienie e-mail wiadomości do uprzywilejowanego dostępu zmiany roli. Te powiadomienia stanowić wczesne ostrzeżenie, po dodaniu dodatkowych użytkowników do wysoce uprzywilejowanych ról w katalogu.
 
-Usługa Azure AD Privileged Identity Management znajduje się w usłudze Azure AD Premium P2 lub EMS E5. Te rozwiązania pomóc w ochronie dostępu do aplikacji i zasobów w środowisku lokalnym i w chmurze. Jeśli nie jest jeszcze P2 usługi Azure AD Premium lub EMS E5 i chcesz ocenić więcej funkcji, do którego odwołuje się ten przewodnik, należy zasubskrybować [Enterprise Mobility + Security bezpłatna 90-dniowa wersja próbna](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial). Do wypróbowania usługi Azure AD Privileged Identity Management i Azure AD Identity Protection, aby monitorować działania przy użyciu usługi Azure AD, zaawansowane raportowanie zabezpieczeń, inspekcjom oraz alertom, należy użyć wersji próbnych tych licencji.
+Usługa Azure AD Privileged Identity Management znajduje się w usłudze Azure AD Premium P2 lub EMS E5. Te rozwiązania pomóc w ochronie dostępu do aplikacji i zasobów w środowisku lokalnym i w chmurze. Jeśli nie masz już P2 usługi Azure AD Premium lub EMS E5 ale do oceny, więcej funkcji, do którego odwołuje się ten przewodnik, należy zasubskrybować [Enterprise Mobility + Security bezpłatna 90-dniowa wersja próbna](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial). Do wypróbowania usługi Azure AD Privileged Identity Management i Azure AD Identity Protection, aby monitorować działania przy użyciu usługi Azure AD, zaawansowane raportowanie zabezpieczeń, inspekcjom oraz alertom, należy użyć wersji próbnych tych licencji.
 
 Po zakończeniu włączono usługi Azure AD Privileged Identity Management:
 
@@ -102,7 +102,7 @@ Pierwszą osobą, która do użycia usługi Azure AD Privileged Identity Managem
 
 Po włączeniu usługi Azure AD Privileged Identity Management, należy wyświetlić użytkowników, którzy znajdują się w role katalogu, administratorem globalnym, administratorem ról uprzywilejowanych, administrator usługi Exchange Online i administrator usługi SharePoint Online. Jeśli nie masz usługi Azure AD PIM w Twojej dzierżawie, możesz użyć [interfejs API środowiska PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0). Uruchomić z rolą administratora globalnego, ponieważ ta rola jest ogólny: użytkownik, który jest przypisany do tej roli Administrator ma te same uprawnienia dla wszystkich usług w chmurze dla których zostały zasubskrybowane przez organizację, niezależnie od tego, czy są już przypisane tej roli w portalu usługi Office 365 , Azure portal, lub przy użyciu modułu Azure AD dla programu Microsoft PowerShell. 
 
-Usuń wszelkie konta, które nie są już potrzebne w ramach tych ról, a skategoryzować pozostałe konta, które są przypisane do ról administratora:
+Usuń wszelkie konta, które nie są już potrzebne w ramach tych ról. Następnie skategoryzować pozostałe konta, które są przypisane do ról administratora:
 
 * Indywidualnie przypisane do użytkowników administracyjnych i może również służyć do celów innych niż administracyjne (na przykład osobistego adresu e-mail)
 * Indywidualnie przypisane do użytkowników administracyjnych i przeznaczone wyłącznie do celów administracyjnych
@@ -113,7 +113,7 @@ Usuń wszelkie konta, które nie są już potrzebne w ramach tych ról, a skateg
 
 #### <a name="define-at-least-two-emergency-access-accounts"></a>Zdefiniuj co najmniej dwóch kont dostępu awaryjnego 
 
-Upewnij się, że nie masz w sytuacji, gdzie one można zostanie przypadkowo zablokowana administrowanie dzierżawą usługi Azure AD z powodu braku możliwości, zaloguj się lub aktywować istniejące poszczególne konta z uprawnieniami administratora. Na przykład jeśli organizacja jest sfederowana do środowiska lokalnego dostawcy tożsamości, to tego dostawcy tożsamości może być niedostępny, dzięki czemu użytkownicy nie zalogować się w środowisku lokalnym. Za łagodzenia skutków przypadkowego braku dostępu administracyjnego przez zapisanie co najmniej dwóch kont dostępu awaryjnego w dzierżawie.
+Upewnij się, że nie uzyskasz w sytuacji, gdzie one można zostanie przypadkowo zablokowana administrowanie dzierżawą usługi Azure AD z powodu braku możliwości, zaloguj się lub aktywować istniejące poszczególne konta z uprawnieniami administratora. Na przykład jeśli organizacja jest sfederowana do środowiska lokalnego dostawcy tożsamości, to tego dostawcy tożsamości może być niedostępny, dzięki czemu użytkownicy nie zalogować się w środowisku lokalnym. Za łagodzenia skutków przypadkowego braku dostępu administracyjnego przez zapisanie co najmniej dwóch kont dostępu awaryjnego w dzierżawie.
 
 Kont dostępu awaryjnego pomagają organizacjom ograniczenie dostępu uprzywilejowanego w istniejącym środowisku usługi Azure Active Directory. Te konta są wysoce uprzywilejowane i nie są przypisane do konkretnych osób. Kont dostępu awaryjnego są ograniczone do awaryjnego w scenariuszach "break szkła", gdy nie można użyć normalnego konta z uprawnieniami administracyjnymi. Organizacje muszą zapewnić w celu kontrolowania i ograniczania użycia konta dostępu awaryjnego tylko tego czasu, dla których konieczne jest. 
 
@@ -127,11 +127,11 @@ Usługi Azure Multi-Factor Authentication (MFA) jest wymagany co logowania dla w
 
 ![Etap 2](./media/directory-admin-roles-secure/stage-two.png)
 
-Etap 2 planu koncentruje się na łagodzenia na najczęściej używane techniki ataku z kradzieżą poświadczeń i nadużyciami i jest przeznaczony do implementacji w około 2 – 4 tygodnie. Ten etap planu zabezpieczone dostępu uprzywilejowanego obejmuje następujące czynności.
+Etap 2 koncentruje się plan na łagodzenia często najczęściej używane techniki ataku z kradzieżą poświadczeń i nadużyciami i może być implementowany w około 2 – 4 tygodnie. Ten etap planu zabezpieczone dostępu uprzywilejowanego obejmuje następujące czynności.
 
 ### <a name="general-preparation"></a>Przygotowanie
 
-#### <a name="conduct-a-inventory-of-services-owners-and-admins"></a>Przeprowadź spis usług, właściciele i Administratorzy
+#### <a name="conduct-an-inventory-of-services-owners-and-admins"></a>Przeprowadź spis usług, właściciele i Administratorzy
 
 Wraz ze wzrostem w bring-your własne urządzenie (BYOD) i Praca z domu zasad i wzrost łączności bezprzewodowej w firmach ważne jest monitorowanie łączącego się z siecią. Audyt efektywnym elementem systemu zabezpieczeń często ujawnia urządzeń, aplikacji i programów działających w sieci, które nie są obsługiwane przez IT i w związku z tym potencjalnie nie bezpieczne. Aby uzyskać więcej informacji, zobacz [zabezpieczeń platformy Azure, zarządzania i monitorowania — omówienie](../../security/security-management-and-monitoring-overview.md). Upewnij się, Uwzględnij wszystkie z następujących czynności w procesie spisu. 
 
@@ -337,7 +337,7 @@ Oprócz zarządzania konta uprzywilejowanego dostępu, zaleca się, że zostały
 * Tylko udzielić dostępu uprzywilejowanego w razie i usunąć go później (just-in-time).
 * Zatrzymuje i przejrzyj działania inspekcji odnoszących się do kont uprzywilejowanych.
 
-Aby uzyskać więcej informacji dotyczących tworzenia pełnego planu zabezpieczeń, zobacz [IT architektury zasobów w chmurze firmy Microsoft](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Aby uzyskać więcej informacji dotyczących angażowania usług firmy Microsoft na potrzeby z dowolnym z tych tematów, skontaktuj się z przedstawicielem handlowym firmy Microsoft, lub zobacz [twórz krytyczne cybernetycznymi mechanizmów obronnych w celu Chroń swoje przedsiębiorstwo](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx).
+Aby uzyskać więcej informacji dotyczących tworzenia pełnego planu zabezpieczeń, zobacz [IT architektury zasobów w chmurze firmy Microsoft](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Aby uzyskać więcej informacji dotyczących angażowania usług firmy Microsoft na potrzeby z dowolnym z tych tematów, skontaktuj się z przedstawicielem handlowym firmy Microsoft, lub zobacz [twórz krytyczne cybernetycznymi mechanizmów obronnych w celu Chroń swoje przedsiębiorstwo](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
 
 Ten końcowy etap trwającą planu zabezpieczone uprzywilejowanego dostępu obejmuje następujące składniki.
 

@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 11/12/2018
-ms.openlocfilehash: 43db0e66c05b6b5c3331d3fba3e4db363d61c9f8
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 195a54ab65573a24911169b7dc42de7637ad60f9
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624356"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823813"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>Rozszerzenia PostgreSQL w usłudze Azure Database for PostgreSQL
 PostgreSQL zapewnia możliwość rozszerzania funkcji bazy danych za pomocą rozszerzeń. Rozszerzenia umożliwiają grupowanie wielu powiązanych obiektów SQL razem w jednym pakiecie, który można załadować lub usunięte z bazy danych za pomocą jednego polecenia. Po ładowany w bazie danych rozszerzenia może działać tak jak wbudowane funkcje. Aby uzyskać więcej informacji na temat rozszerzenia PostgreSQL, zobacz [pakowania powiązanych obiektów w rozszerzeniu](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
@@ -89,6 +89,7 @@ W poniższej tabeli wymieniono standardowego rozszerzenia PostgreSQL, które są
 | [pgstattuple](https://www.postgresql.org/docs/9.6/static/pgstattuple.html) | Zapewnia to do wyświetlania statystyki na poziomie spójnej kolekcji. |
 | [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | Otoka obcych danych umożliwiają dostęp do danych przechowywanych w zewnętrznych serwerów PostgreSQL. |
 | [hypopg](https://hypopg.readthedocs.io/en/latest/) | Umożliwia tworzenie indeksów hipotetycznych, które nie koszt procesora CPU lub dysk. |
+| [dblink](https://www.postgresql.org/docs/current/dblink.html) | Moduł, który obsługuje połączenia do innych baz danych PostgreSQL z w ramach sesji bazy danych. |
 
 
 ### <a name="postgis-extensions"></a>Rozszerzenia PostGIS

@@ -15,16 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: mareat
-ms.openlocfilehash: e375476536e7fe150e3aabcae7cee942deac02d5
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 9e408b45f47cb86191628916124611735f374d9e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059614"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819038"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Zarządzanie i analizować dzienniki przepływu sieciowych grup zabezpieczeń przy użyciu usługi Network Watcher i Grafana
 
 [Grupy zabezpieczeń (NSG) dzienników przepływu sieci](network-watcher-nsg-flow-logging-overview.md) zawierają informacje, który może służyć do zrozumienia przychodzący i wychodzący ruch IP w interfejsach sieciowych. Te dzienniki przepływu Pokaż przepływy wychodzące i przychodzące na poszczególnych reguł sieciowej grupy zabezpieczeń, karty Sieciowej przepływ ma zastosowanie do 5-elementowych informacji o przepływie (źródłowy/docelowy adres IP, Port źródłowy i docelowy, Protocol), a jeśli zezwolenie lub odrzucenie ruchu sieciowego.
+
+> [!Warning]  
+> Poniższe kroki pracy z dzienników przepływu w wersji 1. Aby uzyskać więcej informacji, zobacz [wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md). Poniższe instrukcje nie będzie działać w wersji 2 pliki dziennika, bez żadnych modyfikacji.
 
 Masz liczby sieciowych grup zabezpieczeń w sieci za pomocą funkcji rejestrowania przepływu włączone. Tę kwotę rejestrowania danych sprawia, że kłopotliwe przeanalizować oraz uzyskiwanie szczegółowych informacji z dzienników. Ten artykuł zawiera rozwiązanie, aby centralnie zarządzać tych dzienników przepływu sieciowych grup zabezpieczeń przy użyciu platformy Grafana, typu open source Tworzenie wykresów narzędzia, usługi ElasticSearch, wyszukiwania rozproszonego i aparat analityczny i Logstash, który jest potok przetwarzania danych po stronie serwera "open source".  
 

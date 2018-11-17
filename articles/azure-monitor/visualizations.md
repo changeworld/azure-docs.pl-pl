@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: e44d267fcc9986c5e215fc4844f49b28918a3111
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.openlocfilehash: 2fff332665652516e4ac25c4eb1a4612c15e2412
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711926"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824680"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Wizualizowanie danych z usługi Azure Monitor
-Ten artykuł zawiera podsumowanie dostępnych metod w celu wizualizacji danych przechowywanych w usłudze Azure Monitor. Obejmuje to [metryki w magazynie Azure metryki](../monitoring/monitoring-data-collection.md#metrics) i [rejestrować dane w usłudze Log Analytics](../monitoring/monitoring-data-collection.md#logs). 
+Ten artykuł zawiera podsumowanie dostępnych metod w celu wizualizacji danych przechowywanych w usłudze Azure Monitor. Obejmuje to [metryki w magazynie Azure metryki](../azure-monitor/platform/data-collection.md#metrics) i [rejestrować dane w usłudze Log Analytics](../azure-monitor/platform/data-collection.md#logs). 
 
 Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitorowania, aby przejść do szczegółów problemów i zidentyfikować wzorce. W zależności od używanego narzędzia może również mieć możliwość udostępniać wizualizacje innym użytkownikom w organizacji i poza nią.
 
@@ -138,7 +138,7 @@ Można uzyskać dostęp do danych metryk platformy Azure i usługi Log Analytics
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [dane zebrane przez usługi Azure Monitor](../monitoring/monitoring-data-collection.md).
+- Dowiedz się więcej o [dane zebrane przez usługi Azure Monitor](../azure-monitor/platform/data-collection.md).
 - Dowiedz się więcej o [pulpitów nawigacyjnych platformy Azure](../azure-portal/azure-portal-dashboards.md).
 - Dowiedz się więcej o [widoków w usłudze Azure Monitor](../log-analytics/log-analytics-view-designer.md).
 - Dowiedz się więcej o [skoroszytów w usłudze Application Insights](../application-insights/app-insights-usage-workbooks.md).

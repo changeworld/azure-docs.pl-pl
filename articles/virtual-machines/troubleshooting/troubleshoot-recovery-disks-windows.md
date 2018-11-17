@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 5d052a1f8dcb67c6ea96d1bb4cde4de38e540cf4
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1dd529b142de9815ed41f68bc9b60cdda5d47612
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413917"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820056"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Rozwiązywanie problemów z maszyny Wirtualnej z systemem Windows, dołączając dysk systemu operacyjnego do odzyskiwania maszyny Wirtualnej przy użyciu programu Azure PowerShell
 Windows maszyny wirtualnej (VM) na platformie Azure napotka błąd rozruchu lub dysk, może być konieczne wykonanie kroków rozwiązywania problemów na dysku. Typowym przykładem może być Niepowodzenie aktualizacji aplikacji, która uniemożliwia maszynie Wirtualnej możliwość wykonania rozruchu pomyślnie. W tym artykule szczegółowo przedstawiono sposób podłącz dysk do innej Windows maszyny Wirtualnej, aby naprawić wszystkie błędy, a następnie napraw oryginalną maszynę Wirtualną za pomocą programu Azure PowerShell. 
@@ -236,10 +236,10 @@ Stop-AzureRmVM -ResourceGroupName myResourceGroup -Name $vm.Name -Force
 $disk = Get-AzureRmDisk -ResourceGroupName myResourceGroup -Name newDisk
 
 # Set the VM configuration to point to the new disk  
-Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $disk.Id -Name $disk.Name 
+Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $disk.Id -Name $disk.Name  -sto
 
-# Update the VM with the new OS disk
-Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm 
+# Update the VM with the new OS disk. Possible values of StorageAccountType include: 'Standard_LRS' and 'Premium_LRS'
+Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm -StorageAccountType <Type of the storage account >
 
 # Start the VM
 Start-AzureRmVM -Name $vm.Name -ResourceGroupName myResourceGroup

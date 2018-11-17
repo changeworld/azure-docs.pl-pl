@@ -12,77 +12,23 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/08/2018
+ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 7a80693090b92db55ad2feed52fdbb2a455e3c39
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3186d580918d7451317ae58cac270556509c6e3e
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884497"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854343"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosowywanie ustawień klastra usługi Service Fabric
-W tym artykule opisano sposób dostosowywania różne ustawienia sieci szkieletowej klastra usługi Service Fabric. W przypadku klastrów hostowanych na platformie Azure, można dostosować ustawienia za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager. W przypadku autonomicznych klastrów możesz dostosować ustawienia aktualizowania pliku ClusterConfig.json, a następnie wykonać uaktualnienie konfiguracji w klastrze. 
+W tym artykule opisano różne ustawienia sieci szkieletowej klastra usługi Service Fabric, którą można dostosować. W przypadku klastrów hostowanych na platformie Azure, można dostosować ustawienia za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Uaktualnij konfigurację klastra usługi Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych dostosować ustawienia, aktualizując *ClusterConfig.json* plików i przeprowadzania konfiguracji uaktualnienia w klastrze. Aby uzyskać więcej informacji, zobacz [uaktualnić konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
 
-> [!NOTE]
-> Nie wszystkie ustawienia są dostępne w portalu. W przypadku, gdy ustawienie wymienione poniżej nie jest dostępna za pośrednictwem portalu dostosować ją przy użyciu szablonu usługi Azure Resource Manager.
-> 
-
-## <a name="description-of-the-different-upgrade-policies"></a>Opis różnych zasad uaktualniania
+Istnieją trzy różne zasady uaktualniania:
 
 - **Dynamiczne** — zmiany w konfiguracji dynamicznej nie powodują ponowne uruchomienia procesu usługi Service Fabric procesy lub procesy hosta usługi. 
 - **Statyczne** — zmiany w konfiguracji statycznej spowoduje, że węzeł usługi Service Fabric, aby ponowne uruchomienie w celu korzystania z zmiany. Usługi w węzłach zostanie ponownie uruchomiona.
 - **NotAllowed** — nie można modyfikować tych ustawień. Zmiana tych ustawień wymaga zniszczone klastra i utworzyć nowy klaster. 
-
-## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Dostosowywanie ustawień klastra przy użyciu szablonów usługi Resource Manager
-Poniższe kroki pokazują, jak dodać nowe ustawienie *MaxDiskQuotaInMB* do *diagnostyki* sekcji przy użyciu usługi Azure Resource Explorer.
-
-1. Przejdź do strony https://resources.azure.com
-2. Przejdź do swojej subskrypcji, rozwijając **subskrypcje** -> **\<Twoja subskrypcja >** -> **resourceGroups**  ->   **\<Your grupa zasobów >** -> **dostawców** -> **Microsoft.ServiceFabric**  ->  **klastrów** -> **\<Your Nazwa_klastra >**
-3. W prawym górnym rogu, wybierz **odczytu/zapisu.**
-4. Wybierz **Edytuj** i zaktualizuj `fabricSettings` elementu JSON i Dodaj nowy element:
-
-```json
-      {
-        "name": "Diagnostics",
-        "parameters": [
-          {
-            "name": "MaxDiskQuotaInMB",
-            "value": "65536"
-          }
-        ]
-      }
-```
-
-Można również dostosować ustawienia klastra w jednym z następujących sposobów przy użyciu usługi Azure Resource Manager:
-
-- Użyj [witryny Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template) do eksportowania i aktualizowanie szablonu Menedżera zasobów.
-- Użyj [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) do wyeksportowania, a następnie zaktualizować szablon usługi Resource Manager.
-- Użyj [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) do wyeksportowania, a następnie zaktualizować szablon usługi Resource Manager.
-- Użyj usługi Azure RM PowerShell [AzureRmServiceFabricSetting zestaw](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Set-AzureRmServiceFabricSetting) i [AzureRmServiceFabricSetting Usuń](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Remove-AzureRmServiceFabricSetting) polecenia, aby zmodyfikować ustawienia bezpośrednio.
-- Użyj wiersza polecenia platformy Azure [az sf klastra ustawienie](https://docs.microsoft.com/cli/azure/sf/cluster/setting) polecenia, aby zmodyfikować ustawienia bezpośrednio.
-
-## <a name="customize-cluster-settings-for-standalone-clusters"></a>Dostosuj ustawienia klastra dla autonomicznych klastrów
-Autonomiczne klastry są skonfigurowane przy użyciu pliku ClusterConfig.json. Aby dowiedzieć się więcej, zobacz [ustawienia konfiguracji dla autonomicznego klastra Windows](./service-fabric-cluster-manifest.md).
-
-Dodawanie, aktualizowanie lub Usuń ustawienia w `fabricSettings` sekcji [właściwości klastra](./service-fabric-cluster-manifest.md#cluster-properties) sekcji ClusterConfig.json. 
-
-Na przykład następujące dane JSON dodaje nowe ustawienie *MaxDiskQuotaInMB* do *diagnostyki* sekcji `fabricSettings`:
-
-```json
-      {
-        "name": "Diagnostics",
-        "parameters": [
-          {
-            "name": "MaxDiskQuotaInMB",
-            "value": "65536"
-          }
-        ]
-      }
-```
-
-Po zmodyfikowaniu ustawień w pliku ClusterConfig.json, postępuj zgodnie z instrukcjami [Uaktualnij konfigurację klastra](./service-fabric-cluster-upgrade-windows-server.md#upgrade-the-cluster-configuration) do zastosowania ustawień do klastra. 
-
 
 Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dostosować, uporządkowane według sekcji.
 
@@ -867,7 +813,4 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |X509StoreName | ciąg, domyślnie jest "Mój"|Dynamiczny|X509StoreName dla UpgradeService. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-Przeczytaj następujące artykuły, aby uzyskać więcej informacji na temat zarządzania klastrem:
-
-[Dodawanie, przechodzą, Usuń certyfikaty z klastrem platformy Azure ](service-fabric-cluster-security-update-certs-azure.md) 
-
+Aby uzyskać więcej informacji, zobacz [Uaktualnij konfigurację klastra usługi Azure](service-fabric-cluster-config-upgrade-azure.md) i [uaktualnić konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).

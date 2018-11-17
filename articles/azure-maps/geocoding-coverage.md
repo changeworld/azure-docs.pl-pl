@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d7c1eaa26edef830ca156eef943fcb256d737d77
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 3ab0edf4483763c1048b7026175ddce821624ac0
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989881"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821110"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Pokrycie geokodowaniem usługi Azure Maps
 
@@ -134,7 +134,7 @@ Podczas wyszukiwania lokalizacji za pomocą usługi Azure Maps, Usługa wyszukiw
 | Tajlandia                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Tokelau                                             |                 |                |              |      ✓     |          ✓         |
 | Tonga                                               |                 |                |              |      ✓     |          ✓         |
-| Turks i Caicos                            |                 |                |              |      ✓     |          ✓         |
+| Wyspy Turks i Caicos                            |                 |                |              |      ✓     |          ✓         |
 | Tuvalu                                              |                 |                |              |      ✓     |          ✓         |
 | Vanuatu                                             |                 |                |              |      ✓     |          ✓         |
 | Wietnam                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -152,10 +152,10 @@ Podczas wyszukiwania lokalizacji za pomocą usługi Azure Maps, Usługa wyszukiw
 | Belgia                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Bośnia i Hercegowina                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Bułgaria                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Belerus|                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Białoruś|                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Chorwacja                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Cypr                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Republika Czeska                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Czechy                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Dania                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Estonia                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Wyspy Owcze                                       |                 |                |              |      ✓     |          ✓         |
@@ -247,7 +247,7 @@ Podczas wyszukiwania lokalizacji za pomocą usługi Azure Maps, Usługa wyszukiw
 | Kenia                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Kuwejt                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Liban                                             |                 |                |       ✓      |      ✓     |          ✓         |
-| Lesoto                                             |                 |                |       ✓      |      ✓     |          ✓         |
+| Lesotho                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Liberia                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Libia|                 |                |       ✓      |      ✓     |          ✓         |
 | Madagaskar                                          |                 |                |       ✓      |      ✓     |          ✓         |
@@ -257,10 +257,10 @@ Podczas wyszukiwania lokalizacji za pomocą usługi Azure Maps, Usługa wyszukiw
 | Wyspy Marshalla |                 |                |              |      ✓     |          ✓         |
 | Mauretania                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Mauritius                                           |                 |                |       ✓      |      ✓     |          ✓         |
-| Majotta                                             |                 |                |       ✓      |      ✓     |          ✓         |
+| Wyspa Majotta                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Maroko                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Mozambik                                          |                 |                |       ✓      |      ✓     |          ✓         |
-| Mjanma                                             |                 |                |              |      ✓     |          ✓         |
+| Myanmar                                             |                 |                |              |      ✓     |          ✓         |
 | Namibia                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Niger                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Nigeria                                             |                 |                |       ✓      |      ✓     |          ✓         |

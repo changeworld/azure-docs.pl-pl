@@ -1,10 +1,11 @@
 ---
-title: Pojemność Machine Learning partii wykonywania usługi zadań w wersji dedykowanej | Dokumentacja firmy Microsoft
-description: Omówienie usług partii zadań Azure Machine Learning zadań.
+title: W wersji dedykowanej pojemności dla zadania usług wykonywania wsadowego Learning maszyny | Dokumentacja firmy Microsoft
+description: Omówienie usługi Azure Batch dla zadania uczenia maszynowego.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.service: machine-learning
@@ -14,45 +15,45 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 1e4cf34582e28e00108e280d928eea8a8134699a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6a8c89428026a1c491e8a4d26c7d66b99fd2e8cd
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834529"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822640"
 ---
-# <a name="azure-batch-service-for-machine-learning-jobs"></a>Azure usługa partia zadań dla zadania uczenia maszynowego
+# <a name="azure-batch-service-for-machine-learning-jobs"></a>Usługa Azure Batch dla zadań usługi Machine Learning
 
-Machine Learning puli partii przetwarzania zapewnia skalowalnego zarządzany przez klienta dla usługi Azure Machine Learning partii wykonywania. Przetwarzanie wsadowe klasycznego uczenia maszynowego odbywa się w środowisku wielodostępnym ogranicza liczbę współbieżnych zadań możesz mogą przesyłać i na podstawie pierwszego w pierwszym poza są kolejkowane zadania. Ta niedokładność oznacza, że nie można dokładnie przewidzieć uruchomienia zadania.
+Machine Learning Batch Pool przetwarzania zapewnia skalowanie zarządzanych przez klienta usługa wykonywania wsadowego usługi Azure Machine Learning. Przetwarzanie wsadowe klasycznego uczenia maszynowego odbywa się w środowisku z wieloma dzierżawami, która ogranicza liczbę równoczesnych zadań możesz przesłać, a zadania są umieszczane w kolejce na podstawie pierwszego wejściu — pierwszy na wyjściu. Niepewności oznacza, że nie można dokładnie przewidzieć, kiedy zadanie zostanie wykonane.
 
-Przetwarzanie wsadowe puli służy do tworzenia pul, na których można przesłać zadania wsadowe. Możesz kontrolować rozmiar puli, a do puli, które przesyłania zadania. Uruchamia zadanie BES w jego własnej przestrzeni przetwarzania przetwarzania przewidywalną wydajność i może tworzyć pule zasobów, które odpowiadają obciążenia przetwarzania, które można przesłać.
+Przetwarzanie puli usługi Batch pozwala na tworzenie pul, na których można przesłać zadania usługi batch. Możesz kontrolować rozmiar puli i do której puli przesyłania zadania. Uruchamia zadanie usługi BES w własną przestrzeń przetwarzanie, przetwarzanie przewidywalną wydajność i zdolność do tworzenia pul zasobów, odpowiadające obciążenie przetwarzania, która zostanie przesłana.
 
-## <a name="how-to-use-batch-pool-processing"></a>Jak używać przetwarzania wsadowego puli
+## <a name="how-to-use-batch-pool-processing"></a>Jak używać przetwarzania puli usługi Batch
 
-Przetwarzanie wsadowe puli konfiguracji nie jest obecnie dostępna za pośrednictwem portalu Azure. Aby użyć przetwarzania wsadowego puli, musisz:
+Konfiguracja przetwarzania puli usługi Batch jest obecnie dostępna za pośrednictwem witryny Azure portal. Aby użyć przetwarzania puli usługi Batch, musisz mieć:
 
--   Wywołaj CSS w celu utworzenia konta puli partii i uzyskiwanie adresu URL usługi puli i klucza autoryzacji
+-   Wywołaj CSS, aby utworzyć konto puli usługi Batch i uzyskać adres URL usługi puli i klucza autoryzacji
 -   Tworzenie nowego Menedżera zasobów na podstawie usługi sieci web i plan rozliczeniowy
 
-Aby utworzyć konto, wywołaj obsługi klienta firmy Microsoft i pomocy technicznej (CSS) i podaj identyfikator subskrypcji. CSS będzie działać z Tobą w celu ustalenia odpowiednich pojemności dla danego scenariusza. CSS skonfiguruje konto z maksymalną liczbę zestawów, które można utworzyć i maksymalną liczbę maszyn wirtualnych (VM), które można umieścić w każdej puli. Po skonfigurowaniu konta podano adres URL usługi puli i klucza autoryzacji.
+Aby utworzyć konto, wywołaj dział obsługi klienta firmy Microsoft i pomocy technicznej (CSS) i podaj identyfikator subskrypcji. CSS będzie działać z Tobą ustalimy odpowiednią pojemność dla danego scenariusza. CSS, następnie konfiguruje Twoje konto za pomocą maksymalna liczba pul, które można tworzyć i maksymalną liczbę maszyn wirtualnych (VM), które można umieścić w każdej puli. Po skonfigurowaniu konta podano adres URL Twojej puli usługi i klucza autoryzacji.
 
-Po utworzeniu konta służy do wykonywania operacji zarządzania w puli na pulę partii klucz puli adres URL usługi i autoryzacji.
+Po utworzeniu konta adresu URL usługi puli i autoryzacji klucz został użyty do wykonywania operacji zarządzania w puli w puli usługi Batch.
 
-![Architektura usługi puli partii.](./media/dedicated-capacity-for-bes-jobs/pool-architecture.png)
+![Architektura usługi puli usługi Batch.](./media/dedicated-capacity-for-bes-jobs/pool-architecture.png)
 
-Pule można utworzyć przez wywołanie operacji tworzenia puli na adres URL usługi puli otrzymany od CSS. Podczas tworzenia puli określić usługi sieci web Machine Learning na podstawie liczby maszyn wirtualnych i adres URL swagger.json nowego Menedżera zasobów. Ta usługa sieci web podano związek rozliczeń. Usługa puli partii używa swagger.json pulę można skojarzyć z plan rozliczeniowy. Można uruchamiać żadnych BES usługi sieci web, zarówno nowego Menedżera zasobów na podstawie i klasyczne, wybierz w puli.
+Można utworzyć pule przez wywołanie operacji Utwórz pulę na adres URL usługi puli, otrzymany od CSS. Podczas tworzenia puli Określ liczbę maszyn wirtualnych i adres URL swagger.json nowego Menedżera zasobów na podstawie usługi sieci web Machine Learning. Ta usługa sieci web znajduje się związek rozliczeń. Usługa Batch Pool używa swagger.json można skojarzyć z planem rozliczeniowym. Wszystkie usługi BES można uruchomić usługi sieci web, zarówno nowego Menedżera zasobów, na podstawie i klasyczne, wybierz w puli.
 
-Można używać nowego Menedżera zasobów na podstawie usługi sieci web, ale należy pamiętać, że rozliczeń dla zadań są powiązane z plan rozliczeniowy skojarzone z tą usługą. Można utworzyć usługi sieci web i nowy plan rozliczeniowy specjalnie z myślą o uruchomionych puli partii zadań.
+Może korzystać dowolna usługa sieci web opartych na nowe Resource Manager, ale należy pamiętać, czy naliczania opłat za zadania są naliczane względem planu rozliczeniowego skojarzone z tą usługą. Można tworzyć usługi sieci web i nowy plan rozliczeniowy specjalnie do uruchamiania zadań puli usługi Batch.
 
 Aby uzyskać więcej informacji na temat tworzenia usług sieci web, zobacz [wdrażanie usługi sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md).
 
-Po utworzeniu puli można przesłać zadania usługi BES, usługi sieci web przy użyciu adresu URL żądania wsadowego. Można przesłać je do puli lub przetwarzania wsadowego klasycznego. Aby przesłać zadanie do puli partii przetwarzania, należy dodać następujący parametr treści żądania przesłania zadania:
+Po utworzeniu puli, możesz przesłać zadanie usługi BES usługi sieci web przy użyciu adresu URL żądania wsadowego. Można go przesłać do puli lub przetwarzanie wsadowe klasycznego. Do treści żądania przesłania zadania, aby przesłać zadanie do puli usługi Batch z przetwarzaniem, Dodaj następujący parametr:
 
 "AzureBatchPoolId":"&lt;pool ID&gt;"
 
-Jeśli parametr nie zostanie dodany, zadanie jest uruchamiane w środowisku procesu wsadowego klasycznego. Jeśli pula zawiera dostępnych zasobów, zadanie uruchamiania natychmiast. Pula nie ma wolnego zasobów, zadanie jest w kolejce do momentu zasób jest dostępny.
+Jeśli nie dodasz parametru, zadanie zostanie uruchomione w środowisku procesu klasycznej usługi batch. Jeśli pula zawiera dostępnych zasobów, zadanie zostanie uruchomione działanie od razu. Jeśli pula nie ma bezpłatnych zasobów, zadania znajduje się w kolejce do momentu zasób jest dostępny.
 
-Jeśli okaże się regularnie osiągnąć pojemności z pulami, czy należy zwiększenia wydajności, można wywołać CSS i pracować z przedstawicielem w celu zwiększenia przydziałami.
+Jeśli okaże się, że regularnie dotrzeć do pojemności w pulach i wymaga zwiększenia pojemności, można wywołać CSS i pracować z przedstawicielem, aby zwiększyć limity przydziału.
 
 Przykładowe żądanie:
 
@@ -97,19 +98,19 @@ https://ussouthcentral.services.azureml.net/subscriptions/80c77c7674ba4c8c82294c
 }
 ```
 
-## <a name="considerations-when-using-batch-pool-processing"></a>Uwagi dotyczące korzystania z przetwarzania wsadowego puli
+## <a name="considerations-when-using-batch-pool-processing"></a>Uwagi dotyczące korzystania z przetwarzania w puli usługi Batch
 
-Przetwarzanie wsadowe puli jest zawsze rozliczeniowy usługi i który należy skojarzyć go z Menedżera zasobów na podstawie plan rozliczeniowy. Rozliczenie jest przeprowadzane tylko dla liczby godzin obliczeń puli jest uruchomiony; niezależnie od liczby zadania są uruchamiane w tej puli czasu. Po utworzeniu puli rozliczenie jest godziny obliczeniowe poszczególnych maszyn wirtualnych w puli do czasu usunięcia puli nawet wtedy, gdy są uruchomione żadne zadania wsadowego w puli. Rozliczeń dla maszyn wirtualnych rozpoczyna się po zakończeniu ich inicjowania obsługi administracyjnej i zatrzymywana, gdy zostały usunięte. Można użyć dowolnego z planami na [Machine Learning — cennik strony](https://azure.microsoft.com/pricing/details/machine-learning/).
+Przetwarzanie puli usługi Batch jest zawsze na płatne usługi i który, musisz skojarzyć go z Menedżera zasobów na podstawie planu rozliczeniowego. Rozliczenie jest przeprowadzane tylko przez liczbę godzin obliczeniowych, na którym uruchomiona jest puli; bez względu na liczbę zadań, które są uruchamiane podczas tej puli czasu. W przypadku tworzenia puli możesz są rozliczane za godziny obliczeń poszczególnych maszyn wirtualnych w puli do momentu usunięcia puli nawet wtedy, gdy w puli są uruchomione żadne zadania usługi batch. Rozliczenia dla maszyn wirtualnych rozpoczyna się po zakończeniu ich inicjowania obsługi administracyjnej i zatrzymuje, gdy zostały usunięte. Możesz użyć dowolnej z planów na [Machine Learning — cennik strony](https://azure.microsoft.com/pricing/details/machine-learning/).
 
 Przykład rozliczeń:
 
-Jeśli z maszyn wirtualnych 2. Utwórz pulę partii i usuń go po 24 godzinach planu rozliczeniowego obciąża 48 godzin obliczeń; niezależnie od tego, ile zadania zostały uruchomione w tym okresie.
+Jeśli tworzenie puli usługi Batch przy użyciu 2 maszyny wirtualne i usuniesz go po 24 godzinach planu rozliczeniowego obciąża 48 godzin obliczeniowych; niezależnie od tego, ile zadania zostały uruchomione w tym okresie.
 
-Tworzenie puli partii z 4 maszynami wirtualnymi, usuń go po 12 godzinach planu rozliczeniowego jest również zaksięgowana 48 godzin obliczeń.
+Jeśli tworzenie puli usługi Batch za pomocą 4 maszyny wirtualne i usuniesz go po 12 godzin, po stronie debetowej 48 godzin obliczeniowych jest również planu rozliczeniowego.
 
-Zaleca się, że sondowania stan zadania, aby określić, po zakończeniu zadania. Po zakończeniu operacji uruchamiania wszystkich zadań mają wywołania operacji zmiany rozmiaru puli, można ustawić liczbę maszyn wirtualnych w puli na zero. Jeśli krótkich puli zasobów i należy utworzyć nową pulę, na przykład rozliczyć względem innego planu rozliczeniowego, można usunąć puli zamiast tego po wszystkich zadań zakończeniu pracy.
+Firma Microsoft zaleca, aby sondować stan zadania, aby ustalić, po zakończeniu zadania. W przypadku wszystkich zadań została zakończona uruchomiona, należy wywołać operacji zmiany rozmiaru puli, aby ustawić liczbę maszyn wirtualnych w puli do zera. Jeśli krótkich puli zasobów i należy utworzyć nową pulę, na przykład aby bill przeciwko innego planu rozliczeniowego, można usunąć puli zamiast tego po wszystkich zmian uruchamiania wszystkich zadań.
 
 
-| **Korzystanie z puli partii podczas przetwarzania**    | **Użyj klasycznego partii podczas przetwarzania**  |
+| **Używanie puli usługi Batch podczas przetwarzania**    | **Użyj klasycznego wsadowo kiedy**  |
 |---|---|
-|Musisz uruchomić dużej liczby zadań<br>Lub<br/>Musisz wiedzieć, że Twoje zadania będą uruchamiane natychmiast<br/>Lub<br/>Należy gwarantowanej przepustowości. Na przykład trzeba uruchomić liczba zadań w określonym przedziale czasu i chcesz skalować w poziomie zasoby obliczeniowe do własnych potrzeb.    | Użytkownicy korzystający z kilku zadań<br/>Oraz<br/> Nie ma potrzeby zadania, aby natychmiast uruchomić |
+|Musisz uruchomić dużej liczby zadań<br>Lub<br/>Musisz wiedzieć, że Twoje zadania będą uruchamiane natychmiast<br/>Lub<br/>Należy gwarantowaną przepływność. Na przykład należy uruchomić szereg zadań w określonym przedziale czasu, a chcesz skalować zasoby obliczeniowe, stosownie do potrzeb.    | Używasz kilku zadań<br/>Oraz<br/> Nie ma potrzeby zadań, aby natychmiast uruchomić |

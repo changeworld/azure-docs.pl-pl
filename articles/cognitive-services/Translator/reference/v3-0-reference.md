@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 243ee16f8de8add8283581c8c03a37594797864b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6f679536d69f700fd6678eb3bbbb869e42439cde
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430038"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853357"
 ---
 # <a name="translator-text-api-v30"></a>Interfejs API tekstu usługi Translator w wersji 3.0
 
@@ -135,6 +135,7 @@ Kod błędu to łączenie liczb 6-cyfrowym, 3-cyfrowy kod stanu HTTP następuje 
 | 403000| Operacja nie jest dozwolona.|
 | 403001| Operacja jest niedozwolona, ponieważ subskrypcja przekroczyła limit przydziału bezpłatnych.|
 | 405000| Metoda żądania nie jest obsługiwana dla żądanego zasobu.|
+| 408001| Żądanego systemu tłumaczenia niestandardowych nie jest jeszcze dostępna. Spróbuj ponownie za kilka minut.|
 | 415000| Nagłówek Content-Type jest brakujący lub nieprawidłowy.|
 | 429000, 429001, 429002| Serwer odrzucił żądanie, ponieważ klient wysyła zbyt wiele żądań. Zmniejsz częstotliwość żądań, aby uniknąć ograniczenia przepustowości.|
 | 500000| Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzać, zgłoś to za pomocą daty/godziny wystąpienia błędu, poproś identyfikator odpowiedzi nagłówek X-RequestId i identyfikator klienta z nagłówek żądania X-ClientTraceId.|

@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 952d8801c189322161bbf8b795676af48b92c29f
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 71e39c6430231ae8d175f9c09a9059c3da4c9a1e
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394341"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854258"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Pisanie zapytań w Eksploratorze danych platformy Azure
 
@@ -28,7 +28,7 @@ Można uruchomić zapytania, w tym artykule w jeden z dwóch sposobów:
 
 - Na własny klaster, który zawiera StormEvents przykładowych danych. Aby uzyskać więcej informacji, zobacz [Szybki Start: Tworzenie klastra Eksplorator danych platformy Azure i bazy danych](create-cluster-database-portal.md) i [pozyskiwanie danych przykładowych do Eksploratora danych usługi Azure](ingest-sample-data.md).
 
-Zestaw danych próbka StormEvents zawiera danych dotyczących pogody z [centra National informacji o środowisku](https://www.ncdc.noaa.gov/stormevents/).
+[!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
 ## <a name="overview-of-the-query-language"></a>Omówienie języka zapytań
 
@@ -97,7 +97,7 @@ StormEvents | take 5
 > [!TIP]
 > Nie ma żadnej gwarancji, które rekordy są zwracane, o ile nie są sortowane dane źródłowe.
 
-### <a name="project"></a>projekt
+### <a name="project"></a>Projekt
 
 [**Projekt**](https://docs.microsoft.com/azure/kusto/query/projectoperator): wybierze podzbiór kolumn.
 
@@ -147,7 +147,7 @@ StormEvents
 
 ### <a name="top"></a>top
 
-[**TOP**](https://docs.microsoft.com/azure/kusto/query/topoperator): zwraca pierwszy *N* rekordów posortowanych według określonych kolumn.
+[**TOP**](https://docs.microsoft.com/azure/kusto/query/topoperator): zwraca pierwszy *N* rekordów posortowanych według określonych kolumn.
 
 Następujące zapytanie zwraca te same wyniki powyżej za pomocą jednego mniej operatora.
 
@@ -473,7 +473,7 @@ MyTrace
 | project resourceName ,totalSlices , sliceNumber , lockTime , releaseTime , previousLockTime
 ```
 
-## <a name="time-series-analysis"></a>Analiza serii czasu
+## <a name="time-series-analysis"></a>Analiza szeregów czasowych
 
 ### <a name="make-series"></a>Marka serii
 
@@ -570,7 +570,7 @@ StormEvents
 
 ### <a name="dcounthll"></a>dcount_hll()
 
-[**dcount_hll()**](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): oblicza **funkcja** HyperLogLog wyników (generowany przez [ **hll** ](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction) lub [ **hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
+[**dcount_hll()**](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): oblicza **funkcja** HyperLogLog wyników (generowany przez [**hll** ](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction)   lub [**hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
 
 Następujące zapytanie używa algorytmu HLL do generowania liczby.
 
@@ -632,7 +632,7 @@ FloodDataSet
 
 ### <a name="percentiles"></a>percentiles()
 
-[**percentiles()**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): zwraca szacunkową dla określonego [ **percentyl najbliższym ranga** ](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) populacji zdefiniowany przez wyrażenie. Dokładność zależy od gęstości populacji w regionie percentyla. Można używać tylko w kontekście agregacji wewnątrz [ **Podsumuj**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator).
+[**percentiles()**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): zwraca szacunkową dla określonego [**percentyl najbliższym ranga**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) populacji zdefiniowany przez wyrażenie. Dokładność zależy od gęstości populacji w regionie percentyla. Można używać tylko w kontekście agregacji wewnątrz [**Podsumuj**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator).
 
 Następujące zapytanie oblicza percentyle czasu trwania storm.
 
@@ -685,7 +685,7 @@ LightningStorms
 
 ### <a name="join"></a>join
 
-[**sprzężenia**](https://docs.microsoft.com/azure/kusto/query/joinoperator): scalenie wierszy z dwóch tabel w celu utworzenia nowej tabeli, dopasowując wartości określone kolumny z każdej tabeli. Kusto obsługuje wiele różnych typów sprzężeń: **fullouter**, **wewnętrzny**, **innerunique**, **leftanti**, **leftantisemi** , **wartości leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter** , **rightsemi**.
+[**sprzężenia**](https://docs.microsoft.com/azure/kusto/query/joinoperator): scalenie wierszy z dwóch tabel w celu utworzenia nowej tabeli, dopasowując wartości określone kolumny z każdej tabeli. Kusto obsługuje wiele różnych typów sprzężeń: **fullouter**, **wewnętrzny**, **innerunique**, **leftanti**, **leftantisemi **, **wartości leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter **, **rightsemi**.
 
 Poniższy przykład łączy dwie tabele, w przypadku sprzężenia wewnętrznego.
 
@@ -842,7 +842,7 @@ range _day from _start to _end step 1d
 
 ### <a name="newactivitymetrics-plugin"></a>Wtyczka new_activity_metrics
 
-[**Wtyczka new_activity_metrics**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin): oblicza metryki przydatne działań (Policz różne wartości, liczności unikatowych wartości w nowe wartości, współczynnik utrzymania i współczynnik zmian danych) dla kohorty nowych użytkowników. Koncepcja ta wtyczka jest podobny do [ **wtyczki activity_metrics**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin), ale koncentruje się na nowych użytkowników.
+[**Wtyczka new_activity_metrics**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin): oblicza metryki przydatne działań (Policz różne wartości, liczności unikatowych wartości w nowe wartości, współczynnik utrzymania i współczynnik zmian danych) dla kohorty nowych użytkowników. Koncepcja ta wtyczka jest podobny do [**wtyczki activity_metrics**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin), ale koncentruje się na nowych użytkowników.
 
 Następujące zapytanie oblicza przechowywania oraz postęp dokonany w wysokości z oknem tydzień over tygodniowych dla nowej kohorty użytkowników (użytkowników, którzy już korzystać w pierwszym tygodniu).
 
@@ -902,7 +902,7 @@ StormEvents
 
 [**Wtyczka funnel_sequence_completion**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-completion-plugin): oblicza lejka ukończone sekwencji kroków w ramach różnych okresach czasu.
 
-Następujące zapytanie sprawdza lejka ukończenia sekwencji: `Hail -> Tornado -> Thunderstorm -> Wind` w "Ogólne" razy jednej godziny, cztery godziny, a jeden dzień (`[1h, 4h, 1d]`).
+Następujące zapytanie sprawdza lejka ukończenia sekwencji: `Hail -> Tornado -> Thunderstorm -> Wind` w "Ogólne" razy jednej godziny, cztery godziny, a jeden dzień (`[1h, 4h, 1d]`).
 
 **\[**[**Kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12QTYvCMBCG74L/YW6tkIV2XT9g8SjsnlvwICKhM9JAOqlJqrj4402CW0RIIB/PPLwzmjwcnZfWwwZQevKqo/yzKFYfRRnW7Hs60ZEhxjdi/UZcFaO5VuqPAjhfLvD/w9F5IG7iM95YdqrJ99mPVDoTkNXGskSTju3ASNZ5Y7t43wVhdhj9PVll0L1aylbAV9glJqyKldsLsXfTyR3oIvUQAsNpYCY95jg2puuDUhnOt71yBukXBVRxCnVoTjwnIlLX4rUzAUlf3/pEPYViDDd7AOyqowFQAQAA)**\]**
 
@@ -918,7 +918,7 @@ StormEvents
 
 ## <a name="functions"></a>Funkcje
 
-W tej sekcji omówiono [ **funkcje**](https://docs.microsoft.com/azure/kusto/query/functions): zapytania wielokrotnego użytku, które są przechowywane na serwerze. Funkcje mogą być wywoływane przez zapytania i inne funkcje (funkcji rekursywnych nie są obsługiwane).
+W tej sekcji omówiono [ **funkcje**](https://docs.microsoft.com/azure/kusto/query/functions): zapytania wielokrotnego użytku, które są przechowywane na serwerze. Funkcje mogą być wywoływane przez zapytania i inne funkcje (funkcji rekursywnych nie są obsługiwane).
 
 > [!NOTE]
 > Nie można utworzyć funkcji w klastrze help jest tylko do odczytu. W tej części, należy użyć własnego klastra testowego.

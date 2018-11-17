@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 597d94ce7be077dda6571048b560c9414ceb35ff
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
-ms.translationtype: HT
+ms.openlocfilehash: 4da893f71f3bb91ba021dcf259d20ddd72bfbf90
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705246"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821994"
 ---
 # <a name="scaling-throughput-in-azure-cosmos-db"></a>Skalowanie przepływności w usłudze Azure Cosmos DB
 
@@ -23,7 +23,7 @@ W usłudze Azure Cosmos DB, aprowizowana przepływność jest reprezentowany jak
 
 Możesz aprowizować jednostek żądań na kontener Cosmos lub bazy danych Cosmos. Jednostek ru zaprowizowanych w kontenerze jest dostępna wyłącznie dla operacji wykonywanych w tym kontenerze. Jednostek ru zaprowizowanych w bazie danych są współużytkowane przez wszystkie kontenery w ramach tej bazy danych (z wyjątkiem wszystkie kontenery z wyłącznie przypisanych RUs).
 
-Elastyczne skalowanie przepływności, można zwiększyć lub zmniejszyć aprowizowanych jednostek RU/s w dowolnym momencie. Aby uzyskać więcej informacji, zobacz [porad aprowizowanie przepływności](set-throughput.md) i elastycznie Skaluj kontenery Cosmos i baz danych. Globalnie skalowania przepływności, można dodać lub usunąć regiony na Twoim koncie Cosmos w dowolnym momencie. Aby uzyskać więcej informacji, zobacz [Dodawanie lub usuwanie regionów z Twojego konta usługi Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account). Kojarzenie wielu regionów za pomocą konta usługi Cosmos jest ważne w wielu scenariuszach uzyskanie małych opóźnień i [wysokiej dostępności](high-availability.md) na świecie.
+Elastyczne skalowanie przepływności, można zwiększyć lub zmniejszyć aprowizowanych jednostek RU/s w dowolnym momencie. Aby uzyskać więcej informacji, zobacz [porad aprowizowanie przepływności](set-throughput.md) i elastycznie Skaluj kontenery Cosmos i baz danych. Globalnie skalowania przepływności, można dodać lub usunąć regiony na Twoim koncie Cosmos w dowolnym momencie. Aby uzyskać więcej informacji, zobacz [Dodaj/Usuń regiony z Twojego konta bazy danych](how-to-manage-database-account.md#addremove-regions-from-your-database-account). Kojarzenie wielu regionów za pomocą konta usługi Cosmos jest ważne w wielu scenariuszach uzyskanie małych opóźnień i [wysokiej dostępności](high-availability.md) na świecie.
 
 ## <a name="how-provisioned-throughput-is-distributed-across-regions"></a>w jaki sposób aprowizowana przepływność jest dystrybuowane w wielu regionach
 

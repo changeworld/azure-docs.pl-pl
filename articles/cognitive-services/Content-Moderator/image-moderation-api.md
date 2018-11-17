@@ -10,16 +10,16 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 01/20/2018
 ms.author: sajagtap
-ms.openlocfilehash: 6c5fed78c67f974a2af11efd133e9a79ec52124b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 044aa9a127aa8130340719147314961ddb38167a
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219655"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852711"
 ---
 # <a name="image-moderation"></a>Moderowanie obrazów
 
-Użyj Content Moderator obraz wspomagane maszynowo Moderowanie i [narzędzie do przeglądu przez ludzi](Review-Tool-User-Guide/human-in-the-loop.md) do umiarkowanego obrazów dla dorosłych i zawartości erotycznej. Skanowanie obrazów w przypadku zawartości tekstowej i Wyodrębnij ten tekst, a wykrywanie twarzy. Można dopasować obrazów niestandardowych list i wykonywanie dodatkowych działań.
+Użyj Content Moderator obraz wspomagane maszynowo Moderowanie i [narzędzie do przeglądu człowieka w pętli](Review-Tool-User-Guide/human-in-the-loop.md) do umiarkowanego obrazów dla dorosłych i zawartości erotycznej. Skanowanie obrazów w przypadku zawartości tekstowej i Wyodrębnij ten tekst, a wykrywanie twarzy. Można dopasować obrazów niestandardowych list i wykonywanie dodatkowych działań.
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>Ocenianie zawartości dla dorosłych
 
@@ -36,8 +36,8 @@ Użyj Content Moderator obraz wspomagane maszynowo Moderowanie i [narzędzie do 
 
 > [!NOTE]
 
-> - `isImageAdultClassified` reprezentuje potencjalnych obecności obrazy, które mogą być uznane za przekleństwa jawne lub treści dla dorosłych w niektórych sytuacjach.
-> - `isImageRacyClassified` reprezentuje potencjalnych obecności obrazy, które mogą być uznane za przekleństwa dwuznaczne lub dla dorosłych w niektórych sytuacjach.
+> - Obiekt `isImageAdultClassified` reprezentuje potencjalną obecność obrazów, które mogą być uznane za seksualne lub zawierające treści dla dorosłych w niektórych sytuacjach.
+> - Obiekt `isImageRacyClassified` reprezentuje potencjalną obecność obrazów, które mogą być uznane za potencjalnie seksualne lub zawierające treści dla dorosłych w niektórych sytuacjach.
 > - Wyniki należą do zakresu od 0 do 1. Wyższą ocenę, tym większe modelu jest prognozowanie mogą dotyczyć kategorii. Ta wersja zapoznawcza opiera się na modelu statystycznych, a nie ręcznie zakodowane wyników. Zaleca się testowanie za pomocą własnej zawartości, aby określić, jak wyrównuje każdej kategorii wymagań.
 > - Wartości logiczne to wartość PRAWDA lub FAŁSZ, w zależności od wewnętrznego wynik progów. Klientów należy ocenić, czy Użyj tej wartości lub wybrać progami niestandardowymi na podstawie ich zawartości zasad.
 >
@@ -107,7 +107,7 @@ W wielu społeczności w trybie online po użytkownikom przekazywanie obrazów l
 Zamiast Moderowanie ten sam obraz wiele razy, dodasz obraźliwe obrazy niestandardowe listy zablokowanych zawartości. W ten sposób system moderowanie zawartości porównuje przychodzące obrazów z list niestandardowych i zatrzymuje dalszego przetwarzania.
 
 > [!NOTE]
-> Istnieje maksymalny limit wynoszący **5 image list** z każdej listy **nie może przekraczać 10 000 obrazów**.
+> Istnieje maksymalny limit wynoszący **5 list obrazów**, a poszczególne listy **nie mogą przekraczać 10 000 obrazów**.
 >
 
 Content Moderator oferuje kompletne [interfejsu API zarządzania listy obrazów](try-image-list-api.md) z operacjami zarządzania listami obrazów niestandardowych. Rozpoczynać [Konsola interfejsu API listy obrazów](try-image-list-api.md) i przykłady kodu interfejsu API REST. Również szybko sprawdzić wydajność [Szybki Start .NET listy obrazów](image-lists-quickstart-dotnet.md) osoby znające program Visual Studio w języku C#.
@@ -144,7 +144,7 @@ Przykład wyodrębniania:
 
 Aby uzyskać więcej złożonych przypadkach użyciu usługi Content Moderator [narzędzie do przeglądu](Review-Tool-User-Guide/human-in-the-loop.md) i jego interfejsu API, aby przedstawić wyniki moderacji i zawartość w przeglądzie dla Twojego ludzi moderatorów. One Przejrzyj tagi przypisane do maszyny i potwierdzić swoje decyzje końcowej.
 
-![Przegląd obrazu dla moderatorów ludzi](images/moderation-reviews-quickstart-dotnet.PNG)
+![Przeglądanie obrazu przez moderatorów-ludzi](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

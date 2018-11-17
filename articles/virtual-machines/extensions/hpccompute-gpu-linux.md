@@ -12,40 +12,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 11/15/2018
 ms.author: roiyz
-ms.openlocfilehash: 307bdb5fa7a5d14a77c71d0ea40634a55d8507b6
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 8883111387bea4a78e81123f95201ed4826dcb1c
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057697"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820345"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozszerzenie sterowników procesora GPU NVIDIA dla systemu Linux
 
 ## <a name="overview"></a>Przegląd
 
-To rozszerzenie instaluje sterowniki procesora GPU firmy NVIDIA na maszynach wirtualnych serii N Linux. W zależności od rodziny maszyn wirtualnych rozszerzenia instaluje sterowniki CUDA lub SIATKĘ. Po zainstalowaniu NVIDIA wewnętrzne sterowniki przy użyciu tego rozszerzenia, jesteś akceptowanie i zgodę na warunki umowy licencyjnej firmy NVIDIA. W procesie instalacji maszyny wirtualnej może ponowny rozruch, aby ukończyć instalację sterownika.
+To rozszerzenie instaluje sterowniki procesora GPU firmy NVIDIA na maszynach wirtualnych serii N Linux. W zależności od rodziny maszyn wirtualnych rozszerzenia instaluje sterowniki CUDA lub SIATKĘ. Po zainstalowaniu NVIDIA wewnętrzne sterowniki przy użyciu tego rozszerzenia akceptowanie i wyrażenie zgody na warunki [Umowa licencyjna użytkownika oprogramowania firmy NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330). W procesie instalacji maszyny Wirtualnej może ponowny rozruch, aby ukończyć instalację sterownika.
 
 Rozszerzenie jest również dostępna do zainstalowania sterowników procesora GPU NVIDIA na [maszyn wirtualnych serii N Windows](hpccompute-gpu-windows.md).
-
-Warunki umowy licencyjnej użytkownika oprogramowania firmy NVIDIA znajdują się w folderze- https://go.microsoft.com/fwlink/?linkid=874330
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="operating-system"></a>System operacyjny
 
-To rozszerzenie obsługuje następujące OSs:
+To rozszerzenie obsługuje poniższe dystrybucje systemu operacyjnego, w zależności od obsługi sterowników dla określonej wersji systemu operacyjnego.
 
 | Dystrybucja | Wersja |
 |---|---|
-| Linux: Ubuntu | 16.04 LTS |
-| Linux: Red Hat Enterprise Linux | 7.3, 7.4 |
-| Linux: CentOS | 7.3, 7.4 |
+| Linux: Ubuntu | 16.04 LTS 18.04 LTS |
+| Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5 |
+| Linux: CentOS | 7.3, 7.4, 7.5 |
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
 
-Rozszerzenie Microsoft Azure dla sterowników procesora GPU NVIDIA wymaga, docelowej maszyny wirtualnej jest połączony z Internetem i mają dostęp.
+Rozszerzenie Microsoft Azure dla sterowników procesora GPU NVIDIA wymaga, aby docelowa maszyna wirtualna jest połączony z Internetem, a następnie mają dostęp.
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
@@ -63,7 +61,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia.
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.1",
+    "typeHandlerVersion": "1.2",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -71,14 +69,24 @@ Następujący kod JSON zawiera schemat dla rozszerzenia.
 }
 ```
 
-### <a name="property-values"></a>Wartości właściwości
+### <a name="properties"></a>Właściwości
 
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | data |
+| apiVersion | 2015-06-15 | date |
 | Wydawcy | Microsoft.HpcCompute | ciąg |
 | type | NvidiaGpuDriverLinux | ciąg |
-| typeHandlerVersion | 1.1 | Int |
+| typeHandlerVersion | 1.2 | int |
+
+### <a name="settings"></a>Ustawienia
+
+Wszystkie ustawienia są opcjonalne. Domyślnym zachowaniem jest nie aktualizacja jądra Jeśli wymagane do instalacji sterowników, zainstaluj najnowszy obsługiwany sterownik i toolkit CUDA (o ile dotyczy).
+
+| Name (Nazwa) | Opis | Wartość domyślna | Prawidłowe wartości | Typ danych |
+| ---- | ---- | ---- | ---- | ---- |
+| updateOS | Aktualizacji jądra, nawet jeśli nie są wymagane do instalacji sterowników | false | wartość true, false | wartość logiczna |
+| driverVersion | NV: Wersja sterownika siatki<br> NC/ND: CUDA, wersja zestawu narzędzi. Najnowsze sterowniki dla architektury CUDA wybrana są instalowane automatycznie. | najnowsza | SIATKA: "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | ciąg |
+| installCUDA | Zainstaluj zestaw narzędzi CUDA. Istotne tylko w przypadku maszyny wirtualne z serii NC/ND. | true | wartość true, false | wartość logiczna |
 
 
 ## <a name="deployment"></a>Wdrożenie
@@ -104,7 +112,7 @@ W poniższym przykładzie założono, że rozszerzenie jest zagnieżdżona w obr
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.1",
+    "typeHandlerVersion": "1.2",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -122,12 +130,14 @@ Set-AzureRmVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverLinux" `
     -ExtensionType "NvidiaGpuDriverLinux" `
-    -TypeHandlerVersion 1.1 `
+    -TypeHandlerVersion 1.2 `
     -SettingString '{ `
     }'
 ```
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+
+Poniższy przykład odzwierciedla powyższe przykłady usługi Azure Resource Manager i programu PowerShell i dodaje także ustawienia niestandardowe na przykład do instalowania sterowników innych niż domyślne. W szczególności aktualizacji jądra systemu operacyjnego i instaluje wybrany sterownik CUDA toolkit wersji.
 
 ```azurecli
 az vm extension set `
@@ -135,8 +145,10 @@ az vm extension set `
   --vm-name myVM `
   --name NvidiaGpuDriverLinux `
   --publisher Microsoft.HpcCompute `
-  --version 1.1 `
+  --version 1.2 `
   --settings '{ `
+    "updateOS": true, `
+    "driverVersion": "9.1.85", `
   }'
 ```
 
@@ -165,13 +177,12 @@ Dane wyjściowe wykonywania rozszerzenia jest rejestrowany w następującym plik
 | Kod zakończenia | Znaczenie | Możliwe działania |
 | :---: | --- | --- |
 | 0 | Operacja zakończona powodzeniem |
-| 1 | Niepoprawne użycie rozszerzenia. | Skontaktuj się z pomocą techniczną, podając dziennika danych wyjściowych wykonywania. |
-| 10 | Usługi integracji systemu Linux dla funkcji Hyper-V i na platformie Azure nie dostępne lub zainstalowane. | Sprawdzanie danych wyjściowych lspci. |
-| 11 | Procesor GPU NVIDIA nie można odnaleźć tego rozmiaru maszyny Wirtualnej. | Użyj [obsługiwany rozmiar maszyny Wirtualnej i systemu operacyjnego](../linux/n-series-driver-setup.md). |
+| 1 | Nieprawidłowe użycie rozszerzenia | Sprawdź dziennik wyjścia wykonywania |
+| 10 | Usługi integracji systemu Linux dla funkcji Hyper-V i na platformie Azure nie dostępne lub zainstalowane | Sprawdzanie danych wyjściowych lspci |
+| 11 | Procesor GPU NVIDIA nie można odnaleźć tego rozmiaru maszyny Wirtualnej | Użyj [obsługiwanych systemach operacyjnych i rozmiar maszyny Wirtualnej](../linux/n-series-driver-setup.md) |
 | 12 | Oferta obrazu nie jest obsługiwane |
 | 13 | Rozmiar maszyny Wirtualnej nie jest obsługiwane | Wdrażanie przy użyciu maszyn wirtualnych serii N |
-| 14 | Operacja powiodła się | |
-| 21 | Aktualizacja nie powiodła się w systemie Ubuntu | Sprawdzanie danych wyjściowych "Aktualizuj" sudo"polecenia apt-get" |
+| 14 | Operacja powiodła się | Sprawdź dziennik wyjścia wykonywania |
 
 
 ### <a name="support"></a>Pomoc techniczna

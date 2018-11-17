@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: bebe9b6565d618cb773de0379122a17bf7f70403
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a096bd2f23910eb2eb3bc4aa36e34400ccfbb701
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914298"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853408"
 ---
 # <a name="translator-text-api-30-translate"></a>API 3.0 tekstu usługi Translator: tłumaczenie
 
@@ -84,6 +84,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td>toScript</td>
     <td>*Opcjonalny parametr*.<br/>Określa skrypt przetłumaczonego tekstu.</td>
   </tr>
+  <tr>
+    <td>AllowFallback</td>
+    <td>*Opcjonalny parametr*.<br/>Określa, że usługi może być powrót do ogólnego systemu, gdy niestandardowego systemu nie istnieje. Możliwe wartości to: `true` (ustawienie domyślne) lub `false`.<br/><br/>`AllowFallback=false` Określa, czy tłumaczenie należy używać wyłącznie systemów uczona dla `category` określonym przez żądanie. Jeśli tłumaczenie język X język Y wymaga łańcucha przy użyciu języka pivot E, następnie wszystkich systemów w łańcuchu (X -> E i E -> Y) będzie musiał być niestandardowych i mieć tej samej kategorii. Jeśli system nie zostanie znaleziony o określonej kategorii, żądanie zwróci kod stanu 400. `AllowFallback=true` Określa, że usługi może być powrót do ogólnego systemu, gdy niestandardowego systemu nie istnieje.
+</td>
+  </tr>
 </table> 
 
 Nagłówki żądania obejmują:
@@ -106,6 +111,11 @@ Nagłówki żądania obejmują:
   <tr>
     <td>X ClientTraceId</td>
     <td>*Opcjonalnie*.<br/>Generowane przez klienta identyfikator GUID do unikatowego identyfikowania żądania. Możesz pominąć ten nagłówek, jeśli zawierają identyfikator śledzenia w ciągu zapytania za pomocą parametru zapytania o nazwie `ClientTraceId`.</td>
+  </tr>
+  <tr>
+    <td>X-MT-System</td>
+    <td>*Opcjonalnie*.<br/>Określa typ systemu, który został użyty do translacji dla każdego "do" żądany język do tłumaczenia. Wartość jest rozdzielaną przecinkami listę ciągów. Każdy ciąg wskazuje typ:<br/><ul><li>Niestandardowe — żądanie zawiera niestandardowy układ i co najmniej jeden niestandardowy system był używany podczas tłumaczenia.</li><li>Zespół - wszystkich innych żądań</li></ul>
+</td>
   </tr>
 </table> 
 
@@ -186,6 +196,10 @@ Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie.
   <tr>
     <td>403</td>
     <td>Żądanie nie jest autoryzowany. Sprawdź szczegóły komunikatu o błędzie. Często oznacza to, zużyte wszystkie bezpłatne tłumaczenia dostarczane z subskrypcji wersji próbnej.</td>
+  </tr>
+  <tr>
+    <td>408</td>
+    <td>Żądanie nie jest spełnione, ponieważ brakuje zasobu. Sprawdź szczegóły komunikatu o błędzie. Korzystając z niestandardowego `category`, oznacza to często, że system tłumaczenia niestandardowych nie jest jeszcze dostępna do obsługi żądań. Żądanie powinno zostać powtórzone po okresie oczekiwania (np. 10 minut).</td>
   </tr>
   <tr>
     <td>429</td>

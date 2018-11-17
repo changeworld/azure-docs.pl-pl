@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: rithorn
-ms.openlocfilehash: a3de0df8fde3b271b7ba9bb9aab01dbcd5c3bf08
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 627ef0123f05e768dd8a83c197b25da7f161a37c
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991225"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853000"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Zarządzanie zasobami przy użyciu grup zarządzania
 
@@ -123,7 +123,7 @@ Możesz wyświetlić wszystkie grupy zarządzania już bezpośredniego lub dzied
 
 1. Hierarchia grup zarządzania strony obciążeń, których można eksplorować wszystkie grupy zarządzania i subskrypcje, do których masz dostęp do. Wybieranie nazwy grupy przejście w dół poziom w hierarchii. Nawigacja działa tak samo, jak Eksplorator plików.
 
-   ![Main](./media/main.png)
+   ![Główny](./media/main.png)
 
 1. Aby wyświetlić szczegóły grupy zarządzania, wybierz **(szczegóły)** łącze obok tytułu grupy zarządzania. Jeśli ten link nie jest dostępna, nie masz uprawnień do wyświetlania tej grupy zarządzania.  
 
@@ -207,7 +207,7 @@ Aby zobaczyć, jakie uprawnienia ma, wybierz grupę zarządzania a następnie wy
 
 ### <a name="move-subscriptions-in-powershell"></a>Przenoszenie subskrypcji w programie PowerShell
 
-Aby przenieść subskrypcję, w programie PowerShell, należy użyć polecenia Add-AzureRmManagementGroupSubscription.  
+Aby przenieść subskrypcję, w programie PowerShell, należy użyć polecenia New-AzureRmManagementGroupSubscription.  
 
 ```azurepowershell-interactive
 New-AzureRmManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'

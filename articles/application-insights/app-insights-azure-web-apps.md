@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: e88d38e6d95459cc1c41adecee6b7ece659eac99
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1a031ede814a963f25f1a3a3fc9725d9e5670a8e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957254"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824646"
 ---
 # <a name="monitor-azure-web-app-performance"></a>Monitorowanie wydajności aplikacji internetowej platformy Azure
 W witrynie [Azure Portal](https://portal.azure.com) możesz skonfigurować monitorowanie wydajności [aplikacji internetowych platformy Azure](../app-service/app-service-web-overview.md). [Usługa Azure Application Insights](app-insights-overview.md) umożliwia instrumentację aplikacji w celu wysyłania danych telemetrii do usługi Application Insights, gdzie są one przechowywane i analizowane. W usłudze tej można używać wykresów metryki i narzędzi wyszukiwania do ułatwiania diagnozowania problemów, zwiększania wydajności i oceny użycia.
@@ -101,7 +101,7 @@ Usługa Application Insights może zapewnić bardziej szczegółową telemetrię
 * [Uruchom profilera aplikacji na żywo](app-insights-profiler.md).
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) — monitorowanie usługi Azure Functions za pomocą usługi Application Insights
 * [Włącz diagnostykę platformy Azure](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md), która ma być wysyłana do usługi Application Insights.
-* [Monitoruj metryki kondycji usługi](../monitoring/monitoring-data-collection.md), aby upewnić się, że usługa jest dostępna i szybko reaguje.
+* [Monitoruj metryki kondycji usługi](../azure-monitor/platform/data-collection.md), aby upewnić się, że usługa jest dostępna i szybko reaguje.
 * [Odbieraj powiadomienia o alertach](../monitoring-and-diagnostics/monitoring-overview-alerts.md) zawsze, gdy wystąpią zdarzenia operacyjne lub metryki przekroczą próg.
 * Użyj pozycji [Usługa Application Insights dla aplikacji JavaScript i stron sieci Web](app-insights-javascript.md), aby pobrać telemetrię klienta z przeglądarek, w których odwiedzono stronę sieci Web.
 * [Konfiguruj testy sieci Web dostępności](app-insights-monitor-web-app-availability.md), aby otrzymywać alerty, gdy witryna nie działa.

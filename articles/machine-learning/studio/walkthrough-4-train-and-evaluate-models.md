@@ -1,10 +1,11 @@
 ---
-title: 'Krok 4: Nauczanie i Ewaluacja modeli predykcyjnych analityczne | Dokumentacja firmy Microsoft'
-description: 'Krok 4 opracowanie wskazówki rozwiązanie predykcyjne: pociągu, wynik i ocena wielu modeli w usłudze Azure Machine Learning Studio.'
+title: 'Krok 4: Nauczanie i ocena modeli do analizy predykcyjnej | Dokumentacja firmy Microsoft'
+description: 'Krok 4 programowanie przewodnik rozwiązania do analizy predykcyjnej: pociągu, ocena i ocena wielu modeli w usłudze Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: d905f6b3-9201-4117-b769-5f9ed5ee1cac
@@ -15,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 95937ee74be3f6facbc482c3cfd80a8af9128ea3
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 069e2f4d2cb6ae1e9890610bbace5298c62eee75
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836017"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821025"
 ---
 # <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models"></a>Przewodnik, krok 4. Uczenie i ocenianie modeli do analizy predykcyjnej
-Ten temat zawiera wskazówki, czwarty krok [tworzenie rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md)
+Ten temat zawiera czwartym kroku tego przewodnika, [tworzenia rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 
 1. [Tworzenie obszaru roboczego usługi Machine Learning](walkthrough-1-create-ml-workspace.md)
 2. [Przekazywanie istniejących danych](walkthrough-2-upload-data.md)
@@ -33,156 +34,156 @@ Ten temat zawiera wskazówki, czwarty krok [tworzenie rozwiązania analizy predy
 6. [Dostęp do usługi sieci Web](walkthrough-6-access-web-service.md)
 
 - - -
-Jedną z zalet przy użyciu usługi Azure Machine Learning Studio do tworzenia modeli uczenia maszyny jest możliwość spróbuj więcej niż jeden typ modelu jednocześnie w jednym eksperymentu, a następnie porównaj wyniki. Ten typ eksperymenty ułatwia znalezienie najlepszego rozwiązania dla danego problemu.
+Jedną z korzyści z używania usługi Azure Machine Learning Studio do tworzenia modeli uczenia maszynowego jest możliwość spróbuj więcej niż jeden typ modelu w czasie w eksperymencie i porównać wyniki. Tego rodzaju eksperymentowania ułatwia znajdowanie najlepszym rozwiązaniem dla danego problemu.
 
-W eksperymencie, które firma Microsoft tworzony jest w tym przewodniku możemy utworzyć dwa rodzaje modeli i porównać ich wyników oceniania zdecydować, który algorytm możemy mają być używane w naszych końcowy eksperyment.  
+Eksperyment, który opracowujemy w tym przewodniku utworzymy dwa różne typy modeli i następnie porównaj ich wyniki oceny do określania, który algorytm chcemy do użycia w naszym eksperyment końcowy.  
 
-Istnieją różne modele, firma Microsoft może wyboru. Aby wyświetlić dostępne modele, rozwiń węzeł **uczenia maszynowego** węzła na palecie modułów, a następnie rozwiń węzeł **zainicjować modelu** i węzły znajdujące się poniżej. Na potrzeby tego eksperymentu wybierzemy [maszyny wektorowa obsługa Two-Class] [ two-class-support-vector-machine] (SVM) i [Two-Class Boosted drzewa decyzyjnego] [ two-class-boosted-decision-tree] modułów.    
+Istnieją różne modele, które możemy wybrać. Aby wyświetlić dostępne modele, rozwiń węzeł **uczenia maszynowego** węzła w palety modułów, a następnie rozwiń węzeł **zainicjować modelu** i węzły znajdujące się poniżej. Do celów tego eksperymentu, wybierzemy [Two-Class pomocy technicznej Vector Machine] [ two-class-support-vector-machine] (SVM) i [Two-Class Boosted Decision drzewa] [ two-class-boosted-decision-tree] modułów.    
 
 > [!TIP]
-> Aby uzyskać dodatkową pomoc przy wyborze, który algorytm uczenia maszynowego najlepiej pasujące do określonej problem próbuje rozwiązać, zobacz [Wybieranie algorytmów w Microsoft Azure Machine Learning](algorithm-choice.md).
+> Aby uzyskać pomoc przy wyborze rozwiązania, który algorytm uczenia maszynowego, najlepiej pasujące do konkretnych problemów, które próbujesz rozwiązać, zobacz [jak wybór algorytmów dla usługi Microsoft Azure Machine Learning](algorithm-choice.md).
 > 
 > 
 
-## <a name="train-the-models"></a>Modele uczenia
+## <a name="train-the-models"></a>Szkolenie modeli
 
-Dodamy zarówno [Two-Class Boosted drzewa decyzyjnego] [ two-class-boosted-decision-tree] modułu i [maszyny wektorowa obsługa Two-Class] [ two-class-support-vector-machine] modułu, w tym eksperymencie.
+Dodamy zarówno [Two-Class Boosted Decision drzewa] [ two-class-boosted-decision-tree] modułu i [Two-Class pomocy technicznej Vector Machine] [ two-class-support-vector-machine] modułu, w tym eksperymencie.
 
-### <a name="two-class-boosted-decision-tree"></a>Two-Class Boosted algorytm
+### <a name="two-class-boosted-decision-tree"></a>Two-Class wzmocnione drzewo decyzyjnego
 
-Najpierw skonfiguruj boosted decyzji drzewa modelu.
+Najpierw skonfiguruj modelu drzewa decyzyjnego.
 
-1. Znajdź [Two-Class Boosted drzewa decyzyjnego] [ two-class-boosted-decision-tree] modułu na palecie modułów i przeciągnij go do obszaru roboczego.
+1. Znajdź [Two-Class Boosted Decision drzewa] [ two-class-boosted-decision-tree] modułu w palecie modułów i przeciągnij go na kanwie.
 
-2. Znajdź [Train Model] [ train-model] modułu, przeciągnij go do obszaru roboczego, a następnie połącz dane wyjściowe [Two-Class Boosted drzewa decyzyjnego] [ two-class-boosted-decision-tree] port wejściowy modułu po lewej stronie [Train Model] [ train-model] modułu.
+2. Znajdź [Train Model] [ train-model] modułu, przeciągnij go na kanwie, a następnie Połącz wyjście [Two-Class Boosted Decision drzewa] [ two-class-boosted-decision-tree] portem wejściowym modułu po lewej stronie [Train Model] [ train-model] modułu.
    
-   [Two-Class Boosted drzewa decyzyjnego] [ two-class-boosted-decision-tree] modułu inicjuje rodzajowy modelu i [Train Model] [ train-model] używa danych szkoleniowych do uczenia model. 
+   [Two-Class Boosted Decision drzewa] [ two-class-boosted-decision-tree] modułu inicjuje model ogólny i [uczenie modelu] [ train-model] używa danych szkoleniowych do szkolenia model. 
 
-3. Połącz dane wyjściowe po lewej stronie po lewej stronie [wykonanie skryptu języka R] [ execute-r-script] modułu po prawej stronie wprowadź port [Train Model] [ train-model] (zdecydowaliśmy w module [Kroku 3](walkthrough-3-create-new-experiment.md) tego przewodnika to użycie danych pochodzących z lewej strony modułu podziału danych szkoleń).
+3. Połącz po lewej Wyjście po lewej stronie [wykonanie skryptu języka R] [ execute-r-script] portem wejściowym modułu po prawej stronie [Train Model] [ train-model] (podjęliśmy decyzję o w module [Kroku 3](walkthrough-3-create-new-experiment.md) tego przewodnika na korzystanie z danych pochodzących z lewego boku modułu dzielenia danych szkoleń).
    
    > [!TIP]
-   > Firma Microsoft nie ma potrzeby dwóch danych wejściowych, a drugi dane wyjściowe [wykonanie skryptu języka R] [ execute-r-script] modułu do tego eksperymentu, dlatego firma Microsoft może narazić je odłączyć. 
+   > Nie potrzebujemy dwóch danych wejściowych, a drugi dane wyjściowe [wykonanie skryptu języka R] [ execute-r-script] modułu, w tym eksperymencie, dzięki czemu firma Microsoft może pozostawić je niedołączone. 
    > 
    > 
 
-Ta część eksperyment teraz wygląda następująco:  
+Ta część eksperymentu teraz wygląda następująco:  
 
 ![Uczenie modelu][1]
 
-Teraz musimy sprawdzić [Train Model] [ train-model] modułu czy chcemy model do przewidywania wartości ryzyka kredytowego.
+Teraz należy przekazać [Train Model] [ train-model] modułu, że chcemy model do przewidywania wartości oceny ryzyka kredytowego.
 
-1. Wybierz [Train Model] [ train-model] modułu. W **właściwości** okienku, kliknij przycisk **Uruchom selektor kolumn**.
+1. Wybierz [Train Model] [ train-model] modułu. W **właściwości** okienku kliknij **uruchamianie selektora kolumn**.
 
-2. W **wybrać pojedynczą kolumnę** okna dialogowego, wpisz "ryzyko kredytowe" w polu wyszukiwania w obszarze **dostępne kolumny**, wybierz "Ryzyko kredytowe" poniżej i kliknij przycisk strzałki w prawo (**>**) aby przenieść "Ryzyka kredytowego" **wybrane kolumny**. 
+2. W **wybrać pojedynczą kolumnę** okno dialogowe, wpisz "środki ryzyka" w polu wyszukiwania w obszarze **dostępnych kolumn**, a następnie wybierz pozycję "Środki ryzyka" poniżej i kliknij przycisk strzałki w prawo (**>**) aby przenieść "Ryzyka kredytowego" **wybrane kolumny**. 
 
-    ![Wybierz kolumnę ryzyka kredytowego modułu Train Model][0]
+    ![Wybierz kolumnę oceny ryzyka kredytowego modułu Train Model][0]
 
 3. Kliknij przycisk **OK** znacznik wyboru.
 
 ### <a name="two-class-support-vector-machine"></a>Algorytm SVM dla problemu dwuklasowego
 
-Następnie skonfigurowanie SVM modelu.  
+Następnie możemy skonfigurować SVM model.  
 
-Pierwszy, nieco wyjaśnienie SVM. Drzewa decyzyjne boosted działają prawidłowo w przypadku funkcji dowolnego typu. Jednak ponieważ moduł SVM generuje klasyfikatora liniowego, modelu, który generuje ma najlepsze błąd testu, gdy wszystkie funkcje numeryczne mieć takiej samej skali. Aby przekonwertować wszystkie funkcje numeryczne takiej samej skali, używamy transformację "Tanh" (z [normalizacji danych] [ normalize-data] modułu). To przekształca naszych numery w zakresie [0,1]. Moduł SVM konwertuje ciąg funkcji funkcje podzielone na kategorie, a następnie binarne funkcji 0/1, nie należy ręcznie Przekształcanie funkcji ciągu. Ponadto nie chcemy przekształcenie ryzyka kredytowego kolumna (kolumna 21) — liczbowych jest, ale jest wartość możemy uczony model do przewidywania, więc musimy pozostawiony.  
+Pierwszy jest nieco wyjaśnienie SVM. Drzewa decyzyjnego dobrze współpracować z funkcjami dowolnego typu. Jednak ponieważ moduł SVM generuje liniowej klasyfikatora, modelu, który generuje podlega najlepsze błąd testu, gdy wszystkie funkcje numeryczne mają tę samą skalę. Aby przekonwertować wszystkie funkcje numeryczne tę samą skalę, używamy transformacji "Tanh" (z [normalizacji danych] [ normalize-data] modułu). Nasze cyfry to przekształca do zakresu [0,1]. Moduł SVM konwertuje ciąg funkcje kategorii funkcji, a następnie binarne funkcje 0/1, dzięki czemu nie trzeba ręcznie Przekształcanie ciągów funkcji. Ponadto nie chcemy przekształcić ryzyko kredytowe kolumny (21) — jest liczbowe, ale jest to wartość, firma Microsoft uczony model do przewidywania, dlatego musimy pozostawiony.  
 
 Aby skonfigurować SVM model, wykonaj następujące czynności:
 
-1. Znajdź [maszyny wektorowa obsługa Two-Class] [ two-class-support-vector-machine] modułu na palecie modułów i przeciągnij go do obszaru roboczego.
+1. Znajdź [Two-Class pomocy technicznej Vector Machine] [ two-class-support-vector-machine] modułu w palecie modułów i przeciągnij go na kanwie.
 
-2. Kliknij prawym przyciskiem myszy [Train Model] [ train-model] modułu, wybierz opcję **kopiowania**i kliknij prawym przyciskiem myszy kanwę i wybierz **Wklej**. Kopię [Train Model] [ train-model] moduł ma tego samego kolumnę zaznaczenia co oryginalny.
+2. Kliknij prawym przyciskiem myszy [Train Model] [ train-model] modułu, wybierz opcję **kopiowania**, a następnie kliknij prawym przyciskiem myszy kanwy, a następnie wybierz pozycję **Wklej**. Kopię [Train Model] [ train-model] moduł ma ten sam kolumn wybór co oryginalny.
 
-3. Połącz dane wyjściowe [maszyny wektorowa obsługa Two-Class] [ two-class-support-vector-machine] modułu po lewej stronie wprowadź port drugiego [Train Model] [ train-model] modułu.
+3. Połącz wyjście [Two-Class pomocy technicznej Vector Machine] [ two-class-support-vector-machine] drugi portem wejściowym modułu modułu po lewej stronie [Train Model] [ train-model] modułu.
 
-4. Znajdź [normalizacji danych] [ normalize-data] modułu i przeciągnij go do obszaru roboczego.
+4. Znajdź [normalizacji danych] [ normalize-data] modułu i przeciągnij go na kanwie.
 
-5. Połącz dane wyjściowe po lewej stronie po lewej stronie [wykonanie skryptu języka R] [ execute-r-script] modułu w danych wejściowych w tym module (powiadomienia, czy port wyjściowy modułu może być podłączony do więcej niż jeden moduł innych).
+5. Połącz po lewej Wyjście po lewej stronie [wykonanie skryptu języka R] [ execute-r-script] modułu w danych wejściowych w tym module (Zwróć uwagę, że port wyjściowy modułu mogą być połączone z więcej niż jeden inny moduł).
 
 6. Połącz lewy port wyjściowy [normalizacji danych] [ normalize-data] modułu po prawej stronie wprowadź port drugiego [Train Model] [ train-model] modułu.
 
-Ta część naszego eksperyment powinien teraz wyglądać mniej więcej tak:  
+Ta część nasz eksperyment powinien teraz wyglądać mniej więcej tak:  
 
-![Uczenie modelu drugi][2]  
+![Szkolenie w drugim modelu][2]  
 
 Teraz skonfigurować [normalizacji danych] [ normalize-data] modułu:
 
-1. Kliknij, aby wybrać [normalizacji danych] [ normalize-data] modułu. W **właściwości** okienku wybierz **Tanh** dla **metody przekształcania** parametru.
+1. Kliknij, aby wybrać [normalizacji danych] [ normalize-data] modułu. W **właściwości** okienku wybierz **Tanh** dla **metoda przekształcania** parametru.
 
-2. Kliknij przycisk **Uruchom selektor kolumn**, wybierz opcję "Brak kolumn" dla **od**, wybierz pozycję **Include** z pierwszej listy rozwijanej wybierz **typ kolumny** w drugim listy rozwijanej, a następnie wybierz **liczbowych** na liście rozwijanej trzecich. To ustawienie określa przekształcone wszystkie kolumny liczbowe (i tylko numeryczne).
+2. Kliknij przycisk **uruchamianie selektora kolumn**, wybierz opcję "Nie kolumny" dla **rozpocząć z**, wybierz opcję **Include** z pierwszej listy rozwijanej wybierz **typ kolumny** w drugiej listy rozwijanej i wybierz pozycję **liczbowych** na trzeciej liście rozwijanej. To ustawienie określa wszystkie kolumny liczbowe (i tylko liczbowe) są przekształcane.
 
-3. Kliknij znak plus (+) z prawej strony tego wiersza — spowoduje to utworzenie wiersza listę rozwijaną. Wybierz **wykluczyć** z pierwszej listy rozwijanej wybierz **nazwy kolumn** w drugim listy rozwijanej, a następnie wprowadź "Ryzyko kredytowe" w polu tekstowym. Określa kolumnę ryzyka kredytowego należy ją ignorować (należy to zrobić, ponieważ ta kolumna jest liczbowe w związku z czym może zostać przekształcone Jeśli firma Microsoft nie go wykluczyć).
+3. Kliknij znak plus (+) z prawej strony tego wiersza — spowoduje to utworzenie wiersza list rozwijanych. Wybierz **wykluczyć** z pierwszej listy rozwijanej wybierz **nazwy kolumn** na drugiej liście rozwijanej, a następnie wprowadź "Ryzyko kredytowe" w polu tekstowym. Określa, że ryzyko kredytowe kolumny mają być ignorowane (należy to zrobić, ponieważ ta kolumna jest wartością liczbową, a zatem będą przekształcane Jeśli firma Microsoft nie go wykluczyć).
 
 4. Kliknij przycisk **OK** znacznik wyboru.  
 
-    ![Wybierz kolumnę do modułu normalizacji danych][5]
+    ![Wybierz kolumny dla modułu normalizacji danych][5]
 
-[Normalizacji danych] [ normalize-data] modułu ma teraz wartość przekształcenie Tanh dla wszystkich kolumn liczbowych, z wyjątkiem kolumny ryzyka kredytowego.  
+[Normalizacji danych] [ normalize-data] moduł są teraz ustawione przekształcenie Tanh dla wszystkich kolumn liczbowych, z wyjątkiem kolumny oceny ryzyka kredytowego.  
 
-## <a name="score-and-evaluate-the-models"></a>Uczenie i Ewaluacja modeli
+## <a name="score-and-evaluate-the-models"></a>Ocena i Ewaluacja modeli
 
-Używamy testowania danych, który został oddzielony się przez [podziału danych] [ split] modułu do wyniku naszych przeszkolone modeli. Firma Microsoft może następnie porównaj wyniki działania dwa modele, aby zobaczyć, która jest generowana w poszukiwaniu lepszych wyników.  
+Używamy danych testowych, które zostało rozdzielone się [podziału danych] [ split] modułu, aby oceniać nasze przeszkolone modele. Firma Microsoft jest następnie porównaj wyniki z dwóch modeli, aby zobaczyć, których generowany w poszukiwaniu lepszych wyników.  
 
-### <a name="add-the-score-model-modules"></a>Dodaj moduł Score Model
+### <a name="add-the-score-model-modules"></a>Dodaj moduły Score Model
 
-1. Znajdź [Score Model] [ score-model] modułu i przeciągnij go do obszaru roboczego.
+1. Znajdź [Score Model] [ score-model] modułu i przeciągnij go na kanwie.
 
-2. Połącz [Train Model] [ train-model] moduł, który jest połączony z [Two-Class Boosted drzewa decyzyjnego] [ two-class-boosted-decision-tree] port wejściowy modułu w lewo [Score Model] [ score-model] modułu.
+2. Połącz [Train Model] [ train-model] moduł, który jest podłączony do [Two-Class Boosted Decision drzewa] [ two-class-boosted-decision-tree] portem wejściowym modułu z lewej strony [Score Model] [ score-model] modułu.
 
-3. Połącz prawo [wykonanie skryptu języka R] [ execute-r-script] modułu (danych testowych) po prawej stronie wprowadź port [Score Model] [ score-model] modułu.
+3. Połącz po prawej stronie [wykonanie skryptu języka R] [ execute-r-script] portem wejściowym modułu (naszych danych testowych) po prawej stronie [Score Model] [ score-model] modułu.
 
-    ![Moduł score Model połączenia][6]
+    ![Moduł score Model połączone][6]
    
-   [Score Model] [ score-model] modułu można teraz odpowiednie informacje środki z danych testowych, uruchom go za pośrednictwem modelu i porównywania prognoz modelu generuje z kolumną ryzyka rzeczywiste środki w Testowanie danych.
+   [Score Model] [ score-model] modułu można teraz podjąć środki informacje z danych testowych, uruchomić go za pomocą modelu i porównywania przewidywań modelu generuje z kolumną o podwyższonym ryzyku rzeczywiste środków w Testowanie danych.
 
-4. Skopiuj i Wklej [Score Model] [ score-model] modułu do utworzenia drugiej kopii.
+4. Skopiuj i Wklej [Score Model] [ score-model] moduł służący do tworzenia drugiej kopii.
 
-5. Połącz dane wyjściowe modelu SVM (to znaczy portem wyjściowym [Train Model] [ train-model] moduł, który jest połączony z [maszyny wektorowa obsługa Two-Class] [ two-class-support-vector-machine] modułu) do portu wejściowego drugiego [Score Model] [ score-model] modułu.
+5. Połącz wyjście modelu SVM (oznacza to, że port wyjściowy [Train Model] [ train-model] moduł, który jest podłączony do [Two-Class pomocy technicznej Vector Machine] [ two-class-support-vector-machine] moduł) z portem wejściowym drugiego [Score Model] [ score-model] modułu.
 
-6. SVM model zostały celu przekształcenia do danych testowych, jak robiliśmy danych szkoleniowych. Aby skopiować i wkleić [normalizacji danych] [ normalize-data] modułu Tworzenie drugiej kopii i połącz go z prawej strony [wykonanie skryptu języka R] [ execute-r-script] modułu.
+6. W przypadku modelu SVM musimy to zrobić przekształcenia danych testowych, ile My mieliśmy do danych treningowych. Dlatego skopiuj i Wklej [normalizacji danych] [ normalize-data] modułu, aby utworzyć drugą kopię i połączyć ją z prawej strony [wykonanie skryptu języka R] [ execute-r-script] modułu.
 
-7. Połącz dane wyjściowe po lewej stronie drugiego [normalizacji danych] [ normalize-data] modułu po prawej stronie wprowadź port drugiego [Score Model] [ score-model] modułu.
+7. Połącz po lewej wyjście drugi [normalizacji danych] [ normalize-data] modułu po prawej stronie wprowadź port drugiego [Score Model] [ score-model] modułu.
 
-    ![Zarówno modułów Score Model połączenia][7]
+    ![Oba moduły Score Model połączone][7]
 
-### <a name="add-the-evaluate-model-module"></a>Dodanie modułu Evaluate Model
+### <a name="add-the-evaluate-model-module"></a>Dodawanie modułu Evaluate Model
 
-Aby ocenić dwóch wyników oceniania i porównaj je, używamy [Evaluate Model] [ evaluate-model] modułu.  
+Aby obliczyć dwa wyniki oceniania i porównaj je, użyjemy [Evaluate Model] [ evaluate-model] modułu.  
 
-1. Znajdź [Evaluate Model] [ evaluate-model] modułu i przeciągnij go do obszaru roboczego.
+1. Znajdź [Evaluate Model] [ evaluate-model] modułu i przeciągnij go na kanwie.
 
-2. Połącz port wyjściowy [Score Model] [ score-model] modułu skojarzonego z tym modelem drzewa decyzyjnego boosted do lewy port wejściowy z [Evaluate Model] [ evaluate-model] modułu.
+2. Połącz port wyjściowy [Score Model] [ score-model] skojarzonego z tym modelem drzewa decyzyjnego do lewym portem wejściowym modułu [Evaluate Model] [ evaluate-model] modułu.
 
-3. Połącz innych [Score Model] [ score-model] port wejściowy modułu z prawej strony.  
+3. Połącz drugi [Score Model] [ score-model] portem wejściowym modułu po prawej stronie.  
 
     ![Ocena modelu modułu połączone][8]
 
-### <a name="run-the-experiment-and-check-the-results"></a>Uruchom eksperyment i sprawdzić wyniki
+### <a name="run-the-experiment-and-check-the-results"></a>Uruchom eksperyment, aby sprawdzić wyniki
 
-Aby uruchomić eksperyment, kliknij przycisk **Uruchom** znajdujący się poniżej obszaru roboczego. Może upłynąć kilka minut. Wskaźnik Obracająca dla każdego modułu pokazuje, że jest uruchomiona, i czym wyświetlany zielony znacznik wyboru, po zakończeniu modułu. Jeśli zaznaczono wszystkie moduły eksperyment zakończył działanie.
+Aby uruchomić eksperyment, kliknij **Uruchom** znajdujący się poniżej obszaru roboczego. Może to potrwać kilka minut. Wskaźnik rotowania na każdy moduł pokazuje, że jest uruchomiona, a następnie zielony znacznik wyboru wskazuje, po zakończeniu modułu. Jeśli zaznaczono wszystkie moduły zakończeniu eksperymentu.
 
 Eksperyment powinien teraz wyglądać mniej więcej tak:  
 
-![Ocena obu modeli][3]
+![Dokonanie oceny oprogramowania obu modeli][3]
 
-Aby sprawdzić wyniki, kliknij port wyjściowy [Evaluate Model] [ evaluate-model] moduł i zaznacz **Visualize**.  
+Aby sprawdzić wyniki, kliknij port wyjściowy [Evaluate Model] [ evaluate-model] modułu, a następnie wybierz pozycję **Visualize**.  
 
-[Evaluate Model] [ evaluate-model] modułu tworzy parę krzywych i metryk, które pozwalają porównać wyniki dwa modele scored. Można wyświetlić wyniki w postaci krzywych cech Operator odbiornika (ROC), krzywych dokładności/wycofania lub krzywych przyrostu. Dodatkowe dane wyświetlane obejmuje macierz pomyłek, łączne wartości dla obszarze krzywej (AUC) i innych metryk. Można zmienić wartość progowa za pomocą suwaka, lewo lub w prawo i zobacz, jak wpływa na zbiór metryki.  
+[Evaluate Model] [ evaluate-model] moduł generuje parę krzywe i metryki, które pozwalają porównać wyniki z dwóch modeli ocenami. Można wyświetlić wyniki w postaci krzywych odbiorcy cechy — Operator (ROC), krzywych dokładności/odwołania lub krzywych przyrostu. Dodatkowe dane obejmuje macierz pomyłek, łączne wartości dla powierzchni pod krzywą (AUC) i innych metryk. Można zmienić wartość progowa, przesuwając suwak w lewo lub w prawo i zobacz, jak wpływa na zestaw metryk.  
 
-Po prawej stronie wykresu **oceniane zestawu danych** lub **oceniane zestawu danych, aby porównać** Wyróżnij skojarzone krzywej i wyświetlania metryk skojarzone poniżej. W legendzie dla krzywych "Oceniane zestawu danych" odpowiada lewy port wejściowy z [Evaluate Model] [ evaluate-model] moduł — w tym przypadku jest to model drzewa boosted decyzji. "Zestawu danych, aby porównać wynik" odpowiada prawy port wejściowy - SVM modelu w tym przypadku. Po kliknięciu jednego z tych etykiet zostanie wyróżniona krzywej modelu i wyświetlane są odpowiednie metryki, jak pokazano na poniższym rysunku.  
+Z prawej strony wykresu kliknij **oceniane dataset** lub **oceniane zestawu danych, aby porównać** do wyróżnienia krzywej skojarzone oraz do wyświetlania skojarzonych z nimi metryk poniżej. W legendzie dla krzywych "Oceniane zestawu danych" odnosi się do lewy port wejściowy z [Evaluate Model] [ evaluate-model] moduł — w naszym przypadku jest to modelu drzewa decyzyjnego. "Oceniane zestawu danych, aby porównać" odnosi się do prawy port wejściowy — model SVM w naszym przypadku. Po kliknięciu jednego z tych etykiet, jest wyróżniona krzywej dla tego modelu i odpowiednie metryki są wyświetlane, jak pokazano na poniższym rysunku.  
 
 ![Krzywe ROC dla modeli][4]
 
-Badanie tych wartości, można zdecydować, model, który jest najbardziej zbliżony do daje rezultatów, którego szukasz. Możesz wrócić do poprzedniej strony i iterację eksperymentu, zmieniając wartości parametrów w różne modele. 
+Badanie tych wartości, można zdecydować, model, który znajduje się najbliżej daje rezultatów, którego szukasz. Możesz wrócić i wykonywanie iteracji eksperymentu, zmieniając wartości parametrów w różnych modelach. 
 
-Nauki i grafik interpretowanie te wyniki i dostrajania wydajności modelu wykracza poza zakres tego przewodnika. Aby uzyskać dodatkową pomoc może przeczytać następujące artykuły:
-- [Jak do oceny wydajności modelu w usłudze Azure Machine Learning](evaluate-model-performance.md)
-- [Wybierz parametry w celu zoptymalizowania algorytmy w usłudze Azure Machine Learning](algorithm-parameters-optimize.md)
-- [Interpretowanie wyników modelu w usłudze Azure Machine Learning](interpret-model-results.md)
+Nauki i sztukę interpretowanie tych wynikach i dostrajanie wydajności modelu znajduje się poza zakresem tego przewodnika. Aby uzyskać dodatkową pomoc może przeczytać następujące artykuły:
+- [Ocenianie wydajności modelu w usłudze Azure Machine Learning](evaluate-model-performance.md)
+- [Wybór parametrów w celu optymalizacji algorytmów w usłudze Azure Machine Learning](algorithm-parameters-optimize.md)
+- [Interpretacja wyników modelu w usłudze Azure Machine Learning](interpret-model-results.md)
 
 > [!TIP]
-> Zawsze uruchomić eksperyment rekord tego iteracji jest przechowywanych w historii uruchamiania. Można wyświetlić te iteracji i wróć do każdej z nich, klikając **WYŚWIETL HISTORIĘ URUCHAMIANIA** poniżej obszaru roboczego. Możesz również kliknąć **uprzedniego uruchomienia** w **właściwości** okienko, aby powrócić do iteracji, bezpośrednio przed otwartych.
+> Każdym uruchomieniu eksperymentu rekord tej iteracji są przechowywane w historii uruchamiania. Można wyświetlić te iteracje i powrócić do żadnego z nich, klikając **widok HISTORII URUCHAMIANIA** poniżej obszaru roboczego. Możesz również kliknąć **wcześniejszego uruchomienia** w **właściwości** okienko, aby wrócić do iteracji, bezpośrednio poprzedzających jeden mają otwarte.
 > 
 > Można utworzyć kopię dowolną iterację eksperymentu, klikając **SAVE AS** poniżej obszaru roboczego. 
-> Użyj eksperymentu **Podsumowanie** i **opis** właściwości, aby rejestrować co podjęto w Twojej iteracje eksperymentu.
+> Użyj eksperymentu **Podsumowanie** i **opis** właściwości, aby rejestrować co sprawdzone w iterację eksperymentu.
 > 
 > Aby uzyskać więcej informacji, zobacz [Zarządzanie iteracjami eksperymentów w usłudze Azure Machine Learning Studio](manage-experiment-iterations.md).  
 > 

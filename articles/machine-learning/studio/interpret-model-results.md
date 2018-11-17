@@ -1,10 +1,11 @@
 ---
-title: Interpretowanie powoduje modelu uczenia maszynowego | Dokumentacja firmy Microsoft
-description: Jak wybrać optymalne zestawu parametrów dla algorytmu przy użyciu i wizualizacja danych wyjściowych modelu wynik.
+title: Interpretacja wyników modelu w usłudze Machine Learning | Dokumentacja firmy Microsoft
+description: Jak wybrać optymalną parametrem ustawionym dla algorytmu przy użyciu i wizualizowanie danych wyjściowych modelu wynik.
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 6230e5ab-a5c0-4c21-a061-47675ba3342c
@@ -15,298 +16,298 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: e62f4716a95a6c1840afde27361eeb756abff335
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b50d85de744426435fb06767e6a459e4c8bf46d3
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837008"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824221"
 ---
-# <a name="interpret-model-results-in-azure-machine-learning"></a>Interpretowanie wyników modelu w usłudze Azure Machine Learning
-W tym temacie wyjaśniono, jak wizualizacji i interpretować wyniki prognozowania w usłudze Azure Machine Learning Studio. Po uczony model i gotowe prognoz na nim ("oceniane modelu"), należy zrozumieć i interpretować wyniki prognozowania.
+# <a name="interpret-model-results-in-azure-machine-learning"></a>Interpretacja wyników modelu w usłudze Azure Machine Learning
+W tym temacie wyjaśniono, jak wizualizować i interpretacji wyników przewidywań w usłudze Azure Machine Learning Studio. Po uczony model i gotowe prognozy na nim ("oceniane modelu"), musisz zrozumieć i zinterpretować wyniki prognozy.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
-Istnieją cztery główne rodzaje modeli w usłudze Azure Machine Learning uczenia maszynowego:
+Istnieją cztery główne rodzaje modele uczenia maszynowego w usłudze Azure Machine Learning:
 
 * Klasyfikacja
 * Klastrowanie
-* Regresja
+* Regresji
 * Systemy polecania
 
-Moduły używane do prognozowania na podstawie tych modeli są:
+Moduły używane w celu prognozowania na podstawie tych modeli są:
 
-* [Score Model] [ score-model] modułu dla klasyfikacji i regresji
-* [Przypisz do klastrów] [ assign-to-clusters] modułu do klastrowania
-* [Wynik polecania Matchbox] [ score-matchbox-recommender] dla systemów zalecenia
+* [Ocenianie modelu] [ score-model] modułu dla klasyfikacji i regresji
+* [Przypisz do klastrów] [ assign-to-clusters] modułu dla klastra
+* [Ocena polecania Matchbox] [ score-matchbox-recommender] systemów rekomendacji
 
-Tym dokumencie opisano sposób interpretowania przewidywania wyników dla każdego z tych modułów. Omówienie tych modułów, zobacz [Wybieranie parametry w celu zoptymalizowania algorytmy w usłudze Azure Machine Learning](algorithm-parameters-optimize.md).
+W tym dokumencie opisano sposób interpretacji wyników przewidywań dla każdego z tych modułów. Aby uzyskać omówienie tych modułów, zobacz [wybór parametrów w celu optymalizacji algorytmów w usłudze Azure Machine Learning](algorithm-parameters-optimize.md).
 
-Ten temat dotyczy interpretacji prognozowania, ale nie oceny modelu. Aby uzyskać więcej informacji na temat oceny modelu, zobacz [jak do oceny wydajności modelu w usłudze Azure Machine Learning](evaluate-model-performance.md).
+Ten temat dotyczy interpretacji prognoz, ale nie oceny modelu. Aby uzyskać więcej informacji na temat oceny modelu, zobacz [Ocenianie wydajności modelu w usłudze Azure Machine Learning](evaluate-model-performance.md).
 
-Jeśli dopiero zaczynasz korzystać z usługi Azure Machine Learning i potrzebujesz pomocy, tworzenie prostego eksperymentu, aby rozpocząć pracę, zobacz [Tworzenie prostego eksperymentu w usłudze Azure Machine Learning Studio](create-experiment.md) w usłudze Azure Machine Learning Studio.
+Jeśli jesteś nowym użytkownikiem usługi Azure Machine Learning i potrzebujesz pomocy, obejmujący tworzenie prostego eksperymentu, aby rozpocząć pracę, zobacz [Tworzenie prostego eksperymentu w usłudze Azure Machine Learning Studio](create-experiment.md) w usłudze Azure Machine Learning Studio.
 
 ## <a name="classification"></a>Klasyfikacja
 Istnieją dwie podkategorie klasyfikacji problemów:
 
-* Problemy z klasami tylko dwa (Klasyfikacja dwuklasowych lub binarny)
-* Problemy z więcej niż dwóch klas (Klasyfikacja wielu klas)
+* Problemy z tylko dwoma klasami (Klasyfikacja dwuklasowych lub binarny)
+* Problemy z więcej niż dwóch klas (wieloklasowej klasyfikacji)
 
-Usługa Azure Machine Learning ma różnych modułach radzenia sobie z każdego z tych typów klasyfikacji, ale metody interpretowanie ich wyniki prognozowania są podobne.
+Usługa Azure Machine Learning ma różnych modułów, aby poradzić sobie z każdą z tych typów klasyfikacji, ale metody do interpretacji ich wyniki prognozy są podobne.
 
-### <a name="two-class-classification"></a>Klasyfikacja dwa — klasa
-**Przykład eksperymentu**
+### <a name="two-class-classification"></a>Klasyfikacja dwuklasowych
+**Przykładowy eksperyment**
 
-Przykład problemu klasyfikacji dwuklasowych to klasyfikacji kwiatów iris. Zadanie jest do klasyfikowania kwiatów iris na podstawie ich funkcji. Iris zestawu danych w usłudze Azure Machine Learning jest podzbiorem popularnych [zestawu danych Iris](http://en.wikipedia.org/wiki/Iris_flower_data_set) zawierający wystąpień tylko dwa kwiaty określa (klasy 0 i 1). Istnieją cztery funkcje dla każdego kwiat (długość sepal, szerokość sepal Motyw Płatek długości i szerokości Motyw Płatek).
+Przykładem problem klasyfikacji dwuklasowych jest klasyfikacji irysów kwiatów. Zadanie jest do klasyfikowania irysów kwiatów na podstawie ich funkcji. Zestaw danych irysów w usłudze Azure Machine Learning jest podzbiorem popularnej [zestawu danych Iris](http://en.wikipedia.org/wiki/Iris_flower_data_set) zawierającą wystąpienia tylko dwa kwiaty gatunków (klasy 0 i 1). Istnieją cztery funkcje dla każdego zbioru (długość słupka, szerokość słupka, płatka długość i szerokość płatka).
 
 ![Zrzut ekranu przedstawiający iris eksperymentu](./media/interpret-model-results/1.png)
 
-Rysunek 1. Iris dwuklasowych klasyfikacji problemu eksperymentu
+Rysunek 1. Eksperyment problem dwuklasowych klasyfikacji irysów
 
-Wykonano eksperymentu Aby rozwiązać ten problem, jak pokazano na rysunku 1. Model drzewa decyzji boosted dwuklasowych został uczenia i oceny. Teraz można wizualizować wyniki prognozowania z [Score Model] [ score-model] modułu, klikając portem wyjściowym [Score Model] [ score-model] modułu, a następnie klikając pozycję **Visualize**.
+Eksperyment została wykonana Aby rozwiązać ten problem, jak pokazano na rysunku 1. Modelu drzewa decyzyjnego dwuklasowych został przeszkolony i oceniane. Teraz możesz wizualizować wyniki przewidywań z [Score Model] [ score-model] moduł, kliknij port wyjściowy [Score Model] [ score-model] Moduł, a następnie klikając polecenie **Visualize**.
 
 ![Moduł score model](./media/interpret-model-results/1_1.png)
 
-Spowoduje to wyświetlenie wyników oceniania jak pokazano na rysunku 2.
+To powoduje wyświetlenie wyników oceny, jak pokazano na rysunku 2.
 
-![Wyniki iris doświadczenia klasyfikacji dwa — klasa](./media/interpret-model-results/2.png)
+![Wyniki doświadczenia dwuklasowych klasyfikacji irysów](./media/interpret-model-results/2.png)
 
-Rysunek 2. Wizualizuj wynik score model klasyfikacji dwa — klasa
+Rysunek 2. Wizualizuj wynik score model klasyfikacji dwuklasowych
 
 **Interpretacja wyników**
 
-Brak sześć kolumn w tabeli wyników. Po lewej stronie cztery kolumny są cztery funkcje. Prawo dwie kolumny, etykiety oceniane i oceniane prawdopodobieństwa są wyniki prognozowania. Kolumna wynik prawdopodobieństwa zawiera prawdopodobieństwo kwiatu należącą do klasy dodatnią (Klasa 1). Na przykład pierwszy numer kolumny (0.028571) oznacza, że jest 0.028571 prawdopodobieństwo, że pierwszy kwiat należy do klasy 1. Kolumna oceniane etykiety zawiera przewidywane klasy dla każdego kwiat. To jest oparta na kolumnie wynik prawdopodobieństwa. W przypadku większych niż 0,5 scored prawdopodobieństwo kwiatu jest obliczana jako klasy 1. W przeciwnym razie wartość jest obliczana jako klasa 0.
+Istnieje sześć kolumn w tabeli wyników. Po lewej stronie cztery kolumny są cztery funkcje. Prawo dwie kolumny, etykiety oceniane i prawdopodobieństwa oceniane, są przewidywane wyniki. Kolumna jest oceniane prawdopodobieństwa Wyświetla prawdopodobieństwo należącą Kwiatek dodatnią klasy (klasy 1). Na przykład pierwszy numer w kolumnie (0.028571) oznacza, że jest 0.028571 prawdopodobieństwo, że pierwszy Kwiatek należy do klasy 1. W kolumnie sklasyfikowane etykiety widoczne to przewidywana klasa, dla każdego zbioru. Jest to oparty na kolumnie oceniane prawdopodobieństwa. W przypadku większych niż 0,5 ocenami prawdopodobieństwo kwiatka przewiduje się klasy 1. W przeciwnym razie jest przewidzieć jako klasa 0.
 
-**Publikowania usług sieci Web**
+**Publikacja usług sieci Web**
 
-Po uwzględnione wyniki prognozowania i ocenić dźwięku eksperyment mogą być publikowane jako usługę sieci web tak, aby można go wdrożyć w różnych aplikacji i nadaj mu uzyskanie prognoz klasy na nowe kwiatem iris. Aby dowiedzieć się, jak zmienić eksperyment uczenia w eksperymencie oceniania i opublikujesz je jako usługi sieci web, zobacz [opublikować usługi sieci web Azure Machine Learning](walkthrough-5-publish-web-service.md). Ta procedura umożliwia eksperyment oceniania jak pokazano na rysunku 3.
+Po uwzględnione wyników przewidywań i ocenić dźwięku doświadczenia mogą być publikowane jako usługi sieci web tak, aby można go wdrożyć w różnych aplikacjach i wywołać go uzyskać klasy prognozy na wszelkie nowe kwiat irysa. Aby dowiedzieć się, jak zmienić eksperymentu szkolenia na eksperyment oceniania i opublikujesz je jako usługi sieci web, zobacz [opublikować usługi sieci web Azure Machine Learning](walkthrough-5-publish-web-service.md). Ta procedura umożliwia oceniania eksperymentu jak pokazano na rysunku 3.
 
-![Zrzut ekranu przedstawiający oceniania eksperymentu](./media/interpret-model-results/3.png)
+![Zrzut ekranu przedstawiający oceny eksperymentu](./media/interpret-model-results/3.png)
 
-Rysunek 3. Ocenianie eksperymentu problemu klasyfikacji dwuklasowych iris
+Rysunek 3. Ocenianie eksperymentu problem dwuklasowych klasyfikacji irysów
 
-Teraz należy ustawić dane wejściowe i wyjściowe dla usługi sieci web. Dane wejściowe są prawy port wejściowy z [Score Model][score-model], czyli kwiat Iris funkcji danych wejściowych. Wybór danych wyjściowych zależy od tego, czy myślisz przewidywanych klasy (etykieta scored) i scored prawdopodobieństwa. W tym przykładzie zakłada się, że jesteś zainteresowany zarówno w. Aby zaznaczyć kolumny, żądanego wyniku, użyj [Wybieranie kolumn w zestawie danych] [ select-columns] modułu. Kliknij przycisk [Wybieranie kolumn w zestawie danych][select-columns], kliknij przycisk **Uruchom selektor kolumn**i wybierz **oceniane etykiety** i **wynik prawdopodobieństwa**. Po ustawieniu portem wyjściowym [Wybieranie kolumn w zestawie danych] [ select-columns] i uruchomić ponownie, możesz przystąpić do publikowania oceniania eksperymentu jako usługę sieci web, klikając **OPUBLIKOWAĆ usługi sieci WEB**. Końcowy eksperyment wygląda jak rysunek 4.
+Teraz musisz ustawić wejściowe i wyjściowe dla usługi sieci web. Dane wejściowe są prawy port wejściowy z [Score Model][score-model], czyli kwiat Irysa funkcje danych wejściowych. Wybór danych wyjściowych zależy od tego, czy interesuje Cię przewidywanej klasy (etykieta ocenami) i/lub ocenami prawdopodobieństwa. W tym przykładzie zakłada się, że jesteś zainteresowany zarówno. Aby wybrać kolumny żądanego wyniku, użyj [Wybieranie kolumn w zestawie danych] [ select-columns] modułu. Kliknij przycisk [Wybieranie kolumn w zestawie danych][select-columns], kliknij przycisk **uruchamianie selektora kolumn**i wybierz **sklasyfikowane etykiety** i **Scored Prawdopodobieństwa**. Po ustawieniu port wyjściowy [Wybieranie kolumn w zestawie danych] [ select-columns] i uruchomiona ponownie, powinno być gotowe do opublikowania oceniania eksperymentu jako usługę sieci web, klikając **OPUBLIKOWAĆ usługi sieci WEB** . Eksperyment końcowy wygląda jak rysunek 4.
 
-![Iris eksperymentu klasyfikacji dwa — klasa](./media/interpret-model-results/4.png)
+![Eksperyment dwuklasowych klasyfikacji irysów](./media/interpret-model-results/4.png)
 
-Rysunek 4. Końcowy eksperyment oceniania iris dwuklasowych klasyfikacji problemu
+Rysunek 4. Końcowy eksperyment oceniania problemu dwuklasowych klasyfikacji irysów
 
-Po uruchomieniu usługi sieci web i wprowadź wartości niektórych funkcji wystąpienia testu, wynik zwraca dwóch liczb. Pierwsza liczba scored etykiety, a drugim scored prawdopodobieństwa. Ta kwiat jest przewidzieć jako klasy 1 z 0.9655 prawdopodobieństwa.
+Po uruchomieniu usługi sieci web i wprowadzić inne wartości funkcji wystąpienia testu, wynik zwraca dwóch liczb. Pierwsza liczba jest ocenami etykiety, a drugą jest wartość prawdopodobieństwa ocenami. Klasy 1 z prawdopodobieństwem 0.9655 przewiduje się tego zbioru.
 
-![Model interpretowania wynik testu](./media/interpret-model-results/4_1.png)
+![Interpretowania modelu wynik testu](./media/interpret-model-results/4_1.png)
 
 ![Ocenianie wyników testu](./media/interpret-model-results/5.png)
 
 Rysunek 5. Wynik usługi sieci Web iris dwuklasowych klasyfikacji
 
-### <a name="multi-class-classification"></a>Klasa usługi klasyfikacji
-**Przykład eksperymentu**
+### <a name="multi-class-classification"></a>Wieloklasowej klasyfikacji
+**Przykładowy eksperyment**
 
-W tym eksperymencie możesz wykonać zadania rozpoznawania litery jako przykład wieloklasowej klasyfikacji. Klasyfikator próbuje przewidzieć określonej litery (klasa) na podstawie niektóre wartości atrybutu odręcznego wyodrębniony z odręcznego obrazów.
+W tym eksperymencie w przypadku zadań rozpoznawania litery na przykład klasyfikacji wieloklasowej. Klasyfikator próbuje przewidzieć określonej litery (klasa) na podstawie niektórych wartości atrybutu odręcznej wyodrębnione z odręcznej obrazów.
 
-![Przykład rozpoznawania list](./media/interpret-model-results/5_1.png)
+![Przykład rozpoznawanie list](./media/interpret-model-results/5_1.png)
 
-W dane szkoleniowe są funkcje 16 wyodrębniony z odręcznego list obrazów. 26 liter tworzą naszych 26 klasy. Rysunek 6 przedstawia eksperymentu, która będzie uczenie modelu przy użyciu wieloklasowej klasyfikacji rozpoznawania litery i prognozowania na tej samej funkcji ustawiać testowego zestawu danych.
+Dane szkoleniowe są funkcje 16 wyodrębnione z odręcznej list obrazów. 26 liter tworzą naszych zajęć 26. Rysunek 6 przedstawia eksperyment, który będzie wytrenuj model klasyfikacji wieloklasowej rozpoznawania litery i przewidywanie na tej samej funkcji nastavit testowego zestawu danych.
 
-![Litera rozpoznawania wieloklasowej klasyfikacji eksperymentu](./media/interpret-model-results/6.png)
+![Litera rozpoznawanie klasyfikacji wieloklasowej eksperymentu](./media/interpret-model-results/6.png)
 
-Rysunek 6. Litera rozpoznawania wieloklasowej klasyfikacji problemu eksperymentu
+Rysunek 6. Eksperyment problem klasyfikacji wieloklasowej rozpoznawania list
 
-Wizualizacja wyników z [Score Model] [ score-model] modułu, klikając portem wyjściowym [Score Model] [ score-model] modułu, a następnie klikając pozycję **Visualize**, jak pokazano na rysunku 7 powinna zostać wyświetlona zawartość.
+Wizualizacja wyników z [Score Model] [ score-model] moduł, kliknij port wyjściowy [Score Model] [ score-model] modułu, a następnie klikając polecenie **Visualize**, powinna zostać wyświetlona zawartość, jak pokazano na rysunku 7.
 
-![Score model wyników](./media/interpret-model-results/7.png)
+![Ocena wyników modelu](./media/interpret-model-results/7.png)
 
-Rysunek 7. Wizualizacja wyników klasyfikacji modelu w klasyfikacji wielu — klasa
+Rysunek 7. Wizualizacja wyników model klasyfikacji wieloklasowej klasyfikacji
 
 **Interpretacja wyników**
 
-Po lewej stronie 16 kolumn reprezentują wartości funkcji zestawu testowego. Kolumny o nazwach takich jak wynik prawdopodobieństwa dla klasy "XX", są tak, takich jak kolumny prawdopodobieństwa oceniane w przypadku dwóch klasy. Pokazują one prawdopodobieństwo wykraczające odpowiadający mu wpis w niektórych klasy. Na przykład dla pierwszej pozycji istnieje 0.003571 prawdopodobieństwo, że jest "A," 0.000451 prawdopodobieństwo, że jest "B" i tak dalej. Ostatnia kolumna (etykiety wynik) jest taka sama jak oceniane etykiet w przypadku dwóch klasy. Klasy z największych prawdopodobieństwo scored zostanie wybrana jako przewidywane klasy odpowiedniego zapisu. Na przykład dla pierwszej pozycji scored etykiety jest "F", ponieważ ma ona największą prawdopodobieństwo "F" (0.916995).
+Po lewej stronie 16 kolumn reprezentują wartości funkcji z zestawu testowego. Kolumny z nazwami, takie jak czy oceniane prawdopodobieństwa dla klasy "XX", takich jak kolumny prawdopodobieństwa oceniane w przypadku dwóch klas. Pokazują one prawdopodobieństwo ją odpowiadający mu wpis zaliczyć do niektórych klas. Na przykład do pierwszej pozycji ma 0.003571 prawdopodobieństwo, że jest "A," 0.000451 prawdopodobieństwo, że jest "B" i tak dalej. Ostatnia kolumna (sklasyfikowane etykiety) jest taka sama jak sklasyfikowane etykiety w przypadku dwóch klas. Wybiera klasę za pomocą największej prawdopodobieństwo ocenami jako to przewidywana klasa odpowiadający mu wpis. Na przykład do pierwszej pozycji ocenami etykiety jest "F", ponieważ ma ona największą prawdopodobieństwo "F" (0.916995).
 
-**Publikowania usług sieci Web**
+**Publikacja usług sieci Web**
 
-Można również uzyskać scored etykiety dla każdego wpisu i prawdopodobieństwo scored etykiety. Podstawowa logika jest teraz znaleźć największą prawdopodobieństwo wśród wszystkich scored probabilities. Aby to zrobić, należy użyć [wykonanie skryptu języka R] [ execute-r-script] modułu. Kod języka R jest pokazano na rysunku 8, a wynik eksperyment przedstawiono na rysunku 9.
+Możesz także uzyskać ocenami etykiety dla każdego wpisu oraz prawdopodobieństwo ocenami etykiety. Podstawowa logika ma na celu znalezienie największych prawdopodobieństwo, że wśród wszystkich scored probabilities. Aby to zrobić, należy użyć [wykonanie skryptu języka R] [ execute-r-script] modułu. Na rysunku nr 8 przedstawiono kod R, a na rysunku nr 9 przedstawiono wynikiem eksperymentu.
 
-![Przykład kodu języka R](./media/interpret-model-results/8.png)
+![Przykładowy kod języka R](./media/interpret-model-results/8.png)
 
-Rysunek 8. Kod języka R wyodrębniania oceniane etykiety i prawdopodobieństwa etykiet
+Rysunek 8. Kod R dla wyodrębnianie sklasyfikowane etykiety i prawdopodobieństwa etykiet
 
-![Wynikiem eksperymentu](./media/interpret-model-results/9.png)
+![Wynik eksperymentu](./media/interpret-model-results/9.png)
 
-Rysunek 9. Końcowy eksperyment oceniania rozpoznawania litery wieloklasowej klasyfikacji problemu
+Rysunek 9. Końcowy eksperyment oceniania programu rozpoznawania literę problem klasyfikacji wieloklasowej
 
-Po opublikowaniu i uruchamiania usługi sieci web oraz wprowadzić niektóre wartości wejściowe funkcji prawdopodobnie zwróconych wyników na rysunku nr 10. Ta litera odręcznego, z wyodrębnionego funkcje 16, jest przewidzieć jako "T" z 0.9715 prawdopodobieństwa.
+Po zakończeniu publikowania i uruchom usługę sieci web i wprowadzić inne wartości wejściowych funkcji zwracany wynik wygląda na rysunku nr 10. Niniejszy odręcznej list, z wyodrębnionych funkcjami 16, przewiduje się jako "T" z prawdopodobieństwem 0.9715.
 
-![Moduł interpretowania wynik testu](./media/interpret-model-results/9_1.png)
+![Moduł score interpretowania testu](./media/interpret-model-results/9_1.png)
 
 ![Wynik testu](./media/interpret-model-results/10.png)
 
 Rysunek 10. Wynik usługi sieci Web wieloklasowej klasyfikacji
 
-## <a name="regression"></a>Regresja
-Regresja problemów różnią się od klasyfikacji problemów. Problem klasyfikacji próbujesz odrębny klas, takie jak klasa kwiat iris należy przewidzieć. Jednak jak widać w poniższym przykładzie problem regresji próbujesz prognozowania ciągłego zmienną, np. ceny samochodu.
+## <a name="regression"></a>Regresji
+Problemy z regresji różnią się od klasyfikacji problemów. W klasyfikacji problemu ma być realizowany przewidzieć dyskretnych klasy, takie jak, które należy klasa kwiat irysa na. Ale jak widać w poniższym przykładzie problem regresji próbujesz się przewidzieć w zmiennej ciągłej, takie jak ceny samochodu.
 
-**Przykład eksperymentu**
+**Przykładowy eksperyment**
 
-Używanie Prognozowanie cen samochodów jako przykład Twoje regresji. Chcesz przewidzieć cenę samochodu oparte na jej funkcje, takie jak upewnij, typu paliwa typem treści i pokrętła stacji. Rysunek 11 pokazano eksperymentu.
+Na użytek Prognozowanie cen samochodów jako przykładu regresji. Próbujesz prognozować cenę samochodu na podstawie jej funkcji, w tym upewnij, typu paliwa, typ treści i pokrętła stacji. Rysunek 11 przedstawiono eksperymentu.
 
 ![Eksperymentu opartego na regresji cen samochodów](./media/interpret-model-results/11.png)
 
-Rysunek 11. Cen samochodów regresji problem eksperymentu
+Rysunek 11. Eksperyment problem regresji cen samochodów
 
 Wizualizacja [Score Model] [ score-model] modułu, wynik wygląda jak rysunek 12.
 
-![Wyników oceniania problemu prognozowania cen samochodów](./media/interpret-model-results/12.png)
+![Wyniki oceny dla problemu Prognozowanie cen samochodów](./media/interpret-model-results/12.png)
 
-Rysunek 12. Ocenianie wyniku problemu prognozowania cen samochodów
+Rysunek 12. Wynik oceny dla problemu Prognozowanie cen samochodów
 
 **Interpretacja wyników**
 
-Scored etykiety jest kolumną wyników oceniania wynik. Liczby są przewidywane ceny dla każdego samochodu.
+Scored etykiety jest kolumna wyników, w tym wyniku oceny. Liczby są przewidywane cena dla każdego samochodu.
 
-**Publikowania usług sieci Web**
+**Publikacja usług sieci Web**
 
-Można opublikować eksperymentu opartego na regresji do usługi sieci web i wywołać go do prognozowania cen samochodów w taki sam sposób jak w przypadku użycia dwuklasowych klasyfikacji.
+Możesz publikować eksperymentu opartego na regresji do usługi sieci web i wywołać go do prognozowania cen samochodów w taki sam sposób jak w przypadku użycia dwuklasowych klasyfikacji.
 
-![Ocenianie eksperymentu cen samochodów regresji problemu](./media/interpret-model-results/13.png)
+![Ocenianie eksperymentu problem regresji cen samochodów](./media/interpret-model-results/13.png)
 
 Rysunek 13. Ocenianie eksperymentu problem regresji cen samochodów
 
-Uruchomiona usługa sieci web, zwrócony wynik wygląda na rysunku 14. Przewidywane cenę samochodu ten jest 15,085.52 $.
+Uruchomiona usługa sieci web, zwracany wynik wygląda jak rysunek 14. Przewidywane cena dla tego samochodu wynosi $15,085.52.
 
-![Moduł interpretowania wyników testu](./media/interpret-model-results/13_1.png)
+![Moduł oceniania interpretowania testu](./media/interpret-model-results/13_1.png)
 
-![Wyników oceniania modułu](./media/interpret-model-results/14.png)
+![Ocenianie wyniki modułu](./media/interpret-model-results/14.png)
 
-Rysunek 14. Wynik usługi sieci Web wystąpił problem regresji cen samochodów
+Rysunek 14. Wynik usługi sieci Web problem regresji cen samochodów
 
 ## <a name="clustering"></a>Klastrowanie
-**Przykład eksperymentu**
+**Przykładowy eksperyment**
 
-Użyjmy Iris zestawu danych ponownie do tworzenia klastrów eksperymentu. W tym miejscu można odfiltrować klasy etykiet w zestawie danych tak, aby tylko ma funkcje i może służyć do klastra. W tym iris przypadek użycia, określ liczbę klastrów, aby być dwa podczas procesu szkolenia, co oznacza, że należy umieścić klastrze kwiaty na dwie klasy. Eksperyment pokazano na rys. 15.
+Użyjemy zestawu danych Iris ponownie do tworzenia eksperymentu klastrowania. W tym miejscu można odfiltrować etykiety klasy w zestawie danych, aby tylko ma funkcje i może służyć do klastra. W tym iris przypadek użycia, określ liczbę klastrów do dwóch podczas procesu uczenia, co oznacza, że będzie klastra kwiatów na dwie klasy. Eksperyment jest wyświetlany w rysunek 15.
 
-![Problem klastrowania Iris eksperymentu](./media/interpret-model-results/15.png)
+![Problem klastrowania Iris eksperymentów](./media/interpret-model-results/15.png)
 
-Rysunek 15. Problem klastrowania Iris eksperymentu
+Rysunek 15. Problem klastrowania Iris eksperymentów
 
-Klastrowanie różni się od klasyfikacji, w tym szkoleniowy zestaw danych nie ma podstaw prawdy etykiety samodzielnie. Klastrowanie grup wystąpień zestawu danych szkoleniowych w różnych klastrach. W trakcie uczenia modelu etykiet wpisy przez uczenia różnice między ich funkcje. Po wykonaniu tej trenowanego modelu może służyć do dalszej klasyfikacji przyszłych wpisów. Istnieją dwie części wynik, który NAS interesuje w ramach klastrowania problem. Pierwsza część jest etykietowania szkoleniowy zestaw danych, a drugi jest klasyfikowanie nowy zestaw danych z trenowanego modelu.
+Klastrowanie różni się od klasyfikacji, w tym szkoleniowy zestaw danych nie ma etykiety prawdziwych danych podstaw samodzielnie. Klastrowanie grup wystąpień zestaw danych szkoleniowych w różnych klastrach. W trakcie szkolenia modelu etykiet wpisy poznając różnice między ich funkcje. Po tym uczonego modelu może służyć do dalszego klasyfikowania przyszłych wpisów. Istnieją dwie części wyniku, który jesteśmy zainteresowani w ramach klastrowania problem. Pierwsza część jest etykietowania szkoleniowy zestaw danych, a drugi jest klasyfikowania nowy zestaw danych za pomocą uczonego modelu.
 
-Pierwsza część wynik może wizualizowane przez kliknięcie lewym portem wyjściowym [Train Model klastrowanie] [ train-clustering-model] , a następnie klikając polecenie **Visualize**. Wizualizacja przedstawiono na rysunku 16.
+Pierwsza część wyniki mogą być wizualizowane, klikając w lewy port wyjściowy [Train Model klastrowania] [ train-clustering-model] , a następnie klikając polecenie **Visualize**. Wizualizacja jest wyświetlana w rysunek 16.
 
 ![Wynik klastrowania](./media/interpret-model-results/16.png)
 
 Rysunek 16. Wizualizowanie klastra wynik szkoleniowy zestaw danych
 
-Wynik drugiej części, nowe wpisy uczonego modelu klastrowania z klastra jest wyświetlana w rysunek 17.
+Wynik części drugiej klastrowania nowe wpisy z uczony model klastrowania jest wyświetlany w rysunek 17.
 
-![Wizualizowanie klastra wyników](./media/interpret-model-results/17.png)
+![Wizualizowanie klastra wynik](./media/interpret-model-results/17.png)
 
-Rysunek 17. Wizualizowanie klastra wyników na nowym zestawie danych
+Ilustracja 17. Wizualizowanie klastra wynik na nowy zestaw danych
 
 **Interpretacja wyników**
 
-Mimo że wyniki z dwóch części jest wynikiem eksperymentu różne etapy, wygląd i interpretowania w taki sam sposób. Pierwsze cztery kolumny są funkcje. Ostatnia kolumna przydziałów, jest wynikiem prognozowania. Wpisy przypisany ten sam numer oczekuje się w tym samym klastrze, oznacza to, że mają podobieństwa w jakiś sposób (odległość euklidesowa metrykę używa tego eksperymentu). Ponieważ określonej liczby klastrów 2 wpisów w przypisaniach są oznaczone 0 lub 1.
+Mimo że wyniki z dwóch części jest wynikiem eksperymentu różnych etapach, wygląd i są interpretowane w taki sam sposób. Pierwsze cztery kolumny są funkcje. Ostatnia kolumna przydziałów, jest wynikiem prognozy. Wpisy przypisany ten sam numer oczekuje się znajdować się w tym samym klastrze, oznacza to, współużytkują one podobieństwa w jakiś sposób (tego eksperymentu używa domyślnej metryki odległość euklidesowa). Ponieważ określono liczbę klastrów, 2, wpisów w przypisaniach są oznaczone jako 0 lub 1.
 
-**Publikowania usług sieci Web**
+**Publikacja usług sieci Web**
 
-Można opublikować klastrowania eksperymentu w usłudze sieci web i wywołać ją do klastrowania prognoz tak samo jak Klasyfikacja dwuklasowych przypadek użycia.
+Możesz publikować klastrowania eksperymentu do usługi sieci web i wywołać go dla klastra prognozy samo jak w przypadku klasyfikacji dwuklasowych przypadek użycia.
 
 ![Ocenianie eksperymentu iris klastrowania problemu](./media/interpret-model-results/18.png)
 
-Rysunek 18. Ocenianie eksperymentu iris problem klastrowania
+Ilustracja 18. Ocenianie eksperymentu problem klastrowania irysów
 
-Po uruchomieniu usługi sieci web zwrócony wynik wygląda jak rysunek 19. Kwiat ta jest przydatna w klastrze 0.
+Po uruchomieniu usługi sieci web zwracany wynik wygląda jak rysunek 19. Ta Kwiatek przewiduje się znajdować się w klastrze 0.
 
-![Moduł oceny zinterpretować testu](./media/interpret-model-results/18_1.png)
+![Test interpretacji moduł oceny](./media/interpret-model-results/18_1.png)
 
 ![Ocenianie wynik modułu](./media/interpret-model-results/19.png)
 
-Rysunek 19. Wynik usługi sieci Web iris dwuklasowych klasyfikacji
+Ilustracja 19. Wynik usługi sieci Web iris dwuklasowych klasyfikacji
 
 ## <a name="recommender-system"></a>System polecania
-**Przykład eksperymentu**
+**Przykładowy eksperyment**
 
-Dla systemów polecania problem zalecenie restauracji można użyć na przykład: można zalecić restauracji dla klientów w oparciu o historię ich klasyfikacji. Dane wejściowe składa się z trzech części:
+Systemów polecania można użyć problem zalecenie restauracji, na przykład: zaleca się restauracji dla klientów na podstawie ich klasyfikacji historii. Dane wejściowe składa się z trzech części:
 
 * Klasyfikacje restauracji od klientów
-* Dane funkcji klienta
+* Dane funkcji odbiorcy
 * Dane funkcji restauracji
 
-Istnieje kilka sposobów, możemy z [polecania Matchbox pociągu] [ train-matchbox-recommender] modułu w usłudze Azure Machine Learning:
+Kilka rzeczy, które można wykonać [polecania Matchbox Train] [ train-matchbox-recommender] modułu w usłudze Azure Machine Learning:
 
-* Przewidywanie oceny dla określonego użytkownika i elementu
+* Przewidywanie klasyfikację dla danego użytkownika i elementów
 * Zaleca się elementy do danego użytkownika
-* Znajdź użytkowników, związane z danego użytkownika
-* Znajdź elementy powiązane z danego elementu
+* Znajdź użytkowników skojarzoną z danym użytkownikiem
+* Znajdować elementy związane z danego elementu
 
-Można wybrać, co chcesz zrobić, wybierając z czterech opcji **rodzaj prognozowania polecania** menu. W tym miejscu można przeprowadzenie wszystkie cztery scenariusze.
+Można wybrać, co chcesz zrobić, wybierając z czterech opcji dostępnych w **rodzaj prognozowania polecania** menu. W tym miejscu możesz zapoznać się wszystkie cztery scenariusze.
 
 ![Matchbox polecania](./media/interpret-model-results/19_1.png)
 
-Typowy eksperymentu uczenia maszynowego Azure dla systemu polecania wygląda na rysunku 20. Aby uzyskać informacje o sposobie używania moduły polecania systemu, zobacz [polecania matchbox pociągu] [ train-matchbox-recommender] i [polecania matchbox wynik][score-matchbox-recommender].
+Typowe eksperymentu usługi Azure Machine Learning systemu polecania wygląda jak rysunek 20. Aby uzyskać informacje o sposobie używania moduły polecania systemu, zobacz [polecania matchbox Train] [ train-matchbox-recommender] i [polecania matchbox wynik] [ score-matchbox-recommender].
 
-![Polecania systemu eksperymentu](./media/interpret-model-results/20.png)
+![Polecania system eksperymentu](./media/interpret-model-results/20.png)
 
-Rysunek 20. Polecania systemu eksperymentu
+Ilustracja 20. Polecania system eksperymentu
 
 **Interpretacja wyników**
 
-**Przewidywanie oceny dla określonego użytkownika i elementu**
+**Przewidywanie klasyfikację dla danego użytkownika i elementów**
 
-Wybierając **prognozowania klasyfikacji** w obszarze **rodzaj prognozowania polecania**, prośbę o system polecania do prognozowania wartości dla określonego użytkownika i elementu. Obraz [polecania Matchbox wynik] [ score-matchbox-recommender] dane wyjściowe wyglądają następująco rysunek 21.
+Wybierając **prognozowania oceny** w obszarze **rodzaj prognozowania polecania**, prośbę o systemie polecania do prognozowania oceny dla danego użytkownika, a element. Wizualizację [polecania Matchbox wynik] [ score-matchbox-recommender] dane wyjściowe wyglądają następująco rysunek 21.
 
-![Wynik wynik systemu polecania — ocena prognozowania](./media/interpret-model-results/21.png)
+![Ocena wynik system polecania — ocena prognoz](./media/interpret-model-results/21.png)
 
-Rysunek 21. Wizualizacja wyników oceny systemu polecania — ocena prognozowania
+Ilustracja 21. Wizualizacja wyników oceny systemu polecania — ocena prognoz
 
-Pierwsze dwie kolumny są par element użytkownika w danych wejściowych. Trzecia kolumna jest przewidywane klasyfikacja użytkownika dla danego elementu. Na przykład w pierwszym wierszu klienta U1048 jest przydatna do restauracji szybkość 135026 2.
+Pierwsze dwie kolumny to pary element użytkownika, dostarczone przez dane wejściowe. Trzecia kolumna jest ocena przewidywane użytkownika dla danego elementu. Na przykład w pierwszym wierszu klienta U1048 przewiduje się częstotliwość restauracji 135026 jako 2.
 
 **Zaleca się elementy do danego użytkownika**
 
-Wybierając **zalecenie elementu** w obszarze **rodzaj prognozowania polecania**, jest wysyłane żądanie systemu polecania zaleca elementów do danego użytkownika. Ostatni parametr, aby wybrać w tym scenariuszu jest *zaleca wybór elementu*. Opcja **z oceną elementy (ocena modelu)** jest przeznaczone głównie dla oceny modelu podczas procesu szkolenia. Dla tego etapu prognozowania wybieramy opcję **z wszystkich elementów**. Obraz [polecania Matchbox wynik] [ score-matchbox-recommender] dane wyjściowe wyglądają następująco rysunek 22.
+Wybierając **zalecenie elementu** w obszarze **polecania prognozowania rodzaj**, jest wysyłane żądanie systemu polecania polecisz elementy danego użytkownika. Ostatni parametr, aby wybrać w tym scenariuszu jest *zaleca się zaznaczenie elementu*. Opcja **z oceniono jako elementy (ocena modelu)** jest przeznaczone głównie dla oceny modelu w procesie szkolenia. Etap prognozowania, wybraliśmy **z wszystkich elementów**. Wizualizację [polecania Matchbox wynik] [ score-matchbox-recommender] dane wyjściowe wyglądają następująco rysunek 22.
 
-![Wynik oceny systemu polecania — zalecenia elementu](./media/interpret-model-results/22.png)
+![Wynik oceny systemu polecania — element zaleceń](./media/interpret-model-results/22.png)
 
-Rysunek 22. Wizualizacja wyników oceny systemu polecania — zalecenia elementu
+Ilustracja 22. Wizualizacja wyników oceny systemu polecania — zalecenie elementu
 
-Pierwszy sześć kolumn reprezentuje dany użytkownik identyfikatorów zaleca elementów, zgodnie z danych wejściowych. Pięć kolumn reprezentują elementy zalecając użytkownikowi w kolejności malejącej zgodności. Na przykład w pierwszym wierszu restauracji zalecany dla klienta U1048 jest 134986, a następnie 135018, 134975 135021 i 132862.
+Pierwsze sześć kolumn reprezentuje danego użytkownika identyfikatory elementy, zgodnie z informacjami od danych wejściowych. Pięciu kolumnach reprezentują elementy zalecając użytkownikowi malejąco według istotności. Na przykład w pierwszym wierszu restauracji zalecany dla klienta U1048 jest 134986, a następnie 135018, 134975, 135021 i 132862.
 
-**Znajdź użytkowników, związane z danego użytkownika**
+**Znajdź użytkowników skojarzoną z danym użytkownikiem**
 
-Wybierając **powiązanych użytkowników** w obszarze **rodzaj prognozowania polecania**, jest wysyłane żądanie systemu polecania można znaleźć powiązanych użytkowników do danego użytkownika. Powiązanych użytkowników są użytkownicy, którzy mają podobne preferencje. Ostatni parametr, aby wybrać w tym scenariuszu jest *powiązane wybór użytkownika*. Opcja **od użytkowników czy oceną elementy (ocena modelu)** jest przeznaczone głównie dla oceny modelu podczas procesu szkolenia. Wybierz **od wszystkich użytkowników** etap prognozowania. Obraz [polecania Matchbox wynik] [ score-matchbox-recommender] dane wyjściowe wyglądają następująco rysunku 23.
+Wybierając **powiązanych użytkowników** w obszarze **rodzaj prognozowania polecania**, jest wysyłane żądanie systemu polecania w poszukiwaniu powiązanych użytkowników do danego użytkownika. Powiązanych użytkowników są użytkowników, którzy mają podobne preferencje. Ostatni parametr, aby wybrać w tym scenariuszu jest *powiązane wybór użytkownika*. Opcja **od użytkowników czy oceniono jako elementy (ocena modelu)** jest przeznaczone głównie dla oceny modelu w procesie szkolenia. Wybierz **od wszystkich użytkowników** etap prognozy. Wizualizację [polecania Matchbox wynik] [ score-matchbox-recommender] dane wyjściowe wyglądają następująco ilustracja 23.
 
 ![Wynik oceny systemu polecania — powiązanych użytkowników](./media/interpret-model-results/23.png)
 
-Rysunek 23. Wizualizacja wyników klasyfikacji systemu polecania — powiązanych użytkowników
+Ilustracja 23. Wizualizacja wyników klasyfikacji systemu polecania — powiązanych użytkowników
 
-Pierwszy sześć kolumn pokazuje danego użytkownika identyfikatorów musiała znaleźć powiązanych użytkowników określonych danych wejściowych. Pięć kolumn przechowywać przewidywane powiązanych użytkowników użytkownika w porządku malejącym istotności. Na przykład w pierwszym wierszu klienta najbardziej odpowiednie dla klienta U1048 jest U1051, a następnie U1066, U1044 U1017 i U1072.
+Pierwsze sześć kolumn pokazuje danego użytkownika identyfikatory potrzebne do odnalezienia powiązanych użytkowników, zgodnie z informacjami od danych wejściowych. Pięciu kolumnach przechowywać przewidywane powiązanych użytkowników użytkownika malejąco według zgodności. Na przykład w pierwszym wierszu najistotniejsze klienta dla klienta U1048 jest U1051, a następnie U1066, U1044, U1017 i U1072.
 
-**Znajdź elementy powiązane z danego elementu**
+**Znajdować elementy związane z danego elementu**
 
-Wybierając **elementy pokrewne** w obszarze **rodzaj prognozowania polecania**, prośbę o system polecania, aby znaleźć elementy pokrewne do danego elementu. Powiązane elementy są elementy najczęściej być łączone przez tego samego użytkownika. Ostatni parametr, aby wybrać w tym scenariuszu jest *powiązane Wybór elementu*. Opcja **z oceną elementy (ocena modelu)** jest przeznaczone głównie dla oceny modelu podczas procesu szkolenia. Wybrany **z wszystkich elementów** dla tego etapu prognozowania. Obraz [polecania Matchbox wynik] [ score-matchbox-recommender] dane wyjściowe wyglądają następująco 24 rysunku.
+Wybierając **powiązane elementy** w obszarze **rodzaj prognozowania polecania**, prośbę o system polecania, aby znaleźć elementy powiązane z danym elementem. Powiązane elementy są najczęściej być polubionych przez tego samego użytkownika elementów. Ostatni parametr, aby wybrać w tym scenariuszu jest *powiązane zaznaczenie elementu*. Opcja **z oceniono jako elementy (ocena modelu)** jest przeznaczone głównie dla oceny modelu w procesie szkolenia. Wybraliśmy **z wszystkich elementów** etap prognozy. Wizualizację [polecania Matchbox wynik] [ score-matchbox-recommender] dane wyjściowe wyglądają następująco rysunek 24.
 
 ![Wynik oceny systemu polecania — elementy pokrewne](./media/interpret-model-results/24.png)
 
 Rysunek 24. Wizualizacja wyników klasyfikacji systemu polecania — elementy pokrewne
 
-Pierwszy sześć kolumn reprezentuje danego elementu identyfikatorów potrzebne do odnalezienia elementy pokrewne określone dane wejściowe. Pięć kolumn przechowywać przewidywane elementy pokrewne elementu w porządku malejącym pod względem istotności. Na przykład w pierwszym wierszu element najbardziej odpowiednie dla elementu 135026 jest 135074, a następnie 135035, 132875 135055 i 134992.
+Pierwsze sześć kolumn reprezentuje danego elementu identyfikatory potrzebne do odnalezienia elementy pokrewne, zgodnie z informacjami od danych wejściowych. Pięciu kolumnach przechowywać przewidywane powiązane elementy elementu w porządku malejącym pod kątem istotności. Na przykład w pierwszym wierszu najbardziej istotnych elementów dla elementu 135026 jest 135074, a następnie 135035, 132875, 135055 i 134992.
 
-**Publikowania usług sieci Web**
+**Publikacja usług sieci Web**
 
-Proces publikowania tych eksperymenty jako usługi sieci web, aby uzyskać prognoz przypomina dla każdego z czterech scenariuszy. W tym miejscu traktujemy drugi scenariusz (zalecamy elementów do danego użytkownika), na przykład. Można użyć tej samej procedury z trzech pozostałych.
+Proces publikowania tych doświadczeń jako usługi sieci web, aby uzyskiwać prognozy jest podobny dla każdego z czterech scenariuszy. W tym miejscu podejmujemy drugi scenariusz (zaleca się elementy do danego użytkownika), na przykład. Aby wykonać tę samą procedurę z pozostałych trzech.
 
-Zapisywanie systemu przeszkolone polecania jako uczonego modelu i filtrowanie danych wejściowych z kolumną Identyfikatora pojedynczego użytkownika, zgodnie z wymaganiami, można Podłączanie eksperymentu jak rysunek 25 i opublikujesz je jako usługi sieci web.
+Zapisywanie systemu uczonego polecania jako uczonego modelu i filtrowanie danych wejściowych z kolumną identyfikator pojedynczego użytkownika, zgodnie z żądaniem, możesz podpiąć eksperymentu, tak jak rysunek 25 i opublikujesz je jako usługi sieci web.
 
-![Ocenianie eksperymentu problem zalecenie restauracji](./media/interpret-model-results/25.png)
+![Ocenianie eksperymentu restauracji zalecenie dotyczące problemu](./media/interpret-model-results/25.png)
 
-Rysunek 25. Ocenianie eksperymentu problem zalecenie restauracji
+Ilustracja 25. Ocenianie eksperymentu restauracji zalecenie dotyczące problemu
 
-Uruchomiona usługa sieci web, zwrócony wynik wygląda jak 26 rysunku. Pięć restauracji zalecane dla użytkownika U1048 są 134986, 135018 134975, 135021 i 132862.
+Uruchomiona usługa sieci web, zwracany wynik wygląda jak rysunek 26. Pięć restauracji zalecane dla użytkownika U1048 są 134986 135018, 134975, 135021 i 132862.
 
-![Przykładowe usługa systemowa polecania](./media/interpret-model-results/25_1.png)
+![Przykładowe polecania usługę systemową](./media/interpret-model-results/25_1.png)
 
 ![Przykładowe wyniki eksperymentu](./media/interpret-model-results/26.png)
 
-Rysunek 26. Wynikiem usługi sieci Web restauracji zalecenie problemu
+Ilustracja 26. Wynik usługi sieci Web restauracji zalecenie dotyczące problemu
 
 <!-- Module References -->
 [assign-to-clusters]: https://msdn.microsoft.com/library/azure/eed3ee76-e8aa-46e6-907c-9ca767f5c114/

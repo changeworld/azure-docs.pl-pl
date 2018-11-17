@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 68f987daff5bc0ef81c248f6f5e75aaf1318b025
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 6a302c611b7c71dd8bc8c472330b79ea21504770
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395495"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824629"
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Dodawanie, aktualizowanie lub usuwanie karty kredytowej lub debetowej dla platformy Azure
 
@@ -40,7 +40,7 @@ W Centrum konta możesz dodać nową kartę kredytową, aktualizowanie istnieją
 1. Wybierz pozycję "+" Aby dodać kartę.
 
     ![Zrzut ekranu pokazujący opcję Edytuj obok formy płatności.](./media/billing-how-to-change-credit-card/editcard_new.png)
-1. Wprowadź środków lub Obciążenie szczegóły karty.
+1. Wprowadź szczegółowe informacje o karcie kredytowej lub debetowej.
 1. Wybierz pozycję **Zapisz**. 
 
 Jeśli wystąpi błąd, po dodaniu karty kredytowej, zobacz [karty kredytowej odrzucone podczas tworzenia konta platformy Azure](billing-credit-card-fails-during-azure-sign-up.md).
@@ -82,7 +82,7 @@ Jeśli musisz usunąć karty kredytowej lub debetowej, przed zakończeniem 90-dn
 
 ### <a name="why-do-i-keep-getting-your-login-session-has-expired-please-click-here-to-log-back-in"></a>Dlaczego wciąż "Twoja sesja logowania wygasła. Kliknij tutaj, aby ponownie się zalogować"?
 
-Jeśli ten komunikat o błędzie nadal jest wyświetlany, nawet jeśli już zalogowano i ponownie w, spróbuj ponownie, używając prywatnego sesji przeglądania.
+Jeśli nadal jest wyświetlany ten komunikat o błędzie nawet wtedy, gdy użytkownik został już zalogowany w i w, spróbuj ponownie, używając prywatnego sesji przeglądania.
 
 ### <a name="how-do-i-use-a-different-card-for-each-subscription-i-have"></a>Jak używać innej karty dla każdej subskrypcji, który jest dostępny?
 
