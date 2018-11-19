@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: bd440e0ef017e2bf116e80ad049883e2338efddb
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9dead2c8801340a736b6f67010a85f3dd34fbe85
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298951"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820264"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Ciągłe wdrażanie w usłudze Azure App Service
 W tym artykule dowiesz się, jak skonfigurować ciągłe wdrażanie dla [usługi Azure App Service](app-service-web-overview.md). Usługa App Service umożliwia ciągłe wdrażanie z usług BitBucket, GitHub i [usługom DevOps platformy Azure](https://www.visualstudio.com/team-services/) przez pobieranie najnowszych aktualizacji z istniejącym repozytorium w jednej z tych usług.
@@ -152,5 +152,5 @@ W menu po lewej stronie kliknij **Centrum wdrażania** > **GitHub** lub **usług
 [Dokumentacja usługi Git]: http://git-scm.com/documentation
 
 [Tworzenie repozytorium (GitHub)]: https://help.github.com/articles/create-a-repo
-[Tworzenie repozytorium (BitBucket)]: https://confluence.atlassian.com/display/BITBUCKET/Create+an+Account+and+a+Git+Repo
+[Tworzenie repozytorium (BitBucket)]: https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html
 [Rozpoczynanie pracy z usługami DevOps platformy Azure]: https://www.visualstudio.com/docs/vsts-tfs-overview

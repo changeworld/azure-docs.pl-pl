@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.openlocfilehash: 7b6752196d3512ab3ede4f5e339d681948e732e8
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715591"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853765"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Jak dołączyć Azure Monitor wykrywający sytuacje, maszyny wirtualne (wersja zapoznawcza)
 W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla maszyn wirtualnych w celu monitorowania kondycji systemu operacyjnego w maszynach wirtualnych platformy Azure i zestawów skalowania maszyn wirtualnych i maszyn wirtualnych w danym środowisku, łącznie z odnajdywania oraz mapowania zależności aplikacji może być hostowana na nich.  
