@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 85016ffb412b9f8773606639eb1496ac8ad251a7
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 23a62197d20901347be247d331e21d076bcf9e83
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729996"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288037"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Szybki start: tworzenie potoku wyszukiwania poznawczego przy użyciu umiejętności i przykładowych danych
 
@@ -26,10 +26,16 @@ W tym przewodniku Szybki start wypróbujesz potok wzbogacania w witrynie [Azure 
 * Uruchom kreatora (umiejętność rozpoznawania jednostek wykrywa osoby, lokalizacje i organizacje).
 * Użyj [Eksploratora wyszukiwania](search-explorer.md), aby wykonywać zapytania o wzbogacone dane.
 
+## <a name="supported-regions"></a> Obsługiwane regiony
+
 Wyszukiwanie poznawcze możesz wypróbować w usłudze Azure Search utworzonej w następujących regionach:
 
+* Środkowo-zachodnie stany USA
 * Środkowo-południowe stany USA
+* Wschodnie stany USA
 * Europa Zachodnia
+* Europa Północna
+* Azja Południowo-Wschodnia
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -57,7 +63,7 @@ Najpierw utwórz konto usługi Azure Search.
 
 1. W obszarze Grupa zasobów utwórz grupę zasobów, która będzie zawierała wszystkie zasoby utworzone w tym przewodniku Szybki start. Ułatwi to wyczyszczenie zasobów po ukończeniu tego przewodnika Szybki start.
 
-1. W polu Lokalizacja wybierz wartość **Południowo-środkowe stany USA** lub **Europa Zachodnia**. Obecnie wersja zapoznawcza jest dostępna tylko w tych regionach.
+1. Jako lokalizację wybierz jeden z [obsługiwanych regionów](#supported-regions) dla usługi Cognitive Search.
 
 1. W obszarze Warstwa cenowa możesz utworzyć usługę w warstwie **Bezpłatna**, aby ukończyć samouczki i przewodniki Szybki start. Na potrzeby głębszej analizy z wykorzystaniem własnych danych możesz utworzyć [płatną usługę](https://azure.microsoft.com/pricing/details/search/), taką jak usługa w warstwie **Podstawowa** lub **Standardowa**. 
 

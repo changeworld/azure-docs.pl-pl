@@ -12,75 +12,63 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: node
 ms.workload: na
-ms.date: 05/02/2018
+ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 25e9095561f72583bad86aa96b64a412e0983ab6
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 9bdf3d319735d8d4ca85235dfb949d440bba9a02
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702361"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615080"
 ---
-# <a name="get-started-with-relay-hybrid-connections-websockets-in-node"></a>Wprowadzenie do obiektów WebSocket połączeń hybrydowych usługi Relay w języku Node
+# <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Wprowadzenie do obiektów WebSocket połączeń hybrydowych usługi Relay w środowisku Node.js
 
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Ten samouczek zawiera wprowadzenie do funkcji obiektów WebSocket [połączeń hybrydowych usługi Azure Relay](relay-what-is-it.md#hybrid-connections). Pokazano w nim, jak w środowisku Node.js utworzyć aplikację kliencką, która wysyła komunikaty obiektów WebSocket do odpowiadającej jej aplikacji odbiornika.
+W tym przewodniku Szybki start utworzysz aplikacje nadawcy i odbiorcy w środowisku Node.js umożliwiające wysyłanie i odbieranie komunikatów przy użyciu obiektów WebSocket połączeń hybrydowych w usłudze Azure Relay. Aby uzyskać więcej ogólnych informacji o usłudze Azure Relay, zobacz [Azure Relay](relay-what-is-it.md). 
 
-## <a name="what-will-be-accomplished"></a>Co zostanie osiągnięte?
-
-Połączenia hybrydowe wymagają zarówno składnika klienta, jak i składnika serwera, dlatego w tym samouczku utworzysz dwie aplikacje konsolowe. Oto konkretne kroki:
+W tym przewodniku Szybki start wykonasz następujące kroki: 
 
 1. Utworzenie przestrzeni nazw usługi Relay za pomocą witryny Azure Portal.
-2. Tworzenie połączenia hybrydowego za pomocą witryny Azure Portal.
-3. Napisanie aplikacji konsolowej serwera służącej do odbierania komunikatów.
-4. Napisanie aplikacji konsolowej klienta służącej do wysyłania komunikatów.
+2. Utworzenie połączenia hybrydowego w tej przestrzeni nazw za pomocą witryny Azure Portal.
+3. Napisanie aplikacji konsolowej serwera (odbiornika) służącej do odbierania komunikatów.
+4. Napisanie aplikacji konsolowej klienta (nadawcy) służącej do wysyłania komunikatów.
+5. Uruchamianie aplikacji. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Środowisko [Node.js](https://nodejs.org/en/).
-2. Subskrypcja platformy Azure.
+- Środowisko [Node.js](https://nodejs.org/en/).
+- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Tworzenie przestrzeni nazw za pomocą usługi Azure Portal
-
-Jeśli przestrzeń nazw usługi Relay została już utworzona, przejdź do sekcji [Tworzenie połączenia hybrydowego za pomocą witryny Azure Portal](#2-create-a-hybrid-connection-using-the-azure-portal).
-
+## <a name="create-a-namespace"></a>Tworzenie przestrzeni nazw
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
-## <a name="2-create-a-hybrid-connection-using-the-azure-portal"></a>2. Tworzenie połączenia hybrydowego za pomocą witryny Azure Portal
-
-Jeśli masz już utworzone połączenie hybrydowe, przejdź do sekcji [Tworzenie aplikacji serwera](#3-create-a-server-application-listener).
-
+## <a name="create-a-hybrid-connection"></a>Tworzenie połączenia hybrydowego
 [!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
 
-## <a name="3-create-a-server-application-listener"></a>3. Tworzenie aplikacji serwera (odbiornika)
-
+## <a name="create-a-server-application-listener"></a>Tworzenie aplikacji serwera (odbiornika)
 Aby nasłuchiwać i odbierać komunikaty z usługi Relay, napisz aplikację konsolową Node.js.
 
 [!INCLUDE [relay-hybrid-connections-node-get-started-server](../../includes/relay-hybrid-connections-node-get-started-server.md)]
 
-## <a name="4-create-a-client-application-sender"></a>4. Tworzenie aplikacji klienta (nadawcy)
-
+## <a name="create-a-client-application-sender"></a>Tworzenie aplikacji klienta (nadawcy)
 Aby wysyłać komunikaty do usługi Relay, napisz aplikację konsolową Node.js.
 
 [!INCLUDE [relay-hybrid-connections-node-get-started-client](../../includes/relay-hybrid-connections-node-get-started-client.md)]
 
-## <a name="5-run-the-applications"></a>5. Uruchamianie aplikacji
+## <a name="run-the-applications"></a>Uruchamianie aplikacji
 
 1. Uruchom aplikację serwera: w wierszu polecenia Node.js wpisz `node listener.js`.
 2. Uruchom aplikację klienta: w wiersza polecenia Node.js wpisz `node sender.js`, a następnie wpisz dowolny tekst.
 3. Upewnij się, że w konsoli aplikacji serwera pojawia się tekst wprowadzony w aplikacji klienta.
 
-![running-applications](./media/relay-hybrid-connections-node-get-started/running-applications.png)
+    ![running-applications](./media/relay-hybrid-connections-node-get-started/running-applications.png)
 
 Gratulacje! Aplikacja typu end-to-end do obsługi połączeń hybrydowych korzystająca ze środowiska Node.js jest gotowa.
 
 ## <a name="next-steps"></a>Następne kroki
+W tym przewodniku Szybki start utworzono aplikacje klienta i serwera w środowisku Node.js służące do wysyłania i odbierania komunikatów za pomocą obiektów WebSocket. Funkcja połączeń hybrydowych usługi Azure Relay obsługuje również wysyłanie i odbieranie komunikatów przy użyciu protokołu HTTP. Aby dowiedzieć się, jak używać protokołu HTTP z funkcją połączeń hybrydowych usługi Azure Relay, zobacz [Przewodnik Szybki start dotyczący protokołu HTTP w środowisku Node.js](relay-hybrid-connections-http-requests-node-get-started.md).
 
-* [Często zadawane pytania dotyczące usługi Relay](relay-faq.md)
-* [Tworzenie przestrzeni nazw](relay-create-namespace-portal.md)
-* [Wprowadzenie do programu .NET](relay-hybrid-connections-dotnet-get-started.md)
-* [Wprowadzenie do programu Node](relay-hybrid-connections-node-get-started.md)
+W tym przewodniku Szybki start za pomocą środowiska Node.js utworzono aplikacje klienta i serwera. Aby dowiedzieć się, jak pisać aplikacje klienta i serwera na platformie .NET Framework, zobacz [Przewodnik Szybki start dotyczący obiektów WebSocket na platformie .NET](relay-hybrid-connections-dotnet-get-started.md) lub [Przewodnik Szybki start dotyczący protokołu HTTP na platformie .NET](relay-hybrid-connections-http-requests-dotnet-get-started.md).
+
 

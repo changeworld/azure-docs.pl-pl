@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/6/2018
+ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4873da97b790df98b6d10ae8b7a57fc39b534755
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8a3a9e4019be0b6039fe43df11a5f6093545f9cd
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278586"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685364"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal
 
@@ -97,46 +97,36 @@ Utwórz kolejną podsieć z nazwą **Jump-SN** i zakresem adresów **10.0.3.0/24
 
 Teraz utwórz maszyny wirtualne przesiadkową i obciążeń, a następnie umieść je w odpowiednich podsieciach.
 
-1. Na stronie głównej witryny Azure Portal kliknij pozycję **Wszystkie usługi**.
-2. W obszarze **Obliczanie** kliknij pozycję **Maszyny wirtualne**.
-3. Kliknij kolejno pozycje **Dodaj** > **Windows Server** > **Windows Server 2016 Datacenter** > **Utwórz**.
+1. W witrynie Azure Portal kliknij pozycję **Utwórz zasób**.
+2. Kliknij pozycję **Compute** (Wystąpienia obliczeniowe), a następnie z listy Polecane wybierz pozycję **Windows Server 2016 Datacenter**.
+3. Wprowadź poniższe wartości dla maszyny wirtualnej:
 
-**Podstawy**
+    - *Test-FW-RG* — jako grupę zasobów.
+    - *Srv-Jump* — jako nazwę maszyny wirtualnej.
+    - *azureuser* — jako nazwę użytkownika administratora.
+    - *Azure123456!* jako hasło.
 
-1. W obszarze **Nazwa** wpisz wartość **Srv-Jump**.
-5. Wpisz nazwę użytkownika i hasło.
-6. W polu **Subskrypcja** wybierz subskrypcję.
-7. W obszarze **Grupa zasobów** kliknij opcję **Użyj istniejącej** > **Test-FW-RG**.
-8. W polu **Lokalizacja** wybierz tę samą lokalizację, która była używana poprzednio.
-9. Kliknij przycisk **OK**.
+4. W obszarze **Reguły portów wejściowych** dla ustawienia **Publiczne porty wejściowe** kliknij opcję **Zezwalaj na wybrane porty**.
+5. W obszarze **Wybierz porty wejściowe** wybierz pozycję **RDP (3389)**.
 
-**Rozmiar**
-
-1. Wybierz odpowiedni rozmiar dla testowej maszyny wirtualnej z systemem Windows Server. Na przykład **B2ms** (8 GB pamięci RAM, 16 GB magazynu).
-2. Kliknij pozycję **Wybierz**.
-
-**Ustawienia**
-
-1. W obszarze **Sieć** w polu **Sieć wirtualna** wybierz pozycję **Test-FW-VN**.
-2. W polu **Podsieć** wybierz pozycję **Jump-SN**.
-3. W obszarze **Wybierz publiczne porty wejściowe** wybierz pozycję **RDP (3389)**. 
-
-    Będziesz chcieć ograniczyć dostęp do swojego publicznego adresu IP, ale musisz otworzyć port 3389, aby móc nawiązać połączenie pulpitu zdalnego z serwerem przesiadkowym. 
-2. Pozostaw pozostałe ustawienia domyślne i kliknij przycisk **OK**.
-
-**Podsumowanie**
-
-Przejrzyj podsumowanie, a następnie kliknij pozycję **Utwórz**. Ukończenie tej operacji potrwa kilka minut.
+6. Zaakceptuj pozostałe wartości domyślne, a następnie kliknij pozycję **Dalej: Dyski**.
+7. Zaakceptuj ustawienia domyślne dysku, a następnie kliknij pozycję **Dalej: Sieć**.
+8. Upewnij się, że wybrano sieć wirtualną **Test-FW-VN** i podsieć **Jump-SN**.
+9. W obszarze **Publiczny adres IP** kliknij pozycję **Utwórz nowy**.
+10. Wpisz **Srv-Jump-PIP** jako nazwę publicznego adresu IP i kliknij przycisk **OK**.
+11. Zaakceptuj pozostałe wartości domyślne, a następnie kliknij pozycję **Dalej: Zarządzanie**.
+12. Kliknij pozycję **Wyłączone**, aby wyłączyć diagnostykę rozruchu. Zaakceptuj pozostałe wartości domyślne, a następnie kliknij pozycję **Przegląd + utwórz**.
+13. Przejrzyj ustawienia na stronie podsumowania, a następnie kliknij przycisk **Utwórz**.
 
 Powtórz ten proces, aby utworzyć inną maszynę wirtualną o nazwie **Srv-Work**.
 
-Skorzystaj z informacji w poniższej tabeli, aby skonfigurować **ustawienia** dla maszyny wirtualnej Srv-Work. Pozostała część konfiguracji jest taka sama jak w przypadku maszyny wirtualnej Srv-Jump.
+Skorzystaj z informacji w poniższej tabeli, aby skonfigurować maszynę wirtualną Srv-Work. Pozostała część konfiguracji jest taka sama jak w przypadku maszyny wirtualnej Srv-Jump.
 
 |Ustawienie  |Wartość  |
 |---------|---------|
 |Podsieć|Workload-SN|
 |Publiczny adres IP|Brak|
-|Wybieranie publicznych portów wejściowych|Brak publicznych portów wejściowych|
+|Publiczne porty wejściowe|Brak|
 
 ## <a name="deploy-the-firewall"></a>Wdrażanie zapory
 
@@ -196,15 +186,16 @@ Jest to reguła aplikacji, która umożliwia ruchowi wychodzącemu dostęp do wi
 
 1. Otwórz pozycję **Test-FW-RG** i kliknij zaporę **Test-FW01**.
 2. Na stronie **Test-FW01** w obszarze **Ustawienia** kliknij pozycję **Reguły**.
-3. Kliknij pozycję **Dodaj kolekcję reguł aplikacji**.
-4. W polu **Nazwa** wpisz wartość **App-Coll01**.
-5. W polu **Priorytet** wpisz wartość **200**.
-6. W polu **Akcja** wybierz opcję **Zezwalaj**.
-7. W obszarze **Reguły** w polu **Nazwa** wpisz wartość **AllowGH**.
-8. W polu **Adresy źródłowe** wpisz wartość **10.0.2.0/24**.
-9. W polu **Protocol:port** wpisz wartość **http, https**.
-10. W polu **Docelowa nazwa FQDN** wpisz wartość **github.com**
-11. Kliknij pozycję **Add** (Dodaj).
+3. Kliknij kartę **Kolekcja reguł aplikacji**.
+4. Kliknij pozycję **Dodaj kolekcję reguł aplikacji**.
+5. W polu **Nazwa** wpisz wartość **App-Coll01**.
+6. W polu **Priorytet** wpisz wartość **200**.
+7. W polu **Akcja** wybierz opcję **Zezwalaj**.
+8. W obszarze **Reguły**, **Docelowa nazwa FQDN** w polu **Nazwa** wpisz wartość **AllowGH**.
+9. W polu **Adresy źródłowe** wpisz wartość **10.0.2.0/24**.
+10. W polu **Protocol:port** wpisz wartość **http, https**.
+11. W polu **Docelowa nazwa FQDN** wpisz wartość **github.com**
+12. Kliknij pozycję **Add** (Dodaj).
 
 Usługa Azure Firewall zawiera wbudowaną kolekcję reguł dla nazw FQDN infrastruktury, które domyślnie są dozwolone. Te nazwy FQDN są specyficzne dla platformy i nie można ich używać do innych celów. Aby uzyskać więcej informacji, zobacz [Infrastrukturalne nazwy FQDN](infrastructure-fqdns.md).
 
@@ -212,6 +203,7 @@ Usługa Azure Firewall zawiera wbudowaną kolekcję reguł dla nazw FQDN infrast
 
 Jest to reguła sieci, która umożliwia ruchowi wychodzącemu dostęp do dwóch adresów IP na porcie 53 (DNS).
 
+1. Kliknij kartę **Kolekcja reguł sieci**.
 1. Kliknij pozycję **Dodaj kolekcję reguł sieci**.
 2. W polu **Nazwa** wpisz wartość **Net-Coll01**.
 3. W polu **Priorytet** wpisz wartość **200**.

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: cd33b7cb45bb165a120a7efe20eba962ec75e273
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9d10464dac8d9e47d80f11b8bfaf70740e3ad250
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252143"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567098"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrowanie maszyn wirtualnych usług Amazon Web Services (AWS) na platformę Azure
 
@@ -241,7 +241,10 @@ Uruchom rzeczywisty tryb failover dla wystąpień usługi EC2, aby zmigrować je
 1. W obszarze **Chronione elementy** > **Zreplikowane elementy** wybierz wystąpienia usług AWS, a następnie wybierz pozycję **Tryb failover**.
 2. W obszarze **Tryb failover** wybierz **Punkt odzyskiwania**, z którego chcesz skorzystać do przełączenia w tryb failover. Wybierz najnowszy punkt odzyskiwania, a następnie uruchom tryb failover. Na stronie **Zadania** można śledzić postęp trybu failover.
 1. Upewnij się, że maszyna wirtualna jest wyświetlana w obszarze **Zreplikowane elementy**.
-2. Kliknij prawym przyciskiem myszy każdą maszynę wirtualną, a następnie wybierz polecenie **Zakończ migrację**. Spowoduje to zakończenie procesu migracji, zatrzymanie replikacji maszyny wirtualnej usług AWS oraz zatrzymanie naliczania opłat za usługę Site Recovery dla maszyny wirtualnej.
+2. Kliknij prawym przyciskiem myszy każdą maszynę wirtualną, a następnie wybierz polecenie **Zakończ migrację**. Spowoduje to wykonanie następujących czynności:
+
+    - Spowoduje to zakończenie procesu migracji, zatrzymanie replikacji maszyny wirtualnej usług AWS oraz zatrzymanie naliczania opłat za usługę Site Recovery dla maszyny wirtualnej.
+    - W tym kroku oczyszczane są dane replikacji. Nie są jednak usuwane migrowane maszyny wirtualne. 
 
     ![Kończenie migracji](./media/migrate-tutorial-aws-azure/complete-migration.png)
 

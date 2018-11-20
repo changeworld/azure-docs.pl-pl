@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 10/08/2018
+ms.date: 11/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 3cc87c0acbed317cccaccec687f27c23a1d32cf0
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 132fca9c8904c4f64fffe167e3a3f2c6bb0d2cfe
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319340"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621031"
 ---
 # <a name="what-is-azure-relay"></a>Co to jest usługa Azure Relay?
-Usługa Azure Relay umożliwia bezpieczne uwidacznianie usług uruchomionych w sieci firmowej do chmury publicznej. Możesz to zrobić bez otwierania połączenia przez zaporę lub wprowadzania niepożądanych zmian w firmowej infrastrukturze sieci. 
+Usługa Azure Relay umożliwia bezpieczne uwidacznianie usług uruchomionych w sieci firmowej do chmury publicznej. Możesz to zrobić bez otwierania portu na zaporze lub wprowadzania niepożądanych zmian w firmowej infrastrukturze sieci. 
 
 Usługa przekazywania obsługuje następujące scenariusze pomiędzy usługami lokalnymi i aplikacjami uruchomionymi w chmurze lub w innym środowisku lokalnym. 
 
@@ -56,7 +56,7 @@ Aby uzyskać szczegółowe informacje o protokole połączenia hybrydowego, zoba
 > Połączenia hybrydowe usługi Azure Relay zastępują starą funkcję połączeń hybrydowych usług BizTalk Services. Funkcja połączeń hybrydowych w usługach BizTalk Services została oparta na funkcji przekaźnika WCF w usłudze Azure Service Bus. Możliwości funkcji połączeń hybrydowych w usłudze Azure Relay uzupełniają już istniejącą funkcję przekaźnika WCF. Te dwie możliwości usług (Przekaźnik WCF oraz Połączenia hybrydowe) istnieją obok siebie w usłudze Azure Relay. Korzystają one ze wspólnej bramy, ale pod innymi względami są to różne implementacje.
 
 ## <a name="wcf-relay"></a>Przekaźnik WCF
-Przekaźnik WCF działa z pełnym programem .NET Framework i technologią WCF. Należy utworzyć połączenie między usługą lokalną i usługą przekaźnika przy użyciu zestawu powiązań „przekaźników” WCF. W tle powiązania przekaźników są mapowane na nowe elementy powiązania transportu przeznaczone do tworzenia składników kanału WCF, które integrują się w chmurze z usługą Service Bus. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi WCF Relay](relay-wcf-dotnet-get-started.md).
+Przekaźnik WCF działa z pełnym programem .NET Framework i technologią WCF. Należy utworzyć połączenie między usługą lokalną i usługą przekaźnika przy użyciu zestawu powiązań „przekaźników” WCF. Powiązania przekaźników są mapowane na nowe elementy powiązania transportu przeznaczone do tworzenia składników kanału WCF, które integrują się w chmurze z usługą Service Bus. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi WCF Relay](relay-wcf-dotnet-get-started.md).
 
 ## <a name="hybrid-connections-vs-wcf-relay"></a>Połączenia hybrydowe i Przekaźnik WCF
 Zarówno połączenia hybrydowe, jak i przekaźniki WCF umożliwiają bezpieczne połączenie z zasobami istniejącymi w sieci firmowej. Użycie jednej lub drugiej zależy od Twoich konkretnych potrzeb zgodnie z opisem w poniższej tabeli:
@@ -68,7 +68,7 @@ Zarówno połączenia hybrydowe, jak i przekaźniki WCF umożliwiają bezpieczne
 | **.NET Framework** |x |x |
 | **Java script/Node.JS** | |x |
 | **Otwarty protokół oparty na standardach** | |x |
-| **Wiele modeli programowania RPC** | |x |
+| **Modele programowania RPC** | |x |
 
 ## <a name="architecture-processing-of-incoming-relay-requests"></a>Architektura: przetwarzanie przychodzących żądań przekaźnika
 Na poniższym diagramie przedstawiono sposób obsługiwania przychodzących żądań przekazywania przez usługę Azure Relay:

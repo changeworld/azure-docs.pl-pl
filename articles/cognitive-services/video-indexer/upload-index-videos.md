@@ -8,21 +8,22 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: sample
-ms.date: 09/15/2018
+ms.date: 11/12/2018
 ms.author: juliako
-ms.openlocfilehash: 53dc65c3d2c56308dd298f33bb78047904810ae5
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 513c64ba7c9dad29fbef4a4010f5320dadda3c82
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377833"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625185"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksowanie plików wideo  
 
 W tym artykule pokazano, jak przekazać plik wideo za pomocą usługi Azure Video Indexer. Interfejs API usługi Video Indexer zapewnia dwie opcje przekazywania: 
 
 * przekazywanie pliku wideo z adresu URL (opcja preferowana),
-* wysyłanie pliku wideo w postaci tablicy bajtów w treści żądania.
+* wysyłanie pliku wideo w postaci tablicy bajtów w treści żądania,
+* używanie istniejącego elementu zawartości usługi Azure Media Services przez podanie [identyfikatora elementu zawartości](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (obsługiwane tylko w przypadku płatnych kont).
 
 W tym artykule pokazano, jak za pomocą interfejsu API [przekazywania pliku wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) przekazywać i indeksować pliki wideo na podstawie adresów URL. Przykładowy kod podany w artykule zawiera oznaczony jako komentarz kod, w którym pokazano, jak przekazać tablicę bajtów.  
 
@@ -50,6 +51,35 @@ W tej sekcji opisano niektóre parametry opcjonalne i wyjaśniono, kiedy należy
 
 Ten parametr umożliwia określenie identyfikatora, który zostanie skojarzony z plikiem wideo. Ten identyfikator można zastosować do integracji z zewnętrznym systemem zarządzania zawartością wideo (VCM, Video Content Management). Pliki wideo znajdujące się w portalu usługi Video Indexer można wyszukiwać za pomocą tego określonego identyfikatora zewnętrznego.
 
+### <a name="callbackurl"></a>callbackUrl
+
+Adres URL używany do powiadamiania klienta (za pomocą żądania POST) o następujących zdarzeniach:
+
+- Zmiana stanu indeksowania: 
+    - Właściwości:    
+    
+        |Name (Nazwa)|Opis|
+        |---|---|
+        |id|Identyfikator wideo|
+        |state|Stan wideo|  
+    - Przykład: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
+- Osoba rozpoznana na filmie wideo:
+    - Właściwości
+    
+        |Name (Nazwa)|Opis|
+        |---|---|
+        |id| Identyfikator wideo|
+        |faceId|Identyfikator Face ID w indeksie wideo|
+        |knownPersonId|Identyfikator osoby, unikatowy w ramach danego modelu twarzy|
+        |personName|Imię i nazwisko osoby|
+        
+     - Przykład: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+
+#### <a name="notes"></a>Uwagi
+
+- Usługa Video Indexer zwraca wszelkie istniejące parametry podane w oryginalnym adresie URL.
+- Podany adres URL musi być zakodowany.
+
 ### <a name="indexingpreset"></a>indexingPreset
 
 Tego parametru należy użyć, jeśli nagrania nieprzetworzone lub zewnętrzne zawierają hałas w tle. Parametr ten służy do konfigurowania procesu indeksowania. Można określić następujące wartości:
@@ -60,11 +90,11 @@ Tego parametru należy użyć, jeśli nagrania nieprzetworzone lub zewnętrzne z
 
 Cena zależy od wybranej opcji indeksowania.  
 
-### <a name="callbackurl"></a>callbackUrl
+### <a name="priority"></a>priority
 
-Adres URL polecenia POST na potrzeby powiadamiania o zakończeniu indeksowania. Usługa Video Indexer dodaje do niego dwa parametry ciągu zapytania: identyfikator i stan. Na przykład jeśli adres URL wywołania zwrotnego to „https://test.com/notifyme?projectName=MyProject”, powiadomienie z dodatkowymi parametrami zostanie wysłane na adres „https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed”.
+Usługa Video Indexer indeksuje filmy wideo zgodnie z ich priorytetem. Użyj parametru **priority**, aby określić priorytet indeksu. Prawidłowe są następujące wartości: **Low** (niski), **Normal** (normalny — wartość domyślna), **High** (wysoki).
 
-Można również dodać więcej parametrów do adresu URL przed wysłaniem wywołania do usługi Video Indexer za pomocą polecenia POST i te parametry zostaną uwzględnione w wywołaniu zwrotnym. Później można przeanalizować w kodzie ciąg zapytania i pobrać z powrotem wszystkie określone parametry w ciągu zapytania (dane, który pierwotnie dołączono do adresu URL, wraz z informacjami dostarczonymi przez usługę Video Indexer). Adres URL musi być zakodowany.
+Parametr **priority** jest obsługiwany tylko w przypadku płatnych kont.
 
 ### <a name="streamingpreset"></a>streamingPreset
 

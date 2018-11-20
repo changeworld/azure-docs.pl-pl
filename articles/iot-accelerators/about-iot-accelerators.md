@@ -3,24 +3,24 @@ title: Wprowadzenie do akceleratorów rozwiązań Azure IoT | Microsoft Docs
 description: Informacje na temat akceleratorów rozwiązań Azure IoT. Akceleratory rozwiązań IoT to kompletne, kompleksowe oraz gotowe do wdrożenia rozwiązania IoT.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/24/2018
+ms.date: 11/09/2018
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 7020d8a1756702d8c2b1998eef5a3fc64809ca5e
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: aac079feefde53ff30cbeab942ee0443c113cdc8
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308116"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345117"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Co to są akceleratory rozwiązań Azure IoT?
 
-Oparte na chmurze rozwiązanie IoT zazwyczaj używa niestandardowego kodu i wielu usług w chmurze do zarządzania łącznością urządzeń, przetwarzaniem i analizą danych oraz prezentacją.
+Oparte na chmurze rozwiązanie IoT zazwyczaj używa niestandardowego kodu i usług w chmurze do zarządzania łącznością urządzeń, przetwarzaniem i analizą danych oraz prezentacją.
 
-Akceleratory rozwiązań IoT to kolekcja kompletnych, gotowych do wdrożenia rozwiązań IoT, które implementują typowe scenariusze IoT, takie jak zdalne monitorowanie, połączona fabryka, konserwacja predykcyjna i symulacja urządzenia. Podczas wdrażania akceleratora rozwiązania uwzględniane są wszystkie wymagane usługi w chmurze wraz z wszelkim wymaganym kodem aplikacji.
+Akceleratory rozwiązań IoT to kompletne, gotowe do wdrożenia rozwiązania IoT, w których zaimplementowano typowe scenariusze IoT. Te scenariusze to na przykład zdalne monitorowanie, połączona fabryka, konserwacja predykcyjna i symulacja urządzenia. Podczas wdrażania akceleratora rozwiązania uwzględniane są wszystkie wymagane usługi w chmurze wraz z wszelkim wymaganym kodem aplikacji.
 
 Akceleratory rozwiązań to punkty wyjścia do Twoich własnych rozwiązań IoT. Kod źródłowy wszystkich akceleratorów rozwiązań jest typu open source i jest dostępny w witrynie GitHub. Zachęcamy do pobrania i dostosowania akceleratorów rozwiązań do swoich potrzeb.
 
@@ -34,7 +34,7 @@ Obecnie dostępne do wdrożenia są cztery akceleratory rozwiązań:
 
 ### <a name="remote-monitoring"></a>Zdalne monitorowanie
 
-Ten akcelerator rozwiązania umożliwia zbieranie danych telemetrycznych z wielu urządzeń zdalnych i sterowanie nimi. Przykładowe urządzenia to systemy chłodzenia zamontowane w placówce klienta lub zawory w odległych przepompowniach.
+Ten akcelerator rozwiązania umożliwia zbieranie danych telemetrycznych z urządzeń zdalnych i sterowanie nimi. Przykładowe urządzenia to systemy chłodzenia zamontowane w placówce klienta lub zawory w odległych przepompowniach.
 
 Za pomocą pulpitu nawigacyjnego zdalnego monitorowania można wyświetlać dane telemetryczne z połączonych urządzeń, aprowizować nowe urządzenia lub uaktualniać oprogramowanie układowe połączonych urządzeń:
 
@@ -58,7 +58,7 @@ Za pomocą pulpitu nawigacyjnego konserwacji predykcyjnej można wyświetlać an
 
 ### <a name="device-simulation"></a>Symulacja urządzenia
 
-Ten akcelerator rozwiązania umożliwia uruchamianie wielu symulowanych urządzeń, które generują realistyczne dane telemetryczne. Za pomocą tego akceleratora rozwiązania możesz przetestować zachowanie innych akceleratorów rozwiązań oraz własnych niestandardowych rozwiązań IoT.
+Ten akcelerator rozwiązania umożliwia uruchamianie symulowanych urządzeń, które generują realistyczne dane telemetryczne. Za pomocą tego akceleratora rozwiązania możesz przetestować zachowanie innych akceleratorów rozwiązań oraz własnych niestandardowych rozwiązań IoT.
 
 Za pomocą aplikacji internetowej symulacji urządzenia można konfigurować i uruchamiać symulacje:
 
@@ -93,7 +93,7 @@ Akceleratory rozwiązań można wdrażać z witryny [akceleratorów rozwiązań 
 
 Akcelerator rozwiązania monitorowania zdalnego można wdrażać w następujących konfiguracjach:
 
-* **Standardowa:** rozwinięte wdrożenie infrastruktury na potrzeby opracowywania wdrożenia produkcyjnego. Mikrousługi są wdrażane na wielu maszynach wirtualnych platformy Azure za pomocą usługi Azure Container Service. Platforma Kubernetes zarządza kontenerami aparatu Docker, w których są hostowane poszczególne mikrousługi.
+* **Standardowa:** rozwinięte wdrożenie infrastruktury na potrzeby opracowywania wdrożenia produkcyjnego. Mikrousługi są wdrażane na kilku maszynach wirtualnych platformy Azure za pomocą usługi Azure Container Service. Platforma Kubernetes zarządza kontenerami aparatu Docker, w których są hostowane poszczególne mikrousługi.
 * **Podstawowa:** tańsza wersja przeznaczona do celów demonstracyjnych i do testowania wdrożenia. Wszystkie mikrousługi są wdrażane na jednej maszynie wirtualnej platformy Azure.
 * **Lokalna:** wdrożenie na maszynie lokalnej na potrzeby testowania i opracowywania. W tym podejściu mikrousługi są wdrażane w lokalnym kontenerze Docker, a także nawiązywane jest połączenie z usługą IoT Hub i Azure Cosmos DB oraz usługami Azure Storage w chmurze.
 

@@ -10,12 +10,12 @@ ms.component: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 4caa05ffa96dbc15922fed85edfdefdb68ead68b
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 3a277b10561b2756fab0af6455d17557a8d93a53
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361715"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345712"
 ---
 # <a name="what-is-bing-spell-check-api"></a>Czym jest interfejs API sprawdzania pisowni Bing?
 
@@ -42,9 +42,12 @@ Interfejs API obsługuje dwa tryby sprawdzania: `Proof` i `Spell`.  Wypróbuj pr
 <br /><br/>**UWAGA:** jeśli długość tekstu zapytania przekracza 4096 znaków, tekst zostanie obcięty do 4096 znaków przed przetworzeniem zapytania. 
 ### <a name="spell----for-web-searchesqueries-scenario"></a>Spell — scenariusze dotyczące wyszukiwania w Internecie lub zapytań
 Tryb `Spell` jest bardziej agresywny i umożliwia zwrócenie lepszych wyników wyszukiwania. Tryb `Spell` odnajduje większość błędów pisowni, ale nie odnajduje części błędów gramatycznych, które wyłapuje tryb `Proof`, na przykład błędów użycia wielkiej litery i powtarzających się słów.
-<br /></br>**UWAGA:** maksymalna obsługiwana długość zapytania jest pokazana poniżej. Jeśli zapytanie jest dłuższe, zostanie wyświetlony wynik z informacją, że zapytanie nie zostało zmienione.
-<ul><li>130 znaków dla następujących kodów języka: en, de, es, fr, pl, pt, sv, ru, nl, nb, tr-tr, it, zh i ko. </li>
-<li>65 znaków dla pozostałych języków.</li></ul>
+
+> [!NOTE]
+> * Maksymalną obsługiwaną długość zapytania podano poniżej. Jeśli zapytanie przekracza maksymalną długość, zapytanie i jego wyniki nie zostaną zmienione.
+>    * 130 znaków dla następujących kodów języka: en, de, es, fr, pl, pt, sv, ru, nl, nb, tr-tr, it, zh i ko. 
+>    * 65 znaków dla wszystkich innych.
+> * Tryb sprawdzania pisowni nie obsługuje nawiasów kwadratowych (`[` i `]`) w zapytaniach i może spowodować niespójne wyniki. W przypadku używania trybu pisowni zalecamy usunięcie ich z zapytań.
 
 ## <a name="market-setting"></a>Ustawienie rynku
 W parametrze zapytania w adresie URL żądania należy określić rynek. W przeciwnym wypadku narzędzie określi domyślny rynek na podstawie adresu IP.

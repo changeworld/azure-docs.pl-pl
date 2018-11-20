@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 717ce40caccd1114f8bae762fe38ce986421a4c9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 120fe358e5c8afe63e98038ad353d5ebc45a1937
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306696"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636473"
 ---
 # <a name="import-an-api-app-as-an-api"></a>Importowanie aplikacji interfejsu API jako interfejsu API
 
@@ -34,7 +34,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 + Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md)
-+ Upewnij się, że Twoja subskrypcja obejmuje aplikację interfejsu API. Aby uzyskać więcej informacji, zobacz [Dokumentacja usługi App Service][https://docs.microsoft.com/azure/app-service/]
++ Upewnij się, że Twoja subskrypcja obejmuje aplikację interfejsu API. Aby uzyskać więcej informacji, zobacz [Dokumentacja usługi App Service](https://docs.microsoft.com/azure/app-service/)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -43,7 +43,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 1. Wybierz pozycję **Interfejsy API** w obszarze **API MANAGEMENT**.
 2. Wybierz pozycję **Aplikacja interfejsu API** z listy **Dodaj nowy interfejs API**.
 
-    !(API app)[./media/import-api-app-as-api/api-app.png]
+    ![Aplikacja interfejsu API](./media/import-api-app-as-api/api-app.png)
 3. Naciśnij pozycję **Przeglądaj**, aby wyświetlić listę aplikacji interfejsu API w ramach subskrypcji.
 4. Wybierz aplikację. Usługa APIM znajduje program Swagger skojarzony z wybraną aplikacją, a następnie pobiera go i importuje. 
 

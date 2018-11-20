@@ -15,24 +15,38 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
 ms.custom: mvc
-ms.openlocfilehash: a29f0f4be6286f8acf367a3ea0b4b0e6b31e7d98
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9474b2d64c97b6e6d0fc06c3c448fa6e0515e70c
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406470"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633652"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Konfigurowanie aplikacji języka Python dla usługi Azure App Service w systemie Linux
 
 W tym artykule opisano, jak [usługa Azure App Service w systemie Linux](app-service-linux-intro.md) uruchamia aplikacje języka Python i jak można dostosować zachowanie usługi App Service w razie potrzeby.
 
+## <a name="set-python-version"></a>Ustawianie wersji języka Python
+
+Dostępne są dwa podstawowe obrazy: Python 3.6 i Python 3.7. Możesz utworzyć aplikację, korzystając z wybranego obrazu opartego na języku Python. Aby na przykład utworzyć aplikację przy użyciu języka Python 3.7, uruchom następujące polecenie w usłudze Cloud Shell:
+
+```azurecli-interactive
+az webapp create --resource-group <group_name> --plan <plan_name> --name <app_name> --runtime "PYTHON|3.7"
+```
+
+Aby zmienić wersję języka Python (podstawowego obrazu), na przykład na 3.6, uruchom następujące polecenie w usłudze Cloud Shell:
+
+```azurecli-interactive
+az webapp config set --resource-group <group_name> --name <app_name> --linux-fx-version "PYTHON|3.6"
+```
+
+Jeśli potrzebujesz innej wersji języka Python, należy zamiast tego utworzyć i wdrożyć własny obraz kontenera. Aby uzyskać więcej informacji, zobacz [Używanie niestandardowego obrazu platformy Docker dla usługi Web App for Containers](tutorial-custom-docker-image.md).
+
 ## <a name="container-characteristics"></a>Właściwości kontenera
 
-Aplikacje języka Python wdrażane w usłudze App Service w systemie Linux działają w kontenerze Docker, który jest zdefiniowany w repozytorium GitHub [Azure-App-Service/python container](https://github.com/Azure-App-Service/python/tree/master/3.7.0).
+Aplikacje języka Python wdrażane w usłudze App Service w systemie Linux działają w kontenerze Docker, który jest zdefiniowany w repozytorium GitHub — [Python 3.6](https://github.com/Azure-App-Service/python/tree/master/3.6.6) lub [Python 3.7](https://github.com/Azure-App-Service/python/tree/master/3.7.0).
 
 Ten kontener ma następujące cechy:
-
-- Podstawowy obraz kontenera to `python-3.7.0-slim-stretch`, co oznacza, że aplikacje są uruchamiane przy użyciu języka Python 3.7. Jeśli potrzebujesz innej wersji języka Python, należy zamiast tego utworzyć i wdrożyć własny obraz kontenera. Aby uzyskać więcej informacji, zobacz [Używanie niestandardowego obrazu platformy Docker dla usługi Web App for Containers](tutorial-custom-docker-image.md).
 
 - Aplikacje są uruchamiane przy użyciu [serwera HTTP Gunicorn WSGI](http://gunicorn.org/) z dodatkowymi argumentami `--bind=0.0.0.0 --timeout 600`.
 

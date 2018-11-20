@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5239788f06ed3e738d1f0b62ddcde77c2a13b5f2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: afc24d75b128c192efe14af061ac1df7521c7ef2
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241739"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621266"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Federowanie wielu wystąpień usługi Azure AD przy użyciu jednego wystąpienia usługi AD FS
 
@@ -47,7 +47,7 @@ Aby usługa AD FS w domenie contoso.com mogła uwierzytelniać użytkowników w 
  
 Domyślny wystawca ustawiany dla jednej domeny federacyjnej z usługą AD FS to „http://ADFSServiceFQDN/adfs/services/trust”, na przykład „http://fs.contoso.com/adfs/services/trust”. Usługa Azure Active Directory wymaga unikatowego wystawcy dla każdej domeny federacyjnej. Ponieważ ta sama usługa AD FS będzie federować dwie domeny, wartość wystawcy należy zmodyfikować tak, aby była unikatowa dla każdej domeny federowanej przez usługę AD FS z usługą Azure Active Directory. 
  
-Na serwerze usługi AD FS otwórz program Azure AD PowerShell i wykonaj następujące czynności:
+Na serwerze usług AD FS otwórz program PowerShell usługi Azure AD (upewnij się, że moduł MSOnline jest zainstalowany) i wykonaj następujące czynności:
  
 Nawiąż połączenie z usługą Azure Active Directory zawierającą domenę contoso.com (Connect-MsolService). Zaktualizuj ustawienia federacji domeny contoso.com (Update-MsolFederatedDomain -DomainName contoso.com –SupportMultipleDomain)
  

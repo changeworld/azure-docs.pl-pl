@@ -1,5 +1,5 @@
 ---
-title: Transmisja strumieniowa na żywo z usługi Azure Media Services w wersji 3 przy użyciu platformy .NET Core | Dokumentacja firmy Microsoft
+title: Transmisja strumieniowa na żywo z usługi Azure Media Services w wersji 3 | Microsoft Docs
 description: Ten samouczek przedstawia czynności umożliwiające transmisję strumieniową na żywo za pomocą usługi Media Services w wersji 3 przy użyciu platformy .NET Core.
 services: media-services
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/16/2018
+ms.date: 11/08/2018
 ms.author: juliako
-ms.openlocfilehash: bd149177a91bc0d5897723df2fad50fef11a37ef
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 7863f007093b5a86fb5095ee8bf1e14fc01d0348
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49392339"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613396"
 ---
-# <a name="stream-live-with-azure-media-services-v3-using-net-core"></a>Transmisja strumieniowa na żywo z usługi Azure Media Services w wersji 3 przy użyciu platformy .NET Core
+# <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>Samouczek: transmisja strumieniowa na żywo z usługi Media Services w wersji 3 przy użyciu interfejsów API
 
-W usłudze Media Services kanały [LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) są odpowiedzialne za przetwarzanie zawartości transmisji strumieniowej na żywo. Kanał LiveEvent udostępnia wejściowy punkt końcowy (adres URL pozyskiwania), który należy przekazać do kodera transmisji na żywo. Kanał LiveEvent odbiera strumienie wejściowe na żywo z kodera na żywo i udostępnia je do przesyłania strumieniowego za pośrednictwem co najmniej jednego [punktu końcowego strumieniowania](https://docs.microsoft.com/rest/api/media/streamingendpoints). Kanał oferuje również punkt końcowy podglądu (adres URL monitorowania), dzięki któremu można wyświetlać podgląd i weryfikować strumień przed dalszym przetwarzaniem i dostarczaniem. W tym samouczku przedstawiono sposób użycia platformy .NET Core do tworzenia **kanału do przekazywania zawartości** wydarzeń na żywo. 
+W usłudze Azure Media Services kanały [LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) są odpowiedzialne za przetwarzanie zawartości transmisji strumieniowej na żywo. Kanał LiveEvent udostępnia wejściowy punkt końcowy (adres URL pozyskiwania), który należy przekazać do kodera transmisji na żywo. Kanał LiveEvent odbiera strumienie wejściowe na żywo z kodera na żywo i udostępnia je do przesyłania strumieniowego za pośrednictwem co najmniej jednego [punktu końcowego strumieniowania](https://docs.microsoft.com/rest/api/media/streamingendpoints). Kanał oferuje również punkt końcowy podglądu (adres URL monitorowania), dzięki któremu można wyświetlać podgląd i weryfikować strumień przed dalszym przetwarzaniem i dostarczaniem. W tym samouczku przedstawiono sposób użycia platformy .NET Core do tworzenia **kanału do przekazywania zawartości** wydarzeń na żywo. 
 
 > [!NOTE]
 > Przed kontynuowaniem przejrzyj sekcję [Transmisja strumieniowa na żywo przy użyciu usługi Media Services v3](live-streaming-overview.md). 
@@ -31,7 +31,6 @@ W usłudze Media Services kanały [LiveEvent](https://docs.microsoft.com/rest/ap
 Ten samouczek przedstawia sposób wykonania następujących czynności:    
 
 > [!div class="checklist"]
-> * Tworzenie konta usługi Media Services
 > * Uzyskiwanie dostępu do interfejsu API usługi Media Services
 > * Konfigurowanie przykładowej aplikacji
 > * Analizowanie kodu, który przeprowadza transmisję strumieniową na żywo
@@ -44,9 +43,17 @@ Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 Następujące elementy są wymagane do wykonania czynności przedstawionych w samouczku.
 
-* Instalowanie narzędzia Visual Studio Code lub Visual Studio
-* Kamera lub urządzenie (np. laptop) do transmisji wydarzenia.
-* Lokalny koder wideo na żywo, który konwertuje sygnały z kamery na strumienie wysyłane do usługi transmisji strumieniowej na żywo Media Services. Strumień musi być w formacie **RTMP** lub **Smooth Streaming**.
+- Zainstalowanie narzędzia Visual Studio Code lub Visual Studio.
+- Zainstaluj interfejs wiersza polecenia i korzystaj z niego lokalnie. Ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
+
+    Obecnie nie wszystkie polecenia [interfejsu wiersza polecenia usługi Media Services w wersji 3](https://aka.ms/ams-v3-cli-ref) działają w usłudze Azure Cloud Shell. Zaleca się używanie interfejsu wiersza polecenia lokalnie.
+
+- [Utwórz konto usługi Media Services](create-account-cli-how-to.md).
+
+    Koniecznie zapamiętaj wartości, które zostały użyte jako nazwa grupy zasobów i nazwa konta usługi Media Services
+
+- Kamera lub urządzenie (np. laptop) do transmisji wydarzenia.
+- Lokalny koder wideo na żywo, który konwertuje sygnały z kamery na strumienie wysyłane do usługi transmisji strumieniowej na żywo Media Services. Strumień musi być w formacie **RTMP** lub **Smooth Streaming**.
 
 ## <a name="download-the-sample"></a>Pobierz przykład
 
@@ -61,10 +68,6 @@ Przykład transmisji strumieniowej na żywo znajduje się w folderze [Live](http
 > [!IMPORTANT]
 > W przykładzie każdy zasób używa innego sufiksu. W przypadku anulowania debugowania lub zakończenie pracy aplikacji bez doprowadzenia jej do końca na Twoim koncie pozostanie wiele kanałów LiveEvent. <br/>
 > Pamiętaj, aby zatrzymać uruchomione kanały LiveEvent. W przeciwnym razie zostaną **naliczone opłaty**.
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -176,9 +179,9 @@ Po zatrzymaniu wydarzenia na żywo wydarzenie jest automatycznie konwertowane na
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie są już potrzebne żadne zasoby w grupie zasobów, w tym konto usługi Media Services i konta magazynu utworzone w ramach tego samouczka, usuń grupę zasobów utworzoną wcześniej. Do tego celu możesz użyć narzędzia **CloudShell**.
+Jeśli nie są już potrzebne żadne zasoby w grupie zasobów, w tym konto usługi Media Services i konta magazynu utworzone w ramach tego samouczka, usuń grupę zasobów utworzoną wcześniej.
 
-W usłudze **CloudShell** uruchom następujące polecenie:
+Wykonaj następujące polecenie interfejsu wiersza polecenia:
 
 ```azurecli-interactive
 az group delete --name amsResourceGroup

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 01e8f74f409271810652a9202b634762ad88dcea
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5605ac9f3ac4f9a1c85cfedf257cb721205564db
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981250"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613430"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Samouczek: tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -262,7 +262,7 @@ Maszyna wirtualna platformy Azure może znajdować się w jednym z wielu stanów
 | Cofnięto przydział | Wskazuje, że maszyna wirtualna została usunięta z funkcji hypervisor, ale jest nadal dostępna na płaszczyźnie kontroli. Opłaty za operacje obliczeniowe nie są naliczane w przypadku maszyn wirtualnych w stanie Cofnięto przydział. |
 | - | Wskazuje, że stan zasilania maszyny wirtualnej jest nieznany. |
 
-### <a name="find-power-state"></a>Znajdowanie stanu zasilania
+### <a name="find-the-power-state"></a>Znajdowanie stanu zasilania
 
 Aby pobrać stan określonej maszyny wirtualnej, użyj polecenia [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view). Pamiętaj, aby określić prawidłową nazwę maszyny wirtualnej i grupy zasobów. 
 

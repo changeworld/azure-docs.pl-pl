@@ -1,7 +1,6 @@
 ---
-title: 'Przykład: Wykrywanie języka przy użyciu interfejsu API REST analizy tekstu'
-titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak wykrywać język przy użyciu interfejsu API REST analizy tekstu.
+title: Porady dotyczące wykrywania języka w interfejsie API REST analizy tekstu (Microsoft Cognitive Services na platformie Azure) | Microsoft Docs
+description: Sposób wykrywania języka przy użyciu interfejsu API REST analizy tekstu w usługach Microsoft Cognitive Services na platformie Azure w tym samouczku z przewodnikiem.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +9,12 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: fa71e4ce2e5cb5967bb583c7314072830de08051
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 460dfb168894d28d5fbc5e5585a6054917127931
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604556"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633568"
 ---
 # <a name="example-how-to-detect-language-in-text-analytics"></a>Przykład: Jak wykrywać język przy użyciu analizy tekstu
 
@@ -23,7 +22,10 @@ ms.locfileid: "45604556"
 
 Ta możliwość jest przydatna w przypadku magazynów zawartości przechowujących dowolne teksty, których język nie jest znany. Wyniki analizy możesz przeanalizować w celu ustalenia, który język jest używany w wejściowym dokumencie. Odpowiedź zawiera również wynik, który odzwierciedla zaufanie modelu (wartość z zakresu od 0 do 1).
 
-## <a name="preparation"></a>Przygotowywanie
+> [!TIP]
+> Analiza tekstu udostępnia również obraz kontenera platformy Docker oparty na systemie Linux na potrzeby wykrywania języka, można więc [zainstalować i uruchomić kontener analizy tekstu](text-analytics-how-to-install-containers.md) blisko danych.
+
+## <a name="preparation"></a>Przygotowanie
 
 Dokumenty JSON muszą mieć następujący format: identyfikator, tekst
 
@@ -62,7 +64,7 @@ Szczegółowe informacje na temat definicji żądania można znaleźć w artykul
 
 + Utwórz żądanie **POST**. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [Interfejs API wykrywania języka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
 
-+ Ustaw punkt końcowy HTTP dla wykrywania języka. Musi on obejmować zasób `/languages`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
++ Ustaw punkt końcowy HTTP wykrywania języka przy użyciu zasobu analizy tekstu na platformie Azure lub utworzonego wystąpienia [kontenera analizy tekstu](text-analytics-how-to-install-containers.md). Musi on obejmować zasób `/languages`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
 
 + Ustaw nagłówek żądania, tak aby zawierał klucz dostępu dla operacji analizy tekstu. Aby uzyskać więcej informacji, zobacz [How to find endpoints and access keys (Jak znajdować punkty końcowe i klucze dostępu)](text-analytics-how-to-access-key.md).
 

@@ -5,38 +5,44 @@ services: digital-twins
 author: alinamstanciu
 ms.service: digital-twins
 ms.topic: include
-ms.date: 09/19/2018
+ms.date: 11/13/2018
 ms.author: alinast
 ms.custom: include file
-ms.openlocfilehash: 1887efd741f4779a5186707d60b27ca66fc3c06f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 216e2db82d5a07bd8e4cae8b9f357ac7dcee330a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283987"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51626414"
 ---
-1. W witrynie [Azure Portal](https://portal.azure.com) otwórz usługę **Azure Active Directory** w panelu nawigacyjnym po lewej stronie, a następnie otwórz okienko **Właściwości**. Skopiuj wartość **identyfikatora katalogu** do pliku tymczasowego. Użyjesz tej wartości, aby skonfigurować aplikację przykładową w następnej sekcji.
+1. W witrynie [Azure Portal](https://portal.azure.com) otwórz usługę **Azure Active Directory** w okienku po lewej stronie, a następnie otwórz okienko **Właściwości**. Skopiuj wartość **identyfikatora katalogu** do pliku tymczasowego. Użyjesz tej wartości, aby skonfigurować aplikację przykładową w następnej sekcji.
 
     ![Identyfikator katalogu usługi Azure Active Directory](./media/digital-twins-permissions/aad-app-reg-tenant.png)
 
-1. Otwórz okienko **Rejestracje aplikacji**, a następnie kliknij przycisk **Rejestrowanie nowej aplikacji**.
-    
-    ![Rejestrowanie nowej aplikacji w usłudze Azure Active Directory](./media/digital-twins-permissions/aad-app-reg-start.png)
+1. Otwórz okienko **Rejestracje aplikacji**, a następnie wybierz przycisk **Rejestrowanie nowej aplikacji**.
 
-1. Nadaj przyjazną nazwę dla tej rejestracji aplikacji w polu **Nazwa**. W polu **Typ aplikacji** wybierz opcję **_Natywna_**, a w polu **Identyfikator URI przekierowania** opcję **_https://microsoft.com_**. Kliknij pozycję **Utwórz**.
+    ![Okienko Rejestracje aplikacji](./media/digital-twins-permissions/aad-app-reg-start.png)
 
-    ![Tworzenie rejestracji aplikacji w usłudze Azure Active Directory](./media/digital-twins-permissions/aad-app-reg-create.png)
+1. Wprowadź przyjazną nazwę tej rejestracji aplikacji w polu **Nazwa**. W polu **Typ aplikacji** wybierz opcję **Natywna** a w polu **Identyfikator URI przekierowania** opcję `https://microsoft.com`. Wybierz pozycję **Utwórz**.
 
-1. Otwórz zarejestrowaną aplikację, a następnie skopiuj wartość pola **Identyfikator aplikacji** do pliku tymczasowego.Ta wartość identyfikuje aplikację usługi Azure Active Directory. Identyfikatora aplikacji użyjesz do skonfigurowania aplikacji przykładowej w poniższych sekcjach.
+    ![Okienko tworzenia](./media/digital-twins-permissions/aad-app-reg-create.png)
+
+1. Otwórz zarejestrowaną aplikację, a następnie skopiuj wartość pola **Identyfikator aplikacji** do pliku tymczasowego. Ta wartość identyfikuje aplikację usługi Azure Active Directory. Identyfikatora aplikacji użyjesz do skonfigurowania aplikacji przykładowej w poniższych sekcjach.
 
     ![Identyfikator aplikacji usługi Azure Active Directory](./media/digital-twins-permissions/aad-app-reg-app-id.png)
 
-1. Otwórz okienko rejestracji Twojej aplikacji, a następnie kliknij pozycję **Ustawienia** > **Wymagane uprawnienia**:
-    - Kliknij przycisk **Dodaj** w lewym górnym rogu, aby otworzyć okienko **Dodaj dostęp do interfejsu API**.
-    - Kliknij przycisk **Wybierz interfejs API** i wyszukaj usługę **Azure Digital Twins**. Jeśli wyszukiwanie nie znajdzie interfejsu API, zamiast tego wyszukaj frazę **Azure Smart Spaces**.
-    - Wybierz opcję **Azure Digital Twins (Azure Smart Spaces Service)** i kliknij pozycję **Wybierz**.
-    - Kliknij pozycję **Wybierz uprawnienia**. Zaznacz pole uprawnień delegowanych **Dostęp do odczytu/zapisu** i kliknij przycisk **Wybierz**.
-    - Kliknij przycisk **Gotowe** w okienku **Dodaj dostęp do interfejsu API**.
-    - W okienku **Wymagane uprawnienia** kliknij przycisk **Udziel uprawnień**, a następnie zaakceptuj wyświetlone potwierdzenie.
+1. Otwórz okienko rejestracji Twojej aplikacji. Wybierz pozycję **Ustawienia** > **Wymagane uprawnienia**, a następnie:
 
-       ![Dodawanie interfejsu API w rejestracji aplikacji w usłudze Azure Active Directory](./media/digital-twins-permissions/aad-app-req-permissions.png)
+   a. Wybierz przycisk **Dodaj** w lewym górnym rogu, aby otworzyć okienko **Dodaj dostęp do interfejsu API**.
+
+   b. Wybierz przycisk **Wybierz interfejs API** i wyszukaj usługę **Azure Digital Twins**. Jeśli wyszukiwanie nie znajdzie interfejsu API, zamiast tego wyszukaj frazę **Azure Smart Spaces**.
+
+   d. Wybierz opcję **Azure Digital Twins (Azure Smart Spaces Service)** i wybierz pozycję **Wybierz**.
+
+   d. Wybierz pozycję **Wybierz uprawnienia**. Zaznacz pole wyboru uprawnień delegowanych **Dostęp do odczytu/zapisu** i wybierz przycisk **Wybierz**.
+
+   e. Wybierz przycisk **Gotowe** w okienku **Dodaj dostęp do interfejsu API**.
+
+   f. W okienku **Wymagane uprawnienia** wybierz przycisk **Udziel uprawnień**, a następnie zaakceptuj wyświetlone potwierdzenie.
+
+      ![Okienko Wymagane uprawnienia](./media/digital-twins-permissions/aad-app-req-permissions.png)

@@ -1,7 +1,6 @@
 ---
-title: 'Przykład: Jak wyodrębniać kluczowe frazy w analizie tekstu'
-titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak wyodrębniać kluczowe frazy przy użyciu interfejsu API REST analizy tekstu.
+title: Porady dotyczące wyodrębniania kluczowych fraz w interfejsie API REST analizy tekstu (Microsoft Cognitive Services na platformie Azure) | Microsoft Docs
+description: Sposób wyodrębniania kluczowych fraz przy użyciu interfejsu API REST analizy tekstu w usługach Microsoft Cognitive Services na platformie Azure w tym samouczku z przewodnikiem.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +9,12 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 62c078a8a72cd0a3633b7dd5fda1545f01067dbc
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: d38886d40a92d5e75f5d0b6b189dbf7c067e1635
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605491"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632394"
 ---
 # <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>Przykład: Jak wyodrębniać kluczowe frazy w analizie tekstu
 
@@ -25,7 +24,10 @@ Ta możliwość jest przydatna, jeśli chcesz szybko zidentyfikować główne te
 
 Aktualnie wyodrębnianie kluczowych fraz obsługuje angielski, niemiecki, hiszpański i japoński. Inne języki są dostępne w wersji zapoznawczej. Więcej informacji, zobacz [Obsługiwane języki](../text-analytics-supported-languages.md).
 
-## <a name="preparation"></a>Przygotowywanie
+> [!TIP]
+> Analiza tekstu udostępnia również obraz kontenera platformy Docker oparty na systemie Linux na potrzeby wyodrębniania kluczowych fraz, można więc [zainstalować i uruchomić kontener analizy tekstu](text-analytics-how-to-install-containers.md) blisko danych.
+
+## <a name="preparation"></a>Przygotowanie
 
 Wyodrębnianie kluczowych fraz działa najlepiej na większych fragmentach tekstu. Jest to przeciwieństwo analizy tonacji, która działa lepiej na mniejszych blokach tekstu. Aby uzyskać najlepsze wyniki dla obu operacji, rozważ odpowiednią zmianę struktury danych wejściowych.
 
@@ -71,7 +73,7 @@ Szczegółowe informacje na temat definicji żądania można znaleźć w artykul
 
 + Utwórz żądanie **POST**. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [Interfejs API kluczowych fraz](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
 
-+ Ustaw punkt końcowy HTTP pod kątem wyodrębniania kluczowych fraz. Musi on obejmować zasób `/keyphrases`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
++ Ustaw punkt końcowy HTTP na potrzeby wyodrębniania kluczowych fraz przy użyciu zasobów analizy tekstu na platformie Azure lub utworzonego wystąpienia [kontenera analizy tekstu](text-analytics-how-to-install-containers.md). Musi on obejmować zasób `/keyPhrases`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
 
 + Ustaw nagłówek żądania, tak aby zawierał klucz dostępu dla operacji analizy tekstu. Aby uzyskać więcej informacji, zobacz [How to find endpoints and access keys (Jak znajdować punkty końcowe i klucze dostępu)](text-analytics-how-to-access-key.md).
 

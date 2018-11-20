@@ -8,365 +8,127 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: tutorial
-ms.date: 07/12/2018
+ms.date: 11/12/2018
 ms.author: pafarley
-ms.openlocfilehash: 99b2734745df722f45443b5347ae6dd054c8aa31
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 4378d04d8909ecb0cd77c3196b74ecd51eb19638
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957041"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686232"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Samouczek: tworzenie aplikacji dla systemu Android wykrywającej i oznaczającej ramką twarze na obrazie
 
-W tym samouczku utworzysz prostą aplikację dla systemu Android, która korzysta z biblioteki klas języka Java usługi rozpoznawania twarzy do wykrywania i oznaczania ramką twarzy na obrazie. Aplikacja wyświetla wybrany obraz z każdą wykrytą twarzą otoczoną prostokątem. Kompletny przykładowy kod jest dostępny w witrynie GitHub na stronie z opisem [wykrywania i oznaczania ramką twarzy na obrazie w systemie Android](https://github.com/Azure-Samples/cognitive-services-face-android-sample).
-
-![Zrzut ekranu z systemu Android ze zdjęciem, na którym widać twarze otoczone czerwoną ramką](../Images/android_getstarted2.1.PNG)
+W tym samouczku utworzysz prostą aplikację dla systemu Android, która używa interfejsu API rozpoznawania twarzy platformy Azure, za pośrednictwem zestawu SDK Java, do wykrywania twarzy na obrazie. Aplikacja wyświetla wybrany obraz i rysuje ramkę wokół każdej wykrytej twarzy.
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 > [!div class="checklist"]
 > - Tworzenie aplikacji systemu Android
-> - Instalowanie biblioteki klienta usługi rozpoznawania twarzy
+> - Instalowanie biblioteki klienta interfejsu API rozpoznawania twarzy
 > - Korzystanie z biblioteki klienta do wykrywania twarzy na obrazie
 > - Rysowanie ramki wokół każdej wykrytej twarzy
 
+![Zrzut ekranu z systemu Android ze zdjęciem, na którym widać twarze otoczone czerwoną ramką](../Images/android_getstarted2.1.PNG)
+
+Kompletny przykładowy kod jest dostępny w repozytorium [Cognitive Services Face Android](https://github.com/Azure-Samples/cognitive-services-face-android-sample) w witrynie GitHub.
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/). 
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Do uruchomienia przykładu potrzebny jest klucz subskrypcji. Klucze subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
-- Program [Android Studio](https://developer.android.com/studio/) z minimum zestawem SDK 22 (wymaganym przez bibliotekę klienta rozpoznawania twarzy).
-- Biblioteka klienta rozpoznawania twarzy [com.microsoft.projectoxford:face:1.4.3](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.microsoft.projectoxford%22) z narzędzia Maven. Pobieranie pakietu nie jest konieczne. Instrukcje instalacji znajdują się poniżej.
+- Klucz subskrypcji interfejsu API rozpoznawania twarzy. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Możesz też wykonać instrukcje z tematu [Create a Cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) (Tworzenie konta usług Cognitive Services), aby subskrybować usługę interfejsu API rozpoznawania twarzy i uzyskać klucz.
+- Program [Android Studio](https://developer.android.com/studio/) z poziomem interfejsu API 22 lub nowszym (wymagane przez bibliotekę klienta rozpoznawania twarzy).
 
-## <a name="create-the-project"></a>Tworzenie projektu
+## <a name="create-the-android-studio-project"></a>Tworzenie projektu programu Android Studio
 
-Utwórz projekt aplikacji dla systemu Android, wykonując następujące kroki:
+Wykonaj następujące kroki, aby utworzyć nowy projekt aplikacji dla systemu Android.
 
-1. Otwórz program Android Studio. W tym samouczku używany jest program Android Studio 3.1.
-1. Wybierz pozycję **Start a new Android Studio project** (Utwórz nowy projekt programu Android Studio).
+1. W programie Android Studio wybierz pozycję **Start a new Android Studio project** (Utwórz nowy projekt programu Android Studio).
 1. Na ekranie **Create Android Project** (Tworzenie projektu systemu Android) zmodyfikuj domyślną zawartość pól, jeśli to konieczne, a następnie kliknij przycisk **Next** (Dalej).
-1. Na ekranie **Target Android Devices** (Docelowe urządzenia z systemem Android) użyj rozwijanego selektora, aby wybrać interfejs **API 22** lub wyższy, a następnie kliknij przycisk **Next** (Dalej).
+1. Na ekranie **Target Android Devices** (Docelowe urządzenia z systemem Android) użyj rozwijanego selektora, aby wybrać interfejs **API 22** lub nowszy, a następnie kliknij przycisk **Next** (Dalej).
 1. Wybierz pozycję **Empty Activity** (Puste działanie), a następnie kliknij przycisk **Next** (Dalej).
 1. Usuń zaznaczenie pola wyboru **Backwards Compatibility** (Zgodność z wcześniejszymi wersjami), a następnie kliknij przycisk **Finish** (Zakończ).
 
-## <a name="create-the-ui-for-selecting-and-displaying-the-image"></a>Tworzenie interfejsu użytkownika do wybierania i wyświetlania obrazu
+## <a name="add-the-initial-code"></a>Dodawanie początkowego kodu
 
-Otwórz plik *activity_main.xml*. Powinien zostać wyświetlony edytor układu Layout Editor. Wybierz kartę **Text** (Tekst), a następnie zastąp zawartość następującym kodem.
+### <a name="create-the-ui"></a>Tworzenie interfejsu użytkownika
 
-```xml
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+Otwórz plik *activity_main.xml*. W edytorze układu Layout Editor wybierz kartę **Text** (Tekst), a następnie zastąp zawartość następującym kodem.
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/imageView1"
-        android:layout_above="@+id/button1"
-        android:contentDescription="Image with faces to analyze"/>
+[!code-xml[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/res/layout/activity_main.xml?range=1-18)]
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Browse for face image"
-        android:id="@+id/button1"
-        android:layout_alignParentBottom="true"/>
-</RelativeLayout>
-```
+### <a name="create-the-main-class"></a>Tworzenie głównej klasy
 
-Otwórz plik *MainActivity.java*, po czym zastąp wszystko poza pierwszą instrukcją `package` następującym kodem.
+Otwórz plik *MainActivity.java* i zastąp istniejące instrukcje `import` następującym kodem.
 
-Kod ustawi procedurę obsługi zdarzeń dla elementu `Button`, która uruchamia nowe działanie pozwalające użytkownikowi wybrać obraz. Po wybraniu obraz jest wyświetlany w elemencie `ImageView`.
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=3-11)]
 
-```java
-import java.io.*;
-import android.app.*;
-import android.content.*;
-import android.net.*;
-import android.os.*;
-import android.view.*;
-import android.graphics.*;
-import android.widget.*;
-import android.provider.*;
+Następnie zastąp zawartość klasy **MainActivity** następującym kodem. Utworzy on procedurę obsługi zdarzeń dla elementu **Button**, która uruchamia nowe działanie pozwalające użytkownikowi wybrać obraz. Wyświetla obraz w widoku **ImageView**.
 
-public class MainActivity extends Activity {
-    private final int PICK_IMAGE = 1;
-    private ProgressDialog detectionProgressDialog;
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=29-68)]
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            Button button1 = (Button)findViewById(R.id.button1);
-            button1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/*");
-                startActivityForResult(Intent.createChooser(
-                        intent, "Select Picture"), PICK_IMAGE);
-            }
-        });
+### <a name="try-the-app"></a>Testowanie aplikacji
 
-        detectionProgressDialog = new ProgressDialog(this);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK &&
-                data != null && data.getData() != null) {
-            Uri uri = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(
-                        getContentResolver(), uri);
-                ImageView imageView = (ImageView) findViewById(R.id.imageView1);
-                imageView.setImageBitmap(bitmap);
-
-                // Uncomment
-                //detectAndFrame(bitmap);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-        }
-    }
-}
-```
-
-Teraz aplikacja umożliwia przeglądanie w poszukiwaniu zdjęcia i wyświetla je w oknie, podobnie jak na poniższej ilustracji.
+Oznacz jako komentarz wywołanie funkcji **detectAndFrame** w metodzie **onActivityResult**. Następnie naciśnij pozycję **Uruchom** w menu, aby przetestować aplikację. Gdy aplikacja zostanie otwarta, w emulatorze lub na podłączonym urządzeniu, kliknij pozycję **Przeglądaj** na dole. Powinno zostać wyświetlone okno dialogowe wyboru pliku urządzenia. Wybierz obraz i sprawdź, czy jest on wyświetlany w oknie. Następnie zamknij aplikację i przejdź do kolejnego kroku.
 
 ![Zrzut ekranu z systemu Android przedstawiający zdjęcie z twarzami](../Images/android_getstarted1.1.PNG)
 
-## <a name="configure-the-face-client-library"></a>Konfigurowanie biblioteki klienta rozpoznawania twarzy
+## <a name="add-the-face-sdk"></a>Dodawanie zestawu SDK interfejsu API rozpoznawania twarzy
 
-Interfejs API rozpoznawania twarzy jest interfejsem API w chmurze, który można wywoływać za pomocą żądań HTTPS. W tym samouczku używana jest biblioteka klienta rozpoznawania twarzy, która hermetyzuje te żądania internetowe w celu uproszczenia pracy.
+### <a name="add-the-gradle-dependency"></a>Dodawanie zależności narzędzia Gradle
 
-W okienku **Project** (Projekt) wybierz za pomocą rozwijanego selektora pozycję **Android**. Rozwiń pozycję **Gradle Scripts** (Skrypty Gradle), a następnie otwórz plik *build.gradle (Module: app)*.
-
-Dodaj zależność dla biblioteki klienta rozpoznawania twarzy, `com.microsoft.projectoxford:face:1.4.3`, jak pokazano na poniższym zrzucie ekranu, a następnie kliknij pozycję **Sync now** (Synchronizuj teraz).
+W okienku **Project** (Projekt) wybierz za pomocą rozwijanego selektora pozycję **Android**. Rozwiń pozycję **Gradle Scripts** (Skrypty Gradle), a następnie otwórz plik *build.gradle (Module: app)*. Dodaj zależność dla biblioteki klienta rozpoznawania twarzy, `com.microsoft.projectoxford:face:1.4.3`, jak pokazano na poniższym zrzucie ekranu, a następnie kliknij pozycję **Sync now** (Synchronizuj teraz).
 
 ![Zrzut ekranu z programu Android Studio przedstawiający plik build.gradle aplikacji](../Images/face-tut-java-gradle.png)
 
-Otwórz plik **MainActivity.java** i dołącz następujące dyrektywy importu:
+### <a name="add-the-face-related-project-code"></a>Dodawanie kodu projektu związanego z rozpoznawaniem twarzy
+
+Wróć do pliku **MainActivity.java** i dodaj następujące instrukcje `import`:
+
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=13-14)]
+
+Następnie wstaw następujący kod w klasie **MainActivity** powyżej metody **onCreate**:
+
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=17-27)]
+
+Konieczne będzie zastąpienie elementu `<Subscription Key>` kluczem subskrypcji. Należy także zastąpić element `<API endpoint>` punktem końcowym interfejsu API rozpoznawania twarzy, używając odpowiedniego identyfikatora region dla swojego klucza. Klucze subskrypcji bezpłatnej wersji próbnej są generowane w regionie **westus**. Przykładowa wartość punktu końcowego interfejsu API:
 
 ```java
-import com.microsoft.projectoxford.face.*;
-import com.microsoft.projectoxford.face.contract.*;
+apiEndpoint = "https://westus.api.cognitive.microsoft.com/face/v1.0";
 ```
 
-## <a name="add-the-face-client-library-code"></a>Dodawanie kodu biblioteki klienta rozpoznawania twarzy
+W okienku **Project** (Projekt) rozwiń pozycje **app** i **manifests**, a następnie otwórz plik *AndroidManifest.xml*. Wstaw następujący element jako bezpośredni element podrzędny elementu `manifest`:
 
-Wstaw następujący kod w klasie `MainActivity`, powyżej metody `onCreate`:
+[!code-xml[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/AndroidManifest.xml?range=5)]
 
-```java
-private final String apiEndpoint = "<API endpoint>";
-private final String subscriptionKey = "<Subscription Key>";
+## <a name="upload-image-and-detect-faces"></a>Przekazywanie obrazu i wykrywanie twarzy
 
-private final FaceServiceClient faceServiceClient =
-        new FaceServiceRestClient(apiEndpoint, subscriptionKey);
-```
+Aplikacja będzie wykrywała twarze, wywołując metodę **FaceServiceClient.detect**, która opakowuje interfejs API REST [wykrywania](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) i zwraca listę wystąpień obiektu **Face**.
 
-Zastąp element `<API endpoint>` punktem końcowym interfejsu API, który został przypisany do Twojego klucza. Klucze subskrypcji bezpłatnej wersji próbnej są generowane w regionie **westcentralus**. Dlatego jeśli używasz klucza subskrypcji bezpłatnej wersji próbnej, instrukcja będzie wyglądać następująco:
+Każdy zwrócony element **Face** zawiera prostokąt wskazujący lokalizację twarzy wraz z serią opcjonalnych atrybutów twarzy. W tym przykładzie żądane są tylko prostokąty wskazujące lokalizację twarzy.
 
-```java
-apiEndpoint = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0";
-```
+Wstaw następujące dwie metody do klasy **MainActivity**. Należy pamiętać, że po zakończeniu procesu wykrywania twarzy aplikacja wywołuje metodę **drawFaceRectanglesOnBitmap**, aby zmodyfikować widok **ImageView**. Zdefiniujesz tę metodę w następnej kolejności.
 
-Zastąp element `<Subscription Key>` kluczem subskrypcji. Na przykład:
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=70-150)]
 
-```java
-subscriptionKey = "0123456789abcdef0123456789ABCDEF"
-```
+## <a name="draw-face-rectangles"></a>Rysowanie prostokątów twarzy
 
-W okienku **Project** (Projekt) rozwiń pozycje **app** i **manifests**, a następnie otwórz plik *AndroidManifest.xml*.
+Wstaw następującą metodę pomocniczą do klasy **MainActivity**. Ta metoda rysuje prostokąt wokół każdej wykrytej twarzy przy użyciu współrzędnych prostokąta każdego wystąpienia elementu **Face**.
 
-Wstaw następujący element jako bezpośredni element podrzędny elementu `manifest`:
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=152-173)]
 
-```xml
-<uses-permission android:name="android.permission.INTERNET" />
-```
-
-Skompiluj projekt, aby sprawdzić go pod kątem błędów. Teraz możesz przystąpić do wywoływania usługi rozpoznawania twarzy.
-
-## <a name="upload-an-image-to-detect-faces"></a>Przekazywanie obrazu w celu wykrywania twarzy
-
-Najprostszym sposobem wykrywania twarzy jest wywoływanie metody `FaceServiceClient.detect`. Ta metoda opakowuje metodę [Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) interfejsu API i zwraca tablicę elementów `Face`.
-
-Każdy zwrócony element `Face` zawiera prostokąt wskazujący lokalizację twarzy wraz z serią opcjonalnych atrybutów twarzy. W tym przykładzie potrzebne są same lokalizacje twarzy.
-
-Jeśli wystąpi błąd, w oknie `AlertDialog` będzie wyświetlana jego przyczyna.
-
-Wstaw następujące metody do klasy `MainActivity`.
-
-```java
-// Detect faces by uploading a face image.
-// Frame faces after detection.
-private void detectAndFrame(final Bitmap imageBitmap) {
-    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-    imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-    ByteArrayInputStream inputStream =
-            new ByteArrayInputStream(outputStream.toByteArray());
-
-    AsyncTask<InputStream, String, Face[]> detectTask =
-            new AsyncTask<InputStream, String, Face[]>() {
-                String exceptionMessage = "";
-
-                @Override
-                protected Face[] doInBackground(InputStream... params) {
-                    try {
-                        publishProgress("Detecting...");
-                        Face[] result = faceServiceClient.detect(
-                                params[0],
-                                true,         // returnFaceId
-                                false,        // returnFaceLandmarks
-                                null          // returnFaceAttributes:
-                                /* new FaceServiceClient.FaceAttributeType[] {
-                                    FaceServiceClient.FaceAttributeType.Age,
-                                    FaceServiceClient.FaceAttributeType.Gender }
-                                */
-                        );
-                        if (result == null){
-                            publishProgress(
-                                    "Detection Finished. Nothing detected");
-                            return null;
-                        }
-                        publishProgress(String.format(
-                                "Detection Finished. %d face(s) detected",
-                                result.length));
-                        return result;
-                    } catch (Exception e) {
-                        exceptionMessage = String.format(
-                                "Detection failed: %s", e.getMessage());
-                        return null;
-                    }
-                }
-
-                @Override
-                protected void onPreExecute() {
-                    //TODO: show progress dialog
-                }
-                @Override
-                protected void onProgressUpdate(String... progress) {
-                    //TODO: update progress
-                }
-                @Override
-                protected void onPostExecute(Face[] result) {
-                    //TODO: update face frames
-                }
-            };
-
-    detectTask.execute(inputStream);
-}
-
-private void showError(String message) {
-    new AlertDialog.Builder(this)
-    .setTitle("Error")
-    .setMessage(message)
-    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-        }})
-    .create().show();
-}
-```
-
-## <a name="frame-faces-in-the-image"></a>Oznaczanie ramką twarzy na obrazie
-
-Wstaw następującą metodę pomocniczą do klasy `MainActivity` Ta metoda rysuje prostokąt wokół każdej wykrytej twarzy.
-
-```java
-private static Bitmap drawFaceRectanglesOnBitmap(
-        Bitmap originalBitmap, Face[] faces) {
-    Bitmap bitmap = originalBitmap.copy(Bitmap.Config.ARGB_8888, true);
-    Canvas canvas = new Canvas(bitmap);
-    Paint paint = new Paint();
-    paint.setAntiAlias(true);
-    paint.setStyle(Paint.Style.STROKE);
-    paint.setColor(Color.RED);
-    paint.setStrokeWidth(10);
-    if (faces != null) {
-        for (Face face : faces) {
-            FaceRectangle faceRectangle = face.faceRectangle;
-            canvas.drawRect(
-                    faceRectangle.left,
-                    faceRectangle.top,
-                    faceRectangle.left + faceRectangle.width,
-                    faceRectangle.top + faceRectangle.height,
-                    paint);
-        }
-    }
-    return bitmap;
-}
-```
-
-Uzupełnij metody `AsyncTask`, wskazane przez komentarz `TODO`, w metodzie `detectAndFrame`. W przypadku powodzenia wybrany obraz zostanie wyświetlony z ramkami wokół twarzy w elemencie `ImageView`.
-
-```java
-@Override
-protected void onPreExecute() {
-    detectionProgressDialog.show();
-}
-@Override
-protected void onProgressUpdate(String... progress) {
-    detectionProgressDialog.setMessage(progress[0]);
-}
-@Override
-protected void onPostExecute(Face[] result) {
-    detectionProgressDialog.dismiss();
-    if(!exceptionMessage.equals("")){
-        showError(exceptionMessage);
-    }
-    if (result == null) return;
-    ImageView imageView = findViewById(R.id.imageView1);
-    imageView.setImageBitmap(
-            drawFaceRectanglesOnBitmap(imageBitmap, result));
-    imageBitmap.recycle();
-}
-```
-
-Na koniec w metodzie `onActivityResult` odkomentuj wywołanie metody `detectAndFrame`, jak pokazano poniżej.
-
-```java
-@Override
-protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-
-    if (requestCode == PICK_IMAGE && resultCode == RESULT_OK &&
-                data != null && data.getData() != null) {
-        Uri uri = data.getData();
-        try {
-            Bitmap bitmap = MediaStore.Images.Media.getBitmap(
-                    getContentResolver(), uri);
-            ImageView imageView = findViewById(R.id.imageView1);
-            imageView.setImageBitmap(bitmap);
-
-            // Uncomment
-            detectAndFrame(bitmap);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-```
+Na koniec usuń znaczniki komentarza z wywołania metody **detectAndFrame** w metodzie **onActivityResult**.
 
 ## <a name="run-the-app"></a>Uruchamianie aplikacji
 
-Uruchom aplikację i znajdź obraz z twarzą. Zaczekaj kilka sekund, aby umożliwić usłudze rozpoznawania twarzy udzielenie odpowiedzi. Po tym czasie otrzymasz wynik podobny do poniższego obrazu:
+Uruchom aplikację i znajdź obraz z twarzą. Zaczekaj kilka sekund, aby umożliwić usłudze rozpoznawania twarzy udzielenie odpowiedzi. Wokół każdej twarzy na obrazie powinien pojawić się czerwony prostokąt.
 
-![GettingStartAndroid](../Images/android_getstarted2.1.PNG)
-
-## <a name="summary"></a>Podsumowanie
-
-W tym samouczku przedstawiono podstawowy proces korzystania z usługi rozpoznawania twarzy i utworzono aplikację wyświetlającą oznaczone ramką twarze na obrazie.
+![Zrzut ekranu systemu Android przedstawiający twarze z czerwonymi prostokątami narysowanymi wokół nich](../Images/android_getstarted2.1.PNG)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat wykrywania i używania charakterystycznych elementów twarzy.
+W tym samouczku przedstawiono podstawowy proces korzystania z zestawu SDK języka Java interfejsu API rozpoznawania twarzy dla usługi rozpoznawania twarzy oraz utworzono aplikację do wykrywania i oznaczania ramkami twarzy na obrazie. Teraz dowiedz się więcej o szczegółach wykrywania twarzy.
 
 > [!div class="nextstepaction"]
 > [Jak wykrywać twarze na obrazie](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)
-
-Poznaj interfejsy API rozpoznawania twarzy używane do wykrywania twarzy i ich atrybutów, takich jak położenie, płeć, wiek, pozycja głowy, zarost i okulary.
-
-> [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).

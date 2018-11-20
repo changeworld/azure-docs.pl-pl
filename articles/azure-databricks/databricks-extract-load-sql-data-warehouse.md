@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 07/26/2018
-ms.openlocfilehash: c67a223a95e73161b58f8cd4f2aeba2614a9ee76
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: bf7351f5d62958b77473440d618d31cda2c983ea
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419083"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615521"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks
 
-W ramach tego samouczka wykonasz operację ETL (wyodrębnianie, przekształcanie i ładowanie danych) przy użyciu usługi Azure Databricks. Wyodrębnisz dane z usługi Azure Data Lake Store do usługi Azure Databricks, uruchomisz przekształcenia danych w usłudze Azure Databricks, a następnie załadujesz przekształcone dane do usługi Azure SQL Data Warehouse. 
+W ramach tego samouczka wykonasz operację ETL (wyodrębnianie, przekształcanie i ładowanie danych) przy użyciu usługi Azure Databricks. Wyodrębnisz dane z usługi Azure Data Lake Store do usługi Azure Databricks, uruchomisz przekształcenia danych w usłudze Azure Databricks, a następnie załadujesz przekształcone dane do usługi Azure SQL Data Warehouse.
 
 W procedurach opisanych w tym samouczku do przesyłania danych do usługi Azure Databricks służy łącznik SQL Data Warehouse dla usługi Azure Databricks. Ten łącznik z kolei używa usługi Azure Blob Storage jako magazynu tymczasowego dla danych przesyłanych między klastrem usługi Azure Databricks a usługą Azure SQL Data Warehouse.
 
@@ -27,7 +27,7 @@ Poniższa ilustracja przedstawia przepływ aplikacji:
 
 ![Usługa Azure Databricks z usługami Data Lake Store i SQL Data Warehouse](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Usługa Azure Databricks z usługami Data Lake Store i SQL Data Warehouse")
 
-Ten samouczek obejmuje następujące zadania: 
+Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
 > * Tworzenie obszaru roboczego usługi Azure Databricks
@@ -64,7 +64,7 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
 
     ![Tworzenie obszaru roboczego usługi Azure Databricks](./media/databricks-extract-load-sql-data-warehouse/create-databricks-workspace.png "Tworzenie obszaru roboczego usługi Azure Databricks")
 
-    Podaj następujące wartości: 
+    Podaj następujące wartości:
      
     |Właściwość  |Opis  |
     |---------|---------|
@@ -95,14 +95,14 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
     Zaakceptuj wszystkie pozostałe wartości domyślne poza następującymi:
 
     * Wprowadź nazwę klastra.
-    * W tym artykule należy utworzyć klaster ze środowiskiem uruchomieniowym **4.0**. 
+    * W tym artykule należy utworzyć klaster ze środowiskiem uruchomieniowym **4.0**.
     * Upewnij się, że jest zaznaczone pole wyboru **Zakończ po \_\_ min nieaktywności**. Podaj czas (w minutach), po jakim działanie klastra ma zostać zakończone, jeśli nie jest używany.
     
     Wybierz pozycję **Utwórz klaster**. Po uruchomieniu klastra możesz dołączyć do niego notesy i uruchamiać zadania Spark.
 
 ## <a name="create-an-azure-data-lake-store-account"></a>Tworzenie konta usługi Azure Data Lake Store
 
-W tej sekcji utworzysz konto usługi Azure Data Lake Store i skojarzysz z nim jednostkę usługi Azure Active Directory. W dalszej części tego samouczka użyjesz tej jednostki usługi w usłudze Azure Databricks, aby uzyskać dostęp do usługi Azure Data Lake Store. 
+W tej sekcji utworzysz konto usługi Azure Data Lake Store i skojarzysz z nim jednostkę usługi Azure Active Directory. W dalszej części tego samouczka użyjesz tej jednostki usługi w usłudze Azure Databricks, aby uzyskać dostęp do usługi Azure Data Lake Store.
 
 1. W witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Utwórz zasób** > **Magazyn** > **Data Lake Store**.
 3. W bloku **Nowa usługa Data Lake Store** podaj wartości, jak pokazano na poniższym zrzucie ekranu:
@@ -189,7 +189,7 @@ Gdy logujesz się w sposób programowy, musisz przekazać identyfikator dzierża
 
 1. Skopiuj **identyfikator katalogu**. Ta wartość jest Twoim identyfikatorem dzierżawy.
 
-   ![Identyfikator dzierżawy](./media/databricks-extract-load-sql-data-warehouse/copy-directory-id.png) 
+   ![Identyfikator dzierżawy](./media/databricks-extract-load-sql-data-warehouse/copy-directory-id.png)
 
 ## <a name="upload-data-to-data-lake-store"></a>Przekazywanie danych do usługi Data Lake Store
 
@@ -306,7 +306,7 @@ Masz teraz dane wyodrębnione z usługi Azure Data Lake Store do usługi Azure D
 
 ## <a name="transform-data-in-azure-databricks"></a>Przekształcanie danych w usłudze Azure Databricks
 
-Przykładowe dane nieprzetworzone **small_radio_json.json** rejestrują odbiorców stacji radiowej i mają wiele kolumn. W tej sekcji przekształcisz dane tak, aby z zestawu danych były pobierane tylko określone kolumny. 
+Przykładowe dane nieprzetworzone **small_radio_json.json** rejestrują odbiorców stacji radiowej i mają wiele kolumn. W tej sekcji przekształcisz dane tak, aby z zestawu danych były pobierane tylko określone kolumny.
 
 1. Zacznij od pobrania tylko kolumn *firstName*, *lastName*, *gender*, *location* i *level* z utworzonej wcześniej ramki danych.
 
@@ -340,7 +340,7 @@ Przykładowe dane nieprzetworzone **small_radio_json.json** rejestrują odbiorc�
         |  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
         +---------+----------+------+--------------------+-----+
 
-2.  Możesz dalej przekształcać te dane, aby zmienić nazwę kolumny **level** na **subscription_type**.
+2. Możesz dalej przekształcać te dane, aby zmienić nazwę kolumny **level** na **subscription_type**.
 
         val renamedColumnsDf = specificColumnsDf.withColumnRenamed("level", "subscription_type")
         renamedColumnsDf.show()
@@ -382,7 +382,7 @@ Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azur
 
         val blobStorage = "<STORAGE ACCOUNT NAME>.blob.core.windows.net"
         val blobContainer = "<CONTAINER NAME>"
-        val blobAccessKey =  "<ACCESS KEY>"
+        val blobAccessKey = "<ACCESS KEY>"
 
 2. Określ folder tymczasowy, który będzie używany podczas przenoszenia danych między usługami Azure Databricks i Azure SQL Data Warehouse.
 
@@ -397,15 +397,15 @@ Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azur
 
         //SQL Data Warehouse related settings
         val dwDatabase = "<DATABASE NAME>"
-        val dwServer = "<DATABASE SERVER NAME>" 
+        val dwServer = "<DATABASE SERVER NAME>"
         val dwUser = "<USER NAME>"
         val dwPass = "<PASSWORD>"
-        val dwJdbcPort =  "1433"
+        val dwJdbcPort = "1433"
         val dwJdbcExtraOptions = "encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
         val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
         val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
 
-5. Uruchom poniższy fragment kodu, aby załadować przekształconą ramkę danych **renamedColumnsDf** jako tabelę w magazynie danych SQL. Ten fragment kodu tworzy tabelę o nazwie **SampleTable** w bazie danych SQL. Należy pamiętać, że usługa Azure SQL DW wymaga klucza głównego.  Klucz główny można utworzyć, wykonując polecenie „CREATE MASTER KEY;” w programie SQL Server Management Studio.
+5. Uruchom poniższy fragment kodu, aby załadować przekształconą ramkę danych **renamedColumnsDf** jako tabelę w magazynie danych SQL. Ten fragment kodu tworzy tabelę o nazwie **SampleTable** w bazie danych SQL. Należy pamiętać, że usługa Azure SQL DW wymaga klucza głównego. Klucz główny można utworzyć, wykonując polecenie „CREATE MASTER KEY;” w programie SQL Server Management Studio.
 
         spark.conf.set(
           "spark.sql.parquet.writeLegacyFormat",
@@ -413,7 +413,7 @@ Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azur
         
         renamedColumnsDf.write
             .format("com.databricks.spark.sqldw")
-            .option("url", sqlDwUrlSmall) 
+            .option("url", sqlDwUrlSmall)
             .option("dbtable", "SampleTable")
             .option( "forward_spark_azure_storage_credentials","True")
             .option("tempdir", tempDir)
@@ -434,9 +434,9 @@ Po ukończeniu tego samouczka możesz zakończyć działanie klastra. Aby to zro
 
 ![Zatrzymywanie klastra usługi Databricks](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Zatrzymywanie klastra usługi Databricks")
 
-Jeśli nie zakończysz działania klastra ręcznie, zostanie on automatycznie zatrzymany, o ile podczas tworzenia klastra zaznaczono pole wyboru **Zakończ po __ min aktywności**. W takim przypadku nieaktywny klaster automatycznie zatrzymuje się po określonym czasie.
+Jeśli nie zakończysz działania klastra ręcznie, zostanie on automatycznie zatrzymany, o ile podczas tworzenia klastra zaznaczono pole wyboru **Zakończ po \_\_ min nieaktywności**. W takim przypadku nieaktywny klaster automatycznie zatrzymuje się po określonym czasie.
 
-## <a name="next-steps"></a>Następne kroki 
+## <a name="next-steps"></a>Następne kroki
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]

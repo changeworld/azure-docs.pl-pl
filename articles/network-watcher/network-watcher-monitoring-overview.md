@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 7cccb47bd7489e88649ee82c4d52c72af0d91e8e
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 983b966ad304afb467df26193dd609f6f21a1b32
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390949"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614281"
 ---
 # <a name="what-is-azure-network-watcher"></a>Co to jest Azure Network Watcher?
 
@@ -98,6 +98,9 @@ Więcej informacji na temat dzienników przepływu NSG znajduje się w samouczku
 ### <a name="view-diagnostic-logs-for-network-resources"></a>Wyświetlanie dzienników diagnostycznych dla zasobów sieciowych
 
 Funkcję rejestrowania diagnostycznego można włączyć dla zasobów sieciowych Azure takich jak sieciowe grupy zabezpieczeń, publiczne adresy IP, moduły równoważenia obciążenia, bramy sieci wirtualnych i bramy aplikacji. Funkcja *dzienników diagnostycznych* udostępnia pojedynczy interfejs służący do włączania i wyłączania dzienników diagnostycznych zasobów sieciowych dla każdego istniejącego zasobu sieci, który generuje dziennik diagnostyczny. Dzienniki diagnostyczne można wyświetlać za pomocą narzędzi takich jak Microsoft Power BI i Azure Log Analytics. Aby dowiedzieć się więcej na temat analizowania dzienników diagnostycznych sieci platformy Azure, zobacz [Rozwiązania dotyczące sieci Azure w usłudze Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+
+## <a name="network-watcher-automatic-enablement"></a>Automatyczne włączanie usługi Network Watcher
+Podczas tworzenia lub aktualizowania sieci wirtualnej w ramach subskrypcji usługa Network Watcher zostanie automatycznie włączona w regionie sieci wirtualnej. Automatyczne włączanie usługi Network Watcher nie wpływa na zasoby i nie wiąże się z opłatami. Aby uzyskać więcej informacji, zobacz [Tworzenie usługi Network Watcher](network-watcher-create.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

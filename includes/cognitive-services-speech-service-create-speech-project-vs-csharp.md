@@ -4,49 +4,47 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 8ff8e8341b6f39f66c2cc8014d41d3d3a2918d2b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 7a028f65467c517be59be6f0c6d2c45ef9a7685e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47454482"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285767"
 ---
 1. Uruchom program Visual Studio 2017.
- 
-1. Upewnij się, że pakiet roboczy **Środowisko pulpitu platformy .NET** jest dostępny. Wybierz pozycję **Narzędzia** \> **Pobierz narzędzia i funkcje** na pasku menu programu Visual Studio, aby otworzyć instalatora programu Visual Studio. Jeśli ten pakiet roboczy jest już włączony, zamknij okno dialogowe. 
 
-    W przeciwnym przypadku zaznacz pole wyboru obok pozycji **Programowanie aplikacji klasycznych dla platformy .NET** i kliknij przycisk **Modyfikuj** w prawym dolnym rogu okna dialogowego. Instalowanie nowej funkcji chwilę potrwa.
+1. Na pasku menu w programie Visual Studio wybierz pozycję **Narzędzia > Pobierz narzędzia** i upewnij się, że jest dostępne obciążenie **Programowanie aplikacji klasycznych dla platformy .NET**. Jeśli to obciążenie nie zostało zainstalowane, zaznacz to pole wyboru, a następnie kliknij przycisk **Modyfikuj**, aby rozpocząć instalację. Pobranie i zainstalowanie tego składnika może potrwać kilka minut.
 
-    ![Włącz pakiet roboczy Programowanie aplikacji klasycznych dla platformy .NET](~/articles/cognitive-services/speech-service/media/sdk/vs-enable-net-desktop-workload.png)
+   Jeśli pole wyboru **Programowanie aplikacji klasycznych dla platformy .NET** jest zaznaczone, możesz teraz zamknąć to okno dialogowe.
 
-1. Utwórz nową aplikację konsoli w języku Visual C#. W oknie dialogowym **Nowy projekt** w lewym okienku rozwiń pozycję **Zainstalowane** \> **Visual C#** \> **Pulpit Windows**, a następnie wybierz pozycję **Aplikacja konsoli (.NET Framework)**. Jako nazwę projektu podaj *helloworld*.
+   ![Włącz pakiet roboczy Programowanie aplikacji klasycznych dla platformy .NET](~/articles/cognitive-services/speech-service/media/sdk/vs-enable-net-desktop-workload.png)
+
+1. Następnie utwórzmy projekt. Na pasku menu wybierz pozycję **Plik > Nowy > Projekt**. W wyświetlonym oknie dialogowym w lewym okienku rozwiń sekcje **Zainstalowane > Visual C# > Pulpit Windows**, a następnie wybierz pozycję **Aplikacja konsoli (.NET Framework)**. Nazwij ten projekt *helloworld*.
 
     ![Utwórz aplikację konsoli w języku Visual C# (.NET Framework)](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-01-new-console-app.png "Utwórz aplikację konsoli w języku Visual C# (.NET Framework)")
 
-1. Instalowanie i przywoływanie [zestawu Speech SDK narzędzia NuGet](https://aka.ms/csspeech/nuget). W Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy, a następnie wybierz pozycję **Zarządzaj pakietami NuGet dla rozwiązania**.
+1. Projekt jest już skonfigurowany, czas więc zainstalować [pakiet NuGet zestawu SDK rozpoznawania mowy](https://aka.ms/csspeech/nuget) i dodać odwołanie do niego w kodzie. Znajdź Eksploratora rozwiązań, a następnie kliknij prawym przyciskiem myszy pozycję helloworld. W menu wybierz pozycję **Zarządzaj pakietami NuGet**.
 
-    ![Kliknij prawym przyciskiem myszy pozycję Zarządzaj pakietami NuGet dla rozwiązania](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-02-manage-nuget-packages.png "Zarządzaj pakietami NuGet dla rozwiązania")
+   ![Kliknij prawym przyciskiem myszy pozycję Zarządzaj pakietami NuGet dla rozwiązania](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-02-manage-nuget-packages.png "Zarządzaj pakietami NuGet dla rozwiązania")
 
-1. W prawym górnym rogu wybierz w polu **Źródło pakietu** wartość **nuget.org**. Wyszukaj pakiet `Microsoft.CognitiveServices.Speech` i zainstaluj go w projekcie **helloworld**.
+1. W prawym górnym rogu Menedżera pakietów NuGet odszukaj listę rozwijaną **Źródło pakietów** i upewnij się, że jest wybrana pozycja **nuget.org**. Następnie wybierz przycisk **Przeglądaj**, wyszukaj pakiet `Microsoft.CognitiveServices.Speech` i zainstaluj jego najnowszą stabilną wersję.
 
-    ![Zainstaluj pakiet NuGet Microsoft.CognitiveServices.Speech](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-03-nuget-install-1.0.0.png "Instalowanie pakietu NuGet")
+   ![Zainstaluj pakiet NuGet Microsoft.CognitiveServices.Speech](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-03-nuget-install-1.0.0.png "Instalowanie pakietu NuGet")
 
-1. Zaakceptuj wyświetloną licencję, aby rozpocząć instalowanie pakietu NuGet.
+1. Zaakceptuj wszystkie umowy i licencje, aby rozpocząć instalację.
 
-    ![Zaakceptuj licencję](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-04-nuget-license.png "Zaakceptuj licencję")
+   ![Zaakceptuj licencję](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-04-nuget-license.png "Zaakceptuj licencję")
 
-    Po zainstalowaniu pakietu zostanie wyświetlone potwierdzenie w konsoli Menedżera pakietów.
+    Po zainstalowaniu pakietu w konsoli Menedżera pakietów zostanie wyświetlone potwierdzenie.
 
-1. Utwórz konfigurację platformy pasującą do używanej architektury komputera za pomocą Menedżera konfiguracji. Wybierz pozycję **Kompilacja** > **Menedżer konfiguracji**.
+1. Następnym krokiem jest utworzenie konfiguracji platformy zgodnej z architekturą komputera, za pomocą którego będzie kompilowana i uruchamiana aplikacja konsoli. Na pasku menu wybierz pozycję **Kompilacja** > **Menedżer konfiguracji**.
 
     ![Uruchom Menedżera konfiguracji](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-05-cfg-manager-click.png "Uruchom Menedżera konfiguracji")
 
-1. W oknie dialogowym **Menedżer konfiguracji** dodaj nową platformę. Z listy rozwijanej **Aktywne platformy rozwiązania** wybierz pozycję **Nowa**.
+1. W oknie dialogowym **Menedżer konfiguracji** odszukaj listę rozwijaną **Aktywne platformy rozwiązania** i wybierz pozycję **Nowa**.
 
     ![Dodaj nową platformę w oknie Menedżera konfiguracji](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-06-cfg-manager-new.png "Dodaj nową platformę w oknie Menedżera konfiguracji")
 
-1. Jeśli korzystasz z 64-bitowego systemu Windows, utwórz nową konfigurację platformy o nazwie `x64`. Jeśli używasz 32-bitowego systemu Windows, utwórz nową konfigurację platformy o nazwie `x86`.
+1. Jeśli używasz 64-bitowego systemu Windows, po wyświetleniu monitu **Wpisz lub wybierz nową platformę** wybierz opcję `x64`. Jeśli używasz 32-bitowego systemu Windows, wybierz opcję `x86`. Po zakończeniu kliknij pozycję **OK**.
 
     ![W 64-bitowym systemie Windows dodaj nową platformę o nazwie „x64”](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-07-cfg-manager-add-x64.png "Dodawanie platformy x64")
-
-

@@ -1,82 +1,103 @@
 ---
-title: Co to jest usługa Azure Active Directory (Azure AD)? | Microsoft Docs
-description: Dowiedz się, jak za pomocą usługi Azure Active Directory rozszerzyć istniejące tożsamości lokalne do chmury lub utworzyć aplikacje zintegrowane z usługą Azure AD.
+title: 'Usługa Azure Active Directory: omówienie | Microsoft Docs'
+description: Informacje o usłudze Azure Active Directory, obejmujące wymaganą terminologię, odbiorców, podstawy licencjonowania i skojarzone funkcje.
 services: active-directory
 author: eross-msft
 manager: mtillman
-ms.author: lizross
-ms.assetid: 498820c4-9ebe-42be-bda2-ecf38cc514ca
 ms.service: active-directory
-ms.component: fundamentals
-ms.workload: identity
 ms.topic: overview
-ms.date: 09/13/2018
-ms.custom: it-pro
-ms.openlocfilehash: 406baeac60c7c0cdf5f74876e5fc29ea23d3d6f6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 11/13/2018
+ms.author: lizross
+ms.openlocfilehash: 1b1561ed8470c39b13def72774e253db28bf58d8
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957551"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686589"
 ---
-# <a name="what-is-azure-active-directory"></a>Co to jest usługa Azure Active Directory?
-Azure Active Directory (Azure AD) to wielodostępna, oparta na chmurze usługa firmy Microsoft do zarządzania katalogiem i tożsamościami. Usługa Azure AD łączy podstawowe usługi katalogowe, zarządzanie dostępem do aplikacji i ochronę tożsamości w jednym rozwiązaniu, oferując opartą na standardach platformę, która pomaga deweloperom zapewniać kontrolę dostępu do swoich aplikacji na podstawie scentralizowanych zasad i reguł.
+# <a name="what-is-azure-active-directory"></a>Co to jest usługa Azure Active Directory? 
+Azure Active Directory (Azure AD) to chmurowa usługa firmy Microsoft do zarządzania tożsamościami i dostępem. Usługa Azure AD ułatwia pracownikom logowanie się i dostęp do następujących zasobów:
 
-![Stos programu Azure AD Connect](./media/active-directory-whatis/Azure_Active_Directory.png)
+- Zasoby zewnętrzne, takie jak usługa Microsoft Office 365, witryna Azure Portal i tysiące innych aplikacji SaaS.
 
-## <a name="benefits-of-azure-ad"></a>Korzyści z używania usługi Azure AD
-Usługa Azure AD pomaga:
+- Zasoby wewnętrzne, takie jak aplikacje w sieci firmowej i intranecie, a także aplikacje w chmurze opracowane przez organizację.
 
--   Utworzyć jedną tożsamość dla każdego użytkownika w całej firmie i zarządzać nią, synchronizując użytkowników, grupy i urządzenia dzięki programowi [Azure AD Connect](../connect/active-directory-aadconnect.md).
+Możesz skorzystać z różnych plakatów z [serii Platforma Microsoft Cloud dla architektów w przedsiębiorstwach](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity), aby lepiej zrozumieć podstawowe usługi tożsamości na platformie Azure oraz w usługach Azure AD i Office 365.
 
--   Zapewnić dostęp przy użyciu logowania jednokrotnego do aplikacji, w tym do tysięcy wstępnie zintegrowanych aplikacji SaaS, oraz zapewnić bezpieczniejszy dostęp zdalny do lokalnych aplikacji SaaS przy użyciu [serwera proxy aplikacji usługi Azure AD](../manage-apps/application-proxy.md).
+## <a name="who-uses-azure-ad"></a>Kto używa usługi Azure AD?
+Usługa Azure AD jest przeznaczona dla następujących użytkowników:
 
--   Zabezpieczyć dostęp do aplikacji przez wymuszenie zasad [uwierzytelniania wieloskładnikowego](../authentication/concept-mfa-howitworks.md) na podstawie reguł zarówno dla aplikacji lokalnych, jak i dla aplikacji w chmurze.
+- **Administratorzy IT.** Jako administrator IT możesz używać usługi Azure AD, aby kontrolować dostęp do aplikacji i ich zasobów, zależnie od wymagań biznesowych. Możesz na przykład użyć usługi Azure AD, aby wymagać uwierzytelniania wieloskładnikowego podczas uzyskiwania dostępu do ważnych zasobów organizacji. Usługa Azure AD pozwala też zautomatyzować aprowizację użytkowników między istniejącą usługą AD systemu Windows Server i aplikacjami w chmurze, włącznie z usługą Office 365. Ponadto usługa Azure AD zapewnia zaawansowane narzędzia, które automatycznie ułatwiają ochronę tożsamości użytkowników i poświadczeń zgodnie z wymaganiami nadzoru nad dostępem. Aby rozpocząć, utwórz konto [bezpłatnej 30-dniowej wersji próbnej usługi Azure Active Directory w wersji Premium](https://azure.microsoft.com/trial/get-started-active-directory/).
 
--   Zwiększyć produktywność użytkowników dzięki [samoobsługowemu resetowaniu haseł](../user-help/user-help-reset-password.md) oraz żądaniom dostępu do aplikacji i grup przy użyciu portalu [MyApps](../user-help/active-directory-saas-access-panel-introduction.md).
+- **Deweloperzy aplikacji.** Dla deweloperów aplikacji usługa Azure AD oferuje opartą na standardach metodę dodawania logowania jednokrotnego (SSO) do aplikacji, umożliwiając posługiwanie się istniejącymi poświadczeniami użytkowników. Usługa Azure AD udostępnia też interfejsy API, które mogą ułatwić tworzenie spersonalizowanych środowisk aplikacji z wykorzystaniem istniejących danych organizacji. Aby rozpocząć, utwórz konto [bezpłatnej 30-dniowej wersji próbnej usługi Azure Active Directory w wersji Premium](https://azure.microsoft.com/trial/get-started-active-directory/). Aby uzyskać więcej informacji, możesz też przejść do strony [Usługa Azure Active Directory dla deweloperów](../develop/index.yml).
 
--   Skorzystać z [wysokiej dostępności i niezawodności](https://docs.microsoft.com/azure/architecture/checklist/availability) globalnego rozwiązania klasy korporacyjnej umożliwiającego zarządzanie tożsamościami i dostępem w chmurze.
+- **Subskrybenci produktów Microsoft 365, Office 365, Azure lub Dynamics CRM Online.** Jako subskrybent korzystasz już z usługi Azure AD. Każda dzierżawa produktów Microsoft 365, Office 365, Azure i Dynamics CRM Online staje się automatycznie dzierżawą usługi Azure AD. Możesz od razu zacząć zarządzać dostępem do zintegrowanych aplikacji w chmurze.
 
-## <a name="who-uses-azure-ad"></a>Kto używa usługi Azure AD
-Usługa Azure AD jest przeznaczona dla administratorów IT, deweloperów aplikacji oraz użytkowników usługi Office 365 lub Dynamics CRM Online albo platformy Azure.
+## <a name="what-are-the-azure-ad-licenses"></a>Co to są licencje usługi Azure AD?
+Usługi biznesowe online firmy Microsoft, takie jak Office 365 lub Microsoft Azure, wymagają usługi Azure AD, aby obsługiwać logowanie i ułatwić ochronę tożsamości. W związku z tym, jeśli subskrybujesz dowolną usługę biznesową online firmy Microsoft, automatycznie uzyskujesz usługę Azure AD z dostępem do wszystkich bezpłatnych funkcji.
 
-- **Administratorzy IT.** Usługa Azure AD zwiększa bezpieczeństwo w organizacji, zapewniając silniejsze zarządzanie tożsamościami i dostęp z użyciem logowania jednokrotnego do tysięcy [aplikacji SaaS opartych na chmurze](../saas-apps/tutorial-list.md) oraz aplikacji lokalnych. Te aplikacje zapewniają także zabezpieczenia oparte na chmurze, bezproblemowy dostęp, ulepszoną współpracę, a także automatyzację cyklu życia tożsamości dla użytkowników, co poprawia bezpieczeństwo i zgodność.
+Aby zwiększyć możliwości implementacji usługi Azure AD, możesz także dodać płatne funkcje, podnosząc poziom planu do licencji Podstawowa, Premium P1 lub Premium P2 usługi Azure Active Directory. Płatne licencje usługi Azure AD bazują na istniejącym bezpłatnym katalogu, zapewniając samoobsługę, rozszerzone monitorowanie, raporty dotyczące zabezpieczeń oraz bezpieczny dostęp dla pracowników mobilnych.
 
-    Ponadto za pomocą programu [Azure AD Connect](../connect/active-directory-aadconnect-get-started-express.md) możesz zintegrować usługę Azure AD z istniejącą usługą Active Directory systemu Windows Server, co umożliwia Twojej organizacji zarządzanie dostępem do aplikacji SaaS opartych na chmurze z wykorzystaniem wcześniejszych inwestycji w lokalną obsługę tożsamości.
+>[!Note]
+>Aby zapoznać się z cennikami tych licencji, zobacz [Azure Active Directory — cennik](https://azure.microsoft.com/pricing/details/active-directory/).<br><br>Usługi Azure Active Directory Premium P1, Premium P2 — oraz Azure Active Directory — wersja Podstawowa nie są obecnie obsługiwane w Chinach. Aby uzyskać więcej informacji na temat cennika usługi Azure AD, możesz skorzystać z [forum usługi Azure Active Directory](https://azure.microsoft.com/support/community/?product=active-directory).
 
-- **Dla deweloperów aplikacji.** Usługa Azure AD pomaga skupić się na tworzeniu aplikacji przez zapewnienie integracji z rozwiązaniem do zarządzania tożsamościami używanym przez miliony organizacji na całym świecie.
+- **Azure Active Directory — wersja Bezpłatna.** Oferuje zarządzanie użytkownikami i grupami, synchronizację katalogów lokalnych, podstawowe raporty oraz logowanie jednokrotne na platformie Azure, w usłudze Office 365 i w wielu popularnych aplikacjach SaaS.
 
-- **Dla klientów usługi Office 365, platformy Azure lub usługi Dynamics CRM Online.** Korzystasz już z usługi Azure AD. Każda dzierżawa usługi Office 365 i Dynamics CRM Online oraz platformy Azure to tak naprawdę dzierżawa usługi Azure AD. Dzięki temu możesz natychmiast rozpocząć zarządzanie dostępem użytkowników do zintegrowanych aplikacji w chmurze.
+- **Azure Active Directory — wersja Podstawowa.** Oprócz funkcji wersji Bezpłatna, wersja Podstawowa zapewnia też dostęp do aplikacji w chmurze, zarządzanie dostępem oparte na grupach, samoobsługowe resetowanie haseł dla aplikacji w chmurze oraz serwer proxy aplikacji usługi Azure AD, który umożliwia publikowanie aplikacji internetowych w środowisku lokalnym przy użyciu usługi Azure AD.
 
-## <a name="how-reliable-is-azure-ad"></a>Jak niezawodna jest usługa Azure AD?
-Usługa Azure AD została zaprojektowana tak, aby była rozproszona geograficznie, wysoce dostępna i aby można było z niej korzystać z wieloma dzierżawami, co oznacza, że można na niej polegać, realizując swoje najważniejsze potrzeby biznesowe. Usługa Azure AD działa w 28 centrach danych na całym świecie i korzysta z automatycznego trybu failover. To oznacza, że nawet jeśli centrum danych ulegnie awarii, kopie Twoich danych katalogu będą aktywne w co najmniej dwóch dodatkowych centrach danych rozproszonych regionalnie i będzie można uzyskiwać do nich natychmiastowy dostęp.
+- **Azure Active Directory — wersja Premium P1.** Oprócz funkcji wersji Bezpłatna i Podstawowa, wersja P1 umożliwia też użytkownikom hybrydowym dostęp zarówno do zasobów lokalnych, jak i w chmurze. Obsługuje ona również zaawansowaną administrację, taką jak grupy dynamiczne, samoobsługowe zarządzanie grupami, usługa Microsoft Identity Manager (lokalny pakiet do zarządzania tożsamościami i dostępem) oraz funkcje zapisu zwrotnego, które umożliwiają samoobsługowe resetowanie haseł przez użytkowników lokalnych.
 
-Aby uzyskać więcej informacji na temat umów dotyczących poziomu usług, zobacz [Umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/).
+- **Azure Active Directory — wersja Premium P2.** Oprócz funkcji wersji Bezpłatna, Podstawowa i P1, wersja P2 oferuje też [usługę Azure Active Directory Identity Protection](../identity-protection/enable.md), aby zapewnić oparty na ryzykach dostęp warunkowy do aplikacji i kluczowych danych firmy, oraz usługę [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md), aby ułatwić odnajdywanie, ograniczanie i monitorowanie administratorów oraz ich dostępu do zasobów w celu zapewnienia dostępu dokładnie wtedy, gdy jest potrzebny.
 
-## <a name="choose-an-edition"></a>Wybieranie wersji
-Wszystkie usługi biznesowe online firmy Microsoft korzystają z usługi Azure AD na potrzeby logowania i realizacji innych potrzeb związanych z tożsamością. Jeśli zdecydujesz się na subskrypcję dowolnej usługi biznesowej online firmy Microsoft (na przykład usługi Office 365 lub platformy Microsoft Azure), automatycznie otrzymasz usługę Azure AD z dostępem do wszystkich funkcji w wersji bezpłatnej. Za pomocą usługi Azure Active Directory — wersja Bezpłatna możesz zarządzać użytkownikami i grupami, dokonywać synchronizacji z katalogami lokalnymi oraz umożliwiać logowanie jednokrotne do platformy Azure, usługi Office 365 i tysięcy popularnych aplikacji SaaS, takich jak Salesforce, Workday, Concur, DocuSign, Google Apps, Box, ServiceNow, Dropbox itd. 
+- **Licencje funkcji „Płatność zgodnie z rzeczywistym użyciem”.** Istnieje też możliwość uzyskania licencji dodatkowych funkcji, takich jak usługa Azure Active Directory Business-to-Customer (B2C). Usługa B2C może ułatwić zapewnianie rozwiązań do zarządzania tożsamościami i dostępem dla aplikacji udostępnianych klientom. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Azure Active Directory B2C](../../active-directory-b2c/index.yml).
 
-Aby zwiększyć możliwości implementacji usługi Azure AD, możesz także dodać płatne funkcje, podnosząc poziom planu do wersji Podstawowa, Premium P1 lub Premium P2 usługi Azure Active Directory. Płatne wersje usługi Azure AD rozszerzają możliwości istniejącego bezpłatnego katalogu, udostępniając funkcje klasy korporacyjnej, które obejmują samoobsługę, rozszerzone monitorowanie, raportowanie zabezpieczeń, uwierzytelnianie wieloskładnikowe oraz bezpieczny dostęp dla pracowników mobilnych.
+Aby uzyskać więcej informacji o kojarzeniu subskrypcji platformy Azure z usługą Azure AD, zobacz [How to: Associate or add an Azure subscription to Azure Active Directory](active-directory-how-subscriptions-associated-directory.md) (Jak: Kojarzenie subskrypcji platformy Azure lub dodawanie jej do usługi Azure Active Directory). Aby uzyskać więcej informacji o przypisywaniu licencji użytkownikom, zobacz [How to: Assign or remove Azure Active Directory licenses](license-users-groups.md) (Jak: Przypisywanie lub usuwanie licencji usługi Azure Active Directory).
 
-> [!NOTE]
-> Aby zapoznać się z cennikami tych wersji, zobacz [Azure Active Directory — cennik](https://azure.microsoft.com/pricing/details/active-directory/). Usługi Azure Active Directory Premium P1, Premium P2 — oraz Azure Active Directory — wersja Podstawowa nie są obecnie obsługiwane w Chinach. Aby uzyskać więcej informacji na temat cennika usług Azure AD, możesz skorzystać z forum usługi Azure Active Directory.
+## <a name="terminology"></a>Terminologia
+Aby lepiej zrozumieć usługę Azure AD i jej dokumentację, zapoznaj się z poniższymi terminami.
 
-- **Azure Active Directory — wersja Podstawowa.** Przeznaczona na potrzeby procesów roboczych obsługujących zadania wymagające najpierw przetwarzania w chmurze wersja oferuje rozwiązania umożliwiające dostęp do aplikacji skoncentrowanych na chmurze oraz samoobsługowe zarządzanie tożsamościami. W ramach wersji Podstawowa uzyskujesz dostęp do funkcji zwiększających produktywność oraz redukujących koszty, takich jak zarządzanie dostępem opartym na grupach, samoobsługowe resetowanie haseł do aplikacji w chmurze oraz serwer proxy aplikacji usługi Azure Active Directory (na potrzeby publikowania lokalnych aplikacji internetowych przy użyciu usługi Azure AD), z umową SLA klasy korporacyjnej, gwarantującą bezawaryjne działanie przez 99,9% czasu.
+|Termin lub pojęcie|Opis|
+|---------------|-----------|
+|Subskrypcja platformy Azure| Używana do płacenia za usługi platformy Azure w chmurze. Możesz mieć wiele subskrypcji. Są one połączone z kartą kredytową.|
+|Dzierżawa platformy Azure| Dedykowane, zaufane wystąpienie usługi Azure AD, które jest automatycznie tworzone, gdy organizacja rejestruje się w subskrypcji usługi w chmurze firmy Microsoft, takiej jak Microsoft Azure, Microsoft Intune lub Office 365. Dzierżawa usługi Azure reprezentuje jedną organizację.|
+|Pojedyncza dzierżawa| Dzierżawy platformy Azure, które uzyskują dostęp do innych usług w dedykowanym środowisku, są uznawane za jedną dzierżawę.|
+|Wiele dzierżaw| Dzierżawy platformy Azure, które uzyskują dostęp do innych usług w środowisku współużytkowanym przez wiele organizacji, są uznawane za wiele dzierżaw.|
+|Katalog usługi Azure AD|Każda dzierżawa platformy Azure ma dedykowany, zaufany katalog usługi Azure AD. Katalog usługi Azure AD zawiera użytkowników, grupy i aplikacje dzierżawy oraz jest używany do obsługi funkcji zarządzania tożsamościami i dostępem dla zasobów dzierżawy.|
+|Konto Azure AD | Tożsamość utworzona za pośrednictwem usługi Azure AD lub innej usługi firmy Microsoft w chmurze, takiej jak Office 365. Tożsamości są przechowywane w usłudze Azure AD i dostępne dla subskrypcji usług w chmurze organizacji. To konto jest też czasami nazywane kontem służbowym.|
+|Domena niestandardowa|Każdy nowy katalog usługi Azure AD jest dostarczany z początkową nazwą domeny nazwa_domeny.onmicrosoft.com. Oprócz początkowej nazwy, do listy można dodać nazwy domen organizacji, włącznie z nazwami używanymi do prowadzenia działalności firmy i uzyskiwania dostępu do zasobów organizacji przez użytkowników. Dodanie niestandardowych nazw domen ułatwia tworzenie nazw użytkowników takich jak alain@contoso.com, które są znajome dla użytkowników.|
+|Administrator konta|Ta klasyczna rola administratora subskrypcji określa właściciela subskrypcji odpowiedzialnego za rozliczenia. Ta rola ma dostęp do [Centrum konta platformy Azure](https://account.azure.com/Subscriptions) i pozwala zarządzać wszystkimi subskrypcjami na koncie. Aby uzyskać więcej informacji, zobacz [Role klasycznego administratora subskrypcji, role kontroli na podstawie ról (RBAC) platformy Azure i role administratora usługi Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Administrator usługi|Ta klasyczna rola administratora subskrypcji umożliwia zarządzanie wszystkimi zasobami platformy Azure, włącznie z dostępem. Ta rola ma takie same uprawnienia dostępu co użytkownik, któremu przypisano rolę właściciela w zakresie subskrypcji. Aby uzyskać więcej informacji, zobacz [Role klasycznego administratora subskrypcji, role kontroli na podstawie ról (RBAC) platformy Azure i role administratora usługi Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Właściciel|Ta rola ułatwia zarządzanie wszystkimi zasobami platformy Azure, włącznie z dostępem. Ta rola bazuje na nowszym systemie autoryzacji, nazywanym kontrolą dostępu opartą na rolach (RBAC), który umożliwia szczegółowe zarządzanie dostępem do zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [Role klasycznego administratora subskrypcji, role kontroli na podstawie ról (RBAC) platformy Azure i role administratora usługi Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Administrator globalny usługi Azure AD|Ta rola administratora jest automatycznie przypisywana osobie, która utworzyła dzierżawę usługi Azure AD. Administratorzy globalni mogą wykonywać wszystkie funkcje administracyjne dla usługi Azure AD i wszelkich sfederowanych z nią usług, takich jak Exchange Online, SharePoint Online i Skype dla firm Online. Może istnieć wielu administratorów globalnych, ale tylko administratorzy globalni mogą przypisywać użytkownikom role administratora (włącznie z przypisywaniem innych administratorów globalnych).<br><br>**Uwaga**<br>Ta rola administratora jest nazywana administratorem globalnym w witrynie Azure Portal, ale ma nazwę **administrator firmy** w interfejsie API programu Microsoft Graph, interfejsie API programu Graph w usłudze Azure AD oraz w usłudze Azure AD PowerShell.<br><br>Aby uzyskać więcej informacji o różnych rolach administratorów, zobacz [Administrator role permissions in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md) (Uprawnienia ról administratorów w usłudze Azure Active Directory).|
+|Konto Microsoft (nazywane też kontem MSA)|Konta osobiste, które zapewniają dostęp do produktów i usług w chmurze firmy Microsoft przeznaczonych dla konsumentów, takich jak Outlook, OneDrive, Xbox LIVE i Office 365. Konto Microsoft jest tworzone i przechowywane w systemie kont tożsamości konsumentów firmy Microsoft.|
 
-- **Azure Active Directory — wersja Premium P1.** Przeznaczona do wspierania organizacji w zaspokajaniu większych potrzeb związanych z zarządzaniem dostępem i tożsamościami usługa Azure Active Directory — wersja Premium oferuje dodatkowe, bogate w funkcje możliwości zarządzania tożsamościami na poziomie przedsiębiorstwa i umożliwia użytkownikom hybrydowym bezproblemowe uzyskiwanie dostępu do możliwości lokalnych i w chmurze. Ta wersja oferuje wszystko, czego potrzebujesz dla informacyjnych procesów roboczych oraz administratorów tożsamości w środowiskach hybrydowych w zakresie dostępu do aplikacji, samoobsługowego zarządzania tożsamościami i dostępem, ochrony tożsamości i bezpieczeństwa w chmurze. Obsługuje zaawansowane zasoby administracyjne i umożliwiające delegowanie, na przykład grupy dynamiczne oraz samoobsługowe zarządzanie grupami. Zawiera usługę Microsoft Identity Manager (lokalny pakiet narzędzi do zarządzania dostępem i tożsamościami) oraz zapewnia opcje zapisu zwrotnego, co umożliwia na przykład samoobsługowe resetowanie haseł przez użytkowników lokalnych.
+## <a name="what-features-work-in-azure-ad"></a>Jakie funkcje działają w usłudze Azure AD?
+Po wybraniu licencji usługi Azure AD uzyskasz dostęp do niektórych lub wszystkich z następujących funkcji dla Twojej organizacji:
 
-- **Azure Active Directory — wersja Premium P2.** Zaprojektowana z myślą o zaawansowanej ochronie Twoich użytkowników i administratorów ta nowa oferta obejmuje wszystkie funkcje usługi Azure AD Premium P1, a także usługi Identity Protection i Privileged Identity Management. Usługa Azure Active Directory Identity Protection przetwarza miliardy sygnałów, aby zapewnić dostęp warunkowy na podstawie ryzyka do Twoich aplikacji oraz kluczowych danych firmowych. Pomagamy Ci również zarządzać kontami uprzywilejowanymi i chronić je dzięki usłudze Azure Active Directory Privileged Identity Management. Dzięki niej możesz odkrywać, ograniczać i monitorować konta administratorów i ich dostęp do zasobów oraz zapewnić dostęp dokładnie wtedy, gdy jest potrzebny.  
+|Kategoria|Opis|
+|-------|-----------|
+|Zarządzanie aplikacjami|Zarządzanie aplikacjami w chmurze i lokalnymi przy użyciu serwera proxy aplikacji, logowania jednokrotnego, portalu Moje aplikacje (nazywanego też panelem dostępu) i aplikacji typu oprogramowanie jako usługa (SaaS). Aby uzyskać więcej informacji, zobacz temat [Jak zapewnić bezpieczny, zdalny dostęp do aplikacji lokalnych](../manage-apps/application-proxy.md) i [dokumentację zarządzania aplikacjami](../manage-apps/index.yml).|
+|Authentication|Zarządzanie samoobsługowym resetowaniem haseł, uwierzytelnianiem wieloskładnikowym, niestandardowymi listami zakazanych haseł i inteligentną blokadą usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [dokumentację uwierzytelniania w usłudze Azure AD](../authentication/index.yml).|
+|Działania między firmami (B2B)|Zarządzanie użytkownikami-gośćmi i partnerami zewnętrznymi przy zachowaniu kontroli nad danymi firmowymi. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Azure Active Directory B2B](../b2b/index.yml).|
+|Działania między firmami i klientami (B2C)|Dostosowywanie i kontrolowanie sposobu tworzenia kont, logowania się i zarządzania profilami przez użytkowników podczas korzystania z aplikacji. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Azure Active Directory B2C](../../active-directory-b2c/index.yml).|
+|Dostęp warunkowy|Zarządzanie dostępem do aplikacji w chmurze. Aby uzyskać więcej informacji, zobacz [dokumentację dostępu warunkowego w usłudze Azure AD](../conditional-access/index.yml).|
+|Usługa Azure Active Directory dla deweloperów|Tworzenie aplikacji, które obsługują logowanie za pomocą wszystkich tożsamości firmy Microsoft oraz uzyskują tokeny w celu wywoływania programu Microsoft Graph, innych interfejsów API firmy Microsoft lub niestandardowych interfejsów API. Aby uzyskać więcej informacji, zobacz [Platforma tożsamości firmy Microsoft (Azure Active Directory dla deweloperów)](../develop/index.yml).|
+|Zarządzanie urządzeniami|Zarządzanie sposobem uzyskiwania dostępu do danych firmowych przez urządzenia w chmurze lub lokalne. Aby uzyskać więcej informacji, zobacz [dokumentację zarządzania urządzeniami w usłudze Azure AD](../devices/index.yml).|
+|Usługi domenowe|Przyłączanie maszyn wirtualnych platformy Azure do domeny bez używania kontrolerów domeny. Aby uzyskać więcej informacji, zobacz [dokumentację usług Azure AD Domain Services](../../active-directory-domain-services/index.yml).|
+|Użytkownicy korporacyjni|Zarządzanie przypisywaniem licencji i dostępem do aplikacji oraz konfigurowanie delegatów za pomocą grup i ról administratora. Aby uzyskać więcej informacji, zobacz [dokumentację zarządzania użytkownikami usługi Azure Active Directory](../users-groups-roles/index.yml).|
+|Tożsamość hybrydowa|Używanie programów Azure Active Directory Connect i Connect Health w celu udostępniania pojedynczej tożsamości użytkownika na potrzeby uwierzytelniania i autoryzacji we wszystkich zasobach, niezależnie od lokalizacji (w chmurze lub lokalnie). Aby uzyskać więcej informacji, zobacz [dokumentację tożsamości hybrydowej](../hybrid/index.yml).|
+|Nadzór nad tożsamościami|Zarządzanie tożsamością w organizacji za pośrednictwem mechanizmów kontroli dostępu pracowników, partnerów biznesowych, dostawców, usług i aplikacji. Można też przeprowadzać przeglądy dostępu. Aby uzyskać więcej informacji, zobacz [dokumentację zarządzania tożsamościami w usłudze Azure AD](../governance/identity-governance-overview.md) i temat [Przeglądy dostępu w usłudze Azure AD](../governance/access-reviews-overview.md).|
+|Ochrona tożsamości|Wykrywanie potencjalnych luk w zabezpieczeniach wpływających na tożsamości w organizacji, konfigurowanie zasad w celu reagowania na podejrzane działania oraz podejmowanie odpowiednich działań w celu rozwiązywania problemów. Aby uzyskać więcej informacji, zobacz [Usługa Azure AD Identity Protection](../identity-protection/index.yml).|
+|Tożsamości zarządzane dla zasobów platformy Azure|Zapewnia usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure AD, która umożliwia uwierzytelnianie dowolnych usług uwierzytelniania obsługiwanych przez usługę Azure AD, włącznie z usługą Key Vault. Aby uzyskać więcej informacji, zobacz [Czym są tożsamości zarządzane dla zasobów platformy Azure?](../managed-identities-azure-resources/overview.md).|
+|Privileged Identity Management (PIM)|Kontrolowanie i monitorowanie dostępu w organizacji oraz zarządzanie nim. Ta funkcja obejmuje dostęp do zasobów platformy Azure oraz zasobów w usłudze Azure AD i w innych usługach online firmy Microsoft, takich jak Office 365 lub Intune. Aby uzyskać więcej informacji, zobacz [Usługa Azure AD Privileged Identity Management](../privileged-identity-management/index.yml).|
+|Raporty i monitorowanie|Uzyskiwanie szczegółowych informacji dotyczących zabezpieczeń i wzorców użycia w danym środowisku. Aby uzyskać więcej informacji, zobacz [Raporty i monitorowanie w usłudze Azure Active Directory](../reports-monitoring/index.yml).|
 
-> [!NOTE]
-> Wiele funkcji usługi Azure Active Directory jest dostępnych także w wersjach zakładających płatność zgodnie z rzeczywistym użyciem:<ul><li>**Azure Active Directory B2C.** Rozwiązanie do zarządzania tożsamościami i dostępem w aplikacjach udostępnianych klientom. Aby uzyskać więcej informacji, zobacz [Azure Active Directory B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/).</li><li>**Azure Multi-Factor Authentication.** Używana dla poszczególnych użytkowników lub dostawców uwierzytelniania. Aby uzyskać więcej informacji, zobacz [Co to jest usługa Azure Multi-Factor Authentication?](../authentication/multi-factor-authentication.md)
-
-## <a name="as-an-admin-how-do-i-get-started"></a>Jak rozpocząć pracę jako administrator?
-Zarejestruj się w celu skorzystania z 30-dniowej wersji próbnej i wdróż swoje pierwsze rozwiązanie w chmurze, zobacz [Azure Active Directory — wersja Premium (wersja próbna)](https://azure.microsoft.com/trial/get-started-active-directory/).
-
-## <a name="as-a-developer-how-do-i-get-started"></a>Jak rozpocząć pracę jako deweloper?
-Zarejestruj się w celu skorzystania z 30-dniowej wersji próbnej i rozpocznij integrowanie aplikacji z usługą Azure AD, zobacz [Azure Active Directory — wersja Premium (wersja próbna)](https://azure.microsoft.com/trial/get-started-active-directory/). Aby uzyskać więcej informacji, możesz również przeczytać [Przewodnik dla deweloperów](../develop/v1-overview.md) usługi Azure Active Directory.
 
 ## <a name="next-steps"></a>Następne kroki
-- [Dowiedz się więcej na temat podstawowych kwestii związanych z zarządzaniem tożsamościami i dostępem na platformie Azure](identity-fundamentals.md).
+- [Rejestrowanie w usłudze Azure Active Directory — wersja Premium](active-directory-get-started-premium.md)
 
-- [Integrate Azure AD with Windows Server Active directory (Integrowanie usługi Azure AD z usługą Active Directory systemu Windows Server)](../hybrid/how-to-connect-install-express.md).
+- [Kojarzenie subskrypcji platformy Azure z usługą Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
+
+- [Uzyskiwanie dostępu do usługi Azure Active Directory i tworzenie nowej dzierżawy](active-directory-access-create-new-tenant.md)
+
+- [Lista kontrolna dotycząca wdrażania funkcji usługi Azure Active Directory Premium P2](active-directory-deployment-checklist-p2.md)

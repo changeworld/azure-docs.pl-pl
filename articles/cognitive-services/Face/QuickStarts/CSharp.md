@@ -1,49 +1,45 @@
 ---
-title: 'Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka C#'
+title: 'Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST platformy Azure i języka C#'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki start omówiono wykrywanie twarzy na obrazie przy użyciu interfejsu API rozpoznawania twarzy z językiem C#.
+description: W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy platformy Azure i języka C# do wykrywania twarzy na obrazie.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
-ms.date: 05/10/2018
+ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: 5a3b3e70a12f70874bf54e8f01a0f8baf3eec845
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: ca8702cfd70b245c10df9251b6ced9ac1bc40bba
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954525"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578067"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-c"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka C#
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST rozpoznawania twarzy i języka C#
 
-W tym przewodniku Szybki start wykryjesz ludzką twarz na obrazie za pomocą interfejsu API rozpoznawania twarzy.
+W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy platformy Azure i języka C# do wykrywania ludzkich twarzy na obrazie.
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do uruchomienia przykładu potrzebny jest klucz subskrypcji. Klucze subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
+- Klucz subskrypcji interfejsu API rozpoznawania twarzy. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Możesz też wykonać instrukcje z tematu [Create a Cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) (Tworzenie konta usług Cognitive Services), aby subskrybować usługę interfejsu API rozpoznawania twarzy i uzyskać klucz.
+- Dowolna wersja programu [Visual Studio 2015 lub 2017](https://www.visualstudio.com/downloads/).
 
-## <a name="detect-faces-in-an-image"></a>Wykrywanie twarzy na obrazie
+## <a name="create-the-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-Użyj metody [Face — Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby wykryć twarze na obrazie i zwrócić atrybuty twarzy, w tym:
+1. W programie Visual Studio utwórz nowy projekt **Aplikacja konsoli (.NET Framework)** i nadaj jej nazwę **FaceDetection**. 
+1. Jeśli w rozwiązaniu istnieją inne projekty, wybierz ten projekt jako pojedynczy projekt startowy.
 
-* Identyfikator Face ID: unikatowy identyfikator używany w kilku scenariuszach dotyczących interfejsu API rozpoznawania twarzy.
-* Obrys twarzy: lewy górny róg oraz szerokość i wysokość wskazujące na lokalizację twarzy na obrazie.
-* Charakterystyczne punkty twarzy: układ 27 charakterystycznych punktów twarzy wskazujący położenie istotnych części twarzy.
-* Atrybuty twarzy, takie jak wiek, płeć, intensywność uśmiechu, położenie głowy i zarost.
+## <a name="add-face-detection-code"></a>Dodawanie kodu służącego do wykrywania twarzy
 
-Aby uruchomić przykład, wykonaj następujące kroki:
+Otwórz nowy plik *Program.cs* projektu. W tym pliku dodasz kod wymagany do ładowania obrazów i wykrywania twarzy.
 
-1. Utwórz nową aplikację konsolową języka Visual C# w programie Visual Studio.
-2. Zastąp plik Program.cs poniższym kodem.
-3. Zastąp wartość `<Subscription Key>` prawidłowym kluczem subskrypcji.
-4. Zmień wartość `uriBase`, aby użyć lokalizacji, z której uzyskano klucze subskrypcji, jeśli jest to konieczne.
-5. Uruchom program.
-6. Gdy pojawi się monit, wprowadź ścieżkę do obrazu.
+### <a name="include-namespaces"></a>Uwzględnianie przestrzeni nazw
 
-### <a name="face---detect-request"></a>Żądanie Face — Detect
+Dodaj następujące instrukcje `using` na początku pliku *Program.cs*.
 
 ```csharp
 using System;
@@ -51,190 +47,199 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+```
 
-namespace CSHttpClientSample
+### <a name="add-essential-fields"></a>Dodawanie podstawowych pól
+
+Dodaj następujące pola do klasy **Program**: Te dane służą do określania sposobu nawiązywania połączenia z usługą rozpoznawania twarzy i lokalizacji, z której można pobrać dane wejściowe. Należy zaktualizować pole `subscriptionKey` wartością klucza subskrypcji. Konieczna może być również zmiana ciągu `uriBase` w taki sposób, aby zawierał on poprawny identyfikator regionu.
+
+
+```csharp
+// Replace <Subscription Key> with your valid subscription key.
+const string subscriptionKey = "<Subscription Key>";
+
+// NOTE: You must use the same region in your REST call as you used to
+// obtain your subscription keys. For example, if you obtained your
+// subscription keys from westus, replace "westcentralus" in the URL
+// below with "westus".
+//
+// Free trial subscription keys are generated in the westcentralus region.
+// If you use a free trial subscription key, you shouldn't need to change
+// this region.
+const string uriBase =
+    "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+```
+
+### <a name="receive-image-input"></a>Odbieranie danych wejściowych obrazu
+
+Dodaj poniższy kod do metody **Main** w klasie **Program**. Powoduje on wyświetlenie monitu w konsoli z prośbą o wprowadzenie adresu URL obrazu. Następnie wywołuje inną metodę, **MakeAnalysisRequest**, aby przetworzyć obraz w tej lokalizacji.
+
+```csharp
+// Get the path and filename to process from the user.
+Console.WriteLine("Detect faces:");
+Console.Write(
+    "Enter the path to an image with faces that you wish to analyze: ");
+string imageFilePath = Console.ReadLine();
+
+if (File.Exists(imageFilePath))
 {
-    static class Program
+    try
     {
-        // Replace <Subscription Key> with your valid subscription key.
-        const string subscriptionKey = "<Subscription Key>";
+        MakeAnalysisRequest(imageFilePath);
+        Console.WriteLine("\nWait a moment for the results to appear.\n");
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine("\n" + e.Message + "\nPress Enter to exit...\n");
+    }
+}
+else
+{
+    Console.WriteLine("\nInvalid file path.\nPress Enter to exit...\n");
+}
+Console.ReadLine();
+```
 
-        // NOTE: You must use the same region in your REST call as you used to
-        // obtain your subscription keys. For example, if you obtained your
-        // subscription keys from westus, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the westcentralus region.
-        // If you use a free trial subscription key, you shouldn't need to change
-        // this region.
-        const string uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+### <a name="call-the-face-detection-rest-api"></a>Wywoływanie interfejsu API REST wykrywania twarzy
 
-        static void Main()
-        {
-            // Get the path and filename to process from the user.
-            Console.WriteLine("Detect faces:");
-            Console.Write(
-                "Enter the path to an image with faces that you wish to analyze: ");
-            string imageFilePath = Console.ReadLine();
+Dodaj następującą metodę do klasy **Program**. Tworzy on wywołanie REST do interfejsu API rozpoznawania twarzy w celu wykrycia informacji o twarzy na obrazie zdalnym (ciąg `requestParameters` określa, które atrybuty dotyczące twarzy mają zostać pobrane). Następnie zapisuje dane wyjściowe do ciągu JSON.
 
-            if (File.Exists(imageFilePath))
-            {
-                // Execute the REST API call.
-                try
-                {
-                    MakeAnalysisRequest(imageFilePath);
-                    Console.WriteLine("\nWait a moment for the results to appear.\n");
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("\n" + e.Message + "\nPress Enter to exit...\n");
-                }
-            }
-            else
-            {
-                Console.WriteLine("\nInvalid file path.\nPress Enter to exit...\n");
-            }
-            Console.ReadLine();
-        }
+Metody pomocnicze zostaną zdefiniowanie w poniższych krokach.
 
+```csharp
+// Gets the analysis of the specified image by using the Face REST API.
+static async void MakeAnalysisRequest(string imageFilePath)
+{
+    HttpClient client = new HttpClient();
 
-        /// <summary>
-        /// Gets the analysis of the specified image by using the Face REST API.
-        /// </summary>
-        /// <param name="imageFilePath">The image file.</param>
-        static async void MakeAnalysisRequest(string imageFilePath)
-        {
-            HttpClient client = new HttpClient();
+    // Request headers.
+    client.DefaultRequestHeaders.Add(
+        "Ocp-Apim-Subscription-Key", subscriptionKey);
 
-            // Request headers.
-            client.DefaultRequestHeaders.Add(
-                "Ocp-Apim-Subscription-Key", subscriptionKey);
+    // Request parameters. A third optional parameter is "details".
+    string requestParameters = "returnFaceId=true&returnFaceLandmarks=false" +
+        "&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses," +
+        "emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
 
-            // Request parameters. A third optional parameter is "details".
-            string requestParameters = "returnFaceId=true&returnFaceLandmarks=false" +
-                "&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses," +
-                "emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
+    // Assemble the URI for the REST API Call.
+    string uri = uriBase + "?" + requestParameters;
 
-            // Assemble the URI for the REST API Call.
-            string uri = uriBase + "?" + requestParameters;
+    HttpResponseMessage response;
 
-            HttpResponseMessage response;
+    // Request body. Posts a locally stored JPEG image.
+    byte[] byteData = GetImageAsByteArray(imageFilePath);
 
-            // Request body. Posts a locally stored JPEG image.
-            byte[] byteData = GetImageAsByteArray(imageFilePath);
+    using (ByteArrayContent content = new ByteArrayContent(byteData))
+    {
+        // This example uses content type "application/octet-stream".
+        // The other content types you can use are "application/json"
+        // and "multipart/form-data".
+        content.Headers.ContentType =
+            new MediaTypeHeaderValue("application/octet-stream");
 
-            using (ByteArrayContent content = new ByteArrayContent(byteData))
-            {
-                // This example uses content type "application/octet-stream".
-                // The other content types you can use are "application/json"
-                // and "multipart/form-data".
-                content.Headers.ContentType =
-                    new MediaTypeHeaderValue("application/octet-stream");
+        // Execute the REST API call.
+        response = await client.PostAsync(uri, content);
 
-                // Execute the REST API call.
-                response = await client.PostAsync(uri, content);
+        // Get the JSON response.
+        string contentString = await response.Content.ReadAsStringAsync();
 
-                // Get the JSON response.
-                string contentString = await response.Content.ReadAsStringAsync();
-
-                // Display the JSON response.
-                Console.WriteLine("\nResponse:\n");
-                Console.WriteLine(JsonPrettyPrint(contentString));
-                Console.WriteLine("\nPress Enter to exit...");
-            }
-        }
-
-
-        /// <summary>
-        /// Returns the contents of the specified file as a byte array.
-        /// </summary>
-        /// <param name="imageFilePath">The image file to read.</param>
-        /// <returns>The byte array of the image data.</returns>
-        static byte[] GetImageAsByteArray(string imageFilePath)
-        {
-            using (FileStream fileStream =
-                new FileStream(imageFilePath, FileMode.Open, FileAccess.Read))
-            {
-                BinaryReader binaryReader = new BinaryReader(fileStream);
-                return binaryReader.ReadBytes((int)fileStream.Length);
-            }
-        }
-
-
-        /// <summary>
-        /// Formats the given JSON string by adding line breaks and indents.
-        /// </summary>
-        /// <param name="json">The raw JSON string to format.</param>
-        /// <returns>The formatted JSON string.</returns>
-        static string JsonPrettyPrint(string json)
-        {
-            if (string.IsNullOrEmpty(json))
-                return string.Empty;
-
-            json = json.Replace(Environment.NewLine, "").Replace("\t", "");
-
-            StringBuilder sb = new StringBuilder();
-            bool quote = false;
-            bool ignore = false;
-            int offset = 0;
-            int indentLength = 3;
-
-            foreach (char ch in json)
-            {
-                switch (ch)
-                {
-                    case '"':
-                        if (!ignore) quote = !quote;
-                        break;
-                    case '\'':
-                        if (quote) ignore = !ignore;
-                        break;
-                }
-
-                if (quote)
-                    sb.Append(ch);
-                else
-                {
-                    switch (ch)
-                    {
-                        case '{':
-                        case '[':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', ++offset * indentLength));
-                            break;
-                        case '}':
-                        case ']':
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', --offset * indentLength));
-                            sb.Append(ch);
-                            break;
-                        case ',':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', offset * indentLength));
-                            break;
-                        case ':':
-                            sb.Append(ch);
-                            sb.Append(' ');
-                            break;
-                        default:
-                            if (ch != ' ') sb.Append(ch);
-                            break;
-                    }
-                }
-            }
-
-            return sb.ToString().Trim();
-        }
+        // Display the JSON response.
+        Console.WriteLine("\nResponse:\n");
+        Console.WriteLine(JsonPrettyPrint(contentString));
+        Console.WriteLine("\nPress Enter to exit...");
     }
 }
 ```
 
-### <a name="face---detect-response"></a>Odpowiedź na żądanie Face — Detect
+### <a name="process-the-input-image-data"></a>Przetwarzanie danych obrazu wejściowego
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, na przykład:
+Dodaj następującą metodę do klasy **Program**. Służy ona do konwersji obrazu pod określonym adresem URL do tablicy bajtów.
+
+```csharp
+// Returns the contents of the specified file as a byte array.
+static byte[] GetImageAsByteArray(string imageFilePath)
+{
+    using (FileStream fileStream =
+        new FileStream(imageFilePath, FileMode.Open, FileAccess.Read))
+    {
+        BinaryReader binaryReader = new BinaryReader(fileStream);
+        return binaryReader.ReadBytes((int)fileStream.Length);
+    }
+}
+```
+
+### <a name="parse-the-json-response"></a>Analizowanie odpowiedzi w formacie JSON
+
+Dodaj następującą metodę do klasy **Program**. Służy ona do formatowania danych wejściowych w formacie JSON, aby można je było łatwiej odczytać. Aplikacja zapisze te dane ciągu do konsoli.
+
+```csharp
+// Formats the given JSON string by adding line breaks and indents.
+static string JsonPrettyPrint(string json)
+{
+    if (string.IsNullOrEmpty(json))
+        return string.Empty;
+
+    json = json.Replace(Environment.NewLine, "").Replace("\t", "");
+
+    StringBuilder sb = new StringBuilder();
+    bool quote = false;
+    bool ignore = false;
+    int offset = 0;
+    int indentLength = 3;
+
+    foreach (char ch in json)
+    {
+        switch (ch)
+        {
+            case '"':
+                if (!ignore) quote = !quote;
+                break;
+            case '\'':
+                if (quote) ignore = !ignore;
+                break;
+        }
+
+        if (quote)
+            sb.Append(ch);
+        else
+        {
+            switch (ch)
+            {
+                case '{':
+                case '[':
+                    sb.Append(ch);
+                    sb.Append(Environment.NewLine);
+                    sb.Append(new string(' ', ++offset * indentLength));
+                    break;
+                case '}':
+                case ']':
+                    sb.Append(Environment.NewLine);
+                    sb.Append(new string(' ', --offset * indentLength));
+                    sb.Append(ch);
+                    break;
+                case ',':
+                    sb.Append(ch);
+                    sb.Append(Environment.NewLine);
+                    sb.Append(new string(' ', offset * indentLength));
+                    break;
+                case ':':
+                    sb.Append(ch);
+                    sb.Append(' ');
+                    break;
+                default:
+                    if (ch != ' ') sb.Append(ch);
+                    break;
+            }
+        }
+    }
+
+    return sb.ToString().Trim();
+}
+```
+
+## <a name="run-the-app"></a>Uruchamianie aplikacji
+
+Odpowiedź oznaczająca powodzenie będzie zawierać dane dotyczące rozpoznawania twarzy w czytelnym formacie JSON. Na przykład:
 
 ```json
 [
@@ -332,7 +337,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak utworzyć aplikację WPF systemu Windows, która wykrywa twarze na zdjęciach za pomocą usługi rozpoznawania twarzy. Ta aplikacja rysuje ramkę wokół każdej twarzy i wyświetla opis twarzy na pasku stanu.
+W tym przewodniku Szybki start utworzono prostą aplikację konsolową .NET, która korzysta z wywołań REST wraz z interfejsem API rozpoznawania twarzy platformy Azure do wykrywania twarzy na obrazie i zwrócenia ich atrybutów. Następnie zapoznaj się z dokumentacją referencyjną interfejsu API rozpoznawania twarzy, aby dowiedzieć się więcej na temat obsługiwanych scenariuszy.
 
 > [!div class="nextstepaction"]
-> [Samouczek: wprowadzenie do interfejsu API rozpoznawania twarzy w języku C#](../Tutorials/FaceAPIinCSharpTutorial.md)
+> [Interfejs API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

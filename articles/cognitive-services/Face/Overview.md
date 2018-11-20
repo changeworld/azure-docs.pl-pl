@@ -9,12 +9,12 @@ ms.component: face-api
 ms.topic: overview
 ms.date: 10/29/2018
 ms.author: sbowles
-ms.openlocfilehash: 3fe9dd713bef509b1972b51cb07d4f942c544544
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a15b6678b15bf5d1a3078494e12da3a08c57bed3
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914196"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633465"
 ---
 # <a name="what-is-the-azure-face-api"></a>Co to jest interfejs API rozpoznawania twarzy na platformie Azure?
 
@@ -63,6 +63,10 @@ Poniższa ilustracja przedstawia przykład bazy danych o nazwie „myfriends”.
 Po utworzeniu i przeprowadzeniu uczenia bazy danych można wykonać identyfikację nowo wykrytej twarzy względem grupy. Jeśli twarz zostanie zidentyfikowana jako należąca do osoby w grupie, zostanie zwrócony obiekt osoby.
 
 Aby uzyskać więcej informacji na temat identyfikowania osób, zobacz [Identify API (Interfejs API identyfikacji)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+
+## <a name="use-containers"></a>Korzystanie z kontenerów
+
+Po zainstalowaniu standardowego kontenera platformy Docker blisko danych można wykrywać, rozpoznawać oraz identyfikować twarze, korzystając z [kontenera rozpoznawania twarzy](face-how-to-install-containers.md).
 
 ## <a name="sample-apps"></a>Przykładowe aplikacje
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 11/13/2018
 ms.author: alkohli
-ms.openlocfilehash: e99a3a7db7a934a8a72695c38ab952786579a640
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 60186ee6aa614c83691c9ce4ab9d8124fd5925fd
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232210"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685960"
 ---
 # <a name="what-is-azure-data-box-edge-preview"></a>Czym jest rozwiązanie Azure Data Box Edge (w wersji zapoznawczej)? 
 
@@ -84,7 +84,7 @@ Urządzenie fizyczne Data Box Edge oferuje następujące funkcje:
 | Memory (Pamięć)| 64 GB pamięci RAM|
 | Dyski| 8 dysków SSD NVMe, każdy dysk o pojemności 1,6 TB <br> Awaria jednego dysku SSD NVMe powoduje awarię systemu. |
 | Pojemność magazynu lokalnego| Całkowita pojemność 12,8 TB|
-| Interfejsy sieciowe| 2 interfejsy 1 GbE — 1 do zarządzania, bez możliwości konfigurowania przez użytkownika, używany do konfiguracji początkowej. Drugi interfejs danych jest konfigurowalny przez użytkownika i domyślnie korzysta z protokołu DHCP. <br>2 interfejsy 25 GbE — mogą również działać jako interfejsy 10 GbE. Te interfejsy danych mogą być konfigurowane przez użytkownika jako DHCP (ustawienie domyślne) lub statyczne. <br> 2 interfejsy 25 GbE — te interfejsy danych mogą być konfigurowane przez użytkownika jako DHCP (ustawienie domyślne) lub statyczne.|
+| Interfejsy sieciowe| 2 interfejsy 1 GbE — 1 do zarządzania, bez możliwości konfigurowania przez użytkownika, używany do konfiguracji początkowej. Drugi interfejs może być konfigurowany przez użytkownika i służyć do transferu danych. Domyślnie jest interfejsem DHCP. <br>2 interfejsy 25 GbE — mogą również działać jako interfejsy 10 GbE. Te interfejsy danych mogą być konfigurowane przez użytkownika jako DHCP (ustawienie domyślne) lub statyczne. <br> 2 interfejsy 25 GbE — te interfejsy danych mogą być konfigurowane przez użytkownika jako DHCP (ustawienie domyślne) lub statyczne.|
 
 ## <a name="components"></a>Składniki
 

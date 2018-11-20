@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: overview
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: fcc10723b2fb750b099f99999de01ab699d5d5e8
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 545d60207bbd1941920bc0e70096417c35486634
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887772"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634604"
 ---
 # <a name="what-is-text-analytics"></a>Co to jest analiza tekstu?
 
@@ -32,7 +32,11 @@ Analiza tekstu może oznaczać różne rzeczy, ale w usługach Cognitive Service
 |[**Analiza tonacji**](how-tos/text-analytics-how-to-sentiment-analysis.md) | Dowiedz się, co klienci myślą o Twojej marce lub danym temacie, analizując nieprzetworzony tekst pod kątem wskazówek dotyczących pozytywnych i negatywnych tonacji. Ten interfejs API zwraca ocenę tonacji od 0 do 1 dla każdego dokumentu, przy czym 1 oznacza najbardziej pozytywną tonację.<br /> Modele analizy są wstępnie szkolone przy użyciu rozbudowanych technologii z zakresu treści tekstu oraz naturalnego języka firmy Microsoft. W przypadku [wybranych języków](text-analytics-supported-languages.md) interfejs API może przeanalizować i ocenić dowolny podany nieprzetworzony tekst, zwracając wyniki bezpośrednio do aplikacji wywołującej. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) <br /> [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package)  |
 |[**Wyodrębnianie kluczowych fraz**](how-tos/text-analytics-how-to-keyword-extraction.md) | Automatycznie wyodrębniaj kluczowe frazy, aby szybko identyfikować główne punkty. Na przykład dla tekstu wejściowego „Jedzenie było pyszne, a serwowała je doskonała obsługa” interfejs API zwraca główne tematy wypowiedzi: „jedzenie” i „doskonała obsługa”.  | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) <br /> [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) |
 |[**Wykrywanie języka**](how-tos/text-analytics-how-to-language-detection.md) | Wykrywaj język wprowadzanego tekstu oraz zgłaszaj jeden kod języka dla każdego dokumentu przesłanego w żądaniu dla nawet 120 języków. Kod języka jest powiązany z oceną, co wskazuje siłę oceny. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) <br />  [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) | 
-|[**Rozpoznawanie jednostek (wersja zapoznawcza)**](how-tos/text-analytics-how-to-entity-linking.md) | Identyfikuj i klasyfikuj jednostki w tekście jako osoby, miejsca, organizacje, datę/godzinę, ilości, wartości procentowe, waluty i inne. Dobrze znane jednostki są również rozpoznawane i łączone z większą ilością informacji w Internecie. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) | 
+|[**Rozpoznawanie jednostek (wersja zapoznawcza)**](how-tos/text-analytics-how-to-entity-linking.md) | Identyfikuj i klasyfikuj jednostki w tekście jako osoby, miejsca, organizacje, datę/godzinę, ilości, wartości procentowe, waluty i inne. Dobrze znane jednostki są również rozpoznawane i łączone z większą ilością informacji w Internecie. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) |
+
+## <a name="use-containers"></a>Korzystanie z kontenerów
+
+Po zainstalowaniu standardowych kontenerów platformy Docker blisko danych można lokalnie wyodrębniać kluczowe frazy, wykrywać język i analizować tonację, korzystając z [kontenerów analizy tekstu](how-tos/text-analytics-how-to-install-containers.md).
 
 ## <a name="typical-workflow"></a>Typowy przepływ pracy
 

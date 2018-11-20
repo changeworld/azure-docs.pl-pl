@@ -1,7 +1,6 @@
 ---
-title: 'Przykład: Analizowanie opinii przy użyciu interfejsu API REST analizy tekstu'
-titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak wykrywać opinię przy użyciu interfejsu API REST analizy tekstu.
+title: Porady dotyczące analizy tonacji w interfejsie API REST analizy tekstu (Microsoft Cognitive Services na platformie Azure) | Microsoft Docs
+description: Sposób wykrywania tonacji przy użyciu interfejsu API REST analizy tekstu w usługach Microsoft Cognitive Services na platformie Azure w tym samouczku z przewodnikiem.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +9,12 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 981e663b6a93abed1da9c2765a1b43063c70ad43
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: bbe9ffd0709157b5f0389ccc68a285b9c3829db9
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605899"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632870"
 ---
 # <a name="example-how-to-detect-sentiment-in-text-analytics"></a>Przykład: Jak wykrywać opinię przy użyciu analizy tekstu
 
@@ -24,6 +23,9 @@ ms.locfileid: "45605899"
 Ta możliwość jest przydatna do wykrywania pozytywnych i negatywnych opinii w mediach społecznościowych, recenzjach klientów i na forach dyskusyjnych. Zawartość udostępniasz Ty, a modele i dane uczenia są dostarczane przez usługę.
 
 Aktualnie analiza tonacji obsługuje angielski, niemiecki, hiszpański i francuski. Inne języki są dostępne w wersji zapoznawczej. Więcej informacji, zobacz [Obsługiwane języki](../text-analytics-supported-languages.md).
+
+> [!TIP]
+> Analiza tekstu udostępnia również obraz kontenera platformy Docker oparty na systemie Linux na potrzeby analizy tonacji, można więc [zainstalować i uruchomić kontener analizy tekstu](text-analytics-how-to-install-containers.md) blisko danych.
 
 ## <a name="concepts"></a>Pojęcia
 
@@ -77,7 +79,7 @@ Szczegółowe informacje na temat definicji żądania można znaleźć w artykul
 
 + Utwórz żądanie **POST**. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [Interfejs API analizy tonacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)
 
-+ Ustaw punkt końcowy HTTP pod kątem wyodrębniania kluczowych fraz. Musi on obejmować zasób `/sentiment`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
++ Ustaw punkt końcowy HTTP na potrzeby analizy tonacji przy użyciu zasobów analizy tekstu na platformie Azure lub utworzonego wystąpienia [kontenera analizy tekstu](text-analytics-how-to-install-containers.md). Musi on obejmować zasób `/sentiment`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
 
 + Ustaw nagłówek żądania, tak aby zawierał klucz dostępu dla operacji analizy tekstu. Aby uzyskać więcej informacji, zobacz [How to find endpoints and access keys (Jak znajdować punkty końcowe i klucze dostępu)](text-analytics-how-to-access-key.md).
 

@@ -12,15 +12,15 @@ ms.component: report-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/23/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ba2784663a585aebb82ee149be3b54e73920f6dd
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: cd5da2a3c5fa3d9cd67715493eb649926badb694
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816654"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622538"
 ---
 # <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>Szybki start: instalowanie pakietu zawartości usługi Power BI dla usługi Azure Active Directory
 
@@ -29,7 +29,7 @@ ms.locfileid: "48816654"
 |Obecnie pakiet zawartości usługi Power BI dla usługi Azure AD używa interfejsów API programu Graph usługi Azure AD do pobierania danych z dzierżawy usługi Azure AD. W rezultacie mogą występować różnice między danymi dostępnymi w pakiecie zawartości i danymi pobranymi przy użyciu [interfejsów API programu Microsoft Graph do raportowania](concept-reporting-api.md). |
 |  |
 
-Pakiet zawartości usługi Power BI dla usługi Azure Active Directory umożliwia uzyskiwanie szczegółowych informacji na temat działania usługi Active Directory. Możesz pobrać wstępnie skompilowany pakiet zawartości i używać go do raportowania wszystkich działań w katalogu przy użyciu rozbudowanego środowiska wizualizacji oferowanego przez usługę Power BI. Możesz również utworzyć własny pulpit nawigacyjny i w prosty sposób udostępnić go innym osobom w organizacji. 
+Pakiet zawartości usługi Power BI dla usługi Azure Active Directory (Azure AD) umożliwia tworzenie wizualizacji danych raportowania z Twojego środowiska. Możesz pobrać wstępnie skompilowany pakiet zawartości i używać go do raportowania wszystkich działań w katalogu przy użyciu rozbudowanego środowiska wizualizacji oferowanego przez usługę Power BI. Możesz również utworzyć własny pulpit nawigacyjny i w prosty sposób udostępnić go innym osobom w organizacji. 
 
 Z tego przewodnika Szybki start dowiesz się, jak zainstalować pakiet zawartości.
 

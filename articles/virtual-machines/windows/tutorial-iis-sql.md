@@ -1,5 +1,5 @@
 ---
-title: Tworzenie maszyn wirtualnych uruchamiających stos SQL&#47;IIS&#47;.NET na platformie Azure| Microsoft Docs
+title: Samouczek — tworzenie maszyn wirtualnych uruchamiających stos SQL, IIS, .NET na platformie Azure| Microsoft Docs
 description: Z tego samouczka dowiesz się, jak zainstalować stos Azure SQL, IIS i.NET na maszynie wirtualnej z systemem Windows na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 357a81ef3ab23a1e06b88f083c2fcdc35b27853d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 4909edf6e434e626e89409f01ae0f5fbca5bf442
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49464914"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515492"
 ---
-# <a name="tutorial-install-the-sql47iis47net-stack-in-a-windows-vm-with-azure-powershell"></a>Samouczek: Instalowanie stosu SQL&#47;IIS&#47;.NET na maszynie wirtualnej z systemem Windows przy użyciu programu Azure PowerShell
+# <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Samouczek: instalowanie stosu SQL, IIS, .NET na maszynie wirtualnej z systemem Windows przy użyciu programu Azure PowerShell
 
-W tym samouczku instalujemy stos SQL&#47;IIS&#47;.NET przy użyciu programu Azure PowerShell. Ten stos składa się z dwóch maszyn wirtualnych z systemem Windows Server 2016 — jednej z usługami IIS i platformą .NET oraz drugiej z programem SQL Server.
+W tym samouczku instalujemy stos SQL, IIS, .NET przy użyciu programu Azure PowerShell. Ten stos składa się z dwóch maszyn wirtualnych z systemem Windows Server 2016 — jednej z usługami IIS i platformą .NET oraz drugiej z programem SQL Server.
 
 > [!div class="checklist"]
 > * Tworzenie maszyny wirtualnej 
@@ -57,7 +57,7 @@ New-AzureRmVm `
     -OpenPorts 80,3389 
 ```
 
-Zainstaluj usługi IIS i platformę .NET przy użyciu niestandardowego rozszerzenia skryptu.
+Zainstaluj usługi IIS i platformę .NET przy użyciu niestandardowego rozszerzenia skryptu za pomocą polecenia cmdlet [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension).
 
 ```azurepowershell-interactive
 Set-AzureRmVMExtension `

@@ -16,18 +16,18 @@ ms.date: 11/02/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: f0220c244bd5ed48393e2f81b7dd8a62fd0423be
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 1809e7f72afd99de38387317daf2ecb92dbe3cf0
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912998"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298725"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform-preview"></a>Szybki start: rejestrowanie aplikacji za pomocą platformy tożsamości firmy Microsoft (wersja zapoznawcza)
 
 Deweloperzy w przedsiębiorstwach i dostawcy oprogramowania jako usługi (SaaS) mogą tworzyć komercyjne usługi w chmurze lub aplikacje biznesowe i integrować je z platformą tożsamości firmy Microsoft, aby zapewnić bezpieczne logowanie i autoryzację dla swoich usług.
 
-Ten przewodnik Szybki start przedstawia dodawanie i rejestrowanie aplikacji w środowisku **Rejestracje aplikacji (wersja zapoznawcza)** w witrynie Azure Portal, co umożliwia jej integrację z platformą tożsamości firmy Microsoft.
+Ten przewodnik Szybki start przedstawia dodawanie i rejestrowanie aplikacji w środowisku **Rejestracje aplikacji (wersja zapoznawcza)** w witrynie Azure Portal, co umożliwia jej integrację z platformą tożsamości firmy Microsoft. Aby dowiedzieć się więcej na temat nowych funkcji i ulepszeń w nowym środowisku rejestrowania aplikacji, zobacz [ten wpis w blogu](https://developer.microsoft.com/graph/blogs/new-app-registration/). 
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 

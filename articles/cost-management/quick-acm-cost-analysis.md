@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/19/2018
+ms.date: 11/09/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 6b935322c9d892793f3695e0922d15f5886c7e25
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 40f3f56c15956a93176a753f7c66f66df1b8f5f4
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471292"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515730"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Szybki start: eksplorowanie kosztów za pomocą funkcji analizy kosztów
 
@@ -32,27 +32,14 @@ W tym przewodniku Szybki start zawarto informacje na temat wykonywania następuj
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Analiza kosztów jest dostępna dla wszystkich klientów z umową [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/). Aby wyświetlać dane kosztów, musisz mieć co najmniej prawa dostępu do odczytu co najmniej jednego z poniższych zakresów.
+Analiza kosztów jest dostępna dla wszystkich klientów z umową [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/). Aby wyświetlać dane kosztów, musisz mieć co najmniej prawa dostępu do odczytu co najmniej jednego z poniższych zakresów. Aby uzyskać więcej informacji na temat przypisywania dostępu do danych usługi Cost Management, zobacz [Przypisywanie dostępu do danych](assign-access-acm-data.md).
 
-
-|**Zakres**|**Lokalizacja definicji**|**Dostęp wymagany do analizowania kosztów w zakresie**|**Wstępnie wymagane ustawienie umowy EA**|**Dane rozliczeń są konsolidowane z**|
-|---                |---                  |---                   |---            |---           |
-|Konto rozliczeniowe<sup>1</sup>|[https://ea.azure.com ](https://ea.azure.com )|Administrator przedsiębiorstwa|Brak|Wszystkie subskrypcje z umowy Enterprise Agreement|
-|Dział|[https://ea.azure.com ](https://ea.azure.com )|Administrator działu|Włączone opłaty za widok administratora działu|Wszystkie subskrypcje należące do konta rejestracji połączonego z działem|
-|Konto rejestracji<sup>2</sup2>|[https://ea.azure.com ](https://ea.azure.com )|Właściciel konta|Włączone opłaty za widok właściciela konta|Wszystkie subskrypcje z konta rejestracji|
-|Grupa zarządzania|[https://portal.azure.com ](https://portal.azure.com )|Czytelnik usługi Cost Management (lub Czytelnik)|Włączone opłaty za widok właściciela konta|Wszystkie subskrypcje poniżej grupy zarządzania|
-|Subskrypcja|[https://portal.azure.com ](https://portal.azure.com )|Czytelnik usługi Cost Management (lub Czytelnik)|Włączone opłaty za widok właściciela konta|Wszystkie zasoby lub grupy zasobów w subskrypcji|
-|Grupa zasobów|[https://portal.azure.com ](https://portal.azure.com )|Czytelnik usługi Cost Management (lub Czytelnik)|Włączone opłaty za widok właściciela konta|Wszystkie zasoby w grupie zasobów|
-
-<sup>1</sup>Konto rozliczeniowe jest często określane jako konto umowy Enterprise Agreement lub konto rejestracji.
-
-<sup>2</sup>Konto rejestracji jest często określane jako właściciel konta.
-
-Aby uzyskać więcej informacji na temat konfigurowania ustawień **wyświetlania opłat przez administratora działu**  i **właściciela konta** , zobacz [Enabling access to costs (Umożliwianie dostępu do kosztów)](../billing/billing-enterprise-mgmt-grp-troubleshoot-cost-view.md#enabling-access-to-costs).
-
-
-
-
+- Konto billingowe
+- Dział
+- Konto rejestracji
+- Grupa zarządzania
+- Subskrypcja
+- Grupa zasobów
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 

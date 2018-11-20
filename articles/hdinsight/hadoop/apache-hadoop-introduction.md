@@ -1,6 +1,6 @@
 ---
-title: Co to jest usługa HDInsight oraz stos technologii Hadoop i Spark? — Azure
-description: Wprowadzenie do usługi HDInsight oraz stosu i składników technologii Hadoop i Spark, w tym systemów Kafka, Hive, Storm i bazy danych HBase do analizy danych big data.
+title: Co to jest usługa HDInsight oraz stos technologii Apache Hadoop i Apache Spark? — Azure
+description: Wprowadzenie do usługi HDInsight oraz stosu i składników technologii Apache Hadoop i Apache Spark, w tym systemów Kafka, Hive, Storm i bazy danych HBase do analizy danych big data.
 keywords: azure hadoop, hadoop azure, wprowadzenie do hadoop, wprowadzenie do usługi hadoop, stos technologii hadoop, wstęp do hadoop, wprowadzenie do platformy hadoop, co to jest klaster hadoop, co to są klastry hadoop, do czego służy usługa hadoop
 services: hdinsight
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017, mvc
 ms.topic: overview
 ms.date: 05/07/2018
-ms.openlocfilehash: 0c617f09c846811f876206e6045b640e63ad90b1
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 190d6203c4a00ed3f448bdbb7366db5bc22c45f8
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007056"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634519"
 ---
-# <a name="what-is-azure-hdinsight-and-the-hadoop-technology-stack"></a>Co to jest usługa Azure HDInsight oraz stos technologii Hadoop?
+# <a name="what-is-azure-hdinsight-and-the-apache-hadoop-technology-stack"></a>Co to jest usługa Azure HDInsight oraz stos technologii Apache Hadoop?
 
 Ten artykuł zawiera wprowadzenie do usługi Apache Hadoop w usłudze Azure HDInsight. Azure HDInsight jest w pełni zarządzaną usługą analityczną typu „open source” o szerokim zakresie, z przeznaczeniem dla przedsiębiorstw. Można używać z nią struktur typu „open source” takich jak Hadoop, Spark, Hive, LLAP, Kafka, Storm, R i nie tylko. 
 

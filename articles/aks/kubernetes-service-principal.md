@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: get-started-article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: ef3139c4b3f06644b219e177fad0c094ed600fb6
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 4af4cae07f4e02bc8306c0b317da3a58e4586494
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394594"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578353"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Jednostki usługi w usłudze Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ W tym artykule przedstawiono sposób tworzenia jednostki usługi dla klastra us�
 
 Aby utworzyć jednostkę usługi Azure AD, musisz mieć uprawnienia do zarejestrowania aplikacji w swojej dzierżawie usługi Azure AD i przypisania aplikacji do roli w swojej subskrypcji. Jeśli nie masz niezbędnych uprawnień, może być konieczne zwrócenie się z prośbą do administratora usługi Azure AD lub subskrypcji o przyznanie niezbędnych uprawnień lub wstępne utworzenie jednostki usługi do użycia z klastrem usługi AKS.
 
-Musisz również mieć zainstalowany i skonfigurowany interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Musisz również mieć zainstalowany i skonfigurowany interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>Automatyczne tworzenie i używanie jednostki usługi
 
@@ -75,6 +75,45 @@ W przypadku wdrażania klastra usługi AKS przy użyciu witryny Azure Portal na 
 
 ![Obraz przedstawiający przechodzenie do aplikacji Azure Vote](media/kubernetes-service-principal/portal-configure-service-principal.png)
 
+## <a name="delegate-access-to-other-azure-resources"></a>Delegowanie dostępu do innych zasobów platformy Azure
+
+Nazwa główna usługi klastra AKS może służyć do dostępu do innych zasobów. Na przykład jeśli chcesz użyć zaawansowanych funkcji sieciowych do nawiązania połączenia z istniejącymi sieciami wirtualnymi lub usługą Azure Container Registry (ACR), konieczne jest delegowanie dostępu do jednostki usługi.
+
+Aby delegować uprawnienia, należy utworzyć przypisanie roli przy użyciu polecenia [az role assignment create][az-role-assignment-create]. Możesz przypisać identyfikator `appId` do określonego zakresu, takiego jak grupa zasobów lub zasób sieci wirtualnej. Rola następnie definiuje uprawnienia, które jednostka usługi ma względem zasobu, jak pokazano w poniższym przykładzie:
+
+```azurecli
+az role assignment create --assignee <appId> --scope <resourceScope> --role Contributor
+```
+
+Opcja `--scope` dla zasobu musi być pełnym identyfikatorem zasobu, takim jak */subscriptions/\<identyfikator GUID\>/resourceGroups/myResourceGroup* lub */subscriptions/\<identyfikator GUID\>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet*
+
+W poniższych sekcjach opisano typowe delegacje, które należy wykonać.
+
+### <a name="azure-container-registry"></a>Azure Container Registry
+
+Jeśli używasz usługi Azure Container Registry (ACR) jako magazynu obrazów kontenerów, należy udzielić uprawnień dla klastra usługi AKS do odczytywania i ściągania obrazów. Dla jednostki usługi klastra AKS należy delegować rolę *Czytelnik* w rejestrze. Aby uzyskać szczegółowe instrukcje, zobacz [Grant AKS access to ACR][aks-to-acr] (Udzielanie klastrowi AKS uprawnień do usługi ACR).
+
+### <a name="networking"></a>Networking
+
+Możesz użyć zaawansowanych funkcji sieciowych, w przypadku których sieć wirtualna i podsieć lub publiczne adresy IP znajdują się w innej grupie zasobów. Przypisz jeden z następujących zestawów uprawnień ról:
+
+- Utwórz [rolę niestandardową][rbac-custom-role] i zdefiniuj następujące uprawnienia roli:
+  - *Microsoft.Network/virtualNetworks/subnets/join/action*
+  - *Microsoft.Network/virtualNetworks/subnets/read*
+  - *Microsoft.Network/publicIPAddresses/read*
+  - *Microsoft.Network/publicIPAddresses/write*
+  - *Microsoft.Network/publicIPAddresses/join/action*
+- Innym rozwiązaniem jest przypisanie wbudowanej roli [Współautor sieci][rbac-network-contributor] do podsieci w sieci wirtualnej
+
+### <a name="storage"></a>Magazyn
+
+Konieczne może być uzyskanie dostępu do istniejących zasobów dysku w innej grupie zasobów. Przypisz jeden z następujących zestawów uprawnień ról:
+
+- Utwórz [rolę niestandardową][rbac-custom-role] i zdefiniuj następujące uprawnienia roli:
+  - *Microsoft.Compute/disks/read*
+  - *Microsoft.Compute/disks/write*
+- Innym rozwiązaniem jest przypisanie wbudowanej roli [Współautor konta magazynu][rbac-storage-contributor] do grupy zasobów
+
 ## <a name="additional-considerations"></a>Dodatkowe zagadnienia
 
 Podczas korzystania z jednostek usług AKS i Azure AD należy pamiętać o następujących kwestiach.
@@ -107,3 +146,8 @@ Aby uzyskać więcej informacji na temat nazw głównych usług Azure Active Dir
 [az-ad-app-list]: /cli/azure/ad/app#az-ad-app-list
 [az-ad-app-delete]: /cli/azure/ad/app#az-ad-app-delete
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[rbac-network-contributor]: ../role-based-access-control/built-in-roles.md#network-contributor
+[rbac-custom-role]: ../role-based-access-control/custom-roles.md
+[rbac-storage-contributor]: ../role-based-access-control/built-in-roles.md#storage-account-contributor
+[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
+[aks-to-acr]: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json#grant-aks-access-to-acr

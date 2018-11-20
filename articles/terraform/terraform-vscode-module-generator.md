@@ -1,6 +1,6 @@
 ---
-title: Generator modułu narzędzia Azure Terraform w programie VS Code
-description: Dowiedz się, jak utworzyć szablon podstawowy Terraform za pomocą narzędzia Yeoman.
+title: Tworzenie szablonu podstawowego Terraform na platformie Azure przy użyciu narzędzia Yeoman
+description: Dowiedz się, jak utworzyć szablon podstawowy Terraform na platformie Azure przy użyciu narzędzia Yeoman.
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, virtual machine, azure, yeoman
@@ -8,24 +8,26 @@ author: v-mavick
 manager: jeconnoc
 ms.author: v-mavick
 ms.topic: tutorial
-ms.date: 09/12/2018
-ms.openlocfilehash: 513b123c44cf2cd37cf81a91e0d2da9599eb1fcd
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 11/08/2018
+ms.openlocfilehash: 9ef27166e84192dec81fd8f8da508785342ffefc
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47396358"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288020"
 ---
-# <a name="create-a-terraform-base-template-using-yeoman"></a>Tworzenie szablonu podstawowego Terraform przy użyciu narzędzia Yeoman
+# <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Tworzenie szablonu podstawowego Terraform na platformie Azure przy użyciu narzędzia Yeoman
 
 Narzędzie [Terraform](https://docs.microsoft.com/azure/terraform/
 ) umożliwia łatwe tworzenie infrastruktury na platformie Azure. Narzędzie [Yeoman](http://yeoman.io/) znacznie upraszcza zadanie dewelopera modułu podczas tworzenia modułów Terraform, zapewniając doskonałą platformę *najlepszych rozwiązań*.
 
-W tym artykule dowiesz się, jak używać generatora modułu narzędzia Yeoman do tworzenia podstawowego szablonu Terraform.
+W tym artykule dowiesz się, jak używać generatora modułu narzędzia Yeoman do tworzenia podstawowego szablonu Terraform. Dowiesz się, jak przetestować nowy szablon Terraform przy użyciu dwóch różnych metod:
+
+- Uruchamianie modułu Terraform przy użyciu pliku Docker, który zostanie utworzony w tym artykule.
+- Uruchamianie modułu Terraform natywnie w usłudze Azure Cloud Shell.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Komputer z systemem Windows 10, Linux lub macOS 10.10 +.
 - **Subskrypcja platformy Azure**: jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 - **Visual Studio Code**: będziemy używali programu [Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US) do badania plików utworzonych przez generator narzędzia Yeoman. Jednak możesz użyć dowolnego wybranego przez siebie edytora kodu.
 - **Terraform**: musisz zainstalować narzędzie [Terraform](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure ), aby uruchomić moduł utworzony przez narzędzie Yeoman.
@@ -33,7 +35,7 @@ W tym artykule dowiesz się, jak używać generatora modułu narzędzia Yeoman d
 - **Język programowania Go**: musisz zainstalować język [Go](https://golang.org/), ponieważ przypadki testowe wygenerowane przez narzędzie Yeoman są napisane w języku Go.
 
 >[!NOTE]
->Większość procedur opisanych w tym samouczku obejmuje wpisy wiersza polecenia. Opisane tutaj kroki dotyczą wszystkich systemów operacyjnych i narzędzi wiersza polecenia. W naszych przykładach wybraliśmy używanie programu PowerShell. Jednak możesz użyć dowolnego spośród kilku rozwiązań alternatywnych, takich jak Git Bash, wiersz polecenia systemu Windows lub polecenia wiersza polecenia systemu Linux lub macOS.
+>Większość procedur opisanych w tym samouczku obejmuje wpisy wiersza polecenia. Opisane tutaj kroki dotyczą wszystkich systemów operacyjnych i narzędzi wiersza polecenia. W naszych przykładach wybraliśmy używanie programu PowerShell w środowisku lokalnym oraz programu Git Bash w środowisku powłoki w chmurze.
 
 ## <a name="prepare-your-environment"></a>Przygotowywanie środowiska
 
@@ -93,7 +95,7 @@ W wierszu polecenia:
 
     - *Nazwa projektu modułu narzędzia Terraform*
 
-        ![Nazwa projektu](media/terraform-vscode-module-generator/ymg-project-name.png)       
+        ![Project name (Nazwa projektu)](media/terraform-vscode-module-generator/ymg-project-name.png)       
 
         >[!NOTE]
         >W tym przykładzie wprowadziliśmy `doc-sample-module`.
@@ -103,7 +105,7 @@ W wierszu polecenia:
         ![Dołączyć plik obrazu platformy Docker?](media/terraform-vscode-module-generator/ymg-include-docker-image-file.png) 
 
         >[!NOTE]
-        >Wprowadź `y`. Jeśli wybierzesz **n**, kod wygenerowanego modułu będzie obsługiwał uruchamianie tylko w trybie natywnym.
+        >Wprowadź polecenie `y`. Jeśli wybierzesz **n**, kod wygenerowanego modułu będzie obsługiwał uruchamianie tylko w trybie natywnym.
 
 3. Wprowadź polecenie `ls`, aby wyświetlić utworzone pliki wynikowe.
 
@@ -149,7 +151,7 @@ Definiuje kroki kompilacji. Kroki te obejmują:
 - Testy całościowe próbują użyć narzędzia Terraform do aprowizacji wszystkich elementów zdefiniowanych w obszarze **warunków początkowych testu**, a następnie porównać dane wyjściowe w kodzie **template_output.go** za pomocą wstępnie zdefiniowanych oczekiwanych wartości.
 - **Gopkg.lock** i **Gopkg.toml**: definiują Twoje zależności. 
 
-## <a name="test-the-module-using-docker"></a>Testowanie modułu przy użyciu platformy Docker
+## <a name="test-your-new-terraform-module-using-a-docker-file"></a>Testowanie modułu Terraform przy użyciu pliku Docker
 
 >[!NOTE]
 >W naszym przykładzie uruchamiamy moduł jako moduł lokalny i w rzeczywistości nie dotykamy platformy Azure.
@@ -191,6 +193,8 @@ Aby potwierdzić, że platforma Docker faktycznie działa, wprowadź polecenie `
 
     ![Listing pliku platformy Docker](media/terraform-vscode-module-generator/ymg-list-docker-file.png)
 
+### <a name="build-the-module"></a>Konstruowanie modułu
+
 1. Wprowadź polecenie `bundle install`.
 
     Poczekaj na komunikat **Bundle complete** (Ukończono pakiet), po czym przejdź do następnego kroku.
@@ -199,7 +203,7 @@ Aby potwierdzić, że platforma Docker faktycznie działa, wprowadź polecenie `
 
     ![Kompilacja szczegółowa](media/terraform-vscode-module-generator/ymg-rake-build.png)
 
-### <a name="perform-the-end-to-end-test"></a>Wykonaj test całościowy
+### <a name="run-the-end-to-end-test"></a>Uruchamianie testu całościowego
 
 1. Wprowadź polecenie `rake e2e`.
 
@@ -207,7 +211,74 @@ Aby potwierdzić, że platforma Docker faktycznie działa, wprowadź polecenie `
 
     ![PASS (POWODZENIE)](media/terraform-vscode-module-generator/ymg-pass.png)
 
-1. Wprowadź polecenie `exit`, aby zakończyć test całościowy.
+1. Wprowadź polecenie `exit`, aby ukończyć test całościowy i zamknąć środowisko Docker.
+
+## <a name="use-yeoman-generator-to-create-and-test-a-module-in-cloud-shell"></a>Tworzenie i testowanie modułu w usłudze Cloud Shell przy użyciu generatora Yeoman
+
+W poprzedniej sekcji wyjaśniono, jak przetestować moduł Terraform za pomocą pliku Docker. W tej sekcji utworzysz i przetestujesz moduł w usłudze Cloud Shell przy użyciu generatora Yeoman.
+
+Użycie usługi Cloud Shell zamiast pliku Docker znacznie upraszcza ten proces. Korzystanie z usługi Cloud Shell:
+
+- Nie trzeba instalować środowiska Node.js
+- Nie trzeba instalować narzędzia Yeoman
+- Nie trzeba instalować platformy Terraform
+
+Wszystkie te elementy są preinstalowane w usłudze Cloud Shell.
+
+### <a name="start-a-cloud-shell-session"></a>Uruchamianie sesji usługi Cloud Shell
+
+1. Uruchom sesję usługi Azure Cloud Shell za pośrednictwem witryny [Azure Portal](https:/portal.azure.com/), witryny [shell.azure.com](https://shell.azure.com) lub [aplikacji mobilnej platformy Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/).
+
+1. Zostanie otwarta strona **Witamy w usłudze Azure Cloud Shell**. Wybierz pozycję **Bash (Linux)**. (Program PowerShell nie jest obsługiwany).
+
+    ![Witamy w usłudze Azure Cloud Shell](media/terraform-vscode-module-generator/ymg-welcome-to-azure-cloud-shell.png)
+
+    >[!NOTE]
+    >W tym przykładzie jest wybrana powłoka Bash (Linux).
+
+1. Jeśli nie jest jeszcze skonfigurowane konto magazynu platformy Azure, zostanie wyświetlony poniższy ekran. Wybierz pozycję **Utwórz magazyn**.
+
+    ![Nie masz zainstalowanego magazynu](media/terraform-vscode-module-generator/ymg-you-have-no-storage-mounted.png)
+
+1. Usługa Azure Cloud Shell zostanie uruchomiona w wybranej wcześniej powłoce i wyświetli informacje dotyczące dysku w chmurze, który właśnie został utworzony dla Ciebie.
+
+    ![Dysk w chmurze został utworzony](media/terraform-vscode-module-generator/ymg-your-cloud-drive-has-been-created-in.png)
+
+### <a name="prepare-a-folder-to-hold-your-terraform-module"></a>Przygotowywanie folderu do przechowywania modułu Terraform
+
+1. W tym momencie usługa Cloud Shell skonfigurowała już wartość GOPATH w zmiennych środowiskowych. Aby wyświetlić tę ścieżkę, wprowadź polecenie `go env`.
+
+1. Utwórz folder $GOPATH, jeśli jeszcze nie istnieje: wprowadź polecenie `mkdir ~/go`.
+
+1. Utwórz folder w folderze $GOPATH: wprowadź polecenie `mkdir ~/go/src`. Ten folder będzie służyć do przechowywania i organizowania różnych folderów projektów, które możesz później utworzyć, takich jak folder <nazwa_modułu>, który utworzymy w następnym kroku.
+
+1. Utwórz folder do przechowywania modułu Terraform: wprowadź polecenie `mkdir ~/go/src/<your-module-name>`.
+
+    >[!NOTE]
+    >W tym przykładzie wybraliśmy nazwę folderu: `my-module-name`.
+
+1. Przejdź do folderu modułu: wprowadź polecenie `cd ~/go/src/<your-module-name>`.
+
+### <a name="create-and-test-your-terraform-module"></a>Tworzenie i testowanie modułu Terraform
+
+1. Wprowadź polecenie `yo az-terra-module` i postępuj zgodnie z instrukcjami w kreatorze.
+
+    >[!NOTE]
+    >Po wyświetleniu monitu z pytaniem, czy chcesz utworzyć pliki Docker, możesz wprowadzić polecenie `N`.
+
+1. Wprowadź polecenie `bundle install`, aby zainstalować zależności.
+
+    Poczekaj na komunikat **Bundle complete** (Ukończono pakiet), po czym przejdź do następnego kroku.
+
+1. Wprowadź polecenie `rake build` w celu utworzenia modułu.
+
+    ![Kompilacja szczegółowa](media/terraform-vscode-module-generator/ymg-rake-build.png)
+
+1. Wprowadź polecenie `rake e2e` w celu uruchomienia testu całościowego.
+
+1. Po kilku chwilach zostanie wyświetlony komunikat **PASS** (POWODZENIE).
+
+    ![PASS (POWODZENIE)](media/terraform-vscode-module-generator/ymg-pass.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
