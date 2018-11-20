@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: e80033d696de1b83da43fc27e5be9eca3b3f8757
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 40a5416f15b0e2d66d6ce4b4787573560ee4af00
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44168510"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "52156805"
 ---
 ## <a name="create-a-device-identity"></a>Tworzenie tożsamości urządzenia
 
-W tej sekcji umożliwia wiersza polecenia platformy Azure tworzenie tożsamości urządzenia w ramach tego samouczka. Interfejs wiersza polecenia platformy Azure jest preinstalowany w [usługi Azure Cloud Shell](https://docs.microsoft.com/zure/cloud-shell/overview), możesz też [zainstalować je lokalnie](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). W identyfikatorach urządzeń jest uwzględniana wielkość liter.
+W tej sekcji umożliwia wiersza polecenia platformy Azure tworzenie tożsamości urządzenia w ramach tego samouczka. Interfejs wiersza polecenia platformy Azure jest preinstalowany w [usługi Azure Cloud Shell](~/articles/cloud-shell/overview.md), możesz też [zainstalować je lokalnie](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). W identyfikatorach urządzeń jest uwzględniana wielkość liter.
 
 1. Uruchom następujące polecenie w środowisku wiersza polecenia, w którym używasz interfejsu wiersza polecenia platformy Azure można zainstalować rozszerzenia IoT:
 

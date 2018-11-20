@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: aba023667094fb00647861fb2dd300eda64e4897
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: cd868996066110c8d0457b177e60523886912dd8
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634182"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163175"
 ---
 # <a name="configure-storage"></a>Konfigurowanie magazynu
 
@@ -48,15 +48,20 @@ Poniższe kroki należy dodać filtr core NAS:
 
 1. W Panelu sterowania Avere kliknij **ustawienia** kartę u góry.
 
-2. Kliknij przycisk **filtr Core** > **wygląda podstawowe zarządzanie** po lewej stronie.
+1. Kliknij przycisk **filtr Core** > **wygląda podstawowe zarządzanie** po lewej stronie.
 
-3. Kliknij pozycję **Utwórz**.
+1. Kliknij pozycję **Utwórz**.
 
-   ![Zrzut ekranu przedstawiający stronę filtr core nowe Dodaj o nazwie filtr podstawowych i jego w pełni kwalifikowanej nazwy domeny](media/avere-vfxt-add-core-filer.png)
+   ![Zrzut ekranu przedstawiający Dodaj nowe podstawowe filtr strony z kursor nad przycisk Utwórz](media/avere-vfxt-add-core-filer-start.png)
+
+1. Podaj wymagane informacje w Kreatorze: 
 
    * Nazwij filtr sieci podstawowej.
    * Podaj w pełni kwalifikowaną nazwę domeny (FQDN), jeśli jest dostępny. W przeciwnym razie Podaj adres IP lub nazwa hosta, który jest rozpoznawany jako filtr usługi podstawowej.
    * Wybierz filtr klasy z listy. Jeśli nie wiesz, wybierz opcję **innych**.
+
+     ![Zrzut ekranu przedstawiający stronę filtr core nowe Dodaj o nazwie filtr podstawowych i jego w pełni kwalifikowanej nazwy domeny](media/avere-vfxt-add-core-filer.png)
+  
    * Kliknij przycisk **dalej** i wybierz zasady pamięci podręcznej. 
    * Kliknij przycisk **Dodaj filtr**.
    * Aby uzyskać szczegółowe informacje, zobacz [Dodawanie nowych NAS podstawowe filtr](http://library.averesystems.com/ops_guide/4_7/new_core_filer_nas.html) w Avere klastra przewodnik ustawienia.
@@ -110,7 +115,7 @@ Aby dodać magazyn obiektów Blob, po utworzeniu klastra, wykonaj następujące 
 
 1. Otwórz Panel sterowania Avere dla klastra. Kliknij przycisk **ustawienia**, a następnie otwórz **klastra** > **poświadczenia chmury** w okienku nawigacji po lewej stronie. Na stronie poświadczenia chmury kliknij **Dodaj poświadczenie**.
 
-   ![Kliknięcie przycisku Dodaj poświadczenia na stronie konfiguracji poświadczenia chmury](media/avere-vfxt-new-credential-button.png)
+   ![Kliknij przycisk Dodaj poświadczenia na stronie konfiguracji poświadczenia chmury](media/avere-vfxt-new-credential-button.png)
 
 1. Wypełnij następujące informacje, aby utworzyć poświadczenie dla chmury filtr core: 
 

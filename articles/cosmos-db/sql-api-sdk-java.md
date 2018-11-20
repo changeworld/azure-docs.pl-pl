@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 06/29/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7d00d6236b601d145be03e6086bec2d72faafcd
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f5ac49f20404f8734e833da754aacb615663afbf
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344941"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161807"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB Java SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -105,7 +105,7 @@ Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne
 * Naprawiono kilka błędów w kontenerze sesji, który może spowodować wyjątek "Nie można odnaleźć zasobu właściciela", w przypadku żądań od razu po utworzeniu kolekcji.
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* Dodano obsługę zapytań agregacji (COUNT, MIN, MAX, Suma i średnia). Zobacz [Obsługa agregacji](sql-api-sql-query.md#Aggregates).
+* Dodano obsługę zapytań agregacji (COUNT, MIN, MAX, Suma i średnia). Zobacz [Obsługa agregacji](how-to-sql-query.md#Aggregates).
 * Dodano obsługę zestawienia zmian.
 * Dodano obsługę za pomocą RequestOptions.setPopulateQuotaInfo, informacje o limitach przydziału kolekcji.
 * Dodano obsługę rejestrowanie skryptu procedury składowanej za pośrednictwem RequestOptions.setScriptLoggingEnabled.
@@ -197,7 +197,7 @@ Nowe funkcje i funkcjonalność i optymalizacje są dodawane tylko do bieżąceg
 Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostanie odrzucone przez usługę.
 
 > [!WARNING]
-> Wszystkie wersje SQL SDK dla języka Java w wersji wcześniejszej niż **1.0.0** zostały wycofane z dniem **do 29 lutego 2016 r.**.
+> Wszystkie wersje SQL SDK dla języka Java w wersji wcześniejszej niż **1.0.0** zostały wycofane z dniem **do 29 lutego 2016 r**.
 > 
 > 
 

@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 765a10a336b908d399f46b2248aab3903c594d24
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 1039cde45824491bcc82f324c05e4819e66355e0
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628549"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975996"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Przenieś magazyny danych ODBC z danych za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -355,33 +355,6 @@ Aby uzyskać informacje dotyczące mapowania kolumn w zestaw danych źródłowyc
 
 ## <a name="repeatable-read-from-relational-sources"></a>Odczyt powtarzalny ze źródeł relacyjnych
 Podczas kopiowania danych z relacyjnej bazie danych są przechowywane, Zachowaj powtarzalności należy pamiętać, aby uniknąć niezamierzonego wyników. W usłudze Azure Data Factory możesz ponownie uruchomić wycinek ręcznie. Można również skonfigurować zasady ponawiania dla zestawu danych, dzięki czemu wycinek będzie uruchamiana ponownie, gdy wystąpi błąd. Gdy wycinek będzie uruchamiana ponownie w obu przypadkach, należy się upewnić, że te same dane jest do odczytu niezależnie od tego, ile razy wycinek jest uruchamiany. Zobacz [Repeatable odczytywać źródła relacyjnego](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
-
-## <a name="ge-historian-store"></a>GE historyk magazynu
-Utwórz ODBC połączoną usługę służącą do łączenia [historyk Proficy GE (teraz GE historyk)](http://www.geautomation.com/products/proficy-historian) magazynu danych do usługi Azure data factory, jak pokazano w poniższym przykładzie:
-
-```json
-{
-    "name": "HistorianLinkedService",
-    "properties":
-    {
-        "type": "OnPremisesOdbc",
-        "typeProperties":
-        {
-            "connectionString": "DSN=<name of the GE Historian store>;",
-            "gatewayName": "<gateway name>",
-            "authenticationType": "Basic",
-            "userName": "<user name>",
-            "password": "<password>"
-        }
-    }
-}
-```
-
-Zainstaluj bramę zarządzania danymi na maszynie lokalnej i zarejestrować bramę w portalu. Z bramą zainstalowaną na komputerze w środowisku lokalnym używa sterownika ODBC do historyk GE nawiązać połączenia z magazynem danych historyk GE. W związku z tym należy zainstalować sterownik, jeśli nie jest już zainstalowany na maszynie bramy. Zobacz [Włączanie łączności](#enabling-connectivity) sekcji, aby uzyskać szczegółowe informacje.
-
-Przed użyciem magazynu historyk GE w ramach rozwiązania fabryki danych, sprawdź, czy brama mogła nawiązywać połączenie z magazynem danych przy użyciu instrukcji w następnej sekcji.
-
-Przeczytaj artykuł od samego początku szczegółowe omówienie przy użyciu danych ODBC są przechowywane jako źródłowych magazynów danych w ramach operacji kopiowania.  
 
 ## <a name="troubleshoot-connectivity-issues"></a>Rozwiązywanie problemów z łącznością
 Aby rozwiązać problemy z połączeniem, należy użyć **diagnostyki** karcie **Menedżera konfiguracji bramy zarządzania danych**.

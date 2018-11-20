@@ -1,18 +1,18 @@
 ---
 title: Zarządzanie serwerem konfiguracji dla programu VMware i odzyskiwanie po awarii serwerów fizycznych z usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób zarządzania istniejącego serwera konfiguracji odzyskiwania po awarii maszyn wirtualnych programu VMware i serwerów fizycznych na platformę Azure za pomocą usługi Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/11/2018
-ms.author: raynew
-ms.openlocfilehash: 8096f1b5b29c0445d8bae85fb56e2735469184d4
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.author: ramamill
+ms.openlocfilehash: a58de808816bf80cf950d7b032ca042c7913a2e5
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823949"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976388"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyn wirtualnych programu VMware
 

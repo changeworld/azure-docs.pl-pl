@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: sngun
-ms.openlocfilehash: d7188270ff5b1edd3b5e396be0cd5fd22e6123c4
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: d85cada87a6934921bf2775f12c016a88d9fbe9e
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37855510"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164026"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Praca z datami w usłudze Azure Cosmos DB
 Usługa Azure Cosmos DB zapewnia elastyczność schematu i rozbudowane indeksowanie za pomocą macierzystej [JSON](http://www.json.org) modelu danych. Wszystkie zasoby usługi Azure Cosmos DB, w tym baz danych, kontenerów, dokumenty i procedury składowane są modelowane i przechowywane jako dokumenty JSON. Jako wymaganie jest przenośny, JSON (i usługi Azure Cosmos DB) obsługuje tylko niewielki zestaw typów podstawowych: ciąg, liczba, atrybut typu wartość logiczna, Array, obiekt i o wartości Null. Jednak JSON jest elastyczny i umożliwia deweloperom i struktur, do reprezentowania bardziej złożonych typów, przy użyciu tych wartości pierwotnych i tworzenie ich jako obiekty i tablice. 
@@ -68,7 +68,7 @@ Zapytania zakresowe są powszechne z wartości daty/godziny. Na przykład jeśli
     collection.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
     await client.CreateDocumentCollectionAsync("/dbs/orderdb", collection);
 
-Dowiedz się więcej na temat sposobu konfigurowania zasad indeksowania w [zasad indeksowania usługi Azure Cosmos DB](indexing-policies.md).
+Dowiedz się więcej na temat sposobu konfigurowania zasad indeksowania w [zasad indeksowania usługi Azure Cosmos DB](index-policy.md).
 
 ## <a name="querying-datetimes-in-linq"></a>Data/Godzina w składniku LINQ do zapytań
 Zestaw SDK platformy .NET SQL automatycznie obsługuje wykonywanie zapytań o dane przechowywane w usłudze Azure Cosmos DB za pomocą LINQ. Na przykład poniższy fragment kodu pokazuje zapytanie LINQ tego zamówienia filtry, które zostały wysłane w ciągu ostatnich trzech dni.
@@ -79,11 +79,11 @@ Zestaw SDK platformy .NET SQL automatycznie obsługuje wykonywanie zapytań o da
     // Translated to the following SQL statement and executed on Azure Cosmos DB
     SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
 
-Dowiedz się więcej na temat języka zapytania SQL usługi Azure Cosmos DB i do dostawcy LINQ [podczas badania usługi Cosmos DB](sql-api-sql-query.md).
+Dowiedz się więcej na temat języka zapytania SQL usługi Azure Cosmos DB i do dostawcy LINQ [podczas badania usługi Cosmos DB](how-to-sql-query.md).
 
 W tym artykule zobaczyliśmy, jak przechowywać, indeksu i wykonywać zapytania Data/Godzina w usłudze Azure Cosmos DB.
 
 ## <a name="next-steps"></a>Następne kroki
 * Pobierz i uruchom [przykłady kodu w serwisie GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
-* Dowiedz się więcej o [zapytania SQL](sql-api-sql-query.md)
-* Dowiedz się więcej o [zasad indeksowania usługi Azure Cosmos DB](indexing-policies.md)
+* Dowiedz się więcej o [zapytania SQL](how-to-sql-query.md)
+* Dowiedz się więcej o [zasad indeksowania usługi Azure Cosmos DB](index-policy.md)

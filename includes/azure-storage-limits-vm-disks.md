@@ -12,7 +12,6 @@ Maszyna wirtualna platformy Azure obsługuje dołączanie wielu dysków danych. 
 > | Dyski Managed Disks w warstwie Premium | 10 000 | 50,000 |
 > | Standard_LRS migawek | 10 000 | 50,000 |
 > | Standard_ZRS migawek | 10 000 | 50,000 |
-> | Premium_LRS migawek | 10 000 | 50,000 |
 > | Zarządzany obraz | 10 000 | 50,000 |
 
 * **Konto magazynu w warstwie Standardowa:** maksymalna całkowita liczba żądań dla konta magazynu w warstwie Standardowa to 20 000 operacji wejścia/wyjścia na sekundę (IOPS). Łączna liczba IOPS na wszystkich dyskach maszyny wirtualnej w koncie magazynu w warstwie Standardowa nie powinna przekroczyć tego limitu.

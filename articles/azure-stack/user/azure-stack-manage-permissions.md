@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 11/19/2018
 ms.author: patricka
 ms.reviewer: ''
-ms.openlocfilehash: 2e36f52568d349aeecd47f90bf9431f096cc4fdc
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: ef9c096989eeb37159d0deb705e7870afe2eff8b
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42058202"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975400"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Zarządzanie dostępem do zasobów przy użyciu kontroli dostępu Azure Stack Role-Based
 

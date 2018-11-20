@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: d88a59d3b9a39a42120b302fd8e7989c968db952
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: f6a818e0f628924342ddd50322bb54bf1d1d6079
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624781"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976665"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w usłudze Azure Security Center
 Usługa Security Center zbiera dane z maszyn wirtualnych (VM) i komputerów spoza platformy Azure do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy. Przykłady takich danych to: operacyjnych, typ i wersja, dzienniki systemu (Windows dzienniki zdarzeń), operacyjnego systemu uruchomione procesy, Nazwa maszyny, adresy IP i zalogowanego użytkownika. Program Microsoft Monitoring Agent kopiuje również pliki zrzutu awaryjnego do swojego obszaru roboczego.
@@ -48,7 +48,7 @@ Automatyczna aprowizacja jest włączona, usługa Security Center aprowizuje pro
 
 Aby włączyć automatyczną aprowizację programu Microsoft Monitoring Agent:
 1. W menu głównym usługi Security Center wybierz **zasady zabezpieczeń**.
-2. Wybierz subskrypcję.
+2. Kliknij przycisk **edytować ustawienia** w kolumnie ustawień odpowiedniej subskrypcji na liście.
 
   ![Wybieranie subskrypcji][7]
 
@@ -135,7 +135,7 @@ Aby wybrać istniejący obszar roboczy usługi Log Analytics:
 
     a.  W menu głównym usługi Security Center wybierz **zasady zabezpieczeń**.
      
-    b.  Wybierz żądanego obszaru roboczego, w którym trzeba połączyć agenta.
+    b.  Wybieranie żądanego obszaru roboczego, w którym trzeba połączyć agenta, klikając **edytować ustawienia** w kolumnie ustawień odpowiedniej subskrypcji na liście.
         ![Wybierz obszar roboczy][8] c. Ustawienie warstwy cenowej.
         ![Wybierz warstwę cenową][9] 
    

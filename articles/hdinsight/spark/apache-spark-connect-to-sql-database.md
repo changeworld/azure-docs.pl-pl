@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: b8494150a060e02145eab3674bdd2dd62cdda225
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1ae06fe9cc459d86bdd46d9b033a726339493dc5
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277294"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164779"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Klaster HDInsight Spark umożliwia odczytywanie i zapisywanie danych do usługi Azure SQL database
 
@@ -36,15 +36,10 @@ Dowiedz się, jak połączyć klaster Apache Spark w usłudze Azure HDInsight pr
 
 Rozpocznij od utworzenia notesu programu Jupyter skojarzonego z klastrem Spark. Ten notes umożliwia uruchamiać fragmenty kodu, używane w tym artykule. 
 
-1. Z [witryny Azure portal](https://portal.azure.com/), otwórz klaster. 
+1. Z [witryny Azure portal](https://portal.azure.com/), otwórz klaster.
+1. Wybierz **notesu programu Jupyter** poniżej **pulpity nawigacyjne klastra** po prawej stronie.  Jeśli nie widzisz **pulpity nawigacyjne klastra**, kliknij przycisk **Przegląd** menu po lewej stronie w bloku. Jeśli zostanie wyświetlony monit, wprowadź poświadczenia administratora klastra.
 
-1. Z **szybkich łączy** kliknij **pulpity nawigacyjne klastra** otworzyć **pulpity nawigacyjne klastra** widoku.  Jeśli nie widzisz **szybkich łączy**, kliknij przycisk **Przegląd** menu po lewej stronie w bloku.
-
-    ![Pulpit nawigacyjny klastra na platformie Spark](./media/apache-spark-connect-to-sql-database/hdinsight-cluster-dashboard-on-spark.png "pulpit nawigacyjny klastra na platformie Spark") 
-
-1. Kliknij przycisk **notesu programu Jupyter**. Jeśli zostanie wyświetlony monit, wprowadź poświadczenia administratora klastra.
-
-    ![Notes Jupyter na platformie Spark](./media/apache-spark-connect-to-sql-database/hdinsight-jupyter-notebook-on-spark.png "Jupyter notebook na platformie Spark")
+    ![Notes Jupyter na platformie Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Jupyter notebook na platformie Spark")
    
    > [!NOTE]
    > Można również uzyskać dostęp notesu Jupyter w klastrze Spark, otwierając następujący adres URL w przeglądarce. Zastąp ciąg **CLUSTERNAME** nazwą klastra:

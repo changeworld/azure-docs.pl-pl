@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/15/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: c3c5e904d8e933c09754e13ccb22d6c16d0a37eb
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 229c0a6afee893a4a8eb5cd62a1d25266ee8fc3e
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713473"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977186"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Marketplace dostępnych elementów dla usługi Azure Stack
 
@@ -203,7 +203,7 @@ Microsoft Azure Stack obsługuje następujące maszyny wirtualne w portalu Azure
 | ![Klaster oprogramowania RabbitMQ](media/azure-stack-marketplace-azure-items/rabbitmq.png) | [Klaster oprogramowania RabbitMQ](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.rabbitmq-cluster) | RabbitMQ jest brokera obsługi komunikatów, zapewniająca wspólną platformę do wysyłania i odbierania wiadomości i wiadomości w bezpiecznym miejscu na żywo do momentu otrzymania przez aplikacje. To rozwiązanie wymaga wielu maszyn wirtualnych, aby aprowizować wiele węzłów w klastrze oprogramowania RabbitMQ w celu utworzenia pojedynczego brokera logiczne. **Ten szablon rozwiązania wymaga również Debian 8 i niestandardowego skryptu dla systemu Linux w wersji 2.0 rozszerzenia.** | Bitnami |
 | ![Odp: kreska](media/azure-stack-marketplace-azure-items/redash.png) | [Odp: kreska](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redash) | Wizualizacja danych typu open source i platforma współpracy. | Bitnami |
 | ![Redis](media/azure-stack-marketplace-azure-items/redis.png) | [Redis](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redis) | Zaawansowane parach klucz wartość typu open source. | Bitnami |
-| ![Redis wysokiej dostępności](media/azure-stack-marketplace-azure-items/redis.png) | [Redis wysokiej dostępności](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.production-redis) | Zaawansowane parach klucz wartość typu open source. **Ten szablon rozwiązania wymaga usługi Azure Stack w wersji 1807 lub nowszej i wymaga także Debian 8 i niestandardowego skryptu dla systemu Linux w wersji 2.0 rozszerzenia.** | Bitnami |
+| ![Redis wysokiej dostępności](media/azure-stack-marketplace-azure-items/redis.png) | [Redis wysokiej dostępności](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redis-cluster) | Zaawansowane parach klucz wartość typu open source. **Ten szablon rozwiązania wymaga usługi Azure Stack w wersji 1807 lub nowszej i wymaga także Debian 8 i niestandardowego skryptu dla systemu Linux w wersji 2.0 rozszerzenia.** | Bitnami |
 | ![Redmine](media/azure-stack-marketplace-azure-items/redmine.png) | [Redmine](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmine) | Aplikacja sieci web do zarządzania zaawansowanych projektów | Bitnami |
 | ![Redmine+Agile](media/azure-stack-marketplace-azure-items/redmineagile.png) | [Redmine+Agile](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmineplusagile) | Aplikacja do zarządzania projektami we wstępnie skonfigurowanym za pomocą wtyczki Agile. | Bitnami |
 | ![Społeczność serwera raportowania](media/azure-stack-marketplace-azure-items/reportserver.png) | [Społeczność serwera raportowania](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.reportserver) | Platforma analiz biznesowych typu open source. | Bitnami |
@@ -250,5 +250,5 @@ Microsoft Azure Stack obsługuje następujące maszyny wirtualne w portalu Azure
 | ![Zapora PT Application Firewall](media/azure-stack-marketplace-azure-items/pt.png) | [Zapora PT Application Firewall](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | Zapora PT Application Firewall wykrywa znanych i nieznanych luk w zabezpieczeniach i zapobiega atakom na aplikacje sieci web. **Pobierz oba elementy portalu Marketplace (czas pacyficzny).** | Dodatnia technologii |
 | ![Puppet przedsiębiorstwa](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet przedsiębiorstwa](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise umożliwia automatyzowanie całego cyklu życia infrastruktury Azure Stack. **Pobierz oba elementy Puppet portalu Marketplace.** | Puppet |
 | ![Zażądaj Szybkie odzyskiwanie.](media/azure-stack-marketplace-azure-items/quest.png) | [Zażądaj Szybkie odzyskiwanie Core](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Szybkie odzyskiwanie Zaawansowana ochrona danych ujednolica kopii zapasowej, replikacji i odzyskiwania w jednym rozwiązaniu oprogramowania łatwy w użyciu. | Zażądaj oprogramowania |
-| ![Serwer Proxy Menedżera 3.1 SUSE (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [Serwer Proxy Menedżera 3.1 SUSE (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSE-Manager) | Zarządzanie infrastrukturą typu open-source najlepszych w klasie. | SUSE |
+| ![Serwer Proxy Menedżera 3.1 SUSE (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [Serwer Proxy Menedżera 3.1 SUSE (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/suse.suse-manager-proxy-byos?tab=Overview) | Zarządzanie infrastrukturą typu open-source najlepszych w klasie. | SUSE |
 | ![BCaaS ZeroDown oprogramowania](media/azure-stack-marketplace-azure-items/zerodown.png) | [Ciągłość biznesowa ZeroDown oprogramowanie jako usługa](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.bcaasforazure) | Oprogramowanie® ZeroDown technologia, która umożliwia firmom ciągły dostęp do danych firmy za pośrednictwem ich ciągłość prowadzenia działalności biznesowej jako usługa (BCaaS)™ architektury, ochrona aplikacji i transakcje, jeśli występują problemy z połączeniem sieciowym, które normalnie cripple przedsiębiorstwa. | ZeroDown oprogramowania |

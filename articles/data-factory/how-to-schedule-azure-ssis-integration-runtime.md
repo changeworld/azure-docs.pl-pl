@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: f83715d2a382db271686210d9df285c255c09216
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 7e93e83f7594d30d223d37454e09943beba6d3ce
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113998"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976738"
 ---
 # <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>Jak uruchamiać i zatrzymywać środowiska Azure SSIS integration runtime zgodnie z harmonogramem
 W tym artykule opisano, jak można zaplanować uruchamianie i zatrzymywanie środowiska Azure SSIS integration runtime (Self-HOSTED) przy użyciu usługi Azure Automation i Azure Data Factory. Uruchamianie środowiska Azure SSIS (SQL Server Integration Services) integration runtime (IR) ma koszt związany z nim. W związku z tym zazwyczaj chcesz uruchomić środowiska IR tylko wtedy, gdy należy uruchamiać pakiety usług SSIS na platformie Azure i Zatrzymaj środowisko IR, gdy nie są potrzebne. Możesz użyć interfejsu użytkownika usługi Data Factory lub programu Azure PowerShell [ręcznie rozpocząć lub zatrzymać środowisko IR Azure SSIS](manage-azure-ssis-integration-runtime.md)).
@@ -38,7 +38,7 @@ Poniżej przedstawiono ogólne kroki opisane w tym artykule:
 Jeśli już nie przeprowadzono aprowizacji środowiska Azure SSIS integration runtime, aprowizować go, wykonując instrukcje przedstawione w [samouczek](tutorial-create-azure-ssis-runtime-portal.md). 
 
 ## <a name="create-and-test-an-azure-automation-runbook"></a>Tworzenie i testowanie elementu runbook usługi Azure Automation
-W tej sekcji należy wykonać następujące czynności: 
+W tej sekcji wykonasz następujące kroki: 
 
 1. Utwórz konto usługi Azure Automation.
 2. Tworzenie elementu runbook programu PowerShell w ramach konta usługi Azure Automation. Skrypt programu PowerShell, skojarzony element runbook uruchamia lub zatrzymuje środowisko IR Azure SSIS, oparte na polecenie, które należy określić parametr operacji. 
@@ -347,7 +347,7 @@ Po utworzeniu i przetestować potoku Tworzenie wyzwalacza harmonogramu i skojarz
     6. Kliknij prawym przyciskiem myszy pakietu SSIS, a następnie wybierz pozycję **raporty** -> **raportów standardowych** -> **wszystkich wykonań**. 
     7. Sprawdź, czy uruchomiono pakietu SSIS. 
 
-        ![Sprawdź wykonywania pakietów SSIS](./media/how-to-schedule-azure-ssis-integration-runtime/verfiy-ssis-package-run.png)
+        ![Sprawdź wykonywania pakietów SSIS](./media/how-to-schedule-azure-ssis-integration-runtime/verify-ssis-package-run.png)
 
 ### <a name="schedule-the-pipeline"></a>Zaplanować potok 
 Teraz, gdy potoku działa zgodnie z oczekiwaniami, możesz utworzyć wyzwalacz służący do uruchamiania tego potoku w erze określony. Aby uzyskać szczegółowe informacje dotyczące kojarzenia wyzwalacza harmonogramu z potokiem, zobacz [wyzwalanie potoku zgodnie z harmonogramem](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).

@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 925d97658a299bea983b16ae6b507159ef0e9e62
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: f72490169149d247a43e2760815d757c3606f1b3
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979135"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163728"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Terminologia usługi Service Fabric siatki
 
@@ -32,7 +32,7 @@ Usługa Azure Service Fabric Mesh to w pełni zarządzana usługa, która pozwal
 
 **Aplikacja**: aplikacja usługi Service Fabric siatki jest jednostką wdrożenia, przechowywanie wersji i cyklu życia aplikacji siatki. Cykl życia każdego wystąpienia aplikacji można zarządzać w sposób niezależny.  Aplikacje składają się z co najmniej jeden usługi pakiety kodu i ustawień. Aplikacja jest zdefiniowany, przy użyciu schematu modelu zasobów platformy Azure (RM).  Usługi są określane jako właściwości zasobu aplikacji w szablonie Menedżera zasobów.  Sieci i woluminów używanych przez aplikację są przywoływane przez aplikację.  Podczas tworzenia aplikacji, aplikacji, usług, sieci i woluminy są modelowane przy użyciu modelu zasobów usługi Service Fabric.
 
-**Usługa**: usługi w aplikacji reprezentuje mikrousługi i wykonuje funkcję kompletne i autonomicznych. Każda usługa składa się z jednego lub więcej, pakiety kodu, które opisują wszystko, co jest potrzebne do uruchomienia obrazu kontenera, skojarzone z pakietem kodu.  Liczba usług w aplikacji można skalować w górę i w dół.
+**Usługa**: usługi w aplikacji reprezentuje mikrousługi i wykonuje funkcję kompletne i autonomicznych. Każda usługa składa się z jednego lub więcej, pakiety kodu, które opisują wszystko, co jest potrzebne do uruchomienia obrazu kontenera, skojarzone z pakietem kodu.  Liczba replik usługi w aplikacji mogą być skalowane wewnątrz i na zewnątrz.
 
 **Pakiet kodu**: pakiety kodu opisują wszystko, co jest potrzebne do uruchomienia obrazu kontenera, skojarzone z pakietem kodu, w tym następujące:
 
@@ -86,4 +86,4 @@ W poniższej tabeli opisano modele innej aplikacji i narzędzi, który istnieje 
 
 Aby dowiedzieć się więcej na temat usługi Service Fabric Mesh, przeczytaj [omówienie usługi Service Fabric Mesh](service-fabric-mesh-overview.md).
 
-Znajdź odpowiedzi na [często zadawane pytania dotyczące](service-fabric-mesh-faq.md).
+Znajdź odpowiedzi na [często zadawane pytania](service-fabric-mesh-faq.md).

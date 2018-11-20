@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 45ddb31a20b830de29cf77231bb3acd6f8917601
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2a17cf3aca439c40d187e06fb29b76e78a036ccc
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230907"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976227"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Rozwiązywanie problemów z połączeniami SSH na maszynie Wirtualnej systemu Linux platformy Azure, który zakończy się niepowodzeniem, błędy, lub w przypadku odmowy
 Istnieją różne powody, czy występują błędy protokołu Secure Shell (SSH), błędy połączenia SSH, lub odmówiono SSH, podczas próby nawiązania połączenia z maszyną wirtualną systemu Linux (VM). Ten artykuł pomoże Ci znaleźć i rozwiązać problemy. Można użyć witryny Azure portal, interfejsu wiersza polecenia platformy Azure lub rozszerzenie dostępu do maszyny Wirtualnej dla systemu Linux, aby rozwiązać problemy z połączeniem.
@@ -242,7 +242,7 @@ Spróbuj wykonać następujące kroki, aby rozwiązać najbardziej typowe błęd
 * Ponowne wdrażanie maszyny Wirtualnej w nowym węźle platformy Azure. Aby uzyskać informacje o tym, jak można wdrożyć ponownie maszyny Wirtualnej, zobacz [ponowne wdrażanie maszyny wirtualnej w nowym węźle platformy Azure](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
   
     Po zakończeniu tej operacji efemerycznego dysku dane zostaną utracone i zostaną zaktualizowane dynamiczne adresy IP, które są skojarzone z maszyną wirtualną.
-* Postępuj zgodnie z instrukcjami w [jak zresetować hasło lub protokół SSH dla maszyn wirtualnych z systemem Linux](../linux/classic/reset-access-classic.md?) do:
+* Postępuj zgodnie z instrukcjami w [jak zresetować hasło lub protokół SSH dla maszyn wirtualnych z systemem Linux](../linux/classic/reset-access-classic.md) do:
   
   * Resetowanie hasła lub klucza SSH.
   * Tworzenie *"sudo"* konta użytkownika.

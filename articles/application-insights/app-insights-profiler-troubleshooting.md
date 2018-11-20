@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6013c0a1b404336ad7cca21edafb7adec5c7f7ca
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: fa6e70fe58e5066fcf308425a4c0d104c072a756
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978846"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164307"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Rozwiązywanie problemów, włączanie i wyświetlanie Application Insights Profiler
 
@@ -46,9 +46,6 @@ Profiler zapisuje komunikaty śledzenia i zdarzenia niestandardowe do zasobu us�
 
 1. W przypadku żądań w czasie uruchomienia profilera, upewnij się, że żądania są obsługiwane przez część aplikacji, która ma profiler włączone. Czasami aplikacje składają się z wielu składników, ale Profiler jest dostępna tylko w niektórych przypadkach nie wszystkich składników. Strona Konfigurowanie Application Insights Profiler będzie przedstawiać składniki, które zostały przekazane dane śledzenia.
 
-### <a name="net-core-21-bug"></a>.Net Core 2.1 usterki
-Istnieje błąd w agencie programu profiler, który uniemożliwia przekazywanie ślady z aplikacji uruchomionych na platformy ASP.NET Core 2.1. Firma Microsoft pracuje nad poprawką, zostanie on gotowy wkrótce. Poprawka dla tej usterki zostanie wdrożony do końca października.
-
 ### <a name="other-things-to-check"></a>Inne czynności do wykonania:
 * Twoja aplikacja działa na platformie .NET Framework 4.6.
 * Jeśli aplikacja sieci web znajduje się aplikacja ASP.NET Core, musi być uruchomiony co najmniej ASP.NET Core 2.0.
@@ -69,10 +66,11 @@ Prześlij zgłoszenie do pomocy technicznej w portalu. Pamiętaj uwzględniać i
 ## <a name="troubleshooting-profiler-on-app-services"></a>Rozwiązywanie problemów z Profiler od aplikacji usług
 ### <a name="for-the-profiler-to-work-properly"></a>Programu Profiler zapewnić prawidłowe działanie:
 * Twój plan usługi sieci web app service musi być w warstwie podstawowa lub wyższej.
-* Twoja aplikacja sieci web musi mieć rozszerzenie usługi Application Insights dla usług App Service (2.6.5) zainstalowane.
+* Twoja aplikacja sieci web musi mieć włączone w usłudze Application Insights.
 * Twoja aplikacja internetowa musi odebrać **APPINSIGHTS_INSTRUMENTATIONKEY** ustawienia aplikacji skonfigurowano ten sam klucz instrumentacji, który jest używany przez zestaw SDK usługi Application Insights.
 * Twoja aplikacja internetowa musi odebrać **APPINSIGHTS_PROFILERFEATURE_VERSION** ustawienia aplikacji zdefiniowane i ustawić 1.0.0.
-* **ApplicationInsightsProfiler2** zadanie sieci web musi być uruchomione. Zadanie sieci web można sprawdzić, przechodząc do [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/)i otwieranie **pulpitu nawigacyjnego zadań Webjob** w menu Narzędzia. Jak widać na zrzutach ekranu poniżej, klikając łącze ApplicationInsightsProfiler2, możesz zobaczyć szczegóły zadania webjob, w tym dzienniku.
+* Twoja aplikacja internetowa musi odebrać **DiagnosticServices_EXTENSION_VERSION** ustawienia aplikacji zdefiniowane i ustaw wartość na OK. 3.
+* **ApplicationInsightsProfiler3** zadanie sieci web musi być uruchomione. Zadanie sieci web można sprawdzić, przechodząc do [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/)i otwieranie **pulpitu nawigacyjnego zadań Webjob** w menu Narzędzia. Jak widać na zrzutach ekranu poniżej, klikając łącze ApplicationInsightsProfiler2, możesz zobaczyć szczegóły zadania webjob, w tym dzienniku.
 
     Oto link, który należy kliknąć przycisk, aby wyświetlić szczegóły zadania webjob: 
 
@@ -91,11 +89,7 @@ Po skonfigurowaniu Profiler, aktualizacje są wprowadzane do ustawień aplikacji
 1. Ustaw **zawsze włączone** do **na**.
 1. Dodaj **APPINSIGHTS_INSTRUMENTATIONKEY** aplikacji ustawienia, a następnie ustaw wartość na ten sam klucz instrumentacji, który jest używany przez zestaw SDK.
 1. Dodaj **APPINSIGHTS_PROFILERFEATURE_VERSION** ustawienia aplikacji, a następnie ustaw wartość 1.0.0.
-1. Otwórz **zaawansowane narzędzia**.
-1. Wybierz **Przejdź** otworzyć Kudu witryny sieci Web.
-1. W witrynie sieci Web programu Kudu, wybierz **rozszerzeń witryny**.
-1. Zainstaluj **usługi Application Insights** w galerii aplikacji sieci Web platformy Azure.
-1. Uruchom ponownie aplikację internetową.
+1. Dodaj **DiagnosticServices_EXTENSION_VERSION** ustawienia aplikacji, a następnie ustaw wartość na OK. 3.
 
 ### <a name="too-many-active-profiling-sessions"></a>Zbyt wiele aktywnych sesji profilowania
 
