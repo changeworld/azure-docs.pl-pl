@@ -31,6 +31,8 @@ items:
       href: iot-accelerators-remote-monitoring-root-cause-analysis.md
     - name: Korzystanie z alertów i rozwiązywanie problemów z urządzeniami
       href: iot-accelerators-remote-monitoring-maintain.md
+    - name: Wykrywanie anomalii na urządzeniach brzegowych
+      href: iot-accelerators-remote-monitoring-edge.md
   - name: Symulacja urządzenia
     items:
     - name: Tworzenie i uruchamianie symulacji
@@ -75,6 +77,10 @@ items:
         href: iot-accelerators-connecting-pi-node.md
       - name: MXChip IoT DevKit
         href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md
+    - name: Dodawanie urządzenia usługi IoT Edge
+      href: iot-accelerators-remote-monitoring-add-edge-device.md
+    - name: Importowanie pakietu usługi IoT Edge
+      href: iot-accelerators-remote-monitoring-import-edge-package.md
     - name: Integrowanie danych SIM
       href: iot-accelerators-remote-monitoring-telefonica-sim.md
     - name: Tworzenie symulowanego urządzenia
@@ -99,11 +105,14 @@ items:
     - name: Wdrażanie przy użyciu interfejsu wiersza polecenia
       href: iot-accelerators-remote-monitoring-deploy-cli.md
     - name: Wdrażanie lokalne
+      href: iot-accelerators-remote-monitoring-deploy-local.md
       items:
       - name: Visual Studio
         href: iot-accelerators-remote-monitoring-deploy-local.md
       - name: Docker
         href: iot-accelerators-remote-monitoring-deploy-local-docker.md
+    - name: Akcje poczty e-mail
+      href: iot-accelerators-remote-monitoring-email-actions.md
     - name: Wizualizowanie telemetrii za pomocą usługi Power BI
       href: iot-accelerators-integrate-data-powerbi.md
     - name: Integrowanie usługi Azure Time Series Insights za pomocą zdalnego monitorowania
@@ -216,9 +225,9 @@ items:
     href: iot-accelerators-faq-cf.md
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
-ms.openlocfilehash: 1819c70b5834d8086a57928d39f2e5b547bfb901
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: bdd52d0023fbf43343cc5108216c6f11e35b89aa
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615113"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824850"

@@ -142,19 +142,23 @@ items:
   - name: Wystąpienia zarządzane
     items:
     - name: Wystąpienia zarządzane
+      href: sql-database-managed-instance-index.yml
+    - name: Co to jest wystąpienie zarządzane
       href: sql-database-managed-instance.md
     - name: Limity zasobów
       href: sql-database-managed-instance-resource-limits.md
-    - name: Konfiguracja sieci wirtualnej
-      href: sql-database-managed-instance-vnet-configuration.md
-    - name: Niestandardowe DNS
-      href: sql-database-managed-instance-custom-dns.md
-    - name: Synchronizacja konfiguracji sieci
-      href: sql-database-managed-instance-sync-network-configuration.md
-    - name: Architektura łączności
-      href: sql-database-managed-instance-connectivity-architecture.md
-    - name: Łączenie aplikacji
-      href: sql-database-managed-instance-connect-app.md
+    - name: Integracja z siecią wirtualną
+      items:
+      - name: Konfiguracja sieci wirtualnej
+        href: sql-database-managed-instance-vnet-configuration.md
+      - name: Niestandardowe DNS
+        href: sql-database-managed-instance-custom-dns.md
+      - name: Synchronizacja konfiguracji sieci
+        href: sql-database-managed-instance-sync-network-configuration.md
+      - name: Architektura łączności
+        href: sql-database-managed-instance-connectivity-architecture.md
+      - name: Łączenie aplikacji
+        href: sql-database-managed-instance-connect-app.md
     - name: Różnice w języku T-SQL
       href: sql-database-managed-instance-transact-sql-information.md
     - name: Replikacja transakcyjna
@@ -644,9 +648,9 @@ items:
     href: /azure/architecture/
   - name: Historie klientów
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 303e24b5ce064a891c87156e78b6711ddb7cc79a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 90ce805e96458e83315cd5f7c9e60b3585f7313d
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623163"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854292"

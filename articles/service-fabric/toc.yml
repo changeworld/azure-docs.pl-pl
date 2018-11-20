@@ -239,12 +239,16 @@ items:
       items:
       - name: Typy węzłów i usługa VM Scale Sets
         href: service-fabric-cluster-nodetypes.md
+      - name: Uaktualnianie klastrów na platformie Azure
+        href: service-fabric-cluster-upgrade.md
       - name: Skalowanie
         href: service-fabric-cluster-scaling.md
       - name: Wzorce sieci klastra
         href: service-fabric-patterns-networking.md
     - name: Klastry autonomiczne
       items:
+      - name: Uaktualnianie klastrów autonomicznych
+        href: service-fabric-cluster-upgrade-standalone.md
       - name: Skalowanie
         href: service-fabric-cluster-scaling-standalone.md
     - name: Menedżer zasobów klastra
@@ -585,19 +589,27 @@ items:
         - name: Typ węzła zestawu skalowania maszyn wirtualnych — skalowanie w poziomie
           href: virtual-machine-scale-set-scale-node-type-scale-out.md
       - name: Uaktualnienie
-        href: service-fabric-cluster-upgrade.md
-      - name: Ustawianie kontroli dostępu
-        href: service-fabric-cluster-security-roles.md
-      - name: Otwieranie portu w module równoważenia obciążenia
-        href: create-load-balancer-rule.md
-      - name: Zmienianie certyfikatu klastra na nazwę pospolitą
-        href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
-      - name: Ręczne przerzucanie certyfikatów klastra
-        href: service-fabric-cluster-rollover-cert-cn.md
-      - name: Zarządzanie certyfikatami klastra
-        href: service-fabric-cluster-security-update-certs-azure.md
-      - name: Łączenie się zdalne z maszyną wirtualną węzła klastra
-        href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+        items:
+        - name: Uaktualnianie wersji usługi Service Fabric
+          href: service-fabric-cluster-upgrade-version-azure.md
+        - name: Uaktualnianie konfiguracji klastra
+          href: service-fabric-cluster-config-upgrade-azure.md
+        - name: Stosowanie poprawek do węzłów klastra (Windows)
+          href: service-fabric-patch-orchestration-application.md
+        - name: Stosowanie poprawek do węzłów klastra (Linux)
+          href: service-fabric-patch-orchestration-application-linux.md
+        - name: Ustawianie kontroli dostępu
+          href: service-fabric-cluster-security-roles.md
+        - name: Otwieranie portu w module równoważenia obciążenia
+          href: create-load-balancer-rule.md
+        - name: Zmienianie certyfikatu klastra na nazwę pospolitą
+          href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
+        - name: Ręczne przerzucanie certyfikatów klastra
+          href: service-fabric-cluster-rollover-cert-cn.md
+        - name: Zarządzanie certyfikatami klastra
+          href: service-fabric-cluster-security-update-certs-azure.md
+        - name: Łączenie się zdalne z maszyną wirtualną węzła klastra
+          href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
     - name: Klastry autonomiczne
       items:
       - name: Przycisk Utwórz
@@ -612,20 +624,22 @@ items:
           href: service-fabric-cluster-standalone-package-contents.md
       - name: Skalowanie
         href: service-fabric-cluster-windows-server-add-remove-nodes.md
-      - name: Ustawianie kontroli dostępu
-        href: service-fabric-cluster-security-roles.md
-      - name: Konfigurowanie
-        href: service-fabric-cluster-manifest.md
       - name: Uaktualnienie
-        href: service-fabric-cluster-upgrade-windows-server.md
+        items:
+        - name: Uaktualnianie wersji usługi Service Fabric
+          href: service-fabric-cluster-upgrade-windows-server.md
+        - name: Uaktualnianie konfiguracji klastra
+          href: service-fabric-cluster-config-upgrade-windows-server.md
+        - name: Ustawienia konfiguracji
+          href: service-fabric-cluster-manifest.md
+        - name: Ustawianie kontroli dostępu
+          href: service-fabric-cluster-security-roles.md
+        - name: Stosowanie poprawek do węzłów klastra (Windows)
+          href: service-fabric-patch-orchestration-application.md
     - name: Wizualizacja klastra
       href: service-fabric-visualizing-your-cluster.md
     - name: Nawiązywanie połączenia z zabezpieczonym klastrem
       href: service-fabric-connect-to-secure-cluster.md
-    - name: Stosowanie poprawek do węzłów klastra (Windows)
-      href: service-fabric-patch-orchestration-application.md
-    - name: Stosowanie poprawek do węzłów klastra (Linux)
-      href: service-fabric-patch-orchestration-application-linux.md
   - name: Monitorowanie i diagnozowanie
     items:
     - name: Monitorowanie aplikacji
@@ -767,9 +781,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 810c04b2d6b2b5e7a8db64e21c10225ccddcb117
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 98ca5a1cbf5298931c14d6c696119d0c98893072
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634281"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853646"
