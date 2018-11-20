@@ -182,8 +182,10 @@ items:
         href: vmware-azure-set-up-process-server-scale.md
     - name: Konfigurowanie odzyskiwania po awarii
       items:
-      - name: Konfigurowanie środowiska źródłowego/serwera konfiguracji
+      - name: Konfigurowanie środowiska źródłowego
         href: vmware-azure-set-up-source.md
+      - name: Wdrażanie serwera konfiguracji
+        href: vmware-azure-deploy-configuration-server.md
       - name: Konfigurowanie środowiska docelowego
         href: vmware-azure-set-up-target.md
       - name: Konfigurowanie ustawień replikacji
@@ -434,9 +436,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Aktualizacje usług
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: d0d5ff955caa7cf9206973f0411f4170ba3bbc35
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 25534dfc7986b8dee0dd723532a52f5d445fa7f6
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566357"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161908"

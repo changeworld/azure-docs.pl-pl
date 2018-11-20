@@ -48,7 +48,7 @@
 #### [Ocena serwera SQL](../log-analytics/log-analytics-sql-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Surface Hub](../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Upgrade Analytics](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics?f=255&MSPPError=-2147217396)
-#### [Analiza oprogramowania VMWare](../log-analytics/log-analytics-vmware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+#### [Analiza oprogramowania VMware](../log-analytics/log-analytics-vmware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Dane o komunikacji sieciowej](../log-analytics/log-analytics-wire-data.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### Automatyzacja i kontrola
 #### [Śledzenie zmian](../log-analytics/log-analytics-change-tracking.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)

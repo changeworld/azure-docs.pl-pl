@@ -86,10 +86,12 @@ items:
       href: high-availability.md
     - name: Globalne skalowanie aprowizowanej przepływności
       href: scaling-throughput.md
-    - name: Zasady rozwiązywania konfliktów
+    - name: Typy konfliktów i zasady ich rozwiązywania
       href: conflict-resolution-policies.md
     - name: Dystrybucja globalna — szczegóły działania
       href: global-dist-under-the-hood.md
+    - name: Obecność regionalna
+      href: regional-presence.md
   - name: Partycjonowanie
     items:
     - name: Omówienie
@@ -150,6 +152,10 @@ items:
       href: vnet-service-endpoint.md
     - name: Obsługa magazynu kluczy
       href: access-secrets-from-keyvault.md
+  - name: Gotowość przedsiębiorstwa
+    items:
+    - name: Zgodność
+      href: compliance.md
   - name: Opłacanie wydajności rezerwowej z góry
     href: cosmos-db-reserved-capacity.md
   - name: Tworzenie kopii zapasowej i przywracanie
@@ -160,8 +166,6 @@ items:
     items:
     - name: Wprowadzenie
       href: sql-api-introduction.md
-    - name: Pisanie zapytań SQL
-      href: sql-api-sql-query.md
     - name: Modelowanie danych dokumentów
       href: modeling-data.md
     - name: Samouczki
@@ -437,6 +441,8 @@ items:
       href: how-to-create-container.md
     - name: Wykonywanie zapytania względem kontenera
       href: how-to-query-container.md
+    - name: Wykonywanie zapytań o dane za pomocą zapytań SQL
+      href: how-to-sql-query.md
   - name: Indeksowanie
     items:
     - name: Konfigurowanie indeksowania
@@ -567,9 +573,9 @@ items:
       href: use-cases.md
     - name: Aplikacje mediów społecznościowych
       href: social-media-apps.md
-ms.openlocfilehash: 9a9aed84f75d9db93ec02bbfa681412dd1fa97da
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 39b551b12f80a54a8c374e0ac0980c8c746ef3b3
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706392"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162524"

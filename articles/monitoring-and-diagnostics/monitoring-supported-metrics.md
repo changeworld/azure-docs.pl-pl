@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 5f6140b582b2412a164593bd2aa99bfbde5fb688
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0bb79c9d85e56308d9872baeb10868be8eaf7a5a
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964190"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824918"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z usługą Azure Monitor
 Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wykresy je w portalu, uzyskując dostęp do nich za pośrednictwem interfejsu API REST lub ich zapytań przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Oto Pełna lista wszystkich metryk jest obecnie dostępna z potoku metryk usługi Azure Monitor. Inne metryki mogą być dostępne w portalu lub przy użyciu starszej wersji interfejsów API. Ta lista poniżej zawiera tylko metryk przy użyciu skonsolidowany potoku metryk usługi Azure Monitor. Użyj kwerendy i dostępem tych metryk [2018-01-01-api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -819,7 +819,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |IsEngineAnsweringQuery|Podtrzymanie|Licznik|Średnia|Sprawdzanie poprawnością wskazuje respondes klastra do zapytań|Nie wymiarów|
 |IngestCommandOriginalSizeInMb|Pozyskiwanie woluminu (w MB)|Licznik|Łącznie|Łączna ilość pozyskiwanych danych do klastra (w MB)|Nie wymiarów|
 |EventAgeSeconds|Opóźnienia w pozyskiwaniu danych (w sekundach)|Sekundy|Średnia|Czas wprowadzania od źródła (np. komunikat jest w Centrum zdarzeń) do klastra w ciągu kilku sekund|Nie wymiarów|
-|EventRecievedFromEventHub|Zdarzenia przetwarzane (dla usługi Event Hubs)|Licznik|Łącznie|Liczba zdarzeń przetwarzany przez klaster, gdy wprowadzane z Centrum zdarzeń|Nie wymiarów|
+|EventReceivedFromEventHub|Zdarzenia przetwarzane (dla usługi Event Hubs)|Licznik|Łącznie|Liczba zdarzeń przetwarzany przez klaster, gdy wprowadzane z Centrum zdarzeń|Nie wymiarów|
 |IngestionResult|Wynik pozyskiwania|Licznik|Licznik|Liczby operacji pozyskiwania|IngestionResultDetails|
 |EngineCPU|Procesor CPU|Procent|Średnia|Poziom użycia procesora CPU|Nie wymiarów|
 
@@ -1570,6 +1570,6 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |MemoryPercentage|Procent pamięci|Procent|Średnia|Procent pamięci|Wystąpienie|
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Przeczytaj o metrykach w usłudze Azure Monitor](../monitoring/monitoring-data-collection.md)
+* [Przeczytaj o metrykach w usłudze Azure Monitor](../azure-monitor/platform/data-collection.md)
 * [Tworzenie alertów dotyczących metryk](monitoring-overview-alerts.md)
 * [Eksportowanie metryk do magazynu, Centrum zdarzeń lub usługi Log Analytics](monitoring-overview-of-diagnostic-logs.md)

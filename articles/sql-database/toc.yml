@@ -143,7 +143,7 @@ items:
     items:
     - name: Wystąpienia zarządzane
       href: sql-database-managed-instance-index.yml
-    - name: Co to jest wystąpienie zarządzane
+    - name: Omówienie
       href: sql-database-managed-instance.md
     - name: Limity zasobów
       href: sql-database-managed-instance-resource-limits.md
@@ -163,15 +163,15 @@ items:
       href: sql-database-managed-instance-transact-sql-information.md
     - name: Replikacja transakcyjna
       href: replication-with-sql-database-managed-instance.md
-  - name: Ciągłość działalności biznesowej
+  - name: Platforma jako usługa
     items:
+    - name: Platforma jako usługa
+      href: sql-database-paas.yml
     - name: Ciągłość działalności biznesowej
       href: sql-database-business-continuity.md
     - name: Wysoka dostępność
       href: sql-database-high-availability.md
-    - name: Przyspieszone odzyskiwanie bazy danych
-      href: sql-database-accelerated-database-recovery.md
-    - name: Kopie zapasowe bazy danych
+    - name: Automatyczne kopie zapasowe
       href: sql-database-automated-backups.md
     - name: Długoterminowe przechowywanie kopii zapasowych
       items:
@@ -193,6 +193,8 @@ items:
       items:
       - name: Odzyskiwanie przy użyciu kopii zapasowych
         href: sql-database-recovery-using-backups.md
+      - name: Przyspieszone odzyskiwanie bazy danych
+        href: sql-database-accelerated-database-recovery.md
       - name: Wskazówki dotyczące odzyskiwania w przypadku niedostępności
         href: sql-database-disaster-recovery.md
       - name: Próbne operacje odzyskiwania
@@ -208,6 +210,8 @@ items:
   - name: Bezpieczeństwo
     items:
     - name: Bezpieczeństwo
+      href: sql-database-security-index.yml
+    - name: Omówienie
       href: sql-database-security-overview.md
     - name: Zaawansowana ochrona przed zagrożeniami
       items:
@@ -648,9 +652,9 @@ items:
     href: /azure/architecture/
   - name: Historie klientów
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 90ce805e96458e83315cd5f7c9e60b3585f7313d
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 12add5f8ee32ce3c5207a604ef7cad821d5e5a4e
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854292"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165273"
