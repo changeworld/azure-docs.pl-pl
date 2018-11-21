@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 11/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: bcfc4cb65c94e34e9f6056ada53726f88489fefb
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 8268a6b04d7ddbb35821999142d3a33bdd2bedcc
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646655"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261806"
 ---
 # <a name="validate-oem-packages"></a>Sprawdzanie poprawności pakietów producenta OEM
 
@@ -58,22 +58,17 @@ Podczas tworzenia **sprawdzanie poprawności pakietu** przepływu pracy w portal
 
 #### <a name="option-1-generating-an-account-sas-url"></a>Opcja 1: Generowanie adresu URL sygnatury dostępu Współdzielonego konta
 
-1. [!INCLUDE [azure-stack-vaas-sas-step_navigate](includes/azure-stack-vaas-sas-step_navigate.md)]
+1. W [witryny Azure portal](https://portal.azure.com/), przejdź do swojego konta magazynu i przejdź do .zip zawierający pakiet
 
-1. Wybierz **Blob** z **opcji dozwolone usług**. Usuń zaznaczenie pozostałych opcji.
+2. Wybierz **Generowanie sygnatury dostępu Współdzielonego** z menu kontekstowego
 
-1. Wybierz **kontenera** i **obiektu** z **dozwolone typy zasobów**. Usuń zaznaczenie pozostałych opcji.
+3. Wybierz **odczytu** z **uprawnień**
 
-1. Wybierz **odczytu** i **listy** z **dozwolone uprawnienia**. Usuń zaznaczenie pozostałych opcji.
+4. Ustaw **czas rozpoczęcia** do bieżącego czasu i **czas zakończenia** do co najmniej 48 godzin od **czas rozpoczęcia**. Jeśli inne testy zostaną uruchomione przy użyciu tego samego pakietu, należy rozważyć zwiększenie **czas zakończenia** długości testowania. Wszystkie testy zaplanowane za pośrednictwem VaaS po **czas zakończenia** zakończy się niepowodzeniem i nowych sygnatur dostępu Współdzielonego będzie należy do wygenerowania.
 
-1. Ustaw **czas rozpoczęcia** do bieżącego czasu i **czas zakończenia** do 1 godziny od bieżącego czasu.
+5. Wybierz **generowania tokenu sygnatury dostępu Współdzielonego obiektów blob i adres URL**
 
-1. [!INCLUDE [azure-stack-vaas-sas-step_generate](includes/azure-stack-vaas-sas-step_generate.md)]
-    Poniżej przedstawiono wygląd format: `https://storageaccountname.blob.core.windows.net/?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
-
-1. Modyfikowanie wygenerowany adres URL sygnatury dostępu Współdzielonego do uwzględnienia kontenera pakietu `{containername}`i nazwę obiektu blob pakietu, `{mypackage.zip}`, wykonując następujące czynności:  `https://storageaccountname.blob.core.windows.net/{containername}/{mypackage.zip}?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
-
-    Użyj tej wartości, przy rozpoczynaniu nowego **sprawdzanie poprawności pakietu** przepływu pracy w portalu VaaS.
+Użyj **adresu URL sygnatury dostępu Współdzielonego obiektu Blob** podczas uruchamiania nowego **sprawdzanie poprawności pakietu** przepływu pracy w portalu VaaS.
 
 #### <a name="option-2-using-public-read-container"></a>Opcja 2: Za pomocą publicznego odczytu kontenera
 

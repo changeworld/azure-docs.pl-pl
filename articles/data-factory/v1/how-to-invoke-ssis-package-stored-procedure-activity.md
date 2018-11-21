@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: fe2b509b62884c1cea554bc8dc5df25489205264
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: eb9d35b132a0aa3f0702604444f8a760bf66cf9a
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966963"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275585"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Wywoływanie pakietów SSIS za pomocą działania procedury składowanej w usłudze Azure Data Factory
 W tym artykule opisano jak wywołać pakietu SSIS z potoku usługi Azure Data Factory za pomocą działania procedury składowanej. 
@@ -115,7 +115,7 @@ Ten wyjściowy zestaw danych jest fikcyjnego zestaw danych kieruje harmonogramem
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Tworzenie potoku za pomocą działania procedury składowanej 
 W tym kroku utworzysz potok z działaniem procedury składowanej. Działanie wywołuje procedury przechowywanej sp_executesql do uruchamiania pakietu SSIS. 
 
-1. W okienku po lewej stronie kliknij **... Więcej** i **Nowy potok**.
+1. W okienku po lewej stronie kliknij **... Więcej** i **Nowy potok.
 2. Skopiuj poniższy fragment kodu JSON do edytora JSON: 
 
     > [!IMPORTANT]
@@ -236,7 +236,7 @@ Utwórz połączoną usługę służącą do połączenia z bazą danych Azure S
 ### <a name="create-an-output-dataset"></a>Tworzenie wyjściowego zestawu danych
 Ten wyjściowy zestaw danych jest fikcyjnego zestaw danych kieruje harmonogramem potoku. Należy zauważyć, że parametr frequency ma wartość Hour, interval jest ustawiona na 1. W związku z tym potok jest uruchamiany, gdy godziny w ramach potoku godziny rozpoczęcia i zakończenia. 
 
-1. Utwórz plik OuputDataset.json o następującej zawartości: 
+1. Utwórz plik OutputDataset.json o następującej zawartości: 
     
     ```json
     {
