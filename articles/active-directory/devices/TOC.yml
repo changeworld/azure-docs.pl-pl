@@ -18,13 +18,18 @@ items:
   - name: Konfigurowanie dołączania do usługi Azure AD podczas pierwszego uruchomienia systemu Windows 10
     href: azuread-joined-devices-frx.md
   expanded: false
+- name: Pojęcia
+  items:
+  - name: Logowanie jednokrotne do zasobów lokalnych
+    href: azuread-join-sso.md
+  expanded: false
 - name: Przewodniki z instrukcjami
   items:
   - name: Zarządzanie urządzeniami przy użyciu witryny Azure Portal
     href: device-management-azure-portal.md
   - name: Zarządzanie nieodświeżonymi urządzeniami
     href: manage-stale-devices.md
-  - name: Planowanie dołączania do usługi Azure AD
+  - name: Planowanie implementacji dołączania do usługi Azure AD
     href: azureadjoin-plan.md
   - name: Planowanie implementacji dołączania do hybrydowej usługi Azure AD
     href: hybrid-azuread-join-plan.md
@@ -65,9 +70,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-active-directory
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: aa3be36e660c1e0a68446166d3ec90a8a24fa3e8
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 54f55af14658fa02999d7f134937fcd357d83d75
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092325"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276502"

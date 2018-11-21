@@ -5,37 +5,58 @@ items:
   items:
   - name: Co to jest nadzór nad tożsamościami?
     href: identity-governance-overview.md
-  expanded: true
+  - name: Co to są przeglądy dostępu?
+    href: access-reviews-overview.md
+  expanded: false
+- name: Pojęcia
+  items:
+  - name: Zarządzanie dostępem gości za pomocą przeglądów
+    href: manage-guest-access-with-access-reviews.md
+  - name: Zarządzanie dostępem użytkowników i przeglądy
+    href: manage-user-access-with-access-reviews.md
+  - name: Zarządzanie programami i ich kontrolami
+    href: manage-programs-controls.md
+  - name: Zarządzanie użytkownikami wykluczonymi z dostępu warunkowego
+    href: conditional-access-exclusion.md
+  expanded: false
 - name: Przewodniki z instrukcjami
   items:
   - name: Przeglądy dostępu
     items:
-    - name: Co to jest przegląd dostępu?
-      href: access-reviews-overview.md
-    - name: Tworzenie przeglądu dostępu
-      href: create-access-review.md
-    - name: Kończenie przeglądu dostępu
-      href: complete-access-review.md
-    - name: Wykonywanie przeglądu dostępu
-      href: perform-access-review.md
-    - name: Przeglądanie dostępu
-      href: review-your-access.md
-    - name: Dostęp gości i przeglądy dostępu
-      href: manage-guest-access-with-access-reviews.md
-    - name: Zarządzanie dostępem użytkowników i przeglądy
-      href: manage-user-access-with-access-reviews.md
-    - name: Zarządzanie programami i ich kontrolami
-      href: manage-programs-controls.md
-    - name: Pobieranie wyników przeglądu dostępu
-      href: retrieve-access-review.md
-    - name: Zarządzanie wykluczonymi użytkownikami
-      href: conditional-access-exclusion.md
+    - name: Grupy i aplikacje
+      items:
+      - name: Tworzenie przeglądu dostępu
+        href: create-access-review.md
+      - name: Rozpoczynanie przeglądu dostępu
+        href: perform-access-review.md
+      - name: Przeglądanie własnego dostępu
+        href: review-your-access.md
+      - name: Kończenie przeglądu dostępu
+        href: complete-access-review.md
+      - name: Pobieranie wyników przeglądu dostępu
+        href: retrieve-access-review.md
+    - name: Role katalogu
+      items:
+      - name: Przeglądanie własnych ról katalogu
+        href: ../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+      - name: Rozpoczynanie przeglądu dostępu
+        href: ../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+      - name: Kończenie przeglądu dostępu
+        href: ../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+    - name: Role zasobów
+      items:
+      - name: Przegląd własnych ról zasobów
+        href: ../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+      - name: Rozpoczynanie przeglądu dostępu
+        href: ../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+      - name: Kończenie przeglądu dostępu
+        href: ../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
   - name: Warunki użytkowania
     href: active-directory-tou.md
   expanded: true
-ms.openlocfilehash: b6280e42839344169ab651cd5d882bb6abfbf388
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b1c70e219aab05e8f8bd905cdc341ccd0d7b563a
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163141"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261150"

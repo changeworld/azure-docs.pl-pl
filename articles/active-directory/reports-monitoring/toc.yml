@@ -64,6 +64,8 @@ items:
     items:
     - name: Znajdowanie raportów aktywności
       href: howto-find-activity-reports.md
+    - name: Rozwiązywanie problemów z błędami logowania dla użytkownika
+      href: howto-troubleshoot-sign-in-errors.md
     - name: Korygowanie użytkowników oflagowanych w związku z ryzykiem
       href: howto-remediate-users-flagged-for-risk.md
     - name: Używanie pakietu zawartości usługi Power BI w raportach usługi Azure AD
@@ -95,6 +97,10 @@ items:
   items:
   - name: Raporty
     items:
+    - name: Dokumentacja interfejsu API dzienników inspekcji
+      href: https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit
+    - name: Dokumentacja interfejsu API dzienników logowania
+      href: https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin
     - name: Działania dotyczące inspekcji
       href: reference-audit-activities.md
     - name: Zasady przechowywania danych
@@ -112,9 +118,9 @@ items:
     - name: Schemat dziennika logowania
       href: reference-azure-monitor-sign-ins-log-schema.md
   expanded: true
-ms.openlocfilehash: 6c7dedc0bc592ba47b9fc0a0e017012f2b0be2cd
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4763477baca827eca93f05356dd92249f4c0e63c
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623236"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276609"

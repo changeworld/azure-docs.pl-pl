@@ -336,7 +336,7 @@ items:
     - name: Pakiety domen
       href: ../desktop-workbench/reference-python-package-overview.md
       items:
-      - name: Pakiet przetwarzania obrazów
+      - name: Pakiet przetwarzania obrazów jest przestarzały
         items:
         - name: Instalowanie pakietu
           href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision
@@ -350,7 +350,7 @@ items:
             href: ../desktop-workbench/how-to-build-deploy-image-similarity-models.md
           - name: Zwiększanie dokładności modelu
             href: ../desktop-workbench/how-to-improve-accuracy-for-computer-vision-models.md
-      - name: Pakiet prognozowania
+      - name: Pakiet prognozowania jest przestarzały
         items:
         - name: Omówienie i instalacja
           href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/forecasting-overview
@@ -360,7 +360,7 @@ items:
         href: reference-fpga-package-overview.md
       - name: Pakiet analizy tekstu
         items:
-        - name: Omówienie i instalacja
+        - name: Omówienie i instalacja są przestarzałe
           href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/textanalytics
         - name: Tworzenie i wdrażanie modeli klasyfikacji tekstu
           href: ../desktop-workbench/how-to-build-deploy-text-classification-models.md
@@ -368,9 +368,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Stare problemy
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 71dc3f256a2d145dbb645feb7f309f5c760bf20a
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 14ba5fa2b31c6695737b3250521d0904c950cf30
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163983"
+ms.locfileid: "52264900"

@@ -17,6 +17,8 @@ items:
     href: detailed-troubleshoot-rdp.md
   - name: Rozwiązywanie problemów z błędem protokołu RDP spowodowanym wyłączonym protokołem DHCP
     href: troubleshoot-rdp-dhcp-disabled.md
+  - name: Rozwiązywanie problemów z błędem protokołu RDP spowodowanym ustawieniem sieciowej grupy zabezpieczeń
+    href: troubleshoot-rdp-nsg-problem.md
   - name: Rozwiązywanie problemów z konkretnymi błędami
     href: troubleshoot-specific-rdp-errors.md
   - name: Rozwiązywanie problemów z błędami wskazującymi na brak serwera licencji
@@ -149,9 +151,9 @@ items:
   href: understand-vm-reboot.md
 - name: Narzędzia do zdalnego rozwiązywania problemów
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: 4b4202e0eb155e80b86332287ba4ed3a37a24741
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: fbbc44073d4cb27222800943826ab7a177709833
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705620"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52260633"
