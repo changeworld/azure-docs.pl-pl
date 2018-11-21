@@ -3,8 +3,8 @@ title: Tworzenie wielu modeli na podstawie jednego eksperymentu | Dokumentacja f
 description: Tworzenie wielu modeli usługi Machine Learning i sieci web punkty końcowe usługi z tego samego algorytmu, ale szkolenia różnych zestawów danych przy użyciu programu PowerShell.
 services: machine-learning
 documentationcenter: ''
-author: hning86
-ms.custom: (previous ms.author haining)
+author: ericlicoding
+ms.custom: (previous ms.author=haining, author=hning86)
 ms.author: amlstudiodocs
 manager: mwinkle
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
-ms.openlocfilehash: e7ed548ac0561c023a6287b8d70f19c4d0e4ef3e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: c3ba87459c8c24a948683319f6b3ab54436c88e1
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820549"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262381"
 ---
 # <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>Tworzenie wielu modeli usługi Machine Learning i punktów końcowych usługi sieci Web na podstawie jednego eksperymentu przy użyciu programu PowerShell
 Poniżej przedstawiono typowe nauczanym problemem maszyny: Aby utworzyć wiele modeli, które mają tego samego przepływu pracy szkolenia i używają tego samego algorytmu. Jednak aby użytkownicy posiadali zestawów danych szkoleniowych różnych jako dane wejściowe. W tym artykule dowiesz się, jak to zrobić na dużą skalę w usłudze Azure Machine Learning Studio za pomocą tylko jednego eksperymentu.

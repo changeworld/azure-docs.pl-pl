@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: c37492a42322ffc386751c4c63b981c9d93a72f6
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 8ff99b8c5cf839afb8c8e73c18c2c413998ba64a
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633380"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261722"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybrać właściwą warstwę usługi IoT Hub dla Twojego rozwiązania
 
@@ -83,7 +83,7 @@ Różnica w obsługiwanych możliwości między warstwami podstawowa i standardo
 | [Wyślij zdarzenia urządzenia](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Yes | Yes |
 | Wysyłanie zdarzeń modułu | Yes | Yes |
 | [Zaktualizuj stan przekazywania pliku](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Yes | Yes |
-| [Operacja urządzenia zbiorczego](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/bulkoperation) | Tak, z wyjątkiem możliwości usługi IoT Edge | Yes | 
+| [Operacja urządzenia zbiorczego](/rest/api/iot-dps/runbulkenrollmentoperation/runbulkenrollmentoperation) | Tak, z wyjątkiem możliwości usługi IoT Edge | Yes | 
 | [Wyczyść kolejkę poleceń](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Yes |
 | [Pobierz bliźniaczej reprezentacji urządzenia](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Yes |
 | Pobierz bliźniaczej reprezentacji modułu |   | Yes |

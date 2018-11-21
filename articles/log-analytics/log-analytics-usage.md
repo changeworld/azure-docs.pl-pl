@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a881ea18558e49656dc165d1545250bffeac4303
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 01603655be9b6051be9b894da4e55338ff4df810
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713083"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262129"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analizowanie użycia danych w usłudze Log Analytics
 
@@ -29,37 +29,127 @@ ms.locfileid: "51713083"
 > - [Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w usłudze Log Analytics](log-analytics-manage-cost-storage.md) opisano, jak kontrolować ponoszone koszty, zmieniając okresu przechowywania danych.
 > - [Monitorowanie użycia i szacowanych kosztów](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) zawiera opis sposobu wyświetlania użycie i szacowane koszty w wielu monitorowania funkcji różne modele cen platformy Azure. Opisuje ona również, jak można zmienić modelu cen.
 
-Usługa Log Analytics zawiera informacje na temat ilości zebranych danych, źródeł, z których zostały one wysłane, oraz typów danych.  Użyj pulpitu nawigacyjnego **Użycie usługi Log Analytics** do przeglądania i analizowania użycia danych. Na pulpicie nawigacyjnym prezentowana jest ilość danych zebranych przez każde rozwiązanie i ilość danych wysyłanych przez komputery.
+## <a name="understand-usage"></a>Analizy użycia
 
-## <a name="understand-the-usage-dashboard"></a>Objaśnienie pulpitu nawigacyjnego Użycie
-Pulpit nawigacyjny **Użycie usługi Log Analytics** udostępnia następujące informacje:
+Użyj **użycie usługi Log Analytics i szacowane koszty** do przeglądania i analizowania użycia danych. Pokazuje, jak dużo danych zbieranych przez każde rozwiązanie, jak dużo danych jest zachowywane i oszacowanie kosztów na podstawie ilości danych wprowadzanych i wszelkie dodatkowe przechowywanie danych ponad uwzględnioną kwotę.
 
-- Ilość danych
-    - Ilość danych w czasie (na podstawie bieżącego zakresu czasu)
-    - Ilość danych wg rozwiązania
-    - Dane nieskojarzone z komputerem
-- Komputery
-    - Komputery wysyłające dane
-    - Komputery bez danych w ostatnich 24 godzinach
-- Oferty
-    - Węzły wglądu w dane i analizy
-    - Węzły automatyzacji i kontroli
-    - Węzły zabezpieczeń  
-- Wydajność
-    - Ilość czasu zbierania i indeksowania danych  
-- Lista zapytań
+![Użycie i szacunkowe koszty](media/log-analytics-usage/usage-estimated-cost-dashboard-01.png)<br>
 
-![Pulpit nawigacyjny użycia i kosztów](media/log-analytics-usage/usage-estimated-cost-dashboard-01.png)<br>
+Eksplorowanie danych bardziej szczegółowo, kliknij ikonę w prawym górnym rogu albo wykresów na **użycie i szacowane koszty** strony. Teraz możesz pracować z tym zapytaniem, aby poznać więcej szczegółów dotyczących użycia.  
+
+![Wyświetl dzienniki](media/log-analytics-usage/logs.png)<br>
+
+## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Rozwiązywanie problemów związanych z użyciem przekraczającym oczekiwania
+Większe użycie jest spowodowane przez jedną lub obie z następujących przyczyn:
+- Do usługi Log Analytics jest wysyłana większa ilość danych niż oczekiwano
+- Dane wysyłane do usługi Log Analytics pochodzą z większej liczby węzłów niż oczekiwano
+
+### <a name="data-volume"></a>Ilość danych 
+Na **użycie i szacowane koszty** stronie *pozyskiwanie danych na rozwiązanie* wykres przedstawia łączny wolumin danych wysyłanych i ile wysyłanych przez każde rozwiązanie. Dzięki temu można określić trendy, takie jak czy rośnie całkowite użycie danych (lub użycie przez konkretnego rozwiązania), pozostały stały, czy też maleje. Zapytanie używane do generowania, to jest
+
+`Usage| where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+
+Należy pamiętać, że klauzuli "gdzie IsBillable = true" odfiltrowuje typy danych, z niektórych rozwiązań, dla których nie są pobierane opłaty pozyskiwania. 
+
+Możesz przejść dostosowaną Zobacz dane trendów dla konkretnych typów danych, na przykład jeśli chcesz badanie danych z powodu dzienniki usług IIS:
+
+`Usage| where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| where DataType == "W3CIISLog"
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+
+### <a name="nodes-sending-data"></a>Węzły wysyłające dane
+
+Aby undersand liczby węzłów danych raportowania w ciągu ostatniego miesiąca, użyj
+
+`Heartbeat | where TimeGenerated > startofday(ago(31d))
+| summarize dcount(ComputerIP) by bin(TimeGenerated, 1d)    
+| render timechart`
+
+Aby wyświetlić liczbę zdarzeń przetwarzanych na komputerze, należy użyć
+
+`union withsource = tt *
+| summarize count() by Computer |sort by count_ nulls last`
+
+Skorzystaj z tej kwerendy rzadko się kosztowne do wykonania. Jeśli chcesz zobaczyć, jakie typy danych są sendng danych do konkretnego komputera, należy użyć:
+
+`union withsource = tt *
+| where Computer == "*computer name*"
+| summarize count() by tt |sort by count_ nulls last `
+
+> [!NOTE]
+> Niektóre pola typu danych użycia, chociaż nadal w schemacie, są przestarzałe i spowoduje, że ich wartości są już wypełnione. Są to **komputera** oraz pola powiązane z pozyskiwania (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** i **AverageProcessingTimeMs**.
+
+Aby wyświetlić elementy podrzędne źródło danych dla określonego typu danych, poniżej przedstawiono pewne przydatne przykładowe zapytania:
+
++ Rozwiązanie **zabezpieczające**
+  - `SecurityEvent | summarize AggregatedValue = count() by EventID`
++ Rozwiązanie do **zarządzania dziennikami**
+  - `Usage | where Solution == "LogManagement" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | summarize AggregatedValue = count() by DataType`
++ Typ danych **Perf**
+  - `Perf | summarize AggregatedValue = count() by CounterPath`
+  - `Perf | summarize AggregatedValue = count() by CounterName`
++ Typ danych **Event**
+  - `Event | summarize AggregatedValue = count() by EventID`
+  - `Event | summarize AggregatedValue = count() by EventLog, EventLevelName`
++ Typ danych **Syslog**
+  - `Syslog | summarize AggregatedValue = count() by Facility, SeverityLevel`
+  - `Syslog | summarize AggregatedValue = count() by ProcessName`
++ Typ danych **AzureDiagnostics**
+  - `AzureDiagnostics | summarize AggregatedValue = count() by ResourceProvider, ResourceId`
+
+### <a name="tips-for-reducing-data-volume"></a>Jak zmniejszyć wolumin danych
+
+Sugestie dotyczące zmniejszyć wolumin zebranych danych dzienników obejmują:
+
+| Źródło dużego woluminu danych | Jak zmniejszyć wolumin danych |
+| -------------------------- | ------------------------- |
+| Zdarzenia zabezpieczeń            | Wybierz [pospolite lub minimalne zdarzenia zabezpieczeń](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/). <br> Zmień zasady inspekcji zabezpieczeń w celu zbierania tylko potrzebnych zdarzeń. W szczególności zastanów się nad koniecznością zbierania następujących zdarzeń: <br> - [inspekcja platformy filtrowania](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [inspekcja rejestru](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [inspekcja systemu plików](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [inspekcja obiektu jądra](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [inspekcja manipulowania dojściem](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> — Inspekcja magazynu wymiennego |
+| Liczniki wydajności       | Zmień [konfigurację licznika wydajności](log-analytics-data-sources-performance-counters.md) w następujący sposób: <br> — Zmniejsz częstotliwość gromadzenia <br> — Zmniejsz liczbę liczników wydajności |
+| Dzienniki zdarzeń                 | Zmień [konfigurację dziennika zdarzeń](log-analytics-data-sources-windows-events.md) w następujący sposób: <br> — Zmniejsz liczbę gromadzonych danych dzienników zdarzeń <br> — Zbieraj wyłącznie zdarzenia o wymaganym poziomie. Na przykład nie zbieraj zdarzeń na poziomie *Informacje*. |
+| Dziennik systemu                     | Zmień [konfigurację dziennika systemu](log-analytics-data-sources-syslog.md) w następujący sposób: <br> — Zmniejsz liczbę urządzeń, z których zbierane są dane <br> — Zbieraj wyłącznie zdarzenia o wymaganym poziomie. Na przykład nie zbieraj zdarzeń na poziomie *Informacje* i *Debugowanie*. |
+| AzureDiagnostics           | Zmień kolekcję dziennika zasobów, aby: <br> — zmniejszyć liczbę dzienników zasobów wysyłanych do usługi Log Analytics, <br> — zbierać tylko wymagane dzienniki. |
+| Dane rozwiązań z komputerów, które nie wymagają rozwiązania | Użyj funkcji [określania celu rozwiązania](../azure-monitor/insights/solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów. |
+
+### <a name="getting-node-counts"></a>Pobieranie liczby węzłów 
+
+Jeśli użytkownik pracuje na "Na węzeł (OMS)" warstwy cenowej, a następnie opłaty są naliczane na podstawie liczby węzłów i rozwiązań można używać, numer wglądu w szczegółowe dane oraz węzły Analytics, dla których są naliczane będą wyświetlane w tabeli **użycie i szacowane koszty**strony.  
+
+Aby wyświetlić liczbę liczymy węzły zabezpieczeń, można użyć zapytania:
+
+`union
+(
+    Heartbeat
+    | where (Solutions has 'security' or Solutions has 'antimalware' or Solutions has 'securitycenter')
+    | project Computer
+),
+(
+    ProtectionStatus
+    | where Computer !in~
+    (
+        (
+            Heartbeat
+            | project Computer
+        )
+    )
+    | project Computer
 )
+| distinct Computer
+| project lowComputer = tolower(Computer)
+| distinct lowComputer
+| count`
 
-### <a name="to-work-with-usage-data"></a>Aby pracować z danymi użycia
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.<br><br> ![Azure Portal](media/log-analytics-usage/azure-portal-01.png)<br><br>  
-3. Na liście obszarów roboczych usługi Log Analytics wybierz obszar roboczy.
-4. Wybierz pozycję **Użycie i szacunkowe koszty** z listy w lewym okienku.
-5. Na pulpicie nawigacyjnym **Użycie i szacowane koszty** możesz modyfikować zakres czasu, wybierając pozycję **Czas: ostatnie 24 godziny** i zmieniać przedział czasu.<br><br> ![przedział czasu](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>
-6. Wyświetl bloki kategorii użycia pokazujące obszary, które Cię interesują. Wybierz blok, a następnie kliknij w nim pozycję, aby wyświetlić więcej szczegółów w obszarze [Wyszukiwanie w dzienniku](log-analytics-queries.md).<br><br> ![przykładowy kluczowy wskaźnik wydajności użycia danych](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
-7. Na pulpicie nawigacyjnym wyszukiwania w dzienniku przejrzyj wyniki zwrócone w wyniku wyszukiwania.<br><br> ![przykład wyszukiwania w dzienniku użycia](./media/log-analytics-usage/usage-log-search-01.png)
+Aby wyświetlić liczbę liczymy węzły usługi Automation, użyj zapytania:
+
+` ConfigurationData 
+ | where (ConfigDataType == "WindowsServices" or ConfigDataType == "Software" or ConfigDataType =="Daemons") 
+ | extend lowComputer = tolower(Computer) | summarize by lowComputer 
+ | join (
+     Heartbeat 
+       | where SCAgentChannel == "Direct"
+       | extend lowComputer = tolower(Computer) | summarize by lowComputer, ComputerEnvironment
+ ) on lowComputer
+ | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc`
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Tworzenie alertu, gdy ilość zebranych danych jest większa od oczekiwanej
 W tej sekcji opisano sposób tworzenia alertu w sytuacji, gdy:
@@ -109,68 +199,6 @@ Podczas tworzenia alertu dla drugiego zapytania dotyczącego przypadku, w który
 Określ istniejącą [grupę akcji](../monitoring-and-diagnostics/monitoring-action-groups.md) lub utwórz nową, tak aby otrzymywać powiadomienie, gdy alert dziennika spełni kryteria.
 
 Po otrzymaniu alertu wykonaj kroki przedstawione w poniższej sekcji, aby rozwiązać problemy związane z większym niż oczekiwano użyciem.
-
-## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Rozwiązywanie problemów związanych z użyciem przekraczającym oczekiwania
-Pulpit nawigacyjny użycia pomaga zidentyfikować przyczynę (a co za tym idzie także koszt) użycia, które przekracza oczekiwania.
-
-Większe użycie jest spowodowane przez jedną lub obie z następujących przyczyn:
-- Do usługi Log Analytics jest wysyłana większa ilość danych niż oczekiwano
-- Dane wysyłane do usługi Log Analytics pochodzą z większej liczby węzłów niż oczekiwano
-
-### <a name="check-if-there-is-more-data-than-expected"></a>Sprawdzanie, czy ilość danych przekracza oczekiwania 
-Strona użycia zawiera dwie kluczowe sekcje, które ułatwiają obszarów powodujących gromadzenie większości danych.
-
-Wykres *Objętość danych w czasie* przedstawia łączny wolumin wysłanych danych oraz komputery wysyłające większość z nich. Wykres u góry umożliwia obserwację, czy całkowite użycie danych wzrasta, pozostaje na stałym poziomie, czy też maleje. Lista komputerów obejmuje 10 komputerów wysyłających większość danych.
-
-Wykres *Objętość danych według rozwiązania* przedstawia wolumin danych wysyłanych przez każde rozwiązanie oraz rozwiązania wysyłające większość danych. Wykres u góry przedstawia łączny wolumin danych wysyłanych z upływem czasu przez każde rozwiązanie. Te informacje umożliwiają ustalenie, czy w miarę upływu czasu dane rozwiązanie wysyła więcej, mniej, czy podobną ilość danych. Lista rozwiązań obejmuje 10 rozwiązań wysyłających większość danych. 
-
-Na tych dwóch wykresach są pokazywane wszystkie dane. Niektóre dane podlegają opłatom, a inne nie. W celu skupienia się tylko na płatnych danych zmodyfikuj zapytanie na stronie wyszukiwania, uwzględniając parametr `IsBillable=true`.  
-
-![wykresy woluminów danych](./media/log-analytics-usage/log-analytics-usage-data-volume.png)
-
-Spójrz na wykres *Objętość danych w czasie*. Aby wyświetlić rozwiązania i typy danych odpowiedzialne za wysyłanie większości danych dla określonego komputera, kliknij nazwę komputera. Kliknij nazwę pierwszego komputera na liście.
-
-Na poniższym zrzucie ekranu widać, że w przypadku tego komputera większość wysyłanych danych jest typu *Zarządzanie dziennikiem/wydajność*.<br><br> ![wolumin danych na komputerze](./media/log-analytics-usage/log-analytics-usage-data-volume-computer.png)<br><br>
-
-Następnie wróć do pulpitu nawigacyjnego *Użycie* i spójrz na wykres *Objętość danych według rozwiązania*. Aby sprawdzić, które komputery wysyłają większość danych z określonego rozwiązania, kliknij nazwę rozwiązania na liście. Kliknij nazwę pierwszego rozwiązania na liście. 
-
-Na poniższym zrzucie ekranu widać, że najwięcej danych związanych z rozwiązaniem Zarządzanie dziennikami wysyła komputer *mycon*.<br><br> ![wolumin danych dla rozwiązania](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
-
-Jeśli to konieczne, wykonaj dodatkową analizę w celu zidentyfikowania dużych woluminów w ramach rozwiązania lub typu danych. Przykładowe zapytania:
-
-+ Rozwiązanie **zabezpieczające**
-  - `SecurityEvent | summarize AggregatedValue = count() by EventID`
-+ Rozwiązanie do **zarządzania dziennikami**
-  - `Usage | where Solution == "LogManagement" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | summarize AggregatedValue = count() by DataType`
-+ Typ danych **Perf**
-  - `Perf | summarize AggregatedValue = count() by CounterPath`
-  - `Perf | summarize AggregatedValue = count() by CounterName`
-+ Typ danych **Event**
-  - `Event | summarize AggregatedValue = count() by EventID`
-  - `Event | summarize AggregatedValue = count() by EventLog, EventLevelName`
-+ Typ danych **Syslog**
-  - `Syslog | summarize AggregatedValue = count() by Facility, SeverityLevel`
-  - `Syslog | summarize AggregatedValue = count() by ProcessName`
-+ Typ danych **AzureDiagnostics**
-  - `AzureDiagnostics | summarize AggregatedValue = count() by ResourceProvider, ResourceId`
-
-Wykonaj następujące kroki, aby zmniejszyć wolumin zebranych danych dzienników:
-
-| Źródło dużego woluminu danych | Jak zmniejszyć wolumin danych |
-| -------------------------- | ------------------------- |
-| Zdarzenia zabezpieczeń            | Wybierz [pospolite lub minimalne zdarzenia zabezpieczeń](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/). <br> Zmień zasady inspekcji zabezpieczeń w celu zbierania tylko potrzebnych zdarzeń. W szczególności zastanów się nad koniecznością zbierania następujących zdarzeń: <br> - [inspekcja platformy filtrowania](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [inspekcja rejestru](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [inspekcja systemu plików](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [inspekcja obiektu jądra](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [inspekcja manipulowania dojściem](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> — Inspekcja magazynu wymiennego |
-| Liczniki wydajności       | Zmień [konfigurację licznika wydajności](log-analytics-data-sources-performance-counters.md) w następujący sposób: <br> — Zmniejsz częstotliwość gromadzenia <br> — Zmniejsz liczbę liczników wydajności |
-| Dzienniki zdarzeń                 | Zmień [konfigurację dziennika zdarzeń](log-analytics-data-sources-windows-events.md) w następujący sposób: <br> — Zmniejsz liczbę gromadzonych danych dzienników zdarzeń <br> — Zbieraj wyłącznie zdarzenia o wymaganym poziomie. Na przykład nie zbieraj zdarzeń na poziomie *Informacje*. |
-| Dziennik systemu                     | Zmień [konfigurację dziennika systemu](log-analytics-data-sources-syslog.md) w następujący sposób: <br> — Zmniejsz liczbę urządzeń, z których zbierane są dane <br> — Zbieraj wyłącznie zdarzenia o wymaganym poziomie. Na przykład nie zbieraj zdarzeń na poziomie *Informacje* i *Debugowanie*. |
-| AzureDiagnostics           | Zmień kolekcję dziennika zasobów, aby: <br> — zmniejszyć liczbę dzienników zasobów wysyłanych do usługi Log Analytics, <br> — zbierać tylko wymagane dzienniki. |
-| Dane rozwiązań z komputerów, które nie wymagają rozwiązania | Użyj funkcji [określania celu rozwiązania](../azure-monitor/insights/solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów. |
-
-### <a name="check-if-there-are-more-nodes-than-expected"></a>Sprawdzanie, czy liczba węzłów przekracza oczekiwania
-Jeśli użytkownik pracuje na *na węzeł (usługi Log Analytics)* warstwy cenowej, opłaty są naliczane na podstawie liczby węzłów i rozwiązań. Aby sprawdzić, z ilu węzłów poszczególnych ofert korzystasz, przejdź do sekcji *ofert* pulpitu nawigacyjnego Użycie.<br><br> ![pulpit nawigacyjny Użycie](./media/log-analytics-usage/log-analytics-usage-offerings.png)<br><br>
-
-Kliknij opcję **Zobacz wszystko**, aby wyświetlić pełną listę komputerów, które wysyłają dane dla wybranej oferty.
-
-Użyj funkcji [określania celu rozwiązania](../azure-monitor/insights/solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Zobacz temat [Wyszukiwanie w dziennikach w usłudze Log Analytics](log-analytics-queries.md), aby dowiedzieć się, jak korzystać z języka wyszukiwania. Możesz użyć zapytań wyszukiwania w celu przeprowadzenia dodatkowej analizy danych użycia.

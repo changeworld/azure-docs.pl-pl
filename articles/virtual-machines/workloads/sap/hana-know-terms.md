@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
+ms.date: 11/20/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d8197e3695da8869806e44775f601d95b17fcb2
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 902c4c94cc7366af342816e9b4776af603711c8b
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028406"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275445"
 ---
 # <a name="know-the-terms"></a>Znasz warunki
 
@@ -39,7 +39,7 @@ Kilka wspólnych definicji są powszechnie używane w zakresie architektury i te
    Użytkownicy domeny z domeny lokalnej można uzyskiwać dostęp do serwerów i uruchamiania usług na tych maszynach wirtualnych (takiej jak DBMS usługi). Komunikacja i rozpoznawanie nazw między maszynami wirtualnymi wdrożony w środowisku lokalnym i maszyn wirtualnych wdrożonych przez Azure jest możliwe. Ten scenariusz jest typowy sposób, w którym większość zasobów SAP są wdrażane. Aby uzyskać więcej informacji, zobacz [planowania i projektowania dla bramy sieci VPN Azure](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) i [tworzenie sieci wirtualnej za pomocą połączenia typu lokacja lokacja przy użyciu witryny Azure portal](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - **Dzierżawy**: klient wdrożony w sygnaturze dużych wystąpień HANA pobiera izolowane do *dzierżawy.* Dzierżawa jest odizolowany w sieci, magazynu i warstwy obliczeniowej od pozostałych dzierżawców. Jednostki magazynu i mocy obliczeniowej, przypisane do różnych dzierżawach nie widzę, siebie nawzajem i komunikować się ze sobą na poziomie sygnatury dużych wystąpień HANA. Klient może wybrać wdrożenie w różnych dzierżawach. Nawet wówczas nie ma komunikacji między dzierżawami, na poziomie sygnatury dużych wystąpień HANA.
 - **Jednostka SKU kategorii**: dla platformy HANA duże wystąpienie, są dostępne w następujących dwóch kategorii jednostek SKU:
-    - **Typ I klasa**: S72, S72m, S144, S144m, platformie S192, platformie S192m i S192xm
+    - **Typ I klasa**: S72, S72m, S96 i S144, a także S144m, platformie S192, platformie S192m i S192xm
     - **Typ klasy II**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm i S960m
 
 

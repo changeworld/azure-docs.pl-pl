@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: c0d9494d24feaee80a9be92f047ca1d91d42c82c
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 87d15f7b351f2b8b6a8c010651d82faa66b28918
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452228"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276469"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Azure niestandardowy skrypt rozszerzenia w wersji 2 za pomocą maszyn wirtualnych systemu Linux
 Rozszerzenie niestandardowego skryptu w wersji 2 pobiera i uruchamia skrypty na maszynach wirtualnych platformy Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrażaniu, instalacja oprogramowania lub innych zadań konfiguracji i zarządzania nimi. Skrypty można pobrać z usługi Azure Storage lub w innej lokalizacji internet dostępny, lub można udostępnić je w czasie wykonywania rozszerzenia. 
@@ -92,7 +92,7 @@ Tych elementów powinien być traktowane jako poufne dane i określony w konfigu
     "autoUpgradeMinorVersion": true,
     "settings": {
       "skipDos2Unix":false,
-      "timestamp":123456789,          
+      "timestamp":123456789          
     },
     "protectedSettings": {
        "commandToExecute": "<command-to-execute>",
@@ -109,10 +109,10 @@ Tych elementów powinien być traktowane jako poufne dane i określony w konfigu
 
 | Name (Nazwa) | Wartość / przykład | Typ danych | 
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | data |
+| apiVersion | 2015-06-15 | date |
 | Wydawcy | Microsoft.Compute.Extensions | ciąg |
 | type | CustomScript | ciąg |
-| typeHandlerVersion | 2.0 | Int |
+| typeHandlerVersion | 2.0 | int |
 | fileUris (np.) | https://github.com/MyProject/Archive/MyPythonScript.py | tablica |
 | commandToExecute (np.) | Python MyPythonScript.py < Moje param1 > | ciąg |
 | skrypt | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | ciąg |

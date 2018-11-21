@@ -1,3 +1,16 @@
-Aby oszacować dokładniejsze kosztów zużycia, należy wziąć pod uwagę liczbę wiadomości lub zdarzeń, które może osiągnąć na dowolny dzień, a nie podstawy tylko interwału sondowania obliczeń. Jeśli zdarzenie lub komunikat spełnia kryteria wyzwalacza, wiele wyzwalaczy natychmiast próby odczytu i wszystkie inne zdarzenia oczekiwania, lub wiadomości, które spełniają kryteria. To zachowanie oznacza, że nawet jeśli wybrano dłuższy interwał sondowania uruchamiany wyzwalania na podstawie liczby oczekujących zdarzeń lub komunikatów, które kwalifikują się do uruchamiania przepływów pracy. Wyzwalacze, które należy wykonać to zachowanie obejmują usługi Azure Service Bus i Azure Event Hub.
+---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: estfan
+ms.openlocfilehash: 3fa71085d649ace95aa24ac87c8714a7268f5386
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52271645"
+---
+Aby oszacować bardziej dokładnie przewidywać koszty zużycia, należy wziąć pod uwagę liczbę komunikatów lub zdarzeń, które mogą pojawić się w każdym dniu, a nie podstawowy obliczeń z interwałem sondowania. Jeśli zdarzenie lub komunikatu spełnia kryteria wyzwalacza, wiele wyzwalaczy natychmiastową próbę odczytu i wszystkich innych zdarzeń oczekiwania, lub komunikaty, które spełniają kryteria. To zachowanie oznacza, że nawet jeśli wybrano dłuższego interwał sondowania jest on wyzwalany na podstawie liczby zdarzeń oczekiwania lub wiadomości, które kwalifikują się do uruchamiania przepływów pracy. Wyzwalacze, które należy wykonać takie zachowanie obejmują usługi Azure Service Bus i usługi Azure Event Hub.
 
-Tak na przykład, załóżmy, że konfigurowanie wyzwalacz, który sprawdza punkt końcowy każdego dnia. Jeśli wyzwalacz sprawdza punktu końcowego i znajdzie 15 zdarzenia, które spełniają kryteria, wyzwalacz generowane i uruchamia odpowiednie przepływu pracy 15 razy. Logic Apps gazomierzy wszystkie akcje, które wykonywać tych 15 przepływów pracy, włącznie z żądaniami wyzwalacza. Aby obliczyć potencjalne koszty, spróbuj [Azure Kalkulator cen](https://azure.microsoft.com/pricing/calculator/).
+Tak na przykład, załóżmy, że możesz skonfigurować wyzwalacz, który sprawdza, czy punkt końcowy każdego dnia. Jeśli wyzwalacz sprawdza, czy punkt końcowy i znajdzie 15 zdarzenia, które spełniają kryteria, aktywuje się i uruchamia odpowiednie przepływ pracy 15 razy. Usługa Logic Apps liczniki — wszystkie akcje, które wykonują te 15 przepływy pracy, łącznie z żądania wyzwalacza. Aby obliczyć potencjalne koszty, spróbuj [kalkulatora cen platformy Azure](https://azure.microsoft.com/pricing/calculator/).

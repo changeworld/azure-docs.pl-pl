@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: a3d59d0e7575721dbb719944f27fd673ba41f469
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0c47600082a2c633116d1e85e9f31324544c2c57
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963822"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261755"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Konsola szeregowa maszyny wirtualnej dla systemu Linux
 
@@ -95,7 +95,7 @@ Domyślnie wszystkie subskrypcje mają dostęp do konsoli szeregowej włączone 
 > Aby włączyć lub wyłączyć konsoli szeregowej subskrypcji, musisz mieć uprawnienia do zapisu do subskrypcji. Uprawnienia te obejmują role administratora lub właściciela. Role niestandardowe może również mieć uprawnienia do zapisu.
 
 ### <a name="subscription-level-disable"></a>Wyłącz poziom subskrypcji
-Można wyłączyć dla całej subskrypcji, za pośrednictwem konsoli szeregowej [Wyłącz konsoli wywołania interfejsu API REST](https://docs.microsoft.com/rest/api/serialconsole/console/console_disableconsole). Możesz użyć **wypróbuj** funkcji dostępnych na tej stronie dokumentacji interfejsu API, wyłączyć lub włączyć konsoli szeregowej dla subskrypcji. Wprowadź swój identyfikator subskrypcji dla **subscriptionId**, wprowadź **domyślne** dla **domyślne**, a następnie wybierz pozycję **Uruchom**. Poleceń interfejsu wiersza polecenia platformy Azure nie są jeszcze dostępne.
+Można wyłączyć dla całej subskrypcji, za pośrednictwem konsoli szeregowej [Wyłącz konsoli wywołania interfejsu API REST](/rest/api/serialconsole/console/disableconsole). Możesz użyć **wypróbuj** funkcji dostępnych na tej stronie dokumentacji interfejsu API, wyłączyć lub włączyć konsoli szeregowej dla subskrypcji. Wprowadź swój identyfikator subskrypcji dla **subscriptionId**, wprowadź **domyślne** dla **domyślne**, a następnie wybierz pozycję **Uruchom**. Poleceń interfejsu wiersza polecenia platformy Azure nie są jeszcze dostępne.
 
 ![Wypróbuj interfejs API REST](./media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aff3ce4bc290f6e4ad2fb11a586372862d0c1462
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 751c2df42ee8e4ace22fe94e1fef8d734ab81c3c
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240736"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275670"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Dane wyjściowe elementu Runbook i komunikatów w usłudze Azure Automation
 Większość elementów runbook automatyzacji Azure obejmuje jakąś formę danych wyjściowych, takich jak komunikat o błędzie dla użytkownika lub obiekt złożony przeznaczony do użycia przez inny przepływ pracy. Program Windows PowerShell udostępnia [wiele strumieni](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) do wysyłania danych wyjściowych w skrypcie lub przepływu pracy. Usługa Azure Automation współpracuje z każdą z tych strumieni inaczej, i należy stosować najlepsze rozwiązania w zakresie używania każdego podczas tworzenia elementu runbook.
@@ -64,13 +64,17 @@ Workflow Test-Runbook
 
 Odpowiedni strumień wyjściowy dla zadania elementu runbook będzie następująca:
 
-    Output inside of function
-    Output outside of function
+```output
+Output inside of function
+Output outside of function
+```
 
 Odpowiedni strumień pełny dla zadania elementu runbook będzie następująca:
 
-    Verbose outside of function
-    Verbose inside of function
+```output
+Verbose outside of function
+Verbose inside of function
+```
 
 Po opublikowaniu elementu runbook, a przed uruchomieniem go, należy również włączyć pełne rejestrowanie w ustawienia elementu runbook, aby uzyskać pełne strumień wyjściowy.
 

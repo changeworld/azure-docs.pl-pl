@@ -3,8 +3,8 @@ title: Zarządzanie obszarem roboczym usługi Machine Learning | Dokumentacja fi
 description: Zarządzanie dostępem do obszarów roboczych usługi Azure Machine Learning, wdrażanie i zarządzanie usługami sieci web interfejsu API uczenia Maszynowego
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
-ms.openlocfilehash: cfb10aa7d0d58d92354c614c23533ae4bbdcee47
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 80a9c92c80d82555c5bf8f75a615095647eb1dc9
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822181"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264951"
 ---
 # <a name="manage-an-azure-machine-learning-workspace"></a>Zarządzanie obszarem roboczym usługi Azure Machine Learning
 

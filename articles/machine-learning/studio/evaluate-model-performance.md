@@ -3,8 +3,8 @@ title: Ocena wydajności modelu w usłudze Machine Learning | Dokumentacja firmy
 description: Wyjaśnia, jak ocena wydajności modelu w usłudze Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 14fb1772b138946639796ddf71f3dc56fe677d82
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 98704f00c6b086772d9e0440ace79c3ca713f13a
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823660"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261604"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>Ocenianie wydajności modelu w usłudze Azure Machine Learning
 Ten artykuł pokazuje, jak ocena wydajności modelu w usłudze Azure Machine Learning Studio i zawiera krótki opis dostępnych metryk dla tego zadania. Przedstawiono trzy typowe scenariusze uczenia nadzorowanego: 

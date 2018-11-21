@@ -3,8 +3,8 @@ title: 'Rozwiązywanie problemów: Tworzenie i łączenie do obszaru roboczego u
 description: Rozwiązania typowych problemów z tworzeniem i nawiązywania połączenia z obszarem roboczym usługi Azure Machine Learning
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 678d422cc241a75c1e3dc0c644f0ac5055750ca3
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: f86018c78de842717bf387c007fdd4c7cd048ef1
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824153"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265206"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-workspace"></a>Podręcznik rozwiązywania problemów: tworzenie obszaru roboczego usługi Machine Learning i nawiązywanie połączenia z nim
 Ten przewodnik zawiera temat rozwiązania niektórych często spotykanych wyzwania podczas konfigurowania obszary robocze usługi Azure Machine Learning.

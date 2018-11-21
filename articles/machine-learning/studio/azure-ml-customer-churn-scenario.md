@@ -3,8 +3,8 @@ title: Analizowanie zmienności klientów za pomocą usługi Machine Learning | 
 description: Analiza przypadku związanych z tworzeniem zintegrowane modelu do analizowania i oceniania zmienności klientów
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 66c8fcb54ef348ca9414d14eb80d00fa75e89ad9
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7c55e35370e2aed67045333eaee7a42c3c69d318
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823218"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261177"
 ---
 # <a name="analyzing-customer-churn-using-azure-machine-learning"></a>Analizowanie zmienności klientów za pomocą usługi Azure Machine Learning
 ## <a name="overview"></a>Przegląd

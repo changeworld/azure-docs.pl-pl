@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 580dd5bf6a7e905927189f4b1ae42ab49a1cbc80
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b7a2f9350633be5ec0cb8d5a7c6e7cc5048f956a
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730719"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276010"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -212,7 +212,7 @@ Metoda zwraca słownik, który może służyć do łańcuch niestandardowych dzi
         foreach (LinkedService ls in linkedServices)
             logger.Write("linkedService.Name {0}", ls.Name);
     
-        // get the first Azure Storate linked service from linkedServices object
+        // get the first Azure Storage linked service from linkedServices object
         // using First method instead of Single since we are using the same
         // Azure Storage linked service for input and output.
         inputLinkedService = linkedServices.First(
@@ -358,7 +358,7 @@ Metoda zwraca słownik, który może służyć do łańcuch niestandardowych dzi
     }
     ```
 
-    Metoda GetFolderPath zwraca ścieżkę do folderu, który wskazuje zestaw danych, a metoda GetFileName zwraca nazwę pliku obiektu blob/wskazujący zestaw danych. Jeśli użytkownik havefolderPath definiuje, korzystając ze zmiennych, takich jak {Year}, {Month} {dzień} itp., metoda zwraca ciąg w postaci, w jakiej jest bez zastępowania ich wartości środowiska uruchomieniowego. Zobacz [dostęp do właściwości rozszerzone](#access-extended-properties) sekcji, aby uzyskać szczegółowe informacje na temat uzyskiwania dostępu do parametru SliceStart, SliceEnd itp.    
+    Metoda GetFolderPath zwraca ścieżkę do folderu, który wskazuje zestaw danych, a metoda GetFileName zwraca nazwę pliku obiektu blob/wskazujący zestaw danych. Jeśli masz folderPath definiuje, korzystając ze zmiennych, takich jak {Year}, {Month} {dzień} itp., metoda zwraca ciąg w postaci, w jakiej jest bez zastępowania ich wartości środowiska uruchomieniowego. Zobacz [dostęp do właściwości rozszerzone](#access-extended-properties) sekcji, aby uzyskać szczegółowe informacje na temat uzyskiwania dostępu do parametru SliceStart, SliceEnd itp.    
 
     ```JSON
     "name": "InputDataset",
@@ -640,7 +640,7 @@ W tym kroku utworzysz zestawy danych do reprezentowania danych wejściowych i wy
    ![Wycinki danych wyjściowych](./media/data-factory-use-custom-activities/OutputSlices.png)
 4. Sprawdź, czy pliki wyjściowe są generowane w magazynie obiektów blob w **adftutorial** kontenera.
 
-   ![dane wyjściowe z działań niestandardowych][image-data-factory-ouput-from-custom-activity]
+   ![dane wyjściowe z działań niestandardowych][image-data-factory-output-from-custom-activity]
 5. Jeśli otworzysz plik wyjściowy, powinny pojawić się dane wyjściowe są podobne do następujących danych wyjściowych:
 
     ```
@@ -1063,6 +1063,6 @@ namespace DataFactoryAPITestApp
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [hivewalkthrough]: data-factory-data-transformation-activities.md
 
-[image-data-factory-ouput-from-custom-activity]: ./media/data-factory-use-custom-activities/OutputFilesFromCustomActivity.png
+[image-data-factory-output-from-custom-activity]: ./media/data-factory-use-custom-activities/OutputFilesFromCustomActivity.png
 
 [image-data-factory-download-logs-from-custom-activity]: ./media/data-factory-use-custom-activities/DownloadLogsFromCustomActivity.png

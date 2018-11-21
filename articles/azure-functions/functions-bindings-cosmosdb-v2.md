@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 4a1f9552b9a578cd34f3482e793947e06bb24407
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 24bc0b19d03148e98083fe6d21dd3980fcdf3714
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249813"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276617"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Cosmos DB powiązania usługi Azure Functions 2.x
 
 > [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [Wersja 1](functions-bindings-cosmosdb.md)
-> * [W wersji 2](functions-bindings-cosmosdb-v2.md)
+> * [Wersja 2](functions-bindings-cosmosdb-v2.md)
 
 W tym artykule wyjaśniono, jak pracować z [usługi Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md) powiązań w usłudze Azure Functions 2.x. Usługi Azure Functions obsługuje wyzwalanie, dane wejściowe i wyjściowe powiązań usługi Azure Cosmos DB.
 
@@ -187,7 +187,7 @@ Oto kodu Java:
             databaseName = "ToDoList",
             collectionName = "Items",
             leaseCollectionName = "leases",
-            reateLeaseCollectionIfNotExists = true,
+            createLeaseCollectionIfNotExists = true,
             connectionStringSetting = "AzureCosmosDBConnection") String[] items,
             final ExecutionContext context ) {
                 context.getLogger().info(items.length + "item(s) is/are changed.");
@@ -1157,9 +1157,9 @@ Poniżej przedstawiono kod JavaScript:
 
 <a name="infsharp"></a>
 
-### <a name="input---f-examples"></a>Dane wejściowe — przykłady F #
+### <a name="input---f-examples"></a>Dane wejściowe - F# przykłady
 
-Poniższy przykład pokazuje usługi Cosmos DB, powiązania danych wejściowych w *function.json* pliku i [funkcja języka F #](functions-reference-fsharp.md) powiązania, który używa. Funkcja odczytuje pojedynczy dokument i aktualizuje wartość tekstu dokumentu.
+Poniższy przykład pokazuje usługi Cosmos DB, powiązania danych wejściowych w *function.json* pliku i [ F# funkcja](functions-reference-fsharp.md) powiązania, który używa. Funkcja odczytuje pojedynczy dokument i aktualizuje wartość tekstu dokumentu.
 
 Oto powiązanie danych w *function.json* pliku:
 
@@ -1177,7 +1177,7 @@ Oto powiązanie danych w *function.json* pliku:
 
 [Konfiguracji](#input---configuration) sekcji opisano te właściwości.
 
-Poniżej przedstawiono kod F #:
+Oto F# kodu:
 
 ```fsharp
     (* Change input document contents using Azure Cosmos DB input binding *)
@@ -1201,7 +1201,7 @@ W tym przykładzie wymaga `project.json` pliku, który określa `FSharp.Interop.
 }
 ```
 
-Aby dodać `project.json` plików, zobacz [zarządzania pakietami języka F #](functions-reference-fsharp.md#package).
+Aby dodać `project.json` plików, zobacz [ F# Zarządzanie pakietami](functions-reference-fsharp.md#package).
 
 ### <a name="input---java-examples"></a>Dane wejściowe - przykładów w języku Java
 
@@ -1255,7 +1255,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 ## <a name="input---usage"></a>Dane wejściowe — użycie
 
-W języku C# i F # funkcji Jeśli funkcja kończy się pomyślnie, wszelkie zmiany wprowadzone do dokument wejściowy za pośrednictwem nazwanych parametrów wejściowych automatycznie są zachowywane. 
+W C# i F# funkcji, jeśli funkcja kończy działanie pomyślnie, wszelkie zmiany wprowadzone do dokument wejściowy za pośrednictwem danych wejściowych o nazwie parametry są automatycznie zachowywane. 
 
 W funkcji języka JavaScript nie zostało zaktualizowane automatycznie po wyjściu z funkcji. Zamiast tego należy użyć `context.bindings.<documentName>In` i `context.bindings.<documentName>Out` Aby wprowadzić aktualizacje. Zobacz [przykład JavaScript](#input---javascript-example).
 
@@ -1277,7 +1277,7 @@ Zobacz też [wejściowych przykład](#input---c-examples) , który używa `Docum
 
 [Pomiń przykładowe dane wyjściowe](#output---attributes)
 
-### <a name="ouput---c-examples"></a>Dane wyjściowe — przykłady w języku C#
+### <a name="output---c-examples"></a>Dane wyjściowe — C# przykłady
 
 Ta sekcja zawiera następujące przykłady:
 
@@ -1562,9 +1562,9 @@ Poniżej przedstawiono kod JavaScript:
 
 [Pomiń przykładowe dane wyjściowe](#output---attributes)
 
-### <a name="output---f-examples"></a>Dane wyjściowe — przykłady F #
+### <a name="output---f-examples"></a>Dane wyjściowe — F# przykłady
 
-W poniższym przykładzie pokazano powiązania w danych wyjściowych usługi Azure Cosmos DB *function.json* pliku i [funkcja języka F #](functions-reference-fsharp.md) powiązania, który używa. Funkcja używa powiązania danych wejściowych w kolejce dla kolejki, która odbiera JSON w następującym formacie:
+W poniższym przykładzie pokazano powiązania w danych wyjściowych usługi Azure Cosmos DB *function.json* pliku i [ F# funkcja](functions-reference-fsharp.md) powiązania, który używa. Funkcja używa powiązania danych wejściowych w kolejce dla kolejki, która odbiera JSON w następującym formacie:
 
 ```json
 {
@@ -1600,7 +1600,7 @@ Oto powiązanie danych w *function.json* pliku:
 ```
 [Konfiguracji](#output---configuration) sekcji opisano te właściwości.
 
-Poniżej przedstawiono kod F #:
+Oto F# kodu:
 
 ```fsharp
     open FSharp.Interop.Dynamic
@@ -1639,7 +1639,7 @@ W tym przykładzie wymaga `project.json` pliku, który określa `FSharp.Interop.
 }
 ```
 
-Aby dodać `project.json` plików, zobacz [zarządzania pakietami języka F #](functions-reference-fsharp.md#package).
+Aby dodać `project.json` plików, zobacz [ F# Zarządzanie pakietami](functions-reference-fsharp.md#package).
 
 ## <a name="output---java-examples"></a>Dane wyjściowe — przykładów w języku Java
 

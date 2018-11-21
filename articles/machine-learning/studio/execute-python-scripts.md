@@ -4,8 +4,8 @@ description: Wskazano projektowania zasad podstawowych Obsługa skryptów język
 keywords: Python uczenia maszynowego, pandas, pandas języka python, skryptów w języku python, wykonywanie skryptów w języku python
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 1d79eaacf61a51a9c74a6db8a508050cde20ab46
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 8378ccaf64dae9c3116bb175e6cb44ba75a2e367
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821208"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261534"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Wykonywanie skryptów uczenia maszynowego w języku Python w usłudze Azure Machine Learning Studio
 

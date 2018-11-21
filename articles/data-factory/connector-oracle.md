@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 11/21/2018
 ms.author: jingwang
-ms.openlocfilehash: ec0fc11ac2caf421f331a8fe72f1dacdf6b8a702
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 1e561a59ebe503e0088362087dbda4d7d89fee4c
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42312167"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275690"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopiowanie danych z i do oprogramowania Oracle przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,11 +65,46 @@ Następujące właściwości są obsługiwane w przypadku usługi połączonej b
 >[!TIP]
 >Jeśli napotkasz błąd powiedzenie "ORA 01025: parametr zaległej płatności za przedmiot poza zakresem" i usługi oprogramowania Oracle jest wersji 8i, Dodaj `WireProtocolMode=1` parametry połączenia i spróbuj ponownie.
 
-Aby włączyć szyfrowanie połączenia Oracle, masz dwie opcje:
+**Aby włączyć szyfrowanie na połączenie z oprogramowaniem Oracle**, masz dwie opcje:
 
-1.  Po stronie serwera Oracle, przejdź do bazy danych Oracle zaawansowane zabezpieczenia (OAS), a następnie skonfiguruj ustawienia szyfrowania, który obsługuje szyfrowanie Triple-DES (3DES) i Advanced Encryption Standard (AES), zobacz szczegóły dotyczące [tutaj](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Łącznik ADF Oracle automatycznie negocjuje metodę szyfrowania, użyj skonfigurowanych w OAS, podczas ustanawiania połączenia Oracle.
+1.  Aby użyć **Triple-DES szyfrowania (3DES) i Advanced Encryption Standard (AES)**, po stronie serwera Oracle, przejdź do bazy danych Oracle zaawansowane zabezpieczenia (OAS) i konfigurowanie ustawień szyfrowania, zobacz szczegóły dotyczące [tutaj](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Łącznik ADF Oracle automatycznie negocjuje metodę szyfrowania, użyj skonfigurowanych w OAS, podczas ustanawiania połączenia Oracle.
 
-2.  Po stronie klienta, można dodać `EncryptionMethod=1` w parametrach połączenia. Użyje protokołu SSL/TLS jako metody szyfrowania. Aby użyć tej opcji, należy wyłączyć bez użycia protokołu SSL ustawienia szyfrowania w OAS po stronie serwera Oracle w celu uniknięcia konfliktów szyfrowania.
+2.  Aby użyć **SSL**, wykonaj poniższe kroki:
+
+    1.  Pobieranie informacji o certyfikacie SSL. Pobierz informacje o certyfikacie algorytmem DER Twojego certyfikatu SSL i Zapisz dane wyjściowe (---Begin certyfikatu Zakończenia certyfikatu---) jako plik tekstowy.
+
+        ```
+        openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text
+        ```
+
+        **Przykład:** wyodrębniać informacje z certyfikatu z DERcert.cer; następnie zapisz dane wyjściowe do cert.txt
+
+        ```
+        openssl x509 -inform DER -in DERcert.cer -text
+        Output:
+        -----BEGIN CERTIFICATE-----
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXX
+        -----END CERTIFICATE-----
+        ```
+    
+    2.  Tworzenie magazynu kluczy lub truststore. Następujące polecenie tworzy plik truststore z lub bez hasła w formacie PKCS 12.
+
+        ```
+        openssl pkcs12 -in [Path to the file created in the previous step] -out [Path and name of TrustStore] -passout pass:[Keystore PWD] -nokeys -export
+        ```
+
+        **Przykład:** tworzy plik trustsotre PKCS12 o nazwie MyTrustStoreFile przy użyciu hasła
+
+        ```
+        openssl pkcs12 -in cert.txt -out MyTrustStoreFile -passout pass:ThePWD -nokeys -export  
+        ```
+
+    3.  Umieść plik truststore na maszynie własne środowisko IR, np. na C:\MyTrustStoreFile.
+    4.  W usłudze ADF, należy skonfigurować parametry połączenia bazy danych Oracle przy użyciu `EncryptionMethod=1` i odpowiadających im `TrustStore` / `TrustStorePassword`wartość, np. `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>`.
 
 **Przykład:**
 

@@ -3,8 +3,8 @@ title: Rozszerzanie eksperymentu przy użyciu języka R | Dokumentacja firmy Mic
 description: Jak rozszerzyć funkcjonalność usługi Azure Machine Learning Studio za pomocą języka R przy użyciu modułu wykonywania skryptu języka R.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 3767d7e48d1760b7b7453b1708118caa305652d9
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 30ed2a71fcf00a511802afb5b126829b918615d6
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823881"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263064"
 ---
 # <a name="extend-your-experiment-with-r"></a>Rozszerzanie eksperymentu przy użyciu języka R
 Funkcje usługi Azure Machine Learning Studio za pośrednictwem języka R można rozszerzyć za pomocą [wykonanie skryptu języka R] [ execute-r-script] modułu.

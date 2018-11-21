@@ -3,8 +3,8 @@ title: Kolekcje usługi Azure Galeria sztucznej Inteligencji | Dokumentacja firm
 description: Odnajdywanie i udostępnianie kolekcji w galerii sztucznej Inteligencji platformy Azure.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 95df09bce1ac437d621bb925b7683143cee16c82
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: e9b1bfd27e82d3ca091fba850b2e4a9b6b8aa61e
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822708"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263642"
 ---
 # <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Odnajdywanie i udostępnianie kolekcji w galerii Azure AI
 

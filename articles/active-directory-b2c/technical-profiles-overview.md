@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: faf3cc6c333ee8f8757ec24ecc8ea8299657c4a7
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 0f36cd798faac275e0f6dcb8a81bd37e14ab6d8d
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578488"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275823"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informacje o profilach techniczne w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -106,7 +106,7 @@ Zarówno **AAD-UserReadUsingAlternativeSecurityId — brak błędu** i **AAD Use
 </TechnicalProfile>
 ```
 
-Profil techniczny może obejmować lub dziedziczą innego profilu technicznego, który może zawierać inny. Nie ma żadnego limitu liczby poziomów. W zależności od wymagań biznesowych swoją podróż po użytkownik może wywołać **AAD UserReadUsingAlternativeSecurityId** zgłasza błąd, jeśli społecznościowych konto użytkownika nie istnieje, lub  **AAD — UserReadUsingAlternativeSecurityId — brak błędu** której nie zgłosić błąd.
+Profil techniczny może obejmować lub dziedziczą innego profilu technicznego, który może zawierać inny. Nie ma żadnego limitu liczby poziomów. W zależności od wymagań biznesowych swoją podróż po użytkownik może wywołać **AAD UserReadUsingAlternativeSecurityId** zgłasza błąd, jeśli nie ma konta użytkownika w sieci społecznościowej, lub  **AAD — UserReadUsingAlternativeSecurityId — brak błędu** której nie zgłosić błąd.
 
 
 

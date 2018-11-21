@@ -4,7 +4,7 @@ description: Więcej informacji na temat rezerwacji platformy Azure i ceny, aby 
 services: billing
 documentationcenter: ''
 author: yashesvi
-manager: yashesvi
+manager: yashar
 editor: ''
 ms.service: billing
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: cwatson
-ms.openlocfilehash: a0fb5eccf14aee07005ab345f1af293f341f9215
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 1d79ca20c73d5dc49781be317112cfb59d349fa3
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422953"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276231"
 ---
 # <a name="what-are-azure-reservations"></a>Co to jest Azure Reservations?
 
@@ -26,8 +26,8 @@ Rezerwacje platformy Azure pomoże Ci zaoszczędzić pieniądze, płacąc wstęp
 
 Możesz kupić rezerwację [witryny Azure portal](https://aka.ms/reservations). Aby uzyskać więcej informacji, zobacz następujące tematy:
 
-- [Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Zapłać z góry za zasoby obliczeniowe bazy danych SQL Database o pojemności usługi Azure SQL Database, zarezerwowane](../sql-database/sql-database-reserved-capacity.md)
+- [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../sql-database/sql-database-reserved-capacity.md)
 - [Zapłać z góry za zasoby usługi Azure Cosmos DB z pojemnością zarezerwowane usługi Azure Cosmos DB](../cosmos-db/cosmos-db-reserved-capacity.md)
 
 ## <a name="why-should-i-buy-a-reservation"></a>Dlaczego należy kupić rezerwację?

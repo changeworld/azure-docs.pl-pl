@@ -5,7 +5,7 @@ keywords: przenieść subskrypcję do przeniesienia subskrypcji platformy azure,
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: adpick
 editor: ''
 tags: billing,top-support-issue
 ms.assetid: c8ecdc1e-c9c5-468c-a024-94ae41e64702
@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7e9b5d1a84417cf6e6264211ea6e542ab712f9fe
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 66ad7c4eb07946daa278589e4a1a819f12315270
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422608"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276371"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Przenieść własność subskrypcji platformy Azure do innego konta
 
@@ -110,9 +110,9 @@ Przeniesienie subskrypcji Samoobsługa jest dostępny dla ofert lub typów subsk
 
 ### <a name="whoisaa"></a> Kto jest administratorem konta subskrypcji?
 
-Administrator konta to osoba, która w konkursie lub zakupiono subskrypcję platformy Azure. Otrzymali oni autoryzację pozwalającą, aby uzyskać dostęp do [Centrum kont](https://account.azure.com/Subscriptions) i wykonywać różne zadania zarządzania, takie jak tworzenie subskrypcji, anulowania subskrypcji, rozliczeń dla subskrypcji zmienić lub zmienić administratora usługi. Jeśli nie masz pewności będącego administratorem konta dla subskrypcji, aby dowiedzieć się, należy użyć następujące kroki.
+Administrator konta to osoba, która w konkursie lub zakupiono subskrypcję platformy Azure. Otrzymali oni autoryzację pozwalającą, aby uzyskać dostęp do [Centrum kont](https://account.azure.com/Subscriptions) i wykonywać różne zadania zarządzania, takie jak tworzenie subskrypcji, anulowania subskrypcji, rozliczeń dla subskrypcji zmienić lub zmienić administratora usługi. Jeśli nie wiesz, kto jest administratorem konta dla subskrypcji, wykonaj poniższe kroki, aby to sprawdzić.
 
-1. Odwiedź stronę [strony subskrypcje w witrynie Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Odwiedź [stronę Subskrypcje w witrynie Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 1. Wybierz subskrypcję, aby sprawdzić, a następnie sprawdź w obszarze **ustawienia**.
 1. Wybierz **właściwości**. Administrator konta subskrypcji są wyświetlane w **administrator konta** pole.
 

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: e84d2a446de537924f55f1b784731e54c94c768d
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: b79d64cc063105cb8ecce537a09a7f39a78eef4c
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51851574"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275031"
 ---
 # <a name="remove-the-sql-resource-provider"></a>Usuwanie dostawcy zasobów bazy danych SQL
 
@@ -28,20 +28,16 @@ Zanim usuniesz dostawcy zasobów bazy danych SQL, należy usunąć wszystkie zal
 > [!NOTE]
 > Można znaleźć łącza pobierania zasobu instalatorów dostawcy w [wdrażanie wstępnie wymaganych składników dla dostawcy zasobów](.\azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
+Usuwanie dostawcy zasobów bazy danych SQL nie spowoduje usunięcia bazy danych dzierżaw z serwerów hosta.
+
 ## <a name="dependency-cleanup"></a>Oczyszczanie zależności
 
 Istnieje kilka zadań oczyszczania, aby zrobić przed uruchomieniem skryptu DeploySqlProvider.ps1, aby usunąć dostawcę zasobów.
 
-Użytkownicy dzierżawy usługi Azure Stack jest odpowiedzialny za następujące zadania oczyszczania:
-
-* Usuń wszystkie swoje bazy danych od dostawcy zasobów. (Usuwanie baz danych dzierżawy nie powoduje usunięcia danych.)
-* Aby wyrejestrować się z przestrzeni nazw dostawcy.
-
 Operator usługi Azure Stack jest odpowiedzialny za następujące zadania oczyszczania:
 
-* Usuwa serwerami hostingu z karty MySQL.
-* Usuwa dowolne plany, które odwołują się karta MySQL.
-* Usuwa wykorzystani limitów przydziałów, które są skojarzone z kartą MySQL.
+* Usunąć dowolne plany, które odwołują się karta SQL.
+* Usuń przydziały, które są skojarzone z kartą SQL.
 
 ## <a name="to-remove-the-sql-resource-provider"></a>Aby usunąć dostawcy zasobów bazy danych SQL
 
@@ -50,9 +46,9 @@ Operator usługi Azure Stack jest odpowiedzialny za następujące zadania oczysz
    > [!NOTE]
    > Odinstalowywanie dostawcy zasobów bazy danych SQL będzie kontynuowana nawet wtedy, gdy zasoby zależne obecnie używasz dostawcy zasobów.
   
-2. Pobierz kopię dostawcy zasobów bazy danych SQL binarnym, a następnie uruchom samodzielnej wyodrębniania, aby wyodrębnić zawartość do katalogu tymczasowego.
+2. Pobierz kopię pakietu instalacyjnego dostawcy zasobów programu SQL, a następnie uruchom samodzielnej wyodrębniania, aby wyodrębnić zawartość do katalogu tymczasowego.
 
-3. Otwórz okno konsoli programu PowerShell nowe z podwyższonym poziomem uprawnień i przejdź do katalogu, w którym zostały wyodrębnione pliki binarne dostawcy zasobów programu SQL.
+3. Otwórz okno konsoli programu PowerShell nowe z podwyższonym poziomem uprawnień i przejdź do katalogu, w którym została rozpakowana plików instalacyjnych dostawcy zasobów programu SQL.
 
 4. Uruchom skrypt DeploySqlProvider.ps1, korzystając z następujących parametrów:
 

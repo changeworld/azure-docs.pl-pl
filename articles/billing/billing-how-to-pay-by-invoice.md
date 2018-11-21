@@ -4,7 +4,7 @@ description: Opisuje sposób płatności dla subskrypcji platformy Azure przy u�
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: jureid
 editor: ''
 tags: billing
 ms.service: billing
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 27d84748e932ae438f68ca7b84004c98c26e42d7
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 207cc6f114153bebea82bbd996b02f92782b248b
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393897"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275104"
 ---
 # <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Prześlij żądanie dotyczące płatności subskrypcji platformy Azure przy użyciu faktury
 

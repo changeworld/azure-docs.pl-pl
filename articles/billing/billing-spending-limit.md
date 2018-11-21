@@ -4,7 +4,7 @@ description: Opisuje, jak działa platforma Azure limit wydatków i sposobach je
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: alherz
 editor: ''
 tags: billing
 ms.service: billing
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
-ms.openlocfilehash: 614102d65407485d31963afa9185400938a7d95b
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 39cb8a211aca1051be2bd71fbc234027b545b00b
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423089"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276550"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Zrozumienie limicie wydatków i sposobach jego usuwania
 

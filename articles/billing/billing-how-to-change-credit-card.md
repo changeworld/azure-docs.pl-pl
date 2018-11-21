@@ -4,7 +4,7 @@ description: W tym artykule opisano sposób zmienić karty kredytowej użytej do
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: jureid
 editor: ''
 tags: billing
 ms.assetid: 15252ced-1841-4a66-ae79-2e58af1d3370
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 6a302c611b7c71dd8bc8c472330b79ea21504770
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 0db76d7133e28a0826d9ff07cefe02134cd95a47
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824629"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274482"
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Dodawanie, aktualizowanie lub usuwanie karty kredytowej lub debetowej dla platformy Azure
 

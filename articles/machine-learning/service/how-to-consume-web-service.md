@@ -9,18 +9,18 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: larryfr
 ms.date: 10/30/2018
-ms.openlocfilehash: 75faf344c64dc330a98b836a8852b42531645c49
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 58c1b53a4b97aad7b916e593fd4d6b52b51b7a52
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685178"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262911"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Korzystanie z modelu usługi Azure Machine Learning, wdrożyć jako usługę sieci web
 
 Wdrażanie modelu usługi Azure Machine Learning w postaci usługi sieci web tworzy interfejs API REST. Można wysyłać dane do tego interfejsu API i odbierać prognozowania zwracane przez model. W tym dokumencie, Dowiedz się, jak utworzyć klientów przy użyciu usługi sieci web C#, Go, Java i Python.
 
-Usługi sieci web jest tworzona podczas wdrażania obrazu do wystąpienia kontenera platformy Azure, usługi Azure Kubernetes Service lub Project Brainwave (Tablice bramek programowane). Obrazy są tworzone na podstawie zarejestrowane modele i plik oceniania. Identyfikator URI używany do uzyskiwania dostępu do usługi sieci web można pobrać przy użyciu [zestawu SDK usługi Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Jeśli włączono uwierzytelnianie umożliwia także zestaw SDK można pobrać klucze uwierzytelniania.
+Usługi sieci web jest tworzona podczas wdrażania obrazu do wystąpienia kontenera platformy Azure, usługi Azure Kubernetes Service lub Project Brainwave (Tablice bramek programowane). Obrazy są tworzone na podstawie zarejestrowane modele i plik oceniania. Identyfikator URI używany do uzyskiwania dostępu do usługi sieci web można pobrać przy użyciu [zestawu SDK usługi Azure Machine Learning](https://aka.ms/aml-sdk). Jeśli włączono uwierzytelnianie umożliwia także zestaw SDK można pobrać klucze uwierzytelniania.
 
 Jest ogólny przepływ pracy podczas tworzenia klienta, który korzysta z uczenia Maszynowego usługi sieci web:
 

@@ -3,8 +3,8 @@ title: Rejestrowanie dla usługi sieci web Machine Learning | Dokumentacja firmy
 description: Dowiedz się, jak włączyć rejestrowanie dla usługi sieci web Machine Learning. Rejestrowanie udostępnia dodatkowe informacje ułatwiające rozwiązywanie problemów z interfejsów API.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.openlocfilehash: acca5e25079ae092df73c5b890186d593a858a5d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 693c619945dc791cf5350909a26adb1e507614c2
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51818917"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261229"
 ---
 # <a name="enable-logging-for-machine-learning-web-services"></a>Włączanie rejestrowania usług sieci Web Machine Learning
 Ten dokument zawiera informacje dotyczące możliwości rejestrowania usług sieci web Machine Learning. Rejestrowanie udostępnia dodatkowe informacje, poza po prostu liczbą błędów i komunikatów, które mogą ułatwić rozwiązywanie problemów z wywołaniami interfejsy API usługi Machine Learning.  

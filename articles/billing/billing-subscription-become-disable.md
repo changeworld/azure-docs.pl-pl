@@ -5,7 +5,7 @@ keywords: Wyłączenie subskrypcji platformy Azure
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: adpick
 editor: ''
 tags: billing
 ms.assetid: 4529d685-3a87-49d9-8d7a-49baad552d76
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 3fc7e316289201f5a800b56a7dc63f559c1f90a2
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: a0f0de0c3117becc4f9e4b7be5cd25f7f479949b
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422664"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274036"
 ---
 # <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>Dlaczego Moja subskrypcja platformy Azure jest wyłączona i jak go uaktywnić?
 

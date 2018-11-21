@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 3883fc71c099718face38c16897040788fe0c6ab
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ca3a0e9a8c63ddc9a5c2ca34faffc683d0324321
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42057707"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262557"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej do nauki o danych CentOS Linux na platformie Azure
 
@@ -77,7 +77,7 @@ Poniżej przedstawiono kroki, aby utworzyć wystąpienie systemu Linux maszyny w
    * **Nazwa**: Nazwa serwera do nauki o danych tworzysz.
    * **Nazwa użytkownika**: pierwsze konto logowania w identyfikatorze.
    * **Hasło**: pierwsze hasło do konta (zamiast hasła można użyć klucza publicznego SSH).
-   * **Subskrypcja**: Jeśli masz więcej niż jedną subskrypcję, wybierz ten, na którym maszyna ma zostać utworzona i rozliczane. Musi mieć uprawnienia do tworzenia zasobów dla tej subskrypcji.
+   * **Subskrypcja**: Jeśli masz więcej niż jedną subskrypcję, wybierz ten, na którym maszyna ma zostać utworzona i rozliczane. Musisz mieć uprawnienia do tworzenia zasobów dla tej subskrypcji.
    * **Grupa zasobów**: możesz utworzyć nową lub użyj istniejącej grupy.
    * **Lokalizacja**: wybierz centrum danych, które jest najbardziej odpowiednie. Zazwyczaj jest centrum danych, który zawiera większość danych lub znajduje się najbliżej Twojej lokalizacji fizycznej najszybszy dostęp do sieci.
    
@@ -97,12 +97,12 @@ Poniżej przedstawiono kroki, aby utworzyć wystąpienie systemu Linux maszyny w
    
    e. **Kup**:
    
-   * Aby rozpocząć, aprowizacja, kliknij przycisk **Kup**. Link znajduje się na warunki transakcji. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczenia rozmiaru serwera wybranej w ramach **rozmiar** kroku.
+   * Aby rozpocząć, aprowizacja, kliknij przycisk **Kup**. Dostępny jest link do warunków transakcji. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczenia rozmiaru serwera wybranej w ramach **rozmiar** kroku.
 
 Aprowizacja powinno zająć około 10-20 minut. Stan aprowizacji jest wyświetlany w witrynie Azure portal.
 
 ## <a name="how-to-access-the-linux-data-science-virtual-machine"></a>Jak uzyskać dostęp do maszyny wirtualnej do nauki o danych systemu Linux
-Po utworzeniu maszyny Wirtualnej możesz można Zaloguj się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta, które zostały utworzone w **podstawy** sekcji Krok 3 dla interfejsu powłoki tekstu. Na Windows, można pobrać narzędzia klienta SSH, takiego jak [Putty](http://www.putty.org). Jeśli wolisz graficzny desktop (X w systemie Windows), możesz użyć X11 przekazywania w programie Putty lub zainstalować klienta X2Go.
+Po utworzeniu maszyny Wirtualnej możesz można Zaloguj się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta, które zostały utworzone w **podstawy** sekcji Krok 3 dla interfejsu powłoki tekstu. W systemie Windows możesz pobrać narzędzia klienta SSH, takie jak program [Putty](http://www.putty.org). Jeśli wolisz graficzny desktop (X w systemie Windows), możesz użyć X11 przekazywania w programie Putty lub zainstalować klienta X2Go.
 
 > [!NOTE]
 > Klient X2Go wykonywane znacznie lepsze niż X11 przekazywania do testowania. Zaleca się przy użyciu klienta X2Go dla interfejsu graficznego pulpitu.
@@ -374,6 +374,6 @@ Poniżej przedstawiono, jak można kontynuować Twoją naukę oraz eksploracji:
 
 * [Do nauki o danych w systemie Linux maszyny wirtualnej analizy danych](linux-dsvm-walkthrough.md) instruktażu przedstawiono sposób wykonywania kilku typowych zadań do nauki o danych z systemem Linux maszyna wirtualna do nauki o danych aprowizowane w tym miejscu. 
 * Eksplorowanie różnych narzędzi do analizy danych na maszyny Wirtualnej do analizy danych, korzystając z narzędzi opisanych w tym artykule. Można również uruchomić *dsvm więcej informacji o* Shell na maszynie wirtualnej wstęp i łącza do dodatkowych informacji na temat narzędzi zainstalowanych na maszynie Wirtualnej.  
-* Dowiedz się, jak tworzyć rozwiązania analityczne end-to-end systematycznie przy użyciu [zespołu danych dla celów naukowych](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+* Dowiedz się, jak tworzyć rozwiązania analityczne end-to-end systematycznie przy użyciu [zespołu danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 * Odwiedź stronę [Cortana Analytics — Galeria](http://gallery.cortanaanalytics.com) maszyny nauki i dane analizy przykładów korzystających z pakietu Cortana Analytics.
 

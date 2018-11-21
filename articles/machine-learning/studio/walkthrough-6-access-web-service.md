@@ -3,8 +3,8 @@ title: 'Krok 6: Dostęp do usługi Machine Learning w sieci Web | Dokumentacja f
 description: 'Krok 6 programowanie przewodnik rozwiązania do analizy predykcyjnej: dostęp do usługi active Azure Machine Learning w sieci Web.'
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: abb94165d08a9f4e45924d71ed11a088d662339e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: b71f98c9ba4e21f2a33b62977ec54f6230443e1b
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822163"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264152"
 ---
 # <a name="walkthrough-step-6-access-the-azure-machine-learning-web-service"></a>Przewodnik, krok 6. Dostęp do usługi sieci Web Azure Machine Learning
 

@@ -10,16 +10,16 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 91db32b7056a0cf211e6293a891d58e0239ca499
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: f8092c7a05935dcb2ca176bee2c5820b50f3c814
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237589"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263557"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Ładowanie i odczytać dane za pomocą usługi Azure Machine Learning
 
-Użyj [zestawu SDK usługi Azure Machine Learning danych Prep](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) do ładowania różnych typów danych wejściowych. 
+Użyj [zestawu SDK usługi Azure Machine Learning danych Prep](https://aka.ms/data-prep-sdk) do ładowania różnych typów danych wejściowych. 
 
 Aby załadować dane, określ typ pliku danych i jego parametrów
 
@@ -167,7 +167,7 @@ Przykładowe dane wyjściowe:
 |0|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|
 |1|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|
 |2|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|
-|3|Ranga|Stanowisko|Studio|Na całym świecie|Wywiad krajowy / %|Kolumna1|Zbiorowość / %|Kolumna2|Rok ^|
+|3|Ranga|Stanowisko|Studio|Cały świat|Wywiad krajowy / %|Kolumna1|Zbiorowość / %|Kolumna2|Rok ^|
 |4|1|Awatar|Fox|2788|760.5|0.273|2027.5|0.727|2009 ^|5|
 
 Jak widać, tabelę w arkuszu drugi ma nagłówki i trzech pustych wierszy. Należy odpowiednio zmodyfikować argumentów funkcji. Na przykład:
@@ -178,7 +178,7 @@ df
 ```
 
 Przykładowe dane wyjściowe:
-||Ranga|Stanowisko|Studio|Na całym świecie|Wywiad krajowy / %|Kolumna1|Zbiorowość / %|Kolumna2|Rok ^|
+||Ranga|Stanowisko|Studio|Cały świat|Wywiad krajowy / %|Kolumna1|Zbiorowość / %|Kolumna2|Rok ^|
 |------|------|------|-----|------|-----|-------|----|-----|-----|
 |0|1|Awatar|Fox|2788|760.5|0.273|2027.5|0.727|2009 ^|
 |1|2|Titanic|Par.|2186.8|658.7|0.301|1528.1|0.699|1997 ^|
@@ -194,13 +194,13 @@ dataflow.head(5)
 ```
 
 Przykładowe dane wyjściowe:
-||010000|99999|SFAŁSZOWANY NORWEGIA|NIE|NO_1|ENRS|Column7|Column8|Column9|
+||010000|99999|SFAŁSZOWANY NORWEGIA|NO|NO_1|ENRS|Column7|Column8|Column9|
 |------|------|------|-----|------|-----|-------|----|-----|----|
-|0|010003|99999|SFAŁSZOWANY NORWEGIA|NIE|NIE|ENSO||||
-|1|010010|99999|JAN MAYEN|NIE|JN|ENJA|+70933|-008667|+00090|
-|2|010013|99999|ROST|NIE|NIE|||||
-|3|010014|99999|SOERSTOKKEN|NIE|NIE|ENSO|+59783|+005350|+00500|
-|4|010015|99999|BRINGELAND|NIE|NIE|ENBL|+61383|+005867|+03270|
+|0|010003|99999|SFAŁSZOWANY NORWEGIA|NO|NO|ENSO||||
+|1|010010|99999|JAN MAYEN|NO|JN|ENJA|+70933|-008667|+00090|
+|2|010013|99999|ROST|NO|NO|||||
+|3|010014|99999|SOERSTOKKEN|NO|NO|ENSO|+59783|+005350|+00500|
+|4|010015|99999|BRINGELAND|NO|NO|ENBL|+61383|+005867|+03270|
 
 
 Brak nagłówków w plikach, należy traktować pierwszy wiersz jako dane. Przekazując `PromoteHeadersMode.NONE` argumentowi — słowo kluczowe nagłówka, możesz uniknąć wykrycia nagłówka i uzyskać prawidłowe dane. Na przykład:
@@ -217,12 +217,12 @@ Przykładowe dane wyjściowe:
 
 ||Kolumna1|Kolumna2|Kolumna3|Kolumna4|Column5|Kolumna6|Column7|Column8|Column9|
 |------|------|------|-----|------|-----|-------|----|-----|----|
-|0|010000|99999|SFAŁSZOWANY NORWEGIA|NIE|NO_1|ENRS|Column7|Column8|Column9|
-|1|010003|99999|SFAŁSZOWANY NORWEGIA|NIE|NIE|ENSO||||
-|2|010010|99999|JAN MAYEN|NIE|JN|ENJA|+70933|-008667|+00090|
-|3|010013|99999|ROST|NIE|NIE|||||
-|4|010014|99999|SOERSTOKKEN|NIE|NIE|ENSO|+59783|+005350|+00500|
-|5|010015|99999|BRINGELAND|NIE|NIE|ENBL|+61383|+005867|+03270|
+|0|010000|99999|SFAŁSZOWANY NORWEGIA|NO|NO_1|ENRS|Column7|Column8|Column9|
+|1|010003|99999|SFAŁSZOWANY NORWEGIA|NO|NO|ENSO||||
+|2|010010|99999|JAN MAYEN|NO|JN|ENJA|+70933|-008667|+00090|
+|3|010013|99999|ROST|NO|NO|||||
+|4|010014|99999|SOERSTOKKEN|NO|NO|ENSO|+59783|+005350|+00500|
+|5|010015|99999|BRINGELAND|NO|NO|ENBL|+61383|+005867|+03270|
 
 ## <a name="use-sql-data"></a>Korzystanie z danych SQL
 Azure Machine Learning Prep zestawu SDK usługi Data również mogą ładować dane z serwerami programu SQL Server. Aktualnie obsługiwana jest tylko program Microsoft SQL Server.
@@ -343,7 +343,7 @@ dataflow = dprep.read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.a
 dataflow.to_pandas_dataframe().head()
 ```
 
-||FMID|MarketName|Witryna sieci Web|Ulica|city|Województwo|
+||FMID|MarketName|Witryna internetowa|Ulica|city|Powiat|
 |----|------|-----|----|----|----|----|
 |0|1012063|Rolników Kaledonia rynek skojarzenie — Danville|https://sites.google.com/site/caledoniafarmers... ||Danville|Kaledonia|
 |1|1011871|Rynek "rolników Stearns Homestead|http://Stearnshomestead.com |Drogowa ridge 6975|Parma|Cuyahoga|

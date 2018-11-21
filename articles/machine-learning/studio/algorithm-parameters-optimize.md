@@ -3,8 +3,8 @@ title: Optymalizowanie algorytmów w usłudze Azure Machine Learning | Dokumenta
 description: Wyjaśnia, jak wybrać optymalną parametrem ustawionym dla algorytmu w usłudze Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 0be0aec3f14dfc4d32327c64a54faaa4e039a93c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: c5445833d9f0e003304af3a1f60fb82a372898bf
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822453"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261823"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning"></a>Wybór parametrów w celu optymalizacji algorytmów w usłudze Azure Machine Learning
 W tym temacie opisano, jak wybrać odpowiednie hiperparametrycznego, ustaw dla algorytmu w usłudze Azure Machine Learning. Większość algorytmów uczenia maszynowego parametrów wymaganych do zestawu. Ucząc model, konieczne jest podanie wartości tych parametrów. Skuteczność uczonego modelu zależy od parametrów modelu, które wybierzesz. Proces odnajdywania optymalny zestaw parametrów jest znany jako *modelu zaznaczenia*.

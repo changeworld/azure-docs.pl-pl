@@ -4,7 +4,7 @@ description: ''
 services: ''
 documentationcenter: ''
 author: vikramdesai01
-manager: vikdesai
+manager: amberb
 editor: ''
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: cwatson
-ms.openlocfilehash: 38cfd354f11ef3d888ad70e71549868d398495f5
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0a8b5532f00d5feb964109710132816a191298e7
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429647"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274776"
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>Zarządzanie dostępem do informacji rozliczeniowych dla platformy Azure przy użyciu kontroli dostępu opartej na rolach
 
-Dostęp do informacji dotyczących rozliczeń platformy Azure można udzielić członkom zespołu, przypisując jedną z następujących ról użytkownika do subskrypcji: administratora konta, Administrator usługi, administrator współpracujący, właściciela, współautora, czytnika i Czytelnik rozliczeń. Mają oni dostęp do informacji dotyczących rozliczeń w [witryny Azure portal](https://portal.azure.com/), a następnie użyć [interfejsów API rozliczeń](billing-usage-rate-card-overview.md) programowo uzyskać faktur (po wyrażeniu zgody na uczestnictwo — ruch przychodzący) i uzyskać szczegółowe informacje o. Aby uzyskać więcej informacji na temat kto przyznać ról, a które role można zrobić, zobacz [ról RBAC platformy Azure](../role-based-access-control/built-in-roles.md).
+Aby udzielić dostępu do informacji billingowych dotyczących rozliczeń platformy Azure członkom swojego zespołu, możesz przypisać do Twojej subskrypcji jedną z następujących ról użytkowników: Administrator konta, Administrator usługi, Współadministrator, Właściciel, Współautor, Czytelnik i Czytelnik rozliczeń. Mają oni dostęp do informacji dotyczących rozliczeń w [witryny Azure portal](https://portal.azure.com/), a następnie użyć [interfejsów API rozliczeń](billing-usage-rate-card-overview.md) programowo uzyskać faktur (po wyrażeniu zgody na uczestnictwo — ruch przychodzący) i uzyskać szczegółowe informacje o. Aby uzyskać więcej informacji na temat kto przyznać ról, a które role można zrobić, zobacz [ról RBAC platformy Azure](../role-based-access-control/built-in-roles.md).
 
 ## <a name="opt-in"></a> Zezwolenie dodatkowym użytkownikom na dostęp do faktury
 
@@ -42,13 +42,13 @@ Administrator konta musi włączyć za pomocą [witryny Azure portal](https://po
 
 Zgodzie na rozwiązanie umożliwia administratora usługi, administrator współpracujący, właściciel, współautor, Czytelnik i Czytelnik rozliczenia w subskrypcji, aby pobierać faktury PDF w witrynie Azure portal. Jednak faktur starsze niż grudnia 2016 są dostępne tylko do konta administratora teraz.
 
-Administrator konta można również skonfigurować mieć faktur pocztą e-mail. Aby dowiedzieć się więcej, zobacz [Pobierz fakturę pocztą e-mail](billing-download-azure-invoice-daily-usage-date.md).
+Administrator konta można również skonfigurować wysyłanie faktur pocztą e-mail. Aby dowiedzieć się więcej, zobacz [Get your invoice in email](billing-download-azure-invoice-daily-usage-date.md) (Pobieranie faktur za pomocą poczty e-mail).
 
 ## <a name="adding-users-to-the-billing-reader-role"></a>Dodawanie użytkowników do roli Czytelnik rozliczenia
 
 Rola Czytelnik rozliczenia ma dostęp tylko do odczytu do informacji rozliczeniowych subskrypcji w witrynie Azure portal i Brak dostępu do usług, takich jak maszyny wirtualne i konta magazynu. Przypisz rolę Czytelnik rozliczenia osobie, która wymaga dostępu do informacji o rozliczeń subskrypcji, ale nie umożliwia zarządzanie usługami platformy Azure. Ta rola jest odpowiednia dla użytkowników w organizacji, którzy finansowe i koszty zarządzania należy wykonać tylko dla subskrypcji platformy Azure.
 
-1. Wybierz swoją subskrypcję z [bloku subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) w witrynie Azure portal.
+1. Wybierz swoją subskrypcję z [bloku Subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) w witrynie Azure Portal.
 
 1. Wybierz **kontrola dostępu (IAM)** a następnie kliknij przycisk **Dodaj**.
 
@@ -58,11 +58,11 @@ Rola Czytelnik rozliczenia ma dostęp tylko do odczytu do informacji rozliczenio
 
     ![Zrzut ekranu przedstawia Czytelnik rozliczenia w widoku okna podręcznego](./media/billing-manage-access/select-roles.PNG)
 
-1. Wpisz adres e-mail użytkownika, aby zaprosić, a następnie kliknij przycisk **OK** można wysłać zaproszenia.
+1. Wpisz adres e-mail użytkownika, którego chcesz zaprosić, a następnie kliknij przycisk **OK**, aby wysłać zaproszenie.
 
     ![Zrzut ekranu przedstawiający wprowadzenie wiadomości e-mail z zaproszeniem ktoś](./media/billing-manage-access/add-user.PNG)
 
-1. Postępuj zgodnie z instrukcjami w wiadomości e-mail z zaproszeniem, aby zalogować się jako czytelnik rozliczenia.
+1. Postępuj zgodnie z instrukcjami w wiadomości e-mail z zaproszeniem, aby zalogować się jako Czytelnik rozliczeń.
 
     ![Zrzut ekranu, który pokazuje, jakie dane może wyświetlać Czytelnik rozliczenia w witrynie Azure portal](./media/billing-manage-access/billing-reader-view.png)
 

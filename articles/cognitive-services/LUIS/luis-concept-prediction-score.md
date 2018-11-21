@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: diberry
-ms.openlocfilehash: 7cc3b6fd5865689df57258dcb2088bbef47b9a90
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: e1582da9a8fea4137d40b3a3855ead467dbbb548
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637970"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264390"
 ---
 # <a name="prediction-score"></a>Współczynnik przewidywania
 Wynik prognozowania wskazuje stopień zaufania, LUIS, ma dla wyników przewidywań. 
@@ -62,7 +62,7 @@ Możesz później tego samego modelu w innej aplikacji, gdy wyniki nie są tym s
 Jeśli Twoje chatbot wymaga określonych oceny usługi LUIS do wskazania zaufania intencji, należy w zamian użyć wynik różnicy dwa najważniejsze intencji. Zapewnia to elastyczność dla zmian w szkoleniu. 
 
 ## <a name="punctuation"></a>Znaki interpunkcyjne
-Znak interpunkcyjny jest tokenu oddzielnych w usługi LUIS. Wypowiedź, która zawiera znak kropki na końcu, a wypowiedź, która nie są dwa oddzielne wypowiedzi i może uzyskać dwa różne prognozy. Upewnij się, że model obsługuje znaki interpunkcyjne, albo w [wypowiedzi przykład](luis-concept-utterance.md) (istnienie i nie ma znaków interpunkcyjnych) lub w [patterns}(luis-concept-patterns.md), gdzie jest łatwiej Ignoruj znaków interpunkcyjnych przy użyciu specjalnej składni: `I am applying for the {Job} position[.]`
+Znak interpunkcyjny jest tokenu oddzielnych w usługi LUIS. Wypowiedź, która zawiera znak kropki na końcu, a wypowiedź, która nie są dwa oddzielne wypowiedzi i może uzyskać dwa różne prognozy. Upewnij się, że model obsługuje znaki interpunkcyjne, albo w [wypowiedzi przykład](luis-concept-utterance.md) (istnienie i nie ma znaków interpunkcyjnych) lub w [wzorców](luis-concept-patterns.md) gdzie jest łatwiej Ignoruj znaków interpunkcyjnych przy użyciu specjalnej składni: `I am applying for the {Job} position[.]`
 
 ## <a name="next-steps"></a>Kolejne kroki
 

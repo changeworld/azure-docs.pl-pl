@@ -1,13 +1,26 @@
+---
+author: genlin
+ms.service: virtual-network
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: genli
+ms.openlocfilehash: 3df4108907a4e1e65a444faf1049163966b7accf
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52271659"
+---
 ## <a name="scenario"></a>Scenariusz
-Maszynę Wirtualną z jednej karty Sieciowej jest utworzony i podłączony do sieci wirtualnej. Maszyna wirtualna wymaga trzech różnych *prywatnej* IP adresy i dwa *publicznego* adresów IP. Adresy IP są przypisywane do następujące konfiguracje adresów IP:
+Maszynę Wirtualną z jedną kartą Sieciową jest utworzony i połączony z siecią wirtualną. Maszyna wirtualna wymaga trzech różnych *prywatnej* IP adresów i dwóch *publicznych* adresów IP. Adresy IP są przypisywane do poniższej konfiguracji adresów IP:
 
-* **IPConfig-1:** przypisuje *statycznych* prywatnego adresu IP i *statycznych* publicznego adresu IP.
-* **Polecenie IPConfig-2:** przypisuje *statycznych* prywatnego adresu IP i *statycznych* publicznego adresu IP.
-* **Polecenie IPConfig-3:** przypisuje *statycznych* prywatnego adresu IP i żadnego publicznego adresu IP.
+* **IPConfig 1:** przypisuje *statyczne* prywatny adres IP i *statyczne* publicznego adresu IP.
+* **IPConfig 2:** przypisuje *statyczne* prywatny adres IP i *statyczne* publicznego adresu IP.
+* **Polecenie IPConfig-3:** przypisuje *statyczne* prywatny adres IP i publicznego adresu IP.
   
     ![Wiele adresów IP](./media/virtual-network-multiple-ip-addresses-scenario/multiple-ipconfigs.png)
 
-Konfiguracje adresów IP są powiązane z kartą sieciową, gdy karta sieciowa jest tworzony i karty Sieciowej jest dołączony do maszyny Wirtualnej po utworzeniu maszyny Wirtualnej. Typy adresy IP używane dla tego scenariusza są ilustracyjną. Można przypisać niezależnie od adresu i przypisywania typów IP wymagane.
+Konfiguracje adresów IP są skojarzone z kartą Sieciową, po utworzeniu karty Sieciowej i karty Sieciowej jest dołączony do maszyny Wirtualnej, po utworzeniu maszyny Wirtualnej. Typy adresów IP używanych w ramach scenariusza opisywanego są do celów informacyjnych. Możesz przypisać niezależnie od adresów IP adres i przypisywania typów potrzebujesz.
 
 > [!NOTE]
-> Chociaż kroki opisane w tym artykule przypisuje wszystkie konfiguracje adresów IP do jednej karty Sieciowej, można także przypisać wielu konfiguracji adresów IP do dowolnej karty interfejsu Sieciowego na maszynie Wirtualnej z wieloma kartami Sieciowymi. Aby dowiedzieć się, jak utworzyć Maszynę wirtualną z wieloma kartami sieciowymi, przeczytaj [tworzenia maszyn wirtualnych z wieloma kartami sieciowymi](../articles/virtual-machines/windows/multiple-nics.md) artykułu.
+> Jednak kroki opisane w tym artykule przypisuje wszystkie konfiguracje adresów IP do jednej karty Sieciowej, można także przypisać wiele konfiguracji adresów IP do dowolnej karty Sieciowej na maszynie Wirtualnej z wieloma kartami. Aby dowiedzieć się, jak utworzyć maszynę Wirtualną z wieloma kartami sieciowymi, przeczytaj [Utwórz Maszynę wirtualną z wieloma kartami sieciowymi](../articles/virtual-machines/windows/multiple-nics.md) artykułu.

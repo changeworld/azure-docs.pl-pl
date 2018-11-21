@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 10/12/2018
-ms.openlocfilehash: 54aef992e95454387ee2fda1d1b34d6dcae3e21e
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d81925589eefa0ea5851180c83db5bc3540aabda
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959115"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262690"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Usługa Azure Disk Encryption wymagania wstępne dotyczące (poprzedniej wersji)
 
@@ -118,7 +118,7 @@ Przykład polecenia, które mogą służyć do zamontowania dysków z danymi ora
 
 ## <a name="bkmk_CLI"></a> Wiersza polecenia platformy Azure
 
-[Interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure) jest narzędziem wiersza polecenia do zarządzania zasobami platformy Azure. Interfejs wiersza polecenia służy do elastyczne wykonywanie zapytań o dane, obsługi długotrwałych operacji jak nieblokujące procesy i ułatwienia tworzenia skryptów. Można go również używać w przeglądarce z usługą [Azure Cloud Shell](/cloud-shell/overview.md) albo można go zainstalować na maszynie lokalnej i używać w dowolnej sesji programu PowerShell.
+[Interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure) jest narzędziem wiersza polecenia do zarządzania zasobami platformy Azure. Interfejs wiersza polecenia służy do elastyczne wykonywanie zapytań o dane, obsługi długotrwałych operacji jak nieblokujące procesy i ułatwienia tworzenia skryptów. Można go również używać w przeglądarce z usługą [Azure Cloud Shell](../cloud-shell/overview.md) albo można go zainstalować na maszynie lokalnej i używać w dowolnej sesji programu PowerShell.
 
 1. [Zainstaluj interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) do użytku na komputerze lokalnym (opcjonalnie):
 
@@ -166,7 +166,7 @@ Usługa Azure Disk Encryption jest zintegrowana z usługą [usługi Azure Key Va
 Można utworzyć magazynu kluczy przy użyciu programu Azure PowerShell [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/New-AzureRmKeyVault) polecenia cmdlet. Aby uzyskać dodatkowe polecenia cmdlet usługi Key Vault, zobacz [AzureRM.KeyVault](/powershell/module/azurerm.keyvault/). 
 
 1. Jeśli to konieczne, [nawiązać połączenie z subskrypcją platformy Azure](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH). 
-2. Utwórz nową grupę zasobów, jeśli to konieczne, za pomocą [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup).  Aby wyświetlić lokalizacje centrów danych, użyj [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocationn). 
+2. Utwórz nową grupę zasobów, jeśli to konieczne, za pomocą [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup).  Aby wyświetlić lokalizacje centrów danych, użyj [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation). 
      
      ```azurepowershell-interactive
      # Get-AzureRmLocation 
@@ -186,7 +186,7 @@ Można utworzyć magazynu kluczy przy użyciu programu Azure PowerShell [New-Azu
 Można zarządzać magazynem kluczy przy użyciu wiersza polecenia platformy Azure [az keyvault](/cli/azure/keyvault#commands) poleceń. Aby utworzyć magazyn kluczy, użyj [tworzenie az keyvault](/cli/azure/keyvault#az-keyvault-create).
 
 1. Jeśli to konieczne, [nawiązać połączenie z subskrypcją platformy Azure](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI).
-2. Utwórz nową grupę zasobów, jeśli to konieczne, za pomocą [Tworzenie grupy az](/cli/azure/groupt#az-group-create). Aby wyświetlić lokalizacje, użyj [konta az list-locations](/cli/azure/account#az-account-list) 
+2. Utwórz nową grupę zasobów, jeśli to konieczne, za pomocą [Tworzenie grupy az](/cli/azure/group#az-group-create). Aby wyświetlić lokalizacje, użyj [konta az list-locations](/cli/azure/account#az-account-list) 
      
      ```azurecli-interactive
      # To list locations: az account list-locations --output table
@@ -272,7 +272,7 @@ Aplikacja usługi Azure AD wymaga praw dostępu do kluczy lub wpisów tajnych w 
      ```
 
 ### <a name="bkmk_KVAPCLI"></a> Ustawianie zasad dostępu magazynu kluczy dla aplikacji usługi Azure AD przy użyciu wiersza polecenia platformy Azure
-Użyj [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault.md#az-keyvault-set-policy) ustawić zasady dostępu. Aby uzyskać więcej informacji, zobacz [Zarządzanie Key Vault przy użyciu interfejsu wiersza polecenia 2.0](../key-vault/key-vault-manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret).
+Użyj [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) ustawić zasady dostępu. Aby uzyskać więcej informacji, zobacz [Zarządzanie Key Vault przy użyciu interfejsu wiersza polecenia 2.0](../key-vault/key-vault-manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret).
 
 1. Jeśli to konieczne, [nawiązać połączenie z subskrypcją platformy Azure](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI).
 2. Zapewniają utworzonej jednostki usługi, za pośrednictwem dostępu wiersza polecenia platformy Azure, aby uzyskać klucze tajne i zawijania klucze za pomocą następującego polecenia:

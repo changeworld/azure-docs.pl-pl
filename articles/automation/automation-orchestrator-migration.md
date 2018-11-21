@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83fff9fa322431983c1d385705ae235a8e818570
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 80b0523f8442e30e6af329263be454fa545933d6
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237268"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275286"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Migrowanie z programu Orchestrator w usłudze Azure Automation (Beta)
 Elementy Runbook w programie [programu System Center Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) opierają się na działań z pakietów integracyjnych, napisanych specjalnie dla programu Orchestrator, podczas gdy elementy runbook w usłudze Azure Automation są oparte na programie Windows PowerShell.  [Graficzne elementy runbook](automation-runbook-types.md#graphical-runbooks) w usłudze Azure Automation mają podobne wygląd elementów runbook programu Orchestrator za pomocą ich działania, reprezentujący poleceń cmdlet programu PowerShell, podrzędne elementy runbook i zasoby.
@@ -79,7 +79,9 @@ Poniżej przedstawiono podstawowy proces konwersji elementu runbook programu Orc
 ### <a name="using-runbook-converter"></a>Za pomocą konwertera elementu Runbook
 Składnia **ConvertFrom SCORunbook** jest następująca:
 
-    ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <string>
+```powershell
+ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <string>
+```
 
 * RunbookPath — ścieżka do pliku eksportu, zawierającego elementy runbook w celu konwersji.
 * Moduł — rozdzielana przecinkami lista modułów integracji zawierających działania w elementach runbook.
@@ -87,8 +89,9 @@ Składnia **ConvertFrom SCORunbook** jest następująca:
 
 Następujące przykładowe polecenie konwertuje elementy runbook w pliku eksportu o nazwie **MyRunbooks.ois_export**.  Te elementy runbook, użyj Pakiety integracyjne usługi Active Directory i programu Data Protection Manager.
 
-    ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks"
-
+```powershell
+ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks"
+```
 
 ### <a name="log-files"></a>Pliki dziennika
 Konwerter elementu Runbook utworzy następujące pliki dziennika w tej samej lokalizacji co przekonwertowany element runbook.  Jeśli pliki już istnieją, następnie zostaną one zastąpione przy użyciu informacji z ostatniej konwersji.

@@ -11,19 +11,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
+ms.date: 11/20/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 614d6aef4a2b7be551574fd3c8e25e2a3e3c1c07
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: e692cc1fd8670cc14b42e4714d84356d4d4c53a2
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028393"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275997"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Architektura magazynu oprogramowania SAP HANA (duże wystąpienia)
 
-Układ magazynu dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia) jest skonfigurowany przez platformę SAP HANA w klasycznym modelu wdrażania przy użyciu SAP zalecane wytyczne. Wytyczne są udokumentowane w artykule [wymagania dotyczące magazynu oprogramowania SAP HANA](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) oficjalny dokument.
+Układ magazynu dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia) jest skonfigurowany przez platformę SAP HANA w klasycznym modelu wdrażania na SAP zalecane wytyczne. Wytyczne są udokumentowane w artykule [wymagania dotyczące magazynu oprogramowania SAP HANA](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) oficjalny dokument.
 
 Duże wystąpienie typu klasy I HANA zawiera cztery razy woluminie pamięci jako woluminu magazynu. W klasie typu II jednostek dużych wystąpień HANA magazynu nie jest cztery razy więcej. Jednostki są dostarczane z woluminu, który jest przeznaczony do przechowywania kopii zapasowych dziennika transakcji platformy HANA. Aby uzyskać więcej informacji, zobacz [zainstalować i skonfigurować oprogramowanie SAP HANA (duże wystąpienia) na platformie Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
@@ -33,6 +33,7 @@ Zobacz poniższą tabelę pod względem przydziału magazynu. W tabeli wymienion
 | --- | --- | --- | --- | --- |
 | S72 | 1,280 GB | 512 GB | 768 GB | 512 GB |
 | S72m | 3,328 GB | 768 GB |1,280 GB | 768 GB |
+| S96 | 1,280 GB | 512 GB | 768 GB | 512 GB |
 | S192 | 4,608 GB | 1024 GB | 1,536 GB | 1024 GB |
 | S192m | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S192xm |  11,520 GB |  1,536 GB |  1,792 GB |  1,536 GB |
@@ -72,18 +73,18 @@ Zapoznaj się [HLI obsługiwane scenariusze](hana-supported-scenario.md) szczeg�
 
 Istnieje możliwość hostowania więcej niż jednego aktywnego wystąpienia platformy SAP HANA w jednostkach dużych wystąpień HANA. Zapewnienie możliwości migawki magazynu i odzyskiwania po awarii, taka konfiguracja wymaga woluminu, który został ustawiony na wystąpienie. Obecnie dużych wystąpień HANA jednostki można podzielić w następujący sposób:
 
-- **S72, S72m, S144, platformie S192**: przyrostem wynoszącym 256 GB z 256 GB najmniejszy początkowa jednostki. Można łączyć wielokrotności np. 256 GB do 512 GB do maksymalnej pamięci jednostki.
+- **S72 S72m, S96, S144, platformie S192**: przyrostem wynoszącym 256 GB z 256 GB najmniejszy początkowa jednostki. Można łączyć wielokrotności np. 256 GB do 512 GB do maksymalnej pamięci jednostki.
 - **S144m i platformie S192m**: przyrostem wynoszącym 256 GB i 512 GB najmniejsza jednostka. Można łączyć wielokrotności np. 512 GB i 768 GB do maksymalnej pamięci jednostki.
 - **Typ klasy II**: Z przyrostem równym 512 GB do najmniejszego początkowy jednostki 2 TB. Wielokrotności np. 512 GB, 1 TB i 1,5 TB, można połączyć do maksymalnej pamięci jednostki.
 
-Niektóre przykłady uruchamianie wielu wystąpień oprogramowania SAP HANA może wyglądać następująco.
+Kilka przykładów uruchamianie wielu wystąpień oprogramowania SAP HANA może wyglądać następująco.
 
 | SKU | Rozmiar pamięci | Rozmiar magazynu | Rozmiary z wieloma bazami danych |
 | --- | --- | --- | --- |
 | S72 | 768 GB | 3 TB | wystąpienie oprogramowania HANA 1 x 768 GB<br /> lub wystąpienia 1 x 512 GB + 1 x 256 GB wystąpienia<br /> lub wystąpień 3 x 256 GB | 
-| S72m | 1,5 TB | 6 TB | 3x512GB wystąpień HANA<br />lub wystąpienia 1 x 512 GB + 1 x 1 TB pojemności wystąpienia<br />lub wystąpień 6 x 256 GB<br />lub wystąpienie 1x1.5 TB | 
-| S192m | 4 TB | 16 TB | 8 x 512 GB wystąpień<br />lub wystąpień 4 x 1 TB pojemności<br />lub wystąpień 4 x 512 GB + 2 x 1 TB pojemności wystąpień<br />lub wystąpień 4 x 768 GB + 2 x 512 GB wystąpień<br />lub wystąpienie 1 x 4 TB |
-| S384xm | 8 TB | 22 TB | 4 x 2 TB wystąpień<br />lub wystąpień 2 x 4 TB<br />lub wystąpień 2 x 3 TB + 1 x 2 TB wystąpień<br />lub wystąpień 2x2.5 TB + 1 x 3 TB wystąpień<br />lub wystąpienia. 8 x 1 TB |
+| S72m | 1,5 TB | 6 TB | 3x512GB wystąpień HANA<br />lub wystąpienia 1 x 512 GB + 1 x 1 TB wystąpienia<br />lub wystąpień 6 x 256 GB<br />lub wystąpienie 1x1.5 TB | 
+| S192m | 4 TB | 16 TB | 8 x 512 GB wystąpień<br />lub wystąpień 4 x 1 TB<br />lub wystąpień 4 x 512 GB + 2 x 1 TB wystąpień<br />lub wystąpień 4 x 768 GB + 2 x 512 GB wystąpień<br />lub wystąpienie 1 x 4 TB |
+| S384xm | 8 TB | 22 TB | 4 x 2 TB wystąpień<br />lub wystąpień 2 x 4 TB<br />lub wystąpień 2 x 3 TB + 1 x 2 TB wystąpień<br />lub wystąpień 2x2.5 TB + 1 x 3 TB wystąpień<br />lub wystąpienie 1 x 8 TB |
 
 
 Istnieją także inne różnice. 
@@ -91,7 +92,7 @@ Istnieją także inne różnice.
 ## <a name="encryption-of-data-at-rest"></a>Szyfrowanie nieużywanych danych
 Magazyn używany dla dużych wystąpień HANA umożliwia przezroczyste szyfrowanie danych, ponieważ są przechowywane na dyskach. Po wdrożeniu jednostki dużych wystąpień HANA można włączyć ten rodzaj szyfrowania. Można także zmienić zaszyfrowanych woluminów po wdrożeniu. Przejście z protokołem szyfrowania zaszyfrowanych woluminach jest niewidoczna i bez przerywania. 
 
-O typie I klasy jednostek SKU, wolumin rozruchowy jednostki LUN są przechowywane na został zaszyfrowany. Dla klasy typu II jednostki SKU z duże wystąpienie HANA należy zaszyfrować rozruchu jednostki LUN z metodami systemu operacyjnego. Aby uzyskać więcej informacji skontaktuj się z zespołu zarządzania usługami firmy Microsoft.
+O typie I klasy jednostek SKU, woluminu rozruchowego jednostki LUN są przechowywane, są szyfrowane. Dla klasy typu II jednostki SKU z duże wystąpienie HANA należy zaszyfrować rozruchu jednostki LUN z metodami systemu operacyjnego. Aby uzyskać więcej informacji skontaktuj się z zespołu zarządzania usługami firmy Microsoft.
 
 **Następne kroki**
 - Zapoznaj się [obsługiwane scenariusze dla dużych wystąpień HANA](hana-supported-scenario.md)

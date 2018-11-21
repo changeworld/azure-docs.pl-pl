@@ -1,22 +1,35 @@
-## <a name="create-a-ruby-application"></a>Tworzenie aplikacji Ruby
+---
+author: spelluru
+ms.service: service-bus
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: spelluru
+ms.openlocfilehash: 16ce537a54fc77fc0f72b859d6d193501d86c1fc
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52271637"
+---
+## <a name="create-a-ruby-application"></a>Tworzenie aplikacji w języku Ruby
 Aby uzyskać instrukcje, zobacz [tworzenie aplikacji Ruby na platformie Azure](../articles/virtual-machines/linux/classic/ruby-rails-web-app.md).
 
-## <a name="configure-your-application-to-use-service-bus"></a>Skonfigurować aplikację do użycia usługi Service Bus
-Aby korzystać z usługi Service Bus, pobranie i użycie pakiet Azure Ruby, który zawiera zestaw wygody bibliotek, które komunikują się z magazynu usługi REST.
+## <a name="configure-your-application-to-use-service-bus"></a>Konfigurowanie aplikacji do użycia usługi Service Bus
+Aby korzystać z usługi Service Bus, Pobierz i za pomocą pakietu Azure Ruby, który zawiera zbiór bibliotek wygody, które komunikują się z usług REST magazynu.
 
-### <a name="use-rubygems-to-obtain-the-package"></a>Umożliwia uzyskanie pakietu RubyGems
-1. Użyj interfejsu wiersza polecenia, takich jak **PowerShell** (system Windows), **terminali** (Mac), lub **Bash** (Unix).
-2. Wpisz "azure gem instalacji" w oknie wiersza polecenia, aby zainstalować gem i zależności.
+### <a name="use-rubygems-to-obtain-the-package"></a>Używanie narzędzia RubyGems do pobierania pakietu
+1. Użyj interfejsu wiersza polecenia, takiego jak **PowerShell** (system Windows), **Terminal** (system Mac) lub **Bash** (system Unix).
+2. Wpisz "azure gem instalacji" w oknie wiersza polecenia, aby zainstalować rozwiązanie gem i zależności.
 
 ### <a name="import-the-package"></a>Importowanie pakietu
-Za pomocą edytora tekstu, Dodaj następujący element do góry dopisków fonetycznych pliku, w którym mają być używane magazynu:
+Za pomocą ulubionego edytora tekstu, Dodaj następujący element do górnej części pliku języka Ruby, w którym zamierzasz korzystać z magazynu:
 
 ```ruby
 require "azure"
 ```
 
-## <a name="set-up-a-service-bus-connection"></a>Skonfiguruj połączenie usługi Service Bus
-Aby ustawić wartości przestrzeni nazw, nazwę klucza, klucz podpisujący i hosta, należy użyć poniższego kodu:
+## <a name="set-up-a-service-bus-connection"></a>Konfigurowanie połączenia usługi Service Bus
+Aby ustawić wartości przestrzeni nazw, nazwę klucza, klucz podpisujący i hosta, użyj następującego kodu:
 
 ```ruby
 Azure.configure do |config|
@@ -28,4 +41,4 @@ signer = Azure::ServiceBus::Auth::SharedAccessSigner.new
 sb_host = "https://#{Azure.sb_namespace}.servicebus.windows.net"
 ```
 
-Ustaw wartość przestrzeni nazw na wartość, którą utworzono zamiast całej adresu URL. Na przykład użyć **"yourexamplenamespace"**, nie "yourexamplenamespace.servicebus.windows.net".
+Ustaw wartość przestrzeni nazw do wartości utworzonej zamiast pełnego adresu URL. Na przykład użyć **"yourexamplenamespace"**, nie "yourexamplenamespace.servicebus.windows.net".

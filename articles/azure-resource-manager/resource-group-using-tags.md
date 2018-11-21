@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 11/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: a517597c2c4586b59594415f2361e3e4166d4c5a
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: d9afc62b4ab5d5d83394dcaaacf85a7642a2ba22
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299660"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52260601"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Organizowanie zasobów platformy Azure przy użyciu tagów
 
@@ -123,7 +123,7 @@ Aby zastosować wszystkie tagi z grupy zasobów do jej zasobów *z zachowaniem t
 
 ```azurepowershell-interactive
 $group = Get-AzureRmResourceGroup "examplegroup"
-if ($group.Tags -ne $null) {
+if ($null -ne $group.Tags) {
     $resources = Get-AzureRmResource -ResourceGroupName $group.ResourceGroupName
     foreach ($r in $resources)
     {
@@ -272,8 +272,6 @@ Dla operacji interfejsu API REST, zobacz [dokumentacja interfejsu API REST rozli
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+* Nie wszystkie typy zasobów obsługują tagów. Aby określić, jeśli tag można zastosować do typu zasobu, zobacz [obsługę dla zasobów platformy Azure tagów](tag-support.md).
 * Za pomocą zasad niestandardowych, można zastosować ograniczenia i konwencje w ramach subskrypcji. Zasady, które należy zdefiniować może wymagać, że wszystkie zasoby mają wartości dla określonego tagu. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure Policy?](../azure-policy/azure-policy-introduction.md)
-* Wprowadzenie do korzystania z programu Azure PowerShell, podczas wdrażania zasobów, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](powershell-azure-resource-manager.md).
-* Wprowadzenie do korzystania z wiersza polecenia platformy Azure, podczas wdrażania zasobów, zobacz [przy użyciu wiersza polecenia platformy Azure dla systemów Mac, Linux i Windows za pomocą usługi Azure Resource Manager](xplat-cli-azure-resource-manager.md).
 * Wprowadzenie do korzystania z portalu, zobacz [przy użyciu witryny Azure portal do zarządzania zasobami platformy Azure](resource-group-portal.md).  
-* Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).

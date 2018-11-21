@@ -12,26 +12,27 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 3a1c5341e391c8be1af42eea940fbf147b88e7c8
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 1ae10fb749e671f7a8b5ca48e652711d7dcf98c8
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685705"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262605"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Uznanie autorstwa użycia klienta partnerów platformy Azure
 
-Jako partner oprogramowania na platformie Azure rozwiązania wymagają składniki platformy Azure lub muszą zostać wdrożone bezpośrednio w infrastrukturze platformy Azure. Klienci, którzy wdrożyć rozwiązanie partnerskie i udostępniania własnych zasobów platformy Azure można trudno wgląd w stan wdrożenia i przedstawiane optyką negatywny wpływ na rozwój platformy Azure. Podczas dodawania wyższy poziom widoczności wyrównane z zespołami sprzedaży firmy Microsoft i Uzyskaj środki dla programów partnerskich firmy Microsoft.   
+Jako partner oprogramowania na platformie Azure rozwiązania wymagają składniki platformy Azure lub muszą zostać wdrożone bezpośrednio w infrastrukturze platformy Azure. Klienci, którzy wdrożyć rozwiązanie partnerskie i udostępniania własnych zasobów platformy Azure można trudno wgląd w stan wdrożenia i przedstawiane optyką negatywny wpływ na rozwój platformy Azure. Podczas dodawania wyższy poziom widoczności wyrównane z zespołami sprzedaży firmy Microsoft i Uzyskaj środki dla programów partnerskich firmy Microsoft. 
 
 Firma Microsoft oferuje teraz metodę w celu ułatwiania partnerom lepiej śledzić użycie platformy Azure wdrożeń klienta tego oprogramowania na platformie Azure. Nowa metoda używa usługi Azure Resource Manager do organizowania wdrożenia usług platformy Azure.
 
 Jako partner firmy Microsoft można skojarzyć użycia platformy Azure z zasobami platformy Azure, które należy zarezerwować w imieniu klienta. Tworząc skojarzenie za pośrednictwem portalu Azure Marketplace, repozytorium Szybki Start, prywatne repozytoria GitHub i indywidualną zaangażowania użytkowników. Aby włączyć śledzenie, dostępne są dwie metody:
 
 - Szablony usługi Azure Resource Manager: szablonów usługi Resource Manager lub szablony rozwiązań do wdrożenia usług platformy Azure w celu uruchamiania oprogramowania partnera. Partnerzy, można utworzyć szablon usługi Resource Manager w celu zdefiniowania infrastruktury i konfiguracji swoje rozwiązanie na platformie Azure. Szablon usługi Resource Manager umożliwia Tobie i Twoim klientom wdrażać rozwiązania przez cały cykl życia. Można mieć pewność, że Twoje zasoby są wdrażane w spójnym stanie. 
-
 - Interfejsów API usługi Azure Resource Manager: Partnerów mogą wywoływać interfejsy API usługi Resource Manager bezpośrednio, aby wdrożyć szablon usługi Resource Manager lub do generowania wywołań interfejsu API, bezpośrednie Inicjowanie obsługi administracyjnej usług platformy Azure. 
+
+Uznanie autorstwa użycia klienta jest wymagany we wszystkich [szablony rozwiązań](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md) opublikowane w portalu Azure Marketplace. 
 
 ## <a name="use-resource-manager-templates"></a>Używanie szablonów usługi Resource Manager
 

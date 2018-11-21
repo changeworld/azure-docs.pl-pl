@@ -1,6 +1,6 @@
 ---
 title: Niezmienny magazyn obiektów blob usługi Azure Storage | Dokumentacja firmy Microsoft
-description: Usługa Azure Storage oferuje obsługę ROBAK (jednokrotnego zapisu, odczytu wielu) dla magazynu obiektów Blob (obiekt), umożliwiającą użytkownikom przechowywanie danych w stanie wymazanie, nie można modyfikować w określonym interwale.
+description: Usługa Azure Storage oferuje obsługę ROBAK (jednokrotny zapis, Odczyt wiele) dla magazynu obiektów Blob (obiekt), umożliwiającą użytkownikom przechowywanie danych w stanie wymazanie, nie można modyfikować w określonym interwale.
 services: storage
 author: xyh1
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: hux
 ms.component: blobs
-ms.openlocfilehash: 261f66013ab9c0ba493d18b84856d17db953402e
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: d3d83e240fec692d5aa655923637910006c7a62f
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037005"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261476"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Store strategicznych danych biznesowych w usłudze Azure Blob storage
 
-Niezmienny magazyn dla magazynu obiektów Blob platformy Azure (obiekt) pozwala użytkownikom przechowywać dane krytyczne dla prowadzonej działalności w stanie ROBAK (jednokrotnego zapisu, odczytu wielu). Ten stan sprawia, że dane trwałe i nie można modyfikować dla interwału określonego przez użytkownika. Obiekty BLOB można utworzyć i odczytu, ale nie zmodyfikowany lub usunięty na czas trwania okresu przechowywania.
+Niezmienne magazynu dla magazynu obiektów Blob platformy Azure (obiekt) pozwala użytkownikom przechowywać dane krytyczne dla prowadzonej działalności w stanie ROBAK (jednokrotny zapis, wiele odczytu). Ten stan sprawia, że dane trwałe i nie można modyfikować dla interwału określonego przez użytkownika. Obiekty BLOB można utworzyć i odczytu, ale nie zmodyfikowany lub usunięty na czas trwania okresu przechowywania.
 
 ## <a name="overview"></a>Przegląd
 
@@ -47,7 +47,7 @@ Niezmienny magazyn jest włączona we wszystkich publicznych regionach platformy
 
 ## <a name="how-it-works"></a>Jak to działa
 
-Niezmienny magazyn dla usługi Azure Blob storage obsługuje dwa typy ROBAK lub niezmienne zasad: przechowywania na podstawie czasu i archiwizacją ze względów prawnych. Aby uzyskać szczegółowe informacje dotyczące sposobu tworzenia tych niezmienne zasad, zobacz [wprowadzenie](#Getting-started) sekcji.
+Niezmienny magazyn dla usługi Azure Blob storage obsługuje dwa typy ROBAK lub niezmienne zasad: przechowywania na podstawie czasu i archiwizacją ze względów prawnych. Aby uzyskać szczegółowe informacje dotyczące sposobu tworzenia tych niezmienne zasad, zobacz [wprowadzenie](#getting-started) sekcji.
 
 Po zastosowaniu zasad przechowywania na podstawie czasu lub prawnych w kontenerze, wszystkie istniejące obiekty BLOB przenieść się do niezmienne (zapisu i usuwania chroniony) stanu. Wszystkie nowe obiekty BLOB, które są przekazywane do kontenera, również zostanie przeniesione do niezmiennego stanu.
 
@@ -69,7 +69,7 @@ W przypadku nowych obiektów blob obowiązujący okres przechowywania jest równ
 
 ### <a name="legal-holds"></a>Archiwizacja ze względów prawnych
 
-Po ustawieniu prawnych, wszystkie istniejące i nowe obiekty BLOB są pozostanie w stanie niezmienne, dopóki nie zostanie wyczyszczona prawnych. Aby uzyskać więcej informacji na temat zestawu i archiwizacją wyczyść ze względów prawnych, zobacz [wprowadzenie](#Getting-started) sekcji.
+Po ustawieniu prawnych, wszystkie istniejące i nowe obiekty BLOB są pozostanie w stanie niezmienne, dopóki nie zostanie wyczyszczona prawnych. Aby uzyskać więcej informacji na temat zestawu i archiwizacją wyczyść ze względów prawnych, zobacz [wprowadzenie](#getting-started) sekcji.
 
 Kontener może mieć zarówno prawnych, jak i zasad przechowywania na podstawie czasu, w tym samym czasie. Wszystkie obiekty BLOB w kontenerze pozostanie w stanie niezmienne, dopóki nie zostaną wyczyszczone wszystkie archiwizacją ze względów prawnych, nawet wtedy, gdy ich okresu przechowywania skuteczne utracił ważność. Z drugiej strony obiekt blob pozostaje w niezmiennego stanu do wygaśnięcia okresu przechowywania skuteczne, nawet jeśli zostały wyczyszczone wszystkie archiwizacją ze względów prawnych.
 

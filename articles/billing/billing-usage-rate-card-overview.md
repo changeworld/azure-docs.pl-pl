@@ -4,7 +4,7 @@ description: Informacje na temat użycia rozliczeń platformy Azure i interfejs�
 services: ''
 documentationcenter: ''
 author: tonguyen
-manager: tonguyen
+manager: mumami
 editor: ''
 tags: billing
 ms.assetid: 3e817b43-0696-400c-a02e-47b7817f9b77
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 5/10/2018
 ms.author: erikre
-ms.openlocfilehash: 79cc543e2a106fa8cbff31bdd0e6bb35afe68e4b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 7e504b2fb01bc8b92c529b68f818df5ed1b889a1
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392044"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276452"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Użyj interfejsów API rozliczeń platformy Azure, aby programowo uzyskać wgląd w użycie platformy Azure
 Użyj interfejsów API rozliczeń platformy Azure do pobierania danych użycia i zasobów do narzędzia do analizy danych preferowany. Interfejsy API usługi RateCard i użycia zasobów platformy Azure mogą ułatwić dokładne przewidywanie kosztów i zarządzanie nimi. Interfejsy API są zaimplementowane jako dostawcy zasobów i częścią rodziny interfejsach API udostępnianych przez usługę Azure Resource Manager.  

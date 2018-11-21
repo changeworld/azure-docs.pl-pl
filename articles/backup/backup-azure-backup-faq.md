@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 2ba6fefb9c1d952fbfdb6942694d69565a299c2e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 61e8a7732b7e6dc7fd521819a135fb1a7a6a13b3
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241263"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261670"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Usługa Azure Backup — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Backup.
@@ -125,7 +125,7 @@ Windows Storage Server 2012 64-bitowy | Standard, Workgroup | Przy użyciu najno
 Windows Server 2008 R2 z dodatkiem SP1 64-bitowy | Standard, Enterprise, Datacenter, Foundation | Z najnowszymi aktualizacjami.
 Windows Server 2008 w wersji 64-bitowych | Standard, Enterprise i Datacenter | Z najnowszymi aktualizacjami.
 
-Kopii zapasowych maszyn wirtualnych platformy Azure w systemie Linux obsługuje usługę Azure Backup [listę dystrybucje zalecane dla platformy Azure](../virtual-machines/linux/endorsed-distros.md), z wyjątkiem systemu operacyjnego Linux Core.  Inne dystrybucje systemu Linux bring your own mogą pracować tak długo, jak agent maszyny Wirtualnej jest dostępny na maszynie Wirtualnej i obsługiwany język Python.
+Kopii zapasowych maszyn wirtualnych platformy Azure w systemie Linux obsługuje usługę Azure Backup [listę dystrybucje zalecane dla platformy Azure](../virtual-machines/linux/endorsed-distros.md), z wyjątkiem systemu operacyjnego Linux Core i 32-bitowym systemie operacyjnym. Inne dystrybucje systemu Linux bring your own mogą pracować tak długo, jak agent maszyny Wirtualnej jest dostępny na maszynie Wirtualnej i obsługiwany język Python.
 
 
 ## <a name="are-there-size-limits-for-data-backup"></a>Czy istnieją ograniczenia rozmiaru danych kopii zapasowej?

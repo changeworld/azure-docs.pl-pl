@@ -4,8 +4,8 @@ description: Dowiedz się, jak wykorzystać przykładowe eksperymenty uczenia ma
 keywords: machine learning examples, sample experiment, machine learning sample, AI examples
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/05/2018
-ms.openlocfilehash: 073c0e0729c1a955e66a66deb3a8797d66ca6225
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7bb6f054b81b21783cecb15c3b5caa9bcf6f77cd
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820295"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264294"
 ---
 # <a name="create-machine-learning-experiments-from-working-examples-in-azure-ai-gallery"></a>Tworzenie eksperymentów uczenia maszynowego na podstawie działających przykładów w galerii sztucznej inteligencji platformy Azure
 

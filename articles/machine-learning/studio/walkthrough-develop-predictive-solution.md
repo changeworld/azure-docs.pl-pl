@@ -4,8 +4,8 @@ description: Szczegółowy przewodnik pokazujący sposób tworzenia rozwiązania
 keywords: ryzyko kredytowe, rozwiązanie analizy predykcyjnej, ocena ryzyka
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 ms.assetid: 43300854-a14e-4cd2-9bb1-c55c779e0e93
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/23/2017
-ms.openlocfilehash: 5de3862ac919cec54b7d6ded674359d624edb917
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 6b8e2a27ceba31d4ee9fd937968d988a229f787a
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822168"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265087"
 ---
 # <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning"></a>Przewodnik: tworzenie rozwiązania analizy predykcyjnej w celu oceny ryzyka kredytowego w usłudze Azure Machine Learning
 

@@ -1,6 +1,6 @@
 ---
-title: Publikowanie szablonu rozwiązania | Dokumentacja firmy Microsoft
-description: Publikowanie szablonu rozwiązania w portalu Azure Marketplace.
+title: Opublikuj szablon rozwiązania platformy Azure | Dokumentacja firmy Microsoft
+description: Opublikuj szablon rozwiązania w portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: dan-wesley
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c7c7912860568aea497e327f29a1b7b71b8f5e87
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 333eebfa1bae919c43164572c63f2de4f7251fe0
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345593"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261621"
 ---
 # <a name="publish-a-solution-template-to-azure-marketplace"></a>Publikowanie szablonu rozwiązania w portalu Azure Marketplace
 
@@ -31,31 +31,22 @@ Następujące wymagania wstępne pomoc techniczna i nietechniczna mają zastosow
 
 ### <a name="technical"></a>Techniczna
 
-- [Omówienie szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
-
+- [Omówienie szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates).
 - Szablony szybkiego startu platformy Azure:
-
     - [Dokumentacja szablonu szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/)
-
     - [Dokumentację Szybki Start platformy Azure w usłudze GitHub](https://github.com/azure/azure-quickstart-templates)
-
  - [Utwórz plik interfejsu użytkownika witryny Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)
+ - Włącz [autorstwa użycia klienta](./../azure-partner-customer-usage-attribution.md) ułatwiają śledzenie użycia platformy Azure dla wdrożenia klienta oprogramowania na platformie Azure.
 
 ### <a name="non-technical-business-requirements"></a>Nietechniczne (wymagania biznesowe)
 
--   Siedziba firmy (lub firmy od niej zależnej) musi znajdować się w sprzedaży w kraju obsługiwanym przez Portal Azure Marketplace.
-
--   Musi być licencjonowany produkt w sposób, który jest zgodny z modelami rozliczeń obsługiwanym przez Portal Azure Marketplace.
-
--   Jesteś odpowiedzialny udostępniania dla pomocy technicznej dla klientów w sposób rozsądny z komercyjnego punktu widzenia, czy bezpłatną, płatną lub za pośrednictwem pomocy technicznej społeczności.
-
--   Jesteś odpowiedzialny za Licencjonowanie oprogramowania oraz wszystkie zależności oprogramowania innych firm.
-
--   Podaj zawartość, która spełnia kryteria za ofertę użytkownika był wyświetlany w portalu Azure Marketplace i w portalu zarządzania Azure.
-
--   Zaakceptuj warunki Azure Marketplace — zasady udziału oraz Umowie wydawcy portalu.
-
--   Należy wyrazić zgodę na przestrzeganie Warunków użytkowania, Zasad zachowania poufności informacji firmy Microsoft i Umowy programu certyfikatu platformy Microsoft Azure.
+- Siedziba firmy (lub firmy od niej zależnej) musi znajdować się w sprzedaży w kraju obsługiwanym przez Portal Azure Marketplace.
+- Musi być licencjonowany produkt w sposób, który jest zgodny z modelami rozliczeń obsługiwanym przez Portal Azure Marketplace.
+- Jesteś odpowiedzialny udostępniania dla pomocy technicznej dla klientów w sposób rozsądny z komercyjnego punktu widzenia, czy bezpłatną, płatną lub za pośrednictwem pomocy technicznej społeczności.
+- Jesteś odpowiedzialny za Licencjonowanie oprogramowania oraz wszystkie zależności oprogramowania innych firm.
+- Podaj zawartość, która spełnia kryteria za ofertę użytkownika był wyświetlany w portalu Azure Marketplace i w witrynie Azure portal.
+- Zaakceptuj warunki Azure Marketplace — zasady udziału oraz Umowie wydawcy portalu.
+- Należy wyrazić zgodę na przestrzeganie Warunków użytkowania, Zasad zachowania poufności informacji firmy Microsoft i Umowy programu certyfikatu platformy Microsoft Azure.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -101,7 +92,7 @@ Każdy widok zawiera zestaw pól, które należy wypełnić. Wymagane pola są o
 
     **Identyfikator oferty**
 
-     Unikatowy identyfikator oferty w ramach profilu wydawcy. Ten identyfikator jest widoczny w adresach URL produktu, szablony ARM i raporty rozliczeń. Można używać tylko małych znaków alfanumerycznych i kresek (-). Identyfikator nie może kończyć się kreską i nie może przekraczać 50 znaków. 
+     Unikatowy identyfikator oferty w ramach profilu wydawcy. Ten identyfikator jest widoczny w adresach URL produktu, szablony usługi Azure Resource Manager i raporty rozliczeń. Można używać tylko małych znaków alfanumerycznych i kresek (-). Identyfikator nie może kończyć się kreską i nie może przekraczać 50 znaków. 
     >[!Note]
     >To pole jest zablokowane, gdy oferty przechodzi na żywo.
 
@@ -113,7 +104,7 @@ Każdy widok zawiera zestaw pól, które należy wypełnić. Wymagane pola są o
 
     **Nazwa**
 
-    Nazwa wyświetlana oferty. Ta nazwa jest wyświetlana w portalu Azure Marketplace i w witrynie Azure Portal. Może zawierać maksymalnie 50 znaków. Użyj poniższych wskazówek Nazwa oferty:
+    Nazwa wyświetlana oferty. Ta nazwa jest wyświetlana w portalu Azure Marketplace i w witrynie Azure portal. Może zawierać maksymalnie 50 znaków. Użyj poniższych wskazówek Nazwa oferty:
     -  Warto umieścić tu rozpoznawalną nazwę marki produktu. 
     - Nie dołączaj nazwę swojej firmy, chyba że jak oferty są sprzedawane.
     - Jeśli ta oferta jest marketingu w swojej własnej witryny sieci Web, upewnij się, że nazwa jest taka sama jak nazwa w witrynie sieci Web.
@@ -128,7 +119,7 @@ oferty.
 
     ![Nowej jednostki SKU](./media/cloud-partner-portal-publish-managed-app/newOffer_skus.png)
 
-    Identyfikator jednostki SKU to unikatowy identyfikator dla jednostek SKU w ramach oferty. Ten identyfikator jest widoczny w adresach URL produktu, szablony ARM i raporty rozliczeń. Identyfikator jednostki SKU:
+    Identyfikator jednostki SKU to unikatowy identyfikator dla jednostek SKU w ramach oferty. Jest on widoczny w adresach URL produktu, szablonach usługi Resource Manager i raportach rozliczeń. Identyfikator jednostki SKU:
     - Obsługuje maksymalnie 50 znaków.
     - Można jedynie składa się z małych znaków alfanumerycznych i kresek (-).
     - Identyfikator nie może kończyć się łącznikiem.
@@ -146,14 +137,10 @@ oferty.
 Podaj następujące ustawienia jednostki SKU.
 
 - **Tytuł** -tytułu dla jednostki SKU. Ten tytuł jest wyświetlany w galerii dla tego elementu.
-
 - **Podsumowanie** — krótkie podsumowanie jednostki SKU. (Maksymalna długość wynosi 100 znaków).
-
 - **Opis** — szczegółowy opis jednostki SKU.
-
 - **Typ jednostki SKU** — na liście rozwijanej następującymi wartościami: "Zarządzana aplikacja (wersja zapoznawcza)" i "Szablon rozwiązania". W tym scenariuszu wybierz **szablon rozwiązania**.
-
-- **Dostępność w chmurze** — Lokalizacja jednostki SKU. Wartość domyślna to publiczna platforma Azure.
+- **Dostępność w chmurze** — Lokalizacja jednostki SKU. Wartość domyślna to **publicznej Azure**.
 
 ### <a name="package-details"></a>Szczegóły pakietu
 
@@ -162,19 +149,16 @@ Po zakończeniu ustawienia jednostki SKU, należy podać następujące dane paki
 ![Szczegóły pakietu](./media/cloud-partner-portal-publish-managed-app/newOffer_newsku_ST_package.png)
 
 - **Bieżąca wersja** — wersja pakietu, który trzeba będzie przekazać. Tagi wersji musi być w postaci X.Y.Z, gdzie X, Y i Z są liczbami całkowitymi.
-
 - **Plik pakietu** — ten pakiet zawiera następujące pliki, które są zapisywane w pliku zip.
-
     -   MainTemplate.json — pliki szablonu wdrożenia, który jest używany do wdrożenia rozwiązanie/aplikację i utworzyć zasoby definiowane dla rozwiązania. Aby uzyskać więcej informacji, zobacz [jak tworzyć pliki szablonów wdrażania](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)
-
-    -   createUIDefinition.json — ten plik jest używany przez witryny Azure Portal do wygenerowania interfejsu użytkownika do obsługi administracyjnej rozwiązania/aplikacji. Aby uzyskać więcej informacji, zobacz [interfejs użytkownika portalu tworzenie platformy Azure dla aplikacji zarządzanej](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)
+    -   createUIDefinition.json — ten plik jest używany przez witryny Azure portal do wygenerowania interfejsu użytkownika do obsługi administracyjnej rozwiązania/aplikacji. Aby uzyskać więcej informacji, zobacz [interfejs użytkownika portalu tworzenie platformy Azure dla aplikacji zarządzanej](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)
 
     >[!IMPORTANT]
     >Ten pakiet może zawierać innych zagnieżdżonych szablonów lub skrypty, które są potrzebne do aprowizowania tej aplikacji. MainTemplate.json i createUIDefinition.json muszą być w folderze głównym.
 
 ## <a name="to-configure-the-marketplace"></a>Aby skonfigurować w portalu Marketplace
 
-Konfigurowanie pola, które są wyświetlane w celu skorzystania z oferty na przy użyciu widoku witryny Marketplace [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [witryny Azure Portal](https://portal.azure.com/).
+Konfigurowanie pola, które są wyświetlane w celu skorzystania z oferty na przy użyciu widoku witryny Marketplace [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [witryny Azure portal](https://portal.azure.com/).
 
 ### <a name="preview-subscription-ids"></a>Identyfikatory subskrypcji (wersja zapoznawcza)
 
@@ -182,9 +166,9 @@ Lista identyfikatorów subskrypcji platformy Azure, który ma mieć dostęp do t
 
 ### <a name="suggested-categories"></a>Sugerowane kategorie
 
-Wybierz maksymalnie 5 kategorie z podanej listy, które oferty można najlepiej skojarzony z. Wybrane kategorie, będzie używany do mapowania oferty dostępne w kategorie produktów [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [witryny Azure Portal](https://portal.azure.com/).
+Wybierz maksymalnie pięć kategorii z dostarczonej listy, który Twoja oferta może być najlepiej skojarzony z. Wybrane kategorie, będzie używany do mapowania oferty dostępne w kategorie produktów [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [witryny Azure Portal](https://portal.azure.com/).
 
-Poniższe przykłady przedstawiają informacje portalu marketplace w portalu Azure Marketplace i witryny Azure Portal.
+Poniższe przykłady przedstawiają informacje portalu marketplace w portalu Azure Marketplace i witryny Azure portal.
 
 **Azure Marketplace**
 
@@ -219,7 +203,7 @@ Wykonaj te wytyczne dotyczące logo przekazany do portalu Cloud Partner:
 
 -   Nie używaj w logo tła gradientowego.
 
--   Należy unikać wprowadzania tekstu na logo. Obejmuje to Twoja firma lub marką. Wygląd i działanie logo powinno być *prostego* i unikać gradientów.
+-   Należy unikać wprowadzania tekstu na logo. Ta wytyczna obejmuje Twoja firma lub marką. Wygląd i działanie logo powinno być *prostego* i unikać gradientów.
 
 -   Nie powinien być rozciągnięty logo.
 
@@ -229,7 +213,7 @@ Logo usługi Hero jest opcjonalne. Wydawcy mogą zrezygnować z Przekaż Hero lo
 
 #### <a name="guidelines-for-the-hero-logo-icon"></a>Wytyczne dotyczące ikona logo Hero
 
--   Nazwa wyświetlana wydawcy, tytuł plan i ofertę długie podsumowanie są wyświetlane przy użyciu biały kolor czcionki. Należy unikać wszelkich jasny kolor w tle. Czarny, biały i przezroczystego tła nie jest dozwolone dla elementu Hero ikon.
+-   Nazwa wyświetlana wydawcy, tytuł plan i ofertę długie podsumowanie są wyświetlane przy użyciu czcionki o kolorze białym. Należy unikać wszelkich jasny kolor w tle. Czarny, biały i przezroczystego tła nie jest dozwolone dla elementu Hero ikon.
 
 -   Nazwa wyświetlana wydawcy, plan, że tytuł, długie Podsumowanie oferty i przycisk Utwórz są osadzane programowo wewnątrz Hero logo gdy oferty na liście. Nie należy wprowadzić dowolny tekst, podczas projektowania Hero logo. Pozostaw puste miejsce po prawej stronie logo. Ta przestrzeń powinny być 415 x 100 pikseli i jest zwracana w 370 pikseli od lewej strony.
 

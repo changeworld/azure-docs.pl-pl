@@ -3,8 +3,8 @@ title: Debugowanie modelu w usłudze Azure Machine Learning | Dokumentacja firmy
 description: Jak debugować błędy wygenerowane przez moduły Train Model i Score Model w usłudze Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.openlocfilehash: 3a0cb9e3533f89088f0fa7199143522888a09632
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: fd81ff0ade0267d052862beed9d84649a7721ee9
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823150"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263693"
 ---
 # <a name="debug-your-model-in-azure-machine-learning"></a>Debugowanie modelu w usłudze Azure Machine Learning
 

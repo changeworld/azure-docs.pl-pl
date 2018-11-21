@@ -3,8 +3,8 @@ title: Ponowne szkolenie istniejącej usługi internetowej predykcyjna | Dokumen
 description: Dowiedz się, jak ponowne szkolenie modelu i zaktualizować usługę sieci web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 2a259f1f8a82c3bd54fd7ba821eb096a85659e3f
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 9fb3ccee9a50fa7758547fffe2573104679aef7e
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821072"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263455"
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>Ponowne szkolenie istniejącej usługi internetowej predykcyjne
 W tym dokumencie opisano proces ponownego trenowania w następującym scenariuszu:

@@ -3,8 +3,8 @@ title: Wdrażanie obszaru roboczego usługi Machine Learning z usługą Azure Re
 description: Jak wdrożyć obszaru roboczego dla usługi Azure Machine Learning przy użyciu szablonu usługi Azure Resource Manager
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 2/05/2018
-ms.openlocfilehash: e17eb0b1a62a8441478773ff0d485291b41a363f
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: e02dac0543fc7c59ae7b7d29bab1dfedb8bf737f
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819325"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263183"
 ---
 # <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>Wdrażanie obszaru roboczego usługi Machine Learning przy użyciu usługi Azure Resource Manager
 ## <a name="introduction"></a>Wprowadzenie

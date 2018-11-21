@@ -4,7 +4,7 @@ description: Dowiedz się, jak czytać i zrozumieć sekcje ze szczegółowym zes
 services: ''
 documentationcenter: ''
 author: tonguyen10
-manager: tonguyen
+manager: alherz
 editor: ''
 tags: billing
 ms.service: billing
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: cwatson
-ms.openlocfilehash: 83891e1abdb58b4fdae65cee3689195b8f35df12
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9b30e5a47b49b707c9efc53add9af44502201641
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230465"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52273680"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Warunki na firma Microsoft nalicza za użycie platformy Azure szczegółowe informacje 
 

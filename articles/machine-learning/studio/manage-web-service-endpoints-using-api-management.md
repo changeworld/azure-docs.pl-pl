@@ -4,8 +4,8 @@ description: Przewodnik, w którym pokazano, jak zarządzać usługami sieci web
 keywords: uczenie maszynowe, usługa api management
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: 1f422d151db4dfcd940a52117e326b4e191f3d1c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: bc0c8f40c8e2fb75e95e1745b53332aa8e4588ca
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823252"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265223"
 ---
 # <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>Dowiedz się, jak zarządzać usługami sieci Web Azure ML za pomocą usługi API Management
 ## <a name="overview"></a>Przegląd

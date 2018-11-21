@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8f3185a2c7633ba0cb5a9b266bcddf023d3c36e1
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 1680a7d9fae9f8b8c04383c9f199e4c2ec8b8dfe
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166456"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275235"
 ---
 # <a name="my-first-powershell-runbook"></a>Mój pierwszy element Runbook programu PowerShell
 
@@ -116,7 +116,7 @@ Teraz, gdy element runbook jest uwierzytelniany w subskrypcji platformy Azure, m
 
 1. Po *Connect-AzureRmAccount*, typ *Start-AzureRmVM-Name 'Nazwa_maszyny_wirtualnej' - ResourceGroupName 'Nazwa_grupy_zasobów'* podanie nazwy i nazwy grupy zasobów maszyny wirtualnej, aby rozpocząć.  
    
-   ```
+   ```powershell
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
    -ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
@@ -131,7 +131,7 @@ Element runbook aktualnie umożliwia uruchomienie maszyny wirtualnej tego zostan
 
 1. Dodaj parametry *VMName* i *ResourceGroupName* do elementu runbook i użyj tych zmiennych z **Start-AzureRmVM** polecenia cmdlet, jak w poniższym przykładzie.
 
-   ```
+   ```powershell
    Param(
     [string]$VMName,
     [string]$ResourceGroupName

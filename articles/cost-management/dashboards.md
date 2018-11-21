@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
+manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: 1d2b4a0cd78f3d68a76bd9186be4174f2dd1d86c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e053f2387df5d9a2855ce3242d4d7121452a73d8
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999716"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275942"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Wyświetl klucz koszt metryki za pomocą pulpitów nawigacyjnych
 

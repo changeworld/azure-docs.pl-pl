@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0ca8e1081b514d5569c84a6364d55e8f49bee533
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 0d31fc0ecb06727aa44d31d832b0bfd5145b7c7d
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239009"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262096"
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Rozpoznawanie jednostek biomedycznych przy użyciu szablonu Team Data Science naukowych
 
@@ -174,7 +174,7 @@ Word2Vec to słowa, osadzanie algorytmu uczenia nienadzorowanych, który przygot
 
 ![Pomiń Gram modelu](./media/scenario-tdsp-biomedical-recognition/skip-gram.png)
 
-Model wykorzystuje Softmax hierarchiczne i ujemne próbkowania w celu zoptymalizowania wydajności. Hierarchiczna SoftMax (H-SoftMax) jest przybliżeniem przez drzew binarnych. H SoftMax zasadniczo zamienia warstwy płaski SoftMax hierarchiczne warstwy, która zawiera wyrazy, jak pozostawia. Dzięki temu do rozkładania obliczanie prawdopodobieństwa o jeden wyraz w sekwencji obliczeń prawdopodobieństwa oszczędza nam konieczności Oblicz między kosztowne normalizacji wszystkie wyrazy. Ponieważ o zrównoważonym obciążeniu drzewa binarnego głębokość log2 (| V |) (V jest słownictwa), potrzebujemy do oceny, co najwyżej log2 (| V |) węzły można uzyskać końcowego prawdopodobieństwo, że wyraz. Prawdopodobieństwo, że w program word, biorąc pod uwagę jej c kontekstu jest po prostu produktu prawdopodobieństwa podjęcia prawo, a następnie po lewej stronie odpowiednio konwertuje, które zachęcają do jego węzeł liścia. Firma Microsoft można utworzyć drzewa Huffmana na podstawie częstotliwości słów w zestawie danych, aby mieć pewność, że wyrazy częściej reprezentacje krótsze. Aby uzyskać więcej informacji, zobacz [ten link](http://sebastianruder.com/word-embeddings-softmax/).
+Model wykorzystuje Softmax hierarchiczne i ujemne próbkowania w celu zoptymalizowania wydajności. Hierarchiczna SoftMax (H-SoftMax) jest przybliżeniem przez drzew binarnych. H SoftMax zasadniczo zamienia warstwy płaski SoftMax hierarchiczne warstwy, która zawiera wyrazy, jak pozostawia. Dzięki temu do rozkładania obliczanie prawdopodobieństwa o jeden wyraz w sekwencji obliczeń prawdopodobieństwa oszczędza nam konieczności Oblicz między kosztowne normalizacji wszystkie wyrazy. Ponieważ o zrównoważonym obciążeniu drzewa binarnego głębokość log2 (| V |) (V jest słownictwa), potrzebujemy do oceny, co najwyżej log2 (| V |) węzły można uzyskać końcowego prawdopodobieństwo, że wyraz. Prawdopodobieństwo, że w program word, biorąc pod uwagę jej c kontekstu jest po prostu produktu prawdopodobieństwa podjęcia prawo, a następnie po lewej stronie odpowiednio konwertuje, które zachęcają do jego węzeł liścia. Firma Microsoft można utworzyć drzewa Huffmana na podstawie częstotliwości słów w zestawie danych, aby mieć pewność, że wyrazy częściej reprezentacje krótsze. Aby uzyskać więcej informacji, zobacz [ten link](http://ruder.io/word-embeddings-softmax/).
 Obraz z [tutaj](https://ahmedhanibrahim.wordpress.com/2017/04/25/thesis-tutorials-i-understanding-word2vec-for-word-embedding-i/).
 
 ##### <a name="visualization"></a>Wizualizacja

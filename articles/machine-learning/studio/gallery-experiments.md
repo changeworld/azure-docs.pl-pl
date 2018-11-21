@@ -3,8 +3,8 @@ title: Experiments Galeria sztucznej Inteligencji platformy Azure | Dokumentacja
 description: Odnajdywanie i udostępnianie eksperymenty w galerii sztucznej Inteligencji platformy Azure.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
-ms.openlocfilehash: 4f1a06d8daa2a811871c8469dddb75ce36ceb04e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 43e5cc14ac98b85dd50391380033834cf642b1a9
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821338"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264475"
 ---
 # <a name="discover-experiments-in-azure-ai-gallery"></a>Odkryj eksperymenty w galerii Azure AI
 

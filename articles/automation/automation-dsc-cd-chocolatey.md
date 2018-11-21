@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f685b584b701d2772ec5b3915facb97f0d15658a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4172afc3adf23a05384fec0413465cf491af3a79
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259177"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275303"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Przykład użycia: Ciągłe wdrażanie na maszynach wirtualnych za pomocą automatyzacji konfiguracji stanu i narzędzia Chocolatey
 
@@ -64,8 +64,10 @@ Jeśli one nie uruchamia się za pomocą szablonu usługi Resource Manager, któ
 
 Pod uwierzytelnionego (`Connect-AzureRmAccount`) wiersza polecenia programu PowerShell: (może potrwać kilka minut, gdy skonfigurowano serwera ściągania)
 
-    New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
-    New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT
+```azurepowershell-interactive
+New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
+New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT
+```
 
 Możesz umieścić swoje konto usługi automation do dowolnego spośród następujących regionów (zwane również lokalizacja): wschodnie stany USA 2, południowo-środkowe stany USA, administracja USA — Wirginia, Europa Zachodnia, Azja południowo-wschodnia, Japonia Wschodnia, Indie środkowe i Australia Południowo-Wschodnia, Kanada Środkowa, Europa Północna.
 

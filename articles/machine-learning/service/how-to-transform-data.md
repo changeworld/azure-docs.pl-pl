@@ -10,16 +10,16 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 06e7d227511a9b651a905df3172f59a191acce01
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 76b417d1592671006d3d5cfa2363e306e4db48fd
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945675"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263046"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Przekształcanie danych za pomocą usługi Azure Machine Learning Prep zestawu SDK usługi Data
 
-[Zestawu SDK usługi Azure Machine Learning danych Prep](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) oferuje różne przekształcenia metody, aby wyczyścić dane. Metody te ułatwiają dodawanie kolumn odfiltrować zbędne wiersze lub kolumny i przypisują brakujące wartości.
+[Zestawu SDK usługi Azure Machine Learning danych Prep](https://aka.ms/data-prep-sdk) oferuje różne przekształcenia metody, aby wyczyścić dane. Metody te ułatwiają dodawanie kolumn odfiltrować zbędne wiersze lub kolumny i przypisują brakujące wartości.
 
 Obecnie dostępne są metody w celu uwzględnienia poniższych zadań:
 - [Dodawanie kolumny za pomocą wyrażenia](#column)
@@ -347,7 +347,7 @@ df
 
 Zestaw SDK zawiera metody `Dataflow.drop_columns` i `Dataflow.filter` umożliwia filtrowanie wierszy lub kolumn.
 
-### <a name="initial-setup"></a>Początkowej konfiguracji
+### <a name="initial-setup"></a>Konfiguracja początkowa
 ```
 import azureml.dataprep as dprep
 from datetime import datetime

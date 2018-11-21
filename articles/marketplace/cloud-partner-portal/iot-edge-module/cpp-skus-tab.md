@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 205fd258ed397f5a9588773549368fc3c4aec058
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 370d8160661c1f73124151a3a49d0bb3170dfb77
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684821"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276044"
 ---
 # <a name="iot-edge-module-skus-tab"></a>Karty jednostki SKU modułu usługi IoT Edge
 
@@ -125,7 +125,7 @@ W poniższej tabeli opisano przeznaczenie zawartości i formatowania pól dla **
 
 |  **Pole**       |     **Opis**                                                          |
 |  ---------       |     ---------------                                                          |
-| **Trasy domyślne**        | Każdy domyślnej nazwy trasy i wartości musi być krótsza niż 512 znaków. Można zdefiniować maksymalnie 5 tras domyślnych. Pamiętaj użyć poprawne [trasy składni](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) w swojej wartości trasy. Aby odwołać się do modułu, użyj domyślnej nazwy modułu, który będzie Twoja **tytuł jednostki SKU** bez spacji i znaków specjalnych. Aby odwołać się do innych modułów, które nie są jeszcze znane, należy użyć `<FROM_MODULE_NAME>` Konwencji Poinformuj klientów, aby zaktualizować te informacje. Dowiedz się więcej o [kieruje usługi IoT Edge](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes). <br/> Na przykład jeśli moduł `ContosoModule` dla danych wejściowych nasłuchuje `ContosoInput` i danych wyjściowych `ContosoOutput`, warto zdefiniować następujące trasy domyślne 2:<br/>— Nazwa #1: `ToContosoModule`<br/>-Wartość #1:`FROM /messages/modules/<FROM_MODULE_NAME>/outputs/* INTO BrokeredEndpoint("/modules/ContosoModule/inputs/ContosoInput")`<br/>— Nazwa #2: `FromContosoModuleToCloud`<br/>-Wartość #2: `FROM /messages/modules/ContonsoModule/outputs/ContosoOuput INTO $upstream`<br/>  |
+| **Trasy domyślne**        | Każdy domyślnej nazwy trasy i wartości musi być krótsza niż 512 znaków. Można zdefiniować maksymalnie 5 tras domyślnych. Pamiętaj użyć poprawne [trasy składni](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) w swojej wartości trasy. Aby odwołać się do modułu, użyj domyślnej nazwy modułu, który będzie Twoja **tytuł jednostki SKU** bez spacji i znaków specjalnych. Aby odwołać się do innych modułów, które nie są jeszcze znane, należy użyć `<FROM_MODULE_NAME>` Konwencji Poinformuj klientów, aby zaktualizować te informacje. Dowiedz się więcej o [kieruje usługi IoT Edge](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes). <br/> Na przykład jeśli moduł `ContosoModule` dla danych wejściowych nasłuchuje `ContosoInput` i danych wyjściowych `ContosoOutput`, warto zdefiniować następujące trasy domyślne 2:<br/>— Nazwa #1: `ToContosoModule`<br/>-Wartość #1:`FROM /messages/modules/<FROM_MODULE_NAME>/outputs/* INTO BrokeredEndpoint("/modules/ContosoModule/inputs/ContosoInput")`<br/>— Nazwa #2: `FromContosoModuleToCloud`<br/>-Wartość #2: `FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream`<br/>  |
 | **Domyślne odpowiednich właściwości bliźniaka**      | Każda domyślna nazwa żądane właściwości bliźniaczej reprezentacji wartości muszą mieć mniej niż 512 znaków. Można zdefiniować maksymalnie 5 nazw i wartości odpowiednich właściwości bliźniaka. Wartości odpowiednich właściwości bliźniaka musi być prawidłowym plikiem JSON bez sekwencji specjalnych, bez tablic oraz o maksymalnej hierarchii zagnieżdżonych 4. Dowiedz się więcej o [bliźniaczej reprezentacji żądane właściwości](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties). <br/> Na przykład jeśli moduł obsługuje częstotliwość odświeżania dynamiczną konfigurację za pomocą odpowiednich właściwości bliźniaka, warto zdefiniować następującą właściwość domyślną w bliźniaczej reprezentacji żądanego:<br/> — Nazwa #1: `RefreshRate`<br/>-Wartość #1: `60`|
 | **Zmienne środowiskowe domyślne**  | Każdy domyślnej nazwy zmiennych środowiskowych i wartości musi być krótsza niż 512 znaków. Można zdefiniować maksymalnie 5 zmiennych środowiskowych nazwa/wartość. <br/>Na przykład jeśli moduł wymaga, aby zaakceptować warunki użytkowania, zanim uruchamiana, można zdefiniować następującą zmienną środowiskową:<br/> — Nazwa #1: `ACCEPT_EULA`<br/>-Wartość #1: `Y`|
 | **Domyślne CreateOptions, można żądań**  | CreateOptions, można żądań musi być krótsza niż 512 znaków. Musi być prawidłowym kodem JSON wyjściowym. Dowiedz się więcej o [CreateOptions, można żądań](https://docs.microsoft.com/azure/iot-edge/module-composition#configure-modules). <br/> Na przykład, jeśli moduł wymaga powiązanie portu, można zdefiniować następujące CreateOptions, można żądań:<br/>  `"HostConfig":{"PortBindings":{"5012/tcp":[{"HostPort":"5012"}]}`|

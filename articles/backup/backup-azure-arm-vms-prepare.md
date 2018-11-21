@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 6de0d29895a6d12d3a5aa761c0c4c5148f62dd81
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 086399f669b704a0ae2c9f719906e7efa672b5b1
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256276"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262513"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Przygotowanie do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure
 
@@ -34,7 +34,7 @@ Jeśli te warunki są już istnieją w Twoim środowisku, przejdź do [tworzenie
 
 ## <a name="supported-operating-systems-for-backup"></a>Obsługiwane systemy operacyjne dla kopii zapasowej
 
- * **Linux**: Usługa Azure Backup obsługuje [listę dystrybucji, które platforma Azure wspiera](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), z wyjątkiem CoreOS Linux. Aby uzyskać listę systemów operacyjnych Linux, które obsługują Przywracanie plików, zobacz [odzyskiwanie plików z kopii zapasowej maszyny wirtualnej](backup-azure-restore-files-from-vm.md#for-linux-os).
+ * **Linux**: Usługa Azure Backup obsługuje [listę dystrybucji, które platforma Azure wspiera](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), z wyjątkiem systemu Linux systemu CoreOS i 32-bitowym systemie operacyjnym. Aby uzyskać listę systemów operacyjnych Linux, które obsługują Przywracanie plików, zobacz [odzyskiwanie plików z kopii zapasowej maszyny wirtualnej](backup-azure-restore-files-from-vm.md#for-linux-os).
 
     > [!NOTE]
     > Inne dystrybucje bring-your-own Linux może działać, dopóki agent maszyny Wirtualnej jest dostępne na maszynie wirtualnej i obsługiwany język Python. Jednak te dystrybucji nie są obsługiwane.

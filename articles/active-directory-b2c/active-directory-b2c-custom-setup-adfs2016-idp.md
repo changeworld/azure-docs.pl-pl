@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d94542e0c6c19fd3a79f465b69fadb6f3f28330e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 7f74da682c72f9effb4dbac49b316ff17f03b534
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685773"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275891"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Dodawanie usług AD FS jako dostawcy tożsamości SAML, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -175,7 +175,7 @@ Otwórz przeglądarkę i przejdź do adresu URL. Upewnij się, wpisz poprawny ad
     | E-mail adresem | e-mail |
     | Nazwa wyświetlana | name |
     
-12.  Oparte na typu certyfikatu, konieczne może być ustawiona algorytmu wyznaczania wartości skrótu. Na jednostki uzależnionej strony zaufania (B2C pokaz) oknie właściwości wybierz **zaawansowane** kartę i zmień **skrótu Secure hash algorithm** do `SHA-1` lub `SHA-256`i kliknij przycisk **Ok**.  
+12.  Oparte na typu certyfikatu, konieczne może być ustawiona algorytmu wyznaczania wartości skrótu. Na jednostki uzależnionej strony zaufania (B2C pokaz) oknie właściwości wybierz **zaawansowane** kartę i zmień **skrótu Secure hash algorithm** do `SHA-256`i kliknij przycisk **Ok**.  
 13. W Menedżerze serwera wybierz **narzędzia**, a następnie wybierz pozycję **zarządzania usług AD FS**.
 14. Wybierz zaufanie jednostki uzależnionej został utworzony, wybierz pozycję **aktualizacji z metadanych Federacji**, a następnie kliknij przycisk **aktualizacji**. 
 

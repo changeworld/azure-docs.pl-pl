@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ae962cba5e3d08661eb1c93edfc2feb221a9367e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: d3705267520087e098e3e2bcc55e677935dc6097
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623794"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275337"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
@@ -46,7 +46,7 @@ Ten temat zawiera omówienie raportów logowania.
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Jaka licencja usługi Azure AD jest wymagana w celu uzyskania dostępu do informacji dotyczących logowania?
 * Dzierżawca musi mieć skojarzoną licencję usługi Azure AD w wersji Premium, aby wyświetlić pełny raport o wszystkich operacjach logowania
 
-## <a name="sign-ins-report"></a>Raport logowań
+## <a name="sign-ins-report"></a>Raport dotyczący logowań
 
 Raport logowań użytkownika zawiera odpowiedzi na następujące pytania:
 
@@ -57,6 +57,9 @@ Raport logowań użytkownika zawiera odpowiedzi na następujące pytania:
 Dostęp do raportów logowania, wybierając **logowania** w **działania** części **usługi Azure Active Directory** bloku [witrynyAzureportal](https://portal.azure.com).
 
 ![Działania związane z logowaniem](./media/concept-sign-ins/61.png "Działania związane z logowaniem")
+
+> [!IMPORTANT]
+> Wyświetla tylko raport logowań **interaktywne** logowań, czyli, logowania, gdzie użytkownik ręcznie loguje się przy użyciu nazwy użytkownika i hasła. Nieinterakcyjne logowania, takich jak uwierzytelnianie service-to-service, nie są wyświetlane w raporcie logowań. 
 
 Domyślny widok listy dziennika logowań pokazuje następujące dane:
 

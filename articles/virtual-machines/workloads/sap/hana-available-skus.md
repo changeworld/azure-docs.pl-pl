@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
+ms.date: 11/20/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7ed7291333e7baa764b09e66aa5cfaedc77072fb
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 9358f280efb847bdce802cc3a20e64710ffc3214
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028252"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275388"
 ---
 # <a name="available-skus-for-hli"></a>Jednostki SKU dostępne dla HLI
 
@@ -31,16 +31,16 @@ Oprogramowanie SAP HANA na platformie Azure (duże wystąpienia) usługi jest do
 | --- | --- | --- | --- | --- |
 | Optymalizacja pod kątem OLAP: oprogramowanie SAP BW, BW/4HANA<br /> lub SAP HANA dla ogólnych obciążeń OLAP | Oprogramowanie SAP HANA na platformie Azure S72<br /> — 2 x procesor Intel® Xeon® E7-8890 v3<br /> 36 rdzeni procesora CPU i 72 wątki procesora CPU |  768 GB |  3 TB | Dostępne |
 | --- | Oprogramowanie SAP HANA na platformie Azure S144<br /> — 4 x procesor Intel® Xeon® E7-8890 v3<br /> 72 rdzeni procesora CPU i 144 wątki procesora CPU |  1,5 TB |  6 TB | Nie jest już dostępna |
-| --- | Oprogramowanie SAP HANA na platformie Azure S192<br /> — 4 x procesor Intel® Xeon® E7-8890 v4<br /> 96 rdzeni procesora CPU i 192 wątki procesora CPU |  W WERSJI 2.0 TB |  8 TB | Dostępne |
-| --- | Oprogramowanie SAP HANA na platformie Azure S384<br /> — 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 rdzeni procesora CPU i 384 wątki procesora CPU |  4.0 TB |  16 TB | Dostępne |
+| --- | Oprogramowanie SAP HANA na platformie Azure S192<br /> — 4 x procesor Intel® Xeon® E7-8890 v4<br /> 96 rdzeni procesora CPU i 192 wątki procesora CPU |  W WERSJI 2.0 TB |  8 TB | Dostępne |
+| --- | Oprogramowanie SAP HANA na platformie Azure S384<br /> — 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 rdzeni procesora CPU i 384 wątki procesora CPU |  4.0 TB |  16 TB | Dostępne |
 | Optymalizacja pod kątem OLTP: oprogramowanie SAP Business Suite<br /> SAP HANA lub S/4HANA (OLTP)<br /> Ogólne OLTP | Oprogramowanie SAP HANA na platformie Azure S72m<br /> — 2 x procesor Intel® Xeon® E7-8890 v3<br /> 36 rdzeni procesora CPU i 72 wątki procesora CPU |  1,5 TB |  6 TB | Dostępne |
 |---| Oprogramowanie SAP HANA na platformie Azure S144m<br /> — 4 x procesor Intel® Xeon® E7-8890 v3<br /> 72 rdzeni procesora CPU i 144 wątki procesora CPU |  3.0 TB |  12 TB | Nie jest już dostępna |
-|---| Oprogramowanie SAP HANA na platformie Azure S192m<br /> — 4 x procesor Intel® Xeon® E7-8890 v4<br /> 96 rdzeni procesora CPU i 192 wątki procesora CPU  |  4.0 TB |  16 TB | Dostępne |
-|---| Oprogramowanie SAP HANA na platformie Azure S384m<br /> — 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 rdzeni procesora CPU i 384 wątki procesora CPU |  W WERSJI 6.0 TB |  18 TB | Dostępne |
-|---| Oprogramowanie SAP HANA na platformie Azure S384xm<br /> — 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 rdzeni procesora CPU i 384 wątki procesora CPU |  8.0 TB |  22 TB |  Dostępne |
-|---| Oprogramowanie SAP HANA na platformie Azure S576m<br /> — 12 x procesor Intel® Xeon® E7-8890 v4<br /> 288 rdzeni procesora CPU i 576 wątki procesora CPU |  12.0 TB |  28 TB | Dostępne |
-|---| Oprogramowanie SAP HANA na platformie Azure S768m<br /> — 16 x procesor Intel® Xeon® E7-8890 v4<br /> 384 rdzeni procesora CPU i 768 wątki procesora CPU |  16.0 TB |  36 TB | Dostępne |
-|---| Oprogramowanie SAP HANA na platformie Azure S960m<br /> — 20 x procesor Intel® Xeon® E7-8890 v4<br /> 480 rdzeni procesora CPU i 960 wątki procesora CPU |  20.0 TB |  46 TB | Dostępne |
+|---| Oprogramowanie SAP HANA na platformie Azure S192m<br /> — 4 x procesor Intel® Xeon® E7-8890 v4<br /> 96 rdzeni procesora CPU i 192 wątki procesora CPU  |  4.0 TB |  16 TB | Dostępne |
+|---| Oprogramowanie SAP HANA na platformie Azure S384m<br /> — 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 rdzeni procesora CPU i 384 wątki procesora CPU |  W WERSJI 6.0 TB |  18 TB | Dostępne |
+|---| Oprogramowanie SAP HANA na platformie Azure S384xm<br /> — 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 rdzeni procesora CPU i 384 wątki procesora CPU |  8.0 TB |  22 TB |  Dostępne |
+|---| Oprogramowanie SAP HANA na platformie Azure S576m<br /> — 12 x procesor Intel® Xeon® E7-8890 v4<br /> 288 rdzeni procesora CPU i 576 wątki procesora CPU |  12.0 TB |  28 TB | Dostępne |
+|---| Oprogramowanie SAP HANA na platformie Azure S768m<br /> — 16 x procesor Intel® Xeon® E7-8890 v4<br /> 384 rdzeni procesora CPU i 768 wątki procesora CPU |  16.0 TB |  36 TB | Dostępne |
+|---| Oprogramowanie SAP HANA na platformie Azure S960m<br /> — 20 x procesor Intel® Xeon® E7-8890 v4<br /> 480 rdzeni procesora CPU i 960 wątki procesora CPU |  20.0 TB |  46 TB | Dostępne |
 
 
 W obszarze TDIv5 HANA SAP SAP umożliwia skonfigurowanie rozmiaru właściwe dla klienta i projektów specyficznych dla klientów, które mogą prowadzić do konfiguracji serwera, które nie są wymienione jako certyfikat w procesie:
@@ -50,13 +50,17 @@ W obszarze TDIv5 HANA SAP SAP umożliwia skonfigurowanie rozmiaru właściwe dla
 
 W wielu przypadkach te konfiguracje specyficzne dla klienta serwera wykonać więcej pamięci niż jednostek serwera, certyfikat z oprogramowaniem SAP. W pracy z SAP, klienci mają możliwość uzyskanie pomocy technicznej SAP, a także zaświadczasz, w przypadku ich konfiguracji serwera wielkości właściwe dla klienta. Na platformie Azure następujące dużych wystąpień HANA standardowej jednostki SKU są dostępne, a w programie Microsoft cennik dla projektów TDIv5 rozmiaru właściwe dla klienta.
 
+| SKU|Procesor CPU | Memory (Pamięć) | Magazyn | Dostępność |
+| ---| --- | --- | --- | --- |
+| S96 | Oprogramowanie SAP HANA na S96 platformy Azure<br /> — 4 x procesor Intel® Xeon® E7-8890 v4<br /> 48 rdzeni procesora CPU i 96 wątki procesora CPU |  768 TB |  3 TB | Dostępne |
+
 
 | Oryginalnej jednostki SKU, które mogą być <br /> rozszerzony w pamięci | Procesor CPU | Memory (Pamięć) | Magazyn | Dostępność |
 | --- | --- | --- | --- | --- |
 | Platformie S192m może zostać rozszerzony do | Oprogramowanie SAP HANA na S192xm platformy Azure<br /> — 4 x procesor Intel® Xeon® E7-8890 v4<br /> 96 rdzeni procesora CPU i 192 wątki procesora CPU |  W WERSJI 6.0 TB |  16 TB | Dostępne |
-| S384xm może zostać rozszerzony do | Oprogramowanie SAP HANA na S384xxm platformy Azure<br /> — 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 rdzeni procesora CPU i 384 wątki procesora CPU |  12.0 TB |  28 TB | Dostępne |
-| S576m może zostać rozszerzony do | Oprogramowanie SAP HANA na S576xm platformy Azure<br /> — 12 x procesor Intel® Xeon® E7-8890 v4<br /> 288 rdzeni procesora CPU i 576 wątki procesora CPU |  WERSJACH 18.0 TB |  41 TB | Dostępne |
-| S768m może zostać rozszerzony do | Oprogramowanie SAP HANA na S768xm platformy Azure<br /> — 16 x procesor Intel® Xeon® E7-8890 v4<br /> 384 rdzeni procesora CPU i 768 wątki procesora CPU |  24.0 TB |  56 TB | Dostępne |
+| S384xm może zostać rozszerzony do | Oprogramowanie SAP HANA na S384xxm platformy Azure<br /> — 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 rdzeni procesora CPU i 384 wątki procesora CPU |  12.0 TB |  28 TB | Dostępne |
+| S576m może zostać rozszerzony do | Oprogramowanie SAP HANA na S576xm platformy Azure<br /> — 12 x procesor Intel® Xeon® E7-8890 v4<br /> 288 rdzeni procesora CPU i 576 wątki procesora CPU |  WERSJACH 18.0 TB |  41 TB | Dostępne |
+| S768m może zostać rozszerzony do | Oprogramowanie SAP HANA na S768xm platformy Azure<br /> — 16 x procesor Intel® Xeon® E7-8890 v4<br /> 384 rdzeni procesora CPU i 768 wątki procesora CPU |  24.0 TB |  56 TB | Dostępne |
 
 - Liczba rdzeni procesora CPU = suma nie hyper Threading rdzeni procesora CPU sumy liczby procesorów jednostki serwera.
 - Wątki procesora CPU = Suma wątków obliczeniowe udostępniane przez hyper Threading rdzeni procesora CPU sumy liczby procesorów jednostki serwera. Większość jednostek są domyślnie skonfigurowane, aby użyć technologię hiperwątkowości.
@@ -67,7 +71,7 @@ Konkretne konfiguracje wybrane są zależne od obciążenia, zasobów procesora 
 
 Podstawowy dla oferty, z wyjątkiem jednostki dla projektów właściwe dla klienta, ustalanie rozmiaru sprzętu są z certyfikatem TDI i programu SAP HANA. Dwoma różnymi klasami sprzętu Podziel jednostki SKU do:
 
-- S72, S72m, S144, S144m, platformie S192, platformie S192m i S192xm, które są określane jako "Type I klasy" jednostek SKU.
+- S72, S72m, S96, S144, S144m, platformie S192, platformie S192m i S192xm, które są określane jako "Type I klasy" jednostek SKU.
 - S384, S384m, S384xm, S384xxm, S576m, S576xm S768m, S768xm i S960m, które są określane jako "Typ klasy II" jednostek SKU.
 
 Pełną sygnaturę dużych wystąpień HANA nie jest przeznaczona wyłącznie przydzielone dla jednego klienta&#39;s użycia. Fakt ten dotyczy regałów zasoby obliczeniowe i magazynowe, które są połączone za pośrednictwem sieci szkieletowej wdrożonych na platformie Azure, jak również. Duże wystąpienie oprogramowania HANA infrastruktury, takich jak Azure, wdraża różnych klientów &quot;dzierżaw&quot; , które są odizolowane od siebie nawzajem w następujących trzech poziomach:

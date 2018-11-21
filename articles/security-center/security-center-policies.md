@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/3/2018
+ms.date: 11/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: 713deee8ead1fb5cdc1ca48e4c832fc295dedc15
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2be1f6ef5a10e23888f31c68c66b804f0be49632
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236656"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275320"
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Ustawianie zasad zabezpieczeń w usłudze Azure Security Center
 Ten artykuł zawiera informacje pomocne podczas konfigurowania zasad zabezpieczeń w usłudze Security Center.
@@ -43,7 +43,7 @@ W usłudze Security Center możesz edytować domyślne zasady zabezpieczeń dla 
 
 3. Wybierz subskrypcję, dla której chcesz włączyć zasady zabezpieczeń.
 
-4. Włącz zasady, które chcesz włączyć dla subskrypcji. Zostanie wyświetlone zalecenia w zależności od każdej zasady, którą wybierzesz. 
+4. Włącz zasady, które chcesz włączyć dla subskrypcji. Zostanie wyświetlone zalecenia w zależności od każdej zasady, którą wybierzesz.
   ![Lista zasad](./media/security-center-policies/policies.png)
 5. Po zakończeniu edycji wybierz pozycję **Zapisz**.
 
@@ -57,6 +57,7 @@ Aby uzyskać informacje o definicjach zasad dostępnych w ramach domyślnych zas
 | Konfiguracje zabezpieczeń |Analizuje codziennie konfigurację systemu operacyjnego w celu określenia problemów, które mogą uczynić maszynę wirtualną podatną na ataki. Zaleca także dokonanie zmian w konfiguracji w celu usunięcia tych luk w zabezpieczeniach. Więcej informacji na temat określonych monitorowanych konfiguracji znajduje się na [liście zalecanych linii bazowych](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). (Obecnie system Windows Server 2016 nie jest w pełni obsługiwany). |
 | Ochrona punktów końcowych |Zalecają ochronę punktów końcowych do skonfigurowania dla wszystkich maszyn wirtualnych systemu Windows, aby ułatwić identyfikację i usuwanie wirusów, programów szpiegujących oraz innego złośliwego oprogramowania. |
 | Szyfrowanie dysków |Zaleca włączenie szyfrowania dysków na wszystkich maszynach wirtualnych w celu zwiększenia ochrony magazynowanych danych. |
+| Funkcje adaptacyjnego sterowania aplikacjami | Zaleca się, że umożliwiają adaptacyjne kontrole aplikacji na maszynie Wirtualnej. |
 | Grupy zabezpieczeń sieci |Zaleca się, aby [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) były skonfigurowane do kontrolowania ruchu przychodzącego i wychodzącego do maszyn wirtualnych z publicznymi punktami końcowymi. Sieciowe grupy zabezpieczeń skonfigurowane dla podsieci są dziedziczone przez wszystkie interfejsy sieciowe maszyny wirtualnej, chyba że określono inaczej. Oprócz sprawdzania, czy sieciowa grupa zabezpieczeń została skonfigurowana, ta opcja również ocenia reguły zabezpieczeń ruchu przychodzącego w celu określenia, czy istnieją takie, które zezwalają na ruch przychodzący. |
 | Zapora aplikacji internetowej |Zalecają skonfigurowanie zapory aplikacji internetowej na maszynach wirtualnych, gdy został spełniony dowolny z następujących warunków: <ul><li>Używany jest [publiczny adres IP na poziomie wystąpienia](../virtual-network/virtual-networks-instance-level-public-ip.md), a konfiguracja reguł zabezpieczeń ruchu przychodzącego dla skojarzonej sieciowej grupy zabezpieczeń umożliwia dostęp do portu 80/443.</li><li>Używany jest adres IP ze zrównoważonym obciążeniem, a konfiguracja skojarzonych reguł równoważenia obciążenia i reguł translatora adresów sieciowych (NAT) dla ruchu przychodzącego umożliwia dostęp do portu 80/443. Aby uzyskać więcej informacji, zobacz artykuł [Azure Resource Manager support for Load Balancer](../load-balancer/load-balancer-arm.md) (Obsługa usługi Azure Resource Manager dla modułu równoważenia obciążenia).</li> |
 | Zapora nowej generacji |Powoduje rozszerzenie ochrony sieci poza grupy zabezpieczeń sieci, które są wbudowane w platformę Azure. Usługa Security Center wykryje wdrożenia, dla których zaleca się zaporę nowej generacji, i umożliwi skonfigurowanie urządzenia wirtualnego. |

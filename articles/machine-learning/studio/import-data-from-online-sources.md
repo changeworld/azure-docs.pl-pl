@@ -4,8 +4,8 @@ description: Informacje o importowaniu danych szkoleniowych Azure Machine Learni
 keywords: Importowanie danych, formatu danych, typów danych, źródeł danych, dane szkoleniowe
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: f48bb2e81114793c1c28227aacebaeedce693d63
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 6412d431b0258d681d8d9bd8cb3a88798a0d81cd
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820940"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262903"
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>Importowanie danych do usługi Azure Machine Learning Studio z różnych źródeł danych w trybie online za pomocą modułu importu danych
 W tym artykule opisano obsługę importowania danych z różnych źródeł oraz informacjami potrzebnymi do przenoszenia danych z tych źródeł do eksperymentu usługi Azure Machine Learning.

@@ -4,8 +4,8 @@ description: Do nauki o danych dla początkujących jest omawia podstawowe poję
 keywords: wykonując analizy danych, początkujących do nauki o danych, do nauki o danych dla początkujących podstawy do nauki o danych, pytania do nauki o danych, wideo do nauki o danych, wprowadzenie do nauki o danych
 services: machine-learning
 documentationcenter: na
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cjgronlund
@@ -17,12 +17,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 10f0c8256f991a0d873b38a3606c1218b9edf56d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 2e3d8805bfbe5b55aed111090cf1f7c02acb6a76
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819022"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262044"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Wideo 1: analiza danych dla początkujących — 5 pytań, na które analiza danych daje odpowiedzi
 Skorzystaj z krótkiego wprowadzenia do nauki o danych z *przetwarzanie danych dla początkujących* w pięciu krótkich filmach wideo z najważniejszych danych. Te wideo stanowią podstawowy, ale przydatne, czy interesuje Cię nauki o danych, czy pracujesz z analityków danych.

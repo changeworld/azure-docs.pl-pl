@@ -5,7 +5,7 @@ keywords: faktury, pobierania faktur, faktury platformy azure, użycie platformy
 services: billing
 documentationcenter: ''
 author: genlin
-manager: tonguyen
+manager: adpick
 editor: ''
 tags: billing
 ms.service: billing
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: f0cdfef50c07674a08766933f2f7edfc946462a4
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 9067162c6f1bd95b0a1c25bef17836b19ecf6946
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395019"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276113"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Pobieranie i wyświetlanie Azure faktury i dane dotyczące dziennego wykorzystania
 Możesz pobrać fakturę z [witryny Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) lub wysłać w wiadomości e-mail. Aby pobrać z dziennym użyciem, przejdź do [Centrum konta platformy Azure](https://account.azure.com/Subscriptions). Tylko określone role, które ma uprawnienia do faktury i informacje o użyciu, takich jak konto administratora. Aby dowiedzieć się więcej na temat uzyskiwania dostępu do informacji dotyczących rozliczeń, zobacz [Manage access to Azure billing using roles (Zarządzanie dostępem do rozliczeń platformy Azure przy użyciu ról)](billing-manage-access.md).
@@ -100,15 +100,15 @@ Aby uzyskać więcej informacji na temat dziennego użycia, zobacz [Informacje o
 
 ## <a name="noinvoice"></a> Dlaczego nie widzę faktury dla ostatniego okresu rozliczeniowego?
 
-Może istnieć kilka przyczyn, które widzisz faktury:
+Może istnieć kilka przyczyn, dla których faktura nie jest widoczna:
 
-- Masz miesięczną ilość środków w ramach subskrypcji, która nie przekracza lub masz bezpłatną wersję próbną. Faktura jest generowany tylko w sytuacji, gdy zobowiązań pieniężnych.
+- Masz miesięczną kwotę środków w ramach subskrypcji, która nie została przekroczona, lub masz bezpłatną wersję próbną. Faktura jest generowana tylko w sytuacji, gdy masz do zapłacenia pewną kwotę.
 
-- Jest mniej niż 30 dni od dnia, które subskrybujesz platformy Azure.
+- Od dnia zasubskrybowania platformy Azure upłynęło mniej niż 30 dni.
 
-- Faktury nie jest jeszcze wygenerowana. Poczekaj, aż do zakończenia okresu rozliczeniowego.
+- Faktura nie została jeszcze wygenerowana. Poczekaj na zakończenie okresu rozliczeniowego.
 
-- Jeśli nie jesteś administratorem konta, starsze faktury, może nie być dostępne dla Ciebie.
+- Jeśli nie jesteś administratorem konta, starsze faktury mogą być dla Ciebie niedostępne.
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 Jeśli nadal masz dodatkowe pytania, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.

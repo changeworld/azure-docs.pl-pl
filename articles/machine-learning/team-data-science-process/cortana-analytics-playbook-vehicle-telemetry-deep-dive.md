@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: 8c4946ebef8d17d2016d482010768207d5e859ff
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 4b4b479a962fc8fc4626773544e8ed8d48042b8e
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300952"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265172"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Podręcznik dotyczący rozwiązań analizy Telemetrii pojazdów: szczegółami rozwiązania
 
@@ -670,7 +670,7 @@ Ten dokument zawiera szczegółowe szczegółów rozwiązania analizy Telemetrii
 ### <a name="references"></a>Dokumentacja
 
 * [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
-* [Azure Data Factory](https://azure.microsoft.com/documentation/learning-paths/data-factory/)
+* [Azure Data Factory](https://docs.microsoft.com/rest/api/datafactory/)
 * [Zestaw Azure Event Hubs SDK dla pozyskiwania danych ze strumieni](../../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 * [Możliwości przenoszenia danych w usłudze Azure Data Factory](../../data-factory/copy-activity-overview.md)
 * [Usługa Azure działanie platformy .NET usługi fabryka danych](../../data-factory/transform-data-using-dotnet-custom-activity.md)

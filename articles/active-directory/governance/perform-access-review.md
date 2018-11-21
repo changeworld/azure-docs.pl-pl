@@ -1,6 +1,6 @@
 ---
-title: Przegląd dostępu wszystkich użytkowników w usłudze Azure AD przeglądów dostępu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przeprowadzić przegląd dostępu za pomocą przeglądów dostępu w usłudze Azure Active Directory.
+title: Uruchamianie przeglądu dostępu za pomocą przeglądów dostępu usługi Azure AD | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozpocząć Przegląd dostępu za pomocą usługi Azure Active Directory przeglądów dostępu.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -14,14 +14,14 @@ ms.component: compliance
 ms.date: 07/16/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 09247a430d2ece44c307297838b7f4dc2819d56d
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 455a4922dfd0832c49729bed007dd696562be07a
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607871"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263430"
 ---
-# <a name="review-access-with-azure-ad-access-reviews"></a>Przegląd dostępu wszystkich użytkowników z usługą Azure AD przeglądów dostępu
+# <a name="start-an-access-review-with-azure-ad-access-reviews"></a>Uruchamianie przeglądu dostępu za pomocą przeglądów dostępu usługi Azure AD
 
 Azure Active Directory (Azure AD) upraszcza przedsiębiorstw zarządzanie dostępem do aplikacji i członkami grup w usłudze Azure AD i przeglądy innych Microsoft Online Services, przy użyciu funkcji o nazwie dostęp. Być może otrzymasz wiadomość e-mail od firmy Microsoft, która prosi o przegląd dostępu wszystkich użytkowników dla członków grupy lub użytkownicy z dostępem do aplikacji. 
 

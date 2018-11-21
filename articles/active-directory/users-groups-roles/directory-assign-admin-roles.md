@@ -14,12 +14,12 @@ ms.date: 10/26/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 0c8fe0759e115288e9f8cc2ea313f6dc3dc89b6b
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 5c880ca15eea6ccf77f93f74c9e1ca41f7fc01ee
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854010"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276724"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w usłudze Azure Active Directory
 
@@ -174,6 +174,7 @@ Dostępne są następujące role administratora:
   * Administratorzy w innych usługach poza usługi Azure AD, takich jak Exchange Online, zabezpieczenia pakietu Office i Centrum zgodności i zarządzania zasobami ludzkimi systemów.
   * Kierownicy doradcą prawnym i pracownicy działu kadr, którzy mogą uzyskiwać dostęp do poufne lub prywatne informacje, takie jak użytkownicy niebędący administratorami.
 
+## <a name="role-permissions"></a>Uprawnienia roli
 W poniższych tabelach opisano określone uprawnienia w usłudze Azure Active Directory do każdej roli. Niektóre role mogą mieć dodatkowe uprawnienia w usługach firmy Microsoft poza usługą Azure Active Directory.
 
 ### <a name="application-administrator"></a>Administrator aplikacji

@@ -1,3 +1,16 @@
+---
+author: kumudD
+ms.service: load-balancer
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: kumud
+ms.openlocfilehash: 459c99d1b45af9c98cc1a6d0d7dd7a9a04c824ec
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52271646"
+---
 Usługa Azure Load Balancer to moduł równoważenia obciążenia w warstwie 4 (TCP, UDP). Moduł równoważenia obciążenia zapewnia wysoką dostępność, dystrybuując ruch przychodzący w wystąpieniach usług o dobrej kondycji w usługach w chmurze lub na maszynach wirtualnych w zestawie modułu równoważenia obciążenia. Usługa Azure Load Balancer może także prezentować te usługi na wielu portach i/lub wielu adresach IP.
 
 Moduł równoważenia obciążenia można skonfigurować do następujących celów:

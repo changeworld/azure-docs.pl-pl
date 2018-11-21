@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: 400ac3232b7e7dcd594734d818e3cafef09188fd
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: ade5fa78191fe670bd898e8edcbb1fab3b9b2379
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614552"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274001"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Tworzenie bramy sieci wirtualnej strefowo nadmiarowy w strefy dostępności platformy Azure
 
@@ -152,7 +152,7 @@ Tak, można użyć witryny Azure portal do wdrażania nowych jednostek SKU. Jedn
 
 ### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>Jakie regiony są dostępne w użyciu nowych jednostek SKU?
 
-Nowe jednostki SKU są dostępne w regionach platformy Azure, które mają strefy dostępności platformy Azure — środkowe stany USA, Francja Środkowa i Europa Zachodnia. Idąc dalej, firma Microsoft będzie udostępniać strefowo nadmiarowe bramy do Ciebie w innych regionach publicznych platformy Azure.
+Nowe jednostki SKU są dostępne w regionach platformy Azure, które mają strefy dostępności platformy Azure — środkowe stany USA, Francja środkowa, Europa Północna, Europa Zachodnia i zachodnie stany USA 2 regionach. Idąc dalej, firma Microsoft będzie udostępniać strefowo nadmiarowe bramy do Ciebie w innych regionach publicznych platformy Azure.
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Czy mogę zmiany/migracja/uaktualnić Moje istniejącej bramy sieci wirtualnej do bram strefowo nadmiarowego lub strefowych?
 

@@ -3,8 +3,8 @@ title: Tworzenie modułów Custom R w usłudze Azure Machine Learning | Dokument
 description: Przewodnik Szybki start do tworzenia niestandardowych modułów R w usłudze Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: b920f0ae3acd253c0f1f698ae4415e5b759ef762
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 812914b3b7746f75aa88cbefda3f7d4b1a591125
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819342"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263268"
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Tworzenie niestandardowych modułów R w usłudze Azure Machine Learning
 W tym temacie opisano sposób tworzenia i wdrażania niestandardowego modułu R w usłudze Azure Machine Learning. Wyjaśniono, czym są niestandardowych modułów R i jakie pliki są używane do definiowania ich. Przedstawia on sposób tworzenia plików, które definiują modułu i jak można zarejestrować modułu dla wdrożenia w obszarze roboczym usługi Machine Learning. Elementy i atrybuty używane w definicji niestandardowego modułu następnie są opisane bardziej szczegółowo. Również omówiono sposób użycia funkcji pomocniczych, plików i wiele wyjść. 

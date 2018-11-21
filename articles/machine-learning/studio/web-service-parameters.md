@@ -3,8 +3,8 @@ title: Użyj usługi Azure Machine Learning parametry usługi sieci Web | Dokume
 description: Jak używać parametry usługi sieci Web do programu Azure Machine Learning, aby zmodyfikować zachowanie modelu podczas uzyskiwania dostępu do usługi sieci web.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: db46dfd98b402668f5d716902b96fed469648460
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 34ae252ff2c37a6e4e9f90155c4fda79b81e29a2
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819071"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264339"
 ---
 # <a name="use-azure-machine-learning-web-service-parameters"></a>Używanie parametrów usługi sieci Web Azure Machine Learning
 Usługi sieci web Azure Machine Learning jest tworzony przez opublikowanie eksperyment, który zawiera moduły z konfigurowalne parametry. W niektórych przypadkach można zmienić zachowanie modułu, gdy jest uruchomiona usługa sieci web. *Parametry usługi w sieci Web* pozwalają wykonać to zadanie. 

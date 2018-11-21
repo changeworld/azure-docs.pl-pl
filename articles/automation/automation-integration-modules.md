@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 93c61f0b9b923f84b2c84d2db4456442e2f9fb27
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e4bd6a3e39fbb5d1eea4d7770d8940f801aecd43
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444508"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276490"
 ---
 # <a name="azure-automation-integration-modules"></a>Moduły integracji usługi Azure Automation
 Program PowerShell to podstawowa technologia używana w usłudze Azure Automation. Ponieważ usługa Azure Automation jest zbudowana w oparciu o program PowerShell, moduły tego programu stanowią podstawę możliwości rozszerzania usługi Azure Automation. W tym artykule przeprowadzimy Cię przez szczegółowe informacje na temat użycia usługi Azure Automation modułów programu PowerShell, określane jako "Moduły integracji" oraz najlepsze rozwiązania dotyczące tworzenia własnych modułów programu PowerShell upewnij się, że działają jako moduły integracji w systemie Azure Usługi Automation. 
@@ -34,7 +34,7 @@ Format, w którym można zaimportować pakiet modułu integracji, to skompresowa
 
 Jeśli moduł powinien zawierać typ połączenia usługi Azure Automation, musi również zawierać plik o nazwie `<ModuleName>-Automation.json`, który określa właściwości typu połączenia. Jest to plik JSON umieszczony w folderze modułu skompresowanego pliku ZIP i zawiera pola typu „connection” wymagane do nawiązania połączenia z systemem lub usługą reprezentowaną przez moduł. To kończy się tworzenie typu połączenia w usłudze Azure Automation. Przy użyciu tego pliku można ustawić nazwy i typy pól oraz określić, czy powinny one być szyfrowane lub opcjonalne dla danego typu połączenia modułu. Szablon w formacie pliku JSON wygląda następująco:
 
-```
+```json
 { 
    "ConnectionFields": [
    {
@@ -67,7 +67,7 @@ Mimo że moduły integracji są zasadniczo modułami programu PowerShell, istnie
 
 1. Dodaj streszczenie, opis i identyfikator URI pomocy do każdego polecenia cmdlet w module. W programie PowerShell możesz zdefiniować pewne informacje pomocy dotyczące poleceń cmdlet, aby umożliwić użytkownikowi uzyskanie pomocy na temat korzystania z nich dzięki poleceniu cmdlet **Get-Help**. Oto jak możesz na przykład zdefiniować streszczenie i identyfikator URI pomocy dla modułu programu PowerShell zapisanego w pliku psm1.<br>  
    
-    ```
+    ```powershell
     <#
         .SYNOPSIS
          Gets all outgoing phone numbers for this Twilio account 
@@ -109,7 +109,7 @@ Mimo że moduły integracji są zasadniczo modułami programu PowerShell, istnie
 
     Poleceń cmdlet w module będzie można łatwiej używać w usłudze Azure Automation, jeśli zezwolisz na przekazywanie obiektu z polami typu połączenia jako parametru do polecenia cmdlet. Dzięki temu użytkownicy nie będą musieli mapować parametrów elementu zawartości połączenia do odpowiednich parametrów polecenia cmdlet podczas każdego wywoływania polecenia cmdlet. W powyższym przykładzie elementu Runbook element zawartości połączenia usługi Twilio o nazwie CorpTwilio jest używany do uzyskiwania dostępu do usługi Twilio i zwraca wszystkie numery telefonów w ramach konta.  Zwróć uwagę na sposób mapowania pól połączenia do parametrów polecenia cmdlet.<br>
    
-    ```
+    ```powershell
     workflow Get-CorpTwilioPhones
     {
       $CorpTwilio = Get-AutomationConnection -Name 'CorpTwilio'
@@ -122,7 +122,7 @@ Mimo że moduły integracji są zasadniczo modułami programu PowerShell, istnie
   
     Łatwiejsze i skuteczniejsze podejście do tej czynności to bezpośrednie przekazanie obiektu połączenia do polecenia cmdlet:
    
-    ```
+    ```powershell
     workflow Get-CorpTwilioPhones
     {
       $CorpTwilio = Get-AutomationConnection -Name 'CorpTwilio'
@@ -133,7 +133,7 @@ Mimo że moduły integracji są zasadniczo modułami programu PowerShell, istnie
    
     Aby umożliwić takie zachowanie poleceń cmdlet, należy zezwolić im na akceptowanie obiektu połączenia bezpośrednio jako parametru, a nie tylko pól połączeń dla parametrów. Zazwyczaj chcesz ustawić parametr dla poszczególnych usług, dzięki czemu użytkownik nie używa usługi Azure Automation może wywoływać polecenia cmdlet bez tworzenia obiektu hashtable do działania jako obiekt połączenia. Poniższy zestaw parametrów **SpecifyConnectionFields** jest używany do przekazywania kolejnych właściwości pól połączeń. Parametr **UseConnectionObject** umożliwia bezpośrednie przekazanie połączenia. Jak widać, polecenie cmdlet Send-TwilioSMS w [module programu PowerShell dla usługi Twilio](https://gallery.technet.microsoft.com/scriptcenter/Twilio-PowerShell-Module-8a8bfef8) umożliwia przekazywanie w dowolny sposób: 
    
-    ```
+    ```powershell
     function Send-TwilioSMS {
       [CmdletBinding(DefaultParameterSetName='SpecifyConnectionFields', `
       HelpUri='http://www.twilio.com/docs/api/rest/sending-sms')]
@@ -160,7 +160,7 @@ Mimo że moduły integracji są zasadniczo modułami programu PowerShell, istnie
 1. Zdefiniuj typ danych wyjściowych dla wszystkich poleceń cmdlet w module. Zdefiniowanie typu danych wyjściowych polecenia cmdlet ułatwia określanie właściwości danych wyjściowych polecenia do użycia podczas tworzenia za pomocą funkcji IntelliSense czasu projektowania. Jest szczególnie przydatne podczas tworzenia graficznego elementu Runbook usługi Azure Automation, gdzie znajomość czasu projektowania jest kluczem do stworzenia prostego środowiska pracy użytkownika modułu.<br><br> ![Typ danych wyjściowych graficznego elementu Runbook](media/automation-integration-modules/runbook-graphical-module-output-type.png)<br> Jest to funkcja podobna do funkcji „wpisywania z wyprzedzeniem” danych wyjściowych polecenia cmdlet w środowisku PowerShell ISE bez konieczności jego uruchamiania.<br><br> ![Funkcja IntelliSense programu POSH](media/automation-integration-modules/automation-posh-ise-intellisense.png)<br>
 1. Polecenia cmdlet w module nie powinny przyjmować złożonych typów obiektów jako parametrów. Przepływ pracy programu PowerShell różni się od programu PowerShell tym, że przechowuje typy złożone w formie zdeserializowanej. Typy pierwotne pozostają, ale typy złożone są konwertowane na wersje zdeserializowane, które zasadniczo są zbiorami właściwości. Jeśli na przykład w elemencie Runbook (lub przepływie pracy programu PowerShell) użyto polecenia cmdlet **Get-Process**, zwróci ono obiekt typu [Deserialized.System.Diagnostic.Process], a nie oczekiwany typ [System.Diagnostic.Process]. Ten typ ma te same właściwości co typ niezdeserializowany, ale nie zawiera żadnej z metod. A Jeśli spróbujesz przekazać tę wartość jako parametr do polecenia cmdlet, gdzie polecenie cmdlet oczekuje wartości [System.Diagnostic.Process] dla tego parametru, pojawi się następujący błąd: *nie można przetworzyć przekształcenia argumentu dla parametru "process". Błąd: „Nie można przekonwertować wartości „System.Diagnostics.Process (CcmExec)” typu „Deserialized.System.Diagnostics.Process” na typ „System.Diagnostics.Process”.*   Przyczyną tego jest niezgodność między oczekiwanym typem [System.Diagnostic.Process] i danym typem [Deserialized.System.Diagnostic.Process]. Aby rozwiązać ten problem, upewnij się, że polecenia cmdlet modułu nie przyjmują złożonych typów jako parametrów. Oto nieprawidłowy sposób wykonania tego zadania.
    
-    ```
+    ```powershell
     function Get-ProcessDescription {
       param (
             [System.Diagnostic.Process] $process
@@ -171,7 +171,7 @@ Mimo że moduły integracji są zasadniczo modułami programu PowerShell, istnie
     <br>
     A oto odpowiednia metoda — przyjęcie elementu podstawowego, który może być wewnętrznie używany przez polecenie cmdlet do pobierania i używania obiektu złożonego. Ponieważ polecenia cmdlet są wykonywane w kontekście programu PowerShell, a nie przepływu pracy programu PowerShell, wewnątrz polecenia cmdlet element $process staje się poprawnym typem [System.Diagnostic.Process].  
    
-    ```
+    ```powershell
     function Get-ProcessDescription {
       param (
             [String] $processName
@@ -185,7 +185,7 @@ Mimo że moduły integracji są zasadniczo modułami programu PowerShell, istnie
    Elementy zawartości połączenia w elementach Runbook to tabele skrótów typu złożonego. Te tabele skrótów mogą być przekazywane do poleceń cmdlet na potrzeby parametru -Connection idealnie, bez wyjątku dotyczącego rzutowania. Technicznie rzecz biorąc, niektóre typy programu PowerShell można prawidłowo rzutować z postaci serializowanej do postaci zdeserializowanej i dlatego można je przekazywać do poleceń cmdlet jako parametry akceptujące typy niezdeserializowane. Przykładem jest tablica skrótów. Istnieje możliwość zaimplementowania typów zdefiniowanych przez autora modułu w taki sposób, aby mogły być również prawidłowo zdeserializowane, ale wymaga to pewnych kompromisów. Typ musi zawierać konstruktor domyślny i element PSTypeConverter, a wszystkie jego właściwości muszą być publiczne. Jednak typów już zdefiniowanych, które nie należą do autora modułu, nie można naprawić, dlatego zaleca się unikanie typów złożonych jako parametrów. Porada dotycząca tworzenia elementu Runbook: jeśli z dowolnej przyczyny polecenia cmdlet muszą przyjmować parametr typu złożonego lub gdy korzystasz z modułu innej osoby wymagającego parametru typu złożonego, obejściem w elementach Runbook przepływu pracy programu PowerShell i przepływach pracy programu PowerShell w lokalnym programie PowerShell jest opakowanie polecenia cmdlet, które generuje typ złożony, i polecenia cmdlet, który wykorzystuje typ złożony, w ramach tego samego działania InlineScript. Ponieważ skrypt InlineScript wykonuje zawartość jako program PowerShell, a nie przepływ pracy programu PowerShell, wygenerowanie przez polecenie cmdlet typu złożonego spowoduje utworzenie prawidłowego typu, a nie zdeserializowanego typu złożonego.
 1. Utwórz wszystkie polecenia cmdlet w module jako bezstanowe. Przepływ pracy programu PowerShell powoduje uruchomienie każdego polecenia cmdlet wywoływanego w przepływie pracy w ramach innej sesji. Oznacza to, że polecenia cmdlet, które zależą od stanu sesji utworzone/zmodyfikowane przez inne polecenia cmdlet w tym samym module, nie będą działać w elementach Runbook przepływu pracy programu PowerShell.  Oto przykład czynności, których nie należy wykonywać.
    
-    ```
+    ```powershell
     $globalNum = 0
     function Set-GlobalNum {
        param(

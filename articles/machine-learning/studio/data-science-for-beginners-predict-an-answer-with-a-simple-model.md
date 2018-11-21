@@ -4,8 +4,8 @@ description: Jak utworzyć model regresji prosty, aby przewidzieć cenę w zakre
 keywords: Tworzenie modelu, prosty model, prognozowanie cen, uczenia modelu regresji prosty
 services: machine-learning
 documentationcenter: na
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cjgronlund
@@ -17,12 +17,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: d1e7667d30eecab2e1a3328fdc68ef528823e695
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 47c91f3d19296712c4dffbe90c4ef8ae12a98319
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824204"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261211"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Prognozowanie odpowiedzi za pomocą prostego modelu
 ## <a name="video-4-data-science-for-beginners-series"></a>Wideo 4: Analiza danych dla początkujących serii

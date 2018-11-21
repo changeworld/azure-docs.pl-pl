@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 01/09/2018
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
+manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: 8958d2cde9f40aa1a7370894614a54bbd604bce7
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 0adc821f7a3d5b059d549509b7ed18cda95b86bc
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706334"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52273803"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak zoptymalizować inwestycję w chmurę dzięki usłudze Azure Cost Management
 

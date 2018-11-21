@@ -4,8 +4,8 @@ description: Użyj szablonu aplikacji sieci web w witrynie Azure Marketplace z p
 keywords: Usługa sieci Web, operacjonalizacja, interfejs API REST usługi machine learning
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 56c4e5956790ac61a6ae608d61aa61e7dc2e6975
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 39add830d44cac43e620a4c13d20e282f3d59e47
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823728"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264221"
 ---
 # <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Korzystanie z usługi sieci web Azure Machine Learning za pomocą szablonu aplikacji sieci web
 

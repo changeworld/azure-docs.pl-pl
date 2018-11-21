@@ -1,92 +1,89 @@
 ---
-title: Tworzenie kopii zapasowej online i przywracanie za pomocą usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wykonywać automatyczne wykonywanie kopii zapasowej i przywracanie bazy danych Azure Cosmos DB.
-keywords: tworzenia kopii zapasowych i przywracania kopii zapasowej online
-services: cosmos-db
+title: Automatyczne online kopię zapasową danych na żądanie przywracanie w usłudze Azure Cosmos DB
+description: W tym artykule opisano sposób automatycznego, online kopii zapasowej i danych na żądanie przywracania w usłudze Azure Cosmos DB.
 author: kanshiG
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/15/2017
+ms.date: 11/15/2018
 ms.author: govindk
-ms.openlocfilehash: 657b75e5e3bb5c35bb23221235e62298fc797046
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.reviewer: sngun
+ms.openlocfilehash: 39c4a6108f4a5133e2c77904dcd67bf235801956
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902675"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265138"
 ---
-# <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatyczne tworzenie kopii zapasowej online i przywracanie za pomocą usługi Azure Cosmos DB
-Usługa Azure Cosmos DB automatycznie wykonuje kopie zapasowe wszystkich danych w regularnych odstępach czasu. Automatyczne kopie zapasowe są wykonywane bez wywierania wpływu na wydajność lub dostępności operacje bazy danych. Wszystkie kopie zapasowe są przechowywane osobno w innej usługi storage, a te kopie zapasowe globalnie są replikowane w celu zapewnienia odporności na regionalnej awarii. Automatyczne kopie zapasowe są przeznaczone dla scenariuszy podczas przypadkowego usunięcia kontenera usługi Cosmos DB i później wymaga odzyskiwania danych.  
+# <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Tworzenie kopii zapasowej online i danych na żądanie przywrócenia w usłudze Azure Cosmos DB
 
-W tym artykule rozpoczyna się od krótkie przypomnienie nadmiarowości danych i dostępności w usłudze Cosmos DB, a następnie w tym artykule omówiono tworzenie kopii zapasowych. 
+Usługa Azure Cosmos DB automatycznie wykonuje kopie zapasowe danych w regularnych odstępach czasu. Automatyczne kopie zapasowe są wykonywane bez wywierania wpływu na wydajność i dostępność operacji bazy danych. Wszystkie kopie zapasowe są przechowywane osobno w usłudze magazynu, a te kopie zapasowe globalnie są replikowane w celu zapewnienia odporności na regionalnej awarii. Automatyczne kopie zapasowe są przydatne w scenariuszach, gdy przypadkowo usunąć lub zaktualizować konto usługi Azure Cosmos, bazy danych lub kontenera i później wymagają odzyskiwania danych.
 
-## <a name="high-availability-with-cosmos-db---a-recap"></a>Wysoka dostępność za pomocą usługi Cosmos DB — podsumowanie
-Usługa cosmos DB została zaprojektowana jako [globalnie dystrybuowane](distribute-data-globally.md) — pozwala na skalowanie przepływności w wielu regionach platformy Azure wraz z zasady na podstawie trybu failover i przejrzyste międzyregionalnych interfejsów API. Usługa Azure Cosmos DB oferuje [umów SLA dotyczących dostępności 99,99%](https://azure.microsoft.com/support/legal/sla/cosmos-db) dla wszystkich kont w obrębie jednego regionu i wszystkich kont w wielu regionach za pomocą rozluźnionej spójności i dostępności na wszystkich multiregionalne konta baz danych do odczytu przez 99,999% czasu. Wszystkie operacje zapisu w usłudze Azure Cosmos DB są trwale zatwierdzana na dyskach lokalnych przez kworum replik w lokalnym centrum danych przed potwierdzeniem do klienta. Wysoką dostępność usługi Cosmos DB opiera się na magazyn lokalny i nie zależy od dowolnej technologii magazynu zewnętrznego. Ponadto jeśli Twoje konto bazy danych jest skojarzony z więcej niż jednego regionu platformy Azure, zapisu są replikowane w innych regionach, jak również. Aby skalować przepływność i dostęp do danych w małych opóźnień, może mieć wiele odczytywać regiony skojarzony z Twoim kontem bazy danych, jak chcesz. W każdym regionie odczytu (replikowanych) danych jest trwale trwała dla zestawu replik.  
+## <a name="automatic-and-online-backups"></a>Automatyczne i w trybie online kopii zapasowych
 
-Jak pokazano na poniższym diagramie, jednego kontenera usługi Cosmos DB jest [partycjonowanej w poziomie](partition-data.md). "Partycji" jest oznaczona koła na poniższym diagramie, a każda partycja dokonuje wysokiej dostępności za pomocą zestawu replik. Jest to Dystrybucja lokalna w jednym regionie platformy Azure (wskazywane przez oś X). Ponadto każda partycja (z jego odpowiedniego zestawu replik) to globalnie dystrybuowane w wielu regionach skojarzonych z Twoim kontem bazy danych (na przykład, na tej ilustracji trzech regionów — wschodnie stany USA, zachodnie stany USA i Indie środkowe). Zestawu"partycji" jest globalnie rozproszonych jednostek wchodzących w skład wielu kopii danych w każdym regionie (wskazywane przez oś Y). Priorytet można przypisać do określonych regionów skojarzonych z Twoim kontem bazy danych, i Cosmos DB będzie przezroczysty tryb failover do następnego regionu, w razie awarii. Można też ręcznie symulujące pracę awaryjną do testowania dostępności end-to-end aplikacji.  
+Za pomocą usługi Azure Cosmos DB nie tylko dane, ale również kopie zapasowe danych są mocno nadmiarowy i odporna na regionalnej awarii. Zautomatyzowanych kopii zapasowych są obecnie pobierane co cztery godziny, i w dowolnym momencie, najnowsze dwie kopie zapasowe są przechowywane. Jeśli przypadkowo usunięty lub uszkodzone dane, należy skontaktować się ze [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) w ciągu ośmiu godzin, aby zespół usługi Azure Cosmos DB może pomagać przywracania danych z kopii zapasowych.
 
-Na poniższym obrazie przedstawiono wysokiego stopnia redundancy za pomocą usługi Cosmos DB.
+Kopie zapasowe są wykonywane bez wywierania wpływu na wydajność i dostępność aplikacji. Usługa Azure Cosmos DB wykonuje kopii zapasowej danych w tle bez używania żadnych dodatkowych aprowizowana przepływność (ru) lub mające wpływ na wydajność i dostępność bazy danych.
 
-![Wysoki stopień nadmiarowości, za pomocą usługi Cosmos DB](./media/online-backup-and-restore/redundancy.png)
-
-![Wysoki stopień nadmiarowości, za pomocą usługi Cosmos DB](./media/online-backup-and-restore/global-distribution.png)
-
-## <a name="full-automatic-online-backups"></a>Kopie zapasowe pełne, automatyczne, online
-Niestety po usunięciu Moje kontenera lub bazy danych! Za pomocą usługi Cosmos DB nie tylko dane, ale kopie zapasowe danych są również bardzo nadmiarowy i odporny na błędy do awarii regionalnej. Te zautomatyzowane kopie zapasowe są obecnie pobierane co cztery godziny i najnowszych dwie kopie zapasowe są przechowywane przez cały czas. Jeśli dane są przypadkowo usunięty lub uszkodzony, skontaktuj się z [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) w ciągu ośmiu godzin. 
-
-Kopie zapasowe są wykonywane bez wywierania wpływu na wydajność lub dostępności operacje bazy danych. Usługa cosmos DB trwa kopii zapasowej w tle, bez używania usługi zainicjowanych jednostek zarezerwowanych lub wpływu na wydajność i bez wywierania wpływu na dostępność bazy danych. 
-
-W przeciwieństwie do danych przechowywanych w usłudze Cosmos DB automatyczne kopie zapasowe są przechowywane w usłudze Azure Blob Storage. Aby zagwarantować niskie opóźnienia/wydajne przekazywania, migawki kopii zapasowej jest przekazywany do wystąpienia usługi Azure Blob storage, w tym samym regionie, co bieżącego regionu zapisu w programu Twojego konta bazy danych Cosmos DB. Aby zachować odporność względem regionalnej awarii każdej migawki kopii zapasowej danych w usłudze Azure Blob Storage ponownie jest replikowana magazyn geograficznie nadmiarowy (GRS) do innego regionu. Na poniższym diagramie przedstawiono, że całego kontenera usługi Cosmos DB (przy użyciu wszystkich trzech partycji podstawowych w regionie zachodnie stany USA, w tym przykładzie) kopia zapasowa jest tworzona w zdalnym konta usługi Azure Blob Storage w regionie zachodnie stany USA, a następnie GRS są replikowane w regionie wschodnie stany USA. 
-
-Na poniższym obrazie przedstawiono okresowe pełne kopie zapasowe wszystkich jednostek usługi Cosmos DB w magazynie geograficznie Nadmiarowym usługi Azure Storage.
+Usługa Azure Cosmos DB przechowuje automatycznych kopii zapasowych w usłudze Azure Blob Storage, podczas gdy rzeczywisty znajdują się dane lokalnie w usłudze Azure Cosmos DB. Aby zagwarantować małych opóźnień, migawki kopii zapasowej są przechowywane w usłudze Azure Blob storage, w tym samym regionie jako bieżącego regionu zapisu (lub jeden z regionów zapisu, jeśli używana jest Konfiguracja wielu wzorców) usługi Cosmos DB konto bazy danych. Aby zachować odporność względem regionalnej awarii każdej migawki kopii zapasowej danych w usłudze Azure Blob storage ponownie są replikowane do innego regionu za pośrednictwem magazyn geograficznie nadmiarowy (GRS). Region, na którym kopii zapasowej są replikowane zależy od regionu źródłowego i pary regionalnej skojarzony w regionie źródłowym. Aby dowiedzieć się więcej, zobacz [lista magazynu geograficznie nadmiarowego par regionów świadczenia usługi Azure](../best-practices-availability-paired-regions.md) artykułu. Nie masz dostępu do tej kopii zapasowej bezpośrednio. Usługa Azure Cosmos DB będzie używać tej kopii zapasowej, tylko wtedy, gdy jest inicjowana przywracania kopii zapasowej.
+Na poniższej ilustracji przedstawiono sposób tworzenia kopii zapasowej w zdalnym konta usługi Azure Blob Storage w regionie zachodnie stany USA i następnie replikowane w regionie wschodnie stany USA kontenera usługi Azure Cosmos przy użyciu wszystkich trzech partycji podstawowej zasobów w regionie zachodnie stany USA:
 
 ![Okresowe pełne kopie zapasowe wszystkich jednostek usługi Cosmos DB w magazynie geograficznie Nadmiarowym usługi Azure Storage](./media/online-backup-and-restore/automatic-backup.png)
 
+## <a name="options-to-manage-your-own-backups"></a>Funkcje umożliwiające zarządzanie własnymi kopiami zapasowymi
+
+Dzięki kontom usługi interfejsu API SQL usługi Azure Cosmos DB można także utrzymać własnymi kopiami zapasowymi przy użyciu jednej z następujących metod:
+
+* Użyj [usługi Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) okresowo przenoszenie danych do magazynu w wybranej.
+
+* Użyj usługi Azure Cosmos DB [zestawienia zmian](change-feed.md) okresowo odczytywanie danych dla pełnych kopii zapasowych, a także zmiany przyrostowe i zapisz go w magazynie.
+
 ## <a name="backup-retention-period"></a>Okres przechowywania kopii zapasowej
-Zgodnie z powyższym opisem usługi Azure Cosmos DB trwa migawki danych na poziomie partycji co cztery godziny. W dowolnym momencie tylko dwie ostatnie migawki zostaną zachowane. Jednak usunięcie kontenera/bazy danych Azure Cosmos DB zachowuje istniejące migawki dla wszystkich usuniętych partycji w danym kontenerze/bazy danych przez 30 dni.
 
-Dla interfejsu API SQL Jeśli chcesz zachować swoje własne migawki, możesz to zrobić przy użyciu następujących opcji:
+Usługa Azure Cosmos DB trwa migawki danych co cztery godziny. W dowolnym momencie tylko dwie ostatnie migawki zostaną zachowane. Jednak usunięcie kontenera lub bazy danych Azure Cosmos DB zachowuje istniejące migawki wybranego kontenera lub bazy danych przez 30 dni.
 
-* Użyj eksportowania do formatu JSON opcji w usłudze Azure Cosmos DB [narzędzia migracji danych](import-data.md#export-to-json-file) do planowania dodatkowych kopii zapasowych.
+## <a name="restoring-data-from-online-backups"></a>Przywracanie danych z kopii zapasowych online
 
-* Użyj [usługi Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) okresowo przenoszenia danych.
+Przypadkowe usunięcie lub modyfikowanie danych może się zdarzyć w jednym z następujących scenariuszy:  
 
-* Użyj usługi Azure Cosmos DB [zestawienia zmian](change-feed.md) odczytywanie danych okresowo dla pełnej kopii zapasowej i osobno przyrostowe zmiany i przejdź do lokalizacji docelowej obiektu blob. 
+* Całe konto usługi Azure Cosmos jest usuwany.
 
-* Do zarządzania bez wyłączania zasilania kopii zapasowych, jest możliwe, aby okresowo odczytywanie danych z kanału informacyjnego zmian i opóźnienia zapisu, jej do innej kolekcji. Dzięki temu nie trzeba przywrócić dane i natychmiast przyjrzeć się danym problemu. 
+* Jeden lub więcej baz danych Azure Cosmos zostaną usunięte.
 
-> [!NOTE]
-> Jeśli użytkownik "Aprowizowanie przepływności dla zestawu kontenerów na poziomie bazy danych" — należy pamiętać o przywracania odbywa się na poziomie pełnym konta bazy danych. Należy również upewnij się, że się w obrębie 8 godzin do zespołu pomocy technicznej, jeśli przypadkowo usuniesz kontenera. Nie można przywrócić dane, jeśli użytkownik nie skontaktowania się z zespołem pomocy technicznej w 8 godzin.
+* Co najmniej jeden kontener Azure Cosmos zostaną usunięte.
 
-## <a name="restoring-a-database-from-an-online-backup"></a>Przywracanie bazy danych z kopii zapasowej online
+* Usługa Azure Cosmos elementów (na przykład dokumenty) w kontenerze zostanie usunięty lub zmodyfikowany. Tym konkretnym przypadku jest zwykle określane jako "uszkodzenie danych".
 
-Jeśli przypadkowo usuniesz bazy danych lub kontenera, możesz to zrobić [bilet pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) lub [z działem pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) przywrócić dane z ostatnich automatycznej kopii zapasowej. Pomoc techniczna platformy Azure jest dostępny dla wybranych planów tylko np. Standard, dla deweloperów, pomocy technicznej nie jest dostępna z planem Basic. Aby dowiedzieć się więcej o planach pomocy technicznej w różnych, zobacz [plany pomocy technicznej platformy Azure](https://azure.microsoft.com/support/plans/) strony. 
+* Usunięty lub uszkodzony oferty udostępnionej bazy danych lub kontenerów w ramach oferty udostępnionej bazy danych
 
-Jeśli trzeba przywrócić bazę danych z powodu problemu z uszkodzeniem danych (w tym przypadki, w których są usuwane dokumenty znajdujące się w kontenerze), zobacz [obsługi uszkodzenie danych](#handling-data-corruption) jak należy wykonać dodatkowe kroki w celu zapobieżenia uszkodzone dane zastąpienie istniejących kopii zapasowych. Dla określonej migawki kopii zapasowej do przywrócenia Cosmos DB wymaga danych był dostępny na czas trwania cyklu tworzenia kopii zapasowych dla tej migawki.
+Usługa Azure Cosmos DB można przywrócić dane w powyższych scenariuszy. Proces przywracania zawsze tworzy nowe konto usługi Azure Cosmos, aby pomieścić przywracane dane. Nazwa nowego konta, jeśli nie zostanie określony, będzie mieć format `<Azure_Cosmos_account_original_name>-restored1`. Ostatnia cyfra jest zwiększany, jeśli wiele operacje przywracania są próby. Nie można przywrócić dane do wstępnie utworzonego konta usługi Azure Cosmos.
 
-> [!NOTE]
-> Kolekcje lub baz danych można przywrócić tylko na żądania klientów jawnego. Odpowiada klienta można usunąć kontenera lub bazy danych bezpośrednio po uzgadnianie danych. Jeśli nie usuniesz przywróconych baz danych i kolekcji, spowoduje naliczenie kosztów, jednostek żądania, magazynu i ruchu wychodzącego.
+Po usunięciu konta usługi Azure Cosmos firma Microsoft można przywrócić dane na konto o takiej samej nazwie, pod warunkiem, że nazwa konta nie jest używany. W takich przypadkach zaleca się nie ponownie utwórz konto po usunięciu, ponieważ nie tylko zapobiega przywróconych danych, aby użyć tej samej nazwie, ale sprawia, że odnajdywania odpowiednie konto można przywrócić z trudniejsze. 
 
-## <a name="handling-data-corruption"></a>Obsługa uszkodzenie danych
+Po usunięciu bazy danych Azure Cosmos jest możliwe przywrócenie całej bazy danych lub ich część kontenerów w ramach tej bazy danych. Jest również możliwe, aby zaznaczyć kontenerach w bazach danych i przywracanie ich, a wszystkie przywróconych danych znajduje się na nowym koncie usługi Azure Cosmos.
 
-Usługa Azure Cosmos DB zachowa ostatnie dwie kopie zapasowe wszystkich partycji w ramach konta bazy danych. Ten model działa lepiej, gdy kontener (zbiór dokumentów, wykres i tabela) lub bazy danych zostanie przypadkowo usunięty, ponieważ jedna z ostatniej wersji można przywrócić. Jednak w przypadku użytkowników może stanowić problem uszkodzenia danych, usługi Azure Cosmos DB może być uszkodzenie danych świadomości i jest możliwe, mogą zostać zastąpione istniejące kopie zapasowe uszkodzenia. 
+Gdy jeden lub więcej elementów w kontenerze zostaną przypadkowo usunięte lub zmienione (przypadek uszkodzenie danych), należy określić czas do przywrócenia. Czas jest essence dla tej sprawy. Ponieważ kontenera odbywa się na żywo, kopia zapasowa jest nadal uruchomione, więc Jeśli czekasz po upływie okresu przechowywania (wartość domyślna to osiem godzin) kopii zapasowych zostaną zastąpione. W przypadku usuwania jest nie jest już przechowywane dane ponieważ one nie zostać zastąpione przez cyklu tworzenia kopii zapasowych. Wykonywanie kopii zapasowych dla usuniętych baz danych lub kontenery są zapisywane przez 30 dni.
 
-Jak najszybciej wykryto uszkodzenie tak, aby kopie zapasowe są chronione przed zastąpieniem z uszkodzonych danych należy usunąć uszkodzony kontenera (kolekcja/wykres/table). Najważniejsze skontaktowanie się z Microsoft Support i zgłosić bilet z określonym żądaniem ważność 2. 
+Jeśli zaprowizować przepływność na poziomie bazy danych (oznacza to, gdzie zestaw kontenerów udostępnia aprowizowanej przepływności), proces tworzenia kopii zapasowych i przywracania w tym przypadku się tak zdarzyć na poziomie całej bazy danych, a nie na poziomie poszczególnych kontenerów. W takich przypadkach wybranie podzestawu kontenerów na potrzeby przywracania nie jest opcją.
 
-Na poniższym obrazie przedstawiono tworzenie żądania pomocy technicznej do przywrócenia container(collection/graph/table) za pośrednictwem witryny Azure portal do przypadkowego usunięcia lub aktualizowania danych w kontenerze
+## <a name="migrating-data-to-the-original-account"></a>Migrowanie danych do oryginalnego konta
 
-![Przywróć kontenera omyłkowe aktualizacji lub usuwania danych w usłudze Cosmos DB](./media/online-backup-and-restore/backup-restore-support.png)
+Podstawowym celem przywracanie danych jest zapewnienie odzyskać dane, które zostały usunięte lub zmodyfikowane przypadkowo. Dlatego zaleca się, najpierw sprawdzić zawartość odzyskane dane, aby upewnić się, że zawiera on są oczekiwane. Następnie pracy dotyczące migrowania danych do konta podstawowego. Chociaż jest możliwe użycie przywróconej konta jako konta na żywo, nie jest zalecana opcja w przypadku obciążeń produkcyjnych.  
 
-Po zakończeniu przywracania dla tego rodzaju scenariuszy — dane są przywracane na inne konto (z sufiksem "-przywrócić") i kontener. Przywracanie nie odbywa się mające na celu zapewnienie Państwo klienta, aby wykonać sprawdzanie poprawności danych i Przenieś dane zgodnie z potrzebami. Kontener przywróconej znajduje się w tym samym regionie przy użyciu tych samych (RUS) i zasad indeksowania. Użytkownik będący administratorem subskrypcji lub coadmin widoczne tego konta przywrócona.
+Poniżej przedstawiono różne sposoby, aby przeprowadzić migrację danych do oryginalnego konta usługi Azure Cosmos:
 
+* Za pomocą [narzędzia migracji danych usługi Cosmos DB](import-data.md)
+* Za pomocą [usługi Azure Data Factory]( ../data-factory/connector-azure-cosmos-db.md)
+* Za pomocą [zestawienia zmian](change-feed.md) w usłudze Azure Cosmos DB 
+* Pisanie kodu niestandardowego
 
-> [!NOTE]
-> Przywróć naprawia uszkodzenie danych lub tylko do testowania, Zaplanuj je usunąć wkrótce co zadanie jest wykonywane, jak przywrócić kontenerów lub bazy danych będzie kosztować dodatkowe — zależne od aprowizowanej przepływności. 
+Usuń przywróconej kont zaraz po zakończeniu migracji, ponieważ będą one spowodować stałego naliczania opłat.
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby replikować bazę danych w wielu centrach danych, zobacz [dystrybuować dane globalnie za pomocą usługi Cosmos DB](distribute-data-globally.md). 
+Następnie możesz dowiedzieć się o tym, jak przywrócić dane z konta usługi Azure Cosmos lub Dowiedz się, jak przeprowadzić migrację danych z kontem usługi Azure Cosmos
 
-Do pliku skontaktuj się z pomocą techniczną platformy Azure [bilet w witrynie Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+* Aby Przywracanie żądania, skontaktuj się z działem pomocy technicznej systemu Azure, [bilet w witrynie Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+* [Jak przywrócić dane z konta usługi Azure Cosmos](how-to-backup-and-restore.md)
+* [Zestawienia zmian usługi Cosmos DB użyj](change-feed.md) do przenoszenia danych do usługi Azure Cosmos DB.
+* [Usługa Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) do przenoszenia danych do usługi Azure Cosmos DB.
 

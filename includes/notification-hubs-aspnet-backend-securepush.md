@@ -1,6 +1,19 @@
-## <a name="webapi-project"></a>WebAPI projektu
-1. W programie Visual Studio Otwórz **AppBackend** projektu, który został utworzony w **Powiadom użytkowników** samouczka.
-2. W Notifications.cs, Zastąp cały **powiadomienia** klasy następującym kodem. Należy zastąpić symbole zastępcze ciąg połączenia (z pełnym dostępem) dla Centrum powiadomień i nazwy koncentratora. Możesz uzyskać te wartości z [portalu Azure](http://portal.azure.com). Ten moduł teraz reprezentuje inną bezpieczne powiadomień, które będą wysyłane. W pełnej implementacji powiadomienia będą przechowywane w bazie danych; dla uproszczenia w tym przypadku są przechowywane ich w pamięci.
+---
+author: spelluru
+ms.service: service-bus
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: spelluru
+ms.openlocfilehash: b8cf4217ca6c80be998b92e71c3ba29c4f68bce2
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52271656"
+---
+## <a name="webapi-project"></a>Projektem WebAPI
+1. W programie Visual Studio, otwórz **AppBackend** projektu, który został utworzony w **powiadamianie użytkowników** samouczka.
+2. W klasie Notifications.cs Zastąp cały **powiadomienia** klasy z następującym kodem. Koniecznie Zastąp symbole zastępcze parametry połączenia dla Centrum powiadomień i nazwą Centrum (z pełnym dostępem). Możesz uzyskać te wartości z [witryny Azure portal](http://portal.azure.com). Ten moduł odpowiada teraz różnych powiadomień zabezpieczonych, które będą wysyłane. W pełną implementację powiadomienia będą przechowywane w bazie danych; dla uproszczenia w tym przypadku będziemy przechowywać je w pamięci.
    
         public class Notification
         {
@@ -40,7 +53,7 @@
             }
         }
 
-1. W NotificationsController.cs, Zastąp kod wewnątrz **NotificationsController** klasy definicji z następującym kodem. Ten składnik implementuje sposób urządzenia pobrać bezpiecznie powiadomienia, a także sposób (na potrzeby tego samouczka) do wyzwolenia bezpiecznego wypychanych do urządzeń z systemem. Należy pamiętać, że podczas wysyłania powiadomień do Centrum powiadomień, tylko powiadomienie zostanie wysłane pierwotnych z Identyfikatorem powiadomienia (i żaden komunikat rzeczywiste):
+1. W pliku NotificationsController.cs, Zastąp kod wewnątrz **NotificationsController** klasy definicji z następującym kodem. Ten składnik implementuje sposób bezpiecznego pobierania powiadomienia urządzenia, a także sposób (na potrzeby tego samouczka) do wyzwalania bezpiecznej operacji wypychania do urządzeń. Należy zwrócić uwagę na to, czy podczas wysyłania powiadomienia z Centrum powiadomień, możemy wysyłać tylko nieprzetworzone powiadomienia o identyfikatorze powiadomienia (i nie komunikat rzeczywiste):
    
        public NotificationsController()
        {
@@ -75,8 +88,8 @@
         }
 
 
-Należy pamiętać, że `Post` metody teraz nie wysyłania wyskakujących powiadomień. Wysyła raw powiadomienie, które zawiera tylko identyfikator powiadomień, a nie poufną zawartością. Upewnij się również dodać komentarz operacji wysyłania dla platformy, dla których nie masz zostały skonfigurowane w Centrum powiadomień, jak będą powodować błędy.
+Należy pamiętać, że `Post` metoda teraz wysyłał powiadomienie wyskakujące. Wysyła powiadomienie raw, zawierający tylko identyfikator powiadomień, a nie wszystkie poufnej zawartości. Upewnij się również dodać komentarz operacji wysyłania dla platform, dla których nie masz poświadczenia skonfigurowane w Centrum powiadomień, jak będą powodować błędy.
 
-1. Teraz ponownie wdrożymy tę aplikację do witryny sieci Web platformy Azure, aby udostępnić go ze wszystkich urządzeń. Kliknij prawym przyciskiem myszy projekt **AppBackend** i wybierz polecenie **Publikuj**.
-2. Wybierz urządzenie docelowe publikowania witryny sieci Web platformy Azure. Zaloguj się przy użyciu konta platformy Azure i wybierz istniejącą lub nową witrynę sieci Web i zanotuj **docelowy adres URL** właściwości w **połączenia** kartę. W dalszej części tego samouczka będziemy nazywać ten adres URL *punktem końcowym zaplecza*. Kliknij przycisk **Opublikuj**.
+1. Teraz ponownie wdrożymy tę aplikację w witrynie sieci Web platformy Azure, aby go udostępnić wszystkim urządzeniom. Kliknij prawym przyciskiem myszy projekt **AppBackend** i wybierz polecenie **Publikuj**.
+2. Wybierz witryny internetowej platformy Azure jako swoje docelową lokalizację publikacji. Zaloguj się przy użyciu konta platformy Azure i wybrać istniejącą lub nową witrynę sieci Web i zanotuj **docelowy adres URL** właściwość **połączenia** kartę. W dalszej części tego samouczka będziemy nazywać ten adres URL *punktem końcowym zaplecza*. Kliknij przycisk **Opublikuj**.
 

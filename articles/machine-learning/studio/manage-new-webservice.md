@@ -3,8 +3,8 @@ title: Korzystanie z portalu usług sieci Web Azure Machine Learning | Dokumenta
 description: Zarządzanie dostępem do obszarów roboczych usługi Azure Machine Learning, wdrażanie i zarządzanie usługami sieci web interfejsu API uczenia Maszynowego
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
-ms.openlocfilehash: 3ccf097134e21f7f0649b0748a6335d102de7285
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: e21d6e05e3d43bbdcc498c9c4b294269cc3069cd
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823405"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261347"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>Zarządzanie usługą sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning
 Aby zarządzać swoimi Machine Learning nowych i klasycznych usług sieci Web przy użyciu portalu usług sieci Web Microsoft Azure Machine Learning. Ponieważ klasycznych usług sieci Web i usług sieci Web nowej opierają się na różnych podstawowej technologii, masz możliwości zarządzania nieco inny dla każdego z nich.

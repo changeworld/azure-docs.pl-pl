@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: ada5f55cf356ca79efb7cb45c76a4812804400c5
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 13edef4c02aff167316ccae2755a6ec1b58e2e89
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222067"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262622"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Transmisja strumieniowa na żywo korzystająca z usługi Azure Media Services do tworzenia strumieni o różnej szybkości transmisji bitów
 
@@ -220,10 +220,10 @@ Należy pamiętać, że jeśli potrzebujesz niestandardowych ustawień wstępnyc
 | Szybkość transmisji bitów | Szerokość | Wysokość | MaxFPS | Profil | Nazwa Stream wyjściowego |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |Wysoka |Video_1280x720_3500kbps |
-| 2200 |960 |540 |30 |Main |Video_960x540_2200kbps |
-| 1350 |704 |396 |30 |Main |Video_704x396_1350kbps |
-| 850 |512 |288 |30 |Main |Video_512x288_850kbps |
-| 550 |384 |216 |30 |Main |Video_384x216_550kbps |
+| 2200 |960 |540 |30 |Główny |Video_960x540_2200kbps |
+| 1350 |704 |396 |30 |Główny |Video_704x396_1350kbps |
+| 850 |512 |288 |30 |Główny |Video_512x288_850kbps |
+| 550 |384 |216 |30 |Główny |Video_384x216_550kbps |
 | 350 |340 |192 |30 |Punkt odniesienia |Video_340x192_350kbps |
 | 200 |340 |192 |30 |Punkt odniesienia |Video_340x192_200kbps |
 
@@ -268,8 +268,8 @@ Gdy wartość true, to ustawienie służy do konfigurowania koder na żywo, aby 
 Opcjonalny. Określa identyfikator zasobu elementu zawartości usługi multimediów, który zawiera obraz planszy. Domyślny ma wartość null. 
 
 
->[!NOTE] 
->Przed utworzeniem kanału, obrazu planszy z następującymi ograniczeniami powinny zostać przekazane jako dedykowane trwały (żadne inne pliki nie powinny należeć do tego zasobu). Ten obraz jest używany tylko wtedy, gdy koder na żywo jest wstawiania plansz z powodu przerwania ad lub została jawnie zasygnalizują, aby wstawić tablecie. Koder na żywo, można także przejść do trybu planszy podczas niektórych warunków błędów — na przykład sygnału wejściowego zostanie utracone. Obecnie nie ma opcji do użycia niestandardowego obrazu, podczas koder na żywo wejdzie w taki stan usługi "utraty sygnału wejściowego". Dla tej funkcji, możesz głosować [tutaj](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel).
+> [!NOTE] 
+> Przed utworzeniem kanału, obrazu planszy z następującymi ograniczeniami powinny zostać przekazane jako dedykowane trwały (żadne inne pliki nie powinny należeć do tego zasobu). Ten obraz jest używany tylko wtedy, gdy koder na żywo jest wstawiania plansz z powodu przerwania ad lub została jawnie zasygnalizują, aby wstawić tablecie. Obecnie nie ma opcji do użycia niestandardowego obrazu, podczas koder na żywo wejdzie w taki stan usługi "utraty sygnału wejściowego". Dla tej funkcji, możesz głosować [tutaj](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel).
 
 
 * Co najwyżej 1920 x 1080 pikseli w rozdzielczości.

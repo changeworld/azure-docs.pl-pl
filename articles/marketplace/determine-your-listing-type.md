@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: b64a35f6b7422b1e24812c1041305dab2ebad6c0
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 6d05323eb08a69ef4b76dbbf35217d80b9b2dc3c
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578501"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261075"
 ---
 # <a name="determine-your-publishing-option"></a>Określić swoje opcja publikowania
 Opcja publikowania, wybranej oferty bezpośrednio dotyczy zarówno wymagania kwalifikacyjne, jak i portalu marketplace GTM korzyści. Co ważniejsze wybór publikowania opcja i typ oferty w portalu Cloud Partner definiuje interakcji użytkowników z oferty w portalu marketplace.
@@ -64,26 +64,18 @@ Storefront, gdy zostanie wyświetlony oferty, witryny Azure Marketplace i/lub w 
 
 Dostępne opcje publikowania oferują zróżnicowany zaangażowania, zapewniając dostęp do prowadzić do udostępniania i [korzyści Go-To-Market](https://partner.microsoft.com/en-US/reach-customers/gtm). Wybierz z trzech możliwych opcji publikowania, przed rozpoczęciem korzystania z portalu Cloud Partner, tworzenie oferty w portalu marketplace. Należy zwrócić uwagę wywołania do akcji, które odpowiadają za pomocą opcji publikowania:
 
-**Lista** — jest to prosty, wyświetlanie listy aplikacji lub usługi, która umożliwia użytkownikowi marketplace nawiązanie połączenia z klientem za pośrednictwem żądania **skontaktuj się ze mną** wezwanie do akcji.
+| **Opcja publikowania**    | **Opis**  |
+| :------------------- | :-------------------|
+| **Lista** | Proste, wyświetlanie listy aplikacji lub usługi, która umożliwia użytkownikowi marketplace nawiązanie połączenia z klientem za pośrednictwem żądania **skontaktuj się ze mną** wezwanie do akcji. |
+| **Wersja próbna** | Użyj portalu marketplace do zwiększenia możliwości odnajdywania i zautomatyzować aprowizację aplikacji Wersja próbna, umożliwiające użytkownikom potencjalnych użycia środowiska w aplikacjach SaaS, IaaS lub Microsoft bezpłatnie przez ograniczony czas, zanim zakupu. Wywołania do akcji używane dla wersji próbnej opcja publikowania są albo: **bezpłatna wersja próbna** lub **wersji testowej**. |
+| **Przeprowadzaj transakcje** | Aplikacja działa na platformie Azure i mogą być udostępniane jako zasób bezpośrednio w subskrypcji platformy Azure przez klienta, gdy klient wybierze pobierz ją teraz wywołanie akcji. Opłaty licencyjne oprogramowania Opcjonalnie można kupić i rozliczane przy użyciu wybranego przez klienta instrumentu płatniczego i warunki, a użytkownik może oferować ograniczony czasowo dostęp do Twojego **bezpłatna wersja próbna oprogramowania** (dostępne tylko dla platformy Azure Portal Marketplace.) |
 
-**Wersja próbna** — korzystanie z portalu marketplace w celu zwiększenia możliwości odnajdywania i zautomatyzować aprowizację aplikacji Wersja próbna, umożliwiające użytkownikom potencjalnych użycia środowiska w aplikacjach SaaS, IaaS lub Microsoft bezpłatnie przez ograniczony czas, zanim zakupu. Wywołania do akcji używane dla wersji próbnej opcja publikowania są albo: **bezpłatna wersja próbna** lub **wersji testowej**.
-
-**Przeprowadzaj transakcje** — aplikacja działa na platformie Azure i mogą być udostępniane jako zasób bezpośrednio w subskrypcji platformy Azure przez klienta, gdy klient wybierze pobierz ją teraz wywołanie akcji. Opłaty licencyjne oprogramowania Opcjonalnie można kupić i rozliczane przy użyciu wybranego przez klienta instrumentu płatniczego i warunki, a użytkownik może oferować ograniczony czasowo dostęp do Twojego **bezpłatna wersja próbna oprogramowania** (dostępne tylko dla platformy Azure Portal Marketplace.) 
-
-## <a name="select-an-offer-type"></a>Wybierz typ oferty
-
-Po wybraniu opcji publikowania, jesteś gotowy wybrać typ oferty, która będzie służyć do prezentowania oferty. 
-
-Oferta jest publikowania obiekt, który będzie tworzenie, publikowanie i zarządzanie nimi w portalu Cloud Partner. Struktura oferty, w tym metadanych, artefakty i innej zawartości, używany do wyświetlania zawartości oferty w portalu marketplace jest definiowana przez typ oferty.
-
-Zanim będzie można utworzyć oferty, musisz wybrać typ oferty. Typ oferty odpowiada typ rozwiązania, aplikacji lub oferty usługi, który chcesz opublikować, a także jego wyrównania do produktów i usług. 
-
-Typ jednej oferty można skonfigurować inaczej w portalu Cloud Partner, aby włączyć różne opcje publikowania, wywołania do akcji, inicjowanie obsługi administracyjnej ani ceny. Opcja publikowania i konfiguracji typu oferty również wyrównane do wymagania techniczne i oferty uprawnień. 
-
-Pamiętaj przejrzeć sklepie pamięci i stanowią wymagania kwalifikacyjne typu, w tym [przewodnikiem dla wydawców](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) i techniczne publikowania wymagania przed utworzeniem oferty.
+>[!Note]
+>Korzystając z instrukcji języka Transact opcji publikowania, jest należy zrozumieć przed wybraniem typ oferty i tworzenie oferty cen, rozliczeń, fakturowania i informacje dotyczące wypłat zagadnienia. Przegląd [rozliczeń w portalu Marketplace i komercyjnych zagadnienia artykuł, aby dowiedzieć się więcej](./marketplace-commercial-transaction-capabilities-and-considerations.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
+*   Po wybraniu opcji publikowania, można przystąpić do [wybierz typ oferty](./publisher-guide-by-offer-type.md) który będzie używany do przedstawienia oferty.
 *   Należy przejrzeć wymagania kwalifikacyjne w opcje publikowania przez sekcję typ oferty w celu sfinalizowania wyborem i konfiguracją, oferty.
 *   Przejrzyj wzorców publikowania w sklepie przykłady w sposób swoje rozwiązanie mapowania typu oferty i konfiguracji.
 *   Zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com) tworzenie i konfigurowanie swojej oferty.

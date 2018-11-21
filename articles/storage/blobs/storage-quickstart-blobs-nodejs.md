@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: d47878502816a0a61829859cc166c125448a2850
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 31804932cd4176cd55af752a7c1d05ae0a5f0cdf
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710889"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52260771"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-nodejs-sdk-v2"></a>Jak przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu zestawu SDK środowiska Node.js w wersji 2
 
@@ -124,7 +124,7 @@ const listContainers = async () => {
 };
 ```
 
-Rozmiar grup można konfigurować za pomocą elementu [ListContainersOptions](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.listcontaineroptions?view=azure-node-latest). Wywołanie metody *listContainersSegmented* zwraca metadane obiektu blob jako tablicę wystąpień klasy [ContainerResult](/nodejs/api/azure-storage/blobresult). Wyniki są zwracane w partiach inkrementowanych o 5000 (segmenty). Jeśli kontener zawiera ponad 5000 obiektów blob, do wyników jest dołączana wartość *tokenu kontynuacji*. Aby wyświetlić listę kolejnych segmentów z kontenera obiektów blob, można przekazać token kontynuacji do metody *listContainersSegment* jako drugi argument.
+Rozmiar grup można konfigurować za pomocą elementu [ListContainersOptions](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.listcontaineroptions?view=azure-node-latest). Wywołanie metody *listContainersSegmented* zwraca metadane obiektu blob jako tablicę wystąpień klasy [ContainerResult](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.containerresult?view=azure-node-latest). Wyniki są zwracane w partiach inkrementowanych o 5000 (segmenty). Jeśli kontener zawiera ponad 5000 obiektów blob, do wyników jest dołączana wartość *tokenu kontynuacji*. Aby wyświetlić listę kolejnych segmentów z kontenera obiektów blob, można przekazać token kontynuacji do metody *listContainersSegment* jako drugi argument.
 
 ### <a name="create-a-container"></a>Tworzenie kontenera
 
@@ -167,7 +167,7 @@ const uploadString = async (containerName, blobName, text) => {
 ```
 ### <a name="upload-a-local-file"></a>Przekazywanie pliku lokalnego
 
-Za pomocą funkcji [createBlockBlobFromLocalFile](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromLocalFile) funkcja *uploadLocalFile* przekazuje plik z systemu plików do magazynu obiektów blob i go zapisuje lub nadpisuje. 
+Za pomocą funkcji [createBlockBlobFromLocalFile](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromlocalfile-string--string--string--errororresult-blobresult--) funkcja *uploadLocalFile* przekazuje plik z systemu plików do magazynu obiektów blob i go zapisuje lub nadpisuje. 
 
 ```javascript
 const uploadLocalFile = async (containerName, filePath) => {
@@ -184,11 +184,11 @@ const uploadLocalFile = async (containerName, filePath) => {
     });
 };
 ```
-Inne metody przekazywania zawartości do obiektów blob obejmują użycie [tekstu](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromText) i [strumieni](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromStream). Aby sprawdzić, czy plik został przekazany do magazynu obiektów blob, można użyć [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) w celu wyświetlenia danych na koncie.
+Inne metody przekazywania zawartości do obiektów blob obejmują użycie [tekstu](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromtext-string--string--string---buffer--errororresult-blobresult--) i [strumieni](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromstream-string--string--stream-readable--number--errororresult-blobresult--). Aby sprawdzić, czy plik został przekazany do magazynu obiektów blob, można użyć [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) w celu wyświetlenia danych na koncie.
 
 ### <a name="list-the-blobs"></a>Wyświetlanie listy obiektów blob
 
-Funkcja *listBlobs* wywołuje metodę [listBlobsSegmented](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromText) w celu zwrócenia listy metadanych obiektu blob w kontenerze. 
+Funkcja *listBlobs* wywołuje metodę [listBlobsSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#listblobssegmented-string--continuationtoken--errororresult-listblobsresult--) w celu zwrócenia listy metadanych obiektu blob w kontenerze. 
 
 ```javascript
 const listBlobs = async (containerName) => {
@@ -228,7 +228,7 @@ Przedstawiona w tym miejscu implementacja zmienia źródło i zwraca zawartość
 
 ### <a name="delete-a-blob"></a>Usuwanie obiektu blob
 
-Funkcja *deleteBlob* wywołuje funkcję [deleteBlobIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteBlobIfExists). Jak sugeruje jej nazwa, ta funkcja nie zwraca błędu, jeśli obiekt blob został już usunięty.
+Funkcja *deleteBlob* wywołuje funkcję [deleteBlobIfExists](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#deleteblobifexists-string--string--errororresult-boolean--). Jak sugeruje jej nazwa, ta funkcja nie zwraca błędu, jeśli obiekt blob został już usunięty.
 
 ```javascript
 const deleteBlob = async (containerName, blobName) => {

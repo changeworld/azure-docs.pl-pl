@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 68488788f73c9662b5d1eaa3b670f2120941defc
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: e2326f56ad367f744bc7895bc8c4bfd6f32d0310
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616490"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264883"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Rozwiązywanie problemów z alertami dzienników w usłudze Azure Monitor  
 ## <a name="overview"></a>Przegląd
@@ -61,7 +61,7 @@ Ponieważ polecenie zawiera *... Sumuj według* oraz podać dwie zmienne (sygnat
 
 ![Metryki pomiaru wykonywania zapytań z wieloma wartościami](./media/monitor-alerts-unified/LogMMQuery.png)
 
-Jak "Łączna od" jest $table — dane są sortowane według kolumny $table (jak kolor czerwony); Firma Microsoft grupy i Znajdź typ pola "Agregacji po" (to znaczy) $table — na przykład: wartości availabilityResults jest traktowany jako jeden wykres na jednostkę (jako wyróżnione w kolorze pomarańczowym). W tym wykres wartość na jednostkę — usługa alertu dotyczącego wyszukuje trzy kolejne naruszenia występujących (jak pokazano w kolorze zielonym) dla alertu, które będą wyzwalane dla wartości z tabeli "availabilityResults". Podobnie jeśli w dowolnej innej wartości $table jeśli są widoczne trzy kolejne naruszenia — inny powiadomień o alertach będą wyzwalane przez takie same; przy użyciu alertów usługi automatycznie sortowania wartości w jedną kreślenia/jednostkę (tak jak w kolorze pomarańczowym) według czasu.
+Jak "Łączna od" jest $table — dane są sortowane według kolumny $table (jak kolor czerwony); Firma Microsoft grupy i Znajdź typ pola "Agregacji po" (to znaczy) $table — na przykład: wartości availabilityResults jest traktowany jako jeden wykres na jednostkę (jako wyróżnione w kolorze pomarańczowym). W tym wykres wartość na jednostkę — usługa alertu dotyczącego wyszukuje trzy kolejne naruszenia występujących (jak pokazano w kolorze zielonym) dla alertu, które będą wyzwalane dla wartości z tabeli "availabilityResults". Podobnie jeśli w dowolnej innej wartości $table jeśli są widoczne trzy kolejne naruszenia — inny powiadomień o alertach będą wyzwalane przez to samo; przy użyciu alertów usługi automatycznie sortowania wartości w jedną kreślenia/jednostkę (tak jak w kolorze pomarańczowym) według czasu.
 
 Teraz załóżmy, pomiar metryki reguł alertów dzienników został zmodyfikowany, a zapytanie było `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)` z pozostałą częścią konfiguracji pozostała taka sama jak przed dołączeniem alertu logikę trzy kolejne naruszenia. Opcja "Agregacji po" będzie w tym przypadku domyślnie: sygnatura czasowa. Ponieważ tylko jedną wartość znajduje się w zapytaniu dla... Sumuj według timestamp (to znaczy); podobny do poprzedniego przykładu, na końcu wykonywania dane wyjściowe będą jak przedstawiono poniżej. 
 

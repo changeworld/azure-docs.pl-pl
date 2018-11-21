@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e2a931b14719775ac3d901591b6424d9c9e9ee10
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 88df62b6e8c4eb519c51d82763634cf7d6d14418
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625831"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262656"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Log Analytics na platformie Microsoft Azure. Jeśli masz dodatkowe pytania dotyczące usługi Log Analytics, przejdź do strony [forum dyskusyjne](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
@@ -37,7 +37,7 @@ Odp.: są to samo. [Usługa log Analytics jest integrowany jako funkcję w usłu
 A: wyszukiwanie w dzienniku trwa nadal dostępne w portalu pakietu OMS i w witrynie Azure portal w obszarze nazwy **dzienniki (wersja klasyczna)**. Portal pakietu OMS zostanie oficjalnie wycofana 15 stycznia 2019 r. Klasyczne środowisko dzienników w witrynie Azure portal zostaną stopniowo wycofane i zastąpione nowe środowisko dzienniki. 
 
 ### <a name="q-can-i-still-use-advanced-analytics-portal"></a>PYTANIE: Można nadal korzystać z portalu Advanced Analytics? 
-Nowe środowisko dzienników w witrynie Azure portal jest oparty na [portalu Advanced Analytics](https://portal.loganalytics.io/), ale jest nadal dostępny spoza witryny Azure portal. Plan wycofywania tego zewnętrznego portalu zostanie ogłoszona wkrótce.
+Nowe środowisko dzienników w witrynie Azure portal jest oparty na portalu usługi analiza zaawansowana, ale jest nadal dostępny spoza witryny Azure portal. Plan wycofywania tego zewnętrznego portalu zostanie ogłoszona wkrótce.
 
 ### <a name="q-why-cant-i-see-query-explorer-and-save-buttons-in-the-new-logs-experience"></a>PYTANIE: Dlaczego nie można wyświetlić Eksplorator zapytań i Zapisz przycisków w nowym środowisku dzienniki?
 
@@ -71,7 +71,7 @@ Odp.: Aby uzyskać dostęp do obszaru roboczego na platformie Azure, musi mieć 
 Odp.: Pokaż projektanta jest dostępna tylko w dziennikach dla użytkowników przypisanych z uprawnieniami współautora lub nowszej.
 
 ### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>PYTANIE: Można nadal korzystać z portalu usługi analiza spoza platformy Azure?
-A. Tak, dzienniki strony na platformie Azure i [portalu analizy zaawansowanej](https://portal.loganalytics.io) opierają się na ten sam kod. Usługa log Analytics jest integrowany jako funkcję w usłudze Azure Monitor, aby zapewnić bardziej ujednoliconego środowiska monitorowania. Nadal możesz uzyskiwać dostęp do portalu analizy przy użyciu adresu URL: https://portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}.
+A. Tak, stronie dzienniki na platformie Azure i portalu analizy zaawansowanej opierają się na ten sam kod. Usługa log Analytics jest integrowany jako funkcję w usłudze Azure Monitor, aby zapewnić bardziej ujednoliconego środowiska monitorowania. Nadal możesz uzyskiwać dostęp do portalu analizy przy użyciu adresu URL: https://portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}.
 
 
 

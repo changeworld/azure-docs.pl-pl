@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
+manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: bbd232c819a11de691c4d3c3209273b064eddf62
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 92236547e2100ab57f4ec6b4953f6c61ec87892d
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963440"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275508"
 ---
 # <a name="manage-budgets"></a>Zarządzanie budżetami
 
@@ -27,7 +27,7 @@ Na podstawie przypisanej budżetów, można ustawić alerty progu na podstawie p
 
 Budżet Raporty zawierają przypisane budżetu. Użytkownicy mogą wyświetlać, po ich wydatków za pośrednictwem, w obszarze lub w wartości nominalnej z ich użycia wraz z upływem czasu. Po wybraniu **Pokaż/Ukryj pola** u góry raportu budżetu, można wyświetlić kosztów, budżet, skumulowany koszt lub Łączny budżet.
 
-Usługa Azure Cost Management oferuje podobne funkcje do rozwiązania Cloudyn. Usługa Azure Cost Management to rozwiązanie do zarządzania natywnych kosztów platformy Azure. Pomaga analizując koszty, tworzenie i zarządzanie budżetów, eksportować dane i zapoznaj się i działają zgodnie z zaleceniami optymalizacji, aby zaoszczędzić pieniądze. Aby uzyskać więcej informacji dotyczących budżetów kosztów zarządzania, zobacz [tworzenie i zarządzanie nimi budżetów](tutorial-acm-create-budgets.md).
+Usługa Azure Cost Management oferuje podobne funkcje jak rozwiązanie Cloudyn. Usługa Azure Cost Management to natywne rozwiązanie do zarządzania kosztami na platformie Azure. Ułatwia ona analizowanie kosztów, tworzenie budżetów i zarządzanie nimi, eksportowanie danych, a także zapoznawanie się z rekomendacjami dotyczącymi optymalizacji i ich wdrażanie w celu zaoszczędzenia pieniędzy. Aby uzyskać więcej informacji dotyczących budżetów kosztów zarządzania, zobacz [tworzenie i zarządzanie nimi budżetów](tutorial-acm-create-budgets.md).
 
 ## <a name="create-budgets"></a>Tworzenie budżetów
 

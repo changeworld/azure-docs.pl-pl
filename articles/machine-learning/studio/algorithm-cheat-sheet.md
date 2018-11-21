@@ -3,8 +3,8 @@ title: Usługi Machine learning ściągawka dotycząca algorytmów — Azure | D
 description: Ściągawka dotycząca algorytmów uczenia maszynowego, drukowalnych pomaga w wyborze prawo algorytmu dla modelu predykcyjnego w usłudze Azure Machine Learning Studio.
 keywords: ściągawka dotycząca algorytmów, cheat-sheet, algorytmu uczenia maszynowego
 services: machine-learning
-author: pakalra
-ms.custom: (previous ms.author pakalra)
+author: ericlicoding
+ms.custom: (previous ms.author=pakalra, author=pakalra)
 ms.author: amlstudiodocs
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: b43cc1ea84eefc53c9d51d4c7acfb9dd7390836d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 3a9ef7843b671a6b2b16fda5429449cd3439c3a9
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822249"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264067"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Machine learning ściągawka dotycząca algorytmów dla usługi Azure Machine Learning Studio
 

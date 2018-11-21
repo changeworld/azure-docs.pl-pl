@@ -1,5 +1,5 @@
 ---
-title: TYTUŁ | Dokumentacja firmy Microsoft
+title: Aplikacja Azure oferty na żywo w witrynie Azure Marketplace | Dokumentacja firmy Microsoft
 description: .
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 643b7d674de3d51f98b69d6f0659478c9893e3b1
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 18a8e6ae8ab3bd4299c6a014f938e73a2a021492
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810494"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263595"
 ---
 <a name="make-your-azure-application-offer-live-on-azure-marketplace"></a>Aplikacja Azure oferty na żywo w witrynie Azure Marketplace 
 ===========================================================
@@ -33,19 +33,22 @@ Pozwól\'s przechodzić przez ten proces, bardziej szczegółowo, aby lepiej zro
 <a name="publishing-process"></a>Proces publikowania 
 ------------------
 
-Należy kliknąć \"Publikuj\" na karcie edytora, aby rozpocząć proces publikowania.
+Należy kliknąć \"Publikuj\" w obszarze **edytora** kartę, aby rozpocząć proces publikowania.
 
 ![Oferty z rzeczywistym użyciem na żywo sekwencji 1 — publikowanie](./media/cloud-partner-portal-publish-managed-app/newOffer_managedApp_publish.png)
 
-Na karcie Stan zostanie wyświetlony, publikowania czynności i który krok jest ofertą znajduje się w.
+W obszarze **stan** kartę, zostanie wyświetlony, publikowania czynności i który krok jest ofertą znajduje się w.
 
 ![Oferty z rzeczywistym użyciem na żywo sekwencji 2 - przepływu pracy](./media/cloud-partner-portal-publish-managed-app/newOffer_managedApp_workflow.png)
 
-W dowolnym momencie proces publikowania możesz zarejestrować się w i kliknij kartę oferuje wszystkie, aby wyświetlić najnowszy stan dla wszystkich Twoich ofert. Można kliknąć bezpośrednio na stan oferty i wyświetlić szczegółowe informacje, na którym jest oferty w procesie publikowania.
+W dowolnym momencie proces publikowania, możesz również zalogować i kliknij przycisk **oferuje wszystkie** kartę, aby wyświetlić najnowszy stan dla wszystkich Twoich ofert. Można kliknąć bezpośrednio na stan oferty i wyświetlić szczegółowe informacje, na którym jest oferty w procesie publikowania.
 
-Pozwól\'s przewodnik poszczególne kroki publikowania omówienia, co się dzieje w każdym kroku i jak długo należy oszacować każdego kroku spowoduje przejście.
+> [!WARNING]
+> Jeśli autorstwa użycia klienta nie jest włączona, podczas procesu publikowania zostanie wyświetlony następujący komunikat o błędzie: "partnerów platformy Azure klienta użycia: uznanie autorstwa Brak w co najmniej jeden szablon usługi Azure Resource Manager. Aby rozwiązać problem, należy dodać śledzenia identyfikator GUID szablonu usługi Azure Resource Manager w pakietach mainTemplate.json dla następującego planu: usługi servicenow. Aby uzyskać więcej informacji, zobacz http://aka.ms/customerusageattribution. " 
 
-### <a name="validate-pre-requisites-1-day"></a>Zweryfikuj wymagania wstępne (\<1 dzień) 
+Teraz omówimy każdy z kroków publikowania i omówić, co się dzieje w każdym kroku i jak długo należy oszacować że każdy krok spowoduje przejście.
+
+### <a name="validate-prerequisites-1-day"></a>Weryfikowanie wymagań wstępnych (\<1 dzień) 
 
 Po kliknięciu \"Publikuj\", zautomatyzowane kontrole będzie miała miejsce, aby zagwarantować, że\'ve wypełniane wszystkie wymagane pola w ofercie. Jeśli wszystkie pola są wypełniane, obok pola zostanie wyświetlone ostrzeżenie i należy go wypełnić dokładnego, a następnie kliknij pozycję \'Publikuj\' ponownie.
 
@@ -59,7 +62,7 @@ Ten krok jest, gdzie możemy uruchomić wiele testów, aby upewnić się, że pa
 
 Ponieważ może to potrwać kilka dni, można wylogować portalu Cloud Partner. Wyślemy wiadomość e-mail z powiadomieniem, jeśli wystąpiły żadne błędy. Jeśli testy zakończą się pomyślnie z sukcesem, proces zostanie automatycznie przejść do kroku inicjowania obsługi.
 
-### <a name="packaging-and-lead-generation-registration-1-hour"></a>Tworzenie pakietów i spowodować generowanie rejestracji (\<1 godzina) 
+### <a name="packaging-and-lead-generation-registration-1-hour"></a>Pakowanie i spowodować generowanie rejestracji (\<1 godzina) 
 
 Na tym etapie firma Microsoft na to, co będzie stronę produktu w witrynie internetowej łączenia zawartości techniczne i marketingowe.
 

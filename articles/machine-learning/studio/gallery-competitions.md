@@ -3,8 +3,8 @@ title: Usługa Azure konkursy Galeria sztucznej Inteligencji | Dokumentacja firm
 description: Dowiedz się, konkursy w galerii sztucznej Inteligencji platformy Azure.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: f9967888d4078e97a0087794ab0e260744ffe0d7
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: a209b53893da8f0c7e86102a703334091f982c78
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824034"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52260669"
 ---
 # <a name="discover-competitions-in-the-azure-ai-gallery"></a>Odkryj konkursy w galerii Azure AI
 

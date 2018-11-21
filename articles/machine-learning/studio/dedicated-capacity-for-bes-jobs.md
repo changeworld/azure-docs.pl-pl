@@ -3,8 +3,8 @@ title: W wersji dedykowanej pojemności dla zadania usług wykonywania wsadowego
 description: Omówienie usługi Azure Batch dla zadania uczenia maszynowego.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 6a8c89428026a1c491e8a4d26c7d66b99fd2e8cd
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: e3df8c105e70edcd4bacd2c21fdb9c79b931c9cf
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822640"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265019"
 ---
 # <a name="azure-batch-service-for-machine-learning-jobs"></a>Usługa Azure Batch dla zadań usługi Machine Learning
 

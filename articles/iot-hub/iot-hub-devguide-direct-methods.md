@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: f9476d42bbdb9d2a499c08d83eed6696fbbed469
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 750c184dfc0adb92f26114d1911f27bc741ceb23
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586006"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265266"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Zrozumienie i wywoływanie metod bezpośrednich z usługi IoT Hub
 
@@ -203,3 +203,4 @@ Teraz wiesz jak używanie metod bezpośrednich, mogą być zainteresowane w nast
 Jeśli chcesz wypróbować niektóre pojęcia opisane w tym artykule, może być zainteresowany następującego samouczka usługi IoT Hub:
 
 * [Używanie metod bezpośrednich](quickstart-control-device-node.md)
+* [Zarządzanie urządzeniami za pomocą usługi Azure IoT Toolkit dla programu VS Code](iot-hub-device-management-iot-toolkit.md)

@@ -3,8 +3,8 @@ title: Notesy Jupyter galerii sztucznej Inteligencji platformy Azure | Dokumenta
 description: Dowiedz się, notesy Jupyter w galerii sztucznej Inteligencji platformy Azure.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 090e67ed2a5448b2db1fd8556056b7bcd1947df6
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 11f14ddec7b863d034c4b200e1fa9b1a13879969
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823356"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52260650"
 ---
 # <a name="discover-jupyter-notebooks-in-the-azure-ai-gallery"></a>Odnajdywanie aplikacji Jupyter Notebooks w galerii Azure AI
 
