@@ -3,19 +3,19 @@ title: 'Samouczek: tworzenie strony internetowej z funkcją wyszukiwania niestan
 titlesuffix: Azure Cognitive Services
 description: W tym artykule opisano, jak skonfigurować wystąpienie wyszukiwania niestandardowego i zintegrować je ze stroną internetową.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: tutorial
 ms.date: 10/16/2017
-ms.author: v-brapel
-ms.openlocfilehash: 6d08a36d7a464ccc1904839d6631be0553aacb17
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.author: aahi
+ms.openlocfilehash: ebc4779876a52113c20e2ace50b3333e254a744e
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279215"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161790"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Samouczek: tworzenie strony internetowej z funkcją wyszukiwania niestandardowego
 

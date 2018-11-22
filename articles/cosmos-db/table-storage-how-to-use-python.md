@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 0fca20f4f714e586281a32e57fe6129b262f5fa5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 9778911d56f55ea83b542d6fbe5c31b646d85d2d
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248493"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976472"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Rozpoczynanie pracy z usługą Azure Table Storage oraz interfejsem API tabel usługi Azure Cosmos DB przy użyciu języka Python
 
@@ -32,7 +32,7 @@ Ten przykład pokazuje, jak zastosować [zestaw SDK tabel usługi Azure Cosmos D
 * Wstawianie jednostek i wykonywanie zapytań
 * Modyfikowanie jednostek
 
-Podczas pracy ze scenariuszami w tym przykładzie może być przydatna [dokumentacja interfejsu API zestawu SDK usługi Azure Cosmos DB dla języka Python](https://azure.github.io/azure-cosmosdb-python/).
+Podczas pracy ze scenariuszami w tym przykładzie może być przydatna [dokumentacja interfejsu API zestawu SDK usługi Azure Cosmos DB dla języka Python](https://docs.microsoft.com/en-us/python/api/overview/azure/cosmosdb?view=azure-python).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -222,7 +222,7 @@ table_service.delete_table('tasktable')
 ## <a name="next-steps"></a>Następne kroki
 
 * [FAQ — Develop with the Table API (Opracowywanie zawartości przy użyciu interfejsu API tabel — często zadawane pytania)](https://docs.microsoft.com/azure/cosmos-db/faq#develop-with-the-table-api)
-* [Azure Cosmos DB SDK for Python API reference (Dokumentacja zestawu SDK usługi Azure Cosmos DB dla języka Python)](https://azure.github.io/azure-cosmosdb-python/)
+* [Azure Cosmos DB SDK for Python API reference (Dokumentacja zestawu SDK usługi Azure Cosmos DB dla języka Python)](https://docs.microsoft.com/en-us/python/api/overview/azure/cosmosdb?view=azure-python)
 * [Centrum deweloperów języka Python](https://azure.microsoft.com/develop/python/)
 * [Eksplorator usługi Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md): bezpłatna, wieloplatformowa aplikacja umożliwiająca wizualną pracę z danymi w usłudze Azure Storage w systemach Windows, macOS i Linux.
 * [Working with Python in Visual Studio (Windows) (Korzystanie z języka Python w programie Visual Studio w systemie Windows)](https://docs.microsoft.com/visualstudio/python/overview-of-python-tools-for-visual-studio)

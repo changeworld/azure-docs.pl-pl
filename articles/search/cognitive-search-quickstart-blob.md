@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 23a62197d20901347be247d331e21d076bcf9e83
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: bc88ca63f14c5480210455abcf403771b6a4c232
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288037"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264132"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Szybki start: tworzenie potoku wyszukiwania poznawczego przy użyciu umiejętności i przykładowych danych
 
@@ -33,9 +33,16 @@ Wyszukiwanie poznawcze możesz wypróbować w usłudze Azure Search utworzonej w
 * Środkowo-zachodnie stany USA
 * Środkowo-południowe stany USA
 * Wschodnie stany USA
+* Wschodnie stany USA 2
+* Zachodnie stany USA 2
+* Kanada Środkowa
 * Europa Zachodnia
+* Południowe Zjednoczone Królestwo
 * Europa Północna
+* Brazylia Południowa
 * Azja Południowo-Wschodnia
+* Indie Środkowe
+* Australia Wschodnia
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

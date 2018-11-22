@@ -3,19 +3,19 @@ title: 'Szybki start: tworzenie pierwszego wystąpienia usługi wyszukiwania nie
 titlesuffix: Azure Cognitive Services
 description: Aby móc skorzystać z usługi wyszukiwania niestandardowego Bing, należy utworzyć wystąpienie wyszukiwania niestandardowego definiujące widok lub wycinek sieci Internet. Wystąpienie zawiera ustawienia określające domeny publiczne, lokacje podrzędne i strony internetowe, które mają być przeszukiwane przez usługę Bing, oraz wszelkie dostosowania klasyfikacji.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2017
-ms.author: v-brapel
-ms.openlocfilehash: 866d32aa4de45076fcbc4e413d8c2e67d5346878
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: aahi
+ms.openlocfilehash: c9b37486d664920bbc4b85a0715ce7f5ea910365
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816243"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161553"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Szybki start: tworzenie pierwszego wystąpienia usługi wyszukiwania niestandardowego Bing
 Aby móc skorzystać z usługi wyszukiwania niestandardowego Bing, należy utworzyć wystąpienie wyszukiwania niestandardowego definiujące widok lub wycinek sieci Internet. Wystąpienie zawiera ustawienia, które określają domeny publiczne, witryny i strony internetowe, które mają być wyszukiwane przez usługę Bing, oraz wszelkie dostosowania klasyfikacji. Aby utworzyć wystąpienie, użyj [portalu](https://customsearch.ai) usługi wyszukiwania niestandardowego Bing. 

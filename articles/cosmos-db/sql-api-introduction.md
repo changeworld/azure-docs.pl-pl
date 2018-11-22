@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/22/2017
 ms.author: rafats
-ms.openlocfilehash: f71a7ad538e22359a2a0dd9c2e3f6c4448ee5a2d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5d1e86630ff9143a75e5b0502a64c7661cc2822c
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232397"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161087"
 ---
 # <a name="introduction-to-azure-cosmos-db-sql-api"></a>Wprowadzenie do usługi Azure Cosmos DB: Interfejs API SQL
 
@@ -24,7 +24,7 @@ ms.locfileid: "51232397"
 
 ![Interfejs API SQL platformy Azure](./media/sql-api-introduction/cosmosdb-sql-api.png) 
 
-Interfejs API SQL w usłudze Azure Cosmos DB zapewnia szerokie i powszechnie znane [możliwości zapytań SQL](sql-api-sql-query.md) w połączeniu ze stale niskimi opóźnieniami dla danych JSON bez schematu. Ten artykuł zawiera omówienie interfejsu API SQL usługi Azure Cosmos DB oraz sposobów przechowywania olbrzymich ilości danych JSON, wykonywania zapytań z opóźnieniem liczonym w milisekundach i łatwego rozwijania schematu za jego pomocą. 
+Interfejs API SQL w usłudze Azure Cosmos DB zapewnia szerokie i powszechnie znane [możliwości zapytań SQL](how-to-sql-query.md) w połączeniu ze stale niskimi opóźnieniami dla danych JSON bez schematu. Ten artykuł zawiera omówienie interfejsu API SQL usługi Azure Cosmos DB oraz sposobów przechowywania olbrzymich ilości danych JSON, wykonywania zapytań z opóźnieniem liczonym w milisekundach i łatwego rozwijania schematu za jego pomocą. 
 
 ## <a name="what-capabilities-and-key-features-does-azure-cosmos-db-offer"></a>Jakie możliwości i kluczowe funkcje oferuje usługa Azure Cosmos DB?
 Usługa Azure Cosmos DB, za pośrednictwem interfejsu API SQL, oferuje następujące kluczowe funkcje i korzyści:
@@ -34,7 +34,7 @@ Usługa Azure Cosmos DB, za pośrednictwem interfejsu API SQL, oferuje następuj
 
 * **Replikacja w wielu regionach:** Usługa Azure Cosmos DB w sposób przezroczysty replikuje dane do wszystkich regionów skojarzonych z kontem usługi Azure Cosmos DB, umożliwiając tworzenie aplikacji wymagających globalnego dostępu do danych, a jednocześnie zapewniając kompromis między spójnością, dostępnością i wydajnością z odpowiednimi gwarancjami. Usługa Azure Cosmos DB zawiera przezroczyste rozwiązania regionalnej pracy awaryjnej z międzyregionalnymi interfejsami API oraz możliwość elastycznego skalowania przepływności i magazynów na całym świecie. Więcej informacji zawiera artykuł [Distribute data globally with Azure Cosmos DB](distribute-data-globally.md) (Globalna dystrybucja danych przy użyciu usługi Azure Cosmos DB).
 
-* **Zapytania ad hoc z użyciem dobrze znanej składni SQL**: przechowywanie heterogenicznych dokumentów JSON i wykonywanie względem nich zapytań przy użyciu dobrze znanej składni SQL. Usługa Azure Cosmos DB wykorzystuje wysoce współbieżną, nieblokującą, opartą na strukturze dziennika technologię indeksowania do automatycznego indeksowania całej zawartości dokumentu. Umożliwia to wykonywanie zaawansowanych zapytań w czasie rzeczywistym bez konieczności określania wskazówek schematu, indeksów pomocniczych czy widoków. Więcej informacji zawiera temat [Tworzenie zapytań względem usługi Azure Cosmos DB](sql-api-sql-query.md). 
+* **Zapytania ad hoc z użyciem dobrze znanej składni SQL**: przechowywanie heterogenicznych dokumentów JSON i wykonywanie względem nich zapytań przy użyciu dobrze znanej składni SQL. Usługa Azure Cosmos DB wykorzystuje wysoce współbieżną, nieblokującą, opartą na strukturze dziennika technologię indeksowania do automatycznego indeksowania całej zawartości dokumentu. Umożliwia to wykonywanie zaawansowanych zapytań w czasie rzeczywistym bez konieczności określania wskazówek schematu, indeksów pomocniczych czy widoków. Więcej informacji zawiera temat [Tworzenie zapytań względem usługi Azure Cosmos DB](how-to-sql-query.md). 
 * **Wykonywanie skryptów JavaScript w bazie danych**: Wyrażanie logiki aplikacji jako procedur składowanych, wyzwalaczy i funkcji definiowanych przez użytkownika (funkcji UDF) przy użyciu standardowego języka JavaScript. Dzięki temu logika aplikacji może pracować nad danymi bez problemów z niezgodnością między aplikacją a schematem bazy danych. Interfejs API SQL zapewnia pełne transakcyjne wykonywanie logiki aplikacji JavaScript bezpośrednio wewnątrz aparatu bazy danych. Głęboka integracja języka JavaScript umożliwia wykonywanie operacji INSERT, REPLACE, DELETE i SELECT z poziomu programu JavaScript jako izolowanych transakcji. Aby dowiedzieć się więcej, zobacz [Programowanie po stronie serwera w języku SQL](programming.md).
 
 * **Możliwość dostosowania poziomu spójności**: Możliwość wyboru spośród pięciu dobrze zdefiniowanych poziomów spójności w celu osiągnięcia optymalnego kompromisu między wydajnością a spójnością. Dla zapytań i operacji odczytu usługa Azure Cosmos DB oferuje pięć różnych poziomów spójności: „silna”, „powiązana nieaktualność”, „sesja”, „spójny prefiks” i „ostateczna”. Te szczegółowe, dokładnie zdefiniowane poziomy spójności umożliwiają ustalanie optymalnych kompromisów między spójnością, dostępnością i opóźnieniem. Aby dowiedzieć się więcej, zobacz [Maksymalizowanie dostępności i wydajności za pomocą poziomów spójności](consistency-levels.md).

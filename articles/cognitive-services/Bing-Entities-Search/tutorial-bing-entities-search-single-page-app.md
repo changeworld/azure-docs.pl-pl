@@ -3,19 +3,19 @@ title: 'Samouczek: jednostronicowa aplikacja internetowa korzystająca z wyszuki
 titlesuffix: Azure Cognitive Services
 description: Pokazuje sposób użycia interfejsu API wyszukiwania jednostek Bing w jednostronicowej aplikacji internetowej.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
 ms.topic: tutorial
 ms.date: 12/08/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 9aabecbec144797b9fbafdff7179213b68921447
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: aahi
+ms.openlocfilehash: 6bf3944017075ee04fe6ed3472a0cbe12d7f8ba0
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815549"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162011"
 ---
 # <a name="tutorial-single-page-web-app"></a>Samouczek: jednostronicowa aplikacja internetowa
 
@@ -507,14 +507,14 @@ Nasza funkcja renderująca jednostki:
 > [!div class="checklist"]
 > * tworzy tag `<img>` kodu HTML, aby wyświetlić miniaturę obrazu, jeśli istnieje; 
 > * tworzy tag `<a>` kodu HTML prowadzący do strony, która zawiera obraz;
-> * tworzy opis, który wyświetla informacje dotyczące obrazu i witryny, w której się znajduje;
+> * tworzy opis, który wyświetla informacje dotyczące obrazu i witryny, w której się znajduje.
 > * wprowadza klasyfikację jednostki przy użyciu wskazówek wyświetlania, jeśli istnieje;
 > * zawiera link do wyszukiwania Bing umożliwiający uzyskanie dodatkowych informacji na temat jednostki;
 > * wyświetla wszystkie informacje o licencjach lub uznaniu autorstwa wymagane przez źródła danych.
 
 ## <a name="persisting-client-id"></a>Trwały identyfikator klienta
 
-Odpowiedzi z interfejsów API wyszukiwania Bing mogą zawierać nagłówek `X-MSEdge-ClientID`, który powinien być wysyłany z powrotem do interfejsu API z kolejnymi żądaniami. Jeśli jest używanych wiele interfejsów API wyszukiwania Bing, dla każdego z nich powinien być stosowany ten sam identyfikator klienta, jeśli jest to możliwe.
+Odpowiedzi z interfejsów API wyszukiwania Bing mogą zawierać nagłówek `X-MSEdge-ClientID`, który powinien być wysłany z powrotem do interfejsu API z kolejnymi żądaniami. Jeśli jest używanych wiele interfejsów API wyszukiwania Bing, dla każdego z nich powinien być stosowany ten sam identyfikator klienta, jeśli jest to możliwe.
 
 Podanie nagłówka `X-MSEdge-ClientID` umożliwia interfejsom API usługi Bing skojarzenie wszystkich wyszukiwań użytkownika, co ma dwie ważne korzyści.
 

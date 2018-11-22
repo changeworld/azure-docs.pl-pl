@@ -3,19 +3,19 @@ title: 'Samouczek: uzyskiwanie wyników sprawdzania pisowni za pomocą interfejs
 titlesuffix: Azure Cognitive Services
 description: Kod źródłowy do tego samouczka przedstawia sposób użycia interfejsu API sprawdzania pisowni Bing w jednostronicowej aplikacji internetowej.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
 ms.topic: tutorial
 ms.date: 10/04/2017
-ms.author: v-jaswel
-ms.openlocfilehash: baa618929b1f7b401c619681dce4e085b16543e7
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: aahi
+ms.openlocfilehash: 0180c6f2924f921e358ea152c887c5c2e16c34dc
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800965"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165581"
 ---
 # <a name="tutorial-single-page-web-app"></a>Samouczek: jednostronicowa aplikacja internetowa
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 06/28/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7c1e56b7c94c51a00fabdac56dd2d8c3eb621ae0
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: a5b6ae833fcd340a639c068156940e6b9ad469ca
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42139598"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711994"
 ---
 # <a name="tutorial-load-balance-internal-traffic-with-basic-load-balancer-to-vms-using-the-azure-portal"></a>Samouczek: równoważenie obciążenia ruchu wewnętrznego do maszyn wirtualnych przy użyciu podstawowego modułu równoważenia obciążenia w witrynie Azure Portal
 
@@ -102,7 +102,7 @@ W tej sekcji utworzysz dwie maszyny wirtualne dla puli zaplecza podstawowego mod
 
 ## <a name="create-basic-load-balancer-resources"></a>Tworzenie zasobów podstawowego modułu równoważenia obciążenia
 
-W tej sekcji skonfigurujesz ustawienia modułu równoważenia obciążenia dla puli adresów zaplecza i sondy kondycji oraz określisz reguły modułu równoważenia obciążenia i reguły translatora adresów sieciowych.
+W tej sekcji skonfigurujesz ustawienia modułu równoważenia obciążenia dla puli adresów zaplecza i sondy kondycji oraz określisz reguły modułu równoważenia obciążenia.
 
 
 ### <a name="create-a-backend-address-pool"></a>Tworzenie puli adresów zaplecza

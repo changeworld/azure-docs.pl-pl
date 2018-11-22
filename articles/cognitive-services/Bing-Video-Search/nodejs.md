@@ -3,19 +3,19 @@ title: 'Szybki start: interfejs API wyszukiwania wideo Bing, Node.js'
 titlesuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API wyszukiwania wideo Bing.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
 ms.topic: quickstart
 ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: a4ee4b0c0f4ce46110cebf95cdf927f8df3567d0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.author: aahi
+ms.openlocfilehash: 25e515d5a62f9f5d396b7d4a9ef8d7b24d9fce42
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220389"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164578"
 ---
 # <a name="quickstart-bing-video-search-api-with-nodejs"></a>Szybki start: interfejs API wyszukiwania wideo Bing oraz platforma Node.js
 
@@ -23,7 +23,7 @@ W tym artykule pokazano, jak używać interfejsu API wyszukiwania wideo Bing, kt
 
 Przykład jest napisany w języku JavaScript działa na platformie Node.js 6.
 
-Zapoznaj się [dokumentacją interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference), aby uzyskać szczegółowe informacje techniczne dotyczące interfejsów API.
+Zapoznaj się z [dokumentacją interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference), aby uzyskać szczegółowe informacje techniczne dotyczące interfejsów API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -214,4 +214,4 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 ## <a name="see-also"></a>Zobacz też 
 
- [Wyszukiwanie filmów wideo w sieci web](search-the-web.md) [Wypróbuj](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)
+ [Wyszukiwanie filmów wideo w Internecie](search-the-web.md) [Wypróbuj](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)

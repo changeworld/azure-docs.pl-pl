@@ -3,19 +3,19 @@ title: 'Szybki start: interfejs API wyszukiwania wiadomości Bing, Java'
 titlesuffix: Azure Cognitive Services
 description: Uzyskaj informacje i przykłady kodu, które pomogą Ci w szybkim rozpoczęciu korzystania z interfejsu API wyszukiwania wiadomości Bing w usługach Cognitive Services na platformie Azure.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: f7011ceb51d4fb4a5a92c6aeb56a0c26e7d86388
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: aahi
+ms.openlocfilehash: 7cd15addcb5e717a0dd3f13b3979b4f342fe9f0a
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803634"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162589"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-java"></a>Szybki start: interfejs API wyszukiwania wiadomości Bing w środowisku języka Java
 

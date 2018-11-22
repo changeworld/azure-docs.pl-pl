@@ -3,19 +3,19 @@ title: 'Szybki start: interfejs API wyszukiwania wideo Bing, C#'
 titlesuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API wyszukiwania wideo Bing.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
 ms.topic: quickstart
 ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 00522ac87a74226c9af1920bd884792ff2956a95
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.author: aahi
+ms.openlocfilehash: 6078ab0ac5b5fbde64def2bb79f23ad804fd1149
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225773"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160524"
 ---
 # <a name="quickstart-bing-video-search-api-with-c"></a>Szybki start: interfejs API wyszukiwania wideo Bing oraz język C#
 
@@ -23,7 +23,7 @@ W tym artykule pokazano, jak używać interfejsu API wyszukiwania wideo Bing, kt
 
 Przykładowy kod został napisany w języku C# w formie aplikacji platformy .NET Core z minimalnym zależnościami zewnętrznymi, aby można go było również uruchomić w systemie Linux lub Mac OS X przy użyciu rozwiązania Mono.
 
-Zapoznaj się [dokumentacją interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference), aby uzyskać szczegółowe informacje techniczne dotyczące interfejsów API.
+Zapoznaj się z [dokumentacją interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference), aby uzyskać szczegółowe informacje techniczne dotyczące interfejsów API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -302,7 +302,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Stronicowanie wideo](paging-videos.md)
+> [Stronicowanie wyników wyszukiwania wideo](paging-videos.md)
 > [Zmiana rozmiaru i przycinanie obrazów miniatur](resize-and-crop-thumbnails.md)
 
 ## <a name="see-also"></a>Zobacz też 

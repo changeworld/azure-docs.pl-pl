@@ -9,18 +9,18 @@ ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
 ms.component: alerts
-ms.openlocfilehash: 965a35eb4cf33abe78ca802e8d59f13a649dec0a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: e0d25fc2ac84e9c9d71a9fd5971d4e57134e43a7
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279232"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819376"
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>Otrzymywanie powiadomienia w przypadku spełnienia określonego warunku przez wartość metryki
 
 Usługa Azure Monitor udostępnia metryki dla wielu zasobów platformy Azure. Te metryki informują o wydajności i kondycji zasobów. W wielu przypadkach wartości metryk mogą wskazywać problemy z zasobami. Możesz tworzyć alerty dotyczące metryk, aby monitorować zasoby pod kątem nieprawidłowego działania i otrzymywać powiadomienia w przypadku jego wystąpienia. Ten przewodnik Szybki start zawiera instrukcje tworzenia aplikacji logiki, tworzenia zadania oraz wizualizowania metryk tej aplikacji logiki. Następnie opisano proces tworzenia alertu i otrzymywania powiadomienia dotyczącego metryki zasobu aplikacji logiki.
 
-Aby uzyskać więcej informacji na temat metryk i alertów dotyczących metryk, zobacz artykuły [Azure Monitor metrics overview](../monitoring/monitoring-data-collection.md) (Omówienie metryk w usłudze Azure Monitor) i [Azure Monitor alerts overview](./monitoring-overview-alerts.md) (Omówienie alertów w usłudze Azure Monitor). 
+Aby uzyskać więcej informacji na temat metryk i alertów dotyczących metryk, zobacz artykuły [Azure Monitor metrics overview](../azure-monitor/platform/data-collection.md) (Omówienie metryk w usłudze Azure Monitor) i [Azure Monitor alerts overview](./monitoring-overview-alerts.md) (Omówienie alertów w usłudze Azure Monitor). 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 12/18/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: c41873d8f87a9a1203cefa37f99098f23e7aab92
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: e198a85d1c04cbc437ad23dadfa3005a72eaa2ce
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239017"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161637"
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: programowanie za pomocą interfejsu Table API na platformie .NET
 
@@ -293,7 +293,7 @@ foreach (CustomerEntity entity in table.ExecuteQuery(emailQuery))
 }
 ```
 
-Usługa Azure Cosmos DB obsługuje tę samą funkcjonalność zapytań co usługa Azure Table Storage w przypadku interfejsu Table API. Usługa Azure Cosmos DB obsługuje także sortowanie, agregaty, zapytania geoprzestrzenne, hierarchię i szeroki zakres funkcji wbudowanych. Dodatkowe funkcje interfejsu Table API zostaną dostarczone w ramach przyszłej aktualizacji usługi. Przegląd tych możliwości jest dostępny na stronie [Azure Cosmos DB query (Zapytanie usługi Azure Cosmos DB)](sql-api-sql-query.md). 
+Usługa Azure Cosmos DB obsługuje tę samą funkcjonalność zapytań co usługa Azure Table Storage w przypadku interfejsu Table API. Usługa Azure Cosmos DB obsługuje także sortowanie, agregaty, zapytania geoprzestrzenne, hierarchię i szeroki zakres funkcji wbudowanych. Przegląd tych możliwości jest dostępny na stronie [Azure Cosmos DB query (Zapytanie usługi Azure Cosmos DB)](how-to-sql-query.md). 
 
 ## <a name="replace-an-entity"></a>Zastępowanie jednostki
 Aby zaktualizować jednostkę, pobierz ją z usługi tabel, zmodyfikuj obiekt jednostki, a następnie zapisz zmiany w usłudze tabel. Poniższy kod zmienia istniejący numer telefonu klienta. 

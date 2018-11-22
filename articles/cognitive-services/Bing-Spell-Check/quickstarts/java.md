@@ -3,19 +3,19 @@ title: 'Szybki start: interfejs API sprawdzania pisowni Bing, Java'
 titlesuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API sprawdzania pisowni Bing.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 20677167c88b4e3cf326067fac7a33bede9ee4c3
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.author: aahi
+ms.openlocfilehash: 988bf8aeea2bd3b172803dac19584b1d3019b178
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420358"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161048"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-java"></a>Szybki start: interfejs API sprawdzania pisowni Bing w środowisku Java 
 

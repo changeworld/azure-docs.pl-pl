@@ -3,19 +3,19 @@ title: 'Szybki start: interfejs API wyszukiwania wiadomości Bing, Python'
 titlesuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API wyszukiwania wiadomości Bing.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 583b304a742d9abfd799442c9aa2999ad6783a34
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: aahi
+ms.openlocfilehash: 2696401b15ceca86c7e7b7d33e7e7f7887f4b7dc
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803549"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164341"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-python"></a>Szybki start: interfejs API wyszukiwania wiadomości Bing w środowisku języka Python
 W tym przewodniku przedstawiono prosty przykład wywoływania interfejsu API wyszukiwania wiadomości Bing i dalszego przetwarzania wynikowego obiektu JSON. Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API wyszukiwania wiadomości Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference).  

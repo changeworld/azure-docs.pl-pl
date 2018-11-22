@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e879e096fb990e4567b43b1938909449820edd42
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c6513c3a92fdf509d9e81d76d1b3547048b2fd8d
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412724"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262061"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Wyszukiwanie pobliskich punktów orientacyjnych za pomocą usługi Azure Maps
 
@@ -178,7 +178,7 @@ W tej sekcji przedstawiono sposób wyszukiwania punktu orientacyjnego na mapie p
      client = new atlas.service.Client(atlas.getSubscriptionKey());
     ```
 
-2. Następnie dodaj poniższy blok skryptu w celu utworzenia zapytania wyszukiwania. Ten fragment kodu używa usługi Fuzzy Search Service — podstawowego interfejsu API wyszukiwania usługi Search Service. Usługa Fuzzy Search Service obsługuje większość rozmytych danych wejściowych, takich jak adresy, miejsca i punkty orientacyjne (POI). Ten kod wyszukuje najbliższe stacje benzynowe w obrębie wybranego promienia wyszukiwania. Odpowiedź jest następnie analizowana w formacie GeoJSON i dodawana do źródła danych, co automatycznie powoduje renderowanie danych na mapie za pośrednictwem warstwy symboli. Ostatnia część skrypt ustawia widok kamery mapy za pomocą pola ograniczenia wyników z wykorzystaniem właściwości mapy [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest). Dodawane jest wypełnienie, aby skompensować wymiary pikseli ikon symboli, ponieważ pole ograniczenia jest obliczane na podstawie współrzędnych. 
+2. Następnie dodaj poniższy blok skryptu w celu utworzenia zapytania wyszukiwania. Ten fragment kodu używa usługi Fuzzy Search Service — podstawowego interfejsu API wyszukiwania usługi Search Service. Usługa Fuzzy Search Service obsługuje większość rozmytych danych wejściowych, takich jak adresy, miejsca i punkty orientacyjne (POI). Ten kod wyszukuje najbliższe stacje benzynowe w obrębie wybranego promienia wyszukiwania. Odpowiedź jest następnie analizowana w formacie GeoJSON i dodawana do źródła danych, co automatycznie powoduje renderowanie danych na mapie za pośrednictwem warstwy symboli. Ostatnia część skrypt ustawia widok kamery mapy za pomocą pola ograniczenia wyników z wykorzystaniem właściwości mapy [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-). Dodawane jest wypełnienie, aby skompensować wymiary pikseli ikon symboli, ponieważ pole ograniczenia jest obliczane na podstawie współrzędnych. 
  
    ```JavaScript
    //Execute a POI search query then add the results to the map.

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: rafats
-ms.openlocfilehash: 5f5a98f0f28eba499b7ea3fa76944c21cf8bf8db
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: a56147432d4ef1cc9ac2568259cc2bbf2c7da7ab
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958872"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162674"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Samouczek: Wykonywanie zapytań w usłudze Azure Cosmos DB przy użyciu interfejsu API SQL
 
@@ -65,7 +65,7 @@ Zapytania SQL w tym artykule korzystają z następującego przykładowego dokume
 Zapytania można uruchamiać przy użyciu Eksploratora danych w witrynie Azure Portal, za pomocą [interfejsu API REST i zestawów SDK](sql-api-sdk-dotnet.md), a nawet [placu zabaw dla zapytań](https://www.documentdb.com/sql/demo), który uruchamia zapytania na istniejącym zestawie danych przykładowych.
 
 Aby uzyskać więcej informacji na temat zapytań SQL zobacz:
-* [Zapytanie SQL i składnia SQL](sql-api-sql-query.md)
+* [Zapytanie SQL i składnia SQL](how-to-sql-query.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
