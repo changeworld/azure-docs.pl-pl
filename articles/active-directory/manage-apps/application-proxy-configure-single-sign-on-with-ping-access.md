@@ -15,12 +15,12 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 53d613052713e5144cb9d96aeeb937392fd4736a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 200c87bdf2f0d686cd2e768d3b6b9a7fe3a5691b
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902930"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282519"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Na podstawie nagłówka uwierzytelniania dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji i PingAccess
 
@@ -151,7 +151,7 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
   "acceptMappedClaims":true
 }
 ```
-W tym przykładzie użyto [witryny Azure portal](https://portal.azure.com) do aktualizacji *acceptedMappedClaims* pola:
+W tym przykładzie użyto [witryny Azure portal](https://portal.azure.com) można zaktualizować *acceptedMappedClaims* pola:
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) jako administrator globalny.
 2. Wybierz **usługi Azure Active Directory** > **rejestracje aplikacji**.
 3. Wybierz swoją aplikację > **manifestu**.

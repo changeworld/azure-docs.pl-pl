@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 8bd5a6012ef13d4cd63d4e5e63b510e55e75ab63
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0d777b5dcebfba7dbff7c9ea1f4fedad12b3cf1a
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987275"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283821"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Konwertuj Azure zarządzane dyski magazynu od planu standard do warstwy premium i odwrotnie
 
 Managed Disks oferuje trzy opcje magazynu: [dysku Premium SSD](../windows/premium-storage.md), standardowe SSD(Preview) i [standardowych dysków Twardych](../windows/standard-storage.md). Dzięki temu można łatwo przełączać się między opcjami przy minimalnych przestojach w oparciu o potrzeby związane z wydajnością. To nie jest obsługiwana w przypadku dysków niezarządzanych. Ale możesz z łatwością [konwersji do usługi managed disks](convert-unmanaged-to-managed-disks.md) można łatwo przełączać się między typy dysków.
 
-W tym artykule przedstawiono sposób konwertowania dysków zarządzanych warstwy standardowej na premium i odwrotnie przy użyciu wiersza polecenia platformy Azure. Jeśli musisz zainstalować lub uaktualnić go, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj](/cli/azure/install-azure-cli.md). 
+W tym artykule przedstawiono sposób konwertowania dysków zarządzanych warstwy standardowej na premium i odwrotnie przy użyciu wiersza polecenia platformy Azure. Jeśli musisz zainstalować lub uaktualnić go, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj](/cli/azure/install-azure-cli). 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 

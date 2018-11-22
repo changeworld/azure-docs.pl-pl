@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: fea0a0dfd2e138fa4f33f4f489be74f5038b4ca6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 50f8fea04da3b1e414917a6404cb3f6e838bf716
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244529"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284816"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Dołączanie maszyn w celu zarządzania usługi Azure Automation stanu konfiguracji
 
@@ -42,7 +42,7 @@ Za pomocą usługi Azure Automation konfiguracji stanu można łatwo dołączać
 
 ### <a name="azure-portal"></a>Azure Portal
 
-W [witryny Azure portal](http://portal.azure.com/), kliknij przycisk **Przeglądaj** -> **maszyny wirtualne (klasyczne)**. Wybierz maszynę Wirtualną Windows, które chcesz dołączyć. W bloku pulpit nawigacyjny maszyny wirtualnej, kliknij **wszystkie ustawienia** -> **rozszerzenia** -> **Dodaj** -> **platformy Azure Automation DSC** -> **tworzenie**.
+W [witryny Azure portal](https://portal.azure.com/), kliknij przycisk **Przeglądaj** -> **maszyny wirtualne (klasyczne)**. Wybierz maszynę Wirtualną Windows, które chcesz dołączyć. W bloku pulpit nawigacyjny maszyny wirtualnej, kliknij **wszystkie ustawienia** -> **rozszerzenia** -> **Dodaj** -> **platformy Azure Automation DSC** -> **tworzenie**.
 Wprowadź [wartości PowerShell DSC Local Configuration Manager](/powershell/dsc/metaconfig4) wymagane dla danego przypadku użycia klucza rejestracji konta usługi Automation i adres URL rejestracji i opcjonalnie konfiguracji węzła można przypisać do maszyny Wirtualnej.
 
 ![Rozszerzenia maszyn wirtualnych Azure dla DSC](./media/automation-dsc-onboarding/DSC_Onboarding_1.png)
@@ -132,7 +132,7 @@ Jeśli komputer nie ma programu PowerShell żądanego stanu rozszerzenia zainsta
 
 W obszarze **rejestracji**, wprowadź [wartości PowerShell DSC Local Configuration Manager](/powershell/dsc/metaconfig4) wymagane dla danego przypadku użycia i opcjonalnie konfiguracji węzła można przypisać do maszyny Wirtualnej.
 
-![](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
+![Dołączanie do](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
 ### <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
 

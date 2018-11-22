@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 130d0154fc0558ae7284e8407ba88fda3a2a53d5
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: a2367eff3095df82662f7b56571ecdbd966609fd
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391304"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284016"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Dostęp do usługi Azure Data Lake Storage Gen1 z maszyn wirtualnych w ramach sieci Wirtualnej platformy Azure
 Azure Data Lake Storage Gen1 to usługa PaaS, która działa na publiczne adresy IP. Również punktami końcowymi usługi Azure Data Lake Storage Gen1 zazwyczaj nawiązać dowolnego serwera, które można podłączyć do publicznej sieci Internet. Domyślnie wszystkie maszyny wirtualne, które znajdują się w sieci wirtualnych platformy Azure mogą uzyskiwać dostęp do Internetu i dlatego mogą uzyskiwać dostęp do usługi Azure Data Lake Storage Gen1. Istnieje możliwość skonfigurowania maszyn wirtualnych w sieci Wirtualnej nie ma dostępu do Internetu. Dla takich maszyn wirtualnych dostęp do usługi Azure Data Lake Storage Gen1 jest ograniczony także. Blokowanie publicznego dostępu do Internetu dla maszyn wirtualnych w sieciach wirtualnych platformy Azure może odbywać się przy użyciu dowolnej z następujących metod:
@@ -29,7 +29,7 @@ Azure Data Lake Storage Gen1 to usługa PaaS, która działa na publiczne adresy
 W tym artykule dowiesz się, jak zapewnić dostęp do usługi Azure Data Lake Storage Gen1 z maszyn wirtualnych platformy Azure, które zostały ograniczony dostęp do zasobów przy użyciu jednej z trzech metod wymienionych powyżej.
 
 ## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>Włączanie łączność z usługi Azure Data Lake Storage Gen1 z maszyn wirtualnych z połączeniem z ograniczeniami
-Dostęp do usługi Azure Data Lake Storage Gen1 z takich maszyn wirtualnych, należy skonfigurować je, uzyskania dostępu do adresu IP, których konto usługi Azure Data Lake Storage Gen1 jest dostępna. Można zidentyfikować, adresy IP dla kont usługi Data Lake Storage Gen1 rozpoznawania nazw DNS kont (`<account>.azuredatalakestore.net`). Rozpoznawanie nazw DNS kont, można użyć narzędzi takich jak **nslookup**. Otwórz wiersz polecenia na komputerze, a następnie uruchom następujące polecenie:
+Dostęp do usługi Azure Data Lake Storage Gen1 z takich maszyn wirtualnych, należy skonfigurować je uzyskania dostępu do adresu IP dla regionu, w których konto usługi Azure Data Lake Storage Gen1 jest dostępna. Można zidentyfikować, adresy IP dla regionów konta usługi Data Lake Storage Gen1 rozpoznawania nazw DNS kont (`<account>.azuredatalakestore.net`). Rozpoznawanie nazw DNS kont, można użyć narzędzi takich jak **nslookup**. Otwórz wiersz polecenia na komputerze, a następnie uruchom następujące polecenie:
 
     nslookup mydatastore.azuredatalakestore.net
 

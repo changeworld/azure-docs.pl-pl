@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 11/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 99bac69d096095f660e2624194b72e1390c6fc22
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a4bb423dc5eddde0fd2d2b9b4f263ab39dbd801f
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275568"
+ms.locfileid: "52284986"
 ---
 # <a name="tag-support-for-azure-resources"></a>Obsługa tagów dla zasobów platformy Azure
 W tym artykule opisano, czy typ zasobu obsługuje [znakowanie](resource-group-using-tags.md).
@@ -193,7 +193,6 @@ W tym artykule opisano, czy typ zasobu obsługuje [znakowanie](resource-group-us
 | Typ zasobu | Obsługa tagów |
 | ------------- | ----------- |
 | DataBoxEdgeDevices | Yes | 
-| DataBoxEdgeDevices/checkNameAvailability | Nie | 
 
 ## <a name="data-catalog"></a>Data Catalog
 | Typ zasobu | Obsługa tagów |
@@ -451,8 +450,8 @@ W tym artykule opisano, czy typ zasobu obsługuje [znakowanie](resource-group-us
 ## <a name="resources"></a>Zasoby
 | Typ zasobu | Obsługa tagów |
 | ------------- | ----------- |
-| resourceGroups | Nie | 
-| subskrypcji/grup zasobów | Nie | 
+| resourceGroups | Yes | 
+| subskrypcji/grup zasobów | Yes | 
 
 ## <a name="scheduler"></a>Scheduler
 | Typ zasobu | Obsługa tagów |

@@ -9,16 +9,50 @@ author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 10/24/2018
-ms.openlocfilehash: 5ceb47f437f736829d0be10a856fe787fab944b0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 52c8eed7f8b5a65ef13215e677d52f44cb95fd64
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261586"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285003"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
 Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning. 
+
+## <a name="2018-11-20"></a>2018-11-20
+
+### <a name="azure-machine-learning-sdk-for-python-v0180"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v0.1.80
+
++ **Fundamentalne zmiany** 
+  * *azureml.Train.widget* przestrzeń nazw została przeniesiona do *azureml.train*.
+  * *azureml.core.compute.AmlCompute* traktuje jako przestarzałą *azureml.core.compute.BatchAICompute*. Ostatnie klasy zostaną usunięte w następnych wersjach.
+### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Zestaw SDK v0.5.1 przeznaczonego do przygotowania danych usługi Azure Machine Learning 
+Więcej informacji na temat zestawu SDK usługi Data Prep, czytając [odwołania docs](https://aka.ms/data-prep-sdk).
++ **Nowe funkcje**
+   * Utworzony nowy interfejs wiersza polecenia przygotowania danych do wykonywania pakietów przygotowania danych i wyświetlić profil danych dla zestawu danych i przepływu danych
+   * Przeprojektowana SetColumnType interfejsu API w celu zwiększenia użyteczności
+   * Zmieniono nazwę smart_read_file do auto_read_file
+   * Udostępnia teraz przesunięcia czasowego i kurtoza profilu danych
+   * Próbkowanie z włączonym próbkowaniem stratyfikowana
+   * Może odczytywać dane z plików zip, które zawierają pliki CSV
+   * Można podzielić zestawów danych row-wise za pomocą losowych podziału (np. zestawy testów train)
+   * Można uzyskać wszystkie kolumny typów danych z przepływu danych lub profil danych przez wywołanie metody .dtypes
+   * Można pobrać liczbę wierszy z przepływu danych lub profil danych przez wywołanie metody .row_count
+
++ **Poprawki błędów**
+   * Stałą Długa podwójna konwersja 
+   * Naprawiono assert po dowolnej Dodaj kolumnę 
+   * Rozwiązano problem z FuzzyGrouping, gdzie nie może nie wykryć grup w niektórych przypadkach
+   * Funkcja stałej sortowania przestrzegają kolejność sortowania wielokolumnowych
+   * Naprawiono i/lub wyrażenia w sposób podobny do sposobu obsługi ich Pandas
+   * Naprawiono odczytu ze ścieżki dbfs
+   * Wprowadzone bardziej zrozumiałe komunikaty o błędach 
+   * Teraz już nie kończy się niepowodzeniem podczas odczytywania na zdalnym obliczeniowych elementów docelowych przy użyciu tokenu AML
+   * Teraz już nie kończy się niepowodzeniem na DSVM systemu Linux
+   * Teraz już ulega awarii podczas wartości innych niż ciąg znajdują się w ciągu predykatów
+   * Teraz obsługuje błędy potwierdzenia, gdy przepływ danych powinna zakończyć się niepowodzeniem poprawnie
+   * Obsługuje teraz lokalizacje przechowywania dbutils zainstalowanego w usłudze Azure Databricks
 
 ## <a name="2018-11-05"></a>05-11-2018 r.
 

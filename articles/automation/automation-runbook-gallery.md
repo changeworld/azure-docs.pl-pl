@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ca19ce2cca314950adc40bbf065dec80e7fa3e1f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a518d00a50c0fc6ec83626852f30f739d64b18ea
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227930"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283299"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galeria elementów Runbook i modułów usługi Azure Automation
 Zamiast tworzenia własnych elementów runbook i modułów w usłudze Azure Automation, możesz uzyskać dostęp do różnych scenariuszy, które zostały już utworzone przez firmę Microsoft i społeczność.  Możesz użyć tych scenariuszy, bez żadnych modyfikacji lub można ich używać jako punkt początkowy i edytować je do swoich specyficznych wymagań.
@@ -68,7 +68,7 @@ Firma Microsoft zaleca, aby dodać elementy runbook do galerii elementów Runboo
 * Automation aktualizacji galerii raz na godzinę, więc przesłane materiały nie będą widoczne natychmiast.
 
 ## <a name="modules-in-powershell-gallery"></a>Moduły w galerii programu PowerShell
-Moduły programu PowerShell zawierają polecenia cmdlet, które można użyć w elementach runbook, a istniejące moduły, które można zainstalować w usłudze Azure Automation są dostępne w [galerii programu PowerShell](http://www.powershellgallery.com).  Można uruchomić tej galerii w witrynie Azure portal i zainstalować je bezpośrednio do usługi Azure Automation, lub można je pobrać i zainstalować je ręcznie.  
+Moduły programu PowerShell zawierają polecenia cmdlet, które można użyć w elementach runbook, a istniejące moduły, które można zainstalować w usłudze Azure Automation są dostępne w [galerii programu PowerShell](https://www.powershellgallery.com).  Można uruchomić tej galerii w witrynie Azure portal i zainstalować je bezpośrednio do usługi Azure Automation, lub można je pobrać i zainstalować je ręcznie.  
 
 ### <a name="to-import-a-module-from-the-automation-module-gallery-with-the-azure-portal"></a>Aby zaimportować moduł za pomocą galerii modułu usługi Automation w witrynie Azure portal
 1. W witrynie Azure Portal otwórz konto usługi Automation.

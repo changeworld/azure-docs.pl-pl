@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 11/20/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 400f266b1f63de675b9cefae289878dbef0a278c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 220fc7b2b0ce3a4c5fd943c35952a345379a1b91
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685654"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284220"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory uwierzytelnianie przekazywane: Często zadawane pytania
 
@@ -132,7 +132,7 @@ Aby oszacować ruchu sieciowego, użyj poniższych wskazówek ustalania rozmiaru
 W przypadku większości klientów dwóch lub trzech agentów uwierzytelniania w sumie są wystarczające dla wysokiej dostępności i wydajności. Blisko kontrolerów domeny do Zmniejszaj opóźnienia logowania, należy zainstalować agentów uwierzytelniania.
 
 >[!NOTE]
->Istnieje limit systemowy wynoszący 12 agentów uwierzytelniania dla dzierżawy.
+>Istnieje limit systemowy wynoszący 40 agentów uwierzytelniania dla dzierżawy.
 
 ## <a name="can-i-install-the-first-pass-through-authentication-agent-on-a-server-other-than-the-one-that-runs-azure-ad-connect"></a>Pierwszy Agent uwierzytelniania przekazywanego może być instalowany na innym serwerze niż ten, który jest uruchamiany program Azure AD Connect?
 

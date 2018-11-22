@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: sethm
 ms.reviewer: thoroet
-ms.openlocfilehash: f6644d8a2e01242937943f8139059abbd65d1913
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 2e31b9f88857d84bd0b507ccd1622279e72aa575
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017403"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282723"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Instalowanie programu PowerShell dla usługi Azure Stack
 
@@ -73,12 +73,16 @@ Przed rozpoczęciem instalacji wymaganej wersji, upewnij się, odinstalowanie ws
 
 1. Aby odinstalować istniejące moduły programu PowerShell usługi AzureRM, zamknąć wszystkich aktywnych sesji programu PowerShell i uruchom następujące polecenia cmdlet:
 
-  ````PowerShell
-    Uninstall-Module -Name AzureRM.AzureStackAdmin -Force
-    Uninstall-Module -Name AzureRM.AzureStackStorage -Force
-    Uninstall-Module -Name AzureStack -Force
-    Get-Module -Name Azs.* -ListAvailable | Uninstall-Module -Force
-  ````
+    ````PowerShell
+    Uninstall-Module -Name AzureRM.AzureStackAdmin -Force 
+    Uninstall-Module -Name AzureRM.AzureStackStorage -Force 
+    Uninstall-Module -Name AzureStack -Force -Verbose
+    Uninstall-Module -Name AzureRM -Force -Verbose
+    Uninstall-Module -Name Azure.Storage -Force -Verbose
+    Get-Module -Name Azs.* -ListAvailable | Uninstall-Module -Force -Verbose
+    Get-Module -Name AzureRM.* -ListAvailable | Uninstall-Module -Force -Verbose
+    ````
+    Jeśli napotkasz żadnych błędów, takich jak "moduł jest już w użyciu", zamknij sesji programu PowerShell, które korzystają z modułów i ponownie uruchom skrypt powyżej.
 
 2. Usuń wszystkie foldery, które zaczyna się `Azure` z `C:\Program Files\WindowsPowerShell\Modules` i `C:\Users\{yourusername}\Documents\WindowsPowerShell\Modules` folderów. Usunięcie tych folderów usuwa wszystkie istniejące moduły programu PowerShell.
 

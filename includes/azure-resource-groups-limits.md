@@ -1,3 +1,16 @@
+---
+author: rothja
+ms.service: billing
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: jroth
+ms.openlocfilehash: 5c2c7b621512be7b81d14b99069d52f4f3aa3f33
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52279809"
+---
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Zasoby na [grupy zasobów](../articles/azure-resource-manager/resource-group-overview.md#resource-groups) (na typ zasobu) |800 |Różni się dla typu zasobu |

@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/22/2018
-ms.openlocfilehash: e30ffe2dd79d55e856ef297608745b60578cf7e7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b83c889e72acb320c308c3ad5ee6243e715fd523
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46131301"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282880"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Ograniczenia znanych problemów/migracja online migracja do bazy danych Azure database for PostgreSQL
 
 W poniższych sekcjach opisano znane problemy i ograniczenia związane z usługą online migracji z PostgreSQL do usługi Azure Database for PostgreSQL. 
 
 ## <a name="online-migration-configuration"></a>Konfiguracja migracji online
-- Źródłowy serwer PostgreSQL musi działać wersja 9.5.11, 9.6.7 lub 10.3 lub nowszym. Aby uzyskać więcej informacji, zobacz artykuł [obsługiwanych wersjach bazy danych postgresql w warstwie](1.2.%09https:/docs.microsoft.com/azure/postgresql/concepts-supported-versions).
+- Źródłowy serwer PostgreSQL musi działać wersja 9.5.11, 9.6.7 lub 10.3 lub nowszym. Aby uzyskać więcej informacji, zobacz artykuł [obsługiwanych wersjach bazy danych postgresql w warstwie](../postgresql/concepts-supported-versions.md).
 - Obsługiwane są tylko migracje tej samej wersji. Na przykład PostgreSQL Migrowanie 9.5.11 do usługi Azure Database for PostgreSQL 9.6.7 nie jest obsługiwana.
 - Aby włączyć replikację logicznych w **źródła PostgreSQL postgresql.conf** plików, ustaw następujące parametry:
     - **wal_level** = logical
@@ -66,7 +66,7 @@ W poniższych sekcjach opisano znane problemy i ograniczenia związane z usług�
     
     ```
 
-    Uruchom klucz obcy docelowej (czyli drugiej kolumny) w wyniku zapytania.
+    Uruchom docelowy klucz obcy (znajduje się w drugiej kolumnie) w wyniku zapytania.
 
 - Schemat w lokalizacji docelowej usługi Azure Database for postgresql w warstwie nie może mieć żadnych wyzwalaczy. Aby wyłączyć wyzwalaczy w docelowej bazie danych, należy użyć następujących:
 

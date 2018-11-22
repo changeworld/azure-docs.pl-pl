@@ -1,6 +1,6 @@
 ---
-title: Poziom aplikacji sieci szkieletowej usług Azure monitorowania | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat i zdarzenia na poziomie usługi Dzienniki aplikacji i umożliwia monitorowanie i diagnozowanie klastrów sieci szkieletowej usług Azure.
+title: Usługa Azure Service Fabric aplikacji poziom monitorowania | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat i zdarzeń na poziomie usługi Dzienniki aplikacji i umożliwia monitorowanie i diagnozowanie klastrów usługi Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2018
 ms.author: dekapur
-ms.openlocfilehash: b8118d83e2be452c6aa5bbc8b7a3c220d26903a1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 532ad8dfeff9a14d3d1533669149e1e374ed4460
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204335"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283234"
 ---
-# <a name="application-and-service-level-logging"></a>Rejestrowanie poziomu usług i aplikacji
+# <a name="application-and-service-level-logging"></a>Aplikacja i rejestrowanie na poziomie usługi
 
-Kod Instrumentacji stanowi podstawę do większości innych aspektów monitorowania usług. Instrumentacja jest jedynym sposobem wiesz, czy jest coś niewłaściwego i diagnozowania, co wymaga naprawy. Chociaż jest technicznie można połączyć z usługą produkcji debugera, nie jest typowym rozwiązaniem. Tak o szczegółowe dane Instrumentacji jest ważna.
+Kod Instrumentacji jest podstawą dla większości innych aspektów monitorowania usługi. Instrumentacja jest jedynym sposobem, można dowiedzieć się, że coś jest nie tak i aby zdiagnozować, co musi mieć stałą. Chociaż z technicznego punktu widzenia można połączyć debugera usługę produkcyjną, nie jest powszechną praktyką. Dlatego po szczegółowe dane Instrumentacji jest ważne.
 
-Niektóre produkty automatyczną Instrumentację kodu. Mimo że te rozwiązania mogą również działać, ręczne Instrumentacja prawie zawsze jest wymagana. W końcu musi mieć wystarczającej ilości informacji do całkowitego debugowania aplikacji. W tym dokumencie opisano różne podejścia do Instrumentacji kodu i kiedy należy wybrać jeden z nich zamiast innego.
+Niektóre produkty automatycznie instrumentować swój kod. Chociaż te rozwiązania mogą działać prawidłowo, ręcznej Instrumentacji prawie zawsze jest wymagany. W końcu musi mieć wystarczającą ilość informacji do całkowitego debugowania aplikacji. W tym dokumencie opisano różne metody Instrumentacji kodu i kiedy należy wybrać jedno z podejść zamiast innego.
 
-Przykłady dotyczące używania tych sugestii, zobacz [Dodaj logowanie do aplikacji sieci szkieletowej usług](service-fabric-how-to-diagnostics-log.md).
+Przykłady dotyczące używania tych sugestii, zobacz [Dodawanie rejestrowania aplikacji usługi Service Fabric](service-fabric-how-to-diagnostics-log.md).
 
 ## <a name="eventsource"></a>Źródła zdarzeń
 
-Po utworzeniu rozwiązania sieci szkieletowej usług z szablonu w programie Visual Studio, **EventSource**-klasy (**ServiceEventSource** lub **ActorEventSource**) jest generowany. Utworzyć szablonu, w którym można dodać zdarzeń dla usługi lub aplikacji. **EventSource** nazwa **musi** być unikatowa i powinny zostać zmienione z domyślnego szablonu ciągu Moja firma -&lt;rozwiązania&gt;-&lt;projektu&gt;. Istnieniem wielu **EventSource** definicje, które korzystają z tej samej nazwy powoduje problem w czasie wykonywania. Każdy zdefiniowane zdarzenie musi mieć unikatowy identyfikator. Jeśli identyfikator nie jest unikatowa, wystąpi błąd czasu wykonywania. Niektóre organizacje preassign zakresów wartości identyfikatorów uniknąć konfliktów między oddzielne zespoły deweloperów. Aby uzyskać więcej informacji, zobacz [zaliczko w blogu](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) lub [dokumentacji MSDN](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
+Podczas tworzenia rozwiązań usługi Service Fabric z szablonu w programie Visual Studio, **EventSource**-klasy pochodnej (**ServiceEventSource** lub **ActorEventSource**) jest generowany . Szablon jest tworzony, w którym można dodać zdarzenia dla aplikacji lub usługi. **EventSource** nazwa **musi** być unikatowa i powinny zostać zmienione z ciągu szablon domyślny plik -&lt;rozwiązania&gt;-&lt;projektu &gt;. Posiadanie wielu **EventSource** definicje, które używają tej samej nazwie powoduje problem w czasie wykonywania. Każde zdarzenie zdefiniowanych musi mieć unikatowy identyfikator. Jeśli identyfikator nie jest unikatowa, wystąpi błąd czasu wykonywania. W niektórych organizacjach preassign zakresów wartości identyfikatorów w celu uniknięcia konfliktów między oddzielne zespoły deweloperów. Aby uzyskać więcej informacji, zobacz [blog firmy zaliczko](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) lub [dokumentacji MSDN](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
 
-## <a name="aspnet-core-logging"></a>Platformy ASP.NET Core rejestrowania
+## <a name="aspnet-core-logging"></a>Platforma ASP.NET Core rejestrowania
 
-Należy dokładnie zaplanować, jak będzie Instrumentacja kodu. Plan prawym Instrumentacji może pomóc w uniknięciu potencjalnie destabilizing kodzie, a następnie konieczności reinstrument kod. Aby zmniejszyć ryzyko, można wybrać Biblioteka instrumentacji, takie jak [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/), który jest częścią pakietu Microsoft ASP.NET Core. Ma platformy ASP.NET Core [ILogger](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger) interfejs, który można używać z dostawcy wybranych przez użytkownika, przy jednoczesnym zmniejszeniu wpływu na istniejący kod. Kod w ASP.NET Core w systemach Windows i Linux, a pełna platformy .NET, więc kodu Instrumentacji jest standardowym.
+Należy dokładnie zaplanować, jak będzie instrumentować swój kod. Plan prawym Instrumentacji mogą pomóc w uniknięciu potencjalnie destabilizing bazy kodu, a następnie konieczności reinstrument kodu. Aby zmniejszyć ryzyko, możesz wybrać Biblioteka instrumentacji, takie jak [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/), który jest częścią programu Microsoft ASP.NET Core. ASP.NET Core jest [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) interfejs, który za pomocą dostawcy wybranych przez użytkownika, jednocześnie minimalizując wpływ na istniejący kod. Można użyć kodu w programie ASP.NET Core w systemach Windows i Linux, a w pełny program .NET Framework, więc kod instrumentacji ze standardami.
 
 ## <a name="application-insights-sdk"></a>Zestaw SDK usługi Application Insights
 
-Usługa Application Insights ma sformatowanego integracji z sieci szkieletowej usług fabrycznej. Użytkownicy mogą Dodawanie pakietów nuget AI usługi Service Fabric i odbierania danych i dzienniki utworzone i zebranych można wyświetlić w portalu Azure. Ponadto zaleca się dodanie własnych telemetrii, aby zdiagnozować i debugowania aplikacji i śledzenie, które usługi i części aplikacji są używane najczęściej. [TelemetryClient](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) klasa w zestawie SDK udostępnia wiele sposobów, aby śledzić telemetrii w aplikacji. Zapoznaj się z przykładem Instrumentacja i dodawania usługi application insights do aplikacji w naszym samouczku dla [monitorowanie i diagnozowanie aplikacji .NET](service-fabric-tutorial-monitoring-aspnet.md)
+Usługa Application Insights ma rozbudowanej integracji z usługą Service Fabric gotowe. Użytkownicy mogą dodawać pakiety nuget sztucznej Inteligencji usługi Service Fabric i odbierania danych i dzienników i zebranych można wyświetlić w witrynie Azure portal. Ponadto zaleca się dodanie własnych danych telemetrycznych w celu diagnozowanie i debugowanie swoich aplikacji i śledzenie, które usługi i części swoich aplikacji są używane najczęściej. [TelemetryClient](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) klasy w zestawie SDK udostępnia wiele sposobów, aby śledzić telemetrii w aplikacji. Zapoznaj się z przykładem sposobu Instrumentacja i Dodaj usługę application insights do aplikacji w naszym samouczku dla [monitorowanie i diagnozowanie aplikacji platformy .NET](service-fabric-tutorial-monitoring-aspnet.md)
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po wybraniu dostawcy rejestrowania Instrumentacja aplikacji i usług z dzienników i zdarzeń muszą zagregowane, zanim będzie można wysłać do dowolnej platformie analizy. Przeczytaj informacje o [usługi Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md), [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md), i [WAD](service-fabric-diagnostics-event-aggregation-wad.md) aby lepiej zrozumieć niektóre zalecane opcje.
+Po wybraniu opcji rejestrowania dostawcy Instrumentacji aplikacji i usług, swoje dzienniki i zdarzenia należy zagregować, zanim będzie można wysłać do dowolnej platformy analizy. Przeczytaj o [usługi Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md), [użyciu struktury EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md), i [WAD](service-fabric-diagnostics-event-aggregation-wad.md) aby lepiej zrozumieć niektóre zalecane opcje.

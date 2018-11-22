@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: da681500ccff24e6e9bfa6b7bb9e5a14a725f158
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8e00674f331a56be9abe6f2356aa88d7dcf1d0b0
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279639"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282388"
 ---
 # <a name="whats-new-for-authentication"></a>What's new do uwierzytelniania? 
 
@@ -42,7 +42,7 @@ System uwierzytelniania zmienia i dodaje funkcje na bieżąco, aby zwiększyć b
 
 Brak zaplanowane w tej chwili. 
 
-## <a name="october-2018"></a>Października 2018 r.
+## <a name="october-2018"></a>Październik 2018 r.
 
 ### <a name="authorization-codes-can-no-longer-be-reused"></a>Kody autoryzacji nie będzie możliwe ponowne użycie
 
@@ -56,7 +56,7 @@ Brak zaplanowane w tej chwili.
 
 Jeśli aplikacja używa kody autoryzacji uzyskiwanie tokenów dla wielu zasobów, zalecamy Użyj kodu, aby uzyskać token odświeżania, a następnie używać tego tokenu odświeżania w celu pobrania dodatkowe tokeny dla innych zasobów. Kody autoryzacji należy używać tylko raz, ale tokenów odświeżania mogą być wielokrotnie używane w wielu zasobach. Nowa aplikacja, która podejmuje próbę ponownego użycia kodu uwierzytelniania podczas przepływu kodu uwierzytelniania OAuth otrzymają komunikat o błędzie invalid_grant.
 
-Aby uzyskać więcej informacji na temat tokeny odświeżania, zobacz [odświeżanie tokenów dostępu](v1-protocols-oauth-code.md#refreshing-the-access-tokens).
+Aby uzyskać więcej informacji na temat tokeny odświeżania, zobacz [odświeżanie tokenów dostępu](v1-protocols-oauth-code.md#refreshing-the-access-tokens).  Jeśli używasz biblioteki ADAL lub biblioteki MSAL, jest to obsługiwane dla Ciebie przez bibliotekę — Zastąp drugie wystąpienie ciągu "AcquireTokenByAuthorizationCodeAsync" z "AcquireTokenSilentAsync". 
 
 ## <a name="may-2018"></a>Maj 2018 r.
 

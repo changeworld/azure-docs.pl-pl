@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie kopii zapasowej bazy danych HBase i rozwiązania Phoenix i replikacji — Azure HDInsight
+title: Konfigurowanie kopii zapasowej bazy danych Apache HBase i Apache Phoenix i replikacji — Azure HDInsight
 description: Konfigurowanie replikacji bazy danych HBase i rozwiązania Phoenix i kopii zapasowych.
 services: hdinsight
 author: ashishthaps
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 0dfb1cf5ce16e9aa30bb7f9fcc43bd24ccb90d76
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 00402b7ba6004d382693d5f6f82c1108a254fba8
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042223"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283574"
 ---
-# <a name="set-up-backup-and-replication-for-hbase-and-phoenix-on-hdinsight"></a>Konfigurowanie kopii zapasowej i replikacji dla bazy danych HBase i rozwiązania Phoenix na HDInsight
+# <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Konfigurowanie kopii zapasowej i replikacji dla bazy danych Apache HBase i Apache Phoenix w HDInsight
 
-Ochrona przed utratą danych HBase obsługuje kilka metod:
+Ochrona przed utratą danych Apache HBase obsługuje kilka metod:
 
 * Kopiuj `hbase` folderu
 * Następnie zaimportuj eksportu
@@ -101,7 +101,7 @@ Adres docelowy składa się z następujących trzech części:
 
     <destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>
 
-* `<ZooKeeperQuorum>` na przykład jest rozdzielaną przecinkami listę węzłów dozorcy:
+* `<ZooKeeperQuorum>` jest rozdzielaną przecinkami listę węzłów Apache ZooKeeper, na przykład:
 
     zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
@@ -109,7 +109,7 @@ Adres docelowy składa się z następujących trzech części:
 
     zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net:2181:/hbase-unsecure
 
-Zobacz [ręcznego gromadzenia listy kworum dozorcy](#manually-collect-the-zookeeper-quorum-list) w tym artykule, aby uzyskać szczegółowe informacje na temat sposobu pobierania tych wartości dla klastra usługi HDInsight.
+Zobacz [ręcznego gromadzenia listy kworum dozorcy Apache](#manually-collect-the-apache-zookeeper-quorum-list) w tym artykule, aby uzyskać szczegółowe informacje na temat sposobu pobierania tych wartości dla klastra usługi HDInsight.
 
 Narzędzie CopyTable obsługuje również parametry, aby określić zakres czasu wierszy, aby skopiować, a także określić podzbiór rodziny kolumn w tabeli, aby skopiować. Aby wyświetlić pełną listę parametrów obsługiwanych przez CopyTable, uruchom CopyTable bez żadnych parametrów:
 
@@ -120,7 +120,7 @@ CopyTable skanuje źródło całej zawartości tabeli, które mają zostać skop
 > [!NOTE]
 > Aby zautomatyzować kopiowanie danych między tabelami, zobacz `hdi_copy_table.sh` skryptu w [Utils bazy danych HBase w usłudze Azure](https://github.com/Azure/hbase-utils/tree/master/replication) repozytorium w witrynie GitHub.
 
-### <a name="manually-collect-the-zookeeper-quorum-list"></a>Ręcznego zebrania kworum dozorcy listy
+### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>Ręcznego zebrania kworum Apache ZooKeeper listy
 
 W przypadku obu klastrach HDInsight znajdują się w tej samej sieci wirtualnej, zgodnie z opisem w poprzedniej sekcji, rozpoznawanie nazwy hosta wewnętrznego jest automatycznie. Aby użyć CopyTable klastrów HDInsight w dwóch odrębnych sieci wirtualne połączone przez bramę sieci VPN, należy podać hosta adresów IP węzłów dozorcy kworum.
 
@@ -201,8 +201,8 @@ Dostępne są następujące ogólne kroki, aby skonfigurować replikację:
 5. Skopiuj dane z tabel źródłowych do tabel docelowych.
 6. Replikacja automatycznie kopiuje nowy modyfikacji danych do tabel źródłowych w tabelach docelowych.
 
-Aby włączyć replikację na HDInsight, dotyczą akcji skryptu uruchomionego źródłowego klastra HDInsight. Instrukcje dotyczące włączania replikacji w klastrze lub na eksperymentowanie z replikacją w klastrach przykładowe utworzone w sieciach wirtualnych za pomocą szablonów usługi Azure Resource Management, zobacz [replikacji Konfigurowanie bazy danych HBase](apache-hbase-replication.md). Ten artykuł zawiera również instrukcje dotyczące włączania replikacji Phoenix metadanych.
+Aby włączyć replikację na HDInsight, dotyczą akcji skryptu uruchomionego źródłowego klastra HDInsight. Instrukcje dotyczące włączania replikacji w klastrze lub na eksperymentowanie z replikacją w klastrach przykładowe utworzone w sieciach wirtualnych za pomocą szablonów usługi Azure Resource Management, zobacz [replikacji Konfigurowanie bazy danych Apache HBase](apache-hbase-replication.md). Ten artykuł zawiera również instrukcje dotyczące włączania replikacji Phoenix metadanych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Konfigurowanie replikacji bazy danych HBase](apache-hbase-replication.md)
+* [Konfigurowanie replikacji bazy danych Apache HBase](apache-hbase-replication.md)

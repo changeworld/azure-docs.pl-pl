@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: sngun
-ms.openlocfilehash: 6ad59f14a0ade305bc9b1f9f125c21e9bdc39c0d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1de97ef34ab2db79ef7eaeca66cb8d0598ae9262
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961912"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284493"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Dane lokalizacji geograficznych i GeoJSON za pomocą konta interfejsu API SQL usługi Azure Cosmos DB
 
@@ -151,7 +151,7 @@ Jeśli nie ma informacji o długości i szerokości geograficznej, ale mają adr
 Teraz, że zrobiliśmy przyjrzeć się jak wstawić dane geoprzestrzenne, Spójrzmy na sposób tworzenia zapytań względem tych danych za pomocą usługi Azure Cosmos DB przy użyciu języków SQL i LINQ.
 
 ### <a name="spatial-sql-built-in-functions"></a>Wbudowane funkcje przestrzenne programu SQL
-Usługa Azure Cosmos DB obsługuje następujące funkcje wbudowane Otwórz dane geograficzne Consortium (OGC) do wykonywania zapytań na danych geoprzestrzennych. Aby uzyskać więcej informacji na temat pełnego zestawu funkcji wbudowanych w języku SQL, zobacz [zapytań usługi Azure Cosmos DB](sql-api-sql-query.md).
+Usługa Azure Cosmos DB obsługuje następujące funkcje wbudowane Otwórz dane geograficzne Consortium (OGC) do wykonywania zapytań na danych geoprzestrzennych. Aby uzyskać więcej informacji na temat pełnego zestawu funkcji wbudowanych w języku SQL, zobacz [zapytań usługi Azure Cosmos DB](how-to-sql-query.md).
 
 <table>
 <tr>
@@ -392,6 +392,6 @@ Teraz, gdy wiesz jak rozpocząć pracę z obsługą dane geograficzne w usłudze
 
 * Rozpocznij kodowanie dzięki [przykładów kodu .NET dane geograficzne w usłudze GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
 * Zapoznaj się z danymi geograficznymi zapytań w [Plac zabaw dla usługi Azure Cosmos DB zapytań](http://www.documentdb.com/sql/demo#geospatial)
-* Dowiedz się więcej o [usługi Azure Cosmos DB zapytania](sql-api-sql-query.md)
-* Dowiedz się więcej o [zasad indeksowania usługi Azure Cosmos DB](indexing-policies.md)
+* Dowiedz się więcej o [usługi Azure Cosmos DB zapytania](how-to-sql-query.md)
+* Dowiedz się więcej o [zasad indeksowania usługi Azure Cosmos DB](index-policy.md)
 

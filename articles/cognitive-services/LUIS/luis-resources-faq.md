@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: db8fc0b6926930521f11285dc56c886c10c42fc2
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: d371ead3280bca5239a9ee6bf2c4275414141fb4
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649316"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284374"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding często zadawane pytania
 
@@ -60,6 +60,16 @@ Cortana, który wstępnie skompilowanych aplikacji zostały zaniechane w 2017 r.
 
 ## <a name="luis-endpoint"></a>Punkt końcowy usługi LUIS
 
+### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Moje zapytanie punkt końcowy zwracany nieoczekiwane wyniki. Co mam zrobić?
+
+Wyniki przewidywań nieoczekiwane zapytanie są oparte na stanie opublikowanego modelu. Aby naprawić model, możesz muszą się konieczna zmiana modelu, szkolenie i opublikuj go ponownie. 
+
+Poprawianie modelu zaczyna się od [aktywne uczenie](luis-how-to-review-endoint-utt.md).
+
+Możesz usunąć szkolenia deterministyczna, aktualizując [aplikacji interfejsu API z ustawień wersji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) aby można było używać wszystkich danych szkoleniowych. 
+
+Przegląd [najlepsze praktyki](luis-concept-best-practices.md) inne porady. 
+
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>Dlaczego usługa LUIS powoduje dodania miejsca do magazynowania do wykonywania zapytań w całym lub w środku słów?
 Usługa LUIS [tokenizes](luis-glossary.md#token) na podstawie wypowiedź [kultury](luis-language-support.md#tokenization). Oryginalna wartość i tokenami wartości są dostępne dla [wyodrębnianie danych](luis-concept-data-extraction.md#tokenized-entity-returned).
 
@@ -67,7 +77,7 @@ Usługa LUIS [tokenizes](luis-glossary.md#token) na podstawie wypowiedź [kultur
 [Tworzenie klucza punktu końcowego](luis-how-to-azure-subscription.md#create-luis-endpoint-key) na platformie Azure Twoja [usługi](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) poziom. [Przypisany klawisz](luis-how-to-manage-keys.md#assign-endpoint-key) na **[kluczy i punktów końcowych](luis-how-to-manage-keys.md)** strony. Nie ma żadnych odpowiednich interfejsów API dla tej akcji. Następnie należy zmienić żądania HTTP do punktu końcowego do [użycia nowego klucza punktu końcowego](luis-concept-keys.md#use-endpoint-key-in-query).
 
 ### <a name="how-do-i-interpret-luis-scores"></a>Jak interpretować wyniki usługi LUIS?
-System powinien używać najwyższy intencji oceniania niezależnie od jego wartość. Na przykład współczynnik poniżej 0,5 (mniej niż 50%) niekoniecznie oznacza, że usługa LUIS ma niski zaufania. Zapewnianie większej ilości danych szkoleniowych może zwiększyć wynik intencji najbardziej prawdopodobną.
+System powinien używać najwyższy intencji oceniania niezależnie od jego wartość. Na przykład współczynnik poniżej 0,5 (mniej niż 50%) niekoniecznie oznacza, że usługa LUIS ma niski zaufania. Materiały szkoleniowe dotyczące usługi więcej danych może pomóc zwiększyć [wynik](luis-concept-prediction-score.md) intencji najbardziej prawdopodobną.
 
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Dlaczego nie widzę mojego trafienia punktu końcowego na pulpicie nawigacyjnym mojej aplikacji?
 Trafienia punktu końcowego całkowita na pulpicie nawigacyjnym aplikacji są okresowo aktualizowane, ale metryki skojarzone z klucza punktu końcowego usługi LUIS w witrynie Azure portal są aktualizowane częściej.
@@ -194,7 +204,7 @@ Nie.
 
 Następujące funkcje zostały wydane na konferencji Build 2018 r.:
 
-|Nazwa|Zawartość|
+|Name (Nazwa)|Zawartość|
 |--|--|
 |Ulepszenia|[Wyrażenie regularne](luis-concept-data-extraction.md##regular-expression-entity-data) jednostki i [frazy klucz](luis-concept-data-extraction.md#key-phrase-extraction-entity-data) jednostki
 |Wzorce|Wzorce [koncepcji](luis-concept-patterns.md), [samouczek](luis-tutorial-pattern.md), [porad](luis-how-to-model-intent-pattern.md)<br>[Patterns.Any](luis-concept-entity-types.md) jednostki w tym koncepcji [jawną listę](luis-concept-patterns.md#explicit-lists) dla wyjątków<br>[Role](luis-concept-roles.md) pojęcia|

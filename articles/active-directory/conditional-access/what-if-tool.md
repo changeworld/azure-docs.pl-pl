@@ -2,7 +2,7 @@
 title: Co to jest co jeśli narzędzie dostępu warunkowego usługi Azure Active Directory?
 description: Dowiedz się, jak może zrozumieć wpływ zasad dostępu warunkowego w swoim środowisku.
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
+keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 11/20/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: d9bdc35e732a84920800424a260610fd6f068c94
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 3bc7dd8103bed9a5a04566d08a1daec0708a59c4
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626094"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285037"
 ---
 # <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Co to jest co jeśli narzędzie dostępu warunkowego usługi Azure Active Directory?
 
@@ -32,7 +32,7 @@ W tym artykule wyjaśniono, jak można użyć tego narzędzia do testowania zasa
 
 ## <a name="what-it-is"></a>Co to jest
 
-**Warunkowego dostępu, co, jeśli narzędzie zasad** umożliwia zrozumienie wpływu zasad dostępu warunkowego w swoim środowisku. Zamiast testu kierowania zasad, ręcznie wykonując wiele operacji logowania to narzędzie umożliwia ocenę symulowane logowania użytkownika. Symulacja szacuje wpływ tym logowania ma zasady i generuje raport symulacji. Raport nie zawiera tylko warunkowe zastosowane zasady dostępu, ale także [zasady klasyczne](policy-migration.md#classic-policies) jeśli takie istnieją.    
+**Warunkowego dostępu, co, jeśli narzędzie zasad** umożliwia zrozumienie wpływu zasad dostępu warunkowego w swoim środowisku. Zamiast testu kierowania zasad, ręcznie wykonując wiele operacji logowania to narzędzie umożliwia ocenę symulowane logowania użytkownika. Symulacja szacuje wpływ tego logowania na zasady i generuje raport symulacji. Raport nie zawiera tylko warunkowe zastosowane zasady dostępu, ale także [zasady klasyczne](policy-migration.md#classic-policies) jeśli takie istnieją.    
 
 Co jeśli narzędzia również pozwala szybko określić zasady, które są stosowane do określonego użytkownika. Informacje, można użyć na przykład, jeśli trzeba rozwiązać problem.  
 
@@ -51,9 +51,6 @@ Kolejnym krokiem może zainicjować symulacji Uruchom ocenia ustawienia. Tylko t
 
 Po zakończeniu oceny narzędzie generuje raport o usterce zasad.
 
-
-> [!NOTE]
-> Obecnie co jeśli narzędzie nie obsługuje grup zagnieżdżonych. Jeśli użytkownik znajduje się w grupie i że grupa jest członkiem innej grupy, który jest używany w zasadach dostępu warunkowego, a następnie co zrobić, jeśli narzędzie nie wyświetla prawidłowo wpływu tych zasad dla użytkownika. 
 
 
 ## <a name="running-the-tool"></a>Uruchamianie narzędzia
@@ -127,6 +124,6 @@ Na liście zasad, które nie mają zastosowania do użytkownika można, a także
 
 - Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md).
 
-- Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md). 
+- Jeśli chcesz skonfigurować zasady dostępu warunkowego w swoim środowisku, zobacz [Best practices for conditional access in Azure Active Directory (Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory)](best-practices.md). 
 
 - Jeśli chcesz przeprowadzić migrację zasady klasyczne, zobacz [Migrowanie zasad klasycznych w witrynie Azure portal](policy-migration.md)  

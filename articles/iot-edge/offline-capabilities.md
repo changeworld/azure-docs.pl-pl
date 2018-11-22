@@ -8,12 +8,12 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: eb44d6b0a4ea69d92f91af7ce1d6b19deff4e753
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 3ab775d57ba188930cc66b0fa1655307e9a78179
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567030"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284646"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Zrozumienie rozszerzone możliwości w trybie offline dla urządzeń usługi IoT Edge, moduły i podrzędny urządzenia (wersja zapoznawcza)
 
@@ -48,7 +48,7 @@ Poniższy przykład pokazuje, jak scenariusza użycia usługi IoT Edge działa w
 
 Rozszerzone możliwości w trybie offline, opisane w tym artykule są dostępne w [usługi IoT Edge wersji 1.0.4 lub nowszej](https://github.com/Azure/azure-iotedge/releases). Wcześniejszych wersjach mają jakiś podzestaw funkcji w trybie offline. Istniejące usługi IoT Edge urządzenia, które nie mają rozszerzone możliwości w trybie offline nie może zostać uaktualniona, zmieniając wersję środowiska uruchomieniowego, ale musi zostać ponownie skonfigurowany z nową tożsamość urządzenia usługi IoT Edge w celu uzyskania tych funkcji. 
 
-Rozszerzona pomoc techniczna w trybie offline jest dostępna we wszystkich regionach, w którym usługi IoT Hub jest dostępne, z wyjątkiem wschodnie stany USA i Europa Zachodnia. 
+Rozszerzona pomoc techniczna w trybie offline jest dostępna we wszystkich regionach, w których usługi IoT Hub jest dostępna, **z wyjątkiem** wschodnie stany USA.
 
 Tylko - Edge IoT urządzenia można dodać jako urządzenia podrzędnych. 
 
@@ -65,6 +65,19 @@ Podrzędne urządzenia mogą być dowolnego urządzenia bez krawędzi zarejestro
    ![Zarządzanie urządzeniami podrzędnych z poziomu strony szczegółów urządzenia usługi IoT Edge](./media/offline-capabilities/manage-child-devices.png)
 
 Nadrzędny urządzenia mogą mieć wiele urządzeń podrzędnych, ale urządzenie podrzędny może mieć tylko jedną jednostkę nadrzędną.
+
+### <a name="specifying-dns-servers"></a>Określenie serwerów DNS 
+
+W celu poprawy niezawodności, zalecane jest określenie adresów serwerów DNS, które są używane w danym środowisku. Na przykład w systemie Linux, należy zaktualizować **/etc/docker/daemon.json** (może być konieczne do utworzenia pliku) do uwzględnienia:
+
+```
+{
+    "dns": [“1.1.1.1”]
+}
+```
+
+Jeśli używasz lokalnego serwera DNS, należy zastąpić 1.1.1.1 adres IP serwera DNS. Uruchom ponownie usługę docker, aby zmiany zaczęły obowiązywać.
+
 
 ## <a name="optional-offline-settings"></a>Opcjonalne ustawienia w trybie offline
 

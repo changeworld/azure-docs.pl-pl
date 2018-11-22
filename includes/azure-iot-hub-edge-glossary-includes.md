@@ -1,3 +1,16 @@
+---
+author: dominicbetts
+ms.service: iot-hub
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: dobett
+ms.openlocfilehash: c95bca125ea70cf32acad0d5ea67c3ad195ed704
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52279828"
+---
 ## <a name="automatic-device-management"></a>Automatyczne zarządzanie urządzeniami
 Automatyczne zarządzanie urządzeniami w usłudze Azure IoT Hub automatyzuje wiele powtarzających się i złożonych zadań zarządzania flot duże urządzenia względem całej ich cykle życia. Za pomocą automatycznego zarządzania urządzeniami można docelowe zbiór urządzeń, na podstawie ich właściwości, zdefiniuj wymaganą konfiguracją i umożliwić usługi IoT Hub aktualizowania urządzenia, które pochodzą one do zakresu.  Składa się z [konfiguracji urządzeń automatycznego](../articles/iot-hub/iot-hub-auto-device-config.md) i [automatycznego wdrożenia usługi IoT Edge](../articles/iot-edge/how-to-deploy-monitor.md).
 

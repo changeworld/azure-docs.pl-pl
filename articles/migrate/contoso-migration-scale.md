@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: 5c1858fca1ca5f6bc48f5225ecf2d52dee055c91
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 37f0ba800cca4b096691a8bb6b43eb33a636d833
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092751"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284867"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso — skalowanie migracji na platformę Azure
 
@@ -227,7 +227,7 @@ Wraz z oceną ich pełną firma Contoso potrzebuje do identyfikowania narzędzia
 
 Istnieją cztery Strategie migracji szerokie, firma Contoso może wziąć pod uwagę. 
 
-**Strategia** | **Szczegóły** | **Sposób użycia**
+**Strategia** | **Szczegóły** | **Użycie**
 --- | --- | ---
 **Rehost**  | Często określane jako migracja "metodą lift and shift", jest to opcja bez użycia kodu, w przypadku migrowania istniejących aplikacji na platformę Azure szybko.<br/><br/> Aplikacja jest migrowana jako — z zalet chmury bez zagrożeń lub kosztów związanych z zmian w kodzie. | Contoso może rehost mniej strategiczne aplikacje wymagające bez zmian w kodzie.
 **Refaktoryzacja** |  Również określane jako "ponowne pakowanie", ta strategia wymaga kodu minimalną aplikację lub zmiany konfiguracji trzeba połączyć aplikację do usługi Azure PaaS i lepiej wykorzystać możliwości chmury. | Contoso refaktoryzować strategiczne aplikacje zachowują te same funkcje podstawowe, ale przenieść je do uruchomienia na platformie Azure, takich jak usługi Azure App Services.<br/><br/> Wymaga to zmian w kodzie minimalnej.<br/><br/> Z drugiej strony firma Contoso będzie musiał Obsługa platformy maszyny Wirtualnej, ponieważ to nie będzie zarządzany przez firmę Microsoft.
@@ -289,9 +289,9 @@ Firma Contoso potrzebuje ustalenie sposobu wdrażania tych składników, w oparc
 --- | ---
 **Maksymalna dziennych zmian** | Serwer pojedynczego procesu może obsługiwać dzienny zmiany szybkości do 2 TB. Ponieważ maszyny Wirtualnej można używać tylko jednego serwera przetwarzania, maksymalny Dzienny współczynnik zmian danych obsługiwanym zreplikowanej maszyny Wirtualnej jest 2 TB.
 **Maksymalna przepływność** | Konto magazynu platformy Azure w warstwie standardowa może obsługiwać maksymalnie 20 000 żądań na sekundę i operacji wejścia/wyjścia na sekundę (IOPS) w replikacji maszyn wirtualnych powinna być w ramach tego limitu. Na przykład jeśli maszyna wirtualna ma dyski 5, a każdy dysk generuje 120 na SEKUNDĘ (8K rozmiar) na maszynie Wirtualnej, następnie będzie w obrębie platformy Azure limit operacji We/Wy dysku 500.<br/><br/> Pamiętaj, że liczba kont magazynu, potrzebne jest taki sam, na maszynie źródłowej łączna liczba operacji We/Wy, podzielona przez 20 000. Replikowanej maszyny mogą należeć tylko do jednego konta magazynu na platformie Azure.
-**Serwer konfiguracji** | Na podstawie szacunku firmy Contoso replikacji 100 = 200 maszyn wirtualnych razem i [określania rozmiaru wymagania dotyczące serwera konfiguracji](https://docs.microsoft.com/azure/site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server), Contoso szacowaną potrzeb maszyny serwera konfiguracji w następujący sposób:<br/><br/> Procesor CPU: 16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni @ 2,5 GHz)<br/><br/> Pamięci: 32 GB<br/><br/> Dysk pamięci podręcznej: 1 TB<br/><br/> Współczynnik zmian danych: 1 TB do 2 TB.<br/><br/> Oprócz wymagania dotyczące rozmiaru Contoso należy upewnij się, że serwer konfiguracji znajduje się optymalnie, w tej samej sieci i segment sieci LAN jako maszyny wirtualne, które będą migrowane.
+**Serwer konfiguracji** | Na podstawie szacunku firmy Contoso replikacji 100 = 200 maszyn wirtualnych razem i [określania rozmiaru wymagania dotyczące serwera konfiguracji](../site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server), Contoso szacowaną potrzeb maszyny serwera konfiguracji w następujący sposób:<br/><br/> Procesor CPU: 16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni @ 2,5 GHz)<br/><br/> Pamięci: 32 GB<br/><br/> Dysk pamięci podręcznej: 1 TB<br/><br/> Współczynnik zmian danych: 1 TB do 2 TB.<br/><br/> Oprócz wymagania dotyczące rozmiaru Contoso należy upewnij się, że serwer konfiguracji znajduje się optymalnie, w tej samej sieci i segment sieci LAN jako maszyny wirtualne, które będą migrowane.
 **Serwer przetwarzania** | Contoso wdroży autonomiczny serwer dedykowanego procesu o możliwość replikowania maszyn wirtualnych 100 – 200:<br/><br/> Procesor CPU: 16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni @ 2,5 GHz)<br/><br/> Pamięci: 32 GB<br/><br/> Dysk pamięci podręcznej: 1 TB<br/><br/> Współczynnik zmian danych: 1 TB do 2 TB.<br/><br/> Serwer przetwarzania będzie ciężko i jako takie powinien znajdować się na hoście ESXi, która może obsłużyć We/Wy dysku, ruch sieciowy i procesora CPU wymagane dla replikacji. Firma Contoso będzie wziąć pod uwagę dedykowanego hosta, w tym celu. 
-**Sieć** | Firmy Contoso ma przeglądowi bieżącej infrastruktury sieci VPN typu lokacja lokacja i decyzję o implementacji usługi Azure ExpressRoute. Implementacja znaczenie krytyczne, ponieważ wówczas zmniejszyć czas oczekiwania i zwiększyć przepustowość do regionu wschodnie stany USA 2 Azure podstawowego firmy Contoso.<br/><br/> **Monitorowanie**: Contoso należy uważnie monitorować danych napływających z serwera przetwarzania. Jeśli dane przeciążenia przepustowość sieci, firma Contoso będzie należy wziąć pod uwagę [ograniczanie przepustowości serwera przetwarzania](https://docs.microsoft.com/azure/site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
+**Sieć** | Firmy Contoso ma przeglądowi bieżącej infrastruktury sieci VPN typu lokacja lokacja i decyzję o implementacji usługi Azure ExpressRoute. Implementacja znaczenie krytyczne, ponieważ wówczas zmniejszyć czas oczekiwania i zwiększyć przepustowość do regionu wschodnie stany USA 2 Azure podstawowego firmy Contoso.<br/><br/> **Monitorowanie**: Contoso należy uważnie monitorować danych napływających z serwera przetwarzania. Jeśli dane przeciążenia przepustowość sieci, firma Contoso będzie należy wziąć pod uwagę [ograniczanie przepustowości serwera przetwarzania](../site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 **Magazyn platformy Azure** | W przypadku migracji Contoso musi zidentyfikować właściwego typu i liczbę kont usługi Azure storage.  Usługa Site Recovery replikuje dane maszyny Wirtualnej do usługi Azure storage.<br/><br/> Usługa Site Recovery można replikować na standardowy lub premium (SSD) konta usługi storage.<br/><br/> Aby zdecydować, magazynu, należy przejrzeć Contoso [limity przestrzeni dyskowej](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)i wziąć pod uwagę przewidywanego wzrostu i zwiększone użycie wraz z upływem czasu. Biorąc pod uwagę szybkość i priorytetów migracji, Contoso zdecydował się na użycie kont usługi premium storage.<br/><br/> One utworzysz i ponowne użycie wielu kont magazynu w trakcie migracji.
 Firma Contoso dokonała decyzję, aby korzystać z dysków zarządzanych dla wszystkich maszyn wirtualnych, które są wdrażane na platformie Azure.  Operacje We/Wy wymagane określi, jeśli dyski będzie standardowa (HDD) lub Premium (SSD).<br/>.<br/>
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: 9bb703f822a9b9cafe8318bfb7f7cc64c3854868
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 5e5ba3c0d296a253e716e2944201834ff4482f64
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853663"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283994"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -343,6 +343,9 @@ Usługa Application Insights ma [próbkowania](../application-insights/app-insig
   }
 }
 ```
+
+> [!NOTE]
+> [Próbkowanie](../application-insights/app-insights-sampling.md) jest domyślnie włączona. Jeśli prawdopodobnie brakuje danych, po prostu może być konieczne dostosowanie ustawień próbkowania odpowiednio do danego scenariusza monitorowania.
 
 ## <a name="write-logs-in-c-functions"></a>Zapisują dzienniki w funkcji języka C#
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: a8b2070b6f5b10cb60c6658aefc8cc90331ecfd9
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 3416d257a23e94460199a1ddfe63302ff55ad5a5
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409360"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285054"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Windows w klastrze usługi Service Fabric
 
@@ -167,7 +167,7 @@ Zachowanie aplikacji orkiestracji poprawek można skonfigurować do własnych po
 
 1. Zakończ wszystkie wstępnie wymagane kroki, aby przygotować klaster.
 2. Wdrażanie aplikacji aranżacji poprawek, jak dowolną inną aplikację usługi Service Fabric. Aplikację można wdrożyć przy użyciu programu PowerShell. Postępuj zgodnie z instrukcjami w [Wdróż i usunąć aplikacje przy użyciu programu PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
-3. Aby skonfigurować aplikację w czasie wdrażania, należy przekazać `ApplicationParamater` do `New-ServiceFabricApplication` polecenia cmdlet. Dla Twojej wygody udostępniliśmy skryptu Deploy.ps1 wraz z aplikacji. Aby użyć skryptu:
+3. Aby skonfigurować aplikację w czasie wdrażania, należy przekazać `ApplicationParameter` do `New-ServiceFabricApplication` polecenia cmdlet. Dla Twojej wygody udostępniliśmy skryptu Deploy.ps1 wraz z aplikacji. Aby użyć skryptu:
 
     - Łączenie z klastrem usługi Service Fabric za pomocą `Connect-ServiceFabricCluster`.
     - Uruchom skrypt programu PowerShell Deploy.ps1 z odpowiednią `ApplicationParameter` wartość.

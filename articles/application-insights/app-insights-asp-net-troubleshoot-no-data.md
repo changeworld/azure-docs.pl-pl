@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 47cf32a57fc4a2d0e20a9f2c242db1f3dec96fe5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8bc4c0617ebf9b400260a217462abbcc439ae440
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228542"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284680"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Brakuje części moich danych telemetrycznych
@@ -175,8 +175,14 @@ Jeśli Twoja aplikacja wysyła dużo danych, a używasz zestawu SDK Application 
 
 Można ją wyłączyć, ale nie jest to zalecane. Próbkowanie jest zaprojektowana tak, że poprawnie powiązane dane telemetryczne są przesyłane w celach diagnostycznych. 
 
-## <a name="client-ip-address-is-0000"></a>Adres IP klienta ma wartość 0.0.0.0 
-W lutym 2018 roku firma Microsoft [ogłosiła](https://blogs.msdn.microsoft.com/applicationinsights-status/2018/02/01/all-octets-of-ip-address-will-be-set-to-zero/) , firma Microsoft usunęła rejestrowania adres IP klienta. Nie ma to wpływu na lokalizacji geograficznej.
+## <a name="client-ip-address-is-0000"></a>Adres IP klienta ma wartość 0.0.0.0
+
+Na 5 lutego 2018 r. ogłosiliśmy, że firma Microsoft usunęła rejestrowania adres IP klienta. Nie ma to wpływu na lokalizacji geograficznej.
+
+> [!NOTE]
+> Jeśli potrzebujesz pierwsze 3 oktety adresu IP, możesz użyć [inicjatora telemetrii](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer) można dodać atrybutu niestandardowego.
+> Nie ma to wpływu na dane zebrane przed 5 lutego 2018 r.
+
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>Nieprawidłowe dane geograficzne w danych telemetrycznych użytkownika
 Miasto, region i kraj wymiary są uzyskiwane z adresów IP, a nie zawsze są dokładne. Te adresy IP są przetwarzane jako pierwsze dla lokalizacji, a następnie został 0.0.0.0 ma być przechowywany.

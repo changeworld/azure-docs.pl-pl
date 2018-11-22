@@ -9,15 +9,15 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 751c2df42ee8e4ace22fe94e1fef8d734ab81c3c
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 9602b8ff4d0df15b030626d5e2cfeca9bcc2bd5d
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275670"
+ms.locfileid: "52284118"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Dane wyjściowe elementu Runbook i komunikatów w usłudze Azure Automation
-Większość elementów runbook automatyzacji Azure obejmuje jakąś formę danych wyjściowych, takich jak komunikat o błędzie dla użytkownika lub obiekt złożony przeznaczony do użycia przez inny przepływ pracy. Program Windows PowerShell udostępnia [wiele strumieni](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) do wysyłania danych wyjściowych w skrypcie lub przepływu pracy. Usługa Azure Automation współpracuje z każdą z tych strumieni inaczej, i należy stosować najlepsze rozwiązania w zakresie używania każdego podczas tworzenia elementu runbook.
+Większość elementów runbook automatyzacji Azure obejmuje jakąś formę danych wyjściowych, takich jak komunikat o błędzie dla użytkownika lub obiekt złożony przeznaczony do użycia przez inny przepływ pracy. Program Windows PowerShell udostępnia [wiele strumieni](https://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) do wysyłania danych wyjściowych w skrypcie lub przepływu pracy. Usługa Azure Automation współpracuje z każdą z tych strumieni inaczej, i należy stosować najlepsze rozwiązania w zakresie używania każdego podczas tworzenia elementu runbook.
 
 Poniższa tabela zawiera krótki opis każdego strumienia i ich zachowania w witrynie Azure portal, zarówno podczas uruchamiania opublikowanego elementu runbook, jak i podczas [testowania elementu runbook](automation-testing-runbook.md). W kolejnych sekcjach znajdują się dalsze szczegółowe informacje na temat każdego strumienia.
 
@@ -135,7 +135,7 @@ Write-Error –Message "This is an error message that will stop the runbook beca
 ```
 
 ### <a name="verbose-stream"></a>Strumień pełny
-Strumień komunikatów pełnych jest ogólne informacje o działaniu elementu runbook. Ponieważ [Stream debugowania](#Debug) nie jest dostępna w elemencie runbook, pełne komunikaty wyjściowe powinny być używane do informacji o debugowaniu. Domyślnie komunikaty pełne z opublikowanych elementów runbook nie są przechowywane w historii zadań. Aby zapisywać komunikaty pełne, skonfiguruj opublikowane elementy runbook w celu rejestrowania rekordów pełnych na karcie Konfiguracja elementu runbook w witrynie Azure portal. W większości przypadków należy zachować domyślne ustawienie bez rejestrowania rekordów pełnych dla elementu runbook ze względu na wydajność. Włącz tę opcję tylko rozwiązania lub debugowania elementu runbook.
+Strumień komunikatów pełnych jest ogólne informacje o działaniu elementu runbook. Ponieważ [Stream debugowania](#debug-stream) nie jest dostępna w elemencie runbook, pełne komunikaty wyjściowe powinny być używane do informacji o debugowaniu. Domyślnie komunikaty pełne z opublikowanych elementów runbook nie są przechowywane w historii zadań. Aby zapisywać komunikaty pełne, skonfiguruj opublikowane elementy runbook w celu rejestrowania rekordów pełnych na karcie Konfiguracja elementu runbook w witrynie Azure portal. W większości przypadków należy zachować domyślne ustawienie bez rejestrowania rekordów pełnych dla elementu runbook ze względu na wydajność. Włącz tę opcję tylko rozwiązania lub debugowania elementu runbook.
 
 Gdy [testowania elementu runbook](automation-testing-runbook.md), komunikaty pełne nie są wyświetlane, nawet jeśli element runbook jest skonfigurowany do rejestrowania rekordów pełnych. Aby wyświetlić komunikaty pełne podczas [testowania elementu runbook](automation-testing-runbook.md), należy ustawić dla zmiennej $VerbosePreference Kontynuuj. Za pomocą ta zmienna jest ustawiona komunikaty pełne są wyświetlane w okienku danych wyjściowych testu w witrynie Azure Portal.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 0aadb5964b5fe08b02397588dd9b2695fb4db4ce
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 27650605601a24e11d63e56343535c35c8b72f5d
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746721"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285156"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Linux w klastrze usługi Service Fabric
 
@@ -147,7 +147,7 @@ Zachowanie aplikacji orkiestracji poprawek można skonfigurować do własnych po
 
 1. Przygotuj klaster za pomocą wstępnie wymagane kroki.
 2. Wdrażanie aplikacji aranżacji poprawek, jak dowolną inną aplikację usługi Service Fabric. Aplikację można wdrożyć przy użyciu programu PowerShell lub interfejsu wiersza polecenia usługi Azure Service Fabric. Postępuj zgodnie z instrukcjami w [Wdróż i usunąć aplikacje przy użyciu programu PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications) lub [wdrażanie aplikacji przy użyciu interfejsu wiersza polecenia usługi Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/scripts/cli-deploy-application)
-3. Aby skonfigurować aplikację w czasie wdrażania, należy przekazać `ApplicationParamater` do `New-ServiceFabricApplication` polecenia cmdlet i skryptów. Dla wygody programu powershell (Deploy.ps1) i skrypty powłoki bash (Deploy.sh) są dostarczane wraz z aplikacji. Aby użyć skryptu:
+3. Aby skonfigurować aplikację w czasie wdrażania, należy przekazać `ApplicationParameter` do `New-ServiceFabricApplication` polecenia cmdlet i skryptów. Dla wygody programu powershell (Deploy.ps1) i skrypty powłoki bash (Deploy.sh) są dostarczane wraz z aplikacji. Aby użyć skryptu:
 
     - Łączenie z klastrem usługi Service Fabric.
     - Wykonywanie skryptu wdrażania. Opcjonalnie można podać parametr aplikacji skryptu. na przykład:.\Deploy.ps1 - ApplicationParameter @{UpdateFrequency = "Codziennie, 11:00:00"} OR./Deploy.sh "{\"UpdateFrequency\":\"codziennie, 11:00:00\"}" 

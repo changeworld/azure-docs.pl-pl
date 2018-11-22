@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: cae81bd2b856ae0fb4a648c03cbec1f87f222902
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 0f48d65d1b3e6d1f608d85cff3a24ef379caa9cf
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038472"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284833"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i konfigurowanie własnego środowiska integration runtime
 Środowisko integration runtime (IR) to infrastruktura obliczeniowa, która używa usługi Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration runtime](concepts-integration-runtime.md).
@@ -198,7 +198,9 @@ Wprowadzenie 12 minutowy i pokaz działania tej funkcji Obejrzyj poniższy film 
 
 * Wersja programu Azure PowerShell, która obsługuje tę funkcję jest 6.6.0 lub nowszej (AzureRM.DataFactoryV2, 0.5.7 pakietu lub nowszej).
 
-* Aby udzielić uprawnień, użytkownik musi roli właściciela lub dziedziczone właściciela w usłudze data factory, w której istnieje IR udostępnionych. 
+* Aby udzielić uprawnień, użytkownik musi roli właściciela lub dziedziczone właściciela w usłudze data factory, w której istnieje IR udostępnionych.
+
+* Funkcja udostępniania działa tylko dla fabryki danych w ramach tej samej dzierżawie usługi Azure Active Directory.
 
 * Usługi Active Directory [użytkowników-gości](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews), funkcja wyszukiwania (wyświetlanie listy wszystkich fabryk danych przy użyciu słowa kluczowe do wyszukania) w interfejsie użytkownika [nie działa](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits). Ale tak długo, jak użytkownik-Gość jest właścicielem usługi data factory, mogą oni udostępnić środowisko IR bez funkcji wyszukiwania bezpośrednio, wpisując MSI fabryki danych, z którym musi być udostępniona w środowisko IR **przypisać uprawnienia** pole tekstowe i Wybieranie **Dodaj** w interfejsie użytkownika usługi Azure Data Factory. 
 

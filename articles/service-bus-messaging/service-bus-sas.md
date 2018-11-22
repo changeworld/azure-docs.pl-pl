@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: spelluru
-ms.openlocfilehash: ef1b8b2dd96a89a553239168d412d84e63a29f2a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: daefb07761217ff4bb0800dfd9f1f05b6e22c1e1
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254591"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284918"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Kontrola dostępu usługi Service Bus przy użyciu sygnatury dostępu współdzielonego
 
@@ -31,7 +31,7 @@ Sygnatury dostępu Współdzielonego chroni dostęp do usługi Service Bus na po
 
 Udostępnione sygnatur dostępu to mechanizm autoryzacji opartej na oświadczeniach przy użyciu prostego tokenów. Przy użyciu sygnatury dostępu Współdzielonego, klucze nigdy nie są przekazywane w sieci. Klucze są używane do podpisania kryptograficznie informacji, który później może zostać zweryfikowany przez usługę. Sygnatury dostępu Współdzielonego może służyć za podobne do schematu nazwy użytkownika i hasła, gdzie klient będzie w posiadaniu natychmiastowego Nazwa reguły autoryzacji i dopasowany klucz. Sygnatury dostępu Współdzielonego można również podobny do modelu zabezpieczeń, gdzie klient odbiera token dostępu ograniczonej czasowo i podpisany z usługi tokenu zabezpieczającego bez kiedykolwiek wchodzących w posiadaniu klucza podpisywania.
 
-Skonfigurowano uwierzytelnianie sygnatury dostępu Współdzielonego w usłudze Service Bus z o nazwie [udostępnione reguł autoryzacji dostępu](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) mających skojarzone prawa dostępu i pary kluczy kryptograficznych podstawowego i pomocniczego. Klucze są wartości 256-bitowego w reprezentacji Base64. Możesz skonfigurować reguły na poziomie przestrzeni nazw, w usłudze Service Bus [przekazuje](../service-bus-relay/relay-what-is-it.md), [kolejek](/service-bus-messaging/service-bus-messaging-overview.md#queues), i [tematy](/service-bus-messaging/service-bus-messaging-overview.md#topics).
+Skonfigurowano uwierzytelnianie sygnatury dostępu Współdzielonego w usłudze Service Bus z o nazwie [udostępnione reguł autoryzacji dostępu](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) mających skojarzone prawa dostępu i pary kluczy kryptograficznych podstawowego i pomocniczego. Klucze są wartości 256-bitowego w reprezentacji Base64. Możesz skonfigurować reguły na poziomie przestrzeni nazw, w usłudze Service Bus [przekazuje](../service-bus-relay/relay-what-is-it.md), [kolejek](service-bus-messaging-overview.md#queues), i [tematy](service-bus-messaging-overview.md#topics).
 
 [Sygnatura dostępu współdzielonego](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) token zawiera nazwę reguły autoryzacji wybrany, identyfikator URI zasobu, która jest dostępna, natychmiastowe, wygaśnięcia i podpisu kryptograficznego HMAC SHA256 obliczona dla tych pól przy użyciu podstawowy lub pomocniczy klucz kryptograficzny regułę autoryzacji wybrany.
 

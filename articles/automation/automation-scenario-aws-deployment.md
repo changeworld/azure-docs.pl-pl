@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5133a3d724a362a3d022e0dfd29f798a509c4743
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 804ac964949c947baf5285b3ec591b3d28263f4d
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275473"
+ms.locfileid: "52282741"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Scenariusz automatyzacji platformy Azure — aprowizowanie maszyny wirtualnej usług AWS
 W tym artykule dowiesz się, jak dzięki usłudze Azure Automation do aprowizowania maszyny wirtualnej w ramach subskrypcji usługi Amazon Web Service (AWS) i nadaj tej maszyny Wirtualnej określonej nazwie — który AWS odnosi się do jako "" tagowania maszyny Wirtualnej.
@@ -25,7 +25,7 @@ Na potrzeby tego artykułu musisz mieć konto usługi Azure Automation i subskry
 ## <a name="deploy-amazon-web-services-powershell-module"></a>Wdrażanie modułu programu PowerShell usługi sieci Web Amazon
 Inicjowanie obsługi administracyjnej runbook maszyny Wirtualnej korzysta z modułu programu PowerShell usługi AWS, aby wykonać swoją pracę. Wykonaj poniższe kroki, aby dodać moduł do konta usługi Automation, który jest skonfigurowany przy użyciu poświadczeń usługi AWS subskrypcji.  
 
-1. Otwórz przeglądarkę internetową i przejdź do [galerii programu PowerShell](http://www.powershellgallery.com/packages/AWSPowerShell/) i kliknij pozycję **wdrażanie do usługi Azure Automation przycisku**.<br><br> ![Importowanie modułów PS usług AWS](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
+1. Otwórz przeglądarkę internetową i przejdź do [galerii programu PowerShell](https://www.powershellgallery.com/packages/AWSPowerShell/) i kliknij pozycję **wdrażanie do usługi Azure Automation przycisku**.<br><br> ![Importowanie modułów PS usług AWS](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
 2. Nastąpi przekierowanie do strony logowania do platformy Azure i po uwierzytelnieniu, będziesz kierowane do witryny Azure portal i wyświetlona następująca strona:<br><br> ![Importowanie modułu strony](./media/automation-scenario-aws-deployment/deploy-aws-powershell-module-parameters.png)
 3. Wybierz konto usługi Automation, a następnie kliknij przycisk **OK** rozpocząć wdrażanie.
 
@@ -60,7 +60,7 @@ Po wdrożeniu modułu programu PowerShell usługi AWS można teraz tworzyć elem
     > 
     > * Element runbook zawiera szereg domyślnych wartości parametrów. Oceń wszystkie wartości domyślne i aktualizacji, gdy jest to konieczne.
     > * Jeśli są przechowywane poświadczenia usługi AWS, jako zasób poświadczeń o nazwie inaczej niż **AWScred**, musisz zaktualizować ten skrypt w wierszu 57, aby dopasować odpowiednio.  
-    > * Podczas pracy z usługą AWS poleceń interfejsu wiersza polecenia w programie PowerShell, szczególnie w przypadku tego przykładowego elementu runbook, należy określić region platformy AWS. W przeciwnym razie niepowodzenie polecenia cmdlet. Wyświetl AWS tematu [Określ Region platformy AWS](http://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html) w narzędziach usługi AWS dla dokumentu programu PowerShell, aby uzyskać więcej informacji.  
+    > * Podczas pracy z usługą AWS poleceń interfejsu wiersza polecenia w programie PowerShell, szczególnie w przypadku tego przykładowego elementu runbook, należy określić region platformy AWS. W przeciwnym razie niepowodzenie polecenia cmdlet. Wyświetl AWS tematu [Określ Region platformy AWS](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html) w narzędziach usługi AWS dla dokumentu programu PowerShell, aby uzyskać więcej informacji.  
     >
 
 7. Pobieranie listy nazw obrazów z subskrypcji usługi AWS, uruchom program PowerShell ISE, a następnie zaimportuj moduł programu PowerShell usługi AWS. Uwierzytelnianie względem usługi AWS, zastępując **Get-AutomationPSCredential** w środowisku platformy ISE przy użyciu **AWScred = Get-Credential**. To wyświetli monit o podanie poświadczeń i można podać swoje **identyfikator klucza dostępu** nazwy użytkownika i **tajny klucz dostępu** hasła. Zapoznaj się z poniższym przykładem:  

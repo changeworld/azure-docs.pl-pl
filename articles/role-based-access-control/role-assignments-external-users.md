@@ -16,12 +16,12 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: bd75ecde75d0f22dc66f047cd063dd85807f6f33
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: aec12e6dc7d331b2610546d0b0c92fa6ce0789ee
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304445"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284527"
 ---
 # <a name="manage-access-for-external-users-using-rbac"></a>Zarządzanie dostępem dla użytkowników zewnętrznych, korzystając z modelu RBAC
 
@@ -45,7 +45,7 @@ W witrynie Azure portal po zalogowaniu się jako administrator, wybierz pozycję
 ![Blok subskrypcji w witrynie Azure portal](./media/role-assignments-external-users/0.png) domyślnie, jeśli administrator subskrypcji platformy Azure, użytkownik będzie wyświetlany jako **administrator konta**, to jest rola subskrypcji. Aby uzyskać więcej informacji na temat ról subskrypcji platformy Azure, zobacz [Administratorzy subskrypcji platformy Azure Dodaj lub zmień](../billing/billing-add-change-azure-subscription-administrator.md).
 
 W tym przykładzie użytkownik "alflanigan@outlook.com" jest **właściciela** "Bezpłatna wersja próbna" dzierżawy "Domyślna dzierżawa usługi Azure" subskrypcji w usłudze AAD. Ponieważ ten użytkownik jest twórca subskrypcji platformy Azure za pomocą początkowego Account Microsoft "Outlook" (Account Microsoft = programu Outlook, na żywo itp.) będzie domyślna nazwa domeny dla wszystkich innych użytkowników, dodać w tej dzierżawie **"\@ alflaniganuoutlook.onmicrosoft.com"**. Zgodnie z projektem składni nowej domeny jest tworzona przez zestawiania nazwy użytkownika i domena nazwa użytkownika, który utworzył dzierżawy oraz dodawania rozszerzenia **". onmicrosoft.com"**.
-Ponadto użytkownicy mogą zarejestrować się przy użyciu niestandardowej nazwy domeny w dzierżawie po dodaniu i weryfikowanie jego dla nowej dzierżawy. Aby uzyskać więcej informacji na temat zweryfikować niestandardowej nazwy domeny w dzierżawie usługi Azure Active Directory, zobacz [Dodawanie niestandardowej nazwy domeny do katalogu](/active-directory/active-directory-add-domain).
+Ponadto użytkownicy mogą zarejestrować się przy użyciu niestandardowej nazwy domeny w dzierżawie po dodaniu i weryfikowanie jego dla nowej dzierżawy. Aby uzyskać więcej informacji na temat zweryfikować niestandardowej nazwy domeny w dzierżawie usługi Azure Active Directory, zobacz [Dodawanie niestandardowej nazwy domeny do katalogu](../active-directory/fundamentals/add-custom-domain.md).
 
 W tym przykładzie katalog "Domyślna dzierżawa usługi Azure" zawiera tylko użytkownicy z tą nazwą domeny "\@alflanigan.onmicrosoft.com".
 
@@ -85,7 +85,7 @@ Będąc gościa w katalogu, użytkowników zewnętrznych mogą zarządzać wszys
 
 ![dostęp ograniczony do portalu Azure usługi active directory azure](./media/role-assignments-external-users/9.png)
 
-Usługa Azure Active Directory i subskrypcję platformy Azure nie mają relacji relacji nadrzędny podrzędny, podobnie jak inne zasoby platformy Azure (na przykład: maszyny wirtualne, sieci wirtualne, aplikacje sieci web, Magazyn itp.) z subskrypcją platformy Azure. Wszystkie one utworzone, zarządzane i rozliczane w ramach subskrypcji platformy Azure, natomiast subskrypcji platformy Azure służy do zarządzania dostępem do usługi Azure directory. Aby uzyskać więcej informacji, zobacz [subskrypcji platformy Azure jest powiązany z usługą Azure AD](/active-directory/active-directory-how-subscriptions-associated-directory).
+Usługa Azure Active Directory i subskrypcję platformy Azure nie mają relacji relacji nadrzędny podrzędny, podobnie jak inne zasoby platformy Azure (na przykład: maszyny wirtualne, sieci wirtualne, aplikacje sieci web, Magazyn itp.) z subskrypcją platformy Azure. Wszystkie one utworzone, zarządzane i rozliczane w ramach subskrypcji platformy Azure, natomiast subskrypcji platformy Azure służy do zarządzania dostępem do usługi Azure directory. Aby uzyskać więcej informacji, zobacz [subskrypcji platformy Azure jest powiązany z usługą Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 Z wszystkie wbudowane role kontroli RBAC **właściciela** i **Współautor** oferują dostęp do pełnego zarządzania, do wszystkich zasobów w środowisku, a różnica, możliwe, że Współautor nie mogą tworzyć i usuwać nowe role RBAC . Inne role wbudowane, takie jak **Współautor maszyny wirtualnej** oferują dostęp do pełnego zarządzania, tylko do zasobów, jest określany przez nazwę, niezależnie od tego **grupy zasobów** są one tworzone w.
 

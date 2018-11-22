@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 642fc66bff763105e9d5463886474703a9a50781
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: fa1fa65315f38d0ce2900b738b70ca3718b0c00e
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376707"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285105"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
 
@@ -78,7 +78,7 @@ Wykonaj poniższe kroki, aby dodać uruchamianie/zatrzymywanie maszyn wirtualnyc
    W tym miejscu zostanie wyświetlony monit:
    - Określ **docelowa grupa zasobów nazwy**. Te wartości są nazwy grup zasobów zawierających maszyny wirtualne mają być zarządzane przez to rozwiązanie. Można wprowadzić więcej niż jedną nazwę i oddzielić je za pomocą przecinka (wartości nie jest rozróżniana). Użycie symbolu wieloznacznego jest obsługiwane. Możesz skorzystać z tej opcji, jeśli chcesz uwzględnić maszyny wirtualne we wszystkich grupach zasobów w subskrypcji. Ta wartość jest przechowywana w **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupNames** zmiennych.
    - Określ **listę wykluczeń maszyny Wirtualnej (ciąg)**. Ta wartość jest nazwa co najmniej jednej maszyny wirtualnej z docelową grupę zasobów. Można wprowadzić więcej niż jedną nazwę i oddzielić je za pomocą przecinka (wartości nie jest rozróżniana). Użycie symbolu wieloznacznego jest obsługiwane. Ta wartość jest przechowywana w **External_ExcludeVMNames** zmiennej.
-   - Wybierz **harmonogram**. Ta wartość jest cyklicznej daty i godziny uruchamiania oraz zatrzymywania maszyn wirtualnych w docelowych grupach zasobów. Domyślnie harmonogram jest skonfigurowany w ciągu 30 minut od teraz. Wybierając inny region jest niedostępny. Aby skonfigurować harmonogram do określonej strefy czasowej po skonfigurowaniu rozwiązania, zobacz [modyfikowanie harmonogramu uruchamiania i zamykania](#modify-the-startup-and-shutdown-schedule).
+   - Wybierz **harmonogram**. Ta wartość jest cyklicznej daty i godziny uruchamiania oraz zatrzymywania maszyn wirtualnych w docelowych grupach zasobów. Domyślnie harmonogram jest skonfigurowany w ciągu 30 minut od teraz. Wybierając inny region jest niedostępny. Aby skonfigurować harmonogram do określonej strefy czasowej po skonfigurowaniu rozwiązania, zobacz [modyfikowanie harmonogramu uruchamiania i zamykania](#modify-the-startup-and-shutdown-schedules).
    - Aby otrzymać **wiadomości E-mail z powiadomieniami** z grupy akcji, zaakceptuj wartość domyślną **tak** i podaj prawidłowy adres e-mail. Jeśli wybierzesz **nie** , ale później zdecydujesz w późniejszym terminie, że chcesz otrzymywać powiadomień pocztą e-mail, możesz zaktualizować [grupy akcji](../monitoring-and-diagnostics/monitoring-action-groups.md) utworzonego za pomocą prawidłowych adresów e-mail rozdzielonych przecinkami. Należy również włączyć następujące reguły alertu:
 
      - AutoStop_VM_Child
@@ -217,16 +217,16 @@ We wszystkich scenariuszach **External_Start_ResourceGroupNames**, **External_St
 
 ### <a name="schedules"></a>Harmonogramy
 
-W poniższej tabeli wymieniono każdy z domyślnymi harmonogramami utworzone na koncie usługi Automation. Można je zmodyfikować lub utworzyć własne niestandardowe harmonogramy. Domyślnie wszystkie harmonogramy są wyłączone z wyjątkiem **Scheduled_StartVM** i **Scheduled_StopVM**.
+W poniższej tabeli wymieniono każdy z domyślnymi harmonogramami utworzone na koncie usługi Automation. Można je zmodyfikować lub utworzyć własne niestandardowe harmonogramy. Domyślnie wszystkie harmonogramy są wyłączone z wyjątkiem **Scheduled_StartVM** i **Scheduled_StopVM**.
 
 Nie należy włączać wszystkie harmonogramy, ponieważ może to powodować nakładających się akcje harmonogramu. Najlepiej określić optymalizacje, które chcesz wykonać i odpowiednio zmodyfikować. Zobacz przykładowe scenariusze, w sekcji Przegląd, aby uzyskać dokładniejsze objaśnienie.
 
 |Nazwa harmonogramu | Częstotliwość | Opis|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Co 8 godzin | Uruchamia element runbook AutoStop_CreateAlert_Parent co 8 godzin, które z kolei powoduje zatrzymanie maszyny Wirtualnej na podstawie wartości w External_Start_ResourceGroupNames, External_Stop_ResourceGroupNames i External_ExcludeVMNames w usłudze Azure Automation zmiennych. Alternatywnie można określić rozdzielana przecinkami lista maszyn wirtualnych przy użyciu parametru VMList.|
-|Scheduled_StopVM | Zdefiniowane przez codziennie użytkownika | Uruchamia element runbook Scheduled_Parent z parametrem _zatrzymać_ codziennie o określonej godzinie. Automatycznie zatrzymuje wszystkie maszyny wirtualne, które spełniają reguły zdefiniowane przez zmienne zasobów. Włącz harmonogram powiązanej **StartVM zaplanowane**.|
-|Scheduled_StartVM | Zdefiniowane przez codziennie użytkownika | Uruchamia element runbook Scheduled_Parent z parametrem _Start_ codziennie o określonej godzinie. Automatycznie uruchamia wszystkie maszyny wirtualne, które spełniają reguły zdefiniowane przez odpowiednich zmiennych. Włącz harmonogram powiązanej **StopVM zaplanowane**.|
-|Sekwencjonowania StopVM | 1:00:00 (czas UTC), każdy piątek | Uruchamia element runbook Sequenced_Parent z parametrem _zatrzymać_ każdy piątek o określonej godzinie. Sekwencyjnie (rosnąco) zatrzymania wszystkich maszyn wirtualnych przy użyciu tagu elementu **SequenceStop** definicją odpowiednich zmiennych. Aby uzyskać więcej informacji na temat zmiennych zasobów i wartości tagów zobacz sekcję elementów Runbook. Włącz harmonogram powiązanej **Sequenced StartVM**.|
+|Scheduled_StopVM | Zdefiniowane przez codziennie użytkownika | Uruchamia element runbook Scheduled_Parent z parametrem _zatrzymać_ codziennie o określonej godzinie. Automatycznie zatrzymuje wszystkie maszyny wirtualne, które spełniają reguły zdefiniowane przez zmienne zasobów. Włącz harmonogram powiązanej **StartVM zaplanowane**.|
+|Scheduled_StartVM | Zdefiniowane przez codziennie użytkownika | Uruchamia element runbook Scheduled_Parent z parametrem _Start_ codziennie o określonej godzinie. Automatycznie uruchamia wszystkie maszyny wirtualne, które spełniają reguły zdefiniowane przez odpowiednich zmiennych. Włącz harmonogram powiązanej **StopVM zaplanowane**.|
+|Sekwencjonowania StopVM | 1:00:00 (czas UTC), każdy piątek | Uruchamia element runbook Sequenced_Parent z parametrem _zatrzymać_ każdy piątek o określonej godzinie. Sekwencyjnie (rosnąco) zatrzymania wszystkich maszyn wirtualnych przy użyciu tagu elementu **SequenceStop** definicją odpowiednich zmiennych. Aby uzyskać więcej informacji na temat zmiennych zasobów i wartości tagów zobacz sekcję elementów Runbook. Włącz harmonogram powiązanej **Sequenced StartVM**.|
 |StartVM sekwencjonowania | 1:00 PM (UTC), każdy poniedziałek | Uruchamia element runbook Sequenced_Parent z parametrem _Start_ w każdy poniedziałek o określonej godzinie. Sekwencyjnie (malejąco) zaczyna się od wszystkich maszyn wirtualnych tag **SequenceStart** definicją odpowiednich zmiennych. Aby uzyskać więcej informacji na temat zmiennych zasobów i wartości tagów zobacz sekcję elementów Runbook. Włącz harmonogram powiązanej **Sequenced StopVM**.|
 
 ## <a name="log-analytics-records"></a>Rekordy usługi Log Analytics

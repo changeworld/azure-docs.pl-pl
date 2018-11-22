@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 1b76bfded6562f61a0a9f4a870a18a1fff71bc6a
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 9c82ad04b22a29f4a548b79b9b46a08d46de24ca
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309741"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284317"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Zrozumieniu i użytkowaniu bliźniaczych reprezentacjach modułów usługi IoT Hub
 
@@ -327,7 +327,7 @@ Te informacje są przechowywane na każdym poziomie (nie tylko liście strukturz
 ## <a name="optimistic-concurrency"></a>Optymistyczna współbieżność
 
 Tagi, żądane i zgłaszanych właściwości wszystkich Obsługa optymistycznej współbieżności.
-Tagi mają element ETag zgodnie [RFC7232]()https://tools.ietf.org/html/rfc7232, reprezentujący reprezentacji JSON znacznika. W celu zapewnienia spójności, można użyć elementów etag w operacjach aktualizowania warunkowe z zapleczem rozwiązania.
+Tagi mają element ETag zgodnie [RFC7232](https://tools.ietf.org/html/rfc7232), reprezentujący reprezentacji JSON znacznika. W celu zapewnienia spójności, można użyć elementów etag w operacjach aktualizowania warunkowe z zapleczem rozwiązania.
 
 Bliźniacza reprezentacja modułu żądanego i zgłaszanych właściwości nie ma elementów etag, ale `$version` wartość, która może być przyrostowe. Podobnie na element ETag wersji może służyć przez stronę aktualizacji do wymuszenia spójności aktualizacji. Na przykład moduł aplikacją zgłaszanych właściwości lub zaplecze rozwiązania dla żądanej właściwości.
 

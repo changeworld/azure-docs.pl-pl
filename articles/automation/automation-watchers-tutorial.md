@@ -8,12 +8,12 @@ author: eamonoreilly
 ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 2786de150307b21b06b624914d5fea55ded6e3c7
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 4068ce42babb786ca33e1b0d41fdfefc7d3f78be
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249822"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282776"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Tworzenie zadania do śledzenia zmian w plikach na komputerze lokalnym obserwatora usługi Azure Automation
 
@@ -103,13 +103,13 @@ Aby przetestować obserwatora działa zgodnie z oczekiwaniami, należy utworzyć
 
 Nawiąż połączenie zdalne hybrydowy proces roboczy. Otwórz **PowerShell** i Utwórz plik testowy w folderze.
   
-   ```PowerShell-interactive
-   New-Item -Name ExampleFile1.txt
-   ```
+```azurepowerShell-interactive
+New-Item -Name ExampleFile1.txt
+```
 
 Poniższy przykład pokazuje oczekiwanych danych wyjściowych.
 
-```
+```output
     Directory: D:\examplefiles
 
 
@@ -129,7 +129,7 @@ Mode                LastWriteTime         Length Name
 
 Oczekiwane dane wyjściowe, gdy nowy plik zostanie znaleziony, są widoczne w następującym przykładzie:
 
-```
+```output
 Message is Process new file...
 
 

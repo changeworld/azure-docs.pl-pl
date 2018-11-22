@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: efe04b19188d7324c3f86565610040b8eaa97c43
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 18e668249c50ffbc1020aa12455fdfb87dcb8a24
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855395"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282553"
 ---
 # <a name="message-deferral"></a>Odraczanie komunikatów
 
@@ -40,7 +40,6 @@ Aby pobrać odroczony komunikat, jego właściciela jest odpowiedzialny za zapam
 
 Nie można przetworzyć komunikatu, ponieważ określony zasób do obsługi tego komunikatu jest tymczasowo niedostępna, ale przetwarzanie komunikatu nie summarily zawiesza się, sposób umieszczania ten komunikat po stronie przez kilka minut, czy do zapamiętania  **SequenceNumber** w [zaplanowanych wiadomości](message-sequencing.md) do opublikowania w ciągu kilku minut i ponownie Pobierz odroczony komunikat po nadejściu zaplanowanych wiadomości. Jeśli program obsługi komunikatów, który jest zależny od bazy danych dla wszystkich operacji tej bazy danych jest tymczasowo niedostępny, go powinien używa opóźnienia, ale raczej zawiesić odbierania komunikatów całkowicie, aż baza danych jest ponownie dostępny.
 
-Opóźnienie wiadomości nie ma wpływu na wygaśnięcie komunikatu, co oznacza, że odroczonej wiadomości nadal wygaśnie początkowo zaplanowanej godzinie i są przenoszone do kolejki utraconych wiadomości po odpowiednim skonfigurowaniu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,3 +1,16 @@
+---
+author: roygara
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: rogarana
+ms.openlocfilehash: aa701ada917811382351fee9469a5cfa9a7599b8
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52279827"
+---
 Maszyna wirtualna platformy Azure obsługuje dołączanie wielu dysków danych. W tym artykule opisano cele dotyczące skalowalności i wydajności dla dysków z danymi maszyny Wirtualnej. Aby zdecydować, liczba i typ dysku, który konieczną do spełnienia wymagań dotyczących wydajności i pojemności, należy użyć następujących elementów docelowych. 
 
 > [!IMPORTANT]

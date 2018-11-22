@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 92d80d9a4d39a3f21539e5e6e498fc52df213a19
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: c56ac35f49c364b7b0f2ad26b82b178411419414
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248816"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282689"
 ---
 # <a name="add-symbols-and-markers-to-a-map"></a>Dodaj znaczniki i symboli do mapy
 
@@ -51,7 +51,7 @@ W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy. Możesz zobaczyć [Ut
 
 W drugim bloku kodu, Tablica pozycji jest zdefiniowana i [MultiPoint](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.multipoint?view=azure-iot-typescript-latest) obiekt zostanie utworzony. Obiekt źródła danych jest tworzony przy użyciu [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) klasy i MultiPoint obiekt zostanie dodany do źródła danych.
 
-A [warstwy bąbelków](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) renderuje oparta na punkcie danych, zapakowane w [źródła danych](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako kół na mapie. Ostatni blok kodu tworzy warstwę bąbelka i dodaje go do mapy. Zobacz właściwości warstwy bąbelek na [BubblerLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.bubblelayeroptions?view=azure-iot-typescript-latest).
+A [warstwy bąbelków](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) renderuje oparta na punkcie danych, zapakowane w [źródła danych](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako kół na mapie. Ostatni blok kodu tworzy warstwę bąbelka i dodaje go do mapy. Zobacz właściwości warstwy bąbelek na [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions).
 
 Obiekt MultiPoint, źródła danych i warstwie bąbelków są tworzone i dodawane do mapy w ramach [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, czy koła jest wyświetlany po mapy ładuje pełni.
 
@@ -64,9 +64,9 @@ Powyższy kod dowiesz się, jak wizualizować i etykiety danych na mapie. Pierws
 
 Tworzy drugi blok kodu, [punktu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) obiektu. Następnie tworzy źródła danych obiektu przy użyciu [źródła danych](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) i dodaje punkt do źródła danych.
 
-A [warstwy bąbelków](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) renderuje oparta na punkcie danych, zapakowane w [źródła danych](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako kół na mapie. Trzeci bloku kodu tworzy warstwę bąbelka i dodaje go do mapy. Zobacz właściwości warstwy bąbelek na [BubblerLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.bubblelayeroptions?view=azure-iot-typescript-latest).
+A [warstwy bąbelków](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) renderuje oparta na punkcie danych, zapakowane w [źródła danych](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako kół na mapie. Trzeci bloku kodu tworzy warstwę bąbelka i dodaje go do mapy. Zobacz właściwości warstwy bąbelek na [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions).
 
-A [warstwy symbol](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikony do renderowania oparta na punkcie danych, w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symbole na mapie. Ostatni blok kodu tworzy i dodaje symbol warstwę do mapy, który renderuje Etykieta tekstowa bąbelek. Zobacz właściwości warstwy symboli w [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.symbollayeroptions?view=azure-iot-typescript-latest).
+A [warstwy symbol](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikony do renderowania oparta na punkcie danych, w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symbole na mapie. Ostatni blok kodu tworzy i dodaje symbol warstwę do mapy, który renderuje Etykieta tekstowa bąbelek. Zobacz właściwości warstwy symboli w [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions).
 
 Źródło danych i warstwy są tworzone i dodawane do mapy w ramach [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, czy dane są wyświetlane po mapy ładuje pełni.
 

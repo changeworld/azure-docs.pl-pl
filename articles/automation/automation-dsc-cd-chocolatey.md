@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4172afc3adf23a05384fec0413465cf491af3a79
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: d3957038410e7a7d80e1ac710f0c227047b636a7
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275303"
+ms.locfileid: "52284799"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Przykład użycia: Ciągłe wdrażanie na maszynach wirtualnych za pomocą automatyzacji konfiguracji stanu i narzędzia Chocolatey
 
@@ -34,14 +34,14 @@ Gdy oba procesy core znajdują się w miejscu, jest krótki krok do automatyczne
 ## <a name="component-overview"></a>Składnik — omówienie
 
 Menedżerowie pakietów, takich jak [polecenia apt-get](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool) są dość dobrze znane w świecie systemu Linux, ale nie tak wiele w środowisku Windows.
-[Chocolatey](https://chocolatey.org/) to takich rzeczy oraz zarządzanie zasobami Scott Hanselman [blogu](http://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) tematu jest doskonałym wprowadzenie. Mówiąc Chocolatey pozwala na instalowanie pakietów z centralnego repozytorium pakietów w systemie Windows przy użyciu wiersza polecenia. Można tworzyć i zarządzać własnym repozytorium i Chocolatey zainstalować pakiety z dowolnej liczby repozytoriów, które należy wyznaczyć.
+[Chocolatey](https://chocolatey.org/) to takich rzeczy oraz zarządzanie zasobami Scott Hanselman [blogu](https://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) tematu jest doskonałym wprowadzenie. Mówiąc Chocolatey pozwala na instalowanie pakietów z centralnego repozytorium pakietów w systemie Windows przy użyciu wiersza polecenia. Można tworzyć i zarządzać własnym repozytorium i Chocolatey zainstalować pakiety z dowolnej liczby repozytoriów, które należy wyznaczyć.
 
 Desired State Configuration (DSC) ([Przegląd](/powershell/dsc/overview)) to narzędzie programu PowerShell, które służy do deklarowania konfigurację dla maszyny. Na przykład można powiedzieć "Chcę, aby zainstalować narzędzia Chocolatey, chcę, aby po zainstalowaniu usług IIS, chcę, aby otworzyć port 80, ma wersję 1.0.0 Moja witryna sieci Web zainstalowany." DSC lokalnego Configuration Manager (LCM) implementuje tę konfigurację. Serwera ściągania DSC przechowuje repozytorium konfiguracji maszyn. LCM na każdej maszynie, sprawdza okresowo jeśli jego konfiguracja jest zgodna przechowuje konfigurację. Jego stan lub spróbuj przywrócić komputer spełnia wymagania programu przechowuje konfigurację. Możesz edytować przechowuje konfigurację na serwerze ściągania, aby spowodować, że maszyna lub zestawu maszyn do dostosowania do zmiany konfiguracji.
 
 Usługa Azure Automation to zarządzana usługa w systemie Microsoft Azure, która umożliwia automatyzowanie różnych zadań, za pomocą elementów runbook, węzły, poświadczenia, zasobów i zasoby, takie jak harmonogramy i zmiennych globalnych.
 Konfiguracja stanu usługi Automatyzacja Azure rozszerza tej możliwości automatyzacji, aby dołączyć narzędzia do DSC programu PowerShell. W tym miejscu jest doskonałym [Przegląd](automation-dsc-overview.md).
 
-Zasób DSC jest modułem kodu, który zawiera konkretne funkcje, takie jak zarządzanie sieci, usługi Active Directory lub programu SQL Server. Chocolatey zasobów DSC wie, jak uzyskać dostęp do serwera NuGet (między innymi), Pobierz pakiety, zainstalować pakiety i tak dalej. Dostępnych jest wiele innych zasobów DSC w [galerii programu PowerShell](http://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title).
+Zasób DSC jest modułem kodu, który zawiera konkretne funkcje, takie jak zarządzanie sieci, usługi Active Directory lub programu SQL Server. Chocolatey zasobów DSC wie, jak uzyskać dostęp do serwera NuGet (między innymi), Pobierz pakiety, zainstalować pakiety i tak dalej. Dostępnych jest wiele innych zasobów DSC w [galerii programu PowerShell](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title).
 Te moduły są zainstalowane na serwerze usługi Azure Automation stanu konfiguracji ściągania (przez użytkownika), dzięki czemu może służyć przez konfiguracje.
 
 Szablony usługi Resource Manager zapewniają deklaratywną metodę generowania infrastruktury — np. sieci, podsieci, zabezpieczeń sieci i routingu, modułów równoważenia obciążenia, kart sieciowych, maszyny wirtualne i tak dalej. Oto [artykułu](../azure-resource-manager/resource-manager-deployment-model.md) porównuje modelu wdrażania usługi Resource Manager (deklaratywne) przy użyciu modelu wdrażania usługi Azure Service Management (ASM lub classic) (imperatywne), a w tym artykule omówiono podstawowe dostawców zasobów, moc obliczeniowa, Magazyn i sieci.
@@ -179,7 +179,7 @@ Wynik tych kroków, w nowej konfiguracji węzła o nazwie "ISVBoxConfig.isvbox" 
 ## <a name="step-5-creating-and-maintaining-package-metadata"></a>Krok 5: Utworzenie i utrzymywanie metadane pakietu
 
 Dla każdego pakietu, który można umieścić w repozytorium pakietu należy nuspec, który ją opisuje.
-Ten nuspec musi zostanie skompilowany i przechowywane na serwerze NuGet. Ten proces jest opisany [tutaj](http://docs.nuget.org/create/creating-and-publishing-a-package). Jako serwer NuGet, można użyć portalu MyGet.org. One sprzedaży tej usługi, ale mają starter jednostki SKU, która jest bezpłatna. W witrynie NuGet.org znajdziesz instrukcje dotyczące instalowania serwer NuGet własne swoje prywatne pakiety.
+Ten nuspec musi zostanie skompilowany i przechowywane na serwerze NuGet. Ten proces jest opisany [tutaj](https://docs.nuget.org/create/creating-and-publishing-a-package). Jako serwer NuGet, można użyć portalu MyGet.org. One sprzedaży tej usługi, ale mają starter jednostki SKU, która jest bezpłatna. W witrynie NuGet.org znajdziesz instrukcje dotyczące instalowania serwer NuGet własne swoje prywatne pakiety.
 
 ## <a name="step-6-tying-it-all-together"></a>Krok 6: Łącząc je wszystkie razem
 

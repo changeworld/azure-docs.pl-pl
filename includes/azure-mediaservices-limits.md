@@ -1,3 +1,16 @@
+---
+author: rothja
+ms.service: billing
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: jroth
+ms.openlocfilehash: 1e1316ef568cbc6409a8653022d9acff9837b59d
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52279825"
+---
 >[!NOTE]
 >W przypadku zasobów, których ilość nie jest stała, możesz poprosić o zwiększenie limitów przydziału, otwierając bilet pomocy technicznej. **Nie** twórz dodatkowych kont usługi Azure Media Services w celu uzyskania wyższych limitów.
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1e9ca18d2075d40f6f55bc84723f79ae7e10850b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2a28c8056e6dc25148299415a63a32993e874e01
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261217"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284544"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Elementy zawartości połączenia w usłudze Azure Automation
 
@@ -102,11 +102,11 @@ Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $
 
 Możesz dodać **Get AutomationConnection** działanie graficzny element runbook, klikając prawym przyciskiem myszy w ramach połączenia w okienku Biblioteka edytor graficzny i wybierając polecenie **Dodaj do kanwy**.
 
-![](media/automation-connections/connection-add-canvas.png)
+![Dodaj do kanwy](media/automation-connections/connection-add-canvas.png)
 
 Na poniższej ilustracji przedstawiono przykład korzystać z połączenia w graficznego elementu runbook.  Jest to ten sam powyższym przykładzie do uwierzytelniania przy użyciu konta Uruchom jako z tekstowej elementu runbook.  W tym przykładzie użyto **wartości stałej** zestaw danych na potrzeby **Uzyskaj połączenie Uruchom jako** działanie, które używa obiektu połączenia do uwierzytelniania.  A [linku potoku](automation-graphical-authoring-intro.md#links-and-workflow) jest używany w tym miejscu, ponieważ zestaw parametrów ServicePrincipalCertificate oczekuje pojedynczego obiektu.
 
-![](media/automation-connections/automation-get-connection-object.png)
+![Nawiązuj połączenia](media/automation-connections/automation-get-connection-object.png)
 
 ### <a name="python2-runbook-sample"></a>Przykładowy element runbook Python2
 Poniższy przykład pokazuje sposób uwierzytelniania przy użyciu połączenie Uruchom jako w elemencie runbook Python2.

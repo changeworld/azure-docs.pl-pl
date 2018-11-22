@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7a787535d6e6e216df27c8cf7448fa584e85ef2b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c0729fd4c6d5e387b38c310a708505c3395ea41f
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312459"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284884"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Usługa Azure uwierzytelnianie przekazujących w usłudze Active Directory security szczegółowe dane
 
@@ -209,7 +209,7 @@ Aby automatycznie Aktualizuj agenta uwierzytelniania:
 ## <a name="next-steps"></a>Kolejne kroki
 - [Bieżące ograniczenia](how-to-connect-pta-current-limitations.md): Dowiedz się, jakie scenariusze są obsługiwane i te, które nie są.
 - [Szybki start](how-to-connect-pta-quick-start.md): Rozpocznij pracę na uwierzytelnianie przekazywane usługi AD platformy Azure.
-- [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
+- [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://aka.ms/adfstoptadpdownload) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
 - [Blokada Smart](../authentication/howto-password-smart-lockout.md): Konfigurowanie funkcji inteligentnej blokady na swoją dzierżawę, aby chronić kont użytkowników.
 - [Jak działa](how-to-connect-pta-how-it-works.md): Poznaj podstawy jak działa uwierzytelnianie usługi Azure AD przekazywane.
 - [Często zadawane pytania dotyczące](how-to-connect-pta-faq.md): odpowiedzi na często zadawane pytania.

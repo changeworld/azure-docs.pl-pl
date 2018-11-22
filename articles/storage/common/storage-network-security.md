@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: f9f38b11aa333eed9c5f524cc5c6c9e727fede15
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: cfa0a91e74dba7a17b03a76dd70fc09a264decf8
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164901"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284595"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 
@@ -348,6 +348,7 @@ Po włączeniu **dozwolonych zaufanych usług firmy Microsoft...**  wyjątku, na
 |Usługa|Nazwa dostawcy zasobów|Przeznaczenie|
 |:------|:---------------------|:------|
 |Azure Backup|Microsoft.Backup|Wykonywanie kopii zapasowych i przywracanie dysków niezarządzanych na maszynach wirtualnych IAAS. (niewymagane w przypadku dysków zarządzanych). [Dowiedz się więcej](/azure/backup/backup-introduction-to-azure-backup).|
+|Azure Site Recovery|Microsoft.SiteRecovery |Konfigurowanie odzyskiwania po awarii, należy włączyć replikację dla maszyn wirtualnych IaaS platformy Azure. Jest to wymagane, jeśli używasz konta magazynu pamięci podręcznej włączona jest Zapora lub źródłowego konta magazynu lub docelowe konto magazynu.  [Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication).|
 |Azure DevTest Labs|Microsoft.DevTestLab|Tworzenie i artefaktu instalacji obrazu niestandardowego. [Dowiedz się więcej](/azure/devtest-lab/devtest-lab-overview).|
 |Azure Event Grid|Microsoft.EventGrid|Włączanie publikowania zdarzeń usługi Blob Storage. [Dowiedz się więcej](/azure/event-grid/overview).|
 |Azure Event Hubs|Microsoft.EventHub|Archiwizowanie danych za pomocą usługi Event Hubs Capture. [Dowiedz się więcej](/azure/event-hubs/event-hubs-capture-overview).|

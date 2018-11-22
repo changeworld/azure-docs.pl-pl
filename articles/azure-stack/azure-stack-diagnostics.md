@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: f9a7ae76f2d52b3439bfb33f306e164bb81549eb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ef8a01228ff31afa78f469b2ad80b864fc9d3497
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623982"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283456"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Narzędzia diagnostyczne w usłudze Azure Stack
 
@@ -70,13 +70,14 @@ if($s)
     Remove-PSSession $s
 }
 ```
-- Parametry **OutputSharePath** i **OutputShareCredential** są używane do przechowywania dzienników w określonego przez użytkownika lokalizacji.
-- **FromDate** i **ToDate** parametrów może służyć do zbierania dzienników dla określonego okresu. Jeśli nie określono parametrów, dzienniki są zbierane domyślnie w ciągu ostatnich czterech godzin.
+
 
 
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>Aby uruchomić Get AzureStackLog w systemie Azure Stack Development Kit (ASDK)
-1. Zaloguj się jako **AzureStack\CloudAdmin** na hoście.
-2. Otwórz okno programu PowerShell jako administrator.
+Wykonaj następujące kroki, aby uruchomić Get AzureStackLog na komputerze-hoście ASDK.
+
+1. Zaloguj się jako **AzureStack\CloudAdmin** na komputerze-hoście ASDK.
+2. Otwórz nowe okno programu PowerShell jako administrator.
 3. Uruchom **Get AzureStackLog** polecenia cmdlet programu PowerShell.
 
 **Przykłady:**
@@ -107,7 +108,10 @@ if($s)
 
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>Parametr zagadnienia dotyczące ASDK i zintegrowanych systemów
 
-- Jeśli **FromDate** i **ToDate** parametry nie są określone, domyślnie dzienniki są zbierane w ciągu ostatnich czterech godzin.
+- Parametry **OutputSharePath** i **OutputShareCredential** są używane do przechowywania dzienników w określonego przez użytkownika lokalizacji.
+
+- **FromDate** i **ToDate** parametrów może służyć do zbierania dzienników dla określonego okresu. Jeśli nie określono parametrów, dzienniki są zbierane domyślnie w ciągu ostatnich czterech godzin.
+
 - Użyj **FilterByNode** parametru, aby filtrować dzienniki według nazwy komputera. Na przykład:
 
     ```powershell

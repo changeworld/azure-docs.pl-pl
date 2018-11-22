@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: erhopf
-ms.openlocfilehash: c1eeee35869f29170a7f15b1d9e2c1ee69a6314d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: fa4563b84eb0882832a89ccc98396ff487f51b48
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622520"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284765"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Obsługa języka i regionu dla interfejsu API mowy usługi
 
@@ -70,7 +70,6 @@ ar-SA | Arabski (Arabia Saudyjska) | Mężczyzna | "Microsoft Server mowy Text n
 bg-BG | Bułgarski | Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (bg-BG Ivanowi)"
 ES urzędu certyfikacji | Kataloński | Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (Kanada ES, HerenaRUS)"
 cs-CZ | Czeski | Mężczyzna | "Microsoft Server mowy tekstu na głos mowy (cs-CZ, Jakub)"
-cs-CZ | Czeski | Mężczyzna | "Microsoft Server mowy tekstu na głos mowy (cs-CZ, Vit)"
 Akcelerator deweloperski w wersji DK | Duński | Kobieta | "Microsoft Server mowy Text na głos mowy (da-DK HelleRUS)"
 de-AT | Niemiecki (Austria) | Mężczyzna | "Microsoft Server mowy Text na głos mowy (de-AT, Michael)"
 de-CH | Niemiecki (Szwajcaria) | Mężczyzna | "Microsoft Server mowy Text na głos mowy (de-CH, Karsten)"
@@ -86,7 +85,6 @@ en-GB | English (UK) | Kobieta | "Microsoft Server mowy Text na głos mowy (en-G
 | | |Kobieta | "Microsoft Server mowy Text na głos mowy (en-GB HazelRUS)"
 | | |Mężczyzna | "Microsoft Server mowy Text na głos mowy (en-GB George, Apollo)"
 EN-IE | Angielski (Irlandia) |Mężczyzna | "Microsoft Server mowy Text na głos mowy (en-IE, Sean)"
-EN-IE | Angielski (Irlandia) |Mężczyzna | "Microsoft Server mowy Text na głos mowy (en-IE, Shaun)"
 EN-IN | English (India) | Kobieta | "Microsoft Server mowy Text na głos mowy (en-IN, Heera, Apollo)"
 | | |Kobieta | "Microsoft Server mowy Text na głos mowy (en-IN PriyaRUS)"
 | | |Mężczyzna | "Microsoft Server mowy Text na głos mowy (en-IN, Ravi, Apollo)"
@@ -153,10 +151,10 @@ zh-TW | Chiński (Tajwan)|Kobieta | "Microsoft Server mowy Text na głos mowy (z
 
 ### <a name="customization"></a>Dostosowywanie
 
-Dostosowanie głos jest dostępna dla US English (en US), kontynent, chiński (zh-CN) i włoski (it-IT).
+Dostosowanie głos jest dostępny język angielski (en US), kontynent, chiński (zh-CN), francuski (fr-FR), niemiecki (de-DE) i włoski (it-IT).
 
 > [!NOTE]
-> Szkolenia włoskojęzycznego rozpoczyna się od zestawu danych z ponad 2000 wypowiedzi. Chiński — angielski dwujęzyczny modele również są obsługiwane za pomocą ponad 2000 wypowiedzi początkowego zestawu danych.
+> Francuskim, niemieckim i włoskim szkolenia głosu rozpoczyna się od zestawu danych z ponad 2000 wypowiedzi. Chiński — angielski dwujęzyczny modele również są obsługiwane za pomocą ponad 2000 wypowiedzi początkowego zestawu danych.
 
 ## <a name="speech-translation"></a>Tłumaczenie mowy
 
