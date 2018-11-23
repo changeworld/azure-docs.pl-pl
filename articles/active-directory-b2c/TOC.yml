@@ -71,6 +71,8 @@ items:
   items:
   - name: Uzyskiwanie dostępu do dzienników inspekcji
     href: active-directory-b2c-reference-audit-logs.md
+  - name: Kontrola wieku
+    href: basic-age-gating.md
   - name: Konfigurowanie tokenów
     href: active-directory-b2c-token-session-sso.md
   - name: Dostosowywanie języka
@@ -123,6 +125,8 @@ items:
         href: active-directory-b2c-custom-setup-adfs2016-idp.md
       - name: SalesForce
         href: active-directory-b2c-setup-sf-app-custom.md
+    - name: Śledzenie zachowania użytkowników
+      href: active-directory-b2c-custom-guide-eventlogger-appins.md
     - name: Przepływy użytkowników
       items:
       - name: Konfigurowanie danych wejściowych użytkownika
@@ -264,8 +268,6 @@ items:
     href: active-directory-b2c-reference-usage-reporting-api.md
   - name: Poświadczenia hasła właściciela zasobu
     href: configure-ropc.md
-  - name: Konfigurowanie kontroli wieku
-    href: basic-age-gating.md
   - name: Konfigurowanie logowania bezpośredniego
     href: direct-signin.md
   - name: Konfigurowanie samoobsługowego resetowania hasła
@@ -274,8 +276,6 @@ items:
     href: b2clogin.md
   - name: Korzystanie z interfejsu API Graph usługi Azure AD
     href: active-directory-b2c-devquickstarts-graph-dotnet.md
-  - name: Śledzenie zachowania użytkowników
-    href: active-directory-b2c-custom-guide-eventlogger-appins.md
   - name: Aplikacje internetowe
     items:
     - name: ASP.NET
@@ -300,6 +300,8 @@ items:
       href: active-directory-b2c-support-create-directory.md
     - name: Aplikacja rozszerzeń
       href: active-directory-b2c-reference-extensions-app.md
+    - name: Wersje przepływu użytkownika
+      href: user-flow-versions.md
 - name: Zasoby
   items:
   - name: Harmonogram działania dla platformy Azure
@@ -322,9 +324,9 @@ items:
     href: active-directory-b2c-support.md
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 276a67a6dc5708f5e4f25796d7d31523db7a7446
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 55fb2bda4013369cecd797cd90b152ad58d2bd6e
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415869"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291405"

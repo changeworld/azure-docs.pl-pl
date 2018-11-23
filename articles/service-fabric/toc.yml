@@ -285,22 +285,23 @@ items:
     items:
     - name: Omówienie monitorowania
       href: service-fabric-diagnostics-overview.md
+    - name: Monitorowanie aplikacji
+      href: service-fabric-diagnostics-event-generation-app.md
     - name: Monitorowanie klastrów
-      href: service-fabric-diagnostics-event-generation-infra.md
       items:
+      - name: Omówienie monitorowania klastrów
+        href: service-fabric-diagnostics-event-generation-infra.md
       - name: Zdarzenia usługi Service Fabric
         href: service-fabric-diagnostics-events.md
       - name: Omówienie bazy danych EventStore
         href: service-fabric-diagnostics-eventstore.md
       - name: Zdarzenia interfejsu Reliable Services
         href: service-fabric-reliable-services-diagnostics.md
-      - name: Zdarzenia interfejsu Reliable Actors
-        href: service-fabric-reliable-actors-diagnostics.md
       - name: Zdalna komunikacja usług monitorowania
         href: service-fabric-reliable-serviceremoting-diagnostics.md
-    - name: Rejestrowanie aplikacji
-      href: service-fabric-diagnostics-event-generation-app.md
-    - name: Metryki wydajności
+      - name: Zdarzenia interfejsu Reliable Actors
+        href: service-fabric-reliable-actors-diagnostics.md
+    - name: Monitorowanie infrastruktury
       href: service-fabric-diagnostics-event-generation-perf.md
     - name: Omówienie modelu kondycji
       href: service-fabric-health-introduction.md
@@ -642,33 +643,35 @@ items:
       href: service-fabric-connect-to-secure-cluster.md
   - name: Monitorowanie i diagnozowanie
     items:
+    - name: Diagnozowanie typowych scenariuszy
+      href: service-fabric-diagnostics-common-scenarios.md
     - name: Monitorowanie aplikacji
       items:
-      - name: Analizowanie za pomocą usługi Application Insights
-        href: service-fabric-diagnostics-event-analysis-appinsights.md
       - name: Dodawanie rejestrowania do aplikacji
         href: service-fabric-how-to-diagnostics-log.md
-      - name: Agregowanie zdarzeń przy użyciu struktury EventFlow
+      - name: Analizowanie za pomocą usługi Application Insights
+        href: service-fabric-diagnostics-event-analysis-appinsights.md
+      - name: Agregowanie dzienników przy użyciu struktury EventFlow
         href: service-fabric-diagnostics-event-aggregation-eventflow.md
       - name: Monitorowanie kontenerów
         href: service-fabric-diagnostics-oms-containers.md
     - name: Monitorowanie klastrów
       items:
+      - name: Konfigurowanie usługi Log Analytics pod kątem zbierania zdarzeń klastra
+        href: service-fabric-diagnostics-oms-setup.md
+      - name: Monitorowanie klastra przy użyciu usługi Log Analytics
+        href: service-fabric-diagnostics-event-analysis-oms.md
       - name: Interfejsy API wykonywania zapytań w bazie danych EventStore
         href: service-fabric-diagnostics-eventstore-query.md
-      - name: Diagnostyka Azure dla systemu Windows
+      - name: Dostosowywanie agenta rozszerzenia WAD
         href: service-fabric-diagnostics-event-aggregation-wad.md
-      - name: Diagnostyka Azure dla systemu Linux
+      - name: Dostosowywanie agenta rozszerzenia LAD
         href: service-fabric-diagnostics-event-aggregation-lad.md
-      - name: Konfigurowanie usługi Log Analytics
-        href: service-fabric-diagnostics-oms-setup.md
-      - name: Monitorowanie za pomocą usługi Log Analytics
-        href: service-fabric-diagnostics-event-analysis-oms.md
     - name: Monitorowanie infrastruktury
       items:
-      - name: Monitorowanie wydajności za pomocą agenta usługi Log Analytics
+      - name: Zbieranie liczników wydajności za pomocą agenta usługi Log Analytics
         href: service-fabric-diagnostics-oms-agent.md
-      - name: Monitorowanie wydajności za pomocą funkcji WAD
+      - name: Zbieranie liczników wydajności za pomocą rozszerzenia WAD
         href: service-fabric-diagnostics-perf-wad.md
     - name: Monitorowanie kondycji
       items:
@@ -682,8 +685,6 @@ items:
       href: service-fabric-reverse-proxy-diagnostics.md
     - name: Rozwiązywanie problemów z klastrem lokalnym
       href: service-fabric-troubleshoot-local-cluster-setup.md
-    - name: Diagnozowanie typowych scenariuszy
-      href: service-fabric-diagnostics-common-scenarios.md
   - name: Najlepsze praktyki
     items:
     - name: Lista kontrolna gotowości do produkcji
@@ -781,9 +782,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 98ca5a1cbf5298931c14d6c696119d0c98893072
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 320399b277b7b6aa05b128994f68058455353e7b
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853646"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291508"
