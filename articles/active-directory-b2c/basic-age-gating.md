@@ -1,5 +1,5 @@
 ---
-title: Stosowania kontroli wieku w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+title: Włącz wieku w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat sposobu identyfikowania osoby nieletnie korzystanie z aplikacji.
 services: active-directory-b2c
 author: davidmu1
@@ -7,52 +7,104 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/29/2018
+ms.date: 11/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a1020dfcb6c8d312001fbdb1c170987e1216c5d5
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: a9220349249315d807a9dba675f6b074ddd385fa
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318864"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291100"
 ---
-# <a name="using-age-gating-in-azure-ad-b2c"></a>Stosowania kontroli wieku w usłudze Azure AD B2C
+# <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Włącz wieku w usłudze Azure Active Directory B2C
 
 >[!IMPORTANT]
->Ta funkcja jest dostępna w prywatnej wersji zapoznawczej.  Zobacz nasze [blog usługi](https://blogs.msdn.microsoft.com/azureadb2c/) Aby uzyskać szczegółowe informacje, ponieważ staje się dostępna, lub skontaktuj się z pomocą AADB2CPreview@microsoft.com.  Nie używaj tego na katalogi w środowisku produkcyjnym, przy użyciu tych nowych funkcji może spowodować utratę danych i może mieć nieoczekiwane zachowanie, dopóki nie możemy przejść do ogólnej dostępności.  
+>Ta funkcja jest dostępna w publicznej wersji zapoznawczej. Nie używaj funkcji przez aplikacje produkcyjne. 
 >
 
-## <a name="age-gating"></a>Wieku
-Wieku pozwala na używanie usługi Azure AD B2C do identyfikowania osoby nieletnie w aplikacji.  Istnieje możliwość użytkownik może zalogować się do aplikacji lub zezwolić im na wróć do aplikacji za pomocą dodatkowe oświadczenia, które identyfikują użytkownika grupa wiekowa i ich stan uzyskuje zgodę rodzica.  
+Wieku w usłudze Azure Active Directory (Azure AD) B2C umożliwia identyfikację osoby nieletnie, które chcą korzystać z aplikacji. Można zablokować drobnych zalogowanie się do aplikacji. Użytkownikom można wrócić do aplikacji i zidentyfikować ich grupa wiekowa i ich stan uzyskuje zgodę rodzica. Usługa Azure AD B2C można zablokować nieletnim bez zgody rodzica. Usługa Azure AD B2C można też skonfigurować aby umożliwić aplikacji zdecyduj, co należy zrobić nieletnim.
 
->[!NOTE]
->Uzyskuje zgodę rodzica jest śledzona w atrybut użytkownika o nazwie `consentProvidedForMinor`.  Możesz zaktualizować tę właściwość za pomocą interfejsu API programu Graph, a następnie użyje tego pola podczas aktualizowania `legalAgeGroupClassification`.
->
+Po włączeniu wieku w swojej [przepływ użytkownika](active-directory-b2c-reference-policies.md), użytkownicy zostaną poproszeni o, kiedy zostały stworzone i jakie kraju zamieszkania. Jeśli użytkownik loguje się, że nie zostało podane wcześniej informacje, muszą wprowadzić ją przy następnym logowaniu. Reguły są stosowane za każdym razem, gdy użytkownik loguje się.
 
-## <a name="setting-up-your-directory-for-age-gating"></a>Konfigurowanie katalogu do kontroli wieku
-Aby można było używać wieku w przepływie użytkownika, należy skonfigurować katalog na mają dodatkowe właściwości. Ta operacja może odbywać się za pośrednictwem `Properties` w menu, (które będą dostępne tylko wtedy, gdy jesteś częścią prywatnej wersji zapoznawczej).  
-1. W rozszerzeniu usługi Azure AD B2C, kliknij pozycję **właściwości** dla dzierżawy w menu po lewej stronie.
-2. W obszarze **wieku** sekcji, kliknij pozycję **Konfiguruj** przycisku.
-3. Poczekaj na zakończenie operacji i katalogu zostanie skonfigurowana do kontroli wieku.
+Usługa Azure AD B2C używa tych informacji, wprowadzonych przez użytkownika, aby ustalić, czy są one pomocnicze. **Grupy wiekowej** pola jest następnie aktualizowany na jego koncie. Wartość może być `null`, `Undefined`, `Minor`, `Adult`, i `NotAdult`.  **Grupy wiekowej** i **consentProvidedForMinor** pola są następnie używane do obliczania wartości **legalAgeGroupClassification**.
 
-## <a name="enabling-age-gating-in-your-user-flow"></a>Włączanie wieku przepływu użytkownika
-Po skonfigurowaniu katalogu do użycia w wieku następnie umożliwia tej funkcji w przepływach użytkowników wersji (wersja zapoznawcza).  Ta funkcja wymaga wprowadzenia zmian, które niezgodne z istniejących typów przepływy użytkownika.  Należy włączyć wieku wykonując następujące kroki:
-1. Utwórz przepływ użytkownika (wersja zapoznawcza).
-2. Po jego utworzeniu, przejdź do obszaru **właściwości** w menu.
-3. W **wieku** sekcji, naciśnij przełącznik, aby włączyć tę funkcję.
-4. Następnie możesz, jak chcesz zarządzać użytkownikami, które identyfikują jako osoby niepełnoletnie.
+Wieku obejmuje dwie wartości wieku: wiek, że ktoś nie jest już uznawany za WERSJA_POMOCNICZA i wiek, jaką pomocnicza musi mieć uzyskuje zgodę rodzica. Poniższa lista zawiera reguły wiek, które służą do definiowania WERSJA_POMOCNICZA i pomocnicza, wymagające zgody.
 
-## <a name="what-does-enabling-age-gating-do"></a>Do czego służy Włączanie wieku?
-Po włączeniu wieku przepływu użytkownika, użytkownik objęci zmianami.  Na rejestracji użytkownicy teraz zostanie poproszony o ich daty urodzenia i kraju zamieszkania wraz z atrybutów użytkownika skonfigurowane dla przepływu użytkownika.  Na temat logowania użytkownicy, którzy nie zostały wprowadzone poprzednio, Data urodzenia i kraju zamieszkania pojawi się prośba uzyskać te informacje podczas następnego logowania.  Te dwie wartości, usługi Azure AD B2C będzie ustalić, czy użytkownik jest pomocnicze i zaktualizuj `ageGroup` pola wartość może być `null`, `Undefined`, `Minor`, `Adult`, i `NotAdult`.  `ageGroup` i `consentProvidedForMinor` pola są następnie używane do obliczania `legalAgeGroupClassification`. 
+| Kraj | Nazwa kraju | Wiek pomocnicza zgody | Wiek pomocnicza |
+| ------- | ------------ | ----------------- | --------- |
+| Domyślne | Brak | Brak | 18 |
+| AE | Zjednoczone Emiraty Arabskie | Brak | 21 |
+| AT | Austria | 14 | 18 |
+| BE | Belgia | 14 | 18 |
+| BG | Bułgaria | 16 | 18 |
+| BH | Bahrajn | Brak | 21 |
+| CM | Kamerun | Brak | 21 |
+| CY | Cypr | 16 | 18 |
+| CZ | Czechy | 16 | 18 |
+| DE | Niemcy | 16 | 18 |
+| DK | Dania | 16 | 18 |
+| EE | Estonia | 16 | 18 |
+| EG | Egipt | Brak | 21 |
+| ES | Hiszpania | 13 | 18 |
+| PW | Francja | 16 | 18 |
+| GB | Wielka Brytania | 13 | 18 |
+| GR | Grecja | 16 | 18 |
+| HR | Chorwacja | 16 | 18 |
+| HU | Węgry | 16 | 18 |
+| IE | Irlandia | 13 | 18 |
+| IT | Włochy | 16 | 18 |
+| KR | Korea Południowa | 14 | 18 |
+| LT | Litwa | 16 | 18 |
+| LU | Luksemburg | 16 | 18 |
+| LV | Łotwa | 16 | 18 |
+| MT | Malta | 16 | 18 |
+| Nie dotyczy | Namibia | Brak | 21 |
+| NL | Holandia | 16 | 18 |
+| PL | Polska | 13 | 18 |
+| PT | Portugalia | 16 | 18 |
+| RO | Rumunia | 16 | 18 |
+| SE | Szwecja | 13 | 18 |
+| SG | Singapur | Brak | 21 |
+| SI | Słowenia | 16 | 18 |
+| SK | Słowacja | 16 | 18 |
+| TD | Czad | Brak | 21 |
+| TH | Tajlandia | Brak | 20 |
+| TW | Tajwan | Brak | 20 | 
+| USA | Stany Zjednoczone | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Opcje kontroli wieku
-Istnieje możliwość ma usługę Azure AD B2C Blokuj nieletnim bez zgody rodziców lub zezwolić im — aplikacja będzie podejmować decyzje dotyczące postępowania z nimi.  
-
+ 
 ### <a name="allowing-minors-without-parental-consent"></a>Dzięki czemu osoby nieletnie bez zgody rodziców
-Przepływy użytkownika, które umożliwia albo Zaloguj się, zaloguj się lub oba istnieje możliwość Zezwalaj nieletnim bez zgody użytkownika do aplikacji.  Dla osoby nieletnie bez zgody rodziców, mają zezwolenie na rejestrowanie się lub zarejestrować się, jak normalne i Azure AD B2C wystawia token Identyfikatora z `legalAgeGroupClassification` oświadczenia.  Za pomocą tego oświadczenia, możesz wybrać środowisko, które Ci użytkownicy mają, takich jak przeprowadzając zbierać zgody rodziców (i aktualizowanie `consentProvidedForMinor` pola).
+
+Przepływy użytkownika, zezwalających na rejestracji, logowania lub oba, istnieje możliwość Zezwalaj nieletnim bez zgody użytkownika do aplikacji. Osoby nieletnie bez zgody rodziców mogą zalogować się lub zarejestrować się, jak normalne i Azure AD B2C wystawia token Identyfikatora z **legalAgeGroupClassification** oświadczenia. To oświadczenie definiuje środowisko, które użytkownicy mają, takich jak zbieranie uzyskuje zgodę rodzica i aktualizowanie **consentProvidedForMinor** pola.
 
 ### <a name="blocking-minors-without-parental-consent"></a>Blokowanie nieletnim bez zgody rodziców
-Przepływy użytkownika, które umożliwia albo Zaloguj się, zaloguj się lub oba można zablokować nieletnim bez zgody użytkownika z aplikacji.  Dostępne są dwie opcje do obsługi zablokowanych użytkowników w usłudze Azure AD B2C:
-* Wyślij kod JSON z powrotem do aplikacji — ta opcja zostanie wysłana odpowiedź z powrotem do aplikacji zablokowano pomocnicze.
-* Pokaż stronę błędu - użytkownika pojawi się Strona z informacją o tym, że nie mogą uzyskiwać dostęp do aplikacji
+
+Przepływy użytkownika umożliwiające rejestracji, logowania lub oba można zablokować nieletnim bez zgody użytkownika z aplikacji. Do obsługi zablokowanych użytkowników w usłudze Azure AD B2C są następujące opcje:
+
+- Wyślij kod JSON z powrotem do aplikacji — tę opcję, wysyła odpowiedź z powrotem do aplikacji zablokowano pomocnicze.
+- Pokaż stronę błędu — użytkownik jest wyświetlana strona z informacją o tym, że nie mogą uzyskiwać dostęp do aplikacji.
+
+## <a name="set-up-your-tenant-for-age-gating"></a>Ustaw swoją dzierżawę, do kontroli wieku
+
+Aby użyć wieku w przepływie użytkownika, należy skonfigurować swoją dzierżawę, aby mieć dodatkowe właściwości.
+
+1. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu. Wybierz katalog, który zawiera Twojej dzierżawy. 
+2. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal Wyszukaj i wybierz pozycję **usługi Azure AD B2C**.
+3. Wybierz **właściwości** dla dzierżawy w menu po lewej stronie.
+2. W obszarze **wieku** sekcji, kliknij pozycję **Konfiguruj**.
+3. Poczekaj na zakończenie operacji i dzierżawy zostanie skonfigurowana do kontroli wieku.
+
+## <a name="enable-age-gating-in-your-user-flow"></a>Włącz wieku przepływu użytkownika
+
+Po Twojej dzierżawy jest do użytku wieku, następnie można użyć tej funkcji w [przepływy użytkownika](user-flow-versions.md) gdzie jest włączona. Należy włączyć wieku wykonując następujące kroki:
+
+1. Utwórz przepływ użytkownika, który ma wieku włączone.
+2. Po utworzeniu przepływu użytkownika, wybierz **właściwości** w menu.
+3. W **wieku** zaznacz **włączone**.
+4. Następnie zdecyduj, jak chcesz zarządzać użytkownikami, które identyfikują jako osoby niepełnoletnie. Aby uzyskać **rejestracji lub logowania**, możesz wybrać `Allow minors to access your application` lub `Block minors from accessing your application`. Jeśli wybrano blokowanie nieletnim wybierz `Send a JSON bcak to the application` lub `Show an error message`. 
+
+
+
+

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/11/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 68374cd1675f76555ff313b42e35bdf2aed96874
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 88b956fbe283dd39dfc51d6127b32b6f031e8b85
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408085"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291134"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Konfigurowanie usługi Log Analytics dla klastra
 
@@ -72,7 +72,7 @@ Konto teraz wyświetlane jako część konta magazynu dzienników w źródłach 
 Rozwiązania analiza usługi Service Fabric zostały dodane, w obszarze roboczym usługi Log Analytics, która jest teraz prawidłowo podłączone do klastra platformy oraz tabeli dziennika aplikacji. W ten sam sposób, można dodać dodatkowe źródła do obszaru roboczego.
 
 
-## <a name="deploy-log-analytics-by-using-a-resource-manager-template"></a>Wdrażanie usługi Log Analytics przy użyciu szablonu usługi Resource Manager
+## <a name="deploy-log-analytics-with-azure-resource-manager"></a>Wdrażanie usługi Log Analytics z usługą Azure Resource Manager
 
 Podczas wdrażania klastra przy użyciu szablonu usługi Resource Manager szablon tworzy nowy obszar roboczy usługi Log Analytics, dodająca rozwiązanie usługi Service Fabric do obszaru roboczego i konfiguruje go do odczytywania danych z tabel odpowiedniego magazynu.
 
@@ -93,7 +93,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -Tem
 
 Usługa Azure Resource Manager wykryje, że to polecenie aktualizacji istniejącego zasobu. Przetwarza tylko zmiany między szablonu zachęcanie istniejącego wdrożenia i nowy szablon, pod warunkiem.
 
-## <a name="deploy-log-analytics-by-using-azure-powershell"></a>Wdrażanie usługi Log Analytics przy użyciu programu Azure PowerShell
+## <a name="deploy-log-analytics-with-azure-powershell"></a>Wdrażanie usługi Log Analytics przy użyciu programu Azure PowerShell
 
 Można także wdrożyć zasobie usługi Log Analytics za pośrednictwem programu PowerShell przy użyciu `New-AzureRmOperationalInsightsWorkspace` polecenia. Aby użyć tej metody, upewnij się, zainstalowano [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1). Użyj tego skryptu, aby utworzyć nowy obszar roboczy usługi Log Analytics i Dodawanie rozwiązania do usługi Service Fabric do niego: 
 

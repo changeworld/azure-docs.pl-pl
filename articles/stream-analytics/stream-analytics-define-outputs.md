@@ -2,19 +2,18 @@
 title: Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 description: W tym artykule opisano opcje danych wyjściowych danych dostępnych w usłudze Azure Stream Analytics, w tym usługi Power BI dla wyników analizy.
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/22/2018
-ms.openlocfilehash: 2ef599fe704b184e82de2d704753e3fb4a274a2a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/21/2018
+ms.openlocfilehash: 1502277276489d1977540018f2a22681ad48d8a7
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257803"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291474"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano różne typy danych wyjściowych jest dostępny dla zadania usługi Azure Stream Analytics. Dane wyjściowe pozwalają na przechowywanie i zapisać wyniki zadania usługi Stream Analytics. Można wykonać, korzystając z danych wyjściowych, dalszych analiz biznesowych i danych magazynu danych. 
@@ -70,8 +69,8 @@ Aby odnowić autoryzację, **zatrzymać** zadania > Przejdź do usługi Data Lak
 | Alias danych wyjściowych |Przyjazna nazwa używana w zapytaniach do kierowania danych wyjściowych kwerendy do tej bazy danych. |
 | Database (Baza danych) | Nazwa bazy danych, w których w przypadku wysyłania danych wyjściowych. |
 | Nazwa serwera | Nazwa serwera bazy danych SQL. |
-| Nazwa użytkownika | Nazwa użytkownika, który ma dostęp do zapisu w bazie danych. |
-| Hasło | Hasło do łączenia z bazą danych |
+| Nazwa użytkownika | Nazwa użytkownika, który ma dostęp do zapisu w bazie danych. Stream Analytics obsługuje tylko uwierzytelnianie SQL. |
+| Hasło | Hasło służące do połączenia z bazą danych. |
 | Tabela | Nazwa tabeli, w którym plik wyjściowy zostanie zapisany. Nazwa tabeli jest rozróżniana wielkość liter i schematu w tej tabeli powinna być zgodna dokładnie z numerem pola i ich typy, które są generowane przez zadanie danych wyjściowych. |
 
 > [!NOTE]

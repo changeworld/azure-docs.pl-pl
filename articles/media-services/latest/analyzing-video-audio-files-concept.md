@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: a087c1a069e340c01f2eda657a3d0ecce768168c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 070e405703a0a794266373a19f8e79977c71a17f
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228135"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290853"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analizowanie plików audio i wideo
 
@@ -33,7 +33,7 @@ Usługa Media Services obsługuje obecnie następujące ustawienia analizatora w
 
 |**Nazwa ustawienia wstępnego**|**Scenariusz**|**Szczegóły**|
 |---|---|---|
-|**AudioAnalyzerPreset**|Analiza audio|Ustawienie wstępne stosuje zestaw wstępnie zdefiniowanych operacji analizy oparte na sztucznej Inteligencji, w tym transkrypcja mowy. Obecnie usługa ustawienia wstępnego obsługuje przetwarzania zawartości za pomocą pojedynczej ścieżki audio.<br/>Można określić język dla ładunku audio w danych wejściowych w formacie BCP 47 "region tagu języka" (na przykład "en US"). Listę obsługiwanych języków to "en US", "en-GB", "es-MX", "pt-BR", "fr-FR", "ja-JP", "es-ES", "it-IT", "zh-CN".|
+|**AudioAnalyzerPreset**|Analiza audio|Ustawienie wstępne stosuje zestaw wstępnie zdefiniowanych operacji analizy oparte na sztucznej Inteligencji, w tym transkrypcja mowy. Obecnie usługa ustawienia wstępnego obsługuje przetwarzania zawartości za pomocą pojedynczej ścieżki audio.<br/>Można określić język dla ładunku audio w danych wejściowych w formacie BCP 47 "region tagu języka" (na przykład "en US"). Listę obsługiwanych języków jest "en US", "en-GB", "es-MX", "pt-BR", "fr-FR", "ja-JP", "es-ES", "it-IT", "zh-CN".|
 |**VideoAnalyzerPreset**|Analiza audio i wideo|Wyodrębnia informacje (obszerne metadane) z audio i wideo, a następnie generuje plik formatu JSON. Można określić, czy mają zostać wyodrębnione audio insights podczas przetwarzania pliku wideo. Aby uzyskać więcej informacji, zobacz [analiza wideo](analyze-videos-tutorial-with-api.md).|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset

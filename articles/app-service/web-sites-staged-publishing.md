@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: b5a06cff653007568b4ab2b44624b6314413f8a6
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 47b67a6a3475b7f159a14825b168bbf0049db9b8
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636071"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291151"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w usłudze Azure App Service
 <a name="Overview"></a>
@@ -75,6 +75,7 @@ Podczas klonowania konfiguracji z innego miejsca wdrożenia sklonowanego konfigu
 * Mapowania procedur obsługi
 * Ustawienia monitorowania i diagnostyki
 * Zawartość usługi WebJobs
+* Połączenia hybrydowe
 
 **Ustawienia, które nie zostały zamienione**:
 

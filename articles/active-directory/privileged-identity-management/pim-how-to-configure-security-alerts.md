@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 11/01/2018
+ms.date: 11/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e7204c223681b9a33c439b0d9fc653167422384a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4a715020e37d5885dac26ac0573efe985c3f2cfb
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011701"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291219"
 ---
 # <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>Konfigurowanie alertów zabezpieczeń dla ról katalogu usługi Azure AD w usłudze PIM
 
@@ -34,6 +34,47 @@ W tej sekcji przedstawiono wszystkie alerty zabezpieczeń dla ról w katalogu, o
 * **Średnia**: nie wymagać natychmiastowego działania, ale sygnalizuje potencjalne naruszenie zasad.
 * **Niska**: nie wymagać natychmiastowego działania, ale sugeruje zmianę preferowane zasady.
 
+### <a name="administrators-arent-using-their-privileged-roles"></a>Administratorzy nie są używane role uprzywilejowane
+
+| | |
+| --- | --- |
+| **Ważność** | Małe |
+| **Dlaczego warto uzyskać ten alert?** | Użytkownicy, które zostały przypisane do ról uprzywilejowanych, które nie potrzebują zwiększa ryzyko ataku. Jest również łatwiej pozostają niezauważona na kontach, które nie są aktywnie używane przez osoby atakujące. |
+| **Jak naprawić?** | Przejrzyj użytkowników na liście i usunąć je z ról uprzywilejowanych, który nie ma potrzeby. |
+| **Zapobieganie** | Role uprzywilejowane można przypisywać tylko do użytkowników, którzy mają uzasadnienie biznesowe. </br>Zaplanować regularne [przeglądów dostępu](pim-how-to-start-security-review.md) Aby sprawdzić, czy użytkownicy nadal potrzebują dostępu. |
+| **Akcja ograniczenia w portalu** | Usuwa konto z ich roli uprzywilejowanej. |
+| **Wyzwalacz** | Wyzwalane, jeśli użytkownik przejdzie określoną ilość czasu, bez uaktywniania roli. |
+| **Liczba dni** | To ustawienie określa liczbę dni z zakresu od 0 do 100, które użytkownik może go bez uaktywniania roli.|
+
+### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>Role nie wymagają uwierzytelniania wieloskładnikowego w celu aktywacji
+
+| | |
+| --- | --- |
+| **Ważność** | Małe |
+| **Dlaczego warto uzyskać ten alert?** | Bez uwierzytelniania MFA których bezpieczeństwo zostało naruszone użytkowników można aktywować ról uprzywilejowanych. |
+| **Jak naprawić?** | Przejrzyj listę ról i [wymagać uwierzytelniania Wieloskładnikowego](pim-how-to-change-default-settings.md) dla każdej roli. |
+| **Zapobieganie** | [Wymagać uwierzytelniania Wieloskładnikowego](pim-how-to-change-default-settings.md) dla każdej roli.  |
+| **Akcja ograniczenia w portalu** | Sprawia, że usługa MFA jest wymagany do aktywacji ról uprzywilejowanych. |
+
+### <a name="the-tenant-doesnt-have-azure-ad-premium-p2"></a>Dzierżawa nie ma usługi Azure AD Premium P2
+
+| | |
+| --- | --- |
+| **Ważność** | Małe |
+| **Dlaczego warto uzyskać ten alert?** | Bieżąca dzierżawa nie ma usługi Azure AD Premium P2. |
+| **Jak naprawić?** | Przejrzyj informacje dotyczące [wersje usługi Azure AD](../fundamentals/active-directory-whatis.md). Uaktualnianie do programu Azure AD Premium P2. |
+
+### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potencjalne starych kont w roli uprzywilejowanej
+
+| | |
+| --- | --- |
+| **Ważność** | Medium |
+| **Dlaczego warto uzyskać ten alert?** | Konta, które nie uległy zmianie hasła ostatnio może być usługa lub udostępnionych kont, które nie są już uaktualniana. Te konta, w ramach ról uprzywilejowanych są narażone na ataki. |
+| **Jak naprawić?** | Przegląd konta na liście. Jeśli już nie potrzebują dostępu, należy je usunąć z ich ról uprzywilejowanych. |
+| **Zapobieganie** | Upewnij się, kont, które są udostępniane są obracanie silne hasła po zmiany użytkowników, którzy znać hasło. </br>Regularne przeglądy kont z ról uprzywilejowanych przy użyciu [przeglądów dostępu](pim-how-to-start-security-review.md) i usuwanie przypisań ról, które nie są już potrzebne. |
+| **Akcja ograniczenia w portalu** | Usuwa konto z ich roli uprzywilejowanej. |
+| **Najlepsze praktyki** | Udostępniony, usługi i kont dostępu awaryjnego, uwierzytelnianie przy użyciu hasła, które są przypisane do wysoce uprzywilejowanych ról administracyjnych, takich jak Administrator globalny lub Administrator zabezpieczeń powinny mieć haseł obrócone w następujących przypadkach:<ul><li>Po zdarzenie naruszenia zabezpieczeń obejmujące nadużycie lub złamania prawa dostępu administratora</li><li>Po zmianie dowolnego użytkownikowi uprawnienia tak, aby nie są już administratorem (na przykład po pracownika, który został pozostawia administratora IT lub opuścił organizację)</li><li>W regularnych odstępach czasu (na przykład kwartalną lub co rok), nawet jeśli nie było żadnych znanych naruszenia lub zmiana IT zaoszczędziła</li></ul>Ponieważ wiele osób ma dostęp do tych kont poświadczenia, powinna zostać obrócona poświadczenia, aby upewnić się, że osoby, którym pozostało im role dłużej korzystać z konta. [Dowiedz się więcej](https://aka.ms/breakglass) |
+
 ### <a name="roles-are-being-assigned-outside-of-pim"></a>Role są przypisywane poza usługą PIM
 
 | | |
@@ -43,28 +84,6 @@ W tej sekcji przedstawiono wszystkie alerty zabezpieczeń dla ról w katalogu, o
 | **Jak naprawić?** | Przejrzyj użytkowników na liście i usunąć je z ról uprzywilejowanych przypisane poza usługą PIM. |
 | **Zapobieganie** | Zbadaj, gdzie użytkownicy są przypisywane ról uprzywilejowanych poza usługą PIM i Stanów Zjednoczonych zabraniają przyszłych przydziałów, w tym miejscu. |
 | **Akcja ograniczenia w portalu** | Usuwa konto z ich roli uprzywilejowanej. |
-
-### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potencjalne starych kont w roli uprzywilejowanej
-
-| | |
-| --- | --- |
-| **Ważność** | Medium |
-| **Dlaczego warto uzyskać ten alert?** | Konta, które nie uległy zmianie hasła ostatnio może być usługa lub udostępnionych kont, które nie są już uaktualniana. Te konta, w ramach ról uprzywilejowanych są narażone na ataki. |
-| **Jak naprawić?** | Przegląd konta na liście. Jeśli już nie potrzebują dostępu, należy je usunąć z ich ról uprzywilejowanych. |
-| **Zapobieganie** | Upewnij się, kont, które są udostępniane są obracanie silne hasła po zmiany użytkowników, którzy znać hasło. </br>Regularne przeglądy kont z ról uprzywilejowanych, korzystanie z przeglądów dostępu i usuwanie przypisań ról, które nie są już potrzebne. |
-| **Akcja ograniczenia w portalu** | Usuwa konto z ich roli uprzywilejowanej. |
-
-### <a name="users-arent-using-their-privileged-roles"></a>Użytkownicy nie są z ich ról uprzywilejowanych
-
-| | |
-| --- | --- |
-| **Ważność** | Małe |
-| **Dlaczego warto uzyskać ten alert?** | Użytkownicy, które zostały przypisane do ról uprzywilejowanych, które nie potrzebują zwiększa ryzyko ataku. Jest również łatwiej pozostają niezauważona na kontach, które nie są aktywnie używane przez osoby atakujące. |
-| **Jak naprawić?** | Przejrzyj użytkowników na liście i usunąć je z ról uprzywilejowanych, który nie ma potrzeby. |
-| **Zapobieganie** | Role uprzywilejowane można przypisywać tylko do użytkowników, którzy mają uzasadnienie biznesowe. </br>Przeglądy dostępu regularnego harmonogramu, aby sprawdzić, czy użytkownicy nadal konieczne dostępu. |
-| **Akcja ograniczenia w portalu** | Usuwa konto z ich roli uprzywilejowanej. |
-| **Wyzwalacz** | Wyzwalane, jeśli użytkownik przejdzie określoną ilość czasu, bez uaktywniania roli. |
-| **Liczba dni** | To ustawienie określa liczbę dni z zakresu od 0 do 100, które użytkownik może go bez uaktywniania roli.|
 
 ### <a name="there-are-too-many-global-administrators"></a>Istnieje zbyt wiele Administratorzy globalni
 
@@ -91,16 +110,6 @@ W tej sekcji przedstawiono wszystkie alerty zabezpieczeń dla ról w katalogu, o
 | **Wyzwalacz** | Wyzwalane, gdy użytkownik aktywuje tej samej roli uprzywilejowanej wiele razy w danym okresie. Można skonfigurować zarówno okres czasu, jak i liczbę aktywacji. |
 | **Okres odnowienia uaktywnienia** | To ustawienie określa dni, godziny, minuty, a drugi w okresie chcesz użyć do śledzenia podejrzanych odnowienia. |
 | **Liczba odnowień aktywacji** | To ustawienie określa liczbę aktywacji od 2 do 100, które uważasz za Alberta alertu w przedziale czasu, który został wybrany. Możesz zmienić to ustawienie za pomocą suwaka lub wpisanie liczby w polu tekstowym. |
-
-### <a name="roles-dont-require-mfa-for-activation"></a>Role nie wymagają usługi MFA do aktywacji
-
-| | |
-| --- | --- |
-| **Ważność** | Małe |
-| **Dlaczego warto uzyskać ten alert?** | Bez uwierzytelniania MFA których bezpieczeństwo zostało naruszone użytkowników można aktywować ról uprzywilejowanych. |
-| **Jak naprawić?** | Przejrzyj listę ról i [wymagać uwierzytelniania Wieloskładnikowego](pim-how-to-change-default-settings.md) dla każdej roli. |
-| **Zapobieganie** | [Wymagać uwierzytelniania Wieloskładnikowego](pim-how-to-change-default-settings.md) dla każdej roli.  |
-| **Akcja ograniczenia w portalu** | Sprawia, że usługa MFA jest wymagany do aktywacji ról uprzywilejowanych. |
 
 ## <a name="configure-security-alert-settings"></a>Konfigurowanie ustawień alertów zabezpieczeń
 

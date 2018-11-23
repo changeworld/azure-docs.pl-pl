@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 804ac964949c947baf5285b3ec591b3d28263f4d
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 8a5b34cd92f3afd166d5d67ca445c99a52c684e2
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282741"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290896"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Scenariusz automatyzacji platformy Azure — aprowizowanie maszyny wirtualnej usług AWS
 W tym artykule dowiesz się, jak dzięki usłudze Azure Automation do aprowizowania maszyny wirtualnej w ramach subskrypcji usługi Amazon Web Service (AWS) i nadaj tej maszyny Wirtualnej określonej nazwie — który AWS odnosi się do jako "" tagowania maszyny Wirtualnej.
@@ -41,7 +41,7 @@ Inicjowanie obsługi administracyjnej runbook maszyny Wirtualnej korzysta z modu
 Po wdrożeniu modułu programu PowerShell usługi AWS można teraz tworzyć elementu runbook, aby zautomatyzować aprowizację maszyny wirtualnej na platformie AWS, za pomocą skryptu programu PowerShell. Poniższe kroki pokazują, jak korzystać z natywnych skryptów programu PowerShell w usłudze Azure Automation.  
 
 > [!NOTE]
-> Aby uzyskać dalsze opcje i informacje dotyczące tego skryptu, odwiedź [galerii programu PowerShell](https://www.powershellgallery.com/packages/New-AwsVM/DisplayScript).
+> Aby uzyskać dalsze opcje i informacje dotyczące tego skryptu, odwiedź [galerii programu PowerShell](https://www.powershellgallery.com/packages/New-AwsVM/).
 > 
 
 1. Pobierz skrypt programu PowerShell, New-AwsVM z galerii programu PowerShell, otwierając sesję programu PowerShell i wpisując następujące czynności:<br>

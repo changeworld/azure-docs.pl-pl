@@ -7,13 +7,13 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.openlocfilehash: 4209ce8d15bf53381825e8bb3e47f0a16366a436
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 11/21/2018
+ms.openlocfilehash: 5124e06296962f1b673c77bfe318ff48d7fb11aa
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49346880"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291327"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Rozwiązywanie problemów z danych wyjściowych usługi Azure Stream Analytics
 
@@ -29,7 +29,7 @@ Ta strona zawiera opis typowych problemów z połączeniami danych wyjściowych 
       - Jeśli zadanie używa Centrum zdarzeń, sprawdź, czy treść komunikatu jest *Null*.
       
     - Jeśli błędy konwersji danych > 0 i rośnie, następujące może mieć wartość true:
-      - Zadania nie można deserializować zdarzeń.
+      - Zdarzenie wyjściowe nie jest zgodny ze schematem ujścia docelowego. 
       - Schemat zdarzeń mogą być niezgodne ze schematem zdefiniowanego lub oczekiwanego zdarzenia w zapytaniu.
       - Typy danych niektórych pól w zdarzeniu może być niezgodny oczekiwania.
       

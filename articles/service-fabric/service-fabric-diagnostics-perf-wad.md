@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/26/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: bc86ef5a32e08bc00b5a2fa53dccb8d6313f167b
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 0675e06564fcacf5f7d14ef6986762f36df18b1b
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230989"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290326"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Monitorowanie wydajności za pomocą rozszerzenia diagnostyki Azure Windows
 
@@ -106,6 +106,89 @@ Poniżej przedstawiono przykład konfiguracji za pomocą licznika dla *łączny 
 
  Częstotliwość próbkowania licznika można zmodyfikować zgodnie z potrzebami. Jego format jest `PT<time><unit>`, więc jeśli chcesz, aby zbiera dane licznika co sekundę, następnie należy ustawić `"sampleRate": "PT15S"`.
 
+ Można również używać zmiennych do szablonu ARM do zbierania szereg liczników wydajności, które mogą okazać się przydatna podczas zbierania liczników wydajności na proces. W poniższym przykładzie są zbierane czas modułu zbierającego elementy bezużyteczne procesu i czasu procesora, a następnie 2 liczników wydajności na poszczególnych węzłach za pomocą zmiennych. 
+
+ ```json
+"variables": {
+  "copy": [
+      {
+        "name": "processorTimeCounters",
+        "count": "[length(parameters('monitoredProcesses'))]",
+        "input": {
+          "counterSpecifier": "\\Process([parameters('monitoredProcesses')[copyIndex('processorTimeCounters')]])\\% Processor Time",
+          "sampleRate": "PT1M",
+          "unit": "Percent",
+          "sinks": "applicationInsights",
+          "annotation": [
+            {
+              "displayName": "[concat(parameters('monitoredProcesses')[copyIndex('processorTimeCounters')],' Processor Time')]",
+              "locale": "en-us"
+            }
+          ]
+        }
+      },
+      {
+        "name": "gcTimeCounters",
+        "count": "[length(parameters('monitoredProcesses'))]",
+        "input": {
+          "counterSpecifier": "\\.NET CLR Memory([parameters('monitoredProcesses')[copyIndex('gcTimeCounters')]])\\% Time in GC",
+          "sampleRate": "PT1M",
+          "unit": "Percent",
+          "sinks": "applicationInsights",
+          "annotation": [
+            {
+              "displayName": "[concat(parameters('monitoredProcesses')[copyIndex('gcTimeCounters')],' Time in GC')]",
+              "locale": "en-us"
+            }
+          ]
+        }
+      }
+    ],
+    "machineCounters": [
+      {
+        "counterSpecifier": "\\Memory\\Available Bytes",
+        "sampleRate": "PT1M",
+        "unit": "KB",
+        "sinks": "applicationInsights",
+        "annotation": [
+          {
+            "displayName": "Memory Available Kb",
+            "locale": "en-us"
+          }
+        ]
+      },
+      {
+        "counterSpecifier": "\\Memory\\% Committed Bytes In Use",
+        "sampleRate": "PT15S",
+        "unit": "percent",
+        "annotation": [
+          {
+            "displayName": "Memory usage",
+            "locale": "en-us"
+          }
+        ]
+      }
+    ]
+  }
+....
+"WadCfg": {
+    "DiagnosticMonitorConfiguration": {
+      "overallQuotaInMB": "50000",
+      "Metrics": {
+        "metricAggregation": [
+          {
+            "scheduledTransferPeriod": "PT1M"
+          }
+        ],
+        "resourceId": "[resourceId('Microsoft.Compute/virtualMachineScaleSets', variables('vmNodeTypeApp2Name'))]"
+      },
+      "PerformanceCounters": {
+        "scheduledTransferPeriod": "PT1M",
+        "PerformanceCounterConfiguration": "[concat(variables ('processorTimeCounters'), variables('gcTimeCounters'),  variables('machineCounters'))]"
+      },
+....
+```
+
  >[!NOTE]
  >Chociaż można użyć `*` do określania grup liczników wydajności, które są nazwane w podobny sposób, wysyłania żadnych liczników za pośrednictwem obiektu sink (do usługi Application Insights) wymaga indywidualnie one zadeklarowane. 
 
@@ -115,8 +198,9 @@ Poniżej przedstawiono przykład konfiguracji za pomocą licznika dla *łączny 
     New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-5. Po zakończeniu uaktualniania wprowadza (trwa od 15 do 45 minut), WAD należy zbierać liczniki wydajności i wysyła je do tabeli o nazwie WADPerformanceCountersTable w ramach konta magazynu skojarzone z klastrem. Zobacz liczniki wydajności w usłudze Application Insights przez [Dodawanie ujścia sztucznej Inteligencji do szablonu usługi Resource Manager](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template).
+5. Po zakończeniu uaktualniania wprowadza (trwa od 15 do 45 minut w zależności od tego, czy jest pierwszym wdrożeniu i rozmiar grupy zasobów), WAD powinien być zbierania liczników wydajności i wysyła je do tabeli o nazwie WADPerformanceCountersTable w ramach konta magazynu skojarzone z klastrem. Zobacz liczniki wydajności w usłudze Application Insights przez [Dodawanie ujścia sztucznej Inteligencji do szablonu usługi Resource Manager](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Zbieranie większej liczby liczników wydajności dla klastra. Zobacz [metryki wydajności](service-fabric-diagnostics-event-generation-perf.md) listę liczników, które należy zebrać.
 * [Użyj monitorowania i diagnostyki za pomocą szablonów maszyn wirtualnych Windows i usługi Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md) może wprowadzać dalszych modyfikacji swoje `WadCfg`, np. Konfigurowanie dodatkowych kont magazynu do wysyłania danych diagnostycznych.
+* Odwiedź stronę [konstruktora WadCfg](http://azure.github.io/azure-diagnostics-tools/config-builder/) Utwórz szablon od podstaw i upewnij się, Twoje składnia jest poprawna.

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/16/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 1e6ea5d6ae321a0443631ec928912611a68346c6
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 843feb83b8202d3ef8e2c6c8c60cb9b509048530
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408017"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290777"
 ---
 # <a name="performance-metrics"></a>Metryki wydajności
 
@@ -31,6 +31,7 @@ W przypadku komputerów w klastrze należy wziąć pod uwagę zbieranie następu
 
 | Kategoria licznika | Nazwa licznika |
 | --- | --- |
+| Dysk logiczny | Wolne miejsce na dysku logicznym |
 | Dysk fizyczny (na dysku) | Średni Długość kolejki odczytu dysku |
 | Dysk fizyczny (na dysku) | Średni Długość kolejki zapisu dysku |
 | Dysk fizyczny (na dysku) | Średni Czas dysku w s/Odczyt |
@@ -49,6 +50,9 @@ W przypadku komputerów w klastrze należy wziąć pod uwagę zbieranie następu
 | Proces (usługi) | Bajty wirtualne |
 | Proces (usługi) | Zestaw roboczy |
 | Proces (usługi) | Zestaw roboczy — prywatny |
+| Interface(all-instances) sieci | Recd bajtów |
+| Interface(all-instances) sieci | Bajty wysłane |
+| Interface(all-instances) sieci | Łączna liczba bajtów |
 | Interface(all-instances) sieci | Długość kolejki wyjściowej |
 | Interface(all-instances) sieci | Usunięte pakiety wychodzące |
 | Interface(all-instances) sieci | Odebrane pakiety |
@@ -65,6 +69,8 @@ Zbierz następujące liczniki, Jeżeli wdrażasz usługi .NET do klastra.
 | Pamięć .NET CLR (na usługę) | # Łączna liczba przydzielonych bajtów |
 | Pamięć .NET CLR (na usługę) | # Łączna liczba Zarezerwowane bajty |
 | Pamięć .NET CLR (na usługę) | Liczba bajtów we wszystkich Stertach |
+| Pamięć .NET CLR (na usługę) | Duży rozmiar sterty obiektów |
+| Pamięć .NET CLR (na usługę) | # Obsługuje GC |
 | Pamięć .NET CLR (na usługę) | # Pokolenia 0 |
 | Pamięć .NET CLR (na usługę) | # Pokolenia 1 |
 | Pamięć .NET CLR (na usługę) | # Pokolenia 2 |
@@ -76,7 +82,7 @@ Usługa Service Fabric generuje rozległe niestandardowych liczników wydajnośc
 
 W aplikacji są wdrażane z klastrem, korzystając z elementów Reliable Actors, należy dodać countes z `Service Fabric Actor` i `Service Fabric Actor Method` kategorii (zobacz [diagnostyki usługi sieci szkieletowej Reliable Actors](service-fabric-reliable-actors-diagnostics.md)).
 
-Jeśli używasz usług Reliable Services, podobnie mamy `Service Fabric Service` i `Service Fabric Service Method` kategorie liczników, które należy zebrać liczników z. 
+Jeśli używasz usług Reliable Services lub zdalna komunikacja usług podobnie mamy `Service Fabric Service` i `Service Fabric Service Method` licznik kategorii, czy należy zbierać liczniki z adresem [monitorowanie za pomocą komunikacji zdalnej usługi](service-fabric-reliable-serviceremoting-diagnostics.md) i [niezawodne liczniki wydajności usług](service-fabric-reliable-services-diagnostics.md#performance-counters). 
 
 Jeśli korzystasz z elementami Reliable Collections, zalecamy dodanie `Avg. Transaction ms/Commit` z `Service Fabric Transactional Replicator` zbierać opóźnienie średni zatwierdzenia na transakcję metrykę.
 

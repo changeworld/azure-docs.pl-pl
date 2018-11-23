@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: a57e7ccedd0c3b776a39c6750a3d5b4b5cc41d88
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 611f7ccf9ef701bf589a8f9450f8f02695357224
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685450"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291185"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Pobierz procesora źródło zmian .NET SDK: I informacje o wersji
 > [!div class="op_single_selector"]
@@ -43,8 +43,15 @@ ms.locfileid: "51685450"
 
 ### <a name="v2-builds"></a>kompilacje w wersji 2
 
+### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+* Dodano obsługę używania magazyn niestandardowy, aby utrwalić tokenów kontynuacji dla każdej partycji.
+  * Na przykład do przechowywania niestandardowych dzierżawy może być podzielona na partycje w jakikolwiek sposób niestandardowy kolekcję dzierżaw usługi Azure Cosmos DB.
+  * Dzierżawy niestandardowych magazynów za pomocą nowego ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) punktów rozszerzeń i ILeaseStoreManager interfejsu publicznego.
+  * W wielu interfejsach roli, zaprojektowane od nowa interfejs ILeaseManager.
+* Pomocnicza, zmiana powodująca niezgodność: Usunięto rozszerzalności punktu ChangeFeedProcessorBuilder.WithLeaseManager(ILeaseManager), zamiast tego użyj ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager).
+
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
-* Rozwiązano problem, który może występować podczas przetwarzania podzielić w przypadku dzierżawy kolekcja jest partycjonowana. Ten problem może prowadzić do dzierżawy, nie ma partycji nie są usuwane z kolekcji dzierżawy. Problem został rozwiązany w tej wersji.
+* W tej wersji rozwiązuje problem występujący podczas przetwarzania podziału w monitorowanej kolekcji i przy użyciu kolekcji partycjonowanej dzierżawy. Podczas przetwarzania dzierżawy dla partycji podziału, dzierżawy odpowiadający tej partycji nie mogą zostać usunięte. Problem został rozwiązany w tej wersji.
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * Naprawiono narzędzie do szacowania obliczenia wzorzec wielu kont i nowy format tokenu sesji.
