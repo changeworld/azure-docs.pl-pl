@@ -3,36 +3,36 @@ items:
 - name: Omówienie
   items:
   - name: Co to jest Video Indexer?
-    href: video-indexer-overview.md
+    href: ../../media-services/video-indexer/video-indexer-overview.md
   - name: Pojęcia
-    href: video-indexer-concepts.md
+    href: ../../media-services/video-indexer/video-indexer-concepts.md
 - name: Przewodniki Szybki start
   items:
   - name: Rozpoczęcie pracy
-    href: video-indexer-get-started.md
+    href: ../../media-services/video-indexer/video-indexer-get-started.md
   expanded: true
 - name: Przewodniki z instrukcjami
   items:
   - name: Migrowanie z wersji 1 do wersji 2
-    href: migrate-from-v1-to-v2.md
+    href: ../../media-services/video-indexer/migrate-from-v1-to-v2.md
   - name: Nawiązywanie połączenia z usługą Azure
-    href: connect-to-azure.md
+    href: ../../media-services/video-indexer/connect-to-azure.md
   - name: Zarządzanie kontem połączonym z platformą Azure
-    href: manage-account-connected-to-azure.md
+    href: ../../media-services/video-indexer/manage-account-connected-to-azure.md
   - name: Korzystanie z interfejsu API usługi Video Indexer
-    href: video-indexer-use-apis.md
+    href: ../../media-services/video-indexer/video-indexer-use-apis.md
   - name: Przekazywanie i indeksowanie wideo za pomocą interfejsu API
-    href: upload-index-videos.md
+    href: ../../media-services/video-indexer/upload-index-videos.md
   - name: Badanie danych wyjściowych usługi Video Indexer
-    href: video-indexer-output-json-v2.md
+    href: ../../media-services/video-indexer/video-indexer-output-json-v2.md
   - name: Znajdowanie konkretnych momentów w wideo
-    href: video-indexer-search.md
+    href: ../../media-services/video-indexer/video-indexer-search.md
   - name: Wyświetlanie i edytowanie informacji szczegółowych w usłudze Video Indexer
-    href: video-indexer-view-edit.md
+    href: ../../media-services/video-indexer/video-indexer-view-edit.md
   - name: Generowanie szczegółowych informacji o wideo na podstawie istniejących wideo
-    href: video-indexer-create-new.md
+    href: ../../media-services/video-indexer/video-indexer-create-new.md
   - name: Osadzanie widżetów w aplikacji
-    href: video-indexer-embed-widgets.md
+    href: ../../media-services/video-indexer/video-indexer-embed-widgets.md
 - name: Dokumentacja
   items:
   - name: Interfejs API usługi Video Indexer
@@ -47,9 +47,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
   - name: Harmonogram działania dla platformy Azure
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
-ms.openlocfilehash: 893802d670b2fe5fe63caa3f55107ef178792a9c
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 5283cc39c64c31d6b9014043bf37e066cef582a7
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744242"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290760"
