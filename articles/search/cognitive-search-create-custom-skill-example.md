@@ -1,81 +1,72 @@
 ---
-title: 'Przykład: Tworzenie niestandardowego umiejętności w potoku wyszukiwanie kognitywne (Azure Search) | Dokumentacja firmy Microsoft'
-description: Demonstruje użycie interfejsu API tłumaczenia tekstu w umiejętności niestandardowych mapowane na usługa cognitive search indeksowanie potoku w usłudze Azure Search.
+title: 'Przykład: Tworzenie niestandardowego umiejętności w potoku kognitywnych wyszukiwania (Azure Search) | Dokumentacja firmy Microsoft'
+description: Przedstawiono w niestandardowych umiejętności mapowane na wyszukiwanie kognitywnych indeksowania potoku w usłudze Azure Search przy użyciu interfejsu API tłumaczenie tekstu.
 manager: pablocas
 author: luiscabrer
-services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: d78959ba415c837e931edcc0278de84daa879bc1
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: MT
+ms.openlocfilehash: 056cff192b25068fa2e895fd46d143a834b7af0b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393954"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641088"
 ---
-# <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Przykład: Tworzenie niestandardowego umiejętności, przy użyciu interfejsu API tłumaczenia tekstu
+# <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Przykład: Tworzenie niestandardowego umiejętności, przy użyciu interfejsu API tłumaczenie tekstu
 
-W tym przykładzie Dowiedz się, jak utworzyć sieć web umiejętności niestandardowego interfejsu API, która akceptuje tekstu w dowolnym języku i przekształca je do języka angielskiego. W przykładzie użyto [funkcji platformy Azure](https://azure.microsoft.com/services/functions/) opakowywać [tłumaczenia interfejsu API tłumaczenia tekstu](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) tak, aby go implementuje interfejs umiejętności niestandardowe.
+W tym przykładzie Dowiedz się, jak utworzyć sieć web umiejętności niestandardowego interfejsu API, akceptuje tekstu w dowolnym języku, który tłumaczy je na język angielski. W przykładzie użyto [funkcji platformy Azure](https://azure.microsoft.com/services/functions/) opakowywać [tłumaczenie tekstu API](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) tak, aby ją implementuje interfejs niestandardowych umiejętności.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Przeczytaj o [interfejsu umiejętności niestandardowe](cognitive-search-custom-skill-interface.md) artykułu, jeśli użytkownik nie jest zaznajomiony z interfejsem wejścia/wyjścia, która powinna implementować niestandardowe umiejętności.
++ Przeczytaj informacje o [umiejętności niestandardowy interfejs](cognitive-search-custom-skill-interface.md) artykułu, jeśli nie masz doświadczenia z interfejsem wejścia/wyjścia, który powinien implementować niestandardowe umiejętności.
 
-+ [Załóż konto interfejsu API tłumaczenia tekstu](../cognitive-services/translator/translator-text-how-to-signup.md)i Uzyskaj klucz interfejsu API można pobrać go.
++ [Załóż API tekst Translator](../cognitive-services/translator/translator-text-how-to-signup.md)i uzyskać klucz interfejsu API, aby pobrać go.
 
-+ Zainstaluj [programu Visual Studio 2017 w wersji 15.5](https://www.visualstudio.com/vs/) lub później, np. obciążenie programowanie na platformie Azure.
++ Zainstaluj [programu Visual Studio 2017 wersji 15,5 cala](https://www.visualstudio.com/vs/) lub później, w tym obciążenia rozwoju platformy Azure.
 
 ## <a name="create-an-azure-function"></a>Tworzenie funkcji platformy Azure
 
-Chociaż ten przykład używa funkcji platformy Azure do hostowania interfejsu API sieci web, nie jest wymagany.  Tak długo, jak spełniasz [interfejsu wymagania dotyczące cognitive umiejętności](cognitive-search-custom-skill-interface.md), podejścia jest bez znaczenia. Usługa Azure Functions, jednak ułatwiają tworzenie umiejętności niestandardowe.
+Mimo że w tym przykładzie użyto funkcji Azure do hostowania interfejsu API sieci web, nie jest wymagane.  Tak długo, jak spełniasz [interfejsu wymagania dotyczące kognitywnych umiejętności](cognitive-search-custom-skill-interface.md), podejście, należy wykonać, jest bez znaczenia. Środowisko Azure Functions, jednak ułatwiają tworzenie niestandardowych umiejętności.
 
 ### <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
-1. W programie Visual Studio, wybierz **New** > **projektu** za pomocą menu Plik.
+1. W programie Visual Studio, wybierz **nowy** > **projektu** z menu Plik.
 
-1. W oknie dialogowym Nowy projekt, wybierz **zainstalowane**, rozwiń węzeł **Visual C#** > **chmury**, wybierz opcję **usługi Azure Functions**, wpisz Nazwa projektu, a następnie wybierz pozycję **OK**. Nazwa aplikacji funkcji musi być prawidłową nazwą przestrzeni nazw C#, dlatego nie należy używać znaków podkreślenia, łączników ani znaków innych niż alfanumeryczne.
+1. W oknie dialogowym Nowy projekt, wybierz **zainstalowana**, rozwiń węzeł **Visual C#** > **chmury**, wybierz pozycję **usługi Azure Functions**, wpisz Nazwa projektu, a następnie wybierz **OK**. Nazwa aplikacji funkcji musi być prawidłową nazwą przestrzeni nazw C#, dlatego nie należy używać znaków podkreślenia, łączników ani znaków innych niż alfanumeryczne.
 
-1. Wybierz **usługi Azure Functions w wersji 2 (.Net Core)**. Można też zrobić to z wersją 1, ale kod napisany poniżej jest oparty na szablonie v2.
+1. Wybierz typ **wyzwalacza HTTP**
 
-1. Wybierz typ jako **wyzwalacz HTTP**
+1. Dla konta magazynu, można wybrać **Brak**, ponieważ jeden z magazynów nie są wymagane dla tej funkcji.
 
-1. Dla konta magazynu można wybrać **Brak**, ponieważ nie ma potrzeby każdy magazyn dla tej funkcji.
+1. Wybierz **OK** do funkcji tworzenia projektu i HTTP wyzwalane funkcji.
 
-1. Wybierz **OK** można utworzyć funkcji w projekcie i HTTP funkcja wyzwalana przez.
-
-### <a name="modify-the-code-to-call-the-translate-cognitive-service"></a>Zmodyfikuj kod do wywoływania usługi Cognitive tłumaczenie
+### <a name="modify-the-code-to-call-the-translate-cognitive-service"></a>Zmodyfikuj kod do wywoływania usługi kognitywnych tłumaczenia
 
 Program Visual Studio tworzy projekt, a w nim klasę zawierającą standardowy kod dla wybranego typu funkcji. Atrybut *FunctionName* metody ustawia nazwę funkcji. Atrybut *HttpTrigger* określa, że funkcja jest wyzwalana przez żądanie HTTP.
 
-Teraz Zastąp całą zawartość pliku *Function1.cs* następującym kodem:
+Teraz, Zastąp całą zawartość pliku *Function1.cs* następującym kodem:
 
 ```csharp
-using System;
-using System.Net.Http;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.IO;
-using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs.Host;
 using Newtonsoft.Json;
+using System.Net.Http;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Text;
 
 namespace TranslateFunction
 {
     // This function will simply translate messages sent to it.
     public static class Function1
     {
-        static string path = "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0";
-
-        // NOTE: Replace this example key with a valid subscription key.
-        static string key = "<enter your api key here>";
-
         #region classes used to serialize the response
         private class WebApiResponseError
         {
@@ -101,16 +92,21 @@ namespace TranslateFunction
         }
         #endregion
 
+
+        /// <summary>
+        /// Note that this function can translate up to 1000 characters. If you expect to need to translate more characters, use 
+        /// the paginator skill before calling this custom enricher
+        /// </summary>
         [FunctionName("Translate")]
         public static IActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)]HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)]HttpRequest req, 
             TraceWriter log)
         {
             log.Info("C# HTTP trigger function processed a request.");
 
             string recordId = null;
             string originalText = null;
-            string toLanguage = null;
+            string originalLanguage = null;
             string translatedText = null;
 
             string requestBody = new StreamReader(req.Body).ReadToEnd();
@@ -129,15 +125,24 @@ namespace TranslateFunction
 
             recordId = data?.values?.First?.recordId?.Value as string;
             originalText = data?.values?.First?.data?.text?.Value as string;
-            toLanguage = data?.values?.First?.data?.language?.Value as string;
+            originalLanguage = data?.values?.First?.data?.language?.Value as string;
 
             if (recordId == null)
             {
                 return new BadRequestObjectResult("recordId cannot be null");
             }
 
-            translatedText = TranslateText(originalText, toLanguage).Result;
-        
+            // Only translate records that actually need to be translated. 
+            if (!originalLanguage.Contains("en"))
+            {
+                translatedText = TranslateText(originalText, "en-us").Result;
+            }
+            else
+            {
+                // text is already in English.
+                translatedText = originalText;
+            }
+
             // Put together response.
             WebApiResponseRecord responseRecord = new WebApiResponseRecord();
             responseRecord.data = new Dictionary<string, object>();
@@ -148,53 +153,59 @@ namespace TranslateFunction
             response.values = new List<WebApiResponseRecord>();
             response.values.Add(responseRecord);
 
-            return (ActionResult)new OkObjectResult(response);
+            return (ActionResult)new OkObjectResult(response); 
         }
-
 
         /// <summary>
         /// Use Cognitive Service to translate text from one language to antoher.
         /// </summary>
-        /// <param name="originalText">The text to translate.</param>
-        /// <param name="toLanguage">The language you want to translate to.</param>
+        /// <param name="myText">The text to translate</param>
+        /// <param name="destinationLanguage">The language you want to translate to.</param>
         /// <returns>Asynchronous task that returns the translated text. </returns>
-        async static Task<string> TranslateText(string originalText, string toLanguage)
+        async static Task<string> TranslateText(string myText, string destinationLanguage)
         {
-            System.Object[] body = new System.Object[] { new { Text = originalText } };
-            var requestBody = JsonConvert.SerializeObject(body);
+            string host = "https://api.microsofttranslator.com";
+            string path = "/V2/Http.svc/Translate";
 
-            var uri = $"{path}&to={toLanguage}";
+            // NOTE: Replace this example key with a valid subscription key.
+            string key = "064d8095730d4a99b49f4bcf16ac67f8";
 
-            string result = "";
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
 
-            using (var client = new HttpClient())
-            using (var request = new HttpRequestMessage())
+            List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>() {
+                new KeyValuePair<string, string>(myText, "en-us")
+            };
+
+            StringBuilder totalResult = new StringBuilder();
+
+            foreach (KeyValuePair<string, string> i in list)
             {
-                request.Method = HttpMethod.Post;
-                request.RequestUri = new Uri(uri);
-                request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
-                request.Headers.Add("Ocp-Apim-Subscription-Key", key);
+                string uri = host + path + "?to=" + i.Value + "&text=" + System.Net.WebUtility.UrlEncode(i.Key);
 
-                var response = await client.SendAsync(request);
-                var responseBody = await response.Content.ReadAsStringAsync();
+                HttpResponseMessage response = await client.GetAsync(uri);
 
-                dynamic data = JsonConvert.DeserializeObject(responseBody);
-                result = data?.First?.translations?.First?.text?.Value as string;
+                string result = await response.Content.ReadAsStringAsync();
 
+                // Parse the response XML
+                System.Xml.XmlDocument xmlResponse = new System.Xml.XmlDocument();
+                xmlResponse.LoadXml(result);
+                totalResult.Append(xmlResponse.InnerText); 
             }
-            return result;
+
+            return totalResult.ToString();
         }
     }
 }
 ```
 
-Upewnij się wprowadzić własne *klucz* wartość w *TranslateText* metody na podstawie klucza stało się podczas tworzenia interfejsu API tłumaczenia tekstu.
+Upewnij się, że wprowadź własne *klucza* wartość w *TranslateText* metoda oparta na kluczu uzyskano podczas rejestracji dla interfejsu API tłumaczenie tekstu.
 
-W tym przykładzie jest proste enricher, który działa tylko na jeden rekord jednocześnie. Fakt ten staje się ważne później, podczas ustawiania rozmiaru partii dla zestawu umiejętności.
+W tym przykładzie jest proste enricher, który działa tylko na jeden rekord naraz. Ten fakt staje się ważne później, gdy ustawienie rozmiar wsadu dla skillset.
 
 ## <a name="test-the-function-from-visual-studio"></a>Testowanie funkcji w programie Visual Studio
 
-Naciśnij klawisz **F5** Aby uruchomić program i testowanie zachowania funkcji. W tym przypadku użyjemy funkcji poniżej umożliwia tłumaczenie tekstu w języku hiszpańskim na język angielski. Użyj narzędzia Postman lub Fiddler do wysyłania wywołania, tak jak pokazano poniżej:
+Naciśnij klawisz **F5** do uruchomienia programu i testowania zachowania funkcji. Użyj Postman lub Fiddler do wystawiania wywołania podobny do przedstawionego poniżej:
 
 ```http
 POST https://localhost:7071/api/Translate
@@ -208,14 +219,14 @@ POST https://localhost:7071/api/Translate
             "data":
             {
                "text":  "Este es un contrato en Inglés",
-               "language": "en"
+               "language": "es"
             }
         }
    ]
 }
 ```
 ### <a name="response"></a>Odpowiedź
-Powinny pojawić się odpowiedź podobna do poniższego przykładu:
+Powinna zostać wyświetlona odpowiedź podobną do poniższego przykładu:
 
 ```json
 {
@@ -234,21 +245,22 @@ Powinny pojawić się odpowiedź podobna do poniższego przykładu:
 
 ## <a name="publish-the-function-to-azure"></a>Publikowanie funkcji na platformie Azure
 
-Gdy jesteś zadowolony z zachowaniem funkcji, możesz opublikować go.
+Po zakończeniu zachowanie funkcji można go opublikować.
 
 1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Opublikuj**. Wybierz **tworzenia nowych** > **publikowania**.
 
-1. Jeśli nie zostało jeszcze połączone programu Visual Studio do konta platformy Azure, wybierz opcję **Dodaj konto...**
+1. Jeśli jeszcze nie zostało to jeszcze połączenia programu Visual Studio do konta platformy Azure, wybierz **Dodaj konto...**
 
-1. Postępuj zgodnie z monitami wyświetlanymi na ekranie. Należy określić konto platformy Azure, grupę zasobów, plan hostingu i konto magazynu, którego chcesz użyć. Jeśli nie masz jeszcze te można utworzyć nową grupę zasobów, nowy plan hostingu i konta magazynu. Po zakończeniu wybierz pozycję **Create**
+1. Postępuj zgodnie z wyświetlanymi na ekranie. Należy określić konto platformy Azure, grupy zasobów, plan hostingu i konto magazynu, którego chcesz użyć. Jeśli nie masz jeszcze te można utworzyć nową grupę zasobów, nowy plan hostingu i konto magazynu. Po zakończeniu wybierz **Utwórz**
 
-1. Po zakończeniu wdrożenia należy pamiętać, adres URL witryny. Jest adresem aplikacji funkcji na platformie Azure. 
+1. Po zakończeniu wdrażania Zanotuj adres URL witryny. Jest to adres funkcji aplikacji na platformie Azure. 
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do grupy zasobów i poszukaj tłumaczenie funkcja, która została opublikowana. W obszarze **Zarządzaj** sekcji, powinien zostać wyświetlony klucze hosta. Wybierz **kopiowania** ikonę *domyślne* klucz hosta.  
+1. W [portalu Azure](https://portal.azure.com), przejdź do grupy zasobów i poszukaj tłumaczenie funkcja, która została opublikowana. W obszarze **Zarządzaj** sekcji, powinny pojawić się za pomocą klucza hosta. Wybierz **kopiowania** ikonę *domyślne* klucz hosta.  
+
 
 ## <a name="test-the-function-in-azure"></a>Testowanie funkcji na platformie Azure
 
-Teraz, gdy domyślny klucz hosta, testowanie funkcji w następujący sposób:
+Teraz, po klucz hosta domyślnego przetestować funkcję w następujący sposób:
 
 ```http
 POST https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter default host key here]
@@ -262,17 +274,17 @@ POST https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter defaul
             "data":
             {
                "text":  "Este es un contrato en Inglés",
-               "language": "en"
+               "language": "es"
             }
         }
    ]
 }
 ```
 
-To powinno to dawać wynik podobny do tego, które zostały wcześniej użyte podczas działania funkcji w środowisku lokalnym.
+To powinna dawać wynik podobny do tego, który został wcześniej wyświetlony podczas uruchamiania funkcji w środowisku lokalnym.
 
-## <a name="connect-to-your-pipeline"></a>Nawiązać połączenie z potokiem
-Teraz, gdy masz nowych umiejętności niestandardowe, można dodać go do Twojego zestawu umiejętności. W poniższym przykładzie przedstawiono sposób wywoływania umiejętności. Ponieważ umiejętności nie obsługuje partii, Dodaj instrukcję maksymalny rozmiar partii to po prostu ```1``` wysyłać dokumenty pojedynczo.
+## <a name="connect-to-your-pipeline"></a>Połącz do potoku sieci
+Teraz, gdy masz nowych umiejętności niestandardowych, można dodać go do Twojego skillset. W poniższym przykładzie przedstawiono sposób wywoływania umiejętności. Ponieważ umiejętności nie obsługuje partie, Dodaj instrukcję maksymalny rozmiar wsadu należy po prostu ```1``` Aby wysyłać dokumenty pojedynczo.
 
 ```json
 {
@@ -291,7 +303,7 @@ Teraz, gdy masz nowych umiejętności niestandardowe, można dodać go do Twojeg
           },
           {
             "name": "language",
-            "source": "/document/destinationLanguage"
+            "source": "/document/languageCode"
           }
         ],
         "outputs": [
@@ -306,9 +318,9 @@ Teraz, gdy masz nowych umiejętności niestandardowe, można dodać go do Twojeg
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Gratulacje! Utworzono Twojego pierwszego enricher niestandardowych. Teraz można wykonać tego samego wzorca, aby dodać własne niestandardowe funkcje. 
+Gratulacje! Utworzono Twojego pierwszego enricher niestandardowych. Teraz można wykonać tego samego wzorca w celu dodania własnych funkcji niestandardowych. 
 
-+ [Dodaj umiejętności niestandardowe do potoku wyszukiwania kognitywnego](cognitive-search-custom-skill-interface.md)
-+ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
-+ [Tworzenie zestawu umiejętności (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Sposób mapowania pól wzbogacony](cognitive-search-output-field-mapping.md)
++ [Dodaj niestandardowy umiejętności do potoku kognitywnych wyszukiwania](cognitive-search-custom-skill-interface.md)
++ [Sposób definiowania skillset](cognitive-search-defining-skillset.md)
++ [Utwórz Skillset (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Sposób mapowania pól wzbogaconego](cognitive-search-output-field-mapping.md)
