@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2018
 ms.author: kumud
 ms:custom: mvc
-ms.openlocfilehash: c675b6d50cf6bf5c4e7ea064f3741cae7a091946
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: c21d5618b3e3223297ddd97dc5c98e5eb8c18c0b
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578321"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51974822"
 ---
 # <a name="get-started"></a>Szybki start: tworzenie publicznego modułu równoważenia obciążenia przy użyciu interfejsu programu Azure PowerShell
 W tym przewodniku Szybki start przedstawiono sposób tworzenia podstawowego modułu równoważenia obciążenia przy użyciu programu Azure PowerShell. W celu przetestowania modułu równoważenia obciążenia wdrożysz dwie maszyny wirtualne z systemem Windows Server i zrównoważysz obciążenie aplikacji internetowej między maszynami wirtualnymi.
@@ -44,7 +44,7 @@ Aby uzyskać dostęp do aplikacji za pośrednictwem Internetu, potrzebujesz publ
 $publicIP = New-AzureRmPublicIpAddress `
   -ResourceGroupName "myResourceGroupLB" `
   -Location "EastUS" `
-  -AllocationMethod "Dynamic" `
+  -AllocationMethod "Static" `
   -Name "myPublicIP"
 ```
 ## <a name="create-basic-load-balancer"></a>Tworzenie podstawowego modułu równoważenia obciążenia
@@ -251,7 +251,7 @@ Ustaw nazwę użytkownika i hasło administratora maszyn wirtualnych przy użyci
 $cred = Get-Credential
 ```
 
-Następnie utwórz maszyny wirtualne za pomocą polecenia [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Poniższy przykład obejmuje tworzenie dwóch maszyn wirtualnych oraz wymaganych składników sieci wirtualnej, jeśli jeszcze nie istnieją:
+Następnie utwórz maszyny wirtualne za pomocą polecenia [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Poniższy przykład obejmuje tworzenie dwóch maszyn wirtualnych oraz wymaganych składników sieci wirtualnej, jeśli jeszcze nie istnieją. Podczas przedstawionego w poniższym przykładzie tworzenia maszyny wirtualnej wcześniej utworzone karty sieciowe są kojarzone z maszynami wirtualnymi, ponieważ przypisano do nich tę samą sieć wirtualną (*myVnet*) i podsieć (*mySubnet*):
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)

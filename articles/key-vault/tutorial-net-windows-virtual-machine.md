@@ -1,5 +1,5 @@
 ---
-title: Samouczek — jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Linux na platformie .NET | Microsoft Docs
+title: Samouczek — jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Windows na platformie .NET | Microsoft Docs
 description: Samouczek konfigurowania aplikacji platformy ASP.NET Core w celu odczytu wpisu tajnego z usługi Key Vault
 services: key-vault
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: d5596343a293d333dac9ca7e31a9fbc3363f3fd9
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: d1f24c8bebc8740f47dc0f02089db1091c22f597
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688242"
+ms.locfileid: "51711331"
 ---
-# <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-net"></a>Samouczek: jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Linux na platformie .NET
+# <a name="tutorial-how-to-use-azure-key-vault-with-azure-windows-virtual-machine-in-net"></a>Samouczek: jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Windows na platformie .NET
 
 Usługa Azure Key Vault umożliwia ochronę wpisów tajnych, takich jak klucze interfejsu API, parametry połączenia bazy danych potrzebne do uzyskania dostępu do aplikacji, usługi i zasoby informatyczne.
 
-W tym samouczku wykonasz kroki niezbędne do skonfigurowania aplikacji internetowej platformy Azure pod kątem odczytu informacji z usługi Azure Key Vault za pomocą tożsamości zarządzanych dla zasobów platformy Azure. Ten samouczek opiera się na usłudze [Azure Web Apps](../app-service/app-service-web-overview.md). Z poniższego artykułu dowiesz się, jak wykonywać następujące czynności:
+W tym samouczku wykonasz kroki niezbędne do skonfigurowania aplikacji konsolowej pod kątem odczytu informacji z usługi Azure Key Vault za pomocą tożsamości zarządzanych dla zasobów platformy Azure. Ten samouczek opiera się na usłudze [Azure Web Apps](../app-service/app-service-web-overview.md). Z poniższego artykułu dowiesz się, jak wykonywać następujące czynności:
 
 > [!div class="checklist"]
 > * Tworzenie magazynu kluczy.
@@ -51,7 +51,7 @@ Oto jak to działa. Po włączeniu tożsamości usługi zarządzanej dla wybrane
 
 ![Tożsamość usługi zarządzanej](media/MSI.png)
 
-Następnie Twój kod wywołuje lokalną usługę metadanych dostępną w zasobie platformy Azure, aby uzyskać tokenu dostępu.
+Następnie Twój kod wywołuje lokalną usługę metadanych dostępną w zasobie platformy Azure, aby uzyskać token dostępu.
 W celu uwierzytelniania w usłudze Azure Key Vault kod używa tokenu dostępu otrzymanego z lokalnego elementu MSI_ENDPOINT. 
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
@@ -202,8 +202,7 @@ Następnie zmień plik klasy, aby zawierał poniższy kod. Jest to proces skład
                 String responseString = reader.ReadToEnd();
 
                 JObject joResponse = JObject.Parse(responseString);    
-                JValue ojObject = (JValue)joResponse[tokenName];
-                Console.WriteLine(ojObject.Value);                
+                JValue ojObject = (JValue)joResponse[tokenName];             
                 token = ojObject.Value.ToString();
             }
             return token;

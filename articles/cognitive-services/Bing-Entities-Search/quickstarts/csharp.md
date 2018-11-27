@@ -3,23 +3,23 @@ title: 'Szybki start: interfejs API wyszukiwania jednostek Bing, C#'
 titlesuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API wyszukiwania jednostek Bing.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 11/28/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 8d9ee2944b00b8a877b166c23979ed5f6a9b7951
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: aahi
+ms.openlocfilehash: 0735f8d7a7953e05415f468253d17a8d10ca1b9f
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814807"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161354"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-c"></a>Przewodnik Szybki start dotyczący korzystania z interfejsu API wyszukiwania jednostek Bing przy użyciu języka C# 
 
-W tym artykule dowiesz się, jak korzystać z interfejsu API [wyszukiwania jednostek Bing](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) przy użyciu języka C#.
+W tym artykule przedstawiono sposób korzystania z interfejsu API [wyszukiwania jednostek Bing](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) przy użyciu języka C#.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,7 +29,7 @@ Trzeba mieć [konto interfejsu API usług Cognitive Services](https://docs.micro
 
 ## <a name="search-entities"></a>Wyszukiwanie jednostek
 
-Aby uruchomić tę aplikację, wykonaj następujące czynności.
+Aby uruchomić tę aplikację, wykonaj następujące kroki.
 
 1. Utwórz nowy projekt języka C# w ulubionym środowisku IDE.
 2. Dodaj kod przedstawiony poniżej.

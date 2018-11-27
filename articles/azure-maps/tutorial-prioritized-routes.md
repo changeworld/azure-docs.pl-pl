@@ -3,18 +3,18 @@ title: Wiele tras w usłudze Azure Maps | Microsoft Docs
 description: Znajdowanie tras dla różnych sposobów podróży za pomocą usługi Azure Maps
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/29/2018
+ms.date: 11/14/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 67b68489f2e06b9149f842f293a769fa7f688be0
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 0a278eb1612ec9573c4d12611ccce2d1b5b971bc
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412707"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705283"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Znajdowanie tras dla różnych sposobów podróży za pomocą usługi Azure Maps
 
@@ -291,12 +291,7 @@ Przykładowy kod z tego samouczka jest dostępny tutaj:
 
 [Zobacz tutaj działający przykład](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)
 
-Aby dowiedzieć się więcej o zasięgu i możliwościach usługi Azure Maps, zobacz:
+W następnym samouczku przedstawiony jest proces tworzenia prostego lokalizatora sklepów przy użyciu usługi Azure Maps.
 
 > [!div class="nextstepaction"]
-> [Poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md)
-
-Aby uzyskać dodatkowe przykłady kodu i zapoznać się z interaktywnym środowiskiem kodowania:
-
-> [!div class="nextstepaction"]
-> [Jak używać kontrolki mapy](how-to-use-map-control.md)
+> [Create a store locator using Azure Maps (Tworzenie lokalizatora sklepów przy użyciu usługi Azure Maps)](./tutorial-create-store-locator.md)

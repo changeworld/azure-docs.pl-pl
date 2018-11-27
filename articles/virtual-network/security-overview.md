@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: e9a4aa1606e99057565891dc10d17ba9abf15d9c
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 6501444aacd36c794c8a169a8d1b16898efad018
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50159081"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977254"
 ---
 # <a name="security-groups"></a>Grupy zabezpieczeń
 <a name="network-security-groups"></a>
@@ -206,7 +206,7 @@ W przypadku ruchu wychodzącego platforma Azure przetwarza najpierw reguły w gr
 Reguły agregowane stosowane do interfejsu sieciowego można łatwo wyświetlić, wyświetlając [obowiązujące reguły zabezpieczeń](virtual-network-network-interface.md#view-effective-security-rules) dla interfejsu sieciowego. Możesz również skorzystać z możliwości [weryfikowania przepływu protokołu IP](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) w celu ustalenia, czy komunikacja z lub do interfejsu sieciowego jest dozwolona. Weryfikowanie przepływu adresów IP informuje, czy komunikacja jest dozwolona lub zablokowana, oraz która reguła zabezpieczeń sieci zezwala lub nie zezwala na ruch.
 
 > [!NOTE]
-> Grupy zabezpieczeń sieci są skojarzone z podsieciami lub maszynami wirtualnymi i usługami w chmurze wdrożonymi w klasycznym modelu wdrażania, a nie z interfejsami sieciowymi w modelu wdrażania przy użyciu usługi Resource Manager. Aby dowiedzieć się więcej na temat modeli wdrażania platformy Azure, zapoznaj się z artykułem [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Informacje na temat modeli wdrażania platformy Azure).
+> Sieciowe grupy zabezpieczeń są skojarzone z podsieciami lub maszynami wirtualnymi i usługami w chmurze wdrożonymi w klasycznym modelu wdrażania, a nie z interfejsami sieciowymi w modelu wdrażania przy użyciu usługi Resource Manager. Aby dowiedzieć się więcej na temat modeli wdrażania platformy Azure, zapoznaj się z artykułem [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Informacje na temat modeli wdrażania platformy Azure).
 
 > [!TIP]
 > Zaleca się skojarzenie grupy zabezpieczeń sieci z podsiecią lub interfejsem sieciowym, ale nie obydwoma tymi elementami naraz, o ile nie ma po temu konkretnego powodu. Ponieważ reguły w grupie zabezpieczeń sieci skojarzonej z podsiecią mogą powodować konflikt z regułami w grupie zabezpieczeń sieci skojarzonej z interfejsem sieciowym, możesz napotkać nieoczekiwane problemy z komunikacją, co będzie wymagać rozwiązywania problemów.

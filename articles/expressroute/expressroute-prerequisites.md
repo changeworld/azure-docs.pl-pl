@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/28/2018
-ms.author: cherylmc
-ms.openlocfilehash: 24cb21e81d2b4385423512ae58de2d6c0f94b93b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/15/2018
+ms.author: mialdrid
+ms.openlocfilehash: 3e597e4f8be0af6e42f8ccc09c058cda619764a7
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251904"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713439"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>Wymagania wstępne usługi ExpressRoute i lista kontrolna
 Aby połączyć się z usługami w chmurze firmy Microsoft za pomocą usługi ExpressRoute, należy sprawdzić, czy zostały spełnione wymagania wymienione w poniższych sekcjach.

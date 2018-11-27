@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: tutorial
 ms.date: 11/05/2018
 ms.author: pafarley
-ms.openlocfilehash: 5319584d892c261dcc6290703e9ca6518640cc94
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 8db2437b7f78271aee131cf5b4dfd9f06f744c66
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685484"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852677"
 ---
 # <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>Samouczek: tworzenie aplikacji WPF do wyświetlania danych twarzy na obrazie
 
@@ -67,7 +67,7 @@ Otwórz plik *MainWindow.xaml.cs* i dodaj przestrzenie nazw biblioteki klienta o
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=1-12)]
 
-Następnie wstaw poniższy kod w klasie **MainWindow**. Spowoduje to utworzenie wystąpienia elementu **FaceClient** przy użyciu klucza subskrypcji, który musisz wprowadzić samodzielnie. Ustaw też ciąg regionu w elemencie `faceEndpoint`, określając poprawny region dla swojej subskrypcji.
+Następnie wstaw poniższy kod w klasie **MainWindow**. Spowoduje to utworzenie wystąpienia elementu **FaceClient** przy użyciu klucza subskrypcji, który musisz wprowadzić samodzielnie. Musisz także ustawić ciąg regionu w elemencie `faceEndpoint` na poprawny region dla Twojej subskrypcji (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów).
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=18-46)]
 

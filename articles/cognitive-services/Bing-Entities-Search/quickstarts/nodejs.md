@@ -3,23 +3,23 @@ title: 'Szybki start: interfejs API wyszukiwania jednostek Bing, Node.js'
 titlesuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API wyszukiwania jednostek Bing.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 11/28/2017
-ms.author: v-jaswel
-ms.openlocfilehash: b14bcece77b17e79ec9e39bbb6bb64ae34abd3a0
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: aahi
+ms.openlocfilehash: 03ed9948935aab7348fe66cc43b059107ab96f79
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815158"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160906"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-nodejs"></a>Przewodnik Szybki start dotyczący korzystania z interfejsu API wyszukiwania jednostek Bing za pomocą środowiska Node.js
 
-W tym artykule dowiesz się, jak korzystać z interfejsu API [wyszukiwania jednostek Bing](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) przy użyciu środowiska Node.js.
+W tym artykule dowiesz się, jak korzystać z interfejsu API [wyszukiwania jednostek Bing](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)  przy użyciu środowiska Node.js.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/05/2018
+ms.date: 11/14/2018
 ms.author: spelluru
-ms.openlocfilehash: 6696d6e7e53e98dfab2a65c7c66825936020f33c
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: babff55d6684feb1f0414970616260be96b994f4
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856642"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706011"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Samouczek: konfigurowanie laboratorium na potrzeby zajęć 
 W tym samouczku skonfigurujesz laboratorium na potrzeby zajęć z maszynami wirtualnymi używanymi przez uczniów podczas zajęć.  
@@ -81,7 +81,7 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
 
         > [!WARNING]
         > Nie można cofnąć publikowania szablonu. 
-    2. Aby opublikować później, wybierz pozycję **Zachowaj na później**. Maszynę wirtualną szablonu można opublikować po zakończeniu działania kreatora. Aby uzyskać więcej informacji na temat sposobu konfigurowania i publikowania po zakończeniu działania kreatora, zobacz sekcję [Publikowanie szablonu](how-to-manage-classroom-labs.md#publish-the-template) w artykule [Jak zarządzać laboratoriami na potrzeby zajęć](how-to-manage-classroom-labs.md).
+    2. Aby opublikować później, wybierz pozycję **Zachowaj na później**. Maszynę wirtualną szablonu można opublikować po zakończeniu działania kreatora. Aby uzyskać więcej informacji na temat sposobu konfigurowania i publikowania po zakończeniu działania kreatora, zobacz sekcję [Publikowanie szablonu](how-to-create-manage-template.md#publish-the-template-vm) w artykule [Jak zarządzać laboratoriami na potrzeby zajęć](how-to-manage-classroom-labs.md).
 
         ![Publikowanie szablonu](../media/tutorial-setup-classroom-lab/publish-template.png)
 11. Zostanie wyświetlony **postęp publikowania** szablonu. Ten proces może potrwać do godziny. 
@@ -97,17 +97,33 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
 
     ![Maszyny wirtualne w stanie Zatrzymano](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
+## <a name="add-users-to-the-lab"></a>Dodawanie użytkowników do laboratorium
+
+1. W menu po lewej stronie wybierz pozycję **Użytkownicy**. Domyślnie włączona jest opcja **Ogranicz dostęp**. Gdy to ustawienie jest włączone, a użytkownik nie znajduje się na liście użytkowników, nie może zarejestrować się w laboratorium nawet przy użyciu linku rejestracji. Tylko użytkownicy na liście mogą zarejestrować się w laboratorium przy użyciu przesłanego linku rejestracji. Podczas tej procedury dodasz użytkowników do listy. Możesz też wyłączyć opcję **Ogranicz dostęp**, co umożliwi użytkownikom zarejestrowanie się w laboratorium, pod warunkiem, że mają link rejestracji. 
+2. Na pasku narzędzi wybierz pozycję **Dodaj użytkowników**. 
+3. Na stronie **Dodawanie użytkowników** wpisz adresy e-mail użytkowników w osobnych wierszach lub w jednym wierszu, rozdzielając je średnikami. 
+
+    ![Dodawanie adresów e-mail użytkowników](../media/how-to-configure-student-usage/add-users-email-addresses.png)
+4. Wybierz pozycję **Zapisz**. Na liście zostaną wyświetlone adresy e-mail użytkowników oraz ich stan rejestracji. 
+
+    ![Lista użytkowników](../media/how-to-configure-student-usage/users-list-new.png)
+
+
 ## <a name="send-registration-link-to-students"></a>Wysyłanie linków rejestracyjnych do uczniów
 
-1. Przełącz się do widoku **Pulpit nawigacyjny**, wybierając pozycję **Pulpit nawigacyjny** w menu po lewej stronie. 
-2. Wybierz kafelek **Rejestracja użytkownika**.
+1. Jeśli jeszcze nie jesteś na tej stronie, przełącz się do widoku **Użytkownicy**. 
+2. Wybierz kafelek **Pobierz link rejestracji**.
 
     ![Link rejestracji ucznia](../media/tutorial-setup-classroom-lab/dashboard-user-registration-link.png)
-1. W oknie dialogowym **Rejestracja użytkownika** wybierz przycisk **Kopiuj**. Link zostanie skopiowany do Schowka. Wklej go w edytorze wiadomości e-mail i wyślij wiadomość e-mail do ucznia. 
+1. W oknie dialogowym **Rejestracja użytkownika** wybierz przycisk **Kopiuj**. Link zostanie skopiowany do Schowka. 
 
     ![Link rejestracji ucznia](../media/tutorial-setup-classroom-lab/registration-link.png)
 2. W oknie dialogowym **Rejestracja użytkownika** wybierz przycisk **Zamknij**. 
-3. Udostępnij link rejestracji uczniowi, aby mógł się zarejestrować w klasie. 
+4. Udostępnij link rejestracji uczniowi, aby mógł się zarejestrować w klasie. Jeśli ustawienie **Ogranicz dostęp** jest włączone i masz listę użytkowników, wykonaj następujące czynności:
+    1. Wybierz **adres e-mail** użytkownika na liście. 
+    2. Zostanie wyświetlone okno domyślnego programu poczty e-mail z wypełnionym polem adresu **DO**. 
+    3. Wklej skopiowany wcześniej **adres URL rejestracji**. 
+    4. Wyślij wiadomość **e-mail**.
 
 
 ## <a name="next-steps"></a>Następne kroki

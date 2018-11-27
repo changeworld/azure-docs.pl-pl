@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie aplikacji ASP.NET i bazy danych Azure SQL Database za pomocą projektu usługi Azure DevOps | Samouczek usługi Azure DevOps Services
-description: Projekt DevOps ułatwia rozpoczęcie pracy na platformie Azure. Projekt usługi Azure DevOps umożliwia łatwe wdrożenie aplikacji ASP.NET i bazy danych Azure SQL Database w kilku szybkich krokach.
+title: 'Samouczek: wdrażanie aplikacji ASP.NET i kodu bazy danych Azure SQL Database za pomocą usługi Azure DevOps Projects'
+description: Usługa DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Usługa DevOps Projects pozwala wdrożyć aplikację platformy ASP.NET i kod bazy danych Azure SQL Database w kilku prostych krokach.
 ms.author: mlearned
 ms.manager: douge
 ms.prod: devops
@@ -9,183 +9,212 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: d9c7c94e344daee5af87ce40ddf4dcb686696ded
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 32f33e4ac66ad456b5ff8807d6a1b5ea5f541fed
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297337"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161405"
 ---
-# <a name="tutorial--deploy-your-aspnet-app-and-azure-sql-database-with-the-azure-devops-project"></a>Samouczek: wdrażanie aplikacji ASP.NET i bazy danych Azure SQL Database za pomocą projektu DevOps platformy Azure
+# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>Samouczek: wdrażanie aplikacji ASP.NET i kodu bazy danych Azure SQL Database za pomocą usługi Azure DevOps Projects
 
-Projekt DevOps platformy Azure stanowi uproszczone środowisko, do którego możesz przenieść istniejący kod i repozytorium Git lub dokonać wyboru jednej z przykładowych aplikacji, aby utworzyć potok ciągłej integracji i ciągłego dostarczania na platformie Azure.  Projekt DevOps automatycznie tworzy zasoby platformy Azure, takie jak baza danych Azure SQL Database, tworzy i konfiguruje potok wydania w usłudze Azure DevOps zawierający potok kompilacji dla ciągłej integracji, konfiguruje potok wydania dla ciągłego wdrażania, a następnie tworzy zasób usługi Azure Application Insights na potrzeby monitorowania.
+Usługa Azure DevOps Projects stanowi uproszczone środowisko, do którego możesz przenieść istniejący kod i repozytorium Git lub wybrać aplikację przykładową, aby utworzyć potok ciągłej integracji i ciągłego dostarczania na platformie Azure. 
 
-Wykonasz następujące zadania:
+Usługa DevOps Projects wykonuje również następujące działania:
+* Automatycznie tworzy zasoby platformy Azure, takie jak baza danych Azure SQL Database.
+* Tworzy i konfiguruje potok wydania w usłudze Azure Pipelines, który obejmuje potok kompilacji na potrzeby ciągłej integracji.
+* Konfiguruje potok wydania na potrzeby ciągłego wdrażania. 
+* Tworzy zasób usługi Azure Application Insights na potrzeby monitorowania.
+
+W tym samouczku zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
-> * Tworzenie projektu usługi Azure DevOps dla aplikacji ASP.NET i bazy danych Azure SQL Database
-> * Konfigurowanie usługi Azure DevOps Services i subskrypcji platformy Azure 
-> * Badanie potoku ciągłej integracji usługi Azure DevOps Services
-> * Badanie potoku ciągłego wdrażania usługi Azure DevOps Services
-> * Zatwierdzanie zmian w usłudze Azure DevOps Services i automatyczne wdrażanie na platformie Azure
-> * Łączenie z usługą Azure SQL Server Database 
+> * Samouczek: wdrażanie aplikacji ASP.NET i kodu bazy danych Azure SQL Database za pomocą usługi Azure DevOps Projects
+> * Konfigurowanie usługi Azure DevOps i subskrypcji platformy Azure 
+> * Badanie potoku ciągłej integracji
+> * Badanie potoku ciągłego wdrażania
+> * Zatwierdzanie zmian w usłudze Azure Repos i automatyczne wdrażanie ich na platformie Azure
+> * Łączenie z usługą Azure SQL Database 
 > * Oczyszczanie zasobów
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure. Możesz uzyskać ją bezpłatnie za pośrednictwem programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
-## <a name="create-an-azure-devops-project-for-an-aspnet-app-and-azure-sql-database"></a>Tworzenie projektu usługi Azure DevOps dla aplikacji ASP.NET i bazy danych Azure SQL Database
+## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-an-azure-sql-database"></a>Tworzenie projektu w usłudze Azure DevOps Projects dla aplikacji ASP.NET i bazy danych Azure SQL Database
 
-Projekt usługi Azure DevOps tworzy potok ciągłej integracji/ciągłego wdrażania na platformie Azure.  Możesz utworzyć **nową organizację usługi Azure DevOps Services** lub użyć **istniejącej organizacji**.  Projekt DevOps platformy Azure tworzy również **zasoby platformy Azure**, na przykład bazę danych Azure SQL Database, w wybranej przez użytkownika **subskrypcji platformy Azure**.
+Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines. Możesz utworzyć nową organizację usługi Azure DevOps lub użyć istniejącej organizacji. Usługa Azure DevOps Projects tworzy również zasoby platformy Azure, na przykład bazę danych Azure SQL Database, w wybranej przez użytkownika subskrypcji platformy Azure.
 
-1. Zaloguj się do witryny [Microsoft Azure Portal](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-1. Wybierz ikonę **Utwórz zasób** na pasku nawigacyjnym po lewej stronie, a następnie wyszukaj pozycję **Projekt DevOps**.  Wybierz pozycję **Utwórz**.
+1. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**.
 
-    ![Rozpoczynanie ciągłego dostarczania](_img/azure-devops-project-github/fullbrowser.png)
+1. W polu wyszukiwania wpisz ciąg **DevOps Projects**, a następnie wybierz pozycję **Utwórz**.
+
+    ![Pulpit nawigacyjny usługi DevOps Projects](_img/azure-devops-project-github/fullbrowser.png)
 
 1. Wybierz pozycję **.NET**, a następnie wybierz pozycję **Dalej**.
 
-1. Na stronie **Wybierz strukturę aplikacji** wybierz opcję **ASP.NET**.
+1. Na stronie **Wybierz strukturę aplikacji** wybierz pozycję **ASP.NET**.
 
-1. Wybierz polecenie **Dodaj bazę danych**, a następnie wybierz pozycję **Dalej**.  
-
-1. Struktura aplikacji wybrana w poprzednich krokach decyduje o dostępnym w tym miejscu typie celu wdrożenia usługi platformy Azure.  Wybierz opcję **Dalej**.
-
-## <a name="configure-azure-devops-services-and-an-azure-subscription"></a>Konfigurowanie usługi Azure DevOps Services i subskrypcji platformy Azure
-
-1. Utwórz **nową** organizację usługi Azure DevOps Services lub wybierz **istniejącą** organizację.  Wybierz **nazwę** projektu usługi Azure DevOps.  
-
-1. Wybierz swoją **subskrypcję** platformy Azure.
-
-1. Możesz również wybrać link **Zmień**, aby wyświetlić dodatkowe ustawienia konfiguracji platformy Azure, a następnie określić **nazwę użytkownika** w sekcji **Szczegóły logowania na serwerze bazy danych**.  **Zachowaj** **nazwę użytkownika**, aby użyć jej w dalszych krokach tego samouczka.
- 
-1. Jeśli wykonano powyższe czynności, opuść obszar konfiguracji platformy Azure i wybierz pozycję **Gotowe**.  W przeciwnym razie po prostu wybierz pozycję **Gotowe**.
-
-1. Zakończenie procesu potrwa kilka minut.  Po zakończeniu **pulpit nawigacyjny projektu** usługi Azure DevOps zostanie załadowany w witrynie Azure Portal.  Możesz również przejść do **pulpitu nawigacyjnego projektu DevOps platformy Azure** bezpośrednio z obszaru **Wszystkie zasoby** w witrynie **Azure Portal**.  Po prawej stronie pulpitu nawigacyjnego wybierz pozycję **Przeglądaj**, aby wyświetlić uruchomioną aplikację.
+1. Wybierz pozycję **Dodaj bazę danych**, a następnie wybierz pozycję **Dalej**.  
+    Wybrana w poprzednim kroku struktura aplikacji decyduje o dostępnym w tym miejscu typie celu wdrożenia usługi platformy Azure. 
     
-## <a name="examine-the-azure-devops-services-ci-pipeline"></a>Badanie potoku ciągłej integracji usługi Azure DevOps Services
+1. Wybierz opcję **Dalej**.
 
-Projekt usługi Azure DevOps automatycznie skonfigurował pełny potok ciągłej integracji/ciągłego wdrażania na platformie Azure w organizacji usługi Azure DevOps Services.  Możesz przeglądać i dostosowywać potok.  Wykonaj poniższe kroki, aby zapoznać się z potokiem kompilacji usługi Azure DevOps Services.
+## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurowanie usługi Azure DevOps i subskrypcji platformy Azure
 
-1. Przejdź do **pulpitu nawigacyjnego projektu DevOps platformy Azure**.
+1. Utwórz nową organizację usługi Azure DevOps lub wybierz istniejącą organizację. 
 
-1. Wybierz pozycję **Potoki kompilacji** w **górnej części** **pulpitu nawigacyjnego projektu usługi Azure DevOps**.  Ten link powoduje otwarcie karty przeglądarki oraz otwarcie potoku kompilacji usługi Azure DevOps Services dla nowego projektu.
+1. Wprowadź nazwę projektu usługi Azure DevOps. 
 
-1. Przesuń wskaźnik myszy na prawo od potoku kompilacji, obok pola **Stan**. Wybierz symbol **wielokropka**, który się pojawi.  Ta akcja spowoduje otwarcie menu, w którym możesz wykonać kilka działań, takich jak **dodawanie nowej kompilacji do kolejki**, **wstrzymywanie kompilacji** i **edytowanie potoku kompilacji**.
+1. Wybierz usługi subskrypcji platformy Azure.  
+    Możesz również wybrać link **Zmień**, aby wyświetlić dodatkowe ustawienia konfiguracji platformy Azure, a następnie określić nazwę użytkownika w sekcji **Szczegóły logowania na serwerze bazy danych**. Zachowaj nazwę użytkownika, aby użyć jej w dalszych krokach tego samouczka. Jeśli możesz wykonać ten krok opcjonalny, zamknij obszar konfiguracji platformy Azure przed wybraniem pozycji **Gotowe**.
+ 
+1. Wybierz pozycję **Done** (Gotowe).  
+    Po kilku minutach proces się zakończy i zostanie otwarty pulpit nawigacyjny usługi DevOps Projects w witrynie Azure Portal. Możesz również przejść do pulpitu nawigacyjnego bezpośrednio z obszaru **Wszystkie zasoby** w witrynie Azure Portal. Po prawej stronie wybierz pozycję **Przeglądaj**, aby wyświetlić uruchomioną aplikację.
+    
+## <a name="examine-the-ci-pipeline"></a>Badanie potoku ciągłej integracji
+
+Usługa DevOps Projects automatycznie konfiguruje pełny potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Repos. Możesz przeglądać i dostosowywać potok. Aby zapoznać się z potokami kompilacji usługi Azure DevOps, wykonaj następujące czynności:
+
+1. U góry pulpitu nawigacyjnego usługi DevOps Projects wybierz pozycję **Potoki kompilacji**.  
+    Zostanie wyświetlona karta przeglądarki z potokiem kompilacji dla nowego projektu.
+
+1. Wskaż pole **Stan** i wybierz symbol wielokropka (...).  
+    Zostanie wyświetlone menu z kilkoma opcjami, takimi jak dodanie nowej kompilacji do kolejki, wstrzymanie kompilacji i edytowanie potoku kompilacji.
 
 1. Wybierz pozycję **Edit** (Edytuj).
 
-1. Z poziomu tego widoku **zapoznaj się z różnymi zadaniami** w potoku kompilacji.  W ramach kompilacji są wykonywane różne zadania, takie jak pobieranie źródeł z repozytorium Git usługi Azure DevOps Services, przywracanie zależności i publikowanie danych wyjściowych używanych na potrzeby wdrożeń.
+1. W tym okienku możesz zapoznać się z różnymi zadaniami w potoku kompilacji.  
+    W ramach kompilacji są wykonywane różne zadania, takie jak pobieranie źródeł z repozytorium Git, przywracanie zależności i publikowanie danych wyjściowych używanych do wdrożenia.
 
-1. W górnej części potoku kompilacji wybierz **nazwę potoku kompilacji**.
+1. W górnej części potoku kompilacji wybierz jego nazwę.
 
-1. Zmień **nazwę** potoku kompilacji na bardziej opisową.  Wybierz pozycję **Zapisz i dodaj do kolejki**, a następnie wybierz pozycję **Zapisz**.
+1. Zmień nazwę potoku kompilacji na bardziej opisową, wybierz pozycję **Zapisz i dodaj do kolejki**, a następnie wybierz pozycję **Zapisz**.
 
-1. W obszarze nazwy potoku kompilacji wybierz pozycję **Historia**.  Zostanie wyświetlony dziennik inspekcji ostatnio wprowadzonych zmian w kompilacji.  Usługa Azure DevOps Services śledzi wszelkie zmiany wprowadzone w potoku kompilacji i pozwala na porównywanie wersji.
+1. W obszarze nazwy potoku kompilacji wybierz pozycję **Historia**.  
+    W tym okienku jest wyświetlany dziennik inspekcji ostatnio wprowadzonych zmian w kompilacji. Usługa Azure Pipelines śledzi wszelkie zmiany wprowadzone do potoku kompilacji i pozwala na porównanie wersji.
 
-1. Wybierz pozycję **Wyzwalacze**.  Projekt usługi Azure DevOps automatycznie utworzył wyzwalacz ciągłej integracji. Każde zatwierdzenie w repozytorium uruchamia nową kompilację.  Opcjonalnie możesz zdecydować się dołączyć gałęzie do procesu ciągłej integracji lub je wykluczyć.
+1. Wybierz pozycję **Wyzwalacze**.  
+    Usługa DevOps Projects automatycznie tworzy wyzwalacz ciągłej integracji — każde zatwierdzenie w repozytorium uruchamia nową kompilację. Opcjonalnie możesz zdecydować się dołączyć gałęzie do procesu ciągłej integracji lub wykluczyć je z niego.
 
-1. Wybierz pozycję **Przechowywanie**.  W zależności od scenariusza możesz określić zasady przechowywania lub usuwania pewnej liczby kompilacji.
+1. Wybierz pozycję **Przechowywanie**.  
+    W zależności od scenariusza możesz określić zasady przechowywania lub usuwania pewnej liczby kompilacji.
 
-## <a name="examine-the-azure-devops-services-cd-pipeline"></a>Badanie potoku ciągłego wdrażania usługi Azure DevOps Services
+## <a name="examine-the-cd-pipeline"></a>Badanie potoku ciągłego wdrażania
 
-Projekt usługi Azure DevOps automatycznie tworzy i konfiguruje wymagane kroki wdrożenia z organizacji usługi Azure DevOps Services do subskrypcji platformy Azure.  Te kroki obejmują konfigurowanie połączenia usługi platformy Azure w celu uwierzytelniania usługi Azure DevOps Services w subskrypcji platformy Azure.  Automatyzacja tworzy również definicję wydania usługi Azure DevOps Services, a wydanie zapewnia ciągłe wdrażanie na platformie Azure.  Wykonaj poniższe kroki, aby dowiedzieć się więcej o definicji potoku wydania usługi Azure DevOps Services.
+Usługa DevOps Projects automatycznie tworzy i konfiguruje kroki wymagane do wdrożenia z organizacji usługi Azure DevOps w ramach subskrypcji platformy Azure. Te kroki obejmują konfigurowanie połączenia usługi platformy Azure w celu uwierzytelniania usługi Azure DevOps w subskrypcji platformy Azure. Automatyzacja tworzy również potok ciągłego wdrażania, a on zapewnia ciągłe wdrażanie na maszynie wirtualnej platformy Azure. Aby dowiedzieć się więcej o potoku ciągłego wdrażania usługi Azure DevOps, wykonaj następujące czynności:
 
-1. Wybierz pozycję **Kompilacja i wydanie**, a następnie wybierz pozycję **Wydania**.  Projekt Azure DevOps utworzył potok wydania usługi Azure DevOps Services w celu zarządzania wdrożeniami na platformie Azure.
+1. Wybierz pozycję **Kompilacja i wydanie**, a następnie wybierz pozycję **Wydania**.  
+    Usługa DevOps Projects tworzy potok wydania w celu zarządzania wdrożeniami na platformie Azure.
 
-1. Po lewej stronie okna przeglądarki wybierz symbol **wielokropka** obok potoku wydania, a następnie wybierz pozycję **Edytuj**.
+1. Wybierz symbol wielokropka (...) obok potoku wydania, a następnie wybierz pozycję **Edytuj**.  
+    Potok wydania zawiera *potok*, który definiuje proces tworzenia wydania.
 
-1. Potok wydania zawiera **potok**, który definiuje proces tworzenia wydania.  W obszarze **Artefakty** wybierz polecenie **Porzuć**.  Potok kompilacji przedstawiony w poprzednich krokach generuje dane wyjściowe używane na potrzeby artefaktu. 
+1. W obszarze **Artefakty** wybierz polecenie **Porzuć**.  
+    Potok kompilacji przedstawiony w poprzednich krokach generuje dane wyjściowe używane na potrzeby artefaktu. 
 
-1. Z prawej strony ikony **Porzuć** wybierz **ikonę** **wyzwalacza ciągłego wdrażania** w kształcie błyskawicy.  Ten potok wydania ma włączony wyzwalacz ciągłego wdrażania.  Wyzwalacz przeprowadza wdrożenie za każdym razem, gdy dostępny jest nowy artefakt kompilacji.  Opcjonalnie możesz wyłączyć wyzwalacz. Wtedy wdrożenia będą wymagać ręcznego wykonania. 
+1. Z prawej strony ikony **Porzuć** wybierz pozycję **Wyzwalacz ciągłego wdrażania**.  
+    Ten potok wydania ma włączony wyzwalacz ciągłego wdrażania, który przeprowadza wdrożenie za każdym razem, gdy jest dostępny nowy artefakt kompilacji. Opcjonalnie możesz wyłączyć wyzwalacz. Wtedy wdrożenia będą wymagać ręcznego wykonania. 
 
-1. Projekt usługi Azure DevOps konfiguruje losowe hasło SQL i używa go w potoku wydania.  Po lewej stronie okna przeglądarki wybierz pozycję **Zmienne**. 
+    Usługa DevOps Projects konfiguruje losowe hasło SQL i używa go w potoku wydania.
+    
+1. Po lewej stronie wybierz pozycję **Zmienne**. 
 
-1. **Ten krok należy wykonać tylko, jeśli hasło programu SQL Server zostało zmienione.**  Istnieje jedna zmienna **Hasło**.  Po prawej stronie pola tekstowego **Wartość** wybierz ikonę **kłódki**.  **Wprowadź** nowe hasło, a następnie wybierz polecenie **Zapisz**.
+  > [!NOTE]
+  > Ten krok należy wykonać tylko, jeśli hasło programu SQL Server zostało zmienione. Istnieje jedna zmienna hasła.
+  
+1. Obok pola **Wartość** wybierz ikonę kłódki, wprowadź nowe hasło, a następnie wybierz pozycję **Zapisz**.
 
-1. Po lewej stronie okna przeglądarki wybierz pozycję **Zadania**, a następnie wybierz **środowisko**.  
+1. Po lewej stronie wybierz pozycję **Zadania**, a następnie wybierz środowisko.  
+    Zadania to czynności wykonywane w procesie wdrażania, pogrupowane w fazy. Ten potok wydania ma jedną fazę, która zawiera zadania *wdrożenia usługi Azure App Service* i *wdrożenia usługi Azure SQL Database*.
 
-1. Zadania to czynności wykonywane w procesie wdrażania, pogrupowane w **Fazy**.  W tym potoku wydania istnieje jedna faza.  Ta faza zawiera zadania **wdrożenia usługi Azure App Service** i **wdrożenia usługi Azure SQL Database**.
+1. Wybierz zadanie *wykonania usługi Azure SQL* i sprawdź różne właściwości użyte podczas wdrożenia bazy danych SQL.  
+    W obszarze **Pakiet wdrożeniowy** w zadaniu używany jest plik *SQL DACPAC*.
 
-1. Wybierz zadanie **wykonania usługi Azure SQL** i sprawdź różne właściwości użyte podczas wdrożenia bazy danych SQL.  W obszarze **Pakiet wdrożeniowy** zwróć uwagę, czy w zadaniu używany jest **plik SQL DACPAC**.
+1. Po prawej stronie wybierz pozycję **Wyświetl wydania**, aby wyświetlić historię wydań.
 
-1. Po prawej stronie okna przeglądarki wybierz pozycję **Wyświetl wersje**.  Ten widok przedstawia historię wersji.
+1. Wybierz symbol wielokropka (...) obok wydania, a następnie wybierz pozycję **Otwórz**.  
+    Dostępnych jest kilka menu, z którymi możesz się zapoznać, na przykład podsumowanie wydań, skojarzone elementy robocze i testy.
 
-1. Wybierz symbol **wielokropka** obok jednej z wersji i wybierz polecenie **Otwórz**.  W tym widoku jest kilka menu, z którymi możesz się zapoznać, na przykład **podsumowanie wersji**, **skojarzone elementy robocze** i **Testy**.
+1. Wybierz pozycję **Zatwierdzenia**.  
+    Ten widok przedstawia zatwierdzenia kodu skojarzone z danym wdrożeniem. Porównaj wydania, aby wyświetlić różnice w zatwierdzeniach pomiędzy wdrożeniami.
 
-1. Wybierz pozycję **Zatwierdzenia**.  Ten widok przedstawia zatwierdzenia kodu skojarzone z konkretnym wdrożeniem. Możesz porównać wydania, aby wyświetlić różnice w zatwierdzeniach pomiędzy wdrożeniami.
+1. Wybierz pozycję **Dzienniki**.  
+    Dzienniki zawierają przydatne informacje na temat procesu wdrażania. Możesz je wyświetlać zarówno podczas wdrażania, jak i po jego zakończeniu.
 
-1. Wybierz pozycję **Dzienniki**.  Dzienniki zawierają przydatne informacje na temat procesu wdrażania.  Mogą być wyświetlane zarówno podczas wdrożeń, jak i po nich.
-
-## <a name="commit-changes-to-azure-devops-services-and-automatically-deploy-to-azure"></a>Zatwierdzanie zmian w usłudze Azure DevOps Services i automatyczne wdrażanie na platformie Azure 
+## <a name="commit-changes-to-azure-repos-and-automatically-deploy-them-to-azure"></a>Zatwierdzanie zmian w usłudze Azure Repos i automatyczne wdrażanie ich na platformie Azure 
 
  > [!NOTE]
- > W poniższych krokach potok ciągłej integracji/ciągłego wdrażania zostanie sprawdzony za pomocą prostej zmiany tekstu.  Możesz również wprowadzić zmianę w schemacie programu SQL Server w tabeli, aby sprawdzić proces wdrażania usługi SQL.
+ > Poniższa procedura testuje potok ciągłej integracji/ciągłego wdrażania, wprowadzając prostą zmianę tekstu. Aby sprawdzić proces wdrażania usługi SQL, możesz również wprowadzić zmianę w schemacie programu SQL Server w tabeli.
 
-Możesz teraz rozpocząć pracę w zespole nad aplikacją w ramach procesu ciągłej integracji/ciągłego wdrażania, który umożliwia automatyczne wdrażanie najnowszej wersji w witrynie internetowej.  Każda zmiana w repozytorium Git usługi Azure DevOps Services rozpoczyna kompilację w usłudze Azure DevOps Services, a potok ciągłego wdrażania usługi Azure DevOps Services wykonuje wdrażanie na platformie Azure.  Wykonaj poniższe kroki lub użyj innej techniki, aby zatwierdzić zmiany w repozytorium.  Zmiany kodu wywołują rozpoczęcie procesu ciągłej integracji/ciągłego wdrażania i automatyczne wdrożenie nowych zmian na platformie Azure.
+Teraz możesz rozpocząć współpracę z zespołem nad aplikacją w języku Python w ramach procesu ciągłej integracji/ciągłego wdrażania, który automatycznie wdraża najnowszy kod w witrynie internetowej. Każda zmiana w repozytorium Git rozpoczyna kompilację w usłudze Azure DevOps, a potok ciągłego wdrażania wykonuje wdrażanie na platformie Azure. Wykonaj procedurę opisaną w tej sekcji lub użyj innej techniki, aby zatwierdzić zmiany w repozytorium. Zmiany kodu wywołują rozpoczęcie procesu ciągłej integracji/ciągłego wdrażania i automatyczne wdrożenie zmian na platformie Azure.
 
-1. Wybierz pozycję **Kod** z menu usługi Azure DevOps Services i przejdź do repozytorium.
+1. W lewym okienku wybierz pozycję **Kod**, a następnie przejdź do repozytorium.
 
-1. Przejdź do katalogu **SampleWebApplication\Views\Home**, a następnie wybierz symbol **wielokropka** obok pliku **Index.cshtml** i wybierz polecenie **Edytuj**.
+1. Przejdź do katalogu *SampleWebApplication\Views\Home*, a następnie wybierz symbol wielokropka (...) obok pliku *Index.cshtml* i wybierz polecenie **Edytuj**. 
 
-1. Wprowadź zmianę w pliku, na przykład zmień tekst w jednym z **tagów div**.  W prawym górnym rogu wybierz polecenie **Zatwierdź**.  Wybierz ponownie polecenie **Zatwierdź**, aby wypchnąć zmianę. 
+1. Wprowadź zmianę w pliku, na przykład dodaj tekst w jednym z tagów div. 
 
-1. Po chwili **kompilacja zostanie uruchomiona w usłudze Azure DevOps Services**, a następnie zostanie wykonane wydanie w celu wdrożenia zmian.  **Stan kompilacji** możesz monitorować na pulpicie nawigacyjnym projektu usługi DevOps lub w przeglądarce przy użyciu organizacji usługi Azure DevOps Services.
+1. W prawym górnym rogu wybierz pozycję **Zatwierdź**, a następnie ponownie wybierz pozycję **Zatwierdź**, aby wypchnąć zmianę.  
+    Po chwili zostanie uruchomiona kompilacja w usłudze Azure DevOps, a następnie zostanie wykonane wydanie w celu wdrożenia zmian. Monitoruj stan kompilacji na pulpicie nawigacyjnym usługi DevOps Projects lub w przeglądarce przy użyciu organizacji usługi Azure DevOps.
 
-1. Po zakończeniu wydania **odśwież aplikację** w przeglądarce, aby sprawdzić, czy zmiany są wyświetlane.
+1. Po zakończeniu tworzenia wydania odśwież aplikację, aby zweryfikować zmiany.
 
-## <a name="connect-to-the-azure-sql-server-database"></a>Łączenie z usługą Azure SQL Server Database
+## <a name="connect-to-the-azure-sql-database"></a>Łączenie z usługą Azure SQL Database
 
 Aby połączyć się z usługą Azure SQL Database potrzebne są odpowiednie uprawnienia.
 
-1. Na pulpicie nawigacyjnym projektu DevOps platformy Azure wybierz pozycję **Baza danych SQL**, aby przejść do strony zarządzania bazą danych SQL.
+1. Na pulpicie nawigacyjnym usługi DevOps Projects wybierz pozycję **Baza danych SQL**, aby przejść do strony zarządzania bazą danych SQL.
    
-1. Wybierz polecenie **Ustaw zaporę serwera**, a następnie wybierz pozycję **+ Dodaj adres IP klienta**.  
+1. Wybierz polecenie **Ustaw zaporę serwera**, a następnie wybierz pozycję **Dodaj adres IP klienta**. 
 
-1. Wybierz pozycję **Zapisz**.  Adres IP klienta ma teraz dostęp do **zasobów usługi Azure SQL Server**.
+1. Wybierz pozycję **Zapisz**.  
+    Adres IP klienta ma teraz dostęp do zasobów usługi Azure SQL Server.
 
-1. Wróć do bloku **Baza danych SQL**. 
+1. Wróć do okienka **Baza danych SQL**. 
 
-1. Po prawej stronie wybierz pozycję **Nazwa serwera**, aby przejść do strony konfiguracji usługi **SQL Server**.
+1. Po prawej stronie wybierz nazwę serwera, aby przejść do strony konfiguracji usługi **SQL Server**.
 
-1. Wybierz polecenie **Resetuj hasło**, wprowadź hasło **logowania administratora usługi SQL Server**, a następnie wybierz pozycję **Zapisz**.  **Zachowaj** to hasło, aby użyć go w dalszych krokach tego samouczka.
+1. Wybierz polecenie **Resetuj hasło**, wprowadź hasło logowania administratora usługi SQL Server, a następnie wybierz pozycję **Zapisz**.  
+    Zachowaj to hasło do użycia w dalszej części tego samouczka.
 
-1. Możesz teraz opcjonalnie użyć narzędzi klienta, takich jak **SQL Server Management Studio** lub **Visual Studio**, aby połączyć się z usługami Azure SQL Server i Database.  Użyj właściwości **Nazwa serwera**, aby nawiązać połączenie.
+    Możesz teraz opcjonalnie użyć narzędzi klienta, takich jak SQL Server Management Studio lub Visual Studio, aby połączyć się z usługami SQL Server i Azure SQL Database. Użyj właściwości **Nazwa serwera**, aby nawiązać połączenie.
 
-   Jeśli nie zmieniono nazwy użytkownika bazy danych podczas początkowego konfigurowania projektu DevOps, nazwa użytkownika to lokalna część adresu e-mail.  Na przykład jeśli Twój adres e-mail to johndoe@microsoft.com, nazwa użytkownika to johndoe.
+    Jeśli nie zmieniono nazwy użytkownika bazy danych podczas początkowego konfigurowania projektu w usłudze DevOps Projects, nazwa użytkownika to lokalna część adresu e-mail. Jeśli na przykład Twój adres e-mail to *johndoe@microsoft.com*, nazwa użytkownika to *johndoe*.
 
  > [!NOTE]
- > Jeśli zmienisz hasło logowania usługi SQL, musisz zmienić hasło w zmiennej potoku wydania usługi Azure DevOps Services, zgodnie z instrukcjami w sekcji **Badanie potoku ciągłego wdrażania usługi Azure DevOps Services**
+ > Jeśli zmienisz hasło logowania usługi SQL, musisz zmienić hasło w zmiennej potoku wydania, zgodnie z instrukcjami w sekcji „Badanie potoku ciągłego wdrażania”.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
- > [!NOTE]
- > Wykonanie poniższych czynności spowoduje trwałe usunięcie zasobów.  Tej funkcji można używać tylko po uważnym zapoznaniu się z monitami.
+Jeśli przeprowadzasz testowanie, możesz uniknąć naliczania opłat, oczyszczając zasoby. Gdy usługa Azure SQL Database i powiązane zasoby utworzone w tym samouczku nie będą już potrzebne, możesz je usunąć. W tym celu użyj funkcji **Usuń** na pulpicie nawigacyjnym usługi DevOps Projects.
 
-Jeśli jesteś w trakcie testów, możesz oczyścić zasoby, aby uniknąć naliczania opłat.  Jeśli baza danych Azure SQL Database nie jest już potrzebna, możesz ją usunąć wraz z powiązanymi zasobami utworzonymi w tym samouczku, korzystając z funkcji **Usuń** na pulpicie nawigacyjnym projektu DevOps platformy Azure.  **Należy zachować ostrożność**, ponieważ funkcja usuwania niszczy dane utworzone w projekcie usługi Azure DevOps zarówno na platformie Azure, jak i w usłudze Azure DevOps Services, i nie ma możliwości ich odzyskania.
+> [!IMPORTANT]
+> Poniższa procedura powoduje trwałe usunięcie zasobów. Funkcja *Usuń* niszczy dane utworzone przez projekt w usłudze DevOps Projects zarówno na platformie Azure, jak i w usłudze Azure DevOps. Nie będzie można ich odzyskać. Użyj tej procedury dopiero po uważnym przeczytaniu monitów.
 
-1. W witrynie**Azure Portal** przejdź do **projektu DevOps platformy Azure**.
-2. W **prawym górnym** rogu pulpitu nawigacyjnego wybierz opcję **Usuń**.  Po przeczytaniu monitu wybierz pozycję **Tak**, aby **trwale usunąć** zasoby.
+1. W witrynie Azure Portal przejdź do pulpitu nawigacyjnego usługi DevOps Projects.
+2. W prawym górnym rogu wybierz pozycję **Usuń**. 
+3. Po wyświetleniu monitu wybierz pozycję **Tak**, aby *trwale usunąć* zasoby.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Opcjonalnie możesz zmodyfikować potoki kompilacji i wydania, aby zaspokoić potrzeby swojego zespołu. Możesz także użyć wzorca ciągłej integracji/ciągłego wdrażania jako szablonu podczas pracy z innymi projektami.  W tym samouczku omówiono:
+Opcjonalnie możesz zmodyfikować potoki kompilacji i wydania, aby zaspokoić potrzeby swojego zespołu. Możesz także użyć wzorca ciągłej integracji/ciągłego wdrażania jako szablonu podczas pracy z innymi potokami. W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Tworzenie projektu usługi Azure DevOps dla aplikacji ASP.NET i bazy danych Azure SQL Database
-> * Konfigurowanie usługi Azure DevOps Services i subskrypcji platformy Azure 
-> * Badanie potoku ciągłej integracji usługi Azure DevOps Services
-> * Badanie potoku ciągłego wdrażania usługi Azure DevOps Services
-> * Zatwierdzanie zmian w usłudze Azure DevOps Services i automatyczne wdrażanie na platformie Azure
-> * Łączenie z usługą Azure SQL Server Database 
+> * Samouczek: wdrażanie aplikacji ASP.NET i kodu bazy danych Azure SQL Database za pomocą usługi Azure DevOps Projects
+> * Konfigurowanie usługi Azure DevOps i subskrypcji platformy Azure 
+> * Badanie potoku ciągłej integracji
+> * Badanie potoku ciągłego wdrażania
+> * Zatwierdzanie zmian w usłudze Azure Repos i automatyczne wdrażanie ich na platformie Azure
+> * Łączenie z usługą Azure SQL Database 
 > * Oczyszczanie zasobów
 
-Aby dowiedzieć się więcej na temat potoku platformy Azure, zapoznaj się z tym samouczkiem:
+Aby dowiedzieć się więcej na temat potoku ciągłej integracji/ciągłego wdrażania, zobacz:
 
 > [!div class="nextstepaction"]
-> [Dostosowywanie procesu ciągłego wdrażania](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Definiowanie wieloetapowego potoku ciągłego wdrażania](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
 ## <a name="videos"></a>Filmy wideo
 

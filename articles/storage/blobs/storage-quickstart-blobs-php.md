@@ -6,28 +6,26 @@ author: roygara
 ms.service: storage
 ms.devlang: php
 ms.topic: quickstart
-ms.date: 04/09/2018
+ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: b0a562bd37c1877651863525241d70990d38ded2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6ecb87af9cc75898aa8734b329dce01f70511a27
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969619"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712912"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Transferowanie obiektów do i z usługi Azure Blob Storage za pomocą języka PHP
 Dzięki tej skróconej instrukcji dowiesz się, w jaki sposób za pomocą języka PHP przekazywać, pobierać i wyświetlać listę blokowych obiektów blob w kontenerze usługi Azure Blob Storage. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki start: 
-* Zainstaluj [środowisko PHP](http://php.net/downloads.php).
-* Zainstaluj [zestaw SDK usługi Azure Storage dla języka PHP](https://github.com/Azure/azure-storage-php).
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
+Upewnij się, że masz zainstalowane następujące dodatkowe elementy wymagane wstępnie:
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
+* [PHP](http://php.net/downloads.php)
+* [Zestaw SDK usługi Azure Storage dla języka PHP](https://github.com/Azure/azure-storage-php)
 
 ## <a name="download-the-sample-application"></a>Pobieranie przykładowej aplikacji
 [Przykładowa aplikacja](https://github.com/Azure-Samples/storage-blobs-php-quickstart.git) używana w tym przewodniku Szybki start to podstawowa aplikacja w języku PHP.  

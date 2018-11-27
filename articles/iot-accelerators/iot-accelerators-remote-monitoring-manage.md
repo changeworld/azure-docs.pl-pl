@@ -6,15 +6,15 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 07/19/2018
+ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 6e92ef276d270fcc4c351fb89c699c8addd74632
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: b54f7601f66bd115b7ceb937e2c0ebf8ca8eb01e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222153"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821073"
 ---
 # <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>Samouczek: konfigurowanie urządzeń połączonych z rozwiązaniem do monitorowania i zarządzanie nimi
 
@@ -63,7 +63,7 @@ Aby wyświetlić szczegółowe dane diagnostyczne, przewiń w dół zawartość 
 
 ## <a name="act-on-a-device"></a>Wykonywanie akcji względem urządzenia
 
-Aby sprawdzić, czy symulowany silnik prawidłowo reaguje na akcje zainicjowane z poziomu pulpitu nawigacyjnego, uruchom metodę **FirmwareUpdate**. Aby uruchomić metodę na urządzeniu, wybierz je z listy urządzeń, a następnie kliknij przycisk **Zadania**. Możesz wybrać więcej niż jedno urządzenie, jeśli chcesz wykonać akcję na wielu urządzeniach. Na panelu **Zadania** wybierz pozycję **Uruchom metodę**. Model urządzenia **Engine** (Silnik) określa trzy metody: **FirmwareUpdate**, **FillTank** i **EmptyTank**:
+Aby sprawdzić, czy symulowany silnik prawidłowo reaguje na akcje zainicjowane z poziomu pulpitu nawigacyjnego, uruchom metodę **FirmwareUpdate**. Aby uruchomić metodę na urządzeniu, wybierz je z listy urządzeń, a następnie kliknij przycisk **Zadania**. Możesz wybrać więcej niż jedno urządzenie, jeśli chcesz wykonać akcję na wielu urządzeniach. Na panelu **Zadania** wybierz pozycję **Metody**. Model urządzenia **Engine** (Silnik) określa trzy metody: **FirmwareUpdate**, **FillTank** i **EmptyTank**:
 
 [![Metody urządzenia Engine](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-expanded.png#lightbox)
 
@@ -81,7 +81,7 @@ Jeśli wybierzesz wiele urządzeń różnych typów na stronie **Urządzenia**, 
 
 ## <a name="reconfigure-a-device"></a>Zmiana konfiguracji urządzenia
 
-Aby przetestować aktualizowanie właściwości konfiguracji silnika, wybierz go z listy urządzeń na stronie **Urządzenia**. Kliknij przycisk **Zadania**, a następnie wybierz polecenie **Zmień konfigurację**. Na panelu Zadania wyświetlane są wartości właściwości, które można zaktualizować dla wybranego urządzenia:
+Aby przetestować aktualizowanie właściwości konfiguracji silnika, wybierz go z listy urządzeń na stronie **Urządzenia**. Kliknij przycisk **Zadania**, a następnie wybierz pozycję **Właściwości**. Na panelu Zadania wyświetlane są wartości właściwości, które można zaktualizować dla wybranego urządzenia:
 
 [![Zmienianie konfiguracji urządzenia](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-expanded.png#lightbox)
 

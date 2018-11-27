@@ -10,30 +10,31 @@ ms.component: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: nolachar
-ms.openlocfilehash: 8ea45d202e550e16a7afd11e056738b2b21bd963
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: f2e576b421526c0245ff249d77214b27c9fd649a
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267719"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283948"
 ---
 # <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>Szybki start: wywoływanie analizy tekstu usługi Cognitive Service przy użyciu języka Java
 <a name="HOLTop"></a>
 
-W tym artykule opisano, jak [wykrywać język](#Detect), [analizować tonację](#SentimentAnalysis), [wyodrębniać kluczowe frazy](#KeyPhraseExtraction) i [identyfikować połączone jednostki](#Entities) przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) i języka Java.
+W tym artykule przedstawiono, jak [wykrywać język](#Detect), [analizować tonację](#SentimentAnalysis), [wyodrębniać kluczowe frazy](#KeyPhraseExtraction) i [identyfikować połączone jednostki](#Entities) przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) i języka Java.
 
 Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.microsoft.com/fwlink/?LinkID=759346), zawierającym dokumentację techniczną interfejsów API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsem API analizy tekstu**. Możesz skorzystać z **warstwy Bezpłatna, która obejmuje 5000 transakcji miesięcznie**, aby ukończyć ten przewodnik Szybki start.
+[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+
 Musisz również mieć [punkt końcowy i klucz dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany podczas tworzenia konta. 
 
 <a name="Detect"></a>
 
 ## <a name="detect-language"></a>Wykrywanie języka
 
-Interfejs API wykrywania języka wykrywa język dokumentu tekstowego przy użyciu [metody Detect Language](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
+Interfejs API wykrywania języka wykrywa język dokumentu tekstowego przy użyciu [metody Detect Language](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
 
 1. Utwórz nowy projekt języka Java w ulubionym środowisku IDE.
 2. Dodaj kod przedstawiony poniżej.

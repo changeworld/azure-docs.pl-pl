@@ -8,18 +8,18 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: e1e349f4ddbebdd9df38d7f0babf50d726241d4f
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 3d96beee881df560fc616cd975502f062275e9eb
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648738"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162028"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-nodejs"></a>Szybki start: publikowanie bazy wiedzy w usłudze QnA Maker przy użyciu platformy Node.js
 
-Ten przewodnik Szybki start przeprowadzi Cię przez programowe publikowanie Twojej bazy wiedzy. Publikowanie wypycha najnowszą wersję bazy wiedzy do dedykowanego indeksu usługi Azure Search i tworzy punkt końcowy, który może być wywoływany w Twojej aplikacji lub czatbocie.
+Ten przewodnik Szybki start oparty na protokole REST przeprowadzi Cię przez programowe publikowanie bazy wiedzy. Publikowanie wypycha najnowszą wersję bazy wiedzy do dedykowanego indeksu usługi Azure Search i tworzy punkt końcowy, który może być wywoływany w Twojej aplikacji lub czatbocie.
 
 Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
 * [Publikowanie](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) — ten interfejs API nie wymaga żadnych informacji zawartych w treści żądania.
@@ -32,9 +32,11 @@ Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
 
     ![Identyfikator bazy wiedzy usługi QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-Jeśli nie masz jeszcze bazy wiedzy, możesz utworzyć przykładową bazę na potrzeby tego podręcznika Szybki start: [Tworzenie nowej bazy wiedzy](create-new-kb-nodejs.md).
+    Jeśli nie masz jeszcze bazy wiedzy, możesz utworzyć przykładową bazę na potrzeby tego podręcznika Szybki start: [Tworzenie nowej bazy wiedzy](create-new-kb-nodejs.md).
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
+
+> [!NOTE] 
+> Pliki kompletnego rozwiązania są dostępne w [repozytorium GitHub **Azure-Samples/cognitive-services-qnamaker-nodejs**](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/publish-knowledge-base-short).
 
 ## <a name="create-a-knowledge-base-nodejs-file"></a>Tworzenie pliku Node.js bazy wiedzy
 
@@ -44,45 +46,23 @@ Utwórz plik o nazwie `publish-knowledge-base.js`.
 
 Na początku pliku `publish-knowledge-base.js` dodaj następujące wiersze, aby dodać niezbędne zależności do projektu:
 
-[!code-nodejs[Add the dependencies](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=1-4 "Add the dependencies")]
+[!code-nodejs[Add the dependencies](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base-short/publish-knowledge-base.js?range=1-3 "Add the dependencies")]
 
 ## <a name="add-required-constants"></a>Dodawanie wymaganych stałych
 
-Po poprzednich wymaganych zależnościach dodaj wymagane stałe umożliwiające dostęp do usługi QnA Maker. Zastąp wartość zmiennej `subscriptionKey` własnym kluczem usługi QnA Maker. 
+Po poprzednich wymaganych zależnościach dodaj wymagane stałe umożliwiające dostęp do usługi QnA Maker. Przedstawione wartości zastąp własnymi.
 
-[!code-nodejs[Add required constants](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=10-17 "Add required constants")]
+[!code-nodejs[Add required constants](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base-short/publish-knowledge-base.js?range=11-14 "Add required constants")]
 
-## <a name="add-knowledge-base-id"></a>Dodawanie identyfikatora bazy wiedzy
+## <a name="add-post-request-to-publish-knowledge-base"></a>Dodawanie żądania POST w celu publikowania bazy wiedzy
 
-Po poprzednich stałych dodaj identyfikator bazy wiedzy i dodaj go do ścieżki:
+Poniżej wymaganych stałych dodaj następujący kod, który wysyła żądanie HTTPS do interfejsu API usługi QnA Maker, aby opublikować bazę wiedzy, oraz odbiera odpowiedź:
 
-[!code-nodejs[Add knowledge base ID](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=19-23 "Add knowledge base ID")]
+[!code-nodejs[Add a POST request to publish knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base-short/publish-knowledge-base.js?range=16-47 "Add a POST request to publish knowledge base")]
 
-## <a name="add-supporting-functions"></a>Dodawanie funkcji pomocniczych
+W przypadku pomyślnego publikowania wywołanie interfejsu API zwraca stan 204 bez jakiejkolwiek zawartości w treści odpowiedzi. Ten kod dodaje zawartość dla odpowiedzi stanu 204.
 
-Następnie dodaj poniższe funkcje pomocnicze.
-
-1. Dodaj następującą funkcję, aby wyświetlić dane JSON w czytelnym formacie:
-
-   [!code-nodejs[Add supporting functions, step 1](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=25-28 "Add supporting functions, step 1")]
-
-2. Dodaj następujące funkcje do zarządzania odpowiedzią HTTP, aby uzyskać stan operacji tworzenia:
-
-   [!code-nodejs[Add supporting functions, step 2](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=30-52 "Add supporting functions, step 2")]
-
-## <a name="add-the-publishkb-function-and-main-function"></a>Dodawanie funkcji publish_kb i funkcji main
-
-Poniższy kod umożliwia wysłanie żądania HTTPS do interfejsu API usługi QnA Maker w celu opublikowania bazy wiedzy oraz odebranie odpowiedzi:
-
-[!code-nodejs[Add POST request to publish KB](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=54-71 "Add POST request to publish KB")]
-
-[!code-nodejs[Add the publish_kb function](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=73-91 "Add the publish_kb function and main function")]
-
-## <a name="add-the-main-function"></a>Dodawanie funkcji main
-
-Dodaj następującą funkcję umożliwiającą zarządzanie żądaniem i odpowiedzią:
-
-[!code-nodejs[Add the main function](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=94-97 "Add the main function")]
+W przypadku wszystkich innych odpowiedzi są one zwracane w niezmienionej postaci.
 
 ## <a name="run-the-program"></a>Uruchamianie programu
 
@@ -94,7 +74,11 @@ Po opublikowaniu bazy wiedzy można tworzyć do niej zapytania z punktu końcowe
 node publish-knowledge-base.js
 ```
 
+[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+
 ## <a name="next-steps"></a>Następne kroki
+
+Po opublikowaniu bazy wiedzy potrzebny jest [adres URL punktu końcowego do wygenerowania odpowiedzi](../Tutorials/create-publish-answer.md#generating-an-answer). 
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API Reference (Dokumentacja interfejsu API REST usługi QnA Maker w wersji 4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

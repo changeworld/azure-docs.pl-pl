@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: e6e49a03ee76c50cb2fff492bfd50b2820abafe4
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 11/21/2018
+ms.openlocfilehash: 067a8deb935fb8a49d72c6ce441e8d9760c5390c
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343762"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283659"
 ---
 # <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>Samouczek nr 1: uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning
 
@@ -33,7 +33,10 @@ Instrukcje:
 
 Tego, jak wybrać i wdrożyć model, dowiesz się później, z [drugiej części tego samouczka](tutorial-deploy-models-with-aml.md). 
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://aka.ms/AMLfree).
+
+>[!NOTE]
+> Kod w tym artykule został przetestowany przy użyciu zestawu Azure Machine Learning SDK w wersji 0.1.79
 
 ## <a name="get-the-notebook"></a>Pobieranie notesu
 
@@ -42,7 +45,7 @@ Dla Twojej wygody ten samouczek jest dostępny jako [notes Jupyter](https://gith
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
 >[!NOTE]
-> Ten samouczek został przetestowany przy użyciu zestawu Azure Machine Learning SDK w wersji 0.168 
+> Ten samouczek został przetestowany przy użyciu zestawu Azure Machine Learning SDK w wersji 0.1.74 
 
 ## <a name="set-up-your-development-environment"></a>Konfigurowanie środowiska projektowego
 
@@ -93,41 +96,43 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="create-remote-compute-target"></a>Tworzenie zdalnego docelowego zasobu obliczeniowego
 
-Azure Batch AI to usługa zarządzana, która umożliwia analitykom danych uczenie modeli uczenia maszynowego w klastrach maszyn wirtualnych platformy Azure, w tym maszyn wirtualnych z obsługą procesorów GPU.  W tym samouczku utworzysz klaster usługi Azure Batch AI jako środowisko uczenia. Ten kod utworzy za Ciebie klaster, jeśli nie istnieje on jeszcze w Twoim obszarze roboczym. 
+Azure ML Managed Compute to usługa zarządzana, która umożliwia analitykom danych uczenie modeli uczenia maszynowego w klastrach maszyn wirtualnych platformy Azure, w tym maszyn wirtualnych z obsługą procesorów GPU.  W tym samouczku utworzysz klaster usługi Azure Managed Compute jako środowisko uczenia. Ten kod utworzy za Ciebie klaster, jeśli nie istnieje on jeszcze w Twoim obszarze roboczym. 
 
  **Tworzenie klastra zajmuje około 5 minut.** Jeśli klaster znajduje się już w obszarze roboczym, ten kod skorzysta z niego i pominie proces tworzenia.
 
 
 ```python
-from azureml.core.compute import ComputeTarget, BatchAiCompute
-from azureml.core.compute_target import ComputeTargetException
+from azureml.core.compute import AmlCompute
+from azureml.core.compute import ComputeTarget
+import os
 
 # choose a name for your cluster
-batchai_cluster_name = "traincluster"
+compute_name = os.environ.get("BATCHAI_CLUSTER_NAME", "cpucluster")
+compute_min_nodes = os.environ.get("BATCHAI_CLUSTER_MIN_NODES", 0)
+compute_max_nodes = os.environ.get("BATCHAI_CLUSTER_MAX_NODES", 4)
 
-try:
-    # look for the existing cluster by name
-    compute_target = ComputeTarget(workspace=ws, name=batchai_cluster_name)
-    if type(compute_target) is BatchAiCompute:
-        print('found compute target {}, just use it.'.format(batchai_cluster_name))
-    else:
-        print('{} exists but it is not a Batch AI cluster. Please choose a different name.'.format(batchai_cluster_name))
-except ComputeTargetException:
+# This example uses CPU VM. For using GPU VM, set SKU to STANDARD_NC6
+vm_size = os.environ.get("BATCHAI_CLUSTER_SKU", "STANDARD_D2_V2")
+
+
+if compute_name in ws.compute_targets:
+    compute_target = ws.compute_targets[compute_name]
+    if compute_target and type(compute_target) is AmlCompute:
+        print('found compute target. just use it. ' + compute_name)
+else:
     print('creating a new compute target...')
-    compute_config = BatchAiCompute.provisioning_configuration(vm_size="STANDARD_D2_V2", # small CPU-based VM
-                                                                #vm_priority='lowpriority', # optional
-                                                                autoscale_enabled=True,
-                                                                cluster_min_nodes=0, 
-                                                                cluster_max_nodes=4)
+    provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size,
+                                                                min_nodes = compute_min_nodes, 
+                                                                max_nodes = compute_max_nodes)
 
     # create the cluster
-    compute_target = ComputeTarget.create(ws, batchai_cluster_name, compute_config)
+    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
     
     # can poll for a minimum number of nodes and for a specific timeout. 
-    # if no min node count is provided it uses the scale settings for the cluster
+    # if no min node count is provided it will use the scale settings for the cluster
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
     
-    # Use the 'status' property to get a detailed status for the current cluster. 
+     # For a more detailed view of current BatchAI cluster status, use the 'status' property    
     print(compute_target.status.serialize())
 ```
 
@@ -143,7 +148,7 @@ Zanim nauczysz model, musisz zrozumieć dane używane na potrzeby uczenia.  Musi
 
 ### <a name="download-the-mnist-dataset"></a>Pobieranie zestawu danych MNIST
 
-Pobierz zestaw danych MNIST i zapisz pliki lokalnie w katalogu `data`.  Zostaną pobrane obrazy i etykiety zarówno na potrzeby uczenia, jak i testowania.  
+Pobierz zestaw danych MNIST i zapisz pliki lokalnie w katalogu `data`.  Zostaną pobrane obrazy i etykiety zarówno na potrzeby uczenia, jak i testowania.
 
 
 ```python
@@ -160,7 +165,7 @@ urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ub
 
 ### <a name="display-some-sample-images"></a>Wyświetlanie przykładowych obrazów
 
-Załaduj pliki skompresowane do tablic `numpy`. Następnie użyj `matplotlib` do wykreślenia 30 losowych obrazów z zestawu danych wraz z ich etykietami nad nimi. Pamiętaj, że ten krok wymaga funkcji `load_data` uwzględnionej w pliku `util.py`. Ten plik znajduje się w folderze przykładu. Upewnij się, że znajduje się on w tym samym folderze co ten notes. Funkcja `load_data` analizuje skompresowane pliki i przetwarza je w tablice numpy.
+Załaduj pliki skompresowane do tablic `numpy`. Następnie użyj `matplotlib` do wykreślenia 30 losowych obrazów z zestawu danych wraz z ich etykietami nad nimi. Pamiętaj, że ten krok wymaga funkcji `load_data` uwzględnionej w pliku `util.py`. Ten plik znajduje się w folderze przykładu. Upewnij się, że znajduje się on w tym samym folderze co ten notes. Funkcja `load_data` po prostu analizuje skompresowane pliki i przetwarza je w tablice numpy.
 
 
 
@@ -209,7 +214,7 @@ ds.upload(src_dir='./data', target_path='mnist', overwrite=True, show_progress=T
 ```
 Masz teraz wszystko, czego potrzebujesz, aby rozpocząć uczenie modelu. 
 
-## <a name="train-a-model-locally"></a>Lokalne uczenie modelu
+## <a name="train-a-local-model"></a>Uczenie modelu lokalnego
 
 Lokalnie przeprowadź uczenie prostego modelu regresji logistycznej za pomocą biblioteki scikit-learn.
 
@@ -243,7 +248,7 @@ Teraz możesz rozszerzyć ten prosty model, tworząc model z innym współczynni
 Na potrzeby tego samouczka prześlij zadanie do skonfigurowanego wcześniej zdalnego klastra uczenia.  W celu przesłania zadania wykonywane są następujące czynności:
 * Tworzenie katalogu
 * Tworzenie skryptu uczenia
-* Tworzenie narzędzia do szacowania
+* Tworzenie obiektu narzędzia do szacowania
 * Przesyłanie zadania 
 
 ### <a name="create-a-directory"></a>Tworzenie katalogu
@@ -314,11 +319,10 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 Zwróć uwagę, jak skrypt pobiera dane i zapisuje modele:
 
-+ Skrypt uczenia odczytuje argument, aby znaleźć katalog zawierający dane.  Podczas późniejszego przesyłania zadania wskażesz magazyn danych dla tego argumentu: `parser.add_argument('--data-folder', type = str, dest = 'data_folder', help = 'data directory mounting point')`
-
++ Skrypt uczenia odczytuje argument, aby znaleźć katalog zawierający dane.  Podczas późniejszego przesyłania zadania wskażesz magazyn danych dla tego argumentu: `parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`
     
 + Skrypt uczenia zapisuje model w katalogu o nazwie outputs. <br/>
-`joblib.dump(value = clf, filename = 'outputs/sklearn_mnist_model.pkl')`<br/>
+`joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`<br/>
 Dowolne pliki zapisane w tym katalogu są automatycznie przekazywane do Twojego obszaru roboczego. W dalszej części samouczka z poziomu tego katalogu uzyskasz dostęp do swojego modelu.
 
 Plik `utils.py` jest wywoływany przez skrypt uczenia, aby prawidłowo załadować zestaw danych.  Skopiuj ten skrypt do folderu skryptów, aby był dostępny wraz ze skryptem uczenia zasobu zdalnego.
@@ -341,7 +345,7 @@ Obiekt narzędzia do szacowania służy do przesyłania przebiegu.  Utwórz narz
 * Wymagane parametry skryptu uczenia. 
 * Pakiety języka Python wymagane na potrzeby uczenia.
 
-W tym samouczku elementem docelowym jest klaster usługi Batch AI. Wszystkie pliki w katalogu projektu są przekazywane do węzłów klastra w celu wykonania. Jako folder danych ustawiono magazyn danych — `ds.as_mount()`.
+W tym samouczku elementem docelowym jest klaster usługi Batch AI. Wszystkie pliki w folderze skryptów są przekazywane do węzłów klastra w celu wykonania. Jako folder danych ustawiono magazyn danych — `ds.as_mount()`.
 
 ```python
 from azureml.train.estimator import Estimator
@@ -395,7 +399,7 @@ Obserwuj postęp przebiegu za pomocą widżetu Jupyter.  Podobnie jak przesyłan
 
 
 ```python
-from azureml.train.widgets import RunDetails
+from azureml.widgets import RunDetails
 RunDetails(run).show()
 ```
 
@@ -423,7 +427,7 @@ Dane wyjściowe pokazują, że model zdalny ma nieco wyższą dokładność niż
 
 `{'regularization rate': 0.8, 'accuracy': 0.9204}`
 
-W samouczku wdrożenia bardziej szczegółowo poznasz ten model.
+W następnym samouczku bardziej szczegółowo poznasz ten model.
 
 ## <a name="register-model"></a>Rejestrowanie modelu
 

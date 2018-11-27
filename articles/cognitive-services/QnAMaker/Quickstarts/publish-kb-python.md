@@ -8,84 +8,74 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: e58b344102eb900ffe41bb90e541258eb3b59286
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: c942045f01e08161394304f5ec15ff44ba84fc4b
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646818"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164459"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>Szybki start: publikowanie bazy wiedzy w usłudze QnA Maker przy użyciu języka Python
 
-Ten przewodnik Szybki start przeprowadzi Cię przez programowe publikowanie Twojej bazy wiedzy. Publikowanie wypycha najnowszą wersję bazy wiedzy do dedykowanego indeksu usługi Azure Search i tworzy punkt końcowy, który może być wywoływany w Twojej aplikacji lub czatbocie.
+Ten przewodnik Szybki start oparty na protokole REST przeprowadzi Cię przez programowe publikowanie bazy wiedzy. Publikowanie wypycha najnowszą wersję bazy wiedzy do dedykowanego indeksu usługi Azure Search i tworzy punkt końcowy, który może być wywoływany w Twojej aplikacji lub czatbocie.
 
 Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
 * [Publikowanie](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) — ten interfejs API nie wymaga żadnych informacji zawartych w treści żądania.
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
+## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Utwórz nowy projekt języka Python w Twoim ulubionym środowisku IDE.
-2. Dodaj kod przedstawiony poniżej.
-3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
-4. Uruchom program.
+* [Środowisko Python w wersji 3.7](https://www.python.org/downloads/)
+* Musisz mieć usługę QnA Maker. Aby pobrać klucz, wybierz pozycję Klucze w obszarze Zarządzanie zasobami na pulpicie nawigacyjnym.
+* Identyfikator bazy wiedzy usługi QnA Maker dostępny w adresie URL w parametrze ciągu zapytania kbid, jak pokazano poniżej.
 
-```python
-# -*- coding: utf-8 -*-
+    ![Identyfikator bazy wiedzy usługi QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-import http.client, urllib.parse, json, time
+    Jeśli nie masz jeszcze bazy wiedzy, możesz utworzyć przykładową bazę na potrzeby tego podręcznika Szybki start: [Tworzenie nowej bazy wiedzy](create-new-kb-nodejs.md).
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+> [!NOTE] 
+> Pliki kompletnego rozwiązania są dostępne w [repozytorium GitHub **Azure-Samples/cognitive-services-qnamaker-python**](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/publish-knowledge-base).
 
-# Replace this with a valid subscription key.
-subscriptionKey = 'ENTER KEY HERE'
+## <a name="create-a-knowledge-base-python-file"></a>Tworzenie pliku Python bazy wiedzy
 
-# Replace this with a valid knowledge base ID.
-kb = 'ENTER ID HERE';
+Utwórz plik o nazwie `publish-kb-3x.py`.
 
-host = 'westus.api.cognitive.microsoft.com'
-service = '/qnamaker/v4.0'
-method = '/knowledgebases/'
+## <a name="add-the-required-dependencies"></a>Dodawanie wymaganych zależności
 
-def pretty_print (content):
-# Note: We convert content to and from an object so we can pretty-print it.
-    return json.dumps(json.loads(content), indent=4)
+Na początku pliku `publish-kb-3x.py` dodaj następujące wiersze, aby dodać niezbędne zależności do projektu:
 
-def publish_kb (path, content):
-    print ('Calling ' + host + path + '.')
-    headers = {
-        'Ocp-Apim-Subscription-Key': subscriptionKey,
-        'Content-Type': 'application/json',
-        'Content-Length': len (content)
-    }
-    conn = http.client.HTTPSConnection(host)
-    conn.request ("POST", path, content, headers)
-    response = conn.getresponse ()
+[!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/publish-knowledge-base/publish-kb-3x.py?range=1-1 "Add the required dependencies")]
 
-    if response.status == 204:
-        return json.dumps({'result' : 'Success.'})
-    else:
-        return response.read ()
+## <a name="add-required-constants"></a>Dodawanie wymaganych stałych
 
-path = service + method + kb
-result = publish_kb (path, '')
-print (pretty_print(result))
+Po poprzednich wymaganych zależnościach dodaj wymagane stałe umożliwiające dostęp do usługi QnA Maker. Przedstawione wartości zastąp własnymi.
+
+[!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/publish-knowledge-base/publish-kb-3x.py?range=5-15 "Add the required constants")]
+
+## <a name="add-post-request-to-publish-knowledge-base"></a>Dodawanie żądania POST w celu publikowania bazy wiedzy
+
+Poniżej wymaganych stałych dodaj następujący kod, który wysyła żądanie HTTPS do interfejsu API usługi QnA Maker, aby opublikować bazę wiedzy, oraz odbiera odpowiedź:
+
+[!code-python[Add a POST request to publish knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/publish-knowledge-base/publish-kb-3x.py?range=17-26 "Add a POST request to publish knowledge base")]
+
+W przypadku pomyślnego publikowania wywołanie interfejsu API zwraca stan 204 bez jakiejkolwiek zawartości w treści odpowiedzi. Ten kod dodaje zawartość dla odpowiedzi stanu 204.
+
+W przypadku wszystkich innych odpowiedzi są one zwracane w niezmienionej postaci.
+
+## <a name="build-and-run-the-program"></a>Kompilowanie i uruchamianie programu
+
+Wprowadź następujące polecenie w wierszu polecenia, aby uruchomić program. Spowoduje to wysłanie żądania do interfejsu API usługi QnA Maker w celu opublikowania bazy wiedzy. W przypadku powodzenia zwracany jest kod 204. W przeciwnym razie wyświetlane są błędy.
+
+```bash
+python publish-kb-3x.py
 ```
 
-## <a name="the-publish-a-knowledge-base-response"></a>Tworzenie i publikowanie odpowiedzi bazy wiedzy
-
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie:
-
-```json
-{
-  "result": "Success."
-}
-```
+[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 
 ## <a name="next-steps"></a>Następne kroki
+
+Po opublikowaniu bazy wiedzy potrzebny jest [adres URL punktu końcowego do wygenerowania odpowiedzi](../Tutorials/create-publish-answer.md#generating-an-answer). 
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API Reference (Dokumentacja interfejsu API REST usługi QnA Maker w wersji 4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

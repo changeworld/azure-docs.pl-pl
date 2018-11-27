@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: 76747f7e9f1a95ee14ee570dcc29b42f98c26838
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: ba42cc7ede2ab790e5f50f3db525e48ebd21f522
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577997"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852507"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST rozpoznawania twarzy i środowiska Node.js
 
@@ -81,7 +81,7 @@ Zastąp wartość `<Subscription Key>` prawidłowym kluczem subskrypcji interfej
 
 ### <a name="face-endpoint-url"></a>Adres URL punktu końcowego interfejsu API rozpoznawania twarzy
 
-Adres URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` wskazuje punkt końcowy interfejsu API rozpoznawania twarzy platformy Azure. Należy zmienić pierwszą część tego adresu URL, aby była zgodna z regionem, który odpowiada Twojemu kluczowi subskrypcji (chyba że ustawiony jest już poprawny region).
+Adres URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` wskazuje punkt końcowy interfejsu API rozpoznawania twarzy platformy Azure. Może być konieczna zmiana pierwszej części tego adresu URL, aby była zgodna z regionem, który odpowiada Twojemu kluczowi subskrypcji (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów).
 
 ### <a name="url-query-string"></a>Ciąg zapytania adresu URL
 

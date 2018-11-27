@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: sbowles
-ms.openlocfilehash: e8b16f7ebe918e5b8d59c6b57794c4f35a89b5f3
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: dc84014f3dce027c830f3f46b4aba16b775251d8
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684005"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853153"
 ---
 # <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>Szybki start: tworzenie skryptu w języku Python w celu wykrywania i oznaczania ramką twarzy na obrazie
 
@@ -35,7 +35,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="detect-faces-in-an-image"></a>Wykrywanie twarzy na obrazie
 
-Utwórz nowy skrypt języka Python, _FaceQuickstart.py_. Dodaj następujący kod. Jest to podstawowa funkcja wykrywania twarzy. Należy zastąpić element `<Subscription Key>` wartością klucza. Może być również konieczna zmiana wartości elementu `BASE_URL` w celu użycia poprawnego identyfikatora regionu dla klucza. Klucze subskrypcji bezpłatnej wersji próbnej są generowane w regionie **westus**. Opcjonalnie możesz ustawić element `img_url` na adres URL dowolnego obrazu, którego chcesz użyć.
+Utwórz nowy skrypt języka Python, _FaceQuickstart.py_. Dodaj następujący kod. Jest to podstawowa funkcja wykrywania twarzy. Należy zastąpić element `<Subscription Key>` wartością klucza. Może być również konieczna zmiana wartości elementu `BASE_URL` w celu użycia poprawnego identyfikatora regionu dla klucza (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów). Klucze subskrypcji bezpłatnej wersji próbnej są generowane w regionie **westus**. Opcjonalnie możesz ustawić element `img_url` na adres URL dowolnego obrazu, którego chcesz użyć.
 
 Skrypt wykryje twarze, wywołując metodę **cognitive_face.face.detect**, która opakowuje interfejs API REST [wykrywania](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) i zwraca listę twarzy.
 

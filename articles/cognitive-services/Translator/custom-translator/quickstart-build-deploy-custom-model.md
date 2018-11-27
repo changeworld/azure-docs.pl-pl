@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: quickstart
-ms.openlocfilehash: 949fb2487c3ca519c1d7022c1434d0a029ed20bb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: cb713ac53b399d8ba79d003ee6d948bb5af5220b
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626580"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975776"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Szybki start: Tworzenie, wdrażanie i używanie niestandardowego modelu tłumaczenia
 
@@ -26,7 +26,7 @@ Ten artykuł zawiera szczegółowe instrukcje tworzenia systemu tłumaczenia za 
 
 2. Subskrypcja interfejsu API tłumaczenia tekstu w usłudze Translator — w witrynie Azure Portal. Klucz subskrypcji interfejsu API tłumaczenia tekstu w usłudze Translator musisz skojarzyć z obszarem roboczym w rozszerzeniu Custom Translator. Zobacz instrukcje dotyczące [tworzenia konta umożliwiającego korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
-3. Po spełnieniu obu powyższych warunków zaloguj się w portalu [Custom Translator](https://portal.customtranslator.azure.ai). W portalu Custom Translator przejdź do strony ustawień, na której możesz skojarzyć klucz subskrypcji interfejsu API tłumaczenia tekstu w usłudze Microsoft Translator z obszarem roboczym. 
+3. Po spełnieniu obu powyższych warunków zaloguj się w portalu [Custom Translator](https://portal.customtranslator.azure.ai). W portalu Custom Translator przejdź do strony ustawień, na której możesz skojarzyć klucz subskrypcji interfejsu API tłumaczenia tekstu w usłudze Microsoft Translator z obszarem roboczym.
 
 ## <a name="create-a-project"></a>Tworzenie projektu
 
@@ -53,7 +53,7 @@ Wybierz utworzony projekt. Pojawią się wszystkie przekazane dokumenty, któryc
 
 ![Tworzenie modelu](media/quickstart/ct-how-to-train.png)
 
-Po wybraniu odpowiednich dokumentów kliknij przycisk tworzenia modelu, aby utworzyć model i rozpocząć szkolenie. Na karcie modeli możesz sprawdzić stan szkolenia i szczegóły wszystkich nauczonych modeli.
+Po wybraniu odpowiednich dokumentów kliknij przycisk tworzenia modelu, aby utworzyć model i rozpocząć szkolenie. Na karcie modeli możesz sprawdzić stan szkolenia i szczegóły wszystkich wytrenowanych modeli.
 
 Aby uzyskać więcej informacji, zobacz sekcję [Tworzenie modelu](how-to-train-model.md).
 

@@ -1,49 +1,61 @@
-
+---
+author: MightyPen
+ms.service: sql-database
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: genemi
+ms.openlocfilehash: c4329b9efef3cdb2911466e64ac6c9f07a1e9b31
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52271652"
+---
 <a name="cs_0_csharpprogramexample_h2"/>
 
-## <a name="c-program-example"></a>Przykład programu C#
+## <a name="c-program-example"></a>Przykład programu w języku C#
 
-Następne sekcje w tym artykule istnieje program C#, który używa ADO.NET do wysyłania instrukcji języka Transact-SQL do bazy danych SQL. C# program wykonuje następujące czynności:
+W kolejnych sekcjach tego artykułu zaprezentowano program w języku C#, który wysyła instrukcje języka Transact-SQL do bazy danych SQL przy użyciu platformy ADO.NET. Program w języku C# wykonuje następujące akcje:
 
-1. [Łączy się z naszym bazy danych SQL za pomocą ADO.NET](#cs_1_connect).
+1. [Łączy się z naszą bazą danych SQL za pomocą platformy ADO.NET](#cs_1_connect).
 2. [Tworzy tabele](#cs_2_createtables).
-3. [Wypełnia tabel z danymi, wysyłając instrukcji INSERT T-SQL](#cs_3_insert).
+3. [Wypełnia tabele danymi, wydając instrukcje INSERT języka T-SQL](#cs_3_insert).
 4. [Aktualizuje dane przy użyciu sprzężenia](#cs_4_updatejoin).
 5. [Usuwa dane przy użyciu sprzężenia](#cs_5_deletejoin).
 6. [Wybiera wiersze danych przy użyciu sprzężenia](#cs_6_selectrows).
-7. Zamyka połączenie (który porzuca wszystkie tabele tymczasowe z bazy danych tempdb).
+7. Zamyka połączenie (co usuwa wszystkie tabele tymczasowe z bazy danych tempdb).
 
-Zawiera program C#:
+Program w języku C# zawiera:
 
-- Kod C# do połączenia z bazą danych.
-- Metody, które zwracają kod źródłowy T-SQL.
-- Dwie metody, których przesłać T-SQL w bazie danych.
+- Kod w języku C# do łączenia się z bazą danych.
+- Metody zwracające kod źródłowy w języku T-SQL.
+- Dwie metody wysyłające kod w języku T-SQL do bazy danych.
 
-#### <a name="to-compile-and-run"></a>Aby skompilować i uruchomić
+#### <a name="to-compile-and-run"></a>Kompilowanie i uruchamianie
 
-Ten program C# jest logicznie .cs plików. Jednak w tym miejscu program fizycznie jest podzielony na wiele bloków kodu, każdy blok ułatwiające Zobacz i zrozumieć. Aby skompilować i uruchomić ten program, wykonaj następujące czynności:
+Ten program w języku C# to logicznie jeden plik cs. Tutaj jednak program jest fizycznie podzielony na kilka bloków kodu, aby poprawić widoczność i czytelność kodu. Aby skompilować i uruchomić ten program, wykonaj następujące czynności:
 
-1. Tworzenie projektu C# w programie Visual Studio.
-    - Typ projektu powinien być *konsoli* aplikacji z przypominać następująca hierarchia: **szablony** > **Visual C#** >  **System Windows Desktop klasycznego** > **konsoli aplikacji (.NET Framework)**.
-3. W pliku **Program.cs**, Wymaż małych początkowe wiersze kodu.
-3. W pliku Program.cs skopiuj i Wklej każdego z następujących bloków, w takiej samej kolejności, które są przedstawione w tym miejscu.
-4. W pliku Program.cs edytować następujące wartości w **Main** metody:
+1. Utwórz projekt w języku C# w programie Visual Studio.
+    - Typem projektu powinna być aplikacja *konsoli*. Należy go wybrać z hierarchii zbliżonej do następującej: **Szablony** > **Visual C#** > **Klasyczny pulpit systemu Windows** > **Aplikacja konsoli (.NET Framework)**.
+3. W pliku **Program.cs** wymaż wiersze kodu początkowego.
+3. Skopiuj i wklej do pliku Program.cs każdy z następujących bloków, w tej samej kolejności, w jakiej są wyświetlane tutaj.
+4. W pliku Program.cs zmodyfikuj następujące wartości w metodzie **Main**:
 
-   - **CB. Źródło danych**
-   - **dysk CD. Nazwa użytkownika**
-   - **CB. Hasło**
+   - **cb.DataSource**
+   - **cd.UserID**
+   - **cb.Password**
    - **InitialCatalog**
 
-5. Sprawdź, czy zestaw **System.Data.dll** odwołuje się do. Aby sprawdzić, rozwiń węzeł **odwołania** w węźle **Eksploratora rozwiązań** okienka.
-6. Aby utworzyć program w programie Visual Studio, kliknij przycisk **kompilacji** menu.
-7. Aby uruchomić program z programu Visual Studio, kliknij przycisk **Start** przycisku. Dane wyjściowe raportu są wyświetlane w oknie cmd.exe.
+5. Upewnij się, że przywoływany jest zestaw **System.Data.dll**. Aby to sprawdzić, rozwiń węzeł **Odwołania** w okienku **Eksplorator rozwiązań**.
+6. Aby skompilować program w programie Visual Studio, kliknij menu **Kompilacja**.
+7. Aby uruchomić program z programu Visual Studio, kliknij przycisk **Uruchom**. Dane wyjściowe raportu są wyświetlane w oknie cmd.exe.
 
 > [!NOTE]
-> Istnieje możliwość edycji T-SQL do dodania na początku  **#**  do nazwy tabeli, co powoduje ich jako tymczasowych tabel w **tempdb**. Może to być przydatne dla celów demonstracyjnych, gdy baza danych nie testu jest niedostępna. Tabele tymczasowe są usuwane automatycznie, gdy połączenie zostanie zamknięte. Wszystkie odwołania kluczy obcych nie są wymuszane dla tabel tymczasowych.
+> Istnieje możliwość edytowania kodu w języku T-SQL w celu dodania znaku **#** na początku nazw tabel, co powoduje ich utworzenie jako tabel tymczasowych w **bazie danych tempdb**. Może to być przydatne dla celów demonstracyjnych, gdy nie jest dostępna testowa baza danych. Tabele tymczasowe są usuwane automatycznie przy zamykaniu połączenia. W przypadku tabel tymczasowych nie są wymuszane żadne instrukcje REFERENCES dla kluczy obcych.
 >
 
 <a name="cs_1_connect"/>
-### <a name="c-block-1-connect-by-using-adonet"></a>Blok C# 1: Połącz przy użyciu pakietu ADO.NET
+### <a name="c-block-1-connect-by-using-adonet"></a>Blok nr 1 kodu w języku C#: łączenie za pomocą platformy ADO.NET
 
 - [Dalej](#cs_2_createtables)
 
@@ -99,9 +111,9 @@ namespace csharp_db_test
 
 
 <a name="cs_2_createtables"/>
-### <a name="c-block-2-t-sql-to-create-tables"></a>C# blok 2: T-SQL do tworzenia tabel
+### <a name="c-block-2-t-sql-to-create-tables"></a>Blok nr 2 kodu w języku C#: kod w języku T-SQL do tworzenia tabel
 
-- [Poprzednie](#cs_1_connect) &nbsp;  /  &nbsp; [dalej](#cs_3_insert)
+- [Wstecz](#cs_1_connect) &nbsp; / &nbsp; [Dalej](#cs_3_insert)
 
 ```csharp
       static string Build_2_Tsql_CreateTables()
@@ -131,19 +143,19 @@ CREATE TABLE tabEmployee
       }
 ```
 
-#### <a name="entity-relationship-diagram-erd"></a>Diagram relacji jednostki (dysku Naprawczego)
+#### <a name="entity-relationship-diagram-erd"></a>Diagram relacji jednostek
 
-Obejmują powyższych instrukcji CREATE TABLE **odwołania** — słowo kluczowe, aby utworzyć *klucz obcy* (klucz OBCY) relację między dwiema tabelami.  Jeśli używasz bazy danych tempdb komentarz `--REFERENCES` — słowo kluczowe przy użyciu pary wiodące kreski.
+Wcześniejsze instrukcji CREATE TABLE zawierają słowo kluczowe **REFERENCES** do tworzenia relacji za pomocą *klucza obcego* między dwiema tabelami.  Jeśli używasz bazy danych tempdb, wykomentuj słowo kluczowe `--REFERENCES`, wpisując na początku dwa łączniki.
 
-Następnie jest dysku Naprawczego, który przedstawia relację między dwiema tabelami. Wartości w #tabEmployee.DepartmentCode *podrzędnych* kolumny są ograniczone do wartości znajdujących się w #tabDepartment.Department *nadrzędnej* kolumny.
+Poniżej zaprezentowano diagram relacji jednostek, który przedstawia relację między dwiema tabelami. Wartości w kolumnie *podrzędnej* #tabEmployee.DepartmentCode są ograniczone do wartości znajdujących się w kolumnie *nadrzędnej* #tabDepartment.Department.
 
-![Klucz obcy przedstawiający dysku Naprawczego](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
+![Diagram relacji jednostek pokazujący klucz obcy](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 
 
 <a name="cs_3_insert"/>
-### <a name="c-block-3-t-sql-to-insert-data"></a>Blok C# 3: T-SQL do wstawiania danych
+### <a name="c-block-3-t-sql-to-insert-data"></a>Blok nr 3 kodu w języku C#: kod w języku T-SQL do wstawiania danych
 
-- [Poprzednie](#cs_2_createtables) &nbsp;  /  &nbsp; [dalej](#cs_4_updatejoin)
+- [Wstecz](#cs_2_createtables) &nbsp; / &nbsp; [Dalej](#cs_4_updatejoin)
 
 
 ```csharp
@@ -173,9 +185,9 @@ INSERT INTO tabEmployee
 
 
 <a name="cs_4_updatejoin"/>
-### <a name="c-block-4-t-sql-to-update-join"></a>C# bloku 4: T-SQL do przyłączania do aktualizacji
+### <a name="c-block-4-t-sql-to-update-join"></a>Blok nr 4 kodu w języku C#: kod w języku T-SQL do aktualizacji ze sprzężeniem
 
-- [Poprzednie](#cs_3_insert) &nbsp;  /  &nbsp; [dalej](#cs_5_deletejoin)
+- [Wstecz](#cs_3_insert) &nbsp; / &nbsp; [Dalej](#cs_5_deletejoin)
 
 
 ```csharp
@@ -201,9 +213,9 @@ UPDATE empl
 
 
 <a name="cs_5_deletejoin"/>
-### <a name="c-block-5-t-sql-to-delete-join"></a>Blok C# 5: T-SQL do przyłączania do usunięcia
+### <a name="c-block-5-t-sql-to-delete-join"></a>Blok nr 5 kodu w języku C#: kod w języku T-SQL do usuwania ze sprzężeniem
 
-- [Poprzednie](#cs_4_updatejoin) &nbsp;  /  &nbsp; [dalej](#cs_6_selectrows)
+- [Wstecz](#cs_4_updatejoin) &nbsp; / &nbsp; [Dalej](#cs_6_selectrows)
 
 
 ```csharp
@@ -233,9 +245,9 @@ DELETE tabDepartment
 
 
 <a name="cs_6_selectrows"/>
-### <a name="c-block-6-t-sql-to-select-rows"></a>Blok C# 6: T-SQL, aby wybrać wiersze
+### <a name="c-block-6-t-sql-to-select-rows"></a>Blok nr 6 kodu w języku C#: kod w języku T-SQL do wybierania wierszy
 
-- [Poprzednie](#cs_5_deletejoin) &nbsp;  /  &nbsp; [dalej](#cs_6b_datareader)
+- [Wstecz](#cs_5_deletejoin) &nbsp; / &nbsp; [Dalej](#cs_6b_datareader)
 
 
 ```csharp
@@ -261,11 +273,11 @@ SELECT
 
 
 <a name="cs_6b_datareader"/>
-### <a name="c-block-6b-executereader"></a>C# bloku 6b: ExecuteReader
+### <a name="c-block-6b-executereader"></a>Blok nr 6b kodu w języku C#: ExecuteReader
 
-- [Poprzednie](#cs_6_selectrows) &nbsp;  /  &nbsp; [dalej](#cs_7_executenonquery)
+- [Wstecz](#cs_6_selectrows) &nbsp; / &nbsp; [Dalej](#cs_7_executenonquery)
 
-Ta metoda jest przeznaczona do Uruchom instrukcję SELECT T-SQL jest konstruowany przez **Build_6_Tsql_SelectEmployees** metody.
+Ta metoda jest przeznaczona do uruchamiania instrukcji SELECT w języku T-SQL, która jest tworzona przez metodę **Build_6_Tsql_SelectEmployees**.
 
 
 ```csharp
@@ -297,11 +309,11 @@ Ta metoda jest przeznaczona do Uruchom instrukcję SELECT T-SQL jest konstruowan
 
 
 <a name="cs_7_executenonquery"/>
-### <a name="c-block-7-executenonquery"></a>C# bloku 7: ExecuteNonQuery
+### <a name="c-block-7-executenonquery"></a>Blok nr 7 kodu w języku C#: ExecuteNonQuery
 
-- [Poprzednie](#cs_6b_datareader) &nbsp;  /  &nbsp; [dalej](#cs_8_output)
+- [Wstecz](#cs_6b_datareader) &nbsp; / &nbsp; [Dalej](#cs_8_output)
 
-Ta metoda jest wywoływana w operacjach modyfikujące zawartości danych tabel bez zwracanie wszystkich wierszy danych.
+Ta metoda jest wywoływana dla operacji, które modyfikują dane w tabelach bez zwracania żadnych wierszy danych.
 
 
 ```csharp
@@ -335,11 +347,11 @@ Ta metoda jest wywoływana w operacjach modyfikujące zawartości danych tabel b
 
 
 <a name="cs_8_output"/>
-### <a name="c-block-8-actual-test-output-to-the-console"></a>C# bloku 8: wyniki testu rzeczywiste do konsoli
+### <a name="c-block-8-actual-test-output-to-the-console"></a>Blok nr 8 kodu w języku C#: rzeczywiste dane wyjściowe testu w konsoli
 
-- [Poprzednie](#cs_7_executenonquery)
+- [Wstecz](#cs_7_executenonquery)
 
-Ta sekcja zawiera dane wyjściowe programu wysyłane do konsoli. Tylko wartości identyfikatora guid różnią się pomiędzy uruchomieniami testów.
+W tej sekcji znajdują się dane wyjściowe, które program wysłał do konsoli. Przebiegi testów różnią się między sobą jedynie wartościami identyfikatorów GUID.
 
 
 ```text

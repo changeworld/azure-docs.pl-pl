@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/30/2018
+ms.date: 11/14/2018
 ms.author: spelluru
-ms.openlocfilehash: dadc90e6a39b9e9689bab0249e6496fdea6f6205
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b9d140eedf69ed730985412ba1dcdca2d626b191
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450219"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706708"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Samouczek: dostęp do laboratorium w usłudze Azure Lab Services
 W tym samouczku Ty, jako osoba ucząca się, nawiążesz połączenie z maszyną wirtualną w laboratorium. 
@@ -35,22 +35,22 @@ W tym samouczku wykonasz następujące czynności:
 1. Przejdź do **adresu URL rejestracji** otrzymanego od nauczyciela. 
 2. Zaloguj się do usługi przy użyciu konta służbowego, aby ukończyć rejestrację. 
 3. Po zarejestrowaniu upewnij się, że widzisz maszyny wirtualne dla laboratorium, do którego masz dostęp. 
-2. Zaczekaj, aż maszyna wirtualna będzie gotowa, a następnie **uruchom** ją.
+2. Zaczekaj, aż maszyna wirtualna będzie gotowa, a następnie **uruchom** ją. Ten proces zajmuje trochę czasu.  
 
     ![Uruchamianie maszyny wirtualnej](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
 
 ## <a name="connect-to-the-virtual-machine"></a>Nawiązywanie połączenia z maszyną wirtualną
 
-1. Wybierz polecenie **Połącz** na kafelku reprezentującym maszynę wirtualną laboratorium, do której chcesz uzyskać dostęp. 
+1. Wybierz polecenie **Połącz** na kafelku odpowiadającym maszynie wirtualnej laboratorium, do której chcesz uzyskać dostęp. 
 
     ![Łączenie z maszyną wirtualną](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
-2. Zapisz plik RDP na dysku twardym, a następnie otwórz go. 
+2. Zapisz plik RDP na dysku twardym, a następnie otwórz go (pod warunkiem, że jest to maszyna wirtualna z systemem Windows).
 3. Użyj **nazwy użytkownika** i **hasła** uzyskanych od nauczyciela, aby zalogować się do maszyny. 
 
 ## <a name="next-steps"></a>Następne kroki
 W tym samouczku użyto linku rejestracji otrzymanego od nauczyciela w celu uzyskania dostępu do laboratorium.
 
-Jako właściciel laboratorium możesz sprawdzać, kto zarejestrował się w Twoim laboratorium, i śledzić użycie maszyn wirtualnych. Aby dowiedzieć się, jak to zrobić, przejdź do następnego samouczka:
+Jako właściciel laboratorium możesz sprawdzać, kto zarejestrował się w Twoim laboratorium, i śledzić użycie maszyn wirtualnych. Przejdź do następnego samouczka, aby dowiedzieć się, jak śledzić użycie laboratorium:
 
 > [!div class="nextstepaction"]
 > [Śledzenie użycia laboratorium](tutorial-track-usage.md) 

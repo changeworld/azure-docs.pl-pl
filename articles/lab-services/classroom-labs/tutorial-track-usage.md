@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/23/2018
+ms.date: 11/14/2018
 ms.author: spelluru
-ms.openlocfilehash: 710d157dcf4c6d060e59bcfbb69455e2ddc91bdd
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 49d5761e3e37e1265938d1f1b27324de667a13ca
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450134"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51707099"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Samouczek: śledzenie użycia laboratorium w usłudze Azure Lab Service
 W tym samouczku zostanie pokazane, w jaki sposób twórca/właściciel laboratorium może śledzić użycie laboratorium.
@@ -49,18 +49,14 @@ W tym samouczku wykonasz następujące czynności:
     ![Użycie maszyny wirtualnej](../media/tutorial-track-usage/vm-usage.png)
 
 ## <a name="manage-student-vms"></a>Zarządzanie maszynami wirtualnymi uczniów 
-Po umieszczeniu wskaźnika myszy nad wierszem na liście maszyn wirtualnych zostaną wyświetlone funkcje sterowania umożliwiające wykonywanie następujących zadań: 
+Po umieszczeniu wskaźnika myszy nad wierszem na liście maszyn wirtualnych zostaną wyświetlone funkcje sterowania umożliwiające wykonywanie następujących zadań (jak pokazano na ilustracji w poprzedniej sekcji): 
 
 - Łączenie z maszyną wirtualną
 - Uruchamianie maszyny wirtualnej
 - Zatrzymywanie maszyny wirtualnej
 - Usuwanie maszyny wirtualnej
 
-![Funkcje sterowania maszyny wirtualnej](../media/tutorial-track-usage/vm-controls.png) 
-
 
 
 ## <a name="next-steps"></a>Następne kroki
-W tym samouczku pokazano, w jaki sposób odnaleźć użytkowników zarejestrowanych w laboratorium, śledzić użycie maszyn wirtualnych w laboratorium i zarządzać maszynami wirtualnymi w laboratorium.
-
-Aby dowiedzieć się więcej na temat laboratoriów na potrzeby zajęć, zobacz tematy w sekcji [Przewodniki z instrukcjami](how-to-manage-lab-accounts.md).
+Aby dowiedzieć się więcej na temat laboratoriów na potrzeby zajęć, zobacz artykuły w sekcji [Przewodniki z instrukcjami](how-to-manage-lab-accounts.md).

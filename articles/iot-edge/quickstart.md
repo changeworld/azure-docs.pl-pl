@@ -4,17 +4,17 @@ description: Wypróbuj usługę Azure IoT Edge, uruchamiając analizy na symulow
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/02/2018
+ms.date: 10/02/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 16c5b15612acebacfa034c6c55dd053a21eac0d2
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 78cb00c568942e6b8c0f5da035381c82f5789a08
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566334"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977016"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Szybki start: wdrażanie pierwszego modułu IoT Edge z witryny Azure Portal do urządzenia z systemem Windows — wersja zapoznawcza
 
@@ -82,7 +82,7 @@ Poniższy kod tworzy bezpłatne centrum **F1** w grupie zasobów **IoTEdgeResour
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1
    ```
 
-   Jeśli wystąpi błąd, ponieważ w subskrypcji jest już jedno bezpłatne centrum, zmień jednostkę SKU na **S1**.
+   Jeśli wystąpi błąd, ponieważ w subskrypcji jest już jedno bezpłatne centrum, zmień jednostkę SKU na **S1**. Jeśli wystąpi błąd polegający na niedostępności nazwy centrum IoT Hub, oznacza to, że ktoś inny ma już centrum o takiej nazwie. Wypróbuj nową nazwę. 
 
 ## <a name="register-an-iot-edge-device"></a>Rejestrowanie urządzenia usługi IoT Edge
 
@@ -91,7 +91,7 @@ Zarejestruj urządzenie usługi IoT Edge, korzystając z nowo utworzonego centru
 
 Utwórz tożsamość urządzenia symulowanego, aby umożliwić mu komunikowanie się z centrum IoT Hub. Tożsamość urządzenia jest przechowywana w chmurze. Aby skojarzyć urządzenie fizyczne z tożsamością urządzenia, używane są unikatowe parametry połączenia.
 
-Ponieważ urządzenia usługi IoT Edge zachowują się inaczej niż typowe urządzenia IoT, a także mogą być inaczej zarządzane, już na samym początku zadeklaruj to urządzenie jako urządzenie usługi IoT Edge.
+Ponieważ urządzenia usługi IoT Edge zachowują się inaczej niż typowe urządzenia IoT, a także mogą być inaczej zarządzane, zadeklaruj tę tożsamość jako należącą do urządzenia usługi IoT Edge za pomocą flagi `--edge-enabled`. 
 
 1. W powłoce chmury platformy Azure wprowadź poniższe polecenie, aby utworzyć urządzenie o nazwie **myEdgeDevice** w swoim centrum.
 
@@ -99,13 +99,15 @@ Ponieważ urządzenia usługi IoT Edge zachowują się inaczej niż typowe urzą
    az iot hub device-identity create --device-id myEdgeDevice --hub-name {hub_name} --edge-enabled
    ```
 
-1. Pobierz parametry połączenia danego urządzenia, które łączy urządzenie fizyczne z tożsamością w usłudze IoT Hub.
+   Jeśli wystąpi błąd dotyczący kluczy zasad iothubowner, upewnij się, że usługa Cloud Shell działa, bazując na najnowszej wersji rozszerzenia azure-cli-iot-ext. 
+
+2. Pobierz parametry połączenia danego urządzenia, które łączy urządzenie fizyczne z tożsamością w usłudze IoT Hub.
 
    ```azurecli-interactive
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-1. Skopiuj parametry połączenia i zapisz je. Za pomocą tej wartości skonfigurujesz środowisko uruchomieniowe usługi IoT Edge w następnej sekcji.
+3. Skopiuj parametry połączenia i zapisz je. Za pomocą tej wartości skonfigurujesz środowisko uruchomieniowe usługi IoT Edge w następnej sekcji.
 
 ## <a name="install-and-start-the-iot-edge-runtime"></a>Instalowanie i uruchamianie środowiska uruchomieniowego usługi IoT Edge
 
@@ -118,7 +120,9 @@ Podczas instalowania środowiska uruchomieniowego pojawi się prośba o podanie 
 
 Instrukcje w tej sekcji służą do konfigurowania środowiska uruchomieniowego usługi IoT Edge przy użyciu kontenerów systemu Linux. Jeśli chcesz używać kontenerów systemu Windows, zobacz [Install Azure IoT Edge runtime on Windows to use with Windows containers (Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Windows do użycia z kontenerami systemu Windows)](how-to-install-iot-edge-windows-with-windows.md).
 
-Wykonaj poniższe kroki na maszynie z systemem Windows lub na maszynie wirtualnej, która została przygotowana do działania jako urządzenia usługi IoT Edge.
+### <a name="connect-to-your-iot-edge-device"></a>Nawiązywanie połączenia z urządzeniem usługi IoT Edge
+
+Wszystkie kroki opisane w tej sekcji są wykonywane na urządzeniu usługi IoT Edge. Jeśli jako urządzenia usługi IoT Edge używasz swojej własnej maszyny, możesz pominąć tę część. Jeśli używasz maszyny wirtualnej lub dodatkowego sprzętu, należy teraz nawiązać połączenie z tą maszyną. 
 
 ### <a name="download-and-install-the-iot-edge-service"></a>Pobieranie i instalowanie usługi IoT Edge
 
@@ -195,7 +199,7 @@ iotedge logs tempSensor -f
 
   ![Wyświetlanie danych z modułu](./media/quickstart/iotedge-logs.png)
 
-Możesz również wyświetlić komunikaty odbierane przez centrum IoT Hub przy użyciu [rozszerzenia zestawu narzędzi usługi Azure IoT dla edytora Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+Możesz również wyświetlić komunikaty odbierane przez centrum IoT przy użyciu [rozszerzenia zestawu narzędzi usługi Azure IoT dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -203,7 +207,7 @@ Jeśli chcesz przejść do samouczków dotyczących usługi IoT Edge, możesz u�
 
 ### <a name="delete-azure-resources"></a>Usuwanie zasobów platformy Azure
 
-Jeśli maszyna wirtualna i centrum IoT Hub zostały utworzone w nowej grupie zasobów, możesz usunąć tę grupę i wszystkie powiązane zasoby. Jeśli grupa zasobów zawiera jakiekolwiek zasoby, które chcesz zachować, po prostu usuń poszczególne niepotrzebne zasoby.
+Jeśli maszyna wirtualna i centrum IoT Hub zostały utworzone w nowej grupie zasobów, możesz usunąć tę grupę i wszystkie powiązane zasoby. Sprawdź dokładnie zawartość grupy zasobów, aby się upewnić, że nie ma w niej żadnych elementów, które chcesz zachować. Jeśli nie chcesz usuwać całej grupy, możesz usunąć poszczególne zasoby.
 
 Usuń grupę **IoTEdgeResources**.
 

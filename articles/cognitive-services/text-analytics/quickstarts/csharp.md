@@ -10,23 +10,23 @@ ms.component: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: a5223b026705cef5abbcd0be6f64cf0c98fd0930
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 59469b6c27ceb0ed96659198edd6ddbca12685e2
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309029"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283965"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Szybki start: wywoływanie analizy tekstu usługi Cognitive Service przy użyciu języka C#
 <a name="HOLTop"></a>
 
-W tym artykule opisano, jak wykrywać język, analizować tonację i wyodrębniać kluczowe frazy przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) i języka C#. Ten kod został napisany do pracy z aplikacją .NET Core i zawiera minimalną liczbę odwołań do zewnętrznych bibliotek, aby możliwe było także jego uruchamianie w systemie Linux lub MacOS.
+W tym artykule opisano, jak wykrywać język, analizować tonację i wyodrębniać kluczowe frazy przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) i języka C#. Ten kod został napisany do pracy z aplikacją .NET Core i zawiera minimalną liczbę odwołań do zewnętrznych bibliotek, aby możliwe było także jego uruchamianie w systemie Linux lub MacOS.
 
 Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.microsoft.com/fwlink/?LinkID=759346), zawierającym dokumentację techniczną interfejsów API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsem API analizy tekstu**. Możesz skorzystać z **warstwy Bezpłatna, która obejmuje 5000 transakcji miesięcznie**, aby ukończyć ten przewodnik Szybki start.
+[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 Musisz również mieć [punkt końcowy i klucz dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany podczas tworzenia konta. 
 

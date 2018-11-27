@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: be2c68922221af848c9e484d03527d02808c071a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 68c8c3767ff3a3d2873c1ff50928ab8d2cada4b1
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283822"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263755"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Zarządzanie poziomami spójności w usłudze Azure Cosmos DB
 
@@ -34,7 +34,7 @@ az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource
 
 ### <a name="powershell"></a>PowerShell
 
-Poniższy przykład tworzy nowe konto usługi Cosmos DB z włączoną wielowzorcowością w regionach Wschodnie stany USA i Zachodnie stany USA z domyślnymi zasadami zgodności Powiązana nieaktualność o maksymalnym interwale nieaktualności równym 10 sekund i maksymalnej tolerowanej liczbie żądań nieaktualności równej 200.
+Poniższy przykład tworzy nowe konto usługi Cosmos DB z obsługą wielowzorcowości w regionach Wschodnie stany USA i Zachodnie stany USA, ustawiając domyślne zasady spójności na wartość Sesja.
 
 ```azurepowershell-interactive
 $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
@@ -42,9 +42,7 @@ $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
 
 $iprangefilter = ""
 
-$consistencyPolicy = @{"defaultConsistencyLevel"="BoundedStaleness";
-                       "maxIntervalInSeconds"= "10";
-                       "maxStalenessPrefix"="200"}
+$consistencyPolicy = @{"defaultConsistencyLevel"="Session"}
 
 $CosmosDBProperties = @{"databaseAccountOfferType"="Standard";
                         "locations"=$locations;

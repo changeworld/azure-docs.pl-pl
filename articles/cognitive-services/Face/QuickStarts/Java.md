@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: 0a8a97be89893dbf072942501be51b82d20c1ef4
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 7656d8247cfb16df9989638b7e8ad2ffd3ff445f
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578063"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51851674"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Java
 
@@ -62,7 +62,7 @@ import org.json.JSONObject;
 
 ### <a name="add-essential-fields"></a>Dodawanie podstawowych pól
 
-Dodaj poniższe pola do klasy **Main**. Te dane służą do określania sposobu nawiązywania połączenia z usługą rozpoznawania twarzy i lokalizacji, z której można pobrać dane wejściowe. Należy zaktualizować pole `subscriptionKey` wartością klucza subskrypcji. Konieczna może być również zmiana ciągu `uriBase` w taki sposób, aby zawierał on poprawny identyfikator regionu. Możesz również ustawić wartość `imageWithFaces` na ścieżkę, która wskazuje na inny plik obrazu.
+Dodaj poniższe pola do klasy **Main**. Te dane służą do określania sposobu nawiązywania połączenia z usługą rozpoznawania twarzy i lokalizacji, z której można pobrać dane wejściowe. Należy zaktualizować pole `subscriptionKey` wartością klucza subskrypcji. Konieczna może być również zmiana ciągu `uriBase` w taki sposób, aby zawierał on poprawny identyfikator regionu (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów). Możesz również ustawić wartość `imageWithFaces` na ścieżkę, która wskazuje na inny plik obrazu.
 
 Pole `faceAttributes` to po prostu lista atrybutów określonych typów. Będzie ono określać informacje dotyczące wykrytych twarzy, które mają zostać pobrane.
 
@@ -75,7 +75,7 @@ private static final String subscriptionKey = "<Subscription Key>";
 // subscription keys from westus, replace "westcentralus" in the URL
 // below with "westus".
 //
-// Free trial subscription keys are generated in the westcentralus region. If you
+// Free trial subscription keys are generated in the "westus" region. If you
 // use a free trial subscription key, you shouldn't need to change this region.
 private static final String uriBase =
     "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";

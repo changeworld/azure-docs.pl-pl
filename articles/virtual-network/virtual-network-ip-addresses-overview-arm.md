@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial
-ms.openlocfilehash: 65dc420b6832b7b0a4cf14d63203d4c66e2a4254
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6b8bf4a0bc6b5e5e9b9ad7f91ba409aaf922e8e9
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993599"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822239"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy adresów IP i metody alokacji na platformie Azure
 
@@ -75,7 +75,7 @@ Standardowe publiczne adresy IP jednostek SKU:
 
 - Są przypisywane tylko przy użyciu metody alokacji statycznej.
 - Domyślnie są zabezpieczone i zamknięte dla przychodzącego ruchu sieciowego. Dozwolony przychodzący ruch sieciowy należy jawnie umieścić na liście dozwolonych z użyciem [sieciowej grupy zabezpieczeń](security-overview.md#network-security-groups).
-- Są przypisywane do interfejsów sieciowych lub publicznych standardowych modułów równoważenia obciążenia. Aby uzyskać więcej informacji na temat standardowych modułów równoważenia obciążenia platformy Azure, zobacz [Azure standard load balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Omówienie standardowego modułu równoważenia obciążenia).
+- Są przypisywane do interfejsów sieciowych, publicznych standardowych modułów równoważenia obciążenia, bram Application Gateway lub bram VPN Gateway. Aby uzyskać więcej informacji na temat standardowych modułów równoważenia obciążenia platformy Azure, zobacz [Azure standard load balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Omówienie standardowego modułu równoważenia obciążenia).
 - Są domyślnie strefowo nadmiarowe. Mogą być tworzone strefowo i być gwarantowane w określonej strefie dostępności. Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Omówienie stref dostępności) oraz [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
@@ -132,8 +132,8 @@ W poniższej tabeli przedstawiono określone właściwości, za pomocą których
 | --- | --- | --- | --- |
 | Maszyna wirtualna |Interfejs sieciowy |Yes |Yes |
 | Moduł równoważenia obciążenia dostępny z Internetu |Konfiguracja frontonu |Yes |Yes |
-| Brama sieci VPN |Konfiguracja adresu IP bramy |Yes |Nie |
-| Brama aplikacji |Konfiguracja frontonu |Yes |Nie |
+| Brama sieci VPN |Konfiguracja adresu IP bramy |Yes |Yes |
+| Brama aplikacji |Konfiguracja frontonu |Yes |Yes |
 
 ## <a name="private-ip-addresses"></a>Prywatne adresy IP
 Prywatne adresy IP umożliwiają zasobom platformy Azure komunikację z innymi zasobami w [sieci wirtualnej](virtual-networks-overview.md) lub sieci lokalnej za pomocą bramy sieci VPN lub obwodu ExpressRoute bez użycia adresu IP dostępnego w Internecie.

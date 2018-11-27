@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: f010bebcf1130b3061c60987ffbd4e706a030773
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 2ec2ac6508dfbf0c1a42f72dc393fa8b841ab877
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41919213"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822470"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Samouczek: rejestrowanie przepływu ruchu sieciowego do i z maszyny wirtualnej przy użyciu witryny Azure Portal
 
@@ -36,6 +36,9 @@ Sieciowa grupa zabezpieczeń umożliwia filtrowanie ruchu przychodzącego do i w
 > * Wyświetlanie zarejestrowanych danych
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+> [!NOTE] 
+> Dzienniki przepływu w wersji 2 są dostępne tylko w regionie Zachodnio-środkowe stany USA. Konfiguracja jest dostępna za pośrednictwem witryny Azure Portal i interfejsu API REST. Włączenie dzienników w wersji 2 w nieobsługiwanym regionie spowoduje zapisywanie na koncie magazynu dzienników w wersji 1.
 
 ## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 
@@ -100,8 +103,9 @@ Rejestrowanie przepływu sieciowej grupy zabezpieczeń wymaga dostawcy **Microso
 
 6. Z listy sieciowych grup zabezpieczeń wybierz grupę o nazwie **myVm-nsg**.
 7. W obszarze **Ustawienia dzienników przepływu** wybierz pozycję **Wł.**
-8. Wybierz konto usługi Storage utworzone w kroku 3.
-9. Ustaw pozycję **Przechowywanie (dni)** na 5, a następnie wybierz pozycję **Zapisz**.
+8. Wybierz wersję dzienników przepływu do rejestrowania. Wersja 2 zawiera statystyki sesji przepływu (liczba bajtów i pakietów). ![Wybieranie wersji dzienników przepływu](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+9. Wybierz konto usługi Storage utworzone w kroku 3.
+10. Ustaw pozycję **Przechowywanie (dni)** na 5, a następnie wybierz pozycję **Zapisz**.
 
 ## <a name="download-flow-log"></a>Pobieranie dziennika przepływu
 
@@ -126,6 +130,7 @@ Rejestrowanie przepływu sieciowej grupy zabezpieczeń wymaga dostawcy **Microso
 
 Poniższy kod JSON to przykład kodu widocznego w pliku PT1H.json dla każdego przepływu, w którym są rejestrowane dane:
 
+### <a name="version-1-flow-log-event"></a>Zdarzenie dziennika przepływu w wersji 1
 ```json
 {
     "time": "2018-05-01T15:00:02.1713710Z",
@@ -135,29 +140,83 @@ Poniższy kod JSON to przykład kodu widocznego w pliku PT1H.json dla każdego p
     "operationName": "NetworkSecurityGroupFlowEvents",
     "properties": {
         "Version": 1,
-        "flows": [{
-            "rule": "UserRule_default-allow-rdp",
-            "flows": [{
-                "mac": "000D3A170C69",
-                "flowTuples": ["1525186745,192.168.1.4,10.0.0.4,55960,3389,T,I,A"]
-            }]
-        }]
+        "flows": [
+            {
+                "rule": "UserRule_default-allow-rdp",
+                "flows": [
+                    {
+                        "mac": "000D3A170C69",
+                        "flowTuples": [
+                            "1525186745,192.168.1.4,10.0.0.4,55960,3389,T,I,A"
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 }
 ```
+### <a name="version-2-flow-log-event"></a>Zdarzenie dziennika przepływu w wersji 2
+```json
+{
+    "time": "2018-11-13T12:00:35.3899262Z",
+    "systemId": "a0fca5ce-022c-47b1-9735-89943b42f2fa",
+    "category": "NetworkSecurityGroupFlowEvent",
+    "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/FABRIKAMRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/FABRIAKMVM1-NSG",
+    "operationName": "NetworkSecurityGroupFlowEvents",
+    "properties": {
+        "Version": 2,
+        "flows": [
+            {
+                "rule": "DefaultRule_DenyAllInBound",
+                "flows": [
+                    {
+                        "mac": "000D3AF87856",
+                        "flowTuples": [
+                            "1542110402,94.102.49.190,10.5.16.4,28746,443,U,I,D,B,,,,",
+                            "1542110424,176.119.4.10,10.5.16.4,56509,59336,T,I,D,B,,,,",
+                            "1542110432,167.99.86.8,10.5.16.4,48495,8088,T,I,D,B,,,,"
+                        ]
+                    }
+                ]
+            },
+            {
+                "rule": "DefaultRule_AllowInternetOutBound",
+                "flows": [
+                    {
+                        "mac": "000D3AF87856",
+                        "flowTuples": [
+                            "1542110377,10.5.16.4,13.67.143.118,59831,443,T,O,A,B,,,,",
+                            "1542110379,10.5.16.4,13.67.143.117,59932,443,T,O,A,E,1,66,1,66",
+                            "1542110379,10.5.16.4,13.67.143.115,44931,443,T,O,A,C,30,16978,24,14008",
+                            "1542110406,10.5.16.4,40.71.12.225,59929,443,T,O,A,E,15,8489,12,7054"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
 
 Wartość elementu **mac** w poprzednich danych wyjściowych to adres MAC interfejsu sieciowego, który został utworzony podczas tworzenia maszyny wirtualnej. Informacje rozdzielone przecinkami dotyczące elementu **flowTuples** są następujące:
 
 | Przykładowe dane | Co reprezentują dane   | Wyjaśnienie                                                                              |
 | ---          | ---                    | ---                                                                                      |
-| 1525186745   | Znacznik czasu             | Znacznik czasu wystąpienia przepływu w formacie EPOCH systemu UNIX. W poprzednim przykładzie data zmienia się na 1 maja 2018 o 14:59:05 GMT.                                                                                    |
-| 192.168.1.4  | Źródłowy adres IP      | Źródłowy adres IP, z którego był zainicjowany przepływ.
-| 10.0.0.4     | Docelowy adres IP | Docelowy adres IP, do którego był skierowany przepływ. 10.0.0.4 to prywatny adres IP maszyny wirtualnej utworzonej w sekcji [Tworzenie maszyny wirtualnej](#create-a-vm).                                                                                 |
-| 55960        | Port źródłowy            | Port źródłowy, z którego pochodził przepływ.                                           |
-| 3389         | Port docelowy       | Port docelowy, do którego był skierowany przepływ. Ponieważ ruch był przeznaczony do portu 3389, reguła o nazwie **UserRule_default-allow-rdp** w pliku dziennika przetworzyła przepływ.                                                |
+| 1542110377   | Znacznik czasu             | Znacznik czasu wystąpienia przepływu w formacie EPOCH systemu UNIX. W poprzednim przykładzie data zmienia się na 1 maja 2018 o 14:59:05 GMT.                                                                                    |
+| 10.0.0.4  | Źródłowy adres IP      | Źródłowy adres IP, z którego był zainicjowany przepływ. 10.0.0.4 to prywatny adres IP maszyny wirtualnej utworzonej w sekcji [Tworzenie maszyny wirtualnej](#create-a-vm).
+| 13.67.143.118     | Docelowy adres IP | Docelowy adres IP, do którego był skierowany przepływ.                                                                                  |
+| 44931        | Port źródłowy            | Port źródłowy, z którego pochodził przepływ.                                           |
+| 443         | Port docelowy       | Port docelowy, do którego był skierowany przepływ. Ponieważ ruch był przeznaczony do portu 443, reguła o nazwie **UserRule_default-allow-rdp** w pliku dziennika przetworzyła przepływ.                                                |
 | T            | Protokół               | Określa rodzaj protokołu przepływu: TCP (T) lub UDP (U).                                  |
-| I            | Kierunek              | Określa, czy ruch był przychodzący (I), czy wychodzący (O).                                     |
-| A            | Akcja                 | Określa, czy ruch był dozwolony (A), czy odrzucony (D).                                           |
+| O            | Kierunek              | Określa, czy ruch był przychodzący (I), czy wychodzący (O).                                     |
+| A            | Akcja                 | Określa, czy ruch był dozwolony (A), czy odrzucony (D).  
+| C            | Stan przepływu **tylko w wersji 2** | Rejestruje stan przepływu. Możliwe stany to **B**: początek — gdy zostanie utworzony przepływ. Statystyki nie są podawane. **C**: kontynuacja — dotyczy ciągłego przepływu. Statystyki są podawane w 5-minutowych odstępach. **E**: koniec — gdy przepływ zostanie zakończony. Statystyki są podawane. |
+| 30 | Wysłane pakiety — ze źródła do miejsca docelowego **tylko w wersji 2** | Całkowita liczba pakietów TCP lub UDP przesłanych ze źródła do miejsca docelowego od czasu ostatniej aktualizacji. |
+| 16978 | Wysłane bajty — ze źródła do miejsca docelowego **tylko w wersji 2** | Całkowita liczba bajtów pakietów TCP lub UDP przesłanych ze źródła do miejsca docelowego od czasu ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu. | 
+| 24 | Wysłane pakiety — z miejsca docelowego do źródła **tylko w wersji 2** | Całkowita liczba pakietów TCP lub UDP przesłanych z miejsca docelowego do źródła od czasu ostatniej aktualizacji. |
+| 14008| Wysłane bajty — z miejsca docelowego do źródła **tylko w wersji 2** | Całkowita liczba bajtów pakietów TCP i UDP przesłanych z miejsca docelowego do źródła od czasu ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu.| |
 
 ## <a name="next-steps"></a>Następne kroki
 

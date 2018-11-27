@@ -9,13 +9,13 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
-ms.date: 07/26/2018
-ms.openlocfilehash: bf7351f5d62958b77473440d618d31cda2c983ea
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.date: 11/19/2018
+ms.openlocfilehash: 5a6d3265fde3b7633036ddc4cae0a5ea7d246957
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615521"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265274"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks
 
@@ -378,7 +378,7 @@ W tej sekcji przekażesz przekształcone dane do magazynu danych Azure SQL Data 
 
 Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azure Blob Storage jako tymczasowej lokalizacji magazynu do przekazywania danych między usługami Azure Databricks i Azure SQL Data Warehouse. Możesz rozpocząć od podania konfiguracji umożliwiającej nawiązanie połączenia z kontem magazynu. Musisz już mieć utworzone konto w ramach wymagań wstępnych dotyczących tego artykułu.
 
-1. Podaj konfigurację umożliwiającą uzyskanie dostępu do konta usługi Azure Storage z usługi Azure Databricks.
+1. Podaj konfigurację umożliwiającą uzyskanie dostępu do konta usługi Azure Storage z usługi Azure Databricks. Jeśli kopiujesz adres URL usługi Blob Storage z portalu, usuń z niego prefiks *https://*. 
 
         val blobStorage = "<STORAGE ACCOUNT NAME>.blob.core.windows.net"
         val blobContainer = "<CONTAINER NAME>"

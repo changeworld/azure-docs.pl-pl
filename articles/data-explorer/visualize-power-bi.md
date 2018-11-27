@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: fc2d96c4dc8184ba26001fd77732ce7c45253d5a
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: c04c9d9618cfc507ebdba170e0697aeaeecb1e99
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393716"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854105"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Samouczek: wizualizowanie danych z usługi Azure Data Explorer w usłudze Power BI
 
@@ -36,9 +36,9 @@ Oprócz subskrypcji platformy Azure i usługi Power BI do ukończenia samouczka 
 
 * [Klaster testowy i baza danych](create-cluster-database-portal.md)
 
-* [Przykładowe dane StormEvents](ingest-sample-data.md)
+* [Przykładowe dane StormEvents](ingest-sample-data.md). [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-* [Program Power BI Desktop](https://powerbi.microsoft.com/get-started/) (kliknij przycisk **POBIERZ BEZPŁATNIE**)
+* Program [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (wybierz pozycję **POBIERZ BEZPŁATNIE**)
 
 ## <a name="render-visuals-in-azure-data-explorer"></a>Renderowanie wizualizacji w usłudze Azure Data Explorer
 
@@ -82,17 +82,17 @@ Teraz nadszedł czas, aby przyjrzeć się usłudze Power BI, ale w usłudze Azur
 
 Teraz połączysz się z usługą Azure Data Explorer w programie Power BI Desktop.
 
-1. W programie Power BI Desktop wybierz opcję **Pobierz dane**, a następnie opcję **Więcej**.
+1. W programie Power BI Desktop na karcie **Narzędzia główne** wybierz pozycję **Pobierz dane**, a następnie pozycję **Więcej**.
 
     ![Pobieranie danych](media/visualize-power-bi/get-data-more.png)
 
-1. Wyszukaj termin *Kusto*, wybierz pozycję **Azure Kusto (Beta)**, a następnie przycisk **Połącz**.
+1. Wyszukaj pozycję *Azure Data Explorer*, wybierz pozycję **Azure Data Explorer (beta)**, a następnie pozycję **Połącz**.
 
     ![Wyszukiwanie i pobieranie danych](media/visualize-power-bi/search-get-data.png)
 
 1. Na ekranie **Łącznik w wersji zapoznawczej** wybierz opcję **Kontynuuj**.
 
-1. Na ekranie **Kusto** wprowadź nazwę klastra testowego i bazy danych. Nazwa klastra powinna mieć format `https://<ClusterName>.<Region>.kusto.windows.net`. Jako nazwę tabeli wprowadź *StormEvents*. Dla wszystkich pozostałych opcji pozostaw wartości domyślne, a następnie wybierz przycisk **OK**.
+1. Na następnym ekranie wprowadź nazwę klastra testowego i bazy danych. Nazwa klastra powinna mieć format `https://<ClusterName>.<Region>.kusto.windows.net`. Jako nazwę tabeli wprowadź *StormEvents*. Dla wszystkich pozostałych opcji pozostaw wartości domyślne, a następnie wybierz przycisk **OK**.
 
     ![Opcje klastra, bazy danych, tabeli](media/visualize-power-bi/cluster-database-table.png)
 

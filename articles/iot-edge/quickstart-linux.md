@@ -4,17 +4,17 @@ description: Z tego przewodnika Szybki start dowiesz się, jak zdalnie wdrożyć
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/14/2018
+ms.date: 10/14/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a392c4c20e54081ae5e4876b7c718759b8200ce5
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: d4ea7d3fba891e954ca7faa5176a73d2341630d6
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566435"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976914"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Szybki start: wdrażanie pierwszego modułu usługi IoT Edge na urządzeniu z systemem Linux x64
 
@@ -58,8 +58,10 @@ Urządzenie usługi IoT Edge:
 * Urządzenie lub maszyna wirtualna z systemem Linux, która będzie działać jako urządzenie usługi IoT Edge. Jeśli chcesz utworzyć maszynę wirtualną na platformie Azure, użyj następującego polecenia, aby szybko rozpocząć pracę:
 
    ```azurecli-interactive
-   az vm create --resource-group IoTEdgeResources --name EdgeVM --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username azureuser --generate-ssh-keys --size Standard_B1ms
+   az vm create --resource-group IoTEdgeResources --name EdgeVM --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
+
+   Podczas tworzenia nowej maszyny wirtualnej zanotuj wartość elementu **publicIpAddress**. Jest ona widoczna w danych wyjściowych polecenia create. Ten publiczny adres IP zostanie użyty później w tym przewodniku Szybki start do nawiązania połączenia z maszyną wirtualną.
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
@@ -75,7 +77,7 @@ Poniższy kod tworzy bezpłatne centrum **F1** w grupie zasobów **IoTEdgeResour
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 
    ```
 
-   Jeśli wystąpi błąd, ponieważ w subskrypcji jest już jedno bezpłatne centrum, zmień jednostkę SKU na **S1**.
+   Jeśli wystąpi błąd, ponieważ w subskrypcji jest już jedno bezpłatne centrum, zmień jednostkę SKU na **S1**. Jeśli wystąpi błąd polegający na niedostępności nazwy centrum IoT Hub, oznacza to, że ktoś inny ma już centrum o takiej nazwie. Wypróbuj nową nazwę. 
 
 ## <a name="register-an-iot-edge-device"></a>Rejestrowanie urządzenia usługi IoT Edge
 
@@ -84,7 +86,7 @@ Zarejestruj urządzenie usługi IoT Edge, korzystając z nowo utworzonego centru
 
 Utwórz tożsamość urządzenia symulowanego, aby umożliwić mu komunikowanie się z centrum IoT Hub. Tożsamość urządzenia jest przechowywana w chmurze. Aby skojarzyć urządzenie fizyczne z tożsamością urządzenia, używane są unikatowe parametry połączenia. 
 
-Ponieważ urządzenia usługi IoT Edge zachowują się inaczej niż typowe urządzenia IoT, a także mogą być inaczej zarządzane, już na samym początku zadeklaruj to urządzenie jako urządzenie usługi IoT Edge. 
+Ponieważ urządzenia usługi IoT Edge zachowują się inaczej niż typowe urządzenia IoT, a także mogą być inaczej zarządzane, zadeklaruj tę tożsamość jako należącą do urządzenia usługi IoT Edge za pomocą flagi `--edge-enabled`. 
 
 1. W powłoce chmury platformy Azure wprowadź poniższe polecenie, aby utworzyć urządzenie o nazwie **myEdgeDevice** w swoim centrum.
 
@@ -92,13 +94,15 @@ Ponieważ urządzenia usługi IoT Edge zachowują się inaczej niż typowe urzą
    az iot hub device-identity create --hub-name {hub_name} --device-id myEdgeDevice --edge-enabled
    ```
 
-1. Pobierz parametry połączenia danego urządzenia, które łączy urządzenie fizyczne z tożsamością w usłudze IoT Hub. 
+   Jeśli wystąpi błąd dotyczący kluczy zasad iothubowner, upewnij się, że usługa Cloud Shell działa, bazując na najnowszej wersji rozszerzenia azure-cli-iot-ext. 
+
+2. Pobierz parametry połączenia danego urządzenia, które łączy urządzenie fizyczne z tożsamością w usłudze IoT Hub. 
 
    ```azurecli-interactive
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-1. Skopiuj parametry połączenia i zapisz je. Za pomocą tej wartości skonfigurujesz środowisko uruchomieniowe usługi IoT Edge w następnej sekcji. 
+3. Skopiuj parametry połączenia i zapisz je. Za pomocą tej wartości skonfigurujesz środowisko uruchomieniowe usługi IoT Edge w następnej sekcji. 
 
 ## <a name="install-and-start-the-iot-edge-runtime"></a>Instalowanie i uruchamianie środowiska uruchomieniowego usługi IoT Edge
 
@@ -109,13 +113,21 @@ Zainstaluj i uruchom środowisko uruchomieniowe usługi Azure IoT Edge na urząd
 
 Podczas konfigurowania środowiska uruchomieniowego należy podać parametry połączenia urządzenia. Użyj parametrów pobranych za pomocą wiersza polecenia platformy Azure. Za pomocą tych parametrów urządzenie fizyczne jest kojarzone z tożsamością urządzenia usługi IoT Edge na platformie Azure. 
 
-Wykonaj poniższe kroki na maszynie z systemem Linux lub na maszynie wirtualnej, która została przygotowana do działania jako urządzenie usługi IoT Edge. 
+### <a name="connect-to-your-iot-edge-device"></a>Nawiązywanie połączenia z urządzeniem usługi IoT Edge
+
+Wszystkie kroki opisane w tej sekcji są wykonywane na urządzeniu usługi IoT Edge. Jeśli jako urządzenia usługi IoT Edge używasz swojej własnej maszyny, możesz pominąć tę część. Jeśli używasz maszyny wirtualnej lub dodatkowego sprzętu, należy teraz nawiązać połączenie z tą maszyną. 
+
+Jeśli utworzono maszynę wirtualną platformy Azure na potrzeby tego przewodnika Szybki start, pobierz publiczny adres IP wyświetlany w danych wyjściowych polecenia tworzenia. Publiczny adres IP możesz również znaleźć na stronie przeglądu swojej maszyny wirtualnej w witrynie Azure Portal. Użyj następującego polecenia, aby nawiązać połączenie z maszyną wirtualną. Zastąp ciąg **{publicIpAddress}** adresem swojej maszyny. 
+
+```azurecli-interactive
+ssh azureuser@{publicIpAddress}
+```
 
 ### <a name="register-your-device-to-use-the-software-repository"></a>Rejestrowanie urządzenia w celu korzystania z repozytorium oprogramowania
 
 Pakiety potrzebne do uruchamiania środowiska uruchomieniowego usługi IoT Edge są zarządzane w repozytorium oprogramowania. Urządzenie usługi IoT Edge należy skonfigurować do uzyskiwania dostępu do tego repozytorium. 
 
-Czynności opisane w tej sekcji dotyczą urządzeń z architekturą x64 i systemem **Ubuntu 16.04**. Aby uzyskać dostęp do repozytorium oprogramowania dla innych wersji systemu Linux lub dla urządzeń z inną architekturą, zobacz [Install the Azure IoT Edge runtime on Linux (x64) (Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux (x64))](how-to-install-iot-edge-linux.md) lub [Install Azure IoT Edge runtime on Linux (ARM32v7/armhf) (Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux (ARM32v7/armhf))](how-to-install-iot-edge-linux-arm.md).
+Czynności opisane w tej sekcji dotyczą urządzeń z architekturą x64 i systemem **Ubuntu 16.04**. Aby uzyskać dostęp do repozytorium oprogramowania dla innych wersji systemu Linux lub dla urządzeń z inną architekturą, zobacz [Install the Azure IoT Edge runtime on Linux (x64)](how-to-install-iot-edge-linux.md) (Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux — x64) lub [Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md) (Linux — ARM32v7/armhf).
 
 1. Na maszynie używanej jako urządzenie usługi IoT Edge zainstaluj konfigurację repozytorium.
 
@@ -242,7 +254,7 @@ Wyświetl komunikaty wysyłane z modułu tempSensor:
 
 Moduł czujnika temperatury może oczekiwać na połączenie z centrum funkcji Edge, jeśli ostatni wiersz wyświetlony w dzienniku to `Using transport Mqtt_Tcp_Only`. Spróbuj wyłączyć moduł i pozwolić agentowi funkcji Edge na jego ponowne uruchomienie. Możesz go zabić przy użyciu polecenia `sudo docker stop tempSensor`.
 
-Możesz również wyświetlić dane telemetryczne odbierane przez centrum IoT przy użyciu [rozszerzenia zestawu narzędzi usługi Azure IoT dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
+Możesz również wyświetlić komunikaty odbierane przez centrum IoT przy użyciu [rozszerzenia zestawu narzędzi usługi Azure IoT dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -250,7 +262,7 @@ Jeśli chcesz przejść do samouczków dotyczących usługi IoT Edge, możesz u�
 
 ### <a name="delete-azure-resources"></a>Usuwanie zasobów platformy Azure
 
-Jeśli maszyna wirtualna i centrum IoT Hub zostały utworzone w nowej grupie zasobów, możesz usunąć tę grupę i wszystkie powiązane zasoby. Jeśli grupa zasobów zawiera jakiekolwiek zasoby, które chcesz zachować, po prostu usuń poszczególne niepotrzebne zasoby. 
+Jeśli maszyna wirtualna i centrum IoT Hub zostały utworzone w nowej grupie zasobów, możesz usunąć tę grupę i wszystkie powiązane zasoby. Sprawdź dokładnie zawartość grupy zasobów, aby się upewnić, że nie ma w niej żadnych elementów, które chcesz zachować. Jeśli nie chcesz usuwać całej grupy, możesz usunąć poszczególne zasoby.
 
 Usuń grupę **IoTEdgeResources**.
 

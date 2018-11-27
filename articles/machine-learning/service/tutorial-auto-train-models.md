@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: 29d673f48671ec917e45b7ff76feeebf0b868c4b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.date: 11/21/2018
+ms.openlocfilehash: 76436da1013c6747e9167c006e0d7c5e89ec8d9c
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426893"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284748"
 ---
 # <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning-service"></a>Samouczek: trenowanie modelu klasyfikacji za pomocą zautomatyzowanego uczenia maszynowego w usłudze Azure Machine Learning
 
@@ -34,7 +34,10 @@ Omawiane tematy:
 > * Przeglądanie wyników szkolenia
 > * Rejestrowanie najlepszego modelu
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://aka.ms/AMLfree).
+
+>[!NOTE]
+> Kod w tym artykule został przetestowany przy użyciu zestawu Azure Machine Learning SDK w wersji 0.1.79
 
 ## <a name="get-the-notebook"></a>Pobieranie notesu
 
@@ -214,7 +217,7 @@ Zapoznaj się z wynikami eksperymentu, korzystając z widżetu Jupyter lub spraw
 Użyj widżetu notesu Jupyter, aby wyświetlić wykres i tabelę ze wszystkimi wynikami.
 
 ```python
-from azureml.train.widgets import RunDetails
+from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 

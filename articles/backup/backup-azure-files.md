@@ -8,12 +8,12 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 09bddd1c1d9589dbba0acf319ba43ea54c0c737b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 14a6e295eebcc3a7cb3f190a09afd65b0e959d7e
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221461"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265342"
 ---
 # <a name="back-up-azure-file-shares"></a>Tworzenie kopii zapasowej udziałów plików platformy Azure
 W tym artykule opisano sposób tworzenia kopii zapasowej i przywracania [udziałów plików platformy Azure](../storage/files/storage-files-introduction.md) przy użyciu witryny Azure Portal.
@@ -31,7 +31,7 @@ Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czy
 Przed utworzeniem kopii zapasowej udziału plików platformy Azure sprawdź, czy znajduje się on na [koncie magazynu jednego z obsługiwanych typów](backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview). Jeśli tak, oznacza to, że możesz chronić swoje udziały plików.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Ograniczenia dotyczące tworzenia kopii zapasowej udziału plików platformy Azure w okresie korzystania z wersji zapoznawczej
-Funkcja tworzenia kopii zapasowych udziałów plików platformy Azure jest dostępna w wersji zapoznawczej. Następujące scenariusze tworzenia kopii zapasowej nie są obsługiwane w przypadku udziałów plików platformy Azure:
+Funkcja tworzenia kopii zapasowych udziałów plików platformy Azure jest dostępna w wersji zapoznawczej. Obsługiwane są udziały plików platformy Azure na kontach magazynu ogólnego przeznaczenia w wersji 1 i 2. Następujące scenariusze tworzenia kopii zapasowej nie są obsługiwane w przypadku udziałów plików platformy Azure:
 - Nie można chronić udziałów plików platformy Azure w ramach kont magazynu przy użyciu replikacji [magazynu geograficznie nadmiarowego dostępnego do odczytu](../storage/common/storage-redundancy-grs.md) (RA-GRS)*.
 - Nie można chronić udziałów plików platformy Azure w ramach kont magazynu, które mają włączone sieci wirtualne lub zaporę.
 - Nie ma programu PowerShell ani interfejsu wiersza polecenia dostępnego dla ochrony usługi Azure Files z poziomu usługi Azure Backup.
@@ -39,10 +39,11 @@ Funkcja tworzenia kopii zapasowych udziałów plików platformy Azure jest dost�
 - Maksymalna liczba kopii zapasowych na żądanie to cztery dziennie.
 - Aby zapobiec przypadkowemu usunięciu kopii zapasowych z magazynu usługi Recovery Services, użyj [blokad zasobów](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) na koncie magazynu.
 - Nie usuwaj migawek utworzonych przy użyciu usługi Azure Backup. Usunięcie migawek może spowodować utratę punktów odzyskiwania i/lub błędy przywracania.
+- Nie usuwaj udziałów plików, które są chronione przez usługę Azure Backup. Bieżące rozwiązanie usunie wszystkie migawki utworzone przez usługę Azure Backup, gdy udział plików zostanie usunięty, i tym samym utraci wszystkie punkty przywracania.
 
 \*Udziały plików platformy Azure w ramach kont magazynu z replikacją [magazynu geograficznie nadmiarowego dostępnego do odczytu](../storage/common/storage-redundancy-grs.md) (RA-GRS) funkcjonują jako magazyn geograficznie nadmiarowy (GRS) i są rozliczane w cenie magazynu GRS.
 
-Tworzenie kopii zapasowej udziałów plików platformy Azure w ramach kont magazynu za pomocą replikacji [magazynu strefowo nadmiarowego](../storage/common/storage-redundancy-zrs.md) (ZRS) jest obecnie dostępne tylko w środkowych stanach USA (CUS), wschodnich stanach USA 2 (EUS2), Europie Północnej (NE), Azji Południowo-Wschodniej (SEA) i Europie Zachodniej (WE).
+Tworzenie kopii zapasowej udziałów plików platformy Azure w ramach kont magazynu za pomocą replikacji [magazynu strefowo nadmiarowego](../storage/common/storage-redundancy-zrs.md) (ZRS) jest obecnie dostępne tylko w regionach Środkowe stany USA (CUS), Wschodnie stany USA (EUS), Wschodnie stany USA 2 (EUS2), Europa Północna (NE), Azja Południowo-Wschodniej (SEA), Europa Zachodnia (WE) i Zachodnie stany USA 2 (WUS2).
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Konfigurowanie kopii zapasowej udziału plików platformy Azure
 Wszystkie dane kopii zapasowych są przechowywane w magazynach usługi Recovery Services. W tym samouczku przyjęto założenie, że ustanowiono już udział plików platformy Azure. Aby utworzyć kopię zapasową udziału plików platformy Azure:

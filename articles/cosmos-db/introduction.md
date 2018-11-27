@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 12e3cf028b4812abd43dd2b6f23190fa6b75157a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 717a0234f0155229597c6fc4fe70a7868a536975
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242294"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160737"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB — Zapraszamy!
 
@@ -50,7 +50,7 @@ Jako globalnie dystrybuowana, wielomodelowa usługa bazy danych usługa Azure Co
 
 * **Tworzenie szybko reagujących aplikacji o kluczowym znaczeniu**
     * Usługa Azure Cosmos DB gwarantuje klientom całościowe małe opóźnienia na poziomie 99 percentyla. 
-    * Dla typowego elementu o wielkości 1 KB usługa Cosmos DB gwarantuje całościowe opóźnienie operacji odczytu poniżej 10 ms oraz indeksowanego zapisu poniżej 15 ms na poziomie 99 percentyla w obrębie tego samego regionu świadczenia usługi Azure. Średnie opóźnienia są znacznie niższe (poniżej 5 ms).
+    * Dla typowego elementu o wielkości 1 KB usługa Cosmos DB gwarantuje całościowe opóźnienie operacji odczytu poniżej 10 ms oraz indeksowanego zapisu poniżej 10 ms na poziomie 99 percentyla w obrębie tego samego regionu świadczenia usługi Azure. Średnie opóźnienia są znacznie niższe (poniżej 5 ms).
 
 * **Zapewnienie dostępności na poziomie „zawsze włączona”**
     * Umowa SLA gwarantująca dostępność na poziomie co najmniej 99,99% dla wszystkich kont bazy danych w obrębie jednego regionu, a także dostępność do odczytu na poziomie co najmniej 99,999% dla wszystkich kont bazy danych w wielu regionach.
@@ -79,9 +79,9 @@ Usługa Azure Cosmos DB zapewnia najlepsze możliwości tradycyjnych relacyjnych
 | --- | --- | --- | --- |
 | Dystrybucja globalna | Nie | Nie | Tak, gotowa do użycia dystrybucja w ponad 30 regionach z międzyregionalnymi interfejsami API|
 | Skalowanie w poziomie | Nie | Yes | Tak, możliwe jest niezależne skalowanie magazynu i przepływności | 
-| Gwarancje dot. opóźnienia | Nie | Yes | Tak, 99% odczytów trwa poniżej 10 ms, a 99% zapisów poniżej 15 ms | 
+| Gwarancje dot. opóźnienia | Nie | Yes | Tak, 99% odczytów trwa poniżej 10 ms i 99% zapisów poniżej 10 ms | 
 | Wysoka dostępność | Nie | Yes | Tak, usługa Azure Cosmos DB jest zawsze włączona, umożliwia dobrze zdefiniowane wymiany zgodne z modelem PACELC oraz oferuje opcje automatycznego i ręcznego przechodzenia w tryb failover|
-| Model danych + interfejs API | Relacyjny + SQL | Wiele modeli + OSS API | Wiele modeli + SQL + OSS API (więcej wkrótce) |
+| Model danych + interfejs API | Relacyjny + SQL | Wiele modeli + OSS API | Wiele modeli + SQL + OSS API |
 | Umowy SLA | Yes | Nie | Tak, kompleksowe umowy SLA dotyczące opóźnienia, przepływności, spójności i dostępności |
 
 ## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>Rozwiązania, które korzystają z zalet usługi Azure Cosmos DB

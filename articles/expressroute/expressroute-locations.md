@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/23/2018
 ms.author: pareshmu
-ms.openlocfilehash: 14529ede47d69e30102a74a0f5ed84573ea108f9
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 817dd1ec5cd047035099fb88d998f79cd8c39078
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025212"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276061"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -40,18 +40,19 @@ Będziesz mieć dostęp do usług Azure we wszystkich regionach regionu geopolit
 ### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>Regiony świadczenia usługi Azure i lokalizacje usługi ExpressRoute w regionach geopolitycznych.
 Poniższa tabela zawiera mapę regionów świadczenia usługi Azure dla lokalizacji usługi ExpressRoute w regionie geopolitycznym.
 
-| **Region geopolityczny** | **Regiony platformy Azure** | **Lokalizacje usługi ExpressRoute** |
-| --- | --- | --- |
-| **Ameryka Północna** |Wschodnie stany USA, Zachodnie stany USA, Wschodnie stany USA 2, Zachodnie stany USA 2, Środkowe stany USA, Południowo-środkowe stany USA, Północno-środkowe stany USA, Środkowo-zachodnie stany USA, Kanada Środkowa, Kanada Wschodnia |Atlanta, Chicago, Dallas, Denver, Dolina Krzemowa, Las Vegas, Los Angeles, Miami, Miasto Quebec, Montreal, Nowy Jork, San Antonio, Seattle, Toronto, Waszyngton |
-| **Ameryka Południowa** |Brazylia Południowa |Sao Paulo |
-| **Europa** |Europa Północna, Europa Zachodnia, Francja Południowa, Francja Środkowa, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo |Amsterdam, Amsterdam2, Dublin, Londyn, Marsylia, Newport (Walia), Paryż |
-| **Azja** |Azja Wschodnia, Azja Południowo-Wschodnia |Hongkong, Kuala Lumpur, Singapur, Singapur2 |
-| **Japonia** |Japońska Zachodnia, Japonia Wschodnia |Osaka, Tokio |
-| **Australia** |Australia Południowo-Wschodnia, Australia Wschodnia |Melbourne, Sydney |
-| **Australia — instytucje rządowe** | Australia Środkowa, Australia Środkowa 2 |Canberra, Canberra2 | 
-| **Indie** |Indie Zachodnie, Indie Środkowe, Indie Południowe |Chennai, Chennai2, Mumbaj, Mumbaj2 |
-| **Korea Południowa** |Korea Środkowa, Korea Południowa |Busan, Seul |
-| **Republika Południowej Afryki** |[Zachodnia RPA+, Północna RPA+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |Kapsztad, Johannesburg |
+| **Region geopolityczny** | **Strefa** | **Regiony platformy Azure** | **Lokalizacje usługi ExpressRoute** |
+| --- | --- | --- | --- |
+| **Australia — instytucje rządowe** |Strefa 1 | Australia Środkowa, Australia Środkowa 2 |Canberra, Canberra2 |
+| **Europa** |Strefa 1 |Europa Północna, Europa Zachodnia, Francja Południowa, Francja Środkowa, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo |Amsterdam, Amsterdam2, Dublin, Londyn, Marsylia, Newport (Walia), Paryż |
+| **Ameryka Północna** |Strefa 1 |Wschodnie stany USA, Zachodnie stany USA, Wschodnie stany USA 2, Zachodnie stany USA 2, Środkowe stany USA, Południowo-środkowe stany USA, Północno-środkowe stany USA, Środkowo-zachodnie stany USA, Kanada Środkowa, Kanada Wschodnia |Atlanta, Chicago, Dallas, Denver, Dolina Krzemowa, Las Vegas, Los Angeles, Miami, Miasto Quebec, Montreal, Nowy Jork, San Antonio, Seattle, Toronto, Waszyngton |
+| **Azja** |Strefa 2 |Azja Wschodnia, Azja Południowo-Wschodnia |Hongkong, Kuala Lumpur, Singapur, Singapur2 |
+| **Australia** |Strefa 2 |Australia Południowo-Wschodnia, Australia Wschodnia |Melbourne, Sydney | 
+| **Indie** |Strefa 2 |Indie Zachodnie, Indie Środkowe, Indie Południowe |Chennai, Chennai2, Mumbaj, Mumbaj2 |
+| **Japonia** |Strefa 2 |Japońska Zachodnia, Japonia Wschodnia |Osaka, Tokio |
+| **Korea Południowa** |Strefa 2 |Korea Środkowa, Korea Południowa |Busan, Seul|
+| **Republika Południowej Afryki** |Strefa 3 |[Zachodnia RPA+, Północna RPA+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |Kapsztad, Johannesburg |
+| **Ameryka Południowa** |Strefa 3 |Brazylia Południowa |Sao Paulo |
+
 
  **+** oznacza wkrótce
 

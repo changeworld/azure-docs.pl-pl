@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: f84eda2269df0bbe7186a2f1a9abb9c594b75455
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fbe286313bce9b735665b134a5ea18ba4995548b
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245073"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712266"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>Szybki start: wdrażanie usługi Azure Data Box Disk (w wersji zapoznawczej) za pomocą witryny Azure Portal
 
@@ -67,7 +67,7 @@ Ten krok zajmuje około 5 minut.
 
     1. W witrynie Azure Portal przejdź do pozycji **Ogólne > Szczegóły urządzenia** i uzyskaj klucz dostępu.
     2. Pobierz i wyodrębnij przeznaczone dla danego systemu operacyjnego narzędzie do odblokowywania urządzenia Data Box Disk na komputerze, którego używasz do skopiowania danych na dyski. 
-    3. Uruchom narzędzie do odblokowywania urządzenia Data Box Disk i podaj klucz dostępu. W przypadku ponownego użycia dysku uruchom ponownie narzędzie do odblokowywania i podaj klucz dostępu. **Do odblokowania dysku nie należy używać okna dialogowego funkcji BitLocker ani klucza funkcji BitLocker.** Aby uzyskać więcej informacji na temat sposobu odblokowywania dysków, zobacz [Odblokowywanie dysków na komputerze klienckim z systemem Windows]() lub [Odblokowywanie dysków na komputerze klienckim z systemem Linux]().
+    3. Uruchom narzędzie do odblokowywania urządzenia Data Box Disk i podaj klucz dostępu. W przypadku ponownego użycia dysku uruchom ponownie narzędzie do odblokowywania i podaj klucz dostępu. **Do odblokowania dysku nie należy używać okna dialogowego funkcji BitLocker ani klucza funkcji BitLocker.** Aby uzyskać więcej informacji na temat sposobu odblokowywania dysków, zobacz [Odblokowywanie dysków na komputerze klienckim z systemem Windows](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) lub [Odblokowywanie dysków na komputerze klienckim z systemem Linux](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client).
     4. W narzędziu jest wyświetlana litera dysku przypisana do danego dysku. Zanotuj tę literę dysku. Będzie używana w kolejnych krokach.
 
 ## <a name="copy-data-and-validate"></a>Kopiowanie danych i weryfikacja
@@ -85,7 +85,6 @@ Czas wymagany do ukończenia tej operacji zależy od rozmiaru danych.
 2. (Opcjonalnie) Po zakończeniu kopiowania zalecamy uruchomienie narzędzia `DataBoxDiskValidation.cmd` znajdującego się w folderze *DataBoxDiskImport* w celu wygenerowania sum kontrolnych na potrzeby sprawdzania poprawności. Czas wykonywania tej operacji zależy od rozmiaru danych. 
 3. Odłącz dysk. 
 
-
 ## <a name="ship-to-azure"></a>Wysyłka do platformy Azure
 
 Ten krok zajmuje około 5–7 minut.
@@ -94,7 +93,6 @@ Ten krok zajmuje około 5–7 minut.
 2. Oddaj zapieczętowaną paczkę firmie przewozowej.  
 
 Usługa Data Box Disk wysyła powiadomienie e-mail i aktualizuje stan zamówienia w witrynie Azure Portal.
-
 
 ## <a name="verify-your-data"></a>Weryfikowanie danych
 
@@ -126,5 +124,3 @@ Podczas pracy z tym przewodnikiem Szybki start wdrożono usługę Azure Data Box
 
 > [!div class="nextstepaction"]
 > [Use the Azure portal to administer Data Box Disk (Administrowanie usługą Data Box Disk w witrynie Azure Portal)](data-box-portal-ui-admin.md)
-
-

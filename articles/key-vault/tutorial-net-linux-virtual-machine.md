@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: afee50db98b361b11371e9ac382060e200a1f62f
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 928339a245525933ae142a5d73137ce699cf1f7c
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688252"
+ms.locfileid: "51712334"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-net"></a>Samouczek: jak używać usługi Azure Key Vault za pomocą maszyny wirtualnej platformy Azure z systemem Linux na platformie .NET
 
 Usługa Azure Key Vault umożliwia ochronę wpisów tajnych, takich jak klucze interfejsu API, parametry połączenia bazy danych potrzebne do uzyskania dostępu do aplikacji, usługi i zasoby informatyczne.
 
-W tym samouczku wykonasz kroki niezbędne do skonfigurowania aplikacji internetowej platformy Azure pod kątem odczytu informacji z usługi Azure Key Vault za pomocą tożsamości zarządzanych dla zasobów platformy Azure. Ten samouczek opiera się na usłudze [Azure Web Apps](../app-service/app-service-web-overview.md). Z poniższego artykułu dowiesz się, jak wykonywać następujące czynności:
+W tym samouczku wykonasz kroki niezbędne do skonfigurowania aplikacji konsolowej pod kątem odczytu informacji z usługi Azure Key Vault za pomocą tożsamości zarządzanych dla zasobów platformy Azure. Ten samouczek opiera się na usłudze [Azure Web Apps](../app-service/app-service-web-overview.md). Z poniższego artykułu dowiesz się, jak wykonywać następujące czynności:
 
 > [!div class="checklist"]
 > * Tworzenie magazynu kluczy.
@@ -259,8 +259,7 @@ Następnie zmień plik klasy, aby zawierał poniższy kod. Jest to proces skład
                 String responseString = reader.ReadToEnd();
 
                 JObject joResponse = JObject.Parse(responseString);    
-                JValue ojObject = (JValue)joResponse[tokenName];
-                Console.WriteLine(ojObject.Value);                
+                JValue ojObject = (JValue)joResponse[tokenName];   
                 token = ojObject.Value.ToString();
             }
             return token;

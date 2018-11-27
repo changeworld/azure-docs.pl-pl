@@ -5,15 +5,15 @@ author: aditidugar
 ms.author: adugar
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 09/11/2018
+ms.date: 11/20/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 8258c8f34b4b9a1b216d9d497dcdf7d3b8db1373
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 70d29359d4a4bcf9f5badbbf0c553d7bed88a02b
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46369515"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284570"
 ---
 # <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Samouczek: przeprowadzanie analizy głównej przyczyny po wystąpieniu alertu
 
@@ -66,7 +66,7 @@ Przefiltruj urządzenia, wpisując ciąg **delivery-truck** w polu filtru, i wyb
 
 [![Temperatura ciężarówek w eksploratorze usługi TSI](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-expanded.png#lightbox)
 
-Zostanie wyświetlony ten sam widok, który był wyświetlany na pulpicie nawigacyjnym monitorowania zdalnego. Teraz możesz powiększyć przedział czasu, w którym został wyzwolony alert:
+Zostanie wyświetlony ten sam widok, który był wyświetlany na pulpicie nawigacyjnym zdalnego monitorowania. Ponadto teraz można przybliżyć horyzont czasowy, w którym alert został wyzwolony:
 
 [![Powiększenie w eksploratorze usługi TSI](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-expanded.png#lightbox)
 
@@ -74,13 +74,13 @@ Możesz również dodać inne strumienie danych telemetrycznych pochodzące z ci
 
 [![Eksplorator usługi TSI z nowym okienkiem](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-expanded.png#lightbox)
 
-W nowym okienku zmień nazwę nowej etykiety na **Devices** (Urządzenia), aby była zgodna z poprzednią. Wybierz pozycję **altitute** (wysokość) w polu **Measure** (Miara) i wartość **iothub-connection-device-id** w polu **Split By** (Podziel według), aby dodać dane telemetryczne wysokości do widoku:
+W nowym okienku zmień nazwę nowej etykiety na **Devices** (Urządzenia), aby była zgodna z poprzednią. Wybierz pozycję **altitude** (wysokość) w polu **Measure** (Miara) i wartość **iothub-connection-device-id** w polu **Split By** (Podziel według), aby dodać dane telemetryczne wysokości do widoku:
 
 [![Eksplorator usługi TSI z temperaturą i wysokością](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-expanded.png#lightbox)
 
 ## <a name="diagnose-the-alert"></a>Diagnozowanie alertu
 
-Po wyświetleniu strumieni w bieżącym widoku widać, że profile wysokości dla obydwu ciężarówek bardzo się różnią. Ponadto spadek temperatury dla ciężarówki **delivery-truck-02** ma miejsce, gdy ciężarówka osiąga dużą wysokość nad poziomem morza. Ta informacja jest dla Ciebie zaskakująca, ponieważ ciężarówki miały jechać tą samą trasą.
+Po wyświetleniu strumieni w bieżącym widoku widać, że profile wysokości dla obydwu ciężarówek się różnią. Ponadto spadek temperatury dla ciężarówki **delivery-truck-02** ma miejsce, gdy ciężarówka osiąga dużą wysokość nad poziomem morza. Ta informacja jest dla Ciebie zaskakująca, ponieważ ciężarówki miały jechać tą samą trasą.
 
 Aby potwierdzić swoje podejrzenia, że ciężarówki pojechały różnymi trasami, dodaj kolejne okienko do panelu bocznego, używając przycisku **Add** (Dodaj). W nowym okienku zmień nazwę nowej etykiety na **Devices** (Urządzenia), aby była zgodna z poprzednią. Wybierz pozycję **longitude** (długość geograficzna) w polu **Measure** (Miara) i wartość **iothub-connection-device-id** w polu **Split By** (Podziel według), aby dodać dane telemetryczne długości geograficznej do widoku. Możesz zauważyć, że ciężarówki faktycznie pojechały innymi trasami, patrząc na różnicę między strumieniami **długości geograficznej**:
 
@@ -88,7 +88,7 @@ Aby potwierdzić swoje podejrzenia, że ciężarówki pojechały różnymi trasa
 
 ## <a name="create-a-new-rule"></a>Tworzenie nowej reguły
 
-Trasy ciężarówek są przeważnie optymalizowane z wyprzedzeniem, okazuje się jednak, że ruch na drogach, pogoda i inne nieprzewidziane zdarzenia mogą powodować opóźnienia i pozostawiać podejmowane w ostatniej chwili decyzje dotyczące trasy w rękach kierowców, którzy podejmują je w oparciu o swoje doświadczenie i ocenę sytuacji. Jednak ze względu na to, że temperatura produktów znajdujących wewnątrz pojazdu ma kluczowe znaczenie, należy utworzyć dodatkową regułę w rozwiązania do zdalnego monitorowania, aby otrzymywać ostrzeżenia, jeśli średnia wysokość w okresie 1 minuty przekroczy 350 stóp (ok. 107 metrów):
+Trasy ciężarówek są przeważnie optymalizowane z wyprzedzeniem, okazuje się jednak, że ruch na drogach, pogoda i inne nieprzewidziane zdarzenia mogą powodować opóźnienia i pozostawiać podejmowane w ostatniej chwili decyzje dotyczące trasy w rękach kierowców, którzy podejmują je w oparciu o swoje doświadczenie i ocenę sytuacji. Jednak ze względu na to, że temperatura produktów znajdujących się wewnątrz pojazdu ma kluczowe znaczenie, należy utworzyć dodatkową regułę w rozwiązaniu do zdalnego monitorowania. Ta reguła zapewnia otrzymanie ostrzeżenia, jeśli średnia wysokość w okresie 1 minuty przekroczy 350 stóp (ok. 107 metrów):
 
 [![Karta reguł rozwiązania do zdalnego monitorowania: ustawianie reguły wysokości](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-expanded.png#lightbox)
 

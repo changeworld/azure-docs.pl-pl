@@ -1,24 +1,19 @@
 ---
-title: Przesyłanie strumieniowe do usługi Azure Event Hubs dla platformy Azure Kafka | Microsoft Docs
+title: Przesyłanie strumieniowe do usługi Azure Event Hubs dla platformy Apache Kafka
 description: Przesyłanie strumieniowe do usługi Event Hubs przy użyciu protokołu Kafka i interfejsów API.
 services: event-hubs
-documentationcenter: ''
 author: basilhariri
-manager: timlt
+ms.author: bahariri
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/01/2018
-ms.author: bahariri
-ms.openlocfilehash: 18224c3ebf3b5dd9920dcc4b4868ee8bb42e5f91
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 748ed7dde98d81de6e1d2661c6ce50d10357ba3d
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418793"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975315"
 ---
 # <a name="stream-into-event-hubs-for-the-apache-kafka"></a>Przesyłanie strumieniowe do usługi Event Hubs dla platformy Apache Kafka
 W tym przewodniku Szybki start przedstawiono sposób przesyłania strumieniowego usługi Event Hubs z obsługą platformy Kafka bez konieczności zmiany klientów protokołu lub uruchamiania własnych klastrów. Dowiesz się, jak producenci i użytkownicy mogą komunikować się z usługą Event Hubs z obsługą platformy Kafka tylko dzięki zmianie konfiguracji aplikacji. Usługa Azure Event Hubs obsługuje [platformę Apache Kafka w wersji 1.0.](https://kafka.apache.org/10/documentation.html)
@@ -47,7 +42,7 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
  
 3. Podaj unikatową nazwę i włącz platformę Kafka w przestrzeni nazw. Kliknij pozycję **Utwórz**.
     
-    ![Tworzenie przestrzeni nazw](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.png)
+    ![Tworzenie przestrzeni nazw](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  
 4. Po utworzeniu przestrzeni nazw na karcie **Ustawienia** kliknij pozycję **Zasady dostępu współdzielonego** w celu pobrania parametrów połączenia.
 

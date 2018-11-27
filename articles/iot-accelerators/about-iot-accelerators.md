@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: aac079feefde53ff30cbeab942ee0443c113cdc8
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 6fed0c5e3f24fbcefec427cf56a625d1d8d7aba2
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345117"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824544"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Co to są akceleratory rozwiązań Azure IoT?
 
@@ -50,7 +50,7 @@ Pulpit nawigacyjny połączonej fabryki umożliwia monitorowanie urządzeń prze
 
 ### <a name="predictive-maintenance"></a>Konserwacja predykcyjna
 
-Ten akcelerator rozwiązania umożliwia przewidywanie, kiedy urządzenie zdalne ulegnie awarii, dzięki czemu można przeprowadzić konserwację przed oczekiwaną awarią. Akcelerator rozwiązania używa algorytmów uczenia maszynowego do przewidywania awarii na podstawie danych telemetrycznych z urządzenia. Przykładowe urządzenia to silniki lotnicze lub windy.
+Ten akcelerator rozwiązań umożliwia przewidywanie, kiedy urządzenie zdalne ulegnie awarii, dzięki czemu można przeprowadzić konserwację przed awarią tego urządzenia. Akcelerator rozwiązania używa algorytmów uczenia maszynowego do przewidywania awarii na podstawie danych telemetrycznych z urządzenia. Przykładowe urządzenia to silniki lotnicze lub windy.
 
 Za pomocą pulpitu nawigacyjnego konserwacji predykcyjnej można wyświetlać analizę konserwacji predykcyjnej:
 
@@ -97,7 +97,7 @@ Akcelerator rozwiązania monitorowania zdalnego można wdrażać w następujący
 * **Podstawowa:** tańsza wersja przeznaczona do celów demonstracyjnych i do testowania wdrożenia. Wszystkie mikrousługi są wdrażane na jednej maszynie wirtualnej platformy Azure.
 * **Lokalna:** wdrożenie na maszynie lokalnej na potrzeby testowania i opracowywania. W tym podejściu mikrousługi są wdrażane w lokalnym kontenerze Docker, a także nawiązywane jest połączenie z usługą IoT Hub i Azure Cosmos DB oraz usługami Azure Storage w chmurze.
 
-Koszt działania akceleratora rozwiązania jest agregacją [kosztu podstawowych usług platformy Azure](https://azure.microsoft.com/pricing). Szczegóły używanych usług platformy Azure są widoczne podczas wybierania opcji wdrażania.
+Kosztem działania akceleratora rozwiązań jest łączny [koszt działania używanych przez niego podstawowych usług platformy Azure](https://azure.microsoft.com/pricing). Szczegóły używanych usług platformy Azure są widoczne podczas wybierania opcji wdrażania.
 
 ## <a name="next-steps"></a>Następne kroki
 

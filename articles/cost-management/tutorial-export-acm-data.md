@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 7f93a225db845840545b761d812f5a8a81f76f91
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: e671c75b1ceee0e42b3af9ddc149edf2f3b0040c
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913567"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822368"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Samouczek: eksportowanie danych i zarządzanie nimi
 
-Jeśli znasz samouczek Analiza kosztów, już wiesz, jak ręcznie pobierać dane usługi Cost Management. Jednak możesz utworzyć cykliczne zadanie codzienne, które raz dziennie będzie automatycznie eksportowało dane usługi Cost Management do magazynu platformy Azure. Dane są eksportowane w formacie CSV i zawierają wszystkie informacje zebrane przez usługę Cost Management. Wyeksportowanych danych znajdujących się w magazynie platformy Azure możesz następnie używać z systemami zewnętrznymi, łącząc je z własnymi danymi niestandardowymi. Możesz również użyć ich w systemie zewnętrznym, takim jak pulpit nawigacyjny lub inny system finansowy.
+Jeśli znasz samouczek Analiza kosztów, już wiesz, jak ręcznie pobierać dane usługi Cost Management. Jednak możesz utworzyć cykliczne zadanie, które będzie automatycznie eksportowało dane usługi Cost Management do magazynu platformy Azure — codziennie, co tydzień lub co miesiąc. Dane są eksportowane w formacie CSV i zawierają wszystkie informacje zebrane przez usługę Cost Management. Wyeksportowanych danych znajdujących się w magazynie platformy Azure możesz następnie używać z systemami zewnętrznymi, łącząc je z własnymi danymi niestandardowymi. Możesz również użyć ich w systemie zewnętrznym, takim jak pulpit nawigacyjny lub inny system finansowy.
 
 Przykłady w tym samouczku przeprowadzą Cię przez proces eksportowania danych zarządzania kosztami i sprawdzania, czy dane zostały pomyślnie wyeksportowane.
 
@@ -48,11 +48,17 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 Zarządzanie kosztami i rozliczenia &gt; Cost Management &gt; wybierz subskrypcję lub grupę zasobów w ramach subskrypcji &gt; Eksportuj &gt; **Dodaj**.
 
-Wpisz nazwę eksportu i określ subskrypcję, konto magazynu platformy Azure, kontener i katalog magazynu plików lub kontener obiektów blob, a następnie kliknij przycisk **Utwórz**.
+Wpisz nazwę zadania eksportu i wybierz opcję „Codzienny eksport kosztów od początku miesiąca”. Kliknij przycisk **Dalej**.
 
-![Nowy eksport](./media/tutorial-export-acm-data/new-export01.png)
+![Nowy eksport: typ eksportu](./media/tutorial-export-acm-data/basics_exports.png)
 
-Nowy eksport pojawi się na liście eksportów. Domyślnie nowe eksporty są włączone i uruchamiane codziennie. Jeśli chcesz wyłączyć lub usunąć zaplanowany eksport, kliknij dowolny element na liście, a następnie kliknij pozycję **Wyłącz** lub **Usuń**.
+Podaj subskrypcję zawierającą konto usługi Azure Storage, a następnie wybierz konto usługi Storage.  Określ ścieżkę kontenera i katalogu do zapisania wyeksportowanego pliku.  Kliknij przycisk **Dalej**.
+
+![Nowy eksport: magazyn](./media/tutorial-export-acm-data/storage_exports.png)
+
+Przejrzyj szczegóły eksportu, a następnie kliknij przycisk **Utwórz**.
+
+Nowy eksport pojawi się na liście eksportów. Domyślnie nowe zadania eksportu są włączone. Jeśli chcesz wyłączyć lub usunąć zaplanowany eksport, kliknij dowolny element na liście, a następnie kliknij pozycję **Wyłącz** lub **Usuń**.
 
 Początkowo uruchomienie eksportu może zająć od jednej do dwóch godzin. Jednak wyświetlenie danych w wyeksportowanych plikach może potrwać nawet cztery godziny.
 

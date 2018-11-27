@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/26/2018
+ms.date: 11/08/2018
 ms.author: dobett
-ms.openlocfilehash: 365c6e41db865edf8384ca1f82210d9471808f94
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 4071770a74d205570cee082d9af0c0fb7c77e203
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140861"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824782"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Szybki start: testowanie opartego na chmurze rozwiązania do zdalnego monitorowania
 
@@ -32,7 +32,7 @@ W przypadku wdrażania akceleratora rozwiązań w ramach subskrypcji platformy A
 
 Zaloguj się do witryny [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) przy użyciu poświadczeń konta platformy Azure.
 
-Kliknij pozycję **Wypróbuj teraz** na kafelku **Zdalne monitorowanie**.
+Kliknij kafelek **Zdalne monitorowanie**. Na stronie **Zdalne monitorowanie** kliknij pozycję **Wypróbuj teraz**:
 
 ![Wybieranie pozycji Zdalne monitorowanie](./media/quickstart-remote-monitoring-deploy/remotemonitoring.png)
 
@@ -40,9 +40,10 @@ Na stronie **Tworzenie rozwiązania do monitorowania zdalnego** wybierz wdrożen
 
 Wybierz pozycję **.NET** jako język. Implementacje środowisk Java i .NET mają takie same funkcje.
 
-W polu **Nazwa rozwiązania** wprowadź unikatową nazwę akceleratora rozwiązań do monitorowania zdalnego. W tym przewodniku Szybki start używamy nazwy **contoso-rm2**.
+W polu **Nazwa rozwiązania** wprowadź unikatową nazwę akceleratora rozwiązań do monitorowania zdalnego. W tym przewodniku Szybki start używamy nazwy **contoso-rm**.
 
-W polach **Subskrypcja** i **Region** wybierz wartości, których chcesz użyć do wdrożenia akceleratora rozwiązania. Zwykle jest wybierany region znajdujący się najbliżej. W tym przewodniku Szybki start używamy subskrypcji **programu Visual Studio Enterprise** i regionu **Europa Zachodnia**. Musisz być [użytkownikiem lub administratorem globalnym](iot-accelerators-permissions.md) w ramach subskrypcji.
+W polach **Subskrypcja** i **Region** wybierz wartości, których chcesz użyć do wdrożenia akceleratora rozwiązania. Zwykle jest wybierany region znajdujący się najbliżej. W tym przewodniku Szybki start używamy regionu **Wschodnie stany USA**.
+Możesz wybrać opcję **Visual Studio Enterprise**, ale w tym celu musisz być [administratorem globalnym lub użytkownikiem](iot-accelerators-permissions.md).
 
 Aby rozpocząć wdrożenie, kliknij przycisk **Utwórz rozwiązanie**. Ten proces trwa co najmniej pięć minut:
 

@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie i konfigurowanie usługi Azure Firewall w sieci hybrydowej za pomocą programu Azure PowerShell
+title: 'Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w sieci hybrydowej za pomocą programu Azure PowerShell'
 description: W ramach tego samouczka dowiesz się, jak wdrożyć i skonfigurować usługę Azure Firewall przy użyciu witryny Azure Portal.
 services: firewall
 author: vhorne
@@ -7,32 +7,44 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/27/2018
 ms.author: victorh
-ms.openlocfilehash: 3c225e6fbfb13c04d650b8e6b72ee18d23139a8e
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 781365e32ce5602e9fb99b620e068ddf68de8c44
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158962"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854173"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w sieci hybrydowej za pomocą programu Azure PowerShell
+
+W przypadku łączenia sieci lokalnej z siecią wirtualną platformy Azure w celu utworzenia sieci hybrydowej ważną częścią ogólnego planu zabezpieczeń jest możliwość kontrolowania dostępu do zasobów sieciowych platformy Azure.
+
+Aby kontrolować dostęp do sieci hybrydowej korzystającej z reguł, które definiują dozwolony i zabroniony ruch sieciowy, możesz użyć usługi Azure Firewall.
+
+W tym samouczku zostaną utworzone trzy sieci wirtualne:
+
+- **VNet-Hub** — w tej sieci wirtualnej znajduje się zapora.
+- **VNet-Spoke** — sieć wirtualna będąca szprychą reprezentuje pakiet roboczy na platformie Azure.
+- **VNet-Onprem** — lokalna sieć wirtualna reprezentuje sieć lokalną. W trakcie rzeczywistego wdrożenia połączenie można nawiązać za pomocą sieci VPN lub usługi Express Route. Dla ułatwienia w tym samouczku zostanie wykorzystane połączenie za pośrednictwem bramy VPN Gateway, a do reprezentowania sieci lokalnej zostanie wykorzystana sieć wirtualna zlokalizowana na platformie Azure.
+
+![Zapora w sieci hybrydowej](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Konfigurowanie środowiska sieciowego
+> * Deklarowanie zmiennych
+> * Tworzenie sieci wirtualnej koncentratora zapory
+> * Tworzenie sieci wirtualnej będącej szprychą
+> * Tworzenie lokalnej sieci wirtualnej
 > * Konfigurowanie i wdrażanie zapory
+> * Tworzenie i łączenie bram sieci VPN
+> * Komunikacja równorzędna pomiędzy sieciami wirtualnymi koncentratora i szprychy
 > * Tworzenie tras
 > * Tworzenie maszyn wirtualnych
 > * Testowanie zapory
 
-W tym samouczku zostaną utworzone trzy sieci wirtualne:
-- **VNet-Hub** — w tej sieci wirtualnej znajduje się zapora.
-- **VNet-Spoke** — sieć wirtualna będąca szprychą reprezentuje pakiet roboczy na platformie Azure.
-- **VNet-Onprem** — sieć wirtualna OnPrem reprezentuje sieć lokalną. W trakcie rzeczywistego wdrożenia połączenie można nawiązać za pomocą sieci VPN lub usługi Express Route. Dla ułatwienia w tym samouczku zostanie wykorzystane połączenie za pośrednictwem bramy VPN Gateway, a do reprezentowania sieci lokalnej zostanie wykorzystana sieć wirtualna zlokalizowana na platformie Azure.
+## <a name="prerequisites"></a>Wymagania wstępne
 
-![Zapora w sieci hybrydowej](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
-
-## <a name="key-requirements"></a>Podstawowe wymagania
+Ten samouczek wymaga, aby program PowerShell działał lokalnie. Moduł Azure PowerShell musi być zainstalowany w wersji 6.12.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Po zweryfikowaniu wersji programu PowerShell uruchom polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
 Aby ten scenariusz przebiegał prawidłowo, muszą zostać spełnione trzy podstawowe wymagania:
 
@@ -45,11 +57,9 @@ Zapoznaj się z sekcją [Tworzenie tras](#create-routes) w tym samouczku, aby po
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
-
 ## <a name="declare-the-variables"></a>Deklarowanie zmiennych
 
-W poniższym przykładzie zmienne są deklarowane przy użyciu wartości podanych dla tego samouczka. W większości przypadków należy zastąpić wartości własnymi. Można jednak użyć tych zmiennych, aby wykonać opisane kroki w celu zapoznania się z tego typu konfiguracją. Jeśli jest taka konieczność, zmodyfikuj zmienne, a następnie skopiuj je i wklej do konsoli programu PowerShell.
+W poniższym przykładzie zmienne są deklarowane przy użyciu wartości podanych dla tego samouczka. W pewnych przypadkach może być konieczne zastąpienie niektórych wartości Twoimi własnymi wartościami umożliwiającymi pracę w ramach subskrypcji. Jeśli jest taka konieczność, zmodyfikuj zmienne, a następnie skopiuj je i wklej do konsoli programu PowerShell.
 
 ```azurepowershell
 $RG1 = "FW-Hybrid-Test"
@@ -67,7 +77,7 @@ $GWHubpipName = "VNet-hub-GW-pip"
 $GWIPconfNameHub = "GW-ipconf-hub"
 $ConnectionNameHub = "hub-to-Onprem"
 
-# Variables for the spoke VNet
+# Variables for the spoke virtual network
 
 $VnetNameSpoke = "VNet-Spoke"
 $SNnameSpoke = "SN-Workload"
@@ -75,7 +85,7 @@ $VNetSpokePrefix = "10.6.0.0/16"
 $SNSpokePrefix = "10.6.0.0/24"
 $SNSpokeGWPrefix = "10.6.1.0/24"
 
-# Variables for the OnPrem VNet
+# Variables for the on-premises virtual network
 
 $VNetnameOnprem = "Vnet-Onprem"
 $SNNameOnprem = "SN-Corp"
@@ -90,15 +100,14 @@ $GWOnprempipName = "VNet-Onprem-GW-pip"
 $SNnameGW = "GatewaySubnet"
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów zawierającą wszystkie zasoby, które są wymagane do celów tego samouczka:
+## <a name="create-the-firewall-hub-virtual-network"></a>Tworzenie sieci wirtualnej koncentratora zapory
+
+Najpierw utwórz grupę zasobów zawierającą zasoby do celów tego samouczka:
 
 ```azurepowershell
   New-AzureRmResourceGroup -Name $RG1 -Location $Location1
   ```
-
-## <a name="create-and-configure-the-firewall-hub-vnet"></a>Tworzenie i konfigurowanie sieci wirtualnej koncentratora zapory
 
 Zdefiniuj podsieci, które mają być dołączone do sieci wirtualnej:
 
@@ -114,14 +123,14 @@ $VNetHub = New-AzureRmVirtualNetwork -Name $VNetnameHub -ResourceGroupName $RG1 
 -Location $Location1 -AddressPrefix $VNetHubPrefix -Subnet $FWsub,$GWsub
 ```
 
-Następnie zostaje przesłane żądanie przydzielenia publicznego adresu IP do bramy sieci VPN, która zostanie utworzona dla sieci wirtualnej. Należy zauważyć, że metoda *AllocationMethod* jest **dynamiczna**. Nie możesz określić adresu IP, którego chcesz użyć. Jest on przydzielany dynamicznie do bramy sieci VPN. 
+Zażądaj przydzielenia publicznego adresu IP do bramy sieci VPN, która zostanie utworzona dla sieci wirtualnej. Należy zauważyć, że metoda *AllocationMethod* jest **dynamiczna**. Nie możesz określić adresu IP, którego chcesz użyć. Jest on przydzielany dynamicznie do bramy sieci VPN. 
 
   ```azurepowershell
   $gwpip1 = New-AzureRmPublicIpAddress -Name $GWHubpipName -ResourceGroupName $RG1 `
   -Location $Location1 -AllocationMethod Dynamic
 ```
 
-## <a name="create-and-configure-the-spoke-vnet"></a>Tworzenie i konfigurowanie sieci wirtualnej będącej szprychą
+## <a name="create-the-spoke-virtual-network"></a>Tworzenie sieci wirtualnej będącej szprychą
 
 Zdefiniuj podsieci, które mają być dołączone do sieci wirtualnej będącej szprychą:
 
@@ -137,7 +146,7 @@ $VNetSpoke = New-AzureRmVirtualNetwork -Name $VnetNameSpoke -ResourceGroupName $
 -Location $Location1 -AddressPrefix $VNetSpokePrefix -Subnet $Spokesub,$GWsubSpoke
 ```
 
-## <a name="create-and-configure-the-onprem-vnet"></a>Tworzenie i konfigurowanie sieci wirtualnej OnPrem
+## <a name="create-the-on-premises-virtual-network"></a>Tworzenie lokalnej sieci wirtualnej
 
 Zdefiniuj podsieci, które mają być dołączone do sieci wirtualnej:
 
@@ -146,14 +155,14 @@ $Onpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNNameOnprem -AddressP
 $GWOnpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNnameGW -AddressPrefix $SNGWOnpremPrefix
 ```
 
-Teraz utwórz sieć wirtualną OnPrem:
+Teraz utwórz lokalną sieć wirtualną:
 
 ```azurepowershell
 $VNetOnprem = New-AzureRmVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
 ```
 
-Następnie zostanie przesłane żądanie przydzielenia publicznego adresu IP do bramy, która zostanie utworzona dla sieci wirtualnej. Należy zauważyć, że metoda *AllocationMethod* jest **dynamiczna**. Nie możesz określić adresu IP, którego chcesz użyć. Jest on przydzielany dynamicznie do bramy. 
+Zażądaj przydzielenia publicznego adresu IP do bramy, która zostanie utworzona dla sieci wirtualnej. Należy zauważyć, że metoda *AllocationMethod* jest **dynamiczna**. Nie możesz określić adresu IP, którego chcesz użyć. Jest on przydzielany dynamicznie do bramy. 
 
   ```azurepowershell
   $gwOnprempip = New-AzureRmPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
@@ -198,9 +207,9 @@ Set-AzureRmFirewall -AzureFirewall $Azfw
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>Tworzenie i łączenie bram sieci VPN
 
-Sieci wirtualne Hub i OnPrem są połączone za pośrednictwem bram sieci VPN.
+Sieć wirtualna koncentratora i lokalna sieć wirtualna są połączone za pośrednictwem bram sieci VPN.
 
-### <a name="create-a-vpn-gateway-for-the-hub-vnet"></a>Tworzenie bramy sieci VPN dla sieci wirtualnej koncentratora
+### <a name="create-a-vpn-gateway-for-the-hub-virtual-network"></a>Tworzenie bramy sieci VPN dla sieci wirtualnej koncentratora
 
 Utwórz konfigurację bramy sieci VPN. W ramach konfiguracji bramy sieci VPN zostaje zdefiniowana podsieć i publiczny adres IP do użycia.
 
@@ -211,7 +220,7 @@ Utwórz konfigurację bramy sieci VPN. W ramach konfiguracji bramy sieci VPN zos
   -Subnet $subnet1 -PublicIpAddress $gwpip1
   ```
 
-Teraz utwórz bramę sieci VPN dla sieci wirtualnej koncentratora. Konfiguracje połączeń między sieciami wirtualnymi wymagają zastosowania wartości RouteBased obiektu VpnType. Tworzenie bramy sieci VPN może potrwać 45 minut lub dłużej, w zależności od wybranej jednostki SKU bramy sieci VPN.
+Teraz utwórz bramę sieci VPN dla sieci wirtualnej koncentratora. Konfiguracje połączeń między sieciami wymagają zastosowania wartości RouteBased obiektu VpnType. Tworzenie bramy sieci VPN może potrwać 45 minut lub dłużej, w zależności od wybranej jednostki SKU bramy sieci VPN.
 
 ```azurepowershell
 New-AzureRmVirtualNetworkGateway -Name $GWHubName -ResourceGroupName $RG1 `
@@ -219,7 +228,7 @@ New-AzureRmVirtualNetworkGateway -Name $GWHubName -ResourceGroupName $RG1 `
 -VpnType RouteBased -GatewaySku basic
 ```
 
-### <a name="create-a-vpn-gateway-for-the-onprem-vnet"></a>Tworzenie bramy sieci VPN dla sieci wirtualnej OnPrem
+### <a name="create-a-vpn-gateway-for-the-on-premises-virtual-network"></a>Tworzenie bramy sieci VPN dla lokalnej sieci wirtualnej
 
 Utwórz konfigurację bramy sieci VPN. W ramach konfiguracji bramy sieci VPN zostaje zdefiniowana podsieć i publiczny adres IP do użycia.
 
@@ -230,7 +239,7 @@ $gwipconf2 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfNameOnprem 
   -Subnet $subnet2 -PublicIpAddress $gwOnprempip
   ```
 
-Teraz utwórz bramę sieci VPN dla sieci wirtualnej OnPrem. Konfiguracje połączeń między sieciami wirtualnymi wymagają zastosowania wartości RouteBased obiektu VpnType. Tworzenie bramy sieci VPN może potrwać 45 minut lub dłużej, w zależności od wybranej jednostki SKU bramy sieci VPN.
+Teraz utwórz bramę sieci VPN dla lokalnej sieci wirtualnej. Konfiguracje połączeń między sieciami wymagają zastosowania wartości RouteBased obiektu VpnType. Tworzenie bramy sieci VPN może potrwać 45 minut lub dłużej, w zależności od wybranej jednostki SKU bramy sieci VPN.
 
 ```azurepowershell
 New-AzureRmVirtualNetworkGateway -Name $GWOnpremName -ResourceGroupName $RG1 `
@@ -240,7 +249,7 @@ New-AzureRmVirtualNetworkGateway -Name $GWOnpremName -ResourceGroupName $RG1 `
 
 ### <a name="create-the-vpn-connections"></a>Tworzenie połączeń sieci VPN
 
-Teraz możesz utworzyć połączenia sieci VPN pomiędzy bramami sieci Hub i OnPrem
+Teraz możesz utworzyć połączenia sieci VPN pomiędzy bramami sieci koncentratora i sieci lokalnej
 
 #### <a name="get-the-vpn-gateways"></a>Uzyskiwanie bram sieci VPN
 
@@ -251,14 +260,14 @@ $vnetOnpremgw = Get-AzureRmVirtualNetworkGateway -Name $GWOnpremName -ResourceGr
 
 #### <a name="create-the-connections"></a>Tworzenie połączeń
 
-W tym momencie utworzysz połączenie pomiędzy siecią wirtualną Hub a siecią wirtualną OnPrem. W przykładach zastosowano odwołania do klucza współużytkowanego. Możesz wybrać własne wartości dla klucza współużytkowanego. Ważne jest, aby klucz współużytkowany był zgodny z obydwoma połączeniami. Tworzenie połączenia może nieco potrwać.
+W tym kroku utworzysz połączenie z sieci wirtualnej koncentratora do lokalnej sieci wirtualnej. W przykładach zastosowano odwołania do klucza współużytkowanego. Możesz wybrać własne wartości dla klucza współużytkowanego. Ważne jest, aby klucz współużytkowany był zgodny z obydwoma połączeniami. Tworzenie połączenia może nieco potrwać.
 
 ```azurepowershell
 New-AzureRmVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupName $RG1 `
 -VirtualNetworkGateway1 $vnetHubgw -VirtualNetworkGateway2 $vnetOnpremgw -Location $Location1 `
 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
 ```
-Utwórz połączenie pomiędzy sieciami wirtualnymi OnPrem i Hub. Ten krok jest podobny do poprzedniego, jednak w tym przypadku utworzysz połączenie pomiędzy siecią wirtualną Vnet-Onprem a VNet-Hub. Upewnij się, że klucze współużytkowane są zgodne. Po kilku minutach połączenie zostanie ustanowione.
+Utwórz połączenie z lokalnej sieci wirtualnej do sieci wirtualnej koncentratora. Ten krok jest podobny do poprzedniego, jednak w tym przypadku tworzysz połączenie z sieci VNet-Onprem do sieci VNet-hub. Upewnij się, że klucze współużytkowane są zgodne. Po kilku minutach połączenie zostanie ustanowione.
 
   ```azurepowershell
   New-AzureRmVirtualNetworkGatewayConnection -Name $ConnectionNameOnprem -ResourceGroupName $RG1 `
@@ -282,9 +291,9 @@ Po zakończeniu działania polecenia cmdlet sprawdź wartości. W następującym
 "egressBytesTransferred": 4142431
 ```
 
-## <a name="peer-the-hub-and-spoke-vnets"></a>Komunikacja równorzędna pomiędzy sieciami wirtualnymi koncentratora i szprychy
+## <a name="peer-the-hub-and-spoke-virtual-networks"></a>Komunikacja równorzędna pomiędzy sieciami wirtualnymi koncentratora i szprychy
 
-Możesz teraz nawiązać komunikację równorzędną pomiędzy sieciami wirtualnymi koncentratora i szprychy.
+Teraz nawiąż komunikację równorzędną pomiędzy siecią wirtualną koncentratora i siecią wirtualną będącą szprychą.
 
 ```azurepowershell
 # Peer hub to spoke
@@ -294,7 +303,7 @@ Add-AzureRmVirtualNetworkPeering -Name HubtoSpoke -VirtualNetwork $VNetHub -Remo
 Add-AzureRmVirtualNetworkPeering -Name SpoketoHub -VirtualNetwork $VNetSpoke -RemoteVirtualNetworkId $VNetHub.Id -AllowForwardedTraffic -UseRemoteGateways
 ```
 
-## <a name="create-routes"></a>Tworzenie tras
+## <a name="create-the-routes"></a>Tworzenie tras
 
 Następnie należy utworzyć kilka tras:
 
@@ -302,7 +311,7 @@ Następnie należy utworzyć kilka tras:
 - Trasa domyślna z podsieci będącej szprychą za pośrednictwem adresu IP zapory
 
 > [!NOTE]
-> Usługa Azure Firewall rozpoznaje Twoje lokalne sieci na podstawie protokołu BGP. Może to obejmować domyślną trasę, która trasuje ruch internetowy z powrotem przez sieć lokalną. Jeśli jednak chcesz, aby ruch internetowy był wysyłany bezpośrednio z zapory do Internetu, dodaj domyślną trasę zdefiniowaną przez użytkownika (0.0.0.0/0) w podsieci AzureFirewallSubnet z typem następnego skoku **Internet**. Nadal jest wymuszane tunelowanie ruchu przychodzącego do środowiska lokalnego za pośrednictwem bramy VPN/ExpressRoute przy użyciu bardziej szczegółowych tras nauczonych na podstawie protokołu BGP.
+> Usługa Azure Firewall rozpoznaje Twoje lokalne sieci na podstawie protokołu BGP. Może to obejmować domyślną trasę, która trasuje ruch internetowy z powrotem przez sieć lokalną. W przypadku wdrożenia produkcyjnego możesz chcieć, aby ruch internetowy był wysyłany bezpośrednio z zapory do Internetu. W podsieci AzureFirewallSubnet możesz dodać domyślną trasę zdefiniowaną przez użytkownika (0.0.0.0/0) z typem następnego przeskoku **Internet**. Nadal jest wymuszane tunelowanie ruchu przychodzącego do środowiska lokalnego za pośrednictwem bramy VPN/ExpressRoute przy użyciu bardziej szczegółowych tras nauczonych na podstawie protokołu BGP.
 
 ```azurepowershell
 #Create a route table
@@ -415,9 +424,9 @@ Set-AzureRmVMExtension `
     -SettingString '{"commandToExecute":"powershell New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4"}' `
     -Location $Location1--->
 
-### <a name="create-the-onprem-virtual-machine"></a>Tworzenie maszyny wirtualnej OnPrem
+### <a name="create-the-on-premises-virtual-machine"></a>Tworzenie maszyny wirtualnej w środowisku lokalnym
 
-Jest to prosta maszyna wirtualna, którą można połączyć z publicznym adresem IP przy użyciu pulpitu zdalnego. Z tego miejsca możesz nawiązać połączenie z serwerem OnPrem za pośrednictwem zapory. Po wyświetleniu monitu wpisz nazwę użytkownika i hasło maszyny wirtualnej.
+Jest to prosta maszyna wirtualna, za pomocą której można połączyć się z publicznym adresem IP przy użyciu pulpitu zdalnego. Z tego miejsca nawiążesz następnie połączenie z serwerem lokalnym za pośrednictwem zapory. Po wyświetleniu monitu wpisz nazwę użytkownika i hasło maszyny wirtualnej.
 
 ```azurepowershell
 New-AzureRmVm `
@@ -432,23 +441,23 @@ New-AzureRmVm `
 
 ## <a name="test-the-firewall"></a>Testowanie zapory
 
-Najpierw należy pobrać i zanotować prywatny adres IP dla maszyny wirtualnej **VM-spoke-01**.
+Najpierw pobierz, a następnie zanotuj prywatny adres IP dla maszyny wirtualnej **VM-spoke-01**.
 
 ```azurepowershell
 $NIC.IpConfigurations.privateipaddress
 ```
 
-1. W witrynie Azure Portal połącz się z maszyną wirtualną **VM-Onprem**.
+W witrynie Azure Portal połącz się z maszyną wirtualną **VM-Onprem**.
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-2. Otwórz przeglądarkę internetową na maszynie wirtualnej **VM-Onprem**, a następnie przejdź do lokalizacji http://\<VM-spoke-01 private IP\>.
+Otwórz przeglądarkę internetową na maszynie wirtualnej **VM-Onprem**, a następnie przejdź do lokalizacji http://\<VM-spoke-01 private IP\>.
 
-   Powinna zostać wyświetlona domyślna strona usług Internet Information Services.
+Powinna zostać wyświetlona domyślna strona usług Internet Information Services.
 
-3. Z poziomu maszyny **VM-Onprem**, otwórz pulpit zdalny na maszynie **VM-spoke-01** przy użyciu prywatnego adresu IP.
+Z poziomu maszyny **VM-Onprem**, otwórz pulpit zdalny na maszynie **VM-spoke-01** przy użyciu prywatnego adresu IP.
 
-   Połączenie powinno zostać nawiązane pomyślnie, a użytkownik powinien móc zalogować się za pomocą wybranej nazwy użytkownika i hasła.
+Połączenie powinno zostać nawiązane pomyślnie, a użytkownik powinien móc zalogować się za pomocą wybranej nazwy użytkownika i hasła.
 
 Teraz upewnij się, czy reguły zapory działają:
 
@@ -472,15 +481,6 @@ Teraz ponownie uruchom testy. Tym razem wszystkie powinny zakończyć się niepo
 Możesz zachować zasoby zapory na potrzeby kolejnego samouczka, a jeśli nie będą już potrzebne, możesz usunąć grupę zasobów **FW-Hybrid-Test**, aby usunąć wszystkie zasoby związane z zaporą.
 
 ## <a name="next-steps"></a>Następne kroki
-
-W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> * Konfigurowanie środowiska sieciowego
-> * Konfigurowanie i wdrażanie zapory
-> * Tworzenie tras
-> * Tworzenie maszyn wirtualnych
-> * Testowanie zapory
 
 Następnie możesz monitorować dzienniki usługi Azure Firewall.
 

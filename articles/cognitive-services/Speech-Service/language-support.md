@@ -88,7 +88,7 @@ EN-IE | Angielski (Irlandia) |Mężczyzna | "Microsoft Server mowy Text na głos
 EN-IN | English (India) | Kobieta | "Microsoft Server mowy Text na głos mowy (en-IN, Heera, Apollo)"
 | | |Kobieta | "Microsoft Server mowy Text na głos mowy (en-IN PriyaRUS)"
 | | |Mężczyzna | "Microsoft Server mowy Text na głos mowy (en-IN, Ravi, Apollo)"
-pl-PL | English (US) |Kobieta | "Microsoft Server mowy Text na głos mowy (en US, ZiraRUS)"
+en-US | English (US) |Kobieta | "Microsoft Server mowy Text na głos mowy (en US, ZiraRUS)"
 | | |Kobieta | "Microsoft Server mowy Text na głos mowy (en US, JessaRUS)"
 | | |Mężczyzna | "Microsoft Server mowy Text na głos mowy (en US, BenjaminRUS)"
 | | |Kobieta | "Microsoft Server mowy Text na głos mowy (en US, Jessa24kRUS)"

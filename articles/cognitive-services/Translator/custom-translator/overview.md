@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: overview
-ms.openlocfilehash: b7cba2959bead5eeed72a87219c70f896b5a48b8
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 76e6bc006ff6049b631409a3515628fbd169f713
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51682966"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976982"
 ---
 # <a name="what-is-custom-translator-preview"></a>Co to jest rozszerzenie Custom Translator (wersja zapoznawcza)?
 
@@ -32,7 +32,7 @@ Rozszerzenie Custom Translator udostępnia różne funkcje umożliwiające utwor
 |---------|---------|
 |[Wykorzystanie technologii neuronowego tłumaczenia maszynowego](https://blogs.msdn.microsoft.com/translation/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Ulepsz swoje tłumaczenia dzięki wykorzystaniu neuronowego tłumaczenia maszynowego (NMT) dostarczanego przez rozszerzenie Custom Translator.       |
 |[Tworzenie systemów, które znają terminologię biznesową użytkownika](what-are-parallel-documents.md)     |  Dostosowywanie i tworzenie systemów tłumaczenia przy użyciu równoległych dokumentów, które rozumieją terminologie używane w firmie i w branży.       |
-|[Używanie słownika do tworzenia modeli](what-is-dictionary.md)     |   Jeśli nie masz zestawu danych szkoleniowych, możesz uczyć model przy użyciu tylko danych słownika.       |
+|[Używanie słownika do tworzenia modeli](what-is-dictionary.md)     |   Jeśli nie masz zestawu danych szkoleniowych, możesz trenować model przy użyciu tylko danych słownika.       |
 |[Współpraca z innymi](how-to-manage-settings.md#share-your-workspace)     |   Współpracuj ze swoim zespołem, udostępniając swoją pracę różnym osobom.     |
 |[Dostęp do niestandardowego modelu tłumaczenia](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  Dostęp do niestandardowego modelu tłumaczenia można uzyskać w dowolnym momencie przy użyciu istniejących aplikacji/programów za pomocą interfejsu API tłumaczenia tekstu w wersji V3 w usłudze Microsoft Translator.       |
 

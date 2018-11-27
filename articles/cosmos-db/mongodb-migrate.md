@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: d3a7ddcd4a95660264bdf9609f54af39a05c97b3
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 13422434e6392ec7681ec4478533c45a84f40c9a
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741032"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706980"
 ---
 # <a name="tutorial-migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>Samouczek: migrowanie danych na konto interfejsu API bazy danych MongoDB w usłudze Cosmos DB
 
@@ -36,13 +36,13 @@ Przed zmigrowaniem danych na konto interfejsu API bazy danych MongoDB upewnij si
 
 1. Wstępnie utwórz kolekcje i przeprowadź ich skalowanie:
         
-    * Domyślnie usługa Azure Cosmos DB aprowizuje nową kolekcję bazy danych MongoDB przy użyciu 1000 jednostek żądania na sekundę (RU/s). Przed rozpoczęciem migracji za pomocą polecenia mongoimport lub mongorestore wstępnie utwórz wszystkie swoje kolekcje przy użyciu witryny [Azure Portal](https://portal.azure.com) lub sterowników i narzędzi bazy danych MongoDB. Jeśli rozmiar danych jest większy niż 10 GB, pamiętaj, aby utworzyć [kolekcję podzieloną na partycje](partition-data.md) przy użyciu odpowiedniego klucza partycjonującego.
+   * Domyślnie usługa Azure Cosmos DB aprowizuje nową kolekcję bazy danych MongoDB przy użyciu 1000 jednostek żądania na sekundę (RU/s). Przed rozpoczęciem migracji za pomocą polecenia mongoimport lub mongorestore wstępnie utwórz wszystkie swoje kolekcje przy użyciu witryny [Azure Portal](https://portal.azure.com) lub sterowników i narzędzi bazy danych MongoDB. Jeśli rozmiar danych jest większy niż 10 GB, pamiętaj, aby utworzyć [kolekcję podzieloną na partycje](partition-data.md) przy użyciu odpowiedniego klucza partycjonującego. Baza danych MongoDB zaleca przechowywanie danych jednostki w kolekcjach. Jednostki, które są podobnej wielkości, możesz umieścić w jednej lokalizacji i aprowizować przepływność na poziomie bazy danych Azure Cosmos.
 
-    * W witrynie [Azure Portal](https://portal.azure.com) zwiększ przepływność kolekcji z 1000 RU/s dla kolekcji z jedną partycją i 2500 RU/s dla kolekcji pofragmentowanej tylko na potrzeby migracji. Dzięki większej przepływności można uniknąć ograniczania przepustowości i przeprowadzać migrację w krótszym czasie. Możesz zmniejszyć przepływność natychmiast po migracji w celu ograniczenia kosztów.
+   * W witrynie [Azure Portal](https://portal.azure.com) zwiększ przepływność kolekcji z 1000 RU/s dla kolekcji z jedną partycją i 2500 RU/s dla kolekcji pofragmentowanej, tylko na czas trwania migracji. Dzięki większej przepływności można uniknąć ograniczania przepustowości i przeprowadzać migrację w krótszym czasie. Możesz zmniejszyć przepływność natychmiast po migracji w celu ograniczenia kosztów.
 
-    * Oprócz aprowizowania jednostek RU/s na poziomie kolekcji można również aprowizować jednostki RU/s dla zestawu kolekcji na poziomie nadrzędnej bazy danych. Wymaga to wstępnego utworzenia bazy danych i kolekcji, a także zdefiniowania klucza partycjonującego dla każdej kolekcji.
+   * Oprócz aprowizowania jednostek RU/s na poziomie kolekcji można również aprowizować jednostki RU/s dla zestawu kolekcji na poziomie nadrzędnej bazy danych. Wymaga to wstępnego utworzenia bazy danych i kolekcji, a także zdefiniowania klucza partycjonującego dla każdej kolekcji.
 
-    * Kolekcje pofragmentowane można tworzyć za pomocą ulubionego narzędzia, sterownika lub zestawu SDK. W tym przykładzie tworzymy kolekcję pofragmentowaną przy użyciu powłoki Mongo:
+   * Kolekcje pofragmentowane można tworzyć za pomocą ulubionego narzędzia, sterownika lub zestawu SDK. W tym przykładzie tworzymy kolekcję pofragmentowaną przy użyciu powłoki Mongo:
 
         ```bash
         db.runCommand( { shardCollection: "admin.people", key: { region: "hashed" } } )

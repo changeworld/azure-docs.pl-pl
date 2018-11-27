@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: sclyon
 ms.custom: mvc
-ms.openlocfilehash: 7bfcbf2c72dbe33727097841f34f3f6869e9d2d8
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 79196e2e89ec28236b7256571ccaa087866c2e76
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053135"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706470"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Tworzenie aplikacji konsolowej interfejsu API usługi MongoDB przy użyciu języka Golang i witryny Azure Portal
 
@@ -42,7 +42,7 @@ Innymi słowy, aplikacja w języku Golang wie jedynie, że łączy się z bazą 
   [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 - Język [Go](https://golang.org/dl/) i podstawowa wiedza o języku [Go](https://golang.org/).
-- Środowisko IDE — [Gogland](https://www.jetbrains.com/go/) firmy Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) firmy Microsoft lub [Atom](https://atom.io/). W tym samouczku używam środowiska Goglang.
+- Środowisko IDE — [GoLand](https://www.jetbrains.com/go/) firmy Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) firmy Microsoft lub [Atom](https://atom.io/). W tym samouczku używam środowiska Goglang.
 
 <a id="create-account"></a>
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych
@@ -65,7 +65,7 @@ Sklonuj przykładową aplikację i zainstaluj wymagane pakiety.
     go get gopkg.in/mgo.v2
     ```
 
-Sterownik [mgo](http://labix.org/mgo) (wymawiany *mango*) to sterownik bazy danych [MongoDB](http://www.mongodb.org/) dla [języka Go](http://golang.org/), który implementuje zbiór rozbudowanych i dobrze przetestowanych funkcji dostępnych przez bardzo prosty interfejs API zgodny ze standardowymi idiomami języka Go.
+Sterownik [mgo](http://labix.org/mgo) to sterownik bazy danych [MongoDB](http://www.mongodb.org/) dla [języka Go](http://golang.org/), który implementuje zbiór rozbudowanych i dobrze przetestowanych funkcji dostępnych przez bardzo prosty interfejs API zgodny ze standardowymi idiomami języka Go.
 
 <a id="connection-string"></a>
 

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: overview
 ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: c54f5c5fba31933a6dd9f98d1ecfb6d03a3ad9be
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 28f80dc71afd7d4865763561682ce54de1b118ab
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003751"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852201"
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>Wybieranie między usługami platformy Azure dostarczającymi komunikaty
 
@@ -54,6 +54,8 @@ Komunikat to nieprzetworzone dane utworzone przez usługę, które mają zostać
 Usługa Event Grid to płyta montażowa obsługi zdarzeń umożliwiająca sterowane zdarzeniami programowanie reaktywne. Używa modelu publikuj-subskrybuj. Wydawcy emitują zdarzenia, ale nie mają żadnych oczekiwań dotyczących tego, które zdarzenia zostaną obsłużone. Subskrybenci decydują, które zdarzenia chcą obsłużyć.
 
 Usługa Event Grid jest ściśle zintegrowana z usługami platformy Azure i można ją zintegrować z usługami innych firm. Upraszcza ona używanie zdarzeń i obniża koszty przez wyeliminowanie potrzeby ciągłego sondowania. Usługa Event Grid skutecznie i niezawodnie kieruje zdarzenia z platformy Azure i zasobów spoza platformy Azure. Dystrybuuje zdarzenia do punktów końcowych zarejestrowanych subskrybentów. Komunikat zdarzenia zawiera informacje potrzebne do zareagowania na zmiany w usługach i aplikacjach. Usługa Event Grid nie jest potokiem danych i nie dostarcza rzeczywistego obiektu, który został zaktualizowany.
+
+Usługa Event Grid obejmuje obsługę utraconych komunikatów dla zdarzeń, które nie są dostarczane do punktu końcowego.
 
 Ma następujące cechy:
 
