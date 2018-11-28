@@ -37,7 +37,7 @@ W tym artykule omówiono różne sposoby tworzenia kontenera (kolekcja, tabela, 
 
 ![Interfejs API SQL tworzy kolekcję](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
-### <a id="portal-mongodb">Interfejs API usługi MongoDB</a>
+### <a id="portal-mongodb"></a>Interfejs API usługi MongoDB
 
 1. Zaloguj się w [portalu Azure](https://portal.azure.com/).
 
