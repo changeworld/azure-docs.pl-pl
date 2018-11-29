@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 82d7e5ab57d9cf12c6917386282182faacb07725
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5e8345deb629d293d9673819893181e652d5dbb9
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282394"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423421"
 ---
 # <a name="tutorial-3-extract-well-formatted-data"></a>Samouczek 3: Wyodrębnianie poprawnie sformatowanych danych
 W tym samouczku zmodyfikujesz aplikację Human Resources, aby wyodrębnić spójnie sformatowane dane z wypowiedzi przy użyciu jednostki **Regular Expression** (Wyrażenie regularne).
@@ -48,7 +48,7 @@ Wyrażenie regularne jest dobrym rozwiązaniem w przypadku tego typu danych, je�
 > * Publikowanie
 > * Pobieranie intencji i jednostek z punktu końcowego
 
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
 Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
@@ -63,7 +63,7 @@ Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj nast�
 
 ## <a name="findform-intent"></a>Intencja FindForm
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wybierz pozycję **Create new intent** (Utwórz nową intencję). 
 
@@ -90,7 +90,7 @@ Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj nast�
 
     Aplikacja zawiera wstępnie utworzoną jednostkę numeru dodaną w poprzednim samouczku, zatem każdy numer formularza jest otagowany. Może to być wystarczające w przypadku Twojej aplikacji klienckiej, ale numer nie zostanie oznaczona etykietą typu numeru. Utworzenie nowej jednostki z odpowiednią nazwę umożliwia aplikacji klienckiej właściwe przetworzenie jednostki zwróconej z aplikacji LUIS.
 
-    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="regular-expression-entity"></a>Jednostka wyrażenia regularnego 
 Jednostka wyrażenia regularnego pasująca do numeru formularza to `hrf-[0-9]{6}`. To wyrażenie regularne dopasowuje znaki literałów `hrf-`, ale ignoruje wielkość liter i warianty kulturowe. Dopasowuje cyfry z zakresu 0–9 dla dokładnie 6 cyfr.

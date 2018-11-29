@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d6feb24b1e59aee70204d8438f1a4c51f71d1835
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: fafb6a6cb986b5bcd795c9bac0fadfce2827c667
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281816"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424816"
 ---
 # <a name="tutorial-8-extract-key-phrases-of-utterance"></a>Samouczek 8: Wyodrębnianie kluczowych fraz wypowiedzi
 W tym samouczku użyjesz wstępnie utworzonej jednostki keyPhrase w celu wyodrębnienia kluczowych treści z wypowiedzi. Nie musisz oznaczać żadnych wypowiedzi za pomocą wstępnie utworzonych jednostek. Jednostka jest wykrywana automatycznie.
@@ -56,7 +56,7 @@ Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj nast�
 ## <a name="add-keyphrase-entity"></a>Dodawanie jednostki keyPhrase 
 Dodaj wstępnie utworzoną jednostkę keyPhrase, aby wyodrębnić treść z wypowiedzi.
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wybierz pozycję **Entities** (Jednostki) w menu po lewej stronie.
 

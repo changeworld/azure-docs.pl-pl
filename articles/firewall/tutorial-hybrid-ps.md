@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/27/2018
 ms.author: victorh
-ms.openlocfilehash: 781365e32ce5602e9fb99b620e068ddf68de8c44
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: d69bd055c95592961216f5da1efaedc4a642fd63
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854173"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316400"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w sieci hybrydowej za pomocą programu Azure PowerShell
 
@@ -309,9 +309,6 @@ Następnie należy utworzyć kilka tras:
 
 - Trasa z podsieci bramy koncentratora do podsieci będącej szprychą za pośrednictwem adresu IP zapory
 - Trasa domyślna z podsieci będącej szprychą za pośrednictwem adresu IP zapory
-
-> [!NOTE]
-> Usługa Azure Firewall rozpoznaje Twoje lokalne sieci na podstawie protokołu BGP. Może to obejmować domyślną trasę, która trasuje ruch internetowy z powrotem przez sieć lokalną. W przypadku wdrożenia produkcyjnego możesz chcieć, aby ruch internetowy był wysyłany bezpośrednio z zapory do Internetu. W podsieci AzureFirewallSubnet możesz dodać domyślną trasę zdefiniowaną przez użytkownika (0.0.0.0/0) z typem następnego przeskoku **Internet**. Nadal jest wymuszane tunelowanie ruchu przychodzącego do środowiska lokalnego za pośrednictwem bramy VPN/ExpressRoute przy użyciu bardziej szczegółowych tras nauczonych na podstawie protokołu BGP.
 
 ```azurepowershell
 #Create a route table

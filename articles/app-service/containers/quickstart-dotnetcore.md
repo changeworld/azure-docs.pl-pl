@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 1345d4c4d349ed2fa5bb95ee35299c77fb391359
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 5aff783735d38a2707f42efe8a1632bd5aaafc4b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42884989"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316773"
 ---
 # <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>Tworzenie aplikacji internetowej platformy .NET Core w usłudze App Service w systemie Linux
 
@@ -66,7 +66,6 @@ Uruchom aplikację lokalnie, aby zobaczyć, jak powinna ona wyglądać, gdy wdro
 Przywróć pakiety NuGet i uruchom aplikację.
 
 ```bash
-dotnet restore
 dotnet run
 ```
 

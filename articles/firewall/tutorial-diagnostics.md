@@ -7,18 +7,18 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 875efddfff9b50ab05665cb8c158467dc46c8d0d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 1354faad4abf9a8a4b56414628d39d9a6f90d721
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987436"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426171"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Samouczek: monitorowanie dzienników i metryk usługi Azure Firewall
 
 Usługę Azure Firewall możesz monitorować przy użyciu dzienników zapory. Ponadto dzienniki aktywności umożliwiają inspekcję operacji wykonywanych względem zasobów usługi Azure Firewall. Za pomocą metryk możesz wyświetlać liczniki wydajności w portalu. 
 
-Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Dzienniki mogą być wysyłane do usługi [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md), Storage i Event Hubs oraz analizowane za pomocą usługi Log Analytics lub innych narzędzi, takich jak program Excel i usługa Power BI.
+Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Dzienniki mogą być wysyłane do usługi [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md), Storage i Event Hubs oraz analizowane za pomocą usługi Log Analytics lub innych narzędzi, takich jak program Excel i usługa Power BI.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -94,7 +94,7 @@ Dane dziennika aktywności można wyświetlać i analizować przy użyciu dowoln
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>Wyświetlanie i analizowanie dzienników reguł sieci i aplikacji
 
-Usługa Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) zbiera pliki dzienników liczników i zdarzeń. Obejmuje ona wizualizacje oraz zaawansowane możliwości wyszukiwania na potrzeby analizowania dzienników.
+Usługa Azure [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) zbiera pliki dzienników liczników i zdarzeń. Obejmuje ona wizualizacje oraz zaawansowane możliwości wyszukiwania na potrzeby analizowania dzienników.
 
 Przykładowe zapytania usługi Log Analytics w usłudze Azure Firewall można znaleźć w temacie [Azure Firewall Log Analytics samples (Przykłady usługi Log Analytics w usłudze Azure Firewall)](log-analytics-samples.md).
 
@@ -111,7 +111,7 @@ Przejdź do usługi Azure Firewall, a następnie w obszarze **Monitorowanie** kl
 Teraz, gdy skonfigurowano zaporę na potrzeby zbierania dzienników, możesz eksplorować usługę Log Analytics, aby wyświetlać dane.
 
 > [!div class="nextstepaction"]
-> [Rozwiązania do monitorowania sieci w usłudze Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)
+> [Rozwiązania do monitorowania sieci w usłudze Log Analytics](../azure-monitor/insights/azure-networking-analytics.md)
 
 [1]: ./media/tutorial-diagnostics/figure1.png
 [2]: ./media/tutorial-diagnostics/figure2.png

@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 12/23/2017
 ms.author: tamram
-ms.openlocfilehash: 84ced8a529c2e717dc3e5888466d9a2e1e7e928a
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 044cc30a418f3c54053a6f4878f97f5c9ea9f9e2
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180947"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335116"
 ---
 # <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Samouczek: Symulowanie błędu podczas uzyskiwania dostępu do odczytu do magazynu nadmiarowego
 
@@ -145,7 +145,7 @@ Aby dodać trasę statyczną dla hosta docelowego, wpisz poniższe polecenie w w
  
 Zastąp element `<destination_ip>` adresem IP konta magazynu, a element `<gateway_ip>` adresem IP hosta lokalnego. Aby wznowić działanie aplikacji, naciśnij **dowolny klawisz**.
 
-Po ponownym uruchomieniu aplikacji zaczną występować błędy żądań kierowanych do podstawowego punktu końcowego. Aplikacja próbuje ponownie połączyć się z podstawowym punktem końcowym 5 razy. Po osiągnięciu progu błędów w pięciu próbach żąda ona obrazu od pomocniczego punktu końcowego tylko do odczytu. Po pomyślnym pobraniu obrazu 20 razy z pomocniczego punktu końcowego aplikacja próbuje połączyć się z podstawowym punktem końcowym. Jeśli podstawowy punkt końcowy jest nadal nieosiągalny, aplikacja wznawia odczyt z pomocniczego punktu końcowego. Jest to wzorzec [wyłącznika](/azure/architecture/patterns/circuit-breaker.md) opisany w poprzednim samouczku.
+Po ponownym uruchomieniu aplikacji zaczną występować błędy żądań kierowanych do podstawowego punktu końcowego. Aplikacja próbuje ponownie połączyć się z podstawowym punktem końcowym 5 razy. Po osiągnięciu progu błędów w pięciu próbach żąda ona obrazu od pomocniczego punktu końcowego tylko do odczytu. Po pomyślnym pobraniu obrazu 20 razy z pomocniczego punktu końcowego aplikacja próbuje połączyć się z podstawowym punktem końcowym. Jeśli podstawowy punkt końcowy jest nadal nieosiągalny, aplikacja wznawia odczyt z pomocniczego punktu końcowego. Jest to wzorzec [wyłącznika](/azure/architecture/patterns/circuit-breaker) opisany w poprzednim samouczku.
 
 ### <a name="simulate-primary-endpoint-restoration"></a>Symulowanie przywracania podstawowego punktu końcowego
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 09/27/2018
-ms.openlocfilehash: 06a0f2416ecff9e2f9a21877e26487b56452d0a0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 14e675097a23b50c8ff193c69c377ac8edfb989f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251325"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317266"
 ---
 # <a name="use-ansible-to-manage-a-linux-virtual-machine-in-azure"></a>Zarządzanie maszyną wirtualną z systemem Linux na platformie Azure za pomocą rozwiązania Ansible
 Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Rozwiązanie Ansible umożliwia zarządzanie maszynami wirtualnymi na platformie Azure, tak jak ma to miejsce w przypadku każdego innego zasobu. W tym artykule przedstawiono sposób użycia podręcznika rozwiązania Ansible do uruchomienia i zatrzymania maszyny wirtualnej z systemem Linux. 
@@ -141,4 +141,4 @@ W tej sekcji pokazano, w jaki sposób użyć rozwiązania Ansible do uruchomieni
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"] 
-> [Use Ansible to manage your Azure dynamic inventories (Zarządzenie spisami dynamicznymi na platformie Azure przy użyciu rozwiązania Ansible)](/articles/ansible/ansible-manage-azure-dynamic-inventories)
+> [Use Ansible to manage your Azure dynamic inventories (Zarządzenie spisami dynamicznymi na platformie Azure przy użyciu rozwiązania Ansible)](~/articles/ansible/ansible-manage-azure-dynamic-inventories.md)
