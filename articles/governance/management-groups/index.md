@@ -6,17 +6,17 @@ manager: rithorn
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/28/2018
+ms.date: 11/20/2018
 ms.author: rithorn
-ms.openlocfilehash: b5a99ff8cfc0a915b70c6d90b8aa04d020177d54
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.topic: overview
+ms.openlocfilehash: ea34296e170d18a1d5636c50e7cae316b1d97948
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748174"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584609"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów przy użyciu grup zarządzania platformy Azure
 
@@ -28,12 +28,12 @@ Na przykład możesz zastosować do grupy zarządzania zasady ograniczające reg
 
 Można utworzyć elastyczną strukturę grup zarządzania i subskrypcji w celu organizowania zasobów w hierarchię na potrzeby ujednoliconego zarządzania zasadami i dostępem. Na poniższym diagramie przedstawiono przykład tworzenia hierarchii dla nadzoru przy użyciu grup zarządzania.
 
-![drzewo](./media/MG_overview.png)
+![drzewo](./media/tree.png)
 
-Dzięki utworzeniu hierarchii jak w tym przykładzie można zastosować zasady, na przykład ograniczenie lokalizacji maszyny wirtualnej do regionu Zachodnie stany USA, w grupie „Infrastructure Team management group” (Grupa zarządzania zespołu infrastruktury), aby włączyć wewnętrzne zasady zgodności i zabezpieczeń. Te zasady będą dziedziczone przez obie subskrypcje umowy EA w ramach tej grupy zarządzania i będą stosowane do wszystkich maszyn wirtualnych w ramach tych subskrypcji. Ponieważ zasady są dziedziczone z grupy zarządzania do subskrypcji, te zasady zabezpieczeń nie mogą zostać zmienione przez właściciela zasobu lub subskrypcji, co zapewnia ulepszony nadzór.
+Utwórz hierarchię w celu zastosowania zasad — na przykład ograniczenia lokalizacji maszyn wirtualnych w grupie „Infrastructure Team management group” do regionu Zachodnie stany USA. Te zasady będą dziedziczone przez obie subskrypcje umowy EA w ramach tej grupy zarządzania i będą stosowane do wszystkich maszyn wirtualnych w ramach tych subskrypcji. Te zasady zabezpieczeń nie mogą zostać zmienione przez właściciela zasobu lub subskrypcji, co zapewnia ulepszony nadzór.
 
 Innym scenariuszem, w którym można użyć grup zarządzania, jest zapewnienie użytkownikom dostępu do wielu subskrypcji. Przenosząc wiele subskrypcji do tej grupy zarządzania, można utworzyć jedno przypisanie [kontroli dostępu opartej na rolach](../../role-based-access-control/overview.md) (RBAC) do grupy zarządzania, które będzie dziedziczyło ten dostęp do wszystkich subskrypcji.
-Bez konieczności tworzenia skryptów przypisań RBAC dla wielu subskrypcji jedno przypisanie grupy zarządzania może umożliwić użytkownikom dostęp do wszystkiego, czego potrzebują.
+Jedno przypisanie grupy zarządzania może zapewnić użytkownikom dostęp do wszystkiego, czego potrzebują, bez konieczności tworzenia skryptów RBAC dla wielu subskrypcji.
 
 ### <a name="important-facts-about-management-groups"></a>Ważne informacje dotyczące grup zarządzania
 
@@ -42,7 +42,7 @@ Bez konieczności tworzenia skryptów przypisań RBAC dla wielu subskrypcji jedn
   - Ten limit nie obejmuje poziomu głównego lub poziomu subskrypcji.
 - Każda grupa zarządzania i subskrypcja może obsługiwać tylko jeden element nadrzędny.
 - Każda grupa zarządzania może mieć wiele elementów podrzędnych.
-- Wszystkie subskrypcje i grupy zarządzania są zawarte w jednej hierarchii w każdym katalogu. Zobacz [Ważne informacje dotyczące głównej grupy zarządzania](#important-facts-about-the-root-management-group), aby zapoznać się z wyjątkami w wersji zapoznawczej.
+- Wszystkie subskrypcje i grupy zarządzania znajdują się w jednej hierarchii w każdym katalogu. Zobacz [Ważne informacje dotyczące głównej grupy zarządzania](#important-facts-about-the-root-management-group), aby zapoznać się z wyjątkami w wersji zapoznawczej.
 
 ## <a name="root-management-group-for-each-directory"></a>Główna grupa zarządzania dla każdego katalogu
 
@@ -73,17 +73,17 @@ Kiedy dowolny użytkownik rozpoczyna korzystanie z grup zarządzania, wykonywany
 
 ## <a name="trouble-seeing-all-subscriptions"></a>Problemy z wyświetlaniem wszystkich subskrypcji
 
-W przypadku niektórych katalogów, które rozpoczęły korzystanie z grup zarządzania niedługo po udostępnieniu wersji zapoznawczej (przed 25 czerwca 2018 r.), mógł wystąpić problem polegający na tym, że nie wymuszono umieszczenia wszystkich subskrypcji w hierarchii.  Dzieje się tak, ponieważ procesy wymuszające umieszczenie subskrypcji w hierarchii były implementowane po przypisaniu roli lub zasad w głównej grupie zarządzania w katalogu.
+W przypadku niektórych katalogów, które rozpoczęły korzystanie z grup zarządzania niedługo po udostępnieniu wersji zapoznawczej (przed 25 czerwca 2018 r.), mógł wystąpić problem polegający na tym, że nie wymuszono umieszczenia wszystkich subskrypcji w hierarchii.  Procesy wymuszające umieszczenie subskrypcji w hierarchii były implementowane po przypisaniu roli lub zasad w głównej grupie zarządzania w katalogu.
 
 ### <a name="how-to-resolve-the-issue"></a>Jak rozwiązać ten problem
 
-Problem można rozwiązać samodzielnie na dwa sposoby.
+Istnieją dwie opcje rozwiązania tego problemu.
 
 1. Usuń wszystkie przypisania ról i zasad z głównej grupy zarządzania
-    1. Usunięcie wszystkich przypisań ról i zasad z głównej grupy zarządzania spowoduje wypełnienie hierarchii przez usługę wszystkimi subskrypcjami podczas następnego cyklu nocnego.  To sprawdzanie jest wykonywane, aby upewnić się, że nie został przypadkowo udzielony dostęp lub nie przypisano przypadkowo zasad do wszystkich subskrypcji dzierżawy.
+    1. Usunięcie wszystkich przypisań ról i zasad z głównej grupy zarządzania spowoduje wypełnienie hierarchii przez usługę wszystkimi subskrypcjami podczas następnego cyklu nocnego.  Ten proces ma na celu zapewnienie, że nie został przypadkowo udzielony dostęp lub nie przypisano przypadkowo zasad do wszystkich subskrypcji dzierżawy.
     1. Najlepszym sposobem wykonania tego procesu bez wpływu na usługi jest zastosowanie przypisań ról lub zasad na poziomie o jeden niższym niż główna grupa zarządzania. Wtedy będzie można usunąć wszystkie przypisania z zakresu głównego.
 1. Bezpośrednio wywołaj interfejs API, aby rozpocząć proces wypełniania
-    1. Każdy autoryzowany klient w katalogu może wywołać interfejs API *TenantBackfillStatusRequest* lub *StartTenantBackfillRequest*. Wywołanie interfejsu API StartTenantBackfillRequest powoduje rozpoczęcie procesu początkowej konfiguracji, który polega na przeniesieniu wszystkich subskrypcji do hierarchii. Ten proces rozpoczyna również wymuszanie dodawania wszystkich nowych subskrypcji jako elementu podrzędnego głównej grupy zarządzania. Wykonanie tego procesu nie wymaga żadnych zmian przypisań na poziomie głównym, ponieważ wskazujesz, że akceptujesz zastosowanie wszelkich przypisań zasad lub dostępu na tym poziomie do wszystkich subskrypcji.
+    1. Każdy klient w katalogu może wywołać interfejs API *TenantBackfillStatusRequest* lub *StartTenantBackfillRequest*. Wywołanie interfejsu API StartTenantBackfillRequest powoduje rozpoczęcie procesu początkowej konfiguracji, który polega na przeniesieniu wszystkich subskrypcji do hierarchii. Ten proces rozpoczyna również wymuszanie dodawania wszystkich nowych subskrypcji jako elementu podrzędnego głównej grupy zarządzania. Ten proces można wykonać bez zmiany przydziałów na poziomie głównej grupy. Wywołując ten interfejs API, potwierdzasz, że dowolne zasady i przypisania dostępu określone w grupie głównej mogą być stosowane do wszystkich subskrypcji.
 
 Jeśli masz pytania na temat tego procesu wypełniania, napisz na adres managementgroups@microsoft.com  
   
@@ -111,12 +111,26 @@ Na poniższym wykresie przedstawiono listę ról i obsługiwane akcje na grupach
 
 Niestandardowe role RBAC nie są obecnie obsługiwane dla grup zarządzania. Zobacz [forum opinii dotyczących grup zarządzania](https://aka.ms/mgfeedback), aby sprawdzić stan tego elementu.
 
+## <a name="audit-management-groups-using-activity-logs"></a>Inspekcja grup zarządzania przy użyciu dzienników aktywności
+
+Aby śledzić aktywność grup zarządzania za pośrednictwem tego interfejsu API, skorzystaj z [interfejsu API dziennika aktywności w dzierżawie](/rest/api/monitor/tenantactivitylogs). Obecnie nie można śledzić aktywności grup zarządzania za pomocą programu PowerShell, interfejsu wiersza polecenia, ani witryny Azure Portal.
+
+1. Jako administrator dzierżawy usługi Azure Active Directory [podnieś poziom dostępu](../../role-based-access-control/elevate-access-global-admin.md), a następnie przypisz rolę Czytelnika dla zakresu `/providers/microsoft.insights/eventtypes/management` do użytkownika wykonującego inspekcję.
+1. Jako użytkownik wykonujący inspekcję wywołaj [interfejs API dziennika aktywności w dzierżawie](/rest/api/monitor/tenantactivitylogs), aby zobaczyć aktywność grup zarządzania. Aby zobaczyć aktywność wszystkich grup zarządzania, włącz filtrowanie według dostawcy zasobów **Microsoft.Management**.  Przykład:
+
+```
+GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
+```
+
+> [!NOTE]
+> Aby wygodnie wywołać ten interfejs API z poziomu wiersza polecenia, wypróbuj narzędzie [ARMClient](https://github.com/projectkudu/ARMClient).
+
 ## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat grup zarządzania, zobacz:
 
 - [Tworzenie grup zarządzania w celu organizowania zasobów platformy Azure](create.md)
 - [Jak zmienić lub usunąć grupy zarządzania oraz zarządzać nimi](manage.md)
-- [Instalowanie modułu Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
-- [Przegląd specyfikacji interfejsu API REST](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [Instalowanie rozszerzenia interfejsu wiersza polecenia platformy Azure](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)
+- [Grupy zarządzania w module zasobów programu Azure PowerShell](https://aka.ms/mgPSdocs)
+- [Grupy zarządzania w interfejsie API REST](https://aka.ms/mgAPIdocs)
+- [Grupy zarządzania w interfejsie wiersza polecenia platformy Azure](https://aka.ms/mgclidoc)
