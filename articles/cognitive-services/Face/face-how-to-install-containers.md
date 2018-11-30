@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 27a4bccfbac73c7c8c902a59fdd4cafe0c420c31
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 1d13e2ccbbc1d5c1bc80dffc260a3759fe378d7d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635010"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634544"
 ---
 # <a name="install-and-run-containers"></a>Instalowanie i uruchamianie kontenerów
 
@@ -58,9 +58,6 @@ Wykonaj poniższe kroki, aby utworzyć i pobieranie informacji z zasobu twarzy:
 
 1. Utwórz zasób usługi rozpoznawania twarzy w witrynie Azure portal.  
    Jeśli chcesz użyć kontenera rozpoznawania twarzy, należy najpierw utworzyć odpowiadający jej zasób twarzy w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [Szybki Start: Tworzenie konta usług Cognitive Services w witrynie Azure portal](../cognitive-services-apis-create-account.md).
-
-   > [!IMPORTANT]
-   > Zasobów twarzy, musisz używać warstwy cenowej F0.
 
 1. Pobieranie klucza punktu końcowego adresu URL i subskrypcji dla zasobów platformy Azure.  
    Po utworzeniu zasobu platformy Azure musi być wystąpienia odpowiedniego kontenera twarzy klucza punktu końcowego adresu URL i subskrypcji z tego zasobu. Można skopiować klucza punktu końcowego adresu URL i subskrypcji z odpowiednio strony Szybki Start i klucze zasobu twarzy w witrynie Azure portal.

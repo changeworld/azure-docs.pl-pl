@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: erhopf
-ms.openlocfilehash: 5522b076fdf3d4e339f5e170679f389259ff1359
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: ce9b3df5093d51eac0a151269b486b5f1310700c
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713133"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584863"
 ---
 # <a name="speech-service-rest-apis"></a>Interfejsy API REST usługi mowy
 
@@ -286,7 +286,7 @@ Dźwięku w treści HTTP `POST` żądania. Musi być w jednym z formatów w tej 
 | OGG | DZIELE | 16-bitowych | 16 kHz, narzędzie mono |
 
 >[!NOTE]
->Powyższe formaty są obsługiwane za pośrednictwem interfejsu API REST i WebSocket usługi mowy. [Zestaw SDK rozpoznawania mowy](/index.yml) aktualnie obsługuje tylko WAV Formatuj przy użyciu kodera-dekodera PCM.
+>Powyższe formaty są obsługiwane za pośrednictwem interfejsu API REST i WebSocket usługi mowy. [Zestaw SDK rozpoznawania mowy](speech-sdk.md) aktualnie obsługuje tylko WAV Formatuj przy użyciu kodera-dekodera PCM.
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
@@ -433,8 +433,8 @@ Usługa rozpoznawania mowy obsługuje wyjściowego audio 24 KHz, wraz z danych w
 
 | Ustawienia regionalne | Język   | Płeć | Mapowanie |
 |--------|------------|--------|---------|
-| pl-PL  | US English | Kobieta | "Microsoft Server mowy Text na głos mowy (en US, Jessa24kRUS)" |
-| pl-PL  | US English | Mężczyzna   | "Microsoft Server mowy Text na głos mowy (en US, Guy24kRUS)" |
+| en-US  | US English | Kobieta | "Microsoft Server mowy Text na głos mowy (en US, Jessa24kRUS)" |
+| en-US  | US English | Mężczyzna   | "Microsoft Server mowy Text na głos mowy (en US, Guy24kRUS)" |
 
 Zobacz pełną listę dostępnych głosów [obsługiwane języki](language-support.md#text-to-speech).
 

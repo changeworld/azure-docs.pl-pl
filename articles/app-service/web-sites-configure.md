@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: cf3a6fe24082a10db6a5b1267b70435d9e36b720
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 73d2da542c4f7da0933187d800f562de76bfb3e6
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115526"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443512"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurowanie aplikacji sieci Web w usłudze Azure App Service
 
@@ -78,6 +78,8 @@ Ta sekcja zawiera pary nazwa/wartość, które Twoja aplikacja sieci web załadu
 
 Ustawienia aplikacji są zawsze szyfrowane, gdy przechowywany (zaszyfrowanych danych w spoczynku).
 
+Ustawienia aplikacji mogą być rozwiązane z usługi Key Vault przy użyciu [odwołuje się do usługi Key Vault](app-service-key-vault-references.md).
+
 ### <a name="connection-strings"></a>Parametry połączeń
 Parametry połączenia dla połączonych zasobów. 
 
@@ -93,6 +95,8 @@ W przypadku aplikacji PHP, Python, Java i języka Node ustawienia te będą dost
 Na przykład, jeśli nazwany ciąg połączenia MySql `connectionstring1`, będzie można uzyskać dostęp za pośrednictwem zmiennej środowiskowej `MYSQLCONNSTR_connectionString1`.
 
 Parametry połączenia są zawsze szyfrowane, gdy przechowywany (zaszyfrowanych danych w spoczynku).
+
+Parametry połączenia można rozwiązać z usługi Key Vault przy użyciu [odwołuje się do usługi Key Vault](app-service-key-vault-references.md).
 
 ### <a name="default-documents"></a>Domyślne dokumenty
 Dokument domyślny jest strony sieci web, która jest wyświetlana na główny adres URL witryny sieci Web.  Pierwszy plik dopasowania na liście jest używany. 

@@ -1,5 +1,5 @@
 ---
-title: Dowiedz się, jak zarządzać usługami sieci web Azure ml za pomocą usługi API Management | Dokumentacja firmy Microsoft
+title: Zarządzanie usługami sieci web Machine Learning Studio, za pomocą usługi API Management — Azure | Dokumentacja firmy Microsoft
 description: Przewodnik, w którym pokazano, jak zarządzać usługami sieci web Azure ml za pomocą usługi API Management.
 keywords: uczenie maszynowe, usługa api management
 services: machine-learning
@@ -17,16 +17,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: bc0c8f40c8e2fb75e95e1745b53332aa8e4588ca
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0a262b2f8716c6d950dc84793a88277f62c3e6a9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265223"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308243"
 ---
-# <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>Dowiedz się, jak zarządzać usługami sieci Web Azure ML za pomocą usługi API Management
+# <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Zarządzanie za pomocą interfejsu API zarządzania usługami sieci web Azure Machine Learning Studio
 ## <a name="overview"></a>Przegląd
-Ten przewodnik pokazuje, jak szybko rozpocząć pracę z usługą API Management do zarządzania usługami sieci web Azure ml.
+Ten przewodnik pokazuje, jak szybko rozpocząć pracę z usługą API Management do zarządzania usługami sieci web Azure Machine Learning Studio.
 
 ## <a name="what-is-azure-api-management"></a>Co to jest usługa Azure API Management?
 Usługa Azure API Management jest usługą platformy Azure, która umożliwia zarządzanie punktami końcowymi usługi interfejsu API REST, definiując dostępu użytkownika, ograniczenie przepustowości i pulpit nawigacyjny monitorowania. Kliknij przycisk [tutaj](https://azure.microsoft.com/services/api-management/) szczegółowe informacje na temat usługi Azure API Management. Kliknij przycisk [tutaj](../../api-management/api-management-get-started.md) wskazówki na temat rozpocząć pracę z usługą Azure API Management. Inne w przewodniku, na podstawie tego przewodnika, obejmuje więcej tematów dotyczących, w tym konfiguracji powiadomień, cennik warstwy, Obsługa odpowiedzi, uwierzytelnianie użytkowników, tworzenie produktów, subskrypcje dla deweloperów i dashboarding użycia.

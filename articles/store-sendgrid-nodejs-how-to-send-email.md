@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
-ms.openlocfilehash: 8908a6ceb87e2c0e4c7222e8a8e72fa7ebfa7f82
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309267"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421287"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Jak wysyłać pocztę E-mail za pomocą usługi SendGrid z poziomu środowiska Node.js
 
@@ -131,7 +131,7 @@ sendgrid.send({
 ```
 
 > [!NOTE]
-> Korzystając z **pliki** właściwości, plik musi być dostępny za pośrednictwem [fs.readFile](http://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile). Jeśli plik, który chcesz dołączyć jest hostowana w usłudze Azure Storage, takich jak kontener obiektów Blob, najpierw należy skopiować plik do lokalnego magazynu lub dysku z systemem Azure zanim będzie można wysłać jako załącznik przy użyciu **pliki** właściwości.
+> Korzystając z **pliki** właściwości, plik musi być dostępny za pośrednictwem [fs.readFile](https://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile). Jeśli plik, który chcesz dołączyć jest hostowana w usłudze Azure Storage, takich jak kontener obiektów Blob, najpierw należy skopiować plik do lokalnego magazynu lub dysku z systemem Azure zanim będzie można wysłać jako załącznik przy użyciu **pliki** właściwości.
 > 
 > 
 

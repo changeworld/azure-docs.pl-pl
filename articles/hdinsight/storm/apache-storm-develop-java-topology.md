@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 8eb5a2429db26c987e9a6a40130e25c8034a210b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5f07f462fc33761f7d29944594491a72f283cd31
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011650"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582568"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Tworzenie topologii Apache Storm w języku Java
 
-Dowiedz się, jak utworzyć topologię, oparte na języku Java dla platformy Apache Storm. Możesz utworzyć topologię Storm, który implementuje aplikacji zliczania wyrazów. Używasz narzędzia Maven do tworzenia i pakiet z projektem. Następnie dowiesz się, jak zdefiniować topologii przy użyciu framework strumienia.
+Dowiedz się, jak utworzyć topologię opartych na języku Java dla [Apache Storm](http://storm.apache.org/). Możesz utworzyć topologię Storm, który implementuje aplikacji zliczania wyrazów. Możesz użyć [narzędzia Apache Maven](https://maven.apache.org/) do kompilacji i tworzenia pakietów projektu. Następnie dowiesz się, jak zdefiniować topologii przy użyciu framework strumienia.
 
 Po wykonaniu tych kroków w tym dokumencie, można wdrożyć topologię Storm Apache na HDInsight.
 
@@ -30,7 +30,7 @@ Po wykonaniu tych kroków w tym dokumencie, można wdrożyć topologię Storm Ap
 
 * [Java Developer Kit (JDK) w wersji 8](https://aka.ms/azure-jdks)
 
-* [Narzędzie maven (https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi): Maven to system kompilacji projektu dla projektów języka Java.
+* [Narzędzia Apache Maven (https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi): Maven to system kompilacji projektu dla projektów języka Java.
 
 * Edytor tekstu lub w środowisku IDE.
 
@@ -534,7 +534,7 @@ public class WordCountTopology {
 
 ### <a name="configure-logging"></a>Konfigurowanie rejestrowania
 
-System Storm używa mechanizmu Apache Log4j do rejestrowania informacji. Jeśli rejestrowanie nie jest skonfigurowane, topologia emituje informacje diagnostyczne. Aby kontrolować, co jest rejestrowane, Utwórz plik o nazwie `log4j2.xml` w `resources` katalogu. Użyj następujący kod XML jako zawartość pliku.
+System STORM używa [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) do rejestrowania informacji. Jeśli rejestrowanie nie jest skonfigurowane, topologia emituje informacje diagnostyczne. Aby kontrolować, co jest rejestrowane, Utwórz plik o nazwie `log4j2.xml` w `resources` katalogu. Użyj następujący kod XML jako zawartość pliku.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -559,7 +559,7 @@ Poniższy kod XML umożliwia skonfigurowanie nowego rejestratora dla `com.micros
 
 `<Root level="error">` Sekcji konfiguruje poziom główny rejestrowania (wszystko, czego nie `com.microsoft.example`) Aby rejestrować jedynie informacje o błędzie.
 
-Aby uzyskać więcej informacji na temat konfigurowania rejestrowania Log4j, zobacz [ http://logging.apache.org/log4j/2.x/manual/configuration.html ](http://logging.apache.org/log4j/2.x/manual/configuration.html).
+Aby uzyskać więcej informacji na temat konfigurowania rejestrowania Log4j 2, zobacz [ http://logging.apache.org/log4j/2.x/manual/configuration.html ](http://logging.apache.org/log4j/2.x/manual/configuration.html).
 
 > [!NOTE]
 > System STORM w wersji 0.10.0 i wyższe użycie mechanizmu Log4j 2.x. Starsze wersje programu storm używane Log4j 1.x, używany inny format dziennika konfiguracji. Instrukcje dotyczące konfiguracji starsze, zobacz [ http://wiki.apache.org/logging-log4j/Log4jXmlFormat ](http://wiki.apache.org/logging-log4j/Log4jXmlFormat).
@@ -588,7 +588,7 @@ Istnieje 5-sekundowego interwału między emisji wyrazy i liczby. **WordCount** 
 
 ## <a name="convert-the-topology-to-flux"></a>Konwertuj topologii na strumień
 
-Strumień jest nowej struktury dostępne z systemem Storm 0.10.0 lub nowszy, dzięki czemu można oddzielić konfiguracji z wdrożenia. Składniki nadal są zdefiniowane w języku Java, ale topologii definiuje się przy użyciu pliku YAML. Pakiet definicji topologii domyślnej z projektem lub używać autonomicznego pliku podczas przesyłania topologii. Podczas przesyłania topologii systemu Storm, można użyć zmiennych środowiskowych lub pliki konfiguracji do wypełniania wartości w definicji topologii YAML.
+[Strumień](http://storm.apache.org/releases/2.0.0-SNAPSHOT/flux.html) to nowa struktura dostępne z systemem Storm 0.10.0 lub nowszy, dzięki czemu można oddzielić konfiguracji z wdrożenia. Składniki nadal są zdefiniowane w języku Java, ale topologii definiuje się przy użyciu pliku YAML. Pakiet definicji topologii domyślnej z projektem lub używać autonomicznego pliku podczas przesyłania topologii. Podczas przesyłania topologii systemu Storm, można użyć zmiennych środowiskowych lub pliki konfiguracji do wypełniania wartości w definicji topologii YAML.
 
 Plik YAML definiuje składników na potrzeby topologii oraz dane przepływ między nimi. Można dołączyć plik YAML, jako część pliku jar, lub można użyć zewnętrznego pliku YAML.
 
@@ -762,23 +762,23 @@ Aby uzyskać więcej informacji na temat strumienia, zobacz [framework strumieni
 
     Po uruchomieniu topologii, można zauważyć, że czas między emitowany partie została zmieniona na odzwierciedlać wartości w newtopology.yaml. Aby było widać, które możesz zmieniać konfiguracji przy użyciu pliku YAML, bez konieczności ponownego kompilowania topologii.
 
-Aby uzyskać więcej informacji na temat tych i innych funkcji w ramach strumienia, zobacz [strumienia (https://storm.apache.org/releases/1.0.6/flux.html)](https://storm.apache.org/releases/1.0.6/flux.html).
+Aby uzyskać więcej informacji na temat tych i innych funkcji w ramach strumienia, zobacz [strumienia (http://storm.apache.org/releases/current/flux.html)](http://storm.apache.org/releases/current/flux.html).
 
 ## <a name="trident"></a>Trident
 
-Trident to Abstrakcja wysokiego poziomu, dostarczone przez system Storm. Obsługuje ona stanowych przetwarzania. Główną zaletą Trident to, że mógł zagwarantować, że każdy komunikat, który wprowadzi topologia jest przetwarzany tylko raz. Bez korzystania z języka Trident, topologii można tylko gwarantuje, że komunikaty są przetwarzane co najmniej raz. Istnieją także inne różnice, takie jak wbudowane składniki, których można użyć zamiast tworzenia elementów bolt. W rzeczywistości elementy bolt są zastępowane przez składniki mniej ogólnych, takich jak funkcje, projekcje i filtry.
+[Trident](http://storm.apache.org/releases/current/Trident-API-Overview.html) to Abstrakcja wysokiego poziomu, dostarczone przez system Storm. Obsługuje ona stanowych przetwarzania. Główną zaletą Trident to, że mógł zagwarantować, że każdy komunikat, który wprowadzi topologia jest przetwarzany tylko raz. Bez korzystania z języka Trident, topologii można tylko gwarantuje, że komunikaty są przetwarzane co najmniej raz. Istnieją także inne różnice, takie jak wbudowane składniki, których można użyć zamiast tworzenia elementów bolt. W rzeczywistości elementy bolt są zastępowane przez składniki mniej ogólnych, takich jak funkcje, projekcje i filtry.
 
 Trident aplikacje można tworzyć przy użyciu narzędzia Maven projektów. Użyj te same czynności podstawowe, jak przedstawiono wcześniej w tym artykule — tylko do kodu jest inny. Trident również nie (obecnie) można używać z architekturą strumienia.
 
-Aby uzyskać więcej informacji na temat języka Trident, zobacz [omówienie interfejsu API Trident](http://storm.apache.org/documentation/Trident-API-Overview.html).
+Aby uzyskać więcej informacji na temat języka Trident, zobacz [omówienie interfejsu API Trident](http://storm.apache.org/releases/current/Trident-API-Overview.html).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Masz przedstawiono sposób tworzenia topologii systemu Storm przy użyciu platformy Java. Teraz Dowiedz się, jak:
+Masz przedstawiono sposób tworzenia topologii Apache Storm przy użyciu platformy Java. Teraz Dowiedz się, jak:
 
 * [Wdrażanie i zarządzanie topologiami Apache Storm na HDInsight](apache-storm-deploy-monitor-topology.md)
 
 * [Opracowywanie topologii języka C# dla Storm Apache na HDInsight przy użyciu programu Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
 
-Możesz znaleźć więcej przykład topologii systemu Storm, odwiedzając [przykładowe topologie dla systemu Storm w HDInsight](apache-storm-example-topology.md).
+Przykład znajduje się więcej topologii Apache Storm, odwiedzając [przykładowe topologie dla Storm Apache na HDInsight](apache-storm-example-topology.md).
 

@@ -2,25 +2,21 @@
 title: Eksplorowanie i modelowanie za pomocą platformy Spark danych | Dokumentacja firmy Microsoft
 description: Prezentuje możliwości Eksplorowanie i modelowanie danych zestawu narzędzi Biblioteka MLlib platformy Spark na platformie Azure.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: b989b918-5ba5-4696-b8d0-76ae510a23f4
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: deguhath
-ms.openlocfilehash: 12757bca2e0fcff6a79263909fafd59c94b5eef2
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: fd02501e0b616ef173faae8c9ea81c3956d69672
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566520"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446759"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Eksplorowanie i modelowanie danych za pomocą platformy Spark
 
@@ -219,7 +215,7 @@ Po wprowadzeniu danych do platformy Spark jest następnym krokiem w procesie nau
 Ten kod i kolejne fragmenty umożliwia magicznym wyrażeniem SQL zapytania próbki i magic lokalnych danych.
 
 * **Magicznym wyrażeniem SQL (`%%sql`)** jądra HDInsight PySpark obsługuje zapytania HiveQL łatwe wbudowane względem sqlContext. (-O nazwa_zmiennej) argument będzie się powtarzał wyniki kwerendy SQL jako ramkę danych Pandas na serwerze programu Jupyter. Oznacza to, że jest on dostępny w trybie lokalnym.
-* **`%%local` Magic** służy do uruchamiania kodu lokalnie na serwerze programu Jupyter, który jest węzłem głównym klastra HDInsight. Zazwyczaj można użyć `%%local` magic w połączeniu z `%%sql` magic z parametrem -o. Parametr -o będzie utrwalanie danych wyjściowych, zapytania SQL lokalnie i następnie %% lokalnego magic powodowało kolejny zbiór fragment kodu w celu uruchomienia lokalnie dane wyjściowe zapytań SQL, który jest trwały lokalnie
+*  **`%%local` Magic** służy do uruchamiania kodu lokalnie na serwerze programu Jupyter, który jest węzłem głównym klastra HDInsight. Zazwyczaj można użyć `%%local` magic w połączeniu z `%%sql` magic z parametrem -o. Parametr -o będzie utrwalanie danych wyjściowych, zapytania SQL lokalnie i następnie %% lokalnego magic powodowało kolejny zbiór fragment kodu w celu uruchomienia lokalnie dane wyjściowe zapytań SQL, który jest trwały lokalnie
 
 Dane wyjściowe są automatycznie wizualizowane po uruchomieniu kodu.
 

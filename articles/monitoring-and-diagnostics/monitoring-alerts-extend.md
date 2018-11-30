@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 0f0bee419fdb119fcd99f0e72cc61ddf20f6253a
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 8aabcf342cde6de9fd4438014c9c400b28470e9b
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712946"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632674"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Rozszerzanie alertów usługi Log Analytics do usługi Azure Alerts
 Niedawno, dopóki nie usługi Azure Log Analytics uwzględnione własną funkcję alertu, która może aktywnie powiadomić użytkownika o warunków opartych na danych usługi Log Analytics. Możesz zarządzać reguły alertów w portalu Microsoft Operations Management Suite. Nowe środowisko alertów ma teraz zintegrowane alertów w różnych usługach w systemie Microsoft Azure. Ta opcja jest dostępna jako **alerty** w ramach usługi Azure Monitor w witrynie Azure portal obsługuje alerty z dzienników aktywności, metryk i dzienników z usługi Log Analytics i Azure Application Insights. 
@@ -55,7 +55,7 @@ Przy próbie edycji istniejący alert lub tworzenia nowego alertu w portalu Oper
 > Upewnij się, że uprawnienia przypisane do osoby, które należy dodać lub edytować alerty są prawidłowo przypisany na platformie Azure. Aby dowiedzieć się, jakie uprawnienia należy udzielić, zobacz [uprawnienia dotyczące korzystania z usługi Azure Monitor i alerty](monitoring-roles-permissions-security.md).  
 > 
 
-Możesz nadal tworzyć alerty z [interfejsu API usługi Log Analytics](../log-analytics/log-analytics-api-alerts.md) i [szablonu usługi Log Analytics Resource](../azure-monitor/insights/solutions-resources-searches-alerts.md). Jeśli tak zrobisz, musi zawierać grupy akcji.
+Możesz nadal tworzyć alerty z [interfejsu API usługi Log Analytics](../azure-monitor/platform/api-alerts.md) i [szablonu usługi Log Analytics Resource](../azure-monitor/insights/solutions-resources-searches-alerts.md). Jeśli tak zrobisz, musi zawierać grupy akcji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

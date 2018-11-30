@@ -13,22 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: fbba1d9b4bdf1536ed596e9a78e53116fe824027
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 1e2d809ed476b1789736f0d61dfea528b090da50
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232923"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447133"
 ---
 > [!WARNING]
 > Integracja z usługą Azure Active Directory B2C jest dostępna w [Developer, Standard i Premium](https://azure.microsoft.com/pricing/details/api-management/) tylko warstwy.
 
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Jak autoryzowanie kont deweloperów za pomocą usługi Azure Active Directory B2C w usłudze Azure API Management
+
 ## <a name="overview"></a>Przegląd
 Usługa Azure Active Directory B2C to rozwiązanie zarządzania tożsamością w chmurze dla aplikacji przeznaczonych dla klientów internetowych i mobilnych. Można go użyć do zarządzania dostępem do portalu dla deweloperów. W tym przewodniku przedstawiono konfigurację, która jest wymagana w usłudze API Management, aby zintegrować z usługą Azure Active Directory B2C. Aby uzyskać informacje na temat włączania dostępu do portalu dla deweloperów przy użyciu klasycznej usługi Azure Active Directory, zobacz [Jak autoryzowanie kont deweloperów za pomocą usługi Azure Active Directory].
 
 > [!NOTE]
 > Aby wykonać kroki opisane w tym przewodniku, najpierw musisz mieć dzierżawę usługi Azure Active Directory B2C do tworzenia aplikacji w programie. Ponadto musisz mieć Rejestracja i logowanie za pomocą zasad gotowe. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Active Directory B2C].
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="authorize-developer-accounts-by-using-azure-active-directory-b2c"></a>Autoryzowanie kont deweloperów za pomocą usługi Azure Active Directory B2C
 

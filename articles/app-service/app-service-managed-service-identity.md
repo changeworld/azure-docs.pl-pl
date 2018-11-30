@@ -9,28 +9,32 @@ ms.service: app-service
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/25/2018
+ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: fb9b50ecb16bd37d005403a14ea11c6d89f50dfe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7319dc02d07ef1e100b39dbe138870676578fd69
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983651"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634289"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Jak używać zarządzanych tożsamości dla usługi App Service i Azure Functions
 
 > [!NOTE] 
-> Usługa App Service w systemie Linux a Web App for Containers nie obsługują obecnie zarządzanych tożsamości.
+> Obsługa tożsamość zarządzaną w usłudze App Service w systemie Linux i Web App for Containers jest obecnie w wersji zapoznawczej.
 
 > [!Important] 
 > Tożsamości zarządzanej dla usługi App Service i Azure Functions nie będzie działać zgodnie z oczekiwaniami, jeśli aplikacja jest migrowana subskrypcji/dzierżawy. Aplikacja musi uzyskać nową tożsamość może odbywać się przez wyłączenie i ponowne włączenie tej funkcji. Zobacz [usuwanie tożsamości](#remove) poniżej. Zasoby podrzędne musisz również mieć zasady dostępu zaktualizowana w celu używania nowej tożsamości.
 
 W tym temacie dowiesz się, jak utworzyć tożsamość zarządzaną w aplikacjach usługi App Service i usługi Azure Functions i jak z niej korzystać, aby uzyskać dostęp do innych zasobów. Tożsamość zarządzaną w usłudze Azure Active Directory umożliwia aplikacji łatwo uzyskiwać dostęp do innych zasobów chronionych przez usługi AAD, takich jak usługi Azure Key Vault. Tożsamość jest zarządzana przez platformę Azure i nie wymaga obsługi administracyjnej ani Obróć jakichkolwiek kluczy tajnych. Aby uzyskać więcej informacji o zarządzanych tożsamości w usłudze AAD, zobacz [zarządzanych tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
-## <a name="creating-an-app-with-an-identity"></a>Tworzenie aplikacji przy użyciu tożsamości
+Aplikacja może otrzymać dwa rodzaje tożsamości: 
+- A **tożsamości przypisanych przez system** jest powiązany z aplikacją i zostanie usunięty, jeśli aplikacja zostanie usunięta. Aplikacja może mieć tylko jedną tożsamość przypisaną przez system. Obsługa tożsamości przypisanych przez system jest ogólnie dostępna dla aplikacji Windows. 
+- A **tożsamości przypisanych przez użytkownika** jest autonomicznym zasobów platformy Azure, które mogą być przypisane do aplikacji. Aplikacja może mieć wiele tożsamości przypisanych przez użytkownika. Obsługa tożsamości przypisanych przez użytkownika jest w wersji zapoznawczej dla wszystkich typów aplikacji.
 
-Tworzenie aplikacji przy użyciu tożsamości wymaga dodatkowych właściwości, należy ustawić na aplikację.
+## <a name="adding-a-system-assigned-identity"></a>Dodawanie tożsamości przypisanych przez system
+
+Tworzenie aplikacji przy użyciu tożsamości przypisanych przez system wymaga dodatkowych właściwości, należy ustawić na aplikację.
 
 ### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
@@ -42,9 +46,9 @@ Aby skonfigurować tożsamość zarządzaną w portalu, możesz najpierw utworzy
 
 3. Wybierz **tożsamości zarządzanej**.
 
-4. Przełącznik **rejestrowanie w usłudze Azure Active Directory** do **na**. Kliknij pozycję **Zapisz**.
+4. W ramach **przypisanej w systemie** kartę, Przełącz **stan** do **na**. Kliknij pozycję **Zapisz**.
 
-![Tożsamość zarządzaną w usłudze App Service](media/app-service-managed-service-identity/msi-blade.png)
+![Tożsamość zarządzaną w usłudze App Service](media/app-service-managed-service-identity/msi-blade-system.png)
 
 ### <a name="using-the-azure-cli"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure
 
@@ -94,7 +98,7 @@ Poniższe kroki przeprowadzi Cię przez proces tworzenia aplikacji sieci web i p
     New-AzureRmWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
     ```
 
-3. Uruchom `identity assign` polecenie, aby utworzyć tożsamość dla tej aplikacji:
+3. Uruchom `Set-AzureRmWebApp -AssignIdentity` polecenie, aby utworzyć tożsamość dla tej aplikacji:
 
     ```azurepowershell-interactive
     Set-AzureRmWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
@@ -111,7 +115,10 @@ Dowolny zasób typu `Microsoft.Web/sites` można utworzyć przy użyciu tożsamo
 }    
 ```
 
-Oznacza to, Azure do tworzenia i zarządzania tożsamościami dla aplikacji.
+> [!NOTE] 
+> Aplikacja może mieć tożsamości przypisanych przez użytkownika i przypisanych przez system, w tym samym czasie. W tym przypadku `type` będzie właściwości `SystemAssigned,UserAssigned`
+
+Dodawanie typu przypisany systemowo informuje platformy Azure do tworzenia i zarządzania tożsamościami dla aplikacji.
 
 Na przykład aplikacja sieci web może wyglądać następująco:
 ```json
@@ -139,12 +146,100 @@ Na przykład aplikacja sieci web może wyglądać następująco:
 Gdy witryna jest tworzona, ma następujące dodatkowe właściwości:
 ```json
 "identity": {
+    "type": "SystemAssigned",
     "tenantId": "<TENANTID>",
     "principalId": "<PRINCIPALID>"
 }
 ```
 
 Gdzie `<TENANTID>` i `<PRINCIPALID>` są zastępowane identyfikatorów GUID. Właściwość tenantId identyfikuje dzierżawy usługi AAD, jakie należy tożsamości. Identyfikator principalId to unikatowy identyfikator dla nowej tożsamości aplikacji. W ramach usługi AAD nazwa główna usługi ma taką samą nazwę, która udostępniła do swojego wystąpienia usługi App Service lub Azure Functions.
+
+
+## <a name="adding-a-user-assigned-identity-preview"></a>Dodawanie tożsamości przypisanych przez użytkownika (wersja zapoznawcza)
+
+> [!NOTE] 
+> Tożsamości przypisanych przez użytkownika są obecnie dostępne w wersji zapoznawczej. Sovreign chmury nie są jeszcze obsługiwane.
+
+Tworzenie aplikacji przy użyciu tożsamości przypisanych przez użytkownika wymaga tworzenia tożsamości, a następnie dodaj swój identyfikator zasobu do pliku config aplikacji.
+
+### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
+
+> [!NOTE] 
+> To środowisko portalu jest wdrażana i mogą jeszcze być niedostępne we wszystkich regionach.
+
+Najpierw musisz utworzyć zasób tożsamości przypisanych przez użytkownika.
+
+1. Utwórz zasób przypisanych przez użytkownika z tożsamości zarządzanej zgodnie z opisem w [w instrukcjach](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity).
+
+2. Utwórz aplikację w portalu, tak jak zwykle. Przejdź do niego w portalu.
+
+3. Jeśli używasz aplikacji funkcji, przejdź do **funkcje platformy**. Dla innych typów aplikacji, przewiń w dół do **ustawienia** grupy w obszarze nawigacji po lewej stronie.
+
+4. Wybierz **tożsamości zarządzanej**.
+
+5. W ramach **użytkownik przypisany (wersja zapoznawcza)** kliknij pozycję **Dodaj**.
+
+6. Wyszukaj tożsamości, która została utworzona wcześniej i zaznacz go. Kliknij pozycję **Add** (Dodaj).
+
+![Tożsamość zarządzaną w usłudze App Service](media/app-service-managed-service-identity/msi-blade-user.png)
+
+### <a name="using-an-azure-resource-manager-template"></a>Przy użyciu szablonu usługi Azure Resource Manager
+
+Szablon usługi Azure Resource Manager umożliwia automatyzowanie wdrażania zasobów platformy Azure. Aby dowiedzieć się więcej na temat wdrażania usługi App Service i Functions, zobacz [Automatyzowanie wdrażania zasobów w usłudze App Service](../app-service/app-service-deploy-complex-application-predictably.md) i [Automatyzowanie wdrażania zasobów w usłudze Azure Functions](../azure-functions/functions-infrastructure-as-code.md).
+
+Dowolnego zasobu typu `Microsoft.Web/sites` można utworzyć przy użyciu tożsamości, umieszczając następujący blok w definicji zasobu, zastępując `<RESOURCEID>` o identyfikatorze zasobu żądaną tożsamości:
+```json
+"identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+        "<RESOURCEID>": {}
+    }
+}    
+```
+
+> [!NOTE] 
+> Aplikacja może mieć tożsamości przypisanych przez użytkownika i przypisanych przez system, w tym samym czasie. W tym przypadku `type` będzie właściwości `SystemAssigned,UserAssigned`
+
+Dodawanie typu przypisanych przez użytkownika i cotells platformy Azure do tworzenia i zarządzania tożsamościami dla aplikacji.
+
+Na przykład aplikacja sieci web może wyglądać następująco:
+```json
+{
+    "apiVersion": "2016-08-01",
+    "type": "Microsoft.Web/sites",
+    "name": "[variables('appName')]",
+    "location": "[resourceGroup().location]",
+    "identity": {
+        "type": "UserAssigned"
+    },
+    "properties": {
+        "name": "[variables('appName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+        "hostingEnvironment": "",
+        "clientAffinityEnabled": false,
+        "alwaysOn": true
+    },
+    "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+    ]
+}
+```
+
+Gdy witryna jest tworzona, ma następujące dodatkowe właściwości:
+```json
+"identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+        "<RESOURCEID>": {
+            "principalId": "<PRINCIPALID>",
+            "clientId": "<CLIENTID>"
+        }
+    }
+}
+```
+
+Gdzie `<PRINCIPALID>` i `<CLIENTID>` są zastępowane identyfikatorów GUID. Identyfikator principalId to unikatowy identyfikator dla tożsamości, który jest używany dla administracji usługi AAD. Identyfikator ClientID, który jest unikatowy identyfikator aplikacji nowej tożsamości używanej do określania tożsamość do użycia podczas wywołania środowiska uruchomieniowego.
+
 
 ## <a name="obtaining-tokens-for-azure-resources"></a>Uzyskiwanie tokenów dla zasobów platformy Azure
 
@@ -189,6 +284,7 @@ Aplikacji za pomocą tożsamości zarządzanej ma dwie zmienne środowiskowe zde
 > |zasób|Zapytanie|Zasób usługi AAD identyfikator URI zasobu, dla którego mają być uzyskiwane tokenu.|
 > |wersja interfejsu API|Zapytanie|Wersja token interfejsu API do użycia. "2017-09-01" jest obecnie jedyna obsługiwana wersja.|
 > |wpis tajny|Nagłówek|Wartość zmiennej środowiskowej MSI_SECRET.|
+> |ClientID|Zapytanie|(Opcjonalnie) Identyfikator tożsamości przypisanych przez użytkownika ma być używany. W przypadku pominięcia jest używana tożsamości przypisanych przez system.|
 
 
 Pomyślne odpowiedź 200 OK zawiera treść JSON z następującymi właściwościami:
@@ -241,7 +337,7 @@ public static async Task<HttpResponseMessage> GetToken(string resource, string a
 
 <a name="token-js"></a>W środowisku Node.JS:
 ```javascript
-const rp = require('request-promise');
+const rp = require('request-promise');
 const getToken = function(resource, apiver, cb) {
     var options = {
         uri: `${process.env["MSI_ENDPOINT"]}/?resource=${resource}&api-version=${apiver}`,
@@ -265,7 +361,7 @@ $accessToken = $tokenResponse.access_token
 
 ## <a name="remove"></a>Usuwanie tożsamości
 
-Tożsamość można usunąć, wyłączając funkcję przy użyciu portalu, programu PowerShell lub interfejsu wiersza polecenia w taki sam sposób, że został on utworzony. W protokole szablonu REST/ARM można to zrobić przez ustawienie typu na "None":
+Można usunąć tożsamości przypisanych przez system, wyłączając funkcję przy użyciu portalu, programu PowerShell lub interfejsu wiersza polecenia w taki sam sposób, że został on utworzony. Oddzielnie można usunąć tożsamości przypisanych przez użytkownika. Aby usunąć wszystkie tożsamości za pomocą protokołu REST/ARM szablonu, można to zrobić przez ustawienie typu na "None":
 
 ```json
 "identity": {
@@ -273,7 +369,7 @@ Tożsamość można usunąć, wyłączając funkcję przy użyciu portalu, progr
 }    
 ```
 
-Usuwanie tożsamości w ten sposób spowoduje również usunięcie jednostki z usługi AAD. Tożsamości przypisanych przez system zostaną automatycznie usunięte z usługi AAD, gdy zasób aplikacji zostanie usunięty.
+Usuwanie tożsamości przypisanych przez system w ten sposób spowoduje również usunięcie go z usługi AAD. Tożsamości przypisanych przez system zostaną również automatycznie usunięte z usługi AAD podczas usuwania zasobu aplikacji.
 
 > [!NOTE] 
 > Brak ustawienia aplikacji, można ustawić, WEBSITE_DISABLE_MSI, która po prostu wyłącza lokalną usługę tokenu. Jednak pozostawia tożsamości w miejscu i narzędzi w dalszym ciągu będzie tożsamości zarządzanej jako "włączone" lub "włączone". W rezultacie Użyj tego ustawienia nie jest zalecana.
