@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 11/28/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 229c0a6afee893a4a8eb5cd62a1d25266ee8fc3e
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 68d5742f5da542d5146997390e470180cf8c5776
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977186"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620697"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Marketplace dostępnych elementów dla usługi Azure Stack
 
@@ -53,7 +53,6 @@ Microsoft Azure Stack obsługuje następujące maszyny wirtualne w portalu Azure
 |  | Nazwa elementu | Opis | Wydawca |
 | --- | --- | --- | --- |
 | ![Windows Server](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer) | Rozwiązania klasy korporacyjnej, które są łatwe do wdrożenia, ekonomiczne i skoncentrowane na aplikacji oraz skoncentrowane na użytkowniku. Te obrazy są regularnie aktualizowane z najnowszymi poprawkami. **Ważne informacje: obrazy pobierane przed 18 stycznia 2018 r. musi być usunięty i zastąpiony najnowszej wersji.** | Microsoft |
-| ![Usługi pulpitu zdalnego](media/azure-stack-marketplace-azure-items/remotedesktopservicesdeployment.png) | [Wdrożenie usług pulpitu zdalnego (RDS)](https://azuremarketplace.microsoft.com/marketplace/apps/rds.remote-desktop-services-basic-deployment) | Utwórz podstawowe wdrożenie usług pulpitu zdalnego (RDS). **Pobierz najnowszego obrazu systemu Windows Server 2016 Datacenter.** | Microsoft |
 | ![SharePoint Server 2013 Trial](media/azure-stack-marketplace-azure-items/sharepoint.png) | [Program SharePoint Server 2013 — wersja próbna](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2013Trial) | Microsoft SharePoint Server 2013 w wersji próbnej w systemie Windows Server 2012 Datacenter i Visual Studio 2017 wersja community edition. | Microsoft |
 | ![Program SharePoint Server 2016 w wersji próbnej](media/azure-stack-marketplace-azure-items/sharepoint.png) | [Program SharePoint Server 2016 w wersji próbnej](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2016Trial) | Microsoft SharePoint Server 2016 w wersji próbnej na system Windows Server 2016 Datacenter. | Microsoft |
 | ![SQL Server 2014 SP2 w systemie Windows Server 2012 R2](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2014 SP2 w systemie Windows Server 2012 R2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQL2014SP2-WS2012R2) | SQL Server 2014 Service Pack 2. **Wymagany do pobrania:** SQL IaaS rozszerzenia. | Microsoft |
