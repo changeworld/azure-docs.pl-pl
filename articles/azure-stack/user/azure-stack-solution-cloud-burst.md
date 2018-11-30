@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 68021d25e3deab1c6551d29b0febd9f07e144b57
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 645a32f56ee2bdc4132377f2d56f61b963104e42
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095342"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334894"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Samouczek: Tworzenie rozwiązania skalowania wielu chmur przy użyciu platformy Azure
 
@@ -49,7 +49,7 @@ W ramach tego samouczka utworzysz przykładowe środowisku:
 -   Subskrypcja platformy Azure. W razie potrzeby utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 - Azure Stack zintegrowany System lub wdrożenia usługi Azure Stack Development Kit.
-    - Możesz znaleźć instrukcje dotyczące instalowania usługi Azure Stack w [Zainstaluj zestaw Azure Stack Development Kit](/articles/azure-stack/asdk/asdk-install).
+    - Możesz znaleźć instrukcje dotyczące instalowania usługi Azure Stack w [Zainstaluj zestaw Azure Stack Development Kit](../asdk/asdk-install.md).
     - [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) Ta instalacja może wymagać kilka godzin.
 
 -   Wdrażanie [usługi App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) usługi PaaS do usługi Azure Stack.
@@ -97,7 +97,7 @@ Zaktualizuj plik strefy DNS dla domeny. Usługa Azure AD zweryfikuje własności
 Konfigurowanie hybrydowego ciągłej integracji i ciągłego wdrażania (CI/CD) do wdrożenia aplikacji internetowej platformy Azure i usługi Azure Stack i automatyczne Wypchnij zmiany do obu chmur.
 
 > [!Note]  
-> Usługa Azure Stack przy użyciu prawidłowego obrazów zespolone do uruchomienia (system Windows Server i SQL) i wdrożenie usługi App Service nie są wymagane. Zapoznaj się z dokumentacją usługi App Service "[przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack](/articles/azure-stack/azure-stack-app-service-before-you-get-started)" sekcji dla usługi Azure Stack operatora.
+> Usługa Azure Stack przy użyciu prawidłowego obrazów zespolone do uruchomienia (system Windows Server i SQL) i wdrożenie usługi App Service nie są wymagane. Zapoznaj się z dokumentacją usługi App Service "[przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack](../azure-stack-app-service-before-you-get-started.md)" sekcji dla usługi Azure Stack operatora.
 
 ### <a name="add-code-to-visual-studio-team-services-project"></a>Dodaj kod do Visual Studio Team Services — projekt
 
@@ -259,7 +259,7 @@ Teraz, gdy informacje o punkcie końcowym istnieje, usługa VSTS do połączenia
 ## <a name="develop-the-application-build"></a>Tworzenie kompilacji aplikacji
 
 > [!Note]  
-> Usługa Azure Stack przy użyciu prawidłowego obrazów zespolone do uruchomienia (system Windows Server i SQL) i wdrożenie usługi App Service nie są wymagane. Zapoznaj się z dokumentacją usługi App Service "[przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack](/articles/azure-stack/azure-stack-app-service-before-you-get-started)" sekcji dla usługi Azure Stack operatora.
+> Usługa Azure Stack przy użyciu prawidłowego obrazów zespolone do uruchomienia (system Windows Server i SQL) i wdrożenie usługi App Service nie są wymagane. Zapoznaj się z dokumentacją usługi App Service "[przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack](../azure-stack-app-service-before-you-get-started.md)" sekcji dla usługi Azure Stack operatora.
 
 Użyj [szablonami usługi Azure Resource Manager, takimi jak web](https://azure.microsoft.com/resources/templates/) kodu aplikacji z usługi VSTS, aby wdrożyć w obu chmurach.
 

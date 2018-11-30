@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 11/23/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 8d13d6df1b168183e3794bf357ad86bfcfd77057
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 9afce9c6d4ed4d6dc6fbe5bcfcfedc33bdd7cfdf
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567914"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314676"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizacja usługi Azure Stack 1809
 
@@ -84,7 +84,11 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack:
 
 ### <a name="changes"></a>Zmiany
 
-Brak.
+<!-- 2635202 - IS, ASDK -->
+- Infrastruktura usługi kopii zapasowej są przenoszone z [sieci publicznych infrastruktury](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-infrastructure-network) do [sieci publicznych adresów VIP](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-vip-network). Klienci będą musieli upewnić się, usługa ma dostęp do lokalizacji magazynu kopii zapasowych z sieci publicznych adresów VIP.  
+
+> [!IMPORTANT]  
+> Jeśli masz zaporą, która nie zezwala na połączenia z sieci publicznych adresów VIP do serwera plików, ta zmiana spowoduje, że kopie zapasowe infrastruktury, aby zakończyć się niepowodzeniem z "Błąd 53 nie można odnaleźć ścieżki sieciowej." Jest to istotną zmianę, która ma uzasadnione obejście tego problemu. Na podstawie opinii klientów, firmy Microsoft zostaną przywrócone, aby ta zmiana w poprawki. Przejrzyj [wpis w sekcji kroki aktualizacji](#post-update-steps) Aby uzyskać więcej informacji na temat dostępnych poprawek dla 1809. Gdy poprawka jest dostępna, upewnij się zastosować go po aktualizacji do 1809, tylko wtedy, gdy zasad sieci nie zezwalają na sieci publicznych adresów VIP do dostępu do zasobów infrastruktury. w 1811 tej zmiany zostaną zastosowane do wszystkich systemów. Jeśli zastosowano poprawkę w 1809, nie ma żadnych dodatkowych czynności.  
 
 ### <a name="common-vulnerabilities-and-exposures"></a>Typowe luki w zabezpieczeniach i zagrożeń
 
@@ -169,7 +173,7 @@ Aby uzyskać więcej informacji na temat tych luk w zabezpieczeniach kliknij pop
 > Przygotuj wdrożenia usługi Azure Stack na hoście rozszerzenia, który został włączony przez następny pakiet aktualizacji. Przygotowanie systemu przy użyciu poniższych wskazówek, [przygotować się do hosta rozszerzenia dla usługi Azure Stack](azure-stack-extension-host-prepare.md).
 
 Po zainstalowaniu tej aktualizacji Zainstaluj wszystkie odpowiednie poprawki. Uzyskać więcej informacji, zobacz następujące artykuły bazy wiedzy knowledge base, a także naszego [obsługi zasad](azure-stack-servicing-policy.md).  
-- [KB 4471993 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1809.3.96](https://support.microsoft.com/help/4471993/)  
+- [KB 4477849 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1809.6.102](https://support.microsoft.com/help/4477849/)  
 
 ## <a name="known-issues-post-installation"></a>Znane problemy (po instalacji)
 
@@ -222,7 +226,7 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
    
   Uruchom [AzureStack testu](azure-stack-diagnostic-test.md) polecenia cmdlet, aby sprawdzić kondycję wystąpień roli infrastruktury i skalowanie węzłów jednostki. Brak problemów w przypadku wykrycia przez [AzureStack testu](azure-stack-diagnostic-test.md), można zignorować te alerty. W przypadku wykrycia problemu można spróbować uruchomić wystąpienie roli infrastruktury lub węzła przy użyciu portalu administracyjnego lub programu PowerShell.
 
-  Ten problem jest rozwiązany w najnowszej [wersji poprawki 1809](https://support.microsoft.com/help/4471993/), dlatego należy tę poprawkę należy zainstalować, jeśli występują problem. 
+  Ten problem jest rozwiązany w najnowszej [wersji poprawki 1809](https://support.microsoft.com/help/4477849/), dlatego należy tę poprawkę należy zainstalować, jeśli występują problem. 
 
 <!-- 1264761 - IS ASDK -->  
 - Użytkownik może widzieć alerty dla **kondycji kontrolera** składnik, który ma następujące informacje:  

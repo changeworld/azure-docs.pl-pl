@@ -2,14 +2,14 @@
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: include
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
-ms.openlocfilehash: d23ba90f7cc0c5a03db2ef3eed4a662abe7ff27e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: be9b3b3a9cbb39386d13f76c595ce5e34688adac
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650557"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52336075"
 ---
 W przepływach pracy sprawdzania poprawności **planowania** przetestujesz typowe parametry przepływu pracy na poziomie, które zostały określone podczas tworzenia przepływu pracy (zobacz [wspólnych parametrów przepływów pracy dla usługi Azure Stack weryfikacji jako usługa](../azure-stack-vaas-parameters.md)). Jeśli dowolna z wartości parametrów testu stają się nieprawidłowe, użytkownik musi resupply je, zgodnie z instrukcją w [zmodyfikować parametry przepływu pracy](../azure-stack-vaas-monitor-test.md#change-workflow-parameters).
 
