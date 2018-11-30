@@ -1,5 +1,5 @@
 ---
-title: Prognozowanie odpowiedzi za pomocą modelu regresji proste — usługa Azure Machine Learning | Dokumentacja firmy Microsoft
+title: Prognozowanie odpowiedzi za pomocą modelu regresji simple - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Jak utworzyć model regresji prosty, aby przewidzieć cenę w zakresie analizy danych dla początkujących 4 wideo. Obejmuje regresji liniowej z danych docelowych.
 keywords: Tworzenie modelu, prosty model, prognozowanie cen, uczenia modelu regresji prosty
 services: machine-learning
@@ -17,12 +17,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 47c91f3d19296712c4dffbe90c4ef8ae12a98319
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 2862310623b2725cbeeaa4f5972a89ffcef44ff6
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261211"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309780"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Prognozowanie odpowiedzi za pomocą prostego modelu
 ## <a name="video-4-data-science-for-beginners-series"></a>Wideo 4: Analiza danych dla początkujących serii

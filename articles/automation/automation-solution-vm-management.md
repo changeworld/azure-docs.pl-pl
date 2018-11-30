@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fa1fa65315f38d0ce2900b738b70ca3718b0c00e
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: a664ec3643100f4bf477fbc58070ae966088d3af
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285105"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426054"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
 
@@ -32,7 +32,7 @@ Ograniczenia związane z bieżącego rozwiązania są następujące:
 - To rozwiązanie jest dostępne na platformie Azure i AzureGov do dowolnego regionu, który obsługuje obszar roboczy usługi Log Analytics, konto usługi Azure Automation i alertach. Regiony AzureGov aktualnie nie obsługują funkcje poczty e-mail.
 
 > [!NOTE]
-> Jeśli używasz rozwiązania dla klasycznych maszyn wirtualnych, następnie wszystkie maszyny wirtualne będą przetwarzane sekwencyjnie na usługę w chmurze. Przetwarzanie równoległe zadania jest w dalszym ciągu będzie obsługiwana w różnych usługach w chmurze.
+> Jeśli używasz rozwiązania dla klasycznych maszyn wirtualnych, następnie wszystkie maszyny wirtualne będą przetwarzane sekwencyjnie na usługę w chmurze. Maszyny wirtualne są nadal przetwarzane równolegle w różnych usługach w chmurze.
 >
 > Subskrypcje dostawcy rozwiązań w chmurze (Azure CSP) platformy Azure obsługują tylko model usługi Azure Resource Manager, usługi — z usługi Azure Resource Manager nie są dostępne w programie. Po uruchomieniu rozwiązania uruchomień/zatrzymań może wystąpią błędy, ponieważ zawiera ona polecenia cmdlet do zarządzania zasobami klasycznymi. Aby dowiedzieć się więcej na temat dostawcy usług Kryptograficznych, zobacz [usług dostępnych w ramach subskrypcji programu CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
 

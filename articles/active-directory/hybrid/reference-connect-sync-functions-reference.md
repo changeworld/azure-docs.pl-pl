@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2302061d5a3eaf9ef51543b1304104e2dbe54bd9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cb6f74a1de3e91868d7b20563a790352486862ee
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312907"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425697"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Synchronizacja programu Azure AD Connect: informacje ogólne o funkcjach
 W programie Azure AD Connect funkcje są używane do manipulowania wartością atrybutu podczas synchronizacji.  
@@ -76,11 +76,11 @@ Funkcje z typami **mvbin**, **mvstr**, i **mvref** może działać wyłącznie w
 | [BitAnd](#bitand) |[BitOr](#bitor) |[RandomNum](#randomnum) | | |
 | **Wielokrotne** | | | | |
 | [zawiera](#contains) |[Liczba](#count) |[Element](#item) |[ItemOrNull](#itemornull) | |
-| [Join](#join) |[Removeduplicates —](#removeduplicates) |[Podziel](#split) | | |
+| [Dołącz](#join) |[Removeduplicates —](#removeduplicates) |[Podziel](#split) | | |
 | **Przepływ programu** | | | | |
-| [Error](#error) |[IIF](#iif) |[Select](#select) |[Przełącznik](#switch) | |
+| [Error](#error) |[IIF](#iif) |[Wybierz](#select) |[Przełącznik](#switch) | |
 | [Where](#where) |[With](#with) | | | |
-| **Text** | | | | |
+| **Tekst** | | | | |
 | [IDENTYFIKATOR GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
 | [po lewej stronie](#left) |[Len](#len) |[Przytp](#ltrim) |[Mid](#mid) | |
 | [padLeft](#padleft) |[Padright —](#padright) |[PCase](#pcase) |[Zastąp](#replace) | |
@@ -600,7 +600,7 @@ Funkcja FormatDateTime jest używany do formatowania daty/godziny do ciągu w ok
 * Format: ciąg reprezentujący w formacie, aby przekonwertować.
 
 **Uwagi:**  
-Możliwe wartości dla formatu można znaleźć tutaj: [zdefiniowane przez użytkownika formaty daty i godziny (Format funkcja)](http://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)
+Możliwe wartości dla formatu można znaleźć tutaj: [zdefiniowane przez użytkownika formaty daty i godziny (Format funkcja)](https://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)
 
 **Przykład:**  
 
@@ -1013,7 +1013,7 @@ Padright — funkcja po prawej stronie podkładki ciąg do określonej długośc
 **Uwagi:**
 
 * Jeśli długość ciągu jest mniejsza niż długość, następnie padCharacter jest wielokrotnie dołączany-to-end (po prawej) ciągu do czasu jego długość jest równa długości.
-* padCharacter może być znakiem spacji, ale nie może być wartością null.
+* PadCharacter może być znakiem spacji, ale nie może być wartością null.
 * Jeśli długość ciągu jest równa lub większa niż długość, ciąg jest zwracany bez zmian.
 * Jeśli ciąg ma długość większą niż lub równa długości, zwracany jest taka sama jak ciąg znaków ciągu.
 * Jeśli długość ciągu jest mniejsza niż długość, nowy ciąg o długości żądaną zwracany ciąg zawierający dopełniana padCharacter.

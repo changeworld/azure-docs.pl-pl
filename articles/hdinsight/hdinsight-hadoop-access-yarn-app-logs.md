@@ -9,26 +9,26 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b7b93ca9c8638451d23a27edeed823e593a95b23
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 62499c35fd71d83f80a60e0511e6a27ce0109275
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035649"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495861"
 ---
-# <a name="access-apache-yarn-application-logs-on-windows-based-hdinsight"></a>Dzienniki aplikacji Apache YARN dostępu na podstawie Windows HDInsight
-W tym dokumencie wyjaśniono, jak dostęp do dzienników aplikacji Apache YARN, które przeszły w klastrze usługi Hadoop z systemem Windows w usłudze Azure HDInsight
+# <a name="access-apache-hadoop-yarn-application-logs-on-windows-based-hdinsight"></a>Dzienniki aplikacji Apache Hadoop YARN dostępu na podstawie Windows HDInsight
+W tym dokumencie wyjaśniono, jak dzienniki Aby uzyskać dostęp do [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) aplikacje, które zakończą się na usłudze Apache Hadoop oparte na Windows klastra w systemie Azure HDInsight
 
 > [!IMPORTANT]
-> Informacje przedstawione w tym dokumencie mają zastosowanie tylko w klastrach HDInsight z systemem Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Informacji na temat uzyskiwania dostępu do usługi YARN dzienników w klastrach HDInsight opartych na systemie Linux, zobacz [aplikacji dostępu Apache YARN logowania opartej na systemie Linux z platformą Hadoop w HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+> Informacje przedstawione w tym dokumencie mają zastosowanie tylko w klastrach HDInsight z systemem Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Informacji na temat uzyskiwania dostępu do usługi YARN dzienników w klastrach HDInsight opartych na systemie Linux, zobacz [dostępu Apache Hadoop YARN application logowania opartej na systemie Linux platformą Apache Hadoop w HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 >
 
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-* Klaster HDInsight z systemem Windows.  Zobacz [oparte na Windows tworzenie klastrów usługi Hadoop w HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+* Klaster HDInsight z systemem Windows.  Zobacz [Apache Hadoop oparte na Windows tworzenie klastrów w HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="yarn-timeline-server"></a>YARN Timeline Server
-<a href="http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">YARN Timeline Server</a> zawiera ogólne informacje dotyczące ukończonych aplikacji oraz jak framework informacje specyficzne dla aplikacji za pośrednictwem dwóch różnych interfejsów. W szczególności:
+<a href="http://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">Apache Hadoop YARN Timeline Server</a> zawiera ogólne informacje dotyczące ukończonych aplikacji oraz jak framework informacje specyficzne dla aplikacji za pośrednictwem dwóch różnych interfejsów. W szczególności:
 
 * Przechowywanie i pobieranie informacji o aplikacji ogólnego w klastrach HDInsight została włączona przy użyciu wersji 3.1.1.374 lub nowszej.
 * Składnik informacji o aplikacjach dla określonej platformy Timeline Server nie jest obecnie dostępna w klastrach HDInsight.
@@ -53,7 +53,7 @@ YARN obsługuje wiele modeli programowania Dzięki rozdzieleniu zarządzania zas
 * Kontener udostępnia kontekst umożliwiający podstawowa jednostka pracy. 
 * Prac, które jest wykonywane w kontekście kontenera odbywa się w węźle pojedynczego procesu roboczego, który został przydzielony kontenera. 
 
-Aby uzyskać więcej informacji, zobacz [pojęcia usługi YARN][YARN-concepts].
+Aby uzyskać więcej informacji, zobacz [Apache Hadoop YARN pojęcia][YARN-concepts].
 
 Dzienniki aplikacji (i dzienniki skojarzony kontener) są krytyczne w debugowaniu aplikacji platformy Hadoop innych problematyczne. YARN umożliwia nieuprzywilejowany umożliwiająca zbieranie, agregując i przechowywania dzienników aplikacji za pomocą [agregacji dziennika] [ log-aggregation] funkcji. Funkcja agregacji dziennika sprawia, że uzyskiwania dostępu do dzienników aplikacji bardziej deterministyczna, agreguje dzienników dla wszystkich kontenerów na węzeł procesu roboczego i przechowuje je w postaci jednego zagregowane pliku dziennika na węzeł procesu roboczego na domyślny system plików po zakończeniu działania aplikacji. Aplikacja może używać setek lub tysięcy kontenerów, ale dzienników dla wszystkich kontenerów, uruchom w węźle pojedynczego procesu roboczego są agregowane do pojedynczego pliku, co w jednym pliku na węzeł procesu roboczego używanych przez aplikację. Agregacja dziennik jest domyślnie włączona, w klastrach HDInsight (w wersji 3.0 lub nowszej), i zagregowane Dzienniki znajdują się w domyślnym kontenerze usługi klastrowania w następującej lokalizacji:
 

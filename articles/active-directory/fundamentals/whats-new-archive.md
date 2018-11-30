@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 22e0f95b1afec39574309a8deed8a020145c38ec
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 54e63cf90d72b64dbe00ab8b65179f015c23b646
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708814"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427611"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiwum nowości? w usłudze Azure Active Directory
 
@@ -1100,7 +1100,7 @@ Ze względu na te nowe możliwości raportu interfejsów API w ramach punktu ko�
 **Kategoria usług:** Moje aplikacje  
 **Możliwości produktu:** logowanie jednokrotne  
 
-Usługa Azure AD obsługuje wykrywania automatycznego pól logowania dla aplikacji, które są renderowane pola nazwy i hasła użytkownika HTML. Te kroki są udokumentowane w artykule [jak automatycznie Przechwyć pola logowania dla aplikacji](https://docs.microsoft.com/azure/active-directory/application-config-sso-problem-configure-password-sso-non-gallery#how-to-manually-capture-sign-in-fields-for-an-application). Tej funkcji można znaleźć, dodając *spoza galerii* aplikacji **aplikacje dla przedsiębiorstw** strony w [witryny Azure portal](http://aad.portal.azure.com). Ponadto można skonfigurować **logowania jednokrotnego** tryb, w tym nową aplikację do **opartego na hasłach logowania jednokrotnego**, wprowadź adres URL sieci web, a następnie Zapisz strony.
+Usługa Azure AD obsługuje wykrywania automatycznego pól logowania dla aplikacji, które są renderowane pola nazwy i hasła użytkownika HTML. Te kroki są udokumentowane w artykule [jak automatycznie Przechwyć pola logowania dla aplikacji](https://docs.microsoft.com/azure/active-directory/application-config-sso-problem-configure-password-sso-non-gallery#how-to-manually-capture-sign-in-fields-for-an-application). Tej funkcji można znaleźć, dodając *spoza galerii* aplikacji **aplikacje dla przedsiębiorstw** strony w [witryny Azure portal](https://aad.portal.azure.com). Ponadto można skonfigurować **logowania jednokrotnego** tryb, w tym nową aplikację do **opartego na hasłach logowania jednokrotnego**, wprowadź adres URL sieci web, a następnie Zapisz strony.
  
 Ze względu na problem z usługą zostało tymczasowo wyłączyć tej funkcji. Problem został rozwiązany i wykrywania automatycznego pól logowania będą ponownie dostępne.
 

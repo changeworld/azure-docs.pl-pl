@@ -1,7 +1,19 @@
-
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: crdun
+ms.openlocfilehash: eded2d6a9f2c270a2b3ccca296277b0a016733fd
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52440352"
+---
 1. Otwórz projekt w programie Android Studio.
 
-2. W **Eksplorator projektów** w programie Android Studio Otwórz `ToDoActivity.java` i dodaj następujące instrukcje importu:
+2. W **Eksplorator projektów** w programie Android Studio, otwórz `ToDoActivity.java` pliku i dodaj następujące instrukcje importu:
 
     ```java
     import java.util.concurrent.ExecutionException;
@@ -47,20 +59,20 @@
     }
     ```
 
-    Ten kod tworzy metodę, aby obsługiwać ten proces uwierzytelniania Google. Okno dialogowe wyświetla identyfikator uwierzytelnionego użytkownika. Można kontynuować tylko na pomyślne uwierzytelnienie.
+    Ten kod tworzy metodę, aby obsługiwać ten proces uwierzytelniania Google. Okno dialogowe wyświetla identyfikator uwierzytelnionego użytkownika. Możesz tylko przejść na pomyślne uwierzytelnienie.
 
     > [!NOTE]
-    > Jeśli używasz dostawcy tożsamości innych niż Google, zmień wartość przekazana do **logowania** metodę na jedną z następujących wartości: _MicrosoftAccount_, _Facebook_, _Twitter_, lub _windowsazureactivedirectory_.
+    > Jeśli używasz dostawcy tożsamości innych niż firmy Google, zmień wartość przekazana do **logowania** metody do jednego z następujących wartości: _MicrosoftAccount_, _Facebook_, _Twitter_, lub _windowsazureactivedirectory_.
 
-4. W **onCreate** metody, Dodaj następujący wiersz kodu po kodzie tworzącym `MobileServiceClient` obiektu.
+4. W **onCreate** metody, Dodaj następujący wiersz kodu po kodzie, która tworzy wystąpienie `MobileServiceClient` obiektu.
 
     ```java
     authenticate();
     ```
 
-    Tego wywołania spowoduje uruchomienie procesu uwierzytelniania.
+    To wywołanie rozpoczyna się proces uwierzytelniania.
 
-5. Przenieś pozostałych kod po `authenticate();` w **onCreate** nową metodę **createTable** metody:
+5. Przenieś pozostały kod po `authenticate();` w **onCreate** nową metodę **createTable** metody:
 
     ```java
     private void createTable() {
@@ -80,7 +92,7 @@
     }
     ```
 
-6. Aby zapewnić przekierowania działa zgodnie z oczekiwaniami, Dodaj poniższy fragment `RedirectUrlActivity` do `AndroidManifest.xml`:
+6. Aby zapewnić przekierowania działa zgodnie z oczekiwaniami, Dodaj następujący fragment `RedirectUrlActivity` do `AndroidManifest.xml`:
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
@@ -94,7 +106,7 @@
     </activity>
     ```
 
-7. Dodaj `redirectUriScheme` do `build.gradle` aplikacji systemu Android.
+7. Dodaj `redirectUriScheme` do `build.gradle` aplikacji dla systemu Android.
 
     ```gradle
     android {
@@ -111,7 +123,7 @@
     }
     ```
 
-8. Dodaj `com.android.support:customtabs:23.0.1` zależności w Twojej `build.gradle`:
+8. Dodaj `com.android.support:customtabs:23.0.1` zależności w swojej `build.gradle`:
 
     ```gradle
     dependencies {
@@ -120,9 +132,9 @@
     }
     ```
 
-9. Z **Uruchom** menu, kliknij przycisk **uruchamianie aplikacji** do Uruchom aplikację i zaloguj się przy użyciu dostawcy tożsamości wybrany.
+9. Z **Uruchom** menu, kliknij przycisk **uruchamianie aplikacji** można uruchomić aplikację i zaloguj się przy użyciu dostawcy tożsamości wybrany.
 
 > [!WARNING]
-> Schemat adresu URL wymieniony jest rozróżniana wielkość liter. Upewnij się, że wszystkie wystąpienia `{url_scheme_of_you_app}` wielkością liter.
+> Schemat adresu URL, do wymienionej jest uwzględniana wielkość liter. Upewnij się, że wszystkie wystąpienia `{url_scheme_of_you_app}` wielkością liter.
 
-Jeśli pomyślnie zalogowano aplikacji powinny być uruchamiane bez błędów, a można wysłać zapytania do usługi zaplecza i aktualizowanie danych.
+Po pomyślnym zalogowaniu się, aplikacja powinna działać bez błędów i powinno być możliwe do tworzenia zapytań usługi zaplecza i dokonać aktualizacji danych.

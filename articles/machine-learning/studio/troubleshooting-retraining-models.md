@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z ponownego trenowania usługi sieci web Azure Machine Learning klasycznego | Dokumentacja firmy Microsoft
-description: Zidentyfikować i rozwiązać typowe problemy z napotkano w przypadku, gdy są ponownego szkolenia modelu dla usługi sieci Web Azure Machine Learning.
+title: Rozwiązywanie problemów z ponownego trenowania w usłudze Machine Learning Studio klasyczne usługi sieci web — Azure | Dokumentacja firmy Microsoft
+description: Zidentyfikować i rozwiązać typowe problemy z napotkano w przypadku, gdy są ponowne trenowanie modeli usługi sieci web Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
-ms.openlocfilehash: 49a76729d38662667328632c83e98a1211438a98
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 1105b81d0f8ba80bd76bcdf140fe79b9e8a7102d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261705"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307206"
 ---
-# <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>Rozwiązywanie problemów z ponownym szkoleniem usługi sieci web Azure Machine Learning klasycznego
+# <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-studio-classic-web-service"></a>Rozwiązywanie problemów z ponownym szkoleniem usługi sieci web Azure Machine Learning Studio
 ## <a name="retraining-overview"></a>Ponowne szkolenie — omówienie
 Podczas wdrażania eksperyment predykcyjny jako usługę sieci web oceniania jest model statyczny. Gdy nowe dane staje się dostępna lub konsumenta interfejsu API ma swoje własne dane, model musi być retrained. 
 

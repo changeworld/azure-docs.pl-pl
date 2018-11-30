@@ -14,12 +14,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 128eff5f628a0a4bf9f67e988ab7d3e2f22ed767
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 40b633c4e51a34e6640a9557be49bbe30543daf5
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823745"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426439"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Sposób użycia usługi Twilio dla połączeń głosowych i SMS funkcji w języku Ruby
 Ten przewodnik pokazuje sposób wykonywania typowych zadań programistycznych w usłudze interfejsu API usługi Twilio, na platformie Azure. Omówione scenariusze obejmują tworzenie połączenia telefonicznego i wysyłanie wiadomości wiadomości usługi (SMS). Aby uzyskać więcej informacji na temat usługi Twilio i używania połączeń głosowych i wiadomości SMS w swoich aplikacjach, zobacz [następne kroki](#NextSteps) sekcji.
@@ -30,7 +30,7 @@ Twilio to interfejs API usługi sieci web telefonii, która umożliwia tworzenie
 **Twilio dla połączeń głosowych** umożliwia aplikacjom wykonywanie i odbieranie połączeń telefonicznych. **Wiadomości SMS usługi Twilio** umożliwia aplikacjom wykonywanie i odbieranie wiadomości SMS. **Klient usługi Twilio** umożliwia aplikacjom obsługę połączeń głosowych przy użyciu istniejących połączeń internetowych, w tym mobilnych połączeń.
 
 ## <a id="Pricing"></a>Cennik usługi Twilio i ofert specjalnych
-Informacje o cenach usługi Twilio znajduje się w temacie [cennik usługi Twilio][twilio_pricing]. Klienci platformy Azure otrzymują [oferta specjalna][special_offer]: bezpłatne środki w wysokości 1000 teksty lub 1000 dla ruchu przychodzącego w ciągu kilku minut. Zarejestruj się w ramach tej oferty, lub uzyskać więcej informacji, odwiedź stronę [ http://ahoy.twilio.com/azure ] [ special_offer].  
+Informacje o cenach usługi Twilio znajduje się w temacie [cennik usługi Twilio][twilio_pricing]. Klienci platformy Azure otrzymują [oferta specjalna][special_offer]: bezpłatne środki w wysokości 1000 teksty lub 1000 dla ruchu przychodzącego w ciągu kilku minut. Zarejestruj się w ramach tej oferty, lub uzyskać więcej informacji, odwiedź stronę [ https://ahoy.twilio.com/azure ] [ special_offer].  
 
 ## <a id="Concepts"></a>Pojęcia
 Interfejs API usługi Twilio to API typu RESTful, który zapewnia połączeń głosowych i SMS funkcje dla aplikacji. Biblioteki klienckie są dostępne w wielu językach; Aby uzyskać listę, zobacz [bibliotek interfejsu API usługi Twilio][twilio_libraries].
@@ -179,19 +179,19 @@ Teraz, kiedy znasz już podstawy usługi Twilio, skorzystaj z poniższych linkó
 
 
 
-[twilio_pricing]: http://www.twilio.com/pricing
-[special_offer]: http://ahoy.twilio.com/azure
+[twilio_pricing]: https://www.twilio.com/pricing
+[special_offer]: https://ahoy.twilio.com/azure
 [twilio_libraries]: https://www.twilio.com/docs/libraries
-[twiml]: http://www.twilio.com/docs/api/twiml
-[twilio_api]: http://www.twilio.com/api
+[twiml]: https://www.twilio.com/docs/api/twiml
+[twilio_api]: https://www.twilio.com/api
 [try_twilio]: https://www.twilio.com/try-twilio
 [twilio_account]:  https://www.twilio.com/user/account
 [verify_phone]: https://www.twilio.com/user/account/phone-numbers/verified#
-[twilio_api_documentation]: http://www.twilio.com/api
-[twilio_security_guidelines]: http://www.twilio.com/docs/security
-[twilio_howtos]: http://www.twilio.com/docs/howto
+[twilio_api_documentation]: https://www.twilio.com/api
+[twilio_security_guidelines]: https://www.twilio.com/docs/security
+[twilio_howtos]: https://www.twilio.com/docs/howto
 [twilio_on_github]: https://github.com/twilio
-[twilio_support]: http://www.twilio.com/help/contact
-[twilio_quickstarts]: http://www.twilio.com/docs/quickstart
+[twilio_support]: https://www.twilio.com/help/contact
+[twilio_quickstarts]: https://www.twilio.com/docs/quickstart
 [sinatra]: http://www.sinatrarb.com/
 [azure_vm_setup]: https://docs.microsoft.com/azure/virtual-machines/linux/classic/ruby-rails-web-app

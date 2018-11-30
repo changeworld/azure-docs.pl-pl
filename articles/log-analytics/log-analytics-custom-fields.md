@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: fdac7d1fd7fbcea28d6ce8e614e4968f168566ba
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3e1acb714cfc1c059f8d02240c2a6d49be9f4971
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010591"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335286"
 ---
 # <a name="custom-fields-in-log-analytics"></a>Pola niestandardowe w usłudze Log Analytics
 **Pól niestandardowych** funkcji usługi Log Analytics umożliwia rozszerzanie istniejących rekordów w usłudze Log Analytics, dodając własny pola z możliwością wyszukiwania.  Niestandardowe pola są automatycznie wypełniane na podstawie danych wyodrębnionych z innych właściwości w ten sam rekord.
@@ -81,7 +81,7 @@ Możesz wyświetlić listę wszystkich pól niestandardowych w grupie zarządzan
 Istnieją dwa sposoby, aby usunąć pole niestandardowe.  Pierwsza to **Usuń** opcji dla każdego pola, podczas wyświetlania pełną listę, zgodnie z powyższym opisem.  Inna metoda jest pobrać rekordu, a następnie kliknij przycisk po lewej stronie pola.  Menu będzie mieć opcję, aby usunąć pole niestandardowe.
 
 ## <a name="sample-walkthrough"></a>Przewodnik po przykładzie
-Poniższej sekcji przedstawiono pełny przykład tworzenia pola niestandardowego.  W tym przykładzie pobiera nazwę usługi w Windows zdarzenia wskazujące zmianę stanu usługi.  To zależy od zdarzenia utworzone przez Menedżera sterowania usługami w dzienniku systemu na komputerach z Windows.  Jeśli chcesz wykonać w tym przykładzie, musi być [zbierania informacji zdarzeń dziennika systemu](log-analytics-data-sources-windows-events.md).
+Poniższej sekcji przedstawiono pełny przykład tworzenia pola niestandardowego.  W tym przykładzie pobiera nazwę usługi w Windows zdarzenia wskazujące zmianę stanu usługi.  To zależy od zdarzenia utworzone przez Menedżera sterowania usługami w dzienniku systemu na komputerach z Windows.  Jeśli chcesz wykonać w tym przykładzie, musi być [zbierania informacji zdarzeń dziennika systemu](../azure-monitor/platform/data-sources-windows-events.md).
 
 Firma Microsoft wprowadź następujące zapytanie, aby zwrócić wszystkich zdarzeń z Menedżera kontroli usług mających Identyfikatorem zdarzenia 7036, który jest zdarzenie wskazujące uruchomienie lub zatrzymanie usługi.
 
@@ -141,5 +141,5 @@ Teraz możemy użyć pole niestandardowe, takie jak wszystkich innych właściwo
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [dziennikach](log-analytics-queries.md) tworzenie zapytań przy użyciu pól niestandardowych kryteriów.
-* Monitor [pliki dziennika niestandardowego](log-analytics-data-sources-custom-logs.md) , analizy przy użyciu pól niestandardowych.
+* Monitor [pliki dziennika niestandardowego](../azure-monitor/platform/data-sources-custom-logs.md) , analizy przy użyciu pól niestandardowych.
 

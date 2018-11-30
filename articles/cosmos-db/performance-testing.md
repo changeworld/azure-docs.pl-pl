@@ -1,6 +1,6 @@
 ---
-title: Azure DB rozwiązania Cosmos skali i testowania wydajności | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wykonać testowanie z bazy danych Azure rozwiązania Cosmos wydajności i skalowania
+title: Skalowanie usługi Azure Cosmos DB i testów wydajnościowych | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wykonać skalowalności i wydajności, testowanie za pomocą usługi Azure Cosmos DB
 keywords: Testowanie wydajności
 services: cosmos-db
 author: SnehaGunda
@@ -11,46 +11,46 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: ce2c0ddcce3813990bf819477f7db425d70e3595
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 09ed72c73acf16f944c3b1101aff5ea04acb624d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34612303"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308175"
 ---
-# <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Wydajność i skalę testowania z bazy danych Azure rozwiązania Cosmos
+# <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Wydajność i skalę, testowanie za pomocą usługi Azure Cosmos DB
 
-Skala testowanie wydajności i jest klucza krok w rozwoju aplikacji. Dla wielu aplikacji warstwy bazy danych ma znaczący wpływ na ogólną wydajność i skalowalność. W związku z tym jest składnikiem krytycznym testowania wydajności. [Azure DB rozwiązania Cosmos](https://azure.microsoft.com/services/cosmos-db/) jest dedykowanym elastyczne skalowanie i przewidywalną wydajność. Te możliwości stanowić stanowi doskonałe dopasowanie dla aplikacji, które wymagają warstwy wysokiej wydajności bazy danych. 
+Testowanie wydajności i skali jest krokiem podczas tworzenia aplikacji. W przypadku wielu aplikacji warstwy bazy danych, ma znaczący wpływ na ogólną wydajność i skalowalność. Dlatego jest kluczowym elementem testowania wydajnościowego. [Usługa Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) zaprojektowanemu pod kątem elastycznego skalowania i przewidywalną wydajność. Te funkcje umożliwiają doskonałe rozwiązanie dla aplikacji wymagających warstwę bazy danych o wysokiej wydajności. 
 
-W tym artykule jest odwołaniem dla deweloperów wykonania testów wydajności dla obciążeń bazy danych Azure rozwiązania Cosmos. Ponadto umożliwia do oceny bazy danych Azure rozwiązania Cosmos w przypadku scenariuszy wysokiej wydajności aplikacji. Skupiono się głównie na testowania wydajności izolowanej bazy danych, ale zawiera również najlepsze rozwiązania dotyczące aplikacji produkcyjnych.
+Ten artykuł stanowi odwołanie dla deweloperów, implementowanie zestawy testów wydajności dla obciążeń usługi Azure Cosmos DB. On również może służyć do oceny usługi Azure Cosmos DB w przypadku scenariuszy aplikacji o wysokiej wydajności. Koncentruje się głównie na wydajność w izolowanej testowanie bazy danych, ale również zawiera najlepsze rozwiązania dotyczące aplikacji produkcyjnych.
 
 Po przeczytaniu tego artykułu, będziesz mieć możliwość odpowiedzieć na następujące pytania: 
 
-* Gdzie mogę znaleźć przykładowej aplikacji .NET klienta do testów wydajności bazy danych Azure rozwiązania Cosmos 
-* Jak osiągnięcia wysokiej przepływności poziomu z bazy danych Azure rozwiązania Cosmos z mojej aplikacji klienta?
+* Gdzie można znaleźć Przykładowa aplikacja kliencka platformy .NET do testowania wydajnościowego usługi Azure Cosmos DB? 
+* Jak osiągnąć poziomy wysoką przepływność dzięki usłudze Azure Cosmos DB z mojej aplikacji klienta?
 
-Aby rozpocząć pracę z kodem, Pobierz projektu z [wydajności bazy danych Azure rozwiązania Cosmos testowania próbki](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark). 
-
-> [!NOTE]
-> Celem tej aplikacji jest pokazujący sposób uzyskać najlepszą wydajność z bazy danych Azure rozwiązania Cosmos o niewielkiej liczby komputerów klienckich. Celem próbki jest nie do osiągnięcia pojemność przepływności pików bazy danych rozwiązania Cosmos Azure (które można skalować bez żadnych limitów).
-> 
-> 
-
-Jeśli szukasz opcji konfiguracji po stronie klienta w celu poprawy wydajności bazy danych rozwiązania Cosmos Azure, zobacz [porady dotyczące wydajności bazy danych Azure rozwiązania Cosmos](performance-tips.md).
-
-## <a name="run-the-performance-testing-application"></a>Uruchom testowania aplikacji
-Aby skompilować i uruchomić przykładowe .NET jest najszybszym sposobem na rozpoczęcie pracy, zgodnie z opisem w poniższych krokach. Można również przejrzeć kod źródłowy i zaimplementować podobnych konfiguracji własnych aplikacji klienckich.
-
-**Krok 1:** pobrać projekt z [wydajności bazy danych Azure rozwiązania Cosmos testowania próbki](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark), lub rozwidlania repozytorium GitHub.
-
-**Krok 2:** zmodyfikować ustawienia adres URL punktu końcowego, AuthorizationKey CollectionThroughput i DocumentTemplate (opcjonalnie) w pliku App.config.
+Aby rozpocząć pracę z kodem, należy pobrać projekt z [testowania próbki wydajności usługi Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark). 
 
 > [!NOTE]
-> Przed udostępnieniem kolekcje z wysokiej przepływności dotyczą [strony cennik](https://azure.microsoft.com/pricing/details/cosmos-db/) oszacowanie kosztów na kolekcję. Azure DB rozwiązania Cosmos rachunków pamięci masowej i przepływność niezależnie co godzinę. Można zmniejszyć koszty przez usunięcie lub obniżenia przepływność kolekcji bazy danych rozwiązania Cosmos Azure po zakończeniu testowania.
+> Celem tej aplikacji jest przedstawienie sposobu uzyskania najlepszej wydajności z usługi Azure Cosmos DB przy użyciu niewielkiej liczby komputerów klienckich. Celem próbki jest nie osiągać szczytowe pojemność przepływności usługi Azure Cosmos DB, (które można skalować bez żadnych ograniczeń).
 > 
 > 
 
-**Krok 3:** skompilować i uruchomić aplikację konsoli z wiersza polecenia. Powinny pojawić się dane wyjściowe podobne do następujących:
+Jeśli potrzebujesz opcji konfiguracji po stronie klienta w celu poprawy wydajności usługi Azure Cosmos DB, zobacz [porady dotyczące wydajności usługi Azure Cosmos DB](performance-tips.md).
+
+## <a name="run-the-performance-testing-application"></a>Uruchamianie aplikacji do testowania wydajnościowego
+Aby skompilować i uruchomić przykład .NET jest najszybszym sposobem na rozpoczęcie pracy, zgodnie z opisem w poniższych krokach. Można również przejrzeć kod źródłowy i zaimplementować podobne konfiguracje w aplikacjach klienckich.
+
+**Krok 1:** pobieranie projektu z [testowania próbki wydajności usługi Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark), lub utworzenie rozwidlenia repozytorium GitHub.
+
+**Krok 2:** zmodyfikować ustawienia EndpointUrl, AuthorizationKey, CollectionThroughput i DocumentTemplate (opcjonalnie) w pliku App.config.
+
+> [!NOTE]
+> Przed udostępnieniem kolekcji o wysokiej przepływności, można znaleźć [stronę z cennikiem](https://azure.microsoft.com/pricing/details/cosmos-db/) do szacowania kosztów w jednej kolekcji. Usługa Azure Cosmos DB opłaty naliczane są, Magazyn i przepływność niezależnie od siebie w systemie godzinowym. Możliwe obniżenie kosztów przez usunięcie lub obniżenia przepływność kolekcji usługi Azure Cosmos DB po zakończeniu testowania.
+> 
+> 
+
+**Krok 3:** skompilować i uruchomić aplikację konsoli w wierszu polecenia. Powinny zostać wyświetlone dane wyjściowe podobne do następujących:
 
     C:\Users\cosmosdb\Desktop\Benchmark>DocumentDBBenchmark.exe
     Summary:
@@ -93,15 +93,15 @@ Aby skompilować i uruchomić przykładowe .NET jest najszybszym sposobem na roz
     Press any key to exit...
 
 
-**Krok 4 (Jeśli to konieczne):** przepływność zgłoszone (RU/s) z narzędzia powinna być taka sama lub większa niż przepływność kolekcji lub zestaw kolekcji. Jeśli nie, zwiększenie DegreeOfParallelism w małych odstępach mogą ułatwić osiągnie limit. Jeśli płaskowyżach przepływności z aplikacji klienta, należy uruchomić wiele wystąpień aplikacji na komputerach klienckich w dodatkowych. Jeśli potrzebujesz pomocy w ramach tego kroku, Wyślij wiadomość e-mail askcosmosdb@microsoft.com lub pliku biletu pomocy technicznej z [portalu Azure](https://portal.azure.com).
+**Krok 4 (jeśli jest to konieczne):** przepływności zgłoszonej (RU/s) za pomocą narzędzia powinna być taka sama lub większa niż aprowizowana przepływność kolekcji lub zestaw kolekcji. Jeśli nie jest, zwiększenie DegreeOfParallelism w małych odstępach może pomóc Ci osiągnięcia limitu. Jeśli płaskowyżach przepływność z aplikacji klienckich, należy uruchomić wiele wystąpień aplikacji, na maszynach klienckich w dodatkowych. Jeśli potrzebujesz pomocy dotyczącej tego kroku, Wyślij wiadomość e-mail askcosmosdb@microsoft.com lub pliku biletu pomocy technicznej z [witryny Azure portal](https://portal.azure.com).
 
-Po utworzeniu aplikacji możesz spróbować innego [zasady indeksowania](indexing-policies.md) i [poziomy spójności](consistency-levels.md) zrozumienie ich wpływ na przepustowości i opóźnień. Można również przejrzeć kod źródłowy i wdrożenia podobnych konfiguracji własne zestawy testów lub aplikacje produkcyjne.
+Po utworzeniu jest uruchomiona aplikacja, możesz wypróbować różne [zasady indeksowania](index-policy.md) i [poziomów spójności](consistency-levels.md) Aby zrozumieć ich wpływ na przepływność i opóźnienie. Możesz również przejrzeć kod źródłowy i zaimplementować podobne konfiguracje własne zestawy testów lub aplikacje produkcyjne.
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule analizujemy sposobu wykonywania wydajności i skalowania testowanie z bazy danych rozwiązania Cosmos Azure za pomocą aplikacji konsoli .NET. Aby uzyskać więcej informacji zobacz następujące artykuły:
+W tym artykule zobaczyliśmy, jak można wykonać wydajność i skalę, testowanie za pomocą usługi Azure Cosmos DB za pomocą aplikacji konsoli .NET. Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-* [Testowanie próbki Azure wydajności bazy danych rozwiązania Cosmos](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
-* [Opcje konfiguracji klienta, aby zwiększyć wydajność bazy danych Azure rozwiązania Cosmos](performance-tips.md)
-* [Partycjonowanie po stronie serwera w usłudze Azure DB rozwiązania Cosmos](partition-data.md)
+* [Testowanie przykładowej Azure wydajności usługi Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
+* [Opcje konfiguracji klienta, aby poprawić wydajność usługi Azure Cosmos DB](performance-tips.md)
+* [Partycjonowanie po stronie serwera w usłudze Azure Cosmos DB](partition-data.md)
 
 

@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z danych Import/Export w usługach sieci web Azure Machine Learning | Dokumentacja firmy Microsoft
+title: Korzystanie z danych Import/Export w usługach sieci web Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak korzystać z modułów danych importowanie i eksportowanie danych do wysyłania i odbierania danych z usługi sieci web.
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 3fa33572e60a43c66eca404e426232f9864a294e
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: ee7d0fb4792983099dc6192de8f85338daee357f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264645"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52306951"
 ---
-# <a name="deploying-azure-ml-web-services-that-use-data-import-and-data-export-modules"></a>Wdrażanie usług sieci Web Azure ML używających modułów importu i eksportu danych
+# <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>Wdrażaj usługi sieci web Azure Machine Learning Studio, korzystające z modułów importu i eksportu danych
 
 Podczas tworzenia eksperyment predykcyjny zazwyczaj dodajesz usługi sieci web w danych wejściowych i wyjściowych. Podczas wdrażania doświadczenia użytkowników umożliwia wysyłanie oraz odbieranie danych z usługi sieci web za pośrednictwem dane wejściowe i wyjściowe. W niektórych aplikacjach dane klienta mogą być dostępne ze strumieniowego źródła danych lub już znajdują się w zewnętrznym źródle danych takich jak usługi Azure Blob storage. W takiej sytuacji nie ma potrzeby odczytywanie i zapisywanie danych przy użyciu usługi sieci web w danych wejściowych i wyjściowych. Mogą, zamiast tego odczytywanie danych ze źródła danych za pomocą modułu importu danych przy użyciu usługi Batch Execution Service (BES) i zapisać wyniki oceny lokalizacji różnych danych, przy użyciu modułu Eksport danych.
 

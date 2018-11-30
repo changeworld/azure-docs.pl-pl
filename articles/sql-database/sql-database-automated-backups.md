@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 36099a49cc9e6c810727606bb73d2669f1e0df79
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 9c5cdf6c2baf4197b693b522848fc1fd04db7abf
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985696"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422514"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Dowiedz się więcej o automatycznych kopii zapasowych bazy danych SQL
 
@@ -42,7 +42,7 @@ Możesz użyć tych kopii zapasowych:
 
 ## <a name="how-long-are-backups-kept"></a>Jak długo są przechowywane kopie zapasowe
 
-Każda kopia zapasowa bazy danych SQL ma domyślny okres przechowywania, zależy od warstwy usługi bazy danych, która różni się między [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). Można zaktualizować okresu przechowywania kopii zapasowej dla bazy danych. Zobacz [okres przechowywania kopii zapasowej zmiany](#how-to-change-backup-retention-period) Aby uzyskać więcej informacji.
+Każda baza danych SQL ma domyślny okres przechowywania kopii zapasowych, od 7 do 35 dni, od których zależy [model zakupu i warstwy usług](#pitr-retention-period). Można zaktualizować okresu przechowywania kopii zapasowej dla bazy danych na serwerze logicznym Azure (Ta funkcja zostanie wkrótce włączona w wystąpieniu zarządzanym usługi). Zobacz [okres przechowywania kopii zapasowej zmiany](#how-to-change-backup-retention-period) Aby uzyskać więcej informacji.
 
 Jeśli usuniesz bazę danych, SQL Database zostanie zachowana kopie zapasowe w taki sam sposób jak dla bazy danych online. Na przykład po usunięciu podstawowej bazy danych zawierającej okresu przechowywania siedmiu dni, kopii zapasowej, która jest cztery dni zostanie zapisany przez trzy kolejne dni.
 

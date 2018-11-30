@@ -8,12 +8,12 @@ ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 734387e7ce5fc27cb88c73601bdfd0f35d04b693
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 586f3c81fad79f49b3506b0bd84a4f7b218d8605
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288683"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426489"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Programu Azure AD Connect: Dokumentacja programu PowerShell ADSyncTools
 Poniższa dokumentacja zawiera informacje dotyczące modułu programu PowerShell ADSyncTools.psm1, dostępnej w programie Azure AD Connect.
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="confirm-adsynctoolsadmoduleloaded"></a>Upewnij się, ADSyncToolsADModuleLoaded
 
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="export-adsynctoolsconsistencyguidmigration"></a>ADSyncToolsConsistencyGuidMigration eksportu
 
@@ -284,7 +284,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="get-adsyncsqlbrowserinstances"></a>Get-ADSyncSQLBrowserInstances
 
@@ -371,7 +371,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="get-adsynctoolsconsistencyguid"></a>Get-ADSyncToolsConsistencyGuid
 
@@ -418,7 +418,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="get-adsynctoolsobjectguid"></a>Get-ADSyncToolsObjectGuid
 
@@ -465,7 +465,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="get-adsynctoolsrunhistory"></a>Get-ADSyncToolsRunHistory
 
@@ -512,7 +512,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="get-adsynctoolssourceanchorchanged"></a>Get-ADSyncToolsSourceAnchorChanged
 
@@ -578,7 +578,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="import-adsynctoolsimmutableidmigration"></a>Importuj ADSyncToolsImmutableIdMigration
 
@@ -641,7 +641,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 
 ## <a name="invoke-adsyncdatabasequery"></a>Wywoływanie AdSyncDatabaseQuery
@@ -701,7 +701,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="remove-adsynctoolsexpiredcertificates"></a>Usuń ADSyncToolsExpiredCertificates
 
@@ -786,7 +786,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="repair-adsynctoolsautoupgradestate"></a>Napraw ADSyncToolsAutoUpgradeState
 
@@ -940,7 +940,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="test-adsyncnetworkport"></a>ADSyncNetworkPort testu
 
@@ -1119,7 +1119,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="trace-adsynctoolsldapquery"></a>ADSyncToolsLdapQuery śledzenia
 
@@ -1212,7 +1212,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="update-adsynctoolsconsistencyguidmigration"></a>Aktualizacja ADSyncToolsConsistencyGuidMigration
 
@@ -1336,4 +1336,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).

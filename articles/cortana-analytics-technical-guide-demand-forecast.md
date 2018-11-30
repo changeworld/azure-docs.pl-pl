@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: e18e1fb3e97dd9f846ee71be4f0fbb66aeca3d88
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 88f6a27d4092e638403c641d72916ed9d2540708
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238866"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427067"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Podręcznik techniczny do szablon rozwiązania Cortana Intelligence, dla prognozę energii
 ## <a name="overview"></a>**Omówienie**
@@ -159,14 +159,14 @@ Po uruchomieniu Generator danych, potoku rozpocznie pobieranie uwodniony i róż
 W tej sekcji opisano sposób konfigurowania pulpit nawigacyjny usługi Power BI, aby wizualizować dane w czasie rzeczywistym z usługi Azure stream analytics (ścieżka aktywna), a także do przewidywania wyników z usługi Azure machine learning (ścieżka nieaktywna).
 
 ### <a name="setup-hot-path-dashboard"></a>Pulpit nawigacyjny ścieżki aktywnej konfiguracji
-Poniższe kroki prowadzą, jak wizualizować dane w czasie rzeczywistym dane wyjściowe zadania usługi Stream Analytics, które zostały wygenerowane w czasie wdrażania rozwiązania. A [usługi Power BI online](http://www.powerbi.com/) można wykonać następujące czynności, wymagane jest konto. Jeśli nie masz konta, możesz to zrobić [utworzyć](https://powerbi.microsoft.com/pricing).
+Poniższe kroki prowadzą, jak wizualizować dane w czasie rzeczywistym dane wyjściowe zadania usługi Stream Analytics, które zostały wygenerowane w czasie wdrażania rozwiązania. A [usługi Power BI online](https://www.powerbi.com/) można wykonać następujące czynności, wymagane jest konto. Jeśli nie masz konta, możesz to zrobić [utworzyć](https://powerbi.microsoft.com/pricing).
 
 1. Dodaj dane wyjściowe usługi Power BI w usłudze Azure Stream Analytics (ASA).
 
    * Należy wykonać instrukcje w [usługi Azure Stream Analytics i Power BI: pulpit nawigacyjny analizy w czasie rzeczywistym o wgląd w czasie rzeczywistym danych przesyłanych strumieniowo](stream-analytics/stream-analytics-power-bi-dashboard.md) skonfigurować dane wyjściowe zadania usługi Azure Stream Analytics jako pulpit nawigacyjny usługi Power BI .
    * Znajdź zadanie usługi stream analytics w swojej [witryny Azure portal](https://portal.azure.com). Nazwa zadania powinny być: YourSolutionName + streamingjob"" + losowe liczba + "asapbi" (czyli demostreamingjob123456asapbi).
    * Dodaj dane wyjściowe zadania ASA usługi Power BI. Ustaw **danych wyjściowych Alias** jako **"PBIoutput"**. Ustaw użytkownika **Nazwa zestawu danych** i **nazwy tabeli** jako **"EnergyStreamData"**. Po dodaniu danych wyjściowych kliknij **"Start"** w dolnej części strony Aby uruchomić zadanie usługi Stream Analytics. Powinna pojawić się komunikat z potwierdzeniem (na przykład "Uruchamianie zadania usługi stream analytics zakończyło się pomyślnie myteststreamingjob12345asablob").
-2. Zaloguj się do [usługi Power BI w trybie online](http://www.powerbi.com)
+2. Zaloguj się do [usługi Power BI w trybie online](https://www.powerbi.com)
 
    * W lewym panelu, sekcji zestawów danych w obszarze Mój obszar roboczy, można wyświetlić nowy zestaw danych, przedstawiający na lewym panelu w usłudze Power BI. Jest to dane przesyłane strumieniowo, które zostały wypchnięte z usługi Azure Stream Analytics w poprzednim kroku.
    * Upewnij się, że ***wizualizacje*** okienko jest otwarty i jest wyświetlany po prawej stronie ekranu.
@@ -207,7 +207,7 @@ W potoku danych ścieżki nieaktywnej essential celem jest prognozę żądanie k
    * W punkcie pop okna, Zastąp **"Server"** i **"Baza danych"** przy użyciu własnych nazwy serwera i bazy danych, a następnie kliknij **"OK"**. Dla nazwy serwera, upewnij się, należy określić port 1433 (**YourSolutionName.database.windows.net, 1433**). Ignoruj ostrzeżenia, które są wyświetlane na ekranie.
    * W następnym wyskakiwania okna, zobaczysz dwie opcje w okienku po lewej stronie (**Windows** i **bazy danych**). Kliknij przycisk **"Baza danych"**, wypełnij swoje **"Username"** i **"Password"** (jest to nazwa użytkownika i hasło wprowadzone podczas najpierw wdrożono rozwiązanie i utworzone na platformie Azure Usługa SQL database). W ***wybierz poziom, które można zastosować te ustawienia***, zaznacz opcję poziomu bazy danych. Następnie kliknij przycisk **"Połącz"**.
    * Gdy masz z przewodnikiem wróć do poprzedniej strony, zamknij okno. POP komunikatów w poziomie — kliknij **Zastosuj**. Na koniec kliknij **Zapisz** przycisk, aby zapisać zmiany. Plik usługi Power BI ma teraz ustanowione połączenie z serwerem. Jeśli Twoje wizualizacje są puste, upewnij się, że wyczyść zaznaczenia na wizualizacji, aby wizualizować wszystkie dane, klikając ikonę gumki w prawym górnym rogu legendy. Użyj przycisku odświeżania, aby odzwierciedlać nowych danych na wizualizacji. Początkowo widoczne tylko danych inicjatora w wizualizacji jako usługi data factory jest zaplanowane na odświeżanie co 3 godziny. Po 3 godziny zostanie wyświetlony nowych przewidywań zostaną uwzględnione w wizualizacji, podczas odświeżania danych.
-3. (Opcjonalnie) Publikowanie pulpitu nawigacyjnego ścieżki nieaktywnej w celu [usługi Power BI online](http://www.powerbi.com/). Należy pamiętać, że ten krok wymaga konta usługi Power BI (lub konta usługi Office 365).
+3. (Opcjonalnie) Publikowanie pulpitu nawigacyjnego ścieżki nieaktywnej w celu [usługi Power BI online](https://www.powerbi.com/). Należy pamiętać, że ten krok wymaga konta usługi Power BI (lub konta usługi Office 365).
 
    * Kliknij przycisk **"Publikuj"** i kilka sekund później zostanie wyświetlone okno zawierające "Publikowanie w usłudze Power BI sukces!" z zielonym znacznikiem wyboru. Kliknij poniższe łącze "Otwórz demoprediction.pbix w usłudze Power BI". Aby uzyskać szczegółowe instrukcje, zobacz [publikowanie z programu Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
    * Aby utworzyć nowy pulpit nawigacyjny: kliknij **+** dalej, aby zarejestrować **pulpity nawigacyjne** sekcji w okienku po lewej stronie. Wprowadź nazwę "Pokaz prognozowania popytu" dla tego nowego pulpitu nawigacyjnego.

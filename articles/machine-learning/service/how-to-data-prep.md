@@ -9,34 +9,27 @@ ms.author: cforbe
 author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 11/20/2018
-ms.openlocfilehash: 08510961616d2be8eac9b6a19063d5f0d613321f
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 11/27/2018
+ms.openlocfilehash: 91d0f3565db484504a67a3b6ae0989b9291cd24f
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263302"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446436"
 ---
 # <a name="prepare-data-for-modeling-with-azure-machine-learning"></a>Przygotowuje dane do modelowania za pomocą usługi Azure Machine Learning
- 
-W tym artykule poznasz przypadków użycia i funkcji usługi Azure Machine Learning Prep zestawu SDK usługi Data. Przygotowywanie danych to najważniejszy element usługi machine learning przepływu pracy. Rzeczywiste dane często są dzielone, niezgodne lub ma być używany jako dane szkoleniowe bez znaczących czyszczenia i transformacji. Poprawianie błędów i anomalii w danych pierwotnych i tworzenia nowych funkcji, które mają zastosowanie do problemu, który próbujesz rozwiązać, zwiększy dokładność modelu.
+
+W tym artykule poznasz przypadków użycia i funkcji usługi Azure Machine Learning Prep zestawu SDK usługi Data. Przygotowywanie danych to najważniejszy element usługi machine learning przepływu pracy. Rzeczywiste dane często są dzielone, niezgodne lub ma być używany jako dane szkoleniowe bez znaczących czyszczenia i transformacji. Poprawianie błędów i anomalii w danych pierwotnych i tworzenia nowych funkcji, które mają zastosowanie do problemu, który próbujesz rozwiązać, zwiększy dokładność modelu. Zestaw SDK jest przeznaczony do mu dobrze znanym użytkownikom innych typowych danych przygotowywania biblioteki, podczas gdy oferty dodatkowych korzyści w przypadku kluczowych scenariuszy i utrzymywanie współdziałanie z tych innych bibliotek.
 
 Można przygotować swoje dane w języku Python za pomocą [zestawu SDK usługi Azure Machine Learning danych Prep](https://aka.ms/data-prep-sdk).
 
 ## <a name="azure-machine-learning-data-prep-sdk"></a>Usługi Azure Machine Learning przygotowywanie danych zestawu SDK
 
-[Zestawu SDK usługi Azure Machine Learning danych Prep](https://aka.ms/data-prep-sdk) to biblioteka języka Python, która obejmuje:
-+ Wiele popularnych narzędzi wstępnego przetwarzania danych
-+ Funkcja automatyczna, inżynieria i przekształcenia pochodzące z przykładów
+[Zestawu SDK usługi Azure Machine Learning danych Prep](https://aka.ms/data-prep-sdk) to biblioteka języka Python, która oferuje:
 
-Zestaw SDK jest podobny do popularnymi bibliotekami podstawowych funkcji takich jak **Pandas** i **PySpark**, oferuje jeszcze bardziej elastyczne. Pandas jest zazwyczaj najbardziej użyteczne na mniejszych zestawów danych (< 2 do 5 GB), zanim ograniczeń wydajności pamięci mają wpływ na wydajność. Z kolei PySpark jest zazwyczaj dla aplikacji przetwarzających dane big Data, ale niesie ze sobą obciążenie, które ułatwia pracę z małych zestawów danych znacznie wolniejsze.
-
-Oferty usługi Azure Machine Learning Prep zestawu SDK usługi Data:
-- Praktycznych i wygodę, pracując z małymi zestawami danych
-
-- Skalowalność nowoczesne aplikacje danych big data
-
-- Możliwość użycia i skalować ten sam kod dla obu przypadków użycia
+* Transformacje inteligentne zaoszczędzić trochę czasu, takie jak rozmyte grupowania, pochodnej kolumny według przykładu, automatycznie podziału, inteligentne Odczyt pliku i niewyrównane prawo przetwarzania schematu.
+* Pojedynczy interfejs API, który działa na małych danych lokalnie lub dużych ilości danych w chmurze, z **mało, aby bez zmian w kodzie**.
+* Możliwość skalowania w bardziej efektywnie na jednym komputerze przy użyciu przesyłania strumieniowego podejście do przetwarzania danych, zamiast ładowania do pamięci.
 
 ### <a name="install-the-sdk"></a>Instalacja zestawu SDK
 
@@ -57,9 +50,12 @@ import azureml.dataprep as dprep
 Aby dowiedzieć się, modułów i funkcji zestaw SDK, zobacz [dokumentacja zestawu SDK usługi Data Prep](https://aka.ms/data-prep-sdk).
 
 Poniższe przykłady omówiono niektóre z unikatowych funkcji zestawu SDK, w tym:
-+ Plik automatyczne wykrywanie typu
-+ Inżynieria funkcji automatycznego
-+ Statystyki podsumowujące
+
+* Plik automatyczne wykrywanie typu
+* Inteligentne przekształceń
+* Statystyki podsumowujące
+* Funkcje dla wielu środowisk
+
 
 #### <a name="automatic-file-type-detection"></a>Plik automatyczne wykrywanie typu
 
@@ -69,7 +65,7 @@ Użyj `smart_read_file()` funkcję, aby załadować dane bez konieczności okre�
 dataflow = dprep.smart_read_file(path="<your-file-path>")
 ```
 
-#### <a name="automated-feature-engineering"></a>Inżynieria funkcji automatycznego
+#### <a name="intelligent-transforms"></a>Inteligentne przekształceń
 
 Dzielenie i pobieraj kolumny według przykładu i wnioskowania w celu zautomatyzowania technicznego opracowywania funkcji przy użyciu zestawu SDK. Założono, że pole w obiekcie przepływu danych o nazwie `datetime` o wartości `2018-09-15 14:30:00`.
 
@@ -130,6 +126,7 @@ Aby zobaczyć szczegółowe przykłady i kodu dla każdego kroku przygotowania, 
 ![Proces przygotowywania danych](./media/concept-data-preparation/data-prep-process.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Przegląd [przykładzie Notes](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/tutorials/getting-started/getting-started.ipynb) przygotowania danych przy użyciu usługi Azure Machine Learning Prep zestawu SDK usługi Data.
 
 Azure Machine Learning Prep zestawu SDK usługi Data [dokumentację referencyjną](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py).

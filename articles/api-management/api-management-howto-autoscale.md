@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 1d996469c01640a70b68d70e8c24c617e0defd64
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: a01e50debf11daf2f1163a56726f5574f7e3e379
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40250844"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444806"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Automatyczne skalowanie wystąpienia usługi Azure API Management  
 
@@ -32,6 +32,8 @@ Aby wykonać kroki z tego artykułu, musisz mieć:
 + Utworzono wystąpienie usługi Azure API Management. Aby uzyskać więcej informacji, zobacz [Utwórz wystąpienie usługi Azure API Management](get-started-create-service-instance.md).
 + Zrozumienie pojęcia [pojemności wystąpienia usługi Azure API Management](api-management-capacity.md).
 + Zrozumienie [ręczne skalowanie procesu wystąpienia usługi Azure API Management](upgrade-and-scale.md), tym konsekwencje kosztów.
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="azure-api-management-autoscale-limitations"></a>Ograniczenia skalowania automatycznego platformy Azure API Management
 

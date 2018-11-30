@@ -1,6 +1,18 @@
-
+---
+author: wesmc7777
+ms.service: redis-cache
+ms.topic: include
+ms.date: 11/21/2018
+ms.author: wesmc
+ms.openlocfilehash: 1ddb81de479317a098f9de8aa5756cbaae59cb72
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52331316"
+---
 ### <a name="cacheskuname"></a>cacheSKUName
-Warstwa cenowa nowej pamięci podręcznej Redis Azure.
+Warstwa cenowa nowej usługi Azure Redis Cache.
 
     "cacheSKUName": {
       "type": "string",
@@ -14,8 +26,8 @@ Warstwa cenowa nowej pamięci podręcznej Redis Azure.
       }
     },
 
-Szablon definiuje wartości, które są dozwolone dla tego parametru (Basic lub Standard), a następnie przypisuje wartość domyślną (Basic), jeśli nie określono wartości. Basic zapewnia jeden węzeł o różnych rozmiarach dostępne w górę do 53 GB.
-Standard udostępnia dwa węzły podstawowego/repliki o różnych rozmiarach dostępne w górę do umowy SLA 53 GB i 99,9%.
+Szablon definiuje wartości, które są dozwolone dla tego parametru (podstawowa lub standardowa) i przypisuje wartość domyślną (Basic), jeśli nie określono wartości. Basic oferuje pojedynczego węzła z dostępnych się wiele rozmiarów do 53 GB.
+Standard oferuje dwóch węzłów podstawowy i węzeł repliki z dostępnych się wiele rozmiarów do 53 GB i na poziomie 99,9% umowy SLA.
 
 ### <a name="cacheskufamily"></a>cacheSKUFamily
 Rodzina dla jednostki sku.
@@ -33,7 +45,7 @@ Rodzina dla jednostki sku.
 
 
 ### <a name="cacheskucapacity"></a>cacheSKUCapacity
-Rozmiar nowego wystąpienia pamięci podręcznej Redis Azure. 
+Rozmiar nowego wystąpienia usługi Azure Redis Cache. 
 
     "cacheSKUCapacity": {
       "type": "int",
@@ -53,5 +65,5 @@ Rozmiar nowego wystąpienia pamięci podręcznej Redis Azure.
     }
 
 
-Szablon definiuje wartości, które są dozwolone dla tego parametru (0, 1, 2, 3, 4, 5 lub 6) i przypisuje wartość domyślną (0), jeśli nie określono wartości. Te numery odpowiadają następujących rozmiarów pamięci podręcznej: 0 = 250 MB, 1 = 1 GB, 2 = 2,5 GB, 3 = 6 GB, 4 = 13 GB, 5 = 26 GB, 6 = 53 GB
+Szablon definiuje wartości, które są dozwolone dla tego parametru (0, 1, 2, 3, 4, 5 lub 6) i przypisuje wartość domyślną (0), jeśli nie określono wartości. Tych dwóch liczb odnoszą się do następujących rozmiarów pamięci podręcznej: 0 = 250 MB, 1 = 1 GB, 2 = 2,5 GB, 3 = 6 GB, 4 = 13 GB, 5 = 26 GB, 6 = 53 GB
 

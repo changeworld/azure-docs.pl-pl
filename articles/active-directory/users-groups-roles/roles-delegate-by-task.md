@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: b4704e9f078b248ef1835babb3b63c378b011c4e
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: bd63e8379051864a19c473779625a925446185f2
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516244"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445025"
 ---
 # <a name="administrator-roles-by-identity-task-in-azure-active-directory"></a>Role administratorów przez zadanie tożsamości w usłudze Azure Active Directory
 
@@ -107,7 +107,7 @@ Przeczytaj całą konfigurację | Odczytywanie katalogów | Domyślna rola użyt
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
 Tworzenie wystąpienia usługi Azure AD Domain Services | Administrator globalny | 
-Wykonać wszystkie usługi Azure AD Domain Services zadania | Grupy Administratorzy kontrolera domeny usługi AD Azure ([dokumentacji](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-domain#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
+Wykonywanie wszystkich zadań usługi Azure AD Domain Services | Grupy Administratorzy kontrolera domeny usługi AD Azure ([dokumentacji](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-domain#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
 Przeczytaj całą konfigurację | Czytnika w subskrypcji platformy Azure zawierającej usługi AD DS | 
 
 ## <a name="devices"></a>Urządzenia
@@ -147,7 +147,7 @@ Przypisywanie licencji | Administrator kont użytkowników |
 Utwórz grupę | Administrator kont użytkowników | 
 Tworzenie, aktualizowanie lub usuwanie przeglądu dostępu grupy lub aplikacji | Administrator kont użytkowników | 
 Zarządzanie wygasaniem grupy | Administrator kont użytkowników | 
-Zarządzenie ustawieniami grup | Administrator kont użytkowników | 
+Zarządzenie ustawieniami grup | Administrator globalny | 
 Przeczytaj całą konfigurację (z wyjątkiem ukrytych członkostwa) | Odczytywanie katalogów | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Odczytuj informacje o ukrytym członkostwie | Członek grupy | Właściciel grupy, hasło administratora, administrator programu Exchange, administratora programu SharePoint, zespoły administratora, administrator kont użytkowników
 Przeczytaj członkostwa w grupach z ukrytym członkostwie | Administrator pomocy technicznej | Administrator kont użytkowników, administrator zespołów
@@ -226,7 +226,7 @@ Odczytaj stan serwera | Administrator globalny |
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
 Zarządzaj dostawcami tożsamości | Administrator globalny | 
-Zarządzaj ustawieniami | Administrator globalny | 
+Zarządzanie ustawieniami | Administrator globalny | 
 Zarządzaj warunkami użytkowania | Administrator globalny | 
 Przeczytaj całą konfigurację | Administrator globalny | 
 

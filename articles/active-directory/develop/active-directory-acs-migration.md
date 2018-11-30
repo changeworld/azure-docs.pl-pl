@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: da114cc343d04165d5a6a2137aeb2b675258230a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 805270fa4cc051929ecb1362f2d3cd4455a17a60
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015336"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423385"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Instrukcje: Migrowanie z usługi kontroli dostępu na platformie Azure
 
@@ -113,7 +113,7 @@ Od listopada 2017 r. wszystkie składniki kontroli dostępu są w pełni obsług
 
 Oto harmonogram wycofano składniki kontroli dostępu:
 
-- **Listopad 2017**: Administrator usługi Azure AD występują w klasycznej witrynie Azure portal [została wycofana](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). W tym momencie zarządzanie przestrzenią nazw kontroli dostępu jest dostępna na nowego, dedykowanego adresu URL: `http://manage.windowsazure.com?restoreClassic=true`. Użyj tego adresu URl, aby wyświetlić swoje istniejące obszary nazw, włączanie i wyłączanie przestrzenie nazw i można usunąć przestrzeni nazw, jeśli zdecydujesz się.
+- **Listopad 2017**: Administrator usługi Azure AD występują w klasycznej witrynie Azure portal [została wycofana](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). W tym momencie zarządzanie przestrzenią nazw kontroli dostępu jest dostępna na nowego, dedykowanego adresu URL: `https://manage.windowsazure.com?restoreClassic=true`. Użyj tego adresu URl, aby wyświetlić swoje istniejące obszary nazw, włączanie i wyłączanie przestrzenie nazw i można usunąć przestrzeni nazw, jeśli zdecydujesz się.
 - **2 kwietnia 2018 r.**: klasyczny portal Azure całkowicie został wycofany, co oznacza, zarządzanie przestrzenią nazw kontroli dostępu nie jest już dostępna za pośrednictwem dowolnego adresu URL. W tym momencie nie można wyłączyć lub włączyć, usuń lub wyliczanie przestrzeniami nazw usługi Access Control. Jednak, w portalu zarządzania kontroli dostępu jest w pełni funkcjonalne i znajduje się w `https://\<namespace\>.accesscontrol.windows.net`. Wszystkie inne składniki kontroli dostępu w dalszym ciągu działać normalnie.
 - **7 listopada 2018**: kontrola dostępu do wszystkich składników stałe są zamykane. W tym portalu zarządzania kontroli dostępu, Usługa zarządzania, usługi STS i aparat reguł przekształcania tokenu. W tym momencie wszelkie żądania wysyłane do kontroli dostępu (znajdujący się w \<przestrzeni nazw\>. accesscontrol.windows.net) się nie powieść. Użytkownik powinien zostały zmigrowane wszystkie istniejące aplikacje i usługi do innych technologii również przed upływem wskazanego terminu.
 
@@ -139,7 +139,7 @@ Każda usługa chmury firmy Microsoft, który akceptuje tokeny wystawione przez 
 | Azure Backup | [Uaktualnienie agenta usługi Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
 
 <!-- Dynamics CRM: Migrate to new SDK, Dynamics team handling privately -->
-<!-- Azure RemoteApp deprecated in favor of Citrix: http://www.zdnet.com/article/microsoft-to-drop-azure-remoteapp-in-favor-of-citrix-remoting-technologies/ -->
+<!-- Azure RemoteApp deprecated in favor of Citrix: https://www.zdnet.com/article/microsoft-to-drop-azure-remoteapp-in-favor-of-citrix-remoting-technologies/ -->
 <!-- Exchange push notifications are moving, customers don't need to move -->
 <!-- Retail federation services are moving, customers don't need to move -->
 <!-- Azure StorSimple: TODO -->

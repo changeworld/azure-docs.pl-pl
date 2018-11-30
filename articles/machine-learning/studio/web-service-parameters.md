@@ -1,5 +1,5 @@
 ---
-title: Użyj usługi Azure Machine Learning parametry usługi sieci Web | Dokumentacja firmy Microsoft
+title: Korzystanie z parametrów usług sieci web Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Jak używać parametry usługi sieci Web do programu Azure Machine Learning, aby zmodyfikować zachowanie modelu podczas uzyskiwania dostępu do usługi sieci web.
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 34ae252ff2c37a6e4e9f90155c4fda79b81e29a2
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0e8a1a4bb90f935bf3890bd803b9375d10261aa7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264339"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312014"
 ---
-# <a name="use-azure-machine-learning-web-service-parameters"></a>Używanie parametrów usługi sieci Web Azure Machine Learning
+# <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Korzystanie z parametrów usług sieci web Azure Machine Learning Studio
 Usługi sieci web Azure Machine Learning jest tworzony przez opublikowanie eksperyment, który zawiera moduły z konfigurowalne parametry. W niektórych przypadkach można zmienić zachowanie modułu, gdy jest uruchomiona usługa sieci web. *Parametry usługi w sieci Web* pozwalają wykonać to zadanie. 
 
 Typowym przykładem jest konfigurowanie [importu danych] [ reader] modułu, aby określić użytkownika opublikowanej usługi sieci web z innym źródłem danych podczas uzyskiwania dostępu do usługi sieci web. Lub konfigurowanie [Eksport danych] [ writer] modułu, aby można określić inną lokalizację docelową. Niektóre inne przykłady Zmienianie liczby bitów dla [Tworzenie skrótu funkcji] [ feature-hashing] modułu lub liczba żądane funkcje [na podstawie filtru wybór funkcji] [ filter-based-feature-selection] modułu. 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/20/2018
 ms.author: amitsriva
-ms.openlocfilehash: 3163d4d61dba958cdf71dd0470b943bba69b0191
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d2f3c2ba6849540f90117ef127e25030ff56b569
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237201"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427169"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Kondycja zaplecza, dzienniki diagnostyczne i metryki dla usługi Application Gateway
 
@@ -95,7 +95,7 @@ Poniższy fragment kodu przedstawia przykład odpowiedzi:
 
 ## <a name="diagnostic-logging"></a>Dzienniki diagnostyczne
 
-Różne typy dzienników platformy Azure umożliwia zarządzanie i rozwiązywanie problemów z bram application Gateway. Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Wszystkie dzienniki można wyodrębnić z usługi Azure Blob storage i wyświetlane w różnych narzędzi, takich jak [usługi Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md), Excel i Power BI. Możesz dowiedzieć się więcej o różnych typach dzienniki z następującej listy:
+Różne typy dzienników platformy Azure umożliwia zarządzanie i rozwiązywanie problemów z bram application Gateway. Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Wszystkie dzienniki można wyodrębnić z usługi Azure Blob storage i wyświetlane w różnych narzędzi, takich jak [usługi Log Analytics](../azure-monitor/insights/azure-networking-analytics.md), Excel i Power BI. Możesz dowiedzieć się więcej o różnych typach dzienniki z następującej listy:
 
 * **Dziennik aktywności**: możesz użyć [Dzienniki aktywności platformy Azure](../monitoring-and-diagnostics/insights-debugging-with-events.md) (znanego wcześniej pod nazwą operacyjne dzienniki i dzienników inspekcji) aby wyświetlić wszystkie operacje, które są przesyłane do Twojej subskrypcji platformy Azure i ich stan. Wpisy dziennika aktywności są zbierane domyślnie i można je wyświetlać w witrynie Azure Portal.
 * **Dziennik dostępu**: ten dziennik służy do wyświetlania wzorce dostępu do bramy aplikacji i analizowania ważne informacje o IP obiektu wywołującego, żądany adres URL, opóźnienie odpowiedzi, kod powrotny i bajtów i pomniejszać. Dziennik dostępu są gromadzone co 300 sekund. Ten dziennik zawiera jeden rekord dla każdego wystąpienia bramy aplikacji. Wystąpienia bramy aplikacji można zidentyfikować za pomocą właściwości identyfikator wystąpienia.
@@ -303,7 +303,7 @@ Dane dziennika aktywności można wyświetlać i analizować przy użyciu dowoln
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>Wyświetlanie i analizowanie dostępu, wydajność i dzienniki zapory
 
-Azure [usługi Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) może zbierać pliki liczników i dziennik zdarzeń z konta usługi Blob storage. Obejmuje ona wizualizacje oraz zaawansowane możliwości wyszukiwania na potrzeby analizowania dzienników.
+Azure [usługi Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) może zbierać pliki liczników i dziennik zdarzeń z konta usługi Blob storage. Obejmuje ona wizualizacje oraz zaawansowane możliwości wyszukiwania na potrzeby analizowania dzienników.
 
 Ponadto możesz połączyć się z kontem magazynu i pobrać wpisy dziennika JSON dotyczące dostępu i wydajności. Po pobraniu plików JSON możesz je przekonwertować do formatu CSV i wyświetlać w programie Excel, usłudze Power BI lub innym narzędziu do wizualizacji danych.
 
@@ -379,7 +379,7 @@ Aby dowiedzieć się więcej na temat elementów webhook i jak ich używać z al
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Wizualizuj dzienniki zdarzeń i liczników przy użyciu [usługi Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md).
+* Wizualizuj dzienniki zdarzeń i liczników przy użyciu [usługi Log Analytics](../azure-monitor/insights/azure-networking-analytics.md).
 * [Wizualizuj dziennik aktywności platformy Azure z usługą Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) wpis w blogu.
 * [Wyświetlanie i analizowanie dzienników aktywności platformy Azure w usłudze Power BI i nie tylko](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) wpis w blogu.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 788ce1f2543b9ed76d718cf01d28292f49594414
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 62bc6507e4b56c9df31a561f7677907486b0d562
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037358"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421593"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Prześlij certyfikat usługi Azure Service Management
 Certyfikaty zarządzania umożliwiają uwierzytelnianie przy użyciu klasycznego modelu wdrażania udostępnianych przez platformę Azure. Wiele programów i narzędzi (takich jak Visual Studio lub zestawu SDK platformy Azure) Automatyzuj Konfigurowanie i wdrażanie różnych usług platformy Azure przy użyciu funkcji tych certyfikatów. 
@@ -38,7 +38,7 @@ Można również użyć [usługi Azure Active Directory](https://azure.microsoft
 ## <a name="upload-a-management-certificate"></a>Przekazywanie certyfikatu zarządzania
 Po utworzeniu utworzono certyfikat zarządzania, (plik cer z kluczem publicznym) można przesłać go do portalu. Jeśli certyfikat jest dostępny w portalu, każda osoba mająca zgodnego certyfikatu (klucz prywatny) łączenie się za pośrednictwem interfejsu API zarządzania i dostępu do zasobów dla skojarzonej subskrypcji.
 
-1. Zaloguj się do witryny [Azure Portal](http://portal.azure.com).
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 2. Kliknij przycisk **wszystkich usług** na dolną listę usług platformy Azure, następnie wybierz pozycję **subskrypcje** w _ogólne_ grupy usługi.
 
     ![Menu subskrypcja](./media/azure-api-management-certs/subscriptions_menu.png)

@@ -10,12 +10,12 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 5c31bcfaecb956bf0168a1485f3ee0fa985b9ceb
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 533e8b30bf59010f71df477b96b5441c83c34be7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852524"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307112"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Szybki Start: Wysłanie zapytania do lokalnych firm interfejs API wyszukiwania Bing za pomocą języka Java
 
@@ -27,7 +27,7 @@ Ta przykładowa aplikacja pobiera dane lokalne odpowiedzi z interfejsu API dla z
 
 * [Kit(JDK) programowania w języku Java](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-Wymagane jest [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do interfejsów API wyszukiwania Bing. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Konieczne będzie klucz dostępu podany przy wywołaniu metody Aktywuj bezpłatną wersję próbną.
+Wymagane jest [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do interfejsów API wyszukiwania Bing. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Konieczne będzie klucz dostępu podany przy wywołaniu metody Aktywuj bezpłatną wersję próbną.  Zobacz też [usług Cognitive Services cennik — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 Tej przykładowej aplikacji pobiera dane odpowiedzi lokalnego z zapytania dla *hotelu w Bellevue*.
 
@@ -37,9 +37,9 @@ Poniższy kod tworzy `WebRequest`, ustawia nagłówek klucza dostępu i dodaje c
 
 ````
     // construct URL of search request (endpoint + query string)
-     URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + "appid=AEA845921DC03F506DC317A90EDDBF33074523F7&market=en-us");
+     URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + &mkt=en-us");
     HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
-    //connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+    connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
 
     // receive JSON body
     InputStream stream = connection.getInputStream();
@@ -94,16 +94,15 @@ public class LocalSearchCls {
         static String subscriptionKey = "YOUR-ACCESS-KEY";
 
         static String host = "https://api.cognitive.microsoft.com/bing";
-        static String path = "/v7.0/search";
+        static String path = "/v7.0/localbusinesses/search";
 
         static String searchTerm = "Hotel in Bellevue";
 
         public static SearchResults SearchLocal (String searchQuery) throws Exception {
             // construct URL of search request (endpoint + query string)
-            URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + 
-                         "&appid=" + subscriptionKey + "&market=en-us");
+            URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + "&mkt=en-us");
             HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
-            //connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+            connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
 
             // receive JSON body
             InputStream stream = connection.getInputStream();

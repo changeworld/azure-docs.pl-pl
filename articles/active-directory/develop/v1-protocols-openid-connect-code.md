@@ -17,16 +17,16 @@ ms.date: 04/17/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a830527f65cdbd485ef57ea43e4564363f3ca98b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3b60a659700b1e464f4d8f70516a2ceaa0f08b6b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967765"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423749"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autoryzowanie dostępu do aplikacji sieci web przy użyciu protokołu OpenID Connect i Azure Active Directory
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) to warstwa proste tożsamości korzystających z protokołu OAuth 2.0. OAuth 2.0 definiuje mechanizmy, aby uzyskiwał i wykorzystywał [ **tokeny dostępu** ](access-tokens.md) dostęp do chronionych zasobów, ale ich nie definiują standardowych metod w celu zapewnienia informacji o tożsamości. OpenID Connect uwierzytelniania są implementowane jako rozszerzenie proces autoryzacji OAuth 2.0. Zawiera informacje o użytkowniku w formie [ `id_token` ](id-tokens.md) ulec weryfikuje tożsamość użytkownika, a także podstawowych informacji o profilu użytkownika.
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) to warstwa proste tożsamości korzystających z protokołu OAuth 2.0. OAuth 2.0 definiuje mechanizmy, aby uzyskiwał i wykorzystywał [ **tokeny dostępu** ](access-tokens.md) dostęp do chronionych zasobów, ale ich nie definiują standardowych metod w celu zapewnienia informacji o tożsamości. OpenID Connect uwierzytelniania są implementowane jako rozszerzenie proces autoryzacji OAuth 2.0. Zawiera informacje o użytkowniku w formie [ `id_token` ](id-tokens.md) ulec weryfikuje tożsamość użytkownika, a także podstawowych informacji o profilu użytkownika.
 
 OpenID Connect jest nasze zalecenie, jeśli tworzysz aplikację internetową, która jest przechowywana na serwerze i dostępne za pośrednictwem przeglądarki.
 
@@ -39,7 +39,7 @@ Najbardziej podstawowa przepływ logowania zawiera następujące czynności — 
 
 ![OpenId Connect przepływ uwierzytelniania](./media/v1-protocols-openid-connect-code/active-directory-oauth-code-flow-web-app.png)
 
-## <a name="openid-connect-metadata-document"></a>Dokument metadanych OpenID Connect
+## <a name="openid-connect-metadata-document"></a>Dokument metadanych protokołu OpenID Connect
 
 OpenID Connect zawiera opis dokumentu metadanych, który zawiera większość informacji wymaganych dla aplikacji do wykonywania logowania. Obejmuje to informacje, takie jak adresy URL do użycia i lokalizację usługi publiczne klucze podpisywania. Dokument metadanych OpenID Connect znajduje się w temacie:
 
@@ -96,7 +96,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Identyfikator jednorazowy |wymagane |Wartości zawarte w żądaniu wygenerowane przez aplikację, która znajduje się w wynikowym `id_token` jako oświadczenia. Aplikacja może zweryfikować tę wartość, aby uniknąć powtarzania tokenu ataków. Wartość jest zazwyczaj losowy unikatowy ciąg lub identyfikator GUID, który może służyć do identyfikowania pochodzenia żądania. |
 | redirect_uri |Zalecane |Redirect_uri aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Dokładnie musi odpowiadać jednej z redirect_uris, zarejestrowanych w portalu, z wyjątkiem musi być zakodowane w adresie url. |
 | response_mode |opcjonalne |Określa metodę, które mają być używane do wysyłania wynikowy authorization_code wróć do aplikacji. Obsługiwane wartości to `form_post` dla *HTTP post formularza* i `fragment` dla *fragmentu adresu URL*. Dla aplikacji sieci web, zaleca się używanie `response_mode=form_post` zapewnienie najbardziej bezpieczny transfer tokenów do aplikacji. Ustawieniem domyślnym dla dowolnego przepływu, w tym id_token jest `fragment`.|
-| state |Zalecane |Wartość uwzględnione w żądaniu, który jest zwracany w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, który chcesz. Losowo generowany unikatową wartość jest zwykle używany podczas [zapobieganie atakom na fałszerstwo żądania międzywitrynowego](http://tools.ietf.org/html/rfc6749#section-10.12). Stan również jest używany do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widoku, które znajdowały się w. |
+| state |Zalecane |Wartość uwzględnione w żądaniu, który jest zwracany w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, który chcesz. Losowo generowany unikatową wartość jest zwykle używany podczas [zapobieganie atakom na fałszerstwo żądania międzywitrynowego](https://tools.ietf.org/html/rfc6749#section-10.12). Stan również jest używany do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widoku, które znajdowały się w. |
 | wiersz |opcjonalne |Wskazuje typ interakcji z użytkownikiem, który jest wymagany. Obecnie jedyne prawidłowe wartości to "login", "none" i "". `prompt=login` Wymusza na użytkowniku, aby wprowadzić swoje poświadczenia w tym żądaniu Negacja logowania jednokrotnego. `prompt=none` jest przeciwieństwem — zapewnia, że użytkownik nie zobaczy wszystkie interaktywne monity w inny sposób. Jeśli żądanie nie można ukończyć w trybie dyskretnym za pomocą logowania jednokrotnego, punkt końcowy zwraca błąd. `prompt=consent` Wyzwalacze uwierzytelniania OAuth zgoda okna dialogowego po użytkownik się zaloguje, monitem o nadanie uprawnień do aplikacji. |
 | login_hint |opcjonalne |Można wstępnie wypełnić pola Adres e-mail/nazwy użytkownika strony logowania dla użytkownika, jeśli znasz swoją nazwę użytkownika, wcześniej. Aplikacje często tego parametru należy użyć podczas ponownego uwierzytelniania, mających już wyodrębnione nazwy użytkownika z poprzedniego logowania za pomocą `preferred_username` oświadczenia. |
 
@@ -117,7 +117,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 | Parametr | Opis |
 | --- | --- |
 | id_token |`id_token` Żądany przez aplikację. Możesz użyć `id_token` do zweryfikowania tożsamości użytkownika i rozpocząć sesję z użytkownikiem. |
-| state |Wartość uwzględnione w żądaniu, która jest także zwracany w odpowiedzi tokenu. Losowo generowany unikatową wartość jest zwykle używany podczas [zapobieganie atakom na fałszerstwo żądania międzywitrynowego](http://tools.ietf.org/html/rfc6749#section-10.12). Stan również jest używany do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widoku, które znajdowały się w. |
+| state |Wartość uwzględnione w żądaniu, która jest także zwracany w odpowiedzi tokenu. Losowo generowany unikatową wartość jest zwykle używany podczas [zapobieganie atakom na fałszerstwo żądania międzywitrynowego](https://tools.ietf.org/html/rfc6749#section-10.12). Stan również jest używany do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widoku, które znajdowały się w. |
 
 ### <a name="error-response"></a>Odpowiedzi na błąd
 

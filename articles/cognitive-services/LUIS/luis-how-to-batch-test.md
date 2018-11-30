@@ -10,17 +10,19 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: b4c58a13c8b66add8ebd7e535ecac9d7b0f1075b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1560b8e574b0932e258353648c73f030ef19d314
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032125"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333500"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Testowanie za pomocą zestawu wypowiedzi przykład usługi Batch
+
  Testowanie usługi Batch jest kompleksowe testu, bieżące uczonego modelu do pomiaru jego wydajności w usługi LUIS. 
 
 <a name="batch-testing"></a>
+
 ## <a name="import-a-dataset-file-for-batch-testing"></a>Importuj plik zestawu danych do testowania usługi batch
 
 1. Wybierz **testu** w górnym pasku, a następnie wybierz pozycję **Batch testowania panelu**.
@@ -36,6 +38,7 @@ ms.locfileid: "47032125"
 4. Wybierz pozycję **Done** (Gotowe). Plik zestawu danych zostanie dodany.
 
 ## <a name="run-rename-export-or-delete-dataset"></a>Uruchom, zmiana nazwy, eksportowanie lub usuwanie zestawu danych
+
 Aby uruchomić, Zmień nazwę, wyeksportować lub usunąć zestaw danych, użyj wielokropka (***...*** ) przycisk na końcu wiersza zestawu danych.
 
 ![Akcje zestawu danych](./media/luis-how-to-batch-test/batch-testing-options.png)
@@ -55,7 +58,9 @@ Do pobrania zestaw danych jest tego samego pliku, który został przekazany do t
 |![Aby rozpocząć testowanie ikony](./media/luis-how-to-batch-test/batch-test-result-blue.png)|Test jest gotowy do uruchomienia.|
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
+
 ## <a name="view-batch-test-results"></a>Wyświetl wyniki testu dla usługi batch 
+
 Aby przejrzeć wyniki testów usługi batch, wybrać **wyniki**.
 
 ![Wyniki testu usługi Batch](./media/luis-how-to-batch-test/run-test-results.png)
@@ -64,6 +69,7 @@ Aby przejrzeć wyniki testów usługi batch, wybrać **wyniki**.
 
 
 <a name="filter-chart-results-by-intent-or-entity"></a>  
+
 ## <a name="filter-chart-results"></a>Filtruj wyniki na wykresie
 
 Aby filtrować wykres według określonych przeznaczenie lub jednostki, wybierz przeznaczenie lub jednostki w panelu filtrowania po prawej stronie. Na wykresie, zgodnie z wybraną aktualizację punktów danych oraz ich dystrybucji. 
@@ -71,6 +77,7 @@ Aby filtrować wykres według określonych przeznaczenie lub jednostki, wybierz 
 ![Wynik testu wizualizowany usługi Batch](./media/luis-how-to-batch-test/filter-by-entity.png) 
 
 ## <a name="view-single-point-utterance-data"></a>Wyświetlanie wypowiedź pojedynczym punktem danych
+
 Na wykresie umieść kursor nad punktem danych, aby zobaczyć wynik pewności jej prognozy. Wybierz punkt danych, aby pobrać jego odpowiedniego wypowiedź na liście wypowiedzi w dolnej części strony. 
 
 ![Wybrane wypowiedź](./media/luis-how-to-batch-test/selected-utterance.png)
@@ -78,7 +85,9 @@ Na wykresie umieść kursor nad punktem danych, aby zobaczyć wynik pewności je
 
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
+
 ## <a name="view-section-data"></a>Wyświetlanie części danych
+
 Na wykresie czterech części wybierz nazwę sekcji, takich jak **fałszywie dodatnie** w prawym górnym rogu wykresu. Pod wykresem wszystkie wypowiedzi w tej sekcji są wyświetlane poniżej wykresu na liście. 
 
 ![Wybrane wypowiedzi przez sekcję](./media/luis-how-to-batch-test/selected-utterances-by-section.png)

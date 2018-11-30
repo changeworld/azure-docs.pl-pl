@@ -1,5 +1,5 @@
 ---
-title: Ponowne szkolenie klasycznej usługi sieci web | Dokumentacja firmy Microsoft
+title: Ponowne szkolenie klasycznej usługi sieci web - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak programowe ponowne trenowanie modelu i zaktualizować usługę sieci web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: bd8fb59390bc54e5819183d13f16a557d62ec7ce
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e94fa4b6382a4672e5763b382a22fb812991cb03
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52260753"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308469"
 ---
 # <a name="retrain-a-classic-web-service"></a>Ponowne szkolenie klasycznej usługi internetowej
 Predykcyjne wdrożonej usługi sieci Web jest domyślnego punktu końcowego oceniania. Domyślne punkty końcowe są synchronizowane z oryginalnego szkolenia i oceniania eksperymentów, a w związku z tym nie można zastąpić uczonego modelu dla domyślnego punktu końcowego. Doskonalenie usługi sieci web, należy dodać nowy punkt końcowy usługi sieci web. 

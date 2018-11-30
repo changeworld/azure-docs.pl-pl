@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: c035ef1a79cde7c594c66964052c0653c5c709d9
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: ae1373901ca22b39cf99173ae2a9280128491522
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377976"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313829"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Szybki Start: Wstrzymywanie i wznawianie zasobów obliczeniowych w usłudze Azure SQL Data Warehouse przy użyciu programu PowerShell
 Użyj programu PowerShell wstrzymywanie zasobów obliczeniowych, w usłudze Azure SQL Data Warehouse w celu obniżenia kosztów. [Wznowić operacje obliczeniowe](sql-data-warehouse-manage-compute-overview.md) gdy wszystko będzie gotowe do użycia w magazynie danych.
@@ -42,10 +42,10 @@ Aby zobaczyć, której subskrypcji używasz, uruchom polecenie [Get-AzureRmSubsc
 Get-AzureRmSubscription
 ```
 
-Jeśli musisz użyć subskrypcji innej niż domyślna, uruchom polecenie [Select-AzureRmSubscription](/powershell/module/azurerm.profile/select-azurermsubscription).
+Jeśli musisz użyć innej subskrypcji niż domyślna, uruchom [Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext).
 
 ```powershell
-Select-AzureRmSubscription -SubscriptionName "MySubscription"
+Set-AzureRmContext -SubscriptionName "MySubscription"
 ```
 
 ## <a name="look-up-data-warehouse-information"></a>Wyszukiwanie informacji w magazynie danych

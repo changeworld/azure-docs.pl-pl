@@ -1,5 +1,5 @@
 ---
-title: Ponowne szkolenie modelu uczenia maszynowego | Dokumentacja firmy Microsoft
+title: Ponowne szkolenie modelu usługi Machine Learning Studio — Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak ponowne szkolenie modelu i zaktualizować usługę sieci Web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: eea04b93349311cca6f88c10ddaf9c1b47828558
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 1f2505eda232c518ccb24b32fad91fb36dd11b01
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262809"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317929"
 ---
-# <a name="retrain-a-machine-learning-model"></a>Ponowne szkolenie modelu uczenia maszynowego
+# <a name="retrain-an-azure-machine-learning-studio-model"></a>Ponowne szkolenie modelu usługi Azure Machine Learning Studio
 W ramach procesu operacjonalizacji modeli uczenia maszynowego w usłudze Azure Machine Learning model jest uczony i zapisany. Możesz następnie użyć go do utworzenia predykcyjne usługi sieci Web. Usługi sieci Web mogą być następnie używane w witrynach sieci web, pulpity nawigacyjne i aplikacje mobilne. 
 
 Modele utworzone za pomocą usługi Machine Learning zwykle nie są statyczne. Nowe dane staje się dostępny, lub gdy konsumenta interfejsu API ma swoje własne dane modelu musi być retrained. 

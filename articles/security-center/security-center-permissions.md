@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 42220a94eb0d0259b8b410e7343ffbfe09e8bfa5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e853ea6d05585fa764ad6e019a3a4390ed840263
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007862"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313443"
 ---
 # <a name="permissions-in-azure-security-center"></a>Uprawnienia w usłudze Azure Security Center
 
@@ -59,7 +59,7 @@ Poniższa tabela przedstawia role i dozwolonych akcji w usłudze Security Center
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule wyjaśniono, jak usługa Security Center korzysta z funkcji RBAC można przypisywać uprawnienia do użytkowników i określone akcje dozwolone dla każdej roli. Teraz, kiedy znasz już przypisań ról potrzebnych do monitorowania stanu zabezpieczeń wszystkich subskrypcji, edytować zasady zabezpieczeń i stosowania zaleceń, Dowiedz się, jak:
 
-- [Ustawianie zasad zabezpieczeń w usłudze Security Center](security-center-policies.md)
+- [Ustawianie zasad zabezpieczeń w usłudze Security Center](security-center-azure-policy.md)
 - [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Security Center](security-center-recommendations.md)
 - [Monitorowanie kondycji zabezpieczeń zasobów platformy Azure](security-center-monitoring.md)
 - [Zarządzanie alertami zabezpieczeń i reagowanie na nie w usłudze Security Center](security-center-managing-and-responding-alerts.md)

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 3e724301d235db49ab9332dedc877d7315460ecc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 91da40613e940b3dd577362273cf14e68d019f26
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256174"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442494"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności dla usługi Azure Cosmos DB i platformy .NET
 
@@ -104,7 +104,7 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
     Usługa Azure Cosmos DB żądania są wykonywane za pośrednictwem protokołu HTTPS REST podczas korzystania z trybu bramy i są poddawane domyślny limit połączeń dla hosta lub adres IP. Konieczne może być równa MaxConnections wyższa wartość (100-1000) tak, aby biblioteki klienta mogą wykorzystywać wiele jednoczesnych połączeń z usługą Azure Cosmos DB. W zestawie .NET SDK 1.8.0 lub nowszego wartością domyślną dla [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) to 50, a aby zmienić wartość, możesz ustawić [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx)wyższa wartość.   
 4. **Dostosowywanie zapytania równolegle do kolekcji podzielonych na partycje**
 
-     Zestaw SDK SQL platformy .NET w wersji 1.9.0 i nowszych zapytania równoległe pomocy technicznej, które umożliwiają kwerenda dotycząca kolekcji partycjonowanej równolegle (zobacz [Praca z zestawami SDK](sql-api-partition-data.md#working-with-the-azure-cosmos-db-sdks) i powiązane [przykłady kodu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) Aby uzyskać więcej informacji). Zapytania równoległe są przeznaczone do kwerendy opóźnienia i przepływności starają się ich odpowiedników szeregowe. Zapytania równoległe Podaj dwa parametry, których użytkowników można dostrajanie aby dopasowany do ich wymagań, () MaxDegreeOfParallelism: do kontroli maksymalną liczbę partycji następnie mogą być wyszukiwane in parallel oraz (b) MaxBufferedItemCount: można określić liczbę wcześniej pobrano wyniki.
+     Zestaw SDK SQL platformy .NET w wersji 1.9.0 i nowszych zapytania równoległe pomocy technicznej, które umożliwiają kwerenda dotycząca kolekcji partycjonowanej równolegle. Aby uzyskać więcej informacji, zobacz [przykłady kodu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) związanych z pracą z zestawami SDK. Zapytania równoległe są przeznaczone do kwerendy opóźnienia i przepływności starają się ich odpowiedników szeregowe. Zapytania równoległe Podaj dwa parametry, których użytkowników można dostrajanie aby dopasowany do ich wymagań, () MaxDegreeOfParallelism: do kontroli maksymalną liczbę partycji następnie mogą być wyszukiwane in parallel oraz (b) MaxBufferedItemCount: można określić liczbę wcześniej pobrano wyniki.
 
     () ***dostrajania MaxDegreeOfParallelism\:***  równoległe zapytanie działa, badając równocześnie wiele partycji. Jednak z poszczególnych zbieranie podzielonym na partycje jest pobierane dane szeregowo w odniesieniu do zapytania. Tak ustawienie MaxDegreeOfParallelism liczbę partycji przewiduje maksymalną prawdopodobieństwo osiągnięcia większość zapytań wydajna, inne warunki systemu pozostają takie same. Jeśli nie znasz liczbę partycji, możesz ustawić MaxDegreeOfParallelism dużą liczbą, a system wybiera co najmniej (liczba partycji, dane wejściowe podane przez użytkownika) jako MaxDegreeOfParallelism.
 
@@ -172,7 +172,7 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
     collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
     ```
 
-    Aby uzyskać więcej informacji, zobacz [zasady indeksowania usługi Azure Cosmos DB](indexing-policies.md).
+    Aby uzyskać więcej informacji, zobacz [zasady indeksowania usługi Azure Cosmos DB](index-policy.md).
 
 ## <a name="throughput"></a>Przepływność
 <a id="measure-rus"></a>

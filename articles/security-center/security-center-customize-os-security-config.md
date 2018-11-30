@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 11/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: 925f45f8d251882cfc8acf4b04902cea45451dd4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 91ee57ccd676d1d5e806e3f22eed3389d0fe5e73
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007267"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334197"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Dostosowywanie konfiguracji zabezpieczeń systemu operacyjnego w usłudze Azure Security Center (wersja zapoznawcza)
 
@@ -32,7 +32,7 @@ Usługa Azure Security Center monitoruje konfiguracji zabezpieczeń, stosując z
 Dostosowując reguły, organizacje można kontrolować, które opcje konfiguracji są bardziej odpowiednie dla swojego środowiska. Można ustawić zasady niestandardowe oceny i zastosować je na wszystkich komputerach stosowane w ramach subskrypcji.
 
 > [!NOTE]
-> - Obecnie Dostosowywanie konfiguracji zabezpieczeń systemu operacyjnego jest dostępny dla systemów operacyjnych w wersji 2008, 2008 R2, 2012 i 2012 R2 systemu Windows Server tylko.
+> - Obecnie Dostosowywanie konfiguracji zabezpieczeń systemu operacyjnego jest dostępny dla systemów operacyjnych w wersji 2008, 2008 R2, 2012, 2012 R2 i 2016 serwera systemu Windows tylko.
 > - Konfiguracja stosowana do wszystkich maszyn wirtualnych i komputerów, które są podłączone do wszystkich obszarów roboczych w ramach wybranej subskrypcji.
 > - Dostosowywanie konfiguracji zabezpieczeń systemu operacyjnego jest dostępna tylko w warstwie standardowa usługi Security Center.
 >
@@ -60,7 +60,7 @@ Aby dostosować domyślna konfiguracja zabezpieczeń systemu operacyjnego w usł
 3.  W wierszu subskrypcji, który chcesz dostosować, kliknij przycisk **edytować ustawienia**.
 
 4. Wybierz **edytowanie konfiguracji zabezpieczeń**.  
-    
+
     ![W oknie "Edytowanie konfiguracji zabezpieczeń"](media/security-center-customize-os-security-config/blade.png)
 
 5. Wykonaj kroki, aby pobrać, edytować i przekazać zmodyfikowany plik.

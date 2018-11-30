@@ -1,6 +1,6 @@
 ---
-title: Wyświetl zadania i zarządzać nimi tablicy wirtualnego StorSimple | Dokumentacja firmy Microsoft
-description: W tym artykule opisano na stronie zadań usługi Menedżer StorSimple urządzenia i jak z niego korzystać, aby śledzić najnowsze i bieżącego zadania dla tablicy wirtualnego StorSimple.
+title: Wyświetlanie zadań i zarządzanie nimi macierzy wirtualnej StorSimple | Dokumentacja firmy Microsoft
+description: W tym artykule opisano strona zadania usługi Menedżer urządzeń StorSimple i jak z niej korzystać, aby śledzić ostatnich i bieżących zadań dla rozwiązania StorSimple Virtual Array.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,55 +14,55 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
-ms.openlocfilehash: 3fd1c262a8ce94d8e98f2b066a8028d974b15b1d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: dbab2aaab2c12bef07748f54e5864d042f1c982a
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23927719"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333568"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>Użyj usługi Menedżer StorSimple urządzenia do wyświetlania zadań dla tablicy wirtualnego StorSimple
+# <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>Wyświetl zadania dla rozwiązania StorSimple Virtual Array przy użyciu usługi Menedżer urządzeń StorSimple
 ## <a name="overview"></a>Przegląd
-**Zadania** bloku udostępnia pojedynczy portal centralnej do przeglądania i zarządzania zadaniami, które są uruchamiane w tablicach wirtualnych, które są połączone z usługą Menedżera urządzeń StorSimple. Możesz wyświetlić zadania uruchomione, została zakończona i nie powiodło się dla wielu urządzeń wirtualnych. Wyniki są prezentowane w formie tabeli.
+**Zadań** bloku udostępnia pojedynczy Centralny portal do przeglądania i zarządzania zadaniami, które są uruchamiane w macierzy wirtualnych, które są podłączone do usługi Menedżer urządzeń StorSimple. Można wyświetlić uruchomiony, ukończone i zakończone niepowodzeniem zadania dla wielu urządzeń wirtualnych. Wyniki są prezentowane w formacie tabelarycznym.
 
-![Bloku zadań](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
+![Blok zadania](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
 
-Można szybko znaleźć zadania, które są zainteresowani przez filtrowanie w polach, takich jak:
+Możesz szybko znaleźć zadania, które są zainteresowani przez filtrowanie według pól, takich jak:
 
-* **Zakres czasu** — zadania mogą być filtrowane w oparciu o zakres dat i godzin.
-* **Urządzenia** — zadań są inicjowane na określonym urządzeniu połączona z usługą. Odfiltrowanych zadań następnie wyszczególniono w oparciu o następujące atrybuty:
+* **Zakres czasu** — zadania mogą być filtrowane zależnie od zakres dat i godzin.
+* **Urządzenia** — zadania są inicjowane na konkretnym urządzeniu połączoną z usługą. Następnie odfiltrowanych zadań wyszczególniono na podstawie następujących atrybutów:
   
-  * **Nazwa** — Nazwa zadania może być **wszystkie**, **kopii zapasowej**, **klonowania**, **awaryjnie**, **pobieranie aktualizacji**, lub **instalowania aktualizacji**.
-  * **Stan** — zadania mogą być **wszystkie**, **w toku**, **zakończyło się pomyślnie**, lub ****, lub **anulowane**.
-  * **Jednostka** — zadania może być skojarzony z woluminu, udziału lub urządzenia.
+  * **Nazwa** — Nazwa zadania może być **wszystkich**, **kopii zapasowej**, **klonowania**, **w trybie Failover**, **pobieranie aktualizacji**, lub **instalowania aktualizacji**.
+  * **Stan** — zadania mogą być **wszystkich**, **w toku**, **Powodzenie**, lub **nie powiodło się**, lub **anulowane**.
+  * **Jednostka** — zadania mogą być skojarzone z woluminu, udziału lub urządzenia.
   * **Urządzenie** — nazwa urządzenia, na którym zadanie zostało uruchomione.
-  * **Rozpoczęto w** — czas uruchomienia zadania.
+  * **Data rozpoczęcia** — czas uruchomienia zadania.
   * **Czas trwania** — czas trwania na zostało uruchomione zadanie.
-* **Stan** — możesz wyszukać wszystkie zadania uruchomione, zakończone lub nie powiodło się.
+* **Stan** — możesz wyszukać wszystkie zadania uruchomione, ukończone lub nie powiodło się.
 * **Typ zadania** — typ zadania mogą być wszystkie, tworzenia kopii zapasowych, przywracania, trybu failover, Pobierz aktualizacje lub instalowania aktualizacji.
 
 Lista zadań są odświeżane co 30 sekund.
 
 ## <a name="view-job-details"></a>Wyświetlanie szczegółów zadania
-Wykonaj poniższe kroki, aby wyświetlić szczegóły wszystkie zadania.
+Wykonaj poniższe kroki, aby wyświetlić szczegóły dowolnego zadania.
 
 #### <a name="to-view-job-details"></a>Aby wyświetlić szczegóły zadania
-1. Na **zadania** bloku wyświetlania zadań są zainteresowani, uruchamiając zapytanie o odpowiednie filtry. Można wyszukiwać zadania zakończone lub nie działają.
-2. Wybierz zadanie z tabelarycznej listę zadań.
+1. Na **zadań** bloku wyświetlania zadań, o których chcesz się dowiedzieć, uruchamiając zapytanie o odpowiednie filtry. Można wyszukiwać zadania zakończone lub nie działają.
+2. Wybierz zadanie z tabelarycznej listy zadań.
    
     ![Blok zadania](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
 3. W dolnej części strony kliknij **szczegóły**.
-4. W **szczegóły** okno dialogowe, można wyświetlić stan, szczegóły i statystyk czasu. Na poniższej ilustracji przedstawiono przykład **szczegóły zadania tworzenia kopii zapasowej** okno dialogowe.
+4. W **szczegóły** okno dialogowe, można wyświetlić stan, szczegółowe informacje i dane statystyczne czas. Na poniższej ilustracji przedstawiono przykład **szczegóły zadania kopii zapasowej** okno dialogowe.
    
     ![Szczegóły zadania](./media/storsimple-virtual-array-manage-jobs/ova-jobs-details.png)
 
-#### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>Błędy zadań, gdy maszyna wirtualna jest wstrzymana w funkcji hypervisor
-Gdy zadanie jest w postępu tablica wirtualnego StorSimple oraz urządzenia (udostępnione w funkcji hypervisor, maszyna wirtualna) jest wstrzymana na więcej niż 15 minut, zadanie nie powiedzie się. To jest z powodu czasu tablicy wirtualnego StorSimple są zsynchronizowane z czasem Microsoft Azure. 
+#### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>Niepowodzenia zadań, gdy maszyna wirtualna jest wstrzymana w funkcji hypervisor
+Gdy zadanie jest w toku na rozwiązania StorSimple Virtual Array i urządzenia (maszyna wirtualna aprowizowana w funkcji hypervisor) zostało wstrzymane dla więcej niż 15 minut, zadanie nie powiedzie się. To ze względu na czas rozwiązania StorSimple Virtual Array jest zsynchronizowany z czasem Microsoft Azure. 
 
-Zostanie wyświetlony następujący błąd: "Godzina na urządzeniu jest zsynchronizowany z czasem Microsoft Azure przez ponad 15 minut. Sprawdź, czy funkcja hypervisor i urządzenie, które czasy są zsynchronizowane z serwer NTP. Sprawdź, czy nie ma żadnych problemów łączności. Aby rozwiązać problemy z łącznością, uruchom testów diagnostycznych z lokalnej sieci web interfejsu użytkownika z urządzeniem wirtualnym."
+Zostanie wyświetlony następujący błąd: "czas urządzenia nie jest zsynchronizowany z czasem Microsoft Azure przez ponad 15 minut. Upewnij się, że funkcja hypervisor i urządzenia, czas są zsynchronizowane z serwerem NTP. Sprawdź, czy nie występują żadne problemy z łącznością. Aby rozwiązać problemy z łącznością, uruchom testy diagnostyczne z poziomu lokalnego internetowego interfejsu użytkownika urządzenia wirtualnego."
 
-Błędy te dotyczą zadań kopii zapasowych, przywracania, aktualizacji i pracy awaryjnej. Jeśli zainicjowaniu obsługi maszyny wirtualnej w funkcji Hyper-V, maszyny ostatecznie synchronizuje czas z funkcji hypervisor. Gdy tak się stanie, można ponownie uruchomić zadanie.
+Te błędy mają zastosowanie do zadania kopii zapasowej, przywracanie, aktualizacji i trybu failover. Jeśli maszyna wirtualna jest gotowa w funkcji Hyper-V, maszyny po pewnym czasie synchronizuje czas Twojej funkcji hypervisor. Gdy tak się stanie, możesz ponownie uruchomić zadanie.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Dowiedz się, jak używać lokalnego interfejsu użytkownika sieci web do administrowania tablica wirtualnego StorSimple](storsimple-ova-web-ui-admin.md).
+[Dowiedz się, jak używać lokalnego internetowego interfejsu użytkownika do administrowania rozwiązania StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
 

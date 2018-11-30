@@ -11,12 +11,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: orkostak
-ms.openlocfilehash: a3dadfc4257d43f9df1b93f5d486e5577b7889d6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: ad04976136fc8db04dbe52bf78bea49a9149e5db
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055315"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312701"
 ---
 # <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Indeksowanie w interfejsie API bazy danych MongoDB w usłudze Azure Cosmos DB
 
@@ -99,5 +99,5 @@ Poprzednie polecenie spowoduje usunięcie dowolnych dokumentów w kolekcji ```db
 Obecnie tworzenie indeksów unikatowych jest możliwe tylko wtedy, gdy kolekcja nie zawiera dokumentów. Popularne narzędzia migracji bazy danych MongoDB podejmują próby tworzenia indeksów unikatowych po zaimportowaniu danych. Aby obejść ten problem, zaleca się, aby użytkownicy ręcznie tworzyli odpowiednie kolekcje i indeksy unikatowe, zamiast pozwalać na to narzędziom do migracji (w przypadku narzędzia ```mongorestore``` to zachowanie jest osiągane poprzez użycie flagi --noIndexRestore w wierszu polecenia).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Jak usługa Azure Cosmos DB indeksuje dane?](../cosmos-db/indexing-policies.md)
+* [Jak usługa Azure Cosmos DB indeksuje dane?](../cosmos-db/index-policy.md)
 * [Automatyczne wygasanie danych w kolekcjach usługi Azure Cosmos DB przy użyciu czasu wygaśnięcia](../cosmos-db/time-to-live.md)

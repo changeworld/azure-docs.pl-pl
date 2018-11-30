@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4785f87515663831b1177c6c0958d3d965351797
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 45cf987d9af7b7dd0e8f05056b49ba56835603e7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996574"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313948"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Usługa Azure Machine Learning — często zadawane pytania
 
@@ -171,4 +171,4 @@ Nie, nowych usług nie nakładają żadnych ograniczeń danych. Istnieją jednak
 
 **Jaki jest związek między usługi Azure Machine Learning Microsoft Cognitive Toolkit?**
 
-[Microsoft Cognitive Toolkit](https://www.microsoft.com/cognitive-toolkit/) jest jednym z wielu platform obsługiwanych przez naszych nowych narzędzi i usług. Zestawu narzędzi Cognitive Toolkit to ujednolicone narzędzi uczenia głębokiego, która pozwala na wykorzystanie i łączyć popularne usługi machine learning modeli, w tym głębokie sieci neuronowe do przodu źródła danych, sieci Splotowe Sequence-Sequence oraz sieci. Aby uzyskać więcej informacji na temat zestawu narzędzi Microsoft Cognitive Toolkit, odwiedź stronę naszej [dokumentacji produktu](https://docs.microsoft.com/cognitive-toolkit/). 
+[Microsoft Cognitive Toolkit](https://docs.microsoft.com/cognitive-toolkit/) jest jednym z wielu platform obsługiwanych przez naszych nowych narzędzi i usług. Zestawu narzędzi Cognitive Toolkit to ujednolicone narzędzi uczenia głębokiego, która pozwala na wykorzystanie i łączyć popularne usługi machine learning modeli, w tym głębokie sieci neuronowe do przodu źródła danych, sieci Splotowe Sequence-Sequence oraz sieci. Aby uzyskać więcej informacji na temat zestawu narzędzi Microsoft Cognitive Toolkit, odwiedź stronę naszej [dokumentacji produktu](https://docs.microsoft.com/cognitive-toolkit/). 

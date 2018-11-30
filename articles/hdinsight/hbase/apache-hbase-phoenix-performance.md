@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: ff194ef7f5ae609eba5334eb5c66db02d660ab08
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8a67327497c96cba570d2ddb8c525bf5a60be790
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049635"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308222"
 ---
-# <a name="phoenix-performance-best-practices"></a>Najlepsze rozwiązania w zakresie wydajności dla rozwiązania Phoenix
+# <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix najlepsze rozwiązania w zakresie wydajności
 
-Najważniejszym aspektem wydajności Phoenix ma na celu optymalizację podstawowej bazy danych HBase. Phoenix tworzy na jego podstawie bazy danych HBase, który konwertuje zapytań SQL na operacje bazy danych HBase, takie jak skanowanie modelu opartego na danych relacyjnych. Projektowanie schematu tabeli, wybór i kolejność pól na klucz podstawowy i korzystanie z wszystkich indeksów wpłynąć na wydajność Phoenix.
+Najważniejszym aspektem [Apache Phoenix](https://phoenix.apache.org/) wydajność jest zoptymalizować bazowego [bazy danych Apache HBase](http://hbase.apache.org/). Phoenix tworzy na jego podstawie bazy danych HBase, który konwertuje zapytań SQL na operacje bazy danych HBase, takie jak skanowanie modelu opartego na danych relacyjnych. Projektowanie schematu tabeli, wybór i kolejność pól na klucz podstawowy i korzystanie z wszystkich indeksów wpłynąć na wydajność Phoenix.
 
 ## <a name="table-schema-design"></a>Projekt schematu tabeli
 
@@ -229,5 +229,5 @@ Aby uzyskać więcej informacji na ten temat i inne opcje, zobacz [gramatyki Pho
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Przewodnik dostosowywania rozwiązania Phoenix](https://phoenix.apache.org/tuning_guide.html)
+* [Przewodnik dostosowywania programu Apache Phoenix](https://phoenix.apache.org/tuning_guide.html)
 * [Indeksy pomocnicze](http://phoenix.apache.org/secondary_indexing.html)

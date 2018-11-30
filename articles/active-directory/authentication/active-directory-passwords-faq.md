@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 92f9732adadc4eb580d89f8a43cf76177450aeb7
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 50edabb395380c8b0185736205834dd65e47317f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160746"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425271"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Zarządzanie hasłami — często zadawane pytania
 
@@ -31,11 +31,11 @@ Tych często zadawanych Pytaniach jest podzielona na następujące sekcje:
 * [Pytania dotyczące raporty dotyczące zarządzania hasłami](#password-management-reports)
 * [Pytania dotyczące funkcji zapisywania zwrotnego haseł](#password-writeback)
 
-## <a name="password-reset-registration"></a>Rejestracja w resetowaniu haseł
+## <a name="password-reset-registration"></a>Rejestracja w funkcji resetowania haseł
 
 * **P: czy można Moi użytkownicy mogą zarejestrować swoje własne dane resetowania haseł?**
 
-  > **Odpowiedź:** tak. Tak długo, jak resetowania hasła jest włączona, i są one licencjonowane, użytkownicy mogą przejść do portalu rejestracji resetowania haseł (https://aka.ms/ssprsetup) zarejestrować swoich informacji uwierzytelniania. Użytkownicy mogą również rejestrować za pomocą panelu dostępu (http://myapps.microsoft.com). Aby zarejestrować się za pomocą panelu dostępu, muszą wybierz swój obraz profilu, wybierz pozycję **profilu**, a następnie wybierz pozycję **rejestracji resetowania haseł** opcji.
+  > **Odpowiedź:** tak. Tak długo, jak resetowania hasła jest włączona, i są one licencjonowane, użytkownicy mogą przejść do portalu rejestracji resetowania haseł (https://aka.ms/ssprsetup) zarejestrować swoich informacji uwierzytelniania. Użytkownicy mogą również rejestrować za pomocą panelu dostępu (https://myapps.microsoft.com). Aby zarejestrować się za pomocą panelu dostępu, muszą wybierz swój obraz profilu, wybierz pozycję **profilu**, a następnie wybierz pozycję **rejestracji resetowania haseł** opcji.
   >
   >
 * **Pyt.: Jeśli włączyć hasła Resetowanie dla grupy i zdecydować ją włączyć dla wszystkich moich użytkowników wymagane ponownie zarejestrować?**
@@ -170,7 +170,7 @@ Tych często zadawanych Pytaniach jest podzielona na następujące sekcje:
   >
 * **P: czy mogę skonfigurować Moje zasad, aby wymagać od użytkowników użyj pytań zabezpieczających w celu zresetowania, ale administratorów platformy Azure wydaje się, że można skonfigurować inaczej.**
 
-  > **Odp.:** jest to oczekiwane zachowanie. Firma Microsoft wymusza silne domyślne zasad resetowania haseł brama dwóch dla dowolnej roli administratora platformy Azure. Zapobiega to za pomocą pytań zabezpieczających przez administratorów. Można znaleźć więcej informacji na temat tych zasad w [zasady i ograniczenia w usłudze Azure Active Directory haseł](concept-sspr-policy.md) artykułu.
+  > **Odp.:** jest to oczekiwane zachowanie. Firma Microsoft wymusza silną domyślną zasadę resetowania hasła z użyciem dwóch bram dla dowolnej roli administratora platformy Azure. Zapobiega to za pomocą pytań zabezpieczających przez administratorów. Można znaleźć więcej informacji na temat tych zasad w [zasady i ograniczenia w usłudze Azure Active Directory haseł](concept-sspr-policy.md) artykułu.
   >
   >
 * **Pyt.: Jeśli użytkownik został zarejestrowany w więcej niż maksymalna liczba pytań wymaganych do zresetowania, jak są pytania zabezpieczające wybranych podczas resetowania?**

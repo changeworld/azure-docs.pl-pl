@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: 4e05d4ff9c090fac0242921e15ef16439d3ed27f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d2e7077e1196ab862d9f610f242fe30dde18ded4
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954453"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496881"
 ---
-# <a name="authorize-users-for-ambari-views"></a>Autoryzowanie użytkowników na potrzeby widoków Ambari
+# <a name="authorize-users-for-apache-ambari-views"></a>Autoryzowanie użytkowników na potrzeby widoków Ambari Apache
 
-[Pakiet zabezpieczeń przedsiębiorstwa (ESP) włączone klastry HDInsight](./domain-joined/apache-domain-joined-introduction.md) zapewniają możliwości przeznaczonych dla przedsiębiorstw, w tym uwierzytelniania opartego na usłudze Azure Active Directory. Możesz [Synchronizowanie nowych użytkowników](hdinsight-sync-aad-users-to-cluster.md) dodane do grup usługi Azure AD, które zostały dołączone do dostępu do klastra, pozwalając określonych wykonywać niektórych akcji. Praca z użytkowników, grup i uprawnień w Ambari jest obsługiwane zarówno w klastry HDInsight ESP, jak i w klastrach HDInsight w warstwie standardowa.
+[Pakiet zabezpieczeń przedsiębiorstwa (ESP) włączone klastry HDInsight](./domain-joined/apache-domain-joined-introduction.md) zapewniają możliwości przeznaczonych dla przedsiębiorstw, w tym uwierzytelniania opartego na usłudze Azure Active Directory. Możesz [Synchronizowanie nowych użytkowników](hdinsight-sync-aad-users-to-cluster.md) dodane do grup usługi Azure AD, które zostały dołączone do dostępu do klastra, pozwalając określonych wykonywać niektórych akcji. Praca z użytkowników, grup i uprawnień w [Apache Ambari](https://ambari.apache.org/) jest obsługiwana w przypadku klastrów HDInsight ESP i klastry HDInsight standard.
 
-Użytkownicy usługi Active Directory mogą logować się do węzłów klastra przy użyciu swoich poświadczeń domeny. One służy również swoich poświadczeń domeny do uwierzytelniania interakcje klastra za pomocą innych zatwierdzonych punktów końcowych, takich jak Hue, widoków Ambari, ODBC, JDBC, PowerShell i interfejsów API REST.
+Użytkownicy usługi Active Directory mogą logować się do węzłów klastra przy użyciu swoich poświadczeń domeny. Można też swoich poświadczeń domeny do uwierzytelniania interakcje klastra za pomocą innych zatwierdzonych punktów końcowych, takich jak [Hue](http://gethue.com/), widoków Ambari, ODBC, JDBC, PowerShell i interfejsów API REST.
 
 > [!WARNING]
 > Nie zmieniaj hasła strażnika Ambari (hdinsightwatchdog) w klastrze usługi HDInsight opartych na systemie Linux. Zmienianie hasła przerywa możliwość użyj akcji skryptu, lub wykonywać operacje skalowania na potrzeby klastra.
@@ -29,13 +29,13 @@ Jeśli jeszcze tego nie zrobiono, wykonaj [w instrukcjach](./domain-joined/apach
 
 ## <a name="access-the-ambari-management-page"></a>Dostęp do strony zarządzania Ambari
 
-Aby uzyskać dostęp do **strony zarządzania Ambari** na [Interfejsu sieci Web Ambari](hdinsight-hadoop-manage-ambari.md), przejdź do **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Wprowadź nazwę użytkownika administratora klastra i hasło określone podczas tworzenia klastra. Następnie na pulpicie nawigacyjnym narzędzia Ambari, wybierz pozycję **Zarządzanie Ambari** poniżej **administratora** menu:
+Aby uzyskać dostęp do **strony zarządzania Ambari** na [Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md), przejdź do **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Wprowadź nazwę użytkownika administratora klastra i hasło określone podczas tworzenia klastra. Następnie na pulpicie nawigacyjnym narzędzia Ambari, wybierz pozycję **Zarządzanie Ambari** poniżej **administratora** menu:
 
 ![Zarządzanie systemu Ambari](./media/hdinsight-authorize-users-to-ambari/manage-ambari.png)
 
-## <a name="grant-permissions-to-hive-views"></a>Udziel uprawnień do widoków programu Hive
+## <a name="grant-permissions-to-apache-hive-views"></a>Udziel uprawnień do widoków Apache Hive
 
-Ambari jest dostarczany z wystąpienia widoku dla gałęzi i platformie Tez, między innymi. Aby udzielić dostępu do co najmniej jednego wystąpienia z widoku Hive, przejdź do **strony zarządzania Ambari**.
+Ambari, który jest dostarczany za pomocą wystąpienia widoku dla [Apache Hive](https://hive.apache.org/) i [Apache TEZ](https://tez.apache.org/), między innymi. Aby udzielić dostępu do co najmniej jednego wystąpienia z widoku Hive, przejdź do **strony zarządzania Ambari**.
 
 1. Na stronie zarządzania wybierz **widoków** łącze w obszarze **widoków** nagłówek menu po lewej stronie.
 
@@ -72,9 +72,9 @@ Ambari jest dostarczany z wystąpienia widoku dla gałęzi i platformie Tez, mi�
 
 Dodawanie użytkowników bezpośrednio do widoku jest przydatne w przypadku, gdy chcesz przypisać uprawnienia dla użytkownika, aby użyć tego widoku, ale nie chcesz, aby być członkiem grupy, która ma dodatkowe uprawnienia. Aby zmniejszyć ilość czynności administracyjnych, może być prostsze przypisać uprawnienia do grup.
 
-## <a name="grant-permissions-to-tez-views"></a>Udziel uprawnień do widoków Tez
+## <a name="grant-permissions-to-apache-tez-views"></a>Udziel uprawnień do widoków Apache TEZ
 
-Wyświetl wystąpienia aplikacji Tez umożliwiają monitorowanie i debugowanie zadań tez przy wszystkich, przesłane przez zapytania programu Hive i Pig skryptów. Istnieje jeden domyślny Tez widoku wystąpienie tworzonego po zainicjowaniu obsługi klastra.
+[Apache TEZ](https://tez.apache.org/) Wyświetl wystąpienia użytkownicy mogą monitorować i debugowanie zadań tez przy wszystkich, przesłane przez [Apache Hive](https://hive.apache.org/) zapytań i [Apache Pig](https://pig.apache.org/) skryptów. Istnieje jeden domyślny Tez widoku wystąpienie tworzonego po zainicjowaniu obsługi klastra.
 
 Aby przypisać użytkowników i grup do wystąpienia widoku aplikacji Tez, rozwiń węzeł **TEZ** wiersza na stronie widoki, zgodnie z wcześniejszym opisem.
 
@@ -136,7 +136,7 @@ Firma Microsoft przypisano użytkowników domeny usługi Azure AD "hiveuser2" *u
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Konfigurowanie zasad usługi Hive HDInsight przy użyciu ESP](./domain-joined/apache-domain-joined-run-hive.md)
+* [Konfigurowanie zasad usługi Apache Hive HDInsight przy użyciu ESP](./domain-joined/apache-domain-joined-run-hive.md)
 * [Zarządzanie klastrami HDInsight ESP](./domain-joined/apache-domain-joined-manage.md)
-* [Korzystanie z widoku Hive z usługą Hadoop w HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
+* [Korzystanie z widoku Hive Apache przy użyciu technologii Apache Hadoop w HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [Synchronizowanie użytkowników usługi Azure AD do klastra](hdinsight-sync-aad-users-to-cluster.md)

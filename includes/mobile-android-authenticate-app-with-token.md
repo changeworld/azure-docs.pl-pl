@@ -1,12 +1,24 @@
-
-W poprzednim przykładzie pokazano standardowego logowania, która wymaga od klienta do kontaktowania się z zarówno dostawcy tożsamości, jak i zaplecza usługi Azure każdym uruchomieniu aplikacji. Ta metoda jest nieefektywne i może mieć problemy związane z użycia, jeśli wielu klientów próbuje jednocześnie uruchomiona aplikacja. Lepszym rozwiązaniem jest buforowanie token autoryzacji zwrócony przez usługę Azure, spróbuj użyć pierwsze przed użyciem opartej na dostawcy logowania.
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: crdun
+ms.openlocfilehash: deb94cab97bd9a402676cdc5c0239da8d07ed8b2
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52440333"
+---
+W poprzednim przykładzie pokazano standardowy logowania, która wymaga od klienta do kontaktowania się z dostawcy tożsamości i zaplecza usług platformy Azure przy każdym uruchomieniu aplikacji. Ta metoda jest nieefektywne i może mieć problemy związane z użycia, jeśli wielu klientów próbuje uruchomić aplikacji jednocześnie. Lepszym rozwiązaniem jest pamięci podręcznej tokenu autoryzacji zwracane przez usługę Azure, a następnie spróbuj użyć to najpierw przed rozpoczęciem korzystania z opartą na dostawcy logowania.
 
 > [!NOTE]
-> Może buforować token wystawiony przez zaplecza usługi Azure, niezależnie od tego, czy używasz zarządzanych przez klienta lub zarządzane przez usługę uwierzytelniania. W tym samouczku korzysta z zarządzanymi przez usługę uwierzytelniania.
+> Może buforować token wystawiony przez ten serwer zaplecza usługi platformy Azure, niezależnie od tego, czy używasz zarządzanych przez klienta lub zarządzane przez usługę uwierzytelniania. W tym samouczku korzysta z zarządzanego przez usługę uwierzytelniania.
 >
 >
 
-1. Otwórz plik ToDoActivity.java i dodaj następujące instrukcje importu:
+1. Otwórz pliku ToDoActivity.java i dodaj następujące instrukcje importu:
 
     ```java
     import android.content.Context;
@@ -35,10 +47,10 @@ W poprzednim przykładzie pokazano standardowego logowania, która wymaga od kli
     }
     ```
 
-    Ta metoda identyfikator użytkownika i tokenu są przechowywane w pliku preferencji, który jest oznaczony jako prywatny. Należy chronić dostęp do pamięci podręcznej, dzięki czemu inne aplikacje na urządzeniu nie mają dostępu do tokenu. Preferencje jest w trybie piaskownicy dla aplikacji. Jednak jeśli ktoś uzyska dostęp do urządzenia, istnieje możliwość, że mogą one uzyskać dostęp do pamięci podręcznej tokenu w inny sposób.
+    Ta metoda identyfikator użytkownika i token są przechowywane w pliku preferencji, który jest oznaczony prywatnych. Należy chronić dostęp do pamięci podręcznej, tak aby inne aplikacje na urządzeniu nie mają dostępu do tokenu. Preferencje jest w trybie piaskownicy, dla aplikacji. Jednak jeśli osoba uzyska dostęp do urządzenia, jest to możliwe, że może uzyskają dostęp do pamięci podręcznej tokenu w inny sposób.
 
    > [!NOTE]
-   > Można dodatkowo zabezpieczyć token z szyfrowaniem, jeśli token dostępu do danych jest uznawany za bardzo ważne, a ktoś może uzyskać dostępu do urządzenia. Całkowicie bezpieczna wykracza poza zakres tego samouczka, jednak i zależy od wymagań dotyczących zabezpieczeń.
+   > Można dodatkowo zabezpieczyć token z szyfrowaniem, jeśli token dostępu do danych jest uznawany za poufne, a ktoś może uzyskać dostęp do urządzenia. Całkowicie bezpieczna wykracza poza zakres tego samouczka, jednak i zależy od wymagań dotyczących zabezpieczeń.
    >
    >
 
@@ -63,7 +75,7 @@ W poprzednim przykładzie pokazano standardowego logowania, która wymaga od kli
     }
     ```
 
-5. W *ToDoActivity.java* pliku, Zastąp `authenticate` i `onActivityResult` metody o następujących te, których używa tokenu pamięć podręczną. Zmień dostawcy logowania, jeśli chcesz użyć innego konta niż Google.
+5. W *ToDoActivity.java* pliku, Zastąp `authenticate` i `onActivityResult` metody przy użyciu następujących te, które wykorzystuje pamięć podręczną tokenu. Zmień dostawcy logowania, jeśli chcesz użyć innego konta niż Google.
 
     ```java
     private void authenticate() {
@@ -102,4 +114,4 @@ W poprzednim przykładzie pokazano standardowego logowania, która wymaga od kli
     }
     ```
 
-6. Tworzenie aplikacji i test uwierzytelniania przy użyciu prawidłowego konta. Uruchom co najmniej dwa razy. Przy pierwszym uruchomieniu powinien zostać wyświetlony monit, zaloguj się i utworzyć tokenu pamięć podręczną. Po wykonaniu tej każdym uruchomieniu próbuje załadować pamięci podręcznej tokenu uwierzytelniania. Należy nie trzeba się zalogować.
+6. Tworzenie aplikacji i testowanie uwierzytelnianie przy użyciu prawidłowego konta. Uruchom co najmniej dwa razy. Przy pierwszym uruchomieniu powinien otrzymywać monitu o logowanie i Tworzenie pamięci podręcznej tokenu. Po tym poszczególnymi uruchomieniami próbuje załadować pamięć podręczną tokenu uwierzytelniania. Nie należy wymagać do logowania.

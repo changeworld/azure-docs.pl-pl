@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 11/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: c65f5364ccd4943d1d3e703ed27099408d3a2a27
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 15ec028046b7c2b21f1892c460d53c73499680fe
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346596"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312542"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -186,7 +186,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * CDN
 * Cloud Services — zobacz [ograniczenia wdrożenia klasycznego](#classic-deployment-limitations)
 * Cognitive Services
-* Container Registry
+* Container Registry — nie można przenieść do rejestru kontenerów, po włączeniu replikacji geograficznej.
 * Content Moderator
 * Cost Management
 * Customer Insights

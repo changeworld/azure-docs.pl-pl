@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 086399f669b704a0ae2c9f719906e7efa672b5b1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 1092f5e21eab1e037c360408f17548b544a9e922
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262513"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422800"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Przygotowanie do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure
 
@@ -49,13 +49,14 @@ Przed przygotowaniem środowiska, należy zrozumieć następujące ograniczenia:
 * Tworzenie kopii zapasowych maszyn wirtualnych systemu Linux, szyfrowane za pomocą funkcji szyfrowania Linux Unified klucz instalacji (LUKS) nie jest obsługiwane.
 * Nie zaleca się tworzenie kopii zapasowych maszyn wirtualnych, które zawierają udostępnionych woluminów klastra (CSV) lub serwera plików skalowalnego w poziomie konfiguracji. Jeśli będą wykonywane, awarii składników zapisywania CSV jest oczekiwany. Wymagają one, obejmujące wszystkie maszyny wirtualne, które uwzględnione w konfiguracji klastra podczas wykonywania zadania migawki. Usługa Azure Backup nie obsługuje spójność wielu maszyn wirtualnych.
 * Dane kopii zapasowej nie zawiera sieciowych zainstalowane dyski dołączone do maszyny Wirtualnej.
-* Zamiana istniejącej maszyny wirtualnej podczas przywracania nie jest obsługiwana. Jeśli użytkownik podejmie próbę przywrócenia maszyny Wirtualnej, gdy maszyna wirtualna istnieje, operacja przywracania kończy się niepowodzeniem.
+* **Zamień istniejące** opcji **przywracania konfiguracji** pozwala zastąpić istniejące dyski na maszynie wirtualnej i bieżący punkt przywracania. Tę operację można wykonać tylko, jeśli istnieje w bieżącej maszyny Wirtualnej. 
 * Między regionami, tworzenie kopii zapasowej i przywracania nie są obsługiwane.
 * Podczas konfigurowania kopii zapasowej, upewnij się, że **zapory i sieci wirtualne** ustawienia konta magazynu, Zezwalaj na dostęp ze wszystkich sieci.
 * Dla wybranych sieci po skonfigurowaniu ustawień zapory i sieci wirtualnej dla konta magazynu, wybierz **dozwolonych zaufanych usług firmy Microsoft dostęp do tego konta magazynu** jako wyjątek, aby włączyć usługi Azure Backup dostęp do konta magazynu z ograniczeniami sieci. Odzyskiwanie na poziomie elementu nie jest obsługiwana dla kont magazynu w sieci z ograniczeniami.
 * Można utworzyć kopię zapasową maszyn wirtualnych we wszystkich publicznych regionach platformy Azure. (Zobacz [Lista kontrolna](https://azure.microsoft.com/regions/#services) obsługiwanych regionów.) Jeśli obecnie jest obsługiwany region, którego szukasz, nie pojawi się na liście rozwijanej podczas tworzenia magazynu.
 * Przywracanie kontrolera domeny (DC) maszyny Wirtualnej, która jest częścią konfiguracji kontrolera domeny na wielu jest obsługiwany tylko przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz [Przywracanie kontrolera domeny multi DC](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
 * Migawek na dysku z włączonym akceleratorem zapisu nie jest obsługiwane. To ograniczenie blokuje możliwość usługi Azure Backup wykonywania migawki spójnej z aplikacją wszystkich dysków maszyny wirtualnej.
+* Usługa Azure Backup nie obsługuje automatyczne dostosowanie zegara zmiany letniego tworzenia kopii zapasowej maszyny Wirtualnej platformy Azure. W razie potrzeby zmodyfikuj zasady Aby wykonać zmiany czasu letniego oszczędności, do konta.
 * Przywracanie maszyn wirtualnych, które mają następujące specjalne konfiguracje sieci jest obsługiwane tylko za pomocą programu PowerShell. Maszyny wirtualne tworzone za pomocą przepływu pracy przywracania w interfejsie użytkownika nie będą miały te konfiguracje sieci, po zakończeniu operacji przywracania. Aby dowiedzieć się więcej, zobacz [przywracania maszyn wirtualnych ze specjalnymi konfiguracjami sieci](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations).
   * Maszyn wirtualnych w ramach konfiguracji usługi równoważenia obciążenia (wewnętrznych i zewnętrznych)
   * Maszyny wirtualne za pomocą wielu zastrzeżonych adresów IP

@@ -1,5 +1,5 @@
 ---
-title: Nie można wykonać pulpitu zdalnego do maszyn wirtualnych platformy Azure, ponieważ karta sieciowa jest wyłączona. | Dokumentacja firmy Microsoft
+title: Nie można zdalne łączenie z usługą Azure Virtual Machines ponieważ karta sieciowa jest wyłączony | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak rozwiązać problem, w którym RDP zakończy się niepowodzeniem, ponieważ karta sieciowa jest wyłączone w maszynie Wirtualnej platformy Azure | Dokumentacja firmy Microsoft
 services: virtual-machines-windows
 documentationCenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 6b14530bd6b4c1b6617cb1d5c88d710a32e5372c
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: f9e4731146409f51d16a8c92c01d07a8ff11a7ea
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634709"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314528"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Nie można wykonać pulpitu zdalnego z maszyną wirtualną, ponieważ interfejs sieciowy jest wyłączona.
 
-W tym artykule pokazano, jak rozwiązać problem, w którym można pulpitu zdalnego do platformy Azure Windows Virtual Machines (VMs), ponieważ interfejs sieciowy jest wyłączona.
+W tym artykule wyjaśniono, jak rozwiązać problem, w której nie można wprowadzać Podłączanie pulpitu zdalnego do platformy Azure Windows Virtual Machines (VMs) Jeśli interfejs sieciowy jest wyłączona.
 
 > [!NOTE] 
 > Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania. 
@@ -51,7 +51,7 @@ Aby włączyć interfejs dla maszyny Wirtualnej, należy użyć formantu szerego
 
         netsh interface set interface name="interface Name" admin=enabled
 
-    Na przykład jeśli interfejs interwork nazwy "Ethernet 2", uruchom następujące polecenie:
+    Na przykład jeśli interwork interfejsu ma nazwę "Ethernet 2", uruchom następujące polecenie:
 
         netsh interface set interface name=""Ethernet 2" admin=enabled
     
@@ -66,4 +66,4 @@ Aby włączyć interfejs dla maszyny Wirtualnej, należy użyć formantu szerego
 
 ## <a name="reset-network-interface"></a>Zresetuj interfejs sieciowy
 
-Aby zresetować interfejsu sieciowego, należy zmienić adres IP na inny adres IP, który jest dostępny w podsieci za pomocą witryny Azure portal lub programu Azure PowerShell. Aby uzyskać więcej informacji, zobacz [interfejs sieciowy resetowania](reset-network-interface.md). 
+Aby zresetować interfejsu sieciowego, należy zmienić adres IP na inny adres IP, który jest dostępny w tej podsieci. Aby to zrobić, należy użyć witryny Azure portal lub programu Azure PowerShell. Aby uzyskać więcej informacji, zobacz [interfejs sieciowy resetowania](reset-network-interface.md). 

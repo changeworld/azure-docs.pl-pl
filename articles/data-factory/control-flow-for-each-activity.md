@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 11/26/2018
 ms.author: shlo
-ms.openlocfilehash: 23f00280a69212b9e623ae1da16a681ca30c9d51
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: e38a0ec39227b0064175c3c39d32bf87970ef9f5
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42057549"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423732"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Działanie ForEach w usłudze Azure Data Factory
 Działanie ForEach definiuje powtarzający się przepływ sterowania w potoku. To działanie służy do wykonywania iteracji po kolekcji i wykonuje określone działania w pętli. Implementacja pętli tego działania przypomina strukturę pętli Foreach w językach programowania.
@@ -572,6 +572,17 @@ Wyrażenie do zbierania danych wyjściowych wszystkim iteracjom pętli ForEach j
 ]
 
 ```
+
+## <a name="limitations-and-workarounds"></a>Ograniczenia i rozwiązania
+
+Poniżej przedstawiono niektóre ograniczenia działanie ForEach i sugerowane rozwiązania problemu.
+
+| Ograniczenia | Obejście |
+|---|---|
+| Nie można zagnieździć wewnątrz innej pętli ForEach pętla ForEach (lub pętlą Until). | Zaprojektuj potoku dwupoziomowej, gdzie zewnętrzne potoku za pomocą zewnętrzna pętla ForEach iteruje przez wewnętrzny potoku za pomocą zagnieżdżonej pętli. |
+| Działanie ForEach może zawierać maksymalnie `batchCount` 50 do równoległego przetwarzania i maksymalnie 100 000 elementów. | Zaprojektuj potoku dwupoziomowej, gdzie zewnętrzne potoku za pomocą działania ForEach iteruje przez wewnętrzny potoku. |
+| | |
+
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz inne działania przepływu sterowania obsługiwanych przez usługę Data Factory: 
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 58992c80344902674b2b21a71b07925c752911a4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: eb0fa1edaadddfe055f3fc53a6d232e5a1293490
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230951"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424939"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Często zadawane pytania dotyczące usługi Azure Multi-Factor Authentication
 
@@ -212,7 +212,7 @@ Powiedz im, aby wykonać tę procedurę, aby usunąć swoje konto z aplikacji mo
 
 Błąd 0x800434D4L występuje, gdy użytkownik próbuje zarejestrować się w przypadku aplikacji niekorzystających z przeglądarki zainstalowane na komputerze lokalnym, który nie działa z konta, które wymagają weryfikacji dwuetapowej.
 
-Obejście tego problemu dla tego błędu jest posiadanie oddzielnego konta dla administratora dotyczące i operacji bez uprawnień administratora. Później możesz połączyć skrzynek pocztowych między konta administratora i konto bez uprawnień administratora, aby zalogować się do programu Outlook przy użyciu swojego konta bez uprawnień administratora. Aby uzyskać więcej informacji o tym rozwiązaniu, Dowiedz się, jak [pozwalają administratorowi na otworzyć i wyświetlić zawartość skrzynki pocztowej użytkownika](http://help.outlook.com/141/gg709759.aspx?sl=1).
+Obejście tego problemu dla tego błędu jest posiadanie oddzielnego konta dla administratora dotyczące i operacji bez uprawnień administratora. Później możesz połączyć skrzynek pocztowych między konta administratora i konto bez uprawnień administratora, aby zalogować się do programu Outlook przy użyciu swojego konta bez uprawnień administratora. Aby uzyskać więcej informacji o tym rozwiązaniu, Dowiedz się, jak [pozwalają administratorowi na otworzyć i wyświetlić zawartość skrzynki pocztowej użytkownika](https://help.outlook.com/141/gg709759.aspx?sl=1).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

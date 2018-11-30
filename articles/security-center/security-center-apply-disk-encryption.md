@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: d78e5ba030a8b68b99a92be8a830a365c2870c1f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c8a2caf2826069824a993294f4eba514ea870d9c
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235891"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307379"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Zastosuj szyfrowanie dysków w usłudze Azure Security Center
 Usługa Azure Security Center zaleca zastosowanie szyfrowania dysków, jeśli masz dyski Windows lub maszyny Wirtualnej systemu Linux, które nie są szyfrowane przy użyciu usługi Azure Disk Encryption. Disk Encryption umożliwia szyfrowanie dysków Windows i maszyn wirtualnych IaaS z systemem Linux.  Szyfrowanie jest zalecane zarówno w przypadku woluminów z systemem operacyjnym, jak i z danymi maszyny wirtualnej.
@@ -56,7 +56,7 @@ W tym dokumencie pokazano sposób implementacji zalecenia usługi Security Cente
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
-* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-policies.md) — informacje o sposobie konfigurowania zasad zabezpieczeń.
+* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md) — informacje o sposobie konfigurowania zasad zabezpieczeń.
 * [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje o sposobie monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.

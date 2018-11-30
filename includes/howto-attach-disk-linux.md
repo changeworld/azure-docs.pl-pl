@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines-linux
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: cynthn
+ms.openlocfilehash: de7d5ab73eb95e79cfca150f0692d5e793b16b76
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52331303"
+---
 Aby uzyskać więcej informacji o dyskach, zobacz [About Disks and VHDs for Virtual Machines](../articles/virtual-machines/linux/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Informacje o dyskach i wirtualnych dyskach twardych dla maszyn wirtualnych).
 
 <a id="attachempty"></a>

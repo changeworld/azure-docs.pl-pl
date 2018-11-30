@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: 8315647afec0166b41ce7a75f491077edd56db46
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: fd13cb25fbe3696bf67615ef956f478b7c355547
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036264"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422056"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Zarządzanie zasobami usługi Azure Blob Storage za pomocą Eksploratora usługi Storage
 ## <a name="overview"></a>Przegląd
@@ -29,7 +29,7 @@ Magazyn obiektów Blob może być użyty do udostępniania danych publicznie lub
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do wykonania kroków opisanych w tym artykule konieczne jest wykonanie kroków znajdujących się w następujących artykułach:
 
-* [Pobieranie i instalowanie Eksploratora usługi Storage](http://www.storageexplorer.com)
+* [Pobieranie i instalowanie Eksploratora usługi Storage](https://www.storageexplorer.com)
 * [Łączenie się z usługą lub kontem magazynu platformy Azure](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-blob-container"></a>Tworzenie kontenera obiektów blob
@@ -213,7 +213,7 @@ Poniższe kroki ilustrują Zarządzanie obiektów blob (i folderami) w kontenerz
      3. Wybierz pozycję **Tak** w oknie dialogowym potwierdzenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Zobacz [najnowsze informacje o wersji i wideo dotyczące Eksploratora usługi Storage](http://www.storageexplorer.com).
+* Zobacz [najnowsze informacje o wersji i wideo dotyczące Eksploratora usługi Storage](https://www.storageexplorer.com).
 * Dowiedz się, jak [tworzyć aplikacje przy użyciu obiektów Blob, tabel, kolejek i plików platformy Azure](https://azure.microsoft.com/documentation/services/storage/).
 
 [0]: ./media/vs-azure-tools-storage-explorer-blobs/blob-containers-create-context-menu.png

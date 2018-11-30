@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 7f553300ce87ad24042e4d75b2e6e3742125783b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 34b2658ef4b25b3d545932ceffd2f3cf8969034e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284629"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309366"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Porady: Planowanie wdrożenia usługi Azure AD join
 
@@ -95,12 +95,14 @@ Te scenariusze nie wymagają skonfigurowania serwera federacyjnego uwierzytelnia
 
 - **WS-Trust:** ten protokół jest wymagana do logowania się na urządzeniu dołączonym do usługi Azure AD. 
 
-Jeśli dostawca tożsamości nie obsługuje tych protokołów, dołączania do usługi Azure AD nie działa natywnie. Począwszy od systemu Windows 10 1809 użytkownicy zalogować się do urządzenia połączonego z usługi Azure AD za pomocą dostawcy tożsamości opartej na SAML za pośrednictwem [sieci web logowania w systemie Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). 
+Jeśli dostawca tożsamości nie obsługuje tych protokołów, dołączania do usługi Azure AD nie działa natywnie. Począwszy od systemu Windows 10 1809 użytkownicy zalogować się do urządzenia połączonego z usługi Azure AD za pomocą dostawcy tożsamości opartej na SAML za pośrednictwem [sieci web logowania w systemie Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). Obecnie logowanie w sieci web jest tylko do wersji zapoznawczej funkcji.
 
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>Karty inteligentne i uwierzytelniania opartego na certyfikatach
 
 Nie można używać kart inteligentnych lub uwierzytelniania opartego na certyfikatach, dołączać urządzenia do usługi Azure AD. Jednak kart inteligentnych może służyć do logowania się na urządzeniach przyłączonych do usługi Azure AD, w przypadku usług AD FS skonfigurowane.
+
+**Zalecenie:** Implementowanie Windows Hello dla firm dla uwierzytelniania silne, bez hasła na urządzeniach z systemem Windows 10.
 
 
 ### <a name="user-configuration"></a>Konfiguracja użytkownika
@@ -209,7 +211,9 @@ Urządzenia usługi Azure AD przyłączone nie obsługują aplikacje lokalne, op
 
 **Zalecenie:** należy wziąć pod uwagę wycofania tych aplikacji i przeniesienie do ich nowoczesnych rozwiązań alternatywnych.
 
+### <a name="remote-desktop-services"></a>Usługi pulpitu zdalnego
 
+Podłączanie pulpitu zdalnego na urządzeniach przyłączonych do usługi Azure AD wymaga komputer hosta musi być albo dołączone do usługi Azure AD lub hybrydowe przyłączone do usługi Azure AD. Pulpit zdalny z urządzenia z systemem odłączony lub inne niż Windows nie jest obsługiwane. Aby uzyskać więcej informacji, zobacz [komputera przyłączonego do Connect do zdalnej usługi Azure AD](https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc)
 
 
 ## <a name="understand-your-provisioning-options"></a>Opis opcji inicjowania obsługi administracyjnej

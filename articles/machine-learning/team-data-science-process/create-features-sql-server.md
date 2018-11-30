@@ -2,30 +2,26 @@
 title: Tworzenie funkcji dla danych w programie SQL Server przy użyciu języków SQL i języka Python | Dokumentacja firmy Microsoft
 description: Przetwarzanie danych z usługi SQL Azure
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: bf1f4a6c-7711-4456-beb7-35fdccd46a44
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: deguhath
-ms.openlocfilehash: 6729de763265355125100ccdaf0c5cd81e2bfd8d
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 7178f368f7ede8918f316caa46234f63db6414ee
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346551"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445450"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Tworzenie funkcji dla danych w programie SQL Server przy użyciu języka SQL i Python
 W tym dokumencie przedstawiono sposób generowania funkcji dla danych przechowywanych w maszynę Wirtualną programu SQL Server na platformie Azure, ułatwiającą algorytmy wydajniej informacje z danych. Można użyć bazy danych SQL lub języka programowania, takich jak Python, aby wykonać to zadanie. Oba podejścia są przedstawione w tym artykule.
 
-To zadanie jest to krok w [Team Data Science naukowych](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+To zadanie jest to krok w [Team Data Science naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 > [!NOTE]
 > Na przykład praktycznych, można zapoznać się [zestawu danych taksówek NYC](http://www.andresmh.com/nyctaxitrips/) i odnoszą się do IPNB pod tytułem [danych NYC inteligencji przy użyciu IPython Notebook i programu SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) dla przewodnika end-to-end.

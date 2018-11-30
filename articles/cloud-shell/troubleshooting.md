@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 089c623ff2c53a59c60c3fe1a53876c16a5353dd
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 72f85761db08652f0dff7f36fbcb2ef90654e078
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159026"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334401"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Rozwiązywanie problemów z & ograniczenia dotyczące usługi Azure Cloud Shell
 
@@ -70,6 +70,8 @@ Następujące rozwiązania znanych problemów w usłudze Azure Cloud Shell:
 - **Rozpoznawanie**: Zamknij i otwórz ponownie powłoki.
 
 ### <a name="troubleshooting-remote-management-of-azure-vms"></a>Rozwiązywanie problemów z zdalnego zarządzania maszynami wirtualnymi platformy Azure
+> [!NOTE]
+> Maszyny wirtualne platformy Azure musi mieć publiczny połączonego z adresu IP.
 
 - **Szczegóły**: ze względu na domyślne ustawienia zapory Windows w przypadku usługi WinRM, użytkownik może zostać wyświetlony następujący błąd: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
 - **Rozpoznawanie**: Uruchom `Enable-AzureRmVMPSRemoting` włączyć wszystkie aspekty komunikacji zdalnej programu PowerShell na komputerze docelowym.

@@ -1,5 +1,5 @@
 ---
-title: Rozszerzanie eksperymentu przy użyciu języka R | Dokumentacja firmy Microsoft
+title: Rozszerzanie eksperymentu przy użyciu języka R - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Jak rozszerzyć funkcjonalność usługi Azure Machine Learning Studio za pomocą języka R przy użyciu modułu wykonywania skryptu języka R.
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 30ed2a71fcf00a511802afb5b126829b918615d6
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: df6453f1cf6e8b372239d528067a7258d645518d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263064"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311012"
 ---
-# <a name="extend-your-experiment-with-r"></a>Rozszerzanie eksperymentu przy użyciu języka R
+# <a name="azure-machine-learning-studio-extend-your-experiment-with-r"></a>Usługa Azure Machine Learning Studio: Rozszerzanie eksperymentu przy użyciu języka R 
 Funkcje usługi Azure Machine Learning Studio za pośrednictwem języka R można rozszerzyć za pomocą [wykonanie skryptu języka R] [ execute-r-script] modułu.
 
 Ten moduł przyjmuje wiele zestawów danych wejściowych i daje jednego zestawu danych jako dane wyjściowe. Możesz wpisać skrypt języka R do **skrypt języka R** parametru [wykonanie skryptu języka R] [ execute-r-script] modułu.
@@ -33,7 +33,7 @@ Każdy z portem wejściowym modułu jest dostęp za pomocą kodu podobne do nast
     dataset1 <- maml.mapInputPort(1)
 
 ## <a name="listing-all-currently-installed-packages"></a>Wyświetlanie listy wszystkich obecnie zainstalowanych pakietów
-Lista zainstalowanych pakietów można zmienić. Lista obecnie zainstalowanych pakietów można znaleźć w [R pakiety obsługiwanych przez usługi Azure Machine Learning](https://msdn.microsoft.com/library/azure/mt741980.aspx).
+Lista zainstalowanych pakietów można zmienić. Lista obecnie zainstalowanych pakietów można znaleźć w [R pakiety obsługiwanych przez usługi Azure Machine Learning Studio](https://msdn.microsoft.com/library/azure/mt741980.aspx).
 
 Możesz także uzyskać pełne, bieżąca lista zainstalowanych pakietów, wprowadzając następujący kod do [wykonanie skryptu języka R] [ execute-r-script] modułu:
 

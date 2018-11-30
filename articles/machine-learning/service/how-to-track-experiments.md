@@ -9,19 +9,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: da92f59c4e25ec012cd9ad389c9afac410ba28e1
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 9af7e57db0e465f59f43c93d0b5f6ec220836ff7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219311"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308192"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Śledzenie eksperymentów i szkolenia metryk w usłudze Azure Machine Learning
 
 W usłudze Azure Machine Learning można śledzić eksperymenty i monitorować metryki, aby ulepszyć proces tworzenia modelu. W tym artykule poznasz różne sposoby dodawania rejestrowania skrypt szkolenia, porady przesyłanie eksperymentu za pomocą **start_logging** i **ScriptRunConfig**, jak sprawdzić postęp uruchomione zadania oraz jak wyświetlać wyniki przebiegu. 
 
 >[!NOTE]
-> Kod w tym artykule został przetestowany przy użyciu zestawu SDK usługi Azure Machine Learning wersji 0.1.74 
+> Kod w tym artykule został przetestowany przy użyciu zestawu Azure Machine Learning SDK w wersji 0.1.74 
 
 ## <a name="list-of-training-metrics"></a>Listy metryk szkolenia 
 
@@ -265,7 +265,9 @@ Następujące notesów zademonstrowania koncepcji w tym artykule:
 * [01.Getting-Started/02.Train-on-Local/02.Train-on-Local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
 * [01.Getting-Started/06.Logging-API/06.Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/06.logging-api/06.logging-api.ipynb)
 
-Pobierz te notesy: [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
+Pobierz te notesy:
+
+[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

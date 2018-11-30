@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d063c5e5a5b81f16d8921864ab2e2a0c3504e334
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 878c2596a1d884e26a4b4a4ed4764cfd9ce6b39b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289023"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424104"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>Protokoły — przy użyciu niejawnego przepływu aplikacji jednostronicowych w wersji 2.0
 
@@ -34,7 +34,7 @@ Z punktem końcowym v2.0 może zalogować się użytkowników do aplikacji jedno
 * Wiele serwerów autoryzacji i dostawców tożsamości nie obsługują żądania CORS.
 * Przekierowuje przeglądarki na pełnej stronie od aplikacji stają się szczególnie inwazyjne do środowiska użytkownika.
 
-W przypadku tych aplikacji (AngularJS, Ember.js, React.js itp.) usługi Azure Active Directory (Azure AD) obsługuje przepływ przyznawanie niejawne protokołu OAuth 2.0. Niejawny przepływ jest opisana w [OAuth 2.0 specyfikacji](http://tools.ietf.org/html/rfc6749#section-4.2). Jego główną Korzyścią płynącą jest możliwość aplikację, aby uzyskać tokenów z usługi Azure AD bez przeprowadzania serwera wewnętrznej bazy danych programu exchange poświadczeń. Umożliwia to aplikacji, loguje użytkownika, zachować sesję i uzyskiwanie tokenów do innych interfejsów API sieci web w klienta kodu JavaScript. Istnieje kilka ważne zagadnienia dotyczące zabezpieczeń można wziąć pod uwagę podczas korzystania z niejawnym przepływem specjalnie około [klienta](http://tools.ietf.org/html/rfc6749#section-10.3) i [personifikacji użytkownika](http://tools.ietf.org/html/rfc6749#section-10.3).
+W przypadku tych aplikacji (AngularJS, Ember.js, React.js itp.) usługi Azure Active Directory (Azure AD) obsługuje przepływ przyznawanie niejawne protokołu OAuth 2.0. Niejawny przepływ jest opisana w [OAuth 2.0 specyfikacji](https://tools.ietf.org/html/rfc6749#section-4.2). Jego główną Korzyścią płynącą jest możliwość aplikację, aby uzyskać tokenów z usługi Azure AD bez przeprowadzania serwera wewnętrznej bazy danych programu exchange poświadczeń. Umożliwia to aplikacji, loguje użytkownika, zachować sesję i uzyskiwanie tokenów do innych interfejsów API sieci web w klienta kodu JavaScript. Istnieje kilka ważne zagadnienia dotyczące zabezpieczeń można wziąć pod uwagę podczas korzystania z niejawnym przepływem specjalnie około [klienta](https://tools.ietf.org/html/rfc6749#section-10.3) i [personifikacji użytkownika](https://tools.ietf.org/html/rfc6749#section-10.3).
 
 Jeśli chcesz dodać uwierzytelnianie do aplikacji JavaScript za pomocą niejawny przepływ i usługa Azure AD, zalecamy użycie biblioteki JavaScript typu open source, [msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js). 
 
@@ -81,7 +81,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `redirect_uri` | Zalecane |Redirect_uri aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Dokładnie musi odpowiadać jednej z redirect_uris, zarejestrowanych w portalu, z wyjątkiem musi być zakodowane w adresie url. |
 | `scope` | wymagane |Rozdzielonej spacjami listy zakresów. Dla protokołu OpenID Connect, musi on zawierać zakres `openid`, co przekłada się na uprawnienia "Logowanie się w" w zgody interfejsu użytkownika. Opcjonalnie możesz również chcieć dołączyć `email` lub `profile` [zakresy](v2-permissions-and-consent.md) do uzyskania dostępu do danych dodatkowych użytkowników. W tym żądaniu do żądania zgody z różnymi zasobami, może również obejmować inne zakresy. |
 | `response_mode` | opcjonalne |Określa metodę, które mają być używane do wysyłania wynikowy token wstecz do swojej aplikacji. Wartość domyślna to zapytania dla tokenu dostępu, ale fragmentu, jeśli żądanie zawiera element id_token. |
-| `state` | Zalecane |Wartość uwzględnione w żądaniu, które również zostaną zwrócone w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, który chcesz. Losowo generowany unikatową wartość jest zwykle używany podczas [zapobieganie atakom na fałszerstwo żądania międzywitrynowego](http://tools.ietf.org/html/rfc6749#section-10.12). Stan również jest używany do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widoku, które znajdowały się w. |
+| `state` | Zalecane |Wartość uwzględnione w żądaniu, które również zostaną zwrócone w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, który chcesz. Losowo generowany unikatową wartość jest zwykle używany podczas [zapobieganie atakom na fałszerstwo żądania międzywitrynowego](https://tools.ietf.org/html/rfc6749#section-10.12). Stan również jest używany do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widoku, które znajdowały się w. |
 | `nonce` | wymagane |Wartości zawarte w żądaniu wygenerowane przez aplikację, która zostanie uwzględniona w wynikowej id_token jako oświadczenia. Aplikacja może zweryfikować tę wartość, aby uniknąć powtarzania tokenu ataków. Wartość jest zazwyczaj losowego, unikatowy ciąg, który może służyć do identyfikowania pochodzenia żądania. Wymagane tylko w przypadku elementu id_token jest wymagane. |
 | `prompt` | opcjonalne |Wskazuje typ interakcji z użytkownikiem, który jest wymagany. Jedyne prawidłowe wartości w tym momencie są "login", "none", "select_account" i "". `prompt=login` Spowoduje to wymuszenie użytkownika o wprowadzenie poświadczeń w tym żądaniu Negacja logowania jednokrotnego. `prompt=none` jest przeciwieństwem - zapewni, że użytkownik nie zobaczy wszystkie interaktywne monity w inny sposób. Jeśli nie można ukończyć żądania dyskretnie za pomocą logowania jednokrotnego, punktu końcowego v2.0 zwróci błąd. `prompt=select_account` wysyła użytkownika do selektora konta, w którym zostaną wyświetlone wszystkie konta zapamiętanych w sesji. `prompt=consent` wywołuje okno dialogowe ze zgodą OAuth po użytkownik się zaloguje, monitem o nadanie uprawnień do aplikacji. |
 | `login_hint`  |opcjonalne |Można wstępnie wypełnić pola Adres e-mail/nazwa użytkownika logowania do strony użytkownika, jeśli znasz swoją nazwę użytkownika, wcześniej. Aplikacje często użyje tego parametru podczas ponownego uwierzytelniania już o wyodrębnić nazwy użytkownika z poprzedniego logowania za pomocą `preferred_username` oświadczenia.|
@@ -131,7 +131,7 @@ error=access_denied
 
 ## <a name="validate-the-idtoken"></a>Sprawdź poprawność id_token
 
-Po prostu odbiera id_token nie wystarcza do uwierzytelnienia użytkownika; należy również sprawdzić poprawności podpisu id_token i weryfikować oświadczenia w tokenie, w zależności od wymagań aplikacji. Korzysta z punktu końcowego v2.0 [tokenów sieci Web JSON (tokenów Jwt)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) i kryptografii klucza publicznego do podpisywania tokenów i sprawdź, czy są prawidłowe.
+Po prostu odbiera id_token nie wystarcza do uwierzytelnienia użytkownika; należy również sprawdzić poprawności podpisu id_token i weryfikować oświadczenia w tokenie, w zależności od wymagań aplikacji. Korzysta z punktu końcowego v2.0 [tokenów sieci Web JSON (tokenów Jwt)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) i kryptografii klucza publicznego do podpisywania tokenów i sprawdź, czy są prawidłowe.
 
 Można wybrać sprawdzić poprawność `id_token` w kliencie kod, ale powszechną praktyką jest wysłanie `id_token` do serwera wewnętrznej bazy danych i zweryfikować istnieje. Po zweryfikowaniu podpis id_token, istnieje kilka oświadczenia, które będzie trzeba zweryfikować. Zobacz [ `id_token` odwołania](id-tokens.md) uzyskać więcej informacji, w tym [sprawdzanie poprawności tokenów](id-tokens.md#validating-an-idtoken) i [ważne informacje na temat Przerzucanie klucza podpisywania](active-directory-signing-key-rollover.md). Firma Microsoft zaleca korzystające z biblioteki do analizowania i sprawdzanie poprawności tokenów — Brak co najmniej jeden dostępny dla większości platform i języków.
 

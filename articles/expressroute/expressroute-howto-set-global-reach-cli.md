@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: 9d41ab26876d464187466f566bbfafc4861c799d
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708751"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333267"
 ---
 # <a name="configure-expressroute-global-reach-using-azure-cli-preview"></a>Konfigurowanie usługi ExpressRoute globalny zasięg przy użyciu interfejsu wiersza polecenia platformy Azure (wersja zapoznawcza)
 Ten artykuł ułatwia konfigurowanie usługi ExpressRoute zasięgu globalnym przy użyciu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [zasięgu globalnym ExpressRouteRoute](expressroute-global-reach.md).

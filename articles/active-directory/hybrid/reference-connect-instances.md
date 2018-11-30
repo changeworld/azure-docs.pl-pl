@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a41b236182c18a83b6c83a38fd8420a013313d56
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d086b958ddca6caded19cc02a790f8091aba993e
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315091"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425186"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: Zagadnienia specjalne dotyczące wystąpień
 Program Azure AD Connect jest najczęściej używana z wystąpienia na całym świecie usługi Azure AD i Office 365. Ale istnieją również inne wystąpienia, a te mają różne wymagania dotyczące adresów URL i inne zagadnienia specjalne.
 
 ## <a name="microsoft-cloud-germany"></a>Microsoft Cloud (Niemcy)
-[Microsoft Cloud w Niemczech](http://www.microsoft.de/cloud-deutschland) jest należących do suwerennej chmury przez niemieckiego zarządcę danych.
+[Microsoft Cloud w Niemczech](https://www.microsoft.de/cloud-deutschland) jest należących do suwerennej chmury przez niemieckiego zarządcę danych.
 
 | Adresy URL, aby otworzyć w serwera proxy |
 | --- |

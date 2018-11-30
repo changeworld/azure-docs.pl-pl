@@ -1,6 +1,6 @@
 ---
-title: 'Krok 6: Dostęp do usługi Machine Learning w sieci Web | Dokumentacja firmy Microsoft'
-description: 'Krok 6 programowanie przewodnik rozwiązania do analizy predykcyjnej: dostęp do usługi active Azure Machine Learning w sieci Web.'
+title: 'Krok 6: Dostępu zmienianie sieci web Machine Learning Studio | Dokumentacja firmy Microsoft'
+description: 'Krok 6 programowanie przewodnik rozwiązania do analizy predykcyjnej: dostęp do usługi sieci web usługi active Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: b71f98c9ba4e21f2a33b62977ec54f6230443e1b
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 5402f228a650a1a3d3282180a52f9e9f9cc10a3a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264152"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52306458"
 ---
-# <a name="walkthrough-step-6-access-the-azure-machine-learning-web-service"></a>Przewodnik, krok 6. Dostęp do usługi sieci Web Azure Machine Learning
+# <a name="walkthrough-step-6-access-the-azure-machine-learning-studio-web-service"></a>Przewodnik krok 6: Dostęp do usługi sieci web Azure Machine Learning Studio
 
 Jest to ostatni krok tego przewodnika, [tworzenia rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 

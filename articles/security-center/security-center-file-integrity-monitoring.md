@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 0376f09d4d7d6c952cbef40751a2729045f68061
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9cfb098fd8e6cb777b6cd968f92b20baabfab705
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255842"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313990"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>File Integrity Monitoring w usłudze Azure Security Center
 Dowiedz się, jak skonfigurować plik Integrity Monitoring (FIM) w usłudze Azure Security Center za pomocą tego przewodnika.
@@ -205,7 +205,7 @@ Można wyłączyć usługi FIM. FIM używa rozwiązania Azure Change Tracking w 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono Użyj pliku Integrity Monitoring (FIM) w usłudze Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
-* [Ustawianie zasad zabezpieczeń](security-center-policies.md) — informacje o sposobie konfigurowania zasad zabezpieczeń dla subskrypcji platformy Azure i grup zasobów.
+* [Ustawianie zasad zabezpieczeń](security-center-azure-policy.md) — informacje o sposobie konfigurowania zasad zabezpieczeń dla subskrypcji platformy Azure i grup zasobów.
 * [Zarządzanie zaleceniami dotyczącymi zabezpieczeń](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.
 * [Monitorowanie kondycji zabezpieczeń](security-center-monitoring.md)— informacje o sposobie monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi](security-center-managing-and-responding-alerts.md)— Dowiedz się, jak zarządzać i reagować na alerty zabezpieczeń.

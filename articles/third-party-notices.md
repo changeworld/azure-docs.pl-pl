@@ -4,11 +4,11 @@ Firma Microsoft i Wszyscy współautorzy udzielają Ci licencji na dokumentację
 
 Microsoft, Windows, Microsoft Azure i/lub innych produktów i usług, do którego odwołuje się z dokumentacją, może być znakami towarowymi lub zastrzeżonymi znakami towarowymi firmy Microsoft w Stanach Zjednoczonych i/lub innych krajach.
 Licencje dla tego projektu nie powodują udzielenia praw do korzystania z nazwy, logo ani znaków towarowych wszelkie firmy Microsoft.
-Wytyczne ogólne znaków towarowych firmy Microsoft znajduje się w temacie [ http://go.microsoft.com/fwlink/?LinkID=254653 ](https://go.microsoft.com/fwlink/?LinkID=254653).
+Wytyczne ogólne znaków towarowych firmy Microsoft znajduje się w temacie [ https://go.microsoft.com/fwlink/?LinkID=254653 ](httpss://go.microsoft.com/fwlink/?LinkID=254653).
 
 Informacje o ochronie prywatności znajduje się w temacie [https://privacy.microsoft.com/en-us/](https://privacy.microsoft.com/en-us/)
 
 Firma Microsoft i wszelkie sobie współautorzy wszystkie pozostałe prawa, w ramach odpowiednich praw autorskich, patentów lub znaków towarowych, przez domniemanie, estoppelu lub w inny sposób.
 
-Gopher z rzeczywistym użyciem został zaprojektowany przez [francuski Renee](http://reneefrench.blogspot.com/).
+Gopher z rzeczywistym użyciem został zaprojektowany przez [francuski Renee](https://reneefrench.blogspot.com/).
 Projekt jest licencjonowane w ramach [licencji Creative Commons 3.0 przypisań](https://creativecommons.org/licenses/by/3.0/us/).

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d7359c4c151d93dcd40bd475e865c76399ff5355
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 6303fe4313f68d4f38151ce9ba85eae2d6de96ca
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711783"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426999"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Usługi platformy Azure zbieranie dzienników i metryk do użycia w usłudze Log Analytics
 
@@ -34,7 +34,7 @@ Istnieją cztery różne sposoby pobierania dzienników i metryk dla usług plat
 
 | Usługa                 | Typ zasobu                           | Dzienniki        | Metryki     | Rozwiązanie |
 | --- | --- | --- | --- | --- |
-| Bramy aplikacji    | Microsoft.Network/applicationGateways   | Diagnostyka | Diagnostyka | [Usługi Azure Application Gateway Analytics](log-analytics-azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
+| Bramy aplikacji    | Microsoft.Network/applicationGateways   | Diagnostyka | Diagnostyka | [Usługi Azure Application Gateway Analytics](../azure-monitor/insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
 | Usługa Application insights    |                                         | Łącznik   | Łącznik   | [Łącznik usługi Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (wersja zapoznawcza) |
 | Konta usługi Automation     | Microsoft.Automation/AutomationAccounts | Diagnostyka |             | [Więcej informacji](../automation/automation-manage-send-joblogs-log-analytics.md)|
 | Konta usługi Batch          | Microsoft.Batch/batchAccounts           | Diagnostyka | Diagnostyka | |
@@ -44,10 +44,10 @@ Istnieją cztery różne sposoby pobierania dzienników i metryk dla usług plat
 | Usługa Data Lake store         | Microsoft.DataLakeStore/accounts        | Diagnostyka |             | |
 | Przestrzeń nazw centrum zdarzeń     | Microsoft.EventHub/namespaces           | Diagnostyka | Diagnostyka | |
 | Centra IoT Hub                | Microsoft.Devices/IotHubs               |             | Diagnostyka | |
-| Usługa Key Vault               | Microsoft.KeyVault/vaults               | Diagnostyka |             | [KeyVault Analytics](log-analytics-azure-key-vault.md) |
+| Usługa Key Vault               | Microsoft.KeyVault/vaults               | Diagnostyka |             | [KeyVault Analytics](../azure-monitor/insights/azure-key-vault.md) |
 | Moduły równoważenia obciążenia          | Microsoft.Network/loadBalancers         | Diagnostyka |             |  |
 | Logic Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | Diagnostyka | Diagnostyka | |
-| Grupy zabezpieczeń sieci | Microsoft.Network/networksecuritygroups | Diagnostyka |             | [Analiza sieciowej grupy zabezpieczeń platformy Azure](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
+| Grupy zabezpieczeń sieci | Microsoft.Network/networksecuritygroups | Diagnostyka |             | [Analiza sieciowej grupy zabezpieczeń platformy Azure](../azure-monitor/insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
 | Magazyny usługi Recovery         | Microsoft.RecoveryServices/vaults       |             |             | [Usługa Azure Recovery Services — analiza (Podgląd)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 | Usługi wyszukiwania         | Microsoft.Search/searchServices         | Diagnostyka | Diagnostyka | |
 | Przestrzeń nazw magistrali usług   | Microsoft.ServiceBus/namespaces         | Diagnostyka | Diagnostyka | [Usługa Service Bus analiza (Podgląd)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|

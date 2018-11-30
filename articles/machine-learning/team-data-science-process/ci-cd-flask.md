@@ -1,26 +1,22 @@
 ---
 title: 'Metodyka DevOps na potrzeby aplikacji sztucznej inteligencji (AI): tworzenie potoku integracji ciągłe na platformie Azure za pomocą aplikacji platformy Docker, Kubernetes i Python Flask'
 description: 'Metodyka DevOps na potrzeby aplikacji sztucznej inteligencji (AI): tworzenie potoku integracji ciągłe na platformie Azure przy użyciu platformy Docker i Kubernetes'
-services: machine-learning, team-data-science-process
-documentationcenter: ''
-author: jainr
-manager: deguhath
+services: machine-learning
+author: marktab
+manager: cgronlun
 editor: cgronlun
-ms.assetid: b8fbef77-3e80-4911-8e84-23dbf42c9bee
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
-ms.author: jainr
-ms.openlocfilehash: fb162c45b8bd53fd4d994e0eb83a38438873d627
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.author: tdsp
+ms.custom: (previous author=jainr, ms.author=jainr)
+ms.openlocfilehash: c232680d5d1bf0eb761ff974ebf6608b67922f33
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094398"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496746"
 ---
 # <a name="devops-for-artificial-intelligence-ai-applications-creating-continuous-integration-pipeline-on-azure-using-docker-and-kubernetes"></a>Metodyka DevOps na potrzeby aplikacji sztucznej inteligencji (AI): tworzenie potoku ciągłej integracji na platformie Azure przy użyciu platformy Docker i Kubernetes
 Dla aplikacji sztucznej Inteligencji są często dwóch strumieni pracy analityków danych, tworzenie modeli uczenia maszynowego i deweloperów aplikacji, tworzenie aplikacji i ujawnienie go użytkownikom końcowym z. W tym artykule pokażemy, jak do zaimplementowania ciągłej integracji (CI) / ciągłe dostarczanie (CD) potoku dla aplikacji sztucznej Inteligencji. Aplikacji sztucznej Inteligencji składa się z kodu aplikacji, wbudowane z modelu uczenia (ML) wstępnie przetrenowane maszyny. W tym artykule firma Microsoft pobiera pretrained modelu z konta magazynu prywatnego obiektu blob platformy Azure, może to być także konta usług AWS S3. Będziemy używać aplikacji internetowej platformy flask prostego języka python do tego artykułu.
@@ -55,7 +51,7 @@ Architektura potoku są podane poniżej.
 1. Deweloper pracują nad IDE wybranych przez nich w kodzie aplikacji.
 2. Mogą oni zatwierdzać kod do kontroli źródła wybranych przez nich (DevOps platformy Azure ma dobrą obsługę różnych kontroli źródła)
 3. Oddzielnie badacz danych działają na temat tworzenia modelu.
-4. Po wszystkiego, publikują modelu do repozytorium modelu, w tym przypadku użyto konta usługi blob storage. To może łatwo zastąpione Usługa Zarządzanie modelami w usłudze Azure ML Workbench za pośrednictwem swoich interfejsów API REST.
+4. Po wszystkiego, publikują modelu do repozytorium modelu, w tym przypadku użyto konta usługi blob storage. 
 5. Kompilacja rozpoczęła się w DevOps platformy Azure, w oparciu o zatwierdzenia w usłudze GitHub.
 6. Usługa Azure potoku metodyki DevOps kompilacji pobiera najnowszy model z kontenera obiektów Blob i tworzy kontener.
 7. Usługa Azure DevOps wypycha obraz do repozytorium prywatnego obrazu w usłudze Azure Container Registry

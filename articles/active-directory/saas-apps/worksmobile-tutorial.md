@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 725f32fd-d0ad-49c7-b137-1cc246bf85d7
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 0437bd46537d8b7024618706aba12660abca5512
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 34059652a33ddb539bf10a6d7931502c5a8694e3
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414696"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423664"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-line-works"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą działania wiersza
 
@@ -31,7 +32,7 @@ Integrowanie wiersza WSPÓŁPRACUJE z usługą Azure AD zapewnia następujące k
 - Użytkowników, aby automatycznie uzyskać zalogowanych do działania wiersza (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
 - Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -49,31 +50,33 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
+
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie linii działa z galerii
 2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-line-works-from-the-gallery"></a>Dodawanie linii działa z galerii
+
 Aby skonfigurować integrację działa wiersza w usłudze Azure AD, należy dodać wiersz działa z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać wiersz działa z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
-    ![image](./media/worksmobile-tutorial/selectazuread.png)
+    ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![image](./media/worksmobile-tutorial/a_select_app.png)
-    
+    ![W bloku aplikacji przedsiębiorstwa][2]
+
 3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![image](./media/worksmobile-tutorial/a_new_app.png)
+    ![Nowy przycisk aplikacji][3]
 
 4. W polu wyszukiwania wpisz **działa wiersza**, wybierz opcję **działa wiersza** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
-     ![image](./media/worksmobile-tutorial/tutorial_lineworks_addfromgallery.png)
+    ![Wiersz działania na liście wyników](./media/worksmobile-tutorial/tutorial_lineworks_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
@@ -83,41 +86,41 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą działania wiersza, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego działa wiersza](#create-a-line-works-test-user)**  — aby odpowiednikiem Britta Simon trwają wiersza, połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego działa wiersza](#creating-a-line-works-test-user)**  — aby odpowiednikiem Britta Simon trwają wiersza, połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji działa w wierszu.
 
 **Aby skonfigurować usługi Azure AD logowania jednokrotnego przy użyciu wiersza działa, wykonaj następujące czynności:**
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **działa wiersza** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W witrynie Azure portal na **działa wiersza** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![image](./media/worksmobile-tutorial/b1_b2_select_sso.png)
+    ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
 2. Na **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, kliknij przycisk **wybierz** dla **SAML** trybu, aby włączyć logowanie jednokrotne.
 
-    ![image](./media/worksmobile-tutorial/b1_b2_saml_sso.png)
+    ![Konfigurowanie logowania jednokrotnego](common/tutorial_general_301.png)
 
-3. Na **Ustaw się logowanie jednokrotne z SAML** kliknij **Edytuj** przycisk, aby otworzyć **podstawową konfigurację protokołu SAML** okna dialogowego.
+3. Na **Ustaw się logowanie jednokrotne z SAML** kliknij **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okna dialogowego.
 
-    ![image](./media/worksmobile-tutorial/b1-domains_and_urlsedit.png)
+    ![Konfigurowanie logowania jednokrotnego](common/editconfigure.png)
 
 4. Na **podstawową konfigurację protokołu SAML** sekcji, wykonaj następujące czynności:
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://auth.worksmobile.com/d/login/<domain>/?userId=<ID@domain>`
+    ![Wiersz działania domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/worksmobile-tutorial/tutorial_lineworks_url.png)
+
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://auth.worksmobile.com/d/login/<domain>/`
 
     b. W **identyfikator** pole tekstowe, wpisz adres URL: `worksmobile.com`
 
-    ![image](./media/worksmobile-tutorial/tutorial_lineworks_url.png)
+5. Na **certyfikat podpisywania SAML** strony w **certyfikat podpisywania SAML** kliknij **Pobierz** można pobrać **certyfikatu (Raw)**, a następnie zapisz plik certyfikatu na komputerze.
 
-5. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** , kliknij przycisk **Pobierz** można pobrać **certyfikatu (Raw)** i zapisz go na komputerze.
-
-    ![image](./media/worksmobile-tutorial/tutorial_lineworks_certficate.png)
+    ![Link pobierania certyfikatu](./media/worksmobile-tutorial/tutorial_lineworks_certificate.png) 
 
 6. Na **Konfigurowanie działa wiersza** sekcji, skopiuj odpowiedni adres URL, zgodnie z wymaganiami.
 
@@ -127,77 +130,87 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     c. Adres URL wylogowywania
 
-    ![image](./media/worksmobile-tutorial/d1_samlsonfigure.png) 
+    ![Konfiguracja działania linii](common/configuresection.png)
 
 7. Aby skonfigurować logowanie jednokrotne na **działa wiersza** strony, przeczytaj [dokumentów wiersza działa usługa rejestracji Jednokrotnej](https://developers.worksmobile.com/jp/document/1001080101) i skonfiguruj ustawienie działa w wierszu.
 
 > [!NOTE]
 > Należy przekonwertować z .cert PEM pobrany plik certyfikatu
 
-
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
 Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
 1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
 
-    ![image](./media/worksmobile-tutorial/d_users_and_groups.png)
+    ![Utwórz użytkownika usługi Azure AD][100]
 
 2. Wybierz **nowego użytkownika** w górnej części ekranu.
 
-    ![image](./media/worksmobile-tutorial/d_adduser.png)
+    ![Tworzenie użytkownika testowego usługi Azure AD](common/create_aaduser_01.png) 
 
 3. We właściwościach użytkownika wykonaj następujące czynności.
 
-    ![image](./media/worksmobile-tutorial/d_userproperties.png)
+    ![Tworzenie użytkownika testowego usługi Azure AD](common/create_aaduser_02.png)
 
-    a. W **nazwa** pola wprowadź **BrittaSimon**.
+    a. W **nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
 
     d. Wybierz pozycję **Utwórz**.
- 
-### <a name="create-a-line-works-test-user"></a>Tworzenie użytkownika testowego działa wiersza
+
+### <a name="creating-a-line-works-test-user"></a>Tworzenie użytkownika testowego działa wiersza
 
 W tej sekcji utworzysz użytkownika o nazwie Britta Simon trwają wiersza. Dostęp do [strony administratora działa wiersza](https://admin.worksmobile.com) i dodać tych użytkowników na platformie działa wiersza.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
 W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do wiersza działa.
 
 1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**.
 
-    ![image](./media/worksmobile-tutorial/d_all_applications.png)
+    ![Przypisz użytkownika][201]
 
 2. Na liście aplikacji wybierz **działa wiersza**.
 
-    ![image](./media/worksmobile-tutorial/tutorial_lineworks_app.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/worksmobile-tutorial/tutorial_lineworks_app.png)
 
-3. W menu po lewej stronie wybierz **użytkowników i grup**.
+3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![image](./media/worksmobile-tutorial/d_leftpaneusers.png)
+    ![Przypisz użytkownika][202]
 
-4. Wybierz **Dodaj** przycisk, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![image](./media/worksmobile-tutorial/d_assign_user.png)
+    ![Przypisz użytkownika][203]
 
-4. W **użytkowników i grup** okna dialogowego wybierz **Britta Simon** na liście użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+5. W **użytkowników i grup** okna dialogowego wybierz **Britta Simon** na liście użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 
-5. W **Dodaj przydziału** okna dialogowego wybierz **przypisać** przycisku.
-    
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+6. W **Dodaj przydziału** okna dialogowego wybierz **przypisać** przycisku.
+
+### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka działa wiersza w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacja działa w wierszu.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
+<!--Image references-->
 
+[1]: common/tutorial_general_01.png
+[2]: common/tutorial_general_02.png
+[3]: common/tutorial_general_03.png
+[4]: common/tutorial_general_04.png
+
+[100]: common/tutorial_general_100.png
+
+[201]: common/tutorial_general_201.png
+[202]: common/tutorial_general_202.png
+[203]: common/tutorial_general_203.png

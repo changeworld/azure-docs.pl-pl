@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 11/26/2018
 ms.author: douglasl
-ms.openlocfilehash: 77e5d6c278436a1fc192421c9867106409389a66
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 424de36dbbd3b09e635679900110148b9edd0242
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888225"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422886"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -278,8 +278,8 @@ namespace SampleApp
   Activity Output section:
   "exitcode": 0
   "outputs": [
-    "https://shengcstorbatch.blob.core.windows.net/adfjobs/<GUID>/output/stdout.txt",
-    "https://shengcstorbatch.blob.core.windows.net/adfjobs/<GUID>/output/stderr.txt"
+    "https://<container>.blob.core.windows.net/adfjobs/<GUID>/output/stdout.txt",
+    "https://<container>.blob.core.windows.net/adfjobs/<GUID>/output/stderr.txt"
   ]
   "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US)"
   Activity Error section:
@@ -292,7 +292,11 @@ Jeśli chcesz korzystać z zawartości stdout.txt działania podrzędnego, może
 
   > [!IMPORTANT]
   > - Activity.json linkedServices.json i datasets.json są przechowywane w folderze czasu wykonywania zadania wsadowego. W tym przykładzie activity.json linkedServices.json i datasets.json są przechowywane w "https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/" ścieżki. Jeśli to konieczne, należy wyczyścić oddzielnie. 
-  > - Do celów połączone usługi, własne środowisko IR, poufne informacje, takie jak klucze lub hasła są szyfrowane, środowiskiem Integration Runtime, aby zapewnić dostęp do poświadczeń pozostaje klientów zdefiniowane prywatnym środowisku sieciowym. Niektóre pola poufnych może być brak w odwołuje się kod aplikacji niestandardowej w ten sposób. W extendedProperties zamiast odwołanie do połączonej usługi, jeśli to konieczne, należy użyć ciągu SecureString. 
+  > - W przypadku połączonych usług, które korzystają z produktem Integration Runtime poufne informacje, takie jak klucze lub hasła są zaszyfrowane za środowiskiem Integration Runtime, aby upewnić się, pozostaje poświadczeń klientów definiowane prywatnym środowisku sieciowym. Niektóre pola poufnych może być brak w odwołuje się kod aplikacji niestandardowej w ten sposób. W extendedProperties zamiast odwołanie do połączonej usługi, jeśli to konieczne, należy użyć ciągu SecureString. 
+
+## <a name="pass-outputs-to-another-activity"></a>Przekaż dane wyjściowe do kolejnego działania
+
+Możesz wysłać wartości niestandardowe w kodzie w działań niestandardowych z powrotem do usługi Azure Data Factory. Możesz to zrobić przez napisanie je do `outputs.json` z aplikacji. Data Factory kopiuje zawartość `outputs.json` i dołącza je do dane wyjściowe działania jako wartość `customOutput` właściwości. (Limit rozmiaru wynosi 2MB). Jeśli chcesz korzystać z zawartości z `outputs.json` działania podrzędne mogą uzyskać wartość przy użyciu wyrażenia `@activity('<MyCustomActivity>').output.customOutput`.
 
 ## <a name="retrieve-securestring-outputs"></a>Pobieranie danych wyjściowych SecureString
 

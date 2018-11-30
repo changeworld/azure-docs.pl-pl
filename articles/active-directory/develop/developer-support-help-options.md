@@ -17,12 +17,12 @@ ms.date: 10/27/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 9b2ccce4ef6fad4f7710ba2092d67ac5f4e73b71
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 60186d44437a866793b40c9d6f0263235803475f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39602011"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422443"
 ---
 # <a name="support-and-help-options-for-developers"></a>Opcje pomocy technicznej i pomocy dla deweloperów 
 
@@ -67,13 +67,13 @@ Jeśli nie możesz znaleźć odpowiedzi na problem za pomocą wyszukiwania, Prze
 
 |Składnik/obszaru  |Tagi  |
 |---------|---------|
-|Biblioteka ADAL |[[adal]](http://stackoverflow.com/questions/tagged/adal)|
-|Biblioteka MSAL     |[[msal]](http://stackoverflow.com/questions/tagged/msal)|
-|Oprogramowanie pośredniczące OWIN  |[[azure-active-directory]](http://stackoverflow.com/questions/tagged/azure-active-directory)|
-|[Funkcje B2B platformy Azure](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  |[[azure-ad-b2b]](http://stackoverflow.com/questions/tagged/azure-ad-b2b)|
-|[Usługa Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  |[[azure-ad-b2c]](http://stackoverflow.com/questions/tagged/azure-ad-b2b)|
-|[Interfejs API programu Microsoft Graph](https://developer.microsoft.com/graph/) |[[-programu microsoft graph]](http://stackoverflow.com/questions/tagged/microsoft-graph)
-|Wszelkich innych aspektów do tematów, uwierzytelniania i autoryzacji |[[azure-active-directory]](http://stackoverflow.com/questions/tagged/azure-active-directory)
+|Biblioteka ADAL |[[adal]](https://stackoverflow.com/questions/tagged/adal)|
+|Biblioteka MSAL     |[[msal]](https://stackoverflow.com/questions/tagged/msal)|
+|Oprogramowanie pośredniczące OWIN  |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)|
+|[Funkcje B2B platformy Azure](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  |[[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
+|[Usługa Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  |[[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
+|[Interfejs API programu Microsoft Graph](https://developer.microsoft.com/graph/) |[[-programu microsoft graph]](https://stackoverflow.com/questions/tagged/microsoft-graph)
+|Wszelkich innych aspektów do tematów, uwierzytelniania i autoryzacji |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)
 <br/>
 > [!TIP]
 > Następujące wpisy w witrynie Stack Overflow zawiera wskazówki dotyczące sposobu wprowadzania pytania i porady na temat dodawania kodu źródłowego - poniższych wskazówek może pomóc zwiększyć prawdopodobieństwo, że członków społeczności, aby ocenić i szybko reagować na Twoje pytanie:  

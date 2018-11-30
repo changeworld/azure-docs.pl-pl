@@ -1,4 +1,16 @@
-
+---
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: tamram
+ms.openlocfilehash: ede5e2587f1f4d99193e621965b68f75fbad27f4
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52440343"
+---
 Teraz, kiedy znasz już podstawy usługi Azure Blob storage, skorzystaj z poniższych linków, aby dowiedzieć się więcej o bardziej skomplikowanych zadaniach magazynu.
 
 * Przejrzyj dokumentację referencyjną usługi obiektów Blob w [biblioteki klienta usługi Azure Storage dla platformy .NET](https://go.microsoft.com/fwlink/?LinkID=390731) odwołania, aby uzyskać szczegółowe informacje o dostępnych interfejsach API.

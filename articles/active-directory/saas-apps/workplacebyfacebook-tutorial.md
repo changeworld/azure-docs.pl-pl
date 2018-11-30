@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 1f83dd64c7f6773ddb8956e6ebbc37b8c55aacec
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2e072a27087f90bddd3f7c416904758e40c2f6b9
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423875"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425193"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Samouczek: Integracja usługi Azure Active Directory z miejsca pracy w serwisie Facebook
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD z miejsca pracy, Facebook, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Pracy przez Facebook logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -62,7 +62,7 @@ Aby skonfigurować integrację z miejsca pracy w usłudze Facebook do usługi Az
 
 **Aby dodać miejsce pracy w serwisie Facebook z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -140,7 +140,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
    > [!NOTE] 
    > W ramach procesu uwierzytelniania SAML miejsce pracy mogą używać ciągów zapytań do wersji 2.5 kilobajtów rozmiaru w celu przekazania parametrów do usługi Azure AD.
 
-1. W **pulpitu nawigacyjnego firmy**, przejdź do **uwierzytelniania** kartę.
+1. W **Panel administracyjny**, przejdź do **zabezpieczeń** karcie następnie **uwierzytelniania**.
 
 1. W obszarze **uwierzytelnianie SAML**, wybierz opcję **logowania jednokrotnego tylko** z listy rozwijanej.
 

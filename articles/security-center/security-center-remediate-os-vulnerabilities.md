@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: d4523a9e2d5a5466c1617930d14a8a2d25a0e16f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: d77e5265349db2fc433d2bb9a42140a6a4209ba1
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238781"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317499"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Skoryguj konfiguracje zabezpieczeń w usłudze Azure Security Center
 Usługa Azure Security Center analizuje codziennie systemu operacyjnego (OS) maszyn wirtualnych (VM) i konfigurację, która może spowodować, że maszyny wirtualne na komputerach i bardziej narażone na ataki. Usługa Security Center zaleca Rozwiąż luk w zabezpieczeniach w przypadku konfiguracji systemu operacyjnego jest niezgodny z reguły konfiguracji zabezpieczeń zaleca się zmiany tych luk w konfiguracji.
@@ -101,7 +101,7 @@ Aby zapoznać się z określonych konfiguracji, które są monitorowane, zobacz 
 Aby dowiedzieć się więcej o usłudze Security Center, zobacz następujące zasoby:
 
 * Aby uzyskać listę obsługiwanych maszyn wirtualnych systemu Linux i Windows, zobacz [obsługiwanych platform w usłudze Azure Security Center](security-center-os-coverage.md).
-* Aby dowiedzieć się, jak skonfigurować zasady zabezpieczeń dla subskrypcji platformy Azure i grup zasobów, zobacz [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-policies.md).
+* Aby dowiedzieć się, jak skonfigurować zasady zabezpieczeń dla subskrypcji platformy Azure i grup zasobów, zobacz [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md).
 * Aby dowiedzieć się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure, zobacz [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md).
 * Informacje na temat monitorowania kondycji zasobów platformy Azure, zobacz [monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md).
 * Aby dowiedzieć się, jak zarządzać i reagować na alerty zabezpieczeń, zobacz [reagowanie na alerty zabezpieczeń w Centrum zabezpieczeń Azure i zarządzanie nimi](security-center-managing-and-responding-alerts.md).

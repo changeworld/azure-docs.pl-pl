@@ -1,6 +1,6 @@
 ---
-title: Importowanie danych do usługi Machine Learning Studio ze źródeł danych online | Dokumentacja firmy Microsoft
-description: Informacje o importowaniu danych szkoleniowych Azure Machine Learning Studio z różnych źródeł online.
+title: Importowanie danych do usługi Machine Learning Studio ze źródeł danych online — Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano obsługę importowanie danych w trybie online z różnych źródeł oraz informacjami potrzebnymi do przeniesienia danych z tych źródeł do usługi Azure Machine Learning Studio eksperymentować.
 keywords: Importowanie danych, formatu danych, typów danych, źródeł danych, dane szkoleniowe
 services: machine-learning
 documentationcenter: ''
@@ -17,15 +17,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 6412d431b0258d681d8d9bd8cb3a88798a0d81cd
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 89e2414b32dfb3cc6773d09dcdc3e711e56492ef
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262903"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315029"
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>Importowanie danych do usługi Azure Machine Learning Studio z różnych źródeł danych w trybie online za pomocą modułu importu danych
-W tym artykule opisano obsługę importowania danych z różnych źródeł oraz informacjami potrzebnymi do przenoszenia danych z tych źródeł do eksperymentu usługi Azure Machine Learning.
+W tym artykule opisano obsługę importowanie danych w trybie online z różnych źródeł oraz informacjami potrzebnymi do przeniesienia danych z tych źródeł do usługi Azure Machine Learning Studio eksperymentować.
 
 > [!NOTE]
 > Ten artykuł zawiera ogólne informacje na temat [importu danych] [ import-data] modułu. Aby uzyskać szczegółowe informacje o typach danych, możesz uzyskać dostęp, formatów, parametrów i odpowiedzi na typowe pytania, zobacz temat odwołania modułu dla [importu danych] [ import-data] modułu.

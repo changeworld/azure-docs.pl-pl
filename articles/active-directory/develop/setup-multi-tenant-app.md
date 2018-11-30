@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: 0007afaf1a961b578b68925fc554cd0195bd5621
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: fe7d305110d8d78c0550741419bc35a0c4a4498e
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44724026"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423579"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>Konfigurowanie nowej aplikacji wielodostępnych
 
@@ -31,4 +31,4 @@ Oto lista zalecanych tematy, aby dowiedzieć się więcej o wielodostępnych apl
 - Aby uzyskać bardziej szczegółowe informacje, Dowiedz się, [jak aplikacji z wieloma dzierżawami, jest skonfigurowana i kodowanych end-to-end](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview), w tym jak zarejestrować, używanie "typowych" punktu końcowego, implementowanie "user" i "admin" zgody, jak zaimplementować bardziej zaawansowane obejmujące wiele warstw scenariusze
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Usługi Azure AD w witrynie StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[Usługi Azure AD w witrynie StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

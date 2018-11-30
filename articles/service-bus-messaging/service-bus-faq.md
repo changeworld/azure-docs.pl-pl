@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/05/2018
 ms.author: spelluru
-ms.openlocfilehash: a000c599ecf8287af57aec2f6e9d550bbe61f280
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8beb372c3fae567b23e51d2776dd9a79d837c657
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279885"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313840"
 ---
 # <a name="service-bus-faq"></a>Service Bus — często zadawane pytania
 
@@ -86,7 +86,7 @@ Usług obsługi wiadomości usługi Service Bus (kolejek i tematów/subskrypcji)
 Aby uzyskać listę możliwych wyjątków usługi Service Bus, zobacz [Przegląd wyjątki][Exceptions overview].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Co to jest sygnatura dostępu współdzielonego i języki obsługiwane przez Generowanie sygnatury?
-Udostępnione sygnatur dostępu to mechanizm uwierzytelniania, w oparciu o SHA-256 skróty bezpieczne lub identyfikatory URI. Aby uzyskać informacje dotyczące generowania własnych podpisów w Node, PHP, Java i C\#, zobacz [sygnatur dostępu współdzielonego] [ Shared Access Signatures] artykułu.
+Udostępnione sygnatur dostępu to mechanizm uwierzytelniania, na podstawie bezpiecznego skróty SHA-256 lub identyfikatory URI. Aby uzyskać informacje dotyczące generowania własnych podpisów w technologii Node.js, PHP, Java i C\#, zobacz [sygnatur dostępu współdzielonego] [ Shared Access Signatures] artykułu.
 
 ## <a name="subscription-and-namespace-management"></a>Zarządzanie subskrypcją i przestrzeni nazw
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Jak migrować przestrzeni nazw do innej subskrypcji platformy Azure?

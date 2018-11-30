@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: e86d68107278641e40346327fa3a8cb7059b7d71
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 9790cd7c79efa1b64220f9e128de9a3b8eb902c0
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159592"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426948"
 ---
 # <a name="azure-key-vault-logging"></a>Funkcja rejestrowania usługi Azure Key Vault
 Usługa Azure Key Vault jest dostępna w większości regionów. Aby uzyskać więcej informacji, zobacz stronę [Cennik usługi Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
@@ -265,7 +265,7 @@ W poniższej tabeli wymieniono nazwy operacji operationName i odpowiadające im 
 
 ## <a id="loganalytics"></a>Korzystanie z usługi Log Analytics
 
-Za pomocą rozwiązania Azure Key Vault możesz w usłudze Log Analytics przeglądać dzienniki rozwiązania Azure Key Vault z kategorii AuditEvent. Aby uzyskać więcej informacji, w tym na temat konfigurowania tego rozwiązania, zobacz [Rozwiązanie Azure Key Vault w usłudze Log Analytics](../log-analytics/log-analytics-azure-key-vault.md). Artykuł ten zawiera również instrukcje w razie potrzeby migracji ze starego rozwiązania Key Vault, które było oferowane w trakcie okresu zapoznawczego usługi Log Analytics, w której najpierw należało skierować dzienniki do konta usługi Azure Storage, a następnie skonfigurować usługę Log Analytics do odczytu z tego konta.
+Za pomocą rozwiązania Azure Key Vault możesz w usłudze Log Analytics przeglądać dzienniki rozwiązania Azure Key Vault z kategorii AuditEvent. Aby uzyskać więcej informacji, w tym na temat konfigurowania tego rozwiązania, zobacz [Rozwiązanie Azure Key Vault w usłudze Log Analytics](../azure-monitor/insights/azure-key-vault.md). Artykuł ten zawiera również instrukcje w razie potrzeby migracji ze starego rozwiązania Key Vault, które było oferowane w trakcie okresu zapoznawczego usługi Log Analytics, w której najpierw należało skierować dzienniki do konta usługi Azure Storage, a następnie skonfigurować usługę Log Analytics do odczytu z tego konta.
 
 ## <a id="next"></a>Następne kroki
 Aby zapoznać się z samouczkiem, w którym użyto usługi Azure Key Vault w aplikacji internetowej, zobacz [Use Azure Key Vault from a Web Application](key-vault-use-from-web-application.md) (Używanie usługi Azure Key Vault za pośrednictwem aplikacji internetowej).

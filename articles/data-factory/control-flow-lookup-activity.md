@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: e437e7b7d5298af325ae2a5e2ba689b417bad022
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e682b3780c26da9cf2398e93adc32cb107127d9c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002924"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426795"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Działanie LOOKUP w usłudze Azure Data Factory
 
@@ -297,6 +297,15 @@ To wystąpienie usługi Azure SQL Database zawiera dane, które mają być kopio
     }
 ]
 ```
+
+## <a name="limitations-and-workarounds"></a>Ograniczenia i rozwiązania
+
+Poniżej przedstawiono pewne ograniczenia, działanie Lookup i sugerowane rozwiązania problemu.
+
+| Ograniczenia | Obejście |
+|---|---|
+| Działanie Lookup ma więcej niż 5000 wierszy, a maksymalny rozmiar wynoszący 2 MB. | Zaprojektuj potoku dwupoziomowej, gdzie zewnętrzne potok wykonuje iterację na wewnętrzny potoku, który pobiera dane, które nie może przekraczać maksymalna liczba wierszy lub rozmiaru. |
+| | |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz inne działania przepływu sterowania obsługiwanych przez usługę Data Factory: 

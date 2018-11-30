@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 32571d88ffc08c19f819335254b4f5dda521bdb0
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: c77467efbbc1c33be5bc2aaf3251a5803beee864
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885925"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317113"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Wybierz styl z mapy usługi Azure Maps
 
@@ -42,7 +42,7 @@ Drugi blok kodu używa mapy [metody setStyle](https://docs.microsoft.com/javascr
 
 Pierwszy blok kodu w powyższym kodzie Ustawia klucz subskrypcji i tworzy obiekt mapy, style mapy wstępnie jest ustawiona na grayscale_dark. Zobacz [Utwórz mapę](./map-create.md) instrukcje dotyczące sposobu tworzenia mapy.
 
-Drugi blok kodu tworzy selektor stylu, za pomocą atlas [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol?view=azure-iot-typescript-latest#stylecontrol) konstruktora.
+Drugi blok kodu tworzy selektor stylu, za pomocą atlas [StyleControl](/javascript/api/azure-maps-control/atlas.controls.stylecontrol) konstruktora.
 
 Selektor stylu umożliwia wybór stylu mapy. Trzeci blok kodu dodaje selektor stylu do mapy, przy użyciu mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody. Selektor stylu mieści się w planie **odbiornik zdarzeń** zapewnienie ładuje po mapy ładuje pełni.
 

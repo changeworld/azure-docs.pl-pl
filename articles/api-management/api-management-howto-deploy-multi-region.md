@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 2ec8d53b0d8da3a7d643362abf58d3a5d4b42e74
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 27bfd3176ecad847f9bba2a62abd66b55484443b
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42059595"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443019"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Jak wdrożyć wystąpienie usługi Azure API Management w wielu regionach platformy Azure
 
@@ -26,11 +26,10 @@ Usługa Azure API Management obsługuje wdrożenie w wielu regionach, która poz
 
 Nowa usługa Azure API Management początkowo zawiera tylko jeden [jednostki] [ unit] w jednym regionie platformy Azure w regionie podstawowym. Dodatkowych regionów można łatwo dodawać za pośrednictwem witryny Azure portal. Serwer bramy usługi API Management jest wdrażany do każdego regionu, a ruch połączenia będą kierowane do najbliższego bramy. Jeśli region przejdzie do trybu offline, ruch jest automatycznie przekierowywane do następnego najbliższej bramy.
 
-> [!IMPORTANT]
-> Wdrożenie w wielu regionach jest dostępna tylko w **[Premium] [ Premium]** warstwy.
-
 > [!NOTE]
 > Usługa Azure API Management są replikowane tylko składnik bramy interfejsu API w regionach. Składnik Usługa zarządzania jest obsługiwana tylko w regionie podstawowym. W razie awarii w regionie podstawowym zastosowanie zmiany konfiguracji do wystąpienia usługi Azure API Management jest niemożliwe — w tym ustawienia lub aktualizacji zasad.
+
+[!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
 ## <a name="add-region"> </a>Wdrażanie wystąpienia usługi API Management w nowym regionie
 

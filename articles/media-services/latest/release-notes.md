@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 11/21/2018
 ms.author: juliako
-ms.openlocfilehash: 70a3de35f6fd942bca5355db3a7c6b57aec6adbc
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 598587a0fe726ccf65f062833f84b352ca03c077
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613940"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315532"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Usługa Azure Media Services v3 — informacje o wersji 
 
@@ -27,6 +27,13 @@ Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedst
 * Poprawki błędów
 * Przestarzałe funkcje
 * Plany dotyczące zmian
+
+## <a name="known-issues"></a>Znane problemy
+
+> [!NOTE]
+> Obecnie nie można użyć witryny Azure portal do zarządzania zasobami v3. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-sdk), interfejsu wiersza polecenia lub w jednym z obsługiwanych zestawów SDK.
+
+Aby uzyskać więcej informacji, zobacz [wskazówek dotyczących migracji do przenoszenia z usługi Media Services v2 do v3](migrate-from-v2-to-v3.md#known-issues).
 
 ## <a name="november-2018"></a>Listopada 2018 r.
 

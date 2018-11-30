@@ -1,5 +1,5 @@
 ---
-title: Zadaj pytanie danych pozwala uzyskać odpowiedzi na — problemy związane z analizy danych — usługa Azure Machine Learning | Dokumentacja firmy Microsoft
+title: Zadaj pytanie danych pozwala uzyskać odpowiedzi na-Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak sformułować pytanie do nauki o danych sharp przetwarzanie danych dla początkujących 3 wideo. Zawiera porównanie pytania dotyczące klasyfikacji i regresji.
 keywords: problemy związane z analizy danych, pytania do nauki o danych, formułowanie pytania, pytania regresji, klasyfikacji pytania, sharp zapytania
 services: machine-learning
@@ -17,12 +17,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 812d8ececa17dfe9d798d4454faf2ad66bf62536
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: c6d42ed7920b634994adf5313656c77e2df6dd5b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264917"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310841"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Zadawanie pytań, na które można odpowiedzieć za pomocą danych
 ## <a name="video-3-data-science-for-beginners-series"></a>Wideo 3: Analiza danych dla początkujących serii

@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 86a047fe291c7872fe275ba7246b9f3e59044723
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6a0a2dec6beeecca3779f4b047d3b5fe6295a1e6
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236827"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495298"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Użyj interfejsu API REST programu Apache Spark, aby przesłać zdalnej obsługi zadań do klastra usługi HDInsight Spark
 
-Dowiedz się, jak używać usługi Livy, Apache Spark interfejsu API REST, który jest używany do przesyłania zadań zdalnego w klastrze usługi HDInsight Spark. Aby uzyskać szczegółową dokumentację, zobacz [ http://livy.incubator.apache.org/ ](http://livy.incubator.apache.org/).
+Dowiedz się, jak używać [Apache, usługi Livy](https://livy.incubator.apache.org/), [platformy Apache Spark](https://spark.apache.org/) interfejsu API REST, który jest używany do przesyłania zadań zdalnego w klastrze usługi HDInsight Spark. Aby uzyskać szczegółową dokumentację, zobacz [ http://livy.incubator.apache.org/ ](http://livy.incubator.apache.org/).
 
 Za pomocą usługi Livy do uruchamiania interakcyjnego Spark powłoki lub przesyłania zadania usługi batch mają być uruchamiane na platformie Spark. Ten artykuł zawiera informacje o przy użyciu programu Livy można przesłać zadania usługi batch. Fragmenty kodu, w tym artykule używane jest narzędzie cURL do wykonywania wywołań interfejsu API REST do punktu końcowego usługi Livy platformy Spark.
 
@@ -28,8 +28,8 @@ Za pomocą usługi Livy do uruchamiania interakcyjnego Spark powłoki lub przesy
 
 * [cURL](http://curl.haxx.se/). W tym artykule używa programu cURL w celu zademonstrowania sposobu wykonywania wywołań interfejsu API REST względem klastra usługi HDInsight Spark.
 
-## <a name="submit-a-livy-spark-batch-job"></a>Przesyłanie zadania usługi batch Spark usługi Livy
-Przed przesłaniem zadania usługi batch, należy przekazać plik jar aplikacji w magazynie klastra skojarzonego z klastrem. Możesz to zrobić za pomocą narzędzia wiersza polecenia [**AzCopy**](../../storage/common/storage-use-azcopy.md). Brak różnych klientów, których można użyć w celu przekazywania danych. Więcej informacji na ten temat można znaleźć w artykule [Przekazywanie danych dla zadań Hadoop w usłudze HDInsight](../hdinsight-upload-data.md).
+## <a name="submit-an-apache-livy-spark-batch-job"></a>Przesyłanie zadania usługi batch Apache Spark usługi Livy
+Przed przesłaniem zadania usługi batch, należy przekazać plik jar aplikacji w magazynie klastra skojarzonego z klastrem. Możesz to zrobić za pomocą narzędzia wiersza polecenia [**AzCopy**](../../storage/common/storage-use-azcopy.md). Brak różnych klientów, których można użyć w celu przekazywania danych. Można znaleźć więcej informacji na temat ich w [przekazywanie danych na potrzeby zadań usługi Apache Hadoop w HDInsight](../hdinsight-upload-data.md).
 
     curl -k --user "<hdinsight user>:<user password>" -v -H <content-type> -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
 
@@ -164,7 +164,7 @@ HDInsight 3.5 klastrów i powyżej, domyślnie wyłączyć użycie lokalne ście
 
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Przesyłanie zadań usługi Livy klastra w ramach sieci wirtualnej platformy Azure
 
-Jeśli łączysz się z klastrem usługi HDInsight Spark z w ramach usługi Azure Virtual Network możesz mogą łączyć się bezpośrednio do usługi Livy w klastrze. W takim przypadku adres URL punktu końcowego usługi Livy jest `http://<IP address of the headnode>:8998/batches`. W tym miejscu **8998** jest port, na którym usługi Livy działa na głównym węzłem klastra. Aby uzyskać więcej informacji na temat uzyskiwania dostępu do usług w niepublicznych portów, zobacz [porty używane przez usługi Hadoop w HDInsight](../hdinsight-hadoop-port-settings-for-services.md).
+Jeśli łączysz się z klastrem usługi HDInsight Spark z w ramach usługi Azure Virtual Network możesz mogą łączyć się bezpośrednio do usługi Livy w klastrze. W takim przypadku adres URL punktu końcowego usługi Livy jest `http://<IP address of the headnode>:8998/batches`. W tym miejscu **8998** jest port, na którym usługi Livy działa na głównym węzłem klastra. Aby uzyskać więcej informacji na temat uzyskiwania dostępu do usług w niepublicznych portów, zobacz [porty używane przez usługi Apache Hadoop w HDInsight](../hdinsight-hadoop-port-settings-for-services.md).
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -182,7 +182,7 @@ Poniżej przedstawiono niektóre problemy, które możesz napotkać podczas przy
 
 ## <a name="next-step"></a>Następny krok
 
-* [Dokumentacja interfejsu API REST usługi Livy](http://livy.incubator.apache.org/docs/latest/rest-api.html)
+* [Dokumentacja interfejsu API REST usługi Livy Apache](http://livy.incubator.apache.org/docs/latest/rest-api.html)
 * [Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight](apache-spark-resource-manager.md)
 * [Śledzenie i debugowanie zadań uruchamianych w klastrze Apache Spark w usłudze HDInsight](apache-spark-job-debugging.md)
 

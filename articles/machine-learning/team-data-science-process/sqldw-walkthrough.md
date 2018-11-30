@@ -2,30 +2,26 @@
 title: 'Zespół danych dla celów naukowych w działaniu: Korzystanie z programu SQL Data Warehouse | Dokumentacja firmy Microsoft'
 description: Proces zaawansowane funkcje analityczne i technologii w działaniu
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 88ba8e28-0bd7-49fe-8320-5dfa83b65724
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
-ms.author: deguhath
-ms.openlocfilehash: 192af40df3a8bc0545c9c3a86792e7eb8cb31de9
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 87c3b0b597a401041b8bf1b6f3997431d8816e92
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586108"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445715"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Zespół danych dla celów naukowych w działaniu: Korzystanie z programu SQL Data Warehouse
 W tym samouczku, w jaki sposób Cię przez proces tworzenia i wdrażania modelu uczenia maszynowego, przy użyciu magazynu danych SQL (SQL data Warehouse) dla publicznie dostępnego zestawu danych — [rund taksówek NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych. Model klasyfikacji binarnej skonstruowany przewiduje czy Porada czy płatna komunikacji dwustronnej i modele wieloklasowej klasyfikacji i regresji zostały również omówione, które przewidzieć dystrybucja przypadku ilości Porada płatne.
 
-Następujące procedury [Team Data Science naukowych](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) przepływu pracy. Pokazujemy, jak skonfigurować środowisko do nauki o danych, jak załadować dane do magazynu danych SQL i jak za pomocą usługi SQL DW lub IPython Notebook Eksplorowanie danych i inżynier ds. funkcji do modelu. Następnie przedstawiono, jak utworzyć i wdrożyć model przy użyciu usługi Azure Machine Learning.
+Następujące procedury [Team Data Science naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) przepływu pracy. Pokazujemy, jak skonfigurować środowisko do nauki o danych, jak załadować dane do magazynu danych SQL i jak za pomocą usługi SQL DW lub IPython Notebook Eksplorowanie danych i inżynier ds. funkcji do modelu. Następnie przedstawiono, jak utworzyć i wdrożyć model przy użyciu usługi Azure Machine Learning.
 
 ## <a name="dataset"></a>Zestaw danych podróży taksówek NYC
 Dane podróży taksówek NYC składa się z około 20GB skompresowanych plików CSV (~ 48GB nieskompresowane), rejestrowanie ponad milion 173 poszczególnych podróży i opłaty opłacony każdego podróży. Każdy podróży rekord zawiera lokalizacji odbioru i dropoff i godziny, hack anonimowe (sterownika) numer licencji i numer Medalionu (unikatowy identyfikator dla taksówek). Dane obejmuje wszystkie podróży w roku 2013 i znajduje się w następujących dwóch zestawów danych w każdym miesiącu:

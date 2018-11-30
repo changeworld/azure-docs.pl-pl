@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/3/2018
+ms.date: 11/22/2018
 ms.author: rkarlin
-ms.openlocfilehash: f865a0a609422ae4938a9cccf15d9cd176a9400a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 779efdd509460ac8175b3922097d701edf8b9b68
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227794"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311232"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Reagowanie na alerty zabezpieczeń i zarządzanie nimi w Centrum zabezpieczeń Azure
 Ten dokument ułatwia zarządzanie alertami zabezpieczeń i reagowanie na nie przy użyciu usługi Azure Security Center.
 
 > [!NOTE]
-> Aby włączyć wykrywanie zaawansowane, przeprowadź uaktualnienie usługi Azure Security Center do wersji Standard. Dostępna jest bezpłatna 60-dniowa wersja próbna. W celu uaktualnienia wybierz warstwę cenową w [Zasadach zabezpieczeń](security-center-policies.md). Aby dowiedzieć się więcej, zobacz [cennik usługi Azure Security Center](security-center-pricing.md).
+> Aby włączyć wykrywanie zaawansowane, przeprowadź uaktualnienie usługi Azure Security Center do wersji Standard. Dostępna jest bezpłatna 60-dniowa wersja próbna. W celu uaktualnienia wybierz warstwę cenową w [Zasadach zabezpieczeń](security-center-azure-policy.md). Aby dowiedzieć się więcej, zobacz [cennik usługi Azure Security Center](security-center-pricing.md).
 >
 >
 
@@ -63,6 +63,20 @@ W dolnej części tej strony znajdują się szczegółowe informacje o każdym a
 > [!NOTE]
 > Alerty zabezpieczeń wygenerowane przez usługę Security Center pojawią się również w dzienniku aktywności platformy Azure. Aby uzyskać więcej informacji o tym, jak uzyskać dostęp do dziennika aktywności platformy Azure, zobacz [View activity logs to audit actions on resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) (Wyświetlanie dzienników aktywności w celu inspekcji akcji wykonywanych na zasobach).
 >
+
+
+### <a name="alert-severity"></a>Ważność alertu
+
+> [!NOTE]
+> Ważność alertu są wyświetlane inaczej w portalu i interfejsu API REST, różnice zostały wymienione na poniższej liście.
+
+-   **Wysoka**: istnieje wysokie prawdopodobieństwo, że zasób zostanie naruszone. Następnie od razu należy zwrócić uwagę do niego. Usługa Security Center ma o dużej pewności w obu złośliwego działania i ustalenia używany do wysyłania alertu. Na przykład alert, który wykrywa wykonywania znane złośliwe narzędzia, takiego jak program Mimikatz, popularnego narzędzia używane do kradzieży poświadczeń. 
+-   **Średni (niska w interfejsie API REST)**: jest to prawdopodobnie podejrzanych działań, które mogą wskazywać, że zasób zostanie naruszone.
+Security Center w analitycznych lub wyszukiwaniu UFNOŚĆ średni i UFNOŚĆ złośliwego działania średniej lub dużej. Są to zazwyczaj będzie uczenia maszynowego ani rozwiązaniami do wykrywania anomalii na podstawie. Na przykład logowanie próba z nietypowej lokalizacji.
+-   **Niski (informacje o interfejsie API REST)**: może to być dodatni nieszkodliwy lub blokowania ataków. 
+    - Usługa Security Center nie jest wystarczająco pewność, że celem jest złośliwego i działanie może być nieszkodliwe. Na przykład Wyczyść dziennik jest akcję, która może się zdarzyć, gdy osoba atakująca próbuje użyć w celu ukrycia śladów ich działania, ale w wielu przypadkach jest operacją procedury wykonywane przez administratorów.
+    - Usługa Security Center nie zwykle zorientować się, gdy ataków zostały zablokowane, chyba że jest to interesujące takim Sugerujemy, że masz możliwość przejrzenia. 
+-   **Komunikat informacyjny (tryb cichy, w interfejsie API REST)**: widoczne są tylko alerty informacyjne przejść do szczegółów w przypadku wystąpienia zdarzenia zabezpieczeń lub jeśli z określonym za pomocą interfejsu API REST alertów identyfikatora. Zdarzenia zwykle składa się z liczby alertów, niektóre z nich mogą być wyświetlane w ich własnych tylko do informacyjna, ale w kontekście innych alertów może być Alberta bliżej. 
 
 ### <a name="filtering-alerts"></a>Filtrowanie alertów
 Alerty można filtrować na podstawie daty, stanu i ważności. Filtrowanie alertów może być przydatne w przypadku scenariuszy, w których należy zawęzić zakres wyświetlanych alertów zabezpieczeń. Możesz na przykład sprawdzić alerty zabezpieczeń, które wystąpiły w ciągu ostatnich 24 godzin, ponieważ badasz potencjalne naruszenie zabezpieczeń systemu.

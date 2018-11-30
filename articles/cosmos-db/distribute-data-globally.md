@@ -9,16 +9,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: c90450fa4cc35b460198f5a351a965aee4ea4f4b
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 181a8ad7291a8e8a0aa2a8373985c8747bd4569b
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636419"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446827"
 ---
-# <a name="build-globally-distributed-applications-with-azure-cosmos-db"></a>Twórz globalnie dystrybuowane aplikacje z usługą Azure Cosmos DB
+# <a name="global-data-distribution-with-azure-cosmos-db"></a>Dane globalne dystrybucji za pomocą usługi Azure Cosmos DB
 
-Wiele współczesnych aplikacji wymaga działały w wielu centrach danych. Te aplikacje są określane jako globalnie rozproszonych aplikacji. Te aplikacje są zawsze "włączone", i są one dostępne dla użytkowników na całym świecie. Zarządzanie globalna dystrybucja danych, które jest używane przez te aplikacje przy jednoczesnym zapewnieniu małego opóźnienia, elastyczną skalowalność przepływności i wysoką dostępność na całym świecie, jest problem twardych. Usługa Azure Cosmos DB to usługa globalnie rozproszonej bazy danych, która zapewnia małe opóźnienia, elastyczną skalowalność przepływności, semantyka dobrze zdefiniowanych wyjaśnienie pojęcia spójności danych i wysoką dostępność. Krótko mówiąc Jeśli wymagania w zakresie aplikacji zagwarantować czasu szybką odpowiedź w dowolnym miejscu na świecie, jeśli wymaga, aby zawsze być w trybie online, a musi elastycznych i nieograniczonej skalowalności przepływność oraz Magazyn, należy rozważyć tworzenie aplikacji przy użyciu usługi Azure Cosmos DB.
+Dzisiejsze aplikacje wymagają reagujących i zawsze w trybie online. Uzyskanie z małymi opóźnieniami i wysoką dostępność, wystąpień te aplikacje muszą zostać wdrożone w centrach danych, które znajdują się blisko swoich użytkowników. Te aplikacje są zazwyczaj wdrożone w wielu centrach danych i są nazywane globalnie rozproszonych. Globalnie dystrybuowane aplikacje muszą globalnie rozproszonej bazy danych, które przezroczyste można replikować dane w dowolnym miejscu na świecie aplikacji do działania na kopii danych, który znajduje się w pobliżu użytkowników. Usługa Azure Cosmos DB to usługa globalnie rozproszonej bazy danych, która zapewnia małe opóźnienia, elastyczną skalowalność przepływności, semantyka dobrze zdefiniowanych wyjaśnienie pojęcia spójności danych i wysoką dostępność. Krótko mówiąc Jeśli wymagania w zakresie aplikacji zagwarantować czasu szybką odpowiedź w dowolnym miejscu na świecie, jeśli wymaga, aby zawsze być w trybie online, a musi elastycznych i nieograniczonej skalowalności przepływność oraz Magazyn, należy rozważyć tworzenie aplikacji przy użyciu usługi Azure Cosmos DB.
 
 Usługa Azure Cosmos DB jest podstawowe usługi platformy Azure i jest on dostępny w wszystkich [regionów świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/regions/) domyślnie. Firma Microsoft utrzymuje innowacyjne centra danych platformy Azure w regionach 54 + na całym świecie i nadal regionalnych obecności w celu spełnienia rosnących potrzeb klientów. Podczas tworzenia konta usługi Azure Cosmos możesz zdecydować, regiony, które powinny zostać wdrożone w. Firma Microsoft obsługuje usługi Azure Cosmos DB usługi 24/7, dzięki czemu możesz skupić się na swoich aplikacjach.
 

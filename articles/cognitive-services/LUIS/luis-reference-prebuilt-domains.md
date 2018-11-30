@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: f424abd339bda6c29079e3d286cbe96593f16f52
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 287a0986d921798bc7735e5a75d279f010712b16
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040044"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335627"
 ---
 # <a name="prebuilt-domain-reference"></a>Dokumentacja wstępnie utworzonych domen
 Ta dokumentacja zawiera informacje na temat [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md), które są wstępnie utworzonych kolekcji intencje i podmioty, które są oferowane usługi LUIS.
@@ -27,27 +27,27 @@ Usługa LUIS oferuje 20 ze wstępnie utworzonych domen.
 
 | Wstępnie utworzone domeny | Opis | Obsługiwane języki |
 | ---------------- |-----------------------|:------:|
-| Kalendarz | Domeny kalendarza zapewnia intencje i podmioty, dodawanie, usuwanie, lub edytowanie terminu, sprawdzanie dostępności uczestników i znajdowanie informacji na temat zdarzenia kalendarza.| pl-PL<br/> zh-CN |
-| Aparat fotograficzny | Domeny aparatu przewiduje intencje i podmioty biorąc zdjęcia, nagrania wideo i wideo emisji do aplikacji.| pl-PL |
-| Komunikacja | Wysyłanie komunikatów i wykonywaniu rozmów telefonicznych.| pl-PL <br/> zh-CN |
-| Rozrywka  | Obsługa zapytań związanych z muzyka, filmy i TV.| pl-PL |
-| Zdarzenia | Pokazuje rezerwacji biletów na koncerty, rozwiązanie, gry sportowe i dokument.| pl-PL |
-| Przydatności | Obsługa żądań związanych z przydatności działania śledzenia.| pl-PL |
-| Gry | Obsługa żądań związanych z gier innych firm, gry dla wielu graczy.| pl-PL |
-| HomeAutomation | Kontrolowanie inteligentne macierzystego urządzeniami, takimi jak światła i urządzeń.| pl-PL<br/> zh-CN |
-| MovieTickets | Rezerwacji bilety do filmów na theater filmu.| pl-PL |
-| Muzyka | Odtwarzanie utworów muzycznych na odtwarzacz muzyczny.| pl-PL<br/> zh-CN |
-| Uwaga | Domeny Uwaga zapewnia intencje i podmioty, związane z tworzeniem, edytowaniem i znajdowanie uwagi.| pl-PL<br/> zh-CN |
-| OnDevice | Domeny OnDevice zapewnia intencje i podmioty, związane z sterowania urządzeniem.| pl-PL<br/> zh-CN |
-| Miejsca  | Obsługa zapytań dotyczących takich firm, instytucje, restauracje, publicznego miejsca do magazynowania i adresów miejsc.| pl-PL<br/> zh-CN |
-| Przypomnienie | Obsługa żądań związanych z tworzeniem, edytowaniem i znajdowanie przypomnienia.| pl-PL<br/> zh-CN |
-| RestaurantReservation | Obsługa żądań do zarządzania rezerwacje restauracji.| pl-PL<br/> zh-CN |
-| Taksówek | Obsługa rezerwacji dla taksówek.| pl-PL<br/> zh-CN |
-| Tłumaczenie | Tłumaczenie tekstu na język docelowy.| pl-PL<br/> zh-CN |
-| TV | Kontrolowanie TV.| pl-PL |
-| Usługi użyteczności publicznej  | Obsługa żądań, które są wspólne w wielu domenach, takich jak "pomoc", "Powtórz", "Rozpocznij ponownie".| pl-PL |
-| Pogoda | Pobieranie pogody i prognozy.| pl-PL<br/> zh-CN |
-| Sieć Web | Przejdź do witryny sieci Web.| pl-PL<br/> zh-CN |
+| Kalendarz | Domeny kalendarza zapewnia intencje i podmioty, dodawanie, usuwanie, lub edytowanie terminu, sprawdzanie dostępności uczestników i znajdowanie informacji na temat zdarzenia kalendarza.| en-US<br/> zh-CN |
+| Aparat fotograficzny | Domeny aparatu przewiduje intencje i podmioty biorąc zdjęcia, nagrania wideo i wideo emisji do aplikacji.| en-US |
+| Komunikacja | Wysyłanie komunikatów i wykonywaniu rozmów telefonicznych.| en-US <br/> zh-CN |
+| Rozrywka  | Obsługa zapytań związanych z muzyka, filmy i TV.| en-US |
+| Zdarzenia | Pokazuje rezerwacji biletów na koncerty, rozwiązanie, gry sportowe i dokument.| en-US |
+| Przydatności | Obsługa żądań związanych z przydatności działania śledzenia.| en-US |
+| Gry | Obsługa żądań związanych z gier innych firm, gry dla wielu graczy.| en-US |
+| HomeAutomation | Kontrolowanie inteligentne macierzystego urządzeniami, takimi jak światła i urządzeń.| en-US<br/> zh-CN |
+| MovieTickets | Rezerwacji bilety do filmów na theater filmu.| en-US |
+| Muzyka | Odtwarzanie utworów muzycznych na odtwarzacz muzyczny.| en-US<br/> zh-CN |
+| Uwaga | Domeny Uwaga zapewnia intencje i podmioty, związane z tworzeniem, edytowaniem i znajdowanie uwagi.| en-US<br/> zh-CN |
+| OnDevice | Domeny OnDevice zapewnia intencje i podmioty, związane z sterowania urządzeniem.| en-US<br/> zh-CN |
+| Miejsca  | Obsługa zapytań dotyczących takich firm, instytucje, restauracje, publicznego miejsca do magazynowania i adresów miejsc.| en-US<br/> zh-CN |
+| Przypomnienie | Obsługa żądań związanych z tworzeniem, edytowaniem i znajdowanie przypomnienia.| en-US<br/> zh-CN |
+| RestaurantReservation | Obsługa żądań do zarządzania rezerwacje restauracji.| en-US<br/> zh-CN |
+| Taksówek | Obsługa rezerwacji dla taksówek.| en-US<br/> zh-CN |
+| Tłumaczenie | Tłumaczenie tekstu na język docelowy.| en-US<br/> zh-CN |
+| TV | Kontrolowanie TV.| en-US |
+| Usługi użyteczności publicznej  | Obsługa żądań, które są wspólne w wielu domenach, takich jak "pomoc", "Powtórz", "Rozpocznij ponownie".| en-US |
+| Pogoda | Pobieranie pogody i prognozy.| en-US<br/> zh-CN |
+| Sieć Web | Przejdź do witryny sieci Web.| en-US<br/> zh-CN |
 
 Aby uzyskać więcej szczegółów w każdej domenie zobacz w kolejnych sekcjach.
 
@@ -68,7 +68,7 @@ Domeny kalendarza zapewnia intencje i podmioty, związane z wpisy kalendarza. In
 | Nazwa jednostki | Opis | Przykłady |
 | ---------------- |-----------------------|----|
 | Lokalizacja | Lokalizacja elementu kalendarza, spotkania lub terminu. Adresy, miasta i regiony są dobrym przykładem lokalizacji.| 209 Nashville w przypadku treningów <br/><br/>897 pancake DOM<br/><br/>Garażu|
-| Temat | Tytuł spotkania lub terminu.| Termin dentist firmy <br/><br/>Obiad z Julia<br/><br/>Lekarza|
+| Podmiot | Tytuł spotkania lub terminu.| Termin dentist firmy <br/><br/>Obiad z Julia<br/><br/>Lekarza|
 
 ## <a name="camera"></a>Aparat fotograficzny 
 Domeny aparatu zapewnia intencje i podmioty, powiązane z użyciem aparatu fotograficznego. Intencji obejmuje przechwytywanie zdjęcia, selfie, zrzut ekranu lub filmu wideo, a emisja wideo do aplikacji.
@@ -107,7 +107,7 @@ Domain komunikacja zapewnia intencje i podmioty, związane z poczty e-mail, wiad
 | FindContact| Znajdowanie informacji kontaktowych według nazwy.|Znajdź numer dla Karoliny<br/>Pokaż numer dla Karoliny<br/>|
 | FindSpeedDial| Znajdź numer szybkie, wybieranie numeru, numer telefonu jest ustawiony na i na odwrót.|Co to jest mój numer wybierania 5?<br/>Czy mają szybkość wybierania zestaw?<br/>Co to jest numer wybierania 941-5555-333?|
 | GetForwardingsStatus| Uzyskaj bieżący stan przekazywania połączeń.|Czy włączone jest Moja przesyłanie dalej wywołania?<br/>Informacje o tym, jeśli mój stan połączenia jest włączone czy wyłączone<br/>|
-| GoBack| Wróć do poprzedniego kroku.|Wróć do usługi twitter<br/>Przejść wstecz<br/>Wstecz|
+| GoBack| Wróć do poprzedniego kroku.|Wróć do usługi twitter<br/>Przejść wstecz<br/>Przejdź wstecz|
 | Zignoruj| Ignoruj przychodzących połączeń.|Nie można znaleźć odpowiedzi<br/>Ignoruj wywołania|
 | IgnoreWithMessage| Ignoruj przychodzących połączeń i odpowiedzi z tekstem zamiast tego.|Nie można znaleźć odpowiedzi to wywołanie, ale zamiast tego wysłać wiadomość.<br/>Ignoruj i wysłać ponownie wiadomość.|
 | PressKey| Naciśnij przycisk lub numer na klawiaturze numerycznej.|Wybierania star.<br/>Naciśnij klawisz 1 2 3.|
@@ -171,7 +171,7 @@ Domena zdarzeń zapewnia intencje i jednostki związane z rezerwacji biletów dl
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |
 | ---------------- |-----------------------|----|
-| Książki| Zakup biletów ze zdarzeniem.|Chcę otrzymywać zakup biletów dla symphony to weekend.|
+| Book (Książka)| Zakup biletów ze zdarzeniem.|Chcę otrzymywać zakup biletów dla symphony to weekend.|
 
 
 ### <a name="entities"></a>Jednostki
@@ -250,7 +250,7 @@ When is Captain Omar showing?
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |
 | ---------------- |-----------------------|----|
-| Książki | Zakup biletów filmu.|Zarezerwuj dwie bilety kapitana Omar i dwa muszkieterami<br/>Chcę, aby kupić biletu dla filmu w przyszłości<br/>Chcę bilet Captian Omar część 2 dalej środa|
+| Book (Książka) | Zakup biletów filmu.|Zarezerwuj dwie bilety kapitana Omar i dwa muszkieterami<br/>Chcę, aby kupić biletu dla filmu w przyszłości<br/>Chcę bilet Captian Omar część 2 dalej środa|
 |GetShowTime| Uzyskaj showtime filmu.|Gdy Omar kapitana jest wyświetlane?|
 
 
@@ -417,7 +417,7 @@ At what time does Safeway close?
 |Selectitem —|Wybierz element z listy wyborów odnoszących się do miejsca lub miejsc.|Wybierz drugą<br/>Zaznacz pierwszą pozycję|
 |ShowMap|Pokaż mapę obszaru.|Pokaż mapę dla drugiej<br/>Pokaż mapę<br/>Znajdź San Francisco na mapie|
 |ShowNext|Pokaż następny element w serii.|Pokaż następny<br/>Przejdź do następnej strony|
-|ShowPrevious|Pokaż poprzedni element w serii.|Pokaż poprzedni<br/>poprzedni<br/>Przejdź do poprzedniego|
+|ShowPrevious|Pokaż poprzedni element w serii.|Pokaż poprzedni<br/>wstecz<br/>Przejdź do poprzedniego|
 |StartOver|Ponowne uruchomienie aplikacji lub Rozpocznij nową sesję.|Zacznij od nowa<br/>Nowej sesji<br/>
 restart|
 |TakesReservations|Zapytaj, czy miejsce akceptuje rezerwacji.|Galerii sztuki akceptować rezerwacje<br/>Czy jest możliwe rezerwację w ogrodzie oliwek
@@ -511,7 +511,7 @@ Cancel my Uber
 ### <a name="intents"></a>Intencje
 | Nazwa elementu Intent | Opis | Przykłady |
 | ---------------- |-----------------------|----|
-| Książki | Wywołaj taksówek. |Pobierz mnie plik cab<br/>Znajdź taksówek<br/>Zarezerwuj mnie uber x|
+| Book (Książka) | Wywołaj taksówek. |Pobierz mnie plik cab<br/>Znajdź taksówek<br/>Zarezerwuj mnie uber x|
 | Cancel | Anulowanie akcji dotyczących taksówek rezerwacji.|Anuluj mojej taksówek<br/>Anuluj mojej Uber|
 | Śledź | Śledzenie trasy taksówek.|Jak długo ma czekać na Moje taksówek<br/>Gdzie jest Mój Uber?|
 
@@ -588,7 +588,7 @@ Repeat last question please
 | Cancel | Anulowanie akcji.|Anuluj komunikat<br/>Nie chcę już Wyślij wiadomość e-mail|
 | Potwierdź | Potwierdź akcję.|tak, już potwierdzam, że<br/>Dobra am I Potwierdzanie<br/>OK am I Potwierdzanie|
 | FinishTask | Zakończ zadanie pracy użytkownika.|Wszystkie operacje zostały zakończone<br/>Zakończona<br/>To się robi|
-| GoBack | Przejdź wstecz jeden krok lub wracasz do poprzedniego kroku.|Wróć do usługi Twitter<br/>Przejść wstecz<br/>Wstecz|
+| GoBack | Przejdź wstecz jeden krok lub wracasz do poprzedniego kroku.|Wróć do usługi Twitter<br/>Przejść wstecz<br/>Przejdź wstecz|
 | Pomoc | Żądanie w celu uzyskania pomocy.|Pomóż<br/>Otwórz Pomoc<br/>pomoc|
 | Powtarzanie | Powtórz akcję.|Powtórz ostatnie pytanie.<br/>Powtórz ostatni utwór|
 | ShowNext | Pokaż następny element w serii. |Pokaż następny<br/>Przejdź do następnej strony|

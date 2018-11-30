@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b5f36bcce77ad0dac3a6e2e9da39493be6751539
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 4ac036bbb94ae8b009700ff21bad1a117843584c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985849"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427203"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoły w wersji 2.0 — przepływ kodu autoryzacji OAuth 2.0
 
@@ -33,7 +33,7 @@ Przyznawanie kodu autoryzacji OAuth 2.0 może służyć w aplikacjach, które s�
 > [!NOTE]
 > Nie wszystkie scenariusze usługi Azure Active Directory i funkcje są obsługiwane przez punkt końcowy w wersji 2.0. Aby ustalić, należy użyć punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](active-directory-v2-limitations.md).
 
-Przepływ kodu autoryzacji OAuth 2.0 opisano w [sekcji 4.1 specyfikacji protokołu OAuth 2.0](http://tools.ietf.org/html/rfc6749). Jest używana do wykonywania uwierzytelniania i autoryzacji w większości typów aplikacji, w tym [aplikacje sieci web](v2-app-types.md#web-apps) i [natywnie zainstalowanych aplikacji](v2-app-types.md#mobile-and-native-apps). Przepływ umożliwia aplikacjom, które można bezpiecznie uzyskać access_tokens, którego można uzyskać dostęp do zasobów zabezpieczonych przez punktu końcowego v2.0. 
+Przepływ kodu autoryzacji OAuth 2.0 opisano w [sekcji 4.1 specyfikacji protokołu OAuth 2.0](https://tools.ietf.org/html/rfc6749). Jest używana do wykonywania uwierzytelniania i autoryzacji w większości typów aplikacji, w tym [aplikacje sieci web](v2-app-types.md#web-apps) i [natywnie zainstalowanych aplikacji](v2-app-types.md#mobile-and-native-apps). Przepływ umożliwia aplikacjom, które można bezpiecznie uzyskać access_tokens, którego można uzyskać dostęp do zasobów zabezpieczonych przez punktu końcowego v2.0. 
 
 ## <a name="protocol-diagram"></a>Diagram protokołu
 
@@ -69,7 +69,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | redirect_uri          | Zalecane | Redirect_uri aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Dokładnie musi odpowiadać jednej z redirect_uris, zarejestrowanych w portalu, z wyjątkiem musi być zakodowane w adresie url. W przypadku aplikacji natywnych i mobilne, należy używać wartość domyślną `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
 | scope                 | wymagane    | Listę rozdzielonych spacjami [zakresy](v2-permissions-and-consent.md) ma użytkownika o zgodę na.           |
 | response_mode         | Zalecane | Określa metodę, które mają być używane do wysyłania wynikowy token wstecz do swojej aplikacji. Może być `query`, `fragment`, lub `form_post`. `query` zawiera kod jako parametr ciągu zapytania identyfikatora URI przekierowania. W przypadku żądania tokenu Identyfikatora, przy użyciu niejawnego przepływu, nie można użyć `query` określonej [Specyfikacja OpenID](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Jeśli masz żądania tylko kod, możesz użyć `query`, `fragment`, lub `form_post`. `form_post` wykonuje WPIS zawierający kod, aby identyfikator URI przekierowania. Aby uzyskać więcej informacji, zobacz [protokołu OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
-| state                 | Zalecane | Wartość uwzględnione w żądaniu, które również zostaną zwrócone w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, który chcesz. Losowo generowany unikatową wartość jest zwykle używany podczas [zapobieganie atakom na fałszerstwo żądania międzywitrynowego](http://tools.ietf.org/html/rfc6749#section-10.12). Przed wystąpieniem żądania uwierzytelniania, takich jak strony lub widoku, które znajdowały się w wartości również zakodować informacje o stanie użytkownika w aplikacji. |
+| state                 | Zalecane | Wartość uwzględnione w żądaniu, które również zostaną zwrócone w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, który chcesz. Losowo generowany unikatową wartość jest zwykle używany podczas [zapobieganie atakom na fałszerstwo żądania międzywitrynowego](https://tools.ietf.org/html/rfc6749#section-10.12). Przed wystąpieniem żądania uwierzytelniania, takich jak strony lub widoku, które znajdowały się w wartości również zakodować informacje o stanie użytkownika w aplikacji. |
 | wiersz                | opcjonalne    | Wskazuje typ interakcji z użytkownikiem, który jest wymagany. Jedyne prawidłowe wartości w tym momencie są "login", "none" i "". `prompt=login` Spowoduje to wymuszenie użytkownika o wprowadzenie poświadczeń w tym żądaniu Negacja logowania jednokrotnego. `prompt=none` jest przeciwieństwem - zapewni, że użytkownik nie zobaczy wszystkie interaktywne monity w inny sposób. Jeśli nie można ukończyć żądania dyskretnie za pomocą logowania jednokrotnego, zwróci punktu końcowego v2.0 `interaction_required` błędu. `prompt=consent` wywołuje okno dialogowe ze zgodą OAuth po użytkownik się zaloguje, monitem o nadanie uprawnień do aplikacji. |
 | login_hint            | opcjonalne    | Można wstępnie wypełnić pola Adres e-mail/nazwy użytkownika strony logowania dla użytkownika, jeśli znasz swoją nazwę użytkownika, wcześniej. Aplikacje często użyje tego parametru podczas ponownego uwierzytelniania już o wyodrębnić nazwy użytkownika z poprzedniego logowania za pomocą `preferred_username` oświadczenia.                                                                                                                                                                                                                                                                                                    |
 | Element domain_hint           | opcjonalne    | Może być jednym z `consumers` lub `organizations`. Jeśli uwzględniony, pominie proces odnajdywania bazujące na poczcie e-mail tego użytkownika przechodzi przez w witrynie v2.0 logowania, co prowadzi do nieco bardziej usprawnione środowisko użytkownika. Aplikacje często będzie tego parametru należy użyć podczas ponownego uwierzytelniania, wyodrębniając `tid` z poprzedniego logowania. Jeśli `tid` oświadczenia, wartość jest `9188040d-6c67-4c5b-b112-36a304b66dad`, należy użyć `domain_hint=consumers`. W przeciwnym razie użyj `domain_hint=organizations`.                                                                                                              |

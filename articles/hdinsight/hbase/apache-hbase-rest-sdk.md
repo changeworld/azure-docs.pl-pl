@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/13/2017
 ms.author: ashishth
-ms.openlocfilehash: af3b87fbe79624143b6c2b7e0a3c50852e532524
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 89c74b0c2144776d3bbc8a87f660b546ad40987f
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042125"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495409"
 ---
-# <a name="use-the-hbase-net-sdk"></a>Korzystanie z zestawu HBase .NET SDK
+# <a name="use-the-net-sdk-for-apache-hbase"></a>Baza danych Apache hbase przy użyciu zestawu .net SDK
 
-[Baza danych HBase](apache-hbase-overview.md) oferuje dwie opcje podstawowego do pracy z danymi: [gałąź rejestru, kwerendy i wywołania interfejsu API RESTful bazy danych HBase w](apache-hbase-tutorial-get-started-linux.md). Można pracować bezpośrednio za pomocą interfejsu API REST `curl` polecenia lub podobnej użyteczności.
+[Apache HBase](apache-hbase-overview.md) oferuje dwie opcje podstawowego do pracy z danymi: [zapytania usługi Apache Hive i wywołania interfejsu API RESTful bazy danych HBase w](apache-hbase-tutorial-get-started-linux.md). Można pracować bezpośrednio za pomocą interfejsu API REST `curl` polecenia lub podobnej użyteczności.
 
 W przypadku aplikacji C# i .NET [biblioteki klienta REST HBase firmy Microsoft dla platformy .NET](https://www.nuget.org/packages/Microsoft.HBase.Client/) udostępnia bibliotekę klienta ponad interfejsem API REST HBase.
 
@@ -37,7 +37,7 @@ var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdins
 client = new HBaseClient(credentials);
 ```
 
-Zamień CLUSTERNAME nazwy klastra HDInsight HBase i nazwy użytkownika i HASŁA przy użyciu poświadczeń usługi Hadoop, określone w procesie tworzenia klastra. Domyślna nazwa użytkownika usługi Hadoop jest **administratora**.
+Zamień CLUSTERNAME nazwy klastra HDInsight HBase i nazwy użytkownika i HASŁA przy użyciu poświadczeń usługi Apache Hadoop, określone w procesie tworzenia klastra. Domyślna nazwa użytkownika usługi Hadoop jest **administratora**.
 
 ## <a name="create-a-new-table"></a>Utwórz nową tabelę
 
@@ -113,7 +113,7 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-Baza danych HBase implementuje BigTable, dlatego format danych wygląda podobnie do poniższego:
+Implementuje HBase [BigTable chmury](https://cloud.google.com/bigtable/), dlatego format danych wygląda podobnie do następującej:
 
 ![Użytkownik mający rolę użytkownika klastra](./media/apache-hbase-rest-sdk/table.png)
 
@@ -189,4 +189,4 @@ finally
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Rozpoczynanie pracy z przykładem bazy danych Apache HBase w HDInsight](apache-hbase-tutorial-get-started-linux.md)
-* Tworzenie aplikacji end-to-end z [analizowanie opinii na Twitterze w czasie rzeczywistym z bazą danych HBase](../hdinsight-hbase-analyze-twitter-sentiment.md)
+* Tworzenie aplikacji end-to-end z [analizowanie opinii na Twitterze w czasie rzeczywistym z bazy danych Apache HBase](../hdinsight-hbase-analyze-twitter-sentiment.md)

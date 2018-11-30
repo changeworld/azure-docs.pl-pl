@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: 7726a28e0254f4316759c3d8c74f57db6a9e399e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 1df9b07d5a0a9e5018fc024038e65723c606ef71
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242198"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442985"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Konfigurowanie zakresu synchronizacji z usługi Azure AD do domeny zarządzanej
 W tym artykule pokazano, jak skonfigurować tylko określone konta użytkowników mają być synchronizowane z katalogiem usługi Azure AD do domeny zarządzanej usług domenowych Azure AD.
@@ -47,7 +47,12 @@ Poniższa tabela pozwala określić, jak używać synchronizacji o określonym z
 >
 
 
-## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization"></a>Tworzenie nowej domeny zarządzanej i włączanie oparte na grupach zakresu synchronizacji
+## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-azure-portal"></a>Tworzenie nowej domeny zarządzanej i włączanie grupy synchronizacji opartej na zakresie przy użyciu witryny Azure portal
+
+1. Postępuj zgodnie z [Wprowadzenie — przewodnik](active-directory-ds-getting-started.md) można utworzyć domeny zarządzanej.
+2. Wybierz **zakresie** podczas wyboru stylu synchronizacji w kreatorze tworzenia usług domenowych Azure AD.
+
+## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-powershell"></a>Tworzenie nowej domeny zarządzanej i włączanie grupy synchronizacji opartej na zakresie przy użyciu programu PowerShell
 Aby ukończyć ten zestaw kroków za pomocą programu PowerShell. Zapoznaj się z instrukcjami, aby [włączyć usługi Azure Active Directory Domain Services przy użyciu programu PowerShell](active-directory-ds-enable-using-powershell.md). Kilka kroków opisanych w tym artykule są nieco modyfikowane Konfigurowanie synchronizacji o określonym zakresie.
 
 Wykonaj poniższe kroki, aby skonfigurować synchronizację o określonym zakresie oparte na grupach, do domeny zarządzanej:

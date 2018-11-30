@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 2b057a94022077aa210b1e4ebb6122eaf350a40b
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: dd07ed66b630f541ed3e2001dffdebed150bb71a
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457412"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443036"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -53,9 +53,39 @@ Analiza ruchu sprawdza nieprzetworzonych dzienników przepływu sieciowych grup 
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
-Można użyć analizy ruchu dla sieciowych grup zabezpieczeń w jednym z następujących regionów: zachodnio-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, północno-środkowe stany USA, południowo-środkowe stany USA, środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, Kanada Środkowa, Europa Zachodnia, Europa Północna, zachodnie Zjednoczone Królestwo, południowe Zjednoczone Królestwo, Japonia Wschodnia, Indie środkowe , Australia Wschodnia, Australia Południowo-Wschodnia i Azja południowo-wschodnia. 
+Korzystanie z analizy ruchu dla sieciowych grup zabezpieczeń w jednym z następujących obsługiwanych regionów:
 
-Obszar roboczy usługi log analytics, musi istnieć w zachodnio-środkowe stany USA, wschodnie stany USA, Europa Zachodnia, południowe Zjednoczone Królestwo, Kanada centralnej, Japonia Wschodnia, Indie centralnej Australia południowo-wschodnia lub regionu Azja południowo-wschodnia.
+* Kanada Środkowa
+* Środkowo-zachodnie stany USA
+* Wschodnie stany USA
+* Wschodnie stany USA 2
+* Środkowo-północne stany USA
+* Środkowo-południowe stany USA
+* Środkowe stany USA
+* Zachodnie stany USA
+* Zachodnie stany USA 2
+* Europa Zachodnia
+* Europa Północna
+* Brazylia Południowa
+* Zachodnie Zjednoczone Królestwo
+* Południowe Zjednoczone Królestwo
+* Australia Wschodnia
+* Australia Południowo-Wschodnia
+* Azja Południowo-Wschodnia
+* Indie Środkowe
+* Indie Południowe
+* Japonia Wschodnia 
+
+Obszar roboczy usługi Log Analytics muszą znajdować się w następujących regionach:
+* Kanada Środkowa
+* Środkowo-zachodnie stany USA
+* Wschodnie stany USA
+* Europa Zachodnia
+* Południowe Zjednoczone Królestwo
+* Australia Południowo-Wschodnia
+* Azja Południowo-Wschodnia
+* Indie Środkowe
+* Japonia Wschodnia
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

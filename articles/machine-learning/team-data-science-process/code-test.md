@@ -1,26 +1,22 @@
 ---
 title: Kod do nauki o danych, testowanie na platformie Azure za pomocą UCI treści dla dorosłych dochodu prognozowania zestawu danych — zespołu danych dla celów naukowych i usługom DevOps platformy Azure
 description: Testowanie za pomocą danymi przewidywań treści dla dorosłych dochodu UCI kod do nauki o danych
-services: machine-learning, team-data-science-process
-documentationcenter: ''
-author: weig
-manager: deguhath
+services: machine-learning
+author: marktab
+manager: cgronlun
 editor: cgronlun
-ms.assetid: b8fbef77-3e80-4911-8e84-23dbf42c9bee
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2018
-ms.author: weig
-ms.openlocfilehash: ad0a8b5b0bb9afbbe626c9481961f20ccd4797bf
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: tdsp
+ms.custom: (previous author=weig, ms.author=weig)
+ms.openlocfilehash: d04f50bc3de34c28c10be7ba429f85a99096de47
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44294699"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443954"
 ---
 # <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>Testowanie z zestawem danych Prognozowanie przychodów treści dla dorosłych UCI kod do nauki o danych
 Ten artykuł zawiera wskazówki wstępne do testowania kodu w przepływie pracy do analizy danych. Takie testy daje analitykom danych systematyczne i wydajny sposób kontroli jakości i oczekiwany wynik swój kod. Używamy Team Data Science naukowych [projektu, który używa zestawu danych na rachunku treści dla dorosłych](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , opublikowaliśmy wcześniej pokazanie sposobu testowania kodu może odbywać się. 

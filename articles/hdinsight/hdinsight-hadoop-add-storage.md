@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 31461e1d316953c2e69d252f1313180c57562dfd
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 194f84d2ce5360aa9ad9f3d771bf24f153ac6f5c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009195"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496312"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Dodawanie kolejnych kont magazynu do HDInsight
 
 Dowiedz się, jak dodać konta dodatkowego magazynu usługi Azure HDInsight przy użyciu akcji skryptu. Kroki opisane w tym dokumencie Dodaj konto magazynu do istniejącego klastra HDInsight opartych na systemie Linux.
 
 > [!IMPORTANT]
-> Informacje przedstawione w tym dokumencie jest o dodanie dodatkowego miejsca do magazynowania w klastrze, po jego utworzeniu. Aby uzyskać informacje na temat dodawania konta magazynu podczas tworzenia klastra, zobacz [konfigurowanie klastrów w HDInsight przy użyciu usługi Hadoop, Spark, Kafka i](hdinsight-hadoop-provision-linux-clusters.md).
+> Informacje przedstawione w tym dokumencie jest o dodanie dodatkowego miejsca do magazynowania w klastrze, po jego utworzeniu. Aby uzyskać informacje na temat dodawania konta magazynu podczas tworzenia klastra, zobacz [konfigurowanie klastrów w HDInsight przy użyciu technologii Apache Hadoop, Apache Spark, Apache Kafka i](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="how-it-works"></a>Jak to działa
 
@@ -43,7 +43,7 @@ Podczas przetwarzania skrypt wykonuje następujące czynności:
 
 * Dodaje konto magazynu do pliku core-site.xml.
 
-* Zatrzymuje i uruchamia ponownie usługi Oozie, YARN, MapReduce2 i system plików HDFS. Zatrzymywanie i uruchamianie tych usług umożliwi to używanie nowego konta magazynu.
+* Zatrzymuje i uruchamia ponownie [Apache Oozie](https://oozie.apache.org/), [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), [Apache Hadoop MapReduce2](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), i [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) usług. Zatrzymywanie i uruchamianie tych usług umożliwi to używanie nowego konta magazynu.
 
 > [!WARNING]
 > Za pomocą konta magazynu w innej lokalizacji niż klaster HDInsight nie jest obsługiwana.

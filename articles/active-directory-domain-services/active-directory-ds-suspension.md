@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 11/20/2018
 ms.author: ergreenl
-ms.openlocfilehash: 6448e592db8024d911831b0b3634dabb4ed3b101
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 31e7307e427b175eb7424ecaee380bd90ce8150e
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063119"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443410"
 ---
 # <a name="suspended-domains"></a>Wstrzymane domen
 Jeśli Azure Active Directory Domain Services (Azure AD DS) jest w stanie zrealizować domeny zarządzanej przez długi czas, umieszcza je w domenie zarządzanej przechodzą w stan wstrzymania. W tym artykule opisano, dlaczego domeny zarządzane są wstrzymywane i jak skorygować wstrzymania domeny.
@@ -43,7 +43,7 @@ Trwa domeny zarządzanej, który jest skonfigurowany prawidłowo i operacyjne re
 
 
 ### <a name="needs-attention-state"></a>Stan "Wymaga uwagi"
-Domena zarządzana jest w **wymaga uwagi** stanie, jeśli co najmniej jeden problem wymaga administratorowi na podjęcie działań. Na stronie kondycji domeny zarządzanej zawiera jeden lub więcej alertów, w tym stanie. 
+Domena zarządzana jest w **wymaga uwagi** stanie, jeśli co najmniej jeden problem wymaga administratorowi na podjęcie działań. Na stronie kondycji domeny zarządzanej zawiera jeden lub więcej alertów, w tym stanie.
 
 Na przykład jeśli restrykcyjne sieciowej grupy zabezpieczeń skonfigurowane dla Twojej sieci wirtualnej, Microsoft może nie można zaktualizować i monitorować Twojej domeny zarządzanej. Ta konfiguracja nieprawidłowy wyzwala alert, który polega na spakowaniu Twojej domeny zarządzanej do stanu "Wymaga uwagi".
 

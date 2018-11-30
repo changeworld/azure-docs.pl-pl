@@ -1,5 +1,5 @@
 ---
-title: Moduł programu PowerShell dla usługi Machine Learning | Dokumentacja firmy Microsoft
+title: Moduł programu PowerShell dla usługi Machine Learning Studio — Azure | Dokumentacja firmy Microsoft
 description: Moduł programu PowerShell dla usługi Azure Machine Learning jest dostępny w trybie publicznej wersji zapoznawczej. Tworzenie i zarządzanie obszarami roboczymi, eksperymentów, usług sieci web i za pomocą programu PowerShell.
 keywords: experiment,linear regression,machine learning algorithms,machine learning tutorial,predictive modeling techniques,data science experiment
 services: machine-learning
@@ -17,14 +17,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.openlocfilehash: 795ce4e86c5fd8dac34f18cbbe80dd1395d94c5c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 3191ff845f72c87b85fdd414716ed9a00b022d06
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263132"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312031"
 ---
-# <a name="powershell-module-for-microsoft-azure-machine-learning"></a>Moduł programu PowerShell dla usługi Azure Machine Learning
+# <a name="powershell-module-for-azure-machine-learning-studio"></a>Moduł programu PowerShell dla usługi Azure Machine Learning Studio
 Moduł programu PowerShell dla usługi Azure Machine Learning to zaawansowane narzędzie, które pozwala na zarządzanie obszarami roboczymi, eksperymenty, zestawy danych i klasycznych usług sieci web za pomocą programu Windows PowerShell.
 
 Można wyświetlić dokumentację i pobrać moduł wraz z pełnym kodem źródłowym, pod [ https://aka.ms/amlps ](https://aka.ms/amlps). 

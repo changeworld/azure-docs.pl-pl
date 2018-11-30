@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 8bf87f9d1d1ab6da4b034890f1fbe058199eca41
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4f86dee539e3cc5a90db828ed11dbd225a00555d
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007146"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334639"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Zaloguj się do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -39,7 +39,7 @@ Istnieje wiele korzyści, zaloguj się do maszyn wirtualnych systemu Linux na pl
 
 - **Bezproblemową współpracę:** With Role-Based kontroli dostępu (RBAC), można określić, kto zalogować się do danej maszyny Wirtualnej jako zwykli użytkownicy lub z uprawnieniami administratora. Gdy użytkownicy dołączyć lub opuścić zespół, można zaktualizować zasad RBAC dla maszyny Wirtualnej udzielić dostępu, zgodnie z potrzebami. To środowisko jest znacznie prostsze niż w przypadku czyszczenie maszyn wirtualnych, aby usunąć niepotrzebne kluczy publicznych SSH. Gdy pracownik odejdzie z organizacji ich konta użytkownika zostało wyłączone lub usunięte z usługi Azure AD, nie będzie mieć dostęp do zasobów.
 
-### <a name="supported-azure-regions-and-linux-distributions"></a>Obsługiwane regiony platformy Azure i dystrybucje systemu Linux
+## <a name="supported-azure-regions-and-linux-distributions"></a>Obsługiwane regiony platformy Azure i dystrybucje systemu Linux
 
 Poniższe dystrybucje systemu Linux są obecnie obsługiwane w okresie zapoznawczym tę funkcję:
 

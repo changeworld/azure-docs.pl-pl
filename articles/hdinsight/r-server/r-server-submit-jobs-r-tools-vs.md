@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 400cb16e4f4440283a783116c4ee843bc0a7344c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d9d34441f36ea60141ed2659b3e33efdaac94ad3
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248575"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497121"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Przesyłanie zadań z narzędzi R Tools for Visual Studio
 
@@ -64,7 +64,7 @@ RTVS zwiększa R przepływu pracy, udostępniając narzędzia, takie jak [okno i
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Przesyłanie zadań do klastra usługi HDInsight usługi ML
 
-Przy użyciu Microsoft ML Server i Microsoft R Client z komputera Windows wyposażone w programie PuTTY, można utworzyć kontekstu obliczeniowego, przechowywaną uruchamiającą rozproszonych `RevoScaleR` funkcji z lokalnego klienta do klastra usługi HDInsight. Użyj `RxSpark` można utworzyć kontekstu obliczeniowego, określając Twojej nazwy użytkownika, klaster Hadoop węzła krawędzi, SSH przełączniki i tak dalej.
+Przy użyciu Microsoft ML Server i Microsoft R Client z komputera Windows wyposażone w programie PuTTY, można utworzyć kontekstu obliczeniowego, przechowywaną uruchamiającą rozproszonych `RevoScaleR` funkcji z lokalnego klienta do klastra usługi HDInsight. Użyj `RxSpark` można utworzyć kontekstu obliczeniowego, określając Twojej nazwy użytkownika, klastra Apache Hadoop węzła krawędzi, SSH przełączniki i tak dalej.
 
 1. Aby znaleźć nazwę hosta węzła brzegowego, otwórz okienko klastra usługi HDInsight usługi ML w na platformie Azure, a następnie wybierz **Secure Shell (SSH)** w menu górnej części okienka Przegląd.
 
@@ -132,7 +132,7 @@ Przy użyciu Microsoft ML Server i Microsoft R Client z komputera Windows wyposa
 
         ![Skopiowanego pliku](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
 
-6. Po zakończeniu przy użyciu bieżącego kontekstu aparatu Spark, konieczne jest jej zatrzymanie. Nie można jednocześnie uruchomić wielu kontekstach.
+6. Po zakończeniu przy użyciu bieżącego kontekstu platformy Apache Spark, konieczne jest jej zatrzymanie. Nie można jednocześnie uruchomić wielu kontekstach.
 
     ```R
     rxStopEngine(mySparkCluster)

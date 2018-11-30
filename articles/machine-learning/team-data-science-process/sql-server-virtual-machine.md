@@ -2,25 +2,21 @@
 title: Eksplorowanie danych na maszynie wirtualnej programu SQL Server na platformie Azure | Dokumentacja firmy Microsoft
 description: Eksplorowanie danych i wygenerować funkcje na maszynie wirtualnej programu SQL Server na platformie Azure
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 3949fb2c-ffab-49fb-908d-27d5e42f743b
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: deguhath
-ms.openlocfilehash: 350e634ce87e2f61352beb194b4468828aea60c6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 73e56497834344e0e41d89313086c051683b4fbb
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394957"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442561"
 ---
 # <a name="heading"></a>Przetwarzanie danych w maszyną wirtualną programu SQL Server na platformie Azure
 W tym dokumencie opisano, jak eksplorować dane i generować funkcji dla danych przechowywanych na maszynę Wirtualną programu SQL Server na platformie Azure. Można to zrobić za dane inteligencji przy użyciu języka SQL lub przy użyciu języka programowania, takich jak Python.

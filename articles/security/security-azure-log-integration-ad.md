@@ -1,6 +1,6 @@
 ---
-title: Integracja dziennika Azure z dzienników inspekcji usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zainstalować usługę Azure dziennika integracji oraz integrowanie dzienniki z dzienników inspekcji platformy Azure
+title: Usługa Azure Log Integration z dziennikami inspekcji usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zainstalować usługę Azure Log Integration i integrowanie dzienników z dziennikami inspekcji platformy Azure
 services: security
 documentationcenter: na
 author: Barclayn
@@ -15,27 +15,27 @@ ums.workload: na
 ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 07299b960747528dde8dcefc70055442c2150486
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 0b27cd314dd03375b2d2e6ba537cda74e2ec4310
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235995"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313245"
 ---
-# <a name="integrate-azure-active-directory-audit-logs"></a>Integracja dzienników inspekcji usługi Azure Active Directory
+# <a name="integrate-azure-active-directory-audit-logs"></a>Integrowanie usługi Azure Active Directory z dziennikami inspekcji
 
-Zdarzenia inspekcji w usłudze Azure Active Directory (Azure AD) pomaga zidentyfikować uprzywilejowanych akcji, które wystąpiły w usłudze Azure Active Directory. Można wyświetlić typy zdarzeń, które można śledzić, przeglądając [zdarzenia raportów inspekcji usługi Azure Active Directory](/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events.md).
+Zdarzenia inspekcji w usłudze Azure Active Directory (Azure AD) pomoże zidentyfikować uprzywilejowanych akcji, które wystąpiły w usłudze Azure Active Directory. Można wyświetlić typy zdarzeń, które można śledzić, sprawdzając [zdarzenia raportu inspekcji usługi Azure Active Directory](../active-directory/reports-monitoring/concept-audit-logs.md).
 
 
 >[!IMPORTANT]
-> Funkcja integracji Azure dziennika zostaną wycofane przez 2019-06/01. Pliki do pobrania AzLog zostanie wyłączone przez 27 cze 2018. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu post [monitor Azure używana do integracji z narzędzia SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Funkcja integracji dziennika Azure zostaną wycofane 06/01/2019 r. Pliki do pobrania AzLog zostanie wyłączony przez 27 cze 2018 r. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu wpis [użycia w usłudze Azure monitor do integracji z narzędziami rozwiązania SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
-## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Dzienniki inspekcji kroki integracji Azure Active Directory
+## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Dzienniki inspekcji czynności, aby zintegrować usługę Azure Active Directory
 
 > [!NOTE]
-> Przed podjęciem próby kroki opisane w tym artykule, należy przejrzeć [wprowadzenie](security-azure-log-integration-get-started.md) artykułu i wykonaj odpowiednie kroki istnieje.
+> Przed rozpoczęciem kroków opisanych w tym artykule, należy przejrzeć [wprowadzenie](security-azure-log-integration-get-started.md) i wykonaj odpowiednie kroki istnieje.
 
-1. Otwórz wiersz polecenia i uruchom to polecenie:
+1. Otwórz wiersz polecenia i uruchom następujące polecenie:
 
    ``cd c:\Program Files\Microsoft Azure Log Integration``
 
@@ -43,9 +43,9 @@ Zdarzenia inspekcji w usłudze Azure Active Directory (Azure AD) pomaga zidentyf
  
    ``azlog createazureid``
 
-   To polecenie wyświetla monit o podanie logowania do systemu Azure. Polecenie następnie tworzy usługi Azure Active Directory nazwy głównej usługi w dzierżaw usługi Azure AD, które subskrypcji platformy Azure, w których zalogowany użytkownik jest administratora, administratora współpracującego lub właściciela hosta. Polecenie zakończy się niepowodzeniem, jeśli tylko użytkownik-Gość w dzierżawie usługi Azure AD jest zalogowanego użytkownika. Uwierzytelnianie na platformie Azure odbywa się za pośrednictwem usługi Azure AD. Tworzenie nazwy głównej usługi integracji dziennika Azure tworzy tożsamości usługi Azure AD, która uzyskuje dostęp do odczytu z subskrypcji platformy Azure.
+   To polecenie wyświetli monit o podanie logowania do systemu Azure. Polecenie utworzy usługi Azure Active Directory nazwy głównej usługi w dzierżawach usługi Azure AD, obsługujące subskrypcji platformy Azure, w których zalogowanego użytkownika jest administrator, administrator współpracujący lub właściciela. Polecenie zakończy się niepowodzeniem, jeśli użytkownik zalogowany jest tylko użytkownik-Gość w dzierżawie usługi Azure AD. Uwierzytelnianie na platformie Azure odbywa się za pośrednictwem usługi Azure AD. Tworzenie nazwy głównej usługi Azure Log Integration tworzy tożsamości usługi Azure AD, która otrzymuje dostęp do odczytu z subskrypcji platformy Azure.
 
-3. Uruchom następujące polecenie, aby zapewnić swojego identyfikatora dzierżawcy. Musisz być członkiem roli administratora dzierżawy o uruchomienie polecenia.
+3. Uruchom następujące polecenie, aby zapewnić identyfikatora dzierżawy. Musisz być członkiem roli administratora dzierżawy do uruchomienia polecenia.
 
    ``Azlog.exe authorizedirectoryreader tenantId``
 
@@ -58,22 +58,22 @@ Zdarzenia inspekcji w usłudze Azure Active Directory (Azure AD) pomaga zidentyf
    * **C:\Users\azlog\AzureActiveDirectoryJson**
    * **C:\Users\azlog\AzureActiveDirectoryJsonLD**
 
-Poniżej film wideo przedstawia kroki omówione w tym artykule:
+Poniższy film wideo przedstawia kroki omówione w tym artykule:
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Azure-AD-Integration/player]
 
 
 > [!NOTE]
-> Aby uzyskać szczegółowe instrukcje dotyczące przełączania informacji w plikach JSON do informacji o zabezpieczeniach i zdarzeń systemu zarządzania (SIEM) skontaktuj się z dostawcą SIEM.
+> Aby uzyskać szczegółowe instrukcje zapewniania informacji w plikach JSON security information and event management (SIEM) systemu skontaktuj się z dostawcą rozwiązania SIEM.
 
-Społeczność pomoc jest dostępna za pośrednictwem [Forum MSDN integracji dziennika Azure](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration). Forum to umożliwia użytkownikom w społeczności integracji dziennika Azure do obsługi siebie z pytania, odpowiedzi, porady i wskazówki. Ponadto zespół Azure dziennika integracji monitoruje tym forum i pomaga zawsze, gdy mogą go.
+Pomoc społeczności jest dostępna za pośrednictwem [forum MSDN dotyczącym usługi Azure Log Integration](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration). To forum temu inni członkowie społeczności integracji dzienników platformy Azure do obsługi innych za pomocą pytań, odpowiedzi, porady i wskazówki. Ponadto zespół Azure Log Integration monitoruje to forum i pomaga w każdym przypadku, gdy jest to możliwe.
 
-Można również otworzyć [żądania obsługi](../azure-supportability/how-to-create-azure-support-request.md). Wybierz **integracji dziennika** jako usługa żądania pomocy technicznej.
+Możesz również otworzyć [żądania pomocy technicznej](../azure-supportability/how-to-create-azure-support-request.md). Wybierz **integracji dzienników** jako usługę, dla której zażądano pomocy technicznej.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej na temat integracji dziennika Azure, zobacz:
+Aby dowiedzieć się więcej na temat integracji dzienników platformy Azure, zobacz:
 
-* [Microsoft Azure dziennika integracji Azure dzienników](https://www.microsoft.com/download/details.aspx?id=53324): strony Centrum pobierania ten zapewnia szczegółowe informacje, wymagania systemowe i instrukcje dotyczące instalacji integracji dziennika Azure.
-* [Wprowadzenie do integracji dziennika Azure](security-azure-log-integration-overview.md): w tym artykule przedstawiono integracji dziennika Azure, jego kluczowych możliwości i jak działa.
-* [Często zadawane pytania Azure dziennika integracji](security-azure-log-integration-faq.md): w tym artykule odpowiedzi na pytania dotyczące integracji dziennika Azure.
-* [Nowe funkcje diagnostyki Azure i Azure dzienniki inspekcji](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): ten wpis w blogu stanowi wprowadzenie do dzienników inspekcji platformy Azure i inne funkcje, które ułatwiają uzyskać wgląd w funkcjonowanie zasobów platformy Azure.
+* [Microsoft Azure Log Integration dzienników platformy Azure](https://www.microsoft.com/download/details.aspx?id=53324): ten Centrum pobierania strona zawiera szczegółowe informacje, wymagania systemowe i instrukcje instalacji integracji dzienników Azure.
+* [Wprowadzenie do integracji dziennika Azure](security-azure-log-integration-overview.md): Ten artykuł stanowi wprowadzenie do integracji dzienników platformy Azure, jego kluczowych możliwości i jak to działa.
+* [Azure Log Integration często zadawane pytania](security-azure-log-integration-faq.md): Ten artykuł zawiera odpowiedzi na pytania dotyczące usługi Azure Log Integration.
+* [Dzienniki inspekcji nowe funkcje dla usługi Azure Diagnostics i Azure](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): ten wpis w blogu zawiera wprowadzenie do dzienników inspekcji platformy Azure i inne funkcje, które pomagają uzyskać wgląd w operacje zasobów platformy Azure.

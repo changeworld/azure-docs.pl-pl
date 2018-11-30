@@ -1,5 +1,5 @@
 ---
-title: Wybieranie algorytmów uczenia maszynowego | Dokumentacja firmy Microsoft
+title: Wybieranie algorytmów uczenia maszynowego — Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Jak wybrać algorytmy Azure Machine Learning Studio uczenie nadzorowane i nienadzorowane w eksperymentach klastrowania, klasyfikacji lub regresji.
 services: machine-learning
 author: ericlicoding
@@ -13,12 +13,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 4251bb5c0ad324d65ddcd0ab55476116ab918ab8
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 7ddfb98a884779385cde643e213bebb98b050436
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263490"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312422"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Jak wybierać algorytmy w usłudze Azure Machine Learning Studio
 

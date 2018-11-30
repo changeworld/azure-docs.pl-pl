@@ -8,14 +8,14 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: ba6d79661a2c07ba3eef1f16a117992a858830b5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 3ae41ff4cf501a58668d25b16027029f6bae4749
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605933"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317491"
 ---
-# <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrowanie usługi Azure Time Series Insights przy użyciu funkcji zdalnego monitorowania
+# <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrowanie usługi Azure Time Series Insights za pomocą zdalnego monitorowania
 
 Azure Time Series Insights to w pełni zarządzana usługa związana z analizą, przechowywaniem i wizualizacją do zarządzania danymi szeregów czasowych w skali IoT w chmurze. Usługa Time Series Insights służy do przechowywania i zarządzania danymi szeregów czasowych, zapoznaj się z i wizualizowanie zdarzeń jednocześnie, przeprowadzać analizy głównej przyczyny oraz porównywać wiele lokacji i zasobów.
 
@@ -49,7 +49,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 Następnie Wdróż usługi Time Series Insights jako dodatkowych zasobów w rozwiązaniu monitorowania zdalnego i podłącz go do usługi IoT hub.
 
-1. Zaloguj się w [Portalu Azure](http://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com/).
 
 1. Wybierz **Utwórz zasób** > **Internet of Things** > **usługi Time Series Insights**.
 
@@ -292,6 +292,6 @@ Konfigurowanie środowiska `standard` wdrożenie zaktualizowanego mikrousługami
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej o tym, jak eksplorować dane i diagnozować alertu w Eksploratorze usługi Time Series Insights, zobacz Nasz samouczek dotyczący na [przeprowadzenie głównego ustalić przyczynę problemu](/tutorials).
+* Aby dowiedzieć się więcej o tym, jak eksplorować dane i diagnozować alertu w Eksploratorze usługi Time Series Insights, zobacz Nasz samouczek dotyczący na [przeprowadzenie głównego ustalić przyczynę problemu](iot-accelerators-remote-monitoring-root-cause-analysis.md).
 
 * Aby dowiedzieć się, jak eksplorować i wykonywanie zapytań dotyczących danych w Eksploratorze usługi Time Series Insights, zobacz dokumentację [Eksploratora usługi Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).

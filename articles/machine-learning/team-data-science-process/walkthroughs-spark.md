@@ -2,25 +2,21 @@
 title: Wskazówki dotyczące platformy HDInsight Spark przy użyciu PySpark i środowiskiem Scala na platformie Azure | Dokumentacja firmy Microsoft
 description: Przykłady procesie nauki o danych zespołu, które pomagają przy użyciu PySpark i środowiskiem Scala na usługi Azure HDInsight Spark do analizy predykcyjnej.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: deguhath
-ms.openlocfilehash: 3d39e752e874b6b0c6fbdf678d6eddda0b0d9404
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: a7697d2be1a43af93109bb7bbdab50828275f5aa
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226552"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446403"
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>HDInsight Spark przewodniki dotyczące przetwarzania danych przy użyciu PySpark i środowiskiem Scala na platformie Azure
 

@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: fca83090e6713e4360bd19d49c7fd6b9147fd6ea
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 2ae0450be420edeb4ef18d0c9e5ca6e1dacaf50d
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219736"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497023"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie są składniki platformy Apache Hadoop i wersje dostępne z HDInsight?
 
-Więcej informacji na temat składników ekosystemu Apache Hadoop i wersji w programie Microsoft Azure HDInsight, a także pakiet Enterprise Security. Poznaj także sposób sprawdzić wersje składników usługi Hadoop w HDInsight. 
+Dowiedz się więcej o [Apache Hadoop](https://hadoop.apache.org/) ekosystem, składników i wersji w programie Microsoft Azure HDInsight, a także pakiet Enterprise Security. Poznaj także sposób sprawdzić wersje składników usługi Hadoop w HDInsight. 
 
 Każda wersja HDInsight jest dystrybucją chmury wersji Hortonworks Data Platform (HDP).
 
@@ -58,7 +58,7 @@ Wersje składników skojarzone z wersji klastra HDInsight są wymienione w poni�
 
 ## <a name="check-for-current-hadoop-component-version-information"></a>Sprawdź, czy bieżące informacje o wersji składników usługi Hadoop
 
-Wersje składników ekosystemu Hadoop skojarzone z wersji klastra HDInsight można zmienić za pomocą aktualizacji HDInsight. Aby sprawdzić składniki usługi Hadoop i sprawdź, które wersje są używane dla klastra, należy użyć interfejsu API REST Ambari. **GetComponentInformation** polecenie umożliwia pobranie informacji o składnikach usługi. Aby uzyskać więcej informacji, zobacz [dokumentacji Ambari][ambari-docs].
+Wersje składników ekosystemu Hadoop skojarzone z wersji klastra HDInsight można zmienić za pomocą aktualizacji HDInsight. Aby sprawdzić składniki usługi Hadoop i sprawdź, które wersje są używane dla klastra, należy użyć interfejsu API REST Ambari. **GetComponentInformation** polecenie umożliwia pobranie informacji o składnikach usługi. Aby uzyskać więcej informacji, zobacz [dokumentację Apache Ambari][ambari-docs].
 
 W przypadku klastrów Windows innym sposobem, aby sprawdzić wersję składnika jest Zaloguj się do klastra przy użyciu pulpitu zdalnego i sprawdź zawartość katalogu C:\apps\dist\.
 
@@ -117,8 +117,8 @@ Zabezpieczenia przedsiębiorstwa jest opcjonalny pakiet, którą można dodać w
 
     Aby uzyskać więcej informacji, zobacz:
 
-    - [Wprowadzenie do zabezpieczeń usługi Hadoop przy użyciu klastrów HDInsight przyłączone do domeny](./domain-joined/apache-domain-joined-introduction.md)
-    - [Planowanie Azure klastrów Hadoop przyłączonych do domeny w HDInsight](./domain-joined/apache-domain-joined-architecture.md)
+    - [Wprowadzenie do zabezpieczeń platformy Apache Hadoop przy użyciu klastrów HDInsight przyłączone do domeny](./domain-joined/apache-domain-joined-introduction.md)
+    - [Planowanie Azure klastry platformy Apache Hadoop przyłączonych do domeny w HDInsight](./domain-joined/apache-domain-joined-architecture.md)
     - [Konfigurowanie środowiska izolowanego przyłączone do domeny](./domain-joined/apache-domain-joined-configure.md)
     - [Konfigurowanie klastrów HDInsight przyłączone do domeny za pomocą usługi Azure Active Directory Domain Services](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 
@@ -129,7 +129,7 @@ Zabezpieczenia przedsiębiorstwa jest opcjonalny pakiet, którą można dodać w
 
     Aby uzyskać więcej informacji, zobacz:
 
-    - [Konfigurowanie zasad usługi Hive HDInsight przyłączone do domeny](./domain-joined/apache-domain-joined-run-hive.md)
+    - [Konfigurowanie zasad usługi Apache Hive HDInsight przyłączone do domeny](./domain-joined/apache-domain-joined-run-hive.md)
 
 - Aby przejrzeć dziennik inspekcji dostępu do monitora i skonfigurowanych zasad. 
 
@@ -151,7 +151,7 @@ Aby uzyskać informacje o cenach i umowy SLA pakiet Enterprise Security, zobacz 
 ## <a name="hdinsight-windows-retirement"></a>Wycofanie usługi HDInsight dla systemu Windows
 Microsoft Azure HDInsight w wersji 3.3 było ostatniej wersji HDInsight na Windows. Data wycofania HDInsight na Windows jest 31 lipca 2018 r. W przypadku klastrów HDInsight Windows 3.3 lub wcześniej, należy przeprowadzić migrację do HDInsight w systemie Linux (HDInsight w wersji 3.5 lub nowszej) przed 31 lipca 2018 r. Migracja do systemu operacyjnego Linux pozwala zachować możliwość tworzenia lub zmiany rozmiaru klastry usługi HDInsight. Obsługa HDInsight w wersji 3.3 na Windows wygasła w dniu 27 czerwca 2016 r.
 
-Począwszy od HDInsight w wersji 3.4, firma Microsoft wydała HDInsight tylko w systemie operacyjnym Linux. W rezultacie niektóre składniki w ramach HDInsight są dostępne dla systemu Linux tylko. Należą do nich struktury Apache Ranger, Kafka, Interactive Query, Spark, aplikacji HDInsight i Azure Data Lake Store jako główny system plików. Przyszłe wersje programu HDInsight są dostępne tylko w systemie operacyjnym Linux. Nie będzie żadnych kolejnych wersji HDInsight na Windows. 
+Począwszy od HDInsight w wersji 3.4, firma Microsoft wydała HDInsight tylko w systemie operacyjnym Linux. W rezultacie niektóre składniki w ramach HDInsight są dostępne dla systemu Linux tylko. Obejmują one [struktury Apache Ranger](https://ranger.apache.org/), [platformy Apache Kafka](https://kafka.apache.org/), interakcyjnych zapytań [platformy Apache Spark](https://spark.apache.org/), HDInsight aplikacje i usługi Azure Data Lake Store jako główny system plików. Przyszłe wersje programu HDInsight są dostępne tylko w systemie operacyjnym Linux. Nie będzie żadnych kolejnych wersji HDInsight na Windows. 
 
 ## <a name="faqs"></a>Często zadawane pytania
 
@@ -264,8 +264,8 @@ W poniższej tabeli wymieniono domyślne rozmiary maszyny wirtualnej (VM) w przy
 > - Proces roboczy jest znany jako *Region* dla bazy danych HBase typ klastra.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Klaster konfiguracji dla usługi Hadoop, Spark i więcej informacji na temat HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
-- [Pracowanie z platformą Hadoop w HDInsight z Windows PC](hdinsight-hadoop-windows-tools.md)
+- [Klaster Instalatora dla technologii Apache Hadoop, Spark i więcej informacji na temat HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
+- [Praca w technologii Apache Hadoop w HDInsight z Windows PC](hdinsight-hadoop-windows-tools.md)
 
 [Supported HDInsight versions]:(#supported-hdinsight-versions)
 

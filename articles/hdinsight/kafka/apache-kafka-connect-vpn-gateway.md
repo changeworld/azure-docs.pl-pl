@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: da98873b133d69d78271494b991b67caea1d5a11
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7fd201dd7c766880b1ed892abe3900b523d75145
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283074"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307478"
 ---
-# <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Nawiązać połączenie z platformą Kafka w HDInsight przy użyciu sieci wirtualnej platformy Azure
+# <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Nawiązać połączenie z platformy Apache Kafka w HDInsight przy użyciu sieci wirtualnej platformy Azure
 
-Dowiedz się, jak łączyć się bezpośrednio do platformy Kafka w HDInsight przy użyciu usługi Azure Virtual Network. Ten dokument zawiera informacje dotyczące nawiązywania połączenia platformy Kafka za pomocą następujących konfiguracji:
+Dowiedz się, jak łączyć się bezpośrednio do platformy Apache Kafka w HDInsight przy użyciu usługi Azure Virtual Network. Ten dokument zawiera informacje dotyczące nawiązywania połączenia platformy Kafka za pomocą następujących konfiguracji:
 
 * Z zasobów w sieci lokalnej. To połączenie jest nawiązywane za pomocą urządzenia sieci VPN (oprogramowania lub sprzętu) w sieci lokalnej.
 * Z poziomu środowiska projektowego, przy użyciu oprogramowania klienta VPN.
@@ -37,7 +37,7 @@ HDInsight nie zezwala na bezpośrednie połączenie z platformą Kafka za pośre
     4. Konfigurowanie składnika przesyłanie dalej między serwerem DNS w każdej sieci.
     5. Utwórz platformy Kafka w klastrze HDInsight w sieci wirtualnej.
 
-    Aby uzyskać więcej informacji, zobacz [Połącz z platformą Kafka z siecią lokalną](#on-premises) sekcji. 
+    Aby uzyskać więcej informacji, zobacz [Connect do platformy Apache Kafka z siecią lokalną](#on-premises) sekcji. 
 
 * Połącz poszczególnych maszyn w sieci wirtualnej przy użyciu bramy sieci VPN i klienta sieci VPN. Aby włączyć tę konfigurację, wykonaj następujące czynności:
 
@@ -47,7 +47,7 @@ HDInsight nie zezwala na bezpośrednie połączenie z platformą Kafka za pośre
     4. Do celów reklamowych adresów IP, należy skonfigurować platformy Kafka. Ta konfiguracja umożliwia klientom nawiązywanie połączenia przy użyciu brokera adresów IP zamiast nazwy domeny.
     5. Pobierz i korzystania z klienta sieci VPN w systemie programistycznym.
 
-    Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia z platformą Kafka za pomocą klienta sieci VPN](#vpnclient) sekcji.
+    Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia z platformy Apache Kafka za pomocą klienta sieci VPN](#vpnclient) sekcji.
 
     > [!WARNING]
     > Ta konfiguracja jest zalecana tylko w celach programistycznych, ze względu na następujące ograniczenia:
@@ -57,7 +57,7 @@ HDInsight nie zezwala na bezpośrednie połączenie z platformą Kafka za pośre
 
 Aby uzyskać więcej informacji na temat używania HDInsight w sieci wirtualnej, zobacz [rozszerzyć HDInsight przy użyciu usługi Azure Virtual Networks](../hdinsight-extend-hadoop-virtual-network.md).
 
-## <a id="on-premises"></a> Łączenie do platformy Kafka z sieci lokalnej
+## <a id="on-premises"></a> Łączenie do platformy Apache Kafka z sieci lokalnej
 
 Aby utworzyć klaster platformy Kafka, która komunikuje się z Twoją siecią lokalną, wykonaj kroki opisane w [Connect HDInsight z siecią lokalną](./../connect-on-premises-network.md) dokumentu.
 
@@ -73,7 +73,7 @@ Te kroki służą utworzeniu następującej konfiguracji:
 
 Aby sprawdzić, czy klient platformy Kafka łączy się z klastrem ze środowiska lokalnego, wykonaj kroki w [przykład: klienta języka Python](#python-client) sekcji.
 
-## <a id="vpnclient"></a> Połączenie z platformą Kafka za pomocą klienta sieci VPN
+## <a id="vpnclient"></a> Łączenie z platformy Apache Kafka przy użyciu klienta sieci VPN
 
 Wykonaj kroki w tej sekcji, aby utworzyć następującą konfigurację:
 
@@ -237,7 +237,7 @@ Wykonaj kroki w tej sekcji, aby utworzyć następującą konfigurację:
 
 ### <a name="configure-kafka-for-ip-advertising"></a>Konfigurowanie platformy Kafka do celów reklamowych adresu IP
 
-Domyślnie dozorcy zwraca nazwę domeny brokerów platformy Kafka na klientach. Ta konfiguracja nie działa przy użyciu oprogramowania klienckiego sieci VPN, zgodnie z rozpoznawania nazw nie może używać w przypadku jednostek w sieci wirtualnej. W przypadku tej konfiguracji umożliwia skonfigurowanie platformy Kafka anonsowanie adresów IP zamiast nazwy domeny następujące czynności:
+Domyślnie Apache Zookeeper zwraca nazwę domeny brokerów platformy Kafka na klientach. Ta konfiguracja nie działa przy użyciu oprogramowania klienckiego sieci VPN, zgodnie z rozpoznawania nazw nie może używać w przypadku jednostek w sieci wirtualnej. W przypadku tej konfiguracji umożliwia skonfigurowanie platformy Kafka anonsowanie adresów IP zamiast nazwy domeny następujące czynności:
 
 1. Korzystając z przeglądarki internetowej przejdź do https://CLUSTERNAME.azurehdinsight.net. Zastąp __CLUSTERNAME__ o nazwie platformy Kafka w klastrze HDInsight.
 
@@ -371,7 +371,7 @@ Aby uzyskać więcej informacji na temat tworzenia usługi Azure Virtual Network
 
 * [Konfigurowanie połączenia typu punkt-lokacja przy użyciu programu Azure PowerShell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
-Więcej informacji na temat pracy z klastrem Kafka w usłudze HDInsight można znaleźć w następujących dokumentach:
+Aby uzyskać więcej informacji na temat pracy z platformą Apache Kafka w HDInsight zobacz następujące dokumenty:
 
-* [Wprowadzenie do platformy Kafka w usłudze HDInsight](apache-kafka-get-started.md)
-* [Użyj funkcji dublowania z platformą Kafka w HDInsight](apache-kafka-mirroring.md)
+* [Wprowadzenie do platformy Apache Kafka w HDInsight](apache-kafka-get-started.md)
+* [Użyj funkcji dublowania przy użyciu platformy Apache Kafka w HDInsight](apache-kafka-mirroring.md)

@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 11/26/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 3ce7c5111fa176bb7fa734f54084b9e14e7afbef
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1b66f40594d0dd578e2e5680fb0d5bb0f82f1241
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016050"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311810"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup i zarządzanie nimi akcji w witrynie Azure portal
 ## <a name="overview"></a>Przegląd ##
@@ -76,6 +76,8 @@ Może mieć maksymalnie 1000 akcji poczty e-mail do grupy akcji. Zobacz [ogranic
 **ITSM** — może mieć maksymalnie 10 akcje ITSM w akcji ITSM grupy akcji wymaga połączenia ITSM. Dowiedz się, jak utworzyć [połączenia narzędzia ITSM](../log-analytics/log-analytics-itsmc-overview.md).
 
 **Aplikacji logiki** — może mieć maksymalnie 10 akcji aplikacji logiki w grupy akcji
+
+**Funkcja aplikacji** -klawiszy funkcyjnych dla aplikacji funkcji, skonfigurowany jako akcje są odczytywane za pomocą interfejsu API funkcji, która obecnie wymaga aplikacji funkcji w wersji 2 do skonfigurowania aplikacji, ustawienie "AzureWebJobsSecretStorageType" na "files", zobacz [ Zmienia się na zarządzanie kluczami w funkcje w wersji 2]( https://aka.ms/funcsecrets) Aby uzyskać więcej informacji.
 
 **Element Runbook** — może mieć maksymalnie 10 elementów Runbook akcji, w akcji grupy dotyczą [limity usług subskrypcji platformy Azure](../azure-subscription-service-limits.md) limity ładunków elementu Runbook
 

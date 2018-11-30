@@ -14,26 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 6b6fd7395f7aff303f4950fb07bd0472cf7057a2
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: acaf73c2d981761b0bc57cfccbbf6c6a48e5e0c2
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145744"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446518"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Przy użyciu usługi Azure API Management z wewnętrzną siecią wirtualną
 Sieci wirtualnych platformy Azure usługi Azure API Management umożliwia zarządzanie interfejsami API nie jest dostępny w Internecie. Wiele technologii sieci VPN są dostępne do nawiązania połączenia. Usługa API Management można wdrożyć w dwa główne tryby wewnątrz sieci wirtualnej:
 * Zewnętrzne
 * Wewnętrzny
 
-
 Podczas wdrażania usługi API Management w trybie wewnętrznej sieci wirtualnej, wszystkie punkty końcowe usługi (bramy, portal dla deweloperów, witryny Azure portal, zarządzanie bezpośrednie i Git) są widoczne tylko wewnątrz sieci wirtualnej, która umożliwia kontrolę dostępu do. Brak punktów końcowych usługi są rejestrowane na publicznym serwerze DNS.
 
 Za pomocą usługi API Management w trybie wewnętrznego, można osiągnąć następujące scenariusze:
+
 * Należy interfejsów API hostowanych w centrum danych prywatnych bezpiecznego zapewniania dostępu przez strony trzecie poza nim przy użyciu lokacja lokacja lub połączenia sieci VPN usługi ExpressRoute platformy Azure.
 * Udostępnianie Twoje interfejsy API oparte na chmurze i lokalnymi interfejsami API za pomocą wspólnej bramy, aby włączyć scenariuszy hybrydowych w chmurze.
 * Zarządzanie interfejsami API hostowanych w wielu lokalizacjach geograficznych przy użyciu punktu końcowego jednej bramy. 
 
+[!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -51,7 +52,7 @@ Usługa API Management w wewnętrznej sieci wirtualnej znajduje się za zaporą 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Włączanie połączenia z siecią wirtualną przy użyciu witryny Azure portal
 
 1. Przejdź do swojego wystąpienia usługi Azure API Management w [witryny Azure portal](https://portal.azure.com/).
-2. Wybierz **sieć wirtualna**.
+2. Wybierz pozycję **Sieć wirtualna**.
 3. Konfigurowanie wystąpienia usługi API Management, można wdrożyć w sieci wirtualnej.
 
     ![Menu do konfigurowania usługi Azure API Management w wewnętrznej sieci wirtualnej][api-management-using-internal-vnet-menu]

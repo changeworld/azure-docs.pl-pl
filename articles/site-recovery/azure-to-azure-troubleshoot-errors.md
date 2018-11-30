@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: sujayt
-ms.openlocfilehash: 040ace1eab4062c011ed82a59e7f5bfb789c256b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 7d11460fd1db5ba92725567a41aaaeab9e752adb
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945743"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308128"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Rozwiązywanie problemów z replikacją maszyny Wirtualnej platformy Azure do platformy Azure
 
@@ -150,28 +150,36 @@ Ponieważ SuSE Linux używa łączy symbolicznych, aby utrzymywać listę certyf
 
 W przypadku replikacji usługi Site Recovery do pracy, łączność wychodząca z określonych adresów URL lub IP zakresów jest wymagane z maszyny Wirtualnej. Jeśli maszyna wirtualna znajduje się za zaporą lub używa reguł Sieciowej grupy zabezpieczeń sieci do sterowania ruchem wychodzącym, może być jedną z tych problemów twarzy.
 
-### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151037-br"></a>Problem 1: Nie można zarejestrować maszyny wirtualnej platformy Azure z usługą Site Recovery (151037) </br>
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Problem 1: Nie można zarejestrować maszyny wirtualnej platformy Azure z usługą Site Recovery (151195) </br>
 - **Możliwa przyczyna** </br>
-  - Używasz sieciowej grupy zabezpieczeń do kontrolowania dostępu wychodzącego na maszynie Wirtualnej i wymagany adres IP nie są na liście dozwolonych dla wychodzącego dostępu do zakresów.
-  - Używasz narzędzi zapory innych firm, a nie są wymagane zakresy adresów IP/URL na liście dozwolonych.
+  - Nie można ustanowić połączenia z punktami końcowymi odzyskiwania lokacji, ze względu na niepowodzenie rozpoznawania nazw DNS.
+  - Jest to częściej występujące podczas ponownej ochrony, gdy zostały przełączone w tryb failover maszyny wirtualnej, ale serwer DNS nie jest dostępny w regionie odzyskiwania po awarii.
+  
+- **Rozdzielczość**
+   - Jeśli używasz niestandardowego DNS, upewnij się, że serwer DNS jest dostępne w regionie odzyskiwania po awarii. Aby sprawdzić, czy masz niestandardowe DNS, przejdź do maszyny Wirtualnej > sieć odzyskiwania po awarii > serwery DNS. Wypróbuj, uzyskiwanie dostępu do serwera DNS z maszyny wirtualnej. Jeśli nie jest dostępny następnie go udostępnić, albo przejść w tryb failover serwera DNS lub tworząc wiersz lokacji między siecią odzyskiwania po awarii i usługą DNS.
+  
+    ![Błąd modelu COM](./media/azure-to-azure-troubleshoot-errors/custom_dns.png)
+ 
 
+### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Problem 2: Konfiguracja Site Recovery nie powiodła się (151196)
+- **Możliwa przyczyna** </br>
+  - Nie można ustanowić połączenia z uwierzytelnianiem usługi Office 365 i punktów końcowych IP4 tożsamości.
 
 - **Rozdzielczość**
-   - Jeśli używasz serwera proxy zapory do kontrolowania połączenia sieciowego ruchu wychodzącego na maszynie Wirtualnej, upewnij się, że wstępnie wymagane adresy URL lub zakresy IP centrów danych na liście dozwolonych. Aby uzyskać informacje, zobacz [wskazówki dotyczące serwera proxy zapory](https://aka.ms/a2a-firewall-proxy-guidance).
-   - Jeśli używasz reguł sieciowych grup zabezpieczeń do sterowania połączenia sieciowego ruchu wychodzącego na maszynie Wirtualnej, upewnij się, że zakresy adresów IP centrum danych wymagań wstępnych na liście dozwolonych. Aby uzyskać informacje, zobacz [wytyczne dotyczące grupy zabezpieczeń sieci](azure-to-azure-about-networking.md).
-   - Do listy dozwolonych [odpowiednie adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) lub [wymaganych zakresów adresów IP](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), postępuj zgodnie z instrukcjami w [sieci dokument ze wskazówkami dotyczącymi](azure-to-azure-about-networking.md).
+  - Usługa Azure Site Recovery zakresy adresów IP usługi Office 365 są wymagane do uwierzytelniania.
+    Jeśli używasz proxy reguły i zapory Sieciowej grupy zabezpieczeń sieci platformy Azure do kontrolowania połączenia sieciowego ruchu wychodzącego na maszynie Wirtualnej, upewnij się, że zezwalają na komunikację zakresy adresów IP usługi Office 365. Tworzenie [tag usługi Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) na podstawie reguły sieciowej grupy zabezpieczeń do zezwalania na dostęp do wszystkich adresów IP odpowiadającej usługi AAD
+        - Nowe adresy zostaną dodane do usługi Azure Active Directory (AAD) w przyszłości, należy utworzyć nowe reguły sieciowej grupy zabezpieczeń.
 
-### <a name="issue-2-site-recovery-configuration-failed-151072"></a>Problem 2: Konfiguracja Site Recovery nie powiodła się (151072)
+
+### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Problem 3: Konfiguracja Site Recovery nie powiodła się (151197)
 - **Możliwa przyczyna** </br>
-  - Nie można nawiązać połączenia z punktami końcowymi usługi Site Recovery
-
+  - Nie można ustanowić połączenia z punktami końcowymi usługi Azure Site Recovery.
 
 - **Rozdzielczość**
-   - Jeśli używasz serwera proxy zapory do kontrolowania połączenia sieciowego ruchu wychodzącego na maszynie Wirtualnej, upewnij się, że wstępnie wymagane adresy URL lub zakresy IP centrów danych na liście dozwolonych. Aby uzyskać informacje, zobacz [wskazówki dotyczące serwera proxy zapory](https://aka.ms/a2a-firewall-proxy-guidance).
-   - Jeśli używasz reguł sieciowych grup zabezpieczeń do sterowania połączenia sieciowego ruchu wychodzącego na maszynie Wirtualnej, upewnij się, że zakresy adresów IP centrum danych wymagań wstępnych na liście dozwolonych. Aby uzyskać informacje, zobacz [wytyczne dotyczące grupy zabezpieczeń sieci](https://aka.ms/a2a-nsg-guidance).
-   - Do listy dozwolonych [odpowiednie adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) lub [wymaganych zakresów adresów IP](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), postępuj zgodnie z instrukcjami w [sieci dokument ze wskazówkami dotyczącymi](site-recovery-azure-to-azure-networking-guidance.md).
+  - Usługa Azure Site Recovery wymagany dostęp do [zakresów adresów IP odzyskiwania lokacji](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) w zależności od regionu. Upewnij się, wymagane zakresy adresów ip są dostępne z maszyny wirtualnej.
+    
 
-### <a name="issue-3-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>Problem 3: Nie powiodło się, gdy ruch sieciowy przechodzi przez serwer proxy w środowisku lokalnym (151072) replikacji — A2A
+### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>Problem 4: Replikacji — A2A nie powiodło się, gdy ruch sieciowy przechodzi przez serwer proxy w środowisku lokalnym (151072)
  - **Możliwa przyczyna** </br>
    - Ustawienia niestandardowego serwera proxy są nieprawidłowe i agenta usługi mobilności dla usługi ASR nie auto wykrył ustawienia serwera proxy z programu Internet Explorer
 

@@ -1,5 +1,5 @@
 ---
-title: Experiments Galeria sztucznej Inteligencji platformy Azure | Dokumentacja firmy Microsoft
+title: Galeria sztucznej Inteligencji platformy Azure, eksperymenty — Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Odnajdywanie i udostępnianie eksperymenty w galerii sztucznej Inteligencji platformy Azure.
 services: machine-learning
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
-ms.openlocfilehash: 43e5cc14ac98b85dd50391380033834cf642b1a9
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 66b5e30a26c57676bdd65b4861d34ca90c0c25af
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264475"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317470"
 ---
 # <a name="discover-experiments-in-azure-ai-gallery"></a>Odkryj eksperymenty w galerii Azure AI
 
-[Galeria sztucznej Inteligencji platformy Azure](http://gallery.cortanaintelligence.com) zawiera szeroką gamę [eksperymentów](https://gallery.cortanaintelligence.com/experiments) zostały opracowane w [Azure Machine Learning Studio](https://studio.azureml.net). Eksperymenty z zakresu od szybkiego eksperymentów weryfikacji koncepcji, które przedstawiają określonej usługi machine learning technikę do w pełni rozwinięte rozwiązań złożonych machine learning problemów.
+[Galeria sztucznej Inteligencji platformy Azure](http://gallery.cortanaintelligence.com) posiada szereg [eksperymentów](https://gallery.cortanaintelligence.com/experiments) zostały opracowane w [Azure Machine Learning Studio](https://studio.azureml.net). Eksperymenty z zakresu od szybkiego eksperymentów weryfikacji koncepcji, które przedstawiają określonej usługi machine learning technikę do w pełni rozwinięte rozwiązań złożonych machine learning problemów.
 
 > [!NOTE]
 > ***Eksperymentować*** jest kanwy w usłudze Machine Learning Studio, można użyć w celu utworzenia modelu analizy predykcyjnej. Aby utworzyć model łączenia danych z różnych modułów analitycznych. Można spróbować różnych pomysły, czy przebiegi wersji próbnej i po pewnym czasie wdrażania modelu w formie usługi internetowej na platformie Azure. Na przykład sposobu tworzenia eksperymentu podstawowe zobacz [samouczek dotyczący uczenia maszynowego: Tworzenie pierwszego eksperymentu w usłudze Azure Machine Learning Studio](create-experiment.md). Bardziej szczegółowe instrukcje dotyczące sposobu tworzenia rozwiązania analizy predykcyjnej, zobacz [wskazówki: tworzenie rozwiązania analizy predykcyjnej w celu oceny ryzyka kredytowego w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md).

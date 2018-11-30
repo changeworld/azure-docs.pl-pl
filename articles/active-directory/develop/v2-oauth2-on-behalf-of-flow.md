@@ -17,12 +17,12 @@ ms.date: 06/06/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ad7bb3c3a7bd50521b968b7c1a4e21027fbe18f2
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 0fc81a75e79d7f570bd55c9c30a464e5bbb9ad1c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986056"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423436"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory w wersji 2.0 i przepływ OAuth 2.0 "w imieniu"
 
@@ -69,12 +69,12 @@ Korzystając z wspólny klucz tajny, żądania tokenu dostępu do usługi zawier
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| grant_type |Wymagane | Typ żądania tokenu. Na żądanie przy użyciu token JWT, wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
-| client_id |Wymagane | Identyfikator aplikacji [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) przypisany do aplikacji. |
-| client_secret |Wymagane | Klucz tajny aplikacji, który został wygenerowany dla aplikacji w portalu rejestracji aplikacji. |
-| potwierdzenie |Wymagane | Wartość tokenu użytego w żądaniu. |
-| scope |Wymagane | Spacjami listy zakresów dla żądania tokenu. Aby uzyskać więcej informacji, zobacz [zakresy](v2-permissions-and-consent.md).|
-| requested_token_use |Wymagane | Określa, jak można przetworzyć żądania. W przepływie w imieniu z, wartość musi być **on_behalf_of**. |
+| grant_type |wymagane | Typ żądania tokenu. Na żądanie przy użyciu token JWT, wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
+| client_id |wymagane | Identyfikator aplikacji [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) przypisany do aplikacji. |
+| client_secret |wymagane | Klucz tajny aplikacji, który został wygenerowany dla aplikacji w portalu rejestracji aplikacji. |
+| potwierdzenie |wymagane | Wartość tokenu użytego w żądaniu. |
+| scope |wymagane | Spacjami listy zakresów dla żądania tokenu. Aby uzyskać więcej informacji, zobacz [zakresy](v2-permissions-and-consent.md).|
+| requested_token_use |wymagane | Określa, jak można przetworzyć żądania. W przepływie w imieniu z, wartość musi być **on_behalf_of**. |
 
 #### <a name="example"></a>Przykład
 W następującym WPISIE HTTP żądania token dostępu i token odświeżania za pomocą `user.read` zakresu dla https://graph.microsoft.com interfejs API sieci web.
@@ -99,13 +99,13 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| grant_type |Wymagane | Typ żądania tokenu. Na żądanie przy użyciu token JWT, wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
-| client_id |Wymagane | Identyfikator aplikacji [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) przypisany do aplikacji. |
-| client_assertion_type |Wymagane |Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |Wymagane | Potwierdzenie (JSON Web Token), musisz utworzyć i podpisać za pomocą certyfikatu rejestracji w charakterze poświadczenia dla aplikacji. Przeczytaj o [certyfikatu poświadczeń](active-directory-certificate-credentials.md) informacje na temat rejestracji certyfikatu i format potwierdzenia.|
-| potwierdzenie |Wymagane | Wartość tokenu użytego w żądaniu. |
-| requested_token_use |Wymagane | Określa, jak można przetworzyć żądania. W przepływie w imieniu z, wartość musi być **on_behalf_of**. |
-| scope |Wymagane | Spacjami listy zakresów dla żądania tokenu. Aby uzyskać więcej informacji, zobacz [zakresy](v2-permissions-and-consent.md).|
+| grant_type |wymagane | Typ żądania tokenu. Na żądanie przy użyciu token JWT, wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
+| client_id |wymagane | Identyfikator aplikacji [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) przypisany do aplikacji. |
+| client_assertion_type |wymagane |Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |wymagane | Potwierdzenie (JSON Web Token), musisz utworzyć i podpisać za pomocą certyfikatu rejestracji w charakterze poświadczenia dla aplikacji. Przeczytaj o [certyfikatu poświadczeń](active-directory-certificate-credentials.md) informacje na temat rejestracji certyfikatu i format potwierdzenia.|
+| potwierdzenie |wymagane | Wartość tokenu użytego w żądaniu. |
+| requested_token_use |wymagane | Określa, jak można przetworzyć żądania. W przepływie w imieniu z, wartość musi być **on_behalf_of**. |
+| scope |wymagane | Spacjami listy zakresów dla żądania tokenu. Aby uzyskać więcej informacji, zobacz [zakresy](v2-permissions-and-consent.md).|
 
 Należy zauważyć, że parametry są prawie takie same jak w przypadku żądania przez Wspólny klucz tajny, z tą różnicą, że parametr client_secret zostaje zastąpiona przez dwa parametry: client_assertion_type i client_assertion.
 
@@ -133,7 +133,7 @@ Odpowiedź sukcesu jest odpowiedź JSON OAuth 2.0, z następującymi parametrami
 
 | Parametr | Opis |
 | --- | --- |
-| token_type |Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest **elementu nośnego**. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: użycie tokenu elementu nośnego (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt). |
+| token_type |Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest **elementu nośnego**. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: użycie tokenu elementu nośnego (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | scope |Zakres dostępu przyznane w tokenie. |
 | expires_in |Długość czasu, przez który token dostępu jest prawidłowy (w sekundach). |
 | access_token |Token żądanego dostępu. Wywoływania usługi można użyć tego tokenu do uwierzytelnienia w usłudze odbierania. |

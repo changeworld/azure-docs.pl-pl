@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5ea8718b90a82e904f54e5569d36f27146ffe5f1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3e8333b521832579a942d3fffb06103ad0431acc
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253163"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316621"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center
 W tym dokumencie przedstawiono sposób korzystania z zaleceń Centrum zabezpieczeń Azure, aby pomóc w ochronie Twoich zasobów platformy Azure.
@@ -34,13 +34,13 @@ Usługa Security Center okresowo analizuje stan zabezpieczeń zasobów platformy
 
 ## <a name="implementing-security-recommendations"></a>Wdrażanie zaleceń dotyczących zabezpieczeń
 ### <a name="set-recommendations"></a>Zestaw zaleceń
-W [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-policies.md), Dowiedz się, jak:
+W [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md), Dowiedz się, jak:
 
 * Podczas konfigurowania zasad zabezpieczeń.
 * Włącz zbieranie danych.
 * Wybierz, które zalecenia, aby zobaczyć jako część zasad zabezpieczeń.
 
-Bieżący Centrum zalecenia dotyczące zasad wokół aktualizacji systemu, reguły linii bazowej, programy chroniące przed złośliwym kodem [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) podsieci i interfejsów sieciowych, inspekcji usługi SQL database, SQL database technologii transparent data encryption, i zapory aplikacji sieci web.  [Ustawianie zasad zabezpieczeń](security-center-policies.md) zawiera opis każdej opcji zalecenia.
+Bieżący Centrum zalecenia dotyczące zasad wokół aktualizacji systemu, reguły linii bazowej, programy chroniące przed złośliwym kodem [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) podsieci i interfejsów sieciowych, inspekcji usługi SQL database, SQL database technologii transparent data encryption, i zapory aplikacji sieci web.  [Ustawianie zasad zabezpieczeń](security-center-azure-policy.md) zawiera opis każdej opcji zalecenia.
 
 ### <a name="monitor-recommendations"></a>Zalecenia dotyczące monitorowania
 Po skonfigurowaniu zasad zabezpieczeń usługa Security Center analizuje stan zabezpieczeń zasobów w celu identyfikowania potencjalnych luk w zabezpieczeniach. **Zalecenia** kafelka w obszarze **Przegląd** informuje Cię łączną liczbę zaleceniami zostały zidentyfikowane przez usługę Security Center.
@@ -135,7 +135,7 @@ W tabeli powyższe zalecenia wybierz zalecenie i przeprowadzenie jej jako przyk�
 ## <a name="next-steps"></a>Kolejne kroki
 W tym dokumencie Przedstawiliśmy zalecenia dotyczące zabezpieczeń w usłudze Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
-* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-policies.md) — informacje o sposobie konfigurowania zasad zabezpieczeń dla subskrypcji platformy Azure i grup zasobów.
+* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md) — informacje o sposobie konfigurowania zasad zabezpieczeń dla subskrypcji platformy Azure i grup zasobów.
 * [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń w Centrum zabezpieczeń Azure i zarządzanie nimi](security-center-managing-and-responding-alerts.md) — Dowiedz się, jak zarządzać i reagować na alerty zabezpieczeń.
 * [Monitorowanie rozwiązań partnerskich w usłudze Azure Security Center](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.

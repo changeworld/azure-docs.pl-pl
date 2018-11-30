@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 11/27/2018
 ms.author: tulasim
-ms.openlocfilehash: e6c654b00ee6be0ed87feb0fb2a5ccba38e5cbe4
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ee88c8dca1521f4cdc2e3ea141d5c1d497061bb4
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624881"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422358"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Źródła danych dla zawartości usługi QnA Maker
 
@@ -29,6 +29,10 @@ Poniższa tabela zawiera podsumowanie typów formaty zawartości i plików, któ
 |PLIK PDF / DOC|Przewodnik dotyczący — często zadawane pytania, obsługi produktu, broszury, dokument, ulotka zasad, pomoc techniczną, ze strukturą pytań i odpowiedzi, np.|[Strukturę QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx), [Manual.pdf produktu przykładowe](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf), [przykładowy o częściowej lub structured.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx), [przykładowy paper.pdf biały](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
 |Excel|Ze strukturą pliku pytań i odpowiedzi (łącznie z RTF, HTML pomocy technicznej)|[Przykładowy FAQ.xls pytań i odpowiedzi](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |TXT/TSV|Ze strukturą pliku pytań i odpowiedzi|[Przykładowe chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
+
+## <a name="data-source-locations"></a>Lokalizacje źródeł danych
+
+Tylko publiczne adresy URL są prawidłowe dla wszystkich źródeł danych. Nie przesyłaj źródeł danych, które wymagają uwierzytelniania. Możesz pobrać plik z witryny uwierzytelniony, a następnie użyj opcji przekazywania pliku, aby wyodrębnić pytań i odpowiedzi.
 
 ## <a name="faq-urls"></a>Adresy URL — często zadawane pytania
 

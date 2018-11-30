@@ -1,6 +1,6 @@
 ---
-title: Ocena wydajności modelu w usłudze Machine Learning | Dokumentacja firmy Microsoft
-description: Wyjaśnia, jak ocena wydajności modelu w usłudze Azure Machine Learning.
+title: Ocena wydajności modelu - Azure Machine Learning Studio | Dokumentacja firmy Microsoft
+description: Ten artykuł pokazuje, jak ocena wydajności modelu w usłudze Azure Machine Learning Studio i zawiera krótki opis dostępnych metryk dla tego zadania.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 98704f00c6b086772d9e0440ace79c3ca713f13a
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: de013f8deb5e64077aad96bd34d64135f981166d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261604"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311501"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>Ocenianie wydajności modelu w usłudze Azure Machine Learning
 Ten artykuł pokazuje, jak ocena wydajności modelu w usłudze Azure Machine Learning Studio i zawiera krótki opis dostępnych metryk dla tego zadania. Przedstawiono trzy typowe scenariusze uczenia nadzorowanego: 
@@ -39,7 +39,7 @@ Usługę Azure Machine Learning obsługuje oceny modelu dwie jego główne maszy
 ## <a name="evaluation-vs-cross-validation"></a>Ocena programu vs. Krzyżowe sprawdzanie poprawności
 Ocena i krzyżowego sprawdzania poprawności są standardowe metody zadaniem jest mierzenie wydajności modelu. Zarówno generują metryki oceny, które można sprawdzić lub porównać te z innymi modelami.
 
-[Ocena modelu] [ evaluate-model] oczekuje ocenami zestawu danych jako dane wejściowe (lub 2 w przypadku chcesz porównać wydajność różnych modeli w 2). Oznacza to konieczność uczenie modelu przy użyciu [uczenie modelu] [ train-model] marki i moduł prognozy na niektórych zestawu danych za pomocą [Score Model] [ score-model]modułu, zanim będziesz w stanie ocenić wyniki. Obliczanie opiera się na ocenami etykiety/prawdopodobieństwa wraz z etykiety wartość true, które są generowane przez [Score Model] [ score-model] modułu.
+[Ocena modelu] [ evaluate-model] oczekuje ocenami zestawu danych jako dane wejściowe (lub 2 w przypadku chcesz porównać wydajność dwa różne modele). Oznacza to konieczność uczenie modelu przy użyciu [uczenie modelu] [ train-model] marki i moduł prognozy na niektórych zestawu danych za pomocą [Score Model] [ score-model]modułu, zanim będziesz w stanie ocenić wyniki. Obliczanie opiera się na ocenami etykiety/prawdopodobieństwa wraz z etykiety wartość true, które są generowane przez [Score Model] [ score-model] modułu.
 
 Alternatywnie służy krzyżowego sprawdzania poprawności do wykonania wielu operacji obliczyć ocenę train (10 złożeń) automatycznie na różne podzbiory danych wejściowych. Dane wejściowe jest dzielony na 10 części, w której jedna jest zarezerwowana do testowania, a inne 9 na potrzeby szkolenia. Ten proces jest powtarzany 10 razy, a metryki oceny są uśredniane. Pomaga to w określeniu, jak dobrze modelu będzie generalize nowych zestawów danych. [Krzyżowa Weryfikacja modelu] [ cross-validate-model] moduł przyjmuje nieprzeszkolonych modelu i niektóre etykietami zestaw danych i wyniki oceny każdego 10 złożeń, oprócz uśrednionej wyników.
 
@@ -66,7 +66,7 @@ Rysunek 1. Oceniania modelu regresji.
 ### <a name="inspecting-the-evaluation-results"></a>Sprawdzanie wyników oceny
 Po uruchomieniu eksperymentu, kliknij port wyjściowy [Evaluate Model] [ evaluate-model] modułu, a następnie wybierz pozycję *Visualize* aby zobaczyć wyniki oceny. Są dostępne dla modele regresji metryk oceny: *oznacza błąd absolutny*, *głównego oznacza błąd absolutny*, *względny błąd absolutny*,  *Względna kwadrat błąd*i *determinacji*.
 
-Termin "error" w tym miejscu reprezentuje różnicy między wartością prognozowaną a wartością true. Wartość bezwzględna lub kwadrat różnica ta zazwyczaj są obliczane do przechwytywania całkowita wielkość błąd we wszystkich wystąpieniach, jak różnicy między wartością przewidywane i true może być ujemna w niektórych przypadkach. Metryki błąd zadaniem jest mierzenie wydajności predykcyjnego modelu regresji pod względem odchylenie oznacza jego przewidywań wartości true. Niższe wartości błąd oznacza, że model, który jest bardziej precyzyjne w podejmowaniu prognozy. Ogólny błąd metryką 0 oznacza, że model doskonałe dopasowanie danych.
+Termin "error" w tym miejscu reprezentuje różnicy między wartością prognozowaną a wartością true. Wartość bezwzględna lub kwadrat różnica ta zazwyczaj obliczany jest do przechwytywania całkowita wielkość błąd we wszystkich wystąpieniach jako różnicy między wartością przewidywane i true może być ujemna w niektórych przypadkach. Metryki błąd zadaniem jest mierzenie wydajności predykcyjnego modelu regresji pod względem odchylenie oznacza jego przewidywań wartości true. Niższe wartości błąd oznacza, że model, który jest bardziej precyzyjne w podejmowaniu prognozy. Metrykę ogólny błąd zero oznacza, że model doskonałe dopasowanie danych.
 
 Współczynnik oznaczania, która jest również znana jako R kwadrat, jest również standardowy sposób pomiaru, jak dobrze pasuje do modelu danych. Mogą być interpretowane jako część odmiany wyjaśnione przy użyciu modelu. Uzyskanie lepszej udział w tym przypadku jest lepiej gdzie 1 oznacza dokładne dopasowanie.
 
@@ -75,7 +75,7 @@ Współczynnik oznaczania, która jest również znana jako R kwadrat, jest rów
 Rysunek 2. Metryki oceny regresji liniowej.
 
 ### <a name="using-cross-validation"></a>Za pomocą krzyżowego sprawdzania poprawności
-Jak wspomniano wcześniej, można przeprowadzić szkolenia powtarzane, oceniania i ocen automatycznie przy użyciu [krzyżowa Weryfikacja modelu] [ cross-validate-model] modułu. Wszystko, czego potrzebujesz w takiej sytuacji jest zestaw nieprzeszkolonych modelu i [krzyżowa Weryfikacja modelu] [ cross-validate-model] modułu (zobacz rysunek poniżej). Uwaga: należy ustawić kolumny etykiety *cena* w [krzyżowa Weryfikacja modelu] [ cross-validate-model] właściwości modułu.
+Jak wspomniano wcześniej, można przeprowadzić szkolenia powtarzane, oceniania i ocen automatycznie przy użyciu [krzyżowa Weryfikacja modelu] [ cross-validate-model] modułu. Wszystko, czego potrzebujesz w takiej sytuacji jest zestaw nieprzeszkolonych modelu i [krzyżowa Weryfikacja modelu] [ cross-validate-model] modułu (zobacz rysunek poniżej). Należy ustawić kolumny etykiety *cena* w [krzyżowa Weryfikacja modelu] [ cross-validate-model] właściwości modułu.
 
 ![Krzyżowe sprawdzanie modelu regresji](./media/evaluate-model-performance/3.png)
 
@@ -88,7 +88,7 @@ Po uruchomieniu eksperymentu, można sprawdzić wyniki oceny, kliknij port wyjś
 Rysunek 4. Wyników krzyżowego sprawdzania poprawności modelu regresji.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Ocena Model klasyfikacji binarnej
-W przypadku klasyfikacji binarnej Zmienna docelowa ma tylko dwa możliwe wyniki, na przykład: {0, 1} lub {FAŁSZ, PRAWDA}, {dodatnie, ujemne}. Przyjęto założenie, otrzymują zestaw treści dla dorosłych pracowników z niektórymi demograficznych i zatrudnienia zmienne i zostanie wyświetlony monit do prognozowania poziomu dochodu binarne zmiennej o wartości {"< = 50K", "> 50K"}. Innymi słowy ujemna klasa reprezentuje pracowników, którzy tworzą mniejsza lub równa 50K rocznie i dodatnią klasa reprezentuje innym pracownikom. Tak jak w scenariuszu regresji firma Microsoft będzie wytrenuj model, oceniać niektóre dane i ocena wyników. Główną różnicą jest wybór metryk, które oblicza usługi Azure Machine Learning i danych wyjściowych. Aby zilustrować scenariusza prognozowania poziomu przychodów, użyjemy [treści dla dorosłych](http://archive.ics.uci.edu/ml/datasets/Adult) zestawu danych do tworzenia eksperymentu usługi Azure Machine Learning i ocena wydajności modelu regresji logistycznej dwuklasowych, często używane dane binarne Klasyfikator.
+W przypadku klasyfikacji binarnej Zmienna docelowa ma tylko dwa możliwe wyniki, na przykład: {0, 1} lub {FAŁSZ, PRAWDA}, {dodatnie, ujemne}. Przyjęto założenie, otrzymują zestaw treści dla dorosłych pracowników z niektórymi demograficznych i zatrudnienia zmienne i zostanie wyświetlony monit do prognozowania poziomu dochodu binarne zmiennej o wartości {"< = 50 K", "> 50 K"}. Innymi słowy ujemna klasa reprezentuje pracowników, którzy tworzą mniejsza lub równa 50 K rocznie i dodatnią klasa reprezentuje innym pracownikom. Tak jak w scenariuszu regresji firma Microsoft będzie wytrenuj model, oceniać niektóre dane i ocena wyników. Główną różnicą jest wybór metryk, które oblicza usługi Azure Machine Learning i danych wyjściowych. Aby zilustrować scenariusza prognozowania poziomu przychodów, użyjemy [treści dla dorosłych](http://archive.ics.uci.edu/ml/datasets/Adult) zestawu danych do tworzenia eksperymentu usługi Azure Machine Learning i ocena wydajności modelu regresji logistycznej dwuklasowych, często używane dane binarne Klasyfikator.
 
 ### <a name="creating-the-experiment"></a>Tworzenie eksperymentu
 Dodaj następujące moduły do obszaru roboczego usługi Azure Machine Learning Studio:
@@ -116,7 +116,7 @@ Z tego powodu warto obliczenia dodatkowe metryki, które przechwycić bardziej k
 
 Rysunek 6. Macierz pomyłek klasyfikacji binarnej.
 
-Wracając do problemu klasyfikacji przychodów, firma Microsoft będzie chciała zadawać na kilka pytań oceny, które pomagają nam zrozumieć wydajność klasyfikatora używane. Bardzo naturalnych pytaniem jest: "poza osób, których model przewiduje się być zarabiać > 50 K (TP + FP), jak wiele zostały poprawnie klasyfikowane (TP)?" To pytanie, można uzyskać, analizując **dokładności** modelu, który jest część alarmów, które są poprawnie klasyfikowane: TP/(TP+FP). Jest inny, często zadawane pytania "poza wszystkich wysokiej zarabiać pracownikom dochodu > 50 k (TP + FN), ile klasyfikatora klasyfikowania poprawnie (TP)". Jest to rzeczywiście **Odwołaj**, lub wartość true, wartości dodatnich: TP/(TP+FN) klasyfikatora. Może się okazać, czy jest oczywisty kompromisu między dokładności i odwołania. Na przykład biorąc pod uwagę zestaw stosunkowo o zrównoważonym obciążeniu, klasyfikatora, który prognozuje przede wszystkim dodatnią wystąpień miałby wysokiej odwołania, ale raczej niski dokładności tyle wystąpień ujemna może być źle zakwalifikowane skutkuje dużą liczbę wyników fałszywie dodatnich. Aby zobaczyć, jak te dwie metryki w zależności od wykres, możesz kliknąć krzywej "Dokładności/odwołania" w danych wyjściowych strony wyników oceny (u góry z lewej części rysunek 7).
+Wracając do problemu klasyfikacji przychodów, firma Microsoft będzie chciała zadawać na kilka pytań oceny, które pomagają nam zrozumieć wydajność klasyfikatora używane. Bardzo naturalnych pytaniem jest: "poza osób, których model przewiduje się być zarabiać > 50 K (TP + FP), jak wiele zostały poprawnie klasyfikowane (TP)?" To pytanie, można uzyskać, analizując **dokładności** modelu, który jest część alarmów, które są poprawnie klasyfikowane: TP/(TP+FP). Jest inny, często zadawane pytania "poza wszystkich wysokiej zarabiać pracownikom dochodu > 50 k (TP + FN), ile klasyfikatora klasyfikowania poprawnie (TP)". Jest to rzeczywiście **Odwołaj**, lub wartość true, wartości dodatnich: TP/(TP+FN) klasyfikatora. Może się okazać, czy jest oczywisty kompromisu między dokładności i odwołania. Na przykład biorąc pod uwagę zestaw stosunkowo o zrównoważonym obciążeniu, klasyfikatora, który prognozuje przede wszystkim dodatnią wystąpień miałby wysokiej odwołania, ale raczej niski dokładności tyle wystąpień ujemna może być źle zakwalifikowane skutkuje dużą liczbę wyników fałszywie dodatnich. Aby zobaczyć, jak te dwie metryki w zależności od wykres, możesz kliknąć **dokładności/odwołania** krzywą na stronie dane wyjściowe wyniku oceny (część lewym górnym rogu rysunek 7).
 
 ![Wyniki oceny Klasyfikacja binarna](./media/evaluate-model-performance/7.png)
 

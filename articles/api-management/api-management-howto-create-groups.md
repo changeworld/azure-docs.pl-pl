@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 3986b07c3568c3dcbb4077361d38f74d658458cd
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5392cf5463dd0b11d1ce53856c8e4e2e788892b0
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38603068"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442425"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Jak utworzyć i używanie grup do zarządzania kontami deweloperów w usłudze Azure API Management
+
 W usłudze API Management grupy służą do zarządzania widocznością produktów dla deweloperów. Produkty najpierw są one widoczne dla grup, a następnie deweloperzy w tych grupach można wyświetlać i subskrybować produkty, które są skojarzone z grupami. 
 
 Usługa API Management ma następujące niezmienne grupy systemowe:
@@ -34,6 +35,8 @@ Oprócz tych grup systemowych Administratorzy mogą tworzyć niestandardowe grup
 W tym przewodniku przedstawiono, jak dodać nowe grupy Administratorzy wystąpienia usługi API Management i skojarzyć je z produktami i deweloperów.
 
 Oprócz tworzenia grup i zarządzanie nimi w portalu wydawcy, można tworzyć i zarządzać grupami przy użyciu interfejsu API REST zarządzania API [grupy](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) jednostki.
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

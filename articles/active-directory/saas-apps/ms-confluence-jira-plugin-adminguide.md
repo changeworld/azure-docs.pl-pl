@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 49516523abdd927c3ae60235fcd74473689c6856
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 65649c3fdc11d74b5888b26b81ae85e10f2788bd
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48019814"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426880"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian Jira i Confluence podręczniku administratora usługi Azure Active Directory
 
@@ -67,9 +67,23 @@ Przed zainstalowaniem dodatku typu plug-in, należy zwrócić uwagę na następu
 
 Wtyczka obsługuje następujące wersje programu Jira Confluence:
 
-* Jira Core i oprogramowania: 6.0 do 7.8
-* Jira pomocy technicznej: 3.2 do 3.0
+* Jira Core i oprogramowania: 6.0 do 7.12
+* Jira pomocy technicznej: 3.5.0 do 3.0.0
+* JIRA obsługuje również 5.2. Aby uzyskać więcej informacji, kliknij przycisk [Microsoft Azure Active Directory logowania jednokrotnego dla 5.2 programu JIRA](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
 * Confluence: 5.10 do 5.0
+* Confluence: 6.0.1
+* Confluence: 6.1.1
+* Confluence: 6.2.1
+* Confluence: 6.3.4.
+* Confluence: 6.4.0
+* Confluence: 6.5.0
+* Confluence: 6.6.2
+* Confluence: 6.7.0
+* Confluence: 6.8.1
+* Confluence: 6.9.0
+* Confluence: 6.10.0
+* Confluence: 6.11.0
+* Confluence: 6.12.0
 
 ## <a name="installation"></a>Instalacja
 
@@ -79,7 +93,7 @@ Aby zainstalować dodatek typu plug-in, wykonaj następujące kroki:
 
 2. Przejdź do konsoli administracyjnej programu Jira/Confluence i wybierz **dodatki**.
 
-3. Z witryny Atlassian Marketplace, wyszukaj **wtyczkę logowania jednokrotnego SAML Microsoft**.
+3. Z Microsoft Download Center, Pobierz [wtyczkę logowania jednokrotnego SAML firmy Microsoft dla programu Jira](https://www.microsoft.com/download/details.aspx?id=56506)/ [wtyczkę logowania jednokrotnego SAML firmy Microsoft dla Confluence](https://www.microsoft.com/download/details.aspx?id=56503).
 
    Odpowiednią wersję dodatku typu plug-in, zostanie wyświetlony w wynikach wyszukiwania.
 
@@ -171,9 +185,23 @@ Nie. Wtyczka obsługuje tylko lokalne wersje programu Jira i Confluence.
 
 Wtyczka obsługuje następujące wersje:
 
-* Jira Core i oprogramowania: 6.0 do 7.8
-* Jira pomocy technicznej: 3.2 do 3.0
+* Jira Core i oprogramowania: 6.0 do 7.12
+* Jira pomocy technicznej: 3.5.0 do 3.0.0
+* JIRA obsługuje również 5.2. Aby uzyskać więcej informacji, kliknij przycisk [Microsoft Azure Active Directory logowania jednokrotnego dla 5.2 programu JIRA](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
 * Confluence: 5.10 do 5.0
+* Confluence: 6.0.1
+* Confluence: 6.1.1
+* Confluence: 6.2.1
+* Confluence: 6.3.4.
+* Confluence: 6.4.0
+* Confluence: 6.5.0
+* Confluence: 6.6.2
+* Confluence: 6.7.0
+* Confluence: 6.8.1
+* Confluence: 6.9.0
+* Confluence: 6.10.0
+* Confluence: 6.11.0
+* Confluence: 6.12.0
 
 ### <a name="is-the-plug-in-free-or-paid"></a>Wtyczka jest bezpłatne lub płatne?
 

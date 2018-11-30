@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ccc5aa116d2f01b601e6b6b9aad456110b764856
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 90c636d57189518cb95291510f3e83ef8e7a8a75
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985730"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422035"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Opis przepływu przyznawanie niejawne protokołu OAuth2 w usłudze Azure Active Directory (AD)
 
@@ -34,7 +34,7 @@ Przyznawanie niejawne protokołu OAuth2 jest odpowiedzialne za są grant najdłu
 
 Quintessential [przyznawania kodu autoryzacji OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.1) jest autoryzację, który używa dwa oddzielne punkty końcowe. Punkt końcowy autoryzacji jest używany w fazie interakcji użytkownika, co skutkuje kod autoryzacji. Punkt końcowy tokenu jest następnie używany przez klienta kodu dla tokenu dostępu, a często także tokenu odświeżania do wymiany. Aplikacje sieci Web są wymagane do przedstawienia poświadczeń własnych aplikacji do punktu końcowego tokenu, tak, aby serwer autoryzacji można uwierzytelnić klienta.
 
-[Przyznawanie niejawne protokołu OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.2) jest wariant innych przydziałów autoryzacji. Umożliwia klienta w celu uzyskania tokenu dostępu (i id_token, korzystając z [OpenId Connect](http://openid.net/specs/openid-connect-core-1_0.html)) bezpośrednio z punktu końcowego autoryzacji bez nawiązywania kontaktu z punktu końcowego tokenu, ani uwierzytelniania klienta. Ten wariant zaprojektowano dla aplikacji uruchamianych w przeglądarce sieci Web oparte na języku JavaScript: w pierwotną specyfikację OAuth2 tokeny są zwracane w fragmentu identyfikatora URI. Który udostępnia tokenu usługi bits do kodu JavaScript w kliencie, ale gwarantuje, że nie będą uwzględniane w przekierowuje do serwera. Zwracanie tokenów za pośrednictwem przeglądarki przekierowuje bezpośrednio z punktu końcowego autoryzacji. Ma tę zaletę, eliminując wszelkie wymagania dotyczące wielu wywołań pochodzenia, które są niezbędne, jeśli wymagane jest wprowadzenie do kontaktowania się z punktu końcowego tokenu aplikacji JavaScript.
+[Przyznawanie niejawne protokołu OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.2) jest wariant innych przydziałów autoryzacji. Umożliwia klienta w celu uzyskania tokenu dostępu (i id_token, korzystając z [OpenId Connect](https://openid.net/specs/openid-connect-core-1_0.html)) bezpośrednio z punktu końcowego autoryzacji bez nawiązywania kontaktu z punktu końcowego tokenu, ani uwierzytelniania klienta. Ten wariant zaprojektowano dla aplikacji uruchamianych w przeglądarce sieci Web oparte na języku JavaScript: w pierwotną specyfikację OAuth2 tokeny są zwracane w fragmentu identyfikatora URI. Który udostępnia tokenu usługi bits do kodu JavaScript w kliencie, ale gwarantuje, że nie będą uwzględniane w przekierowuje do serwera. Zwracanie tokenów za pośrednictwem przeglądarki przekierowuje bezpośrednio z punktu końcowego autoryzacji. Ma tę zaletę, eliminując wszelkie wymagania dotyczące wielu wywołań pochodzenia, które są niezbędne, jeśli wymagane jest wprowadzenie do kontaktowania się z punktu końcowego tokenu aplikacji JavaScript.
 
 Ważną cechą przyznawanie niejawne protokołu OAuth2 jest fakt, że takie przepływy tokenów odświeżania nigdy nie jest zwracana do klienta. Następna sekcja pokazuje, jak nie jest to konieczne, a w rzeczywistości wynosi problem z zabezpieczeniami.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: edddc40b17adde685f875dfaa6b20879c6e61b15
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: edfd2e9e03aefa4833c8472a43d4857f08b95780
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259160"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495475"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Często zadawane pytania dotyczące programu SQL Server uruchomionego na maszynach wirtualnych Windows Azure
 
@@ -71,16 +71,48 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 1. **Jak zainstalować Moje licencjonowaną kopię programu SQL Server na Maszynie wirtualnej platformy Azure?**
 
-   Istnieją dwa sposoby, aby to zrobić. Można obsługiwać jeden z [obrazów maszyn wirtualnych, które obsługuje licencji](virtual-machines-windows-sql-server-iaas-overview.md#BYOL), który jest również znany jako bring-your-own-license (BYOL). Innym rozwiązaniem jest skopiowanie nośnika instalacyjnego programu SQL Server do maszyny Wirtualnej z systemem Windows Server, a następnie zainstaluj program SQL Server na maszynie Wirtualnej. Jednak jeśli ręcznie zainstalować program SQL Server, jest nie integrację portalu i rozszerzenie agenta IaaS programu SQL Server nie jest obsługiwany, dlatego funkcje takie jak automatyczne kopie zapasowe i automatyczne stosowanie poprawek nie będzie działać w tym scenariuszu. Z tego powodu zaleca się skorzystanie z galerii obrazów BYOL. Aby użyć BYOL i multimediów programu SQL Server na Maszynie wirtualnej platformy Azure, konieczne jest posiadanie [przenośności licencji za pośrednictwem programu Software Assurance na platformie Azure](https://azure.microsoft.com/pricing/license-mobility/). Aby uzyskać więcej informacji, zobacz [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) (Wskazówki dotyczące cen maszyn wirtualnych platformy Azure z programem SQL Server).
+   Istnieją dwa sposoby, aby to zrobić. Można obsługiwać jeden z [obrazów maszyn wirtualnych, które obsługuje licencji](virtual-machines-windows-sql-server-iaas-overview.md#BYOL), który jest również znany jako bring-your-own-license (BYOL). Innym rozwiązaniem jest skopiowanie nośnika instalacyjnego programu SQL Server do maszyny Wirtualnej z systemem Windows Server, a następnie zainstaluj program SQL Server na maszynie Wirtualnej. Jednak jeśli ręcznie zainstalować program SQL Server, jest nie integrację portalu i rozszerzenie agenta IaaS programu SQL Server nie jest obsługiwany, dlatego funkcje takie jak automatyczne kopie zapasowe i automatyczne stosowanie poprawek nie będzie działać w tym scenariuszu. Z tego powodu zaleca się przy użyciu jednego z galerii obrazów BYOL. Aby użyć BYOL i multimediów programu SQL Server na Maszynie wirtualnej platformy Azure, konieczne jest posiadanie [przenośności licencji za pośrednictwem programu Software Assurance na platformie Azure](https://azure.microsoft.com/pricing/license-mobility/). Aby uzyskać więcej informacji, zobacz [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) (Wskazówki dotyczące cen maszyn wirtualnych platformy Azure z programem SQL Server).
 
-1. **Czy mogę zmienić Maszynę wirtualną do używania licencję programu SQL Server, jeśli został utworzony z jednego z obrazów w galerii zgodnie z rzeczywistym użyciem**
-
-   Nie. Nie można przełączyć się z płatności na sekundę licencji do korzystania z własnych licencji. Tworzenie nowej maszyny wirtualnej platformy Azure przy użyciu jednej z [obrazy BYOL](virtual-machines-windows-sql-server-iaas-overview.md#BYOL), a następnie przeprowadzić migrację baz danych na nowy serwer przy użyciu standardu [technik migracji danych](virtual-machines-windows-migrate-sql.md).
 
 1. **Czy muszę płacić za licencję programu SQL Server na Maszynie wirtualnej platformy Azure, jeśli jest on używany tylko w stanie wstrzymania/tryb failover?**
 
-   Jeśli masz pakiet Software Assurance i używają opcji przenoszenia licencji zgodnie z opisem w [często zadawane pytania dotyczące licencjonowania maszyny wirtualnej](https://azure.microsoft.com/pricing/licensing-faq/) nie trzeba płacić za licencję na jeden udział jako replika pomocnicza pasywnym we wdrożeniu o wysokiej dostępności programu SQL Server. W przeciwnym razie trzeba płacić za jej licencji.
+   Jeśli masz pakiet Software Assurance i w związku z tym używają opcji przenoszenia licencji zgodnie z opisem w maszynie wirtualnej Licencjonowanie — często zadawane pytania,] (https://azure.microsoft.com/pricing/licensing-faq/) nie trzeba płacić za licencję na jeden udział jako replika pomocnicza pasywnym we wdrożeniu o wysokiej dostępności programu SQL Server. W przeciwnym razie trzeba płacić za jej licencji.
 
+1. **Czy mogę zmienić Maszynę wirtualną do używania licencję programu SQL Server, jeśli został utworzony z jednego z obrazów w galerii zgodnie z rzeczywistym użyciem**
+
+   Tak. Można łatwo przenosić przechodzenie między dwa modele licencjonowania, niezależnie od tego obrazu, który pierwotnie został wdrożony. Aby uzyskać więcej informacji, zobacz [jak zmienić modelu licencjonowania dla maszyny Wirtualnej SQL](virtual-machines-windows-sql-ahb.md).
+
+1. **Do utworzenia nowej maszyny Wirtualnej SQL należy używać obrazów BYOL lub punktu odzyskiwania maszyny Wirtualnej SQL?**
+
+   Bring-your-own-license (BYOL) obrazów są dostępne tylko dla klientów z umową EA. Inni klienci posiadający pakiet Software Assurance Użyj dostawcy zasobów maszyny Wirtualnej SQL do tworzenia maszyny Wirtualnej SQL przy użyciu [korzyść użycia hybrydowego platformy Azure (AHB)](https://azure.microsoft.com/pricing/licensing-faq/). 
+
+1. **Przełączanie Modele licencjonowania wymaga żadnych przestojów dla programu SQL Server?**
+
+   Nie. [Zmiana modelu licencjonowania](virtual-machines-windows-sql-ahb.md) nie wymaga żadnych przestojów dla programu SQL Server, ponieważ zmiana zacznie obowiązywać natychmiast i nie wymaga ponownego uruchomienia maszyny wirtualnej. 
+
+1. **Subskrypcji CSP aktywować korzyść użycia hybrydowego platformy Azure?**
+
+   Tak. [Zmiana modelu licencjonowania](virtual-machines-windows-sql-ahb.md) jest niedostępny dla subskrypcji programu CSP. 
+
+1. **Rejestrowanie moją maszynę Wirtualną przy użyciu nowego dostawcę zasobów maszyny Wirtualnej SQL trwają dodatkowe koszty?**
+
+   Nie. Dostawca zasobów maszyny Wirtualnej SQL umożliwia tylko dodatkowe możliwości zarządzania dla programu SQL Server na maszynie Wirtualnej platformy Azure z żadne dodatkowe opłaty. 
+
+1. **Dostawca zasobów maszyny Wirtualnej SQL jest dostępna dla wszystkich klientów?**
+ 
+   Tak. Wszyscy klienci będą mogli zarejestrować się przy użyciu nowego dostawcę zasobów maszyny Wirtualnej SQL. Jednak tylko klienci z korzyści programu Software Assurance mogą aktywować [korzyść użycia hybrydowego platformy Azure (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) (lub BYOL) na maszynę Wirtualną programu SQL Server. 
+
+1. **Co się dzieje z _* zasobu Microsoft.SqlVirtualMachine_*, jeśli zasób maszyny Wirtualnej jest przeniesiony lub usunięty?** 
+
+   Gdy zasobów Microsoft.Compute/VirtualMachine jest porzucone lub przeniesiona, a następnie skojarzonego zasobu Microsoft.SqlVirtualMachine powiadomić o asynchronicznym replikowaniu operacji.
+
+1. **Co się dzieje z maszyny Wirtualnej, jeśli _* Microsoft.SqlVirtualMachine_* zasobów jest porzucany?**
+
+   Zasób Microsoft.Compute/VirtualMachine nie ulega zmianie po upuszczeniu zasobów Microsoft.SqlVirtualMachine. Jednak zmiany licencjonowania domyślnie powrócą do oryginalnego źródła obrazu. 
+
+1. **Czy jest możliwość zarejestrowania własnym wdrożone maszyny wirtualne programu SQL Server za pomocą dostawcy zasobów maszyny Wirtualnej SQL**
+
+   Tak. Jeśli wdrożono programu SQL Server z własnych nośnika, można zarejestrować maszyny Wirtualnej SQL z dostawcą zasobów, aby uzyskać korzyści możliwości udostępniane przez rozszerzenie SQL IaaS. Jesteś nie można przekonwertować własnym wdrożonej maszyny Wirtualnej SQL zgodnie z rzeczywistym użyciem. 
 
 ## <a name="administration"></a>Administracja
 

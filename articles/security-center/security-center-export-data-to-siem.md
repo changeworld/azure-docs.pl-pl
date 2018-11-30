@@ -1,5 +1,5 @@
 ---
-title: Eksportowanie Azure danych zabezpieczeń do rozwiązania SIEM — Konfiguracja potoku [wersja zapoznawcza] | Dokumentacja firmy Microsoft
+title: Danych zabezpieczeń platformy Azure, eksportowanie do rozwiązania SIEM — Konfiguracja potoku | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera dokumentację produktu pobierania zabezpieczeń platformy Azure, dzienniki Centrum do rozwiązania SIEM
 services: security-center
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2018
+ms.date: 11/26/2018
 ms.author: barclayn
-ms.openlocfilehash: aede60a729fe9c0594ded485e189c0b467e34271
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4cc9478197b39198a94ace1cbefab81de3cdb32b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298237"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52306730"
 ---
-# <a name="azure-security-data-export-to-siem--pipeline-configuration-preview"></a>Usługa Azure eksportowanie danych zabezpieczeń do rozwiązania SIEM — Konfiguracja potoku [wersja zapoznawcza]
+# <a name="azure-security-data-export-to-siem-pipeline-configuration"></a>Usługa Azure Eksport danych zabezpieczeń do konfiguracji rozwiązania SIEM potoku
 
 W tym dokumencie przedstawiono procedurę eksportowania danych zabezpieczeń usługi Azure Security Center do rozwiązania SIEM.
 
@@ -37,11 +37,11 @@ Ogólne omówienie
 
 ## <a name="what-is-the-azure-security-data-exposed-to-siem"></a>Co to jest udostępniane do rozwiązania SIEM dane zabezpieczeń platformy Azure?
 
-W tej wersji zapoznawczej uwidaczniamy [alertów zabezpieczeń.](../security-center/security-center-managing-and-responding-alerts.md) W następnych wersjach firma Microsoft będzie wzbogacić zestawu danych z zaleceniami dotyczącymi zabezpieczeń.
+W tej wersji uwidaczniamy [alertów zabezpieczeń.](../security-center/security-center-managing-and-responding-alerts.md) W następnych wersjach firma Microsoft będzie wzbogacić zestawu danych z zaleceniami dotyczącymi zabezpieczeń.
 
-## <a name="how-to-setup-the-pipeline"></a>Jak skonfigurować potok? 
+## <a name="how-to-setup-the-pipeline"></a>Jak skonfigurować potok
 
-### <a name="create-an-event-hub"></a>Tworzenie centrum zdarzeń 
+### <a name="create-an-event-hub"></a>Tworzenie centrum zdarzeń
 
 Przed rozpoczęciem należy [tworzenie przestrzeni nazw usługi Event Hubs](../event-hubs/event-hubs-create.md). Ten obszar nazw i Centrum zdarzeń jest miejsce docelowe dla wszystkich danych monitorowania.
 

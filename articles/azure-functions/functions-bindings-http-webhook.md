@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 333e73af3578cdc363e7ede08ca52207cfd0fdb0
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: a20dec67201cb7d8b7ccd3a7662438f2afabfe63
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248919"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446793"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Usługa Azure Functions HTTP wyzwalaczy i powiązań
 
@@ -157,13 +157,13 @@ public static string Run(CustomObject req, ILogger log)
 }
 
 public class CustomObject {
-     public String name {get; set;}
+     public string name {get; set;}
 }
 ```
 
-### <a name="trigger---f-example"></a>Wyzwalacz — przykład F #
+### <a name="trigger---f-example"></a>Wyzwalacz - F# przykład
 
-W poniższym przykładzie pokazano powiązanie wyzwalacza w *function.json* pliku i [funkcja języka F #](functions-reference-fsharp.md) powiązania, który używa. Funkcja wyszukuje `name` parametru w ciągu zapytania lub treści żądania HTTP.
+W poniższym przykładzie pokazano powiązanie wyzwalacza w *function.json* pliku i [ F# funkcja](functions-reference-fsharp.md) powiązania, który używa. Funkcja wyszukuje `name` parametru w ciągu zapytania lub treści żądania HTTP.
 
 Oto *function.json* pliku:
 
@@ -188,7 +188,7 @@ Oto *function.json* pliku:
 
 [Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
 
-Poniżej przedstawiono kod F #:
+Oto F# kodu:
 
 ```fsharp
 open System.Net
@@ -348,7 +348,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 ## <a name="trigger---usage"></a>Wyzwalacz — użycie
 
-Dla funkcji języka C# i F #, można zadeklarować rodzaj wyzwalacza danych wejściowych w celu być `HttpRequestMessage` lub typu niestandardowego. Jeśli wybierzesz `HttpRequestMessage`, uzyskujesz pełen dostęp do obiektu żądania. Dla typu niestandardowego środowiska uruchomieniowego próbuje przeanalizować treść żądania JSON, aby ustawić właściwości obiektu.
+Dla C# i F# funkcji, można zadeklarować rodzaj wyzwalacza danych wejściowych w celu być `HttpRequestMessage` lub typu niestandardowego. Jeśli wybierzesz `HttpRequestMessage`, uzyskujesz pełen dostęp do obiektu żądania. Dla typu niestandardowego środowiska uruchomieniowego próbuje przeanalizować treść żądania JSON, aby ustawić właściwości obiektu.
 
 W przypadku funkcji JavaScript środowisko uruchomieniowe usługi Functions zapewnia treści żądania, a nie obiekt żądania. Aby uzyskać więcej informacji, zobacz [przykładowy wyzwalacz JavaScript](#trigger---javascript-example).
 
@@ -434,6 +434,45 @@ Domyślnie wszystkie trasy funkcji mają prefiks *api*. Można również dostoso
 }
 ```
 
+### <a name="working-with-client-identities"></a>Praca z tożsamości klienta
+
+Jeśli aplikacja funkcji używa [uwierzytelnianie usługi App Service / autoryzacji](../app-service/app-service-authentication-overview.md), informacji o uwierzytelnionych klientów można wyświetlić w kodzie. Te informacje są dostępne jako [wprowadzony przez platformę nagłówki żądań](../app-service/app-service-authentication-how-to.md#access-user-claims). 
+
+Te informacje można również odczytywać powiązanie danych. Ta funkcja jest dostępna tylko na środowisko uruchomieniowe 2.x funkcji. Jest również obecnie tylko dostępne dla języków .NET.
+
+W przypadku języków .NET, te informacje są dostępne jako [ClaimsPrincipal](https://docs.microsoft.com/en-us/dotnet/api/system.security.claims.claimsprincipal?view=netstandard-2.0). Elementu ClaimsPrincipal jest dostępny jako część kontekstu żądania, jak pokazano w poniższym przykładzie:
+
+```csharp
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+
+public static IActionResult Run(HttpRequest req, ILogger log)
+{
+    ClaimsPrincipal identities = req.HttpContext.User;
+    // ...
+    return new OkResult();
+}
+```
+
+Alternatywnie elementu ClaimsPrincipal po prostu może być uwzględniany jako dodatkowy parametr w sygnaturze funkcji:
+
+```csharp
+#r "Newtonsoft.Json"
+
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using Newtonsoft.Json.Linq;
+
+public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
+{
+    // ...
+    return;
+}
+
+```
+
 ### <a name="authorization-keys"></a>Klucze autoryzacji
 
 Functions umożliwia utrudnić dostęp do funkcji punktów końcowych HTTP podczas programowania za pomocą klawiszy.  Standardowa wyzwalacza HTTP może wymagać klucza interfejsu API być obecne w żądaniu. 
@@ -483,7 +522,7 @@ Możesz zezwolić na anonimowe żądania, które nie wymagają kluczy. Może ró
 
 Aby zabezpieczyć pełni funkcję punktów końcowych w środowisku produkcyjnym, należy rozważyć zaimplementowanie jednego z następujących opcji funkcji zabezpieczenia na poziomie aplikacji:
 
-* Włącz uwierzytelnianie usługi App Service / autoryzacji dla aplikacji funkcji. Platforma usługi App Service pozwala używać do uwierzytelniania klientów usługi Azure Active Directory (AAD) i wielu dostawców tożsamości innych firm. Służy to do zaimplementowania reguł autoryzacji niestandardowej dla funkcji, a informacje o użytkownikach można pracować z kodu funkcji. Aby dowiedzieć się więcej, zobacz [uwierzytelnianie i autoryzacja w usłudze Azure App Service](../app-service/app-service-authentication-overview.md).
+* Włącz uwierzytelnianie usługi App Service / autoryzacji dla aplikacji funkcji. Platforma usługi App Service pozwala używać do uwierzytelniania klientów usługi Azure Active Directory (AAD) i wielu dostawców tożsamości innych firm. Służy to do zaimplementowania reguł autoryzacji niestandardowej dla funkcji, a informacje o użytkownikach można pracować z kodu funkcji. Aby dowiedzieć się więcej, zobacz [uwierzytelnianie i autoryzacja w usłudze Azure App Service](../app-service/app-service-authentication-overview.md) i [Praca z tożsamościami klientów](#working-with-client-identities).
 
 * Użyj usługi Azure API Management (APIM), aby uwierzytelnić żądania. APIM oferuje różnorodne opcje zabezpieczeń interfejsu API dla żądań przychodzących. Aby dowiedzieć się więcej, zobacz [zasady uwierzytelniania usługi API Management](../api-management/api-management-authentication-policies.md). Za pomocą usługi APIM w miejscu można skonfigurować aplikację funkcji w celu umożliwienia akceptowania żądań tylko adres IP swojego wystąpienia usługi APIM. Aby dowiedzieć się więcej, zobacz [ograniczenia adresów IP](ip-addresses.md#ip-address-restrictions).
 

@@ -8,18 +8,18 @@ ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 703dedc69e491377ce0890610a2882ab95ae6e5a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 61da3b8e139cf5091aec4c1ab835c23fe319ea46
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565075"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446256"
 ---
 # <a name="create-and-provision-an-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Tworzenie i aprowizowanie urządzenia usługi Edge z wirtualnego TPM na maszynie wirtualnej systemu Linux
 
-Urządzenia w usłudze Azure IoT Edge mogą być automatycznie aprowizowane za pomocą [usługi Device Provisioning](../iot-dps/index.yml) podobnie jak w przypadku urządzeń, których nie włączono usługi edge. Jeśli znasz procesu automatycznego aprowizowania, zapoznaj się z [automatycznej aprowizacji pojęcia](../iot-dps/concepts-auto-provisioning.md) przed kontynuowaniem. 
+Urządzenia w usłudze Azure IoT Edge mogą być autoprovisioned przy użyciu [usługi Device Provisioning](../iot-dps/index.yml) podobnie jak w przypadku urządzeń, których nie włączono usługi edge. Jeśli znasz procesu autoprovisioning, zapoznaj się z [pojęcia autoprovisioning](../iot-dps/concepts-auto-provisioning.md) przed kontynuowaniem. 
 
-W tym artykule pokazano, jak przetestować automatycznej aprowizacji na symulowanym urządzeniu usługi Edge wykonując następujące kroki: 
+W tym artykule pokazano, jak przetestować autoprovisioning na symulowanym urządzeniu usługi Edge wykonując następujące kroki: 
 
 * Utwórz maszynę wirtualną systemu Linux (VM) w funkcji Hyper-V za pomocą symulowanego Trusted Platform Module (TPM) dotyczące zabezpieczeń sprzętowych.
 * Utwórz wystąpienie z IoT Hub urządzenia inicjowania obsługi usługi (DPS).
@@ -35,7 +35,7 @@ Kroki opisane w tym artykule są przeznaczone do celów testowych.
 
 ## <a name="create-a-linux-virtual-machine-with-a-virtual-tpm"></a>Utwórz maszynę wirtualną systemu Linux przy użyciu wirtualnego modułu TPM
 
-W tej sekcji utworzysz nową maszynę wirtualną systemu Linux na funkcji Hyper-V, który ma symulowanego modułu TPM, aby używać go do testowania, automatycznego aprowizowania współdziałania z usługą IoT Edge. 
+W tej sekcji utworzysz nową maszynę wirtualną systemu Linux na funkcji Hyper-V, który ma symulowanego modułu TPM, aby używać go do testowania, jak autoprovisioning współpracuje z usługą IoT Edge. 
 
 ### <a name="create-a-virtual-switch"></a>Utwórz przełącznik wirtualny
 
@@ -65,7 +65,7 @@ Jeśli widzisz błędy podczas tworzenia nowego przełącznika wirtualnego, upew
    2. **Konfigurowanie sieci**: Ustaw wartość **połączenia** do przełącznika wirtualnego, który został utworzony w poprzedniej sekcji. 
    3. **Opcje instalacji**: Wybierz **zainstalować system operacyjny z pliku obrazu rozruchowego** i przejdź do pliku obrazu dysku, który został zapisany lokalnie.
 
-Może upłynąć minut widok, aby utworzyć nową maszynę Wirtualną. 
+Może upłynąć kilka minut na utworzenie nowej maszyny Wirtualnej. 
 
 ### <a name="enable-virtual-tpm"></a>Włącz wirtualny moduł TPM
 
@@ -105,7 +105,7 @@ Po użytkownik ma uruchomione usługi Device Provisioning, skopiuj wartość **z
 
 Pobieranie informacji o udostępnianiu z maszyny wirtualnej i używać go do tworzenia rejestracji indywidualnej w usłudze Device Provisioning. 
 
-Po utworzeniu rejestracji w usłudze DPS mają okazję do deklarowania **początkowy stan bliźniaczej reprezentacji urządzenia**. W bliźniaczej reprezentacji urządzenia można ustawić tagi grupowanie urządzeń według dowolnej metryki potrzebnych w rozwiązaniu, takich jak typ region, środowisko, lokalizacji lub urządzenia. Tagi te są używane do tworzenia [automatycznego wdrożenia](how-to-deploy-monitor.md). 
+Po utworzeniu rejestracji w usłudze DPS mają okazję do deklarowania **początkowy stan bliźniaczej reprezentacji urządzenia**. W bliźniaczej reprezentacji urządzenia można ustawić tagi grupowanie urządzeń według dowolnej metryki, potrzebne do rozwiązania, takie jak region, środowisko, lokalizacji lub urządzeń typu. Tagi te są używane do tworzenia [automatycznego wdrożenia](how-to-deploy-monitor.md). 
 
 
 1. W [witryny Azure portal](https://portal.azure.com), a następnie przejdź do swojego wystąpienia IoT Hub Device Provisioning Service. 
@@ -136,7 +136,7 @@ Znasz usłudze DPS **zakres identyfikatorów** i urządzenia **identyfikator rej
 
 Aby środowisko uruchomieniowe usługi IoT Edge automatycznie aprowizować urządzenia musi mieć dostęp do modułu TPM. 
 
-Wykonaj następujące kroki, aby udzielić dostępu modułu TPM. Alternatywnie, można osiągnąć to samo przez zastąpienie ustawień systemd, aby *iotedge* usługa może działać jako użytkownik główny. 
+Możesz udzielić dostępu modułu TPM do środowiska uruchomieniowego usługi IoT Edge przez zastąpienie ustawień systemd, aby *iotedge* usługa ma uprawnień użytkownika root. Jeśli nie chcesz do podniesienia uprawnień usługi umożliwia także następujące kroki ręcznie zapewnienie dostępu modułu TPM. 
 
 1. Znajdź ścieżkę pliku do sprzętowego modułu TPM na twoim urządzeniu i zapisz go jako zmienna lokalna. 
 
@@ -180,8 +180,10 @@ Wykonaj następujące kroki, aby udzielić dostępu modułu TPM. Alternatywnie, 
    Pomyślne dane wyjściowe wyglądają następująco:
 
    ```output
-   crw------- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
+   crw-rw---- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
    ```
+
+   Jeśli nie widzisz, że zastosowano odpowiednich uprawnień, spróbuj wykonać ponowny rozruch komputera, aby odświeżyć udev. 
 
 8. Otwórz plik zastępuje środowiska uruchomieniowego usługi IoT Edge. 
 
@@ -224,7 +226,7 @@ Sprawdź, czy środowisko uruchomieniowe usługi IoT Edge jest uruchomiona.
    sudo systemctl status iotedge
    ```
 
-Jeśli widzisz błędy aprowizacji, może to być, że zmiany konfiguracji nie zostały jeszcze uwzględnione. Spróbuj ponownie uruchomić demona usługi IoT Edge uzyskać. 
+Jeśli widzisz błędy aprowizacji, może to być, że zmiany konfiguracji nie zostały jeszcze uwzględnione. Spróbuj ponownie uruchomić ponownie demona usługi IoT Edge. 
 
    ```bash
    sudo systemctl daemon-reload
@@ -234,7 +236,7 @@ Lub ponowne uruchomienie Twojej maszyny wirtualnej, aby zobaczyć, jeśli zmiany
 
 ## <a name="verify-successful-installation"></a>Sprawdź pomyślnej instalacji
 
-Jeśli środowisko wykonawcze został uruchomiony pomyślnie, możesz przejść do Centrum IoT Hub i czy nowe urządzenie automatycznie została przygotowana i jest gotowy do uruchomienia moduły usługi IoT Edge. 
+Jeśli środowisko wykonawcze został uruchomiony pomyślnie, możesz przejść do Centrum IoT Hub i zobacz, że nowe urządzenie automatycznie została zainicjowana. Teraz urządzenie jest gotowe do uruchomienia moduły usługi IoT Edge. 
 
 Sprawdź stan demona usługi IoT Edge.
 
@@ -257,4 +259,4 @@ iotedge list
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Proces rejestracji usługi Device Provisioning pozwala ustawić identyfikator urządzenia i tagów bliźniaczych reprezentacji urządzeń w tym samym czasie, jak aprowizować nowe urządzenie. Pod kątem poszczególnych urządzeń lub grup urządzeń za pomocą urządzenia automatycznego zarządzania, można użyć tych wartości. Dowiedz się, jak [monitora usługi IoT Edge modułów na skalowanie przy użyciu witryny Azure portal i wdróż](how-to-deploy-monitor.md) lub [przy użyciu wiersza polecenia platformy Azure](how-to-deploy-monitor-cli.md)
+Proces rejestracji usługi Device Provisioning pozwala ustawić identyfikator urządzenia i tagów bliźniaczych reprezentacji urządzeń w tym samym czasie, jak aprowizować nowe urządzenie. Pod kątem poszczególnych urządzeń lub grup urządzeń za pomocą urządzenia automatycznego zarządzania, można użyć tych wartości. Dowiedz się, jak [monitora usługi IoT Edge modułów na skalowanie przy użyciu witryny Azure portal i wdróż](how-to-deploy-monitor.md) lub [przy użyciu wiersza polecenia platformy Azure](how-to-deploy-monitor-cli.md).

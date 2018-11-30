@@ -2,25 +2,21 @@
 title: Tworzenie funkcji dla danych w klastrze usługi Hadoop przy użyciu zapytań Hive | Dokumentacja firmy Microsoft
 description: Przykłady zapytań programu Hive, które generują funkcji w danych przechowywanych w klastrze usługi Azure HDInsight Hadoop.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: e8a94c71-979b-4707-b8fd-85b47d309a30
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: deguhath
-ms.openlocfilehash: 97283b75b24cbdaf40e7dffd05d9826ce7e88af4
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: f63e1aeaca6e19eacb10ed7dc68d311234a31666
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344913"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444550"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Tworzenie funkcji dla danych w klastrze usługi Hadoop przy użyciu zapytań Hive
 W tym dokumencie przedstawiono sposób tworzenia funkcji — dane przechowywane w klastrze usługi Azure HDInsight Hadoop przy użyciu zapytań programu Hive. Te zapytania programu Hive za pomocą osadzonych funkcji Hive User-Defined przez użytkownika (UDF), skryptów, dla której są dostarczane.
@@ -29,7 +25,7 @@ Operacje wymagane do utworzenia funkcji może być intensywnie korzystających z
 
 Przykłady zapytań, które są prezentowane są specyficzne dla [danych podróży taksówek NYC](http://chriswhong.com/open-data/foil_nyc_taxi/) scenariusze są również dostępne w [repozytorium GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Te zapytania już mają określony schemat danych i gotowe do wysłania do uruchomienia. W sekcji końcowej parametry, które użytkownicy można dostrajanie, dzięki czemu można zwiększyć wydajność zapytań technologii Hive zostały również omówione.
 
-To zadanie jest to krok w [Team Data Science naukowych](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+To zadanie jest to krok w [Team Data Science naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule założono, że masz:

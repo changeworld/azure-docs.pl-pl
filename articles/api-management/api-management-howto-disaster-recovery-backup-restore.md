@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: e729d163428723d099157ad62d1c89a7ed917900
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 1653cfe0f75914fa321771a70284602cab75330d
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711433"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444872"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Jak zaimplementować funkcje odzyskiwania po awarii przy użyciu usługi kopii zapasowej i przywracania w usłudze Azure API Management
 
@@ -32,8 +32,8 @@ Ten przewodnik pokazuje, jak do uwierzytelniania żądań w usłudze Azure Resou
 > Proces tworzenia kopii zapasowych i przywracanie wystąpienia usługi API Management do odzyskiwania po awarii może służyć także do replikowania wystąpienia usługi API Management dla scenariuszy, takich jak przejściowe.
 >
 > Każda kopia zapasowa wygasa po upływie 30 dni. Jeśli użytkownik podejmie próbę przywrócenia kopii zapasowej, po upływie 30-dniowy okres, przywracania zakończy się niepowodzeniem z `Cannot restore: backup expired` wiadomości.
->
->
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="authenticating-azure-resource-manager-requests"></a>Żądania uwierzytelniania usługi Azure Resource Manager
 

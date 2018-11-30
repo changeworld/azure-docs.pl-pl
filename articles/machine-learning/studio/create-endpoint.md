@@ -1,5 +1,5 @@
 ---
-title: Tworzenie punktów końcowych usługi sieci Web w usłudze Machine Learning | Dokumentacja firmy Microsoft
+title: Tworzenie punktów końcowych usługi sieci Web w usłudze Machine Learning — usługi Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Tworzenie punktów końcowych usługi sieci Web Azure Machine Learning
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
-ms.openlocfilehash: f046db11bf3c04c9ea15e759b4e0080cab4f71d5
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 266970bec1e61dca808bb6358f2b4580359ee70d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265070"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314017"
 ---
-# <a name="creating-endpoints"></a>Tworzenie punktów końcowych
+# <a name="creating-endpoints"></a>Tworzenie punktów końcowych 
 > [!NOTE]
 >  W tym temacie opisano technikach do zastosowania **klasycznego** usługi Machine Learning w sieci Web.
 > 
@@ -31,7 +31,7 @@ ms.locfileid: "52265070"
 
 Podczas tworzenia usługi sieci Web, które sprzedawać do przodu dla klientów, należy podać uczone modele do każdego klienta, które nadal są połączone z eksperymentu, z której została utworzona Usługa sieci Web. Ponadto wszelkie aktualizacje eksperymentu stosuje się selektywnie do punktu końcowego bez zastępowania dostosowań.
 
-Aby to osiągnąć, usługa Azure Machine Learning umożliwia tworzenie wielu punktów końcowych dla wdrożonej usługi sieci Web. Każdy punkt końcowy usługi sieci Web niezależnie rozwiązane, ograniczenia i zarządzane. Każdy punkt końcowy jest unikatowy adres URL i klucza autoryzacji, którą można dystrybuować swoim klientom.
+Aby to osiągnąć, Azure Machine Learning Studio umożliwia tworzenie wielu punktów końcowych dla wdrożonej usługi sieci Web. Każdy punkt końcowy usługi sieci Web niezależnie rozwiązane, ograniczenia i zarządzane. Każdy punkt końcowy jest unikatowy adres URL i klucza autoryzacji, którą można dystrybuować swoim klientom.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 

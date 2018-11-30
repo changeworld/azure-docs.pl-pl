@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 48b4878eef7395b51d19c59443736bae5aeb7365
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 0c44e57f99ea8fea91fd8178400c648e8dcd982b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233586"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309814"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Migracja Contoso: ponownie skompilować aplikację w środowisku lokalnym na platformie Azure
 
@@ -495,7 +495,7 @@ Teraz Administratorzy Contoso skonfigurować aplikacji sieci Web, aby korzystać
 
     ![Ustawienia JSON](./media/contoso-migration-rebuild/configure-webapp2.png)
 
-5. Po zaktualizowaniu pliku mogą zmienić jego nazwę **smarthotelsettingsurl**, a następnie przekaż go do blogu magazynu one utworzone wcześniej.
+5. Po zaktualizowaniu pliku mogą zmienić jego nazwę **smarthotelsettingsurl**, a następnie przekaż go do magazynu obiektów blob są utworzone wcześniej.
 
     ![Zmiana nazwy i przekazywania](./media/contoso-migration-rebuild/configure-webapp3.png)
 

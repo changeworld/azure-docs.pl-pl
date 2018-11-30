@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 2f73d9795ba807e5901568507ad2fae5b001c91a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: cf470ad14c27fd36cf60bb540e823b15fc58eded
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161293"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496894"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Zarządzanie ustawieniami użytkownika przy użyciu usługi Azure Multi-Factor Authentication w chmurze
 
@@ -54,7 +54,7 @@ To ustawienie powoduje usunięcie wszystkich haseł aplikacji utworzonych przez 
 10. Kliknij przycisk **Zamknij**.
 
 ## <a name="restore-mfa-on-all-remembered-devices-for-a-user"></a>Przywróć uwierzytelnianie wieloskładnikowe na wszystkich zapamiętanych urządzeniach użytkownika
-Jedna z funkcji można skonfigurować usługi Azure Multi-Factor Authentication jest przyznawanie użytkownikom możliwość oznaczania urządzenia jako zaufany. Aby uzyskać więcej informacji, zobacz [ustawienia skonfiguruj usługę Azure Multi-Factor Authentication](howto-mfa-mfasettings.md#remember-multi-factor-authentication-for-devices-that-users-trust).
+Jedna z funkcji można skonfigurować usługi Azure Multi-Factor Authentication jest przyznawanie użytkownikom możliwość oznaczania urządzenia jako zaufany. Aby uzyskać więcej informacji, zobacz [ustawienia skonfiguruj usługę Azure Multi-Factor Authentication](howto-mfa-mfasettings.md#remember-multi-factor-authentication).
 
 Użytkownicy mogą zrezygnować z weryfikacji dwuetapowej dla konfigurowalną liczbę dni na swoich urządzeniach regularne. Jeśli konto zostanie naruszony lub zaufanego urządzenia zostaną utracone, musisz mieć możliwość usunięcia stanu zaufania i ponownie weryfikacji dwuetapowej.
 

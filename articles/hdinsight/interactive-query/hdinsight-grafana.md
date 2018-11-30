@@ -9,24 +9,24 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 973913e81157d2158074e50a61be0d73e5606ec3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 8103c06e3fec51316e367de903ed84d0023568bc
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006145"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308158"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Grafana dostępu w usłudze Azure HDInsight
 
 
-Grafana to popularny, typu open-source konstruktora wykresu i pulpitu nawigacyjnego. Grafana jest funkcja Zaawansowane; nie tylko jest zezwala użytkownikom na tworzenie można dostosowywać i którą można udostępniać pulpity nawigacyjne, zapewnia ona również oparte na szablonach/inicjowanych przez skrypty pulpitów nawigacyjnych, integracja protokołu LDAP, wiele źródeł danych i.
+[Grafana](https://grafana.com/) to popularny, typu open-source konstruktora wykresu i pulpitu nawigacyjnego. Grafana jest funkcja Zaawansowane; nie tylko jest zezwala użytkownikom na tworzenie można dostosowywać i którą można udostępniać pulpity nawigacyjne, zapewnia ona również oparte na szablonach/inicjowanych przez skrypty pulpitów nawigacyjnych, integracja protokołu LDAP, wiele źródeł danych i.
 
 Obecnie Grafana jest tylko obsługiwana przez typ klastra zapytania interakcyjnego w usłudze Azure HDInsight.
 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
-## <a name="create-a-hadoop-cluster"></a>Tworzenie klastra usługi Hadoop
+## <a name="create-an-apache-hadoop-cluster"></a>Tworzenie klastra Apache Hadoop
 
 W tej sekcji utworzysz klaser zapytania interaktywnego w HDInsight przy użyciu szablonu usługi Azure Resource Manager. Znajomość szablonów usługi Resource Manager nie jest wymagana do korzystania z tego artykułu. 
 
@@ -51,11 +51,11 @@ W tej sekcji utworzysz klaser zapytania interaktywnego w HDInsight przy użyciu 
     |**Grupa zasobów**     | Utwórz grupę zasobów lub wybierz istniejącą grupę zasobów.  Grupa zasobów jest kontenerem składników platformy Azure.  W tym przypadku grupa zasobów zawiera klaster usługi HDInsight i zależne konto usługi Azure Storage. |
     |**Lokalizacja**     | Wybierz lokalizację platformy Azure, w której chcesz utworzyć klaster.  Wybierz lokalizację znajdującą się blisko, aby zapewnić lepszą wydajność. |
     |**Typ klastra**     | Wybierz pozycję **hadoop**. |
-    |**Nazwa klastra**     | Wprowadź nazwę klastra usługi Hadoop. Ponieważ wszystkie klastry w usłudze HDInsight używają tej samej przestrzeni nazw DNS, ta nazwa musi być unikatowa. Nazwa może składać się z maksymalnie 59 znaków, w tym liter, cyfr i łączników. Łącznik nie może być pierwszym ani ostatnim znakiem nazwy. |
+    |**Nazwa klastra**     | Wprowadź nazwę klastra platformy Apache Hadoop. Ponieważ wszystkie klastry w usłudze HDInsight używają tej samej przestrzeni nazw DNS, ta nazwa musi być unikatowa. Nazwa może składać się z maksymalnie 59 znaków, w tym liter, cyfr i łączników. Łącznik nie może być pierwszym ani ostatnim znakiem nazwy. |
     |**Nazwa użytkownika i hasło logowania do klastra**     | Domyślna nazwa logowania to **admin**. Hasło musi składać się z co najmniej 10 znaków i musi zawierać co najmniej jedną cyfrę, jedną wielką i jedną małą literę oraz jeden znak inny niż alfanumeryczny (z wyjątkiem znaków ' " ` \). Upewnij się, że **nie zostało podane** typowe hasło, takie jak „Pass@word1”.|
     |**Nazwa użytkownika i hasło protokołu SSH**     | Domyślna nazwa użytkownika to **sshuser**.  Nazwę użytkownika SSH można zmienić.  Hasło użytkownika SSH ma te same wymagania co hasło logowania klastra.|
        
-    Niektóre właściwości zostały umieszczone w kodzie w szablonie.  Te wartości można skonfigurować z szablonu. Aby uzyskać więcej informacji o tych właściwościach, zobacz [Create Hadoop clusters in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) (Tworzenie klastrów platformy Hadoop w usłudze HDInsight).
+    Niektóre właściwości zostały umieszczone w kodzie w szablonie.  Te wartości można skonfigurować z szablonu. Aby uzyskać więcej informacji o tych właściwościach, zobacz [klastrów utworzyć Apache Hadoop w HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
 3. Wybierz pozycję **Wyrażam zgodę na powyższe warunki i postanowienia** i pozycję **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz przycisk **Kup**. Na pulpicie nawigacyjnym portalu powinien zostać wyświetlony nowy kafelek zatytułowany **Przekazywanie wdrożenia**. Utworzenie klastra trwa około 20 minut.
 
@@ -105,8 +105,8 @@ Po ukończeniu korzystania z artykułu warto usunąć klaster. Dzięki usłudze 
 
 3. Wybierz pozycję **Usuń grupę zasobów**, aby usunąć grupę zasobów zawierającą klaster i domyślne konto magazynu. Uwaga: usunięcie grupy zasobów powoduje usunięcie konta magazynu. Jeśli chcesz zachować konta magazynu, wybierz opcję usunięcia tylko klastra.
 
-## <a name="next-steps"></a>Następne kroki
-Po przeczytaniu tego artykułu umiesz utworzyć oparty na systemie Linux klaster usługi HDInsight przy użyciu szablonu usługi Resource Manager oraz wykonywać podstawowe zapytania Hive. W następnym artykule dowiesz się, jak przeprowadzić operację wyodrębniania, transformacji i ładowania (ETL, extract, transform, and load) przy użyciu usługi Hadoop w usłudze HDInsight.
+## <a name="next-steps"></a>Kolejne kroki
+W tym artykule przedstawiono sposób tworzenia klastra HDInsight opartych na systemie Linux przy użyciu szablonu usługi Resource Manager oraz wykonywać podstawowe zapytania usługi Apache Hive. W następnym artykule dowiesz się, jak przeprowadzić operację wyodrębniania, transformacji i ładowania (ETL, extract, transform, and load) przy użyciu usługi Hadoop w usłudze HDInsight.
 
 > [!div class="nextstepaction"]
 >[Wyodrębnianie, transformacja i ładowanie danych przy użyciu usługi Apache Hive w usłudze HDInsight](../hdinsight-analyze-flight-delay-data-linux.md)
@@ -118,9 +118,9 @@ Jeśli chcesz już zacząć korzystać z własnych danych i dowiedzieć się wi�
 
 Aby dowiedzieć się więcej na temat analizowania danych za pomocą usługi HDInsight, zobacz następujące artykuły:
 
-* Aby dowiedzieć się więcej o korzystaniu z programu Hive z usługą HDInsight, w tym poznać sposoby wykonywania zapytań Hive z programu Visual Studio, zobacz artykuł [Korzystanie z programu Hive z usługą HDInsight](../hdinsight-use-hive.md).
-* Aby dowiedzieć się więcej na temat języka Pig używanego do przekształcania danych, zobacz [Korzystanie z języka Pig z usługą HDInsight](../hdinsight-use-pig.md).
-* Aby dowiedzieć się więcej o MapReduce, czyli sposobie pisania programów przetwarzających dane w usłudze Hadoop, zobacz [Używanie MapReduce z usługą HDInsight](../hdinsight-use-mapreduce.md).
+* Aby dowiedzieć się więcej o korzystaniu z programu Hive z HDInsight, w tym poznać sposoby wykonywania zapytań Hive z programu Visual Studio, zobacz [używanie programu Apache Hive z HDInsight](../hdinsight-use-hive.md).
+* Aby dowiedzieć się więcej na temat Pig, języka używanego do przekształcania danych, zobacz [Use Apache Pig z HDInsight](../hdinsight-use-pig.md).
+* Aby dowiedzieć się więcej na temat Apache Hadoop MapReduce, sposobie pisania programów przetwarzających dane na platformie Hadoop, zobacz [używanie Apache Hadoop MapReduce z HDInsight](../hdinsight-use-mapreduce.md).
 * Aby dowiedzieć się więcej o używaniu narzędzi HDInsight Tools for Visual Studio do analizowania danych w usłudze HDInsight, zobacz [Wprowadzenie do używania narzędzi Visual Studio Hadoop dla usługi HDInsight](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
 

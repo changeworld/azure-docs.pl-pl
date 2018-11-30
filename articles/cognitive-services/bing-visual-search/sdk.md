@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/19/2018
 ms.author: scottwhi
-ms.openlocfilehash: dd55bb78fd385ab12d711e569ca6d5013c48e545
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4ad1633e4d56e44e3b82f90121a14c6ef6f0b976
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221999"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52441405"
 ---
 # <a name="bing-visual-search-sdk"></a>Wyszukiwanie wizualne Bing zestawu SDK
 
@@ -32,6 +32,16 @@ Wyszukiwanie wizualne Bing udostępnia następujące klienta zestawów SDK, któ
     * [Biblioteki języka Python](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-imagesearch) dla definicji i zależności
 
 Przykłady zestawu SDK dla każdego z języków zawierają plik ReadMe z wymagań wstępnych dotyczących używania zestawu SDK oraz kroki dotyczące instalowania i uruchamiania przykładów.
+
+Dla tych przykładów, należy rozpocząć subskrypcję w warstwie cena S9, jak pokazano na [Cognitive Services cennik — interfejs API wyszukiwania Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+Aby rozpocząć subskrypcję w witrynie Azure Portal:
+1. Wprowadź "BingSearchV7" w polu tekstowym w górnej części portalu Azure, które mówi `Search resources, services, and docs`.  
+2. W portalu Marketplace na liście rozwijanej wybierz `Bing Search v7`.
+3. Wprowadź `Name` dla nowego zasobu.
+4. Wybierz `Pay-As-You-Go` subskrypcji.
+5. Wybierz `S9` warstwy cenowej.
+6. Kliknij przycisk `Enable` celu rozpoczęcia subskrypcji.
 
 ### <a name="sdk-tools"></a>Narzędzia zestawu SDK
 W tym repozytorium Git można znaleźć narzędzi zestawu SDK, aby poznać możliwości wyszukiwania wizualnego Bing: [narzędzia wyszukiwania wizualnego Bing](https://github.com/Azure-Samples/bing-visualsearch-tools)

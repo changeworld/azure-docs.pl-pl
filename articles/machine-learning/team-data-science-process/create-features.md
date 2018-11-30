@@ -2,30 +2,26 @@
 title: Inżynieria funkcji w do nauki o danych | Dokumentacja firmy Microsoft
 description: Wyjaśnia, w celu technicznego opracowywania funkcji i zawiera przykłady swojej roli w procesie rozszerzenia danych, uczenia maszynowego.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 3fde69e8-5e7b-49ad-b3fb-ab8ef6503a4d
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: deguhath
-ms.openlocfilehash: fd3f010c3fccca679daa6639c1427d17ae64a0d1
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 80e925fddf1aebd9f699ee8e22b96cc496faeba6
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51343996"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446679"
 ---
 # <a name="feature-engineering-in-data-science"></a>Inżynieria funkcji w zakresie analizy danych
 W tym artykule wyjaśniono celów technicznego opracowywania funkcji i zawiera przykłady swojej roli w procesie rozszerzenia danych, uczenia maszynowego. Przykłady umożliwiają zilustrowanie tego procesu są pobierane z usługi Azure Machine Learning Studio. 
 
-To zadanie jest to krok w [Team Data Science naukowych](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+To zadanie jest to krok w [Team Data Science naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 Funkcja inżynierów próby zwiększają możliwości predykcyjnych algorytmów uczenia, tworząc funkcje z nieprzetworzone dane, które pomagają w wykonywaniu procesu uczenia. Inżynieria i wybór funkcji jest częścią środowiska TDSP opisane w temacie [co to jest cykl życia zespołowego danych dla celów naukowych?](overview.md) Funkcja inżynieria i wybór są częściami **opracowywanie funkcji** krok przetwarzania TDSP. 
 

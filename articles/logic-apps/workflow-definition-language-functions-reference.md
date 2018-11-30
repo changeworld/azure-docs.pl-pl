@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: a0c7dcf848bfe6e5128117169a48adfbf9483f9b
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 3450a2ba4a0bf4b1f38806ad4aacf5772c13ed9f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346766"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317793"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Dokumentacja funkcji programu język definicji przepływów pracy w usłudze Azure Logic Apps
 
@@ -1722,7 +1722,7 @@ equals('abc', 'abcd')
 I zwraca następujące wyniki: 
 
 * Pierwszy przykład: obie wartości są równoważne, więc funkcja zwraca `true`.
-* Drugim przykładzie: obie wartości nie są równoważne, więc funkcja zwraca `false`.
+* Drugi przykład: obie wartości nie są równoważne, więc funkcja zwraca `false`.
 
 <a name="first"></a>
 
@@ -1757,7 +1757,7 @@ first(createArray(0, 1, 2))
 I zwrócić następujące wyniki: 
 
 * Pierwszy przykład: `"h"`
-* Drugim przykładzie: `0`
+* Drugi przykład: `0`
 
 <a name="float"></a>
 

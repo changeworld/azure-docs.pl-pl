@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2a399899c93addf966d3f2ec0e36d4b1c76b686f
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 1b4ca22faf8ef01cab4b2e7231fea8ed49f0fcb3
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038311"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52494593"
 ---
 # <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-apache-hadoop-services"></a>Zbieranie zrzutów stosów w magazynie obiektów Blob, aby debugować i analizować usługi Apache Hadoop
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-Zrzuty sterty zawierają migawkę pamięci aplikacji, w tym wartości zmiennych w czasie tworzenia zrzutu. Tak, aby były przydatne do diagnozowania problemów, które występują w czasie wykonywania. Zrzuty sterty może być automatycznie zbierane dla usługi Apache Hadoop i umieszczone wewnątrz konta magazynu obiektów Blob platformy Azure przez użytkownika w obszarze HDInsightHeapDumps /.
+Zrzuty sterty zawierają migawkę pamięci aplikacji, w tym wartości zmiennych w czasie tworzenia zrzutu. Tak, aby były przydatne do diagnozowania problemów, które występują w czasie wykonywania. Zrzuty sterty można automatycznie zebrane na potrzeby [Apache Hadoop](https://hadoop.apache.org/) usług, a następnie umieszczone wewnątrz konta magazynu obiektów Blob platformy Azure przez użytkownika w obszarze HDInsightHeapDumps /.
 
 Zbieranie zrzutów stosów na potrzeby różnych usług musi być włączona dla usług w poszczególnych klastrach. Wartość domyślna dla tej funkcji jest wyłączone dla klastra. Te zrzuty stosu mogą być duże, zaleca się monitorowanie konta usługi Blob storage gdzie one są zapisywane po włączeniu kolekcji.
 
 > [!IMPORTANT]
-> Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Informacje przedstawione w tym artykule dotyczy tylko HDInsight z systemem Windows. Aby uzyskać informacji na temat HDInsight opartych na systemie Linux, zobacz [zrzutów stosów włączyć na potrzeby usługi Hadoop w HDInsight opartych na systemie Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+> Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Informacje przedstawione w tym artykule dotyczy tylko HDInsight z systemem Windows. Aby uzyskać informacji na temat HDInsight opartych na systemie Linux, zobacz [zrzutów stosów włączyć na potrzeby usługi Apache Hadoop w HDInsight opartych na systemie Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 
 
 ## <a name="eligible-services-for-heap-dumps"></a>Kwalifikujących się usług dla zrzutów stosu

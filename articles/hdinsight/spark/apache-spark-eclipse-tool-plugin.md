@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: 50380f5168ebc97270aa5eca2291e43f018806c6
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a875e7517870e4a782d3169fd5eb0796c9b0f16a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009576"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496588"
 ---
-# <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Umożliwia tworzenie aplikacji Spark dla klastra usługi HDInsight Azure Toolkit for Eclipse
+# <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Używanie zestawu narzędzi platformy Azure dla środowiska Eclipse do tworzenia aplikacji platformy Apache Spark dla klastra usługi HDInsight
 
-Narzędzia HDInsight w zestaw narzędzi platformy Azure dla środowiska Eclipse do tworzenia aplikacji Spark napisanych w języku Scala i przesyłanie ich do klastra usługi HDInsight Spark bezpośrednio w środowisku IDE programu Eclipse. Można użyć narzędzia HDInsight wtyczki na kilka różnych sposobów:
+Przy użyciu narzędzi HDInsight w Azure Toolkit for [Eclipse](https://www.eclipse.org/) do opracowywania [platformy Apache Spark](https://spark.apache.org/) aplikacje napisane w [Scala](https://www.scala-lang.org/) i przesyłanie ich do klastra usługi Azure HDInsight Spark bezpośrednio z poziomu środowiska Eclipse IDE. Można użyć narzędzia HDInsight wtyczki na kilka różnych sposobów:
 
 * Twórz i przesyłaj aplikację Scala Spark w klastrze usługi HDInsight Spark
 * Dostęp do zasobów klastra usługi HDInsight Spark
@@ -178,7 +178,7 @@ Za pomocą narzędzi HDInsight, takich jak uzyskiwanie dostępu do danych wyjśc
 
      ![Szczegóły dziennika](./media/apache-spark-eclipse-tool-plugin/Job-log-info.png)
 
-   * Otwórz historii platformy Spark interfejsu użytkownika i Interfejsie użytkownika YARN (na poziomie aplikacji), wybierając hiperłącza w górnej części okna.
+   * Otwórz historii platformy Spark interfejsu użytkownika i Apache Hadoop Interfejsie użytkownika YARN (na poziomie aplikacji), wybierając hiperłącza w górnej części okna.
 
 ### <a name="access-the-storage-container-for-the-cluster"></a>Dostęp do kontenera magazynu dla klastra
 1. W Eksploratorze usługi Azure, rozwiń węzeł **HDInsight** węzła głównego, aby wyświetlić listę klastrów HDInsight Spark, które są dostępne.
@@ -191,7 +191,7 @@ Za pomocą narzędzi HDInsight, takich jak uzyskiwanie dostępu do danych wyjśc
 1. W Eksploratorze usługi Azure, kliknij prawym przyciskiem myszy nazwę klastra platformy Spark, a następnie wybierz **Otwórz użytkownika usługi Historia Spark**. Po wyświetleniu monitu wprowadź poświadczenia administratora dla klastra. Określono je podczas inicjowania obsługi klastra.
 1. Na pulpicie nawigacyjnym serwer historii platformy Spark Nazwa aplikacji jest służy do wyszukiwania dla aplikacji, w właśnie został uruchomiony. W poprzednim kodzie, należy określić nazwę aplikacji przy użyciu `val conf = new SparkConf().setAppName("MyClusterApp")`. Dlatego został nazwę swojej aplikacji Spark **MyClusterApp**.
 
-### <a name="start-the-ambari-portal"></a>Uruchom portal systemu Ambari
+### <a name="start-the-apache-ambari-portal"></a>Uruchom portal Apache Ambari
 1. W Eksploratorze usługi Azure, kliknij prawym przyciskiem myszy nazwę klastra platformy Spark, a następnie wybierz **Otwórz Portal zarządzania klastrem (Ambari)**. 
 1. Po wyświetleniu monitu wprowadź poświadczenia administratora dla klastra. Określono je podczas inicjowania obsługi klastra.
 
@@ -245,22 +245,22 @@ Jeśli masz opinię lub występują inne problemy, korzystając z tego narzędzi
 * [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenariusze
-* [Platforma Spark i analiza biznesowa: interakcyjna analiza danych na platformie Spark w usłudze HDInsight z użyciem narzędzi do analizy biznesowej](apache-spark-use-bi-tools.md)
-* [Platforma Spark i usługa Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do analizy temperatury w budynku z użyciem danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Platforma Spark i usługa Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników kontroli żywności](apache-spark-machine-learning-mllib-ipython.md)
-* [Analiza dzienników witryny sieci Web na platformie Spark w usłudze HDInsight](apache-spark-custom-library-website-log-analysis.md)
+* [Platforma Apache Spark w usłudze BI: interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](apache-spark-use-bi-tools.md)
+* [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do analizy temperatury w budynku z użyciem danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do przewidywania wyników kontroli żywności](apache-spark-machine-learning-mllib-ipython.md)
+* [Analiza dziennika witryny sieci Web przy użyciu platformy Apache Spark w HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="creating-and-running-applications"></a>Tworzenie i uruchamianie aplikacji
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](apache-spark-create-standalone-application.md)
-* [Zdalne uruchamianie zadań w klastrze Spark przy użyciu programu Livy](apache-spark-livy-rest-interface.md)
+* [Zdalne uruchamianie zadań w klastrze usługi Apache Spark przy użyciu programu Livy Apache](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Narzędzia i rozszerzenia
 * [Tworzenie i przesyłanie aplikacji Spark Scala przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ](apache-spark-intellij-tool-plugin.md)
-* [Debugowanie aplikacji Spark zdalnie za pośrednictwem sieci VPN przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ](../hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Debugowanie aplikacji Spark zdalnie za pośrednictwem protokołu SSH przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ](../hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Debugowanie aplikacji platformy Apache Spark, zdalnie za pośrednictwem sieci VPN przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ](../hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Debugowanie aplikacji platformy Apache Spark, zdalnie za pośrednictwem protokołu SSH przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ](../hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 * [Korzystaj z narzędzi HDInsight dla programu IntelliJ z Piaskownicą Hortonworks](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
-* [Korzystanie z notesów Zeppelin w klastrze Spark w usłudze HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jądra dostępne dla notesu Jupyter w klastrze Spark w usłudze HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Korzystanie z notesów Apache Zeppelin na HDInsight klastra Apache Spark](apache-spark-zeppelin-notebook.md)
+* [Jądra dostępne dla notesu Jupyter w klastrze Apache Spark dla HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Korzystanie z zewnętrznych pakietów z notesami Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalacja oprogramowania Jupyter na komputerze i nawiązywanie połączenia z klastrem Spark w usłudze HDInsight](apache-spark-jupyter-notebook-install-locally.md)
 

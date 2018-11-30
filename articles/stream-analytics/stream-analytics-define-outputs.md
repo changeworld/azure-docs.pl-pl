@@ -8,19 +8,19 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.openlocfilehash: 1502277276489d1977540018f2a22681ad48d8a7
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 869941781643d3486506b5a3caed4006019fb3b7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291474"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310047"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano różne typy danych wyjściowych jest dostępny dla zadania usługi Azure Stream Analytics. Dane wyjściowe pozwalają na przechowywanie i zapisać wyniki zadania usługi Stream Analytics. Można wykonać, korzystając z danych wyjściowych, dalszych analiz biznesowych i danych magazynu danych. 
 
 Podczas projektowania zapytania usługi Stream Analytics można znaleźć nazwy wyjściowego przy użyciu [Klauzula INTO](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics). Można użyć pojedynczego wyjścia poszczególne zadania lub wielu wyjść na zadanie przesyłania strumieniowego, jeśli potrzebujesz, zapewniając wiele klauzul INTO w zapytaniu.
 
-Do tworzenia, edytowania i przetestować zadanie usługi Stream Analytics danych wyjściowych, możesz użyć [witryny Azure portal](stream-analytics-quick-create-portal.md#configure-output-to-the-job), [programu Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [interfejsu API REST](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output), i [programu Visual Studio](stream-analytics-quick-create-vs.md).
+Do tworzenia, edytowania i przetestować zadanie usługi Stream Analytics danych wyjściowych, możesz użyć [witryny Azure portal](stream-analytics-quick-create-portal.md#configure-job-output), [programu Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [interfejsu API REST](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output), i [programu Visual Studio](stream-analytics-quick-create-vs.md).
 
 Obsługa typów niektóre dane wyjściowe [partycjonowanie](#partitioning), i [danych wyjściowych rozmiary partii](#output-batch-size) różnią się w celu zoptymalizowania przepływności.
 

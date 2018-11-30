@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: cce6555c71829110781a6dd13757078b105dbb41
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 253f817099bd2705d8b9ea98741dc8fd28f09efe
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230635"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421661"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Często zadawane pytania dotyczące baz danych ClearDB MySQL w usłudze Azure App Service
 Często zadawane pytania odpowiedzi na często zadawane pytania dotyczące używania i kupowanie baz danych ClearDB MySQL dla aplikacji sieci Web platformy Azure.
@@ -25,7 +25,7 @@ Często zadawane pytania odpowiedzi na często zadawane pytania dotyczące używ
 > [!IMPORTANT]
 > Począwszy od 13 czerwca 2018 roku ClearDB przeszła klientów opartych na platformie Azure, obecnie naliczane przez firmę Microsoft w ramach modelu rozliczeń bezpośrednie usługi ClearDB. Informacje przedstawione w tym artykule teraz jest nieaktualna. Nie będzie już mógł utworzyć lub uaktualnić bazę danych ClearDB, który został utworzony na platformie Azure.
 >
-> Aby uzyskać więcej szczegółów i następne kroki zobacz [zmieni się na plany usługi ClearDB](http://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/).
+> Aby uzyskać więcej szczegółów i następne kroki zobacz [zmieni się na plany usługi ClearDB](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/).
 
 
 ## <a name="what-options-do-i-have-for-mysql-on-azure"></a>Jakie opcje są dostępne dla bazy danych MySQL na platformie Azure?

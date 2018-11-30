@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1f49930449c5ca342159f2a4eca3d7167dfed925
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 765a3a985a2198951ed17292dc376b25adfccc03
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244648"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314805"
 ---
 # <a name="enable-transparent-data-encryption-in-azure-security-center"></a>Włączanie technologii Transparent Data Encryption w usłudze Azure Security Center
 Usługa Azure Security Center zaleci, Włącz przezroczystego szyfrowania danych (TDE) dla baz danych SQL, jeśli funkcja TDE nie jest już włączona. Funkcja TDE chroni dane i ułatwia spełnianie wymagań dotyczących zgodności przez szyfrowanie bazy danych, skojarzonych kopii zapasowych i plików dziennika transakcji w stanie spoczynku bez konieczności wprowadzania zmian w aplikacji. Aby dowiedzieć się więcej, zobacz [funkcji Transparent Data Encryption z usługą Azure SQL Database](https://msdn.microsoft.com/library/dn948096).
@@ -51,7 +51,7 @@ W tym artykule pokazano sposób implementacji zalecenia usługi Security Center 
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
-* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-policies.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
+* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
 * [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.
 * [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje o sposobie monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.

@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/02/2018
 ms.author: spelluru
-ms.openlocfilehash: 523394010058ace7f61da2196a110fd3e6db610c
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: f1f796f7dc0a5ca4e1143f07303c218117e745e7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739862"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314323"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Sesje wiadomości: pierwszy, najpierw FIFO 
 
 Sesje usługi Microsoft Azure Service Bus umożliwiają wspólnego i uporządkowanych obsługi niepowiązanych sekwencji pokrewnych komunikatów. Do osiągnięcia gwarancji FIFO w usłudze Service Bus, należy użyć sesji. Usługa Service Bus jest przetestowanego rozwiązania ze szczegółami o rodzaju relację między komunikaty i również nie definiuje określonego modelu do określania, gdzie rozpoczyna się lub kończy w sekwencji komunikatów.
 
 > [!NOTE]
-> Warstwa podstawowa usługi Service Bus nie obsługuje sesji. W warstwach standardowa i premium obsługuje sesji. Aby uzyskać więcej informacji, zobacz [cennika usługi Service Bus](/pricing/details/service-bus/).
+> Warstwa podstawowa usługi Service Bus nie obsługuje sesji. W warstwach standardowa i premium obsługuje sesji. Aby uzyskać więcej informacji, zobacz [cennika usługi Service Bus](service-bus-pricing-billing.md).
 
 Wszystkich nadawców można utworzyć sesji podczas przesyłania komunikatów do tematu lub kolejki, ustawiając [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) właściwość niektórych zdefiniowanych przez aplikację Unikatowy identyfikator sesji. Na poziomie protokołu AMQP 1.0, ta wartość jest mapowany na *identyfikator grupy* właściwości.
 

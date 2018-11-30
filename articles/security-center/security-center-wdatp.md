@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: e7bb7f0c4cb63390b91012e071589611991a2866
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4bd2b72596912d968ad6fc323ce32e620336d932
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068336"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316994"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Usługa Windows Defender Zaawansowana ochrona przed zagrożeniami w usłudze Azure Security Center
 
@@ -99,12 +99,12 @@ Aby wygenerować niegroźne alert testowy Windows Defender ATP:
 
 3. Jeśli polecenie zakończy się pomyślnie, zobaczysz nowego alertu na pulpicie nawigacyjnym Centrum zabezpieczeń Azure i portal usługi Windows Defender ATP. Ten alert może potrwać kilka minut.
 
-4. Aby zapoznać się z alertu w usłudze Security Center, przejdź do **alerty zabezpieczeń** >  **podejrzane wiersz polecenia programu Powershell**.
+4. Aby zapoznać się z alertu w usłudze Security Center, przejdź do **alerty zabezpieczeń** >  **podejrzane wiersz polecenia programu Powershell**.
 
 5. W oknie badania wybierz łącze, aby przejść do portalu usługi Windows Defender ATP.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-policies.md): informacje o sposobie konfigurowania zasad zabezpieczeń dla subskrypcji platformy Azure i grup zasobów.
+- [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md): informacje o sposobie konfigurowania zasad zabezpieczeń dla subskrypcji platformy Azure i grup zasobów.
 - [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md): Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.
 - [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.

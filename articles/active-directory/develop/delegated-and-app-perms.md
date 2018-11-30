@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: c5a947301b0861ffa09a24da79e04b5e92b2c29e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: aaed6a6282da61a49698fdcdfefffe949630930a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44724136"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421831"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Rozpoznawanie różnic między aplikacją i delegowane uprawnienia
 
@@ -30,4 +30,4 @@ ms.locfileid: "44724136"
 - Aby uzyskać bardziej szczegółowe informacje, Dowiedz się, jak udostępnianie zasobów aplikacji [zakresy](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) i [ról aplikacji](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) aplikacje klienckie, które pojawiają się, jak delegować i uprawnienia odpowiednio na platformie Azure Portal. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Usługi Azure AD w witrynie StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[Usługi Azure AD w witrynie StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

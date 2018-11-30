@@ -1,73 +1,69 @@
 ---
-title: Funkcja zaznaczenia w procesie nauki danych Team | Dokumentacja firmy Microsoft
-description: Objaśnienie jego przeznaczenia wybór funkcji i przykłady ich roli w procesie rozszerzenie danych usługi machine learning.
+title: Wybór w procesie nauki o danych zespołu funkcji | Dokumentacja firmy Microsoft
+description: Zawiera wyjaśnienie przeznaczenia wybór funkcji i przykłady ich rolę w procesie rozszerzenia danych, uczenia maszynowego.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 878541f5-1df8-4368-889a-ced6852aba47
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: deguhath
-ms.openlocfilehash: 2504d14bad3a7a3b3845e880e40034ef7e4c126b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: b439f7245dd09a2f8a7ffe5f3b3c5396786220af
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838633"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442382"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Wybór funkcji w zespołowym przetwarzaniu danych dla celów naukowych
-W tym artykule opisano na potrzeby funkcji wyboru oraz przykłady swoją rolę w procesie rozszerzenie danych usługi machine learning. Przykłady te są pobierane z usługi Azure Machine Learning Studio. 
+W tym artykule wyjaśniono celów wybór funkcji i zawiera przykłady swojej roli w procesie rozszerzenia danych, uczenia maszynowego. Te przykłady są pobierane z usługi Azure Machine Learning Studio. 
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
-Inżynieryjne i wybór funkcji jest jedną z części z zespołu danych nauki procesu (TDSP) opisane w artykule [co to jest proces zespołu danych nauki?](overview.md). Funkcja inżynieryjne i wyboru są częściami **opracowywania funkcji** krok TDSP.
+Inżynieria i wybór funkcji jest jedną z części z zespołu Data Science naukowych opisane w artykule [co to jest zespołu danych dla celów naukowych?](overview.md). Funkcja inżynieria i wybór są częściami **opracowywanie funkcji** krok przetwarzania TDSP.
 
-* **Inżynieria**: ten proces próbuje utworzyć dodatkowe istotne cechy z istniejących funkcji pierwotnych danych i zwiększyć predykcyjnej zasilania Algorytm uczenia.
-* **Wybór funkcji**: tego procesu wybiera klucza podzbioru cech oryginalnych danych w celu zmniejszenia wymiarach problemu szkolenia.
+* **Inżynieria funkcji**: ten proces próbuje utworzyć dodatkowe funkcje odpowiednie na podstawie istniejących funkcji nieprzetworzonych danych i zwiększyć możliwości predykcyjnych do algorytmu uczenia.
+* **Wybór funkcji**: ten proces wybiera klucza podzbiór funkcji, oryginalnym danych w celu podjęcia próby zmniejszenia wymiarach problemu szkolenia.
 
-Zwykle **Inżynieria** zostanie zastosowana jako pierwsza, aby wygenerować dodatkowe funkcje, a następnie **funkcji wyboru** kroku jest wykonywana w celu wyeliminowania nie ma znaczenia, nadmiarowe lub dużej skorelowane funkcji.
+Zwykle **Inżynieria funkcji** najpierw stosowany jest do generowania dodatkowe funkcje, a następnie **wybór funkcji** kroku jest przeprowadzana w celu wyeliminowania funkcji nie ma znaczenia, nadmiarowe lub bardzo skorelowany.
 
-## <a name="filter-features-from-your-data---feature-selection"></a>Funkcje filtrowania danych - wybór funkcji
-Wybór funkcji jest procesem, powszechnie stosowany do tworzenia zbiorów danych szkoleniowych modelowania predykcyjnego zadań, takich jak zadania klasyfikacji lub regresji. Celem jest Wybierz podzbiór funkcji z oryginalnego zestawu danych zmniejszyć jego wymiary za pomocą minimalny zestaw funkcji do reprezentowania maksymalną ilość wariancji w danych. Ten podzestaw funkcji służy do uczenia modelu. Wybór funkcji służy dwa główne cele.
+## <a name="filter-features-from-your-data---feature-selection"></a>Funkcje filtrowania danych — wybór funkcji
+Wybór funkcji to proces, który jest powszechnie stosowana do tworzenia zestawów danych szkoleniowych modelowania predykcyjnego zadań, takich jak zadania klasyfikacji lub regresji. Celem jest Wybierz podzbiór funkcji z oryginalnego zestawu danych, który zmniejszyć jego wymiarów, używając minimalny zbiór funkcji do reprezentowania maksymalną ilość wariancji w danych. Ten podzbiór funkcji, jest używany do nauczenia modelu. Wybór funkcji służy dwa główne cele.
 
-* Po pierwsze wybór funkcji często zwiększa dokładność klasyfikacji przez wyeliminowanie nie ma znaczenia, nadmiarowe lub ściśle powiązane funkcje.
-* Po drugie zmniejsza liczbę funkcji, dzięki czemu większą wydajność procesu uczenia modelu. Wydajność jest szczególnie ważne w przypadku uczących, które są kosztowne do uczenia, takich jak obsługa wektor maszyny.
+* Po pierwsze funkcji wyboru cech często zwiększa dokładność klasyfikacji przez wyeliminowanie nie ma znaczenia, nadmiarowe lub ściśle powiązane funkcje.
+* Po drugie zmniejsza liczbę funkcji, która sprawia, że proces szkolenia modelu jest bardziej wydajne. Wydajność jest szczególnie ważne w przypadku uczących, które są kosztowne do szkolenia, takie jak obsługa wektor maszyn.
 
-Mimo że wybór funkcji wyszukiwania ograniczyć liczbę funkcji w zestawie danych używany do nauczenia modelu, go nie odwołuje się termin "wymiarach redukcji". Metody wyboru funkcji Wyodrębnij podzbioru cech oryginalnych danych bez konieczności ich zmieniania.  Wymiary metod redukcji stosować odtworzone funkcje, które można przekształcić funkcji oryginalnego i w związku z tym ich modyfikować. Przykładami metod redukcji wymiary analizy składnika podmiot zabezpieczeń, analiza canonical korelacji i pojedynczą wartość rozkładu.
+Chociaż wybór funkcji dążyć do ograniczenia liczby funkcji w zestawie danych, używane do nauczenia modelu, go nie jest określany przez określenie "wymiarowości". Metody wyboru funkcji Wyodrębnij podzbiór funkcji oryginalne dane bez ich zmieniania.  Wymiary redukcji metody używają zaprojektowanych funkcje, które można przekształcić oryginalnego funkcji i zmodyfikuj je w ten sposób. Przykładami metod redukcji wymiarach analizy składnika podmiot zabezpieczeń, analizy canonical korelacji i pojedynczej rozkładu wartości.
 
-Między innymi jedną z powszechnie stosowanych kategorii metody wyboru funkcji w kontekście nadzorowany jest nazywany "na podstawie filtru funkcji wyboru". Wyniku obliczenia korelacji między każdej funkcji i atrybut target, te metody się statystyczne miarę w celu Przypisz wynik do każdej funkcji. Funkcje są następnie uporządkowane według wynik, który może służyć do ustawiać wartości progowej dla utrzymywanie lub wyeliminowanie określonych funkcji. Przykładami miar statystyczne w tych metod korelacji osoby, wzajemne informacji i test Chi kwadrat.
+Między innymi jedną kategorię powszechnie stosowane metody wyboru funkcji w kontekście nadzorowanego jest nazywany "Wybór funkcji na podstawie filtru". Poprzez ocenę korelację między każdej funkcji i atrybut target, te metody mają zastosowanie statystyczne miary, aby przypisać wynik do każdej funkcji. Funkcje są następnie uszeregowane według wynik, który może służyć do ustaw próg utrzymywanie lub wyeliminowanie określonych funkcji. Przykładami miar statystyczne w tych metodach osoby korelacji wzajemnego informacji i test chi-kwadrat.
 
-W usłudze Azure Machine Learning Studio istnieją modułów dla funkcji wyboru cech. Jak pokazano na poniższej ilustracji, te moduły obejmują [na podstawie filtru wybór funkcji] [ filter-based-feature-selection] i [analiza liniowa Discriminant Fishera][fisher-linear-discriminant-analysis].
+W usłudze Azure Machine Learning Studio są moduły spośród funkcji. Jak pokazano na poniższej ilustracji, obejmują moduły [na podstawie filtru funkcji wyboru cech] [ filter-based-feature-selection] i [Fishera analiza liniowa w Discriminant] [ fisher-linear-discriminant-analysis].
 
-![Przykład wybór funkcji](./media/select-features/feature-Selection.png)
+![Przykład wyboru funkcji](./media/select-features/feature-Selection.png)
 
-Na przykład, rozważ użycie [na podstawie filtru wybór funkcji] [ filter-based-feature-selection] modułu. Dla wygody nadal używać przykład wyszukiwania tekstu. Wariantem kompilacji modelu regresji po utworzeniu przez zestaw funkcji 256 [Tworzenie skrótu funkcji] [ feature-hashing] modułu, a zmienna odpowiedzi jest "Col1" zawierający książki przeglądu klasyfikacji począwszy od 1 do 5. Przez ustawienie "Funkcji oceniania metody" jako "Wariancji x korelacji", "kolumna docelowa" jako "Col1" i "Liczba żądanych funkcji" do 50. Następnie moduł [na podstawie filtru wybór funkcji] [ filter-based-feature-selection] spowoduje utworzenie zestawu danych zawierającego 50 funkcji z atrybut target "Col1". Na poniższej ilustracji przedstawiono przepływ tego eksperymentu i parametry wejściowe:
+Na przykład, rozważ użycie [na podstawie filtru funkcji wyboru cech] [ filter-based-feature-selection] modułu. Dla wygody nadal korzystając z przykładu wyszukiwania tekstu. Przyjęto założenie, chcesz zbudowania modelu regresji, po utworzeniu zestawu funkcji 256 za pośrednictwem [Tworzenie skrótu funkcji] [ feature-hashing] modułu, a zmienna odpowiedzi jest "Col1" zawierający książki przeglądu oceny w zakresie od 1 do 5. Przez ustawienie "Funkcji oceniania metody" jako "Korelacji Pearsona", "kolumna docelowa" "Col1" i "Liczba żądanych funkcji" do 50. Następnie moduł [na podstawie filtru funkcji wyboru cech] [ filter-based-feature-selection] tworzy zestaw danych zawierający 50 funkcji wraz z atrybut target "Col1". Na poniższej ilustracji przedstawiono przepływ ten eksperyment i parametry wejściowe:
 
-![Przykład wybór funkcji](./media/select-features/feature-Selection1.png)
+![Przykład wyboru funkcji](./media/select-features/feature-Selection1.png)
 
-Na poniższej ilustracji przedstawiono Wynikowy zestaw danych:
+Na poniższej ilustracji przedstawiono wynikowe zestawy danych:
 
-![Przykład wybór funkcji](./media/select-features/feature-Selection2.png)
+![Przykład wyboru funkcji](./media/select-features/feature-Selection2.png)
 
-Każdej funkcji są oceniane na podstawie na korelacji wariancji x między sobą i atrybut target "Col1". Funkcje z najwyższym wyniki są zachowywane.
+Każda funkcja jest oceniany na podstawie korelacji Pearsona między sobą i atrybut target "Col1". Oceny najważniejszych funkcji są zachowywane.
 
 Odpowiednie wyniki wybrane funkcje są wyświetlane na poniższej ilustracji:
 
-![Przykład wybór funkcji](./media/select-features/feature-Selection3.png)
+![Przykład wyboru funkcji](./media/select-features/feature-Selection3.png)
 
-Stosując to [na podstawie filtru wybór funkcji] [ filter-based-feature-selection] modułu, 50 poza 256 funkcje są wybrane, ponieważ mają one funkcji najbardziej skorelowane z Zmienna docelowa "Col1", na podstawie wyników metody "Wariancji x korelacji".
+Stosując to [na podstawie filtru funkcji wyboru cech] [ filter-based-feature-selection] modułu, 50 poza 256 funkcje są zaznaczone, ponieważ mają one najbardziej skorelowany funkcji zawiera zmienną docelową "Col1" oparte na metodzie oceniania "Korelacji Pearsona".
 
 ## <a name="conclusion"></a>Podsumowanie
-Funkcja inżynieryjne i wybór funkcji są dwa najczęściej odtwarzane i wybranych funkcji zwiększyć wydajność procesu szkolenia, który próbuje wyodrębnić informacje o kluczu zawarte w danych. Poprawiają również uprawnienia tych modeli dokładnie klasyfikowania danych wejściowych oraz do przewidywania wyników odsetek bardziej niezawodnie. Funkcja inżynieryjne i wyboru można także połączyć dokonanie więcej praktyce tractable learning. Robi to udoskonalanie, a następnie zmniejszenie liczby potrzeby kalibrować lub uczenie modelu przy użyciu funkcji. Funkcje wybrane do nauczenia modelu ze sobą matematycznie rzecz biorąc, są minimalny zbiór zmienne niezależne, które wyjaśniają wzorce w danych, a następnie pomyślnie przewidywania wyników.
+Funkcja inżynieria i wybór funkcji są dwa najczęściej zaprojektowany i wybrane funkcje zwiększenia efektywności procesu uczenia, który próbuje wyodrębnić kluczowe informacje zawarte w danych. Mogą również zwiększyć możliwości tych modeli do klasyfikowania dokładnie dane wejściowe i bardziej niezawodnie przewidywanie wyników zainteresowania. Funkcja inżynieria i wybór można także połączyć się bardziej praktyce tractable szkoleniowe. Robi to poprawa, a następnie zmniejszenie liczby funkcje niezbędne do kalibrować lub wytrenuj model. Funkcje wybrane do nauczenia modelu, ze sobą matematycznie rzecz biorąc, są minimalny zestaw zmienne niezależne, wyjaśnić wzorce w danych, które następnie pomyślnie przewidywania wyników.
 
-Nie zawsze jest zawsze do wykonywania funkcji engineering lub funkcji wyboru cech. Określa, czy jest potrzebny lub nie zależy od zebranych danych, algorytm zaznaczone i celem eksperymentu.
+Nie zawsze jest koniecznie do wykonywania funkcji inżynierii lub funkcji wyboru cech. Czy jest to wymagane lub nie zależy od tego, zebranych danych, algorytm zaznaczone i celem eksperymentu.
 
 <!-- Module References -->
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/

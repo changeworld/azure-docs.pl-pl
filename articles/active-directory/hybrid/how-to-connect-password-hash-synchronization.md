@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 3579a17ab28bd39ddad5008e1d0f8f7834237807
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5936157a46643ff76b5e1cc11d636aa6be9175ff
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282003"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427475"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync
 Ten artykuł zawiera informacje potrzebne do synchronizacji haseł użytkowników z lokalnym wystąpieniem usługi Active Directory do wystąpienia usługi Azure Active Directory (Azure AD) oparte na chmurze.
@@ -80,7 +80,7 @@ Poniżej przedstawiono szczegółowe działania synchronizacji skrótów haseł 
 
 
 1. Co dwie minuty agenta synchronizacji skrótów haseł na serwerze AD Connect żądań skrótów haseł przechowywanych (atrybutu unicodePwd) z kontrolera domeny za pomocą standardowej [MS DRSR](https://msdn.microsoft.com/library/cc228086.aspx) protokołu replikacji używane do synchronizowania danych między kontrolery domeny. Konto usługi musi mieć Replikacja zmian katalogów i Replikuj wszystkie zmiany katalogu AD uprawnienia (domyślnie na instalację), do uzyskania wartości skrótu hasła.
-2. Przed wysłaniem, kontroler domeny szyfruje za pomocą klucza, który jest wartość skrótu hasła MD4 [MD5](http://www.rfc-editor.org/rfc/rfc1321.txt) skrót klucza sesji RPC i ziarna. Następnie wysyła wyniki do agenta synchronizacji skrótu hasła za pośrednictwem wywołania RPC. Kontroler domeny również przekazuje ziarna do agenta synchronizacji przy użyciu protokołu replikacji kontrolera domeny, aby agent będzie można odszyfrować koperty.
+2. Przed wysłaniem, kontroler domeny szyfruje za pomocą klucza, który jest wartość skrótu hasła MD4 [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) skrót klucza sesji RPC i ziarna. Następnie wysyła wyniki do agenta synchronizacji skrótu hasła za pośrednictwem wywołania RPC. Kontroler domeny również przekazuje ziarna do agenta synchronizacji przy użyciu protokołu replikacji kontrolera domeny, aby agent będzie można odszyfrować koperty.
 3.  Po agenta synchronizacji skrótów haseł koperty zaszyfrowane, używa [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) i ziarna do wygenerowania klucza do odszyfrowywania odebranych danych do oryginalnego formatu MD4. W żadnym punkcie agenta synchronizacji skrótów haseł ma dostęp do hasła w postaci zwykłego tekstu. Użycie agenta synchronizacji skrótów haseł MD5 jest wyłącznie dla zgodności protokołu replikacji z kontrolerem domeny i jest używana tylko w środowisku lokalnym między kontrolerem domeny i agenta synchronizacji skrótów haseł.
 4.  Agent synchronizacji skrótów haseł rozwija skrót hasła binarne 16-bajtowy 64 bajtów konwertując pierwszy wyznaczania wartości skrótu do 32 bajtów ciąg szesnastkowy, następnie konwertując ten ciąg z powrotem do pliku binarnego z kodowaniem UTF-16.
 5.  Dodaje agenta synchronizacji skrótów haseł na ziarna użytkowników, składające się soli długości 10 bajtów do pliku binarnego 64 bajtów, aby jeszcze lepiej chronić oryginalnego wyznaczania wartości skrótu.

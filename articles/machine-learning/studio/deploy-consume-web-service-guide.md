@@ -1,6 +1,6 @@
 ---
-title: 'Usługi Azure Machine Learning w sieci Web: Wdrożenia i użycia | Dokumentacja firmy Microsoft'
-description: Zasoby umożliwiające wdrażanie i korzystanie z usług internetowych.
+title: 'Usługi Machine learning web services: Wdrażanie i korzystanie - Azure Machine Learning Studio | Dokumentacja firmy Microsoft'
+description: Usługi Azure Machine Learning umożliwia wdrażanie machine learning w przepływach pracy i modeli jako usług sieci web. Usługi sieci web można następnie wywołać maszyny uczenia modeli z aplikacji przez internet w celu wykonania prognoz w czasie rzeczywistym lub w trybie wsadowym.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 886cf0669565eeb87050331d787c33eb8b19d8c1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: a192bb50fe6931130492fad037f83e301e401762
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261246"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315549"
 ---
 # <a name="azure-machine-learning-web-services-deployment-and-consumption"></a>Usługi sieci Web Azure Machine Learning: wdrażanie i korzystanie
-Usługi Azure Machine Learning umożliwia wdrażanie przepływów pracy usługi machine learning i modeli jako usług sieci web. Usługi sieci web można następnie wywołać modeli uczenia maszynowego z aplikacji przez Internet w celu wykonania prognoz w czasie rzeczywistym lub w trybie wsadowym. Ponieważ usługi sieci web są zgodne ze specyfikacją REST, można je wywoływać z różnych języków programowania i platform, takich jak .NET, Java i z aplikacji, takich jak program Excel.
+Usługi Azure Machine Learning umożliwia wdrażanie machine learning w przepływach pracy i modeli jako usług sieci web. Usługi sieci web można następnie wywołać maszyny uczenia modeli z aplikacji przez Internet w celu wykonania prognoz w czasie rzeczywistym lub w trybie wsadowym. Ponieważ usługi sieci web są zgodne ze specyfikacją REST, można je wywoływać z różnych języków programowania i platform, takich jak .NET, Java i z aplikacji, takich jak program Excel.
 
 W kolejnych sekcjach zawierają łącza do przewodników, kod i dokumentację ułatwiającą rozpoczęcie pracy.
 

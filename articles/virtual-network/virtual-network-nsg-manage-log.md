@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: 5635998eb72f08ddc665793e77008890b2cdb05d
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: bf7f1f58250d94d821e6ec41266b518d7ebe105b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059703"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427560"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Rejestrowanie diagnostyczne dla grupy zabezpieczeń sieci
 
@@ -199,7 +199,7 @@ Dziennik licznika reguła zawiera informacje o każdej reguły stosowane do zaso
 ## <a name="view-and-analyze-logs"></a>Wyświetlanie i analizowanie dzienników
 
 Aby dowiedzieć się, jak wyświetlać dane dzienników diagnostycznych, zobacz [dzienniki diagnostyczne platformy Azure — omówienie](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json). W przypadku wysłania danych diagnostycznych:
-- **Log Analytics**: możesz użyć [analizy grupy zabezpieczeń sieci](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-log-analytics
+- **Log Analytics**: możesz użyć [analizy grupy zabezpieczeń sieci](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-log-analytics
 ) rozwiązania do lepszego wglądu w dane. Rozwiązanie udostępnia wizualizacje dla reguły sieciowej grupy zabezpieczeń, które blokują lub zezwalają na ruch na adres MAC interfejsu sieciowego w maszynie wirtualnej.
 - **Konto usługi Azure Storage**: dane są zapisywane do pliku PT1H.json. Możesz znaleźć:
     - Dziennik zdarzeń w następującej ścieżce: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`

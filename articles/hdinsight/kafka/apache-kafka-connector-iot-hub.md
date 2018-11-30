@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 8941a7332c19b1a9d5c04abb0e4b03ae83e98016
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 143df8a8c82e84b193bdb48a3d41682fca19156b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260486"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315431"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Korzystanie z platformy Apache Kafka w HDInsight z usługą Azure IoT Hub
 
-Dowiedz się, jak używać [Kafka łączenie usługi Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) łącznika w celu przenoszenia danych między platformy Apache Kafka w HDInsight i Azure IoT Hub. W tym dokumencie dowiesz się, jak uruchomić łącznik usługi IoT Hub z węzłem krawędzi klastra.
+Dowiedz się, jak używać [Apache Kafka łączenie usługi Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) łącznika w celu przenoszenia danych między platformy Apache Kafka w HDInsight i Azure IoT Hub. W tym dokumencie dowiesz się, jak uruchomić łącznik usługi IoT Hub z węzłem krawędzi klastra.
 
-Interfejsem API połączenia platformy Kafka umożliwia Implementowanie łączników, które stale ściąganie danych do platformy Kafka, lub wypchnąć dane z usługi Kafka do innego systemu. [Kafka łączenie usługi Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) łącznik, który ściąga dane z usługi Azure IoT Hub do platformy Kafka. Jego wypychania danych z usługi Kafka do usługi IoT Hub. 
+Interfejsem API połączenia platformy Kafka umożliwia Implementowanie łączników, które stale ściąganie danych do platformy Kafka, lub wypchnąć dane z usługi Kafka do innego systemu. [Apache Kafka łączenie usługi Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) łącznik, który ściąga dane z usługi Azure IoT Hub do platformy Kafka. Jego wypychania danych z usługi Kafka do usługi IoT Hub. 
 
 Ściąganie z usługi IoT Hub, za pomocą funkcji __źródła__ łącznika. Wypychanie do usługi IoT Hub, za pomocą funkcji __ujścia__ łącznika. Łącznik usługi IoT Hub udostępnia łączniki źródła i ujścia.
 
@@ -84,7 +84,7 @@ Aby uzyskać więcej informacji na temat interfejsu API połączenia, zobacz [ h
 >
 >    To polecenie tworzy plik o nazwie `kafka-connect-iothub-assembly_2.11-0.6.jar` w `target/scala-2.11` katalogu projektu.
 
-## <a name="configure-kafka"></a>Konfigurowanie platformy Kafka
+## <a name="configure-apache-kafka"></a>Konfigurowanie platformy Apache Kafka
 
 Z połączenia SSH z węzłem krawędzi wykonaj następujące kroki, aby skonfigurować platformy Kafka w celu uruchamiania w trybie autonomicznym:
 
@@ -111,7 +111,7 @@ Z połączenia SSH z węzłem krawędzi wykonaj następujące kroki, aby skonfig
 
     `wn0-kafka.w5ijyohcxt5uvdhhuaz5ra4u5f.ex.internal.cloudapp.net:9092,wn1-kafka.w5ijyohcxt5uvdhhuaz5ra4u5f.ex.internal.cloudapp.net:9092`
 
-4. Uzyskaj adres węzły dozorcy. Istnieje kilka węzłów dozorcy w klastrze, ale musisz odwoływać się do jednego lub dwóch. Aby uzyskać adres z dwóch węzłów dozorcy, użyj następującego polecenia:
+4. Uzyskaj adres węzłów Apache Zookeeper. Istnieje kilka węzłów dozorcy w klastrze, ale musisz odwoływać się do jednego lub dwóch. Aby uzyskać adres z dwóch węzłów dozorcy, użyj następującego polecenia:
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
@@ -335,7 +335,7 @@ Aby wysyłać komunikaty za pośrednictwem łącznika, wykonaj następujące kro
     > [!WARNING]
     > Ponieważ jest to nowe połączenie SSH `$KAFKABROKERS` zmiennej nie zawiera żadnych informacji. Aby ustawić go, użyj jednej z następujących metod:
     >
-    > * Użyj pierwszych trzech kroków w [skonfigurować Kafka](#configure-kafka) sekcji.
+    > * Użyj pierwszych trzech kroków w [Konfigurowanie platformy Apache Kafka](#configure-apache-kafka) sekcji.
     > * Użyj `echo $KAFKABROKERS` z poprzedniego połączenia SSH do uzyskania wartości, a następnie zastąp `$KAFKABROKERS` w następującym poleceniu rzeczywistymi wartościami.
 
     ```bash
@@ -367,7 +367,7 @@ Aby uzyskać więcej informacji na temat korzystania z łącznika ujścia, zobac
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym dokumencie przedstawiono sposób uruchomić łącznik Kafka IoT na HDInsight przy użyciu interfejsu API połączenia platformy Kafka. Użyj następujących linków, aby poznać inne sposoby pracy z platformą Kafka:
+W tym dokumencie przedstawiono sposób użyć platformy Kafka połączenia interfejsu API Apache do uruchomienia łącznika Kafka IoT w HDInsight. Użyj następujących linków, aby poznać inne sposoby pracy z platformą Kafka:
 
-* [Używanie platformy Apache Spark z platformą Kafka w usłudze HDInsight](../hdinsight-apache-spark-with-kafka.md)
-* [Używanie systemu Apache Storm z platformą Kafka w usłudze HDInsight](../hdinsight-apache-storm-with-kafka.md)
+* [Korzystanie z platformy Apache Spark z platformą Apache Kafka w HDInsight](../hdinsight-apache-spark-with-kafka.md)
+* [Używanie systemu Apache Storm z platformą Apache Kafka w HDInsight](../hdinsight-apache-storm-with-kafka.md)

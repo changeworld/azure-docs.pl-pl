@@ -1,6 +1,6 @@
 ---
-title: Jak używać usługi Azure Machine Learning w sieci Web | Dokumentacja firmy Microsoft
-description: Po wdrożeniu usługi uczenia maszynowego Usługa sieci Web typu RESTFul, która ma zostać udostępnione mogą być używane jako usługi w czasie rzeczywistym odpowiedź na żądanie lub jako usługę wykonywania wsadowego.
+title: Jak używać usługi sieci web Azure Machine Learning Studio | Dokumentacja firmy Microsoft
+description: Po wdrożeniu usługi uczenia maszynowego z usługi Azure Machine Learning Studio, usługę sieci Web typu RESTFul mogą być używane jako usługi w czasie rzeczywistym odpowiedź na żądanie lub jako usługę wykonywania wsadowego.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
-ms.openlocfilehash: 0f95ea1de572beb02cd1680864d3fee781e9abc1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: df837c64cf0e40f3bfc1c596b2950a9d23c74a90
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262826"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309110"
 ---
-# <a name="how-to-consume-an-azure-machine-learning-web-service"></a>Jak używać usługi Azure Machine Learning w sieci Web
+# <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Jak używać usługi sieci web Azure Machine Learning Studio
 
 Po wdrożeniu usługi Azure Machine Learning, model predykcyjny jako usługę sieci Web, można użyć interfejsu API REST, przesyła dane i uzyskiwać prognozy. Możesz wysłać dane w czasie rzeczywistym lub w trybie wsadowym.
 

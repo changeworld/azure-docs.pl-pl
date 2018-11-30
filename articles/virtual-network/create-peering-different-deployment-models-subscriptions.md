@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 01e8b5c518931411ba6e2d75168de6753bf55260
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 34c11c911b6c2ffbc4d4800cd7203a8d430814fb
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971726"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311249"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Utworzyć komunikację równorzędną sieci wirtualnej — różne modele wdrażania i subskrypcje
 
@@ -97,7 +97,7 @@ Ten samouczek używa różnych kont, dla każdej subskrypcji. Jeśli używasz ko
 
 ## <a name="cli"></a>Utworzyć komunikację równorzędną — interfejs wiersza polecenia platformy Azure
 
-Ten samouczek używa różnych kont, dla każdej subskrypcji. Jeśli używasz konta mającego uprawnienia do obu subskrypcji, możesz używać tego samego konta dla wszystkich kroków, pomiń kroki rejestrowania możliwości platformy Azure i Usuń wiersze skryptu, które tworzenie przypisań ról użytkownika. Zastąp UserA@azure.com i UserB@azure.com we wszystkich następujących skryptów za pomocą nazw użytkowników, używasz osoby Użytkownik_a i Użytkownik_b. Wykonaj poniższe kroki, które są za pomocą platformy Azure klasyczny interfejs wiersza polecenia i interfejsu wiersza polecenia platformy Azure. Możesz wykonać kroki z usługi Azure Cloud Shell, po prostu wybierając **wypróbuj** przycisk w dowolnym z następujących czynności lub dzięki zainstalowaniu [klasyczny interfejs wiersza polecenia](/cli/azure/install-cli-version-1.0.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i [interfejsu wiersza polecenia](/cli/azure/install-azure-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i uruchamianie polecenia na komputerze lokalnym.
+Ten samouczek używa różnych kont, dla każdej subskrypcji. Jeśli używasz konta mającego uprawnienia do obu subskrypcji, możesz używać tego samego konta dla wszystkich kroków, pomiń kroki rejestrowania możliwości platformy Azure i Usuń wiersze skryptu, które tworzenie przypisań ról użytkownika. Zastąp UserA@azure.com i UserB@azure.com we wszystkich następujących skryptów za pomocą nazw użytkowników, używasz osoby Użytkownik_a i Użytkownik_b. Wykonaj poniższe kroki, które są za pomocą platformy Azure klasyczny interfejs wiersza polecenia i interfejsu wiersza polecenia platformy Azure. Możesz wykonać kroki z usługi Azure Cloud Shell, po prostu wybierając **wypróbuj** przycisk w dowolnym z następujących czynności lub dzięki zainstalowaniu [klasyczny interfejs wiersza polecenia](/cli/azure/install-classic-cli) i [interfejsu wiersza polecenia](/cli/azure/install-azure-cli) i uruchamianie polecenia na komputerze lokalnym.
 
 1. Jeśli używasz powłoki Cloud, przejdź do kroku 2, ponieważ w usłudze Cloud Shell automatycznie zaloguje Cię na platformie Azure. Otwórz sesję programu polecenia, a następnie zaloguj się do platformy Azure za pomocą `azure login` polecenia.
 2. Uruchomić klasyczny interfejs wiersza polecenia w trybie zarządzania usługami, wprowadzając `azure config mode asm` polecenia.
@@ -272,7 +272,7 @@ Ten samouczek używa różnych kont, dla każdej subskrypcji. Jeśli używasz ko
 ## <a name="delete"></a>Usuń zasoby
 Po ukończeniu tego samouczka, możesz chcieć usunąć zasoby utworzone w tym samouczku, więc nie powodują naliczania opłat za użycie. Usunięcie grupy zasobów spowoduje również usunięcie wszystkich zasobów, które znajdują się w grupie zasobów.
 
-### <a name="delete-portal"></a>Witryna Azure portal
+### <a name="delete-portal"></a>Azure Portal
 
 1. W polu wyszukiwania portalu wprowadź **myResourceGroupA**. W wynikach wyszukiwania kliknij **myResourceGroupA**.
 2. Na **myResourceGroupA** bloku kliknij **Usuń** ikony.
@@ -281,7 +281,7 @@ Po ukończeniu tego samouczka, możesz chcieć usunąć zasoby utworzone w tym s
 5. W **myVnetB** bloku kliknij **Usuń**.
 6. Aby potwierdzić usunięcie, kliknij przycisk **tak** w **usuwania sieci wirtualnej** pole.
 
-### <a name="delete-cli"></a>Wiersza polecenia platformy Azure
+### <a name="delete-cli"></a>Interfejs wiersza polecenia platformy Azure
 
 1. Zaloguj się do platformy Azure przy użyciu interfejsu wiersza polecenia, można usunąć sieci wirtualnej (Resource Manager) za pomocą następującego polecenia:
 

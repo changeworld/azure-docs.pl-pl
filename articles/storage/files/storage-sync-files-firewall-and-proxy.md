@@ -5,15 +5,15 @@ services: storage
 author: fauhse
 ms.service: storage
 ms.topic: article
-ms.date: 08/08/2018
+ms.date: 11/26/2018
 ms.author: fauhse
 ms.component: files
-ms.openlocfilehash: 25bec4bdbae5b206d23fa300f139f55f86b8167e
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 3a1cc0a28ef5a4861d86373ce39258936639baab
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434385"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333354"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Ustawienia serwera proxy i zapory usługi Azure File Sync
 Usługa Azure File Sync łączy swoje lokalne serwery do usługi pliki Azure, włączenie synchronizacji obejmujące wiele lokacji i obsługi warstw w funkcji w chmurze. W efekcie na serwerze lokalnym musi połączony z Internetem. Administrator IT musi określić najlepszą ścieżkę dla serwera uzyskać dostęp do usług Azure cloud services.
@@ -27,7 +27,7 @@ Ten artykuł będzie zapewniają wgląd w określonych wymagań i opcji umożliw
 Usługa Azure File Sync działa jako usługa aranżacji między serwera z systemem Windows, udziału plików platformy Azure i kilka innych usług platformy Azure, na synchronizowanie danych, zgodnie z opisem w grupie synchronizacji. Dla usługi Azure File Sync działała prawidłowo należy skonfigurować serwery do komunikowania się z następujących usług platformy Azure:
 
 - Azure Storage
-- Usługa Azure File Sync
+- Azure File Sync
 - Azure Resource Manager
 - Usługi uwierzytelniania
 
@@ -46,7 +46,7 @@ Usługa Azure File Sync będą działać przez wszystkie środki, dzięki czemu 
 ## <a name="proxy"></a>Serwer proxy
 Usługa Azure File Sync wspiera ustawienia serwera proxy dla aplikacji i komputera.
 
-**Ustawienia specyficzne dla aplikacji serwera proxy** zezwala na konfigurację serwera proxy dla usługi Azure File Sync ruchu. Ustawienia proxy specyficzny dla aplikacji są obsługiwane w wersji agenta 3.0.12.0 lub nowszej, a także można skonfigurować podczas instalacji agenta lub za pomocą polecenia cmdlet programu PowerShell Set-StorageSyncProxyConfiguration.
+**Ustawienia specyficzne dla aplikacji serwera proxy** zezwala na konfigurację serwera proxy dla usługi Azure File Sync ruchu. Ustawienia proxy specyficzny dla aplikacji są obsługiwane w wersji agenta 4.0.1.0 lub nowszej, a także można skonfigurować podczas instalacji agenta lub za pomocą polecenia cmdlet programu PowerShell Set-StorageSyncProxyConfiguration.
 
 Polecenia programu PowerShell, aby skonfigurować ustawienia specyficzne dla aplikacji serwera proxy:
 ```PowerShell

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: d8be831469659993da4f9f392e23b9408eb283e3
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 2b16bc98c456c9c85d8e49e01171086933533707
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302224"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312633"
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Usługa Azure Security Center i Azure SQL Database
 Usługa [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) pomaga w zapobieganiu zagrożeniom, wykrywaniu ich i reagowaniu na nie. Zapewnia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami subskrypcji platformy Azure, pomaga wykrywać zagrożenia, które w przeciwnym razie mogłyby pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań z zakresu zabezpieczeń.
@@ -60,7 +60,7 @@ Można ustawić zasady, aby wyświetlić zalecenia dotyczące inspekcji SQL i ni
 Aby ustawić zasady zabezpieczeń, wybierz **zasad** Kafelek do bloku usługi Security Center. Na **zasady zabezpieczeń** bloku, wybierz subskrypcję, dla którego chcesz włączyć zasady zabezpieczeń. Wybierz **zasady zapobiegania** i włączyć **na** zalecenia dotyczące zabezpieczeń, które chcesz użyć dla tej subskrypcji.
 ![Zasady zabezpieczeń][3]
 
-Aby dowiedzieć się więcej, zobacz [Ustawianie zasad zabezpieczeń](security-center-policies.md).
+Aby dowiedzieć się więcej, zobacz [Ustawianie zasad zabezpieczeń](security-center-azure-policy.md).
 
 ## <a name="manage-security-recommendation"></a>Zarządzanie zalecenie dotyczące zabezpieczeń
 Usługa Security Center okresowo analizuje stan zabezpieczeń zasobów platformy Azure. Po znalezieniu potencjalnych luk w zabezpieczeniach usługa Security Center tworzy odpowiednie zalecenia. Przewodnik dotyczący zaleceń prowadzi użytkownika przez proces konfigurowania wymaganych kontrolek.
@@ -85,7 +85,7 @@ Postępuj zgodnie z instrukcjami w [wykrywania zagrożeń bazy danych SQL w witr
 Aby dowiedzieć się więcej o zaleceniach, zobacz [Zarządzanie zaleceniami dotyczącymi zabezpieczeń](security-center-recommendations.md).
 
 ## <a name="monitor-security-health"></a>Monitoruj kondycję zabezpieczeń
-Po włączeniu [zasad zabezpieczeń](security-center-policies.md) dla zasobów subskrypcji Centrum zabezpieczeń będzie analizować zabezpieczenia zasobów, aby zidentyfikować potencjalne luki.  Można wyświetlić stan zabezpieczeń zasobów w **kondycja zabezpieczeń zasobów** kafelka. Po kliknięciu **danych** w **kondycja zabezpieczeń zasobów** kafelka **zasoby danych** zostanie otwarty blok zawierający zalecenia dotyczące SQL w przypadku problemów, takich jak dane inspekcji lub przezroczystego nie włączono szyfrowanie. Przedstawia on także zalecenia dotyczące ogólnej kondycji bazy danych.
+Po włączeniu [zasad zabezpieczeń](security-center-azure-policy.md) dla zasobów subskrypcji Centrum zabezpieczeń będzie analizować zabezpieczenia zasobów, aby zidentyfikować potencjalne luki.  Można wyświetlić stan zabezpieczeń zasobów w **kondycja zabezpieczeń zasobów** kafelka. Po kliknięciu **danych** w **kondycja zabezpieczeń zasobów** kafelka **zasoby danych** zostanie otwarty blok zawierający zalecenia dotyczące SQL w przypadku problemów, takich jak dane inspekcji lub przezroczystego nie włączono szyfrowanie. Przedstawia on także zalecenia dotyczące ogólnej kondycji bazy danych.
 ![Kondycja zabezpieczeń zasobów][6]
 
 Aby dowiedzieć się więcej, zobacz [monitorowanie kondycji zabezpieczeń](security-center-monitoring.md).

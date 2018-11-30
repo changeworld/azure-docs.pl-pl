@@ -1,6 +1,6 @@
 ---
-title: Kolekcje usługi Azure Galeria sztucznej Inteligencji | Dokumentacja firmy Microsoft
-description: Odnajdywanie i udostępnianie kolekcji w galerii sztucznej Inteligencji platformy Azure.
+title: Kolekcje usługi Azure Galeria sztucznej Inteligencji — usługi Azure Machine Learning Studio | Dokumentacja firmy Microsoft
+description: Kolekcja w galerii Azure AI umożliwia grupie eksperymentów, interfejsów API i inne elementy galerii, używanych do konkretnego rozwiązania lub pojęcia. Użytkownik może pogrupować je do użycia, aby zapisać do późniejszego wykorzystania lub udostępnić.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: e9b1bfd27e82d3ca091fba850b2e4a9b6b8aa61e
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: cc70405655cd07d87ca5b1004b7666d3b45bc649
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263642"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308685"
 ---
 # <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Odnajdywanie i udostępnianie kolekcji w galerii Azure AI
 
@@ -55,7 +55,7 @@ Na przykład można użyć kolekcji, aby grupować elementy na dany temat lub mo
 
 3. Wybierz pozycję **New Item** (Nowy element).
    
-    ![Wybierz pozycję "Nowy element"](./media/gallery-collections/click-new-item.png)
+    ![Wybieranie pozycji „New Item” (Nowy element)](./media/gallery-collections/click-new-item.png)
 4. Na **opis** strony dla **typu elementu**, wybierz opcję **kolekcji**. Wprowadź nazwę kolekcji, krótkie podsumowanie, szczegółowy opis, a wszelkie tagi, które mogą pomóc innym użytkownikom znajdowanie kolekcji.
    
     ![Wprowadź informacje dotyczące nowej kolekcji](./media/gallery-collections/create-collection-page-1.png)

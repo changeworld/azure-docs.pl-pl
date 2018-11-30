@@ -2,25 +2,21 @@
 title: Konserwacji predykcyjnej w lotnictwie i kosmonautyce z systemem Azure — podręcznik techniczny rozwiązania Cortana Intelligence | Dokumentacja firmy Microsoft
 description: Podręcznik techniczny do szablonu rozwiązania za pomocą pakietu Microsoft Cortana Intelligence pod kątem konserwacji predykcyjnej w lotnictwie i kosmonautyce, narzędzia i transportu.
 services: machine-learning
-documentationcenter: ''
-author: fboylu
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 2c4d2147-0f05-4705-8748-9527c2c1f033
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: fboylu
-ms.openlocfilehash: 28900c39e658a2a8c66b2ded6f2d70b50bf17e80
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=fboylu, ms.author=fboylu)
+ms.openlocfilehash: 904e9c22f23255f1bee7f532d7f577c7cd457778
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231525"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443750"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Podręcznik techniczny do szablonu Cortana Intelligence rozwiązania pod kątem konserwacji predykcyjnej w lotnictwie i kosmonautyce i innych firm
 

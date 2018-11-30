@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/02/2018
+ms.date: 11/27/2018
 ms.author: borisb
-ms.openlocfilehash: ad28e30f7f31ec61332faac3ab3ee3c3e2fd67ca
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 4ccfc7d185281f4c3a76e211aecff0f60298c92a
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024158"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446487"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure maszyn wirtualnych systemu Linux Enterprise na żądanie w systemie Red Hat na platformie Azure
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umożliwia dostawcom usług w chmurze, takich jak Azure duplikatów zawartości hostowanej w systemie Red Hat repozytorium, Utwórz niestandardowe repozytoria specyficzne dla platformy Azure zawartości i udostępnić go do maszyn wirtualnych przez użytkownika końcowego.
@@ -29,7 +29,7 @@ Red Hat Enterprise Linux (RHEL) płatność za rzeczywiste użycie (PAYG) pochod
 ## <a name="important-information-about-azure-rhui"></a>Ważne informacje na temat usługi RHUI platformy Azure
 * RHUI platformy Azure obsługuje obecnie tylko najnowszą wersję pomocniczą w każdej rodziny RHEL (RHEL6 lub RHEL7). Aby uaktualnić wystąpienia maszyny Wirtualnej z systemem RHEL podłączony do usługi RHUI do najnowszej wersji pomocniczej, uruchom `sudo yum update`.
 
-    Na przykład, jeśli możesz aprowizować maszynę Wirtualną z obrazu systemu RHEL 7.2 PAYG i uruchomić `sudo yum update`, na końcu RHEL w wersji 7.5 maszyny Wirtualnej (Najnowsza wersja pomocnicza rodziny RHEL7).
+    Na przykład, jeśli możesz aprowizować maszynę Wirtualną z obrazu systemu RHEL 7.4 PAYG i uruchomić `sudo yum update`, na końcu RHEL 7.6 maszyny Wirtualnej (Najnowsza wersja pomocnicza rodziny RHEL7).
 
     Aby uniknąć tego zachowania, potrzebne do tworzenia własnego obrazu, zgodnie z opisem w [tworzenie i przekazywanie maszyny wirtualnej z systemem Red Hat na platformie Azure](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) artykułu. Musisz połączyć go z infrastruktury inną aktualizację ([bezpośrednio do firmy Red Hat zawartości serwerów dostarczania](https://access.redhat.com/solutions/253273) lub [serwera Red Hat satelitarnej](https://access.redhat.com/products/red-hat-satellite)).
 
@@ -66,6 +66,16 @@ Jeśli używasz konfiguracji sieci bardziej ograniczyć dostęp z maszyn wirtual
 We wrześniu 2016 roku wdrożyliśmy zaktualizowane RHUI platformy Azure. Kwietnia 2017 r. Firma Microsoft zamknąć starych RHUI platformy Azure. Jeśli masz doświadczenie z obrazów systemu RHEL PAYG (lub ich migawki) od września 2016 lub nowszym, automatycznie łączenia z nowej usługi RHUI platformy Azure. Jeśli jednak masz starszą migawek na maszynach wirtualnych, musisz ręcznie zaktualizować swoją konfigurację dostępu usługi RHUI platformy Azure, zgodnie z opisem w poniższej sekcji.
 
 Nowe serwery usługi RHUI platformy Azure są wdrażane przy użyciu [usługi Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/). W usłudze Traffic Manager, jeden punkt końcowy (rhui 1.microsoft.com) może służyć przez dowolnej maszyny Wirtualnej, niezależnie od określonego regionu. 
+
+### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>Aktualizacja wygasłego certyfikatu klienta usługi RHUI na maszynie Wirtualnej
+
+Jeśli używasz starszej obrazu maszyny Wirtualnej z systemem RHEL, na przykład RHEL 7.4 (obraz URN: `RedHat:RHEL:7.4:7.4.2018010506`), będą występować problemy z połączeniem usługi RHUI ze względu na certyfikat klienta SSL wygasł (na listopada 2018 21). Aby rozwiązać ten problem, zaktualizuj pakiet klienta usługi RHUI na maszynie Wirtualnej, używając następującego polecenia 
+
+```bash
+sudo yum update -y --disablerepo=* --enablerepo=rhui-microsoft-* rhui-azure-rhel7
+```
+
+Alternatywnie systemem `sudo yum update` spowoduje to również zaktualizowanie tego pakietu, pomimo błędów "wygasły certyfikat SSL" zostanie wyświetlony w przypadku innych repozytoriów. Po aktualizacji, normalne łączność z innych repozytoriów usługi RHUI powinny zostać przywrócone.
 
 ### <a name="troubleshoot-connection-problems-to-azure-rhui"></a>Rozwiązywanie problemów z połączeniem do usługi RHUI platformy Azure
 Jeśli wystąpią problemy z połączeniem z maszyny Wirtualnej platformy Azure RHEL PAYG RHUI platformy Azure, wykonaj następujące kroki:
@@ -135,12 +145,12 @@ Ta procedura znajduje się tylko do celów referencyjnych. Obrazy systemu RHEL P
    
     - Systemu RHEL 6:
         ```bash
-        curl -o azureclient.rpm https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel6/rhui-azure-rhel6-2.1-32.noarch.rpm 
+        curl -o azureclient.rpm https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel6/rhui-azure-rhel6-2.2-74.noarch.rpm 
         ```
     
     - Systemu RHEL 7:
         ```bash
-        curl -o azureclient.rpm https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel7/rhui-azure-rhel7-2.1-19.noarch.rpm  
+        curl -o azureclient.rpm https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel7/rhui-azure-rhel7-2.2-74.noarch.rpm  
         ```
 
    b. Sprawdź.

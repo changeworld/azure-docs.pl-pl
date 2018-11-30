@@ -15,18 +15,23 @@ ms.workload: NA
 ms.date: 9/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 0d7c3691b3496da7c178f7dc13b981abdff48d4a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 207dad0386ec53be1e8a860a85fe6670d8542043
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255016"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422647"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integracja usługi API Management z usługą Service Fabric na platformie Azure
 
 Wdrażanie usługi Azure API Management z usługą Service Fabric odbywa się w ramach zaawansowanego scenariusza.  Usługa API Management jest przydatna, gdy trzeba opublikować interfejsy API z obszernym zestawem reguł rozsyłania dla usług zaplecza Service Fabric. Aplikacje w chmurze zwykle potrzebują bramy frontonu, aby udostępniać pojedynczy punkt danych przychodzących dla użytkowników, urządzeń lub innych aplikacji. W usłudze Service Fabric bramą może być dowolna usługa bezstanowa przeznaczona dla ruchu przychodzącego, na przykład aplikacja ASP.NET Core albo usługa Event Hubs, IoT Hub lub Azure API Management.
 
 W tym artykule dowiesz się, jak skonfigurować [usługi Azure API Management](../api-management/api-management-key-concepts.md) z usługą Service Fabric na potrzeby kierowania ruchu do usługi zaplecza Service Fabric.  Wykonanie podanych instrukcji pozwoli wdrożyć usługę API Management w sieci wirtualnej i skonfigurować kierowanie ruchu do bezstanowych usług zaplecza za pomocą operacji interfejsu API. Aby dowiedzieć się więcej o scenariuszach użycia usługi Azure API Management z usługą Service Fabric, zobacz artykuł z [omówieniem](service-fabric-api-management-overview.md).
+
+## <a name="availability"></a>Dostępność
+
+> [!IMPORTANT]
+> Ta funkcja jest dostępna w **Premium** i **Developer** warstw usługi API Management z powodu wymagane wirtualnych sieci pomocy technicznej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

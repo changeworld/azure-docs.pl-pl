@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 1a64e40b13b05fc7f9fdb6f5aa99c8d8cc47c471
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d0d1efcdaab07e77d835319544fc70eb8687702f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251614"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316348"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>Rozwiązywanie problemów z błędami HTTP "502 — Zła brama" i "503 Usługa niedostępna" w aplikacjach sieci web platformy Azure
 "502 — Zła brama" i "503 Usługa niedostępna" są typowe błędy w aplikacji sieci web hostowanych w [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ten artykuł pomaga rozwiązać te błędy.
@@ -74,22 +74,10 @@ Aby uzyskać więcej informacji, zobacz:
 <a name="collect" />
 
 ### <a name="2-collect-data"></a>2. Zbieranie danych
-#### <a name="use-the-azure-app-service-support-portal"></a>Korzystanie z portalu pomocy technicznej usługi Azure App Service
-Usługa Web Apps umożliwia rozwiązywania problemów związanych z aplikacją sieci web, analizując HTTP dzienników, dzienniki zdarzeń, zrzuty procesów i więcej. Możesz uzyskać dostęp wszystkie te informacje przy użyciu portalu pomocy technicznej w **http://&lt;Twoja nazwa aplikacji >.scm.azurewebsites.net/Support**
+#### <a name="use-the-diagnostics-tool"></a>Używanie narzędzia do diagnostyki
+Usługa App Service udostępnia inteligentne i interaktywne środowisko ułatwiające rozwiązywanie problemów z aplikacją sieci web bez konieczności konfiguracji. Jeśli napotkasz problemy z aplikacją sieci web, narzędzia do diagnostyki wskaże na czym polega problem poświęcany na właściwe informacje, aby łatwiej i szybciej rozwiązać problem.
 
-Portal Azure App Service obsługuje zawiera trzech osobnych kartach do obsługi trzy kroki typowego scenariusza rozwiązywania problemów:
-
-1. Sprawdź bieżące zachowanie
-2. Analizuj, zbieranie informacji diagnostycznych i uruchamiając wbudowanych analizatorów
-3. Eliminacja zagrożeń
-
-Jeśli problem się dzieje w tej chwili, kliknij przycisk **analizy** > **diagnostyki** > **Diagnozuj teraz** do utworzenia sesji diagnostycznej, który będzie zbierać dzienniki HTTP, dzienniki Podglądu zdarzeń, pamięci, że zrzuty, dzienniki błędów języka PHP i PHP przetwarzania raportu.
-
-Po zebraniu danych spowoduje także analizę danych i udostępnić raport HTML.
-
-W przypadku, gdy chcesz pobrać dane, domyślnie, powinny być przechowywane w folderze D:\home\data\DaaS.
-
-Aby uzyskać więcej informacji na temat portalu pomocy technicznej usługi aplikacji platformy Azure, zobacz [nowe aktualizacje do rozszerzenia witryny pomocy technicznej dla usługi Azure Websites](https://azure.microsoft.com/blog/new-updates-to-support-site-extension-for-azure-websites).
+Aby uzyskać dostęp do diagnostyki usługi App Service, przejdź do swojej aplikacji usługi App Service lub App Service Environment w [witryny Azure portal](https://portal.azure.com). Na lewym pasku nawigacyjnym kliknij **diagnozowanie i rozwiązywanie problemów**.
 
 #### <a name="use-the-kudu-debug-console"></a>Użyj konsoli debugowania aparatu Kudu
 Aplikacje sieci Web jest dostarczany za pomocą konsoli debugowania, używanego do debugowania, eksplorowanie, przekazywanie plików, a także JSON punkty końcowe, w celu uzyskania informacji dotyczących środowiska. Jest to nazywane *konsoli Kudu* lub *pulpitu nawigacyjnego funkcji SCM* dla aplikacji sieci web.

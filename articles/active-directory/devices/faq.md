@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 9402147e2dab7fbf52fc893f339f6f3b8e112377
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 3fd0dfb327e925ecb28a7ca12e03b79c873118dc
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515645"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309348"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
@@ -93,6 +93,7 @@ Dla wersji systemu operacyjnego Windows niższego poziomu, które znajdują się
 
 >[!Note] 
 >Dla zarejestrowanych urządzeń zaleca się wyczyszczenie urządzenia, aby upewnić się, że użytkownicy nie mogą uzyskać dostęp do zasobów. Aby uzyskać więcej informacji, zobacz [rejestrowania urządzeń na potrzeby zarządzania przez usługę Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+
 ---
 
 # <a name="azure-ad-join-faq"></a>Funkcja Azure AD Join — często zadawane pytania
@@ -103,6 +104,20 @@ Dla wersji systemu operacyjnego Windows niższego poziomu, które znajdują się
 - Do hybrydowej usługi Azure AD urządzeń w miejscu pracy upewnij się wyłączyć rejestracji automatycznej, tak aby zaplanowane zadanie nie ponownie zarejestrować urządzenie. Następnie otwórz wiersz polecenia jako administrator i wpisz `dsregcmd.exe /debug /leave`. To polecenie można również uruchomić jako skrypt na wielu urządzeniach odłączyć zbiorczo.
 
 - Dla czystych dołączono usługi Azure AD do urządzeń, upewnij się, w trybie offline administrator lokalny, konto lub utwórz je, ponieważ nie będzie można zalogować się przy użyciu żadnych poświadczeń użytkownika usługi Azure AD. Następnie przejdź do **ustawienia** > **kont** > **dostęp do zasobów służbowych**. Wybierz swoje konto i kliknij **rozłączenia**. Postępuj zgodnie z monitami i podaj poświadczenia administratora lokalnego po wyświetleniu monitu. Uruchom ponownie urządzenie, aby ukończyć proces odłączania.
+
+---
+
+**P: czy Moje użytkownicy logują się do urządzeń przyłączonych do usługi Azure AD, które zostały usunięte lub wyłączone w usłudze Azure AD ** 
+ **A:** tak. Windows ma pamięci podręcznej funkcji logowania, aby umożliwić, wcześniej zalogowani użytkownicy szybki dostęp pulpitu, nawet bez połączenia z siecią. Gdy urządzenie jest usunięte lub wyłączone w usłudze Azure AD, nie jest znany dla urządzeń Windows. Dlatego wcześniej zarejestrowany użytkownicy nadal mogą uzyskać dostęp do pulpitu z pamięci podręcznej logowania. Jednak ponieważ urządzenie jest usuwane lub wyłączona, użytkownicy nie mogą korzystać wszystkie zasoby chronione przez dostęp warunkowy oparty na urządzeniu. 
+
+Użytkownicy, którzy jeszcze nie już zalogowany nie może uzyskać dostęp do urządzenia, się bez logowania pamięci podręcznej włączone dla nich. 
+
+---
+
+**P: czy można wyłączonych lub usuniętych użytkowników logowania się na urządzeniach przyłączonych do usługi Azure AD ** 
+ **A:** tak, ale tylko przez ograniczony czas. Gdy użytkownik jest usunięte lub wyłączone w usłudze Azure AD, nie od razu wiadomo na urządzeniu Windows. Dlatego wcześniej zarejestrowany użytkownicy mogą uzyskiwać dostęp do pulpitu z pamięci podręcznej logowania. Gdy urządzenie jest świadome danych stanu użytkownika (zwykle w mniej niż 4 godziny), Windows blokuje tych użytkownikom uzyskiwanie dostępu do pulpitu. Użytkownik jest usunięte lub wyłączone w usłudze Azure AD, wszystkie tokeny zostanie odwołana, dlatego nie mają dostępu do żadnych zasobów. 
+
+Usunięto lub wyłączonych użytkowników, którzy nie zostały wcześniej zarejestrowane w nie może uzyskać dostępu urządzenia, się bez logowania pamięci podręcznej włączone dla nich. 
 
 ---
 

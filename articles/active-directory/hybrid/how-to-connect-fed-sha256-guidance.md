@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2018
 ms.author: billmath
-ms.openlocfilehash: d76905df230fe9d1a61186cc22d14bb44028e00b
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: ca200c76596dc1a4f31bf36f00bb1661d12d19f7
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50252180"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426370"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Zmień algorytm wyznaczania wartości skrótu podpisu dla usługi Office 365, zaufanie jednostki uzależnionej
 ## <a name="overview"></a>Przegląd
@@ -45,7 +45,7 @@ Po ustawieniu algorytm podpisu przy użyciu jednego z dwóch procesy poniżej us
 1. Na dowolnym serwerze usług AD FS Otwórz program PowerShell w ramach uprawnień administratora.
 2. Ustaw skrótu secure hash algorithm, używając **zestaw AdfsRelyingPartyTrust —** polecenia cmdlet.
    
-   <code>Set-AdfsRelyingPartyTrust -TargetName 'Microsoft Office 365 Identity Platform' -SignatureAlgorithm 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256'</code>
+   <code>Set-AdfsRelyingPartyTrust -TargetName 'Microsoft Office 365 Identity Platform' -SignatureAlgorithm 'https://www.w3.org/2001/04/xmldsig-more#rsa-sha256'</code>
 
 ## <a name="also-read"></a>Przeczytaj również
 * [Naprawa relacji zaufania usługi Office 365 w programie Azure AD Connect](how-to-connect-fed-management.md#repairthetrust)

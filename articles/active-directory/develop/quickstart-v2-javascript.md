@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 69c77896f894201d1419aaef33470a02ac45ff91
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: d044b1ad18df6eee1235e881038bbb9734a999ff
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986292"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317351"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>Szybki Start: Logowania użytkowników i uzyskiwanie tokenu dostępu z poziomu aplikacji JavaScript
 
@@ -36,24 +36,24 @@ W tym przewodniku Szybki Start dowiesz się, jak użyć przykładowego kodu, kt�
 > #### <a name="step-1-register-your-application"></a>Krok 1. Rejestrowanie aplikacji
 >
 > 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) zarejestrować aplikację.
-> 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz swoje konto w prawym górnym rogu, a następnie ustaw sesję portalu do żądanej usługi Azure AD dzierżawy.
-> 1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi, a następnie wybierz **rejestracje aplikacji (wersja zapoznawcza) > nowej rejestracji**.
+> 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
+> 1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory**, a następnie pozycję **Rejestracje aplikacji (wersja zapoznawcza) > Nowa rejestracja**.
 > 1. Gdy **rejestrowania aplikacji** zostanie wyświetlona strona, wprowadź nazwę aplikacji.
 > 1. W obszarze **obsługiwane typy kont**, wybierz opcję **kont w dowolnym katalogu organizacji i osobistych kont Microsoft**.
 > 1. Wybierz **Web** platformy w obszarze **identyfikator URI przekierowania** sekcji, a następnie ustaw wartość `http://localhost:30662/`.
-> 1. Po zakończeniu wybierz pozycję **zarejestrować**.  W aplikacji **Przegląd** strony, zanotuj **identyfikator aplikacji (klienta)** wartość.
+> 1. Po zakończeniu wybierz pozycję **Rejestruj**.  W aplikacji **Przegląd** strony, zanotuj **identyfikator aplikacji (klienta)** wartość.
 > 1. Ten przewodnik Szybki Start wymaga [niejawne udzielić przepływ](v2-oauth2-implicit-grant-flow.md) włączenia. W okienku nawigacji po lewej stronie w zarejestrowanej aplikacji wybierz **uwierzytelniania**.
 > 1. W **Zaawansowane ustawienia**w obszarze **przyznawanie niejawne**, włączyć zarówno **tokeny Identyfikatora** i **tokeny dostępu** pola wyboru. Identyfikator tokenów i tokenów dostępu są wymagane, ponieważ ta aplikacja wymaga logowania użytkowników i wywoływać interfejs API.
 > 1. Wybierz pozycję **Zapisz**.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurowanie aplikacji w witrynie Azure portal
+> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1. Konfigurowanie aplikacji w witrynie Azure Portal
 > Dla przykładu kodu dla tego przewodnika Szybki Start do pracy, należy dodać przekierowania URI jako `http://localhost:30662/` i włączyć **przyznawanie niejawne**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Wprowadzenie tych zmian]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Już skonfigurowane](media/quickstart-v2-javascript/green-check.png) aplikacja jest skonfigurowana za pomocą tych atrybutów.
+> > ![Już skonfigurowano](media/quickstart-v2-javascript/green-check.png) Twoja aplikacja została skonfigurowana za pomocą tych atrybutów.
 
 #### <a name="step-2-download-the-project"></a>Krok 2. Pobieranie projektu
 
@@ -66,7 +66,7 @@ Wyodrębnij plik zip do folderu lokalnego, na przykład **C:\Azure-Samples**.
 #### <a name="step-3-configure-your-javascript-app"></a>Krok 3: Konfigurowanie aplikacji języka JavaScript
 
 > [!div renderon="docs"]
-> Edytuj `index.html` i Zastąp `Enter_the_Application_Id_here` w obszarze `applicationConfig` z Identyfikatorem aplikacji w aplikacji, które właśnie zostało zarejestrowane.
+> Edytuj `index.html` i ustaw `clientID` i `authority` wartości w obszarze `applicationConfig`.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Edytuj `index.html` i Zastąp `applicationConfig` za pomocą:
@@ -74,13 +74,25 @@ Wyodrębnij plik zip do folderu lokalnego, na przykład **C:\Azure-Samples**.
 ```javascript
 var applicationConfig = {
     clientID: "Enter_the_Application_Id_here",
+    authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
     graphScopes: ["user.read"],
     graphEndpoint: "https://graph.microsoft.com/v1.0/me"
 };
 ```
+> [!div renderon="docs"]
+>
+> Gdzie:
+> - `Enter_the_Application_Id_here` jest **identyfikatorem aplikacji (klienta)** dla zarejestrowanej aplikacji.
+> - `Enter_the_Tenant_Info_Here` to wartość ustawiana na jedną z następujących opcji:
+>   - Jeśli aplikacja obsługuje tryb **Konta w tym katalogu organizacyjnym**, zastąp tę wartość za pomocą wartości **Identyfikator dzierżawy** lub **Nazwa dzierżawy** (na przykład contoso.microsoft.com)
+>   - Jeśli aplikacja obsługuje tryb**Konta w dowolnym katalogu organizacyjnym**, zastąp tę wartość za pomocą wartości `organizations`
+>   - Jeśli aplikacja obsługuje tryb **Konta w moim katalogu organizacyjnym i osobiste konta Microsoft**, zastąp tę wartość za pomocą wartości `common`
+>
+> > [!TIP]
+> > Aby znaleźć wartości **Identyfikator aplikacji (klienta)**, **Identyfikator katalogu (dzierżawy)** i **Obsługiwane typy kont**, przejdź do strony **Przegląd** w witrynie Azure Portal.
+
 > [!NOTE]
->Jeśli używasz [Node.js](https://nodejs.org/en/download/), *server.js* plik jest skonfigurowany dla serwera, aby rozpocząć nasłuchiwania na porcie 30662.
-> Jeśli używasz [programu Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), przykładowy kod *.csproj* plik jest skonfigurowany dla serwera, aby rozpocząć nasłuchiwania na porcie 30662.
+> Serwer jest skonfigurowany do nasłuchiwania na porcie 30662 w *server.js* w pliku [Node.js](https://nodejs.org/en/download/) projektu i *.csproj* w pliku [programu Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)projektu.
 >
 
 #### <a name="step-4-run-the-project"></a>Krok 4: Uruchom projekt
@@ -121,7 +133,7 @@ npm install msal
 Kodu szybkiego startu pokazuje również, jak zainicjować biblioteki:
 
 ```javascript
-var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, null, acquireTokenRedirectCallBack, {storeAuthStateInCookie: true, cacheLocation: "localStorage"});
+var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, applicationConfig.authority, acquireTokenRedirectCallBack, {storeAuthStateInCookie: true, cacheLocation: "localStorage"});
 ```
 
 > |Lokalizacja  |  |

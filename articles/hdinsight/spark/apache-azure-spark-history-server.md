@@ -9,22 +9,22 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 4627593e4ab96c63423a7afd6152f3a004bc6c3f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 349298ba30de5540d5c86c81f483a1bd344dba9c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042367"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497271"
 ---
-# <a name="use-extended-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Użyj rozszerzonej serwer historii platformy Spark, aby debugowanie i diagnozowanie aplikacji Spark
+# <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Serwer historii platformy Spark w usłudze rozszerzonej Apache umożliwia debugowanie i diagnozowanie aplikacji platformy Apache Spark
 
-Ten artykuł zawiera wskazówki dotyczące sposobu używania rozszerzony serwer historii platformy Spark do debugowania i diagnozowania ukończone i uruchamianie aplikacji platformy Spark. Rozszerzenie zawiera karty danych i grafu karty i diagnostyki. Na **danych** karcie użytkownicy mogli sprawdzać dane wejściowe i wyjściowe zadań platformy Spark. Na **wykres** karcie użytkownicy mogli sprawdzać dane przepływu i odtwarzania wykresu zadania. Na **diagnostyki** kartę, użytkownik może odwoływać się do **Niesymetryczności danych**, **czasowego** i **analizy użycia funkcji wykonawczej**.
+Ten artykuł zawiera wskazówki dotyczące sposobu używania rozszerzony serwer historii platformy Spark Apache do debugowania i diagnozowania ukończone i uruchamianie aplikacji platformy Spark. Rozszerzenie zawiera karty danych i grafu karty i diagnostyki. Na **danych** karcie użytkownicy mogli sprawdzać dane wejściowe i wyjściowe zadań platformy Spark. Na **wykres** karcie użytkownicy mogli sprawdzać dane przepływu i odtwarzania wykresu zadania. Na **diagnostyki** kartę, użytkownik może odwoływać się do **Niesymetryczności danych**, **czasowego** i **analizy użycia funkcji wykonawczej**.
 
-## <a name="get-access-to-spark-history-server"></a>Uzyskaj dostęp do serwer historii platformy Spark
+## <a name="get-access-to-apache-spark-history-server"></a>Uzyskaj dostęp do serwera programu Apache Spark historii
 
-Serwer historii platformy Spark jest interfejs użytkownika sieci web dla aplikacji platformy Spark ukończone i uruchomione. 
+Serwer historii platformy Spark Apache jest interfejs użytkownika sieci web dla aplikacji platformy Spark ukończone i uruchomione. 
 
-### <a name="open-the-spark-history-server-web-ui-from-azure-portal"></a>Otwórz interfejs sieci Web uzyskiwania informacji na temat serwer historii platformy Spark z witryny Azure portal
+### <a name="open-the-apache-spark-history-server-web-ui-from-azure-portal"></a>Otwórz interfejs użytkownika Apache Spark historii serwera sieci Web z witryny Azure portal
 
 1. Z [witryny Azure portal](https://portal.azure.com/), otwórz klaster Spark. Aby uzyskać więcej informacji, zobacz [listy i wyświetlaniu klastrów](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
 2. Z **szybkich łączy**, kliknij przycisk **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **serwer historii platformy Spark**. Po wyświetleniu monitu wprowadź poświadczenia administratora klastra Spark. 
@@ -87,7 +87,7 @@ Wybierz identyfikator zadania, a następnie kliknij przycisk **danych** w menu N
     ![Wykres opinii](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 
-## <a name="graph-tab-in-spark-history-server"></a>Wykres karty w serwer historii platformy Spark
+## <a name="graph-tab-in-apache-spark-history-server"></a>Wykres karty w serwer historii platformy Spark Apache
 Wybierz identyfikator zadania, a następnie kliknij przycisk **wykres** w menu Narzędzia, aby uzyskać widok wykresu zadania.
 
 + Sprawdź Przegląd zadania, Graf zadania wygenerowany. 
@@ -158,7 +158,7 @@ Wybierz identyfikator zadania, a następnie kliknij przycisk **wykres** w menu N
     ![Wykres opinii](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 
-## <a name="diagnosis-tab-in-spark-history-server"></a>Karta diagnostyki w serwer historii platformy Spark
+## <a name="diagnosis-tab-in-apache-spark-history-server"></a>Karta diagnostyki w serwer historii platformy Spark Apache
 Wybierz identyfikator zadania, a następnie kliknij przycisk **diagnostyki** w menu Narzędzia, aby zakończyć dane zadanie diagnostyki widoku. Karta Diagnostyka zawiera **Niesymetryczności danych**, **czasowego**, i **analizy użycia funkcji wykonawczej**.
     
 + Sprawdź **Niesymetryczności danych**, **czasowego**, i **analizy użycia funkcji wykonawczej** , wybierając odpowiednio na kartach.
@@ -326,8 +326,8 @@ Do uaktualnienia przy użyciu poprawek, należy użyć poniższego skryptu, któ
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Zarządzanie zasobami klastra Spark na HDInsight](apache-spark-resource-manager.md)
-* [Konfigurowanie ustawień platformy Spark](apache-spark-settings.md)
+* [Zarządzanie zasobami klastra Apache Spark w HDInsight](apache-spark-resource-manager.md)
+* [Konfigurowanie ustawień platformy Apache Spark](apache-spark-settings.md)
 
 
 ## <a name="contact-us"></a>Skontaktuj się z nami

@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/13/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: d40b82b5beac2da78038e303cb50402d6fa0be7a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: b8d8223647d42213eff53c2ff8310bed0cfe6cdb
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566028"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446742"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Używanie programu Visual Studio Code do tworzenia i debugowania modułów języka C dla usługi Azure IoT Edge
 
@@ -59,7 +59,7 @@ Wykonaj następujące czynności, aby utworzyć moduł usługi IoT Edge, w oparc
 
 7. Wprowadź nazwę dla modułu. Wybierz nazwę, która jest unikatowa w obrębie usługi container registry. 
 
-8. Podaj nazwę modułu repozytorium obrazów. VS Code autopopulates modułu nazwa z **localhost:5000**. Zastąp go własną informacje rejestru. Jeśli używasz lokalnego rejestru platformy Docker do testowania, następnie **localhost** jest w dobrym stanie. Jeśli korzystasz z usługi Azure Container Registry, Użyj serwera logowania z ustawień w rejestrze. Serwer logowania wygląda  **\<nazwa rejestru\>. azurecr.io**. Zastąp tylko część localhost ciągu, nie usuwaj nazwy modułu. 
+8. Podaj nazwę modułu repozytorium obrazów. VS Code autopopulates modułu nazwa z **localhost:5000**. Zastąp go własną informacje rejestru. Jeśli używasz lokalnego rejestru platformy Docker do testowania, następnie **localhost** jest w dobrym stanie. Jeśli korzystasz z usługi Azure Container Registry, Użyj serwera logowania z ustawień w rejestrze. Serwer logowania wygląda  **\<nazwa rejestru\>. azurecr.io**. Zastąp tylko część localhost ciągu, nie usuwaj nazwy modułu. Końcowy ciąg wygląda jak \<nazwa rejestru\>.azurecr.io/\<modulename\>.
 
    ![Udostępnianie repozytorium obrazów platformy Docker](./media/how-to-develop-c-module/repository.png)
 
@@ -87,20 +87,11 @@ Gdy wszystko będzie gotowe dostosować szablon języka C z własnym kodem, uży
 
 W każdym folderze modułu istnieje kilka plików Docker dla kontenera różnych typów. Użyć dowolnej z tych plików, które kończą się rozszerzeniem **.debug** do tworzenia modułu do testowania. Obecnie modułów języka C obsługuje debugowanie tylko w kontenerach amd64 systemu Linux.
 
-1. W programie VS Code przejdź do `deployment.template.json` pliku. Zaktualizuj adres URL obrazu modułu, dodając **.debug** na końcu.
-
-    ![Dodaj *** .debug do nazwy obrazu](./media/how-to-develop-c-module/image-debug.png)
-
-2. Zastąp C modułu CreateOptions, można żądań w **deployment.template.json** z poniżej zawartości, a następnie zapisz ten plik: 
-    
-    ```json
-    "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
-    ```
-
+1. W programie VS Code przejdź do `deployment.debug.template.json` pliku. Ten plik zawiera wersję debugowania modułu opcje tworzenia obrazów przy użyciu własnych. 
 2. W palecie poleceń programu VS Code, należy wprowadzić, a następnie uruchom polecenie **usługi Azure IoT Edge: rozwiązanie kompilacji i wypychania usługi IoT Edge**.
-3. Wybierz `deployment.template.json` pliku rozwiązania jest wyświetlany z palety poleceń. 
+3. Wybierz `deployment.debug.template.json` pliku rozwiązania jest wyświetlany z palety poleceń. 
 4. W usłudze Azure IoT Hub Device Explorer kliknij prawym przyciskiem myszy identyfikator urządzenia usługi IoT Edge. Następnie wybierz pozycję **tworzenie wdrożenia dla jednego urządzenia**. 
-5. Otwórz swoje rozwiązanie **config** folderu. Następnie wybierz pozycję `deployment.json` pliku. Wybierz **wybierz Manifest wdrożenia krawędzi**. 
+5. Otwórz swoje rozwiązanie **config** folderu. Następnie wybierz pozycję `deployment.debug.amd64.json` pliku. Wybierz **wybierz Manifest wdrożenia krawędzi**. 
 
 Zobaczysz wdrożenie z Identyfikatorem wdrożenia w terminalu programu VS Code, zintegrowane pomyślnie utworzona.
 

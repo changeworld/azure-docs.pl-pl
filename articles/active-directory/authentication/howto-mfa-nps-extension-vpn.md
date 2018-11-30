@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 0754b13704810816b1650010a00185031ca41f5d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f08bf6a65a93c31d76c5b336cc6ef433153d71c4
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297575"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423121"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrowanie infrastruktury sieci VPN z usługą Azure MFA za pomocą rozszerzenia serwera zasad sieciowych na platformie Azure
 
@@ -438,7 +438,7 @@ Zdarzenia związane z dziennika usługi Azure Multi-Factor Authentication jest n
 
 Do zaawansowanego rozwiązywania problemów, sprawdź pliki dziennika format bazy danych serwera NPS zainstalowaną usługę serwera NPS. Pliki dziennika są tworzone w _%SystemRoot%\System32\Logs_ folder jako pliki tekstowe rozdzielonych przecinkami. Aby uzyskać opis plików dziennika, zobacz [interpretacji pliki dziennika Format bazy danych serwera NPS](https://technet.microsoft.com/library/cc771748.aspx). 
 
-Wpisy w tych plikach dziennika są trudne do interpretacji, chyba że zostaną wyeksportowane do arkusza kalkulacyjnego lub bazy danych. Możesz znaleźć wiele uwierzytelniania internetowego usługi (IAS) podczas analizowania narzędzia w trybie online, aby ułatwić Interpretowanie plików dzienników. Dane wyjściowe tego takich do pobrania [aplikacji "shareware"](http://www.deepsoftware.com/iasviewer) jest następująca: 
+Wpisy w tych plikach dziennika są trudne do interpretacji, chyba że zostaną wyeksportowane do arkusza kalkulacyjnego lub bazy danych. Możesz znaleźć wiele uwierzytelniania internetowego usługi (IAS) podczas analizowania narzędzia w trybie online, aby ułatwić Interpretowanie plików dzienników. Dane wyjściowe tego takich do pobrania [aplikacji "shareware"](https://www.deepsoftware.com/iasviewer) jest następująca: 
 
 ![Aplikacja "shareware"](./media/howto-mfa-nps-extension-vpn/image49.png)
 

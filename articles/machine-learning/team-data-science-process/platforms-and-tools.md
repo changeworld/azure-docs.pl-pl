@@ -1,25 +1,21 @@
 ---
 title: Platformy i narzędzia do analizy danych zespołu projekty — Azure | Dokumentacja firmy Microsoft
 description: Wyszczególniono i omówiono zasoby danych i analiz, które muszą być dostępne dla przedsiębiorstw standaryzacji na procesie nauki o danych zespołu.
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: deguhath
-ms.openlocfilehash: 5cfe86414473f352673f39850a34f8ef265c91f5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 5df2cbabeb704453d71a0ac1db14c618dae352d2
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258905"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446453"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy i narzędzia dla projektów do nauki o danych
 
@@ -152,4 +148,4 @@ Jeśli używasz maszyny z systemem Linux (CentOS) do uruchamiania poleceń usłu
 
 Pełne przewodniki end-to-end, które przedstawiają wszystkie kroki procesu **konkretnych scenariuszy** znajdują się także. Wymieniono i połączone z opisami miniatur w [przykładowe przewodniki](walkthroughs.md) tematu. One ilustrują sposób łączenia chmury, lokalnego narzędzia i usługi w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji. 
 
-Przykłady wykonywania czynności w procesie nauki o danych zespołu, korzystających z usługi Azure Machine Learning Studio, zobacz [za pomocą usługi Azure ML](https://aka.ms/datascienceprocess) ścieżka szkoleniowa dla usługi.
+Przykłady wykonywania czynności w procesie nauki o danych zespołu, korzystających z usługi Azure Machine Learning Studio, zobacz [za pomocą usługi Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) ścieżka szkoleniowa dla usługi.

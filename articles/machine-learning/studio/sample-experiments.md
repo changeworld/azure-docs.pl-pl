@@ -1,6 +1,6 @@
 ---
-title: Tworzenie eksperymentów na podstawie przykładów uczenia maszynowego — Azure | Microsoft Docs
-description: Dowiedz się, jak wykorzystać przykładowe eksperymenty uczenia maszynowego do tworzenia nowych eksperymentów za pomocą witryny Galeria sztucznej inteligencji platformy Azure i usługi Azure Machine Learning.
+title: Tworzenie eksperymentów usługi Machine Learning Studio z przykładów — Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać przykładowe eksperymenty uczenia maszynowego do tworzenia nowych eksperymentów za pomocą galerii Azure AI i Azure Machine Learning Studio.
 keywords: machine learning examples, sample experiment, machine learning sample, AI examples
 services: machine-learning
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/05/2018
-ms.openlocfilehash: 7bb6f054b81b21783cecb15c3b5caa9bcf6f77cd
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 568732c5a1d2abbb9f304b624d885b2a3c692706
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264294"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52306684"
 ---
 # <a name="create-machine-learning-experiments-from-working-examples-in-azure-ai-gallery"></a>Tworzenie eksperymentów uczenia maszynowego na podstawie działających przykładów w galerii sztucznej inteligencji platformy Azure
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: 219fe9e8f91f9b02e64b3b44ab4301f77820561f
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: b3b7b7374b02210f44fde408f28fd0378bf9bd12
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648959"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310858"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Zrozumienie danych wejściowych usługi Azure Stream Analytics
 
@@ -27,7 +27,7 @@ Stream Analytics ma najwyższej jakości Integracja z trzech rodzajów zasobów 
 
 Te zasoby danych wejściowych może znajdować się w tej samej subskrypcji platformy Azure jako zadania usługi Stream Analytics lub z innej subskrypcji.
 
-Możesz użyć [witryny Azure portal](stream-analytics-quick-create-portal.md#configure-input-to-the-job), [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/New-AzureRmStreamAnalyticsInput), [.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [interfejsu API REST](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input), i [programu Visual Studio](stream-analytics-tools-for-visual-studio-install.md)do tworzenia, edytowania i przetestować dane wejściowe zadania usługi Stream Analytics.
+Możesz użyć [witryny Azure portal](stream-analytics-quick-create-portal.md#configure-job-input), [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/New-AzureRmStreamAnalyticsInput), [.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [interfejsu API REST](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input), i [programu Visual Studio](stream-analytics-tools-for-visual-studio-install.md)do tworzenia, edytowania i przetestować dane wejściowe zadania usługi Stream Analytics.
 
 ## <a name="stream-and-reference-inputs"></a>Stream i odwołanie do danych wejściowych
 Ponieważ dane są wypychane do źródła danych, ma zużywane przez zadanie usługi Stream Analytics i przetwarzane w czasie rzeczywistym. Dane wejściowe są podzielone na dwa typy: dane strumienia danych wejściowych i odwoływać się do danych wejściowych.

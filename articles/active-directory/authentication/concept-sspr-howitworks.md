@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5416c8ada8fcc7f630d68f223b88c50209d14438
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2713f48ce490aa42b6b1aa4e69a71f8f8053d1fb
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296400"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426208"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to działa: Usługa Azure AD samoobsługowego resetowania haseł
 
@@ -64,7 +64,7 @@ Jeśli samoobsługowego resetowania HASŁA jest włączona, należy wybrać co n
 * Kod aplikacji mobilnej (wersja zapoznawcza)
 * Email
 * Telefon komórkowy
-* Telefon służbowy
+* Telefon biurowy
 * Pytania zabezpieczające
 
 Użytkownicy mogą zresetować swoje hasło tylko, jeśli mają one dane już obecne we metod uwierzytelniania, która została włączona przez administratora.
@@ -189,7 +189,7 @@ Resetowanie hasła i zmiany są w pełni obsługiwane na wszystkich konfiguracji
    * **Użytkownicy, którzy utworzą konto za pomocą** samoobsługowej: w przypadku organizacji możesz nawiązaliśmy partnerstwo z firmą używanych [samoobsługowej](../users-groups-roles/directory-self-service-signup.md) są wyposażone w dzierżawie, umożliwialiśmy je zresetować hasło za pomocą adresu e-mail one zarejestrowane.
    * **Użytkowników B2B**: żadnych nowych użytkowników B2B utworzone za pomocą nowego [możliwości usługi Azure AD B2B](../active-directory-b2b-what-is-azure-ad-b2b.md) będą również mogli resetować swoje hasła przy użyciu adresu e-mail zarejestrowani w procesie zaproszenia.
 
-Do przetestowania tego scenariusza, przejdź do http://passwordreset.microsoftonline.com przy użyciu jednego z tych użytkowników z firm partnerskich. Jeśli mają alternatywny adres e-mail lub adres e-mail uwierzytelniania zdefiniowane resetowania haseł działa zgodnie z oczekiwaniami.
+Do przetestowania tego scenariusza, przejdź do https://passwordreset.microsoftonline.com przy użyciu jednego z tych użytkowników z firm partnerskich. Jeśli mają alternatywny adres e-mail lub adres e-mail uwierzytelniania zdefiniowane resetowania haseł działa zgodnie z oczekiwaniami.
 
 > [!NOTE]
 > Konta Microsoft, którym przyznano dostęp gościa do dzierżawy usługi Azure AD, takich jak Hotmail.com, Outlook.com lub innych osobistych adresów e-mail, nie są możliwe do użycia usługi Azure AD SSPR. Potrzebują do zresetowania swojego hasła, korzystając z informacji znajdujących się w [Jeśli nie możesz zalogować się na koncie Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) artykułu.

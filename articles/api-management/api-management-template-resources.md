@@ -1,6 +1,6 @@
 ---
-title: Zasobów szablonu usługi Azure API Management | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat typów zasobów, które są dostępne do użycia w szablonach portalu deweloperów w usłudze Azure API Management.
+title: Zasoby szablonu usługi Azure API Management | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej na temat typów zasobów, które są dostępne do użycia w szablonów portalu dla deweloperów w usłudze Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,36 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 212e7ea7bb2ffea63c7ba210195df0da38aa8f0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 36b64912eb3393ad496d04ff656bed5b0c41566c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23835398"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444771"
 ---
-# <a name="azure-api-management-template-resources"></a>Zasobów szablonu usługi Azure API Management
-Zarządzanie interfejsami API Azure zapewnia następujące typy zasobów do użycia w dewelopera szablony portalu.  
+# <a name="azure-api-management-template-resources"></a>Zasoby szablonu usługi Azure API Management
+Usługa Azure API Management zawiera następujące typy zasobów, do użytku w Deweloper szablonów portalu.  
   
 -   [Zasoby ciągów](#strings)  
   
--   [Zasoby symbolu](#glyphs)  
+-   [Zasoby glifów](#glyphs)  
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="strings"></a>Zasoby ciągów  
- Zarządzanie interfejsami API zapewnia rozbudowany zestaw zasobów ciągu do użycia w portalu dla deweloperów. Te zasoby są zlokalizowane w wszystkie języki obsługiwane przez interfejs API Management. Domyślny zestaw szablonów używa tych zasobów, nagłówki stron, etykiety i wszelkie stałe ciągów, które są wyświetlane w portalu dla deweloperów. Aby użyć zasobu ciągu w szablonach, podaj prefiks ciągu zasobu następuje nazwa ciągu, jak pokazano w poniższym przykładzie.  
+##  <a name="strings"></a> Zasoby ciągów  
+ Usługa API Management oferuje kompleksowy zestaw zasobów ciągów do użycia w portalu dla deweloperów. Te zasoby są zlokalizowane we wszystkich językach obsługiwanych przez usługę API Management. Domyślny zestaw szablonów używa tych zasobów, nagłówki stron, etykiety i stałych ciągów, które są wyświetlane w portalu dla deweloperów. Aby użyć zasobu ciągu w szablonach, należy podać prefiks ciągu zasobu, następuje nazwa ciągu, jak pokazano w poniższym przykładzie.  
   
 ```  
 {% localized "Prefix|Name" %}  
   
 ```  
   
- Poniższy przykład pochodzi z szablonu listy produktów i wyświetla **produkty** w górnej części strony.  
+ Poniższy przykład pochodzi z szablonu listy produktów i wyświetla **produktów** w górnej części strony.  
   
 ```  
 <h2>{% localized "ProductsStrings|PageTitleProducts" %}</h2>  
   
 ```  
   
- Zapoznaj się z następujących tabel dla zasobów ciągu dostępne do użycia w szablonach portalu deweloperów. Użyj nazwy tabeli jako prefiks dla zasobów ciągu w tej tabeli.  
+ Zapoznaj się z następującymi tabelami zasobów ciągu dostępne do użycia w Twojej szablonów portalu dla deweloperów. Użyto nazwy tabeli jako prefiks dla zasobów ciągów w tej tabeli.  
   
 -   [ApisStrings](#ApisStrings)  
   
@@ -85,430 +87,430 @@ Zarządzanie interfejsami API Azure zapewnia następujące typy zasobów do uży
   
 -   [UserProfile](#UserProfile)  
   
-###  <a name="ApisStrings"></a>ApisStrings  
+###  <a name="ApisStrings"></a> ApisStrings  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
 |PageTitleApis|Interfejsy API|  
   
-###  <a name="AppDetailsStrings"></a>AppDetailsStrings  
+###  <a name="AppDetailsStrings"></a> AppDetailsStrings  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
 |WebApplicationsDetailsTitle|Podgląd aplikacji|  
 |WebApplicationsRequirementsHeader|Wymagania|  
 |WebApplicationsScreenshotAlt|Zrzut ekranu|  
 |WebApplicationsScreenshotsHeader|Zrzuty ekranu|  
   
-###  <a name="ApplicationListStrings"></a>ApplicationListStrings  
+###  <a name="ApplicationListStrings"></a> ApplicationListStrings  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
 |WebDevelopersAppDeleteConfirmation|Czy na pewno chcesz usunąć aplikację?|  
 |WebDevelopersAppNotPublished|Nie opublikowano|  
 |WebDevelopersAppNotSubminted|Nie przesłano|  
 |WebDevelopersAppTableCategoryHeader|Kategoria|  
-|WebDevelopersAppTableNameHeader|Nazwa|  
+|WebDevelopersAppTableNameHeader|Name (Nazwa)|  
 |WebDevelopersAppTableStateHeader|Stan|  
 |WebDevelopersEditLink|Edytuj|  
-|WebDevelopersRegisterAppLink|Zarejestrować aplikację|  
+|WebDevelopersRegisterAppLink|Zarejestruj aplikację|  
 |WebDevelopersRemoveLink|Remove|  
 |WebDevelopersSubmitLink|Submit|  
-|WebDevelopersYourApplicationsHeader|Aplikacje|  
+|WebDevelopersYourApplicationsHeader|Twoje aplikacje|  
   
-###  <a name="AppStrings"></a>AppStrings  
+###  <a name="AppStrings"></a> AppStrings  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
 |WebApplicationsHeader|Aplikacje|  
   
-###  <a name="CommonResources"></a>CommonResources  
+###  <a name="CommonResources"></a> CommonResources  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
 |NoItemsToDisplay|Brak wyników.|  
-|GeneralExceptionMessage|Coś są nieprawidłowe. Może to być tymczasowy błąd lub usterki. Spróbuj ponownie.|  
-|GeneralJsonExceptionMessage|Coś są nieprawidłowe. Może to być tymczasowy błąd lub usterki. Wykonaj ponownie załaduj stronę i spróbuj ponownie.|  
+|GeneralExceptionMessage|Coś jest nie prawo. Może to być tymczasowy błąd lub usterka. Spróbuj ponownie.|  
+|GeneralJsonExceptionMessage|Coś jest nie prawo. Może to być tymczasowy błąd lub usterka. Wykonaj ponownie załaduj stronę i spróbuj ponownie.|  
 |ConfirmationMessageUnsavedChanges|Istnieją pewne niezapisane zmiany. Czy na pewno chcesz anulować i odrzucić zmiany?|  
 |Usługi AzureActiveDirectory|Usługa Azure Active Directory|  
-|HttpLargeRequestMessage|Http treść żądania zbyt duży.|  
+|HttpLargeRequestMessage|Treść żądania HTTP jest za duża.|  
   
-###  <a name="CommonStrings"></a>CommonStrings  
+###  <a name="CommonStrings"></a> CommonStrings  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
 |ButtonLabelCancel|Cancel|  
 |ButtonLabelSave|Zapisz|  
-|GeneralExceptionMessage|Coś są nieprawidłowe. Może to być tymczasowy błąd lub usterki. Spróbuj ponownie.|  
+|GeneralExceptionMessage|Coś jest nie prawo. Może to być tymczasowy błąd lub usterka. Spróbuj ponownie.|  
 |NoItemsToDisplay|Brak elementów do wyświetlenia.|  
 |PagerButtonLabelFirst|Pierwsze|  
-|PagerButtonLabelLast|ostatni|  
+|PagerButtonLabelLast|Ostatnia|  
 |PagerButtonLabelNext|Następne kroki|  
-|PagerButtonLabelPrevious|Poprzedni|  
-|PagerLabelPageNOfM|Strony {0} {1}|  
+|PagerButtonLabelPrevious|Wstecz|  
+|PagerLabelPageNOfM|Strona {0} programu {1}|  
 |PasswordTooShort|Hasło jest za krótkie|  
-|EmailAsPassword|Nie należy używać poczty e-mail jako hasło|  
-|PasswordSameAsUserName|Hasło nie może zawierać nazwy użytkownika|  
-|PasswordTwoCharacterClasses|Użyj innego znaku klas|  
-|PasswordTooManyRepetitions|Zbyt wiele powtórzeń|  
-|PasswordSequenceFound|Hasło zawiera sekwencji|  
+|EmailAsPassword|Nie używaj swojego adresu e-mail jako hasła|  
+|PasswordSameAsUserName|Hasło nie może zawierać Twojej nazwy użytkownika|  
+|PasswordTwoCharacterClasses|Użyj innych klas znaków|  
+|PasswordTooManyRepetitions|Za dużo powtórzeń|  
+|PasswordSequenceFound|Twoje hasło zawiera sekwencje|  
 |PagerLabelPageSize|Rozmiar strony|  
-|CurtainLabelLoading|Trwa ładowanie...|  
-|TablePlaceholderNothingToDisplay|Nie ma żadnych danych dla wybranego okresu i zakres|  
-|ButtonLabelClose|Zamknij|  
+|CurtainLabelLoading|Ładowanie...|  
+|TablePlaceholderNothingToDisplay|Brak danych dla wybranego okresu i zakresu|  
+|ButtonLabelClose|Zamykanie|  
   
-###  <a name="Documentation"></a>Dokumentacja  
+###  <a name="Documentation"></a> Dokumentacja  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
 |WebDocumentationInvalidHeaderErrorMessage|Nieprawidłowy nagłówek "{0}"|  
-|WebDocumentationInvalidRequestErrorMessage|Nieprawidłowe żądanie adresu URL|  
-|TextboxLabelAccessToken|Token dostępu *|  
-|DropdownOptionPrimaryKeyFormat|Podstawowy — {0}|  
-|DropdownOptionSecondaryKeyFormat|Pomocniczy-{0}|  
-|WebDocumentationSubscriptionKeyText|Klucz subskrypcji|  
+|WebDocumentationInvalidRequestErrorMessage|Nieprawidłowy adres URL żądania|  
+|TextboxLabelAccessToken|Access token *|  
+|DropdownOptionPrimaryKeyFormat|Podstawowe-{0}|  
+|DropdownOptionSecondaryKeyFormat|Pomocniczy —{0}|  
+|WebDocumentationSubscriptionKeyText|Twój klucz subskrypcji|  
 |WebDocumentationTemplatesAddHeaders|Dodaj wymagane nagłówki HTTP|  
-|WebDocumentationTemplatesBasicAuthSample|Przykładowe podstawowe autoryzacji|  
-|WebDocumentationTemplatesCurlForBasicAuth|do użytku podstawowe autoryzacji:--użytkownika {username}: {hasło}|  
-|WebDocumentationTemplatesCurlValuesForPath|Określ wartości dla parametrów ścieżki (wyświetlane jako {...}), subskrypcji klucza i wartości parametrów zapytania|  
-|WebDocumentationTemplatesDeveloperKey|Określ klucz subskrypcji|  
-|WebDocumentationTemplatesJavaApache|W przykładzie użyto klienta Apache HTTP ze składników HTTP (http://hc.apache.org/httpcomponents-client-ga/)|  
-|WebDocumentationTemplatesOptionalParams|Określ wartości dla parametrów, zgodnie z potrzebami|  
-|WebDocumentationTemplatesPhpPackage|W tym przykładzie korzysta z pakietu HTTP_Request2. (Aby uzyskać więcej informacji: http://pear.php.net/package/HTTP_Request2)|  
-|WebDocumentationTemplatesPythonValuesForPath|Określ wartości dla parametrów ścieżki (wyświetlane jako {...}) i treści żądania, w razie potrzeby|  
+|WebDocumentationTemplatesBasicAuthSample|Przykład uwierzytelniania Basic Authorization|  
+|WebDocumentationTemplatesCurlForBasicAuth|dla uwierzytelniania Basic Authorization użyj: --user {username}:{password}|  
+|WebDocumentationTemplatesCurlValuesForPath|Określ wartości dla parametrów ścieżki (pokazane jako {...}), swój klucz subskrypcji i wartości parametrów zapytania|  
+|WebDocumentationTemplatesDeveloperKey|Określ swój klucz subskrypcji|  
+|WebDocumentationTemplatesJavaApache|Ten przykład używa klienta Apache HTTP z projektu HTTP Components)http://hc.apache.org/httpcomponents-client-ga/)|  
+|WebDocumentationTemplatesOptionalParams|W razie potrzeby określ wartości dla parametrów opcjonalnych|  
+|WebDocumentationTemplatesPhpPackage|Ten przykład używa pakietu HTTP_Request2. (Aby uzyskać więcej informacji: http://pear.php.net/package/HTTP_Request2)|  
+|WebDocumentationTemplatesPythonValuesForPath|W razie potrzeby określ wartości parametrów ścieżki (pokazanych jako {...}) i treść żądania|  
 |WebDocumentationTemplatesRequestBody|Określ treść żądania|  
-|WebDocumentationTemplatesRequiredParams|Określ wartości następujących wymaganych parametrów|  
-|WebDocumentationTemplatesValuesForPath|Określ wartości dla parametrów ścieżki (wyświetlane jako {...})|  
-|OAuth2AuthorizationEndpointDescription|Punkt końcowy autoryzacji służy do interakcji z właściciela zasobów i uzyskać udzielania autoryzacji.|  
+|WebDocumentationTemplatesRequiredParams|Określ wartości dla następujących wymaganych parametrów|  
+|WebDocumentationTemplatesValuesForPath|Określ wartości dla parametrów ścieżki (pokazanych jako {...})|  
+|OAuth2AuthorizationEndpointDescription|Punkt końcowy autoryzacji służy do interakcji z właścicielem zasobu i uzyskania przydziału autoryzacji.|  
 |OAuth2AuthorizationEndpointName|Punkt końcowy autoryzacji|  
-|OAuth2TokenEndpointDescription|Punktu końcowego tokenu jest używany przez klienta uzyskać token dostępu z uwzględnieniem jego udzielania autoryzacji lub odświeżać token.|  
-|OAuth2TokenEndpointName|Token punktu końcowego|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Description|< p\> klienta inicjuje przepływ kierując agenta użytkownika właściciel zasobu do punktu końcowego autoryzacji.  Klient dołącza identyfikatora klienta, żądany zakres stanu lokalnego i identyfikatora URI przekierowania, do której serwer autoryzacji wyśle agenta użytkownika Wstecz, gdy dostęp jest udzielono (lub odmówiono).     < /p\> < p\> serwera autoryzacji uwierzytelnia właściciela zasobów (za pomocą agenta użytkownika) i ustala, czy właściciel zasobu lub go przydziela nie zezwala na żądanie dostępu klienta.     < /p\> < p\> zakładając, że właściciel zasobu nieograniczony dostęp, serwer autoryzacji przekierowuje użytkownika agenta do klienta przy użyciu dostarczonego identyfikatora URI przekierowania wcześniejszych (w żądaniu lub podczas registrati klienta na).  Identyfikator URI przekierowania zawiera kod autoryzacji i każdy stan lokalnego wydanego wcześniej przez klienta.     < /p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ErrorDescription|< p\> , gdy użytkownik odmówi żądania dostępu, jeśli żądanie jest nieprawidłowe, klient zostanie poinformowany, korzystając z następujących parametrów dodaje przekierowania: < /p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Name|Żądania autoryzacji|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_RequestDescription|< p\> aplikację klienta należy wysłać do użytkownika do punktu końcowego autoryzacji w celu rozpoczęcia procesu OAuth.          W punkcie końcowym autoryzacji użytkownik uwierzytelnia i następnie przyznaje lub nie zezwala na dostęp do aplikacji.     < /p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ResponseDescription|< p\> zakładając, że właściciel zasobu nieograniczony dostęp, serwer autoryzacji przekierowuje użytkownika agenta do klienta przy użyciu dostarczonego identyfikatora URI przekierowania wcześniejszych (w żądaniu lub podczas rejestracji klienta).  Identyfikator URI przekierowania zawiera kod autoryzacji i każdy stan lokalnego wydanego wcześniej przez klienta. < /p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_Description|< p\> klient żąda token dostępu z serwera autoryzacji "punktu końcowego tokena s, umieszczając w niej kod autoryzacji, odebrany w poprzednim kroku.  W żądaniu skierowanym, klient jest uwierzytelniany w usłudze serwera autoryzacji.  Klient dołącza przekierowania, który identyfikator URI używany do uzyskania kodu autoryzacji do weryfikacji. < /p\> < p\> serwera autoryzacji uwierzytelnia klientów, sprawdza poprawność kodu autoryzacji i zapewni spójność przekierowania URI Odebrano identyfikator URI używany do przekierowywania klientów w kroku (C).  Jeśli jest prawidłowa, serwera autoryzacji odpowiada z powrotem token dostępu i, opcjonalnie, token odświeżania. < /p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ErrorDescription|< p\> żądania uwierzytelniania klienta nie powiodło się lub jest nieprawidłowy, serwera autoryzacji odpowiada z kodem stanu HTTP 400 (nieprawidłowe żądanie) (chyba że określono inaczej) i zawiera następujące parametry z odpowiedzią. < /p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_RequestDescription|< p\> klient wysyła żądanie do punktu końcowego tokenu, wysyłając treści jednostki żądania następujących parametrów przy użyciu formatu "application/x--www-form-urlencoded" z kodowania znaków UTF-8 w HTTP. < /p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ResponseDescription|< p\> serwera autoryzacji wystawia token dostępu i token odświeżania opcjonalne i tworzy odpowiedzi, dodając następujące parametry do treści jednostki odpowiedzi HTTP o kodzie 200 stanu (OK). < /p\>|  
-|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_Description|< p\> klient jest uwierzytelniany w usłudze serwera autoryzacji i żądania tokenu dostępu z punktu końcowego tokena. < /p\> < p\> serwera autoryzacji uwierzytelnia klientów, a jeśli jest prawidłowa, generuje token dostępu. < /p\>|  
-|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ErrorDescription|< p\> Jeśli żądanie nie powiodło się uwierzytelnienie klienta lub jest nieprawidłowa serwera autoryzacji odpowiada z kodem stanu HTTP 400 (nieprawidłowe żądanie) (chyba że określono inaczej) i zawiera następujące parametry z odpowiedzią. < /p\>|  
-|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_RequestDescription|< p\> klient wysyła żądanie do punktu końcowego tokenu, dodając następujące parametry w formacie "application/x--www-form-urlencoded" z kodowania znaków UTF-8 w HTTP żądania treści jednostki. < /p\>|  
-|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ResponseDescription|< p\> w przypadku żądania tokenu dostępu jest prawidłowa i autoryzowanych, serwer autoryzacji wystawia token dostępu i token odświeżania opcjonalne i tworzy odpowiedzi, dodając następujące parametry do treści odpowiedzi HTTP z 200 jednostki  Kod stanu (OK). < /p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_Description|< p\> klienta inicjuje przepływ kierując właściciel zasobu "s agenta użytkownika do punktu końcowego autoryzacji.  Klient dołącza identyfikatora klienta, żądany zakres stanu lokalnego i identyfikatora URI przekierowania, do której serwer autoryzacji wyśle agenta użytkownika Wstecz, gdy dostęp jest udzielono (lub odmówiono). < /p\> < p\> serwera autoryzacji uwierzytelnia właściciela zasobów (za pomocą agenta użytkownika) i ustala, czy właściciel zasobu lub go przydziela nie zezwala na kliencie "s żądanie dostępu. < /p\> < p\> zakładając, że właściciel zasobu nieograniczony dostęp, serwer autoryzacji przekierowuje użytkownika agenta do klienta przy użyciu przekierowania URI wydanego wcześniej.  Identyfikator URI przekierowania zawiera token dostępu w fragmentu identyfikatora URI. < /p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ErrorDescription|< p\> Jeśli właściciel zasobu nie zezwala na żądanie dostępu lub w przypadku niepowodzenia żądania z powodów innych niż brakujący lub nieprawidłowy identyfikator URI przekierowania serwera autoryzacji informuje klienta, dodając następujące parametry do fragmentu o składnika f przekierowania URI przy użyciu formatu "application/x--www-form-urlencoded". < /p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_RequestDescription|< p\> aplikację klienta należy wysłać do użytkownika do punktu końcowego autoryzacji w celu rozpoczęcia procesu OAuth.      W punkcie końcowym autoryzacji użytkownik uwierzytelnia i następnie przyznaje lub nie zezwala na dostęp do aplikacji. < /p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ResponseDescription|< p\> Jeśli właściciel zasobu przyznaje żądanie dostępu, serwer autoryzacji wystawia token dostępu i dostarcza go do klienta przez dodanie następujących parametrów do składnika fragmentu przekierowania URI przy użyciu "application/x-www format — tworzą - urlencoded". < /p\>|  
-|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Description|Przepływu kodu autoryzacji jest zoptymalizowana pod kątem klienci z możliwością obsługi poufności swoich poświadczeń (np. aplikacji sieci web serwera implementowane za pomocą języka PHP, Java, Python, Ruby, ASP.NET, itp.).|  
-|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Name|Udzielania kodu autoryzacji|  
-|OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Description|Przepływ poświadczeń klienta jest odpowiednia w przypadku, gdy żąda dostępu do chronionych zasobów pod jej kontrolą klienta (aplikacji). Klient jest traktowana jako właściciela zasobu, więc interakcja użytkownika końcowego nie jest wymagana.|  
-|OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Name|Udziel poświadczeń klienta|  
-|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Description|Przepływu niejawnego jest zoptymalizowana pod kątem klienci bez możliwości o zachowanie poufności swoich poświadczeń znane działanie określonego identyfikator URI przekierowania. Ci klienci są zwykle implementowany w przeglądarce, za pomocą języka skryptów, takich jak JavaScript.|  
-|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Name|Niejawne Przyznaj|  
-|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Description|Przepływ poświadczenia hasła właściciela zasobu jest odpowiednia w przypadku, gdy właściciel zasobu ma relację zaufania z klienta (aplikacji), takich jak system operacyjny urządzenia lub aplikacji wysoko uprzywilejowane. Ten przepływ jest odpowiednia dla klientów w stanie uzyskać zasób poświadczenia właściciela (nazwa użytkownika i hasło, zwykle za pomocą formularza interaktywnego).|  
-|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Name|Przyznaj poświadczenia hasła właściciela zasobu|  
-|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_Description|< p\> właściciel zasobu przekazuje temu klientowi swoją nazwę użytkownika i hasło. < /p\> < p\> klient żąda token dostępu z serwera autoryzacji "punktu końcowego tokena s, umieszczając w niej poświadczeń otrzymanych od właściciela zasobów.  W żądaniu skierowanym, klient jest uwierzytelniany w usłudze serwera autoryzacji. < /p\> < p\> serwera autoryzacji uwierzytelnia klientów i sprawdza poprawność poświadczeń właściciela zasobu, a jeśli jest prawidłowa, wystawia token dostępu. < /p\>|  
-|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ErrorDescription|< p\> Jeśli żądanie nie powiodło się uwierzytelnienie klienta lub jest nieprawidłowa serwera autoryzacji odpowiada z kodem stanu HTTP 400 (nieprawidłowe żądanie) (chyba że określono inaczej) i zawiera następujące parametry z odpowiedzią. < /p\>|  
-|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_RequestDescription|< p\> klient wysyła żądanie do punktu końcowego tokenu, dodając następujące parametry w formacie "application/x--www-form-urlencoded" z kodowania znaków UTF-8 w HTTP żądania treści jednostki. < /p\>|  
-|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ResponseDescription|< p\> w przypadku żądania tokenu dostępu jest prawidłowa i autoryzowanych, serwer autoryzacji wystawia token dostępu i token odświeżania opcjonalne i tworzy odpowiedzi, dodając następujące parametry do treści jednostki odpowiedzi HTTP z 20 Kod stanu (OK) 0. < /p\>|  
+|OAuth2TokenEndpointDescription|Punkt końcowy tokenu jest używany przez klienta do uzyskania tokenu dostępu poprzez przedstawienie przyznania autoryzacji lub tokenu odświeżenia.|  
+|OAuth2TokenEndpointName|Punkt końcowy tokenu|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Description|< p\> klienta inicjuje przepływ, kierując właściciel zasobu agenta użytkownika do punktu końcowego autoryzacji.  Klient dołącza identyfikator klienta, żądanym zakresie, stan lokalnego i identyfikator URI przekierowania, do którego serwer autoryzacji wyśle do agenta użytkownika, ponownie, gdy dostęp jest udzielany (lub odmowa).     < /p\> < p\> serwer autoryzacji uwierzytelnia właściciel zasobu (za pośrednictwem agenta użytkownika) i określa, czy właściciel zasobu lub go przydziela odrzuca żądanie dostępu klienta.     < /p\> < p\> zakładając, że właściciel zasobu przyzna dostęp, serwer autoryzacji przekieruje agenta użytkownika do klienta przy użyciu podanego identyfikatora URI przekierowania wcześniej (w żądaniu lub podczas registrati klienta Funkcja włączona).  Identyfikator URI przekierowania zawiera kod autoryzacji i dowolny stan lokalny podany przez klienta wcześniej.     < /p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ErrorDescription|< p\> Jeśli użytkownik odrzuca żądanie dostępu lub, jeśli żądanie jest nieprawidłowe, klient zostanie poinformowany, korzystając z następujących parametrów dodanych do przekierowania: < /p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Name|Żądanie autoryzacji|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_RequestDescription|< p\> aplikacja kliencka musi wysłać użytkownika do punktu końcowego autoryzacji w celu zainicjowania procesu uwierzytelniania OAuth.          W punkcie końcowym autoryzacji użytkownik uwierzytelnia i następnie przyznaje lub nie zezwala na dostęp do aplikacji.     < /p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ResponseDescription|< p\> zakładając, że właściciel zasobu przyzna dostęp, serwer autoryzacji przekieruje agenta użytkownika do klienta przy użyciu podanego identyfikatora URI przekierowania wcześniej (w żądaniu lub podczas rejestracji klienta).  Identyfikator URI przekierowania zawiera kod autoryzacji i dowolny stan lokalny podany przez klienta wcześniej. < /p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_Description|< p\> klient żąda tokenu dostępu z serwera autoryzacji "s punktu końcowego tokenu, dołączając kod autoryzacji odebrany w poprzednim kroku.  Podczas wykonywania żądania, klient uwierzytelnia się za pomocą serwera autoryzacji.  Klient dołącza przekierowania URI używany do uzyskania kodu autoryzacji do weryfikacji. < /p\> < p\> serwer autoryzacji uwierzytelnia klienta, weryfikuje kod autoryzacji i zapewnia zgodność Odebrano identyfikatora URI przekierowania URI używany do przekierowania klienta w kroku (C).  Jeśli jest on prawidłowy, serwer autoryzacji odpowiada z powrotem token dostępu i, opcjonalnie, token odświeżania. < /p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ErrorDescription|< p\> Jeśli żądanie uwierzytelnienia klienta nie powiodło się lub jest nieprawidłowe, serwer autoryzacji odpowiada kodem stanu HTTP 400 (złe żądanie) (chyba że określono inaczej) i obejmuje następujące parametry z odpowiedzią. < /p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_RequestDescription|< p\> klient wysyła żądanie do punktu końcowego tokenu, wysyłając następujące parametry przy użyciu formatu "application/x--www-form-urlencoded" z kodowaniem znaków UTF-8 w HTTP żądania treści jednostki. < /p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ResponseDescription|< p\> serwer autoryzacji wystawia token dostępu i opcjonalny token odświeżania oraz buduje odpowiedź, dodając następujące parametry do treści jednostki odpowiedzi HTTP z kodem stanu 200 (OK). < /p\>|  
+|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_Description|< p\> klient uwierzytelnia się za pomocą serwera autoryzacji i żąda tokenu dostępu z punktu końcowego tokenu. < /p\> < p\> serwer autoryzacji uwierzytelnia klienta, a jeśli są one prawidłowe, wystawia token dostępu. < /p\>|  
+|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ErrorDescription|< p\> Jeśli żądanie nie powiodło się uwierzytelnienie klienta lub jest nieprawidłowy serwer autoryzacji odpowiada kodem stanu HTTP 400 (złe żądanie) (chyba że określono inaczej) i obejmuje następujące parametry z odpowiedzią. < /p\>|  
+|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_RequestDescription|< p\> klient wysyła żądanie do punktu końcowego tokenu, dodając następujące parametry przy użyciu formatu "application/x--www-form-urlencoded" z kodowaniem znaków UTF-8 w HTTP żądania treści jednostki. < /p\>|  
+|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ResponseDescription|< p\> Jeśli żądanie tokenu dostępu jest prawidłowe i autoryzowane, serwer autoryzacji wystawia token dostępu i opcjonalny token odświeżania oraz buduje odpowiedź, dodając następujące parametry do treści jednostki odpowiedzi HTTP z 200  Kod stanu (OK). < /p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_Description|< p\> klienta inicjuje przepływ, kierując właściciel zasobu "s agenta użytkownika do punktu końcowego autoryzacji.  Klient dołącza identyfikator klienta, żądanym zakresie, stan lokalnego i identyfikator URI przekierowania, do którego serwer autoryzacji wyśle do agenta użytkownika, ponownie, gdy dostęp jest udzielany (lub odmowa). < /p\> < p\> serwer autoryzacji uwierzytelnia właściciel zasobu (za pośrednictwem agenta użytkownika) i określa, czy właściciel zasobu lub go przydziela nie zezwala na kliencie "żądanie dostępu. < /p\> < p\> zakładając, że właściciel zasobu przyzna dostęp, serwer autoryzacji przekieruje agenta użytkownika do klienta przy użyciu przekierowania podanego wcześniej identyfikatora URI.  Identyfikator URI przekierowania zawiera token dostępu w składnik fragment identyfikatora URI. < /p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ErrorDescription|< p\> Jeśli właściciel zasobu odrzuca żądanie dostępu lub jeśli żądanie nie powiedzie się z powodów innych niż Brak lub nieprawidłowy identyfikator URI przekierowania, serwer autoryzacji informuje klienta, dodając następujące parametry do fragmentu o składnika f przy użyciu formatu "application/x--www-form-urlencoded" identyfikatora URI przekierowania. < /p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_RequestDescription|< p\> aplikacja kliencka musi wysłać użytkownika do punktu końcowego autoryzacji w celu zainicjowania procesu uwierzytelniania OAuth.      W punkcie końcowym autoryzacji użytkownik uwierzytelnia i następnie przyznaje lub nie zezwala na dostęp do aplikacji. < /p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ResponseDescription|< p\> Jeśli właściciel zasobu zaakceptuje żądanie dostępu, serwer autoryzacji wystawi token dostępu i dostarczy go do klienta, dodając następujące parametry do fragmentu składnika identyfikatora URI za pomocą "application/x-www przekierowania format — tworzą - urlencoded". < /p\>|  
+|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Description|Przepływ kodu autoryzacji jest zoptymalizowany dla klientów zdolnych do zachowania poufności ich poświadczeń (np. aplikacji serwera internetowego zaimplementowanych przy użyciu języka PHP, Java, Python, Ruby, ASP.NET itd.).|  
+|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Name|Przyznano kod autoryzacji|  
+|OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Description|Przepływ poświadczeń klienta jest odpowiedni w przypadkach, gdy klient (Twoja aplikacja) żąda dostępu do chronionych zasobów pod jego kontrolą. Klient jest uważany za właściciela zasobu, więc żadna interakcja użytkownika końcowego jest wymagane.|  
+|OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Name|Przyznanie poświadczenia klienta|  
+|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Description|Niejawny przepływ jest optymalizowany dla klientów niezdolnych do zachowania poufności ich poświadczeń znane działanie określonego identyfikatora URI przekierowania. Ci klienci są zazwyczaj implementowani w przeglądarce za pomocą języka skryptów, takich jak JavaScript.|  
+|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Name|Niejawne przyznanie|  
+|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Description|Przepływ poświadczeń hasła właściciela zasobu jest odpowiedni w przypadkach, gdy właściciel zasobu ma relację zaufania z klientem (Twoją aplikacją), takich jak system operacyjny urządzenia lub aplikacji o wysokim poziomie uprawnień. Ten przepływ jest odpowiedni dla klientów zdolnych do uzyskania poświadczeń właściciela (nazwa użytkownika i hasło, zwykle za pomocą formularza interaktywnego) zasobu.|  
+|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Name|Przyznanie poświadczeń hasła właściciela zasobu|  
+|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_Description|< p\> właściciel zasobu przekazuje temu klientowi swoją nazwę użytkownika i hasło. < /p\> < p\> klient żąda tokenu dostępu z serwera autoryzacji "punktu końcowego tokenu s, dołączając poświadczenia otrzymane od właściciela zasobu.  Podczas wykonywania żądania, klient uwierzytelnia się za pomocą serwera autoryzacji. < /p\> < p\> serwer autoryzacji uwierzytelnia klienta i weryfikuje poświadczenia właściciela zasobu, a jeśli są one prawidłowe, wystawia token dostępu. < /p\>|  
+|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ErrorDescription|< p\> Jeśli żądanie nie powiodło się uwierzytelnienie klienta lub jest nieprawidłowy serwer autoryzacji odpowiada kodem stanu HTTP 400 (złe żądanie) (chyba że określono inaczej) i obejmuje następujące parametry z odpowiedzią. < /p\>|  
+|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_RequestDescription|< p\> klient wysyła żądanie do punktu końcowego tokenu, dodając następujące parametry przy użyciu formatu "application/x--www-form-urlencoded" z kodowaniem znaków UTF-8 w HTTP żądania treści jednostki. < /p\>|  
+|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ResponseDescription|< p\> Jeśli żądanie tokenu dostępu jest prawidłowe i autoryzowane, serwer autoryzacji wystawia token dostępu i opcjonalny token odświeżania oraz buduje odpowiedź, dodając następujące parametry do treści jednostki odpowiedzi HTTP z 20 Kod stanu (OK) 0. < /p\>|  
 |OAuth2Step_AccessTokenRequest_Name|Żądanie tokenu dostępu|  
-|OAuth2Step_AuthorizationRequest_Name|Żądania autoryzacji|  
-|OAuth2AccessToken_AuthorizationCodeGrant_TokenResponse|WYMAGANE. Token dostępu wystawione przez serwer autoryzacji.|  
-|OAuth2AccessToken_ClientCredentialsGrant_TokenResponse|WYMAGANE. Token dostępu wystawione przez serwer autoryzacji.|  
-|OAuth2AccessToken_ImplicitGrant_AuthorizationResponse|WYMAGANE. Token dostępu wystawione przez serwer autoryzacji.|  
-|OAuth2AccessToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|WYMAGANE. Token dostępu wystawione przez serwer autoryzacji.|  
+|OAuth2Step_AuthorizationRequest_Name|Żądanie autoryzacji|  
+|OAuth2AccessToken_AuthorizationCodeGrant_TokenResponse|WYMAGANE. Token dostępu wystawiony przez serwer autoryzacji.|  
+|OAuth2AccessToken_ClientCredentialsGrant_TokenResponse|WYMAGANE. Token dostępu wystawiony przez serwer autoryzacji.|  
+|OAuth2AccessToken_ImplicitGrant_AuthorizationResponse|WYMAGANE. Token dostępu wystawiony przez serwer autoryzacji.|  
+|OAuth2AccessToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|WYMAGANE. Token dostępu wystawiony przez serwer autoryzacji.|  
 |OAuth2ClientId_AuthorizationCodeGrant_AuthorizationRequest|WYMAGANE. Identyfikator klienta.|  
-|OAuth2ClientId_AuthorizationCodeGrant_TokenRequest|WYMAGANE, jeśli klient nie uwierzytelnia serwer autoryzacji.|  
+|OAuth2ClientId_AuthorizationCodeGrant_TokenRequest|WYMAGANE, jeśli klient nie uwierzytelnia się za pomocą serwera autoryzacji.|  
 |OAuth2ClientId_ImplicitGrant_AuthorizationRequest|WYMAGANE. Identyfikator klienta.|  
-|OAuth2Code_AuthorizationCodeGrant_AuthorizationResponse|WYMAGANE. Kod autoryzacji generowane przez serwer autoryzacji.|  
+|OAuth2Code_AuthorizationCodeGrant_AuthorizationResponse|WYMAGANE. Kod autoryzacji wygenerowany przez serwer autoryzacji.|  
 |OAuth2Code_AuthorizationCodeGrant_TokenRequest|WYMAGANE. Kod autoryzacji otrzymany z serwera autoryzacji.|  
-|OAuth2ErrorDescription_AuthorizationCodeGrant_AuthorizationErrorResponse|OPCJONALNE. Czytelny dla człowieka tekst w formacie ASCII podanie dodatkowych informacji.|  
-|OAuth2ErrorDescription_AuthorizationCodeGrant_TokenErrorResponse|OPCJONALNE. Czytelny dla człowieka tekst w formacie ASCII podanie dodatkowych informacji.|  
-|OAuth2ErrorDescription_ClientCredentialsGrant_TokenErrorResponse|OPCJONALNE. Czytelny dla człowieka tekst w formacie ASCII podanie dodatkowych informacji.|  
-|OAuth2ErrorDescription_ImplicitGrant_AuthorizationErrorResponse|OPCJONALNE. Czytelny dla człowieka tekst w formacie ASCII podanie dodatkowych informacji.|  
-|OAuth2ErrorDescription_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|OPCJONALNE. Czytelny dla człowieka tekst w formacie ASCII podanie dodatkowych informacji.|  
-|OAuth2ErrorUri_AuthorizationCodeGrant_AuthorizationErrorResponse|OPCJONALNE. Identyfikator URI identyfikujący czytelny dla człowieka strony sieci web z informacjami o tym błędzie.|  
-|OAuth2ErrorUri_AuthorizationCodeGrant_TokenErrorResponse|OPCJONALNE. Identyfikator URI identyfikujący czytelny dla człowieka strony sieci web z informacjami o tym błędzie.|  
-|OAuth2ErrorUri_ClientCredentialsGrant_TokenErrorResponse|OPCJONALNE. Identyfikator URI identyfikujący czytelny dla człowieka strony sieci web z informacjami o tym błędzie.|  
-|OAuth2ErrorUri_ImplicitGrant_AuthorizationErrorResponse|OPCJONALNE. Identyfikator URI identyfikujący czytelny dla człowieka strony sieci web z informacjami o tym błędzie.|  
-|OAuth2ErrorUri_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|OPCJONALNE. Identyfikator URI identyfikujący czytelny dla człowieka strony sieci web z informacjami o tym błędzie.|  
-|OAuth2Error_AuthorizationCodeGrant_AuthorizationErrorResponse|WYMAGANE. Jeden kod błędu ASCII spośród następujących: invalid_request, unauthorized_client, access_denied, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
-|OAuth2Error_AuthorizationCodeGrant_TokenErrorResponse|WYMAGANE. Jeden kod błędu ASCII spośród następujących: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
-|OAuth2Error_ClientCredentialsGrant_TokenErrorResponse|WYMAGANE. Jeden kod błędu ASCII spośród następujących: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
-|OAuth2Error_ImplicitGrant_AuthorizationErrorResponse|WYMAGANE. Jeden kod błędu ASCII spośród następujących: invalid_request, unauthorized_client, access_denied, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
-|OAuth2Error_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|WYMAGANE. Jeden kod błędu ASCII spośród następujących: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
-|OAuth2ExpiresIn_AuthorizationCodeGrant_TokenResponse|ZALECANE. Okres istnienia w sekundach tokenu dostępu.|  
-|OAuth2ExpiresIn_ClientCredentialsGrant_TokenResponse|ZALECANE. Okres istnienia w sekundach tokenu dostępu.|  
-|OAuth2ExpiresIn_ImplicitGrant_AuthorizationResponse|ZALECANE. Okres istnienia w sekundach tokenu dostępu.|  
-|OAuth2ExpiresIn_ResourceOwnerPasswordCredentialsGrant_TokenResponse|ZALECANE. Okres istnienia w sekundach tokenu dostępu.|  
-|OAuth2GrantType_AuthorizationCodeGrant_TokenRequest|WYMAGANE. Wartość musi mieć ustawioną wartość "authorization_code".|  
-|OAuth2GrantType_ClientCredentialsGrant_TokenRequest|WYMAGANE. MUSI mieć ustawioną wartość 'client_credentials'.|  
-|OAuth2GrantType_ResourceOwnerPasswordCredentialsGrant_TokenRequest|WYMAGANE. Wartość musi być równa "password".|  
-|OAuth2Password_ResourceOwnerPasswordCredentialsGrant_TokenRequest|WYMAGANE. Hasło właściciela zasobów.|  
-|OAuth2RedirectUri_AuthorizationCodeGrant_AuthorizationRequest|OPCJONALNE. Identyfikator URI punktu końcowego przekierowania musi być bezwzględnym identyfikatorem URI.|  
-|OAuth2RedirectUri_AuthorizationCodeGrant_TokenRequest|WYMAGANE, jeśli parametr "redirect_uri" została uwzględniona w żądaniu autoryzacji i ich wartości muszą być takie same.|  
-|OAuth2RedirectUri_ImplicitGrant_AuthorizationRequest|OPCJONALNE. Identyfikator URI punktu końcowego przekierowania musi być bezwzględnym identyfikatorem URI.|  
-|OAuth2RefreshToken_AuthorizationCodeGrant_TokenResponse|OPCJONALNE. Token odświeżania może zostać użyty do uzyskania nowe tokeny dostępu.|  
-|OAuth2RefreshToken_ClientCredentialsGrant_TokenResponse|OPCJONALNE. Token odświeżania może zostać użyty do uzyskania nowe tokeny dostępu.|  
-|OAuth2RefreshToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|OPCJONALNE. Token odświeżania może zostać użyty do uzyskania nowe tokeny dostępu.|  
-|OAuth2ResponseType_AuthorizationCodeGrant_AuthorizationRequest|WYMAGANE. Wartość musi być równa 'code'.|  
+|OAuth2ErrorDescription_AuthorizationCodeGrant_AuthorizationErrorResponse|OPCJONALNIE. Tekst ASCII czytelny dla człowieka dodatkowymi informacjami.|  
+|OAuth2ErrorDescription_AuthorizationCodeGrant_TokenErrorResponse|OPCJONALNIE. Tekst ASCII czytelny dla człowieka dodatkowymi informacjami.|  
+|OAuth2ErrorDescription_ClientCredentialsGrant_TokenErrorResponse|OPCJONALNIE. Tekst ASCII czytelny dla człowieka dodatkowymi informacjami.|  
+|OAuth2ErrorDescription_ImplicitGrant_AuthorizationErrorResponse|OPCJONALNIE. Tekst ASCII czytelny dla człowieka dodatkowymi informacjami.|  
+|OAuth2ErrorDescription_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|OPCJONALNIE. Tekst ASCII czytelny dla człowieka dodatkowymi informacjami.|  
+|OAuth2ErrorUri_AuthorizationCodeGrant_AuthorizationErrorResponse|OPCJONALNIE. Identyfikator URI identyfikujący czytelny dla człowieka strony sieci web z informacjami o błędzie.|  
+|OAuth2ErrorUri_AuthorizationCodeGrant_TokenErrorResponse|OPCJONALNIE. Identyfikator URI identyfikujący czytelny dla człowieka strony sieci web z informacjami o błędzie.|  
+|OAuth2ErrorUri_ClientCredentialsGrant_TokenErrorResponse|OPCJONALNIE. Identyfikator URI identyfikujący czytelny dla człowieka strony sieci web z informacjami o błędzie.|  
+|OAuth2ErrorUri_ImplicitGrant_AuthorizationErrorResponse|OPCJONALNIE. Identyfikator URI identyfikujący czytelny dla człowieka strony sieci web z informacjami o błędzie.|  
+|OAuth2ErrorUri_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|OPCJONALNIE. Identyfikator URI identyfikujący czytelny dla człowieka strony sieci web z informacjami o błędzie.|  
+|OAuth2Error_AuthorizationCodeGrant_AuthorizationErrorResponse|WYMAGANE. Pojedynczy kod błędu ASCII spośród następujących: invalid_request, unauthorized_client, access_denied, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
+|OAuth2Error_AuthorizationCodeGrant_TokenErrorResponse|WYMAGANE. Pojedynczy kod błędu ASCII spośród następujących: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
+|OAuth2Error_ClientCredentialsGrant_TokenErrorResponse|WYMAGANE. Pojedynczy kod błędu ASCII spośród następujących: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
+|OAuth2Error_ImplicitGrant_AuthorizationErrorResponse|WYMAGANE. Pojedynczy kod błędu ASCII spośród następujących: invalid_request, unauthorized_client, access_denied, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
+|OAuth2Error_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|WYMAGANE. Pojedynczy kod błędu ASCII spośród następujących: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
+|OAuth2ExpiresIn_AuthorizationCodeGrant_TokenResponse|ZALECANE. Okres istnienia w ciągu kilku sekund tokenu dostępu.|  
+|OAuth2ExpiresIn_ClientCredentialsGrant_TokenResponse|ZALECANE. Okres istnienia w ciągu kilku sekund tokenu dostępu.|  
+|OAuth2ExpiresIn_ImplicitGrant_AuthorizationResponse|ZALECANE. Okres istnienia w ciągu kilku sekund tokenu dostępu.|  
+|OAuth2ExpiresIn_ResourceOwnerPasswordCredentialsGrant_TokenResponse|ZALECANE. Okres istnienia w ciągu kilku sekund tokenu dostępu.|  
+|OAuth2GrantType_AuthorizationCodeGrant_TokenRequest|WYMAGANE. Wartość musi być ustawiona na "authorization_code".|  
+|OAuth2GrantType_ClientCredentialsGrant_TokenRequest|WYMAGANE. Wartość musi być ustawiona na "client_credentials".|  
+|OAuth2GrantType_ResourceOwnerPasswordCredentialsGrant_TokenRequest|WYMAGANE. Wartość musi być ustawiona na "password".|  
+|OAuth2Password_ResourceOwnerPasswordCredentialsGrant_TokenRequest|WYMAGANE. Hasło właściciela zasobu.|  
+|OAuth2RedirectUri_AuthorizationCodeGrant_AuthorizationRequest|OPCJONALNIE. Identyfikator URI punktu końcowego przekierowania musi być bezwzględnym identyfikatorem URI.|  
+|OAuth2RedirectUri_AuthorizationCodeGrant_TokenRequest|WYMAGANE, jeśli parametr „redirect_uri” został uwzględniony w żądaniu autoryzacji i ich wartości MUSZĄ być identyczne.|  
+|OAuth2RedirectUri_ImplicitGrant_AuthorizationRequest|OPCJONALNIE. Identyfikator URI punktu końcowego przekierowania musi być bezwzględnym identyfikatorem URI.|  
+|OAuth2RefreshToken_AuthorizationCodeGrant_TokenResponse|OPCJONALNIE. Token odświeżania, który może służyć do uzyskania nowych tokenów dostępu.|  
+|OAuth2RefreshToken_ClientCredentialsGrant_TokenResponse|OPCJONALNIE. Token odświeżania, który może służyć do uzyskania nowych tokenów dostępu.|  
+|OAuth2RefreshToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|OPCJONALNIE. Token odświeżania, który może służyć do uzyskania nowych tokenów dostępu.|  
+|OAuth2ResponseType_AuthorizationCodeGrant_AuthorizationRequest|WYMAGANE. Wartość musi być ustawiona na "code".|  
 |OAuth2ResponseType_ImplicitGrant_AuthorizationRequest|WYMAGANE. Wartość musi być ustawiona na "token".|  
-|OAuth2Scope_AuthorizationCodeGrant_AuthorizationRequest|OPCJONALNE. Zakres żądania dostępu.|  
-|OAuth2Scope_AuthorizationCodeGrant_TokenResponse|OPCJONALNIE, jeśli takie same jak zakres żądanego przez klienta; w przeciwnym razie jest to wymagane.|  
-|OAuth2Scope_ClientCredentialsGrant_TokenRequest|OPCJONALNE. Zakres żądania dostępu.|  
-|OAuth2Scope_ClientCredentialsGrant_TokenResponse|OPCJONALNE, jeśli takie same jak zakres żądanego przez klienta; w przeciwnym razie jest to wymagane.|  
-|OAuth2Scope_ImplicitGrant_AuthorizationRequest|OPCJONALNE. Zakres żądania dostępu.|  
-|OAuth2Scope_ImplicitGrant_AuthorizationResponse|OPCJONALNIE, jeśli takie same jak zakres żądanego przez klienta; w przeciwnym razie jest to wymagane.|  
-|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenRequest|OPCJONALNE. Zakres żądania dostępu.|  
-|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenResponse|OPCJONALNE, jeśli takie same jak zakres żądanego przez klienta; w przeciwnym razie jest to wymagane.|  
-|OAuth2State_AuthorizationCodeGrant_AuthorizationErrorResponse|WYMAGANE, jeśli z parametrem "stanu" było obecne w żądaniu autoryzacji klienta.  Dokładną wartość otrzymanych od klienta.|  
-|OAuth2State_AuthorizationCodeGrant_AuthorizationRequest|ZALECANE. Wartości nieprzezroczystej używany przez klienta do zarządzania stanem między żądaniem i wywołania zwrotnego.  Serwer autoryzacji zawiera tę wartość, podczas przekierowywania agent użytkownika klienta.  Parametr należy używać zapobiegania fałszowaniu żądania międzywitrynowego.|  
-|OAuth2State_AuthorizationCodeGrant_AuthorizationResponse|WYMAGANE, jeśli z parametrem "stanu" było obecne w żądaniu autoryzacji klienta.  Dokładną wartość otrzymanych od klienta.|  
-|OAuth2State_ImplicitGrant_AuthorizationErrorResponse|WYMAGANE, jeśli z parametrem "stanu" było obecne w żądaniu autoryzacji klienta.  Dokładną wartość otrzymanych od klienta.|  
-|OAuth2State_ImplicitGrant_AuthorizationRequest|ZALECANE. Wartości nieprzezroczystej używany przez klienta do zarządzania stanem między żądaniem i wywołania zwrotnego.  Serwer autoryzacji zawiera tę wartość, podczas przekierowywania agent użytkownika klienta.  Parametr należy używać zapobiegania fałszowaniu żądania międzywitrynowego.|  
-|OAuth2State_ImplicitGrant_AuthorizationResponse|WYMAGANE, jeśli z parametrem "stanu" było obecne w żądaniu autoryzacji klienta.  Dokładną wartość otrzymanych od klienta.|  
-|OAuth2TokenType_AuthorizationCodeGrant_TokenResponse|WYMAGANE. Typem wystawianych tokenów.|  
-|OAuth2TokenType_ClientCredentialsGrant_TokenResponse|WYMAGANE. Typem wystawianych tokenów.|  
-|OAuth2TokenType_ImplicitGrant_AuthorizationResponse|WYMAGANE. Typem wystawianych tokenów.|  
-|OAuth2TokenType_ResourceOwnerPasswordCredentialsGrant_TokenResponse|WYMAGANE. Typem wystawianych tokenów.|  
-|OAuth2UserName_ResourceOwnerPasswordCredentialsGrant_TokenRequest|WYMAGANE. Nazwa właściciela zasobów.|  
-|OAuth2UnsupportedTokenType|Typ tokenu "{0}" nie jest supporetd.|  
+|OAuth2Scope_AuthorizationCodeGrant_AuthorizationRequest|OPCJONALNIE. Zakres żądania dostępu.|  
+|OAuth2Scope_AuthorizationCodeGrant_TokenResponse|OPCJONALNY, jeśli identyczny jak zakres żądany przez klienta; w przeciwnym razie WYMAGANY.|  
+|OAuth2Scope_ClientCredentialsGrant_TokenRequest|OPCJONALNIE. Zakres żądania dostępu.|  
+|OAuth2Scope_ClientCredentialsGrant_TokenResponse|OPCJONALNY, jeśli identyczny jak zakres żądany przez klienta; w przeciwnym przypadku WYMAGANY.|  
+|OAuth2Scope_ImplicitGrant_AuthorizationRequest|OPCJONALNIE. Zakres żądania dostępu.|  
+|OAuth2Scope_ImplicitGrant_AuthorizationResponse|OPCJONALNY, jeśli identyczny jak zakres żądany przez klienta; w przeciwnym razie WYMAGANY.|  
+|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenRequest|OPCJONALNIE. Zakres żądania dostępu.|  
+|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenResponse|OPCJONALNY, jeśli identyczny jak zakres żądany przez klienta; w przeciwnym przypadku WYMAGANY.|  
+|OAuth2State_AuthorizationCodeGrant_AuthorizationErrorResponse|WYMAGANE, jeśli parametr "state" znajdował się w żądaniu autoryzacji klienta.  Dokładna wartość odebrana od klienta.|  
+|OAuth2State_AuthorizationCodeGrant_AuthorizationRequest|ZALECANE. Nieprzezroczysta wartość używana przez klienta w celu zachowania stanu między żądaniem i wywołania zwrotnego.  Serwer autoryzacji dołącza tę wartość podczas przekierowywania agent użytkownika klienta.  Parametr stosuje się w celu zapobiegania fałszerstwo żądania międzywitrynowego.|  
+|OAuth2State_AuthorizationCodeGrant_AuthorizationResponse|WYMAGANE, jeśli parametr "state" znajdował się w żądaniu autoryzacji klienta.  Dokładna wartość odebrana od klienta.|  
+|OAuth2State_ImplicitGrant_AuthorizationErrorResponse|WYMAGANE, jeśli parametr "state" znajdował się w żądaniu autoryzacji klienta.  Dokładna wartość odebrana od klienta.|  
+|OAuth2State_ImplicitGrant_AuthorizationRequest|ZALECANE. Nieprzezroczysta wartość używana przez klienta w celu zachowania stanu między żądaniem i wywołania zwrotnego.  Serwer autoryzacji dołącza tę wartość podczas przekierowywania agent użytkownika klienta.  Parametr stosuje się w celu zapobiegania fałszerstwo żądania międzywitrynowego.|  
+|OAuth2State_ImplicitGrant_AuthorizationResponse|WYMAGANE, jeśli parametr "state" znajdował się w żądaniu autoryzacji klienta.  Dokładna wartość odebrana od klienta.|  
+|OAuth2TokenType_AuthorizationCodeGrant_TokenResponse|WYMAGANE. Typ wystawionego tokenu.|  
+|OAuth2TokenType_ClientCredentialsGrant_TokenResponse|WYMAGANE. Typ wystawionego tokenu.|  
+|OAuth2TokenType_ImplicitGrant_AuthorizationResponse|WYMAGANE. Typ wystawionego tokenu.|  
+|OAuth2TokenType_ResourceOwnerPasswordCredentialsGrant_TokenResponse|WYMAGANE. Typ wystawionego tokenu.|  
+|OAuth2UserName_ResourceOwnerPasswordCredentialsGrant_TokenRequest|WYMAGANE. Nazwa użytkownika właściciela zasobu.|  
+|OAuth2UnsupportedTokenType|Typ tokenu "{0}" nie jest obsługiwany.|  
 |OAuth2InvalidState|Nieprawidłowa odpowiedź z serwera autoryzacji|  
 |OAuth2GrantType_AuthorizationCode|Kod autoryzacji|  
-|OAuth2GrantType_Implicit|Niejawne|  
+|OAuth2GrantType_Implicit|Niejawny|  
 |OAuth2GrantType_ClientCredentials|Poświadczenia klienta|  
-|OAuth2GrantType_ResourceOwnerPassword|Hasło właściciela zasobów|  
-|WebDocumentation302Code|Znaleziono 302|  
-|WebDocumentation400Code|400 (nieprawidłowe żądanie)|  
-|OAuth2SendingMethod_AuthHeader|Nagłówek autoryzacji|  
+|OAuth2GrantType_ResourceOwnerPassword|Hasło właściciela zasobu|  
+|WebDocumentation302Code|302 — Znaleziono|  
+|WebDocumentation400Code|400 (Złe żądanie)|  
+|OAuth2SendingMethod_AuthHeader|Nagłówek uwierzytelnienia|  
 |OAuth2SendingMethod_QueryParam|Parametr zapytania|  
-|OAuth2AuthorizationServerGeneralException|Wystąpił błąd podczas autoryzowania dostępu za pośrednictwem {0}|  
-|OAuth2AuthorizationServerCommunicationException|Nie można nawiązać połączenia HTTP serwera autoryzacji lub został nieoczekiwanie zamknięty.|  
+|OAuth2AuthorizationServerGeneralException|Wystąpił błąd podczas autoryzacji dostępu za pośrednictwem {0}|  
+|OAuth2AuthorizationServerCommunicationException|Nie można nawiązać połączenia HTTP z serwerem autoryzacji lub zostało ono nieoczekiwanie zamknięte.|  
 |WebDocumentationOAuth2GeneralErrorMessage|Wystąpił nieoczekiwany błąd.|  
-|AuthorizationServerCommunicationException|Wystąpił wyjątek łączności serwera autoryzacji. Skontaktuj się z administratorem.|  
-|TextblockSubscriptionKeyHeaderDescription|Klucz subskrypcji, która zapewnia dostęp do tego interfejsu API. W Twojej < href = "/ developer"\>profilu < /a\>.|  
-|TextblockOAuthHeaderDescription|Token dostępu protokołu OAuth 2.0 uzyskane z < i\>{0} < /i\>. Obsługiwane typy grant: < i\>{1} < /i\>.|  
-|TextblockContentTypeHeaderDescription|Typ nośnika treści wysyłane do interfejsu API.|  
-|ErrorMessageApiNotAccessible|Interfejs API, którą chcesz wywołać nie jest dostępny w tej chwili. Skontaktuj się z wydawcą interfejsu API < href = "/ wystawia"\>tutaj < /a\>.|  
-|ErrorMessageApiTimedout|Interfejsu API, którą chcesz wywołać trwa dłużej niż zwykle, aby wrócić odpowiedzi. Skontaktuj się z wydawcą interfejsu API < href = "/ wystawia"\>tutaj < /a\>.|  
-|BadRequestParameterExpected|"oczekuje parametru '{0}'"|  
-|TooltipTextDoubleClickToSelectAll|Kliknij dwukrotnie, aby wybrać wszystkie.|  
-|TooltipTextHideRevealSecret|Pokaż/Ukryj|  
+|AuthorizationServerCommunicationException|Wyjątek komunikacji z serwerem autoryzacji się stało. Skontaktuj się z administratorem.|  
+|TextblockSubscriptionKeyHeaderDescription|Klucz subskrypcji, która zapewnia dostęp do tego interfejsu API. W Twojej < href = "/ dla deweloperów"\>profilu < /a\>.|  
+|TextblockOAuthHeaderDescription|Token dostępu OAuth 2.0 uzyskany z < mogę\>{0}< /i\>. Obsługiwane typów przydziałów: < i\>{1}< /i\>.|  
+|TextblockContentTypeHeaderDescription|Typ nośnika treści wysłanej do interfejsu API.|  
+|ErrorMessageApiNotAccessible|Interfejs API, który próbujesz wywołać jest w tej chwili niedostępny. Skontaktuj się z wydawcą interfejsu API < href = "/ issues"\>tutaj < /a\>.|  
+|ErrorMessageApiTimedout|Interfejs API, który próbujesz wywołać trwa dłużej niż zwykle, aby wrócić odpowiedzi. Skontaktuj się z wydawcą interfejsu API < href = "/ issues"\>tutaj < /a\>.|  
+|BadRequestParameterExpected|""{0}"oczekuje parametru"|  
+|TooltipTextDoubleClickToSelectAll|Kliknij dwukrotnie, aby wybrać wszystko.|  
+|TooltipTextHideRevealSecret|Pokaż/ukryj|  
 |ButtonLinkOpenConsole|Wypróbuj|  
 |SectionHeadingRequestBody|Treść żądania|  
 |SectionHeadingRequestParameters|Parametry żądania|  
 |SectionHeadingRequestUrl|Adres URL żądania|  
 |SectionHeadingResponse|Odpowiedź|  
-|SectionHeadingRequestHeaders|Nagłówki żądania|  
-|FormLabelSubtextOptional|Opcjonalne|  
+|SectionHeadingRequestHeaders|Nagłówki żądań|  
+|FormLabelSubtextOptional|opcjonalne|  
 |SectionHeadingCodeSamples|Przykłady kodu|  
-|TextblockOpenidConnectHeaderDescription|Token identyfikatora OpenID Connect uzyskane z < i\>{0} < /i\>. Obsługiwane typy grant: < i\>{1} < /i\>.|  
+|TextblockOpenidConnectHeaderDescription|Token identyfikatora uwierzytelniania OpenID Connect uzyskany z < mogę\>{0}< /i\>. Obsługiwane typów przydziałów: < i\>{1}< /i\>.|  
   
-###  <a name="ErrorPageStrings"></a>ErrorPageStrings  
+###  <a name="ErrorPageStrings"></a> ErrorPageStrings  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
-|LinkLabelBack|Wstecz|  
-|LinkLabelHomePage|Strona główna|  
-|LinkLabelSendUsEmail|Wyślij do nas wiadomość e-mail|  
-|PageTitleError|Niestety, wystąpił problem podczas obsługująca żądanej strony|  
-|TextblockPotentialCauseIntermittentIssue|Może to być problem dostępu sporadyczne danych, który został już usunięty.|  
-|TextblockPotentialCauseOldLink|Kliknięte na łącze mogą być stara i nie wskazuje już poprawnej lokalizacji.|  
-|TextblockPotentialCauseTechnicalProblem|Może istnieć problem techniczny po naszej stronie.|  
+|LinkLabelBack|wstecz|  
+|LinkLabelHomePage|stronę główną|  
+|LinkLabelSendUsEmail|Wyślij nam wiadomość e-mail|  
+|PageTitleError|Niestety, wystąpił problem z wyświetleniem żądanej strony|  
+|TextblockPotentialCauseIntermittentIssue|Może to być problem z dostępem do danych tymczasowy, który został już usunięty.|  
+|TextblockPotentialCauseOldLink|Kliknięty link może być nieaktualny i nie wskazywać już na poprawną lokalizację.|  
+|TextblockPotentialCauseTechnicalProblem|Po naszej stronie mogą być problemy techniczne.|  
 |TextblockPotentialSolutionRefresh|Spróbuj odświeżyć stronę.|  
-|TextblockPotentialSolutionStartOver|Rozpoczęcie od {0}.|  
-|TextblockPotentialSolutionTryAgain|Przejdź do {0} i spróbuj wykonać akcję, należy wykonać ponownie.|  
-|TextReportProblem|{0} opisujące co poszło źle i firma Microsoft będzie wyglądać jego jak możemy.|  
-|TitlePotentialCause|Potencjalną przyczynę|  
-|TitlePotentialSolution|Prawdopodobnie jest po prostu problem tymczasowy, kilka możliwości do wypróbowania|  
+|TextblockPotentialSolutionStartOver|Rozpocznij ponownie od naszego {0}.|  
+|TextblockPotentialSolutionTryAgain|Przejdź {0} i spróbuj wykonać akcję ponownie wykonać.|  
+|TextReportProblem|{0} opisujący, co poszło źle i omówimy je tak szybko jak to możliwe.|  
+|TitlePotentialCause|Prawdopodobna przyczyna|  
+|TitlePotentialSolution|Prawdopodobnie jest to tylko tymczasowy problem i wystarczy wykonać kilka czynności|  
   
-###  <a name="IssuesStrings"></a>IssuesStrings  
+###  <a name="IssuesStrings"></a> IssuesStrings  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
 |WebIssuesIndexTitle|Problemy|  
-|WebIssuesNoActiveSubscriptions|Nie masz żadnych aktywnych subskrypcji. Musisz mieć subskrypcję produktu zgłosić problem.|  
-|WebIssuesNotSignin|Nie zalogowano Cię. Skontaktuj się z {0}, aby zgłosić problem lub post komentarz.|  
+|WebIssuesNoActiveSubscriptions|Masz aktywne subskrypcje. Należy zasubskrybować produkt, aby zgłosić problem.|  
+|WebIssuesNotSignin|Nie zalogowano. Proszę {0} Aby zgłosić problem lub opublikować komentarz.|  
 |WebIssuesReportIssueButton|Zgłoś problem|  
 |WebIssuesSignIn|logowanie|  
-|WebIssuesStatusReportedBy|Stan: {0} &#124; Zgłoszone przez element {1}|  
+|WebIssuesStatusReportedBy|Stan: {0} &#124; zgłoszone przez {1}|  
   
-###  <a name="NotFoundStrings"></a>NotFoundStrings  
+###  <a name="NotFoundStrings"></a> NotFoundStrings  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
-|LinkLabelHomePage|Strona główna|  
-|LinkLabelSendUsEmail|Wyślij do nas wiadomość e-mail|  
-|PageTitleNotFound|Niestety nie możemy znaleźć strona, której szukasz|  
-|TextblockPotentialCauseMisspelledUrl|Możesz błędna adres URL, jeśli został wpisany.|  
-|TextblockPotentialCauseOldLink|Kliknięte na łącze mogą być stara i nie wskazuje już poprawnej lokalizacji.|  
-|TextblockPotentialSolutionRetype|Spróbuj przepisywania adres URL.|  
-|TextblockPotentialSolutionStartOver|Rozpoczęcie od {0}.|  
-|TextReportProblem|{0} opisujące co poszło źle i firma Microsoft będzie wyglądać jego jak możemy.|  
-|TitlePotentialCause|Potencjalną przyczynę|  
-|TitlePotentialSolution|Potencjalne rozwiązania|  
+|LinkLabelHomePage|stronę główną|  
+|LinkLabelSendUsEmail|wyślij do nas wiadomość e-mail|  
+|PageTitleNotFound|Niestety nie można odnaleźć strony, której szukasz|  
+|TextblockPotentialCauseMisspelledUrl|Błędnie adres URL Jeśli został wpisany.|  
+|TextblockPotentialCauseOldLink|Kliknięty link może być nieaktualny i nie wskazywać już na poprawną lokalizację.|  
+|TextblockPotentialSolutionRetype|Spróbuj ponownie wpisać adres URL.|  
+|TextblockPotentialSolutionStartOver|Rozpocznij ponownie od naszego {0}.|  
+|TextReportProblem|{0} opisujący, co poszło źle i omówimy je tak szybko jak to możliwe.|  
+|TitlePotentialCause|Prawdopodobna przyczyna|  
+|TitlePotentialSolution|Potencjalne rozwiązanie|  
   
-###  <a name="ProductDetailsStrings"></a>ProductDetailsStrings  
+###  <a name="ProductDetailsStrings"></a> ProductDetailsStrings  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
-|WebProductsAgreement|Subskrypcja do {0} produktu, zgadzam się na `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>`.|  
+|WebProductsAgreement|Jeśli zasubskrybujesz {0} produktu, zgadzam się na `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>`.|  
 |WebProductsLegalTermsLink|Warunki użytkowania|  
 |WebProductsSubscribeButton|Subskrybuj|  
 |WebProductsUsageLimitsHeader|Limity użycia|  
-|WebProductsYouAreNotSubscribed|Subskrybujesz tego produktu.|  
-|WebProductsYouRequestedSubscription|Żądana Subskrypcja do tego produktu.|  
-|ErrorYouNeedtoAgreeWithLegalTerms|Aby kontynuować, musisz zaakceptować warunki użytkowania.|  
+|WebProductsYouAreNotSubscribed|Subskrybujesz ten produkt.|  
+|WebProductsYouRequestedSubscription|Żądasz zasubskrybowania tego produktu.|  
+|ErrorYouNeedtoAgreeWithLegalTerms|Musisz zgodzić się na Warunki użytkowania, zanim będzie można kontynuować.|  
 |ButtonLabelAddSubscription|Dodawanie subskrypcji|  
-|LinkLabelChangeSubscriptionName|zmiany|  
-|ButtonLabelConfirm|Upewnij się|  
-|TextblockMultipleSubscriptionsCount|Posiadania subskrypcji {0} do tego produktu:|  
-|TextblockSingleSubscriptionsCount|Masz subskrypcję {0} do tego produktu:|  
-|TextblockSingleApisCount|Ten produkt zawiera API {0}:|  
+|LinkLabelChangeSubscriptionName|zmień|  
+|ButtonLabelConfirm|Potwierdź|  
+|TextblockMultipleSubscriptionsCount|Masz {0} subskrypcji do tego produktu:|  
+|TextblockSingleSubscriptionsCount|Masz {0} subskrypcję tego produktu:|  
+|TextblockSingleApisCount|Ten produkt zawiera {0} interfejsu API:|  
 |TextblockMultipleApisCount|Ten produkt zawiera {0} interfejsów API:|  
-|TextblockHeaderSubscribe|Subskrypcja do produktu|  
+|TextblockHeaderSubscribe|Zasubskrybuj produkt|  
 |TextblockSubscriptionDescription|Nowa subskrypcja zostanie utworzona w następujący sposób:|  
 |TextblockSubscriptionLimitReached|Osiągnięto limit subskrypcji.|  
   
-###  <a name="ProductsStrings"></a>ProductsStrings  
+###  <a name="ProductsStrings"></a> ProductsStrings  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
 |PageTitleProducts|Produkty|  
   
-###  <a name="ProviderInfoStrings"></a>ProviderInfoStrings  
+###  <a name="ProviderInfoStrings"></a> ProviderInfoStrings  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
-|TextboxExternalIdentitiesDisabled|Logowanie zostało wyłączone przez administratorów w tej chwili.|  
-|TextboxExternalIdentitiesSigninInvitation|Alternatywnie Zaloguj się przy użyciu|  
-|TextboxExternalIdentitiesSigninInvitationPrimary|Zaloguj się przy użyciu:|  
+|TextboxExternalIdentitiesDisabled|Logowanie się jest w tej chwili wyłączone przez administratorów.|  
+|TextboxExternalIdentitiesSigninInvitation|Możesz też zalogować się przy użyciu|  
+|TextboxExternalIdentitiesSigninInvitationPrimary|Zaloguj się przy użyciu|  
   
-###  <a name="SigninResources"></a>SigninResources  
+###  <a name="SigninResources"></a> SigninResources  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
 |PrincipalNotFound|Nie można odnaleźć podmiotu zabezpieczeń lub podpis jest nieprawidłowy|  
-|ErrorSsoAuthenticationFailed|Usługa rejestracji Jednokrotnej uwierzytelnianie nie powiodło się|  
-|ErrorSsoAuthenticationFailedDetailed|Nie można zweryfikować nieprawidłowy token dostarczony lub podpisu.|  
-|ErrorSsoTokenInvalid|Token rejestracji Jednokrotnej jest nieprawidłowy|  
-|ValidationErrorSpecificEmailAlreadyExists|Wiadomości e-mail "{0}" jest już zarejestrowany|  
-|ValidationErrorSpecificEmailInvalid|Poczta e-mail "{0}" jest nieprawidłowy|  
+|ErrorSsoAuthenticationFailed|Uwierzytelnianie logowania jednokrotnego nie powiodło się|  
+|ErrorSsoAuthenticationFailedDetailed|Podano nieprawidłowy token lub nie można zweryfikować podpisu.|  
+|ErrorSsoTokenInvalid|Token logowania jednokrotnego jest nieprawidłowy|  
+|ValidationErrorSpecificEmailAlreadyExists|Wiadomość e-mail "{0}" już zarejestrowany|  
+|ValidationErrorSpecificEmailInvalid|Wiadomość e-mail "{0}" jest nieprawidłowy|  
 |ValidationErrorPasswordInvalid|Hasło jest nieprawidłowe. Popraw błędy i spróbuj ponownie.|  
-|PropertyTooShort|trwa krócej niż {0}|  
+|PropertyTooShort|{0} jest zbyt krótki|  
 |WebAuthenticationAddresserEmailInvalidErrorMessage|Nieprawidłowy adres e-mail.|  
 |ValidationMessageNewPasswordConfirmationRequired|Potwierdź nowe hasło|  
-|ValidationErrorPasswordConfirmationRequired|Upewnij się, że hasło jest puste|  
-|WebAuthenticationEmailChangeNotice|Wiadomość e-mail z potwierdzeniem zmian jest w drodze do {0}. Wykonaj instrukcje w nim, aby potwierdzić swój nowy adres e-mail. Jeśli adres e-mail został odebrany w ciągu następnych kilku minut do skrzynki odbiorczej, sprawdź folder wiadomości-śmieci.|  
-|WebAuthenticationEmailChangeNoticeHeader|Pomyślnie przetworzono żądanie zmiany poczty e-mail|  
-|WebAuthenticationEmailChangeNoticeTitle|Żądana zmiana poczty e-mail|  
-|WebAuthenticationEmailHasBeenRevertedNotice|Wiadomości e-mail możesz już istnieje. Żądania została wycofana.|  
-|ValidationErrorEmailAlreadyExists|Wiadomości e-mail już istnieje.|  
+|ValidationErrorPasswordConfirmationRequired|Potwierdzenie hasła jest puste|  
+|WebAuthenticationEmailChangeNotice|Wiadomość e-mail z potwierdzeniem zmiany została wysłana do {0}. Wykonaj poniższe instrukcje znajdujące się w nim, aby potwierdzić nowy adres e-mail. Jeśli wiadomość e-mail nie dotrze do Twojej skrzynki odbiorczej w ciągu najbliższych kilku minut, sprawdź folder wiadomości-śmieci.|  
+|WebAuthenticationEmailChangeNoticeHeader|Żądanie zmiany adresu e-mail zostało pomyślnie przetworzone|  
+|WebAuthenticationEmailChangeNoticeTitle|Zażądano zmiany adresu e-mail|  
+|WebAuthenticationEmailHasBeenRevertedNotice|Twój adres e-mail już istnieje. Żądanie zostało wycofane|  
+|ValidationErrorEmailAlreadyExists|Adres e-mail już istnieje|  
 |ValidationErrorEmailInvalid|Nieprawidłowy adres e-mail|  
-|TextboxLabelEmail|Adres e-mail|  
-|ValidationErrorEmailRequired|Poczta e-mail jest wymagane.|  
+|TextboxLabelEmail|Email|  
+|ValidationErrorEmailRequired|Adres e-mail jest wymagany.|  
 |WebAuthenticationErrorNoticeHeader|Błąd|  
-|WebAuthenticationFieldLengthErrorMessage|{0} musi być maksymalnej długości {1}|  
+|WebAuthenticationFieldLengthErrorMessage|{0} musi mieć maksymalną długość {1}|  
 |TextboxLabelEmailFirstName|Imię|  
-|ValidationErrorFirstNameRequired|Wymagana jest nazwa pierwszego.|  
-|ValidationErrorFirstNameInvalid|Nieprawidłowa nazwa pierwszego|  
-|NoticeInvalidInvitationToken|Należy pamiętać, że potwierdzenie łączy są prawidłowe tylko 48 godzin. Jeśli jesteś nadal w tym przedziale czasu, upewnij się, czy łącze jest prawidłowa. Po wygaśnięciu ważności link do należy powtórzyć akcję, którą próbujesz Potwierdź.|  
-|NoticeHeaderInvalidInvitationToken|Zaproszenie nieprawidłowy token|  
+|ValidationErrorFirstNameRequired|Imię jest wymagane.|  
+|ValidationErrorFirstNameInvalid|Nieprawidłowe imię|  
+|NoticeInvalidInvitationToken|Należy pamiętać, że linki do potwierdzenia są ważne tylko przez 48 godzin. Jeśli jesteś nadal w tym przedziale czasowym, upewnij się, że link jest poprawny. Jeśli link wygasł, powtórz akcję, którą próbujesz potwierdzić.|  
+|NoticeHeaderInvalidInvitationToken|Nieprawidłowy token zaproszenia|  
 |NoticeTitleInvalidInvitationToken|Błąd potwierdzenia|  
-|WebAuthenticationLastNameInvalidErrorMessage|Nieprawidłowa nazwa ostatniego|  
+|WebAuthenticationLastNameInvalidErrorMessage|Nieprawidłowe nazwisko|  
 |TextboxLabelEmailLastName|Nazwisko|  
-|ValidationErrorLastNameRequired|Ostatnia nazwa jest wymagana.|  
-|WebAuthenticationLinkExpiredNotice|Łącze potwierdzenia wysłanego utracił ważność. `<a href={0}?token={1}>Resend confirmation email.</a\>`|  
-|NoticePasswordResetLinkInvalidOrExpired|Link do resetowania hasła jest nieprawidłowa lub wygasła.|  
-|WebAuthenticationLinkExpiredNoticeTitle|Łącze|  
+|ValidationErrorLastNameRequired|Nazwisko jest wymagane.|  
+|WebAuthenticationLinkExpiredNotice|Link do potwierdzenia wysłana do Ciebie utracił ważność. `<a href={0}?token={1}>Resend confirmation email.</a\>`|  
+|NoticePasswordResetLinkInvalidOrExpired|Link do zresetowania hasła jest nieprawidłowy lub wygasł.|  
+|WebAuthenticationLinkExpiredNoticeTitle|Link został wysłany|  
 |WebAuthenticationNewPasswordLabel|Nowe hasło|  
 |ValidationMessageNewPasswordRequired|Nowe hasło jest wymagane.|  
-|TextboxLabelNotificationsSenderEmail|Powiadomienia e-mail nadawcy|  
+|TextboxLabelNotificationsSenderEmail|Adres e-mail nadawcy dla powiadomień|  
 |TextboxLabelOrganizationName|Nazwa organizacji|  
-|WebAuthenticationOrganizationRequiredErrorMessage|Nazwa organizacji jest pusty|  
-|WebAuthenticationPasswordChangedNotice|Twoje hasło zostało pomyślnie zaktualizowane.|  
-|WebAuthenticationPasswordChangedNoticeTitle|Hasło|  
-|WebAuthenticationPasswordCompareErrorMessage|Hasła nie są zgodne|  
+|WebAuthenticationOrganizationRequiredErrorMessage|Nazwa organizacji jest pusta|  
+|WebAuthenticationPasswordChangedNotice|Twoje hasło zostało pomyślnie zaktualizowane|  
+|WebAuthenticationPasswordChangedNoticeTitle|Hasło zostało zaktualizowane|  
+|WebAuthenticationPasswordCompareErrorMessage|Hasła są niezgodne|  
 |WebAuthenticationPasswordConfirmLabel|Potwierdź hasło|  
-|ValidationErrorPasswordInvalidDetailed|Hasło jest zbyt słabe.|  
+|ValidationErrorPasswordInvalidDetailed|Hasło jest za słabe.|  
 |WebAuthenticationPasswordLabel|Hasło|  
-|ValidationErrorPasswordRequired|Wymagane jest hasło.|  
-|WebAuthenticationPasswordResetSendNotice|Zmień wiadomość e-mail z potwierdzeniem hasła jest w drodze do {0}. Postępuj zgodnie z instrukcjami w wiadomości e-mail, aby kontynuować przetwarzanie zmiany hasła.|  
-|WebAuthenticationPasswordResetSendNoticeHeader|Pomyślnie przetworzono żądanie resetowania hasła|  
+|ValidationErrorPasswordRequired|Hasło jest wymagane.|  
+|WebAuthenticationPasswordResetSendNotice|Zmiana wiadomość e-mail z potwierdzeniem hasła znajduje się w sposób {0}. Postępuj zgodnie z instrukcjami w wiadomości e-mail, aby kontynuować proces zmiany hasła.|  
+|WebAuthenticationPasswordResetSendNoticeHeader|Żądanie zresetowania hasła zostało pomyślnie przetworzone|  
 |WebAuthenticationPasswordResetSendNoticeTitle|Zażądano zresetowania hasła|  
-|WebAuthenticationRequestNotFoundNotice|Nie znaleziono żądania|  
-|WebAuthenticationSenderEmailRequiredErrorMessage|Powiadomienia e-mail nadawcy jest pusty|  
-|WebAuthenticationSigninPasswordLabel|Potwierdź zmianę poprzez podanie hasła|  
-|WebAuthenticationSignupConfirmNotice|Wiadomość e-mail z potwierdzeniem rejestracji jest w drodze do {0}. < br /\> wykonaj instrukcje w wiadomości e-mail, aby aktywować konto. < br /\> Jeśli adres e-mail został odebrany w ciągu następnych kilku minut w Twojej skrzynce odbiorczej, sprawdź, czy Twoje wiadomości-śmieci folder poczty e-mail.|  
-|WebAuthenticationSignupConfirmNoticeHeader|Pomyślnie utworzono konto|  
-|WebAuthenticationSignupConfirmNoticeRepeatHeader|Wysłano wiadomość e-mail z potwierdzeniem rejestracji ponownie|  
+|WebAuthenticationRequestNotFoundNotice|Nie odnaleziono żądania|  
+|WebAuthenticationSenderEmailRequiredErrorMessage|Adres e-mail nadawcy powiadomień jest pusty|  
+|WebAuthenticationSigninPasswordLabel|Potwierdź zmianę, wprowadzając hasło|  
+|WebAuthenticationSignupConfirmNotice|Wiadomość e-mail z potwierdzeniem rejestracji została wysłana do {0}. < br /\> , postępuj zgodnie z instrukcjami w wiadomości e-mail, aby aktywować swoje konto. < br /\> Jeśli wiadomość e-mail nie dotrze do Twojej skrzynki odbiorczej w ciągu najbliższych kilku minut, Sprawdź folder wiadomości-śmieci.|  
+|WebAuthenticationSignupConfirmNoticeHeader|Twoje konto zostało pomyślnie utworzone|  
+|WebAuthenticationSignupConfirmNoticeRepeatHeader|Wiadomość e-mail z potwierdzeniem rejestracji została ponownie wysłana|  
 |WebAuthenticationSignupConfirmNoticeTitle|Utworzono konto|  
 |WebAuthenticationTokenRequiredErrorMessage|Token jest pusty|  
-|WebAuthenticationUserAlreadyRegisteredNotice|Wydaje się, że użytkownik z tej wiadomości e-mail jest już zarejestrowany w systemie. Jeśli nie pamiętasz hasła, spróbuj je przywrócić lub skontaktuj się z naszym zespołem pomocy technicznej.|  
-|WebAuthenticationUserAlreadyRegisteredNoticeHeader|Użytkownik już zarejestrowany|  
+|WebAuthenticationUserAlreadyRegisteredNotice|Wydaje się, że użytkownik mający ten adres e-mail jest już zarejestrowany w systemie. Jeśli nie pamiętasz hasła, spróbuj je przywrócić lub skontaktuj się z naszym zespołem pomocy technicznej.|  
+|WebAuthenticationUserAlreadyRegisteredNoticeHeader|Użytkownik jest już zarejestrowany|  
 |WebAuthenticationUserAlreadyRegisteredNoticeTitle|Już zarejestrowany|  
 |ButtonLabelChangePassword|Zmień hasło|  
-|ButtonLabelChangeAccountInfo|Zmień informacje o koncie|  
+|ButtonLabelChangeAccountInfo|Zmień informacje konta|  
 |ButtonLabelCloseAccount|Zamknij konto|  
-|WebAuthenticationInvalidCaptchaErrorMessage|Wprowadzony tekst nie jest zgodny tekst na obrazie. Spróbuj ponownie.|  
+|WebAuthenticationInvalidCaptchaErrorMessage|Wprowadzony tekst nie odpowiada tekstowi na obrazie. Spróbuj ponownie.|  
 |ValidationErrorCredentialsInvalid|Adres e-mail lub hasło jest nieprawidłowe. Popraw błędy i spróbuj ponownie.|  
 |WebAuthenticationRequestIsNotValid|Żądanie jest nieprawidłowe|  
-|WebAuthenticationUserIsNotConfirm|Potwierdź rejestrację, przed podjęciem próby wykonania do logowania.|  
-|WebAuthenticationInvalidEmailFormated|Poczta e-mail jest nieprawidłowy: {0}|  
+|WebAuthenticationUserIsNotConfirm|Potwierdź rejestrację, zanim spróbujesz się zalogować.|  
+|WebAuthenticationInvalidEmailFormated|Adres e-mail jest nieprawidłowy: {0}|  
 |WebAuthenticationUserNotFound|Nie znaleziono użytkownika|  
-|WebAuthenticationTenantNotRegistered|Używane konto należy do dzierżawy usługi Azure Active Directory, która nie ma uprawnień dostępu do tego portalu.|  
+|WebAuthenticationTenantNotRegistered|Twoje konto należy do dzierżawy usługi Azure Active Directory, która nie ma autoryzacji do uzyskiwania dostępu do tego portalu.|  
 |WebAuthenticationAuthenticationFailed|Uwierzytelnianie nie powiodło się.|  
-|WebAuthenticationGooglePlusNotEnabled|Uwierzytelnianie nie powiodło się. Jeśli autoryzowany aplikacji następnie skontaktuj skontaktuj się z pomocą administratora, aby upewnić się, że uwierzytelnianie Google jest poprawnie skonfigurowany.|  
-|ValidationErrorAllowedTenantIsRequired|Dozwolone dzierżawy jest wymagana|  
-|ValidationErrorTenantIsNotValid|Dzierżawy usługi Azure Active Directory "{0}" jest nieprawidłowy.|  
+|WebAuthenticationGooglePlusNotEnabled|Uwierzytelnianie nie powiodło się. Jeśli uprawnienia aplikacji następnie skontaktuj się z administratorem, aby upewnić się, że uwierzytelnianie serwisu Google jest poprawnie skonfigurowany.|  
+|ValidationErrorAllowedTenantIsRequired|Dozwolona dzierżawa jest wymagana|  
+|ValidationErrorTenantIsNotValid|Dzierżawy usługi Azure Active Directory "{0}" jest nieprawidłowa.|  
 |WebAuthenticationActiveDirectoryTitle|Usługa Azure Active Directory|  
-|WebAuthenticationLoginUsingYourProvider|Zaloguj się za pomocą konta {0}|  
-|WebAuthenticationUserLimitNotice|Ta usługa została osiągnięta maksymalna liczba dozwolonych użytkowników. Sprawdź `<a href="mailto:{0}"\>contact the administrator</a\>` do uaktualnienia usługi i ponownie Włącz rejestrację użytkownika.|  
-|WebAuthenticationUserLimitNoticeHeader|Rejestracja użytkownika wyłączone|  
-|WebAuthenticationUserLimitNoticeTitle|Rejestracja użytkownika wyłączone|  
-|WebAuthenticationUserRegistrationDisabledNotice|Rejestracja użytkowników została wyłączona przez administratora. Zaloguj się z dostawcą tożsamości zewnętrznej.|  
-|WebAuthenticationUserRegistrationDisabledNoticeHeader|Rejestracja użytkownika wyłączone|  
-|WebAuthenticationUserRegistrationDisabledNoticeTitle|Rejestracja użytkownika wyłączone|  
-|WebAuthenticationSignupPendingConfirmationNotice|Przed możemy ukończyć tworzenia Twoje konto, musimy zweryfikować adres e-mail. Wysłaliśmy wiadomość e-mail do {0}. Postępuj zgodnie z instrukcjami w wiadomości e-mail, aby aktywować konto. Jeśli adres e-mail nie dostarczona w ciągu następnych kilku minut, sprawdź folder wiadomości-śmieci.|  
-|WebAuthenticationSignupPendingConfirmationAccountFoundNotice|Znaleziono niepotwierdzone konta dla adresu e-mail {0}. Aby zakończyć tworzenie Twoje konto, musimy zweryfikować adres e-mail. Wysłaliśmy wiadomość e-mail do {0}. Postępuj zgodnie z instrukcjami w wiadomości e-mail, aby aktywować konto. Jeśli adres e-mail nie dostarczona w ciągu następnych kilku minut, sprawdź folder wiadomości-śmieci|  
+|WebAuthenticationLoginUsingYourProvider|Zaloguj się przy użyciu usługi {0} konta|  
+|WebAuthenticationUserLimitNotice|Ta usługa osiągnęła maksymalną liczbę dozwolonych użytkowników. Proszę `<a href="mailto:{0}"\>contact the administrator</a\>` uaktualnić ich usługę i ponownie włączyć rejestrację użytkowników.|  
+|WebAuthenticationUserLimitNoticeHeader|Rejestracja użytkowników jest wyłączona|  
+|WebAuthenticationUserLimitNoticeTitle|Rejestracja użytkowników jest wyłączona|  
+|WebAuthenticationUserRegistrationDisabledNotice|Rejestracja użytkowników została wyłączona przez administratora. Zaloguj się przy użyciu zewnętrznego dostawcy tożsamości.|  
+|WebAuthenticationUserRegistrationDisabledNoticeHeader|Rejestracja użytkowników jest wyłączona|  
+|WebAuthenticationUserRegistrationDisabledNoticeTitle|Rejestracja użytkowników jest wyłączona|  
+|WebAuthenticationSignupPendingConfirmationNotice|Zanim będziemy mogli zakończyć tworzenie Twojego konta, musimy zweryfikować Twój adres e-mail. Wysłaliśmy wiadomość e-mail na adres {0}. Postępuj zgodnie z instrukcjami wewnątrz tej wiadomości, aby aktywować konto. Jeśli wiadomość e-mail nie dotrze w ciągu najbliższych kilku minut, sprawdź folder wiadomości-śmieci.|  
+|WebAuthenticationSignupPendingConfirmationAccountFoundNotice|Znaleźliśmy niepotwierdzone konto dla adresu e-mail {0}. Aby zakończyć tworzenie Twojego konta, musimy zweryfikować Twój adres e-mail. Wysłaliśmy wiadomość e-mail na adres {0}. Postępuj zgodnie z instrukcjami wewnątrz tej wiadomości, aby aktywować konto. Jeśli wiadomość e-mail nie dotrze w ciągu najbliższych kilku minut, sprawdź folder wiadomości-śmieci|  
 |WebAuthenticationSignupConfirmationAlmostDone|Prawie gotowe|  
-|WebAuthenticationSignupConfirmationEmailSent|Wysłaliśmy wiadomość e-mail do {0}. Postępuj zgodnie z instrukcjami w wiadomości e-mail, aby aktywować konto. Jeśli adres e-mail nie dostarczona w ciągu następnych kilku minut, sprawdź folder wiadomości-śmieci.|  
+|WebAuthenticationSignupConfirmationEmailSent|Wysłaliśmy wiadomość e-mail na adres {0}. Postępuj zgodnie z instrukcjami wewnątrz tej wiadomości, aby aktywować konto. Jeśli wiadomość e-mail nie dotrze w ciągu najbliższych kilku minut, sprawdź folder wiadomości-śmieci.|  
 |WebAuthenticationEmailSentNotificationMessage|Wiadomość e-mail została wysłana do {0}|  
-|WebAuthenticationNoAadTenantConfigured|Nie skonfigurowane dla usługi dzierżawy usługi Azure Active Directory.|  
+|WebAuthenticationNoAadTenantConfigured|Brak skonfigurowanej dzierżawy usługi Azure Active Directory dla usługi.|  
 |CheckboxLabelUserRegistrationTermsConsentRequired|Zgadzam się na `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use</a\>`.|  
-|TextblockUserRegistrationTermsProvided|Zapoznaj się z tematem`<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>`|  
+|TextblockUserRegistrationTermsProvided|Przejrzyj `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>`|  
 |DialogHeadingTermsOfUse|Warunki użytkowania|  
-|ValidationMessageConsentNotAccepted|Aby kontynuować, musisz zaakceptować warunki użytkowania.|  
+|ValidationMessageConsentNotAccepted|Musisz zgodzić się na Warunki użytkowania, zanim będzie można kontynuować.|  
   
-###  <a name="SigninStrings"></a>SigninStrings  
+###  <a name="SigninStrings"></a> SigninStrings  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
 |WebAuthenticationForgotPassword|Nie pamiętasz hasła?|  
-|WebAuthenticationIfAdministrator|Jeśli jesteś administratorem należy zalogować się `<a href="{0}"\>here</a\>`.|  
-|WebAuthenticationNotAMember|Nie w elemencie członkowskim jeszcze? `<a href="/signup"\>Sign up now</a\>`|  
-|WebAuthenticationRemember|Zapamiętaj mnie na tym komputerze|  
-|WebAuthenticationSigininWithPassword|Zaloguj się przy użyciu nazwy użytkownika i hasła|  
+|WebAuthenticationIfAdministrator|Jeśli jesteś administratorem, musisz zalogować się `<a href="{0}"\>here</a\>`.|  
+|WebAuthenticationNotAMember|Nie jesteś jeszcze członkiem? `<a href="/signup"\>Sign up now</a\>`|  
+|WebAuthenticationRemember|Pamiętaj mnie na tym komputerze|  
+|WebAuthenticationSigininWithPassword|Zaloguj się za pomocą nazwy użytkownika i hasła|  
 |WebAuthenticationSigninTitle|Logowanie|  
 |WebAuthenticationSignUpNow|Utwórz konto teraz|  
   
-###  <a name="SignupStrings"></a>SignupStrings  
+###  <a name="SignupStrings"></a> SignupStrings  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
 |PageTitleSignup|Rejestrowanie|  
 |WebAuthenticationAlreadyAMember|Jesteś już członkiem?|  
 |WebAuthenticationCreateNewAccount|Utwórz nowe konto usługi API Management|  
-|WebAuthenticationSigninNow|Zaloguj się teraz|  
+|WebAuthenticationSigninNow|Logowanie|  
 |ButtonLabelSignup|Rejestrowanie|  
   
-###  <a name="SubscriptionListStrings"></a>SubscriptionListStrings  
+###  <a name="SubscriptionListStrings"></a> SubscriptionListStrings  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
 |SubscriptionCancelConfirmation|Czy na pewno chcesz anulować tę subskrypcję?|  
-|SubscriptionRenewConfirmation|Czy na pewno chcesz odnawiać tę subskrypcję?|  
+|SubscriptionRenewConfirmation|Czy na pewno chcesz odnowić tę subskrypcję?|  
 |WebDevelopersManageSubscriptions|Zarządzanie subskrypcjami|  
 |WebDevelopersPrimaryKey|Klucz podstawowy|  
 |WebDevelopersRegenerateLink|Regenerate|  
@@ -516,66 +518,66 @@ Zarządzanie interfejsami API Azure zapewnia następujące typy zasobów do uży
 |ButtonLabelShowKey|Show|  
 |ButtonLabelRenewSubscription|Renew|  
 |WebDevelopersSubscriptionReqested|Żądana {0}|  
-|WebDevelopersSubscriptionRequestedState|Żądanie|  
-|WebDevelopersSubscriptionTableNameHeader|Nazwa|  
+|WebDevelopersSubscriptionRequestedState|Żądane|  
+|WebDevelopersSubscriptionTableNameHeader|Name (Nazwa)|  
 |WebDevelopersSubscriptionTableStateHeader|Stan|  
 |WebDevelopersUsageStatisticsLink|Raporty analizy|  
-|WebDevelopersYourSubscriptions|Subskrypcji|  
-|SubscriptionPropertyLabelRequestedDate|Żądana|  
-|SubscriptionPropertyLabelStartedDate|Uruchomiona na|  
+|WebDevelopersYourSubscriptions|Twoje subskrypcje|  
+|SubscriptionPropertyLabelRequestedDate|Żądanie zgłoszone w dniu|  
+|SubscriptionPropertyLabelStartedDate|Rozpoczęto|  
 |PageTitleRenameSubscription|Zmień nazwę subskrypcji|  
 |SubscriptionPropertyLabelName|Nazwa subskrypcji|  
   
-###  <a name="SubscriptionStrings"></a>SubscriptionStrings  
+###  <a name="SubscriptionStrings"></a> SubscriptionStrings  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
-|SectionHeadingCloseAccount|Wyszukiwanie, aby zamknąć konto?|  
+|SectionHeadingCloseAccount|Szukasz możliwości zamknięcia konta?|  
 |PageTitleDeveloperProfile|Profil|  
 |ButtonLabelHideKey|Ukryj|  
 |ButtonLabelRegenerateKey|Regenerate|  
-|InformationMessageKeyWasRegenerated|Czy na pewno chcesz ponownie wygenerować klucz ten?|  
+|InformationMessageKeyWasRegenerated|Czy na pewno chcesz ponownie wygenerować ten klucz?|  
 |ButtonLabelShowKey|Show|  
   
-###  <a name="UpdateProfileStrings"></a>UpdateProfileStrings  
+###  <a name="UpdateProfileStrings"></a> UpdateProfileStrings  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
-|ButtonLabelUpdateProfile|Aktualizuj profil|  
+|ButtonLabelUpdateProfile|Aktualizowanie profilu|  
 |PageTitleUpdateProfile|Aktualizowanie informacji o koncie|  
   
-###  <a name="UserProfile"></a>UserProfile  
+###  <a name="UserProfile"></a> UserProfile  
   
-|Nazwa|Tekst|  
+|Name (Nazwa)|Tekst|  
 |----------|----------|  
-|ButtonLabelChangeAccountInfo|Zmień informacje o koncie|  
+|ButtonLabelChangeAccountInfo|Zmień informacje konta|  
 |ButtonLabelChangePassword|Zmień hasło|  
 |ButtonLabelCloseAccount|Zamknij konto|  
-|TextboxLabelEmail|Adres e-mail|  
+|TextboxLabelEmail|Email|  
 |TextboxLabelEmailFirstName|Imię|  
 |TextboxLabelEmailLastName|Nazwisko|  
-|TextboxLabelNotificationsSenderEmail|Powiadomienia e-mail nadawcy|  
+|TextboxLabelNotificationsSenderEmail|Adres e-mail nadawcy dla powiadomień|  
 |TextboxLabelOrganizationName|Nazwa organizacji|  
 |SubscriptionStateActive|Aktywne|  
-|SubscriptionStateCancelled|Anulowane|  
-|SubscriptionStateExpired|Ważność|  
+|SubscriptionStateCancelled|Anulowana|  
+|SubscriptionStateExpired|Wygaśnięcie|  
 |SubscriptionStateRejected|Odrzucone|  
-|SubscriptionStateRequested|Żądanie|  
+|SubscriptionStateRequested|Żądane|  
 |SubscriptionStateSuspended|Zawieszone|  
-|DefaultSubscriptionNameTemplate|{0} (ustawienie domyślne)|  
-|SubscriptionNameTemplate|Dostęp Developer #{0}|  
+|DefaultSubscriptionNameTemplate|{0}  (ustawienie domyślne)|  
+|SubscriptionNameTemplate|Deweloper dostępu #{0}|  
 |TextboxLabelSubscriptionName|Nazwa subskrypcji|  
 |ValidationMessageSubscriptionNameRequired|Nazwa subskrypcji nie może być pusta.|  
-|ApiManagementUserLimitReached|Ta usługa została osiągnięta maksymalna liczba dozwolonych użytkowników. Przeprowadź uaktualnienie do wyższej warstwy cenowej.|  
+|ApiManagementUserLimitReached|Ta usługa osiągnęła maksymalną liczbę dozwolonych użytkowników. Przeprowadź uaktualnienie do wyższej warstwy cenowej.|  
   
-##  <a name="glyphs"></a>Zasoby symbolu  
- Zarządzanie interfejsami API developer portal szablonów można użyć symboli z [Glyphicons od początkowego](http://getbootstrap.com/components/#glyphicons). Ten zestaw symboli zawiera ponad 250 symboli w formacie czcionki z [Glyphicon](http://glyphicons.com/) Halflings ustawiony. Aby użyć symbolu z tego zestawu, użyj następującej składni.  
+##  <a name="glyphs"></a> Zasoby glifów  
+ Szablonów portalu dla deweloperów usługi API Management służy symbole z [Glyphicons z Bootstrap](http://getbootstrap.com/components/#glyphicons). Ten zestaw symbole obejmuje ponad 250 symbole w formacie czcionki na podstawie [Glyphicon](http://glyphicons.com/) Halflings zestawu. Aby użyć symbolu z tego zestawu, należy użyć następującej składni.  
   
 ```html  
 <span class="glyphicon glyphicon-user">  
 ```  
   
- Aby uzyskać pełną listę symboli, zobacz [Glyphicons od początkowego](http://getbootstrap.com/components/#glyphicons).
+ Aby uzyskać pełną listę symbole, zobacz [Glyphicons z Bootstrap](http://getbootstrap.com/components/#glyphicons).
 
-## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [dostosowywaniu portalu dla deweloperów interfejsu API zarządzania za pomocą szablonów](api-management-developer-portal-templates.md).
+## <a name="next-steps"></a>Kolejne kroki
+Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [Dostosowywanie portalu dla deweloperów usługi API Management przy użyciu szablonów](api-management-developer-portal-templates.md).

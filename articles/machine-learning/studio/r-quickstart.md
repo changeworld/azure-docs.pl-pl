@@ -1,5 +1,5 @@
 ---
-title: Samouczek szybkiego startu dotyczący języka R dla usługi Machine Learning | Dokumentacja firmy Microsoft
+title: Samouczek szybkiego startu dotyczący języka R dla usługi Machine Learning Studio — Azure | Dokumentacja firmy Microsoft
 description: Aby rozpocząć pracę, szybko przy użyciu języka R za pomocą usługi Azure Machine Learning Studio do tworzenia rozwiązania do prognozowania, należy użyć w tym samouczku programowania R.
 keywords: Przewodnik Szybki Start, języka r, język programowania r, samouczek programowania r
 services: machine-learning
@@ -17,14 +17,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 028672a9bb0fb1aa256083a0422cc1c565977250
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: eea61419e76f4363a286f796e6df28a4e90a9ed7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265325"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317674"
 ---
-# <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Samouczek szybkiego startu dotyczący języka programowania R dla usługi Azure Machine Learning
+# <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Samouczek szybkiego startu dotyczący języka programowania R dla usługi Azure Machine Learning Studio
 
 <!-- Stephen F Elston, Ph.D. -->
 

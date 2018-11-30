@@ -2,25 +2,21 @@
 title: Eksplorowanie danych tabel programu Hive za pomocą zapytań Hive | Dokumentacja firmy Microsoft
 description: Eksplorowanie danych tabel programu Hive przy użyciu zapytań programu Hive.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 0d46cea5-2b4c-4384-9bfa-fa20f6f75148
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: deguhath
-ms.openlocfilehash: 84bc7ee08c6c98e76c3814f8a59dfa300db9d22d
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: c50c6de28c60bbe6a6c0d510e62f35cd037d6e95
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344581"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443316"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>Eksplorowanie danych tabel programu Hive za pomocą zapytań Hive
 

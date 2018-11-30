@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: c6c63b7b66114a8c35986b443bda78442b8edd7a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f0792e220b27ec564c124f610d0616d0873e2d68
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237744"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447014"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Porady dotyczące wydajności usługi Azure Cosmos DB i Java
 
@@ -81,7 +81,7 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
 
 4. **Dostosowywanie zapytania równolegle do kolekcji podzielonych na partycje**
 
-    Usługa Azure Cosmos DB SQL zestawu Java SDK w wersji 1.9.0 i nowszych zapytania równoległe pomocy technicznej, które umożliwiają kwerenda dotycząca kolekcji partycjonowanej równolegle (zobacz [Praca z zestawami SDK](sql-api-partition-data.md#working-with-the-azure-cosmos-db-sdks) i powiązane [przykłady kodu](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples) dla więcej informacji). Zapytania równoległe są przeznaczone do kwerendy opóźnienia i przepływności starają się ich odpowiedników szeregowe.
+    Usługa Azure Cosmos DB SQL zestawu Java SDK w wersji 1.9.0 i nowszych zapytania równoległe pomocy technicznej, które umożliwiają kwerenda dotycząca kolekcji partycjonowanej równolegle. Aby uzyskać więcej informacji, zobacz [przykłady kodu](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples) związanych z pracą z zestawami SDK. Zapytania równoległe są przeznaczone do kwerendy opóźnienia i przepływności starają się ich odpowiedników szeregowe.
 
     () ***dostrajania setMaxDegreeOfParallelism\:***  równoległe zapytania pracy, badając równocześnie wiele partycji. Jednak dane z poszczególnych kolekcji partycjonowanej pobieranych szeregowo w odniesieniu do zapytania. Tak, użyj [setMaxDegreeOfParallelism](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_options.setmaxdegreeofparallelism) można ustawić liczby partycji ma maksymalną prawdopodobieństwo osiągnięcia najbardziej wydajne zapytania, pod warunkiem inne warunki systemu pozostają takie same. Jeśli nie znasz liczby partycji setMaxDegreeOfParallelism umożliwia ustawianie dużą liczbą, a system wybiera co najmniej (liczba partycji, dane wejściowe podane przez użytkownika), jako maksymalny stopień równoległości. 
 

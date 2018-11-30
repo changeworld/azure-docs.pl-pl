@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4206301296c94bd0d24743854756ac6dd1d712dd
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c8b54631f0d37e0e90135dd9e23ff85591cead1b
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014333"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495364"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Publikowanie aplikacji HDInsight w witrynie Azure Marketplace
 Aplikacja usługi Azure HDInsight można zainstalować w klastrze HDInsight opartych na systemie Linux. Ten artykuł zawiera informacje o sposobie publikowania aplikacji HDInsight w portalu Azure Marketplace. Aby uzyskać ogólne informacje o funkcji publikowania w witrynie Azure Marketplace, zobacz [publikowanie oferty w portalu Azure Marketplace](../marketplace/marketplace-publishers-guide.md).
@@ -102,6 +102,6 @@ Publikowanie aplikacji HDInsight:
 * Dowiedz się, jak [instalowanie aplikacji HDInsight](hdinsight-apps-install-applications.md) w klastrach.
 * Dowiedz się, jak [instalowanie niestandardowych aplikacji HDInsight](hdinsight-apps-install-custom-applications.md) i wdrażanie cofnięto publikowanie aplikacji HDInsight HDInsight.
 * Dowiedz się, jak [użyć akcji skryptu, aby dostosować klastry HDInsight opartych na systemie Linux](hdinsight-hadoop-customize-cluster-linux.md) i dodawanie większej liczby aplikacji. 
-* Dowiedz się, jak [Tworzenie klastrów opartą na systemie Linux platformą Hadoop w HDInsight przy użyciu szablonów usługi Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
+* Dowiedz się, jak [Tworzenie klastrów opartych na systemie Linux Apache Hadoop w HDInsight przy użyciu szablonów usługi Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 * Dowiedz się, jak [użyć pustego węzła krawędzi w HDInsight](hdinsight-apps-use-edge-node.md) dostępu klastrów HDInsight, do testowania aplikacji HDInsight i hostowanie aplikacji HDInsight.
 

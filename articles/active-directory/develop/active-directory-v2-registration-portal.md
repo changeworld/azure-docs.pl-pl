@@ -17,12 +17,12 @@ ms.date: 08/28/2018
 ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: bebabad4c7beb27022e12e5d48b77d88fc054fc2
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 0a9ec2e84197729f98fbf90bac53b505a8c99a19
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190119"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427347"
 ---
 # <a name="app-registration-reference"></a>Dokumentacja rejestracji aplikacji
 Ten dokument zawiera kontekstu i opisy różnych funkcji dostępnych w [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/).
@@ -37,7 +37,7 @@ Ta lista zawiera wszystkie aplikacje zarejestrowana do użycia z punktem końcow
 Ta lista zawiera wszystkie aplikacje zarejestrowana do użycia wyłącznie przy użyciu konta Microsoft. Nie są włączone do użycia z usługą Azure Active Directory. Jest to, gdzie znaleźć wszystkie aplikacje, które zostały wcześniej zarejestrowane za pomocą portalu dla deweloperów MSA w `https://account.live.com/developers/applications`. Wszystkie funkcje, które były wykonywane w `https://account.live.com/developers/applications` można teraz wykonać w nowym portalu, `https://apps.dev.microsoft.com`.
 
 ## <a name="application-secrets"></a>Wpisy tajne aplikacji
-Wpisy tajne aplikacji są poświadczenia, które umożliwią niezawodnych aplikacji do wykonywania [uwierzytelnianie klienta](http://tools.ietf.org/html/rfc6749#section-2.3) z usługą Azure AD. W OAuth i OpenID Connect, wpis tajny aplikacji jest często nazywany `client_secret`. Za pomocą protokołu w wersji 2.0, każda aplikacja, która odbiera token zabezpieczający lokalizacji adresy sieci web (przy użyciu `https` schemat) należy użyć wpis tajny aplikacji do zidentyfikowania się do usługi Azure AD podczas realizacji tego tokenu zabezpieczającego. Ponadto natywnego klienta, który odbiera tokenów na urządzeniu z systemem będzie zabronione z klucz tajny aplikacji w celu przeprowadzenia uwierzytelniania klienta. Przechowywanie kluczy tajnych w środowiskach niezabezpieczone to zniechęcać.
+Wpisy tajne aplikacji są poświadczenia, które umożliwią niezawodnych aplikacji do wykonywania [uwierzytelnianie klienta](https://tools.ietf.org/html/rfc6749#section-2.3) z usługą Azure AD. W OAuth i OpenID Connect, wpis tajny aplikacji jest często nazywany `client_secret`. Za pomocą protokołu w wersji 2.0, każda aplikacja, która odbiera token zabezpieczający lokalizacji adresy sieci web (przy użyciu `https` schemat) należy użyć wpis tajny aplikacji do zidentyfikowania się do usługi Azure AD podczas realizacji tego tokenu zabezpieczającego. Ponadto natywnego klienta, który odbiera tokenów na urządzeniu z systemem będzie zabronione z klucz tajny aplikacji w celu przeprowadzenia uwierzytelniania klienta. Przechowywanie kluczy tajnych w środowiskach niezabezpieczone to zniechęcać.
 
 Każda aplikacja może zawierać dwóch wpisów tajnych aplikacji prawidłowy w danym momencie. Dzięki przechowywaniu dwóch wpisów tajnych, masz możliwość wykonywania okresowe przerzucania klucza w środowisku całej aplikacji. Gdy zakończysz migrację całej aplikacji, aby nowe hasło, możesz usunąć stary klucz tajny i aprowizować nowe.
 
@@ -45,7 +45,7 @@ W tej chwili w portalu rejestracji aplikacji dozwolone są tylko dwa typy wpisó
 Musisz przekazać certyfikat, który zawiera klucz publiczny.
 
 ## <a name="profile"></a>Profil
-Sekcji profilu w portalu rejestracji aplikacji może służyć do dostosowania strony logowania w aplikacji. W tej chwili można zmieniać logowania strony aplikacji logo, warunków użytkowania adres URL usługi i adres URL zasad zachowania poufności informacji. Logo musi być przezroczystym obrazem o wymiarach 48 x 48 lub 50 x 50 pikseli w formacie pliku GIF, PNG lub JPEG o maksymalnym rozmiarze 15 KB. Spróbuj zmianę wartości i wyświetlanie wynikowych strony logowania!
+Sekcji profilu w portalu rejestracji aplikacji może służyć do dostosowania strony logowania w aplikacji. W tej chwili można zmieniać logowania strony aplikacji logo, warunków użytkowania adres URL usługi i adres URL zasad zachowania poufności informacji. Logo musi być przezroczystym 48 x 48 lub 50 x 50 pikseli obraz w pliku GIF, PNG lub JPEG, który wynosi 15 KB lub mniejszy. Spróbuj zmianę wartości i wyświetlanie wynikowych strony logowania!
 
 ## <a name="live-sdk-support"></a>Zestaw Live SDK pomocy technicznej
 Po włączeniu "Zestaw SDK pomocy technicznej na żywo" do usługi Azure AD będą udostępniane żadnych wpisów tajnych aplikacji, możesz utworzyć i magazynów danych Account firmy Microsoft. Dzięki temu aplikację, aby łączyć bezpośrednio z usługi Microsoft Account (login.live.com). Jeśli chcesz tworzyć aplikacje przy użyciu Account Microsoft bezpośrednio (zamiast przy użyciu punktu końcowego v2.0 usługi Azure AD), należy upewnić się, czy włączona jest obsługa zestawu SDK na żywo.

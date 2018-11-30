@@ -9,19 +9,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: c364f9d06d29a601dfb9598bb568e7a6218d0a6f
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 8c3e3fa6dee41725c95be6f820440f6be50c53e6
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013806"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496485"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Znane problemy dotyczące klastra Apache Spark w HDInsight
 
 W tym dokumencie przechowuje informacje o znanych problemów w publicznej wersji zapoznawczej platformy HDInsight Spark.  
 
-## <a name="livy-leaks-interactive-session"></a>Usługi Livy przecieków interaktywnej sesji
-Gdy usługi Livy zostanie uruchomiony ponownie (od Ambari lub z powodu ponownego uruchomienia maszyny wirtualnej węzłem głównym 0) przy użyciu interaktywnej sesji wciąż jest aktywny, następuje przeciek sesję zadania interaktywnego. Co w efekcie nowe zadania mogą zostać zatrzymane w stanie zaakceptowane.
+## <a name="apache-livy-leaks-interactive-session"></a>Apache, usługi Livy przecieków interaktywnej sesji
+Gdy [Apache, usługi Livy](https://livy.incubator.apache.org/) powoduje ponowne uruchomienie (z [Apache Ambari](https://ambari.apache.org/) lub z powodu ponownego uruchomienia maszyny wirtualnej węzłem głównym 0) przy użyciu interaktywnej sesji wciąż jest aktywny, następuje przeciek sesję zadania interaktywnego. Co w efekcie nowe zadania mogą zostać zatrzymane w stanie zaakceptowane.
 
 **Środki zaradcze:**
 
@@ -33,7 +33,7 @@ Aby obejść ten problem, należy użyć następującej procedury:
    
         yarn application –list
    
-    Jeśli zadania zostały uruchomione przy użyciu usługi Livy interaktywnych sesji z nie jawnej nazwy określone domyślne nazwy zadania zostaną usługi Livy. Dla tej sesji usługi Livy uruchomione przez notesu programu Jupyter Nazwa zadania rozpoczyna się od remotesparkmagics_ *. 
+    Jeśli zadania zostały uruchomione przy użyciu usługi Livy interaktywnych sesji z nie jawnej nazwy określone domyślne nazwy zadania zostaną usługi Livy. W sesji usługi Livy uruchomione przez [notesu programu Jupyter](https://jupyter.org/), rozpoczyna się remotesparkmagics_ * Nazwa zadania. 
 3. Uruchom następujące polecenie, aby skasować te zadania. 
    
         yarn application –kill <Application ID>
@@ -112,20 +112,20 @@ Gdy klaster Spark jest za mało zasobów, Spark i PySpark jądra w notesie Jupyt
 * [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenariusze
-* [Platforma Spark i analiza biznesowa: interakcyjna analiza danych na platformie Spark w usłudze HDInsight z użyciem narzędzi do analizy biznesowej](apache-spark-use-bi-tools.md)
-* [Platforma Spark i usługa Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do analizy temperatury w budynku z użyciem danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Platforma Spark i usługa Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników kontroli żywności](apache-spark-machine-learning-mllib-ipython.md)
-* [Analiza dzienników witryny sieci Web na platformie Spark w usłudze HDInsight](apache-spark-custom-library-website-log-analysis.md)
+* [Platforma Apache Spark w usłudze BI: interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](apache-spark-use-bi-tools.md)
+* [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do analizy temperatury w budynku z użyciem danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do przewidywania wyników kontroli żywności](apache-spark-machine-learning-mllib-ipython.md)
+* [Analiza dziennika witryny sieci Web przy użyciu platformy Apache Spark w HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Tworzenie i uruchamianie aplikacji
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](apache-spark-create-standalone-application.md)
-* [Zdalne uruchamianie zadań w klastrze Spark przy użyciu programu Livy](apache-spark-livy-rest-interface.md)
+* [Zdalne uruchamianie zadań w klastrze usługi Apache Spark przy użyciu programu Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Narzędzia i rozszerzenia
 * [Tworzenie i przesyłanie aplikacji Spark Scala przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin.md)
-* [Zdalne debugowanie aplikacji Spark przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Korzystanie z notesów Zeppelin w klastrze Spark w usłudze HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jądra dostępne dla notesu Jupyter w klastrze Spark w usłudze HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Zdalne debugowanie aplikacji platformy Apache Spark przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Korzystanie z notesów Apache Zeppelin na HDInsight klastra Apache Spark](apache-spark-zeppelin-notebook.md)
+* [Jądra dostępne dla notesu Jupyter w klastrze Apache Spark dla HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Korzystanie z zewnętrznych pakietów z notesami Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalacja oprogramowania Jupyter na komputerze i nawiązywanie połączenia z klastrem Spark w usłudze HDInsight](apache-spark-jupyter-notebook-install-locally.md)
 

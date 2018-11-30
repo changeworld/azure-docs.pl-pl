@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 21fa41db2e205a7b17deae6d018308fe6e7ff213
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: fd9094d646b917cf811c28c9770fc2427a404ab4
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006774"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309042"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Replikowanie tematów platformy Apache Kafka z platformą Kafka w HDInsight przy użyciu narzędzia MirrorMaker
 
@@ -25,11 +25,11 @@ W tym przykładzie dublowania umożliwia replikowanie tematów między dwoma kla
 > [!WARNING]
 > Dublowanie nie być traktowane jako oznacza, że uzyskanie odporności na uszkodzenia. Przesunięcie do elementów w ramach tematu różnią się między klastrami źródłowym i docelowym, dzięki czemu klienci nie mogą używać dwóch zamiennie.
 >
-> Jeśli jesteś zajmującym się ochroną odporności na uszkodzenia, należy ustawić replikacji dla tematów w klastrze. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z platformą Kafka w HDInsight](apache-kafka-get-started.md).
+> Jeśli jesteś zajmującym się ochroną odporności na uszkodzenia, należy ustawić replikacji dla tematów w klastrze. Aby uzyskać więcej informacji, zobacz [wprowadzenie do platformy Apache Kafka w HDInsight](apache-kafka-get-started.md).
 
-## <a name="how-kafka-mirroring-works"></a>Jak działa platforma Kafka dublowania
+## <a name="how-apache-kafka-mirroring-works"></a>Jak działa platforma Apache Kafka dublowania
 
-Dublowanie działa przy użyciu narzędzia MirrorMaker narzędzia (część platformy Apache Kafka) do używanie rekordów z tematów w klastrze źródłowym, a następnie utwórz kopię lokalną, w klastrze docelowym. Narzędzia MirrorMaker wykorzystuje jedną (lub więcej) *konsumentów* odczytanej z klastra źródłowego i *producentów* zapisuje klastra lokalnego (docelowy).
+Za pomocą funkcji dublowania działa [narzędzia MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) narzędzia (część platformy Apache Kafka), aby używać rekordów z tematów w klastrze źródłowym, a następnie utworzyć lokalną kopię w klastrze docelowym. Narzędzia MirrorMaker wykorzystuje jedną (lub więcej) *konsumentów* odczytanej z klastra źródłowego i *producentów* zapisuje klastra lokalnego (docelowy).
 
 Poniższy diagram ilustruje proces dublowania:
 
@@ -56,7 +56,7 @@ Jeśli zachodzi potrzeba utworzenia duplikatów między klastrami Kafka w różn
 
 Aby uzyskać więcej informacji na temat łączenia dwóch sieci wirtualnych platformy Azure, zobacz [Konfigurowanie połączenia sieć wirtualna-sieć wirtualna](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
 
-## <a name="create-kafka-clusters"></a>Tworzenie klastrów platformy Kafka
+## <a name="create-apache-kafka-clusters"></a>Tworzenie klastrów platformy Apache Kafka
 
 Podczas tworzenia sieci wirtualnej platformy Azure, a następnie ręcznie klastry platformy Kafka, łatwiej jest używać szablonu usługi Azure Resource Manager. Wykonaj następujące kroki, aby wdrożyć siecią wirtualną platformy Azure i dwa klastry platformy Kafka z subskrypcją platformy Azure.
 
@@ -106,7 +106,7 @@ Podczas tworzenia sieci wirtualnej platformy Azure, a następnie ręcznie klastr
 
     Aby uzyskać informacje, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Aby znaleźć hosty dozorcy dla źródłowego klastra, użyj następujących poleceń:
+2. Aby znaleźć hosty Apache Zookeeper dla źródłowego klastra, użyj następujących poleceń:
 
     ```bash
     # Install jq if it is not installed
@@ -295,10 +295,10 @@ Ponieważ kroki opisane w tym dokumencie utworzyć obu klastrach w tej samej gru
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym dokumencie przedstawiono sposób tworzenia klastra platformy Kafka repliki przy użyciu narzędzia MirrorMaker. Użyj następujących linków, aby poznać inne sposoby pracy z platformą Kafka:
+W tym dokumencie przedstawiono sposób użycia [narzędzia MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) utworzyć replikę [platformy Apache Kafka](https://kafka.apache.org/) klastra. Użyj następujących linków, aby poznać inne sposoby pracy z platformą Kafka:
 
 * [Dokumentacja usługi Apache Kafka z narzędzia MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) na cwiki.apache.org.
 * [Wprowadzenie do platformy Apache Kafka w HDInsight](apache-kafka-get-started.md)
-* [Używanie platformy Apache Spark z platformą Kafka w usłudze HDInsight](../hdinsight-apache-spark-with-kafka.md)
-* [Używanie systemu Apache Storm z platformą Kafka w usłudze HDInsight](../hdinsight-apache-storm-with-kafka.md)
-* [Nawiązywanie połączenia z platformą Kafka za pośrednictwem sieci wirtualnej platformy Azure](apache-kafka-connect-vpn-gateway.md)
+* [Korzystanie z platformy Apache Spark z platformą Apache Kafka w HDInsight](../hdinsight-apache-spark-with-kafka.md)
+* [Używanie systemu Apache Storm z platformą Apache Kafka w HDInsight](../hdinsight-apache-storm-with-kafka.md)
+* [Łączenie do platformy Apache Kafka za pośrednictwem sieci wirtualnej platformy Azure](apache-kafka-connect-vpn-gateway.md)

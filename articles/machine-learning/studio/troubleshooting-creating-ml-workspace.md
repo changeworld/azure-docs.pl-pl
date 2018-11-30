@@ -1,6 +1,6 @@
 ---
-title: 'Rozwiązywanie problemów: Tworzenie i łączenie do obszaru roboczego usługi Machine Learning | Dokumentacja firmy Microsoft'
-description: Rozwiązania typowych problemów z tworzeniem i nawiązywania połączenia z obszarem roboczym usługi Azure Machine Learning
+title: 'Rozwiązywanie problemów: Tworzenie, łączenie do obszaru roboczego usługi Machine Learning Studio — Azure | Dokumentacja firmy Microsoft'
+description: Ten przewodnik zawiera temat rozwiązania niektórych często spotykanych wyzwania podczas konfigurowania obszary robocze usługi Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: f86018c78de842717bf387c007fdd4c7cd048ef1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 5e52abeeef7d40ac5594f4edfa2b80ef553081e4
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265206"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312064"
 ---
-# <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-workspace"></a>Podręcznik rozwiązywania problemów: tworzenie obszaru roboczego usługi Machine Learning i nawiązywanie połączenia z nim
-Ten przewodnik zawiera temat rozwiązania niektórych często spotykanych wyzwania podczas konfigurowania obszary robocze usługi Azure Machine Learning.
+# <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-studio-workspace"></a>Przewodnik rozwiązywania problemów: tworzenie i łączenie z obszaru roboczego usługi Machine Learning Studio
+Ten przewodnik zawiera temat rozwiązania niektórych często spotykanych wyzwania podczas konfigurowania obszary robocze usługi Azure Machine Learning Studio.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 

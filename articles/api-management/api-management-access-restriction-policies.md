@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 4dd54a4a4985a33bc14022d7f722bdf83224c4aa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 10023d34a245f9493cfe244882dbdc1351a78513
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240855"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447218"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zasady ograniczeń dostępu do usługi API Management
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -133,6 +133,10 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 -   **Zakresy zasad:** produktu  
   
 ##  <a name="LimitCallRateByKey"></a> Ograniczanie liczby wywołań według klucza  
+
+> [!IMPORTANT]
+> Ta funkcja jest niedostępna w **zużycie** warstwy usługi API Management.
+
  `rate-limit-by-key` Zasady uniemożliwiają okresów zwiększonego użycia interfejsu API na podstawie klucza na przez ograniczanie liczby wywołań do określonej liczby na określonym przedziale czasu. Klucz może mieć wartość dowolny ciąg i zazwyczaj znajduje się za pomocą wyrażenia zasad. Aby określić, które żądania powinno być liczone na limit można dodać warunku opcjonalnie przyrostu. Gdy te zasady są wyzwalane obiekt wywołujący otrzymuje `429 Too Many Requests` kod stanu odpowiedzi.  
   
  Aby uzyskać więcej informacji i przykładów niniejszych zasad, zobacz [Zaawansowane żądanie ograniczania usługi Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).  
@@ -285,6 +289,10 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 -   **Zakresy zasad:** produktu  
   
 ##  <a name="SetUsageQuotaByKey"></a> Ustawianie przydziału użycia klucza  
+
+> [!IMPORTANT]
+> Ta funkcja jest niedostępna w **zużycie** warstwy usługi API Management.
+
  `quota-by-key` Zasada wymusza odnawialnych lub okres istnienia woluminu i/lub przepustowości limit przydziału wywołania, na podstawie na klucz. Klucz może mieć wartość dowolny ciąg i zazwyczaj znajduje się za pomocą wyrażenia zasad. Aby określić, które żądania powinno być liczone na limit przydziału można dodać warunku opcjonalnie przyrostu. Jeśli wiele zasad będzie zwiększa się taką samą wartość klucza, ten numer jest zwiększany tylko raz na każde żądanie. Po osiągnięciu limitu wywołania, otrzymuje obiekt wywołujący `403 Forbidden` kod stanu odpowiedzi.
   
  Aby uzyskać więcej informacji i przykładów niniejszych zasad, zobacz [Zaawansowane żądanie ograniczania usługi Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).  

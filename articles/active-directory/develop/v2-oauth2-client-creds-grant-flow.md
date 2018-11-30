@@ -17,18 +17,18 @@ ms.date: 11/13/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3ecf837af735b97e269eb3fdc01d2e56ec40fb6e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: be10af7096a11fb27971af9dc28036df4a4b0968
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624509"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423562"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory w wersji 2.0 i przepływ poświadczeń klienta OAuth 2.0
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Możesz użyć [przyznawanie poświadczeń klienta OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-4.4) określony w RFC 6749, czasami nazywane *bokami dwóch OAuth*, aby uzyskać dostęp do zasobów hostowanych w sieci web, przy użyciu tożsamości aplikacji. Tego rodzaju grant często służy do interakcji do serwera, które muszą być uruchamiane w tle, bez natychmiastowego interakcji z użytkownikiem. Tego rodzaju aplikacje często są nazywane *demonów* lub *kont usługi*.
+Możesz użyć [przyznawanie poświadczeń klienta OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.4) określony w RFC 6749, czasami nazywane *bokami dwóch OAuth*, aby uzyskać dostęp do zasobów hostowanych w sieci web, przy użyciu tożsamości aplikacji. Tego rodzaju grant często służy do interakcji do serwera, które muszą być uruchamiane w tle, bez natychmiastowego interakcji z użytkownikiem. Tego rodzaju aplikacje często są nazywane *demonów* lub *kont usługi*.
 
 Poświadczenia klienta OAuth 2.0 udzielić zezwolenia przepływ usługi sieci web (poufne klienta), aby używanie jej własnych poświadczeń, zamiast personifikacji użytkownika, do uwierzytelniania podczas wywoływania innej usługi sieci web. W tym scenariuszu klient jest zazwyczaj usługą sieci web warstwy środkowej, usługą demona lub witryny sieci web. Na wyższy poziom gwarancji usługi Azure Active Directory (Azure AD) umożliwia wywoływania usługi do korzystania z certyfikatu (zamiast wspólny klucz tajny) jako poświadczenie.
 

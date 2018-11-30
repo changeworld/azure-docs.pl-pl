@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
-ms.openlocfilehash: 400c8ac229e00e818e336f1c47b126d3e8a2d155
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: c2f2a6e5f2dd551cfb300d333081874fef2f405c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253843"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421951"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Jak wysyłać pocztę E-mail przy użyciu usługi SendGrid w języku Java we wdrożeniu platformy Azure
 Poniższy przykład pokazuje, jak SendGrid umożliwia wysyłanie wiadomości e-mail ze strony sieci web hostowanych na platformie Azure. Wynikłej aplikacji zostanie wyświetlony monit dla wartości adresów e-mail, jak pokazano na poniższym zrzucie ekranu.
@@ -32,7 +32,7 @@ Wynikowy poczty e-mail będzie wyglądać podobnie do poniższej zrzut ekranu.
 
 Należy wykonać następujące czynności, aby użyć kodu, w tym temacie:
 
-1. Uzyskaj plikach JAR javax.mail, na przykład z <http://www.oracle.com/technetwork/java/javamail/index.html>.
+1. Uzyskaj plikach JAR javax.mail, na przykład z <https://www.oracle.com/technetwork/java/javamail/index.html>.
 2. Dodaj plikach JAR do ścieżki kompilacji języka Java.
 3. Jeśli używasz środowiska Eclipse do tworzenia tej aplikacji Java, może zawierać bibliotek usługi SendGrid w pliku wdrożenia aplikacji (WAR) przy użyciu funkcji zestawu wdrażania w środowisku Eclipse. Jeśli nie używasz środowiska Eclipse do tworzenia tej aplikacji Java, upewnij się, bibliotek są uwzględnione w ramach tej samej roli platformy Azure jako swoją aplikację Java i dodany do ścieżki klas w aplikacji.
 
@@ -45,7 +45,7 @@ Poniższy kod przedstawia sposób tworzenia formularza sieci web do pobierania d
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" %>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
     <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -101,7 +101,7 @@ Następujący kod, który jest wywoływany po wypełnieniu formularza w emailfor
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" import="javax.activation.*, javax.mail.*, javax.mail.internet.*, java.util.Date, java.util.Properties" %>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
     <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">

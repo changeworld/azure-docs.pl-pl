@@ -1,18 +1,25 @@
 ---
-title: Rozwiązywanie problemów z przejścia w tryb failover na platformie Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak rozwiązywać typowe problemy występujące podczas trybu failover na platformie Azure przy użyciu usługi Azure Site Recovery.
+title: Rozwiązywanie problemów z trybu failover do błędów platformy Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposoby rozwiązywania typowych problemów w przypadku przechodzenia w tryb failover na platformie Azure
+services: site-recovery
+documentationcenter: ''
 author: ponatara
 manager: abhemraj
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
+ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
-ms.author: ponatara
-ms.openlocfilehash: 420d061b34734c7b5997f5cdd58fe7faaee9cb82
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.tgt_pltfrm: na
+ms.workload: storage-backup-recovery
+ms.date: 11/27/2018
+ms.author: mayg
+ms.openlocfilehash: 1e7486dc646843c473cfb355445e194893934a1a
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236760"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447150"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Rozwiązywanie problemów podczas przechodzenia w tryb failover maszyny wirtualnej na platformie Azure
 
@@ -22,7 +29,7 @@ Może pojawić się jeden z następujących błędów podczas wykonywania pracy 
 
 Usługa Site Recovery nie był w stanie niepowodzenia tworzenia maszyny wirtualnej platformy Azure. Może się zdarzyć z jednego z następujących powodów:
 
-* Nie ma wystarczającego limitu przydziału, które są dostępne do utworzenia maszyny wirtualnej: dostępny limit przydziału można sprawdzić, przechodząc do subskrypcji -> użycie i przydziały. Możesz otworzyć [nowe żądanie pomocy technicznej](https://aka.ms/getazuresupport) Aby zwiększyć limit przydziału.
+* Nie ma wystarczającego limitu przydziału, które są dostępne do utworzenia maszyny wirtualnej: dostępny limit przydziału można sprawdzić, przechodząc do subskrypcji -> użycie i przydziały. Możesz otworzyć [nowe żądanie pomocy technicznej](http://aka.ms/getazuresupport) Aby zwiększyć limit przydziału.
 
 * Próbujesz trybu failover maszyny wirtualne rozmiar różnych rodzin w tym samym zestawie dostępności. Upewnij się, wybierz ten sam rodzina rozmiarów dla wszystkich maszyn wirtualnych w tym samym zestawie dostępności. Zmiana rozmiaru, przechodząc do ustawień obliczenia i sieć maszyny wirtualnej, a następnie ponów próbę pracy awaryjnej.
 
@@ -30,7 +37,7 @@ Usługa Site Recovery nie był w stanie niepowodzenia tworzenia maszyny wirtualn
 
 ## <a name="failover-failed-with-error-id-28092"></a>Tryb failover nie powiodło się z Identyfikator błędu 28092
 
-Usługa Site Recovery nie mogła utworzyć interfejsu sieciowego dla nieudane przez maszynę wirtualną. Upewnij się, że masz wystarczającego limitu przydziału, które są dostępne w celu utworzenia interfejsów sieciowych w ramach subskrypcji. Dostępny limit przydziału można sprawdzić, przechodząc do subskrypcji -> użycie i przydziały. Możesz otworzyć [nowe żądanie pomocy technicznej](https://aka.ms/getazuresupport) Aby zwiększyć limit przydziału. Jeśli masz wystarczającego limitu przydziału, a następnie może to być tymczasowy wysyłania, spróbuj ponownie wykonać operację. Jeśli problem będzie nadal występować po ponawianiu prób, pozostaw komentarz na końcu tego dokumentu.  
+Usługa Site Recovery nie mogła utworzyć interfejsu sieciowego dla nieudane przez maszynę wirtualną. Upewnij się, że masz wystarczającego limitu przydziału, które są dostępne w celu utworzenia interfejsów sieciowych w ramach subskrypcji. Dostępny limit przydziału można sprawdzić, przechodząc do subskrypcji -> użycie i przydziały. Możesz otworzyć [nowe żądanie pomocy technicznej](http://aka.ms/getazuresupport) Aby zwiększyć limit przydziału. Jeśli masz wystarczającego limitu przydziału, a następnie może to być tymczasowy wysyłania, spróbuj ponownie wykonać operację. Jeśli problem będzie nadal występować po ponawianiu prób, pozostaw komentarz na końcu tego dokumentu.  
 
 ## <a name="failover-failed-with-error-id-70038"></a>Tryb failover nie powiodło się z Identyfikator błędu 70038
 
@@ -38,7 +45,37 @@ Usługa Site Recovery nie mógł utworzyć nie powiodło się za pośrednictwem 
 
 * Jeden z zasobów, takich jak sieć wirtualną, która jest wymagana dla maszyny wirtualnej, która ma zostać utworzony nie istnieje. Tworzenie sieci wirtualnej, zgodnie z postanowieniami w obszarze ustawień obliczenia i sieć maszyny wirtualnej lub zmodyfikuj ustawienia sieci wirtualnej, która już istnieje, a następnie ponów próbę pracy awaryjnej.
 
-## <a name="unable-to-connectrdpssh---vm-connect-button-grayed-out"></a>Nie można nawiązać połączenia ani protokołu RDP/SSH — szary przycisk Połącz z maszyną Wirtualną
+## <a name="failover-failed-with-error-id-170010"></a>Tryb failover nie powiodło się z 170010 Identyfikator błędu
+
+Usługa Site Recovery nie był w stanie niepowodzenia tworzenia maszyny wirtualnej platformy Azure. Może się zdarzyć, ponieważ wewnętrzny działania wypełniania nie powiodła się dla maszyny wirtualnej w środowisku lokalnym.
+
+Aby wyświetlić wszystkie maszyny na platformie Azure, w środowisku systemu Azure wymaga niektóre sterowniki rozruchowe są uruchamiane stanu i usług, takich jak DHCP, będzie w stanie automatyczne uruchamianie. W związku z tym, działanie wypełniania w momencie przejścia w tryb failover konwertuje typ uruchomienia **sterowniki atapi, intelide, storflt, vmbus i storvsc** do ekranu startowego rozruchu. Konwertuje również typ uruchomienia kilku usług, takich jak DHCP, automatyczne uruchamianie. To działanie może zakończyć się niepowodzeniem ze względu na problemy dotyczące określonego środowiska. Aby ręcznie zmienić typ uruchamiania sterowników, wykonaj następujące czynności:
+
+1. [Pobierz](http://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) nie wypełniania skrypt i uruchom go jako zgodny. Ten skrypt sprawdza, czy maszyna wirtualna wymaga wypełniania zasobami.
+
+    `.\Script-no-hydration.ps1`
+
+    Jeśli wymagana jest wypełniania, daje następujące wyniki:
+
+        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+
+        This system doesn't meet no-hydration requirement.
+
+    W przypadku, gdy maszyna wirtualna spełnia wymagania nie wypełniania, skrypt da wynik, "ten system spełnia wymagania nie wypełniania". W takim przypadku wszystkie sterowniki i usługi są w stanie zgodnie z wymaganiami platformy Azure i wypełniania na maszynie Wirtualnej nie jest wymagana.
+
+2. Uruchom skrypt nie wypełniania zestawu w następujący sposób, jeśli maszyna wirtualna nie spełnia wymagań nie wypełniania.
+
+    `.\Script-no-hydration.ps1 -set`
+    
+    To zostaną przekonwertowane na typ uruchomienia sterowników i daje wynik, takich jak poniżej:
+    
+        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0 
+
+        Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0 
+
+        This system is now no-hydration compatible. 
+
+## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nie można nawiązać połączenia ani protokołu RDP/SSH nieudane przez maszynę wirtualną ze względu na szary przycisk Połącz na maszynie wirtualnej
 
 Jeśli **Connect** przycisku w trybie Failover maszyny Wirtualnej na platformie Azure jest wyszarzona i nie masz połączenia Expressroute lub sieci VPN typu lokacja-lokacja połączenie, następnie na platformie Azure
 

@@ -12,19 +12,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 11/25/2018
 ms.author: cenkd;juliako
-ms.openlocfilehash: 6060f294820281df3124fb2fc702ece59a006af1
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: e0eaf88117aa3c67f7ffecad2e3811a22449a5f8
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282411"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312973"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtrów i manifestów dynamicznych
+
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> * [Wersja 2](media-services-dynamic-manifest-overview.md)
+> * [Wersja 3](../latest/filters-dynamic-manifest-overview.md)
+
 Począwszy od wersji 2.17, Media Services umożliwia definiowanie filtrów dla zasobów. Te filtry są reguły po stronie serwera, które umożliwią klientom chce wykonywać następujące czynności: odtwarzanie tylko na część wideo (zamiast odtwarzanie całego) lub określ tylko podzbiór odwzorowaniami audio i wideo, że urządzenia klienta może obsłużyć () zamiast wszystkich wersji, są skojarzone z elementem zawartości). Filtrowanie zasobów odbywa się za pośrednictwem **manifestów dynamicznych**s, które są tworzone na żądanie klienta do przesyłania strumieniowego wideo oparte na określonej filtry.
 
-W tym temacie omówiono typowe scenariusze, w którym przy użyciu filtrów byłoby bardzo korzystne dla klientom oraz łącza do tematów, które pokazują, jak programowo utworzyć filtry.
+W tym temacie omówiono typowe scenariusze, w którym przy użyciu filtrów może być korzystne klientom oraz łącza do tematów, które pokazują, jak programowo utworzyć filtry.
 
 ## <a name="overview"></a>Przegląd
 Podczas dostarczania zawartości do klientów (przesyłanie strumieniowe wydarzeń na żywo lub wideo na żądanie) celem użytkownika jest dostarczanie wideo o wysokiej jakości do różnych urządzeń warunki panujące w sieci. Aby osiągnąć ten cel, wykonaj następujące czynności:
@@ -102,7 +107,7 @@ Istnieją dwa typy filtrów zasobów:
 Filtr globalny i lokalny typy mają te same właściwości. Główną różnicą między tymi dwoma jest dla scenariuszy, do których jest bardziej odpowiednia jakiego rodzaju filtr. Filtry globalne nadają się zwykle profilów dla urządzeń (odwzorowanie filtrowanie) gdzie filtry lokalnego może służyć można przycięcia do określonego zasobu.
 
 ## <a id="scenarios"></a>Typowe scenariusze
-Jak wspomniano wcześniej, podczas dostarczania zawartości do klientów (przesyłanie strumieniowe wydarzeń na żywo lub wideo na żądanie) dowiesz się, jak dostarczać wideo wysokiej jakości do różnych urządzeń warunki panujące w sieci. Ponadto usługi może mieć inne wymagania, które obejmują filtrowania zawartości i korzystanie z **manifestów dynamicznych**s. W poniższych sekcjach znajdują się krótki przegląd informacji o różnych scenariuszy filtrowania.
+Jak wspomniano, zanim podczas dostarczania zawartości do klientów (przesyłanie strumieniowe wydarzeń na żywo lub wideo na żądanie) dowiesz się, jak dostarczać wideo o wysokiej jakości do różnych urządzeń warunki panujące w sieci. Ponadto może mieć inne wymagania, które obejmują filtrowania zawartości i korzystanie z **manifestów dynamicznych**s. W poniższych sekcjach znajdują się krótki przegląd informacji o różnych scenariuszy filtrowania.
 
 * Określ tylko podzbiór odwzorowaniami audio i wideo, obsługujące przez niektórych urządzeń (zamiast wszystkie wersje, które są skojarzone z elementem zawartości). 
 * Odtwarzanie tylko na część wideo (zamiast odtwarzanie całego).

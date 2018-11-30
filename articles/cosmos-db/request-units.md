@@ -6,31 +6,31 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: rimman
-ms.openlocfilehash: 709cd16c7eee30dd2d88ea87b5f704ad20530ffb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: c43b718002267cd33135c130c6c41cabd8ee9c3b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621347"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310044"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Jednostki żądań w usłudze Azure Cosmos DB
 
-Za pomocą usługi Azure Cosmos DB płacisz za przepływność możesz aprowizować i magazynu, których możesz używać w systemie godzinowym. Przepływność musi być obsługiwana, aby zapewnić wystarczających zasobów systemu dostępne bazy danych Cosmos przez cały czas spełniają lub przekraczają najbardziej umowy SLA Cosmos DB.
+Za pomocą usługi Azure Cosmos DB płacisz za przepływność możesz aprowizować i magazynu, których możesz używać w systemie godzinowym. Przepływność musi być obsługiwana, aby zapewnić wystarczających zasobów systemu dostępne bazy danych Azure Cosmos przez cały czas spełniają lub przekraczają najbardziej umowę SLA usługi Azure Cosmos DB.
 
-Usługa cosmos DB obsługuje wiele interfejsów API (SQL, MongoDB, Cassandra, Gremlin i tabeli). Każdy interfejs API ma swój własny zestaw operacji bazy danych, począwszy od prostego punktu odczytuje i zapisuje złożonych zapytań. Każda operacja bazy danych wykorzystuje zasoby systemowe, w zależności od złożoności operacji.  Koszt wszystkie operacje bazy danych jest znormalizować przez usługi Cosmos DB i jest wyrażona jako liczba jednostek żądań (ru). Koszt można odczytać elementu 1 KB jest 1 jednostka żądania (1 jednostka Żądania). Wszystkie inne operacje dotyczące bazy danych są przypisywane podobnie koszt pod względem jednostek RU. Niezależnie od używanego do interakcji z kontenera usługi Cosmos i operacji bazy danych (zapisu, odczytu, zapytanie) interfejsu API koszty są zawsze mierzy (RUS).
+Usługa Azure Cosmos DB obsługuje wiele interfejsów API (SQL, MongoDB, Cassandra, Gremlin i tabeli). Każdy interfejs API ma swój własny zestaw operacji bazy danych, począwszy od prostego punktu odczytuje i zapisuje złożonych zapytań. Każda operacja bazy danych wykorzystuje zasoby systemowe, w zależności od złożoności operacji.  Koszt wszystkie operacje bazy danych jest znormalizować przez usługę Azure Cosmos DB i jest wyrażona jako liczba jednostek żądań (ru). Koszt można odczytać elementu 1 KB jest 1 jednostka żądania (1 RU), a minimalny (RUS), które są wymagane do korzystania z 1 GB miejsca do magazynowania jest 40. Wszystkie inne operacje dotyczące bazy danych są przypisywane podobnie koszt pod względem jednostek RU. Niezależnie od używanego do interakcji z kontenera usługi Azure Cosmos i operacji bazy danych (zapisu, odczytu, zapytanie) interfejsu API koszty są zawsze mierzy (RUS).
 
-Jednostek RU/s można traktować jako walutę przepływności. Jednostek RU/s jest oparte na stawkach waluty, która przenosi zasobów systemowych, takie jak procesor CPU, operacje We/Wy i pamięci, które są wymagane do wykonywania operacji bazy danych, obsługiwane przez usługi Cosmos DB. Na poniższej ilustracji przedstawiono jednostek żądania, używanych przez operacje innej bazy danych:
+Jednostek RU/s można traktować jako walutę przepływności. Jednostek RU/s jest oparte na stawkach waluty, która przenosi zasobów systemowych, takich jak procesor CPU, operacje We/Wy i pamięci, które są wymagane do wykonywania operacji bazy danych, obsługiwane przez usługę Azure Cosmos DB. Na poniższej ilustracji przedstawiono jednostek żądania, używanych przez operacje innej bazy danych:
 
 ![Operacje bazy danych zużywają jednostek żądania](./media/request-units/request-units.png)
 
-Aby zarządzać i planowanie pojemności, Cosmos DB zapewnia liczbę jednostek zarezerwowanych dla operacji bazy danych za pośrednictwem określonego zestawu danych deterministyczna. Można śledzić liczbę jednostek ru zużywanych przez żadnych operacji bazy danych, sprawdzając nagłówka odpowiedzi. Po zrozumieniu czynników wpływających na opłat za jednostki żądań i wymagań w zakresie przepływności aplikacji możesz tanio Uruchom aplikację.
+Aby zarządzać i planowanie pojemności, usługi Azure Cosmos DB zapewnia liczbę jednostek zarezerwowanych dla operacji bazy danych za pośrednictwem określonego zestawu danych deterministyczna. Można śledzić liczbę jednostek ru zużywanych przez żadnych operacji bazy danych, sprawdzając nagłówka odpowiedzi. Po zrozumieniu czynników wpływających na opłat za jednostki żądań i wymagań w zakresie przepływności aplikacji możesz tanio Uruchom aplikację.
 
 Chociaż opłaty są naliczane w systemie godzinowym, możesz aprowizować liczbę jednostek zarezerwowanych dla aplikacji na podstawie na sekundę w przyrostach 100 RU/s. Aby skalować aprowizowanej przepływności dla aplikacji, można zwiększyć lub zmniejszyć liczbę jednostek żądania (w zwiększa lub zmniejsza 100 jednostek RU) w dowolnym momencie, programowo lub za pomocą witryny Azure portal.
 
 Użytkownik może aprowizować przepływność mierzoną w dwóch odrębnych stopniach szczegółowości: 
 
-* **Kontenery**. Aby uzyskać więcej informacji, zobacz [jak aprowizować przepływność na kontenerze Cosmos.](how-to-provision-container-throughput.md)
-* **Bazy danych**. Aby uzyskać więcej informacji, zobacz [jak aprowizować przepływność mierzoną w bazie danych Cosmos.](how-to-provision-database-throughput.md)
+* **Kontenery**. Aby uzyskać więcej informacji, zobacz [jak aprowizować przepływność na kontenerze usługi Azure Cosmos.](how-to-provision-container-throughput.md)
+* **Bazy danych**. Aby uzyskać więcej informacji, zobacz [jak aprowizować przepływność mierzoną w bazie danych Azure Cosmos.](how-to-provision-database-throughput.md)
 
 ## <a name="request-unit-considerations"></a>Zagadnienia dotyczące jednostki żądania
 
@@ -38,7 +38,7 @@ Podczas szacowania, liczba jednostek RU/s do aprowizowania, warto wziąć pod uw
 
 * **Rozmiar elementu** — w miarę zwiększania rozmiaru elementu liczba ru do odczytu lub zapisu elementu również się zwiększa.
 
-* **Indeksowanie dokumentów** — domyślnie automatycznie indeksowane każdego elementu. Mniej jednostek żądania są używane, jeśli nie chcesz indeksować niektórych elementów w kontenerze.
+* **Indeksowanie elementów** — domyślnie automatycznie indeksowane każdego elementu. Mniej jednostek żądania są używane, jeśli nie chcesz indeksować niektórych elementów w kontenerze.
 
 * **Element właściwości liczba** — zakładając, że domyślnie indeksowanie wszystkich właściwości, liczbę jednostek zarezerwowanych używane do zapisania elementu zwiększa się wraz ze wzrostem liczby właściwości elementu.
 
@@ -46,14 +46,14 @@ Podczas szacowania, liczba jednostek RU/s do aprowizowania, warto wziąć pod uw
 
 * **Wyjaśnienie pojęcia spójności danych** -poziomów spójności silnych i powiązana nieaktualność używanie około 2 X więcej (RUS) podczas wykonywania operacji odczytu, w porównaniu do innych złagodzone poziomów spójności.
 
-* **Zapytanie wzorców** -złożoność zapytania, który wpływa na liczbę jednostek żądania są używane dla operacji. Liczba wyników zapytania, liczba predykatów, rodzaj predykaty, liczba funkcji zdefiniowanych przez użytkownika, rozmiar danych źródłowych, rozmiar wynik zestawu i projekcji mają wpływ na koszt operacje zapytań. Usługa cosmos DB gwarantuje, że tego samego zapytania na tych samych danych zawsze będzie kosztować taką samą liczbę jednostek żądań na wykonań Powtórz tę procedurę.
+* **Zapytanie wzorców** -złożoność zapytania, który wpływa na liczbę jednostek żądania są używane dla operacji. Liczba wyników zapytania, liczba predykatów, rodzaj predykaty, liczba funkcji zdefiniowanych przez użytkownika, rozmiar danych źródłowych, rozmiar wynik zestawu i projekcji mają wpływ na koszt operacje zapytań. Usługa Azure Cosmos DB gwarantuje, że tego samego zapytania na tych samych danych zawsze będzie kosztować taką samą liczbę jednostek żądań na wykonań Powtórz tę procedurę.
 
 * **Skrypt użycia** — za pomocą zapytań, procedury składowane i wyzwalacze zużywać jednostki żądania na podstawie stopnia złożoności wykonywanych operacji. Podczas opracowywania aplikacji, sprawdź, czy nagłówek żądania opłat, aby lepiej zrozumieć, jaka pojemność jednostki żądania zużywa każdej operacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [przepływności inicjowania obsługi administracyjnej baz danych i kontenerów usługi Cosmos DB](set-throughput.md)
-* Dowiedz się więcej o [Llogical partycji](partition-data.md)
+* Dowiedz się więcej o [przepływności inicjowania obsługi administracyjnej baz danych i kontenerów usługi Azure Cosmos](set-throughput.md)
+* Dowiedz się więcej o [partycjami logicznymi](partition-data.md)
 * Dowiedz się więcej o [globalnie skalowania aprowizowanej przepływności.](scaling-throughput.md)
-* Dowiedz się, [jak aprowizować przepływność na kontenerze Cosmos](how-to-provision-container-throughput.md)
-* Dowiedz się, [jak aprowizować przepływność mierzoną w bazie danych Cosmos](how-to-provision-database-throughput.md)
+* Dowiedz się, [jak aprowizować przepływność na kontenerze usługi Azure Cosmos](how-to-provision-container-throughput.md)
+* Dowiedz się, [jak aprowizować przepływność mierzoną w bazie danych Azure Cosmos](how-to-provision-database-throughput.md)

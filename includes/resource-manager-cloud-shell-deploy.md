@@ -1,6 +1,19 @@
+---
+author: tfitzmac
+ms.service: azure-resource-manager
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: tomfitz
+ms.openlocfilehash: a2ee8705be3f34b6df113c68d88e375411f84bf2
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52440336"
+---
 ## <a name="deploy-template-from-cloud-shell"></a>Wdrażanie szablonu za pomocą usługi Cloud Shell
 
-Do wdrożenia swojego szablonu możesz użyć usługi [Cloud Shell](../articles/cloud-shell/overview.md). Jednak należy najpierw załadować szablonu do konta magazynu dla powłoki chmury. Jeśli nie używasz usługi Cloud Shell, zobacz [Overview of Azure Cloud Shell (Omówienie usługi Azure Cloud Shell)](../articles/cloud-shell/overview.md), aby uzyskać informacje o jej konfigurowaniu.
+Do wdrożenia swojego szablonu możesz użyć usługi [Cloud Shell](../articles/cloud-shell/overview.md). Jednak musisz najpierw załadować szablon do konta magazynu dla usługi Cloud Shell. Jeśli nie używasz usługi Cloud Shell, zobacz [Overview of Azure Cloud Shell (Omówienie usługi Azure Cloud Shell)](../articles/cloud-shell/overview.md), aby uzyskać informacje o jej konfigurowaniu.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
@@ -12,15 +25,15 @@ Do wdrożenia swojego szablonu możesz użyć usługi [Cloud Shell](../articles/
 
    ![Wybieranie konta magazynu](./media/resource-manager-cloud-shell-deploy/select-storage.png)
 
-1. Wybierz **obiekty BLOB**.
+1. Wybierz pozycję **Obiekty blob**.
 
-   ![Wybierz obiekty BLOB](./media/resource-manager-cloud-shell-deploy/select-blobs.png)
+   ![Wybieranie pozycji Obiekty blob](./media/resource-manager-cloud-shell-deploy/select-blobs.png)
 
-1. Wybierz **+ kontener**.
+1. Wybierz pozycję **+ Kontener**.
 
-   ![Dodaj kontener](./media/resource-manager-cloud-shell-deploy/add-container.png)
+   ![Dodawanie kontenera](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
-1. Z kontenera należy podać nazwę i poziom dostępu. Przykładowy szablon w tym artykule nie zawiera żadnych poufnych informacji, pozwalają na anonimowy dostęp do odczytu. Kliknij przycisk **OK**.
+1. Kontener należy podać nazwę i poziom dostępu. Przykładowy szablon w tym artykule nie zawiera żadnych poufnych informacji, co pozwala anonimowy dostęp do odczytu. Kliknij przycisk **OK**.
 
    ![Podaj wartości kontenera](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
 
@@ -36,7 +49,7 @@ Do wdrożenia swojego szablonu możesz użyć usługi [Cloud Shell](../articles/
 
    ![Przekazywanie pliku](./media/resource-manager-cloud-shell-deploy/find-and-upload-template.png)
 
-1. Po przesłał, wybierz szablon.
+1. Po przekazał, wybierz szablon.
 
    ![Wybierz nowy szablon](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
 

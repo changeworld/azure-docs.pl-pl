@@ -4,17 +4,16 @@ description: W tym artykule opisano sposób użycia usługi Azure Stream Analyti
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 8dc85c55dd67d8acd394d7922e947c91234ef23b
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.date: 11/21/2017
+ms.openlocfilehash: 9bdb012db2e7502d765fd342a636591bbbcb2c6c
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957152"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311742"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Usługa Azure Stream Analytics dane wyjściowe usługi Azure Cosmos DB  
 Stream Analytics można wskazać [usługi Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) dla danych wyjściowych JSON, włączanie danych archiwizowanie i małe opóźnienia zapytań na danych JSON bez struktury. W tym dokumencie opisano najlepsze rozwiązania dotyczące wdrażania tej konfiguracji.
@@ -26,7 +25,10 @@ Dla osób, które są Ci znane z usługą Cosmos DB, Przyjrzyj się [ścieżka s
 > Innych interfejsów API usługi Azure Cosmos DB nie są jeszcze obsługiwane. Jeśli punkt Azure Stream Analytics do kont usługi Azure Cosmos DB utworzone z innymi interfejsami API, dane mogą nie być prawidłowo przechowywane. 
 
 ## <a name="basics-of-cosmos-db-as-an-output-target"></a>Podstawy usługi Cosmos DB jako obiekt docelowy danych wyjściowych
-Dane wyjściowe usługi Azure Cosmos DB w usłudze Stream Analytics umożliwia zapisywanie strumienia przetwarzanie wyników jako dane wyjściowe JSON do kolekcji usługi Cosmos DB. Stream Analytics nie tworzy kolekcji w bazie danych, zamiast konieczności je utworzyć z wyprzedzeniem. Jest to tak, aby kosztów kolekcji usługi Cosmos DB są kontrolowane przez użytkownika i tak, aby można dostrajanie wydajności, spójności i pojemności bezpośrednio przy użyciu kolekcji [Cosmos DB API](https://msdn.microsoft.com/library/azure/dn781481.aspx). 
+Dane wyjściowe usługi Azure Cosmos DB w usłudze Stream Analytics umożliwia zapisywanie strumienia przetwarzanie wyników jako dane wyjściowe JSON do kolekcji usługi Cosmos DB. Stream Analytics nie tworzy kolekcji w bazie danych, zamiast konieczności je utworzyć z wyprzedzeniem. Jest to tak, aby kosztów kolekcji usługi Cosmos DB są kontrolowane przez użytkownika i tak, aby można dostrajanie wydajności, spójności i pojemności bezpośrednio przy użyciu kolekcji [Cosmos DB API](https://msdn.microsoft.com/library/azure/dn781481.aspx).
+
+> [!Note]
+> 0.0.0.0 należy dodać do listy dozwolonych adresów IP, od Ciebie zapory usługi Azure Cosmos DB.
 
 Niektóre opcje kolekcję usługi Cosmos DB są szczegółowo opisane poniżej.
 

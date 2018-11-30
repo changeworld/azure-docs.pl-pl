@@ -13,23 +13,23 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 8dfe61430423298eea81510d3e92d49066217a05
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 3ff1db9ee7dc34ce529702d61b3ac5970bb5d9df
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708762"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309869"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Nie można nawiązać połączenia RDP z maszyny Wirtualnej, ponieważ maszyna wirtualna jest uruchamiany w trybie awaryjnym
 
-W tym artykule pokazano, jak rozwiązać problem, w którym można pulpitu zdalnego do platformy Azure Windows Virtual Machines (VMs), ponieważ maszyna wirtualna jest skonfigurowana do uruchamiania w trybie awaryjnym.
+W tym artykule pokazano, jak rozwiązać problem, w której nie można dołączyć do platformy Azure Windows Virtual Machines (VMs), ponieważ maszyna wirtualna jest skonfigurowana do uruchamiania w trybie awaryjnym.
 
 > [!NOTE] 
 > Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania. 
 
 ## <a name="symptoms"></a>Objawy 
 
-Nie można wprowadzać z połączeniem RDP i innych połączeń (np. HTTP) do maszyny Wirtualnej na platformie Azure, ponieważ maszyna wirtualna jest skonfigurowana do uruchamiania w trybie awaryjnym. Podczas ewidencjonowania zrzucie ekranu [diagnostykę rozruchu](../troubleshooting/boot-diagnostics.md) w witrynie Azure portal można napotkać wykonać normalnego rozruchu maszyny Wirtualnej, ale nie ma interfejsu sieciowego:
+Nie można wprowadzać z połączeniem RDP lub inne połączenia (na przykład HTTP) do maszyny Wirtualnej na platformie Azure, ponieważ maszyna wirtualna jest skonfigurowana do uruchamiania w trybie awaryjnym. Podczas ewidencjonowania zrzucie ekranu [diagnostykę rozruchu](../troubleshooting/boot-diagnostics.md) w witrynie Azure portal można napotkać wykonać normalnego rozruchu maszyny Wirtualnej, że interfejs sieciowy nie jest dostępna:
 
 ![Obraz dotyczący inferce sieci w trybie awaryjnym](./media/troubleshoot-rdp-safe-mode/network-safe-mode.png)
 
@@ -54,11 +54,11 @@ Aby rozwiązać ten problem, Użyj sterowania Serial, aby skonfigurować maszyn�
 
     Jeśli maszyna wirtualna jest skonfigurowana do rozruchu w trybie awaryjnym, zobaczą dodatkowe flagi, w obszarze **moduł ładujący rozruchu Windows** sekcję o nazwie **tryb awaryjny**. Jeśli nie widzisz **tryb awaryjny** Flaga, maszyna wirtualna nie jest w trybie awaryjnym. W tym artykule nie ma zastosowania do danego scenariusza.
 
-    Flaga tryb awaryjny może pojawić się z następującymi wartościami:
+    **Tryb awaryjny** flagi może się pojawić, z następującymi wartościami:
     - Minimalny
     - Sieć
 
-    W dowolnym z tych dwóch trybów RDP zostanie nie uruchomiony. Aby rozwiązać pozostaje taki sam.
+    W jednej z tych dwóch trybów RDP nie zostanie uruchomiona. W związku z tym poprawki pozostaje taki sam.
 
     ![Obraz dotyczący flagi trybu awaryjnego](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
 
@@ -66,7 +66,7 @@ Aby rozwiązać ten problem, Użyj sterowania Serial, aby skonfigurować maszyn�
 
         bcdedit /deletevalue {current} safeboot
         
-4. Sprawdzanie danych konfiguracji rozruchu, aby upewnić się, że została usunięta Flaga tryb awaryjny:
+4. Sprawdzanie danych konfiguracji rozruchu, aby upewnić się, że **tryb awaryjny** flaga zostanie usunięty:
 
         bcdedit /enum
 
@@ -120,14 +120,14 @@ Aby włączyć dziennik zrzutu i konsoli szeregowej, uruchom następujący skryp
         bcdedit /store F:\boot\bcd /enum
     Take note of the Identifier name of the partition that has the **\windows** folder. By default, the  Identifier name is "Default".  
 
-    If the VM is configured to boot into Safe Mode, you will see an extra flag under the **Windows Boot Loader** section called **safeboot**. If you do not see the “safeboot” flag, this article does not apply to your scenario.
+    If the VM is configured to boot into Safe Mode, you will see an extra flag under the **Windows Boot Loader** section called **safeboot**. If you do not see the **safeboot** flag, this article does not apply to your scenario.
 
     ![The image about boot Identifier](./media/troubleshoot-rdp-safe-mode/boot-id.png)
 
 3. Remove the **safeboot** flag, so the VM will boot into normal mode:
 
         bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
-4. Check the boot configuration data to make sure that the safeboot flag is removed:
+4. Check the boot configuration data to make sure that the **safeboot** flag is removed:
 
         bcdedit /store F:\boot\bcd /enum
 5. [Detach the OS disk and recreate the VM](../windows/troubleshoot-recovery-disks-portal.md). Then check whether the issue is resolved.

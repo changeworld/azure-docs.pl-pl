@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 601169cc62a99438f661adc06ab166b545606edb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: abd64b7d2fa7930f5b6177c7ac037840da34dc18
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624594"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333585"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Zasady przechowywania raportów w usłudze Azure Active Directory
 
@@ -32,7 +32,7 @@ Ten artykuł zawiera informacje o zasadach przechowywania danych dla raportów i
 | Wersja usługi Azure AD | Rozpoczęcia zbierania |
 | :--              | :--   |
 | Usługa Azure AD — warstwa Premium P1 <br /> Usługa Azure AD — warstwa Premium P2 | Gdy zarejestrujesz się w ramach subskrypcji |
-| Usługa Azure AD — warstwa Bezpłatna | Przy pierwszym otwarciu [bloku Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) lub użyj [interfejsy API raportowania](https://aka.ms/aadreports)  |
+| Usługa Azure AD — warstwa Bezpłatna <br /> Usługa Azure AD — warstwa Podstawowa | Przy pierwszym otwarciu [bloku Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) lub użyj [interfejsy API raportowania](https://aka.ms/aadreports)  |
 
 ---
 
@@ -51,7 +51,7 @@ Sygnały zabezpieczeń procesu zbierania rozpoczyna się po użytkownik zgody na
 
 ### <a name="how-long-does-azure-ad-store-the-data"></a>Jak długo w usłudze Azure AD są przechowywane dane?
 
-**Raporty aktywności**    
+**Raporty dotyczące działań**    
 
 | Raport                 | Usługa Azure AD — warstwa Bezpłatna | Usługa Azure AD — warstwa Premium P1 | Usługa Azure AD — warstwa Premium P2 |
 | :--                    | :--           | :--                 | :--                 |

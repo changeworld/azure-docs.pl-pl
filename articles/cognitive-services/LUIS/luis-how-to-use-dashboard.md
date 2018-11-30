@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/01/2018
+ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 6a4e8dbee34402f57d3e697e93d10573aaf10998
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0daf25b3c7edc69ada57fb3ce2b8dbb7e50e5aed
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212816"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335014"
 ---
 # <a name="application-dashboard"></a>Pulpit nawigacyjny aplikacji
 Pulpit nawigacyjny aplikacji umożliwia monitorowanie aplikacji w jednym skrócie. **Pulpit nawigacyjny** są wyświetlane po otwarciu aplikacji, klikając nazwę aplikacji **Moje aplikacje** stronie wybierz **pulpit nawigacyjny** z górnym panelu. 
@@ -26,15 +26,7 @@ Pulpit nawigacyjny aplikacji umożliwia monitorowanie aplikacji w jednym skróci
 > * Użyj klucza punktu końcowego usługi LUIS dla wszystkich żądań punktu końcowego, w tym usługi LUIS [API](https://aka.ms/luis-endpoint-apis) i bot
 > * Użyj klucza innym punktem końcowym dla każdej aplikacji usługi LUIS. Nie należy używać klucza pojedyncze punkty końcowe dla wszystkich aplikacji. Klucza punktu końcowego są śledzone na poziomie klucza, nie na poziomie aplikacji.  
 
-**Pulpit nawigacyjny** strona zawiera omówienie aplikacji LUIS, w tym modelu bieżącego stanu, a także [punktu końcowego](luis-glossary.md#endpoint) użycia wraz z upływem czasu. <!--The following image shows the **Dashboard** page.-->
-
-<!-- TBD: Get a working screen shot
-![The Dashboard](./media/luis-how-to-use-dashboard/dashboard.png)
--->
-
-<!-- TBD: IS THIS STILL TRUE?
-At the top of the **Dashboard** page, a contextual notification bar constantly displays notifications to update you on the required or recommended actions appropriate for the current state of your app. It also provides useful tips and alerts as needed. A detailed description of the data reported on the **Dashboard** page follows.
--->
+**Pulpit nawigacyjny** strona zawiera omówienie aplikacji LUIS, w tym modelu bieżącego stanu, a także [punktu końcowego](luis-glossary.md#endpoint) użycia wraz z upływem czasu. 
   
 ## <a name="app-status"></a>Stan aplikacji
 Pulpit nawigacyjny Wyświetla szkolenia aplikacji i stan, w tym datę i godzinę, kiedy aplikacja ostatniego publikowania wiedzę i opublikowane.  
@@ -49,7 +41,6 @@ Pulpit nawigacyjny wyświetla łączną liczbę intencji, jednostek i etykietami
 ## <a name="endpoint-hits"></a>Trafienia punktu końcowego
 Pulpit nawigacyjny Wyświetla trafień całkowita punktu końcowego, otrzymuje aplikacji usługi LUIS, które umożliwia do wyświetlenia: liczba trafień w przedziale czasu, określ. Całkowita liczba trafień, wyświetlany jest sumą trafień punktu końcowego, które używają [klucza punktu końcowego](./luis-concept-keys.md#endpoint-key) i punktu końcowego trafienia używające [Tworzenie klucza](./luis-concept-keys.md#authoring-key).
 
-<!-- TBD: this image is old but I don't have a new one based on usage -->
 ![Trafienia punktu końcowego](./media/luis-how-to-use-dashboard/dashboard-endpointhits.png)
 
 > [!NOTE] 

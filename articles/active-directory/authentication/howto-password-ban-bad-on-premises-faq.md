@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 59c89c81f618876de48de66a38e1063eb658fba4
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: d3d42a3c81153d54690f0825368eaa950dbac18e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50743296"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314783"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Wersja zapoznawcza: Usługi Azure AD hasło ochrony lokalnych — często zadawane pytania
 
@@ -50,7 +50,7 @@ Aby uzyskać więcej informacji zobacz następujące artykuły:
 
 [W przypadku replikacji folderu sysvol Migrowanie do DFSR](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
 
-[Punkt końcowy jest Nigh dla usługi rejestracji urządzeń](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
+[Punkt końcowy jest Nigh w przypadku usługi FRS](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
 
 **P: Dlaczego Zainstaluj lub Uaktualnij oprogramowanie agenta kontrolera domeny wymagany jest ponowny rozruch**
 

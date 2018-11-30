@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: ac4aa3c8aafae24736cc7b48a9ca4e8ba9fd0742
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e3dfbc4fc4d7ed40ebac7de6fe78398b13eafd58
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125191"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316552"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Dostosowywanie SQL zasad usługi information protection w usłudze Azure Security Center (wersja zapoznawcza)
  
@@ -38,7 +38,7 @@ Mechanizm klasyfikacji opiera się na dwóch głównymi konstrukcjami, które tw
  
 Information Protection zawiera zestaw wbudowanych etykiet i typy informacji, które domyślnie są używane. Aby dostosować je, można dostosować zasad usługi information protection w usłudze Azure Security Center.
  
-## <a name="customize-the-information-protection-policy"></a>Dostosowywanie zasad usługi information protection
+## <a name="customize-the-information-protection-policy"></a>Dostosowywanie zasad ochrony informacji
 Aby dostosować zasad usługi information protection dla Twojej dzierżawy platformy Azure, musisz mieć [uprawnień administracyjnych w grupie zarządzania głównym dzierżawcy](security-center-management-groups.md). 
  
 1. W menu głównym usługi Security Center wybierz **zasady zabezpieczeń**.
@@ -54,7 +54,7 @@ Aby dostosować zasad usługi information protection dla Twojej dzierżawy platf
 2. W **etykieta poufności Konfiguruj** ekranu, można utworzyć lub zmienić nazwę etykiety i opis. Można również ustawić czy etykieta jest aktywna lub wyłączona, przełączając **włączone** włączać i wyłączać. Na koniec można dodawać lub usuwać typy informacji skojarzony z etykietą. Wszelkie dane odnalezione, który odpowiada, że typ informacji automatycznie włączy etykieta poufności skojarzone zaleceń klasyfikacji.
 3. Kliknij przycisk **OK**.
  
-   ![Konfigurowanie etykiety ważności](./media/security-center-info-protection-policy/config-sensitivity-label.png)
+   ![Konfigurowanie etykiety czułości](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  
 4. Etykiety są wymienione w kolejności rosnącej ważność. Aby zmienić klasyfikację między etykiety, przeciągnij etykiety, aby zmienić ich kolejność, w tabeli lub użyj **Przenieś w górę** i **Przenieś w dół** przycisków, aby zmienić kolejność. 
  
@@ -86,7 +86,7 @@ W tym artykule opisano definiowanie zasad SQL Information Protection w usłudze 
 Aby uzyskać więcej informacji na temat zasad zabezpieczeń i bezpieczeństwo danych w usłudze Azure Security Center zobacz następujące artykuły:
  
 - [Omówienie zasad zabezpieczeń](security-center-policies-overview.md): Zapoznaj się z omówieniem zasad zabezpieczeń w usłudze Security Center
-- [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-policies.md): informacje o sposobie konfigurowania zasad zabezpieczeń dla subskrypcji platformy Azure i grup zasobów
+- [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md): informacje o sposobie konfigurowania zasad zabezpieczeń dla subskrypcji platformy Azure i grup zasobów
 - [Bezpieczeństwo danych w usłudze Azure Security Center](security-center-data-security.md): Dowiedz się, jak usługa Security Center zarządza i zapewnia bezpieczeństwo danych
 
 

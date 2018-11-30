@@ -8,12 +8,12 @@ ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d135dfbddf5a603adc09683244292aa9116b4e04
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 84be07eeb112711de35853162b798b5f6ed0b2aa
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634203"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422766"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Programu Azure AD Connect: Dokumentacja programu PowerShell ADSyncConfig
 Poniższa dokumentacja zawiera informacje dotyczące modułu programu PowerShell ADSyncConfig.psm1, dostępnej w programie Azure AD Connect.
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="set-adsyncbasicreadpermissions"></a>Zestaw ADSyncBasicReadPermissions
 
@@ -284,7 +284,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="set-adsyncexchangehybridpermissions"></a>Zestaw ADSyncExchangeHybridPermissions
 
@@ -451,7 +451,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Zestaw ADSyncExchangeMailPublicFolderPermissions
 
@@ -613,7 +613,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Zestaw ADSyncMsDsConsistencyGuidPermissions
 
@@ -774,7 +774,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Zestaw ADSyncPasswordHashSyncPermissions
 
@@ -895,7 +895,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="set-adsyncpasswordwritebackpermissions"></a>Zestaw ADSyncPasswordWritebackPermissions
 
@@ -1060,7 +1060,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="set-adsyncrestrictedpermissions"></a>Zestaw ADSyncRestrictedPermissions
 
@@ -1191,7 +1191,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Zestaw ADSyncUnifiedGroupWritebackPermissions
 
@@ -1353,7 +1353,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="show-adsyncadobjectpermissions"></a>Pokaż ADSyncADObjectPermissions
 
@@ -1396,4 +1396,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>Typowe parametry
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
-Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (http://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).

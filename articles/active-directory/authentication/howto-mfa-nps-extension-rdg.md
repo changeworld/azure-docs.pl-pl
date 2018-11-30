@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 7fb69fd52c03300ee554fd903cba1670f2aa2421
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 10b2b6e67c22efaf1dcab2cfe8abdd42b7576dbc
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318609"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426071"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrowanie infrastruktury bramy usług pulpitu zdalnego przy użyciu rozszerzenia serwera zasad sieciowych (NPS) i Azure AD
 
@@ -192,7 +192,7 @@ Zasady autoryzacji połączeń usług pulpitu zdalnego (RD CAP) określenie wyma
  >Wspólny klucz tajny jest używany do ustanawiania relacji zaufania między klientami i serwerów usługi RADIUS. Tworzenie wpisu tajnego długie i złożone.
  >
 
- ![Wspólny wpis tajny](./media/howto-mfa-nps-extension-rdg/image11.png)
+ ![Wspólny klucz tajny](./media/howto-mfa-nps-extension-rdg/image11.png)
 
 1. Kliknij przycisk **OK**, aby zamknąć okno dialogowe.
 
@@ -359,7 +359,7 @@ Aby wykonywać zaawansowane rozwiązywanie problemów z opcjami, zapoznaj się z
 
 Aby uzyskać opis tych plików dziennika, zobacz [interpretacji pliki dziennika Format bazy danych serwera NPS](https://technet.microsoft.com/library/cc771748.aspx). Wpisy w tych plikach dziennika może być trudne do interpretacji, nie importując ich w arkuszu kalkulacyjnym lub bazie danych. Aby ułatwić interpretowanie pliki dziennika można znaleźć kilka online usługi IAS analizatory składni. 
 
-Na poniższym obrazie przedstawiono dane wyjściowe tego takich do pobrania [aplikacji "shareware"](http://www.deepsoftware.com/iasviewer). 
+Na poniższym obrazie przedstawiono dane wyjściowe tego takich do pobrania [aplikacji "shareware"](https://www.deepsoftware.com/iasviewer). 
 
 ![Aplikacja "shareware"](./media/howto-mfa-nps-extension-rdg/image35.png)
 

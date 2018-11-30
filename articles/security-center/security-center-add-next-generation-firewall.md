@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: a0f472d32e878412532927327a36fe674d4cf6bb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7daefc1de06ac704f0449d065ed748bbe0f1ac61
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261676"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307659"
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Dodaj zaporę następnej generacji w usłudze Azure Security Center
 Usługa Azure Security Center może zalecić sytuacja: dodajesz zaporę nowej generacji (nowej NGFW) od partnera firmy Microsoft, aby zwiększyć Twoje zabezpieczenia. Ten dokument zawiera opis przykładu przekonamy się jak to zrobić.
@@ -62,7 +62,7 @@ W tym dokumencie pokazano sposób implementacji zalecenia usługi Security Cente
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
-* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-policies.md) — informacje o sposobie konfigurowania zasad zabezpieczeń.
+* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md) — informacje o sposobie konfigurowania zasad zabezpieczeń.
 * [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.
 * [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje o sposobie monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.

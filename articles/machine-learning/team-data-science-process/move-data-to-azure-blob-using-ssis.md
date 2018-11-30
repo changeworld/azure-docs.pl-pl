@@ -1,26 +1,22 @@
 ---
 title: Przenoszenie danych do i z usługi Azure Blob Storage za pomocą łączników SSIS | Dokumentacja firmy Microsoft
 description: Przenoszenie danych do i z usługi Azure Blob Storage za pomocą łączników SSIS.
-services: machine-learning,storage
-documentationcenter: ''
-author: deguhath
+services: machine-learning
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 96a1b5fb-34d1-4b9b-8d99-2bb8289e0398
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: deguhath
-ms.openlocfilehash: 2fe57480f7d8e22cfffafec6845372718587958e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 2eda0490392e26d386faa4c1e379b50738a56cbb
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258429"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443362"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Przenoszenie danych do i z usługi Azure Blob Storage za pomocą łączników SSIS
 [Programu SQL Server Integration Services Feature Pack dla systemu Azure](https://msdn.microsoft.com/library/mt146770.aspx) zawiera składniki do połączenia z platformą Azure, transfer danych między Azure i lokalnych źródeł danych i przetwarzania danych przechowywanych na platformie Azure.

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/24/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 5b39094ef081aadc813849399ebebc0c2e8a666d
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 087dcfd10b191dcd80ec4a70be8eb2e373e1d56b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291303"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427546"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Jak za pomocą usługi Twilio dla połączeń głosowych i SMS możliwości platformy Azure
 Ten przewodnik pokazuje sposób wykonywania typowych zadań programistycznych w usłudze interfejsu API usługi Twilio, na platformie Azure. Omówione scenariusze obejmują tworzenie połączenia telefonicznego i wysyłanie wiadomości wiadomości usługi (SMS). Aby uzyskać więcej informacji na temat usługi Twilio i używania połączeń głosowych i wiadomości SMS w swoich aplikacjach, zobacz [następne kroki](#NextSteps) sekcji.
@@ -29,8 +29,10 @@ Twilio to najważniejsza przyszłość komunikacji biznesowej, dzięki czemu dew
 
 **Twilio dla połączeń głosowych** umożliwia aplikacjom wykonywanie i odbieranie połączeń telefonicznych. **Wiadomości SMS usługi Twilio** umożliwia aplikacji wysyłanie i odbieranie wiadomości SMS. **Klient usługi Twilio** umożliwia nawiązywanie połączeń VoIP z dowolnego telefonu, tabletu lub przeglądarki i obsługuje protokołu WebRTC.
 
-## <a id="Pricing"></a>Cennik usługi Twilio
-Twilio to usługa, zgodnie z rzeczywistym użyciem. Nie są pobierane żadne opłaty konfiguracji i w dowolnym momencie można zamknąć konto. Można znaleźć więcej szczegółów na [cennik usługi Twilio](http://www.twilio.com/voice/pricing).
+## <a id="Pricing"></a>Cennik usługi Twilio i ofert specjalnych
+Klienci platformy Azure otrzymują [oferta specjalna](https://www.twilio.com/azure): bezpłatnych w wysokości 10 USD kredytu usługi Twilio, po uaktualnieniu konta usługi Twilio. Wartość tego kredytu Twilio mogą dotyczyć każde użycie usługi Twilio (równoważne do wysyłania wiadomości SMS maksymalnie 1000 lub odbieranie maksymalnie 1000 dla ruchu przychodzącego minut głosu w zależności od lokalizacji docelowej liczby i wiadomości lub wywołania telefonu środków w wysokości 10 USD). Zrealizuj wartość tego kredytu usługi Twilio i zacznij pracę w [ahoy.twilio.com/azure](https://ahoy.twilio.com/azure).
+
+Twilio to usługa, zgodnie z rzeczywistym użyciem. Nie są pobierane żadne opłaty konfiguracji i w dowolnym momencie można zamknąć konto. Można znaleźć więcej szczegółów na [cennik usługi Twilio](https://www.twilio.com/voice/pricing).
 
 ## <a id="Concepts"></a>Pojęcia
 Interfejs API usługi Twilio to API typu RESTful, który zapewnia połączeń głosowych i SMS funkcje dla aplikacji. Biblioteki klienckie są dostępne w wielu językach; Aby uzyskać listę, zobacz [bibliotek interfejsu API usługi Twilio][twilio_libraries].
@@ -40,7 +42,7 @@ Kluczowe aspekty interfejsu API usługi Twilio to zleceń usługi Twilio i Twili
 ### <a id="Verbs"></a>Twilio zlecenia
 Interfejs API korzysta z usługi Twilio zleceń; na przykład **&lt;Say&gt;** Twilio komputerowi dostarczenia komunikatu w wywołaniu powoduje, że zlecenie.
 
-Oto lista poleceń usługi Twilio.  Dowiedz się więcej o innych poleceń i możliwości za pośrednictwem [dokumentacji usługi Twilio Markup Language](http://www.twilio.com/docs/api/twiml).
+Oto lista poleceń usługi Twilio.  Dowiedz się więcej o innych poleceń i możliwości za pośrednictwem [dokumentacji usługi Twilio Markup Language](https://www.twilio.com/docs/api/twiml).
 
 * `<Dial>`: Obiekt wywołujący łączy się z innego numeru telefonu.
 * `<Gather>`: Służy do zbierania cyfry wprowadzone na klawiaturze telefonu.
@@ -96,9 +98,9 @@ Twilio zawiera pięć bibliotek dla deweloperów platformy .NET:
 
 Przykłady podane w tym przewodniku korzystanie z biblioteki Twilio.API.
 
-Biblioteki mogą być [zainstalowane przy użyciu rozszerzenia Menedżera pakietów NuGet](http://www.twilio.com/docs/csharp/install) dostępne dla programu Visual Studio 2010 do 2015.  Kod źródłowy znajduje się na [GitHub][twilio_github_repo], która obejmuje witrynę typu Wiki, która zawiera wyczerpujące informacje dotyczące korzystania z biblioteki.
+Biblioteki mogą być [zainstalowane przy użyciu rozszerzenia Menedżera pakietów NuGet](https://www.twilio.com/docs/csharp/install) dostępne dla programu Visual Studio 2010 do 2015.  Kod źródłowy znajduje się na [GitHub][twilio_github_repo], która obejmuje witrynę typu Wiki, która zawiera wyczerpujące informacje dotyczące korzystania z biblioteki.
 
-Domyślnie program Microsoft Visual Studio 2010 instaluje NuGet w wersji 1.2. Instalowanie bibliotek usługi Twilio wymaga wersji 1.6 NuGet lub nowszej. Aby uzyskać informacji na temat instalowania lub aktualizowania NuGet, zobacz [ http://nuget.org/ ] [ nuget].
+Domyślnie program Microsoft Visual Studio 2010 instaluje NuGet w wersji 1.2. Instalowanie bibliotek usługi Twilio wymaga wersji 1.6 NuGet lub nowszej. Aby uzyskać informacji na temat instalowania lub aktualizowania NuGet, zobacz [ https://nuget.org/ ] [ nuget].
 
 > [!NOTE]
 > Aby zainstalować najnowszą wersję pakietu NuGet, należy najpierw odinstalować załadowano wersję przy użyciu Menedżera rozszerzeń programu Visual Studio. Aby to zrobić, należy uruchomić program Visual Studio jako administrator. W przeciwnym razie przycisk Odinstaluj jest wyłączony.
@@ -126,7 +128,7 @@ const string authToken = "your_twilio_authentication_token";
 TwilioClient.Init(accountSID, authToken);
 
 // Use the Twilio-provided site for the TwiML response.
-var url = "http://twimlets.com/message";
+var url = "https://twimlets.com/message";
 url = $"{url}?Message%5B0%5D=Hello%20World";
 
 // Set the call From, To, and URL values to use for the call.
@@ -139,7 +141,7 @@ var call = CallResource.Create(
     }
 ```
 
-Aby uzyskać więcej informacji na temat parametrów przekazanych do **CallResource.Create** metody, zobacz [ http://www.twilio.com/docs/api/rest/making-calls ] [ twilio_rest_making_calls].
+Aby uzyskać więcej informacji na temat parametrów przekazanych do **CallResource.Create** metody, zobacz [ https://www.twilio.com/docs/api/rest/making-calls ] [ twilio_rest_making_calls].
 
 Jak wspomniano wcześniej, ten kod używa witryny dostarczone do usługi Twilio do zwracania odpowiedzi TwiML. Zamiast tego można użyć do własnej witryny można podać odpowiedzi TwiML. Aby uzyskać więcej informacji, zobacz [jak: Podaj TwiML odpowiedzi z własną witrynę sieci Web](#howto_provide_twiml_responses).
 
@@ -171,10 +173,10 @@ catch (TwilioException ex)
 ```
 
 ## <a id="howto_provide_twiml_responses"></a>Porady: zapewnienie TwiML odpowiedzi z własną witrynę sieci Web
-Gdy aplikacja inicjuje wywołanie interfejsu API usługi Twilio — na przykład za pośrednictwem **CallResource.Create** metoda - Twilio wysyła żądanie do adresu URL, który powinien zwrócić odpowiedź TwiML. W przykładzie w [porady: wykonywanie wywołania interfejsu wychodzącego](#howto_make_call) używa adresu URL dostarczone do usługi Twilio [ http://twimlets.com/message ] [ twimlet_message_url] do zwracania odpowiedzi.
+Gdy aplikacja inicjuje wywołanie interfejsu API usługi Twilio — na przykład za pośrednictwem **CallResource.Create** metoda - Twilio wysyła żądanie do adresu URL, który powinien zwrócić odpowiedź TwiML. W przykładzie w [porady: wykonywanie wywołania interfejsu wychodzącego](#howto_make_call) używa adresu URL dostarczone do usługi Twilio [ https://twimlets.com/message ] [ twimlet_message_url] do zwracania odpowiedzi.
 
 > [!NOTE]
-> Gdy TwiML jest przeznaczony do użytku przez usługi sieci web, możesz wyświetlić TwiML w przeglądarce. Na przykład kliknij pozycję [ http://twimlets.com/message ] [ twimlet_message_url] będzie pusta `<Response>` element; inny przykład kliknij [ http://twimlets.com/message?Message%5B0%5D=Hello%20World ](http://twimlets.com/message?Message%5B0%5D=Hello%20World) się `<Response>` element, który zawiera &lt;Say&gt; elementu.
+> Gdy TwiML jest przeznaczony do użytku przez usługi sieci web, możesz wyświetlić TwiML w przeglądarce. Na przykład kliknij pozycję [ https://twimlets.com/message ] [ twimlet_message_url] będzie pusta `<Response>` element; inny przykład kliknij [ https://twimlets.com/message?Message%5B0%5D=Hello%20World ](https://twimlets.com/message?Message%5B0%5D=Hello%20World) się `<Response>` element, który zawiera &lt;Say&gt; elementu.
 >
 
 Zamiast polegania na adres URL podany do usługi Twilio, można utworzyć własny adres URL w witrynie odpowiedzi HTTP. W dowolnym języku, który zwraca odpowiedzi HTTP, można utworzyć witryny. W tym temacie założono, że będziesz hostingu adres URL z ogólna procedura obsługi ASP.NET.
@@ -271,17 +273,17 @@ Aby uzyskać dodatkowe informacje o korzystaniu z usługi Twilio na platformie A
 
 [howto_phonecall_dotnet]: partner-twilio-cloud-services-dotnet-phone-call-web-role.md
 
-[twimlet_message_url]: http://twimlets.com/message
+[twimlet_message_url]: https://twimlets.com/message
 
-[twilio_rest_making_calls]: http://www.twilio.com/docs/api/rest/making-calls
+[twilio_rest_making_calls]: https://www.twilio.com/docs/api/rest/making-calls
 
-[vs_project]:http://msdn.microsoft.com/library/windowsazure/ee405487.aspx
-[nuget]:http://nuget.org/
+[vs_project]:https://msdn.microsoft.com/library/windowsazure/ee405487.aspx
+[nuget]:https://nuget.org/
 [twilio_github_repo]:https://github.com/twilio/twilio-csharp
 
 [twilio_libraries]: https://www.twilio.com/docs/libraries
-[twiml]: http://www.twilio.com/docs/api/twiml
-[twilio_api]: http://www.twilio.com/api
+[twiml]: https://www.twilio.com/docs/api/twiml
+[twilio_api]: https://www.twilio.com/api
 [try_twilio]: https://www.twilio.com/try-twilio
 [twilio_account]:  https://www.twilio.com/console
 [verify_phone]: https://www.twilio.com/console/phone-numbers/verified

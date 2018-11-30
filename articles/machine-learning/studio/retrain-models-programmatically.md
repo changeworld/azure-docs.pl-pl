@@ -1,5 +1,5 @@
 ---
-title: Programowe ponowne trenowanie modeli uczenia maszynowego | Dokumentacja firmy Microsoft
+title: Programowe ponowne trenowanie modeli usługi Machine Learning Studio — Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak programowe ponowne trenowanie modelu i zaktualizować usługę sieci web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 2dd72446bd1238b7c70535bf848d52909f82d990
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b38143fe6f1f1cf3e65a2989e1b0a71c28530b2a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262231"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313389"
 ---
-# <a name="retrain-machine-learning-models-programmatically"></a>Programowe ponowne trenowanie modeli usługi Machine Learning
-W tym instruktażu będą nauczysz się programowe ponowne trenowanie Azure usługi internetowej Machine Learning za pomocą C# i usługa Machine Learning Batch Execution.
+# <a name="retrain-machine-learning-studio-models-programmatically"></a>Programowe ponowne trenowanie modeli usługi Machine Learning Studio
+W tym instruktażu będą nauczysz się programowe ponowne trenowanie korzystając usługi sieci web Azure Machine Learning Studio C# i usługa Machine Learning Batch Execution.
 
 Po mają retrained modelu, poniższe przewodniki pokazują, jak zaktualizować model w swojej predykcyjną usługę sieci web:
 

@@ -1,6 +1,6 @@
 ---
-title: Analizowanie zmienności klientów za pomocą usługi Machine Learning | Dokumentacja firmy Microsoft
-description: Analiza przypadku związanych z tworzeniem zintegrowane modelu do analizowania i oceniania zmienności klientów
+title: Analizowanie zmienności klientów za pomocą usługi Azure Machine Learning Studio | Dokumentacja firmy Microsoft
+description: Analiza przypadku związanych z tworzeniem zintegrowane modelu do analizowania i oceniania zmienności klientów za pomocą usługi Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 7c55e35370e2aed67045333eaee7a42c3c69d318
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0ab398cc87472e3ede361f48f8e755ef294746da
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261177"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314988"
 ---
-# <a name="analyzing-customer-churn-using-azure-machine-learning"></a>Analizowanie zmienności klientów za pomocą usługi Azure Machine Learning
+# <a name="analyzing-customer-churn-using-azure-machine-learning-studio"></a>Analizowanie zmienności klientów za pomocą usługi Azure Machine Learning Studio
 ## <a name="overview"></a>Przegląd
 Ten artykuł przedstawia informacje o referencyjnej implementacji projektu analizy zmienności klientów, która powstała przy użyciu usługi Azure Machine Learning. W tym artykule omówiono powiązanych modelach ogólny na potrzeby całościowe rozwiązanie problemu odpływu klientów przemysłowe. Możemy również mierzenia dokładności modeli, które są tworzone przy użyciu uczenia maszynowego i ocenić używany na potrzeby dalszego rozwoju.  
 

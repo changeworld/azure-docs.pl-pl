@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: d037c4fc65bc32ff183ddc7a8925cd2f51411ea0
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 41b9d295837d377df98208d43c9cd4699f380b86
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034630"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52494382"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Analizowanie danych serwisu Twitter przy użyciu Apache Hive i Apache Hadoop w HDInsight
 
-Dowiedz się, jak używać Apache Hive do przetwarzania danych w usłudze Twitter. Wynik jest listę użytkowników usługi Twitter, którzy wysłali większość tweety, które zawierają określony wyraz.
+Dowiedz się, jak używać [Apache Hive](https://hive.apache.org/) do przetwarzania danych w usłudze Twitter. Wynik jest listę użytkowników usługi Twitter, którzy wysłali większość tweety, które zawierają określony wyraz.
 
 > [!IMPORTANT]
 > Kroki opisane w niniejszym dokumencie zostały przetestowane w HDInsight 3.6.
@@ -182,7 +182,7 @@ Te polecenia przechowywanie danych w lokalizacji dostępnej dla wszystkich węz�
 
 ## <a name="run-the-hiveql-job"></a>Uruchom zadanie HiveQL
 
-1. Aby utworzyć plik zawierający instrukcje HiveQL, użyj następującego polecenia:
+1. Użyj następującego polecenia, aby utworzyć plik zawierający [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) instrukcji:
 
    ```bash
    nano twitter.hql
@@ -322,7 +322,7 @@ Te polecenia przechowywanie danych w lokalizacji dostępnej dla wszystkich węz�
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Ma pokazaliśmy ci, jak przekształcić zestaw danych JSON bez struktury w tabeli programu Hive ze strukturą. Aby dowiedzieć się więcej na temat programu Hive na HDInsight, zobacz następujące dokumenty:
+Wiesz jak przekształcić zestaw danych JSON bez struktury w strukturze [Apache Hive](https://hive.apache.org/) tabeli. Aby dowiedzieć się więcej na temat programu Hive na HDInsight, zobacz następujące dokumenty:
 
 * [Rozpoczynanie pracy z usługą HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Analizowanie danych dotyczących opóźnień lotów przy użyciu HDInsight](hdinsight-analyze-flight-delay-data-linux.md)

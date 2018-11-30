@@ -3,24 +3,24 @@ title: Klient bazy danych HBase w języku Java — Azure HDInsight
 description: Informacje o sposobie tworzenia aplikacji opartych na języku Java bazy danych Apache HBase, a następnie wdrożyć ją do bazy danych HBase w usłudze Azure HDInsight przy użyciu narzędzia Apache Maven.
 services: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/30/2018
-ms.author: hrasheed
-ms.openlocfilehash: 677714487aac6e25a0505cce978792c76bb1cee4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 11/27/2018
+ms.openlocfilehash: 721e37349b406705a2cdfb52c64b5796cb590d78
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016084"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445655"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Tworzenie aplikacji bazy danych Apache HBase w języku Java
 
 Dowiedz się, jak utworzyć [bazy danych Apache HBase](http://hbase.apache.org/) aplikacji w języku Java. Następnie można używać aplikacji z bazą danych HBase w usłudze Azure HDInsight.
 
-Kroki opisane w tej dokumentów użyj [Maven](http://maven.apache.org/) utworzyć i skompilować projekt. Maven to zarządzanie projektami oprogramowania oraz narzędzie zrozumienie, które umożliwia tworzenie oprogramowania, dokumentację i raporty dla projektów języka Java.
+Kroki opisane w tej dokumentów użyj [narzędzia Apache Maven](https://maven.apache.org/) utworzyć i skompilować projekt. Maven to zarządzanie projektami oprogramowania oraz narzędzie zrozumienie, które umożliwia tworzenie oprogramowania, dokumentację i raporty dla projektów języka Java.
 
 > [!NOTE]
 > Kroki opisane w niniejszym dokumencie zostały ostatnio przetestowana HDInsight 3.6.
@@ -35,9 +35,9 @@ Kroki opisane w tej dokumentów użyj [Maven](http://maven.apache.org/) utworzy�
     > [!NOTE]
     > HDInsight 3.5 i większa wymaga Java 8. Wcześniejszych wersjach HDInsight wymagają Java 7.
 
-* [Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 
-* [Klaster HDInsight Azure opartych na systemie Linux z bazą danych HBase](apache-hbase-tutorial-get-started-linux.md#create-hbase-cluster)
+* [Klaster HDInsight Azure opartych na systemie Linux przy użyciu bazy danych Apache HBase](apache-hbase-tutorial-get-started-linux.md#create-apache-hbase-cluster)
 
 ## <a name="create-the-project"></a>Tworzenie projektu
 
@@ -59,7 +59,7 @@ Kroki opisane w tej dokumentów użyj [Maven](http://maven.apache.org/) utworzy�
    * **pom.XML**: Model obiektu projektu ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) zawiera informacje i szczegóły konfiguracji używane do tworzenia projektu.
    * **SRC**: katalog zawierający **main/java/com/microsoft/przykłady** katalogu, w którym można utworzyć aplikacji.
 
-3. Usuń `src/test/java/com/microsoft/examples/apptest.java` pliku. Nie można używać w tym przykładzie.
+3. Usuń `src/test/java/com/microsoft/examples/apptest.java` pliku. Nie jest on używany w tym przykładzie.
 
 ## <a name="update-the-project-object-model"></a>Aktualizowanie modelu obiektu projektu
 
@@ -81,9 +81,9 @@ Kroki opisane w tej dokumentów użyj [Maven](http://maven.apache.org/) utworzy�
     W tej sekcji oznacza, że projekt musi **klienta bazy danych hbase** i **phoenix core** składników. W czasie kompilacji te zależności są pobierane z repozytorium Maven domyślne. Możesz użyć [centralnej wyszukiwania repozytorium narzędzia Maven](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) Aby dowiedzieć się więcej na temat tej zależności.
 
    > [!IMPORTANT]
-   > Numer wersji klienta bazy danych hbase musi być zgodny z wersją bazy danych HBase, który znajduje się z klastrem usługi HDInsight. Skorzystaj z poniższej tabeli, aby znaleźć numer poprawnej wersji.
+   > Numer wersji klienta bazy danych hbase, musi być zgodny z wersją Apache HBase, który znajduje się z klastrem usługi HDInsight. Skorzystaj z poniższej tabeli, aby znaleźć numer poprawnej wersji.
 
-   | Wersja klastra HDInsight | Wersja bazy danych HBase do użycia |
+   | Wersja klastra HDInsight | Wersja bazy danych Apache HBase do użycia |
    | --- | --- |
    | 3.2 |0.98.4-hadoop2 |
    | 3.3, 3.4, 3.5 i 3.6 |1.1.2 |
@@ -363,7 +363,7 @@ Kroki opisane w tej dokumentów użyj [Maven](http://maven.apache.org/) utworzy�
 
 ## <a name="upload-the-jar-and-run-jobs-ssh"></a>Przekaż plik JAR i uruchamianie zadań (SSH)
 
-Następujące kroki użycia `scp` można skopiować plik JAR z podstawowym węzłem głównym Twojej bazy danych hbase w klastrze HDInsight. `ssh` Polecenia jest następnie używany do łączenia z klastrem i uruchomić przykład bezpośrednio w węźle głównym.
+Następujące kroki użycia `scp` można skopiować plik JAR z podstawowym węzłem usługi Apache HBase w klastrze HDInsight. `ssh` Polecenia jest następnie używany do łączenia z klastrem i uruchomić przykład bezpośrednio w węźle głównym.
 
 1. Aby przekazać plik jar do klastra, użyj następującego polecenia:
 
@@ -412,7 +412,7 @@ Następujące kroki użycia `scp` można skopiować plik JAR z podstawowym węz�
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>Przekaż plik JAR i uruchamianie zadań (PowerShell)
 
-Poniższe kroki przekazać plik JAR do domyślnego magazynu klastra HBase przy użyciu programu Azure PowerShell. Polecenia cmdlet HDInsight są następnie używane do zdalnego uruchamiania przykładów.
+Poniższe kroki przekazać plik JAR do domyślnego magazynu klastra Apache HBase przy użyciu programu Azure PowerShell. Polecenia cmdlet HDInsight są następnie używane do zdalnego uruchamiania przykładów.
 
 1. Po zainstalowaniu i skonfigurowaniu programu Azure PowerShell Utwórz plik o nazwie `hbase-runner.psm1`. Użyj następującego tekstu jako zawartości tego pliku:
 
@@ -683,4 +683,4 @@ __Za pomocą programu Azure PowerShell__:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Dowiedz się, jak używać SQuirreL SQL z bazą danych HBase](apache-hbase-phoenix-squirrel-linux.md)
+[Dowiedz się, jak używać SQuirreL SQL z bazy danych Apache HBase](apache-hbase-phoenix-squirrel-linux.md)

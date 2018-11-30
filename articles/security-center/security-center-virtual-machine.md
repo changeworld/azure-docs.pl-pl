@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: 9211a487b9e03d2cecead224584077859bfc7bb7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e25b1e08ea6cb395381c065621e1137eaec2fe20
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253690"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314812"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Usługi Azure Security Center i Azure Virtual Machines
 Usługa [Azure Security Center](https://azure.microsoft.com/services/security-center/) pomaga w zapobieganiu zagrożeniom, wykrywaniu ich i reagowaniu na nie. Zapewnia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami subskrypcji platformy Azure, pomaga wykrywać zagrożenia, które w przeciwnym razie mogłyby pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań z zakresu zabezpieczeń.
@@ -58,7 +58,7 @@ Zasady zabezpieczeń określają zestaw mechanizmów kontrolnych, które są zal
 ![Zasady zabezpieczeń](./media/security-center-virtual-machine/security-center-virtual-machine-fig1.png)
 
 > [!NOTE]
-> Aby dowiedzieć się więcej na temat poszczególnych dostępnych **zasad zapobiegania**, zobacz artykuł [Ustawianie zasad zabezpieczeń](security-center-policies.md).
+> Aby dowiedzieć się więcej na temat poszczególnych dostępnych **zasad zapobiegania**, zobacz artykuł [Ustawianie zasad zabezpieczeń](security-center-azure-policy.md).
 > 
 > 
 
@@ -85,7 +85,7 @@ Po skonfigurowaniu zasad zabezpieczeń usługa Security Center analizuje stan za
 > 
 
 ## <a name="monitor-security-health"></a>Monitoruj kondycję zabezpieczeń
-Po włączeniu [zasad zabezpieczeń](security-center-policies.md) dla zasobów subskrypcji Centrum zabezpieczeń będzie analizować zabezpieczenia zasobów, aby zidentyfikować potencjalne luki.  Stan zabezpieczeń zasobów oraz informacje o problemach można wyświetlić w bloku **Kondycja zabezpieczeń zasobów**. Jeśli klikniesz pozycję **Maszyny wirtualne** w ramach kafelka **Kondycja zabezpieczeń zasobów**, zostanie otwarty blok **Maszyny wirtualne** z zaleceniami dotyczącymi maszyn wirtualnych. 
+Po włączeniu [zasad zabezpieczeń](security-center-azure-policy.md) dla zasobów subskrypcji Centrum zabezpieczeń będzie analizować zabezpieczenia zasobów, aby zidentyfikować potencjalne luki.  Stan zabezpieczeń zasobów oraz informacje o problemach można wyświetlić w bloku **Kondycja zabezpieczeń zasobów**. Jeśli klikniesz pozycję **Maszyny wirtualne** w ramach kafelka **Kondycja zabezpieczeń zasobów**, zostanie otwarty blok **Maszyny wirtualne** z zaleceniami dotyczącymi maszyn wirtualnych. 
 
 ![Kondycja zabezpieczeń](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
@@ -99,7 +99,7 @@ Wybierz alert zabezpieczeń, aby dowiedzieć się więcej o zdarzeniach, które 
 ## <a name="see-also"></a>Zobacz także
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
-* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-policies.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
+* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
 

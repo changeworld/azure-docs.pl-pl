@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: bdcc0510503e48caf70f4f0d91d7602d767ca9ab
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: e060075fbcf6a5083e51b753e119cb5471129a79
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092482"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308479"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Kopia zapasowa i przywracanie usługi Azure SQL Data Warehouse
 Dowiedz się, jak działa i przywracania kopii zapasowych w usłudze Azure SQL Data Warehouse. Użyj danych magazynu migawek do odzyskiwania lub skopiuj magazynu danych do poprzedniego punktu przywracania w regionie podstawowym. Użyj danych, Magazyn geograficznie nadmiarowych kopii zapasowych do przywrócenia w innym regionie geograficznym. 
@@ -68,7 +68,7 @@ Usługa SQL Data Warehouse wykonuje geograficznej kopii zapasowej raz dziennie w
 Kopie zapasowe geograficznej są domyślnie włączone. Jeśli magazyn danych jest Gen1, możesz to zrobić [zrezygnować](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy) w razie potrzeby. Nie możesz zrezygnować z kopii zapasowych geograficznej dla Gen2 ochrony danych jest wbudowaną gwarantowane.
 
 > [!NOTE]
-> Jeśli potrzebujesz ustawić częstsze punkty odzyskiwania dla kopii zapasowych geograficznie, Zagłosuj na tę możliwość [tutaj](https://feedback.azure.com/forums/307516-sql-data-warehouse). Można również utworzenie punktu przywracania zdefiniowanych przez użytkownika i przywracanie z punktu przywracania nowo utworzony nowy magazyn danych w innym regionie. Po przywróceniu, masz w magazynie danych online i rozwiązaniem przez czas nieokreślony, aby zapisać koszty operacji obliczeniowych. Wstrzymano bazę danych spowoduje naliczenie opłaty za magazyn zgodnie ze stawką usługi Azure Premium Storage. a następnie Wstrzymaj. Potrzebujesz kopii aktywnej, magazynu danych, możesz wznowić, które powinny zająć tylko kilka minut.
+> Jeśli potrzebujesz ustawić częstsze punkty odzyskiwania dla kopii zapasowych geograficznie, Zagłosuj na tę możliwość [tutaj](https://feedback.azure.com/forums/307516-sql-data-warehouse). Można również utworzenie punktu przywracania zdefiniowanych przez użytkownika i przywracanie z punktu przywracania nowo utworzony nowy magazyn danych w innym regionie. Po przywróceniu, masz w magazynie danych online i rozwiązaniem przez czas nieokreślony, aby zapisać koszty operacji obliczeniowych. Wstrzymano bazę danych spowoduje naliczenie opłaty za magazyn zgodnie ze stawką usługi Azure Premium Storage. a następnie Wstrzymaj.<!-- should this be removed or is something missing? --> Potrzebujesz kopii aktywnej, magazynu danych, możesz wznowić, które powinny zająć tylko kilka minut.
 >
 
 

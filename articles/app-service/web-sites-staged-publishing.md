@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: 47b67a6a3475b7f159a14825b168bbf0049db9b8
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: cb7b114836c83338f71c85f59299ecf1dc4613a9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291151"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317623"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w usłudze Azure App Service
 <a name="Overview"></a>
@@ -169,7 +169,7 @@ Jeśli błędy są identyfikowane w środowisku produkcyjnym po zakończeniu zam
 <a name="Warm-up"></a>
 
 ## <a name="custom-warm-up-before-swap"></a>Niestandardowe rozgrzewania przed wymiany
-Niektóre aplikacje mogą wymagać akcje niestandardowe rozgrzewania. `applicationInitialization` Element konfiguracji w pliku web.config pozwala określić niestandardową inicjalizację akcje do wykonania, zanim żądanie zostanie odebrane. Operacja zamiany czeka, aż ten niestandardowy rozgrzewania zakończyć. Poniżej przedstawiono przykładowe fragment pliku web.config.
+Korzystając z [Auto-Swap](#Auto-Swap), niektóre aplikacje mogą wymagać akcje niestandardowe rozgrzewania. `applicationInitialization` Element konfiguracji w pliku web.config pozwala określić niestandardową inicjalizację akcje do wykonania, zanim żądanie zostanie odebrane. Operacja zamiany czeka, aż ten niestandardowy rozgrzewania zakończyć. Poniżej przedstawiono przykładowe fragment pliku web.config.
 
     <system.webServer>
         <applicationInitialization>

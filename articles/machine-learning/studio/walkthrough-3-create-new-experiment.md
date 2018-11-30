@@ -1,5 +1,5 @@
 ---
-title: 'Krok 3: Tworzenie nowego eksperymentu usługi Machine Learning | Dokumentacja firmy Microsoft'
+title: 'Krok 3: Tworzenie nowego eksperymentu usługi Machine Learning Studio — Azure | Dokumentacja firmy Microsoft'
 description: 'Krok 3 programowanie przewodnik rozwiązania do analizy predykcyjnej: Tworzenie nowego eksperymentu szkolenia w usłudze Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 47126006c96b1bfefe90b030805aac1d6af6c0db
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: a6f12c536cfc18ed0be55ec1755c7fe5179006ba
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262251"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317532"
 ---
-# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-experiment"></a>Przewodnik, krok 3. Tworzenie nowego eksperymentu usługi Azure Machine Learning
+# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>Przewodnik, krok 3: Tworzenie nowego eksperymentu usługi Azure Machine Learning Studio
 Jest to trzeci krok tego przewodnika, [tworzenia rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 
 1. [Tworzenie obszaru roboczego usługi Machine Learning](walkthrough-1-create-ml-workspace.md)

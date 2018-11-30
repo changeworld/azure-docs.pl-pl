@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: wolfma
-ms.openlocfilehash: 706f51ae1e2d81e2003f2fcd637def95c7a42f8e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: ff09926d61d64294a4f12ccf959f6685910539f1
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567540"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317895"
 ---
 # <a name="release-notes"></a>Informacje o wersji
 
@@ -31,7 +31,7 @@ ms.locfileid: "51567540"
 
 * Dodano dodatkowa weryfikacja w konfiguracji rozpoznawania i dodano dodatkowe komunikat.
 * Ulepszona obsługa wieloletni wyciszenia w środku plik audio.
-* Pakiet NuGet: dla platformy .NET Framework projektów uniemożliwić kompilowanie za pomocą konfiguracji AnyCPU.
+* Pakiet NuGet: dla projektów programu .NET Framework zapobiega kompilowanie za pomocą konfiguracji AnyCPU.
 
 **Poprawki błędów**
 

@@ -1,22 +1,19 @@
 ---
 title: 'Azure Cosmos DB: Interfejs API .NET przetwarzania zbiorczego zestawu SDK i zasoby | Dokumentacja firmy Microsoft'
 description: Poznaj interfejs API .NET wykonawca zbiorcze i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami usługi Azure Cosmos DB zbiorcze wykonawca .NET SDK.
-services: cosmos-db
 author: tknandu
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 09/14/2018
+ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: ffd8f438429cd8769ac0dbff7f489327166e0000
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ae9560296e37ff5492c07e69e6ba0eb5539915c8
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294462"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308499"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Biblioteka przetwarzania zbiorczego .NET: pobieranie informacji 
 
@@ -36,7 +33,7 @@ ms.locfileid: "46294462"
 
 <table>
 
-<tr><td>**Opis**</td><td>Biblioteka przetwarzania zbiorczego pozwala aplikacji klienckich wykonywały operacje zbiorcze na kontach usługi Azure Cosmos DB. Biblioteka przetwarzania zbiorczego zawiera przestrzenie nazw elementów BulkImport, BulkUpdate i usuwania zbiorczego. Elementów BulkImport, który zbiorczo moduł pozyskiwania dokumenty w sposób zoptymalizowany taki sposób, że przepływnością aprowizowaną dla kolekcji jest używane do jego najszerszym. BulkUpdate, który zbiorczo modułu zaktualizować istniejące dane w kontenerach usługi Azure Cosmos DB jako poprawki. Moduł usuwania zbiorczego zbiorczo delete dokumenty w sposób zoptymalizowany taki sposób, że przepływnością aprowizowaną dla kolekcji jest używane do jego dozwolonym zakresie.</td></tr>
+<tr><td>**Opis**</td><td>Biblioteka przetwarzania zbiorczego pozwala aplikacji klienckich wykonywały operacje zbiorcze na kontach usługi Azure Cosmos DB. Biblioteka przetwarzania zbiorczego zawiera przestrzenie nazw elementów BulkImport BulkUpdate i usuwania zbiorczego. Elementów BulkImport, który zbiorczo moduł pozyskiwania dokumenty w sposób zoptymalizowany taki sposób, że przepływnością aprowizowaną dla kolekcji jest używane do jego najszerszym. BulkUpdate, który zbiorczo modułu zaktualizować istniejące dane w kontenerach usługi Azure Cosmos DB jako poprawki. Moduł usuwania zbiorczego zbiorczo delete dokumenty w sposób zoptymalizowany taki sposób, że przepływnością aprowizowaną dla kolekcji jest używane do jego dozwolonym zakresie.</td></tr>
 
 <tr><td>**Zestaw SDK do pobrania**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/)</td></tr>
 
@@ -46,12 +43,36 @@ ms.locfileid: "46294462"
 
 <tr><td>**Wprowadzenie**</td><td>[Wprowadzenie do przetwarzania zbiorczego biblioteki zestawu SDK platformy .NET](bulk-executor-dot-net.md)</td></tr>
 
-<tr><td>**Bieżącej struktury obsługiwanej**</td><td><ul><li>[Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)(w wersji > = 2.0.0)</li><li>
-[Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)(w wersji > = 9.0.1)
-</li></ul></td></tr>
+<tr><td>**Bieżącej struktury obsługiwanej**</td><td>Microsoft .NET Framework 4.5.2, 4.6.1 i .NET Standard 2.0 </td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>Informacje o wersji
+
+### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
+
+* W tym MongoBulkExecutor do działu pomocy technicznej .NET Standard 2.0. Ta funkcja sprawia, że funkcjonalnym odpowiednikiem 1.3.0 wersji z dodatkiem obsługi .NET Standard 2.0 jako platformę docelową.
+
+### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-Preview
+
+* Dodano .NET Standard 2.0 jako jednej platformy docelowej, aby biblioteka BulkExecutor pracy z aplikacjami .NET Core.
+
+### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
+
+* Dodano przeciążenia dla operacji usuwania zbiorczego dla konta interfejsu API SQL do akceptowania krotek identyfikatora dokumentu, można usunąć klucza partycji.
+* Dodano przeciążenia dla operacji usuwania zbiorczego dla konta interfejsu API SQL do akceptowania RequestOptions zawierającej klucz partycji, określając wartość klucza partycji, tylko jako filtru w zapytaniu danych wejściowych, określania dokumentów do usunięcia.
+* Rozwiązano problem, który spowodował problem formatowania w agencie użytkownika używane przez BulkExecutor.
+
+### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
+
+* Wprowadzone ulepszenia BulkExecutor importowania i aktualizowania interfejsów API, aby niewidocznie dostosowania do elastyczne skalowanie kontenera usługi Cosmos DB, gdy magazyn przekracza bieżąca pojemność bez zgłaszanie wyjątków.
+
+### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
+
+* Zaktualizowany się do wersji 2.1.3 zależności zestawu SDK .NET usługi DocumentDB.
+
+### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
+
+* Rozwiązano problem, który spowodował BulkExecutor zgłosić błąd JSRT podczas importowania danych do stałej kolekcji.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 
@@ -70,3 +91,9 @@ ms.locfileid: "46294462"
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 
 * Dodano obsługę dla elementów BulkImport i BulkUpdate operacji konta interfejsu API SQL usługi Azure Cosmos DB.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Informacje na temat biblioteki zbiorcze wykonawca Java, zobacz następujący artykuł:
+
+[Biblioteka przetwarzania zbiorczego Java SDK oraz informacje o wydaniu](sql-api-sdk-bulk-executor-java.md)

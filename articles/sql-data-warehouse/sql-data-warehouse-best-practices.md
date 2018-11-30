@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/18/2018
+ms.date: 11/26/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 81fd5ea082fe05c9908b2eb0689aba9a4fe4e789
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 0324a6f71a0a30fc9f3005a041b4c5413e6af8da
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307136"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317306"
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Najlepsze praktyki dotyczące korzystania z usługi Azure SQL Data Warehouse
 W tym artykule to kolekcja najlepszych rozwiązań, aby pomóc w celu osiągnięcia optymalnej wydajności z usługi Azure SQL Data Warehouse.  Niektóre kwestie poruszane w tym artykule mają charakter podstawowy i są łatwe do wyjaśnienia. Inne są bardziej zaawansowane i zostaną tu omówione jedynie powierzchownie.  Celem tego artykułu jest dostarczenie podstawowych wskazówek oraz zwiększenie wiedzy w zakresie ważnych obszarów, na których należy skupić się, tworząc magazyn danych.  Każda sekcja wprowadza konkretną koncepcję i prowadzi do bardziej szczegółowych artykułów, w których dana koncepcja została omówiona bardziej szczegółowo.
@@ -39,7 +39,7 @@ Jednorazowe załadowanie do małej tabeli za pomocą instrukcji INSERT lub nawet
 Zobacz też artykuł poświęcony instrukcji [INSERT][INSERT]
 
 ## <a name="use-polybase-to-load-and-export-data-quickly"></a>Korzystanie z funkcji PolyBase do szybkiego ładowania i eksportowania danych
-Usługa SQL Data Warehouse obsługuje ładowanie i eksportowanie danych za pośrednictwem kilku narzędzi, w tym Azure Data Factory, PolyBase i BCP.  W przypadku małych ilości danych, gdy wydajność nie ma decydującego znaczenia, można zastosować dowolne narzędzie.  Jednak podczas ładowania lub eksportowania dużych ilości danych lub w przypadku, gdy wymagana jest wysoka wydajność, najlepszym wyborem jest funkcja PolyBase.  Funkcja PolyBase wykorzystuje architekturę MPP (Massively Parallel Processing) usługi SQL Data Warehouse, w związku z czym ładuje i eksportuje znaczne ilości danych szybciej niż inne narzędzia.  Obciążenia funkcji PolyBase można uruchomić za pomocą instrukcji CTAS lub INSERT INTO.  **Użycie instrukcji CTAS minimalizuje rejestrowanie transakcji i stanowi najszybszy sposób ładowania danych.**  Usługa Azure Data Factory obsługuje również obciążenia funkcji PolyBase.  Funkcja PolyBase obsługuje wiele formatów plików, w tym pliki Gzip.  **Aby zmaksymalizować przepływność, korzystając z plików tekstowych gzip, należy podzielić pliki na 60 lub więcej plików w celu maksymalizacji równoległości obciążenia.**  W celu uzyskania szybszej całkowitej przepływności warto rozważyć równoległe ładowania danych.
+Usługa SQL Data Warehouse obsługuje ładowanie i eksportowanie danych za pośrednictwem kilku narzędzi, w tym Azure Data Factory, PolyBase i BCP.  W przypadku małych ilości danych, gdy wydajność nie ma decydującego znaczenia, można zastosować dowolne narzędzie.  Jednak podczas ładowania lub eksportowania dużych ilości danych lub w przypadku, gdy wymagana jest wysoka wydajność, najlepszym wyborem jest funkcja PolyBase.  Funkcja PolyBase wykorzystuje architekturę MPP (Massively Parallel Processing) usługi SQL Data Warehouse, w związku z czym ładuje i eksportuje znaczne ilości danych szybciej niż inne narzędzia.  Obciążenia funkcji PolyBase można uruchomić za pomocą instrukcji CTAS lub INSERT INTO.  **Użycie instrukcji CTAS minimalizuje rejestrowanie transakcji i stanowi najszybszy sposób ładowania danych.**  Usługa Azure Data Factory również obsługuje obciążenia funkcji PolyBase i można uzyskać podobną wydajność jako instrukcji CTAS.  Funkcja PolyBase obsługuje wiele formatów plików, w tym pliki Gzip.  **Aby zmaksymalizować przepływność, korzystając z plików tekstowych gzip, należy podzielić pliki na 60 lub więcej plików w celu maksymalizacji równoległości obciążenia.**  W celu uzyskania szybszej całkowitej przepływności warto rozważyć równoległe ładowania danych.
 
 Zobacz też [Ładowanie danych][Load data], [Przewodnik po funkcji PolyBase][Guide for using PolyBase], [Wzorce i strategie ładowania danych w usłudze Azure SQL Data Warehouse][Azure SQL Data Warehouse loading patterns and strategies], [Ładowanie danych za pomocą usługi Azure Data Factory][Load Data with Azure Data Factory], [Przenoszenie danych za pomocą usługi Azure Data Factory][Move data with Azure Data Factory], [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT] i [Tworzenie tabeli przy użyciu instrukcji Select (CTAS)][Create table as select (CTAS)]
 

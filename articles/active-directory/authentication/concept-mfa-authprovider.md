@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 11/27/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 8e77a33667bd6794f667348958e0edb9c6a8fb0d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 41edbc621baede92c548f43ad2730b73f59756c0
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094981"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496099"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Kiedy należy używać dostawcę usługi Azure Multi-Factor Authentication
 
@@ -26,13 +26,11 @@ Dostawcy usługi Multi-Factor Authentication platformy Azure umożliwia korzysta
 Jeśli masz licencje, które obejmuje wszystkich użytkowników w Twojej organizacji, nie potrzebujesz dostawcy usługi Multi-Factor Authentication platformy Azure. Utwórz dostawcę usługi Azure Multi-Factor Authentication, tylko wtedy, gdy należy również podać weryfikację dwuetapową dla niektórych użytkowników, którzy nie mają licencji.
 
 > [!NOTE]
-> Od 1 września 2018 r nowych dostawców uwierzytelniania już nie może zostać utworzony. Istniejące dostawców uwierzytelniania mogą nadal może być używany i zaktualizowane. Uwierzytelnianie wieloskładnikowe będzie dostępna funkcja licencje usługi Azure AD Premium w.
+> Od 1 września 2018 r nowych dostawców uwierzytelniania już nie może zostać utworzony. Istniejące dostawców uwierzytelniania mogą nadal może być używany i zaktualizowane. Uwierzytelnianie wieloskładnikowe, będą w dalszym ciągu być dostępna jako funkcja w licencji usługi Azure AD Premium.
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Zastrzeżenia związane z zestawem SDK usługi Azure MFA
 
-Dostawca usługi Azure Multi-Factor Authentication jest wymagany do pobrania zestawu SDK. Należy pamiętać, zestaw SDK jest przestarzała i nie jest już obsługiwana dla nowych klientów i tylko będą nadal działać do 14 listopada 2018 r. Po tym czasie wywołania do zestawu SDK będą kończyć się niepowodzeniem.
-
-Aby pobrać zestaw SDK, utworzyć dostawcy usługi Multi-Factor Authentication platformy Azure, nawet jeśli masz usługi Azure MFA, AAD Premium lub inne powiązane licencje. Jeśli tworzysz dostawcę usługi Azure Multi-Factor Authentication w tym celu i masz już licencje, pamiętaj o utworzeniu go przy użyciu modelu **Za włączonego użytkownika**. Następnie połącz dostawcę z katalogu, który zawiera usługi Azure MFA, Azure AD Premium lub inne powiązane licencje. Dzięki tej konfiguracji będziesz ponosić dodatkowe opłaty jedynie w przypadku, gdy liczba unikatowych użytkowników korzystających z weryfikacji dwuetapowej przekroczy liczbę posiadanych przez Ciebie licencji.
+Należy pamiętać, zestaw SDK jest przestarzała i tylko będą nadal działać do 14 listopada 2018 r. Po tym czasie wywołania do zestawu SDK będą kończyć się niepowodzeniem.
 
 ## <a name="what-is-an-mfa-provider"></a>Co to jest dostawca usługi MFA?
 

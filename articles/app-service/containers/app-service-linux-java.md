@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: a6752f9127a176eef9fd03e7ffddfa7450772def
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 8d15aeb92911a26a9a42a0449a24e8c0fee4467b
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037689"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497348"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Przewodnik dla deweloperów języka Java dla usługi App Service w systemie Linux
 
@@ -28,6 +28,10 @@ Ten przewodnik zawiera podstawowe pojęcia i instrukcje dla deweloperów języka
 ## <a name="logging-and-debugging-apps"></a>Rejestrowanie i debugowanie aplikacji
 
 Raporty dotyczące wydajności, wizualizacji ruchu i kontrole kondycji są dostępne dla aplikacji eeach za pośrednictwem witryny Azure portal. Zobacz [Omówienie diagnostyki usługi Azure App Service](/azure/app-service/app-service-diagnostics) Aby uzyskać więcej informacji na temat uzyskać dostęp do tych narzędzi diagnostycznych.
+
+## <a name="application-performance-monitoring"></a>Monitorowanie wydajności aplikacji
+
+Zobacz [narzędzia z aplikacjami Java w usłudze Azure App Service w systemie Linux do monitorowania wydajności aplikacji](how-to-java-apm-monitoring.md) porad instrukcje dotyczące konfigurowania usługi New Relic i AppDynamics przy użyciu aplikacji języka Java uruchomiona w usłudze App Service w systemie Linux.
 
 ### <a name="ssh-console-access"></a>Dostęp do konsoli SSH 
 
@@ -124,7 +128,7 @@ Alternatywnie można skonfigurować ustawienia aplikacji przy użyciu wtyczki Ma
 </appSettings> 
 ```
 
-## <a name="secure-application"></a>Zabezpieczanie aplikacji
+## <a name="secure-applications"></a>Zabezpiecz aplikacje
 
 Aplikacje Java uruchomiona w usłudze App Service dla systemu Linux ma ten sam zestaw [najlepszych rozwiązań dotyczących zabezpieczeń](/azure/security/security-paas-applications-using-app-services) jako inne aplikacje. 
 
@@ -168,7 +172,7 @@ W przypadku źródeł danych na poziomie aplikacji:
 
 1. Dodaj `context.xml` plik, jeśli nie istnieje, do aplikacji sieci web i dodaj go `META-INF` katalogu pliku WAR podczas kompilowania projektu.
 
-2. W tym pliku Dodaj `Context` wpis ścieżki połączenia źródła danych na adres JNDI. W
+2. W tym pliku Dodaj `Context` wpis ścieżki połączenia źródła danych na adres JNDI.
 
     ```xml
     <Context>
@@ -192,7 +196,7 @@ W przypadku źródeł danych na poziomie aplikacji:
 
 Za udostępnione zasoby na poziomie serwera:
 
-1. Skopiuj zawartość `/usr/local/tomcat/conf` do `/home/tomcat` na usługi App Service Linux wystąpienia przy użyciu protokołu SSH, jeśli jeszcze nie masz konfiguracji istnieje.
+1. Skopiuj zawartość `/usr/local/tomcat/conf` do `/home/tomcat/conf` na usługi App Service Linux wystąpienia przy użyciu protokołu SSH, jeśli jeszcze nie masz konfiguracji istnieje.
 
 2. Dodawanie kontekstu do usługi `server.xml`
 
@@ -231,7 +235,7 @@ Za udostępnione zasoby na poziomie serwera:
 
     3. Podłącz do lokalnego portu tunelowania przy użyciu klienta protokołu SFTP oraz przekazywanie plików do `/home/tomcat/lib` folderu.
 
-5. Uruchom ponownie aplikację App Service dla systemu Linux. Spowoduje to zresetowanie Tomcat `CATALINA_HOME` do `/home/tomcat` i korzystać z zaktualizowaną konfiguracją i klas.
+5. Uruchom ponownie aplikację App Service dla systemu Linux. Spowoduje to zresetowanie Tomcat `CATALINA_HOME` do `/home/tomcat/conf` i korzystać z zaktualizowaną konfiguracją i klas.
 
 ## <a name="docker-containers"></a>Kontenerów Docker
 

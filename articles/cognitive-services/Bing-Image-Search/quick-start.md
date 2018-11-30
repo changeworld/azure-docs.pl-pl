@@ -1,6 +1,6 @@
 ---
-title: Obrazy interfejsu API Search szybki start | Dokumentacja firmy Microsoft
-description: Pokazano, jak rozpocząć korzystanie z interfejsu API wyszukiwania usługi Bing obrazów.
+title: Przewodnik Szybki start interfejs API wyszukiwania obrazów | Dokumentacja firmy Microsoft
+description: Pokazuje, jak rozpocząć korzystanie z interfejsu API wyszukiwania obrazów Bing.
 services: cognitive-services
 author: swhite-msft
 manager: ehansen
@@ -10,18 +10,18 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 9e211cf5acd17ab80948d0b7161bdd2a9220c4a6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5742efb2dca02565735cf308d9ede9316ce6d12e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347032"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314868"
 ---
-# <a name="your-first-images-search-query"></a>Zapytania wyszukiwania pierwszy obrazów
+# <a name="your-first-images-search-query"></a>Zapytanie wyszukiwania dla pierwszego obrazów
 
-Przed skonfigurowaniem pierwszego połączenia, należy uzyskać klucz subskrypcji usług kognitywnych wyszukiwania usługi Bing. Aby uzyskać klucz, zobacz [spróbuj kognitywnych usług](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api).
+Przed wykonaniem pierwszego wywołania należy uzyskać klucz subskrypcji usług Cognitive Services wyszukiwania Bing. Aby uzyskać klucz, zobacz [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api).  Zobacz też [usług Cognitive Services cennik — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-Aby uzyskać wyniki wyszukiwania obrazu, może wysłać żądania GET do następujący punkt końcowy:  
+Aby uzyskać wyniki wyszukiwania obrazów, czy Wyślij żądanie Pobierz do następujący punkt końcowy:  
   
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search
@@ -29,24 +29,24 @@ https://api.cognitive.microsoft.com/bing/v7.0/images/search
   
 Żądanie musi używać protokołu HTTPS.
 
-Zaleca się, że wszystkie żądania pochodzi z serwera. Dystrybucja klucza w ramach aplikacji klienta zawiera więcej możliwości złośliwego innej do niego dostęp. Ponadto nawiązywanie połączeń z serwerem zapewnia jeden punkt uaktualniania wersji interfejsu API.
+Zalecamy, aby wszystkie żądania pochodziły z serwera. Dystrybuowanie klucza w ramach aplikacji klienckiej dostarcza więcej okazji do przejęcia go przez złośliwy kod innych firm. Ponadto wykonywanie wywołań z serwera zapewnia jeden punkt uaktualniania dla przyszłych wersji interfejsu API.
 
-Żądanie musi określać [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query) parametru zapytania, który zawiera użytkownika terminu wyszukiwania. Chociaż jest to opcjonalne, powinny również określać żądanie [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#mkt) parametru zapytania, który identyfikuje rynku miejscu wyniki pochodzą z. Aby uzyskać listę opcjonalne parametry zapytania takie jak `freshness` i `size`, zobacz [parametry zapytania](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query-parameters). Wszystkie wartości parametrów zapytania musi być zakodowane w adresie URL.  
+Żądanie musi określać parametr zapytania [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query), który zawiera wyszukiwany termin użytkownika. Chociaż jest to opcjonalne, żądanie powinno również określać parametr zapytania [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#mkt), który identyfikuje rynek, z którego mają pochodzić wyniki. Aby uzyskać listę opcjonalnych parametrów zapytania, takich jak `freshness` czy `size`, zobacz [Query Parameters (Parametry zapytania)](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query-parameters). Wszystkie wartości parametrów zapytania muszą być zakodowane w adresie URL.  
   
-Żądanie musi określać [Ocp-Apim-subskrypcji — klucz](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#subscriptionkey) nagłówka. Mimo że jest to opcjonalne, zachęca się także określić następujące nagłówki:  
+Żądanie musi określać nagłówek [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#subscriptionkey). Mimo że jest to opcjonalne, zachęcamy, aby określić również następujące nagłówki:  
   
--   [Agent użytkownika](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#useragent)  
+-   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#useragent)  
 -   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#clientid)  
--   [ClientIP-X-wyszukiwania](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#clientip)  
--   [X wyszukiwania lokalizacji](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#location)  
+-   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#clientip)  
+-   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#location)  
 
-Nagłówki adresów IP i lokalizacji klienta są ważne dla zwracania zawartości pamiętać lokalizacji.  
+Nagłówki adresu IP klienta i lokalizacji są ważne z punktu widzenia zwracania zawartości odpowiedniej dla danej lokalizacji.  
 
-Aby uzyskać listę wszystkich nagłówków żądań i odpowiedzi, zobacz [nagłówki](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#headers).
+Aby uzyskać listę wszystkich nagłówków żądań i odpowiedzi, zobacz [Nagłówki](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#headers).
 
 ## <a name="the-request"></a>Żądanie
 
-Poniżej przedstawiono żądania wyszukiwania, który zawiera wszystkie parametry sugerowane zapytania i nagłówków. Jeśli jest to Twoja pierwsza czas wywoływania żadnego z interfejsów API Bing, nie dołączaj nagłówka Identyfikatora klienta. Identyfikator klienta należy uwzględnić tylko, jeśli został wcześniej wywołuje interfejs API Bing i Bing zwrócony identyfikator klienta dla użytkownika lub kombinacji urządzeń. 
+Poniżej przedstawiono żądanie wyszukiwania, które zawiera wszystkie sugerowane parametry zapytania i nagłówki. Jeśli jest to pierwsze czas wywoływania dowolnych interfejsów API usługi Bing, nie dołączaj nagłówek identyfikator klienta. Identyfikator klienta należy uwzględnić tylko wtedy, gdy interfejs API Bing został już wywołany i usługa Bing zwróciła identyfikator klienta dla kombinacji użytkownika i urządzenia. 
   
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies&mkt=en-us HTTP/1.1  
@@ -57,7 +57,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Poniżej przedstawiono odpowiedź na wcześniejsze żądanie.
+Poniżej przedstawiono odpowiedź na poprzednie żądanie.
 
 ```json
 {
@@ -132,10 +132,10 @@ Poniżej przedstawiono odpowiedź na wcześniejsze żądanie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Wypróbuj interfejsu API. Przejdź do [obrazu konsoli testowania wyszukiwania interfejsu API](https://dev.cognitive.microsoft.com/docs/services/8336afba49a84475ba401758c0dbf749/operations/571fab09dbe2d933e891028f). 
+Wypróbuj interfejs API. Przejdź do [konsoli testowanie interfejsu API wyszukiwania obrazów](https://dev.cognitive.microsoft.com/docs/services/8336afba49a84475ba401758c0dbf749/operations/571fab09dbe2d933e891028f). 
 
-Aby uzyskać więcej informacji o korzystanie z obiektów odpowiedzi, zobacz [wyszukiwanie w sieci Web](./search-the-web.md).
+Aby uzyskać szczegółowe informacje dotyczące korzystania z obiektów odpowiedzi, zobacz [Wyszukiwanie w sieci Web](./search-the-web.md).
 
-Aby uzyskać informacje na temat uzyskiwania informacji na temat obrazów, takich jak strony sieci web, które obejmują obrazu lub osoby, które zostały rozpoznane w obrazie, zobacz [Insights obrazu](./image-insights.md).  
+Aby uzyskać szczegółowe informacje dotyczące uzyskiwania szczegółowych informacji o pliku obrazu, takich jak strony sieci web, które zawierają obraz lub osób, które zostały rozpoznane w obrazie, zobacz [szczegółowe informacje o obrazach](./image-insights.md).  
   
-Aby uzyskać więcej informacji o obrazach, które są umożliwia analizę trendów na mediów społecznościowych, zobacz [umożliwia analizę trendów obrazów](./trending-images.md).  
+Aby uzyskać szczegółowe informacje o obrazach, które stają się popularne w mediach społecznościowych, zobacz [popularne obrazy](./trending-images.md).  

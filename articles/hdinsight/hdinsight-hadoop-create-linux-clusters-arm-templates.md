@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4e5561c4846889f53723ed8df82d7c6268aee180
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1a053f92433b6091f0d77439399e8419a58df185
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241620"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495154"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Tworzenie klastrów usługi Apache Hadoop w HDInsight przy użyciu szablonów usługi Resource Manager
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -32,7 +32,7 @@ Postępuj zgodnie z instrukcjami w tym artykule, potrzebne są:
 ### <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
 Szablon usługi Resource Manager ułatwia tworzenie następujących resoruces dla aplikacji w jednej, skoordynowanej operacji:
 * Klastry HDInsight i ich zasoby zależne (takie jak domyślne konto magazynu)
-* Inne zasoby (takie jak Azure SQL Database przy użyciu narzędzia Apache Sqoop)
+* Inne zasoby (takie jak Azure SQL Database, aby użyć [Apache Sqoop](http://sqoop.apache.org/))
 
 W szablonie należy zdefiniować zasoby, które są wymagane przez aplikację. Należy również określić parametrów wdrożenia wprowadzanie wartości dla różnych środowisk. Szablon składa się z kodu JSON i wyrażeń, których używasz do tworzenia wartości dla danego wdrożenia.
 

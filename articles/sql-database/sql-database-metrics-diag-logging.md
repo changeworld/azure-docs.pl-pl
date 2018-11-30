@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 8f66c95202e0ccdef86f9630f7a98c20023a8955
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: b903d0ddbccac8fe4fa8b251d409bd8addebb435
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087750"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426003"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego 
 
@@ -101,7 +101,7 @@ Do przesyłania strumieniowego dane diagnostyczne i telemetryczne dla **usługi 
    ![Skonfigurować diagnostykę dla bazy danych SQL](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 
 > [!NOTE]
-> Dziennik inspekcji nie można włączyć za pomocą ustawień diagnostycznych bazy danych. Aby włączyć strumieniowe przesyłanie dzienników inspekcji, zobacz [konfigurowania inspekcji dla bazy danych](sql-database-auditing.md#subheading-2)oraz [dzienniki inspekcji SQL w usłudze Azure Log Analytics i Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
+> Dzienniki inspekcji zabezpieczeń nie można włączyć za pomocą ustawień diagnostycznych bazy danych. Aby włączyć strumieniowe przesyłanie dzienników inspekcji, zobacz [konfigurowania inspekcji dla bazy danych](sql-database-auditing.md#subheading-2)oraz [dzienniki inspekcji SQL w usłudze Azure Log Analytics i Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
 >
 
 > [!TIP]
@@ -182,7 +182,7 @@ Do przesyłania strumieniowego dane diagnostyczne i telemetryczne dla **wystąpi
 2. Wybierz **ustawień diagnostycznych**
 3. Wybierz **Włącz diagnostykę** Jeśli nie poprzednie ustawienia istnieje, lub wybierz **Edytuj ustawienie** Aby edytować poprzednie ustawienia
 
-   ![Włącz diagnostykę dla wystąpienia zarządzanego](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
+   ![Włącz diagnostykę dla wystąpienia zarządzanego](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-enable.png)
 
 4. Wpisz nazwę dla ustawienia — do własnych potrzeb
 5. Wybierz zasoby, które mają strumienia danych diagnostycznych z elastycznej puli: **archiwum do konta magazynu**, **Stream do usługi event hub**, lub **wysyłanie do usługi Log Analytics**
@@ -190,7 +190,7 @@ Do przesyłania strumieniowego dane diagnostyczne i telemetryczne dla **wystąpi
 7. Zaznacz pole wyboru dane diagnostyczne i telemetryczne przykładowo **ResourceUsageStats**
 8. Kliknij pozycję **Zapisz**
 
-   ![Skonfigurować diagnostykę dla wystąpienia zarządzanego](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+   ![Skonfigurować diagnostykę dla wystąpienia zarządzanego](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 
 > [!TIP]
 > Powtórz powyższe kroki dla każdego wystąpienia zarządzanego, chcesz monitorować.
@@ -413,7 +413,7 @@ Zebrane dane telemetryczne z monitorowania może służyć do własnego **niesta
 
 |Właściwość|Opis|
 |---|---|
-|Identyfikator dzierżawy|Twoim identyfikatorem dzierżawy.|
+|TenantId|Twoim identyfikatorem dzierżawy.|
 |SourceSystem|Zawsze: Azure|
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania.|
 |Typ|Zawsze: AzureDiagnostics|
@@ -440,7 +440,7 @@ Zebrane dane telemetryczne z monitorowania może służyć do własnego **niesta
 
 |Właściwość|Opis|
 |---|---|
-|Identyfikator dzierżawy|Twoim identyfikatorem dzierżawy.|
+|TenantId|Twoim identyfikatorem dzierżawy.|
 |SourceSystem|Zawsze: Azure|
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania.|
 |Typ|Zawsze: AzureDiagnostics|
@@ -491,7 +491,7 @@ Dowiedz się więcej o [danych statystyki czasu wykonywania zapytania Store](htt
 
 |Właściwość|Opis|
 |---|---|
-|Identyfikator dzierżawy|Twoim identyfikatorem dzierżawy.|
+|TenantId|Twoim identyfikatorem dzierżawy.|
 |SourceSystem|Zawsze: Azure|
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania.|
 |Typ|Zawsze: AzureDiagnostics|
@@ -529,7 +529,7 @@ Dowiedz się więcej o [Query Store oczekiwania dane statystyk](https://docs.mic
 
 |Właściwość|Opis|
 |---|---|
-|Identyfikator dzierżawy|Twoim identyfikatorem dzierżawy.|
+|TenantId|Twoim identyfikatorem dzierżawy.|
 |SourceSystem|Zawsze: Azure|
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania.|
 |Typ|Zawsze: AzureDiagnostics|
@@ -558,7 +558,7 @@ Dowiedz się więcej o [komunikaty o błędach programu SQL Server](https://msdn
 
 |Właściwość|Opis|
 |---|---|
-|Identyfikator dzierżawy|Twoim identyfikatorem dzierżawy.|
+|TenantId|Twoim identyfikatorem dzierżawy.|
 |SourceSystem|Zawsze: Azure|
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania.|
 |Typ|Zawsze: AzureDiagnostics|
@@ -587,7 +587,7 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 
 |Właściwość|Opis|
 |---|---|
-|Identyfikator dzierżawy|Twoim identyfikatorem dzierżawy.|
+|TenantId|Twoim identyfikatorem dzierżawy.|
 |SourceSystem|Zawsze: Azure|
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania.|
 |Typ|Zawsze: AzureDiagnostics|
@@ -610,7 +610,7 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 
 |Właściwość|Opis|
 |---|---|
-|Identyfikator dzierżawy|Twoim identyfikatorem dzierżawy.|
+|TenantId|Twoim identyfikatorem dzierżawy.|
 |SourceSystem|Zawsze: Azure|
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania.|
 |Typ|Zawsze: AzureDiagnostics|
@@ -634,7 +634,7 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 
 |Właściwość|Opis|
 |---|---|
-|Identyfikator dzierżawy|Twoim identyfikatorem dzierżawy.|
+|TenantId|Twoim identyfikatorem dzierżawy.|
 |SourceSystem|Zawsze: Azure|
 |TimeGenerated [UTC] |Sygnatura czasowa podczas rejestrowania.|
 |Typ|Zawsze: AzureDiagnostics|
@@ -655,7 +655,7 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 
 |Właściwość|Opis|
 |---|---|
-|Identyfikator dzierżawy|Twoim identyfikatorem dzierżawy.|
+|TenantId|Twoim identyfikatorem dzierżawy.|
 |SourceSystem|Zawsze: Azure|
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania.|
 |Typ|Zawsze: AzureDiagnostics|

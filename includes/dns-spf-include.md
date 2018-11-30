@@ -1,3 +1,16 @@
+---
+author: vhorne
+ms.service: dns
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: victorh
+ms.openlocfilehash: 9cc650cea17acb8d89933c819c4ca60e2c459d1c
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52331294"
+---
 Rekordy framework (SPF) zasad nadawcy są używane do określenia serwerów poczty e-mail, które może wysyłać wiadomości e-mail w imieniu nazwy domeny. Prawidłowej konfiguracji rekordy SPF ważne jest, aby zapobiec odbiorców oznaczanie wiadomości e-mail jako wiadomości-śmieci.
 
 Specyfikacje RFC DNS pierwotnie została wprowadzona nowy typ rekordu SPF, aby obsługiwać ten scenariusz. Aby zapewnić obsługę starszych serwerów nazw, również dozwolone użycie typu rekordu TXT, aby określić rekordy SPF. Tę niejednoznaczność doprowadziło do wprowadzenia w błąd, który został rozwiązany przez [RFC 7208](http://tools.ietf.org/html/rfc7208#section-3.1). Stwierdza, że rekordy SPF, muszą zostać utworzone przy użyciu typu rekordu TXT. Stanowi również, czy typ rekordu SPF jest przestarzały.

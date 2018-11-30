@@ -14,29 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: dae757231d8f2ff7fcd8e032d941c0fa9f192796
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 14090e21fb7c6ca07fe63220ffd1d44d483ac869
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23835167"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443631"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Szablony produktów w usłudze Azure API Management
-Zarządzanie interfejsami API Azure zapewnia możliwość dostosować zawartość strony portalu dewelopera przy użyciu zestawu szablonów, które skonfigurować ich zawartości. Przy użyciu [DotLiquid](http://dotliquidmarkup.org/) składni i Edytor wybranych przez użytkownika, takie jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i zestaw udostępnionego zlokalizowane [zasoby ciągu](api-management-template-resources.md#strings), [symboli zasobów](api-management-template-resources.md#glyphs), i [strony kontrolki](api-management-page-controls.md), ma dużą elastyczność konfigurowania zawartości stron, zgodnie z własnymi potrzebami, za pomocą tych szablonów.  
+
+Usługa Azure API Management zapewnia możliwość dostosować zawartość portalu dla deweloperów przy użyciu zestawu szablonów, które ich zawartość. Przy użyciu [DotLiquid](http://dotliquidmarkup.org/) składni i Edytor wybranych przez użytkownika, takich jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i zlokalizowanych podany zbiór [zasoby ciągu](api-management-template-resources.md#strings), [symbol zasoby](api-management-template-resources.md#glyphs), i [stronie kontrolki](api-management-page-controls.md), masz dużą elastyczność konfigurowania zawartości stron, zgodnie z potrzebami przy użyciu tych szablonów.  
   
  Szablony w tej sekcji umożliwiają dostosowanie zawartości stron produktu w portalu dla deweloperów.  
   
 -   [Lista produktów](#ProductList)  
   
--   [Produktu](#Product)  
+-   [Produkt](#Product)  
   
 > [!NOTE]
->  Przykładowe domyślnych szablonów znajdują się w następującej dokumentacji, ale mogą ulec zmianie z powodu ciągłe ulepszenia. Szablonów domyślnych na żywo można wyświetlić w portalu dla deweloperów, przechodząc do żądanego szablony osobno. Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [dostosowywaniu portalu dla deweloperów interfejsu API zarządzania za pomocą szablonów](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Przykładowe szablony domyślne są uwzględnione w poniższej dokumentacji, ale mogą ulec zmianie ze względu na stałe udoskonalenia. Szablony domyślne na żywo można wyświetlić w portalu dla deweloperów, przechodząc do żądanego szablony osobno. Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [Dostosowywanie portalu dla deweloperów usługi API Management przy użyciu szablonów](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="ProductList"></a>Lista produktów  
- **Listę produktów** szablonu umożliwia dostosowanie treści strony listy produktów w portalu dla deweloperów.  
+##  <a name="ProductList"></a> Lista produktów  
+ **Lista produktów** szablon umożliwia dostosowanie treść strony listy produktów w portalu dla deweloperów.  
   
- ![Listy produktów](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
+ ![Lista produktów](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
   
 ### <a name="default-template"></a>Szablon domyślny  
   
@@ -67,19 +70,19 @@ Zarządzanie interfejsami API Azure zapewnia możliwość dostosować zawartoś�
 ```  
   
 ### <a name="controls"></a>Kontrolki  
- `Product list` Szablonu może korzystać z następujących [strony kontrolki](api-management-page-controls.md).  
+ `Product list` Szablonu może korzystać z następujących [stronie kontrolki](api-management-page-controls.md).  
   
 -   [Formant stronicowania](api-management-page-controls.md#paging-control)  
   
--   [formant wyszukiwania](api-management-page-controls.md#search-control)  
+-   [Kontrolka wyszukiwania](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>Model danych  
   
 |Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
 |Stronicowanie|[Stronicowanie](api-management-template-data-model-reference.md#Paging) jednostki.|Informacje o stronicowania dla kolekcji produktów.|  
-|Filtrowanie|[Filtrowanie](api-management-template-data-model-reference.md#Filtering) jednostki.|Informacje filtrowania dla strony listy produktów.|  
-|Produkty|Kolekcja [produktu](api-management-template-data-model-reference.md#Product) jednostek.|Produkty są widoczne dla bieżącego użytkownika.|  
+|Filtrowanie|[Filtrowanie](api-management-template-data-model-reference.md#Filtering) jednostki.|Filtrowanie informacji dla strony listy produktów.|  
+|Produkty|Kolekcja [produktu](api-management-template-data-model-reference.md#Product) jednostek.|Produkty widoczne dla bieżącego użytkownika.|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  
   
@@ -119,10 +122,10 @@ Zarządzanie interfejsami API Azure zapewnia możliwość dostosować zawartoś�
 }  
 ```  
   
-##  <a name="Product"></a>Produktu  
- **Produktu** szablonu umożliwia dostosowanie treści strony produktu w portalu dla deweloperów.  
+##  <a name="Product"></a> Produkt  
+ **Produktu** szablon umożliwia dostosowanie treści na stronie produktu w portalu dla deweloperów.  
   
- ![Strona produktu portalu dewelopera](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
+ ![Strona produktu w portalu dla deweloperów](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
   
 ### <a name="default-template"></a>Szablon domyślny  
   
@@ -194,7 +197,7 @@ Zarządzanie interfejsami API Azure zapewnia możliwość dostosować zawartoś�
 ```  
   
 ### <a name="controls"></a>Kontrolki  
- `Product list` Szablonu może korzystać z następujących [strony kontrolki](api-management-page-controls.md).  
+ `Product list` Szablonu może korzystać z następujących [stronie kontrolki](api-management-page-controls.md).  
   
 -   [przycisk subskrypcji](api-management-page-controls.md#subscribe-button)  
   
@@ -202,17 +205,17 @@ Zarządzanie interfejsami API Azure zapewnia możliwość dostosować zawartoś�
   
 |Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
-|Product (Produkt)|[Produktu](api-management-template-data-model-reference.md#Product)|Określony produkt.|  
-|IsDeveloperSubscribed|Wartość logiczna|Określa, czy bieżący użytkownik jest subskrypcję do tego produktu.|  
-|Parametr SubscriptionState|Numer|Stan subskrypcji. Dostępne są następujące stany:<br /><br /> -   `0 - suspended`— subskrypcji jest zablokowany i subskrybenta nie można wywołać wszystkie interfejsy API produktu.<br />-   `1 - active`— Subskrypcja jest aktywna.<br />-   `2 - expired`— Subskrypcja osiągnęła daty jego wygaśnięcia i została zdezaktywowana.<br />-   `3 - submitted`— Żądanie subskrypcji przez deweloperów, ale ma nie została jeszcze zatwierdzeniu lub odrzuceniu.<br />-   `4 - rejected`— Żądanie subskrypcji zostało odrzucone przez administratora.<br />-   `5 - cancelled`— Subskrypcja została anulowana przez dewelopera lub administratora.|  
-|Limity|Tablica|Ta właściwość jest przestarzała i nie powinna być używana.|  
-|DelegatedSubscriptionEnabled|Wartość logiczna|Czy [delegowania](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) jest włączony dla tej subskrypcji.|  
-|DelegatedSubscriptionUrl|Ciąg|Jeśli delegowanie jest włączone, adres URL subskrypcji delegowanego.|  
-|IsAgreed|Wartość logiczna|Jeśli produkt ma warunki, czy bieżący użytkownik zgodził się na warunki.|  
-|Subskrypcje|Kolekcja [Podsumowanie subskrypcji](api-management-template-data-model-reference.md#SubscriptionSummary) jednostek.|Subskrypcje produktu.|  
-|Interfejsy API|Kolekcja [interfejsu API](api-management-template-data-model-reference.md#API) jednostek.|Interfejsy API w tym produkcie.|  
-|CannotAddBecauseSubscriptionNumberLimitReached|Wartość logiczna|Określa, czy bieżący użytkownik nie kwalifikuje się do subskrybowania tego produktu w odniesieniu do limit subskrypcji.|  
-|CannotAddBecauseMultipleSubscriptionsNotAllowed|Wartość logiczna|Określa, czy bieżący użytkownik nie kwalifikuje się do subskrybowania tego produktu w odniesieniu do wielu subskrypcji jest dozwolone.|  
+|Product (Produkt)|[Produkt](api-management-template-data-model-reference.md#Product)|Określony produkt.|  
+|IsDeveloperSubscribed|wartość logiczna|Czy bieżący użytkownik jest subskrybentem tego produktu.|  
+|SubscriptionState|numer|Stan subskrypcji. Możliwe stany to:<br /><br /> -   `0 - suspended` — subskrypcji jest zablokowane i subskrybenta nie można wywołać dowolnych interfejsów API produktu.<br />-   `1 - active` — Subskrypcja jest aktywna.<br />-   `2 - expired` — Subskrypcja osiągnęła daty wygaśnięcia i zostało zdezaktywowane.<br />-   `3 - submitted` — Żądanie subskrypcji przez deweloperów, ale ma nie została jeszcze zatwierdzeniu lub odrzuceniu.<br />-   `4 - rejected` — Żądanie subskrypcji zostało odrzucone przez administratora.<br />-   `5 - cancelled` — Subskrypcja została anulowana przez dewelopera lub administratora.|  
+|Limity|tablica|Ta właściwość jest przestarzała i nie powinna być używana.|  
+|DelegatedSubscriptionEnabled|wartość logiczna|Czy [delegowania](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) jest włączona dla tej subskrypcji.|  
+|DelegatedSubscriptionUrl|ciąg|Jeśli delegowanie jest włączone, adres URL delegowanego subskrypcji.|  
+|IsAgreed|wartość logiczna|Jeśli produkt zawiera warunki, czy bieżący użytkownik zgodził się warunki.|  
+|Subskrypcje|Kolekcja [Podsumowanie subskrypcji](api-management-template-data-model-reference.md#SubscriptionSummary) jednostek.|Subskrypcje do produktu.|  
+|interfejsy API|Kolekcja [API](api-management-template-data-model-reference.md#API) jednostek.|Interfejsy API, w tym produkcie.|  
+|CannotAddBecauseSubscriptionNumberLimitReached|wartość logiczna|Czy bieżący użytkownik jest uprawniona do subskrybowania tego produktu w odniesieniu do limit subskrypcji.|  
+|CannotAddBecauseMultipleSubscriptionsNotAllowed|wartość logiczna|Czy bieżący użytkownik jest uprawniona do subskrybowania tego produktu w odniesieniu do wielu subskrypcji, które są dozwolone lub nie.|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  
   
@@ -258,5 +261,5 @@ Zarządzanie interfejsami API Azure zapewnia możliwość dostosować zawartoś�
 }  
 ```
 
-## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [dostosowywaniu portalu dla deweloperów interfejsu API zarządzania za pomocą szablonów](api-management-developer-portal-templates.md).
+## <a name="next-steps"></a>Kolejne kroki
+Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [Dostosowywanie portalu dla deweloperów usługi API Management przy użyciu szablonów](api-management-developer-portal-templates.md).

@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 0811f0e115545a37b6c570c436900a8548adae61
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3a65b66619351462fcd9c77c3fb9b935cf99ebcc
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006366"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496452"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Wprowadzenie do usług ML w usłudze Azure HDInsight
 
-Usługa Azure HDInsight umożliwia tworzenie klastrów usług ML. Opcja ta pozwala skryptom języka R używać aparatu Spark i funkcji MapReduce do wykonywania obliczeń rozproszonych. W tym artykule przedstawiono procedurę tworzenia klastra usług ML w usłudze HDInsight, a następnie uruchamiania skryptu R, który demonstruje sposób użycia aparatu Spark na potrzeby wykonywania rozproszonych obliczeń przez kod R.
+Usługa Azure HDInsight umożliwia tworzenie klastrów usług ML. Opcja ta pozwala skryptom języka R używać [platformy Apache Spark](https://spark.apache.org/) i [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) do wykonywania obliczeń rozproszonych. W tym artykule przedstawiono procedurę tworzenia klastra usług ML w usłudze HDInsight, a następnie uruchamiania skryptu R, który demonstruje sposób użycia aparatu Spark na potrzeby wykonywania rozproszonych obliczeń przez kod R.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -37,7 +37,7 @@ Usługa Azure HDInsight umożliwia tworzenie klastrów usług ML. Opcja ta pozwa
 
     * **Nazwa klastra**: nazwa klastra usługi HDInsight.
     * **Subskrypcja**: wybierz subskrypcję, której chcesz użyć.
-    * **Nazwa użytkownika logowania klastra** i **Hasło logowania klastra**: dane logowania podczas uzyskiwania dostępu do klastra przy użyciu protokołu HTTPS. Te poświadczenia umożliwiają dostęp do takich usług jak interfejs użytkownika sieci Web Ambari lub interfejs API REST.
+    * **Nazwa użytkownika logowania klastra** i **Hasło logowania klastra**: dane logowania podczas uzyskiwania dostępu do klastra przy użyciu protokołu HTTPS. Te poświadczenia umożliwiają uzyskiwanie dostępu do usług, takich jak Apache Ambari Web UI lub interfejsu API REST.
     * **Nazwa użytkownika SSH (Secure Shell)**: nazwa logowania używana podczas uzyskiwania dostępu do klastra za pośrednictwem protokołu SSH. Domyślnie hasło jest takie samo jak hasło logowania klastra.
     * **Grupa zasobów**: grupa zasobów, w której ma zostać utworzony klaster.
     * **Lokalizacja**: region platformy Azure, w którym ma zostać utworzony klaster.

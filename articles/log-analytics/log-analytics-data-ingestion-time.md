@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2018
 ms.author: bwren
-ms.openlocfilehash: f40c8ed7eb6bfae958b3b57c4b7d525963ab9741
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4f7b0f7c1cd08168db3f0f0ffd6cf6c4fa2c604e
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955261"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334554"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Czas wprowadzania danych w usłudze Log Analytics
 Usługa Azure Log Analytics to usługa danych dużej skali w usłudze Azure Monitor, pełniącą tysiące klientów wysyłania terabajtów danych każdego miesiąca w tempie rosnącą. Są często zadawane pytania dotyczące czasu, jaki zajmuje dane staną się dostępne w usłudze Log Analytics po ich zebraniu. W tym artykule opisano różne czynniki, które wpływają na ten czas oczekiwania.
@@ -40,7 +40,7 @@ Szczegółowe informacje na temat różnych opóźnienia w ramach tego procesu s
 Rozwiązań do zarządzania i agentów należy użyć różne strategie zbierania danych z maszyny wirtualnej, która może wpływać na czas oczekiwania. Oto kilka przykładów:
 
 - Windows zdarzeń, zdarzenia dziennika systemowego i metryki wydajności są zbierane od razu. Liczniki wydajności systemu Linux są wysyłane w odstępach 30 sekund.
-- Dzienniki usług IIS i niestandardowe dzienniki są zbierane, gdy zmieni się ich sygnatury czasowej. W przypadku dzienników usług IIS to ma wpływ [skonfigurowany na serwerze IIS Harmonogram przerzucania](log-analytics-data-sources-iis-logs.md). 
+- Dzienniki usług IIS i niestandardowe dzienniki są zbierane, gdy zmieni się ich sygnatury czasowej. W przypadku dzienników usług IIS to ma wpływ [skonfigurowany na serwerze IIS Harmonogram przerzucania](../azure-monitor/platform/data-sources-iis-logs.md). 
 - Rozwiązania z usługą Active Directory Replication wykonuje oceny co pięć dni, podczas gdy rozwiązania oceny usługi Active Directory wykonuje co tydzień oceny infrastruktury usługi Active Directory. Agent będzie zbierać dzienniki, tylko wtedy, gdy oceny zostało zakończone.
 
 ### <a name="agent-upload-frequency"></a>Agent przekazywania częstotliwości
@@ -61,7 +61,7 @@ Zapoznaj się z dokumentacją dla każdego rozwiązania jej częstotliwość zbi
 Po rekordy dziennika są pozyskiwane potokiem usługi Log Analytics, są one zapisywane do magazynu tymczasowego w celu zapewnienia izolacji dzierżawy i upewnij się, że dane nie są tracone. Ten proces zwykle dodaje 5 – 15 sekund. Niektóre rozwiązania do zarządzania wdrożenie większych algorytmów do agregacji danych i uzyskiwania szczegółowych informacji, zgodnie z przesyłania strumieniowego danych w. Na przykład monitorowanie wydajności sieci agreguje dane przychodzące w odstępach 3-minutowy skutecznie Dodawanie 3-minutowy czas oczekiwania. Inny proces, który dodaje opóźnienie to proces, który obsługuje niestandardowe dzienniki. W niektórych przypadkach ten proces może dodać kilka minut opóźnienia do dzienników, które są zbierane z plików przez agenta.
 
 ### <a name="new-custom-data-types-provisioning"></a>Nowe typy danych niestandardowych, inicjowanie obsługi administracyjnej
-Po utworzeniu nowego typu danych niestandardowych z [dziennik niestandardowy](../log-analytics/log-analytics-data-sources-custom-logs.md) lub [interfejsu API modułu zbierającego dane](../log-analytics/log-analytics-data-collector-api.md), system tworzy kontener dedykowanych dla magazynu. Jest to jednorazowa obciążenie, które występuje tylko na pierwsze wystąpienie tego typu danych.
+Po utworzeniu nowego typu danych niestandardowych z [dziennik niestandardowy](../log-analytics/../azure-monitor/platform/data-sources-custom-logs.md) lub [interfejsu API modułu zbierającego dane](../log-analytics/log-analytics-data-collector-api.md), system tworzy kontener dedykowanych dla magazynu. Jest to jednorazowa obciążenie, które występuje tylko na pierwsze wystąpienie tego typu danych.
 
 ### <a name="surge-protection"></a>Ochrona skoków
 Najwyższy priorytet, usługi Log Analytics jest upewnij się, że żadne dane klienta zostały utracone, więc system ma wbudowaną ochronę gwałtownych danych. Dotyczy to również buforów, aby upewnić się, czy nawet obciążeniem ogromną, system będzie nadal działa. W warunkach normalnego obciążenia tych kontrolek dodać mniej niż minutę, ale w ekstremalnych warunków i błędów, może ona dodać znaczną ilość czasu, przy jednoczesnym zapewnieniu danych jest bezpieczne.

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: e6025ba2645c284cca87483b48b2d79a9558d574
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 420a1c2ee09f84586f99864878e226df59606f2d
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012534"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496865"
 ---
 # <a name="scp-programming-guide"></a>Podręcznik programowania punkt połączenia usługi
 Punkt połączenia usługi jest platformę kompilacji w czasie rzeczywistym, niezawodne i spójne i aplikacji przetwarzania danych o wysokiej wydajności. Jest on oparty na [Apache Storm](http://storm.incubator.apache.org/) — zaprojektowane przez społeczności OSS systemu przetwarzania strumienia. STORM został zaprojektowany przez Nathana Marza, i została open source w serwisie Twitter. Wykorzystuje [Apache ZooKeeper](http://zookeeper.apache.org/), innego projektu Apache, aby włączyć wysoce niezawodne rozproszone Zarządzanie koordynacji i stanu. 
@@ -207,7 +207,7 @@ Dla obsługi potwierdzenia nietransakcyjnej elementu bolt, należy go jawnie `Ac
 ### <a name="statestore"></a>Stan klientów
 `StateStore` udostępnia usługi metadanych, generowania sekwencji monotonicznej i koordynacji bez oczekiwania. Abstrakcje wyższego poziomu współbieżności rozproszonej mogą być wbudowane w `StateStore`, w tym rozproszonych blokad, rozproszonych kolejek, barier i transakcji usługi.
 
-Punkt połączenia usługi, aplikacje mogą używać `State` obiektu, aby zachować niektóre informacje w dozorcy, szczególnie w przypadku topologii transakcyjnych. Robi, jeśli transakcyjnych spout ulega awarii, uruchom ponownie go można pobrać niezbędne informacje z dozorcy i ponownie uruchomić potok.
+Punkt połączenia usługi, aplikacje mogą używać `State` obiektu, aby zachować niektóre informacje w [Apache ZooKeeper](https://zookeeper.apache.org/), szczególnie w przypadku topologii transakcyjnych. Robi, jeśli transakcyjnych spout ulega awarii, uruchom ponownie go można pobrać niezbędne informacje z dozorcy i ponownie uruchomić potok.
 
 `StateStore` Obiekt ma przede wszystkim tych metod:
 
@@ -642,9 +642,9 @@ Ta topologia zawiera elementu Spout języka Java i C\# Bolt. Używa ona domyśln
 W tym przykładzie jest taka sama jak HelloWorld w zasadzie. Jedyną różnicą jest, że kod użytkownika jest kompilowany jako biblioteka DLL, a topologia jest przesyłany za pomocą SCPHost.exe. Zobacz sekcję "Tryb punktu połączenia usługi hosta" Aby uzyskać bardziej szczegółowy opis.
 
 ## <a name="next-steps"></a>Następne kroki
-Przykłady topologii Storm utworzone przy użyciu punktu połączenia usługi można znaleźć w następujących dokumentach:
+Przykłady topologii Apache Storm utworzone przy użyciu punktu połączenia usługi można znaleźć w następujących dokumentach:
 
 * [Opracowywanie topologii języka C# dla Storm Apache na HDInsight przy użyciu programu Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
-* [Process Events from Azure Event Hubs przy użyciu systemu Storm w HDInsight zdarzeń](apache-storm-develop-csharp-event-hub-topology.md)
-* [Przetwarzanie danych czujnika pojazdu z usługi Event Hubs przy użyciu systemu Storm na HDInsight](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
-* [Wyodrębnianie, przekształcanie i ładowanie (ETL) z usługi Azure Event Hubs do bazy danych HBase](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)
+* [Process Events from Azure Event Hubs przy użyciu platformy Apache Storm w HDInsight zdarzeń](apache-storm-develop-csharp-event-hub-topology.md)
+* [Przetwarzanie danych czujnika pojazdu z usługi Event Hubs przy użyciu systemu Storm Apache na HDInsight](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
+* [Wyodrębnianie, przekształcanie i ładowanie (ETL) z usługi Azure Event Hubs do bazy danych Apache HBase](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)

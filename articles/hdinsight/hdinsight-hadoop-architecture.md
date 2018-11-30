@@ -9,23 +9,23 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 066734c88890d5f1a6e42c5350db47d1a398b60a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f6393d15572eadb376cbd88dc94c3de0fd8fa80b
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277583"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495581"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Architektura usługi Apache Hadoop w HDInsight
 
-Apache Hadoop obejmuje dwa składniki podstawowe: plik System (HDFS, Hadoop Distributed), która oferuje magazyn, a jeszcze inny zasób moduł negocjowania (YARN) zapewniający przetwarzania. Za pomocą magazynu i możliwości przetwarzania klastra staje się możliwe uruchamianie programów MapReduce do wykonywania żądanego przetwarzania danych.
+[Apache Hadoop](https://hadoop.apache.org/) obejmuje dwa składniki podstawowe: [Apache Hadoop Distributed pliku System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) zapewniający magazynu i [Apache Hadoop jeszcze inny zasób moduł negocjowania (YARN)](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) , Umożliwia przetwarzanie. Z usługi storage i możliwości przetwarzania klastra staje się stanie działać [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) programów do wykonywania żądanego przetwarzania danych.
 
 > [!NOTE]
 > System plików HDFS nie są zwykle wdrażane w ramach klastra HDInsight w celu zapewnienia magazynu. Zamiast tego warstwy interfejsu zgodnego systemem plików HDFS jest używany przez składniki usługi Hadoop. Możliwości rzeczywisty magazyn są dostarczane przez usługę Azure Storage lub Azure Data Lake Store. Dla platformy Hadoop zadań MapReduce, wykonywanie w klastrze HDInsight Uruchom tak, jakby systemu plików HDFS znajdowały się i dlatego nie wymagają żadnych zmian do obsługi ich potrzeb dotyczących magazynowania. Na platformie Hadoop, HDInsight magazyn jest obsługiwany zewnętrznie, ale przetwarzanie YARN pozostaje podstawowym składnikiem. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure HDInsight](hadoop/apache-hadoop-introduction.md).
 
 W tym artykule przedstawiono YARN i jak go służy do koordynowania wykonywanie aplikacji w HDInsight.
 
-## <a name="apache-yarn-basics"></a>Podstawy usługi Apache YARN 
+## <a name="apache-hadoop-yarn-basics"></a>Podstawy systemu Apache Hadoop YARN 
 
 YARN kontroluje oraz służy do aranżacji przetwarzania danych na platformie Hadoop. YARN ma dwa podstawowe usługi są uruchamiane jako procesy w węzłach w klastrze: 
 
@@ -50,5 +50,5 @@ Wszystkie typy klastrów HDInsight wdrożenie usługi YARN. Menedżera zasobów 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Korzystanie z technologii MapReduce usługi Hadoop w HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Korzystanie z technologii MapReduce na platformie Apache Hadoop w HDInsight](hadoop/hdinsight-use-mapreduce.md)
 * [Wprowadzenie do usługi Azure HDInsight](hadoop/apache-hadoop-introduction.md)

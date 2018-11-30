@@ -8,14 +8,14 @@ ms.author: nitinver
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 7/7/2017
-ms.openlocfilehash: e25a2dcaf9b7c820f5d7e0312fb2cb55fc558882
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 771f01f18c5cb54a0458d624a65ec1a69345cadd
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39593903"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317232"
 ---
-# <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z bazy danych HBase za pomocą usługi Azure HDInsight
+# <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z bazy danych Apache HBase przy użyciu usługi Azure HDInsight
 
 Dowiedz się więcej o najważniejszych problemach i ich rozwiązania podczas pracy z ładunków bazy danych Apache HBase w Apache Ambari.
 
@@ -30,7 +30,7 @@ Otwory może być spowodowany przez regionów w trybie offline, więc przydział
 Aby przywrócić regionami nieprzypisanego do normalnego stanu, wykonaj następujące czynności:
 
 1. Zaloguj się do klastra HDInsight HBase przy użyciu protokołu SSH.
-2. Aby połączyć się z powłoki ZooKeeper, uruchom `hbase zkcli` polecenia.
+2. Aby połączyć się z powłoki programu Apache ZooKeeper, uruchom `hbase zkcli` polecenia.
 3. Uruchom `rmr /hbase/regions-in-transition` polecenia lub `rmr /hbase-unsecure/regions-in-transition` polecenia.
 4. Aby wyjść z `hbase zkcli` powłoki, należy użyć `exit` polecenia.
 5. Otwórz interfejsu użytkownika programu Apache Ambari, a następnie ponownie uruchom usługę Active głównego interfejsu użytkownika HBase.
@@ -46,7 +46,7 @@ Potencjalną przyczyną problemów limitu czasu, gdy używasz `hbck` polecenie m
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
 1. Zaloguj się do klastra HDInsight HBase przy użyciu protokołu SSH.
-2. Aby połączyć się z powłoki ZooKeeper, uruchom `hbase zkcli` polecenia.
+2. Aby połączyć się z powłoki programu Apache ZooKeeper, uruchom `hbase zkcli` polecenia.
 3. Uruchom `rmr /hbase/regions-in-transition` lub `rmr /hbase-unsecure/regions-in-transition` polecenia.
 4. Aby zakończyć działanie `hbase zkcli` powłoki, należy użyć `exit` polecenia.
 5. W Interfejsie użytkownika Ambari Uruchom ponownie usługę Active głównego interfejsu użytkownika HBase.
@@ -56,7 +56,7 @@ Potencjalną przyczyną problemów limitu czasu, gdy używasz `hbck` polecenie m
 
 ### <a name="issue"></a>Problem
 
-Lokalny plik System (HDFS, Hadoop Distributed) została zablokowana w trybie awaryjnym w klastrze HDInsight.
+Lokalne Apache pliku System (HDFS, Hadoop Distributed) została zablokowana w trybie awaryjnym w klastrze HDInsight.
 
 ### <a name="detailed-description"></a>Szczegółowy opis
 
@@ -211,7 +211,7 @@ Klaster HDInsight skalowania w dół do bardzo kilku węzłów. Liczba węzłów
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-Aby połączyć się z Phoenix, należy podać adres IP aktywnego węzła dozorcy. Upewnij się, że usługi ZooKeeper które pliku sqlline.py próbuje nawiązać połączenie jest uruchomiona.
+Aby połączyć się z rozwiązaniem Apache Phoenix, należy podać adres IP w aktywnym węźle Apache ZooKeeper. Upewnij się, że usługi ZooKeeper które pliku sqlline.py próbuje nawiązać połączenie jest uruchomiona.
 1. Zaloguj się w klastrze HDInsight przy użyciu protokołu SSH.
 2. Wprowadź następujące polecenie:
                 
@@ -247,7 +247,7 @@ Aby połączyć się z Phoenix, należy podać adres IP aktywnego węzła dozorc
    ```apache
            ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189) 
    ```
-6. W Interfejsie użytkownika Ambari wykonaj następujące kroki, aby ponownie uruchomić usługę serwera HMaster we wszystkich węzłach dozorcy:
+6. W Interfejsie użytkownika Apache Ambari wykonaj następujące kroki, aby ponownie uruchomić usługę serwera HMaster we wszystkich węzłach dozorcy:
 
     1. W **Podsumowanie** części bazy danych HBase, przejdź do **HBase** > **głównego interfejsu użytkownika HBase aktywny**. 
     2. W **składniki** sekcji, uruchom ponownie usługę głównego interfejsu użytkownika HBase.
@@ -331,7 +331,7 @@ Jest to znany problem z usługą serwera HMaster. Zadania uruchamiania ogólnego
   
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-1. W Interfejsie użytkownika Ambari, przejdź do **HBase** > **Configs**. W pliku niestandardowej bazy danych hbase-site.xml Dodaj następujące ustawienie: 
+1. W Interfejsie użytkownika Apache Ambari, przejdź do **HBase** > **Configs**. W pliku niestandardowej bazy danych hbase-site.xml Dodaj następujące ustawienie: 
 
    ```apache
    Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -344,9 +344,9 @@ Jest to znany problem z usługą serwera HMaster. Zadania uruchamiania ogólnego
 
 ### <a name="issue"></a>Problem
 
-Błąd ponownego uruchamiania serwera regionalnego może być niemożliwe, poniższe najlepsze rozwiązania. Firma Microsoft zaleca wstrzymać działanie duże obciążenia, podczas planowania ponownie uruchomić serwery regionów HBase. Jeśli aplikacja nadal łączyć się z serwery regionów, gdy trwa zamykanie, operacji ponownego uruchamiania serwera region będzie przebiegać wolniej przez kilka minut. Ponadto jest dobry pomysł, aby najpierw opróżnienia wszystkich tabel. Aby uzyskać informacje na temat sposobu opróżniania tabel, zobacz [HDInsight HBase: jak poprawić czas ponownego uruchamiania klastra HBase przy opróżniania tabel](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
+Błąd ponownego uruchamiania serwera regionalnego może być niemożliwe, poniższe najlepsze rozwiązania. Firma Microsoft zaleca wstrzymać działanie duże obciążenia, podczas planowania ponownie uruchomić serwery regionów HBase. Jeśli aplikacja nadal łączyć się z serwery regionów, gdy trwa zamykanie, operacji ponownego uruchamiania serwera region będzie przebiegać wolniej przez kilka minut. Ponadto jest dobry pomysł, aby najpierw opróżnienia wszystkich tabel. Aby uzyskać informacje na temat sposobu opróżniania tabel, zobacz [HDInsight HBase: jak poprawić czas ponownego uruchamiania klastra Apache HBase, opróżniania tabel](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
-Jeśli zainicjujesz operacji ponownego uruchamiania serwery regionów HBase z poziomu interfejsu użytkownika Ambari, możesz natychmiast zobaczyć, że serwery regionów zakończył działanie, ale nie ich ponownego natychmiast. 
+Jeśli zainicjujesz operacji ponownego uruchamiania serwery regionów HBase z poziomu interfejsu użytkownika Ambari Apache, możesz natychmiast zobaczyć, że serwery regionów zakończył działanie, ale nie ich ponownego natychmiast. 
 
 Oto, co się dzieje w tle: 
 

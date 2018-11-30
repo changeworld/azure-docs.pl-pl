@@ -8,45 +8,45 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: 5bd66e3cb3902665aab9245a524a2bec6f57dc8c
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 197b15baee81c7ceff5d76dd21ceb6db1f0f5fdf
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054579"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424667"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Wykrywanie i rozwiązywanie problemów z zamknie połączenie z usługą Azure IoT Hub
 
-Problemy z łącznością w przypadku urządzeń IoT może być trudne do rozwiązania, ponieważ istnieje wiele możliwych punktów awarii. Logika aplikacji po stronie urządzenia, sieciach fizycznych, protokołów, sprzętu i usługi Azure IoT Hub wszystkie może powodować problemy. Ten dokument zawiera zalecenia dotyczące wykrywania i urządzenia Rozwiązywanie problemów z łącznością ze strony chmury (w przeciwieństwie do po stronie urządzenia).
+Problemy z łącznością w przypadku urządzeń IoT może być trudne do rozwiązania, ponieważ istnieje wiele możliwych punktów awarii. Logika aplikacji po stronie urządzenia, sieciach fizycznych, protokołów, sprzętu i usługi Azure IoT Hub wszystkie może powodować problemy. Ten artykuł zawiera zalecenia dotyczące sposobu wykrywania i urządzenia Rozwiązywanie problemów z łącznością ze strony chmury (w przeciwieństwie do urządzeń po stronie).
 
 ## <a name="get-alerts-and-error-logs"></a>Otrzymuj alerty i dzienniki błędów
 
 Usługa Azure Monitor umożliwia otrzymywanie alertów i zapisują dzienniki w przypadku, gdy porzucić połączenia urządzenia.
 
-### <a name="turn-on-diagnostic-logs"></a>Włączanie dzienników diagnostycznych 
+### <a name="turn-on-diagnostic-logs"></a>Włączanie dzienników diagnostycznych
 
-Aby rejestrować zdarzenia połączenia urządzenia i błędy, Włącz diagnostykę usługi IoT Hub. 
+Aby rejestrować zdarzenia połączenia urządzenia i błędy, Włącz diagnostykę usługi IoT Hub.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Przejdź do centrum IoT Hub.
+1. Przejdź do Centrum IoT hub.
 1. Wybierz **ustawień diagnostycznych**.
-1. Następnie wybierz pozycję **Włącz diagnostykę**.
-1. Upewnij się, możesz włączyć **połączeń** dzienników, które mają być zbierane. 
-1. Aby ułatwić analizę, należy włączyć **wysyłanie do usługi Log Analytics** ([Zobacz cennik](https://azure.microsoft.com/pricing/details/log-analytics/)). Przykładem w dalszej części tego artykułu korzysta z usługi Log Analytics.
+1. Wybierz **Włącz diagnostykę**.
+1. Włącz **połączeń** dzienników, które mają być zbierane.
+1. Ułatwia analizowanie włączyć **wysyłanie do usługi Log Analytics** ([Zobacz cennik](https://azure.microsoft.com/pricing/details/log-analytics/)). Zobacz przykład w obszarze [rozwiązać błędy związane z łącznością](#Resolve-connectivity-errors).
 
    ![Zalecane ustawienia][2]
 
 Aby dowiedzieć się więcej, zobacz [monitorowania kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów](iot-hub-monitor-resource-health.md).
 
-### <a name="set-up-alerts-for-the-connected-devices-count-metric"></a>Konfigurowanie alertów dotyczących metryk liczba połączonych urządzeń
+### <a name="set-up-alerts-for-the-connected-devices-count-metric"></a>Konfigurowanie alertów dotyczących _połączone urządzenia_ liczba metryki
 
-Uzyskiwanie alertów w przypadku rozłączenia urządzeń, Konfigurowanie alertów dotyczących *połączone urządzenia* metryki. 
+Uzyskiwanie alertów w przypadku rozłączenia urządzeń, Konfigurowanie alertów dotyczących **połączone urządzenia** metryki.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Przejdź do Centrum IoT Hub.
+1. Przejdź do Centrum IoT hub.
 1. Wybierz **alerty (klasyczne)**.
-1. Kliknij przycisk **Dodaj alert dotyczący metryki (wersja klasyczna)**.
-1. Wypełnij formularz i wybierz pozycję **OK**. 
+1. Wybierz **Dodaj alert dotyczący metryki (wersja klasyczna)**.
+1. Wypełnij formularz i wybierz pozycję **OK**.
 
    ![Zalecane alertu metryki][3]
 
@@ -54,11 +54,11 @@ Aby dowiedzieć się więcej, zobacz [co to są alertów klasycznych na platform
 
 ## <a name="resolve-connectivity-errors"></a>Usuń błędy łączności
 
-Dzienniki diagnostyczne i alerty dla połączonych urządzeń są włączone, możesz otrzymywać alerty, gdy coś pójdzie źle. W tej sekcji opisano sposób rozwiązać typowe problemy, gdy zostanie wyświetlony alert. W poniższych krokach przyjęto, że po skonfigurowaniu usługi Log Analytics dla dzienników diagnostycznych. 
+Włącz dzienniki diagnostyczne i alerty dla połączonych urządzeń, możesz otrzymywać alerty, jeśli wystąpią błędy. W tej sekcji opisano sposób rozwiązać typowe problemy, gdy zostanie wyświetlony alert. W poniższych krokach przyjęto, że po skonfigurowaniu usługi Azure Log Analytics dla dzienników diagnostycznych.
 
 1. Szukać obszaru roboczego **usługi Log Analytics** w witrynie Azure portal.
-1. Kliknij przycisk **wyszukiwania w dzienniku**.
-1. Aby wyizolować dzienniki błędów łączności dla usługi IoT Hub, wpisz to zapytanie w oknie dialogowym naciśnij **Uruchom**.
+1. Wybierz **wyszukiwania w dzienniku**.
+1. Aby wyizolować dzienniki błędów łączności dla usługi IoT Hub, wprowadź następujące zapytanie, a następnie wybierz pozycję **Uruchom**:
 
     ```
     search *
@@ -76,19 +76,19 @@ Dzienniki diagnostyczne i alerty dla połączonych urządzeń są włączone, mo
     |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | 404104 DeviceConnectionClosedRemotely | Połączenie zostało zamknięte przez urządzenie, ale nie może ustalić, dlaczego usługi IoT Hub. Typowe przyczyny MQTT/AMQP limitu czasu i internet utraty łączności. | Upewnij się, że urządzenie może połączyć się do usługi IoT Hub za [Trwa testowanie połączenia](tutorial-connectivity.md). Jeśli połączenie jest poprawne, ale urządzenie jest sporadycznie rozłączane, upewnij się zaimplementować logikę aktywne urządzenie Zachowaj właściwe dla wybranego protokołu (MQTT/AMPQ). |
     | 401003 IoTHubUnauthorized | Usługi IoT Hub nie można uwierzytelnić połączenia. | Upewnij się, że sygnatury dostępu Współdzielonego lub innych token zabezpieczający, którego używasz nie jest uznawane za wygasłe. [Usługa Azure IoT SDKs](iot-hub-devguide-sdks.md) automatycznego generowania tokenów bez specjalnej konfiguracji. |
-    | 409002 LinkCreationConflict | Istnieje więcej niż jednego połączenia dla tego samego urządzenia. Po przejściu do trybu nowego żądania połączenia dla urządzenia, usłudze IoT Hub zamyka poprzedniemu, z powodu następującego błędu. | W typowych przypadkach urządzenia wykrywa rozłączenia i próbuje ponownie nawiązać połączenie, ale usługi IoT Hub nie uznaje się, że jeszcze odłączony więc zamyka poprzednie połączenie i rejestruje tego błędu. Zazwyczaj ten błąd pojawia się jako efekt uboczny inny problem przejściowy, więc Wyszukaj inne błędy w dziennikach dalszego rozwiązywania problemów z. W przeciwnym razie upewnij się, że wystawiania nowego żądania połączenia, tylko wtedy, gdy połączenie spada. |
+    | 409002 LinkCreationConflict | Urządzenie ma więcej niż jedno połączenie. Po przejściu do trybu nowego żądania połączenia dla urządzenia, usłudze IoT Hub zamyka poprzedniemu, z powodu następującego błędu. | W typowych przypadkach urządzenia wykrywa rozłączenia i próbuje ponownie nawiązać połączenie, ale usługi IoT Hub nadal uważa się urządzenie podłączone. Usługi IoT Hub zamyka poprzednie połączenie i rejestruje tego błędu. Zazwyczaj ten błąd pojawia się jako efekt uboczny różnych przejściowy problem, więc poszukaj inne błędy w dziennikach do dalszego rozwiązywania. W przeciwnym razie upewnij się, że wystawiania nowego żądania połączenia, tylko wtedy, gdy połączenie spada. |
     | Błąd ServerError 500001 | Usługa IoT Hub wystąpił problem po stronie serwera. Najprawdopodobniej tego problemu jest przejściowy. Podczas działania zespołu usługi IoT Hub trudne do utrzymania [umowy SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/), mały podzbiór węzłów usługi IoT Hub od czasu do czasu mogą występować błędy przejściowe. Gdy urządzenie próbuje połączyć się z węzłem, który występują problemy, ten błąd jest wyświetlany. | Aby uniknąć błędów przejściowych, należy wydać ponawiania z urządzenia. Aby [automatycznie zarządzała ponownych prób](iot-hub-reliability-features-in-sdks.md#connection-and-retry), upewnij się, że używasz najnowszej wersji [Azure IoT SDKs](iot-hub-devguide-sdks.md).<br><br>Ze względów na liczbę ponownych prób i obsługi błędów przejściowych, zobacz [obsługi błędów przejściowych](/azure/architecture/best-practices/transient-faults).  <br><br>Jeśli problem będzie się powtarzać, ponowne próby, sprawdź [Resource Health](iot-hub-monitor-resource-health.md#use-azure-resource-health) i [stanu platformy Azure](https://azure.microsoft.com/status/history/) można sprawdzić, czy w usłudze IoT Hub to znany problem. Jeśli ma żadnych znanych problemów, a problem będzie się powtarzać, [się z pomocą techniczną](https://azure.microsoft.com/support/options/) celu bliższego zbadania problemu. |
-    | 500008 GenericTimeout | Usługa IoT Hub, nie można ukończyć żądania połączenia przed przekroczeniem limitu czasu. Błąd ServerError 500001, np. Ten błąd jest prawdopodobnie przejściowy. | Wykonaj kroki rozwiązywania problemów dla 500001 błąd ServerError główna przyczyna i rozwiązać ten problem.|
+    | 500008 GenericTimeout | Usługa IoT Hub, nie można ukończyć żądania połączenia przed przekroczeniem limitu czasu. Podobnie jak 500001 błąd ServerError ten błąd jest prawdopodobnie przejściowy. | Wykonaj kroki rozwiązywania problemów dla 500001 błąd ServerError w na główną przyczynę i rozwiązać ten problem.|
 
 ## <a name="other-steps-to-try"></a>Pozostałe kroki do wypróbowania
 
-Jeśli powyższe kroki nie pomogły, poniżej przedstawiono kilka więcej możliwości do wypróbowania:
+Jeśli poprzednie kroki nie pomogły, możesz wypróbować:
 
 * Jeśli masz dostęp do urządzeń problematyczne fizycznie lub zdalnie (na przykład protokołu SSH), postępuj zgodnie z [przewodnik rozwiązywania problemów po stronie urządzenia](https://github.com/Azure/azure-iot-sdk-node/wiki/Troubleshooting-Guide-Devices) aby kontynuować rozwiązywanie problemów.
-* Sprawdź, czy urządzenia są **włączone** w witrynie Azure portal > usługi IoT Hub > urządzeń IoT.
+* Sprawdź, czy urządzenia są **włączone** w witrynie Azure portal > usługi IoT hub > urządzeń IoT.
 * Uzyskaj pomoc od [forum usługi Azure IoT Hub](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub), [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub), lub [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/).
 
-Aby pomóc udoskonalić dokumentację dla wszystkich użytkowników, pozostaw komentarz poniżej, jeśli nie być pomocny ten przewodnik.
+Aby pomóc udoskonalić dokumentację dla wszystkich użytkowników, pozostaw komentarz w poniższej sekcji opinii, jeśli to nie być pomocny ten przewodnik.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

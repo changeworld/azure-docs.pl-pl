@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/08/2018
 ms.author: magoedte
-ms.openlocfilehash: 124488d13d1d303743900ab1de41768633e4f6e0
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 028179fb7718587ec2c277e1c3feb1569e76510d
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715452"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335746"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Azure Monitor dla maszyn wirtualnych. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do strony [forum dyskusyjne](https://feedback.azure.com/forums/34192--general-feedback) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
@@ -40,7 +40,7 @@ Jeśli zdecydujesz się użyć metody opartych na skryptach, te kroki są objęt
 Jeśli są już zbieranie danych z maszyn wirtualnych, może już skonfigurowano je raportować dane do istniejącego obszaru roboczego usługi Log Analytics.  Tak długo, jak ten obszar roboczy znajduje się w jednym z naszych obsługiwane regiony, do tego istniejącego obszaru roboczego można włączyć usługi Azure Monitor dla maszyn wirtualnych.  Jeśli obszar roboczy, z którego korzystasz już nie jest w jednym z naszych obsługiwane regiony, będzie niemożliwe do dołączenia do usługi Azure Monitor dla maszyn wirtualnych w tej chwili.  Pracujemy nad do obsługi dodatkowych regionów.
 
 >[!NOTE]
->Firma Microsoft skonfiguruj liczniki wydajności dla obszaru roboczego, który ma wpływ na wszystkie maszyny wirtualne, które raportują do obszaru roboczego, czy została wybrana do dołączenia ich do usługi Azure Monitor dla maszyn wirtualnych. Aby uzyskać szczegółowe informacje na temat sposobu konfiguracji liczników wydajności dla obszaru roboczego, można znaleźć na naszej [dokumentacji](../../log-analytics/log-analytics-data-sources-performance-counters.md). Informacji na temat liczników skonfigurowany dla usługi Azure Monitor dla maszyn wirtualnych, można znaleźć na naszej [dostęp do dokumentacji dołączania](vminsights-onboard.md#performance-counters-enabled).  
+>Firma Microsoft skonfiguruj liczniki wydajności dla obszaru roboczego, który ma wpływ na wszystkie maszyny wirtualne, które raportują do obszaru roboczego, czy została wybrana do dołączenia ich do usługi Azure Monitor dla maszyn wirtualnych. Aby uzyskać szczegółowe informacje na temat sposobu konfiguracji liczników wydajności dla obszaru roboczego, można znaleźć na naszej [dokumentacji](../../azure-monitor/platform/data-sources-performance-counters.md). Informacji na temat liczników skonfigurowany dla usługi Azure Monitor dla maszyn wirtualnych, można znaleźć na naszej [dostęp do dokumentacji dołączania](vminsights-onboard.md#performance-counters-enabled).  
 
 ## <a name="why-did-my-vm-fail-to-onboard"></a>Dlaczego moja maszyna wirtualna nie dołączania?
 Podczas dołączania maszyny Wirtualnej platformy Azure w witrynie Azure portal, wykonywane są następujące kroki:

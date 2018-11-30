@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie obszaru roboczego usługi Machine Learning z usługą Azure Resource Manager | Dokumentacja firmy Microsoft
+title: Wdrażanie obszaru roboczego usługi Machine Learning z usługą Azure Resource Manager — usługi Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Jak wdrożyć obszaru roboczego dla usługi Azure Machine Learning przy użyciu szablonu usługi Azure Resource Manager
 services: machine-learning
 documentationcenter: ''
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 2/05/2018
-ms.openlocfilehash: e02dac0543fc7c59ae7b7d29bab1dfedb8bf737f
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 82a9cfec0efe60e3a0cdf16efa373e68efebee59
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263183"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307984"
 ---
 # <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>Wdrażanie obszaru roboczego usługi Machine Learning przy użyciu usługi Azure Resource Manager
-## <a name="introduction"></a>Wprowadzenie
+
 Za pomocą usługi Azure Resource Manager Szablon wdrożenia zapisuje czas, oferując skalowalne sposób wdrażania składników połączonych ze sobą za pomocą weryfikacji i mechanizm ponawiania prób. Aby skonfigurować obszarów roboczych uczenia maszynowego Azure, na przykład, należy najpierw skonfigurować konto magazynu platformy Azure, a następnie wdrożyć obszaru roboczego. Wyobraź sobie zrobić to ręcznie setek obszarów roboczych. Alternatywą łatwiej jest używać szablonu usługi Azure Resource Manager do wdrożenia obszaru roboczego usługi Azure Machine Learning i wszystkich jego zależności. Ten artykuł przeprowadzi Cię przez ten proces krok po kroku. Aby uzyskać doskonałe Omówienie usługi Azure Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 
 ## <a name="step-by-step-create-a-machine-learning-workspace"></a>Krok po kroku: tworzenie obszaru roboczego uczenia maszynowego

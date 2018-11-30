@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów z SAP HANA w wersji 2.0 instalacją program Pacemaker HSR skalowalnego w poziomie z systemem SLES 12 z dodatkiem SP3 na maszynach wirtualnych platformy Azure | Dokumentacja firmy Microsoft
-description: Przewodnik dotyczący sprawdzanie i rozwiązywanie problemów z złożonej konfiguracji SAP HANA wysoką dostępność skalowalnego w poziomie, na podstawie SAP HANA System replikacji (HSR) i program Pacemaker w systemie SLES 12 z dodatkiem SP3 uruchamianych na maszynach wirtualnych platformy Azure
+description: Przewodnik dotyczący sprawdzanie i rozwiązywanie problemów z konfiguracji o wysokiej dostępności złożonych skalowalnego w poziomie oprogramowania SAP HANA na podstawie SAP HANA System replikacji (HSR) i program Pacemaker w systemie SLES 12 z dodatkiem SP3 uruchamianych na maszynach wirtualnych platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermannd
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 6c0d6397246e8b8db1d59c26229e37a722d49f48
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: f86107c5fcd4c0175d59689718dca15736aa3b17
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47184978"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497358"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Sprawdź i rozwiązywanie problemów z instalacją w wysokiej dostępności skalowalnego w poziomie oprogramowania SAP HANA w systemie SLES 12 z dodatkiem SP3 
 
@@ -35,34 +35,35 @@ ms.locfileid: "47184978"
 [sles-12-for-sap]:https://www.suse.com/media/white-paper/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
 
 
-W tym artykule został napisany ułatwiające, sprawdź konfigurację klastra program Pacemaker dla oprogramowania SAP HANA skalowalnego w poziomie uruchamianych na maszynach wirtualnych platformy Azure. Konfiguracja klastra było wykonywane w połączeniu z replikacji systemu SAP HANA (HSR) i SUSE RPM pakietu SAPHanaSR skalowania. Wszystkie testy zostały wykonane tylko w systemie SUSE SLES 12 z dodatkiem SP3. Istnieje kilka sekcji, które obejmują różne obszary i zawierają przykładowe polecenia i fragmenty z plików konfiguracji. Te przykłady są zalecane jako metodę, aby zweryfikować i sprawdzić ustawienia całego klastra.
+Ten artykuł pomoże Ci Sprawdź konfigurację klastra program Pacemaker dla oprogramowania SAP HANA skalowalnego w poziomie uruchamianego na maszynach wirtualnych platformy Azure (maszyny wirtualne). Konfiguracja klastra było wykonywane w połączeniu z replikacji systemu SAP HANA (HSR) i SUSE RPM pakietu SAPHanaSR skalowania. Wszystkie testy zostały wykonane tylko w systemie SUSE SLES 12 z dodatkiem SP3. Sekcje tego artykułu obejmuje różne obszary i obejmują przykładowych poleceniach i fragmenty z plików konfiguracji. Firma Microsoft zaleca te przykłady jako metodę, aby zweryfikować i sprawdzić ustawienia całego klastra.
 
 
 
 ## <a name="important-notes"></a>Ważne uwagi
 
-Wszystkie testowanie pod kątem oprogramowania SAP HANA skalowalnego w poziomie w połączeniu z replikacji systemu SAP HANA i program Pacemaker zostało wykonane z SAP HANA w wersji 2.0 tylko. Wersja systemu operacyjnego została SUSE Linux Enterprise Server 12 z dodatkiem SP3 dla aplikacji SAP. Ponadto najnowszy pakiet RPM SAPHanaSR skalowania od firmy SUSE został użyty do skonfigurowania klastra program pacemaker.
-SUSE opublikowane szczegółowy opis takiej konfiguracji zoptymalizowane pod kątem wydajności można znaleźć [tutaj][sles-hana-scale-out-ha-paper]
+Wszystkie testowanie pod kątem oprogramowania SAP HANA skalowalnego w poziomie w połączeniu z replikacji systemu SAP HANA i program Pacemaker zostało wykonane z SAP HANA w wersji 2.0 tylko. Wersja systemu operacyjnego została systemu SUSE Linux Enterprise Server 12 z dodatkiem SP3 dla aplikacji SAP. Najnowszy pakiet RPM ze skalowaniem SAPHanaSR od firmy SUSE, został użyty do skonfigurowania klastra program Pacemaker.
+SUSE opublikowane [szczegółowy opis tej konfiguracji pod kątem wydajności][sles-hana-scale-out-ha-paper].
 
-Dla typów maszyn wirtualnych, które są obsługiwane dla oprogramowania SAP HANA skalowalnego w poziomie sprawdzenia [katalogu IaaS z certyfikatem SAP HANA][sap-hana-iaas-list]
+Dla typów maszyn wirtualnych, które są obsługiwane w przypadku oprogramowania SAP HANA skalowalnego w poziomie, sprawdź [katalogu IaaS z certyfikatem SAP HANA][sap-hana-iaas-list].
 
-Wystąpił problem techniczny dotyczący oprogramowania SAP HANA skalowalnego w poziomie w połączeniu z wieloma podsieciami i kart sieciowych i Konfigurowanie replikacji systemu HANA. Jest to konieczne, aby używać najnowszych poprawek oprogramowanie SAP HANA w wersji 2.0, gdzie ten problem został rozwiązany. Obsługiwane są następujące wersje oprogramowania SAP HANA: 
+Wystąpił problem techniczny dotyczący oprogramowania SAP HANA skalowalnego w poziomie w połączeniu z wieloma podsieciami i kart sieciowych i Konfigurowanie replikacji systemu HANA. Jest to konieczne, aby używać najnowszych poprawek oprogramowanie SAP HANA w wersji 2.0, w którym ten problem został rozwiązany. Obsługiwane są następujące wersje oprogramowania SAP HANA: 
 
-**rev2.00.024.04 lub nowszej & rev2.00.032 lub nowszej.**
+* rev2.00.024.04 lub nowszej 
+* rev2.00.032 lub nowszej
 
-W przypadku, gdy powinna być sytuacji potrzebuje pomocy technicznej od firmy SUSE postępuj zgodnie z tym [przewodnik][suse-pacemaker-support-log-files]. Zbieraj wszystkie informacje o klastrze SAP HANA wysokiej dostępności, zgodnie z opisem w artykule. Obsługa SUSE wymaga tych informacji do dalszej analizy.
+Jeśli potrzebujesz pomocy technicznej od firmy SUSE, postępuj zgodnie z tym [przewodnik][suse-pacemaker-support-log-files]. Zebranie wszystkich informacji o klastrze platformy SAP HANA wysokiej dostępności (HA), zgodnie z opisem w artykule. Obsługa SUSE wymaga tych informacji do dalszej analizy.
 
-Podczas testowania wewnętrznego zdarzyło się to, że konfiguracja klastra stało się zastanawia normalne łagodne zamykanie maszyny Wirtualnej w witrynie Azure portal. W związku z tym zaleca się testowanie klastra trybu failover przy użyciu innych metod. Użyj metod, takich jak wymuszanie jądra, zamknij sieci lub migracji **msl** zasobów (szczegółowe informacje w poniższych sekcjach). Zakłada się, czy standardowa zamknięcia się dzieje z zamiarem. Najlepszy przykład zamierzone zamknięcia jest konserwacji (Zobacz szczegóły w sekcji informacje o planowanej konserwacji).
+Podczas testowania wewnętrznego Konfiguracja klastra stało się zastanawia normalne łagodne zamykanie maszyny Wirtualnej w witrynie Azure portal. Dlatego zaleca się przetestowanie klastra pracy awaryjnej przy użyciu innych metod. Użyj metod, takich jak wymuszanie jądra, lub zamknij sieci lub Migrowanie **msl** zasobów. Zobacz szczegółowe informacje w poniższych sekcjach. Zakłada się, czy standardowa zamknięcia się dzieje z zamiarem. Najlepszym przykładem zamierzone zamknięcie jest z powodu konserwacji. Szczegółowe informacje w [planowanej konserwacji](#planned-maintenance).
 
-Podczas testowania wewnętrznego zdarzyło się to, że konfiguracja klastra stało się mylić po ręcznej przejęcia platformy SAP HANA, podczas klastra w trybie konserwacji. Zaleca się przełączenia go ręcznie ponownie przed zakończeniem trybu konserwacji klastra. Innym rozwiązaniem jest wyzwalania trybu failover przed wprowadzeniem klastra w tryb konserwacji (zobacz sekcję dotyczącą planowanej konserwacji, aby uzyskać więcej informacji). Dokumentacja od firmy SUSE opisano, jak można zresetować klastra, w związku z tym za pomocą polecenia crm. Ale podejście, o których wspomniano przed z niezawodnych, w trakcie wewnętrznych testów i nigdy nie wykazało, że wszelkie nieoczekiwane działania niepożądane.
+Ponadto podczas testowania wewnętrznego Konfiguracja klastra stało się mylić po ręcznej przejęcia platformy SAP HANA podczas klastra w trybie konserwacji. Zaleca się, czy możesz przełączenia go ponownie ręcznie zakończyć tryb konserwacji klastra. Innym rozwiązaniem jest wyzwalania trybu failover przed umieszczeniem klastra w tryb konserwacji. Aby uzyskać więcej informacji, zobacz [planowanej konserwacji](#planned-maintenance). Dokumentacja od firmy SUSE w tym artykule opisano sposób klastra w ten sposób można zresetować za pomocą **crm** polecenia. Ale podejście, o których wspomniano wcześniej był niezawodny podczas testowania wewnętrznego i nigdy nie wykazało, że wszelkie nieoczekiwane działania niepożądane.
 
-Gdy polecenia migracji przy użyciu programu crm nie przegap czyszczenie konfiguracji klastra. Dodaje ograniczenia lokalizacji, które mogą nie być świadomy. Te ograniczenia mają wpływ na zachowanie klastra (Zobacz szczegółowe informacje w sekcji informacje o planowanej konserwacji).
+Kiedy używasz **migracji crm** polecenia, upewnij się wyczyścić konfiguracji klastra. Dodaje ograniczenia lokalizacji, które mogą nie być świadomy. Te ograniczenia wpływu na działanie klastra. Zobacz więcej szczegółów w [planowanej konserwacji](#planned-maintenance).
 
 
 
 ## <a name="test-system-description"></a>Opis systemu testowego
 
-Weryfikacja wysokiej dostępności skalowalnego w poziomie oprogramowania SAP HANA i certyfikacji używane ustawienia składający się z dwóch systemów w przypadku użycia trzech węzłów platformy SAP HANA każdego — jednego serwera głównego i dwóch pracowników. Poniżej przedstawiono listę nazw maszyn wirtualnych i wewnętrznych adresów IP. Wszystkie przykłady weryfikacji dalszych szczegółów zostały wykonane na tych maszynach wirtualnych. Przy użyciu tych nazw maszyn wirtualnych i IP adresów w przykłady poleceń powinno pomóc lepiej zrozumieć poleceń i ich dane wyjściowe.
+ Weryfikacja wysokiej dostępności skalowalnego w poziomie oprogramowania SAP HANA i certyfikacji Konfiguracja był używany. Składa się z dwóch systemów w przypadku użycia trzech węzłów platformy SAP HANA, każdy: jednego serwera głównego i dwóch pracowników. Następujące nazwy maszyny Wirtualnej listy tabel i adresów IP. Wszystkie przykłady weryfikacji, które należy wykonać zostały wykonane na tych maszynach wirtualnych. Korzystając z tych nazw maszyn wirtualnych i adresy IP w przykładach poleceń, można lepiej zrozumieć poleceń i ich dane wyjściowe:
 
 
 | Typ węzła | Nazwa maszyny wirtualnej | Adres IP |
@@ -85,24 +86,24 @@ Weryfikacja wysokiej dostępności skalowalnego w poziomie oprogramowania SAP HA
 
 ## <a name="multiple-subnets-and-vnics"></a>Wiele podsieci i kart sieciowych
 
-Następujące oprogramowanie SAP HANA zalecenia dotyczące sieci trzy podsieci zostały utworzone w ramach jednej sieci wirtualnej platformy Azure. Skalować platformy SAP HANA na platformie Azure musi być zainstalowany w trybie nieudostępnione, co oznacza, że każdy węzeł używa woluminów dysku lokalnego na potrzeby **/hana/danych** i **/hana/log**. Ze względu na przy użyciu woluminów dysku tylko lokalne nie jest konieczne jest określenie oddzielną podsieć dla magazynu:
+Następujące oprogramowanie SAP HANA zalecenia dotyczące sieci trzy podsieci zostały utworzone w ramach jednej sieci wirtualnej platformy Azure. Skalować platformy SAP HANA na platformie Azure musi być zainstalowany w trybie nieudostępnionych. Oznacza to, że każdy węzeł będzie używał woluminów dysku lokalnego na potrzeby **/hana/danych** i **/hana/log**. Węzły używają tylko woluminy z dysku lokalnego, nie jest konieczne zdefiniować oddzielną podsieć dla magazynu:
 
-- 10.0.2.0/24 dla komunikacji między węzłami platformy SAP HANA
-- 10.0.1.0/24 dla replikacji systemu SAP HANA replikacji systemu HANA
+- 10.0.2.0/24 do komunikacji między węzłami platformy SAP HANA
+- 10.0.1.0/24 dla replikacji systemu SAP HANA (HSR)
 - 10.0.0.0/24 dla wszystkich innych
 
-Uzyskać informacje na temat konfiguracji oprogramowania SAP HANA, powiązane z użyciem wielu sieci, zobacz sekcję **global.ini** w dół.
+Aby uzyskać informacje o konfiguracji oprogramowania SAP HANA, powiązane z użyciem wielu sieci, zobacz [global.ini platformy SAP HANA](#sap-hana-globalini).
 
-Liczba podsieci odpowiadającej każdej maszynie Wirtualnej w klastrze ma trzy kart sieciowych. [To] [ azure-linux-multiple-nics] artykuł opisuje potencjalny problem z routingiem na platformie Azure, w przypadku wdrażania maszyny Wirtualnej z systemem Linux. Ta dany temat routingu ma zastosowanie tylko w przypadku użycia wielu kart sieciowych. Problem ten został rozwiązany przez SUSE domyślnie w systemie SLES 12 z dodatkiem SP3. Artykuł od firmy SUSE na ten temat można znaleźć [tutaj][suse-cloud-netconfig].
+Każda maszyna wirtualna w klastrze ma trzy kart sieciowych, które odpowiadają liczba podsieci. [Jak utworzyć maszynę wirtualną systemu Linux na platformie Azure z sieci wielu kart interfejsu] [ azure-linux-multiple-nics] opisuje potencjalny problem z routingiem na platformie Azure, w przypadku wdrażania maszyny Wirtualnej z systemem Linux. Ten artykuł routingu ma zastosowanie tylko w przypadku korzystania z wielu kart sieciowych. Problem ten został rozwiązany przez SUSE domyślnie w systemie SLES 12 z dodatkiem SP3. Aby uzyskać więcej informacji, zobacz [Multi-NIC z chmury — netconfig usługi EC2 i Azure][suse-cloud-netconfig].
 
 
-Jako kontrolę podstawową, aby sprawdzić, czy platformy SAP HANA jest poprawnie skonfigurowane dotyczące korzystania z wieloma sieciami uruchom poniższe polecenia. Pierwszym krokiem jest po prostu dokładnie na poziomie systemu operacyjnego, że wszystkie trzy adresów IP dla wszystkich trzech podsieci są aktywne. W przypadku, gdy zdefiniowane podsieci z różnych zakresów adresów IP należy dostosować polecenia:
+Aby sprawdzić, czy oprogramowanie SAP HANA jest prawidłowo skonfigurowany do używania wielu sieci, uruchom następujące polecenia. Sprawdź najpierw na poziomie systemu operacyjnego czy wszystkich trzech adresów IP dla wszystkich trzech podsieci są aktywne. Zdefiniowanej podsieci z różnych zakresów adresów IP, należy dostosować polecenia:
 
 <pre><code>
 ifconfig | grep "inet addr:10\."
 </code></pre>
 
-Oto przykładowe dane wyjściowe z drugim węzłem procesu roboczego w witrynie 2. Możesz wyświetlić trzy różne adresy IP z eth0, eth1 i eth2:
+Następujące przykładowe dane wyjściowe pochodzą od drugiego węzła procesu roboczego w witrynie 2. Możesz wyświetlić trzy różne adresy IP z eth0, eth1 i eth2:
 
 <pre><code>
 inet addr:10.0.0.42  Bcast:10.0.0.255  Mask:255.255.255.0
@@ -111,25 +112,25 @@ inet addr:10.0.2.42  Bcast:10.0.2.255  Mask:255.255.255.0
 </code></pre>
 
 
-Drugim krokiem jest weryfikacja oprogramowania SAP HANA porty serwera nazw i replikacji systemu HANA. SAP HANA będzie nasłuchiwał odpowiednie podsieci. W zależności od liczby wystąpień oprogramowania SAP HANA należy dostosować polecenia. Dla systemu testowego był liczby wystąpień **00**. Istnieją różne sposoby, aby ustalić, które porty są używane. 
+Następnie sprawdź porty platformy SAP HANA dla nazwy serwera i replikacji systemu HANA. SAP HANA będzie nasłuchiwał odpowiednie podsieci. W zależności od liczby wystąpień oprogramowania SAP HANA należy dostosować polecenia. Dla systemu testowego był liczby wystąpień **00**. Istnieją różne sposoby, aby dowiedzieć się, które porty są używane. 
 
-Poniżej zobaczysz instrukcji SQL, która zwraca identyfikator wystąpienia i numer wystąpienia między innymi informacjami:
+Identyfikator wystąpienia, numer wystąpienia i inne informacje, funkcja zwraca następującą instrukcję SQL:
 
 <pre><code>
 select * from "SYS"."M_SYSTEM_OVERVIEW"
 </code></pre>
 
-Aby znaleźć numery poprawnego portu, można przeglądać, na przykład, HANA Studio w obszarze "**konfiguracji**" lub za pomocą instrukcji języka SQL:
+Aby znaleźć numery poprawnego portu, można przeglądać, na przykład, HANA Studio w obszarze **konfiguracji** lub za pomocą instrukcji języka SQL:
 
 <pre><code>
 select * from M_INIFILE_CONTENTS WHERE KEY LIKE 'listen%'
 </code></pre>
 
-Znaleźć każdego portu, który jest używany w stosie oprogramowania SAP, łącznie z platformą SAP HANA, wyszukaj [tutaj][sap-list-port-numbers].
+Aby odnaleźć każdy port, który jest używany w stosie oprogramowania SAP, łącznie z platformą SAP HANA, przeszukaj [porty TCP/IP wszystkich produktów SAP][sap-list-port-numbers].
 
-Podany numer wystąpienia **00** w systemie testowym SAP HANA w wersji 2.0, to numer portu serwera nazw **30001**. Numer portu do komunikacji danych replikacji systemu HANA meta to **40002**. Jedną z opcji jest Zaloguj się w węźle procesu roboczego, a następnie sprawdź usług węzła głównego. W tym miejscu sprawdzanie zostało wykonane na węzeł procesu roboczego 2 w witrynie 2 próby połączenia do węzła głównego w witrynie 2.
+Podany numer wystąpienia **00** system testowy SAP HANA w wersji 2.0, numer portu serwera nazw to **30001**. Numer portu do komunikacji metadanych replikacji systemu HANA jest **40002**. Jedną z opcji jest Zaloguj się w węźle procesu roboczego, a następnie sprawdź usług węzła głównego. W tym artykule będziemy sprawdzane pod węzłem procesu roboczego 2 w witrynie 2 próby połączenia do węzła głównego w witrynie 2.
 
-Sprawdź numer portu serwera nazw:
+Sprawdź nazwę portu serwera:
 
 <pre><code>
 nc -vz 10.0.0.40 30001
@@ -137,8 +138,8 @@ nc -vz 10.0.1.40 30001
 nc -vz 10.0.2.40 30001
 </code></pre>
 
-Wynik powinien wyglądać podobnie jak przykładowe dane wyjściowe poniżej, aby potwierdzić, że komunikacji między węzłami za pomocą podsieci **10.0.2.0/24**.
-Połącz za pośrednictwem podsieci **10.0.2.0/24** ma być pomyślnie wykonane:
+Aby potwierdzić, że komunikacji międzywęzłowej używa podsieci **10.0.2.0/24**, wynik powinien wyglądać następujące przykładowe dane wyjściowe.
+Tylko połączenie za pośrednictwem podsieci **10.0.2.0/24** ma być pomyślnie wykonane:
 
 <pre><code>
 nc: connect to 10.0.0.40 port 30001 (tcp) failed: Connection refused
@@ -146,7 +147,7 @@ nc: connect to 10.0.1.40 port 30001 (tcp) failed: Connection refused
 Connection to 10.0.2.40 30001 port [tcp/pago-services1] succeeded!
 </code></pre>
 
-Teraz Sprawdź za pośrednictwem portu usługi replikacji systemu HANA **40002**:
+Sprawdzać dostępność portu HSR **40002**:
 
 <pre><code>
 nc -vz 10.0.0.40 40002
@@ -154,8 +155,8 @@ nc -vz 10.0.1.40 40002
 nc -vz 10.0.2.40 40002
 </code></pre>
 
-Wynik powinien wyglądać podobnie jak przykładowe dane wyjściowe poniżej, aby potwierdzić, że komunikacja replikacji systemu HANA przy użyciu podsieci **10.0.1.0/24**.
-Połącz za pośrednictwem podsieci **10.0.1.0/24** ma być pomyślnie wykonane:
+Aby potwierdzić, że komunikacja HSR używa podsieci **10.0.1.0/24**, wynik powinien wyglądać następujące przykładowe dane wyjściowe.
+Tylko połączenie za pośrednictwem podsieci **10.0.1.0/24** ma być pomyślnie wykonane:
 
 <pre><code>
 nc: connect to 10.0.0.40 port 40002 (tcp) failed: Connection refused
@@ -168,11 +169,11 @@ nc: connect to 10.0.2.40 port 40002 (tcp) failed: Connection refused
 ## <a name="corosync"></a>Corosync
 
 
-W pliku config corosync ma są prawidłowe w każdym węźle w klastrze, w tym większościowy węzeł producenta. W przypadku, gdy przyłączenia klastra węzeł nie działa zgodnie z oczekiwaniami, tworzenia i/lub skopiuj **/etc/corosync/corosync.conf** ręcznie/do wszystkich węzłów i uruchom ponownie usługę.
+**Corosync** plik konfiguracji musi być prawidłowe w każdym węźle w klastrze, w tym większościowy węzeł producenta. Jeśli przyłączenia klastra węzeł nie działa zgodnie z oczekiwaniami, utworzyć lub skopiować **/etc/corosync/corosync.conf** ręcznie na wszystkie węzły, a następnie uruchom ponownie usługę. 
 
-Poniżej przedstawiono zawartość **corosync.conf** z systemu testowego jako przykład.
+Zawartość **corosync.conf** z testu systemu jest przykładem.
 
-Pierwsza sekcja jest **totem** zgodnie z opisem w tym [dokumentacji] [ sles-pacemaker-ha-guide] (sekcja instalacji klastra krok 11). Można zignorować wartość **mcastaddr**. Po prostu Zachowuj istniejący wpis. Wpisy dla **tokenu** i **consensus** należy ustawić zgodnie z dokumentacją systemu Microsoft Azure SAP HANA, który można znaleźć [tutaj][sles-pacemaker-ha-guide]
+Pierwsza sekcja jest **totem**, zgodnie z opisem w [klastra instalacji](https://review.docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation), krok 11. Można zignorować wartość **mcastaddr**. Po prostu Zachowuj istniejący wpis. Wpisy dla **tokenu** i **consensus** należy ustawić zgodnie z opisem w [dokumentacji platformy Microsoft Azure SAP HANA][sles-pacemaker-ha-guide].
 
 <pre><code>
 totem {
@@ -202,7 +203,7 @@ totem {
 }
 </code></pre>
 
-Druga sekcja **rejestrowania** nie został zmieniony z danej wartości domyślnych:
+Druga sekcja **rejestrowania**, nie został zmieniony z danej wartości domyślnych:
 
 <pre><code>
 logging {
@@ -220,7 +221,7 @@ logging {
 }
 </code></pre>
 
-Trzeci przedstawia sekcję **wstawienia**. Wszystkie węzły klastra mają pojawienie się za pomocą ich identyfikatora węzła:
+Trzeci przedstawia sekcję **wstawienia**. Wszystkie węzły klastra mają pojawienie się przy użyciu ich **nodeid**:
 
 <pre><code>
 nodelist {
@@ -279,9 +280,9 @@ systemctl restart corosync
 
 ## <a name="sbd-device"></a>Interwencja urządzenia
 
-Dokumentację dotyczącą sposobu konfigurowania urządzenia z systemem interwencja na Maszynie wirtualnej platformy Azure jest opisany [tutaj] [ sles-pacemaker-ha-guide] (preferowane interwencja sekcji).
+Jak skonfigurować urządzenie interwencja w Maszynie wirtualnej platformy Azure jest opisana w [preferowane interwencja](https://review.docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing).
 
-Przede wszystkim należy dokładnie sprawdzić jest na serwerze interwencja maszyny Wirtualnej w przypadku wpisów list ACL dla każdego węzła w klastrze. Uruchom następujące polecenie na serwerze interwencja maszyny Wirtualnej:
+Najpierw czy na serwerze interwencja maszyny Wirtualnej znajdują się wpisy listy ACL dla każdego węzła w klastrze. Uruchom następujące polecenie na serwerze interwencja maszyny Wirtualnej:
 
 
 <pre><code>
@@ -289,7 +290,7 @@ targetcli ls
 </code></pre>
 
 
-W systemie testowym dane wyjściowe polecenia wyglądał jak w poniższym przykładzie. Lista ACL nazwy, takie jak **iqn.2006-04.hso-db-0.local:hso-db-0** muszą zostać wprowadzone jako odpowiedniej nazwy inicjatora na maszynach wirtualnych. Każda maszyna wirtualna musi mieć inną.
+W systemie testowym dane wyjściowe polecenia będzie wyglądać jak w następującym przykładzie. Listy ACL nazwy, takie jak **iqn.2006-04.hso-db-0.local:hso-db-0** muszą zostać wprowadzone jako odpowiadających im nazw inicjatora na maszynach wirtualnych. Każda maszyna wirtualna musi mieć inną.
 
 <pre><code>
  | | o- sbddbhso ................................................................... [/sbd/sbddbhso (50.0MiB) write-thru activated]
@@ -316,13 +317,13 @@ W systemie testowym dane wyjściowe polecenia wyglądał jak w poniższym przyk�
   |     | o- iqn.2006-04.hso-db-6.local:hso-db-6 .................................................................. [Mapped LUNs: 1]
 </code></pre>
 
-Później można sprawdzić, czy nazw inicjatora na wszystkich maszynach wirtualnych są różne i odpowiadają wpisy przedstawionych powyżej. Oto przykład z węzłem procesu roboczego 1 w witrynie 1:
+Sprawdź, czy nazw inicjatora na wszystkich maszynach wirtualnych są różne i odnoszą się do wcześniej pokazano wpisów. W tym przykładzie pochodzi z węzłem procesu roboczego 1 w witrynie 1:
 
 <pre><code>
 cat /etc/iscsi/initiatorname.iscsi
 </code></pre>
 
-Dane wyjściowe wyglądał jak w poniższym przykładzie:
+Dane wyjściowe wyglądają jak w następującym przykładzie:
 
 <pre><code>
 ##
@@ -338,13 +339,13 @@ Dane wyjściowe wyglądał jak w poniższym przykładzie:
 InitiatorName=iqn.2006-04.hso-db-1.local:hso-db-1
 </code></pre>
 
-Następnie sprawdź, czy **odnajdywania** działa prawidłowo, i uruchom następujące polecenie w każdym węźle klastra przy użyciu adresu IP serwera interwencja maszyny Wirtualnej:
+Następnie upewnij się, że **odnajdywania** działa prawidłowo. Uruchom następujące polecenie w każdym węźle klastra przy użyciu adresu IP serwera interwencja maszyny Wirtualnej:
 
 <pre><code>
 iscsiadm -m discovery --type=st --portal=10.0.0.19:3260
 </code></pre>
 
-Dane wyjściowe powinny wyglądać podobnie jak na poniższym przykładzie:
+Dane wyjściowe powinny wyglądać jak w następującym przykładzie:
 
 <pre><code>
 10.0.0.19:3260,1 iqn.2006-04.dbhso.local:dbhso
@@ -356,13 +357,13 @@ Następny punkt dowód jest aby zweryfikować, że węzeł widzi urządzenia SDB
 lsscsi | grep dbhso
 </code></pre>
 
-Dane wyjściowe powinny wyglądać podobnie jak na poniższym przykładzie. Należy pamiętać, że nazwy mogą się różnić (nazwa urządzenia również mogą ulec zmianie, po ponownym uruchomieniu maszyny Wirtualnej):
+Dane wyjściowe powinny wyglądać jak w następującym przykładzie. Jednak nazwy mogą się różnić. Również może zmienić nazwę urządzenia, po ponownym uruchomieniu maszyny Wirtualnej:
 
 <pre><code>
 [6:0:0:0]    disk    LIO-ORG  sbddbhso         4.0   /dev/sdm
 </code></pre>
 
-W zależności od stanu systemu czasami warto ponowne uruchomienie usługi iscsi, aby rozwiązać problemy. Następnie uruchom następujące polecenia:
+W zależności od stanu systemu czasami warto ponowne uruchomienie usługi iSCSI, aby rozwiązać problemy. Następnie uruchom następujące polecenia:
 
 <pre><code>
 systemctl restart iscsi
@@ -370,7 +371,7 @@ systemctl restart iscsid
 </code></pre>
 
 
-Z poziomu każdego węzła można sprawdzić, czy wszystkie węzły są **wyczyść**. Po prostu należy uważać użyć nazwy poprawne urządzenie w określonym węźle:
+Z poziomu każdego węzła można sprawdzić, czy wszystkie węzły są **wyczyść**. Upewnij się, że używasz poprawna nazwa urządzenia w określonym węźle:
 
 <pre><code>
 sbd -d /dev/sdm list
@@ -389,13 +390,13 @@ Dane wyjściowe powinny być widoczne **wyczyść** dla każdego węzła w klast
 </code></pre>
 
 
-Sprawdź innego interwencja **zrzutu** — opcja polecenia interwencja. Oto przykładowe polecenie i danych wyjściowych z większości węzłów producenta, gdzie nazwa urządzenia nie jest **sdm** , ale **sdd**:
+Sprawdź innego interwencja **zrzutu** opcji **interwencja** polecenia. W tym przykładowe polecenie i danych wyjściowych z większości węzłów producenta, nazwa urządzenia został **sdd**, a nie **sdm**:
 
 <pre><code>
 sbd -d /dev/sdd dump
 </code></pre>
 
-Dane wyjściowe (z wyjątkiem nazwy urządzenia) powinny wyglądać takie same we wszystkich węzłach:
+Dane wyjściowe, oprócz nazwa urządzenia powinna wyglądać takie same we wszystkich węzłach:
 
 <pre><code>
 ==Dumping header on disk /dev/sdd
@@ -410,21 +411,21 @@ Timeout (msgwait)  : 120
 ==Header on disk /dev/sdd is dumped
 </code></pre>
 
-Co więcej Wyszukaj interwencja jest możliwość do wysyłania komunikatu do innego węzła. Należy uruchom następujące polecenie w węźle procesu roboczego 1 na 2 lokacji w celu wysyłania komunikatów do węzła procesu roboczego 2 w witrynie 2:
+Co więcej Wyszukaj interwencja jest możliwość do wysyłania komunikatu do innego węzła. Aby wysłać komunikat do węzła procesu roboczego 2 w lokacji 2, uruchom następujące polecenie w węźle procesu roboczego 1 na 2 lokacji:
 
 <pre><code>
 sbd -d /dev/sdm message hso-hana-vm-s2-2 test
 </code></pre>
 
-W elemencie docelowym po stronie maszyn wirtualnych — co było **hso-hana-vm-s2-2** w tym przykładzie — można znaleźć następującego wpisu w **/var/log/messages**:
+Na stronie maszyny Wirtualnej, obiektu docelowego **hso-hana-vm-s2-2** w tym przykładzie można znaleźć następującego wpisu w **/var/log/messages**:
 
 <pre><code>
 /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68:   notice: servant: Received command test from hso-hana-vm-s2-1 on disk /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68
 </code></pre>
 
-Dokładnie sprawdzić Jeśli wpisy w **/etc/sysconfig/sbd** odnoszą się do opisu w naszym [dokumentacji] [ sles-pacemaker-ha-guide] (preferowane interwencja sekcji). Upewnij się, że ustawienie uruchamiania **/etc/iscsi/iscsid.conf** jest ustawiony na automatyczny.
+Sprawdź, czy wpisy w **/etc/sysconfig/sbd** odnoszą się do opisu w [konfigurowania program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure](https://review.docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing). Upewnij się, że ustawienie uruchamiania **/etc/iscsi/iscsid.conf** jest ustawiony na automatyczny.
 
-Ważne wpisy w **/etc/sysconfig/sbd** (w razie potrzeby dostosować wartość identyfikatora):
+Następujące wpisy są ważne w **/etc/sysconfig/sbd**. Dostosowanie **identyfikator** wartość, jeśli to konieczne:
 
 <pre><code>
 SBD_DEVICE="/dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68;"
@@ -434,45 +435,45 @@ SBD_WATCHDOG=yes
 </code></pre>
 
 
-Inny element, aby sprawdzić, jest to ustawienie uruchamiania w **/etc/iscsi/iscsid.conf**. Wymagane ustawienie powinno się to zdarzyć **iscsiadm** polecenia pokazano poniżej, który jest opisany w dokumentacji. Największy sens w celu sprawdzenia i może dostosować je ręcznie przy użyciu **vi** w przypadku, gdy jest inny.
+Sprawdź ustawienie uruchamiania w **/etc/iscsi/iscsid.conf**. Wymagane ustawienie powinno się to zdarzyć z następującymi **iscsiadm** polecenie opisane w dokumentacji. Sprawdź i zaadaptować ją ręcznie za pomocą **vi** Jeśli jest inny.
 
-Polecenie, aby ustawić zachowanie podczas uruchamiania:
+To polecenie ustawia zachowanie podczas uruchamiania:
 
 <pre><code>
 iscsiadm -m node --op=update --name=node.startup --value=automatic
 </code></pre>
 
-Wpis w **/etc/iscsi/iscsid.conf**:
+Wprowadź ten wpis w **/etc/iscsi/iscsid.conf**:
 
 <pre><code>
 node.startup = automatic
 </code></pre>
 
-Podczas testowania i weryfikacji wystąpień stało, gdzie po ponownym uruchomieniu maszyny wirtualnej urządzenia interwencja nie był widoczny już. Było rozbieżności między ustawienie uruchamiania i pokazano, jakie yast2. Aby dokładnie sprawdź ustawienia, wykonaj następujące kroki:
+Podczas testowania i weryfikacji po ponownym uruchomieniu maszyny wirtualnej na urządzeniu interwencja nie były widoczne już w niektórych przypadkach. Było rozbieżności między ustawienie uruchamiania i YaST2 pokazano. Aby sprawdzić ustawienia, należy wykonać następujące czynności:
 
-1. Rozpocznij yast2
-2. Wybierz **usług sieciowych** po lewej stronie
-3. Przewiń w dół po prawej stronie, aby **inicjatora iSCSI** i wybierz ją
-4. Na następnym ekranie, w obszarze **usługi** kartę, powinien zostać wyświetlony Nazwa inicjatora unikatowy dla węzła
-5. Upewnij się, że powyżej Nazwa inicjatora **uruchomić usługi** wartość jest równa **podczas rozruchu**
-6. Jeśli nie jest tak, wówczas ustaw ją na **podczas rozruchu** zamiast **ręcznie**
-7. Następnie przełącz górnej karty do **połączone obiekty docelowe**
-8. Na ekranie połączone obiekty docelowe powinien zostać wyświetlony wpis dla urządzenia interwencja, np. w tym przykładzie: **10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**
-9. Sprawdź, jeśli wartość rozruchu jest równa "**onboot**"
-10. Jeśli nie, wybierz **Edytuj** i zmień je
-11. Zapisać zmiany i zamknąć okno yast2
+1. Rozpocznij YaST2.
+2. Wybierz **usług sieciowych** po lewej stronie.
+3. Przewiń w dół po prawej stronie, aby **inicjatora iSCSI** i wybierz ją.
+4. Na następnym ekranie, w obszarze **usługi** karcie Nazwa inicjatora unikatowy dla węzła.
+5. Upewnij się, że powyżej Nazwa inicjatora **uruchomić usługi** wartość jest równa **podczas rozruchu**.
+6. Jeśli nie jest, wówczas ustaw ją na **podczas rozruchu** zamiast **ręcznie**.
+7. Następnie przełącz górnej karty do **połączone obiekty docelowe**.
+8. Na **połączone obiekty docelowe** ekranu, powinien zostać wyświetlony wpis dla urządzenia interwencja, np. w tym przykładzie: **10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**.
+9. Sprawdź, czy **uruchamiania** wartość jest równa **podczas rozruchu**.
+10. Jeśli nie, wybierz **Edytuj** i zmień je.
+11. Zapisz zmiany i zamknij YaST2.
 
 
 
 ## <a name="pacemaker"></a>Program pacemaker
 
-Gdy wszystko jest prawidłowo skonfigurowane, można uruchom następujące polecenie w każdym węźle, aby sprawdzić stan usługi program pacemaker:
+Po wszystko jest prawidłowo skonfigurowane, można uruchomić następujące polecenie, w każdym węźle, aby sprawdzić stan usługi program Pacemaker:
 
 <pre><code>
 systemctl status pacemaker
 </code></pre>
 
-Górnej części danych wyjściowych powinien wyglądać jak poniższy przykład. Ważne jest, stan po **Active** jest przedstawiana w postaci **załadowane** i **aktywny (uruchomione)**. Stan po "Załadowane" musi zostać pokazany **włączone**.
+Górnej części danych wyjściowych powinien wyglądać jak w następującym przykładzie. Ważne jest, stan po **Active** jest przedstawiana w postaci **załadowane** i **aktywny (uruchomione)**. Stan po **Loaded** musi zostać pokazany jako **włączone**.
 
 <pre><code>
   pacemaker.service - Pacemaker High Availability Cluster Manager
@@ -492,19 +493,19 @@ Górnej części danych wyjściowych powinien wyglądać jak poniższy przykład
            └─4504 /usr/lib/pacemaker/crmd
 </code></pre>
 
-W przypadku, gdy ustawienie jest nadal na **wyłączone**, uruchom następujące polecenie:
+Jeśli ustawienie jest nadal na **wyłączone**, uruchom następujące polecenie:
 
 <pre><code>
 systemctl enable pacemaker
 </code></pre>
 
-Aby wyświetlić wszystkie zasoby skonfigurowany program pacemaker, uruchom następujące polecenie:
+Aby wyświetlić wszystkie zasoby skonfigurowany program Pacemaker, uruchom następujące polecenie:
 
 <pre><code>
 crm status
 </code></pre>
 
-Dane wyjściowe powinny wyglądać podobnie jak na poniższym przykładzie. Sytuacja jest prawidłowa, że zasoby cln i msl są wyświetlane jako zatrzymana na większości twórca maszyny Wirtualnej (**hso-hana-dm**). Nie ma żadnych instalacji oprogramowania SAP HANA, w większości węzłów producenta. W związku z tym **cln** i **msl** zasoby są pokazane jako zatrzymana. Jest ważne, pokazuje poprawne łączna liczba maszyn wirtualnych (**7**). Wszystkie maszyny wirtualne, które są częścią klastra musi być wymieniona ze stanem **Online**. Bieżący podstawowego węzła głównego musi być rozpoznawana poprawnie (w tym przykładzie jest **hso-hana-vm-s1-0**).
+Dane wyjściowe powinny wyglądać jak w następującym przykładzie. Ma ona poprawnie, **cln** i **msl** zasoby są pokazane jako zatrzymana na większości twórca maszyny Wirtualnej, **hso-hana-dm**. Nie ma żadnych instalacji oprogramowania SAP HANA, w większości węzłów producenta. Więc **cln** i **msl** zasoby są pokazane jako zatrzymana. Jest ważne, pokazuje poprawne łączna liczba maszyn wirtualnych, **7**. Wszystkie maszyny wirtualne, które są częścią klastra musi być wymieniona ze stanem **Online**. Musi być poprawnie rozpoznawana bieżącego podstawowego węzła głównego. W tym przykładzie przedstawiono w nim **hso-hana-vm-s1-0**:
 
 <pre><code>
 Stack: corosync
@@ -532,14 +533,14 @@ Full list of resources:
      rsc_nc_HSO_HDB00   (ocf::heartbeat:anything):      Started hso-hana-vm-s1-0
 </code></pre>
 
-Ważną funkcją program pacemaker polega na umieszczeniu jej w tryb konserwacji. Ten tryb pozwala bez zdolnemu akcję klastrów bezpośredniego wprowadzania modyfikacji (na przykład ponowne uruchomienie maszyny Wirtualnej). Typowym przypadkiem użycia jest planowana konserwacja infrastruktury systemu operacyjnego lub na platformie Azure (patrz także osobnej sekcji informacje o planowanej konserwacji). Użyj następującego polecenia, aby umieścić program pacemaker w trybie konserwacji:
+Ważną funkcją program Pacemaker jest tryb konserwacji. W tym trybie może wprowadzać zmiany bez zdolnemu akcję natychmiastowego klastra. Przykładem jest ponowny rozruch maszyny Wirtualnej. Typowym przypadkiem użycia jest planowana konserwacja infrastruktury systemu operacyjnego lub na platformie Azure. Zobacz [planowanej konserwacji](#planned-maintenance). Użyj następującego polecenia, aby umieścić program Pacemaker w trybie konserwacji:
 
 <pre><code>
 crm configure property maintenance-mode=true
 </code></pre>
 
-Podczas sprawdzania z **stan crm**, można zauważyć, że w danych wyjściowych, że wszystkie zasoby są oznaczone jako **niezarządzanych**. W tym stanie klastra nie reagują na wszelkie zmiany, takie jak uruchamianie/zatrzymywanie SAP HANA.
-Poniżej przedstawiono przykładowe dane wyjściowe z **stan crm** polecenia, gdy klaster jest w trybie konserwacji:
+Sprawdzenie za pomocą **stan crm**, można zauważyć, że w danych wyjściowych, że wszystkie zasoby są oznaczone jako **niezarządzanych**. W tym stanie klastra nie reagują na wszelkie zmiany, takie jak uruchamianie lub zatrzymywanie platformy SAP HANA.
+Poniższy przykład pokazuje dane wyjściowe **stan crm** polecenia, gdy klaster jest w trybie konserwacji:
 
 <pre><code>
 Stack: corosync
@@ -579,20 +580,20 @@ Full list of resources:
 </code></pre>
 
 
-I w poniższym przykładzie polecenia jak zakończyć tryb konserwacji klastra:
+W tym przykładzie polecenie pokazuje, jak do zakończenia trybu konserwacji klastra:
 
 <pre><code>
 crm configure property maintenance-mode=false
 </code></pre>
 
 
-Inne polecenie crm umożliwia wprowadzenie kompletna Konfiguracja klastra do edytora z możliwością do edycji. Po zapisaniu zmian, klaster rozpoczyna się odpowiednie działania:
+Inny **crm** polecenie pobiera kompletna Konfiguracja klastra do edytora, dzięki czemu można go edytować. Po zapisuje zmiany, klaster rozpoczyna się odpowiednie działania:
 
 <pre><code>
 crm configure edit
 </code></pre>
 
-Aby Przyjrzyjmy się tylko kompletna Konfiguracja klastra, należy użyć programu crm **Pokaż** opcji:
+Aby zobaczyć kompletna Konfiguracja klastra, należy użyć **Pokaż crm** opcji:
 
 <pre><code>
 crm configure show
@@ -600,7 +601,7 @@ crm configure show
 
 
 
-Po awarii zasobów klastra zdarza się, że **stan crm** polecenie wyświetla listę **akcji nie powiodło się**. Zobacz przykład dla tych danych wyjściowych poniżej:
+Po awarii zasobów klastra **stan crm** polecenie wyświetla listę **akcji nie powiodło się**. Zobacz poniższy przykład te dane wyjściowe:
 
 
 <pre><code>
@@ -633,13 +634,13 @@ Failed Actions:
     last-rc-change='Wed Sep 12 17:01:28 2018', queued=0ms, exec=277663ms
 </code></pre>
 
-Jest wykonanie oczyszczania klastra po awarii. Po prostu ponownie użyć polecenia crm i użyć opcji polecenia **oczyszczania** pozbyć się tych nie powiodło się wpisy akcji nazewnictwa odpowiedni zasób klastra jak pokazano poniżej:
+Jest wykonanie oczyszczania klastra po awarii. Użyj **crm** ponownie polecenie, a następnie użyć opcji polecenia **oczyszczania** pozbyć się tych nie powiodło się wpisy akcji. Nadaj nazwę odpowiedniego zasobu klastra w następujący sposób:
 
 <pre><code>
 crm resource cleanup rsc_SAPHanaCon_HSO_HDB00
 </code></pre>
 
-Polecenie powinny zostać zwrócone dane wyjściowe wyglądają jak w poniższym przykładzie:
+Polecenie powinny zostać zwrócone dane wyjściowe podobne do poniższego przykładu:
 
 <pre><code>
 Cleaned up rsc_SAPHanaCon_HSO_HDB00:0 on hso-hana-dm
@@ -654,9 +655,11 @@ Waiting for 7 replies from the CRMd....... OK
 
 
 
-## <a name="failover--takeover"></a>Tryb failover / przejęcia
+## <a name="failover-or-takeover"></a>W trybie Failover lub przejęcia
 
-Jak wspomniano już w pierwszej sekcji z ważne uwagi, nie należy używać standardowych łagodne zamykanie do testowania klastra pracy awaryjnej lub przejęcia replikacji systemu HANA SAP HANA. Zamiast tego zaleca się wyzwolić, na przykład jądra lub wymusić migracji zasobów lub może być Zamknij wszystkie sieci na poziomie systemu operacyjnego maszyny wirtualnej. Inną metodą **crm \<węzła\> wstrzymania** polecenia. Zobacz też SUSE dokumentu, który można znaleźć [tutaj][sles-12-ha-paper]. Poniżej widać trzy przykładowe polecenia, aby wymusić klastra pracy awaryjnej:
+Zgodnie z opisem w [ważne uwagi](#important-notes), nie używaj standardowych łagodne zamykanie do testowania klastra pracy awaryjnej lub przejęcia replikacji systemu HANA SAP HANA. Zamiast tego zaleca się wyzwolić jądra, wymusić migracji zasobów lub prawdopodobnie Zamknij wszystkie sieci na poziomie systemu operacyjnego maszyny wirtualnej. Inną metodą jest **crm \<węzła\> wstrzymania** polecenia. Zobacz [dokumentu SUSE][sles-12-ha-paper]. 
+
+Następujące przykładowe trzy polecenia można wymusić tryb failover klastra:
 
 <pre><code>
 echo c &gt /proc/sysrq-trigger
@@ -670,21 +673,23 @@ wicked ifdown eth2
 wicked ifdown eth&ltn&gt
 </code></pre>
 
-Jak również zostały opisane w sekcji informacje o planowanej konserwacji, dobrym sposobem na monitorowanie działania klastra jest uruchomienie **SAPHanaSR showAttr** z **Obejrzyj** polecenia:
+Zgodnie z opisem w [planowanej konserwacji](#planned-maintenance), dobrym sposobem na monitorowanie działania klastra jest uruchomienie **SAPHanaSR showAttr** z **Obejrzyj** polecenia:
 
 <pre><code>
 watch SAPHanaSR-showAttr
 </code></pre>
 
-Ponadto warto zobaczyć stan pozioma platformy SAP HANA, pochodzące ze skryptu języka python SAP. Ta wartość stanu jest ten, którego szuka Konfiguracja klastra. Staną się oczywiste, gdy nie myśl o awarii węzła procesu roboczego. Jeśli węzeł procesu roboczego ulegnie awarii, SAP HANA nie natychmiast zwróci błąd kondycji systemu zupełnie skalowalnego w poziomie. Istnieją pewne ponownych prób, aby uniknąć niepotrzebnych przejścia w tryb failover. Tylko wtedy, gdy stan zmieni się z Ok (zwracana wartość 4) do błędu (wartość zwracana: 1) reaguje klastra. W związku z tym jest poprawny, jeśli dane wyjściowe z **SAPHanaSR showAttr** zawiera Maszynę wirtualną ze stanem **offline** , ale nie ma działania do przełącznika podstawowym i pomocniczym. Brak działania klastra pobiera wyzwalane, tak długo, jak oprogramowanie SAP HANA nie zwraca błąd.
+Pomaga również zobaczyć stan pozioma platformy SAP HANA, pochodzące ze skryptu języka Python SAP. Konfiguracja klastra szuka to wartość stanu. Staną się oczywiste, rozważając awarii węzła procesu roboczego. Jeśli węzeł procesu roboczego ulegnie awarii, SAP HANA nie natychmiast zwróci błąd kondycji systemu zupełnie skalowalnego w poziomie. 
 
-Możesz monitorować stan kondycji pozioma platformy SAP HANA jako użytkownik \<HANA SID\>adm, wywołując SAP python skryptu następująco (może być konieczne dostosowanie ścieżka):
+Istnieją pewne ponownych prób, aby uniknąć niepotrzebnych przejścia w tryb failover. Klaster reaguje tylko wtedy, gdy stan zmieni się z **Ok**, wartość zwracana **4**, **błąd**, wartość zwracana **1**. Dlatego jest on poprawny Jeśli dane wyjściowe z **SAPHanaSR showAttr** zawiera Maszynę wirtualną ze stanem **w trybie offline**. Ale nie ma żadnych działań do przełącznika podstawowego i pomocniczego. Brak działania klastra pobiera wyzwalane, tak długo, jak oprogramowanie SAP HANA nie zwraca błąd.
+
+Możesz monitorować stan kondycji pozioma platformy SAP HANA jako użytkownik  **\<HANA SID\>adm** wywołując skrypt w języku Python SAP w następujący sposób. Może być konieczne dostosowanie ścieżki:
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
 </code></pre>
 
-Dane wyjściowe tego polecenia powinien wyglądać jak poniższy przykład. Ważne jest **stan hosta** kolumny, jak również **ogólny stan hosta**. Rzeczywiste dane wyjściowe w rzeczywistości jest szerszy z dodatkowych kolumn.
+Dane wyjściowe tego polecenia powinien wyglądać jak w następującym przykładzie. **Stan hosta** kolumny i **ogólny stan hosta** są ważne. Rzeczywiste dane wyjściowe są szersze, za pomocą dodatkowych kolumn.
 Aby tabela danych wyjściowych był bardziej czytelny, w tym dokumencie, większość kolumny po prawej stronie zostały usunięte:
 
 <pre><code>
@@ -700,7 +705,7 @@ overall host status: ok
 </code></pre>
 
 
-Ma innego polecenia, aby sprawdzić bieżące działania klastra. Poniżej przedstawiono polecenia i zakończeniem danych wyjściowych po został skasowany węzła głównego w lokacji głównej. Można wyświetlić listę akcji przejścia, takich jak **podwyższania poziomu** byłych pomocniczego węzła głównego (**hso-hana-vm-s2-0**) jako nowego wzorca podstawowego. Jeśli wszystko, co jest dobrym i zakończono wszystkie czynności, ta lista **podsumowanie przejścia** musi być pusty.
+Ma innego polecenia, aby sprawdzić bieżące działania klastra. Zobacz poniższe polecenie i zakończeniem danych wyjściowych po został skasowany węzła głównego w lokacji głównej. Można wyświetlić listę akcji przejścia, takich jak **podwyższania poziomu** byłych pomocniczego węzła głównego, **hso-hana-vm-s2-0**, jako nowego wzorca podstawowego. Jeśli wszystko jest w dobrym stanie, a wszystkie czynności są zakończone, to **podsumowanie przejścia** listy musi być pusty.
 
 <pre><code>
  crm_simulate -Ls
@@ -720,38 +725,36 @@ Transition Summary:
 
 ## <a name="planned-maintenance"></a>Planowana konserwacja 
 
-Istnieją różnych przypadków użycia, jeśli chodzi o planowanej konserwacji. Jedno pytanie jest na przykład, jeśli jest po prostu konieczność konserwacji infrastruktury sposób zmiany na poziomie systemu operacyjnego i konfiguracji dysku lub uaktualnienie platformy HANA.
-Dodatkowe informacje można znaleźć w dokumentach, od firmy SUSE, takich jak [tutaj] [ sles-zero-downtime-paper] lub [innego co tutaj][sles-12-for-sap]. Te dokumenty zawierają również przykłady jak ręcznie migrować podstawowego.
+Istnieją różnych przypadków użycia, jeśli chodzi o planowanej konserwacji. Jedno pytanie jest, czy jest to po prostu konieczność konserwacji infrastruktury sposób zmiany na poziomie systemu operacyjnego i konfiguracji dysku lub uaktualnienia platformy HANA.
+Dodatkowe informacje można znaleźć w dokumentach, od firmy SUSE, takich jak [kierunku żadnych przestojów] [ sles-zero-downtime-paper] lub [zoptymalizowane pod kątem scenariuszy SAP HANA SR wydajności] [ sles-12-for-sap]. Te dokumenty również zawierać przykłady pokazujące, jak ręcznie migrować podstawowego.
 
-Intensywny wewnętrzne testy została wykonana w celu sprawdź przypadek użycia konserwacji infrastruktury. Aby uniknąć dowolnego rodzaju problem związany z migracją podstawowego, decyzja została wprowadzona zawsze migracji główną przed przełączeniem klastra w tryb konserwacji. W ten sposób nie jest to niezbędne do zapewnienia klastra zapomnij o wcześniejsze sytuację, (która strona została podstawowego i która strona została dodatkowej).
+Intensywny wewnętrzne testy została wykonana w celu sprawdź przypadek użycia konserwacji infrastruktury. Aby uniknąć problemów związanych z migracją podstawowego, podjęliśmy decyzję o zawsze migracji główną przed przełączeniem klastra w tryb konserwacji. W ten sposób nie jest to niezbędne do zapewnienia klastra zapomnij o sytuacji w poprzedniej wersji portalu: której stronie był podstawowego i który został dodatkowej.
 
 W związku z tym są dwa różne sytuacje:
 
-1. Planowana konserwacja na bieżącej maszynie pomocniczej. 
-   Można w tym przypadku po prostu umieść klastra w tryb konserwacji i wykonują pracę w pomocniczym, bez wywierania wpływu na klaster
+- **Planowana konserwacja na bieżącej maszynie pomocniczej**. W takim przypadku wystarczy umieścić klastra w tryb konserwacji i wykonują pracę w pomocniczym, bez wywierania wpływu na klastrze.
 
-2. Planowanej konserwacji na serwerze podstawowym bieżącego. 
-   Aby umożliwić użytkownikom kontynuować pracę podczas konserwacji, jest konieczne wymuszenie przejścia w tryb failover. W przypadku tej metody możesz wyzwolić tryb failover klastra przez program pacemaker i nie tylko na poziomie replikacji systemu HANA SAP HANA. Instalator program pacemaker automatyczne wyzwolenie przejęcia platformy SAP HANA. Ponadto należy wykonywać pracę awaryjną przed wprowadzeniem klastra w tryb konserwacji.
+- **Planowanej konserwacji na serwerze podstawowym bieżącego**. Tak, aby użytkownicy mogą nadal działać podczas konserwacji, konieczne jest wymuszenie przejścia w tryb failover. W przypadku tej metody możesz wyzwolić tryb failover klastra przez program Pacemaker i nie tylko na poziomie replikacji systemu HANA SAP HANA. Instalator program Pacemaker automatyczne wyzwolenie przejęcia platformy SAP HANA. Należy również wykonać pracę awaryjną przed umieszczeniem klastra w tryb konserwacji.
 
-Procedury w celu przeprowadzenia konserwacji w bieżącej lokacji dodatkowej chcieliby poniższe kroki:
+Procedury w celu przeprowadzenia konserwacji w bieżącej lokacji dodatkowej jest następująca:
 
-1. Umieść klastra w tryb konserwacji
-2. Wykonać pracę w lokacji dodatkowej 
-3. Zakończ tryb konserwacji klastra
+1. Umieść klastra w tryb konserwacji.
+2. Wykonać pracę w lokacji dodatkowej. 
+3. Koniec tryb konserwacji klastra.
 
 Procedura obsługi w bieżącej lokacji głównej jest bardziej złożonych:
 
-1. Ręcznie wyzwolić tryb failover / SAP HANA przejęcia za pomocą migracji zasobów program Pacemaker (Zobacz szczegóły poniżej)
-2. SAP HANA w lokacji głównej, były zostanie uzyskiwanie zamknięta przez Konfiguracja klastra
-3. Umieść klastra w tryb konserwacji
-4. Po zakończeniu prac konserwacyjnych, zarejestrować byłych podstawowy jako nową lokację dodatkową
-5. Wyczyść konfigurację klastra (Zobacz szczegóły poniżej)
-6. Zakończ tryb konserwacji klastra
+1. Ręcznie wyzwolić tryb failover lub przejęcia platformy SAP HANA przy użyciu migracji zasobów program Pacemaker. Zobacz szczegółowe informacje, które należy wykonać.
+2. Oprogramowanie SAP HANA na wcześniejsze lokacji głównej pobiera zamknięta przez Konfiguracja klastra.
+3. Umieść klastra w tryb konserwacji.
+4. Po zakończeniu prac konserwacyjnych, należy zarejestrować byłych podstawowy jako nową lokację dodatkową.
+5. Wyczyść konfigurację klastra. Zobacz szczegółowe informacje, które należy wykonać.
+6. Koniec tryb konserwacji klastra.
 
 
-Migrowanie zasobów (na przykład wymusić przejścia w tryb failover) dodaje wpis w konfiguracji klastra. Należy wyczyścić te wpisy przed zakończeniem trybu konserwacji. Oto przykład:
+Migrowanie zasobów dodaje wpis w konfiguracji klastra. Przykładem jest wymuszenie przejścia w tryb failover. Należy wyczyścić te wpisy przed zakończenia trybu konserwacji. Zobacz poniższy przykład.
 
-Pierwszym krokiem jest wymuszenie klastra pracy awaryjnej przy użyciu funkcji migracji zasobów msl do dodatkowej bieżącego węzła głównego. Poniższe polecenie wyświetla ostrzeżenie, ograniczenie"Przenieś" został utworzony.
+Najpierw należy wymusić klastra pracy awaryjnej przy użyciu funkcji migracji **msl** zasobów do dodatkowej bieżącego węzła głównego. To polecenie wyświetla ostrzeżenie, że **Przenieś ograniczenie** został utworzony:
 
 <pre><code>
 crm resource migrate msl_SAPHanaCon_HSO_HDB00 force
@@ -760,13 +763,13 @@ INFO: Move constraint created for msl_SAPHanaCon_HSO_HDB00
 </code></pre>
 
 
-Sprawdzanie procesu pracy awaryjnej za pomocą polecenia **SAPHanaSR showAttr**. Co umożliwia monitorowanie stanu klastra jest Otwórz okno dedykowanych powłokę i uruchom polecenie **Obejrzyj**:
+Sprawdzanie procesu pracy awaryjnej za pomocą polecenia **SAPHanaSR showAttr**. Aby monitorować stan klastra, Otwórz okno dedykowanych shell i uruchom polecenie **Obejrzyj**:
 
 <pre><code>
 watch SAPHanaSR-showAttr
 </code></pre>
 
-Dane wyjściowe powinny odzwierciedlać ręcznej pracy awaryjnej. Stało się wcześniejsze pomocniczego węzła głównego **promowane** (w tym przykładzie **hso-hana-vm-s2-0**) i byłych lokacji głównej zostało zatrzymane (**lss** wartość **1** dla poprzedniej wersji portalu z podstawowym węzłem głównym **hso-hana-vm-s1-0**): 
+Dane wyjściowe powinny pokazywać ręcznej pracy awaryjnej. Stało się wcześniejsze pomocniczego węzła głównego **promowane**, w tym przykładzie **hso-hana-vm-s2-0**. Wcześniejsze lokacji głównej zostało zatrzymane, **lss** wartość **1** dla poprzedniej wersji portalu z podstawowym węzłem głównym **hso-hana-vm-s1-0**: 
 
 <pre><code>
 Global cib-time                 prim  sec srHook sync_state
@@ -791,21 +794,21 @@ hso-hana-vm-s2-1 DEMOTED     online     slave:slave:worker:slave     -10000 HSOS
 hso-hana-vm-s2-2 DEMOTED     online     slave:slave:worker:slave     -10000 HSOS2
 </code></pre>
 
-Po pracy awaryjnej i przejęcia platformy SAP HANA należy umieścić klastra w tryb konserwacji zgodnie z opisem w sekcji program pacemaker.
+Po pracy awaryjnej i przejęcia platformy SAP HANA, umieść klastra w tryb konserwacji, zgodnie z opisem w [program Pacemaker](#pacemaker).
 
-Polecenia **SAPHanaSR showAttr** lub **stan crm** nie wskazują nic o ograniczenia utworzone przez migrację zasobów. Jedną z opcji aby uwidocznić te ograniczenia jest pokazanie konfiguracji zasobów całego klastra za pomocą następującego polecenia:
+Polecenia **SAPHanaSR showAttr** i **stan crm** nie wskazują nic o ograniczenia utworzone przez migrację zasobów. Jedną z opcji aby uwidocznić te ograniczenia jest pokazanie konfiguracji zasobów całego klastra za pomocą następującego polecenia:
 
 <pre><code>
 crm configure show
 </code></pre>
 
-W konfiguracji klastra możesz znaleźć nowe ograniczenie lokalizacji spowodowane migracji przypisywane ręcznie zasobów. Oto przykład (pozycję składającą się z **lokalizacji interfejsu wiersza polecenia —**):
+W konfiguracji klastra możesz znaleźć nowe ograniczenie lokalizacji spowodowane migracji przypisywane ręcznie zasobów. Ten przykładowy wpis, który rozpoczyna się od **lokalizacji interfejsu wiersza polecenia —**:
 
 <pre><code>
 location cli-ban-msl_SAPHanaCon_HSO_HDB00-on-hso-hana-vm-s1-0 msl_SAPHanaCon_HSO_HDB00 role=Started -inf: hso-hana-vm-s1-0
 </code></pre>
 
-Niestety takie ograniczenia może mieć wpływ na ogólnym zachowaniom klastra. Dlatego jest wymagane, aby usunąć je ponownie przed Przywracanie całego systemu kopii zapasowych. Za pomocą **unmigrate** polecenia, można wyczyścić ograniczenia lokalizacji, które zostały utworzone przed. Nazewnictwo może być nieco mylące. Nie oznacza, może spróbować przeprowadzić migrację zasobów do jego oryginalnej maszyny Wirtualnej, z którego została poddana migracji. On po prostu usuwa ograniczenia lokalizacji i zwraca również wartość odpowiednią informacją przy uruchamianiu polecenia:
+Niestety takie ograniczenia mogą mieć wpływ na ogólną działanie klastra. Dlatego jest to konieczne, aby usunąć je ponownie, przed przełączeniem w tryb całego systemu kopii zapasowych. Za pomocą **unmigrate** polecenia, można wyczyścić ograniczenia lokalizacji, które zostały utworzone przed. Nazewnictwo może być nieco mylące. Go nie spróbuj przeprowadzić migrację zasobów do oryginalnej maszyny Wirtualnej, z którego została poddana migracji. Po prostu ograniczenia lokalizacji jest usuwany, a także zwraca odpowiednie informacje, po uruchomieniu polecenia:
 
 
 <pre><code>
@@ -814,19 +817,19 @@ crm resource unmigrate msl_SAPHanaCon_HSO_HDB00
 INFO: Removed migration constraints for msl_SAPHanaCon_HSO_HDB00
 </code></pre>
 
-Na końcu prac konserwacyjnych Zatrzymaj tryb konserwacji klastra jak pokazano w sekcji program pacemaker.
+Na końcu prac konserwacyjnych, możesz zatrzymać tryb konserwacji klastra w pokazany na [program Pacemaker](#pacemaker).
 
 
 
 ## <a name="hbreport-to-collect-log-files"></a>hb_report, aby zbierać pliki dziennika
 
-Aby analizować problemy z klastra program pacemaker, jest przydatne i również żądany przez SUSE dział pomocy technicznej do uruchamiania **hb_report** narzędzia. Zbiera wszystkie ważne logfiles, dzięki czemu analizy, co się stało. Oto przykładowe wywołanie za pomocą godzina rozpoczęcia i zakończenia, w którym konkretnego zdarzenia wystąpił (również zobacz pierwszą sekcję dotyczącą ważne uwagi):
+Aby analizować problemy z klastra program Pacemaker, jest przydatne i również żądany przez SUSE dział pomocy technicznej do uruchamiania **hb_report** narzędzia. Zbiera wszystkie pliki ważne dziennika, które trzeba sprawdzić, co się stało. To przykładowe wywołanie używa godzina rozpoczęcia i zakończenia, miejsce wystąpienia określonego zdarzenia. Zobacz też [ważne uwagi](#important-notes):
 
 <pre><code>
 hb_report -f "2018/09/13 07:36" -t "2018/09/13 08:00" /tmp/hb_report_log
 </code></pre>
 
-Polecenie wylewa się, gdzie je umieścić pliki skompresowane dziennika:
+Polecenie poinformuje, gdzie je umieścić pliki skompresowane dziennika:
 
 <pre><code>
 The report is saved in /tmp/hb_report_log.tar.bz2
@@ -839,7 +842,7 @@ Następnie można wyodrębnić poszczególnych plików za pomocą standardowej *
 tar -xvf hb_report_log.tar.bz2
 </code></pre>
 
-Patrząc wyodrębnionych plików możesz znaleźć wszystkie pliki dziennika. Większość z nich były umieszczane w osobnych katalogów dla każdego węzła w klastrze:
+Jeśli przyjrzymy się wyodrębnione pliki, możesz znaleźć wszystkie pliki dziennika. Większość z nich były umieszczane w osobnych katalogów dla każdego węzła w klastrze:
 
 <pre><code>
 -rw-r--r-- 1 root root  13655 Sep 13 09:01 analysis.txt
@@ -858,7 +861,7 @@ drwxr-xr-x 3 root root   4096 Sep 13 09:01 hso-hana-vm-s2-2
 </code></pre>
 
 
-W okresie, który został określony bieżącego węzła głównego **hso-hana-vm-s1-0** został zatrzymany. W **journal.log** znajdują się wpisy związane z tym zdarzeniem:
+Zakres czasu został określony, bieżący węzeł główny **hso-hana-vm-s1-0** został zatrzymany. Znajdują się wpisy związane z tym zdarzeniem w **journal.log**:
 
 <pre><code>
 2018-09-13T07:38:01+0000 hso-hana-vm-s2-1 su[93494]: (to hsoadm) root on none
@@ -880,7 +883,7 @@ W okresie, który został określony bieżącego węzła głównego **hso-hana-v
 2018-09-13T07:38:03+0000 hso-hana-vm-s2-1 su[93494]: pam_unix(su-l:session): session closed for user hsoadm
 </code></pre>
 
-Innym przykładem jest plik dziennika program pacemaker we wzorcu dodatkowej stało się nowego wzorca podstawowego. Poniżej przedstawiono fragment, który pokazuje, czy stan zabitych podstawowego węzła głównego został ustawiony **offline**.
+Innym przykładem jest plik dziennika program Pacemaker we wzorcu dodatkowej stało się nowego wzorca podstawowego. Ten fragment prezentuje, czy stan zabitych podstawowego węzła głównego został ustawiony **offline**:
 
 <pre><code>
 Sep 13 07:38:02 [4178] hso-hana-vm-s2-0 stonith-ng:     info: pcmk_cpg_membership:      Node 3 still member of group stonith-ng (peer=hso-hana-vm-s1-2, counter=5.1)
@@ -901,7 +904,7 @@ Sep 13 07:38:02 [4184] hso-hana-vm-s2-0       crmd:     info: pcmk_cpg_membershi
 ## <a name="sap-hana-globalini"></a>Global.ini platformy SAP HANA
 
 
-Poniżej zobaczysz będących fragmentami z pliku global.ini platformy SAP HANA w witrynie klastra 2 jako przykład demonstrujący wpisów rozpoznawania nazwy hosta, korzystać z różnych sieci na potrzeby komunikacji między węzłami platformy SAP HANA i replikacji systemu HANA:
+Następujące fragmenty są z platformy SAP HANA **global.ini** pliku 2 w witrynie klastra. Ten przykład przedstawia nazwę hosta wpisów rozpoznawania korzystać z różnych sieci na potrzeby komunikacji między węzłami platformy SAP HANA i replikacji systemu HANA:
 
 <pre><code>
 [communication]
@@ -940,41 +943,41 @@ listeninterface = .internal
 
 
 
-## <a name="hawk"></a>HAWK
+## <a name="hawk"></a>Hawk
 
-Rozwiązanie klastrowe jest także interfejs przeglądarki, która oferuje nieuprzywilejowany graficznego interfejsu użytkownika dla osób, które wolą menu i grafiki w porównaniu do wszystkich poleceń na poziomie powłoki.
-Korzystania z interfejsu w przeglądarce, wykonaj adres URL wyświetlany poniżej i Zastąp **\<węzła\>** przez rzeczywisty węzeł oprogramowania SAP HANA, a następnie wprowadź poświadczenia klastra (użytkownik **hacluster**):
+Rozwiązanie klastrowe udostępnia interfejs przeglądarki, która oferuje graficzny interfejs użytkownika dla użytkowników, którzy wolą menu i aplikacji graficznych o wszystkie polecenia z poziomu powłoki.
+Aby użyć interfejsu przeglądarki, Zastąp **\<węzła\>** z rzeczywistych węzłem platformy SAP HANA następujący adres URL. Następnie wprowadź poświadczenia klastra (użytkownik **klastra**):
 
 <pre><code>
 https://&ltnode&gt:7630
 </code></pre>
 
-Poniższy zrzut ekranu przedstawia pulpit nawigacyjny klastra:
+Ten zrzut ekranu przedstawia pulpit nawigacyjny klastra:
 
 
-![Pulpit nawigacyjny klastra HAWK](media/hana-vm-scale-out-HA-troubleshooting/hawk-1.png)
+![Pulpit nawigacyjny klastra hawk](media/hana-vm-scale-out-HA-troubleshooting/hawk-1.png)
 
 
-Na drugi zrzut ekranu widać przykład ograniczenia lokalizacji spowodowane migracji zasobów klastra zgodnie z opisem w sekcji planowanej konserwacji:
+W tym przykładzie przedstawiono ograniczenia lokalizacji spowodowane migracji zasobów klastra, jak wyjaśniono w [planowanej konserwacji](#planned-maintenance):
 
 
-![HAWK lista ograniczeń](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
+![Hawk lista ograniczeń](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-Kolejną funkcją nieuprzywilejowany jest możliwość przekazywania **hb_report** danych wyjściowych (zobacz sekcję **hb_report**) w **HAWK** w obszarze **historii** jako przedstawiono na następnym zrzucie ekranu:
+Możesz również przekazać **hb_report** dane wyjściowe w Hawk w obszarze **historii**, jak pokazano w następujący sposób. Zobacz [hb_report, aby zbierać pliki dziennika](#hbreport-to-collect-log-files): 
 
-![Dane wyjściowe hb_report przekazywania HAWK](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
+![Dane wyjściowe hb_report przekazywania hawk](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 
-**Explorer historii** następnie umożliwia przejście przez wszystkie przejścia klastra w **hb_report** dane wyjściowe:
+Za pomocą **Explorer historii**, następnie można przejść przez wszystkie przejścia klastra w **hb_report** dane wyjściowe:
 
-![Omówienie HAWK przejścia w danych wyjściowych hb_report](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
+![Hawk przejścia w danych wyjściowych hb_report](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
 
-Na ostatni zrzucie ekranu widać sekcji szczegółów pojedynczego przejścia, który pokazuje, że klaster negatywną na awarię podstawowego węzła głównego (węzeł **hso-hana-vm-s1-0**) i teraz jest wspieranie węzła pomocniczego jako nowego wzorca (**hso-hana-vm-s2-0**):
+Ten końcowy zrzut ekranu przedstawia **szczegóły** części jednej przejścia. Klaster reakcja na awarii podstawowego węzła głównego, węzła **hso-hana-vm-s1-0**. Jest teraz podwyższanie poziomu pomocniczego węzła jako nowy wzorzec **hso-hana-vm-s2-0**:
 
-![Omówienie HAWK jednego przejścia](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
+![Hawk jednego przejścia](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Ten przewodnik rozwiązywania problemów jest o wysokiej dostępności dla oprogramowania SAP HANA w konfiguracji skalowania w poziomie. Innym ważnym elementem w środowisko SAP, oprócz bazy danych jest stos oprogramowania SAP NetWeaver. Następnie należy przeczytać o wysokiej dostępności dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure przy użyciu systemu SUSE Enterprise Linux Server w [to] [ sap-nw-ha-guide-sles] artykułu.
+Ten przewodnik rozwiązywania problemów opisano wysokiej dostępności dla oprogramowania SAP HANA w konfiguracji skalowania w poziomie. Innym ważnym elementem w środowisko SAP jest stos oprogramowania SAP NetWeaver. Dowiedz się więcej o [wysokiej dostępności dla oprogramowania SAP NetWeaver na maszynach wirtualnych Azure, które używają systemu SUSE Enterprise Linux Server][sap-nw-ha-guide-sles].
 

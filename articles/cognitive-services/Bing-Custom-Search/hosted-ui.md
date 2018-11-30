@@ -3,19 +3,19 @@ title: Lokacji wyszukiwania, użyj obsługiwanego interfejsu użytkownika usług
 titlesuffix: Azure Cognitive Services
 description: W tym artykule opisano sposób konfigurowania wyszukiwania niestandardowego Bing hostowanych interfejsu użytkownika.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
-ms.author: v-brapel
-ms.openlocfilehash: 77845cb60dac707326acdb08b0198f8725a36f62
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: aahi
+ms.openlocfilehash: c71597cf540cca67b9558ce28d20ce1d21ae0243
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48813978"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424990"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurowanie środowiska obsługiwanego interfejsu użytkownika
 
@@ -29,7 +29,7 @@ Aby skonfigurować hostowanej interfejsu użytkownika dla aplikacji sieci web, w
   
 2. Kliknij wystąpienie wyszukiwania niestandardowego. Aby utworzyć wystąpienie, zobacz [Tworzenie pierwszego wystąpienia wyszukiwania niestandardowego Bing](quick-start.md).  
 
-3. Kliknij przycisk **hostowanych interfejsu użytkownika** kartę.  
+3. Kliknij kartę **Hosted UI** (Hostowany interfejs użytkownika).  
   
 4. Wybierz układ.
   
@@ -43,7 +43,7 @@ Aby skonfigurować hostowanej interfejsu użytkownika dla aplikacji sieci web, w
   - Ciemny
   - Niebieski skyline
 
-  Kliknij każdą z tematów, aby zobaczyć, który motyw działa najlepiej z aplikacją sieci web. Jeśli musisz dostosowywać motyw kolorów, aby lepiej Integracja z aplikacją sieci web, kliknij przycisk **motyw Dostosuj**. Nie wszystkie konfiguracje kolor mają zastosowanie do wszystkich motywy układu. Aby zmienić kolor, wprowadź wartość SZESNASTKOWY RGB koloru (na przykład #366eb8) w odpowiednim polu tekstowym. Ewentualnie kliknij przycisk koloru, a następnie kliknij przycisk odcienia, który Ci odpowiada. 
+  Kliknij każdą z tematów, aby zobaczyć, który motyw działa najlepiej z aplikacją sieci web. Aby dostosować motyw kolorów w celu zapewnienia lepszej integracji z aplikacją internetową, kliknij pozycję **Customize theme** (Dostosuj motyw). Nie wszystkie konfiguracje kolorów mają zastosowanie do wszystkich motywów układu. Aby zmienić kolor, wprowadź wartość SZESNASTKOWĄ RGB (na przykład #366eb8) w odpowiednim polu tekstowym. Ewentualnie kliknij przycisk koloru, a następnie kliknij przycisk odcienia, który Ci odpowiada. 
   
   Po zmianie koloru, zapoznaj się z wpływ zmiany na przykład (wersja zapoznawcza) po prawej stronie. Zawsze można kliknąć przycisk **Przywróć domyślne** aby wrócić do domyślne kolory dla wybranego motywu.
 
@@ -105,7 +105,7 @@ Aby skonfigurować hostowanej interfejsu użytkownika dla aplikacji sieci web, w
 > [!NOTE]
 > Po wprowadzeniu dowolnych zmian do konfiguracji niestandardowej hostowanej interfejsu użytkownika w okienku po prawej stronie zawiera odwołanie w visual zmian wprowadzonych. Wyniki wyszukiwania w wyświetlonej nie są rzeczywiste wyniki dla wystąpienia.
 
-[!INCLUDE[publish or revert](./includes/publish-revert.md)]
+[!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
 ## <a name="consume-custom-ui"></a>Używanie niestandardowego interfejsu użytkownika
 
@@ -143,5 +143,5 @@ Aby uzyskać dodatkowe informacje, w tym niestandardowy identyfikator konfigurac
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Korzystanie ze znaczników dekoracji, aby wyróżnić tekst](./hit-highlighting.md)
-- [Strona stron sieci Web](./page-webpages.md)
+- [Wyróżnianie tekstu za pomocą znaczników dekoracji](./hit-highlighting.md)
+- [Dzielenie na strony wyników wyszukiwania stron internetowych](./page-webpages.md)

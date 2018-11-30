@@ -15,12 +15,12 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: bcdc665c59a900d4c57d03140654fffec26af0eb
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 7f653eca0c768cc35df039cbd51153484710d80a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706759"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422257"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debugowanie opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure Active Directory
 
@@ -75,7 +75,7 @@ Aby rozwiązać problem bez konieczności instalowania MyApps bezpiecznego logow
     - Oświadczenie identyfikuje główną przyczynę problemu.
 2.  Wróć do usługi Azure AD i Znajdź **Test rejestracji jednokrotnej** bloku.
 3.  W polu tekstowym powyżej **Uzyskaj wskazówki dotyczące rozwiązywania**, Wklej komunikat o błędzie.
-3.  Kliknij przycisk **zapoznaj się ze wskazówkami rozpoznawania** do wyświetlenia kroki dotyczące rozwiązania tego problemu. Wytyczne mogą wymagać informacji z żądania SAML lub odpowiedzi SAML. Jeśli nie używasz MyApps bezpiecznego logowania rozszerzenia, możesz potrzebować narzędzia takie jak [Fiddler](http://www.telerik.com/fiddler) można pobrać żądanie języka SAML i odpowiedzi.
+3.  Kliknij przycisk **zapoznaj się ze wskazówkami rozpoznawania** do wyświetlenia kroki dotyczące rozwiązania tego problemu. Wytyczne mogą wymagać informacji z żądania SAML lub odpowiedzi SAML. Jeśli nie używasz MyApps bezpiecznego logowania rozszerzenia, możesz potrzebować narzędzia takie jak [Fiddler](https://www.telerik.com/fiddler) można pobrać żądanie języka SAML i odpowiedzi.
 4.  Sprawdź, czy miejsce docelowe w żądaniu języka SAML odpowiada SAML pojedynczego logowania jednokrotnego adresu URL usługi uzyskany z usługi Azure Active Directory
 5.  Sprawdź, czy wystawcy żądania języka SAML jest taki sam identyfikator, które zostały skonfigurowane dla aplikacji w usłudze Azure Active Directory. Usługa Azure AD używa wystawca do znajdowania aplikacji w Twoim katalogu.
 6.  Sprawdź, czy AssertionConsumerServiceURL jest, gdy aplikacja oczekuje otrzymać SAML token z usługi Azure Active Directory. Wartość tę można skonfigurować w usłudze Azure Active Directory, ale nie jest to konieczne, jeśli jest on częścią żądania języka SAML.
@@ -90,7 +90,7 @@ Aby naprawić błąd:
 1. Jeśli aplikacja znajduje się w galerii usługi Azure AD, sprawdź, czy zostały wykonane wszystkie kroki integracji aplikacji z usługą Azure AD. Aby uzyskać instrukcje dotyczące integracji aplikacji, zobacz [listę samouczki integracji aplikacji SaaS](../saas-apps/tutorial-list.md).
 2. Pobrać odpowiedzi SAML.
     - Jeśli zainstalowano rozszerzenie Secure Moje aplikacje logowania, z **Test rejestracji jednokrotnej** bloku kliknij **pobrać odpowiedzi SAML**.
-    - Jeśli rozszerzenie nie jest zainstalowany, użyj narzędzia takiego jak [Fiddler](http://www.telerik.com/fiddler) można pobrać odpowiedzi SAML. 
+    - Jeśli rozszerzenie nie jest zainstalowany, użyj narzędzia takiego jak [Fiddler](https://www.telerik.com/fiddler) można pobrać odpowiedzi SAML. 
 3. Zwróć uwagę, te elementy w tokenie języka SAML odpowiedzi:
     - Unikatowy identyfikator użytkownika, wartość NameID i format
     - Oświadczeń wystawionych w tokenie

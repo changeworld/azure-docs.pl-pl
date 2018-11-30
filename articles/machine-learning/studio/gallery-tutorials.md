@@ -1,5 +1,5 @@
 ---
-title: Samouczki platformy Azure z galerii sztucznej Inteligencji | Dokumentacja firmy Microsoft
+title: Samouczki Galeria sztucznej Inteligencji platformy Azure — usłudze Azure Machine Learning Studio | Dokumentacja firmy Microsoft
 description: Odnajdywanie i udostępnianie samouczki w galerii sztucznej Inteligencji platformy Azure.
 services: machine-learning
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 289590ddda878a9a14a72d4366f92a6444699a64
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: ea0b6e3a4275c2d09c76bd57ec4e838413638d6e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265053"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311827"
 ---
 # <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>Odnajdywanie i udostępnianie samouczki w galerii Azure AI
 
@@ -53,7 +53,7 @@ Samouczek można dodać do galerii, aby pomagać innym użytkownikom rozwiązani
 
 3. Wybierz pozycję **New Item** (Nowy element).
   
-    ![Wybierz pozycję "Nowy element"](./media/gallery-collections/click-new-item.png)
+    ![Wybieranie pozycji „New Item” (Nowy element)](./media/gallery-collections/click-new-item.png)
 
 4. Na **opis** strony dla **typu elementu**, wybierz opcję **samouczek**. Wprowadź nazwę dla krótki samouczek, szczegółowy opis, a wszelkie tagi, które mogą pomóc innym użytkownikom znaleźć samouczek.
   

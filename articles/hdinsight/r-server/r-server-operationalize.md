@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 3f93f96c6c9fc551b8b66167eab58861b0ac0b52
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ce701c029c63256714452aa13f646af77991cb67
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005958"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496918"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operacjonalizowanie klastra usługi ML w usłudze Azure HDInsight
 
@@ -79,9 +79,9 @@ Po zastosowaniu klastra usługi ML w HDInsight przeprowadzenie modelowania danyc
 
     d. Z opcji menu przedstawione, wprowadź **E** wróć do menu głównego, a następnie wprowadź **8** do Zamknij narzędzie administracyjne.
 
-### <a name="long-delays-when-consuming-web-service-on-spark"></a>Duże opóźnienia podczas używania usługi sieci web na platformie Spark
+### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Duże opóźnienia podczas używania usługi sieci web na platformie Apache Spark
 
-Jeśli wystąpią duże opóźnienia podczas próby korzystania z usługi internetowej utworzonej za pomocą funkcji mrsdeploy w ramach kontekstu obliczeniowego platformy Spark, może być konieczne dodanie niektórych brakujących folderów. Aplikacja Spark należy do użytkownika o nazwie „*rserve2*” zawsze wtedy, gdy jest wywoływana z usługi internetowej przy użyciu funkcji mrsdeploy. Aby obejść ten problem:
+Jeśli wystąpią duże opóźnienia podczas próby korzystania z usługi internetowej utworzonej za pomocą funkcji mrsdeploy w Apache Spark kontekstu obliczeniowego, może być konieczne dodanie niektórych brakujących folderów. Aplikacja Spark należy do użytkownika o nazwie „*rserve2*” zawsze wtedy, gdy jest wywoływana z usługi internetowej przy użyciu funkcji mrsdeploy. Aby obejść ten problem:
 
     # Create these required folders for user 'rserve2' in local and hdfs:
 
@@ -139,7 +139,7 @@ Skalowanie węzłów obliczeniowych, należy najpierw likwidowanie węzłów pro
 
 ### <a name="step-1-decommission-the-worker-nodes"></a>Krok 1: Likwidowanie węzłów procesu roboczego
 
-Klaster usługi ML nie jest zarządzane za pomocą usługi YARN. Jeśli węzły procesu roboczego nie zostaną zlikwidowane, Menedżer zasobów usługi YARN nie działa zgodnie z oczekiwaniami, ponieważ nie ma informacji o znał zasobów zajętych przez serwer. Aby tego uniknąć, zalecamy zlikwidowanie węzłów procesu roboczego przed przystąpieniem do skalowania węzłów obliczeniowych na zewnątrz.
+Klaster usługi ML nie odbywa się za pośrednictwem [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html). Jeśli węzły procesu roboczego nie zostaną zlikwidowane, Menedżer zasobów usługi YARN nie działa zgodnie z oczekiwaniami, ponieważ nie ma informacji o znał zasobów zajętych przez serwer. Aby tego uniknąć, zalecamy zlikwidowanie węzłów procesu roboczego przed przystąpieniem do skalowania węzłów obliczeniowych na zewnątrz.
 
 Wykonaj następujące kroki, aby zlikwidować węzły procesu roboczego:
 

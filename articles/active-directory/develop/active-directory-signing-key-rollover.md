@@ -16,18 +16,18 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: eaaeaf1b37c0d732d8d0009ad5a66f2118674b66
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: e00591338fd09cbba6d97e6affebc9dce2399f7c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240464"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423766"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Przerzucanie klucza w usłudze Azure Active Directory podpisywania
 W tym artykule opisano, co musisz wiedzieć o publiczne klucze, które są używane w usłudze Azure Active Directory (Azure AD) do podpisywania tokenów zabezpieczających. Należy zauważyć, że te przerzucania kluczy w regularnych odstępach czasu, a w nagłych wypadkach można od razu przenoszone. Wszystkie aplikacje, które używają usługi Azure AD powinien móc programowo obsługuje procesu przerzucania klucza lub ustanowienia okresowe ręczne Przerzucanie procesu. Kontynuuj czytanie, aby zrozumieć, jak działają klawisze jak ocenić wpływ przerzucania do aplikacji i jak zaktualizować aplikację lub ustanowienia procesu okresowe ręczne Przerzucanie do obsługi Przerzucanie klucza, jeśli to konieczne.
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Omówienie kluczy podpisywania w usłudze Azure AD
-Usługa Azure AD używa kryptografii klucza publicznego, w oparciu o standardy branżowe, aby ustanowić zaufanie między sobą i aplikacje, które go używają. W praktyce, to działa w następujący sposób: Usługa Azure AD używa klucza podpisywania, który składa się z pary kluczy publicznych i prywatnych. Po zalogowaniu się użytkownika do aplikacji, która używa usługi Azure AD do uwierzytelniania usługi Azure AD tworzy token zabezpieczający, który zawiera informacje o użytkowniku. Ten token jest podpisany przez usługę Azure AD za pomocą jego klucza prywatnego, przed wysłaniem go do aplikacji. Aby sprawdzić, czy token jest prawidłowy i pochodzącej z usługi Azure AD, aplikacja musi go zweryfikować podpisu tokenu przy użyciu klucza publicznego, udostępniane przez usługę Azure AD, który znajduje się w ramach dzierżawy [dokument odnajdywania protokołu OpenID Connect](http://openid.net/specs/openid-connect-discovery-1_0.html) lub SAML / WS-Fed [dokument metadanych Federacji](azure-ad-federation-metadata.md).
+Usługa Azure AD używa kryptografii klucza publicznego, w oparciu o standardy branżowe, aby ustanowić zaufanie między sobą i aplikacje, które go używają. W praktyce, to działa w następujący sposób: Usługa Azure AD używa klucza podpisywania, który składa się z pary kluczy publicznych i prywatnych. Po zalogowaniu się użytkownika do aplikacji, która używa usługi Azure AD do uwierzytelniania usługi Azure AD tworzy token zabezpieczający, który zawiera informacje o użytkowniku. Ten token jest podpisany przez usługę Azure AD za pomocą jego klucza prywatnego, przed wysłaniem go do aplikacji. Aby sprawdzić, czy token jest prawidłowy i pochodzącej z usługi Azure AD, aplikacja musi go zweryfikować podpisu tokenu przy użyciu klucza publicznego, udostępniane przez usługę Azure AD, który znajduje się w ramach dzierżawy [dokument odnajdywania protokołu OpenID Connect](https://openid.net/specs/openid-connect-discovery-1_0.html) lub SAML / WS-Fed [dokument metadanych Federacji](azure-ad-federation-metadata.md).
 
 Ze względów bezpieczeństwa usługa Azure AD podpisywania kluczy ustala w regularnych odstępach czasu, a w przypadku sytuacji awaryjnej można jest przenoszone natychmiast. Każda aplikacja, która integruje się z usługą Azure AD powinna być przygotowana do obsługi zdarzenia Przerzucanie klucza, niezależnie od tego, jak często występuje. Jeśli nie, a aplikacja podejmują próbę użycia wygasłych klucza można zweryfikować podpisu tokenu, żądanie logowania nie powiedzie się.
 

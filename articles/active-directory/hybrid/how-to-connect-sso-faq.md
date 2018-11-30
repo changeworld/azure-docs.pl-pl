@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e3f08b80b891ad277794ae5a07c3662dab2f2c16
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: e47dcda90682bd1f83dbb5fdc6a106f80853d2d0
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687456"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424837"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne: często zadawane pytania
 
@@ -34,7 +34,7 @@ Bezproblemowe logowanie Jednokrotne może być łączone z albo [synchronizacji 
 
 Bezproblemowe logowanie Jednokrotne jest bezpłatną funkcją, i nie wymagają żadnych płatnej wersji usługi Azure AD z niego korzystać.
 
-## <a name="is-seamless-sso-available-in-the-microsoft-azure-germany-cloudhttpwwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>Jest dostępna w bezproblemowe logowanie Jednokrotne [chmury Microsoft Azure (Niemcy)](http://www.microsoft.de/cloud-deutschland) i [chmury Microsoft Azure dla instytucji rządowych](https://azure.microsoft.com/features/gov/)?
+## <a name="is-seamless-sso-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>Jest dostępna w bezproblemowe logowanie Jednokrotne [chmury Microsoft Azure (Niemcy)](https://www.microsoft.de/cloud-deutschland) i [chmury Microsoft Azure dla instytucji rządowych](https://azure.microsoft.com/features/gov/)?
 
 Nie. Bezproblemowe logowanie Jednokrotne jest dostępna tylko w na całym świecie wystąpienia usługi Azure AD.
 

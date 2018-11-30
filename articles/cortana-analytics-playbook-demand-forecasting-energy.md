@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 3f45f062cabaf31a10f24b01583575f5066bdaaf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 195776cda0005b3a79aa82220660fcc328f6ee98
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231536"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426258"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Podręcznik dotyczący szablonu rozwiązań analizy Cortany na prognozowaniu popytu energii
 ## <a name="executive-summary"></a>Podsumowanie dla kierownictwa
@@ -122,7 +122,7 @@ Jak wynika z tej tabeli, bardzo ważne jest rozróżnienie między krótko- i d�
 ### <a name="example-use-case-1-esmart-systems--overload-optimization"></a>Przykład użycia przypadek 1: eSmart systemów — Optymalizacja przeciążenia
 Ważną rolę z [inteligentne siatki](https://en.wikipedia.org/wiki/Smart_grid) jest dynamiczne i nieustannie optymalizacji i dostosować w przypadku zmiany wzorców użycia. Krótkookresowych zmian, które głównie są spowodowane przez wahania temperatury mogą mieć wpływ na zużycie energii (*np.*, większe możliwości jest używany dla warunku air lub ogrzewanie). W tym samym czasie zużycia energii jest także wpływ trendów długoterminowych. Mogą one obejmować efekty sezonowości, świąt narodowych, długoterminowego wzrostu użycia i jeszcze economic czynników, takich jak index konsumenta, cena ropa naftowa i PKB.
 
-W tym przypadku użycia [eSmart](http://www.esmartsystems.com/) postanowiła wdrożyć rozwiązanie oparte na chmurze, który umożliwia prognozowanie tendencje sytuacji przeciążenia, w dowolnym danym Podstacja siatki. W szczególności eSmart chciała zidentyfikować podstacje, które mogą mieć przeciążenia w ciągu godziny, więc natychmiastowych akcji może uznać, aby uniknąć lub rozwiązać ten problem.
+W tym przypadku użycia [eSmart](https://www.esmartsystems.com/) postanowiła wdrożyć rozwiązanie oparte na chmurze, który umożliwia prognozowanie tendencje sytuacji przeciążenia, w dowolnym danym Podstacja siatki. W szczególności eSmart chciała zidentyfikować podstacje, które mogą mieć przeciążenia w ciągu godziny, więc natychmiastowych akcji może uznać, aby uniknąć lub rozwiązać ten problem.
 
 Dokładne i szybkiego wykonywania prognozowania wymaga wykonania trzech modeli predykcyjnych:
 
@@ -365,7 +365,7 @@ Gdy będziemy mieć zająć fazy modelowania i sprawdzone wydajnością modeli, 
 W kontekście prognozy popytu energii naszym celem jest wywołania prognoz ciągłe i okresowe przy jednoczesnym zapewnieniu, że aktualnych danych jest dostępny dla modelu i że prognozowanych dane są wysyłane do klienta odbierająca komunikaty.
 
 ### <a name="web-services-deployment"></a>Wdrażanie usługi sieci Web
-Główny blok konstrukcyjny możliwych do wdrożenia w usłudze Azure ML to usługa sieci web. Jest to najbardziej skutecznym sposobem, aby umożliwić użycie modelu predykcyjnego w chmurze. Usługa sieci Web hermetyzuje modelu i otacza go za pomocą [zgodne ze specyfikacją REST](http://www.restapitutorial.com/) interfejsu API (Application Programming Interface). Interfejs API może służyć jako część żadnego kodu klienta, jak pokazano na poniższym diagramie.
+Główny blok konstrukcyjny możliwych do wdrożenia w usłudze Azure ML to usługa sieci web. Jest to najbardziej skutecznym sposobem, aby umożliwić użycie modelu predykcyjnego w chmurze. Usługa sieci Web hermetyzuje modelu i otacza go za pomocą [zgodne ze specyfikacją REST](https://www.restapitutorial.com/) interfejsu API (Application Programming Interface). Interfejs API może służyć jako część żadnego kodu klienta, jak pokazano na poniższym diagramie.
 
 ![Firma Microsoft, wdrożenia i użycia usługi](media/cortana-analytics-playbook-demand-forecasting-energy/web-service-deployment-and-consumption.png)
 

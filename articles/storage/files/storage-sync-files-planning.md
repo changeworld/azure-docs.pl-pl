@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 11/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a2864ca743adf4ced1418630940146fed21b7fd5
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 89ab5ecb4e1a6a39e785a51c61e1344631b1f394
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625304"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335184"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -109,10 +109,11 @@ Aby wyświetlić wyniki w formacie CSV:
 ```
 
 ### <a name="system-requirements"></a>Wymagania systemu
-- Serwer z systemem Windows Server 2012 R2 lub Windows Server 2016:
+- Serwer z systemem Windows Server 2012 R2, Windows Server 2016 lub Windows Server 2019:
 
     | Wersja | Obsługiwane jednostki SKU | Obsługiwane opcje wdrażania |
     |---------|----------------|------------------------------|
+    | System Windows Server 2019 r | Wersja Datacenter i Standard | Pełne (serwera z interfejsem użytkownika) |
     | Windows Server 2016 | Wersja Datacenter i Standard | Pełne (serwera z interfejsem użytkownika) |
     | Windows Server 2012 R2 | Wersja Datacenter i Standard | Pełne (serwera z interfejsem użytkownika) |
 
@@ -198,10 +199,10 @@ Rozwiązania firmy Microsoft wewnętrznych oprogramowania antywirusowego, usług
 ### <a name="backup-solutions"></a>Rozwiązania tworzenia kopii zapasowych
 Takich jak rozwiązania antywirusowe rozwiązania tworzenia kopii zapasowych może spowodować wycofanie plików warstwowych. Zalecamy używanie rozwiązania tworzenia kopii zapasowych w chmurze do tworzenia kopii zapasowej udziału plików platformy Azure, a nie lokalnie instalowanym produktem kopii zapasowej.
 
-Jeśli używasz rozwiązania tworzenia kopii zapasowych w środowisku lokalnym, należy wykonać kopie zapasowe na serwerze w grupie synchronizacji, która ma obsługi warstw wyłączone w chmurze. Podczas przywracania plików w lokalizacji punktu końcowego serwera, użyj opcji Przywracanie na poziomie pliku. Przywróconych plików zostaną zsynchronizowane na wszystkich punktów końcowych w grupie synchronizacji, a istniejące pliki zostaną zastąpione wersją przywróconej z kopii zapasowej.
+Jeśli używasz rozwiązania tworzenia kopii zapasowych w środowisku lokalnym, należy wykonać kopie zapasowe na serwerze w grupie synchronizacji, która ma obsługi warstw wyłączone w chmurze. Podczas przywracania, użyj opcji przywracania na poziomie woluminu lub poziomie plików. Przywrócić za pomocą opcji przywracania na poziomie pliku pliki będą synchronizowane z wszystkich punktów końcowych w grupie synchronizacji, a istniejące pliki zostaną zastąpione wersją przywróconej z kopii zapasowej.  Przywracanie na poziomie woluminu nie spowoduje zastąpienia nowsze wersje plików w udziale plików platformy Azure lub inne punkty końcowe serwera.
 
 > [!Note]  
-> Wykrywaniem aplikacji, na poziomie woluminu zera (BMR) Przywracanie opcji może spowodować nieoczekiwane rezultaty i oraz nie są obecnie obsługiwane. Przywracanie, te opcje będą obsługiwane w przyszłych wydaniach.
+> Przywracanie zera (BMR) może spowodować nieoczekiwane rezultaty i nie jest obecnie obsługiwane.
 
 ### <a name="encryption-solutions"></a>Rozwiązań do szyfrowania
 Obsługa rozwiązań do szyfrowania zależy od tego, jak są one wykonywane. Wiadomo, że usługa Azure File Sync pracować:

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: d8ab61d99b617f21557b6f1ef476418e25bcee55
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1d5a6dc6db3eaa46f6f2bd9944af7aefe759fbc7
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016934"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496118"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Łączenie usługi HDInsight z siecią lokalną
 
@@ -321,12 +321,12 @@ Na bezpośrednie łączenie się z HDInsight za pośrednictwem sieci wirtualnej,
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-2. Aby określić numer portu, którego usługa jest dostępna w, zobacz [porty używane przez usługi Hadoop w HDInsight](./hdinsight-hadoop-port-settings-for-services.md) dokumentu.
+2. Aby określić numer portu, którego usługa jest dostępna w, zobacz [porty używane przez usługi Apache Hadoop w HDInsight](./hdinsight-hadoop-port-settings-for-services.md) dokumentu.
 
     > [!IMPORTANT]
     > Niektóre usługi do węzłów głównych w serwisie tylko są aktywne na jednym węźle naraz. Jeśli zostanie podjęta, uzyskiwanie dostępu do usługi w jednym węźle głównym i zakończy się niepowodzeniem, przełącz się do innego węzła głównego.
     >
-    > Na przykład Ambari jest tylko aktywne na jednego węzła głównego w danym momencie. Jeśli zostanie podjęta, uzyskiwanie dostępu do systemu Ambari na jednego węzła głównego i zwraca błąd 404, następnie działa on w innym węźle głównym.
+    > Na przykład Apache Ambari służy tylko aktywne na jednego węzła głównego w danym momencie. Jeśli zostanie podjęta, uzyskiwanie dostępu do systemu Ambari na jednego węzła głównego i zwraca błąd 404, następnie działa on w innym węźle głównym.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

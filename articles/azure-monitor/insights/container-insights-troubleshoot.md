@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 555b64a87236f1f3b80497abf9fc7d34fca596a0
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: da35f88550bb7bd1a4543f03936dcd52ddd926d9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715611"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308363"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers-preview"></a>Rozwiązywanie problemów z usługi Azure Monitor dla kontenerów (wersja zapoznawcza)
 
@@ -99,7 +99,7 @@ Poniższa tabela zawiera podsumowanie znanych błędów, które mogą wystąpić
 | Komunikaty o błędach  | Akcja |  
 | ---- | --- |  
 | Komunikat o błędzie `No data for selected filters`  | Może potrwać kilka nawiązać monitorowania przepływu danych w przypadku nowo utworzonego klastrów. Poczekaj co najmniej 10 do 15 minut, zanim dane zostaną wyświetlone dla klastra. |   
-| Komunikat o błędzie `Error retrieving data` | Gdy klaster usługi Azure Kubenetes Service to skonfigurowanie do monitorowania kondycji i wydajności, połączenie zostaje nawiązane między klastra i obszaru roboczego usługi Azure Log Analytics. Obszar roboczy usługi Log Analytics służy do przechowywania wszystkich danych monitorowania dla klastra. Ten błąd może wystąpić, gdy obszar roboczy usługi Log Analytics został usunięty lub utracony. Sprawdź, czy Twój obszar roboczy jest dostępna, przeglądając [zarządzanie dostępem](../../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json#workspace-information). Jeśli brakuje obszaru roboczego, należy ponownie dołączyć klastra za pomocą usługi Azure Monitor dla kontenerów. Składanie-dołączania, konieczne będzie [wyłączyć](/container-insights-optout.md?toc=%2fazure%2fmonitoring%2ftoc.json) monitorowania dla klastra i [Włącz](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-for-a-new-cluster) ponownie do usługi Azure Monitor dla kontenerów. |  
+| Komunikat o błędzie `Error retrieving data` | Gdy klaster usługi Azure Kubenetes Service to skonfigurowanie do monitorowania kondycji i wydajności, połączenie zostaje nawiązane między klastra i obszaru roboczego usługi Azure Log Analytics. Obszar roboczy usługi Log Analytics służy do przechowywania wszystkich danych monitorowania dla klastra. Ten błąd może wystąpić, gdy obszar roboczy usługi Log Analytics został usunięty lub utracony. Sprawdź, czy Twój obszar roboczy jest dostępna, przeglądając [zarządzanie dostępem](../../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json#workspace-information). Jeśli brakuje obszaru roboczego, należy ponownie dołączyć klastra za pomocą usługi Azure Monitor dla kontenerów. Składanie-dołączania, konieczne będzie [wyłączyć](container-insights-optout.md) monitorowania dla klastra i [Włącz](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-for-a-new-cluster) usługi Azure Monitor dla kontenerów ponownie. |  
 | `Error retrieving data` Po dodaniu usługi Azure Monitor dla kontenerów za pomocą interfejsu wiersza polecenia az aks | Podczas dołączania za pomocą `az aks cli`, bardzo rzadko, usługi Azure Monitor dla kontenerów może nie być poprawnie dołączone. Sprawdź, czy rozwiązanie jest dołączona. Aby to zrobić, przejdź do obszaru roboczego usługi Log Analytics i sprawdzić, czy rozwiązanie jest dostępne, wybierając **rozwiązania** w okienku po lewej stronie. Aby rozwiązać ten problem, należy ponownie wdrożyć rozwiązanie, postępując zgodnie z instrukcjami wyświetlanymi [sposób wdrażania usługi Azure Monitor dla kontenerów](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json) |  
 
 Aby pomóc w zdiagnozowaniu problemu, udostępniliśmy skrypt rozwiązywania problemów dostępne [tutaj](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script).  

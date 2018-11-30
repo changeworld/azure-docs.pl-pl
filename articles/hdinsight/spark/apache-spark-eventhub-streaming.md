@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: eb2145d2e7b787bafa0b546449282454f7059999
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 537ae87fa694a8b0e82cb2830dd8ad1f62986093
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283414"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496423"
 ---
-# <a name="tutorial-process-tweets-using-azure-event-hubs-and-spark-in-hdinsight"></a>Samouczek: Proces opublikuje za pomocą usługi Azure Event Hubs i platformy Spark w HDInsight
+# <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Samouczek: Proces opublikuje przy użyciu usługi Azure Event Hubs i Apache Spark w HDInsight
 
-W tym samouczku dowiesz się, jak utworzyć Apache Spark streaming aplikacji tweety są wysyłane do Centrum zdarzeń platformy Azure w celu utworzenia innej aplikacji do odczytywania tweetów z Centrum zdarzeń. Aby uzyskać szczegółowy opis przesyłania strumieniowego platformy Spark, zobacz [platformy Apache Spark streaming Przegląd](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview). HDInsight udostępnia te same funkcje przesyłania strumieniowego klastra Spark na platformie Azure.
+W tym samouczku dowiesz się, jak utworzyć [platformy Apache Spark](https://spark.apache.org/) przesyłania strumieniowego aplikacji tweety są wysyłane do Centrum zdarzeń platformy Azure i utworzyć inną aplikację do odczytywania tweetów z Centrum zdarzeń. Aby uzyskać szczegółowy opis przesyłania strumieniowego platformy Spark, zobacz [platformy Apache Spark streaming Przegląd](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview). HDInsight udostępnia te same funkcje przesyłania strumieniowego klastra Spark na platformie Azure.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -102,7 +102,7 @@ To Centrum zdarzeń jest służy do przechowywania tweetów.
 
 Musisz utworzyć notesu programu Jupyter i nadaj mu **SendTweetsToEventHub**. 
 
-1. Uruchom następujący kod, aby dodać zewnętrznych bibliotekach Maven:
+1. Uruchom następujący kod, aby dodać zewnętrznych bibliotekach narzędzia Apache Maven:
 
     ```
     %%configure
@@ -184,7 +184,7 @@ Musisz utworzyć notesu programu Jupyter i nadaj mu **SendTweetsToEventHub**.
 
 Należy utworzyć inny notesu Jupyter i nadaj mu **ReadTweetsFromEventHub**. 
 
-1. Uruchom następujący kod, aby dodać zewnętrznej biblioteki Maven:
+1. Uruchom następujący kod, aby dodać zewnętrznej biblioteki narzędzia Apache Maven:
 
     ```
     %%configure -f

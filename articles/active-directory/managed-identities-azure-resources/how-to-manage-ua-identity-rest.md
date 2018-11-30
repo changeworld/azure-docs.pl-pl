@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/26/2018
 ms.author: daveba
-ms.openlocfilehash: 4bf77cd34ba985dfcfa568db0543150c0510c406
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 86d2f013567d768437e589df366c5c131e1bcf50
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300102"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421917"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Utwórz listę lub usunąć przypisanych przez użytkownika tożsamości zarządzanej przy użyciu wywołań interfejsu API REST
 
@@ -44,8 +44,6 @@ W tym artykule dowiesz się, jak utworzyć, listy i Usuń przypisanych przez uż
 
 Aby utworzyć przypisanych przez użytkownika tożsamości zarządzanej, Twoje konto musi [Współautor tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) przypisania roli.
 
-Aby utworzyć przypisanych przez użytkownika tożsamości zarządzanej, użyj następującego żądania programu CURL do interfejsu API usługi Azure Resource Manager. Zastąp `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<USER ASSIGNED IDENTITY NAME>`,`<LOCATION>`, i `<ACCESS TOKEN>` wartości wybranymi samodzielnie wartościami:
-
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 ```bash
@@ -54,31 +52,61 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 ation": "<LOCATION>"}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
 ```
 
+```HTTP
+PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
+s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>?api-version=2015-08-31-preview HTTP/1.1
+```
+
+**Nagłówki żądania**
+
+|Nagłówek żądania  |Opis  |
+|---------|---------|
+|*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+|*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.        |
+
+**Treść żądania**
+
+|Name (Nazwa)  |Opis  |
+|---------|---------|
+|location     | Wymagany. Lokalizacja zasobu.        |
+
 ## <a name="list-user-assigned-managed-identities"></a>Lista zarządzanych tożsamości przypisanych przez użytkownika
 
 Na liście odczytu przypisanych przez użytkownika tożsamości zarządzanej, Twoje konto musi [Operator tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-operator) lub [Współautor tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) przypisania roli.
 
-Aby wyświetlić listę zarządzanych tożsamości przypisanych przez użytkownika, użyj następującego żądania programu CURL do interfejsu API usługi Azure Resource Manager. Zastąp `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, i `<ACCESS TOKEN>` wartości wybranymi samodzielnie wartościami:
-
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2015-08-31-preview' -H "Authorization: Bearer <ACCESS TOKEN>"
 ```
+
+```HTTP
+GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2015-08-31-preview HTTP/1.1
+```
+
+|Nagłówek żądania  |Opis  |
+|---------|---------|
+|*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+|*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.        |
+
 ## <a name="delete-a-user-assigned-managed-identity"></a>Usuwanie tożsamości przypisanych przez użytkownika zarządzanej
 
 Aby usunąć przypisanych przez użytkownika tożsamości zarządzanej, Twoje konto musi [Współautor tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) przypisania roli.
 
-Aby usunąć tożsamości zarządzanej przypisanych przez użytkownika, użyj następującego żądania programu CURL do interfejsu API usługi Azure Resource Manager. Zastąp `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, i `<ACCESS TOKEN>` wartości parametrów własnymi wartościami:
-
 > [!NOTE]
-> Usuwanie tożsamości zarządzanej przypisanych przez użytkownika nie spowoduje usunięcia odwołania z dowolnego zasobu, który został przypisany do. Aby usunąć użytkownik przypisany zarządzanych z maszyny Wirtualnej przy użyciu programu CURL, zobacz [usuwanie tożsamości przypisanych przez użytkownika na Maszynie wirtualnej platformy Azure](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm).
+> Usuwanie tożsamości zarządzanej przypisanych przez użytkownika nie spowoduje usunięcia odwołania z dowolnego zasobu, który został przypisany do. Aby usunąć przypisanych do użytkowników zarządzanych Zobacz tożsamości z maszyny Wirtualnej przy użyciu programu CURL [usuwanie tożsamości przypisanych przez użytkownika na Maszynie wirtualnej platformy Azure](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm).
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>?api-version=2015-08-31-preview' -X DELETE -H "Authorization: Bearer <ACCESS TOKEN>"
 ```
 
+```HTTP
+DELETE https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616f423ca/resourceGroups/TestRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>?api-version=2015-08-31-preview HTTP/1.1
+```
+|Nagłówek żądania  |Opis  |
+|---------|---------|
+|*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
+|*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.        |
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać informacje dotyczące sposobu przypisywania tożsamości zarządzanej użytkownik przypisany do usługi Azure VM/VMSS przy użyciu programu CURL, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu wywołań interfejsu API REST](qs-configure-rest-vm.md#user-assigned-managed-identity) i [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej zestawu skalowania przy użyciu wywołań interfejsu API REST](qs-configure-rest-vmss.md#user-assigned-managed-identity).
-
-

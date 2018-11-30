@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: b6f6653381b5fcf80b9647c64334dfed1a2230bb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c6d5954ed3547666236130753dfd53d10475df43
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230856"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308992"
 ---
 # <a name="view-service-fabric-health-reports"></a>Wyświetlanie raportów o kondycji usługi Service Fabric
 Usługa Azure Service Fabric wprowadza [modelu kondycji](service-fabric-health-introduction.md) przy użyciu jednostek kondycji, na którym składników systemu i watchdogs można raportu lokalnego warunki, które są monitorowania. [Magazynu kondycji](service-fabric-health-introduction.md#health-store) agreguje wszystkie dane kondycji, aby określić, czy jednostki są w dobrej kondycji.
@@ -613,7 +613,7 @@ HealthStatistics      :
 ```
 
 ### <a name="rest"></a>REST
-Możesz uzyskać kondycję partycji za pomocą [żądanie GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition) lub [żądania POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition-by-using-a-health-policy) zawierającej zasady dotyczące kondycji, które opisano w treści.
+Możesz uzyskać kondycję partycji za pomocą [żądanie GET](/rest/api/servicefabric/sfclient-api-getpartitionhealth) lub [żądania POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition-by-using-a-health-policy) zawierającej zasady dotyczące kondycji, które opisano w treści.
 
 ## <a name="get-replica-health"></a>Pobierz kondycji repliki
 Zwraca kondycję repliki usługi stanowej lub wystąpienie usługi bezstanowej. Dane wejściowe:

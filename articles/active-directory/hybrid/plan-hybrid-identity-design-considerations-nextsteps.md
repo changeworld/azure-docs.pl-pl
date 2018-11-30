@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: eb3bd1b2186d323c5b9d10d89bb68c03bd2b84a8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a36dc0cd8148b8cf58729d2e8d22011e61140b0f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311829"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426349"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory hybrydowego tożsamości projektu dalej zagadnienia dotyczące kroki
 Po ukończeniu zdefiniowaniu wymagań i sprawdzeniu wszystkich opcji rozwiązania do zarządzania urządzeniami przenośnymi, możesz wykonać kolejne kroki w celu wdrożenia infrastruktury pomocniczej, który jest odpowiedni dla Ciebie i Twojej organizacji.
@@ -43,10 +43,10 @@ Pojęciach i procedurach planowania, wdrażania i zawartości administracyjnej s
 Monitorowanie następujących zasobów, często zawiera najnowsze wiadomości i aktualizacji dotyczących rozwiązania do zarządzania urządzeniami przenośnymi:
 
 * [Blog dotyczący pakietu Microsoft Enterprise Mobility](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
-* [Blog Microsoft In The Cloud](http://blogs.technet.com/b/in_the_cloud/)
-* [Blog usługi Microsoft Intune](http://blogs.technet.com/b/microsoftintune/)
-* [Blog programu Microsoft System Center Configuration Manager](http://blogs.technet.com/b/configurationmgr/)
-* [Blog zespołu programu Microsoft System Center Configuration Manager](http://blogs.technet.com/b/configmgrteam/)
+* [Blog Microsoft In The Cloud](https://blogs.technet.com/b/in_the_cloud/)
+* [Blog usługi Microsoft Intune](https://blogs.technet.com/b/microsoftintune/)
+* [Blog programu Microsoft System Center Configuration Manager](https://blogs.technet.com/b/configurationmgr/)
+* [Blog zespołu programu Microsoft System Center Configuration Manager](https://blogs.technet.com/b/configmgrteam/)
 
 ## <a name="see-also"></a>Zobacz także
 [Omówienie zagadnień dotyczących projektowania](plan-hybrid-identity-design-considerations-overview.md)

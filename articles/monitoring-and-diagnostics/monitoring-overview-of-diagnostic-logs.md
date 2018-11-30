@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 630c8e5f48ba475755c3c9ffe632fcba086437e4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1fc1d3b4418b178921dc32ee834342b75fa31f20
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983122"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311079"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Zbieranie i używanie dane dzienników z zasobów platformy Azure
 
@@ -45,7 +45,7 @@ Oto kilka rzeczy, które można zrobić za pomocą dzienników diagnostycznych:
 Można użyć konta magazynu lub przestrzeni nazw usługi Event Hubs, która nie znajduje się w tej samej subskrypcji co emitowane dzienniki. Użytkownik, który konfiguruje ustawienie, musi mieć odpowiedni dostęp RBAC do obu subskrypcji.
 
 > [!NOTE]
->  Obecnie nie można zarchiwizować dzienniki przepływu sieciowych do magazynu konta, do którego za zabezpieczonej sieci wirtualnej.
+>  Obecnie nie można zarchiwizować dzienniki przepływu sieciowych do konta magazynu, który znajduje się za zabezpieczonej sieci wirtualnej.
 
 > [!WARNING]
 > Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./monitor-diagnostic-logs-append-blobs.md) 

@@ -15,12 +15,12 @@ ms.date: 10/19/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: ad0ab8790c9d66dbba87d466e9661ef8cf33eef3
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 89852e90daa548dc82455cb6317d367b7423ba65
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456902"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425212"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Zdalny dostęp do programu SharePoint przy użyciu serwera Proxy aplikacji usługi Azure AD
 
@@ -119,7 +119,7 @@ Można ustawić nazwy SPN najłatwiej wykonać formatów nazwy SPN, które mogą
 1. Przejdź do witryny przy użyciu nazwy SPN z innego komputera.
  Po wykonaniu odpowiedni zestaw bilety protokołu Kerberos jest buforowana na maszynie. Bilety zawierają nazwę SPN w lokacji docelowej, które zostały wybrane.
 
-2. Nazwę SPN dla tej lokacji możesz ściągnąć przy użyciu narzędzia o nazwie [Klist](http://web.mit.edu/kerberos/krb5-devel/doc/user/user_commands/klist.html). W oknie polecenia, które działa w tym samym kontekście jako użytkownik, który uzyskał dostęp do witryny w przeglądarce uruchom następujące polecenie:
+2. Nazwę SPN dla tej lokacji możesz ściągnąć przy użyciu narzędzia o nazwie [Klist](https://web.mit.edu/kerberos/krb5-devel/doc/user/user_commands/klist.html). W oknie polecenia, które działa w tym samym kontekście jako użytkownik, który uzyskał dostęp do witryny w przeglądarce uruchom następujące polecenie:
 ```
 Klist
 ```

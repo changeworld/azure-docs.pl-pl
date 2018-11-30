@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: 65dd4b172c0913e11bb7f25909eb062e93a4a03a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e78f0d2012cf4f6152e69fff1bab04f827c0eef7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015234"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310892"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Jak skonfigurować platformy Apache Kafka w HDInsight w celu automatycznego tworzenia tematów
 
-Domyślnie platforma Kafka w HDInsight nie włącza tworzenie automatycznego tematu. Można włączyć automatycznego tworzenia tematów dla istniejących klastrów przy użyciu narzędzia Ambari. Można również włączyć automatycznego tworzenia tematów, podczas tworzenia nowego klastra platformy Kafka, przy użyciu szablonu usługi Azure Resource Manager.
+Domyślnie [platformy Apache Kafka](https://kafka.apache.org/) na HDInsight nie umożliwia tworzenie automatycznych tematu. Można włączyć automatycznego tworzenia tematów dla istniejących klastrów za pomocą [Apache Ambari](https://ambari.apache.org/). Można również włączyć automatycznego tworzenia tematów, podczas tworzenia nowego klastra platformy Kafka, przy użyciu szablonu usługi Azure Resource Manager.
 
-## <a name="ambari-web-ui"></a>Interfejs użytkownika sieci Web systemu Ambari
+## <a name="apache-ambari-web-ui"></a>Apache Ambari Web UI
 
 Aby włączyć Tworzenie automatycznego tematu w istniejącym klastrze przy użyciu interfejsu użytkownika sieci Web Ambari, użyj następujące czynności:
 
@@ -56,7 +56,7 @@ Aby włączyć Tworzenie automatycznego tematu w istniejącym klastrze przy uży
     ![Obraz przedstawiający wybór ponownego uruchomienia](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
 > [!NOTE]
-> Można również ustawić wartości Ambari za pomocą interfejsu API REST Ambari. Jest to zwykle trudniejsze, należy podjąć wiele wywołań REST, aby pobrać bieżącą konfigurację, zmodyfikować go, itp. Aby uzyskać więcej informacji, zobacz [HDInsight Zarządzanie klastrami przy użyciu interfejsu API REST Ambari](../hdinsight-hadoop-manage-ambari-rest-api.md) dokumentu.
+> Można również ustawić wartości Ambari za pomocą interfejsu API REST Ambari. Jest to zwykle trudniejsze, należy podjąć wiele wywołań REST, aby pobrać bieżącą konfigurację, zmodyfikować go, itp. Aby uzyskać więcej informacji, zobacz [HDInsight Zarządzanie klastrami przy użyciu interfejsu API Apache Ambari REST](../hdinsight-hadoop-manage-ambari-rest-api.md) dokumentu.
 
 ## <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
 
@@ -79,7 +79,7 @@ Podczas tworzenia klastra platformy Kafka, przy użyciu szablonu usługi Azure R
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym dokumencie przedstawiono sposób włączyć Tworzenie automatycznego tematu dla platformy Kafka w HDInsight. Aby dowiedzieć się więcej na temat pracy z platformą Kafka, zobacz następujące linki:
+W tym dokumencie przedstawiono sposób włączyć automatyczne tematu Tworzenie klastra Apache kafka w HDInsight. Aby dowiedzieć się więcej na temat pracy z platformą Kafka, zobacz następujące linki:
 
-* [Analizowanie dzienników Kafka](apache-kafka-log-analytics-operations-management.md)
-* [Replicate data between Kafka clusters (Replikowanie danych między klastrami Kafka)](apache-kafka-mirroring.md)
+* [Analizowanie dzienników platformy Apache Kafka](apache-kafka-log-analytics-operations-management.md)
+* [Replikuj dane między klastrami platformy Apache Kafka](apache-kafka-mirroring.md)

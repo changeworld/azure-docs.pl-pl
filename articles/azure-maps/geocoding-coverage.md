@@ -8,16 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3ab0edf4483763c1048b7026175ddce821624ac0
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 664d52a96f1e724502f82f5f72567f87c74e716b
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821110"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444260"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Pokrycie geokodowaniem usługi Azure Maps
 
 Podczas wyszukiwania lokalizacji za pomocą usługi Azure Maps, Usługa wyszukiwania przyjmuje wyszukiwane terminy i zwraca współrzędne długości i szerokości geograficznej w procesie zwanym geokodowania. Jednakże mapy nie ma takiego samego poziomu informacji i dokładność dla wszystkich regionów i krajów. Użyj w tym artykule, aby określić, jakiego rodzaju lokalizacji można wiarygodnie wyszukiwać w każdym regionie. 
+
+Możliwość geokodowania w kraju, zależy od zakresu danych podróży i dokładności geokodowania usługi geokodowania. Używane są następujące kategoryzacje Określ poziom obsługi geokodowania w każdym kraju.
+* **Adres punktów** — adresy danych może być rozpoznany Współrzędna szerokości/długości geograficznej w ramach działka adresu (właściwość granic). Czasami określane jako "Antenowej" dokładne. Jest to najwyższy poziom dokładności dostępnych adresów. 
+* **Lokalne numery** — adresy są interpolowane do domu Współrzędna szerokości/długości geograficznej.
+* **Poziom ulicy** — adresy są rozwiązywane do Współrzędna szerokości/długości geograficznej ulicy, która zawiera adres. Numer domu nie mogą być przetwarzane.
+* **Poziom Miasto** -Miasto nazw są obsługiwane.
 
 ## <a name="americas"></a>Ameryki
 
@@ -52,6 +58,7 @@ Podczas wyszukiwania lokalizacji za pomocą usługi Azure Maps, Usługa wyszukiw
 | Gwadelupa|                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Guam                                                |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Gwatemala                                           |                 |                |       ✓      |      ✓     |          ✓         |
+| Gujana        |                |             |           |      ✓     |                 |
 | Haiti                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Honduras                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Jamajka                                             |                 |                |       ✓      |      ✓     |          ✓         |
@@ -63,7 +70,7 @@ Podczas wyszukiwania lokalizacji za pomocą usługi Azure Maps, Usługa wyszukiw
 | Paragwaj                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Peru                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Portoryko                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Saint Barthélemy                                    |                 |                |       ✓      |      ✓     |          ✓         |
+| Saint-Barthélemy                                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Kitts i Nevis                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Lucia                                         |                 |                |              |      ✓     |          ✓         |
 | Saint-Martin                                        |                 |                |       ✓      |      ✓     |          ✓         |
@@ -101,6 +108,7 @@ Podczas wyszukiwania lokalizacji za pomocą usługi Azure Maps, Usługa wyszukiw
 | Wyspy Heard i McDonalda                   |                 |                |              |      ✓     |          ✓         |
 | Hongkong                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indonezja                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Indie       |        ✓        |        ✓       |       ✓      |      ✓     |                   |
 | Japonia                                               |                 |                |              |      ✓     |          ✓         |
 | Kiribati                                            |                 |                |              |      ✓     |          ✓         |
 | Laos                                                |                 |                |              |      ✓     |          ✓         |
@@ -113,8 +121,8 @@ Podczas wyszukiwania lokalizacji za pomocą usługi Azure Maps, Usługa wyszukiw
 | Nowa Kaledonia                                       |                 |                |              |      ✓     |          ✓         |
 | Nowa Zelandia                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Niue                                                |                 |                |              |      ✓     |          ✓         |
-| Wyspa Norfolk                                      |                 |                |              |      ✓     |          ✓         |
-| Koreańska Republika Ludowo-Demokratyczna                                         |                 |                |              |      ✓     |          ✓         |
+| Norfolk                                      |                 |                |              |      ✓     |          ✓         |
+| Korea Północna                                         |                 |                |              |      ✓     |          ✓         |
 | Mariany Północne                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Pakistan                                            |                 |                |              |      ✓     |          ✓         |
 | Palau |                 |                |              |      ✓     |          ✓         |

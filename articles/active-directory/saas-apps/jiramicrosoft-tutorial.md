@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/22/2018
 ms.author: jeedes
-ms.openlocfilehash: f3f7fc3b837dd4eef9bab8ff34a36329436bad9a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 608269a05ae1ed699954cd301aa03056e089fa8a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010732"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426105"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft"></a>Samouczek: Integracja usługi Azure Active Directory z logowania jednokrotnego SAML JIRA przez firmę Microsoft
 
@@ -154,11 +154,26 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     ![Konfigurowanie logowania jednokrotnego](./media/jiramicrosoft-tutorial/addon12.png)
 
-9. Po zainstalowaniu dodatku plug-in pojawia się w **użytkownik zainstalował** dodatki części **Zarządzanie dodatek** sekcji. Kliknij przycisk **Konfiguruj** do skonfigurowania nowej wtyczki.
+9. Do uruchamiania scenariusza lub moduł równoważenia obciążenia zwrotnego serwera proxy programu JIRA scenariusza, wykonaj następujące czynności:
+
+    > [!NOTE]
+    > Powinien być konfigurujesz serwer najpierw za pomocą poniższych instrukcji i zainstaluj wtyczkę.
+
+    a. Dodaj poniżej atrybutu w **łącznika** port w **server.xml** pliku aplikacji serwera programu JIRA.
+
+    `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
+
+    ![Konfigurowanie logowania jednokrotnego](./media/jiramicrosoft-tutorial/reverseproxy1.png)
+
+    b. Zmiana **podstawowy adres URL** w **ustawień systemowych** zgodnie z modułu równoważenia obciążenia/serwera proxy.
+
+    ![Konfigurowanie logowania jednokrotnego](./media/jiramicrosoft-tutorial/reverseproxy2.png)
+
+10. Po zainstalowaniu dodatku plug-in pojawia się w **użytkownik zainstalował** dodatki części **Zarządzanie dodatek** sekcji. Kliknij przycisk **Konfiguruj** do skonfigurowania nowej wtyczki.
 
     ![Konfigurowanie logowania jednokrotnego](./media/jiramicrosoft-tutorial/addon13.png)
 
-10. Wykonaj poniższe czynności na stronie konfiguracji:
+11. Wykonaj poniższe czynności na stronie konfiguracji:
 
     ![Konfigurowanie logowania jednokrotnego](./media/jiramicrosoft-tutorial/addon52.png)
 

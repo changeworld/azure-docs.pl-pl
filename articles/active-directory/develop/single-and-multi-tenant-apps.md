@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: 8986f18b9f1f2953ad0612679d31996628870cb1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a965cd70e3eba04f278cf432196b9386b537462d
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988227"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424344"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Dzierżawy w usłudze Azure Active Directory
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) organizuje obiektów, takich jak użytkownicy 
 
 ## <a name="who-can-sign-in-to-your-app"></a>Kto może logować się do aplikacji?
 
-Jeśli chodzi o tworzenie aplikacji, deweloperom możliwość konfigurowania aplikacji jako pojedynczej dzierżawy lub wielodostępne podczas rejestracji aplikacji w [witryny Azure portal](http://portal.azure.com).
+Jeśli chodzi o tworzenie aplikacji, deweloperom możliwość konfigurowania aplikacji jako pojedynczej dzierżawy lub wielodostępne podczas rejestracji aplikacji w [witryny Azure portal](https://portal.azure.com).
 * Aplikacje z jedną dzierżawą są dostępne tylko w dzierżawie, na których zostały one zarejestrowane w znany także jako swojej głównej dzierżawy.
 * Aplikacje z wieloma dzierżawami, są dostępne dla użytkowników w ich dzierżawy głównej i w innych dzierżaw.
 
@@ -37,7 +37,7 @@ W witrynie Azure portal można skonfigurować aplikację na pojedynczej dzierża
 
 | Grupy odbiorców | Jednym/wielu-tenant | Kto może się zarejestrować | 
 |----------|--------| ---------|
-| Konta, w tym katalogu tylko | Pojedyncza dzierżawa | Wszystkie konta użytkowników i gościa w katalogu, można użyć do aplikacji lub interfejsu API.<br>*Użyj tej opcji, jeśli sprecyzowaną grupę odbiorców jest wewnętrzną aplikacją organizacji.* |
+| Konta, w tym katalogu tylko | Pojedyncza dzierżawa | Wszystkie konta użytkowników i gości w tym katalogu mogą korzystać z aplikacji lub interfejsu API.<br>*Użyj tej opcji, jeśli sprecyzowaną grupę odbiorców jest wewnętrzną aplikacją organizacji.* |
 | Konta w każdym katalogiem usługi Azure AD | Wiele dzierżaw | Wszyscy użytkownicy i gości za pomocą konta służbowego lub szkolnego, od firmy Microsoft, można użyć do aplikacji lub interfejsu API. Obejmuje to szkół i firm, które korzysta z usługi Office 365.<br>*Użyj tej opcji, jeśli sprecyzowaną grupę odbiorców jest firm i klientów edukacyjnych.* |
 | Konta w dowolnym katalogu usługi Azure AD i osobistych kont Microsoft (np. Skype, Xbox, Outlook.com) | Wiele dzierżaw | Wszyscy użytkownicy z pracy lub szkoły lub osobiste konto Microsoft służy do aplikacji lub interfejsu API. Zawiera szkół i firm korzystających z usługi Office 365, a także konta osobiste, które są używane do logowania do usług, takich jak Xbox i Skype.<br>*Użyj tej opcji pod kątem możliwie najszerszej zbiór kont Microsoft.* | 
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: a5a2300bd0b768b4a29b01e75f9558c4923ac11c
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: eea981800147f24025e01826f7550a95041c107f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395132"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427305"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>Włącz praktyki bezpiecznego wdrażania w usłudze Azure Deployment Manager (prywatna wersja zapoznawcza)
 
@@ -24,7 +24,7 @@ Aby wdrożyć usługę w wielu regionach i upewnij się, że działa on zgodnie 
 
 Program Deployment Manager to funkcja usługi Resource Manager. Rozszerza możliwości podczas wdrażania. Użyj programu Deployment Manager w przypadku złożonych usługa, która ma zostać wdrożone w wielu regionach. Dzięki etapowemu wdrażaniu Twojej usługi możesz znaleźć potencjalne problemy zanim zostanie ona wdrożona we wszystkich regionach. Jeśli nie potrzebujesz dodatkowych środków ostrożności przygotowanych wdrożenia, należy zastosować standard [opcje wdrażania](resource-group-template-deploy-portal.md) dla usługi Resource Manager. Program Deployment Manager bezproblemowo integrują się ze wszystkich istniejących narzędzi innych firm, które obsługują wdrożeń usługi Resource Manager, takie jak ciągła integracja i ciągłe dostarczanie (CI/CD) ofert. 
 
-Azure Deployment Manager jest dostępna w prywatnej wersji zapoznawczej. Aby korzystać z platformy Azure Deployment Manager, należy wykonać [formularz rejestracji](https://aka.ms/admsignup). Pomoc w górę poprawić działanie funkcji, zapewniając [opinii](https://aka.ms/admfeedback).
+Usługa Azure Deployment Manager jest w prywatnej wersji zapoznawczej. Aby korzystać z platformy Azure Deployment Manager, należy wykonać [formularz rejestracji](https://aka.ms/admsignup). Pomoc w górę poprawić działanie funkcji, zapewniając [opinii](https://aka.ms/admfeedback).
 
 Aby użyć programu Deployment Manager, należy utworzyć cztery pliki:
 
@@ -34,6 +34,8 @@ Aby użyć programu Deployment Manager, należy utworzyć cztery pliki:
 * Plik parametrów dla wdrożenia
 
 Szablon topologii wdrażania przed wdrożeniem szablon wprowadzania.
+
+Dokumentacja interfejsu REST API usługi Azure Deployment Manager można znaleźć [tutaj](https://docs.microsoft.com/rest/api/deploymentmanager/).
 
 ## <a name="supported-locations"></a>Obsługiwane lokalizacje
 

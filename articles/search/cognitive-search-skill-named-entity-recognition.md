@@ -8,24 +8,29 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 11/27/2018
 ms.author: luisca
-ms.openlocfilehash: 653a4675d546432eea8478ba6203be1df71ec4f4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: f9ff3f66f3a73fbaf1a4c2ca280c85f4bde65444
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731397"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442033"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Nazwane umiejętności cognitive rozpoznawanie jednostek
 
-**Rozpoznawania jednostki o nazwie** umiejętności wyodrębnia nazwane jednostek z pliku tekstowego. Dostępne jednostki i obejmuje dodatkowe typy `person`, `location`, i `organization`.
+**Rozpoznawania jednostki o nazwie** umiejętności wyodrębnia nazwane jednostek z pliku tekstowego. Dostępne jednostki i obejmuje dodatkowe typy `person`, `location` i `organization`.
 
 > [!NOTE]
-> Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Wykonywanie zestawu umiejętności i wyodrębniania obrazu i normalizacji są obecnie oferowane bezpłatnie. W późniejszym czasie cen tych funkcji zostanie ogłoszona. 
+> <ul>
+> <li>Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Możliwości wykonywania zestawów umiejętności oraz wyodrębniania i normalizacji obrazów są obecnie oferowane bezpłatnie. Cennik dla tych możliwości zostanie opublikowany w późniejszym czasie. </li>
+> <li> Umiejętności rozpoznawanie podmiotów jest traktowane jako "przestarzałe" i nie będzie oficjalnie obsługiwana od 15 lutego 2019 r. Postępuj zgodnie z zaleceniami podanymi w <a href="cognitive-search-skill-deprecated.md">przestarzałe umiejętności poznawcze wyszukiwanie</a> strony, aby dokonać migracji do obsługiwanych umiejętności</li>
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill
+
+## <a name="data-limits"></a>Limity danych
+Maksymalny rozmiar rekord powinien być 50 000 znaków, gdyż jest mierzone przez `String.Length`. Jeśli zachodzi potrzeba Podziel swoje dane przed wysłaniem ich do wyodrębnianie kluczowych fraz, rozważ użycie [umiejętności dzielenie tekstu](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-parameters"></a>Parametry kwalifikacji
 
@@ -33,8 +38,8 @@ Parametrów jest rozróżniana wielkość liter.
 
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
-| kategorie    | Tablica kategorie, które mają zostać wyodrębnione.  Typy możliwe kategorii: `"Person"`, `"Location"`, `"Organization"`. Jeśli nie podano żadnej kategorii, zwracane są wszystkie typy.|
-|defaultLanguageCode |  Kod języka tekstu wejściowego. Są obsługiwane następujące języki: `ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`|
+| categories    | Tablica kategorie, które mają zostać wyodrębnione.  Typy możliwe kategorii: `"Person"`, `"Location"`, `"Organization"`. Jeśli nie podano żadnej kategorii, zwracane są wszystkie typy.|
+|defaultLanguageCode |  Kod języka tekstu wejściowego. Są obsługiwane następujące języki: `de, en, es, fr, it`|
 | minimumPrecision  | Liczba od 0 do 1. Jeśli dokładność jest niższa niż ta wartość, nie są zwracane jednostki. Wartość domyślna to 0.|
 
 ## <a name="skill-inputs"></a>Dane wejściowe umiejętności
@@ -58,7 +63,7 @@ Parametrów jest rozróżniana wielkość liter.
 ```json
   {
     "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
-    "categories": [ "Person"],
+    "categories": [ "Person", "Location", "Organization"],
     "defaultLanguageCode": "en",
     "inputs": [
       {
@@ -83,7 +88,7 @@ Parametrów jest rozróżniana wielkość liter.
         "recordId": "1",
         "data":
            {
-             "text": "This is a the loan application for Joe Romero, he is a Microsoft employee who was born in Chile and then moved to Australia… Ana Smith is provided as a reference.",
+             "text": "This is the loan application for Joe Romero, he is a Microsoft employee who was born in Chile and then moved to Australia… Ana Smith is provided as a reference.",
              "languageCode": "en"
            }
       }
@@ -101,32 +106,38 @@ Parametrów jest rozróżniana wielkość liter.
       "data" : 
       {
         "persons": [ "Joe Romero", "Ana Smith"],
-        "locations": ["Seattle"],
-        "organizations":["Microsoft Corporation"],
+        "locations": ["Chile", "Australia"],
+        "organizations":["Microsoft"],
         "entities":  
         [
           {
             "category":"person",
             "value": "Joe Romero",
-            "offset": 45,
+            "offset": 33,
             "confidence": 0.87
           },
           {
             "category":"person",
             "value": "Ana Smith",
-            "offset": 59,
+            "offset": 124,
             "confidence": 0.87
           },
           {
             "category":"location",
-            "value": "Seattle",
-            "offset": 5,
+            "value": "Chile",
+            "offset": 88,
+            "confidence": 0.99
+          },
+          {
+            "category":"location",
+            "value": "Australia",
+            "offset": 112,
             "confidence": 0.99
           },
           {
             "category":"organization",
-            "value": "Microsoft Corporation",
-            "offset": 120,
+            "value": "Microsoft",
+            "offset": 54,
             "confidence": 0.99
           }
         ]
@@ -138,9 +149,10 @@ Parametrów jest rozróżniana wielkość liter.
 
 
 ## <a name="error-cases"></a>W przypadku wystąpienia błędów
-Jeśli określono nieobsługiwany język kodu lub jeśli zawartość nie jest zgodny język określony, błąd jest zwracany, a nie jednostki są wyodrębniane.
+Jeśli kod języka dla dokumentu nie jest obsługiwany, zwracany jest błąd, a nie jednostki są wyodrębniane.
 
 ## <a name="see-also"></a>Zobacz także
 
 + [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
 + [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
++ [Umiejętności rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md)

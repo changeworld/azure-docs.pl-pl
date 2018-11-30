@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/6/2018
 ms.author: tylerfox
-ms.openlocfilehash: 4bf46501a75b9dd5be7ae1b446a0db90c20be559
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 936e53ca328b0f54bfd75e7b3d4f6747b0037669
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235262"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495167"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu programu Azure PowerShell
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Program Azure PowerShell może służyć do kontrolowania i zautomatyzować wdrożenie i zarządzanie obciążeń na platformie Azure. W tym artykule dowiesz się, jak zarządzać klastry platformy Apache Hadoop w usłudze Azure HDInsight przy użyciu programu Azure PowerShell. Aby uzyskać listę poleceń cmdlet programu HDInsight PowerShell, zobacz [Dokumentacja poleceń cmdlet HDInsight](https://msdn.microsoft.com/library/azure/dn479228.aspx).
+Program Azure PowerShell może służyć do kontrolowania i zautomatyzować wdrożenie i zarządzanie obciążeń na platformie Azure. W tym artykule dowiesz się, jak zarządzać [Apache Hadoop](https://hadoop.apache.org/) klastrów w usłudze Azure HDInsight przy użyciu programu Azure PowerShell. Aby uzyskać listę poleceń cmdlet programu HDInsight PowerShell, zobacz [Dokumentacja poleceń cmdlet HDInsight](https://msdn.microsoft.com/library/azure/dn479228.aspx).
 
 **Wymagania wstępne**
 
@@ -80,12 +80,12 @@ Skalowanie funkcji klastra umożliwia zmianę liczby węzłów procesu roboczego
 
 Wpływ zmianę liczby węzłów danych dla każdego typu klastra obsługiwane przez HDInsight:
 
-* Hadoop
+* Apache Hadoop
 
     Możesz bezproblemowo zwiększyć liczbę węzłów procesu roboczego w klastrze usługi Hadoop, w którym jest uruchomiony bez wywierania wpływu na wszystkie oczekujące lub uruchomione zadania. Nowe zadania należy dostarczyć również w przypadku, gdy operacja jest w toku. Błędy trwaniem skalowania bez problemu zmieniała są obsługiwane, dzięki czemu klaster zawsze pozostanie w stanie działać.
 
     Gdy klaster Hadoop jest skalowane w dół dzięki zmniejszeniu liczby węzłów danych, zostaną ponownie uruchomione niektóre z tych usług w klastrze. Ponowne uruchamianie usług powoduje, że wszystkie uruchomione i oczekujące zadania na zakończenie operacji skalowania. Można jednak ponownie przesłać zadania po zakończeniu operacji.
-* HBase
+* Apache HBase
 
     Możesz bezproblemowo Dodawanie lub usuwanie węzłów do klastra HBase jest uruchomiona. Serwery regionalne automatycznie są równoważone w ciągu kilku minut od zakończenia operacji skalowania. Można jednak również ręcznie równoważyć serwerów regionalnych, logując się do węzła głównego klastra i następnie uruchom następujące polecenia z okna wiersza polecenia:
 
@@ -95,7 +95,7 @@ Wpływ zmianę liczby węzłów danych dla każdego typu klastra obsługiwane pr
     >balancer
     ```
 
-* Storm
+* Apache Storm
 
     Bezproblemowo można dodać lub usunąć węzły danych z klastrem Storm, jest uruchomiona. Jednak po pomyślnym zakończeniu operacji skalowania, konieczne będzie ponowne zrównoważenie topologii.
 
@@ -207,25 +207,25 @@ $resourceGroupName = $cluster.ResourceGroup
 
 
 ## <a name="submit-jobs"></a>Przesyłanie zadań
-**Aby przesłać zadania MapReduce**
+**Aby przesłać zadania Apache Hadoop MapReduce**
 
-Zobacz [uruchamianie przykładów technologii MapReduce zawarte w HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
+Zobacz [uruchomić przykłady Apache Hadoop MapReduce zawarte w HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
 
-**Do przesyłania zadań Hive**
+**Aby przesłać zadania technologii Hive**
 
-Zobacz [uruchamianie zapytań Hive przy użyciu programu PowerShell](hadoop/apache-hadoop-use-hive-powershell.md).
+Zobacz [uruchamianie Apache zapytań Hive przy użyciu programu PowerShell](hadoop/apache-hadoop-use-hive-powershell.md).
 
-**Aby przesłać zadania Pig**
+**Aby przesłać zadania Apache Pig**
 
-Zobacz [zadania Pig Uruchom przy użyciu programu PowerShell](hadoop/apache-hadoop-use-pig-powershell.md).
+Zobacz [zadania uruchamiania Apache Pig, przy użyciu programu PowerShell](hadoop/apache-hadoop-use-pig-powershell.md).
 
-**Do przesyłania zadań narzędzia Sqoop**
+**Do przesyłania zadań z wykorzystaniem narzędzia Apache Sqoop**
 
-Zobacz [z HDInsight przy użyciu narzędzia Sqoop](hadoop/hdinsight-use-sqoop.md).
+Zobacz [z HDInsight przy użyciu narzędzia Apache Sqoop](hadoop/hdinsight-use-sqoop.md).
 
-**Aby przesłać zadania programu Oozie**
+**Aby przesłać zadania programu Apache Oozie**
 
-Zobacz [Użyj Oozie z usługą Hadoop, aby zdefiniować i uruchomić przepływ pracy w HDInsight](hdinsight-use-oozie.md).
+Zobacz [Użyj Apache Oozie z usługą Apache Hadoop do definiowania i uruchomić przepływ pracy w HDInsight](hdinsight-use-oozie.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Przekazywanie danych do usługi Azure Blob storage
 Zobacz [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data].
@@ -236,7 +236,7 @@ Zobacz [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data].
 * [Administrowanie HDInsight przy użyciu interfejsu wiersza polecenia][hdinsight-admin-cli]
 * [Tworzenie klastrów HDInsight][hdinsight-provision]
 * [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data]
-* [Przesyłanie zadań Hadoop programowe][hdinsight-submit-jobs]
+* [Przesyłanie zadań Apache Hadoop programowe][hdinsight-submit-jobs]
 * [Wprowadzenie do usługi Azure HDInsight][hdinsight-get-started]
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/

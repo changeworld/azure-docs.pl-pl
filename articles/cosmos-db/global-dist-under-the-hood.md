@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: d104b5de22281817626f8de0f41029e76e06e3a2
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 5db43c6488a4592eb46d9a0fe9a044dde36fc494
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824816"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423351"
 ---
 # <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Usługa Azure Cosmos DB globalną dystrybucję - kulisy
 
@@ -72,7 +72,7 @@ W przypadku baz danych Cosmos skonfigurowany z wieloma regionami zapisu systemu 
 
 Czy bazy danych Cosmos jest skonfigurować przy użyciu jednej lub wielu regionach zapisu, można wybierać spośród pięciu dobrze zdefiniowanych modeli spójności. Przy użyciu nowo dodano obsługę włączania wielu regionów zapisu poniżej przedstawiono kilka istotnych aspektów poziomów spójności:  
 
-Jak wcześniej, spójności powiązana nieaktualność gwarantuje, że wszystkie operacje odczytu będzie w obrębie k prefiksów lub t sekund od najnowszych zapisu we wszystkich regionach. Ponadto odczyty spójności powiązana nieaktualność zapewniona jest monotoniczny i gwarancje, spójny prefiks. Protokół zapobieganie entropii działa w sposób ograniczony szybkość i gwarantuje, że prefiksy nie są gromadzone i wsteczne zapisu nie ma zastosowanie. Podobnie jak wcześniej, sesji monotoniczny gwarancje spójności odczytu i zapisu monotoniczny odczytywać własne zapisy, zapis obserwowanych odczycie i spójny prefiks gwarantuje na całym świecie. Skonfigurowano wysoki poziom spójności baz danych regionu zapisu przełączników systemu do pojedynczego wyznaczając za lidera w ramach każdej zestawach partycji. 
+Jak wcześniej, spójności powiązana nieaktualność gwarantuje, że wszystkie operacje odczytu będzie w obrębie k prefiksów lub t sekund od najnowszych zapisu we wszystkich regionach. Ponadto odczyty spójności powiązana nieaktualność zapewniona jest monotoniczny i gwarancje, spójny prefiks. Protokół zapobieganie entropii działa w sposób ograniczony szybkość i gwarantuje, że prefiksy nie są gromadzone i wsteczne zapisu nie ma zastosowanie. Podobnie jak wcześniej, sesji monotoniczny gwarancje spójności odczytu i zapisu monotoniczny odczytywać własne zapisy, zapis obserwowanych odczycie i spójny prefiks gwarantuje na całym świecie. W przypadku baz danych skonfigurowane za pomocą silnej spójności, korzyści z multi opanowanie (opóźnienie zapisu niski, pisanie wysokiej dostępności) nie stosuje się z powodu synchroniczną replikację między regionami.
 
 Semantyka pięcioma modelami spójności w usłudze Cosmos DB są opisane [tutaj](consistency-levels.md) i ze sobą matematycznie wyświetlane przy użyciu wysokiego poziomu specyfikacji TLA + [tutaj](https://github.com/Azure/azure-cosmos-tla).
 

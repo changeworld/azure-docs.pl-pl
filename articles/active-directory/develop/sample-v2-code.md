@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4a2cb6fa310cc56b4c5ccb1cb625b88431f70783
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 6b6dd80f649b0c92aacdb5711e88d7710db5f51b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633856"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424446"
 ---
 # <a name="azure-active-directory-code-samples-v20-endpoint"></a>Przykłady kodu usługi Azure Active Directory (punktu końcowego v2.0)
 
@@ -73,7 +73,7 @@ Poniższe przykłady pokazują publicznych klienta aplikacji (aplikacji desktop/
 
 Aplikacja kliencka | Platforma | Przepływ/Grant | Wywołania programu Microsoft Graph | Wywołania internetowego interfejsu API platformy ASP.NET Core 2.0
 ------------------ | -------- |  ----------| ---------- | -------------------------
-Pulpitu (WPF)      | ![.NET / C#](media/sample-v2-code/logo_NET.png) | Interaktywne | [DotNet-desktop-msgraph — v2](http://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [DotNet-native-aspnetcore-v2](https://GitHub.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
+Pulpitu (WPF)      | ![.NET / C#](media/sample-v2-code/logo_NET.png) | Interaktywne | [DotNet-desktop-msgraph — v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [DotNet-native-aspnetcore-v2](https://GitHub.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
 Pulpitu (Konsola)   | ![.NET / C# (wersja klasyczna)](media/sample-v2-code/logo_NET.png) | Zintegrowane uwierzytelnianie systemu Windows |[iwa-DotNet-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2)
 Pulpitu (Konsola)   | ![.NET / C# (wersja klasyczna)](media/sample-v2-code/logo_NETcore.png) | Nazwa użytkownika/hasło |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)
 Telefon komórkowy (UWP)   | ![.NET / C# (UWP)](media/sample-v2-code/logo_windows.png) | Interaktywne |[polecenia DotNet-native-platformy uniwersalnej systemu Windows — v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) |

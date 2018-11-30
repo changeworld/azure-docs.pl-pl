@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 3e06dc82baed4043ce490769aa0ec84ab3de8c24
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 2266f63f9689ec4d22659eb4a7c4876e25fa08b1
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577015"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335218"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak używać zestawu Azure WebJobs SDK na potrzeby przetwarzania w tle oparte na zdarzeniach
 
@@ -462,7 +462,7 @@ Firma Microsoft zaleca struktury rejestrowania, który został opracowany dla pr
 
 ### <a name="log-filtering"></a>Filtrowanie dziennika
 
-Każdy dziennik utworzony przez `ILogger` wystąpienia ma skojarzoną `Category` i `Level`. [LogLevel](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loglevel#Microsoft_Extensions_Logging_LogLevel) jest wyliczeniem, a kod liczby całkowitej wskazuje względne znaczenie:
+Każdy dziennik utworzony przez `ILogger` wystąpienia ma skojarzoną `Category` i `Level`. [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) jest wyliczeniem, a kod liczby całkowitej wskazuje względne znaczenie:
 
 |LogLevel    |Kod|
 |------------|---|
@@ -474,7 +474,7 @@ Każdy dziennik utworzony przez `ILogger` wystąpienia ma skojarzoną `Category`
 |Krytyczny    | 5 |
 |Brak        | 6 |
 
-Każdej kategorii, które mogą być niezależne filtrowane do określonego [LogLevel](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loglevel). Na przykład możesz chcieć wyświetlić wszystkie dzienniki obiektów blob wyzwalacza przetwarzania jednak tylko `Error` lub nowszy dla wszystkich innych.
+Każdej kategorii, które mogą być niezależne filtrowane do określonego [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel). Na przykład możesz chcieć wyświetlić wszystkie dzienniki obiektów blob wyzwalacza przetwarzania jednak tylko `Error` lub nowszy dla wszystkich innych.
 
 Aby ułatwić określenie reguł filtrowania, zawiera zestaw SDK zadań Webjob `LogCategoryFilter` mogą być przekazywane w wielu istniejących dostawców logowania, w tym konsoli i usługi Application Insights.
 

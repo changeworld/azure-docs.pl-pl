@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: cherylmc
-ms.openlocfilehash: 30edc7308ad2d01d5245f8cd1073a7def674b74d
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 3bf3dd325af48f99e109f651628883d8f946fdc8
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649843"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310142"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informacje o ustawieniach konfiguracji bramy sieci VPN
 
@@ -167,7 +167,7 @@ Aby uzyskać dodatkowe zasoby techniczne i wymagań określonej składni, korzys
 
 | **Wdrożenie klasyczne** | **Resource Manager** |
 | --- | --- |
-| [Program PowerShell](/powershell/module/azure#networking) |[Program PowerShell](/powershell/module/azurerm.network#vpn) |
+| [Program PowerShell](/powershell/module/azurerm.network/#networking) |[Program PowerShell](/powershell/module/azurerm.network#vpn) |
 | [Interfejs API REST](https://msdn.microsoft.com/library/jj154113) |[Interfejs API REST](/rest/api/network/virtualnetworkgateways) |
 | Nieobsługiwane | [Interfejs wiersza polecenia platformy Azure](/cli/azure/network/vnet-gateway)|
 

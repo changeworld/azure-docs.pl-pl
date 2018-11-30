@@ -1,6 +1,6 @@
 ---
 title: Jak używać protokołu AMQP 1.0 przy użyciu interfejsu API Java usługi Service Bus | Dokumentacja firmy Microsoft
-description: Jak używać usługi wiadomości Java (JMS) za pomocą usługi Azure Service Bus i zaawansowane komunikatów usługi kolejkowania Protodol (AMQP) 1.0.
+description: Jak używać usługi wiadomości Java (JMS) za pomocą usługi Azure Service Bus i zaawansowane komunikat Queuing Protocol (AMQP) 1.0.
 services: service-bus-messaging
 documentationcenter: java
 author: spelluru
@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: spelluru
-ms.openlocfilehash: 9a223c67e0c1f2e71d2953be63924a114e7420af
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: fbd74b227afd2191616100d74c7864eacf015add
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018234"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308074"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Jak używać języka Java wiadomości usługi (JMS) interfejsu API za pomocą usługi Service Bus i protokołu AMQP 1.0
 Zaawansowane komunikat (QUEUING Protocol) 1.0 to wydajny, niezawodny i protokół sieciowy niskiego poziomu obsługi komunikatów protokołu używanego do tworzenia niezawodnych, międzyplatformowych aplikacji do obsługi wiadomości.
@@ -66,7 +66,7 @@ queue.QUEUE = queue1
 #### <a name="setup-jndi-context-and-configure-the-connectionfactory"></a>Ustaw kontekst JNDI i skonfiguruj ConnectionFactory
 
 **ConnectionString** do którego odwołuje się dostępne w "Udostępnione zasady dostępu" w [witryny Azure Portal](https://portal.azure.com) w obszarze **podstawowe parametry połączenia**
-```
+```java
 // The connection string builder is the only part of the azure-servicebus SDK library
 // we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
 // connection string. 
@@ -89,7 +89,7 @@ Destination queue = (Destination) context.lookup("QUEUE");
 Wpis służącą do definiowania miejsca docelowego w dostawcy JNDI Qpid właściwości plików ma następujący format:
 
 Tworzenie kolejki docelowej dla producentów- 
-```
+```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
 
@@ -103,7 +103,7 @@ MessageProducer producer = session.createProducer(queue);
 ```
 
 Tworzenie kolejki docelowej dla klientów — 
-```
+```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
 
@@ -297,7 +297,7 @@ public class JmsQueueQuickstart {
 ```
 
 ### <a name="run-the-application"></a>Uruchamianie aplikacji
-Przekaż **parametry połączenia** zasad aplikacji udostępnionych, aby uruchomić aplikację.
+Przekaż **parametry połączenia** z zasad dostępu udostępnionego, aby uruchomić aplikację.
 Poniżej znajdują się dane wyjściowe w postaci, uruchamiając aplikację:
 
 ```
@@ -351,7 +351,7 @@ Korzystając z JMS za pośrednictwem protokołu AMQP 1.0 przy użyciu usługi Se
 
 Ponadto usługi Azure Service Bus dzieli się na płaszczyźnie kontroli od płaszczyzny danych i dlatego nie obsługuje kilka funkcji dynamicznej topologii JMS firmy:
 
-| Nieobsługiwanej metody          | Zamień                                                                             |
+| Nieobsługiwanej metody          | Zamień na                                                                             |
 |-----------------------------|------------------------------------------------------------------------------------------|
 | createDurableSubscriber     | Utwórz subskrypcję tematu przenoszenie selektor wiadomości                                 |
 | createDurableConsumer       | Utwórz subskrypcję tematu przenoszenie selektor wiadomości                                 |

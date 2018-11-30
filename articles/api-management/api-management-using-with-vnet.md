@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 843b03ce33d1897e2e985ac832f883e1fae12960
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: dd876462559ac10fc0463c64413bf11eabbc88a1
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959047"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443529"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management przy użyciu sieci wirtualnych
 Sieci wirtualne platformy Azure (Vnet) umożliwiają umieszczenie wszystkich zasobów platformy Azure w sieci lecz-internet, która umożliwia kontrolę dostępu do. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej o usłudze Azure Virtual Networks start z informacjami w tym miejscu: [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -27,7 +27,8 @@ Usługa Azure API Management można wdrożyć w sieci wirtualnej (VNET), dzięki
 
 > [!NOTE]
 > Usługa Azure API Management obsługuje sieci wirtualnych Menedżera zasobów klasycznych i platformy Azure.
->
+
+[!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,7 +39,6 @@ Aby wykonać kroki opisane w tym artykule, musisz mieć:
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 + Wystąpienie usługi APIM. Aby uzyskać więcej informacji, zobacz [Utwórz wystąpienie usługi Azure API Management](get-started-create-service-instance.md).
-+ Łączność z siecią Wirtualną jest dostępna w tylko warstw Premium i deweloperów. Przejdź do jednej z tych warstw, postępując zgodnie z instrukcjami w [uaktualnianie i skalowanie](upgrade-and-scale.md#upgrade-and-scale) tematu.
 
 ## <a name="enable-vpn"> </a>Włączanie połączenia sieci Wirtualnej
 

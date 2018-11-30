@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 935fef5ea988908787ae04688985606acec41bfd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ac58c6b951a03b403375fdc17dcd45f8e624deac
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387281"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311457"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie użytkownika aprowizacji i cofania aprowizacji do aplikacji SaaS w usłudze Azure Active Directory
 
@@ -255,7 +255,7 @@ Jednak dla użytkowników B2B móc zalogować się do aplikacji SaaS przy użyci
 
 ### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-dynamic-groups-in-azure-ad"></a>Jest automatyczna aprowizacja użytkowników na działanie aplikacji SaaS z grupami dynamicznymi w usłudze Azure AD?
 
-Tak. Gdy skonfigurowany do "Synchronizuj tylko przypisanych użytkowników i grupy", usługa aprowizowania użytkowników w usłudze Azure AD można udostępnić lub anulować obsługę użytkowników w aplikacji SaaS w oparciu o informację, czy są oni członkami [grupy dynamicznej](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule]). Grupy dynamiczne również działać przy użyciu opcji "Synchronizuj wszystkich użytkowników i grupy".
+Tak. Gdy skonfigurowany do "Synchronizuj tylko przypisanych użytkowników i grupy", usługa aprowizowania użytkowników w usłudze Azure AD można udostępnić lub anulować obsługę użytkowników w aplikacji SaaS w oparciu o informację, czy są oni członkami [grupy dynamicznej](../users-groups-roles/groups-create-rule.md). Grupy dynamiczne również działać przy użyciu opcji "Synchronizuj wszystkich użytkowników i grupy".
 
 Jednak użycie grup dynamicznych może mieć wpływ na ogólną wydajność end-to-end Inicjowanie obsługi użytkowników z usługi Azure AD z aplikacjami SaaS. Podczas korzystania z grup dynamicznych, należy pamiętać te zastrzeżenia i zalecenia:
 

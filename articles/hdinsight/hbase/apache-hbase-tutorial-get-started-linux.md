@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1e6c4097f4886213bde8adcaac51f36a3bfef702
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0f9d786988cb547771b8fd999b911bd228cdc3e2
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010304"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311045"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Rozpoczynanie pracy z przykładem bazy danych Apache HBase w usłudze HDInsight
 
-Dowiedz się, jak utworzyć klaster HBase w usłudze HDInsight i tabele bazy danych HBase oraz jak wykonywać zapytania dotyczące tabel za pomocą aplikacji Hive. Aby uzyskać ogólne informacje o bazie danych HBase, zobacz [Omówienie bazy danych HBase w usłudze HDInsight][hdinsight-hbase-overview].
+Dowiedz się, jak utworzyć [bazy danych Apache HBase](http://hbase.apache.org/) klastra w systemie HDInsight, tworzyć tabele bazy danych HBase i wykonywać zapytania dotyczące tabel za pomocą [Apache Hive](https://hive.apache.org/).  Aby uzyskać ogólne informacje o bazie danych HBase, zobacz [Omówienie bazy danych HBase w usłudze HDInsight][hdinsight-hbase-overview].
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -30,7 +30,7 @@ Przed rozpoczęciem prób korzystania z tego przykładu bazy danych HBase należ
 * [Bezpieczna powłoka (SSH)](../hdinsight-hadoop-linux-use-ssh-unix.md). 
 * [Program curl](http://curl.haxx.se/download.html).
 
-## <a name="create-hbase-cluster"></a>Tworzenie klastra HBase
+## <a name="create-apache-hbase-cluster"></a>Tworzenie klastra Apache HBase
 W poniższej procedurze użyto szablonu usługi Azure Resource Manager do utworzenia klastra HBase i zależnego domyślnego konta usługi Azure Storage. Aby zapoznać się z parametrami używanymi w tej procedurze oraz innymi metodami tworzenia klastra, zobacz temat [Tworzenie opartych na systemie Linux klastrów Hadoop w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Aby uzyskać więcej informacji na temat korzystania z usługi Data Lake Storage 2. generacji, zobacz [Szybki start: konfigurowanie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 1. Kliknij poniższy obraz, aby otworzyć szablon w usłudze Azure Portal. Szablon znajduje się w [szablonach szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/).
@@ -56,13 +56,13 @@ W poniższej procedurze użyto szablonu usługi Azure Resource Manager do utworz
 > 
 
 ## <a name="create-tables-and-insert-data"></a>Tworzenie tabel i wstawianie danych
-Protokół SSH umożliwia połączenie z klastrami HBase, a następnie korzystanie z powłoki HBase w celu tworzenia tabel bazy danych HBase, wstawiania danych i wykonywania zapytań. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Protokół SSH umożliwia połączenie z klastrami HBase, a następnie użyj [powłoki HBase Apache](http://hbase.apache.org/0.94/book/shell.html) do tworzenia tabel bazy danych HBase, wstawiania danych i zapytania o dane. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Dla większości użytkowników dane są wyświetlane w formacie tabelarycznym:
 
 ![Dane tabelaryczne usługi HDInsight HBase][img-hbase-sample-data-tabular]
 
-W bazie danych HBase (będącej implementacją BigTable) te same dane wyglądają następująco:
+W bazie danych HBase (implementacja [BigTable chmury](https://cloud.google.com/bigtable/)), te same dane wygląda następująco:
 
 ![Dane BigTable usługi HDInsight HBase][img-hbase-sample-data-bigtable]
 
@@ -100,7 +100,7 @@ W bazie danych HBase (będącej implementacją BigTable) te same dane wyglądaj�
    
     Wyświetlone zostaną te same wyniki, co w przypadku polecenia scan, ponieważ istnieje tylko jeden wiersz.
    
-    Aby uzyskać więcej informacji na temat schematu tabeli bazy danych HBase, zobacz [Introduction to HBase Schema Design][hbase-schema] (Wprowadzenie do projektowania schematu bazy danych HBase). Więcej poleceń bazy danych HBase można znaleźć w [Podręczniku bazy danych Apache HBase][hbase-quick-start].
+    Aby uzyskać więcej informacji na temat schematu tabeli HBase, zobacz [wprowadzenie do projektu schematu HBase Apache][hbase-schema]. Więcej poleceń bazy danych HBase można znaleźć w [Podręczniku bazy danych Apache HBase][hbase-quick-start].
 5. Wyjdź z powłoki:
    
     ```hbaseshell
@@ -124,7 +124,7 @@ Przykładowy plik danych znajduje się w publicznym kontenerze obiektów blob, *
     4761    Caleb Alexander  670-555-0141    230-555-0199    4775 Kentucky Dr.
     16443   Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive
 
-Opcjonalnie możesz utworzyć plik tekstowy i przesłać go na swoje konto magazynu. Aby uzyskać instrukcje, zobacz [Przekazywanie danych dla zadań Hadoop w usłudze HDInsight][hdinsight-upload-data].
+Opcjonalnie możesz utworzyć plik tekstowy i przesłać go na swoje konto magazynu. Aby uzyskać instrukcje, zobacz [przekazywanie danych na potrzeby zadań usługi Apache Hadoop w HDInsight][hdinsight-upload-data].
 
 > [!NOTE]
 > W tej procedurze jest używana tabela kontaktów HBase utworzona w poprzedniej procedurze.
@@ -144,9 +144,9 @@ Opcjonalnie możesz utworzyć plik tekstowy i przesłać go na swoje konto magaz
 
 3. Możesz otworzyć powłokę HBase i użyć polecenia scan w celu wyświetlenia zawartości tabeli.
 
-## <a name="use-hive-to-query-hbase"></a>Uruchamianie zapytania bazy danych HBase przy użyciu programu Hive
+## <a name="use-apache-hive-to-query-apache-hbase"></a>Użyj Apache Hive, aby wykonać zapytanie bazy danych Apache HBase
 
-Korzystając z programu Hive, można wykonywać zapytania dotyczące danych w tabelach HBase. W tej sekcji zostanie utworzona tabela programu Hive odwzorowująca dane w tabeli HBase, która będzie używana do wykonywania zapytań o dane w tabeli HBase.
+Wykonywanie zapytań danych w tabelach HBase przy użyciu [Apache Hive](https://hive.apache.org/). W tej sekcji zostanie utworzona tabela programu Hive odwzorowująca dane w tabeli HBase, która będzie używana do wykonywania zapytań o dane w tabeli HBase.
 
 1. Otwórz program **PuTTY** i połącz się z klastrem.  Zapoznaj się z instrukcjami w poprzedniej procedurze.
 2. W sesji SSH wpisz następujące polecenie, aby uruchomić usługę Beeline:
@@ -157,7 +157,7 @@ Korzystając z programu Hive, można wykonywać zapytania dotyczące danych w ta
 
     Aby uzyskać więcej informacji o usłudze Beeline, zobacz [Używanie technologii Hive z usługą Hadoop w usłudze HDInsight z usługą Beeline](../hadoop/apache-hadoop-use-hive-beeline.md).
        
-3. Uruchom poniższy skrypt HiveQL, aby utworzyć tabelę programu Hive, która mapuje dane na tabelę HBase. Upewnij się, że utworzono wspomnianą wcześniej w tym samouczku tabelę przykładową, używając powłoki HBase przed uruchomieniem tej instrukcji.
+3. Uruchom następujące polecenie [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) skrypt, aby utworzyć tabelę programu Hive, która mapuje dane do tabeli HBase. Upewnij się, że utworzono wspomnianą wcześniej w tym samouczku tabelę przykładową, używając powłoki HBase przed uruchomieniem tej instrukcji.
 
     ```hiveql   
     CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
@@ -268,13 +268,14 @@ Aby uniknąć niespójności, zaleca się wyłączenie tabel HBase przed usunię
 W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](../hdinsight-administer-use-portal-linux.md#create-clusters).
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule pokazano, jak utworzyć klaster HBase i tabele oraz jak wyświetlać dane w tych tabelach z poziomu powłoki HBase. Przedstawiono również sposób wykonywania zapytań programu Hive względem danych w tabelach HBase oraz korzystania z interfejsów API REST HBase w języku C# w celu tworzenia tabel HBase i pobierania danych z tabeli.
+W tym artykule pokazano, jak utworzyć klaster Apache HBase i tworzyć tabele oraz jak wyświetlać dane w tych tabelach z poziomu powłoki HBase. Przedstawiono również sposób wykonywania zapytań programu Hive względem danych w tabelach HBase oraz korzystania z interfejsów API REST HBase w języku C# w celu tworzenia tabel HBase i pobierania danych z tabeli.
 
 Aby dowiedzieć się więcej, zobacz:
 
-* [Przegląd bazy danych HBase w usłudze HDInsight][hdinsight-hbase-overview]: HBase jest bazą danych Apache NoSQL typu open source opartą na platformie Hadoop, która zapewnia dostęp losowy i wysoki poziom spójności w przypadku dużych ilości danych z częściową strukturą i bez struktury.
+* [Omówienie bazy danych HDInsight HBase][hdinsight-hbase-overview]: bazy danych Apache HBase to Apache, baza danych NoSQL typu open source oparty na technologii Apache Hadoop, która zapewnia dostęp losowy i wysoki poziom spójności w przypadku dużych ilości danych z częściową strukturą i bez struktury .
 
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
+
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
 [hbase-reference]: http://hbase.apache.org/book.html#importtsv
 [hbase-schema]: http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf

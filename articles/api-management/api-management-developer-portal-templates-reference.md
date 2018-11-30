@@ -1,6 +1,6 @@
 ---
-title: Szablony portalu usługi Azure API Management dewelopera | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dostosować zawartość strony portalu dewelopera przy użyciu zestawu szablonów w usłudze Azure API Management.
+title: Szablony usługi Azure portal dla deweloperów programu interfejsu API zarządzania | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dostosować zawartość portalu dla deweloperów przy użyciu zestawu szablonów w usłudze Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,39 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 540e9804d2ee84c050531f5287d4c4b8922ae999
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 0f339984a9db1a337f97e6db24571004cc34f679
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2017
-ms.locfileid: "26128753"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445484"
 ---
-# <a name="developer-portal-templates"></a>Szablony portalu dla deweloperów
+# <a name="developer-portal-templates"></a>Szablonów portalu dla deweloperów
 
-Zarządzanie interfejsami API Azure zapewnia możliwość dostosować zawartość strony portalu dewelopera przy użyciu zestawu szablonów, które skonfigurować ich zawartości. Przy użyciu [DotLiquid](http://dotliquidmarkup.org/) składni i Edytor wybranych przez użytkownika, takie jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i zestaw udostępnionego zlokalizowane [zasoby ciągu](api-management-template-resources.md#strings), [symboli zasobów](api-management-template-resources.md#glyphs), i [strony kontrolki](api-management-page-controls.md), ma dużą elastyczność konfigurowania zawartości stron, zgodnie z własnymi potrzebami, za pomocą tych szablonów.  
+Usługa Azure API Management zapewnia możliwość dostosować zawartość portalu dla deweloperów przy użyciu zestawu szablonów, które ich zawartość. Przy użyciu [DotLiquid](http://dotliquidmarkup.org/) składni i Edytor wybranych przez użytkownika, takich jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i zlokalizowanych podany zbiór [zasoby ciągu](api-management-template-resources.md#strings), [symbol zasoby](api-management-template-resources.md#glyphs), i [stronie kontrolki](api-management-page-controls.md), masz dużą elastyczność konfigurowania zawartości stron, zgodnie z potrzebami przy użyciu tych szablonów.  
   
-Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [dostosowywaniu portalu dla deweloperów interfejsu API zarządzania za pomocą szablonów](api-management-developer-portal-templates.md).  
+Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [Dostosowywanie portalu dla deweloperów usługi API Management przy użyciu szablonów](api-management-developer-portal-templates.md).  
 
-##  <a name="DeveloperPortalTemplates"></a>Szablony portalu dla deweloperów  
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+
+##  <a name="DeveloperPortalTemplates"></a> Szablonów portalu dla deweloperów  
   
 -   [Interfejsy API](api-management-api-templates.md)  
-    -   [Lista interfejsu API](api-management-api-templates.md#APIList)  
+    -   [Interfejs API — lista](api-management-api-templates.md#APIList)  
     -   [Operacja](api-management-api-templates.md#Product)  
     -   [Przykłady kodu](api-management-api-templates.md#CodeSamples)  
-        -   [Narzędzie curl](api-management-api-templates.md#Curl)  
+        -   [Curl](api-management-api-templates.md#Curl)  
         -   [C#](api-management-api-templates.md#CSharp)  
         -   [Java](api-management-api-templates.md#Stub)  
         -   [JavaScript](api-management-api-templates.md#JavaScript)  
-        -   [Objective C](api-management-api-templates.md#ObjectiveC)  
+        -   [Język Objective C](api-management-api-templates.md#ObjectiveC)  
         -   [PHP](api-management-api-templates.md#PHP)  
         -   [Python](api-management-api-templates.md#Python)  
         -   [Ruby](api-management-api-templates.md#Ruby)  
 -   [Produkty](api-management-product-templates.md)  
     -   [Lista produktów](api-management-product-templates.md#ProductList)  
-    -   [Produktu](api-management-product-templates.md#Product)  
+    -   [Produkt](api-management-product-templates.md#Product)  
 -   [Aplikacje](api-management-application-templates.md)  
     -   [Lista aplikacji](api-management-application-templates.md#ProductList)  
-    -   [Aplikacji](api-management-application-templates.md#Application)  
+    -   [Aplikacja](api-management-application-templates.md#Application)  
 -   [Problemy](api-management-issue-templates.md)  
     -   [Lista problemów](api-management-issue-templates.md#IssueList)  
 -   [Profil użytkownika](api-management-user-profile-templates.md)  
@@ -56,12 +58,12 @@ Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [dostosowywa
     -   [Zaktualizuj informacje o koncie](api-management-user-profile-templates.md#UpdateAccountInfo)  
 -   [Strony](api-management-page-templates.md)  
     -   [Rejestrowanie](api-management-page-templates.md#SignIn)  
-    -   [Zarejestruj się](api-management-page-templates.md#SignUp)  
-    -   [Strona nie została znaleziona](api-management-page-templates.md#PageNotFound)
+    -   [Tworzenie konta](api-management-page-templates.md#SignUp)  
+    -   [Nie odnaleziono strony](api-management-page-templates.md#PageNotFound)
 
-## <a name="next-steps"></a>Następne kroki  
+## <a name="next-steps"></a>Kolejne kroki  
 
-+ [Odwołanie do szablonu](api-management-developer-portal-templates-reference.md)  
++ [Dokumentacja dotycząca szablonów](api-management-developer-portal-templates-reference.md)  
 + [Dokumentacja dotycząca modeli obiektów](api-management-template-data-model-reference.md)  
 + [Kontrolki strony](api-management-page-controls.md)  
 + [Zasoby szablonu](api-management-template-resources.md)

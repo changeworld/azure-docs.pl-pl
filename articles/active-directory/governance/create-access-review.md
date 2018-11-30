@@ -14,12 +14,12 @@ ms.component: compliance
 ms.date: 11/15/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: c1ae6e8c67ab42207aea73932bb2e887db727f16
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 5a68657a0aaedb389ccaaacebb890583ab6292ee
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263388"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307852"
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Utwórz Przegląd dostępu członków grupy lub dostęp do aplikacji z usługą Azure AD
 
@@ -77,7 +77,7 @@ W tym artykule opisano sposób tworzenia nowego przeglądu dostępu dla członk�
 1. Użyj **powinien recenzenta odpowiada** listy, aby określić, co się stanie, dla użytkowników, którzy nie są przeglądane przez recenzenta przed upływem przeglądu. To ustawienie nie ma wpływu na użytkowników, którzy zostało przejrzane przez recenzenta ręcznie. Jeśli decyzja końcowego recenzent jest Odmów, dostęp użytkownika zostaną usunięte.
 
     - **Nie wprowadzono zmian** — pozostaw dostępu użytkownika bez zmian
-    - **Usuwanie aplikacji** -spowodować usunięcie dostępu użytkownika
+    - **Usuń dostęp** -spowodować usunięcie dostępu użytkownika
     - **Zatwierdź dostęp** — zatwierdzanie dostępu użytkownika
     - **Uwzględnij rekomendacje** — wykonaj zalecenia systemu odmowy lub zatwierdzenie użytkownika przez stały dostęp
 

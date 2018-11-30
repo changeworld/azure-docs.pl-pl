@@ -1,6 +1,6 @@
 ---
-title: 'NET # neuronowych sieci specyfikacji języka przewodnik — usługi Azure Machine Learning | Dokumentacja firmy Microsoft'
-description: 'Składnia dla Net # neuronowych sieci specyfikacji języka, wraz z przykładami sposobu tworzenia modelu sieci neuronowej niestandardowej przy użyciu Net #'
+title: 'NET # sieci neuronowych — usługi Azure Machine Learning Studio | Dokumentacja firmy Microsoft'
+description: 'Składnia dla Net # neuronowych sieci specyfikacji języka, wraz z przykładami sposobu tworzenia modelu niestandardowych sieci neuronowych Net # użyciem usługi Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: 8adb3c78f97311085aec3a5c86a062ec14f53e61
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 3aa364e92dd7ce3742d28ac2b36d9a7f16cbebbf
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263676"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315311"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Przewodnik po języku specyfikacji sieci neuronowych Net # dla usługi Azure Machine Learning
+# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Przewodnik po języku specyfikacji sieci neuronowych Net # dla usługi Azure Machine Learning Studio
 
 NET # to opracowany przez firmę Microsoft, który jest używany do definiowana architektur sieci neuronowych język. Za pomocą Net # w celu zdefiniowania struktury sieci neuronowych umożliwia do definiowania złożonych struktur, takich jak głębokich sieciach neuronowych lub splotowi dowolnego wymiarów, które są znane usprawniających nauki o danych, takich jak obraz, audio lub wideo.
 

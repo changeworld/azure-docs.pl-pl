@@ -1,3 +1,16 @@
+---
+author: zhangmanling
+ms.service: cdn
+ms.topic: include
+ms.date: 11/21/2018
+ms.author: mazha
+ms.openlocfilehash: 7f80c8f1773cfeb8ddfb222d068a5c6571c2e5c7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52331297"
+---
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed napisaniem kodu zarządzania sieci CDN, należy wykonać kilka operacji przygotowania, aby włączyć kod do interakcji z usługą Azure Resource Manager. Aby zrobić to przygotowanie, należy:
 

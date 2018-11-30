@@ -1,6 +1,6 @@
 ---
-title: Przekształcanie danych za pomocą działania procedury składowanej w fabryce danych Azure | Dokumentacja firmy Microsoft
-description: Wyjaśniono, jak używać programu SQL Server działania dotyczącego procedury składowanej do wywołania procedury przechowywanej w magazyn danych/bazy danych SQL Azure z potoku fabryki danych.
+title: Przekształcanie danych za pomocą działania procedury składowanej w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
+description: Opis sposobu używania działania dotyczącego procedury składowanej programu SQL Server, aby wywołać procedurę składowaną w usługi Azure SQL Database/Data Warehouse z potoku usługi fabryka danych.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -10,40 +10,40 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 11/27/2018
 ms.author: douglasl
-ms.openlocfilehash: e8e0f8352404892ea8af6a0fa176c336dd2c1659
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 54d0ce39ea511958824acb753bcf7102d33a6c90
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054028"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444032"
 ---
-# <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania procedury składowanej SQL Server w fabryce danych Azure
+# <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania procedury składowanej programu SQL Server w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [W wersji 1](v1/data-factory-stored-proc-activity.md)
+> * [Wersja 1](v1/data-factory-stored-proc-activity.md)
 > * [Bieżąca wersja](transform-data-using-stored-procedure.md)
 
-Użyj działania przekształcania danych w fabryce danych [potoku](concepts-pipelines-activities.md) do transformacji i przetwarzać dane pierwotne służące do przewidywania i szczegółowych informacji. Działania dotyczącego procedury składowanej jest jednym z działania przekształcania, które obsługuje fabryki danych. W tym artykule opiera się na [przekształcania danych](transform-data.md) artykułu, który przedstawia ogólny przegląd transformacji danych i działań przekształcania obsługiwanych w fabryce danych.
+Użyj działania przekształcania danych w usłudze Data Factory [potoku](concepts-pipelines-activities.md) do przekształcania i Przetwarzaj danych pierwotnych w prognozy i szczegółowych informacji. Działania dotyczącego procedury składowanej jest jednym z działania przekształcania, które obsługuje usługi Data Factory. W tym artykule opiera się na [przekształcania danych](transform-data.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych w usłudze Data Factory i przekształcania danych.
 
 > [!NOTE]
-> Jeśli jesteś nowym użytkownikiem usługi fabryka danych Azure, zapoznaj się z artykułem [wprowadzenie do fabryki danych Azure](introduction.md) i wykonaj samouczka: [samouczek: przekształcania danych](tutorial-transform-data-spark-powershell.md) przed przeczytaniem tego artykułu. 
+> Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, zapoznaj się z artykułem [wprowadzenie do usługi Azure Data Factory](introduction.md) i wykonać instrukcje z samouczka: [samouczek: Przekształcanie danych](tutorial-transform-data-spark-powershell.md) przed przeczytaniem tego artykułu. 
 
-Działania dotyczącego procedury składowanej umożliwia wywołanie procedury składowanej w jednym z następujących magazynów danych w przedsiębiorstwie lub na maszynie wirtualnej platformy Azure (VM): 
+Działania dotyczącego procedury składowanej umożliwia wywoływanie procedury składowanej w jednym z następujących magazynów danych w przedsiębiorstwie lub na maszynie wirtualnej platformy Azure (VM): 
 
 - Azure SQL Database
 - Azure SQL Data Warehouse
-- Baza danych programu SQL Server.  Jeśli używasz programu SQL Server, należy zainstalować siebie integrację środowiska uruchomieniowego na tym samym komputerze, który jest hostem bazy danych lub na osobnym komputerze, który ma dostęp do bazy danych. Hostowanie Samoobsługowe integrację środowiska uruchomieniowego jest składnik, który nawiązuje połączenie danych źródeł na lokalnym/na maszynie Wirtualnej platformy Azure z usługami w chmurze w sposób bezpieczny i zarządzanie nimi. Zobacz [środowiska uruchomieniowego integracji hosta samodzielnego](create-self-hosted-integration-runtime.md) artykułu, aby uzyskać szczegółowe informacje.
+- Baza danych programu SQL Server.  Jeśli używasz programu SQL Server, zainstaluj własne środowisko integration runtime na tym samym komputerze, który jest hostem bazy danych lub na osobnym komputerze, który ma dostęp do bazy danych. Własne środowisko integration runtime jest składnikiem, który nawiązuje połączenie danych źródła w lokalnych/na maszynie Wirtualnej platformy Azure z usługami w chmurze w sposób bezpieczny i zarządzane. Zobacz [może być samodzielnie hostowane środowisko IR](create-self-hosted-integration-runtime.md) artykuł, aby uzyskać szczegółowe informacje.
 
 > [!IMPORTANT]
-> Podczas kopiowania danych do usługi Azure SQL Database lub SQL Server, można skonfigurować **SqlSink** w przypadku działania kopiowania, aby wywołać procedurę składowaną przy użyciu **sqlWriterStoredProcedureName** właściwości. Aby uzyskać więcej informacji dotyczących właściwości, zobacz następujące artykuły łącznika: [bazy danych SQL Azure](connector-azure-sql-database.md), [programu SQL Server](connector-sql-server.md). Wywoływanie procedury składowanej podczas kopiowania danych do usługi Azure SQL Data Warehouse przy użyciu aktywność kopiowania nie jest obsługiwane. Jednak działania procedury składowanej służy do wywołania procedury przechowywanej w usłudze SQL Data Warehouse. 
+> Podczas kopiowania danych do usługi Azure SQL Database lub SQL Server, można skonfigurować **SqlSink** w działaniu kopiowania, aby wywołać procedurę składowaną przy użyciu **sqlWriterStoredProcedureName** właściwości. Aby uzyskać szczegółowe informacje o właściwości, zobacz następujące artykuły łącznika: [usługi Azure SQL Database](connector-azure-sql-database.md), [programu SQL Server](connector-sql-server.md). Wywoływanie procedury składowanej podczas kopiowania danych do usługi Azure SQL Data Warehouse za pomocą działania kopiowania nie jest obsługiwane. Jednak działanie procedury składowanej umożliwia wywoływanie procedury przechowywanej w usłudze SQL Data Warehouse. 
 >
-> Podczas kopiowania danych z bazy danych SQL Azure lub programu SQL Server lub magazyn danych SQL Azure, możesz skonfigurować **SqlSource** w przypadku działania kopiowania, aby wywołać procedurę składowaną można odczytać danych ze źródłowej bazy danych przy użyciu  **sqlReaderStoredProcedureName** właściwości. Aby uzyskać więcej informacji, zobacz następujące artykuły łącznika: [bazy danych SQL Azure](connector-azure-sql-database.md), [programu SQL Server](connector-sql-server.md), [magazyn danych SQL Azure](connector-azure-sql-data-warehouse.md)          
+> Podczas kopiowania danych z usługi Azure SQL Database lub SQL Server lub usługi Azure SQL Data Warehouse, możesz skonfigurować **SqlSource** w działaniu kopiowania, aby wywołać procedurę przechowywaną, aby odczytać danych ze źródłowej bazy danych za pomocą  **sqlReaderStoredProcedureName** właściwości. Aby uzyskać więcej informacji, zobacz następujące artykuły łącznika: [usługi Azure SQL Database](connector-azure-sql-database.md), [programu SQL Server](connector-sql-server.md), [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md)          
 
  
 
 ## <a name="syntax-details"></a>Szczegóły składni
-Oto formatu JSON określających działania dotyczącego procedury składowanej:
+Oto formatu JSON do definiowania działania dotyczącego procedury składowanej:
 
 ```json
 {
@@ -65,26 +65,30 @@ Oto formatu JSON określających działania dotyczącego procedury składowanej:
 }
 ```
 
-W poniższej tabeli opisano te właściwości JSON:
+W poniższej tabeli opisano te właściwości kodu JSON:
 
 | Właściwość                  | Opis                              | Wymagane |
 | ------------------------- | ---------------------------------------- | -------- |
 | name                      | Nazwa działania                     | Yes      |
-| description               | Tekst opisujący działanie służy do | Nie       |
-| type                      | Dla działania dotyczącego procedury składowanej, jest typu działania **SqlServerStoredProcedure** | Yes      |
-| linkedServiceName         | Odwołanie do **bazy danych SQL Azure** lub **magazyn danych SQL Azure** lub **programu SQL Server** zarejestrowany jako połączonej usługi z fabryki danych. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [obliczeniowe połączonych usług](compute-linked-services.md) artykułu. | Yes      |
+| description               | Tekst opisujący przeznaczenie działania | Nie       |
+| type                      | Dla działania dotyczącego procedury składowanej jest typ działania **SqlServerStoredProcedure** | Yes      |
+| linkedServiceName         | Odwołanie do **usługi Azure SQL Database** lub **Azure SQL Data Warehouse** lub **programu SQL Server** zarejestrowany jako połączonej usługi w usłudze Data Factory. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu. | Yes      |
 | storedProcedureName       | Określ nazwę procedury składowanej do wywołania. | Yes      |
-| storedProcedureParameters | Określ wartości dla parametrów procedury składowanej. Użyj `"param1": { "value": "param1Value","type":"param1Type" }` do przekazania wartości parametrów i typem obsługiwane przez źródło danych. Jeśli trzeba przekazać wartości null dla parametru, użyj `"param1": { "value": null }` (małe litery). | Nie       |
+| storedProcedureParameters | Określ wartości dla parametrów procedury składowanej. Użyj `"param1": { "value": "param1Value","type":"param1Type" }` do przekazywania wartości parametrów i ich typu, obsługiwane przez źródło danych. Jeśli musisz przekazać wartości null dla parametru, użyj `"param1": { "value": null }` (wszystkie małe litery). | Nie       |
+
+## <a name="error-info"></a>Informacje o błędzie
+
+Jeśli procedura składowana nie powiedzie się, zwraca szczegóły błędu nie można przechwycić informacje o błędzie bezpośrednio w danych wyjściowych działania. Jednak fabryka danych pompy wszystkie jego działania, uruchom zdarzeń do usługi Azure Monitor. Wśród zdarzenia, Data Factory pompy do usługi Azure Monitor umieszcza ono szczegóły błędu istnieje. Można na przykład zdefiniować wiadomości e-mail dla alertów z tych zdarzeń. Aby uzyskać więcej informacji, zobacz [alertów i monitorowania fabryki danych przy użyciu usługi Azure Monitor](monitor-using-azure-monitor.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujące artykuły, które opisują sposób przekształcania danych w inny sposób: 
+Zobacz następujące artykuły, które wyjaśniają, jak przekształcać dane w inny sposób: 
 
 * [Działanie U-SQL](transform-data-using-data-lake-analytics.md)
-* [Działanie gałęzi](transform-data-using-hadoop-hive.md)
-* [Działanie pig](transform-data-using-hadoop-pig.md)
-* [Działania MapReduce](transform-data-using-hadoop-map-reduce.md)
-* [Działaniu przesyłania strumieniowego usługi Hadoop](transform-data-using-hadoop-streaming.md)
-* [Działanie Spark](transform-data-using-spark.md)
+* [Działanie technologii hive](transform-data-using-hadoop-hive.md)
+* [Działania technologii pig](transform-data-using-hadoop-pig.md)
+* [Działania technologii MapReduce](transform-data-using-hadoop-map-reduce.md)
+* [Działania przesyłania strumieniowego usługi Hadoop](transform-data-using-hadoop-streaming.md)
+* [Działania platformy Spark](transform-data-using-spark.md)
 * [Niestandardowe działanie platformy .NET](transform-data-using-dotnet-custom-activity.md)
-* [Działanie wykonywania Bach uczenia maszynowego](transform-data-using-machine-learning.md)
-* [Działania procedury składowanej](transform-data-using-stored-procedure.md)
+* [Działanie wykonywania Bach Machine Learning](transform-data-using-machine-learning.md)
+* [Działania procedur składowanych](transform-data-using-stored-procedure.md)

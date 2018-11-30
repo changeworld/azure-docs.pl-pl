@@ -1,25 +1,21 @@
 ---
 title: Wykonywanie zadania wydobywania danych — usługa Azure Machine Learning | Dokumentacja firmy Microsoft
 description: Jak analitykiem danych można wykonać projektu nauki o danych w słupkowych niepoddany kontroli wersji i sposób współpracy.
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: deguhath
-ms.openlocfilehash: 19267429510207129b0229dc55fbd46f12977d5d
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 7e25e2c95f377b1ad40cba24b29ababd0561e32a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112648"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495682"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Wykonania zadań dotyczących nauki o danych: eksploracji, modelowania i wdrożenia
 
@@ -34,7 +30,7 @@ Typowe zadania wydobywania danych obejmują eksplorację danych, modelowania i w
 
 Analityk danych można wykonywać eksploracji i raportowania w programie na różne sposoby: za pomocą bibliotek i pakietów dostępnych dla języka Python (matplotlib, na przykład) lub przy użyciu języka R (ggplot lub struktury, na przykład). Analitycy danych, można dostosować takiego kodu do potrzeb eksploracji danych w określonych scenariuszach. Wymagania dotyczące postępowania z danymi strukturalnymi różnią się w przypadku danych niestrukturalnych, takich jak tekst lub obrazy. 
 
-Zapewniają również produktów, takich jak Azure Machine Learning Workbench [zaawansowane przygotowywanie danych](../desktop-workbench/tutorial-bikeshare-dataprep.md) danych, inteligencji i badań, w tym tworzenia funkcji. Użytkownik należy podjąć decyzję dotyczącą na narzędzia, biblioteki i pakiety, które najlepiej suite ich potrzeb. 
+Zapewniają również produktów, takich jak usługa Azure Machine Learning [zaawansowane przygotowywanie danych](../service/how-to-transform-data.md) danych, inteligencji i badań, w tym tworzenia funkcji. Użytkownik należy podjąć decyzję dotyczącą na narzędzia, biblioteki i pakiety, które najlepiej suite ich potrzeb. 
 
 Elementy dostarczane na końcu tej fazy jest raport eksploracji danych. Raport powinien zapewniać dość kompleksowych danych służący do modelowania i ocenę, czy dane znajdują się odpowiednie przejść do kroku modelowania. Narzędzia Team Data Science naukowych, omówiono w poniższych sekcjach do automatyzacji, dającą eksploracji, modelowania i raportowania udostępniają eksplorację danych standardowych i modelowania raportów. 
 
@@ -90,7 +86,7 @@ Wdrożenie produkcyjne umożliwia modelu do odtwarzania aktywną rolę w biznesi
 Istnieją różne podejścia i platformy, aby wdrożyć modele do produkcji. Poniżej przedstawiono kilka opcji:
 
 
-- [Wdrażanie modelu w usłudze Azure Machine Learning](../desktop-workbench/model-management-overview.md)
+- [Wdrażanie modelu w usłudze Azure Machine Learning](../service/how-to-deploy-and-where.md)
 - [Wdrażanie modelu w programie SQL server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 

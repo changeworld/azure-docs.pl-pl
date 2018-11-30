@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: 233296a825653938da158fc70952c7fe7931498c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a2c66894270a537239c5328eff0acdc4b8339994
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261829"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443546"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Porady dotyczące wydajności dla usługi Azure Cosmos DB i Java (asynchroniczny)
 
@@ -53,7 +53,7 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
 
 4. **Dostosowywanie zapytania równolegle do kolekcji podzielonych na partycje**
 
-    Usługa Azure Cosmos DB SQL Async zestawu SDK Java obsługuje zapytania równolegle, które umożliwiają kwerenda dotycząca kolekcji partycjonowanej równolegle (zobacz [Praca z zestawami SDK](sql-api-partition-data.md#working-with-the-azure-cosmos-db-sdks) i powiązane [przykłady kodu](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples) Aby uzyskać więcej informacji). Zapytania równoległe są przeznaczone do kwerendy opóźnienia i przepływności starają się ich odpowiedników szeregowe.
+    Usługa Azure Cosmos DB SQL Async zestawu SDK Java obsługuje zapytania równolegle, które umożliwiają kwerenda dotycząca kolekcji partycjonowanej równolegle. Aby uzyskać więcej informacji, zobacz [przykłady kodu](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples) związanych z pracą z zestawami SDK. Zapytania równoległe są przeznaczone do kwerendy opóźnienia i przepływności starają się ich odpowiedników szeregowe.
 
     () ***dostrajania setMaxDegreeOfParallelism\:***  równoległe zapytania pracy, badając równocześnie wiele partycji. Jednak dane z poszczególnych kolekcji partycjonowanej pobieranych szeregowo w odniesieniu do zapytania. Tak Użyj setMaxDegreeOfParallelism, aby ustawić liczbę partycji ma maksymalną prawdopodobieństwo osiągnięcia większość wydajna, podanym zapytaniem inne warunki systemu pozostają takie same. Jeśli nie znasz liczby partycji setMaxDegreeOfParallelism umożliwia ustawianie dużą liczbą, a system wybiera co najmniej (liczba partycji, dane wejściowe podane przez użytkownika), jako maksymalny stopień równoległości. 
 

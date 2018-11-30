@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2018
 ms.author: rkarlin
-ms.openlocfilehash: 16291e4f4915dd6328a2015407fa06dc8f62fba1
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 10ff2118ade13980250608bf4bc238e8ff2f9c64
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011888"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312990"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Często zadawane pytania dotyczące usługi Azure Security Center
 Często zadawane pytania dotyczące usługi Azure Security Center, to usługa, która pomaga zapobiegać zagrożeniom, wykrywanie i odpowiadanie na nie dzięki lepszemu wglądowi w i kontroli nad ich zabezpieczeniami zasobami Microsoft Azure.
@@ -250,7 +250,7 @@ Zasady zabezpieczeń włączone w usłudze Azure Security Center dysku — zalec
 ### <a name="who-can-modify-a-security-policy"></a>Kto może modyfikować zasady zabezpieczeń?
 Aby zmodyfikować zasady zabezpieczeń, musi być kontem administratora zabezpieczeń lub właścicielem lub współautorem subskrypcji.
 
-Aby dowiedzieć się, jak skonfigurować zasady zabezpieczeń, zobacz [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-policies.md).
+Aby dowiedzieć się, jak skonfigurować zasady zabezpieczeń, zobacz [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-azure-policy.md).
 
 ### <a name="what-is-a-security-recommendation"></a>Co to jest zalecana ze względów bezpieczeństwa?
 Usługa Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure. Po zidentyfikowaniu potencjalnych luk w zabezpieczeniach tworzone są zalecenia. Zaleceń prowadzi przez proces konfigurowania wymaganych kontroli. Oto przykłady:

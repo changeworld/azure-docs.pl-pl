@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 20bd2fe8877c635b0f55bb4f904658a595658518
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: adaeb3087fca57a4a868f4525d588e014ff36fcf
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828457"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335831"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Zrozumienie wyniki sprawdzania agenta systemu Linux w zarządzania aktualizacjami
 
-Może istnieć wiele przyczyn, na komputerze nie jest widoczny **gotowe** w zarządzania aktualizacjami. W zarządzania aktualizacjami można sprawdzić kondycję agenta hybrydowy proces roboczy, aby określić pierwotny problem. W tym artykule omówiono sposób uruchomić narzędzie do rozwiązywania problemów w witrynie Azure portal i w scenariuszach w trybie offline.
+Może istnieć wiele przyczyn, na komputerze platformy Azure nie jest widoczny **gotowe** w zarządzania aktualizacjami. W zarządzania aktualizacjami można sprawdzić kondycję agenta hybrydowy proces roboczy, aby określić pierwotny problem. W tym artykule omówiono sposób uruchomić narzędzie do rozwiązywania problemów w witrynie Azure portal i w scenariuszach w trybie offline.
 
 ## <a name="start-the-troubleshooter"></a>Uruchom narzędzie do rozwiązywania problemów
 
@@ -54,7 +54,8 @@ Sprawdzanie systemu operacyjnego, sprawdza, czy hybrydowego procesu roboczego Ru
 
 ### <a name="oms-agent"></a>Agenta pakietu OMS
 
-Tego sprawdzenia gwarantuje, że jest zainstalowany Agent pakietu OMS dla systemu Linux. Aby uzyskać instrukcje dotyczące sposobu jego instalacji, zobacz [Instalacja agenta dla systemu Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md#install-the-agent-for-linux).
+Tego sprawdzenia gwarantuje, że jest zainstalowany Agent pakietu OMS dla systemu Linux. Aby uzyskać instrukcje dotyczące sposobu jego instalacji, zobacz [Instalacja agenta dla systemu Linux](../../log-analytics//log-analytics-quick-collect-linux-computer.md#install-the-agent-for-linux
+).
 
 ### <a name="oms-agent-status"></a>Stan agenta pakietu OMS
 

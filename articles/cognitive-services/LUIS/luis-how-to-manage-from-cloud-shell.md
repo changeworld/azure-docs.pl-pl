@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 42bd8ef95ac1b55e76fe1cf0702b79de91832741
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: aca81bd529fe6151dce7aba6754874355189fc59
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870183"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444396"
 ---
 # <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>Dane użycia usługi LUIS z usługi Azure Cloud Shell
 Portal systemu Azure pozwala na używanie poleceń cmdlet programu PowerShell do pracy z zasobami usługi LUIS. 
@@ -32,7 +32,7 @@ Gdy nie masz konta magazynu i uwierzytelnieniu, można uruchomić polecenia cmdl
 ## <a name="open-cloud-shell"></a>Otwieranie usługi Cloud Shell
 Gdy używasz usługi Azure portal cloud shell, Ty masz zawsze w najnowszej wersji programu PowerShell. 
 
-Użyj **Launch Cloud Shell** przycisk Otwórz usługę Cloud Shell lub Otwórz przeglądarkę z [ https://shell.azure.com ](https://shell.azure.com). 
+Użyj **Launch Cloud Shell** przycisk Otwórz usługę Cloud Shell lub Otwórz przeglądarkę z [ https://shell.azure.com ](https://shell.azure.com). Wybierz środowisko powłoki Power Shell. Jeśli nie masz konta usługi Azure Storage, należy ją utworzyć. 
 
 <a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><image src="https://shell.azure.com/images/launchcloudshell.png" /></a>
 

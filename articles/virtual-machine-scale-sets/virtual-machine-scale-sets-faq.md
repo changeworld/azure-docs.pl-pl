@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 7b8faca82a23875b403d0b51b2e8719549d845fb
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 40af55e48e0097f1ad6cb52a76b78fab40c2074c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740697"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447184"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Często zadawane pytania dotyczące zestawów skalowania maszyn wirtualnych platformy Azure
 
@@ -371,7 +371,7 @@ Aby emulować przekazywanie w certyfikacie jako ciąg base64, można wyodrębni�
 
 W zestawach skalowania maszyn wirtualnych i maszyn wirtualnych certyfikaty muszą być ujęte w obiektów JSON. 
 
-Obsługiwane jest również typem zawartości application/x-pkcs12. Aby uzyskać instrukcje na temat korzystania z aplikacji/x-pkcs12, zobacz [certyfikatów PFX w usłudze Azure Key Vault](http://www.rahulpnath.com/blog/pfx-certificate-in-azure-key-vault/).
+Obsługiwane jest również typem zawartości application/x-pkcs12. 
  
 Obecnie nie obsługujemy pliki cer. Aby użyć pliki cer, należy wyeksportować je do kontenerów pfx.
 

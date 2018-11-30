@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: asgang
-ms.openlocfilehash: 0ac90d8ef29d4293a5eeb5f932687788320c218e
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 22ea3d955fe2910dc99ab4015165008da899d48e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615800"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312854"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-ongoing-replication-issues"></a>Rozwiązywanie problemów trwającej replikacji maszyny Wirtualnej platformy Azure do platformy Azure
 
@@ -29,7 +29,7 @@ IDENTYFIKATOR BŁĘDU: 153007 </br>
 Usługa Azure Site Recovery stale replikuje dane w regionie źródłowym w regionie odzyskiwania po awarii i tworzy punktu spójnego na poziomie awarii, co 5 minut. Jeśli usługa Site Recovery nie może utworzyć punktów odzyskiwania na 60 minut, następnie powiadamia użytkownika. Poniżej przedstawiono przyczyny, które może spowodować błąd:
 
 **Przyczyny 1: [dużej ilości danych zmiany stawki na źródłowej maszynie wirtualnej](#high-data-change-rate-on-the-source-virtal-machine)**    
-**Przyczyny 2: [problem z połączeniem sieciowym ](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+**Przyczyny 2: [problem z połączeniem sieciowym ](#Network-connectivity-issue)**
 
 ## <a name="causes-and-solutions"></a>Przyczyny i potencjalne rozwiązania
 
@@ -77,5 +77,10 @@ Ta opcja jest możliwe tylko wtedy, jeśli zmian danych na dysku jest mniejsza n
 
 ### <a name="Network-connectivity-issue"></a>Problem z łącznością sieciową
 
+#### <a name="network-latency-to-cache-storage-account-"></a>Opóźnienie sieci do konta magazynu pamięci podręcznej:
+ Usługa Site Recovery wysyła replikowane dane na koncie magazynu pamięci podręcznej, a ten problem może się zdarzyć, jeśli przekazywanie danych z maszyny wirtualnej na koncie magazynu pamięci podręcznej jest mniejsza tego 4 MB 3 sekund. Aby sprawdzić, czy występuje problem z dowolnego związane z opóźnieniem, użyj [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) do przekazania danych z maszyny wirtualnej na koncie magazynu pamięci podręcznej.<br>
+Jeśli opóźnienie jest wysoka, sprawdź, jeśli używasz wirtualnych urządzeń sieciowych do kontrolowania wychodzącego ruchu sieciowego z maszynami wirtualnymi. Urządzenie może być ograniczona w przypadku wszystkich ruch związany z replikacją przechodzi przez urządzenia WUS. Zaleca się utworzenie punktu końcowego usługi sieci w sieci wirtualnej na "Magazyn", aby ruch związany z replikacją nie przechodzi do urządzenia WUS. Zapoznaj się [konfiguracji urządzenia wirtualnego sieci](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration)
+
+#### <a name="network-connectivity"></a>Połączenie sieciowe
 W przypadku replikacji usługi Site Recovery do pracy, łączność wychodząca z określonych adresów URL lub IP zakresów jest wymagane z maszyny Wirtualnej. Jeśli maszyna wirtualna znajduje się za zaporą lub używa reguł Sieciowej grupy zabezpieczeń sieci do sterowania ruchem wychodzącym, może być jedną z tych problemów twarzy.</br>
-Zapoznaj się [połączenia ruchu wychodzącego dla adresów URL Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-troubleshoot-errors?#outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072)
+Zapoznaj się [połączenia ruchu wychodzącego dla adresów URL Site Recovery](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) aby upewnić się, wszystkie adresy URL są połączone. 

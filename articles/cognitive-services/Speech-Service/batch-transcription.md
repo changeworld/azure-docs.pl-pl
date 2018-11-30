@@ -10,16 +10,16 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: cd57e9a90b07447392fbff48017bb29f002ad29e
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 8a180dfada9da92e0b8ed69373a20602b3b0a177
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035955"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495591"
 ---
-# <a name="use-batch-transcription"></a>Użyj usługi batch transkrypcji
+# <a name="why-use-batch-transcription"></a>Dlaczego warto używać usługi Batch transkrypcji?
 
-Transkrypcja partii jest idealnym rozwiązaniem w przypadku dużych ilości audio w magazynie. Za pomocą interfejsu API REST, można wskazać pliki audio, sygnatury dostępu współdzielonego (SAS) identyfikator URI i asynchronicznie otrzymywać transkrypcji.
+Transkrypcja partii jest idealnym rozwiązaniem w przypadku dużych ilości audio w magazynie. Za pomocą dedykowanego interfejsu API REST, można wskazać pliki audio, sygnatury dostępu współdzielonego (SAS) identyfikator URI i asynchronicznie otrzymywać transkrypcji.
 
 ## <a name="the-batch-transcription-api"></a>Transkrypcji interfejsu API usługi Batch
 
@@ -36,16 +36,16 @@ Interfejs API transkrypcji usługi Batch oferuje asynchroniczne transkrypcja mow
 
 Interfejs API transkrypcji usługi Batch obsługuje następujące formaty:
 
-Name (Nazwa)| Kanał  |
-----|----------|
-mp3 |   Narzędzie mono   |   
-mp3 |  Stereo  | 
-WAV |   Narzędzie mono   |
-WAV |  Stereo  |
-Dziele|   Narzędzie mono   |
-Dziele|  Stereo  |
+| Format | Koder-dekoder | Szybkość transmisji bitów | Częstotliwość próbkowania |
+|--------|-------|---------|-------------|
+| WAV | MODUŁU PCM | 16-bitowych | stereo mono, kHz, 8 lub 16 |
+| MP3 | MODUŁU PCM | 16-bitowych | stereo mono, kHz, 8 lub 16 |
+| OGG | DZIELE | 16-bitowych | stereo mono, kHz, 8 lub 16 |
 
-Dla stereo strumieni audio transkrypcji batch dzieli kanału lewy i prawy podczas transkrypcji. Każdy dwa pliki JSON z wynikiem są tworzone z pojedynczy kanał. Sygnatury czasowe na wypowiedź Włącz dla deweloperów utworzyć uporządkowany końcowego transkrypcji. Dane wyjściowe kanałem, w tym właściwości do filtra wulgaryzmów i model znaków interpunkcyjnych, pokazano w następującym przykładzie JSON:
+> [!NOTE]
+> Interfejs API usługi Batch transkrypcji wymaga klucza S0 (płacenia warstwy). Nie działa z kluczem bezpłatna (f0).
+
+Dla strumieni audio stereo transkrypcji interfejsu API usługi Batch dzieli kanału lewy i prawy podczas transkrypcji. Każdy dwa pliki JSON z wynikiem są tworzone z pojedynczy kanał. Sygnatury czasowe na wypowiedź Włącz dla deweloperów utworzyć uporządkowany końcowego transkrypcji. Poniższy przykładowy kod JSON zawiera dane wyjściowe kanału, właściwości includuing do filtra wulgaryzmów i modelu znaki interpunkcyjne.
 
 ```json
 {
@@ -62,6 +62,16 @@ Dla stereo strumieni audio transkrypcji batch dzieli kanału lewy i prawy podcza
 
 > [!NOTE]
 > Interfejs API transkrypcji usługi Batch korzysta z usługi REST, do żądania transkrypcje, stanu i skojarzonych wyników. Można użyć interfejsu API z dowolnego języka. W następnej sekcji opisano sposób użycia interfejsu API.
+
+### <a name="query-parameters"></a>Parametry zapytania
+
+Te parametry mogą być zawarte w ciągu zapytania żądania REST.
+
+| Parametr | Opis | Wymagane / opcjonalne |
+|-----------|-------------|---------------------|
+| `ProfanityFilterMode` | Określa sposób obsługi wulgaryzmów w wyniki rozpoznawania. Akceptowane wartości to `none` która wyłącza filtrowanie wulgaryzmów `masked` gwiazdek, która zastępuje wulgaryzmów `removed` z wyników, które powoduje usunięcie wszystkich wulgaryzmów lub `tags` dodaje tagi "wulgaryzmów". Ustawieniem domyślnym jest `masked`. | Optional (Opcjonalność) |
+| `PunctuationMode` | Określa sposób obsługi znaków interpunkcyjnych w wyniki rozpoznawania. Akceptowane wartości to `none` która wyłącza znak interpunkcyjny, `dictated` co oznacza jawne znak interpunkcyjny, `automatic` umożliwiającą dekodera przeciwdziałania znak interpunkcyjny, lub `dictatedandautomatic` co oznacza definiowane znaków interpunkcyjnych lub automatyczny. | Optional (Opcjonalność) |
+
 
 ## <a name="authorization-token"></a>Token autoryzacji
 
