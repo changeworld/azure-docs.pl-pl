@@ -10,19 +10,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: How to
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 1fbda6c0351287b9bc7574d100c0862b172a0aed
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 3021fafe7d74f71450eec9b3720c974b04ada224
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651552"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426931"
 ---
 # <a name="schedule-your-first-test"></a>Zaplanuj pierwszego testu
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Planowanie testów weryfikacji jako portal usługi (VaaS), dla Twojego rozwiązania usługi Azure Stack. Rozwiązanie VaaS reprezentuje rozwiązanie usługi Azure Stack przy użyciu konkretnego sprzętu zestawienie komponentów (BoM). Można zaplanować test, aby sprawdzić, czy sprzętu można uruchomić usługi Azure Stack.
 
@@ -30,7 +30,7 @@ Aby sprawdzić swoje rozwiązanie, należy utworzyć przepływ pracy dla testów
 
 Podczas przepływu pracy przebieg testu może służyć do uruchamiania każdego testu, dostarczone przez VaaS, w tym testy z przepływów pracy sprawdzania poprawności, wyników z przebiegu testu przepływu pracy nie są uważane za *oficjalne*. Uzyskać informacji o przepływach pracy oficjalne weryfikacji, zobacz [przepływy pracy](azure-stack-vaas-key-concepts.md#workflows).
 
-## <a name="prerequisites"></a>Wstępnie wymagane składniki
+## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed wykonaniem tego przewodnika Szybki Start, powinno zostać zakończone następujące elementy:
 

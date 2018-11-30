@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 27dbd4215deef6574622ffcd2c62a64503459258
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: f853bb32f7c452f1b09ca337db2a866bd0890b82
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515764"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427254"
 ---
 # <a name="asdk-release-notes"></a>Informacje o wersji ASDK  
 Ten artykuł zawiera informacje dotyczące ulepszeń, poprawek i znanych problemach w usłudze Azure Stack Development Kit (ASDK). Jeśli nie masz pewności, której wersji używasz, możesz to zrobić [korzystanie z portalu, aby sprawdzić](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -233,7 +233,7 @@ Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Sta
 
 - <!-- ASDK --> **Galeria elementów dla zestawów skalowania maszyn wirtualnych są teraz wbudowane**.  Zestaw skalowania maszyn wirtualnych elementy galerii są teraz udostępniane w portalach użytkowników i administratorów bez konieczności pobierania ich. 
 
-- <!-- IS, ASDK --> **Skalowanie zestawu skalowania maszyn wirtualnych**.  Można użyć portalu [skalowanie zestawu skalowania maszyn wirtualnych](/azure/azure-stack/azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (zestawu skalowania maszyn wirtualnych).   
+- <!-- IS, ASDK --> **Skalowanie zestawu skalowania maszyn wirtualnych**.  Można użyć portalu [skalowanie zestawu skalowania maszyn wirtualnych](../azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (zestawu skalowania maszyn wirtualnych).   
 
 - <!-- 2489570 | IS ASDK--> **Obsługa niestandardowych konfiguracji zasad protokołu IPSec/IKE** dla [bram sieci VPN w usłudze Azure Stack](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways).
 

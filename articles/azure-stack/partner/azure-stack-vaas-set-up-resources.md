@@ -10,19 +10,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: d9406032a55c0bbd73bf16ae2f0fa272dddd7698
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 0830deaaa1161880706c39aee741af06a41b4b6f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651737"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426362"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>Samouczek: Konfigurowanie zasobów do weryfikacji jako usługa
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Należy utworzyć rozwiązanie. Weryfikacja jako rozwiązanie usługi (VaaS) reprezentuje rozwiązanie usługi Azure Stack z BOM konkretnego sprzętu. Rozwiązanie użyje do sprawdzenia, czy dany sprzęt mogą obsługiwać wykonywania usługi Azure Stack. Wykonaj kroki tego samouczka, aby przygotować się do korzystania z usługi za pomocą rozwiązania.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: d94b7f7f2f032278f71053e5de8bb2935af01f3f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 860f1181a84ef87fe0e66c2746b76b800a326354
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300153"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496195"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>O usłudze VPN gateway dla usługi Azure Stack
 
@@ -117,6 +117,10 @@ W poniższej tabeli przedstawiono typy bram i szacowaną agregowaną przepływno
 *Przypis 1* -przepływność sieci VPN nie jest to gwarantowana przepływność dla połączeń obejmujących wiele lokalizacji w Internecie. To pomiar maksymalna możliwa przepustowość.  
 *Uwaga (2)* — maksymalna liczba tuneli to łączny na wdrożenie usługi Azure Stack dla wszystkich subskrypcji.  
 *Należy pamiętać, (3)* -routing protokołu BGP nie jest obsługiwana w ramach podstawowej jednostki SKU.
+
+>[!NOTE]
+>Można utworzyć tylko jedno połączenie sieci VPN typu lokacja-lokacja między dwoma wdrożeniami w usłudze Azure Stack.  Jest to spowodowane ograniczenia na platformie, która umożliwi tylko jedno połączenie sieci VPN do tego samego adresu IP.  Ponieważ usługi Azure Stack korzysta z wielodostępną bramą, która używa jednego publicznego adresu IP dla wszystkich bram sieci VPN w systemie Azure Stack, między dwoma systemami usługi Azure Stack może istnieć tylko jedno połączenie sieci VPN.  To ograniczenie dotyczy także nawiązywania połączenia z więcej niż jednego połączenia sieci VPN typu lokacja-lokacja wszystkie bramy sieci VPN, który używa pojedynczego adresu IP.  Usługa Azure Stack nie pozwoli na więcej niż jednego zasobu Brama sieci lokalnej ma zostać utworzony przy użyciu tego samego adresu IP.
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 
