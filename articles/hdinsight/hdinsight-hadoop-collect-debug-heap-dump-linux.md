@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 966f05fba96cc829c3a11331e2a66609705f6f4f
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 58f4827910d863aef14171574d40e4b3acfc04d9
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037717"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498679"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Włączanie zrzutów sterty dla usługi Apache Hadoop w HDInsight opartych na systemie Linux
 
@@ -39,7 +39,7 @@ Możesz również włączanie zrzutów sterty dla mapy i zmniejszyć procesów u
 
 ## <a name="configuration"></a>Konfigurowanie zrzutu sterty opis
 
-Zrzuty sterty jest włączane przez przeniesienie opcji (czasami określane jako zdecyduje, lub parametrów) do maszyny JVM podczas uruchamiania usługi. Dla większości usług Hadoop możesz zmodyfikować skrypt powłoki, używane do uruchamiania usługi do przekazania tych opcji.
+Zrzuty sterty jest włączane przez przeniesienie opcji (czasami określane jako zdecyduje, lub parametrów) do maszyny JVM podczas uruchamiania usługi. Dla większości [Apache Hadoop](https://hadoop.apache.org/) usług, możesz zmodyfikować skrypt powłoki, używane do uruchamiania usługi do przekazania tych opcji.
 
 W każdy skrypt ma Eksport  **\* \_OPTS**, który zawiera opcje przekazywane do maszyny wirtualnej Java. Na przykład w **hadoop env.sh** skryptu wiersza, który rozpoczyna się od `export HADOOP_NAMENODE_OPTS=` zawiera opcje usługi NameNode.
 
@@ -49,7 +49,7 @@ Mapowania i redukcji procesy nieco się różnią, jak te operacje są Proces po
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]
-> Firma Microsoft zaleca, aby zmodyfikować skrypty i ustawienia mapred-site.xml, jako uchwyt Ambari replikacji zmian na węzłach w klastrze przy użyciu Apache Ambari. Zobacz [przy użyciu Ambari](#using-ambari) sekcji, aby poznać konkretne kroki.
+> Firma Microsoft zaleca używanie [Apache Ambari](https://ambari.apache.org/) do modyfikowania skryptów i ustawienia mapred-site.xml, jako Ambari obsługi replikacji zmian na węzłach w klastrze. Zobacz [przy użyciu Apache Ambari](#using-apache-ambari) sekcji, aby poznać konkretne kroki.
 
 ### <a name="enable-heap-dumps"></a>Włączanie zrzutów stosu
 
@@ -77,11 +77,11 @@ Skrypt można również wyzwalać przy **OutOfMemoryError** występuje. Na przyk
     -XX:OnOutOfMemoryError=/path/to/script
 
 > [!NOTE]
-> Ponieważ Hadoop to Rozproszony system, dowolny skrypt używany muszą znajdować się we wszystkich węzłach w klastrze, w którym ta usługa działa na.
+> Ponieważ Apache Hadoop to Rozproszony system, dowolny skrypt używany muszą znajdować się we wszystkich węzłach w klastrze, w którym ta usługa działa na.
 > 
 > Skrypt musi także być w lokalizacji, który jest dostępny dla konta, działa jako usługa i musisz podać uprawnienia do wykonywania. Na przykład możesz chcieć przechowywać skrypty w `/usr/local/bin` i użyj `chmod go+rx /usr/local/bin/filename.sh` umożliwia udzielenie odczytu i uprawnienia do wykonywania.
 
-## <a name="using-ambari"></a>Przy użyciu narzędzia Ambari
+## <a name="using-apache-ambari"></a>Przy użyciu narzędzia Apache Ambari
 
 Aby zmodyfikować konfigurację dla usługi, użyj następujących kroków:
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 264e7f3d885535304470c833e228660ba51fefc6
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 83ff526eb0bd0c51822fc52c90b958d50022a834
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312305"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497731"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania (FAQ) dotyczących usługi Azure Active Directory (Azure AD) Connect Health. Wśród często zadawanych pytań obejmują pytania dotyczące sposobu korzystania z usługi, który zawiera model rozliczeń możliwości, ograniczeń i pomocy technicznej.
@@ -62,7 +62,7 @@ Przykład:
 
 **Pytanie: czy obsługa usługi Azure AD Connect Health Azure Germany Cloud?**
 
-Program Azure AD Connect Health nie jest obsługiwana w chmurze (Niemcy) z wyjątkiem [funkcja raport błędów synchronizacji](how-to-connect-health-sync.md#object-level-synchronization-error-report-preview). 
+Program Azure AD Connect Health nie jest obsługiwana w chmurze (Niemcy) z wyjątkiem [funkcja raport błędów synchronizacji](how-to-connect-health-sync.md#object-level-synchronization-error-report). 
 
 | Role | Funkcje | Obsługiwane w niemieckiej wersji chmury |
 | ------ | --------------- | --- |

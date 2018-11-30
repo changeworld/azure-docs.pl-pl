@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 2ba7039fe42e3b5638b99161e12e9888bc852f87
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 67dbf3bdf6631785fc876283847e36349e857a77
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635016"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634646"
 ---
 # <a name="install-and-run-containers"></a>Instalowanie i uruchamianie kontenerów
 
@@ -60,9 +60,6 @@ Wykonaj poniższe kroki, aby utworzyć i pobierania informacji z zasobów platfo
 
 1. Tworzenie zasobu platformy Azure w witrynie Azure portal.  
    Jeśli chcesz użyć kontenera rozpoznawanie tekstu, należy najpierw utworzyć odpowiadający jej zasób przetwarzania obrazów w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [Szybki Start: Tworzenie konta usług Cognitive Services w witrynie Azure portal](../cognitive-services-apis-create-account.md).
-
-   > [!IMPORTANT]
-   > Zasobów przetwarzania obrazów, musisz używać warstwy cenowej F0.
 
 1. Pobieranie klucza punktu końcowego adresu URL i subskrypcji dla zasobów platformy Azure.  
    Po utworzeniu zasobu platformy Azure musi być wystąpienia odpowiedniego kontenera Rozpoznaj tekst klucza punktu końcowego adresu URL i subskrypcji z tego zasobu. Można skopiować klucza punktu końcowego adresu URL i subskrypcji z odpowiednio strony Szybki Start i klucze zasobu przetwarzania obrazów w witrynie Azure portal.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: bryanla
-ms.openlocfilehash: 4b7192b0c406d2c5df42e3bb3e604f26c56c7bd4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d4d2ce4dcda9ea72d4a33ee363efd3519c2118aa
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235194"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635836"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Rozpoczynanie pracy z certyfikatami usługi Key Vault
 Następujące scenariusze przedstawiają kilka podstawowe sposoby użycia usługi Key Vault certyfikatu zarządzania tym dodatkowe kroki wymagane do utworzenia pierwszego certyfikatu w magazynie kluczy.
@@ -51,14 +51,14 @@ Certyfikaty składają się z trzech zasoby powiązane ze sobą połączone ze s
 
 **Krok 3** — administrator firmy Contoso, wraz z pracownik firmy Contoso (Key Vault użytkownika), który jest właścicielem certyfikatów, w zależności od urzędu certyfikacji, można uzyskać certyfikat od administratora lub bezpośrednio z konta z urzędem certyfikacji.  
 
--   Rozpocznij operacja dodawania poświadczeń do magazynu kluczy przez [ustawienie wystawcy certyfikatu](/rest/api/keyvault/setcertificateissuer) zasobów. Wystawca certyfikatu jest reprezentowana w usłudze Azure klucza magazynu (KV) jako zasób CertificateIssuer jednostki. Umożliwia podawanie informacji o źródle certyfikatu KV; Nazwa wystawcy, dostawca, poświadczeń i inne szczegóły administracyjne.
+-   Rozpocznij operacja dodawania poświadczeń do magazynu kluczy przez [ustawienie wystawcy certyfikatu](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) zasobów. Wystawca certyfikatu jest reprezentowana w usłudze Azure klucza magazynu (KV) jako zasób CertificateIssuer jednostki. Umożliwia podawanie informacji o źródle certyfikatu KV; Nazwa wystawcy, dostawca, poświadczeń i inne szczegóły administracyjne.
     -   Np. MyDigiCertIssuer  
         -   Dostawca  
         -   Poświadczenia — poświadczenia konta urzędu certyfikacji. Każdym urzędzie certyfikacji ma swój własny określonych danych.  
 
      Aby uzyskać więcej informacji o tworzeniu konta przy użyciu dostawcy urzędu certyfikacji, zobacz wpis powiązane [blog usługi Key Vault](https://aka.ms/kvcertsblog).  
 
-**Krok 3.1** — skonfiguruj [certyfikatu kontakty](/rest/api/keyvault/setcertificatecontacts) powiadomień. Jest to kontaktu dla użytkownika usługi Key Vault. Usługa Key Vault nie wymusza ten krok.  
+**Krok 3.1** — skonfiguruj [certyfikatu kontakty](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) powiadomień. Jest to kontaktu dla użytkownika usługi Key Vault. Usługa Key Vault nie wymusza ten krok.  
 
 Uwaga — Ten proces, za pomocą krok 3.1, jest to jednorazowa operacja.  
 
@@ -83,7 +83,7 @@ Uwaga — Ten proces, za pomocą krok 3.1, jest to jednorazowa operacja.
       -   Informacje o odnowienie - > np. 90 dni przed wygaśnięciem  
 
   - Proces tworzenia certyfikatów jest zwykle proces asynchroniczny i obejmuje sondowanie stanu operacji certyfikatu tworzenia magazynu kluczy.  
-[Operacja pobrania certyfikatu](https://docs.microsoft.com/rest/api/keyvault/getcertificateoperation)  
+[Operacja pobrania certyfikatu](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
       -   Stan: zakończenia, nie powiodło się. informacje o błędach lub anulowane  
       -   Ze względu na opóźnienie do tworzenia można zainicjować operacji anulowania. Anuluj mogą być lub może nie obowiązywać.  
 

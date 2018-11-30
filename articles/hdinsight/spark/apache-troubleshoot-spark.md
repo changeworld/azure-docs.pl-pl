@@ -7,22 +7,22 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 835a56413a4274a2be2511278b4dedd7f83c54c3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ab7602f7bae4dfb77a733dd7efe011a29b730377
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016679"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581599"
 ---
-# <a name="troubleshoot-spark-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z platformy Spark za pomocą usługi Azure HDInsight
+# <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z platformy Apache Spark przy użyciu usługi Azure HDInsight
 
-Dowiedz się więcej o najważniejszych problemach i ich rozwiązania podczas pracy z usługą Apache Spark ładunków w Apache Ambari.
+Dowiedz się więcej o najważniejszych problemach i ich rozwiązania, pracując z [platformy Apache Spark](https://spark.apache.org/) ładunków w [Apache Ambari](https://ambari.apache.org/).
 
-## <a name="how-do-i-configure-a-spark-application-by-using-ambari-on-clusters"></a>Jak skonfigurować aplikację aparatu Spark za pomocą systemu Ambari w klastrach?
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters"></a>Jak skonfigurować aplikację platformy Apache Spark przy użyciu Apache Ambari w klastrach?
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-Wartości konfiguracji do wykonania tej procedury zostały wcześniej ustawione w HDInsight. Aby określić, które Spark konfiguracji należy ustawić i zobacz, jakie wartości [co powoduje, że platformy Spark wyjątek OutofMemoryError aplikacji](#what-causes-a-spark-application-outofmemoryerror-exception). 
+Wartości konfiguracji do wykonania tej procedury zostały wcześniej ustawione w HDInsight. Aby określić, które Spark konfiguracji należy ustawić i zobacz, jakie wartości [co powoduje, że wyjątek OutofMemoryError aplikacji platformy Apache Spark](#what-causes-a-spark-application-outofmemoryerror-exception). 
 
 1. Wybierz listy klastrów, **Spark2**.
 
@@ -84,14 +84,14 @@ Te zmiany są całego klastra, ale mogą być zastąpione, gdy prześlesz zadani
 
 ### <a name="additional-reading"></a>Materiały uzupełniające
 
-[Przesyłanie zadań platformy Spark w klastrach HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Przesyłanie zadań platformy Apache Spark w klastrach HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="how-do-i-configure-a-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Jak skonfigurować aplikację aparatu Spark za pomocą notesu Jupyter w klastrach?
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Jak skonfigurować aplikację platformy Apache Spark za pomocą notesu Jupyter w klastrach?
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-1. Aby określić, które Spark konfiguracji należy ustawić i zobacz, jakie wartości [co powoduje, że platformy Spark wyjątek OutofMemoryError aplikacji](#what-causes-a-spark-application-outofmemoryerror-exception).
+1. Aby określić, które Spark konfiguracji należy ustawić i zobacz, jakie wartości [co powoduje, że wyjątek OutofMemoryError aplikacji platformy Apache Spark](#what-causes-a-spark-application-outofmemoryerror-exception).
 
 2. W pierwszej komórki notesu programu Jupyter po **%% skonfigurować** dyrektywy, określanie konfiguracji platformy Spark w prawidłowym formacie JSON. Ustaw rzeczywistymi wartościami:
 
@@ -99,14 +99,14 @@ Te zmiany są całego klastra, ale mogą być zastąpione, gdy prześlesz zadani
 
 ### <a name="additional-reading"></a>Materiały uzupełniające
 
-[Przesyłanie zadań platformy Spark w klastrach HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Przesyłanie zadań platformy Apache Spark w klastrach HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="how-do-i-configure-a-spark-application-by-using-livy-on-clusters"></a>Jak skonfigurować aplikację aparatu Spark za pomocą usługi Livy w klastrach?
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>Jak skonfigurować aplikację platformy Apache Spark przy użyciu usługi Livy Apache w klastrach?
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-1. Aby określić, które Spark konfiguracji należy ustawić i zobacz, jakie wartości [co powoduje, że platformy Spark wyjątek OutofMemoryError aplikacji](#what-causes-a-spark-application-outofmemoryerror-exception). 
+1. Aby określić, które Spark konfiguracji należy ustawić i zobacz, jakie wartości [co powoduje, że wyjątek OutofMemoryError aplikacji platformy Apache Spark](#what-causes-a-spark-application-outofmemoryerror-exception). 
 
 2. Przesyłanie aplikacji Spark usługi Livy za pomocą klienta REST, takich jak narzędzie cURL. Użyj polecenia podobnego do następującego. Ustaw rzeczywistymi wartościami:
 
@@ -116,14 +116,14 @@ Te zmiany są całego klastra, ale mogą być zastąpione, gdy prześlesz zadani
 
 ### <a name="additional-reading"></a>Materiały uzupełniające
 
-[Przesyłanie zadań platformy Spark w klastrach HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Przesyłanie zadań platformy Apache Spark w klastrach HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="how-do-i-configure-a-spark-application-by-using-spark-submit-on-clusters"></a>Jak skonfigurować aplikację za pomocą skryptu spark-submit platformy Spark w klastrach?
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters"></a>Jak skonfigurować aplikację za pomocą skryptu spark-submit Apache Spark w klastrach?
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-1. Aby określić, które Spark konfiguracji należy ustawić i zobacz, jakie wartości [co powoduje, że platformy Spark wyjątek OutofMemoryError aplikacji](#what-causes-a-spark-application-outofmemoryerror-exception).
+1. Aby określić, które Spark konfiguracji należy ustawić i zobacz, jakie wartości [co powoduje, że wyjątek OutofMemoryError aplikacji platformy Apache Spark](#what-causes-a-spark-application-outofmemoryerror-exception).
 
 2. Uruchamianie powłoki spark przy użyciu polecenia podobnego do następującego. Zmień rzeczywistej wartości konfiguracji zgodnie z potrzebami: 
 
@@ -133,10 +133,10 @@ Te zmiany są całego klastra, ale mogą być zastąpione, gdy prześlesz zadani
 
 ### <a name="additional-reading"></a>Materiały uzupełniające
 
-[Przesyłanie zadań platformy Spark w klastrach HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Przesyłanie zadań platformy Apache Spark w klastrach HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="what-causes-a-spark-application-outofmemoryerror-exception"></a>Co powoduje, że platformy Spark wyjątek OutofMemoryError aplikacji?
+## <a name="what-causes-an-apache-spark-application-outofmemoryerror-exception"></a>Co powoduje, że wyjątek OutofMemoryError aplikacji platformy Apache Spark?
 
 ### <a name="detailed-description"></a>Szczegółowy opis
 
@@ -217,8 +217,8 @@ Najbardziej prawdopodobną przyczyną tego wyjątku to, że nie ma wystarczając
 
 ### <a name="additional-reading"></a>Materiały uzupełniające
 
-- [Omówienie zarządzania pamięci aparatu Spark](http://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
-- [Debugowanie aplikacji Spark w klastrze usługi HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
+- [Omówienie zarządzania pamięci platformy Apache Spark](http://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
+- [Debugowanie aplikacji platformy Apache Spark w klastrze usługi HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
 
 
 ### <a name="see-also"></a>Zobacz też

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: e5a69fa2ee9a8c4baaeb6586627c7a9a3c9ba4a8
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 53b78231dba4f525410f53dc1ae60901c67f043d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347957"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634510"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Samanage dla automatycznej aprowizacji użytkowników
 
@@ -141,7 +141,7 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
     ![Samanage inicjowania obsługi administracyjnej.](./media/samanage-provisioning-tutorial/ProvisioningStatus.png)
 
-15. Definiowanie użytkowników i/lub grup, które chcesz, aby obsługiwać je na Samanage, wybierając odpowiednie wartości w **zakres** w **ustawienia** sekcji.
+15. Definiowanie użytkowników i/lub grup, które chcesz, aby obsługiwać je na Samanage, wybierając odpowiednie wartości w **zakres** w **ustawienia** sekcji. Podczas wybierania **Synchronizuj wszystkich użytkowników i grup** opcji, należy wziąć pod uwagę ograniczenia zgodnie z opisem w **ograniczenia łącznika** poniższej sekcji.
 
     ![Samanage inicjowania obsługi administracyjnej.](./media/samanage-provisioning-tutorial/ScopeSync.png)
 
@@ -153,6 +153,10 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 Ta operacja uruchamia początkowa synchronizacja wszystkich użytkowników i/lub grup zdefiniowanych w **zakres** w **ustawienia** sekcji. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak działa usługa aprowizacji usługi Azure AD. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do raportu działań w tym artykule opisano wszystkie akcje wykonywane przez usługę Azure AD, inicjowania obsługi usługi na Samanage aprowizacji.
 
 Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
+
+## <a name="connector-limitations"></a>Ograniczenia łącznika
+
+* Jeśli **Synchronizuj wszystkich użytkowników i grup** opcja jest zaznaczona, a wartość domyślna jest skonfigurowana dla Samanage **role** atrybut, upewnij się, że żądaną wartość w obszarze **wartość domyślna, jeśli ma wartość null (to opcjonalnie)** pole danych jest wyrażona w następującym formacie **{"displayName": "rolę"}** gdzie roli jest wartością domyślną.
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

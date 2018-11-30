@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 91cfa35cd10772da0042566bdd9030f780329f93
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 31070d03711891353823a72ed9c805995d36024b
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415189"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633167"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor rozwiązania — często zadawane pytania
 
@@ -26,7 +26,7 @@ ms.locfileid: "50415189"
 
 Ten artykuł zawiera często zadawane pytania (FAQ) dotyczących Network Performance Monitor (NPM) na platformie Azure
 
-[Monitor wydajności sieci](/azure/networking/network-monitoring-overview) jest oparta na chmurze [monitorowania sieci hybrydowych](log-analytics-network-performance-monitor-performance-monitor.md) rozwiązanie, które pomaga monitorować wydajność sieci, między różnymi punktami w infrastrukturze sieci. Pozwala on także monitorować łączność sieciową do [punktów końcowych usług i aplikacji](log-analytics-network-performance-monitor-service-endpoint.md) i [monitorowanie wydajności usługi Azure ExpressRoute](log-analytics-network-performance-monitor-expressroute.md). 
+[Monitor wydajności sieci](/azure/networking/network-monitoring-overview) jest oparta na chmurze [monitorowania sieci hybrydowych](../azure-monitor/insights/network-performance-monitor-performance-monitor.md) rozwiązanie, które pomaga monitorować wydajność sieci, między różnymi punktami w infrastrukturze sieci. Pozwala on także monitorować łączność sieciową do [punktów końcowych usług i aplikacji](../azure-monitor/insights/network-performance-monitor-service-endpoint.md) i [monitorowanie wydajności usługi Azure ExpressRoute](../azure-monitor/insights/network-performance-monitor-expressroute.md). 
 
 Rozwiązanie Network Performance Monitor wykrywa problemy sieciowe, takie jak blackholing ruchu, routingu błędy i problemy, które metody monitorowania sieci są konwencjonalne funkcje nie są w stanie wykryć. Rozwiązanie generuje alerty i powiadamia użytkownika, gdy nastąpi naruszenie progu związanego z połączeniem sieciowym. Ponadto gwarantuje ono szybkie wykrywanie problemów z wydajnością sieci i lokalizuje źródło problemu w określonym segmencie lub urządzeniu w sieci. 
 
@@ -47,21 +47,21 @@ Możliwość monitorowania sieci przy użyciu węzłów opartych na systemie Lin
 Uruchamianie rozwiązania NPM w węźle Monitorowanie sieci maszyn wirtualnych, węzły powinny mieć co najmniej 500 MB pamięci i jednego rdzenia. Nie trzeba używać oddzielnych węzłów do uruchamiania Menedżera NPM. Rozwiązanie można uruchomić na węzły, które mają innych obciążeń uruchomionych na nim. Rozwiązanie ma możliwości, aby zatrzymać proces monitorowania, w przypadku, gdy jej korzysta ponad 5% zasobów Procesora.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Aby użyć Menedżera NPM, należy się połączyć mojego węzłów jako funkcja agentów bezpośrednich lub za pomocą programu System Center Operations Manager?
-Monitor wydajności i możliwości usługi Monitor łączności obsługują węzłów [podłączony jako agentów bezpośrednich](log-analytics-agent-windows.md) także [połączone za pośrednictwem programu Operations Manager](log-analytics-om-agents.md).
+Monitor wydajności i możliwości usługi Monitor łączności obsługują węzłów [podłączony jako agentów bezpośrednich](../azure-monitor/platform/agent-windows.md) także [połączone za pośrednictwem programu Operations Manager](log-analytics-om-agents.md).
 
 Aby uzyskać możliwość monitorowania usługi ExpressRoute węzły na platformie Azure powinny być połączone jako agentów bezpośrednich tylko. Węzły platformy Azure, które są połączone za pomocą programu Operations Manager nie są obsługiwane. Dla węzłów w środowisku lokalnym węzły połączone jako bezpośredni agenci, a także za pośrednictwem programu Operations Manager są obsługiwane w przypadku monitorowania obwodu usługi ExpressRoute.
 
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Należy wybrać protokół TCP i ICMP do monitorowania?
 Jeśli monitorujesz sieci przy użyciu węzłów na serwerze Windows zalecamy użyć TCP jako protokół monitorowania, ponieważ zapewnia większą dokładność. 
 
-Protokół ICMP jest zalecana dla Windows pulpitów/kliencie systemu Windows w oparciu o system operacyjny węzłów. Ta platforma nie zezwala na TCP dane wysłane za pośrednictwem gniazd sieciowych, które NPM, aby odnaleźć topologię sieci.
+Protokół ICMP jest zalecana dla Windows pulpitów/kliencie systemu Windows w oparciu o system operacyjny węzłów. Ta platforma nie zezwala na dane wysłane za pośrednictwem gniazd sieciowych, które używa NPM, aby odnaleźć topologię sieci TCP.
 
-Więcej informacji można uzyskać na względne zalety każdego protokołu [tutaj](log-analytics-network-performance-monitor-performance-monitor.md#choose-the-protocol).
+Więcej informacji można uzyskać na względne zalety każdego protokołu [tutaj](../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol).
 
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Jak można skonfigurować węzła do obsługi monitorowania przy użyciu protokołu TCP
 Dla węzła do obsługi monitorowania przy użyciu protokołu TCP: 
 * Upewnij się, że platforma węzeł systemu Windows Server (2008 z dodatkiem SP1 lub nowszym).
-* Uruchom [EnableRules.ps1](https://aka.ms/npmpowershellscript) skrypt programu Powershell w węźle. Zobacz [instrukcje](log-analytics-network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) Aby uzyskać więcej informacji.
+* Uruchom [EnableRules.ps1](https://aka.ms/npmpowershellscript) skrypt programu Powershell w węźle. Zobacz [instrukcje](../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) Aby uzyskać więcej informacji.
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Jak zmienić port TCP używany przez narzędzie NPM monitorowania?
@@ -126,10 +126,10 @@ Aby uzyskać informacje o poziomie obwodu, użyj poniżej wymienionych zapytania
     | project CircuitName,PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Które regiony są obsługiwane w przypadku monitora wydajności Menedżera NPM?
-NPM można monitorować łączność między sieciami w dowolnej części świata, z obszaru roboczego, który znajduje się w jednym z [obsługiwane regiony](log-analytics-network-performance-monitor.md#supported-regions)
+NPM można monitorować łączność między sieciami w dowolnej części świata, z obszaru roboczego, który znajduje się w jednym z [obsługiwane regiony](../azure-monitor/insights/network-performance-monitor.md#supported-regions)
 
 ### <a name="which-regions-are-supported-for-npms-service-connectivity-monitor"></a>Które regiony są obsługiwane w przypadku Monitor łączności usługi NPM?
-NPM można monitorować łączność z usługami w dowolnej części świata, z obszaru roboczego, który znajduje się w jednym z [obsługiwane regiony](log-analytics-network-performance-monitor.md#supported-regions)
+NPM można monitorować łączność z usługami w dowolnej części świata, z obszaru roboczego, który znajduje się w jednym z [obsługiwane regiony](../azure-monitor/insights/network-performance-monitor.md#supported-regions)
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Które regiony są obsługiwane w przypadku rozwiązania NPM Monitor usługi ExpressRoute?
 NPM można monitorować obwodów usługi ExpressRoute znajduje się w dowolnym regionie systemu Azure. Aby dołączyć do usługi NPM, będzie wymagać obszaru roboczego usługi Log Analytics, który musi być hostowany w jednym z [obsługiwane regiony](/azure/expressroute/how-to-npm#regions)
@@ -222,4 +222,4 @@ NPM zaokrągla liczby opóźnienia w Interfejsie i w milisekundach. Te same dane
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Więcej informacji na temat rozwiązania Network Performance Monitor, odwołując się do [rozwiązanie Network Performance Monitor na platformie Azure](log-analytics-network-performance-monitor.md).
+- Więcej informacji na temat rozwiązania Network Performance Monitor, odwołując się do [rozwiązanie Network Performance Monitor na platformie Azure](../azure-monitor/insights/network-performance-monitor.md).

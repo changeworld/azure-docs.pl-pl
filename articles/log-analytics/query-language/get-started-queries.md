@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 0ee34d99c78eb090514385de16cd77d04ddca4e4
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 32e95c9098999305d4c48d5c43fae5ef6d3ac36e
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267702"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619779"
 ---
 # <a name="get-started-with-queries-in-log-analytics"></a>Wprowadzenie do zapytań w usłudze Log Analytics
 
@@ -138,7 +138,7 @@ SecurityEvent
 ## <a name="specify-a-time-range"></a>Określ zakres czasu
 
 ### <a name="time-picker"></a>Selektor godziny
-Selektor godziny znajduje się w lewym górnym rogu, co oznacza, że firma Microsoft zadajesz zapytanie tylko rekordy z ostatnich 24 godzin. Jest to domyślny zakres czasu stosowane do wszystkich zapytań. Aby uzyskać tylko rekordy z ostatniej godziny, wybierz pozycję _Ostatnia godzina_ i ponownie uruchom zapytanie.
+Selektor czasu jest obok przycisku Uruchom i wskazuje, że firma Microsoft zadajesz zapytanie tylko rekordy z ostatnich 24 godzin. Jest to domyślny zakres czasu stosowane do wszystkich zapytań. Aby uzyskać tylko rekordy z ostatniej godziny, wybierz pozycję _Ostatnia godzina_ i ponownie uruchom zapytanie.
 
 ![Selektor czasu](media/get-started-queries/timepicker.png)
 
@@ -226,14 +226,14 @@ Perf
 ### <a name="summarize-by-a-time-column"></a>Sumuj według kolumny godziny
 Grupowanie wyników można również opierać się na kolumnę czasu lub wartości ciągłej w innym. Po prostu podsumowywanie `by TimeGenerated` jednak utworzyć grupy dla każdego pojedynczego milisekund w przedziale czasu, ponieważ są unikatowe wartości. 
 
-Aby utworzyć grupy na podstawie wartości ciągłej, najlepiej podziału zakresu w jednostki zarządzane przy użyciu **bin**. Następujące zapytanie analizuje *wydajności* rekordy, które mierzą wolnej pamięci (*dostępnej ilości megabajtów*) na określonym komputerze. Obliczana średnia wartość dla każdego okresu Jeśli 1 godzinę w ciągu ostatnich 2 dni:
+Aby utworzyć grupy na podstawie wartości ciągłej, najlepiej podziału zakresu w jednostki zarządzane przy użyciu **bin**. Następujące zapytanie analizuje *wydajności* rekordy, które mierzą wolnej pamięci (*dostępnej ilości megabajtów*) na określonym komputerze. Obliczana średnia wartość dla każdego okresu Jeśli 1 godzinę w ciągu ostatnich 7 dni:
 
 ```Kusto
 Perf 
-| where TimeGenerated > ago(2d)
+| where TimeGenerated > ago(7d)
 | where Computer == "ContosoAzADDS2" 
 | where CounterName == "Available MBytes" 
-| summarize count() by bin(TimeGenerated, 1h)
+| summarize avg(CounterValue) by bin(TimeGenerated, 1h)
 ```
 
 Aby dane wyjściowe bardziej zrozumiały, wybierz wyświetlania go jako wykres czasu, przedstawiając ilość dostępnej pamięci w czasie:

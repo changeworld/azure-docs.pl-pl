@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: b46fa5eb9772a19a5613fc276071167d884f6057
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 04046b4c7c36418b9024a690ad5279f9e34578a5
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008763"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583639"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Opracowywanie topologii usługi Apache Storm na HDInsight przy użyciu języka Python
 
-Dowiedz się, jak utworzyć topologii Apache Storm, który używa składników w języku Python. Apache Storm obsługuje wiele języków, nawet co pozwoli na łączenie składników w kilku językach, w jednym topologii. Framework strumienia (wprowadzona w systemie Storm 0.10.0) umożliwia łatwe tworzenie rozwiązań korzystających z składników w języku Python.
+Dowiedz się, jak utworzyć [Apache Storm](http://storm.apache.org/) topologię, która używa składników w języku Python. Apache Storm obsługuje wiele języków, nawet co pozwoli na łączenie składników w kilku językach, w jednym topologii. [Strumień](http://storm.apache.org/releases/current/flux.html) framework (wprowadzona w systemie Storm 0.10.0) pozwala na łatwe tworzenie rozwiązań korzystających z składników w języku Python.
 
 > [!IMPORTANT]
 > Informacje przedstawione w tym dokumencie został przetestowany przy użyciu technologii Storm w HDInsight 3.6. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
@@ -32,7 +32,7 @@ Kod dla tego projektu znajduje się w temacie [ https://github.com/Azure-Samples
 
 * Java JDK 1.8 lub nowszej
 
-* Narzędzie maven 3
+* [Narzędzia Apache Maven 3](https://maven.apache.org/download.cgi)
 
 * (Opcjonalnie) Lokalne Środowisko deweloperskie systemu Storm. W lokalnym środowisku Storm jest wymagane tylko w przypadku, jeśli chcesz uruchamiać lokalnie topologii. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska deweloperskiego](http://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html).
 
@@ -148,5 +148,5 @@ Aby zatrzymać topologię, użyj __klawisze Ctrl + C__.
 
 Zobacz następujące dokumenty, aby inne sposoby korzystania z języka Python za pomocą HDInsight:
 
-* [Jak używać języka Python dla zadań MapReduce przesyłania strumieniowego](../hadoop/apache-hadoop-streaming-python.md)
-* [Jak używać języka Python określone funkcje użytkownika (UDF) w programów Pig i Hive](../hadoop/python-udf-hdinsight.md)
+* [Jak używać języka Python dla zadań Apache Hadoop MapReduce przesyłania strumieniowego](../hadoop/apache-hadoop-streaming-python.md)
+* [Jak używać języka Python określone funkcje użytkownika (UDF) w Apache Pig i Apache Hive](../hadoop/python-udf-hdinsight.md)

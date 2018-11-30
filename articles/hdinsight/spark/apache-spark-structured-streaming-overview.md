@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: maxluk
-ms.openlocfilehash: 7470783ba3ebac652c83c397ba2bbe683023c657
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 23702c12f5ec538da4b980ed42fe2282dea69409
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041589"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582228"
 ---
-# <a name="overview-of-spark-structured-streaming"></a>Omówienie platformy Spark Structured Streaming
+# <a name="overview-of-apache-spark-structured-streaming"></a>Przegląd platformy Apache Spark Structured Streaming
 
-Przesyłanie strumieniowe ze strukturą platformy Spark pozwala na implementowanie skalowalne o wysokiej przepływności, odpornej na uszkodzenia aplikacji do przetwarzania strumieni danych. Przesyłanie strumieniowe ze strukturą oparto na aparatu Spark SQL i zwiększa się po konstrukcji z ramek danych SQL platformy Spark i zestawy danych, dzięki czemu można napisać, przesyłanie strumieniowe zapytania w taki sam sposób napisać wsadowe.  
+[Platforma Apache Spark](https://spark.apache.org/) przesyłanie strumieniowe ze strukturą, umożliwia wdrożenie skalowalne o wysokiej przepływności, odpornej na uszkodzenia aplikacji do przetwarzania strumieni danych. Przesyłanie strumieniowe ze strukturą oparto na aparatu Spark SQL i zwiększa się po konstrukcji z ramek danych SQL platformy Spark i zestawy danych, dzięki czemu można napisać, przesyłanie strumieniowe zapytania w taki sam sposób napisać wsadowe.  
 
-Aplikacje do przesyłania strumieniowego ze strukturą działały w klastrach HDInsight Spark i nawiązać połączenie z danych przesyłanych strumieniowo z platformy Kafka, TCP gniazda (na potrzeby debugowania), usługi Azure Storage lub Azure Data Lake Store. Ostatnie dwie opcje, które zależą od usługi zewnętrznej usługi storage umożliwiają wyszukiwać nowe pliki dodane do magazynu i przetwarzanie ich zawartość, tak, jakby były przesyłane strumieniowo. 
+Aplikacje do przesyłania strumieniowego Structured działały w klastrach HDInsight Spark i połącz się dane przesyłane strumieniowo z [platformy Apache Kafka](https://kafka.apache.org/), TCP gniazda (na potrzeby debugowania), usługi Azure Storage lub Azure Data Lake Store. Ostatnie dwie opcje, które zależą od usługi zewnętrznej usługi storage umożliwiają wyszukiwać nowe pliki dodane do magazynu i przetwarzanie ich zawartość, tak, jakby były przesyłane strumieniowo. 
 
 Przesyłanie strumieniowe ze strukturą tworzy zapytanie długotrwałych, podczas którego operacje stosowane do danych wejściowych, takich jak zaznaczenia, projekcji, agregacji, obsługi okien i dołączenie do przesyłania strumieniowego ramkę danych za pomocą odwołania elementy Dataframe. Następnie wyjściowe wyniki do file storage (Azure Storage blob lub Data Lake Store) lub dowolnym magazynem danych za pomocą kodu niestandardowego (np. bazy danych SQL lub usługi Power BI). Przesyłanie strumieniowe ze strukturą także dane wyjściowe do konsoli debugowania lokalnie, a także do tabeli w pamięci, dzięki czemu możesz zobaczyć dane wygenerowane na potrzeby debugowania w HDInsight. 
 
@@ -124,7 +124,7 @@ To zapytanie daje wyniki podobne do następujących:
 |{u'start ": u" 2016-07-26T07:00:00.000Z ", u'end"...  |95 |   96.980971 | 99 |
 |{u'start ": u" 2016-07-26T08:00:00.000Z ", u'end"...  |95 |   96.965997 | 99 |  
 
-Szczegółowe informacje dotyczące interfejsu API platformy Spark ze strukturą Stream, wraz z danych wejściowych źródeł, operacji i dane wyjściowe wychwytywanie ją obsługuje, zobacz [Spark Structured Streaming Programming Guide](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html).
+Szczegółowe informacje dotyczące interfejsu API platformy Spark ze strukturą Stream, wraz z danych wejściowych źródeł, operacji i dane wyjściowe wychwytywanie ją obsługuje, zobacz [Apache Spark Structured Streaming Programming Guide](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html).
 
 ## <a name="checkpointing-and-write-ahead-logs"></a>Tworzenie punktów kontrolnych i zapisu z wyprzedzeniem dzienników
 
@@ -132,14 +132,14 @@ Aby zapewnić odporność i odporności na uszkodzenia, przesyłanie strumieniow
 
 ## <a name="deploying-spark-streaming-applications"></a>Wdrażanie aplikacji do przesyłania strumieniowego platformy Spark
 
-Zazwyczaj tworzenie aplikacji Spark Streaming lokalnie do pliku JAR, a następnie wdrożyć go na platformę Spark w HDInsight przez skopiowanie pliku JAR do domyślnego magazynu dołączone do klastra usługi HDInsight. Aplikację można uruchomić za pomocą interfejsów API REST usługi LIVY, które są dostępne z klastra przy użyciu operacji POST. Treść wpisu zawiera dokument JSON, który zawiera ścieżkę do pliku JAR, nazwa klasy, którego metoda główna definiuje i przesyłanie aplikacji, i opcjonalnie wymagań dotyczących zasobów zadania (np. liczba executors, pamięci i rdzeni) , a wszystkie ustawienia konfiguracji kodu aplikacji wymaga.
+Zazwyczaj tworzenie aplikacji Spark Streaming lokalnie do pliku JAR, a następnie wdrożyć go na platformę Spark w HDInsight przez skopiowanie pliku JAR do domyślnego magazynu dołączone do klastra usługi HDInsight. Można uruchomić aplikacji za pomocą [Apache, usługi Livy](https://livy.incubator.apache.org/) interfejsów API REST dostępne z klastra przy użyciu operacji POST. Treść wpisu zawiera dokument JSON, który zawiera ścieżkę do pliku JAR, nazwa klasy, którego metoda główna definiuje i przesyłanie aplikacji, i opcjonalnie wymagań dotyczących zasobów zadania (np. liczba executors, pamięci i rdzeni) , a wszystkie ustawienia konfiguracji kodu aplikacji wymaga.
 
 ![Wdrażanie aplikacji usługi przesyłania strumieniowego platformy Spark](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-Można również sprawdzić stan wszystkich aplikacji, za pomocą żądanie GET względem punktu końcowego usługi LIVY. Na koniec możesz zakończyć uruchomionej aplikacji, wysyłając żądanie DELETE względem punktu końcowego usługi LIVY. Szczegółowe informacje na temat interfejsu API usługi LIVY, [zdalnej obsługi zadań przy użyciu usługi LIVY](apache-spark-livy-rest-interface.md)
+Można również sprawdzić stan wszystkich aplikacji, za pomocą żądanie GET względem punktu końcowego usługi LIVY. Na koniec możesz zakończyć uruchomionej aplikacji, wysyłając żądanie DELETE względem punktu końcowego usługi LIVY. Szczegółowe informacje na temat interfejsu API usługi LIVY, [zdalnej obsługi zadań przy użyciu usługi LIVY Apache](apache-spark-livy-rest-interface.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Tworzenie klastra Apache Spark w HDInsight](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Platforma Spark Structured Streaming Programming Guide](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
-* [Uruchamianie zadań Spark zdalnie przy użyciu usługi LIVY](apache-spark-livy-rest-interface.md)
+* [Przewodnik programowania w przesyłania strumieniowego ze strukturą platformy Apache Spark](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
+* [Uruchamiać zadania Apache Spark zdalnie za pomocą usługi LIVY Apache](apache-spark-livy-rest-interface.md)

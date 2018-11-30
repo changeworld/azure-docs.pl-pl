@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a5deccbe87bc8de6f6438259c2a43cc4618c24ab
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a4c429b1c54c6bf71175abbc763a178792281a0f
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016713"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633150"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Łączenie programu Configuration Manager do usługi Log Analytics
 Można połączyć środowiska programu System Center Configuration Manager z usługą Azure Log Analytics, synchronizować dane kolekcji urządzeń i odwołują się do tych kolekcji w usłudze Log Analytics i Azure Automation.  
@@ -57,7 +57,7 @@ W poniższej procedurze, można przyznać *Współautor* roli w obszarze roboczy
 6. W obszarze **Przypisz dostęp do** listy rozwijanej wybierz aplikacji programu Configuration Manager wcześniej utworzone w AD, a następnie kliknij przycisk **OK**.  
 
 ## <a name="download-and-install-the-agent"></a>Pobierz i zainstaluj agenta
-Zapoznaj się z artykułem [Windows łączenie komputerów do usługi Log Analytics na platformie Azure](log-analytics-agent-windows.md) Aby poznać dostępne metody instalacji programu Microsoft Monitoring Agent na komputerze hostującym usługi programu Configuration Manager Rola systemu lokacji punktu połączenia.  
+Zapoznaj się z artykułem [Windows łączenie komputerów do usługi Log Analytics na platformie Azure](../azure-monitor/platform/agent-windows.md) Aby poznać dostępne metody instalacji programu Microsoft Monitoring Agent na komputerze hostującym usługi programu Configuration Manager Rola systemu lokacji punktu połączenia.  
 
 ## <a name="add-a-log-analytics-connection-to-configuration-manager"></a>Dodawanie połączenia usługi Log Analytics do programu Configuration Manager
 Aby dodać połączenie usługi Log Analytics, środowiska programu Configuration Manager musi mieć [punkt połączenia z usługą](https://technet.microsoft.com/library/mt627781.aspx) skonfigurowane dla trybu online.

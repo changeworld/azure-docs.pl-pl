@@ -13,29 +13,33 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 11/16/2018
 ms.author: cwatson
-ms.openlocfilehash: 9067162c6f1bd95b0a1c25bef17836b19ecf6946
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 80721fc82a54c62c982298cb8eabb999caaf1dfb
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276113"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583112"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Pobieranie i wyświetlanie Azure faktury i dane dotyczące dziennego wykorzystania
-Możesz pobrać fakturę z [witryny Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) lub wysłać w wiadomości e-mail. Aby pobrać z dziennym użyciem, przejdź do [Centrum konta platformy Azure](https://account.azure.com/Subscriptions). Tylko określone role, które ma uprawnienia do faktury i informacje o użyciu, takich jak konto administratora. Aby dowiedzieć się więcej na temat uzyskiwania dostępu do informacji dotyczących rozliczeń, zobacz [Manage access to Azure billing using roles (Zarządzanie dostępem do rozliczeń platformy Azure przy użyciu ról)](billing-manage-access.md).
 
-W tym artykule nie ma zastosowania do klientów z umową Enterprise Agreement (EA). Jeśli jesteś klientem z umową EA, fakturach są wysyłane bezpośrednio do administratorów rejestracji.
+W przypadku większości subskrypcji, możesz pobrać fakturę z [witryny Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) lub wysłać w wiadomości e-mail. Jeśli jesteś klientem Azure z umową Enterprise Agreement (EA klienta), nie może pobrać faktury w organizacji. Faktury są wysyłane do spojrzenia jest skonfigurowany do otrzymywać faktur do rejestracji.
+
+Jeśli chcesz pobrać użycia jako klientem z umową EA, jest dostępna w [witryny Azure portal](https://portal.azure.com/) > **Zarządzanie kosztami i rozliczenia** > **użycie i opłaty za**. W przypadku innych subskrypcji, przejdź do [Centrum konta platformy Azure](https://account.azure.com/Subscriptions).
+
+Tylko określone role, które ma uprawnienia do pobrać faktur i danych użycia informacji, takich jak konta administratora lub administratora przedsiębiorstwa dotyczących rozliczeń. Aby dowiedzieć się więcej na temat uzyskiwania dostępu do informacji dotyczących rozliczeń, zobacz [Manage access to Azure billing using roles (Zarządzanie dostępem do rozliczeń platformy Azure przy użyciu ról)](billing-manage-access.md).
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-> [!div class="nextstepaction"]
-> [Pomoc w ulepszaniu dokumentów rozliczeniowych platformy Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091)
+## <a name="download-or-view-your-invoice"></a>Pobieranie i wyświetlanie na fakturze
 
-## <a name="get-your-invoice-in-email-pdf"></a>Pobierz fakturę w wiadomości e-mail (PDF)
+ Jeśli jesteś klientem z umową EA, nie może pobrać faktury w organizacji. Faktury są wysyłane do spojrzenia jest skonfigurowany do otrzymywać faktur do rejestracji. W przypadku innych subskrypcji możesz pobrać fakturę w wiadomości e-mail lub go pobrać z witryny Azure portal.
+
+### <a name="get-your-invoice-in-email-pdf"></a>Pobierz fakturę w wiadomości e-mail (PDF)
 Można włączyć i skonfigurować dodatkowych adresatów otrzymujących subskrypcji platformy Azure faktury w wiadomości e-mail. Ta funkcja nie może być dostępna dla niektórych subskrypcji, takie jak oferty pomocy technicznej, umowy Enterprise Agreement lub Azure in Open.
 
-1. Wybierz swoją subskrypcję z [strony subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Włączanie w każdej subskrypcji, których jesteś właścicielem. Kliknij przycisk **faktur** następnie **E-mail faktury**. 
+1. Wybierz swoją subskrypcję z [strony subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Zgódź się dla każdej subskrypcji, których jesteś właścicielem. Kliknij przycisk **faktur** następnie **E-mail faktury**. 
 
     ![Zrzut ekranu pokazujący zgłoszenie zgody na uczestnictwo w usłudze flow](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
     
@@ -50,11 +54,11 @@ Można włączyć i skonfigurować dodatkowych adresatów otrzymujących subskry
 Jeśli nie otrzymasz wiadomość e-mail po wykonaniu kroków upewnij się, Twój adres e-mail jest poprawny w [preferencje dotyczące komunikacji w Twoim profilu](https://account.windowsazure.com/profile).
 
 ### <a name="opt-out-from-getting-your-invoice-in-email"></a>Brak zgody na przed pobraniem na fakturze w wiadomości e-mail
-Jeśli nie chcesz uzyskać fakturę w wiadomości e-mail, kliknij pozycję opcjonalna się faktur pocztą e-mail. Spowoduje to usunięcie żadne adresy e-mail, ustaw w celu otrzymywania faktur pocztą e-mail. Jeśli postanowisz ponownie w przypadku należy ponownie skonfigurować adresatów.
+Jeśli nie chcesz uzyskać fakturę w wiadomości e-mail, kliknij przycisk **zrezygnować z faktur pocztą e-mail**. Ta opcja usuwa wszystkie adresy e-mail, ustaw w celu otrzymywania faktur pocztą e-mail. Jeśli postanowisz w trzeba będzie ponownie skonfigurować adresatów.
 
  ![Zrzut ekranu pokazujący przepływ rezygnacji z](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
 
-## <a name="download-invoice-from-azure-portal-pdf"></a>Pobierz fakturę z witryny Azure portal (PDF)
+### <a name="download-invoice-from-azure-portal-pdf"></a>Pobierz fakturę z witryny Azure portal (PDF)
 
 1. Wybierz swoją subskrypcję z [strony subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) w witrynie Azure portal jako [użytkownikowi dostęp do faktury](billing-manage-access.md).
 
@@ -70,7 +74,23 @@ Jeśli nie chcesz uzyskać fakturę w wiadomości e-mail, kliknij pozycję opcjo
 
 Aby uzyskać więcej informacji na temat fakturze zobacz [opis zawartości rachunku dla systemu Microsoft Azure](billing-understand-your-bill.md). Aby uzyskać pomoc w zarządzaniu kosztami, zobacz [zapobieganie powstawaniu nieoczekiwanych kosztów za pomocą rozliczeń platformy Azure i zarządzania kosztami](billing-getting-started.md).
 
-## <a name="download-usage-from-the-account-center-csv"></a>Pobierz dane użycia z Centrum kont (.csv)
+### <a name="noinvoice"></a> Dlaczego nie widzę faktury dla ostatniego okresu rozliczeniowego?
+
+Może istnieć kilka przyczyn, dla których faktura nie jest widoczna:
+
+- Masz miesięczną kwotę środków w ramach subskrypcji, która nie została przekroczona, lub masz bezpłatną wersję próbną. Faktura jest generowana tylko w sytuacji, gdy masz do zapłacenia pewną kwotę.
+
+- Od dnia zasubskrybowania platformy Azure upłynęło mniej niż 30 dni.
+
+- Faktura nie została jeszcze wygenerowana. Poczekaj na zakończenie okresu rozliczeniowego.
+
+- Jeśli nie jesteś administratorem konta, starsze faktury mogą być dla Ciebie niedostępne.
+
+## <a name="download-usage"></a>Pobierz dane użycia
+
+ Większość subskrypcji można znaleźć w pliku dzienne użycie w [Centrum konta platformy Azure](https://account.azure.com/Subscriptions). Jeśli chcesz pobrać użycia jako klientem z umową EA, jest dostępna w [witryny Azure portal](https://portal.azure.com/) > **Zarządzanie kosztami i rozliczenia** > **użycie i opłaty za**. 
+
+### <a name="download-usage-from-the-account-center-csv"></a>Pobierz dane użycia z Centrum kont (.csv)
 
 1. Zaloguj się do [Centrum konta platformy Azure](https://account.windowsazure.com/subscriptions) stanowisku administratora konta.
 
@@ -98,18 +118,18 @@ Tylko Administrator konta może uzyskać dostęp do Centrum konta platformy Azur
 
 Aby uzyskać więcej informacji na temat dziennego użycia, zobacz [Informacje o rachunku za korzystanie z platformy Microsoft Azure](billing-understand-your-bill.md). Aby uzyskać pomoc w zarządzaniu kosztami, zobacz [zapobieganie powstawaniu nieoczekiwanych kosztów za pomocą rozliczeń platformy Azure i zarządzania kosztami](billing-getting-started.md).
 
-## <a name="noinvoice"></a> Dlaczego nie widzę faktury dla ostatniego okresu rozliczeniowego?
+### <a name="download-usage-for-ea-customers"></a>Pobierz dane użycia dla klientów z umową EA
 
-Może istnieć kilka przyczyn, dla których faktura nie jest widoczna:
+Aby wyświetlić i pobrać dane użycia jako klient korzystający z umową EA, musi być Administrator przedsiębiorstwa lub właściciel konta lub administratora działu z włączonymi zasadami opłaty widoku.
 
-- Masz miesięczną kwotę środków w ramach subskrypcji, która nie została przekroczona, lub masz bezpłatną wersję próbną. Faktura jest generowana tylko w sytuacji, gdy masz do zapłacenia pewną kwotę.
+1. Zaloguj się w witrynie [Azure Portal]( http://portal.azure.com).
+1. Wyszukiwanie **Cost Management + rozliczenia**.
 
-- Od dnia zasubskrybowania platformy Azure upłynęło mniej niż 30 dni.
+    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)
 
-- Faktura nie została jeszcze wygenerowana. Poczekaj na zakończenie okresu rozliczeniowego.
+1. Wybierz **użycie i opłaty za**.
+1. Na miesiąc, którą chcesz pobrać, zaznacz **Pobierz**.
 
-- Jeśli nie jesteś administratorem konta, starsze faktury mogą być dla Ciebie niedostępne.
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
-Jeśli nadal masz dodatkowe pytania, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.
-
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

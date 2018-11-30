@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 88df62b6e8c4eb519c51d82763634cf7d6d14418
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 4c31831aedefabc285c92861e9010b242cacf0d7
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262656"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635785"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Log Analytics na platformie Microsoft Azure. Jeśli masz dodatkowe pytania dotyczące usługi Log Analytics, przejdź do strony [forum dyskusyjne](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
@@ -160,7 +160,7 @@ A. Nie, nie jest obecnie możliwe do odczytu z dowolnego tabele lub kontenerów 
 
 A. Usługa Log Analytics jest oparty na platformie Azure. Adresy IP analizy dziennika są w [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
-Podczas wdrażania usługi zostaną wprowadzone, zmieniać rzeczywiste adresy IP usługi Log Analytics. Nazwy DNS, aby umożliwić za pośrednictwem zapory są udokumentowane w artykule [wymagania dotyczące sieciowej](log-analytics-agent-overview.md#network-firewall-requirements).
+Podczas wdrażania usługi zostaną wprowadzone, zmieniać rzeczywiste adresy IP usługi Log Analytics. Nazwy DNS, aby umożliwić za pośrednictwem zapory są udokumentowane w artykule [wymagania dotyczące sieciowej](../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements).
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>PYTANIE: Usługa ExpressRoute jest używana do łączenia się z platformy Azure. Moje ruchu usługi Log Analytics używa Moje połączenie usługi ExpressRoute?
 
@@ -198,9 +198,22 @@ W obszarze **Azure Log Analytics (OMS)**, Usuń wszystkie obszary robocze na li�
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>Pyt.: Dlaczego otrzymuję błąd przy próbie przenieść mój obszar roboczy z jedną subskrypcją platformy Azure do innego?
 
-Odp.: Jeśli używasz portalu Azure, upewnij się, że tylko obszar roboczy został wybrany do przejścia. Te rozwiązania nie należy wybierać — automatyczne przenoszenie gdy obszar roboczy zostanie przeniesiona. 
+Odp.: Aby przenieść obszar roboczy do innej subskrypcji lub grupy zasobów, musi najpierw odłączyć konto usługi Automation, w obszarze roboczym. Odłączanie konta usługi Automation wymaga usunięcia tych rozwiązań, jeśli są zainstalowane w obszarze roboczym: zarządzanie aktualizacjami, śledzenie zmian lub uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu są usuwane. Po usunięciu tych rozwiązań odłączanie konta usługi Automation, wybierając **połączone obszary robocze** w okienku po lewej stronie w usłudze Automation konta zasobu, a następnie kliknij przycisk **odłączanie obszaru roboczego** na Wstążce.
+ > Usunięte rozwiązania konieczność ponownego zainstalowania w obszarze roboczym, a łącze automatyzacji do obszaru roboczego musi być przekształcone po przeniesieniu.
 
 Upewnij się, że masz uprawnienia w obu subskrypcjach platformy Azure.
+
+### <a name="q-why-am-i-getting-an-error-when-i-try-to-update-a-savedsearch"></a>Pyt.: Dlaczego otrzymuję błąd podczas próby można zaktualizować zapisanego wyszukiwania?
+
+Odp.: należy dodać "element etag" w treści interfejsu API lub właściwości szablonu usługi Azure Resource Manager:
+```
+"properties": {
+   "etag": "*",
+   "query": "SecurityEvent | where TimeGenerated > ago(1h) | where EventID == 4625 | count",
+   "displayName": "An account failed to log on",
+   "category": "Security"
+}
+```
 
 ## <a name="agent-data"></a>Dane agenta
 ### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>PYTANIE: Jak dużo danych można wysyłać za pośrednictwem agenta do usługi Log Analytics? Czy istnieje maksymalna ilość danych klienta?

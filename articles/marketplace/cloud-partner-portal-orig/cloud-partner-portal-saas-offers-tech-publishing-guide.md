@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7430e57ceaec8a280c17f1276d503919a9703182
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7e648d6d3bd8d8ac14fb3f9723f4667c1cc33ac6
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228899"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620187"
 ---
 <a name="saas-application-technical-publishing-guide"></a>Technical aplikacji SaaS Podręcznik publikowania
 ===========================================
@@ -32,7 +32,7 @@ Omówienie wszystkich innych ofert z portalu Marketplace można znaleźć [przew
 <a name="what-are-pre-requisites-for-publishing-a-saas-app"></a>Jakie są wymagania wstępne dotyczące publikowania aplikacji SaaS?
 -------------------------------------------------
 
-Portal wydawców umożliwia opartej na rolach dostęp do portalu, dzięki czemu wiele osób do współpracy w kierunku stawiane ofertom. Aby uzyskać więcej informacji, zobacz [Zarządzanie użytkownikami](./cloud-partner-portal-manage-users.md). 
+[Portalu Cloud Partner](https://cloudpartner.azure.com) zapewnia oparte na rolach dostęp do portalu, dzięki czemu wiele osób do współpracy w kierunku stawiane ofertom. Aby uzyskać więcej informacji, zobacz [Zarządzanie użytkownikami](./cloud-partner-portal-manage-users.md). 
 
 Można było opublikować ofertę w imieniu wydawcy konta, jedną z osób z *właściciela* konieczność roli zobowiązuje się do przestrzegania [warunki użytkowania](https://azure.microsoft.com/support/legal/website-terms-of-use/), [Microsoft PrivacyStatement](https://www.microsoft.com/privacystatement/default.aspx), i [ProgramAgreement certyfikat platformy Microsoft Azure](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
@@ -58,7 +58,7 @@ Oferty aplikacji SaaS składa się z pięciu sekcji opisane w poniższej tabeli:
 
 ### <a name="creating-a-new-offer"></a>Tworzenie nowej oferty
 
-Po zalogowaniu się do portalu Cloud Partner, wybierz **nowa oferta** element na pasku menu po lewej stronie, który wyświetla menu dostępnych ofert. Na poniższej ilustracji przedstawiono przykład tych ofert:
+Po zalogowaniu się do [portalu Cloud Partner](https://cloudpartner.azure.com), wybierz opcję **nowa oferta** element na pasku menu po lewej stronie, który wyświetla menu dostępnych ofert. Na poniższej ilustracji przedstawiono przykład tych ofert:
 
 ![Nowa oferta SaaS](media/cpp-creating-saas-offers/saas-new-offer.png)
 
@@ -154,7 +154,7 @@ W poniższej tabeli opisano pola Marketing:
 
 | **Pola oferty** | **Opis**                                                                                                          |
 |------------------| ------------------------------------------------------------------------------------------------------------------------ |
-| Logo            | Jeśli jesteś **sprzedawać za pośrednictwem platformy Azure** aplikacji SaaS, należy podać wszystkie obrazy logo. Jeśli po prostu listę tylko 2 logo są wymagane. Wszystkie logo, które są przekazywane w portalu Cloud Partner, należy stosować poniższe wskazówki:     <br/> -Niskich numer podstawowy i pomocniczy kolory na logo. Projekt platformy Azure ma prostą paletę kolorów.     <br/> -Należy unikać czarne lub białe jako kolor tła logo. Kolory motywu w witrynie Azure Portal jest czarno biały. Zamiast tego należy użyć niektórych kolorów, która spowodowałaby wprowadzenie logo widocznym w witrynie Azure Portal. Zalecamy proste kolory podstawowe. Jeśli korzystają z przezroczystym tłem, upewnij się, że obrazy logo i tekst są czarny, biały lub niebieski.     <br/> -Nie używaj gradientu tła na logo.     <br/> -Należy unikać wprowadzania tekstu, nawet Twoja firma lub nazwa marki na logo. Wygląd i działanie logo powinno być "płaską" i unikać gradientów.    <br/> -Obraz logo nie powinien być rozciągnięty.                   |
+| Logo            | Jeśli jesteś **sprzedawać za pośrednictwem platformy Azure** aplikacji SaaS, należy podać wszystkie obrazy logo. Jeśli po prostu listę tylko 2 logo są wymagane. Przekazane wszystkie logo [portalu Cloud Partner](https://cloudpartner.azure.com) należy użyć następujących wytycznych:     <br/> -Niskich numer podstawowy i pomocniczy kolory na logo. Projekt platformy Azure ma prostą paletę kolorów.     <br/> -Należy unikać czarne lub białe jako kolor tła logo. Kolory motywu w witrynie Azure Portal jest czarno biały. Zamiast tego należy użyć niektórych kolorów, która spowodowałaby wprowadzenie logo widocznym w witrynie Azure Portal. Zalecamy proste kolory podstawowe. Jeśli korzystają z przezroczystym tłem, upewnij się, że obrazy logo i tekst są czarny, biały lub niebieski.     <br/> -Nie używaj gradientu tła na logo.     <br/> -Należy unikać wprowadzania tekstu, nawet Twoja firma lub nazwa marki na logo. Wygląd i działanie logo powinno być "płaską" i unikać gradientów.    <br/> -Obraz logo nie powinien być rozciągnięty.                   |
 | Filmy wideo           | Umożliwia dodawanie łączy filmów wideo w swojej oferty. Możesz użyć linków do serwisu YouTube lub Vimeo filmów wideo, które są wyświetlane wraz z ofertą dla klientów. Należy również wprowadzić obraz miniatury wideo z obrazem png 1280 x 720 pikseli. Może mieć maksymalnie cztery filmów wideo na ofertę. |
 | Dokumenty        | Umożliwia dodawanie dokumentów marketingowych oferty. Wszystkie dokumenty muszą być w formacie PDF i może mieć co najwyżej trzech dokumentów na ofertę.                                                                                                                                                      |
 | Zrzuty ekranu      | Umożliwia dodanie zrzutów ekranu oferty. Istnieje więcej niż pięć zrzuty ekranu, które mogą zostać dodane na ofertę. Rozmiar maksymalny obrazu to 1280 x 720 pikseli.                                                                                                                                             |

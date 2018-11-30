@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: 2fff332665652516e4ac25c4eb1a4612c15e2412
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 4200accee94840a8a4455308f24a857fd5d7034a
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824680"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632980"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Wizualizowanie danych z usługi Azure Monitor
 Ten artykuł zawiera podsumowanie dostępnych metod w celu wizualizacji danych przechowywanych w usłudze Azure Monitor. Obejmuje to [metryki w magazynie Azure metryki](../azure-monitor/platform/data-collection.md#metrics) i [rejestrować dane w usłudze Log Analytics](../azure-monitor/platform/data-collection.md#logs). 
@@ -50,7 +50,7 @@ Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitor
 - Ograniczone kontekstowych Przechodzenie do szczegółów.
 
 ## <a name="azure-monitor-views"></a>Widoki usługi Azure Monitor
-[Widoki w usłudze Azure Monitor](../log-analytics/log-analytics-view-designer.md) pozwalają na tworzenie niestandardowych wizualizacji przy użyciu dane dzienników przechowywane w usłudze Log Analytics. Są one używane przez [rozwiązania do monitorowania](../azure-monitor/insights/solutions.md) przedstawienie danych pobierają.
+[Widoki w usłudze Azure Monitor](../azure-monitor/platform/view-designer.md) pozwalają na tworzenie niestandardowych wizualizacji przy użyciu dane dzienników przechowywane w usłudze Log Analytics. Są one używane przez [rozwiązania do monitorowania](../azure-monitor/insights/solutions.md) przedstawienie danych pobierają.
 
 ![Widok](media/visualizations/view.png)
 
@@ -58,7 +58,7 @@ Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitor
 - Bogate wizualizacje danych usługi Log Analytics.
 - Eksportowanie i importowanie widoków, aby przenieść je do innych grup zasobów i subskrypcji.
 - Integruje się z dziennik analityczny model zarządzania obszarami roboczymi i rozwiązania do monitorowania.
-- [Filtry](../log-analytics/log-analytics-view-designer-filters.md) niestandardowych parametrów.
+- [Filtry](../azure-monitor/platform/view-designer-filters.md) niestandardowych parametrów.
 - Interakcyjne obsługuje wielopoziomowe testowania odzyskiwania po awarii w (Widok przejście do innego widoku)
 
 ### <a name="limitations"></a>Ograniczenia
@@ -140,7 +140,7 @@ Można uzyskać dostęp do danych metryk platformy Azure i usługi Log Analytics
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [dane zebrane przez usługi Azure Monitor](../azure-monitor/platform/data-collection.md).
 - Dowiedz się więcej o [pulpitów nawigacyjnych platformy Azure](../azure-portal/azure-portal-dashboards.md).
-- Dowiedz się więcej o [widoków w usłudze Azure Monitor](../log-analytics/log-analytics-view-designer.md).
+- Dowiedz się więcej o [widoków w usłudze Azure Monitor](../azure-monitor/platform/view-designer.md).
 - Dowiedz się więcej o [skoroszytów w usłudze Application Insights](../application-insights/app-insights-usage-workbooks.md).
 - Dowiedz się więcej o [importowania danych dziennika w usłudze Power BI](../log-analytics/log-analytics-powerbi.md).
 - Dowiedz się więcej o [wtyczki źródła danych Grafana usługi Azure Monitor](../monitoring-and-diagnostics/monitor-send-to-grafana.md).

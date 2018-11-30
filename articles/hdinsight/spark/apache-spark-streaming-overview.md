@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 229c3eff0db4f3689f4e2e3fd457410ecccb8ba7
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 86d64ef0e9abab4368569c2f7c5ccd633660085c
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041526"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583217"
 ---
-# <a name="overview-of-spark-streaming"></a>Omówienie przesyłania strumieniowego platformy Spark
+# <a name="overview-of-apache-spark-streaming"></a>Przegląd platformy Apache Spark Streaming
 
-Przesyłanie strumieniowe Spark umożliwia przetwarzanie strumieni danych na platformie HDInsight Spark klastrów z gwarancją, że wszystkie dane wejściowe zdarzenia jest przetwarzany tylko raz, nawet w przypadku wystąpienia awarii węzła. Stream Spark jest zadaniem długotrwałych, który odbiera dane wejściowe z szerokiej gamy źródeł, w tym usługi Azure Event Hubs, Azure IoT Hub, Kafka, Flume, Twitter, ZeroMQ, pierwotne gniazdami TCP, lub monitorowania systemu plików HDFS systemy plików. W przeciwieństwie do procesu wyłącznie oparte na zdarzeniach Stream Spark partii danych wejściowych na okna czasowe, takie jak wycinek: 2 sekundy i następnie przekształceń dla poszczególnych partii danych przy użyciu map, zmniejszyć, join i wyodrębnianie działań. Stream Spark następnie zapisuje przekształcone dane systemy plików, baz danych, pulpitów nawigacyjnych i konsoli.
+[Platforma Apache Spark](https://spark.apache.org/) przesyłania strumieniowego zapewnia przetwarzanie w klastrach HDInsight Spark, gwarancji dowolne dane wejściowe zdarzenia strumienia danych jest przetwarzany tylko raz, nawet w przypadku wystąpienia awarii węzła. Stream Spark jest zadaniem długotrwałych, który odbiera dane wejściowe z wielu różnych źródeł, takich jak usługi Azure Event Hubs, Azure IoT Hub [platformy Apache Kafka](https://kafka.apache.org/), [Apache Flume](https://flume.apache.org/), Twitter, [ZeroMQ ](http://zeromq.org/), pierwotne gniazdami TCP, lub z monitorowania [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) systemy plików. W przeciwieństwie do procesu wyłącznie oparte na zdarzeniach Stream Spark partii danych wejściowych na okna czasowe, takie jak wycinek: 2 sekundy i następnie przekształceń dla poszczególnych partii danych przy użyciu map, zmniejszyć, join i wyodrębnianie działań. Stream Spark następnie zapisuje przekształcone dane systemy plików, baz danych, pulpitów nawigacyjnych i konsoli.
 
 ![Przetwarzanie za pomocą HDInsight i przesyłania strumieniowego platformy Spark Stream](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
 
@@ -86,7 +86,7 @@ Uruchom aplikację przesyłania strumieniowego i uruchom do momentu otrzymania s
     ssc.start()            
     ssc.awaitTermination()
 
-Szczegółowe informacje na temat interfejsu API usługi Stream platformy Spark, wraz z źródła zdarzeń, transformacji i operacje wyjściowego obsługuje ona [Spark Streaming Programming Guide](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html).
+Szczegółowe informacje na temat interfejsu API usługi Stream platformy Spark, wraz z źródła zdarzeń, transformacji i operacje wyjściowego obsługuje ona [Apache Spark Streaming przewodnik programowania w usłudze](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html).
 
 Następujące Przykładowa aplikacja jest niezależne, aby można było uruchomić go w programie [notesu programu Jupyter](apache-spark-jupyter-notebook-kernels.md). W tym przykładzie tworzy źródło danych testowych w klasie DummySource zwracające wartość licznika i bieżący czas w milisekundach, co pięć sekund. Nowy obiekt StreamingContext ma odstęp czasu dla partii równej 30 sekund. Za każdym razem, gdy tworzony partii przesyłania strumieniowego aplikacji sprawdza RDD utworzone, konwertuje RDD do elementów DataFrame aparatu Spark i tworzy tymczasową tabelę za pośrednictwem ramki danych.
 
@@ -211,10 +211,10 @@ Zazwyczaj tworzenie aplikacji Spark Streaming lokalnie do pliku JAR, a następni
 
 ![Wdrażanie aplikacji usługi przesyłania strumieniowego platformy Spark](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-Można również sprawdzić stan wszystkich aplikacji, za pomocą żądanie GET względem punktu końcowego usługi LIVY. Na koniec możesz zakończyć uruchomionej aplikacji, wysyłając żądanie DELETE względem punktu końcowego usługi LIVY. Szczegółowe informacje na temat interfejsu API usługi LIVY, [zdalnej obsługi zadań przy użyciu usługi LIVY](apache-spark-livy-rest-interface.md)
+Można również sprawdzić stan wszystkich aplikacji, za pomocą żądanie GET względem punktu końcowego usługi LIVY. Na koniec możesz zakończyć uruchomionej aplikacji, wysyłając żądanie DELETE względem punktu końcowego usługi LIVY. Szczegółowe informacje na temat interfejsu API usługi LIVY, [zdalnej obsługi zadań przy użyciu usługi LIVY Apache](apache-spark-livy-rest-interface.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Tworzenie klastra Apache Spark w HDInsight](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Platforma Spark Streaming Programming Guide](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
-* [Uruchamianie zadań Spark zdalnie przy użyciu usługi LIVY](apache-spark-livy-rest-interface.md)
+* [Przewodnik programowania w przesyłania strumieniowego platformy Apache Spark](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
+* [Uruchamiać zadania Apache Spark zdalnie za pomocą usługi LIVY Apache](apache-spark-livy-rest-interface.md)

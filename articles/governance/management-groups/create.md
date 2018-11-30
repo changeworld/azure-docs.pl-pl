@@ -5,17 +5,17 @@ author: rthorn17
 manager: rithorn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2018
+ms.date: 11/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 6a45ffa13ead40b72fd1a0a3c2696a6e6829a4d5
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.topic: conceptual
+ms.openlocfilehash: 699a9b7a371a004213419567d0672f56b5365598
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956412"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620118"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Tworzenie grupy zarządzania do organizacji zasobów i zarządzania
 
@@ -29,7 +29,7 @@ Za pomocą witryny portal, programu PowerShell lub wiersza polecenia platformy A
 
 ### <a name="create-in-portal"></a>Tworzenie w portalu
 
-1. Zaloguj się do witryny [Azure Portal](http://portal.azure.com).
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
 1. Wybierz **wszystkich usług** > **grup zarządzania**.
 
@@ -76,8 +76,8 @@ az account management-group create --name 'Contoso'
 
 Aby dowiedzieć się więcej na temat grup zarządzania, zobacz:
 
-- [Organizowanie zasobów przy użyciu grup zarządzania platformy Azure](overview.md)
+- [Tworzenie grup zarządzania w celu organizowania zasobów platformy Azure](create.md)
 - [Jak zmienić lub usunąć grupy zarządzania oraz zarządzać nimi](manage.md)
-- [Instalowanie modułu Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
-- [Przegląd specyfikacji interfejsu API REST](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [Zainstaluj rozszerzenie wiersza polecenia platformy Azure](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)
+- [Przejrzyj grupy zarządzania w Module zasoby programu Azure PowerShell](https://aka.ms/mgPSdocs)
+- [Przejrzyj grupy zarządzania w interfejsie API REST](https://aka.ms/mgAPIdocs)
+- [Przegląd grup zarządzania w wiersza polecenia platformy Azure](https://aka.ms/mgclidoc)

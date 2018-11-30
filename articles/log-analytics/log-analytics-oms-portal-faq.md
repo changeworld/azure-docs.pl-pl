@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 9aa90c5a99da70aa0803aad4894e928a422b8fcf
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 5f5143800c423bdbaac9994b55e500723018dce4
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712249"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634357"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Często zadawane pytania dotyczące przejścia z portalu pakietu OMS do witryny Azure portal dla użytkowników usługi Log Analytics
 Usługi log Analytics swój własny portal o nazwie portalu pakietu OMS początkowo użyty do zarządzania jej konfiguracji i analizowania zebranych danych.  Wszystkie funkcje z tego portalu został przeniesiony do witryny Azure portal gdzie będą opracowywane.
@@ -84,7 +84,7 @@ Zarządzanie większość ustawień podłączone źródło w **Zaawansowane usta
 | System Center     | **Zaawansowane ustawienia** menu dla obszaru roboczego. |
 | Office 365        | Zobacz [dokumentację dotyczącą rozwiązania do zarządzania usługi Office 365](../azure-monitor/insights/solution-office-365.md) szczegółowe informacje dotyczące konfiguracji. |
 | Telemetria systemu Windows | Menu Ustawienia dla rozwiązania. Zobacz [Windows Analytics w witrynie Azure portal](/windows/deployment/update/windows-analytics-azure-portal) szczegółowe informacje dotyczące konfiguracji. |
-| Łącznik ITSM    | Zobacz [połączenia narzędzia ITSM produktów/usług za pomocą łącznika zarządzania usługami IT](../log-analytics/log-analytics-itsmc-connections.md) instrukcje dotyczące łączenia usługi ITSM za pomocą usługi Log Analytics. |
+| Łącznik ITSM    | Zobacz [połączenia narzędzia ITSM produktów/usług za pomocą łącznika zarządzania usługami IT](../log-analytics/../azure-monitor/platform/itsmc-connections.md) instrukcje dotyczące łączenia usługi ITSM za pomocą usługi Log Analytics. |
 
 ### <a name="data"></a>Dane
 Większość ustawień danych zarządzania w **Zaawansowane ustawienia** menu dla obszaru roboczego. Poniższa tabela zawiera szczegółowe informacje dla każdej sekcji tego menu.
@@ -113,7 +113,7 @@ W portalu pakietu OMS zainstalowaniu rozwiązania do zarządzania z galerii rozw
 Reguły alertów na podstawie zapytań usługi Log Analytics zarządza się teraz w [ujednolicone środowisko alertów](../monitoring-and-diagnostics/alert-metric.md). Zobacz [sposób rozszerzyć alerty z usługą Log Analytics do usługi Azure Alerts](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md) Aby uzyskać szczegółowe informacje dotyczące konfigurowania i używania alertów w witrynie Azure portal.
 
 ## <a name="how-do-i-access-my-dashboards"></a>Jak uzyskać dostęp do moich pulpitów nawigacyjnych?
-[Mój pulpit nawigacyjny](../log-analytics/log-analytics-dashboards.md) funkcji w usłudze Log Analytics jest przestarzała. Ta funkcja pozwala na zapewnienie prywatnej kolekcji części projektanta widoków i zostało zastąpione przez wbudowane funkcje pulpitu nawigacyjnego platformy Azure. Wizualizuj dane przy użyciu usługi Log Analytics można kontynuować [Projektant widoków](../log-analytics/log-analytics-view-designer.md) udostępnionego widoków. Możesz również przypiąć wizualizacje z tych widoków lub [pojedynczych zapytań](../log-analytics/log-analytics-tutorial-dashboards.md) do pulpitów nawigacyjnych platformy Azure.
+[Mój pulpit nawigacyjny](../log-analytics/../azure-monitor/platform/dashboards.md) funkcji w usłudze Log Analytics jest przestarzała. Ta funkcja pozwala na zapewnienie prywatnej kolekcji części projektanta widoków i zostało zastąpione przez wbudowane funkcje pulpitu nawigacyjnego platformy Azure. Wizualizuj dane przy użyciu usługi Log Analytics można kontynuować [Projektant widoków](../log-analytics/../azure-monitor/platform/view-designer.md) udostępnionego widoków. Możesz również przypiąć wizualizacje z tych widoków lub [pojedynczych zapytań](../log-analytics/log-analytics-tutorial-dashboards.md) do pulpitów nawigacyjnych platformy Azure.
 
 ## <a name="how-do-i-check-my-usage"></a>Jak sprawdzić użycia?
 Można teraz łatwo wyświetlać i zarządzać użycia i kosztów usługi Log Analytics, wybierając **użycie i szacunkowe koszty** w obszarze roboczym.

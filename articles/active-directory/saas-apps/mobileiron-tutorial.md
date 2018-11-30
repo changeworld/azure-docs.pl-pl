@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/9/2017
 ms.author: jeedes
-ms.openlocfilehash: 53cec59841fbda49e4e410f069882ea76996f9fb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1b6527207793558c132be4cf004b7d6fdde14a90
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428295"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584115"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Samouczek: Integracja usługi Azure Active Directory z MobileIron
 
@@ -38,7 +38,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą MobileIron, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - MobileIron logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Aby skonfigurować integrację MobileIron w usłudze Azure AD, należy dodać Mo
 
 **Aby dodać MobileIron z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -106,22 +106,21 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/mobileiron-tutorial/tutorial_mobileiron_samlbase.png)
 
-1. Na **MobileIron domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+1. Na **MobileIron domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
     ![MobileIron domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/mobileiron-tutorial/tutorial_mobileiron_url.png)
 
-    a. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://www.mobileiron.com/<key>`
+    1. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://www.mobileiron.com/<key>`
 
-    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<host>.mobileiron.com/saml/SSO/alias/<key>`
+    1. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<host>.mobileiron.com/saml/SSO/alias/<key>`
 
-1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
     ![MobileIron domena i adresy URL logowania jednokrotnego](./media/mobileiron-tutorial/tutorial_mobileiron_url1.png)
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<host>.mobileiron.com/user/login.html`
+    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<host>.mobileiron.com/user/login.html`
     
-    > [!NOTE] 
-    > Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Wartości klucza i hosta wystąpi z portalu administracyjnego MobileIron, które zostało wyjaśnione w dalszej części tego samouczka.
+    > [!NOTE]  Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Wartości klucza i hosta wystąpi z portalu administracyjnego MobileIron, które zostało wyjaśnione w dalszej części tego samouczka.
 
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -174,13 +173,13 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Okno dialogowe użytkownika](./media/mobileiron-tutorial/create_aaduser_04.png)
 
-    a. W **nazwa** wpisz **BrittaSimon**.
+    1. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
+    1. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    1. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij pozycję **Utwórz**.
+    1. Kliknij pozycję **Utwórz**.
   
 ### <a name="create-a-mobileiron-test-user"></a>Tworzenie użytkownika testowego MobileIron
 
@@ -199,13 +198,13 @@ W przypadku MobileIron Inicjowanie obsługi administracyjnej jest zadanie ręczn
 
     ![Konfigurowanie logowania jednokrotnego przycisk Dodaj użytkownika](./media/mobileiron-tutorial/tutorial_mobileiron_useradd.png)
 
-    a. W **adres E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak brittasimon@contoso.com.
+    1. W **adres E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak brittasimon@contoso.com.
 
-    b. W **imię** tekstu Wprowadź imię użytkownika, takich jak Britta.
+    1. W **imię** tekstu Wprowadź imię użytkownika, takich jak Britta.
 
-    c. W **nazwisko** tekstu wprowadź nazwisko użytkownika, takich jak Simon.
+    1. W **nazwisko** tekstu wprowadź nazwisko użytkownika, takich jak Simon.
     
-    d. Kliknij przycisk **Gotowe**.  
+    1. Kliknij przycisk **Gotowe**.  
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

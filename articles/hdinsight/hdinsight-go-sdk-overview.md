@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 9/21/2018
 ms.author: tyfox
-ms.openlocfilehash: 8beb75748c2e9fe3f71ad321c4cd523e344fb90c
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f018130ca94c7efb7a9c6c873c150dcc382dbc4c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901910"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498289"
 ---
 # <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go Management SDK w wersji zapoznawczej
 
@@ -141,7 +141,7 @@ Nowy klaster można utworzyć przez wywołanie metody `client.Create()`.
 
 #### <a name="example"></a>Przykład
 
-W tym przykładzie pokazano, jak utworzyć klaster Spark z 2 węzłami głównymi i węzłem procesu roboczego 1.
+Ten przykład przedstawia sposób tworzenia [platformy Apache Spark](https://spark.apache.org/) klastra z 2 węzłami głównymi i węzłem procesu roboczego 1.
 
 > [!NOTE]
 > Najpierw należy utworzyć grupę zasobów i konta magazynu, co zostało opisane poniżej. Jeśli utworzono już one, możesz pominąć tę procedurę.

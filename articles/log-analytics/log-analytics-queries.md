@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 921be3f6cc793857a701cb56236d75680d0c1232
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 4aeb14bd7962205b89e1207e082f551999f54558
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282315"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634527"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analizowanie danych usługi Log Analytics w usłudze Azure Monitor
 
@@ -42,8 +42,8 @@ Różne sposoby, że używany jest program zapytań w usłudze Log Analytics są
 
 - **Portals.** Można wykonać analizy interakcyjnej danych dziennika w [witryny Azure portal](log-analytics-log-search-portals.md).  Dzięki temu można edytować zapytania i analizować wyniki w różnych formatach i wizualizacji.  
 - **Reguły alertów.** [Reguły alertów](../monitoring-and-diagnostics/monitoring-overview-alerts.md) aktywnego identyfikowania problemów z danych w obszarze roboczym.  Każda reguła alertu opiera się na wyszukiwanie w dzienniku, który jest automatycznie uruchamiane w regularnych odstępach czasu.  Wyniki są kontrolowane, aby określić, jeśli utworzony alert.
-- **Pulpity nawigacyjne.** Możesz przypiąć wyniki dowolnego zapytania do [pulpitu nawigacyjnego platformy Azure](log-analytics-dashboards.md) co pozwala użytkownikowi na wizualizować dane dzienników i metryk ze sobą i opcjonalnie udostępniać innym użytkownikom usługi Azure. 
-- **Widoki.**  Możesz utworzyć wizualizacje danych, które mają zostać uwzględnione w pulpitami nawigacyjnymi użytkownika za pomocą [Projektant widoków](log-analytics-view-designer.md).  Dziennik zapytań zawierają dane używane przez [Kafelki](log-analytics-view-designer-tiles.md) i [części wizualizacji](log-analytics-view-designer-parts.md) w każdym widoku.  
+- **Pulpity nawigacyjne.** Możesz przypiąć wyniki dowolnego zapytania do [pulpitu nawigacyjnego platformy Azure](../azure-monitor/platform/dashboards.md) co pozwala użytkownikowi na wizualizować dane dzienników i metryk ze sobą i opcjonalnie udostępniać innym użytkownikom usługi Azure. 
+- **Widoki.**  Możesz utworzyć wizualizacje danych, które mają zostać uwzględnione w pulpitami nawigacyjnymi użytkownika za pomocą [Projektant widoków](../azure-monitor/platform/view-designer.md).  Dziennik zapytań zawierają dane używane przez [Kafelki](../azure-monitor/platform/view-designer-tiles.md) i [części wizualizacji](../azure-monitor/platform/view-designer-parts.md) w każdym widoku.  
 - **Eksportowanie.**  Podczas importowania danych z obszaru roboczego usługi Log Analytics do programu Excel lub [usługi Power BI](log-analytics-powerbi.md), Utwórz zapytanie dziennika do definiowania danych do wyeksportowania.
 - **PowerShell.** Skrypt programu PowerShell można uruchomić z wiersza polecenia lub element runbook usługi Automation, która używa [Get AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) do pobierania danych z usługi Log Analytics.  To polecenie cmdlet wymaga zapytanie w celu określenia danych do pobrania.
 - **Interfejsu API usługi log Analytics.**  [Zaloguj się interfejs API wyszukiwania usługi Log Analytics](../monitoring-and-diagnostics/monitoring-overview-alerts.md) umożliwia dowolnego klienta interfejsu API REST do pobierania danych dziennika z obszaru roboczego.  Żądanie interfejsu API zawiera zapytanie, które jest uruchamiane Log Analytics w celu określenia danych do pobrania.
@@ -111,4 +111,4 @@ Gdy [usługi Application Insights](../application-insights/app-insights-overview
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [portale, które umożliwiają tworzenie i edytowanie dziennikach](log-analytics-log-search-portals.md).
-- Zapoznaj się z [samouczek na temat pisania zapytań](log-analytics-tutorial-viewdata.md) przy użyciu nowego języka zapytań.
+- Zapoznaj się z [samouczek na temat pisania zapytań](query-language/get-started-queries.md) przy użyciu nowego języka zapytań.

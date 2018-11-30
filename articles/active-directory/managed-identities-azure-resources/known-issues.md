@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: fa872c184429e69eb46fb4da112c08ee9432f1c4
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 256f36ac56126fc76561a6dbe4281ac4975df6e4
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913992"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632793"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Często zadawane pytania i znane problemy związane z zarządzanych tożsamości dla zasobów platformy Azure
 
@@ -43,18 +43,33 @@ Dla zasobów platformy Azure nie jest jeszcze zintegrowana z biblioteką ADAL lu
 
 Granicy zabezpieczeń tożsamości jest zasób, do której jest dołączony do. Na przykład granice zabezpieczeń dla maszyny wirtualnej z zarządzanych tożsamości dla zasobów platformy Azure jest włączone, maszyna wirtualna. Każdy kod uruchomiony na tej maszynie Wirtualnej jest w stanie wywołać zarządzanych tożsamości dla zasobów platformy Azure z punktu końcowego i żądania tokenów. Jest podobnie środowisko z innymi zasobami, które obsługują zarządzanych tożsamości dla zasobów platformy Azure.
 
+### <a name="what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request"></a>Jakie tożsamości zostanie domyślnie IMDS if określać tożsamość w żądaniu?
+
+- Jeśli włączono przypisanej tożsamość zarządzaną w systemie, a nie tożsamości jest określony w żądaniu, domyślnie zostanie IMDS przypisanego tożsamości zarządzanej przez system.
+- Jeśli system przypisane tożsamość zarządzana nie jest włączony, a istnieje tylko jeden użytkownik przypisany tożsamości zarządzanej, IMDS będą domyślnie do tego pojedynczego zarządzanych tożsamości przypisanych przez użytkownika. 
+- Jeśli system przypisane tożsamość zarządzana nie jest włączony, a istnieje wielu użytkowników zarządzanych tożsamości przypisanych przez, następnie podając tożsamość zarządzaną w żądaniu jest wymagana.
+
 ### <a name="should-i-use-the-managed-identities-for-azure-resources-vm-imds-endpoint-or-the-vm-extension-endpoint"></a>Dla punktu końcowego maszyny Wirtualnej IMDS zasobów platformy Azure lub punktu końcowego z rozszerzenia maszyny Wirtualnej należy używać zarządzanych tożsamości?
 
 Korzystając z zarządzanych tożsamości dla zasobów platformy Azure z maszynami wirtualnymi, firma Microsoft zachęca do endpoint IMDS zasobów platformy Azure przy użyciu zarządzanych tożsamości. Azure Instance Metadata Service jest punkt końcowy REST dostępne dla wszystkich maszyn wirtualnych IaaS utworzone za pomocą usługi Azure Resource Manager. Korzyści z używania zarządzanych tożsamości dla zasobów platformy Azure za pośrednictwem IMDS, należą:
-
-1. Wszystkie systemy operacyjne obsługiwane modelu IaaS platformy Azure mogą używać zarządzanych tożsamości dla zasobów platformy Azure za pośrednictwem IMDS. 
-2. Nie musisz zainstalować rozszerzenie na maszynie Wirtualnej, aby umożliwić zarządzanych tożsamości dla zasobów platformy Azure. 
-3. Certyfikaty używane przez zarządzanych tożsamości dla zasobów platformy Azure nie są już dostępne na maszynie wirtualnej. 
-4. Punkt końcowy IMDS jest dobrze znanego nierutowalny adresu IP, dostępne tylko z poziomu maszyny Wirtualnej. 
+    - Wszystkie systemy operacyjne obsługiwane modelu IaaS platformy Azure mogą używać zarządzanych tożsamości dla zasobów platformy Azure za pośrednictwem IMDS.
+    - Nie musisz zainstalować rozszerzenie na maszynie Wirtualnej, aby umożliwić zarządzanych tożsamości dla zasobów platformy Azure. 
+    - Certyfikaty używane przez zarządzanych tożsamości dla zasobów platformy Azure nie są już dostępne na maszynie wirtualnej.
+    - Punkt końcowy IMDS jest dobrze znanego nierutowalny adresu IP, dostępne tylko z poziomu maszyny Wirtualnej.
 
 Zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure jest nadal dostępne do użycia oprogramowania; jednak pory firma Microsoft będzie domyślnie przy użyciu punktu końcowego IMDS. Zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure zostaną wycofane w styczniu 2019 r. 
 
 Aby uzyskać więcej informacji na temat usługi Azure Instance Metadata Service, zobacz [IMDS dokumentacji](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+
+### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>Zostaną zarządzanych tożsamości odtworzone automatycznie Jeśli przenieść subskrypcję do innego katalogu?
+
+Nie. Jeśli przeniesiesz subskrypcję do innego katalogu, trzeba będzie ponownie je utworzyć ręcznie i ponownie przyznawanie przypisania ról RBAC platformy Azure.
+    - Dla zarządzanych tożsamości przypisanych przez system: Wyłącz i ponownie włączyć.
+    - Dla zarządzanych tożsamości przypisanych przez użytkownika: Usuń i ponownie utwórz ponownie podłączyć do wymaganych zasobów (np. maszyn wirtualnych)
+
+### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>Dostęp do zasobów w innej katalogu/dzierżawy mogą używać tożsamości zarządzanej?
+
+Nie. Zarządzanych tożsamości nie obsługują obecnie katalogu dla wielu scenariuszy. 
 
 ### <a name="what-are-the-supported-linux-distributions"></a>Co to są obsługiwane dystrybucje systemu Linux?
 

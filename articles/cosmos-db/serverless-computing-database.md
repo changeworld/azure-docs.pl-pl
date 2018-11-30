@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 39b071c258a7aab3f8f0287ef2ce581a8f1b333e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 5787f72f2bc93c5dff05c6764639a4c46efe1a4f
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623160"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582789"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Bezserwerowa baza danych obliczeń z użyciem usługi Azure Cosmos DB i Azure Functions
 
@@ -124,7 +124,7 @@ Usługa Azure Functions zapewnia możliwość tworzenia skalowalnej jednostki pr
 
 Usługa Azure Cosmos DB jest zalecane bazy danych dla bezserwerowej architektury przetwarzania z następujących powodów:
 
-* **Natychmiastowy dostęp do wszystkich danych**: masz szczegółową dostęp do każdej wartości, które zostały zapisane, ponieważ usługi Azure Cosmos DB [automatycznie indeksuje](indexing-policies.md) wszystkich danych domyślnie i sprawia, że te indeksy jest natychmiast dostępna. Oznacza to, że jesteś w stanie stale zapytania, zaktualizować i dodawania nowych elementów do bazy danych i natychmiast uzyskać dostęp za pośrednictwem usługi Azure Functions.
+* **Natychmiastowy dostęp do wszystkich danych**: masz szczegółową dostęp do każdej wartości, które zostały zapisane, ponieważ usługi Azure Cosmos DB [automatycznie indeksuje](index-policy.md) wszystkich danych domyślnie i sprawia, że te indeksy jest natychmiast dostępna. Oznacza to, że jesteś w stanie stale zapytania, zaktualizować i dodawania nowych elementów do bazy danych i natychmiast uzyskać dostęp za pośrednictwem usługi Azure Functions.
 
 * **Ze schematów**. Usługa Azure Cosmos DB nie korzysta ze schematów -, więc jest jednoznacznie może obsługiwać żadnych danymi wyjściowymi funkcji platformy Azure. To podejście "obsługujące" sprawia, że bardzo proste tworzyć różne funkcje, które wszystkie dane wyjściowe do usługi Azure Cosmos DB.
 

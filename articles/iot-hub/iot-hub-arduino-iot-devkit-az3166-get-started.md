@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 08/27/2018
 ms.author: rangv
-ms.openlocfilehash: d6cbd2992968a57cfba99117e9f1fc1ab9b5b5b3
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 2ece10c43f25ac637a29324f46a88e50d9655431
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711841"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620442"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit az3166 usługi nawiązać połączenie z usługi Azure IoT Hub
 
@@ -119,12 +119,12 @@ Naciśnij przycisk B, aby przetestować czujników. Kontynuuj, naciskając klawi
 
 Firma Microsoft zaleca [usługi Azure IoT Workbench](https://aka.ms/iot-workbench) rozszerzenie dla programu Visual Studio Code umożliwiające tworzenie aplikacji na Mxchip.
 
-Środowisko robocze usługi Azure IoT udostępnia zintegrowane środowisko do opracowywania rozwiązań IoT. Pomaga ona zarówno na urządzeniu i w chmurze tworzenie rozwiązań za pomocą usługi Azure IoT i innych usług. Możesz obejrzeć ten film Channel9, aby się z omówieniem jej działania.
+Środowisko robocze usługi Azure IoT udostępnia zintegrowane środowisko do opracowywania rozwiązań IoT. Pomaga ona zarówno na urządzeniu i w chmurze tworzenie rozwiązań za pomocą usługi Azure IoT i innych usług. Możesz obejrzeć to [wideo Channel 9](https://channel9.msdn.com/Shows/Internet-of-Things-Show/IoT-Workbench-extension-for-VS-Code) można się z omówieniem jej działania.
 
 Wykonaj następujące kroki, aby przygotować środowisko programistyczne dla Mxchip:
 
 1. Pobierz i zainstaluj [środowisku IDE Arduino](https://www.arduino.cc/en/Main/Software). Udostępnia niezbędne łańcucha narzędzi do kompilowania i przekazywanie kodu Arduino.
-    * **Windows**: Korzystanie z Instalatora Windows w wersji.
+    * **Windows**: Korzystanie z Instalatora Windows w wersji. Nie należy instalować ze sklepu z aplikacjami.
     * **System macOS**: przeciągnij i upuść wyodrębnione **Arduino.app** do `/Applications` folderu.
     * **Ubuntu**: takie jak Rozpakuj go do folderu `$HOME/Downloads/arduino-1.8.5`
 
@@ -133,15 +133,15 @@ Wykonaj następujące kroki, aby przygotować środowisko programistyczne dla Mx
 3. Poszukaj **usługi Azure IoT Workbench** rynku rozszerzenia i zainstalować ją.
     ![Zainstaluj aplikację Azure IoT Workbench](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-workbench.png) wraz z aplikacji IoT Workbench, inne rozszerzenia zależne zostaną zainstalowane.
 
-4. Otwórz **Plik > Preferencje > Ustawienia** i dodaj następujące wiersze do skonfigurowania Arduino.
-    * **Windows**:
-
+4. Konfigurowanie Arduino
+    * **Windows**: na **Windows** Otwórz **Plik > Preferencje > Ustawienia** kliknij **...**  i otwórz settings.json a następnie dodać następujące wiersze do skonfigurowania Arduino. 
+      
     ```json
     "arduino.path": "C:\\Program Files (x86)\\Arduino",
     "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
     ```
 
-    * **System macOS**:
+    * **macOS**: na **macOS** Otwórz **kodu > Preferencje > Ustawienia** kliknij **...**  i otwórz settings.json a następnie dodaj następujące wiersze do skonfigurowania Arduino
 
     ```json
     "arduino.path": "/Applications",

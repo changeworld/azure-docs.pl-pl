@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d4fba078487f99347804362a888bcc2c33dde1ef
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 4fd36d58574b60e3e6351cba03c68b9217bc703d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715511"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632470"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Zaprojektować i zbudować rozwiązanie do zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
@@ -42,16 +42,16 @@ Najczęstszym wzorcem rozwiązania do zarządzania jest wyświetlana na poniższ
 
 
 ### <a name="data-sources"></a>Źródła danych
-Pierwszym krokiem projektowania rozwiązania jest określenie danych, które wymagają z repozytorium usługi Log Analytics.  Te dane mogą być zbierane przez [źródła danych](../../log-analytics/log-analytics-data-sources.md) lub [inne rozwiązanie]( solutions.md), lub rozwiązania może być konieczne podanie proces się je zebrać.
+Pierwszym krokiem projektowania rozwiązania jest określenie danych, które wymagają z repozytorium usługi Log Analytics.  Te dane mogą być zbierane przez [źródła danych](../../azure-monitor/platform/agent-data-sources.md) lub [inne rozwiązanie]( solutions.md), lub rozwiązania może być konieczne podanie proces się je zebrać.
 
-Istnieje kilka sposobów źródeł danych, które mogą być zbierane w repozytorium usługi Log Analytics, zgodnie z opisem w [źródeł danych w usłudze Log Analytics](../../log-analytics/log-analytics-data-sources.md).  Ta obejmuje zdarzenia w dzienniku zdarzeń Windows lub wygenerowane Syslog oprócz liczniki wydajności dla klientów systemów Windows i Linux.  Można także gromadzić dane z zasobów platformy Azure, zbieranych przez usługi Azure Monitor.  
+Istnieje kilka sposobów źródeł danych, które mogą być zbierane w repozytorium usługi Log Analytics, zgodnie z opisem w [źródeł danych w usłudze Log Analytics](../../azure-monitor/platform/agent-data-sources.md).  Ta obejmuje zdarzenia w dzienniku zdarzeń Windows lub wygenerowane Syslog oprócz liczniki wydajności dla klientów systemów Windows i Linux.  Można także gromadzić dane z zasobów platformy Azure, zbieranych przez usługi Azure Monitor.  
 
 Jeśli potrzebujesz danych, która nie jest dostępna za pośrednictwem dowolnych dostępnych źródeł danych, a następnie można użyć [interfejsu API modułu zbierającego dane HTTP](../../log-analytics/log-analytics-data-collector-api.md) pozwala zapisywać dane w repozytorium usługi Log Analytics za pomocą dowolnego klienta, który można wywołać interfejs API REST.  Najbardziej typowe oznacza, że zbieranie danych niestandardowych w rozwiązaniu do zarządzania jest utworzenie [elementu runbook w usłudze Azure Automation](../../automation/automation-runbook-types.md) który gromadzi informacje o wymaganych danych z zasobów platformy Azure lub zewnętrznych i używa interfejsu API modułu zbierającego dane do zapisu do repozytorium.  
 
 ### <a name="log-searches"></a>Wyszukiwanie w Dzienniku
 [Przeszukiwanie dzienników](../../log-analytics/log-analytics-queries.md) służą do wyodrębniania i analizować dane w repozytorium usługi Log Analytics.  Są one używane przez widoki i alerty, oprócz umożliwienia użytkownikowi przeprowadzenie analizy ad-hoc danych w repozytorium.  
 
-Należy zdefiniować żadnych zapytań, które prawdopodobnie będą pomocne dla użytkowników, nawet jeśli nie są one używane przez wszystkie widoki i alerty.  Te będą dostępne dla nich jako zapisane wyszukiwania w portalu, a można również uwzględnić je w [części wizualizacji zapytań listy](../../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part) w widoku niestandardowym.
+Należy zdefiniować żadnych zapytań, które prawdopodobnie będą pomocne dla użytkowników, nawet jeśli nie są one używane przez wszystkie widoki i alerty.  Te będą dostępne dla nich jako zapisane wyszukiwania w portalu, a można również uwzględnić je w [części wizualizacji zapytań listy](../../azure-monitor/platform/view-designer-parts.md#list-of-queries-part) w widoku niestandardowym.
 
 ### <a name="alerts"></a>Alerty
 [Alerty w usłudze Log Analytics](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) zidentyfikować problemy za pośrednictwem [dziennikach](#log-searches) względem danych w repozytorium.  One powiadomić użytkownika lub automatycznie uruchomić akcję w odpowiedzi. Należy zidentyfikować różnych warunków alertów dla aplikacji i umieścić odpowiednie reguły alertów w pliku rozwiązania.
@@ -61,9 +61,9 @@ Jeśli ten problem można rozwiązać potencjalnie przy użyciu zautomatyzowaneg
 Jeśli rozwiązanie wymaga funkcji zewnętrznych w odpowiedzi na alert, a następnie można użyć [odpowiedź elementu webhook](../../monitoring-and-diagnostics/alert-metric.md).  Umożliwia wywołanie zewnętrznej usługi internetowej wysyłanie informacji z poziomu alertu.
 
 ### <a name="views"></a>Widoki
-Widoki w usłudze Log Analytics są używane do wizualizacji danych z repozytorium usługi Log Analytics.  Każde z tych rozwiązań zwykle będzie zawierać pojedynczy widok przy użyciu [Kafelek](../../log-analytics/log-analytics-view-designer-tiles.md) , jest wyświetlany na głównym pulpicie nawigacyjnym użytkownika.  Widok może zawierać dowolną liczbę [części wizualizacji](../../log-analytics/log-analytics-view-designer-parts.md) zapewnienie różnych wizualizacji zebranych danych do użytkownika.
+Widoki w usłudze Log Analytics są używane do wizualizacji danych z repozytorium usługi Log Analytics.  Każde z tych rozwiązań zwykle będzie zawierać pojedynczy widok przy użyciu [Kafelek](../../azure-monitor/platform/view-designer-tiles.md) , jest wyświetlany na głównym pulpicie nawigacyjnym użytkownika.  Widok może zawierać dowolną liczbę [części wizualizacji](../../azure-monitor/platform/view-designer-parts.md) zapewnienie różnych wizualizacji zebranych danych do użytkownika.
 
-Możesz [Tworzenie niestandardowych widoków przy użyciu projektanta widoku](../../log-analytics/log-analytics-view-designer.md) która później można wyeksportować do włączenia w pliku rozwiązania.  
+Możesz [Tworzenie niestandardowych widoków przy użyciu projektanta widoku](../../azure-monitor/platform/view-designer.md) która później można wyeksportować do włączenia w pliku rozwiązania.  
 
 
 ## <a name="create-solution-file"></a>Utwórz plik rozwiązania

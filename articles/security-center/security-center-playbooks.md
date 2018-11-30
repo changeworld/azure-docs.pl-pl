@@ -3,7 +3,7 @@ title: Element playbook zabezpieczeń w usłudze Azure Security Center | Microso
 description: Ten dokument ułatwia korzystanie z elementów playbook zabezpieczeń w usłudze Azure Security Center w celu automatyzowania odpowiedzi na zdarzenia związane z zabezpieczeniami.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: a8c45ddf-5c4c-4393-b6e9-46ed1f91bf5f
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2018
-ms.author: yurid
-ms.openlocfilehash: 05245b2a7a4f7bf61052b13da5ee2a98be721f7c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: c0001f12dd71436bacb1735828ad56b628e02360
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259959"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619915"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Element playbook zabezpieczeń w usłudze Azure Security Center (wersja zapoznawcza)
 Ten dokument ułatwia korzystanie z elementów playbook zabezpieczeń w usłudze Azure Security Center w celu reagowania na zdarzenia związane z zabezpieczeniami.
 
 ## <a name="what-is-security-playbook-in-security-center"></a>Co to jest element playbook zabezpieczeń w usłudze Security Center?
-Element playbook zabezpieczeń to kolekcja procedur, które mogą być wykonywane w usłudze Security Center po wyzwoleniu określonego elementu playbook z poziomu wybranego alertu. Element playbook zabezpieczeń ułatwia automatyzowanie i organizowanie odpowiedzi na określony alert zabezpieczeń wykryty przez usługę Security Center. Elementy playbook zabezpieczeń w Security Center opierają się na usłudze [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps), co oznacza, że możesz korzystać z szablonów należących do kategorii zabezpieczeń w szablonach usługi Logic Apps, możesz modyfikować je na podstawie Twoich potrzeb lub możesz tworzyć nowe elementy playbook, korzystając z [przepływu pracy usługi Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app) i usługi Security Center jako wyzwalacza. 
+Element playbook zabezpieczeń to kolekcja procedur, które mogą być wykonywane w usłudze Security Center po wyzwoleniu określonego elementu playbook z poziomu wybranego alertu. Element playbook zabezpieczeń ułatwia automatyzowanie i organizowanie odpowiedzi na określony alert zabezpieczeń wykryty przez usługę Security Center. Elementy playbook zabezpieczeń w Security Center opierają się na usłudze [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps), co oznacza, że możesz korzystać z szablonów należących do kategorii zabezpieczeń w szablonach usługi Logic Apps, możesz modyfikować je na podstawie Twoich potrzeb lub możesz tworzyć nowe elementy playbook, korzystając z [przepływu pracy usługi Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app) i usługi Security Center jako wyzwalacza.
 
 > [!NOTE]
-> Element playbook korzysta z usługi Azure Logic Apps, dlatego naliczane są opłaty. Odwiedź stronę cennika usługi [Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/), aby zapoznać się ze szczegółami. 
+> Element playbook korzysta z usługi Azure Logic Apps, dlatego naliczane są opłaty. Odwiedź stronę cennika usługi [Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/), aby zapoznać się ze szczegółami.
 
 ## <a name="how-to-create-a-security-playbook-from-security-center"></a>Jak utworzyć element playbook zabezpieczeń w usłudze Security Center?
 Wykonaj poniższe kroki, aby utworzyć nowy element playbook zabezpieczeń w usłudze Security Center:
@@ -37,7 +37,7 @@ Wykonaj poniższe kroki, aby utworzyć nowy element playbook zabezpieczeń w us�
 2.  W obszarze **automatyzacji i aranżacji** w lewym okienku kliknij pozycję **Elementy playbook (wersja zapoznawcza)**.
 
     ![Aplikacja logiki](./media/security-center-playbooks/security-center-playbooks-fig17.png)
- 
+
 3. W obszarze **Security Center — elementy playbook (wersja zapoznawcza)** kliknij przycisk **Dodaj**.
 
     ![Tworzenie aplikacji logiki](./media/security-center-playbooks/security-center-playbooks-fig2.png)
@@ -47,7 +47,7 @@ Wykonaj poniższe kroki, aby utworzyć nowy element playbook zabezpieczeń w us�
     ![Tworzenie aplikacji logiki](./media/security-center-playbooks/security-center-playbooks-fig3.png)
 
 5. Zostanie wyświetlone okno **Projektant aplikacji logiki**. Kliknij pozycję **Pusta aplikacja logiki**, aby utworzyć nowy element playbook. Możesz również wybrać pozycję **Zabezpieczenia** w obszarze kategorii i użyć jednego z szablonów.
-    
+
     ![Projektant aplikacji logiki](./media/security-center-playbooks/security-center-playbooks-fig4.png)
 
 6. W polu **Wyszukaj wszystkie łączniki i wyzwalacze** wpisz *Azure Security Center* i wybierz pozycję **Po wyzwoleniu odpowiedzi na alert usługi Azure Security Center**.
@@ -57,7 +57,7 @@ Wykonaj poniższe kroki, aby utworzyć nowy element playbook zabezpieczeń w us�
 7. Teraz możesz zdefiniować zachowanie po wyzwoleniu elementu playbook. Możesz dodać akcję, warunek logiczny, warunki przypadku switch lub pętle.
 
     ![Projektant aplikacji logiki](./media/security-center-playbooks/security-center-playbooks-fig5.png)
-     
+
 ## <a name="how-to-run-a-security-playbook-in-security-center"></a>Jak uruchomić element playbook zabezpieczeń w usłudze Security Center?
 
 Element playbook zabezpieczeń możesz uruchomić w usłudze Security Center, jeśli chcesz przeprowadzić aranżację lub korektę albo uzyskać dalsze informacje. Aby uzyskać dostęp do elementów playbook, wykonaj następujące czynności:
@@ -78,7 +78,7 @@ Element playbook zabezpieczeń możesz uruchomić w usłudze Security Center, je
 
 ### <a name="history"></a>Historia
 
-Po uruchomieniu elementu playbook możesz również uzyskać dostęp do poprzednich wykonań oraz kroków zawierających więcej informacji na temat stanu wcześniej wykonywanych elementów playbook. Kontekst historii jest określany dla poszczególnych alertów, co oznacza, że historia elementu playbook widoczna na tej stronie jest powiązana z alertem, który wyzwolił dany element. 
+Po uruchomieniu elementu playbook możesz również uzyskać dostęp do poprzednich wykonań oraz kroków zawierających więcej informacji na temat stanu wcześniej wykonywanych elementów playbook. Kontekst historii jest określany dla poszczególnych alertów, co oznacza, że historia elementu playbook widoczna na tej stronie jest powiązana z alertem, który wyzwolił dany element.
 
 ![Historia](./media/security-center-playbooks/security-center-playbooks-fig16.png)
 
@@ -86,7 +86,7 @@ Aby wyświetlić więcej szczegółów wykonania danego elementu playbook, klikn
 
 ![Szczegóły](./media/security-center-playbooks/security-center-playbooks-fig14.png)
 
-W tym przepływie pracy można sprawdzić czas wykonywania poszczególnych zadań oraz rozwinąć każde zadanie, aby wyświetlić jego wynik. 
+W tym przepływie pracy można sprawdzić czas wykonywania poszczególnych zadań oraz rozwinąć każde zadanie, aby wyświetlić jego wynik.
 
 ### <a name="changing-an-existing-playbook"></a>Zmienianie istniejącego elementu playbook
 
@@ -102,7 +102,6 @@ W tym dokumencie omówiono korzystanie z elementów playbook w usłudze Azure Se
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Dowiedz się, jak zarządzać alertami i reagować na zdarzenia związane z bezpieczeństwem w usłudze Security Center.
 * [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md). Informacje na temat sposobu monitorowania kondycji zasobów platformy Azure.
 * [Informacje o alertach zabezpieczeń w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Poznaj różne typy alertów zabezpieczeń.
-* [Przewodnik rozwiązywania problemów z usługą Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Dowiedz się, jak rozwiązywać typowe problemy z usługą Security Center. 
+* [Przewodnik rozwiązywania problemów z usługą Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Dowiedz się, jak rozwiązywać typowe problemy z usługą Security Center.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md). Odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
 * [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/). Wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
-

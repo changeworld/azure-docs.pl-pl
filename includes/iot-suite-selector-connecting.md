@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 218fc33390575a3df96d0b7d7696b3085c38c8f2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e241317231f3c607c373cb8a54e4b5bf6601b8e7
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264250"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620765"
 ---
 > [!div class="op_single_selector"]
 > * [C w systemie Windows](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -56,7 +56,7 @@ Po zakończeniu procesu wdrażania rozwiązania do monitorowania zdalnego, klikn
 > [!NOTE]
 > Jeśli masz już dodany urządzenia w rozwiązaniu, możesz pominąć ten krok. Następnym krokiem wymaga jednak parametry połączenia urządzenia. Możesz pobrać parametry połączenia urządzenia z [witryny Azure portal](https://portal.azure.com) lub za pomocą [az iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) narzędzie interfejsu wiersza polecenia.
 
-W przypadku urządzeń nawiązać połączenie z akceleratora rozwiązań musi ono zidentyfikować się do usługi IoT Hub za pomocą prawidłowych poświadczeń. Masz możliwość Zapisz parametry połączenia urządzenia, która zawiera te poświadczenia po dodaniu urządzenia rozwiązania. Parametry połączenia urządzenia zawierają się w aplikacji klienckiej w dalszej części tego samouczka.
+W przypadku urządzeń nawiązać połączenie z akceleratora rozwiązań musi ono zidentyfikować się do usługi IoT Hub za pomocą prawidłowych poświadczeń. Masz szansę sprzedaży, aby zapisać parametry połączenia urządzenia, która zawiera te poświadczenia po dodaniu urządzenia do rozwiązania. Parametry połączenia urządzenia zawierają się w aplikacji klienckiej w dalszej części tego samouczka.
 
 Aby dodać urządzenie do rozwiązania monitorowania zdalnego, wykonaj następujące czynności na **urządzeń** strony w rozwiązaniu:
 

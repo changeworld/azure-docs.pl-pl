@@ -2,19 +2,18 @@
 title: Jak odwoływać się wersje środowiska uruchomieniowego usługi Azure Functions
 description: Usługa Azure Functions obsługuje wiele wersji środowiska uruchomieniowego. Dowiedz się, jak określić wersję środowiska uruchomieniowego aplikacji funkcji hostowanych na platformie Azure.
 services: functions
-documentationcenter: ''
 author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/05/2018
+ms.date: 11/26/2018
 ms.author: glenga
-ms.openlocfilehash: 6d89746c0a2d4642e5025789d352803195c0a3b9
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a0f66f5a1ba64c955fe0669d3ed215ee7c2895c0
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886811"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498396"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Jak odwoływać się wersje środowiska uruchomieniowego usługi Azure Functions
 
@@ -37,23 +36,13 @@ Wartości można ustawić w `FUNCTIONS_EXTENSION_VERSION` ustawienie, aby włąc
 
 ## <a name="view-and-update-the-current-runtime-version"></a>Wyświetlanie i aktualizowanie bieżącą wersję środowiska uruchomieniowego
 
-Poniższa procedura umożliwia wyświetlanie wersji środowiska uruchomieniowego, obecnie używana przez aplikację funkcji.
+Można zmienić wersji środowiska uruchomieniowego do użytku przez Ciebie aplikacji funkcji. Ze względu na potencjał istotne zmiany należy tylko zmieniać wersji środowiska uruchomieniowego, przed utworzeniem jakichkolwiek funkcji w aplikacji funkcji. Chociaż wersja środowiska uruchomieniowego jest określana przez `FUNCTIONS_EXTENSION_VERSION` ustawienia, należy wprowadzić tę zmianę w witrynie Azure portal, a nie zmieniając ustawienie bezpośrednio. Jest to spowodowane portalu weryfikuje zmiany i sprawia, że inne powiązane zmiany zgodnie z potrzebami.
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do aplikacji funkcji.
+### <a name="from-the-azure-portal"></a>W witrynie Azure portal
 
-1. W obszarze **skonfigurowane funkcje**, wybierz **ustawień aplikacji funkcji**.
+[!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
 
-    ![Wybierz pozycję Ustawienia aplikacji funkcji](./media/set-runtime-version/add-update-app-setting.png)
-
-1. W **ustawień aplikacji funkcji** kartę, odszukaj **wersji środowiska uruchomieniowego**. Należy pamiętać, określonej wersji środowiska uruchomieniowego i żądanej wersji głównej. W poniższym przykładzie ustawiono wersję `~2`.
-
-   ![Wybierz pozycję Ustawienia aplikacji funkcji](./media/set-runtime-version/function-app-view-version.png)
-
-1. Aby przypiąć aplikację funkcji, aby środowisko uruchomieniowe 1.x wersji, wybierz **około 1** w obszarze **wersji środowiska uruchomieniowego**. Ten przełącznik jest wyłączony w przypadku funkcji w aplikacji.
-
-1. Jeśli zmienisz wersję środowiska uruchomieniowego, wróć do **Przegląd** kartę i wybierz polecenie **ponowne uruchomienie** ponownego uruchomienia aplikacji.  Liczby ponownych uruchomień aplikacji funkcji, uruchomione na środowisko uruchomieniowe 1.x wersji i szablonów w wersji 1.x są używane podczas tworzenia funkcji.
-
-## <a name="view-and-update-the-runtime-version-using-azure-cli"></a>Wyświetlanie i aktualizowanie wersji środowiska uruchomieniowego przy użyciu wiersza polecenia platformy Azure
+### <a name="view-and-update-the-runtime-version-using-azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
 Możesz również wyświetlić i ustawić `FUNCTIONS_EXTENSION_VERSION` z wiersza polecenia platformy Azure.
 

@@ -8,18 +8,22 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 32ef8ba2f6416e1b59fc98595f1b204e94bd2ead
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: feb51cd55801addaf5ce2486e5527542f794bbc5
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830994"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580965"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Użyj frazy Wyświetla sygnału boost listy programu word
 
 Można dodać funkcje do aplikacji usługi LUIS, aby zwiększyć jego dokładność. Funkcje pomocy usługi LUIS, zapewniając wskazówek dotyczących tego określonych słów i fraz są częścią słownictwa domeny aplikacji. 
+
+A [listy fraz](luis-concept-feature.md) znajduje się grupa wartości (słów i fraz), które należą do tej samej klasy i muszą być traktowane w podobny sposób (na przykład nazwy miasta lub produktów). Usługa LUIS się o jeden z nich jest automatycznie stosowany do pozostałych. Ta lista nie jest jednostką listy zamknięte (pasuje do tekstu do dokładnego dopasowania) dopasowane słów.
+
+Lista fraz dodaje do słownictwa używanego w domenie aplikacji jako drugi sygnał do usługi LUIS o tych słów.
 
 ## <a name="add-phrase-list"></a>Dodawanie listy fraz
 
@@ -47,9 +51,6 @@ Można dodać funkcje do aplikacji usługi LUIS, aby zwiększyć jego dokładno�
 
 > [!Note]
 > Usuń lub dezaktywowanie listy fraz z paska narzędzi kontekstowych na **frazę list** strony.
-
-## <a name="pattern-regular-expression-feature"></a>Funkcja wzorca (wyrażenie regularne) 
-**Ta funkcja jest przestarzała**. Nie można dodać nowe funkcje wzorzec do usługi LUIS. Wszystkie istniejące funkcje wzorzec są obsługiwane do maja 2018 r. Przyczynia się do standardowych LUIS dopasowania wyrażenia regularnego przy użyciu żądania Ściągnięcia do [repozytorium Github aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

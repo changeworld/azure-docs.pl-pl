@@ -9,14 +9,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 3cd27438247b801e384b80d96ba288896b4c5aae
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d422b56acd56f87cb855c5e045e3a91666eee571
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234226"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499400"
 ---
-# <a name="create-a-spark-machine-learning-pipeline"></a>Tworzenie potoku uczenia maszynowego platformy Spark
+# <a name="create-an-apache-spark-machine-learning-pipeline"></a>Tworzenie potoku uczenia maszyny platformy Apache Spark
 
 Biblioteka uczenia skalowalne maszyny platformy Apache Spark (Biblioteka MLlib) zapewnia funkcje modelowania w środowisku rozproszonym. Pakiet platformy Spark [ `spark.ml` ](http://spark.apache.org/docs/latest/ml-pipeline.html) to zbiór interfejsów API wysokiego poziomu, oparta na elementy Dataframe. Te interfejsy API ułatwiają tworzenie i dostosowywanie praktyczne potokach uczenia maszynowego.  *Platforma Spark jest uczenie maszynowe* odwołuje się do tego na podstawie MLlib ramkę danych interfejsu API, nie starsza na podstawie RDD potoku interfejsu API.
 
@@ -131,4 +131,4 @@ only showing top 20 rows
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Analiza danych przy użyciu języka Scala i aparatu Spark na platformie Azure](../../machine-learning/team-data-science-process/scala-walkthrough.md)
+* [Analiza danych przy użyciu języka Scala i platformy Apache Spark na platformie Azure](../../machine-learning/team-data-science-process/scala-walkthrough.md)

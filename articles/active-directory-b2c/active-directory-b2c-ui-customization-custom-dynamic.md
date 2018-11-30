@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4e7cc47bddf3663cbc1c8bb5c4470020a84073e4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 11a14bc8b593e5e7d81e9bdbd4ac4ee3b2bbecaa
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441655"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582891"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Usługa Azure Active Directory B2C: Skonfiguruj interfejs użytkownika z zawartością dynamiczną za pomocą zasad niestandardowych
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Za pomocą usługi Azure Active Directory B2C (Azure AD B2C), niestandardowych zasad możesz wysłać parametr ciągu zapytania. Przez przekazanie parametru do punktu końcowego usługi HTML, można dynamicznie zmieniać zawartość strony. Na przykład możesz zmienić obrazu tła w witrynie usługi Azure AD B2C rejestracji lub logowania na podstawie parametru, które przechodzą z sieci web lub aplikacji mobilnej. 
+Za pomocą usługi Azure Active Directory B2C (Azure AD B2C), niestandardowych zasad możesz wysłać parametr ciągu zapytania. Przekazanie parametru do punktu końcowego HTML pozwala na dynamiczną zmianę zawartość strony. Na podstawie parametru przekazywanego z aplikacji internetowej lub aplikacji mobilnej można na przykład zmienić obraz tła na stronie rejestracji lub logowania usługi Azure AD B2C. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Ten artykuł koncentruje się na temat sposobu dostosowywania interfejsu użytkownika usługi Azure AD B2C z *zawartości dynamicznej* za pomocą zasad niestandardowych. Aby rozpocząć pracę, zobacz [dostosowywania interfejsu użytkownika w przypadku zasad niestandardowych](active-directory-b2c-ui-customization-custom.md). 
@@ -80,7 +80,7 @@ W tym przewodniku możesz:
 
     ![Wybierz szablon aplikacji sieci Web](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-create-project2.png)
 
-6. Wybierz **OK** do tworzenia projektu.
+6. Wybierz przycisk **OK**, aby utworzyć projekt.
 
 ## <a name="step-2-create-mvc-view"></a>Krok 2: Tworzenie widoku MVC
 ### <a name="step-21-download-the-b2c-built-in-html5-template"></a>Krok 2.1: Pobierz wbudowany szablon HTML5 B2C
@@ -178,7 +178,7 @@ Znajdź `<img>` element, który zawiera `ID` wartość *background_background_im
 
 3. W **CORS** okna w **dozwolone źródła** wykonaj jedną z następujących czynności:
 
-    * Wprowadź adres URL lub adresy URL, które mają być dozwolone wywołania języka JavaScript pochodzą.
+    * Wprowadź adres URL lub adresy URL, które mają być dozwolone wywołania języka JavaScript pochodzą. Należy używać małych liter w adresach URL, które należy wprowadzić.
     * Wprowadź znak gwiazdki (*), aby określić, że wszystkie domeny pochodzenia są akceptowane.
 
 4. Wybierz pozycję **Zapisz**.

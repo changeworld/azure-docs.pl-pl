@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 220fc7b2b0ce3a4c5fd943c35952a345379a1b91
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 77872ab809f4375523a91f4ebc9b24f8606e6c94
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284220"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619825"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory uwierzytelnianie przekazywane: Często zadawane pytania
 
@@ -34,7 +34,7 @@ Przegląd [tego przewodnika](https://docs.microsoft.com/azure/security/azure-ad-
 
 Uwierzytelnianie przekazywane jest bezpłatną funkcją. Nie potrzebujesz żadnych płatnej wersji usługi Azure AD z niego korzystać.
 
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpwwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>Jest dostępna w uwierzytelniania przekazywanego [chmury Microsoft Azure (Niemcy)](http://www.microsoft.de/cloud-deutschland) i [chmury Microsoft Azure dla instytucji rządowych](https://azure.microsoft.com/features/gov/)?
+## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>Jest dostępna w uwierzytelniania przekazywanego [chmury Microsoft Azure (Niemcy)](https://www.microsoft.de/cloud-deutschland) i [chmury Microsoft Azure dla instytucji rządowych](https://azure.microsoft.com/features/gov/)?
 
 Nie. Uwierzytelnianie przekazywane jest dostępna tylko w na całym świecie wystąpienia usługi Azure AD.
 
@@ -44,7 +44,7 @@ Tak. Wszystkie możliwości dostępu warunkowego, w tym usługi Azure Multi-Fact
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Uwierzytelnianie przekazywane obsługuje "Alternatywny identyfikator" jako nazwy użytkownika, a nie "userPrincipalName"?
 
-Tak. Obsługuje uwierzytelnianie przekazywane `Alternate ID` jako nazwa użytkownika w przypadku skonfigurowania w usłudze Azure AD Connect. Aby uzyskać więcej informacji, zobacz [instalację niestandardową programu Azure AD Connect](how-to-connect-install-custom.md). Nie wszystkie aplikacje usługi Office 365 obsługują `Alternate ID`. Zapoznaj się z instrukcji obsługi dokumentacji określonej aplikacji.
+Tak, obsługuje uwierzytelnianie przekazywane `Alternate ID` jako nazwa użytkownika w przypadku skonfigurowania w usłudze Azure AD Connect. To wymaganie wstępne, Azure AD Connect potrzebuje do synchronizacji usługi Active Directory w środowisku lokalnym `UserPrincipalName` atrybutu do usługi Azure AD. Aby uzyskać więcej informacji, zobacz [instalację niestandardową programu Azure AD Connect](how-to-connect-install-custom.md). Nie wszystkie aplikacje usługi Office 365 obsługują `Alternate ID`. Zapoznaj się z instrukcji obsługi dokumentacji określonej aplikacji.
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Synchronizacja skrótów haseł działa jako rezerwowa metoda uwierzytelniania przekazywanego?
 
@@ -119,6 +119,10 @@ Jeśli migrujesz z usług AD FS (lub inne technologie federacyjnych) do uwierzyt
 
 Tak. Obsługiwane są środowisk wielu lasów, jeśli istnieją relacje zaufania lasu między lasami usługi Active Directory i routing sufiksów nazw jest poprawnie skonfigurowana.
 
+## <a name="does-pass-through-authentication-provide-load-balancing-across-multiple-authentication-agents"></a>Uwierzytelnianie przekazywane zapewnia równoważenie obciążenia w wielu agentów uwierzytelniania?
+
+Nie, instalowanie wielu agentów uwierzytelniania przekazywanego zapewnia tylko [wysokiej dostępności](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability). Zapewnia ona deterministyczna Równoważenie obciążenia między agentów uwierzytelniania. Każdy Agent uwierzytelniania (w losowo wybranym momencie) może przetwarzać żądania logowania określonego użytkownika.
+
 ## <a name="how-many-pass-through-authentication-agents-do-i-need-to-install"></a>Ile agentów uwierzytelniania przekazywanego trzeba zainstalować?
 
 Instalowanie wielu agentów uwierzytelniania przekazywanego zapewnia [wysokiej dostępności](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability). Ale nie zapewnia ona deterministyczna Równoważenie obciążenia między agentów uwierzytelniania.
@@ -149,6 +153,22 @@ Uruchom ponownie Kreatora programu Azure AD Connect i zmień metodę logowania u
 ## <a name="what-happens-when-i-uninstall-a-pass-through-authentication-agent"></a>Co się stanie, gdy odinstalować agenta uwierzytelniania przekazywanego?
 
 Po odinstalowaniu agenta uwierzytelniania przekazywanego z serwera powoduje serwera przestanie odpowiadać na żądania logowania. Aby uniknąć dzielenia funkcji logowania użytkowników w dzierżawie usługi, upewnij się, że inny Agent uwierzytelniania uruchomiony przed odinstalowaniem agenta uwierzytelniania przekazywanego.
+
+## <a name="i-have-an-older-tenant-that-was-originally-setup-using-ad-fs--we-recently-migrated-to-pta-but-now-are-not-seeing-our-upn-changes-synchronizing-to-azure-ad--why-are-our-upn-changes-not-being-synchronized"></a>Masz starszą dzierżawy, który został pierwotnie instalację za pomocą usług AD FS.  Firma Microsoft niedawno zmigrowana do PTA, ale teraz nie widać zmian nazwy UPN synchronizacji z usługą Azure AD.  Dlaczego są nasze UPN zmiany nie są synchronizowane?
+
+Odp.: w następujących okolicznościach zmiany nazwy UPN w środowisku lokalnym mogą nie synchronizuje się w przypadku:
+
+- Dzierżawy usługi Azure AD została utworzona przed 15 w czerwcu 2015 roku
+- Początkowo zostały możesz Sfederowane za pomocą dzierżawy usługi Azure AD za pomocą usług AD FS do uwierzytelniania
+- W przypadku przejścia do mających zarządzane przy użyciu PTA uwierzytelniania użytkowników
+
+Jest to spowodowane domyślne zachowanie dzierżawy utworzone przed 2015 r. 15 czerwca do Zablokuj możliwość zmiany nazwy UPN.  Jeśli potrzebujesz un-block zmiany nazwy UPN, należy uruchomić następujące polecenia cmdlet programu PowerShell:  
+
+`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers-Enable $True`
+
+Dzierżaw utworzonych po 15 w czerwcu 2015 roku ma domyślne zachowanie synchronizacja zmian nazwy UPN.   
+
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Bieżące ograniczenia](how-to-connect-pta-current-limitations.md): Dowiedz się, jakie scenariusze są obsługiwane i te, które nie są.

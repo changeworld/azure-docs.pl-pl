@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 45d296b8867884a4c40dc10adc1f9aa83d7f9eab
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 14e89d5eab058b9fa42c20811df9c5ac0ceca44a
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715519"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633201"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -477,7 +477,7 @@ Można usunąć rozwiązania do zarządzania usługi Office 365 przy użyciu pro
 
 ## <a name="data-collection"></a>Zbieranie danych
 ### <a name="supported-agents"></a>Obsługiwani agenci
-Rozwiązania usługi Office 365 nie pobierać dane z dowolnego z [agentów usługi Log Analytics](../../log-analytics/log-analytics-data-sources.md).  Pobiera dane bezpośrednio z usługi Office 365.
+Rozwiązania usługi Office 365 nie pobierać dane z dowolnego z [agentów usługi Log Analytics](../../azure-monitor/platform/agent-data-sources.md).  Pobiera dane bezpośrednio z usługi Office 365.
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
 Może upłynąć kilka godzin początkowo zbierane dane. Po uruchomieniu zbieranie, usługi Office 365 wysyła [powiadomień elementu webhook](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) szczegółowych danych do usługi Log Analytics zawsze jest tworzony rekord. Ten rekord jest dostępna w usłudze Log Analytics w ramach po kilku minutach od jego odebrania.
@@ -710,5 +710,5 @@ Poniższa tabela zawiera przykładowe wyszukiwania w dzienniku dotyczące rekord
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Korzystanie z wyszukiwania w dzienniku usługi [Log Analytics](../../log-analytics/log-analytics-queries.md) w celu wyświetlania szczegółowych danych aktualizacji.
-* [Tworzenie własnych pulpitów nawigacyjnych](../../log-analytics/log-analytics-dashboards.md) Aby wyświetlić ulubione zapytania wyszukiwania usługi Office 365.
+* [Tworzenie własnych pulpitów nawigacyjnych](../../azure-monitor/platform/dashboards.md) Aby wyświetlić ulubione zapytania wyszukiwania usługi Office 365.
 * [Tworzenie alertów](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) do aktywnego powiadomienia o ważnych działań usługi Office 365.  

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 06350d30999cb056babbd001f98a6c3a5fdbac6c
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: cfe2620801f743831f77fb76f344c156676966d3
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576998"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635071"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrona interfejsu API przy użyciu protokołu OAuth 2.0 przy użyciu usługi Azure Active Directory i usługi API Management
 
@@ -100,8 +100,6 @@ Po zarejestrowaniu dwie aplikacje do reprezentowania konsoli dla deweloperów i 
 
 > [!NOTE]
 > Jeśli **usługi Azure Active Directory** nie znajduje się w obszarze uprawnień dotyczących innych aplikacji, wybierz opcję **Dodaj** Aby dodać go z listy.
-> 
-> 
 
 ## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>Włączanie autoryzacji użytkownika OAuth 2.0, w konsoli dla deweloperów
 
@@ -109,7 +107,7 @@ Na tym etapie utworzono aplikacji w usłudze Azure AD, a przyznano odpowiednie u
 
 W tym przykładzie konsoli dla deweloperów jest aplikacją kliencką. Poniżej opisano sposób włączania autoryzacji użytkownika OAuth 2.0, w konsoli dla deweloperów. 
 
-1. Przejdź do wystąpienia usługi API Management.
+1. W witrynie Azure Portal przejdź do swojego wystąpienia usługi API Management.
 
 2. Wybierz **protokołu OAuth 2.0** > **Dodaj**.
 
@@ -120,6 +118,9 @@ W tym przykładzie konsoli dla deweloperów jest aplikacją kliencką. Poniżej 
 5. Aby uzyskać **typy przydziałów autoryzacji**, wybierz opcję **kod autoryzacji**.
 
 6. Określ **adresu URL punktu końcowego autoryzacji** i **adresu URL punktu końcowego tokenu**. Pobierania tych wartości z **punktów końcowych** strony w dzierżawie usługi Azure AD. Przejdź do **rejestracje aplikacji** strony, a następnie wybierz **punktów końcowych**.
+
+    >[!NOTE]
+    > Użyj **v1** punktów końcowych w tym miejscu
 
 7. Kopiuj **punkt końcowy protokołu OAuth 2.0 autoryzacji**i wklej go w **adresu URL punktu końcowego autoryzacji** pola tekstowego.
 
@@ -154,6 +155,9 @@ Następnym krokiem jest umożliwienie autoryzacji użytkownika OAuth 2.0 dla int
 5. Wybierz pozycję **Zapisz**.
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>Pomyślne wywołanie interfejsu API z portalu dla deweloperów
+
+> [!NOTE]
+> Ta sekcja nie ma zastosowania do **zużycie** warstwę, która nie obsługuje portalu dla deweloperów.
 
 Teraz, gdy włączona jest funkcja autoryzacji użytkownika OAuth 2.0 `Echo API`, konsolę dla deweloperów uzyskuje token dostępu w imieniu użytkownika, przed wywołaniem interfejsu API.
 

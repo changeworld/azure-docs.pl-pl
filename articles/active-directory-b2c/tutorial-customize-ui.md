@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 11/26/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ee6d7735a2983f642eff82a7dabe036af100e60e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 588ce454248f0577a52515a4327d1e43013d34a5
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622673"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581803"
 ---
 # <a name="tutorial-customize-the-user-interface-of-your-applications-in-azure-active-directory-b2c"></a>Samouczek: Dostosowywanie interfejsu użytkownika aplikacji w usłudze Azure Active Directory B2C
 
@@ -64,7 +64,7 @@ Mimo że można przechowywać pliki na wiele sposobów, w ramach tego samouczka,
  Kod platformy Azure AD B2C w przeglądarce używa nowoczesnych i standardowego podejścia do załadowania zawartości niestandardowej z adresu URL, który określisz w zasadach. Współużytkowanie zasobów między źródłami (cors) umożliwia ograniczone zasoby na stronie sieci web, aby zażądać z innych domen.
 
 1. Wybierz z menu **CORS**.
-2. Aby uzyskać **dozwolone źródła**, wprowadź `your-tenant-name.b2clogin.com`. Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C. Na przykład `fabrikam.b2clogin.com`.
+2. Aby uzyskać **dozwolone źródła**, wprowadź `https://your-tenant-name.b2clogin.com`. Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C. Na przykład `https://fabrikam.b2clogin.com`. Należy używać małych liter, wprowadzając nazwę dzierżawy.
 3. Aby uzyskać **dozwolone metody**, zaznacz zarówno pozycję `GET` i `OPTIONS`.
 4. Aby uzyskać **dozwolone nagłówki**, wprowadź znak gwiazdki (*).
 5. Aby uzyskać **udostępniane nagłówki**, wprowadź znak gwiazdki (*).

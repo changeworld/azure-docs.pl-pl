@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: cwatson
-ms.openlocfilehash: de5cb85e751ad1d0c25ea31b185a3266eb9de05d
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 50909a51786bf6118c4fb867f2482c93bf59c28e
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275405"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581562"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Zrozumienie warunki na fakturze Microsoft Azure
 
@@ -114,5 +114,6 @@ W poniższej tabeli opisano nagłówki kolumn opłaty za użycie na fakturze.
 ## <a name="how-do-i-make-sure-that-the-charges-in-my-invoice-are-correct"></a>Jak upewnić się, że opłaty w mojej fakturze są poprawne?
 Jeśli na który chcesz uzyskać więcej informacji znajduje się na fakturze jest opłaty, zobacz [opis zawartości rachunku dla systemu Microsoft Azure.](billing-understand-your-bill.md)
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
-Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
+
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

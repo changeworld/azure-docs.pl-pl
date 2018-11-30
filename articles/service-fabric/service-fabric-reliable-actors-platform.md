@@ -1,6 +1,6 @@
 ---
-title: Reliable Actors w sieci szkieletowej usług | Dokumentacja firmy Microsoft
-description: Opisuje sposób Reliable Actors są warstwowy na niezawodne usługi i korzystać z funkcji platformy sieć szkieletowa usług.
+title: Elementy Reliable Actors w usłudze Service Fabric | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak elementy Reliable Actors przedstawiono nałożone na usług Reliable Services i korzystać z funkcji platformy usługi Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: f8e6ad4b23eeaf46cccac9c8ff9d41f71511129d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bd3a77e1486d4af61539e55f67811221dd971b37
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642856"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582347"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Jak elementy Reliable Actors korzystają z platformy usługi Service Fabric
-W tym artykule opisano, jak Reliable Actors działają na platformie Azure Service Fabric. Wywołuje Reliable Actors uruchomienia w ramach obsługiwanej w implementacji usługi stanowej niezawodnej *usługi aktora*. Usługa aktora zawiera składniki niezbędne do zarządzania cyklem życia i komunikat podczas wysyłania do sieci złośliwych użytkowników:
+W tym artykule wyjaśniono, jak elementy Reliable Actors działają na platformie Azure Service Fabric. Elementy Reliable Actors, uruchom w strukturę, która jest hostowana w implementacji stanowej usługi reliable service o nazwie *usługa aktora*. Usługa aktora zawiera wszystkie składniki niezbędne do zarządzania cyklem życia i wiadomości, wysyła do usługi aktorów:
 
-* Środowisko uruchomieniowe aktora zarządza cykl życia, wyrzucanie elementów bezużytecznych i wymusza jednowątkowe dostęp.
-* Odbiornik komunikacji zdalnej usługi aktora akceptuje wywołań złośliwych użytkowników dostępu zdalnego i wysyła je do dyspozytora rozesłać do wystąpienia odpowiednie aktora.
-* Dostawca stanu aktora opakowuje dostawców stanu (na przykład dostawcy stanu niezawodnej kolekcje) i udostępnia adapter dla zarządzania stanem aktora.
+* W środowisku uruchomieniowym aktora zarządza cyklem życia, wyrzucanie elementów bezużytecznych i wymusza jednowątkowe dostęp.
+* Odbiornik komunikacji zdalnej usługi aktora akceptuje dostępu zdalnego wywołania aktorów i wysyła je do dyspozytora kierować do wystąpienia aktora odpowiednie.
+* Dostawca stanu aktora otacza dostawców stanu (np. dostawca stanu elementów Reliable Collections) i udostępnia adapter dla zarządzania stanem aktora.
 
-Te składniki tworzą razem framework niezawodnego aktora.
+Te składniki tworzą razem framework Reliable Actor.
 
-## <a name="service-layering"></a>Tworzenie warstw usługi
-Ponieważ sama usługa aktora jest niezawodnej usługi, wszystkie [model aplikacji](service-fabric-application-model.md), cykl życia, [pakowania](service-fabric-package-apps.md), [wdrożenia](service-fabric-deploy-remove-applications.md), uaktualnianie i skalowanie pojęcia niezawodne usługi Zastosuj ten sam sposób, aby usługi aktora.
+## <a name="service-layering"></a>Warstw usługi
+Ponieważ sama usługa aktora usługi reliable service wszystkich [model aplikacji](service-fabric-application-model.md), cykl życia, [pakowania](service-fabric-package-apps.md), [wdrożenia](service-fabric-deploy-remove-applications.md), uaktualnianie i skalowanie pojęcia niezawodna Usługi zastosować ten sam sposób, aby usługi aktora.
 
-![Tworzenie warstw usługi aktora][1]
+![Warstw usługi aktora][1]
 
-Na powyższym diagramie przedstawiono związek między struktur aplikacji usługi Service Fabric i kod użytkownika. Niebieski elementy reprezentują usługi niezawodnej struktury aplikacji, orange reprezentuje framework niezawodnego aktora i zielony reprezentuje kod użytkownika.
+Na powyższym diagramie przedstawiono relację między platformami aplikacji usługi Service Fabric i kod użytkownika. Niebieskie elementy reprezentują struktury aplikacji usług Reliable Services, orange reprezentuje framework Reliable Actor i zielony reprezentuje kod użytkownika.
 
-W usługach niezawodnej usługi dziedziczy `StatefulService` klasy. Ta klasa jest pochodną `StatefulServiceBase` (lub `StatelessService` usług bezstanowych). W Reliable Actors możesz użyć usługi aktora. Usługa aktora jest różne implementacje `StatefulServiceBase` klasy, która implementuje wzorca aktora, gdzie uruchomić sieci złośliwych użytkowników. Ponieważ sama usługa aktora jest po prostu implementacją `StatefulServiceBase`, można napisać własne usługi, która pochodzi z `ActorService` i implementuje funkcje na poziomie usługi tak samo jak w przypadku dziedziczenia `StatefulService`, takich jak:
+Usług Reliable Services, usługi dziedziczy `StatefulService` klasy. Ta klasa jest pochodną `StatefulServiceBase` (lub `StatelessService` przypadku usług bezstanowych). W elementach Reliable Actors możesz korzystać z usługi aktora. Usługa aktora jest z inną implementacją `StatefulServiceBase` klasę, która implementuje wzorzec aktora, w którym są uruchamiane usługi aktorów. Ponieważ sama usługa aktora jest po prostu implementacją `StatefulServiceBase`, można napisać własne usługa, która jest pochodną `ActorService` i zaimplementuj funkcje na poziomie usługi tak samo jak w przypadku dziedziczenia `StatefulService`, takich jak:
 
-* Usługa tworzenia kopii zapasowej i przywracania.
-* Udostępnione funkcji dla wszystkich podmiotów, na przykład wyłącznika.
-* Zdalne wywoływanie procedur w samej usługi aktora i na każdym poszczególnych aktora.
+* Usługa tworzenia kopii zapasowych i przywracania.
+* Udostępnione funkcje dla wszystkich podmiotów, na przykład wyłącznika.
+* Zdalne wywołania procedur na samą usługę aktora i każdego poszczególnych aktora.
 
-Aby uzyskać więcej informacji, zobacz [implementowania funkcji poziomu usług w usłudze aktora](service-fabric-reliable-actors-using.md).
+Aby uzyskać więcej informacji, zobacz [Implementowanie funkcji na poziomie usługi w usłudze aktora](service-fabric-reliable-actors-using.md).
 
 ## <a name="application-model"></a>Model aplikacji
-Usługi aktora są niezawodne usługi, więc model aplikacji jest taka sama. Jednak narzędzi kompilacji framework aktora Generowanie niektórych plików modelu aplikacji za Ciebie.
+Usług aktora są usług Reliable Services, dzięki czemu model aplikacji jest taki sam. Jednak narzędzia do kompilacji framework aktora wygenerować niektóre z plików modelu aplikacji za Ciebie.
 
 ### <a name="service-manifest"></a>Manifest usługi
-Narzędzia kompilacji framework aktora automatycznie generować zawartość pliku ServiceManifest.xml usługi aktora. Ten plik zawiera:
+Narzędzia kompilacji aktora framework automatycznie generuje zawartość pliku ServiceManifest.xml usługi aktora. Ten plik zawiera:
 
-* Typ usługi aktora. Nazwa typu jest generowany na podstawie nazwy projektu z aktora. Na podstawie trwałości atrybutu na Twoje aktora, HasPersistedState zostanie również ustawiona flaga odpowiednio.
+* Typ usługi aktora. Nazwa typu jest generowany na podstawie nazwy projekt usługi aktora. Na podstawie stanu trwałego atrybutu na usługi aktora, HasPersistedState flaga jest również ustawiona odpowiednio.
 * Pakiet kodu.
 * Pakiet konfiguracji.
 * Zasoby i punktów końcowych.
 
 ### <a name="application-manifest"></a>Manifest aplikacji
-Narzędzia kompilacji framework aktora automatyczne tworzenie definicji domyślnej usługi dla usługi aktora. Narzędzia kompilacji wypełniania właściwości usługi domyślne:
+Narzędzia do kompilacji framework aktora automatycznie tworzyć definicję usługi domyślne dla usługi aktora. Narzędzia do kompilacji wypełnić właściwości usługi domyślne:
 
-* Liczba zestawu replik jest określana przez atrybut trwałości na Twoje aktora. Zawsze, gdy atrybut trwałości na Twoje aktora została zmieniona, liczba zestawu replik w definicji domyślnej usługi zostanie zresetowany odpowiednio.
-* Schemat partycji i zakres są ustawione na jednolitych Int64 z pełnego zakresu klucza Int64.
+* Liczba zestawu replik jest określana przez atrybut utrzymywania na usługi aktora. Każdorazowo, gdy atrybut utrzymywania na usługi aktora ulegnie zmianie, liczba zestawu replik w definicji usługi domyślne jest resetowany odpowiednio.
+* Schemat partycji oraz zakres są ustawione na jednolitych Int64 dla pełnego zakresu kluczy Int64.
 
-## <a name="service-fabric-partition-concepts-for-actors"></a>Pojęcia dotyczące partycji usługi sieć szkieletowa osób
-Usługi aktora są podzielone na partycje usługi stanowej. Każda partycja usługi aktora zawiera zestaw złośliwych użytkowników. Partycji usługi są automatycznie dystrybuowane za pośrednictwem wiele węzłów w sieci szkieletowej usług. W związku z tym rozpowszechnianych wystąpień aktora.
+## <a name="service-fabric-partition-concepts-for-actors"></a>Usługa Service Fabric partycji pojęcia związane z aktorów
+Usługi aktora są podzielone na partycje usług stanowych. Każda partycja usługi aktora zawiera zestaw podmiotów. Partycje usługi są automatycznie rozpraszane w wielu węzłach w usłudze Service Fabric. Wystąpienia aktora są dystrybuowane w wyniku.
 
-![Aktora partycjonowania i dystrybucji][5]
+![Partycjonowanie aktora i dystrybucji][5]
 
-Niezawodne usługi mogą być tworzone z różnych partycji, systemów i zakresami kluczy partycji. Usługa aktora wykorzystuje schemat partycjonowania Int64 z pełnego zakresu klucza Int64 do mapowania złośliwych użytkowników do partycji.
+Usług Reliable Services mogą być tworzone za pomocą zakresów kluczy partycji i schematy partycjonowania. Usługa aktora używa schematu partycjonowania Int64 z pełnego zakresu kluczy Int64 do mapowania partycje aktorów.
 
 ### <a name="actor-id"></a>Identyfikator aktora
-Każdy aktora utworzony w usłudze ma unikatowy identyfikator skojarzony z nim reprezentowany przez `ActorId` klasy. `ActorId` to wartość Identyfikatora nieprzezroczyste, która może służyć do dystrybucji uniform podmiotów między partycji usługi przez Generowanie losowe identyfikatory:
+Każdego aktora, który jest tworzony w usłudze ma unikatowy identyfikator skojarzony z nim, reprezentowane przez `ActorId` klasy. `ActorId` jest nieprzezroczysta wartość Identyfikatora, który może służyć równomiernego rozkładu aktorów partycjach usługi przez Generowanie losowe identyfikatory:
 
 ```csharp
 ActorProxy.Create<IMyActor>(ActorId.CreateRandom());
@@ -80,7 +80,7 @@ ActorProxyBase.create<MyActor>(MyActor.class, ActorId.newId());
 ```
 
 
-Każdy `ActorId` jest wartość skrótu do postaci liczby Int64. Jest to, dlaczego usługa aktora musi używać schemat partycjonowania Int64 z pełnego zakresu klucza Int64. Jednak można używać niestandardowej wartości Identyfikatora dla `ActorID`, w tym identyfikatory GUID/UUID, ciągi i Int64s.
+Każdy `ActorId` wyznaczany jest skrót Int64. Jest to, dlaczego usługa aktora musi używać schematu partycjonowania Int64 dla pełnego zakresu kluczy Int64. Jednak wartości Identyfikatora niestandardowe mogą służyć do `ActorID`, w tym identyfikatory GUID/UUID, ciągi i Int64s.
 
 ```csharp
 ActorProxy.Create<IMyActor>(new ActorId(Guid.NewGuid()));
@@ -93,15 +93,15 @@ ActorProxyBase.create(MyActor.class, new ActorId("myActorId"));
 ActorProxyBase.create(MyActor.class, new ActorId(1234));
 ```
 
-Podczas korzystania z identyfikatorów GUID/UUID i ciągi, wartości są wartość skrótu do postaci liczby Int64. Jednak gdy możesz jest jawnie dostarczanie Int64 do `ActorId`, Int64 przypisze bezpośrednio do partycji bez dalszego wyznaczania wartości skrótu. Można użyć tej metody do partycji, których podmioty są umieszczane w kontroli.
+Gdy używasz GUID/UUID i ciągi, wartości są przekazywane do Int64. Jednak gdy jawnie udostępniasz Int64 do `ActorId`, Int64 będzie mapować bezpośrednio do partycji bez dalszego wyznaczania wartości skrótu. Można użyć tej techniki wysyłania do sterowania partycję Aktorzy są umieszczane w.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zarządzanie stanem aktora](service-fabric-reliable-actors-state-management.md)
-* [Aktora cykl życia i odzyskiwanie pamięci](service-fabric-reliable-actors-lifecycle.md)
-* [Dokumentacji interfejsu API złośliwych użytkowników](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [.NET przykładowy kod](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java przykładowy kod](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Kolekcja aktora cykl życia i odzyskiwanie](service-fabric-reliable-actors-lifecycle.md)
+* [Dokumentacja referencyjna interfejsu API aktorów](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors?redirectedfrom=MSDN&view=azure-dotnet#microsoft_servicefabric_actors)
+* [Przykładowy kod .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Przykładowego kodu Java](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

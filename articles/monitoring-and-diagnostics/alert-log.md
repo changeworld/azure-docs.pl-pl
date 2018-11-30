@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 74b9673d7ef9dedbcc34682d4707103e696bece3
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 6e6db7ef2f2de075aea41a29e69b2c674efafa17
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711705"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635360"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor  
 
@@ -223,7 +223,7 @@ Dlatego sekcji poniżej szczegółowo przy użyciu interfejsu API za pośrednict
 ### <a name="powershell-cli-or-api-for-log-analytics"></a>Program PowerShell, interfejsu wiersza polecenia lub interfejsu API dla usługi Log Analytics
 Log Analytics alertu interfejsu API REST jest zgodne ze specyfikacją REST i możliwy za pośrednictwem interfejsu REST API usługi Azure Resource Manager. Dlatego są dostępne z wiersza polecenia środowiska PowerShell i interfejsu API, w którym zostanie zwróci wyniki wyszukiwania dla użytkownika w formacie JSON, co pozwala na wykorzystanie wyniki na wiele różnych sposobów programowo.
 
-Dowiedz się więcej o [tworzenie i zarządzanie nimi reguły alertów w usłudze Log Analytics przy użyciu interfejsu API REST](../log-analytics/log-analytics-api-alerts.md), w tym przykłady uzyskiwania dostępu do interfejsu API z poziomu programu Powershell.
+Dowiedz się więcej o [tworzenie i zarządzanie nimi reguły alertów w usłudze Log Analytics przy użyciu interfejsu API REST](../azure-monitor/platform/api-alerts.md), w tym przykłady uzyskiwania dostępu do interfejsu API z poziomu programu Powershell.
 
 ### <a name="powershell-cli-or-api-for-application-insights"></a>Program PowerShell, interfejsu wiersza polecenia lub interfejsu API usługi Application Insights
 [Usługa Azure Monitor — zaplanowane reguł zapytań interfejsu API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) jest w pełni zgodna z usługą Azure Resource Manager REST API i interfejs API REST. Dlatego można używać za pośrednictwem programu Powershell przy użyciu polecenia cmdlet usługi Resource Manager, a także wiersza polecenia platformy Azure.

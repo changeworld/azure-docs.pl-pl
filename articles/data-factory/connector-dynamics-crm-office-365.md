@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: ce3c494dc0b8c962c8dae0af38d3cb5476cdf48b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: d58e72c4487a3ab6d7b562fd328098d98761da5e
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406179"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620340"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiowanie danych z i Dynamics 365 (Common Data Service) lub programu Dynamics CRM przy użyciu usługi Azure Data Factory
 
@@ -43,7 +43,10 @@ Dynamics 365 w szczególności następujące typy aplikacji są obsługiwane:
 - Dynamics 365 for Project Service Automation
 - Dynamics 365 for Marketing
 
-Typy innej aplikacji, np. operacje i finansów, Talent, itp. nie są obsługiwane.
+Pozostałe typy aplikacji np. Finanse i operacje, Talent, itp., nie są obsługiwane przez ten łącznik.
+
+>[!TIP]
+>Aby skopiować dane z **Dynamics 365 Finance and Operations**, możesz użyć [łącznika Dynamics AX](connector-dynamics-ax.md).
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 

@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 11/28/2018
 ms.author: danlep
-ms.openlocfilehash: e060d8cf1ec16ac3c900180c01eb3384a56d5e13
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: e03a35b31c9089abe973c7e4388b508f668a3970
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713031"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619847"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure
 
@@ -73,7 +73,7 @@ Podsieci, której użyjesz dla grupy kontenerów może zawierać tylko grupy kon
 
 Profil sieciowy jest szablonu konfiguracji sieci dla zasobów platformy Azure. Określa niektóre właściwości sieciowe dla zasobu, na przykład podsieci, do którego powinny zostać wdrożone. Po raz pierwszy używasz [utworzyć kontener az] [ az-container-create] polecenia, aby wdrożyć grupę kontenerów do podsieci (i w związku z tym sieci wirtualnej), platforma Azure tworzy profil sieciowy dla Ciebie. Można następnie użyć tego profilu sieci do przyszłych wdrożeń do podsieci. 
 
-Aby użyć szablonu usługi Resource Manager, plik YAML lub programistycznej metody wdrażania grupy kontenerów do podsieci, musisz podać pełny identyfikator zasobu usługi Resource Manager profil sieciowy. Można użyć profil, który został wcześniej utworzony przy użyciu [utworzyć kontener az][az-container-create], lub Utwórz profil przy użyciu szablonu usługi Resource Manager (zobacz [odwołania](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)). Aby uzyskać identyfikator utworzony uprzednio profil, należy użyć [Lista profilów sieciowych az] [ az-network-profile-list] polecenia. 
+Aby użyć szablonu usługi Resource Manager, plik YAML lub programistycznej metody wdrażania grupy kontenerów do podsieci, musisz podać pełny identyfikator zasobu usługi Resource Manager profil sieciowy. Można użyć profil, który został wcześniej utworzony przy użyciu [utworzyć kontener az][az-container-create], lub Utwórz profil przy użyciu szablonu usługi Resource Manager (zobacz [przykładowy szablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet) i [odwołanie](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)). Aby uzyskać identyfikator utworzony uprzednio profil, należy użyć [Lista profilów sieciowych az] [ az-network-profile-list] polecenia. 
 
 Na poniższym diagramie kilka grup kontenerów zostały wdrożone do podsieci delegować domenę do usługi Azure Container Instances. Po wdrożeniu jedną grupę kontenerów do podsieci, można wdrożyć dodatkowe kontenera grupy do niej, określając ten sam profil sieci.
 
@@ -296,6 +296,9 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
+
+Aby wdrożyć nową sieć wirtualną, podsiecią, profil sieci i grupy kontenerów przy użyciu szablonu usługi Resource Manager, zobacz [Utwórz grupę kontenerów platformy Azure z siecią wirtualną](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+).
 
 Kilka zasoby sieci wirtualnej i funkcje zostały omówionych w tym artykule, chociaż krótko. Dokumentacji usługi Azure Virtual Network, które często obejmuje następujące tematy:
 

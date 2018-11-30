@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 466cb9ea116030d3f6ee6b41809011dae9acc00b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 578479d43279dc1edb9edd24fd57d6841784166a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011208"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498136"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Rozwiązania magazynu platformy Azure dla usługi ML w usłudze Azure HDInsight
 
@@ -26,7 +26,7 @@ Usługi uczenie Maszynowe na HDInsight można użyć różnych systemów pamięc
 
 Istnieje również możliwość uzyskiwania dostępu do wielu kont usługi Azure storage lub kontenerów przy użyciu klastra usługi HDInsight. Usługa Azure File storage to opcja magazynowania danych wygodne do użytku w węźle krawędzi umożliwiające instalowanie udziału plików usługi Azure Storage, na przykład system plików w systemie Linux. Ale udziałów plików platformy Azure może być zainstalowany i używane przez system z obsługiwanym systemem operacyjnym, takich jak Windows lub Linux. 
 
-Podczas tworzenia klastra usługi Hadoop w HDInsight, należy określić albo **usługi Azure storage** konta lub **usługa Data Lake store**. Z tego konta kontener określonego magazynu przechowuje systemu plików dla klastra, którą tworzysz (na przykład, rozproszony System plików Hadoop). Aby uzyskać więcej informacji i wskazówek zobacz:
+Podczas tworzenia klastra Apache Hadoop w HDInsight, możesz określić **usługi Azure storage** konta lub **usługa Data Lake store**. Z tego konta kontener określonego magazynu przechowuje systemu plików dla klastra, którą tworzysz (na przykład, rozproszony System plików Hadoop). Aby uzyskać więcej informacji i wskazówek zobacz:
 
 - [Usługa Azure storage za pomocą HDInsight](../hdinsight-hadoop-use-blob-storage.md)
 - [Użyj Data Lake Store z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-store.md)
@@ -170,6 +170,6 @@ Główną zaletą usługi Azure Files jest udziałów plików mogą być instalo
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Omówienie usługi ML klastra w systemie HDInsight](r-server-overview.md)
-* [Rozpoczynanie pracy z klastrem usługi ML w usłudze Hadoop](r-server-get-started.md)
+* [Rozpoczynanie pracy z klastrem usługi uczenie Maszynowe na platformie Apache Hadoop](r-server-get-started.md)
 * [Compute context options for ML Services cluster on HDInsight (Opcje kontekstu obliczeniowego dla klastra usług ML w usłudze HDInsight)](r-server-compute-contexts.md)
 

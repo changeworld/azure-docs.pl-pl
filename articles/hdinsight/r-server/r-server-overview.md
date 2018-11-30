@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 74d8629eb8fc29f3cb572be0b1ccb8b6149ab971
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1f53d87d6de76c0ff6954c9bd38d95e05981d822
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016288"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499462"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Wprowadzenie do usługi uczenie Maszynowe i możliwości języka R typu open source w HDInsight
 
@@ -27,7 +27,7 @@ Serwer Microsoft Machine Learning jest dostępna jako opcja wdrażania podczas t
 
 Usługi uczenie Maszynowe na HDInsight udostępnia najnowsze możliwości analizy na podstawie języka R w zestawach danych z praktycznie dowolnego rozmiaru, załadowane do magazynu obiektów Blob platformy Azure lub usługi Data Lake. Ponieważ klaster usługi ML jest oparta na języka R typu open source, tworzone aplikacje na podstawie języka R mogą korzystać z dowolnej pakietów języka R typu open-source 8000 +. Procedury w ScaleR pakiet analizy danych big data firmy Microsoft są także dostępne.
 
-Węzeł krawędzi klastra zapewnia wygodne miejsce do łączenia z klastrem i do uruchamiania skryptów języka R. Z węzłem krawędzi istnieje możliwość uruchamiania równoległego rozproszonych funkcji programu ScaleR między rdzeniami serwera węzła krawędzi. Można również uruchomić je w węzłach klastra za pomocą programu ScaleR w usłudze Hadoop Mapreduce lub konteksty wystąpień obliczeniowych platformy Spark.
+Węzeł krawędzi klastra zapewnia wygodne miejsce do łączenia z klastrem i do uruchamiania skryptów języka R. Z węzłem krawędzi istnieje możliwość uruchamiania równoległego rozproszonych funkcji programu ScaleR między rdzeniami serwera węzła krawędzi. Można również uruchomić je w węzłach klastra za pomocą usługi Hadoop Mapreduce lub konteksty obliczeniowe aparatu Apache Spark przez program ScaleR.
 
 Modele lub prognoz, wynikających z analizy można pobrać do użycia w środowisku lokalnym. One może również być przygotowany do działania innym miejscu na platformie Azure, w szczególności za pośrednictwem [Azure Machine Learning Studio](http://studio.azureml.net) [usługi sieci web](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
 
@@ -114,7 +114,7 @@ Jeśli po prostu używasz procedury z biblioteki programu ScaleR w klastrze, nie
 
 W takich przypadkach można zainstalować dodatkowe pakiety przy użyciu akcji skryptu po utworzeniu klastra. Aby uzyskać więcej informacji, zobacz [zarządzania usługi ML w klastrze HDInsight](r-server-hdinsight-manage.md).
 
-### <a name="change-hadoop-mapreduce-memory-settings"></a>Zmienianie ustawień pamięci MapReduce usługi Hadoop
+### <a name="change-apache-hadoop-mapreduce-memory-settings"></a>Zmienianie ustawień pamięci Apache Hadoop MapReduce
 
 Klaster można zmodyfikować w taki sposób, aby zmienić ilość pamięci, która jest dostępna dla usługi ML, gdy jest uruchomiona, zadanie MapReduce. Aby zmodyfikować klastra, należy użyć interfejsu użytkownika Ambari Apache, który jest dostępny za pośrednictwem blok witrynie Azure portal dla klastra. Aby uzyskać instrukcje dotyczące sposobu dostępu do interfejsu użytkownika Ambari dla klastra, zobacz [HDInsight Zarządzanie klastrami za pomocą interfejsu użytkownika sieci Web Ambari](../hdinsight-hadoop-manage-ambari.md).
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: a7c06d53e3823bd81707608f566f581fa44638fc
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 2371f52591db667498398daa889ebc14708a9674
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037766"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499210"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu zestawu .NET SDK
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -228,7 +228,7 @@ _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Clu
 Można to również zrobić w portalu. Zobacz [administrowania HDInsight przy użyciu witryny Azure portal][hdinsight-admin-portal].
 
 ## <a name="update-http-user-credentials"></a>Aktualizowanie poświadczeń użytkownika HTTP
-Jest tej samej procedurze co [dostępu Grant/revoke HTTP](#grant/revoke-access). W przypadku klastra przyznano dostęp HTTP, należy je najpierw odwołać.  A następnie przyznać dostęp z nowymi poświadczeniami użytkownika protokołu HTTP.
+Jest tej samej procedurze co [dostępu Grant/revoke HTTP](#grant/revoke-access).  W przypadku klastra przyznano dostęp HTTP, należy je najpierw odwołać.  A następnie przyznać dostęp z nowymi poświadczeniami użytkownika protokołu HTTP.
 
 ## <a name="find-the-default-storage-account"></a>Znajdź domyślne konto magazynu
 Poniższy fragment kodu pokazuje, jak domyślna nazwa konta magazynu i domyślny klucz konta magazynu dla klastra.
@@ -242,25 +242,25 @@ foreach (var key in results.Configuration.Keys)
 ```
 
 ## <a name="submit-jobs"></a>Przesyłanie zadań
-**Aby przesłać zadania MapReduce**
+**Aby przesłać zadania Apache Hadoop MapReduce**
 
-Zobacz [przykłady uruchamiania technologii MapReduce usługi Hadoop w HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
+Zobacz [próbek Uruchom Apache Hadoop MapReduce w HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
 
 **Aby przesłać zadania technologii Hive** 
 
-Zobacz [uruchamianie zapytań Hive przy użyciu zestawu .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
+Zobacz [uruchamianie Apache zapytań Hive przy użyciu zestawu .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 
 **Aby przesłać zadania Apache Pig**
 
-Zobacz [zadania Pig Uruchom przy użyciu zestawu .NET SDK](hadoop/apache-hadoop-use-pig-dotnet-sdk.md).
+Zobacz [zadania uruchamiania Apache Pig, przy użyciu zestawu .NET SDK](hadoop/apache-hadoop-use-pig-dotnet-sdk.md).
 
 **Do przesyłania zadań z wykorzystaniem narzędzia Apache Sqoop**
 
-Zobacz [z HDInsight przy użyciu narzędzia Sqoop](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
+Zobacz [z HDInsight przy użyciu narzędzia Apache Sqoop](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
 
 **Aby przesłać zadania programu Apache Oozie**
 
-Zobacz [Użyj Oozie z usługą Hadoop, aby zdefiniować i uruchomić przepływ pracy w HDInsight](hdinsight-use-oozie-linux-mac.md).
+Zobacz [Użyj Apache Oozie z usługą Hadoop, aby zdefiniować i uruchomić przepływ pracy w HDInsight](hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Przekazywanie danych do usługi Azure Blob storage
 Zobacz [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data].

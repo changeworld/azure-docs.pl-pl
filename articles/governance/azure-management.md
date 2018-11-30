@@ -1,5 +1,5 @@
 ---
-title: Zarządzania platformy Azure
+title: Omówienie zarządzania platformy Azure
 description: Omówienie obszarów zarządzania dla aplikacji platformy Azure i zasobów wraz z łączami do zawartości w narzędzia do zarządzania platformy Azure.
 author: DCtheGeek
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.openlocfilehash: 268526277dc935ccffc30120f2bb170ad3ff3ef1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 180b0cb9f52858d9b0f079ea711fd5ccab738ecf
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978231"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582315"
 ---
 # <a name="management-in-azure"></a>Zarządzanie na platformie Azure
 
@@ -43,7 +43,7 @@ Konfigurowanie dotyczy początkowego wdrażania i konfigurowania aplikacji i zas
 
 ## <a name="secure"></a>Bezpieczeństwo
 
-Zarządzanie zabezpieczeniami aplikacji, zasobów i danych obejmuje ocenę zagrożeń, zbieranie i analizowanie danych zabezpieczeń i zapewnienie, że aplikacje i zasoby są zaprojektowane i konfigurowane w bezpieczny sposób. Funkcje monitorowania zabezpieczeń i analizy zagrożeń są dostarczane przez usługę [Azure Security Center](../security-center/security-center-intro.md), która obejmuje ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami w różnych obciążeniach chmur hybrydowych. Zapoznaj się też z tematem [Introduction to Azure Security](../security/azure-security.md) (Wprowadzenie do zabezpieczeń platformy Azure), aby uzyskać obszerne informacje o zabezpieczeniach na platformie Azure oraz wskazówki dotyczące bezpiecznego konfigurowania jej zasobów.
+Zarządzanie zabezpieczeniami aplikacji, zasobów i danych obejmuje ocenę zagrożeń, zbieranie i analizowanie danych zabezpieczeń i zapewnienie, że aplikacje i zasoby są zaprojektowane i konfigurowane w bezpieczny sposób. Zabezpieczenia monitorowania i analizy zagrożeń są dostarczane przez usługi Azure Security Center, która obejmuje ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami w obciążeniach chmury hybrydowej. Zapoznaj się też z tematem [Introduction to Azure Security](../security/azure-security.md) (Wprowadzenie do zabezpieczeń platformy Azure), aby uzyskać obszerne informacje o zabezpieczeniach na platformie Azure oraz wskazówki dotyczące bezpiecznego konfigurowania jej zasobów.
 
 ## <a name="protect"></a>Ochrona
 

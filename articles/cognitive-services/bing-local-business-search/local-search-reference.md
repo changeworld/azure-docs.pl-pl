@@ -10,12 +10,12 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 100d2a6163c6b2b7a7bf8a557e69e1082b48eaee
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: b985521fdcfc5ca67b6410719ad72c0962004df6
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979220"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499596"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Odwołanie do lokalnych firm interfejsu API wyszukiwania Bing w wersji 7
 
@@ -155,7 +155,7 @@ Definiuje informacje o lokalnych firmach, takich jak restauracji lub hotelu.
 |----------|-----------|----------|  
 |_typ|Wskazówka typ może być ustawiona na jedną z następujących czynności:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restauracja</ul><li>|Ciąg|  
 |Adres|Adres pocztowy, z którym znajduje się jednostka.|[Adresu pocztowego](#postaladdress)|  
-|entityPresentationInfo|Dodatkowe informacje o jednostce, takiej jak wskazówek, które można użyć w celu określenia typu jednostki. Na przykład czy jest to restauracji lub hotelu. `entityScenario` Pole jest ustawione na element listy.|[EntityPresentationInfo](#entitypresentationinfo)|  
+|entityPresentationInfo|Dodatkowe informacje o jednostce, takiej jak wskazówek, które można użyć w celu określenia typu jednostki. Na przykład czy jest to restauracji lub hotelu. `entityScenario` Pole jest ustawione na element listy.|[entityPresentationInfo](#entitypresentationinfo)|  
 |name|Nazwa jednostki.|Ciąg|  
 |Telefon|Numer telefonu jednostki.|Ciąg|  
 |url|Adres URL witryny sieci Web jednostki.<br /><br /> Użyj tego adresu URL wraz z nazwą podmiotu, aby utworzyć hiperłącze, które po kliknięciu powoduje otwarcie witryny sieci Web jednostki.|Ciąg|  

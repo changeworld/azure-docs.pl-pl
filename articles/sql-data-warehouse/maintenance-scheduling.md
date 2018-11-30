@@ -7,19 +7,19 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 11/14/2018
+ms.date: 11/27/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 9d26c1d923294a149a57ef28ca03e77dfc2e1c87
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: d626fd9b083b9ca2c55c286a1dd806620a639434
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711909"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498026"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Umożliwia zarządzanie aktualizacjami usługi i konserwacja harmonogramy konserwacji
 
-Azure SQL Data Warehouse konserwacji jest teraz w wersji zapoznawczej. Ta funkcja zintegrować planowanej konserwacji powiadomień dotyczących kondycji usługi, Monitor sprawdzanie kondycji zasobu usługi harmonogramu konserwacji usługi Azure SQL Data Warehouse.
+Harmonogramy konserwacji jest teraz dostępna we wszystkich regionach usługi Azure SQL Data Warehouse. Ta funkcja zintegrować planowanej konserwacji powiadomień dotyczących kondycji usługi, Monitor sprawdzanie kondycji zasobu usługi harmonogramu konserwacji usługi Azure SQL Data Warehouse.
 
 Służy harmonogramów, wybierz przedział czasu, gdy jest to wygodne otrzymać nowe funkcje, uaktualnienia i poprawki konserwacji. Możesz wybrać podstawowy i pomocniczy konserwacyjne przed upływem siedmiu dni. Przykładem jest podstawowy okna sobota 22:00 do niedzieli 01:00 i okien podrzędnych z środę 19:00 do 22:00. Jeśli usługa SQL Data Warehouse, nie można wykonać konserwacji podczas okna obsługi podstawowego, spróbuje konserwację ponownie podczas okna obsługi dodatkowej.
 
@@ -51,6 +51,7 @@ Nawet jeśli planowania konserwacji jest niedostępna w Twoim regionie wybrany, 
 - [Dowiedz się więcej](changing-maintenance-schedule.md) o zmienianiu harmonogram konserwacji.
 - [Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage) o tworzenie, wyświetlanie i Zarządzanie alertami przy użyciu usługi Azure Monitor.
 - [Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) o akcje elementu webhook dla reguł alertów dzienników.
+- [Dowiedz się więcej](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-action-groups) tworzenie grup i zarządzanie nimi akcji.
 - [Dowiedz się więcej](https://docs.microsoft.com/azure/service-health/service-health-overview) dotyczące usługi Azure Service Health.
 
 

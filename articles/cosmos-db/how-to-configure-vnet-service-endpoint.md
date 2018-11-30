@@ -1,92 +1,94 @@
 ---
-title: Jak skonfigurować sieć wirtualną i dostępu dla konta usługi Azure Cosmos oparta na podsieci
-description: W tym dokumencie opisano kroki wymagane do instalacji punktu końcowego usługi sieci wirtualnej dla usługi Azure Cosmos DB.
+title: Konfigurowanie sieci wirtualnej i podsieci na podstawie dostępu dla konta usługi Azure Cosmos DB
+description: W tym dokumencie opisano kroki wymagane do skonfigurowania punktu końcowego usługi sieci wirtualnej dla usługi Azure Cosmos DB.
 author: kanshiG
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 16cd959a83850a3bc940803cd23e7542e34825c8
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 4e8891302346fa2655a4b1280b65fdd969f12909
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283216"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620595"
 ---
-# <a name="how-to-access-azure-cosmos-db-resources-from-virtual-networks"></a>Jak uzyskać dostęp do zasobów usługi Azure Cosmos DB z sieciami wirtualnymi
+# <a name="access-azure-cosmos-db-resources-from-virtual-networks"></a>Dostęp do zasobów usługi Azure Cosmos DB z sieciami wirtualnymi
 
-Konta usługi Azure cosmos DB można skonfigurować w taki sposób, aby umożliwić dostęp tylko z określonej podsieci sieci wirtualnej platformy Azure. Istnieją dwa kroki wymagane w celu ograniczenia dostępu do konta usługi Azure Cosmos z połączeniami z podsieci w sieci wirtualnej (VNET).
+Można skonfigurować konta usługi Azure Cosmos DB, aby zezwolić na dostęp z określonej podsieci sieci wirtualnej platformy Azure. Ograniczanie dostępu do konta usługi Azure Cosmos DB z połączeniami z podsieci w sieci wirtualnej:
  
-1. Włącz podsieci, aby wysłać do usługi Azure Cosmos DB podsieci i tożsamość sieci Wirtualnej. Można to osiągnąć przez włączenie punktu końcowego usługi dla usługi Azure Cosmos DB w określonej podsieci.
+1. Włącz podsieci, aby wysłać do usługi Azure Cosmos DB podsieci i tożsamość sieci wirtualnej. Można to osiągnąć przez włączenie punktu końcowego usługi dla usługi Azure Cosmos DB w określonej podsieci.
 
-1. Dodaj regułę na koncie usługi Azure Cosmos Określanie podsieci jako źródło, z którego, dostęp do konta.
+1. Dodaj regułę w ramach konta usługi Azure Cosmos DB do określenia podsieci jako źródło, z którego może mieć dostęp do konta.
 
 > [!NOTE]
-> Raz punktu końcowego usługi Cosmos Azure, Twoje konto jest włączone w podsieci, źródła ruchu docieranie do usługi Azure Cosmos DB przechodzi z publicznego adresu IP do sieci Wirtualnej i podsieci. Przełączanie ruchu ma zastosowanie do dowolnego konta usługi Azure Cosmos, którego uzyskiwany jest dostęp do tej podsieci. Jeśli konta usługi Azure Cosmos opartych na adresie IP zaporę, aby umożliwić tej podsieci, żądań z włączoną usługą podsieci nie będzie odpowiadać reguły zapory IP, a pliki zostały odrzucone. Aby dowiedzieć się więcej, zobacz kroki opisane w temacie [migrowany reguła zapory adresów IP do listy kontroli dostępu do sieci Wirtualnej](#migrate-from-firewall-to-vnet) dalszej części tego artykułu. 
+> Po włączeniu punktu końcowego usługi dla konta usługi Azure Cosmos DB w podsieci źródła ruchu, który dociera do usługi Azure Cosmos DB jest przełączany z publicznym adresem IP na sieć wirtualną i podsieć. Przełączanie ruchu ma zastosowanie do dowolnego konta usługi Azure Cosmos DB, który jest dostępny z tą podsiecią. Jeśli Twoje konta usługi Azure Cosmos DB zaporę opartego na protokole IP, aby umożliwić tej podsieci, żądania z włączoną obsługą usługi podsieci nie są już zgodne reguły zapory IP, a następnie są one odrzucone. 
+>
+> Aby dowiedzieć się więcej, zobacz kroki opisane w temacie [migrowania reguła zapory adresów IP do listy kontroli dostępu w sieci wirtualnej](#migrate-from-firewall-to-vnet) dalszej części tego artykułu. 
 
-Poniżej opisano sposób konfigurowania punktu końcowego usługi sieci Wirtualnej dla konta usługi Azure Cosmos.
+Poniżej opisano sposób konfigurowania punktu końcowego usługi sieci wirtualnej dla konta usługi Azure Cosmos DB.
 
 ## <a id="configure-using-portal"></a>Konfigurowanie punktu końcowego usługi za pomocą witryny Azure portal
 
-### <a name="configure-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>Skonfiguruj punkt końcowy usługi dla istniejącej sieci wirtualnej platformy Azure i podsieci
+### <a name="configure-a-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>Skonfiguruj punkt końcowy usługi dla istniejącej sieci wirtualnej platformy Azure i podsieć
 
-1. Z **wszystkie zasoby** bloku Znajdź konto Azure Cosmos chcesz zabezpieczyć.
+1. Z **wszystkie zasoby** bloku, należy znaleźć konta usługi Azure Cosmos DB, który chcesz zabezpieczyć.
 
-1. Wybierz **zapory i sieci wirtualne** z poziomu menu ustawień i wybierz dostęp z **wybrane sieci**.
+1. Wybierz **zapory i sieci wirtualne** z menu Ustawienia i zezwolić na dostęp z **wybrane sieci**.
 
 1. Aby udzielić dostępu do istniejącej sieci wirtualnej w podsieci, w obszarze **sieci wirtualne**, wybierz opcję **Dodaj istniejącą sieć wirtualną platformy Azure**.
 
-1. Wybierz **subskrypcji** z którego chcesz dodać sieci wirtualnej platformy Azure. Wybierz pozycję Azure **sieci wirtualne** i **podsieci** chcesz zapewnić dostęp do konta usługi Azure Cosmos. Następnie wybierz pozycję **Włącz** można włączyć wybranych sieci za pomocą punktów końcowych usługi dla "Microsoft.AzureCosmosDB". Po zakończeniu wybierz **Dodaj**. 
+1. Wybierz **subskrypcji** z którego chcesz dodać siecią wirtualną platformy Azure. Wybierz pozycję Azure **sieci wirtualne** i **podsieci** chcesz zapewnić dostęp do konta usługi Azure Cosmos DB. Następnie wybierz pozycję **Włącz** można włączyć wybranych sieci za pomocą punktów końcowych usługi dla "Microsoft.AzureCosmosDB". Po zakończeniu wybierz **Dodaj**. 
 
    ![Wybierz sieć wirtualną i podsieć](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
 
 
-1. Po włączeniu dostępu z sieci wirtualnej do konta usługi Azure Cosmos zezwala tylko ruchu z tego wybrana podsieć. Sieć wirtualną i podsieć, którą dodałeś powinien pojawić się, jak pokazano na poniższym zrzucie ekranu:
+1. Po włączeniu dostępu z sieci wirtualnej usługi Azure Cosmos DB umożliwi ruchu z tego wybrana podsieć. Sieć wirtualną i podsieć, która zostanie dodana powinien pojawić się, jak pokazano na poniższym zrzucie ekranu:
 
    ![sieć wirtualną i podsieć został pomyślnie skonfigurowany](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
 
 > [!NOTE]
-> Aby włączyć punkty końcowe usługi sieci wirtualnej, będziesz potrzebować następujących uprawnień subskrypcji:
-  * Subskrypcja z siecią Wirtualną: Współautor sieci
-  * Subskrypcji przy użyciu konta usługi Azure Cosmos: Współautor konta usługi DocumentDB
+> Aby włączyć punkty końcowe usługi sieci wirtualnej, potrzebne są następujące uprawnienia subskrypcji:
+  * Subskrypcja z siecią wirtualną: Współautor sieci
+  * Subskrypcję z kontem usługi Azure Cosmos DB: Współautor konta usługi DocumentDB
 
-### <a name="configure-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>Skonfiguruj punkt końcowy usługi dla nowej sieci wirtualnej platformy Azure i podsieci
+### <a name="configure-a-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>Skonfiguruj punkt końcowy usługi dla nowej sieci wirtualnej platformy Azure i podsieć
 
-1. Z **wszystkie zasoby** bloku Znajdź konto Azure Cosmos chcesz zabezpieczyć.
+1. Z **wszystkie zasoby** bloku, należy znaleźć konta usługi Azure Cosmos DB, który chcesz zabezpieczyć.  
 
-1. Wybierz **zapory i sieci wirtualne platformy Azure** z poziomu menu ustawień i wybierz dostęp z **wybrane sieci**.  
+1. Wybierz **zapory i sieci wirtualne platformy Azure** z menu Ustawienia i zezwolić na dostęp z **wybrane sieci**.  
 
-1. Aby udzielić dostępu do nowej sieci wirtualnej platformy Azure, w ramach sieci wirtualnych wybierz **Dodaj nową sieć wirtualną**.  
+1. Aby udzielić dostępu do nowej sieci wirtualnej platformy Azure, w obszarze **sieci wirtualne**, wybierz opcję **Dodaj nową sieć wirtualną**.  
 
-1. Podaj szczegóły wymagane do utworzenia nowej sieci wirtualnej, a następnie wybierz pozycję Utwórz. Podsieć zostanie utworzona z punktem końcowym usługi dla "Microsoft.AzureCosmosDB" włączone.
+1. Podaj szczegóły wymagane do tworzenia nowej sieci wirtualnej, a następnie wybierz **Utwórz**. Podsieć zostanie utworzona z punktem końcowym usługi dla "Microsoft.AzureCosmosDB" włączone.
 
    ![Wybierz sieć wirtualną i podsieć dla nowej sieci wirtualnej](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-Jeśli Twoje konto usługi Azure Cosmos jest używany przez inne usługi platformy Azure, takich jak usługa Azure Search lub uzyskiwać dostęp z usługi Stream analytics lub Power BI, możesz zezwolić na dostęp, sprawdzając **akceptowania połączeń z w ramach publicznych centrów danych platformy Azure**.
+Jeśli konto usługi Azure Cosmos DB jest używany przez inne usługi platformy Azure, takich jak usługa Azure Search lub uzyskiwania dostępu do usługi Stream analytics lub usługi Power BI, możesz zezwolić na dostęp, wybierając **akceptowania połączeń z w ramach publicznych centrów danych platformy Azure**.
 
-Aby upewnić się, masz dostęp do metryk usługi Azure Cosmos DB z portalu, musisz włączyć **zezwolić na dostęp z witryny Azure Portal** opcje. Aby dowiedzieć się więcej o tych opcjach, zobacz żądania z witryny Azure portal i żądanie z usług PaaS platformy Azure na części konfiguracji [zapory adresów IP](how-to-configure-firewall.md) artykułu. Po wybraniu dostępu, wybierz **Zapisz** Aby zapisać ustawienia.
+Aby upewnić się, że masz dostęp do metryk usługi Azure Cosmos DB z portalu, musisz włączyć **zezwolić na dostęp z witryny Azure portal** opcje. Aby dowiedzieć się więcej o tych opcjach, zobacz [skonfigurowanie zapory IP](how-to-configure-firewall.md) artykułu. Po włączeniu dostępu, wybierz **Zapisz** Aby zapisać ustawienia.
 
 ## <a id="remove-vnet-or-subnet"></a>Usuwanie sieci wirtualnej lub podsieci 
 
-1. Z **wszystkie zasoby** bloku Znajdź konto usługi Azure Cosmos, dla którego jest przypisane punkty końcowe usługi.  
+1. Z **wszystkie zasoby** bloku, konto Znajdź usługa Azure Cosmos DB, dla którego jest przypisane punkty końcowe usługi.  
 
 2. Wybierz **zapory i sieci wirtualne** z poziomu menu ustawień.  
 
-3. Aby usunąć sieci wirtualnej lub podsieci reguły, wybierz pozycję "..." obok sieci wirtualnej lub podsieci i wybierz **Usuń**.
+3. Aby usunąć sieć wirtualną lub podsiecią, reguły, wybierz **...**  obok sieci wirtualnej lub podsieci i wybierz **Usuń**.
 
    ![Usuwanie sieci wirtualnej](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
 
-4.  Kliknij przycisk **Zapisz** Aby zastosować zmiany.
+4.  Wybierz **Zapisz** Aby zastosować zmiany.
 
 ## <a id="configure-using-powershell"></a>Konfigurowanie punktu końcowego usługi za pomocą programu Azure PowerShell
 
 > [!NOTE]
-> Korzystając z programu PowerShell lub interfejsu wiersza polecenia, należy określić pełną listę filtrów IP i sieci Wirtualnej listy kontroli dostępu w parametrach nie tylko te, które mają zostać dodane.
+> Podczas korzystania z programu PowerShell lub interfejsu wiersza polecenia platformy Azure, należy określić pełną listę filtrów IP i sieci wirtualnej list ACL w parametrach nie tylko te, które mają zostać dodane.
 
-Aby skonfigurować punktu końcowego usługi na konto usługi Azure Cosmos przy użyciu programu Azure PowerShell, wykonaj następujące kroki:  
+Aby skonfigurować punkt końcowy usługi dla konta usługi Azure Cosmos DB przy użyciu programu Azure PowerShell, wykonaj następujące kroki:  
 
-1. Zainstaluj najnowszą wersję [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) i [logowania](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  
+1. Zainstaluj [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) i [Zaloguj](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  
 
 1. Włączanie punktu końcowego usługi dla istniejącej podsieci sieci wirtualnej.  
 
@@ -104,7 +106,7 @@ Aby skonfigurować punktu końcowego usługi na konto usługi Azure Cosmos przy 
     -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzureRmVirtualNetwork
    ```
 
-1. Uzyskaj informacje o sieci Wirtualnej.
+1. Uzyskaj informacje o sieci wirtualnej.
 
    ```powershell
    $vnProp = Get-AzureRmVirtualNetwork `
@@ -112,11 +114,11 @@ Aby skonfigurować punktu końcowego usługi na konto usługi Azure Cosmos przy 
      -ResourceGroupName $rgName
    ```
 
-1. Pobierz właściwości konta usługi Azure Cosmos, uruchamiając następujące polecenie cmdlet:  
+1. Pobierz właściwości konta usługi Azure Cosmos DB, uruchamiając następujące polecenie cmdlet:  
 
    ```powershell
    $apiVersion = "2015-04-08"
-   $acctName = "<Azure Cosmos account name>"
+   $acctName = "<Azure Cosmos DB account name>"
 
    $cosmosDBConfiguration = Get-AzureRmResource `
      -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
@@ -146,7 +148,7 @@ Aby skonfigurować punktu końcowego usługi na konto usługi Azure Cosmos przy 
    }
    ```
 
-1. Aktualizowanie właściwości konta usługi Azure Cosmos przy użyciu nowej konfiguracji, uruchamiając następujące polecenia cmdlet: 
+1. Aktualizowanie właściwości konta usługi Azure Cosmos DB przy użyciu nowej konfiguracji, uruchamiając następujące polecenia cmdlet: 
 
    ```powershell
    $cosmosDBProperties = @{
@@ -166,7 +168,7 @@ Aby skonfigurować punktu końcowego usługi na konto usługi Azure Cosmos przy 
      -Properties $CosmosDBProperties
    ```
 
-1. Uruchom następujące polecenie, aby zweryfikować, że Twoje konto usługi Azure Cosmos został zaktualizowany o punkt końcowy usługi sieci wirtualnej, który został skonfigurowany w poprzednim kroku:
+1. Uruchom następujące polecenie, aby zweryfikować, że konto usługi Azure Cosmos DB został zaktualizowany o punkt końcowy usługi sieci wirtualnej, który został skonfigurowany w poprzednim kroku:
 
    ```powershell
    $UpdatedcosmosDBConfiguration = Get-AzureRmResource `
@@ -182,11 +184,11 @@ Aby skonfigurować punktu końcowego usługi na konto usługi Azure Cosmos przy 
 
 1. Włącz punkt końcowy usługi dla podsieci w sieci wirtualnej.
 
-1. Aktualizowanie istniejącego konta usługi Azure Cosmos z podsiecią list ACL
+1. Zaktualizuj istniejące konto usługi Azure Cosmos DB przy użyciu list kontroli dostępu do podsieci (ACL).
 
    ```azurecli-interactive
 
-   name="<Azure Cosmos account name>"
+   name="<Azure Cosmos DB account name>"
    resourceGroupName="<Resource group name>"
 
    az cosmosdb update \
@@ -196,7 +198,7 @@ Aby skonfigurować punktu końcowego usługi na konto usługi Azure Cosmos przy 
     --virtual-network-rules "/subscriptions/testsub/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/frontend"
    ```
 
-1. Utwórz nowe konto usługi Azure Cosmos z podsiecią list ACL
+1. Utwórz nowe konto usługi Azure Cosmos DB przy użyciu list ACL podsieci.
 
    ```azurecli-interactive
    az cosmosdb create \
@@ -209,17 +211,17 @@ Aby skonfigurować punktu końcowego usługi na konto usługi Azure Cosmos przy 
     --virtual-network-rules "/subscriptions/testsub/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/default"
    ```
 
-## <a id="migrate-from-firewall-to-vnet"></a>Migrowanie z reguła zapory adresów IP do listy ACL sieci Wirtualnej 
+## <a id="migrate-from-firewall-to-vnet"></a>Migrowanie z reguła zapory adresów IP do listy ACL sieci wirtualnej 
 
-Poniższe kroki są wymagane tylko dla konta usługi Azure Cosmos z istniejące reguły zapory IP, dzięki czemu podsieci i chcesz użyć sieci Wirtualnej i list ACL opartych na podsieci zamiast reguła zapory adresów IP.
+Tylko dla kont usługi Azure Cosmos DB przy użyciu istniejącej reguły zapory IP zezwalające podsieć, jeśli chcesz użyć sieci wirtualnej i list ACL opartych na podsieci zamiast reguła zapory adresów IP, wykonaj następujące kroki.
 
-Po włączeniu punktu końcowego usługi dla konta usługi Azure Cosmos w podsieci żądania są wysyłane ze źródłem zawierający informacje o sieci Wirtualnej i podsieci zamiast publicznego adresu IP. Dlatego takie żądania nie są zgodne filtr adresów IP. Ten przełącznik źródła odbywa się dla wszystkich kont usługi Azure Cosmos dostęp z podsieci za pomocą włączonego punktu końcowego usługi. Aby uniknąć przestoju, wykonaj następujące czynności:
+Po włączeniu punktu końcowego usługi dla konta usługi Azure Cosmos DB dla podsieci, żądania są wysyłane ze źródłem informacjami wirtualnej sieci i podsieci zamiast publicznego adresu IP. Te żądania nie są zgodne filtr adresów IP. Dla wszystkich kont usługi Azure Cosmos DB, uzyskać dostęp z podsieci z punktu końcowego usługi obsługującego odbywa się to przełącznik źródła. Aby uniknąć przestoju, wykonaj następujące kroki:
 
-1. Pobierz właściwości konta usługi Azure Cosmos, uruchamiając następujące polecenie cmdlet:
+1. Pobierz właściwości konta usługi Azure Cosmos DB, uruchamiając następujące polecenie cmdlet:
 
    ```powershell
    $apiVersion = "2015-04-08"
-   $acctName = "<Cosmos account name>"
+   $acctName = "<Azure Cosmos DB account name>"
 
    $cosmosDBConfiguration = Get-AzureRmResource `
      -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
@@ -228,7 +230,7 @@ Po włączeniu punktu końcowego usługi dla konta usługi Azure Cosmos w podsie
      -Name $acctName
    ```
 
-1. Inicjowanie zmiennych do użycia w przyszłości. Skonfiguruj wszystkie zmienne z istniejącej definicji konta. Dodawanie listy ACL sieci Wirtualnej do usługi Cosmos Azure wszystkie konta, którego uzyskiwany jest dostęp z podsieci za pomocą `ignoreMissingVNetServiceEndpoint` flagi.
+1. Inicjowanie zmiennych do użycia w przyszłości. Skonfiguruj wszystkie zmienne z istniejącej definicji konta. Dodaj sieć wirtualną listy ACL do wszystkich kont usługi Azure Cosmos DB, którego uzyskiwany jest dostęp z podsieci za pomocą `ignoreMissingVNetServiceEndpoint` flagi.
 
    ```powershell
    $locations = @()
@@ -252,7 +254,7 @@ Po włączeniu punktu końcowego usługi dla konta usługi Azure Cosmos w podsie
    }
    ```
 
-1. Aktualizowanie właściwości konta usługi Azure Cosmos przy użyciu nowej konfiguracji, uruchamiając następujące polecenia cmdlet:
+1. Aktualizowanie właściwości konta usługi Azure Cosmos DB przy użyciu nowej konfiguracji, uruchamiając następujące polecenia cmdlet:
 
    ```powershell
    $cosmosDBProperties = @{
@@ -272,25 +274,25 @@ Po włączeniu punktu końcowego usługi dla konta usługi Azure Cosmos w podsie
       -Properties $CosmosDBProperties
    ```
 
-1. Powtórz kroki 1 – 3 dla wszystkich kont w usłudze Azure Cosmos, których dostęp z podsieci.
+1. Powtórz kroki 1 – 3 dla wszystkich kont usługi Azure Cosmos DB, do których dostęp z podsieci.
 
 1.  Poczekaj 15 minut, a następnie zaktualizuj podsieci, aby włączyć punkt końcowy usługi.
 
 1.  Włączanie punktu końcowego usługi dla istniejącej podsieci sieci wirtualnej.
 
-   ```powershell
-   $rgname= "<Resource group name>"
-   $vnName = "<virtual network name>"
-   $sname = "<Subnet name>"
-   $subnetPrefix = "<Subnet address range>"
+    ```powershell
+    $rgname= "<Resource group name>"
+    $vnName = "<virtual network name>"
+    $sname = "<Subnet name>"
+    $subnetPrefix = "<Subnet address range>"
 
-   Get-AzureRmVirtualNetwork `
-      -ResourceGroupName $rgname `
-      -Name $vnName | Set-AzureRmVirtualNetworkSubnetConfig `
-      -Name $sname `
-      -AddressPrefix $subnetPrefix `
-      -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzureRmVirtualNetwork
-   ```
+    Get-AzureRmVirtualNetwork `
+       -ResourceGroupName $rgname `
+       -Name $vnName | Set-AzureRmVirtualNetworkSubnetConfig `
+       -Name $sname `
+       -AddressPrefix $subnetPrefix `
+       -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzureRmVirtualNetwork
+    ```
 
 1. Usuń regułę zapory adresów IP w podsieci.
 

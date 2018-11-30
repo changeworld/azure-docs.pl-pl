@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 7ead955be3835f4ce3e602fe27a06c00d014195c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 984c74c44cb5149e0c4af83ea8ca4d88e67877ae
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262203"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584778"
 ---
 # <a name="azure-database-security-overview"></a>Omówienie zabezpieczeń usługi Azure database
 
@@ -199,7 +199,7 @@ SQL zaawansowane Threat Protection (ATP) zawiera zestaw zaawansowanych funkcji z
 - Dostęp z potencjalnie szkodliwej aplikacji 
 - Atak siłowy usługa Azure database for postgresql — poświadczeń 
 
-[Usługa Azure Database for MySQL — Zaawansowana ochrona przed zagrożeniami](/mysql/concepts-data-access-and-security-threat-protection.md) zapewnia ochronę, podobnie jak PostgreSQL zaawansowanej ochrony.  
+[Usługa Azure Database for MySQL — Zaawansowana ochrona przed zagrożeniami](../mysql/concepts-data-access-and-security-threat-protection.md) zapewnia ochronę, podobnie jak PostgreSQL zaawansowanej ochrony.  
 
 ## <a name="centralized-security-management"></a>Zarządzanie zabezpieczeniami scentralizowane
 
@@ -220,7 +220,7 @@ Usługa Security Center obsługuje dostępu opartej na rolach.
 
 Ponadto oblicza wynik ustawić czułość zapytań SQL, dzięki czemu mogą jawnie inspekcji zapytań, które umożliwiają wyodrębnianie danych poufnych, a dane mogą być chronione. Aby uzyskać szczegółowe informacje na temat SQL Information Protection Zobacz odnajdywanie danych bazy danych SQL Azure i klasyfikacji.
 
-Można skonfigurować [zasad SQL Information Protection](/security-center/security-center-info-protection-policy.md) w usłudze Azure Security Center.
+Można skonfigurować [zasad SQL Information Protection](../security-center/security-center-info-protection-policy.md) w usłudze Azure Security Center.
 
 ## <a name="azure-marketplace"></a>Azure Marketplace
 

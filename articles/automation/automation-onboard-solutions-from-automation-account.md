@@ -9,12 +9,12 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: b91c3dec1dda401fbacab39325b2c8980ec7254f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6ee89f3d57ded382b4d4519e4054448c144b10c5
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625068"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632696"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Dołączanie rozwiązania Update Management, śledzenia zmian i spisu
 
@@ -81,7 +81,7 @@ Kliknij przycisk **+ Dodaj maszyny wirtualne platformy Azure**, wybierz co najmn
 
 Maszyny nie na platformie Azure należy dodać ręcznie. Z automatyzacji konta wybierz **spisu** lub **śledzenie zmian** w obszarze **zarządzania konfiguracją**, lub **zarządzanie aktualizacjami** w obszarze **rozwiązania UPDATE MANAGEMENT**.
 
-Kliknij przycisk **maszyny spoza platformy Azure Dodaj**. Ta akcja powoduje otwarcie się nowe okno przeglądarki z [instrukcje dotyczące sposobu instalowania i konfigurowania programu Microsoft Monitoring Agent na komputerze](../log-analytics/log-analytics-agent-overview.md) tak maszyny można rozpocząć raportowania do rozwiązania. W przypadku dołączania komputerze, na którym obecnie zarządzane przez program System Center Operations Manager, nowy agent nie jest wymagane, informacje o obszarze roboczym jest wprowadzany do istniejącego agenta.
+Kliknij przycisk **maszyny spoza platformy Azure Dodaj**. Ta akcja powoduje otwarcie się nowe okno przeglądarki z [instrukcje dotyczące sposobu instalowania i konfigurowania programu Microsoft Monitoring Agent na komputerze](../azure-monitor/platform/log-analytics-agent.md) tak maszyny można rozpocząć raportowania do rozwiązania. W przypadku dołączania komputerze, na którym obecnie zarządzane przez program System Center Operations Manager, nowy agent nie jest wymagane, informacje o obszarze roboczym jest wprowadzany do istniejącego agenta.
 
 ## <a name="onboard-machines-in-the-workspace"></a>Dołączanie maszyn w obszarze roboczym
 

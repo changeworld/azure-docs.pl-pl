@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0eb283eda04d4123e0c05d2c48663a5aca88ebc4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 027c8155c84959ca429eb9b093a155ac22aaf324
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249561"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582217"
 ---
-# <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>Przetwarzanie zdarzeń z usługi Azure Event Hubs przy użyciu systemu Storm w HDInsight (C#)
+# <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Przetwarzania zdarzeń pochodzących z usługi Azure Event Hubs przy użyciu platformy Apache Storm w HDInsight (C#)
 
-Dowiedz się, jak pracować z usługą Azure Event Hubs z systemu Apache Storm w HDInsight. Ten dokument używa topologii Storm języka C#, aby odczytywać i zapisywać dane z usługi Event Hubs
+Dowiedz się, jak pracować z usługą Azure Event Hubs z [Apache Storm](http://storm.apache.org/) na HDInsight. Ten dokument używa topologii Storm języka C#, aby odczytywać i zapisywać dane z usługi Event Hubs
 
 > [!NOTE]
-> Wersja języka Java tego projektu, zobacz [przetwarzania zdarzeń pochodzących z usługi Azure Event Hubs przy użyciu systemu Storm w HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/).
+> Wersja języka Java tego projektu, zobacz [przetwarzania zdarzeń pochodzących z usługi Azure Event Hubs przy użyciu platformy Apache Storm w HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/).
 
 ## <a name="scpnet"></a>SCP.NET
 
@@ -138,8 +138,8 @@ Event Hubs to źródło danych, w tym przykładzie. Informacje przedstawione w s
 
    | Name (Nazwa) | Uprawnienia |
    | --- | --- |
-   | autor |Wysyłanie |
-   | czytelnik |Nasłuchuj |
+   | Składnik zapisywania |Wysyłanie |
+   | Czytnik |Nasłuchuj |
 
     ![Okno zasady dostępu zrzut ekranu udziału](./media/apache-storm-develop-csharp-event-hub-topology/sas.png)
 
@@ -225,4 +225,4 @@ W tym dokumencie mają przedstawiono sposób użycia spout usługi Event Hubs dl
 
 * [Opracowywanie topologii języka C# dla Storm Apache na HDInsight przy użyciu programu Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
 * [Podręcznik programowania punkt połączenia usługi](apache-storm-scp-programming-guide.md)
-* [Przykładowe topologie dla systemu Storm w usłudze HDInsight](apache-storm-example-topology.md)
+* [Przykładowe topologie dla systemu Apache Storm w usłudze HDInsight](apache-storm-example-topology.md)

@@ -1,104 +1,118 @@
 ---
-title: IoT Mxchip z chmurą — nawiązać połączenie z IoT DevKit az3166 usługi akcelerator rozwiązań IoT monitorowania zdalnego | Dokumentacja firmy Microsoft
-description: W tym samouczku Dowiedz się, jak wysyłać stan czujników na DevKit az3166 usługi IoT do zdalnego monitorowania IoT akcelerator rozwiązań do monitorowania i wizualizacji.
+title: Mxchip IoT DevKit nawiązać połączenie zdalne monitorowanie akcelerator rozwiązań — Azure | Dokumentacja firmy Microsoft
+description: W tym przewodniku dowiesz się, jak wysyłać dane telemetryczne z czujników na urządzeniu IoT DevKit az3166 usługi do monitorowania zdalnego akcelerator rozwiązań do monitorowania i wizualizacji.
 author: isabelcabezasm
 manager: ''
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.devlang: c
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: 32742b2a680370f443051e2d86f90d94e8632850
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7f67868f6220ab2940aa8ac4d4bf24f82191cc22
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720586"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620255"
 ---
-# <a name="connect-mxchip-iot-devkit-az3166-to-the-iot-remote-monitoring-solution-accelerator"></a>Łączenie zestawu deweloperskiego IoT DevKit az3166 usługi do akceleratora rozwiązań IoT zdalnego monitorowania
+# <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Podłącz urządzenie z systemem mxchip IoT DevKit do akceleratora rozwiązania monitorowania zdalnego
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Dowiesz się jak uruchomić przykładową aplikację w swojej mxchip IoT DevKit wysyłać danych z czujników Twój akcelerator rozwiązań.
+Ten poradnik pokazuje, jak uruchomić przykładową aplikację na urządzeniu IoT Mxchip. Przykładowy kod wysyła dane telemetryczne z czujników na urządzeniu Mxchip, aby Twój akcelerator rozwiązań.
 
-[Zestawu deweloperskiego IoT Mxchip](https://aka.ms/iot-devkit) to w jednym Arduino zgodne z czujników i urządzeń peryferyjnych sformatowanego. Możesz tworzyć w ramach [usługi Azure IoT Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) w programie Visual Studio Code. I pochodzi ona z rosnącej [katalogu projektów](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) przeprowadzenie Cię prototypu rozwiązania Internetu rzeczy (IoT), które korzystać z usług Microsoft Azure.
+[Mxchip IoT DevKit](https://aka.ms/iot-devkit) to w jednym Arduino zgodne z czujników i urządzeń peryferyjnych sformatowanego. Możesz tworzyć w ramach [usługi Azure IoT Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) w programie Visual Studio Code. [Katalogu projektów](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) zawiera przykładowe aplikacje ułatwiające prototypów rozwiązań IoT.
 
-## <a name="what-you-need"></a>Co jest potrzebne
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Zapoznaj się z artykułem [Getting Started Guide](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) i **Zakończ poniższe sekcje**:
+Postępuj zgodnie z [IoT DevKet, wprowadzenie — przewodnik wprowadzenie](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) i wykonaj następujące sekcje:
 
 * Przygotowania sprzętu
 * Konfigurowanie sieci Wi-Fi
 * Rozpoczynanie korzystania z Mxchip
 * Przygotowywanie środowiska deweloperskiego
 
-## <a name="open-the-remote-monitoring-sample-in-vs-code"></a>Otwórz przykładową zdalnego monitorowania w programie VS Code
+## <a name="open-the-sample"></a>Otwórz przykładową
 
-1. Upewnij się, jest Twoja mxchip IoT DevKit **niepołączony** do komputera. Najpierw uruchom program VS Code, a następnie podłącz Mxchip do komputera.
+Aby otworzyć przykładowy zdalnego monitorowania w programie VS Code:
 
-2. Kliknij przycisk `F1` aby otworzyć paletę poleceń, typ i wybierz **IoT Workbench: przykłady**. Następnie wybierz pozycję **mxchip IoT DevKit** jako tablica.
+1. Upewnij się, że Twoje mxchip IoT DevKit nie jest do tego komputera. Najpierw uruchom program VS Code, a następnie podłącz Mxchip do komputera.
 
-3. Znajdź **zdalne monitorowanie** i kliknij przycisk **Otwórz przykładowy**. Nowe okno programu VS Code zostanie otwarty z folderu projektu w nim.
+1. Kliknij przycisk `F1` aby otworzyć paletę poleceń, typ i wybierz **IoT Workbench: przykłady**. Następnie wybierz pozycję **mxchip IoT DevKit** jako tablica.
+
+1. Znajdź **zdalne monitorowanie** i kliknij przycisk **Otwórz przykładowy**. Zostanie otwarte nowe okno programu VS Code, przedstawiający folder projektu:
+
   ![IoT aplikacji Workbench wybierz przykład zdalnego monitorowania](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
 
-## <a name="configure-iot-hub-device-connection-string"></a>Konfigurowanie parametrów połączenia urządzenia usługi IoT Hub
+## <a name="configure-the-device"></a>Konfigurowanie urządzenia
 
-1. Przełącz mxchip IoT DevKit do **tryb konfiguracji**. W tym celu:
-   * Wciśnij przycisk **A**.
-   * Naciśnij i zwolnij **resetowania** przycisku.
+Aby skonfigurować parametry połączenia urządzenia usługi IoT Hub na urządzeniu z systemem Mxchip:
 
-2. Na ekranie zostanie wyświetlony identyfikator Mxchip i "Konfiguracja".
-   
-  ![Tryb konfiguracji mxchip IoT DevKit](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
+1. Przełącz mxchip IoT DevKit do **tryb konfiguracji**:
 
-3. Kliknij przycisk `F1` aby otworzyć paletę poleceń, typ i wybierz **IoT Workbench: urządzenia > Ustawienia urządzenia Config**.
+    * Wciśnij przycisk **A**.
+    * Naciśnij i zwolnij **resetowania** przycisku.
 
-4. Wklej parametry połączenia, po prostu skopiować kliknij `Enter` ją skonfigurować.
+1. Na ekranie zostanie wyświetlony identyfikator Mxchip i `Configuration`.
 
-## <a name="build-and-upload-the-device-code"></a>Tworzenie i przekazywanie kodu urządzenia
+    ![Tryb konfiguracji mxchip IoT DevKit](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
 
-1. Kliknij przycisk `F1` aby otworzyć paletę poleceń, typ i wybierz **IoT Workbench: urządzenia > Przekaż urządzenia**.
-  ![IoT Workbench: Urządzenia - > Przekaż](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-upload.png)
+1. Naciśnij klawisz **F1** aby otworzyć paletę poleceń, typ i wybierz **IoT Workbench: urządzenia > Ustawienia urządzenia Config**.
 
-1. Program VS Code, a następnie uruchamia kompilowania i przekazywanie kodu do Twojej Mxchip.
-  ![IoT Workbench: Urządzenia - > przekazany](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-uploaded.png)
+1. Wklej skopiowane wcześniej parametry połączenia, a następnie naciśnij klawisz **Enter** do skonfigurowania urządzenia.
 
-Mxchip rozruchu i uruchamiania kodu.
+## <a name="build-the-code"></a>Kompilowanie kod
 
-## <a name="test-the-project"></a>Projekt testowy
+Aby skompilować i przekazać kod urządzenia:
+
+1. Naciśnij klawisz **F1**"** Aby otworzyć paletę poleceń, typ i wybierz **IoT Workbench: urządzenia > Przekaż urządzenia**:
+
+    ![IoT Workbench: Urządzenia - > Przekaż](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-upload.png)
+
+1. Program VS Code kompiluje i przekazuje kod do Twojego urządzenia Mxchip:
+
+    ![IoT Workbench: Urządzenia - > przekazany](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-uploaded.png)
+
+1. Urządzenie Mxchip ponowne uruchomienie i uruchamia kod, który został przekazany.
+
+## <a name="test-the-sample"></a>Test próbki
+
+Aby sprawdzić, czy przykładowej aplikacji, który został przekazany do urządzenia Mxchip działa, wykonaj następujące czynności:
 
 ### <a name="view-the-telemetry-sent-to-remote-monitoring-solution"></a>Widok danych telemetrycznych wysyłanych do rozwiązania do zdalnego monitorowania
 
-Po uruchomieniu aplikacji przykładowej, Mxchip wysyła dane czujników za pośrednictwem sieci Wi-Fi do rozwiązania do zdalnego monitorowania. Aby wyświetlić wynik, wykonaj następujące kroki:
+Po uruchomieniu aplikacji przykładowej, urządzenie Mxchip wysyła dane telemetryczne z jego danych czujników za pośrednictwem sieci Wi-Fi na Twój akcelerator rozwiązań. Aby wyświetlić dane telemetryczne:
 
 1. Przejdź do pulpitu nawigacyjnego rozwiązania, a następnie kliknij przycisk **urządzeń**.
 
-2. Kliknij nazwę urządzenia, na karcie po prawej stronie zostanie wyświetlony stan czujnika na Mxchip w czasie rzeczywistym.
-  ![Danych z czujników w usłudze Azure IoT Suite](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-dashboard.png)
+1. Kliknij nazwę urządzenia Mxchip urządzenia. na karcie po prawej stronie można wyświetlić dane telemetryczne z Mxchip w czasie rzeczywistym:
 
-### <a name="send-a-c2d-message"></a>Wyślij wiadomość C2D
+    ![Danych z czujników w usłudze Azure IoT Suite](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-dashboard.png)
 
-Rozwiązania do monitorowania zdalnego umożliwia wywoływanie metody zdalnej na urządzeniu. Kod sxample publikuje trzy metody, które można zobaczyć w **metoda** sekcji po wybraniu czujnika.
+### <a name="control-the-devkit-device"></a>Kontrolę na urządzeniem Mxchip
+
+Akcelerator rozwiązania monitorowania zdalnego umożliwia zdalne sterowanie urządzenia. Przykładowy kod implementuje trzy metody, które można zobaczyć w **metoda** sekcji po wybraniu urządzenia na **urządzeń** strony:
 
 ![Metody mxchip IoT DevKit](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-methods.png)
 
-Daj nam spróbuj zmienić kolor Mxchip diod LED, przy użyciu metody "LedColor".
+Aby zmienić kolor jednego z diod LED Mxchip, użyj **LedColor** metody:
 
-1. Wybierz nazwę urządzenia, z listy urządzeń i kliknij **zadań**.
+1. Wybierz nazwę urządzenia, z listy urządzeń i kliknij **zadań**:
 
-  ![Utwórz zadanie](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-job.png)
+    ![Utwórz zadanie](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-job.png)
 
-2. Konfigurowanie zadań, tak jak pokazano poniżej, a następnie kliknij przycisk **Zastosuj**.
-  * Wybierz zadanie: **Run — metoda**
-  * Nazwa metody: **LedColor**
-  * Nazwa zadania: **ChangeLedColor**
-  
-  ![Ustawienia zadania](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-suite-change-color.png)
+1. Konfigurowanie zadań przy użyciu następujących wartości, a następnie kliknij przycisk **Zastosuj**:
 
-W kilka sekund Twoje Mxchip należy zmieniać kolor LED RGB (poniżej przycisku, A).
+    * Wybierz zadanie: **Run — metoda**
+    * Nazwa metody: **LedColor**
+    * Nazwa zadania: **ChangeLedColor**
 
-![Czerwony mxchip IoT DevKit prowadzone](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-devkit-led.png)
+    ![Ustawienia zadania](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-suite-change-color.png)
+
+1. Po kilku sekundach zmienia kolor LED RGB (poniżej przycisku, A) w swojej Mxchip:
+
+    ![Czerwony mxchip IoT DevKit prowadzone](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-devkit-led.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -110,15 +124,15 @@ Jeśli akcelerator rozwiązań nie są już potrzebne, usuń go ze strony rozwi�
 
 ## <a name="problems-and-feedback"></a>Problemy i opinie
 
-Jeśli napotkasz problemy, zapoznaj się [Mxchip IoT często zadawane pytania](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) lub skontaktowanie się z nami za pomocą następujących kanałów:
+Jeśli napotkasz żadnych problemów, zapoznaj się [Mxchip IoT często zadawane pytania](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) lub skontaktowanie się z nami za pomocą następujących kanałów:
 
 * [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Witryna Stackoverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, gdy wiesz jak połączyć urządzenie Mxchip Twój akcelerator rozwiązań Azure IoT zdalne monitorowanie i wizualizowanie danych z czujników, Oto zalecane kolejne kroki:
+Teraz, gdy wyjaśniono sposób połączyć urządzenie Mxchip Twój akcelerator rozwiązań monitorowania zdalnego, poniżej przedstawiono niektóre Sugerowane następne kroki:
 
-* [Omówienie akceleratorów rozwiązań w usłudze Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
-* [Dostosowywanie interfejsu użytkownika](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)
+* [Omówienie akceleratorów rozwiązań w usłudze Azure IoT](https://docs.microsoft.com/azure/iot-accelerators/)
+* [Dostosowywanie interfejsu użytkownika](iot-accelerators-remote-monitoring-customize.md)
 * [Połącz IoT Mxchip z aplikacją usługi Azure IoT Central](../iot-central/howto-connect-devkit.md)

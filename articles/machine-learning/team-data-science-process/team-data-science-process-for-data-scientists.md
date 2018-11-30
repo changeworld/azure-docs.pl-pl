@@ -2,25 +2,21 @@
 title: Zespół danych dla celów naukowych dla analityków danych | Dokumentacja firmy Microsoft
 description: Zawiera wskazówki, aby zrozumieć obciążenie analiza przy użyciu Team danych dla celów naukowych i Azure Machine Learning.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: deguhath
-ms.openlocfilehash: 80f006c4e8f051c3f744168be114f1c9fb3b1a0f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: ddf73f15dc7c269ba3bf9a2912c3713fd4e847f2
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092495"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497588"
 ---
 # <a name="team-data-science-process-for-data-scientists"></a>Zespół danych dla celów naukowych dla analityków danych
 
@@ -65,7 +61,7 @@ Przeprowadzenie własne instruktorem, można użyć elementów w poniższej tabe
 | Wizualizacja wyników przy użyciu usługi Power BI                                                         | [Power BI](https://powerbi.microsoft.com/guided-learning/)                                                                                     | Usługa Power BI jest narzędzie do wizualizacji danych firmy Microsoft. Jest ona dostępna na wielu platformach z sieci Web na urządzeniach przenośnych i komputerów stacjonarnych. W tym artykule dowiesz się, jak pracować z danymi wyjściowymi rozwiązania utworzone przez uzyskiwanie dostępu do wyników z usługi Azure storage oraz tworzenie wizualizacji przy użyciu usługi Power BI.                                                                                                                                                                                                                                                                                                                             | [W tym samouczku w usłudze Power BI.](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) Następnie łączenie usługi Power BI do formatu CSV obiektów Blob, utworzone w uruchomienie eksperymentu.                                                                                                                                                                                                                                                                       |
 | Monitorowanie rozwiązania                                                                     | [Application Insights](../../application-insights/app-insights-overview.md)                                            | Istnieje wiele narzędzi, których można użyć do monitorowania rozwiązania end. Usługa Azure Application Insights ułatwia integrowanie, wbudowane monitorowanie w rozwiązaniu.                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | [Konfigurowanie usługi Application Insights do monitorowania aplikacji](https://cmatskas.com/visual-studio-code-integration-with-azure-application-insights/).                                                                                                                                                                                                                                                                                                                  |
 |                                                                                           | [Program Azure Log Analytics](../../log-analytics/log-analytics-overview.md)                                                   | Inną metodą do monitorowania aplikacji jest zintegrować ją z procesem DevOps. System Azure Log Analytics oferuje bogaty zestaw funkcji, aby pomóc Ci Obejrzyj rozwiązania analityczne, po ich wdrożeniu.                                                                                                                                                                                                                                                                                                                                                                                                                       | [W tym samouczku](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-the-Analytics-portal) na temat korzystania z usługi Azure Log Analytics.                                                                                                                                                                                                                                                                                                       |
-| Wykonaj ta ścieżka szkoleniowa                                                               | Dodatkowe projekty do wypróbowania                                                                                                                           | Gratulacje! Ta ścieżka szkoleniowa został ukończony. Istnieje o wiele więcej, aby dowiedzieć się więcej. Bardziej zaawansowany przykład jest kompilowany klient zmian modelu w usłudze Azure Machine Learning. [Wypróbuj działanie rozwiązania tutaj](../desktop-workbench/scenario-churn-prediction.md).                                                                                                                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+| Wykonaj ta ścieżka szkoleniowa                                                               |                                                                                                                           | Gratulacje! Ta ścieżka szkoleniowa został ukończony. Istnieje o wiele więcej, aby dowiedzieć się więcej.                                                                                                                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Zespół danych dla celów naukowych operacji dewelopera](team-data-science-process-for-devops.md) w tym artykule przeanalizowano funkcje operacji dewelopera (DevOps), które są specyficzne dla implementacji rozwiązania Advanced Analytics i Cognitive Services. 

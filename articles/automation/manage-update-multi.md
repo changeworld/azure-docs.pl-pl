@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a803353b5dacaa56c181cdad0955191d547eb3c4
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 8e1c58f2d60ee95189fb583e032d8748fedb88d4
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092257"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620221"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Zarządzanie aktualizacjami dla wielu maszyn
 
@@ -165,7 +165,7 @@ W **nowe wdrożenie aktualizacji** okienku określ następujące informacje:
 Po zakończeniu konfigurowania harmonogramu wybierz **Utwórz** przycisk, aby powrócić do pulpitu nawigacyjnego stanu. **Zaplanowane** tabeli przedstawiono harmonogram wdrożenia utworzony.
 
 > [!NOTE]
-> Rozwiązanie Update Management obsługuje wdrażanie pierwszej aktualizacji innych firm i wstępnie pobieranie poprawki. Wymaga to zmian w systemach Trwa poprawianie, zobacz [pierwszej strony i wstępnie pobrać pomocy technicznej](automation-update-management.md#firstparty-predownload) dowiesz się, jak skonfigurować te ustawienia komputera.
+> Rozwiązanie Update Management obsługuje wdrażanie aktualizacji tej samej firmy i wstępne pobieranie poprawek. Wymaga to zmian w systemach Trwa poprawianie, zobacz [pierwszej strony i wstępnie pobrać pomocy technicznej](automation-update-management.md#firstparty-predownload) dowiesz się, jak skonfigurować te ustawienia komputera.
 
 ## <a name="view-results-of-an-update-deployment"></a>Wyświetlanie wyników wdrażania aktualizacji
 

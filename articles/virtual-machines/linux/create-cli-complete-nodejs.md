@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 560d1c55b159ed817c0b080171862c28ebe73f3e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d0a38defe41ea7c4e0da32cb73cf2bd73fd80950
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952804"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498221"
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>Tworzenie kompletnego środowiska systemu Linux za pomocą klasycznego wiersza polecenia platformy Azure
 W tym artykule firma Microsoft tworzy prostą sieć przy użyciu modułu równoważenia obciążenia i pary maszyn wirtualnych, które są przydatne do tworzenia i przetwarzania proste. Części omówimy proces polecenia przez polecenie, dopóki nie uzyskasz dwa działa, bezpieczne maszyn wirtualnych systemu Linux do których możesz połączyć z dowolnego miejsca w Internecie. Następnie możesz przejść do bardziej złożonych sieci i środowisk.
@@ -54,7 +54,7 @@ azure config mode arm
 
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru zawierają `myResourceGroup`, `mystorageaccount`, i `myVM`.
 
-Utwórz grupę zasobów. Poniższy przykład tworzy grupę zasobów o nazwie `myResourceGroup` w `westeurope` lokalizacji:
+Utwórz grupę zasobów. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westeurope`:
 
 ```azurecli
 azure group create -n myResourceGroup -l westeurope
@@ -279,7 +279,7 @@ azure config mode arm
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru zawierają `myResourceGroup`, `mystorageaccount`, i `myVM`.
 
 ## <a name="create-resource-groups-and-choose-deployment-locations"></a>Tworzenie grupy zasobów i Wybieranie lokalizacji wdrożenia
-Grupy zasobów platformy Azure są jednostek logiczną wdrożenia, które zawierają informacje dotyczące konfiguracji oraz metadane, aby umożliwić zarządzanie logiczną wdrożenia zasobów. Poniższy przykład tworzy grupę zasobów o nazwie `myResourceGroup` w `westeurope` lokalizacji:
+Grupy zasobów platformy Azure są jednostek logiczną wdrożenia, które zawierają informacje dotyczące konfiguracji oraz metadane, aby umożliwić zarządzanie logiczną wdrożenia zasobów. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westeurope`:
 
 ```azurecli
 azure group create --name myResourceGroup --location westeurope

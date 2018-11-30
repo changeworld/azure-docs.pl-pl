@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: 71322869eb9272fb59b98a0e21b1f639129572b7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c63e2e3ec922d2cf26603fe19606008b1e8d3f45
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255932"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498173"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Używanie platformy Caffe na platformie Azure HDInsight Spark na potrzeby rozproszonej uczenia głębokiego
 
@@ -22,9 +22,9 @@ ms.locfileid: "51255932"
 
 Uczenie głębokie ma wpływ na wszystkie elementy z branży opieki zdrowotnej do transportu do produkcji i nie tylko. Firmy zaczynają korzystać z rozwiązania trudnych problemów, takie jak do uczenia głębokiego [Klasyfikacja obrazów](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [rozpoznawania mowy](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)obiektu rozpoznawanie i tłumaczenia maszynowego. 
 
-Istnieją [wiele popularnych platform](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), w tym [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), MXNet, Theano, itp. Caffe jest jednym z Najpopularniejsza poznana struktur — symboliczne sieci neuronowej (imperatywne) i powszechnie używane w wielu obszarów, takich jak przetwarzanie obrazów. Ponadto [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) łączy w sobie Caffe z platformą Apache Spark, w którym to przypadku głębokiego uczenia, które mogą być łatwo używane w istniejącym klastrze usługi Hadoop. Uczenie głębokie, wraz z potoki przetwarzania ETL platformy Spark, zmniejszenie złożoności systemu i opóźnień służy do kompletnego rozwiązania uczenia.
+Istnieją [wiele popularnych platform](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), w tym [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), [Apache MXNet](https://mxnet.apache.org/), Theano, itp. [Caffe](http://caffe.berkeleyvision.org/) jest jednym z Najpopularniejsza poznana struktur — symboliczne sieci neuronowej (imperatywne) i powszechnie używane w wielu obszarów, takich jak przetwarzanie obrazów. Ponadto [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) łączy w sobie Caffe z platformą Apache Spark, w którym to przypadku głębokiego uczenia, które mogą być łatwo używane w istniejącym klastrze usługi Hadoop. Uczenie głębokie, wraz z potoki przetwarzania ETL platformy Spark, zmniejszenie złożoności systemu i opóźnień służy do kompletnego rozwiązania uczenia.
 
-[HDInsight](https://azure.microsoft.com/services/hdinsight/) jest chmura Hadoop oferty, która zapewnia zoptymalizowane klastry analityczne typu open source dla platformy Spark, Hive, Hadoop, HBase, Storm, Kafka i usługi ML. HDInsight jest wspierana przez umowę SLA 99,9%. Każdy z tych technologii danych big data i aplikacji ISV jest łatwe do wdrożenia w formie zarządzanych klastrów z bezpieczeństwem i monitorowaniem dla przedsiębiorstw.
+[HDInsight](https://azure.microsoft.com/services/hdinsight/) jest chmurze Apache Hadoop oferty, która zapewnia zoptymalizowane klastry analityczne typu open source dla platformy Apache Spark, Apache Hive, Apache Hadoop, Apache HBase, Apache Storm, Apache Kafka i usługi ML. HDInsight jest wspierana przez umowę SLA 99,9%. Każdy z tych technologii danych big data i aplikacji ISV jest łatwe do wdrożenia w formie zarządzanych klastrów z bezpieczeństwem i monitorowaniem dla przedsiębiorstw.
 
 W tym artykule przedstawiono sposób instalowania [Caffe na platformie Spark](https://github.com/yahoo/CaffeOnSpark) klastra usługi HDInsight. W tym artykule używa także wbudowane pokaz mnist ręcznie ZAPISANYCH i pokazuje, jak używać rozproszonego uczenia głębokiego na procesorach przy użyciu platformy HDInsight Spark.
 
@@ -69,7 +69,7 @@ Aby rozpocząć pracę, możesz po prostu uruchomić tę akcję skryptu względe
 ![Akcje skryptu, aby zainstalować zależności](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
 
 
-## <a name="step-2-build-caffe-on-spark-for-hdinsight-on-the-head-node"></a>Krok 2: Tworzenie platformy Caffe na platformie Spark dla HDInsight w węźle głównym
+## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>Krok 2: Tworzenie platformy Caffe na platformie Apache Spark dla HDInsight w węźle głównym
 
 Drugim krokiem jest tworzenie platformy Caffe na węzła głównego, a następnie dystrybucję skompilowanych bibliotek do wszystkich węzłów procesu roboczego. W tym kroku musisz [ssh do Twojej węzeł główny](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix). Po tym, należy wykonać [CaffeOnSpark kompilacji mają przetwarzać](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn). Poniżej znajduje się skrypt, który służy do tworzenia CaffeOnSpark kilka dodatkowych czynności. 
 
@@ -294,8 +294,8 @@ W tej dokumentacji próbowano zainstalować CaffeOnSpark z uruchomionymi prosty 
 * [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenariusze
-* [Platforma Spark i usługa Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do analizy temperatury w budynku z użyciem danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Platforma Spark i usługa Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników kontroli żywności](apache-spark-machine-learning-mllib-ipython.md)
+* [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do analizy temperatury w budynku z użyciem danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do przewidywania wyników kontroli żywności](apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="manage-resources"></a>Zarządzanie zasobami
 * [Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight](apache-spark-resource-manager.md)

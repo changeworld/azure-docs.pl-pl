@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 01603655be9b6051be9b894da4e55338ff4df810
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e702e1f5eb1816b007317765e4c9a9f88bb99bfd
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262129"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635428"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analizowanie użycia danych w usłudze Log Analytics
 
@@ -42,7 +42,12 @@ Eksplorowanie danych bardziej szczegółowo, kliknij ikonę w prawym górnym rog
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Rozwiązywanie problemów związanych z użyciem przekraczającym oczekiwania
 Większe użycie jest spowodowane przez jedną lub obie z następujących przyczyn:
 - Do usługi Log Analytics jest wysyłana większa ilość danych niż oczekiwano
-- Dane wysyłane do usługi Log Analytics pochodzą z większej liczby węzłów niż oczekiwano
+- Więcej węzłów niż oczekiwano wysyłania danych do usługi Log Analytics lub pewne węzły przesyłają więcej danych niż zwykle
+
+Przyjrzyjmy, jak firma Microsoft może Dowiedz się więcej o obu tych przyczyn. 
+
+> [!NOTE]
+> Niektóre pola typu danych użycia, chociaż nadal w schemacie, są przestarzałe i ich wartości są już wypełnione. Są to **komputera** oraz pola powiązane z pozyskiwania (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** i **AverageProcessingTimeMs**.
 
 ### <a name="data-volume"></a>Ilość danych 
 Na **użycie i szacowane koszty** stronie *pozyskiwanie danych na rozwiązanie* wykres przedstawia łączny wolumin danych wysyłanych i ile wysyłanych przez każde rozwiązanie. Dzięki temu można określić trendy, takie jak czy rośnie całkowite użycie danych (lub użycie przez konkretnego rozwiązania), pozostały stały, czy też maleje. Zapytanie używane do generowania, to jest
@@ -60,7 +65,7 @@ Możesz przejść dostosowaną Zobacz dane trendów dla konkretnych typów danyc
 
 ### <a name="nodes-sending-data"></a>Węzły wysyłające dane
 
-Aby undersand liczby węzłów danych raportowania w ciągu ostatniego miesiąca, użyj
+Aby dowiedzieć się, liczba węzłów danych raportowania w ciągu ostatniego miesiąca, użyj
 
 `Heartbeat | where TimeGenerated > startofday(ago(31d))
 | summarize dcount(ComputerIP) by bin(TimeGenerated, 1d)    
@@ -69,16 +74,20 @@ Aby undersand liczby węzłów danych raportowania w ciągu ostatniego miesiąca
 Aby wyświetlić liczbę zdarzeń przetwarzanych na komputerze, należy użyć
 
 `union withsource = tt *
-| summarize count() by Computer |sort by count_ nulls last`
+| summarize count() by Computer | sort by count_ nulls last`
 
-Skorzystaj z tej kwerendy rzadko się kosztowne do wykonania. Jeśli chcesz zobaczyć, jakie typy danych są sendng danych do konkretnego komputera, należy użyć:
+Skorzystaj z tej kwerendy rzadko się kosztowne do wykonania. Aby wyświetlić liczbę płatnych zdarzeń wprowadzanych na komputerze, należy użyć 
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize count() by Computer  | sort by count_ nulls last`
+
+Jeśli chcesz zobaczyć, jakie typy danych płatnych wysyłania danych do konkretnego komputera, należy użyć:
 
 `union withsource = tt *
 | where Computer == "*computer name*"
-| summarize count() by tt |sort by count_ nulls last `
-
-> [!NOTE]
-> Niektóre pola typu danych użycia, chociaż nadal w schemacie, są przestarzałe i spowoduje, że ich wartości są już wypełnione. Są to **komputera** oraz pola powiązane z pozyskiwania (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** i **AverageProcessingTimeMs**.
+| where _IsBillable == true 
+| summarize count() by tt | sort by count_ nulls last `
 
 Aby wyświetlić elementy podrzędne źródło danych dla określonego typu danych, poniżej przedstawiono pewne przydatne przykładowe zapytania:
 

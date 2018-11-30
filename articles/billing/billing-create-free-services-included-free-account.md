@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: cwatson
-ms.openlocfilehash: ab0b48f8c8579af8a3314bad14dafbe79f9a9781
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 77022b442a78c8d14284e06af4f156302c1e6ffc
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393744"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584404"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Tworzenie usług uwzględnionych w bezpłatnego konta platformy Azure
 
@@ -34,6 +34,6 @@ Aby dowiedzieć się więcej na temat dostępności usług platformy Azure wedł
 ## <a name="multiple-instances-of-services-can-be-created-within-allowed-limits"></a>Można utworzyć wiele wystąpień usług krótsza od maksymalnej
 Można utworzyć wiele wystąpień usługi bezpłatnie, tak długo, jak Suma użycia mieści się w limitu użycia. Na przykład otrzymasz 750 godzin maszynę wirtualną Windows B1S bezpłatne każdego miesiąca przy użyciu bezpłatnego konta platformy Azure. 750 godzin można użyć w dowolnej kombinacji, który ma. Na przykład można tworzyć maszyny wirtualne, 5 B1S Windows i używać ich do 150 godzin. 
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

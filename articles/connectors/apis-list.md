@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 3230692208d27ebac073e257266c885b5e03095c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: b320696a56855baaa4af10177d25dfe9973ee73a
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233637"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635445"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Łączniki dla usługi Azure Logic Apps
 
@@ -74,7 +74,7 @@ Poniżej przedstawiono wbudowane akcje umożliwiające pracę z danych wyjściow
 
 |   |   | 
 |---|---| 
-| ![Ikona wbudowane][data-operations-icon]<br/>**Operacje na danych** | Wykonaj operacje przy użyciu danych: <p>- **Redagowanie**: tworzenie pojedynczej dane wyjściowe na podstawie wielu danych wejściowych z różnych typów. <br>- **Utwórz tabelę CSV**: Tworzenie tabeli — rozdzielone — wartości przecinkami (CSV) z tablicy obiektów JSON. <br>- **Utwórz tabelę HTML**: Utwórz tabelę HTML z tablicy obiektów JSON. <br>- **Filtruj tablicę**: Utwórz tablicę ze elementów w innej tablicy, spełniających podane kryteria. <br>- **Dołącz do**: Tworzenie ciągu z wszystkich elementów w tablicy i oddzielić te elementy przy użyciu określonego ogranicznika. <br>- **Przeanalizuj dane JSON**: tworzenie tokenów przyjazny dla użytkownika z właściwości i ich wartości w formacie JSON zawartości Aby można było używać tych właściwości w przepływie pracy. <br>- **Wybierz**: Utwórz tablicę z obiektami JSON poprzez przekształcenie elementów lub wartości w innej tablicy i mapowanie te elementy do określonej właściwości. | 
+| [![Wbudowaną ikonę][data-operations-icon]<br/>**operacje na danych**][data-operations-doc] | Wykonaj operacje przy użyciu danych: <p>- **Redagowanie**: tworzenie pojedynczej dane wyjściowe na podstawie wielu danych wejściowych z różnych typów. <br>- **Utwórz tabelę CSV**: Tworzenie tabeli — rozdzielone — wartości przecinkami (CSV) z tablicy obiektów JSON. <br>- **Utwórz tabelę HTML**: Utwórz tabelę HTML z tablicy obiektów JSON. <br>- **Filtruj tablicę**: Utwórz tablicę ze elementów w innej tablicy, spełniających podane kryteria. <br>- **Dołącz do**: Tworzenie ciągu z wszystkich elementów w tablicy i oddzielić te elementy przy użyciu określonego ogranicznika. <br>- **Przeanalizuj dane JSON**: tworzenie tokenów przyjazny dla użytkownika z właściwości i ich wartości w formacie JSON zawartości Aby można było używać tych właściwości w przepływie pracy. <br>- **Wybierz**: Utwórz tablicę z obiektami JSON poprzez przekształcenie elementów lub wartości w innej tablicy i mapowanie te elementy do określonej właściwości. | 
 | ![Ikona wbudowane][date-time-icon]<br/>**Data i godzina** | Wykonaj czynności z sygnaturami czasowymi: <p>- **Dodaj do czasu**: Dodaj określoną liczbę jednostek do sygnatury czasowej. <br>- **Konwertuj strefę czasową**: konwertowanie sygnatury czasowej źródłowej strefy czasowej na docelową strefę czasową. <br>- **Bieżący czas**: zwraca bieżącą sygnaturę czasową jako ciąg. <br>- **Pobierz czas w przyszłości**: zwraca bieżącą sygnaturę czasową, a także jednostek w określonym czasie. <br>- **Pobierz czas w przeszłości**: zwraca bieżącą sygnaturę czasową minus jednostek w określonym czasie. <br>- **Odejmij od czasu**: odjęcie liczby jednostek czasu z sygnatury czasowej. |
 | [![Wbudowaną ikonę][variables-icon]<br/>**zmiennych**][variables-doc] | Wykonaj operacje za pomocą zmiennych: <p>- **Dołącz do zmiennej tablicowej**: Wstaw wartość jako ostatni element w tablicy przechowywane za pomocą zmiennej. <br>- **Dołącz do zmiennej ciągu**: Wstaw wartość jako ostatni znak w ciągu przechowywane za pomocą zmiennej. <br>- **Zmniejsz zmienną**: Zmniejsz zmienną o stałej wartości. <br>- **Zwiększ wartość zmiennej**: Zwiększ zmiennej przez wartość stałą. <br>- **Inicjowanie zmiennej**: Utwórz zmienną i zadeklarować jego typu danych i wartość początkową. <br>- **Ustaw zmienną**: Przypisz inną wartość do istniejącej zmiennej. |
 |  |  | 
@@ -193,6 +193,7 @@ Aby udostępnić funkcję niestandardowe aplikacje interfejsu API i łączniki d
 [switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "Organizowanie akcji w przypadkach, które są przypisane unikatowe wartości. Uruchom przypadek, którego wartość odpowiada wynikiem wyrażenia, obiekt lub token. Jeśli istnieje żadnych dopasowań, Uruchom przypadek domyślny"
 [terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "Zatrzymać lub anulować aktywnie uruchomiony przepływ pracy aplikacji logiki"
 [until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "Powtarzanie operacji, aż określony warunek ma wartość true lub niektóre stan został zmieniony"
+[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "Wykonywanie operacji danych, takich jak filtrowanie tablic lub tworzenia tabeli CSV i HTML"
 [variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "Wykonywanie operacji za pomocą zmiennych, takich jak inicjowanie, zestaw, inkrementacja, dekrementacja i Dołącz do zmiennej ciągu lub tablicy"
 
 <!--Managed API doc links-->

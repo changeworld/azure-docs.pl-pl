@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: 611f7ccf9ef701bf589a8f9450f8f02695357224
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 327873d228fe92a9da495f802c97eb73612caef9
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291185"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632487"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Pobierz procesora źródło zmian .NET SDK: I informacje o wersji
 > [!div class="op_single_selector"]
@@ -42,6 +42,9 @@ ms.locfileid: "52291185"
 ## <a name="release-notes"></a>Informacje o wersji
 
 ### <a name="v2-builds"></a>kompilacje w wersji 2
+
+### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
+* Dodano nową właściwość ChangeFeedProcessorOptions.StartContinuation do obsługi zmian począwszy od źródła danych z żądania token kontynuacji. To jest używana tylko podczas dzierżawy kolekcja jest pusta lub dzierżawa nie ma ContinuationToken zestawu. Dla dzierżaw w kolekcję dzierżaw, które mają ustawiony ContinuationToken token kontynuacji jest używany, i ChangeFeedProcessorOptions.StartContinuation jest ignorowana.
 
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 * Dodano obsługę używania magazyn niestandardowy, aby utrwalić tokenów kontynuacji dla każdej partycji.

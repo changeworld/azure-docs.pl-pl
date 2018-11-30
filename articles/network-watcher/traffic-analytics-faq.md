@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 69d2d80e40400cc7fa40aeb5a163dce5036905ab
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 451480f5046d5ed8a1bd7262fd8f6a800e66dfc7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402764"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582500"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analiza ruchu — często zadawane pytania
 
@@ -30,7 +30,7 @@ Analiza ruchu wymaga następujących wymagań wstępnych:
 
 - Subskrypcja z włączonym Agentem Network Watcher.
 - Dzienniki przepływu sieciowej grupy zabezpieczeń (NSG) włączone dla sieciowych grup zabezpieczeń, którą chcesz monitorować.
-- Konto usługi Azure Storage do przechowywania pierwotne flog dzienniki.
+- Konto usługi Azure Storage do przechowywania dzienników przepływu raw.
 - Obszarem roboczym usługi Azure Log Analytics, za pomocą odczytu i zapisu.
 
 Twoje konto musi spełniać jeden z następujących czynności, aby włączyć analizę ruchu:
@@ -63,7 +63,38 @@ Jeśli nie widzisz żadnych danych wyjściowych, skontaktuj się z administrator
 
 ## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>Platformie Azure, które regiony są analizy ruchu dostępne?
 
-Korzystanie z analizy ruchu, dla sieciowych grup zabezpieczeń w jednym z następujących obsługiwanych regionach: zachodnio-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, północno-środkowe stany USA, południowo-środkowe stany USA, środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, Europa Zachodnia, Europa Północna, zachodnie Zjednoczone Królestwo, południowe Zjednoczone Królestwo, Australia Wschodnia, Australia Południowo-Wschodnia i Azja południowo-wschodnia. Obszar roboczy usługi Log Analytics, musi istnieć w zachodnio-środkowe stany USA, wschodnie stany USA, Europa Zachodnia, południowe Zjednoczone Królestwo, Australia południowo-wschodnia lub regionu Azja południowo-wschodnia.
+Korzystanie z analizy ruchu dla sieciowych grup zabezpieczeń w jednym z następujących obsługiwanych regionów:
+- Kanada Środkowa
+- Środkowo-zachodnie stany USA
+- Wschodnie stany USA
+- Wschodnie stany USA 2
+- Środkowo-północne stany USA
+- Środkowo-południowe stany USA
+- Środkowe stany USA
+- Zachodnie stany USA
+- Zachodnie stany USA 2
+- Europa Zachodnia
+- Europa Północna
+- Brazylia Południowa
+- Zachodnie Zjednoczone Królestwo
+- Południowe Zjednoczone Królestwo
+- Australia Wschodnia
+- Australia Południowo-Wschodnia 
+- Azja Południowo-Wschodnia
+- Indie Środkowe
+- Indie Południowe
+- Japonia Wschodnia
+
+Obszar roboczy usługi Log Analytics muszą znajdować się w następujących regionach:
+- Kanada Środkowa
+- Środkowo-zachodnie stany USA
+- Wschodnie stany USA
+- Europa Zachodnia
+- Południowe Zjednoczone Królestwo
+- Australia Południowo-Wschodnia
+- Azja Południowo-Wschodnia 
+- Indie Środkowe
+- Japonia Wschodnia
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Można włączyć przepływu sieciowych grup zabezpieczeń dzienniki mieścić się w różnych regionach niż Mój obszar roboczy?
 
@@ -94,8 +125,8 @@ Wybierz obsługiwany region. Jeśli wybierzesz-obsługiwany region, komunikat o 
 Dostawcy Microsoft.Insights musi być zarejestrowany dla rejestrowania, aby zapewnić prawidłowe działanie usługi flow. Jeśli nie masz pewności, czy dostawca Microsoft.Insights jest zarejestrowany dla Twojej subskrypcji, należy zastąpić *xxxxx-xxxxx-xxxxxx-xxxx* w następujące polecenia i uruchom następujące polecenia programu PowerShell:
 
 ```powershell-interactive
-**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>Czy mogę skonfigurować rozwiązania. Dlaczego nie widzę żadnych na pulpicie nawigacyjnym?

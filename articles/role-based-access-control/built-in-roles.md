@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: a57aae3b5f854871c94d5a4d62b41ad6a1bafcfd
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 58bec272733d0ad83665f4e06f37ae528eb2f8b9
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824935"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499653"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role zasobów platformy Azure
 [Kontrola dostępu oparta na rolach (RBAC)](overview.md) ma kilka definicji wbudowanej roli, które można przypisać do użytkowników, grup i nazwy główne usług. Przypisania roli są sposób kontrolowania dostępu do zasobów na platformie Azure. Jeśli role wbudowane nie spełniają potrzeb Twojej organizacji, możesz tworzyć własne [role niestandardowe](custom-roles.md).
@@ -39,7 +39,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 | [AcrImageSigner](#acrimagesigner) | osoba podpisująca obraz ACR |
 | [AcrQuarantineReader](#acrquarantinereader) | czytnik danych kwarantanny ACR |
 | [AcrQuarantineWriter](#acrquarantinewriter) | moduł zapisywania danych kwarantanny ACR |
-| [Współautor usługi API Management](#api-management-service-contributor) | Umożliwia zarządzanie usługi API Management, ale nie umożliwia uzyskiwania dostępu do nich. |
+| [Współautor usługi API Management](#api-management-service-contributor) | Może zarządzać usługą i interfejsami API |
 | [Rola Operator usługi API Management](#api-management-service-operator-role) | Może zarządzać usługą, lecz nie interfejsami API |
 | [Rola czytnik usługi API Management](#api-management-service-reader-role) | Dostęp tylko do odczytu do usługi i interfejsów API |
 | [Współautor składników usługi Application Insights](#application-insights-component-contributor) | Umożliwia zarządzanie składnikami usługi Application Insights |
@@ -53,7 +53,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 | [Współautor kopii zapasowych](#backup-contributor) | Umożliwia zarządzanie usługami kopii zapasowych z wyjątkiem tworzenia magazynów i przyznawania dostępu innym osobom |
 | [Operator kopii zapasowych](#backup-operator) | Umożliwia zarządzanie usługami kopii zapasowych z wyjątkiem usuwania kopii zapasowych, tworzenia magazynów i przyznawania dostępu innym osobom |
 | [Czytelnik kopii zapasowych](#backup-reader) | Może wyświetlać usługi kopii zapasowych, ale nie może wprowadzać zmian |
-| [Czytelnik rozliczenia](#billing-reader) | Umożliwia odczytywanie danych rozliczeń |
+| [Czytelnik rozliczenia](#billing-reader) | Umożliwia dostęp do odczytu do danych dotyczących rozliczeń |
 | [BizTalk Contributor](#biztalk-contributor) | Umożliwia zarządzanie usługami BizTalk Services, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor punktu końcowego usługi CDN](#cdn-endpoint-contributor) | Może zarządzać punktami końcowymi usługi CDN, lecz nie może przyznawać dostępu innym użytkownikom. |
 | [Czytelnik punktu końcowego usługi CDN](#cdn-endpoint-reader) | Może wyświetlać punkty końcowe usługi CDN, ale nie może wprowadzać zmian. |
@@ -70,12 +70,14 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 | [Usługa Cost Management czytnika](#cost-management-reader) | Może wyświetlać konfigurację i dane kosztów (np. budżety, operacje eksportu) |
 | [Współautora usługi Data Box](#data-box-contributor) | Umożliwia zarządzanie wszystkimi czynnościami w ramach usługi Data Box, z wyjątkiem udzielania dostępu innym użytkownikom. |
 | [Czytnik pole danych](#data-box-reader) | Umożliwia zarządzanie usługą Data Box, z wyjątkiem tworzenia zamówienia lub edytowania szczegółów zamówienia i udzielania dostępu innym użytkownikom. |
-| [Współautor Data Factory](#data-factory-contributor) | Umożliwia zarządzanie fabryki danych, ale nie umożliwia uzyskiwania dostępu do nich. |
+| [Współautor Data Factory](#data-factory-contributor) | Tworzenie fabryk danych i zawartych w nich zasobów podrzędnych oraz zarządzanie nimi. |
 | [Data Lake Analytics dewelopera](#data-lake-analytics-developer) | Umożliwia przesyłanie własnych zadań, monitorowanie ich i zarządzanie nimi, ale nie tworzenie ani usuwanie kont usługi Data Lake Analytics. |
 | [Purger danych](#data-purger) | Może czyścić dane analizy |
 | [Użytkownik usługi DevTest Labs](#devtest-labs-user) | Umożliwia łączenie, uruchamianie, ponowne uruchamianie i zamykanie maszyn wirtualnych w usłudze Azure DevTest Labs. |
 | [Współautor strefy DNS](#dns-zone-contributor) | Umożliwia zarządzanie strefami DNS i zestawami rekordów w usłudze Azure DNS, ale nie zapewnia kontroli dostępu do nich. |
 | [Współautor konta usługi DocumentDB](#documentdb-account-contributor) | Można zarządzać kontami usługi Azure Cosmos DB. Usługa Azure Cosmos DB jest znana wcześniej jako baza danych DocumentDB. |
+| [Współautor EventSubscription EventGrid (wersja zapoznawcza)](#eventgrid-eventsubscription-contributor-preview) | Umożliwia zarządzanie operacjami subskrypcji zdarzeń EventGrid. |
+| [Czytnik EventSubscription EventGrid (wersja zapoznawcza)](#eventgrid-eventsubscription-reader-preview) | Umożliwia odczyt EventGrid subskrypcji zdarzeń. |
 | [Współautor usługi HDInsight domeny](#hdinsight-domain-services-contributor) | Może odczytywać, tworzyć, modyfikować i usuwać powiązane z Domain Services operacje wymagane w przypadku pakietu Enterprise Security w usłudze HDInsight |
 | [Współautor konta usługi systemy inteligentne](#intelligent-systems-account-contributor) | Umożliwia zarządzanie kontami usługi Intelligent Systems, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor magazynu kluczy](#key-vault-contributor) | Umożliwia zarządzanie magazynami kluczy, ale nie umożliwia uzyskiwania do nich dostępu. |
@@ -101,7 +103,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 | [Współautor kolekcji zadań usługi Scheduler](#scheduler-job-collections-contributor) | Umożliwia zarządzanie kolekcjami zadań usługi Scheduler, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor usługi wyszukiwania](#search-service-contributor) | Umożliwia zarządzanie usługami Search, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Administrator zabezpieczeń](#security-admin) | W usłudze Security Center tylko: można wyświetlić zasady zabezpieczeń, widoku stany zabezpieczeń, edytować zasady zabezpieczeń, wyświetlanie alertów i zaleceń, Odrzuć alerty i zalecenia |
-| [Menedżer zabezpieczeń](#security-manager) | Umożliwia zarządzanie składniki zabezpieczeń, zasady zabezpieczeń i virtual machines |
+| [Menedżer zabezpieczeń (starsza wersja)](#security-manager-legacy) | To jest rola starszej wersji. Zamiast tego użyj Administrator zabezpieczeń |
 | [Czytelnik zabezpieczeń](#security-reader) | W usłudze Security Center tylko: mogą wyświetlać, zaleceń i alertów, widok zasady zabezpieczeń, wyświetlanie stanów zabezpieczeń, ale nie może wprowadzać zmian |
 | [Współautor usługi Site Recovery](#site-recovery-contributor) | Pozwala zarządzać usługą Site Recovery z wyjątkiem tworzenia magazynu i przypisywania ról |
 | [Operator usługi Site Recovery](#site-recovery-operator) | Pozwala przechodzić do trybu failover i przywracać sprawność po awarii, ale nie umożliwia wykonywania innych operacji zarządzania usługi Site Recovery |
@@ -119,7 +121,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 | [Współautor usługi Traffic Manager](#traffic-manager-contributor) | Umożliwia zarządzanie profilami usługi Traffic Manager, ale nie zapewnia kontroli dostępu do nich. |
 | [Administrator dostępu użytkowników](#user-access-administrator) | Umożliwia zarządzanie dostępem użytkowników do zasobów platformy Azure. |
 | [Logowanie administratora maszyny wirtualnej](#virtual-machine-administrator-login) | Wyświetl maszyny wirtualne w portalu i zaloguj się jako administrator |
-| [Współautor maszyny wirtualnej](#virtual-machine-contributor) | Umożliwia zarządzanie maszyn wirtualnych, ale nie umożliwia uzyskiwania dostępu do nich, a nie w sieci wirtualnej lub konta magazynu, w których są one połączone z. |
+| [Współautor maszyny wirtualnej](#virtual-machine-contributor) | Umożliwia zarządzanie maszynami wirtualnymi, ale nie umożliwia uzyskiwania dostępu do nich ani do sieci wirtualnych i magazynów, z którymi są połączone. |
 | [Logowanie użytkownika maszyny wirtualnej](#virtual-machine-user-login) | Wyświetl maszyny wirtualne w portalu i zaloguj się jako zwykły użytkownik. |
 | [Współautor planów sieci Web](#web-plan-contributor) | Umożliwia zarządzanie planami sieci Web dla witryn sieci Web, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor witryny sieci Web](#website-contributor) | Umożliwia zarządzanie witrynami sieci Web (nie planami sieci Web), ale nie umożliwia uzyskiwania do nich dostępu. |
@@ -146,8 +148,8 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Authorization/*/Delete | Nie można usunąć ról i przypisań ról |
 > | Microsoft.Authorization/*/Write | Nie można utworzyć ról i przypisań ról |
 > | Microsoft.Authorization/elevateAccess/Action | Przyznaje osobie wywołującej uprawnienia administratora dostępu użytkowników w zakresie dzierżawy |
-> | Microsoft.Blueprint/blueprintAssignments/write | Utwórz lub zaktualizuj wszelkie artefakty strategii |
-> | Microsoft.Blueprint/blueprintAssignments/delete | Usuń wszelkie artefakty strategii |
+> | Microsoft.Blueprint/blueprintAssignments/write | Utwórz lub zaktualizuj wszelkie artefakty planu |
+> | Microsoft.Blueprint/blueprintAssignments/delete | Usuń wszelkie artefakty planu |
 
 ## <a name="reader"></a>Czytelnik
 > [!div class="mx-tableFixed"]
@@ -165,8 +167,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Opis** | osoba podpisująca obraz ACR |
 > | **Identyfikator** | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | **Akcje** |  |
-> | Microsoft.ContainerRegistry/registries/*/read |  |
-> | Microsoft.ContainerRegistry/registries/*/write |  |
+> | Microsoft.ContainerRegistry/registries/sign/write | / Wypychania zawartości zaufania metadanych dla rejestru kontenerów. |
 
 ## <a name="acrquarantinereader"></a>AcrQuarantineReader
 > [!div class="mx-tableFixed"]
@@ -175,7 +176,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Opis** | czytnik danych kwarantanny ACR |
 > | **Identyfikator** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
 > | **Akcje** |  |
-> | Microsoft.ContainerRegistry/registries/quarantineRead/read |  |
+> | Microsoft.ContainerRegistry/registries/quarantineRead/read | Ściąganie lub uzyskać poddane kwarantannie obrazów z rejestru kontenerów |
 
 ## <a name="acrquarantinewriter"></a>AcrQuarantineWriter
 > [!div class="mx-tableFixed"]
@@ -184,14 +185,14 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Opis** | moduł zapisywania danych kwarantanny ACR |
 > | **Identyfikator** | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | **Akcje** |  |
-> | Microsoft.ContainerRegistry/registries/quarantineWrite/write |  |
-> | Microsoft.ContainerRegistry/registries/quarantineRead/read |  |
+> | Microsoft.ContainerRegistry/registries/quarantineRead/read | Ściąganie lub uzyskać poddane kwarantannie obrazów z rejestru kontenerów |
+> | Microsoft.ContainerRegistry/registries/quarantineWrite/write | Zapisu/modyfikowania stan kwarantanny obrazów poddane kwarantannie |
 
 ## <a name="api-management-service-contributor"></a>Współautor usługi API Management
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia zarządzanie usługi API Management, ale nie umożliwia uzyskiwania dostępu do nich. |
+> | **Opis** | Może zarządzać usługą i interfejsami API |
 > | **Identyfikator** | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | **Akcje** |  |
 > | Microsoft.ApiManagement/service/* | Tworzenie i zarządzanie nimi usługi API Management |
@@ -536,7 +537,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia odczytywanie danych rozliczeń |
+> | **Opis** | Umożliwia dostęp do odczytu do danych dotyczących rozliczeń |
 > | **Identyfikator** | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
@@ -813,7 +814,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia zarządzanie fabryki danych, ale nie umożliwia uzyskiwania dostępu do nich. |
+> | **Opis** | Tworzenie fabryk danych i zawartych w nich zasobów podrzędnych oraz zarządzanie nimi. |
 > | **Identyfikator** | 673868aa-7521-48A0-acc6-0f60742d39f5 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
@@ -883,13 +884,14 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Compute/virtualMachines/restart/action | Uruchamia ponownie maszynę wirtualną |
 > | Microsoft.Compute/virtualMachines/start/action | Uruchamia maszynę wirtualną |
 > | Microsoft.DevTestLab/*/read | Odczyt właściwości laboratorium |
-> | Microsoft.DevTestLab/labs/createEnvironment/action | Tworzenie maszyn wirtualnych w laboratorium. |
 > | Microsoft.DevTestLab/labs/claimAnyVm/action | Oświadczenie losowe przejęcia maszynę wirtualną w środowisku laboratoryjnym. |
+> | Microsoft.DevTestLab/labs/createEnvironment/action | Tworzenie maszyn wirtualnych w laboratorium. |
 > | Microsoft.DevTestLab/labs/formulas/delete | Usunięcie formuły. |
 > | Microsoft.DevTestLab/labs/formulas/read | Przeczytaj formuły. |
 > | Microsoft.DevTestLab/labs/formulas/write | Dodaje lub modyfikuje formuły. |
 > | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | Ocenia zasady laboratorium. |
 > | Microsoft.DevTestLab/labs/virtualMachines/claim/action | Przejęcie na własność istniejącej maszyny wirtualnej |
+> | Microsoft.DevTestLab/labs/virtualmachines/listApplicableSchedules/action | Wyświetla listę harmonogramy dotyczy uruchomień/zatrzymań ewentualne. |
 > | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Dołącza do puli adresów zaplecza modułu równoważenia obciążenia |
 > | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Dołącza reguły nat dla ruchu przychodzącego modułu równoważenia obciążenia |
 > | Microsoft.Network/networkInterfaces/*/read | Odczytywanie właściwości interfejsu sieciowego (na przykład wszystkie moduły równoważenia obciążenia, które interfejs sieciowy jest częścią) |
@@ -936,6 +938,37 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+
+## <a name="eventgrid-eventsubscription-contributor-preview"></a>Współautor EventSubscription EventGrid (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia zarządzanie operacjami subskrypcji zdarzeń EventGrid. |
+> | **Identyfikator** | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
+> | **Akcje** |  |
+> | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
+> | Microsoft.EventGrid/eventSubscriptions/* |  |
+> | Microsoft.EventGrid/topicTypes/eventSubscriptions/read | Subskrypcje zdarzeń globalnej listy według typu tematu |
+> | Microsoft.EventGrid/locations/eventSubscriptions/read | Subskrypcje zdarzeń regionalnych listy |
+> | Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read | Wyświetl subskrypcje zdarzeń regionalnych przez topictype |
+> | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
+> | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
+> | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+
+## <a name="eventgrid-eventsubscription-reader-preview"></a>Czytnik EventSubscription EventGrid (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia odczyt EventGrid subskrypcji zdarzeń. |
+> | **Identyfikator** | 2414bbcf-6497-4faf-8c65-045460748405 |
+> | **Akcje** |  |
+> | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
+> | Microsoft.EventGrid/eventSubscriptions/read | Przeczytaj eventSubscription |
+> | Microsoft.EventGrid/topicTypes/eventSubscriptions/read | Subskrypcje zdarzeń globalnej listy według typu tematu |
+> | Microsoft.EventGrid/locations/eventSubscriptions/read | Subskrypcje zdarzeń regionalnych listy |
+> | Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read | Wyświetl subskrypcje zdarzeń regionalnych przez topictype |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 
 ## <a name="hdinsight-domain-services-contributor"></a>HDInsight Domain Services — współautor
 > [!div class="mx-tableFixed"]
@@ -1089,6 +1122,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Opis** | Umożliwia odczytywanie zasobów aplikacji zarządzanej i wykonywanie związanych z nimi akcji |
 > | **Identyfikator** | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | **Akcje** |  |
+> | * / Odczyt | Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych. |
 > | Microsoft.Solutions/applications/read | Pobiera listę aplikacji. |
 
 ## <a name="managed-applications-reader"></a>Aplikacje zarządzane — czytelnik
@@ -1185,7 +1219,6 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
-> | Microsoft.WorkloadMonitor/workloadInsights/* |  |
 
 ## <a name="monitoring-metrics-publisher"></a>Monitorowanie wydawcy metryk
 > [!div class="mx-tableFixed"]
@@ -1332,15 +1365,17 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Security/locations/tasks/activate/action | Aktywuj zalecenie dotyczące zabezpieczeń |
 > | Microsoft.Security/locations/tasks/dismiss/action | Odrzuć zalecenie dotyczące zabezpieczeń |
 > | Microsoft.Security/policies/write | Aktualizuje zasady zabezpieczeń |
-> | Microsoft.Security/securityContacts/write | Aktualizacje zabezpieczeń skontaktuj się z |
+> | Microsoft.Security/pricings/write | Aktualizacje cen ustawienia dla zakresu |
+> | Microsoft.Security/pricings/delete | Usuwa ustawienia cen dla zakresu |
 > | Microsoft.Security/securityContacts/delete | Usuwa kontakt zabezpieczeń |
+> | Microsoft.Security/securityContacts/write | Aktualizacje zabezpieczeń skontaktuj się z |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 
-## <a name="security-manager"></a>Menedżer zabezpieczeń
+## <a name="security-manager-legacy"></a>Menedżer zabezpieczeń (starsza wersja)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia zarządzanie składniki zabezpieczeń, zasady zabezpieczeń i virtual machines |
+> | **Opis** | To jest rola starszej wersji. Zamiast tego użyj Administrator zabezpieczeń |
 > | **Identyfikator** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
@@ -1559,11 +1594,13 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | Tworzenie i zarządzanie nimi zasady inspekcji usługi SQL server |
 > | Microsoft.Sql/servers/auditingSettings/* | Tworzenie i zarządzanie nimi ustawienia inspekcji serwera SQL |
+> | Microsoft.Sql/servers/extendedAuditingSettings/read | Pobierz szczegóły obiektu blob serwera rozszerzonej skonfigurowane na danym serwerze zasady inspekcji |
 > | Microsoft.Sql/servers/databases/auditingPolicies/* | Tworzenie i zarządzanie nimi zasady inspekcji bazy danych programu SQL server |
 > | Microsoft.Sql/servers/databases/auditingSettings/* | Tworzenie i zarządzanie nimi ustawienia inspekcji bazy danych programu SQL server |
 > | Microsoft.Sql/servers/databases/auditRecords/read | Odczytaj rekordy inspekcji |
 > | Microsoft.Sql/servers/databases/connectionPolicies/* | Tworzenie i zarządzanie zasadami połączeń bazy danych serwera SQL |
 > | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Tworzenie i zarządzanie nimi danych bazy danych programu SQL server maskowania zasad |
+> | Microsoft.Sql/servers/databases/extendedAuditingSettings/read | Pobieranie szczegółów zasad inspekcji rozszerzonego obiektu blob skonfigurowany w danej bazie danych |
 > | Microsoft.Sql/servers/databases/read | Zwraca listę baz danych lub pobiera właściwości dla określonej bazy danych. |
 > | Microsoft.Sql/servers/databases/schemas/read | Pobieranie listy schematy bazy danych |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/read | Pobieranie listy kolumn w tabeli |
@@ -1753,7 +1790,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia zarządzanie maszyn wirtualnych, ale nie umożliwia uzyskiwania dostępu do nich, a nie w sieci wirtualnej lub konta magazynu, w których są one połączone z. |
+> | **Opis** | Umożliwia zarządzanie maszynami wirtualnymi, ale nie umożliwia uzyskiwania dostępu do nich ani do sieci wirtualnych i magazynów, z którymi są połączone. |
 > | **Identyfikator** | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj autoryzacji |

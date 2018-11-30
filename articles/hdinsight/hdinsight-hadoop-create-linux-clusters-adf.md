@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: 76651874951255d9b01efdc6e91892f6852d948d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 1e55da981daf29aca491c480d58f399bc681fd27
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036380"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499545"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Samouczek: Tworzenie na żądanie klastry platformy Apache Hadoop w HDInsight przy użyciu usługi Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-W tym artykule dowiesz się, jak utworzyć klaster Apache Hadoop na żądanie w usłudze Azure HDInsight przy użyciu usługi Azure Data Factory. Następnie użyj potoków danych w usłudze Azure Data Factory do uruchamiania zadań Hive i usunąć klaster. Do końca tego samouczka dowiesz się, jak operacjonalizować zadania obsługi dużych ilości danych, uruchamianie, gdzie tworzenia klastra, uruchom zadanie i usuwanie klastra są wykonywane zgodnie z harmonogramem.
+W tym artykule dowiesz się, jak utworzyć [Apache Hadoop](https://hadoop.apache.org/) klastra na żądanie w usłudze Azure HDInsight przy użyciu usługi Azure Data Factory. Następnie użyj potoków danych w usłudze Azure Data Factory do uruchamiania zadań Hive i usunąć klaster. Do końca tego samouczka dowiesz się, jak operacjonalizować zadania obsługi dużych ilości danych, uruchamianie, gdzie tworzenia klastra, uruchom zadanie i usuwanie klastra są wykonywane zgodnie z harmonogramem.
 
 Ten samouczek obejmuje następujące zadania: 
 
@@ -43,7 +43,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
 
-W tej sekcji utworzysz konto magazynu, która będzie służyć jako magazynem domyślnym dla klastra HDInsight, utworzone na żądanie. To konto magazynu zawiera również przykładowy skrypt HiveQL (**hivescript.hql**) używanego do symulacji przykładowe zadania Hive, który działa w klastrze.
+W tej sekcji utworzysz konto magazynu, która będzie służyć jako magazynem domyślnym dla klastra HDInsight, utworzone na żądanie. To konto magazynu zawiera również przykładowy [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) skryptu (**hivescript.hql**) umożliwia symulowanie próbkę [Apache Hive](https://hive.apache.org/) zadanie, które działa w klastrze.
 
 Ta sekcja używa skrypt programu Azure PowerShell do tworzenia konta magazynu i kopiowanie wymaganych plików w ramach konta magazynu. Przykładowy skrypt programu Azure PowerShell w tej sekcji wykonuje następujące zadania:
 
@@ -338,7 +338,7 @@ Alternatywnie można usunąć całą grupę zasobów utworzoną na potrzeby tego
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób użycia usługi Azure Data Factory do tworzenia klastra HDInsight na żądanie i uruchamiania zadań Hive. Przejdź do następnego artciel, aby dowiedzieć się, jak utworzyć klastrów HDInsight za pomocą konfiguracji niestandardowej.
+W tym artykule przedstawiono sposób użycia usługi Azure Data Factory do utworzenia klastra HDInsight na żądanie i uruchom [Apache Hive](https://hive.apache.org/) zadania. Przejdź do następnego artciel, aby dowiedzieć się, jak utworzyć klastrów HDInsight za pomocą konfiguracji niestandardowej.
 
 > [!div class="nextstepaction"]
 >[Tworzenie klastrów usługi Azure HDInsight za pomocą konfiguracji niestandardowej](hdinsight-hadoop-provision-linux-clusters.md)

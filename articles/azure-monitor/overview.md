@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 6a3e33fe74199f0b9c02c6924d5e5e41b37f385c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: d1b7b5baeba88ec0209abff60e9327031afa8b66
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820974"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633779"
 ---
 # <a name="azure-monitor-overview"></a>Omówienie usługi Azure Monitor
 
@@ -47,7 +47,7 @@ Język zapytań usługi Log Analytics jest odpowiedni dla prostego dziennika zap
 ![Dzienniki](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Jakie dane są zbierane w usłudze Azure Monitor
-Usługa Azure Monitor umożliwia zbieranie danych z różnych źródeł. Można traktować danych monitorowania dla aplikacji w warstwach — od aplikacji, w dowolnym eksploatacji oraz usług, który opiera się na dół samą platformę. Usługa Azure Monitor zbiera dane z każdej z następujących warstwach:
+Usługa Azure Monitor umożliwia zbieranie danych z różnych źródeł. Można traktować danych monitorowania dla aplikacji w warstwach — od aplikacji, dowolnego systemu operacyjnego i usług, który opiera się na dół samą platformę. Usługa Azure Monitor zbiera dane z każdej z następujących warstwach:
 
 - **Monitorowanie danych aplikacji**: dane dotyczące wydajności i funkcji kodu zostały napisane, niezależnie od platformy.
 - **Dane monitorowania systemu operacyjnego gościa**: dane dotyczące systemu operacyjnego, na którym aplikacja jest uruchomiona. Może to być uruchomiony w platformie Azure, innej chmurze lub lokalnie. 
@@ -57,7 +57,7 @@ Usługa Azure Monitor umożliwia zbieranie danych z różnych źródeł. Można 
 
 Zaraz po utworzeniu subskrypcji platformy Azure i zacznij dodawać zasoby, takie jak maszyny wirtualne i aplikacje sieci web usługi Azure Monitor rozpoczyna zbieranie danych.  [Dzienniki aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) rejestrowania po utworzeniu lub zmodyfikowaniu zasobów. [Metryki](../monitoring-and-diagnostics/monitoring-overview-metrics.md) informujące, jaka jest wydajność zasobów i zasoby, które go używa. 
 
-Rozszerzanie danych, Trwa zbieranie danych do bieżącej operacji zasobów przez [włączenie diagnostyki](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) i [dodanie agenta](../log-analytics/log-analytics-agent-windows.md) zasobów obliczeniowych. Spowoduje to zbieranie danych telemetrycznych dla operacji wewnętrznej zasobu i umożliwiają skonfigurowanie różnych [źródeł danych](../log-analytics/log-analytics-data-sources.md) do gromadzenia dzienników i metryk w systemie operacyjnym gościa Windows i Linux. 
+Rozszerzanie danych, Trwa zbieranie danych do bieżącej operacji zasobów przez [włączenie diagnostyki](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) i [dodanie agenta](../azure-monitor/platform/agent-windows.md) zasobów obliczeniowych. Spowoduje to zbieranie danych telemetrycznych dla operacji wewnętrznej zasobu i umożliwiają skonfigurowanie różnych [źródeł danych](../azure-monitor/platform/agent-data-sources.md) do gromadzenia dzienników i metryk w systemie operacyjnym gościa Windows i Linux. 
 
 [Dodawanie pakietu instrumentacji aplikacji](../application-insights/app-insights-azure-web-apps.md), aby włączyć usługę Application Insights zbierać szczegółowe informacje na temat aplikacji w tym wyświetleń stron, aplikacji żądań i wyjątków. Dodatkowo sprawdź dostępność aplikacji, konfigurując [testu dostępności](../application-insights/app-insights-monitor-web-app-availability.md) aby symulować ruch użytkownika.
 
@@ -86,7 +86,7 @@ Usługa Azure Monitor maszyny Wirtualnej insights monitoruje usługi Azure virtu
 ![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>Rozwiązania do monitorowania
-[Monitorowanie rozwiązań](../azure-monitor/insights/solutions.md) w usłudze Azure Monitor są spakowane zestawy logiki ze szczegółowymi informacjami dla określonej aplikacji lub usługi. One zbierać dane do usługi Log Analytics oraz innych danych monitorowania za pomocą [zapytania](../log-analytics/log-analytics-queries.md) do analizy i [widoków](../log-analytics/log-analytics-view-designer.md) wizualizacji. Rozwiązania do monitorowania są [udostępnianych przez firmę Microsoft](../azure-monitor/insights/solutions-inventory.md) i jej partnerów, aby zapewnić monitorowanie dla różnych usług platformy Azure i innych aplikacji.
+[Monitorowanie rozwiązań](../azure-monitor/insights/solutions.md) w usłudze Azure Monitor są spakowane zestawy logiki ze szczegółowymi informacjami dla określonej aplikacji lub usługi. One zbierać dane do usługi Log Analytics oraz innych danych monitorowania za pomocą [zapytania](../log-analytics/log-analytics-queries.md) do analizy i [widoków](../azure-monitor/platform/view-designer.md) wizualizacji. Rozwiązania do monitorowania są [udostępnianych przez firmę Microsoft](../azure-monitor/insights/solutions-inventory.md) i jej partnerów, aby zapewnić monitorowanie dla różnych usług platformy Azure i innych aplikacji.
 
 ![Rozwiązania do monitorowania](media/overview/solutions-overview.png)
 
@@ -115,7 +115,7 @@ Automatyczne skalowanie pozwala mieć odpowiednią ilość zasobów do obsługi 
 ![Pulpit nawigacyjny](media/overview/dashboard.png)
 
 ### <a name="views"></a>Widoki
-[Widoki w usłudze Azure Monitor](../log-analytics/log-analytics-view-designer.md) prezentują wizualnie dane dzienników w usłudze Log Analytics.  Każdy widok zawiera pojedynczy fragment, który przejście do kombinację wizualizacji, takich jak pasek i liniowy oprócz listy podsumowujące kluczowych danych.  Rozwiązania do monitorowania zawierają widoki, które podsumowują dane dla konkretnej aplikacji. Ponadto można tworzyć własne widoki, aby prezentować dane pochodzące z dowolnego przeszukiwania dzienników usługi Log Analytics. Podobnie jak inne elementy w usłudze Azure Monitor można dodać widoków do pulpitów nawigacyjnych platformy Azure.
+[Widoki w usłudze Azure Monitor](../azure-monitor/platform/view-designer.md) prezentują wizualnie dane dzienników w usłudze Log Analytics.  Każdy widok zawiera pojedynczy fragment, który przejście do kombinację wizualizacji, takich jak pasek i liniowy oprócz listy podsumowujące kluczowych danych.  Rozwiązania do monitorowania zawierają widoki, które podsumowują dane dla konkretnej aplikacji. Ponadto można tworzyć własne widoki, aby prezentować dane pochodzące z dowolnego przeszukiwania dzienników usługi Log Analytics. Podobnie jak inne elementy w usłudze Azure Monitor można dodać widoków do pulpitów nawigacyjnych platformy Azure.
 
 ![Widoki usługi Log Analytics](media/overview/view.png)
 

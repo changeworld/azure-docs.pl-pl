@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 803fa89145d3a38b2df34666754fe8949a74eb53
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a36ad31531e41782f5be457450737a74f476c543
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262339"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584880"
 ---
 # <a name="api-management-advanced-policies"></a>Usługa API Management zaawansowane zasady
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -253,7 +253,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 -   **Zakresy zasad:** wszystkie zakresy
 
 ##  <a name="LimitConcurrency"></a> Limit współbieżności
- `limit-concurrency` Zasada uniemożliwia ujęty zasady wykonywania przez więcej niż określoną liczbę żądań w danym momencie. Po przekroczeniu tej liczby, nowych żądań nie powiedzie się bezpośrednio z kodem stanu usługi 429 zbyt wiele żądań.
+ `limit-concurrency` Zasada uniemożliwia ujęty zasady wykonywania przez więcej niż określoną liczbę żądań w dowolnym momencie. Po przekroczeniu tej liczby, nowych żądań nie powiedzie się bezpośrednio z kodem stanu usługi 429 zbyt wiele żądań.
 
 ###  <a name="LimitConcurrencyStatement"></a> Deklaracja zasad
 
@@ -649,7 +649,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Atrybut|Opis|Wymagane|Domyślne|
 |---------------|-----------------|--------------|-------------|
 |mode="string"|Określa, czy jest to nowe wezwanie lub kopię bieżącego żądania. W trybie ruchu wychodzącego tryb = kopiowania nie inicjuje treści żądania.|Nie|Nowa|
-|response-variable-name="string"|Nazwa zmiennej kontekstowej, który będzie otrzymywać obiekt odpowiedzi. Jeśli zmienna nie istnieje, zostanie utworzony podczas wykonywania skierowanie zasad i staną się dostępne za pośrednictwem [ `context.Variable` ](api-management-policy-expressions.md#ContextVariables) kolekcji.|Yes|ND|
+|response-variable-name="string"|Nazwa zmiennej kontekstowej, który będzie otrzymywać obiekt odpowiedzi. Jeśli zmienna nie istnieje, zostanie utworzony po pomyślnym wykonaniu zasad i staną się dostępne za pośrednictwem [ `context.Variable` ](api-management-policy-expressions.md#ContextVariables) kolekcji.|Yes|ND|
 |timeout="integer"|Interwał limitu czasu w sekundach przed wywołaniem do adresu URL zakończy się niepowodzeniem.|Nie|60|
 |Ignoruj błąd|Jeśli wartość PRAWDA, a żądanie będzie skutkowało błędem:<br /><br /> — Jeśli odpowiedź zmienna nazwa została określona, będzie zawierać wartości null.<br />— Jeśli nie określono odpowiedzi zmienna nazwy, kontekstu. Żądanie nie zostanie zaktualizowany.|Nie|false|
 |name|Określa nazwę nagłówka do ustawienia.|Yes|ND|
@@ -876,7 +876,7 @@ Zwróć uwagę na użycie [właściwości](api-management-howto-properties.md) j
 
 ```xml
 
-<trace source="arbitrary string literal"/>
+<trace source="arbitrary string literal">
     <!-- string expression or literal -->
 </trace>
 

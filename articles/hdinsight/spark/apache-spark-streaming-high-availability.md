@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: 8f680b60a8f457e1a8619ac044798ff02df15694
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9898a56991a44f3ac87fde4c34676943b1ab8341
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013653"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581905"
 ---
-# <a name="create-high-availability-spark-streaming-jobs-with-yarn"></a>Tworzenie zadań przesyłania strumieniowego platformy Spark o wysokiej dostępności przy użyciu usługi YARN
+# <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Tworzenie zadania Apache Spark Streaming wysokiej dostępności przy użyciu usługi YARN
 
-Przesyłanie strumieniowe Spark pozwala na implementowanie aplikacji skalowalnych, dużej przepływności i odpornej na uszkodzenia dla strumieni danych, przetwarzanie. Możesz połączyć aplikacje przesyłania strumieniowego platformy Spark w klastrze HDInsight Spark do różnych źródeł danych, takich jak usługi Azure Event Hubs, Azure IoT Hub, Kafka, Flume, Twitter, ZeroMQ, pierwotne gniazda TCP lub przez monitorowanie systemu plików HDFS zmian. Przesyłanie strumieniowe Spark obsługuje odporności na uszkodzenia z gwarancją, że danego zdarzenia jest przetwarzany tylko raz, nawet w przypadku awarii węzła.
+[Platforma Apache Spark](https://spark.apache.org/) przesyłania strumieniowego umożliwia wdrożenie skalowalne o wysokiej przepływności, odpornej na uszkodzenia aplikacji dla strumieni danych, przetwarzanie. Można połączyć aplikacje przesyłania strumieniowego platformy Spark w klastrze HDInsight Spark do różnych źródeł danych, takich jak usługi Azure Event Hubs, Azure IoT Hub, [platformy Apache Kafka](https://kafka.apache.org/), [Apache Flume](https://flume.apache.org/), Twitter, [ ZeroMQ](http://zeromq.org/), pierwotne gniazdami TCP, lub przez monitorowanie [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) systemu plików dla zmian. Przesyłanie strumieniowe Spark obsługuje odporności na uszkodzenia z gwarancją, że danego zdarzenia jest przetwarzany tylko raz, nawet w przypadku awarii węzła.
 
 Przesyłanie strumieniowe Spark tworzy długotrwałych zadań, podczas których będą mogli zastosować przekształceń danych, a następnie Wypchnij wyniki, na systemy plików, baz danych, pulpitów nawigacyjnych i konsoli. Przesyłanie strumieniowe Spark przetwarza micro partie danych, zbierając pierwszej partii zdarzeń za pośrednictwem określonego przedziału czasowego. Następnie tej partii jest wysyłany na potrzeby przetwarzania i danych wyjściowych. Przedziały czasu usługi Batch są zazwyczaj definiowane w ułamków sekund.
 
@@ -54,7 +54,7 @@ Danych ma kilka właściwości, które pomagają wysoko dostępnej i odpornej na
 
 Aby utworzyć aplikację, która przetwarza każde zdarzenie, gdy (i tylko jeden raz), należy wziąć pod uwagę jak wszystkie punkty awarii systemu, uruchom ponownie po wystąpił problem i jak można uniknąć utraty danych. Dokładnie — po semantyki wymagają, że żadne dane nie są tracone w dowolnym momencie i przetworzenia komunikatu jest ponownego uruchamiania, niezależnie od tego, gdzie występuje błąd. Zobacz [tworzenie Spark Streaming zadania przy użyciu dokładnie — raz zdarzenia przetwarzania](apache-spark-streaming-exactly-once.md).
 
-## <a name="spark-streaming-and-yarn"></a>Przesyłania strumieniowego platformy Spark i YARN
+## <a name="spark-streaming-and-apache-hadoop-yarn"></a>Przesyłania strumieniowego platformy Spark i Apache Hadoop YARN
 
 W HDInsight, klaster pracy są koordynowany przez *jeszcze inny moduł zasobów negocjowania* (YARN). Projektowanie wysokiej dostępności na potrzeby przesyłania strumieniowego platformy Spark obejmuje techniki, przesyłania strumieniowego platformy Spark i składników usługi YARN.  Poniżej przedstawiono przykładową konfigurację za pomocą usługi YARN. 
 
@@ -120,8 +120,8 @@ Aby podsumować, korzystając z procesu tworzenia punktów kontrolnych, WAL + od
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Omówienie przesyłania strumieniowego platformy Spark](apache-spark-streaming-overview.md)
-* [Tworzenie zadań przesyłania strumieniowego platformy Spark z dokładnie — raz zdarzenia przetwarzania](apache-spark-streaming-exactly-once.md)
-* [Spark długotrwałych zadań w ramach platformy YARN przesyłania strumieniowego](http://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
+* [Omówienie przesyłania strumieniowego platformy Apache Spark](apache-spark-streaming-overview.md)
+* [Utwórz Apache Spark Streaming zadań z dokładnie — raz zdarzenia przetwarzania](apache-spark-streaming-exactly-once.md)
+* [Długotrwałe Apache Spark zadania przesyłania strumieniowego na podstawie usługi YARN](http://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
 * [Przesyłanie strumieniowe ze strukturą: Semantyka odpornego na błędy błędów](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
 * [Zdyskretyzowany strumienie: Odpornej na uszkodzenia modelu na potrzeby przetwarzania skalowalne Stream](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)

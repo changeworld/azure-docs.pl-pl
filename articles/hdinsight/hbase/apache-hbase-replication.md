@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: b978adcdcc025c24746167ef5ab92aebe94aca8b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 44ed4075af290e3253b3d8f090c289ceba9750a6
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016237"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584183"
 ---
-# <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Konfigurowanie replikacji klaster bazy danych HBase w sieci wirtualnej platformy Azure
+# <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Konfigurowanie replikacji klaster bazy danych Apache HBase w sieci wirtualnej platformy Azure
 
-Dowiedz się, jak skonfigurować replikacji bazy danych HBase w sieci wirtualnej lub między dwiema sieciami wirtualnymi na platformie Azure.
+Dowiedz się, jak skonfigurować [bazy danych Apache HBase](http://hbase.apache.org/) replikacji w sieci wirtualnej lub między dwiema sieciami wirtualnymi na platformie Azure.
 
 Replikacja klastra używa metodologii wypychania źródła. Klaster bazy danych HBase może być źródła lub miejsca docelowego lub go wykonać obie te role jednocześnie. Replikacja jest asynchroniczne. Celem replikacji jest spójność ostateczną. Źródło odbiera zmianę do rodziny kolumn, po włączeniu replikacji, Edycja jest propagowany do wszystkich klastrów docelowych. Podczas replikacji danych z jednego klastra do innego klastra źródłowego i wszystkich klastrów, które już zostały wykorzystane danych są śledzone, aby zapobiec pętli replikacji.
 
@@ -46,16 +46,16 @@ Przed rozpoczęciem tego samouczka musisz dysponować subskrypcją platformy Azu
 
 Masz trzy opcje konfiguracji:
 
-- Dwa klastry HBase w jednej sieci wirtualnej platformy Azure.
-- Dwa klastry HBase w dwóch różnych sieciach wirtualnych w tym samym regionie.
-- Dwa klastry HBase w dwóch różnych sieciach wirtualnych w dwóch różnych regionach (replikacja geograficzna).
+- Dwa klastry Apache HBase w jednej sieci wirtualnej platformy Azure.
+- Dwa klastry Apache HBase w dwóch różnych sieciach wirtualnych w tym samym regionie.
+- Dwa klastry Apache HBase w dwóch różnych sieciach wirtualnych w dwóch różnych regionach (replikacja geograficzna).
 
 W tym artykule opisano scenariusz replikacji geograficznej.
 
 Ułatwiające konfigurowanie środowisk, utworzyliśmy niektóre [szablonów usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Jeśli wolisz skonfigurować tych środowisk przy użyciu innych metod, zobacz:
 
-- [Tworzenie klastrów Hadoop w HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
-- [Tworzenie klastrów HBase w usłudze Azure Virtual Network](apache-hbase-provision-vnet.md)
+- [Tworzenie klastrów usługi Apache Hadoop w HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
+- [Tworzenie klastrów Apache HBase w usłudze Azure Virtual Network](apache-hbase-provision-vnet.md)
 
 ### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>Konfigurowanie dwiema sieciami wirtualnymi w dwóch różnych regionach
 
@@ -256,9 +256,9 @@ Aby przetestować konfigurację systemu DNS, nawiązać połączenie z dwóch ma
 sudo service bind9 status
 ```
 
-## <a name="create-hbase-clusters"></a>Tworzenie klastrów HBase
+## <a name="create-apache-hbase-clusters"></a>Tworzenie klastrów Apache HBase
 
-Utwórz klaster bazy danych HBase w każdym z dwiema sieciami wirtualnymi przy użyciu następującej konfiguracji:
+Tworzenie [bazy danych Apache HBase](http://hbase.apache.org/) klastrowania w każdym z dwiema sieciami wirtualnymi przy użyciu następującej konfiguracji:
 
 - **Nazwa grupy zasobów**: Użyj tej samej nazwy grupy zasobów, podczas tworzenia sieci wirtualnych.
 - **Typ klastra**: baza danych HBase
@@ -274,7 +274,7 @@ Aby upewnić się, że środowisko jest skonfigurowane prawidłowo, musi być od
 
 W przypadku replikacji klastra należy określić tabel, które mają być replikowane. W tej sekcji możesz załadować dane do klastra źródłowego. W następnej sekcji spowoduje włączenie replikacji między dwoma klastrami.
 
-Aby utworzyć **kontakty** tabeli i wstawić dane w tabeli, postępuj zgodnie z instrukcjami w artykule [samouczek HBase: rozpoczęcie korzystania z bazy danych Apache HBase w HDInsight](apache-hbase-tutorial-get-started-linux.md).
+Aby utworzyć **kontakty** tabeli i wstawić dane w tabeli, postępuj zgodnie z instrukcjami w artykule [samouczek bazy danych Apache HBase: rozpoczęcie korzystania z bazy danych Apache HBase w HDInsight](apache-hbase-tutorial-get-started-linux.md).
 
 ## <a name="enable-replication"></a>Włączanie replikacji
 
@@ -293,7 +293,7 @@ Poniżej opisano sposób wywoływania akcji skryptu skrypt z witryny Azure porta
   3.  **HEAD**: Upewnij się, ta opcja jest zaznaczona. Wyczyść typy węzłów.
   4. **Parametry**: następujące przykładowe parametry włączyć replikację dla wszystkich istniejących tabel, a następnie skopiuj wszystkie dane z klastra źródłowego do klastra docelowego:
 
-          -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
+          -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
     >[!note]
     >
@@ -317,7 +317,7 @@ Argumenty opcjonalne:
 |-polecenia su, w--src użytkownika systemu ambari | Określa nazwę użytkownika administratora Ambari w klaster HBase źródła. Wartość domyślna to **administratora**. |
 |— jednostka bazy danych, czasu letniego — ambari użytkownika | Określa nazwę użytkownika administratora Ambari w docelowym klastrze bazy danych HBase. Wartość domyślna to **administratora**. |
 |-t,--listy tabel | Określa tabele, które mają być replikowane. Na przykład:--listy tabel = "Tabela1; table2; Tabela3". Jeśli nie określisz tabele są replikowane wszystkich istniejących tabel HBase.|
-|-m,--maszyny | Określa węzeł główny, w którym jest uruchamiany akcji skryptu. Wartość to **hn1** lub **hn0**. Ponieważ **hn0** węzłem zwykle jest zajęty, firma Microsoft zaleca używanie **hn1**. Użyj tej opcji, po uruchomieniu skryptu $0 jako akcja skryptu HDInsight portal lub programu Azure PowerShell.|
+|-m,--maszyny | Określa węzeł główny, w którym jest uruchamiany akcji skryptu. Wartość to **hn0** lub **hn1** i powinna być wybrana oparta na który jest aktywnym węzłem głównym. Użyj tej opcji, po uruchomieniu skryptu $0 jako akcja skryptu HDInsight portal lub programu Azure PowerShell.|
 |-cp, - copydata | Umożliwia migrację istniejących danych w tabelach, w którym replikacja jest włączona. |
 |-obr. / min, - replikacja-phoenix-meta | Umożliwia replikację dla rozwiązania Phoenix tabel systemowych. <br><br>*Użyj tej opcji z rozwagą.* Firma Microsoft zaleca, możesz ponownie utworzyć tabele Phoenix w klastrach repliki przed użyciem tego skryptu. |
 |-h, — pomoc | Wyświetla informacje o użyciu. |
@@ -332,19 +332,19 @@ Na poniższej liście przedstawiono niektóre przypadki użycia ogólne i ich us
 
 - **Włącz replikację dla wszystkich tabel między dwoma klastrami**. Ten scenariusz nie wymaga kopiowania lub Migrowanie istniejących danych w tabelach, a nie używa Phoenix tabel. Należy użyć następujących parametrów:
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
 
 - **Włącz replikację na określonych tabel**. Aby włączyć replikację na table1, table2 i Tabela3, należy użyć następujących parametrów:
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
 
 - **Włącz replikację na określonych tabel, a następnie skopiuj istniejących danych**. Aby włączyć replikację na table1, table2 i Tabela3, należy użyć następujących parametrów:
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
 
 - **Włącz replikację dla wszystkich tabel i replikacji metadanych Phoenix ze źródła do miejsca docelowego**. Phoenix metadanych replikacji nie jest doskonały. Jej używać z rozwagą. Należy użyć następujących parametrów:
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
 
 ## <a name="copy-and-migrate-data"></a>Skopiuj i przeprowadzić migrację danych
 
@@ -379,7 +379,7 @@ Możesz wykonać tę samą procedurę opisaną w [włączyć replikację](#enabl
 
 Aby wyłączyć replikację, użyj innego skryptu akcji skryptu [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh). Możesz wykonać tę samą procedurę opisaną w [włączyć replikację](#enable-replication) do wywoływania akcji skryptu. Należy użyć następujących parametrów:
 
-    -m hn1 -s <source cluster DNS name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
+    -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
 
 `print_usage()` Części [skryptu](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) zawiera szczegółowy opis parametrów.
 
@@ -387,20 +387,20 @@ Aby wyłączyć replikację, użyj innego skryptu akcji skryptu [GitHub](https:/
 
 - **Wyłącz replikację na wszystkich tabelach**:
 
-        -m hn1 -s <source cluster DNS name> -sp Mypassword\!789 -all
+        -m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all
   lub
 
-        --src-cluster=<source cluster DNS name> --dst-cluster=<destination cluster DNS name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
+        --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 
 - **Wyłącz replikację na określonych tabel (table1, table2 i Tabela3)**:
 
-        -m hn1 -s <source cluster DNS name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+        -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku przedstawiono sposób konfigurowania replikacji bazy danych HBase w sieci wirtualnej lub między dwiema sieciami wirtualnymi. Aby dowiedzieć się więcej na temat HDInsight i bazy danych HBase, zobacz następujące artykuły:
+W tym samouczku przedstawiono sposób konfigurowania replikacji bazy danych Apache HBase w sieci wirtualnej lub między dwiema sieciami wirtualnymi. Aby dowiedzieć się więcej na temat HDInsight i bazy danych Apache HBase, zobacz następujące artykuły:
 
 * [Rozpoczynanie pracy z usługą Apache HBase w HDInsight](./apache-hbase-tutorial-get-started-linux.md)
-* [Omówienie bazy danych HDInsight HBase](./apache-hbase-overview.md)
-* [Tworzenie klastrów HBase w usłudze Azure Virtual Network](./apache-hbase-provision-vnet.md)
+* [Omówienie bazy danych Apache HDInsight HBase](./apache-hbase-overview.md)
+* [Tworzenie klastrów Apache HBase w usłudze Azure Virtual Network](./apache-hbase-provision-vnet.md)
 

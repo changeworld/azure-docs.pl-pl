@@ -5,17 +5,17 @@ author: rthorn17
 manager: rithorn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2018
+ms.date: 11/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 627ef0123f05e768dd8a83c197b25da7f161a37c
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.topic: conceptual
+ms.openlocfilehash: 10dfa9812a0546f3a8c57e28227851b6f72657fc
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853000"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582421"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Zarządzanie zasobami przy użyciu grup zarządzania
 
@@ -272,12 +272,26 @@ Użyj polecenia aktualizacji, aby przenieść grupy do zarządzania przy użyciu
 az account management-group update --name 'Contoso' --parent 'Contoso Tenant'
 ```
 
+## <a name="audit-management-groups-using-activity-logs"></a>Grupy zarządzania inspekcji przy użyciu dzienników aktywności
+
+Aby śledzić grup zarządzania za pośrednictwem tego interfejsu API, należy użyć [interfejs API dziennika aktywności dzierżawcy](/rest/api/monitor/tenantactivitylogs). Obecnie nie jest możliwe użycie programu PowerShell, interfejsu wiersza polecenia lub witryny Azure portal do śledzenia działań związanych z zarządzaniem grupami.
+
+1. Jako Administrator dzierżawy z dzierżawy usługi Azure AD [podniesienie poziomu dostępu](../../role-based-access-control/elevate-access-global-admin.md) przypisywane roli Czytelnik użytkownikowi inspekcji w zakresie `/providers/microsoft.insights/eventtypes/management`.
+1. Jako użytkownik inspekcji, należy wywołać [interfejs API dziennika aktywności dzierżawcy](/rest/api/monitor/tenantactivitylogs) Aby wyświetlić działania grupy zarządzania. Można filtrować według dostawcy zasobów **Microsoft.Management** dla wszystkich działań grupy zarządzania.  Przykład:
+
+```xml
+GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
+```
+
+> [!NOTE]
+> Aby wygodnie wywołać ten interfejs API z poziomu wiersza polecenia, wypróbuj [ARMClient](https://github.com/projectkudu/ARMClient).
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat grup zarządzania, zobacz:
 
-- [Organizowanie zasobów przy użyciu grup zarządzania platformy Azure](overview.md)
 - [Tworzenie grup zarządzania w celu organizowania zasobów platformy Azure](create.md)
-- [Instalowanie modułu Azure Powershell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
-- [Przegląd specyfikacji interfejsu API REST](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [Zainstaluj rozszerzenie wiersza polecenia platformy Azure](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)
+- [Jak zmienić lub usunąć grupy zarządzania oraz zarządzać nimi](manage.md)
+- [Przejrzyj grupy zarządzania w Module zasoby programu Azure PowerShell](https://aka.ms/mgPSdocs)
+- [Przejrzyj grupy zarządzania w interfejsie API REST](https://aka.ms/mgAPIdocs)
+- [Przegląd grup zarządzania w wiersza polecenia platformy Azure](https://aka.ms/mgclidoc)

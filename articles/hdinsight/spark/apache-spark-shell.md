@@ -9,20 +9,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.openlocfilehash: 5aaf169418962c08f5f45413f53d4c92588a98bd
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f8c296fddaafb8364cc5e0f07b54d850606322d9
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041486"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581429"
 ---
-# <a name="run-spark-from-the-spark-shell"></a>Uruchamianie platformy Spark z poziomu powłoki Spark
+# <a name="run-apache-spark-from-the-spark-shell"></a>Uruchamianie platformy Apache Spark z poziomu powłoki Spark
 
-Interakcyjnej powłoki Spark udostępnia środowisko REPL (odczytu wykonania — Drukuj pętli) uruchamianie poleceń jeden platformy Spark w danym momencie i sprawdzamy rezultaty. Ten proces jest przydatne w przypadku programowania i debugowania. Platforma Spark udostępnia jeden powłoki dla każdego z jego obsługiwane języki: Scala, Python i R.
+Interakcyjna [platformy Apache Spark](https://spark.apache.org/) powłoki zapewnia środowisko REPL (odczytu wykonania — Drukuj pętli) uruchamianie poleceń jeden platformy Spark w danym momencie i sprawdzamy rezultaty. Ten proces jest przydatne w przypadku programowania i debugowania. Platforma Spark udostępnia jeden powłoki dla każdego z jego obsługiwane języki: Scala, Python i R.
 
-## <a name="get-to-a-spark-shell-with-ssh"></a>Uzyskaj do powłoki Spark przy użyciu protokołu SSH
+## <a name="get-to-an-apache-spark-shell-with-ssh"></a>Uzyskać dostęp do powłoki usługi Apache Spark przy użyciu protokołu SSH
 
-Dostęp do powłoki usługi Spark na HDInsight, łącząc się z podstawowym węzłem głównym klastra za pomocą protokołu SSH:
+Dostęp do powłoki usługi Spark Apache na HDInsight, łącząc się z podstawowym węzłem głównym klastra za pomocą protokołu SSH:
 
      ssh <sshusername>@<clustername>-ssh.azurehdinsight.net
 
@@ -40,7 +40,7 @@ Pełne polecenie SSH dla klastra można uzyskać w witrynie Azure portal:
 
 Aby uzyskać szczegółowe informacje o korzystaniu protokołu SSH, aby nawiązać połączenie HDInsight, zobacz [użycia protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="run-a-spark-shell"></a>Uruchom powłokę aparatu Spark
+## <a name="run-an-apache-spark-shell"></a>Uruchamianie powłoki usługi Apache Spark
 
 Platforma Spark zapewnia powłoki (powłoki aparatu spark) w języku Scala, Python (pyspark) i R (sparkR). W sesji SSH pod węzłem głównym klastra usługi HDInsight wpisz jedno z następujących poleceń:
 
@@ -69,7 +69,7 @@ Polecenia powłoki usługi Spark (`spark-shell`, `pyspark`, lub `sparkR`) obsłu
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Zobacz [wprowadzenie do platformy Spark w usłudze Azure HDInsight](apache-spark-overview.md) omówienie.
+- Zobacz [wprowadzenie do platformy Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md) omówienie.
 - Zobacz [Tworzenie klastra Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md) do pracy z klastrami Spark oraz SparkSQL.
-- Zobacz [co to jest przesyłanie strumieniowe ze strukturą platformy Spark?](apache-spark-streaming-overview.md) do pisania aplikacji, które przetwarzają dane przesyłane strumieniowo z platformą Spark.
+- Zobacz [co to jest Apache Spark Structured Streaming?](apache-spark-streaming-overview.md) do pisania aplikacji, które przetwarzają dane przesyłane strumieniowo z platformą Spark.
 

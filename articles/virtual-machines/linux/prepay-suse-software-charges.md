@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: yashar
-ms.openlocfilehash: 9c3976a5fa98049de03f2a65b71f1fc927947142
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 44d23cf38eb1dca9ade94c5a8fd0ae495300be44
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307879"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582195"
 ---
 # <a name="prepay-for-suse-software-plans-from-azure-reservations"></a>Zapłać z góry za plany oprogramowania SUSE z listy zastrzeżeń platformy Azure
 
@@ -41,7 +41,7 @@ Możesz kupić plany oprogramowania SUSE w witrynie Azure portal. Aby kupić pla
     |Name (Nazwa)        |Nazwa tego zakupu.|
     |Subskrypcja|Subskrypcja użytej do zapłacenia dla tego planu. Metodę płatności dla subskrypcji jest naliczana opłata z góry kosztów rezerwacji. Wymagany typ subskrypcji to Enterprise Agreement (numer oferty MS-AZR-0017P) lub Płatność zgodnie z rzeczywistym użyciem (numer oferty MS-AZR-0003P). W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka. W przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem opłaty obciążają kartę kredytową lub metodę płatności faktury powiązaną z subskrypcją.|
     |Zakres       |Zakres może obejmować subskrypcji jednej lub wielu subskrypcji (zakres udostępniony). Jeśli wybierzesz: <ul><li>Pojedynczej subskrypcji — rabat w wysokości plan jest stosowany do użycia SUSE Linux w ramach tej subskrypcji. </li><li>W warstwie współdzielona — zastosowania rabatu plan do użycia w systemie SUSE Linux w dowolnej subskrypcji w ramach kontekstu rozliczeń. Dla klientów korporacyjnych zakres udostępniony jest rejestracji i zawiera wszystkie subskrypcje (z wyjątkiem tworzenia i testowania subskrypcje) w ramach rejestracji. Dla klientów rozliczana według bieżącego użycia udostępnionych zakres jest wszystkie subskrypcje płatność za rzeczywiste użycie utworzonego przez administratora konta.</li></ul>|
-    |Plan oprogramowania     |Wybierz plan, SUSE Linux. Aby uzyskać pomoc w identyfikacji, co należy kupić, zobacz [zrozumieć, jak jest stosowany rabat związany z rezerwacją SUSE Linux Enterprise software](../../billing/billing-understand-suse-reservation-charges.md).|
+    |Plan oprogramowania     |Wybierz plan, SUSE Linux. Aby uzyskać pomoc w identyfikacji rozwiązania do zakupienia, zobacz [Understand how the SUSE Linux Enterprise software reservation discount is applied (Sposób stosowania rabatu dotyczącego rezerwacji oprogramowania SUSE Linux Enterprise)](../../billing/billing-understand-suse-reservation-charges.md).|
     |Rozmiar maszyny wirtualnej     |Cennik SUSE Linux, zależy od liczby procesorów wirtualnych na maszynie Wirtualnej. Wybierz opcję, która reprezentuje liczbę procesorów wirtualnych na maszynach wirtualnych systemu Linux SUSE.|
     |Termin        |Jeden rok lub trzy lata.|
     |Ilość    |Liczba maszyn wirtualnych, które kupujesz ten plan SUSE Linux. Ilość jest liczby uruchomionych wystąpień systemu SUSE Linux, które mogą uzyskać rabat rozliczeń.|
@@ -56,7 +56,7 @@ Jak zarezerwowanych wystąpień maszyn wirtualnych systemu SUSE Linux plany mies
 
 ## <a name="cancellation-and-exchanges-not-allowed"></a>Anulowanie i wymiany niedozwolone
 
-Nie można anulować lub wymiany plan SUSE, którego zakupiono. Sprawdź wykorzystanie, aby upewnić się, że kupić właściwego planu. Aby uzyskać pomoc w identyfikacji, co należy kupić, zobacz [zrozumieć, jak jest stosowany rabat związany z rezerwacją SUSE Linux Enterprise software](../../billing/billing-understand-suse-reservation-charges.md).
+Zakupionego planu SUSE nie można anulować ani wymienić. Sprawdź użycie, aby upewnić się, że zakupiony plan jest właściwy. Aby uzyskać pomoc w identyfikacji rozwiązania do zakupienia, zobacz [Understand how the SUSE Linux Enterprise software reservation discount is applied (Sposób stosowania rabatu dotyczącego rezerwacji oprogramowania SUSE Linux Enterprise)](../../billing/billing-understand-suse-reservation-charges.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -70,6 +70,6 @@ Aby dowiedzieć się więcej, zobacz następujące artykuły:
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](../../billing/billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](../../billing/billing-understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli nadal masz dodatkowe pytania, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

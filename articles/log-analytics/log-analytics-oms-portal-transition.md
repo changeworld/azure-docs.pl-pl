@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 2e14112220eeea1df094ff0c5844429fa3891a9b
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 8337d6b353b6651a2699176813220ed7a7a0f879
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612809"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634799"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portal pakietu OMS na platformę Azure
 
@@ -84,7 +84,7 @@ Są już nie można utworzyć nowych obszarów roboczych przy użyciu portalu pa
 Alerty zostały [rozszerzone do postaci witryny Azure portal](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Po zakończeniu tej operacji akcje z zakresu zarządzania alerty tylko będą dostępne w witrynie Azure portal. Istniejące alerty będą nadal wyświetlane w portalu pakietu OMS. Jeśli uzyskujesz dostęp do alertów programowo przy użyciu interfejsu API REST alertów Log Analytics lub szablon Log Analytics alertu zasobu, należy korzystanie z grup akcji zamiast akcji w wywołania interfejsu API, szablony usługi Azure Resource Manager i poleceń programu PowerShell.
 
 ### <a name="alert-management-solution"></a>Rozwiązanie do zarządzania alertami
-Zamiast [rozwiązanie usługi alert management](log-analytics-solution-alert-management.md), możesz użyć [usługi Azure Monitor ujednoliconego interfejsu alertów](../monitoring-and-diagnostics/monitoring-overview-alerts.md) wizualizacji i zarządzać alertami. Nowe środowisko agreguje alertów z wielu źródeł w ramach alertów platformy Azure łącznie dziennika z usługą Log Analytics. Możesz Zobacz dystrybucje alertów, skorzystaj z zalet automatyczne grupowanie powiązanych alertów za pośrednictwem inteligentnego grup i wyświetlić alerty w ramach wielu subskrypcji podczas stosowania filtrów zaawansowanych. Wszystkie te funkcje są dostępne w wersji zapoznawczej, począwszy od 4 czerwca 2018 r. Rozwiązanie do zarządzania alertów nie będą dostępne w witrynie Azure portal. 
+Zamiast [rozwiązanie usługi alert management](../azure-monitor/platform/alert-management-solution.md), możesz użyć [usługi Azure Monitor ujednoliconego interfejsu alertów](../monitoring-and-diagnostics/monitoring-overview-alerts.md) wizualizacji i zarządzać alertami. Nowe środowisko agreguje alertów z wielu źródeł w ramach alertów platformy Azure łącznie dziennika z usługą Log Analytics. Możesz Zobacz dystrybucje alertów, skorzystaj z zalet automatyczne grupowanie powiązanych alertów za pośrednictwem inteligentnego grup i wyświetlić alerty w ramach wielu subskrypcji podczas stosowania filtrów zaawansowanych. Wszystkie te funkcje są dostępne w wersji zapoznawczej, począwszy od 4 czerwca 2018 r. Rozwiązanie do zarządzania alertów nie będą dostępne w witrynie Azure portal. 
 
 Dane zebrane przez rozwiązanie do zarządzania alertami (rekordy z typem alertu) w dalszym ciągu można w usłudze Log Analytics, tak długo, jak rozwiązanie jest zainstalowane dla obszaru roboczego. Od sierpnia 2018 r. przesyłania strumieniowego alertów z ujednoliconego generowania alertów w obszary robocze zostaną włączone, zastępując tę możliwość. Niektóre zmiany schematu są oczekiwane i zostanie ogłoszona w późniejszym terminie.
 
@@ -98,7 +98,7 @@ Dzięki obsłudze [zapytania obejmujące wiele zasobów](log-analytics-cross-wor
 
 
 ## <a name="azure-network-security-group-analytics"></a>Analiza sieciowej grupy zabezpieczeń platformy Azure
-[Rozwiązania do analizy grupy zabezpieczeń sieci platformy Azure](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) zostaną zastąpione przy użyciu niedawno wprowadzona na rynek [analizy ruchu](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) która umożliwia wgląd w aktywność użytkownika i aplikacji w sieciach w chmurze. Analiza ruchu pomaga inspekcji aktywności w sieci organizacji, bezpiecznych aplikacji i danych oraz zoptymalizować wydajność obciążenia pozostają zgodne. 
+[Rozwiązania do analizy grupy zabezpieczeń sieci platformy Azure](../azure-monitor/insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) zostaną zastąpione przy użyciu niedawno wprowadzona na rynek [analizy ruchu](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) która umożliwia wgląd w aktywność użytkownika i aplikacji w sieciach w chmurze. Analiza ruchu pomaga inspekcji aktywności w sieci organizacji, bezpiecznych aplikacji i danych oraz zoptymalizować wydajność obciążenia pozostają zgodne. 
 
 To rozwiązanie analizuje dzienniki przepływu sieciowej grupy zabezpieczeń i zapewnia wgląd w to następujące czynności.
 

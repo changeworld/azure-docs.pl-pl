@@ -8,14 +8,14 @@ ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 6c39eb02e9610e0020ab2abe8a192dabf0b768d9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 78d18bfe0f47517067fbb053a2d7e076b15761a7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241322"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581004"
 ---
-# <a name="create-spark-streaming-jobs-with-exactly-once-event-processing"></a>Tworzenie zadań przesyłania strumieniowego platformy Spark z dokładnie — raz zdarzenia przetwarzania
+# <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Utwórz Apache Spark Streaming zadań z dokładnie — raz zdarzenia przetwarzania
 
 Aplikacji do przetwarzania Stream wykonać różne podejścia do sposobu obsługi ponownego przetwarzania wiadomości po niektórych awarii w systemie:
 
@@ -25,7 +25,7 @@ Aplikacji do przetwarzania Stream wykonać różne podejścia do sposobu obsług
 
 W tym artykule przedstawiono sposób konfigurowania, przesyłania strumieniowego platformy Spark w celu osiągnięcia dokładnie — po zakończeniu przetwarzania.
 
-## <a name="exactly-once-semantics-with-spark-streaming"></a>Dokładnie-jednokrotnej semantyki z przesyłaniem strumieniowym Spark
+## <a name="exactly-once-semantics-with-apache-spark-streaming"></a>Dokładnie-jednokrotnej semantyki przy użyciu Apache Spark Streaming
 
 Najpierw należy wziąć pod uwagę jak wszystkie punkty awarii systemu, uruchom ponownie po wystąpił problem i jak można uniknąć utraty danych. Aplikacja usługi przesyłania strumieniowego platformy Spark ma:
 
@@ -41,11 +41,11 @@ Dokładnie — po semantyki wymagają, że żadne dane nie są tracone w dowolny
 
 Źródłowy odczytuje zdarzenia z aplikacji Spark Streaming musi być *przechwytywaniem*. Oznacza to, że w przypadku, gdy komunikat został pobrany, ale następnie system nie powiodła się, zanim może być utrwalone lub przetwarzania wiadomości, źródła należy podać tę samą wiadomość ponownie.
 
-Na platformie Azure Azure Event Hubs i Kafka w HDInsight zapewniają przechwytywaniem źródeł. Innym przykładem przechwytywaniem źródła jest systemem odpornej na uszkodzenia plików, takich jak system plików HDFS, obiekty BLOB usługi Azure Storage, lub Azure Data Lake Store, gdzie wszystkie dane są przechowywane w nieskończoność i w dowolnym momencie możesz ponownie może odczytywać dane, które w całości.
+Na platformie Azure, obie usługi Azure Event Hubs i [platformy Apache Kafka](https://kafka.apache.org/) na HDInsight zapewniają przechwytywaniem źródeł. Innym przykładem przechwytywaniem źródła jest systemem odpornej na uszkodzenia plików, takich jak [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), obiektów blob usługi Azure Storage lub Azure Data Lake Store, gdzie wszystkie dane są przechowywane w nieskończoność i w dowolnym momencie możesz ponownie odczytu danych w całości.
 
 ### <a name="reliable-receivers"></a>Niezawodne odbiorcy
 
-W przesyłanie strumieniowe Spark, źródeł, takich jak Event Hubs i Kafka mają *niezawodne odbiorniki*, gdzie każdy odbiorca przechowuje informacje o postępach źródło odczytu. Niezawodne odbiorcy utrzymuje jego stan w odpornej na uszkodzenia magazynu, w ramach dozorcy lub punktów kontrolnych przesyłania strumieniowego platformy Spark, zapisywane do systemu plików HDFS. Jeśli takie odbiornik kończy się niepowodzeniem i jest późniejsza ponownym jego możliwe będzie kontynuowanie pracy tam, gdzie ją przerwaliśmy.
+W przesyłanie strumieniowe Spark, źródeł, takich jak Event Hubs i Kafka mają *niezawodne odbiorniki*, gdzie każdy odbiorca przechowuje informacje o postępach źródło odczytu. Niezawodne odbiorcy jego stan będzie się powtarzać w odpornej na uszkodzenia magazynu znajdującego się w obrębie [Apache ZooKeeper](https://zookeeper.apache.org/) lub punktów kontrolnych przesyłania strumieniowego platformy Spark, zapisywane do systemu plików HDFS. Jeśli takie odbiornik kończy się niepowodzeniem i jest późniejsza ponownym jego możliwe będzie kontynuowanie pracy tam, gdzie ją przerwaliśmy.
 
 ### <a name="use-the-write-ahead-log"></a>Korzystanie z dziennika zapisu z wyprzedzeniem
 
@@ -89,5 +89,5 @@ Innym przykładem jest używać partycjonowanych systemu plików, takich jak obi
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Omówienie przesyłania strumieniowego platformy Spark](apache-spark-streaming-overview.md)
-* [Tworzenie zadań przesyłania strumieniowego platformy Spark o wysokiej dostępności w YARN](apache-spark-streaming-high-availability.md)
+* [Omówienie przesyłania strumieniowego platformy Apache Spark](apache-spark-streaming-overview.md)
+* [Tworzenie wysoko dostępnych zadań Apache Spark Streaming w Apache Hadoop YARN](apache-spark-streaming-high-availability.md)

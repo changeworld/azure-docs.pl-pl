@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: caffa1f1a3684de3a7514e1ce1a4fe3014a7dbf8
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 95083ec1d909333596fd36ad998022778a4f9ec9
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706147"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582749"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Usługi Azure Active Directory uwierzytelnianie przekazywane: Szybki start
 
@@ -44,13 +44,13 @@ Upewnij się, że następujące wymagania wstępne zostały spełnione.
 
 ### <a name="in-your-on-premises-environment"></a>W środowisku w środowisku lokalnym
 
-1. Zidentyfikuj serwer z systemem Windows Server 2012 R2 lub nowszej, aby uruchomić program Azure AD Connect. Dodaj serwer do tego samego lasu usługi Active Directory jako użytkownicy, których hasła, należy dokonać weryfikacji.
+1. Zidentyfikuj serwer z systemem Windows Server 2012 R2 lub nowszej, aby uruchomić program Azure AD Connect. Jeśli nie jest już włączona [Włącz szyfrowanie TLS 1.2 na serwerze](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect). Dodaj serwer do tego samego lasu usługi Active Directory jako użytkownicy, których hasła, należy dokonać weryfikacji.
 2. Zainstaluj [najnowszą wersję programu Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) na serwerze, który został zidentyfikowany w poprzednim kroku. Jeśli masz już program Azure AD Connect działa, upewnij się, że wersja 1.1.750.0 lub nowszej.
 
     >[!NOTE]
     >Usługa Azure AD Connect w wersjach 1.1.557.0, 1.1.558.0, 1.1.561.0 i 1.1.614.0 ma problem związany z synchronizacją skrótów haseł. Jeśli użytkownik _nie_ zamierza się używać synchronizacji skrótów haseł w połączeniu z uwierzytelniania przekazywanego, przeczytaj [informacje o wersji usługi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#116470).
 
-3. Identyfikowanie jeden lub więcej dodatkowych serwerów (systemem Windows Server 2012 R2 lub nowszym) gdzie można uruchomić agentów uwierzytelniania autonomicznych. Te dodatkowe serwery są wymagane, aby zapewnić wysoką dostępność, żądań, aby zalogować się. Dodaj serwery do tego samego lasu usługi Active Directory jako użytkownicy, których hasła, należy dokonać weryfikacji.
+3. Identyfikowanie jeden lub więcej dodatkowych serwerów (systemem Windows Server 2012 R2 lub nowszym, z protokołem TLS 1.2, włączone) gdzie można uruchomić agentów uwierzytelniania autonomicznego. Te dodatkowe serwery są wymagane, aby zapewnić wysoką dostępność, żądań, aby zalogować się. Dodaj serwery do tego samego lasu usługi Active Directory jako użytkownicy, których hasła, należy dokonać weryfikacji.
 
     >[!IMPORTANT]
     >W środowiskach produkcyjnych zalecamy czy masz co najmniej 3 agentów uwierzytelniania uruchamiania w dzierżawie. Istnieje limit systemowy wynoszący 12 agentów uwierzytelniania dla dzierżawy. I najlepszych praktyk warto traktować wszystkie serwery uruchomionych agentów uwierzytelniania, w jak warstwy 0 systemów (zobacz [odwołania](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
@@ -85,7 +85,7 @@ Jeśli zainstalowano już Azure AD Connect przy użyciu [ekspresowa instalacja](
 ![Azure AD Connect: Zmiana użytkownika logowania](./media/how-to-connect-pta-quick-start/changeusersignin.png)
 
 >[!IMPORTANT]
->Uwierzytelnianie przekazywane jest funkcją poziomu dzierżawy. Włączanie logowania dla użytkowników w jej wpływa na _wszystkich_ domen zarządzanych w Twojej dzierżawie. Jeśli rozpoczynasz korzystanie z usługi Active Directory Federation Services (AD FS) do uwierzytelniania przekazywanego, należy poczekać co najmniej 12 godzin przed zamknięciem infrastruktury usług AD FS. Czas oczekiwania jest zapewnienie, że użytkownicy mogą zachować logowania się do programu Exchange ActiveSync podczas przejścia. Aby uzyskać więcej informacji na temat migracji z usług AD FS do uwierzytelniania przekazywanego, zapoznaj się z naszego przewodnika wdrożenia są szczegółowo opublikowane [tutaj](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx).
+>Uwierzytelnianie przekazywane jest funkcją poziomu dzierżawy. Włączanie logowania dla użytkowników w jej wpływa na _wszystkich_ domen zarządzanych w Twojej dzierżawie. Jeśli rozpoczynasz korzystanie z usługi Active Directory Federation Services (AD FS) do uwierzytelniania przekazywanego, należy poczekać co najmniej 12 godzin przed zamknięciem infrastruktury usług AD FS. Czas oczekiwania jest zapewnienie, że użytkownicy mogą zachować logowania się do programu Exchange ActiveSync podczas przejścia. Aby uzyskać więcej informacji na temat migracji z usług AD FS do uwierzytelniania przekazywanego, zapoznaj się z naszego planu wdrożenia są szczegółowo opublikowane [tutaj](https://aka.ms/adfstoptadpdownload).
 
 ## <a name="step-3-test-the-feature"></a>Krok 3: Testowanie funkcji
 

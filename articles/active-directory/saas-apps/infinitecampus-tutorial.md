@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 7ce577901530856690754f3db18ba9f40bfb8a51
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 837d18a04a0cd22f29a5cbcb8b06b7e3f5fae255
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019311"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632810"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Samouczek: Integracja usługi Azure Active Directory z Kampusu nieskończona
 
@@ -48,6 +48,7 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Co najmniej musisz być administratorem usługi Azure Active Directory, aby zakończyć konfigurację.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
@@ -110,7 +111,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     ![Konfigurowanie logowania jednokrotnego](common/editconfigure.png)
 
-5. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli masz **plik metadanych usługodawcy**, wykonaj następujące czynności:
+5. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli masz **plik metadanych usługodawcy** (krok **11.b**), wykonaj następujące czynności:
 
     a. Kliknij przycisk **przekazywania pliku metadanych**.
 
@@ -124,7 +125,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     ![image](./media/infinitecampus-tutorial/tutorial_infinitecampus_url.png)
 
-    d. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
+    d. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca (przy użyciu modelu hostingu mogą się różnić domeny): `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
     > [!NOTE]
     > Możesz uzyskać **plik metadanych usługodawcy** na stronie Konfiguracja dostawcy usługi logowania jednokrotnego nieskończonej Campus, które zostało wyjaśnione w dalszej części tego samouczka.
@@ -143,7 +144,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     ![Link pobierania certyfikatu](./media/infinitecampus-tutorial/tutorial_infinitecampus_certificate.png) 
 
-7. Na **Konfigurowanie nieskończonej Campus** sekcji, skopiuj odpowiedni adres URL, zgodnie z wymaganiami.
+7. Na **Konfigurowanie nieskończonej Campus** sekcji, użyj następujących wartości do sprawdzania poprawności podczas przekazywania lub przy użyciu pliku lub adres URL metadanych platformy Azure.
 
     a. Adres URL logowania
 
@@ -169,7 +170,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     a. Wybierz **Włącz SAML logowania jednokrotnego**.
 
-    b. Kliknij pozycję **metadanych dostawcy usługi** łącze, aby zapisać **plik metadanych usługodawcy** na komputerze i przekaż go w **podstawową konfigurację protokołu SAML** sekcji, aby automatycznie polulate **identyfikator** i **adres URL odpowiedzi** wartości w witrynie Azure portal.
+    b. Kliknij pozycję **metadanych dostawcy usługi** łącze, aby zapisać **plik metadanych usługodawcy** na komputerze i przekaż go w **podstawową konfigurację protokołu SAML** sekcji, aby automatycznie polulate **identyfikator** i **adres URL odpowiedzi** wartości w witrynie Azure portal (zobacz krok 5).
 
     c. Na **opcję Pobierz dane serwera dostawcy tożsamości (IDP)** wybierz **adres URL metadanych** i Wklej **adres Url metadanych Federacji aplikacji** w polu tekstowym i następnie kliknij pozycję **synchronizacji**.
 
@@ -179,7 +180,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+Celem tej sekcji jest utworzenie _pojedynczego_ użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
 1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
 
@@ -234,8 +235,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Campus nieskończonej w panelu dostępu, możesz powinien pobrać automatycznie zalogowanych do aplikacji Campus nieskończone.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
+Po kliknięciu kafelka Campus nieskończonej w panelu dostępu, możesz powinien pobrać automatycznie zalogowanych do aplikacji Campus nieskończone. Jeśli logujesz się do aplikacji Camnpus nieskończonej w tej samej przeglądarce, które są administrowaniu usługą Azure AD, upewnij się, że użytkownik jest zalogowany do usługi Azure AD jako użytkownika testowego. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

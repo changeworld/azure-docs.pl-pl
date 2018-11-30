@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 11/23/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: ebd5c06b8174c9838a398e97439671e4d3f4c518
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 8b061ad2926110e27524ededb5c33dffa5ea04b6
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713490"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635462"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Łączenie programu Operations Manager z usługą Log Analytics
 Aby zachować istniejącą inwestycję w [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) i rozszerzone możliwości za pomocą usługi Log Analytics, Operations Manager można zintegrować z obszaru roboczego usługi Log Analytics. Umożliwi to wykorzystanie szans sprzedaży usługi Log Analytics przy ciągłym korzystaniu z programu Operations Manager do wykonywania następujących czynności:
@@ -37,7 +37,7 @@ Na poniższym diagramie przedstawiono połączenie między serwerami zarządzani
 
 ![oms-operations-manager-integration-diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
 
-Jeśli Twoje informatyczne zasady zabezpieczeń nie zezwalają na komputerach w sieci, aby nawiązać połączenie z Internetem, serwery zarządzania można skonfigurować do połączenia z bramą usługi Log Analytics w celu odbierania informacji o konfiguracji i wysyłania danych zebranych w zależności od rozwiązania włączone. Aby uzyskać więcej informacji oraz instrukcje dotyczące sposobu konfigurowania grupy zarządzania programu Operations Manager do komunikowania się za pośrednictwem bramy usługi Log Analytics do usługi Log Analytics, zobacz [łączenie komputerów z usługą Log Analytics przy użyciu bramy usługi Log Analytics](log-analytics-oms-gateway.md).  
+Jeśli Twoje informatyczne zasady zabezpieczeń nie zezwalają na komputerach w sieci, aby nawiązać połączenie z Internetem, serwery zarządzania można skonfigurować do połączenia z bramą usługi Log Analytics w celu odbierania informacji o konfiguracji i wysyłania danych zebranych w zależności od rozwiązania włączone. Aby uzyskać więcej informacji oraz instrukcje dotyczące sposobu konfigurowania grupy zarządzania programu Operations Manager do komunikowania się za pośrednictwem bramy usługi Log Analytics do usługi Log Analytics, zobacz [łączenie komputerów z usługą Log Analytics przy użyciu bramy usługi Log Analytics](../azure-monitor/platform/gateway.md).  
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 Przed rozpoczęciem sprawdź następujące wymagania.
@@ -49,10 +49,13 @@ Przed rozpoczęciem sprawdź następujące wymagania.
 
 >[!NOTE]
 >Ostatnie zmiany do interfejsów API platformy Azure będzie uniemożliwić klientom pomyślnie skonfigurować integrację między grupą zarządzania i usługi Log Analytics po raz pierwszy. W przypadku klientów, którzy zintegrowano już program ich grupy zarządzania w usłudze nie są zagrożone o ile nie trzeba ponownie skonfigurować istniejące połączenie.  
->Każda wersja programu Operations Manager została wydana nowy pakiet administracyjny:  
+>Nowy pakiet administracyjny został zwolniony do następujących wersji programu Operations Manager:
+>  
 >* Aby System Center Operations Manager 1801 Pobierz pakiet administracyjny z [tutaj](https://www.microsoft.com/download/details.aspx?id=57173)  
 >* Dla programu System Center 2016 — Operations Manager, należy pobrać pakiet administracyjny z [tutaj](https://www.microsoft.com/download/details.aspx?id=57172)  
 >* Dla programu System Center Operations Manager 2012 R2, należy pobrać pakiet administracyjny z [tutaj](https://www.microsoft.com/download/details.aspx?id=57171)  
+>
+>Ta aktualizacja pakietu zarządzania nie ma zastosowania do System Center Operations Manager 1807, który jest wersja pakietu aktualizacji z wersji 1801 i nie pełnej kompilacji produktu.   
 
 ### <a name="network"></a>Sieć
 W poniższej tabeli zawarto informacje o konfiguracji serwera proxy i zapory, które są wymagane przez agenta programu Operations Manager, serwery zarządzania i konsolę zarządzania operacjami, aby móc komunikować się z usługą Log Analytics. Ruch z każdego składnika jest ruchem wychodzącym z sieci do usługi Log Analytics.   

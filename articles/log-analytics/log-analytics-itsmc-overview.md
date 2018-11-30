@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: c5b05b4ce33222ee9dd84950066b3bd36ea315de
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: cab78d09038b8ab00c318b3ce615d99139e9b005
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824867"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634034"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure nawiązać połączenie narzędzia ITSM za pomocą łącznika zarządzania usługami IT
 
@@ -84,10 +84,10 @@ Do utworzenia połączenia, konieczne będzie przeznaczonego do przygotowania z 
 
 W zależności od produktu ITSM, do którego jest nawiązywane wykonaj następujące czynności:
 
-- [System Center Service Manager (SCSM)](log-analytics-itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
-- [ServiceNow](log-analytics-itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
-- [Provance](log-analytics-itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
-- [Cherwell](log-analytics-itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
+- [System Center Service Manager (SCSM)](../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
+- [ServiceNow](../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
+- [Provance](../azure-monitor/platform/itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
+- [Cherwell](../azure-monitor/platform/itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
 
 Gdy masz przygotowany tak narzędziami ITSM, wykonaj poniższe kroki, aby utworzyć połączenie:
 
@@ -100,7 +100,7 @@ Gdy masz przygotowany tak narzędziami ITSM, wykonaj poniższe kroki, aby utworz
 
     ![Dodawanie połączenia narzędzia ITSM](media/log-analytics-itsmc-overview/add-new-itsm-connection.png)
 
-4.  Określ ustawienia połączenia, zgodnie z opisem w [konfigurowania połączenia ITSMC z artykułu produktów i usług ITSM](log-analytics-itsmc-connections.md).
+4.  Określ ustawienia połączenia, zgodnie z opisem w [konfigurowania połączenia ITSMC z artykułu produktów i usług ITSM](../azure-monitor/platform/itsmc-connections.md).
 
     > [!NOTE]
 
@@ -291,7 +291,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
     - Upewnij się, że poprawnie wprowadzono nazwę użytkownika, hasła, identyfikator klienta i klucz tajny klienta dla każdego połączenia.  
     - Sprawdź, że masz wystarczające uprawnienia w odpowiednich produkcie ITSM, aby nawiązać połączenie.  
  - W przypadku połączeń programu Service Manager  
-    - Upewnij się, że aplikacja sieci Web została pomyślnie wdrożona, i zostanie utworzone połączenie hybrydowe. Aby sprawdzić, pomyślnie ustanawiane jest połączenie z maszyną lokalną programu Service Manager, odwiedź adres URL aplikacji sieci Web zgodnie z opisem w dokumentacji dotyczącej wprowadzania [połączenia hybrydowego](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).  
+    - Upewnij się, że aplikacja sieci Web została pomyślnie wdrożona, i zostanie utworzone połączenie hybrydowe. Aby sprawdzić, pomyślnie ustanawiane jest połączenie z maszyną lokalną programu Service Manager, odwiedź adres URL aplikacji sieci Web zgodnie z opisem w dokumentacji dotyczącej wprowadzania [połączenia hybrydowego](../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).  
 
 2.  Jeśli dane z usługi ServiceNow, nie podlega wprowadzenie do usługi Log Analytics, upewnij się, że nie jest uśpiony wystąpienia usługi ServiceNow. Wystąpienia deweloperów usługi ServiceNow czasami przechodzi w tryb uśpienia podczas bezczynności przez długi czas. W przeciwnym wypadku zgłosić problem.
 3.  Jeśli wyzwolenie alertów usługi Log Analytics, ale działają elementy nie są tworzone w produkcie ITSM lub elementy konfiguracji nie są tworzone/połączone elementy robocze lub inne ogólne informacje, można znaleźć w następujących miejscach:
@@ -301,7 +301,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Rozwiązywanie problemów z wdrożenia aplikacji sieci Web programu Service Manager
 1.  W przypadku problemów z wdrażaniem aplikacji sieci web upewnij się, że masz wystarczające uprawnienia w ramach subskrypcji, jak podczas tworzenia/wdrażanie zasobów.
 2.  Jeśli otrzymasz **"Odwołanie nie zostały ustawione na wystąpienie obiektu do obiektu"** wystąpił błąd podczas uruchamiania [skryptu](log-analytics-itsmc-service-manager-script.md), upewnij się, czy wprowadzono prawidłowe wartości w obszarze **Konfiguracja użytkownika** sekcji .
-3.  Jeśli nie utworzyć przestrzeń nazw usługi relay magistrali usług, upewnij się, że dostawca wymagany zasób jest zarejestrowany w ramach subskrypcji. Jeśli nie jest zarejestrowany, należy ręcznie utworzyć przestrzeń nazw usługi relay magistrali usług w witrynie Azure portal. Można również tworzyć je podczas [Tworzenie połączenia hybrydowego](log-analytics-itsmc-connections.md#configure-the-hybrid-connection) w witrynie Azure portal.
+3.  Jeśli nie utworzyć przestrzeń nazw usługi relay magistrali usług, upewnij się, że dostawca wymagany zasób jest zarejestrowany w ramach subskrypcji. Jeśli nie jest zarejestrowany, należy ręcznie utworzyć przestrzeń nazw usługi relay magistrali usług w witrynie Azure portal. Można również tworzyć je podczas [Tworzenie połączenia hybrydowego](../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection) w witrynie Azure portal.
 
 
 ## <a name="contact-us"></a>Skontaktuj się z nami
@@ -309,4 +309,4 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 Dla każdego zapytania lub opinie na temat łącznika zarządzania usługami IT, skontaktuj się z nami pod adresem [ omsitsmfeedback@microsoft.com ](mailto:omsitsmfeedback@microsoft.com).
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Dodawanie ITSM produktów/usług do łącznika zarządzania usługami IT](log-analytics-itsmc-connections.md).
+[Dodawanie ITSM produktów/usług do łącznika zarządzania usługami IT](../azure-monitor/platform/itsmc-connections.md).

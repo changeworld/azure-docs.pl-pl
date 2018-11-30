@@ -10,16 +10,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: d2181fb22079112c84e3e7c65575b12aa0c867ac
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 900180c9991932f4efaa07f9881e9f3f897cd99e
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006553"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498282"
 ---
 # <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>Wprowadzenie do platformy Apache Storm w usłudze HDInsight przy użyciu przykładów z projektu Storm Starter
 
-Dowiedz się, jak używać platformy Apache Storm w usłudze HDInsight przy użyciu przykładów z projektu Storm Starter.
+Dowiedz się, jak używać [Apache Storm](http://storm.apache.org/) w HDInsight przy użyciu przykładów z projektu storm starter.
 
 Apache Storm to skalowalny, odporny na błędy, rozproszony system obliczeniowy działający w czasie rzeczywistym do przetwarzania strumieni danych. Dzięki platformie Storm w usłudze Azure HDInsight można utworzyć oparty na chmurze klaster Storm do wykonywania analizy danych big data w czasie rzeczywistym.
 
@@ -34,7 +34,7 @@ Apache Storm to skalowalny, odporny na błędy, rozproszony system obliczeniowy 
 
 * **Znajomość protokołów SSH i SCP**. Aby uzyskać informacje, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="create-a-storm-cluster"></a>Tworzenie klastra Storm
+## <a name="create-an-apache-storm-cluster"></a>Tworzenie klastra Apache Storm
 
 Aby utworzyć klaster platformy Storm w usłudze HDInsight, wykonaj następujące czynności:
 
@@ -139,7 +139,7 @@ Wykonaj następujące kroki, aby monitorować topologię za pomocą interfejsu u
 
     * **Deactivate** (Dezaktywuj) — wstrzymanie uruchomionej topologii.
 
-    * **Rebalance** (Ponowne równoważenie) — dopasowanie równoległości topologii. Po zmianie liczby węzłów w klastrze należy przeprowadzić ponowne równoważenie uruchomionych topologii. Pozwoli to dostosować równoległość topologii w celu kompensacji zwiększonej/zmniejszonej liczby węzłów w klastrze. Aby uzyskać więcej informacji, zobacz temat [Pojęcie równoległości w topologii Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+    * **Rebalance** (Ponowne równoważenie) — dopasowanie równoległości topologii. Po zmianie liczby węzłów w klastrze należy przeprowadzić ponowne równoważenie uruchomionych topologii. Pozwoli to dostosować równoległość topologii w celu kompensacji zwiększonej/zmniejszonej liczby węzłów w klastrze. Aby uzyskać więcej informacji, zobacz [pojęcie równoległości w topologii Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
     * **Kill** (Kasuj) — zakończenie działania topologii Storm po określonym czasie.
 
@@ -187,15 +187,15 @@ W razie problemów podczas tworzenia klastra usługi HDInsight zapoznaj się z [
 
 ## <a id="next"></a>Następne kroki
 
-W tym samouczku dotyczącym platformy Apache Storm przedstawiono podstawy pracy z platformą Storm w usłudze HDInsight. W dalszej kolejności zapoznaj się ze sposobem [opracowywania topologii opartych na języku Java za pomocą programu Maven](apache-storm-develop-java-topology.md).
+W tym samouczku dotyczącym platformy Apache Storm przedstawiono podstawy pracy z platformą Storm w usłudze HDInsight. Dowiedz się, jak [opartych na języku Java z opracowywanie topologii przy użyciu narzędzia Apache Maven](apache-storm-develop-java-topology.md).
 
 Jeśli umiesz już opracowywać topologie oparte na języku Java, zobacz dokument [Wdrażanie topologii Apache Storm w usłudze HDInsight i zarządzanie nimi](apache-storm-deploy-monitor-topology-linux.md).
 
-Jeśli jesteś deweloperem platformy .NET, możesz tworzyć topologie C# lub hybrydowe topologie C#/Java za pomocą programu Visual Studio. Aby uzyskać więcej informacji na ten temat, zobacz [Develop C# topologies for Apache Storm on HDInsight using Hadoop tools for Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md) (Tworzenie topologii C# dla Apache Storm w usłudze HDInsight przy użyciu narzędzi Hadoop dla programu Visual Studio).
+Jeśli jesteś deweloperem platformy .NET, możesz tworzyć topologie C# lub hybrydowe topologie C#/Java za pomocą programu Visual Studio. Aby uzyskać więcej informacji, zobacz [programowanie C# topologii STORM Apache na HDInsight przy użyciu narzędzia Apache Hadoop dla programu Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md).
 
 Aby uzyskać przykładowe topologie, które mogą być używane z narzędziem Storm w usłudze HDInsight, zobacz następujące przykłady:
 
-* [Przykładowe topologie dla systemu Storm w usłudze HDInsight](apache-storm-example-topology.md)
+* [Przykładowe topologie dla systemu Apache Storm w usłudze HDInsight](apache-storm-example-topology.md)
 
 [apachestorm]: https://storm.incubator.apache.org
 [stormdocs]: http://storm.incubator.apache.org/documentation/Documentation.html

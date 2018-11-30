@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: ea0987eaea8ee558df35ecce6afb5e7bab3ac4de
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 6b4b1b74ace534517157edc20c33236d516205c5
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087632"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635020"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migracja Contoso: ocena obciążeń lokalnych pod kątem migracji na platformę Azure
 
@@ -125,8 +125,8 @@ Contoso i inni użytkownicy muszą spełniać następujące wymagania wstępne d
 - Co najmniej dwie lokalne maszyny wirtualne VMware, w tym jedna z uruchomioną bazą danych programu SQL Server.
 - Uprawnienia do instalowania agentów usługi Azure Migrate na każdej maszynie Wirtualnej.
 - Maszyny wirtualne powinny mieć bezpośrednie połączenie z Internetem.  
-        – Możesz ograniczyć dostęp do Internetu do [wymaganych adresów URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).  
-        — Jeśli maszyny wirtualne nie ma łączności z Internetem, Azure [brama usługi Log Analytics](../log-analytics/log-analytics-oms-gateway.md) należy zainstalować na nich i agenta ruch kierowany przez nią.
+    - Można ograniczyć dostęp do Internetu [wymaganych adresów URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).  
+    - Jeśli Twoje maszyny wirtualne nie ma łączności z Internetem, Azure [brama usługi Log Analytics](../azure-monitor/platform/gateway.md) należy zainstalować na nich i agenta ruch kierowany przez nią.
 - Nazwa FQDN maszyny wirtualnej z uruchomionym wystąpieniem programu SQL Server, używana do oceny bazy danych.
 - Zapora Windows uruchomione na maszynie Wirtualnej programu SQL Server powinna zezwalać na połączenia zewnętrzne na porcie TCP 1433 (domyślnym). Ta konfiguracja umożliwia Data Migration Assistant połączyć.
 

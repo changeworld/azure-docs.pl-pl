@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie nośnikiem usług zasobów przez wiele kont magazynu | Dokumentacja firmy Microsoft
-description: W tym artykule umożliwiają wskazówki na temat sposobu zarządzania zasobami usługi multimediów między wiele kont magazynu.
+title: Zarządzanie nośnikiem usług zasobów na wielu kontach magazynu | Dokumentacja firmy Microsoft
+description: W tym artykule zawierają wytyczne dotyczące zarządzania zasobami usługi multimediów na wielu kontach magazynu.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,36 +13,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2017
 ms.author: juliako
-ms.openlocfilehash: 89d1838eb9fed1751581b026d82b06bc20de4ecc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: aa9386182f521119012ea59fe6b64fb31099169e
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788557"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620272"
 ---
-# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Zarządzanie nośnikiem usług zasobów przez wiele kont magazynu
-Począwszy od programu Microsoft Azure Media Services 2.2, można dołączyć wiele kont magazynu do jednego konta usługi Media Services. Możliwość dołączyć wiele kont magazynu do konta usługi Media Services zapewnia następujące korzyści:
+# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Zarządzanie nośnikiem usług zasobów na wielu kontach magazynu
+Począwszy od programu Microsoft Azure Media Services 2.2, można dołączyć wiele kont magazynu do jednego konta usługi Media Services. Możliwość dołączenia wielu kont magazynu do konta usługi Media Services zapewnia następujące korzyści:
 
-* Równoważenie obciążenia zasobów w wielu kont magazynu.
-* W przypadku dużych ilości przetwarzania zawartości usługi multimediów skalowania, (zgodnie z obecnie konto jednego magazynu ma maksymalną dozwoloną liczbę 500 TB). 
+* Obciążenia równoważenia zasobów na wielu kontach magazynu.
+* Skalowanie usługi Media Services obsługi dużej ilości zawartości przetwarzania (zgodnie z aktualnie w ramach pojedynczego konta magazynu ma maksymalny limit 500 TB). 
 
-W tym artykule pokazano, jak dołączyć wiele kont magazynu do konta usługi Media Services przy użyciu [interfejsów API usługi Azure Resource Manager](https://docs.microsoft.com/rest/api/media/mediaservice) i [Powershell](/powershell/module/azurerm.media). Widoczny jest również sposób określić różnych kont magazynu podczas tworzenia zasobów przy użyciu zestawu SDK usługi multimediów. 
+W tym artykule pokazano, jak można dołączyć wiele kont magazynu do konta usługi Media Services przy użyciu [interfejsów API usługi Azure Resource Manager](/rest/api/media/operations/azure-media-services-rest-api-reference) i [Powershell](/powershell/module/azurerm.media). Pokazano również, jak określić różnych kont magazynu, podczas tworzenia zasobów przy użyciu zestawu SDK usługi multimediów. 
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
-Podczas podłączania wielu kont magazynu do konta usługi Media Services, zastosuj następujące kwestie:
+Podczas podłączania wielu kont magazynu do konta usługi Media Services, obowiązują następujące zastrzeżenia:
 
-* Wszystkie konta magazynu dołączone do konta usługi Media Services musi być w tym samym centrum danych jako konta usługi Media Services.
+* Wszystkie konta magazynu dołączone do konta usługi Media Services musi być w tym samym centrum danych jako konto usługi Media Services.
 * Obecnie gdy konto magazynu jest dołączony do określonego konta usługi Media Services, go nie można odłączyć.
-* Konto magazynu podstawowego jest wskazane w czasie tworzenia konta usługi Media Services. Obecnie nie można zmienić domyślne konto magazynu. 
-* Obecnie Jeśli chcesz dodać konto magazynu chłodnego do konta usługi AMS konta magazynu musi być typem obiektu Blob i ustawić innej niż podstawowa.
+* Konto magazynu podstawowego jest ta wskazana w czasie tworzenia konta usługi Media Services. Obecnie nie można zmienić domyślne konto magazynu. 
+* Obecnie Jeśli chcesz dodać konto magazynu chłodnego na konto AMS, konto magazynu musi być typem obiektów Blob i ustawiona na innych niż podstawowe.
 
 Inne zagadnienia:
 
-Usługa Media Services używa wartości **IAssetFile.Name** właściwości podczas kompilowania adresy URL przesyłania strumieniowego zawartości (na przykład http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Z tego powodu kodowania procent jest niedozwolone. Wartość właściwości Name nie może mieć następujące [procent kodowanie zarezerwowanych znaków](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! * "();: @& = + $, /? [] % #". Ponadto może istnieć tylko jeden "." dla rozszerzenia nazwy pliku.
+Usługa Media Services używa wartości **IAssetFile.Name** właściwości podczas tworzenia adresów URL przesyłania strumieniowego zawartości (na przykład http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/ streamingParameters.) Z tego powodu kodowania procent nie jest dozwolone. Wartość właściwości Name nie może zawierać żadnych z następujących [procent kodowanie — zastrzeżone znaki](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? [] % # ". Ponadto może istnieć tylko jeden "." dla rozszerzenia nazwy pliku.
 
-## <a name="to-attach-storage-accounts"></a>Aby dołączyć kont magazynu  
+## <a name="to-attach-storage-accounts"></a>Aby dołączyć konta magazynu  
 
-Aby dołączyć konta magazynu do konta usługi AMS, użyj [interfejsów API usługi Azure Resource Manager](https://docs.microsoft.com/rest/api/media/mediaservice) i [Powershell](/powershell/module/azurerm.media), jak pokazano w poniższym przykładzie:
+Aby dołączyć swoje konto AMS kont magazynu, należy użyć [interfejsów API usługi Azure Resource Manager](/rest/api/media/operations/azure-media-services-rest-api-reference) i [Powershell](/powershell/module/azurerm.media), jak pokazano w poniższym przykładzie:
 
     $regionName = "West US"
     $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
@@ -60,15 +60,15 @@ Aby dołączyć konta magazynu do konta usługi AMS, użyj [interfejsów API us�
 
 ### <a name="support-for-cool-storage"></a>Obsługa magazynu chłodnego
 
-Obecnie Jeśli chcesz dodać konto magazynu chłodnego do konta usługi AMS konta magazynu musi być typem obiektu Blob i ustawić innej niż podstawowa.
+Obecnie Jeśli chcesz dodać konto magazynu chłodnego na konto AMS, konto magazynu musi być typem obiektów Blob i ustawiona na innych niż podstawowe.
 
-## <a name="to-manage-media-services-assets-across-multiple-storage-accounts"></a>Do zarządzania zasobami usługi Media Services przez wiele kont magazynu
+## <a name="to-manage-media-services-assets-across-multiple-storage-accounts"></a>Do zarządzania zasobami usługi Media Services na wielu kontach magazynu
 W poniższym kodzie użyto najnowszy zestaw SDK usługi multimediów do wykonywania następujących zadań:
 
-1. Wyświetla wszystkie konta magazynu skojarzone z określonym kontem usługi Media Services.
-2. Pobrać nazwy domyślnego konta magazynu.
-3. Tworzenie nowego elementu zawartości w domyślne konto magazynu.
-4. Utwórz zasób danych wyjściowych zadania kodowania w podanego konta magazynu.
+1. Wyświetla wszystkie konta magazynu skojarzone z określonego konta usługi Media Services.
+2. Pobierz nazwę domyślnego konta magazynu.
+3. Utwórz nowy zasób w domyślne konto magazynu.
+4. Tworzenie zasobu danych wyjściowych zadania kodowania w podanego konta magazynu.
    
 ```
 using Microsoft.WindowsAzure.MediaServices.Client;

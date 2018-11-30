@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: qianw211
-ms.openlocfilehash: cd94f17c6f8bb8cc5bc09222d4b561eefff6b20c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 1efe65feaac6e71437958451e8c1a44027495fce
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52267173"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620017"
 ---
 # <a name="private-offers"></a>Oferty prywatne
 
 Prywatne oferuje [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) Włącz wydawcy utworzyć jednostki SKU, które są widoczne tylko dla klientów docelowych.
 
-## <a name="unlock-enterprise-deals-with-private-offers"></a>Odblokuj Enterprise odnosi się do oferty prywatne
+## <a name="unlock-enterprise-deals-with-private-offers"></a>Odblokuj enterprise odnosi się do oferty prywatne
 
 Klienci korporacyjni coraz bardziej umożliwia rynków online znajdowanie, testowanie i kupować rozwiązania w chmurze. Teraz przy użyciu oferty prywatne wydawców umożliwia marketplace prywatnie udostępniać dostosowane rozwiązania docelowych klientów z funkcjami, które wymagają przedsiębiorstwa:
 
@@ -37,7 +37,7 @@ Oferty prywatne zezwala na wydawcy korzystać z zalet skalowania i globalnej dos
 
 Oferty prywatne są teraz dostępne dla maszyny wirtualnej i aplikacji na platformie Azure (zaimplementowane jako szablony rozwiązań lub zarządzanych aplikacji) oraz umożliwia aplikacji SaaS. Oferty publicznej, np. oferty prywatne mogą być tworzone i zarządzane za pośrednictwem [portalu Cloud Partner](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  Klientów można udzielić lub odwołać dostęp do oferty prywatne w ciągu kilku minut.
 
-## <a name="creating-private-offers-using-skus-and-plans"></a>Tworzenie oferty prywatne, przy użyciu jednostki SKU i plany
+## <a name="creating-private-offers-using-skus-and-plans"></a>Tworzenie prywatnego oferuje przy użyciu jednostki SKU i plany
 
 Aby uzyskać *nowej lub istniejącej oferty, jednostki SKU publicznego lub plany*, wydawców można łatwo utworzyć nowe, prywatne zmian przez tworzenie nowej jednostki SKU lub planów i oznaczysz je jako prywatne.  [Jednostki SKU w prywatnej](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus) i plany są składnikami oferty są tylko widoczne, jak i płatnej wersji przez klientów docelowych. Jednostki SKU w prywatnej i plany można ponownie użyć podstawowa obrazów i/lub oferują metadanych już opublikowane dla jednostki SKU publicznego lub planu. Ta opcja umożliwia wydawców do utworzenia wielu prywatnych wariantów oferty publicznej bez konieczności publikowanie wielu wersji tego samego obrazu podstawowego i oferują metadanych. Dla maszyny wirtualnej platformy Azure aplikacji oferty i tylko wtedy gdy prywatnej jednostki SKU udostępni obraz podstawowy SKU publicznego, wszelkie zmiany oferty obrazu podstawowego rozpropaguje we wszystkich publicznych i prywatnych wersji SKU. za pomocą tego obrazu podstawowego.
 

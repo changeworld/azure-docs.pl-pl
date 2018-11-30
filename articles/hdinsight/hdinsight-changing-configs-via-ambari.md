@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: 82995f2cc8facac9bef6f8c84c9667775ac81463
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: abb80bb0877f99dfb1623e320078e935f581d833
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038522"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498666"
 ---
-# <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>Używać narzędzia Ambari, aby zoptymalizować konfiguracje klastrów HDInsight
+# <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Korzystanie z systemu Apache Ambari w celu optymalizacji konfiguracje klastrów HDInsight
 
-HDInsight udostępnia klastry platformy Apache Hadoop dla aplikacji przetwarzających dane na dużą skalę. Zarządzanie, monitorowanie i optymalizowanie tych złożonych klastrami z wieloma węzłami może być trudne. [Apache Ambari](http://ambari.apache.org/) jest interfejsem sieci web do zarządzania i monitorowania klastrów HDInsight w systemie Linux.  W przypadku klastrów Windows należy używać narzędzia Ambari [interfejsu API REST](hdinsight-hadoop-manage-ambari-rest-api.md).
+HDInsight zapewnia [Apache Hadoop](https://hadoop.apache.org/) klastry dla aplikacji przetwarzających dane na dużą skalę. Zarządzanie, monitorowanie i optymalizowanie tych złożonych klastrami z wieloma węzłami może być trudne. [Apache Ambari](http://ambari.apache.org/) jest interfejsem sieci web do zarządzania i monitorowania klastrów HDInsight w systemie Linux.  W przypadku klastrów Windows użyj [interfejsu API REST Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
 
-Wprowadzenie do korzystania z interfejsu użytkownika sieci Web Ambari, zobacz [HDInsight Zarządzanie klastrami przy użyciu interfejsu użytkownika sieci Web systemu Ambari](hdinsight-hadoop-manage-ambari.md)
+Wprowadzenie do korzystania z interfejsu użytkownika sieci Web Ambari, zobacz [HDInsight Zarządzanie klastrami za pomocą Interfejsu sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 
 Zaloguj się do systemu Ambari pod `https://CLUSTERNAME.azurehdidnsight.net` przy użyciu poświadczeń usługi klastra. Na ekranie początkowej zostanie wyświetlony pulpit nawigacyjny przeglądu.
 
@@ -59,16 +59,16 @@ Aby zmodyfikować rozmiar sterty środowiska NameNode Java:
 
     ![Zapisz zmiany](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
 
-## <a name="hive-optimization"></a>Optymalizacja programu hive
+## <a name="apache-hive-optimization"></a>Apache Hive optymalizacji
 
-W poniższych sekcjach opisano opcje konfiguracji dla optymalizacji ogólnej wydajności technologii Hive.
+W poniższych sekcjach opisano opcje konfiguracji dla optymalizacji wydajności ogólnej Apache Hive.
 
 1. Aby zmodyfikować parametrów konfiguracyjnych programu Hive, wybierz **Hive** z paska bocznego usług.
 1. Przejdź do **Configs** kartę.
 
 ### <a name="set-the-hive-execution-engine"></a>Ustaw aparat Hive wykonywania
 
-Gałąź zawiera dwa aparatów wykonywania: MapReduce i Tez. Tez jest szybsze niż MapReduce. Klastry HDInsight Linux ma Tez jako aparatu wykonywania domyślne. Aby zmienić aparatu wykonywania:
+Gałąź zawiera dwa aparatów wykonywania: [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) i [Apache TEZ](https://tez.apache.org/). Tez jest szybsze niż MapReduce. Klastry HDInsight Linux ma Tez jako aparatu wykonywania domyślne. Aby zmienić aparatu wykonywania:
 
 1. W gałęzi **Configs** karty, wpisz **aparatu wykonywania** w polu filtru.
 
@@ -99,7 +99,7 @@ Te zmiany mają wpływ na wszystkie zadania w aplikacji Tez na serwerze. Aby uzy
 
 ### <a name="tune-reducers"></a>Dostosowywanie reduktorów
 
-ORC i Snappy oferują wysoką wydajność. Jednak gałęzi może być zbyt mało reduktorów domyślnie przyczyną wąskich gardeł.
+[Apache ORC](https://orc.apache.org/) i [Snappy](https://google.github.io/snappy/) oba programy oferują wysoką wydajność. Jednak gałęzi może być zbyt mało reduktorów domyślnie przyczyną wąskich gardeł.
 
 Na przykład załóżmy, że rozmiar danych wejściowych, 50 GB. Czy dane w ORC formacie Snappy kompresji jest 1 GB. Hive Szacuje liczbę potrzebne reduktorów: (liczba bajtów odebranych na liczby maperów / `hive.exec.reducers.bytes.per.reducer`).
 
@@ -287,9 +287,9 @@ Dodatkowe zalecenia dotyczące optymalizowania aparat Hive wykonywania:
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10 000 |
 | `tez.am.container.idle.release-timeout-max.millis` | 40000+ | 20000 |
 
-## <a name="pig-optimization"></a>Optymalizacja pig
+## <a name="apache-pig-optimization"></a>Apache Pig optymalizacji
 
-Interfejs webowy Ambari do dostrojenia zapytań Pig można zmodyfikować właściwości pig. Modyfikowanie właściwości języka Pig z systemu Ambari bezpośrednio modyfikuje właściwości Pig w `/etc/pig/2.4.2.0-258.0/pig.properties` pliku.
+[Apache Pig](https://pig.apache.org/) właściwości można modyfikować interfejs webowy Ambari do dostrojenia zapytań Pig. Modyfikowanie właściwości języka Pig z systemu Ambari bezpośrednio modyfikuje właściwości Pig w `/etc/pig/2.4.2.0-258.0/pig.properties` pliku.
 
 1. Aby zmodyfikować właściwości Pig, przejdź do Pig **Configs** kartę, a następnie rozwiń **zaawansowane właściwości pig** okienka.
 
@@ -344,7 +344,7 @@ Pig generuje pliki tymczasowe podczas wykonywania zadania. Kompresowanie plików
 
 * `pig.tmpfilecompression`: W przypadku wartości true umożliwia kompresję pliku tymczasowego. Wartość domyślna to false.
 
-* `pig.tmpfilecompression.codec`Kodera-dekodera kompresji na potrzeby kompresowanie plików tymczasowych. Kompresja zalecane kodery-dekodery są LZO i Snappy niższe wykorzystania procesora CPU.
+* `pig.tmpfilecompression.codec`Kodera-dekodera kompresji na potrzeby kompresowanie plików tymczasowych. Kompresja zalecane kodery-dekodery są [LZO](https://www.oberhumer.com/opensource/lzo/) i Snappy niższe wykorzystania procesora CPU.
 
 ### <a name="enable-split-combining"></a>Włącz łączenie podziału
 
@@ -361,9 +361,9 @@ Liczba liczby maperów jest kontrolowana przez modyfikowanie właściwości `pig
 Liczba reduktorów jest obliczana na podstawie parametru `pig.exec.reducers.bytes.per.reducer`. Parametr określa liczbę bajtów przetworzonych w ramach reduktor, domyślnie 1 GB. Aby ograniczyć liczbę maksymalną liczbę reduktorów, ustaw `pig.exec.reducers.max` właściwości domyślnie 999.
 
 
-## <a name="hbase-optimization-with-the-ambari-web-ui"></a>Optymalizacja bazy danych HBase przy użyciu interfejsu użytkownika sieci web systemu Ambari
+## <a name="apache-hbase-optimization-with-the-ambari-web-ui"></a>Optymalizacja bazy danych Apache HBase przy użyciu interfejsu użytkownika sieci web systemu Ambari
 
-Konfiguracja bazy danych HBase jest zmodyfikowana z **konfiguracje bazy danych HBase** kartę. W poniższych sekcjach opisano niektóre ważnych ustawień konfiguracyjnych, które mają wpływ na wydajność bazy danych HBase.
+[Apache HBase](https://hbase.apache.org/) konfiguracji zostało zmodyfikowane w porównaniu **konfiguracje bazy danych HBase** kartę. W poniższych sekcjach opisano niektóre ważnych ustawień konfiguracyjnych, które mają wpływ na wydajność bazy danych HBase.
 
 ### <a name="set-hbaseheapsize"></a>Ustaw HBASE_HEAPSIZE
 
@@ -453,5 +453,5 @@ Użycie bufora alokacji lokalnego magazynu pamięci jest określany przez właś
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Zarządzanie klastrami HDInsight przy użyciu interfejsu użytkownika sieci web systemu Ambari](hdinsight-hadoop-manage-ambari.md)
-* [Interfejs API REST systemu Ambari](hdinsight-hadoop-manage-ambari-rest-api.md)
+* [Zarządzanie klastrami HDInsight przy użyciu interfejsu użytkownika sieci web Apache Ambari](hdinsight-hadoop-manage-ambari.md)
+* [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)

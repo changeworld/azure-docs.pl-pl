@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: c3bdad6f1c199dda867370126eb7dcf5c296a12d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 853bf9cfce458e6f112101b1382dd5bfd5df202d
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230431"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499114"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Planowanie pojemności dla klastrów HDInsight
 
@@ -61,7 +61,7 @@ Klaster z węzłami 48 zalecamy 4 do 8 kont magazynu. Mimo że może już być w
 
 ## <a name="choose-a-cluster-type"></a>Wybierz typ klastra
 
-Typ klastra określa obciążenia, jakie klastra usługi HDInsight jest skonfigurowany do uruchamiania, takich jak Hadoop, Storm, Kafka i Spark. Aby uzyskać szczegółowy opis typów dostępnych klastrów, zobacz [wprowadzenie do usługi Azure HDInsight](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight). Każdy typ klastra ma topologię wdrażania, która spełnia wymagania dotyczące rozmiaru i liczby węzłów.
+Określa typ klastra, obciążenia klastra usługi HDInsight jest skonfigurowany do uruchamiania, takie jak [Apache Hadoop](https://hadoop.apache.org/), [Apache Storm](https://storm.apache.org/), [platformy Apache Kafka](https://kafka.apache.org/), lub [ Platforma Apache Spark](https://spark.apache.org/). Aby uzyskać szczegółowy opis typów dostępnych klastrów, zobacz [wprowadzenie do usługi Azure HDInsight](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight). Każdy typ klastra ma topologię wdrażania, która spełnia wymagania dotyczące rozmiaru i liczby węzłów.
 
 ## <a name="choose-the-vm-size-and-type"></a>Wybierz rozmiar maszyny Wirtualnej i typ
 
@@ -79,7 +79,7 @@ Rozmiar maszyny Wirtualnej i typ jest określany przez wykorzystanie Procesora m
 
 ## <a name="choose-the-cluster-scale"></a>Wybór skali klastra
 
-Skalowanie klastra jest określana przez liczbę jej węzłów maszyny Wirtualnej. W przypadku wszystkich typów w klastrze istnieją typy węzłów, które mają określoną skalę i typów węzłów, które obsługują skalowalnego w poziomie. Na przykład klaster może wymagać dokładnie trzy węzły dozorcy lub dwóch węzłów głównych. Węzły procesu roboczego, wykonujących przetwarzanie danych w sposób rozproszonych mogą korzystać z skalowania w poziomie, dodając dodatkowe węzły procesów roboczych.
+Skalowanie klastra jest określana przez liczbę jej węzłów maszyny Wirtualnej. W przypadku wszystkich typów w klastrze istnieją typy węzłów, które mają określoną skalę i typów węzłów, które obsługują skalowalnego w poziomie. Na przykład klaster może wymagać dokładnie trzech [Apache ZooKeeper](https://zookeeper.apache.org/) węzłów lub dwóch węzłów głównych. Węzły procesu roboczego, wykonujących przetwarzanie danych w sposób rozproszonych mogą korzystać z skalowania w poziomie, dodając dodatkowe węzły procesów roboczych.
 
 W zależności od typu klastra zwiększając liczbę węzłów procesu roboczego dodaje dodatkowe możliwości obliczeniowe (takie jak większa liczba rdzeni), ale może również dodać do łączna ilość pamięci wymaganej dla całego klastra do obsługi magazynu w pamięci przetwarzanych danych. Podobnie jak w przypadku wybranego rozmiaru maszyny Wirtualnej i typu, wybierając w skali klastra prawo zazwyczaj osiągnięto empirically, przy użyciu symulowanego obciążenia lub canary zapytania.
 
@@ -90,7 +90,7 @@ Można skalować w poziomie do klastra, aby obsłużenia szczytowego zapotrzebow
 Opłaty są naliczane za okres istnienia klastra. Jeśli są tylko określone godziny należy Twojego klastra i działa, możesz to zrobić [Tworzenie klastrów na żądanie przy użyciu usługi Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md). Można również utworzyć skrypty programu PowerShell aprowizować i usunięciu klastra, a następnie Zaplanuj te skrypty przy użyciu [usługi Azure Automation](https://azure.microsoft.com/services/automation/).
 
 > [!NOTE]
-> Po usunięciu klastra jej domyślny magazyn metadanych Hive są także usuwane. Aby zachować magazynu metadanych dla następnego ponownego utworzenia klastra, Użyj zewnętrznego magazynu metadanych, takich jak bazy danych Azure lub Oozie.
+> Po usunięciu klastra jej domyślny magazyn metadanych Hive są także usuwane. Można utrwalić magazynu metadanych dla następnego ponownego utworzenia klastra, Użyj zewnętrznego magazynu metadanych takich jak bazy danych Azure lub [Apache Oozie](https://oozie.apache.org/).
 <!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
 ### <a name="isolate-cluster-job-errors"></a>Izolowanie błędy zadań klastra
@@ -109,5 +109,5 @@ Jednak istnieją pewne ograniczenia stały limit przydziału, na przykład pojed
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Konfigurowanie klastrów w HDInsight przy użyciu usługi Hadoop, Spark, Kafka i](hdinsight-hadoop-provision-linux-clusters.md): informacje o sposobie instalowania i konfigurowania klastrów w HDInsight przy użyciu usługi Hadoop, Spark, Kafka, Interactive Hive, HBase, usługi ML i Storm.
+* [Konfigurowanie klastrów w HDInsight przy użyciu technologii Apache Hadoop, Spark, Kafka i](hdinsight-hadoop-provision-linux-clusters.md): informacje o sposobie instalowania i konfigurowania klastrów w HDInsight przy użyciu technologii Apache Hadoop, Spark, Kafka, Interactive Hive, HBase, usługi ML i Storm.
 * [Monitorowanie wydajności klastra](hdinsight-key-scenarios-to-monitor.md): więcej informacji na temat kluczowych scenariuszy, do monitorowania dla klastra usługi HDInsight, które mogą mieć wpływ na wydajność klastra.

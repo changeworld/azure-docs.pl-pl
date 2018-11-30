@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: 83155e448f350618446fb22bf52e831b1cc8d499
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 74bfd49fd69353e95a275f31fa0bba9e9b558227
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636547"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632929"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Slack do automatycznej aprowizacji użytkowników
 
@@ -113,6 +113,14 @@ Ten wynik w wszystkie obiekty grupy przypisane do Slack w **użytkowników i gru
 
 Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
+## <a name="connector-limitations"></a>Ograniczenia łącznika
+
+  * Podczas konfigurowania firmy Slack **displayName** atrybutu, należy zwrócić uwagę na następujące zachowania: 
+  * Wartości nie są unikatowe w całości, (np. 2 użytkownicy mogą mieć tę samą nazwę wyświetlaną)
+  * Obsługuje znaków innych niż angielski, miejsca do magazynowania, wielkość liter. 
+  * Dozwolone znaki rozdzielające są kropki, podkreślenia, łączniki, apostrofy, nawiasy kwadratowe (np. **([{}])**) oraz separatory (np. **, /;**).
+  * Aktualizuje tylko, jeśli te dwa ustawienia zostały skonfigurowane w miejscu pracy firmy Slack/organizacji - **synchronizowanie profilu jest włączona** i **użytkownicy nie mogą zmieniać ich nazwy wyświetlanej**.
+  * Firmy Slack **userName** atrybutu musi być w obszarze 21 znaków i mieć unikatową wartość. 
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

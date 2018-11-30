@@ -10,12 +10,12 @@ ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: f5917cd7a5e4fcc2733765f642ad0958092372c1
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: ab9e04b8a9eb4290891b3c7d55f8262c4ba64d44
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616218"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584050"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Tworzenie i wdrażanie modeli klasyfikacji obrazów za pomocą usługi Azure Machine Learning
 
@@ -37,7 +37,7 @@ Podczas kompilowania i wdrażania tego modelu przy użyciu AMLPCV, możesz przej
 7. Wdrażanie usługi sieci Web
 8. Usługi testowania obciążenia w sieci Web
 
-[CNTK](https://www.microsoft.com/cognitive-toolkit/) służy jako platforma do uczenia głębokiego szkolenia jest wykonywana lokalnie na maszynie GPU oparte takie jak ([głębokiego uczenia maszyna wirtualna do nauki o danych](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), i wdrożenie używa interfejsu wiersza polecenia platformy Azure ML Operacjonalizacji.
+[CNTK](https://docs.microsoft.com/cognitive-toolkit/) służy jako platforma do uczenia głębokiego szkolenia jest wykonywana lokalnie na maszynie GPU oparte takie jak ([głębokiego uczenia maszyna wirtualna do nauki o danych](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), i wdrożenie używa interfejsu wiersza polecenia platformy Azure ML Operacjonalizacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -175,7 +175,7 @@ display(annotation_ui.ui)
 
 ## <a name="augment-images"></a>Rozszerzaj obrazów
 
-[ `augmentation` Modułu](https://docs.microsoft.com/python/api/cvtk.augmentation) zapewnia funkcje rozszerzyć obiekt dataset za pomocą wszystkie przekształcenia, które są opisane w [imgaug](https://github.com/aleju/imgaug) biblioteki. Przekształcenia do obrazu mogą być grupowane w jeden potok, w którym to przypadku wszystkie przekształcenia w potoku są stosowane jednocześnie każdego obrazu. 
+[ `augmentation` Modułu](/python/api/cvtk/cvtk.augmentation.augmentation) zapewnia funkcje rozszerzyć obiekt dataset za pomocą wszystkie przekształcenia, które są opisane w [imgaug](https://github.com/aleju/imgaug) biblioteki. Przekształcenia do obrazu mogą być grupowane w jeden potok, w którym to przypadku wszystkie przekształcenia w potoku są stosowane jednocześnie każdego obrazu. 
 
 Jeśli chcesz zastosować kroki różnych rozszerzeniu oddzielnie lub w jakikolwiek inny sposób, można zdefiniować wiele potoków i przekazywać je do *augment_dataset* funkcji. Aby uzyskać więcej informacji i przykładów rozszerzeniu obrazu, zobacz [dokumentacji imgaug](https://github.com/aleju/imgaug).
 

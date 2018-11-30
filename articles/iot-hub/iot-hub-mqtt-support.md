@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: 6e2ab773f865a8e52c7b04b94a188dd244540e0d
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 53643b185825d4cc03073144e1b3547452629c08
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344969"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497613"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikować się z Centrum IoT hub przy użyciu protokołu MQTT
 
@@ -66,11 +66,11 @@ Jeśli urządzenia nie można użyć zestawów SDK urządzeń, nadal można poł
 
 * Aby uzyskać **ClientId** pola, użyj **deviceId**.
 
-* Aby uzyskać **Username** pola, użyj `{iothubhostname}/{device_id}/api-version=2016-11-14`, gdzie `{iothubhostname}` jest pełny rekord CName usługi IoT hub.
+* Aby uzyskać **Username** pola, użyj `{iothubhostname}/{device_id}/api-version=2018-06-30`, gdzie `{iothubhostname}` jest pełny rekord CName usługi IoT hub.
 
     Na przykład jeśli nazwą Centrum IoT hub jest **contoso.azure-devices.net** i jeśli nazwa urządzenia jest **MyDevice01**, pełną **Username** pole powinno zawierać:
 
-    `contoso.azure-devices.net/MyDevice01/api-version=2016-11-14`
+    `contoso.azure-devices.net/MyDevice01/api-version=2018-06-30`
 
 * Aby uzyskać **hasło** pola, użyj tokenu sygnatury dostępu Współdzielonego. Format tokenu sygnatury dostępu Współdzielonego jest taka sama, jak w przypadku protokołów HTTPS i AMQP:
 

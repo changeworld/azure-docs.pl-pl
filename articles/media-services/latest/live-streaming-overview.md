@@ -1,6 +1,6 @@
 ---
 title: Omówienie transmisji strumieniowej na żywo za pomocą usługi Azure Media Services | Dokumentacja firmy Microsoft
-description: Dzięki temu tematu z omówieniem transmisja strumieniowa na żywo za pomocą usługi Azure Media Services v3.
+description: Dzięki temu artykuł z omówieniem transmisja strumieniowa na żywo za pomocą usługi Azure Media Services v3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,153 +11,123 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 11/26/2018
 ms.author: juliako
-ms.openlocfilehash: a4569505cb9a42f6682391a8b06725dea5e539dc
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 634563a2010562e20691abae132dc7540ef8faf2
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344981"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632708"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Przesyłanie strumieniowe przy użyciu usługi Azure Media Services v3 na żywo
 
-Gdy dostarczanie wydarzeń transmisji strumieniowej na żywo w usłudze Azure Media Services to zwykle wymagane są następujące składniki:
+Usługa Azure Media Services umożliwia dostarczanie wydarzeń na żywo dla klientów w chmurze Azure. Aby przesyłać strumieniowo zdarzenia na żywo za pomocą usługi Media Services, potrzebne są następujące elementy:  
 
-* Kamera, która umożliwia emisję wydarzenia.
-* Koder wideo na żywo, który konwertuje sygnały z kamery (lub innego urządzenia, takie jak laptop) do strumieni, które są wysyłane do usługi transmisji strumieniowej na żywo. Sygnały mogą również obejmować anonsowanie SCTE 35 i podpowiedzi Ad. 
-* Usługa Media Services transmisji strumieniowej na żywo umożliwia pozyskiwania, w wersji zapoznawczej, pakietów, rejestrowanie, szyfrowania i emisji zawartości do klientów lub do sieci CDN w celu dalszej dystrybucji.
+- Kamera, która jest używana do przechwytywania zdarzeń na żywo.
+- Koder wideo na żywo, który konwertuje sygnały z kamery (lub innego urządzenia, takie jak laptop) na udział źródła danych są wysyłane do usługi Media Services. Kanał informacyjny udział może obejmować sygnały związane z reklamy, takie jak znaczniki SCTE 35.
+- Składniki w usłudze Media Services pozwalają pozyskiwać, w wersji zapoznawczej, pakiet, rejestrowanie, szyfrowania i emisję wydarzenia na żywo dla klientów lub do sieci CDN w celu dalszej dystrybucji.
 
-W tym artykule szczegółowo omówiono i zawiera diagramy główne składniki zaangażowane w transmisji strumieniowej na żywo za pomocą usługi Media Services.
+W tym artykule szczegółowo omówiono, uzyskać wskazówki i zawiera diagramy główne składniki zaangażowane w transmisji strumieniowej na żywo za pomocą usługi Media Services.
 
 ## <a name="overview-of-main-components"></a>Omówienie głównych składników
 
-W usłudze Media Services kanały [LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) są odpowiedzialne za przetwarzanie zawartości transmisji strumieniowej na żywo. Element LiveEvent zapewnia wejściowy punkt końcowy (adres URL pozyskiwania) następnie podaj lokalny koder na żywo. Element LiveEvent odbiera strumieni danych wejściowych z kodera na żywo w formacie RTMP lub Smooth Streaming i udostępnia go do przesyłania strumieniowego za pośrednictwem co najmniej jeden [punkty](https://docs.microsoft.com/rest/api/media/streamingendpoints). A [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) umożliwia kontrolowanie publikowania, zapisywania i funkcji DVR okno Ustawienia transmisji strumieniowej na żywo. Element LiveEvent jest także punktu końcowego (wersja zapoznawcza) (adres URL w wersji zapoznawczej), która umożliwia podgląd i weryfikować strumień przed dalszym przetwarzaniem i dostarczaniem. 
+Aby dostarczać strumienie na żądanie lub na żywo za pomocą usługi Media Services, musisz mieć co najmniej jedną [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints). Po utworzeniu konta usługi Media Services **domyślne** StreamingEndpoint zostanie dodany do Twojego konta w **zatrzymane** stanu. Należy uruchomić StreamingEndpoint, z którego chcesz strumieniowo przesyłać zawartość do swojej przeglądarki. Można użyć domyślnie **StreamingEndpoint**, lub utworzyć inny dostosowane **StreamingEndpoint** z wymaganą konfiguracją i ustawień sieci CDN. Użytkownik może zdecydować umożliwić wielu punkty, z których każdy z nich przeznaczone dla różnych sieci CDN i podając unikatową nazwę hosta w dostarczaniu zawartości. 
 
-Usługa Media Services udostępnia **funkcję dynamicznego tworzenia pakietów**, co pozwala na przeglądanie i emisji zawartość w postaci strumieni MPEG DASH, HLS i Smooth Streaming formatach transmisji strumieniowej bez konieczności ręcznego ponownego tworzenia pakietów w tych formatach. Można odtwarzać za pomocą dowolnego HLS, DASH lub Smooth odtwarzacza zgodne. Można również użyć [usługi Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) do przetestowania strumienia.
+W usłudze Media Services [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) jest odpowiedzialny za przyjęciem i przetwarzania na żywo strumieniowych źródeł wideo. Podczas tworzenia element LiveEvent wejściowy punkt końcowy jest tworzony, której można wysyłać sygnał na żywo z kodera zdalnego. Zdalny koder na żywo wysyła wkładu, kanał informacyjny do wejściowy punkt końcowy przy użyciu [RTMP](https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol) lub [Smooth Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming#Microsoft_Smooth_Streaming) protokołu (pofragmentowany plik MP4).  
 
-Usługi Media Services umożliwia dostarczanie zawartości dynamicznie zaszyfrowany (**szyfrowania dynamicznego**) za pomocą Advanced Encryption Standard (AES-128) lub dowolnego systemu zarządzania (prawami cyfrowymi DRM) trzech głównych prawami cyfrowymi: Microsoft PlayReady Google Widevine i FairPlay firmy Apple. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM (PlayReady, Widevine i FairPlay) licencji do autoryzowanych klientów.
+Gdy **element LiveEvent** rozpoczyna odbieranie wkład źródła danych, można użyć punktu końcowego (wersja zapoznawcza) (w wersji zapoznawczej adres URL do wyświetlania podglądu i weryfikowania otrzymują przed opublikowaniem dalsze transmisji strumieniowej na żywo. Po sprawdzeniu, że Podgląd strumienia jest dobra, aby udostępnić transmisji strumieniowej na żywo do dostarczania za pomocą co najmniej jeden (wstępnie utworzone), można użyć element LiveEvent **punkty**. Aby to osiągnąć, należy utworzyć nową [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) na **element LiveEvent**. 
 
-Jeśli to konieczne, można także zastosować **filtrowanie dynamiczne**, który może służyć do kontrolowania liczby ścieżek, formatów, szybkości transmisji, które są wysłane do odtwarzaczy. Usługa Media Services obsługuje także wstawianiem reklam.
+**LiveOutput** obiektu przypomina rejestratora taśm, który będzie przechwytywać i zarejestruj transmisji strumieniowej na żywo do elementu zawartości w ramach konta usługi Media Services. Zarejestrowana zawartość zostaną utrwalone do konta magazynu platformy Azure dołączonych do konta, do kontenera, zdefiniowane przez zasób trwały.  **LiveOuput** również pozwala na kontrolowanie niektórych właściwości wychodzącej transmisji strumieniowej na żywo, takie jak ile strumienia jest przechowywana w nagraniu archiwum (na przykład pojemność funkcji DVR w chmurze). Archiwum na dysku jest cykliczna archiwum "okno" zawiera tylko ilość zawartości, który jest określony w **archiveWindowLength** właściwość **LiveOutput**. Zawartość, która wykracza poza tym oknem jest automatycznie odrzucane z kontenera magazynu, a nie jest możliwe do odzyskania. Na element LiveEvent archiwum różne długości i ustawienia, można utworzyć wiele LiveOutputs (maksymalnie trzy).  
 
-### <a name="new-live-encoding-improvements"></a>Nowe ulepszenia kodowania na żywo
+Usługa Media Services możesz korzystać z zalet **funkcję dynamicznego tworzenia pakietów**, co pozwala na przeglądanie i emisji strumieni na żywo w [formatów MPEG DASH, HLS i Smooth Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) z udziału kanału informacyjnego Aby wysłać do usługi. Przeglądającym można odtwarzać transmisji strumieniowej na żywo za pomocą dowolnego odtwarzaczy zgodne HLS, DASH lub Smooth Streaming. Możesz użyć [usługi Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) w sieci web lub aplikacji mobilnych, aby dostarczać strumień we wszystkich tych protokołów.
 
-Następujące nowe ulepszenia zostały wykonane w najnowszej wersji.
+Usługi Media Services umożliwia dostarczanie zawartości dynamicznie zaszyfrowany (**szyfrowania dynamicznego**) za pomocą Advanced Encryption Standard (AES-128) lub dowolnego systemu zarządzania (prawami cyfrowymi DRM) trzech głównych prawami cyfrowymi: Microsoft PlayReady Google Widevine i FairPlay firmy Apple. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM licencje do autoryzowanych klientów. Aby uzyskać więcej informacji na temat sposobu szyfrowanie zawartości przy użyciu usługi Media Services, zobacz [ochrony zawartości — omówienie](content-protection-overview.md)
 
-- Nowy tryb małymi opóźnieniami. Aby uzyskać więcej informacji, zobacz [opóźnienie](#latency).
+Jeśli to konieczne, można także zastosować filtrowanie dynamiczne, dzięki której może służyć do kontrolowania liczby ścieżek, formatów, szybkości transmisji i prezentacji okna czasowe, które są wysłane do odtwarzaczy. 
+
+### <a name="new-capabilities-for-live-streaming-in-v3"></a>Nowe możliwości transmisji strumieniowej na żywo w wersji 3
+
+Za pomocą v3 interfejsów API usługi Media Services, możesz skorzystać z następujące nowe funkcje:
+
+- Nowy tryb małymi opóźnieniami. Aby uzyskać więcej informacji, zobacz [opóźnienie](live-event-latency.md).
 - Ulepszona obsługa protokołu RTMP (Zwiększona stabilność i więcej obsługę kodera źródłowego).
-- Pozyskuj RTMPS bezpieczne.
-
-    Gdy utworzysz element LiveEvent, otrzymasz 4 adresy URL pozyskiwania. Pozyskiwanie 4 adresy URL są niemal identyczne, mają ten sam token przesyłania strumieniowego (AppId), tylko część numer portu jest inny. Są dwa adresy URL podstawowego i zapasowego dla RTMPS.   
-- Obsługa transkodowanie 24-godzinnym. 
-- Ulepszona obsługa sygnalizowanie ad w RTMP za pośrednictwem SCTE35.
+- Pozyskuj RTMPS bezpieczne.<br/>Gdy utworzysz element LiveEvent, otrzymasz 4 adresy URL pozyskiwania. Pozyskiwanie 4 adresy URL są niemal identyczne, mają ten sam token przesyłania strumieniowego (AppId), tylko część numer portu jest inny. Są dwa adresy URL podstawowego i zapasowego dla RTMPS.   
+- Można przesyłać strumieniowo wydarzenia na żywo, które są do 24 godzin długo po za pomocą usługi Media Services w celu przetranskodowania jej wkład pojedyncza szybkość transmisji bitów źródła danych do strumienia wyjściowego, który ma wielokrotnych. 
 
 ## <a name="liveevent-types"></a>Element LiveEvent typów
 
-A [element LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) może być jednym z dwóch typów: kodowanie na żywo oraz pass-through. 
-
-### <a name="live-encoding-with-media-services"></a>Kodowanie za pomocą usługi Media Services na żywo
-
-![funkcji Live encoding](./media/live-streaming/live-encoding.png)
-
-Lokalny koder na żywo wysyła strumień o pojedynczej szybkości bitów na element LiveEvent, który jest skonfigurowany do przeprowadzania kodowania na żywo z usługą Media Services w jednym z następujących protokołów: RTMP lub Smooth Streaming (pofragmentowany MP4). Element LiveEvent wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do strumienia wideo różnych szybkościach transmisji bitów (adaptacyjnej). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
-
-Podczas tworzenia tego typu element LiveEvent należy określić **podstawowe** (LiveEventEncodingType.Basic).
+A [element LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) może być jednym z dwóch typów: kodowanie przekazywania i na żywo. 
 
 ### <a name="pass-through"></a>Przekazywanie
 
 ![przekazywane](./media/live-streaming/pass-through.png)
 
-Przekazywane jest zoptymalizowany pod kątem transmisje strumieniowe na żywo długotrwałych lub 24 x 7 liniowej kodowania na żywo przy użyciu kodera na żywo w środowisku lokalnym. Lokalny koder wysyła różnych szybkościach transmisji bitów **RTMP** lub **Smooth Streaming** (pofragmentowany plik MP4) do element LiveEvent, który jest skonfigurowany dla **przekazywanego** dostarczania. **Przekazywanego** dostarczania jest, gdy pozyskiwane strumienie są przekazywane za pośrednictwem **element LiveEvent**bez dalszego przetwarzania. 
+Korzystając z przekazywania element LiveEvent, możesz polegać na Twoje lokalny koder na żywo do generowania wielu strumienia wideo o szybkości transmisji bitów i wysyłania, że jako udział Kanał informacyjny do element LiveEvent (przy użyciu protokołu RTMP lub pofragmentowany plik MP4). Element LiveEvent następnie niesie ze sobą za pośrednictwem przychodzących strumieni wideo bez dalszego przetwarzania. Takie przekazywanego element LiveEvent jest zoptymalizowany do wydarzeń na żywo długotrwałych lub 24 x 365 liniowej transmisja strumieniowa na żywo. Podczas tworzenia tego typu element LiveEvent należy określić Brak (LiveEventEncodingType.None).
 
-LiveEvents przekazująca może obsługiwać się 4K rozwiązania i — HEVC przechodzi przez, gdy jest używana przy użyciu funkcji Smooth Streaming protokołu pozyskiwania. 
-
-Podczas tworzenia tego typu element LiveEvent należy określić **Brak** (LiveEventEncodingType.None).
+Możesz wysłać wkład kanał przy rozdzielczości, maksymalnie 4 K oraz w ramce stopień 60 klatek na sekundę koder H.264/AVC lub H.265/HEVC koderów-dekoderów wideo i AAC (AAC-LC, HE-AACv1 lub HE-AACv2) kodera-dekodera audio.  Zobacz [element LiveEvent typów porównania i ograniczenia](live-event-types-comparison.md) artykuł, aby uzyskać więcej informacji.
 
 > [!NOTE]
 > Metoda przekazywania to najbardziej ekonomiczne rozwiązanie transmisji strumieniowej na żywo w przypadku organizowania wielu wydarzeń w długim okresie oraz poczynionych inwestycji w kodery lokalne. Zobacz szczegółowe informacje o [cenach](https://azure.microsoft.com/pricing/details/media-services/).
 > 
 
-## <a name="liveevent-types-comparison"></a>Porównanie typów element LiveEvent 
+Zobacz przykład połączenia na żywo w [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
 
-W poniższej tabeli porównano funkcje dwa typy element LiveEvent.
+### <a name="live-encoding"></a>Kodowanie na żywo  
 
-| Cecha | Element LiveEvent przekazywania | Standardowy element LiveEvent |
-| --- | --- | --- |
-| Pojedyncza szybkość transmisji bitów w danych wejściowych jest zakodowany do wielokrotnych w chmurze |Nie |Yes |
-| Maksymalna rozdzielczość, liczba warstw |4Kp30  |720p 6 warstwy 30 kl. / s |
-| Protokoły danych wejściowych |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
-| Cena |Zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/media-services/) i kliknij kartę "Wideo na żywo" |Zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/media-services/) |
-| Maksymalny czas działania |Całodobowo |Całodobowo |
-| Obsługa wstawiania plansz |Nie |Yes |
-| Obsługa ad sygnalizowanie za pośrednictwem interfejsu API|Nie |Yes |
-| Obsługa ad sygnalizowanie za pośrednictwem sieci wewnątrzpasmowej SCTE35|Yes |Yes |
-| Podpisy napisy kodowane CEA 608/708 przekazywania |Yes |Yes |
-| Zdolność odzyskania po krótkie wstrzymania w udziale kanału informacyjnego |Yes |Nie (element LiveEvent rozpocznie się slating ponad 6 sekund bez danych wejściowych)|
-| Obsługa niejednolitego GOPs danych wejściowych |Yes |Nie — dane wejściowe zostały poprawione GOPs. 2 sek. |
-| Obsługa dane wejściowe szybkość klatek zmiennej |Yes |Nie — dane wejściowe muszą zostać usunięte, szybkości klatek.<br/>Niewielkich zmian są dopuszczalne na przykład podczas sceny wysokiej ruchu. Ale kodera nie można porzucić do 10 ramek na sekundę. |
-| Auto bliskie z element LiveEvent, gdy dane wejściowe źródła danych zostaną utracone |Nie |Po 12 godzinach, jeśli nie ma żadnych LiveOutput uruchamiania |
+![funkcji Live encoding](./media/live-streaming/live-encoding.png)
 
-## <a name="liveevent-states"></a>Element LiveEvent stanów 
+Korzystając z kodowania na żywo za pomocą usługi Media Services, należy skonfigurować usługi na lokalny koder na żywo, aby wysłać pojedyncza szybkość transmisji bitów wideo jako udział Kanał informacyjny do element LiveEvent (przy użyciu protokołu RTMP lub podzielonej zawartości w formacie Mp4). Element LiveEvent koduje tej przychodzącej pojedyncza szybkość transmisji bitów do usługi stream [wielu strumienia wideo o szybkości transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), udostępnia dostarczania odtworzyć urządzeń za pośrednictwem protokołów, takich jak MPEG-DASH, HLS i Smooth Streaming. Podczas tworzenia tego typu element LiveEvent, określ typ kodowania jako **podstawowe** (LiveEventEncodingType.Basic).
 
-Bieżący stan element LiveEvent. Możliwe wartości obejmują:
+Możesz wysłać wkład kanału informacyjnego w maksymalnie 1080 p rozwiązania z prędkością 30 klatek, / sekundę, przy użyciu kodera-dekodera wideo koder H.264/AVC i AAC (AAC-LC, HE-AACv1 lub HE-AACv2) kodera-dekodera audio. Zobacz [element LiveEvent typów porównania i ograniczenia](live-event-types-comparison.md) artykuł, aby uzyskać więcej informacji.
 
-|Stan|Opis|
-|---|---|
-|**Zatrzymana**| To jest wstępny stan element LiveEvent po jego utworzeniu (chyba że wybrano autostart określić). Rozliczenia nie występuje w tym stanie. W tym stanie właściwości element LiveEvent mogą być aktualizowane, ale transmisja strumieniowa jest niedozwolona.|
-|**Uruchamianie**| Element LiveEvent jest uruchamiany. Rozliczenia nie występuje w tym stanie. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa. Jeśli wystąpi błąd, element LiveEvent powróci do stanu zatrzymany.|
-|**Uruchamianie**| Element LiveEvent jest może przetwarzać transmisje strumieniowe na żywo. Teraz jest to fakturowania użycia. Należy zatrzymać element LiveEvent, aby uniknąć dalszych rozliczeń.|
-|**Zatrzymywanie**| Element LiveEvent jest zatrzymywany. Rozliczenia nie występuje w tym stanie przejściowym. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.|
-|**Usuwanie**| Element LiveEvent jest usuwana. Rozliczenia nie występuje w tym stanie przejściowym. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.|
+## <a name="liveevent-types-comparison"></a>Porównanie typów element LiveEvent
+
+Następujący artykuł zawiera tabelę, która zawiera porównanie funkcji dwa typy element LiveEvent: [porównania](live-event-types-comparison.md).
 
 ## <a name="liveoutput"></a>LiveOutput
 
-A [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) umożliwia kontrolowanie publikowania, zapisywania i funkcji DVR okno Ustawienia transmisji strumieniowej na żywo. Element LiveEvent i LiveOutput relacji jest podobny do tradycyjnych multimediach, gdzie kanał (element LiveEvent) ma stały strumień zawartości, a program (LiveOutput) obejmuje niektóre zdarzenia czasowe na ten element LiveEvent.
-Można określić liczbę godzin, aby zachować zarejestrowaną zawartość dla LiveOutput, ustawiając **ArchiveWindowLength** właściwości. **ArchiveWindowLength** jest czas trwania przedział czasu ISO 8601 długość okna archiwizacji (cyfrowego rejestratora wideo lub DVR). Ta wartość musi mieścić się w zakresie od 5 minut do maksymalnie 25 godzin. 
+A [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) umożliwia sterowanie właściwości wychodzącej transmisji strumieniowej na żywo, takie jak ilość strumienia jest rejestrowane (na przykład pojemność funkcji DVR w chmurze) i czy osoby oglądające można uruchomić, oglądając transmisji strumieniowej na żywo. Relacja między **element LiveEvent** i jego **LiveOutput**s relacji jest podobny do tradycyjnych telewizyjnych emisji, zgodnie z którą kanału (**element LiveEvent**) reprezentuje stały strumień i nagranie wideo (**LiveOutput**) obejmuje zasięgiem segmencie określony czas (na przykład wieczorami wiadomości od 18:30:00 do 19:00:00). Można rejestrować za pomocą cyfrowego rejestratora wideo (DVR) telewizyjnych — funkcji równoważnej w LiveEvents odbywa się za pomocą właściwości ArchiveWindowLength. Nadszedł czas przedział czasu ISO 8601 (na przykład PTHH:MM:SS) Określa pojemność DVR, która może być równa z co najmniej 3 minuty maksymalnie 25 godzin.
 
-**ArchiveWindowLength** mówią, maksymalna liczba klientów można wyszukać w czasie od bieżącej pozycji na żywo. LiveOutputs mogą być uruchamiane określoną ilość czasu, ale zawartość, która wykracza poza długość okna jest stale odrzucana. Wartość tej właściwości określa również, jak długo mogą być manifesty na klienta.
 
-Każdy LiveOutput jest skojarzony z [zasobów](https://docs.microsoft.com/rest/api/media/assets)i zapisuje dane w kontenerze w usłudze Azure storage dołączonych do konta usługi Media Services. Aby opublikować LiveOutput, należy utworzyć [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) dla skojarzonego elementu zawartości. Lokalizator umożliwia utworzenie adresu URL przesyłania strumieniowego, który można udostępnić klientom.
+> [!NOTE]
+> **LiveOutput**s start przy tworzeniu i Zatrzymaj po usunięciu. Po usunięciu **LiveOutput**, nie powoduje usunięcia podstawowych **zasobów** i zawartości w elemencie zawartości.  
 
-Element LiveEvent obsługuje maksymalnie trzy jednocześnie uruchomione LiveOutputs, dzięki czemu można tworzyć wiele archiwów tego samego strumienia przychodzącego. Umożliwia to w razie potrzeby publikowanie i archiwizację różnych części wydarzenia. Na przykład z wymaganiami biznesowymi potrzebna jest do emisji przeznaczonych jest 24 x 7 liniowej Kanał informacyjny na żywo, ale chcesz utworzyć "nagrania" programy przez cały dzień, aby zaoferować klientom jako zawartość na żądanie do wyświetlania zapoznać się ze zmianami.  W tym scenariuszu należy najpierw utworzyć podstawowy LiveOutput, okno archiwum krótki równej 1 godz lub szybciej w przypadku klientów dostroić jako podstawowy transmisji strumieniowej na żywo. Czy utworzyć StreamingLocator dla tego LiveOutput i opublikujesz go w aplikacji lub witryny sieci web jako źródło danych "Live".  Gdy uruchomiona jest źródło danych, można programowo utworzyć drugi LiveOutput współbieżnych na początku pokazu (lub podać niektóre uchwytów należy wcześnie w ciągu 5 minut można przycięcia później). Ten drugi LiveOutput można zatrzymać 5 minut po zakończeniu program lub wydarzenie, a następnie można utworzyć nowego StreamingLocator, aby opublikować ten program jako elementu zawartości na żądanie w katalogu aplikacji.  Ten proces można powtarzać wiele razy dla innych granice programu lub wyróżnia się, że chcesz udostępnić jako na żądanie od razu, cały czas "Live" Kanał informacyjny z pierwszym LiveOutput w dalszym ciągu emisji liniowej źródła danych.  Ponadto możesz korzystać z zalet obsługi Filtr dynamiczny trim head i zakończeniem archiwum z LiveOutput, która wprowadzona dla "nakładają się na siebie safety" między programami i osiągnąć bardziej precyzyjne początek i koniec zawartości. Zarchiwizowaną zawartość można również przesyłać do [Przekształcanie](https://docs.microsoft.com/rest/api/media/transforms) dla kodowania lub ramki dokładne używać do wielu formatów danych wyjściowych, które ma być używany jako źródło do innych usług.
+Aby uzyskać więcej informacji, zobacz [używanie funkcji DVR w chmurze](live-event-cloud-dvr.md).
 
 ## <a name="streamingendpoint"></a>StreamingEndpoint
 
-Po przesłaniu strumienia do kanału LiveEvent można rozpocząć zdarzenie przesyłania strumieniowego poprzez utworzenie elementu zawartości oraz obiektu LiveOutput i lokalizatora przesyłania strumieniowego. Spowoduje to archiwizację strumienia i udostępnić go użytkownikom za pośrednictwem [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints).
+Po przesłaniu strumienia do **element LiveEvent**, można rozpocząć zdarzenie przesyłania strumieniowego, tworząc **zasobów**, **LiveOutput**, i **StreamingLocator** . Spowoduje to archiwizację strumienia i udostępnić go użytkownikom za pośrednictwem [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints).
 
 Po utworzeniu konta usługi Media Services domyślny punkt końcowy przesyłania strumieniowego jest dodawany do swojego konta w stanie zatrzymania. Aby rozpocząć przesyłanie strumieniowe zawartości oraz korzystać z dynamicznego tworzenia pakietów i szyfrowania dynamicznego, punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość musi być w stanie uruchomiona.
 
+## <a name="a-idbilling-liveevent-states-and-billing"></a><a id="billing" />Element LiveEvent stanów i rozliczenia
+
+Element LiveEvent rozpoczyna się rozliczeń zaraz po jego stan przechodzi do **systemem**. Aby zatrzymać element LiveEvent z rozliczeniami, musisz zatrzymać element LiveEvent.
+
+Aby uzyskać szczegółowe informacje, zobacz [stanów i rozliczenia](live-event-states-billing.md).
+
 ## <a name="latency"></a>Opóźnienie
 
-W tej sekcji omówiono typowe wyniki, które zobaczysz podczas korzystania z ustawień małe opóźnienia i wiele odtwarzaczy. Wyniki różnią się zależnie od opóźnienia sieci i usługi CDN.
+Aby uzyskać szczegółowe informacje na temat LiveEvents opóźnienia, zobacz [opóźnienie](live-event-latency.md).
 
-Aby korzystać z nowych funkcji LowLatency, można ustawić **StreamOptionsFlag** do **LowLatency** na element LiveEvent. Gdy strumień jest uruchomiona, możesz użyć [usługi Azure Media Player](http://ampdemo.azureedge.net/) (AMP) Strona demonstracyjna i ustaw opcje odtwarzania, aby używać "Niskie opóźnienie Algorytm heurystyczny profil".
+## <a name="live-streaming-workflow"></a>Przepływ pracy transmisji strumieniowej na żywo
 
-### <a name="pass-through-liveevents"></a>LiveEvents przekazywania
+Poniżej przedstawiono kroki, aby uzyskać przepływ pracy transmisji strumieniowej na żywo:
 
-||2S GOP krótki czas oczekiwania, włączone|1s GOP krótki czas oczekiwania, włączone|
-|---|---|---|
-|KRESKI w AMP|10s|8S|
-|HLS na odtwarzaczu natywnych dla systemów iOS|14S|10s|
-|HLS. JS w odtwarzaczu Mixer|30 sekund|16s|
+1. Utwórz element LiveEvent.
+2. Utwórz nowy obiekt zasobów.
+3. Utwórz LiveOutput i użyj nazwy zasobu, który został utworzony.
+4. Utwórz zasady przesyłania strumieniowego i klucza zawartości, aby przeprowadzić szyfrowanie zawartości przy użyciu DRM.
+5. W przeciwnym razie przy użyciu technologii DRM, utworzyć Lokalizator przesyłania strumieniowego za pomocą wbudowanych typów zasad przesyłania strumieniowego.
+6. Lista ścieżek zasady przesyłania strumieniowego, aby wrócić adresy URL, aby użyć (są to deterministyczne).
+7. Pobieranie nazwy hosta punktu końcowego przesyłania strumieniowego chcesz przesyłać strumieniowo z. 
+8. Adres URL w kroku 6 należy połączyć z nazwą hosta w kroku 7, aby uzyskać pełny adres URL.
 
-## <a name="billing"></a>Rozliczenia
-
-Element LiveEvent rozpoczyna rozliczeń zaraz po jego stan zmienia się na "Uruchomione". Aby zatrzymać element LiveEvent z rozliczeniami, musisz zatrzymać element LiveEvent.
-
-> [!NOTE]
-> Gdy **LiveEventEncodingType** na Twojej [element LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) ustawiono Basic, Media Services automatycznie bliskie wszelkie element LiveEvent, który jest nadal w stanie "Uruchomiona" 12 godzin po źródła danych wejściowych zostaną utracone, a nie LiveOutputs już działa. Jednakże możesz nadal jest naliczana za czas, jaki element LiveEvent jest w stanie "Uruchomiona".
->
-
-W poniższej tabeli przedstawiono, jak Stany element LiveEvent mapują przekładają się naliczanie opłat.
-
-| Element LiveEvent stanu | Jest to rozliczeń? |
-| --- | --- |
-| Uruchamianie |Nie (stan przejściowy) |
-| Działanie |TAK |
-| Zatrzymywanie |Nie (stan przejściowy) |
-| Zatrzymano |Nie |
+Aby uzyskać więcej informacji, zobacz [transmisji strumieniowej na żywo w ramach samouczka](stream-live-tutorial-with-api.md) opartego na [na żywo platformy .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) próbki.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Samouczek transmisji strumieniowej na żywo](stream-live-tutorial-with-api.md)
+- [Porównanie typów element LiveEvent](live-event-types-comparison.md)
+- [Stany i rozliczenia](live-event-states-billing.md)
+- [Opóźnienie](live-event-latency.md)

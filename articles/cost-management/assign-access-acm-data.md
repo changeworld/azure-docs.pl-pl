@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/09/2018
+ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: 0c34b44bb0dc5458bab842e62a88403db08dc07a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 3096a79737c816747f36956958f9a16f86b9715d
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275422"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582602"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Przypisywanie dostępu do danych rozwiązania Cost Management
 
@@ -42,7 +42,7 @@ Aby wyświetlić dane kosztów, użytkownik musi mieć co najmniej odczytu dost�
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>Zapewnianie dostępu do kosztów w witrynie EA portal
 
-Zakres konta rozliczeniowego wymaga **DA Wyświetl opłaty** opcji **włączone** w witrynie EA portal. Wszystkie inne zakresy wymagają **AO Wyświetl opłaty** opcji **włączone** w witrynie EA portal.
+Zakres działu wymaga **DA Wyświetl opłaty** opcji **włączone** w witrynie EA portal. Wszystkie inne zakresy wymagają **AO Wyświetl opłaty** opcji **włączone** w witrynie EA portal.
 
 Aby włączyć opcję:
 
@@ -75,7 +75,7 @@ Może potrwać do 30 minut, zanim nowy użytkownik mają dostęp do danych w Cos
 
 ### <a name="assign-department-scope-access"></a>Przypisywanie działu zakresu dostępu
 
-Dostęp do zakresu działu wymaga dostępu (DA Wyświetl opłaty) administratora działu w witrynie EA portal. Administrator działu ma dostęp do wyświetlenia kosztów i użycia danych skojarzonych z działu lub wielu działów.  Dane dla działu obejmują wszystkie subskrypcje należące do konta rejestracji, które są połączone z działu. W witrynie Azure portal są wymagane żadne działania.
+Dostęp do zakresu działu wymaga dostępu (DA Wyświetl opłaty) administratora działu w witrynie EA portal. Administrator działu ma dostęp do wyświetlenia kosztów i użycia danych skojarzonych z działu lub wielu działów. Dane dla działu obejmują wszystkie subskrypcje należące do konta rejestracji, które są połączone z działu. W witrynie Azure portal są wymagane żadne działania.
 
 1. Zaloguj się do portalu EA w [ https://ea.azure.com ](https://ea.azure.com) przy użyciu konta administratora przedsiębiorstwa.
 2. Wybierz **Zarządzaj** w okienku po lewej stronie.
@@ -89,7 +89,7 @@ Dostęp do zakresu działu wymaga dostępu (DA Wyświetl opłaty) administratora
 
 ## <a name="assign-enrollment-account-scope-access"></a>Przypisz dostęp do zakresu konta rejestracji
 
-Dostęp do zakresu konta rejestracji wymaga dostępu (AO Wyświetl opłaty) do właściciela konta w witrynie EA portal. Właściciel konta mogą wyświetlać, kosztów i użycia danych skojarzonych z kontem rejestracji. Dane na koncie rejestracji obejmują wszystkie subskrypcje platformy Azure skojarzone z rejestracji. W witrynie Azure portal są wymagane żadne działania.
+Dostęp do zakresu konta rejestracji wymaga dostępu (AO Wyświetl opłaty) do właściciela konta w witrynie EA portal. Właściciel konta mogą wyświetlać, kosztów i użycia danych skojarzonymi z subskrypcjami, utworzone na podstawie tego konta rejestracji. W witrynie Azure portal są wymagane żadne działania.
 
 1. Zaloguj się do portalu EA w [ https://ea.azure.com ](https://ea.azure.com) przy użyciu konta administratora przedsiębiorstwa.
 2. Wybierz **Zarządzaj** w okienku po lewej stronie.
@@ -101,9 +101,11 @@ Dostęp do zakresu konta rejestracji wymaga dostępu (AO Wyświetl opłaty) do w
 8. Kliknij pozycję **Dodaj** do utworzenia konta.  
     ![Dodaj pole konta](./media/assign-access-acm-data/add-account.png)
 
+Po wykonaniu powyższych kroków, konto użytkownika, staje się kontem rejestracji w witrynie Enterprise portal i można tworzyć subskrypcje. Użytkownik może uzyskać dostęp do kosztów i użycia danych w przypadku subskrypcji, które tworzą.
+
 ## <a name="assign-management-group-scope-access"></a>Przypisz dostęp do zakresu grupy zarządzania
 
-Dostęp do zakresu grupy zarządzania wymaga co najmniej uprawnienia czytnika zarządzania kosztami (lub czytnika). Uprawnienia do grupy zarządzania należy skonfigurować w witrynie Azure portal. Musisz mieć co najmniej uprawnienia współautora do grupy zarządzania, aby włączyć dostęp do innych użytkowników. A także muszą być włączone **AO Wyświetl opłaty** ustawienie w portalu EA.
+Dostęp do zakresu grupy zarządzania wymaga co najmniej uprawnienia czytnika zarządzania kosztami (lub czytnika). Można skonfigurować uprawnienia dla grupy zarządzania, w witrynie Azure portal. Masz co najmniej uprawnienia administratora dostępu użytkowników (lub właściciela) dla grupy zarządzania włączyć dostęp do innych użytkowników. A także muszą być włączone **AO Wyświetl opłaty** ustawienie w portalu EA.
 
 1. Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http://portal.azure.com).
 2. Wybierz **wszystkich usług** na pasku bocznym, wyszukaj _grup zarządzania_, a następnie wybierz **grup zarządzania**.
@@ -119,7 +121,7 @@ Dostęp do zakresu grupy zarządzania wymaga co najmniej uprawnienia czytnika za
 
 ## <a name="assign-subscription-scope-access"></a>Przypisywanie subskrypcji zakresu dostępu
 
-Dostęp do subskrypcji wymaga co najmniej uprawnienia czytnika zarządzania kosztami (lub czytnika). Należy skonfigurować uprawnienia do subskrypcji w witrynie Azure portal. Musisz mieć co najmniej uprawnienia współautora do subskrypcji, aby włączyć dostęp do innych użytkowników. A także muszą być włączone **AO Wyświetl opłaty** ustawienie w portalu EA.
+Dostęp do subskrypcji wymaga co najmniej uprawnienia czytnika zarządzania kosztami (lub czytnika). Można skonfigurować uprawnienia do subskrypcji, w witrynie Azure portal. Masz co najmniej uprawnienia administratora dostępu użytkowników (lub właściciela) dla subskrypcji włączyć dostęp do innych użytkowników. A także muszą być włączone **AO Wyświetl opłaty** ustawienie w portalu EA.
 
 1. Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http://portal.azure.com).
 2. Wybierz **wszystkich usług** na pasku bocznym, wyszukaj _subskrypcje_, a następnie wybierz **subskrypcje**.
@@ -133,7 +135,7 @@ Dostęp do subskrypcji wymaga co najmniej uprawnienia czytnika zarządzania kosz
 
 ## <a name="assign-resource-group-scope-access"></a>Przypisz dostęp do zakresu grupy zasobów
 
-Dostęp do grupy zasobów wymaga co najmniej uprawnienia czytnika zarządzania kosztami (lub czytnika). Należy skonfigurować uprawnienia do grupy zasobów w witrynie Azure portal. Musisz mieć co najmniej uprawnienia współautora do grupy zasobów, aby włączyć dostęp do innych użytkowników. A także muszą być włączone **AO Wyświetl opłaty** ustawienie w portalu EA.
+Dostęp do grupy zasobów wymaga co najmniej uprawnienia czytnika zarządzania kosztami (lub czytnika). Można skonfigurować uprawnienia do grupy zasobów, w witrynie Azure portal. Masz co najmniej uprawnienia administratora dostępu użytkowników (lub właściciela) dla grupy zasobów włączyć dostęp do innych użytkowników. A także muszą być włączone **AO Wyświetl opłaty** ustawienie w portalu EA.
 
 1. Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http://portal.azure.com).
 2. Wybierz **wszystkich usług** na pasku bocznym, wyszukaj _grup zasobów_, a następnie wybierz **grup zasobów**.

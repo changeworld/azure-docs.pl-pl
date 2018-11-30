@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: cwatson
-ms.openlocfilehash: 9b30e5a47b49b707c9efc53add9af44502201641
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: c5b41d86133bbcafcc61423b4d60e59846edc2f2
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52273680"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580919"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Warunki na firma Microsoft nalicza za użycie platformy Azure szczegółowe informacje 
 
@@ -88,5 +88,6 @@ Jeśli w pliku szczegółowym zestawieniem użycia, które chcesz uzyskać więc
 ## <a name="external"></a>Jak wygląda opłat za usługi zewnętrzne?
 Zewnętrznych usług (znany także jako zamówienia witryny Marketplace) są dostarczane przez dostawców niezależną usługę i są rozliczane osobno. Opłaty nie ujęte na fakturze platformy Azure. Aby dowiedzieć się więcej, zobacz [o opłatach za usługi platformy Azure zewnętrznej usługi](billing-understand-your-azure-marketplace-charges.md).
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
-Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?) można szybko rozwiązać swój problem.
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
+
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

@@ -1,22 +1,22 @@
 ---
 title: Tworzenie alertów z dynamicznymi progami w usłudze Azure Monitor
 description: Tworzenie alertów za pomocą usługi machine learning na podstawie dynamicznymi progami
-author: antonfrMSFT
+author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/27/2018
-ms.author: mbullwin
-ms.reviewer: antonfr
+ms.date: 11/29/2018
+ms.author: Yaniv.Lavi
+ms.reviewer: mbullwin
 ms.component: alerts
-ms.openlocfilehash: 1b47e3804d8be36e3c6c8c570fec06f542e8dbf2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: af9f85014ea16dd266c56a71f13b4dce2adccc9a
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233970"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619712"
 ---
-# <a name="alerts-with-dynamic-thresholds-in-azure-monitor-limited-public-preview"></a>Alerty z dynamicznymi progami w usłudze Azure Monitor (ograniczonej publicznej wersji zapoznawczej)
+# <a name="alerts-with-dynamic-thresholds-in-azure-monitor-limited-private-preview"></a>Alerty z dynamicznymi progami w usłudze Azure Monitor (ograniczony prywatna wersja zapoznawcza)
 
 Alerty z dynamicznymi progami stanowią rozszerzenie alerty metryki platformy Azure w usłudze Azure Monitor, który korzystać z zaawansowanych możliwości Machine Learning (ML), aby dowiedzieć się więcej metryki historycznych zachowanie, aby automatycznie obliczyć linii bazowych i używać ich jako progi alertów.
 
@@ -74,7 +74,7 @@ Alerty z dynamicznymi progami można skonfigurować za pomocą alertów w usłud
 7. Obliczane na podstawie:
     -  Jakie czas trwania alertu należy szukać określony warunek, wybierając z **okres**.
 
-    ![Obliczane na podstawie](./media/monitoring-alerts-dynamic-thresholds/007.png)
+    ![Oceniono na podstawie](./media/monitoring-alerts-dynamic-thresholds/007.png)
 
    > [!NOTE]
    > Obsługiwane wartości okresu: 5 minut, 10 minut, 30 minut do 1 godziny.
@@ -83,11 +83,11 @@ Alerty z dynamicznymi progami można skonfigurować za pomocą alertów w usłud
 
     Aby wyzwolić alert, gdy problem jest ciągły przez 15 minut, 3 razy pod rząd w danym okresie 5 minut, użyj następujących ustawień:
 
-   ![Obliczane na podstawie](./media/monitoring-alerts-dynamic-thresholds/0008.png)
+   ![Oceniono na podstawie](./media/monitoring-alerts-dynamic-thresholds/0008.png)
 
     Aby wyzwolić alert podczas naruszenie od progu dynamicznego w ciągu 15 minut z ostatnich 30 minut od okresu 5 minut, użyj następujących ustawień:
 
-   ![Obliczane na podstawie](./media/monitoring-alerts-dynamic-thresholds/0009.png)
+   ![Oceniono na podstawie](./media/monitoring-alerts-dynamic-thresholds/0009.png)
 
 8. Obecnie użytkownicy mogą mieć alerty z kryteriami progu dynamicznego jako pojedyncze kryterium.
 

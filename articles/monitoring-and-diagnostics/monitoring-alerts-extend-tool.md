@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 325da912c8fc4e453df895976df970f8e0f56412
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 6cbcb42ee8c77ff0c8ded966b4f04af8815ca726
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614956"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632997"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Rozszerzanie alertów z usługi Log Analytics do alertów platformy Azure
 Funkcja alertów w usłudze Azure Log Analytics jest zastępowany przez alerty platformy Azure. W ramach tego przejścia alerty, które pierwotnie skonfigurowane w usłudze Log Analytics zostanie rozszerzony na platformę Azure. Jeśli nie chcesz poczekać na ich automatycznie przeniesione na platformę Azure, możesz zainicjować proces:
@@ -150,7 +150,7 @@ Jeśli żądanie POST zakończy się pomyślnie, zwraca stan HTTP 200 OK, wraz z
 }
 ```
 
-Ta odpowiedź wskazuje, że alerty zostały pomyślnie rozszerzone do alertów platformy Azure. Właściwość wersja jest tylko do sprawdzania, czy alerty zostały rozszerzone do platformy Azure i nie są powiązane do [interfejsu API wyszukiwania usługi Log Analytics](../log-analytics/log-analytics-api-alerts.md). Gdy alerty zostały pomyślnie rozszerzone na platformę Azure, dowolny adresy e-mail pod warunkiem wpis żądania są wysyłane raportu. Jeśli wszystkie alerty w obszarze roboczym określonego są już zaplanowane być rozszerzony, odpowiedzi na żądania POST jest, czy próba zostało zabronione (kod stanu 403). Aby wyświetlić wszelkie komunikaty o błędach lub zrozumieć ten proces jest zatrzymany, możesz przesłać żądanie GET. W przypadku komunikatu o błędzie jest zwracany, wraz z informacjami podsumowania.
+Ta odpowiedź wskazuje, że alerty zostały pomyślnie rozszerzone do alertów platformy Azure. Właściwość wersja jest tylko do sprawdzania, czy alerty zostały rozszerzone do platformy Azure i nie są powiązane do [interfejsu API wyszukiwania usługi Log Analytics](../azure-monitor/platform/api-alerts.md). Gdy alerty zostały pomyślnie rozszerzone na platformę Azure, dowolny adresy e-mail pod warunkiem wpis żądania są wysyłane raportu. Jeśli wszystkie alerty w obszarze roboczym określonego są już zaplanowane być rozszerzony, odpowiedzi na żądania POST jest, czy próba zostało zabronione (kod stanu 403). Aby wyświetlić wszelkie komunikaty o błędach lub zrozumieć ten proces jest zatrzymany, możesz przesłać żądanie GET. W przypadku komunikatu o błędzie jest zwracany, wraz z informacjami podsumowania.
 
 ```json
 {

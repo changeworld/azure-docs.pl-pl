@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 057c98d4bac87b4e43e5beb8268d3d3bdbe3ec85
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 6033a61351423e65490edfe0b0607f2395c80f86
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364265"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498343"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące obciążeń IaaS na platformie Azure
 
@@ -41,7 +41,7 @@ Pierwszym środkiem ochrony maszyn wirtualnych jest, aby upewnić się, że tylk
 **Najlepsze rozwiązanie**: dostęp do maszyny Wirtualnej kontroli.   
 **Szczegóły**: Użyj [zasady usługi Azure](../azure-policy/azure-policy-introduction.md) konwencje dla zasobów w Twojej organizacji i tworzenie zasad niestandardowych. Stosowanie tych zasad do zasobów, takich jak [grup zasobów](../azure-resource-manager/resource-group-overview.md). Maszyny wirtualne, które należą do grupy zasobów dziedziczy jej zasady.
 
-Jeśli Twoja organizacja ma wiele subskrypcji, możesz potrzebować sposób wydajne zarządzanie dostępem, zasad i zgodności dla tych subskrypcji. [Grupy zarządzania systemu Azure](../azure-resource-manager/management-groups-overview.md) zapewniają poziom zakresu powyżej subskrypcji. Organizowanie subskrypcji do grup zarządzania (kontenery) i Zastosuj warunkach nadzoru do tych grup. Wszystkie subskrypcje w grupie zarządzania automatycznie dziedziczą warunki stosowane do grupy. Grupy zarządzania umożliwiają zarządzanie korporacyjnej na dużą skalę, niezależnie od tego, jakiego rodzaju subskrypcji może być.
+Jeśli Twoja organizacja ma wiele subskrypcji, możesz potrzebować sposób wydajne zarządzanie dostępem, zasad i zgodności dla tych subskrypcji. [Grupy zarządzania systemu Azure](../azure-resource-manager/management-groups-overview.md) zapewniają poziom zakresu powyżej subskrypcji. Organizowanie subskrypcji do grup zarządzania (kontenery) i Zastosuj warunkach nadzoru do tych grup. Wszystkie subskrypcje w grupie zarządzania automatycznie dziedziczą warunki stosowane do grupy. Grupy zarządzania umożliwiają zarządzanie klasy korporacyjnej na dużą skalę niezależnie od typu subskrypcji.
 
 **Najlepsze rozwiązanie**: Zmniejsz zmienność w instalacji i wdrażania maszyn wirtualnych.   
 **Szczegóły**: Użyj [usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) szablony wzmocnienie wybrane opcje wdrażania i ułatwiają zrozumienie i tworzenie spisu maszyn wirtualnych w danym środowisku.
@@ -51,7 +51,7 @@ Jeśli Twoja organizacja ma wiele subskrypcji, możesz potrzebować sposób wyda
 
 - [Współautor maszyny wirtualnej](../role-based-access-control/built-in-roles.md#virtual-machine-contributor): może zarządzać maszynami wirtualnymi, ale nie wirtualnych sieci lub konta magazynu z którym są połączone.
 - [Współautora klasycznej maszyny wirtualnej](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): mogą zarządzać maszyn wirtualnych utworzonych przy użyciu klasycznego modelu wdrażania, ale nie na wirtualnej sieci i magazynu koncie z którym są połączone maszyny wirtualne.
-- [Menedżer zabezpieczeń](../role-based-access-control/built-in-roles.md#security-manager): mogą zarządzać składniki zabezpieczeń, zasady zabezpieczeń i maszyn wirtualnych.
+- [Administrator zabezpieczeń](../role-based-access-control/built-in-roles.md#security-admin): W usłudze Security Center tylko: można wyświetlić zasady zabezpieczeń, widoku stany zabezpieczeń, edytować zasady zabezpieczeń, wyświetlanie alertów i zaleceń, Odrzuć alerty i zalecenia.
 - [Użytkownik usługi DevTest Labs](../role-based-access-control/built-in-roles.md#devtest-labs-user): można przeglądać wszystko i połącz, uruchom, uruchom ponownie i zamykają maszyny wirtualne.
 
 Administratorzy subskrypcji i coadmins usługi można zmienić to ustawienie, dzięki czemu administratorzy wszystkich maszyn wirtualnych w ramach subskrypcji. Należy ufać wszystkich Administratorzy subskrypcji i coadmins, aby zalogować się do dowolnej maszyny.

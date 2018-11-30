@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/04/2018
 ms.author: kumud
-ms.openlocfilehash: 134c7ab8156f3acb558e8b8a2da343961a6aad4e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 58bc0c0669992b8b3884e24c39862f47412b9110
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419337"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584659"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji modułu równoważenia obciążenia
 
@@ -201,7 +201,6 @@ Podstawowe publicznej usługi Load Balancer udostępnia stan sondy kondycji pods
 ## <a name="limitations"></a>Ograniczenia
 
 -  Sondy protokołu HTTPS nie obsługują wzajemnego uwierzytelniania przy użyciu certyfikatu klienta.
--  Zestaw SDK, program PowerShell nie obsługują sond protokołu HTTPS w tej chwili.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

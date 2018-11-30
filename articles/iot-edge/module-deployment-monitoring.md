@@ -8,20 +8,20 @@ ms.date: 09/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b97a88a36631af1de3c95f0730a9a951b9a3a907
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: cd077c1a552a14582fce48bbe60f56ef08e5a4d7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569067"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584846"
 ---
-# <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale"></a>Omówienie wdrożenia usługi IoT Edge dla urządzeń z jednej lub w odpowiedniej skali
+# <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Omówienie automatycznego wdrożenia usługi IoT Edge dla urządzeń z jednej lub w odpowiedniej skali
 
 Postępuj zgodnie z urządzenia w usłudze Azure IoT Edge [cykl życia urządzenia](../iot-hub/iot-hub-device-management-overview.md) przypomina na inne typy urządzeń IoT:
 
-1. Urządzenia usługi IoT Edge obsługi administracyjnej, który obejmuje tworzenie obrazu urządzenia z systemem operacyjnym i instalowanie [środowisko uruchomieniowe usługi IoT Edge](iot-edge-runtime.md).
-2. Urządzenia są skonfigurowane do uruchamiania [moduły usługi IoT Edge](iot-edge-modules.md), a następnie monitorowane pod kątem kondycji. 
-3. Na koniec urządzeń mogą wycofany, gdy są one zastąpione lub stają się przestarzałe.  
+1. Aprowizacja nowych urządzeń usługi IoT Edge imaging urządzenia z systemem operacyjnym i instalując [środowisko uruchomieniowe usługi IoT Edge](iot-edge-runtime.md).
+2. Konfigurowanie urządzeń, aby uruchamiać [moduły usługi IoT Edge](iot-edge-modules.md), a następnie monitorować ich kondycję. 
+3. Ponadto wycofywanie urządzeń, gdy są one zastąpione lub stają się przestarzałe.  
 
 Usługa Azure IoT Edge zapewnia dwa sposoby konfigurowania modułów do uruchamiania na urządzeniach usługi IoT Edge: jeden dla rozwoju i szybkie iteracje na jednym urządzeniu (Ta metoda jest używana w usłudze Azure IoT Edge [samouczki](tutorial-deploy-function.md)), i jedną do zarządzania dużą flot programu Urządzenia usługi IoT Edge. Obie te metody są dostępne, w witrynie Azure portal lub programowo. Dla docelowych grup lub dużą liczbę urządzeń, należy określić urządzeń, które chcesz wdrożyć moduły przy użyciu [tagi](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) w bliźniaczej reprezentacji urządzenia. Poniższe kroki porozmawiać na temat wdrożenia w grupie urządzeń stanu Waszyngton identyfikowane za pomocą właściwości tagów. 
 
@@ -29,16 +29,16 @@ Ten artykuł koncentruje się na konfiguracji i monitorowania etapów do floty u
 
 1. Operator definiuje wdrożenia, które opisuje zestaw modułów, a także urządzeń docelowych. Każde wdrożenie ma manifestu wdrażania, który odzwierciedla te informacje. 
 2. Usługa IoT Hub komunikuje się z wszystkie objęte nimi urządzenia, aby je skonfigurować przy użyciu żądanych modułów. 
-3. Usługa IoT Hub pobiera stan z urządzenia usługi IoT Edge i wydobywa informacje dotyczące tych dla operatora do monitorowania.  Na przykład operator widoczne, gdy urządzenia usługi Edge nie została skonfigurowana pomyślnie lub jeśli moduł zakończy się niepowodzeniem podczas wykonywania. 
+3. Usługa IoT Hub pobiera stan z urządzenia usługi IoT Edge i udostępnienie ich dla operatora.  Na przykład operator widoczne, gdy urządzenia usługi Edge nie została skonfigurowana pomyślnie lub jeśli moduł zakończy się niepowodzeniem podczas wykonywania. 
 4. W dowolnym momencie nowego urządzenia usługi IoT Edge, które spełniają warunki określania wartości docelowej są skonfigurowane dla wdrożenia. Na przykład wdrożenia, który jest przeznaczony dla wszystkich urządzeń usługi IoT Edge w stanie Waszyngton, automatycznie konfiguruje nowe urządzenie usługi IoT Edge po jego są aprowizowane i dodane do grupy urządzeń w stanie Waszyngton. 
  
 W tym artykule opisano poszczególne składniki zaangażowane w konfigurowania i monitorowania wdrożenia. Aby uzyskać wskazówki dotyczące tworzenia i aktualizowania wdrożenia, zobacz [wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę](how-to-deploy-monitor.md).
 
 ## <a name="deployment"></a>Wdrożenie
 
-Automatyczne wdrożenie usługi IoT Edge przypisuje usługi IoT Edge obrazy modułu do uruchamiania jako wystąpień w zestawie docelowym urządzenia usługi IoT Edge. To działa, konfigurując manifest wdrożenia usługi IoT Edge zawiera listę modułów za pomocą odpowiednich parametrów inicjowania. Wdrożenia można przypisać do jednego urządzenia (oparte na identyfikator urządzenia) lub do grupy urządzeń (na podstawie tagów). Po urządzenia usługi IoT Edge otrzymuje manifestu wdrażania, pobiera i instaluje moduł obrazy kontenerów z repozytoriów odpowiednich kontenerów i konfiguruje je odpowiednio. Po utworzeniu wdrożenia operator można monitorować stan wdrożenia, aby zobaczyć, czy urządzenia docelowe są poprawnie skonfigurowane.
+Automatyczne wdrożenie usługi IoT Edge przypisuje usługi IoT Edge obrazy modułu do uruchamiania jako wystąpień w zestawie docelowym urządzenia usługi IoT Edge. To działa, konfigurując manifest wdrożenia usługi IoT Edge zawiera listę modułów za pomocą odpowiednich parametrów inicjowania. Wdrożenia można przypisać do jednego urządzenia (oparte na identyfikator urządzenia) lub do grupy urządzeń (na podstawie tagów). Po urządzenia usługi IoT Edge otrzymuje manifestu wdrażania, pobiera i instaluje obrazy kontenerów z repozytoriów odpowiednich kontenerów i konfiguruje je odpowiednio. Po utworzeniu wdrożenia operator można monitorować stan wdrożenia, aby zobaczyć, czy urządzenia docelowe są poprawnie skonfigurowane.
 
-Urządzenia muszą być inicjowana jak dla urządzenia usługi IoT Edge, należy skonfigurować z wdrożeniem. Następujące wymagania wstępne muszą być na urządzeniu, zanim może ona odbierać wdrożenia:
+Można skonfigurować tylko na urządzeniach usługi IoT Edge z wdrożeniem. Następujące wymagania wstępne muszą być na urządzeniu, zanim może ona odbierać wdrożenia:
 
 * Podstawowego systemu operacyjnego
 * System zarządzania kontenera, takich jak Moby lub rozwiązania Docker
@@ -52,8 +52,8 @@ Metadane konfiguracji dla każdego modułu, obejmują: 
 
 * Wersja 
 * Typ 
-* Stan (np. uruchomiona lub zatrzymana) 
-* Uruchom ponownie zasad 
+* Stan (na przykład uruchomiona lub zatrzymana) 
+* Zasady ponownego uruchamiania 
 * Rejestr obrazów oraz kontenerów
 * Trasy dla danych wejściowych i wyjściowych 
 
@@ -61,9 +61,9 @@ Jeśli obraz modułu jest przechowywany w prywatnym rejestrze kontenerów, agent
 
 ### <a name="target-condition"></a>Warunek docelowy
 
-Warunek docelowy jest stale oceniany w celu uwzględnienia nowych urządzeń spełniających wymagania lub usunięcia urządzeń, które nie może wykonywać w czasie życia wdrożenia. Wdrożenie zostanie ponownie uruchomione, jeśli usługa wykrywa wszelkie zmiany stanu docelowego. 
+Warunek docelowy jest stale ocenianą throughtout okres istnienia wdrożenia. Uwzględniono nowych urządzeń, które spełniają wymagania, a wszystkie istniejące urządzenia, które nie są usuwane. Wdrażanie jest możliwe, jeśli usługa wykrywa wszelkie zmiany stanu docelowego. 
 
-Na przykład masz wdrożenie obejmuje A tags.environment warunek docelowy = "prod". Gdy wdrożenie jest rozpoczynane, istnieje dziesięć urządzeń w środowisku produkcyjnym. Moduły zostali pomyślnie zainstalowani na tych urządzeniach dziesięciu. Stan agenta IoT Edge jest wyświetlany jako 10 łącznej liczby urządzeń, 10 pomyślne odpowiedzi, odpowiedzi 0 i 0 oczekujące odpowiedzi. Teraz możesz dodać pięć więcej urządzeń za pomocą tags.environment = "prod". Usługa wykrywa zmianę i stan agenta IoT Edge staje się 15 łącznej liczby urządzeń, 10 pomyślne odpowiedzi, 0 odpowiedzi i 5 oczekujące odpowiedzi podczas próby wdrożenia do pięciu nowych urządzeń.
+Na przykład masz wdrożenie obejmuje A tags.environment warunek docelowy = "prod". Gdy wdrożenie jest rozpoczynane, istnieją 10 urządzeń w środowisku produkcyjnym. Moduły zostali pomyślnie zainstalowani na tych urządzeniach 10. Stan agenta IoT Edge jest wyświetlany jako 10 łącznej liczby urządzeń, 10 pomyślne odpowiedzi, odpowiedzi 0 i 0 oczekujące odpowiedzi. Teraz możesz dodać pięć więcej urządzeń za pomocą tags.environment = "prod". Usługa wykrywa zmianę i stan agenta IoT Edge staje się 15 łącznej liczby urządzeń, 10 pomyślne odpowiedzi, 0 odpowiedzi i 5 oczekujące odpowiedzi podczas próby wdrożenia do pięciu nowych urządzeń.
 
 Użyj dowolnego warunku typu Boolean na tagów bliźniaczych reprezentacji urządzenia lub identyfikator urządzenia, aby wybrać urządzenia docelowe. Jeśli chcesz użyć warunku przy użyciu tagów, musisz dodać "tags":{} sekcji w bliźniaczej reprezentacji urządzenia, w tym samym poziomie jako właściwości. [Dowiedz się więcej na temat tagów w bliźniaczej reprezentacji urządzenia](../iot-hub/iot-hub-devguide-device-twins.md)
 
@@ -78,8 +78,8 @@ Przykłady warunków docelowej:
 Poniżej przedstawiono niektóre ogranicza podczas konstruowania warunek docelowy:
 
 * W bliźniaczej reprezentacji urządzenia można utworzyć tylko za pomocą znaczników lub deviceId warunek docelowy.
-* Podwójny cudzysłów nie jest dozwolone w dowolnej części warunek docelowy. Użyj pojedynczych cudzysłowów.
-* Apostrofy reprezentują wartości warunek docelowy. W związku z tym jeśli jest ona częścią nazwy urządzenia musi znak ucieczki pojedynczy cudzysłów za pomocą innego pojedynczy cudzysłów. Na przykład warunek docelowy: operator'sDevice musi być zapisana jako deviceId = "operator" sDevice ".
+* Podwójny cudzysłów nie jest dozwolone w dowolnej części warunek docelowy. Należy używać cudzysłowów.
+* Apostrofy reprezentują wartości warunek docelowy. W związku z tym jeśli jest ona częścią nazwy urządzenia musi znak ucieczki pojedynczy cudzysłów za pomocą innego pojedynczy cudzysłów. Na przykład, aby urządzenie docelowe o nazwie `operator'sDevice`, zapis `deviceId='operator''sDevice'`.
 * Cyfry, litery i następujące znaki są dozwolone w wartości warunku docelowego: `-:.+%_#*?!(),=@;$`.
 
 ### <a name="priority"></a>Priorytet
@@ -97,7 +97,7 @@ Wdrożenia można monitorować w taki sposób, aby określić, czy pomyślnie za
 * **Docelowy** pokazuje usługi IoT Edge urządzenia pasujące wdrożenia przeznaczone dla warunku.
 * **Rzeczywiste** wyświetlane docelowej usługi IoT Edge urządzenia, które nie są objęci inne wdrożenie o wyższym priorytecie.
 * **Dobra** pokazuje usługi IoT Edge urządzenia, które zgłosiły powrót do usługi, moduły zostały pomyślnie wdrożone. 
-* **Zła** pokazuje usługi IoT Edge urządzenia mają odsyłane do usługi, że jedna lub moduły nie zostały pomyślnie wdrożone. Aby dokładniej zbadać błąd, łączyć się zdalnie z tego urządzenia i wyświetlić pliki dziennika.
+* **Zła** pokazuje usługi IoT Edge urządzenia mają odsyłane do usługi, że jedna lub moduły nie zostały pomyślnie wdrożone. Aby dokładniej zbadać błąd, łączyć się zdalnie z tych urządzeń i wyświetlić pliki dziennika.
 * **Nieznany** wyświetlane usługi IoT Edge urządzenia, które nie zgłosiły żadnych stanu dotyczące tego wdrożenia. Aby badać, Wyświetl usługi informacji i plików dziennika.
 
 ## <a name="phased-rollout"></a>Etapowego wdrażania 
@@ -115,7 +115,7 @@ Etapowe wdrażanie jest wykonywane w następujących faz i kroki: 
 
 ## <a name="rollback"></a>Wycofywanie
 
-Wdrożeń można wycofać w przypadku błędów lub błędy konfiguracji.  Ponieważ wdrożenie definiuje konfigurację modułu bezwzględne dla urządzenia usługi IoT Edge, wdrożenia dodatkowych muszą również zostać objęci tym samym urządzeniu z niższym priorytetem, nawet jeśli celem jest, aby usunąć wszystkie moduły.  
+Wdrożeń można wycofać, jeśli otrzymujesz błędy lub błędy konfiguracji.  Ponieważ wdrożenie definiuje konfigurację modułu bezwzględne dla urządzenia usługi IoT Edge, wdrożenia dodatkowych muszą również zostać objęci tym samym urządzeniu z niższym priorytetem, nawet jeśli celem jest, aby usunąć wszystkie moduły.  
 
 Wycofywanie zmian należy wykonać w następującej kolejności: 
 

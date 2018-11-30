@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
-ms.openlocfilehash: d48b55af705eddb42853fb236e5eb6a214d1a0ff
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 682ffb5659cd776117fd3eec8fdb0fa5e0427ab8
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394056"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582309"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Zamów subskrypcję usługi Office 365 przy użyciu konta platformy Azure
 Jeśli jesteś subskrybenta platformy Azure, można użyć konta platformy Azure w celu uzyskania subskrypcji usługi Office 365. Jeśli jesteś częścią organizacji, która ma subskrypcję platformy Azure, można utworzyć subskrypcji usługi Office 365 dla użytkowników w usłudze istniejącej usługi Azure Active Directory (Azure AD). Zarejestruj się do usługi Office 365 za pomocą konta mającego uprawnienia administratora globalnego lub administratorem rozliczeń w dzierżawie usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [Sprawdź moje uprawnienia konta w usłudze Azure AD](#RoleInAzureAD) i [przypisywanie ról administratorów w usłudze Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
@@ -69,5 +69,6 @@ Po zarejestrowaniu się subskrypcji usługi Office 365 jest dodawany do tego sam
 
     ![Zrzut ekranu przedstawiający rolę katalogu portalu platformy Azure administratorem rozliczeń](./media/billing-use-existing-azure-account-office-365-subscription/billing-directoryrole-limited.png)
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
-Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem. 
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
+
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). 

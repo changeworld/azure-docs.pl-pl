@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: e7a94f7630df7b0571d9e47b383942da65c88123
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 9880afb6c4fd2b7fe1e97b5390c4769c8cafb4ed
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345039"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634622"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Usługa SQL Data Warehouse business intelligence partnerów
 Aby utworzyć swoje rozwiązanie magazynu danych end-to-end, wybierz z szerokiej gamy narzędzi wiodące w branży.  W tym artykule przedstawiono firm partnerskich Microsoft business intelligence (BI) rozwiązań Obsługa usługi Azure SQL Data Warehouse.
@@ -24,17 +24,17 @@ Aby utworzyć swoje rozwiązanie magazynu danych end-to-end, wybierz z szerokiej
 | Partner | Opis | Linki | Filmy wideo |
 | --- | --- | --- | --- |
 | ![Birst][1] |**Birst**<br>Birst jest globalny lider w zakresie analizy i analizy Biznesowej w chmurze. Przedsiębiorstwa można utworzyć zaufanego źródła danych w ramach każdego użytkownika biznesowego klucza. Następnie użytkownicy biznesowi w całej organizacji można raportu i Analizuj informacje za pomocą światowej klasy narzędzi do analizy Biznesowej. |[Portal Marketplace][birst_marketplace]<br>[Witryny sieci Web][birst_website]<br>[Twitter][birst_twitter]<br>[YouTube][birst_youtube] | |
-| ![ClearStory danych][2] |**ClearStory danych**<br>Dane clearStory włącza analizę fast cyklu dla różnych danych przechowywanych w usłudze SQL Data Warehouse. Firmy clearStory zintegrowana oparta na platformie Spark platformy i analizy aplikacji szybkość dostępu do danych i harmonizacji różnych zestawów danych. Umożliwiają one eksploracji szybkie, współpracy, który umożliwia użytkownikom biznesowym można samodzielnego w celu uzyskania szczegółowych informacji. |[Witryny sieci Web][clearstory_website]<br>[Arkusz danych] [clearstory_datasheet]<br>[Twitter][clearstory_twitter]<br>[YouTube][clearstory_youtube] | |
-| ![Platforma Dell Statistica][3] |**Platforma Dell Statistica**<br>Platforma Dell Statistica to zaawansowana platforma analiz, która umożliwia organizacjom tworzyć prognozy dotyczące przyszłości, optymalizowanie procesów, zmniejszenia kosztów i zwiększanie przychodów.  Platforma Dell Statistica upraszcza analizy danych big data, usprawnia implementację i ciągłego wdrażania, wyodrębnia informacje umożliwiające działanie w tekście i korzysta z możliwości Twojej firmy. |[Witryny sieci Web][dell_statistica_website]<br>[Arkusz danych] [dell_statistica_datasheet]<br>[Twitter][dell_statistica_twitter] |[![Platforma Statistica wideo](./media/sql-data-warehouse-partner-business-intelligence/dell_statistica_video.jpg)](https://www.youtube.com/watch?v=0b8sPW2UHrU) |
-| ![Dundas][4] |**Dundas Power BI**<br>Wizualizacja danych Dundas to dostawca wiodących, globalnej analizy biznesowej i wizualizacja danych oprogramowania.  Pulpity nawigacyjne Dundas, raportowanie i analiza danych wizualnych zapewniają bezproblemową integrację aplikacji biznesowych, umożliwiając lepsze decyzje i szybszy wgląd. |[Marketplace] [dundas_bi_marketplace]<br>[Witryny sieci Web][dundas_bi_website]<br>[Arkusz danych] [dundas_bi_datasheet]<br>[Twitter][dundas_bi_twitter]<br>[YouTube][dundas_bi_youtube] |[![dundas wideo](./media/sql-data-warehouse-partner-business-intelligence/dundas_bi_video.jpg)](https://www.youtube.com/watch?v=TEbc3_e7o60) |
-| ![Jinfonet][5] |**JReport**<br>JReport jest możliwego do osadzenia rozwiązanie do analizy Biznesowej dla przedsiębiorstw. To rozwiązanie umożliwia użytkownikom tworzyć raporty, pulpity nawigacyjne i analizę danych w chmurze, obsługi dużych ilości danych i źródeł danych transakcyjnych. Dzięki wizualizowaniu danych, można wykonać własne raportowania i danych odnajdywania dla agile i na bieżąco decyzji. |[Witryny sieci Web][jinfonet_website]<br>[Arkusz danych] [jinfonet_datasheet]<br>[Twitter][jinfonet_twitter]<br>[YouTube][jinfonet_youtube] |[![jreport wideo](./media/sql-data-warehouse-partner-business-intelligence/jinfonet_video.jpg)](https://www.youtube.com/watch?v=KYqh8TuMpds) |
-| ![LogiAnalytics][6] |**Analiza histologi**<br>Razem histologi Analytics i Azure SQL Data Warehouse umożliwia zbieranie, analizowanie i natychmiast działać w największych i najbardziej różnych zestawów danych na całym świecie. |[Witryny sieci Web][logianalytics_website]<br>[Arkusz danych] [logianalytics_datasheet]<br>[Twitter][logianalytics_twitter]<br>[YouTube][logianalytics_youtube] |[![logianalytics wideo](./media/sql-data-warehouse-partner-business-intelligence/logianalytics_video.jpg)](https://www.youtube.com/watch?v=7U0Sfi3Ndpk) |
-| ![Looker][7] |**Looker Power BI**<br>Looker umożliwia wszystkim w Twojej firmie do eksplorowania i rozumienia danych, która napędza Twojej firmy. Looker oferuje również analityka danych warstwy modelowania elastyczne i wielokrotnego użytku, do kontroli i nadzorowanie tych danych.  Firmy mają zasadniczo transformacji jego kultury, używając Looker jako katalizatorem. |[Marketplace] [looker_marketplace]<br>[Witryny sieci Web][looker_website]<br>[Arkusz danych] [looker_datasheet]<br>[Twitter][looker_twitter]<br>[YouTube][looker_youtube] |[![looker wideo](./media/sql-data-warehouse-partner-business-intelligence/looker_video.jpg)](https://www.youtube.com/watch?v=WwO4ADK8ZfA) |
+| ![ClearStory danych][2] |**ClearStory danych**<br>Dane clearStory włącza analizę fast cyklu dla różnych danych przechowywanych w usłudze SQL Data Warehouse. Firmy clearStory zintegrowana oparta na platformie Spark platformy i analizy aplikacji szybkość dostępu do danych i harmonizacji różnych zestawów danych. Umożliwiają one eksploracji szybkie, współpracy, który umożliwia użytkownikom biznesowym można samodzielnego w celu uzyskania szczegółowych informacji. |[Witryny sieci Web][clearstory_website]<br>[Arkusz danych][clearstory_datasheet]<br>[Twitter][clearstory_twitter]<br>[YouTube][clearstory_youtube] | |
+| ![Platforma Dell Statistica][3] |**Platforma Dell Statistica**<br>Platforma Dell Statistica to zaawansowana platforma analiz, która umożliwia organizacjom tworzyć prognozy dotyczące przyszłości, optymalizowanie procesów, zmniejszenia kosztów i zwiększanie przychodów.  Platforma Dell Statistica upraszcza analizy danych big data, usprawnia implementację i ciągłego wdrażania, wyodrębnia informacje umożliwiające działanie w tekście i korzysta z możliwości Twojej firmy. |[Witryny sieci Web][dell_statistica_website]<br>[Arkusz danych][dell_statistica_datasheet]<br>[Twitter][dell_statistica_twitter] |[![Platforma Statistica wideo](./media/sql-data-warehouse-partner-business-intelligence/dell_statistica_video.jpg)](https://www.youtube.com/watch?v=0b8sPW2UHrU) |
+| ![Dundas][4] |**Dundas Power BI**<br>Wizualizacja danych Dundas to dostawca wiodących, globalnej analizy biznesowej i wizualizacja danych oprogramowania.  Pulpity nawigacyjne Dundas, raportowanie i analiza danych wizualnych zapewniają bezproblemową integrację aplikacji biznesowych, umożliwiając lepsze decyzje i szybszy wgląd. |[Portal Marketplace][dundas_bi_marketplace]<br>[Witryny sieci Web][dundas_bi_website]<br>[Arkusz danych][dundas_bi_datasheet]<br>[Twitter][dundas_bi_twitter]<br>[YouTube][dundas_bi_youtube] |[![dundas wideo](./media/sql-data-warehouse-partner-business-intelligence/dundas_bi_video.jpg)](https://www.youtube.com/watch?v=TEbc3_e7o60) |
+| ![Jinfonet][5] |**JReport**<br>JReport jest możliwego do osadzenia rozwiązanie do analizy Biznesowej dla przedsiębiorstw. To rozwiązanie umożliwia użytkownikom tworzyć raporty, pulpity nawigacyjne i analizę danych w chmurze, obsługi dużych ilości danych i źródeł danych transakcyjnych. Dzięki wizualizowaniu danych, można wykonać własne raportowania i danych odnajdywania dla agile i na bieżąco decyzji. |[Witryny sieci Web][jinfonet_website]<br>[Arkusz danych][jinfonet_datasheet]<br>[Twitter][jinfonet_twitter]<br>[YouTube][jinfonet_youtube] |[![jreport wideo](./media/sql-data-warehouse-partner-business-intelligence/jinfonet_video.jpg)](https://www.youtube.com/watch?v=KYqh8TuMpds) |
+| ![LogiAnalytics][6] |**Analiza histologi**<br>Razem histologi Analytics i Azure SQL Data Warehouse umożliwia zbieranie, analizowanie i natychmiast działać w największych i najbardziej różnych zestawów danych na całym świecie. |[Witryny sieci Web][logianalytics_website]<br>[Arkusz danych][logianalytics_datasheet]<br>[Twitter][logianalytics_twitter]<br>[YouTube][logianalytics_youtube] |[![logianalytics wideo](./media/sql-data-warehouse-partner-business-intelligence/logianalytics_video.jpg)](https://www.youtube.com/watch?v=7U0Sfi3Ndpk) |
+| ![Looker][7] |**Looker Power BI**<br>Looker umożliwia wszystkim w Twojej firmie do eksplorowania i rozumienia danych, która napędza Twojej firmy. Looker oferuje również analityka danych warstwy modelowania elastyczne i wielokrotnego użytku, do kontroli i nadzorowanie tych danych.  Firmy mają zasadniczo transformacji jego kultury, używając Looker jako katalizatorem. |[Portal Marketplace][looker_marketplace]<br>[Witryny sieci Web][looker_website]<br>[Arkusz danych][looker_datasheet]<br>[Twitter][looker_twitter]<br>[YouTube][looker_youtube] |[![looker wideo](./media/sql-data-warehouse-partner-business-intelligence/looker_video.jpg)](https://www.youtube.com/watch?v=WwO4ADK8ZfA) |
 | ![Qlik][8] |**Qlik Sense Enterprise**<br>Odnajdowanie szczegółowe informacje o dysku za pomocą aplikacji wizualizacji danych, które każda osoba może użyć. Za pomocą usługa Qlik Sense wszystkim innym w Twojej firmie łatwe tworzenie elastycznych, interaktywne wizualizacje i podejmowanie trafnych decyzji. |[Witryny sieci Web][qlik_website]<br>[Twitter][qlik_twitter]<br>[YouTube][qlik_youtube] |[![qlikview wideo](./media/sql-data-warehouse-partner-business-intelligence/qlik_video2.jpg)](https://www.youtube.com/watch?v=VJEDFE-07Hg) |
-| ![SiSense][9] |**SiSense**<br>SiSense to oprogramowanie do analizy biznesowej pełnym stosie, które jest dostarczana z narzędziami, które firma musi Analizuj i wizualizuj dane: analitycznej bazy danych o wysokiej wydajności, możliwość Dołącz do wielu źródeł, wyodrębnianie proste danych (ETL) i danych opartych na sieci web wizualizacji. Rozpocznij analizowanie i wizualizowanie dużych zestawów danych przy użyciu analizy i analizy Biznesowej SiSense już dziś. |[Witryny sieci Web][sisense_website]<br>[Arkusz danych] [sisense_datasheet]<br>[Twitter][sisense_twitter]<br>[YouTube][sisense_youtube] |[![sisense wideo](./media/sql-data-warehouse-partner-business-intelligence/sisense_video.jpg)](https://www.youtube.com/watch?v=6N3mkTWI5R4) |
-| ![Tableau][10] |**Tableau**<br>Firmy TABLEAU samoobsługowej analizy pomóc każdy użytkownik widział i rozumiał swoje dane w wielu różnych danych z plików prostych do bazy danych. TABLEAU musi łącznika natywnych, zoptymalizowaną Microsoft Azure SQL Data Warehouse, który obsługuje zarówno dane na żywo i analizowania w pamięci. |[Marketplace] [tableau_marketplace]<br>[Witryny sieci Web][tableau_website]<br>[Arkusz danych] [tableau_datasheet]<br>[Twitter][tableau_twitter]<br>[YouTube][tableau_youtube] |[![TABLEAU wideo](./media/sql-data-warehouse-partner-business-intelligence/tableau_video.jpg)](https://www.youtube.com/watch?v=TwbkI3ZzCHE) |
-| ![Targit][11] |**Targit**<br>Pakiet decyzji Targit zapewnia analizy i analizy Biznesowej platformy, która zapewnia pulpity nawigacyjne czasu rzeczywistego, samoobsługowej analizy, raportowanie przyjazny dla użytkownika, atrakcyjnych funkcji mobilnych i technologii proste odnajdywanie danych w rozwiązaniu pojedyncze, spójne. Targit zapewnia firmom odwagę do działania. |[Marketplace] [targit_marketplace]<br>[Witryny sieci Web][targit_website]<br>[Twitter][targit_twitter]<br>[YouTube][targit_youtube] |[![targit wideo](./media/sql-data-warehouse-partner-business-intelligence/targit_video.jpg)](https://www.youtube.com/watch?v=A0vET80Ker4) |
-| ![Platforma Yellowfin][12] |**Platforma Yellowfin**<br>Platforma Yellowfin jest top oceniająca ad-hoc, raportowanie i pulpity nawigacyjne BARC; dostawcy analizy Biznesowej w chmurze Udział w ankiecie BI. Nawiązać połączenie z usługi Azure SQL Data Warehouse, a następnie twórz i udostępniaj tworzenie pięknych raportów i pulpitów nawigacyjnych nagradzanych współpracy Power BI i lokalizację funkcjom analizy. |[Marketplace] [yellowfin_marketplace]<br>[Witryny sieci Web][yellowfin_website]<br>[Arkusz danych] [yellowfin_datasheet]<br>[Twitter][yellowfin_twitter]<br>[YouTube][yellowfin_youtube] |[![Platforma yellowfin wideo](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_video.jpg)](https://www.youtube.com/watch?v=i1q33AftI0A) |
+| ![SiSense][9] |**SiSense**<br>SiSense to oprogramowanie do analizy biznesowej pełnym stosie, które jest dostarczana z narzędziami, które firma musi Analizuj i wizualizuj dane: analitycznej bazy danych o wysokiej wydajności, możliwość Dołącz do wielu źródeł, wyodrębnianie proste danych (ETL) i danych opartych na sieci web wizualizacji. Rozpocznij analizowanie i wizualizowanie dużych zestawów danych przy użyciu analizy i analizy Biznesowej SiSense już dziś. |[Witryny sieci Web][sisense_website]<br>[Arkusz danych][sisense_datasheet]<br>[Twitter][sisense_twitter]<br>[YouTube][sisense_youtube] |[![sisense wideo](./media/sql-data-warehouse-partner-business-intelligence/sisense_video.jpg)](https://www.youtube.com/watch?v=6N3mkTWI5R4) |
+| ![Tableau][10] |**Tableau**<br>Firmy TABLEAU samoobsługowej analizy pomóc każdy użytkownik widział i rozumiał swoje dane w wielu różnych danych z plików prostych do bazy danych. TABLEAU musi łącznika natywnych, zoptymalizowaną Microsoft Azure SQL Data Warehouse, który obsługuje zarówno dane na żywo i analizowania w pamięci. |[Portal Marketplace][tableau_marketplace]<br>[Witryny sieci Web][tableau_website]<br>[Arkusz danych][tableau_datasheet]<br>[Twitter][tableau_twitter]<br>[YouTube][tableau_youtube] |[![TABLEAU wideo](./media/sql-data-warehouse-partner-business-intelligence/tableau_video.jpg)](https://www.youtube.com/watch?v=TwbkI3ZzCHE) |
+| ![Targit][11] |**Targit**<br>Pakiet decyzji Targit zapewnia analizy i analizy Biznesowej platformy, która zapewnia pulpity nawigacyjne czasu rzeczywistego, samoobsługowej analizy, raportowanie przyjazny dla użytkownika, atrakcyjnych funkcji mobilnych i technologii proste odnajdywanie danych w rozwiązaniu pojedyncze, spójne. Targit zapewnia firmom odwagę do działania. |[Portal Marketplace][targit_marketplace]<br>[Witryny sieci Web][targit_website]<br>[Twitter][targit_twitter]<br>[YouTube][targit_youtube] |[![targit wideo](./media/sql-data-warehouse-partner-business-intelligence/targit_video.jpg)](https://www.youtube.com/watch?v=A0vET80Ker4) |
+| ![Platforma Yellowfin][12] |**Platforma Yellowfin**<br>Platforma Yellowfin jest top oceniająca ad-hoc, raportowanie i pulpity nawigacyjne BARC; dostawcy analizy Biznesowej w chmurze Udział w ankiecie BI. Nawiązać połączenie z usługi Azure SQL Data Warehouse, a następnie twórz i udostępniaj tworzenie pięknych raportów i pulpitów nawigacyjnych nagradzanych współpracy Power BI i lokalizację funkcjom analizy. |[Portal Marketplace][yellowfin_marketplace]<br>[Witryny sieci Web][yellowfin_website]<br>[Arkusz danych] [yellowfin_datasheet]<br>[Twitter][yellowfin_twitter]<br>[YouTube][yellowfin_youtube] |[![Platforma yellowfin wideo](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_video.jpg)](https://www.youtube.com/watch?v=i1q33AftI0A) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 
@@ -79,24 +79,61 @@ Aby dowiedzieć się więcej o niektórych z innymi partnerami, zobacz [partner�
 [qlik_getstarted]:http://www.qlik.com/us/products/qlik-sense/getting-started
 
 <!--Datasheet Links-->
-<!--[birst_datasheet]:--> [clearstory_datasheet]:http://www.clearstorydata.com/wp-content/uploads/2016/05/ClearStoryData-PO01-062015-01-2.pdf [dell_statistica_datasheet]:http://www.statsoft.com/Portals/0/Support/Download/Brochures/STATISTICA_Data_Miner.pdf [dundas_bi_datasheet]:http://www.dundas.com/resource/getwhitepaper?whitePaperName=27-05-2016-Dundas-BI-Product-Brief-_-Embedded-Analytics%2FEckerson-Group-EBI-Report-DundasProduct-Brief.pdf [jinfonet_datasheet]:http://www.jinfonet.com/products/JReport%20Brief.pdf [logianalytics_datasheet]:https://www.logianalytics.com/datasheet/logi-info/ [looker_datasheet]:https://info.looker.com/h/i/229169578-looker-for-microsoft-azure [ qlik_datasheet]:http://www.qlik.com/en/resource-library/the-qlikview-product-family [sisense_datasheet]:https://pages.sisense.com/rs/601-OXE-081/images/Product%20Highlights.pdf [tableau_datasheet]:http://www.tableau.com/stories/workbook/azure-sql-data <!--[targit_datasheet]:-->
-[yellowfin_datasheet]:http://www.yellowfinbi.com/Document.i4?DocumentId=877299
+
+<!--[birst_datasheet]:-->
+
+[clearstory_datasheet]:http://www.clearstorydata.com/wp-content/uploads/2016/05/ClearStoryData-PO01-062015-01-2.pdf
+[dell_statistica_datasheet]:http://www.statsoft.com/Portals/0/Support/Download/Brochures/STATISTICA_Data_Miner.pdf
+[dundas_bi_datasheet]:http://www.dundas.com/resource/getwhitepaper?whitePaperName=27-05-2016-Dundas-BI-Product-Brief-_-Embedded-Analytics%2FEckerson-Group-EBI-Report-DundasProduct-Brief.pdf
+[jinfonet_datasheet]:http://www.jinfonet.com/products/JReport%20Brief.pdf
+[logianalytics_datasheet]:https://www.logianalytics.com/datasheet/logi-info/
+
+[looker_datasheet]:https://info.looker.com/h/i/229169578-looker-for-microsoft-azure
+
+[qlik_datasheet]:http://www.qlik.com/en/resource-library/the-qlikview-product-family
+[sisense_datasheet]:https://pages.sisense.com/rs/601-OXE-081/images/Product%20Highlights.pdf
+
+[tableau_datasheet]:http://www.tableau.com/stories/workbook/azure-sql-data
+
+<!--[targit_datasheet]:--> [yellowfin_datasheet]:http://www.yellowfinbi.com/Document.i4?DocumentId=877299
 
 <!--Marketplace Links -->
 [birst_marketplace]:https://azure.microsoft.com/marketplace/partners/birst/birst/
-<!--[clearstory_marketplace]:--> [dell_statistica_marketplace]:https://azure.microsoft.com/marketplace/partners/dell-software/statistica-data-miner [dundas_bi_marketplace]:https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/ <!--[jinfonet_marketplace]:-->
-[logianalytics_marketplace]:https://azure.microsoft.com/marketplace/partners/logi-analytics/logi-info-11/ [looker_marketplace]:https://azure.microsoft.com/marketplace/partners/looker/looker-analytics-platform-326/ [qlik_marketplace]:https://azure.microsoft.com/marketplace/partners/qliktech-international-ab/qlikview/ [sisense_marketplace]:https://azure.microsoft.com/marketplace/partners/sisense/sisense-byol/ [tableau_marketplace]:https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/ [targit_marketplace]:https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/ [ yellowfin_marketplace]:https://azure.microsoft.com/marketplace/partners/yellowfin/yellowfin-for-azure-byol/
+
+<!--[clearstory_marketplace]:--> [dell_statistica_marketplace]:https://azure.microsoft.com/marketplace/partners/dell-software/statistica-data-miner
+
+[dundas_bi_marketplace]:https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/ 
+
+<!--[jinfonet_marketplace]:-->
+
+[logianalytics_marketplace]:https://azure.microsoft.com/marketplace/partners/logi-analytics/logi-info-11/
+[looker_marketplace]:https://azure.microsoft.com/marketplace/partners/looker/looker-analytics-platform-326/
+
+[qlik_marketplace]:https://azure.microsoft.com/marketplace/partners/qliktech-international-ab/qlikview/
+
+[sisense_marketplace]:https://azure.microsoft.com/marketplace/partners/sisense/sisense-byol/
+[tableau_marketplace]:https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/
+[targit_marketplace]:https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/ 
+[yellowfin_marketplace]:https://azure.microsoft.com/marketplace/partners/yellowfin/yellowfin-for-azure-byol/
 
 <!--Press links-->
-<!--[birst_press]:--> [clearstory_press]:http://www.clearstorydata.com/press/clearstory-data-paired-with-new-microsoft-azure-sql-data-warehouse-release-provides-highly-scalable-data-analysis-at-apache-spark-speed/ <!--[dell_statistica_press]:-->
-[dundas_bi_press]:https://www.dundas.com/about/news/24-06-2015-dundas-data-visualization-provides-seamless-integration-with-microsoft-azure-and-azure-sql-data-warehouse <!--[jinfonet_press]:-->
-[logianalytics_press]:http://www.logianalytics.com/logi-news/announcing-logi-info-integration-with-azure-sql-data-warehouse/ [looker_press]:https://looker.com/news/press/looker-brings-self-serve-analytics-to-microsoft-azure <!--[qlik_press]:-->
-<!--[sisense_press]:-->
-[tableau_press]:https://www.tableau.com/about/blog/2015/7/visualizing-data-cloud-microsoft-azure-tableau-online-40832 <!--[targit_press]:-->
+
+<!--[birst_press]:--> [clearstory_press]:http://www.clearstorydata.com/press/clearstory-data-paired-with-new-microsoft-azure-sql-data-warehouse-release-provides-highly-scalable-data-analysis-at-apache-spark-speed/
+
+<!--[dell_statistica_press]:--> [dundas_bi_press]:https://www.dundas.com/about/news/24-06-2015-dundas-data-visualization-provides-seamless-integration-with-microsoft-azure-and-azure-sql-data-warehouse
+
+<!--[jinfonet_press]:--> [logianalytics_press]:http://www.logianalytics.com/logi-news/announcing-logi-info-integration-with-azure-sql-data-warehouse/ [looker_press]:https://looker.com/news/press/looker-brings-self-serve-analytics-to-microsoft-azure
+
+<!--[qlik_press]:-->
+
+<!--[sisense_press]:--> [tableau_press]:https://www.tableau.com/about/blog/2015/7/visualizing-data-cloud-microsoft-azure-tableau-online-40832 
+
+<!--[targit_press]:-->
 <!--[yellowfin_press]:-->
 
 <!--YouTube links-->
 [birst_youtube]:https://www.youtube.com/user/BirstBI
+
 [clearstory_youtube]:https://www.youtube.com/user/ClearStoryData
 [dell_statistica_youtube]:https://www.youtube.com/user/DellSoftwareVideo
 [dundas_bi_youtube]:https://www.youtube.com/user/dundasdv
@@ -106,7 +143,9 @@ Aby dowiedzieć się więcej o niektórych z innymi partnerami, zobacz [partner�
 [qlik_youtube]:https://www.youtube.com/user/qlikview
 [sisense_youtube]:https://www.youtube.com/user/sisenseanalytics
 [tableau_youtube]:https://www.youtube.com/user/tableausoftware
+
 [targit_youtube]:https://www.youtube.com/user/TargitAS
+
 [yellowfin_youtube]:https://www.youtube.com/user/YellowfinTeam
 
 <!--Twitter links-->

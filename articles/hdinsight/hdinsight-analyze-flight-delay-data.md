@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3e792eb9ab2e2902bfc9c84db7c1c344fb0cf67f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 93929df86057b48e132048a0879bc7347402652a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622350"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497757"
 ---
-# <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analizowanie danych dotyczących opóźnień lotów przy użyciu programu Hive w HDInsight
-Gałąź umożliwia uruchamianie zadań Apache Hadoop MapReduce za pomocą skryptów języka przypominającego SQL o nazwie  *[HiveQL][hadoop-hiveql]*, które mogą być stosowane do podsumowania, wykonywanie zapytań i analizowania dużych ilości danych.
+# <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>Analizowanie danych dotyczących opóźnień lotów przy użyciu technologii Hive w HDInsight
+[Apache Hive](https://hive.apache.org/) umożliwia uruchamianie [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) zadania za pomocą języka skryptów przypominającego SQL o nazwie *[HiveQL] [ hadoop-hiveql]*, które mogą być stosowane do podsumowania, odpytywania i analizowania dużych ilości danych.
 
 > [!IMPORTANT]
-> Kroki opisane w tym dokumencie wymagają klastra HDInsight z systemem Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Informacje dotyczące kroków, współpracujących z klastrem opartych na systemie Linux, zobacz [analizowanie danych dotyczących opóźnień lotów przy użyciu programu Hive w HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md).
+> Kroki opisane w tym dokumencie wymagają klastra HDInsight z systemem Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Informacje dotyczące kroków, współpracujących z klastrem opartych na systemie Linux, zobacz [analizowanie danych dotyczących opóźnień lotów przy użyciu technologii Hive w HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md).
 
 Jedną z głównych zalet usługi Azure HDInsight polega na rozdzieleniu danych magazynu i mocy obliczeniowej. HDInsight używa usługi Azure Blob storage do przechowywania danych. Typowe zadania obejmuje trzy części:
 
@@ -76,7 +76,7 @@ W poniższej tabeli wymieniono pliki używane w ramach tego samouczka:
 
 ## <a name="create-cluster-and-run-hivesqoop-jobs"></a>Tworzenie klastra i uruchamiać zadania Hive/narzędzia Sqoop
 MapReduce usługi Hadoop jest przetwarzanie wsadowe. Najbardziej ekonomiczny sposób uruchamiania zadania Hive jest tworzenie klastra dla zadania i usunąć zadanie po zakończeniu zadania. Poniższy skrypt obejmuje cały proces.
-Aby uzyskać więcej informacji na temat tworzenia klastra usługi HDInsight i uruchamiania zadań Hive, zobacz [Tworzenie klastrów usługi Hadoop w HDInsight] [ hdinsight-provision] i [korzystanie z programu Hive z HDInsight] [hdinsight-use-hive].
+Aby uzyskać więcej informacji na temat tworzenia klastra usługi HDInsight i uruchamiania zadań Hive, zobacz [klastrów utworzyć Apache Hadoop w HDInsight] [ hdinsight-provision] i [używanie programu Apache Hive z HDInsight] [hdinsight-use-hive].
 
 **Aby uruchamiać zapytania Hive, programu Azure PowerShell**
 
@@ -237,10 +237,10 @@ Aby uzyskać więcej informacji na temat tworzenia klastra usługi HDInsight i u
 - - -
 
 ## <a id="appendix-a"></a>Dodatek A — przekazywanie danych dotyczących opóźnień lotów do usługi Azure Blob storage
-Przekazywanie plików danych i pliki skryptów HiveQL (zobacz [dodatek B](#appendix-b)) wymaga pewnych planowania. Chodzi o to, aby zapisywać pliki danych i plik HiveQL, przed rozpoczęciem tworzenia klastra usługi HDInsight i uruchamianie zadania Hive. Dostępne są dwie opcje:
+Przekazywanie plików danych i [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) pliki skryptów (zobacz [dodatek B](#appendix-b)) wymaga pewnych planowania. Chodzi o to, aby zapisywać pliki danych i plik HiveQL, przed rozpoczęciem tworzenia klastra usługi HDInsight i uruchamianie zadania Hive. Dostępne są dwie opcje:
 
 * **Użyj tego samego konta usługi Azure Storage, który będzie używany przez klaster usługi HDInsight jako domyślny system plików.** Ponieważ klaster HDInsight będzie miał klucz dostępu konta magazynu, nie trzeba wprowadzać żadnych dodatkowych zmian.
-* **Użyj innego konta usługi Azure Storage z domyślnego systemu plików klastra HDInsight.** Jeśli jest to możliwe, należy zmodyfikować tworzenia część programu Windows PowerShell, skrypt znalezione w [klastra HDInsight do tworzenia i uruchamiania zadań Hive/Sqoop](#runjob) do połączenia konta magazynu jako dodatkowe konto magazynu. Aby uzyskać instrukcje, zobacz [Tworzenie klastrów usługi Hadoop w HDInsight][hdinsight-provision]. Klaster HDInsight wie, następnie klucz dostępu dla konta magazynu.
+* **Użyj innego konta usługi Azure Storage z domyślnego systemu plików klastra HDInsight.** Jeśli jest to możliwe, należy zmodyfikować tworzenia część programu Windows PowerShell, skrypt znalezione w [klastra HDInsight do tworzenia i uruchamiania zadania Apache Hive/Sqoop](#runjob) do połączenia konta magazynu jako dodatkowe konto magazynu. Aby uzyskać instrukcje, zobacz [klastrów utworzyć Apache Hadoop w HDInsight][hdinsight-provision]. Klaster HDInsight wie, następnie klucz dostępu dla konta magazynu.
 
 > [!NOTE]
 > Ścieżka magazynu obiektów Blob dla pliku danych jest trudne, kodowane w pliku skryptu HiveQL. Należy zaktualizować go odpowiednio.
@@ -359,7 +359,7 @@ Jeśli zdecydujesz się użyć innej metody do przekazywania plików, upewnij si
 - - -
 
 ## <a id="appendix-b"></a>Dodatek B — Utwórz i Przekaż skrypt HiveQL
-Przy użyciu programu Azure PowerShell, można uruchomić wiele instrukcje HiveQL jednego naraz lub pakietu w pliku skryptu za pomocą instrukcji HiveQL. W tej sekcji pokazano, jak utworzyć skrypt HiveQL i Przekaż skrypt do usługi Azure Blob storage przy użyciu programu Azure PowerShell. Gałęzi wymaga skryptów HiveQL, które mają być przechowywane w usłudze Azure Blob storage.
+Przy użyciu programu Azure PowerShell, możesz uruchomić wiele [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) instrukcji jeden w czasie, lub pakietu w pliku skryptu za pomocą instrukcji HiveQL. W tej sekcji pokazano, jak utworzyć skrypt HiveQL i Przekaż skrypt do usługi Azure Blob storage przy użyciu programu Azure PowerShell. Gałęzi wymaga skryptów HiveQL, które mają być przechowywane w usłudze Azure Blob storage.
 
 Skrypt HiveQL będzie wykonywać następujące czynności:
 
@@ -369,7 +369,7 @@ Skrypt HiveQL będzie wykonywać następujące czynności:
 4. **Utwórz tabelę opóźnienia**. Warto wyczyścić dane przed dalszym przetwarzaniem. To zapytanie tworzy nową tabelę *opóźnienia*, z tabeli delays_raw. Należy pamiętać, że kolumny TEMP (jak wspomniano wcześniej) nie są kopiowane oraz że **podciąg** funkcja jest używana, aby usunąć znaki cudzysłowu z danych.
 5. **Obliczenia pogody średnie opóźnienie i grupy wyniki według nazwy miasta.** Zostanie również dane wyjściowe wyniki do usługi Blob storage. Pamiętaj, że zapytanie spowoduje usunięcie apostrofy z danych, a następnie spowoduje wykluczenie wiersze, w których wartość **weather_delay** ma wartość null. Jest to konieczne, ponieważ Sqoop, używany w dalszej części tego samouczka nie bezpiecznie obsługiwać te wartości domyślne.
 
-Aby uzyskać pełną listę poleceń HiveQL, zobacz [języka definicji danych Hive][hadoop-hiveql]. Każde polecenie HiveQL musi kończyć się średnikiem.
+Aby uzyskać pełną listę poleceń HiveQL, zobacz [języka definicji danych Apache Hive][hadoop-hiveql]. Każdy [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) polecenia musi kończyć się średnikiem.
 
 **Aby utworzyć plik skryptu HiveQL**
 
@@ -712,13 +712,13 @@ Aby uzyskać pełną listę poleceń HiveQL, zobacz [języka definicji danych Hi
 5. Sprawdzanie poprawności danych wyjściowych skryptu. Upewnij się, że skrypt został uruchomiony pomyślnie.
 
 ## <a id="nextsteps"></a> Następne kroki
-Teraz rozumiesz sposób przekazywania pliku do usługi Azure Blob storage, sposobu wypełniania tabeli programu Hive przy użyciu danych z usługi Azure Blob storage, jak uruchamiać zapytania Hive i sposób eksportowania danych z systemu plików HDFS do usługi Azure SQL database przy użyciu narzędzia Sqoop. Aby dowiedzieć się więcej, zobacz następujące artykuły:
+Gdy już wiesz, jak przekazać plik do usługi Azure Blob storage, sposobu wypełniania tabeli programu Apache Hive przy użyciu danych z usługi Azure Blob storage, sposobu uruchamiania zapytań programu Hive i jak eksportować dane za pomocą narzędzia Sqoop [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) do bazy danych SQL Azure Baza danych. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
 * [Rozpoczynanie pracy z usługą HDInsight][hdinsight-get-started]
-* [Korzystanie z programu Hive z usługą HDInsight][hdinsight-use-hive]
-* [Use Oozie with HDInsight (Używanie technologii Oozie z usługą HDInsight)][hdinsight-use-oozie]
-* [Use Sqoop with HDInsight (Używanie narzędzia Sqoop z usługą HDInsight)][hdinsight-use-sqoop]
-* [Korzystanie z języka Pig z usługą HDInsight][hdinsight-use-pig]
+* [Use Apache Hive z HDInsight][hdinsight-use-hive]
+* [Za pomocą usług Apache Oozie HDInsight][hdinsight-use-oozie]
+* [Za pomocą HDInsight przy użyciu narzędzia Apache Sqoop][hdinsight-use-sqoop]
+* [Apache Pig za pomocą HDInsight][hdinsight-use-pig]
 * [Opracowywanie programów MapReduce w języku Java dla HDInsight][hdinsight-develop-mapreduce]
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/

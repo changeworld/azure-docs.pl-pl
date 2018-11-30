@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 32ce9cb456e302647e2e09db6ed549cd4795fed7
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f9cdb11bad5d4aa94fdc083a0fc7dc6a2c5787cd
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448394"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635156"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Model danych analizy dzienników dla danych usługi Azure Backup
 Tworzenie raportów przy użyciu modelu danych usługi Log Analytics. Z modelem danych utworzenia niestandardowych kwerend i pulpitów nawigacyjnych lub dostosowywanie danych usługi Azure Backup możesz dowolnie.
@@ -281,4 +281,4 @@ Ta tabela zawiera szczegółowe informacje dotyczące pól związanych z magazyn
 | ResourceType |Tekst |Typ zasobu, dla którego dane są zbierane. Na przykład magazyny |
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po przejrzeniu modelu danych do tworzenia raportów usługi Azure Backup, możesz rozpocząć [Tworzenie pulpitu nawigacyjnego](../log-analytics/log-analytics-dashboards.md) w usłudze Log Analytics.
+Po przejrzeniu modelu danych do tworzenia raportów usługi Azure Backup, możesz rozpocząć [Tworzenie pulpitu nawigacyjnego](../azure-monitor/platform/dashboards.md) w usłudze Log Analytics.

@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: a1b21afb02cffe608ece8687359a021c84b05e1e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 951292a34f59fd143a7997571513a3c852bbce81
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014299"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497986"
 ---
-# <a name="analyze-application-insights-telemetry-logs-with-spark-on-hdinsight"></a>Analizowanie dzienników telemetrii usługi Application Insights za pomocą platformy Spark na HDInsight
+# <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analizowanie dzienników telemetrii usługi Application Insights przy użyciu platformy Apache Spark w HDInsight
 
-Dowiedz się, jak używać platformy Spark w HDInsight do analizowania danych telemetrycznych Application Insights.
+Dowiedz się, jak używać [platformy Apache Spark](https://spark.apache.org/) na HDInsight do analizowania danych telemetrycznych Application Insights.
 
 [Visual Studio Application Insights](../../application-insights/app-insights-overview.md) to usługa analizy, które monitoruje aplikacje sieci web. Dane telemetryczne generowane przez usługę Application Insights można wyeksportować do usługi Azure Storage. Gdy dane znajdują się w usłudze Azure Storage, HDInsight może służyć do analizowania go.
 
@@ -26,7 +26,7 @@ Dowiedz się, jak używać platformy Spark w HDInsight do analizowania danych te
 
 * Aplikacja, która jest skonfigurowana do używania usługi Application Insights.
 
-* Znajomość tworzenia klastra HDInsight opartych na systemie Linux. Aby uzyskać więcej informacji, zobacz [tworzenie Spark on HDInsight](apache-spark-jupyter-spark-sql.md).
+* Znajomość tworzenia klastra HDInsight opartych na systemie Linux. Aby uzyskać więcej informacji, zobacz [tworzenie platformy Apache Spark w HDInsight](apache-spark-jupyter-spark-sql.md).
 
   > [!IMPORTANT]
   > Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
@@ -362,14 +362,14 @@ Aby dodać konto usługi Azure Storage do istniejącego klastra, skorzystaj z in
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej przykładów użycia aparatu Spark do pracy z danymi i usługami na platformie Azure zobacz następujące dokumenty:
+Aby uzyskać więcej przykładów korzystania z platformy Apache Spark do pracy z danymi i usługami na platformie Azure zobacz następujące dokumenty:
 
-* [Platforma Spark i analiza biznesowa: interakcyjna analiza danych na platformie Spark w usłudze HDInsight z użyciem narzędzi do analizy biznesowej](apache-spark-use-bi-tools.md)
-* [Platforma Spark i usługa Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do analizy temperatury w budynku z użyciem danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Platforma Spark i usługa Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników kontroli żywności](apache-spark-machine-learning-mllib-ipython.md)
-* [Analiza dzienników witryny sieci Web na platformie Spark w usłudze HDInsight](apache-spark-custom-library-website-log-analysis.md)
+* [Platforma Apache Spark w usłudze BI: interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](apache-spark-use-bi-tools.md)
+* [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do analizy temperatury w budynku z użyciem danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do przewidywania wyników kontroli żywności](apache-spark-machine-learning-mllib-ipython.md)
+* [Analiza dziennika witryny sieci Web przy użyciu platformy Apache Spark w HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 Aby uzyskać informacje na temat tworzenia i uruchamiania aplikacji Spark zobacz następujące dokumenty:
 
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](apache-spark-create-standalone-application.md)
-* [Zdalne uruchamianie zadań w klastrze Spark przy użyciu programu Livy](apache-spark-livy-rest-interface.md)
+* [Zdalne uruchamianie zadań w klastrze usługi Apache Spark przy użyciu programu Livy](apache-spark-livy-rest-interface.md)

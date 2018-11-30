@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 11/30/2018
 ms.author: celested
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 942151c0ce2a3a79dbdce9b90adea721456f920f
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 2f9cefa31b007cae715ff2ea98bccb3112babbef
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288479"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619796"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Platformy wyrażania zgody w usłudze Azure Active Directory
 
@@ -39,23 +39,29 @@ Poniższe kroki pokazują, jak środowisko działa zgody dla deweloperów aplika
 
 1. Załóżmy, że masz klienta aplikacji sieci web, który wymaga, aby żądać określonych uprawnień dostępu do zasobów/interfejsu API. Dowiesz się, jak przeprowadzić tę konfigurację w następnej sekcji, ale zasadniczo witryny Azure portal jest używane do deklarowania żądań dotyczących uprawnień podczas konfiguracji. Podobnie jak inne ustawienia konfiguracji staną się częścią aplikacji usługi Azure AD rejestracji:
 
-  ![Uprawnienia do innych aplikacji](./media/quickstart-v1-integrate-apps-with-azure-ad/requiredpermissions.png)
+    ![Uprawnienia do innych aplikacji](./media/quickstart-v1-integrate-apps-with-azure-ad/requiredpermissions.png)
 
 1. Należy wziąć pod uwagę uprawnienia aplikacji zostały zaktualizowane, aplikacja jest uruchomiona i użytkownik ma użyć go po raz pierwszy. Po pierwsze, aplikacja musi uzyskać kod autoryzacji z usługi Azure AD `/authorize` punktu końcowego. Kod autoryzacji mogą następnie służyć do uzyskania nowego dostępu i token odświeżania.
 
 1. Jeśli użytkownik nie jest już uwierzytelniony, Azure AD `/authorize` punktu końcowego monituje użytkownika do logowania.
 
-  ![Użytkownik lub administrator, zaloguj się do usługi Azure AD](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
+    [Użytkownik lub administrator, zaloguj się do usługi Azure AD](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
 
 1. Po użytkownik zalogował się w usłudze Azure AD określi, jeśli użytkownik powinien być wyświetlony strona zgody użytkownika. To jest na podstawie tego, czy użytkownik (lub administratora w organizacji) już udzielił zgody aplikacji. Jeśli zgody nie ma już przyznane, usługi Azure AD monituje użytkownika o zgodę i wyświetli wymagane uprawnienia niezbędne do działania. Zestaw uprawnień, które są wyświetlane w oknie dialogowym wyrażania zgody są zgodne z typami, które wybrano w **delegowane uprawnienia** w witrynie Azure portal.
 
-  ![Środowisko zgody użytkownika](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![Środowisko zgody użytkownika](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
 
 1. Po użytkownik udziela zgody, Kod autoryzacji jest zwracana do aplikacji jest zrealizowany uzyskiwanie tokenu dostępu i token odświeżania. Aby uzyskać więcej informacji na temat tego przepływu, zobacz [typ aplikacji interfejsu API sieci Web](web-api.md).
 
-1. Jako administrator mogą również wyrazić zgodę na delegowane uprawnienia aplikacji w imieniu wszystkich użytkowników w dzierżawie. Zgody administratora, okno dialogowe ze zgodą zapobiega wyświetlane dla każdego użytkownika w dzierżawie i może odbywać się [witryny Azure portal](https://portal.azure.com) przez użytkowników z roli administratora. Z **ustawienia** strona aplikacji, wybierz pozycję **wymagane uprawnienia** i kliknij pozycję **udzielić uprawnień** przycisku.
+1. Jako administrator mogą również wyrazić zgodę na delegowane uprawnienia aplikacji w imieniu wszystkich użytkowników w dzierżawie. Zgody administratora, okno dialogowe ze zgodą zapobiega wyświetlane dla każdego użytkownika w dzierżawie i może odbywać się [witryny Azure portal](https://portal.azure.com) przez użytkowników z roli administratora. Aby dowiedzieć się, który administrator ról mogą wyrazić zgodę na delegowane uprawnienia, zobacz [uprawnienia roli administratora w usłudze Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
 
-  ![Przyznawanie uprawnień dla zgody administratora jawne](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
+    **Do wyrażenia zgody na aplikację na delegowane uprawnienia**
+
+    1. Przejdź do **ustawienia** strony aplikacji
+    1. Wybierz **wymagane uprawnienia**.
+    1. Kliknij pozycję **udzielić uprawnień** przycisku.
+
+    ![Przyznawanie uprawnień dla zgody administratora jawne](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
 
   > [!IMPORTANT]
   > Udzielanie jawnej zgody, za pomocą **udzielić uprawnień** przycisk jest obecnie wymagane dla aplikacji jednostronicowej (SPA), które używają ADAL.js. W przeciwnym razie aplikacja ulegnie awarii, gdy żąda tokenu dostępu.

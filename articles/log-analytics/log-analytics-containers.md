@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 6f4f2f6a7999b2d26e198a11bb7cee27991a775b
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 81728e7963767cd90bf2486a35fbce55043a76f7
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711960"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633473"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Rozwiązanie do monitorowania kontenerów w usłudze Log Analytics
 
@@ -126,7 +126,7 @@ Po zainstalowaniu platformy Docker, użyj następujących ustawień na hoście k
 
 **Na wszystkich hostach kontenerów systemu Linux z wyjątkiem systemu CoreOS:**
 
-- Aby uzyskać więcej informacji oraz instrukcje dotyczące sposobu instalowania agenta usługi Log Analytics dla systemu Linux, zobacz [omówienie agenta usługi Log Analytics](log-analytics-agent-overview.md).
+- Aby uzyskać więcej informacji oraz instrukcje dotyczące sposobu instalowania agenta usługi Log Analytics dla systemu Linux, zobacz [omówienie agenta usługi Log Analytics](../azure-monitor/platform/log-analytics-agent.md).
 
 **Na wszystkich hostach kontenerów systemu Linux CoreOS w tym:**
 
@@ -524,9 +524,9 @@ Aby uzyskać więcej informacji na temat konfigurację demona platformy Docker, 
 
 #### <a name="install-windows-agents"></a>Zainstaluj agentów Windows
 
-Aby włączyć monitorowanie kontenerów Windows i funkcji Hyper-V, należy zainstalować program Microsoft Monitoring Agent (MMA) na komputerach Windows, znajdujących się na hostach kontenerów. Na komputerach z systemem Windows w środowisku w środowisku lokalnym, zobacz [Windows łączenie komputerów do usługi Log Analytics](log-analytics-agent-windows.md). W przypadku maszyn wirtualnych działających na platformie Azure, podłącz je do usługi Log Analytics przy użyciu [rozszerzenie maszyny wirtualnej](log-analytics-quick-collect-azurevm.md).
+Aby włączyć monitorowanie kontenerów Windows i funkcji Hyper-V, należy zainstalować program Microsoft Monitoring Agent (MMA) na komputerach Windows, znajdujących się na hostach kontenerów. Na komputerach z systemem Windows w środowisku w środowisku lokalnym, zobacz [Windows łączenie komputerów do usługi Log Analytics](../azure-monitor/platform/agent-windows.md). W przypadku maszyn wirtualnych działających na platformie Azure, podłącz je do usługi Log Analytics przy użyciu [rozszerzenie maszyny wirtualnej](log-analytics-quick-collect-azurevm.md).
 
-Można monitorować kontenery Windows, działające w usłudze Service Fabric. Jednak tylko [maszyn wirtualnych działających na platformie Azure](log-analytics-quick-collect-azurevm.md) i [komputerów z systemem Windows w środowisku lokalnych](log-analytics-agent-windows.md) są obecnie obsługiwane dla usługi Service Fabric.
+Można monitorować kontenery Windows, działające w usłudze Service Fabric. Jednak tylko [maszyn wirtualnych działających na platformie Azure](log-analytics-quick-collect-azurevm.md) i [komputerów z systemem Windows w środowisku lokalnych](../azure-monitor/platform/agent-windows.md) są obecnie obsługiwane dla usługi Service Fabric.
 
 Aby sprawdzić, czy rozwiązanie do monitorowania kontenerów jest ustawione prawidłowo dla Windows. Aby sprawdzić, czy pakiet administracyjny został prawidłowo pobierania, poszukaj *ContainerManagement.xxx*. Pliki powinny być w folderze C:\Program Files\Microsoft Monitoring Agent\Agent\Health usługi State\Management Packs.
 
@@ -543,7 +543,7 @@ To rozwiązanie monitorowanie kontenera zbiera różne dane metryk i dzienników
 Dane są gromadzone co trzy minuty przez następujące typy agenta.
 
 - [Log Analytics agent dla systemu Linux](log-analytics-quick-collect-linux-computer.md)
-- [Windows agent](log-analytics-agent-windows.md)
+- [Windows agent](../azure-monitor/platform/agent-windows.md)
 - [Rozszerzenia log Analytics VM extension](log-analytics-quick-collect-azurevm.md)
 
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 49a2c03664ba39a624871b24c0b86a968a67eddb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4a0fcb95ed34ed3d98c6b25b475c0866135897f3
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521527"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584676"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Wyświetlanie stanu zadania usługi Azure Import/Export
 
@@ -23,7 +23,6 @@ Ten artykuł zawiera informacje na temat wyświetlić stan dysku i zadania dla z
 Można śledzić stan importu lub eksportu zadania w witrynie Azure portal. Kliknij przycisk **Import/Export** kartę. Na stronie zostanie wyświetlona lista zadań.
 
 ![Widok stanu zadania](./media/storage-import-export-service/jobstate.png)
-
 
 ## <a name="view-job-status"></a>Wyświetlanie stanu zadania
 
@@ -74,7 +73,7 @@ Ilość czasu potrzebnego do przetworzenia zadania importu/eksportu zależy od w
 -  Typ zadania i rozmiaru danych, w której są kopiowane
 -  Liczba dysków w ramach zadania. 
 
-Usługa Import/Export nie ma umowy SLA, ale usługa dokłada starań, aby wykonać kopię w 7 – 10 dni, po otrzymaniu dyski. Oprócz stanu opublikowane w witrynie Azure Portal interfejsów API REST może służyć do śledzenia postępu zadań. Wykonano parametru w [listy zadań]() wywołania operacji interfejsu API zapewnia postępy wartości procentowej.
+Usługa Import/Export nie ma umowy SLA, ale usługa dokłada starań, aby wykonać kopię w 7 – 10 dni, po otrzymaniu dyski. Oprócz stanu opublikowane w witrynie Azure Portal interfejsów API REST może służyć do śledzenia postępu zadań. Wykonano parametru w [listy zadań](/previous-versions/azure/dn529083(v=azure.100)) wywołania operacji interfejsu API zapewnia postępy wartości procentowej.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
@@ -82,4 +81,3 @@ Usługa Import/Export nie ma umowy SLA, ale usługa dokłada starań, aby wykona
 * [Konfigurowanie narzędzia WAImportExport](storage-import-export-tool-how-to.md)
 * [Transferowanie danych za pomocą narzędzia wiersza polecenia AzCopy](storage-use-azcopy.md)
 * [Przykład interfejsu API REST wyeksportować importu Azure](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
-

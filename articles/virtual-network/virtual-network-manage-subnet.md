@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 04c7b521ad13db9f5ec9573fd1ab966ad1282e8e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 442aa7034c3fec57b3b9394e6b0f46d4dec47849
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954317"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633116"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Dodawanie, zmienianie lub usuwanie podsieci sieci wirtualnej
 
@@ -69,7 +69,7 @@ Konta, zaloguj się do lub łączenie z platformą Azure za pomocą, muszą być
 4. Na liście podsieci Wybierz podsieć, aby zmienić ustawienia. Można zmienić następujące ustawienia:
 
     - **Zakres adresów:** żadnych zasobów w przypadku wdrożenia w obrębie podsieci, można zmienić zakresu adresów. Jeśli istnieje żadnych zasobów w podsieci, przeniesienie zasobów do innej podsieci, albo usuń je najpierw z podsieci. Kroki, które należy wykonać, aby przenieść lub usunąć zasób różnią się zależnie od zasobu. Aby dowiedzieć się, jak przenieść lub usunąć zasoby, które znajdują się w podsieci, przeczytaj dokumentację dla każdego typu zasobu, który chcesz przenieść lub usunąć. Zobacz ograniczenia **zakres adresów** w kroku nr 5 procedury [Dodaj podsieć](#add-a-subnet).
-    - **Użytkownicy**: umożliwia kontrolę dostępu do tej podsieci, przy użyciu ról wbudowanych lub własnych ról niestandardowych. Aby dowiedzieć się więcej na temat przypisywania ról i użytkowników, aby uzyskać dostęp do podsieci, zobacz [zarządzanie dostępem do zasobów platformy Azure za pomocą przypisania roli](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access).
+    - **Użytkownicy**: umożliwia kontrolę dostępu do tej podsieci, przy użyciu ról wbudowanych lub własnych ról niestandardowych. Aby dowiedzieć się więcej na temat przypisywania ról i użytkowników, aby uzyskać dostęp do podsieci, zobacz [zarządzanie dostępem do zasobów platformy Azure za pomocą przypisania roli](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment).
     - **Sieciowa grupa zabezpieczeń** i **tabeli tras**: zobacz krok 5 z [Dodaj podsieć](#add-a-subnet).
     - **Punkty końcowe usługi**: Zobacz punktów końcowych usługi w kroku 5 [Dodaj podsieć](#add-a-subnet). Po włączeniu punktu końcowego usługi do istniejącej podsieci, upewnij się, że żadne krytyczne zadania nie są uruchomione na żaden zasób w podsieci. Punkty końcowe usługi Przełącz tras każdego interfejsu sieciowego w podsieci z przy użyciu trasy domyślnej z *0.0.0.0/0* prefiksu i typ następnego przeskoku *Internet*, za pomocą nowej trasy o prefiksy usługi i typ następnego przeskoku adresów *VirtualNetworkServiceEndpoint*. Podczas przełączania może zostać rozwiązana dowolnych otwartych połączeń TCP. Punkt końcowy usługi nie jest włączone, dopóki przepływów ruchu do usługi dla wszystkich interfejsów sieciowych są aktualizowane przy użyciu nowej trasy. Aby dowiedzieć się więcej na temat routingu, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
     - **Delegowanie podsieci:** Zobacz punktów końcowych usługi w kroku 5 [Dodaj podsieć](#add-a-subnet). Delegowanie podsieci można zmodyfikować w taki sposób, aby zero lub wielu delegacji włączyć dla niego. Jeśli zasób usługi została już wdrożona w podsieci, delegowanie podsieci nie można usunąć, dopóki nie zostaną usunięte wszystkie zasoby dla usługi. Aby delegować do innej usługi, wybierz usługę, o których ma działać delegowanie z **usług** listy. 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 1bcdac43eea41a044e920c14310a9f3cd4df793b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 34d42f9987303c1381584ae4b2991a8f30a67ed5
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285443"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52618963"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Wychodzący SMTP Rozwiązywanie problemów z łącznością na platformie Azure
 
@@ -44,7 +44,7 @@ Gdy subskrypcja płatności lub Microsoft Partner Network czy jest wyłączone, 
 > Firma Microsoft zastrzega sobie prawo do odwołania to wykluczenie, jeśli okaże się, że nastąpiło naruszenie warunków korzystania z usługi.
 
 ## <a name="msdn-azure-pass-azure-in-open-education-bizspark-and-free-trial"></a>MSDN, Azure — dostęp próbny, Azure in Open, Education, BizSpark i bezpłatna wersja próbna
-Jeśli został utworzony MSDN, Azure — dostęp próbny, Azure Open, Education, BizSpark i bezpłatna wersja próbna subskrypcji po 15 listopada 2017 r., będziesz mieć ograniczenia techniczne tego bloku adresu e-mail, wysyłany z maszyny wirtualnej w ramach tych subskrypcji bezpośrednio do wiadomości e-mail dostawców. Ograniczenia są gotowe, aby zapobiec nadużyciu. Nie można usunąć tego ograniczenia będzie można przydzielić.
+Jeśli utworzono MSDN, Azure — dostęp próbny, Azure w Open, Education, BizSpark, dostępu Sponsorowanego Azure, platformy Azure dla uczniów, bezpłatnej wersji próbnej lub dowolnej subskrypcji programu Visual Studio po 15 listopada 2017 r., będziesz mieć ograniczenia techniczne tego bloku adresu e-mail, wysyłany z maszyny wirtualnej w ramach tych Subskrypcje bezpośrednio do wiadomości e-mail dostawców. Ograniczenia są gotowe, aby zapobiec nadużyciu. Nie można usunąć tego ograniczenia będzie można przydzielić.
 
 Jeśli używasz tych typów subskrypcji, możesz korzystać z usług przekazywania SMTP, zgodnie z opisem we wcześniejszej części tego artykułu.
 

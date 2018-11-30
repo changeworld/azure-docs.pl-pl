@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: f00c11881da7624809b1253361c17285666d9ba3
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 97e499612082d0d58cd75bb9f8854b8c4e0f669e
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715476"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635768"
 ---
 # <a name="views-in-management-solutions-preview"></a>Widoki w rozwiązaniach do zarządzania (wersja zapoznawcza)
 > [!NOTE]
 > Jest to wstępne dokumentację dotyczącą tworzenia rozwiązań do zarządzania, które są obecnie dostępne w wersji zapoznawczej. Żadnego schematu opisanych poniżej ulec zmianie.    
 
 
-[Rozwiązania do zarządzania](solutions.md) zwykle zawierają jeden lub więcej widoków, które umożliwiają wizualizację danych.  W tym artykule opisano sposób eksportowania widoku, który został utworzony przez [Projektant widoków](../../log-analytics/log-analytics-view-designer.md) i dołączyć go w rozwiązaniu do zarządzania.  
+[Rozwiązania do zarządzania](solutions.md) zwykle zawierają jeden lub więcej widoków, które umożliwiają wizualizację danych.  W tym artykule opisano sposób eksportowania widoku, który został utworzony przez [Projektant widoków](../../azure-monitor/platform/view-designer.md) i dołączyć go w rozwiązaniu do zarządzania.  
 
 > [!NOTE]
 > Przykłady w tym artykule użyć parametrów i zmiennych, które są wymagane lub wspólne dla rozwiązania do zarządzania i opisem w artykule [projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure](solutions-creating.md)
@@ -37,7 +37,7 @@ ms.locfileid: "51715476"
 W tym artykule założono, że znasz już sposób [utworzyć to rozwiązanie do zarządzania](solutions-creating.md) i struktury pliku rozwiązania.
 
 ## <a name="overview"></a>Przegląd
-Aby uwzględnić w widoku w rozwiązaniu do zarządzania, należy utworzyć **zasobów** dla niego w [plik rozwiązania](solutions-creating.md).  Za pomocą pliku JSON opisujące szczegółową konfigurację tego widoku jest zwykle złożone jednak i nie mielibyśmy mieć czegoś Autor typowe rozwiązanie będzie można tworzyć ręcznie.  Najczęściej spotykaną metodą jest utworzenie, przy użyciu widoku [Projektant widoków](../../log-analytics/log-analytics-view-designer.md), wyeksportuj go, a następnie dodaj jego szczegółową konfigurację do rozwiązania.
+Aby uwzględnić w widoku w rozwiązaniu do zarządzania, należy utworzyć **zasobów** dla niego w [plik rozwiązania](solutions-creating.md).  Za pomocą pliku JSON opisujące szczegółową konfigurację tego widoku jest zwykle złożone jednak i nie mielibyśmy mieć czegoś Autor typowe rozwiązanie będzie można tworzyć ręcznie.  Najczęściej spotykaną metodą jest utworzenie, przy użyciu widoku [Projektant widoków](../../azure-monitor/platform/view-designer.md), wyeksportuj go, a następnie dodaj jego szczegółową konfigurację do rozwiązania.
 
 Poniżej znajdują się podstawowe kroki, aby dodać widok do rozwiązania.  Każdy etap jest opisany bardziej szczegółowo w poniższych sekcjach.
 
@@ -46,7 +46,7 @@ Poniżej znajdują się podstawowe kroki, aby dodać widok do rozwiązania.  Ka�
 3. Dodawanie szczegółów widoku.
 
 ## <a name="export-the-view-to-a-file"></a>Eksportuj widok do pliku
-Postępuj zgodnie z instrukcjami w artykule [Projektant widoków programu Log Analytics](../../log-analytics/log-analytics-view-designer.md) można wyeksportować w widoku do pliku.  Będzie wyeksportowany plik w formacie JSON z takimi samymi [elementy jako plik rozwiązania](solutions-solution-file.md).  
+Postępuj zgodnie z instrukcjami w artykule [Projektant widoków programu Log Analytics](../../azure-monitor/platform/view-designer.md) można wyeksportować w widoku do pliku.  Będzie wyeksportowany plik w formacie JSON z takimi samymi [elementy jako plik rozwiązania](solutions-solution-file.md).  
 
 **Zasobów** element pliku widok będzie mieć zasobu o typie **Microsoft.OperationalInsights/workspaces** reprezentujący obszar roboczy usługi Log Analytics.  Ten element będzie mieć podelement typu **widoków** który reprezentuje widok oraz jego szczegółowa konfiguracja zawiera.  Będzie kopiować szczegóły tego elementu, a następnie skopiuj go do rozwiązania.
 

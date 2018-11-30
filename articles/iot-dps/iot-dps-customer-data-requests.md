@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: d6355926c8fac62b01c36d28265842b1233ce213
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5dd027c886e8102e77ddefe93817daee0e1ec29b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666947"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584155"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Podsumowanie funkcji żądania danych klienta
 
@@ -39,9 +39,9 @@ Aby uzyskać więcej informacji, zobacz [jak zarządzanie rejestracjami urządze
 
 Istnieje również możliwość wykonywania operacji usuwania rejestracji i rekordów rejestracji przy użyciu interfejsów API REST:
 
-* Aby usunąć informacje o rejestracji dla jednego urządzenia, możesz użyć [rejestrowanie urządzeń — usuwanie](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/delete).
-* Aby usunąć informacje o rejestracji dla grupy urządzeń, można użyć [grupy rejestracji urządzeń — usuwanie](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollmentgroup/delete).
-* Aby usunąć informacje o urządzeniach, które zostały udostępnione, można użyć [stanu rejestracji — usuwanie stanu rejestracji](https://docs.microsoft.com/rest/api/iot-dps/registrationstate/deleteregistrationstate).
+* Aby usunąć informacje o rejestracji dla jednego urządzenia, możesz użyć [rejestrowanie urządzeń — usuwanie](/rest/api/iot-dps/deleteindividualenrollment/deleteindividualenrollment).
+* Aby usunąć informacje o rejestracji dla grupy urządzeń, można użyć [grupy rejestracji urządzeń — usuwanie](/rest/api/iot-dps/deleteenrollmentgroup/deleteenrollmentgroup).
+* Aby usunąć informacje o urządzeniach, które zostały udostępnione, można użyć [stanu rejestracji — usuwanie stanu rejestracji](/rest/api/iot-dps/deletedeviceregistrationstate/deletedeviceregistrationstate).
 
 ## <a name="exporting-customer-data"></a>Eksportowanie danych klienta
 
@@ -53,9 +53,9 @@ Aby uzyskać więcej informacji na temat zarządzania rejestracji, zobacz [jak z
 
 Istnieje również możliwość wykonywania operacji eksportowania do rejestracji i rekordów rejestracji przy użyciu interfejsów API REST:
 
-* Aby wyeksportować informacje o rejestracji dla jednego urządzenia, możesz użyć [rejestrowanie urządzeń — Get](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/get).
-* Aby wyeksportować informacje o rejestracji dla grupy urządzeń, można użyć [grupy rejestracji urządzeń - Get](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollmentgroup/get).
-* Aby wyeksportować informacje o urządzeniach, które już zostały udostępnione, można użyć [stanu rejestracji — stan rejestracji Get](https://docs.microsoft.com/rest/api/iot-dps/registrationstate/getregistrationstate).
+* Aby wyeksportować informacje o rejestracji dla jednego urządzenia, możesz użyć [rejestrowanie urządzeń — Get](/rest/api/iot-dps/getindividualenrollment/getindividualenrollment).
+* Aby wyeksportować informacje o rejestracji dla grupy urządzeń, można użyć [grupy rejestracji urządzeń - Get](/rest/api/iot-dps/getenrollmentgroup/getenrollmentgroup).
+* Aby wyeksportować informacje o urządzeniach, które już zostały udostępnione, można użyć [stanu rejestracji — stan rejestracji Get](/rest/api/iot-dps/getdeviceregistrationstate/getdeviceregistrationstate).
 
 > [!NOTE]
 > Korzystając z usług firmy Microsoft dla przedsiębiorstw firmy Microsoft generuje pewnych informacji, znane jako dzienniki generowane przez system. Niektóre usługi Device Provisioning dzienniki generowane przez system nie są dostępne lub który można eksportować przez administratorów dzierżawy. Te dzienniki stanowią odzwierciedlenie faktycznych działań przeprowadzanych w ramach usługi i dane diagnostyczne, które dotyczą poszczególnych urządzeń.

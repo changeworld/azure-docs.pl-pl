@@ -5,19 +5,19 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 11/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6d1a0e66cff415d25e7019e163e5ae42be205888
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4cd1d143151e61c7c767ffdc4acb172b06dd0e43
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30197673"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52585779"
 ---
-| **SKU** | **Połączeń P2S**| **Łącznej przepływności testu porównawczego** | **Uwierzytelnianie za pomocą protokołu RADIUS** | **IKEv2 P2S sieci VPN** |
-|---|---|---|---| --- |
-| VpnGw1 | 128 | 650 Mb/s  | Obsługiwane     | Obsługiwane |
-| VpnGw2 | 128 | 1 GB/s     | Obsługiwane     | Obsługiwane |
-| VpnGw3 | 128 | 1,25 Gb/s | Obsługiwane     | Obsługiwane |
-| Podstawowa  | 128 | 100 Mb/s  | Nieobsługiwane | Nieobsługiwane |
+|**SKU**   | **Połączenia typu lokacja-lokacja/Połączenia między sieciami wirtualnymi<br>Tunele** | **Połączenia typu punkt-lokacja<br> Połączenia SSTP** | **Połączenia typu punkt-lokacja<br> Połączenia IKEv2** | **Test porównawczy<br>agregowanej przepływności** |
+|---       | ---        | ---       | ---            | ---       |
+|**VpnGw1**| Maksymalna liczba 30   | Maksymalna liczba 128  | Maksymalna liczba 250       | 650 Mb/s  |
+|**VpnGw2**| Maksymalna liczba 30  | Maksymalna liczba 128  | Maksymalna liczba 500       | 1 Gb/s    |
+|**VpnGw3**| Maksymalna liczba 30   | Maksymalna liczba 128  | Maksymalna liczba 1000      | 1,25 Gb/s |
+|**Podstawowa** | Maksymalna liczba 10    | Maksymalna liczba 128  | Nieobsługiwane  | 100 Mb/s  | 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dadff0dc501c20ef525fdfb7578cb391f29b3302
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 56a36e61bb9938ceb7e3cdaf2676c24c037b1d16
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264092"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52585791"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych IaaS platformy Azure i dyski zarządzane i niezarządzane — wersja premium
 
@@ -136,6 +136,10 @@ Nie, gdy zostanie utworzony nowy dysk jest autonomiczny pełną kopię tego obie
 **Dysków zarządzanych lub niezarządzanych można zmienić po jego utworzeniu?**
 
 Za dyski zarządzane nie można ich zmienić. Jednak tak długo, jak nie jest obecnie dołączony do maszyny Wirtualnej lub wirtualnego dysku twardego może zmienić nazwy dysku niezarządzanego.
+
+**Można używać GBT partycji na dysku platformy Azure?**
+
+Partycjonowanie GBT może służyć tylko na dyskach danych, nie dyski systemu operacyjnego. Dyski systemu operacyjnego, należy użyć stylu partycji MBR.
 
 ## <a name="standard-ssd-disks"></a>Dyski SSD w warstwie standardowa
 
@@ -300,7 +304,7 @@ Typ partycji, które platforma Azure obsługuje dla dysku systemu operacyjnego j
 
 **Co to jest największy rozmiar stronicowego obiektu blob, który jest obsługiwany?**
 
-Największy rozmiar stronicowego obiektu blob platformy Azure obsługuje jest 8 TiB (8191 GiB). Maksymalny rozmiar strony, do blogu, gdy dołączony do maszyny Wirtualnej jako dane lub dyski systemu operacyjnego jest 4 TiB (4095 GiB).
+Największy rozmiar stronicowego obiektu blob platformy Azure obsługuje jest 8 TiB (8191 GiB). Rozmiar maksymalny stronicowego obiektu blob, gdy dołączony do maszyny Wirtualnej jako dane lub dyski systemu operacyjnego jest 4 TiB (4095 GiB).
 
 **Należy używać nowej wersji narzędzi platformy Azure do tworzenia, dołączania, zmienianie rozmiaru i przekaż dysków większych niż 1 TiB?**
 

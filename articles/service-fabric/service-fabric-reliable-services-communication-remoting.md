@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: ddd78e2fad401add35bc246a64236e2679c33cbc
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: b8abf7a0dc85d20e9075b51b8d42a068cf56846f
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023549"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620527"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Zdalna komunikacja usług w języku C# przy użyciu usług Reliable Services
 
@@ -98,7 +98,7 @@ Tworzenie serwera proxy usługi jest lekka operacja, aby można było utworzyć 
 
 ### <a name="service-proxy-factory-lifetime"></a>Okres istnienia fabryki serwera proxy usługi
 
-[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) fabryki, który tworzy wystąpienie serwera proxy dla różnych usług zdalnych interfejsów. Jeśli używasz interfejsu API `ServiceProxy.Create` do utworzenia serwera proxy, szablon tworzy serwer proxy usługi singleton.
+[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) fabryki, który tworzy wystąpienie serwera proxy dla różnych usług zdalnych interfejsów. Jeśli używasz interfejsu API `ServiceProxyFactory.CreateServiceProxy` do utworzenia serwera proxy, szablon tworzy serwer proxy usługi singleton.
 Warto utworzyć ręcznie, gdy trzeba zastąpić [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) właściwości.
 Tworzenie fabryki jest kosztowną operacją. Fabryka serwera proxy usług utrzymuje wewnętrzną pamięć podręczną klienta komunikacji.
 Najlepszym rozwiązaniem jest w pamięci podręcznej fabryki serwera proxy usług tak długo, jak to możliwe.

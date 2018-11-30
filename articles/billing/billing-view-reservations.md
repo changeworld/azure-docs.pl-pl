@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2018
 ms.author: cwatson
-ms.openlocfilehash: 2ae30ca55f3ca03a64438025960ddd807e288216
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 4506d65d173ea483558a772d89fe7cbc8cd84944
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48272650"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584591"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Wyświetlanie rezerwacji platformy Azure w witrynie Azure portal
 
@@ -30,7 +30,7 @@ Domyślnie w przypadku dokonywania zakupu rezerwacji, użytkownika i administrat
  
 Aby wyświetlić rezerwacji jako właściciel lub czytnika,
 
-1. Zaloguj się w [Portalu Azure]( http://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal]( http://portal.azure.com).
 1. Wyszukiwanie **rezerwacje**.
 
     ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-view-reservation/portal-reservation-search.png)
@@ -45,7 +45,7 @@ Jeśli musisz zmienić zakres rezerwacji podziału rezerwacji lub zmiany, kto mo
 
 Aby wyświetlić transakcje rezerwacji w witrynie Azure portal
 
-1. Zaloguj się w [Portalu Azure]( http://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal]( http://portal.azure.com).
 1. Wyszukiwanie **Cost Management + rozliczenia**.
 
     ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-view-reservation/portal-cm-billing-search.png)
@@ -71,6 +71,6 @@ Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące art
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Opis zastrzeżenia dla subskrypcji programu CSP](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli nadal masz dodatkowe pytania, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

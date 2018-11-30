@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 4a7777be01cc15ed5cc4c9c091230afe1ddfa897
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: dc1fe8a3d9a1f0da0a190275b4fbb8bd18fff610
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047446"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499142"
 ---
-# <a name="optimize-spark-jobs"></a>Optymalizowanie zadań platformy Spark
+# <a name="optimize-apache-spark-jobs"></a>Optymalizowanie zadań platformy Apache Spark
 
-Dowiedz się, jak zoptymalizować konfigurację klastra platformy Spark dla określonego obciążenia.  Najbardziej typowe wyzwaniem jest wykorzystanie pamięci, z powodu nieprawidłowej konfiguracji (szczególnie problem o rozmiarze executors) długotrwałych operacji i zadań, które powoduje Kartezjańskiego operacji. Można przyspieszyć zadania za pomocą odpowiedniej pamięci podręcznej i w celu umożliwienia [niesymetryczność danych](#optimize-joins-and-shuffles). Uzyskać najlepszą wydajność monitorować i przejrzyj długotrwałych i korzystające z zasobów wykonań zadań platformy Spark.
+Dowiedz się, jak zoptymalizować [platformy Apache Spark](https://spark.apache.org/) konfiguracji klastra dla określonego obciążenia.  Najbardziej typowe wyzwaniem jest wykorzystanie pamięci, z powodu nieprawidłowej konfiguracji (szczególnie problem o rozmiarze executors) długotrwałych operacji i zadań, które powoduje Kartezjańskiego operacji. Można przyspieszyć zadania za pomocą odpowiedniej pamięci podręcznej i w celu umożliwienia [niesymetryczność danych](#optimize-joins-and-shuffles). Uzyskać najlepszą wydajność monitorować i przejrzyj długotrwałych i korzystające z zasobów wykonań zadań platformy Spark.
 
 W poniższych sekcjach opisano typowe optymalizacje zadanie platformy Spark i zalecenia.
 
@@ -94,7 +94,7 @@ Dla Twojej informacji struktury pamięci platforma Spark i niektóre parametry p
 
 ### <a name="spark-memory-considerations"></a>Uwagi dotyczące pamięci aparatu Spark
 
-Jeśli używasz usługi YARN YARN steruje maksymalną suma pamięci używanej przez wszystkie kontenery w każdym węźle platformy Spark.  Na poniższym diagramie przedstawiono kluczowe obiektów i ich wzajemne relacje.
+Jeśli używasz [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), a następnie YARN steruje maksymalną suma pamięci używanej przez wszystkie kontenery w każdym węźle platformy Spark.  Na poniższym diagramie przedstawiono kluczowe obiektów i ich wzajemne relacje.
 
 ![Zarządzanie pamięcią platformy Spark usługi YARN](./media/apache-spark-perf/yarn-spark-memory.png)
 
@@ -212,9 +212,9 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Debugowanie zadania Spark działające w usłudze Azure HDInsight](apache-spark-job-debugging.md)
-* [Zarządzanie zasobami klastra Spark na HDInsight](apache-spark-resource-manager.md)
-* [Użyj interfejsu API REST platformy Spark, aby przesłać zdalnej obsługi zadań do klastra Spark](apache-spark-livy-rest-interface.md)
-* [Dostrajanie platformy Spark](https://spark.apache.org/docs/latest/tuning.html)
-* [Jak faktycznie dostrajania platformy Spark zadania tak działają](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
+* [Debugowanie zadania platformy Apache Spark działające w usłudze Azure HDInsight](apache-spark-job-debugging.md)
+* [Zarządzanie zasobami klastra Apache Spark w HDInsight](apache-spark-resource-manager.md)
+* [Użyj interfejsu API REST programu Apache Spark, aby przesłać zdalnej obsługi zadań do klastra Apache Spark](apache-spark-livy-rest-interface.md)
+* [Dostrajanie platformy Apache Spark](https://spark.apache.org/docs/latest/tuning.html)
+* [W jaki sposób można dostrajanie faktycznie Apache Spark zadania tak działają](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
 * [Serializacja Kryo](https://github.com/EsotericSoftware/kryo)

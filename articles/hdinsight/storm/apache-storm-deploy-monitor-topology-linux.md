@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: 6cb3102206174422a3d8b4a0fb18f989d875e093
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 61f5f0d0b9e88174f82e960eb5d92db99d0cae71
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259058"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582853"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Wdrażanie topologii Apache Storm w usłudze Azure HDInsight i zarządzanie 
 
-W tym dokumencie przedstawiono podstawy zarządzania i monitorowania topologii Storm działających w systemie Storm w klastrach HDInsight.
+W tym dokumencie przedstawiono podstawy monitorowania i zarządzania nim [Apache Storm](http://storm.apache.org/) topologii uruchamianych w systemie Storm w klastrach HDInsight.
 
 > [!IMPORTANT]
 > Kroki opisane w tym artykule wymaga platformy Storm opartej na systemie Linux w klastrze HDInsight. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). 
@@ -186,7 +186,7 @@ Link z wybraniu **podsumowanie topologii** sekcja wyświetla następujące infor
   * **Dezaktywuj**: wstrzymanie uruchomionej topologii.
   * **Ponowne zrównoważenie**: to dostosować równoległość topologii. Po zmianie liczby węzłów w klastrze należy przeprowadzić ponowne równoważenie uruchomionych topologii. Ta operacja umożliwia topologię, aby dostosować równoległość topologii w celu kompensacji zwiększenia lub zmniejszenia liczby węzłów w klastrze.
 
-    Aby uzyskać więcej informacji, zobacz temat <a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Pojęcie równoległości w topologii Storm</a>.
+    Aby uzyskać więcej informacji, zobacz <a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">pojęcie równoległości w topologii Apache Storm</a>.
   * **Kill**: kończy topologii Storm po określonym czasie.
 * **Topology stats**: statystyki dotyczące topologii. Aby ustawić przedział czasu dla pozostałych wpisów na stronie, użyj linków w **okna** kolumny.
 * **Spouts**: elementy spout używane przez topologię. Użyj linków w tej sekcji, aby wyświetlić więcej informacji na temat określonych elementów spout.
@@ -208,10 +208,10 @@ Spout z wybraniu **Spouts** lub **Bolts** sekcje są wyświetlane następujące 
 
 Interfejs użytkownika platformy Storm bazuje na usłudze interfejsu API REST, aby można było wykonywać podobne do zarządzania i monitorowania funkcjonalności za pomocą interfejsu API REST. Interfejs API REST umożliwia tworzenie niestandardowych narzędzi do zarządzania i monitorowania topologii Storm.
 
-Aby uzyskać więcej informacji, zobacz [interfejsu API REST interfejsu użytkownika Storm](http://storm.apache.org/releases/current/STORM-UI-REST-API.html). Następujące informacje są specyficzne dla przy użyciu platformy Apache Storm w HDInsight przy użyciu interfejsu API REST.
+Aby uzyskać więcej informacji, zobacz [Apache Storm Interfejsu REST API](http://storm.apache.org/releases/current/STORM-UI-REST-API.html). Następujące informacje są specyficzne dla przy użyciu platformy Apache Storm w HDInsight przy użyciu interfejsu API REST.
 
 > [!IMPORTANT]
-> Interfejs API REST platformy Storm nie jest publicznie dostępna w Internecie i muszą być dostępne przy użyciu tunelu SSH z węzłem głównym klastra HDInsight. Aby uzyskać informacje na temat tworzenia i używania tunelu SSH, zobacz [użycie tunelowania SSH do uzyskania dostępu do interfejsu użytkownika sieci web Ambari, ResourceManager, JobHistory, NameNode, Oozie i innych web UI](../hdinsight-linux-ambari-ssh-tunnel.md).
+> Interfejs API REST platformy Storm nie jest publicznie dostępna w Internecie i muszą być dostępne przy użyciu tunelu SSH z węzłem głównym klastra HDInsight. Aby uzyskać informacje na temat tworzenia i używania tunelu SSH, zobacz [użycie tunelowania SSH do uzyskania dostępu do systemu Apache Ambari web UI, ResourceManager, JobHistory, NameNode, Apache Oozie i innych web UI](../hdinsight-linux-ambari-ssh-tunnel.md).
 
 ### <a name="base-uri"></a>Podstawowy identyfikator URI
 
@@ -232,10 +232,10 @@ W pełni kwalifikowana nazwa domeny (FQDN) węzła głównego klastra można zna
 
 ### <a name="return-values"></a>Wartości zwracane
 
-Można używać z w ramach klastra może być tylko informacje zwrócone z interfejsu API REST. Na przykład w pełni kwalifikowana nazwa domeny (FQDN) dla serwerów dozorcy zwracane nie jest dostępny z Internetu.
+Można używać z w ramach klastra może być tylko informacje zwrócone z interfejsu API REST. Na przykład w pełni kwalifikowana nazwa domeny (FQDN) dla [Apache ZooKeeper](https://zookeeper.apache.org/) serwery nie jest dostępny z Internetu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak [opartych na języku Java z opracowywanie topologii przy użyciu narzędzia Maven](apache-storm-develop-java-topology.md).
+Dowiedz się, jak [opartych na języku Java z opracowywanie topologii przy użyciu narzędzia Apache Maven](apache-storm-develop-java-topology.md).
 
-Aby uzyskać listę więcej przykładowe topologie, zobacz [przykładowe topologie dla systemu Storm w HDInsight](apache-storm-example-topology.md).
+Aby uzyskać listę więcej przykładowe topologie, zobacz [przykładowe topologie dla Storm Apache na HDInsight](apache-storm-example-topology.md).

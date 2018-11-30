@@ -9,16 +9,18 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: bb84a3ddfba54c47cdf91aa72889a960722cdbd3
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 3a0adb4b761121334e93f2b8d2d764ff3ab495e2
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627432"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633252"
 ---
-# <a name="upload-a-document"></a>Przekaż dokument
+# <a name="upload-a-document"></a>Przekazywanie dokumentu
 
 W [niestandardowe w usłudze Translator](https://portal.customtranslator.azure.ai), możesz przekazać równoległe dokumentów do uczenia modeli tłumaczenia. [Równoległe dokumenty](what-are-parallel-documents.md) są parami dokumentów, w których jeden jest tłumaczenia, z drugiej strony. Jeden dokument w parze zawiera zdań w języku źródła i innego dokumentu zawiera te zdania przetłumaczony na język docelowy.
+
+Przed przekazaniem dokumentów, przejrzyj [formatów i nazewnictwa wskazówki Konwencji dokumentów](document-formats-naming-convention.md) się upewnić się, że plik format jest obsługiwany w niestandardowych w usłudze Translator.
 
 ## <a name="how-to-upload-document"></a>Jak przekazać dokument?
 

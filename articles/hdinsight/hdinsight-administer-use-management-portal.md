@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 651a03f69a7664b68ce3fe5c512c59c01762a505
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 378f52f0418c8c99e9ce6ca393ca10a77504698d
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282479"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499580"
 ---
 # <a name="manage-windows-based-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Apache Hadoop oparte na Windows w HDInsight przy użyciu witryny Azure portal
 
-Za pomocą [witryny Azure portal][azure-portal], można utworzyć klastry Apache Hadoop oparte na Windows w usłudze Azure HDInsight, Zmień hasło użytkownika usługi Hadoop i Włącz protokół RDP (Remote Desktop), aby mogli uzyskiwać dostęp Hadoop konsoli poleceń w klastrze.
+Za pomocą [witryny Azure portal][azure-portal], można tworzyć oparte na Windows [Apache Hadoop](https://hadoop.apache.org/) klastrów w usłudze Azure HDInsight, Zmień hasło użytkownika usługi Hadoop i Włącz protokół Remote Desktop Protocol ( Protokół RDP) umożliwi dostęp z konsoli poleceń platformy Hadoop w klastrze.
 
-Informacje przedstawione w tym artykule dotyczy tylko klastry HDInsight oparty na oknach. Aby uzyskać informacji dotyczących zarządzania opartego na systemie Linux klastrów, zobacz [klastrów zarządzania Hadoop w HDInsight przy użyciu witryny Azure portal](hdinsight-administer-use-portal-linux.md).
+Informacje przedstawione w tym artykule dotyczy tylko klastry HDInsight oparty na oknach. Aby uzyskać informacji dotyczących zarządzania opartego na systemie Linux klastrów, zobacz [Zarządzanie Apache Hadoop clusters w HDInsight przy użyciu witryny Azure portal](hdinsight-administer-use-portal-linux.md).
 
 [!INCLUDE [windows-retirement-notice](../../includes/windows-retirement-notice.md)]
 
@@ -49,11 +49,11 @@ Przed rozpoczęciem korzystania z informacji zawartych w tym artykule należy dy
 ## <a name="create-clusters"></a>Tworzenie klastrów
 Aby uzyskać instrukcje tworzenia przy użyciu portalu, zobacz [klastrów HDInsight tworzenie](hdinsight-hadoop-provision-linux-clusters.md).
 
-HDInsight działa dzięki składnikom szeroki zakres usługi Hadoop. Aby uzyskać listę składników, które zostały zweryfikowane i obsługiwane, zobacz [jakiej wersji usługi Hadoop jest w usłudze Azure HDInsight](hdinsight-component-versioning.md). HDInsight można dostosować przy użyciu jednej z następujących opcji:
+HDInsight działa ze składnikami szerokiego zakresu technologii Apache Hadoop. Aby uzyskać listę składników, które zostały zweryfikowane i obsługiwane, zobacz [jakiej wersji programu Apache Hadoop jest w usłudze Azure HDInsight](hdinsight-component-versioning.md). HDInsight można dostosować przy użyciu jednej z następujących opcji:
 
 * Użyj akcji skryptu, aby uruchomić skrypty niestandardowe, które można dostosować klaster, aby zmienić konfigurację klastra lub instalowanie składników niestandardowych, takich jak system Giraph i Solr. Aby uzyskać więcej informacji, zobacz [klastra HDInsight dostosować za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md).
 * Podczas tworzenia klastra, należy użyć parametrów dostosowania klastra HDInsight .NET SDK lub programu Azure PowerShell. Te zmiany w konfiguracji są następnie zachowywane czas życia klastra i nie dotyczy klastra węzeł odtwarza z obrazu, które platforma Azure przeprowadza okresowo konserwacji. Aby uzyskać więcej informacji na temat korzystania z parametrów dostosowywania klastra, zobacz [klastrów HDInsight tworzenie](hdinsight-hadoop-provision-linux-clusters.md).
-* Niektóre składniki natywnego języka Java, takich jak Mahout i usuwania kaskadowego, można uruchomić w klastrze jako pliki JAR. Te pliki JAR można przekazany do usługi Azure Blob storage i przesłane do klastrów HDInsight za pomocą mechanizmów przesyłanie zadań Hadoop. Aby uzyskać więcej informacji, zobacz [Hadoop przesyłanie zadań programowo](hadoop/submit-apache-hadoop-jobs-programmatically.md).
+* Niektóre składnikami macierzystymi Java, takich jak [Apache Mahout](https://mahout.apache.org/) i [usuwania kaskadowego](https://www.cascading.org/), można uruchomić w klastrze jako pliki JAR. Te pliki JAR można przekazany do usługi Azure Blob storage i przesłane do klastrów HDInsight za pomocą mechanizmów przesyłanie zadań Hadoop. Aby uzyskać więcej informacji, zobacz [przesłać Apache Hadoop zadań programowo](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
   > [!NOTE]
   > Jeśli masz problemy dotyczące wdrażania plików JAR, korzystając z klastrami HDInsight lub wywoływania pliki JAR w klastrach HDInsight, skontaktuj się z [Microsoft Support](https://azure.microsoft.com/support/options/).
@@ -91,7 +91,7 @@ Instalacja oprogramowania niestandardowego w klastrze za pomocą połączenia pu
    * **Widoki Ambari**: łącza do sieci Web Ambari.
 
      > [!IMPORTANT]
-     > Aby zarządzać usługi świadczone przez klaster usługi HDInsight, należy użyć sieci Ambari Web lub interfejs API REST Ambari. Aby uzyskać więcej informacji na temat korzystania z narzędzia Ambari, zobacz [HDInsight Zarządzanie klastrami przy użyciu narzędzia Ambari](hdinsight-hadoop-manage-ambari.md).
+     > Aby zarządzać usługi świadczone przez klaster usługi HDInsight, należy użyć sieci Ambari Web lub interfejs API REST Ambari. Aby uzyskać więcej informacji na temat korzystania z narzędzia Ambari, zobacz [HDInsight Zarządzanie klastrami przy użyciu narzędzia Apache Ambari](hdinsight-hadoop-manage-ambari.md).
      >
      >
 
@@ -106,7 +106,7 @@ Instalacja oprogramowania niestandardowego w klastrze za pomocą połączenia pu
    * **Klaster tożsamości usługi AAD**:
    * **Klucze Azure Storage**: wyświetlić domyślne konto magazynu i klucza. Konto magazynu jest konfiguracji podczas procesu tworzenia klastra.
    * **Klaster logowania**: zmiana nazwy użytkownika protokołu HTTP klastra i hasło.
-   * **Zewnętrzne magazyny metadanych**: Wyświetl magazyny metadanych Hive i Oozie. Magazyny metadanych można skonfigurować tylko podczas procesu tworzenia klastra.
+   * **Zewnętrzne magazyny metadanych**: Wyświetl [Apache Hive](https://hive.apache.org/) i [Apache Oozie](https://oozie.apache.org/) magazyny metadanych. Magazyny metadanych można skonfigurować tylko podczas procesu tworzenia klastra.
    * **Skalowanie klastra**: zwiększyć i zmniejszyć liczbę węzłów procesu roboczego klastra.
    * **Pulpit zdalny**: Włączanie i wyłączanie dostępu do usług pulpitu zdalnego (RDP) i konfigurowanie nazwy użytkownika protokołu RDP.  Nazwa użytkownika protokołu RDP musi być inna niż nazwa użytkownika protokołu HTTP.
    * **Partner of Record**:
@@ -152,12 +152,12 @@ Skalowanie funkcji klastra umożliwia zmianę liczby węzłów procesu roboczego
 
 Wpływ zmianę liczby węzłów danych dla każdego typu klastra obsługiwane przez HDInsight:
 
-* Hadoop
+* Apache Hadoop
 
     Możesz bezproblemowo zwiększyć liczbę węzłów procesu roboczego w klastrze usługi Hadoop, w którym jest uruchomiony bez wywierania wpływu na wszystkie oczekujące lub uruchomione zadania. Nowe zadania należy dostarczyć również w przypadku, gdy operacja jest w toku. Błędy trwaniem skalowania bez problemu zmieniała są obsługiwane, dzięki czemu klaster zawsze pozostanie w stanie działać.
 
     Gdy klaster Hadoop jest skalowane w dół dzięki zmniejszeniu liczby węzłów danych, zostaną ponownie uruchomione niektóre z tych usług w klastrze. To powoduje, że wszystkie uruchomione i oczekujące zadania na zakończenie operacji skalowania. Można jednak ponownie przesłać zadania po zakończeniu operacji.
-* HBase
+* Apache HBase
 
     Możesz bezproblemowo Dodawanie lub usuwanie węzłów do klastra HBase jest uruchomiona. Serwery regionalne automatycznie są równoważone w ciągu kilku minut od zakończenia operacji skalowania. Można jednak również ręcznie równoważyć serwerów regionalnych, logując się do węzła głównego klastra i uruchamiając następujące polecenia z okna wiersza polecenia:
 
@@ -166,13 +166,13 @@ Wpływ zmianę liczby węzłów danych dla każdego typu klastra obsługiwane pr
         >balancer
 
     Aby uzyskać więcej informacji na temat korzystania z powłoki HBase Zobacz]
-* Storm
+* Apache Storm
 
     Bezproblemowo można dodać lub usunąć węzły danych z klastrem Storm, jest uruchomiona. Jednak po pomyślnym zakończeniu operacji skalowania, konieczne będzie ponowne zrównoważenie topologii.
 
     Ponowne równoważenie może się odbywać na dwa sposoby:
 
-  * Interfejs użytkownika sieci web systemu STORM
+  * Interfejs użytkownika sieci web Apache Storm
   * Narzędzia interfejsu wiersza polecenia (CLI)
 
     Zapoznaj się [dokumentacji platformy Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) Aby uzyskać więcej informacji.
@@ -206,7 +206,7 @@ Istnieje wiele sposobów, można programować procesu:
 * Użytkownik usługi Azure Data Factory. Zobacz [połączona usługa HDInsight Azure](../data-factory/compute-linked-services.md) i [transformacji i analizy przy użyciu usługi Azure Data Factory](../data-factory/transform-data.md) HDInsight na żądanie i samodzielnie określonych połączonej usługi.
 * Używanie programu Azure PowerShell.  Zobacz [analizowanie danych dotyczących opóźnień lotów](hdinsight-analyze-flight-delay-data.md).
 * Użyj klasycznego wiersza polecenia platformy Azure. Zobacz [HDInsight Zarządzanie klastrami przy użyciu klasyczny interfejs wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md).
-* Użyj zestawu .NET SDK HDInsight. Zobacz [zadań Hadoop przesłać](hadoop/submit-apache-hadoop-jobs-programmatically.md).
+* Użyj zestawu .NET SDK HDInsight. Zobacz [zadania przesyłania Apache Hadoop](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
 Aby uzyskać informacje o cenach, zobacz [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/). Aby usunąć klaster z poziomu portalu, zobacz [usuwać klastry](#delete-clusters)
 
@@ -264,7 +264,7 @@ Zobacz [listy i wyświetlaniu klastrów](#list-and-show-clusters).
 ## <a name="open-hdinsight-query-console"></a>Otwórz konsolę zapytania HDInsight
 Z konsoli zapytań HDInsight obejmuje następujące funkcje:
 
-* **Edytor hive**: graficznego interfejsu użytkownika sieci web interfejs przesyłania zadań Hive.  Zobacz [uruchamianie zapytań Hive przy użyciu konsoli zapytań](hadoop/apache-hadoop-use-hive-query-console.md).
+* **Edytor hive**: graficznego interfejsu użytkownika sieci web interfejs przesyłania zadań Hive.  Zobacz [uruchamianie Apache zapytań Hive przy użyciu konsoli zapytań](hadoop/apache-hadoop-use-hive-query-console.md).
 
     ![Edytor portalu hive HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight-hive-editor.png)
 * **Historia zadania**: zadań Hadoop monitora.  
@@ -301,7 +301,7 @@ Można również użyć **Przeglądaj system plików** narzędzia z **interfejsu
 **Użycia** części bloku klastra HDInsight Wyświetla informacje o liczba rdzeni dostępnych do Twojej subskrypcji do użycia z usługą HDInsight, a także liczby rdzeni przydzielonych do tego klastra i jak są przydzielane dla węzłów w klastrze. Zobacz [listy i wyświetlaniu klastrów](#list-and-show-clusters).
 
 > [!IMPORTANT]
-> Aby monitorować usługi świadczone przez klaster usługi HDInsight, należy użyć sieci Ambari Web lub interfejs API REST Ambari. Aby uzyskać więcej informacji na temat korzystania z narzędzia Ambari, zobacz [HDInsight Zarządzanie klastrami przy użyciu narzędzia Ambari](hdinsight-hadoop-manage-ambari.md)
+> Aby monitorować usługi świadczone przez klaster usługi HDInsight, należy użyć sieci Ambari Web lub interfejs API REST Ambari. Aby uzyskać więcej informacji na temat korzystania z narzędzia Ambari, zobacz [HDInsight Zarządzanie klastrami przy użyciu narzędzia Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 >
 >
 
@@ -347,7 +347,7 @@ Do łączenia z klastrem przy użyciu pulpitu zdalnego za pomocą wiersza polece
 
     ![HDI.HadoopCommandLine][image-hadoopcommandline]
 
-    Aby uzyskać więcej informacji na temat poleceń platformy Hadoop, zobacz [Hadoop polecenia odwołanie](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html).
+    Aby uzyskać więcej informacji na temat poleceń platformy Hadoop, zobacz [Apache Hadoop polecenia odwołanie](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html).
 
 Na poprzednim zrzucie ekranu Nazwa folderu ma numer wersji usługi Hadoop, które są osadzone. Numer wersji można zmienić w zależności od wersji składniki platformy Hadoop, zainstalowane w klastrze. Aby odwołać się do tych folderów, można użyć zmiennych środowiskowych platformy Hadoop. Na przykład:
 
@@ -359,14 +359,14 @@ Na poprzednim zrzucie ekranu Nazwa folderu ma numer wersji usługi Hadoop, któr
     cd %hcatalog_home%
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule wiesz, jak utworzyć klaster usługi HDInsight przy użyciu portalu i jak otworzyć narzędzia wiersza polecenia usługi Hadoop. Aby dowiedzieć się więcej, zobacz następujące artykuły:
+W tym artykule wiesz, jak utworzyć klaster usługi HDInsight przy użyciu portalu i jak otworzyć narzędzia wiersza polecenia platformy Apache Hadoop. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
 * [Administrowanie przy użyciu programu PowerShell usługi Azure HDInsight](hdinsight-administer-use-powershell.md)
 * [Administrowanie przy użyciu klasycznego wiersza polecenia platformy Azure HDInsight](hdinsight-administer-use-command-line.md)
 * [Tworzenie klastrów HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
-* [Przesyłanie zadań Hadoop programowe](hadoop/submit-apache-hadoop-jobs-programmatically.md)
+* [Przesyłanie zadań Apache Hadoop programowe](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [Rozpoczynanie pracy z usługą Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Jakiej wersji usługi Hadoop znajduje się w usłudze Azure HDInsight?](hdinsight-component-versioning.md)
+* [Jakiej wersji programu Apache Hadoop znajduje się w usłudze Azure HDInsight?](hdinsight-component-versioning.md)
 
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-command-line.png "Wiersza polecenia usługi Hadoop"

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 4eb62786522dd1ad7cbf1d5668a4c4493028733c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 97b33ed76776ae00c109e891b3d91638080ed778
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684345"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632589"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Jak skonfigurować protokół BGP w bramach sieci VPN Azure przy użyciu programu PowerShell
 W tym artykule przedstawiono kroki, aby włączyć protokół BGP dla połączenia sieci VPN typu lokacja-lokacja (S2S) między środowiskami lokalnymi i połączenia sieć wirtualna-sieć wirtualna za pomocą modelu wdrażania usługi Resource Manager i programu PowerShell.
@@ -167,7 +167,7 @@ $BGPPeerIP5 = "10.52.255.254"
 Kilka rzeczy, aby informacje dotyczące parametrów bramy sieci lokalnej:
 
 * Brama sieci lokalnej może być w tej samej lub innej lokalizacji i grupie zasobów co Brama sieci VPN. Ten przykład przedstawia je w różnych grupach zasobów w różnych lokalizacjach.
-* To minimalny prefiks, czego potrzebujesz do deklarowania bramy sieci lokalnej jest adres hosta, adresu IP elementu równorzędnego protokołu BGP na twoim urządzeniu sieci VPN. W tym przypadku jest/32 prefiksu "10.52.255.254/32".
+* Prefiks, czego potrzebujesz do deklarowania bramy sieci lokalnej jest adres hosta, adresu IP elementu równorzędnego protokołu BGP na twoim urządzeniu sieci VPN. W tym przypadku jest/32 prefiksu "10.52.255.254/32".
 * Przypominamy należy użyć innego ASN protokołu BGP między sieciami lokalnymi a siecią wirtualną platformy Azure. Jeśli są one takie same, należy zmienić numer ASN Twojej sieci wirtualnej, jeśli Twoje lokalne urządzenie sieci VPN używa już numer ASN nawiązać komunikację równorzędną z innymi sąsiadów protokołu BGP.
 
 Przed kontynuowaniem upewnij się, że nadal masz połączenie z subskrypcją 1.

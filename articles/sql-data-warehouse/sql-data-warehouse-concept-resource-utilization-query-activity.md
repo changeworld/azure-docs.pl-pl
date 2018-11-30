@@ -3,25 +3,28 @@ title: Usługa Azure SQL Data Warehouse możliwości zarządzania i monitorowani
 description: Dowiedz się, jakie funkcje są dostępne do zarządzania i monitorowania usługi Azure SQL Data Warehouse. Użyj witryny Azure portal i dynamicznych widoków zarządzania (DMV), aby zrozumieć działanie zapytania i wykorzystania zasobów magazynu danych.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg
+manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 08/26/2018
+ms.date: 11/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: c783045d242725ee19dfe7e0baee13625d986312
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: b53a3f99f601f540723a9a383e3bf7bd2908de23
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246498"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499567"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Monitorowanie aktywności wykorzystanie i kwerendy zasobów w usłudze Azure SQL Data Warehouse
 Usługa Azure SQL Data Warehouse zapewnia rozbudowane funkcje monitorowania w witrynie Azure portal, aby udostępniać szczegółowe informacje do obciążenia magazynu danych. Witryna Azure portal jest zalecanym narzędziem podczas monitorowania usługi data warehouse zapewnia konfigurowalne utrzymania okresów, alerty, zalecenia i możliwe do dostosowania wykresów i pulpitów nawigacyjnych metryk i dzienników. Portal umożliwia także integrację z innych usług, takich jak usługi Operations Management Suite (OMS) do monitorowania platformy Azure / Log Analytics i Azure Monitor, aby zapewnić kompleksowe monitorowanie środowisko nie tylko magazyn danych, ale także całą platformę Azure Platforma analiz dla zintegrowane rozwiązanie monitorowania. W tej dokumentacji opisano, jakie funkcje monitorowania są dostępne do optymalizacji i zarządzać Twoją platformą analytics z usługą SQL Data Warehouse. 
 
 ## <a name="resource-utilization"></a>Wykorzystanie zasobów 
-Następujące metryki są dostępne w witrynie Azure portal.
+Następujące metryki są dostępne w witrynie Azure portal dla usługi SQL Data Warehouse. Te metryki są udostępniane za pośrednictwem [usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics).
+
+> [!NOTE]
+> Od listopada 2018 r. zespół inżynierów jest adresowania problemu powoduje procent użycia procesora CPU i procent we/wy danych w celu underreport. Powoduje to użyte jednostki DWU i procent underreport także. 
 
 | Nazwa metryki                           | Opis     | Typ agregacji |
 | --------------------------------------- | ---------------- | --------------------------------------- |
@@ -35,6 +38,7 @@ Następujące metryki są dostępne w witrynie Azure portal.
 | Używane jednostki DWU                                | Limit jednostek DWU * jednostek DWU, procent | Maksimum   |
 | Procent liczby trafień pamięci podręcznej | (trafień w pamięci podręcznej / chybień w pamięci podręcznej) * 100, gdzie trafień w pamięci podręcznej jest sumą wszystkich trafień segmentów magazynu kolumn w lokalnej pamięci podręcznej dysków SSD, a trafienia pamięci podręcznej jest segmentów magazynu kolumn chybień w lokalnej pamięci podręcznej SSD sumowane we wszystkich węzłach | Maksimum |
 | Pamięć podręczna używana wartość procentowa | (pamięć podręczna używana / pojemności w pamięci podręcznej) * 100, gdzie pamięć podręczna w użyciu jest sumie wszystkich bajtów w lokalnej pamięci podręcznej dysku SSD we wszystkich węzłach, a pojemności pamięci podręcznej jest sumą lokalny dysk SSD pojemność pamięci podręcznej we wszystkich węzłach | Maksimum |
+| Wartość procentowa lokalnej bazy danych tempdb | Użycie lokalnej bazy danych tempdb na wszystkich węzłach obliczeniowych — wartości są emitowane co pięć minut | Maksimum |
 
 ## <a name="query-activity"></a>Aktywność zapytań
 Środowisko programistyczne podczas monitorowania usługa SQL Data Warehouse przy użyciu języka T-SQL usługi zawiera zbiór dynamicznych widoków zarządzania (DMV). Widoki te są przydatne, gdy aktywnie Rozwiązywanie problemów i identyfikuje wąskich gardeł wydajności w odniesieniu do obciążenia.
@@ -42,11 +46,11 @@ Następujące metryki są dostępne w witrynie Azure portal.
 Aby wyświetlić listę dynamicznych widoków zarządzania, które oferuje usługa SQL Data Warehouse, zapoznaj się z tym [dokumentacji](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs). 
 
 ## <a name="metrics-and-diagnostics-logging"></a>Rejestrowanie diagnostyczne i metryki
-Dzienniki i metryki, które mogą być eksportowane do [pakietu Operations Management Suite](https://azure.microsoft.com/resources/videos/operations-management-suite-oms-overview/) (OMS), w szczególności [Log analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) składnika i można programowo uzyskać dostęp za pośrednictwem [wyszukiwanie w dzienniku](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata).
+Dzienniki i metryki mogą być eksportowane do usługi Azure Monitor specjalnie [Log analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) składnika i można programowo uzyskać dostęp za pośrednictwem [wyszukiwanie w dzienniku](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata).
 
 
 > [!NOTE]
-> Począwszy od sierpnia 2018 r. dzienniki są obecnie implementowane dla usługi SQL Data Warehouse
+> Począwszy od listopada 2018 roku dzienniki są trwa jego wdrażanie dla usługi SQL Data Warehouse
 
 ## <a name="next-steps"></a>Kolejne kroki
 Następujące przewodniki z instrukcjami opisano typowe scenariusze i zastosowań podczas monitorowania i zarządzania magazynu danych:

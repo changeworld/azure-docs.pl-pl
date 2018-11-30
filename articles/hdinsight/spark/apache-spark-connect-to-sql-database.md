@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 1ae06fe9cc459d86bdd46d9b033a726339493dc5
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 603aa8d85d42167accd2a5e71c4ab3e5245f5d07
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164779"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499259"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Klaster HDInsight Spark umożliwia odczytywanie i zapisywanie danych do usługi Azure SQL database
 
-Dowiedz się, jak połączyć klaster Apache Spark w usłudze Azure HDInsight przy użyciu usługi Azure SQL database i odczytania, zapisywania i przesyłanie strumieniowe danych do bazy danych SQL. Instrukcje w tym artykule umożliwiają uruchamiać fragmenty kodu z języka Scala notesu programu Jupyter. Można jednak tworzenie autonomicznych aplikacji w języku Scala lub Python i wykonywać te same zadania. 
+Dowiedz się, jak połączyć klaster Apache Spark w usłudze Azure HDInsight przy użyciu usługi Azure SQL database i odczytania, zapisywania i przesyłanie strumieniowe danych do bazy danych SQL. Instrukcje w tym artykule korzystają [notesu programu Jupyter](https://jupyter.org/) można uruchamiać fragmenty kodu z języka Scala. Można jednak tworzenie autonomicznych aplikacji w języku Scala lub Python i wykonywać te same zadania. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -32,9 +32,9 @@ Dowiedz się, jak połączyć klaster Apache Spark w usłudze Azure HDInsight pr
 
 * **SQL Server Management Studio**. Postępuj zgodnie z instrukcjami w artykule [Użyj SSMS do nawiązywania połączeń i wykonywanie zapytań dotyczących danych](../../sql-database/sql-database-connect-query-ssms.md).
 
-## <a name="create-a-jupyter-notebook"></a>Tworzenie notesu Jupyter
+## <a name="create-a-jupyter-notebook"></a>Tworzenie notesu Jupyter 
 
-Rozpocznij od utworzenia notesu programu Jupyter skojarzonego z klastrem Spark. Ten notes umożliwia uruchamiać fragmenty kodu, używane w tym artykule. 
+Rozpocznij od utworzenia [notesu programu Jupyter](https://jupyter.org/) skojarzonego z klastrem Spark. Ten notes umożliwia uruchamiać fragmenty kodu, używane w tym artykule. 
 
 1. Z [witryny Azure portal](https://portal.azure.com/), otwórz klaster.
 1. Wybierz **notesu programu Jupyter** poniżej **pulpity nawigacyjne klastra** po prawej stronie.  Jeśli nie widzisz **pulpity nawigacyjne klastra**, kliknij przycisk **Przegląd** menu po lewej stronie w bloku. Jeśli zostanie wyświetlony monit, wprowadź poświadczenia administratora klastra.
@@ -237,4 +237,4 @@ W tej sekcji, firma Microsoft przesyłanie strumieniowe danych do **hvactable** 
 
 * [Analizowanie danych w Data Lake Store przy użyciu klastra platformy HDInsight Spark](apache-spark-use-with-data-lake-store.md)
 * [Przetwarzanie zdarzeń przesyłania strumieniowego ze strukturą za pomocą usługi Event Hub](apache-spark-eventhub-structured-streaming.md)
-* [Korzystanie z platformy Spark Structured Streaming z platformą Kafka w HDInsight](../hdinsight-apache-kafka-spark-structured-streaming.md)
+* [Use Apache Spark Structured Streaming przy użyciu platformy Apache Kafka w HDInsight](../hdinsight-apache-kafka-spark-structured-streaming.md)

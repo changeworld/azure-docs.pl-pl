@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 9885783428b51a71fee8733a9d054e82eca0f2f9
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: cead67bf18dcd0ea7b5c1479588083884dab475f
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828461"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632963"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurowanie rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Służy on do wyświetlenia serwerów, prawdopodobnie z nich--wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami i portami w dowolnej architekturze połączenia TCP bez konieczności konfiguracji, innej niż Instalacja agenta.
@@ -133,8 +133,8 @@ Usługa Service Map, dane są pobierane z Microsoft Dependency agent. Agent zale
 
 | Połączone źródło | Obsługiwane | Opis |
 |:--|:--|:--|
-| Agenci dla systemu Windows | Yes | Usługa Service Map, analizuje i zbiera dane z komputerów Windows. <br><br>Oprócz [agenta usługi Log Analytics dla Windows](../../log-analytics/log-analytics-agent-overview.md), agenci Windows wymagają Microsoft Dependency agent. Zobacz [obsługiwane systemy operacyjne](#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
-| Agenci dla systemu Linux | Yes | Usługa Service Map, analizuje i zbiera dane z komputerów z systemem Linux. <br><br>Oprócz [agenta usługi Log Analytics dla systemu Linux](../../log-analytics/log-analytics-agent-overview.md), agenci dla systemu Linux wymaga program Microsoft Dependency agent. Zobacz [obsługiwane systemy operacyjne](#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
+| Agenci dla systemu Windows | Yes | Usługa Service Map, analizuje i zbiera dane z komputerów Windows. <br><br>Oprócz [agenta usługi Log Analytics dla Windows](../../azure-monitor/platform/log-analytics-agent.md), agenci Windows wymagają Microsoft Dependency agent. Zobacz [obsługiwane systemy operacyjne](#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
+| Agenci dla systemu Linux | Yes | Usługa Service Map, analizuje i zbiera dane z komputerów z systemem Linux. <br><br>Oprócz [agenta usługi Log Analytics dla systemu Linux](../../azure-monitor/platform/log-analytics-agent.md), agenci dla systemu Linux wymaga program Microsoft Dependency agent. Zobacz [obsługiwane systemy operacyjne](#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
 | Grupa zarządzania programu System Center Operations Manager | Yes | Usługa Service Map, analizuje i zbiera dane z agentów systemu Windows i Linux w połączonej [grupy zarządzania programu System Center Operations Manager](../../log-analytics/log-analytics-om-agents.md). <br><br>Wymagane jest bezpośrednie połączenie z komputera agenta programu System Center Operations Manager do usługi Log Analytics. |
 | Konto magazynu Azure | Nie | Mapa usługi zbiera dane z komputerów agentów, dzięki czemu nie ma żadnych danych od niego mają być zbierane z usługi Azure Storage. |
 
@@ -153,7 +153,7 @@ Jeśli jesteś klientem programu System Center Operations Manager z grupy zarzą
 - Jeśli agentów programu System Center Operations Manager ma dostęp do Internetu, aby nawiązać połączenie z usługi Log Analytics, żadna dodatkowa konfiguracja jest wymagana.  
 - Agentów programu System Center Operations Manager nie może uzyskać dostęp do usługi Log Analytics, za pośrednictwem Internetu, należy skonfigurować bramę usługi Log Analytics do pracy z programu System Center Operations Manager.
   
-Jeśli komputery Windows lub Linux bezpośrednio nie może połączyć się z usługą, należy skonfigurować agenta usługi Log Analytics, aby nawiązać połączenie z obszaru roboczego usługi Log Analytics, za pomocą bramy. Aby uzyskać więcej informacji na temat sposobu wdrażania i konfigurowania bramy usługi Log Analytics, zobacz [połączyć komputery bez dostępu do Internetu za pomocą bramy usługi Log Analytics](../../log-analytics/log-analytics-oms-gateway.md).  
+Jeśli komputery Windows lub Linux bezpośrednio nie może połączyć się z usługą, należy skonfigurować agenta usługi Log Analytics, aby nawiązać połączenie z obszaru roboczego usługi Log Analytics, za pomocą bramy. Aby uzyskać więcej informacji na temat sposobu wdrażania i konfigurowania bramy usługi Log Analytics, zobacz [połączyć komputery bez dostępu do Internetu za pomocą bramy usługi Log Analytics](../../azure-monitor/platform/gateway.md).  
 
 ### <a name="management-packs"></a>Pakiety administracyjne
 Po aktywowaniu mapy usługi w obszarze roboczym usługi Log Analytics pakietu administracyjnego 300 KB są przekazywane do wszystkich serwerów Windows, w tym obszarze roboczym. Jeśli używasz agentów programu System Center Operations Manager w [podłączonej grupy zarządzania](../../log-analytics/log-analytics-om-agents.md), pakiet administracyjny rozwiązania Service Map jest wdrażany z programu System Center Operations Manager. 
@@ -230,7 +230,7 @@ Agent zależności można zainstalować ręcznie na komputerach Windows przez ur
 
 Aby zainstalować agenta zależności na każdym komputerze, Windows, wykonaj następujące kroki:
 
-1.  Instalacja agenta usługi Log Analytics dla Windows zgodnie z jedną z metod opisanych w [omówienie agenta usługi Log Analytics](../../log-analytics/log-analytics-agent-overview.md).
+1.  Instalacja agenta usługi Log Analytics dla Windows zgodnie z jedną z metod opisanych w [omówienie agenta usługi Log Analytics](../../azure-monitor/platform/log-analytics-agent.md).
 2.  Pobierz agenta Windows i uruchom go przy użyciu następującego polecenia: 
     
     `InstallDependencyAgent-Windows.exe`
@@ -258,7 +258,7 @@ Agent zależności jest zainstalowany na komputerach z systemem Linux z `Install
 
 Aby zainstalować agenta zależności na każdy komputer z systemem Linux, wykonaj następujące kroki:
 
-1.  Zainstaluj agenta usługi Log Analytics, zgodnie z jedną z metod opisanych w [omówienie agenta usługi Log Analytics](../../log-analytics/log-analytics-agent-overview.md).
+1.  Zainstaluj agenta usługi Log Analytics, zgodnie z jedną z metod opisanych w [omówienie agenta usługi Log Analytics](../../azure-monitor/platform/log-analytics-agent.md).
 2.  Zainstaluj agenta zależności systemu Linux jako użytkownik główny, uruchamiając następujące polecenie:
     
     `sh InstallDependencyAgent-Linux64.bin`
@@ -390,7 +390,7 @@ Jeśli instalację agenta zależności zakończyła się pomyślnie, ale nie wid
 
         Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
 
-Czy został wyświetlony w wynikach różnych zdarzeń? To najnowsze dane? Jeśli tak, usługi Log Analytics Agent jest prawidłowo i komunikacji z usługą Log Analytics. Jeśli nie, sprawdź agenta na serwerze: [agenta usługi Log Analytics na potrzeby rozwiązywania problemów Windows](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) lub [agenta usługi Log Analytics na potrzeby rozwiązywania problemów w systemie Linux](../../log-analytics/log-analytics-agent-linux-support.md).
+Czy został wyświetlony w wynikach różnych zdarzeń? To najnowsze dane? Jeśli tak, usługi Log Analytics Agent jest prawidłowo i komunikacji z usługą Log Analytics. Jeśli nie, sprawdź agenta na serwerze: [agenta usługi Log Analytics na potrzeby rozwiązywania problemów Windows](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) lub [agenta usługi Log Analytics na potrzeby rozwiązywania problemów w systemie Linux](../../azure-monitor/platform/agent-linux-troubleshoot.md).
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>Serwer jest wyświetlany w rozwiązania Service Map, ale żadne procesy nie ma
 Jeśli zostanie wyświetlony na mapie usługi serwera, ale nie zawiera on procesu lub połączenia danych, który wskazuje agenta zależności jest zainstalowana i uruchomiona, że sterownik jądra nie została załadowana. 
