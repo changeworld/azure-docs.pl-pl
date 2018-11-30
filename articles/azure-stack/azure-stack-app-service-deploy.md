@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 11/29/2018
 ms.author: anwestg
-ms.openlocfilehash: aa745d827db7633dc9f8601f65fa31dfadbb4076
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: cd16bf400c5a5e5a07c7e2dc459d801e6fc810b9
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614059"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635377"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Dodaj dostawcę zasobów usługi App Service do usługi Azure Stack
 
@@ -202,17 +202,17 @@ Aby wdrożyć dostawcy zasobów usługi App Service, wykonaj następujące kroki
 
     ![Zarządzanie App Service](media/azure-stack-app-service-deploy/image12.png)
 
-   >[!IMPORTANT]
-   >Jeśli wdrażasz do istniejącej sieci wirtualnej i przy użyciu wewnętrznego adresu IP, aby nawiązać połączenie magazynowi, należy dodać regułę zabezpieczeń dla ruchu wychodzącego. Ta reguła umożliwia ruch SMB między podsieci procesów roboczych i serwera plików.  Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:<br>
-    >  - Źródło: wszystkie
-    >  - Zakres portów źródłowych: *
-    >  - Miejsce docelowe: Adresy IP
-    >  - Docelowy zakres adresów IP: zakres adresów IP dla magazynowi
-    >  - Zakres portów docelowych: 445
-    >  - Protokół: TCP
-    >  - Akcja: Zezwalaj
-    >  - Priorytet: 700
-    >  - Nazwa: Outbound_Allow_SMB445
+    Jeśli wdrażasz do istniejącej sieci wirtualnej i przy użyciu wewnętrznego adresu IP, aby nawiązać połączenie magazynowi, należy dodać regułę zabezpieczeń dla ruchu wychodzącego. Ta reguła umożliwia ruch SMB między podsieci procesów roboczych i serwera plików.  Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
+
+    - Źródło: wszystkie
+    - Zakres portów źródłowych: *
+    - Miejsce docelowe: Adresy IP
+    - Docelowy zakres adresów IP: zakres adresów IP dla magazynowi
+    - Zakres portów docelowych: 445
+    - Protokół: TCP
+    - Akcja: Zezwalaj
+    - Priorytet: 700
+    - Nazwa: Outbound_Allow_SMB445
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>Testowanie usługi App Service w usłudze Azure Stack
 
