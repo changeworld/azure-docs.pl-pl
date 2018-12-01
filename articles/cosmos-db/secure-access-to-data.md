@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/19/2018
 ms.author: rafats
-ms.openlocfilehash: ed97a2c31897d1e5e61421ea489a35af377f4f37
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 0d5243a1dd2a7c9244860da15d39f407b281e1e3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621449"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726801"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Zabezpieczanie dostępu do danych usługi Azure Cosmos DB
 Ten artykuł zawiera omówienie zabezpieczania dostępu do danych przechowywanych w [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
@@ -180,8 +180,8 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 Aby dodać dostęp czytelnika konta usługi Azure Cosmos DB z Twoim kontem użytkownika, należy mieć właścicielem subskrypcji, wykonaj następujące kroki w witrynie Azure portal.
 
 1. Otwórz witrynę Azure portal, a następnie wybierz swoje konto usługi Azure Cosmos DB.
-2. Kliknij przycisk **kontrola dostępu (IAM)** kartę, a następnie kliknij przycisk **+ Dodaj**.
-3. W **Dodaj uprawnienia** okienku w obszarze **roli** wybierz opcję **Rola czytelnika konta bazy danych Cosmos**.
+2. Kliknij przycisk **kontrola dostępu (IAM)** kartę, a następnie kliknij przycisk **+ Dodaj przypisanie roli**.
+3. W **Dodaj przypisanie roli** okienku w obszarze **roli** wybierz opcję **Rola czytelnika konta bazy danych Cosmos**.
 4. W **przypisywanie dostępu do usługi box**, wybierz opcję **użytkownika usługi Azure AD, grupa lub aplikacja**.
 5. Wybierz użytkownika, grupę lub aplikację w katalogu, do którego chcesz udzielić dostępu.  Możesz przeszukiwać katalog według nazwy wyświetlanej, adresu e-mail lub identyfikatorów obiektów.
     Wybranego użytkownika, grupy lub aplikacji zostanie wyświetlony na liście wybranych członków.

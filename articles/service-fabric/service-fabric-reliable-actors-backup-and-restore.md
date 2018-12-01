@@ -1,6 +1,6 @@
 ---
-title: Kopia zapasowa i przywracanie podmiotów sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft
-description: Informacje o sposobie wykonania kopii zapasowej i przywracania w Twojej podmiotów sieć szkieletowa usług Azure.
+title: Kopia zapasowa i przywracanie aktorów usługi Azure Service Fabric | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zaimplementować kopii zapasowej i przywracania w aktorów usługi Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -12,17 +12,22 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/19/2018
+ms.date: 10/29/2018
 ms.author: vturecek
-ms.openlocfilehash: c72aea9d104264243ef0654aea01e0a41f33ed6f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d5922e21dd464b8cbd0075e7bd2515ffa73607e6
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206870"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726937"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>Implementowanie Reliable Actors kopia zapasowa i przywracanie
-W poniższym przykładzie usługi aktora niestandardowych opisuje metodę kopii zapasowych danych aktora dzięki wykorzystaniu odbiornika usługi zdalne znajduje się już w `ActorService`:
+
+> [!NOTE]
+> Firma Microsoft zaleca, aby użyć [okresowych kopii zapasowych i przywracania](service-fabric-backuprestoreservice-quickstart-azurecluster.md) konfigurowania kopii zapasowej danych Reliable Stateful services i Reliable Actors. 
+> 
+
+W poniższym przykładzie Usługa aktora niestandardowy uwidacznia metodę, aby utworzyć kopię zapasową danych aktora, wykorzystując już istnieje na odbiornik komunikacji zdalnej `ActorService`:
 
 ```csharp
 public interface IMyActorService : IService
@@ -98,7 +103,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 }
 ```
 
-W tym przykładzie `IMyActorService` jest umowa komunikacji zdalnej, która implementuje `IService` (C#) i `Service` (języka Java), a następnie jest implementowany przez `MyActorService`. Dodanie tego kontraktu usługi zdalne metod na `IMyActorService` są teraz dostępne do klienta przez utworzenie zdalnym obiektem pośredniczącym za pośrednictwem `ActorServiceProxy`:
+W tym przykładzie `IMyActorService` jest umowa komunikacji zdalnej, która implementuje `IService` (C#) i `Service` (Java), a następnie jest implementowany przez `MyActorService`. Dodając ten kontrakt komunikacji zdalnej metody na `IMyActorService` są teraz również dostępne dla klienta, tworząc serwer proxy usług zdalnych za pośrednictwem `ActorServiceProxy`:
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(
@@ -113,12 +118,12 @@ MyActorService myActorServiceProxy = ActorServiceProxy.create(MyActorService.cla
 myActorServiceProxy.backupActorsAsync();
 ```
 
-Aby uzyskać więcej informacji o Reliable Actors, przeczytaj następujące artykuły:
+Aby uzyskać więcej informacji na temat elementów Reliable Actors przeczytaj następujące artykuły:
 * [Zarządzanie stanem aktora](service-fabric-reliable-actors-state-management.md)
-* [Aktora cykl życia i odzyskiwanie pamięci](service-fabric-reliable-actors-lifecycle.md)
-* [Dokumentacji interfejsu API złośliwych użytkowników](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [.NET przykładowy kod](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java przykładowy kod](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Kolekcja aktora cykl życia i odzyskiwanie](service-fabric-reliable-actors-lifecycle.md)
+* [Dokumentacja referencyjna interfejsu API aktorów](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Przykładowy kod .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Przykładowego kodu Java](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

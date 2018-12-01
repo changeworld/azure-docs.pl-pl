@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8cec3d3695eaff8719757dd022951b969de99f6a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bccbf5462668913f6f3025e8d2274c115d49457f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010647"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727244"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Usługa Azure AD B2C: Często zadawane pytania (FAQ) 
 Ta strona odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory (Azure AD) B2C. Wracaj aktualizacje.
@@ -34,7 +34,7 @@ W dzierżawie usługi Azure AD użytkownicy, którzy należą do dzierżawy Zalo
 
 W dzierżawie usługi Azure AD B2C, większość aplikacji ma użytkownikowi Zaloguj się przy użyciu dowolnego adresu e-mail dowolnego (na przykład joe@comcast.net, bob@gmail.com, sarah@contoso.com, lub jim@live.com). Ten typ konta jest kontem lokalnym.  Obsługujemy również nazwy użytkownika jest swobodny, jak w przypadku kont lokalnych (na przykład Jan, Robert, sarah lub jim). Można wybrać jedną z tych dwóch typów konta lokalnego, podczas konfigurowania dostawców tożsamości dla usługi Azure AD B2C w witrynie Azure portal. W swojej dzierżawie usługi Azure AD B2C, kliknij przycisk **dostawców tożsamości** , a następnie wybierz **Username** w ramach kont lokalnych. 
 
-Należy zawsze tworzyć konta użytkowników dla aplikacji za pomocą rejestracji zasady rejestracji lub logowania — w zasadach lub za pomocą interfejsu API programu Graph usługi Azure AD. Konta użytkowników utworzone w witrynie Azure portal są używane tylko do administrowania dzierżawy.
+Zawsze należy utworzyć konta użytkowników dla aplikacji za pośrednictwem przepływu rejestracji użytkownika, przepływ użytkownika rejestracji lub logowania, lub za pomocą interfejsu API programu Graph usługi Azure AD. Konta użytkowników utworzone w witrynie Azure portal są używane tylko do administrowania dzierżawy.
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Dostawców tożsamości społecznościowych, które są obsługiwane teraz? Te, które planujesz obsługiwać w przyszłości?
 Obecnie obsługujemy Facebook, Google +, LinkedIn, Amazon, usługi Twitter (wersja zapoznawcza), WeChat (wersja zapoznawcza), Weibo (wersja zapoznawcza) i q (wersja zapoznawcza). Dodamy obsługę innych popularnych społecznościowych dostawców tożsamości na podstawie oczekiwań klienta.
@@ -79,8 +79,8 @@ Obecnie nie ma możliwości zmiany "od:" na adres e-mail.
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Jak można przeprowadzić migrację mojej istniejącej nazwy użytkownika, hasła i profile z bazy danych usługi Azure AD B2C?
 Można zapisać narzędzie do migracji, można użyć interfejsu API programu Graph usługi Azure AD. Zobacz [Przewodnik po migracji użytkownika](active-directory-b2c-user-migration.md) Aby uzyskać szczegółowe informacje.
 
-### <a name="what-password-policy-is-used-for-local-accounts-in-azure-ad-b2c"></a>Jakie zasady haseł jest używany dla kont lokalnych w usłudze Azure AD B2C?
-Zasady haseł usługi Azure AD B2C dla kont lokalnych jest na podstawie zasad dla usługi Azure AD. Usługa Azure AD B2C jego rejestracji, zarejestruj się lub logowania i hasło resetowania używa zasad siły "silnego" hasła i wygaśnięcia hasła. Odczyt [zasad haseł usługi Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx) Aby uzyskać więcej informacji. Aby uzyskać informacje dotyczące blokady konta i hasła, zobacz [zarządza zagrożeń bezpieczeństwa zasobów i danych w usłudze Azure Active Directory B2C](active-directory-b2c-reference-threat-management.md).
+### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Jakie przepływ użytkownika hasła jest używany dla kont lokalnych w usłudze Azure AD B2C?
+Przepływ użytkownika hasła usługi Azure AD B2C dla kont lokalnych jest na podstawie zasad dla usługi Azure AD. Usługa Azure AD B2C jego rejestracji, zarejestruj się lub logowanie i hasła przepływy użytkownika resetowania korzystanie z poziomu "silnego" hasła i nie wygasa hasła. Odczyt [zasad haseł usługi Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx) Aby uzyskać więcej informacji. Aby uzyskać informacje dotyczące blokady konta i hasła, zobacz [zarządza zagrożeń bezpieczeństwa zasobów i danych w usłudze Azure Active Directory B2C](active-directory-b2c-reference-threat-management.md).
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Aby przeprowadzić migrację tożsamości klientów, które są przechowywane na mojej lokalnej usługi Active Directory do usługi Azure AD B2C można używać program Azure AD Connect?
 Nie, usługa Azure AD Connect nie jest przeznaczona do pracy z usługą Azure AD B2C. Należy rozważyć użycie [interfejsu API programu Graph](active-directory-b2c-devquickstarts-graph-dotnet.md) przypadku migracji użytkownika.  Zobacz [Przewodnik po migracji użytkownika](active-directory-b2c-user-migration.md) Aby uzyskać szczegółowe informacje.

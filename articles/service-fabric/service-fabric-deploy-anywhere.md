@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/28/2018
+ms.date: 11/28/2018
 ms.author: dekapur
-ms.openlocfilehash: 80b331d32fe1e7bb4eb331bd981106968bc73bed
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: e4540076b29cf3cd51f03239a1868e18a41781d9
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163213"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726529"
 ---
 # <a name="create-service-fabric-clusters-on-windows-server-or-linux"></a>Tworzenie klastrów usługi Service Fabric w systemie Windows Server lub Linux
 Klaster usługi Service Fabric to zbiór połączonych z siecią maszyn wirtualnych lub fizycznych, w których mikrousługi są wdrażania i zarządzania nimi. Komputer lub maszynę Wirtualną, która jest częścią klastra, jest nazywana węzłem klastra. Klastry można skalować do tysięcy węzłów. Po dodaniu nowych węzłów do klastra usługi Service Fabric rebalances replik partycji usługi i wystąpień na większą liczbę węzłów. Ogólna zwiększa wydajność aplikacji i zmniejsza rywalizacji o dostęp do pamięci. Jeśli nie są wydajnie używane węzły w klastrze, możesz zmniejszyć liczbę węzłów w klastrze. Usługa Service Fabric ponownie rebalances replik partycji i wystąpień na obniżenie liczby węzłów, aby lepiej wykorzystać możliwości sprzętu na każdym węźle.
@@ -35,7 +35,9 @@ Jesteś w stanie Tworzenie klastrów na maszynach wirtualnych z tymi systemami o
 * Windows Server 2012 R2
 * Windows Server 2016 
 * System Windows Server w wersji 1709
+* System Windows Server w wersji 1803
 * Linux Ubuntu 16.04
+* Red Hat Enterprise Linux 7.4 (Obsługa wersji zapoznawczej)
 
 > [!NOTE]
 > Jeśli zdecydujesz się wdrożyć usługi Service Fabric w systemie Windows Server w wersji 1709, należy pamiętać, że (1) nie jest długoterminowej, gałąź, obsługi, więc może trzeba będzie przenosić w przyszłości wersji i (2) Jeśli wdrażanie kontenerów, kontenery utworzone w systemie Windows Server 2016 nie działają w systemie Windows Server  1709 i na odwrót (trzeba będzie ponownie skompilować je wdrażać).

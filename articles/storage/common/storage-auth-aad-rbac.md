@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 5da34e8e79c0df88cfad0b398aa8e1c22f158489
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 5f558ea851d63b08885293efcff3fef600f2cc17
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428882"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726393"
 ---
 # <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>Zarządzanie prawami dostępu do obiektów Blob platformy Azure i dane w kolejce przy użyciu RBAC (wersja zapoznawcza)
 
@@ -61,15 +61,16 @@ Poniższe sekcje pokazują, jak przypisać rolę ograniczone do konta magazynu l
 Aby przypisać rolę wbudowaną, aby umożliwić dostęp do wszystkich kontenerów lub kolejek na koncie magazynu w witrynie Azure portal:
 
 1. W [witryny Azure portal](https://portal.azure.com), przejdź do swojego konta magazynu.
-2. Wybierz konto magazynu, a następnie wybierz **kontrola dostępu (IAM)** Aby wyświetlić ustawienia kontroli dostępu dla konta. Kliknij przycisk **Dodaj** przycisk, aby dodać nową rolę.
+1. Wybierz konto magazynu, a następnie wybierz **kontrola dostępu (IAM)** Aby wyświetlić ustawienia kontroli dostępu dla konta. Wybierz **przypisań ról** kartę, aby wyświetlić listę przypisań ról.
 
     ![Zrzut ekranu przedstawiający ustawienia kontroli dostępu do magazynu](media/storage-auth-aad-rbac/portal-access-control.png)
 
-3. W **Dodaj uprawnienia** okna, wybierz rolę do przypisania do tożsamości usługi Azure AD. Następnie wyszukaj, aby zlokalizować tożsamości, do którego chcesz przypisać tę rolę. Na przykład na poniższej ilustracji przedstawiono **czytnik danych obiektu Blob Storage (wersja zapoznawcza)** roli przypisanej do użytkownika.
+1. Kliknij przycisk **Dodaj przypisanie roli** przycisk, aby dodać nową rolę.
+1. W **Dodaj przypisanie roli** okna, wybierz rolę do przypisania do tożsamości usługi Azure AD. Następnie wyszukaj, aby zlokalizować tożsamości, do którego chcesz przypisać tę rolę. Na przykład na poniższej ilustracji przedstawiono **czytnik danych obiektu Blob Storage (wersja zapoznawcza)** roli przypisanej do użytkownika.
 
     ![Zrzut ekranu przedstawiający sposób Przypisz rolę RBAC](media/storage-auth-aad-rbac/add-rbac-role.png)
 
-4. Kliknij pozycję **Zapisz**. Tożsamość, do którego jest przypisany do roli na liście wyświetlanej w ramach tej roli. Na przykład na poniższej ilustracji przedstawiono, że dodano użytkowników teraz mają uprawnienia do odczytu do wszystkich danych obiektu blob na koncie magazynu.
+1. Kliknij pozycję **Zapisz**. Tożsamość, do którego jest przypisany do roli na liście wyświetlanej w ramach tej roli. Na przykład na poniższej ilustracji przedstawiono, że użytkownik dodany teraz ma uprawnienia do odczytu do wszystkich danych obiektu blob na koncie magazynu.
 
     ![Zrzut ekranu przedstawiający listę użytkowników przypisanych do roli](media/storage-auth-aad-rbac/account-scoped-role.png)
 
@@ -78,17 +79,20 @@ Aby przypisać rolę wbudowaną, aby umożliwić dostęp do wszystkich kontener�
 Czynności podczas przypisywania wbudowana Rola o określonym zakresie do kontenera lub kolejki są podobne. Przedstawionych tu procedurach przypisuje rolę ograniczone do kontenera, ale możesz wykonać te same kroki, aby przypisać rolę ograniczone do kolejki: 
 
 1. W [witryny Azure portal](https://portal.azure.com), przejdź do swojego konta magazynu i wyświetlić **Przegląd** dla konta.
-2. W obszarze usługi Blob Service, wybierz **Przeglądaj obiekty BLOB**. 
-3. Odszukaj kontener, dla którego chcesz przypisać rolę i wyświetlanie ustawień kontenera. 
-4. Wybierz **kontrola dostępu (IAM)** Aby wyświetlić ustawienia kontroli dostępu dla kontenera.
-5. W **Dodaj uprawnienia** okna, wybierz rolę, którą chcesz przypisać do tożsamości usługi Azure AD. Następnie wyszukaj, aby zlokalizować tożsamości, do którego chcesz przypisać tę rolę.
-6. Kliknij pozycję **Zapisz**. Tożsamość, do którego jest przypisany do roli na liście wyświetlanej w ramach tej roli. Na przykład na poniższej ilustracji przedstawiono, że użytkownik dodany teraz ma uprawnienia do odczytu do danych w kontenerze o nazwie *przykładowy kontener*.
+1. W obszarze usługi wybierz **obiektów blob**. 
+1. Odszukaj kontener, dla którego chcesz przypisać rolę i wyświetlanie ustawień kontenera. 
+1. Wybierz **kontrola dostępu (IAM)** Aby wyświetlić ustawienia kontroli dostępu dla kontenera. Wybierz **przypisań ról** kartę, aby wyświetlić listę przypisań ról.
+
+    ![Ustawienia kontroli dostępu do kontenera zrzut ekranu](media/storage-auth-aad-rbac/portal-access-control-container.png)
+1. Kliknij przycisk **Dodaj przypisanie roli** przycisk, aby dodać nową rolę.
+1. W **Dodaj przypisanie roli** okna, wybierz rolę, którą chcesz przypisać do tożsamości usługi Azure AD. Następnie wyszukaj, aby zlokalizować tożsamości, do którego chcesz przypisać tę rolę.
+1. Kliknij pozycję **Zapisz**. Tożsamość, do którego jest przypisany do roli na liście wyświetlanej w ramach tej roli. Na przykład na poniższej ilustracji przedstawiono, że użytkownik dodany teraz ma uprawnienia do odczytu do danych w kontenerze o nazwie *przykładowy kontener*.
 
     ![Zrzut ekranu przedstawiający listę użytkowników przypisanych do roli](media/storage-auth-aad-rbac/container-scoped-role.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej o ROLACH, zobacz [Rozpoczynanie pracy przy użyciu kontroli dostępu opartej na rolach](../../role-based-access-control/overview.md).
+- Aby dowiedzieć się więcej o ROLACH, zobacz [co to jest kontrola dostępu oparta na rolach (RBAC)?](../../role-based-access-control/overview.md).
 - Aby dowiedzieć się, jak przypisać i zarządzać przypisaniami ról RBAC przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST, zobacz następujące artykuły:
     - [Zarządzanie kontrolą dostępu opartej na rolach (RBAC) przy użyciu programu Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
     - [Zarządzanie kontrolą dostępu opartej na rolach (RBAC) przy użyciu wiersza polecenia platformy Azure](../../role-based-access-control/role-assignments-cli.md)

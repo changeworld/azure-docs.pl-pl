@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: c26421f848cf25e391589fa791f801e30fd14797
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d4eac6a2a0b4b9414fdf110c599ff557cabeede5
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50208905"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727107"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Konfigurowanie odzyskiwania po awarii programu VMware w środowisku wielu dzierżawców w ramach programu Cloud Solution Provider (CSP)
 
@@ -72,9 +72,13 @@ Można teraz wykonać i zarządzać operacjami usługi Site Recovery wszystkie d
 
       ![Strona subskrypcji dostawcy CSP dzierżawcy](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
-      (b) teraz utworzyć nowego użytkownika, wprowadzając odpowiednie szczegóły i wybierając uprawnienia lub przez przekazanie listy użytkowników w pliku CSV.
+    (b) teraz utworzyć nowego użytkownika, wprowadzając odpowiednie szczegóły i wybierając uprawnienia lub przez przekazanie listy użytkowników w pliku CSV.
+    
     c) po utworzeniu nowego użytkownika, wróć do witryny Azure portal. W **subskrypcji** wybierz odpowiednie subskrypcji.
-    d) wybierz **kontrola dostępu (IAM)**, a następnie kliknij przycisk **Dodaj**, aby dodać użytkownika z poziomem dostępu istotne. Użytkownicy, które zostały utworzone za pośrednictwem portalu dostawcy usług Kryptograficznych są automatycznie wyświetlane na stronie, która zostanie otwarta po kliknięciu poziom dostępu.
+
+    d) wybierz **kontrola dostępu (IAM)**, a następnie kliknij przycisk **przypisań ról**.
+
+    (e) kliknij **Dodaj przypisanie roli** można dodać użytkownika z poziomem dostępu istotne. Użytkownicy, które zostały utworzone za pośrednictwem portalu dostawcy usług Kryptograficznych są wyświetlane na karcie przypisania roli.
 
       ![Dodawanie użytkownika](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
 

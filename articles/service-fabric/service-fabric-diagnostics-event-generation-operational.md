@@ -12,92 +12,97 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/25/2018
+ms.date: 10/23/2018
 ms.author: dekapur
-ms.openlocfilehash: 03dac03405588ba00a0f8ca5b127956c40853e36
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: a568fc6316211755fabc15ab3cf0227e3a87cb01
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868517"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727362"
 ---
 # <a name="list-of-service-fabric-events"></a>Lista zdarzeń usługi Service Fabric 
 
-Usługa Service Fabric udostępnia zestaw podstawowy zdarzenia klastra informujące o stanie klastra jako [usługi Service Fabric zdarzenia](service-fabric-diagnostics-events.md). Te są oparte na akcje wykonane przez usługę Service Fabric na węzły klastra lub przez klaster właściciela / — operator decyzji związanych z zarządzaniem. Te zdarzenia są dostępne dla zapytań [bazy danych EventStore](service-fabric-diagnostics-eventstore.md) w klastrze lub za pośrednictwem kanału operacyjnej. Na maszynach Windows kanał operacyjny jest również podłączany do dziennika zdarzeń — tak aby było widać usługi Service Fabric zdarzeniach w Podglądzie zdarzeń. 
+Usługa Service Fabric udostępnia zestaw podstawowy zdarzenia klastra informujące o stanie klastra jako [usługi Service Fabric zdarzenia](service-fabric-diagnostics-events.md). Te są oparte na akcje wykonane przez usługę Service Fabric na węzły klastra lub przez klaster właściciela / — operator decyzji związanych z zarządzaniem. Te zdarzenia są dostępne przez skonfigurowanie na wiele sposobów, w tym konfigurowanie [usługi Log Analytics na potrzeby klastra](service-fabric-diagnostics-oms-setup.md), lub przeszukując [bazy danych EventStore](service-fabric-diagnostics-eventstore.md). Na maszynach Windows te zdarzenia są podawane w dzienniku zdarzeń — tak aby było widać usługi Service Fabric zdarzeniach w Podglądzie zdarzeń. 
 
->[!NOTE]
->Lista zdarzeń usługi Service Fabric w przypadku klastrów w wersji < 6.2 można znaleźć w poniższej sekcji. 
+Poniżej przedstawiono niektóre cechy te zdarzenia
+* Każde zdarzenie jest powiązany z określonej jednostki w klastrze np. aplikacji, usługi, Node, repliki.
+* Każde zdarzenie zawiera zestaw typowych pól: EventInstanceId EventName i kategorii.
+* Każde zdarzenie zawiera pola, które powiązać zdarzenia do jednostki, który jest skojarzony. Na przykład zdarzenie ApplicationCreated musi pola, które określają nazwę aplikacji, utworzonej.
+* Zdarzenia są skonstruowane w taki sposób, że mogą być używane w wielu różnych narzędzi w celu dalszej analizy. Ponadto istotne szczegóły dotyczące zdarzenia są definiowane jako osobne właściwości, w przeciwieństwie do długi ciąg. 
+* Zdarzenia są zapisywane przez różne podsystemy w usłudze Service Fabric są identyfikowane za pomocą Source(Task) poniżej. Więcej informacji znajduje się w tych podsystemów w [Architektura usługi Service Fabric](service-fabric-architecture.md) i [omówienie techniczne usługi Service Fabric](service-fabric-technical-overview.md).
 
-Poniżej przedstawiono dostępne na platformach, posortowane według jednostki mapowania ich na listę wszystkich zdarzeń.
+Oto lista tych zdarzeń usługi Service Fabric, uporządkowane według jednostki.
 
 ## <a name="cluster-events"></a>Zdarzenia klastra
 
 **Zdarzenia uaktualniania klastra**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
-| --- | --- | --- | --- | --- | --- |
-| 29627 | ClusterUpgradeStarted | Rozpoczęto Uaktualnianie klastra | MENEDŻER CERTYFIKATÓW | Informacyjne | 1 |
-| 29628 | ClusterUpgradeCompleted | Ukończono uaktualnianie klastra| MENEDŻER CERTYFIKATÓW | Informacyjne | 1 |
-| 29629 | ClusterUpgradeRollbackStarted | Rozpoczęto Uaktualnianie klastra można wycofać | MENEDŻER CERTYFIKATÓW | Informacyjne | 1 |
-| 29630 | ClusterUpgradeRollbackCompleted | Uaktualnianie klastra została ukończona, wycofywanie | MENEDŻER CERTYFIKATÓW | Informacyjne | 1 |
-| 29631 | ClusterUpgradeDomainCompleted | Ukończono uaktualnianie domeny podczas uaktualniania klastra | MENEDŻER CERTYFIKATÓW | Informacyjne | 1 |
+Szczegółowe informacje na temat uaktualniania klastra można znaleźć [tutaj](service-fabric-cluster-upgrade-windows-server.md).
+
+| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom | 
+| --- | --- | --- | --- | --- | --- | 
+| 29627 | ClusterUpgradeStarted | Uaktualnienie | Rozpoczęto Uaktualnianie klastra | CM | Informacyjne |
+| 29628 | ClusterUpgradeCompleted | Uaktualnienie | Ukończono uaktualnianie klastra | CM | Informacyjne | 
+| 29629 | ClusterUpgradeRollbackStarted | Uaktualnienie | Rozpoczęto Uaktualnianie klastra można wycofać  | CM | Ostrzeżenie | 
+| 29630 | ClusterUpgradeRollbackCompleted | Uaktualnienie | Uaktualnianie klastra została ukończona, wycofywanie | CM | Ostrzeżenie | 
+| 29631 | ClusterUpgradeDomainCompleted | Uaktualnienie | Domeny uaktualnienia zakończył uaktualnianie podczas uaktualniania klastra | CM | Informacyjne | 
 
 ## <a name="node-events"></a>Węzeł zdarzenia
 
 **Zdarzenia cyklu życia węzła** 
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
-| --- | --- | ---| --- | --- | --- |
-| 18602 | NodeDeactivateCompleted | Dezaktywacja węzła zostało zakończone. | FM | Informacyjne | 1 |
-| 18603 | NodeUp | Klastra wykrył, że uruchomieniu węzła | FM | Informacyjne | 1 |
-| 18604 | NodeDown | Klastra wykrył, że węzeł został zamknięty. |  FM | Informacyjne | 1 |
-| 18605 | NodeAddedToCluster | Nowy węzeł został dodany do klastra | FM | Informacyjne | 1 |
-| 18606 | NodeRemovedFromCluster | Po usunięciu węzła z klastra | FM | Informacyjne | 1 |
-| 18607 | NodeDeactivateStarted | Dezaktywacja węzła została uruchomiona. | FM | Informacyjne | 1 |
-| 25620 | NodeOpening | Węzeł jest uruchamiana. Pierwszy etap cyklu życia węzła | FabricNode | Informacyjne | 1 |
-| 25621 | NodeOpenSucceeded | Węzeł został uruchomiony pomyślnie | FabricNode | Informacyjne | 1 |
-| 25622 | NodeOpenFailed | Węzeł nie powiodło się | FabricNode | Informacyjne | 1 |
-| 25623 | NodeClosing | Węzeł jest zamykany. Początek końcowym etapie cyklu życia węzła | FabricNode | Informacyjne | 1 |
-| 25624 | NodeClosed | Węzeł pomyślnie wyłączone | FabricNode | Informacyjne | 1 |
-| 25625 | NodeAborting | Węzeł jest uruchamiana ungracefully zamknięcia | FabricNode | Informacyjne | 1 |
-| 25626 | NodeAborted | Węzeł ungracefully został zamknięty | FabricNode | Informacyjne | 1 |
+| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom |
+| --- | --- | ---| --- | --- | --- | 
+| 18602 | NodeDeactivateCompleted | Przejścia stanu | Dezaktywacja węzła zostało zakończone. | FM | Informacyjne | 
+| 18603 | NodeUp | Przejścia stanu | Klastra wykrył, że uruchomieniu węzła | FM | Informacyjne | 
+| 18604 | NodeDown | Przejścia stanu | Klastra wykrył, że węzeł został zamknięty. Podczas ponownego uruchomienia węzła zobaczysz zdarzenia NodeDown, następuje zdarzeń NodeUp |  FM | Błąd | 
+| 18605 | NodeAddedToCluster | Przejścia stanu |  Nowy węzeł został dodany do klastra i usługi Service Fabric można wdrażać aplikacje dla tego węzła | FM | Informacyjne | 
+| 18606 | NodeRemovedFromCluster | Przejścia stanu |  Węzeł został usunięty z klastra. Usługa Service Fabric wdroży już aplikacje do tego węzła | FM | Informacyjne | 
+| 18607 | NodeDeactivateStarted | Przejścia stanu |  Dezaktywacja węzła została uruchomiona. | FM | Informacyjne | 
+| 25621 | NodeOpenSucceeded | Przejścia stanu |  Węzeł został uruchomiony pomyślnie | FabricNode | Informacyjne | 
+| 25622 | NodeOpenFailed | Przejścia stanu |  Węzeł nie udało się przyłączeniu pierścienia | FabricNode | Błąd | 
+| 25624 | NodeClosed | Przejścia stanu |  Węzeł pomyślnie wyłączone | FabricNode | Informacyjne | 
+| 25626 | NodeAborted | Przejścia stanu |  Węzeł ungracefully został zamknięty | FabricNode | Błąd | 
 
 ## <a name="application-events"></a>Zdarzenia aplikacji
 
 **Zdarzenia cyklu życia aplikacji**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
-| --- | --- | ---| --- | --- | --- |
-| 29620 | ApplicationCreated | Utworzono nową aplikację | MENEDŻER CERTYFIKATÓW | Informacyjne | 1 |
-| 29625 | ApplicationDeleted | Istniejąca aplikacja została usunięta. | MENEDŻER CERTYFIKATÓW | Informacyjne | 1 |
-| 23083 | ApplicationProcessExited | Proces w ramach aplikacji został zakończony | Hosting | Informacyjne | 1 |
+| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom | 
+| --- | --- | --- | --- | --- | --- | 
+| 29620 | ApplicationCreated | Cykl życia | Utworzono nową aplikację | CM | Informacyjne | 
+| 29625 | ApplicationDeleted | Cykl życia | Istniejąca aplikacja została usunięta. | CM | Informacyjne | 
+| 23083 | ApplicationProcessExited | Cykl życia | Proces w ramach aplikacji został zakończony | Hosting | Informacyjne | 
 
 **Zdarzenia uaktualnienia aplikacji**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
-| --- | --- | ---| --- | --- | --- |
-| 29621 | ApplicationUpgradeStarted | Uaktualnienie aplikacji została uruchomiona. | MENEDŻER CERTYFIKATÓW | Informacyjne | 1 |
-| 29622 | ApplicationUpgradeCompleted | Ukończono uaktualnianie aplikacji | MENEDŻER CERTYFIKATÓW | Informacyjne | 1 |
-| 29623 | ApplicationUpgradeRollbackStarted | Uaktualnienie aplikacji rozpoczął wycofywania |MENEDŻER CERTYFIKATÓW | Informacyjne | 1 |
-| 29624 | ApplicationUpgradeRollbackCompleted | Uaktualnienie aplikacji została zakończona, wycofywanie | MENEDŻER CERTYFIKATÓW | Informacyjne | 1 |
-| 29626 | ApplicationUpgradeDomainCompleted | Ukończono uaktualnianie domeny podczas uaktualniania aplikacji | MENEDŻER CERTYFIKATÓW | Informacyjne | 1 |
+Szczegółowe informacje na temat uaktualniania aplikacji można znaleźć [tutaj](service-fabric-application-upgrade.md).
+
+| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom | 
+| --- | --- | ---| --- | --- | --- | 
+| 29621 | ApplicationUpgradeStarted | Uaktualnienie | Uaktualnienie aplikacji została uruchomiona. | CM | Informacyjne | 
+| 29622 | ApplicationUpgradeCompleted | Uaktualnienie | Ukończono uaktualnianie aplikacji | CM | Informacyjne | 
+| 29623 | ApplicationUpgradeRollbackStarted | Uaktualnienie | Uaktualnienie aplikacji rozpoczął wycofywania |CM | Ostrzeżenie | 
+| 29624 | ApplicationUpgradeRollbackCompleted | Uaktualnienie | Uaktualnienie aplikacji została zakończona, wycofywanie | CM | Ostrzeżenie | 
+| 29626 | ApplicationUpgradeDomainCompleted | Uaktualnienie | Domeny uaktualnienia zakończył uaktualnianie podczas uaktualniania aplikacji | CM | Informacyjne | 
 
 ## <a name="service-events"></a>Zdarzenia usługi
 
 **Zdarzenia cyklu życia usługi**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
+| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | ---| --- | --- | --- |
-| 18657 | ServiceCreated | Utworzono nową usługę | FM | Informacyjne | 1 |
-| 18658 | ServiceDeleted | Istniejąca usługa została usunięta. | FM | Informacyjne | 1 |
+| 18657 | ServiceCreated | Cykl życia | Utworzono nową usługę | FM | Informacyjne | 
+| 18658 | ServiceDeleted | Cykl życia | Istniejąca usługa została usunięta. | FM | Informacyjne | 
 
 ## <a name="partition-events"></a>Zdarzenia w partycji
 
 **Zdarzenia przenoszenia partycji**
 
-| Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
+| Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | ---| --- | --- | --- |
-| 18940 | PartitionReconfigured | Ponowna konfiguracja partycji zostało zakończone. | POMOC ZDALNA | Informacyjne | 1 |
+| 18940 | PartitionReconfigured | Cykl życia | Ponowna konfiguracja partycji zostało zakończone. | POMOC ZDALNA | Informacyjne | 
 
 ## <a name="container-events"></a>Zdarzenia kontenera
 
@@ -110,6 +115,12 @@ Poniżej przedstawiono dostępne na platformach, posortowane według jednostki m
 | 23082 | ContainerExited | Kontener został zakończony — Sprawdź plik flagi UnexpectedTermination | Hosting | Informacyjne | 1 |
 
 ## <a name="health-reports"></a>Raportów o kondycji
+
+[Model kondycji sieci szkieletowej usług](service-fabric-health-introduction.md) umożliwia ocenę kondycji funkcjonalnej, elastyczny i rozszerzalny i raportowania. Począwszy od usługi Service Fabric w wersji 6.2, dane dotyczące kondycji są zapisywane jako zdarzenia platformy do dostarczają historycznych informacji na temat kondycji. Aby niskich woluminu zdarzenia dotyczące kondycji, napiszemy są tylko następujące zdarzenia usługi Service Fabric:
+
+* Wszystkie `Error` lub `Warning` raportów o kondycji
+* `Ok` Raporty dotyczące kondycji podczas przejścia
+* Gdy `Error` lub `Warning` zdarzenie kondycji wygasa. To umożliwia określenie, ile jednostki złej kondycji
 
 **Zdarzenia raportów kondycji klastra**
 
@@ -219,25 +230,26 @@ Poniżej przedstawiono pełną listę zdarzeń udostępnianych przez usługę Se
 | 25624 | NodeClosed | FabricNode | Informacyjne |
 | 25625 | NodeAborting | FabricNode | Informacyjne |
 | 25626 | NodeAborted | FabricNode | Informacyjne |
-| 29627 | ClusterUpgradeStart | MENEDŻER CERTYFIKATÓW | Informacyjne |
-| 29628 | ClusterUpgradeComplete | MENEDŻER CERTYFIKATÓW | Informacyjne |
-| 29629 | ClusterUpgradeRollback | MENEDŻER CERTYFIKATÓW | Informacyjne |
-| 29630 | ClusterUpgradeRollbackComplete | MENEDŻER CERTYFIKATÓW | Informacyjne |
-| 29631 | ClusterUpgradeDomainComplete | MENEDŻER CERTYFIKATÓW | Informacyjne |
+| 29627 | ClusterUpgradeStart | CM | Informacyjne |
+| 29628 | ClusterUpgradeComplete | CM | Informacyjne |
+| 29629 | ClusterUpgradeRollback | CM | Informacyjne |
+| 29630 | ClusterUpgradeRollbackComplete | CM | Informacyjne |
+| 29631 | ClusterUpgradeDomainComplete | CM | Informacyjne |
 | 23074 | ContainerActivated | Hosting | Informacyjne |
 | 23075 | ContainerDeactivated | Hosting | Informacyjne |
-| 29620 | ApplicationCreated | MENEDŻER CERTYFIKATÓW | Informacyjne |
-| 29621 | ApplicationUpgradeStart | MENEDŻER CERTYFIKATÓW | Informacyjne |
-| 29622 | ApplicationUpgradeComplete | MENEDŻER CERTYFIKATÓW | Informacyjne |
-| 29623 | ApplicationUpgradeRollback | MENEDŻER CERTYFIKATÓW | Informacyjne |
-| 29624 | ApplicationUpgradeRollbackComplete | MENEDŻER CERTYFIKATÓW | Informacyjne |
-| 29625 | ApplicationDeleted | MENEDŻER CERTYFIKATÓW | Informacyjne |
-| 29626 | ApplicationUpgradeDomainComplete | MENEDŻER CERTYFIKATÓW | Informacyjne |
+| 29620 | ApplicationCreated | CM | Informacyjne |
+| 29621 | ApplicationUpgradeStart | CM | Informacyjne |
+| 29622 | ApplicationUpgradeComplete | CM | Informacyjne |
+| 29623 | ApplicationUpgradeRollback | CM | Informacyjne |
+| 29624 | ApplicationUpgradeRollbackComplete | CM | Informacyjne |
+| 29625 | ApplicationDeleted | CM | Informacyjne |
+| 29626 | ApplicationUpgradeDomainComplete | CM | Informacyjne |
 | 18566 | ServiceCreated | FM | Informacyjne |
 | 18567 | ServiceDeleted | FM | Informacyjne |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej na temat ogólnych [generowanie zdarzeń na poziomie platformy](service-fabric-diagnostics-event-generation-infra.md) w usłudze Service Fabric
+* Zapoznaj się z omówieniem programu [diagnostyki w usłudze Service Fabric](service-fabric-diagnostics-overview.md)
+* Dowiedz się więcej o bazie danych EventStore w [omówienie bazy danych Eventstore usługi Service Fabric](service-fabric-diagnostics-eventstore.md)
 * Modyfikowanie swoje [diagnostyki Azure](service-fabric-diagnostics-event-aggregation-wad.md) konfigurację, aby zebrać więcej dzienniki
 * [Konfigurowanie usługi Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) się z Operational channel dzienników

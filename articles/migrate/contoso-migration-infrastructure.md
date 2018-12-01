@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: 2210aaa5d4d0ba9d730e5aee97972565ea0c1090
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 32a489ee6266018ef1160a0870fe236cc6a72d36
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092982"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726988"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso — wdrażanie infrastruktury migracji
 
@@ -256,8 +256,8 @@ Azure [kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/az
 
 Administratorzy firmy Contoso teraz przypisuje role do grup usługi AD, które są synchronizowane ze środowiska lokalnego.
 
-1. W **ControlCobRG** grupy zasobów, klikając **kontrola dostępu (IAM)** > **Dodaj**.
-2. W **Dodaj uprawnienia** > **roli**, > **Współautor**, wybierają **ContosoCobRG** grupy usługi AD z listy. Pojawi się w grupie **wybrane elementy członkowskie** listy. 
+1. W **ControlCobRG** grupy zasobów, klikając **kontrola dostępu (IAM)** > **Dodaj przypisanie roli**.
+2. W **Dodaj przypisanie roli** > **roli**, > **Współautor**, wybierają **ContosoCobRG** grupy usługi AD z listy. Pojawi się w grupie **wybrane elementy członkowskie** listy. 
 3. One Powtórz te czynności przy użyciu tych samych uprawnień dla innych grup zasobów (z wyjątkiem **ContosoAzureAdmins**), dodając uprawnienia współautora do konta usługi AD, który odpowiada grupie zasobów.
 4. Aby uzyskać **ContosoAzureAdmins** przypisują grupy usługi AD **właściciela** roli.
 

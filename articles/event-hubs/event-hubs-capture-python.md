@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 11/16/2018
 ms.author: shvija
-ms.openlocfilehash: 76102e1238346cbbb8f5159d2ffcd94c788c16d6
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 0733d26839cbb2dc40f4dd99b60d6a5628cc1f1a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42060721"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727090"
 ---
 # <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs Capture Instruktaż: języka Python
 
@@ -38,10 +38,9 @@ W tym przykładzie użyto [zestawu Azure Python SDK](https://azure.microsoft.com
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Python 2.7.x
-- Subskrypcja platformy Azure
-- Aktywne [usługi Event Hubs przestrzeni nazw i Centrum zdarzeń](event-hubs-create.md)
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
+- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+- Aktywne [usługi Event Hubs przestrzeni nazw i Centrum zdarzeń](event-hubs-create.md). 
+- Włącz **przechwytywania** funkcji dla Centrum zdarzeń, wykonując instrukcje z: [Włączanie przechwytywania usługi Event Hubs przy użyciu witryny Azure portal](event-hubs-capture-enable-through-portal.md)
 
 ## <a name="create-an-azure-blob-storage-account"></a>Tworzenie konta magazynu obiektów Blob platformy Azure
 1. Zaloguj się w witrynie [Azure Portal][Azure portal].
