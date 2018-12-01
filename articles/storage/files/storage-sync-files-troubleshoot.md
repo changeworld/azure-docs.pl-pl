@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 507bbc9013d8b02084b639f8d9fac0c7d97503f4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0787d023676c707a987b4b69cb5601394db4bd3b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014282"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728382"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -96,8 +96,9 @@ Następujące role wbudowane mają wymagane uprawnienia Authorization Microsoft:
 Aby określić, czy rola konto użytkownika ma wymagane uprawnienia:  
 1. W witrynie Azure portal wybierz **grup zasobów**.
 2. Wybierz grupę zasobów, w którym znajduje się konto magazynu, a następnie wybierz **kontrola dostępu (IAM)**.
-3. Wybierz **roli** (na przykład właściciela lub współautora) dla konta użytkownika.
-4. W **dostawcy zasobów** listy wybierz **Authorization Microsoft**. 
+3. Wybierz **przypisań ról** kartę.
+4. Wybierz **roli** (na przykład właściciela lub współautora) dla konta użytkownika.
+5. W **dostawcy zasobów** listy wybierz **Authorization Microsoft**. 
     * **Przypisanie roli** powinny mieć **odczytu** i **zapisu** uprawnienia.
     * **Definicja roli** powinny mieć **odczytu** i **zapisu** uprawnienia.
 
@@ -705,8 +706,9 @@ if ($fileShare -eq $null) {
 
 <a id="troubleshoot-rbac"></a>**Upewnij się, że usługi Azure File Sync ma dostęp do konta magazynu.**  
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
-1. Kliknij przycisk **kontrola dostępu (IAM)** w tabeli po lewej stronie spisu treści, aby przejść do listy użytkowników i aplikacji (*jednostki usług*) które mają dostęp do Twojego konta magazynu.
-2. Sprawdź **usługi hybrydowe File Sync** pojawia się na liście za pomocą **czytnik i dostęp do danych** roli. 
+1. Kliknij przycisk **kontrola dostępu (IAM)** w spisie treści po lewej stronie.
+1. Kliknij przycisk **przypisań ról** kartę do listy użytkowników i aplikacji (*jednostki usług*), mają dostęp do swojego konta magazynu.
+1. Sprawdź **usługi hybrydowe File Sync** pojawia się na liście za pomocą **czytnik i dostęp do danych** roli. 
 
     ![Zrzut ekranu: nazwy głównej usługi usługi hybrydowe File Sync na karcie kontrola dostępu do konta magazynu](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 

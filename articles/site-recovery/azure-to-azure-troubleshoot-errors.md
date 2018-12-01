@@ -5,16 +5,15 @@ services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: sujayt
-ms.openlocfilehash: 7d11460fd1db5ba92725567a41aaaeab9e752adb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 84875a47df1830a7f5aa439a17df233d8c93ba1c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308128"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728246"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Rozwiązywanie problemów z replikacją maszyny Wirtualnej platformy Azure do platformy Azure
 
@@ -61,37 +60,37 @@ Ponieważ SuSE Linux używa łączy symbolicznych, aby utrzymywać listę certyf
 
       ``# cd /etc/ssl/certs``
 
-3. Sprawdź, czy certyfikat urzędu certyfikacji firmy Symantec główny jest obecny.
+1. Sprawdź, czy certyfikat urzędu certyfikacji firmy Symantec główny jest obecny.
 
       ``# ls VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem``
 
-4. Jeśli certyfikat urzędu certyfikacji firmy Symantec główny nie zostanie znaleziony, uruchom następujące polecenie, aby pobrać plik. Sprawdź pod kątem błędów, a następnie postępuj zgodnie z zalecaną akcję dotyczącą awarie sieci.
+2. Jeśli certyfikat urzędu certyfikacji firmy Symantec główny nie zostanie znaleziony, uruchom następujące polecenie, aby pobrać plik. Sprawdź pod kątem błędów, a następnie postępuj zgodnie z zalecaną akcję dotyczącą awarie sieci.
 
       ``# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem``
 
-5. Sprawdź, czy urząd certyfikacji certyfikatu głównego Baltimore jest obecny.
+3. Sprawdź, czy urząd certyfikacji certyfikatu głównego Baltimore jest obecny.
 
       ``# ls Baltimore_CyberTrust_Root.pem``
 
-6. Jeśli certyfikat głównego urzędu certyfikacji Baltimore nie zostanie znaleziony, Pobierz certyfikat.  
+4. Jeśli certyfikat głównego urzędu certyfikacji Baltimore nie zostanie znaleziony, Pobierz certyfikat.  
 
     ``# wget http://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root.pem``
 
-7. Sprawdź, czy certyfikatu DigiCert_Global_Root_CA jest obecny.
+5. Sprawdź, czy certyfikatu DigiCert_Global_Root_CA jest obecny.
 
     ``# ls DigiCert_Global_Root_CA.pem``
 
-8. Jeśli DigiCert_Global_Root_CA nie zostanie znaleziony, uruchom następujące polecenia, aby pobrać certyfikat.
+6. Jeśli DigiCert_Global_Root_CA nie zostanie znaleziony, uruchom następujące polecenia, aby pobrać certyfikat.
 
     ``# wget http://www.digicert.com/CACerts/DigiCertGlobalRootCA.crt``
 
     ``# openssl x509 -in DigiCertGlobalRootCA.crt -inform der -outform pem -out DigiCert_Global_Root_CA.pem``
 
-9. Uruchom rehash — skrypt, aby zaktualizować certyfikatu podmiotu skróty dla nowo pobranego certyfikatów.
+7. Uruchom rehash — skrypt, aby zaktualizować certyfikatu podmiotu skróty dla nowo pobranego certyfikatów.
 
     ``# c_rehash``
 
-10. Sprawdź, jeśli temat wyznacza wartość skrótu utworzonemu łączy symbolicznych dla certyfikatów.
+8.  Sprawdź, jeśli temat wyznacza wartość skrótu utworzonemu łączy symbolicznych dla certyfikatów.
 
     - Polecenie
 
@@ -120,11 +119,11 @@ Ponieważ SuSE Linux używa łączy symbolicznych, aby utrzymywać listę certyf
       ``lrwxrwxrwx 1 root root   27 Jan  8 09:48 399e7759.0 -> DigiCert_Global_Root_CA.pem
       -rw-r--r-- 1 root root 1380 Jun  5  2014 DigiCert_Global_Root_CA.pem``
 
-11. Tworzenie kopii pliku VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem za pomocą b204d74a.0 nazwy pliku
+9.  Tworzenie kopii pliku VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem za pomocą b204d74a.0 nazwy pliku
 
     ``# cp VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem b204d74a.0``
 
-12. Tworzenie kopii pliku Baltimore_CyberTrust_Root.pem za pomocą 653b494a.0 nazwy pliku
+10. Tworzenie kopii pliku Baltimore_CyberTrust_Root.pem za pomocą 653b494a.0 nazwy pliku
 
     ``# cp Baltimore_CyberTrust_Root.pem 653b494a.0``
 

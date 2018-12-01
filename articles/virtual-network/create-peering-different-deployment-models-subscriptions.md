@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 34c11c911b6c2ffbc4d4800cd7203a8d430814fb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 666e4c434d05bb953950893f32c262183055becd
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311249"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728178"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Utworzyć komunikację równorzędną sieci wirtualnej — różne modele wdrażania i subskrypcje
 
@@ -56,8 +56,8 @@ Ten samouczek używa różnych kont, dla każdej subskrypcji. Jeśli używasz ko
     - **Lokalizacja**: *wschodnie stany USA*
 4. W **Wyszukaj zasoby** polu w górnej części portalu wpisz *myVnetA*. Kliknij przycisk **myVnetA** , gdy pojawia się w wynikach wyszukiwania. Zostanie wyświetlony blok **myVnetA** sieci wirtualnej.
 5. W **myVnetA** bloku, które zostanie wyświetlone, kliknij przycisk **kontrola dostępu (IAM)** z pionowy listy opcji po lewej stronie bloku.
-6. W **myVnetA — kontrola dostępu (IAM)** bloku, które zostanie wyświetlone, kliknij przycisk **+ Dodaj**.
-7. W **Dodaj uprawnienia** wyświetlonym bloku wybierz **Współautor sieci** w **roli** pole.
+6. W **myVnetA — kontrola dostępu (IAM)** bloku, które zostanie wyświetlone, kliknij przycisk **+ Dodaj przypisanie roli**.
+7. W **Dodaj przypisanie roli** wyświetlonym bloku wybierz **Współautor sieci** w **roli** pole.
 8. W **wybierz** wybierz UżytkownikB lub wpisz adres e-mail firmy Użytkownik_b ją wyszukać. Na liście użytkowników, wyświetlane jest z tą samą dzierżawą usługi Azure Active Directory, co sieć wirtualna, którą konfigurujesz komunikacji równorzędnej dla. Gdy pojawi się na liście, kliknij przycisk Użytkownik_b.
 9. Kliknij pozycję **Zapisz**.
 10. Wyloguj się z portalu jako użytkownik a, a następnie zaloguj się jako Użytkownik_b.

@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fe35f26fe73661901fa85da65e353fe66adf5d47
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 538208c39d6436c15b95760133e00c980e2e8277
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094221"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727906"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Kontrola dostępu oparta na rolach w usłudze Azure Automation
 
@@ -39,7 +39,7 @@ W usłudze Azure Automation prawo dostępu jest nadawane poprzez przypisywanie u
 | Czytelnik monitorowania | Rola Czytelnik monitorowania umożliwia odczytywanie wszystkich danych monitorowania. |
 | Administrator dostępu użytkowników |Rola Administrator dostępu użytkowników umożliwia zarządzanie dostępem użytkowników do kont usługi Azure Automation. |
 
-## <a name="role-permissions"></a>Uprawnienia roli
+## <a name="role-permissions"></a>Uprawnienia ról
 
 W poniższych tabelach opisano określone uprawnienia udzielone każdej roli. Może to obejmować działania, które należy nadać uprawnienia, i NotActions, która je ograniczyć.
 
@@ -274,12 +274,13 @@ W poniższej sekcji pokazano sposób konfigurowania funkcji RBAC dla konta usłu
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/) i otwórz swoje konto usługi Automation ze strony Konta usługi Automation.
 2. Kliknij pozycję **kontrola dostępu (IAM)** kontroli w lewym górnym rogu. Spowoduje to otwarcie **kontrola dostępu (IAM)** strony, gdzie można dodać nowych użytkowników, grup i aplikacji do automatyzacji zarządzania konta oraz wyświetlić istniejące role, które można skonfigurować dla konta usługi Automation.
+3. Kliknij przycisk **przypisań ról** kartę.
 
    ![Przycisk Dostęp](media/automation-role-based-access-control/automation-01-access-button.png)
 
 #### <a name="add-a-new-user-and-assign-a-role"></a>Dodawanie nowego użytkownika i przypisywanie roli
 
-1. Z **kontrola dostępu (IAM)** kliknij **+ Dodaj** otworzyć **Dodaj uprawnienia** strony, w którym można dodać użytkownika, grupę lub aplikację i przypisywać im rolę.
+1. Z **kontrola dostępu (IAM)** kliknij **+ Dodaj przypisanie roli** otworzyć **Dodaj przypisanie roli** strony, w którym można dodać użytkownika, grupę lub aplikację i przypisać rolę do nich.
 
 2. Wybierz rolę z listy dostępnych ról. Można wybrać jedną z dostępnych wbudowanych ról obsługiwanych przez konto usługi Automation lub dowolną rolę niestandardową, które zostały zdefiniowane.
 

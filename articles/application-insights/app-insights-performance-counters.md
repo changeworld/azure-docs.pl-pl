@@ -9,16 +9,15 @@ ms.assetid: 5b816f4c-a77a-4674-ae36-802ee3a2f56d
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 92cbd3570d48bf12d603f68593465aafed62985c
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: da6cc943c310b627626b3d2081ffa88ef3185013
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852320"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727838"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Liczniki wydajności systemu w usłudze Application Insights
 Windows oferuje szeroką gamę [liczniki wydajności](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) takich jak zajętość procesora CPU, pamięci, dysku i użycia sieci. Można również definiować własne. [Usługa Application Insights](app-insights-overview.md) można wyświetlić te liczniki wydajności, jeśli aplikacja jest uruchomiona w środowisku usług IIS na hosta w środowisku lokalnym lub maszynie wirtualnej, do których masz dostęp administracyjny. Wykresy określają zasoby dostępne dla działającej aplikacji, a może pomóc ustalić niezrównoważonego obciążenia między wystąpieniami serwera.

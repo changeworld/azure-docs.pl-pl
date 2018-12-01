@@ -9,16 +9,15 @@ ms.assetid: 5b859200-b484-4c98-9d9f-929713f1030c
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: bc505aa9dc2258a8752d1986489957c401e4e4c4
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: f19da07fb8299d2b11410309b76a1d7900d1cb93
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023512"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727455"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Eksportowanie telemetrii z usługi Application Insights
 Czy chcesz zachować dane telemetryczne przez czas dłuższy niż okres przechowywania standardowa? Lub przetwarzać dane w jakiś sposób wyspecjalizowane? Eksport ciągły jest idealny dla tego. Zdarzenia, które są widoczne w portalu usługi Application Insights można wyeksportować do magazynu na platformie Microsoft Azure w formacie JSON. W tym miejscu możesz pobrać dane i napisać kod, które możesz: musisz go przetworzyć.  
