@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2351e0cdeb6fd17efbe70fdebb12e6c9776c1fa1
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 899adc8d4fb26ac64cd3fbd7096a8b8387900517
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498320"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722296"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Tworzenie aplikacji HDInsight platformy .NET z uwierzytelnianiem nieinterakcyjnym
 Można uruchomić aplikacji Microsoft .NET usługi Azure HDInsight przy użyciu tożsamości aplikacji (nieinterakcyjne) lub w obszarze tożsamość zalogowanego użytkownika (interakcyjne) aplikacji. W tym artykule przedstawiono sposób tworzenia nieinterakcyjnych authentication aplikacji .NET w celu połączenia z platformą Azure i zarządzanie nimi HDInsight. Przykład aplikacji interaktywnych, zobacz [nawiązywanie połączenia z usługi Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 
@@ -34,11 +34,12 @@ Przypisywanie aplikacji usługi Azure AD [roli](../role-based-access-control/bui
 **Aby dodać rolę właściciela do aplikacji usługi Azure AD**
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. W menu po lewej stronie wybierz **grupy zasobów**.
+2. W menu po lewej stronie wybierz pozycję **Grupy zasobów**.
 3. Wybierz grupę zasobów, która ma klaster HDInsight, na którym będzie uruchomiona zapytania Hive w dalszej części tego samouczka. Jeśli masz dużą liczbę grup zasobów, można użyć filtru, można znaleźć tego, który chcesz.
 4. W menu grupy zasobów wybierz **kontrola dostępu (IAM)**.
-5. W obszarze **użytkowników**, wybierz opcję **Dodaj**.
-6. Postępuj zgodnie z instrukcjami, aby dodać rolę właściciela do aplikacji usługi Azure AD. Po pomyślnym dodaniu roli, aplikacja jest wyświetlana w obszarze **użytkowników**, o roli właściciel. 
+5. Wybierz **przypisań ról** kartę, aby wyświetlić bieżące przypisania roli.
+6. W górnej części strony wybierz **Dodaj przypisanie roli**.
+7. Postępuj zgodnie z instrukcjami, aby dodać rolę właściciela do aplikacji usługi Azure AD. Po pomyślnym dodaniu roli, aplikacja znajduje się w ramach roli właściciela. 
 
 ## <a name="develop-an-hdinsight-client-application"></a>Tworzenie aplikacji klienckich HDInsight
 

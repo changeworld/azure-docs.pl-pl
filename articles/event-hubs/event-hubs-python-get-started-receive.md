@@ -7,14 +7,14 @@ manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: db177c3356d378317c41e0c91c10865db5e05992
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 8009a2ef3f89a359bc645485dd75b80cc5d0b868
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286983"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722840"
 ---
 # <a name="receive-events-from-event-hubs-using-python"></a>Odbieranie zdarzeń z usługi Event Hubs przy użyciu języka Python
 
@@ -30,11 +30,9 @@ Kod w tym samouczku pochodzi z [tych przykładów usługi GitHub](https://github
 
 Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
 
+- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 - Python 3.4 lub nowsze.
 - Istniejące usługi Event Hubs przestrzeni nazw i Centrum zdarzeń. Te jednostki można utworzyć, postępując zgodnie z instrukcjami wyświetlanymi w [w tym artykule](event-hubs-create.md). 
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
 
 ## <a name="install-python-package"></a>Zainstaluj pakiet języka Python
 

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2354bf02b47c9fbc74dbc0dab07e30ca321279cf
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: f517754a8076fc18ed29f7db49f6ff9bfc6c7b3d
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669917"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725764"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Omówienie kont użytkowników w usłudze Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ Dostępne są następujące typy kont:
 
 - **Konto służbowe** — konto służbowe ma dostęp do zasobów w dzierżawie, a za pomocą konta administratora roli, można zarządzać dzierżaw.
 - **Konto gościa** — konto gościa może składać się z konta Microsoft lub przez użytkownika usługi Azure Active Directory, który może służyć do uzyskania dostępu do aplikacji lub zarządzania dzierżaw. 
-- **Konto konsumenta** — konto konsumenta, jest tworzony, przeprowadzając zasady tworzenia konta w aplikacji usługi Azure AD B2C, czy przy użyciu interfejsu API programu Graph usługi Azure AD i jest używany przez użytkowników aplikacji, które są zarejestrowane w usłudze Azure AD B2C. 
+- **Konto konsumenta** — konto konsumenta, jest tworzony za pośrednictwem przepływu rejestracji użytkownika w aplikacji usługi Azure AD B2C, czy przy użyciu interfejsu API programu Graph usługi Azure AD i jest używany przez użytkowników aplikacji, które są zarejestrowane w usłudze Azure AD B2C. 
 
 ## <a name="work-account"></a>Konto służbowe
 
@@ -73,7 +73,7 @@ Można również użyć [interfejsu API Microsoft Graph](https://developer.micro
 
 ## <a name="consumer-user"></a>Konsument użytkownika
 
-Użytkownik konsumenta zalogować się do aplikacji zabezpieczonej przez usługi Azure AD B2C, ale nie dostęp do zasobów platformy Azure, takich jak witryny Azure portal.  Użytkownik klienta może użyć lokalnego konta lub kont federacyjnych, takich jak Facebook lub Twitter. Konto konsumenta jest tworzona przy użyciu [zasad rejestracji lub logowania](../active-directory-b2c/active-directory-b2c-reference-policies.md).
+Użytkownik konsumenta zalogować się do aplikacji zabezpieczonej przez usługi Azure AD B2C, ale nie dostęp do zasobów platformy Azure, takich jak witryny Azure portal.  Użytkownik klienta może użyć lokalnego konta lub kont federacyjnych, takich jak Facebook lub Twitter. Konto konsumenta jest tworzona przy użyciu [przepływu rejestracji lub logowania użytkownika](../active-directory-b2c/active-directory-b2c-reference-policies.md).
 
 Można określić dane, które są zbierane, gdy konsument konto użytkownika jest tworzona przy użyciu atrybutów niestandardowych użytkownika. Aby uzyskać więcej informacji, zobacz [definiowania atrybutów niestandardowych w usłudze Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md).
 

@@ -4,18 +4,17 @@ description: Dowiedz się, jak usunąć magazyn usługi Recovery Services, skonf
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: f351bd715baf86407c249e13aa02cf3c37e374c4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c3e643052c3a4879f1b5cd91e5e58be508880ce5
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212424"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722262"
 ---
-# <a name="delete-a-site-recovery-recovery-services-vault"></a>Usuwanie magazynu usług odzyskiwania usługi Site Recovery
+# <a name="delete-a-site-recovery-services-vault"></a>Usuwanie magazynu usługi Site Recovery Services
 
 Zależności mogą uniemożliwić usuwanie magazynu usługi Azure Site Recovery. Akcje, które należy wykonać różnią się zależnie od scenariusza, Usługa Site Recovery. Aby usunąć magazyn używany w usłudze Azure Backup, zobacz [usunąć w magazynie kopii zapasowych Azure](../backup/backup-azure-delete-vault.md).
 

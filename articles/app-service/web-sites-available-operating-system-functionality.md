@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
-ms.openlocfilehash: 7cf7078353de27c35a607fa8ef1921d6ed4b54b4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5ab54dcd94ebf0a1bad71613a8d749cef0de64f4
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247351"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678682"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkcjonalność systemu operacyjnego w usłudze Azure App Service
 W tym artykule opisano typowych funkcji systemu operacyjnego linii bazowej, która jest dostępna dla wszystkich aplikacji Windows działających na [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ta funkcja obejmuje plików, sieci i dostępu do rejestru i dzienniki diagnostyczne i zdarzenia. 
@@ -60,7 +60,12 @@ Zasadniczo App Service to w usłudze działającej na szczycie infrastruktury Az
 - Dysk aplikacji, który zawiera pliki cspkg pakiet Azure używany wyłącznie przez usługę App Service (i dostępnych dla klientów)
 - "User" dysku (dysk C:\), którego rozmiar różni się w zależności od rozmiaru maszyny Wirtualnej. 
 
-Należy monitorować wykorzystaniu dysku, w miarę wzrostu aplikacji. W przypadku osiągnięcia limitu przydziału dysku może mieć niepożądane skutki do aplikacji.
+Należy monitorować wykorzystaniu dysku, w miarę wzrostu aplikacji. W przypadku osiągnięcia limitu przydziału dysku może mieć niepożądane skutki do aplikacji. Na przykład: 
+
+- Aplikacja może zgłaszać błąd wskazujący za mało miejsca na dysku.
+- Podczas przeglądania do konsoli Kudu, mogą pojawić się błędy na dysku.
+- Wdrażanie z usługi VSTS lub Visual Studio może się nie powieść `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`.
+- Aplikacja może to spowodować obniżenie wydajności.
 
 <a id="NetworkDrives"></a>
 

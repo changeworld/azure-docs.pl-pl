@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 569efa7fbbd111937f00ba3b1e28219c163e2221
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7bd84b42cfa61d199d70e02345f9229a45fd7704
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958163"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726172"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Zarządzanie kontami Uruchom jako usługi Azure Automation
 
@@ -358,11 +358,11 @@ Aby odnowić certyfikat, wykonaj następujące czynności:
 
 Aby kontrolować, przeznaczone dla usługi Automation w odniesieniu do zasobów w usłudze Azure Automation, konto Uruchom jako, domyślnie otrzymuje uprawnienia współautora w subskrypcji. Jeśli musisz ograniczyć, co zrobić, Uruchom jako jednostki usługi, możesz usunąć konto z roli współautora do subskrypcji i dodać go jako współautora do grupy zasobów, które chcesz określić.
 
-W witrynie Azure portal wybierz **subskrypcje** i wybierz subskrypcję, konta usługi Automation. Wybierz **kontrola dostępu (IAM)** i wyszukiwania dla jednostki usługi dla konta usługi Automation (wygląda jak \<AutomationAccountName\>identyfikator _unique). Wybierz konto, a następnie kliknij przycisk **Usuń** usunąć go z subskrypcji.
+W witrynie Azure portal wybierz **subskrypcje** i wybierz subskrypcję, konta usługi Automation. Wybierz **kontrola dostępu (IAM)** , a następnie wybierz **przypisań ról** kartę. Wyszukiwania dla jednostki usługi dla konta usługi Automation (wygląda jak \<AutomationAccountName\>identyfikator _unique). Wybierz konto, a następnie kliknij przycisk **Usuń** usunąć go z subskrypcji.
 
 ![Współautorzy subskrypcji](media/manage-runas-account/automation-account-remove-subscription.png)
 
-Aby dodać nazwę główną usługi do grupy zasobów, wybierz grupę zasobów w witrynie Azure portal i wybierz pozycję **kontrola dostępu (IAM)**. Wybierz **Dodaj**, spowoduje to otwarcie **Dodaj uprawnienia** strony. Aby uzyskać **roli**, wybierz opcję **Współautor**. W **wybierz** tekstu wpisz nazwę jednostki usługi dla konta Uruchom jako i wybierz ją z listy. Kliknij przycisk **Zapisz**, aby zapisać zmiany. Wykonaj te kroki dla grupy zasobów, którą chcesz nadać usługi Automation Uruchom jako platformy Azure jednostce usługi dostępu do.
+Aby dodać nazwę główną usługi do grupy zasobów, wybierz grupę zasobów w witrynie Azure portal i wybierz pozycję **kontrola dostępu (IAM)**. Wybierz **Dodaj przypisanie roli**, spowoduje to otwarcie **Dodaj przypisanie roli** strony. Aby uzyskać **roli**, wybierz opcję **Współautor**. W **wybierz** tekstu wpisz nazwę jednostki usługi dla konta Uruchom jako i wybierz ją z listy. Kliknij przycisk **Zapisz**, aby zapisać zmiany. Wykonaj te kroki dla grupy zasobów, którą chcesz nadać usługi Automation Uruchom jako platformy Azure jednostce usługi dostępu do.
 
 ## <a name="misconfiguration"></a>Błąd konfiguracji
 

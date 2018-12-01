@@ -7,26 +7,26 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 30bc3e0f1a8230bdbcad653c8c2db7dc078629bb
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 49f3f80832597b231aec812a4c1613da9897f72a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180352"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722449"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą protokołu OpenID Connect, za pomocą usługi Azure Active Directory B2C
 
 >[!NOTE]
 > Ta funkcja jest dostępna w publicznej wersji zapoznawczej. Nie należy używać tej funkcji w środowisku produkcyjnym.
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) to protokół uwierzytelniania korzystających z protokołu OAuth 2.0, który może służyć do bezpiecznego logowania użytkowników. Większość dostawców tożsamości, które używają tego protokołu, takich jak [usługi Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md), są obsługiwane w usłudze Azure AD B2C. W tym artykule opisano sposób dodawania niestandardowych dostawców tożsamości OpenID Connect do wbudowanych zasad.
+[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) to protokół uwierzytelniania korzystających z protokołu OAuth 2.0, który może służyć do bezpiecznego logowania użytkowników. Większość dostawców tożsamości, które używają tego protokołu, takich jak [usługi Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md), są obsługiwane w usłudze Azure AD B2C. W tym artykule opisano sposób dodawania niestandardowych dostawców tożsamości OpenID Connect na temat przepływów użytkownika.
 
 ## <a name="add-the-identity-provider"></a>Dodaj dostawcę tożsamości
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
 2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz **dostawców tożsamości**, a następnie kliknij przycisk **Dodaj**.

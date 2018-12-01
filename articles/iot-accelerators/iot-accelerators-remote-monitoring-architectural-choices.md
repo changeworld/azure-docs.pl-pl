@@ -6,14 +6,14 @@ manager: camerons
 ms.author: timlav
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 09/12/2018
+ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 94641796fa77e03efc7158bc3aaf4bde9385c899
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 20af014e5a59cb526d5b96e543b10d5b2b6d6937
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824272"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679600"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Zdalne monitorowanie wyborów związanych z architekturą
 
@@ -25,7 +25,7 @@ Akcelerator rozwiązań Azure IoT zdalnego monitorowania jest typu open source, 
 
 Rozwiązanie monitorowania zdalnego następuje zalecanym [architektura referencyjna IoT platformy Azure](https://aka.ms/iotrefarchitecture).
 
-W tym artykule opisano architektury i technicznej wybory dokonane i alternatyw uwzględnione w poszczególnych podsystemów monitorowania zdalnego. Jednak możliwości techniczne Microsoft wprowadzonych w rozwiązaniu do zdalnego monitorowania nie są jedynym sposobem, aby zaimplementować rozwiązanie IoT monitorowania zdalnego. Implementacja techniczna powinno być traktowane jako podstawę do tworzenia zakończonym powodzeniem i należy zmodyfikować, aby:
+W tym artykule opisano kluczowe architektury i technicznej wybory dokonane każdego podsystemu zdalne monitorowanie. Jednak możliwości techniczne Microsoft wprowadzonych w rozwiązaniu do zdalnego monitorowania nie są jedynym sposobem, aby zaimplementować rozwiązanie IoT monitorowania zdalnego. Implementacja techniczna powinno być traktowane jako podstawę do tworzenia zakończonym powodzeniem i należy zmodyfikować, aby:
 
 - Dopasuj dostępnych umiejętności i doświadczenia w Twojej organizacji.
 - Dostosowania do potrzeb aplikacji pionowy.
@@ -52,7 +52,8 @@ Usługa Azure IoT Hub jest używany jako brama chmury rozwiązanie monitorowania
 Łączności między urządzeniami IoT można użyć:
 
 - [Zestawy SDK urządzeń IoT Hub](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-device-sdks) implementacji natywnej aplikacji klienckiej dla Twojego urządzenia. Zestawy SDK oferują otok wokół interfejsu API REST Centrum IoT i obsługiwać scenariusze, takie jak ponownych prób.
-- Integracja z usługą Azure IoT Edge akcelerator rozwiązań, wdrażanie i zarządzanie nimi na Twoich urządzeniach działa w kontenerach modułów niestandardowych.
+- Integracja z usługą Azure IoT Edge, wdrażanie i zarządzanie nimi na Twoich urządzeniach działa w kontenerach moduły niestandardowe.
+- Integracja zarządzania urządzeniami automatyczne w usłudze IoT Hub do zarządzania podłączone urządzenia w trybie zbiorczym.
 
 ### <a name="stream-processing"></a>Przetwarzanie strumienia
 
@@ -62,7 +63,7 @@ Do przetwarzania strumieniowego rozwiązania do zdalnego monitorowania korzysta 
 
 W przypadku usługi storage akceleratora rozwiązania monitorowania zdalnego używa usługi Azure Time Series Insights i Azure Cosmos DB. Usługa Azure Time Series Insights są przechowywane komunikaty przechodzącego przez usługę IoT Hub z połączonych urządzeń. Akcelerator rozwiązań używa usługi Azure Cosmos DB na potrzeby wszystkie magazyny takie jak zimnego magazynu, definicje zasad, alarmy i ustawień konfiguracji.
 
-Usługa Azure Cosmos DB jest rozwiązanie zalecane magazynu ciepłego ogólnego przeznaczenia dla aplikacji IoT, chociaż rozwiązań, takich jak Azure Time Series Insights i Azure Data Lake są odpowiednie dla wielu przypadków użycia. Za pomocą usługi Azure Time Series Insights możesz uzyskać lepszy wgląd w dane szeregów czasowych, czujników, wykrywając trendów i anomalii. Ta funkcja umożliwia przeprowadzanie analiz głównych przyczyn i unikanie kosztownych przestojów.
+Usługa Azure Cosmos DB to rozwiązanie zalecane magazynu ciepłego ogólnego przeznaczenia dla aplikacji IoT. Jednak rozwiązań, takich jak Azure Time Series Insights i Azure Data Lake są odpowiednie dla wielu przypadków użycia. Za pomocą usługi Azure Time Series Insights możesz uzyskać lepszy wgląd w dane szeregów czasowych, czujników, wykrywając trendów i anomalii. Ta funkcja umożliwia przeprowadzanie analiz głównych przyczyn i unikanie kosztownych przestojów.
 
 > [!NOTE]
 > Usługa Time Series Insights nie jest obecnie dostępna w chmurze Azure (Chiny). Nowych wdrożeń akceleratora zdalne monitorowanie rozwiązań w chmurze Azure (Chiny) używać usługi Cosmos DB do przechowywania wszystkich.

@@ -10,17 +10,16 @@ ms.assetid: 20ff337f-b1a3-4696-9b5a-d39727a94220
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/02/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 784bbb05641cad46ecf4069e1f2c903a01ce9187
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: ecc0ec93c40b0102bc19d0844752f8d9af5fc8ca
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181927"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52719729"
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Wyświetl dane analityczne metryk we wszystkich zasobach aplikacji sieci Web platformy Azure
 

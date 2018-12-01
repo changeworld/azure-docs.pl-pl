@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 09/15/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 35db7bf87c7b72fc31d820c9058b1df8415bd553
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ac5accc72369d811c0d36c4ef64cd8d523a061f3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031309"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724506"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Twórz i uruchamiaj zadanie w aplikacji centralnej IoT platformy Azure
 
@@ -56,8 +56,13 @@ W tej sekcji dowiesz się, jak utworzyć i uruchomić zadanie. Każdy krok przec
 
 Jeśli chcesz zatrzymać zadanie, które jest aktualnie uruchomione, kliknij nazwę uruchomionego zadania, które chcesz zatrzymać. Wybierz **zatrzymać** przycisk na panel. Zobaczysz, że stan zadania został zmieniony, aby odzwierciedlić, że zadanie zostało zatrzymane.
 
-> [!NOTE]
-> Po zatrzymaniu zadania nie można uruchomić ponownie. Za pomocą żądanej operacji i urządzeń, należy utworzyć inne zadanie.
+   ![Zatrzymaj zadanie](./media/howto-run-a-job/stopjob.png)
+
+### <a name="run-a-stopped-job"></a>Uruchom zadanie zatrzymania
+
+Jeśli chcesz uruchomić zadanie, które jest obecnie zatrzymana, kliknij nazwę zatrzymania zadania, które chcesz uruchomić. Wybierz **Uruchom** przycisk na panel. Zobaczysz, że stan zadania został zmieniony na odzwierciedlić, że zadanie zostało teraz uruchomione ponownie.
+
+   ![Wznowiono zadanie](./media/howto-run-a-job/resumejob.png)
 
 ## <a name="view-the-job-status"></a>Wyświetlanie stanu zadania
 

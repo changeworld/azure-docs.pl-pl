@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 90c434a37d3209e0c11a04425c337ec6930cfd00
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 85e6dc8d72588ff64c0119a6c1944755ce5686f4
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025263"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720936"
 ---
 <a name="azure-resource-manager-test-drive"></a>Usługa Azure Resource Manager testowej
 =================================
@@ -382,15 +382,13 @@ Kliknij pozycję Zapisz. Ostatnim krokiem jest identyfikator aplikacji dla tej a
 Biorąc pod uwagę używamy aplikacji do wdrożenia do subskrypcji, musimy dodać aplikację jako współautora w subskrypcji. Instrukcje te są jak poniżej:
 
 1. Przejdź do bloku subskrypcje i wybierz odpowiednią subskrypcję, którego używasz do testowej.
-2. Polecenie kontroli dostępu (IAM).
-3. Wybierz pozycję + Dodaj w nowym bloku.
-4. Ustaw rolę jako współautora.
-5. Wpisz nazwę aplikacji usługi AAD, a następnie wybierz aplikację usługi AAD, aby przypisać rolę.
-6. Kliknij przycisk przy zapisywaniu.
-
-![Dodaj nową jednostkę kontroli dostępu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-
-![Dodaj uprawnienia](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Kliknij przycisk **kontrola dostępu (IAM)**.
+1. Kliknij przycisk **przypisań ról** kartę.  ![Dodaj nową jednostkę kontroli dostępu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. Kliknij przycisk **Dodaj przypisanie roli**.
+1. Ustaw rolę **Współautor**.
+1. Wpisz nazwę aplikacji usługi Azure AD, a następnie wybierz aplikację, aby przypisać rolę.
+    ![Dodaj uprawnienia](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Kliknij pozycję **Zapisz**.
 
 **Klucz aplikacji w usłudze Azure AD —** *wymagane* końcowego pole jest do generowania klucza uwierzytelniania. W obszarze klucze Dodaj opis klucza, ustaw czas nigdy nie wygasa, następnie wybierz pozycję Zapisz. Jest **ważne** pozwala uniknąć wygasłe klucza, co spowoduje przerwanie wersji testowej w środowisku produkcyjnym. Skopiuj tę wartość i wklej go do wymagane pole wersji testowej.
 

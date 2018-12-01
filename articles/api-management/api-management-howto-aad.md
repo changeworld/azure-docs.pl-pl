@@ -13,26 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 33a5b6e894c9c2b74f4c85ee96d59c0313a4bbe2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: adbe33bedf23e37c2d3fd485965dea86edbd269a
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446980"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681470"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autoryzowanie kont deweloperów za pomocą usługi Azure Active Directory w usłudze Azure API Management
 
 W tym artykule pokazano, jak umożliwić dostęp do portalu dla deweloperów dla użytkowników z usługi Azure Active Directory (Azure AD). Ten przewodnik pokazuje również jak zarządzać grupami użytkowników usługi Azure AD przez dodanie grup zewnętrznych, które zawierają użytkowników.
-
-> [!NOTE]
-> Integracja z usługą Azure AD jest dostępna w [Developer, Standard i Premium](https://azure.microsoft.com/pricing/details/api-management/) tylko warstwy.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
 - Importowanie i publikowanie wystąpienia usługi Azure API Management. Aby uzyskać więcej informacji, zobacz [importowanie i publikowanie](import-and-publish.md).
 
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+[!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Autoryzowanie kont deweloperów za pomocą usługi Azure AD
 

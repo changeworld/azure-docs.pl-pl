@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 10/24/2018
 ms.author: celested
 ms.reviewer: tomfitz
-ms.openlocfilehash: b60be3db14a756407e62540bb89f3b0924597067
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 87e197821be7c7c72ca1704d6b0123d76d41b30f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49960461"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721089"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Porady: Korzystanie z portalu do tworzenia aplikacji i usługi jednostki, które mogą uzyskiwać dostęp do zasobów usługi Azure AD
 
@@ -40,7 +40,7 @@ Do dzieła bezpośrednio do tworzenia tożsamości. Jeśli napotkasz problem, sp
 
 1. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
 
-   ![Dodaj aplikację](./media/howto-create-service-principal-portal/select-add-app.png)
+   ![Dodawanie aplikacji](./media/howto-create-service-principal-portal/select-add-app.png)
 
 1. Podaj nazwę i adres URL aplikacji. Wybierz **aplikację internetową/interfejs API** dla typu aplikacji, którą chcesz utworzyć. Nie można utworzyć poświadczenia na potrzeby [aplikacji natywnej](../manage-apps/application-proxy-configure-native-client-application.md). Nie można użyć tego typu aplikacji automatycznych. Po ustawieniu wartości, wybierz **Utwórz**.
 
@@ -65,9 +65,9 @@ Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Upraw
    Jeśli nie widzisz subskrypcji, czego szukasz, wybierz opcję **filtr globalny subskrypcji**. Upewnij się, subskrypcji, którą chcesz, aby wybrano dla portalu. 
 
 1. Wybierz **kontrola dostępu (IAM)**.
-1. Wybierz pozycję **Dodaj**.
+1. Wybierz **Dodaj przypisanie roli**.
 
-   ![Wybieranie opcji dodawania](./media/howto-create-service-principal-portal/select-add.png)
+   ![Wybierz opcję Dodaj przypisanie roli](./media/howto-create-service-principal-portal/select-add.png)
 
 1. Wybierz rolę, którą chcesz przypisać do aplikacji. Aby umożliwić aplikacji, które można wykonać akcji, takich jak **ponowny rozruch**, **start** i **zatrzymać** wystąpień, wybierz opcję **Współautor** roli. Domyślnie aplikacje usługi Azure AD nie są wyświetlane w dostępnych opcjach. Aby znaleźć aplikację, wyszukaj nazwę i zaznacz go.
 

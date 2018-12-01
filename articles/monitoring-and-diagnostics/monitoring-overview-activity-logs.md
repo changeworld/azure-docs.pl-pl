@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 0f69a7f5e7aef4da798ec7c9ce3b7af3a456c00e
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 22c9aeaa9f02d91ea90083fae69f28fa5984c565
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613362"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680620"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
 
@@ -83,7 +83,7 @@ W witrynie Azure portal można filtrować według tych pól dziennik aktywności
 
 Po zdefiniowaniu zestaw filtrów kwerendy można przypiąć do pulpitu nawigacyjnego platformy Azure, aby zawsze nadzorować określonych zdarzeń.
 
-Aby uzyskać jeszcze większe możliwości, możesz kliknąć **dzienniki** ikonę, która wyświetla dane dziennika aktywności w [rozwiązanie Log Analytics Activity Log Analytics](../log-analytics/log-analytics-activity.md). Blok dziennika aktywności oferuje środowisko podstawowa filtru/przeglądania dzienników, ale usługi Log Analytics umożliwia przestawianie, zapytania i wizualizować dane w sposób bardziej wydajne.
+Aby uzyskać jeszcze większe możliwości, możesz kliknąć **dzienniki** ikonę, która wyświetla dane dziennika aktywności w [rozwiązanie Log Analytics Activity Log Analytics](../azure-monitor/platform/collect-activity-logs.md). Blok dziennika aktywności oferuje środowisko podstawowa filtru/przeglądania dzienników, ale usługi Log Analytics umożliwia przestawianie, zapytania i wizualizować dane w sposób bardziej wydajne.
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>Eksportuj Dziennik aktywności, za pomocą profilu dziennika
 A **profilu dziennika** kontroluje sposób dziennik aktywności jest eksportowana. Przy użyciu profilu dziennika, można skonfigurować:

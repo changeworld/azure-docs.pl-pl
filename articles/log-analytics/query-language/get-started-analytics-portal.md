@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 3bcc5368a99dc7c7c32381ca0226119d81fc2c0a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9d045fefaccc9bc155f80e7b40c340d6531a7dda
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978203"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52683051"
 ---
 # <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Rozpoczynanie pracy z usługą Log Analytics w witrynie Azure portal
 
@@ -71,7 +69,7 @@ Uruchom zapytanie, klikając pozycję **Uruchom** przycisku lub naciskając **Sh
 - Zakres - przedział czasu czasu _ostatnich 24 godzinach_ jest ustawieniem domyślnym. Do używania innego zakresu, użyj selektora czasu, lub Dodaj godzinę jawne filtru zakresu do zapytania.
 
 
-## <a name="understand-the-schema"></a>Zrozumieć schemat
+## <a name="understand-the-schema"></a>Informacje o schemacie
 Schemat jest zbiór tabel wizualnie pogrupowane w logiczne kategorii. Kilka kategorii pochodzą z rozwiązania do monitorowania. _LogManagement_ kategoria zawiera wspólne dane, takie jak Windows i zdarzenia dziennika systemowego, dane dotyczące wydajności i pulsu klienta.
 
 ![Schemat](media/get-started-analytics-portal/schema.png)

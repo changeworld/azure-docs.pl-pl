@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d388242b4b0c882d60a83227a37af997b1ceb1f6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f39efcbc051bf57ab350357b020039eddd0f7c18
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282649"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720783"
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Usługa Azure Active Directory B2C: Przepływ kodu autoryzacji OAuth 2.0
 Przyznawanie kodu autoryzacji OAuth 2.0 w aplikacje zainstalowane na urządzeniu umożliwia uzyskanie dostępu do chronionych zasobów, takich jak interfejsy API sieci web. Za pomocą usługi Azure Active Directory B2C (Azure AD B2C) implementacji protokołu OAuth 2.0, możesz dodawać rejestracji, logowania i zarządzania tożsamościami, inne zadania do aplikacji mobilnych i klasycznych. Ten artykuł jest niezależny od języka. W artykule opisano jak wysyłać i odbierać komunikaty HTTP bez użycia żadnych bibliotek typu open source.
@@ -27,15 +27,15 @@ Ten artykuł koncentruje się na **klientów publicznych** przepływ kodu autory
 > [!NOTE]
 > Aby dodać zarządzania tożsamościami do aplikacji sieci web za pomocą usługi Azure AD B2C, należy użyć [OpenID Connect](active-directory-b2c-reference-oidc.md) zamiast protokołu OAuth 2.0.
 
-Usługa Azure AD B2C rozszerza tego standardu OAuth 2.0 są przekazywane do więcej niż proste uwierzytelnianie i autoryzacja. Wprowadza [parametru zasad](active-directory-b2c-reference-policies.md). Przy użyciu wbudowanych zasad można użyć protokołu OAuth 2.0 do dodania środowisk użytkowników do aplikacji, takich jak rejestracji, logowania i zarządzania profilami. W tym artykule pokazujemy, jak używać protokołu OAuth 2.0 i zasady do wdrożenia każdego z tych środowisk w natywnych aplikacjach. Możemy również pokazano, jak uzyskiwanie tokenów dostępu do uzyskiwania dostępu do interfejsów API sieci web.
+Usługa Azure AD B2C rozszerza tego standardu OAuth 2.0 są przekazywane do więcej niż proste uwierzytelnianie i autoryzacja. Wprowadza [parametr przepływ użytkownika](active-directory-b2c-reference-policies.md). Przy użyciu przepływów użytkownika można użyć protokołu OAuth 2.0 do dodania środowisk użytkowników do aplikacji, takich jak rejestracji, logowania i zarządzania profilami. W tym artykule pokazujemy, jak za pomocą protokołu OAuth 2.0 i użytkownika przepływów zaimplementuj każdą z tych środowisk w natywnych aplikacjach. Możemy również pokazano, jak uzyskiwanie tokenów dostępu do uzyskiwania dostępu do interfejsów API sieci web.
 
-W żądaniach przykład HTTP, w tym artykule, stosujemy nasze przykładowe katalogu usługi Azure AD B2C, **fabrikamb2c.onmicrosoft.com**. Możemy również użyć naszych przykładowych aplikacji i zasad. Możesz spróbować żądania samodzielnie za pomocą tych wartości, lub można je zastąpić własnymi wartościami.
-Dowiedz się, jak [własnego katalogu usługi Azure AD B2C, aplikacji i zasad](#use-your-own-azure-ad-b2c-directory).
+W żądaniach przykład HTTP, w tym artykule, stosujemy nasze przykładowe katalogu usługi Azure AD B2C, **fabrikamb2c.onmicrosoft.com**. Możemy również użyć przepływów naszych przykładowych aplikacji i użytkownika. Możesz spróbować żądania samodzielnie za pomocą tych wartości, lub można je zastąpić własnymi wartościami.
+Dowiedz się, jak [uzyskać własne przepływy katalogu, aplikacji i użytkownika usługi Azure AD B2C](#use-your-own-azure-ad-b2c-directory).
 
 ## <a name="1-get-an-authorization-code"></a>1. Pobieranie kodu autoryzacji
-Przepływ kodu autoryzacji zaczyna się od klienta kierowanie użytkowników do `/authorize` punktu końcowego. To interakcyjne część przepływu, gdy użytkownik wykonuje działanie. W tym żądaniu określa klienta w programie `scope` parametru uprawnienia, które należy uzyskać od użytkownika. W `p` parametru, oznacza to, zasady do wykonania. Poniższe trzy przykłady (z podziałów wiersza, aby zwiększyć czytelność) każdego użyć różnych zasad.
+Przepływ kodu autoryzacji zaczyna się od klienta kierowanie użytkowników do `/authorize` punktu końcowego. To interakcyjne część przepływu, gdy użytkownik wykonuje działanie. W tym żądaniu określa klienta w programie `scope` parametru uprawnienia, które należy uzyskać od użytkownika. W `p` parametru, oznacza to, przepływ użytkownika do wykonania. Poniższe trzy przykłady (z podziałów wiersza, aby zwiększyć czytelność) każdego użyć przepływu innego użytkownika.
 
-### <a name="use-a-sign-in-policy"></a>Użyj zasad logowania
+### <a name="use-a-sign-in-user-flow"></a>Za pomocą przepływu logowania użytkownika
 ```
 GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
@@ -47,7 +47,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_sign_in
 ```
 
-### <a name="use-a-sign-up-policy"></a>Użyj zasad rejestracji
+### <a name="use-a-sign-up-user-flow"></a>Za pomocą przepływu rejestracji użytkownika
 ```
 GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
@@ -59,7 +59,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_sign_up
 ```
 
-### <a name="use-an-edit-profile-policy"></a>Użyj zasad edycji profilu
+### <a name="use-an-edit-profile-user-flow"></a>Użyj profilu edycji przepływu użytkownika
 ```
 GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
@@ -78,13 +78,13 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | redirect_uri |Wymagane |Identyfikator URI aplikacji, w którym wysyłanych i odbieranych przez aplikację uwierzytelniania odpowiedzi przekierowania. Jego musi dokładnie odpowiadać jeden przekierowania identyfikatory URI, który został zarejestrowany w portalu, z tą różnicą, że musi być zakodowane w adresie URL. |
 | scope |Wymagane |Rozdzielonej spacjami listy zakresów. Wskazuje wartość pojedynczy zakres do usługi Azure Active Directory (Azure AD) zarówno uprawnień, które są żądane. Przy użyciu Identyfikatora klienta, zgodnie z zakresem wskazuje, że Twoja aplikacja wymaga tokenu dostępu, który może zostać użyty dla własnych usług lub interfejsu API sieci web, reprezentowane przez ten sam identyfikator klienta.  `offline_access` Zakresu wskazuje, że Twoja aplikacja wymaga tokenu odświeżania długotrwałe dostępu do zasobów. Możesz również użyć `openid` zakresu do wysłania żądania tokenu Identyfikatora z usługi Azure AD B2C. |
 | response_mode |Zalecane |Metody, która umożliwia wysyłanie wynikowy kod autoryzacji z powrotem do aplikacji. Może być `query`, `form_post`, lub `fragment`. |
-| state |Zalecane |Wartość uwzględnione w żądaniu, który może być ciągiem dowolnej zawartości, którego chcesz używać. Zazwyczaj losowo generowany unikatową wartość jest używana, aby zapobiec atakom fałszowanie żądań między witrynami. Stan jest również używane do kodowania informacje o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelnienia. Na przykład strony, do której użytkownik był na lub zasad, które było wykonywane. |
-| p |Wymagane |Zasada, która jest wykonywana. Jest to nazwa, zasad, który jest tworzony w katalogu usługi Azure AD B2C. Wartość nazwy zasad powinien zaczynać się od **b2c\_1\_**. Aby dowiedzieć się więcej na temat zasad, zobacz [wbudowane zasady usługi Azure AD B2C](active-directory-b2c-reference-policies.md). |
+| state |Zalecane |Wartość uwzględnione w żądaniu, który może być ciągiem dowolnej zawartości, którego chcesz używać. Zazwyczaj losowo generowany unikatową wartość jest używana, aby zapobiec atakom fałszowanie żądań między witrynami. Stan jest również używane do kodowania informacje o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelnienia. Na przykład strony, do której użytkownik był na lub przepływ użytkownika, które było wykonywane. |
+| p |Wymagane |Przepływ użytkownika, który jest wykonywany. To nazwa przepływu użytkownika, który jest tworzony w katalogu usługi Azure AD B2C. Wartość nazwy przepływu użytkownika powinien zaczynać się od **b2c\_1\_**. Aby uzyskać więcej informacji na temat przepływów użytkownika, zobacz [przepływy użytkownika usługi Azure AD B2C](active-directory-b2c-reference-policies.md). |
 | wiersz |Optional (Opcjonalność) |Typ interakcji z użytkownikiem, który jest wymagany. Obecnie jest jedyną prawidłową wartością `login`, która wymusza użytkownika o wprowadzenie poświadczeń dla tego żądania. Logowanie jednokrotne nie zostanie zastosowana. |
 
-W tym momencie użytkownik jest monitowany do ukończenia przepływu pracy zasad. Może to obejmować użytkownika wprowadzania nazwy użytkownika i hasła, logowanie się przy użyciu tożsamości społecznościowej, założeniem katalogu lub dowolną liczbę kroków. Akcje użytkownika, zależą od tego, jak jest zdefiniowany zasad.
+W tym momencie użytkownik jest proszony do ukończenia przepływu pracy przepływu użytkownika. Może to obejmować użytkownika wprowadzania nazwy użytkownika i hasła, logowanie się przy użyciu tożsamości społecznościowej, założeniem katalogu lub dowolną liczbę kroków. Akcje użytkownika, zależą od tego, jak jest zdefiniowany przepływu użytkownika.
 
-Po wypełnieniu zasad przez użytkownika, usługi Azure AD, zwraca odpowiedź do aplikacji na wartość używana przez `redirect_uri`. Używa metody podanej w `response_mode` parametru. Odpowiedź jest dokładnie taka sama dla wszystkich scenariuszy akcji użytkownika, niezależnie od zasady, które zostało wykonane.
+Po użytkownik kończy przepływ użytkownika, usługi Azure AD, zwraca odpowiedź do aplikacji w wartości używane dla `redirect_uri`. Używa metody podanej w `response_mode` parametru. Odpowiedź jest dokładnie taka sama dla wszystkich scenariuszy akcji użytkownika, niezależnie od przepływu użytkownika, który został wykonany.
 
 Odpowiedź oznaczająca Powodzenie, który używa `response_mode=query` wygląda podobnie do następującego:
 
@@ -128,7 +128,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | Parametr | Wymagana? | Opis |
 | --- | --- | --- |
-| p |Wymagane |Zasady, które zostało użyte do uzyskania kodu autoryzacji. Nie można użyć różnych zasad, w tym żądaniu. Należy pamiętać, dodawania tego parametru na *ciągu zapytania*, a nie w treść wpisu. |
+| p |Wymagane |Przepływ użytkownika, który został użyty do uzyskania kodu autoryzacji. Nie można użyć przepływu innego użytkownika, w tym żądaniu. Należy pamiętać, dodawania tego parametru na *ciągu zapytania*, a nie w treść wpisu. |
 | client_id |Wymagane |Identyfikator aplikacji przypisany do aplikacji w [witryny Azure portal](https://portal.azure.com). |
 | grant_type |Wymagane |Rodzaj przyznanie. Przepływ kodu autoryzacji, musi być typu przydziału `authorization_code`. |
 | scope |Zalecane |Rozdzielonej spacjami listy zakresów. Wskazuje wartość pojedynczy zakres do usługi Azure AD zarówno uprawnień, które są żądane. Przy użyciu Identyfikatora klienta, zgodnie z zakresem wskazuje, że Twoja aplikacja wymaga tokenu dostępu, który może zostać użyty dla własnych usług lub interfejsu API sieci web, reprezentowane przez ten sam identyfikator klienta.  `offline_access` Zakresu wskazuje, że Twoja aplikacja wymaga tokenu odświeżania długotrwałe dostępu do zasobów.  Możesz również użyć `openid` zakresu do wysłania żądania tokenu Identyfikatora z usługi Azure AD B2C. |
@@ -192,7 +192,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&client_s
 
 | Parametr | Wymagana? | Opis |
 | --- | --- | --- |
-| p |Wymagane |Zasady, które zostało użyte do uzyskania oryginalnej token odświeżania. Nie można użyć różnych zasad, w tym żądaniu. Należy pamiętać, dodawania tego parametru na *ciągu zapytania*, a nie w treść wpisu. |
+| p |Wymagane |Przepływ użytkownika, który został użyty do uzyskania oryginalnej token odświeżania. Nie można użyć przepływu innego użytkownika, w tym żądaniu. Należy pamiętać, dodawania tego parametru na *ciągu zapytania*, a nie w treść wpisu. |
 | client_id |Wymagane |Identyfikator aplikacji przypisany do aplikacji w [witryny Azure portal](https://portal.azure.com). |
 | client_secret |Wymagane |Wartość client_secret powiązanych z Twojej client_id w [witryny Azure portal](https://portal.azure.com). |
 | grant_type |Wymagane |Rodzaj przyznanie. Dla tej gałęzi przepływ kodu autoryzacji musi być typu przydziału `refresh_token`. |
@@ -240,5 +240,5 @@ Aby samodzielnie wypróbować te żądania, wykonaj następujące kroki. Zastąp
 
 1. [Tworzenie katalogu usługi Azure AD B2C](active-directory-b2c-get-started.md). Użyj nazwy katalogu w żądaniach.
 2. [Tworzenie aplikacji](active-directory-b2c-app-registration.md) uzyskać identyfikator aplikacji i identyfikator URI przekierowania. Dołącz klienta natywnego w swojej aplikacji.
-3. [Tworzenie zasad](active-directory-b2c-reference-policies.md) można uzyskać nazwy zasad.
+3. [Tworzenie przepływów użytkownika](active-directory-b2c-reference-policies.md) można uzyskać nazwy przepływu użytkownika.
 

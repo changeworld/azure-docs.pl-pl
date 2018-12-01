@@ -7,16 +7,15 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: b6188bbf89d9aee842d7f8e232a820b59c4d9e31
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 1a0aeca0996231415a78e1ac8dfed13cfd7e772d
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023257"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723401"
 ---
 # <a name="application-insights-nuget-packages"></a>Pakiety Insights NuGet aplikacji
 

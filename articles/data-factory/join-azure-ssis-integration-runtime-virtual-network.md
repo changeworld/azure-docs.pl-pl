@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 38839379f584b40cdbefad3e4cbb3bc47881c9a7
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 1afd98026a2aad552258b636ba078ca4f9bd2d58
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094599"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723146"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Dołącz do środowiska Azure-SSIS integration runtime do sieci wirtualnej
 Dołącz do środowiska Azure-SSIS integration runtime (IR) z siecią wirtualną platformy Azure w następujących scenariuszach: 
@@ -198,19 +198,21 @@ Musisz skonfigurować sieć wirtualną można było przyłączyć środowiska Az
 
 1. Dołącz do **MicrosoftAzureBatch** do **współautora klasycznej maszyny wirtualnej** roli w ramach sieci wirtualnej. 
 
-    a. Wybierz **kontrola dostępu (IAM)** w menu po lewej stronie, a następnie wybierz pozycję **Dodaj** na pasku narzędzi. 
+    a. Wybierz **kontrola dostępu (IAM)** w menu po lewej stronie, a następnie wybierz pozycję **przypisań ról** kartę. 
 
     !["Kontroli dostępu" i "Add" przycisków](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
 
-    b. Na **Dodaj uprawnienia** wybierz opcję **współautora klasycznej maszyny wirtualnej** dla **roli**. Wklej **ddbf3205-c6bd-46ae-8127-60eb93363864** w **wybierz** , a następnie wybierz **Microsoft Azure Batch** z listy wyników wyszukiwania. 
+    b. Wybierz **Dodaj przypisanie roli**.
 
-    ![Wyniki wyszukiwania na stronie "Dodaj uprawnienia"](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
+    c. Na **Dodaj przypisanie roli** wybierz opcję **współautora klasycznej maszyny wirtualnej** dla **roli**. Wklej **ddbf3205-c6bd-46ae-8127-60eb93363864** w **wybierz** , a następnie wybierz **Microsoft Azure Batch** z listy wyników wyszukiwania. 
 
-    c. Wybierz **Zapisz** Aby zapisać ustawienia i zamknąć stronę. 
+    ![Wyniki wyszukiwania na stronie "Dodawanie przypisania roli"](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
+
+    d. Wybierz **Zapisz** Aby zapisać ustawienia i zamknąć stronę. 
 
     ![Zapisz ustawienia dostępu](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
 
-    d. Upewnij się, że **Microsoft Azure Batch** na liście współautorów. 
+    e. Upewnij się, że **Microsoft Azure Batch** na liście współautorów. 
 
     ![Potwierdzanie dostępu do usługi Azure Batch](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
 

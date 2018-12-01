@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: e18b670b94962c0e7aa469402228fd4ed95d846b
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 9b9789979f6fa3beb606007ca252827c7a1599e0
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287255"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682286"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie metryki alertów klasycznych przy użyciu usługi Azure Monitor
 
@@ -42,7 +42,7 @@ Klasyczne alertów dotyczących metryk w usłudze Azure Monitor zapewnia sposób
 
 9. Jeśli używasz usługi Azure Automation, możesz wybrać element runbook mógł działać, gdy zostanie wyzwolony alert.
 
-10. Wybierz **OK** do utworzenia alertu.
+10. Wybierz pozycję **OK**, aby utworzyć alert.
 
 W ciągu kilku minut ten alert jest aktywny i wyzwala w sposób opisany wcześniej.
 
@@ -126,36 +126,9 @@ Tej sekcji pokazano, jak za pomocą programu PowerShell, poleceń tworzyć, wyś
     Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 
-8. Możesz użyć `Add-AlertRule` polecenia cmdlet w celu utworzenia, aktualizacji lub wyłączyć regułę alertu. Można utworzyć właściwości wiadomości e-mail i elementy webhook, za pomocą `New-AzureRmAlertRuleEmail` i `New-AzureRmAlertRuleWebhook`, odpowiednio. W poleceniu cmdlet reguły alertu, Przypisz te właściwości jako akcje **akcje** właściwości reguły alertu. W poniższej tabeli opisano parametry i wartości używane do tworzenia alertu za pomocą metryk.
-
-    | parametr | wartość |
-    | --- | --- |
-    | Name (Nazwa) |simpletestdiskwrite |
-    | Lokalizacja tę regułę alertu |Wschodnie stany USA |
-    | ResourceGroup |montest |
-    | Element TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-    | MetricName alertu, który jest tworzony |\PhysicalDisk (%) (_łącznie) \Disk zapisu na sekundę. Zobacz `Get-MetricDefinitions` polecenia cmdlet, o tym, jak pobrać dokładnej nazwy metryki |
-    | Operator |GreaterThan |
-    | Wartość progowa (liczba/s w tym metryki) |1 |
-    | Rozmiar_okna (w formacie: mm: ss) |00:05:00 |
-    | agregatora (Statystyka metryki, która używa w tym przypadku średnia liczba) |Średnia |
-    | niestandardowe wiadomości e-mail (tablicy ciągów) |'foo@example.com','bar@example.com' |
-    | Wyślij wiadomość e-mail do właściciele, współautorzy i czytelnicy |-SendToServiceOwners |
-
-9. Tworzenie akcji w wiadomości E-mail
-
-    ```PowerShell
-    $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail myname@company.com
-    ```
-
-10. Tworzenie akcji elementu Webhook
-
-    ```PowerShell
-    $actionWebhook = New-AzureRmAlertRuleWebhook -ServiceUri https://example.com?token=mytoken
-    ```
+8. Nie jest już można tworzyć reguły alertów klasycznych za pomocą programu PowerShell. Aby utworzyć regułę alertu, należy użyć nowego ["Add-AzureRmMetricAlertRule"](https://docs.microsoft.com/powershell/module/azurerm.insights/add-azurermmetricalertrule?view=azurermps-6.13.0) polecenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Tworzenie klasycznego alertu metryki za pomocą szablonu usługi Resource Manager](monitoring-enable-alerts-using-template.md).
 - [Masz klasycznego alertu metryki powiadomić systemu poza platformą Azure za pomocą elementu webhook](insights-webhooks-alerts.md).
-

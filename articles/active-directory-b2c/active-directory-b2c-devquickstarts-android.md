@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/06/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 716cf9e47cd71d003513066d390f9dccb5c83dcb
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 4a4b9863d8f74592a8d9a700c3dbc850cd867331
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344130"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725560"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Usługa Azure AD B2C: Zaloguj się przy użyciu aplikacji systemu Android
 
@@ -40,17 +40,17 @@ Następnie musisz utworzyć aplikację w katalogu usługi B2C. Dzięki temu do u
 * Skopiuj **Identyfikator aplikacji** przypisany do aplikacji. Będzie on potrzebny później.
 * Konfigurowanie natywnego klienta **identyfikator URI przekierowania** (np. com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). On również będzie później potrzebny.
 
-## <a name="create-your-policies"></a>Tworzenie zasad
+## <a name="create-your-user-flows"></a>Tworzyć przepływy użytkownika
 
-W usłudze Azure AD B2C każde działanie użytkownika jest definiowane przy użyciu [zasad](active-directory-b2c-reference-policies.md). Ta aplikacja zawiera jedno rozwiązanie tożsamości: połączonego logowania i rejestracji. Należy utworzyć te zasady, zgodnie z opisem w [artykule dotyczącym struktury zasad](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Podczas tworzenia zasad należy:
+W usłudze Azure AD B2C każde działanie użytkownika jest definiowany przez [przepływ użytkownika](active-directory-b2c-reference-policies.md), czyli zestaw zasad, które kontrolują zachowanie usługi Azure AD. Ta aplikacja zawiera jedno rozwiązanie tożsamości: przepływ połączonego logowania i rejestracji użytkownika. Należy utworzyć ten przepływ użytkownika zgodnie z opisem w [artykule informacyjnym na temat przepływu użytkownika](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Po utworzeniu przepływu użytkownika, należy koniecznie:
 
-* Wybierz **nazwę wyświetlaną** jako atrybut rejestracji w zasadach.
-* Wybrać oświadczenia aplikacji **Nazwa wyświetlana** oraz **Identyfikator obiektu** we wszystkich zasadach. Można również wybrać inne oświadczenia.
-* Skopiować każdą utworzoną wartość **Nazwa** zasad. Powinny zawierać prefiks `b2c_1_`.  Nazwa zasad będzie potrzebna później.
+* Wybierz **nazwę wyświetlaną** jako atrybut rejestracji przepływu użytkownika.
+* Wybierz **nazwę wyświetlaną** i **obiektu o identyfikatorze** oświadczeniami aplikacji w każdym przepływu użytkownika. Można również wybrać inne oświadczenia.
+* Kopiuj **nazwa** każdego przepływu użytkownika po jego utworzeniu. Powinny zawierać prefiks `b2c_1_`.  Przepływ użytkownika będą potrzebne później.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-Po utworzeniu zasad będzie można rozpocząć tworzenie aplikacji.
+Po utworzeniu przepływów użytkownika możesz przystąpić do kompilowania aplikacji.
 
 ## <a name="download-the-sample-code"></a>Pobierz przykładowy kod
 
@@ -64,12 +64,12 @@ Próbka jest modyfikacja przykładowym przez [AppAuth](https://openid.github.io/
 > AppAuth obsługuje Android API 16 (Jellybean) i nowszych. Firma Microsoft zaleca używanie interfejsu API 23 i nowsze wersje.
 >
 
-### <a name="configuration"></a>Konfiguracja
+### <a name="configuration"></a>Konfigurowanie
 
 Komunikację można skonfigurować w usłudze Azure AD B2C, określając odnajdywanie identyfikatora URI lub określając punkt końcowy autoryzacji i tokena identyfikatory URI punktów końcowych. W obu przypadkach są potrzebne następujące informacje:
 
 * Identyfikator dzierżawy (np. contoso.onmicrosoft.com)
-* Nazwa zasad (np. usługi B2C\_1\_SignUpIn)
+* Przepływ użytkownika (np. usługi B2C\_1\_SignUpIn)
 
 Jeśli zostanie wybrana opcja automatycznego wykrywania autoryzacji i tokena identyfikatory URI punktów końcowych, należy pobrać informacje z identyfikatora URI odnajdywania. Odnajdywanie identyfikatora URI mogą być generowane przez zastąpienie dzierżawy\_identyfikator i zasady\_nazwy w następującym adresem URL:
 

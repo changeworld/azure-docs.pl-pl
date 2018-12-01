@@ -9,18 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 11/29/2018
 ms.author: jingwang
-ms.openlocfilehash: 558b426ea85decb0309390e36910eb18719e6e99
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 108ced5416eb7cd6826f4f96d4f62fd33e8f5653
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002531"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680858"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-preview-with-azure-data-factory"></a>Ładowanie danych do usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza) przy użyciu usługi Azure Data Factory
 
-[Azure Data Lake magazynu Gen2 (wersja zapoznawcza)](../storage/data-lake-storage/introduction.md) dodaje protokołu o funkcje przestrzeni nazw i zabezpieczenia systemu plików hierarchiczne do usługi Azure Blob Storage, co ułatwia łączenie struktur analytics do warstwy magazynu trwałego. W Data Lake Storage Gen2 (wersja zapoznawcza), jakość magazynu obiektów pozostają podczas dodawania zalety interfejsu systemu plików.
+Usługa Azure Data Lake Gen2 — wersja zapoznawcza to zbiór funkcji przeznaczonych do analizy danych big data, wbudowane w [usługi Azure Blob storage](../storage/blobs/storage-blobs-introduction.md). Umożliwia łączenie się z danych za pomocą obu paradygmatów magazynu plików, jak systemu i obiekt.
 
 Usługa Azure Data Factory to usługa integracji danych w pełni zarządzane w chmurze. Korzystać z niej, aby wypełnić usługi Data lake z danymi z bogatego zestawu w środowisku lokalnym i magazyny danych opartych na chmurze i zaoszczędzić czas podczas tworzenia rozwiązań do analizy. Aby uzyskać szczegółową listę obsługiwanych łączników, zobacz tabelę [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
 
@@ -76,14 +76,14 @@ W tym artykule dowiesz się, jak używać narzędzia do kopiowania danych w bazi
     ![Strona s3 źródłowy magazyn danych](./media/load-azure-data-lake-storage-gen2/source-data-store-page-s3.png)
     
 4. W **połączenia Określ Amazon S3** wykonaj następujące czynności:
-   1. Określ **identyfikator klucza dostępu** wartość.
-   2. Określ **tajny klucz dostępu** wartość.
-   3. Kliknij przycisk **Testuj połączenie** Aby zweryfikować ustawienia, zaznacz opcję **Zakończ**.
+
+    1. Określ **identyfikator klucza dostępu** wartość.
+    2. Określ **tajny klucz dostępu** wartość.
+    3. Kliknij przycisk **Testuj połączenie** Aby zweryfikować ustawienia, zaznacz opcję **Zakończ**.
+    4. Zobaczysz, że nowe połączenie zostanie utworzona. Wybierz opcję **Dalej**.
    
-   ![Określanie konta usługi Amazon S3](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
-   
-   4. Zobaczysz, że nowe połączenie zostanie utworzona. Wybierz opcję **Dalej**.
-   
+    ![Określanie konta usługi Amazon S3](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
+      
 5. W **Wybieranie pliku lub folderu wejściowego** strony, przejdź do folderu i pliku, który chcesz skopiować. Wybierz folderów i plików, wybierz pozycję **wybierz**:
 
     ![Wybieranie pliku lub folderu wejściowego](./media/load-azure-data-lake-storage-gen2/choose-input-folder.png)
@@ -99,7 +99,7 @@ W tym artykule dowiesz się, jak używać narzędzia do kopiowania danych w bazi
 8. W **połączenia Określ magazyn usługi Azure Data Lake** wykonaj następujące czynności:
 
    1. Wybierz usługi Data Lake magazynu Gen2 — listy rozwijanej w stanie Zmiana warstwy konta z "Nazwa konta magazynu".
-   2. Wybierz opcję **Dalej**.
+   2. Wybierz **Zakończ** do utworzenia połączenia. Następnie wybierz przycisk **Dalej**.
    
    ![Określ konto usługi Azure Data Lake Storage Gen2](./media/load-azure-data-lake-storage-gen2/specify-adls.png)
 

@@ -7,18 +7,17 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2018
 ms.author: bwren
-ms.openlocfilehash: 4f7b0f7c1cd08168db3f0f0ffd6cf6c4fa2c604e
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 7a7ba9f7a990a563a64a255ed6468c3b8e2534d5
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334554"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724336"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Czas wprowadzania danych w usłudze Log Analytics
 Usługa Azure Log Analytics to usługa danych dużej skali w usłudze Azure Monitor, pełniącą tysiące klientów wysyłania terabajtów danych każdego miesiąca w tempie rosnącą. Są często zadawane pytania dotyczące czasu, jaki zajmuje dane staną się dostępne w usłudze Log Analytics po ich zebraniu. W tym artykule opisano różne czynniki, które wpływają na ten czas oczekiwania.

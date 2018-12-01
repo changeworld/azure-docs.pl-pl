@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f0fd4efe7fc6f8f217d889b5f87c133b5e250b54
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 938472edf0c82da6f3e1fdaf4e6b052ac178bd8a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810709"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722977"
 ---
 <a name="logic-app-test-drive"></a>Wersja testowa aplikacji logiki
 ====================
@@ -48,7 +48,7 @@ Następnej sekcji, aby wypełnić to oferują szczegółowe informacje o wersji 
 
 ![Szczegóły sterownika testu](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-**Opis —** *[wymagane pole]* jest to, gdzie wpisać opis główny o nowościach w wersji testowej. Klient będzie przejdź tutaj, aby odczytać scenariusze, jakie wersji testowej będzie obejmował dotyczących produktu. 
+**Opis —** *[wymagane pole]* jest to, gdzie wpisać opis główny o nowościach w wersji testowej. Klient będzie przejdź tutaj, aby odczytać scenariusze, jakie wersji testowej będzie obejmował dotyczących produktu. 
 
 **Podręcznik użytkownika -** *[wymagane pole]* to szczegółowe wskazówki dotyczące środowiska wersji testowej. Spowoduje to otwarcie siedziba klienta i zapoznać się z dokładnie co chcesz zrobić w całym ich wersji testowej. Jest ważne, że ta zawartość jest łatwy do zrozumienia i postępuj zgodnie z! (Musi być plikiem PDF)
 
@@ -121,20 +121,18 @@ W przeciwnym razie należy utworzyć nową dzierżawę usługi Azure Active Dire
 
 Kliknij pozycję Zapisz. Ostatnim krokiem jest identyfikator aplikacji dla tej aplikacji zarejestrowanych i wklej go w tym polu wersji testowej.
 
-![Identyfikator aplikacji w usłudze Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails7.png)
+![Identyfikator aplikacji usługi Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails7.png)
 
 Biorąc pod uwagę używamy aplikacji do wdrożenia do subskrypcji, musimy dodać aplikację jako współautora w subskrypcji. Instrukcje te są jak poniżej:
 
 1. Przejdź do bloku subskrypcje i wybierz odpowiednią subskrypcję, którego używasz do testowej.
-2. Polecenie kontroli dostępu (IAM).
-3. Wybierz pozycję + Dodaj w nowym bloku.
-4. Ustaw rolę jako współautora.
-5. Wpisz nazwę aplikacji usługi AAD, a następnie wybierz aplikację usługi AAD, aby przypisać rolę.
-6. Kliknij przycisk przy zapisywaniu.
-
-![Usługa Azure Active Directory, dodając nową jednostkę kontroli dostępu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-
-![Uprawnienia usługi Azure Active Directory](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Kliknij przycisk **kontrola dostępu (IAM)**.
+1. Kliknij przycisk **przypisań ról** kartę.  ![Usługa Azure Active Directory, dodając nową jednostkę kontroli dostępu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. Kliknij przycisk **Dodaj przypisanie roli**.
+1. Ustaw rolę **Współautor**.
+1. Wpisz nazwę aplikacji usługi Azure AD, a następnie wybierz aplikację, aby przypisać rolę.
+    ![Uprawnienia usługi Active Directory platformy Azure](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Kliknij pozycję **Zapisz**.
 
 **Klucz aplikacji w usłudze Azure AD —** *[wymagane pole]* końcowego pole jest do generowania klucza uwierzytelniania. W obszarze klucze Dodaj opis klucza, ustaw czas nigdy nie wygasa, następnie wybierz pozycję Zapisz. Jest **ważne** pozwala uniknąć wygasłe klucza, co spowoduje przerwanie wersji testowej w środowisku produkcyjnym. Skopiuj tę wartość i wklej go do wymagane pole wersji testowej.
 

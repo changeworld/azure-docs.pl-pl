@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b16ac10e10655bbc7e41d9336378228097ca19ff
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 88609f4daac176f082e7f4962d557267946ab98c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014724"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724438"
 ---
 # <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Usługa Azure AD B2C: Konfigurowanie wymagań dotyczących złożoności haseł
 
@@ -26,22 +26,21 @@ Usługa Azure Active Directory B2C (Azure AD B2C) obsługuje zmieniające się w
 
 ## <a name="when-password-rules-are-enforced"></a>Gdy są wymuszane reguły hasła
 
-Podczas tworzenia konta lub resetowania hasła użytkownika końcowego należy podać hasło, który spełnia reguł złożoności.  Reguł złożoności haseł są wymuszane zgodnie z zasadami.  Istnieje możliwość jedne zasady, które wymagają 4 cyfrowy numer pin, podczas rejestracji podczas inne zasady wymaga ciągu osiem znaków podczas rejestracji.  Może na przykład użyć zasad za pomocą innego hasła, złożoność dla dorosłych niż dla dzieci.
+Podczas tworzenia konta lub resetowania hasła użytkownika końcowego należy podać hasło, który spełnia reguł złożoności.  Reguł złożoności haseł są wymuszane na przepływ użytkownika.  Użytkownik może mieć jeden przepływ użytkownika wymagają 4 cyfrowy numer pin, podczas rejestracji podczas inny przepływ użytkownika wymaga ciągu osiem znaków podczas tworzenia konta.  Może na przykład użyć przepływu użytkownika za pomocą innego hasła, złożoność dla dorosłych niż dla dzieci.
 
 Złożoność hasła nigdy nie jest wymuszana podczas logowania.  Użytkownicy nigdy nie są monitowani podczas logowania do zmiany hasła, ponieważ nie spełnia bieżące wymagania co do złożoności.
 
-Poniżej przedstawiono zasady różnych typów gdzie złożoność hasła można skonfigurować:
+Poniżej przedstawiono typy przepływów użytkownika gdzie złożoność hasła można skonfigurować:
 
-* Zasady tworzenia konta lub logowania
-* Zasady resetowania hasła
+* Przepływ użytkownika rejestracji lub logowania
+* Przepływ użytkownika resetowania hasła
 * Zasady niestandardowe ([skonfigurowania złożoności hasła jako w zasadach niestandardowych](active-directory-b2c-reference-password-complexity-custom.md))
 
 ## <a name="how-to-configure-password-complexity"></a>Jak skonfigurować złożoność hasła
 
-1. Otwórz **zasady rejestracji lub logowania**.
-2. Wybierz zasady, a następnie kliknij przycisk **Edytuj**.
-3. Otwórz **złożoność hasła jako**.
-4. Złożoność hasła dla tych zasad, aby zmienić **proste**, **silne**, lub **niestandardowe**.
+1. Otwórz **przepływy użytkownika**.
+2. Wybierz przepływ użytkownika, a następnie kliknij przycisk **właściwości**.
+3. W obszarze **złożoność hasła jako**, złożoność hasła dla tego przepływu użytkownika, aby zmienić **proste**, **silne**, lub **niestandardowe**.
 
 ### <a name="comparison-chart"></a>Wykres porównawczy
 

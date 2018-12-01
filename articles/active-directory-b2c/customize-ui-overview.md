@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cec9e5bfea16e5ba11f8cd7324acf15188fb907a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: b5d3703f052ef47bcbacf0be04072357ee5b9986
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634062"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722602"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Dostosowywanie interfejsu użytkownika w usłudze Azure Active Directory B2C — informacje
 
@@ -23,13 +23,13 @@ Można oznaczyć i dostosowywanie interfejsu użytkownika (UI) Azure Active Dire
 
 Jeśli chodzi o tych środowisk, w zależności od potrzeb, możesz dostosować interfejsu użytkownika aplikacji na różne sposoby. Na przykład:
 
-- Jeśli używasz [wbudowane zasady](active-directory-b2c-reference-policies.md) Podaj hasło rejestracji lub logowania, zresetuj lub edytowania profilu środowiska w aplikacji, należy użyć [witryny Azure portal, aby dostosować interfejs użytkownika](tutorial-customize-ui.md).
+- Jeśli używasz [przepływy użytkownika](active-directory-b2c-reference-policies.md) Podaj hasło rejestracji lub logowania, zresetuj lub edytowania profilu środowiska w aplikacji, należy użyć [witryny Azure portal, aby dostosować interfejs użytkownika](tutorial-customize-ui.md).
 - Jeśli udostępniasz logowania tylko, strony resetowania jego hasła towarzyszący i weryfikacji wiadomości e-mail, użyj te same kroki dostosowywania, które są używane do [strony logowania usługi Azure AD](../active-directory/fundamentals/customize-branding.md).
 - Jeśli klienci spróbujesz edytować swój profil, aby się zalogować, zostanie przekierowany do strony można dostosować za pomocą te same kroki, które są używane do dostosowania strony logowania usługi Azure AD.
 - Jeśli używasz [zasady niestandardowe](active-directory-b2c-overview-custom.md) podać hasło rejestracji lub logowania, należy zresetować lub profilu edycji w aplikacji, możesz użyć [pliki zasad, aby dostosować interfejs użytkownika](active-directory-b2c-ui-customization-custom.md).
 - Jeśli konieczne jest zapewnienie dynamicznej zawartości, w oparciu o decyzji klienta, możesz użyć [zawartości strony zasad niestandardowych, które można zmienić](active-directory-b2c-ui-customization-custom-dynamic.md) w zależności od parametru, który będzie wysyłany w ciągu zapytania. Na przykład obraz tła na stronie tworzenia konta lub logowania usługi Azure AD B2C zmiany, na podstawie parametru, które przechodzą z sieci web lub aplikacji mobilnej.
 
-Usługa Azure AD B2C kodu w przeglądarce klienta, korzysta z nowoczesnego podejścia o nazwie [udostępniania zasobów między źródłami (CORS)](http://www.w3.org/TR/cors/). W czasie wykonywania zawartość zostanie załadowana z adresu URL, który określisz w zasadach. Możesz określić inny adres URL dla różnych stronach. Po załadowaniu zawartości z adresu URL zostało scalone z fragment kodu HTML wstawione z usługi Azure AD B2C, a następnie wyświetlane do klienta.
+Usługa Azure AD B2C kodu w przeglądarce klienta, korzysta z nowoczesnego podejścia o nazwie [udostępniania zasobów między źródłami (CORS)](http://www.w3.org/TR/cors/). W czasie wykonywania zawartość jest ładowany z adresu URL, który określisz w przepływ użytkownika lub zasad. Możesz określić inny adres URL dla różnych stronach. Po załadowaniu zawartości z adresu URL zostało scalone z fragment kodu HTML wstawione z usługi Azure AD B2C, a następnie wyświetlane do klienta.
 
 Przed rozpoczęciem należy przejrzeć następujące wskazówki:
 
@@ -118,6 +118,6 @@ Przykłady dostosowywania, Pobierz i przejrzyj te [przykładowe pliki szablonów
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli używasz wbudowanych zasad możesz rozpocząć dostosowywanie interfejsu użytkownika z samouczkiem dotyczącym: [Dostosowywanie interfejsu użytkownika aplikacji w usłudze Azure Active Directory B2C](tutorial-customize-ui.md).
+- Jeśli używasz przepływy użytkownika, możesz rozpocząć dostosowywanie interfejsu użytkownika z samouczkiem dotyczącym: [Dostosowywanie interfejsu użytkownika aplikacji w usłudze Azure Active Directory B2C](tutorial-customize-ui.md).
 - Jeśli używasz zasad niestandardowych, można uruchomić dostosowywaniu interfejsu użytkownika z artykułem: [Dostosowywanie interfejsu użytkownika aplikacji za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
 

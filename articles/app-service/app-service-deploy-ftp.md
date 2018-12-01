@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2018
+ms.date: 11/30/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 32dbef04febb1f3a0cdd8654fc5ec1c5c367439e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 1e3dbe04652be479a327ed9494299f89ef13492a
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820005"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679396"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Wdrażanie aplikacji w usłudze Azure App Service przy użyciu protokołu FTP/S
 
@@ -31,7 +31,7 @@ Punkt końcowy protokołu FTP/S dla aplikacji jest już aktywny. Konfiguracja ni
 
 W [witryny Azure portal](https://portal.azure.com), otwórz aplikacji [strony zasobu](../azure-resource-manager/resource-group-portal.md#manage-resources).
 
-Aby otworzyć pulpit nawigacyjny FTP, kliknij przycisk **ciągłe dostarczanie (wersja zapoznawcza)** > **FTP** > **pulpit nawigacyjny**.
+Aby otworzyć pulpit nawigacyjny FTP, kliknij przycisk **Centrum wdrażania** > **FTP** > **pulpit nawigacyjny**.
 
 ![Otwórz pulpit nawigacyjny FTP](./media/app-service-deploy-ftp/open-dashboard.png)
 

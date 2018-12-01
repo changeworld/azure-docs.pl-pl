@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 1fc1d3b4418b178921dc32ee834342b75fa31f20
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: fe564e9809a3621ca04e4dad75488fb255f7dc0e
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311079"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682949"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Zbieranie i używanie dane dzienników z zasobów platformy Azure
 
@@ -40,7 +40,7 @@ Oto kilka rzeczy, które można zrobić za pomocą dzienników diagnostycznych:
 
 * Zapisywanie ich [ **konta magazynu** ](monitoring-archive-diagnostic-logs.md) do wglądu, inspekcji czy ręcznie. Można określić przy użyciu czasu (w dniach) przechowywania **ustawień diagnostycznych zasobu**.
 * [Stream im **usługi Event Hubs** ](monitoring-stream-diagnostic-logs-to-event-hubs.md) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowych, takich jak usługi Power BI.
-* Analizuj je za pomocą [usługi Log Analytics](../log-analytics/log-analytics-azure-storage.md)
+* Analizuj je za pomocą [usługi Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md)
 
 Można użyć konta magazynu lub przestrzeni nazw usługi Event Hubs, która nie znajduje się w tej samej subskrypcji co emitowane dzienniki. Użytkownik, który konfiguruje ustawienie, musi mieć odpowiedni dostęp RBAC do obu subskrypcji.
 
@@ -235,4 +235,4 @@ Dodawanie ustawienia diagnostyczne powoduje wyświetlenie widoku ustawień diagn
 
 * [Stream dzienników diagnostycznych zasobów do **usługi Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Zmień ustawienia diagnostyczne zasobów przy użyciu interfejsu API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931931.aspx)
-* [Analizowanie dzienników z usługi Azure storage za pomocą usługi Log Analytics](../log-analytics/log-analytics-azure-storage.md)
+* [Analizowanie dzienników z usługi Azure storage za pomocą usługi Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md)

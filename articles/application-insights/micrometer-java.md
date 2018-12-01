@@ -9,16 +9,15 @@ ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 25ee061f489df0a666d59871661478f987b28e3f
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: d579a9b628ac515877c1977f700940547e96f0c0
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344811"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726614"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Jak używać mikrometryczne z zestawu SDK usługi Azure Application Insights Java
 Mikrometryczne aplikacji środki metryki monitorowania dla aplikacji w oparciu o JVM kodu i pozwala wyeksportować dane do systemów monitorowania Ulubione. Ten artykuł nauczy Cię sposób użycia mikrometryczne za pomocą usługi Application Insights dla aplikacji Spring Boot i aplikacje inne niż platformy Spring Boot.

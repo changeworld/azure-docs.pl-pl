@@ -9,14 +9,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 11/28/2018
 ms.author: barclayn
-ms.openlocfilehash: eb3c6ea64b55d59f261927925d4d4ae87546bf95
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b02e3da086a3f33a55650fa72661f65028bfb78b
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319589"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680025"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Platformy Azure w wersji dedykowanej HSM wysokiej dostępności.
 

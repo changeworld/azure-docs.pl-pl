@@ -14,12 +14,12 @@ ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: adb53bb5722bff2374097626e8a3f1679ca00788
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 0c14055209c6094585e0d1df892fea24a3f3ea55
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633533"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721072"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w usłudze Azure Active Directory
 
@@ -352,7 +352,7 @@ Następujące atrybuty urządzenia może służyć.
  deviceCategory | Nazwa kategorii prawidłowe urządzenie | (device.deviceCategory - eq "BYOD")
  deviceManufacturer | dowolną wartość ciągu | (device.deviceManufacturer - eq "Samsung")
  deviceModel | dowolną wartość ciągu | (device.deviceModel - eq "iPad Air")
- deviceOwnership | Osobisty, kontekstowy, firmowe, nieznany | (device.deviceOwnership - eq "Firmowe")
+ deviceOwnership | Osobiste, firma, nieznany | (device.deviceOwnership - eq "Firma")
  Nazwa_domeny | dowolną wartość ciągu | (device.domainName - eq "contoso.com")
  enrollmentProfileName | Nazwa profilu profilu rejestracji urządzeń firmy Apple lub rozwiązania Windows Autopilot | (device.enrollmentProfileName - eq "IPhone DEP")
  isRooted | wartość true, false | (device.isRooted - eq true)
@@ -360,6 +360,9 @@ Następujące atrybuty urządzenia może służyć.
  deviceId | Nieprawidłowy identyfikator urządzenia usługi Azure AD | (device.deviceId - eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  Identyfikator obiektu | Identyfikator obiektu prawidłowy, usługa Azure AD |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
  systemLabels | dowolny ciąg dopasowania właściwości urządzenia usługi Intune do znakowania nowoczesnym miejscu pracy urządzenia | (device.systemLabels — zawiera "M365Managed")
+
+> [!Note]  
+> Dla deviceOwnership podczas tworzenia grup dynamicznych w przypadku urządzeń, należy ustawić wartość równa "Firma". W usłudze Intune własność urządzenia jest zamiast tego reprezentowana jako należące do firmy. Zapoznaj się [OwnerTypes](https://docs.microsoft.com/en-us/intune/reports-ref-devices#ownertypes) Aby uzyskać więcej informacji. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

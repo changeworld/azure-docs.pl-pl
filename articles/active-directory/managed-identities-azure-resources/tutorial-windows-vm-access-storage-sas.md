@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: ca9f2fa249a3d9f4387d0fa45e3c5874eea26120
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 2091fb75e07b9ed01394621af2d82c02f5598430
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625491"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721327"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Samouczek: Korzystanie z tożsamości zarządzanej przypisana przez system Windows VM na dostęp do usługi Azure Storage za pomocą poświadczeń sygnatury dostępu Współdzielonego
 
@@ -68,7 +68,7 @@ Usługa Azure Storage nie zapewnia natywnej obsługi uwierzytelniania usługi Az
 
 1. Przejdź z powrotem do nowo utworzonego konta magazynu.   
 2. Kliknij link **Kontrola dostępu (IAM)** w panelu po lewej stronie.  
-3. Kliknij przycisk **+ Dodaj** w górnej części strony, aby dodać nowe przypisanie roli dla maszyny wirtualnej.
+3. Kliknij przycisk **+ Dodaj przypisanie roli** na górze strony Aby dodać nowe przypisanie roli maszyny wirtualnej
 4. Ustaw opcję **Rola** na „Współautor konta magazynu” w prawej części strony.  
 5. Na kolejnej liście rozwijanej ustaw opcję **Przypisz dostęp do** na zasób „Maszyna wirtualna”.  
 6. Następnie upewnij się, że odpowiednia subskrypcja znajduje się na liście rozwijanej **Subskrypcja**, po czym ustaw opcję **Grupa zasobów** na wartość „Wszystkie grupy zasobów”.  

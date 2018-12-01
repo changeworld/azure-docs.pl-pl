@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 025e447995d302c24ab2a7d1c8668857cb47ffdd
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 10648551728e4f3cb41b82433e4cd0d442f9daeb
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42059138"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679260"
 ---
 # <a name="auto-provisioning-concepts"></a>Pojęcia automatycznej aprowizacji
 
@@ -64,6 +64,33 @@ Poniższy diagram zawiera Podsumowanie ról i sekwencji operacji podczas aprowiz
 > [!NOTE]
 > Opcjonalnie, producent można również wykonać operacji "Rejestrowanie tożsamości urządzenia", przy użyciu interfejsów API usługi aprowizacji urządzeń (zamiast przy użyciu operatora). Szczegółowe omówienie tej sekwencjonowania i nie tylko zobacz [Zero touch rejestracji urządzeń w usłudze wideo usługi Azure IoT](https://youtu.be/cSbDRNg72cU?t=2460) (rozpoczyna się od znacznika 41:00)
 
+## <a name="roles-and-azure-accounts"></a>Role i kont platformy Azure
+
+Jak każda rola jest mapowany na konto platformy Azure jest zależny od scenariusza, a istnieje kilka scenariuszy, które mogą być wykonywane. Typowe wzorce poniżej należy zapewnić ogólną wiedzą na temat jak role zazwyczaj są mapowane na konto platformy Azure.
+
+#### <a name="chip-manufacturer-provides-security-services"></a>Producenta udostępnia usługi zabezpieczeń
+
+W tym scenariuszu producenta zarządza zabezpieczeń dla klientów o jeden poziom. Ten scenariusz może preferowane przez tych klientów jeden poziom, nie ma do zarządzania zabezpieczeniami szczegółowe. 
+
+Producent wprowadza zabezpieczeń do sprzętowych modułów zabezpieczeń (HSM). To zabezpieczeń mogą obejmować producenta, uzyskiwania kluczy, certyfikaty, itp. z potencjalnym klientom, którzy mają już wystąpień usługi DPS i konfiguracji grup rejestracji. Producent może również wygenerować informacji o zabezpieczeniach dla swoich klientów.
+
+W tym scenariuszu mogą istnieć dwa konta platformy Azure zaangażowanych:
+
+- **Konto #1**: prawdopodobnie współużytkowane przez role operatora i dla deweloperów w pewnym stopniu. Ta strona zakupić od producenta mikroukładami modułu HSM. Te moduły są wskazywał wystąpienia usługi DPS skojarzone z kontem nr 1. Za pomocą rejestracji punktu dystrybucji ta strona może dzierżawić urządzenia do wielu klientów poziomu drugiego przez ponowne skonfigurowanie ustawień rejestracji urządzeń w usłudze DPS. Ta strona może być konieczne centra IoT Hub przydzielone dla użytkowników końcowych systemów zaplecza do połączenia interfejsem z w celu uzyskania dostępu do danych telemetrycznych z urządzenia itp. W tym drugim przypadku drugiego konta nie mogą być potrzebne.
+
+- **Konto #2**: użytkownicy końcowi, poziom dwóch klientów mogą mieć własne centra IoT Hub. Strona skojarzonej z punktami tylko 1 konta dzierżawy urządzenia poprawne Centrum na tym koncie. Ta konfiguracja wymaga usługi DPS i IoT hubs zawierający linki między kontami platformy Azure, które może odbywać się przy użyciu szablonów usługi Azure Resource Manager.
+
+#### <a name="all-in-one-oem"></a>W jednym OEM
+
+Producent może być "OEM w jednym", gdy będą potrzebne na koncie jednego producenta. Producent obsługuje zabezpieczenia i Inicjowanie obsługi administracyjnej typu end to end.
+
+Producent może dostarczyć oparte na chmurze aplikacji klientów, którzy zakupią urządzeń. Ta aplikacja będzie interfejs z usługą IoT Hub, przydzielany przez producenta.
+
+Automaty lub zautomatyzowane kawy reprezentują przykłady w tym scenariuszu.
+
+
+
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 Może okazać się przydatne do zakładki w tym artykule jako punkt odniesienia, podczas pracy swój sposób za pomocą odpowiedniej automatycznej aprowizacji przewodników Szybki Start. 
@@ -71,7 +98,7 @@ Może okazać się przydatne do zakładki w tym artykule jako punkt odniesienia,
 Rozpocznij, wykonując "Konfigurowanie automatycznego aprowizowania" Szybki Start najlepiej odpowiadającą Preferencje narzędzia do zarządzania, przeprowadzi Cię przez fazy "Konfiguracja usługi":
 
 - [Konfigurowanie automatycznego aprowizowania za pomocą wiersza polecenia platformy Azure](quick-setup-auto-provision-cli.md)
-- [Konfigurowanie automatycznego aprowizowania za pomocą witryny Azure Portal](quick-setup-auto-provision.md)
+- [Konfigurowanie automatycznego aprowizowania za pomocą witryny Azure portal](quick-setup-auto-provision.md)
 - [Konfigurowanie automatycznego aprowizowania za pomocą szablonu usługi Resource Manager](quick-setup-auto-provision-rm.md)
 
 Następnie przejdź do przewodnika Szybki Start "Auto aprowizowanie symulowanego urządzenia", pasujące swoje mechanizm zaświadczania urządzenia i usługi Device Provisioning Service SDK/języka ustawionego preferencji. W tym przewodniku Szybki Start opisano fazy "Rejestrowanie urządzeń" i "urządzenia, Rejestracja i konfiguracja": 

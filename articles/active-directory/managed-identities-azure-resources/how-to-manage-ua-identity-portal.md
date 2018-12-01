@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 2f2f338f7c4ddb885bc909f49815783e616b94c8
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: d54820acf8742ad2f95e8cc8527d9e252ffe3c30
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300459"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720138"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Utwórz listę, usuń lub przypisać rolę do przypisanych przez użytkownika tożsamości zarządzanej przy użyciu witryny Azure portal
 
@@ -69,18 +69,18 @@ Aby usunąć przypisanych przez użytkownika tożsamości zarządzanej, Twoje ko
 
 ![Usuń przypisanych przez użytkownika z tożsamości zarządzanej](./media/how-to-manage-ua-identity-portal/delete-user-assigned-managed-identity-portal.png)
 
-## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>Przypisywanie roli do zarządzanych tożsamości przypisanych przez użytkownika
+## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>Przypisywanie roli do zarządzanych tożsamości przypisanych przez użytkownika 
 
 Aby przypisać rolę do zarządzanych tożsamości przypisanych przez użytkownika, Twoje konto musi [Administrator dostępu użytkowników](/azure/role-based-access-control/built-in-roles#user-access-administrator) przypisania roli.
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure, aby wyświetlić listę zarządzanych tożsamości przypisanych przez użytkownika.
 2. W polu wyszukiwania wpisz *tożsamości zarządzanych*, a w obszarze usługi, kliknij przycisk **tożsamości zarządzanych**.
 3. Zwracana jest lista tożsamości przypisanych przez użytkownika zarządzanego dla Twojej subskrypcji.  Wybierz tożsamość zarządzanego przypisanego przez użytkownika, którą chcesz przypisać rolę.
-4. Wybierz **kontrola dostępu (IAM)** , a następnie wybierz **Dodaj**.
+4. Wybierz **kontrola dostępu (IAM)** , a następnie wybierz **Dodaj przypisanie roli**.
 
    ![Start przypisanych przez użytkownika z tożsamości zarządzanej](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
 
-5. W bloku Dodawanie uprawnień, skonfiguruj następujące wartości, a następnie kliknij przycisk **Zapisz**:
+5. W bloku Dodawanie przypisania roli skonfiguruj następujące wartości, a następnie kliknij przycisk **Zapisz**:
    - **Rola** -rolę do przypisania
    - **Przypisz dostęp do** — zasobów, aby przypisać użytkownik przypisany tożsamości zarządzanej
    - **Wybierz** — element członkowski, aby przypisać dostęp

@@ -9,16 +9,15 @@ ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: mbullwin
-ms.openlocfilehash: 313be519662570debdd7c78a43bbfe7c27e63296
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 59052a2f0f2fbaa898502073f27b23185026e45e
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344634"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724421"
 ---
 # <a name="application-insights-overview-dashboard"></a>Pulpit nawigacyjny aplikacji — omówienie szczegółowe informacje
 
@@ -34,7 +33,7 @@ Nowy pulpit nawigacyjny przeglądu teraz uruchamia się domyślnie:
 
 Wybór zakresu czasu został uproszczony, aby za pomocą prostego interfejsu jednym kliknięciem.
 
-![Zakres czasu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-03.png)
+![Przedział czasu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-03.png)
 
 Ogólna wydajność została znacznie zwiększona. Masz jednym kliknięciem dostęp do popularnych funkcji, takich jak **wyszukiwania** i **analizy**. Każda domyślna dynamiczne aktualizowanie kafelka kluczowy wskaźnik wydajności zapewnia wgląd w odpowiedniej funkcji usługi Application Insights. Aby dowiedzieć się więcej na temat nie powiodło się wybierz opcję żądania **błędów** w obszarze **zbadaj** nagłówka:
 

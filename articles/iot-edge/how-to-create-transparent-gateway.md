@@ -4,16 +4,16 @@ description: Używanie usługi Azure IoT Edge urządzenia rolę przezroczystej b
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2018
+ms.date: 11/29/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a867122aef5dd9d2152bca3ac10c11459ffc03f5
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 55968393ff64d9eed1f5b384094a77d0d169dc5d
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568475"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681198"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy
 
@@ -258,7 +258,11 @@ Możesz sprawdzić, które moduły są uruchomione na urządzeniu za pomocą pol
 6. W **szablon przeglądu** wybierz opcję **przesyłania**.
 
 ## <a name="route-messages-from-downstream-devices"></a>Routing komunikatów z urządzeń podrzędne
-Komunikaty wysyłane z urządzeń podrzędne, podobnie jak komunikaty wysyłane przez moduły można kierować do środowiska uruchomieniowego usługi IoT Edge. Pozwala na przeprowadzanie analiz w module uruchomiona na bramie przed wysłaniem danych do chmury. Poniżej trasy będzie służyć do wysyłania komunikatów z urządzenia podrzędnego o nazwie `sensor` z nazwą modułu `ai_insights`.
+Komunikaty wysyłane z urządzeń podrzędne, podobnie jak komunikaty wysyłane przez moduły można kierować do środowiska uruchomieniowego usługi IoT Edge. Pozwala na przeprowadzanie analiz w module uruchomiona na bramie przed wysłaniem danych do chmury. 
+
+Obecnie sposobem, w który trasy wiadomości wysyłanych przez urządzenia podrzędnego jest różnicując je na wiadomości wysłane przez moduły. Komunikaty wysyłane przez wszystkie moduły zawierają właściwość systemu o nazwie **connectionModuleId** , ale nie obsługują komunikaty wysyłane przez urządzenia podrzędnego. Aby wykluczyć wszystkie komunikaty, które zawierają tę właściwość systemu, można użyć klauzuli WHERE trasy. 
+
+Poniżej trasy będzie służyć do wysyłania wiadomości z dowolnego urządzenia podrzędnego do nazwy modułu `ai_insights`.
 
 ```json
 {
@@ -269,7 +273,7 @@ Komunikaty wysyłane z urządzeń podrzędne, podobnie jak komunikaty wysyłane 
 }
 ```
 
-Aby uzyskać więcej informacji na temat routingu wiadomości zobacz [budowy modułu](./module-composition.md).
+Aby uzyskać więcej informacji na temat routingu wiadomości zobacz [wdrażać moduły i trasy ustanowić](./module-composition.md#declare-routes).
 
 [!INCLUDE [iot-edge-extended-ofline-preview](../../includes/iot-edge-extended-offline-preview.md)]
 

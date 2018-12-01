@@ -1,5 +1,5 @@
 ---
-title: Zatwierdzone dystrybucje systemu Linux | Dokumentacja firmy Microsoft
+title: Dystrybucje systemu Linux zalecanych dla na platformie Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o systemie Linux w dystrybucjach zatwierdzone na platformie Azure, takich jak wskazówki dla Ubuntu, CentOS, Oracle i SUSE.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: szark
-ms.openlocfilehash: b39ae6b5546e9504b9f37504c486c941ab034399
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3c904dadcb01dc889b159dff9ce1b9114db8103e
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250003"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681810"
 ---
-# <a name="linux-on-distributions-endorsed-by-azure"></a>System Linux na dystrybucje zalecane dla platformy Azure
+# <a name="linux-distributions-endorsed-on-azure"></a>Dystrybucje systemu Linux zalecanych dla na platformie Azure
 Etap to udostępnienie obrazów systemu Linux w witrynie Azure Marketplace. Współpracujemy z wieloma społecznościami systemu Linux, aby dodać jeszcze więcej pozycji do listy dystrybucyjnej zatwierdzone. W międzyczasie dystrybucji, które nie są dostępne w portalu Marketplace, zawsze Przenoszenie własnych Linux postępując zgodnie ze wskazówkami w temacie [tworzenie i przekazywanie wirtualnego dysku twardego zawierającego system operacyjny Linux](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
 
 ## <a name="supported-distributions-and-versions"></a>Obsługiwane dystrybucje i wersje

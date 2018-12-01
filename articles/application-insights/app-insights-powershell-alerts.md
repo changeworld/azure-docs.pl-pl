@@ -9,16 +9,15 @@ ms.assetid: 05d6a9e0-77a2-4a35-9052-a7768d23a196
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: 2a5717f95e5e40fe04f4fa22eaedf168539e20f3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 01ba8b6d9ebef5d79b660638d60d5b745c624786
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309233"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725390"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Ustawianie alertów w usłudze Application Insights przy użyciu programu PowerShell
 Można zautomatyzować konfigurację [alerty](app-insights-alerts.md) w [usługi Application Insights](app-insights-overview.md).

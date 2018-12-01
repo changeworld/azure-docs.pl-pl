@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: 9d0cb566ffb8fbec4b99b0f0eeca79b21d1b0dde
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 2c5e99c16ed6ae0df9af4783fb6431edcbb6f100
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335133"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725407"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugowanie migawek wyjątków w aplikacjach .NET
 
@@ -202,7 +201,7 @@ Właściciele subskrypcji należy przypisać `Application Insights Snapshot Debu
 
 1. Przejdź do zasobu usługi Application Insights w witrynie Azure portal.
 1. Kliknij przycisk **kontrola dostępu (IAM)**.
-1. Kliknij przycisk **+ Dodaj** przycisku.
+1. Kliknij przycisk **+ Dodaj przypisanie roli** przycisku.
 1. Wybierz **Application Insights Snapshot Debugger** z **role** listy rozwijanej.
 1. Wyszukaj, a następnie wprowadź nazwę użytkownika do dodania.
 1. Kliknij przycisk **Zapisz** przycisk, aby dodać użytkownika do roli.

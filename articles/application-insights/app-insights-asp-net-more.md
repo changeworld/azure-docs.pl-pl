@@ -9,16 +9,15 @@ ms.assetid: 7ec10a2d-c669-448d-8d45-b486ee32c8db
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: a1244076efe1c920a23f29de9d25ab6845747fe4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 48232402ee091d6e41381f54cbfa3276cefc47ac
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245855"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682235"
 ---
 # <a name="more-telemetry-from-application-insights"></a>Więcej funkcji telemetrii z usługi Application Insights
 Po utworzeniu [dodawane usługi Application Insights do kodu ASP.NET](app-insights-asp-net.md), istnieje kilka kwestii, które można zrobić, aby uzyskać jeszcze więcej funkcji telemetrii. 

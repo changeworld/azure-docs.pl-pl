@@ -13,37 +13,37 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 12/01/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 57a3d5fc50c2278b34fddbfba61b12b0d81a33ed
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 1eea38a5a360d8ab12aa4ff6dac7161828ec1c72
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424531"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52683000"
 ---
-# <a name="v20-protocols---oauth-20--openid-connect"></a>w wersji 2.0 protokołów: OAuth 2.0 i OpenID Connect
+# <a name="v20-protocols---oauth-20-and-openid-connect"></a>w wersji 2.0 protokołów: OAuth 2.0 i OpenID Connect
 
-Punkt końcowy v2.0 można używać usługi Azure AD dla tożsamości as-a-service za pomocą ze standardowych protokołów uwierzytelniania OpenID Connect i OAuth 2.0. Gdy usługa jest zgodny ze standardami, może to być niewielkich różnic między implementacjami dwóch tych protokołów. W tym miejscu informacje będą przydatne, jeśli istnieje możliwość pisania kodu przez bezpośrednie wysyłanie i obsługa protokołu HTTP żądania lub 3 biblioteki typu open source innych firm, a nie przy użyciu jednej z naszych [Otwórz źródło biblioteki](reference-v2-libraries.md).
+Punktu końcowego v2.0, można użyć usługi Azure Active Directory (Azure AD) dla tożsamości as-a-service za pomocą ze standardowych protokołów uwierzytelniania OpenID Connect i OAuth 2.0. Gdy usługa jest zgodny ze standardami, może to być niewielkich różnic między implementacjami dwóch tych protokołów. W tym miejscu informacje będą przydatne, jeśli istnieje możliwość pisania kodu przez bezpośrednie wysyłanie i obsługa żądań HTTP lub użyć innej biblioteki typu open source, a nie przy użyciu jednej z naszych [bibliotek typu open-source](reference-v2-libraries.md).
 
 > [!NOTE]
-> Nie wszystkie scenariusze usługi Azure Active Directory i funkcje są obsługiwane przez punkt końcowy w wersji 2.0. Aby ustalić, należy użyć punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](active-directory-v2-limitations.md).
+> Nie wszystkie scenariusze usługi Azure AD systemu Azure i funkcje są obsługiwane przez punkt końcowy w wersji 2.0. Aby ustalić, należy użyć punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](active-directory-v2-limitations.md).
 
 ## <a name="the-basics"></a>Podstawy
 
-W prawie wszystkie przepływy OAuth i OpenID Connect istnieją cztery strony związane z programu exchange:
+W prawie wszystkie przepływy protokołu OAuth 2.0 i OpenID Connect istnieją cztery strony związane z programu exchange:
 
 ![Role uwierzytelniania OAuth 2.0](../../media/active-directory-v2-flows/protocols_roles.png)
 
-* **Serwera autoryzacji** jest punktem końcowym v2.0. Jest odpowiedzialny za zapewnienie tożsamości użytkownika, przyznawania odbieranie prawa dostępu do zasobów i wydawania tokenów. Jest także znana jako dostawcy tożsamości — obsługuje bezpieczne nic wspólnego z informacji o użytkowniku, ich dostęp i relacje zaufania między stronami w przepływie.
-* **Właściciel zasobu** jest zwykle przez użytkownika końcowego. Jest to strona, która jest właścicielem danych i zasilania, aby umożliwić firmom dostęp do danych lub zasobów.
-* **Klienta OAuth** aplikacja, identyfikowane przez jego identyfikator aplikacji. Zazwyczaj jest to strona, która wchodzi w interakcje użytkownika końcowego z, a żądania tokenów z serwera autoryzacji. Klient musi otrzymać uprawnienia dostępu do zasobu przez właściciela zasobów.
+* **Serwera autoryzacji** jest punktem końcowym v2.0 i odpowiada za zagwarantowanie, tożsamość użytkownika, przyznawania i odbieranie prawa dostępu do zasobów i wydawania tokenów. Serwer autoryzacji, znany także jako dostawcy tożsamości — bezpieczną obsługę nic wspólnego z informacji o użytkowniku, ich dostęp i relacje zaufania między stronami w przepływie.
+* **Właściciel zasobu** jest zazwyczaj użytkownika końcowego. To strona, która jest właścicielem danych i zasilania, aby umożliwić firmom dostęp do tych danych lub zasobu.
+* **Klienta OAuth** aplikacja, identyfikowane przez jego identyfikator aplikacji. Klient uwierzytelniania OAuth jest zazwyczaj innych firm, które użytkownik końcowy korzysta z, a żądania tokenów z serwera autoryzacji. Klient musi otrzymać uprawnienia dostępu do zasobu przez właściciela zasobów.
 * **Serwer zasobów** jest, gdzie znajduje się zasób lub danych. Zaufany serwer autoryzacji do bezpiecznego uwierzytelniania i autoryzacji klienta OAuth i używa access_tokens elementu nośnego, aby upewnić się, że można udzielić dostępu do zasobu.
 
 ## <a name="app-registration"></a>Rejestracja aplikacji
-Każda aplikacja, która korzysta z punktu końcowego v2.0 będzie muszą być zarejestrowani w [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) przed jej mogą wchodzić w interakcje przy użyciu uwierzytelniania OAuth lub OpenID Connect. Proces rejestracji aplikacji będzie zbierać i przypisywanie kilka wartości do aplikacji:
+Każda aplikacja, która korzysta z punktu końcowego v2.0 musi być zarejestrowana w [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) lub za pomocą nowego **rejestracje aplikacji (wersja zapoznawcza)** środowiska w [witryny Azure portal](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) przed mogą współdziałać, za pomocą uwierzytelniania OAuth lub OpenID Connect. Proces rejestracji aplikacji będzie zbierać i przypisać kilka wartości do swojej aplikacji:
 
 * **Identyfikator aplikacji** , który jednoznacznie identyfikuje aplikację
 * A **identyfikator URI przekierowania** lub **identyfikator pakietu** który może służyć do kierowania odpowiedzi z powrotem do aplikacji
@@ -64,16 +64,16 @@ Gdzie `{tenant}` może mieć jedną z czterech różnych wartości:
 
 | Wartość | Opis |
 | --- | --- |
-| `common` |Umożliwia użytkownikom osobistych kont Microsoft i konto służbowe z usługi Azure Active Directory, aby zalogować się do aplikacji. |
-| `organizations` |Umożliwia tylko użytkownicy z konto służbowe z usługi Azure Active Directory, aby zalogować się do aplikacji. |
-| `consumers` |Umożliwia tylko użytkownicy z osobistych kont Microsoft (MSA), aby zalogować się do aplikacji. |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` |Umożliwia tylko użytkownicy z konto służbowe z określonego dzierżawy usługi Azure Active Directory, aby zalogować się do aplikacji. Przyjazna nazwa domeny dzierżawy usługi Azure AD albo identyfikator guid dzierżawy może służyć. |
+| `common` | Pozwala użytkownikom z osobistych kont Microsoft i konto służbowe z usługi Azure AD, aby zalogować się do aplikacji. |
+| `organizations` | Umożliwia tylko użytkownicy z konto służbowe z usługi Azure AD, aby zalogować się do aplikacji. |
+| `consumers` | Umożliwia tylko użytkownicy z osobistych kont Microsoft (MSA), aby zalogować się do aplikacji. |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` | Umożliwia tylko użytkownicy z kontami służbowe z określonej usługi Azure AD dzierżawy, aby zalogować się do aplikacji. Przyjazna nazwa domeny dzierżawy usługi Azure AD albo identyfikator GUID dzierżawy może służyć. |
 
-Aby uzyskać więcej informacji na temat sposobu interakcji z tymi punktami końcowymi wybierz poniżej typ danej aplikacji.
+Aby dowiedzieć się, jak korzystać z tych punktów końcowych, wybierz typ danej aplikacji w [protokołów](#protocols) sekcji i skorzystaj z linków, aby uzyskać więcej informacji.
 
 ## <a name="tokens"></a>Tokeny
 
-Implementacja v2.0 OAuth 2.0 i OpenID Connect, należy zwiększone użycie tokenów elementu nośnego, łącznie z tokenów elementu nośnego reprezentowane jako tokenów Jwt. Token elementu nośnego jest tokenem zabezpieczającym uproszczone, która udziela dostępu "bearer" do chronionego zasobu. W tym sensie "bearer" to każda strona, która może powodować tokenu. Chociaż strona muszą najpierw zostać uwierzytelnione za pomocą usługi Azure AD, aby otrzymać token elementu nośnego, jeśli nie podejmuje kroki wymagane do zabezpieczania token w transmisji i przechowywania, można przechwycony i używane przez niezamierzone innych firm. Podczas gdy niektóre tokeny zabezpieczające mają wbudowany mechanizm uniemożliwia ich użycie przez osoby nieupoważnione, tokenów elementu nośnego nie mają ten mechanizm i musi być transportowane bezpiecznego kanału, takie jak transport layer security (HTTPS). Jeśli token elementu nośnego jest przekazywane w zabezpieczeniu, ataków typu man-in środkowej atak może służyć przez złośliwa strona do uzyskania tokenu i użyć jej do nieautoryzowanego dostępu do chronionego zasobu. Te same zasady zabezpieczeń stosowane, gdy przechowywania lub buforowanie tokenów elementu nośnego do późniejszego użycia. Zawsze upewnij się, że Twoja aplikacja przesyła i przechowuje tokenów elementu nośnego w bezpieczny sposób. Aby uzyskać więcej zagadnienia dotyczące zabezpieczeń na tokenów elementu nośnego, zobacz [RFC 6750 sekcji 5](https://tools.ietf.org/html/rfc6750).
+Implementacja v2.0 OAuth 2.0 i OpenID Connect, należy zwiększone użycie tokenów elementu nośnego, łącznie z tokenów elementu nośnego reprezentowane jako tokenów Jwt. Token elementu nośnego jest tokenem zabezpieczającym uproszczone, która udziela dostępu "bearer" do chronionego zasobu. W tym sensie "bearer" to każda strona, która może powodować tokenu. Chociaż strona muszą najpierw zostać uwierzytelnione za pomocą usługi Azure AD, aby otrzymać token elementu nośnego, jeśli nie podejmuje kroki wymagane do zabezpieczania token w transmisji i przechowywania, można przechwycony i używane przez niezamierzone innych firm. Podczas gdy niektóre tokeny zabezpieczające mają wbudowany mechanizm uniemożliwia ich użycie przez osoby nieupoważnione, tokenów elementu nośnego nie mają ten mechanizm i musi być transportowane bezpiecznego kanału, takie jak transport layer security (HTTPS). Jeśli token elementu nośnego jest przekazywane w zabezpieczeniu, złośliwa strona umożliwia atak typu man-in--middle uzyskania tokenu i użyć jej do nieautoryzowanego dostępu do chronionego zasobu. Te same zasady zabezpieczeń stosowane, gdy przechowywania lub buforowanie tokenów elementu nośnego do późniejszego użycia. Zawsze upewnij się, że Twoja aplikacja przesyła i przechowuje tokenów elementu nośnego w bezpieczny sposób. Aby uzyskać więcej zagadnienia dotyczące zabezpieczeń na tokenów elementu nośnego, zobacz [RFC 6750 sekcji 5](https://tools.ietf.org/html/rfc6750).
 
 Dalsze szczegóły różnego rodzaju tokeny używane w punkcie końcowym v2.0 jest dostępna w [odwołania do tokenu punktu końcowego v2.0](v2-id-and-access-tokens.md).
 
@@ -82,7 +82,7 @@ Dalsze szczegóły różnego rodzaju tokeny używane w punkcie końcowym v2.0 je
 Gdy wszystko będzie gotowe wyświetlić niektóre przykładowe żądania, wprowadzenie do jednej z poniższych samouczków. Każdy z nich odnosi się do scenariusza określonego uwierzytelniania. Jeśli potrzebujesz pomocy przy ustaleniu, czyli przepływ odpowiednie dla Ciebie, zapoznaj się z [typy aplikacji, które można skompilować przy użyciu v2.0](v2-app-types.md).
 
 * [Tworzenie aplikacji mobilnych i natywnych przy użyciu protokołu OAuth 2.0](v2-oauth2-auth-code-flow.md)
-* [Tworzenie aplikacji sieci web za pomocą Open ID Connect](v2-protocols-oidc.md)
+* [Tworzenie aplikacji sieci web z OpenID Connect](v2-protocols-oidc.md)
 * [Tworzenie aplikacji jednostronicowej przy użyciu protokołu OAuth 2.0 niejawny przepływ](v2-oauth2-implicit-grant-flow.md)
-* [Tworzenie demonów i realizowania innych procesów po stronie serwera przy użyciu przepływu poświadczeń klienta w wersji 2.0 OAuth](v2-oauth2-client-creds-grant-flow.md)
+* [Tworzenie demonów i realizowania innych procesów po stronie serwera przy użyciu przepływu poświadczeń klienta OAuth 2.0](v2-oauth2-client-creds-grant-flow.md)
 * [Uzyskiwanie tokenów w interfejsie web API za pomocą protokołu OAuth 2.0 w imieniu użytkownika z usługi Flow](v2-oauth2-on-behalf-of-flow.md)

@@ -10,16 +10,15 @@ keywords: Usługa Azure backup server; można chronić obciążenia; Tworzenie k
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: 5092a677bcbeac179e26fa0591b6a1cfbc3263d4
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 14379d82b4b60c0ea555388ac61c9c7b8fbe9e4f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576701"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721443"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalowanie składnika Azure Backup Server w usłudze Azure Stack
 
@@ -327,11 +326,11 @@ Po sprawdzeniu stanu łączność platformy Azure i subskrypcji platformy Azure,
 
 | Stan łączności | Subskrypcja platformy Azure | Tworzenie kopii zapasowej na platformie Azure | Tworzenie kopii zapasowej dysku | Przywracanie z platformy Azure | Przywracanie z dysku |
 | --- | --- | --- | --- | --- | --- |
-| Połączono |Aktywne |Dozwolone |Dozwolone |Dozwolone |Dozwolone |
-| Połączono |Wygaśnięcie |Zatrzymano |Zatrzymano |Dozwolone |Dozwolone |
+| Połączono |Aktywne |Dopuszczeni |Dopuszczeni |Dopuszczeni |Dopuszczeni |
+| Połączono |Wygaśnięcie |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
 | Połączono |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Punkty odzyskiwania zatrzymane, a usługa Azure usunięte |Zatrzymano |
-| Utraty łączności > 15 dni |Aktywne |Zatrzymano |Zatrzymano |Dozwolone |Dozwolone |
-| Utraty łączności > 15 dni |Wygaśnięcie |Zatrzymano |Zatrzymano |Dozwolone |Dozwolone |
+| Utraty łączności > 15 dni |Aktywne |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
+| Utraty łączności > 15 dni |Wygaśnięcie |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
 | Utraty łączności > 15 dni |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Punkty odzyskiwania zatrzymane, a usługa Azure usunięte |Zatrzymano |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Odzyskiwanie z utraty łączności

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 13ba4d774cbc347830c32385ba4927a0df687159
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6170b69d213470b1f5b7e75c9b102e5e07c09209
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035474"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682896"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Przekazuj strumienie zadania i stan zadania z usługi Automation do usługi Log Analytics
 
@@ -182,4 +182,4 @@ Usługa log Analytics zapewnia większą widoczność operacyjną do automatyzac
 * Aby dowiedzieć się więcej na temat do tworzenia różnych zapytań wyszukiwania i przeglądania dzienników zadań usługi Automation z usługą Log Analytics, zobacz [przeszukiwanie dzienników w usłudze Log Analytics](../log-analytics/log-analytics-log-searches.md).
 * Aby dowiedzieć się, jak utworzyć i pobierać dane wyjściowe i komunikaty o błędach z elementów runbook, zobacz [elementu Runbook dane wyjściowe i komunikaty](automation-runbook-output-and-messages.md).
 * Aby dowiedzieć się więcej o wykonywaniu elementów runbook, sposobie monitorowania zadań elementów runbook i innych szczegółach technicznych, zobacz [Track a runbook job](automation-runbook-execution.md) (Śledzenie zadania elementu runbook).
-* Aby dowiedzieć się więcej na temat usługi Log Analytics i źródłach zbierania danych, zobacz [Azure zbieranie danych magazynu w usłudze Log Analytics — omówienie](../log-analytics/log-analytics-azure-storage.md).
+* Aby dowiedzieć się więcej na temat usługi Log Analytics i źródłach zbierania danych, zobacz [Azure zbieranie danych magazynu w usłudze Log Analytics — omówienie](../azure-monitor/platform/collect-azure-metrics-logs.md).

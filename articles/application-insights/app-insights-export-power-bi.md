@@ -9,16 +9,15 @@ ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6e19735f604fdcd6d6642814e776fd9987d11fde
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4a30e562b04a3414a1305604a521e0d659753142
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499500"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720409"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Źródło danych usługi Power BI z usługi Application Insights
 [Usługa Power BI](http://www.powerbi.com/) jest zestaw narzędzi biznesowej, która pomaga analizować dane i dziel się spostrzeżeniami. Zaawansowane pulpity nawigacyjne są dostępne na każdym urządzeniu. Można połączyć dane z wielu źródeł, takich jak zapytania usługi Analytics z [usługi Azure Application Insights](app-insights-overview.md).
@@ -52,18 +51,18 @@ Zainstaluj [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
     ![Zrzut ekranu programu Power BI Desktop, za pomocą edytora zaawansowanego wyróżniony](./media/app-insights-export-power-bi/power-bi-import-analytics-query.png)
 
-1. Aby zezwolić na dostęp do platformy Azure w usłudze Power BI, trzeba podać poświadczenia. Użyj **konta organizacyjnego** zalogować się przy użyciu konta Microsoft.
+5. Aby zezwolić na dostęp do platformy Azure w usłudze Power BI, trzeba podać poświadczenia. Użyj **konta organizacyjnego** zalogować się przy użyciu konta Microsoft.
    
     ![Zrzut ekranu z zapytania ustawień usługi Power BI, okno dialogowe](./media/app-insights-export-power-bi/power-bi-import-sign-in.png)
 
     Jeśli zachodzi potrzeba zweryfikowania poświadczeń, użyj **ustawienia źródła danych** polecenia menu w edytorze zapytań. Pamiętaj określić poświadczenia, których używasz na platformie Azure, która może się różnić od swoje poświadczenia dla usługi Power BI.
-2. Wybierz wizualizację dla zapytania, a następnie wybierz pola dla osi x, y i segmentacji wymiaru.
+6. Wybierz wizualizację dla zapytania, a następnie wybierz pola dla osi x, y i segmentacji wymiaru.
    
     ![Zrzut ekranu usługi Power BI Desktop Opcje wizualizacji](./media/app-insights-export-power-bi/power-bi-analytics-visualize.png)
-3. Publikowanie raportów do obszaru roboczego usługi Power BI chmury. Z tego miejsca można osadzić zsynchronizowanej wersji do innych stron sieci web.
+7. Publikowanie raportów do obszaru roboczego usługi Power BI chmury. Z tego miejsca można osadzić zsynchronizowanej wersji do innych stron sieci web.
    
     ![Zrzut ekranu programu Power BI Desktop z wyróżnionym przyciskiem publikowania](./media/app-insights-export-power-bi/publish-power-bi.png)
-4. Ręcznie odświeżyć raport w odstępach czasu lub skonfigurować zaplanowane odświeżanie na stronie opcji.
+8. Ręcznie odświeżyć raport w odstępach czasu lub skonfigurować zaplanowane odświeżanie na stronie opcji.
 
 ### <a name="export-a-funnel"></a>Wyeksportować lejka
 1. [Wprowadź lejku](usage-funnels.md).

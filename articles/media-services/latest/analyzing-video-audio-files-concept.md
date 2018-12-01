@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: 3af8aec6bb2fe08c4bd1ef65e4f272a6f85af50b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 6d2e87c50eba293df7c5130ea6bf192ed7f83277
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427434"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679821"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analizowanie plików audio i wideo
 
@@ -33,7 +33,8 @@ Usługa Media Services obsługuje obecnie następujące ustawienia analizatora w
 
 |**Nazwa ustawienia wstępnego**|**Scenariusz**|**Szczegóły**|
 |---|---|---|
-|**AudioAnalyzerPreset**|Analiza audio|Ustawienie wstępne stosuje zestaw wstępnie zdefiniowanych operacji analizy oparte na sztucznej Inteligencji, w tym transkrypcja mowy. Obecnie usługa ustawienia wstępnego obsługuje przetwarzania zawartości za pomocą pojedynczej ścieżki audio.<br/>Można określić język dla ładunku audio w danych wejściowych w formacie BCP 47 "region tagu języka" (na przykład "en US"). Listę obsługiwanych języków jest "en US", "en-GB", "es-MX", "pt-BR", "fr-FR", "ja-JP", "es-ES", "it-IT", "zh-CN". Jeśli języka nie jest określona lub jest ustawiona na wartość Null, zostanie zatrudnionych automatyczne wykrywanie języka. Funkcja wykrywania automatycznego języka obsługuje obecnie angielski, chiński, francuski, niemiecki, włoski, japoński, hiszpański, rosyjski i portugalski.|
+|**AudioAnalyzerPreset**|Analiza audio|Ustawienie wstępne stosuje zestaw wstępnie zdefiniowanych operacji analizy oparte na sztucznej Inteligencji, w tym transkrypcja mowy. Obecnie usługa ustawienia wstępnego obsługuje przetwarzania zawartości za pomocą pojedynczej ścieżki audio.<br/>Można określić język dla ładunku audio w danych wejściowych w formacie BCP 47 "region tagu języka" (na przykład "en US"). "en US", "en-GB", "es-ES", "es-MX",
+"fr-FR", "it-IT", "ja-JP", "pt-BR", "zh-CN", "de-DE", "ar — na przykład", "ru-RU", "hi-IN". Jeśli języka nie jest określona lub jest ustawiona na wartość Null, zostanie zatrudnionych automatyczne wykrywanie języka. Funkcja wykrywania automatycznego języka obsługuje obecnie angielski, chiński, francuski, niemiecki, włoski, japoński, hiszpański, rosyjski i portugalski. Funkcja wykrywania automatycznego działa najlepiej z nagrania audio, za pomocą wyraźnie przyspieszenie mowy. W przypadku niepowodzenia automatycznego wykrywania języka można znaleźć języka transkrypcji będzie powrotu do języka angielskiego.|
 |**VideoAnalyzerPreset**|Analiza audio i wideo|Wyodrębnia informacje (obszerne metadane) z audio i wideo, a następnie generuje plik formatu JSON. Można określić, czy mają zostać wyodrębnione audio insights podczas przetwarzania pliku wideo. Aby uzyskać więcej informacji, zobacz [analiza wideo](analyze-videos-tutorial-with-api.md).|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset

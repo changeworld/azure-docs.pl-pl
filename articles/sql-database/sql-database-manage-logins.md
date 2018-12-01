@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/07/2018
-ms.openlocfilehash: f2627aab2598a706e717e8e1d18fd2f8c944835c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 11/29/2018
+ms.openlocfilehash: 56a121e8b8f7f929b16a0c3507d45402ff586b96
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161475"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682677"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Kontrolowanie i udzielanie dostępu do bazy danych SQL Database i SQL Data Warehouse
 
@@ -28,7 +28,7 @@ Po przeprowadzeniu konfiguracji reguły zapory, możesz nawiązać połączenie 
 >  Ten temat dotyczy serwera Azure SQL i baz danych SQL Database i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database. 
 
 > [!TIP]
-> Aby zapoznać się z samouczkiem, zobacz [Zabezpieczanie usługi Azure SQL Database](sql-database-security-tutorial.md).
+> Aby zapoznać się z samouczkiem, zobacz [Zabezpieczanie usługi Azure SQL Database](sql-database-security-tutorial.md). W tym samouczku nie ma zastosowania do **wystąpienia zarządzanego Azure SQL Database**.
 
 ## <a name="unrestricted-administrative-accounts"></a>Konta z uprawnieniami administracyjnymi bez ograniczeń
 Istnieją dwa konta z uprawnieniami administracyjnymi (**Administrator serwera** i **Administrator usługi Active Directory**), które funkcjonują jako administratorzy. Aby zidentyfikować te konta administratora dla używanego serwera SQL, otwórz witrynę Azure Portal i przejdź do właściwości serwera SQL.
@@ -68,6 +68,10 @@ Aby zapoznać się z omówieniem tworzenia serwera, bazy danych i reguł zapory 
 
 
 ## <a name="additional-server-level-administrative-roles"></a>Dodatkowe role administracyjne na poziomie serwera
+
+>[!IMPORTANT]
+>Ta sekcja nie ma zastosowania do **wystąpienia zarządzanego Azure SQL Database** te role są specyficzne dla **usługi Azure SQL Database**.
+
 Oprócz ról administracyjnych na poziomie serwera omówionych wcześniej usługa SQL Database zawiera dwie ograniczone role administracyjne w bazie danych master, do których można dodać konta użytkowników, aby udzielić im uprawnień do tworzenia baz danych lub zarządzania identyfikatorami logowania.
 
 ### <a name="database-creators"></a>Kreatory bazy danych

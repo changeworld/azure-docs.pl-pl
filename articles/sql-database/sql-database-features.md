@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: d650e0d8b76af8d6bdef5aeadf821e3d8f6d1c79
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fd62e216f70c416cb152971d27d6a6e542d3a936
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241875"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680229"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porównanie funkcji: Azure SQL Database a baza danych programu SQL Server 
 
@@ -43,8 +43,8 @@ Poniższej tabeli przedstawiono główne funkcje programu SQL Server i zawiera i
 | [Automatyczne dostrajanie (wymuszanie planu)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Tak](sql-database-automatic-tuning.md)| [Tak](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) |
 | [Automatyczne dostrajanie (indeksów)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Tak](sql-database-automatic-tuning.md)| Nie |
 | [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) | Yes | Yes |
-| [Plik BACPAC (Eksportowanie)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Tak — zobacz [eksportowania bazy danych SQL](sql-database-export.md) | Nie |
-| [Plik BACPAC (importowanie)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Tak — zobacz [importu bazy danych SQL](sql-database-import.md) | Nie |
+| [Plik BACPAC (Eksportowanie)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Tak — zobacz [eksportowania bazy danych SQL](sql-database-export.md) | Yes |
+| [Plik BACPAC (importowanie)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Tak — zobacz [importu bazy danych SQL](sql-database-import.md) | Yes |
 | [Polecenia Kopia zapasowa](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | Nie, tylko inicjowanych przez system automatycznych kopii zapasowych — Zobacz [automatyczne kopie zapasowe](sql-database-automated-backups.md) | Inicjowanych przez system z automatycznie tworzonymi kopiami zapasowymi i użytkownik zainicjował kopie zapasowe tylko do kopiowania — zobacz [kopii zapasowej różnice](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Funkcje wbudowane](https://docs.microsoft.com/sql/t-sql/functions/functions) | Większość — Zobacz poszczególnych funkcji | Tak — zobacz [składowane, funkcje, wyzwala różnice](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
 | [Przechwytywanie zmian danych](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Nie | Yes |

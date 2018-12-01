@@ -1,5 +1,5 @@
 ---
-title: Jak dodać obiekty BLOB do obiektów w reprezentacji urządzeń cyfrowych platformy Azure | Dokumentacja firmy Microsoft
+title: Dodaj obiekty BLOB do obiektów w reprezentacji urządzeń cyfrowych platformy Azure | Dokumentacja firmy Microsoft
 description: Opis sposobu dodawania obiektów blob do obiektów w reprezentacji urządzeń cyfrowych platformy Azure
 author: kingdomofends
 manager: alinast
@@ -8,65 +8,65 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adgera
-ms.openlocfilehash: 0929a4a63eee35d21723c980887d6b4217898682
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 8a68ba35ddf7caacbf2339d87c5aeef80f470ba4
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688163"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725628"
 ---
-# <a name="how-to-add-blobs-to-objects-in-azure-digital-twins"></a>Jak dodać obiekty BLOB do obiektów w reprezentacji urządzeń cyfrowych platformy Azure
+# <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Dodaj obiekty BLOB do obiektów w reprezentacji urządzeń cyfrowych platformy Azure
 
-Obiekty BLOB są bez określonej struktury reprezentacje popularnych typów plików (takich jak dzienniki i obrazów). Obiekty BLOB zachować informacje o rodzaju danych, które reprezentują przy użyciu typu MIME (na przykład: "image/jpeg") i metadanych (nazwa, opis, typ itd.).
+Obiekty BLOB są bez określonej struktury reprezentacje popularnych typów plików, takich jak dzienniki i obrazy. Obiekty BLOB zachować informacje o jakiego rodzaju dane reprezentują przy użyciu typu MIME (na przykład: "image/jpeg") i metadanych (nazwa, opis, typ i tak dalej).
 
-Twins cyfrowych platformy Azure obsługuje dołączanie obiektów blob na urządzeniach, miejsca do magazynowania i użytkowników. Obiekty BLOB mogą reprezentować obraz profilu użytkownika, zdjęcia urządzenia, wideo, mapy lub dziennika.
+Platforma Azure obsługuje cyfrowego Twins dołączanie obiektów blob na urządzeniach, miejsca do magazynowania i użytkowników. Obiekty BLOB mogą reprezentować zdjęcie profilowe dla użytkownika, zdjęcia urządzenia, wideo, mapy lub dziennika.
 
 > [!NOTE]
 > W tym artykule założono:
 > * Czy wystąpienia jest poprawnie skonfigurowany do odbierania żądań interfejsu API zarządzania.
-> * Czy zostało prawidłowo uwierzytelnione za pomocą klienta REST wybraną.
+> * Aby poprawnie uwierzytelniono za pomocą klienta REST wybranych przez użytkownika.
 
 ## <a name="uploading-blobs-an-overview"></a>Przekazywanie obiektów blob: omówienie
 
-Wieloczęściowy żądania są używane do przekazywania obiektów blob do określonych punktów końcowych i ich odpowiednie funkcje.
+Wieloczęściowy żądań służy do przekazywania obiektów blob do określonych punktów końcowych i ich odpowiednie funkcje.
 
 > [!IMPORTANT]
-> Wieloczęściowy żądania wymagają trzy podstawowe informacje. Bliźniaki cyfrowych platformy Azure:
+> Wieloczęściowy żądania wymagają trzy informacje:
 > * A **Content-Type** nagłówka:
 >   * `application/json; charset=utf-8`
->   * `multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
-> * A **Content-Disposition**: `form-data; name="metadata"`.
-> * Zawartość pliku do przekazania.
+>   * `multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`
+> * A **Content-Disposition**: `form-data; name="metadata"`
+> * Zawartość pliku do przekazania
 >
-> Dokładnie **Content-Type** i **Content-Disposition** mogą się różnić w zależności od scenariusza użycia.
+> **Content-Type** i **Content-Disposition** informacje mogą się różnić w zależności od scenariusza użycia.
 
-Każde żądanie wieloczęściowego jest dzielony na wiele fragmentów. Wieloczęściowy żądań cyfrowego Twins zarządzania interfejsów API usługi Azure, są podzielone na **dwóch** (**2**) takich części:
+Wieloczęściowy żądań cyfrowego Twins zarządzania interfejsów API usługi Azure ma dwie części:
 
-1. Pierwsza część jest wymagana i zawiera metadane obiektu Blob, takich jak skojarzony typ MIME dla **Content-Type** i **Content-Disposition** powyżej.
+* Obiekt blob metadane, takie jak skojarzony typ MIME, jak pokazano na **Content-Type** i **Content-Disposition** informacji
 
-1. Druga część zawiera rzeczywistą zawartość obiektu Blob (bez określonej struktury zawartość pliku).  
+* Zawartość obiektu blob (bez określonej struktury zawartość pliku)  
 
-Żadna z dwóch części nie są wymagane dla **PATCH** żądań. Oba są wymagane dla **WPIS** lub operacji tworzenia.
+Żadna z dwóch części nie jest wymagana dla **PATCH** żądań. Oba są wymagane dla **WPIS** lub operacji tworzenia.
 
 ### <a name="blob-metadata"></a>Metadane obiektu blob
 
-Oprócz **Content-Type** i **Content-Disposition**, wieloczęściowego żądań, należy także określić poprawne treść kodu JSON. Treść kodu JSON, który można przesłać zależy od rodzaju wykonywanych operacji żądania HTTP.
+Oprócz **Content-Type** i **Content-Disposition**, wieloczęściowego żądań, należy określić prawidłowe treść kodu JSON. Treść kodu JSON, który można przesłać zależy od rodzaju operacji żądania HTTP, która jest wykonywana.
 
-Cztery główne schematów JSON używane są następujące:
+Są cztery główne schematów JSON:
 
-![Obiekty BLOB miejsca][1]
+![Schematów JSON][1]
 
-Te schematy modelu zostały szczegółowo opisane w pełnej w podanej dokumentacji struktury Swagger.
+Dokumentacja programu Swagger w tym artykule opisano te schematy modelu w szczegółach.
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
-Więcej informacji na temat, zapoznając się przy użyciu podanej dokumentacja [sposób używania struktury Swagger](./how-to-use-swagger.md).
+Dowiedz się więcej o używaniu dokumentację referencyjną, zapoznając się [sposób używania struktury Swagger](./how-to-use-swagger.md).
 
 ### <a name="examples"></a>Przykłady
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-Aby żądanie POST, która przekazuje plik tekstowy jako obiekt Blob i kojarzy ją z obszarem:
+Aby **WPIS** żądanie, która przekazuje plik tekstowy jako obiekt blob i kojarzy ją z obszarem:
 
 ```plaintext
 POST YOUR_MANAGEMENT_API_URL/spaces/blobs HTTP/1.1
@@ -97,10 +97,10 @@ This is my blob content. In this case, some text, but I could also be uploading 
 | --- | --- |
 | *USER_DEFINED_BOUNDARY* | Nazwa granice zawartości wieloczęściowej wiadomości |
 
-.NET z implementacją tych samych przekazywania obiektów Blob znajduje się poniżej za pomocą klasy [MultipartFormDataContent](https://docs.microsoft.com/dotnet/api/system.net.http.multipartformdatacontent):
+Poniższy kod jest implementacją .NET tego samego przekazywania obiektów blob, za pomocą klasy [MultipartFormDataContent](https://docs.microsoft.com/dotnet/api/system.net.http.multipartformdatacontent):
 
 ```csharp
-//Supply your metaData in a suitable format
+//Supply your metadata in a suitable format
 var multipartContent = new MultipartFormDataContent("USER_DEFINED_BOUNDARY");
 
 var metadataContent = new StringContent(JsonConvert.SerializeObject(metaData), Encoding.UTF8, "application/json");
@@ -116,15 +116,15 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 ## <a name="api-endpoints"></a>Punkty końcowe interfejsu API
 
-Poniżej podano wskazówki podstawowe punkty końcowe i ich określone funkcje.
+Poniższe sekcje przeprowadzą Cię przez podstawowe punkty końcowe i ich funkcje.
 
 ### <a name="devices"></a>Urządzenia
 
-Obiekty BLOB można dołączyć do urządzeń. Obraz poniżej (przedstawiające strukturę Swagger dokumentacja interfejsów API zarządzania) określa związane z urządzeniami punkty końcowe interfejsu API do użycia obiektów Blob oraz wszelkie parametry ścieżki wymagane do przekazania do nich:
+Obiekty BLOB można dołączyć do urządzenia. Na poniższej ilustracji przedstawiono strukturę Swagger dokumentacja interfejsów API zarządzania. Określa związane z urządzeniami punkty końcowe interfejsu API do użycia obiektów blob oraz wszelkie parametry ścieżki wymagane do przekazania do nich.
 
 ![Obiekty BLOB urządzenia][2]
 
-Na przykład aby zaktualizować lub tworzenie obiektu Blob, a następnie Dołącz obiekt Blob do urządzenia, poprawki wysłaniu żądania do:
+Na przykład, zaktualizuj lub Utwórz obiekt blob i dołączyć obiekt blob do urządzenia, aby **PATCH** limit czasu żądania:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
@@ -132,25 +132,25 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 
 | Parametr | Zamień na |
 | --- | --- |
-| *YOUR_BLOB_ID* | Żądany identyfikator obiektu Blob |
+| *YOUR_BLOB_ID* | Identyfikator żądanego obiektu blob |
 
-Liczba pomyślnych żądań zwróci obiekt DeviceBlob JSON w odpowiedzi. DeviceBlobs spełniać następujące schematu JSON:
+Liczba pomyślnych żądań zwracają **DeviceBlob** obiekt JSON w odpowiedzi. **DeviceBlob** obiekty są zgodne z następującego schematu JSON:
 
 | Atrybut | Typ | Opis | Przykłady |
 | --- | --- | --- | --- |
-| **DeviceBlobType** | Ciąg | Kategorii obiektów Blob, który można dołączyć do urządzenia | `Model` i `Specification` |
-| **DeviceBlobSubtype*** | Ciąg | Podkategoria obiektów Blob, który jest bardziej szczegółowe niż DeviceBlobType | `PhysicalModel`, `LogicalModel`, `KitSpecification`, i `FunctionalSpecification` |
+| **DeviceBlobType** | Ciąg | Kategorii obiektów blob, który można dołączyć do urządzenia | `Model` i `Specification` |
+| **DeviceBlobSubtype** | Ciąg | Podkategoria obiektów blob, który jest bardziej szczegółowe niż **DeviceBlobType** | `PhysicalModel`, `LogicalModel`, `KitSpecification`, i `FunctionalSpecification` |
 
 > [!TIP]
-> Użyj powyższej tabeli do obsługi danych pomyślnie zwrócone żądanie.
+> Użyj tej tabeli do obsługi danych pomyślnie zwrócone żądanie.
 
 ### <a name="spaces"></a>Miejsca do magazynowania
 
-Obiekty BLOB mogą również dołączać do miejsca do magazynowania. Na poniższej ilustracji przedstawiono wszystkie punkty końcowe interfejsu API miejsca odpowiedzialny za obsługę obiektów blob oraz wszelkie parametry ścieżki do przekazania do nich:
+Obiekty BLOB można także dołączyć do miejsca do magazynowania. Poniższa ilustracja zawiera listę wszystkich miejsca na punkty końcowe interfejsu API odpowiedzialny za obsługę obiektów blob. Wyświetla ona wszystkie parametry ścieżki do przekazania do tych punktów końcowych.
 
 ![Obiekty BLOB miejsca][3]
 
-Na przykład aby zwrócić obiekt Blob dołączonych do miejsca, żądania GET do:
+Na przykład aby zwrócić obiekt blob dołączonych do miejsca, należy **UZYSKAĆ** limit czasu żądania:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
@@ -158,24 +158,24 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 
 | Parametr | Zamień na |
 | --- | --- |
-| *YOUR_BLOB_ID* | Żądany identyfikator obiektu Blob |
+| *YOUR_BLOB_ID* | Identyfikator żądanego obiektu blob |
 
-Wprowadzanie żądanie PATCH tego samego punktu końcowego pozwoli opis metadanych aktualizacji i utworzyć nową wersję obiektu Blob. Żądanie HTTP jest wykonywane przy użyciu metody PATCH oraz wszelkie wymagane metadane i wieloczęściowych danych formularza.
+Tworzenie **PATCH** żądania do tego samego punktu końcowego umożliwia opis metadanych aktualizacji i Utwórz nową wersję obiektu blob. Żądanie HTTP jest wysyłane za pośrednictwem **PATCH** metody, oraz wszelkie wymagane metadane i wieloczęściowych danych formularza.
 
-Operacje zakończone powodzeniem, zwróci SpaceBlob, który jest zgodny ze schematem następujące i może służyć do pracy z danymi zwrócone:
+Operacje zakończone powodzeniem zwracają **SpaceBlob** obiekt, który jest zgodny ze schematem następujące. Służy do pracy z danymi zwrócone.
 
 | Atrybut | Typ | Opis | Przykłady |
 | --- | --- | --- | --- |
-| **SpaceBlobType** | Ciąg | Kategoria obiektu Blob, dołączonego do miejsca | `Map` i `Image` |
-| **SpaceBlobSubtype** | Ciąg | Podkategoria obiektów Blob, który jest bardziej szczegółowe niż SpaceBlobType | `GenericMap`, `ElectricalMap`, `SatelliteMap`, i `WayfindingMap` |
+| **SpaceBlobType** | Ciąg | Kategoria obiektu blob, dołączonego do miejsca | `Map` i `Image` |
+| **SpaceBlobSubtype** | Ciąg | Podkategoria obiektów blob, który jest bardziej szczegółowe niż **SpaceBlobType** | `GenericMap`, `ElectricalMap`, `SatelliteMap`, i `WayfindingMap` |
 
 ### <a name="users"></a>Użytkownicy
 
-Obiekty BLOB mogą być dołączane do modeli użytkownika (powiedzieć, skojarz obraz profilu). Na poniższej ilustracji przedstawiono odpowiednie punkty końcowe interfejsu API użytkowników i wszystkie parametry wymagane ścieżki, takich jak `id`:
+Obiekty BLOB można dołączyć do modeli użytkownika (na przykład, aby skojarzyć obraz profilu). Na poniższej ilustracji przedstawiono końcowych użytkownika odpowiedniego interfejsu API oraz wszelkie parametry wymagane ścieżki, takich jak `id`:
 
 ![Obiekty BLOB użytkownika][4]
 
-Na przykład aby pobrać obiekt Blob powiązany z użytkownikiem, żądania GET z wszelkie wymagane dane formularza do:
+Na przykład można pobrać obiektu blob dołączonych do użytkownika, należy **UZYSKAĆ** żądania o formularzu wymaganych danych do:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
@@ -183,18 +183,18 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 
 | Parametr | Zamień na |
 | --- | --- |
-| *YOUR_BLOB_ID* | Żądany identyfikator obiektu Blob |
+| *YOUR_BLOB_ID* | Identyfikator żądanego obiektu blob |
 
-Zwrócone dane JSON (UserBlobs) będzie spełniać następujące modele JSON:
+Zwrócone dane JSON (**UserBlob** obiektów) jest zgodny z następujących modeli JSON:
 
 | Atrybut | Typ | Opis | Przykłady |
 | --- | --- | --- | --- |
-| **UserBlobType** | Ciąg | Kategoria obiektów Blob, który można dołączyć do użytkownika | `Image` i `Video` |
-| **UserBlobSubtype** |  Ciąg | Podkategoria obiektów Blob, który jest bardziej szczegółowe niż UserBlobType | `ProfessionalImage`, `VacationImage`, i `CommercialVideo` |
+| **UserBlobType** | Ciąg | Kategoria obiektów blob, który można dołączyć do użytkownika | `Image` i `Video` |
+| **UserBlobSubtype** |  Ciąg | Podkategoria obiektów blob, który jest bardziej szczegółowe niż **UserBlobType** | `ProfessionalImage`, `VacationImage`, i `CommercialVideo` |
 
 ## <a name="common-errors"></a>Typowe błędy
 
-Nie w tym poprawny nagłówek informacje:
+Typowym błędem nie jest wraz z informacjami nagłówka poprawny:
 
 ```JSON
 {
@@ -207,7 +207,7 @@ Nie w tym poprawny nagłówek informacje:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na temat podane Azure cyfrowego Twins Swagger dokumentacji, przeczytaj [sposób używania cyfrowego Swagger Twins](how-to-use-swagger.md).
+Aby dowiedzieć się więcej na temat dokumentacji struktury Swagger bliźniaki cyfrowych platformy Azure, przeczytaj [użycia Azure cyfrowego Twins Swagger](how-to-use-swagger.md).
 
 <!-- Images -->
 [1]: media/how-to-add-blobs/blob-models.PNG

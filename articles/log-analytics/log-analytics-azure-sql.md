@@ -5,19 +5,18 @@ services: log-analytics
 ms.service: log-analytics
 ms.subservice: performance
 ms.custom: ''
-ms.devlang: na
 ms.topic: conceptual
 author: danimir
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/26/2018
 ms.author: v-daljep
-ms.openlocfilehash: 57faa347b2733ebf65757b02ee9395f94776cf10
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b2c8ed30e26f5408123fe77606ddfec67479bcad
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635394"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726155"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorowanie usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics (wersja zapoznawcza)
 
@@ -29,7 +28,7 @@ Za pomocą metryk, które są zbierane za pomocą rozwiązania, można utworzyć
 
 Praktyczne omówienie na temat korzystania z rozwiązania Azure SQL Analytics i typowe scenariusze użycia Zobacz osadzone wideo:
 
->[!VIDEO https://youtu.be/j-NDkN4GIzg]
+>[!VIDEO https://www.youtube.com/embed/j-NDkN4GIzg]
 >
 
 ## <a name="connected-sources"></a>Połączone źródła
@@ -38,8 +37,8 @@ Usługa Azure SQL Analytics to w chmurze, tylko do monitorowania rozwiązania po
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| [Diagnostyka Azure](log-analytics-azure-storage.md) | **Tak** | Danych metryk i dzienników platformy Azure są wysyłane do usługi Log Analytics bezpośrednio przez platformę Azure. |
-| [Konto usługi Azure Storage](log-analytics-azure-storage.md) | Nie | Usługa log Analytics nie odczytać danych z konta magazynu. |
+| [Diagnostyka Azure](../azure-monitor/platform/collect-azure-metrics-logs.md) | **Tak** | Danych metryk i dzienników platformy Azure są wysyłane do usługi Log Analytics bezpośrednio przez platformę Azure. |
+| [Konto usługi Azure Storage](../azure-monitor/platform/collect-azure-metrics-logs.md) | Nie | Usługa log Analytics nie odczytać danych z konta magazynu. |
 | [Agenci dla systemu Windows](../azure-monitor/platform/agent-windows.md) | Nie | Agentów bezpośrednich Windows nie są używane przez to rozwiązanie. |
 | [Agenci dla systemu Linux](log-analytics-quick-collect-linux-computer.md) | Nie | Bezpośredni agenci dla systemu Linux nie są używane przez to rozwiązanie. |
 | [Grupa zarządzania programu System Center Operations Manager](log-analytics-om-agents.md) | Nie | Bezpośrednie połączenie agenta programu Operations Manager do usługi Log Analytics nie jest używana przez to rozwiązanie. |

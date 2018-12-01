@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 10/27/2017
+ms.date: 11/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: caa1b4b3bf1f9b8fb1a34bd58dde04f13fbc6c88
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 367ecd4534a2221e996e706f8b4426ea6f70f213
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614570"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680501"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń za pomocą usługi Azure Monitor
 Wiele zespołów należy ściśle regulowania dostępu do danych monitorowania i ustawień. Na przykład, jeśli posiadasz elementy członkowskie zespołu, którzy pracują wyłącznie na temat monitorowania (pracowników działu pomocy technicznej, inżynierom devops) lub korzystając z dostawcą usługi zarządzanej, można przyznać im dostęp do danych monitorowania tylko jednocześnie ograniczając możliwość tworzenia, modyfikowania, lub Usuń zasoby. W tym artykule pokazano, jak szybko wbudowana rola RBAC monitorowania są stosowane do użytkownika na platformie Azure lub utworzyć własne niestandardowe rolę dla użytkownika, który musi mieć ograniczone uprawnienia monitorowania. Następnie omówiono zagadnienia dotyczące zabezpieczeń na zasoby dotyczące usługi Azure Monitor i jak można ograniczyć dostęp do danych, które zawierają.
@@ -86,7 +86,7 @@ Jeśli powyższe wbudowanych ról nie dokładne potrzeb Twojego zespołu, możes
 | Microsoft.Insights/MetricDefinitions/Read |Przeczytaj definicje metryk (lista dostępnych typów metryki dla zasobu). |
 | Microsoft.Insights/Metrics/Read |Odczytać metryki dla zasobu. |
 | Microsoft.Insights/Register/Action |Zarejestruj dostawcę zasobów usługi Azure Monitor. |
-| Microsoft.Insights/ScheduledQueryRules/[Read, Write, Delete] |Alerty dziennika odczytu/zapisu/usuwania usługi Application Insights. |
+| Microsoft.Insights/ScheduledQueryRules/[Read, Write, Delete] |Odczyt/zapis/usuwanie dziennika alertów w usłudze Azure Monitor. |
 
 
 
@@ -154,7 +154,7 @@ New-AzureRmRoleDefinition -Role $role
 > 
 
 ### <a name="limiting-access-to-monitoring-related-event-hubs"></a>Ograniczanie dostępu do centrów zdarzeń związanych z monitorowaniem
-Podobny wzorzec można wykonać za pomocą usługi event hubs, ale najpierw należy utworzyć dedykowane reguły autoryzacji nasłuchiwania. Jeśli chcesz udzielić dostępu do aplikacji, która musi tylko do nasłuchiwania centra zdarzeń związanych z monitorowaniem, wykonaj następujące czynności:
+Podobny wzorzec można wykonać za pomocą usługi event hubs, ale najpierw należy utworzyć dedykowane reguły autoryzacji nasłuchiwania. Jeśli użytkownik chce udzielić, uzyskać dostęp do aplikacji, która musi tylko do nasłuchiwania centra zdarzeń związanych z monitorowaniem, wykonaj następujące czynności:
 
 1. Utwórz zasady dostępu współdzielonego na koncentratory zdarzeń, które zostały utworzone dla przesyłania strumieniowego danych monitorowania z tylko oświadczenia nasłuchiwania. Można to zrobić w portalu. Na przykład może być wywołasz ją "monitoringReadOnly." Jeśli to możliwe należy udzielić tego klucza bezpośrednio do użytkownika i pomiń następny krok.
 2. Jeśli użytkownik musi można pobrać klucza usługi ad-hoc, Przyznaj użytkownikowi akcję klucze listy dla tego Centrum zdarzeń. To jest również dla użytkowników, którzy muszą mieć możliwość ustawienia diagnostyczne lub profil dziennika do strumienia usługi event hubs. Na przykład można utworzyć regułę RBAC:

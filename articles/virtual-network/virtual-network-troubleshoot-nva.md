@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 2a0f6b75c540f319848805e8a9bda7b166d5d709
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 13cec39278577a818ef43f1215fd2e6653f15ed2
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138663"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678444"
 ---
 #  <a name="network-virtual-appliance-issues-in-azure"></a>Problemy z urządzenia wirtualnego sieci na platformie Azure
 
 Możesz napotkać maszyny Wirtualnej lub problemy z połączeniem sieci VPN i błędy podczas korzystania z innego podmiotu z wirtualnego urządzenia sieciowego (WUS) w systemie Microsoft Azure. Ten artykuł zawiera podstawowe kroki, aby pomóc podczas weryfikowania podstawowych wymagań platformy Azure w przypadku konfiguracji urządzenia WUS.
 
-Pomoc techniczna dla urządzeń WUS innych firm i ich integracji z platformą Azure jest świadczona przez producenta urządzenia WUS. Jeśli masz połączenie lub problemu z routingiem, która obejmuje NVA należy [skontaktuj się z dostawcą urządzenia WUS](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) bezpośrednio.
+Pomoc techniczna dla urządzeń WUS innych firm i ich integracji z platformą Azure jest świadczona przez producenta urządzenia WUS. 
+
+> [!NOTE]
+> Jeśli masz połączenie lub problemu z routingiem, która obejmuje NVA należy [skontaktuj się z dostawcą urządzenia WUS](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) bezpośrednio.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -37,6 +40,7 @@ Pomoc techniczna dla urządzeń WUS innych firm i ich integracji z platformą Az
 - Tras zdefiniowanych przez użytkownika w podsieci sieci wirtualnej, które kierować ruch z urządzenia WUS
 - Routing tabel i reguły urządzenia WUS (na przykład z NIC1 do NIC2)
 - Śledzenie na kartach interfejsu sieciowego urządzenia WUS, aby sprawdzić, odbierania i wysyłania ruchu sieciowego
+- Podczas korzystania z wersji Standard i publicznego adresu IP musi być sieciowa grupa zabezpieczeń utworzona i jawne reguły zezwalające na ruch jest kierowany do urządzenia NVA.
 
 ## <a name="basic-troubleshooting-steps"></a>Podstawowe kroki rozwiązywania problemów
 
@@ -73,6 +77,8 @@ Korzystanie z programu PowerShell
           Execute: $nic2 #and check for an expected output:
           EnableIPForwarding   : True
           NetworkSecurityGroup : null
+
+**Sprawdź dla sieciowej grupy zabezpieczeń, korzystając z IP Pubilc w warstwie standardowa jednostka SKU** podczas korzystania z wersji Standard i publiczny adres IP musi być sieciowa grupa zabezpieczeń utworzona i jawne reguły zezwalające na ruch do urządzenia WUS.
 
 **Sprawdź, czy można kierować ruch do urządzenia NVA**
 

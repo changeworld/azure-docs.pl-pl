@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 2ece5700965018a8a9a98e16a1577309a909b7b7
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: cfee8295fc344b1210010a463612fe7d10de280d
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334997"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682915"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Jak Wykres wydajności dzięki usłudze Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Usługa Azure Monitor dla maszyn wirtualnych zawiera zbiór wykresy wydajności przeznaczonych wykonuje kilka kluczowych wskaźników wydajności (KPI), aby ułatwić ustalenie, jak dobrze maszynę wirtualną. Wykresy pokazują wykorzystanie zasobów w określonym czasie, dzięki czemu możesz określić wąskie gardła, anomalie, lub przełącz się do perspektywy, wyświetlanie listy każdej maszyny w celu wyświetlenia wykorzystania zasobów, w oparciu o wybraną metryką. Dostępnych jest wiele elementów, należy wziąć pod uwagę podczas rozwiązywania problemów związanych z wydajnością, koncentruje się usługi Azure Monitor dla maszyn wirtualnych w systemie operacyjnym dyskowe widoczne za pośrednictwem procesora, pamięci, kart sieciowych i dysków. Wydajność uzupełniają funkcję monitorowania kondycji i pomaga ujawnić problemy, które wskazują możliwe awarii składników, dostrajanie pomocy technicznej i optymalizacji do osiągnięcia wydajności oraz obsługi planowania pojemności.  
@@ -33,7 +33,7 @@ Z usługi Azure Monitor wydajności funkcji zawiera widok maszyn wirtualnych wie
 
 ![Widok listy N pierwszych wydajności insights maszyny Wirtualnej](./media/vminsights-performance/vminsights-performance-aggview-01.png)
 
-Na **pierwszych N wykresy** kartę, jeśli masz więcej niż jeden obszar roboczy usługi Log Analytics, wybierz obszar roboczy z rozwiązania z włączoną **obszaru roboczego** selektor w górnej części strony. **Grupy** selektor zwróci subskrypcji, grupy zasobów [grup komputerów](../../log-analytics/log-analytics-computer-groups.md)i zestawy skalowania maszyn wirtualnych powiązanych z wybranym obszarem roboczym, którego można użyć, aby dokładniej przefiltrować komputerów wyniki przedstawione w wykresów na tej stronie i na innych stronach. Wybór tylko ma zastosowanie do funkcji, wydajności i nie przeniosą się do kondycji lub mapy.  
+Na **pierwszych N wykresy** kartę, jeśli masz więcej niż jeden obszar roboczy usługi Log Analytics, wybierz obszar roboczy z rozwiązania z włączoną **obszaru roboczego** selektor w górnej części strony. **Grupy** selektor zwróci subskrypcji, grupy zasobów [grup komputerów](../../azure-monitor/platform/computer-groups.md)i zestawy skalowania maszyn wirtualnych powiązanych z wybranym obszarem roboczym, którego można użyć, aby dokładniej przefiltrować komputerów wyniki przedstawione w wykresów na tej stronie i na innych stronach. Wybór tylko ma zastosowanie do funkcji, wydajności i nie przeniosą się do kondycji lub mapy.  
 
 Domyślnie wykresy pokazują ostatnich 24 godzin. Za pomocą **TimeRange** selektor, możesz wyszukać zakresy czasu historycznych maksymalnie 30 dni, aby pokazać, jak wyglądał wydajności w przeszłości.   
 

@@ -9,16 +9,15 @@ ms.assetid: 0b2deb30-6ea8-4bc4-8ed0-26765b85149f
 ms.service: application-insights
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1a031ede814a963f25f1a3a3fc9725d9e5670a8e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: f5179730223609def5ddb0e45317c2f986584139
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824646"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680484"
 ---
 # <a name="monitor-azure-web-app-performance"></a>Monitorowanie wydajności aplikacji internetowej platformy Azure
 W witrynie [Azure Portal](https://portal.azure.com) możesz skonfigurować monitorowanie wydajności [aplikacji internetowych platformy Azure](../app-service/app-service-web-overview.md). [Usługa Azure Application Insights](app-insights-overview.md) umożliwia instrumentację aplikacji w celu wysyłania danych telemetrii do usługi Application Insights, gdzie są one przechowywane i analizowane. W usłudze tej można używać wykresów metryki i narzędzi wyszukiwania do ułatwiania diagnozowania problemów, zwiększania wydajności i oceny użycia.
@@ -43,9 +42,9 @@ Jeśli już masz uruchomioną aplikację internetową na platformie Azure, otrzy
 
     ![Instrumentacja aplikacji internetowej](./media/app-insights-azure-web-apps/create-resource.png)
 
-2. Wybierz utworzone zasobu **aktualizacja rozszerzenia usługi Application Insights dla aplikacji sieci web i wyboru** aby upewnić się, że rozszerzenie jest aktualne.
+2. Po określenie zasobu do użycia, możesz wybrać sposób usługi application insights do zbierania danych dla danej platformy dla aplikacji.
 
-     ![Sprawdź i zaktualizuj rozszerzenie witryny](./media/app-insights-azure-web-apps/check-and-update.png)
+    ![Wybierz opcje dla danej platformy](./media/app-insights-azure-web-apps/choose-options.png)
 
 3. **Zastosuj instrumentację aplikacji internetowej** po zainstalowaniu usługi Application Insights.
 
@@ -64,7 +63,7 @@ W razie potrzeby możesz później utworzyć aplikację za pomocą usługi Appli
 
 *Jak usunąć usługę Application Insights lub przełączyć się na wysyłanie do innego zasobu?*
 
-* Na platformie Azure otwórz blok sterowania aplikacji internetowej i w obszarze Narzędzia programistyczne otwórz pozycję **Rozszerzenia**. Usuń rozszerzenie usługi Application Insights. Następnie w obszarze Monitorowanie wybierz pozycję Application Insights i utwórz lub wybierz żądany zasób.
+* Na platformie Azure, otwórz blok sterowania aplikacji sieci web, a w obszarze Ustawienia, otwórz **usługi Application Insights**. Można wyłączyć usługi Application Insights, klikając **wyłączyć** u góry strony, lub wybierz nowy zasób w **zmienić zasób** sekcji.
 
 ## <a name="build-the-app-with-application-insights"></a>Skompiluj aplikację za pomocą usługi Application Insights
 Usługa Application Insights może zapewnić bardziej szczegółową telemetrię dzięki instalacji zestawu SDK w Twojej aplikacji. W szczególności możesz gromadzić dzienniki śledzenia, [zapisywać niestandardową telemetrię](app-insights-api-custom-events-metrics.md) i uzyskiwać bardziej szczegółowe raporty o wyjątkach.

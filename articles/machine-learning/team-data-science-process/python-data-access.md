@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 43812b68b10f9e4f8510d24cb08c8bb368b3b8f8
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: e81efb0a7977bbd50c63834f676b7cc75201dc68
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445773"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680689"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Dostęp do zestawów danych z językiem Python za pomocą biblioteki klienta Python usługi Azure Machine Learning
 Biblioteki klienta języka Python usługi Microsoft Azure Machine Learning w wersji zapoznawczej można włączyć bezpieczny dostęp do usługi Azure Machine Learning zestawów danych z lokalnego środowiska Python i umożliwia tworzenie i Zarządzanie zestawami danych w obszarze roboczym.
@@ -61,7 +61,7 @@ Jeśli masz zainstalowane na komputerze narzędzie git, można użyć narzędzia
 ## <a name="datasetAccess"></a>Fragmenty kodu Studio umożliwia dostęp do zestawów danych
 Biblioteki klienta Python zapewnia dostęp programistyczny do istniejących zestawów danych z eksperymentów, które zostały uruchomione.
 
-W interfejsie sieci web Studio można wygenerować fragmenty kodu, które zawierają wszystkie informacje potrzebne do pobierania i wykonywania deserializacji zestawów danych jako pandas DataFrame obiekty na swojej maszynie lokalizacji.
+W interfejsie sieci web Studio można wygenerować fragmenty kodu, które zawierają wszystkie informacje potrzebne do pobierania i wykonywania deserializacji zestawów danych jako pandas DataFrame obiekty na komputerze lokalnym.
 
 ### <a name="security"></a>Zabezpieczenia dostępu do danych
 Fragmenty kodu, podana przez Studio obejmuje korzystanie z biblioteki klienta Python, autoryzacji i identyfikator obszaru roboczego, na których token. Te zapewniają pełny dostęp do obszaru roboczego i muszą być chronione, takie jak hasła.

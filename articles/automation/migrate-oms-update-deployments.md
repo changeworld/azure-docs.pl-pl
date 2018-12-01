@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d0b380aa6046daa235098516a8c93d3ba72533a6
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: d2e99abfbc89d96f1dc5ca3c59789e13dd157a10
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42057559"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678954"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>Zmigruj swoje wdrożenia aktualizacji pakietu OMS na platformę Azure
 
@@ -43,7 +43,7 @@ W przyszłości możesz przejść bezpośrednio do witryny Azure portal w obszar
 
 ## <a name="recreate-existing-deployments"></a>Utwórz ponownie istniejące wdrożenia
 
-Wszystkie wdrożenia aktualizacji, utworzone w portalu pakietu OMS masz [zapisanego wyszukiwania](../log-analytics/log-analytics-computer-groups.md) znany także jako grupę komputerów, z taką samą nazwę jak wdrożenie aktualizacji, który istnieje. Zapisanego kryterium wyszukiwania zawiera listę komputerów, które zostały zaplanowane wdrożenie aktualizacji.
+Wszystkie wdrożenia aktualizacji, utworzone w portalu pakietu OMS masz [zapisanego wyszukiwania](../azure-monitor/platform/computer-groups.md) znany także jako grupę komputerów, z taką samą nazwę jak wdrożenie aktualizacji, który istnieje. Zapisanego kryterium wyszukiwania zawiera listę komputerów, które zostały zaplanowane wdrożenie aktualizacji.
 
 ![Zarządzanie aktualizacjami](media/migrate-oms-update-deployments/oms-deployment.png)
 
@@ -61,12 +61,12 @@ W przypadku maszyny do zaktualizowania wybrać zapisanego wyszukiwania, które s
 | --- | --- |
 |Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| Wybierz **Linux** lub **Windows**.|
-|Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybrać maszynę z listy rozwijanej i wybierz poszczególne maszyny. Jeśli wybierzesz **maszyn**, gotowości maszyny jest wyświetlany w **AKTUALIZUJ gotowość AGENTA** kolumny.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [grup komputerów w usłudze Log Analytics](../log-analytics/log-analytics-computer-groups.md) |
+|Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybrać maszynę z listy rozwijanej i wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../azure-monitor/platform/computer-groups.md) |
 |Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne. CentOS nie obsługuje to gotowe.|
 |Aktualizacje do wykluczenia|Wprowadź aktualizacje do wykluczenia. Windows, można wprowadzić w artykule KB bez **KB** prefiks. Dla systemu Linux wprowadź nazwę pakietu, lub użyć symbolu wieloznacznego.  |
 |Ustawienia harmonogramu|Wybierz godzinę rozpoczęcia, a następnie wybierz opcję **raz** lub **cyklicznie** cyklu.|| Okno obsługi |Liczba minut dla aktualizacji. Wartość nie może być mniejsza niż 30 minut lub więcej niż 6 godzin. |
 | Okno obsługi |Liczba minut dla aktualizacji. Wartość może nie być mniej niż 30 minut, a nie więcej niż 6 godzin |
-| Ponowne uruchomienie kontroli| Zaznaczenia prostokącie obsługi jest uruchamiany ponownie.</br>Dostępne są następujące opcje:</br>Ponowne uruchomienie komputera, jeśli jest to wymagane (ustawienie domyślne)</br>Zawsze wykonuj ponowny rozruch</br>Nigdy nie ponowny rozruch</br>Tylko ponowny rozruch — nie zostaną zainstalowane aktualizacje|
+| Ponowne uruchomienie kontroli| Zaznaczenia prostokącie obsługi jest uruchamiany ponownie.</br>Dostępne opcje:</br>Ponowne uruchomienie, jeśli jest to wymagane (ustawienie domyślne)</br>Zawsze uruchamiaj ponownie</br>Nigdy nie uruchamiaj ponownie</br>Tylko ponowne uruchomienie — aktualizacje nie zostaną zainstalowane|
 
 Kliknij przycisk **zaplanowane wdrożenia aktualizacji** Aby wyświetlić stan wdrożenia aktualizacji nowo utworzony.
 

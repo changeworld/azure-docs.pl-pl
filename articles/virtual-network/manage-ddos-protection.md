@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: jdial
-ms.openlocfilehash: 66b2930e06cef1a31602df3d358c78f42c8cd2cf
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f7d1b5774e41761c7c332b0b38371979ca9d30cd
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406368"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679685"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Zarządzanie Standard platformy Azure przed atakami DDoS Protection w witrynie Azure portal
 
@@ -158,7 +158,7 @@ Raporty ograniczania ryzyka ataków używa danych protokołu Netflow, które maj
 
     - **Zarchiwizuj na koncie magazynu**: dane są zapisywane na koncie usługi Azure Storage. Aby dowiedzieć się więcej na temat tej opcji, zobacz [archiwizowanie dzienników diagnostycznych](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Stream do usługi event hub**: umożliwia odbiorcy dziennika pobrać dzienniki przy użyciu usługi Azure Event Hub. Centra zdarzeń umożliwiają integrację z usługą Splunk lub innych systemów SIEM. Aby dowiedzieć się więcej na temat tej opcji, zobacz [Stream dzienników diagnostycznych do usługi event hub](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Wysyłanie do usługi Log Analytics**: zapisuje dzienniki na usługę Azure Log Analytics. Aby dowiedzieć się więcej na temat tej opcji, zobacz [zbieranie dzienników do użycia w usłudze Log Analytics](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Wysyłanie do usługi Log Analytics**: zapisuje dzienniki na usługę Azure Log Analytics. Aby dowiedzieć się więcej na temat tej opcji, zobacz [zbieranie dzienników do użycia w usłudze Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Oba raporty przyrostowych i po atak środki zaradcze zawierają następujące pola
 - Ataków
@@ -180,7 +180,7 @@ Dzienniki przepływu ograniczania ryzyka ataków umożliwiają przeglądanie por
 
     - **Zarchiwizuj na koncie magazynu**: dane są zapisywane na koncie usługi Azure Storage. Aby dowiedzieć się więcej na temat tej opcji, zobacz [archiwizowanie dzienników diagnostycznych](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Stream do usługi event hub**: umożliwia odbiorcy dziennika pobrać dzienniki przy użyciu usługi Azure Event Hub. Centra zdarzeń umożliwiają integrację z usługą Splunk lub innych systemów SIEM. Aby dowiedzieć się więcej na temat tej opcji, zobacz [Stream dzienników diagnostycznych do usługi event hub](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Wysyłanie do usługi Log Analytics**: zapisuje dzienniki na usługę Azure Log Analytics. Aby dowiedzieć się więcej na temat tej opcji, zobacz [zbieranie dzienników do użycia w usłudze Log Analytics](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Wysyłanie do usługi Log Analytics**: zapisuje dzienniki na usługę Azure Log Analytics. Aby dowiedzieć się więcej na temat tej opcji, zobacz [zbieranie dzienników do użycia w usłudze Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 1. Aby wyświetlić dane dzienników przepływów na pulpicie nawigacyjnym analizy usługi Azure, należy zaimportować przykładowy pulpit nawigacyjny z https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
 
 Dzienniki przepływów będzie zawierać następujące pola: 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 07/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: f091ba44a3170dcc4141829f2f4105d6e7993cdf
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: dcfbb7f3b1d110d4c1fdf22863d795c85152ec35
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035293"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725016"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Dostęp do klucza tajnego usługi Key Vault, podczas wdrażania usługi Azure Managed Applications
 
@@ -29,7 +29,7 @@ Gdy potrzebujesz przekazać wartość bezpieczną (na przykład hasło) jako par
 
    ![Wybierz zasady dostępu](./media/key-vault-access/select-access-policies.png)
 
-1. Wybierz **kliknij, aby wyświetlić zaawansowane zasady dostępu**.
+1. Wybierz pozycję **Kliknij, aby wyświetlić zaawansowane zasady dostępu**.
 
    ![Pokaż zaawansowane zasady dostępu](./media/key-vault-access/advanced.png)
 
@@ -43,7 +43,7 @@ Gdy potrzebujesz przekazać wartość bezpieczną (na przykład hasło) jako par
 
    ![Wybierz kontroli dostępu](./media/key-vault-access/access-control.png)
 
-1. Wybierz pozycję **Dodaj**.
+1. Wybierz **Dodaj przypisanie roli**.
 
    ![Wybieranie opcji dodawania](./media/key-vault-access/add-access-control.png)
 

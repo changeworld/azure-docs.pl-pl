@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7671a0a99e12463fcce5ff33fbcba7e8677dde05
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 91102b9fe57b2291ce1d1678b71b3a8b0b834864
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006198"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721973"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikacji, które mogą być używane w Active Directory B2C
 
@@ -26,7 +26,7 @@ Każda aplikacja, która używa usługi Azure AD B2C musi być zarejestrowana w 
 * **Identyfikator aplikacji** , który jednoznacznie identyfikuje aplikację.
 * A **adres URL odpowiedzi** który może służyć do kierowania odpowiedzi z powrotem do aplikacji.
 
-Każde żądanie wysłane do usługi Azure AD B2C określa **zasady**. Zasady regulują sposób działania usługi Azure AD. Można również użyć tych punktów końcowych do utworzenia zestawu funkcji środowiska użytkownika, które można w znacznym stopniu dostosowywać. Wspólne zasady obejmują rejestrację, logowanie i edycję profilu. Jeśli nie znasz tych zasad, przed wykonaniem dalszych czynności zapoznaj się z informacjami na temat [rozszerzonej platformy zasad](active-directory-b2c-reference-policies.md) usługi Azure AD B2C.
+Każde żądanie, które są wysyłane do usługi Azure AD B2C Określa **przepływ użytkownika**, czyli zasady, które kontrolują zachowanie usługi Azure AD. Można również użyć tych punktów końcowych do utworzenia zestawu funkcji środowiska użytkownika, które można w znacznym stopniu dostosowywać. Firma Microsoft zapewnia zestaw przepływy użytkownika ułatwiające konfigurowanie typowych zasad, w tym tworzenia nowych kont i logowanie i edycję profilu. Ale można również utworzyć własne zasady niestandardowe. Jeśli nie znasz tych zasad, przed wykonaniem dalszych czynności zapoznaj się z informacjami na temat [rozszerzonej platformy zasad](active-directory-b2c-reference-policies.md) usługi Azure AD B2C.
 
 Interakcja każdej aplikacji jest realizowana według następującego ogólnego schematu:
 

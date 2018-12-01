@@ -9,15 +9,15 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 9/24/2018
+ms.date: 11/29/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75b5fd2f586a9122aa1248ba88d7ceab59b13215
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 5b67f6bbb9ef2a8ee6bd42c89de56a0ff5a3024d
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269296"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724166"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB zestawu SDK języka Python dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -51,10 +51,28 @@ ms.locfileid: "48269296"
 
 ## <a name="release-notes"></a>Informacje o wersji
 
+### <a name="a-name302302"></a><a name="3.0.2"/>3.0.2
+* Dodano obsługę dla obiektów MultiPolygon typu danych
+* Naprawienie usterki w sesji przeczytać zasady ponawiania
+* Naprawienie usterki niepoprawne dopełnienie problemów podczas dekodowania ciągów 64 podstawowy
+
+### <a name="a-name301301"></a><a name="3.0.1"/>3.0.1
+* Naprawienie usterki w LocationCache
+* Logika ponawiania punktu końcowego naprawienie usterki
+* Naprawiono dokumentację
+
 ### <a name="a-name300300"></a><a name="3.0.0"/>3.0.0
 * Obsługa wielu regionów zapisy.
 * Namespace zmieniony na azure.cosmos.
 * Zmieniono nazwę kontenera i elementów, document_client zmieniona na cosmos_client kolekcji i dokumentu pojęcia. 
+
+### <a name="a-name233233"></a><a name="2.3.3"/>2.3.3
+* Dodano obsługę serwera proxy
+* Dodano obsługę Kanał informacyjny zmian do czytania
+* Dodano obsługę dla nagłówków limitu przydziału kolekcji
+* Poprawka dla dużych sesji tokenów problem
+* Poprawka dla ReadMedia interfejsu API
+* Poprawka w pamięci podręcznej zakres kluczy partycji
 
 ### <a name="a-name232232"></a><a name="2.3.2"/>2.3.2
 * Dodano obsługę domyślnego ponowień dotyczących problemów z połączeniem.
@@ -145,6 +163,9 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK są od
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [3.0.2](#3.0.2) |15 listopada 2018 r. |--- |
+| [3.0.1](#3.0.1) |04 października 2018 r. |--- |
+| [2.3.3](#2.3.3) |08 września 2018 r. |--- |
 | [2.3.2](#2.3.2) |08 maja 2018 r. |--- |
 | [2.3.1](#2.3.1) |21 grudnia 2017 r. |--- |
 | [2.3.0](#2.3.0) |10 listopada 2017 r. |--- |

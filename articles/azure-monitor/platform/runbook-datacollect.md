@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 87ceb682f35626c5bf468afd83a2f4a35901ef2b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 4cea2b7feb6d21a0566a4876414b2d75abc29959
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632351"
+ms.locfileid: "52681759"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Zbieranie danych w usłudze Log Analytics przy użyciu elementu runbook usługi Azure Automation
-Znacznej ilości danych w usłudze Log Analytics może zbierać z różnych źródeł, w tym [źródeł danych](../../azure-monitor/platform/agent-data-sources.md) na agentach, a także [dane zbierane z platformy Azure](../../log-analytics/log-analytics-azure-storage.md).  Istnieją scenariusze, chociaż wymagających zbierania danych, która nie jest dostępny za pośrednictwem tych standardowych źródeł.  W takich przypadkach można użyć [interfejsu API modułu zbierającego dane HTTP](../../log-analytics/log-analytics-data-collector-api.md) można zapisać danych do usługi Log Analytics za pomocą dowolnego klienta interfejsu API REST.  Typowe metodę w celu zbierania danych używa elementu runbook w usłudze Azure Automation.   
+Znacznej ilości danych w usłudze Log Analytics może zbierać z różnych źródeł, w tym [źródeł danych](../../azure-monitor/platform/agent-data-sources.md) na agentach, a także [dane zbierane z platformy Azure](../../azure-monitor/platform/collect-azure-metrics-logs.md).  Istnieją scenariusze, chociaż wymagających zbierania danych, która nie jest dostępny za pośrednictwem tych standardowych źródeł.  W takich przypadkach można użyć [interfejsu API modułu zbierającego dane HTTP](../../log-analytics/log-analytics-data-collector-api.md) można zapisać danych do usługi Log Analytics za pomocą dowolnego klienta interfejsu API REST.  Typowe metodę w celu zbierania danych używa elementu runbook w usłudze Azure Automation.   
 
 Ten samouczek przedstawia proces tworzenia i Planowanie elementu runbook w usłudze Azure Automation w celu zapisania danych do usługi Log Analytics.
 

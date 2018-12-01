@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 8cc05f02d97eac6bb24c4a0565df8c7335c5b33d
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 9ca8bb04748a1fd94c227627516be0e8ca83409d
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42447547"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679770"
 ---
 # <a name="sql-to-log-analytics-query-language-cheat-sheet"></a>SQL do ściągawka dotycząca języka zapytań usługi Log Analytics 
 

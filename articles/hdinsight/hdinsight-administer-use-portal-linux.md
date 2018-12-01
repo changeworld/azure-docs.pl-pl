@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: hrasheed
-ms.openlocfilehash: 77f1d0f9d1f9ad07b977750e7701b660781d63e5
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: c615188e5f198cb8707b12643e0942e8d8821983
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499377"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725186"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu witryny Azure portal
 
@@ -64,7 +64,7 @@ Podczas tworzenia klastra usługi HDInsight, należy określić subskrypcji plat
     1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
     2. Kliknij przycisk **grup zasobów** menu po lewej stronie, aby wyświetlić listę grup zasobów.
     3. Kliknij grupę zasobów, których chcesz użyć do tworzenia klastra usługi HDInsight.
-    4. Kliknij przycisk **kontrola dostępu (IAM)** i upewnij się, że użytkownik (lub należeć do grupy) ma co najmniej dostęp współautora do grupy zasobów.
+    4. Kliknij przycisk **kontrola dostępu (IAM)** i **przypisań ról**i upewnij się, że użytkownik (lub należeć do grupy) ma co najmniej dostęp współautora do grupy zasobów.
 
 Jeśli wystąpi błąd NoRegisteredProviderFound lub błąd MissingSubscriptionRegistration, zobacz [Rozwiązywanie typowych problemów wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md).
 
@@ -106,7 +106,7 @@ Jeśli wystąpi błąd NoRegisteredProviderFound lub błąd MissingSubscriptionR
 * **Ustawienia diagnozy**: ustawienia, na którym będą przechowywane metryki diagnostyki **pomoc techniczna i rozwiązywanie problemów**
     * **Usługa Resource health**: zobacz [Przegląd kondycji zasobów platformy Azure](../service-health/resource-health-overview.md).
     * **Nowe żądanie pomocy technicznej**: pozwala na tworzenie biletu pomocy technicznej za pomocą techniczną firmy Microsoft.
-
+    
 6. Kliknij przycisk **właściwości**:
 
     Właściwości są następujące:

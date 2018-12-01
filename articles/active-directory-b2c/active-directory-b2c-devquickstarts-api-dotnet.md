@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/14/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2e93a8340699d1fcf68c53baa87990e799bc933d
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3283e7b0e0b7e20d4b8522f08ab2460504fa355f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447591"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723435"
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C: tworzenie interfejsu API sieci Web platformy .NET
 
@@ -39,17 +39,17 @@ Następnie musisz utworzyć aplikację interfejsu API sieci Web w katalogu usłu
 * Wprowadź identyfikator aplikacji do **identyfikatora URI aplikacji**. Skopiuj cały **identyfikator URI aplikacji**. Będzie on potrzebny później.
 * Dodaj uprawnienia za pomocą menu **Opublikowane zakresy**.
 
-## <a name="create-your-policies"></a>Tworzenie zasad
+## <a name="create-your-user-flows"></a>Tworzyć przepływy użytkownika
 
-W usłudze Azure AD B2C każde działanie użytkownika jest definiowane przy użyciu [zasad](active-directory-b2c-reference-policies.md). Należy utworzyć zasady komunikacji z usługą Azure AD B2C. Zaleca się używanie połączonych zasad tworzenia/logowania, zgodnie z opisem w [artykule Informacje ogólne o zasadach](active-directory-b2c-reference-policies.md). Podczas tworzenia zasad należy pamiętać, aby:
+W usłudze Azure AD B2C każde działanie użytkownika jest definiowany przez [przepływ użytkownika](active-directory-b2c-reference-policies.md). Należy utworzyć przepływ użytkownika do komunikowania się z usługą Azure AD B2C. Firma Microsoft zaleca używanie przepływu połączone konta-dokonywania/logowania użytkownika, zgodnie z opisem w [artykule informacyjnym na temat przepływu użytkownika](active-directory-b2c-reference-policies.md). Gdy tworzysz przepływ użytkownika, należy koniecznie:
 
-* Wybrać wartość **Nazwa wyświetlana** i inne atrybuty tworzenia konta w zasadach.
-* Wybrać oświadczenia **Nazwa wyświetlana** i **Identyfikator obiektu** jako oświadczenia aplikacji dla wszystkich zasad. Można również wybrać inne oświadczenia.
-* Skopiować każdą utworzoną wartość **Nazwa** zasad. Nazwa zasad będzie potrzebna później.
+* Wybierz **nazwę wyświetlaną** i inne atrybuty rejestracji w przepływie użytkownika.
+* Wybierz **nazwę wyświetlaną** i **obiektu o identyfikatorze** jako oświadczenia aplikacji dla każdego przepływu użytkownika. Można również wybrać inne oświadczenia.
+* Kopiuj **nazwa** każdego przepływu użytkownika po jego utworzeniu. Przepływ użytkownika będą potrzebne później.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-Po pomyślnym utworzeniu zasad możesz rozpocząć tworzenie aplikacji.
+Po pomyślnym utworzeniu przepływu użytkownika możesz przystąpić do tworzenia aplikacji.
 
 ## <a name="download-the-code"></a>Pobieranie kodu
 
@@ -63,20 +63,20 @@ Po pobraniu przykładu kodu otwórz plik SLN programu Visual Studio, aby rozpocz
 
 ### <a name="update-the-azure-ad-b2c-configuration"></a>Aktualizowanie konfiguracji usługi Azure AD B2C
 
-Nasz przykład został skonfigurowany do używania zasad i identyfikatora klienta dzierżawy pokazowej. Jeśli chcesz użyć własnej dzierżawy, wykonaj następujące czynności:
+Nasz przykład został skonfigurowany do używania przepływy użytkownika i identyfikator klienta dzierżawy pokazowej. Jeśli chcesz użyć własnej dzierżawy, wykonaj następujące czynności:
 
 1. Otwórz plik `web.config` w projekcie `TaskService` i zastąp wartości
     * `ida:Tenant` nazwą dzierżawy
     * `ida:ClientId` identyfikatorem aplikacji interfejsu API sieci Web
-    * `ida:SignUpSignInPolicyId` nazwą zasady tworzenia konta/logowania
+    * `ida:SignUpSignInPolicyId` z nazwą przepływu użytkownika "Zarejestruj się lub zaloguj się"
 
 2. Otwórz plik `web.config` w projekcie `TaskWebApp` i zastąp wartości
     * `ida:Tenant` nazwą dzierżawy
     * `ida:ClientId` identyfikatorem aplikacji internetowej
     * `ida:ClientSecret` kluczem tajnym aplikacji internetowej
-    * `ida:SignUpSignInPolicyId` nazwą zasady tworzenia konta/logowania
-    * `ida:EditProfilePolicyId` nazwą zasady edycji profilu
-    * `ida:ResetPasswordPolicyId` nazwą zasady resetowania hasła
+    * `ida:SignUpSignInPolicyId` z nazwą przepływu użytkownika "Zarejestruj się lub zaloguj się"
+    * `ida:EditProfilePolicyId` z Twoją nazwą przepływ użytkownika "Edytuj profil"
+    * `ida:ResetPasswordPolicyId` z Twoją nazwą przepływ użytkownika "Resetuj hasło"
     * `api:ApiIdentifier` identyfikatorem URI aplikacji
 
 
@@ -169,7 +169,7 @@ public class TasksController : ApiController
 
 ### <a name="get-user-information-from-the-token"></a>Uzyskiwanie informacji o użytkowniku z tokenu
 
-`TasksController` przechowuje zadania w bazie danych. Z każdym zadaniem jest skojarzony użytkownik będący jego „właścicielem”. Właściciel jest identyfikowany za pomocą **identyfikatora obiektu** użytkownika. (Dlatego trzeba było dodać identyfikator obiektu jako oświadczenie aplikacji we wszystkich zasadach).
+`TasksController` przechowuje zadania w bazie danych. Z każdym zadaniem jest skojarzony użytkownik będący jego „właścicielem”. Właściciel jest identyfikowany za pomocą **identyfikatora obiektu** użytkownika. (Dlatego trzeba było dodać identyfikator obiektu jako aplikacja oświadczeń we wszystkich swoich przepływów użytkownika.)
 
 ```CSharp
 // Controllers\TasksController.cs
@@ -204,6 +204,6 @@ public IEnumerable<Models.Task> Get()
 
 Na koniec skompiluj i uruchom oba projekty: `TaskWebApp` i `TaskService`. Utwórz kilka zadań na liście użytkownika i zwróć uwagę na to, że zostają one zachowane w interfejsie API nawet po zatrzymaniu i ponownym uruchomieniu klienta.
 
-## <a name="edit-your-policies"></a>Edytowanie zasad
+## <a name="edit-your-user-flows"></a>Edytować swoje przepływy użytkownika
 
-Po zabezpieczeniu interfejsu API za pomocą usługi Azure AD B2C możesz eksperymentować z zasadą tworzenia konta/logowania i sprawdzać skutki (lub ich brak) powiązane z interfejsem API. Możesz manipulować oświadczeniami aplikacji w zasadach i zmieniać informacje o użytkowniku dostępne w interfejsie API sieci Web. Wszystkie dodane oświadczenia będą dostępne dla interfejsu API sieci Web w architekturze MVC programu .NET w obiekcie `ClaimsPrincipal`, zgodnie z opisem we wcześniejszej części tego artykułu.
+Po zabezpieczeniu interfejsu API za pomocą usługi Azure AD B2C możesz eksperymentować z logowania — w/rejestracją przepływ użytkownika i sprawdzać skutki (lub jego braku) w interfejsie API. Możesz manipulować oświadczeniami aplikacji w ramach przepływów użytkownika i zmienić informacje o użytkowniku, który jest dostępny w sieci web interfejsu API. Wszystkie dodane oświadczenia będą dostępne dla interfejsu API sieci Web w architekturze MVC programu .NET w obiekcie `ClaimsPrincipal`, zgodnie z opisem we wcześniejszej części tego artykułu.

@@ -9,16 +9,15 @@ ms.assetid: 38a9e454-43d5-4dba-a0f0-bd7cd75fb97b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 2f8a22c6cda6c63a225fbfe8fba4cf4c8396b53e
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 4bf8bafaff1b9b93b6d4fea0368b2655e6e6af50
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42058810"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682966"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filtrowanie i wstępne przetwarzanie danych telemetrycznych w zestaw SDK usługi Application Insights
 
@@ -99,7 +98,7 @@ Aby filtrować dane telemetryczne, zapis podmiot przetwarzający dane telemetryc
     }
 
     ```
-1. W pliku ApplicationInsights.config, Wstaw to:
+3. W pliku ApplicationInsights.config, Wstaw to:
 
 ```xml
 
@@ -366,7 +365,7 @@ Jaka jest różnica między procesorami telemetrii i danych telemetrycznych inic
 * [Dokumentacja platformy ASP.NET](https://msdn.microsoft.com/library/dn817570.aspx)
 
 ## <a name="sdk-code"></a>Kod zestawu SDK
-* [Zestaw SDK dla platformy ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
+* [Zestaw SDK platformy ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
 * [ZESTAW SDK PLATFORMY ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [Zestaw SDK dla języka JavaScript](https://github.com/Microsoft/ApplicationInsights-JS)
 

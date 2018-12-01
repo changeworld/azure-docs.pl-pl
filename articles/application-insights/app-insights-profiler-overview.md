@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: bba15ee901e7ccecc513f526339bde2fcc6277fa
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 7780c10233a0ce256ee6e9015f40ea789516c25b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142574"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726903"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil aplikacji produkcyjnych na platformie Azure za pomocą usługi Application Insights
 ## <a name="enable-profiler-for-your-application"></a>Włącz Profiler do aplikacji
@@ -38,7 +37,7 @@ Uruchamianie Profiler w środowisku lokalnym nie jest oficjalnie obsługiwane, a
 
 ## <a name="view-profiler-data"></a>Wyświetlanie danych profilera
 
-Aby program profilujący do przekazania danych śledzenia żądań aplikacji aktywnie obsługi. Jeśli wykonujesz eksperymentu można wygenerować żądania do aplikacji sieci web przy użyciu [test wydajności, Application Insights](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test). Jeśli Profiler nowo zostało włączone, możesz uruchomić test obciążenia krótki. Po uruchomieniu testu obciążenia, należy nacisnąć klawisz **profilu teraz** znajdujący się w [ **strony ustawień Profiler**](). Gdy profiler jest uruchomiona, jej będzie profilu losowo o co godzinę i czas trwania wynosi dwie minuty. Jeśli aplikacja obsługuje ciągłego strumienia żądań, Profiler przekaże ślady co godzinę.
+Aby program profilujący do przekazania danych śledzenia żądań aplikacji aktywnie obsługi. Jeśli wykonujesz eksperymentu można wygenerować żądania do aplikacji sieci web przy użyciu [test wydajności, Application Insights](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test). Jeśli Profiler nowo zostało włączone, możesz uruchomić test obciążenia krótki. Po uruchomieniu testu obciążenia, należy nacisnąć klawisz **profilu teraz** znajdujący się w [ **strony ustawień Profiler**](app-insights-profiler-settings.md#profiler-settings-page). Gdy profiler jest uruchomiona, jej będzie profilu losowo o co godzinę i czas trwania wynosi dwie minuty. Jeśli aplikacja obsługuje ciągłego strumienia żądań, Profiler przekaże ślady co godzinę.
 
 Po aplikacja odbiera część ruchu i profiler miał czas przekazywania trances, powinny być śladów, aby wyświetlić. To może zająć 5 – 10 minut. Aby wyświetlić ślady, przejdź do **wydajności** okienku wybierz **podjąć akcje** wyświetlić ślady narzędzia profiler, a następnie wybierz pozycję **ślady Profiler** przycisku.
 

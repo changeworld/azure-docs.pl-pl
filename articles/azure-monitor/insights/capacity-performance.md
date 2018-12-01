@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 7902a4fb747a53b26b6f100291c77e6fec4c8d05
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d4728d5f631b0671be67ff4976674bde2044d4c0
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633439"
+ms.locfileid: "52682881"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Planowanie pojemności maszyn wirtualnych funkcji Hyper-V za pomocą rozwiązania pojemność i wydajność (wersja zapoznawcza)
 
@@ -53,7 +53,7 @@ W poniższej tabeli opisano połączone źródła, które obsługuje to rozwiąz
 | [Agenci dla systemu Windows](../../azure-monitor/platform/agent-windows.md) | Yes | Rozwiązanie zbiera informacje o danych pojemność i wydajność z agentów dla Windows. |
 | [Agenci dla systemu Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Nie    | Rozwiązania nie zbiera informacje o danych pojemności i wydajności z bezpośrednich agentów systemu Linux.|
 | [Grupy zarządzania SCOM](../../log-analytics/log-analytics-om-agents.md) | Yes |Rozwiązanie zbiera dane dotyczące pojemności i wydajności z agentów w połączonej grupie zarządzania programu SCOM. Bezpośrednie połączenie agenta programu SCOM do usługi Log Analytics nie jest wymagane.|
-| [Konto usługi Azure Storage](../../log-analytics/log-analytics-azure-storage.md) | Nie | Usługa Azure storage nie obejmuje dane dotyczące pojemności i wydajności.|
+| [Konto usługi Azure Storage](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nie | Usługa Azure storage nie obejmuje dane dotyczące pojemności i wydajności.|
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

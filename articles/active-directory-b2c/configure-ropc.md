@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2ea9356f1292669f115d2bb482419435320f644c
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 1b07825bd3ff46267764467bba815c1097278084
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978829"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726291"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfiguruj przepływ poświadczeń hasła właściciela zasobu w usłudze Azure AD B2C
 
@@ -35,14 +35,17 @@ Następujące przepływy nie są obsługiwane:
 - **Serwer serwer**: system ochrony tożsamości musi niezawodne adres IP zgromadzone od elementu wywołującego (natywny klient) w ramach interakcji. W wywołaniu interfejsu API po stronie serwera jest używany tylko adres IP serwera. Przekroczeniu progu dynamicznego nieudanych uwierzytelnień systemu ochrony tożsamości może zidentyfikować dopuszczalnych adresów IP jako osoba atakująca.
 - **Przepływ poufne klienta**: identyfikator klienta aplikacji jest weryfikowane, ale nie zostanie zweryfikowana klucz tajny aplikacji.
 
-##  <a name="create-a-resource-owner-policy"></a>Utwórz zasady właściciela zasobu
+##  <a name="create-a-resource-owner-user-flow"></a>Utwórz przepływ użytkownika właściciela zasobu
 
-1. Zaloguj się do witryny Azure portal jako administrator globalny dzierżawy usługi Azure AD B2C.
-2. Aby przełączyć się do dzierżawy usługi Azure AD B2C, wybierz katalog usługi B2C w prawym górnym rogu portalu.
-3. W obszarze **zasady**, wybierz opcję **zasady właściciela zasobu**.
-4. Podaj nazwę zasad, takich jak *ROPC_Auth*, a następnie wybierz pozycję **oświadczeń aplikacji**.
-5. Wybrać oświadczenia aplikacji, potrzebne dla aplikacji, takich jak *nazwę wyświetlaną*, *adres E-mail*, i *dostawcy tożsamości*.
-6. Wybierz przycisk **OK**, a następnie wybierz pozycję **Utwórz**.
+1.  Zaloguj się do witryny Azure portal jako administrator globalny dzierżawy usługi Azure AD B2C.
+2.  Aby przełączyć się do dzierżawy usługi Azure AD B2C, wybierz katalog usługi B2C w prawym górnym rogu portalu.
+3.  Kliknij przycisk **przepływy użytkownika**i wybierz **nowy przepływ użytkownika**.
+4.  Kliknij przycisk **wszystkich** kartę, a następnie wybierz pozycję **właściciel zasobu**.
+5.  Podaj nazwę przepływu użytkownika, takie jak *ROPC_Auth*.
+6.  W obszarze **oświadczeń aplikacji**, kliknij przycisk **Pokaż więcej**.
+7.  Wybrać oświadczenia aplikacji, które są potrzebne dla aplikacji, takich jak nazwy wyświetlanej, adresu E-mail i dostawcy tożsamości.
+8.  Wybierz przycisk **OK**, a następnie wybierz pozycję **Utwórz**.
+9.  Kliknij przycisk **uruchomić przepływ użytkownika**.
 
    Następnie zobaczysz punkt końcowy, np. w tym przykładzie:
 
@@ -57,9 +60,9 @@ Następujące przepływy nie są obsługiwane:
 4. Pozostaw inne wartości, ponieważ są, a następnie wybierz **Utwórz**.
 5. Wybierz nową aplikację i Zanotuj identyfikator aplikacji na potrzeby późniejszego użycia.
 
-## <a name="test-the-policy"></a>Testowanie zasad
+## <a name="test-the-user-flow"></a>Testowanie przepływu użytkownika
 
-Generowanie wywołanie interfejsu API za pomocą ulubionego interfejsu API aplikacji rozwoju i zapoznać się z odpowiedzią do debugowania zasady. Utworzyć takie wywołanie z informacjami w poniższej tabeli jako treść żądania POST:
+Generowanie wywołanie interfejsu API za pomocą ulubionego interfejsu API aplikacji rozwoju i zapoznać się z odpowiedzią, aby debugować przepływ użytkownika. Utworzyć takie wywołanie z informacjami w poniższej tabeli jako treść żądania POST:
 - Zastąp  *\<yourtenant.onmicrosoft.com >* nazwą dzierżawy usługi B2C.
 - Zastąp  *\<B2C_1A_ROPC_Auth >* pełną nazwą zasady poświadczeń hasła właściciela zasobu.
 - Zastąp  *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* identyfikatorem aplikacji z Twojej rejestracji.

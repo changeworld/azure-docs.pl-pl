@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: eeaa0e9a940f16c2416418959c98cd17e4816afc
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 1a9034d7cbc276f35c5f01b06f6973553222d1c4
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387637"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722381"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Opis okresowe konfiguracji kopii zapasowej w usłudze Azure Service Fabric
 
@@ -110,6 +110,7 @@ Zasady tworzenia kopii zapasowych składa się z następujących konfiguracji:
             ```
 
         2. _Ochronę udziału plików przy użyciu nazwy użytkownika i hasła_, gdzie dostęp do udziału plików znajduje się do określonych użytkowników. Specyfikacja magazyn udziału plików zapewnia również możliwość określenia dodatkowej nazwy użytkownika i hasło pomocnicze, aby podać poświadczenia awaryjne, w przypadku, gdy uwierzytelnianie nie powiedzie się z podstawowej nazwy użytkownika i hasła podstawowego. W tym przypadku ustaw następujące pola do skonfigurowania _udziału plików_ na podstawie magazynu kopii zapasowych.
+
             ```json
             {
                 "StorageKind": "FileShare",
@@ -125,6 +126,17 @@ Zasady tworzenia kopii zapasowych składa się z następujących konfiguracji:
 > [!NOTE]
 > Upewnij się, że niezawodność magazynu spełnia lub przekracza wymagania niezawodność danych kopii zapasowej.
 >
+
+* **Zasady przechowywania**: Określa zasady przechowywania kopii zapasowych w skonfigurowanym magazynie. Tylko podstawowe zasady przechowywania są obsługiwane.
+    1. **Podstawowe zasady przechowywania**: te zasady przechowywania, umożliwia zapewnienie magazynu optymalne wykorzystanie, usuwając pliki kopii zapasowej, które są już wymagane. `RetentionDuration` można określić tak, aby ustawić okres, do którego mają wymagane będą przechowywane w magazynie kopii zapasowych. `MinimumNumberOfBackups` jest parametrem opcjonalnym, który może być określony, aby upewnić się, że określoną liczbę kopii zapasowych są zawsze zachowywane niezależnie od `RetentionDuration`. Poniższym przykładzie przedstawiono konfigurację do przechowywania kopii zapasowych dla _10_ dni i nie zezwala na liczbę kopii zapasowych do zejść poniżej _20_.
+
+        ```json
+        {
+            "RetentionPolicyType": "Basic",
+            "RetentionDuration" : "P10D",
+            "MinimumNumberOfBackups": 20
+        }
+        ```
 
 ## <a name="enable-periodic-backup"></a>Włącz okresowe wykonywanie kopii zapasowej
 Po zdefiniowaniu zasad tworzenia kopii zapasowej do spełnienia wymagań w zakresie tworzenia kopii zapasowej danych, należy odpowiednio skojarzony albo zasad tworzenia kopii zapasowej _aplikacji_, lub _usługi_, lub _partycji_.
@@ -178,6 +190,13 @@ Zasady tworzenia kopii zapasowych można wyłączyć, gdy nie ma potrzeby tworze
 * Wyłączanie zasad tworzenia kopii zapasowej dla _usługi_ zatrzymuje wszystkie dane kopie zapasowe wykonywane w wyniku propagacji tych zasad kopii zapasowych do partycji _usługi_.
 
 * Wyłączanie zasad tworzenia kopii zapasowej dla _partycji_ zatrzymuje wszystkie dane kopii zapasowej dzieje się z powodu zasad kopii zapasowych w partycji.
+
+* Podczas wyłączania kopii zapasowej entity(application/service/partition) `CleanBackup` można ustawić _true_ można usunąć wszystkie kopie zapasowe w skonfigurowanym magazynie.
+    ```json
+    {
+        "CleanBackup": true 
+    }
+    ```
 
 ## <a name="suspend--resume-backup"></a>Wstrzymania i wznowienia tworzenia kopii zapasowych
 Niektóre sytuacji mogą wymagać tymczasowe zawieszenie okresowe tworzenie kopii zapasowych danych. W takiej sytuacji, w zależności od zapotrzebowania, wstrzymywanie kopii zapasowej można używać interfejsu API _aplikacji_, _usługi_, lub _partycji_. Okresowe zawieszenia kopii zapasowej jest przechodnia poddrzewo hierarchii aplikacji od punktu, który jest stosowany. 

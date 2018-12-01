@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7b460efbdc50c5b243c3ef78bad568b720e75e59
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: ffceb8fd6f1afcd054bfc4c4035fb2b8b93ed390
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635561"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720545"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Zestaw przekierowania adresów URL z usługi b2clogin.com dla usługi Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ Korzystanie z usługi b2clogin.com zapewnia dodatkowe korzyści, takich jak:
 Należy wziąć pod uwagę te ustawienia, które może być konieczna zmiana podczas korzystania z usługi b2clogin.com:
 
 - Ustaw przekierowania adresów URL w aplikacji dostawcy tożsamości z usługi b2clogin.com. 
-- Ustaw aplikację usługi Azure AD B2C, aby korzystać z usługi b2clogin.com dla odwołania do zasad i tokenu punktów końcowych. 
+- Ustaw aplikację usługi Azure AD B2C, aby korzystać z usługi b2clogin.com dla odwołania do przepływu użytkownika i token punktów końcowych. 
 - Jeśli używasz biblioteki MSAL, musisz ustawić **ValidateAuthority** właściwość `false`.
 - Upewnij się, że wprowadzisz zmiany w dowolnej **dozwolone źródła** zdefiniowanego w ustawieniach mechanizmu CORS [dostosowywania interfejsu użytkownika](active-directory-b2c-ui-customization-custom-dynamic.md).  
 
@@ -56,7 +56,7 @@ Informacje o konfiguracji dla dostawcy tożsamości można znaleźć w następuj
 
 ## <a name="update-your-application"></a>Aktualizowanie aplikacji
 
-Aplikacja usługi Azure AD B2C, ale prawdopodobnie dotyczy `login.microsoftonline.com` w kilku miejscach, takie jak odwołania do zasad i tokenu punktów końcowych.  Upewnij się, że Twoje punkt końcowy autoryzacji punktu końcowego tokenu i Wystawca zostały zaktualizowane na potrzeby `your-tenant-name.b2clogin.com`.  
+Aplikacja usługi Azure AD B2C, ale prawdopodobnie dotyczy `login.microsoftonline.com` w kilku miejscach, takie jak odwołania do przepływu użytkownika i token punktów końcowych.  Upewnij się, że Twoje punkt końcowy autoryzacji punktu końcowego tokenu i Wystawca zostały zaktualizowane na potrzeby `your-tenant-name.b2clogin.com`.  
 
 ## <a name="set-the-validateauthority-property"></a>Ustaw właściwość ValidateAuthority
 

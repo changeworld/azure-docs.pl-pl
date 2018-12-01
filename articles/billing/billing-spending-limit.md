@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
-ms.openlocfilehash: a564e72cc695830edfa5092eddc1f4f9b80ba519
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: b4f38d80bfddc342d83a3552efe5d4a60cf6350f
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583538"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680127"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Zrozumienie limicie wydatków i sposobach jego usuwania
 
@@ -29,7 +29,7 @@ Istnieje limit wydatków w usłudze Azure, aby uniknąć wydatków za pośrednic
 
 Wyniki użycia Naliczanie opłat, które wyczerpać miesięczne kwoty uwzględnione w ramach subskrypcji, wdrożone usługi są wyłączone w pozostałej części tego okresu rozliczeniowego. 
 
-Na przykład gdy poświęcany wszystkie środki, które są dołączone do subskrypcji usług w chmurze, które zostanie wdrożone są usuwane ze środowiska produkcyjnego i maszynach wirtualnych platformy Azure są zatrzymane i ponownie alokowane. Dane na kontach magazynu i baz danych są dostępne w sposób tylko do odczytu.
+Na przykład gdy poświęcany wszystkie środki, które są dołączone do subskrypcji usług w chmurze, które zostanie wdrożone są usuwane ze środowiska produkcyjnego i maszynach wirtualnych platformy Azure są zatrzymane i ponownie alokowane. Dane na kontach usługi storage są dostępne w sposób tylko do odczytu.
 
 Na początku następnego okresu rozliczeniowego, jeśli oferta Subskrypcja obejmuje środki przez wiele miesięcy Twoja subskrypcja będzie ponownie włączona automatycznie. Następnie można ponownie wdrożyć swoje usługi w chmurze i mają pełny dostęp do swoich kont magazynu i baz danych.
 

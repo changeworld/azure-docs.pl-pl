@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 1d49403ec04b2ec35291869385c316cb5ab3b0da
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8b2f16f45be1d095e9be8042611de328af36f064
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044913"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724064"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Zarządzanie przy użyciu witryny Azure portal usługi Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -111,7 +111,7 @@ Aby umożliwić programistom języka U-SQL do korzystania z usługi Data Lake An
 ### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Dodaj użytkowników lub grup zabezpieczeń do konta usługi Data Lake Analytics
 
 1. W witrynie Azure portal przejdź na swoje konto usługi Data Lake Analytics.
-2. Kliknij przycisk **kontrola dostępu (IAM)** > **Dodaj**.
+2. Kliknij przycisk **kontrola dostępu (IAM)** > **Dodaj przypisanie roli**.
 3. Wybierz rolę.
 4. Dodawanie użytkownika.
 5. Kliknij przycisk **OK**.

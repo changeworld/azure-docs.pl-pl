@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 11/16/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 07a9d46dff17b43d01a6b411292cf240c32476f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0117a08c76288cda25da2196ec18433b3678e24b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983722"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724642"
 ---
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Roaming i współpraca w usłudze Azure Machine Learning Workbench
 
@@ -124,9 +124,9 @@ Udostępniając zdalnego repozytorium Git dla projektu, Alice i Bob mogą także
 ### <a name="use-the-azure-portal-to-add-users"></a>Użyj witryny Azure portal, aby dodać użytkowników
 <a name="portal"></a>
 
-Konta eksperymentowanie w usłudze Learning komputera, obszary robocze oraz projekty są zasobami usługi Azure Resource Manager. Aby przypisać role, można użyć **kontroli dostępu** łącze w [witryny Azure portal](https://portal.azure.com). 
+Konta eksperymentowanie w usłudze Learning komputera, obszary robocze oraz projekty są zasobami usługi Azure Resource Manager. Aby przypisać role, można użyć **kontrola dostępu (IAM)** łącze w [witryny Azure portal](https://portal.azure.com). 
 
-Znajdź zasób, który chcesz dodać użytkowników za pomocą **wszystkie zasoby** widoku. Wybierz **kontrola dostępu (IAM)** połączyć, a następnie wybierz pozycję **dodawania użytkowników**. 
+Znajdź zasób, który chcesz dodać użytkowników za pomocą **wszystkie zasoby** widoku. Wybierz **kontrola dostępu (IAM)** połączyć, a następnie wybierz pozycję **Dodaj przypisanie roli**. 
 
 <img src="./media/roaming-and-collaboration/iam.png" width="320px">
 

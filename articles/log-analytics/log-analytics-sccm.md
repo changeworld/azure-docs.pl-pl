@@ -10,17 +10,16 @@ ms.assetid: f2298bd7-18d7-4371-b24a-7f9f15f06d66
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a4c429b1c54c6bf71175abbc763a178792281a0f
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 4e20d787bef4da518765d1eeeb33237ddd612606
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633150"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721225"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Łączenie programu Configuration Manager do usługi Log Analytics
 Można połączyć środowiska programu System Center Configuration Manager z usługą Azure Log Analytics, synchronizować dane kolekcji urządzeń i odwołują się do tych kolekcji w usłudze Log Analytics i Azure Automation.  
@@ -38,7 +37,7 @@ Poniższe instrukcje stanowią podsumowanie czynności, aby skonfigurować integ
 4. W programie Configuration Manager [zaktualizować właściwości połączenia](#update-oms-connection-properties) Jeśli klucz tajny klienta lub hasło nigdy nie wygaśnie lub zostanie utracony.
 5. [Pobierz i zainstaluj program Microsoft Monitoring Agent](#download-and-install-the-agent) na komputerze z systemem rolę systemu lokacji punktu połączenia programu Configuration Manager service. Agent wysyła dane programu Configuration Manager do obszaru roboczego usługi Log Analytics.
 6. W usłudze Log Analytics [Importuj kolekcje z programu Configuration Manager](#import-collections) jako grup komputerów.
-7. W usłudze Log Analytics przeglądać dane z programu Configuration Manager jako [grup komputerów](log-analytics-computer-groups.md).
+7. W usłudze Log Analytics przeglądać dane z programu Configuration Manager jako [grup komputerów](../azure-monitor/platform/computer-groups.md).
 
 Możesz dowiedzieć się więcej o łączeniu programu Configuration Manager do usługi Log Analytics w [synchronizowanie danych z programu Configuration Manager z usługą Microsoft Log Analytics](https://technet.microsoft.com/library/mt757374.aspx).
 
@@ -52,8 +51,8 @@ W poniższej procedurze, można przyznać *Współautor* roli w obszarze roboczy
 1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi** w lewym górnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.<br><br> ![Azure Portal](media/log-analytics-sccm/azure-portal-01.png)<br><br>  
 2. Na liście obszarów roboczych usługi Log Analytics wybierz obszar roboczy, aby zmodyfikować.
 3. W okienku po lewej stronie wybierz **kontrola dostępu (IAM)**.
-4. Na stronie kontroli dostępu, kliknij przycisk **Dodaj** i **Dodaj uprawnienia** zostanie wyświetlone okienko.
-5. W **Dodaj uprawnienia** okienku w obszarze **roli** listy rozwijanej wybierz **Współautor** roli.  
+4. Strony kontrola dostępu (IAM), kliknij **Dodaj przypisanie roli** i **Dodaj przypisanie roli** zostanie wyświetlone okienko.
+5. W **Dodaj przypisanie roli** okienku w obszarze **roli** listy rozwijanej wybierz **Współautor** roli.  
 6. W obszarze **Przypisz dostęp do** listy rozwijanej wybierz aplikacji programu Configuration Manager wcześniej utworzone w AD, a następnie kliknij przycisk **OK**.  
 
 ## <a name="download-and-install-the-agent"></a>Pobierz i zainstaluj agenta
@@ -107,7 +106,7 @@ Po wykonaniu konfiguracji początkowej, aby zaimportować kolekcje z hierarchii 
    ![Grupy komputerów - kartę programu SCCM](./media/log-analytics-sccm/sccm-computer-groups01.png)
 
 ## <a name="view-data-from-configuration-manager"></a>Wyświetlanie danych z programu Configuration Manager
-Po dodaniu połączenia usługi Log Analytics do programu Configuration Manager i agent zainstalowany na komputerze z uruchomionym rolę systemu lokacji punktu połączenia programu Configuration Manager service, dane od agenta są wysyłane do usługi Log Analytics. W usłudze Log Analytics kolekcji programu Configuration Manager są wyświetlane jako [grup komputerów](log-analytics-computer-groups.md). Wyświetlanie grup z **programu Configuration Manager** strony w obszarze **grup Settings\Computer**.
+Po dodaniu połączenia usługi Log Analytics do programu Configuration Manager i agent zainstalowany na komputerze z uruchomionym rolę systemu lokacji punktu połączenia programu Configuration Manager service, dane od agenta są wysyłane do usługi Log Analytics. W usłudze Log Analytics kolekcji programu Configuration Manager są wyświetlane jako [grup komputerów](../azure-monitor/platform/computer-groups.md). Wyświetlanie grup z **programu Configuration Manager** strony w obszarze **grup Settings\Computer**.
 
 Po zaimportowaniu kolekcje, możesz zobaczyć, na ilu komputerach za pomocą członkostwa w kolekcjach zostały wykryte. Widać również wielu kolekcji, które zostały zaimportowane.
 

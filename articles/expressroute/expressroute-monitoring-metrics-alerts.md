@@ -5,22 +5,26 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: fcdaf10ad30cee0e7b79304ff21d67560522875c
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 90735ac04c95ee3d270853c18eddebd3f11dd8c1
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377801"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725966"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Monitorowanie, metryki i alerty usługi ExpressRoute
 
- Ten artykuł zawiera informacje o monitorowaniu usługi ExpressRoute, metryki i alerty. Usługa Azure Monitor jest jedno centralne miejsce dla wszystkich metryk, alerty i dzienniki diagnostyczne na platformie Azure.
+Ten artykuł zawiera informacje o monitorowaniu usługi ExpressRoute, metryki i alerty. Usługa Azure Monitor jest jedno centralne miejsce dla wszystkich metryk, alerty i dzienniki diagnostyczne na platformie Azure.
+ 
+>[!NOTE]
+>Za pomocą **klasycznego metryki** nie jest zalecane. 
+>
 
 ## <a name="circuit-metrics"></a>Metryki obwodu
 
-Aby przejść do **metryki**, kliknij stronę usługi ExpressRoute dla obwodu, który chcesz monitorować. W obszarze **monitorowanie** można wyświetlić **metryki**. Wybierz BitsInPerSecond lub BitsOutPerSecond i agregacji. Opcjonalnie można zastosować, dzielenie, która wyświetli metryki na typ komunikacji równorzędnej.
+Aby przejść do **metryki**, kliknij stronę usługi ExpressRoute dla obwodu, który chcesz monitorować. W obszarze **monitorowanie**, można wyświetlić **metryki**. Wybierz BitsInPerSecond lub BitsOutPerSecond i agregacji. Opcjonalnie można zastosować podział, która wyświetli metryki na typ komunikacji równorzędnej.
 
 ![Metryki obwodu](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
 
@@ -47,7 +51,6 @@ Możesz wyświetlić metryki dla usługi prywatnej, publicznej i firmy Microsoft
 
   ![grupy akcji](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
 
-
 4. Definiowanie i Dodaj grupę akcji.
 
   ![Dodaj grupę akcji](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
@@ -61,9 +64,10 @@ Możesz wyświetlić metryki dla usługi prywatnej, publicznej i firmy Microsoft
 W **kryteriów alertu**, możesz wybrać **dziennika aktywności** typu sygnału i wybierz sygnał.
 
   ![inny](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
-
+  
 ## <a name="next-steps"></a>Kolejne kroki
-* Skonfiguruj połączenie usługi ExpressRoute.
+
+Skonfiguruj połączenie usługi ExpressRoute.
   
   * [Tworzenie i modyfikowanie obwodu](expressroute-howto-circuit-arm.md)
   * [Tworzenie i modyfikowanie konfiguracji komunikacji równorzędnej](expressroute-howto-routing-arm.md)

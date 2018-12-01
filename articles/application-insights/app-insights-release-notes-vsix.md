@@ -9,17 +9,16 @@ ms.assetid: 2001db30-efc5-417a-a413-93c1b218975f
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2017
 ms.reviewer: aruna
 ms.author: mbullwin
-ms.openlocfilehash: 016d13a08ea3fe591529ad6dd29b25534d9c603d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 358d17f29960983af1834e87f502331141fcff46
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303748"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726121"
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>Informacje o wersji narzędzi Developer Analytics Tools
 
@@ -249,7 +248,7 @@ Dodaliśmy nową kartę, za pomocą wstępnie zdefiniowanych zapytań dla wszyst
 ### <a name="forward-and-back-history-in-search"></a>Do przodu i Wstecz w historii wyszukiwania
 Teraz możesz przejść i z powrotem między wyników wyszukiwania.
 
-![Wstecz](./media/app-insights-release-notes-vsix/GoBAck.png)
+![Przejdź wstecz](./media/app-insights-release-notes-vsix/GoBAck.png)
 
 ## <a name="version-41"></a>W wersji 4.1
 Ta wersja zawiera wiele nowych funkcji i aktualizacji. Musisz mieć Update 1 można zainstalować tylko w tej wersji.

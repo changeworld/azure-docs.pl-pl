@@ -9,16 +9,15 @@ documentationcenter: monitoring-and-diagnostics
 ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: d1b7b5baeba88ec0209abff60e9327031afa8b66
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5ef451da3eae696c3506f25ee9458b3ad3286b07
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633779"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721186"
 ---
 # <a name="azure-monitor-overview"></a>Omówienie usługi Azure Monitor
 
@@ -137,7 +136,7 @@ Często będziesz mieć wymagań integracji usługi Azure Monitor z innymi syste
 ### <a name="logic-apps"></a>Logic Apps
 [Usługa Logic Apps](https://azure.microsoft.com/services/logic-apps) to usługa, która pozwala na zautomatyzowanie zadań i procesów biznesowych przy użyciu przepływów pracy, które integrują się z różnych systemów i usług. Działania są dostępne, Odczyt i zapis metryk i dzienników w usłudze Azure Monitor, który umożliwia tworzenie przepływów pracy integracji z wieloma innymi systemami.
 
-![Aplikacja logiki](../log-analytics/media/log-analytics-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
+![Aplikacja logiki](platform/media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
 ### <a name="api"></a>Interfejs API
 Wiele interfejsów API dostępnych do odczytu i zapisu metryk i dzienników z usługi Azure Monitor i oprócz uzyskiwania dostępu do alerty generowane przez monitory. Można również skonfigurować i pobrać alertów. Zapewnia to zasadniczo nieograniczone możliwości do tworzenia niestandardowych rozwiązań, które integrują się z usługą Azure Monitor.

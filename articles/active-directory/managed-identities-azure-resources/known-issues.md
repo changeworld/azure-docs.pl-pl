@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 256f36ac56126fc76561a6dbe4281ac4975df6e4
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b535939e200b533c06c97686897e283fb6cf57bc
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632793"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720188"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Często zadawane pytania i znane problemy związane z zarządzanych tożsamości dla zasobów platformy Azure
 
@@ -113,9 +113,9 @@ Gdy funkcja eksportu schematu stają się dostępne dla zarządzanych tożsamoś
 
 Jeśli nie ma bloku konfiguracji maszyny Wirtualnej na maszynie Wirtualnej, następnie zarządzanych tożsamości dla zasobów platformy Azure nie zostało włączone w portalu w Twoim regionie jeszcze.  Sprawdź ponownie później.  Można również włączyć zarządzanych tożsamości dla zasobów platformy Azure dla maszyny Wirtualnej przy użyciu [PowerShell](qs-configure-powershell-windows-vm.md) lub [wiersza polecenia platformy Azure](qs-configure-cli-windows-vm.md).
 
-### <a name="cannot-assign-access-to-virtual-machines-in-the-access-control-iam-blade"></a>Nie można przypisać dostępu do maszyn wirtualnych w bloku kontrola dostępu (IAM)
+### <a name="cannot-assign-access-to-virtual-machines-in-the-access-control-iam-blade"></a>Nie można przypisać dostępu do maszyn wirtualnych w bloku kontrola (IAM) dostępu
 
-Jeśli **maszyny wirtualnej** nie jest wyświetlany w witrynie Azure portal jako wyborem dla **Przypisz dostęp do** w **kontrola dostępu (IAM)** > **Dodaj uprawnienia**, a następnie zarządzanych tożsamości dla zasobów platformy Azure nie został włączony w portalu w Twoim regionie jeszcze. Sprawdź ponownie później.  Nadal można wybrać tożsamości dla maszyny Wirtualnej na potrzeby przypisania roli przez wyszukiwanie zarządzanych tożsamości dla zasobów platformy Azure nazwy głównej usługi.  Wprowadź nazwę maszyny Wirtualnej w **wybierz** pola i nazwę główną usługi, zostanie wyświetlony w wynikach wyszukiwania.
+Jeśli **maszyny wirtualnej** nie jest wyświetlany w witrynie Azure portal jako wyborem dla **Przypisz dostęp do** w **kontrola dostępu (IAM)** > **Dodaj rolę Przypisanie**, a następnie zarządzanych tożsamości dla zasobów platformy Azure nie został włączony w portalu w Twoim regionie jeszcze. Sprawdź ponownie później.  Nadal można wybrać tożsamości dla maszyny Wirtualnej na potrzeby przypisania roli przez wyszukiwanie zarządzanych tożsamości dla zasobów platformy Azure nazwy głównej usługi.  Wprowadź nazwę maszyny Wirtualnej w **wybierz** pola i nazwę główną usługi, zostanie wyświetlony w wynikach wyszukiwania.
 
 ### <a name="vm-fails-to-start-after-being-moved-from-resource-group-or-subscription"></a>Maszyna wirtualna nie została uruchomiona po jest przenoszony z grupy zasobów lub subskrypcji
 

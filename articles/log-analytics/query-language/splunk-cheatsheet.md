@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 5ea9790695b8afe7bd42b98b071869756b301350
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 61f0cff661c79f994a5b3c20646996f617a31b7e
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42447495"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52683068"
 ---
 # <a name="splunk-to-log-analytics"></a>Splunk do usługi Log Analytics
 
@@ -61,7 +59,7 @@ W poniższej tabeli określono funkcji w usłudze Log Analytics, które są rów
 | wyrażenie regularne | pasuje do wyrażenia regularnego | W usłudze Splunk `regex` jest operator. W usłudze Log Analytics jest operator relacyjny. |
 | searchmatch | == | W usłudze Splunk `searchmatch` umożliwia wyszukiwanie dokładnie taki ciąg znaków.
 | losowo | rand()<br>RAND(n) | Funkcja firmy Splunk zwraca liczbę od 0 do 2<sup>31</sup>-1. Usługa log Analytics zwraca liczbę z zakresu od 0,0 do 1,0, lub jeśli parametr podany w przedziale od 0 do n-1.
-| teraz | Now() | (1)
+| teraz | now() | (1)
 | relative_time | ToTimeSpan() | (1)<br>W usłudze Log Analytics w Splunk wielokrotność relative_time (datetimeVal, offsetVal) jest datetimeVal + totimespan(offsetVal).<br>Na przykład <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> staje się <code>...  &#124; extend myTime = now() - totimespan("1d")</code>.
 
 (1) w ramach Splunk, funkcja jest wywoływana z `eval` operatora. W usłudze Log Analytics jest używana jako część `extend` lub `project`.<br>(2) w Splunk, funkcja jest wywoływana z `eval` operatora. W usłudze Log Analytics może służyć za pomocą `where` operatora.
@@ -80,7 +78,7 @@ W usłudze Splunk, można pominąć `search` — słowo kluczowe i określ ciąg
 | |  | |
 |:---|:---|:---|
 | Splunk | **Wyszukiwanie** | <code>search Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" earliest=-24h</code> |
-| Log Analytics | **Znajdź** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
+| Log Analytics | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
 | | |
 
 ### <a name="filter"></a>Filtr

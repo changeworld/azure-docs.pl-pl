@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: f8e16af629eaa18b49b054be9fc478d633263ddb
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: d023bf4428790667ef192a3ce981087694224f50
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45637765"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724540"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Konfigurowanie program Pacemaker w systemie Red Hat Enterprise Linux na platformie Azure
 
@@ -224,10 +224,10 @@ Przypisz rolę niestandardową "Linux horyzont agenta rolę" utworzonego w rozdz
 1. Otwieranie bloku wszystkie zasoby
 1. Wybierz maszynę wirtualną, w pierwszym węźle klastra
 1. Kliknij przycisk kontroli dostępu (IAM)
-1. Kliknij pozycję Dodaj.
+1. Kliknij przycisk Dodaj przypisanie roli
 1. Wybierz rolę "Rolę agenta Odgradzania Linux"
 1. Wprowadź nazwę aplikacji, które zostały utworzone powyżej
-1. Kliknij przycisk OK
+1. Klikanie pozycji Zapisz.
 
 Powtórz powyższe kroki dla drugiego węzła klastra.
 

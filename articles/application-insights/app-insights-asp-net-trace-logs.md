@@ -9,16 +9,15 @@ ms.assetid: 0c2a084f-6e71-467b-a6aa-4ab222f17153
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: b1cd2e8d7649de48f34efb0c7d839e17906a29bf
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 258147498c4b37a5a00482090d5408f7c5619557
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044989"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681300"
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Eksplorowanie dzienników śledzenia .NET w usłudze Application Insights
 Jeśli używasz NLog, log4Net lub System.Diagnostics.Trace do śledzenia diagnostycznego w aplikacji programu ASP.NET może mieć dzienniki wysyłane do [usługi Azure Application Insights][start], gdzie możesz eksplorować i wyszukiwania je. Dzienniki zostaną scalone z innych danych telemetrycznych pochodzących z aplikacji, tak, aby zidentyfikować dane śledzenia skojarzony z obsługi każdego żądania użytkownika i skoreluj je z innymi zdarzeń i raporty o wyjątkach.

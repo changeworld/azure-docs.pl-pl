@@ -9,18 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 11/29/2018
 ms.author: jingwang
-ms.openlocfilehash: 953585ffcc5a40d9ae48055f68a1c1fa84db25cc
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 40cf8dcf6729d577c4fff694b0380833fccb142d
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249336"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679362"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-preview-with-azure-data-factory"></a>Kopiowanie danych z usługi Azure Data Lake Storage Gen1 do Gen2 (wersja zapoznawcza) przy użyciu usługi Azure Data Factory
 
-[Azure Data Lake magazynu Gen2 (wersja zapoznawcza)](../storage/data-lake-storage/introduction.md) dodaje protokołu o funkcje przestrzeni nazw i zabezpieczenia systemu plików hierarchiczne do usługi Azure Blob Storage, co ułatwia łączenie struktur analytics do warstwy magazynu trwałego. W Data Lake Storage Gen2 (wersja zapoznawcza), jakość magazynu obiektów pozostają podczas dodawania zalety interfejsu systemu plików.
+Usługa Azure Data Lake Gen2 — wersja zapoznawcza to zbiór funkcji przeznaczonych do analizy danych big data, wbudowane w [usługi Azure Blob storage](../storage/blobs/storage-blobs-introduction.md). Umożliwia łączenie się z danych za pomocą obu paradygmatów magazynu plików, jak systemu i obiekt.
 
 Jeśli obecnie używasz usługi Azure Data Lake Storage Gen1, będziesz w stanie ocenić nowe możliwości Gen2 przez skopiowanie danych z programu Data Lake Storage Gen1 do Gen2 przy użyciu usługi Azure Data Factory.
 
@@ -75,17 +75,15 @@ W tym artykule dowiesz się, jak używać narzędzia do kopiowania danych w bazi
     ![Strona usługi Azure Data Lake Storage Gen1 magazynu danych źródłowych](./media/load-azure-data-lake-storage-gen2-from-gen1/source-data-store-page-adls-gen1.png)
     
 4. W **połączenia Określ Azure Data Lake Storage Gen1** wykonaj następujące czynności:
-   1. Wybierz usługi Data Lake magazynu Gen1 dla nazwy konta.
-   2. Określ lub zweryfikować **dzierżawy**i wybierz przycisk Zakończ.
-   3. Wybierz opcję **Dalej**.
+   1. Wybierz usługi Data Lake magazynu Gen1 dla nazwy konta i określić lub zweryfikować **dzierżawy**.
+   2. Kliknij przycisk **Testuj połączenie** Aby zweryfikować ustawienia, zaznacz opcję **Zakończ**.
+   3. Zobaczysz, że nowe połączenie zostanie utworzona. Wybierz opcję **Dalej**.
    
    > [!IMPORTANT]
-   > W tym przewodniku używasz tożsamość zarządzaną dla zasobów platformy Azure do uwierzytelniania usługi Data Lake magazynu Gen1e. Pamiętaj przyznać odpowiednie uprawnienia w usłudze Azure Data Lake magazynu Gen1 postępując zgodnie z pliku MSI [w instrukcjach](connector-azure-data-lake-store.md#managed-identity).
+   > W tym przewodniku używasz tożsamość zarządzaną dla zasobów platformy Azure do uwierzytelniania usługi Data Lake magazynu Gen1. Pamiętaj przyznać odpowiednie uprawnienia w usłudze Azure Data Lake magazynu Gen1 postępując zgodnie z pliku MSI [w instrukcjach](connector-azure-data-lake-store.md#managed-identity).
    
    ![Określ konto usługi Azure Data Lake Storage Gen1](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen1-account.png)
-   
-   4. Zobaczysz, że nowe połączenie zostanie utworzona. Wybierz opcję **Dalej**.
-   
+      
 5. W **Wybieranie pliku lub folderu wejściowego** strony, przejdź do folderu i pliku, który chcesz skopiować. Wybierz folderów i plików, wybierz pozycję **wybierz**:
 
     ![Wybieranie pliku lub folderu wejściowego](./media/load-azure-data-lake-storage-gen2-from-gen1/choose-input-folder.png)
@@ -101,7 +99,7 @@ W tym artykule dowiesz się, jak używać narzędzia do kopiowania danych w bazi
 8. W **połączenia Określ usługi Azure Data Lake magazynu Gen2** wykonaj następujące czynności:
 
    1. Wybierz usługi Data Lake magazynu Gen2 — listy rozwijanej w stanie Zmiana warstwy konta z "Nazwa konta magazynu".
-   2. Wybierz opcję **Dalej**.
+   2. Wybierz **Zakończ** do utworzenia połączenia. Następnie wybierz przycisk **Dalej**.
    
    ![Określ konto usługi Azure Data Lake Storage Gen2](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png)
 

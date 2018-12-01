@@ -9,17 +9,16 @@ ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/09/2017
 ms.reviewer: yossiy
 ms.author: mbullwin
-ms.openlocfilehash: 8394584b2b4f8cbc47a6fdaadd754e8649c3f794
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 776c923910866b3c65271a8acdc00edc6eb6df59
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960926"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723826"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Wykrywanie inteligentne — anomalie w zakresie błędów
 [Usługa Application Insights](app-insights-overview.md) automatycznie powiadamia, w czasie zbliżonym do rzeczywistego Jeśli nietypowy wzrost liczba nieudanych żądań aplikacji sieci web. Wykrywa nietypowy wzrost żądań HTTP lub wywołania zależności, które ma być zgłaszane nie powiodło się. Dla żądań żądań zakończonych niepowodzeniem są zwykle te kody odpowiedź 400 lub nowszej. Ułatwiające klasyfikowanie i diagnozowanie problemu, analizy właściwości błędów i powiązane dane telemetryczne jest podawany jako powiadomienia. Dostępne są także łącza do portalu usługi Application Insights w celu przeprowadzenia dalszej diagnostyki. Funkcja musi mieć nie konfiguracji ani konfiguracji, ponieważ używa ona algorytmów uczenia maszynowego do przewidywania zwykły współczynnik błędów.

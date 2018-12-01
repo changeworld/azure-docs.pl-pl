@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 9d3d1e5ba7ebc7e2afefb31df3be9f2a8f43e153
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 34a72bb38c87902648ad92261a70d6545f10d0fa
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685399"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723690"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure
 
@@ -527,10 +527,10 @@ Przypisz rolę niestandardową "Linux horyzont agenta rolę" utworzonego w rozdz
 1. Otwieranie bloku wszystkie zasoby
 1. Wybierz maszynę wirtualną, w pierwszym węźle klastra
 1. Kliknij przycisk kontroli dostępu (IAM)
-1. Kliknij pozycję Dodaj.
+1. Kliknij przycisk Dodaj przypisanie roli
 1. Wybierz rolę "Rolę agenta Odgradzania Linux"
 1. Wprowadź nazwę aplikacji, które zostały utworzone powyżej
-1. Kliknij przycisk OK
+1. Klikanie pozycji Zapisz.
 
 Powtórz powyższe kroki dla drugiego węzła klastra.
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 11/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: caa1b6f31325cd67aad106f7829bd32a5e7aeb53
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: c6202ff6f00412a779fb62b7a3bcc3f30ecbb25a
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635819"
+ms.locfileid: "52682328"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -52,7 +52,7 @@ Rozwiązanie informuje, jak aktualne, komputer jest oparty na źródle jest skon
 
 Aktualizacje oprogramowania można wdrożyć i zainstalować na komputerach, które ich wymagają, tworząc zaplanowane wdrożenie. Aktualizacje sklasyfikowane jako *opcjonalnie* nie są uwzględnione w zakresie wdrożenia dla komputerów Windows. Tylko wymagane aktualizacje są uwzględnione w zakresie wdrażania. 
 
-Zaplanowane wdrożenie definiuje, które komputery docelowe otrzymywać odpowiednie aktualizacje, jawnie określając komputerów lub wybierając [grupa](../log-analytics/log-analytics-computer-groups.md) opartego na dziennikach z konkretnego zestawu komputerów. Należy również określić harmonogram zatwierdzania i ustawić okres, w którym można instalować aktualizacje.
+Zaplanowane wdrożenie definiuje, które komputery docelowe otrzymywać odpowiednie aktualizacje, jawnie określając komputerów lub wybierając [grupa](../azure-monitor/platform/computer-groups.md) opartego na dziennikach z konkretnego zestawu komputerów. Należy również określić harmonogram zatwierdzania i ustawić okres, w którym można instalować aktualizacje.
 
 Aktualizacje są instalowane przez elementy runbook w usłudze Azure Automation. Nie można wyświetlić tych elementów runbook i elementy runbook nie wymaga żadnej konfiguracji. Po utworzeniu wdrożenia aktualizacji wdrożenia aktualizacji powoduje utworzenie harmonogramu, który uruchamia główny element runbook aktualizacji w określonym czasie na uwzględnionych komputerach. Główny element runbook uruchamia podrzędny element runbook na każdym agencie w celu zainstalowania wymaganych aktualizacji.
 
@@ -192,7 +192,7 @@ Aby uruchomić przeszukiwanie dziennika, które zwraca informacje dotyczące mas
 
 ## <a name="install-updates"></a>Zainstaluj aktualizacje
 
-Po aktualizacji są oceniane dla wszystkich komputerów z systemami Linux i Windows w obszarze roboczym, można zainstalować wymagane aktualizacje, tworząc *wdrożenie aktualizacji*. Wdrożenie aktualizacji to zaplanowana instalacja wymaganych aktualizacji na co najmniej jeden komputer. Należy określić datę i godzinę wdrożenia i komputera lub grupy komputerów, które do uwzględnienia w zakresie wdrożenia. Aby dowiedzieć się więcej na temat grup komputerów, zobacz [Computer groups in Log Analytics](../log-analytics/log-analytics-computer-groups.md) (Grupy komputerów w usłudze Log Analytics).
+Po aktualizacji są oceniane dla wszystkich komputerów z systemami Linux i Windows w obszarze roboczym, można zainstalować wymagane aktualizacje, tworząc *wdrożenie aktualizacji*. Wdrożenie aktualizacji to zaplanowana instalacja wymaganych aktualizacji na co najmniej jeden komputer. Należy określić datę i godzinę wdrożenia i komputera lub grupy komputerów, które do uwzględnienia w zakresie wdrożenia. Aby dowiedzieć się więcej na temat grup komputerów, zobacz [Computer groups in Log Analytics](../azure-monitor/platform/computer-groups.md) (Grupy komputerów w usłudze Log Analytics).
 
  Po włączeniu grupy komputerów we wdrożeniu aktualizacji członkostwa w grupie jest oceniane tylko raz, w momencie tworzenia harmonogramu. Kolejne zmiany do grupy nie są uwzględniane. Aby obejść to wykorzystania [grup dynamicznych](#using-dynamic-groups), te grupy są rozwiązywane w czasie wdrażania i są definiowane przez zapytanie.
 
@@ -210,7 +210,7 @@ Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktual
 | Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| System Linux lub Windows|
 | Grupy można zaktualizować (wersja zapoznawcza)|Definiowanie zapytań, w zależności od kombinacji subskrypcji, grupy zasobów, lokalizacje i tagi, do tworzenia grupy dynamicznej maszyn wirtualnych platformy Azure, aby uwzględnić w danym wdrożeniu. Aby dowiedzieć się więcej, zobacz [grupy dynamiczne](automation-update-management.md#using-dynamic-groups)|
-| Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybrać maszynę z listy rozwijanej i wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../log-analytics/log-analytics-computer-groups.md) |
+| Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybrać maszynę z listy rozwijanej i wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../azure-monitor/platform/computer-groups.md) |
 |Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
 |Uwzględnianie/wykluczanie aktualizacji|Spowoduje to otwarcie **uwzględniania/wykluczania** strony. Aktualizacje, które mają zostać uwzględnione lub wykluczone, znajdują się na osobnych kartach. Aby uzyskać więcej informacji na temat sposobu obsługi dołączania, zobacz [zachowanie dołączania](automation-update-management.md#inclusion-behavior) |
 |Ustawienia harmonogramu|Wybierz godzinę do uruchomienia i wybrać jednorazowo lub cykliczne cyklu|

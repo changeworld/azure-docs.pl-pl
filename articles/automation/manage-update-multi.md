@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8e1c58f2d60ee95189fb583e032d8748fedb88d4
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 2ba34a6d1ecc33e8a4d355aeacb0da8a764a784d
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620221"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679533"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Zarządzanie aktualizacjami dla wielu maszyn
 
@@ -128,7 +128,7 @@ W **nowe wdrożenie aktualizacji** okienku określ następujące informacje:
 - **Nazwa**: wprowadź unikatową nazwę identyfikującą wdrożenie aktualizacji.
 - **System operacyjny**: Wybierz **Windows** lub **Linux**.
 - **Grupy do zaktualizowania (wersja zapoznawcza)**: zdefiniuj zapytanie na podstawie kombinacji subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które chcesz uwzględnić w swoim wdrożeniu. Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management.md#using-dynamic-groups)
-- **Maszyny do zaktualizowania**: Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybierz maszyny, aby wybrać maszyn, które chcesz zaktualizować. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**. Widać stan kondycji komputera, zanim zaplanowane wdrożenie aktualizacji. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../log-analytics/log-analytics-computer-groups.md)
+- **Maszyny do zaktualizowania**: Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybierz maszyny, aby wybrać maszyn, które chcesz zaktualizować. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**. Widać stan kondycji komputera, zanim zaplanowane wdrożenie aktualizacji. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../azure-monitor/platform/computer-groups.md)
 
   ![Nowe okienko wdrożenia aktualizacji](./media/manage-update-multi/update-select-computers.png)
 

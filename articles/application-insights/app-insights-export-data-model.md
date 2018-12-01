@@ -1,6 +1,6 @@
 ---
-title: Model danych usługi Insights aplikacji Azure | Dokumentacja firmy Microsoft
-description: Opisuje właściwości wyeksportowane z Eksport ciągły w formacie JSON i używać jako filtrów.
+title: Model danych szczegółowych informacji w aplikacji platformy Azure | Dokumentacja firmy Microsoft
+description: Opisuje właściwości wyeksportowane z Eksport ciągły w formacie JSON i używane jako filtry.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -9,27 +9,26 @@ ms.assetid: cabad41c-0518-4669-887f-3087aef865ea
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: mbullwin
-ms.openlocfilehash: ee6597b78ac8de8fc3a7f3796010f22919243b23
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6686b241b93a0ae46b6de134f6f01526bb1a3ad2
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294898"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723452"
 ---
 # <a name="application-insights-export-data-model"></a>Model danych eksportu Insights aplikacji
-Poniższa tabela zawiera właściwości danych telemetrycznych wysłanych z [usługi Application Insights](app-insights-overview.md) zestawy SDK do portalu.
-Zobaczysz tych właściwości w danych wyjściowych z [eksportu ciągłego](app-insights-export-telemetry.md).
-Widoczne są także w filtry właściwości w [Explorer Metryka](app-insights-metrics-explorer.md) i [diagnostycznych wyszukiwania](app-insights-diagnostic-search.md).
+Poniższa tabela zawiera listę właściwości telemetrii wysyłanych z [usługi Application Insights](app-insights-overview.md) zestawów SDK do portalu.
+Zobaczysz tych właściwości w danymi wyjściowymi [eksportu ciągłego](app-insights-export-telemetry.md).
+Widoczne są także w filtry właściwości w [Eksploratora metryk](app-insights-metrics-explorer.md) i [wyszukiwaniu diagnostycznym](app-insights-diagnostic-search.md).
 
 Informacje, które należy zwrócić uwagę:
 
-* `[0]` w poniższych tabelach oznacza punkt w ścieżce, jeżeli konieczne jest wstawienie indeksu; ale nie zawsze jest 0.
-* Czas trwania znajdują się w dziesiąte mikrosekund, więc 10000000 == 1 sekundę.
-* Daty i godziny są w UTC i są podane w formacie ISO `yyyy-MM-DDThh:mm:ss.sssZ`
+* `[0]` w poniższych tabelach oznacza punkt w ścieżce, gdzie trzeba wstawić indeksu; ale nie zawsze jest 0.
+* Czasów trwania są w dziesiątych mikrosekund, więc 10000000 == 1 sekundę.
+* Daty i godziny są czasem UTC i są podane w formacie ISO `yyyy-MM-DDThh:mm:ss.sssZ`
 
 
 ## <a name="example"></a>Przykład
@@ -113,36 +112,36 @@ Informacje, które należy zwrócić uwagę:
   }
 
 ## <a name="context"></a>Kontekst
-Wszystkie typy telemetrii towarzyszy sekcję kontekstu. Nie wszystkie pola te są przesyłane z każdego punktu danych.
+Wszystkie rodzaje danych telemetrycznych towarzyszą sekcję kontekstu. Nie wszystkie te pola są przesyłane przy użyciu każdego punktu danych.
 
 | Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
-| context.Custom.Dimensions [0] |obiekt] |Wartość parametru właściwości niestandardowe pary klucz wartość ciągu. Maksymalna długość klucza 100, wartości maksymalnej długości 1024. Więcej niż 100 wartości unikatowe, właściwość można przeszukiwać, ale nie można użyć w przypadku segmentacji. Maksymalna liczba 200 kluczy dla ikey. |
-| context.Custom.Metrics [0] |obiekt] |Ustaw parametr niestandardowych miar i TrackMetrics pary klucz wartość. Maksymalnej długości klucza 100 wartości może być liczbą. |
+| context.Custom.Dimensions [0] |obiekt] |Pary klucz wartość ciągu jest ustawiony za pomocą parametru właściwości niestandardowe. Maksymalna długość 100, wartości maksymalna długość klucza 1024. Więcej niż 100 wartości unikatowych, właściwości mogą być wyszukiwane, ale nie można używać do segmentacji. 200 maksymalna liczba kluczy na klucz instrumentacji. |
+| context.Custom.Metrics [0] |obiekt] |Ustaw parametr pomiary niestandardowe i TrackMetrics pary klucz wartość. Maksymalny długości klucza 100 wartości może być liczbą. |
 | context.data.eventTime |ciąg |UTC |
-| context.data.isSynthetic |wartość logiczna |Żądanie zostanie wyświetlony pochodzą z testu bot lub sieci web. |
-| context.data.samplingRate |numer |Wartość procentowa telemetrii generowane przez zestaw SDK, który jest wysyłany do portalu. Zakres niż 100,0 0,0. |
-| context.Device |obiekt |Urządzenia klienckiego |
-| context.Device.Browser |ciąg |IE Chrome... |
-| context.device.browserVersion |ciąg |Chrome 48,0... |
+| context.data.isSynthetic |wartość logiczna |Pojawia się, że żądania pochodzą z testów sieci web lub bot. |
+| context.data.samplingRate |numer |Procent telemetrii wygenerowanej przez zestaw SDK, które są wysyłane do portalu. Należeć do zakresu od 0,0 100,0. |
+| context.Device |obiekt |Urządzenie klienckie |
+| context.Device.Browser |ciąg |IE chrom... |
+| context.device.browserVersion |ciąg |Dla programu Chrome 48,0... |
 | context.device.deviceModel |ciąg | |
 | context.device.deviceName |ciąg | |
 | context.Device.ID |ciąg | |
 | context.Device.Locale |ciąg |de-DE, en-GB... |
 | context.Device.Network |ciąg | |
 | context.device.oemName |ciąg | |
-| context.device.osVersion |ciąg |Systemu operacyjnego hosta |
+| context.device.osVersion |ciąg |System operacyjny hosta |
 | context.device.roleInstance |ciąg |Identyfikator serwera hosta |
 | context.device.roleName |ciąg | |
-| context.Device.Type |ciąg |Komputer PC przeglądarki... |
-| context.Location |obiekt |Pochodną clientip. |
-| context.Location.City |ciąg |Pochodne clientip, jeśli znane |
-| context.Location.ClientIP |ciąg |Ostatni ośmiokąt anonimowy jest 0. |
+| context.Device.Type |ciąg |Komputer PC, przeglądarce... |
+| context.Location |obiekt |Pochodnej ClientIP. |
+| context.Location.City |ciąg |Pochodnej ClientIP, jeśli są znane |
+| context.Location.ClientIP |ciąg |Ostatni ośmiokątem są anonimowe na 0. |
 | context.Location.continent |ciąg | |
 | context.Location.country |ciąg | |
 | context.Location.Province |ciąg |Województwo |
 | context.Operation.ID |ciąg |Elementy, które mają ten sam identyfikator operacji są wyświetlane jako elementy powiązane w portalu. Zazwyczaj identyfikator żądania. |
-| context.Operation.name |ciąg |Nazwa adresu URL lub żądania |
+| context.Operation.name |ciąg |Nazwa adresu URL lub żądanie |
 | context.operation.parentId |ciąg |Zezwala na zagnieżdżone elementy powiązane. |
 | context.Session.ID |ciąg |Identyfikator grupy działań z tego samego źródła. Okres 30 minut bez operacji sygnalizuje koniec sesji. |
 | context.session.isFirst |wartość logiczna | |
@@ -152,18 +151,18 @@ Wszystkie typy telemetrii towarzyszy sekcję kontekstu. Nie wszystkie pola te s�
 | context.user.authAcquisitionDate |ciąg |[Uwierzytelniony użytkownik](app-insights-api-custom-events-metrics.md#authenticated-users) |
 | context.user.isAuthenticated |wartość logiczna | |
 | internal.data.documentVersion |ciąg | |
-| internal.Data.ID |ciąg | Unikatowy identyfikator, gdy element jest pozyskanych przypisany do usługi Application Insights |
+| internal.Data.ID |ciąg | Unikatowy identyfikator, który jest przypisywany podczas element pobieranym do usługi Application Insights |
 
 ## <a name="events"></a>Zdarzenia
-Niestandardowe zdarzenia generowane przez [funkcji TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent).
+Niestandardowe zdarzenia generowane przez [poleceń TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent).
 
 | Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
-| Liczba zdarzeń [0] |liczba całkowita |100 / ([próbkowania](app-insights-sampling.md) szybkość). Na przykład 4 =&gt; 25%. |
+| Liczba zdarzeń [0] |liczba całkowita |100 / ([próbkowania](app-insights-sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
 | Nazwa zdarzenia [0] |ciąg |Nazwa zdarzenia.  Maksymalna długość 250. |
 | adres url zdarzenia [0] |ciąg | |
-| zdarzenia [0] urlData.base |ciąg | |
-| zdarzenia [0] urlData.host |ciąg | |
+| urlData.base zdarzeń [0] |ciąg | |
+| urlData.host zdarzeń [0] |ciąg | |
 
 ## <a name="exceptions"></a>Wyjątki
 Raporty [wyjątki](app-insights-asp-net-exceptions.md) na serwerze i w przeglądarce.
@@ -171,89 +170,89 @@ Raporty [wyjątki](app-insights-asp-net-exceptions.md) na serwerze i w przegląd
 | Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
 | zestaw basicException [0] |ciąg | |
-| Liczba basicException [0] |liczba całkowita |100 / ([próbkowania](app-insights-sampling.md) szybkość). Na przykład 4 =&gt; 25%. |
+| Liczba basicException [0] |liczba całkowita |100 / ([próbkowania](app-insights-sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
 | exceptionGroup basicException [0] |ciąg | |
-| exceptionType basicException [0] |ciąg | |
+| Typ basicException [0] |ciąg | |
 | failedUserCodeMethod basicException [0] |ciąg | |
 | failedUserCodeAssembly basicException [0] |ciąg | |
 | handledAt basicException [0] |ciąg | |
 | hasFullStack basicException [0] |wartość logiczna | |
 | Identyfikator basicException [0] |ciąg | |
 | Metoda basicException [0] |ciąg | |
-| komunikat basicException [0] |ciąg |Komunikat o wyjątku. Maksymalna długość 10 tys. |
+| komunikat basicException [0] |ciąg |Komunikat o wyjątku. Maksymalna długość wynosi 10 tys. |
 | outerExceptionMessage basicException [0] |ciąg | |
 | outerExceptionThrownAtAssembly basicException [0] |ciąg | |
 | outerExceptionThrownAtMethod basicException [0] |ciąg | |
 | outerExceptionType basicException [0] |ciąg | |
 | outerId basicException [0] |ciąg | |
-| basicException [0] [0] parsedStack zestawu |ciąg | |
-| Nazwa pliku parsedStack [0] basicException [0] |ciąg | |
+| zestaw parsedStack [0] basicException [0] |ciąg | |
+| basicException [0], nazwa_pliku parsedStack [0] |ciąg | |
 | poziom parsedStack [0] basicException [0] |liczba całkowita | |
-| basicException [0] [0] parsedStack wiersza |liczba całkowita | |
+| wiersz parsedStack [0] basicException [0] |liczba całkowita | |
 | Metoda parsedStack [0] basicException [0] |ciąg | |
-| stos basicException [0] |ciąg |Maksymalna długość 10k |
-| właściwość typeName basicException [0] |ciąg | |
+| stos basicException [0] |ciąg |Maksymalna długość wynosi 10k |
+| typeName basicException [0] |ciąg | |
 
 ## <a name="trace-messages"></a>Śledź komunikaty
-Wysyłany przez [TrackTrace](app-insights-api-custom-events-metrics.md#tracktrace), a [adaptery rejestrowania](app-insights-asp-net-trace-logs.md).
+Wysyłany przez [TrackTrace](app-insights-api-custom-events-metrics.md#tracktrace)i [kart rejestrowania](app-insights-asp-net-trace-logs.md).
 
 | Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
 | Nazwa_rejestratora komunikatu [0] |ciąg | |
 | Parametry komunikatu [0] |ciąg | |
-| nieprzetworzona komunikatu [0] |ciąg |Komunikat dziennika maksymalna długość 10 tys. |
-| poziom ważności komunikatu [0] |ciąg | |
+| komunikat [0] nieprzetworzone |ciąg |Komunikat dziennika maksymalna długość 10 tys. |
+| severityLevel komunikatu [0] |ciąg | |
 
 ## <a name="remote-dependency"></a>Zależności zdalne
-Wysyłane przez TrackDependency. Używany do raportu wydajności i użycia [wywołania zależności](app-insights-asp-net-dependencies.md) na serwerze i wywołania AJAX w przeglądarce.
+Wysyłany przez TrackDependency. Używany do raportu wydajności i użycia [wywołania zależności](app-insights-asp-net-dependencies.md) na serwerze i wywołań AJAX w przeglądarce.
 
 | Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
 | asynchroniczne remoteDependency [0] |wartość logiczna | |
-| nazwę bazową remoteDependency [0] |ciąg | |
-| commandName remoteDependency [0] |ciąg |Na przykład "Strona główna/index" |
-| Liczba remoteDependency [0] |liczba całkowita |100 / ([próbkowania](app-insights-sampling.md) szybkość). Na przykład 4 =&gt; 25%. |
-| dependencyTypeName remoteDependency [0] |ciąg |HTTP, SQL... |
-| durationMetric.value remoteDependency [0] |numer |Czas od wywołania zakończenia odpowiedzi przez zależność |
+| baseName remoteDependency [0] |ciąg | |
+| commandName remoteDependency [0] |ciąg |Na przykład "home/index" |
+| Liczba remoteDependency [0] |liczba całkowita |100 / ([próbkowania](app-insights-sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
+| dependencyTypeName remoteDependency [0] |ciąg |PROTOKÓŁ HTTP SQL... |
+| durationMetric.value remoteDependency [0] |numer |Czas od wywołania uzupełniania odpowiedzi przez zależność |
 | Identyfikator remoteDependency [0] |ciąg | |
 | Nazwa remoteDependency [0] |ciąg |Adres URL. Maksymalna długość 250. |
-| resultCode remoteDependency [0] |ciąg |z zależności HTTP |
+| Kod wyniku remoteDependency [0] |ciąg |z zależności HTTP |
 | Powodzenie remoteDependency [0] |wartość logiczna | |
-| Typ remoteDependency [0] |ciąg |HTTP, Sql... |
+| Typ remoteDependency [0] |ciąg |Protokół HTTP Sql... |
 | adres url remoteDependency [0] |ciąg |Maksymalna długość 2000 |
 | urlData.base remoteDependency [0] |ciąg |Maksymalna długość 2000 |
 | urlData.hashTag remoteDependency [0] |ciąg | |
-| urlData.host remoteDependency [0] |ciąg |Maksymalna długość 200 |
+| urlData.host remoteDependency [0] |ciąg |Maksymalna długość wynosi 200 |
 
 ## <a name="requests"></a>Żądania
-Wysyłany przez [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest). Standardowe moduły umożliwia czas odpowiedzi serwera raportów, na serwerze.
+Wysyłany przez [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest). Standardowe moduły umożliwia czas odpowiedzi serwera raportów, mierzona na serwerze.
 
 | Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
-| Liczba żądań [0] |liczba całkowita |100 / ([próbkowania](app-insights-sampling.md) szybkość). Na przykład: 4 =&gt; 25%. |
-| durationMetric.value żądania [0] |numer |Czas z żądania przychodzące do odpowiedzi. 1e7 == 1s |
+| Liczba żądań [0] |liczba całkowita |100 / ([próbkowania](app-insights-sampling.md) współczynnik). Na przykład: 4 =&gt; 25%. |
+| durationMetric.value żądania [0] |numer |Czas od żądania przychodzące do odpowiedzi. 1e7 == 1s |
 | Identyfikator żądania [0] |ciąg |Identyfikator operacji |
-| Nazwa żądania [0] |ciąg |GET/POST + podstawowego adresu url.  Maksymalna długość 250 |
-| responseCode żądania [0] |liczba całkowita |Odpowiedź HTTP wysyłane do klienta |
-| Powodzenie żądania [0] |wartość logiczna |Domyślna == (responseCode &lt; 400) |
-| adres url żądania [0] |ciąg |Wyłączeniem hosta |
+| Nazwa żądania [0] |ciąg |GET/POST + baza adresów url.  Maksymalna długość 250 |
+| responseCode żądania [0] |liczba całkowita |Odpowiedzi HTTP wysłanej do klienta |
+| żądanie powiodło się [0] |wartość logiczna |Domyślne == (responseCode &lt; 400) |
+| adres url żądania [0] |ciąg |Nie wliczając hosta |
 | urlData.base żądania [0] |ciąg | |
 | urlData.hashTag żądania [0] |ciąg | |
 | urlData.host żądania [0] |ciąg | |
 
-## <a name="page-view-performance"></a>Strona Widok wydajności
-Wysyłane przez przeglądarkę. Mierzy czas przetwarzania strony, od użytkownika inicjujący żądanie, aby wyświetlić pełną (z wyjątkiem asynchroniczne wywołania AJAX).
+## <a name="page-view-performance"></a>Wydajność widoku strony
+Wysyłane przez przeglądarkę. Pomiar czasu przetwarzania strony, użytkownik inicjuje żądanie, aby wyświetlić pełną (z wyjątkiem asynchroniczne wywołania AJAX).
 
-Wartości w kontekście Pokaż kliencki system operacyjny i wersja przeglądarki.
+Wartości w kontekście pokazują kliencki system operacyjny i wersję przeglądarki.
 
 | Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
 | clientProcess.value clientPerformance [0] |liczba całkowita |Czas od końca odbieranie HTML do wyświetlania strony. |
 | Nazwa clientPerformance [0] |ciąg | |
-| networkConnection.value clientPerformance [0] |liczba całkowita |Czas do ustanowienia połączenia sieciowego. |
-| receiveRequest.value clientPerformance [0] |liczba całkowita |Czas od końca wysyłania żądania odbierania HTML w odpowiedzi. |
-| sendRequest.value clientPerformance [0] |liczba całkowita |Czas od podjętych można wysłać żądania HTTP. |
-| total.value clientPerformance [0] |liczba całkowita |Czas od rozpoczyna wysyłanie żądania do wyświetlania strony. |
+| networkConnection.value clientPerformance [0] |liczba całkowita |Czas poświęcony na ustanowienia połączenia sieciowego. |
+| receiveRequest.value clientPerformance [0] |liczba całkowita |Czas od końca wysyła żądanie do odbierania w odpowiedzi HTML. |
+| sendRequest.value clientPerformance [0] |liczba całkowita |Czas od podjęte w celu wysyłania żądań HTTP. |
+| total.value clientPerformance [0] |liczba całkowita |Czas od rozpoczyna wysyłanie żądań do wyświetlania strony. |
 | adres url clientPerformance [0] |ciąg |Adres URL tego żądania |
 | urlData.base clientPerformance [0] |ciąg | |
 | urlData.hashTag clientPerformance [0] |ciąg | |
@@ -265,35 +264,35 @@ Wysyłany przez trackPageView() lub [stopTrackPage](app-insights-api-custom-even
 
 | Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
-| Liczba widoku [0] |liczba całkowita |100 / ([próbkowania](app-insights-sampling.md) szybkość). Na przykład 4 =&gt; 25%. |
-| durationMetric.value widoku [0] |liczba całkowita |Wartość Opcjonalnie trackPageView() lub startTrackPage() - stopTrackPage(). Nie taka sama jak clientPerformance wartości. |
+| Liczba wyświetleń [0] |liczba całkowita |100 / ([próbkowania](app-insights-sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
+| Wyświetl durationMetric.value [0] |liczba całkowita |Wartość Opcjonalnie trackPageView() lub startTrackPage() - stopTrackPage(). Nie taka sama jak clientPerformance wartości. |
 | Nazwa widoku [0] |ciąg |Tytuł strony.  Maksymalna długość 250 |
 | adres url widoku [0] |ciąg | |
-| urlData.base widoku [0] |ciąg | |
-| urlData.hashTag widoku [0] |ciąg | |
-| urlData.host widoku [0] |ciąg | |
+| Wyświetl urlData.base [0] |ciąg | |
+| Wyświetl urlData.hashTag [0] |ciąg | |
+| Wyświetl urlData.host [0] |ciąg | |
 
 ## <a name="availability"></a>Dostępność
-Raporty [testów sieci web dostępności](app-insights-monitor-web-app-availability.md).
+Raporty [testy sieci web dostępności](app-insights-monitor-web-app-availability.md).
 
 | Ścieżka | Typ | Uwagi |
 | --- | --- | --- |
 | availabilityMetric.name dostępności [0] |ciąg |availability |
-| availabilityMetric.value dostępności [0] |numer |w wersji 1.0 lub 0,0 |
-| Liczba dostępności [0] |liczba całkowita |100 / ([próbkowania](app-insights-sampling.md) szybkość). Na przykład 4 =&gt; 25%. |
+| availabilityMetric.value dostępności [0] |numer |w wersji 1.0 lub 0.0 |
+| Liczba dostępności [0] |liczba całkowita |100 / ([próbkowania](app-insights-sampling.md) współczynnik). Na przykład 4 =&gt; 25%. |
 | dataSizeMetric.name dostępności [0] |ciąg | |
 | dataSizeMetric.value dostępności [0] |liczba całkowita | |
 | durationMetric.name dostępności [0] |ciąg | |
 | durationMetric.value dostępności [0] |numer |Czas trwania testu. 1e7 == 1s |
-| komunikat dostępności [0] |ciąg |Błąd diagnostyki |
-| wynik dostępności [0] |ciąg |Przebieg/niepowodzenie |
-| runLocation dostępności [0] |ciąg |Liczba żądań http geograficznie źródła |
+| komunikat o dostępności [0] |ciąg |Błąd diagnostyki |
+| wynik dostępności [0] |ciąg |Powodzenie/niepowodzenie |
+| runLocation dostępności [0] |ciąg |Źródło geograficznie liczba żądań http |
 | Nazwa_testu dostępności [0] |ciąg | |
-| testRunId dostępności [0] |ciąg | |
+| Identyfikator przebiegu testu dostępności [0] |ciąg | |
 | testTimestamp dostępności [0] |ciąg | |
 
 ## <a name="metrics"></a>Metryki
-Wygenerowany przez TrackMetric().
+Generowane przez TrackMetric().
 
 Wartość metryki znajduje się w context.custom.metrics[0]
 
@@ -323,7 +322,7 @@ Na przykład:
     }
 
 ## <a name="about-metric-values"></a>Wartości metryk — informacje
-Wartości metryki, zarówno w raportach metryki i w innych miejscach, są zgłaszane ze strukturą obiektu standardowa. Na przykład:
+Wartości metryk, zarówno w raportach metryki i w innych miejscach, są zgłaszane ze strukturą obiektu standardowego. Na przykład:
 
       "durationMetric": {
         "name": "contoso.org",
@@ -336,16 +335,16 @@ Wartości metryki, zarówno w raportach metryki i w innych miejscach, są zgłas
         "sampledValue": 468.71603053650279
       }
 
-Aktualnie — mimo że to mogą ulec zmianie w przyszłości — wszystkie wartości zgłoszone standardowe moduły SDK `count==1` i tylko `name` i `value` pola są przydatne. Jeśli piszesz wywołania TrackMetric jest tylko wówczas, gdy będą się różnić w którym Ustaw inne parametry.
+Aktualnie — mimo że to mogą ulec zmianie w przyszłości — wszystkie wartości zgłoszone standardowe moduły SDK `count==1` i tylko `name` i `value` pola są przydatne. Będzie tylko wówczas, gdy będą się różnić, jeśli piszesz wywołania TrackMetric w którym zestawie innych parametrów.
 
-Celem innych pól jest umożliwienie metryki być łączone w zestawie SDK, aby zmniejszyć ruch do portalu. Na przykład można średni kilka kolejne odczyty przed wysłaniem raportu o każdym metryki. Następnie będzie obliczyć min, max i odchylenie standardowe wartości agregacji (Suma lub średnia) i ustaw liczbę do liczby odczytów reprezentowany przez raport.
+Celem innych pól jest umożliwiające metryki agregowania w zestawie SDK w celu zredukowania ruchu w portalu. Można na przykład średnia kilka kolejne odczyty, przed wysłaniem raportu o każdym metryki. Następnie może obliczyć min, max, odchylenie standardowe i wartości zagregowanej (Suma lub średnia) i ustaw liczbę do liczby odczytów reprezentowany przez raport.
 
-W powyższej tabeli mają możemy pominięcia liczba pól rzadko używane, min, max, stdDev i sampledValue.
+W powyższej tabeli pominięto rzadko używane pola liczą, min, max, stdDev i sampledValue.
 
-Zamiast wstępnie agregację metryki, możesz użyć [próbkowania](app-insights-sampling.md) Jeśli musisz zmniejszyć ilość danych telemetrycznych.
+Zamiast wstępnie agregacji metryk, możesz użyć [próbkowania](app-insights-sampling.md) Jeśli musisz ograniczyć ilość danych telemetrii.
 
 ### <a name="durations"></a>Czas trwania
-Z wyjątkiem przypadków, gdy zaznaczono inaczej czas trwania są reprezentowane w dziesiąte mikrosekund tak, aby 10000000.0 oznacza 1 sekundę.
+Z wyjątkiem sytuacji, gdy inaczej czasu trwania są reprezentowane w liczba dziesiątych części mikrosekund tak, aby 10000000.0 oznacza, że 1 sekundę.
 
 ## <a name="see-also"></a>Zobacz także
 * [Application Insights](app-insights-overview.md)

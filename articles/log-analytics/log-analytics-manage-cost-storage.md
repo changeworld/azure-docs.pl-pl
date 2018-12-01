@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 8343c27693538480757a879e477ec77fba08de3d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 350c009f77bc37ae2201b1d5c3b701e89301b7aa
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958342"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721701"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w usłudze Log Analytics
 
@@ -73,7 +72,7 @@ Przegląd [użycie usługi Log Analytics i szacowane koszty](log-analytics-usage
 ### <a name="manage-the-maximum-daily-data-volume"></a>Zarządzanie Maksymalna dzienna ilość danych 
 Poniżej opisano sposób konfigurowania limit zarządzanie ilością danych, która będzie obsługiwać usługi Log Analytics, dziennie.  
 
-1. W obszarze roboczym wybierz **użycie i szacunkowe koszty** z okienka po lewej stronie.
+1. W obszarze roboczym wybierz pozycję **Użycie i szacunkowe koszty** w lewym okienku.
 2. Na **użycie i szacunkowe koszty** dla wybranego obszaru roboczego strony, kliknij przycisk **zarządzanie ilością danych** w górnej części strony. 
 5. Dzienny limit jest **OFF** domyślnie — kliknij przycisk **ON** można ją włączyć, a następnie ustaw limit objętość danych w GB/dzień.<br><br> ![Usługa log Analytics skonfigurować limit danych](media/log-analytics-manage-cost-storage/set-daily-volume-cap-01.png)
 
@@ -99,8 +98,8 @@ Gdy alert jest zdefiniowana i limit zostanie osiągnięty, alert zostanie wyzwol
 ## <a name="change-the-data-retention-period"></a>Zmienić okres przechowywania danych 
 Poniżej opisano sposób konfigurowania dziennika jak długo dane są przechowywane w obszarze roboczym.
  
-1. W obszarze roboczym wybierz **użycie i szacunkowe koszty** z okienka po lewej stronie.
-2. Na **użycie i szacunkowe koszty** kliknij **zarządzanie ilością danych** w górnej części strony.
+1. W obszarze roboczym wybierz pozycję **Użycie i szacunkowe koszty** w lewym okienku.
+2. Na stronie **Użycie i szacunkowe koszty** kliknij pozycję **Zarządzanie ilością danych** w górnej części strony.
 5. W okienku, przesuń suwak, aby zwiększyć lub zmniejszyć liczbę dni, a następnie kliknij przycisk **OK**.  Jeśli użytkownik pracuje na *bezpłatne* warstwy, nie można zmodyfikować okres przechowywania danych i należy uaktualnić do warstwy płatnej w celu kontrolowania tego ustawienia.<br><br> ![Zmiana ustawienia przechowywania danych w obszarze roboczym](media/log-analytics-manage-cost-storage/manage-cost-change-retention-01.png)
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów

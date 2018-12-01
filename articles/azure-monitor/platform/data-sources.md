@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 201e9e2cb74f18e69d919ff16132cb889d1b6455
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f242176ef77f2fd419f9e2e52354c73f74f74557
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635326"
+ms.locfileid: "52681555"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Źródła danych w usłudze Azure Monitor
 W tym artykule opisano źródeł danych zbieranych przez usługi Azure Monitor do monitorowania kondycji i wydajności zasobów oraz aplikacje uruchomione na nich. Te zasoby może być na platformie Azure, w innej chmurze lub lokalnie.  Zobacz [dane zebrane przez usługi Azure Monitor](data-collection.md) szczegółowe informacje na temat sposobu przechowywania tych danych i jak można je wyświetlić.
@@ -63,7 +63,7 @@ Większość usług platformy Azure spowoduje wygenerowanie [metryk platformy](d
 ### <a name="resource-diagnostic-logs"></a>Dzienniki diagnostyczne zasobu
 Gdy dziennik aktywności zawiera informacje dotyczące operacji wykonywanych na zasoby platformy Azure, poziom zasobów [dzienniki diagnostyczne](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) zapewniają wgląd w działanie samego zasobu.   Wymagania dotyczące konfiguracji i zawartości te dzienniki [zależy od typu zasobu](../../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
 
-Dzienniki diagnostyczne bezpośrednio nie można wyświetlić w witrynie Azure portal, ale możesz [wysyłać je do usługi Azure storage w celu archiwizowania](../../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) i wyeksportować je do [Centrum zdarzeń](../../event-hubs/event-hubs-about.md) przekierowania do innych usług lub [w Dzienniku Analiza](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) do analizy. Niektóre zasoby można napisać bezpośrednio do usługi Log Analytics, podczas gdy inne zapisu do konta magazynu przed [importowane do usługi Log Analytics](../../log-analytics/log-analytics-azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage).
+Dzienniki diagnostyczne bezpośrednio nie można wyświetlić w witrynie Azure portal, ale możesz [wysyłać je do usługi Azure storage w celu archiwizowania](../../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) i wyeksportować je do [Centrum zdarzeń](../../event-hubs/event-hubs-about.md) przekierowania do innych usług lub [w Dzienniku Analiza](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) do analizy. Niektóre zasoby można napisać bezpośrednio do usługi Log Analytics, podczas gdy inne zapisu do konta magazynu przed [importowane do usługi Log Analytics](../../azure-monitor/platform/azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage).
 
 ### <a name="monitoring-solutions"></a>Rozwiązania do monitorowania
  [Monitorowanie rozwiązań](../../azure-monitor/insights/solutions.md) zbierania danych, aby dostarczyć dodatkowy wgląd w operacje dotyczące określonej usługi lub aplikacji. One zbierać dane do usługi Log Analytics, których mogą być analizowane za pomocą [języka zapytań](../../log-analytics/log-analytics-queries.md) lub [widoków](../../azure-monitor/platform/view-designer.md) najczęściej uwzględnianych w rozwiązaniu.

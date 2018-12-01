@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: cwatson
-ms.openlocfilehash: 7a4e19ae5bf770949623f4cee7fa0d3033ccfa29
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 00b29ddf29ae334154d41eedd0bf9e66556e09ad
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582619"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720123"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Zarządzanie dostępem do informacji dotyczących rozliczeń dla platformy Azure
 
@@ -72,9 +72,10 @@ Funkcja Czytelnik rozliczenia jest w wersji zapoznawczej i nie obsługuje jeszcz
 
 1. Wybierz **kontrola dostępu (IAM)**.
 1. Wybierz **przypisań ról** Aby wyświetlić wszystkie przypisania roli dla tej subskrypcji.
-1. Wybierz **Dodaj** > **Dodaj przypisanie roli**.
+1. Wybierz **Dodaj przypisanie roli**.
 1. W **roli** listy rozwijanej wybierz **Czytelnik rozliczenia**.
 1. W **wybierz** polu tekstowym wpisz nazwę lub poczty e-mail dla użytkownika, które chcesz dodać.
+1. Wybierz użytkownika.
 1. Wybierz pozycję **Zapisz**.
 1. Po kilku chwilach użytkownik przypisany do roli Czytelnik rozliczenia w zakresie subskrypcji.
 1. Czytelnik rozliczenia otrzymuje wiadomość e-mail z linkiem do logowania.

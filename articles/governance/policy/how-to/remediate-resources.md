@@ -8,12 +8,12 @@ ms.date: 09/25/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: adba2322bce5f0884cba51078e65feeaeaf193d9
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 5b503c1a96d0c0a5ce3d14e98622040116873045
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392701"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724659"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korygowanie niezgodnych zasobów przy użyciu usługi Azure Policy
 
@@ -123,7 +123,7 @@ Aby dodać rolę przydział tożsamość zarządzaną, wykonaj następujące kro
 
 1. Przejdź do zasobu lub kontenera nadrzędnego zasobów (Grupa zasobów, subskrypcji, grupy zarządzania), który wymaga definicji roli, dodane ręcznie.
 
-1. Kliknij przycisk **kontrola dostępu (IAM)** łącze w na stronie zasobów, a następnie kliknij przycisk **+ Dodaj** w górnej części strony kontrola dostępu.
+1. Kliknij przycisk **kontrola dostępu (IAM)** łącze w na stronie zasobów, a następnie kliknij przycisk **+ Dodaj przypisanie roli** w górnej części strony kontrola dostępu.
 
 1. Wybierz odpowiednią rolę, który odpowiada **roleDefinitionIds** z definicji zasad. Pozostaw **Przypisz dostęp do** wartość domyślną "Azure AD użytkownika, grupy lub aplikacji". W **wybierz** pole, wklej lub wpisz część Identyfikatora zasobu przypisania znajdujące się wcześniej. Po zakończeniu wyszukiwania, kliknij obiekt o takiej samej nazwie, wybierz identyfikator, a następnie kliknij przycisk **Zapisz**.
 

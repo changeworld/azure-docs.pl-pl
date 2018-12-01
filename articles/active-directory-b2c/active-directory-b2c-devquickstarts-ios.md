@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/07/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5f95b71497b59eafff09d4add2b4bb1c20656592
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 9f475c7bc373afd8a109873908bb583bc07708f1
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339362"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722551"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Usługa Azure AD B2C: Zaloguj się przy użyciu aplikacji systemu iOS
 
@@ -38,16 +38,16 @@ Następnie musisz utworzyć aplikację w katalogu usługi B2C. Rejestracja aplik
 * Skopiuj **Identyfikator aplikacji** przypisany do aplikacji. Ten identyfikator GUID będą potrzebne później.
 * Konfigurowanie **identyfikator URI przekierowania** ze schematem niestandardowym (na przykład com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Ten identyfikator URI będzie potrzebna później.
 
-## <a name="create-your-policies"></a>Tworzenie zasad
-W usłudze Azure AD B2C każde działanie użytkownika jest definiowane przy użyciu [zasad](active-directory-b2c-reference-policies.md). Ta aplikacja zawiera jedno rozwiązanie tożsamości: połączonego logowania i rejestracji. Utwórz te zasady, zgodnie z opisem w [artykule dotyczącym struktury zasad](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Podczas tworzenia zasad należy:
+## <a name="create-your-user-flows"></a>Tworzyć przepływy użytkownika
+W usłudze Azure AD B2C każde działanie użytkownika jest definiowany przez [przepływ użytkownika](active-directory-b2c-reference-policies.md). Ta aplikacja zawiera jedno rozwiązanie tożsamości: połączonego logowania i rejestracji. Utworzenie tego przepływu użytkownika, zgodnie z opisem w [artykule informacyjnym na temat przepływu użytkownika](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Po utworzeniu przepływu użytkownika, należy koniecznie:
 
 * W obszarze **atrybuty tworzenia konta**, wybierz atrybut **nazwę wyświetlaną**.  Możesz wybrać, jak również inne atrybuty.
 * W obszarze **oświadczeń aplikacji**, wybierz oświadczenia **nazwę wyświetlaną** i **identyfikator obiektu użytkownika**. Możesz wybrać inne oświadczenia, jak również.
-* Skopiować każdą utworzoną wartość **Nazwa** zasad. Twoja nazwa zasad jest poprzedzana prefiksem `b2c_1_` podczas zapisywania zasad.  Nazwa zasad będą potrzebne później.
+* Kopiuj **nazwa** każdego przepływu użytkownika po jego utworzeniu. Nazwa przepływu użytkownika jest poprzedzony znakiem `b2c_1_` po zapisaniu przepływu użytkownika.  Przepływ użytkownika będą potrzebne później.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-Po utworzeniu zasad będzie można rozpocząć tworzenie aplikacji.
+Po utworzeniu przepływów użytkownika możesz przystąpić do kompilowania aplikacji.
 
 ## <a name="download-the-sample-code"></a>Pobierz przykładowy kod
 Udostępniliśmy próbkę pracy z zastosowaniem AppAuth za pomocą usługi Azure AD B2C [w serwisie GitHub](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c). Możesz pobrać kod i uruchom go. Aby korzystać z własnej dzierżawy usługi Azure AD B2C, postępuj zgodnie z instrukcjami [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md).
@@ -60,11 +60,11 @@ W tym przykładzie został utworzony zgodnie z instrukcjami w pliku README [iOS 
 > AppAuth obsługuje system iOS 7 i nowsze wersje.  Jednak, aby zapewnić obsługę społecznościowych nazw logowania w usłudze Google, SFSafariViewController jest potrzebny co wymaga systemu iOS 9 lub nowszą.
 >
 
-### <a name="configuration"></a>Konfiguracja
+### <a name="configuration"></a>Konfigurowanie
 
 Komunikację można skonfigurować za pomocą usługi Azure AD B2C, określając punkt końcowy autoryzacji i tokena identyfikatory URI punktów końcowych.  Aby wygenerować te identyfikatory URI, potrzebne są następujące informacje:
 * Identyfikator dzierżawy (np. contoso.onmicrosoft.com)
-* Nazwa zasad (na przykład B2C\_1\_SignUpIn)
+* Przepływ użytkownika (na przykład B2C\_1\_SignUpIn)
 
 Punkt końcowy tokenu identyfikatora URI mogą być generowane przez zastąpienie dzierżawy\_identyfikator i zasady\_nazwy w następującym adresem URL:
 

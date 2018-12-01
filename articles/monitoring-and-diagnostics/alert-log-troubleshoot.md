@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: e2326f56ad367f744bc7895bc8c4bfd6f32d0310
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0612a7798d3cc2e43efc296bd2b749735e74f765
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264883"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720851"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Rozwiązywanie problemów z alertami dzienników w usłudze Azure Monitor  
 ## <a name="overview"></a>Przegląd
 W tym artykule pokazano, jak rozwiązywanie typowych problemów występujących podczas konfigurowania alertów dzienników w usłudze Azure monitor. Zapewnia również rozwiązania często zadawane pytania dotyczące funkcji lub konfiguracji alertów dzienników. 
 
-Termin **alertów dzienników** do opisania alerty, że ognia na podstawie niestandardowych zapytania w [usługi Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-analytics.md). Dowiedz się więcej o funkcji, terminologii i typy w [rejestrowania alertów — omówienie](monitor-alerts-unified-log.md).
+Termin **alertów dzienników** opisuje alerty, że ognia na podstawie niestandardowych zapytania w [usługi Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) lub [usługi Application Insights](../application-insights/app-insights-analytics.md). Dowiedz się więcej o funkcji, terminologii i typy w [rejestrowania alertów — omówienie](monitor-alerts-unified-log.md).
 
 > [!NOTE]
 > W tym artykule nie bierze pod uwagę przypadków, gdy witryna Azure portal Wyświetla i alertu wyzwolona reguła i powiadomień, wykonywane przez skojarzonych grup akcji. W takich przypadkach można znaleźć szczegółowe informacje w artykule na [grup akcji](monitoring-action-groups.md).
@@ -35,8 +35,7 @@ Alert dziennika okresowo działa na podstawie zapytania [usługi Log Analytics](
 Aby zminimalizować opóźnienie pozyskiwania danych, system czeka i ponawia zapytanie alertu wiele razy, jeśli stwierdzi, że potrzebne dane nie są jeszcze pozyskiwane. System ma wykładniczo zwiększa czasu oczekiwania. Dziennik alertów wyzwalaczy tylko po danych jest dostępna, więc ich opóźnienie może być spowodowany pozyskiwanie danych wolnego dziennika. 
 
 ### <a name="incorrect-time-period-configured"></a>Skonfigurowano nieprawidłowy okres.
-Zgodnie z opisem w artykule na [terminologii dla dziennika alertów](monitor-alerts-unified-log.md#log-search-alert-rule---definition-and-types), czas okresu określone w konfiguracji określa zakres czasu dla zapytania. Zapytanie zwraca tylko te rekordy, które zostały utworzone w tym zakresie czasu. Okres ogranicza dane pobrana dla zapytania dotyczącego dziennika zapobiec nadużyciu i zmierzone dowolnego polecenia na czas (np. temu) używanych w zapytaniu dziennika. 
-*Na przykład jeśli okres czasu jest ustawiony na 60 minut, a zapytanie jest uruchomione o 13:15, tylko rekordy utworzone z zakresu od 12:15:00 do 13:15 czasu są używane do zapytania dotyczącego dziennika. Jeśli zapytanie dziennika korzysta z czasu polecenia podobnego *temu (1d)*, zapytanie nadal tylko używa danych między 12:15 PM i 13:15 czasu, ponieważ w okresie jest równa tego interwału.*
+Zgodnie z opisem w artykule na [terminologii dla dziennika alertów](monitor-alerts-unified-log.md#log-search-alert-rule---definition-and-types), czas okresu określone w konfiguracji określa zakres czasu dla zapytania. Zapytanie zwraca tylko te rekordy, które zostały utworzone w tym zakresie czasu. Okres ogranicza dane pobrana dla zapytania dotyczącego dziennika zapobiec nadużyciu i zmierzone dowolnego polecenia na czas (takich jak *temu*) używanych w zapytaniu dziennika. Na przykład jeśli okres czasu jest ustawiony na 60 minut, a zapytanie jest uruchomione o 13:15, tylko rekordy utworzone z zakresu od 12:15:00 do 13:15 czasu są używane do zapytania dotyczącego dziennika. Jeśli zapytanie dziennika korzysta z czasu polecenia podobnego *temu (1d)*, zapytanie nadal korzysta z danych zakresu od 12:15:00 do 13:15 czasu ponieważ okres czasu jest ustawiona na tym interval.*
 
 Dlatego sprawdzanie okresu w konfiguracji zgodnego z zapytaniem. Na przykład, o których wspomniano wcześniej, jeśli używa zapytania dotyczącego dziennika *temu (1d)* pokazany z zielonym znacznikiem to okres czasu powinien być ustawiony do 24 godzin lub 1440 minut (jak wskazano w czerwony), aby upewnić się, wykonuje zapytanie, zgodnie z oczekiwaniami.
 
@@ -77,12 +76,14 @@ Szczegółowe dalej są niektóre typowe przyczyny, dlaczego skonfigurowanego [r
 ### <a name="alert-triggered-by-partial-data"></a>Alert wyzwolony przez częściowe dane
 Włączanie usługi Log Analytics i usługi Application Insights Analytics jest zależna od opóźnienia pozyskiwania i przetwarzania; z powodu, w momencie uruchamiania zapytanie alertu dzienników podana — mogą wystąpić przypadek żadne dane, które są dostępne lub tylko niektórych danych, które są dostępne. Aby uzyskać więcej informacji, zobacz [czas wprowadzania danych w usłudze Log Analytics](../log-analytics/log-analytics-data-ingestion-time.md).
 
-W zależności od sposobu skonfigurowania reguły alertu może być źle wielopaliwowego w przypadku, gdy jest nie lub częściowe dane w dziennikach w czasie wykonywania alertu. W takich przypadkach zaleca się, czy zapytanie alertu lub konfiguracji jest zmieniony. *Na przykład jeśli reguła alertu dziennika jest skonfigurowana do wyzwalania, gdy liczba wyników z zapytania analizy jest mniejsza niż () 5; wówczas, gdy nie ma danych (zero rekordu) lub częściowe wyniki (jeden rekord) będą wyzwalane reguły alertu. Gdzie — zgodnie z opóźnieniem pozyskiwania, kiedy tego samego zapytania ma zostać uruchomiona w usłudze Analytics zapytania przy użyciu pełnych danych może zawierać wynik jako 10 rekordów.*
+W zależności od sposobu skonfigurowania reguły alertu może być źle wielopaliwowego w przypadku nie lub częściowe dane w dziennikach w czasie wykonywania alertu. W takich przypadkach zaleca się zmiany zapytanie alertu ani konfiguracji. 
+
+Na przykład, jeśli skonfigurowano reguł alertów dzienników do wyzwalania, gdy liczba wyników z zapytania analizy jest mniejsza niż 5, a następnie alert uruchamiają gdy nie ma danych (zero rekordu) lub częściowe wyniki (jeden rekord). Jednak opóźnieniem pozyskiwania danych tego samego zapytania przy użyciu pełnych danych może zawierać wynik 10 rekordów.
 
 ### <a name="alert-query-output-misunderstood"></a>Dane wyjściowe zapytanie alertu źle zrozumiane
-Dla dziennika alertów logikę alertów są dostarczane przez użytkownika za pośrednictwem zapytania usługi analytics. Dostarczone zapytanie usługi analytics można używać różnych danych Big Data i funkcji matematycznych, aby utworzyć określone konstrukcji. Alerty usługi wykona zapytań klienta w odstępach czasu określonych danych w przedziale czasu określony; alerty usługi sprawia, że subtelne zmiany do kwerendy dostarczone — oparte na wybranego typu alertu i takie same można być poświadczeniem "Wyślij zapytanie w celu wykonania" w sekcji Konfigurowanie sygnału logikę ekranu, jak przedstawiono poniżej: ![zapytanie do wykonania](./media/monitor-alerts-unified/LogAlertPreview.png)
+Możesz podać logiki dla dziennika alertów w zapytania usługi analytics. Zapytania usługi analytics może używać różnych danych big data i funkcji matematycznych.  Alerty usług wykonuje zapytanie w odstępach czasu określonych danych dla określonego okresu. Alerty usługi sprawia, że wprowadzono subtelne zmiany zapytania oparte na wybranego typu alertu. Można to zaobserwować w sekcji "Wyślij zapytanie w celu wykonania" *konfigurowanie logiki sygnału* ekranu, jak pokazano poniżej: ![zapytanie do wykonania](./media/monitor-alerts-unified/LogAlertPreview.png)
  
-Przedstawionego na **zapytanie do wykonania** sekcja jest jakie dziennika alertu usługa zostanie uruchomiona; użytkownik może uruchomić określonej kwerendy, a także przedział czasu za pośrednictwem [portalu analiza](../log-analytics/log-analytics-log-search-portals.md) lub [interfejsu API analizy](https://docs.microsoft.com/rest/api/loganalytics/) -Jeśli chcą wiedzieć przed tworzenia alertu, może to być dane wyjściowe zapytanie alertu.
+Co to jest wyświetlany w **zapytanie do wykonania** pole jest działa usługa alertu dotyczącego dziennika. Możesz uruchomić określonego zapytania, a także przedział czasu za pośrednictwem [portalu analiza](../log-analytics/log-analytics-log-search-portals.md) lub [interfejsu API analizy](https://docs.microsoft.com/rest/api/loganalytics/) Jeśli chcesz zrozumieć, jakie zapytanie alertu danych wyjściowych może być przed faktycznie utworzenia alertu.
  
 ## <a name="next-steps"></a>Kolejne kroki
 

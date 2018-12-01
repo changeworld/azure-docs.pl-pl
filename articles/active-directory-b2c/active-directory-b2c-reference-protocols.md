@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/07/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6cfa3e0cb23f13b50c0fb7cd4f07a8d53c0f3186
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: fa6ae230a209d804f244d8bc46a3c6ac1abf6071
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340770"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725577"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Usługi Azure AD B2C: Protokoły uwierzytelniania
 Usługa Azure Active Directory B2C (Azure AD B2C) zapewnia usługi tożsamości dostępne jako usługa dla swoich aplikacji dzięki obsłudze dwa standardowe protokoły: OpenID Connect i OAuth 2.0. Usługa jest zgodny ze standardami, ale wszelkie dwie implementacje protokołów mogą występować niewielkie różnice. 
@@ -50,12 +50,12 @@ W prawie wszystkie przepływy OAuth i OpenID Connect cztery strony są związane
 
 * **Serwer zasobów** jest, gdzie znajduje się zasób lub danych. Magazyn uzna serwera autoryzacji do bezpiecznego uwierzytelniania i autoryzacji klienta OAuth. Używa również tokenów dostępu do elementu nośnego, aby upewnić się, że można udzielić dostępu do zasobu.
 
-## <a name="policies"></a>Zasady
+## <a name="policies-and-user-flows"></a>Zasady i użytkownika przepływów
 Można przypuszczać, że zasady usługi Azure AD B2C są najważniejszych funkcji usługi. Usługa Azure AD B2C rozszerza standardowe protokoły OAuth 2.0 i OpenID Connect, wprowadzenie do zasad. Umożliwiają one znacznie bardziej niż proste uwierzytelnianie i autoryzacja usługi Azure AD B2C. 
 
-Zasady pełni opisują środowiska tożsamości konsumentów, łącznie z rejestracji i logowania i profilu edycji. Zasady można zdefiniować w administracyjnej interfejsu użytkownika. Można je wykonać za pomocą parametru zapytania specjalne w żądaniach uwierzytelniania HTTP. 
+Ułatwiające konfigurowanie typowych zadań tożsamości, w portalu usługi Azure AD B2C zawiera wstępnie zdefiniowane, można skonfigurować zasady o nazwie **przepływy użytkownika**. Przepływy użytkownika pełni opisują środowiska tożsamości konsumentów, łącznie z rejestracji i logowania i profilu edycji. Przepływy użytkownika można zdefiniować w administracyjnej interfejsu użytkownika. Można je wykonać za pomocą parametru zapytania specjalne w żądaniach uwierzytelniania HTTP. 
 
-Zasady są standardowe funkcje protokołu OAuth 2.0 i OpenID Connect, więc należy poświęcić czas na ich zrozumienie. Aby uzyskać więcej informacji, zobacz [Podręcznik informacyjny w zasady usługi Azure AD B2C](active-directory-b2c-reference-policies.md).
+Zasady i przepływy użytkownika nie są standardowe funkcje protokołu OAuth 2.0 i OpenID Connect, więc należy poświęcić czas na ich zrozumienie. Aby uzyskać więcej informacji, zobacz [Podręcznik informacyjny przepływ użytkownika usługi Azure AD B2C](active-directory-b2c-reference-policies.md).
 
 ## <a name="tokens"></a>Tokeny
 Implementacja usługi Azure AD B2C protokołu OAuth 2.0 i OpenID Connect sprawia, że zwiększone użycie tokenów elementu nośnego, łącznie z tokenów elementu nośnego, które są reprezentowane jako tokenów sieci web JSON (tokenów Jwt). Token elementu nośnego jest tokenem zabezpieczającym uproszczone, która udziela dostępu "bearer" do chronionego zasobu.

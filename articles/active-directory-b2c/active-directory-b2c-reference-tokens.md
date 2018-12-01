@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5ff4ddee3d8af15caf082be56a51b1aa0d36f02a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 10de56ac8945be4bb0920f95774b469d283f575b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339981"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721378"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Usługi Azure AD B2C: Odwołanie tokenu
 
@@ -34,7 +34,7 @@ Uwagi dodatkowe zabezpieczenie na tokenów elementu nośnego można znaleźć [R
 
 Wiele tokenów wystawianych przez urząd usługi Azure AD B2C są implementowane jako tokenów sieci web JSON (tokenów Jwt). Token JWT jest compact, bezpieczny adres URL sposób przekazywania informacji między dwiema stronami. Tokenów Jwt zawierają informacje znane jako oświadczenia. Są to potwierdzenia informacji na temat elementu nośnego oraz temat tokenu. Oświadczenia w tokenów Jwt są obiektami JSON, które kodowania i serializacji do przesłania. Ponieważ tokenów Jwt wystawione przez usługę Azure AD B2C jest podpisany, ale nie są szyfrowane, można łatwo sprawdzić zawartość token JWT do debugowania. Dostępnych jest kilka narzędzi, można to zrobić, w tym [jwt.ms](https://jwt.ms). Aby uzyskać więcej informacji na temat tokenów Jwt, zobacz [specyfikacje JWT](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
 
-### <a name="id-tokens"></a>Tokeny Identyfikatora
+### <a name="id-tokens"></a>Tokeny identyfikatorów
 
 Identyfikator tokenu jest formą token zabezpieczający, który aplikacja otrzymuje z usługi Azure AD B2C `/authorize` i `/token` punktów końcowych. Identyfikator tokeny są reprezentowane jako [tokenów Jwt](#types-of-tokens), i mogą zawierać oświadczenia, które służą do identyfikowania użytkowników w swojej aplikacji. Gdy tokeny Identyfikatora są uzyskanych z `/authorize` punktu końcowego, są realizowane za pomocą [niejawny przepływ](active-directory-b2c-reference-spa.md), która jest często używana dla użytkowników, logując się do języka javascript na podstawie aplikacji sieci web. Gdy tokeny Identyfikatora są uzyskanych z `/token` punktu końcowego, są realizowane za pomocą [przepływu poufnych kod](active-directory-b2c-reference-oidc.md), co pozwala token ukryty za pomocą przeglądarki. Dzięki temu token do bezpiecznego wysłanie żądania HTTP do komunikacji między dwa składniki z tej samej aplikacji lub usługi. Można użyć oświadczenia w tokenie identyfikator, zgodnie z potrzebami. Są często używane do wyświetlania informacji o koncie lub podejmowania decyzji dotyczących kontroli dostępu w aplikacji.  
 
@@ -66,13 +66,13 @@ Gdy interfejs API odbiera token dostępu, musi ona [zweryfikować podpisu](#toke
 
 ### <a name="claims-in-id-and-access-tokens"></a>Oświadczenia w tokenach dostępu i identyfikator
 
-Gdy używasz usługi Azure AD B2C, masz szczegółową kontrolę nad zawartością tokenów. Można skonfigurować [zasady](active-directory-b2c-reference-policies.md) do wysyłania oświadczeń, które wymaganych przez aplikację w operacjach niektórych zestawów danych użytkownika. Te oświadczenia mogą zawierać właściwości standardowych, takich jak użytkownika `displayName` i `emailAddress`. Mogą również obejmować [atrybutów niestandardowych użytkownika](active-directory-b2c-reference-custom-attr.md) zdefiniowanemu w katalogu usługi B2C. Każdy identyfikator i dostęp do tokenu, który pojawi się zawiera zestaw oświadczeń związanych z zabezpieczeniami. Twoje aplikacje mogą używać tych oświadczeń do bezpiecznego uwierzytelniania użytkowników i żądania.
+Gdy używasz usługi Azure AD B2C, masz szczegółową kontrolę nad zawartością tokenów. Można skonfigurować [przepływy użytkownika](active-directory-b2c-reference-policies.md) i niestandardowych zasad do wysyłania oświadczeń, które wymaganych przez aplikację w operacjach niektórych zestawów danych użytkownika. Te oświadczenia mogą zawierać właściwości standardowych, takich jak użytkownika `displayName` i `emailAddress`. Mogą również obejmować [atrybutów niestandardowych użytkownika](active-directory-b2c-reference-custom-attr.md) zdefiniowanemu w katalogu usługi B2C. Każdy identyfikator i dostęp do tokenu, który pojawi się zawiera zestaw oświadczeń związanych z zabezpieczeniami. Twoje aplikacje mogą używać tych oświadczeń do bezpiecznego uwierzytelniania użytkowników i żądania.
 
 Należy pamiętać, że oświadczenia w tokeny Identyfikatora nie są zwracane w określonej kolejności. Ponadto nowe oświadczenia mogą zostać wprowadzone w tokeny Identyfikatora, w dowolnym momencie. Aplikacja nie powinna zostać podzielona na miarę wprowadzania nowych oświadczeń. Poniżej przedstawiono oświadczeń, których oczekujesz, że istnieje w tokenach dostępu i identyfikator, które są wystawione przez usługę Azure AD B2C. Dodatkowe oświadczenia są określane przez zasady. Praktyki, spróbuj wykonać sprawdzanie oświadczenia w tokenie identyfikator przykładowy przez wklejenie go do [jwt.ms](https://jwt.ms). Więcej szczegółowych informacji można znaleźć w [specyfikacją z OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html).
 
-| Nazwa | Oświadczenie | Przykładowa wartość | Opis |
+| Name (Nazwa) | Claim | Przykładowa wartość | Opis |
 | --- | --- | --- | --- |
-| Odbiorcy |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |Oświadczenia odbiorców identyfikuje zamierzonym odbiorcą tokenu. Dla usługi Azure AD B2C odbiorców jest identyfikator aplikacji dla swojej aplikacji, przypisany do aplikacji w portalu rejestracji aplikacji. Aplikację należy sprawdzić tę wartość i odrzucenie tokenu, jeśli nie jest zgodny. Grupy odbiorców jest równoznaczny z zasobów. |
+| Grupy odbiorców |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |Oświadczenia odbiorców identyfikuje zamierzonym odbiorcą tokenu. Dla usługi Azure AD B2C odbiorców jest identyfikator aplikacji dla swojej aplikacji, przypisany do aplikacji w portalu rejestracji aplikacji. Aplikację należy sprawdzić tę wartość i odrzucenie tokenu, jeśli nie jest zgodny. Grupy odbiorców jest równoznaczny z zasobów. |
 | Wystawca |`iss` |`https://{tenantname}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |To oświadczenie identyfikuje usługę tokenu zabezpieczającego (STS), który tworzy i zwraca token. Identyfikuje katalog usługi Azure AD, w którym użytkownik został uwierzytelniony. Aplikację należy zweryfikować Oświadczenie wystawcy, aby upewnić się, że token pochodzi od punktu końcowego v2.0 usługi Azure Active Directory. |
 | Wydane w |`iat` |`1438535543` |To oświadczenie jest czas, w którym token został wystawiony, reprezentowany w czasie uniksowym. |
 | Czas wygaśnięcia |`exp` |`1438539443` |Czas wygaśnięcia, oświadczenia to czas, w której token staje się nieprawidłowy, reprezentowany w czasie uniksowym. Twoja aplikacja powinna używać tego oświadczenia próba sprawdzania prawidłowości okres istnienia tokenu. |
@@ -81,7 +81,7 @@ Należy pamiętać, że oświadczenia w tokeny Identyfikatora nie są zwracane w
 | Kod skrótu |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Skrót kod znajduje się w tokenie identyfikator tylko wtedy, gdy token wystawiony wraz z kodu autoryzacji OAuth 2.0. Skrót kod może służyć do weryfikowania autentyczności kodu autoryzacji. Aby uzyskać więcej informacji na temat sposobu tę weryfikację należy przeprowadzić, zobacz [specyfikacją z OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html).  |
 | Skrót tokenu dostępu |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Skrót tokenu dostępu znajduje się w tokenie identyfikator tylko wtedy, gdy token wystawiony wraz z tokenu dostępu OAuth 2.0. Skrót tokenu dostępu może służyć do weryfikowania autentyczności tokenu dostępu. Aby uzyskać więcej informacji na temat sposobu tę weryfikację należy przeprowadzić, zobacz [specyfikacją z OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html)  |
 | Identyfikator jednorazowy |`nonce` |`12345` |Identyfikator jednorazowy jest strategii umożliwia ograniczenie liczby ataków powtarzania tokenu. Aplikację można określić identyfikatora jednorazowego w żądaniu autoryzacji przy użyciu `nonce` parametr zapytania. Wartości podane w żądaniu będzie obliczanie w niezmienionej postaci w `nonce` oświadczenia tylko tokenu Identyfikatora. Umożliwia to aplikacji, aby sprawdzić wartość względem wartości, które on określony w żądaniu, co umożliwi skojarzenie sesji aplikacji przy użyciu podanego tokenu Identyfikatora. Aplikację należy wykonywać tej weryfikacji w procesie weryfikacji tokenu Identyfikatora. |
-| Temat |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |To jest jednostka o tym, które token określa informacje, takie jak użytkownik aplikacji. Ta wartość jest niezmienny i nie może być ponownie przypisywany ani ponownie. Może służyć do sprawdzania autoryzacji bezpiecznie, np. gdy token jest używany do uzyskania dostępu do zasobu. Domyślnie roszczenie podmiotu jest wypełniana identyfikator obiektu użytkownika w katalogu. Aby dowiedzieć się więcej, zobacz [usługi Azure Active Directory B2C: tokenów, sesji i konfiguracji rejestracji jednokrotnej](active-directory-b2c-token-session-sso.md). |
+| Podmiot |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |To jest jednostka o tym, które token określa informacje, takie jak użytkownik aplikacji. Ta wartość jest niezmienny i nie może być ponownie przypisywany ani ponownie. Może służyć do sprawdzania autoryzacji bezpiecznie, np. gdy token jest używany do uzyskania dostępu do zasobu. Domyślnie roszczenie podmiotu jest wypełniana identyfikator obiektu użytkownika w katalogu. Aby dowiedzieć się więcej, zobacz [usługi Azure Active Directory B2C: tokenów, sesji i konfiguracji rejestracji jednokrotnej](active-directory-b2c-token-session-sso.md). |
 | Odwołania do klasy kontekstu uwierzytelniania |`acr` |Nie dotyczy |Nie używane obecnie, z wyjątkiem w przypadku starszych zasad. Aby dowiedzieć się więcej, zobacz [usługi Azure Active Directory B2C: tokenów, sesji i konfiguracji rejestracji jednokrotnej](active-directory-b2c-token-session-sso.md). |
 | Framework zasady zaufania |`tfp` |`b2c_1_sign_in` |Jest to nazwa zasad, które zostało użyte do uzyskania tokenu Identyfikatora. |
 | Czas uwierzytelniania |`auth_time` |`1438535543` |To oświadczenie jest czasu, jaką ostatniego wprowadzić poświadczenia użytkownika, są reprezentowane w czasie uniksowym. |
@@ -145,12 +145,12 @@ Gdy swojej aplikacji lub interfejsu API odbiera token Identyfikatora, on równie
 
 Aby uzyskać pełną listę aplikacji, należy wykonać sprawdzanie poprawności, zobacz [specyfikacją z OpenID Connect](https://openid.net). Szczegółowe informacje o oczekiwanej wartości te oświadczenia są uwzględnione w poprzednim [token sekcji](#types-of-tokens).  
 
-## <a name="token-lifetimes"></a>Czasy życia tokenu
+## <a name="token-lifetimes"></a>Okresy istnienia tokenu
 Aby jeszcze bardziej wykorzystać wiedzę na temat znajdują się następujące okresów istnienia tokenu. Mogą one pomóc podczas tworzenia i debugowania aplikacji. Pamiętaj, że aplikacje nie powinien być zapisywany można oczekiwać, żadnego z tych okresy istnienia, aby pozostał bez zmian. Mogą i ulegną zmianie. Przeczytaj więcej na temat [dostosowywania okresów istnienia tokenu](active-directory-b2c-token-session-sso.md) w usłudze Azure AD B2C.
 
 | Token | Okres istnienia | Opis |
 | --- | --- | --- |
-| Tokeny Identyfikatora |Jedna godzina |Identyfikator tokeny są zazwyczaj prawidłowe na godzinę. Twoja aplikacja sieci web umożliwia ten okres istnienia utrzymują własne sesje użytkowników (zalecane). Możesz również okres istnienia innej sesji. Jeśli aplikacja wymaga uzyskać token nowego Identyfikatora, należy po prostu utworzyć nowe żądanie logowania do usługi Azure AD. Jeśli użytkownik ma prawidłową sesję z usługą Azure AD, ten użytkownik może nie być konieczne ponowne wprowadzenie poświadczeń. |
+| Tokeny identyfikatorów |Jedna godzina |Identyfikator tokeny są zazwyczaj prawidłowe na godzinę. Twoja aplikacja sieci web umożliwia ten okres istnienia utrzymują własne sesje użytkowników (zalecane). Możesz również okres istnienia innej sesji. Jeśli aplikacja wymaga uzyskać token nowego Identyfikatora, należy po prostu utworzyć nowe żądanie logowania do usługi Azure AD. Jeśli użytkownik ma prawidłową sesję z usługą Azure AD, ten użytkownik może nie być konieczne ponowne wprowadzenie poświadczeń. |
 | Tokenów odświeżania |Maksymalnie 14 dni |Token odświeżania pojedynczego nadaje się do maksymalnie 14 dni. Jednak token odświeżania mogą stać się nieprawidłowe w dowolnym momencie z kilku powodów. Aplikacja powinna w dalszym ciągu spróbuj użyć tokenu odświeżania, dopóki żądanie zakończy się niepowodzeniem lub dopóki aplikacji zamienia nowego tokenu odświeżania. Token odświeżania może również stać się nieprawidłowy, jeśli upłynęło 90 dni, ponieważ ostatnio wprowadzone poświadczenia użytkownika. |
 | Kody autoryzacji |Pięć minut |Kody autoryzacji są celowo krótkotrwałe. One powinien można wymienić natychmiast tokenów dostępu, tokeny Identyfikatora lub tokeny odświeżania po ich odebraniu. |
 

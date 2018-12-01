@@ -9,17 +9,16 @@ editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 4aeb14bd7962205b89e1207e082f551999f54558
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 0dfabef1fba124b02efa07bed8c2c12888cfd85e
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634527"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721438"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analizowanie danych usługi Log Analytics w usłudze Azure Monitor
 

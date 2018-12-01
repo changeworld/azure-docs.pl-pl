@@ -7,25 +7,25 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5634c14ee2b25600d66ff0f2c7385b2aaa9f1810
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: a1457b2aa571b58502b7d819eb3bcf142c10dac1
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699502"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725067"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Zasady niestandardowe w usłudze Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Zasady niestandardowe są pliki konfiguracji definiujące zachowanie Twojej dzierżawy usługi Azure Active Directory (Azure AD) B2C. Wbudowane zasady są wstępnie zdefiniowane w portalu usługi Azure AD B2C dla typowych zadań tożsamości. Zasady niestandardowe mogą być w pełni edytowane przez dewelopera tożsamości w celu wykonania wielu różnych zadań.
+Zasady niestandardowe są pliki konfiguracji definiujące zachowanie Twojej dzierżawy usługi Azure Active Directory (Azure AD) B2C. Przepływy użytkownika są wstępnie zdefiniowane w portalu usługi Azure AD B2C dla typowych zadań tożsamości. Zasady niestandardowe mogą być w pełni edytowane przez dewelopera tożsamości w celu wykonania wielu różnych zadań.
 
-## <a name="comparing-built-in-policies-and-custom-policies"></a>Porównywanie wbudowane i niestandardowe zasady
+## <a name="comparing-user-flows-and-custom-policies"></a>Porównanie przepływy użytkownika i zasad niestandardowych
 
-| | Wbudowane zasady | Zasady niestandardowe |
+| | Przepływy użytkowników | Zasady niestandardowe |
 |-|-------------------|-----------------|
 | Użytkowników docelowych | Wszystkich deweloperów aplikacji z użyciem lub bez wiedzy tożsamości. | Specjaliści tożsamości, integratorów systemów, konsultantów i zespołów wewnętrznych tożsamości. Są doświadczenia z przepływów OpenIDConnect i zrozumieć dostawców tożsamości i uwierzytelniania opartego na oświadczeniach. |
 | Metody konfiguracji | Witryny Azure portal na przyjazny dla użytkownika — interfejs użytkownika (UI). | Bezpośrednie edytowanie plików XML, a następnie przekazaniu do witryny Azure portal. |
@@ -33,7 +33,7 @@ Zasady niestandardowe są pliki konfiguracji definiujące zachowanie Twojej dzie
 | Dostosowywanie atrybutu | Standardowe i niestandardowe atrybuty. | Ten sam |
 | Token i sesji zarządzania | Token niestandardowy i wiele opcji sesji. | Ten sam |
 | Dostawcy tożsamości | Wstępnie zdefiniowane dostawcy uwierzytelniania lokalnego lub społecznościowych. | Oparte na standardach OIDC, uwierzytelnianiem OAUTH i SAML. |
-| Tożsamość zadania | Zarejestruj się lub zaloguj się przy użyciu lokalnego lub wiele kont społecznościowych.<br><br>Samoobsługowe resetowanie haseł.<br><br>Edytuj profil.<br><br>Uwierzytelnianie wieloskładnikowe.<br><br>Dostosowywanie tokenów i sesji.<br><br>Przepływy tokenu dostępu. | Wykonaj te same zadania jako wbudowane zasady przy użyciu niestandardowych dostawców tożsamości, lub użyj zakresy niestandardowe.<br><br>Ustanowienie konta użytkownika w innym systemie, w chwili rejestracji.<br><br>Wysłać powitalną wiadomość e-mail przy użyciu własnego dostawcę usługi poczty e-mail.<br><br>Użyj magazynu użytkowników spoza usługi Azure AD B2C.<br><br>Sprawdź podane informacje o systemie zaufanego za pomocą interfejsu API przez użytkownika. |
+| Tożsamość zadania | Zarejestruj się lub zaloguj się przy użyciu lokalnego lub wiele kont społecznościowych.<br><br>Samoobsługowe resetowanie haseł.<br><br>Edytuj profil.<br><br>Uwierzytelnianie wieloskładnikowe.<br><br>Dostosowywanie tokenów i sesji.<br><br>Przepływy tokenu dostępu. | Wykonaj te same zadania, co przepływy użytkownika przy użyciu niestandardowych dostawców tożsamości, lub użyj zakresy niestandardowe.<br><br>Ustanowienie konta użytkownika w innym systemie, w chwili rejestracji.<br><br>Wysłać powitalną wiadomość e-mail przy użyciu własnego dostawcę usługi poczty e-mail.<br><br>Użyj magazynu użytkowników spoza usługi Azure AD B2C.<br><br>Sprawdź podane informacje o systemie zaufanego za pomocą interfejsu API przez użytkownika. |
 
 ## <a name="policy-files"></a>Pliki zasad
 
@@ -43,7 +43,7 @@ Używane są te trzy rodzaje plików zasad:
 - **Plik rozszerzenia** — przechowuje zmiany konfiguracji unikatowy dla Twojej dzierżawy.
 - **Jednostki uzależnionej strona (RP) pliku** — pojedynczy plik skoncentrowane na zadanie, który jest wywoływany bezpośrednio przez aplikację lub usługę (nazywane również uzależnionej). Każde zadanie unikatowy wymaga własnego planu odzyskiwania, a następnie w zależności od znakowania wymagania, ta liczba może być "łączna liczba aplikacji x łącznej liczby przypadków użycia."
 
-Wbudowane zasady w usłudze Azure AD B2C oparte na wzorcu pliku trzy przedstawione powyżej, ale Deweloper widoczny jest tylko plik RP podczas portalu Azure sprawia, że zmiany w tle do pliku rozszerzenia.
+Przepływy użytkownika w usłudze Azure AD B2C oparte na wzorcu pliku trzy przedstawione powyżej, ale Deweloper widoczny jest tylko plik RP podczas portalu Azure sprawia, że zmiany w tle do pliku rozszerzenia.
 
 ## <a name="custom-policy-core-concepts"></a>Niestandardowe zasady podstawowe pojęcia
 

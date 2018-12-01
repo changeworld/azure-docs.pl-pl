@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 819e6364aebab11097260c54575ab65914293ce7
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: f0f0b8e0cbb5fbab81a07a28a9d4a2c264be6545
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180533"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52719865"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą konta w serwisie Twitter przy użyciu usługi Azure Active Directory B2C
 
@@ -27,14 +27,14 @@ Aby korzystać z usługi Twitter jako dostawcy tożsamości w usłudze Azure AD 
 2. Wybierz **tworzenie aplikacji**.
 3. Wprowadź **nazwy aplikacji** i **opis aplikacji**.
 4. W **adres URL witryny internetowej**, wprowadź `https://your-tenant.b2clogin.com`. Zastąp `your-tenant` nazwą Twojej dzierżawy. Na przykład https://contosob2c.b2clogin.com.
-5. Aby uzyskać **adresów URL wywołania zwrotnego**, wprowadź `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`. Zastąp `your-tenant` o nazwie Nazwa dzierżawy i `your-policy-Id` o identyfikatorze zasady. Na przykład `b2c_1A_signup_signin_twitter`. Należy używać małych liter, podczas wprowadzania nazwa dzierżawy, nawet jeśli dzierżawa jest zdefiniowana z wielkich liter w usłudze Azure AD B2C.
+5. Aby uzyskać **adresów URL wywołania zwrotnego**, wprowadź `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`. Zastąp `your-tenant` o nazwie Nazwa dzierżawy i `your-user-flow-Id` z identyfikatorem przepływ użytkownika. Na przykład `b2c_1A_signup_signin_twitter`. Należy używać małych liter, podczas wprowadzania nazwa dzierżawy, nawet jeśli dzierżawa jest zdefiniowana z wielkich liter w usłudze Azure AD B2C.
 6. W dolnej części strony, przeczytaj i zaakceptuj warunki, a następnie wybierz **Utwórz**.
 7. Na **szczegóły aplikacji** wybierz opcję **Edytuj > Edytuj szczegóły**, pole wyboru dla **Włącz Zaloguj się przy użyciu usługi Twitter**, a następnie wybierz pozycję **Zapisz**.
 8. Wybierz **klucze i tokeny** i Zarejestruj **klucz interfejsu API klienta** i **klucz tajny konsumenta interfejsu API** wartości do użycia później.
 
 ## <a name="configure-twitter-as-an-identity-provider-in-your-tenant"></a>Konfigurowanie usługi Twitter jako dostawcy tożsamości w dzierżawie
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
 2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz **dostawców tożsamości**, a następnie wybierz pozycję **Dodaj**.

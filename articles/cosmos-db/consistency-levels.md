@@ -1,6 +1,6 @@
 ---
 title: Poziomy spójności w usłudze Azure Cosmos DB | Dokumentacja firmy Microsoft
-description: Usługa Azure Cosmos DB ma pięć poziomów spójności, aby ułatwić równoważenie ostatecznej spójnością, dostępnością i opóźnieniem wad i zalet.
+description: Usługa Azure Cosmos DB ma pięć poziomom spójności równoważenia spójności ostatecznej, dostępności i opóźnień wady i zalety.
 keywords: eventual consistency, azure cosmos db, azure, Microsoft azure
 services: cosmos-db
 author: aliuy
@@ -11,66 +11,70 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ace11cf3704ddbd503c0202d45874670476198e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 56ac0da521186d9e09b91e26719d7f57e0a56934
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624831"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681079"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Poziomy spójności w usłudze Azure Cosmos DB
 
-Rozproszonych baz danych, opierając się na replikację, wysoką dostępność, małych opóźnień, czy oba rodzaje, wprowadzić podstawowe zależnościami między spójności odczytu, a dostępność, opóźnienia i przepływności. Większość komercyjnego rozproszonych baz danych, poproś deweloperów dokonać wyboru między dwoma modelami spójności extreme: wysoki poziom spójności i spójności ostatecznej. Gdy [atomowych](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) lub modelu silnej spójności jest standardy programowania danych, dodaje wymaga początkowo dużej ilości cena czas oczekiwania (w stanie stabilnym) i ograniczoną dostępnością (podczas awarii). Z drugiej strony spójność ostateczną zapewnia większą dostępność i lepszą wydajność, ale jest trudny do aplikacji.
+Rozproszonych baz danych, które opierają się na replikację, wysoką dostępność, małe opóźnienia lub obu, należy podstawowych zależnościami między spójności odczytu, a dostępność, opóźnienia i przepływności. Większość komercyjnego rozproszonych baz danych, poproś deweloperów dokonać wyboru między dwoma modelami spójności extreme: wysoki poziom spójności i spójności ostatecznej.  [Atomowych](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) lub standardy programowania danych modelu silnej spójności. Ale dodaje wymaga początkowo dużej ilości cena czas oczekiwania (w stanie stabilnym) i ograniczoną dostępnością (podczas awarii). Z drugiej strony spójność ostateczną zapewnia większą dostępność i lepszą wydajność, ale jest trudny do aplikacji. 
 
-Wyjaśnienie pojęcia spójności danych jako liczne opcje zamiast dwoma skrajnymi poziomami zbliża się do usługi cosmos DB. Mimo że wysoki poziom spójności i spójności ostatecznej po obu stronach spektrum, istnieją spójności wyborze technologii odpowiedniej wzdłuż spektrum. Te opcje spójności umożliwiają deweloperom opcje dokładne i szczegółową skutków ubocznych dotyczących wysokiej dostępności lub wydajności. Usługa cosmos DB umożliwiły deweloperom do wyboru spośród pięciu dobrze zdefiniowanych modeli spójności (najsilniejszej do najsłabszej) — spektrum spójności **silne**, **powiązana nieaktualność**, **sesji** , **spójny prefiks**, i **ostatecznej**. Każda z tych modeli spójności jest dobrze zdefiniowany i intuicyjny i może służyć do określonych scenariuszy w rzeczywistych warunkach. Każda z pięcioma modelami spójności oferuje [wpływ na dostępność i wydajność](consistency-levels-tradeoffs.md) i jest wspierana przez kompleksowe umowy SLA. Na poniższej ilustracji przedstawiono poziomów spójności różnych jako liczne:
+Wyjaśnienie pojęcia spójności danych jako liczne opcje zamiast dwoma skrajnymi poziomami zbliża się do usługi Azure Cosmos DB. Wysoki poziom spójności i spójności ostatecznej znajdują się na końcach, ale istnieje wiele opcji spójności wzdłuż spektrum. Deweloperzy mogą używać tych opcji, opcji dokładne i szczegółową skutków ubocznych dotyczących wysokiej dostępności lub wydajności. 
+
+Usługa Azure Cosmos DB deweloperzy mogą wybierać pięć dokładnie zdefiniowanych modeli spójności na spektrum spójności. Od najsilniejszej do najsłabszej, modele są silne, powiązana nieaktualność, sesja, spójny prefiks i "eventual". Modele są dobrze zdefiniowany i intuicyjne. Służy do określonych scenariuszy w rzeczywistych warunkach. Każdy model zawiera [wpływ na dostępność i wydajność](consistency-levels-tradeoffs.md) i jest wspierana przez kompleksowe umowy SLA. Na poniższej ilustracji przedstawiono poziomów spójności różnych jako spektrum.
 
 ![Spójność o szerokim zakresie funkcji](./media/consistency-levels/five-consistency-levels.png)
 
-Poziomy spójności są niezależne od regionu. Poziom spójności konta usługi Cosmos DB gwarantuje dla wszystkich operacji niezależnie od określonego regionu, w którym odczyty i zapisy są one obsługiwane, przez liczbę regionów skojarzonych z Twojego konta usługi Cosmos lub tego, czy Twoje konto jest skonfigurowane za pomocą jednego odczytu lub wiele regionów zapisu.
+Poziomy spójności są niezależne od regionu. Poziom spójności konta usługi Azure Cosmos jest gwarantowane, dla wszystkich operacji niezależnie od określonego regionu, w którym odczyty i zapisy są one obsługiwane, przez liczbę regionów skojarzonych z Twoim kontem usługi Azure Cosmos odczytu, czy Twoje konto jest skonfigurowane przy użyciu jednego lub wielu regionach zapisu.
 
-## <a name="scope-of-the-read-consistency"></a>Zakres spójność odczytu
+## <a name="scope-of-the-read-consistency"></a>Zakres spójności odczytu
 
-Spójność odczytu dotyczy jednego zakresu w zakresie klucz partycji (czyli partycji logicznej) Operacja odczytu. Operacja odczytu mogą być wystawiane przez klienta zdalnego lub procedury składowanej.
+Kondycja spójności odczytu mają zastosowanie do jednej operacji odczytu, o określonym zakresie w ramach zakresu klucza partycji lub partycji logicznej. Operacja odczytu mogą być wystawiane przez klienta zdalnego lub procedury składowanej.
 
-## <a name="configuring-the-default-consistency-level"></a>Konfigurowanie domyślny poziom spójności
+## <a name="configure-the-default-consistency-level"></a>Konfigurowanie domyślnego poziomu spójności
 
-Można skonfigurować **domyślny poziom spójności** na Twoim koncie usługi Cosmos DB, w dowolnym momencie. Domyślny poziom spójności skonfigurowane na Twoje konto ma zastosowanie do wszystkich baz danych Cosmos (lub kontenery) w ramach tego konta. Wszystkie operacje odczytu i zapytania względem kontenera lub bazy danych użyje poziomu spójności określonego domyślnie. Aby dowiedzieć się więcej, zobacz temat jak [skonfigurować domyślny poziom spójności](how-to-manage-consistency.md#configure-the-default-consistency-level) artykułu.
+W dowolnym momencie można skonfigurować domyślny poziom spójności na Twoim koncie usługi Azure Cosmos. Domyślny poziom spójności skonfigurowane na Twoje konto ma zastosowanie do wszystkich baz danych Azure Cosmos DB i kontenerów w ramach tego konta. Wszystkie operacje odczytu i zapytania względem kontenera lub bazę danych domyślnie używają poziomu spójności określony. Aby dowiedzieć się więcej, zobacz temat jak [skonfigurować domyślny poziom spójności](how-to-manage-consistency.md#configure-the-default-consistency-level).
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>Gwarancje skojarzone z poziomów spójności
 
-Kompleksowe umowy SLA, dostarczone przez usługę Azure Cosmos DB gwarancji, że 100% żądań odczytu spełnia gwarancję spójności dla dowolnego poziomu spójności, że została wybrana. Żądania odczytu jest uważane za spełniające spójności umowy SLA, jeśli spełnione są wszystkie gwarancje spójności skojarzone z poziomu spójności. Dokładne definicje poziomów spójności pięć w usłudze Cosmos DB przy użyciu [języka TLA + specyfikacji](http://lamport.azurewebsites.net/tla/tla.html) znajdują się w [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla) repozytorium GitHub. Semantyka poziomów spójności pięć zostały opisane poniżej:
+Kompleksowe umowy SLA, udostępniane przez usługi Azure Cosmos DB gwarancji, że 100 procent żądań odczytu spełnia gwarancję spójności dla dowolnego poziomu spójności, że wybrano. Żądania odczytu spełnia spójności umowy SLA, jeśli spełnione są wszystkie gwarancje spójności skojarzone z poziomu spójności. Dokładne definicje poziomów spójności pięć w usłudze Azure Cosmos DB przy użyciu [języka TLA + specyfikacji](http://lamport.azurewebsites.net/tla/tla.html) znajdują się w [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla) repozytorium GitHub. 
 
-- **Poziom spójności "strong" =**: zapewnia wysoki poziom spójności [atomowych](https://aphyr.com/posts/313-strong-consistency-models) gwarantuje z odczyty gwarancję zwracania zatwierdzone najbardziej aktualną wersję elementu. Klient nigdy nie zobaczą zapisu niezatwierdzone lub jego część. Użytkownicy są zawsze gwarantowane odczyt najnowsza wersja zatwierdzone/zapis.
+Semantyka poziomów spójności pięć są opisane poniżej:
 
-- **Poziom spójności = "powiązana nieaktualność"**: operacje odczytu mają gwarancję respektować gwarancja spójnego prefiksu. Odczyty może być opóźniona zapisy, przez co najwyżej wersje K (to znaczy "aktualizacji" elementu) lub t "Interwał czasu. Podczas wybierania powiązana nieaktualność, "nieaktualność", można skonfigurować na dwa sposoby: 
+- **Silne**: zapewnia wysoki poziom spójności [atomowych](https://aphyr.com/posts/313-strong-consistency-models) gwarantuje. Operacje odczytu mają gwarancję do zwrócenia zatwierdzone najbardziej aktualną wersję elementu. Klient nigdy nie widzi zapisu niezatwierdzone lub jego część. Użytkownicy są zawsze gwarantowane odczyt najnowsza wersja zatwierdzone/zapis.
 
-  * Liczba wersji (KB) elementu lub
-  * Przedział czasu (t) za pomocą którego odczytami może być opóźniona zapisy. 
+- **Powiązana nieaktualność**: operacje odczytu mają gwarancję respektować gwarancja spójnego prefiksu. Odczyty mogą być opóźnione stosunku do zapisów przez co najwyżej wersje "K" (to znaczy "aktualizacji") elementu lub przedziału czasu "t". Po wybraniu powiązana nieaktualność, "nieaktualność", można skonfigurować na dwa sposoby: 
 
-  Powiązana nieaktualność oferty całkowitej globalnej kolejności z wyjątkiem w ramach "okno nieaktualność." Monotoniczny gwarancje odczytu istnieją w obrębie regionu zarówno wewnątrz i na zewnątrz "nieaktualność okna." Wysoki poziom spójności ma tą samą semantyką jako te oferowane przez powiązana nieaktualność i za pomocą "nieaktualność okno" równy zero. Powiązana nieaktualność jest również nazywany **opóźnione czasu atomowych**. Gdy klient wykonuje operacje odczytu w regionie, który akceptuje zapisy, gwarancji spójności powiązana nieaktualność są identyczne z tymi za pomocą silnej spójności.
+  * Liczba wersji (KB) elementu
+  * Za pomocą którego odczyty mogą być opóźnione w stosunku do zapisów przedział czasu (t) 
 
-- **Poziom spójności "sesja" =**: operacje odczytu mają gwarancję respektować spójny prefiks, monotoniczne odczyty, zapisy monotoniczny, gwarantuje odczytu swoich zapisów, write poniżej — operacje odczytu. Spójność sesji jest ograniczony do sesji klienta.
+  Powiązana nieaktualność oferty całkowitej globalnej kolejności z wyjątkiem w ramach "okno nieaktualność." Istnieje monotoniczny gwarancje odczytu w regionie wewnątrz lub na zewnątrz okna nieaktualność. Wysoki poziom spójności ma tą samą semantyką jako te oferowane przez powiązana nieaktualność. Okno nieaktualność jest równa zero. Powiązana nieaktualność jest również określany jako atomowych opóźnione czasu. Gdy klient wykonuje operacje odczytu w regionie, który akceptuje zapisy, gwarancji spójności powiązana nieaktualność są identyczne te gwarancje silnej spójności.
 
-- **Poziom spójności = "spójny prefiks"**: aktualizacji zwracanych zawierają pewne prefiksy ze wszystkich aktualizacji, bez przerw. Spójny prefiks gwarancji, że odczyty nigdy nie zobaczy zapisów poza kolejnością.
+- **Sesja**: operacje odczytu mają gwarancję respektować spójny prefiks (przy założeniu sesji jednego elementu "zapisującego"), monotoniczne odczyty, gwarantuje monotoniczny zapisu, odczytu swoich zapisów i write poniżej — operacje odczytu. Spójność sesji jest ograniczony do sesji klienta.
 
-- **Poziom spójności = "ostateczna"**: nie ma żadnej gwarancji szeregowania dla odczytów. W przypadku braku dalszy zapis replik ostatecznie zbiegają się.
+- **Spójny prefiks**: aktualizacje, które są zwracane zawierają pewne prefiksy ze wszystkich aktualizacji, bez przerw. Spójny prefiks gwarantuje, że odczyty nigdy nie zobaczy zapisów poza kolejnością.
+
+- **Ostateczna**: nie ma żadnej gwarancji szeregowania dla odczytów. W przypadku braku dalszy zapis replik ostatecznie zbiegają się.
 
 ## <a name="consistency-levels-explained-through-baseball"></a>Poziomy spójności baseballu
 
-Umożliwia pobranie scenariusza gier mecz, na przykład, imagine sekwencji zapisów reprezentujący wynik baseballu, za pomocą oceny linii inning przez inning zgodnie z opisem w [replikowane spójności danych przy użyciu mecz](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf) dokument. To hipotetyczny baseballu jest obecnie w trakcie siódmego inning (proverbial siódma — inning stretch), a domowej zespołu jest zastosowanie 2 – 5.
+Jako przykład Weźmy mecz scenariusz gier. Wyobraź sobie sekwencji operacji zapisu, które reprezentują wynik z baseballu. Ocena linii inning przez inning jest opisana w [replikowane spójności danych przy użyciu mecz](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf) papieru. Ta hipotetyczny baseballu jest obecnie w trakcie inning siódmego. Jest stretch inning — siódmego. Gości znajdują się za z wynikiem 2 do 5.
 
 | | **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9** | **Przebiegi** |
 | - | - | - | - | - | - | - | - | - | - | - |
 | **Goście** | 0 | 0 | 1 | 0 | 1 | 0 | 0 |  |  | 2 |
 | **Strona główna** | 1 | 0 | 1 | 1 | 0 | 2 |  |  |  | 5 |
 
-Kontenera usługi Cosmos DB przechowuje gości i sumy wykonywania domowej zespołu. Gra w trakcie, różnych odczytu gwarancje może spowodować klientom odczytywanie różne wyniki. W poniższej tabeli wymieniono kompletny zestaw wyników, które mogą być zwracane przez odczytanie odwiedzających i macierzystego wyniki z każdym gwarancje spójności pięć. Osoby odwiedzające wynik jest wymienione jako pierwsze, a różne możliwe wartości zwracane są oddzielone przecinkami.
+Kontener usługi Azure Cosmos DB zawiera odwiedzających i domowej zespołu Uruchom sum. Gra w trakcie, różnych odczytu gwarancje może prowadzić do odczytywania różne wyniki klientom. W poniższej tabeli wymieniono kompletny zestaw wyników, które mogą być zwrócone przez odczytywanie odwiedzających i macierzystego wyniki z każdym gwarancje spójności pięć. Osoby odwiedzające wynik jest wymienione jako pierwsze. Różne możliwe wartości zwracane są oddzielone przecinkami.
 
 | **Poziom spójności** | **Wyniki** |
 | - | - |
 | **Silne** | 2 – 5 |
-| **Powiązana nieaktualność** | wyniki są w większości inning jeden nieaktualny"2-3, 2 – 4, 2 – 5 |
-| **Sesji** | <ul><li>dla modułu zapisującego"2-5</li><li> dla każdego z wyjątkiem moduł zapisujący: 0-0, 0-1, 0-2, 0 – 3, 0 4, 0-5, 1-0, 1-1, 1 – 2, 1 – 3, 1 – 4, 1 – 5, 2-0, 2-1, 2-2, 2 i 3, 2 – 4, 2 – 5</li><li>Po przeczytaniu 1-3: 1-3, 1 – 4, 1 – 5, 2 i 3, 2 – 4, 2 – 5</li> |
+| **Powiązana nieaktualność** | Wyniki są co najwyżej jeden inning nieaktualna: 2-3, 2 – 4, 2 – 5 |
+| **Sesji** | <ul><li>Dla modułu zapisującego: 2 – 5</li><li> dla każdego z wyjątkiem moduł zapisujący: 0-0, 0-1, 0-2, 0 – 3, 0 4, 0-5, 1-0, 1-1, 1 – 2, 1 – 3, 1 – 4, 1 – 5, 2-0, 2-1, 2-2, 2 i 3, 2 – 4, 2 – 5</li><li>Po przeczytaniu 1-3: 1-3, 1 – 4, 1 – 5, 2 i 3, 2 – 4, 2 – 5</li> |
 | **Spójny prefiks** | 0-0, 0 – 1, 1-1, 1 – 2, 1 – 3, 2 i 3, 2 – 4, 2 – 5 |
 | **Ostateczna** | 0-0, 0-1, 0-2, 0 – 3, 0 4, 0-5, 1-0, 1-1, 1 – 2, 1 – 3, 1 – 4, 1 – 5, 2-0, 2-1, 2-2, 2 i 3, 2 – 4, 2 – 5 |
 
@@ -79,8 +83,8 @@ Kontenera usługi Cosmos DB przechowuje gości i sumy wykonywania domowej zespo�
 Aby dowiedzieć się więcej na temat pojęć spójności, przeczytaj następujące artykuły:
 
 - [Ogólne TLA + specyfikacje dotyczące poziomów spójności pięć oferowanych przez usługę Azure Cosmos DB](https://github.com/Azure/azure-cosmos-tla)
-- [Replikowane dane spójności baseballu (wideo) przez Doug Terry](https://www.youtube.com/watch?v=gluIh8zd26I)
-- [Replikowane dane spójności baseballu (dokument oficjalny) przez Doug Terry](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf)
+- [Replikowane dane spójności wyjaśniono za pośrednictwem mecz (wideo) przez Doug Terry](https://www.youtube.com/watch?v=gluIh8zd26I)
+- [Replikowane dane spójności wyjaśniono za pośrednictwem mecz (dokument oficjalny) przez Doug Terry](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf)
 - [Sesja gwarancje słabo spójności replikowanych danych](https://dl.acm.org/citation.cfm?id=383631)
 - [Wady i zalety spójności w nowoczesny wygląd systemy bazy danych dystrybucji: limit to tylko część wątku](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
 - [Powiązana nieaktualność probabilistyczny (PBS) dla praktyczne kworum częściowe](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
@@ -88,11 +92,11 @@ Aby dowiedzieć się więcej na temat pojęć spójności, przeczytaj następuj�
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat poziomów spójności w usłudze Cosmos DB, przeczytaj następujące artykuły:
+Aby dowiedzieć się więcej na temat poziomów spójności w usłudze Azure Cosmos DB, przeczytaj następujące artykuły:
 
-* [Wybieranie poziomu spójności odpowiednie dla twojej aplikacji](consistency-levels-choosing.md)
-* [Poziomy spójności między Cosmos DB z interfejsów API](consistency-levels-across-apis.md)
+* [Wybierz poziom spójności odpowiednie dla twojej aplikacji](consistency-levels-choosing.md)
+* [Poziomy spójności w różnych interfejsów API usługi Azure Cosmos DB](consistency-levels-across-apis.md)
 * [Dostępność i wydajność kompromisy dla różnych poziomów spójności](consistency-levels-tradeoffs.md)
-* [Jak skonfigurować domyślny poziom spójności](how-to-manage-consistency.md#configure-the-default-consistency-level)
-* [Jak zastąpić domyślny poziom spójności](how-to-manage-consistency.md#override-the-default-consistency-level)
+* [Skonfiguruj domyślny poziom spójności](how-to-manage-consistency.md#configure-the-default-consistency-level)
+* [Przesłonić domyślny poziom spójności](how-to-manage-consistency.md#override-the-default-consistency-level)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 82c02c0212fd79d8847d374022b6ac8f862f042a
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 8d6865349f103278131a02c2385557fb53ee24f5
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291117"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720596"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorowanie i Diagnostyka Azure Service Fabric
 
@@ -40,9 +40,10 @@ Mamy także zapoznać się z samouczkiem jak [Ustaw tę wartość dla aplikacji 
 ## <a name="platform-cluster-monitoring"></a>Monitorowanie platformy (klastrowy)
 Użytkownik znajduje się w kontroli, jakie telemetrii pochodzi z aplikacji, ponieważ użytkownik pisze kod automatycznie, ale co o diagnostyce platformy usługi Service Fabric? Jednym z celów usługi Service Fabric jest zapewnienie aplikacji odpornych na awarie sprzętowe. W tym celu odbywa się za pośrednictwem usługi systemowe platformy możliwość wykrywania problemów z infrastrukturą i szybko obciążeń w tryb failover do innych węzłów w klastrze. Ale co zrobić, jeśli w tym konkretnym przypadku samych usług systemu występują problemy? Lub jeśli podczas próby wdrażania lub przenoszenia obciążeń, naruszenia reguły umieszczania usług? Usługa Service Fabric udostępnia diagnostykę dla tych i innych do upewnij się, że wyświetlana jest także informacja o działaniu odbywa się w klastrze. Niektóre przykładowe scenariusze dotyczące monitorowania klastra obejmują:
 
-* Usługa Service Fabric zachowuje się oczekiwaniami, wprowadzenie do aplikacji i obejść klastra równoważenia? 
-* Akcje użytkownika przechodzą w klastrze potwierdzone i wykonywane na zgodnie z oczekiwaniami? Na przykład Skalowanie, pracy w trybie Failover wdrożeń
-* Jest Service Fabric rejestrowanie informacji o węzły, które są częścią klastra i informowania mnie, gdy występuje problem w jednym?
+Usługa Service Fabric udostępnia rozbudowany zestaw zdarzeń poza pole. Te [zdarzenia usługi Service Fabric](service-fabric-diagnostics-events.md) jest możliwy za pośrednictwem bazy danych EventStore lub operational channel (kanał zdarzeń udostępnianych przez platformę). 
+* Bazy danych EventStore — bazy danych EventStore jest funkcji oferowanych przez platformę, która dostarcza zdarzenia platformy usługi Service Fabric jest dostępna w narzędziu Service Fabric Explorer i za pośrednictwem interfejsu API REST. Można wyświetlić widoku migawki, co się dzieje w klastrze dla każdej jednostki np. węzeł, usługi, aplikacji i zapytań w zależności od czasu wystąpienia zdarzenia. Możesz również Dowiedz się więcej o bazie danych EventStore na [omówienie bazy danych EventStore](service-fabric-diagnostics-eventstore.md).    
+
+* Zdarzenia usługi Service Fabric kanały — Windows na zdarzenia usługi Service Fabric są dostępne od pojedynczego dostawcy funkcji ETW z zestawem odpowiednie `logLevelKeywordFilters` używane do pobierania kanał operacyjnej, danych i komunikatów — jest to sposób, w którym firma Microsoft oddzielenia wychodzące Usługa sieci szkieletowej zdarzeń ma zostać wykonane filtrowanie na zgodnie z potrzebami. W systemie Linux zdarzenia usługi Service Fabric pochodzić LTTng i są umieszczane w jednej tabeli magazynu, od których one mogą być filtrowane zgodnie z potrzebami. Te kanały zawierają wyselekcjonowanych, ze strukturą zdarzenia, które umożliwia lepsze zrozumienie stanu klastra. Diagnostyka są domyślnie włączone w czasie tworzenia klastra, które tworzą tabeli usługi Azure Storage, do którego wysyłane są zdarzenia z te kanały służących do wykonywania zapytań w przyszłości. 
 
 Diagnostyka podane są w formie kompleksowy zestaw zdarzeń, gotowych. Te [zdarzenia usługi Service Fabric](service-fabric-diagnostics-events.md) ilustrują akcje wykonywane przez platformę, na różnych jednostkach, takich jak węzły, aplikacji, usług, partycji itp. W ostatnim przypadku powyżej były węzeł, aby przejść w dół, platformy czy emitować `NodeDown` zdarzeń i można wysyłać powiadomienia bezpośrednio przez narzędzie monitorowania wybranego. Inne typowe przykłady `ApplicationUpgradeRollbackStarted` lub `PartitionReconfigured` podczas przejścia w tryb failover. **Te same zdarzenia są dostępne w klastrach systemów Windows i Linux.**
 

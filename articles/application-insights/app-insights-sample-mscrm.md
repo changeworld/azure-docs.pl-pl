@@ -9,17 +9,16 @@ ms.assetid: 04c66338-687e-49e5-9975-be935f98f156
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: 5d61c3a3232645fc5f1c18696cf3232bf9b37aa2
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: b4bc632b4951781b85847699d38fd10df14c1a87
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957749"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720749"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Przewodnik: Włączanie Telemetrii dla usługi Microsoft Dynamics CRM Online przy użyciu usługi Application Insights
 W tym artykule pokazano, jak można pobrać danych telemetrycznych z [Microsoft Dynamics CRM Online](https://www.dynamics.com/) przy użyciu [usługi Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Omówimy kompletnego procesu dodawania skrypt usługi Application Insights do aplikacji, przechwytywania danych i wizualizacja danych.

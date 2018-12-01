@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/16/2018
 ms.author: juliako
-ms.openlocfilehash: a74f2e53127b506f42ff49018c3df2985396646d
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: b167d3424d520cf8be515eec9d495164dd9785ab
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619824"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682099"
 ---
 # <a name="liveevent-latency-in-media-services"></a>Element LiveEvent opóźnienia w usłudze Media Services
 
@@ -43,7 +43,7 @@ LiveEvent liveEvent = new LiveEvent(
             streamOptions: new List<StreamOptionsFlag?>()
             {
                 // Set this to Default or Low Latency
-                // To use low latency optimally, you should tune your encoder settings down to 1 second GOP size instead of 2 seconds.
+                // To use low latency optimally, you should tune your encoder settings down to 1 second "Group Of Pictures" (GOP) length instead of 2 seconds.
                 StreamOptionsFlag.LowLatency
             }
         );
@@ -51,14 +51,23 @@ LiveEvent liveEvent = new LiveEvent(
 
 Zobacz pełny przykład: [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
 
-## <a name="pass-through-liveevents-latency"></a>Opóźnienie LiveEvents przekazywania
+## <a name="liveevents-latency"></a>Opóźnienie LiveEvents
 
-W poniższej tabeli przedstawiono typowe wyniki opóźnienia (jeśli jest włączona Flaga LowLatency) w usłudze Media Services, zmierzony od momentu kanału informacyjnego wkład osiągnie usługi, gdy gracz mogą żądać odtwarzania.
+W poniższej tabeli przedstawiono typowe wyniki opóźnienia (jeśli jest włączona Flaga LowLatency) w usłudze Media Services, zmierzony od momentu kanału informacyjnego wkład osiągnie usługi, gdy przeglądarka widzi odtwarzanie na odtwarzaczu. Aby użyć optymalnie małe opóźnienia, powinien Dostosowywanie ustawień kodera do 1 sekunda "Grupa z obrazów" (GOP) długości. Przy użyciu nowszej długości GOP, możesz zminimalizować użycie przepustowości i zmniejszenie szybkości transmisji bitów w ramach tej samej szybkość klatek. Jest szczególnie korzystne w filmach wideo z mniej ruchu.
+
+### <a name="pass-through"></a>Przekazywanie 
 
 ||2S GOP krótki czas oczekiwania, włączone|1s GOP krótki czas oczekiwania, włączone|
 |---|---|---|
 |KRESKI w AMP|10s|8S|
 |HLS na odtwarzaczu natywnych dla systemów iOS|14S|10s|
+
+### <a name="live-encoding"></a>Kodowanie na żywo
+
+||2S GOP krótki czas oczekiwania, włączone|1s GOP krótki czas oczekiwania, włączone|
+|---|---|---|
+|KRESKI w AMP|14S|10s|
+|HLS na odtwarzaczu natywnych dla systemów iOS|18s|13s|
 
 > [!NOTE]
 > Opóźnienie end-to-end mogą się różnić w zależności od warunków sieci lokalnej lub wprowadzając warstwy buforowania usługi CDN. Należy przetestować dokładnie konfiguracje.

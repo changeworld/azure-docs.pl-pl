@@ -9,17 +9,16 @@ ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 9105b7f44a9677b2b843305c30fec30c74dd8be5
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 8c414f7993de1589a3992e247400c3596fd18631
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958495"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720477"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Stream metryki: Monitorowanie i diagnozowanie z opóźnieniem 1 sekundę
 

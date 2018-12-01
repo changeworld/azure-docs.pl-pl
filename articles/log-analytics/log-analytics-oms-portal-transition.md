@@ -9,17 +9,16 @@ editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 8337d6b353b6651a2699176813220ed7a7a0f879
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5010426db97a9cd404d265d1ea9b319877eda1de
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634799"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723962"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portal pakietu OMS na platformę Azure
 
@@ -92,7 +91,7 @@ Dane zebrane przez rozwiązanie do zarządzania alertami (rekordy z typem alertu
 Aplikację OMS mobile będzie sunsetted wraz z portalu pakietu OMS. Zamiast aplikację OMS mobile dostęp do informacji o infrastrukturę IT, pulpity nawigacyjne i zapisane zapytania dostępne witryny Azure portal bezpośrednio z przeglądarki w urządzeniu przenośnym. Aby otrzymywać alerty, należy skonfigurować [grup akcji platformy Azure](../monitoring-and-diagnostics/monitoring-action-groups.md) do odbierania powiadomień w postaci wiadomości SMS lub połączenie głosowe
 
 ## <a name="application-insights-connector-and-solution"></a>Łącznik usługi Application Insights i rozwiązania
-[Łącznik usługi Application Insights](log-analytics-app-insights-connector.md) umożliwia przenoszenie danych usługi Application Insights do obszaru roboczego usługi Log Analytics. Ta duplikacja danych był wymagany do włączenia widoczności danych infrastruktury i aplikacji.
+[Łącznik usługi Application Insights](../azure-monitor/platform/app-insights-connector.md) umożliwia przenoszenie danych usługi Application Insights do obszaru roboczego usługi Log Analytics. Ta duplikacja danych był wymagany do włączenia widoczności danych infrastruktury i aplikacji.
 
 Dzięki obsłudze [zapytania obejmujące wiele zasobów](log-analytics-cross-workspace-search.md), nie ma już konieczności zduplikowane dane. W efekcie istniejące rozwiązanie usługi Application Insights staną się przestarzałe. Począwszy od października, nie można połączyć nowe zasoby usługi Application Insights do obszarów roboczych usługi Log Analytics. Istniejące linki i pulpity nawigacyjne będzie działać do momentu 15 stycznia 2019 r.
 

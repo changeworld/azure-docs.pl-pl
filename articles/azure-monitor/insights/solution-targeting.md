@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: e4e0ff288b9d5539a0110fb157e32b4f23d06bb6
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 53f28d29b9667bb885a5c3d0da8d926f756f3427
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715436"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682077"
 ---
 # <a name="targeting-management-solutions-in-azure-preview"></a>Określanie wartości docelowej rozwiązania do zarządzania na platformie Azure (wersja zapoznawcza)
 Po dodaniu rozwiązania do zarządzania subskrypcją, jest automatycznie wdrażane domyślnie wszyscy agenci Windows i Linux, połączonego z obszarem roboczym usługi Log Analytics.  Można zarządzać koszty i ograniczyć ilość danych zebranych dla rozwiązania przez ograniczenie go do określonego zestawu agentów.  W tym artykule opisano sposób używania **określania celu rozwiązania** czyli funkcja umożliwiająca można zastosować zakres do rozwiązania.
@@ -29,7 +29,7 @@ Istnieją trzy kroki, aby przeznaczonych dla rozwiązania, zgodnie z opisem w po
 
 
 ### <a name="1-create-a-computer-group"></a>1. Utwórz grupę komputerów
-Określ komputery, które mają zostać uwzględnione w zakresie, tworząc [grupa](../../log-analytics/log-analytics-computer-groups.md) w usłudze Log Analytics.  Grupy komputerów można oparte na wyszukiwanie w dzienniku lub zaimportowanych z innych źródeł, takich jak grupy usługi Active Directory lub programu WSUS. Jako [opisanych poniżej](#solutions-and-agents-that-cant-be-targeted), tylko te komputery, które są podłączone bezpośrednio do usługi Log Analytics, które zostaną uwzględnione w zakresie.
+Określ komputery, które mają zostać uwzględnione w zakresie, tworząc [grupa](../../azure-monitor/platform/computer-groups.md) w usłudze Log Analytics.  Grupy komputerów można oparte na wyszukiwanie w dzienniku lub zaimportowanych z innych źródeł, takich jak grupy usługi Active Directory lub programu WSUS. Jako [opisanych poniżej](#solutions-and-agents-that-cant-be-targeted), tylko te komputery, które są podłączone bezpośrednio do usługi Log Analytics, które zostaną uwzględnione w zakresie.
 
 Raz masz grupa utworzona w obszarze roboczym, a następnie zostaną objęte konfiguracji zakresu, który można zastosować do jednego lub więcej rozwiązań.
  
@@ -75,4 +75,4 @@ Określanie celu rozwiązania nie można używać z następujących rozwiązań,
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o rozwiązaniach do zarządzania rozwiązania, które są dostępne do zainstalowania w Twoim środowisku, w tym [rozwiązań do zarządzania Dodawanie usługi Azure Log Analytics do swojego obszaru roboczego](solutions.md).
-- Dowiedz się więcej na temat tworzenia grup komputerów na [grup komputerów w usłudze Log Analytics dziennikach](../../log-analytics/log-analytics-computer-groups.md).
+- Dowiedz się więcej na temat tworzenia grup komputerów na [grup komputerów w usłudze Log Analytics dziennikach](../../azure-monitor/platform/computer-groups.md).

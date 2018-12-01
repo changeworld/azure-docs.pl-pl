@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: danlep
-ms.openlocfilehash: 67f8b49cd2205403dec8843beebb92c9f41f6e37
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 964ef3bd988d71bfb90dbaa473b4b259769064b3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955800"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722059"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Uwierzytelnianie rozwiązań usługi Batch za pomocą usługi Active Directory
 
@@ -139,9 +139,10 @@ Aby uwierzytelniać się przy użyciu jednostki usługi, musisz Przypisz rolę R
 
 1. W witrynie Azure portal przejdź do konta usługi Batch używanych przez aplikację.
 2. W **ustawienia** bloku konta usługi Batch wybierz **kontrola dostępu (IAM)**.
-3. Kliknij przycisk **Dodaj**. 
-4. Z **roli** listę rozwijaną, wybierz opcję _Współautor_ lub _czytnika_ roli aplikacji. Aby uzyskać więcej informacji na temat tych ról, zobacz [wprowadzenie opartej na rolach kontrola dostępu w witrynie Azure portal](../role-based-access-control/overview.md).  
-5. W **wybierz** wprowadź nazwę aplikacji. Wybierz swoją aplikację z listy, a następnie kliknij przycisk **Zapisz**.
+3. Kliknij przycisk **przypisań ról** kartę.
+4. Kliknij przycisk **Dodaj przypisanie roli** przycisku. 
+5. Z **roli** listę rozwijaną, wybierz opcję _Współautor_ lub _czytnika_ roli aplikacji. Aby uzyskać więcej informacji na temat tych ról, zobacz [wprowadzenie opartej na rolach kontrola dostępu w witrynie Azure portal](../role-based-access-control/overview.md).  
+6. W **wybierz** wprowadź nazwę aplikacji. Wybierz swoją aplikację z listy, a następnie kliknij przycisk **Zapisz**.
 
 Aplikacja powinien zostać wyświetlony na ustawienia kontroli dostępu z przypisaną rolę RBAC. 
 

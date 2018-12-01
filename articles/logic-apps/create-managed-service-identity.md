@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 10/05/2018
-ms.openlocfilehash: 84529e1097678ba7a039ffaeec57a9293c93dafd
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 19e6693de673eae6fe0b885580975c4cefc35d60
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229643"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725152"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Uwierzytelnianie i dostęp do zasobów z zarządzanych tożsamości w usłudze Azure Logic Apps
 
@@ -59,7 +59,7 @@ Aby włączyć przypisany systemowo tożsamości zarządzanej aplikacji logiki w
       | Właściwość | Wartość | Opis | 
       |----------|-------|-------------| 
       | **Identyfikator podmiotu zabezpieczeń** | <*Identyfikator podmiotu zabezpieczeń*> | Unikatowy identyfikator globalny (GUID), reprezentujący aplikację logiki w dzierżawie usługi Azure AD | 
-      | **Identyfikator dzierżawy** | <*Azure-AD-tenant-ID*> | Globalnie unikatowy identyfikator (GUID) reprezentujący dzierżawy usługi Azure AD, w której aplikacja logiki jest teraz członkiem. W dzierżawie usługi Azure AD jednostki usługi ma taką samą nazwę jak wystąpienie aplikacji logiki. | 
+      | **Tenant ID (Identyfikator dzierżawy)** | <*Azure-AD-tenant-ID*> | Globalnie unikatowy identyfikator (GUID) reprezentujący dzierżawy usługi Azure AD, w której aplikacja logiki jest teraz członkiem. W dzierżawie usługi Azure AD jednostki usługi ma taką samą nazwę jak wystąpienie aplikacji logiki. | 
       ||| 
 
 ### <a name="deployment-template"></a>Szablon wdrożenia
@@ -128,13 +128,13 @@ Aby udzielić dostępu do innego zasobu platformy Azure dla aplikacji logiki prz
 
 1. W witrynie Azure portal przejdź do zasobu platformy Azure której chcesz przypisać dostęp dla Twojej tożsamości zarządzanej. 
 
-1. Wybierz z menu zasobu **kontrola dostępu (IAM)** i wybierz polecenie **Dodaj**. 
+1. Wybierz z menu zasobu **kontrola dostępu (IAM)** i wybierz polecenie **Dodaj przypisanie roli**. 
 
-   ![Dodawanie uprawnień](./media/create-managed-service-identity/add-permissions-logic-app.png)
+   ![Dodaj przypisanie roli](./media/create-managed-service-identity/add-permissions-logic-app.png)
 
-1. W obszarze **Dodaj uprawnienia**, wybierz opcję **roli** chcesz, aby dla tożsamości. 
+1. W obszarze **Dodaj przypisanie roli**, wybierz opcję **roli** chcesz, aby dla tożsamości. 
 
-1. W **Przypisz dostęp do** wybierz **użytkownika usługi Azure AD, grupa lub aplikacja**, jeśli jeszcze nie wybrano.
+1. W **Przypisz dostęp do** wybierz **użytkownika, grupy lub jednostki usługi Azure AD**, jeśli jeszcze nie wybrano.
 
 1. W **wybierz** pola, rozpoczynając od pierwszego znaku w nazwie aplikacji logiki, wprowadź nazwę aplikacji logiki. Gdy pojawi się Twoja aplikacja logiki, wybierz aplikację logiki.
 

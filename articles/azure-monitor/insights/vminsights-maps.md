@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 3e8230ea7b2d6d0e44468bd90289ee82d5a82367
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 0226e5dc03c3f10b951a4e4cc1d97a999c952f3b
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715444"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678886"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Aby poznać składniki aplikacji przy użyciu usługi Azure Monitor mapy maszyny wirtualne (wersja zapoznawcza)
 Wyświetlanie składniki odnalezionych aplikacji na maszynach wirtualnych Windows i Linux, działające na platformie Azure w środowisku można zaobserwować na dwa sposoby, za pomocą usługi Azure Monitor w przypadku maszyn wirtualnych z maszyny wirtualnej, który jest bezpośrednio lub grupami maszyn wirtualnych za pomocą usługi Azure Monitor. 
@@ -107,7 +107,7 @@ Z usługi Azure Monitor funkcja mapy zapewnia globalny widok Twoich maszyn wirtu
 
 ![Omówienie mapy wielu maszyn wirtualnych w usłudze Azure Monitor](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
-Z **obszaru roboczego** selektor w górnej części strony, jeśli masz więcej niż jednym obszarze roboczym usługi Log Analytics wybierz obszar roboczy, który jest włączone za pomocą rozwiązania i ma raportujących do niego maszyny wirtualne. **Grupy** selektor zwróci subskrypcji, grupy zasobów [grup komputerów](../../log-analytics/log-analytics-computer-groups.md), a usługi VM scale sets komputerów powiązanych z wybranym obszarem roboczym. Wybór tylko dotyczy funkcji mapy i nie jest przenoszone wydajności lub mapy.
+Z **obszaru roboczego** selektor w górnej części strony, jeśli masz więcej niż jednym obszarze roboczym usługi Log Analytics wybierz obszar roboczy, który jest włączone za pomocą rozwiązania i ma raportujących do niego maszyny wirtualne. **Grupy** selektor zwróci subskrypcji, grupy zasobów [grup komputerów](../../azure-monitor/platform/computer-groups.md), a usługi VM scale sets komputerów powiązanych z wybranym obszarem roboczym. Wybór tylko dotyczy funkcji mapy i nie jest przenoszone wydajności lub mapy.
 
 Domyślnie mapy zawiera ostatnich 30 minut. Za pomocą **TimeRange** selektor, możesz wyszukać zakresy czasu historycznych maksymalnie jedną godzinę, aby pokazać, jak zależności będzie wyglądał w przeszłości (na przykład podczas zdarzenia lub przed wystąpieniem zmiany).   
 

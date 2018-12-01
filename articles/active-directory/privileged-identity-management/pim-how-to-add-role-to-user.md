@@ -12,12 +12,12 @@ ms.workload: identity
 ms.component: pim
 ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 5f0b5d1695603a7cd2a3c7ac1dbc484e44257d88
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 2b099e1377536b46229b75f25d04ab2c1beb5c11
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249615"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724948"
 ---
 # <a name="assign-azure-ad-directory-roles-in-pim"></a>Przypisywanie ról katalogu usługi Azure AD w usłudze PIM
 
@@ -125,13 +125,15 @@ Wykonaj następujące kroki, aby przypisać rolę administratora dostępu użytk
 
 1. Wybierz subskrypcję.
 
-1. Wybierz pozycję **Kontrola dostępu (IAM)**, aby wyświetlić bieżącą listę przypisań ról w zakresie subskrypcji.
+1. Wybierz pozycję **Kontrola dostępu (IAM)**.
+
+1. Wybierz **przypisań ról** Aby wyświetlić bieżącą listę przypisań ról w zakresie subskrypcji.
 
    ![W bloku kontrola (IAM) dostępu do subskrypcji](./media/pim-how-to-add-role-to-user/ms-pim-access-control.png)
 
 1. Sprawdź, czy **MS PIM** nazwy głównej usługi przypisano **Administrator dostępu użytkowników** roli.
 
-1. Jeśli nie, wybierz **Dodaj** otworzyć **Dodaj uprawnienia** okienka.
+1. Jeśli nie, wybierz **Dodaj przypisanie roli** otworzyć **Dodaj przypisanie roli** okienka.
 
 1. W **roli** listy rozwijanej wybierz **Administrator dostępu użytkowników** roli.
 
