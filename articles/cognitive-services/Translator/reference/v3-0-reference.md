@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 6f679536d69f700fd6678eb3bbbb869e42439cde
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 8302a444f28e4fb330a1eedbac9a5da762979d6c
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853357"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681963"
 ---
 # <a name="translator-text-api-v30"></a>Interfejs API tekstu usługi Translator w wersji 3.0
 
@@ -31,11 +31,22 @@ Interfejs API tekstu usługi Translator w wersji 3 zapewnia nowoczesnych opartyc
 
 ## <a name="base-urls"></a>Podstawowych adresach URL
 
-Tekst interfejsu API w wersji 3.0 jest dostępna w następujących chmury:
+Usługa Microsoft Translator jest obsługiwany z wielu lokalizacji centrów danych. Obecnie znajdują się one w 6 [regionów świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/regions):
 
-| Opis | Region | Podstawowy adres URL                                        |
-|-------------|--------|-------------------------------------------------|
-| Azure       | Globalny | API.cognitive.microsofttranslator.com           |
+* **Rozwiązanie to przyniosło im:** zachodnie stany USA 2 i środkowe stany USA zachodnie 
+* **Azja i Pacyfik:** Azja południowo-wschodnia i Korea Południowa
+* **Europa:** Europa Północna i Europa Zachodnia
+
+Żądania interfejs API tekstu usługi Microsoft Translator są w większości przypadków obsługiwane przez centrum danych, które znajduje się najbliżej skąd pochodzi żądanie. W razie awarii centrum danych może być przesłane żądanie, poza regionem.
+
+Aby wymusić żądania, które mają być obsługiwane przez określone centrum danych, zmienić globalny punkt końcowy w żądaniu interfejsu API do żądanego punktu końcowego regionalne:
+
+|Opis|Region|Podstawowy adres URL|
+|:--|:--|:--|
+|Azure|Globalny|  API.cognitive.microsofttranslator.com|
+|Azure|Ameryka Północna|   nam.cognitive.microsofttranslator.com interfejsu API|
+|Azure|Europa|  eur.cognitive.microsofttranslator.com interfejsu API|
+|Azure|Azja i Pacyfik|    apc.cognitive.microsofttranslator.com interfejsu API|
 
 
 ## <a name="authentication"></a>Authentication

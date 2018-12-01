@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: 2f0b2984bf2390a9af0b824495b84c71d04aeac2
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: ce6446caf74e16f69369d5ee8ee7b6342870e826
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852847"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682600"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>W usłudze Translator tekstu interfejsu API w wersji 2 do migracji V3
 
@@ -105,11 +105,33 @@ Globalny
 
 [Słownik/przykład](reference/v3-0-dictionary-examples.md)
 
-## <a name="customization"></a>Dostosowywanie
+## <a name="compatibility-and-customization"></a>Zgodność i dostosowywania
 
-Domyślnie V3 w usłudze Translator firmy Microsoft używa neuronowego tłumaczenia maszynowego. W efekcie nie można używać z Centrum w usłudze Translator firmy Microsoft. Centrum usługi Translator obsługuje tylko starszego statystycznego tłumaczenia maszynowego. Dostosowywanie na potrzeby tłumaczenie neuronowe jest teraz dostępna, przy użyciu niestandardowych w usłudze Translator. [Dowiedz się więcej o dostosowywaniu neuronowego tłumaczenia maszynowego](customization.md)
+Domyślnie V3 w usłudze Translator firmy Microsoft używa neuronowego tłumaczenia maszynowego. W efekcie nie można używać z Centrum w usłudze Translator firmy Microsoft. Centrum usługi Translator obsługuje tylko starszego statystycznego tłumaczenia maszynowego. Dostosowywanie na potrzeby tłumaczenie neuronowe jest teraz dostępna, przy użyciu niestandardowych w usłudze Translator. [Dowiedz się więcej o dostosowywaniu neuronowego tłumaczenia maszynowego](custom-translator/overview.md)
 
 Tłumaczenie neuronowe z tekstem w wersji 3 interfejsu API nie obsługuje korzystanie z kategorii standard (SMT, mowy, tekst, generalnn).
+
+| |Endpoint|    Zgodność z RODO procesora|  Za pomocą Centrum w usłudze Translator| Użyj niestandardowego w usłudze Translator (wersja zapoznawcza)|
+|:-----|:-----|:-----|:-----|:-----|
+|Interfejs API tekstu usługi Translator w wersji 2| API.microsofttranslator.com|    Nie  |Yes    |Nie|
+|Wersja interfejsu API tekstu usługi Translator 3| API.cognitive.microsofttranslator.com|  Yes|    Nie| Yes|
+
+**Wersja interfejsu API tekstu usługi Translator 3**
+* Jest ogólnie dostępna i w pełni obsługiwane.
+* Jest zgodny jako podmiot przetwarzający z RODO i spełniający wszystkie wymagania ISO 20001 i 20018 także SOC 3 certyfikacji. 
+* Umożliwia wykonywanie systemów translation sieci neuronowych, które zostały dostosowane przy użyciu niestandardowych w usłudze Translator (wersja zapoznawcza), nowa funkcja dostosowywania Translator NMT. 
+* Nie zapewnia dostępu do systemów tłumaczenia niestandardowych utworzone za pomocą Centrum w usłudze Translator firmy Microsoft.
+
+Używasz wersji 3 interfejsu API Rozpoznawania tekstu usługi Translator, korzystając z punktu końcowego api.cognitive.microsofttranslator.com.
+
+**Interfejs API tekstu usługi Translator w wersji 2**
+* jest przestarzały. Zostanie ona zakończona 30 kwietnia 2019 r. 
+* Nie spełnia wszystkich ISO 20001,20018 i wymagania dotyczące certyfikacji SOC 3. 
+* Umożliwia wywoływanie systemów translation sieci neuronowych, które zostały dostosowane przy użyciu funkcji dostosowywania w usłudze Translator.
+* Zapewnia dostęp do systemów tłumaczenia niestandardowych utworzone za pomocą Centrum w usłudze Translator firmy Microsoft.
+* Używasz wersji 2 API tekstu usługi Translator, korzystając z punktu końcowego api.microsofttranslator.com.
+
+Brak wersji interfejsu API usługi Translator tworzy rekord tłumaczenia. Tłumaczenia nigdy nie są udostępniane nikomu. Więcej informacji na temat [bez śledzenia w usłudze Translator](http://www.aka.ms/NoTrace) strony sieci Web.
 
 
 ## <a name="links"></a>Linki

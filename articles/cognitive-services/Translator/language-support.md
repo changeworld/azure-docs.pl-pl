@@ -10,86 +10,98 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: 222e37e38772b82e9d9849e3a955b865d43d3c63
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 0b1187083c14fc7c536f6a32f3a41957f53f299b
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957401"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679719"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejsu API tłumaczenia tekstu
 
-Interfejs API tekstu usługi Translator obsługuje następujące języki do tłumaczenia tekstu na tekst. Tłumaczenie neuronowe (NMT) stanowi nowy standard w poszukiwaniu tłumaczeń maszyny bazujących na sztucznej Inteligencji wysokiej jakości i jest dostępny jako domyślne za pomocą interfejsu API tekstu usługi Translator w wersji 3, gdy neuronowych system będzie dostępny. Neuronowego tłumaczenia maszynowego jest dostępna w wersji 2 za pomocą kategorii "generalnn".
+Interfejs API tekstu usługi Translator obsługuje następujące języki do tłumaczenia tekstu na tekst. Tłumaczenie neuronowe (NMT) stanowi nowy standard w poszukiwaniu tłumaczeń maszyny bazujących na sztucznej Inteligencji wysokiej jakości i jest dostępny jako domyślne za pomocą interfejsu API tekstu usługi Translator w wersji 3, gdy neuronowych system będzie dostępny. 
 
 [Dowiedz się więcej o tym, jak działa tłumaczenia maszynowego](https://www.microsoft.com/translator/mt.aspx)
 
-| Język    | Typ tłumaczenia |Kod języka |
-|:----------- |:-------:|:-------------:|
-| Afrikaans      | Statystyczne |`af`          |
-| Arabski      | Neuronowych | `ar`          |
-| Arabski, Levantine    | Neuronowych | `apc`
-| Bengalski      | Neuronowych |`bn`          |
-| Bośniacki (łaciński)      | Statystyczne |`bs`          |
-| Bułgarski     |  Neuronowych |`bg`          |
-| Kantoński (tradycyjny)      | Statystyczne |`yue`          |
-| Kataloński      | Statystyczne |`ca`          |
-| Chiński uproszczony        |  Neuronowych |`zh-Hans`          |
-| Chiński tradycyjny        |  Neuronowych |`zh-Hant`          |
-| Chorwacki      | Neuronowych |`hr`          |
-| Czeski        |  Neuronowych |`cs`          |
-| Duński        |  Neuronowych |`da`          |
-| Holenderski        |  Neuronowych |`nl`          |
-| Polski       |  Neuronowych |`en`          |
-| Estoński      | Neuronowych |`et`          |
-| Fidżi      | Statystyczne |`fj`          |
-| Filipino      | Statystyczne |`fil`          |
-| Fiński      | Neuronowych |`fi`          |
-| Francuski        |  Neuronowych |`fr`          |
-| Niemiecki       |  Neuronowych |`de`          |
-| Grecki      | Neuronowych |`el`          |
-| Haitański      | Statystyczne |`ht`          |
-| Hebrajski      | Neuronowych |`he`          |
-| Hindi        |  Neuronowych |`hi`          |
-| Hmong Daw      | Statystyczne |`mww`          |
-| Węgierski      | Neuronowych |`hu`          |
-| Islandzki      |  Neuronowych |`is`           |
-| Indonezyjski      | Statystyczne |`id`          |
-| Włoski        |  Neuronowych |`it`          |
-| Japoński        |  Neuronowych |`ja`          |
-| Swahili      | Statystyczne |`sw`          |
-| Klingon      | Statystyczne |`tlh`          |
-| Klingon (plqaD)      | Statystyczne |`tlh-Qaak`          |
-| Koreański        |  Neuronowych |`ko`          |
-| Łotewski      | Neuronowych |`lv`          |
-| Litewski      | Neuronowych |`lt`          |
-| Malgaski      | Statystyczne |`mg`          |
-| Malajski      | Statystyczne |`ms`          |
-| Maltański      | Statystyczne |`mt`          |
-| Norweski        |  Neuronowych |`nb`          |
-| Perski      | Statystyczne |`fa`          |
-| Polski        |  Neuronowych |`pl`          |
-| Portugalski        |  Neuronowych |`pt`          |
-| Queretaro Otomi      | Statystyczne |`otq`          |
-| Rumuński        |  Neuronowych |`ro`          |
-| Rosyjski        |  Neuronowych |`ru`          |
-| (Samoa Zachodnie)      | Statystyczne |`sm`          |
-| Serbski (cyrylica)      | Statystyczne |`sr-Cyrl`          |
-| Serbski (łaciński)      | Statystyczne |`sr-Latn`          |
-| Słowacki     | Neuronowych |`sk`          |
-| Słoweński      | Neuronowych |`sl`          |
-| Hiszpański        |  Neuronowych |`es`          |
-| Szwedzki        |  Neuronowych |`sv`          |
-| Tahitian      | Statystyczne |`ty`          |
-| Tamilski      | Statystyczne |`ta`          |
-| Telugu   | Neuronowych   | `te` |
-| Tajlandzki      | Neuronowych |`th`          |
-| Pa'anga      | Statystyczne |`to`          |
-| Turecki       |  Neuronowych |`tr`          |
-| Ukraiński      | Neuronowych |`uk`          |
-| Urdu      | Statystyczne |`ur`          |
-| Wietnamski      | Neuronowych |`vi`          |
-| Walijski      | Neuronowych |`cy`          |
-| Yucatec Maya      | Statystyczne |`yua`          |
+**W wersji 2 Translator interfejsu API**
+
+> [!NOTE]
+> W wersji 2 została zakończona w dniu 30 kwietnia 2018 i zostanie zakończona w dniu 30 kwietnia 2019 r.
+
+* Tylko statystyczne: nie neuronowych system będzie dostępny dla tego języka.
+* Neuronowych dostępne: neuronowych system będzie dostępny. Użyj parametru `category=generalnn` dostęp do tego systemu neuronowych.
+* Domyślne neuronowej: neuronowych jest domyślny system tłumaczeń. Użyj parametru `category=smt` dostęp do tego systemu statystycznych do użycia z usługą Microsoft Translator Hub.
+* Tylko Neuronowej: tylko tłumaczenie neuronowe jest dostępne.
+
+**Interfejs API usługi Translator w wersji 3** interfejs API usługi Translator w wersji 3 jest neuronowych domyślnie i systemy statystyczne są dostępne tylko, gdy nie istnieje żaden system neuronowych. Niestandardowe w usłudze Translator należy używać tylko z językami neuronowych. 
+
+|Język|  Kod języka|  INTERFEJSY API WERSJI 2| W WERSJI 3 INTERFEJSU API|
+|:-----|:-----:|:-----|:-----|
+|Afrikaans| `af`    |Tylko statystyczne|  Neuronowych|
+|Arabski|    `ar`    |Neuronowych dostępne|  Neuronowych|
+|Arabski, Levantine| `apc`   |Neuronowych dostępne|  Neuronowych|
+|Bengalski|    `bn`    |Neuronowych dostępne|  Neuronowych|
+|Bośniacki (łaciński)|   `bs`    |Tylko statystyczne|  Statystyczne|
+|Bułgarski| `bg`    |Neuronowych dostępne|  Neuronowych|
+|Kantoński (tradycyjny)|   `yue`   |Tylko statystyczne|  Statystyczne|
+|Kataloński|   `ca`    |Tylko statystyczne|  Statystyczne|
+|Chiński uproszczony|    `zh-Hans`   |Domyślne neuronowych |Neuronowych|
+|Chiński tradycyjny|   `zh-Hant`   |Domyślne neuronowych |Neuronowych|
+|Chorwacki|  `hr`    |Neuronowych dostępne|  Neuronowych|
+|Czeski| `cs`    |Neuronowych dostępne|  Neuronowych|
+|Duński|    `da`    |Neuronowych dostępne   |Neuronowych|
+|Holenderski| `nl`    |Neuronowych dostępne|  Neuronowych|
+|Polski|   `en`    |Neuronowych dostępne|  Neuronowych|
+|Estoński|  `et`    |Neuronowych dostępne|  Neuronowych|
+|Fidżi|    `fj`    |Tylko statystyczne|  Statystyczne|
+|Filipino|  `fil`   |Tylko statystyczne|  Statystyczne|
+|Fiński|   `fi`    |Neuronowych dostępne|  Neuronowych|
+|Francuski|    `fr`    |Neuronowych dostępne|  Neuronowych|
+|Niemiecki|    `de`    |Neuronowych dostępne|  Neuronowych|
+|Grecki| `el`    |Neuronowych dostępne|  Neuronowych|
+|Haitański|    `ht`    |Tylko statystyczne   |Statystyczne|
+|Hebrajski |`he`   |Neuronowych dostępne   |Neuronowych|
+|Hindi| `hi`    |Domyślne neuronowych|    Neuronowych|
+|Hmong Daw| `mww`   |Tylko statystyczne|  Statystyczne|
+|Węgierski| `hu`    |Neuronowych dostępne|  Neuronowych|
+|Islandzki| `is`    |Tylko neuronowych|   Neuronowych|
+|Indonezyjski|    `id`    |Tylko statystyczne|  Statystyczne|
+|Włoski|   `it`    |Neuronowych dostępne|  Neuronowych|
+|Japoński|  `ja`    |Neuronowych dostępne|  Neuronowych|
+|Suahili| `sw`    |Tylko statystyczne|  Statystyczne|
+|Klingon|   `tlh`   |Tylko statystyczne|  Statystyczne|
+|Klingon (plqaD)|   `tlh-Qaak`  |Tylko statystyczne|  Statystyczne|
+|Koreański |`ko`   |Neuronowych dostępne|  Neuronowych|
+|Łotewski|   `lv`    |Neuronowych dostępne|  Neuronowych|
+|Litewski|    `lt`    |Neuronowych dostępne|  Neuronowych|
+|Malgaski|  `mg`    |Tylko statystyczne|  Statystyczne|
+|Malajski| `ms`    |Tylko statystyczne   |Statystyczne|
+|Maltański|   `mt`    |Tylko statystyczne|  Statystyczne|
+|Norweski| `nb`    |Neuronowych dostępne|  Neuronowych|
+|Perski|   `fa`    |Tylko statystyczne|  Statystyczne|
+|Polski|    `pl`    |Neuronowych dostępne|  Neuronowych|
+|Portugalski|    `pt`    |Neuronowych dostępne|  Neuronowych|
+|Queretaro Otomi|   `otq`   |Tylko statystyczne|  Statystyczne|
+|Rumuński|  `ro`    |Neuronowych dostępne|  Neuronowych|
+|Rosyjski|   `ru`    |Neuronowych dostępne|  Neuronowych|
+|(Samoa Zachodnie)|    `sm`    |Tylko statystyczne|  Statystyczne|
+|Serbski (cyrylica)|    `sr-Cyrl`   |Tylko statystyczne|  Statystyczne|
+|Serbski (łaciński)|   `sr-Latn`   |Tylko statystyczne   |Statystyczne|
+|Słowacki|    `sk`    |Neuronowych dostępne|  Neuronowych|
+|Słoweński| `sl`    |Neuronowych dostępne|  Neuronowych|
+|Hiszpański|   `es`    |Neuronowych dostępne|  Neuronowych|
+|Szwedzki|   `sv`    |Neuronowych dostępne   |Neuronowych|
+|Tahitian|  `ty`    |Tylko statystyczne|  Statystyczne|
+|Tamilski| `ta`    |Tylko statystyczne|  Statystyczne|
+|Telugu|    `te`    |Tylko neuronowych|   Neuronowych|
+|Tajlandzki|  `th`    |Neuronowych dostępne|  Neuronowych|
+|Pa'anga|    `to`    |Tylko statystyczne|  Statystyczne|
+|Turecki|   `tr`    |Neuronowych dostępne   |Neuronowych|
+|Ukraiński| `uk`    |Neuronowych dostępne|  Neuronowych|
+|Urdu|  `ur`    |Tylko statystyczne|  Statystyczne|
+|Wietnamski|    `vi`    |Neuronowych dostępne|  Neuronowych|
+|Walijski| `cy`    |Neuronowych dostępne|  Neuronowych|
+|Yucatec Maya|  `yua`   |Tylko statystyczne|  Statystyczne|
 
 ## <a name="transliteration"></a>Transliteracja
 
@@ -99,10 +111,10 @@ Metoda Transliterate obsługuje następujące języki. W "do/z" "<> -" oznacza, 
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arabski | ar | Arabski | <--> | Łaciński |
 |Bengalski  | bn | Bengalski | <--> | Łaciński |
-| Chiński (uproszczony) | zh-Hans | Chiński uproszczony | <--> | Łaciński |
-| Chiński (uproszczony) | zh-Hans | Chiński uproszczony | <--> | Chiński tradycyjny |
-| Chiński (tradycyjny) | zh-Hant | Chiński tradycyjny | <--> | Łaciński |
-| Chiński (tradycyjny) | zh-Hant | Chiński tradycyjny | <--> | Chiński uproszczony |
+| Chiński (uproszczony) | nazwy zh-Hans | Chiński uproszczony | <--> | Łaciński |
+| Chiński (uproszczony) | nazwy zh-Hans | Chiński uproszczony | <--> | Chiński tradycyjny |
+| Chiński (tradycyjny) | nazwy zh-Hant | Chiński tradycyjny | <--> | Łaciński |
+| Chiński (tradycyjny) | nazwy zh-Hant | Chiński tradycyjny | <--> | Chiński uproszczony |
 | Gudżarati | gu  | Gudżarati | --> | Łaciński |
 | Hebrajski | ADAM | Hebrajski | <--> | Łaciński |
 | Hindi | hi | Dewanagari | <--> | Łaciński |
@@ -149,7 +161,7 @@ Słownik obsługuje następujące języki do lub z języka angielskiego, za pomo
 | Indonezyjski      | `id`          |
 | Włoski      | `it`          |
 | Japoński      | `ja`          |
-| Swahili      | `sw`          |
+| Suahili      | `sw`          |
 | Klingon      | `tlh`          |
 | Koreański      | `ko`          |
 | Łotewski      | `lv`          |
@@ -218,11 +230,11 @@ Następujące języki może zostać wykryte przez metodę wykrywania. Wykrywanie
 | Łaciński |
 | Łotewski |
 | Litewski |
-| Macedoński |
+| macedoński |
 | Malajski |
 | Maltański |
 | Norweski |
-| Norweski (Nynorsk) |
+| Norweski (nynorsk) |
 | Paszto |
 | Perski |
 | Polski |
@@ -233,7 +245,7 @@ Następujące języki może zostać wykryte przez metodę wykrywania. Wykrywanie
 | Serbski (łaciński) |
 | Słowacki |
 | Słoweński |
-| Somalijski |
+| Somali |
 | Hiszpański |
 | Suahili |
 | Szwedzki |

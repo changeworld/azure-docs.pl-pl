@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: 1fc48687141ea8a7e8cb30d3438d81e8f1088e4f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: c7e14e2c2d6d38055304610c805a6bede10a6828
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340447"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679294"
 ---
 # <a name="translator-speech-api"></a>Interfejs API tłumaczenia mowy w usłudze Translator
 
@@ -88,6 +88,9 @@ Dane wejściowe audio jest w formacie pliku Audio fali (WAVE lub więcej powszec
 Należy zauważyć, że rozmiar pliku (w bajtach 4 – 7) i rozmiar "data" (w bajtach 40-43) są ustawione na zero. Scenariusz transmisji strumieniowej, których łączny rozmiar jest nie zawsze są znane z wyprzedzeniem to OK.
 
 Po wysłaniu nagłówka WAV (RIFF), klient wysyła fragmenty danych audio. Klient będzie zazwyczaj strumienia fragmenty o stałym rozmiarze reprezentujący stały czas trwania (np. strumień 100 MS audio w danym momencie).
+
+### <a name="signal-the-end-of-the-utterance"></a>Sygnał koniec wypowiedź
+Interfejs API mowy usługi Translator zwraca transkrypcja i tłumaczenie strumienia audio wysyłasz audio. Końcowe transkrypcji, ostateczne tłumaczenie i dźwięk przetłumaczone zostanie zwrócona do Ciebie, dopiero po upływie wypowiedź. W niektórych przypadkach można wymusić koniec wypowiedź. Wyślij 2,5 sekund wyciszenia, aby wymusić koniec wypowiedź. 
 
 ### <a name="final-result"></a>wynik końcowy
 Wynik rozpoznawania mowy jest generowany na końcu wypowiedź. Wynik jest przesyłane z usługi przez klienta za pomocą protokołu WebSocket komunikat typu Text. Zawartość komunikatu jest serializację ciągu JSON obiektu z następującymi właściwościami:

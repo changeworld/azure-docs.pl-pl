@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: erhopf
-ms.openlocfilehash: e7ba72c95959a0c31ca724f91f519ac705d669fb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f97b1ed30c3f8263c5c4c3465951bb7010466ac
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245787"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678291"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>Jak zarejestrować się do interfejsu API tłumaczenia tekstu
 
@@ -48,6 +48,8 @@ Po zarejestrowaniu się do tekstu usługi Translator można korzystać klucz dos
 
 - [Przykłady kodu w serwisie GitHub](https://github.com/MicrosoftTranslator)
 - [Forum pomocy technicznej usługi Microsoft Translator](https://www.aka.ms/TranslatorForum)
+
+Usługa Microsoft Translator jest ogólnie umożliwi Twoje pierwsze kilka żądań, które upłynąć, zanim po sprawdzeniu stanu konta subskrypcji. Jeśli pierwsze kilka żądań interfejsu API usługi Microsoft Translator powiedzie się następnie wywołania kończyć się niepowodzeniem, odpowiedzi na błąd będą wskazywać problem. Aby zobaczyć przyczynę, zaloguj się odpowiedzi interfejsu API.
 
 ## <a name="pricing-options"></a>Opcje cennika
 

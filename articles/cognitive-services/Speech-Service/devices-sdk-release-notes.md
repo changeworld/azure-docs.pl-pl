@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: gracez
-ms.openlocfilehash: 10ebb5f549aba42c4de74cec2c16ed63f90532a1
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 09db18f38cd64d462815793e3067b29fa0989cf9
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633745"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52719321"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Informacje o wersji programu Cognitive Services zestawu Speech Devices SDK
 
@@ -24,7 +24,8 @@ Następujące sekcje Lista zmian w najnowszych wersjach.
 ## <a name="cognitive-services-speech-devices-sdk-110-2018-nov-release"></a>Cognitive Services zestawu Speech Devices SDK 1.1.0: listopada 2018 wydania 
 
 * Zaktualizowano [zestaw SDK rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) do wersji 1.1.0. Aby uzyskać więcej informacji, zobacz jego [informacje o wersji](https://aka.ms/csspeech/whatsnew). 
-* Skrajna dokładności rozpoznawania mowy pola została ulepszona przy użyciu naszego algorytmu Ulepszone przetwarzanie audio  
+* Skrajna dokładności rozpoznawania mowy pola została ulepszona przy użyciu naszego algorytmu rozszerzonego przetwarzania audio.
+* Przykładowa aplikacja dodano obsługę rozpoznawania mowy chińskim.
 
 ## <a name="cognitive-services-speech-devices-sdk-101-2018-oct-release"></a>Cognitive Services zestawu Speech Devices SDK 1.0.1: października 2018 wydania 
 
