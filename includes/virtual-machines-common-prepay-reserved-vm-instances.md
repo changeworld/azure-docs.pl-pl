@@ -1,15 +1,15 @@
 ---
 author: yashesvi
-ms.author: yashar
+ms.author: cwatson
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 09/05/2018
-ms.openlocfilehash: 40551fa60aa17e9a46d24ffdf17bb61a884a48f2
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.date: 11/30/2018
+ms.openlocfilehash: a35c3a9a6d914cf7e6620819b24e34d954f55c2d
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585789"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52742328"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure
 
@@ -32,7 +32,6 @@ Zarezerwowane wystąpienia maszyn wirtualnych są dostępne dla większości roz
 
 - Rabat związany z rezerwacją nie ma zastosowania dla następujących maszyn wirtualnych:
   - Klasyczne maszyny wirtualne i usługi w chmurze
-  - Rozmiary ograniczone procesorów wirtualnych
   - Serię maszyn wirtualnych: A-series serii Av2 i serii G
   - Maszyny wirtualne w wersji zapoznawczej: serię maszyn wirtualnych ani rozmiaru, który jest w wersji zapoznawczej
 - Chmury: Rezerwacji nie są dostępne do zakupu w regionach Niemcy i Chiny.

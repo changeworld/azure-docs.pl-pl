@@ -2,50 +2,52 @@
 author: PatAltimore
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 11/03/2016
+ms.date: 11/30/2018
 ms.author: patricka
-ms.openlocfilehash: 9ad715f47f2de9c6f9032ed07232f45fb33b0114
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 0d9f0a24d84bd18bdf1fac84c744cc34a7d89ab3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50134355"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52742331"
 ---
-Jeśli chcesz włączyć edytowania profilu w swojej aplikacji, możesz użyć **edytowania profilu** zasad. Te zasady opisują procesy, które klienci uzyskują podczas edytowania profilu i zawartość tokenów, które aplikacja otrzyma po pomyślnym ukończeniu.
+Jeśli chcesz włączyć edytowania profilu w swojej aplikacji, możesz użyć **edytowania profilu** przepływu użytkownika. Ten przepływ użytkownika opisują procesy, które klienci uzyskują podczas edytowania profilu i zawartość tokenów, które aplikacja otrzyma po pomyślnym ukończeniu.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
-W sekcji ustawień dotyczących zasad wybierz pozycję **Zasady edytowania profilu** i kliknij pozycję **+ Dodaj**.
+W obszarze **Zarządzaj**, wybierz opcję **przepływy użytkownika** i kliknij przycisk +**nowy przepływ użytkownika**.
 
-![Wybierz pozycję Zasady edytowania profilu, a następnie kliknij przycisk Dodaj](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-policy.png)
+![Wybierz nowy przepływ użytkownika](media/active-directory-b2c-create-profile-editing-policy/add-b2c-new-user-flow.png)
 
-Wprowadź **Nazwę** zasad, do której będzie odwoływać się Twoja aplikacja. Na przykład wprowadź wartość `SiPe`.
+Na **zalecane** zaznacz **edytowania profilu**.
 
-Wybierz pozycję **Dostawcy tożsamości** i zaznacz pozycję **Logowanie za pomocą konta lokalnego**. Opcjonalnie możesz również wybrać dostawców tożsamości społecznościowych, jeśli są już skonfigurowani. Kliknij przycisk **OK**.
+Wprowadź przepływ użytkownika **nazwa** odwołać się do aplikacji. Na przykład wprowadź wartość `SiPe`.
 
-![Wybierz pozycję Logowanie za pomocą konta lokalnego jako dostawcę tożsamości, a następnie kliknij przycisk OK](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-identity-providers.png)
+W obszarze **dostawców tożsamości**, sprawdź **logowanie za pomocą konta lokalnego**. Opcjonalnie możesz również wybrać dostawców tożsamości społecznościowych, jeśli są już skonfigurowani.
 
-Wybierz pozycję **Atrybuty profilu**. Wybierz atrybuty, które użytkownik może wyświetlać i edytować w swoim profilu. Na przykład zaznacz pozycje **Kraj/Region**, **Nazwa wyświetlana** i **Kod pocztowy**. Kliknij przycisk **OK**.
+![Wybierz pozycję Logowanie za pomocą konta lokalnego jako dostawcę tożsamości, a następnie kliknij przycisk OK](media/active-directory-b2c-create-profile-editing-policy/add-b2c-profile-editing-identity-providers.png)
 
-![Wybierz część atrybutów, a następnie kliknij przycisk OK](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-attributes.png)
+W obszarze **atrybutów użytkownika**, kliknij przycisk **Pokaż więcej**. W **zbieranie atrybut** kolumnę, wybierz atrybuty, użytkownik może wyświetlać i edytować w swoim profilu. Na przykład zaznacz pozycje **Kraj/Region**, **Nazwa wyświetlana** i **Kod pocztowy**.
 
-Wybierz pozycję **Oświadczenia aplikacji**. Wybierz oświadczenia, które mają być zwracane w tokenach autoryzacji wysyłanych z powrotem do aplikacji po pomyślnym edytowaniu profilu. Na przykład wybierz pozycje **Nazwa wyświetlana**, **Kod pocztowy**.
+W **zwracany oświadczenia** kolumnę, wybierz oświadczenia, które mają być zwracane w tokenach autoryzacji wysyłanych z powrotem do aplikacji po pomyślnym edytowaniu profilu. Na przykład wybierz pozycje **Nazwa wyświetlana**, **Kod pocztowy**.
 
-![Wybierz część oświadczeń aplikacji i kliknij przycisk OK](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-application-claims.png)
+Kliknij przycisk **OK**.
 
-Kliknij przycisk **Utwórz**, aby dodać zasady. Zasady są wyświetlane jako **B2C_1_SiPe**. Do nazwy jest dołączany prefiks **B2C_1_**.
+![Wybierz część oświadczeń aplikacji i kliknij przycisk OK](media/active-directory-b2c-create-profile-editing-policy/add-b2c-user-attributes.png)
 
-Otwórz zasady, wybierając pozycję **B2C_1_SiPe**. Sprawdź ustawienia określone w tabeli, a następnie kliknij pozycję **Uruchom teraz**.
+Kliknij przycisk **Utwórz** dodać przepływ użytkownika. Przepływ użytkownika znajduje się w **B2C_1_SiPe**. Do nazwy jest dołączany prefiks **B2C_1_**.
 
-![Wybierz zasady, a następnie uruchom je](media/active-directory-b2c-create-profile-editing-policy/run-b2c-editing-policy.png)
+Wybierz **uruchomić przepływ użytkownika**. Sprawdź ustawienia określone w tabeli, a następnie kliknij przycisk **uruchomić przepływ użytkownika**.
+
+![Wybierz przepływ użytkownika i uruchom go](media/active-directory-b2c-create-profile-editing-policy/add-b2c-profile-editing-run-user-flow.png)
 
 | Ustawienie      | Wartość  |
 | ------------ | ------ |
-| **Aplikacje** | Aplikacja Contoso B2C |
-| **Wybierz adres URL odpowiedzi** | `https://localhost:44316/` |
+| **Aplikacja** | Aplikacja Contoso B2C |
+| **Adres URL odpowiedzi** | `https://localhost:44316/` |
 
 Zostanie otwarta nowa karta przeglądarki, na której możesz sprawdzić, czy edytowanie profilu użytkownika działa tak, jak zostało skonfigurowane.
 
 > [!NOTE]
-> Utworzenie zasad i zastosowanie aktualizacji zajmuje do minuty.
+> Zajmuje do minuty Tworzenie przepływu użytkownika i aktualizacje zostały wprowadzone.
 >

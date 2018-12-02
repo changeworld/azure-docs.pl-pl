@@ -2,42 +2,46 @@
 author: PatAltimore
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 11/03/2016
+ms.date: 11/30/2018
 ms.author: patricka
-ms.openlocfilehash: bff2543ec48c66c10db697650def0077e3de28be
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 78abb190dccd27c5bf70dfe12f978e1118601815
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133540"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52742582"
 ---
-Aby włączyć precyzyjne resetowanie haseł w aplikacji, należy użyć **resetowania hasła** zasad. Pamiętaj, że opcja resetowania haseł na poziomie całej dzierżawy została określona [tutaj](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md). Te zasady opisują procesy, które klienci uzyskują podczas resetowania hasła oraz zawartość tokenów, które aplikacja otrzyma po pomyślnym ukończeniu.
+Aby włączyć precyzyjne resetowanie haseł w aplikacji, należy użyć **resetowania hasła** przepływu użytkownika. Należy pamiętać, że osobą odpowiedzialną za opcja resetowania haseł dla dzierżawy jest określona [tutaj](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md). Ten przepływ użytkownika opisują procesy, które klienci uzyskują podczas resetowania hasła oraz zawartość tokenów, które aplikacja otrzyma po pomyślnym ukończeniu.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
-W sekcji ustawień dotyczącej zasad wybierz pozycję **Zasady resetowania hasła** i kliknij pozycję **+ Dodaj**.
+W obszarze **Zarządzaj**, wybierz opcję **przepływy użytkownika** i kliknij przycisk +**nowy przepływ użytkownika**.
 
-![Wybierz zasady rejestracji lub logowania i kliknij przycisk Dodaj](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-policy.png)
+![Wybierz nowy przepływ użytkownika](media/active-directory-b2c-create-password-reset-policy/add-b2c-new-user-flow.png)
 
-Wprowadź **Nazwę** zasad, do której będzie odwoływać się Twoja aplikacja. Na przykład wprowadź wartość `SSPR`.
+Na **zalecane** zaznacz **resetowania hasła**.
 
-Wybierz pozycję **Dostawcy tożsamości** i zaznacz pozycję **Resetuj hasło przy użyciu adresu e-mail**. Kliknij przycisk **OK**.
+Wprowadź przepływ użytkownika **nazwa** odwołać się do aplikacji. Na przykład wprowadź wartość `SSPR`.
 
-![Wybierz resetowanie hasła przy użyciu adresu e-mail jako dostawcy tożsamości, a następnie kliknij przycisk OK](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-identity-providers.png)
+W obszarze **dostawców tożsamości**, sprawdź **Resetuj hasło przy użyciu adresu e-mail**.
 
-Wybierz pozycję **Oświadczenia aplikacji**. Wybierz oświadczenia, które mają być zwracane w tokenach autoryzacji odsyłanych do Twojej aplikacji po pomyślnym zresetowaniu hasła. Na przykład wybierz pozycję **Identyfikator obiektu użytkownika**.
+![Wprowadź nazwę i wybierz opcję Resetuj hasło przy użyciu adresu e-mail jako dostawcy tożsamości](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-identity-providers.png)
+
+W obszarze **oświadczeń aplikacji**, kliknij przycisk **Pokaż więcej** i wybierz oświadczenia, które mają być zwracane w tokenach autoryzacji wysyłanych z powrotem do aplikacji po pomyślnym zresetowaniu hasła środowisko. Na przykład wybierz pozycję **Identyfikator obiektu użytkownika**.
+
+Kliknij przycisk **OK**.
 
 ![Wybierz część oświadczeń aplikacji i kliknij przycisk OK](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-application-claims.png)
 
-Kliknij przycisk **Utwórz**, aby dodać zasady. Zasady są wyświetlane jako **B2C_1_SSPR**. Do nazwy jest dołączany prefiks **B2C_1_**.
+Kliknij przycisk **Utwórz** dodać przepływ użytkownika. Przepływ użytkownika znajduje się w **B2C_1_SSPR**. Do nazwy jest dołączany prefiks **B2C_1_**.
 
-Otwórz zasady, wybierając pozycję **B2C_1_SSPR**. Sprawdź ustawienia określone w tabeli, a następnie kliknij pozycję **Uruchom teraz**.
+Kliknij przycisk **uruchomić przepływ użytkownika**. Sprawdź ustawienia określone w tabeli, a następnie kliknij przycisk **uruchomić przepływ użytkownika**.
 
-![Wybierz zasady, a następnie uruchom je](media/active-directory-b2c-create-password-reset-policy/run-b2c-password-reset-policy.png)
+![Wybierz przepływ użytkownika i uruchom go](media/active-directory-b2c-create-password-reset-policy/add-b2c-sspr-run-user-flow.png)
 
 | Ustawienie      | Wartość  |
 | ------------ | ------ |
-| **Aplikacje** | Aplikacja Contoso B2C |
+| **Aplikacja** | Aplikacja Contoso B2C |
 | **Wybierz adres URL odpowiedzi** | `https://localhost:44316/` |
 
 Zostanie otwarta nowa karta przeglądarki i możesz sprawdzić działanie resetowania hasła użytkownika w Twojej aplikacji.

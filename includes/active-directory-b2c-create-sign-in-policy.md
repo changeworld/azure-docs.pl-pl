@@ -2,36 +2,40 @@
 author: PatAltimore
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 11/03/2016
+ms.date: 11/30/2018
 ms.author: patricka
-ms.openlocfilehash: 19e7c919345c0f56b274737840f8150f7d710501
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 0ab34d6234db9c13ffe82ccd0e8580217085f631
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50132848"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52742317"
 ---
-Jeśli chcesz tylko Włącz logowanie w swojej aplikacji, możesz użyć **logowania** zasad. Te zasady opisują procesy, które klienci uzyskują podczas logowania i zawartość tokenów, które aplikacja otrzyma w pomyślnych logowaniach.
+Jeśli chcesz tylko Włącz logowanie w swojej aplikacji, możesz użyć **logowania** przepływu użytkownika. Ten przepływ użytkownika opisują procesy, które klienci uzyskują podczas logowania i zawartość tokenów, które aplikacja otrzyma w pomyślnych logowaniach.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
-Kliknij przycisk **zasady logowania**.
+W obszarze **Zarządzaj**, wybierz opcję **przepływy użytkownika**.
 
-Kliknij pozycję **+Dodaj** w górnej części bloku.
+Kliknij pozycję +**nowy przepływ użytkownika** w górnej części bloku.
 
-**Nazwa** określa nazwę zasad logowania używanych przez aplikację. Na przykład wprowadź wartość **SiIn**.
+W obszarze **wybierz typ przepływu użytkownika**, wybierz opcję **wszystkich**, a następnie wybierz wersję **Zaloguj się** chcesz użyć.
 
-Kliknij pozycję **Dostawcy tożsamości** i wybierz pozycję **Logowanie za pomocą konta lokalnego**. Opcjonalnie możesz również wybrać dostawców tożsamości społecznościowych, jeśli są już skonfigurowani. Kliknij przycisk **OK**.
+**Nazwa** Określa nazwę przepływu logowania użytkownika, które są używane przez aplikację. Na przykład wprowadź wartość **SiIn**.
 
-Wybierz pozycję **Oświadczenia aplikacji**. Tutaj wybierasz oświadczenia, które mają być zwracane w tokenach wysyłanych z powrotem do aplikacji po pomyślnym logowaniu. Na przykład wybierz pozycje **Nazwa wyświetlana**, **Dostawca tożsamości**, **Kod pocztowy** i **Identyfikator obiektu użytkownika**. Kliknij przycisk **OK**.
+W obszarze **dostawców tożsamości**, wybierz opcję. Możesz wybrać dostawców tożsamości społecznościowej, również, jeśli już skonfigurowany. Kliknij przycisk **OK**.
 
-Kliknij pozycję **Utwórz**. Zauważ, że właśnie utworzone zasady są wyświetlane jako **B2C_1_SiIn** (fragment **B2C\_1\_**  jest dodawany automatycznie) w bloku **Zasady logowania**.
+W obszarze **oświadczeń aplikacji**, kliknij przycisk **Pokaż więcej**.
 
-Otwórz zasady, klikając pozycję **B2C_1_SiIn**.
+W **zwracany oświadczenia** kolumnę, wybierz oświadczenia, które mają być zwracane w tokenach wysyłanych z powrotem do aplikacji po pomyślnym środowiska logowania. Na przykład wybierz pozycje **Nazwa wyświetlana**, **Dostawca tożsamości**, **Kod pocztowy** i **Identyfikator obiektu użytkownika**. Kliknij przycisk **OK**.
 
-Wybierz pozycję **Aplikacja Contoso B2C** na liście rozwijanej **Aplikacje** i pozycję `https://localhost:44321/` na liście rozwijanej **Adres URL odpowiedzi/identyfikator URI przekierowania**.
+Kliknij pozycję **Utwórz**. Należy zauważyć, że właśnie utworzony przepływ użytkownika jest wyświetlany jako **B2C_1_SiIn** ( **B2C\_1\_**  fragment jest automatycznie dodawany).
 
-Kliknij pozycję **Uruchom teraz**. Zostanie otwarta nowa karta przeglądarki i możesz zapoznać się z procesem logowania się użytkownika do Twojej aplikacji.
+Kliknij przycisk **uruchomić przepływ użytkownika**.
+
+Wybierz **aplikacja Contoso B2C** w **aplikacji** listy rozwijanej i `https://localhost:44321/` w **adres URL odpowiedzi** listy rozwijanej.
+
+Kliknij przycisk **uruchomić przepływ użytkownika**. Zostanie otwarta nowa karta przeglądarki i możesz zapoznać się z procesem logowania się użytkownika do Twojej aplikacji.
 
 > [!NOTE]
-> Utworzenie zasad i zastosowanie aktualizacji zajmuje do minuty.
+> Zajmuje do minuty Tworzenie przepływu użytkownika i aktualizacje zostały wprowadzone.
 >
