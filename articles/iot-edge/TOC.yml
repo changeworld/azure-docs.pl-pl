@@ -42,20 +42,22 @@ items:
   items:
   - name: Środowisko uruchomieniowe usługi IoT Edge
     href: iot-edge-runtime.md
-  - name: Certyfikaty usługi IoT Edge
-    href: iot-edge-certs.md
   - name: Moduły usługi IoT Edge
     items:
     - name: Omówienie modułów usługi Azure IoT Edge
       href: iot-edge-modules.md
     - name: Opracowywanie zawartości
       href: module-development.md
-    - name: Kompozycja
-      href: module-composition.md
     - name: Agent usługi Edge i właściwości centrum
       href: module-edgeagent-edgehub.md
-  - name: Wdrożenia
-    href: module-deployment-monitoring.md
+  - name: Wdrażanie modułu
+    items:
+    - name: Manifest wdrożenia
+      href: module-composition.md
+    - name: Automatyczne wdrożenia
+      href: module-deployment-monitoring.md
+  - name: Certyfikaty usługi IoT Edge
+    href: iot-edge-certs.md
   - name: Możliwości w trybie offline
     href: offline-capabilities.md
   - name: Urządzenie IoT Edge jako brama
@@ -68,6 +70,8 @@ items:
       href: iot-edge-security-manager.md
   - name: Obsługa platform
     href: support.md
+  - name: Lista kontrolna dotycząca wdrażania w środowisku produkcyjnym
+    href: production-checklist.md
   - name: Słownik usługi IoT Edge
     href: iot-edge-glossary.md
 - name: Przewodniki z instrukcjami
@@ -218,9 +222,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 7ad5c5da9162c2b5d9b5908dbea5630cf277393c
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 27bc0b00a51f10695c5ce1e2e600b91a1f97b0ab
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613906"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582808"

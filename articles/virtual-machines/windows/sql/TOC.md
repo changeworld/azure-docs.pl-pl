@@ -1,6 +1,7 @@
 # Omówienie
 ## [Maszyny wirtualne z programem SQL Server i systemem Windows — informacje](virtual-machines-windows-sql-server-iaas-overview.md) 
- 
+## [Informacje o wersji](virtual-machines-windows-sql-server-iaas-release-notes.md) 
+
 # Przewodniki Szybki start
 ## [Tworzenie maszyny wirtualnej SQL — portal](quickstart-sql-vm-create-portal.md)
 ## [Tworzenie maszyny wirtualnej SQL — PowerShell](quickstart-sql-vm-create-powershell.md)
@@ -40,6 +41,7 @@
 #### [Wiele regionów](virtual-machines-windows-portal-sql-availability-group-dr.md)
 ### Wystąpienie klastra trybu failover
 #### [Konfigurowanie](virtual-machines-windows-portal-sql-create-failover-cluster.md)
+## [Zmienianie modelu licencjonowania maszyny wirtualnej SQL](virtual-machines-windows-sql-ahb.md)
 
 # Dokumentacja
 ## [Azure PowerShell](/powershell/azure/overview)

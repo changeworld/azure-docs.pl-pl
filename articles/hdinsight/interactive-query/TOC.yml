@@ -29,12 +29,12 @@ items:
     - name: Korzystanie z usługi Azure Data Lake Store
       href: ../hdinsight-hadoop-use-data-lake-store.md
       maintainContext: true
-  - name: Korzystanie z usługi Hadoop dla zapytań interakcyjnych
+  - name: Korzystanie z usługi Apache Hadoop dla zapytań interakcyjnych
     items:
-    - name: Technologia Hive w usłudze Hadoop
+    - name: Technologia Apache Hive z usługą Hadoop
       href: ../hadoop/hdinsight-use-hive.md
       items:
-      - name: Korzystanie z rozwiązania Zeppelin
+      - name: Korzystanie z rozwiązania Apache Zeppelin
         href: ../hdinsight-connect-hive-zeppelin.md
         maintainContext: true
       - name: Narzędzia dla programu Visual Studio
@@ -46,7 +46,7 @@ items:
       - name: Narzędzia Data Lake z piaskownicą Hortonworks
         href: ../hdinsight-hadoop-emulator-visual-studio.md
         maintainContext: true
-      - name: Korzystanie z widoku Hive
+      - name: Korzystanie z widoku Apache Hive
         href: ../hadoop/apache-hadoop-use-hive-ambari-view.md
         maintainContext: true
       - name: Korzystanie z usługi Beeline
@@ -74,7 +74,7 @@ items:
     - name: Korzystanie z funkcji UDF w języku Java z technologią Hive
       href: ../hadoop/apache-hadoop-hive-java-udf.md
       maintainContext: true
-    - name: Przesyłanie zadań Hadoop
+    - name: Przesyłanie zadań usługi Apache Hadoop
       href: ../hadoop/submit-apache-hadoop-jobs-programmatically.md
       maintainContext: true
   - name: Programowanie
@@ -91,7 +91,7 @@ items:
     - name: Używanie funkcji zdefiniowanych przez użytkownika języka C#
       href: ../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
       maintainContext: true
-    - name: Używanie języka Python z technologiami Hive i Pig
+    - name: Używanie języka Python z technologią Apache Hive i programem Apache Pig
       href: ../hadoop/python-udf-hdinsight.md
       maintainContext: true
     - name: Tworzenie aplikacji usługi HDInsight platformy .NET z uwierzytelnianiem nieinterakcyjnym
@@ -104,13 +104,13 @@ items:
       maintainContext: true
     - name: Łączenie usługi Power BI z zapytaniem interaktywnym
       href: ./apache-hadoop-connect-hive-power-bi-directquery.md
-    - name: Łączenie usługi Power BI z platformą Hadoop
+    - name: Łączenie usługi Power BI z usługą Apache Hadoop
       href: ../hadoop/apache-hadoop-connect-hive-power-bi.md
       maintainContext: true
-    - name: Łączenie programu Excel z usługą Hadoop
+    - name: Łączenie programu Excel z usługą Apache Hadoop
       href: ../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
       maintainContext: true
-    - name: Nawiązywanie połączenia przy użyciu sterownika JDBC technologii Hive
+    - name: Nawiązywanie połączenia przy użyciu sterownika JDBC technologii Apache Hive
       href: ../hadoop/apache-hadoop-connect-hive-jdbc-driver.md
       maintainContext: true
     - name: Analizowanie przechowywanych danych czujników
@@ -122,7 +122,7 @@ items:
     - name: Analizowanie danych opóźnień lotów
       href: ../hdinsight-analyze-flight-delay-data-linux.md
       maintainContext: true
-    - name: Analizowanie dzienników witryn sieci Web za pomocą technologii Hive
+    - name: Analizowanie dzienników witryn internetowych za pomocą technologii Apache Hive
       href: ../hadoop/apache-hive-analyze-website-log.md
       maintainContext: true
   - name: Rozszerzanie klastrów
@@ -136,10 +136,10 @@ items:
     - name: Opracowywanie akcji skryptu
       href: ../hdinsight-hadoop-script-actions-linux.md
       maintainContext: true
-    - name: Dodawanie bibliotek technologii Hive
+    - name: Dodawanie bibliotek technologii Apache Hive
       href: ../hdinsight-hadoop-add-hive-libraries.md
       maintainContext: true
-    - name: Korzystanie z rozwiązania Zeppelin
+    - name: Korzystanie z rozwiązania Apache Zeppelin
       href: ../hdinsight-apache-spark-zeppelin-notebook.md
       maintainContext: true
     - name: Korzystanie z narzędzia Grafana
@@ -180,7 +180,7 @@ items:
     - name: Ograniczanie dostępu do danych
       href: ../hdinsight-storage-sharedaccesssignature-permissions.md
       maintainContext: true
-    - name: Autoryzowanie użytkowników na potrzeby widoków Ambari
+    - name: Autoryzowanie użytkowników na potrzeby widoków Apache Ambari
       href: ../hdinsight-authorize-users-to-ambari.md
       maintainContext: true
   - name: Zarządzanie
@@ -210,7 +210,7 @@ items:
     - name: Tworzenie klastrów na żądanie
       href: ../hdinsight-hadoop-create-linux-clusters-adf.md
       maintainContext: true
-    - name: Zarządzanie klastrami Hadoop
+    - name: Zarządzanie klastrami Apache Hadoop
       href: ../hdinsight-administer-use-portal-linux.md
       items:
       - name: Korzystanie z zestawu SDK dla platformy .NET
@@ -223,13 +223,13 @@ items:
         href: ../hdinsight-administer-use-command-line.md
         maintainContext: true
       maintainContext: true
-    - name: Zarządzanie klastrami za pomocą interfejsu użytkownika sieci Web systemu Ambari
+    - name: Zarządzanie klastrami za pomocą internetowego interfejsu użytkownika systemu Apache Ambari
       href: ../hdinsight-hadoop-manage-ambari.md
       items:
-      - name: Optymalizowanie klastrów za pomocą internetowego interfejsu użytkownika systemu Ambari
+      - name: Optymalizowanie klastrów za pomocą internetowego interfejsu użytkownika systemu Apache Ambari
         href: ../hdinsight-changing-configs-via-ambari.md
         maintainContext: true
-      - name: Używanie interfejsu API REST systemu Ambari
+      - name: Korzystanie z interfejsu API REST systemu Apache Ambari
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
@@ -245,7 +245,7 @@ items:
     - name: Dodawanie kont magazynu
       href: ../hdinsight-hadoop-add-storage.md
       maintainContext: true
-    - name: Przekazywanie danych na potrzeby zadań usługi Hadoop
+    - name: Przekazywanie danych na potrzeby zadań usługi Apache Hadoop
       href: ../hdinsight-upload-data.md
       maintainContext: true
     - name: Wiele klastrów usługi HDInsight z usługą Data Lake Store
@@ -272,13 +272,13 @@ items:
     - name: Rozwiązywanie problemów dotyczących powolnego działania lub awarii klastra usługi HDInsight
       href: ../hdinsight-troubleshoot-failed-cluster.md
       maintainContext: true
-    - name: Rozwiązywanie problemów z systemem plików HDFS
+    - name: Rozwiązywanie problemów z systemem plików HDFS usługi Apache Hadoop
       href: ../hdinsight-troubleshoot-hdfs.md
       maintainContext: true
-    - name: Rozwiązywanie problemów z usługą HIVE
+    - name: Rozwiązywanie problemów z usługą Apache HIVE
       href: ../hdinsight-troubleshoot-hive.md
       maintainContext: true
-    - name: Rozwiązywanie problemów z platformą YARN
+    - name: Rozwiązywanie problemów z platformą YARN w usłudze Apache Hadoop
       href: ../hdinsight-troubleshoot-yarn.md
       maintainContext: true
     - name: Zasoby
@@ -286,25 +286,25 @@ items:
       - name: Informacje dotyczące korzystania z usługi HDInsight w systemie Linux
         href: ../hdinsight-hadoop-linux-information.md
         maintainContext: true
-      - name: Pamięć i wydajność usługi Hadoop
+      - name: Pamięć i wydajność usługi Apache Hadoop
         href: ../hdinsight-hadoop-stack-trace-error-messages.md
         maintainContext: true
-      - name: Uzyskiwanie dostępu do dzienników aplikacji platformy YARN w usłudze Hadoop w systemie Linux
+      - name: Uzyskiwanie dostępu do dzienników aplikacji platformy YARN w usłudze Apache Hadoop w systemie Linux
         href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
         maintainContext: true
-      - name: Włączanie zrzutów sterty dla usług Hadoop
+      - name: Włączanie zrzutów sterty dla usług Apache Hadoop
         href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
         maintainContext: true
       - name: Informacje na temat błędów usługi WebHCat i ich rozwiązywania
         href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
         maintainContext: true
-      - name: Usuwanie błędów związanych z brakiem pamięci za pomocą ustawień technologii Hive
+      - name: Usuwanie błędów związanych z brakiem pamięci za pomocą ustawień technologii Apache Hive
         href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
         maintainContext: true
-      - name: Debugowanie zadań Tez przy użyciu widoków Ambari
+      - name: Debugowanie zadań środowiska Apache TEZ przy użyciu widoków systemu Apache Ambari
         href: ../hdinsight-debug-ambari-tez-view.md
         maintainContext: true
-      - name: Optymalizowanie zapytań technologii Hive
+      - name: Optymalizowanie zapytań technologii Apache Hive
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
     maintainContext: true
@@ -324,7 +324,7 @@ items:
     - name: Konfigurowanie zabezpieczeń przedsiębiorstwa w usłudze HDInsight za pomocą usługi Azure AD DS
       href: ../domain-joined/apache-domain-joined-configure-using-azure-adds.md
       maintainContext: true
-    - name: Konfigurowanie zasad technologii
+    - name: Konfigurowanie zasad technologii Apache Hive
       href: ../domain-joined/apache-domain-joined-run-hive.md
       maintainContext: true
     - name: Zarządzanie klastrami za pomocą zabezpieczeń przedsiębiorstwa
@@ -366,13 +366,13 @@ items:
     href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
   - name: Zestaw SDK dla języka Go
     href: ../hdinsight-go-sdk-overview.md
-  - name: .NET (HBase)
+  - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
   - name: .NET (Avro)
     href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: REST
     href: /rest/api/hdinsight/
-  - name: REST (Spark)
+  - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
 - name: Zasoby
   items:
@@ -396,9 +396,9 @@ items:
   - name: Narzędzia systemu Windows dla usługi HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 3f3dbea40ea402d5fc6670931ddc8fc8f85d1ca4
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 5dd6517a42a906db7297cbfe5bbded3299b0834a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364323"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308411"

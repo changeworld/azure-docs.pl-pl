@@ -5,6 +5,8 @@ items:
   items:
   - name: Informacje o usłudze API Management
     href: api-management-key-concepts.md
+  - name: Dostępność funkcji usługi API Management
+    href: api-management-features.md
 - name: Przewodniki Szybki start
   items:
   - name: Tworzenie wystąpienia — portal
@@ -48,6 +50,8 @@ items:
       href: api-management-howto-policies.md
     - name: Informacje ogólne o zasadach — indeks
       href: api-management-policies.md
+  - name: Subskrypcje
+    href: api-management-subscriptions.md
   - name: Zarządzanie przy użyciu automatyzacji
     href: automation-manage-api-management.md
   - name: Obsługa błędów
@@ -56,7 +60,7 @@ items:
     href: api-management-api-import-restrictions.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: 'Definiowanie interfejsów API '
+  - name: Definiowanie interfejsów API
     items:
     - name: Ręczne dodawanie interfejsu API
       href: add-api-manually.md
@@ -90,6 +94,14 @@ items:
     items:
     - name: Dodawanie pamięci podręcznej w celu podniesienia wydajności
       href: api-management-howto-cache.md
+    - name: Używanie zewnętrznej pamięci podręcznej
+      href: api-management-howto-cache-external.md
+  - name: Zabezpieczanie interfejsów API
+    items:
+    - name: Tworzenie subskrypcji
+      href: api-management-howto-create-subscriptions.md
+    - name: Zabezpieczanie interfejsów API przy użyciu uwierzytelniania certyfikatów klientów
+      href: api-management-howto-mutual-certificates-for-clients.md
   - name: Zabezpieczanie zaplecza
     items:
     - name: Ochrona interfejsu API za pomocą usługi Azure AD
@@ -138,8 +150,6 @@ items:
       href: api-management-sample-send-request.md
     - name: Zarządzanie kluczami tajnymi za pomocą właściwości
       href: api-management-howto-properties.md
-    - name: Zabezpieczanie interfejsów API przy użyciu uwierzytelniania certyfikatów klientów
-      href: api-management-howto-mutual-certificates-for-clients.md
     - name: Zasady ograniczeń dostępu
       href: api-management-access-restriction-policies.md
     - name: Zasady zaawansowane
@@ -232,9 +242,9 @@ items:
     href: http://aka.ms/apimblog
   - name: Żądania funkcji
     href: http://aka.ms/apimwish
-ms.openlocfilehash: bbd98974e763ae98d7f754e9d8e690d0a8c62870
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 93a5457286e5e69e504e6858d6b9f0e8491b3c30
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339399"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620051"

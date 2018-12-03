@@ -3,9 +3,9 @@ items:
   href: /azure/hdinsight
 - name: Omówienie
   items:
-  - name: Informacje o platformie Spark w usłudze HDInsight
+  - name: Informacje o platformie Apache Spark w usłudze HDInsight
     href: apache-spark-overview.md
-  - name: Składniki usługi Hadoop na usłudze HDInsight
+  - name: Składniki usługi Apache Hadoop w usłudze HDInsight
     href: ../hdinsight-component-versioning.md
     maintainContext: true
   - name: HDInsight 4.0
@@ -13,19 +13,19 @@ items:
     maintainContext: true
 - name: Przewodniki Szybki start
   items:
-  - name: Tworzenie klastra platformy Spark — portal
+  - name: Tworzenie klastra platformy Apache Spark — portal
     href: apache-spark-jupyter-spark-sql-use-portal.md
-  - name: Tworzenie klastra Spark — program PowerShell
+  - name: Tworzenie klastra platformy Apache Spark — PowerShell
     href: apache-spark-jupyter-spark-sql-use-powershell.md
-  - name: Tworzenie klastra platformy Spark — szablon
+  - name: Tworzenie klastra platformy Apache Spark — szablon
     href: apache-spark-jupyter-spark-sql.md
 - name: Samouczki
   items:
-  - name: Uruchamianie zapytań w klastrze usługi Spark
+  - name: Uruchamianie zapytań w klastrze platformy Apache Spark
     href: apache-spark-load-data-run-query.md
-  - name: Uruchamianie zapytań usługi Spark za pomocą programu VS Code
+  - name: Uruchamianie zapytań platformy Apache Spark za pomocą programu VS Code
     href: ../hdinsight-for-vscode.md
-  - name: Uruchamianie zapytań usługi Spark za pomocą programu IntelliJ
+  - name: Uruchamianie zapytań platformy Apache Spark za pomocą programu IntelliJ
     href: apache-spark-intellij-tool-plugin.md
   - name: Analizowanie danych przy użyciu narzędzi do analizy biznesowej
     href: apache-spark-use-bi-tools.md
@@ -33,7 +33,7 @@ items:
     href: apache-spark-eventhub-streaming.md
   - name: Tworzenie aplikacji uczenia maszynowego
     href: apache-spark-ipython-notebook-machine-learning.md
-  - name: Tworzenie aplikacji usługi Spark w programie IntelliJ
+  - name: Tworzenie aplikacji platformy Apache Spark w programie IntelliJ
     href: apache-spark-create-standalone-application.md
 - name: Instrukcje
   items:
@@ -47,17 +47,17 @@ items:
       maintainContext: true
   - name: Programowanie
     items:
-    - name: Używanie interakcyjnej powłoki usługi Spark
+    - name: Używanie interakcyjnej powłoki platformy Apache Spark
       href: apache-spark-shell.md
-    - name: Zdalne zadania przy użyciu usługi Livy
+    - name: Zadania zdalne przy użyciu usługi Apache Livy
       href: apache-spark-livy-rest-interface.md
     - name: Tworzenie aplikacji w programie Eclipse
       href: apache-spark-eclipse-tool-plugin.md
     - name: Tworzenie aplikacji w programie IntelliJ
       href: apache-spark-intellij-tool-plugin.md
-    - name: Zdalne debugowanie zadań usługi Spark w programie IntelliJ przez protokół SSH
+    - name: Zdalne debugowanie zadań usługi Apache Spark w programie IntelliJ przez protokół SSH
       href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
-    - name: Zdalne debugowanie zadań usługi Spark w programie IntelliJ przez sieć VPN
+    - name: Zdalne debugowanie zadań usługi Apache Spark w programie IntelliJ przez sieć VPN
       href: apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
     - name: Tworzenie aplikacji usługi HDInsight platformy .NET z uwierzytelnianiem nieinterakcyjnym
       href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
@@ -77,9 +77,9 @@ items:
     - name: Program PySpark dla programu VSCode
       href: ../set-up-pyspark-interactive-environment.md
       maintainContext: true
-    - name: Debugowanie usługi Spark w programie IntelliJ
+    - name: Debugowanie usługi Apache Spark w programie IntelliJ
       href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
-  - name: Korzystanie z notesów z usługą Spark
+  - name: Korzystanie z notesów z usługą Apache Spark
     items:
     - name: Używanie lokalnego notesu programu Jupyter
       href: apache-spark-jupyter-notebook-install-locally.md
@@ -89,7 +89,7 @@ items:
       href: apache-spark-jupyter-notebook-use-external-packages.md
     - name: Korzystanie z zewnętrznych pakietów w programie Jupyter przy użyciu akcji skryptów
       href: apache-spark-python-package-installation.md
-    - name: Korzystanie z notesów Zeppelin
+    - name: Korzystanie z notesów Apache Zeppelin
       href: apache-spark-zeppelin-notebook.md
   - name: Używanie z innymi usługami platformy Azure
     items:
@@ -97,7 +97,7 @@ items:
       href: apache-spark-use-with-data-lake-store.md
     - name: Łączenie z usługą Azure SQL Database
       href: apache-spark-connect-to-sql-database.md
-    - name: Implementowanie architektury lambda przy użyciu platformy Spark i usługi Cosmos DB
+    - name: Implementowanie architektury lambda przy użyciu platformy Apache Spark i usługi Cosmos DB
       href: ../../cosmos-db/lambda-architecture.md
       maintainContext: true
   - name: Przesyłanie strumieniowe w usłudze Spark
@@ -106,20 +106,20 @@ items:
       href: apache-spark-streaming-overview.md
     - name: Omówienie przesyłania strumieniowego ze strukturą
       href: apache-spark-structured-streaming-overview.md
-    - name: Tworzenie zadań przesyłania strumieniowego platformy Spark o wysokiej dostępności na platformie YARN
+    - name: Tworzenie zadań przesyłania strumieniowego platformy Apache Spark o wysokiej dostępności na platformie YARN w usłudze Apache Hadoop
       href: apache-spark-streaming-high-availability.md
-    - name: Przesyłanie strumieniowe ze strukturą za pomocą usługi Kafka
+    - name: Przesyłanie strumieniowe ze strukturą na platformie Apache Kafka
       href: ../hdinsight-apache-kafka-spark-structured-streaming.md
       maintainContext: true
-    - name: Przesyłanie strumieniowe ze strukturą z usługi Kafka do usługi CosmosDB
+    - name: Przesyłanie strumieniowe ze strukturą z usługi Apache Kafka do usługi CosmosDB
       href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
       maintainContext: true
-    - name: Przesyłanie strumieniowe w usłudze Spark (DStream) za pomocą usługi Kafka
+    - name: Przesyłanie strumieniowe w usłudze Spark (DStream) za pomocą usługi Apache Kafka
       href: ../hdinsight-apache-spark-with-kafka.md
       maintainContext: true
-    - name: Tworzenie zadań przesyłania strumieniowego platformy Spark z dokładnie jednokrotnym przetwarzaniem zdarzeń
+    - name: Tworzenie zadań przesyłania strumieniowego platformy Apache Spark z dokładnie jednokrotnym przetwarzaniem zdarzeń
       href: apache-spark-streaming-exactly-once.md
-  - name: Usługa Spark i uczenie maszynowe
+  - name: Usługa Apache Spark i uczenie maszynowe
     items:
     - name: Przewidywanie wyników inspekcji żywności
       href: apache-spark-machine-learning-mllib-ipython.md
@@ -129,11 +129,11 @@ items:
       href: apache-spark-deep-learning-caffe.md
     - name: Używanie z zestawem narzędzi usług Microsoft Cognitive
       href: apache-spark-microsoft-cognitive-toolkit.md
-    - name: Tworzenie potoku uczenia maszynowego platformy Spark
+    - name: Tworzenie potoku uczenia maszynowego platformy Apache Spark
       href: apache-spark-creating-ml-pipelines.md
   - name: Analizowanie danych big data
     items:
-    - name: Odczytywanie i zapisywanie danych w bazie danych HBase za pomocą platformy Spark
+    - name: Odczytywanie i zapisywanie danych w bazie danych Apache HBase za pomocą platformy Apache Spark
       href: ../hdinsight-using-spark-query-hbase.md
       maintainContext: true
     - name: Analizowanie dzienników telemetrii w usłudze Application Insights
@@ -155,16 +155,16 @@ items:
     - name: Instalowanie lub aktualizowanie środowiska Mono
       href: ../hdinsight-hadoop-install-mono.md
       maintainContext: true
-    - name: Dodawanie bibliotek technologii Hive
+    - name: Dodawanie bibliotek technologii Apache Hive
       href: ../hdinsight-hadoop-add-hive-libraries.md
       maintainContext: true
-    - name: Korzystanie z systemu Giraph
+    - name: Korzystanie z systemu Apache Giraph
       href: ../hdinsight-hadoop-giraph-install-linux.md
       maintainContext: true
     - name: Korzystanie z rozwiązania Hue
       href: ../hdinsight-hadoop-hue-linux.md
       maintainContext: true
-    - name: Korzystanie z platformy Solr
+    - name: Korzystanie z platformy Apache Solr
       href: ../hdinsight-hadoop-solr-install-linux.md
       maintainContext: true
     - name: Używanie pustych węzłów brzegowych
@@ -206,18 +206,18 @@ items:
     - name: Ograniczanie dostępu do danych
       href: ../hdinsight-storage-sharedaccesssignature-permissions.md
       maintainContext: true
-    - name: Autoryzowanie użytkowników na potrzeby widoków Ambari
+    - name: Autoryzowanie użytkowników na potrzeby widoków Apache Ambari
       href: ../hdinsight-authorize-users-to-ambari.md
       maintainContext: true
   - name: Zarządzanie
     items:
     - name: Zarządzanie zasobami klastra
       href: apache-spark-resource-manager.md
-    - name: Zarządzanie aplikacjami platformy Spark przy użyciu rozszerzonego serwera historii
+    - name: Zarządzanie aplikacjami platformy Apache Spark przy użyciu rozszerzonego serwera historii
       href: apache-azure-spark-history-server.md
-    - name: Konfigurowanie ustawień platformy Spark
+    - name: Konfigurowanie ustawień platformy Apache Spark
       href: apache-spark-settings.md
-    - name: Optymalizowanie zadań platformy Spark
+    - name: Optymalizowanie zadań platformy Apache Spark
       href: apache-spark-perf.md
     - name: Włączanie buforowania za pomocą pamięci podręcznej we/wy
       href: apache-spark-improve-performance-iocache.md
@@ -262,13 +262,13 @@ items:
       - name: Korzystanie z klasycznego interfejsu wiersza polecenia platformy Azure
         href: ../hdinsight-administer-use-command-line.md
         maintainContext: true
-    - name: Zarządzanie klastrami za pomocą interfejsu użytkownika sieci Web systemu Ambari
+    - name: Zarządzanie klastrami za pomocą internetowego interfejsu użytkownika systemu Apache Ambari
       href: ../hdinsight-hadoop-manage-ambari.md
       items:
-      - name: Optymalizowanie klastrów za pomocą internetowego interfejsu użytkownika systemu Ambari
+      - name: Optymalizowanie klastrów za pomocą internetowego interfejsu użytkownika systemu Apache Ambari
         href: ../hdinsight-changing-configs-via-ambari.md
         maintainContext: true
-      - name: Używanie interfejsu API REST systemu Ambari
+      - name: Korzystanie z interfejsu API REST systemu Apache Ambari
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
@@ -278,13 +278,13 @@ items:
     - name: Dodawanie kont magazynu
       href: ../hdinsight-hadoop-add-storage.md
       maintainContext: true
-    - name: Przekazywanie danych na potrzeby zadań usługi Hadoop
+    - name: Przekazywanie danych na potrzeby zadań usługi Apache Hadoop
       href: ../hdinsight-upload-data.md
       maintainContext: true
     - name: Wiele klastrów usługi HDInsight z usługą Data Lake Store
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
-    - name: Importowanie i eksportowanie danych za pomocą narzędzia Sqoop
+    - name: Importowanie i eksportowanie danych za pomocą narzędzia Apache Sqoop
       href: ../hadoop/hdinsight-use-sqoop.md
       items:
       - name: Nawiązywanie połączenia przy użyciu protokołu SSH
@@ -303,7 +303,7 @@ items:
     - name: Używanie technologii Oozie na potrzeby przepływów pracy
       href: ../hdinsight-use-oozie-linux-mac.md
       maintainContext: true
-    - name: Używanie koordynatorów Oozie opartych na czasie
+    - name: Korzystanie z koordynatorów Apache Oozie opartych na czasie
       href: ../hdinsight-use-oozie-coordinator-time.md
       maintainContext: true
     - name: Identyfikatory URI oraz porty usługi i klastra
@@ -323,21 +323,21 @@ items:
       maintainContext: true
   - name: Rozwiązywanie problemów
     items:
-    - name: Zadania debugowania usługi Spark
+    - name: Debugowanie zadań usługi Apache Spark
       href: apache-spark-job-debugging.md
-    - name: Debugowanie zadań usługi Spark za pomocą grafu zadania
+    - name: Debugowanie zadań usługi Apache Spark za pomocą grafu zadania
       href: apache-azure-spark-history-server.md
-    - name: Debugowanie zadania usługi Spark za pomocą programu IntelliJ
+    - name: Debugowanie zadania usługi Apache Spark za pomocą programu IntelliJ
       href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
     - name: Rozwiązywanie problemów dotyczących powolnego działania lub awarii klastra usługi HDInsight
       href: ../hdinsight-troubleshoot-failed-cluster.md
       maintainContext: true
-    - name: Rozwiązywanie problemów z usługą Spark
+    - name: Rozwiązywanie problemów z usługą Apache Spark
       href: apache-troubleshoot-spark.md
-    - name: Rozwiązywanie problemów z systemem plików HDFS
+    - name: Rozwiązywanie problemów z systemem plików HDFS usługi Apache Hadoop
       href: ../hdinsight-troubleshoot-hdfs.md
       maintainContext: true
-    - name: Rozwiązywanie problemów z platformą YARN
+    - name: Rozwiązywanie problemów z platformą YARN w usłudze Apache Hadoop
       href: ../hdinsight-troubleshoot-yarn.md
       maintainContext: true
     - name: Znane problemy
@@ -347,25 +347,25 @@ items:
       - name: Informacje dotyczące korzystania z usługi HDInsight w systemie Linux
         href: ../hdinsight-hadoop-linux-information.md
         maintainContext: true
-      - name: Pamięć i wydajność usługi Hadoop
+      - name: Pamięć i wydajność usługi Apache Hadoop
         href: ../hdinsight-hadoop-stack-trace-error-messages.md
         maintainContext: true
-      - name: Uzyskiwanie dostępu do dzienników aplikacji platformy YARN w usłudze Hadoop w systemie Linux
+      - name: Uzyskiwanie dostępu do dzienników aplikacji platformy YARN w usłudze Apache Hadoop w systemie Linux
         href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
         maintainContext: true
-      - name: Włączanie zrzutów sterty dla usług Hadoop
+      - name: Włączanie zrzutów sterty dla usług Apache Hadoop
         href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
         maintainContext: true
       - name: Informacje na temat błędów usługi WebHCat i ich rozwiązywania
         href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
         maintainContext: true
-      - name: Usuwanie błędów związanych z brakiem pamięci za pomocą ustawień technologii Hive
+      - name: Usuwanie błędów związanych z brakiem pamięci za pomocą ustawień technologii Apache Hive
         href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
         maintainContext: true
-      - name: Debugowanie zadań Tez przy użyciu widoków Ambari
+      - name: Debugowanie zadań środowiska Apache Tez przy użyciu widoków systemu Apache Ambari
         href: ../hdinsight-debug-ambari-tez-view.md
         maintainContext: true
-      - name: Optymalizowanie zapytań technologii Hive
+      - name: Optymalizowanie zapytań technologii Apache Hive
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
 - name: Gotowość przedsiębiorstwa
@@ -384,7 +384,7 @@ items:
     - name: Konfigurowanie zabezpieczeń przedsiębiorstwa w usłudze HDInsight za pomocą usługi Azure AD DS
       href: ../domain-joined/apache-domain-joined-configure-using-azure-adds.md
       maintainContext: true
-    - name: Konfigurowanie zasad technologii
+    - name: Konfigurowanie zasad technologii Apache Hive
       href: ../domain-joined/apache-domain-joined-run-hive.md
       maintainContext: true
     - name: Zarządzanie klastrami za pomocą zabezpieczeń przedsiębiorstwa
@@ -426,13 +426,13 @@ items:
     href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
   - name: Zestaw SDK dla języka Go
     href: ../hdinsight-go-sdk-overview.md
-  - name: .NET (HBase)
+  - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
   - name: .NET (Avro)
     href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: Interfejs API REST
     href: /rest/api/hdinsight/
-  - name: Interfejs API REST (Spark)
+  - name: Interfejs API REST (Apache Spark)
     href: /rest/api/hdinsightspark/
 - name: Zasoby
   items:
@@ -456,9 +456,9 @@ items:
   - name: Narzędzia systemu Windows dla usługi HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 53f7e70e9ce7442ab37008c1c6614eec0783fd85
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 35ef5face0f64b6766993eeb7f546923726bd166
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428287"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584336"
