@@ -2,21 +2,21 @@
 title: Uruchamianie równoległego obciążenia — usługa Azure Batch dla środowiska .NET
 description: Samouczek — Równoległe transkodowanie plików multimedialnych przy użyciu narzędzia ffmpeg w usłudze Azure Batch z zastosowaniem biblioteki klienta Batch .NET
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 09/07/2018
-ms.author: danlep
+ms.date: 11/20/2018
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 02b715ade9a9a537f6bd0e476ada299140bff4bb
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 7e654e070ce64b0f5e7f9fb5734bf0ec1584dbf6
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815515"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423613"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Samouczek: uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API .NET
 
@@ -41,7 +41,7 @@ W tym samouczku przekonwertujesz równolegle pliki multimedialne w formacie MP4 
 
 * Konto usługi Batch i połączone konto usługi Azure Storage. Aby utworzyć te konta, skorzystaj z przewodników Szybki start dla usługi Batch i [witryny Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md).
 
-* [64-bitowa wersja narzędzia ffmpeg 3.4 dla systemu Windows](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (plik zip). Pobierz plik zip na komputer lokalny. Na potrzeby tego samouczka potrzebujesz tylko pliku zip. Nie musisz go rozpakowywać ani instalować lokalnie. 
+* [64-bitowa wersja narzędzia ffmpeg 3.4 dla systemu Windows](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (plik zip). Pobierz plik zip na komputer lokalny. Na potrzeby tego samouczka potrzebujesz tylko pliku zip. Nie musisz go rozpakowywać ani instalować lokalnie.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
@@ -71,7 +71,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial.git
 
 Przejdź do katalogu, który zawiera plik rozwiązania programu Visual Studio `BatchDotNetFfmpegTutorial.sln`.
 
-Otwórz plik rozwiązania w programie Visual Studio i zaktualizuj ciągi poświadczeń w pliku `program.cs`, wprowadzając wartości uzyskane dla kont. Na przykład:
+Otwórz plik rozwiązania w programie Visual Studio i zaktualizuj ciągi poświadczeń w pliku `Program.cs`, wprowadzając wartości uzyskane dla kont. Na przykład:
 
 ```csharp
 // Batch account credentials
@@ -104,7 +104,7 @@ Skompiluj i uruchom aplikację w programie Visual Studio lub w wierszu polecenia
 Następnie uruchom go. Po uruchomieniu aplikacji przykładowej dane wyjściowe w konsoli będą wyglądać mniej więcej następująco. W czasie wykonywania nastąpi wstrzymanie operacji w momencie wyświetlenia komunikatu `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` podczas uruchamiania węzłów obliczeniowych puli. 
 
 ```
-Sample start: 12/12/2017 3:20:21 PM
+Sample start: 11/19/2018 3:20:21 PM
 
 Container [input] created.
 Container [output] created.
@@ -120,17 +120,15 @@ Monitoring all tasks for 'Completed' state, timeout in 00:30:00...
 Success! All tasks completed successfully within the specified timeout period.
 Deleting container [input]...
 
-Sample end: 12/12/2017 3:29:36 PM
+Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
-
 
 Przejdź do konta usługi Batch w witrynie Azure Portal, aby monitorować pulę, węzły obliczeniowe, zadanie i zadania podrzędne. Na przykład aby wyświetlić mapę cieplną węzłów obliczeniowych w puli, kliknij pozycję **Pule** > *WinFFmpegPool*.
 
 Podczas wykonywania zadań podrzędnych mapa cieplna może wyglądać następująco:
 
 ![Mapa cieplna puli](./media/tutorial-parallel-dotnet/pool.png)
-
 
 Typowy czas wykonywania wynosi mniej więcej **10 minut** w przypadku uruchomienia aplikacji w konfiguracji domyślnej. Tworzenie puli zajmuje najwięcej czasu.
 
@@ -178,7 +176,7 @@ Następnie pliki są przekazywane do kontenera wejściowego z lokalnego folderu 
 Podczas przekazywania plików używane są dwie metody w pliku `Program.cs`:
 
 * `UploadResourceFilesToContainerAsync`: zwraca kolekcję obiektów ResourceFile i wywołuje wewnętrznie element `UploadResourceFileToContainerAsync` w celu przekazania wszystkich plików przekazywanych w parametrze `inputFilePaths`.
-* `UploadResourceFileToContainerAsync`: przekazuje poszczególne pliki jako obiekty blob do kontenera wejściowego. Po przekazaniu pliku uzyskuje sygnaturę dostępu współdzielonego (SAS) dla obiektu blob i zwraca obiekt ResourceFile, który go reprezentuje. 
+* `UploadResourceFileToContainerAsync`: przekazuje poszczególne pliki jako obiekty blob do kontenera wejściowego. Po przekazaniu pliku uzyskuje sygnaturę dostępu współdzielonego (SAS) dla obiektu blob i zwraca obiekt ResourceFile, który go reprezentuje.
 
 ```csharp
 string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
@@ -198,9 +196,9 @@ Szczegółowe informacje na temat przekazywania plików jako obiektów blob na k
 
 Następnie w przykładzie tworzona jest pula węzłów obliczeniowych na koncie usługi Batch z wywołaniem funkcji `CreatePoolIfNotExistAsync`. Ta zdefiniowana metoda używa metody [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) w celu ustawienia liczby węzłów, rozmiaru maszyny wirtualnej i konfiguracji puli. W tym przypadku obiekt [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) określa parametr [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) z odwołaniem do obrazu systemu Windows Server opublikowanego w witrynie Azure Marketplace. Usługa Batch obsługuje szeroki zakres obrazów maszyn wirtualnych z witryny Azure Marketplace oraz niestandardowe obrazy maszyn wirtualnych.
 
-Liczba węzłów i rozmiar maszyny wirtualnej są ustawiane przy użyciu zdefiniowanych stałych. Usługa Batch obsługuje węzły dedykowane oraz [węzły o niskim priorytecie](batch-low-pri-vms.md). W puli możesz użyć dowolnego z tych typów węzłów lub obu. Węzły dedykowane są zarezerwowane dla Twojej puli. Węzły o niskim priorytecie są oferowane w obniżonej cenie i korzystają z nadwyżek pojemności maszyn wirtualnych na platformie Azure. Węzły o niskim priorytecie staną się niedostępne, jeśli pojemność platformy Azure będzie niewystarczająca. Domyślnie przykładowa aplikacja tworzy pulę zawierającą tylko 5 węzłów o niskim priorytecie i rozmiarze *Standardowa_A1_v2*. 
+Liczba węzłów i rozmiar maszyny wirtualnej są ustawiane przy użyciu zdefiniowanych stałych. Usługa Batch obsługuje węzły dedykowane oraz [węzły o niskim priorytecie](batch-low-pri-vms.md). W puli możesz użyć dowolnego z tych typów węzłów lub obu. Węzły dedykowane są zarezerwowane dla Twojej puli. Węzły o niskim priorytecie są oferowane w obniżonej cenie i korzystają z nadwyżek pojemności maszyn wirtualnych na platformie Azure. Węzły o niskim priorytecie staną się niedostępne, jeśli pojemność platformy Azure będzie niewystarczająca. Domyślnie przykładowa aplikacja tworzy pulę zawierającą tylko 5 węzłów o niskim priorytecie i rozmiarze *Standardowa_A1_v2*.
 
-Aplikacja ffmpeg jest wdrażana w węzłach obliczeniowych przez dodanie parametru [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) do konfiguracji puli. 
+Aplikacja ffmpeg jest wdrażana w węzłach obliczeniowych przez dodanie parametru [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) do konfiguracji puli.
 
 Metoda [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) przesyła pulę do usługi Batch.
 
@@ -208,7 +206,7 @@ Metoda [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) pr
 ImageReference imageReference = new ImageReference(
     publisher: "MicrosoftWindowsServer",
     offer: "WindowsServer",
-    sku: "2012-R2-Datacenter-smalldisk",
+    sku: "2016-Datacenter-smalldisk",
     version: "latest");
 
 VirtualMachineConfiguration virtualMachineConfiguration =
@@ -220,7 +218,7 @@ pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
     targetDedicatedComputeNodes: DedicatedNodeCount,
     targetLowPriorityComputeNodes: LowPriorityNodeCount,
-    virtualMachineSize: PoolVMSize,                                                
+    virtualMachineSize: PoolVMSize,
     virtualMachineConfiguration: virtualMachineConfiguration);
 
 pool.ApplicationPackageReferences = new List<ApplicationPackageReference>
@@ -234,7 +232,7 @@ await pool.CommitAsync();
 
 ### <a name="create-a-job"></a>Tworzenie zadania
 
-Zadanie usługi Batch określa pulę, w której będą uruchamiane zadania podrzędne, wraz z ustawieniami opcjonalnymi, takimi jak priorytet i harmonogram pracy. Przykładowa aplikacja tworzy zadanie z wywołaniem `CreateJobAsync`. W tej zdefiniowanej metodzie zadanie jest tworzone w puli za pomocą metody [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob). 
+Zadanie usługi Batch określa pulę, w której będą uruchamiane zadania podrzędne, wraz z ustawieniami opcjonalnymi, takimi jak priorytet i harmonogram pracy. Przykładowa aplikacja tworzy zadanie z wywołaniem `CreateJobAsync`. W tej zdefiniowanej metodzie zadanie jest tworzone w puli za pomocą metody [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob).
 
 Metoda [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudjob.commitasync) przesyła zadanie do usługi Batch. Początkowo zadanie nie zawiera zadań podrzędnych.
 
@@ -252,7 +250,7 @@ Przykładowa aplikacja tworzy zadania podrzędne w ramach zadania, wywołując m
 
 Przykładowa aplikacja tworzy obiekt [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) dla pliku MP3 po uruchomieniu wiersza polecenia. Pliki wyjściowe z każdego zadania podrzędnego (w tym przypadku jeden plik) są przekazywane do kontenera na połączonym koncie magazynu przy użyciu właściwości [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) w zadaniu podrzędnym.
 
-Następnie przykładowa aplikacja dodaje zadania podrzędne do zadania za pomocą metody [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync), która tworzy kolejkę zadań podrzędnych do uruchomienia w węzłach obliczeniowych. 
+Następnie przykładowa aplikacja dodaje zadania podrzędne do zadania za pomocą metody [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync), która tworzy kolejkę zadań podrzędnych do uruchomienia w węzłach obliczeniowych.
 
 ```csharp
 for (int i = 0; i < inputFiles.Count; i++)
@@ -289,7 +287,7 @@ return tasks
 
 ### <a name="monitor-tasks"></a>Monitorowanie podzadań
 
-Po dodaniu zadań podrzędnych do zadania usługa Batch automatycznie tworzy kolejkę zadań podrzędnych i planuje ich wykonanie w węzłach obliczeniowych powiązanej puli. Na podstawie określonych przez użytkownika ustawień usługa Batch obsługuje dodawanie zadań podrzędnych do kolejki, ich planowanie, ponawianie prób ich wykonania oraz inne czynności administracyjne. 
+Po dodaniu zadań podrzędnych do zadania usługa Batch automatycznie tworzy kolejkę zadań podrzędnych i planuje ich wykonanie w węzłach obliczeniowych powiązanej puli. Na podstawie określonych przez użytkownika ustawień usługa Batch obsługuje dodawanie zadań podrzędnych do kolejki, ich planowanie, ponawianie prób ich wykonania oraz inne czynności administracyjne.
 
 Istnieje wiele sposobów, w jakie można monitorować wykonanie podzadań. Ta przykładowa aplikacja definiuje metodę `MonitorTasks`, umożliwiającą tylko raportowanie zakończenia zadań podrzędnych oraz ich powodzenia lub niepowodzenia. Kod metody `MonitorTasks` określa parametr [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel), aby efektywnie wybrać tylko minimum informacji o zadaniach podrzędnych. Następnie tworzy funkcję [TaskStateMonitor](/dotnet/api/microsoft.azure.batch.taskstatemonitor), która udostępnia narzędzia do monitorowania stanu zadań podrzędnych. W przypadku metody `MonitorTasks` przykładowa aplikacja czeka, aż wszystkie zadania podrzędne osiągną stan `TaskState.Completed` w określonym czasie. Następnie kończy zadanie i zgłasza wszystkie zadania podrzędne, które zostały ukończone, ale w przypadku których mógł wystąpić błąd, na przykład niezerowy kod zakończenia.
 

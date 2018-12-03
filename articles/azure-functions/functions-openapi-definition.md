@@ -8,18 +8,19 @@ manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
 ms.topic: tutorial
-ms.date: 12/15/2017
+ms.date: 11/26/2018
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 62c04e5893eaefcc5eb7272eb9a99cf932086205
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 2d50e4c2352444d29bdb090bc9a2a7947ecc6a50
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086872"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496027"
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>Tworzenie definicji interfejsu OpenAPI dla funkcji
+
 Interfejsy API REST są często opisywane przy użyciu definicji OpenAPI (wcześniej znanej jako plik struktury [Swagger](http://swagger.io/)). Ta definicja zawiera informacje o operacjach dostępnych w interfejsie API i wymaganej strukturze danych żądań i odpowiedzi dla interfejsu API.
 
 W ramach tego samouczka utworzysz funkcję, która pozwoli określić, czy awaryjna naprawa turbiny wiatrowej jest opłacalna. Następnie utworzysz definicję interfejsu OpenAPI dla aplikacji funkcji, aby funkcja mogła zostać wywołana z poziomu innych aplikacji i usług.
@@ -33,7 +34,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Testowanie definicji przez wywołanie funkcji
 
 > [!IMPORTANT]
-> Funkcja interfejsu OpenAPI w wersji zapoznawczej jest obecnie dostępna tylko w środowisku uruchomieniowym w wersji 1.x. Informacje na temat tworzenia aplikacji funkcji w wersji 1.x [można znaleźć tutaj](./functions-versions.md#creating-1x-apps).
+> Interfejs OpenAPI znajduje się obecnie w wersji zapoznawczej i jest dostępny tylko dla wersji 1.x środowiska uruchomieniowego usługi Azure Functions.
 
 ## <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
@@ -41,6 +42,11 @@ Do obsługi wykonywania funkcji potrzebna jest aplikacja funkcji. Aplikacja funk
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
+## <a name="set-the-functions-runtime-version"></a>Ustawianie wersji środowiska uruchomieniowego usługi Functions
+
+Domyślnie tworzona przez Ciebie aplikacja funkcji korzysta z wersji 2.x środowiska uruchomieniowego. Przed przystąpieniem do tworzenia funkcji musisz ustawić wersję środowiska uruchomieniowego na 1.x.
+
+[!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
 
 ## <a name="create-the-function"></a>Tworzenie funkcji
 
@@ -50,34 +56,27 @@ W tym samouczku wykorzystano funkcję wyzwalaną przez protokół HTTP, która u
 
     ![Strona szybkiego rozpoczynania pracy z usługą Functions w witrynie Azure Portal](media/functions-openapi-definition/add-first-function.png)
 
-2. W polu wyszukiwania wpisz `http`, a następnie wybierz język **C#** dla szablonu wyzwalacza HTTP. 
- 
+1. W polu wyszukiwania wpisz `http`, a następnie wybierz język **C#** dla szablonu wyzwalacza HTTP. 
+
     ![Wybieranie wyzwalacza HTTP](./media/functions-openapi-definition/select-http-trigger-portal.png)
 
-3. Wpisz ciąg `TurbineRepair` w polu **Nazwa** funkcji, wybierz pozycję `Function` na liście **[Poziom uwierzytelniania](functions-bindings-http-webhook.md#http-auth)**, a następnie wybierz przycisk **Utwórz**.  
+1. Wpisz ciąg `TurbineRepair` w polu **Nazwa** funkcji, wybierz pozycję `Function` na liście **[Poziom uwierzytelniania](functions-bindings-http-webhook.md#http-auth)**, a następnie wybierz przycisk **Utwórz**.  
 
     ![Tworzenie funkcji wyzwalanej przez protokół HTTP](./media/functions-openapi-definition/select-http-trigger-portal-2.png)
 
 1. Zastąp zawartość pliku run.csx poniższym kodem, a następnie kliknij przycisk **Zapisz**:
 
     ```csharp
-    #r "Newtonsoft.Json"
-
     using System.Net;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Logging;
-    using Microsoft.Extensions.Primitives;
-    using Newtonsoft.Json;
 
-    const double revenuePerkW = 0.12; 
-    const double technicianCost = 250; 
+    const double revenuePerkW = 0.12;
+    const double technicianCost = 250;
     const double turbineCost = 100;
 
-    public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
-    {   
+    public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+    {
         //Get request body
-        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-        dynamic data = JsonConvert.DeserializeObject(requestBody);
+        dynamic data = await req.Content.ReadAsAsync<object>();
         int hours = data.hours;
         int capacity = data.capacity;
 
@@ -93,13 +92,14 @@ W tym samouczku wykorzystano funkcję wyzwalaną przez protokół HTTP, która u
             repairTurbine = "No";
         }
 
-        return (ActionResult) new OkObjectResult(new{
+        return req.CreateResponse(HttpStatusCode.OK, new{
             message = repairTurbine,
             revenueOpportunity = "$"+ revenueOpportunity,
-            costToFix = "$"+ costToFix         
-        }); 
+            costToFix = "$"+ costToFix
+        });
     }
     ```
+
     Ten kod funkcji zwraca komunikat `Yes` lub `No` wskazujący, czy awaryjna naprawa turbiny jest opłacalna, a także wartość ewentualnego przychodu, który można uzyskać dzięki turbinie, oraz koszt naprawy turbiny. 
 
 1. Aby przetestować tę funkcję, kliknij przycisk **Testuj** przy prawej krawędzi, co spowoduje rozwinięcie karty testu. Wprowadź poniższą wartość w polu **Treść żądania**, a następnie kliknij przycisk **Uruchom**.
@@ -132,7 +132,7 @@ Teraz możesz przystąpić do generowania definicji interfejsu OpenAPI. Ta defin
     1. W obszarze **Wybrane metody HTTP** wyczyść zaznaczenie wszystkich pozycji oprócz **POST**, a następnie kliknij przycisk **Zapisz**.
 
         ![Wybrane metody HTTP](media/functions-openapi-definition/selected-http-methods.png)
-        
+
 1. Kliknij nazwę swojej aplikacji funkcji (np. **function-demo-energy**) > **Funkcje platformy** > **Definicja interfejsu API**.
 
     ![Definicja interfejsu API](media/functions-openapi-definition/api-definition.png)
@@ -185,6 +185,7 @@ Teraz możesz przystąpić do generowania definicji interfejsu OpenAPI. Ta defin
     Ta definicja jest określana jako _szablon_. Pełna definicja interfejsu OpenAPI wymaga większej ilości metadanych. Definicja zostanie zmodyfikowana w następnym kroku.
 
 ## <a name="modify-the-openapi-definition"></a>Modyfikowanie definicji interfejsu OpenAPI
+
 Gotowa definicja szablonu zostanie teraz zmodyfikowana, aby zapewnić dodatkowe metadane na temat operacji interfejsu API i struktur danych. W obszarze **Definicja interfejsu API** usuń wygenerowaną definicję od elementu `post` do końca definicji, wklej poniższą zawartość, a następnie kliknij przycisk **Zapisz**.
 
 ```yaml
@@ -249,15 +250,15 @@ securityDefinitions:
 
 W tym przypadku wystarczyłoby tylko wklejenie zaktualizowanych metadanych, ale warto zrozumieć typy modyfikacji wprowadzonych w szablonie domyślnym:
 
-+ Określenie, że interfejs API tworzy i wykorzystuje dane w formacie JSON.
+* Określenie, że interfejs API tworzy i wykorzystuje dane w formacie JSON.
 
-+ Określenie wymaganych parametrów (nazw i typów danych).
+* Określenie wymaganych parametrów (nazw i typów danych).
 
-+ Określenie zwracanych wartości w przypadku pomyślnej odpowiedzi (nazw i typów danych).
+* Określenie zwracanych wartości w przypadku pomyślnej odpowiedzi (nazw i typów danych).
 
-+ Podanie przyjaznych podsumowań i opisów interfejsów API oraz ich operacji i parametrów. Informacje te będą potrzebne osobom korzystającym z tej funkcji.
+* Podanie przyjaznych podsumowań i opisów interfejsów API oraz ich operacji i parametrów. Informacje te będą potrzebne osobom korzystającym z tej funkcji.
 
-+ Dodanie elementów x-ms-summary i x-ms-visibility, które są używane w interfejsie użytkownika usług Microsoft Flow i Logic Apps. Aby uzyskać więcej informacji, zobacz [Rozszerzenia interfejsu OpenAPI dla niestandardowych interfejsów API w usłudze Microsoft Flow](https://preview.flow.microsoft.com/documentation/customapi-how-to-swagger/).
+* Dodanie elementów x-ms-summary i x-ms-visibility, które są używane w interfejsie użytkownika usług Microsoft Flow i Logic Apps. Aby uzyskać więcej informacji, zobacz [Rozszerzenia interfejsu OpenAPI dla niestandardowych interfejsów API w usłudze Microsoft Flow](https://preview.flow.microsoft.com/documentation/customapi-how-to-swagger/).
 
 > [!NOTE]
 > W definicji zabezpieczeń pozostawiliśmy domyślną metodę uwierzytelniania klucza interfejsu API. Tę sekcję definicji należy zmienić w przypadku używania uwierzytelniania innego typu.
@@ -265,6 +266,7 @@ W tym przypadku wystarczyłoby tylko wklejenie zaktualizowanych metadanych, ale 
 Aby uzyskać więcej informacji na temat definiowania operacji interfejsu API, zobacz [Specyfikacja interfejsu Open API](https://swagger.io/specification/#operationObject).
 
 ## <a name="test-the-openapi-definition"></a>Testowanie definicji interfejsu OpenAPI
+
 Zanim użyjesz definicji interfejsu API, warto przetestować ją w interfejsie użytkownika usługi Azure Functions.
 
 1. Na karcie **Zarządzanie** swojej funkcji w obszarze **Klucze hosta** skopiuj klucz **domyślny**.
@@ -305,5 +307,6 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Testowanie definicji przez wywołanie funkcji
 
 Przejdź do następnego tematu, aby dowiedzieć się, jak utworzyć aplikację PowerApps, która korzysta z utworzonej przez Ciebie definicji interfejsu OpenAPI.
+
 > [!div class="nextstepaction"]
 > [Wywoływanie funkcji z usługi PowerApps](functions-powerapps-scenario.md)

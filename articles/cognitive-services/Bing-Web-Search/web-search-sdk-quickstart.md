@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: aahi
-ms.openlocfilehash: 0c5ac37b5a3992c3f9e80fd8f155f368fa61615c
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: ae536166d75af48ea653b256924b5432cfd1f5ef
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163813"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309984"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Szybki start: używanie zestawu SDK wyszukiwania w Internecie Bing dla języka C#
 
@@ -23,8 +23,9 @@ Zestaw SDK wyszukiwania w Internecie Bing ułatwia integrowanie wyszukiwania w I
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="prerequisites"></a>Wymagania wstępne
+Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
+## <a name="prerequisites"></a>Wymagania wstępne
 Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szybki start:
 
 * [Program Visual Studio](https://visualstudio.microsoft.com/downloads/) lub

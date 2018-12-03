@@ -9,16 +9,16 @@ ms.custom: hdinsightactive,mvc
 ms.topic: overview
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: 20d44e05725b034326398c967efbd997433d5200
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: afd40298679375ed5dffcd35cdf5c877277dab8c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230550"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498125"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Co to jest platforma Apache Spark w usłudze Azure HDInsight
 
-*Apache Spark*: platforma przetwarzania równoległego, która obsługuje przetwarzanie w pamięci w celu zwiększania wydajności aplikacji do analizy danych big data. Platforma Apache Spark w usłudze Azure HDInsight to implementacja firmy Microsoft usługi Apache Spark w chmurze. Usługa HDInsight ułatwia tworzenie i konfigurowanie klastra Spark na platformie Azure. Klastry Spark w usłudze HDInsight są zgodne z usługą Azure Storage i usługą Azure Data Lake Store. Pozwala to wykorzystywać klastry HDInsight Spark do przetwarzania danych przechowywanych na platformie Azure. Aby uzyskać informacje na temat wersji i składników, zobacz [Wersje i składniki usługi Hadoop w usłudze Azure HDInsight](../hdinsight-component-versioning.md).
+*Apache Spark*: platforma przetwarzania równoległego, która obsługuje przetwarzanie w pamięci w celu zwiększania wydajności aplikacji do analizy danych big data. Platforma Apache Spark w usłudze Azure HDInsight to implementacja firmy Microsoft usługi Apache Spark w chmurze. Usługa HDInsight ułatwia tworzenie i konfigurowanie klastra Spark na platformie Azure. Klastry Spark w usłudze HDInsight są zgodne z usługą Azure Storage i usługą Azure Data Lake Store. Pozwala to wykorzystywać klastry HDInsight Spark do przetwarzania danych przechowywanych na platformie Azure. Aby uzyskać informacje na temat wersji i składników, zobacz [Wersje i składniki usługi Apache Hadoop w usłudze Azure HDInsight](../hdinsight-component-versioning.md).
 
 ![Platforma Spark: ujednolicona struktura](./media/apache-spark-overview/hdinsight-spark-overview.png)
 
@@ -35,9 +35,9 @@ Klastry Spark w usłudze HDInsight oferują w pełni zarządzaną usługę Spark
 | --- | --- |
 | Łatwość tworzenia |Nowy klaster Spark w usłudze HDInsight można utworzyć w kilka minut przy użyciu witryny Azure Portal, programu Azure PowerShell lub zestawu .NET SDK usługi HDInsight. Zobacz temat [Wprowadzenie do klastra Spark w usłudze HDInsight](apache-spark-jupyter-spark-sql.md) |
 | Łatwość obsługi |Klaster Spark w usłudze HDInsight zawiera notesy Jupyter i Zeppelin. Można ich używać do interakcyjnego przetwarzania danych i wizualizacji.|
-| Interfejsy API REST |Klastry Spark w usłudze HDInsight obejmują [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server), czyli serwer zadań Spark oparty na interfejsie API REST do zdalnego przesyłania i monitorowania zadań. |
+| Interfejsy API REST |Klastry Spark w usłudze HDInsight obejmują [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server), czyli serwer zadań Spark oparty na interfejsie API REST do zdalnego przesyłania i monitorowania zadań. |
 | Obsługa usługi Azure Data Lake Store | Klastry Spark w usłudze HDInsight mogą korzystać z usługi Azure Data Lake Store zarówno w formie magazynu podstawowego, jak i dodatkowego. Aby uzyskać więcej informacji o usłudze Data Lake — magazyn, zobacz temat [Przegląd usługi Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md). |
-| Integracja z usługami Azure |Klaster Spark w usłudze HDInsight zawiera łącznik usługi Azure Event Hubs. Aplikacje do przesyłania strumieniowego można tworzyć nie tylko za pomocą oprogramowania [Kafka](http://kafka.apache.org/), które jest już dostępne w ramach platformy Spark, ale także przy użyciu usługi Event Hubs. |
+| Integracja z usługami Azure |Klaster Spark w usłudze HDInsight zawiera łącznik usługi Azure Event Hubs. Aplikacje do przesyłania strumieniowego można tworzyć nie tylko za pomocą oprogramowania [Apache Kafka](http://kafka.apache.org/), które jest już dostępne w ramach platformy Spark, ale także przy użyciu usługi Event Hubs. |
 | Obsługa narzędzia ML Server | Narzędzie ML Server jest obsługiwane w usłudze HDInsight przy użyciu typu klastra **Usługi ML**. Możesz skonfigurować klaster usług ML, aby uruchamiać rozproszone obliczenia R z szybkością zapewnianą przez klaster Spark. Aby uzyskać więcej informacji, zobacz temat [Wprowadzenie do narzędzia ML Server w usłudze HDInsight](../r-server/r-server-get-started.md). |
 | Integracja ze zintegrowanymi środowiskami projektowymi innych firm | Usługa HDInsight zapewnia kilka wtyczek IDE, które są przydatne do tworzenia i przesyłania aplikacji do klastra Spark w usłudze HDInsight. Aby uzyskać więcej informacji, zobacz tematy [Korzystanie z zestawu narzędzi Azure Toolkit for IntelliJ IDEA](apache-spark-intellij-tool-plugin.md), [Use HDInsight for VSCode (Korzystanie z narzędzi usługi HDInsight dla programu VSCode)](../hdinsight-for-vscode.md) i [Korzystanie z zestawu narzędzi Azure Toolkit for Eclipse](apache-spark-eclipse-tool-plugin.md).|
 | Zapytania jednoczesne |Klastry Spark w usłudze HDInsight obsługują zapytania jednoczesne. Dzięki temu wiele zapytań od jednego użytkownika lub wiele zapytań od różnych użytkowników i aplikacji może współdzielić te same zasoby klastra. |
@@ -47,13 +47,13 @@ Klastry Spark w usłudze HDInsight oferują w pełni zarządzaną usługę Spark
 | Skalowalność | Usługa HDInsight umożliwia zmianę liczby węzłów klastra. Ponadto klastry Spark można porzucić bez utraty danych, ponieważ wszystkie dane są przechowywane w usłudze Azure Storage lub Data Lake Store. |
 | Umowa SLA |Oferta klastrów Spark w usłudze HDInsight obejmuje całodobową pomoc techniczną oraz umowę SLA gwarantującą 99,9% czasu działania. |
 
-Klastry Spark w usłudze HDInsight obejmują następujące składniki, które są domyślnie dostępne w klastrach.
+Klastry Apache Spark w usłudze HDInsight obejmują następujące składniki, które są domyślnie dostępne w klastrach.
 
 * [Spark Core](https://spark.apache.org/docs/1.5.1/). Obejmuje takie składniki, jak Spark Core, Spark SQL, interfejsy API przesyłania strumieniowego Spark, GraphX oraz MLlib.
 * [Anaconda](http://docs.continuum.io/anaconda/)
-* [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)
+* [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)
 * [Notes Jupyter](https://jupyter.org)
-* [Notes Zeppelin](http://zeppelin-project.org/)
+* [Notes Apache Zeppelin](http://zeppelin-project.org/)
 
 Klastry Spark w usłudze HDInsight obejmują też [sterownik ODBC](https://go.microsoft.com/fwlink/?LinkId=616229) zapewniający łączność z klastrami Spark w usłudze HDInsight z poziomu narzędzi do analizy biznesowej, takich jak Microsoft Power BI.
 
@@ -65,7 +65,7 @@ Składniki platformy Spark najłatwiej zrozumieć, zapoznając się za sposobem 
 
 Aplikacje Spark są uruchamiane jako niezależne zestawy procesów w klastrze, koordynowane przez obiekt SparkContext w programie głównym (nazywanym programem sterującym).
 
-Obiekt SparkContext może łączyć się z kilkoma typami menedżerów klastrów, które dokonują alokacji zasobów pomiędzy aplikacje. Te menedżery klastrów to Apache Mesos, Apache YARN lub menedżer klastra Spark. W usłudze HDInsight platforma Spark korzysta z menedżera klastra YARN. Po nawiązaniu połączenia platforma Spark uzyskuje funkcje wykonawcze w węzłach procesu roboczego w klastrze, które są procesami odpowiedzialnymi za uruchamianie obliczeń i przechowywanie danych aplikacji. Następnie platforma Spark wysyła kod aplikacji (zdefiniowany przez pliki JAR lub Python przekazywane do obiektu SparkContext) do funkcji wykonawczych. Na koniec obiekt SparkContext wysyła do funkcji wykonawczych zadania do uruchomienia.
+Obiekt SparkContext może łączyć się z kilkoma typami menedżerów klastrów, które dokonują alokacji zasobów pomiędzy aplikacje. Te menedżery klastrów to [Apache Mesos](http://mesos.apache.org/), [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) lub menedżer klastra Spark. W usłudze HDInsight platforma Spark korzysta z menedżera klastra YARN. Po nawiązaniu połączenia platforma Spark uzyskuje funkcje wykonawcze w węzłach procesu roboczego w klastrze, które są procesami odpowiedzialnymi za uruchamianie obliczeń i przechowywanie danych aplikacji. Następnie platforma Spark wysyła kod aplikacji (zdefiniowany przez pliki JAR lub Python przekazywane do obiektu SparkContext) do funkcji wykonawczych. Na koniec obiekt SparkContext wysyła do funkcji wykonawczych zadania do uruchomienia.
 
 Obiekt SparkContext obsługuje funkcję main użytkownika i wykonuje różne operacje równoległe w węzłach procesu roboczego. Następnie pobiera wyniki operacji. Węzły procesu roboczego odczytują i zapisują dane, korzystając z rozproszonego systemu plików Hadoop (HDFS). Węzły procesu roboczego przesyłają również przekształcone dane do pamięci podręcznej w postaci odpornych rozproszonych zestawów danych (Resilient Distributed Datasets, RDDs).
 
@@ -91,17 +91,17 @@ Klastry Spark w usłudze HDInsight umożliwiają realizację następujących gł
     
 ## <a name="where-do-i-start"></a>Od czego zacząć?
 
-Aby dowiedzieć się więcej na temat platformy Spark w usłudze HDInsight, możesz zapoznać się z następującymi artykułami:
+Aby dowiedzieć się więcej na temat platformy Apache Spark w usłudze HDInsight, możesz zapoznać się z następującymi artykułami:
 
-- [Szybki start: tworzenie klastra Spark w usłudze HDInsight i uruchamianie interakcyjnych zapytań przy użyciu oprogramowania Jupyter](./apache-spark-jupyter-spark-sql.md)
-- [Samouczek: uruchamianie zadania platformy Spark przy użyciu oprogramowania Jupyter](./apache-spark-load-data-run-query.md)
+- [Szybki start: tworzenie klastra Apache Spark w usłudze HDInsight i uruchamianie interakcyjnych zapytań przy użyciu oprogramowania Jupyter](./apache-spark-jupyter-spark-sql.md)
+- [Samouczek: uruchamianie zadania platformy Apache Spark przy użyciu oprogramowania Jupyter](./apache-spark-load-data-run-query.md)
 - [Samouczek: analizowanie danych przy użyciu narzędzi do analizy biznesowej](./apache-spark-use-bi-tools.md)
-- [Samouczek: uczenie maszynowe przy użyciu platformy Spark](./apache-spark-ipython-notebook-machine-learning.md)
+- [Samouczek: uczenie maszynowe przy użyciu platformy Apache Spark](./apache-spark-ipython-notebook-machine-learning.md)
 - [Samouczek: tworzenie aplikacji Scala Maven w środowisku IntelliJ](./apache-spark-create-standalone-application.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
 W tym omówieniu uzyskasz podstawową wiedzę na temat platformy Apache Spark w usłudze Azure HDInsight. Przejdź do następnego artykułu, aby dowiedzieć się, jak utworzyć klaster HDInsight Spark i uruchamiać niektóre zapytania Spark SQL:
 
-- [Tworzenie klastra Spark w usłudze HDInsight](./apache-spark-jupyter-spark-sql.md)
+- [Tworzenie klastra platformy Apache Spark w usłudze HDInsight](./apache-spark-jupyter-spark-sql.md)
 

@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: f1dd07756ca484171a3d662df35493efbe5a5ee7
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ee6b93c26918b4f70eb23e7055db813f35d3787d
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415623"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445739"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Korzystanie z udziału plików platformy Azure w systemie Windows
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziałów plików platformy Azure można bezproblemowo używać w systemach Windows i Windows Server. W tym artykule omówiono zagadnienia dotyczące korzystania z udziału plików platformy Azure w systemach Windows i Windows Server.
@@ -24,9 +24,9 @@ Z udziałów plików platformy Azure można korzystać w instalacji systemu Wind
 
 | Wersja systemu Windows        | Wersja protokołu SMB | Możliwa instalacja na maszynie wirtualnej platformy Azure | Możliwa instalacja w środowisku lokalnym |
 |------------------------|-------------|-----------------------|----------------------|
-| Windows Server 2019 (wersja zapoznawcza)<sup>1</sup> | SMB 3.0 | Yes | Yes |
-| Windows 10<sup>2</sup> | SMB 3.0 | Yes | Yes |
-| Windows Server Semi-Annual Channel<sup>3</sup> | SMB 3.0 | Yes | Yes |
+| Windows Server 2019    | SMB 3.0 | Yes | Yes |
+| Windows 10<sup>1</sup> | SMB 3.0 | Yes | Yes |
+| Windows Server semi-annual channel<sup>2</sup> | SMB 3.0 | Yes | Yes |
 | Windows Server 2016    | SMB 3.0     | Yes                   | Yes                  |
 | Windows 8.1            | SMB 3.0     | Yes                   | Yes                  |
 | Windows Server 2012 R2 | SMB 3.0     | Yes                   | Yes                  |
@@ -34,9 +34,8 @@ Z udziałów plików platformy Azure można korzystać w instalacji systemu Wind
 | Windows 7              | SMB 2.1     | Yes                   | Nie                   |
 | Windows Server 2008 R2 | SMB 2.1     | Yes                   | Nie                   |
 
-<sup>1</sup>System Windows Server 2019 jest dostępny w wersji zapoznawczej za pośrednictwem [programu dla niejawnych testerów systemu Windows Server](https://insider.windows.com/for-business-getting-started-server/). Mimo że system Windows Server 2019 nie jest jeszcze obsługiwany w środowisku produkcyjnym, poinformuj nas, jeśli będziesz mieć problemy z nawiązaniem połączenia z udziałami plików platformy Azure, które nie zostały opisane w [przewodniku rozwiązywania problemów dla systemu Windows](storage-troubleshoot-windows-file-connection-problems.md).  
-<sup>2</sup>Windows 10 w wersjach 1507, 1607, 1703, 1709 i 1803.  
-<sup>3</sup>Windows Server w wersjach 1709 i 1803.
+<sup>1</sup>Windows 10, wersje 1507, 1607, 1703, 1709, 1803 i 1809.  
+<sup>2</sup>Windows Server, wersje 1709 i 1803.
 
 > [!Note]  
 > Zawsze zalecamy pobranie najnowszej aktualizacji KB dla danej wersji systemu Windows.

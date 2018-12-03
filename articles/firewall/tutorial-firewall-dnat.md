@@ -5,22 +5,19 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 9/27/2018
+ms.date: 11/28/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 894389ec07fb8e371a269f895473fe82985de7c3
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: e37d5b050c5ca957b59c1e0a60c88171c1fc4a23
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405975"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582245"
 ---
 # <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Samouczek: filtrowanie ruchu przychodzącego za pomocą funkcji DNAT usługi Azure Firewall przy użyciu witryny Azure Portal
 
-Możesz skonfigurować funkcję translacji docelowych adresów sieciowych (DNAT) usługi Azure Firewall do wykonywania translacji i filtrowania ruchu przychodzącego do podsieci. Podczas konfigurowania funkcji DNAT akcja kolekcji reguł NAT jest ustawiana na wartość **Translacja docelowych adresów sieciowych (DNAT)**. Każda reguła w kolekcji reguł NAT umożliwia wykonanie translacji publicznego adresu IP i portu zapory na prywatny adres IP i port. Reguły DNAT niejawnie dodają odpowiednią regułę sieci zezwalającą na przetłumaczony ruch. Aby przesłonić to zachowanie, jawnie dodaj kolekcję reguł sieci z regułami odmowy zgodnymi z przetłumaczonym ruchem. Aby dowiedzieć się więcej na temat logiki przetwarzania reguł usługi Azure Firewall, zobacz [Azure Firewall rule processing logic (Logika przetwarzania reguł usługi Azure Firewall)](rule-processing.md).
-
-> [!NOTE]
-> Technologia DNAT nie działa w przypadku portów 80 i 22. Pracujemy nad jak najszybszym rozwiązaniem tego problemu. Do tego czasu można korzystać z dowolnego innego portu jako portu docelowego w regułach NAT. Port 80 lub 22 nadal może służyć jako port docelowy translacji. Na przykład można zamapować publiczny adres ip:81 na prywatny adres ip:80.
+Możesz skonfigurować funkcję translacji docelowych adresów sieciowych (DNAT) usługi Azure Firewall do wykonywania translacji i filtrowania ruchu przychodzącego do podsieci. Podczas konfigurowania funkcji DNAT akcja kolekcji reguł NAT jest ustawiana na wartość **Dnat**. Każda reguła w kolekcji reguł NAT umożliwia wykonanie translacji publicznego adresu IP i portu zapory na prywatny adres IP i port. Reguły DNAT niejawnie dodają odpowiednią regułę sieci zezwalającą na przetłumaczony ruch. Aby przesłonić to zachowanie, jawnie dodaj kolekcję reguł sieci z regułami odmowy zgodnymi z przetłumaczonym ruchem. Aby dowiedzieć się więcej na temat logiki przetwarzania reguł usługi Azure Firewall, zobacz [Azure Firewall rule processing logic (Logika przetwarzania reguł usługi Azure Firewall)](rule-processing.md).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -34,36 +31,40 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 W tym samouczku utworzysz dwie sieci wirtualne połączone przy użyciu komunikacji równorzędnej:
+
 - **VN-Hub** — w tej sieci wirtualnej znajduje się zapora.
 - **VN-Spoke** — w tej sieci wirtualnej znajduje się serwer obciążeń.
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+
 1. Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http://portal.azure.com).
-1. Na stronie głównej witryny Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij pozycję **Dodaj**.
-2. W polu **Nazwa grupy zasobów** wpisz **RG-DNAT-Test**.
-3. W polu **Subskrypcja** wybierz subskrypcję.
-4. W polu **Lokalizacja grupy zasobów** wybierz lokalizację. Wszystkie kolejne zasoby, które utworzysz, muszą znajdować się w tej samej lokalizacji.
-5. Kliknij pozycję **Utwórz**.
+2. Na stronie głównej witryny Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij pozycję **Dodaj**.
+3. W polu **Nazwa grupy zasobów** wpisz **RG-DNAT-Test**.
+4. W polu **Subskrypcja** wybierz subskrypcję.
+5. W polu **Lokalizacja grupy zasobów** wybierz lokalizację. Wszystkie kolejne zasoby, które utworzysz, muszą znajdować się w tej samej lokalizacji.
+6. Kliknij pozycję **Utwórz**.
 
 ## <a name="set-up-the-network-environment"></a>Konfigurowanie środowiska sieciowego
+
 Najpierw utwórz sieci wirtualne, a następnie połącz je przy użyciu komunikacji równorzędnej.
 
 ### <a name="create-the-hub-vnet"></a>Tworzenie koncentratora sieci wirtualnej
+
 1. Na stronie głównej witryny Azure Portal kliknij pozycję **Wszystkie usługi**.
 2. W obszarze **Sieć** kliknij pozycję **Sieci wirtualne**.
 3. Kliknij pozycję **Add** (Dodaj).
 4. W polu **Nazwa** wpisz wartość **VN-Hub**.
 5. W polu **Przestrzeń adresowa** wpisz wartość **10.0.0.0/16**.
-7. W polu **Subskrypcja** wybierz subskrypcję.
-8. W polu **Grupa zasobów** wybierz pozycję **Użyj istniejącej**, a następnie wybierz pozycję **RG-DNAT-Test**.
-9. W polu **Lokalizacja** wybierz tę samą lokalizację, która była używana poprzednio.
-10. W obszarze **Podsieci** w polu **Nazwa** wpisz wartość **AzureFirewallSubnet**.
+6. W polu **Subskrypcja** wybierz subskrypcję.
+7. W polu **Grupa zasobów** wybierz pozycję **Użyj istniejącej**, a następnie wybierz pozycję **RG-DNAT-Test**.
+8. W polu **Lokalizacja** wybierz tę samą lokalizację, która była używana poprzednio.
+9. W obszarze **Podsieci** w polu **Nazwa** wpisz wartość **AzureFirewallSubnet**.
 
      Zapora będzie znajdować się w tej podsieci, a nazwą podsieci **musi** być AzureFirewallSubnet.
      > [!NOTE]
-     > Minimalny rozmiar podsieci AzureFirewallSubnet to /25.
-11. W polu **Zakres adresów** wpisz wartość **10.0.1.0/24**.
-12. Użyj innych domyślnych ustawień, a następnie kliknij przycisk **Utwórz**.
+     > Minimalny rozmiar podsieci AzureFirewallSubnet to /26.
+10. W polu **Zakres adresów** wpisz wartość **10.0.1.0/24**.
+11. Użyj innych domyślnych ustawień, a następnie kliknij przycisk **Utwórz**.
 
 ### <a name="create-a-spoke-vnet"></a>Tworzenie sieci wirtualnej będącej szprychą
 
@@ -72,14 +73,14 @@ Najpierw utwórz sieci wirtualne, a następnie połącz je przy użyciu komunika
 3. Kliknij pozycję **Add** (Dodaj).
 4. W polu **Nazwa** wpisz wartość **VN-Spoke**.
 5. W polu **Przestrzeń adresowa** wpisz wartość **192.168.0.0/16**.
-7. W polu **Subskrypcja** wybierz subskrypcję.
-8. W polu **Grupa zasobów** wybierz pozycję **Użyj istniejącej**, a następnie wybierz pozycję **RG-DNAT-Test**.
-9. W polu **Lokalizacja** wybierz tę samą lokalizację, która była używana poprzednio.
-10. W obszarze **Podsieć** w polu **Nazwa** wpisz **SN-Workload**.
+6. W polu **Subskrypcja** wybierz subskrypcję.
+7. W polu **Grupa zasobów** wybierz pozycję **Użyj istniejącej**, a następnie wybierz pozycję **RG-DNAT-Test**.
+8. W polu **Lokalizacja** wybierz tę samą lokalizację, która była używana poprzednio.
+9. W obszarze **Podsieć** w polu **Nazwa** wpisz **SN-Workload**.
 
     Serwer będzie znajdował się w tej podsieci.
-1. W polu **Zakres adresów** wpisz wartość **192.168.1.0/24**.
-2. Użyj innych domyślnych ustawień, a następnie kliknij przycisk **Utwórz**.
+10. W polu **Zakres adresów** wpisz wartość **192.168.1.0/24**.
+11. Użyj innych domyślnych ustawień, a następnie kliknij przycisk **Utwórz**.
 
 ### <a name="peer-the-vnets"></a>Łączenie sieci wirtualnych przy użyciu komunikacji równorzędnej
 
@@ -92,7 +93,7 @@ Teraz połącz sieci wirtualne przy użyciu komunikacji równorzędnej.
 3. Kliknij pozycję **Add** (Dodaj).
 4. Jako nazwę wpisz **Peer-HubSpoke**.
 5. Jako sieć wirtualną wybierz **VN-Spoke**.
-7. Kliknij przycisk **OK**.
+6. Kliknij przycisk **OK**.
 
 #### <a name="spoke-to-hub"></a>Szprycha do piasty
 
@@ -140,14 +141,13 @@ Przejrzyj podsumowanie, a następnie kliknij pozycję **Utwórz**. Ukończenie t
 
 Po zakończeniu wdrożenia zanotuj prywatny adres IP maszyny wirtualnej. Posłuży on później do skonfigurowania zapory. Kliknij nazwę maszyny wirtualnej, a następnie w obszarze **Ustawienia**, kliknij pozycję **Sieć** i znajdź prywatny adres IP.
 
-
 ## <a name="deploy-the-firewall"></a>Wdrażanie zapory
 
 1. Na stronie głównej portalu kliknij pozycję **Utwórz zasób**.
 2. Kliknij pozycję **Sieć**, a po liście **Polecane** kliknij pozycję **Zobacz wszystko**.
 3. Kliknij pozycję **Zapora**, a następnie kliknij pozycję **Utwórz**. 
 4. Na stronie **Tworzenie zapory** strony skorzystaj z poniższej tabeli, aby skonfigurować zaporę:
-   
+
    |Ustawienie  |Wartość  |
    |---------|---------|
    |Name (Nazwa)     |FW-DNAT-test|
@@ -157,13 +157,12 @@ Po zakończeniu wdrożenia zanotuj prywatny adres IP maszyny wirtualnej. Posłu�
    |Wybieranie sieci wirtualnej     |**Użyj istniejącej**: VN-Hub|
    |Publiczny adres IP     |**Utwórz nową**. Publiczny adres IP musi mieć typ Standardowa jednostka SKU.|
 
-2. Kliknij pozycję **Przegląd + utwórz**.
-3. Przejrzyj podsumowanie, a następnie kliknij pozycję **Utwórz**, aby utworzyć zaporę.
+5. Kliknij pozycję **Przegląd + utwórz**.
+6. Przejrzyj podsumowanie, a następnie kliknij pozycję **Utwórz**, aby utworzyć zaporę.
 
    Wdrożenie potrwa klika minut.
-4. Po zakończeniu wdrażania przejdź do grupy zasobów **RG-DNAT-Test**, a następnie kliknij zaporę **FW-DNAT-test**.
-6. Zanotuj prywatny adres IP. Użyjesz go później podczas tworzenia trasy domyślnej.
-
+7. Po zakończeniu wdrażania przejdź do grupy zasobów **RG-DNAT-Test**, a następnie kliknij zaporę **FW-DNAT-test**.
+8. Zanotuj prywatny adres IP. Użyjesz go później podczas tworzenia trasy domyślnej.
 
 ## <a name="create-a-default-route"></a>Tworzenie trasy domyślnej
 
@@ -188,31 +187,29 @@ Na potrzeby podsieci **SN-Workload** skonfiguruj trasę domyślną ruchu wychodz
 17. W obszarze **Typ następnego skoku** wybierz pozycję **Urządzenie wirtualne**.
 
     Usługa Azure Firewall to w rzeczywistości usługa zarządzana, ale urządzenie wirtualne działa w tej sytuacji.
-1. W polu **Adres następnego skoku** wpisz wcześniej zanotowany prywatny adres IP zapory.
-2. Kliknij przycisk **OK**.
+18. W polu **Adres następnego skoku** wpisz wcześniej zanotowany prywatny adres IP zapory.
+19. Kliknij przycisk **OK**.
 
-
-## <a name="configure-a-dnat-rule"></a>Konfigurowanie reguły DNAT
+## <a name="configure-a-nat-rule"></a>Konfigurowanie reguł translatora adresów sieciowych
 
 1. Otwórz grupę zasobów**RG DNAT Test** i kliknij zaporę **FW-DNAT-test**. 
-1. Na stronie **FW-DNAT-test** w obszarze **Ustawienia**, kliknij pozycję **Reguły**. 
-2. Kliknij pozycję **Dodaj kolekcję reguł DNAT**. 
-3. W polu **Nazwa** wpisz **RC-DNAT-01**. 
-1. W polu **Priorytet** wpisz wartość **200**. 
-6. W obszarze **Reguły** w polu **Nazwa** wpisz **RL-01**. 
-7. W polu **Adresy źródłowe** wpisz znak *. 
-8. W polu **Adresy docelowe** wpisz publiczny adres IP zapory. 
-9. W polu **Porty docelowe** wpisz **3389**. 
-10. W polu **Przekształcony adres** wpisz prywatny adres IP maszyny wirtualnej Srv-Workload. 
-11. W polu **Przekształcony port** wpisz **3389**. 
-12. Kliknij pozycję **Add** (Dodaj). 
+2. Na stronie **FW-DNAT-test** w obszarze **Ustawienia**, kliknij pozycję **Reguły**. 
+3. Kliknij pozycję **Dodaj kolekcję reguł NAT**. 
+4. W polu **Nazwa** wpisz **RC-DNAT-01**. 
+5. W polu **Priorytet** wpisz wartość **200**. 
+6. W obszarze **Reguły** w polu **Nazwa** wpisz **RL-01**.
+7. W polu **Protokół** wybierz **TCP**.
+8. W polu **Adresy źródłowe** wpisz znak *. 
+9. W polu **Adresy docelowe** wpisz publiczny adres IP zapory. 
+10. W polu **Porty docelowe** wpisz **3389**. 
+11. W polu **Przekształcony adres** wpisz prywatny adres IP maszyny wirtualnej Srv-Workload. 
+12. W polu **Przekształcony port** wpisz **3389**. 
+13. Kliknij pozycję **Add** (Dodaj). 
 
 ## <a name="test-the-firewall"></a>Testowanie zapory
 
 1. Połącz pulpit zdalny z publicznym adresem IP zapory. Powinno zostać nawiązane połączenie z maszyną wirtualną **Srv-Workload**.
-3. Zamknij pulpit zdalny.
-4. Zmień akcję kolekcji reguł sieci **RC-Net-01** na wartość **Odmawiaj**.
-5. Spróbuj ponownie połączyć się z publicznym adresem IP zapory. Tym razem nie powinno się to powieść z powodu reguły **Odmawiaj**.
+2. Zamknij pulpit zdalny.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

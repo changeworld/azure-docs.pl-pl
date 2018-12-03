@@ -1,6 +1,6 @@
 ---
 title: Wdrażanie aplikacji kontenera przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Azure Service Fabric
-description: W ramach tego samouczka nauczysz się konfigurować ciągłą integrację i ciągłe wdrażanie aplikacji kontenera usługi Azure Service Fabric za pomocą usługi Visual Studio Team Services (VSTS).
+description: W ramach tego samouczka nauczysz się konfigurować ciągłą integrację i ciągłe wdrażanie aplikacji kontenera usługi Azure Service Fabric za pomocą programu Visual Studio i usługi Azure DevOps.
 services: service-fabric
 documentationcenter: .net
 author: TylerMSFT
@@ -15,23 +15,23 @@ ms.workload: NA
 ms.date: 08/29/2018
 ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: a7cb139da2cdbfb187a62eeadc707f7206de8a34
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 06bc4be6ee485e61523d210b692c3fe2567cc62c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300201"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443495"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Samouczek: wdrażanie aplikacji kontenera przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric
 
-Niniejszy samouczek jest drugą częścią serii i zawiera opis sposobu konfiguracji ciągłej integracji i ciągłego wdrażania aplikacji kontenera usługi Azure Service Fabric za pomocą usługi Visual Studio Team Services.  Wymagana jest istniejąca aplikacja usługi Service Fabric. Na potrzeby tego samouczka za przykład posłużyła aplikacja utworzona w temacie [Samouczek: wdrażanie aplikacji .NET w kontenerze systemu Windows w usłudze Azure Service Fabric](service-fabric-host-app-in-a-container.md).
+Niniejszy samouczek jest drugą częścią serii i zawiera opis sposobu konfiguracji ciągłej integracji i ciągłego wdrażania aplikacji kontenera usługi Azure Service Fabric za pomocą programu Visual Studio i usługi Azure DevOps.  Wymagana jest istniejąca aplikacja usługi Service Fabric. Na potrzeby tego samouczka za przykład posłużyła aplikacja utworzona w temacie [Samouczek: wdrażanie aplikacji .NET w kontenerze systemu Windows w usłudze Azure Service Fabric](service-fabric-host-app-in-a-container.md).
 
 Część druga serii zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Dodawanie kontroli źródła do projektu
-> * Tworzenie definicji kompilacji w usłudze Team Services
-> * Tworzenie definicji wydania w usłudze Team Services
+> * Tworzenie definicji kompilacji w programie Visual Studio Team Explorer
+> * Tworzenie definicji wydania w programie Visual Studio Team Explorer
 > * Automatyczne wdrażanie i uaktualnianie aplikacji
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -43,23 +43,23 @@ Przed rozpoczęciem tego samouczka:
 
 ## <a name="prepare-a-publish-profile"></a>Przygotowywanie profilu publikowania
 
-Teraz po [wdrożeniu aplikacji kontenera](service-fabric-host-app-in-a-container.md) wszystko jest gotowe do skonfigurowania ciągłej integracji.  Najpierw przygotuj profil publikowania w aplikacji na potrzeby procesu wdrażania wykonywanego w ramach usługi Team Services.  Profil publikowania należy skonfigurować pod kątem klastra, który został wcześniej utworzony.  Uruchom program Visual Studio i otwórz istniejący projekt aplikacji usługi Service Fabric.  W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy aplikację i wybierz polecenie **Opublikuj...**.
+Teraz po [wdrożeniu aplikacji kontenera](service-fabric-host-app-in-a-container.md) wszystko jest gotowe do skonfigurowania ciągłej integracji.  Najpierw przygotuj profil publikowania w aplikacji na potrzeby procesu wdrażania wykonywanego w ramach usługi Azure DevOps.  Profil publikowania należy skonfigurować pod kątem klastra, który został wcześniej utworzony.  Uruchom program Visual Studio i otwórz istniejący projekt aplikacji usługi Service Fabric.  W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy aplikację i wybierz polecenie **Opublikuj...**.
 
-Wybierz profil docelowy w ramach projektu aplikacji na potrzeby przepływu pracy ciągłej integracji, na przykład chmurę.  Określ punkt końcowy połączenia klastra.  Zaznacz pole wyboru **Uaktualnij aplikację**, aby uaktualnić aplikację dla każdego wdrożenia w usłudze Team Services.  Kliknij hiperlink **Zapisz**, aby zapisać ustawienia w profilu publikowania, a następnie kliknij przycisk **Anuluj** w celu zamknięcia okna dialogowego.
+Wybierz profil docelowy w ramach projektu aplikacji na potrzeby przepływu pracy ciągłej integracji, na przykład chmurę.  Określ punkt końcowy połączenia klastra.  Zaznacz pole wyboru **Uaktualnij aplikację**, aby uaktualnić aplikację dla każdego wdrożenia w usłudze Azure DevOps.  Kliknij hiperlink **Zapisz**, aby zapisać ustawienia w profilu publikowania, a następnie kliknij przycisk **Anuluj** w celu zamknięcia okna dialogowego.
 
 ![Profil wypychania][publish-app-profile]
 
-## <a name="share-your-visual-studio-solution-to-a-new-team-services-git-repo"></a>Udostępnianie rozwiązania programu Visual Studio w nowym repozytorium Git w usłudze Team Services
+## <a name="share-your-visual-studio-solution-to-a-new-azure-devops-git-repo"></a>Udostępnianie rozwiązania programu Visual Studio w nowym repozytorium Git w usłudze Azure DevOps
 
-Udostępnij pliki źródłowe aplikacji w projekcie zespołowym usługi Team Services, aby umożliwić generowanie kompilacji.
+Udostępnij pliki źródłowe swojej aplikacji w projekcie zespołowym usługi Azure DevOps, aby umożliwić generowanie kompilacji.
 
 Utwórz nowe lokalne repozytorium Git dla projektu, wybierając pozycję **Dodaj do kontroli źródła** -> **Git** na pasku stanu w prawym dolnym rogu programu Visual Studio.
 
-W widoku **Wypychanie** w programie **Team Explorer** wybierz przycisk **Opublikuj repozytorium Git** w obszarze **Wypychanie do usługi Visual Studio Team Services**.
+W widoku **Wypychanie** w programie **Team Explorer** wybierz przycisk **Opublikuj repozytorium Git** w obszarze **Wypychanie do usługi Azure DevOps**.
 
 ![Wypychanie repozytorium Git][push-git-repo]
 
-Sprawdź swój adres e-mail i z listy rozwijanej **Domena usługi Team Services** wybierz swoje konto. Wprowadź nazwę repozytorium i wybierz polecenie **Publikuj repozytorium**.
+Sprawdź swój adres e-mail i wybierz swoją organizację z listy rozwijanej **Konta**. Jeśli jeszcze nie masz organizacji, będzie trzeba ją skonfigurować. Wprowadź nazwę repozytorium i wybierz polecenie **Publikuj repozytorium**.
 
 ![Wypychanie repozytorium Git][publish-code]
 
@@ -67,22 +67,22 @@ Opublikowanie repozytorium powoduje utworzenie nowego projektu zespołowego na T
 
 ## <a name="configure-continuous-delivery-with-vsts"></a>Konfigurowanie ciągłego dostarczania za pomocą usługi VSTS
 
-Definicja kompilacji usługi Team Services zawiera opis przepływu pracy, który składa się z zestawu kroków kompilacji wykonywanych sekwencyjnie. Utwórz definicję kompilacji, która spowoduje wygenerowanie pakietu aplikacji usługi Service Fabric i innych artefaktów, na potrzeby wdrożenia w klastrze usługi Service Fabric. Dowiedz się więcej na temat [definicji kompilacji usługi Team Services](https://www.visualstudio.com/docs/build/define/create). 
+Definicja kompilacji usługi Azure DevOps zawiera opis przepływu pracy, który składa się z zestawu kroków kompilacji wykonywanych sekwencyjnie. Utwórz definicję kompilacji, która spowoduje wygenerowanie pakietu aplikacji usługi Service Fabric i innych artefaktów, na potrzeby wdrożenia w klastrze usługi Service Fabric. Dowiedz się więcej o [definicjach kompilacji usługi Azure DevOps](https://www.visualstudio.com/docs/build/define/create). 
 
-Definicja wydania usługi Team Services opisuje przepływ pracy, który wdraża pakiet aplikacji w klastrze. Jednoczesne użycie definicji kompilacji i definicji wydania powoduje wykonanie całego przepływu pracy, zaczynając od plików źródłowych, a kończąc na aplikacji uruchomionej w klastrze. Dowiedz się więcej na temat[definicji wydania](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition) usługi Team Services.
+Definicja wydania usługi Azure DevOps opisuje przepływ pracy, który wdraża pakiet aplikacji w klastrze. Jednoczesne użycie definicji kompilacji i definicji wydania powoduje wykonanie całego przepływu pracy, zaczynając od plików źródłowych, a kończąc na aplikacji uruchomionej w klastrze. Dowiedz się więcej o [definicjach wydania](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition) usługi Azure DevOps.
 
 ### <a name="create-a-build-definition"></a>Tworzenie definicji kompilacji
 
-Otwórz przeglądarkę internetową i przejdź do nowego projektu zespołowego na stronie: [https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
+Otwórz nowy projekt zespołowy, przechodząc pod adres https://dev.azure.com w przeglądarce internetowej i wybierając swoją organizację, a następnie nowy projekt. 
 
-Wybierz kartę **Kompilacja i wydawanie**, wybierz pozycję **Kompilacje**, a następnie pozycję **Nowy potok**.
+Wybierz opcję **Potoki** na panelu po lewej, a następnie kliknij pozycję **Nowy potok**.
 
 >[!NOTE]
 >Jeśli nie widzisz szablonu definicji kompilacji, upewnij się, że funkcja **Nowe środowisko tworzenia potoków przy użyciu kodu YAML** została wyłączona. Ta funkcja jest konfigurowana w sekcji **Funkcje w wersji zapoznawczej** konta metodyki DevOps.
 
 ![Nowy potok][new-pipeline]
 
-Wybierz pozycję **VSTS Git** jako źródło, projekt zespołowy **Voting**, repozytorium **Voting** i domyślną gałąź **master** lub ręcznie i zaplanowane kompilacje.  Następnie kliknij pozycję **Kontynuuj**.
+Wybierz pozycję **Azure Repos Git** jako źródło, nazwę Twojego projektu zespołowego, Twoje repozytorium projektu i domyślną gałąź **master** lub kompilacje ręczne i zaplanowane.  Następnie kliknij pozycję **Kontynuuj**.
 
 W obszarze **Wybieranie szablonu** wybierz szablon **Aplikacja usługi Azure Service Fabric z obsługą platformy Docker**, a następnie kliknij przycisk **Zastosuj**.
 
@@ -104,7 +104,7 @@ W obszarze **Typ rejestru kontenerów** wybierz pozycję **Azure Container Regis
 
 ![Wybranie opcji Wypychanie obrazów platformy Docker][select-push-images]
 
-W obszarze **Wyzwalacze** włącz ciągłą integrację, zaznaczając pozycję **Włącz ciągłą integrację**. W obszarze **Filtry gałęzi** kliknij pozycję **+ Dodaj**, a wartość domyślna pozycji **Specyfikacja gałęzi** zostanie ustawiona na **master**.
+Na karcie **Wyzwalacze** włącz ciągłą integrację, zaznaczając pozycję **Włącz ciągłą integrację**. W obszarze **Filtry gałęzi** kliknij pozycję **+ Dodaj**, a wartość domyślna pozycji **Specyfikacja gałęzi** zostanie ustawiona na **master**.
 
 W oknie dialogowym **Zapisywanie potoku i kolejki kompilacji** kliknij pozycję **Zapisz i umieść w kolejce**, aby ręcznie uruchomić kompilację.
 
@@ -114,7 +114,7 @@ Kompilacje można również wyzwalać w ramach procesu wypychania lub ewidencjon
 
 ### <a name="create-a-release-definition"></a>Tworzenie definicji wydania
 
-Wybierz kartę **Kompilacja i wydawanie**, wybierz pozycję **Wydania**, a następnie wybierz pozycję **+ Nowy potok**.  W obszarze **Wybieranie szablonu** wybierz z listy szablon **Wdrożenie usługi Azure Service Fabric**, a następnie przycisk **Zastosuj**.
+Wybierz opcję **Potoki** na panelu po lewej, a następnie pozycje **Wydania** i **+ Nowy potok**.  W obszarze **Wybieranie szablonu** wybierz z listy szablon **Wdrożenie usługi Azure Service Fabric**, a następnie przycisk **Zastosuj**.
 
 ![Wybieranie szablonu wydania][select-release-template]
 
@@ -151,7 +151,7 @@ Sprawdź, czy wdrożenie zakończyło się pomyślnie, a aplikacja została uruc
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Zatwierdzanie i wypychanie zmian, wyzwalanie wydania
 
-Aby upewnić się, że potok ciągłej integracji działa prawidłowo, zaewidencjonuj jakieś zmiany kodu w usłudze Team Services.
+Aby upewnić się, że potok ciągłej integracji działa prawidłowo, zaewidencjonuj zmiany kodu w usłudze Azure DevOps.
 
 Podczas pisania kodu zmiany są automatycznie śledzone przez program Visual Studio. Zatwierdź zmiany w lokalnym repozytorium Git, wybierając ikonę oczekujących zmian (![Oczekujące][pending]) na pasku stanu w prawym dolnym rogu.
 
@@ -159,11 +159,11 @@ W widoku **Zmiany** programu Team Explorer dodaj komunikat opisujący aktualizac
 
 ![Zatwierdź wszystko][changes]
 
-Wybierz ikonę paska stanu nieopublikowanych zmian (![Nieopublikowane zmiany][unpublished-changes]) lub widok synchronizacji w programie Team Explorer. Wybierz pozycję **Wypchnij**, aby zaktualizować kod w usłudze Team Services lub na serwerze TFS.
+Wybierz ikonę paska stanu nieopublikowanych zmian (![Nieopublikowane zmiany][unpublished-changes]) lub widok synchronizacji w programie Team Explorer. Wybierz pozycję **Wypchnij**, aby zaktualizować kod w usłudze Azure DevOps Services.
 
 ![Wypychanie zmian][push]
 
-Wypychanie zmian do usługi Team Services automatycznie wyzwala kompilację.  Po pomyślnym zakończeniu definicji kompilacji automatycznie tworzone jest wydanie, które rozpoczyna uaktualnianie aplikacji w klastrze.
+Wypychanie zmian do usługi Azure DevOps automatycznie wyzwala kompilację.  Po pomyślnym zakończeniu definicji kompilacji automatycznie tworzone jest wydanie, które rozpoczyna uaktualnianie aplikacji w klastrze.
 
 Aby sprawdzić postęp kompilacji, przejdź do karty **Kompilacje** modułu **Team Explorer** w programie Visual Studio.  Po upewnieniu się, że kompilacja jest wykonywana prawidłowo, określ definicję wydania, która wdraża aplikację w klastrze.
 

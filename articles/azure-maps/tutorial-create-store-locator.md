@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9f77beb8c51fb3a06045183433907e1c634fb45d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7c7891d8a73142c78b1ca80027d685b93a062d06
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820277"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317912"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Tworzenie lokalizatora sklepów przy użyciu usługi Azure Maps
 
@@ -81,7 +81,7 @@ Patrząc na zrzut ekranu danych, możemy zauważyć następujące rzeczy:
 * Kilka dodatkowych kolumn zawiera metadane dotyczące kawiarni: numer telefonu, kolumny wartości logicznych dla punktów dostępowych sieci Wi-Fi i dostępności dla wózków inwalidzkich oraz godziny otwarcia i zamknięcia kawiarni w formacie 24-godzinnym. Możesz utworzyć własne kolumny zawierające metadane, które lepiej odpowiadają Twoim danym lokalizacji.
 
 > [!Note]
-> Usługa Azure Maps używa odwzorowania Merkatora (EPSG:3857).
+> Usługa Azure Maps renderuje dane w postaci kulistego odwzorowania walcowego równokątnego „EPSG:3857”, ale odczytuje dane w układzie współrzędnych „EPSG:4325”, który korzysta z systemu odniesienia WGS84. 
 
 Istnieje wiele sposobów uwidocznienia zestawu danych dla aplikacji. Jedno podejście polega na załadowaniu danych do bazy danych i uwidocznieniu usługi internetowej, która wykonuje zapytania względem danych i wysyła wyniki do przeglądarki użytkownika. Ta opcja jest idealnym rozwiązaniem w przypadku dużych lub często aktualizowanych zestawów danych. Jednak ta opcja wymaga znacznie więcej pracy deweloperskiej i ma wyższy koszt. 
 

@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: v-gedod
-ms.openlocfilehash: 77b8f956ca2a6985121cb5dbfebc2755fa73a35c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: cca39fb16c47eb13887f6198833dafc64974d301
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685977"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444464"
 ---
 # <a name="quickstart-bing-visual-search-sdk-node"></a>Szybki start: zestaw SDK wyszukiwania wizualnego Bing na platformie Node 
 
@@ -28,7 +28,15 @@ Scenariusze kodu są udokumentowane w następujących sekcjach:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klucz interfejsu API usług Cognitive Services jest wymagany do uwierzytelniania wywołań zestawu SDK. Utwórz konto, aby otrzymać [klucz bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). Klucz wersji próbnej obowiązuje przez siedem dni i oferuje jedno wywołanie na sekundę. W przypadku scenariuszy produkcyjnych [kup klucz dostępu](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Zobacz również [informacje o cenach](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
+* Ten przewodnik Szybki start wymaga rozpoczęcia subskrypcji w warstwie cenowej S9, jak pokazano w temacie [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+Aby rozpocząć subskrypcję w witrynie Azure Portal:
+1. Wprowadź tekst „BingSearchV7” w polu tekstowym w górnej części witryny Azure Portal, w którym wyświetlany jest komunikat `Search resources, services, and docs`.  
+2. W witrynie Marketplace z listy rozwijanej wybierz pozycję `Bing Search v7`.
+3. Wprowadź wartość `Name` dla nowego zasobu.
+4. Wybierz subskrypcję `Pay-As-You-Go`.
+5. Wybierz warstwę cenową `S9`.
+6. Kliknij pozycję `Enable`, aby rozpocząć subskrypcję.
 
 ## <a name="application-dependencies"></a>Zależności aplikacji
 

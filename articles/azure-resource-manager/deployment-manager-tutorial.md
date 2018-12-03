@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/08/2018
+ms.date: 11/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 70a7829c14997287ed130b0b4300c7f5aa0f3a30
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: e4489fd9119bce0e38e14f536f41940b74205e95
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345576"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425007"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Samouczek: używanie usługi Azure Deployment Manager z szablonami usługi Resource Manager (prywatna wersja zapoznawcza)
 
@@ -41,6 +41,8 @@ Ten samouczek obejmuje następujące zadania:
 > * Wdrażanie nowszej wersji
 > * Oczyszczanie zasobów
 
+Dokumentację interfejsu REST API usługi Azure Deployment Manager można znaleźć [tutaj](https://docs.microsoft.com/rest/api/deploymentmanager/).
+
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -50,12 +52,12 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 * Pewne doświadczenie w opracowywaniu [szablonów usługi Azure Resource Manager](./resource-group-overview.md).
 * Usługa Azure Deployment Manager jest w prywatnej wersji zapoznawczej. Aby utworzyć konto przy użyciu usługi Azure Deployment Manager, wypełnij [arkusz tworzenia konta](https://aka.ms/admsignup). 
 * Azure PowerShell. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z programem Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
-* Polecenia cmdlet usługi Deployment Manager. Aby zainstalować te polecenia cmdlet wersji wstępnej, potrzebujesz najnowszej wersji modułu PowerShellGet. Aby uzyskać najnowszą wersję, zobacz [Installing PowerShellGet (Instalowanie modułu PowerShellGet)](/powershell/gallery/installing-psget). Po zainstalowaniu modułu PowerShellGet zamknij okno programu PowerShell. Otwórz nowe okno programu PowerShell i użyj następującego polecenia:
+* Polecenia cmdlet usługi Deployment Manager. Aby zainstalować te polecenia cmdlet wersji wstępnej, potrzebujesz najnowszej wersji modułu PowerShellGet. Aby uzyskać najnowszą wersję, zobacz [Installing PowerShellGet (Instalowanie modułu PowerShellGet)](/powershell/gallery/installing-psget). Po zainstalowaniu modułu PowerShellGet zamknij okno programu PowerShell. Otwórz nowe okno programu PowerShell z podwyższonym poziomem uprawnień i użyj następującego polecenia:
 
     ```powershell
     Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease
     ```
-* [Eksplorator usługi Microsoft Azure Storage](https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x409). Eksplorator usługi Azure Storage nie jest wymagany, ale ułatwia działanie.
+* [Eksplorator usługi Microsoft Azure Storage](https://azure.microsoft.com/features/storage-explorer/). Eksplorator usługi Azure Storage nie jest wymagany, ale ułatwia działanie.
 
 ## <a name="understand-the-scenario"></a>Omówienie scenariusza
 
@@ -145,10 +147,10 @@ W dalszej części samouczka wdrożysz wprowadzenie. Tożsamość zarządzana pr
 Musisz utworzyć tożsamość zarządzaną przypisaną przez użytkownika i skonfigurować kontrolę dostępu dla subskrypcji.
 
 > [!IMPORTANT]
-> Tożsamość zarządzana przypisana przez użytkownika musi znajdować się w tej samej lokalizacji, co [wprowadzanie](#create-the-rollout-template). Obecnie zasoby usługi Deployment Manager, w tym wprowadzanie, można tworzyć tylko w lokalizacji Środkowe stany USA lub Wschodnie stany USA 2.
+> Tożsamość zarządzana przypisana przez użytkownika musi znajdować się w tej samej lokalizacji, co [wprowadzanie](#create-the-rollout-template). Obecnie zasoby usługi Deployment Manager, w tym wprowadzanie, można tworzyć tylko w lokalizacji Środkowe stany USA lub Wschodnie stany USA 2. Ta reguła obowiązuje jednak tylko w przypadku zasobów programu Deployment Manager (na przykład topologii usługi, usług, jednostek usług, wdrożenia i kroków). Zasoby docelowe można wdrażać w dowolnym obsługiwanym regionie platformy Azure. Na przykład w tym samouczku zasoby programu Deployment Manager są wdrażane w regionie Środkowe stany USA, a usługi są wdrażane w regionach Wschodnie stany USA i Zachodnie stany USA. To ograniczenie zostanie zlikwidowane w przyszłości.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Utwórz [tożsamość zarządzaną przypisaną przez użytkownika](../active-directory/managed-identities-azure-resources/overview.md).
+2. Utwórz [tożsamość zarządzaną przypisaną przez użytkownika](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. W portalu wybierz opcję **Subskrypcje** z menu po lewej stronie, a następnie wybierz swoją subskrypcję.
 4. Wybierz opcję **Kontrola dostępu (IAM)**, a następnie wybierz opcję **Dodaj**
 5. Wprowadź lub wybierz poniższe wartości:
@@ -200,6 +202,9 @@ Poniższy zrzut ekranu przedstawia tylko pewne części definicji topologii usł
 - **dependsOn**: wszystkie zasoby topologii usługi zależą od zasobu źródła artefaktu.
 - **artifacts** wskazuje artefakty szablonu.  W tym miejscu używa się ścieżek względnych. Pełna ścieżka jest tworzona przez połączenie elementów artifactSourceSASLocation (lokalizacja definiowana w źródle artefaktu), artifactRoot (lokalizacja definiowana w źródle artefaktu) oraz templateArtifactSourceRelativePath (lub parametersArtifactSourceRelativePath).
 
+> [!NOTE]
+> Nazwy jednostek usług mogą zawierać maksymalnie 31 znaków. 
+
 ### <a name="topology-parameters-file"></a>Plik parametrów topologii
 
 Możesz utworzyć plik parametrów używany z szablonem topologii.
@@ -211,7 +216,7 @@ Możesz utworzyć plik parametrów używany z szablonem topologii.
     - **azureResourceLocation**: jeśli nie znasz się na lokalizacjach platformy Azure, użyj lokalizacji **centralus** w tym samouczku.
     - **artifactSourceSASLocation**: wprowadź identyfikator URI sygnatury dostępu współdzielonego do folderu głównego (kontenera obiektów blob), w którym przechowuje się pliki szablonu i parametrów jednostki usługi na potrzeby wdrożenia.  Zobacz [Przygotowywanie artefaktów](#prepare-the-artifacts).
     - **templateArtifactRoot**: użyj wartości **templates/1.0.0.0** w tym samouczku, chyba że chcesz zmienić strukturę folderu artefaktów.
-    - **tragetScriptionID**: wprowadź identyfikator subskrypcji platformy Azure.
+    - **targetScriptionID**: wprowadź identyfikator subskrypcji platformy Azure.
 
 > [!IMPORTANT]
 > Szablon topologii oraz szablon wprowadzania współdzielą niektóre parametry. Te parametry muszą mieć takie same wartości. Te parametry są następujące: **namePrefix**, **azureResourceLocation** oraz **artifactSourceSASLocation** (oba źródła artefaktów współdzielą to samo konto magazynu w tym samouczku).
@@ -242,7 +247,7 @@ Sekcja zmiennych definiuje nazwy zasobów. Upewnij się, że nazwa topologii us�
 
 Na poziomie głównym istnieją trzy zdefiniowane zasoby: źródło artefaktu, krok oraz wprowadzenie.
 
-Definicja źródła artefaktu jest taka sama, jak definicja określona w szablonie topologii.  Zobacz [Tworzenie szablonu topologii usługi](#create-the-service-topology-tempate), aby uzyskać więcej informacji.
+Definicja źródła artefaktu jest taka sama, jak definicja określona w szablonie topologii.  Zobacz [Tworzenie szablonu topologii usługi](#create-the-service-topology-template), aby uzyskać więcej informacji.
 
 Poniższy zrzut ekranu przedstawia definicję kroku oczekiwania:
 
@@ -310,7 +315,7 @@ Programu Azure PowerShell można użyć do wdrażania szablonów.
 
     Opcja **Pokaż ukryte typy** musi być zaznaczona, aby wyświetlić zasoby.
 
-3. Wdrożenie szablonu wprowadzania:
+3. <a id="deploy-the-rollout-template"></a>Wdrożenie szablonu wprowadzania:
 
     ```azurepowershell-interactive
     # Create the rollout
@@ -325,7 +330,7 @@ Programu Azure PowerShell można użyć do wdrażania szablonów.
 
     ```azurepowershell-interactive
     # Get the rollout status
-    $rolloutname = "<Enter the Rollout Name>"
+    $rolloutname = "<Enter the Rollout Name>" # "adm0925Rollout" is the rollout name used in this tutorial
     Get-AzureRmDeploymentManagerRollout `
         -ResourceGroupName $resourceGroupName `
         -Name $rolloutName
@@ -365,7 +370,7 @@ Jeśli masz nową wersję (1.0.0.1) aplikacji internetowej. Możesz użyć poni�
 
 1. Otwórz plik CreateADMRollout.Parameters.json.
 2. Zaktualizuj parametr **binaryArtifactRoot** do wartości **binaries/1.0.0.1**.
-3. Ponownie wdróż wprowadzanie zgodnie z instrukcjami w sekcji [Wdrażanie szablonów](#deploy-the-templates).
+3. Ponownie wdróż wprowadzanie zgodnie z instrukcjami w sekcji [Wdrażanie szablonów](#deploy-the-rollout-template).
 4. Sprawdź wdrożenie zgodnie z instrukcjami w sekcji [Weryfikowanie wdrożenia](#verify-the-deployment). Strona internetowa powinna teraz wyświetlać wersję 1.0.0.1.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

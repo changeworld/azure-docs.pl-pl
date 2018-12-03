@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: f54914b846c6a001a9fb10d938a038e390abf6bf
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c1b63b12a48f5ccfb1a396ffa9282249b03893fe
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416447"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445178"
 ---
 # <a name="quickstart-your-first-bing-visual-search-query-in-java"></a>Szybki start: pierwsze zapytanie wyszukiwania wizualnego Bing w języku Java
 
@@ -36,10 +36,17 @@ W tym artykule zawarto prostą aplikację konsolową, która wysyła żądanie i
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+Ten przewodnik Szybki start wymaga rozpoczęcia subskrypcji w warstwie cenowej S9, jak pokazano w temacie [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+Aby rozpocząć subskrypcję w witrynie Azure Portal:
+1. Wprowadź tekst „BingSearchV7” w polu tekstowym w górnej części witryny Azure Portal, w którym wyświetlany jest komunikat `Search resources, services, and docs`.  
+2. W witrynie Marketplace z listy rozwijanej wybierz pozycję `Bing Search v7`.
+3. Wprowadź wartość `Name` dla nowego zasobu.
+4. Wybierz subskrypcję `Pay-As-You-Go`.
+5. Wybierz warstwę cenową `S9`.
+6. Kliknij pozycję `Enable`, aby rozpocząć subskrypcję.
 
 Musisz mieć zestaw [JDK 7 lub 8](https://aka.ms/azure-jdks), aby skompilować i uruchomić ten kod. Jeśli masz ulubione środowisko projektowe Java, możesz go użyć, ale edytor tekstów również wystarczy.
-
-Na potrzeby tego przewodnika Szybki start możesz użyć klucza subskrypcji [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) lub klucza subskrypcji płatnej.
 
 ## <a name="running-the-application"></a>Uruchamianie aplikacji
 

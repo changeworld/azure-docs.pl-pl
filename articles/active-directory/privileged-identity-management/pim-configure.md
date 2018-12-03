@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: af93ade2a7031aeda5b4108649c59a8d6c1393ce
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 6720294fe9a3e166d0d6ef8f141e53212ef4b194
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465864"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496804"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co to jest usługa Azure AD Privileged Identity Management?
 
@@ -73,7 +73,7 @@ Usługa Privileged Identity Management obsługuje następujące scenariusze:
 
 - Wyświetlanie oczekujących zatwierdzeń (żądań)
 - Zatwierdzanie lub odrzucanie żądań podniesienia uprawnień ról (pojedyncze i/lub zbiorcze)
-- Uzasadnianie zatwierdzeń/odrzuceń 
+- Uzasadnianie zatwierdzeń/odrzuceń 
 
 **Uprawniony użytkownik roli ma następujące możliwości:**
 
@@ -81,22 +81,13 @@ Usługa Privileged Identity Management obsługuje następujące scenariusze:
 - Wyświetlanie stanu żądania uaktywnienia
 - Wykonywanie zadania w usłudze Azure AD w przypadku zatwierdzenia uaktywnienia
 
-## <a name="enable-privileged-identity-management-for-your-directory"></a>Włączanie usługi Privileged Identity Management w katalogu
+## <a name="who-can-do-what-in-pim"></a>Kto i co może wykonywać w usłudze PIM
 
-Możesz włączyć usługę Azure AD Privileged Identity Management w witrynie [Azure Portal](https://portal.azure.com/).
+Jeśli jesteś pierwszą osobą używającą usługi PIM, będziesz mieć automatycznie przypisane role [Administrator zabezpieczeń](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) i [Administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) w katalogu.
 
-> [!NOTE]
-> Aby włączyć usługę Azure AD Privileged Identity Management dla katalogu, musisz być administratorem globalnym i korzystać z konta organizacji (na przykład @yourdomain.com), a nie konta Microsoft (na przykład @outlook.com).
+W przypadku ról usługi Azure AD tylko użytkownik należący do roli Administrator ról uprzywilejowanych może zarządzać przypisaniami innych administratorów w usłudze PIM. Możesz [przyznać dostęp innym administratorom do zarządzania usługą PIM](pim-how-to-give-access-to-pim.md). Administratorzy globalni, administratorzy zabezpieczeń i czytelnicy zabezpieczeń mogą wyświetlać przypisania ról usługi Azure AD w usłudze PIM.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny katalogu.
-2. Jeśli organizacja dysponuje więcej niż jednym katalogiem, wybierz swoją nazwę użytkownika w prawym górnym rogu witryny Azure Portal. Wybierz katalog, w którym będziesz używać usługi Azure AD Privileged Identity Management.
-3. Wybierz pozycję **Wszystkie usługi** i użyj pola tekstowego filtru, aby wyszukać usługę **Azure AD Privileged Identity Management**.
-4. Zaznacz opcję **Przypnij do pulpitu nawigacyjnego**, a następnie kliknij pozycję **Utwórz**. Nastąpi otwarcie aplikacji Privileged Identity Management.
-
-Jeśli jesteś pierwszą osobą, która będzie używać aplikacji Azure AD Privileged Identity Management w danym katalogu, po przejściu do ról katalogu usługi Azure AD [kreator zabezpieczeń](pim-security-wizard.md) przeprowadzi Cię przez proces wstępnego przypisania. Następnie automatycznie zostaniesz pierwszym **administratorem zabezpieczeń** i **administratorem ról uprzywilejowanych** w katalogu.
-
-W przypadku ról usługi Azure AD tylko użytkownik należący do roli Administrator ról uprzywilejowanych może zarządzać przypisaniami innych administratorów w usłudze Azure AD PIM. Możesz [dać innym użytkownikom możliwość zarządzania rolami katalogu w usłudze PIM](pim-how-to-give-access-to-pim.md). Administratorzy globalni, administratorzy zabezpieczeń i czytelnicy zabezpieczeń mogą wyświetlać przypisania ról usługi Azure AD w usłudze Azure AD PIM.
-W przypadku ról RBAC platformy Azure tylko administrator subskrypcji, właściciel zasobu lub administrator dostępu użytkowników zasobu może zarządzać przypisaniami innych administratorów w usłudze Azure AD PIM.  Użytkownicy będący administratorami ról uprzywilejowanych, administratorami zabezpieczeń lub czytelnikami zabezpieczeń nie mają domyślnie uprawnień do wyświetlania przypisań ról RBAC platformy Azure w usłudze Azure AD PIM.
+W przypadku ról zasobów platformy Azure tylko administrator subskrypcji, właściciel zasobu lub administrator dostępu użytkowników zasobu może zarządzać przypisaniami innych administratorów w usłudze PIM. Użytkownicy będący administratorami ról uprzywilejowanych, administratorami zabezpieczeń lub czytelnikami zabezpieczeń nie mają domyślnie uprawnień do wyświetlania przypisań ról zasobów platformy Azure w usłudze PIM.
 
 ## <a name="privileged-identity-management-overview-entry-point"></a>Privileged Identity Management — przegląd (punkt wejścia)
 
@@ -186,6 +177,6 @@ Jeśli organizacja nie odnowi subskrypcji usługi Azure AD Premium P2 lub wersja
 
 ## <a name="next-steps"></a>Następne kroki
 
+- [Rozpoczynanie korzystania z usługi PIM](pim-getting-started.md)
 - [Wymagania dotyczące korzystania z usługi PIM w ramach subskrypcji](subscription-requirements.md)
-- [Role katalogu usługi Azure AD, którymi można zarządzać w usłudze PIM](pim-roles.md)
 - [Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i wdrożeń w chmurze w usłudze Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)

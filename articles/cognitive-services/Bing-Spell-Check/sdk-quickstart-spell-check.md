@@ -10,18 +10,19 @@ ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: ad09c1d6f9e7cea1150ce1638c723c5c35d66a32
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 3050bc06c30c29efe7ba5294cbbee2aea1a6055b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284442"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311606"
 ---
 # <a name="quickstart-bing-spell-check-sdk-with-c"></a>Szybki start: zestaw SDK sprawdzania pisowni Bing dla języka C#
 
 Zestaw SKD sprawdzania pisowni Bing zawiera funkcje interfejsu API REST w zakresie sprawdzania pisowni.
 
 ## <a name="application-dependencies"></a>Zależności aplikacji
+Pobierz [klucz dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) w obszarze **Wyszukiwanie**.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 Aby skonfigurować aplikację konsolową przy użyciu zestawu SDK sprawdzania pisowni Bing, przejdź do opcji `Manage NuGet Packages` w eksploratorze rozwiązań w programie Visual Studio. Dodaj pakiet `Microsoft.Azure.CognitiveServices.Language.SpellCheck`.
 

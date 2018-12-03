@@ -10,12 +10,12 @@ ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: abf7e4344bea88fd86b86135ffab30672d77922e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 7cbb97fbf237e14d6822edfa174ca469f8988e2d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814108"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307362"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-c"></a>Szybki start: zestaw Bing Entity Search SDK z językiem C#
 
@@ -24,6 +24,7 @@ Interfejs API wyszukiwania jednostek Bing zawiera funkcje interfejsu API REST pr
 [Kod źródłowy przykładów zestawu Bing Entity Search SDK w języku C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch) jest dostępny w witrynie Git Hub.
 
 ## <a name="application-dependencies"></a>Zależności aplikacji
+Pobierz [klucz dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) w obszarze **Wyszukiwanie**.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 Aby skonfigurować aplikację konsoli przy użyciu zestawu Bing Entity Search SDK, przejdź do opcji `Manage NuGet Packages` w Eksploratorze rozwiązań w programie Visual Studio.  Dodaj pakiet `Microsoft.Azure.CognitiveServices.Search.EntitySearch`.
 

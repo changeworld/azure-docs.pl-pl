@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 05/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: 4cb6e79b563ac0172f93b3a721b79c230a96a1d5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 25b01de47767e335d614aa0a8cf32c344c7305d8
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457990"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442850"
 ---
 # <a name="quickstart-bing-visual-search-sdk-c"></a>Szybki start: zestaw Bing Visual Search SDK dla języka C#
 
@@ -33,7 +33,16 @@ Scenariusze kodu są udokumentowane w następujących sekcjach:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Program Visual Studio 2017. W razie potrzeby możesz pobrać bezpłatną wersję dla społeczności z tego miejsca: https://www.visualstudio.com/vs/community/.
-* Klucz interfejsu API usług Cognitive Services jest wymagany do uwierzytelniania wywołań zestawu SDK. Utwórz konto, aby otrzymać [klucz bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). Klucz wersji próbnej obowiązuje przez siedem dni i oferuje jedno wywołanie na sekundę. W przypadku scenariusza produkcyjnego [kup klucz dostępu](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Zobacz również [informacje o cenach](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
+* Ten przewodnik Szybki start wymaga rozpoczęcia subskrypcji w warstwie cenowej S9, jak pokazano w temacie [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+Aby rozpocząć subskrypcję w witrynie Azure Portal:
+1. Wprowadź tekst „BingSearchV7” w polu tekstowym w górnej części witryny Azure Portal, w którym wyświetlany jest komunikat `Search resources, services, and docs`.  
+2. W witrynie Marketplace z listy rozwijanej wybierz pozycję `Bing Search v7`.
+3. Wprowadź wartość `Name` dla nowego zasobu.
+4. Wybierz subskrypcję `Pay-As-You-Go`.
+5. Wybierz warstwę cenową `S9`.
+6. Kliknij pozycję `Enable`, aby rozpocząć subskrypcję.
+
 * Możliwość uruchamiania zestawu .NET Core SDK i aplikacji platformy .NET Core 1.1. Rozwiązanie CORE, platformę i środowisko uruchomieniowe można pobrać z następującego miejsca: https://www.microsoft.com/net/download/.
 
 ## <a name="application-dependencies"></a>Zależności aplikacji

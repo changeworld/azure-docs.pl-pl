@@ -13,20 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/02/2018
+ms.date: 11/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2aca42c23cc213d5d7e451105052d5d5d697b77d
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: c8ab6b6e6bab7451de7d975dde644386fd4cb84e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979475"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311538"
 ---
 # <a name="hybrid-identity-and-microsoft-identity-solutions"></a>Rozwiązania tożsamości hybrydowej i tożsamości firmy Microsoft
 Rozwiązania do obsługi tożsamości hybrydowych usługi [Microsoft Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) umożliwiają synchronizowanie lokalnych obiektów katalogu z usługą Azure AD bez utraty możliwości zarządzania użytkownikami lokalnymi. Pierwszą decyzją, którą należy podjąć podczas planowania synchronizacji lokalnej usługi Active Directory systemu Windows Server z usługą Azure AD, jest określenie, czy chcesz używać tożsamości zarządzanych, czy też tożsamości federacyjnej. 
 
-- **Tożsamości zarządzane** — grupy i konta użytkowników, które są synchronizowane z lokalnej usługi Active Directory, a uwierzytelnianie użytkowników jest zarządzane przez platformę Azure.   
+- **Tożsamości zarządzane** — grupy i konta użytkowników są synchronizowane z lokalnej usługi Active Directory, a uwierzytelnianie użytkowników jest zarządzane przez platformę Azure.   
 - **Tożsamości federacyjne** umożliwiają większą kontrolę nad użytkownikami przez oddzielenie uwierzytelniania użytkownika od platformy Azure i delegowanie uwierzytelniania do zaufanego, lokalnego dostawcy tożsamości. 
 
 Dostępnych jest kilka opcji konfigurowania tożsamości hybrydowej. Po ustaleniu, który model tożsamości najlepiej odpowiada wymaganiom Twojej organizacji, należy również wziąć pod uwagę czas, istniejącą infrastrukturę, złożoność i koszt. Te czynniki są różne w różnych organizacjach i mogą się zmieniać wraz z upływem czasu. Jeśli jednak wymagania naprawdę ulegną zmianie, można przełączyć się do innego modelu tożsamości.
@@ -42,7 +42,7 @@ Mimo że tożsamość zarządzana jest najprostszą i najszybszą metodą, użyt
 W przypadku większości organizacji, w których istotne jest tylko umożliwienie użytkownikom zalogowania się do usługi Office 365, aplikacji SaaS i innych zasobów bazujących na usłudze Azure AD, zalecana jest domyślna opcja synchronizacji skrótów haseł. Jeśli ta opcja nie jest odpowiednia dla Twojej organizacji, konieczne będzie wybranie między uwierzytelnianiem przekazywanym i usługami AD FS.
 
 > [!TIP]
-> Hasła użytkowników są przechowywane w lokalnej usłudze Active Directory systemu Windows Server w postaci wartości skrótów, które reprezentują rzeczywiste hasła użytkowników. Wartość skrótu jest wynikiem jednokierunkowej funkcji matematycznej (algorytmu wyznaczania wartości skrótu). Nie ma możliwości przywrócenia wyniku tej jednokierunkowej funkcji z powrotem do hasła w postaci zwykłego tekstu. Skrótu hasła nie można użyć w celu zalogowania się do sieci lokalnej. Jeśli wybierzesz opcję synchronizacji haseł, program Azure AD Connect wyodrębnia skróty haseł z lokalnej usługi Active Directory i stosuje do nich dodatkowe środki zabezpieczeń przed ich zsynchronizowaniem z usługą Azure AD. Synchronizacja skrótów haseł może być również stosowana razem z zapisywaniem zwrotnym haseł, aby umożliwić samoobsługowe resetowanie haseł w usłudze Azure AD. Ponadto dla użytkowników pracujących na komputerach przyłączonych do domeny, które są połączone z siecią firmową, można włączyć logowanie jednokrotne (SSO). Użytkownicy z włączoną funkcją logowania jednokrotnego muszą tylko raz wprowadzać swoją nazwę użytkownika, aby móc bezpiecznie uzyskiwać dostęp do zasobów w chmurze. 
+> Hasła użytkowników są przechowywane w lokalnej usłudze Active Directory systemu Windows Server w postaci wartości skrótów, które reprezentują rzeczywiste hasła użytkowników. Wartość skrótu jest wynikiem jednokierunkowej funkcji matematycznej (algorytmu wyznaczania wartości skrótu). Nie ma możliwości przywrócenia wyniku tej jednokierunkowej funkcji z powrotem do hasła w postaci zwykłego tekstu. Skrótu hasła nie można użyć w celu zalogowania się do sieci lokalnej. Jeśli wybierzesz opcję synchronizacji skrótów haseł, program Azure AD Connect wyodrębnia skróty haseł z lokalnej usługi Active Directory i stosuje do nich dodatkowe środki zabezpieczeń przed ich zsynchronizowaniem z usługą Azure AD. Synchronizacja skrótów haseł może być również stosowana razem z zapisywaniem zwrotnym haseł, aby umożliwić samoobsługowe resetowanie haseł w usłudze Azure AD. Ponadto dla użytkowników pracujących na komputerach przyłączonych do domeny, które są połączone z siecią firmową, można włączyć logowanie jednokrotne (SSO). Użytkownicy z włączoną funkcją logowania jednokrotnego muszą tylko raz wprowadzać swoją nazwę użytkownika, aby móc bezpiecznie uzyskiwać dostęp do zasobów w chmurze. 
 >
 
 ## <a name="pass-through-authentication"></a>Uwierzytelnianie przekazywane

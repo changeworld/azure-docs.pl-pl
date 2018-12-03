@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/21/2018
-ms.openlocfilehash: 1f8537408325aff0ba3ec198ed0e2bb697134845
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 74cdaed91624e9d0602ce6a85ccc5cd341b9519e
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036346"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496624"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Samouczek: korzystanie z systemu Apache Storm z platformą Apache Kafka w usłudze HDInsight
 
-W tym samouczku przedstawiono sposób użycia topologii systemu Apache Storm do odczytywania i zapisywania danych przy użyciu platformy Apache Kafka w usłudze HDInsight. W tym samouczku pokazano także sposób utrwalania danych w magazynie zgodnym z systemem plików HDFS w klastrze Storm.
+W tym samouczku przedstawiono sposób użycia topologii systemu [Apache Storm](https://storm.apache.org/) do odczytywania i zapisywania danych przy użyciu platformy [Apache Kafka](https://kafka.apache.org/) w usłudze HDInsight. W tym samouczku pokazano także sposób utrwalania danych w magazynie zgodnym z systemem plików [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) w klastrze Storm.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -37,7 +37,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 * Znajomość zagadnień dotyczących tworzenia tematów platformy Kafka. Aby uzyskać więcej informacji, zobacz dokument [Przewodnik Szybki start dla platformy Kafka w usłudze HDInsight](./kafka/apache-kafka-get-started.md).
 
-* Znajomość zagadnień dotyczących tworzenia i wdrażania rozwiązań systemu Storm (topologii). W szczególności topologii wykorzystujących strukturę Flux. Aby uzyskać więcej informacji, zobacz dokument [Tworzenie topologii systemu Storm w języku Java](./storm/apache-storm-develop-java-topology.md).
+* Znajomość zagadnień dotyczących tworzenia i wdrażania rozwiązań systemu Storm (topologii). W szczególności topologii wykorzystujących strukturę [Flux](https://storm.apache.org/releases/current/flux.html). Aby uzyskać więcej informacji, zobacz dokument [Tworzenie topologii systemu Storm w języku Java](./storm/apache-storm-develop-java-topology.md).
 
 * Zestaw [Java JDK 1.8](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) lub nowszy. Usługa HDInsight w wersji 3.5 lub nowszej wymaga środowiska Java 8.
 
@@ -63,7 +63,7 @@ Po zainstalowaniu środowiska Java i zestawu JDK na deweloperskiej stacji robocz
 
 ## <a name="storm-and-kafka"></a>System Storm i platforma Kafka
 
-System Apache Storm udostępnia kilka składników do pracy z platformą Kafka. W tym samouczku są używane następujące składniki:
+System Apache Storm udostępnia kilka składników do pracy z platformą Apache Kafka. W tym samouczku są używane następujące składniki:
 
 * `org.apache.storm.kafka.KafkaSpout`: ten składnik odczytuje dane z platformy Kafka. Zależy on od następujących składników:
 
@@ -82,7 +82,7 @@ System Apache Storm udostępnia kilka składników do pracy z platformą Kafka. 
 Te składniki są dostępne w pakiecie `org.apache.storm : storm-kafka`. Użyj wersji pakietu zgodnej z wersją systemu Storm. W przypadku usługi HDInsight 3.6 właściwa wersja systemu Storm to 1.1.0.
 Potrzebny jest także pakiet `org.apache.kafka : kafka_2.10`, który zawiera dodatkowe składniki platformy Kafka. Użyj wersji pakietu zgodnej z wersją platformy Kafka. W przypadku usługi HDInsight 3.6 właściwa wersja platformy Kafka to 0.10.0.0.
 
-Następujący kod XML to deklaracja zależności w pliku `pom.xml` projektu narzędzia Maven:
+Następujący kod XML to deklaracja zależności w pliku `pom.xml` projektu narzędzia [Apache Maven](https://maven.apache.org/):
 
 ```xml
 <!-- Storm components for talking to Kafka -->
@@ -369,7 +369,7 @@ Projekt zawiera plik o nazwie `dev.properties` używany do przekazywania paramet
 
 | Plik dev.properties | Opis |
 | --- | --- |
-| `kafka.zookeeper.hosts` | Hosty usługi Zookeeper dla klastra Kafka. |
+| `kafka.zookeeper.hosts` | Hosty usługi [Apache Zookeeper](https://zookeeper.apache.org/) dla klastra Kafka. |
 | `kafka.broker.hosts` | Hosty brokera platformy Kafka (węzły procesu roboczego). |
 | `kafka.topic` | Temat platformy Kafka używany przez topologie. |
 | `hdfs.write.dir` | Katalog, w którym topologia modułu odczytującego platformy Kafka zapisuje dane. |
@@ -384,7 +384,7 @@ Na poniższym diagramie przedstawiono przepływ komunikacji między systemem Sto
 ![Diagram przedstawiający klastry Storm i Kafka w sieci wirtualnej platformy Azure](./media/hdinsight-apache-storm-with-kafka/storm-kafka-vnet.png)
 
 > [!NOTE]
-> Inne usługi w klastrze, takie jak SSH i Ambari, są dostępne przez Internet. Aby uzyskać więcej informacji o publicznych portach dostępnych z usługą HDInsight, zobacz [Ports and URIs used by HDInsight (Porty i identyfikatory URI używane przez usługę HDInsight)](hdinsight-hadoop-port-settings-for-services.md).
+> Inne usługi w klastrze, takie jak SSH i [Apache Ambari](https://ambari.apache.org/), są dostępne przez Internet. Aby uzyskać więcej informacji o publicznych portach dostępnych z usługą HDInsight, zobacz [Ports and URIs used by HDInsight (Porty i identyfikatory URI używane przez usługę HDInsight)](hdinsight-hadoop-port-settings-for-services.md).
 
 Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klastry Kafka i Storm, wykonaj następujące kroki:
 
@@ -637,8 +637,8 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób użycia topologii systemu Storm do zapisywania i odczytywania danych na platformie Kafka w usłudze HDInsight. Pokazano również, jak zapisać dane w magazynie zgodnym z systemem plików HDFS używanym przez usługę HDInsight.
+W tym samouczku przedstawiono sposób użycia topologii systemu [Apache Storm](https://storm.apache.org/) do zapisywania i odczytywania danych na platformie [Apache Kafka](https://kafka.apache.org/) w usłudze HDInsight. Pokazano również, jak zapisać dane w magazynie zgodnym z systemem plików [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) używanym przez usługę HDInsight.
 
-Aby dowiedzieć się więcej o korzystaniu z platformy Kafka w usłudze HDInsight, zobacz dokument [Korzystanie z interfejsu API producenta i konsumenta platformy Kafka](kafka/apache-kafka-producer-consumer-api.md).
+Aby dowiedzieć się więcej o korzystaniu z platformy Kafka w usłudze HDInsight, zobacz dokument [Korzystanie z interfejsu API producenta i konsumenta platformy Apache Kafka](kafka/apache-kafka-producer-consumer-api.md).
 
 Aby uzyskać informacje dotyczące wdrażania i monitorowania topologii w usłudze HDInsight opartej na systemie Linux, zobacz dokument [Wdrażanie topologii systemu Apache Storm w usłudze HDInsight opartej na systemie Linux i zarządzanie nimi](storm/apache-storm-deploy-monitor-topology-linux.md)

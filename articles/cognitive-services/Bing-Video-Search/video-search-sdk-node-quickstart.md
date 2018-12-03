@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: rosh
-ms.openlocfilehash: 9a2544fe5a3c0bac763b9aee79c36893ec56f351
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 985ddcff35a16c747fff34ed487c72744e1ee466
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686691"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313452"
 ---
 # <a name="quickstart-bing-video-search-sdk-with-node"></a>Szybki start: zestaw Bing Video Search SDK na platformie Node
 
@@ -24,6 +24,7 @@ Zestaw Bing Video Search SDK używa funkcji interfejsu API REST na potrzeby zapy
 [Kod źródłowy przykładów zestawu Bing Video Search SDK dla platformy Node](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js) jest dostępny w usłudze Git Hub.
 
 ## <a name="application-dependencies"></a>Zależności aplikacji
+Pobierz [klucz dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) w obszarze **Wyszukiwanie**.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 Aby skonfigurować aplikację konsolową przy użyciu zestawu SDK wyszukiwania wideo Bing:
 * Uruchom polecenie `npm install ms-rest-azure` w środowisku programistycznym.

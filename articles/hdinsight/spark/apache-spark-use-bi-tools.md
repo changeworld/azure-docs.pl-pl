@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: dcd28d8e33045f4c0324f964a854e98dfe004321
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: e862000df1edc5101c0768f1f96c11953f1485c7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712419"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583282"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Samouczek: analizowanie danych platformy Apache Spark przy użyciu usługi Power BI w usłudze HDInsight 
 
-Dowiedz się, jak używać usługi Microsoft Power BI do wizualizacji danych w klastrze platformy Apache Spark w usłudze Azure HDInsight.
+Dowiedz się, jak używać usługi [Microsoft Power BI](https://powerbi.microsoft.com/) do wizualizacji danych w klastrze platformy [Apache Spark](https://spark.apache.org/) w usłudze [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -34,7 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="verify-the-data"></a>Weryfikowanie danych
 
-Notes Jupyter utworzony w ramach [poprzedniego samouczka](apache-spark-load-data-run-query.md) zawiera kod do utworzenia tabeli `hvac`. Ta tabela jest oparta na pliku CSV dostępnym we wszystkich klastrach HDInsight Spark w lokalizacji **\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv**. Postępuj zgodnie z następującą procedurą, aby sprawdzić dane.
+[Notes Jupyter](https://jupyter.org/) utworzony w ramach [poprzedniego samouczka](apache-spark-load-data-run-query.md) zawiera kod do utworzenia tabeli `hvac`. Ta tabela jest oparta na pliku CSV dostępnym we wszystkich klastrach HDInsight Spark w lokalizacji **\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv**. Postępuj zgodnie z następującą procedurą, aby sprawdzić dane.
 
 1. Z notesu Jupyter wklej poniższy kod, a następnie naciśnij klawisze **SHIFT + ENTER**. Kod sprawdza obecność tabel.
 
@@ -164,7 +164,7 @@ Usługa Power BI umożliwia udostępnianie raportów i pulpitów nawigacyjnych w
 
 10. W raporcie kliknij pozycję **Przejdź do pulpitu nawigacyjnego**. 
 
-Wizualizacja zostanie przypięta do pulpitu nawigacyjnego — możesz dodać inne wizualizacje do raportu i przypiąć je do tego samego pulpitu nawigacyjnego. Aby uzyskać więcej informacji na temat raportów i pulpitów nawigacyjnych, zobacz [Raporty w usłudze Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-reports/)i [Pulpity nawigacyjne w usłudze Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
+Wizualizacja zostanie przypięta do pulpitu nawigacyjnego — możesz dodać inne wizualizacje do raportu i przypiąć je do tego samego pulpitu nawigacyjnego. Aby uzyskać więcej informacji na temat raportów i pulpitów nawigacyjnych, zobacz [Raporty w usłudze Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-reports/) i [Pulpity nawigacyjne w usłudze Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
 
 <!--
 ## <a name="tableau"></a>Use Tableau Desktop 
@@ -214,9 +214,9 @@ Wizualizacja zostanie przypięta do pulpitu nawigacyjnego — możesz dodać inn
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
-- Wizualizowanie danych platformy Spark przy użyciu usługi Power BI.
+- Wizualizowanie danych platformy Apache Spark przy użyciu usługi Power BI.
 
 Przejdź do następnego artykułu, aby dowiedzieć się, w jaki sposób można ściągnąć dane zarejestrowane na platformie Spark do narzędzia analizy biznesowej, takiego jak usługa Power BI. 
 > [!div class="nextstepaction"]
-> [Uruchom zadanie przesyłania strumieniowego na platformie Spark](apache-spark-eventhub-streaming.md)
+> [Uruchamianie zadania przesyłania strumieniowego na platformie Apache Spark](apache-spark-eventhub-streaming.md)
 

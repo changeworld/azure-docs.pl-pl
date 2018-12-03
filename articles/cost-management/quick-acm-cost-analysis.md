@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 40f3f56c15956a93176a753f7c66f66df1b8f5f4
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: f8f7d43d4b42f5236c6c8d25c88314043053b0cc
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515730"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445718"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Szybki start: eksplorowanie kosztów za pomocą funkcji analizy kosztów
 
@@ -84,17 +84,17 @@ Istnieje również widok **dzienny** przedstawiający koszty danego dnia. Widok 
 
 ![Widok dzienny](./media/quick-acm-cost-analysis/daily-view.png)
 
-Możesz użyć opcji **Grupuj według**, aby wybrać kategorię grupy i zmienić dane wyświetlane w obszarze górnego wykresu sumy. Grupowanie pozwala szybko sprawdzić, jak wydatki są dzielone na kategorie według typu zasobów. Oto widok kosztów platformy Azure w ostatnim miesiącu.
+Możesz użyć opcji **Grupuj według**, aby wybrać kategorię grupy i zmienić dane wyświetlane w obszarze górnego wykresu sumy. Grupowanie pozwala szybko zobaczyć, jak wydatki są kategoryzowane według typowych właściwości zasobów i użycia, takich jak grupa zasobów lub tagi zasobów. Aby grupować według tagów, wybierz klucz tagu, według którego chcesz grupować. Spowoduje to wyświetlenie kosztów podzielonych według poszczególnych wartości dla tego tagu oraz dodatkowego segmentu dla zasobów, do których nie zastosowano tego tagu. Pamiętaj, że rozwiązanie Cost Management obsługuje tylko tagi zasobów od daty bezpośredniego zastosowania tagów do zasobu. Tagi grupy zasobów nie są obecnie obsługiwane. Oto widok kosztów platformy Azure w ostatnim miesiącu.
 
 ![Skumulowany widok pogrupowanych kosztów dziennych](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-Wykresy przestawne w górnym widoku sumy pokazują widoki dla różnych kategorii grupowania i filtrowania. Po wybraniu dowolnej kategorii grupowania pełny zestaw danych dla widoku sumy będzie znajdować się w dolnej części widoku. Oto przykład dotyczący grup zasobów.
+Wykresy przestawne w obszarze wykresu głównego przedstawiają różne sposoby grupowania, co daje szerszy obraz kosztów ogólnych dla wybranego przedziału czasu i filtrów. Wybierz właściwość lub tag, aby wyświetlić zagregowane koszty według dowolnego wymiaru. Pełny zestaw danych dla całkowitego widoku znajduje się w dolnej części ekranu. Można go zobaczyć, rozwijając zasobnik **Dane** lub wybierając kolejno pozycje **Eksportuj > Pobierz plik CSV** w górnej części ekranu. Oto przykład zasobnika danych dla grup zasobów.
 
 ![Pełne dane dla widoku bieżącego](./media/quick-acm-cost-analysis/full-data-set.png)
 
-Na poprzedniej ilustracji pokazano nazwy grup zasobów. Wyświetlanie tagów zasobów nie jest dostępne we wszystkich widokach, filtrach i grupowaniach analizy kosztów.
+Na poprzedniej ilustracji pokazano nazwy grup zasobów. Możesz grupować według tagów, aby wyświetlić całkowite koszty na tag, ale wyświetlanie wszystkich tagów na zasób lub grupę zasobów nie jest dostępne w żadnym widoku analizy kosztów.
 
-Podczas grupowania kosztów według konkretnego atrybutu dziesięć największych składników kosztów jest pokazanych od najwyższego do najniższego. Jeśli jest więcej niż dziesięć grup, pokazanych jest dziewięć grup o najwyższych kosztach oraz jedna grupa **Inne**, która obejmuje wszystkie pozostałe grupy łącznie.
+Podczas grupowania kosztów według konkretnego atrybutu dziesięć największych składników kosztów jest pokazanych od najwyższego do najniższego. Jeśli jest więcej niż dziesięć grup, pokazanych jest dziewięć grup o najwyższych kosztach oraz jedna grupa **Inne**, która obejmuje wszystkie pozostałe grupy łącznie. W przypadku grupowania według tagów może również zostać wyświetlona grupa **Bez tagów** dla kosztów, w których nie zastosowano klucza tagu. Grupa **Bez tagów** jest zawsze wyświetlana jako ostatnia, nawet jeśli koszty bez tagów są wyższe niż koszty z tagami. Jeśli liczba wartości tagów jest równa 10 lub większa, koszty bez tagów będą częścią grupy **Inne**.
 
 *Klasyczne* maszyny wirtualne (usługi Azure Service Management, ASM), sieci i zasoby magazynu nie udostępniają szczegółowych danych dotyczących rozliczeń. Są one scalane jako **Usługi klasyczne** podczas grupowania kosztów.
 

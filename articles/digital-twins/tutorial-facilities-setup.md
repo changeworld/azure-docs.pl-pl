@@ -7,12 +7,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: bd1b53acb619130a84400c49aba0cb2b710ad7e3
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4491ec4661c93570893e5fafd5524715e0773d8c
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616116"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582336"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>Samouczek: wdrażanie usługi Azure Digital Twins i konfigurowanie wykresu przestrzennego
 
@@ -170,7 +170,11 @@ Zapisz i zamknij plik provisionSample.yaml. W następnym samouczku dodasz więce
 Jeśli nie chcesz kontynuować pracy z usługą Azure Digital Twins, możesz usunąć zasoby utworzone w tym samouczku:
 
 1. W menu po lewej stronie w witrynie [Azure Portal](http://portal.azure.com) wybierz przycisk **Wszystkie zasoby**, wybierz grupę zasobów usługi Digital Twins i wybierz polecenie **Usuń**.
-2. Jeśli będzie to konieczne, możesz usunąć przykładową aplikację na komputerze służbowym. 
+   
+    > [!TIP]
+    > Jeśli podczas usuwania wystąpienia usługi Digital Twins wystąpił problem, została wdrożona aktualizacja usługi zawierająca poprawkę. Ponów próbę usunięcia wystąpienia.
+
+1. Jeśli będzie to konieczne, możesz usunąć przykładową aplikację na komputerze służbowym. 
 
 
 ## <a name="next-steps"></a>Następne kroki

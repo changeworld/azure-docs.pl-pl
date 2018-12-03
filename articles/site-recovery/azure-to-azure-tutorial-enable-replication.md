@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/18/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cff6d38867ef8ecaf1435fd4c4cc22fe63d70575
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 586e60316ba8bf4f485a151e77015fa3ed104df7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283250"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317419"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure
 
@@ -131,7 +131,7 @@ Usługa Site Recovery pobiera listę maszyn wirtualnych skojarzonych z subskrypc
 Usługa Site Recovery tworzy ustawienia domyślne i zasady replikacji w regionie docelowym. Ustawienia możesz zmienić zgodnie z potrzebami.
 
 1. Kliknij pozycję **Ustawienia**, aby wyświetlić ustawienia replikacji i regionu docelowego.
-2. Aby zastąpić domyślne ustawienia regionu docelowego, kliknij pozycję **Dostosuj** obok pozycji **Grupa zasobów, sieć, zestawy magazynu i dostępności**.
+2. Aby zastąpić domyślne ustawienia regionu docelowego, kliknij pozycję **Dostosuj** obok pozycji **Grupa zasobów, sieć, magazyn i dostępność**.
 
   ![Konfigurowanie ustawień](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
@@ -154,7 +154,14 @@ Usługa Site Recovery tworzy ustawienia domyślne i zasady replikacji w regionie
       >
 
     - **Dyski zarządzane repliki (jeśli źródłowa maszyna wirtualna używa dysków zarządzanych)**: domyślnie usługa Site Recovery tworzy dyski zarządzane repliki w regionie docelowym w celu zdublowania dysków zarządzanych źródłowej maszyny wirtualnej za pomocą tego samego typu magazynu (w warstwie Standardowa lub Premium) jako dysku zarządzanego źródłowej maszyny wirtualnej.
-    - **Docelowe zestawy dostępności**: domyślnie usługa Site Recovery dodaje sufiks „asr” do zestawu dostępności utworzonego w regionie docelowym. Zestawy dostępności można dodawać tylko wtedy, gdy maszyny wirtualne są częścią zestawu w regionie źródłowym.
+    - **Docelowe zestawy dostępności**: domyślnie usługa Azure Site Recovery tworzy w regionie docelowym nowy zestaw dostępności z nazwą z sufiksem „asr” dla części maszyny wirtualnej w zestawie dostępności w regionie źródłowym. Jeśli zestaw dostępności utworzony przez usługę Azure Site Recovery już istnieje, zostanie ponownie użyty.
+    - **Docelowe strefy dostępności**: domyślnie usługa Site Recovery przypisuje ten sam numer strefy, co region źródłowy, w regionie docelowym, jeśli region docelowy obsługuje strefy dostępności. 
+
+    Jeśli region docelowy nie obsługuje stref dostępności, docelowe maszyny wirtualne są konfigurowane domyślnie jako pojedyncze wystąpienia. W razie potrzeby można skonfigurować takie maszyny wirtualne jako część zestawów dostępności w regionie docelowym, klikając pozycję „Dostosuj”.
+
+    >[!NOTE]
+    >Nie można zmienić typu dostępności — pojedyncze wystąpienie, zestaw dostępności, strefa dostępności — po włączeniu replikacji. W celu zmiany typu dostępności należy wyłączyć i włączyć replikację.
+    >
 
 4. Aby dostosować ustawienia zasad replikacji, kliknij opcję **Dostosuj** obok pozycji **Zasady replikacji** i zmodyfikuj następujące ustawienia zgodnie z wymaganiami:
 

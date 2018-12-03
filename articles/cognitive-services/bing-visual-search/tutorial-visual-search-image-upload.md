@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 2e65313207e2bb29ae269425012cc6c340261ba4
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: b13f2e5c96ba50fc76d7bfae256e5fcc1c8b56ce
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888343"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443461"
 ---
 # <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Samouczek: omówienie operacji przekazywania do wyszukiwania wizualnego Bing
 
@@ -23,6 +23,15 @@ W tym samouczku omówiono proces przekazywania obrazu do usługi Bing i uzyskiwa
 
 Ten samouczek jest przeznaczony dla deweloperów, którzy chcą badać zawartość odpowiedzi wyszukiwania wizualnego Bing. Nie spełniono w nim wszystkich wymagań dotyczących użycia i wyświetlania (na przykład nie podano hiperlinku do zasad ochrony prywatności firmy Microsoft). Aby zapoznać się ze wszystkimi wymaganiami dotyczącymi użycia, zobacz [Wymagania dotyczące użycia i wyświetlania Bing](./use-and-display-requirements.md).
 
+Ten samouczek wymaga rozpoczęcia subskrypcji w warstwie cenowej S9, jak pokazano w temacie [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+Aby rozpocząć subskrypcję w witrynie Azure Portal:
+1. Wprowadź tekst „BingSearchV7” w polu tekstowym w górnej części witryny Azure Portal, w którym wyświetlany jest komunikat `Search resources, services, and docs`.  
+2. W witrynie Marketplace z listy rozwijanej wybierz pozycję `Bing Search v7`.
+3. Wprowadź wartość `Name` dla nowego zasobu.
+4. Wybierz subskrypcję `Pay-As-You-Go`.
+5. Wybierz warstwę cenową `S9`.
+6. Kliknij pozycję `Enable`, aby rozpocząć subskrypcję.
 
 ## <a name="where-to-start"></a>Od czego rozpocząć?
 

@@ -10,16 +10,16 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 02/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: 7919f13e8c5aaa592a416190d3cd11edbf31af2c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: f01f31c5cfc30ac31ea41db2a8504454e1f05799
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802481"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316875"
 ---
 # <a name="quickstart-bing-news-search-sdk-with-java"></a>Szybki start: zestaw SDK wyszukiwania wiadomości Bing w środowisku Java
 
-Zestaw SDK wyszukiwania wiadomości Bing zapewnia funkcjonalność interfejsu API REST na potrzeby wykonywania zapytań dotyczących wiadomości i analizowania wyników. 
+Zestaw SDK wyszukiwania wiadomości Bing zapewnia funkcjonalność interfejsu API REST na potrzeby wykonywania zapytań dotyczących wiadomości i analizowania wyników.  Pobierz [klucz dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) w obszarze **Wyszukiwanie**.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/). 
 
 [Kod źródłowy przykładów zestawu SDK wyszukiwania wiadomości Bing w języku Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch) jest dostępny w serwisie Git Hub.
 

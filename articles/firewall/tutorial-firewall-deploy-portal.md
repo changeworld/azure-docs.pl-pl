@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 1d7c880a56c79d516c3904c3f532eb7006f0b68c
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 179a13d6fbb162ae7727c6a176b60879901dc4d1
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705841"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426190"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal
 
@@ -78,7 +78,7 @@ Ta sieć wirtualna będzie zawierać trzy podsieci.
 11. Użyj innych domyślnych ustawień, a następnie kliknij przycisk **Utwórz**.
 
 > [!NOTE]
-> Minimalny rozmiar podsieci AzureFirewallSubnet to /25.
+> Minimalny rozmiar podsieci AzureFirewallSubnet to /26.
 
 ### <a name="create-additional-subnets"></a>Tworzenie dodatkowych podsieci
 

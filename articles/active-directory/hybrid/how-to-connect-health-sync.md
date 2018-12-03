@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eebeb8d1f27631e7ecb40072f78d6a04b5152a8f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9811c51485ec30e7fe692c52f4e65cefd93e5cb0
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277141"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499082"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Monitorowanie synchronizacji usługi Azure AD Connect za pomocą programu Azure AD Connect Health
 Poniższa dokumentacja dotyczy monitorowania programu Azure AD Connect (synchronizacja) przy użyciu programu Azure AD Connect Health.  Aby uzyskać informacje na temat monitorowania usług AD FS za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health z usługami AD FS](how-to-connect-health-adfs.md). Ponadto, aby uzyskać informacje na temat monitorowania Usług domenowych Active Directory za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health z usługami AD DS](how-to-connect-health-adds.md).
@@ -62,7 +62,7 @@ Ta funkcja prezentuje w sposób graficzny trend liczby zmian obliczanych i ekspo
 
 ![Opóźnienie synchronizacji](./media/how-to-connect-health-sync/syncobjectchanges02.png)
 
-## <a name="object-level-synchronization-error-report-preview"></a>Raport o błędach synchronizacji na poziomie obiektu (wersja zapoznawcza)
+## <a name="object-level-synchronization-error-report"></a>Raport o błędach synchronizacji na poziomie obiektu
 Ta funkcja dostarcza raport o błędach synchronizacji, które mogą wystąpić podczas synchronizowania danych tożsamości między usługami Windows Server AD i Azure AD za pomocą programu Azure AD Connect.
 
 * Raport ten dotyczy błędów zarejestrowanych przez klienta synchronizacji (program Azure AD Connect w wersji 1.1.281.0 lub nowszej)
@@ -74,7 +74,7 @@ Ta funkcja dostarcza raport o błędach synchronizacji, które mogą wystąpić 
   * Lista obiektów z błędami według kategorii
   * Wszystkie dane o błędach w jednym miejscu
   * Porównanie obiektów z błędami spowodowanymi konfliktem
-  * Możliwość pobrania raportu o błędach w formie pliku CVS (wkrótce)
+  * Pobieranie raportu o błędach w formie pliku CVS
 
 ### <a name="categorization-of-errors"></a>Kategoryzacja błędów
 W raporcie istniejące błędy synchronizacji są klasyfikowane według następujących kategorii:

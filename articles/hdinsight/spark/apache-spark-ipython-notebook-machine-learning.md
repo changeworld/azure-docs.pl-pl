@@ -9,22 +9,22 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: eac44d3b8daae27afec8aa24f4767bdb5dbf991a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a730f6ccba9f935855b233ca804a8180aa7f504b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239563"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580574"
 ---
-# <a name="tutorial-build-a-spark-machine-learning-application-in-hdinsight"></a>Samouczek: tworzenie aplikacji uczenia maszynowego platformy Spark w usłudze HDInsight 
+# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-hdinsight"></a>Samouczek: tworzenie aplikacji uczenia maszynowego platformy Apache Spark w usłudze HDInsight 
 
-W tym samouczku dowiesz się, jak utworzyć aplikację uczenia maszynowego platformy Apache Spark dla usługi Azure HDInsight za pomocą notesu Jupyter. 
+W tym samouczku dowiesz się, jak utworzyć aplikację uczenia maszynowego platformy [Apache Spark](https://spark.apache.org/) dla usługi Azure HDInsight za pomocą środowiska [Jupyter Notebook](https://jupyter.org/). 
 
 [MLlib](https://spark.apache.org/docs/1.1.0/mllib-guide.html) to skalowalna biblioteka uczenia maszynowego platformy Spark, składająca się ze wspólnych narzędzi i algorytmów uczenia się, w tym klasyfikacji, regresji, klastrowania, filtrowania z wykorzystaniem współpracy, zmniejszania wymiarowości, a także źródłowych typów pierwotnych optymalizacji.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
-> * Tworzenie aplikacji uczenia maszynowego platformy Spark
+> * Tworzenie aplikacji uczenia maszynowego platformy Apache Spark
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
@@ -190,7 +190,7 @@ Klastry Apache Spark w usłudze HDInsight obejmują biblioteki Anaconda. Zawiera
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
-* Tworzenie aplikacji uczenia maszynowego platformy Spark
+* Tworzenie aplikacji uczenia maszynowego platformy Apache Spark
 
 Przejdź do następnego samouczka, aby dowiedzieć się, jak używać środowiska IntelliJ IDEA na potrzeby zadań Spark. 
 

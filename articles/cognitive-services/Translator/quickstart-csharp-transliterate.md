@@ -1,111 +1,172 @@
 ---
 title: 'Szybki start: konwertowanie skryptu tekstowego, C# — tłumaczenie tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki start przekonwertujesz tekst w jednym języku z danego systemu zapisu na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka C#.
+description: W tym przewodniku Szybki start dowiesz się, jak transliterować (konwertować) tekst z jednego skryptu na inny przy użyciu platformy .NET Core i interfejsu API REST tłumaczenia tekstu w usłudze Translator. W tym przykładzie tekst w języku japońskim jest transliterowany na alfabet łaciński.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/15/2018
+ms.date: 11/21/2018
 ms.author: erhopf
-ms.openlocfilehash: d0dd7ef04f6feb04df4fafc5b750f291d05f2862
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 4987a50f7a689b74062154b8427fd7bec8e2e8a6
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646215"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334314"
 ---
 # <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-c"></a>Szybki start: transliteracja tekstu przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (C#)
 
-W tym przewodniku Szybki start przekonwertujesz tekst w jednym języku z danego systemu zapisu na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
+W tym przewodniku Szybki start dowiesz się, jak transliterować (konwertować) tekst z jednego skryptu na inny przy użyciu platformy .NET Core (C#) i interfejsu API REST tłumaczenia tekstu w usłudze Translator. W tym udostępnionym przykładzie tekst w języku japońskim jest transliterowany na alfabet łaciński.
+
+Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem tłumaczenia tekstu w usłudze Translator. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do uruchamiania tego kodu w systemie Windows jest potrzebny [program Visual Studio 2017](https://www.visualstudio.com/downloads/). (Można korzystać z bezpłatnej wersji Community Edition).
+* [Zestaw SDK platformy .NET](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
+* [Pakiet NuGet platformy Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/)
+* Program [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) lub ulubiony edytor tekstów
+* Klucz subskrypcji platformy Azure dla usługi mowy
 
-Aby korzystać z interfejsu API tłumaczenia tekstu w usłudze Translator, potrzebny jest również klucz subskrypcji. Zobacz [How to sign up for the Translator Text API (Jak zarejestrować się w interfejsie API tłumaczenia tekstu w usłudze Translator)](translator-text-how-to-signup.md).
+## <a name="create-a-net-core-project"></a>Tworzenie projektu platformy .NET Core
 
-## <a name="transliterate-request"></a>Żądanie Transliterate
+Otwórz nowy wiersz polecenia (lub sesję terminalową), a następnie uruchom następujące polecenia:
 
-> [!TIP]
-> Pobierz najnowszy kod z witryny [Github](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
+```console
+dotnet new console -o transliterate-sample
+cd transliterate-sample
+```
 
-Następujący kod konwertuje tekst w jednym języku z danego systemu zapisu na inny przy użyciu metody [Transliterate](./reference/v3-0-transliterate.md).
+Pierwsze polecenie wykonuje dwie czynności. Tworzy nową aplikację konsolową platformy .NET i katalog o nazwie `transliterate-sample`. Drugie polecenie zmienia katalog na katalog projektu.
 
-1. Utwórz nowy projekt języka C# w ulubionym środowisku IDE.
-2. Dodaj kod przedstawiony poniżej.
-3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
-4. Uruchom program.
+Następnie należy zainstalować element Json.Net. Z poziomu katalogu projektu uruchom:
+
+```console
+dotnet add package Newtonsoft.Json --version 11.0.2
+```
+
+## <a name="add-required-namespaces-to-your-project"></a>Dodawanie wymaganych obszarów nazw do projektu
+
+Uruchomione wcześnie polecenie `dotnet new console` spowodowało utworzenie projektu obejmującego plik `Program.cs`. W tym pliku umieścisz kod aplikacji. Otwórz plik `Program.cs` i zastąp istniejące instrukcje using. Te instrukcje gwarantują dostęp do wszystkich typów wymaganych do skompilowania i uruchomienia przykładowej aplikacji.
 
 ```csharp
 using System;
 using System.Net.Http;
 using System.Text;
-// NOTE: Install the Newtonsoft.Json NuGet package.
 using Newtonsoft.Json;
+```
 
-namespace TranslatorTextQuickStart
+## <a name="create-a-function-to-transliterate-text"></a>Tworzenie funkcji na potrzeby transliteracji tekstu
+
+W klasie `Program` utwórz funkcję o nazwie `TransliterateText`. Ta klasa hermetyzuje kod używany do wywołania zasobu Transliterate i wyświetla wynik w konsoli.
+
+```csharp
+static void TransliterateText()
 {
-    class Program
-    {
-        static string host = "https://api.cognitive.microsofttranslator.com";
-        static string path = "/transliterate?api-version=3.0";
-        // Transliterate text in Japanese from Japanese script (i.e. Hiragana/Katakana/Kanji) to Latin script.
-        static string params_ = "&language=ja&fromScript=jpan&toScript=latn";
-
-        static string uri = host + path + params_;
-
-        // NOTE: Replace this example key with a valid subscription key.
-        static string key = "ENTER KEY HERE";
-
-        // Transliterate "good afternoon".
-        static string text = "こんにちは";
-
-        async static void Transliterate()
-        {
-            System.Object[] body = new System.Object[] { new { Text = text } };
-            var requestBody = JsonConvert.SerializeObject(body);
-
-            using (var client = new HttpClient())
-            using (var request = new HttpRequestMessage())
-            {
-                request.Method = HttpMethod.Post;
-                request.RequestUri = new Uri(uri);
-                request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
-                request.Headers.Add("Ocp-Apim-Subscription-Key", key);
-
-                var response = await client.SendAsync(request);
-                var responseBody = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(responseBody), Formatting.Indented);
-
-                Console.OutputEncoding = UnicodeEncoding.UTF8;
-                Console.WriteLine(result);
-            }
-        }
-
-        static void Main(string[] args)
-        {
-            Transliterate();
-            Console.ReadLine();
-        }
-    }
+  /*
+   * The code for your call to the translation service will be added to this
+   * function in the next few sections.
+   */
 }
 ```
 
-## <a name="transliterate-response"></a>Odpowiedź na żądanie Transliterate
+## <a name="set-the-subscription-key-host-name-and-path"></a>Ustawianie klucza subskrypcji, nazwy hosta i ścieżki
 
-Po pomyślnym przetworzeniu żądania jest zwracana odpowiedź w formacie JSON, jak pokazano na poniższym przykładzie:
+Dodaj następujące wiersze do funkcji `TransliterateText`. Zauważysz, że razem z wersją `api-version` dołączono dwa dodatkowe parametry do elementu `route`. Te parametry są używane do ustawiania języka wejściowego oraz skryptów na potrzeby transliteracji. W tym przykładzie ustawiono język japoński (`jpan`) i łaciński (`latn`). Upewnij się, że wartość klucza subskrypcji została zaktualizowana.
+
+```csharp
+string host = "https://api.cognitive.microsofttranslator.com";
+string route = "/transliterate?api-version=3.0&language=ja&fromScript=jpan&toScript=latn";
+string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+```
+
+Następnie musimy utworzyć i serializować obiekt JSON obejmujący tekst, dla którego chcesz przeprowadzić transliterację. Pamiętaj, że możesz przekazać więcej niż jeden obiekt w tablicy `body`.
+
+```csharp
+System.Object[] body = new System.Object[] { new { Text = @"こんにちは" } };
+var requestBody = JsonConvert.SerializeObject(body);
+```
+
+## <a name="instantiate-the-client-and-make-a-request"></a>Tworzenie wystąpienia klienta i wysyłanie żądania
+
+W tych wierszach są tworzone wystąpienia elementów `HttpClient` i `HttpRequestMessage`:
+
+```csharp
+using (var client = new HttpClient())
+using (var request = new HttpRequestMessage())
+{
+  // In the next few sections you'll add code to construct the request.
+}
+```
+
+## <a name="construct-the-request-and-print-the-response"></a>Konstruowanie żądania i wyświetlanie odpowiedzi
+
+Wewnątrz elementu `HttpRequestMessage` wykonasz następujące czynności:
+
+* Deklarowanie metody HTTP
+* Konstruowanie identyfikatora URI żądania
+* Wstawianie treści żądania (serializowanego obiektu JSON)
+* Dodawanie wymaganych nagłówków
+* Wykonywanie żądania asynchronicznego
+* Wyświetlanie odpowiedzi
+
+Dodaj następujący kod do elementu `HttpRequestMessage`:
+
+```csharp
+// Set the method to POST
+request.Method = HttpMethod.Post;
+
+// Construct the full URI
+request.RequestUri = new Uri(host + route);
+
+// Add the serialized JSON object to your request
+request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+
+// Add the authorization header
+request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+
+// Send request, get response
+var response = client.SendAsync(request).Result;
+var jsonResponse = response.Content.ReadAsStringAsync().Result;
+
+// Print the response
+Console.WriteLine(jsonResponse);
+Console.WriteLine("Press any key to continue.");
+```
+
+## <a name="put-it-all-together"></a>Zebranie wszystkich elementów
+
+Ostatnim krokiem jest wywołanie instrukcji `TransliterateText()` w funkcji `Main`. Znajdź kod `static void Main(string[] args)` i dodaj następujące wiersze:
+
+```csharp
+TransliterateText();
+Console.ReadLine();
+```
+
+## <a name="run-the-sample-app"></a>Uruchamianie przykładowej aplikacji
+
+To wszystko. Teraz możesz uruchomić przykładową aplikację. Z wiersza polecenia (lub sesji terminalowej) przejdź do katalogu projektu, a następnie uruchom:
+
+```console
+dotnet run
+```
+
+## <a name="sample-response"></a>Przykładowa odpowiedź
 
 ```json
 [
-  {
-    "text": "konnnichiha",
-    "script": "latn"
-  }
+    {
+        "script": "latn",
+        "text": "konnnichiha"
+    }
 ]
 ```
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Upewnij się, że wszystkie poufne informacje, takie jak klucze subskrypcji, zostały usunięte z kodu źródłowego przykładowej aplikacji.
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -113,3 +174,11 @@ Zapoznaj się z kodem przykładowym tego przewodnika Szybki start i innych, w ty
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka C# w usłudze GitHub](https://aka.ms/TranslatorGitHub?type=&language=c%23)
+
+## <a name="see-also"></a>Zobacz też
+
+* [Tłumaczenie tekstu](quickstart-csharp-translate.md)
+* [Identyfikowanie język na podstawie danych wejściowych](quickstart-csharp-detect.md)
+* [Uzyskiwanie alternatywnych tłumaczeń](quickstart-csharp-dictionary.md)
+* [Pobieranie listy obsługiwanych języków](quickstart-csharp-languages.md)
+* [Określanie długości zdań na podstawie danych wejściowych](quickstart-csharp-sentences.md)

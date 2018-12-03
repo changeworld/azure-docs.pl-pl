@@ -10,16 +10,26 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: aahi
-ms.openlocfilehash: b493f65e47f5e4c932ed1229e4c00ee1af3cd5ab
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: fe7159e88bd70ba8af23909559264fa5f210ef10
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161858"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443902"
 ---
 # <a name="tutorial-visual-search-single-page-web-app"></a>Samouczek: jednostronicowa aplikacja internetowa wyszukiwania wizualnego
 
 Interfejs API wyszukiwania wizualnego Bing udostępnia środowisko podobne do szczegółów obrazu pokazanego w witrynie Bing.com/images. Za pomocą wyszukiwania wizualnego można określić obraz i uzyskać szczegółowe informacje dotyczące tego obrazu, takie jak podobne obrazy, źródła zakupów, strony internetowe zawierające ten obraz i nie tylko. 
+
+Ten samouczek wymaga rozpoczęcia subskrypcji w warstwie cenowej S9, jak pokazano w temacie [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+Aby rozpocząć subskrypcję w witrynie Azure Portal:
+1. Wprowadź tekst „BingSearchV7” w polu tekstowym w górnej części witryny Azure Portal, w którym wyświetlany jest komunikat `Search resources, services, and docs`.  
+2. W witrynie Marketplace z listy rozwijanej wybierz pozycję `Bing Search v7`.
+3. Wprowadź wartość `Name` dla nowego zasobu.
+4. Wybierz subskrypcję `Pay-As-You-Go`.
+5. Wybierz warstwę cenową `S9`.
+6. Kliknij pozycję `Enable`, aby rozpocząć subskrypcję.
 
 W tym samouczku rozbudujemy jednostronicową aplikację internetową z samouczka wyszukiwania obrazów Bing (zobacz [Jednostronicowa aplikacja internetowa](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)). Aby uzyskać pełny kod źródłowy potrzebny do rozpoczęcia tego samouczka, zobacz [Jednostronicowa aplikacja internetowa (kod źródłowy)](../Bing-Image-Search/tutorial-bing-image-search-single-page-app-source.md). Aby uzyskać końcowy kod źródłowy tego samouczka, zobacz [Jednostronicowa aplikacja internetowa wyszukiwania wizualnego](tutorial-bing-visual-search-single-page-app-source.md).
 

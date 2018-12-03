@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a3ca6422bf5335604e561b71db6c75a889a74586
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 0bcff6e0cec234f17b0aaab9828602eb4a194d85
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615759"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334214"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>Samouczek: integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager
 
@@ -93,7 +93,7 @@ Aby utworzyć magazyn Key Vault:
     * **Nazwa usługi Key Vault**: przypisz unikatową nazwę. 
     * **Identyfikator dzierżawy**: funkcja szablonu automatycznie pobiera identyfikator dzierżawy.  Nie zmieniaj wartości domyślnej
     * **Identyfikator użytkownika usługi AD**: wprowadź identyfikator obiektu użytkownika w usłudze Azure AD, pobrany w poprzedniej procedurze.
-    * **Nazwa wpisu tajnego**: nazwa domyślna to **mAdminPassword**. Jeśli zmienisz nazwę wpisu tajnego w tym miejscu, będzie konieczne zaktualizowanie nazwy wpisu tajnego podczas wdrażania maszyny wirtualnej.
+    * **Nazwa wpisu tajnego**: nazwa domyślna to **vmAdminPassword**. Jeśli zmienisz nazwę wpisu tajnego w tym miejscu, będzie konieczne zaktualizowanie nazwy wpisu tajnego podczas wdrażania maszyny wirtualnej.
     * **Wartość wpisu tajnego**: wprowadź wpis tajny.  Wpis tajny to hasło używane do logowania na maszynie wirtualnej. Zaleca się używanie hasła wygenerowanego w poprzedniej procedurze.
     * **Wyrażam zgodę na powyższe warunki i postanowienia**: zaznacz.
 3. Wybierz pozycję **Edytuj parametry** w górnej części, aby zapoznać się z szablonem.
