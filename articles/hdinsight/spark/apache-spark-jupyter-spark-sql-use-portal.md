@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.custom: mvc
-ms.openlocfilehash: 4bb37032f2ecdfecf08adec3f32aa00d5ad12897
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 370503cc463fd3683f47fe0b573ad83daa0b9d14
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255527"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584557"
 ---
-# <a name="quickstart-create-a-spark-cluster-in-hdinsight-using-the-azure-portal"></a>Szybki start: tworzenie klastra Spark w usłudze HDInsight przy użyciu witryny Azure Portal
+# <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-the-azure-portal"></a>Szybki start: tworzenie klastra Apache Spark w usłudze HDInsight przy użyciu witryny Azure Portal
 Dowiedz się, jak utworzyć klaster Apache Spark w usłudze Azure HDInsight, a następnie uruchamiać zapytania Spark SQL dla tabel programu Hive. Platforma Apache Spark umożliwia szybką analizę danych i używanie klastrów obliczeniowych korzystających z funkcji przetwarzania w pamięci. Aby uzyskać informacje na temat klastra Spark w usłudze HDInsight, zobacz [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md).
 
 W tym przewodniku Szybki start użyjesz witryny Azure Portal do utworzenia klastra Spark w usłudze HDInsight. Klaster używa usług Azure Storage Blob jako magazynu klastra. Aby uzyskać więcej informacji na temat korzystania z usługi Data Lake Storage 2. generacji, zobacz [Szybki start: konfigurowanie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
@@ -133,4 +133,5 @@ Dodatkowo możesz wybrać nazwę grupy zasobów, aby otworzyć stronę grupy zas
 W tym przewodniku Szybki start omówiono sposób tworzenia klastra Spark w usłudze HDInsight i uruchamiania podstawowego zapytania Spark SQL. Przejdź do następnego samouczka, aby dowiedzieć się, jak uruchamiać interakcyjne zapytania dotyczące przykładowych danych za pomocą klastra Spark w usłudze HDInsight.
 
 > [!div class="nextstepaction"]
->[Uruchamianie interakcyjnych zapytań na platformie Spark](./apache-spark-load-data-run-query.md)
+>[Uruchamianie interakcyjnych zapytań na platformie Apache Spark](./apache-spark-load-data-run-query.md)
+

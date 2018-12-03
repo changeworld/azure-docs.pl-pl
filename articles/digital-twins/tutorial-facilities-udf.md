@@ -7,12 +7,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/26/2018
 ms.author: dkshir
-ms.openlocfilehash: 2a72afe708c157fb2a19ac0bfcea2bea34f7b56f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: a9784860cbc0b6d58f63fb22b7ad676048c8aee6
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625655"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584200"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>Samouczek: aprowizowanie budynku i monitorowanie warunków pracy za pomocą usługi Azure Digital Twins
 
@@ -253,6 +253,10 @@ W przypadku spełnienia monitorowanego warunku funkcja zdefiniowana przez użytk
 Jeśli nie chcesz kontynuować pracy z usługą Azure Digital Twins, możesz usunąć zasoby utworzone w tym samouczku:
 
 1. W menu po lewej stronie w witrynie [Azure Portal](http://portal.azure.com) wybierz przycisk **Wszystkie zasoby**, wybierz grupę zasobów usługi Digital Twins i wybierz polecenie **Usuń**.
+
+    > [!TIP]
+    > Jeśli podczas usuwania wystąpienia usługi Digital Twins wystąpił problem, została wdrożona aktualizacja usługi zawierająca poprawkę. Ponów próbę usunięcia wystąpienia.
+
 2. Jeśli będzie to konieczne, możesz usunąć przykładowe aplikacje na komputerze służbowym.
 
 ## <a name="next-steps"></a>Następne kroki
