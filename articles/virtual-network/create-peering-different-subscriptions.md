@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: cb8644ea4d949e81e4fb68bf572956bfe3444c0c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 04ed8e0e99f0aba4ca067700f8a651b6d6c52423
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997900"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727481"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Tworzenie, wirtualne sieci równorzędne — różne subskrypcje usługa Resource Manager
 
@@ -58,7 +58,7 @@ Poniższe kroki używanie różnych kont, dla każdej subskrypcji. Jeśli używa
     - **Lokalizacja**: *wschodnie stany USA*
 4. W **Wyszukaj zasoby** polu w górnej części portalu wpisz *myVnetA*. Wybierz **myVnetA** , gdy pojawia się w wynikach wyszukiwania. 
 5. Wybierz **kontrola dostępu (IAM)** z pionowy listy opcji po lewej stronie.
-6. W obszarze **myVnetA — kontrola dostępu (IAM)**, wybierz opcję **+ Dodaj**.
+6. W obszarze **myVnetA — kontrola dostępu (IAM)**, wybierz opcję **+ Dodaj przypisanie roli**.
 7. Wybierz **Współautor sieci** w **roli** pole.
 8. W **wybierz** wybierz *Użytkownik_b*, lub wpisz adres e-mail firmy Użytkownik_b ją wyszukać.
 9. Wybierz pozycję **Zapisz**.
@@ -294,7 +294,7 @@ Jeśli sieci wirtualne należą do różnych subskrypcji, a subskrypcje będą s
 ## <a name="delete"></a>Usuń zasoby
 Po ukończeniu tego samouczka, możesz chcieć usunąć zasoby utworzone w tym samouczku, więc nie powodują naliczania opłat za użycie. Usunięcie grupy zasobów spowoduje również usunięcie wszystkich zasobów, które znajdują się w grupie zasobów.
 
-### <a name="delete-portal"></a>Witryna Azure portal
+### <a name="delete-portal"></a>Azure Portal
 
 1. Zaloguj się do witryny Azure portal jako użytkownika.
 2. W polu wyszukiwania portalu wprowadź **myResourceGroupA**. W wynikach wyszukiwania wybierz **myResourceGroupA**.
@@ -303,7 +303,7 @@ Po ukończeniu tego samouczka, możesz chcieć usunąć zasoby utworzone w tym s
 5. Wyloguj się z portalu jako użytkownik a, a następnie zaloguj się jako Użytkownik_b.
 6. Wykonaj kroki 2 – 4 dla myResourceGroupB.
 
-### <a name="delete-cli"></a>Wiersza polecenia platformy Azure
+### <a name="delete-cli"></a>Interfejs wiersza polecenia platformy Azure
 
 1. Logowanie do platformy Azure jako użytkownik a i uruchom następujące polecenie:
 

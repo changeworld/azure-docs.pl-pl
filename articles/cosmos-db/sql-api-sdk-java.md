@@ -9,15 +9,15 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 06/29/2018
+ms.date: 11/21/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f5ac49f20404f8734e833da754aacb615663afbf
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
-ms.translationtype: MT
+ms.openlocfilehash: 4c58c1972fee782a93f9641d00376db916021f95
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161807"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634493"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB Java SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne
 
 <tr><td>**Samouczek dotyczący aplikacji sieci Web**</td><td>[Opracowywanie aplikacji sieci Web za pomocą usługi Azure Cosmos DB](sql-api-java-application.md)</td></tr>
 
-<tr><td>**Minimalne obsługiwane środowisko uruchomieniowe**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr>
+<tr><td>**Minimalne obsługiwane środowisko uruchomieniowe**</td><td>[Zestaw Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>Informacje o wersji
