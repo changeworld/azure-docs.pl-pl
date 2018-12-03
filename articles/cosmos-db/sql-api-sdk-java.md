@@ -9,15 +9,15 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 11/21/2018
+ms.date: 11/29/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4c58c1972fee782a93f9641d00376db916021f95
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
-ms.translationtype: HT
+ms.openlocfilehash: 4a1be3b948ca5571972179e08ba8b85657b0bb8d
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634493"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725169"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB Java SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -52,6 +52,23 @@ Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne
 </table></br>
 
 ## <a name="release-notes"></a>Informacje o wersji
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* Obsługa wielu regionów zapisu dodawane w trybie bezpośredniego.
+* Dodano obsługę obsługi IOExceptions zgłoszony jako wyjątki ServiceUnavailable z serwera proxy.
+* Usunięto usterkę w zasadach ponawiania odnajdywania punktów końcowych.
+* Naprawiono usterkę w celu zapewnienia wskaźnika o wartości null, które nie są zgłaszane wyjątki w BaseDatabaseAccountConfigurationProvider.
+* Naprawiono usterkę, aby upewnić się, że iteratora zapytania nie może zwracać wartości null.
+* Usunięto usterkę w celu zapewnienia, że duże PartitionKey jest dozwolone
+
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+* Dodano dla trybu bramy obsługę wielu region zapisu.
+
+### <a name="a-name11641164"></a><a name="1.16.4"/>1.16.4
+* Usunięto usterkę w partycji odczytu klucza zakresów dla zapytania.
+
+### <a name="a-name11631163"></a><a name="1.16.3"/>1.16.3
+* Usunięto usterkę podczas ustawiania rozmiaru nagłówka token kontynuacji w trybie DirectHttps.
 
 ### <a name="a-name11621162"></a><a name="1.16.2"/>1.16.2
 * Dodano niepowodzenia przesyłania strumieniowego za pośrednictwem pomocy technicznej.
@@ -205,6 +222,10 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostan
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [2.1.1](#2.1.1) |21 listopada 2018 r. |--- |
+| [2.0.0](#2.0.0) |21 września 2018 r. |--- |
+| [1.16.4](#1.16.4) |10 września 2018 r. |--- |
+| [1.16.3](#1.16.3) |09 września 2018 r. |--- |
 | [1.16.2](#1.16.2) |29 czerwca 2018 r. |--- |
 | [1.16.1](#1.16.1) |16 maja 2018 r. |--- |
 | [1.16.0](#1.16.0) |15 marca 2018 r. |--- |
