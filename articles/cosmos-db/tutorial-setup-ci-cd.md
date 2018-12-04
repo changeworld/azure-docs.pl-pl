@@ -42,7 +42,7 @@ Następnie wybierz organizację, w której chcesz zainstalować rozszerzenie.
 
 Teraz, gdy rozszerzenie jest zainstalowane, zaloguj się do swojego konta usługi Azure DevOps i znajdź swój projekt na pulpicie nawigacyjnym projektów. Do projektu możesz dodać [potok kompilacji](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) lub zmodyfikować istniejący potok kompilacji. Jeśli masz już potok kompilacji, możesz przejść od razu do sekcji [Dodawanie zadania kompilacji emulatora do definicji kompilacji](#addEmulatorBuildTaskToBuildDefinition).
 
-1. Aby utworzyć nową definicję kompilacji, przejdź do karty **Builds** (Kompilacje) w usłudze Azure DevOps. Wybierz pozycję **+New** (+Nowe). > **New build pipeline** (Nowy potok kompilacji)
+1. Aby utworzyć nową definicję kompilacji, przejdź do karty **Builds** (Kompilacje) w usłudze Azure DevOps. Wybierz pozycję **+New** (+Nowe). >  **New build pipeline** (Nowy potok kompilacji)
 
    ![Tworzenie nowego potoku kompilacji](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
 
