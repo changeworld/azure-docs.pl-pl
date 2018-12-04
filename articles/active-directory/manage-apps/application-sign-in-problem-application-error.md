@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 4cce49509a452153815c845d9ab72a1b4a8a5b7f
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 13a628d37ef67d0a1dc3ad8231229493191c4e7f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356928"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849568"
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>Błąd na stronie aplikacji po zalogowaniu
 
@@ -30,7 +30,7 @@ Istnieją niektóre możliwe przyczyny, dlaczego ta aplikacja nie akceptuje odpo
 
 -   Jeśli aplikacja jest galerii usługi Azure AD, sprawdź, zostały wykonane wszystkie kroki opisane w artykule [sposób debugowania opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging).
 
--   Użyj narzędzia, takiego jak [Fiddler](http://www.telerik.com/fiddler) do przechwytywania żądanie języka SAML i SAML odpowiedzi tokenu SAML.
+-   Użyj narzędzia, takiego jak [Fiddler](https://www.telerik.com/fiddler) do przechwytywania żądanie języka SAML i SAML odpowiedzi tokenu SAML.
 
 -   Udostępnianie odpowiedzi SAML z dostawcą aplikacji, aby dowiedzieć się, czego brakuje.
 

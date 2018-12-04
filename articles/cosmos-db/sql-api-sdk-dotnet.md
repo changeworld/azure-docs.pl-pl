@@ -1,10 +1,7 @@
 ---
 title: 'Azure Cosmos DB: Interfejs API SQL platformy .NET, zestawu SDK i zasoby | Dokumentacja firmy Microsoft'
 description: Poznaj interfejs API SQL platformy .NET i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami zestawu SDK .NET usługi Azure Cosmos DB.
-services: cosmos-db
 author: rnagpal
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
@@ -12,12 +9,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27b7b4efdb14872ee2d841e17d2e253b6c7c30c3
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 0ec1f9cf7847e0eb3c48599a4d52412c1a37560d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389772"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52851166"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Usługa Azure Cosmos DB .NET SDK interfejsu API SQL: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -50,6 +47,14 @@ ms.locfileid: "49389772"
 </table></br>
 
 ## <a name="release-notes"></a>Informacje o wersji
+
+### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-Preview
+* Wersja zapoznawcza 1 [wersji 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) zestawu SDK platformy .NET w wersji zapoznawczej.
+* Docelowy .NET Standard, która obsługuje .NET framework 4.6.1+ i .NET Core 2.0 +
+* Nowy model obiektów za pomocą metod CosmosClient najwyższego poziomu i Podziel na odpowiednich klas CosmosDatabases, CosmosContainers i CosmosItems. 
+* Obsługa strumieni. 
+* Zaktualizowano CosmosResponseMessage z serwera, aby zwrócić kod stanu, a tylko zgłosić wyjątek, gdy brak odpowiedzi jest zwracany. 
+
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
 * Zaktualizowano System.Net.Security do 4.3.2.
@@ -182,7 +187,7 @@ ms.locfileid: "49389772"
 * Rozwiązywanie problemu polegającego wielu partycji klauzuli order by zapytania kontynuacji została nie działa podczas sortowania na pola ciągu.
 
 ### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
-* Dodano obsługę zapytań agregacji (COUNT, MIN, MAX, Suma i średnia). Zobacz [Obsługa agregacji](sql-api-sql-query.md#Aggregates).
+* Dodano obsługę zapytań agregacji (COUNT, MIN, MAX, Suma i średnia). Zobacz [Obsługa agregacji](how-to-sql-query.md#Aggregates).
 * Obniżona minimalna przepływność na kolekcji podzielonych na partycje z 10,100 jednostek RU/s 2500 jednostek RU/s.
 
 ### <a name="a-name11141114"></a><a name="1.11.4"/>1.11.4

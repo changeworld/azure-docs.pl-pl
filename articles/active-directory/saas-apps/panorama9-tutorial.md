@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 77e370e80e423446d17a074b9458e7002f8627dd
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ad2a9dba54df3ae7a3e2604437c8a65c88dcca94
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448350"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850894"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Samouczek: Integracja usługi Azure Active Directory z Panorama9
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Panorama9, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Panorama9 logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację Panorama9 w usłudze Azure AD, należy dodać Pan
 
 **Aby dodać Panorama9 z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -115,7 +115,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     a. W **adres URL logowania** pole tekstowe, wpisz adres URL jako: `https://dashboard.panorama9.com/saml/access/3262`
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `http://www.panorama9.com/saml20/<tenant-name>`
+    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://www.panorama9.com/saml20/<tenant-name>`
 
     > [!NOTE] 
     > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Panorama9](https://support.panorama9.com) do uzyskania tych wartości. 

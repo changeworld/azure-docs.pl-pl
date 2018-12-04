@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: a20dec67201cb7d8b7ccd3a7662438f2afabfe63
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 33f04f9deced7c4bc1c27cea5e8c431d4cd5512a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446793"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849330"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Usługa Azure Functions HTTP wyzwalaczy i powiązań
 
@@ -42,7 +42,7 @@ Powiązania protokołu HTTP, znajdują się w [Microsoft.Azure.WebJobs.Extension
 
 ## <a name="trigger"></a>Wyzwalacz
 
-Wyzwalacz HTTP umożliwia wywołanie funkcji z żądania HTTP. Wyzwalacz HTTP służy do tworzenia interfejsów API bez użycia serwera i odpowiadać na elementy webhook. 
+Wyzwalacz HTTP umożliwia wywołanie funkcji z żądania HTTP. Wyzwalacz HTTP służy do tworzenia interfejsów API bez użycia serwera i odpowiadać na elementy webhook.
 
 Domyślnie wyzwalacz HTTP zwraca HTTP 200 OK o pustej treści w funkcjach 1.x lub HTTP 204 Brak zawartości z pustą treść w funkcjach 2.x. Aby zmodyfikować odpowiedzi, należy skonfigurować [powiązania danych wyjściowych HTTP](#output).
 
@@ -53,8 +53,9 @@ Zobacz przykład specyficzny dla języka:
 * [C#](#trigger---c-example)
 * [Skryptu C# (csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
-* [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---java-example)
+* [JavaScript](#trigger---javascript-example)
+* [Python](#trigger---python-example)
 
 ### <a name="trigger---c-example"></a>Wyzwalacz — przykład w języku C#
 
@@ -276,6 +277,61 @@ module.exports = function(context, req) {
 };
 ```
 
+### <a name="trigger---python-example"></a>Wyzwalacz — przykładem w języku Python
+
+W poniższym przykładzie pokazano powiązanie wyzwalacza w *function.json* pliku i [funkce Pythonu](functions-reference-python.md) powiązania, który używa. Funkcja wyszukuje `name` parametru w ciągu zapytania lub treści żądania HTTP.
+
+Oto *function.json* pliku:
+
+```json
+{
+    "scriptFile": "__init__.py",
+    "disabled": false,    
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
+```
+
+[Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
+
+Poniżej przedstawiono kod języka Python:
+
+```python
+import logging
+import azure.functions as func
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+
+    if name:
+        return func.HttpResponse(f"Hello {name}!")
+    else:
+        return func.HttpResponse(
+            "Please pass a name on the query string or in the request body",
+            status_code=400
+        )
+```
+
 ### <a name="trigger---java-example"></a>Wyzwalacz - przykładzie w języku Java
 
 W poniższym przykładzie pokazano powiązanie wyzwalacza w *function.json* pliku i [funkcja Java](functions-reference-java.md) powiązania, który używa. Funkcja zwraca odpowiedź HTTP status kod 200 z treści żądania, które prefiksy wyzwalająca treści żądania za pomocą "Witaj," pozdrowienia.
@@ -307,7 +363,7 @@ Oto kodu Java:
 ```java
 @FunctionName("hello")
 public HttpResponseMessage<String> hello(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS), Optional<String> request,
-                        final ExecutionContext context) 
+                        final ExecutionContext context)
     {
         // default HTTP 200 response code
         return String.format("Hello, %s!", request);
@@ -352,12 +408,11 @@ Dla C# i F# funkcji, można zadeklarować rodzaj wyzwalacza danych wejściowych 
 
 W przypadku funkcji JavaScript środowisko uruchomieniowe usługi Functions zapewnia treści żądania, a nie obiekt żądania. Aby uzyskać więcej informacji, zobacz [przykładowy wyzwalacz JavaScript](#trigger---javascript-example).
 
-
 ### <a name="customize-the-http-endpoint"></a>Dostosuj punkt końcowy HTTP
 
 Domyślnie podczas tworzenia funkcji wyzwalacza HTTP, funkcja jest adresowalnych trasa formularza:
 
-    http://<yourapp>.azurewebsites.net/api/<funcname> 
+    http://<yourapp>.azurewebsites.net/api/<funcname>
 
 Można dostosować tę trasę, za pomocą opcjonalnego `route` właściwości wyzwalacza HTTP dane wejściowe podane przez powiązanie. Na przykład następujące *function.json* plik definiuje `route` właściwości wyzwalacza HTTP:
 
@@ -389,7 +444,7 @@ http://<yourapp>.azurewebsites.net/api/products/electronics/357
 Dzięki temu kod funkcji obsługiwać dwa parametry w adresie _kategorii_ i _identyfikator_. Możesz użyć dowolnej [ograniczenia trasy interfejsu API sieci Web](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) z parametrami. Poniższy kod funkcji języka C# korzysta z obu parametrów.
 
 ```csharp
-public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id, 
+public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id,
                                                 ILogger log)
 {
     if (id == null)
@@ -421,7 +476,7 @@ module.exports = function (context, req) {
     }
 
     context.done();
-} 
+}
 ```
 
 Domyślnie wszystkie trasy funkcji mają prefiks *api*. Można również dostosować lub usunąć za pomocą prefiks `http.routePrefix` właściwości w swojej [host.json](functions-host-json.md) pliku. Poniższy przykład usuwa *api* prefiks trasy przy użyciu pustego ciągu do prefiksu w *host.json* pliku.
@@ -533,17 +588,15 @@ Korzystając z jednej z następujących metod zabezpieczeń na poziomie aplikacj
 ### <a name="webhooks"></a>Elementy webhook
 
 > [!NOTE]
-> Tryb elementu Webhook jest dostępna tylko dla wersji 1.x środowisko uruchomieniowe usługi Functions.
+> Tryb elementu Webhook jest dostępna tylko dla wersji 1.x środowisko uruchomieniowe usługi Functions. Ta zmiana została wprowadzona w celu zwiększenia wydajności wyzwalaczy HTTP w wersji 2.x.
 
-Tryb elementu Webhook zapewnia dodatkową weryfikację ładunków elementu webhook. W wersji 2.x, podstawowy wyzwalacza HTTP nadal działa i jest zalecane podejście do elementów webhook.
+W wersji 1.x, szablony elementu webhook zapewniają dodatkowe sprawdzenie poprawności dla elementu webhook ładunków. W wersji 2.x, podstawowy wyzwalacza HTTP nadal działa i jest zalecane podejście do elementów webhook. 
 
 #### <a name="github-webhooks"></a>Elementy webhook GitHub
 
 Aby reagować na elementy webhook usługi GitHub, najpierw utworzyć funkcję z wyzwalaczem HTTP i ustaw **webHookType** właściwość `github`. Następnie skopiuj jej adres URL i klucz API w **Dodaj element webhook** strony repozytorium GitHub. 
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
-
-Aby zapoznać się z przykładem, zobacz [Tworzenie funkcji wyzwalanej przez element webhook GitHub](functions-create-github-webhook-triggered-function.md).
 
 #### <a name="slack-webhooks"></a>Elementy webhook Slack
 
@@ -560,7 +613,7 @@ Autoryzacji elementu Webhook jest obsługiwany przez element webhook składnika 
 
 Długość żądania HTTP jest ograniczona do 100 MB (w bajtach 104,857,600), a maksymalna długość adresu URL to 4 KB (4096 bajtów). Te limity są określone przez `httpRuntime` elementu w środowisku uruchomieniowym [pliku Web.config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
 
-Jeśli funkcja, która korzysta z wyzwalacza HTTP nie zakończyła się w ciągu około 2,5 minut, limit czasu bramy i zwróci błąd HTTP 502. Funkcja będzie nadal działać, ale nie będzie można zwrócić odpowiedź HTTP. W przypadku długo działających funkcji zaleca się, postępuj zgodnie z wzorców asynchronicznych i zwrócenie lokalizacji, w którym można zbadać poleceniem ping stan żądania. Aby uzyskać informacje o ile można uruchomić funkcję, zobacz [skalowanie i hosting - plan zużycie](functions-scale.md#consumption-plan). 
+Jeśli funkcja, która korzysta z wyzwalacza HTTP nie zakończyła się w ciągu około 2,5 minut, limit czasu bramy i zwróci błąd HTTP 502. Funkcja będzie nadal działać, ale nie będzie można zwrócić odpowiedź HTTP. W przypadku długo działających funkcji zaleca się, postępuj zgodnie z wzorców asynchronicznych i zwrócenie lokalizacji, w którym można zbadać poleceniem ping stan żądania. Aby uzyskać informacje o ile można uruchomić funkcję, zobacz [skalowanie i hosting - plan zużycie](functions-scale.md#consumption-plan).
 
 ## <a name="trigger---hostjson-properties"></a>Wyzwalacz — właściwości host.json
 
@@ -574,7 +627,7 @@ Użyj protokołu HTTP powiązania danych wyjściowych usługi na odpowiedź do n
 
 ## <a name="output---configuration"></a>Dane wyjściowe — Konfiguracja
 
-W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku. Dla, bibliotek klas języka C# nie ma żadnych właściwości atrybutów, które odnoszą się do tych *function.json* właściwości. 
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku. Dla, bibliotek klas języka C# nie ma żadnych właściwości atrybutów, które odnoszą się do tych *function.json* właściwości.
 
 |Właściwość  |Opis  |
 |---------|---------|

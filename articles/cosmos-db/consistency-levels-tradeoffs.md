@@ -1,20 +1,19 @@
 ---
-title: Dostępność i wydajność kompromisy dla różnych poziomów spójności w usłudze Azure Cosmos DB | Dokumentacja firmy Microsoft
+title: Dostępność i wydajność kompromisy dla różnych poziomów spójności w usłudze Azure Cosmos DB
 description: Dostępność i wydajność kompromisy dla różnych poziomów spójności w usłudze Azure Cosmos DB.
 keywords: spójność, wydajność, usługi azure cosmos db, azure, Microsoft azure
 services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: mjbrown
-ms.openlocfilehash: f2b69af6300c6044f7b65d0478301cc6e7b875bb
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: af17815d2dcf36909ba9b2109f0f9939c79508c0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680568"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848701"
 ---
 # <a name="availability-and-performance-tradeoffs-for-various-consistency-levels-in-azure-cosmos-db"></a>Dostępność i wydajność kompromisy dla różnych poziomów spójności w usłudze Azure Cosmos DB
 

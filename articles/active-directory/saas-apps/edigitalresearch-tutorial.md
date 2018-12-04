@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: ca42d6c8ca1333f2ffba77b79584b7092b26f03e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d5c86186cd6ee02d83800c6483a2e35d8f1fb3c7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438600"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848718"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>Samouczek: Integracja usługi Azure Active Directory z eDigitalResearch
 
@@ -38,7 +38,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą eDigitalResearch, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - EDigitalResearch logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Aby skonfigurować integrację eDigitalResearch w usłudze Azure AD, należy dod
 
 **Aby dodać eDigitalResearch z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -115,7 +115,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<company-name>.edigitalresearch.com/login/consume`
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adres URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej eDigitalResearch](http://www.maruedr.com/contact) do uzyskania tych wartości.
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adres URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej eDigitalResearch](https://www.maruedr.com/contact) do uzyskania tych wartości.
  
 
 
@@ -131,7 +131,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![eDigitalResearch konfiguracji](./media/edigitalresearch-tutorial/tutorial_edigitalresearch_configure.png) 
 
-1. Aby skonfigurować logowanie jednokrotne na **eDigitalResearch** stronie, musisz wysłać pobrany **plik certyfikatu (kodowanie Base64)**, **identyfikator jednostki SAML**, i **wylogowania Adres URL** do [zespołem pomocy technicznej eDigitalResearch](http://www.maruedr.com/contact). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Aby skonfigurować logowanie jednokrotne na **eDigitalResearch** stronie, musisz wysłać pobrany **plik certyfikatu (kodowanie Base64)**, **identyfikator jednostki SAML**, i **wylogowania Adres URL** do [zespołem pomocy technicznej eDigitalResearch](https://www.maruedr.com/contact). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 > [!TIP]
 > Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -172,7 +172,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w eDigitalResearch. 
 
-Praca z [zespołem pomocy technicznej eDigitalResearch](http://www.maruedr.com/contact) zachęcenia użytkowników utworzone.     
+Praca z [zespołem pomocy technicznej eDigitalResearch](https://www.maruedr.com/contact) zachęcenia użytkowników utworzone.        
     
  > [!NOTE]
  > Właściciel konta usługi Azure Active Directory otrzymuje wiadomość e-mail, a także następujące łącze, aby potwierdzić swoje konto, zanim stanie się aktywny.

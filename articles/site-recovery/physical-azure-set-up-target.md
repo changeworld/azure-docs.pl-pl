@@ -1,18 +1,18 @@
 ---
 title: Konfigurowanie środowiska docelowego dla odzyskiwania po awarii lokalnych serwerów fizycznych do platformy Azure | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób konfigurowania docelowego środowiska platformy Azure na potrzeby odzyskiwania po awarii serwerów fizycznych przy użyciu usługi Azure Site Recovery.
-author: bsiva
-manager: abhemraj
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/06/2018
-ms.author: bsiva
-ms.openlocfilehash: b89d04a6e2fd11a61de8b56690664f6204c208ad
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 11/27/2018
+ms.author: ramamill
+ms.openlocfilehash: 43276aad26bc06400c1bc4b5feaace0d5646c213
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209296"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849245"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>Przygotowywanie celu (program VMware do platformy Azure)
 

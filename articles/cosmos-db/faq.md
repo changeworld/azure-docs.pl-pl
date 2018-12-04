@@ -1,21 +1,19 @@
 ---
-title: Usługa Azure Cosmos DB — często zadawane pytania | Dokumentacja firmy Microsoft
+title: Usługa Azure Cosmos DB — często zadawane pytania
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące usługi Azure Cosmos DB, to usługa globalnie dystrybuowanej, wielomodelowej bazy danych. Więcej informacji na temat pojemności, poziomów wydajności i skalowania.
 keywords: Pytania dotyczące bazy danych, często zadawane pytania, documentdb, azure, Microsoft azure
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: sngun
-ms.openlocfilehash: 4dfe6bb2c648b0983482633500790db6d510d2eb
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: e4ed9ee34260dfffc0034fb7524a037e957fab3f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853986"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52851183"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB — często zadawane pytania
 
@@ -180,7 +178,7 @@ Język zapytań SQL, które są obsługiwane przez konta interfejsu API SQL jest
 
 ### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>Interfejs API SQL obsługuje funkcje agregacji SQL?
 
-Interfejs API SQL obsługuje agregację o małych opóźnieniach w dowolnej skali za pomocą funkcji agregujących `COUNT`, `MIN`, `MAX`, `AVG`, i `SUM` przy użyciu Gramatyka języka SQL. Aby uzyskać więcej informacji, zobacz [funkcje](sql-api-sql-query.md#Aggregates).
+Interfejs API SQL obsługuje agregację o małych opóźnieniach w dowolnej skali za pomocą funkcji agregujących `COUNT`, `MIN`, `MAX`, `AVG`, i `SUM` przy użyciu Gramatyka języka SQL. Aby uzyskać więcej informacji, zobacz [funkcje](how-to-sql-query.md#Aggregates).
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>Jak interfejs API SQL zapewnia współbieżność?
 
@@ -466,7 +464,7 @@ Z zestawu SDK platformy .NET mogą być dostarczane w pliku app.config:
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>Usługa Azure Cosmos DB jako platforma wydaje się mieć wiele możliwości, takich jak sortowanie, agregaty, hierarchii i inne funkcje. Użytkownik doda te funkcje interfejsu API tabeli?
 
-Interfejs API tabel udostępnia taką samą funkcjonalność zapytań, jak usługa Azure Table storage. Usługa Azure Cosmos DB obsługuje także sortowanie, agregaty, zapytania geoprzestrzenne, hierarchię i szeroki zakres funkcji wbudowanych. Firma Microsoft udostępni dodatkowe funkcje w interfejsie API tabeli w ramach przyszłej aktualizacji usługi. Aby uzyskać więcej informacji, zobacz [zapytania SQL](sql-api-sql-query.md).
+Interfejs API tabel udostępnia taką samą funkcjonalność zapytań, jak usługa Azure Table storage. Usługa Azure Cosmos DB obsługuje także sortowanie, agregaty, zapytania geoprzestrzenne, hierarchię i szeroki zakres funkcji wbudowanych. Aby uzyskać więcej informacji, zobacz [zapytania SQL](how-to-sql-query.md).
 
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>Podczas zmiany TableThroughput dla interfejsu API tabel?
 

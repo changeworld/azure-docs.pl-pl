@@ -5,14 +5,14 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 5aade5a2ad0b0f51c5bd7f53ed0ee191950aa7c4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 45ce5bfc516d51feddad7ebdad5828705b14620d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213325"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850846"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Planista wdrażania usługi Azure Site Recovery, programu VMware do platformy Azure — informacje
 Ten artykuł to podręcznik użytkownika planisty wdrażania usługi Azure Site Recovery dla wdrożeń produkcyjnych oprogramowania VMware na platformie Azure.

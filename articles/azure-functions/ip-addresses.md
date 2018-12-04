@@ -7,14 +7,14 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 12/03/2018
 ms.author: glenga
-ms.openlocfilehash: a92a4183962f71005577478bf27df9b5fb945acf
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 83e5a15d8a7f9c01f6a180ebceb715600b8a39db
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634366"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849483"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Adresy IP w usłudze Azure Functions
 
@@ -88,13 +88,13 @@ Na przykład jest to, jak może wyglądać fragment kodu JSON Europa Zachodnia:
 
 ## <a name="inbound-ip-address-changes"></a>Przychodzące zmiany adresu IP
 
- Adres IP dla ruchu przychodzącego **może** zmienić, gdy użytkownik:
+Adres IP dla ruchu przychodzącego **może** zmienić, gdy użytkownik:
 
 - Usuń aplikację funkcji i utworzyć ją ponownie w innej grupie zasobów.
 - Usuń ostatni aplikacji funkcji w grupie i regionie kombinacji zasobów, a następnie utworzyć ją ponownie.
 - Usuwanie powiązania SSL, takich jak podczas [odnowienia certyfikatu](../app-service/app-service-web-tutorial-custom-ssl.md#renew-certificates)).
 
-Adres IP dla ruchu przychodzącego również mogą ulec zmianie, gdy nie jeszcze podjęte akcje, takie jak te wyświetlane.
+Gdy aplikacja funkcji zostanie uruchomiona [planu zużycie](functions-scale.md#consumption-plan), adres IP dla ruchu przychodzącego również mogą ulec zmianie, gdy nie jeszcze podjęte akcje, takie jak te wyświetlane.
 
 ## <a name="outbound-ip-address-changes"></a>Wychodzące zmiany adresu IP
 
@@ -103,7 +103,7 @@ Zestaw dostępny adres IP ruchu wychodzącego adresów dla aplikacji funkcji mog
 * Podejmować żadnych działań, które można zmienić adres IP dla ruchu przychodzącego.
 * Zmień plan usługi App Service w warstwie cenowej. Lista wszystkich możliwych wychodzące adresy IP Twoja aplikacja może używać dla wszystkich warstw cenowych, znajduje się w `possibleOutboundIPAddresses` właściwości. Zobacz [znaleźć adresy IP ruchu wychodzącego](#find-outbound-ip-addresses).
 
-Adres IP dla ruchu przychodzącego również mogą ulec zmianie, gdy nie jeszcze podjęte akcje, takie jak te wyświetlane.
+Gdy aplikacja funkcji zostanie uruchomiona [planu zużycie](functions-scale.md#consumption-plan), wychodzący adres IP również mogą ulec zmianie, gdy nie jeszcze podjęte akcje, takie jak te wyświetlane.
 
 Aby wymusić celowo zmiana adresu IP ruchu wychodzącego:
 

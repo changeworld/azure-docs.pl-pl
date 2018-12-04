@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: jeedes
-ms.openlocfilehash: 470805b2bb77e367887767b95e0f1e04d79c8f9d
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 5b7baffea8e718810a91ea9687a007d36c806aab
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830739"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850010"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu usługi ServiceNow
 
@@ -41,7 +41,7 @@ Aby skonfigurować integrację usługi Azure AD przy użyciu usługi ServiceNow,
 - Subskrypcji usługi Azure AD
 - Dla usługi ServiceNow, wystąpienie lub dzierżawy usługi ServiceNow, Calgary, wersji lub nowszej
 - Express usługi ServiceNow, wystąpienie usługi ServiceNow, Express, Helsinki, wersji lub nowszej
-- Dzierżawca usługi ServiceNow musi mieć [wielu pojedynczy znak na dodatek dostawcy](http://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0) włączone. Można to zrobić [przesyłania żądania obsługi](https://hi.service-now.com).
+- Dzierżawca usługi ServiceNow musi mieć [wielu pojedynczy znak na dodatek dostawcy](https://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0) włączone. Można to zrobić [przesyłania żądania obsługi](https://hi.service-now.com).
 - W przypadku automatycznej konfiguracji należy włączyć dodatek wielu dostawców dla usługi ServiceNow.
 
 > [!NOTE]

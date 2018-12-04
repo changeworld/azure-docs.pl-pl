@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 71ecffebe095fd325837aeb1d6e741a2f3321aea
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 88952d09672fb4dd2d31878d56a59cb425f53de2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421842"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850452"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą portalu osobistych Mimecast
 
@@ -38,7 +38,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą portalu osobistych Mimecast, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Portal osobistych Mimecast logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Aby skonfigurować integrację portalu osobistych Mimecast w usłudze Azure AD, 
 
 **Aby dodać Portal osobistych Mimecast z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -139,7 +139,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | Platformy        | `https://jer-api.mimecast.com/login/saml`|
     
     > [!NOTE] 
-    > Wartość identyfikatora nie jest prawdziwe. Zaktualizuj wartość za pomocą rzeczywisty identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej osobiste klienta Portal Mimecast](http://www.mimecast.com/customer-success/technical-support/) można uzyskać wartość. 
+    > Wartość identyfikatora nie jest prawdziwe. Zaktualizuj wartość za pomocą rzeczywisty identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej osobiste klienta Portal Mimecast](https://www.mimecast.com/customer-success/technical-support/) można uzyskać wartość. 
 
 1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 

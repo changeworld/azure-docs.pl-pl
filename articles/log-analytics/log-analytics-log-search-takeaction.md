@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 737fea452e80782446fdd4a6252ab6af0caaa1dc
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 7257dae7c522029e0f09bfbcb076970f6c65baec
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723316"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849381"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Chroń za pomocą elementu Runbook usługi Automation z wyniki wyszukiwania dziennika usługi Log Analytics
 
@@ -27,11 +27,11 @@ Wyniki wyszukiwania dziennika w usłudze Azure Log Analytics, można teraz wybra
 
 ## <a name="components-and-features-used"></a>Używane składniki i funkcje
 * [Konto usługi Azure Automation](../automation/automation-quickstart-create-account.md)
-* [Obszar roboczy usługi Log Analytics](log-analytics-queries.md)
+* [Obszar roboczy usługi Log Analytics](../azure-monitor/log-query/log-query-overview.md)
 
 ## <a name="to-initiate-runbook-from-log-search"></a>Aby zainicjować element runbook z przeszukiwania dzienników
 
-Podejmowanie akcji na zdarzenia i zainicjowania elementu runbook z wyników wyszukiwania w dzienniku, rozpoczyna się od utworzenia przeszukiwania dzienników, a następnie na liście wyników można wywołać elementu runbook na żądanie.  Można to osiągnąć przez funkcję wyszukiwania dzienników w [witryny Azure portal](log-analytics-queries.md).  W tym przykładzie wykonamy przeszukiwania dzienników w witrynie Azure portal przy użyciu podstawowych pokaz działania tej funkcji.
+Podejmowanie akcji na zdarzenia i zainicjowania elementu runbook z wyników wyszukiwania w dzienniku, rozpoczyna się od utworzenia przeszukiwania dzienników, a następnie na liście wyników można wywołać elementu runbook na żądanie.  Można to osiągnąć przez funkcję wyszukiwania dzienników w [witryny Azure portal](../azure-monitor/log-query/log-query-overview.md).  W tym przykładzie wykonamy przeszukiwania dzienników w witrynie Azure portal przy użyciu podstawowych pokaz działania tej funkcji.
 
 1. W witrynie Azure portal kliknij pozycję **wszystkich usług** i wybierz **usługi Log Analytics**.  
 2. Wybierz swój obszar roboczy usługi Log Analytics.
@@ -50,5 +50,5 @@ W przypadku wybrania elementu runbook, który został skonfigurowany jako [wywo�
     
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Przegląd [Zaloguj się odwołanie do wyszukiwania usługi Log Analytics](log-analytics-queries.md) Aby wyświetlić wszystkie pola wyszukiwania i aspektów, które są dostępne w usłudze Log Analytics.
+* Przegląd [Zaloguj się odwołanie do wyszukiwania usługi Log Analytics](../azure-monitor/log-query/log-query-overview.md) Aby wyświetlić wszystkie pola wyszukiwania i aspektów, które są dostępne w usłudze Log Analytics.
 * Aby dowiedzieć się, jak automatycznie wywoływania elementu runbook usługi Automation, zapoznaj się z [wywoływanie elementu runbook usługi Azure Automation z alertu usługi Log Analytics](../automation/automation-create-alert-triggered-runbook.md).  

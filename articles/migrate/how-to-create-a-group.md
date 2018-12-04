@@ -1,34 +1,33 @@
 ---
-title: Grupy komputerów w celu oceny z migracji Azure | Dokumentacja firmy Microsoft
-description: Opisuje sposób grupowania maszyny przed uruchomieniem oceny w usłudze Azure migracji.
+title: Grupowanie maszyn oceny za pomocą usługi Azure Migrate | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób grupowania maszyn przed uruchomieniem oceny za pomocą usługi Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 06/19/2018
+ms.date: 11/28/2018
 ms.author: raynew
-ms.openlocfilehash: ccab88c0195a7ca459c8579b7870d121dfd0fe1d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3f90fbb4ae30f8cc7730385730c39321974a94c4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231410"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850707"
 ---
-# <a name="group-machines-for-assessment"></a>Grupy komputerów w celu oceny
+# <a name="group-machines-for-assessment"></a>Grupowanie maszyn do oceny
 
-W tym artykule opisano sposób tworzenia grupy komputerów w celu oceny przez [migracji Azure](migrate-overview.md). Azure migracji ocenia maszyn w grupie, aby sprawdzić, czy są odpowiednie dla migracji na platformie Azure i zapewnia kosztów i zmiany rozmiaru uzyskać szacunkowe wartości do uruchamiania komputera w systemie Azure.
+W tym artykule opisano sposób tworzenia grupy komputerów do oceny przez [usługi Azure Migrate](migrate-overview.md). Usługa Azure Migrate ocenia maszyn w grupie, aby sprawdzić, czy są one zostać poddana migracji do platformy Azure i oszacowanie rozmiarów i kosztów dla działającej maszyny na platformie Azure. Jeśli znasz maszyn, które muszą być migrowane razem, należy ręcznie utworzyć grupy w usłudze Azure Migrate, przy użyciu następującej metody. Jeśli nie masz pewności bardzo dotyczące maszyn, które muszą być zgrupowane razem, aby utworzyć grupy za pomocą funkcji wizualizacji zależności w usłudze Azure Migrate. [Dowiedz się więcej.](how-to-create-group-machine-dependencies.md)
 
+## <a name="create-a-group"></a>Tworzenie grupy
 
-## <a name="create-a-group"></a>Utwórz grupę
+1. W **Przegląd** projektu Azure Migrate, w obszarze Zarządzanie, kliknij przycisk **grup** > **+ grupa**i podaj nazwę grupy.
+2. Dodaj co najmniej jednej maszyny do grupy, a następnie kliknij przycisk **Utwórz**.
+3. Opcjonalnie można wybrać do uruchomienia nowego rozwiązania do oceny dla grupy.
 
-1. W **omówienie** Azure migracji projektu, w obszarze Zarządzanie, kliknij przycisk **grup** > **+ grupy**i określ nazwę grupy.
-2. Dodaj co najmniej jednej maszyny do grupy, a następnie kliknij przycisk **Utwórz**. 
-3. Opcjonalnie można wybrać do uruchomienia na podstawie oceny nowej grupy. 
+    ![Tworzenie grupy](./media/how-to-create-a-group/create-group.png)
 
-    ![Utwórz grupę](./media/how-to-create-a-group/create-group.png)
-
-Po utworzeniu grupy możesz ją zmodyfikować, wybierając grupę na **grup** stronę i dodawanie lub usuwanie maszyn.
+Po utworzeniu grupy możesz zmodyfikować go, wybierając grupę na **grup** stronie, a następnie dodanie lub usunięcie maszyn.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak używać [mapowania zależności maszyny](how-to-create-group-machine-dependencies.md) do tworzenia grup wysokiego zaufania.
+- Dowiedz się, jak używać [mapowania zależności maszyn](how-to-create-group-machine-dependencies.md) do tworzenia grup o dużej pewności.
 - [Dowiedz się więcej](concepts-assessment-calculation.md) na temat sposobu obliczania ocen.

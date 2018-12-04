@@ -7,20 +7,20 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: bb4a3f433f213984c4c351439760ddd3327cda73
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: ff772d4f53b279d8d048720beaa62cfdeb6401eb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353140"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850418"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Przyspieszona sieć za pomocą odzyskiwania po awarii maszyn wirtualnych platformy Azure
 
 Przyspieszona sieć umożliwia wirtualizację we/wy pojedynczego elementu głównego (SR-IOV) do maszyny Wirtualnej, znacznie poprawia wydajność sieci. Tej ścieżki o wysokiej wydajności pomija hosta ze ścieżki danych, zmniejszając czas oczekiwania, zakłócenia i użycie procesora CPU, do użytku z najbardziej wymagających obciążeń sieci na obsługiwane typy maszyn wirtualnych. Na poniższej ilustracji przedstawiono komunikację między dwiema maszynami wirtualnymi z lub bez przyspieszonej łączności sieciowej:
 
-![porównanie](./media/azure-vm-disaster-recovery-with-accelerated-networking/accelerated-networking-benefit.png)
+![Porównanie](./media/azure-vm-disaster-recovery-with-accelerated-networking/accelerated-networking-benefit.png)
 
 Usługa Azure Site Recovery umożliwia korzystanie z zalet Accelerated Networking dla maszyn wirtualnych platformy Azure, przełączone w tryb failover do innego regionu platformy Azure. W tym artykule opisano, jak można włączyć Accelerated Networking dla maszyn wirtualnych platformy Azure replikowane za pomocą usługi Azure Site Recovery.
 

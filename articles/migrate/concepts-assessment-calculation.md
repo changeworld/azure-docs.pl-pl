@@ -4,14 +4,14 @@ description: Zawiera omówienie obliczenia dotyczące oceny usługi Azure Migrat
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 11/28/2018
 ms.author: raynew
-ms.openlocfilehash: f7f06636e025eda604caa65ca82d4dd7eb909d3f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ab4af59b71dada84fd99df0299aeccfd5662d474
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165691"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849177"
 ---
 # <a name="assessment-calculations"></a>Obliczenia dotyczące oceny
 
@@ -21,7 +21,6 @@ ms.locfileid: "47165691"
 ## <a name="overview"></a>Przegląd
 
 Ocena usługi Azure Migrate ma trzy etapy. Ocena zaczyna się od analizy przydatności, po której następuje zmiana rozmiaru, i na koniec comiesięczny szacowania kosztów. Maszyna tylko przenosi na późniejszym etapie Jeśli przekazuje poprzedniego. Na przykład w przypadku niepowodzenia sprawdzania gotowości usługi Azure machine on jest oznaczony jako nieodpowiedni dla platformy Azure, a zmiany rozmiaru i wyceny nie będzie odbywać się.
-
 
 ## <a name="azure-suitability-analysis"></a>Analiza zgodności platformy Azure
 
@@ -119,22 +118,14 @@ W przypadku ustalania rozmiaru na podstawie wydajności usługa Azure Migrate po
 
    Poniżej są dotyczące powodów dlaczego oceny można pobrać oceną zaufania niski:
 
-   **Jednorazowe**
+   - Nie profilujesz swojego środowiska przez czas trwania, dla którego tworzysz ocenę. Jeśli na przykład tworzysz ocenę z czasem trwania wydajności ustawionym na 1 dzień, musisz poczekać co najmniej dzień po uruchomieniu odnajdywania, aby zebrać wszystkie punkty danych.
 
-   - Ustawienie statystyk w programie vCenter Server jest inne niż poziom 3. Ponieważ model jednorazowe odnajdywania zależy od ustawienia statystyk programu vCenter Server, jeśli statystyk w programie vCenter Server jest mniejsze niż poziom 3, dane wydajności dla dysku i sieci nie są zbierane z programu vCenter Server. W takim przypadku zalecenie określane przez usługę Azure Migrate dla dysku i sieci nie opiera się na użyciu. Bez uwzględniania liczby operacji we/wy na sekundę/przepływności dysku usługa Azure Migrate nie może określić, czy dysk będzie potrzebować dysku w warstwie Premium na platformie Azure, dlatego w tym przypadku usługa Azure Migrate zaleca wszystkie dyski w warstwie Standardowa.
-   - Ustawienie statystyk w programie vCenter Server zostało ustawione na poziom 3 przez krótszy czas przed rozpoczęciem odnajdywania. Rozważmy na przykład scenariusz, w którym dzisiaj zmienisz poziom ustawień statystyk na 3 i jutro rozpoczniesz odnajdowanie przy użyciu urządzenia modułu zbierającego (po 24 godzinach). Jeśli tworzysz ocenę dla jednego dnia, masz wszystkie punkty danych i oceną zaufania dla oceny będzie 5 gwiazdek. Ale jeśli zmieniasz czas trwania wydajności we właściwościach oceny na jeden miesiąc, ocena zaufania spada, ponieważ dane o wydajności dysku i sieci dla ostatniego miesiąca byłyby niedostępne. Jeśli chcesz wziąć pod uwagę dane wydajności za ostatni miesiąc, zaleca się utrzymanie ustawienia statystyk programu vCenter Server na poziomie 3 przez jeden miesiąc przed rozpoczęciem odnajdywania.
+   - Kilka maszyn wirtualnych zostało wyłączonych w czasie, dla którego jest obliczana ocena. Jeśli którakolwiek maszyna wirtualna została odłączona od zasilania na pewien czas, nie będziemy mogli zebrać danych o wydajności dla tego okresu.
 
-   **Ciągłe odnajdywania**
-
-   - Środowisko nie profilu na czas trwania, dla którego tworzysz ocenę. Na przykład jeśli tworzysz ocenę z czasem trwania wydajności ustawiona na 1 dzień, należy poczekać co najmniej dzień po jej uruchomieniu odnajdywania dla wszystkich punktów danych uzyskać zebrane.
-
-   **Typowe przyczyny**  
-
-   - Kilka maszyn wirtualnych zostało wyłączonych w czasie, dla którego jest obliczana ocena. Jeśli wszystkie maszyny wirtualne została odłączona od zasilania na pewien czas, firma Microsoft nie będzie zbierać dane dotyczące wydajności dla tego okresu.
    - Kilka maszyn wirtualnych zostało utworzonych w czasie, dla którego jest obliczana ocena. Jeśli na przykład tworzysz ocenę dla historii wydajności za ostatni miesiąc, ale kilka maszyn wirtualnych zostało utworzonych w środowisku tylko tydzień temu. W takich przypadkach historia wydajności nowych maszyn wirtualnych nie będzie dotyczyła całego czasu oceny.
 
    > [!NOTE]
-   > Jeśli ocena zaufania dowolnej oceny jest poniżej 4 gwiazdek, dla modelu jednorazowe, zalecamy zmianę ustawienia poziomu statystyk serwera vCenter na 3, odczekanie czas, który chcesz wziąć pod uwagę oceny (1 dzień/1 tydzień/1 miesiąc), a następnie wykonaj odnajdywania i oceny. W przypadku modelu ciągłego odnajdywania Poczekaj co najmniej jeden dzień dla urządzenia, aby przeprowadzić profilowanie w środowisku a następnie *ponownie Oblicz* oceny. Jeśli nie można wykonać kroku, ustalanie rozmiaru na podstawie wydajności może nie być wiarygodne i zaleca, aby przełączyć się do *jako lokalnego rozmiaru* , zmieniając właściwości oceny.
+   > Jeśli ocena zaufania dowolnej oceny jest poniżej 5 gwiazdek, zalecamy Poczekaj co najmniej jeden dzień dla urządzenia, aby przeprowadzić profilowanie w środowisku i następnie *ponownie Oblicz* oceny. Jeśli nie można wykonać powyższego, ustalanie rozmiaru na podstawie wydajności może nie być wiarygodne i zaleca się, aby przełączyć się na *ustalanie rozmiaru jako lokalnego*, zmieniając właściwości oceny.
 
 ## <a name="monthly-cost-estimation"></a>Szacowanie miesięcznych kosztów
 

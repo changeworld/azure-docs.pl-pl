@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 6a0463640f9a7194632a65cdb10653a520fcc0c9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a997de5530bf8ed475031147369b591b2d44d227
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435234"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850335"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skilljar"></a>Samouczek: Integracja usługi Azure Active Directory z Skilljar
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Skilljar, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Skilljar logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację Skilljar w usłudze Azure AD, należy dodać Skil
 
 **Aby dodać Skilljar z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -117,7 +117,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.skilljar.com/`
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Skilljar](http://support.skilljar.com/hc/) do uzyskania tych wartości. 
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Skilljar](https://support.skilljar.com/hc/) do uzyskania tych wartości. 
  
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -127,7 +127,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/skilljar-tutorial/tutorial_general_400.png)
 
-1. Aby skonfigurować logowanie jednokrotne na **Skilljar** stronie, musisz wysłać pobrany **XML metadanych**, i **wartość Format identyfikatora nazwy - urn: oasis: nazwy: tc: SAML:1.1:nameid — format: emailAddress** do [zespołem pomocy technicznej Skilljar](http://support.skilljar.com/hc/). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Aby skonfigurować logowanie jednokrotne na **Skilljar** stronie, musisz wysłać pobrany **XML metadanych**, i **wartość Format identyfikatora nazwy - urn: oasis: nazwy: tc: SAML:1.1:nameid — format: emailAddress** do [zespołem pomocy technicznej Skilljar](https://support.skilljar.com/hc/). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 > [!TIP]
 > Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -171,7 +171,7 @@ Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Skillj
 Brak elementu akcji dla Ciebie w tej sekcji. Nowy użytkownik jest tworzony podczas próby dostępu Skilljar, jeśli go jeszcze nie istnieje. 
 
 >[!NOTE]
->Jeśli potrzebujesz ręcznie utworzyć użytkownika, musisz skontaktować się z [zespołem pomocy technicznej Skilljar](http://support.skilljar.com/hc/). 
+>Jeśli potrzebujesz ręcznie utworzyć użytkownika, musisz skontaktować się z [zespołem pomocy technicznej Skilljar](https://support.skilljar.com/hc/). 
 > 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD

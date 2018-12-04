@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: c9e6898d83e5bc1360bb5b1539b12bace8acdb3f
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 4f8135dd26b58b5b285798af5c420aa09b03074b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251043"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850124"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Usługa Azure powiązania magazynu obiektów Blob dla usługi Azure Functions
 
@@ -29,7 +29,7 @@ W tym artykule wyjaśniono, jak pracować z powiązania magazynu obiektów Blob 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> Użyj wyzwalacza usługi Event Grid zamiast wyzwalaczy magazynu obiektów Blob dla kont usługi Blob storage zapewnia wysoką skalowalność, lub w celu uniknięcia opóźnień zimnego startu. Aby uzyskać więcej informacji, zobacz [wyzwalacza](#trigger) sekcji. 
+> Na użytek wyzwalacza usługi Event Grid zamiast wyzwalaczy magazynu obiektów Blob tylko do obiektów blob konta magazynu, wysokiej skali lub w celu uniknięcia opóźnień zimnego startu. Aby uzyskać więcej informacji, zobacz [wyzwalacza](#trigger) sekcji.
 
 ## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
@@ -79,8 +79,9 @@ Zobacz przykład specyficzny dla języka:
 
 * [C#](#trigger---c-example)
 * [Skryptu C# (csx)](#trigger---c-script-example)
-* [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---java-example)
+* [JavaScript](#trigger---javascript-example)
+* [Python](#trigger---python-example)
 
 ### <a name="trigger---c-example"></a>Wyzwalacz — przykład w języku C#
 
@@ -179,6 +180,42 @@ module.exports = function(context) {
 };
 ```
 
+### <a name="trigger---python-example"></a>Wyzwalacz — przykładem w języku Python
+
+W poniższym przykładzie pokazano obiekt blob wyzwalacza powiązanie w *function.json* pliku i [kodu w języku Python](functions-reference-python.md) powiązania, który używa. Jeśli obiekt blob jest dodane lub zaktualizowane w funkcji zapisuje dziennik `samples-workitems` kontenera.
+
+Oto *function.json* pliku:
+
+```json
+{
+    "scriptFile": "__init__.py",
+    "disabled": false,
+    "bindings": [
+        {
+            "name": "myblob",
+            "type": "blobTrigger",
+            "direction": "in",
+            "path": "samples-workitems/{name}",
+            "connection":"MyStorageAccountAppSetting"
+        }
+    ]
+}
+```
+
+Ciąg `{name}` w ścieżce wyzwalacz obiektu blob `samples-workitems/{name}` tworzy [powiązania wyrażeń](functions-triggers-bindings.md#binding-expressions-and-patterns) , można użyć w kodzie funkcji dostęp do nazwy pliku obiektu blob wyzwalania. Aby uzyskać więcej informacji, zobacz [Blob wzorce nazw](#trigger---blob-name-patterns) w dalszej części tego artykułu.
+
+Aby uzyskać więcej informacji na temat *function.json* właściwości pliku, zobacz [konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
+
+Poniżej przedstawiono kod języka Python:
+
+```python
+import logging
+import azure.functions as func
+
+def main(myblob: func.InputStream):
+    logging.info('Python Blob trigger function processed %s', myblob.name)
+```
+
 ### <a name="trigger---java-example"></a>Wyzwalacz - przykładzie w języku Java
 
 W poniższym przykładzie pokazano obiekt blob wyzwalacza powiązanie w *function.json* pliku i [kodu Java](functions-reference-java.md) powiązania, który używa. Jeśli obiekt blob jest dodane lub zaktualizowane w funkcji zapisuje dziennik `myblob` kontenera.
@@ -228,7 +265,7 @@ W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyć następ
   ```csharp
   [FunctionName("ResizeImage")]
   public static void Run(
-      [BlobTrigger("sample-images/{name}")] Stream image, 
+      [BlobTrigger("sample-images/{name}")] Stream image,
       [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageSmall)
   {
       ....
@@ -240,7 +277,7 @@ W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyć następ
    ```csharp
   [FunctionName("ResizeImage")]
   public static void Run(
-      [BlobTrigger("sample-images/{name}", Connection = "StorageConnectionAppSetting")] Stream image, 
+      [BlobTrigger("sample-images/{name}", Connection = "StorageConnectionAppSetting")] Stream image,
       [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageSmall)
   {
       ....
@@ -329,7 +366,7 @@ Następujących wyzwalaczy przykładzie obiekty BLOB, na `input` kontener, któr
 ```json
 "path": "input/original-{name}",
 ```
- 
+
 Jeśli nazwa obiektu blob jest *Blob1.txt oryginalny*, wartość `name` zmiennej w kodzie funkcji jest `Blob1`.
 
 ### <a name="filter-on-file-type"></a>Filtrowanie według typu pliku
@@ -348,7 +385,7 @@ Aby wyszukać nawiasów klamrowych w nazwach plików, ucieczki nawiasy klamrowe 
 "path": "images/{{20140101}}-{name}",
 ```
 
-Jeśli obiekt blob ma nazwę  *{20140101}-soundfile.mp3*, `name` jest wartość zmiennej w kodzie funkcji *soundfile.mp3*. 
+Jeśli obiekt blob ma nazwę  *{20140101}-soundfile.mp3*, `name` jest wartość zmiennej w kodzie funkcji *soundfile.mp3*.
 
 ## <a name="trigger---metadata"></a>Wyzwalacz - metadanych
 
@@ -393,7 +430,7 @@ Aby wymusić ponowne przetworzenie obiektu blob, należy usunąć potwierdzenia 
 
 ## <a name="trigger---poison-blobs"></a>Wyzwalacz - skażone obiektów blob
 
-Jeśli obiekt blob funkcji wyzwalacza nie powiodło się dla danego obiektu blob usługi Azure Functions ponownych prób, które działają 5 razy w sumie domyślnie. 
+Jeśli obiekt blob funkcji wyzwalacza nie powiodło się dla danego obiektu blob usługi Azure Functions ponownych prób, które działają 5 razy w sumie domyślnie.
 
 W przypadku awarii wszystkich prób 5, usługi Azure Functions dodaje komunikat do kolejki magazynu o nazwie *webjobs-blobtrigger-poison*. Komunikat w kolejce dla obiektów blob poison to obiekt JSON, który zawiera następujące właściwości:
 
@@ -425,8 +462,9 @@ Zobacz przykład specyficzny dla języka:
 
 * [C#](#input---c-example)
 * [Skryptu C# (csx)](#input---c-script-example)
-* [JavaScript](#input---javascript-example)
 * [Java](#input---java-example)
+* [JavaScript](#input---javascript-example)
+* [Python](#input---python-example)
 
 ### <a name="input---c-example"></a>Dane wejściowe — przykład w języku C#
 
@@ -478,7 +516,7 @@ W *function.json* pliku `queueTrigger` właściwość metadanych służy do okre
   ],
   "disabled": false
 }
-``` 
+```
 
 [Konfiguracji](#input---configuration) sekcji opisano te właściwości.
 
@@ -527,7 +565,7 @@ W *function.json* pliku `queueTrigger` właściwość metadanych służy do okre
   ],
   "disabled": false
 }
-``` 
+```
 
 [Konfiguracji](#input---configuration) sekcji opisano te właściwości.
 
@@ -539,6 +577,57 @@ module.exports = function(context) {
     context.bindings.myOutputBlob = context.bindings.myInputBlob;
     context.done();
 };
+```
+
+### <a name="input---python-example"></a>Dane wejściowe - przykładem w języku Python
+
+<!--Same example for input and output. -->
+
+W poniższym przykładzie pokazano obiektu blob danych wejściowych i wyjściowych powiązania w *function.json* pliku i [kodu w języku Python](functions-reference-python.md) powiązania, który używa. Funkcja tworzy kopię obiektu blob. Funkcja jest wyzwalana przez komunikatu w kolejce, który zawiera nazwę obiektu blob do skopiowania. Nowy obiekt blob o nazwie *{originalblobname} — kopia*.
+
+W *function.json* pliku `queueTrigger` właściwość metadanych służy do określania nazwy obiektu blob w `path` właściwości:
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "queuemsg",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "inputblob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    },
+    {
+      "name": "$return",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}-Copy",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "__init__.py"
+}
+```
+
+[Konfiguracji](#input---configuration) sekcji opisano te właściwości.
+
+Poniżej przedstawiono kod języka Python:
+
+```python
+import logging
+import azure.functions as func
+
+def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.InputStream:
+    logging.info('Python Queue trigger function processed %s', inputblob.name)
+    return inputblob
 ```
 
 ### <a name="input---java-example"></a>Dane wejściowe - przykładzie w języku Java
@@ -555,7 +644,7 @@ public void blobSize(@QueueTrigger(name = "filename",  queueName = "myqueue-item
  }
  ```
 
-  W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@BlobInput` adnotacji w parametrach przybyły, którego wartość z obiektu blob.  Ta adnotacja mogą być używane z typami natywnymi Java, obiektów typu Pojo lub wartości dopuszczających wartości null przy użyciu `Optional<T>`. 
+  W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@BlobInput` adnotacji w parametrach przybyły, którego wartość z obiektu blob.  Ta adnotacja mogą być używane z typami natywnymi Java, obiektów typu Pojo lub wartości dopuszczających wartości null przy użyciu `Optional<T>`.
 
 
 ## <a name="input---attributes"></a>Dane wejściowe — atrybuty
@@ -600,8 +689,8 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**type** | Nie dotyczy | Musi być równa `blob`. |
 |**direction** | Nie dotyczy | Musi być równa `in`. Wyjątki są zaznaczone w [użycia](#input---usage) sekcji. |
 |**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt blob w kodzie funkcji.|
-|**Ścieżka** |**BlobPath** | Ścieżka do obiektu blob. | 
-|**połączenia** |**połączenia**| Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.<br><br>Parametry połączenia nie może być dla konta magazynu ogólnego przeznaczenia, [konta magazynu obiektów Blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|**Ścieżka** |**BlobPath** | Ścieżka do obiektu blob. |
+|**połączenia** |**połączenia**| Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.<br><br>Parametry połączenia nie może być dla konta magazynu ogólnego przeznaczenia, [konta magazynu tylko dla obiektów blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 |Nie dotyczy | **Dostęp** | Wskazuje, czy będzie można Odczyt lub zapis. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -639,18 +728,19 @@ Zobacz przykład specyficzny dla języka:
 
 * [C#](#output---c-example)
 * [Skryptu C# (csx)](#output---c-script-example)
-* [JavaScript](#output---javascript-example)
 * [Java](#output---java-example)
+* [JavaScript](#output---javascript-example)
+* [Python](#output---python-example)
 
 ### <a name="output---c-example"></a>Dane wyjściowe — przykład w języku C#
 
-Poniższy przykład jest [funkcja języka C#](functions-dotnet-class-library.md) wyzwalacz obiektu blob, który używa i dwa powiązania obiektu blob w danych wyjściowych. Funkcja jest wyzwalana przez utworzenie obiektu blob obrazu w *przykładowe obrazy* kontenera. Tworzy kopie małych i średnich obiekt blob obrazu. 
+Poniższy przykład jest [funkcja języka C#](functions-dotnet-class-library.md) wyzwalacz obiektu blob, który używa i dwa powiązania obiektu blob w danych wyjściowych. Funkcja jest wyzwalana przez utworzenie obiektu blob obrazu w *przykładowe obrazy* kontenera. Tworzy kopie małych i średnich obiekt blob obrazu.
 
 ```csharp
 [FunctionName("ResizeImage")]
 public static void Run(
-    [BlobTrigger("sample-images/{name}")] Stream image, 
-    [Blob("sample-images-sm/{name}", FileAccess.Write)] Stream imageSmall, 
+    [BlobTrigger("sample-images/{name}")] Stream image,
+    [Blob("sample-images-sm/{name}", FileAccess.Write)] Stream imageSmall,
     [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageMedium)
 {
     var imageBuilder = ImageResizer.ImageBuilder.Current;
@@ -710,7 +800,7 @@ W *function.json* pliku `queueTrigger` właściwość metadanych służy do okre
   ],
   "disabled": false
 }
-``` 
+```
 
 [Konfiguracji](#output---configuration) sekcji opisano te właściwości.
 
@@ -759,7 +849,7 @@ W *function.json* pliku `queueTrigger` właściwość metadanych służy do okre
   ],
   "disabled": false
 }
-``` 
+```
 
 [Konfiguracji](#output---configuration) sekcji opisano te właściwości.
 
@@ -771,6 +861,58 @@ module.exports = function(context) {
     context.bindings.myOutputBlob = context.bindings.myInputBlob;
     context.done();
 };
+```
+
+### <a name="output---python-example"></a>Dane wyjściowe — przykładem w języku Python
+
+<!--Same example for input and output. -->
+
+W poniższym przykładzie pokazano obiektu blob danych wejściowych i wyjściowych powiązania w *function.json* pliku i [kodu w języku Python](functions-reference-python.md) powiązania, który używa. Funkcja tworzy kopię obiektu blob. Funkcja jest wyzwalana przez komunikatu w kolejce, który zawiera nazwę obiektu blob do skopiowania. Nowy obiekt blob o nazwie *{originalblobname} — kopia*.
+
+W *function.json* pliku `queueTrigger` właściwość metadanych służy do określania nazwy obiektu blob w `path` właściwości:
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "queuemsg",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "inputblob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    },
+    {
+      "name": "outputblob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}-Copy",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "__init__.py"
+}
+```
+
+[Konfiguracji](#output---configuration) sekcji opisano te właściwości.
+
+Poniżej przedstawiono kod języka Python:
+
+```python
+import logging
+import azure.functions as func
+
+def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
+         outputblob: func.Out[func.InputStream]):
+    logging.info('Python Queue trigger function processed %s', inputblob.name)
+    outputblob.set(inputblob)
 ```
 
 ### <a name="output---java-example"></a>Dane wyjściowe — przykładzie w języku Java
@@ -800,7 +942,7 @@ Ten atrybut Konstruktor przyjmuje ścieżkę do obiektu blob i `FileAccess` para
 ```csharp
 [FunctionName("ResizeImage")]
 public static void Run(
-    [BlobTrigger("sample-images/{name}")] Stream image, 
+    [BlobTrigger("sample-images/{name}")] Stream image,
     [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageSmall)
 {
     ...
@@ -812,7 +954,7 @@ Możesz ustawić `Connection` właściwości w celu określenia konta magazynu d
 ```csharp
 [FunctionName("ResizeImage")]
 public static void Run(
-    [BlobTrigger("sample-images/{name}")] Stream image, 
+    [BlobTrigger("sample-images/{name}")] Stream image,
     [Blob("sample-images-md/{name}", FileAccess.Write, Connection = "StorageConnectionAppSetting")] Stream imageSmall)
 {
     ...
@@ -832,8 +974,8 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**type** | Nie dotyczy | Musi być równa `blob`. |
 |**direction** | Nie dotyczy | Musi być równa `out` dla powiązania danych wyjściowych. Wyjątki są zaznaczone w [użycia](#output---usage) sekcji. |
 |**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt blob w kodzie funkcji.  Ustaw `$return` odwoływać się do wartości zwracanej funkcji.|
-|**Ścieżka** |**BlobPath** | Ścieżka do obiektu blob. | 
-|**połączenia** |**połączenia**| Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.<br><br>Parametry połączenia nie może być dla konta magazynu ogólnego przeznaczenia, [konta magazynu obiektów Blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|**Ścieżka** |**BlobPath** | Ścieżka do obiektu blob. |
+|**połączenia** |**połączenia**| Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.<br><br>Parametry połączenia nie może być dla konta magazynu ogólnego przeznaczenia, [konta magazynu tylko dla obiektów blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 |Nie dotyczy | **Dostęp** | Wskazuje, czy będzie można Odczyt lub zapis. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

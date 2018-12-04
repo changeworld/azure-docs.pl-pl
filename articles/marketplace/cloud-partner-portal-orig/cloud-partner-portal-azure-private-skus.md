@@ -1,5 +1,5 @@
 ---
-title: Jednostki SKU w prywatnej | Dokumentacja firmy Microsoft
+title: Jednostki SKU w prywatnej i plany | Dokumentacja firmy Microsoft
 description: Jak zarządzać dostępność oferty przy użyciu prywatnego jednostki SKU.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 28fe85c6443701d5fb40d4f90dbec9ba445a234d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 519f0354f2a19e106ca1072170721b27357d173e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230244"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849211"
 ---
-<a name="private-skus"></a>Jednostki SKU prywatne
+<a name="private-skus-and-plans"></a>Jednostki SKU w prywatnej i plany
 ============
 
 Jednostki SKU w prywatnej pozwalają ograniczyć dostępności jednostki SKU dla specyficznych klientów. Gdy jednostka SKU jest oznaczony jako prywatny, nie jest dostępna w dowolnej publicznego katalogu, w tym na [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [witryny Azure portal](http://portal.azure.com). W witrynie Azure portal tylko klientów z dostępem do jednostki SKU mogli je zobaczyć. Ponadto są również jest proszony mają dostęp do oferty prywatne.
@@ -91,7 +91,12 @@ Przykład zawartości pliku CSV:
 
 Po przełączeniu się z ręcznego wprowadzania do pliku CSV należy przekazać widoku lub z pliku CSV do ręcznego wprowadzania, stara lista identyfikatory subskrypcji z uprawnieniami do jednostki SKU nie są zachowywane. Zostanie wyświetlone ostrzeżenie, a listy tylko zostanie zastąpiony podczas zapisywania tej oferty.
 
-<a name="previewing-private-offers"></a>Wyświetlanie podglądu oferty prywatne
+<a name="sync-private-subscriptions"></a>Subskrypcje prywatne synchronizacji
+-------------------------
+
+Podczas dodawania subskrypcji do opublikowane oferty prywatne jednostki SKU lub planu, nie musisz ponownie opublikować ofertę Dodaj informacje o odbiorców. Po prostu użyć Identyfikatora subskrypcji platformy Azure (planów i jednostki SKU) lub identyfikator dzierżawy (tylko w planach), aby dodać odbiorców.
+
+<a name="previewing-private-offers"></a>Wyświetlanie podglądu prywatne oferuje
 -------------------------
 
 Podczas (wersja zapoznawcza) / wdrażanie przejściowe krok tylko oferty subskrypcji poziomu (wersja zapoznawcza) będą mogli korzystać z jednostki SKU. Czy fazie testowania, w tym czasie możesz sprawdzić, jakie oferty będzie wyglądać docelowych klientów i jest standardem dla wszystkich typów publikowania.

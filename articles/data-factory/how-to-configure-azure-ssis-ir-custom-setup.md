@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/3/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: df020fc3a4e2f57730dea7329b08e1e46660e610
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: fab03f12f4099fe2df2525cb3a6fa093170d1c79
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037043"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850180"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Dostosowywanie ustawień środowiska Azure-SSIS integration Runtime
 
@@ -131,7 +131,7 @@ Dostosowywanie środowiska IR Azure-SSIS, potrzebne są następujące elementy:
 
     c. Wybierz kontener połączonych publicznej wersji zapoznawczej, a następnie kliknij dwukrotnie ikonę `CustomSetupScript` folderu. W tym folderze są następujące elementy:
 
-       1. A `Sample` folder zawierający niestandardowe Instalatora, aby zainstalować podstawowe zadania w każdym węźle usługi Azure-SSIS IR. Zadanie nie działa jednak uśpienia przez kilka sekund. Folder zawiera także `gacutil` folder, który zawiera `gacutil.exe`. Ponadto `main.cmd` zawiera komentarze, aby utrwalić poświadczenia dostępu do udziałów plików.
+       1. A `Sample` folder zawierający niestandardowe Instalatora, aby zainstalować podstawowe zadania w każdym węźle usługi Azure-SSIS IR. Zadanie nie działa jednak uśpienia przez kilka sekund. Folder zawiera także `gacutil` folder, którego cała zawartość (`gacutil.exe`, `gacutil.exe.config`, i `1033\gacutlrc.dll`) mogą być kopiowane się do kontenera. Ponadto `main.cmd` zawiera komentarze, aby utrwalić poświadczenia dostępu do udziałów plików.
 
        1. A `UserScenarios` folder, który zawiera kilka niestandardowych ustawień dla rzeczywiste scenariusze użytkowników.
 
@@ -146,8 +146,6 @@ Dostosowywanie środowiska IR Azure-SSIS, potrzebne są następujące elementy:
        1. A `BCP` folder zawierający niestandardowe Instalatora, aby zainstalować narzędzia wiersza polecenia programu SQL Server (`MsSqlCmdLnUtils.msi`), w tym programu do kopiowania zbiorczego (`bcp`), w każdym węźle usługi Azure-SSIS IR.
 
        1. `EXCEL` Folder, który zawiera niestandardowe ustawienia do instalowania zestawów typu open source (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`, i `ExcelDataReader.dll`) w każdym węźle usługi Azure-SSIS IR.
-
-       1. `MSDTC` Folder, który zawiera niestandardowe ustawienia do modyfikowania konfiguracji zabezpieczeń i sieci dla usługi transakcji Koordynator MSDTC (Microsoft Distributed) w każdym węźle usługi Azure-SSIS IR. Aby upewnić się, że usługa MSDTC została uruchomiona, Dodaj zadanie wykonania procesu na początku przepływ sterowania w pakietach można wykonać następujące polecenie: `%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"` 
 
        1. `ORACLE ENTERPRISE` Folder, który zawiera skrypt instalacji niestandardowej (`main.cmd`) i plik konfiguracji instalacji dyskretnej (`client.rsp`) Aby zainstalować łączniki bazy danych Oracle i OCI sterownika w każdym węźle Twojego środowiska Azure-SSIS IR Enterprise Edition. Ta konfiguracja pozwala Użyj Menedżera połączeń bazy danych Oracle, źródłowym i docelowym. Najpierw pobierz v5.0 Connectors firmy Microsoft na oprogramowanie Oracle (`AttunitySSISOraAdaptersSetup.msi` i `AttunitySSISOraAdaptersSetup64.msi`) z [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55179) i najnowszych klienta Oracle — na przykład `winx64_12102_client.zip` — od [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html), następnie przekazać je wszystkie razem z `main.cmd` i `client.rsp` do kontenera. Jeśli używasz TNS nawiązać połączenia z programem Oracle, należy również pobrać `tnsnames.ora`, edytować go i przekaż go do kontenera, dzięki czemu mogą być kopiowane do folderu instalacyjnego programu Oracle podczas instalacji.
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 8a4e5b180438203e345ef6c5323ab010f4757c0e
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 56243be40a4d47f315ff6599ff2d50c83e44afbc
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978080"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849551"
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Wprowadzenie do usługi Azure Stream Analytics służącej do przetwarzania danych z urządzeń IoT
 Korzystając z tego samouczka, nauczysz się tworzyć logikę przetwarzania strumieni w celu zbierania danych z urządzeń Internetu rzeczy (IoT). Użyjemy w nim rzeczywistych przypadków użycia Internetu rzeczy (IoT) w celu zademonstrowania szybkiego i ekonomicznego kompilowania rozwiązań.
@@ -110,5 +110,5 @@ Jak napisać zapytanie w celu określenia braku zdarzeń wejściowych? Spróbujm
 W tym przypadku zostanie użyte sprzężenie **LEFT OUTER** względem tego samego strumienia danych (samosprzężenie). W przypadku sprzężenia **INNER** wynik jest zwracany tylko wtedy, gdy zostanie znalezione dopasowanie.  Natomiast w przypadku sprzężenia **LEFT OUTER**, jeśli zdarzenie z lewej strony sprzężenia jest niedopasowane, dla wszystkich kolumn po prawej stronie wiersza jest zwracany wiersz z wartością NULL. Ta technika jest bardzo przydatna do wyszukiwania braku zdarzeń. Aby uzyskać więcej informacji na temat sprzężenia [JOIN](https://msdn.microsoft.com/library/azure/dn835026.aspx), zobacz dokumentację w witrynie MSDN.
 
 ## <a name="conclusion"></a>Podsumowanie
-Celem tego samouczka jest zademonstrowanie sposobu pisania różnych zapytań języka zapytań usługi Stream Analytics i wyświetlania wyników w przeglądarce. Jest to jednak tylko początek. Za pomocą usługi Stream Analytics można zrobić dużo więcej. Usługa Stream Analytics obsługuje różne dane wejściowe oraz wyjściowe i może nawet korzystać z funkcji w usłudze Azure Machine Learning, co czyni ją doskonałym narzędziem do analizowania strumieni danych. Jeśli chcesz dowiedzieć się więcej na temat usługi Stream Analytics, skorzystaj z naszej [mapy uczenia](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/). Aby uzyskać więcej informacji na temat sposobu pisania zapytań, przeczytaj artykuł dotyczący [typowych wzorców zapytań](stream-analytics-stream-analytics-query-patterns.md).
+Celem tego samouczka jest zademonstrowanie sposobu pisania różnych zapytań języka zapytań usługi Stream Analytics i wyświetlania wyników w przeglądarce. Jest to jednak tylko początek. Za pomocą usługi Stream Analytics można zrobić dużo więcej. Usługa Stream Analytics obsługuje różne dane wejściowe oraz wyjściowe i może nawet korzystać z funkcji w usłudze Azure Machine Learning, co czyni ją doskonałym narzędziem do analizowania strumieni danych. Jeśli chcesz dowiedzieć się więcej na temat usługi Stream Analytics, skorzystaj z naszej [mapy uczenia](https://docs.microsoft.com/azure/stream-analytics/). Aby uzyskać więcej informacji na temat sposobu pisania zapytań, przeczytaj artykuł dotyczący [typowych wzorców zapytań](stream-analytics-stream-analytics-query-patterns.md).
 

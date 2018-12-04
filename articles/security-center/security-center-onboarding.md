@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/02/2018
+ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: d5a4cfa3a91b82aa0f5b1725f86c732fecf632d4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2ea94e79fdcc331554f42e2396d954af7cb979d8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405450"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850078"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Dołączanie do usługi Azure Security Center w warstwie standardowa celu uzyskania zwiększonych zabezpieczeń
-Uaktualnij do standardowej usługi Security Center z zalet zarządzania zwiększone zabezpieczenia i ochrona przed zagrożeniami dla obciążeń chmury hybrydowej.  Możesz wypróbować bezpłatnie przez 60 dni Standard. Odwiedź Centrum zabezpieczeń [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/) Aby uzyskać więcej informacji.
+Uaktualnij do standardowej usługi Security Center z zalet zarządzania zwiększone zabezpieczenia i ochrona przed zagrożeniami dla obciążeń chmury hybrydowej.  Możesz spróbować standardowa jest bezpłatna. Odwiedź Centrum zabezpieczeń [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/) Aby uzyskać więcej informacji.
 
 Security Center w warstwie standardowa obejmuje:
 
@@ -83,7 +83,7 @@ W przypadku istniejących obszarów roboczych są wymienione w obszarze **dodać
 
 2. W obszarze **zabezpieczenia i inspekcja**, wybierz opcję **obszaru roboczego pakietu OMS** Aby utworzyć nowy obszar roboczy.
 > [!NOTE]
-> Obszary robocze OMS są teraz nazywane obszarów roboczych usługi Log Analytics.
+> Obszary robocze OMS są teraz nazywane obszarami roboczymi usługi Log Analytics.
 3. W obszarze **obszaru roboczego pakietu OMS**, wprowadź informacje o obszarze roboczym.
 4. W obszarze **obszaru roboczego pakietu OMS**, wybierz opcję **OK**.  Po wybraniu przycisku OK otrzymasz link pobierania agenta Windows lub Linux i kluczami identyfikatora obszaru roboczego do użycia podczas konfigurowania agenta.
 5. W obszarze **zabezpieczenia i inspekcja**, wybierz opcję **OK**.

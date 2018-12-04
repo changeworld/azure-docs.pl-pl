@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 5e3ebd7d3aa5555fbe5ea77dece6eb3177809de7
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1f3168cef503fed0aea09228c9bc11dfb456f2ab
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215078"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848480"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji programu SharePoint do odzyskiwania po awarii przy użyciu usługi Azure Site Recovery
 
@@ -54,7 +54,7 @@ Program SharePoint można wdrażać na co najmniej jeden serwer przy użyciu war
 ![Wzorzec wdrożenia 1](./media/site-recovery-sharepoint/sharepointarch.png)
 
 
-## <a name="site-recovery-support"></a>Obsługa odzyskiwania lokacji
+## <a name="site-recovery-support"></a>Obsługa usługi Site Recovery
 
 Do tworzenia w tym artykule, maszyn wirtualnych VMware z systemem Windows Server 2012 R2 Enterprise zostały użyte. Użyto programu SharePoint 2013 Enterprise edition od wersji programu SQL server 2014 Enterprise edition. Jak replikacji usługi Site Recovery jest niezależny od aplikacji, do przechowywania następujących scenariuszach również powinny zaleceń przedstawionych w tym miejscu.
 

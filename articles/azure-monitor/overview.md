@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 5ef451da3eae696c3506f25ee9458b3ad3286b07
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: a3e0125a66c4b8bbda6e0b7087fe5e0e387d43e4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721186"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847392"
 ---
 # <a name="azure-monitor-overview"></a>Omówienie usługi Azure Monitor
 
@@ -39,7 +39,7 @@ Dla wielu zasobów platformy Azure zostaną wyświetlone dane zebrane przez usł
 
 ![Metryki](media/overview/metrics.png)
 
-Dane dzienników zbieranych przez usługi Azure Monitor są przechowywane w usłudze Log Analytics, która zawiera [zaawansowany język zapytań](../log-analytics/log-analytics-queries.md) do szybkiego pobierania, konsolidacji i analizowania zebranych danych.  Można tworzyć i testować przy użyciu [strony Log Analytics](../log-analytics/log-analytics-log-search-portals.md) w witrynie Azure portal, a następnie bezpośrednio analizować dane za pomocą tych narzędzi lub zapisać zapytania do użycia z [wizualizacje](visualizations.md) lub [ reguły alertów](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+Dane dzienników zbieranych przez usługi Azure Monitor są przechowywane w usłudze Log Analytics, która zawiera [zaawansowany język zapytań](../azure-monitor/log-query/log-query-overview.md) do szybkiego pobierania, konsolidacji i analizowania zebranych danych.  Można tworzyć i testować przy użyciu [strony Log Analytics](../log-analytics/log-analytics-log-search-portals.md) w witrynie Azure portal, a następnie bezpośrednio analizować dane za pomocą tych narzędzi lub zapisać zapytania do użycia z [wizualizacje](visualizations.md) lub [ reguły alertów](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
 
 Język zapytań usługi Log Analytics jest odpowiedni dla prostego dziennika zapytań, ale oferuje także zaawansowane funkcje, takie jak agregacje, sprzężenia i analiza inteligentna. Możesz szybko dowiedzieć się przy użyciu języka zapytań [wielu lekcje](../log-analytics/query-language/get-started-queries.md) , które są dostępne.  Specjalne instrukcje udostępniono dla użytkowników, którzy znają już [SQL](../log-analytics/query-language/sql-cheatsheet.md) i [Splunk](../log-analytics/query-language/splunk-cheatsheet.md).
 
@@ -82,10 +82,10 @@ Usługa Azure Monitor dla kontenerów to funkcja przeznaczona do monitorowania w
 Usługa Azure Monitor maszyny Wirtualnej insights monitoruje usługi Azure virtual machines (VM) na dużą skalę przez analizowanie wydajności i kondycji Windows i maszyn wirtualnych systemu Linux, łącznie z różnych procesów i wzajemnie połączonych zależności od innych zasobów i procesów zewnętrznych. Rozwiązanie obejmuje obsługę monitorowania wydajności i zależności aplikacji w przypadku maszyn wirtualnych hostowanych lokalnie lub innego dostawcy chmury.  
 
 
-![VM Insights](media/overview/vm-insights.png)
+![Szczegółowe informacje z maszyny Wirtualnej](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>Rozwiązania do monitorowania
-[Monitorowanie rozwiązań](../azure-monitor/insights/solutions.md) w usłudze Azure Monitor są spakowane zestawy logiki ze szczegółowymi informacjami dla określonej aplikacji lub usługi. One zbierać dane do usługi Log Analytics oraz innych danych monitorowania za pomocą [zapytania](../log-analytics/log-analytics-queries.md) do analizy i [widoków](../azure-monitor/platform/view-designer.md) wizualizacji. Rozwiązania do monitorowania są [udostępnianych przez firmę Microsoft](../azure-monitor/insights/solutions-inventory.md) i jej partnerów, aby zapewnić monitorowanie dla różnych usług platformy Azure i innych aplikacji.
+[Monitorowanie rozwiązań](../azure-monitor/insights/solutions.md) w usłudze Azure Monitor są spakowane zestawy logiki ze szczegółowymi informacjami dla określonej aplikacji lub usługi. One zbierać dane do usługi Log Analytics oraz innych danych monitorowania za pomocą [zapytania](../azure-monitor/log-query/log-query-overview.md) do analizy i [widoków](../azure-monitor/platform/view-designer.md) wizualizacji. Rozwiązania do monitorowania są [udostępnianych przez firmę Microsoft](../azure-monitor/insights/solutions-inventory.md) i jej partnerów, aby zapewnić monitorowanie dla różnych usług platformy Azure i innych aplikacji.
 
 ![Rozwiązania do monitorowania](media/overview/solutions-overview.png)
 
@@ -146,4 +146,4 @@ Dowiedz się więcej o usługach:
 
 * [Metryki i dzienniki](../azure-monitor/platform/data-collection.md) dla danych zbieranych przez usługi Azure Monitor.
 * [Źródła danych](../azure-monitor/platform/data-sources.md) dla jak wysyłanie danych telemetrycznych w różnych składników aplikacji.
-* [Log Analytics](../log-analytics/log-analytics-queries.md) do analizowania zebranych danych.
+* [Log Analytics](../azure-monitor/log-query/log-query-overview.md) do analizowania zebranych danych.

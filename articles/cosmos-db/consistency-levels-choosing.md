@@ -1,20 +1,19 @@
 ---
-title: Wybieranie poziomu spójności odpowiednie dla twojej aplikacji, która korzysta z usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
+title: Wybieranie poziomu spójności odpowiednie dla twojej aplikacji, która korzysta z usługi Azure Cosmos DB
 description: Wybieranie poziomu spójności odpowiednie dla twojej aplikacji w usłudze Azure Cosmos DB.
 keywords: spójność, wydajność, usługi azure cosmos db, azure, Microsoft azure
 services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 10/24/2018
 ms.author: mjbrown
-ms.openlocfilehash: 2fc21ffde5f3f4b84b2ed025cba5d228e592343f
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: a1c7d750bcd0c3f37d2269aee299e0ccd8c4ef4a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823422"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849296"
 ---
 # <a name="choose-the-right-consistency-level-for-your-application"></a>Wybierz poziom spójności odpowiednie dla twojej aplikacji
 

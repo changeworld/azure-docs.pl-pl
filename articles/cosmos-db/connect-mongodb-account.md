@@ -1,22 +1,20 @@
 ---
-title: Parametry połączenia bazy danych MongoDB dla konta usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
+title: Parametry połączenia bazy danych MongoDB dla konta usługi Azure Cosmos DB
 description: Dowiedz się, jak połączyć aplikację bazy danych MongoDB na konto usługi Azure Cosmos DB przy użyciu parametrów połączenia MongoDB.
 keywords: Parametry połączenia bazy danych mongodb
 services: cosmos-db
 author: slyons
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/19/2017
 ms.author: sclyon
-ms.openlocfilehash: ad8d6fe36c289c4c9e37689e1c7d755dc3bf9048
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: a78a77e16e9a810c0be03656aa48b02cc8e6e5e6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054956"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849262"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Łączenie aplikacji bazy danych MongoDB w usłudze Azure Cosmos DB
 Dowiedz się, jak połączyć aplikację bazy danych MongoDB na konto usługi Azure Cosmos DB przy użyciu parametrów połączenia MongoDB. Bazę danych usługi Azure Cosmos DB można następnie użyć jako danych magazynu dla aplikacji MongoDB. 

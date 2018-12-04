@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 14e89d5eab058b9fa42c20811df9c5ac0ceca44a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 80a5b49d27ffc2b75cc9a1092a4d9f17e09bef24
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633201"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848871"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -30,7 +30,7 @@ Rozwiązanie do zarządzania usługi Office 365 umożliwia monitorowanie środow
 - Monitorowanie działania wykonywane przez administratora do śledzenia zmian konfiguracji lub operacji na wysokim poziomie uprawnień.
 - Wykrywanie i badanie użytkownika niepożądane zachowanie, które można dostosować do potrzeb organizacji.
 - Prezentacja inspekcje i zapewniaj zgodność. Na przykład można monitorować operacji na plikach dostęp do poufnych plików, które pomogą Ci z procesem inspekcje i zapewniaj zgodność.
-- Rozwiązywać problemy operacyjne przy użyciu [dziennikach](../../log-analytics/log-analytics-queries.md) na podstawie danych aktywności usługi Office 365 w Twojej organizacji.
+- Rozwiązywać problemy operacyjne przy użyciu [dziennikach](../../azure-monitor/log-query/log-query-overview.md) na podstawie danych aktywności usługi Office 365 w Twojej organizacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Wymagane jest spełnienie następujących przed to rozwiązanie jest zainstalowane i skonfigurowane.
@@ -709,6 +709,6 @@ Poniższa tabela zawiera przykładowe wyszukiwania w dzienniku dotyczące rekord
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Korzystanie z wyszukiwania w dzienniku usługi [Log Analytics](../../log-analytics/log-analytics-queries.md) w celu wyświetlania szczegółowych danych aktualizacji.
+* Korzystanie z wyszukiwania w dzienniku usługi [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) w celu wyświetlania szczegółowych danych aktualizacji.
 * [Tworzenie własnych pulpitów nawigacyjnych](../../azure-monitor/platform/dashboards.md) Aby wyświetlić ulubione zapytania wyszukiwania usługi Office 365.
 * [Tworzenie alertów](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) do aktywnego powiadomienia o ważnych działań usługi Office 365.  

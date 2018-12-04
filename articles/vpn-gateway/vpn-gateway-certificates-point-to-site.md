@@ -5,15 +5,15 @@ services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 09/05/2018
+ms.topic: conceptual
+ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: 18d705f68ff06621e30c051dac9fb9607fd043ac
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: e635eddabe239268829d3a907df10392c7e1b6a3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300940"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850962"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generowanie i eksportowanie certyfikatów dla punkt-lokacja przy użyciu programu PowerShell
 
@@ -27,7 +27,7 @@ Jeśli nie masz dostępu do komputera z systemem Windows 10 lub Windows Server 2
 
 Użyj polecenia cmdlet New-SelfSignedCertificate, aby utworzyć certyfikat główny z podpisem własnym. Aby uzyskać informacje o dodatkowych parametrach, zobacz [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
-1. Z komputera z systemem Windows 10 lub Windows Server 2016 Otwórz konsolę programu Windows PowerShell z podwyższonym poziomem uprawnień.
+1. Z komputera z systemem Windows 10 lub Windows Server 2016 Otwórz konsolę programu Windows PowerShell z podwyższonym poziomem uprawnień. Te przykłady nie będą działać w usłudze Azure Cloud Shell, "Wypróbuj". Te przykłady należy uruchomić lokalnie.
 2. Skorzystaj z następującego przykładu, aby utworzyć certyfikat główny z podpisem własnym. Poniższy przykład tworzy certyfikat główny z podpisem własnym o nazwie "P2SRootCert", który jest automatycznie instalowany w "Certyfikaty-bieżący użytkownik\osobisty\certyfikat". Certyfikat można wyświetlić, otwierając *certmgr.msc*, lub *Zarządzaj certyfikatami użytkowników*.
 
   ```powershell
@@ -104,7 +104,7 @@ Jeśli tworzysz dodatkowych certyfikatów klienta lub nie korzystają z tej same
 
 ### <a name="export-the-self-signed-root-certificate-and-private-key-to-store-it-optional"></a>Eksportowanie certyfikatu głównego z podpisem własnym i klucz prywatny, zapisz go (opcjonalnie)
 
-Możesz chcieć wyeksportować certyfikat główny z podpisem własnym i zapisz je bezpiecznie jako kopii zapasowej. Jeśli taka potrzeba, można później zainstalować ją na innym komputerze i generować więcej certifiates klienta. Aby wyeksportować certyfikat główny z podpisem własnym, jako plik PFX, wybierz certyfikat główny i tych samych kroków, zgodnie z opisem w [wyeksportować certyfikat klienta](#clientexport).
+Możesz chcieć wyeksportować certyfikat główny z podpisem własnym i zapisz je bezpiecznie jako kopii zapasowej. Jeśli taka potrzeba, można później zainstalować ją na innym komputerze i generowania certyfikatów klienta. Aby wyeksportować certyfikat główny z podpisem własnym, jako plik PFX, wybierz certyfikat główny i tych samych kroków, zgodnie z opisem w [wyeksportować certyfikat klienta](#clientexport).
 
 ## <a name="clientexport"></a>4. Eksportowanie certyfikatu klienta
 

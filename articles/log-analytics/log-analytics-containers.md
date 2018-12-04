@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 439ae934484649a5bddb821e6a4cf47f7e77a772
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 6373c5c3b613bcc7e01a8c86ad5f9c1af7101f53
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722518"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849313"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Rozwiązanie do monitorowania kontenerów w usłudze Log Analytics
 
@@ -603,7 +603,7 @@ Wyszukiwanie w dzienniku zostanie otwarty, informacje o stanie kontenerów.
 
 ![Wyszukiwanie w dzienniku dla kontenerów](./media/log-analytics-containers/containers-log-search.png)
 
-W tym miejscu można edytować zapytania wyszukiwania można zmodyfikować, aby znaleźć konkretne informacje, czy interesuje Cię. Aby uzyskać więcej informacji na temat wyszukiwania w dziennikach, zobacz [przeszukiwanie dzienników w usłudze Log Analytics](log-analytics-queries.md).
+W tym miejscu można edytować zapytania wyszukiwania można zmodyfikować, aby znaleźć konkretne informacje, czy interesuje Cię. Aby uzyskać więcej informacji na temat wyszukiwania w dziennikach, zobacz [przeszukiwanie dzienników w usłudze Log Analytics](../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="troubleshoot-by-finding-a-failed-container"></a>Rozwiązywanie problemów, wyszukując kontenera nie powiodło się
 
@@ -671,4 +671,4 @@ Zapisywanie zapytań jest funkcją standard w usłudze Log Analytics. Zapisując
 Po utworzeniu zapytania, które możesz się przydać, zapisz go, klikając **ulubione** w górnej części strony wyszukiwanie w dziennikach. Nie będzie można łatwo uzyskać dostępu to później **Mój pulpit nawigacyjny** strony.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Przeszukiwanie dzienników](log-analytics-queries.md) do wyświetlania rekordów danych szczegółowych kontenera.
+* [Przeszukiwanie dzienników](../azure-monitor/log-query/log-query-overview.md) do wyświetlania rekordów danych szczegółowych kontenera.

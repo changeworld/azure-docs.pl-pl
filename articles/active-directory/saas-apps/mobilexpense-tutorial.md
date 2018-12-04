@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jeedes
-ms.openlocfilehash: fd35cb67d0555919a1340c428bac042b67239469
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d51ced3f264a486288c951def7c23a0d95609ac0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427343"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850688"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>Samouczek: Integracja usługi Azure Active Directory z Mobile Xpense
 
@@ -38,7 +38,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Mobile Xpense, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Mobile Xpense logowania jednokrotnego włączonych subskrypcji
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Aby skonfigurować integrację Mobile Xpense w usłudze Azure AD, należy dodać
 
 **Aby dodać Mobile Xpense z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -121,7 +121,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<sub-domain>.mobilexpense.com/<customername>`
      
     > [!NOTE] 
-    > Te wartości są prawdziwe. Rzeczywisty adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Xpense Mobile](http://www.mobilexpense.net/contact) do uzyskania tych wartości. 
+    > Te wartości są prawdziwe. Rzeczywisty adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Xpense Mobile](https://www.mobilexpense.net/contact) do uzyskania tych wartości. 
 
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -131,7 +131,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/mobilexpense-tutorial/tutorial_general_400.png)
 
-1. Aby skonfigurować logowanie jednokrotne na **Mobile Xpense** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej Mobile Xpense](http://www.mobilexpense.net/contact). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Aby skonfigurować logowanie jednokrotne na **Mobile Xpense** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej Mobile Xpense](https://www.mobilexpense.net/contact). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 > [!TIP]
 > Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -170,7 +170,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="create-a-mobile-xpense-test-user"></a>Tworzenie użytkownika testowego Mobile Xpense
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w MobileXpense. działają z [zespołem pomocy technicznej MobileXpense](http://www.mobilexpense.net/contact) Aby dodać użytkowników na platformie MobileXpense. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w MobileXpense. działają z [zespołem pomocy technicznej MobileXpense](https://www.mobilexpense.net/contact) Aby dodać użytkowników na platformie MobileXpense. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

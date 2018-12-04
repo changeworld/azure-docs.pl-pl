@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2018
+ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 24c6487ee7ec7d8398f933e29ca51cc9e390f47f
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 9ed52af3dd5f8da6e81c53bcf8f26e76bcceee47
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633269"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847783"
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Informacje o alertach zabezpieczeń w usłudze Azure Security Center
 Ten artykuł ułatwia zapoznanie się z różnymi typami alertów zabezpieczeń i powiązanych szczegółowych informacji dostępnych w usłudze Azure Security Center. Więcej informacji na temat zarządzania alertami i zdarzeniami znajduje się w artykule [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md).
 
-Aby skonfigurować wykrywanie zaawansowane, przeprowadź uaktualnienie usługi Azure Security Center do wersji Standard. Dostępna jest bezpłatna 60-dniowa wersja próbna. W celu uaktualnienia wybierz pozycję **Warstwa cenowa** w obszarze [Zasady zabezpieczeń](security-center-azure-policy.md). Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
+Aby skonfigurować wykrywanie zaawansowane, przeprowadź uaktualnienie usługi Azure Security Center do wersji Standard. Bezpłatna wersja próbna jest dostępna. W celu uaktualnienia wybierz pozycję **Warstwa cenowa** w obszarze [Zasady zabezpieczeń](security-center-azure-policy.md). Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
 
 > [!NOTE]
 > Usługa Security Center została wydana w ograniczonej wersji zapoznawczej z nowym zestawem funkcji wykrywania, które wykorzystują rekordy inspekcji, czyli wspólną platformę inspekcji, do wykrywania złośliwych zachowań na maszynach z systemem Linux. Wyślij [nam](mailto:ASC_linuxdetections@microsoft.com) wiadomość e-mail ze swoim identyfikatorem subskrypcji, aby dołączyć do tej wersji zapoznawczej.

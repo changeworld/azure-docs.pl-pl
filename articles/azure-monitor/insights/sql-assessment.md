@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e66f74edf93688a2793b3f24516f8b14328a8bb9
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5afb8e03dedbe09c2c95495fb6ff18333f4c648d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634952"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847596"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optymalizowanie środowiska SQL za pomocą rozwiązania sprawdzanie kondycji serwera SQL w usłudze Log Analytics
 
@@ -184,7 +184,7 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
     ```
 
     >[!NOTE]
-    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](../../log-analytics/log-analytics-queries.md), a następnie powyższe zapytania zmienią się następujące czynności.
+    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](../../azure-monitor/log-query/log-query-overview.md), a następnie powyższe zapytania zmienią się następujące czynności.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -209,7 +209,7 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
     ```
 
     >[!NOTE]
-    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](../../log-analytics/log-analytics-queries.md), a następnie powyższe zapytania zmienią się następujące czynności.
+    > Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](../../azure-monitor/log-query/log-query-overview.md), a następnie powyższe zapytania zmienią się następujące czynności.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -265,4 +265,4 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
 * Tak, zobacz [Zignoruj zalecenia](#ignore-recommendations) powyższej sekcji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Przeszukiwanie dzienników](../../log-analytics/log-analytics-queries.md) Aby dowiedzieć się, jak analizować szczegółowe dane SQL Health Check i zalecenia.
+* [Przeszukiwanie dzienników](../../azure-monitor/log-query/log-query-overview.md) Aby dowiedzieć się, jak analizować szczegółowe dane SQL Health Check i zalecenia.

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: 5ff03a4a2aab796084ce726114c2f4b556fd44b1
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a75d3265e70efacc9e581abe32faacb6c5fb1b37
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497959"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850520"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Usługi obsługujące zarządzanych tożsamości dla zasobów platformy Azure
 
@@ -45,7 +45,7 @@ Następujące usługi obsługuje uwierzytelnianie w usłudze Azure AD i zostały
 
 | Usługa | Identyfikator zasobu | Stan | Date | Przypisywanie dostępu |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure Resource Manager | `https://management.azure.com/` | Dostępne | Września 2017 r. | [Azure Portal](howto-assign-access-portal.md) <br>[Program PowerShell](howto-assign-access-powershell.md) <br>[Interfejs wiersza polecenia platformy Azure](howto-assign-access-CLI.md) |
+| Azure Resource Manager | `https://management.azure.com/` | Dostępne | Września 2017 r. | [Azure Portal](howto-assign-access-portal.md) <br>[Program PowerShell](howto-assign-access-powershell.md) <br>[Interfejs wiersza polecenia platformy Azure](howto-assign-access-CLI.md) <br>[Szablon usługi Azure Resource Manager](../../role-based-access-control/role-assignments-template.md) |
 | W usłudze Azure Key Vault | `https://vault.azure.net` | Dostępne | Września 2017 r. | |
 | Azure Data Lake | `https://datalake.azure.net/` | Dostępne | Września 2017 r. | |
 | Azure SQL | `https://database.windows.net/` | Dostępne | Października 2017 r. | |

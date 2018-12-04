@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: f35236f369cb1870c4bdfaab77582970b0684966
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 68a2ecc734ab3bbb98d14bef3d30109a2d018781
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720171"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847885"
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>Importuj dane usługi Azure Log Analytics w usłudze Power BI
 
@@ -32,7 +32,7 @@ Aby zaimportować dane z obszaru roboczego usługi Log Analytics w usłudze Powe
 ![Usługi log Analytics w usłudze Power BI](media/log-analytics-powerbi/overview.png)
 
 ## <a name="export-query"></a>Eksportowanie zapytania
-Rozpocznij od utworzenia [wyszukiwanie w dzienniku](log-analytics-queries.md) , zwraca dane z usługi Log Analytics mają do wypełniania zestawu danych usługi Power BI.  Następnie wyeksportować zapytanie do [języku Power Query (M)](https://msdn.microsoft.com/library/mt807488.aspx) których można używać w programie Power BI Desktop.
+Rozpocznij od utworzenia [wyszukiwanie w dzienniku](../azure-monitor/log-query/log-query-overview.md) , zwraca dane z usługi Log Analytics mają do wypełniania zestawu danych usługi Power BI.  Następnie wyeksportować zapytanie do [języku Power Query (M)](https://msdn.microsoft.com/library/mt807488.aspx) których można używać w programie Power BI Desktop.
 
 1. Tworzenie przeszukiwania dzienników w usłudze Log Analytics, aby wyodrębnić dane dla zestawu danych.
 2. Jeśli używasz portalu przeszukiwania dzienników, kliknij przycisk **usługi Power BI**.  Jeśli używasz portalu analiza, wybierz **wyeksportować** > **usługi Power BI zapytania (M)**.  Te dwie opcje eksportowania zapytania do pliku tekstowego o nazwie **PowerBIQuery.txt**. 
@@ -80,5 +80,5 @@ Zestaw danych utworzony w usłudze Power BI mają te same dane, który wcześnie
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [dziennikach](log-analytics-queries.md) do kompilowania zapytań, które można eksportować do usługi Power BI.
+* Dowiedz się więcej o [dziennikach](../azure-monitor/log-query/log-query-overview.md) do kompilowania zapytań, które można eksportować do usługi Power BI.
 * Dowiedz się więcej o [usługi Power BI](https://powerbi.microsoft.com) do tworzenia wizualizacji w oparciu eksportu usługi Log Analytics.

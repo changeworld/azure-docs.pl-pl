@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 93c3bd3f902f08c8f019744b3f30745c1fd9fa01
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 15526cc829d556457a7069df613bb6a8d2a2b23b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442427"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847664"
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Usługa Azure AD B2C: zabezpieczanie interfejsu API sieci Web przy użyciu środowiska Node.js
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
@@ -47,7 +47,7 @@ Następnie należy utworzyć aplikację w katalogu B2C, która dostarcza do usł
 * Skopiuj **Identyfikator aplikacji** przypisany do aplikacji. Te dane będą potrzebne później.
 
 ## <a name="create-your-policies"></a>Tworzenie zasad
-W usłudze Azure AD B2C każde działanie użytkownika jest definiowane przy użyciu [zasad](active-directory-b2c-reference-policies.md). Ta aplikacja zawiera dwa elementy dotyczące tożsamości: rejestracja i logowanie. Dla każdego typu należy utworzyć jeden zbiór zasad zgodnie z opisem w [artykule o zasadach](active-directory-b2c-reference-policies.md#create-a-sign-up-policy).  Podczas tworzenia trzech zbiorów zasad należy koniecznie:
+W usłudze Azure AD B2C każde działanie użytkownika jest definiowane przy użyciu [zasad](active-directory-b2c-reference-policies.md). Ta aplikacja zawiera dwa elementy dotyczące tożsamości: rejestracja i logowanie. Dla każdego typu należy utworzyć jeden zbiór zasad zgodnie z opisem w [artykule o zasadach](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow).  Podczas tworzenia trzech zbiorów zasad należy koniecznie:
 
 * Wybrać wartość **Nazwa wyświetlana** i inne atrybuty rejestracji w ramach zasad rejestracji.
 * Wybrać oświadczenia aplikacji **Nazwa wyświetlana** oraz **Identyfikator obiektu** we wszystkich zasadach.  Można również wybrać inne oświadczenia.
@@ -71,12 +71,12 @@ Ukończona aplikacja jest również [dostępna jako plik ZIP](https://github.com
 ## <a name="download-nodejs-for-your-platform"></a>Pobieranie środowiska Node.js dla platformy
 Aby pomyślnie korzystać z tej próbki, potrzebna jest działająca instalacja środowiska Node.js.
 
-Zainstaluj środowisko Node.js z witryny [nodejs.org](http://nodejs.org).
+Zainstaluj środowisko Node.js z witryny [nodejs.org](https://nodejs.org).
 
 ## <a name="install-mongodb-for-your-platform"></a>Instalowanie bazy danych MongoDB dla platformy
 Aby pomyślnie korzystać z tej próbki, potrzebna jest działająca instalacja bazy danych MongoDB. Baza danych MongoDB zostanie użyta w celu uzyskania trwałego interfejsu API REST w wystąpieniach serwera.
 
-Zainstaluj bazę danych MongoDB z witryny [mongodb.org](http://www.mongodb.org).
+Zainstaluj bazę danych MongoDB z witryny [mongodb.org](https://www.mongodb.org).
 
 > [!NOTE]
 > W tym przewodniku założono, że używasz domyślnej instalacji i domyślnych punktów końcowych serwera dla bazy danych MongoDB, które aktualnie mają wartość `mongodb://localhost`.

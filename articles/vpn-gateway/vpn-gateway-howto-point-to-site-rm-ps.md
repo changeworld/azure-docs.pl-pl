@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: ced92cd28c12443234b47353548a9c968cc175ac
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: c579bb32fdd43c95f027e6c9f5a6ef656d059d60
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095590"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847409"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurowanie połączenia typu punkt-lokacja z siecią wirtualną za pomocą natywnego uwierzytelniania certyfikatu platformy Azure: PowerShell
 
@@ -56,26 +56,17 @@ Wartości przykładowych możesz użyć do tworzenia środowiska testowego lub o
 * **Nazwa publicznego adresu IP: VNet1GWPIP**
 * **VpnType: RouteBased** 
 
-## <a name="declare"></a>1. Logowanie się i ustawianie zmiennych
+## <a name="declare"></a>1. Zaloguj się i Ustawianie zmiennych
 
-W tej sekcji należy zalogować się i zadeklarować wartości używane dla tej konfiguracji. Zadeklarowane wartości są używane w przykładowych skryptach. Można zmienić wartości, aby odzwierciedlić własne środowisko. Ale można też użyć zadeklarowanych wartości i postępować zgodnie z opisanymi krokami tylko w celach szkoleniowych.
+W tej sekcji, zaloguj się i zadeklarować wartości używane dla tej konfiguracji. Zadeklarowane wartości są używane w przykładowych skryptach. Można zmienić wartości, aby odzwierciedlić własne środowisko. Ale można też użyć zadeklarowanych wartości i postępować zgodnie z opisanymi krokami tylko w celach szkoleniowych.
 
-1. Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i zaloguj się na konto platformy Azure. Polecenie cmdlet wyświetla monit o poświadczenia logowania. Po zalogowaniu pobiera ono ustawienia konta, aby były dostępne dla programu Azure PowerShell. Jeśli nie uruchomiono programu PowerShell lokalnie, a zamiast korzystania z usługi Azure Cloud Shell "Wypróbuj" w przeglądarce, możesz przejść do kroku 2 w tej sekcji.
+### <a name="sign-in"></a>Logowanie
 
-  ```azurepowershell
-  Connect-AzureRmAccount
-  ```
-2. Pobierz listę subskrypcji platformy Azure.
+[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps login.md)]
 
-  ```azurepowershell-interactive
-  Get-AzureRmSubscription
-  ```
-3. Wskaż subskrypcję, której chcesz użyć.
+### <a name="declare-variables"></a>Zadeklaruj zmienne
 
-  ```azurepowershell-interactive
-  Select-AzureRmSubscription -SubscriptionName "Name of subscription"
-  ```
-4. Zadeklaruj zmienne, których chcesz użyć. Użyj poniższego przykładu, podstawiając własne wartości tam, gdzie to konieczne.
+Zadeklaruj zmienne, których chcesz użyć. Użyj poniższego przykładu, podstawiając własne wartości tam, gdzie to konieczne.
 
   ```azurepowershell-interactive
   $VNetName  = "VNet1"

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 6ba2fd85e23f3a0b634319f7399f97bec9ef3954
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 89236575a73325d650f1357ff03abb53bbc7b00c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346426"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848956"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -37,16 +37,6 @@ Jeśli nie określono inaczej, przykłady w niniejszym artykule dotyczą wersji 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalowanie podstawowych narzędzi usługi Azure Functions
 
 [Podstawowe narzędzia usługi Azure Functions] obejmuje wersję tego samego środowiska uruchomieniowego, zapewniająca środowisko uruchomieniowe usługi Azure Functions, którą można uruchamiać na lokalnym komputerze deweloperskim. Umożliwia także polecenia, aby tworzyć funkcje, łączenie z platformą Azure i wdrażać projekty funkcji.
-
-### <a name="v1"></a>W wersji 1.x
-
-Środowisko uruchomieniowe 1.x funkcji korzysta z oryginalną wersję narzędzia. Ta wersja programu .NET Framework (4.7) i jest obsługiwana tylko na komputerach z Windows. Przed zainstalowaniem wersji 1.x narzędzia, należy najpierw [zainstalować oprogramowanie NodeJS](https://docs.npmjs.com/getting-started/installing-node), która obejmuje npm.
-
-Aby zainstalować narzędzia 1.x do wersji, użyj następującego polecenia:
-
-```bash
-npm install -g azure-functions-core-tools@v1
-```
 
 ### <a name="v2"></a>W wersji 2.x
 
@@ -155,7 +145,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--force`** | Inicjowanie projektu, nawet wtedy, gdy istnieją istniejące pliki w projekcie. Ustawienie to zastępuje istniejące pliki o takiej samej nazwie. Nie ma wpływu na inne pliki w folderze projektu. |
 | **`--no-source-control -n`** | Uniemożliwia tworzenie domyślnej w repozytorium Git w wersji 1.x. W wersji 2.x, domyślnie nie jest tworzone repozytorium git. |
 | **`--source-control`** | Określa, czy ma być tworzona repozytorium git. Domyślnie nie jest tworzony repozytorium. Gdy `true`, repozytorium jest tworzony. |
-| **`--worker-runtime`** | Ustawia w środowisku uruchomieniowym języka dla projektu. Obsługiwane wartości to `dotnet`, `node` (JavaScript) i `java`. Gdy nie są ustawione, monit wybierz swoje środowiska uruchomieniowego podczas inicjowania. |
+| **`--worker-runtime`** | Ustawia w środowisku uruchomieniowym języka dla projektu. Obsługiwane wartości to `dotnet`, `node` (JavaScript) `java`, i `python`. Gdy nie są ustawione, monit wybierz swoje środowiska uruchomieniowego podczas inicjowania. |
 
 > [!IMPORTANT]
 > Domyślnie w wersji 2.x podstawowe narzędzia tworzy funkcję projektów aplikacji dla środowiska uruchomieniowego .NET jako [klasy projektów języka C#](functions-dotnet-class-library.md) (.csproj). Te projekty C#, które mogą być używane z programu Visual Studio lub Visual Studio Code, są kompilowane podczas testowania i publikowania na platformie Azure. Jeśli chcesz zamiast tego do tworzenia i pracy z tym samym skrypt języka C# (csx) pliki utworzone w wersji 1.x i w portalu może zawierać `--csx` parametru podczas tworzenia i wdrażania funkcji.
@@ -420,11 +410,11 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 Podstawowe narzędzia obsługuje dwa typy wdrożenia, wdrażania funkcji pliki projektu bezpośrednio do aplikacji funkcji i wdrażanie niestandardowych kontenera systemu Linux, który jest obsługiwany tylko w wersji 2.x. Konieczne jest posiadanie już [utworzyliśmy aplikację funkcji w ramach subskrypcji Azure](functions-cli-samples.md#create).
 
-W wersji 2.x, konieczne jest posiadanie [zarejestrowanych rozszerzeń](#register-extensions) w projekcie, przed opublikowaniem. Projekty, które wymagają kompilacji powinny zostać skompilowane, tak aby pliki binarne, które mogą być wdrażane.
+W wersji 2.x, konieczne jest posiadanie [zarejestrowanych rozszerzeń](#register-extensions) w projekcie, przed opublikowaniem. Projekty, które wymagają kompilacji powinny zostać skompilowane, tak aby pliki binarne, które mogą być wdrażane. 
 
 ### <a name="project-file-deployment"></a>Wdrażanie pliku projektu  
 
-Najbardziej typowa metoda wdrażania obejmuje przy użyciu podstawowych narzędzi pakietu projektu aplikacji funkcji i wdrożyć pakiet do aplikacji funkcji. Można opcjonalnie [uruchamiać swoje funkcje bezpośrednio z pakietu wdrożeniowego](run-functions-from-deployment-package.md).
+Najbardziej typowa metoda wdrażania obejmuje pakiet projektu aplikacji funkcji, pliki binarne i zależnościami i wdrożenie pakietu w aplikacji funkcji przy użyciu podstawowych narzędzi. Można opcjonalnie [uruchamiać swoje funkcje bezpośrednio z pakietu wdrożeniowego](run-functions-from-deployment-package.md).
 
 Aby opublikować projekt funkcje do aplikacji funkcji na platformie Azure, użyj `publish` polecenia:
 
@@ -440,14 +430,14 @@ To polecenie publikuje do istniejącej aplikacji funkcji na platformie Azure. B�
 > Po utworzeniu aplikacji funkcji w witrynie Azure portal, używa wersji 2.x środowisko uruchomieniowe funkcji domyślnie. Aby funkcja aplikacji użyj wersji 1.x środowiska uruchomieniowego, postępuj zgodnie z instrukcjami [działać w wersji 1.x](functions-versions.md#creating-1x-apps).  
 > Nie można zmienić wersji środowiska uruchomieniowego dla aplikacji funkcji, która ma istniejących funkcji.
 
-Można użyć następujących opcji publikowania, które mają zastosowanie do wersji, wersji 1.x i 2.x:
+Opcje publikowania następującego projektu dotyczą zarówno wersji 1.x i 2.x:
 
 | Opcja     | Opis                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  Ustawienia publikowania w local.settings.json na platformie Azure, monitowanie o zastąpienie, jeżeli ustawienie już istnieje. Jeśli używasz emulatora magazynu, zmień ustawienie aplikacji, aby [połączenia rzeczywisty magazyn](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | Pomija monit o zastąpienie ustawień aplikacji podczas `--publish-local-settings -i` jest używany.|
 
-Następujące opcje publikowania są obsługiwane tylko w wersji 2.x:
+Następujący projekt opcje publikowania są obsługiwane tylko w wersji 2.x:
 
 | Opcja     | Opis                            |
 | ------------ | -------------------------------------- |
@@ -455,6 +445,8 @@ Następujące opcje publikowania są obsługiwane tylko w wersji 2.x:
 |**`--list-ignored-files`** | Wyświetla listę plików, które są ignorowane podczas publikowania, który jest oparty na pliku .funcignore. |
 | **`--list-included-files`** | Wyświetla listę plików, które są publikowane, który jest oparty na pliku .funcignore. |
 | **`--zip`** | Publikowanie w pakiecie przebieg z pliku Zip. Wymaga aplikacji ma ustawienie AzureWebJobsStorage zdefiniowane. |
+| **`--build-native-deps`** | Aplikacje funkcji umożliwia pominięcie generowania .wheels folderu podczas publikowania języka python. |
+| **`--additional-packages`** | Lista pakietów do zainstalowania podczas tworzenia zależności natywnych. Na przykład: `python3-dev libevent-dev`. |
 | **`--force`** | Ignoruj wstępnie publikowania weryfikacji w niektórych scenariuszach. |
 | **`--csx`** | Opublikuj projekt (csx) skrypt języka C#. |
 | **`--no-build`** | Pomiń kompilowanie funkcje dotnet. |

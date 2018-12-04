@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 03c1afb45ddde994ba79838fc73eb3c16e8510f2
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 843271901b8d58c2c5a6c4cf495997498b8278b6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723979"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848854"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analizowanie użycia danych w usłudze Log Analytics
 
@@ -209,7 +209,7 @@ Określ istniejącą [grupę akcji](../monitoring-and-diagnostics/monitoring-act
 Po otrzymaniu alertu wykonaj kroki przedstawione w poniższej sekcji, aby rozwiązać problemy związane z większym niż oczekiwano użyciem.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Zobacz temat [Wyszukiwanie w dziennikach w usłudze Log Analytics](log-analytics-queries.md), aby dowiedzieć się, jak korzystać z języka wyszukiwania. Możesz użyć zapytań wyszukiwania w celu przeprowadzenia dodatkowej analizy danych użycia.
+* Zobacz temat [Wyszukiwanie w dziennikach w usłudze Log Analytics](../azure-monitor/log-query/log-query-overview.md), aby dowiedzieć się, jak korzystać z języka wyszukiwania. Możesz użyć zapytań wyszukiwania w celu przeprowadzenia dodatkowej analizy danych użycia.
 * Wykonaj kroki opisane w sekcji dotyczącej [tworzenia nowego alertu dziennika](../monitoring-and-diagnostics/alert-metric.md), aby otrzymywać powiadomienie, gdy kryteria wyszukiwania zostaną spełnione.
 * Użyj funkcji [określania celu rozwiązania](../azure-monitor/insights/solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów.
 * Aby skonfigurować efektywne zasady zbierania zdarzeń zabezpieczeń, przejrzyj [zasady filtrowania usługi Azure Security Center](../security-center/security-center-enable-data-collection.md).

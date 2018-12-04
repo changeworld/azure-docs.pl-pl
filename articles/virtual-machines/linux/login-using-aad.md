@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 4f86dee539e3cc5a90db828ed11dbd225a00555d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: e75758c5a4171adc7af56581026a727db2ef4740
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334639"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850979"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Zaloguj się do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -129,7 +129,7 @@ Po pierwsze, Wyświetl publiczny adres IP swojej maszyny wirtualnej za pomocą [
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Zaloguj się do maszyny wirtualnej systemu Linux platformy Azure przy użyciu poświadczeń usługi Azure AD. `-l` Parametr umożliwia określenie własny adres konta usługi Azure AD. Określ publiczny adres IP swojej maszyny wirtualnej jako dane wyjściowe w poprzednim poleceniu:
+Zaloguj się do maszyny wirtualnej systemu Linux platformy Azure przy użyciu poświadczeń usługi Azure AD. `-l` Parametr umożliwia określenie własny adres konta usługi Azure AD. Adresy konta powinny być wprowadzane w same małe litery. Użyj publicznego adresu IP maszyny wirtualnej z poprzedniego polecenia:
 
 ```azurecli-interactive
 ssh -l azureuser@contoso.onmicrosoft.com publicIps

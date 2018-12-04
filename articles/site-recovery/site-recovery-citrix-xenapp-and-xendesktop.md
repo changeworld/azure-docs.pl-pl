@@ -5,14 +5,14 @@ author: ponatara
 manager: abhemraj
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 0b8d9765766191533745da4c653f1a91ce635c24
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4df7975d4d52e00cce7b57c6f207eb6cb9ea3be3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210316"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847902"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>Konfigurowanie odzyskiwania po awarii dla wdrożenia programów Citrix XenApp i XenDesktop wielowarstwowej
 
@@ -48,7 +48,7 @@ Wdrożenia programów Citrix XenApp i XenDesktop z serwer AD DNS, SQL bazy danyc
 ![Wzorzec wdrożenia 1](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-deployment.png)
 
 
-## <a name="site-recovery-support"></a>Obsługa odzyskiwania lokacji
+## <a name="site-recovery-support"></a>Obsługa usługi Site Recovery
 
 Na potrzeby tego artykułu Citrix wdrożenia na maszynach wirtualnych VMware jest zarządzane przez vSphere w wersji 6.0 lub System Center VMM 2012 R2 zostały użyte do konfiguracji odzyskiwania po awarii.
 
