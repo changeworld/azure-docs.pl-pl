@@ -1,6 +1,6 @@
 ---
-title: Samouczek dotyczący usługi Azure Security Center — Definiowanie i ocenianie zasad zabezpieczeń | Microsoft Docs
-description: Samouczek dotyczący usługi Azure Security Center — Definiowanie i ocenianie zasad zabezpieczeń
+title: Edytowanie zasad zabezpieczeń usługa Azure Policy | Dokumentacja firmy Microsoft
+description: Edytowanie zasad zabezpieczeń usługa Azure Policy.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -9,102 +9,160 @@ editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2018
+ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: fcd3c2a95cea0a838fc16149a0a74fad95ea3300
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
-ms.translationtype: HT
+ms.openlocfilehash: d6cc216f71efcd3b3973cd37349dd5145237f02f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027065"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839334"
 ---
-# <a name="tutorial-define-and-assess-security-policies"></a>Samouczek: Definiowanie i ocenianie zasad zabezpieczeń
-Usługa Security Center pomaga zapewnić zgodność z wymaganiami dotyczącymi zabezpieczeń określonymi przez firmę lub przepisy, definiując pożądaną konfigurację Twoich obciążeń przy użyciu zasad zabezpieczeń. Gdy zdefiniujesz zasady dla Twoich subskrypcji platformy Azure oraz dostosujesz je do typu obciążenia lub wrażliwości danych, usługa Security Center może podać zalecenia dotyczące zabezpieczeń zasobów obliczeniowych, aplikacji sieciowych, SQL i magazynowych oraz tożsamości i uzyskiwania dostępu do zasobów. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+# <a name="edit-security-policies-in-azure-policy"></a>Edytowanie zasad zabezpieczeń usługa Azure Policy
+Centrum zabezpieczeń ułatwia wyświetlanie stanu zasad zabezpieczeń i jak są one stosowane w różnych obciążeń. Usługa Azure Security Center automatycznie przypisuje jej [zasad wbudowanych rozwiązań zabezpieczeń](security-center-policy-definitions.md) w każdej subskrypcji, która jest dołączona. Można skonfigurować je w [usługi Azure Policy](../azure-policy/azure-policy-introduction.md), lub za pomocą interfejsu API REST, który umożliwia także ustawić zasady w grupach zarządzania i w ramach wielu subskrypcji. Aby uzyskać więcej informacji, zobacz temat [Integracja zasad zabezpieczeń w usłudze Security Center z usługą Azure Policy](security-center-azure-policy.md). Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Konfigurowanie zasad zabezpieczeń
+> * Konfigurowanie zasad zabezpieczeń przy użyciu interfejsu API REST
 > * Ocenianie zabezpieczeń zasobów
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby wypróbować funkcje omówione w tym samouczku, musisz korzystać ze standardowej warstwy cenowej usługi Security Center. Standardową warstwę cenową usługi Security Center możesz wypróbować bezpłatnie przez pierwsze 60 dni. Przewodnik szybkiego startu [Dołączanie subskrypcji platformy Azure do standardowej usługi Security Center](security-center-get-started.md) przeprowadzi Cię przez procedurę uaktualniania do warstwy standardowej.
+Aby wypróbować funkcje omówione w tym samouczku, musisz korzystać ze standardowej warstwy cenowej usługi Security Center. Możesz spróbować standardowej usługi Security Center bez ponoszenia kosztów. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/). Przewodnik szybkiego startu [Dołączanie subskrypcji platformy Azure do standardowej usługi Security Center](security-center-get-started.md) przeprowadzi Cię przez procedurę uaktualniania do warstwy standardowej.
 
-## <a name="configure-security-policy"></a>Konfigurowanie zasad zabezpieczeń
-Usługa Security Center automatycznie tworzy domyślne zasady zabezpieczeń dla każdej Twojej subskrypcji platformy Azure. Zasady zabezpieczeń składają się z zaleceń, które można włączać lub wyłączać w zależności od wymagań dotyczących zabezpieczeń danej subskrypcji. Aby wprowadzać zmiany domyślnych zasad zabezpieczeń, musisz być właścicielem, współautorem lub administratorem zabezpieczeń subskrypcji.
+## <a name="configure-a-security-policy-using-the-rest-api"></a>Konfigurowanie zasad zabezpieczeń przy użyciu interfejsu API REST
 
-1. W menu głównym usługi Security Center wybierz pozycję **Zasady zabezpieczeń**.
-2. Wybierz subskrypcję, której chcesz użyć.
+W ramach natywnej integracji z usługą Azure Policy Azure Security Center pozwala na przejęcie interfejsu API REST zaletą usługi Azure Policy w celu utworzenia przypisania zasad. Poniższe instrukcje opisują Tworzenie przypisania zasad, a także dostosowywania istniejących przypisań. 
 
-  ![Zasady zabezpieczeń](./media/tutorial-security-policy/tutorial-security-policy-fig1.png)  
+Ważne pojęcia dotyczące usługi Azure Policy: 
 
-3. W obszarach **Obliczenia i aplikacje**, **Sieć** i **Dane** ustaw każdą konfigurację zabezpieczeń, którą chcesz monitorować, na **Włączona**. Usługa Security Center w sposób ciągły będzie oceniać konfigurację środowiska i jeśli istnieje luka w zabezpieczeniach, wygeneruje zalecenie dotyczące zabezpieczeń. Wybierz pozycję **Wyłącz**, jeśli konfiguracja zabezpieczeń jest niezalecana lub nieodpowiednia. Na przykład w środowisku programistycznym/testowym może nie być wymagany taki sam poziom zabezpieczeń jak w środowisku produkcyjnym. Po wybraniu zasad odpowiednich dla danego środowiska kliknij pozycję **Zapisz**.
+- A **definicji zasad** jest regułą 
 
-  ![Konfiguracja zabezpieczeń](./media/tutorial-security-policy/tutorial-security-policy-fig6.png)  
+-  **Inicjatywy** to kolekcja definicji zasad (zasad) 
 
-Zaczekaj, aż usługa Security Center przetworzy te zasady i wygeneruje zalecenia. W przypadku niektórych konfiguracji, takich jak aktualizacje systemu i konfiguracje systemu operacyjnego, ocena może potrwać nawet 12 godzin, podczas gdy grupy zabezpieczeń sieci i konfiguracje szyfrowania mogą zostać ocenione niemal natychmiast. Gdy na pulpicie nawigacyjnym usługi Security Center zostaną wyświetlone zalecenia, możesz przejść do następnego kroku.
+-  **Przypisania** stosowania zasad lub inicjatywy do określonego zakresu (grupy zarządzania, subskrypcji, itp.) 
 
-## <a name="assess-security-of-resources"></a>Ocenianie zabezpieczeń zasobów
-1. W zależności od zasad zabezpieczeń, które zostały włączone, usługa Security Center udostępni odpowiedni zestaw zaleceń dotyczących zabezpieczeń. Rozpocznij od przejrzenia zaleceń dotyczących maszyny wirtualnej i komputerów. Na pulpicie nawigacyjnym usługi Security Center kliknij pozycję **Przegląd**, a następnie kliknij pozycję **Wystąpienia obliczeniowe i aplikacje**.
+Usługa Security Center ma wbudowane inicjatywy, która obejmuje wszystkie jego zasadami zabezpieczeń. Aby ocenić zasady Centrum zabezpieczeń na zasoby platformy Azure, należy utworzyć przypisania na grupę zarządzania lub subskrypcji, którą chcesz ocenić.  
 
-  ![Wystąpienia obliczeniowe](./media/tutorial-security-policy/tutorial-security-policy-fig2.png)
+Wbudowane inicjatywy zawiera wszystkie zasady Centrum zabezpieczeń, domyślnie włączone. Użytkownik może wyłączyć określonych zasad z wbudowaną inicjatywy, na przykład można zastosować wszystkie zasady Centrum zabezpieczeń, z wyjątkiem **zapory aplikacji sieci web**, zmieniając wartość parametru efekt zasad  **Wyłączone**. 
 
-  Przejrzyj poszczególne zalecenia, zwracając uwagę przede wszystkim na zalecenia w kolorze czerwonym (mające wysoki priorytet). Niektóre z tych zaleceń mają działanie naprawcze, które można zaimplementować bezpośrednio z usługi Security Center, na przykład [problemy z ochroną punktów końcowych](https://docs.microsoft.com/azure/security-center/security-center-install-endpoint-protection). Inne zalecenia mają tylko wytyczne dotyczące działania naprawczego, które należy zastosować, na przykład zalecenie dotyczące braku szyfrowania dysków.
+### <a name="api-examples"></a>Przykłady interfejsu API
 
-2. Po wykonaniu wszystkich niezbędnych zaleceń dotyczących wystąpień obliczeniowych należy przejść do kolejnego obciążenia: sieci. Na pulpicie nawigacyjnym usługi Security Center kliknij pozycję **Przegląd**, a następnie kliknij pozycję **Sieć**.
+W poniższych przykładach należy zastąpić następujące zmienne:
 
-  ![Networking](./media/tutorial-security-policy/tutorial-security-policy-fig3.png)
+- **{zakresu}**  wprowadź nazwę grupy zarządzania lub subskrypcji są stosowane zasady.
+- **{poicyAssignmentName}**  wprowadź [nazwa przypisania zasad odpowiednich](#policy-names).
+- **{name}**  wprowadź swoją nazwę lub nazwę administratora, który zatwierdzone zmiany zasad.
 
-  Na stronie zaleceń dotyczących sieci znajduje się lista problemów z zabezpieczeniami konfiguracji, punktów końcowych mających połączenie z Internetem i topologii sieci. Podobnie jak w przypadku **wystąpień obliczeniowych i aplikacji**, niektóre zalecenia dotyczące sieci zawierają zintegrowane działania naprawcze, a inne nie.
+W tym przykładzie pokazano, jak przypisać wbudowanych inicjatywy Centrum zabezpieczeń dla subskrypcji lub grupy zarządzania
+ 
+    PUT  
+    https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
 
-3. Po wykonaniu wszystkich niezbędnych zaleceń dotyczących sieci należy przejść do kolejnego obciążenia: magazynu i danych. Na pulpicie nawigacyjnym usługi Security Center kliknij pozycję **Przegląd**, a następnie kliknij pozycję **Dane i magazyn**.
+    Request Body (JSON) 
 
-  ![Zasoby danych](./media/tutorial-security-policy/tutorial-security-policy-fig4.png)
+    { 
 
-  Na stronie **Zasoby danych** znajdują się zalecenia dotyczące włączania inspekcji dla serwerów SQL i baz danych platformy Azure, włączania szyfrowania baz danych SQL oraz włączania szyfrowania konta magazynu Azure. Jeśli nie masz tych obciążeń, nie są wyświetlane żadne zalecenia. Podobnie jak w przypadku **wystąpień obliczeniowych i aplikacji**, niektóre zalecenia dotyczące danych i magazynu zawierają zintegrowane działania naprawcze, a inne nie.
+      "properties":{ 
 
-4. Po wykonaniu wszystkich niezbędnych zaleceń dotyczących danych i magazynu należy przejść do kolejnego obciążenia: Tożsamość i dostęp. Na pulpicie nawigacyjnym usługi Security Center kliknij pozycję **Przegląd**, a następnie kliknij pozycję **Tożsamość i dostęp**.
+    "displayName":"Enable Monitoring in Azure Security Center", 
 
-  ![Tożsamość i dostęp](./media/tutorial-security-policy/tutorial-security-policy-fig5.png)
+    "metadata":{ 
 
-  Strona **Tożsamość i dostęp** zawiera następujące zalecenia:
+    "assignedBy":"{Name}" 
 
-   - Włącz usługę MFA dla kont uprzywilejowanych w ramach subskrypcji
-   - Usuń konta zewnętrzne z uprawnieniami do zapisu z subskrypcji
-   - Usuń uprzywilejowane konta zewnętrzne z subskrypcji
+    }, 
 
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Inne przewodniki szybkiego startu i samouczki w tej kolekcji bazują na tym przewodniku. Jeśli zamierzasz kontynuować pracę z kolejnymi przewodnikami szybkiego startu i samouczkami, w dalszym ciągu korzystaj z warstwy standardowej i zachowaj włączoną automatyczną aprowizację. Jeśli nie zamierzasz kontynuować lub chcesz wrócić do warstwy bezpłatnej:
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
 
-1. Wróć do menu głównego usługi Security Center i wybierz pozycję **Zasady zabezpieczeń**.
-2. Wybierz subskrypcję lub zasady, którym chcesz przywrócić warstwę bezpłatną. Zostanie otwarte okno **Zasady zabezpieczeń**.
-3. W obszarze **SKŁADNIKI ZASAD** wybierz pozycję **Warstwa cenowa**.
-4. Wybierz pozycję **Bezpłatna**, aby zmienić subskrypcję z warstwy standardowej na warstwę bezpłatną.
-5. Wybierz pozycję **Zapisz**.
+    "parameters":{}, 
 
-Jeśli chcesz wyłączyć automatyczną aprowizację:
+    } 
 
-1. Wróć do menu głównego usługi Security Center i wybierz pozycję **Zasady zabezpieczeń**.
-2. Wybierz subskrypcję, dla której chcesz wyłączyć automatyczną aprowizację.
-3. W sekcji **Zasady zabezpieczeń — zbieranie danych** wybierz pozycję **Wyłącz** w obszarze **Dołączanie**, aby wyłączyć automatyczną aprowizację.
-4. Wybierz pozycję **Zapisz**.
+    } 
 
->[!NOTE]
-> Wyłączenie automatycznej aprowizacji nie powoduje usunięcia programu Microsoft Monitoring Agent z maszyn wirtualnych platformy Azure, na których aprowizowano agenta. Wyłączenie automatycznej aprowizacji powoduje ograniczenie monitorowania zabezpieczeń dla zasobów.
->
+W tym przykładzie pokazano, jak przypisać wbudowanych inicjatywy Centrum zabezpieczeń w ramach subskrypcji za pomocą następujących zasad, które są wyłączone: 
 
-## <a name="next-steps"></a>Następne kroki
-W tym samouczku przedstawiono podstawową definicję zasad i ocenę zabezpieczeń Twojego obciążenia za pomocą usługi Security Center, takie jak:
+- Aktualizacje systemu ("systemUpdatesMonitoringEffect") 
 
-> [!div class="checklist"]
-> * Konfiguracja zasad zabezpieczeń w celu zapewnienia zgodności z firmowymi lub prawnymi wymaganiami dotyczącymi zabezpieczeń
-> * Ocena zabezpieczeń dla zasobów dotyczących zasobów obliczeniowych, sieciowych, SQL i magazynowych oraz zasobów aplikacji
+- Konfiguracje zabezpieczeń ("systemConfigurationsMonitoringEffect") 
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak chronić swoje zasoby za pomocą usługi Security Center.
+- Program Endpoint protection ("endpointProtectionMonitoringEffect") 
 
-> [!div class="nextstepaction"]
-> [Ochrona zasobów](tutorial-protect-resources.md)
+ 
+      PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+
+      Request Body (JSON) 
+
+      { 
+
+        "properties":{ 
+
+      "displayName":"Enable Monitoring in Azure Security Center", 
+
+      "metadata":{ 
+
+      "assignedBy":"{Name}" 
+
+      }, 
+
+      "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+
+      "parameters":{ 
+
+      "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
+
+      "systemConfigurationsMonitoringEffect":{"value":"Disabled"}, 
+
+      "endpointProtectionMonitoringEffect":{"value":"Disabled"}, 
+
+      }, 
+
+       } 
+
+      } 
+
+W tym przykładzie pokazano, jak usunąć przypisanie:
+
+    DELETE   
+    https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+
+
+## Odwołanie do nazwy zasad <a name="policy-names"></a>
+
+|Nazwa zasad w usłudze Security Center|Nazwa zasad wyświetlana w usługi Azure Policy |Nazwa parametru efekt zasad|
+|----|----|----|
+|Szyfrowanie SQL |Monitoruj nieszyfrowaną bazę danych SQL w usłudze Azure Security Center |sqlEncryptionMonitoringEffect| 
+|Inspekcja SQL |Monitorowanie bazy danych SQL bez inspekcji w usłudze Azure Security Center |sqlAuditingMonitoringEffect|
+|Aktualizacje systemu |Monitoruj brakujące aktualizacje systemu w usłudze Azure Security Center |systemUpdatesMonitoringEffect|
+|Szyfrowanie w usłudze Storage |Przeprowadź inspekcję brakującego szyfrowania elementu blob dla kont magazynu |storageEncryptionMonitoringEffect|
+|Dostęp do sieci JIT |Monitoruj ewentualny dostęp tylko w czas (JIT) w usłudze Azure Security Center |jitNetworkAccessMonitoringEffect |
+|Funkcje adaptacyjnego sterowania aplikacjami |Monitor możliwe listę dozwolonych aplikacji w usłudze Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
+|Grupy zabezpieczeń sieci |Monitoruj liberalny dostęp do sieci w Centrum zabezpieczeń Azure |networkSecurityGroupsMonitoringEffect| 
+|Konfiguracje zabezpieczeń |Monitorowanie luk w zabezpieczeniach systemu operacyjnego, w usłudze Azure Security Center |systemConfigurationsMonitoringEffect| 
+|Ochrona punktów końcowych |Monitorowanie brakującej ochrony punktów końcowych w usłudze Azure Security Center |endpointProtectionMonitoringEffect |
+|Szyfrowanie dysków |Monitoruj nieszyfrowane dyski maszyn wirtualnych w usłudze Azure Security Center |diskEncryptionMonitoringEffect|
+|Ocena luk w zabezpieczeniach |Monitorowanie maszyn wirtualnych luk w zabezpieczeniach w usłudze Azure Security Center |vulnerabilityAssesmentMonitoringEffect|
+|Zapora aplikacji internetowej |Monitoruj niechronione aplikacje internetowe w usłudze Azure Security Center |webApplicationFirewallMonitoringEffect |
+|Zapora nowej generacji |Monitoruj niechronione punkty końcowe sieci w Centrum zabezpieczeń Azure| |
+
+
+
+
+
+## <a name="next-steps"></a>Kolejne kroki
+W tym artykule przedstawiono sposób edytowanie zasad zabezpieczeń usługa Azure Policy. Aby dowiedzieć się więcej na temat usługi Security Center, zobacz następujące artykuły:
+
+* [Przewodnik planowania i obsługi usługi Azure Security Center](security-center-planning-and-operations-guide.md) — informacje na temat planowania i zagadnień projektowych podczas wdrażania usługi Azure Security Center.
+* [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
+* [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
+* [Monitorowanie rozwiązań partnerskich w usłudze Azure Security Center](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
+* [Uzyskiwanie wglądu na poziomie dzierżawy w usłudze Azure Security Center](security-center-management-groups.md) — informacje na temat sposobu konfigurowania grup zarządzania dla usługi Azure Security Center.
+* [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
+* [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
+
+Aby dowiedzieć się więcej na temat usługi Azure Policy, zobacz [Co to jest Azure Policy?](../azure-policy/azure-policy-introduction.md)
