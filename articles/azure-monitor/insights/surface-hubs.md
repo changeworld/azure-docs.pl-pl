@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 761140b1022f5a1c1cd523c6e0e52193ff2a9700
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 5de652c1296ddcf94015f8c00529fc5288f98291
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52428564"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834778"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Monitorowanie urządzeń Surface Hub z usługą Log Analytics, aby śledzić ich kondycję
 
@@ -87,5 +87,5 @@ Monitorowanie usługi urządzeń Surface Hub przy użyciu usługi Log Analytics 
 Możesz utworzyć [alerty](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) oparte na istniejące lub niestandardowych wyszukiwań w dziennikach. Korzystanie z danych, które usługa Log Analytics zbiera z usługi urządzeń Surface Hub, możesz wyszukać problemów i powiązane alerty warunki, które definiują dla urządzeń.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Użyj [przeszukiwanie dzienników w usłudze Log Analytics](../../log-analytics/log-analytics-queries.md) Aby przeglądać szczegółowe dane na urządzeniu Surface Hub.
+* Użyj [przeszukiwanie dzienników w usłudze Log Analytics](../../azure-monitor/log-query/log-query-overview.md) Aby przeglądać szczegółowe dane na urządzeniu Surface Hub.
 * Tworzenie [alerty](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) być powiadamiana wystąpić problemy z usługi urządzeń Surface Hub.

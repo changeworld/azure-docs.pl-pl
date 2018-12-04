@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 237d22054ecb4eea58494c1b5066eb8e00ecd2fc
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: b0e24da86d253139a85e792bf3c59d777cf5db6a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583453"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833949"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Dostosowywanie interfejsu użytkownika aplikacji za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Wykonaj kroki [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-
 
 Za pomocą funkcji dostosowywania interfejsu użytkownika strony, można dostosować wygląd i działanie żadnych zasad niestandardowych. Można także zapewnić spójność wizerunku marki i wrażeń wizualnych między aplikacją i usługą Azure AD B2C.
 
-Oto jak to działa: usługi Azure AD B2C kodu w przeglądarce klienta, korzysta z nowoczesnego podejścia o nazwie [udostępniania zasobów między źródłami (CORS)](http://www.w3.org/TR/cors/). Najpierw należy określić adres URL w zasadach niestandardowych z dostosowaną zawartość HTML. Usługa Azure AD B2C scala elementy interfejsu użytkownika z zawartością HTML ładowaną z adresu URL, a następnie wyświetla stronę klientowi.
+Oto jak to działa: usługi Azure AD B2C kodu w przeglądarce klienta, korzysta z nowoczesnego podejścia o nazwie [udostępniania zasobów między źródłami (CORS)](https://www.w3.org/TR/cors/). Najpierw należy określić adres URL w zasadach niestandardowych z dostosowaną zawartość HTML. Usługa Azure AD B2C scala elementy interfejsu użytkownika z zawartością HTML ładowaną z adresu URL, a następnie wyświetla stronę klientowi.
 
 ## <a name="create-your-html5-content"></a>Utwórz swoje HTML5 zawartości
 
@@ -111,7 +111,7 @@ Konfigurowanie magazynu obiektów Blob na potrzeby udostępniania zasobów międ
 
 Sprawdź, czy wszystko jest gotowe, wykonując następujące czynności:
 
-1. Przejdź do [www.test-cors.org](http://www.test-cors.org/) witryny sieci Web, a następnie wklej adres URL w **zdalnego adresu URL** pole.
+1. Przejdź do [www.test-cors.org](https://www.test-cors.org/) witryny sieci Web, a następnie wklej adres URL w **zdalnego adresu URL** pole.
 2. Kliknij przycisk **Wyślij żądanie**.  
     Jeśli otrzymasz komunikat o błędzie, upewnij się, że Twoje [ustawienia specyfikacji CORS](#configure-cors) są poprawne. Może być również konieczne wyczyszczenie pamięci podręcznej przeglądarki lub otwórz sesję przeglądania w trybie prywatnym, naciskając klawisze Ctrl + Shift + P.
 

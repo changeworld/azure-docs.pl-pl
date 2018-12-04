@@ -7,16 +7,16 @@ editor: jasonwhowell
 services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 2f06c9515c6ee79ea7475452b7000d1babdbecfe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/03/2018
+ms.openlocfilehash: 043988066cae672225b850b57864bddb3155689c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956527"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833843"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mariadb"></a>Pojęcia wysokiej dostępności w usłudze Azure Database dla serwera MariaDB
-Usługa Azure Database for MariaDB oferuje gwarantowaną wysoką dostępność. Finansowo umowy dotyczącej poziomu usług (SLA) wynosi 99,99% po ogólnym udostępnieniu. Umowa SLA nie ma zastosowania do publicznej wersji zapoznawczej. Nie ma praktycznie nie aplikacji, czas przestoju podczas korzystania z tej usługi.
+Usługa Azure Database for MariaDB oferuje gwarantowaną wysoką dostępność. Finansowo umowy dotyczącej poziomu usług (SLA) wynosi 99,99% po ogólnym udostępnieniu. Nie ma praktycznie nie aplikacji, czas przestoju podczas korzystania z tej usługi.
 
 ## <a name="high-availability"></a>Wysoka dostępność
 Model o wysokiej dostępności (HA) opiera się na wbudowane mechanizmy trybu failover, po wystąpieniu przerwania poziomu węzła. Przerwanie poziomu węzła może wystąpić z powodu awarii sprzętu lub w odpowiedzi na wdrożenie usługi.
@@ -34,4 +34,4 @@ Podobnie jak w modelu wysokiej dostępności usługi Azure Database dla serwera 
 Podczas operacji skalowania odbywa się przerwę połączenia bazy danych. Aplikacje klienckie są odłączone, a następnie otwórz niezatwierdzone transakcje są anulowane. Gdy aplikacja kliencka ponawia próbę połączenia lub tworzy nowe połączenie, bramy kieruje połączenia z wystąpieniem o nowym rozmiarze.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Aby zapoznać się z omówieniem usługi, zobacz [— Azure Database for MariaDB — omówienie](overview.md)
+- Aby zapoznać się z omówieniem usługi, zobacz [— Azure Database for MariaDB — omówienie](overview.md)

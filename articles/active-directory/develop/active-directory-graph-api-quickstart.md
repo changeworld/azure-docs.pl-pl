@@ -18,12 +18,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: sureshja
 ms.custom: aaddev
-ms.openlocfilehash: b8dba999ac6523aad29aae40b528fd010fec0550
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 7a3c3e39792119d296c849c012d4798ec85a0e03
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687354"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845498"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Porady: Użyj usługi Azure AD interfejsu API programu Graph
 
@@ -82,7 +82,7 @@ Należy zwrócić uwagę, następujące funkcje i ograniczenia dotyczące Eksplo
 
 ## <a name="using-fiddler-to-write-to-the-directory"></a>Za pomocą narzędzia Fiddler do zapisu do katalogu
 
-Na potrzeby tego przewodnika Szybki Start można użyć debugera w sieci Web programu Fiddler rozwiązanie polegające na wykonywanie operacji względem katalogu usługi Azure AD "write". Na przykład możesz pobrać i przekaż zdjęcie w profilu użytkownika (co nie jest możliwe za pomocą Eksploratora usługi Azure AD Graph). Aby uzyskać więcej informacji i zainstaluj program Fiddler, zobacz [ http://www.telerik.com/fiddler ](http://www.telerik.com/fiddler).
+Na potrzeby tego przewodnika Szybki Start można użyć debugera w sieci Web programu Fiddler rozwiązanie polegające na wykonywanie operacji względem katalogu usługi Azure AD "write". Na przykład możesz pobrać i przekaż zdjęcie w profilu użytkownika (co nie jest możliwe za pomocą Eksploratora usługi Azure AD Graph). Aby uzyskać więcej informacji i zainstaluj program Fiddler, zobacz [ https://www.telerik.com/fiddler ](https://www.telerik.com/fiddler).
 
 W poniższym przykładzie umożliwia debuger sieci Web programu Fiddler Utwórz nową grupę zabezpieczeń "MyTestGroup" w katalogu usługi Azure AD.
 

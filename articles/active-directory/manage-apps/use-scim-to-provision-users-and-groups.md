@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: d99996bb4177a11342f0897d2cf69f82a5b81bf7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: db607da10898744441ac11bcb60fa63566cdfdd7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721232"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833962"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Przy użyciu systemu dla Standard międzydomenowe zarządzania tożsamościami (SCIM), aby automatycznie aprowizować użytkowników i grup z usługi Azure Active Directory do aplikacji
 
@@ -163,7 +163,7 @@ Aby opracować własne usługi sieci web, który jest zgodny ze specyfikacją St
   
   ![][3]
   
-2. [Express route obsługi](http://expressjs.com/guide/routing.html) zostały wprowadzone dostępne do przetwarzania node.js żądania obiektów reprezentująca wywołania (zgodnie z definicją w specyfikacji Standard SCIM), usługą sieci web środowiska node.js.   
+2. [Express route obsługi](https://expressjs.com/guide/routing.html) zostały wprowadzone dostępne do przetwarzania node.js żądania obiektów reprezentująca wywołania (zgodnie z definicją w specyfikacji Standard SCIM), usługą sieci web środowiska node.js.   
 
 ### <a name="building-a-custom-scim-endpoint"></a>Tworzenie punktu końcowego niestandardowe Standard SCIM
 Korzystanie z bibliotek interfejsu wiersza polecenia, deweloperzy korzystający z tych bibliotek mogą hostować usługi w ramach zestawu Common Language Infrastructure dowolnego pliku wykonywalnego lub w Internet Information Services. Poniżej przedstawiono przykładowy kod dla innej usługi w ramach zestawu pliku wykonywalnego, pod adresem hostingu http://localhost:9000: 
@@ -242,7 +242,7 @@ Ta usługa musi mieć HTTP adres i serwerem uwierzytelniania certyfikat których
 * CNNIC
 * Comodo
 * CyberTrust
-* Firmy DigiCert
+* DigiCert
 * GeoTrust
 * GlobalSign
 * Go Daddy
@@ -352,7 +352,7 @@ Grupy zasobów są identyfikowane przez identyfikator schematu http://schemas.mi
 ### <a name="table-1-default-user-attribute-mapping"></a>Tabela 1: Domyślne mapowanie atrybutu użytkownika
 | Użytkownika usługi Azure Active Directory | "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
-| IsSoftDeleted |aktywny |
+| IsSoftDeleted |aktywne |
 | displayName |displayName |
 | Facsimile-TelephoneNumber |wartość phoneNumbers [typ eq "faksu"] |
 | givenName |name.givenName |
@@ -371,7 +371,7 @@ Grupy zasobów są identyfikowane przez identyfikator schematu http://schemas.mi
 | user-PrincipalName |userName |
 
 ### <a name="table-2-default-group-attribute-mapping"></a>Tabela 2: Domyślne mapowanie atrybutów grupy
-| Grupy usługi Azure Active Directory | http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group |
+| Grupa usługi Azure Active Directory | http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group |
 | --- | --- |
 | displayName |externalId |
 | poczta |wiadomości e-mail [typ eq "Praca"] .value |

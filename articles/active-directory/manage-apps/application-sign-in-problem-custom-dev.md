@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 8ae8fa823b919ec4a67832e7c42088c994bd2d97
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2dade35b05a07b649282ae00bb6fee354adcd195
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356899"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845494"
 ---
 # <a name="problems-signing-in-to-an-custom-developed-application"></a>Problemy z logowaniem do aplikacji niestandardowej
 
@@ -32,7 +32,7 @@ Istnieje kilka błędów, które mogą być przyczyną nie będą mogli zalogowa
 
 * Porównaj zasobów jest żądanie dostępu do kodu przy użyciu skonfigurowanych uprawnień w **wymagane zasoby** kartę, aby upewnić się, że tylko żądania zasobów, które zostały skonfigurowane.
 
-* Zobacz [usługi Azure AD w witrynie StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory) występują podobne błędy lub problemy.
+* Zobacz [usługi Azure AD w witrynie StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory) występują podobne błędy lub problemy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -42,4 +42,4 @@ Istnieje kilka błędów, które mogą być przyczyną nie będą mogli zalogowa
 
 [Wyrażania zgody i udzielania do nich uprawnień dla usługi Azure AD v2.0 zbieżne aplikacje](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
-[Usługa Azure AD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory>)
+[Usługa Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory>)

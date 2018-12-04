@@ -5,14 +5,14 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: e2cba8cb53e73bd1fc25f1fe43fa0365247e2bd2
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c1714fd6ada45f2b4498a3f5972424200afa9aa3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210826"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838144"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji Dynamics AX 
 
@@ -37,7 +37,7 @@ Implementowanie odzyskiwania po awarii dla aplikacji systemu Dynamics AX przy u�
 
 • Jeśli platforma Azure to lokacji odzyskiwania, uruchom narzędzie oceny gotowości maszyn wirtualnych platformy Azure na maszynach wirtualnych. Muszą być zgodne z usługami Azure Virtual Machines i Site Recovery.
 
-## <a name="site-recovery-support"></a>Obsługa odzyskiwania lokacji
+## <a name="site-recovery-support"></a>Obsługa usługi Site Recovery
 
 Na potrzeby tworzenia ten artykuł, użyliśmy maszyn wirtualnych VMware z systemu Dynamics AX 2012 R3 na Windows Server 2012 R2 Enterprise. Ponieważ replikacja usługi site recovery jest niezależny od aplikacji, oczekujemy, że zalecenia podane tutaj, aby pomieścić w następujących scenariuszach.
 
@@ -139,7 +139,7 @@ Aby uzyskać więcej informacji specyficznych dla programu SQL server podczas te
 
 2. Wybierz plan odzyskiwania, utworzony dla systemu Dynamics AX.
 
-3. Wybierz **testowanie trybu Failover**.
+3. Wybierz pozycję **Test pracy w trybie failover**.
 
 4. Wybierz sieć wirtualną, aby rozpocząć proces testu trybu failover.
 

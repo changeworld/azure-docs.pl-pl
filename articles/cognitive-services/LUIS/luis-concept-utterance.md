@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/03/2018
 ms.author: diberry
-ms.openlocfilehash: 2b21102a5416c1fd7e2abb35be677c48ffc63263
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 1f86631d75ceec5fc013c21f74f03b9157c78b4a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638079"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836461"
 ---
 # <a name="utterances-in-luis"></a>Wypowiedzi w usługi LUIS
 
@@ -56,6 +56,10 @@ Usługa LUIS opiera się skuteczne modeli z wypowiedzi wybranych dokładnie. Dod
 
 Zaleca się rozpoczynać kilka wypowiedzi następnie [Przejrzyj wypowiedzi punktu końcowego](luis-how-to-review-endoint-utt.md) poprawne intencji ekstrakcji prognoz i jednostek.
 
+## <a name="punctuation-marks"></a>Znaki interpunkcyjne
+
+Usługa LUIS nie Ignoruj znaków interpunkcyjnych, domyślnie, ponieważ niektóre aplikacje klienckie mogą umieścić istotności na te znaczniki. Upewnij się, że swoje wypowiedzi przykład używać zarówno znaki interpunkcyjne, jak i nie znaków interpunkcyjnych aby obu stylów do zwrócenia tej samej względnej wyniki. Jeśli znaki interpunkcyjne nie ma znaczenia określonych w aplikacji klienckiej, należy wziąć pod uwagę [ignoruje znaki interpunkcyjne](#ignoring-words-and-punctuation) przy użyciu wzorców. 
+
 ## <a name="ignoring-words-and-punctuation"></a>Ignorowanie słów i znaki interpunkcyjne
 Ignorowanie konkretnych słów lub znaki interpunkcyjne w wypowiedź przykładu, należy użyć [wzorzec](luis-concept-patterns.md#pattern-syntax) z _Ignoruj_ składni. 
 
@@ -69,7 +73,7 @@ Deweloperzy powinni uruchomić testowanie ich aplikacji LUIS, przy użyciu rzecz
 ## <a name="review-utterances"></a>Przejrzyj wypowiedzi
 Po model jest uczony opublikowane i odbieranie [punktu końcowego](luis-glossary.md#endpoint) zapytań, [Przejrzyj wypowiedzi](luis-how-to-review-endoint-utt.md) zaproponowana przez usługi LUIS. Usługa LUIS wybiera wypowiedzi punkt końcowy ma niskie oceny przeznaczenie lub jednostki. 
 
-## <a name="best-practices"></a>Najlepsze rozwiązania
+## <a name="best-practices"></a>Najlepsze praktyki
 Przegląd [najlepsze praktyki](luis-concept-best-practices.md) Aby dowiedzieć się więcej.
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 226f67b5618316811509c90c1b00e27026c11ea6
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 33b22dd3ba654c7fdbfe03ccd9c9c0433d202509
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679991"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841136"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Rozwiązanie Dane o komunikacji sieciowej 2.0 (wersja zapoznawcza) w usłudze Log Analytics
 
@@ -450,4 +450,4 @@ Rekord o typie _WireData_ jest tworzony dla każdego typu danych wejściowych. R
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Wyszukaj dzienniki](../../log-analytics/log-analytics-queries.md), aby wyświetlić szczegółowe rekordy wyszukiwania rozwiązania Dane o komunikacji sieciowej.
+- [Wyszukaj dzienniki](../../azure-monitor/log-query/log-query-overview.md), aby wyświetlić szczegółowe rekordy wyszukiwania rozwiązania Dane o komunikacji sieciowej.

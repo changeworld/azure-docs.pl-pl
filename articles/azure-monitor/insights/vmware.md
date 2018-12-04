@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5caa4940865ff0f0f684a8aa8c3164fee6f321b2
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 383b73d335c8993aa99109c7430d2292a3bfea4a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634459"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836444"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Rozwiązanie monitorowanie VMware (wersja zapoznawcza) w usłudze Log Analytics
 
@@ -90,7 +90,7 @@ W poniższej tabeli przedstawiono metody zbierania danych i inne szczegóły dot
 
 Poniższa tabela wyświetlanie przykładów pól danych zbieranych przez rozwiązanie monitorowanie VMware:
 
-| nazwa pola | description |
+| Nazwa pola | description |
 | --- | --- |
 | Device_s |Urządzenia magazynujące programu VMware |
 | ESXIFailure_s |typy błędów |
@@ -131,7 +131,7 @@ W **VMware** widoku pulpitu nawigacyjnego bloki są uporządkowane według:
 
 Kliknij przycisk bloku, aby otworzyć okienko wyszukiwania usługi Log Analytics, która zawiera szczegółowe informacje specyficzne dla bloku.
 
-W tym miejscu można edytować zapytania wyszukiwania, aby zmodyfikować go dla określonego elementu. Aby uzyskać więcej informacji na temat tworzenia wyszukiwań w dziennikach, zobacz [znaleźć dane przy użyciu przeszukiwania dzienników w usłudze Log Analytics](../../log-analytics/log-analytics-queries.md).
+W tym miejscu można edytować zapytania wyszukiwania, aby zmodyfikować go dla określonego elementu. Aby uzyskać więcej informacji na temat tworzenia wyszukiwań w dziennikach, zobacz [znaleźć dane przy użyciu przeszukiwania dzienników w usłudze Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
 
 #### <a name="find-esxi-host-events"></a>Znajdź wydarzenia hosta ESXi
 Jeden host ESXi generuje wiele dzienników, w oparciu o ich procesów. To rozwiązanie monitorowanie VMware centralizuje je i zawiera podsumowanie liczby zdarzeń. To scentralizowany widok pomaga zrozumieć, które hostów ESXi ma dużej liczby zdarzeń i jakie zdarzenia występują najczęściej w danym środowisku.
@@ -206,6 +206,6 @@ Może istnieć kilka przyczyn:
     d. Jeśli plik nie istnieje lub nie użytkownika i ustawienia grupy jest nieprawidłowy, akcje naprawcze, [przygotowania serwera z systemem Linux](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Użyj [wyszukiwań w dziennikach](../../log-analytics/log-analytics-queries.md) w usłudze Log Analytics, aby wyświetlić szczegółowe VMware obsługi danych.
+* Użyj [wyszukiwań w dziennikach](../../azure-monitor/log-query/log-query-overview.md) w usłudze Log Analytics, aby wyświetlić szczegółowe VMware obsługi danych.
 * [Tworzenie własnych pulpitów nawigacyjnych](../../azure-monitor/platform/dashboards.md) przedstawiający dane hosta VMware.
 * [Tworzenie alertów](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) po wystąpieniu określonych zdarzeń hostów VMware.

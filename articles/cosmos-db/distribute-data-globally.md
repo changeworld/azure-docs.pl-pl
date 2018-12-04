@@ -1,20 +1,18 @@
 ---
-title: Globalna dystrybucja danych za pomocą usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o skali globalnej replikacji geograficznej, Multi-Master, pracy awaryjnej oraz odzyskiwanie danych przy użyciu globalne bazy danych z usługi Azure Cosmos DB, to usługa globalnie dystrybuowanej, wielomodelowej bazy danych.
+title: Globalna dystrybucja danych za pomocą usługi Azure Cosmos DB
+description: Więcej informacji na temat skalowana w skali replikacji geograficznej, Multi-Master, trybu failover oraz odzyskiwanie danych przy użyciu globalne bazy danych z usługi Azure Cosmos DB, to usługa globalnie dystrybuowanej, wielomodelowej bazy danych.
 services: cosmos-db
-author: SnehaGunda
-manager: kfile
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: 6849574b9d16a9d76fffd4d69742c85941300e89
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 2c217a1a89d3b573bfe2297a263bf55849b5f6e1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679481"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843856"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db"></a>Dane globalne dystrybucji za pomocą usługi Azure Cosmos DB
 

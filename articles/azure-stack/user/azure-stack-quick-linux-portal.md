@@ -7,25 +7,25 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 09/05/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
-ms.reviewer: ''
+ms.reviewer: kivenkat
 ms.custom: mvc
-ms.openlocfilehash: e82c3de4461e2d663496cd4ae4a98c10e7819466
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 0664316d73b1473ab52b08f8abead2ec33d121b6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025414"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836750"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>Szybki Start: tworzenie maszyny wirtualnej z systemem Linux server za pomocą portalu usługi Azure Stack
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Za pomocą portalu usługi Azure Stack, można utworzyć maszynę wirtualną Ubuntu Server 16.04 LTS. Wykonaj kroki opisane w tym artykule, aby utworzyć maszynę wirtualną. Ten artykuł zawiera również kroki, aby:
+Aby utworzyć maszynę wirtualną Ubuntu Server 16.04 LTS, należy za pomocą portalu usługi Azure Stack. Wykonaj kroki opisane w tym artykule, aby utworzyć maszynę wirtualną. Ten artykuł zawiera również kroki, aby:
 
 * Łączenie z maszyną wirtualną za pomocą zdalnego klienta.
-* Zainstaluj serwer internetowy NGINX.
+* Instalowanie serwera internetowego NGINX.
 * Czyszczenie zasobów.
 
 > [!NOTE]  
@@ -36,7 +36,7 @@ Za pomocą portalu usługi Azure Stack, można utworzyć maszynę wirtualną Ubu
 
 * **Obraz systemu Linux w witrynie marketplace usługi Azure Stack**
 
-   W portalu marketplace usługi Azure Stack nie zawiera obraz systemu Linux, domyślnie. Przed utworzeniem maszyny wirtualnej z systemem Linux server upewnij się, że operatora infrastruktury Azure Stack zapewnia **Ubuntu Server 16.04 LTS** obrazu potrzebujesz. Operator może użyć procedury opisanej w [pobieranie elementów portalu marketplace z platformy Azure do usługi Azure Stack](../azure-stack-download-azure-marketplace-item.md) artykułu.
+   Domyślnie w portalu marketplace usługi Azure Stack nie mają obrazu systemu Linux. Sprawdź, czy usługi Azure Stack zapewnia operator **Ubuntu Server 16.04 LTS** obrazów w portalu marketplace. Operator może użyć procedury opisanej w [pobieranie elementów portalu marketplace z platformy Azure do usługi Azure Stack](../azure-stack-download-azure-marketplace-item.md) artykułu.
 
 * **Dostęp do klienta SSH**
 
@@ -71,7 +71,7 @@ Zaloguj się do portalu usługi Azure Stack. Adres portalu usługi Azure Stack z
 
 2. Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Ubuntu Server 16.04 LTS**.
    
-   ![Wybierz serwer z systemem Linux](media/azure-stack-quick-linux-portal/select.png)
+   ![Wybierz serwer systemu Linux](media/azure-stack-quick-linux-portal/select.png)
 1. Kliknij pozycję **Utwórz**.
 
 4. Wpisz informacje o maszynie wirtualnej. W obszarze **Typ uwierzytelniania** wybierz pozycję **Klucz publiczny SSH**. Wklej klucz publiczny SSH, zapisać, a następnie kliknij przycisk **OK**.
@@ -97,11 +97,11 @@ Zaloguj się do portalu usługi Azure Stack. Adres portalu usługi Azure Stack z
 
 ## <a name="connect-to-the-virtual-machine"></a>Nawiązywanie połączenia z maszyną wirtualną
 
-1. Kliknij przycisk **Connect** na stronie maszyny wirtualnej. Spowoduje to wyświetlenie parametry połączenia SSH, który chcesz połączyć z maszyną wirtualną. 
+1. Kliknij przycisk **Connect** na stronie maszyny wirtualnej. Można znaleźć parametry połączenia SSH, który chcesz połączyć z maszyną wirtualną. 
 
 2. Otwórz program PuTTY.
 
-3. Na **Konfiguracja programu PuTTY** ekranu będzie używać **kategorii** okna, aby przewijać w górę lub w dół. Przewiń w dół do **SSH**, rozwiń węzeł **SSH**, a następnie kliknij przycisk **uwierzytelniania**. Kliknij przycisk **Przeglądaj** i wybierz plik klucza prywatnego, który został zapisany.
+3. Na ekranie konfiguracji programu PuTTY, której użyjesz **kategorii** okna, aby przewijać w górę lub w dół. Przewiń w dół do **SSH**, rozwiń węzeł **SSH**, a następnie kliknij przycisk **uwierzytelniania**. Kliknij przycisk **Przeglądaj** i wybierz plik klucza prywatnego, który został zapisany.
    ![Połączenia z maszyną wirtualną](media/azure-stack-quick-linux-portal/putty03.PNG)
 
 4. Przewiń w górę **kategorii** okna, a następnie kliknij przycisk **sesji**.
@@ -154,4 +154,4 @@ Wyczyść zasoby, których nie potrzebujesz już. Aby usunąć maszyny wirtualne
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku Szybki start wdrożono podstawowe Linux serwera maszynę wirtualną z serwerem sieci web. Aby dowiedzieć się więcej o maszynach wirtualnych usługi Azure Stack, w dalszym ciągu [uwagi dotyczące maszyn wirtualnych w usłudze Azure Stack](azure-stack-vm-considerations.md).
+W tym przewodniku Szybki Start wdrożono podstawowe Linux serwera maszynę wirtualną z serwerem sieci web. Aby dowiedzieć się więcej o maszynach wirtualnych usługi Azure Stack, w dalszym ciągu [uwagi dotyczące maszyn wirtualnych w usłudze Azure Stack](azure-stack-vm-considerations.md).

@@ -5,14 +5,14 @@ author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: bac995829e90fea35eebf5e5e57a0ffb85bbba0c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 49435665ae1e99dd2b9696e5e5bb048e438dcc4c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211829"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832960"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji sieci web opartych na usługach IIS
 
@@ -52,13 +52,13 @@ Internetowe usługi informacyjne kolektywu serwerów sieci web za pomocą moduł
 
 ![Diagram przedstawiający farmy oparty na usługach sieci web, która ma cztery warstwy](./media/site-recovery-iis/deployment-pattern2.png)
 
-## <a name="site-recovery-support"></a>Obsługa odzyskiwania lokacji
+## <a name="site-recovery-support"></a>Obsługa usługi Site Recovery
 
 W przykładach w tym artykule używamy maszyn wirtualnych VMware za pomocą usług IIS 7.5 w systemie Windows Server 2012 R2 Enterprise. Ponieważ replikacji usługi Site Recovery nie jest specyficzna dla aplikacji, zalecenia przedstawione w tym artykule mają zastosowanie w scenariuszach wymienionych w poniższej tabeli i różnymi wersjami usług IIS.
 
 ### <a name="source-and-target"></a>Źródłowe i docelowe
 
-Scenariusz | Lokacja dodatkowa | Na platformie Azure
+Scenariusz | Do lokacji dodatkowej | Na platformę Azure
 --- | --- | ---
 Funkcja Hyper-V | Yes | Yes
 VMware | Yes | Yes
@@ -142,7 +142,7 @@ W przypadku zależności specyficzne dla aplikacji, która opiera się na adres 
 
 1. W witrynie Azure portal wybierz swój magazyn usługi Recovery Services.
 2. Wybierz plan odzyskiwania, który został utworzony dla kolektywu serwerów sieci web usług IIS.
-3. Wybierz **testowanie trybu Failover**.
+3. Wybierz pozycję **Test pracy w trybie failover**.
 4. Aby rozpocząć proces testu trybu failover, wybierz punkt odzyskiwania i usługa Azure virtual network.
 5. Po skonfigurowaniu dodatkowej środowiska można wykonywać sprawdzanie poprawności.
 6. Po zakończeniu walidacji można wyczyścić testowe środowisko trybu failover wybierz **ukończenia operacji sprawdzania poprawności**.
@@ -153,7 +153,7 @@ Aby uzyskać więcej informacji, zobacz [testowy tryb failover na platformie Azu
 
 1. W witrynie Azure portal wybierz swój magazyn usługi Recovery Services.
 1. Wybierz plan odzyskiwania, który został utworzony dla kolektywu serwerów sieci web usług IIS.
-1. Wybierz **trybu Failover**.
+1. Wybierz pozycję **Tryb failover**.
 1. Aby rozpocząć proces pracy awaryjnej, wybierz punkt odzyskiwania.
 
 Aby uzyskać więcej informacji, zobacz [trybu Failover w usłudze Site Recovery](site-recovery-failover.md).

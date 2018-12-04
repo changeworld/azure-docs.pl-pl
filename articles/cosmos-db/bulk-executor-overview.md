@@ -1,20 +1,18 @@
 ---
-title: Zbiorcze importowanie i zaktualizować dane w usługi Azure Cosmos DB przy użyciu biblioteki wykonawca zbiorcze | Dokumentacja firmy Microsoft
+title: Zbiorcze importowanie i zaktualizować dane w usługi Azure Cosmos DB przy użyciu biblioteki przetwarzania zbiorczego
 description: Wykonywały operacje zbiorcze w usłudze Azure Cosmos DB za pomocą importowania zbiorczego i Zbiorcza aktualizacja interfejsów API oferowane przez bibliotekę przetwarzania zbiorczego.
 services: cosmos-db
 author: tknandu
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: a760de998c78ce2afdd24a15d9dd6e5d0cf44dc1
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: e3b77ce28e5c3a236abcd9a22e643428b53ed0a6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363548"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834812"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Omówienie biblioteki wykonawca zbiorczego usługi Azure Cosmos DB
  

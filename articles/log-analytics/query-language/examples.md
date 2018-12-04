@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: 486e485a78f767c4d75461558d06068a2e1c4525
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d5cad3869e74f33a2d1a56352c658bb9c8f23db6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682813"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835798"
 ---
 # <a name="log-analytics-query-examples"></a>Zaloguj się przykłady zapytań usługi Analytics
-W tym artykule przedstawiono różne przykłady [zapytania](../log-analytics-queries.md) przy użyciu [języka Kusto](https://docs.microsoft.com/azure/kusto/query/) można pobrać różne typy danych z usługi Log Analytics. Różne metody są używane do konsolidacji i analizowania danych, aby można było używać tych przykładów, aby zidentyfikować różne strategie, których można użyć do własnych wymagań.  
+W tym artykule przedstawiono różne przykłady [zapytania](../../azure-monitor/log-query/log-query-overview.md) przy użyciu [języka Kusto](https://docs.microsoft.com/azure/kusto/query/) można pobrać różne typy danych z usługi Log Analytics. Różne metody są używane do konsolidacji i analizowania danych, aby można było używać tych przykładów, aby zidentyfikować różne strategie, których można użyć do własnych wymagań.  
 
 Zobacz [Skorowidz języka Kusto](https://docs.microsoft.com/azure/kusto/query/) szczegółowe informacje dotyczące innych słów kluczowych, używane w tych przykładów. Zapoznaj się z artykułem [lekcji na temat tworzenia zapytań](get-started-queries.md) Jeśli dopiero zaczynasz pracę z usługą Log Analytics.
 

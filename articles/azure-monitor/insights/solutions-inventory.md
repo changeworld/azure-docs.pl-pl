@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 6aa0ad6d13a7a75a0d9bfb520944c04cae11f1ab
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 38ed7a7fff08003563147d6b8eb9bbc33fb32bc9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682983"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836155"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Szczegóły zbierania danych dla rozwiązań do zarządzania na platformie Azure
 Ten artykuł zawiera listę [rozwiązań do zarządzania](solutions.md) udostępnianych przez firmę Microsoft wraz z łączami do ich szczegółowej dokumentacji.  Zawiera także informacje o ich metody i częstotliwość zbierania danych w usłudze Log Analytics.  Identyfikowanie różnych rozwiązaniach dostępnych i zrozumienie wymagań połączenia i przepływu danych dla rozwiązań do zarządzania różnych, można użyć informacji w tym artykule. 
@@ -79,4 +79,4 @@ Wyjaśnienie kolumn są następujące:
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się, jak [tworzenia zapytań](../../log-analytics/log-analytics-queries.md) analizować dane zbierane przez rozwiązania do zarządzania.
+* Dowiedz się, jak [tworzenia zapytań](../../azure-monitor/log-query/log-query-overview.md) analizować dane zbierane przez rozwiązania do zarządzania.

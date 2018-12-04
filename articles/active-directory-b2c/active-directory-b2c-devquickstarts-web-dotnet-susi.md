@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/17/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1db805efe7eaec77fcafeb169b3d99098b57f582
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 88cc884489c29f964d68908dd394f23b5b21790f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978982"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839402"
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Tworzenie aplikacji sieci web platformy ASP.NET za pomocą usługi Azure Active Directory B2C profilu rejestracji, logowania, edycji i resetowania haseł
 
@@ -51,27 +51,27 @@ Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal
 
 Gdy wszystko będzie gotowe, konieczne będzie interfejsu API i aplikacji macierzystej w ustawieniach aplikacji.
 
-## <a name="create-policies-on-your-b2c-tenant"></a>Tworzenie zasad na swoją dzierżawę B2C
+## <a name="create-user-flows-on-your-b2c-tenant"></a>Tworzenie przepływów użytkownika na swoją dzierżawę B2C
 
-W usłudze Azure AD B2C każde działanie użytkownika jest definiowane przy użyciu [zasad](active-directory-b2c-reference-policies.md). Ten przykładowy kod obejmuje trzy środowiska tożsamości: **rejestracji i logowania**, **profilu edycji**, i **resetowania hasła**.  Dla każdego typu należy utworzyć jeden zbiór zasad zgodnie z opisem w [artykule o zasadach](active-directory-b2c-reference-policies.md). Dla każdej zasady upewnij się, aby wybrać atrybut nazwy wyświetlania lub oświadczeń i skopiuj nazwę swoich zasad w celu późniejszego użycia.
+W usłudze Azure AD B2C każde działanie użytkownika jest definiowany przez [przepływ użytkownika](active-directory-b2c-reference-policies.md). Przepływy użytkownika są wstępnie zdefiniowane zasady, które są dostępne w portalu usługi Azure AD B2C, aby ułatwia konfigurowanie typowych środowiska tożsamości. Ten przykładowy kod obejmuje trzy środowiska tożsamości: **rejestracji i logowania**, **profilu edycji**, i **resetowania hasła**.  Należy utworzyć jedną przepływ użytkownika dla każdego typu zgodnie z opisem w [artykule informacyjnym na temat przepływu użytkownika](active-directory-b2c-reference-policies.md). Dla każdego przepływu użytkownika Upewnij się, aby wybrać atrybut nazwy wyświetlania lub oświadczeń i skopiuj nazwę przepływu użytkownika do późniejszego użycia.
 
 ### <a name="add-your-identity-providers"></a>Dodaj dostawców tożsamości
 
 Wybierz z ustawień, **dostawców tożsamości** i wybierz polecenie rejestrowania nazwy użytkownika lub rejestracja E-mail.
 
-### <a name="create-a-sign-up-and-sign-in-policy"></a>Tworzenie zasad rejestracji i logowania
+### <a name="create-a-sign-up-and-sign-in-user-flow"></a>Tworzenie przepływu rejestracji i logowania użytkowników
 
 [!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
 
-### <a name="create-a-profile-editing-policy"></a>Tworzenie zasad edytowania profilów
+### <a name="create-a-profile-editing-user-flow"></a>Tworzenie profilu edycji przepływu użytkownika
 
 [!INCLUDE [active-directory-b2c-create-profile-editing-policy](../../includes/active-directory-b2c-create-profile-editing-policy.md)]
 
-### <a name="create-a-password-reset-policy"></a>Tworzenie zasad resetowania haseł
+### <a name="create-a-password-reset-user-flow"></a>Utwórz przepływ użytkownika resetowania hasła
 
 [!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
 
-Po utworzeniu zasad możesz rozpocząć tworzenie aplikacji.
+Po utworzeniu przepływy użytkownika, możesz przystąpić do kompilowania aplikacji.
 
 ## <a name="download-the-sample-code"></a>Pobierz przykładowy kod
 
@@ -83,16 +83,16 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 Po pobraniu przykładu kodu otwórz plik SLN programu Visual Studio, aby rozpocząć. Plik rozwiązania zawiera dwa projekty: `TaskWebApp` i `TaskService`. `TaskWebApp` to aplikacja sieci web MVC, który użytkownik wchodzi w interakcję z. `TaskService` to interfejs API zaplecza aplikacji, który przechowuje listy zadań do wykonania poszczególnych użytkowników. Ten artykuł zawiera jedynie omówienie aplikacji `TaskWebApp`. Aby dowiedzieć się, jak tworzyć `TaskService` za pomocą usługi Azure AD B2C, zobacz [Nasz samouczek dotyczący interfejsu api sieci web platformy .NET](active-directory-b2c-devquickstarts-api-dotnet.md).
 
-## <a name="update-code-to-use-your-tenant-and-policies"></a>Zaktualizuj kod w celu użycia zasad i dzierżawy
+## <a name="update-code-to-use-your-tenant-and-user-flows"></a>Zaktualizuj kod w celu użycia przepływów dzierżawy i użytkownika
 
-Nasz przykład został skonfigurowany do używania zasad i identyfikatora klienta dzierżawy pokazowej. Aby połączyć go z własną dzierżawę, należy otworzyć `web.config` w `TaskWebApp` projektu i Zastąp następujące wartości:
+Nasz przykład został skonfigurowany do używania przepływy użytkownika i identyfikator klienta dzierżawy pokazowej. Aby połączyć go z własną dzierżawę, należy otworzyć `web.config` w `TaskWebApp` projektu i Zastąp następujące wartości:
 
 * `ida:Tenant` nazwą dzierżawy
 * `ida:ClientId` identyfikatorem aplikacji internetowej
 * `ida:ClientSecret` kluczem tajnym aplikacji internetowej
-* `ida:SignUpSignInPolicyId` nazwą zasady tworzenia konta/logowania
-* `ida:EditProfilePolicyId` nazwą zasady edycji profilu
-* `ida:ResetPasswordPolicyId` nazwą zasady resetowania hasła
+* `ida:SignUpSignInPolicyId` z nazwą przepływu użytkownika "Zarejestruj się lub zaloguj się"
+* `ida:EditProfilePolicyId` z Twoją nazwą przepływ użytkownika "Edytuj profil"
+* `ida:ResetPasswordPolicyId` z Twoją nazwą przepływ użytkownika "Resetuj hasło"
 
 ## <a name="launch-the-app"></a>Uruchom aplikację
 Z poziomu programu Visual Studio, uruchom aplikację. Przejdź do karty listy zadań do wykonania i zwróć uwagę, adres URl: https://*YourTenantName*.b2clogin.com/*YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName* & client_id =*YourclientID*...
@@ -110,16 +110,16 @@ Aby dodać społecznościowych dostawców tożsamości do aplikacji, należy roz
 * [Konfigurowanie Amazon jako dostawcy tożsamości](active-directory-b2c-setup-amzn-app.md)
 * [Konfigurowanie usługi LinkedIn jako dostawcy tożsamości](active-directory-b2c-setup-li-app.md)
 
-Po dodaniu dostawcy tożsamości do katalogu usługi B2C edycję każdego z trzech zbiorów zasad w celu uwzględnienia nowych dostawców tożsamości, zgodnie z opisem w [artykule dotyczącym struktury zasad](active-directory-b2c-reference-policies.md). Po zapisaniu zasad, należy ponownie uruchomić tę aplikację.  Powinien zostać wyświetlony nowy dostawców tożsamości, dodany jako logowania i środowisk opcji rejestracji w każdym z Twoją tożsamość.
+Po dodaniu dostawcy tożsamości do katalogu usługi B2C edytowanie wszystkich przepływów trzech użytkowników do uwzględnienia nowych dostawców tożsamości, zgodnie z opisem w [artykule informacyjnym na temat przepływu użytkownika](active-directory-b2c-reference-policies.md). Po zapisaniu przepływy użytkownika, należy ponownie uruchomić tę aplikację.  Powinien zostać wyświetlony nowy dostawców tożsamości, dodany jako logowania i środowisk opcji rejestracji w każdym z Twoją tożsamość.
 
-Możesz eksperymentować z zasadami dotyczącymi zasobów i obserwować wpływ na przykładowej aplikacji. Dodaj lub usuń dostawców tożsamości, manipulowania oświadczeń aplikacji lub zmień atrybuty tworzenia konta. Wypróbuj, aż zobaczysz, jak zasady, żądania uwierzytelniania i OWIN powiązać ze sobą.
+Możesz eksperymentować z przepływów użytkownika i obserwować wpływ na przykładowej aplikacji. Dodaj lub usuń dostawców tożsamości, manipulowania oświadczeń aplikacji lub zmień atrybuty tworzenia konta. Wypróbuj, aż zobaczysz, jak przepływy użytkownika żądania uwierzytelniania i OWIN powiązać ze sobą.
 
 ## <a name="sample-code-walkthrough"></a>Przewodnik po przykładzie kodu
 W poniższych sekcjach opisano sposób skonfigurowania przykładowego kodu aplikacji. Udziału można używać jako przewodnika podczas programowania aplikacji w przyszłości.
 
 ### <a name="add-authentication-support"></a>Dodaj obsługę uwierzytelniania
 
-Teraz można skonfigurować aplikację do używania usługi Azure AD B2C. Aplikacja komunikuje się z usługą Azure AD B2C, wysyłając żądania uwierzytelniania OpenID Connect. Żądania dyktowanie środowisko użytkownika, który chce wykonać, określając zasady aplikacji. Przy użyciu biblioteki OWIN firmy Microsoft, do wysyłania tych żądań, wykonanie zasad, zarządzanie sesje użytkowników oraz inne funkcje.
+Teraz można skonfigurować aplikację do używania usługi Azure AD B2C. Aplikacja komunikuje się z usługą Azure AD B2C, wysyłając żądania uwierzytelniania OpenID Connect. Żądania dyktowanie środowisko użytkownika, którego aplikacja chce wykonania, określając przepływu użytkownika. Przy użyciu biblioteki OWIN firmy Microsoft, do wysyłania tych żądań, wykonanie przepływy użytkownika, zarządzania sesjami użytkownika i nie tylko.
 
 #### <a name="install-owin"></a>Instalowanie interfejsu OWIN
 
@@ -207,11 +207,11 @@ public partial class Startup
 
 W `OpenIdConnectAuthenticationOptions` powyżej, możemy zdefiniować zestaw funkcji wywołania zwrotnego dla określonego powiadomienia, które są odbierane przez oprogramowanie pośredniczące uwierzytelniania OpenID Connect. Te zachowania są definiowane przy użyciu `OpenIdConnectAuthenticationNotifications` obiektu i przechowywane w `Notifications` zmiennej. W naszym przykładzie definiujemy trzech różnych wywołań zwrotnych w zależności od zdarzenia.
 
-### <a name="using-different-policies"></a>Przy użyciu różnych zasad
+### <a name="using-different-user-flows"></a>Przepływy przy użyciu innego użytkownika
 
-`RedirectToIdentityProvider` Przy każdym wysłaniu żądania do usługi Azure AD B2C jest wyzwalane powiadomienie. W funkcji wywołania zwrotnego `OnRedirectToIdentityProvider`, możemy sprawdzić, w wywołaniu wychodzących, jeśli chcemy użyć różnych zasad. Aby można było wykonać Resetowanie hasła lub edytowania profilu, należy użyć odpowiednich zasad, takich jak zasady, zamiast domyślnych zasad "Zarejestruj się lub zaloguj się" resetowania hasła.
+`RedirectToIdentityProvider` Przy każdym wysłaniu żądania do usługi Azure AD B2C jest wyzwalane powiadomienie. W funkcji wywołania zwrotnego `OnRedirectToIdentityProvider`, możemy sprawdzić, w wywołaniu wychodzących, jeśli chcemy użyć przepływu innego użytkownika. Aby można było wykonać Resetowanie hasła lub edytowania profilu, należy użyć odpowiedniego przepływ użytkownika, takie jak przepływ użytkownika zamiast domyślnego przepływu użytkownika "Zarejestruj się lub zaloguj się" resetowania hasła.
 
-W naszym przykładzie gdy użytkownik chce, aby zresetować hasło lub dokonać edycji profilu, dodamy zasad które firma Microsoft nie chce używać w kontekście OWIN. Można to zrobić, wykonując następujące czynności:
+W naszym przykładzie gdy użytkownik chce, aby zresetować hasło lub dokonać edycji profilu, dodamy przepływ użytkownika, które firma Microsoft nie chce używać w kontekście OWIN. Można to zrobić, wykonując następujące czynności:
 
 ```CSharp
     // Let the middleware know you are trying to use the edit profile policy
@@ -246,7 +246,7 @@ private Task OnRedirectToIdentityProvider(RedirectToIdentityProviderNotification
 
 ### <a name="handling-errors"></a>Obsługa błędów
 
-`AuthenticationFailed` Jest wyzwalane powiadomienie, gdy uwierzytelnianie nie powiedzie się. W jego metody wywołania zwrotnego może obsługiwać błędy, jak chcesz. Należy jednak dodać Wyszukaj kod błędu: `AADB2C90118`. W czasie wykonywania zasad "Rejestracji lub logowania" użytkownik musi wybrać **nie pamiętasz hasła?** łącza. W takiej sytuacji usługi Azure AD B2C wysyła aplikacji, ten kod błędu wskazujący, że aplikacji należy upewnić żądanie zamiast przy użyciu zasad resetowania hasła.
+`AuthenticationFailed` Jest wyzwalane powiadomienie, gdy uwierzytelnianie nie powiedzie się. W jego metody wywołania zwrotnego może obsługiwać błędy, jak chcesz. Należy jednak dodać Wyszukaj kod błędu: `AADB2C90118`. Podczas wykonywania przepływu użytkownika "Zarejestruj się lub zaloguj się", użytkownik musi wybrać **nie pamiętasz hasła?** łącza. W takim przypadku usługi Azure AD B2C wysyła aplikacji, ten kod błędu wskazujący, że aplikacji należy zgłosić wniosek zamiast przepływ użytkownika resetowania hasła.
 
 ```CSharp
 /*
@@ -357,7 +357,7 @@ public void SignOut()
 }
 ```
 
-Oprócz jawne wywołanie zasad, można użyć `[Authorize]` tag w kontrolerach, który wykonuje zasady, jeśli użytkownik nie jest zalogowany. Otwórz `Controllers\HomeController.cs` i Dodaj `[Authorize]` tag, aby kontroler oświadczeń.  Wybiera OWIN, ostatnie zasady skonfigurowane, kiedy `[Authorize]` tag tych limitów zostanie osiągnięty.
+Oprócz jawne wywołanie przepływu użytkownika, można użyć `[Authorize]` tagu w kontrolerach, który wykonuje przepływ użytkownika, jeśli użytkownik nie jest zalogowany. Otwórz `Controllers\HomeController.cs` i Dodaj `[Authorize]` tag, aby kontroler oświadczeń.  Wybiera OWIN, ostatnie zasady skonfigurowane, kiedy `[Authorize]` tag tych limitów zostanie osiągnięty.
 
 ```CSharp
 // Controllers\HomeController.cs

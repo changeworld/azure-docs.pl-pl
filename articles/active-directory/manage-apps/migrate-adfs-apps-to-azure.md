@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: b799a3947770b44752b599dbb2c47cbf1cfbcda2
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 647ff43d0b1e0dc52ccecd2dad709af969c61c15
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959064"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840676"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Przenieś aplikacje z usług AD FS do usługi Azure AD 
 
@@ -203,7 +203,7 @@ Aby przypisać użytkowników w portalu usługi Azure AD, przejdź do strony apl
 
 ![Okienko „Dodawanie przypisania”](media/migrate-adfs-apps-to-azure/migrate7.png)
 
-Aby zweryfikować dostęp: aplikacja SaaS powinna być widoczna w [panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md) użytkownika po zalogowaniu. Panel dostępu można znaleźć pod adresem http://myapps.microsoft.com. W tym przykładzie użytkownikowi pomyślnie przypisano prawa dostępu do aplikacji Salesforce i ServiceNow.
+Aby zweryfikować dostęp: aplikacja SaaS powinna być widoczna w [panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md) użytkownika po zalogowaniu. Panel dostępu można znaleźć pod adresem https://myapps.microsoft.com. W tym przykładzie użytkownikowi pomyślnie przypisano prawa dostępu do aplikacji Salesforce i ServiceNow.
 
 ![Przykład panelu dostępu z aplikacjami Salesforce i ServiceNow](media/migrate-adfs-apps-to-azure/migrate8.png)
 

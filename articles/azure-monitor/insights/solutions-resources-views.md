@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: 97e499612082d0d58cd75bb9f8854b8c4e0f669e
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 3807dcf9ea4625db72b0579e0609641e3aedb088
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635768"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845726"
 ---
 # <a name="views-in-management-solutions-preview"></a>Widoki w rozwiązaniach do zarządzania (wersja zapoznawcza)
 > [!NOTE]
@@ -90,7 +90,7 @@ Należy pamiętać, że można skopiować zasobu całego widoku z pliku wyekspor
 * Zmienne powinny zdefiniowane w rozwiązaniu i używane w odpowiednich właściwości.
 
 ### <a name="log-analytics-api-version"></a>Wersja interfejsu API analizy dziennika
-Wszystkie zasoby usługi Log Analytics, zdefiniowane w szablonie usługi Resource Manager mają właściwość **apiVersion** definiujący wersję interfejsu API, należy użyć zasobu.  Ta wersja jest inny dla widoków z zapytań, które używają [starsza wersja i język zapytań uaktualnionego](../../log-analytics/log-analytics-queries.md).  
+Wszystkie zasoby usługi Log Analytics, zdefiniowane w szablonie usługi Resource Manager mają właściwość **apiVersion** definiujący wersję interfejsu API, należy użyć zasobu.  Ta wersja jest inny dla widoków z zapytań, które używają [starsza wersja i język zapytań uaktualnionego](../../azure-monitor/log-query/log-query-overview.md).  
 
  W poniższej tabeli określono wersji interfejsu API usługi Log Analytics dla widoków w starszej wersji, jak i uaktualnionych obszarów roboczych: 
 

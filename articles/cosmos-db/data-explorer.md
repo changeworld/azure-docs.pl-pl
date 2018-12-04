@@ -1,19 +1,18 @@
 ---
-title: Użyj Eksploratora usługi Azure Cosmos DB do zarządzania danymi | Dokumentacja firmy Microsoft
+title: Zarządzanie danymi za pomocą Eksploratora usługi Azure Cosmos DB
 description: Eksplorator usługi Azure Cosmos DB jest autonomiczny opartego na sieci web interfejs, który umożliwia wyświetlanie i zarządzanie nimi danych przechowywanych w usłudze Azure Cosmos DB.
 services: cosmos-db
 author: deborahc
-manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: dech
-ms.openlocfilehash: 8d1bd0d4331937e37307140e17e5aed1a6e3b0ff
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: be3742bdf6bc5a22947307c44a83b1b231526afd
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055953"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835441"
 ---
 # <a name="use-azure-cosmos-db-explorer-to-manage-your-data"></a>Zarządzanie danymi za pomocą Eksploratora usługi Azure Cosmos DB 
 

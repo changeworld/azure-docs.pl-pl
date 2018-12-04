@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: d9ed140d404387b94428cea5d925911806b62552
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 129f77ec9ea4d4e2633e1ea0b02795bc0df26433
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705860"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834710"
 ---
 # <a name="what-is-the-myapps-portal"></a>Co to jest MyApps portal?
 
@@ -41,9 +41,9 @@ Portalu MyApps różni się w witrynie Azure portal. Nie wymagają posiadania su
 
 ## <a name="access-the-myapps-portal"></a>Przejdź do portalu MyApps
 
-Możesz uzyskać dostęp do portalu MyApps, przechodząc do `http://myapps.microsoft.com`.
+Możesz uzyskać dostęp do portalu MyApps, przechodząc do `https://myapps.microsoft.com`.
 
-Jeśli masz niestandardowe znakowanie skonfigurowana dla strony logowania, należy załadować znakowanie, dodając domeny Twojej organizacji do adresu URL (na przykład `http://myapps.microsoft.com/<your domain>.com`).
+Jeśli masz niestandardowe znakowanie skonfigurowana dla strony logowania, należy załadować znakowanie, dodając domeny Twojej organizacji do adresu URL (na przykład `https://myapps.microsoft.com/<your domain>.com`).
 
 Możesz użyć dowolnej nazwy aktywnych lub zweryfikowanej domeny, skonfigurowanego w portalu Azure, jak pokazano poniżej: ![nazwa domeny firmy Wingtip Toys][2]  
 

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7ca97c52d81af2c224d27025266a628c28c0af78
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 536ae926ad8f401f952a41e17074536cc2b3c5f1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428910"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832041"
 ---
 # <a name="manage-analysis-services"></a>Zarządzanie usług Analysis Services
 Po utworzeniu serwera usług Analysis Services na platformie Azure, może to być niektóre administrowanie i zarządzanie zadania, które należy wykonać w dół po drodze następnie od razu lub później. Na przykład uruchomić przetwarzania odświeżania danych, kontrolowania, kto może uzyskiwać dostęp do modeli na serwerze lub monitorowanie kondycji serwera. Niektóre zadania zarządzania, można wykonać tylko w witrynie Azure portal, inne osoby w SQL Server Management Studio (SSMS), a niektóre zadania może odbywać się w jednym.
 
 ## <a name="azure-portal"></a>Azure Portal
-[Witryna Azure portal](http://portal.azure.com/) jest, gdzie możesz można utworzyć i Usuń serwery, Monitoruj zasoby serwera, zmienianie rozmiaru i zarządzanie, kto ma dostęp do serwerów.  Jeśli występują problemy, można wysyłać również żądanie pomocy technicznej.
+[Witryna Azure portal](https://portal.azure.com/) jest, gdzie możesz można utworzyć i Usuń serwery, Monitoruj zasoby serwera, zmienianie rozmiaru i zarządzanie, kto ma dostęp do serwerów.  Jeśli występują problemy, można wysyłać również żądanie pomocy technicznej.
 
 ![Pobieranie nazwy serwera z systemu Azure](./media/analysis-services-manage/aas-manage-portal.png)
 

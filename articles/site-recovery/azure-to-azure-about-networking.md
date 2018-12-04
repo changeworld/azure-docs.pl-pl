@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 77c445920041653ffb72d31e1dcfe4c368fb6642
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 76b3d23a042fae452b25b0a707e3c7ff9bbda613
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915929"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838196"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O technologiach sieciowych w replikacji Azure – Azure
 
@@ -60,10 +60,9 @@ Jeśli używasz serwera proxy zapory oparte na adresie IP lub reguły sieciowej 
 - Wszystkie zakresy adresów IP, które odpowiadają na kontach magazynu w regionie źródłowym
     - Tworzenie [tag usługi Storage](../virtual-network/security-overview.md#service-tags) na podstawie reguły sieciowej grupy zabezpieczeń dla regionu źródłowego.
     - Zezwalaj na te adresy, dzięki czemu dane mogą być zapisywane na koncie magazynu pamięci podręcznej z maszyny Wirtualnej.
-- Wszystkie zakresy adresów IP, które odnoszą się do usługi Office 365 [uwierzytelnianie i tożsamość punktami końcowymi adresów IP V4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
-    - Nowe adresy zostaną dodane do zakresów usługi Office 365 w przyszłości, należy utworzyć nowe reguły sieciowej grupy zabezpieczeń.
+- Tworzenie [tag usługi Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) na podstawie reguły sieciowej grupy zabezpieczeń do zezwalania na dostęp do wszystkich adresów IP odpowiadającej usługi AAD
+    - Nowe adresy zostaną dodane do usługi Azure Active Directory (AAD) w przyszłości, należy utworzyć nowe reguły sieciowej grupy zabezpieczeń.
 - Site Recovery adresy punktów końcowych usługi IP - dostępne w [pliku XML](https://aka.ms/site-recovery-public-ips) i zależą od lokalizacji docelowej.
--  Możesz [pobrać i użyć tego skryptu](https://aka.ms/nsg-rule-script), aby automatycznie utworzyć wymaganych reguł w sieciowej grupie zabezpieczeń.
 - Firma Microsoft zaleca tworzenie wymaganych reguł sieciowej grupy zabezpieczeń dla testu sieciowej grupy zabezpieczeń i sprawdź, czy nie ma żadnych problemów przed utworzeniem zasad do produkcji sieciowej grupy zabezpieczeń.
 
 

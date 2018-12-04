@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: caef9a93e7d388ab55939876b7cc8344ce6370d0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0b5fe1b1df306bf0930715bc6cfb586e5445f85c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012517"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839963"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Ponowne włączanie ochrony nie powiodło się na maszynach wirtualnych platformy Azure, do regionu podstawowego
 
@@ -83,4 +83,4 @@ Możesz wyzwolić Zadanie włączania ponownej ochrony, gdy nie istnieją docelo
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po włączeniu ochrony maszyny Wirtualnej może zainicjować trybu failover. Przełączenie w tryb failover zamykania maszyny Wirtualnej w regionie pomocniczym tworzy i uruchamia maszynę Wirtualną w regionie podstawowym, przy użyciu przestój małych. Firma Microsoft zaleca w związku z tym wybierz godzinę i uruchomieniem testu trybu failover, ale inicjowanie pełnego trybu failover do lokacji głównej. [Dowiedz się więcej](site-recovery-failover.md) informacje o trybie failover.
+Po włączeniu ochrony maszyny Wirtualnej może zainicjować trybu failover. Przełączenie w tryb failover zamykania maszyny Wirtualnej w regionie pomocniczym tworzy i uruchamia maszynę Wirtualną w regionie podstawowym, przy użyciu przestój małych. Zaleca się, w związku z tym wybierz godzinę i uruchomić test trybu failover przed zainicjowaniem pełnego trybu failover do lokacji głównej. [Dowiedz się więcej](site-recovery-failover.md) informacje o trybie failover.

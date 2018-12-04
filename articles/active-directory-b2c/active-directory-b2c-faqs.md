@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: bccbf5462668913f6f3025e8d2274c115d49457f
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 6957a18440dfc225c63a1b1843e2b47af8b841bf
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727244"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842955"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Usługa Azure AD B2C: Często zadawane pytania (FAQ) 
 Ta strona odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory (Azure AD) B2C. Wracaj aktualizacje.
@@ -39,7 +39,7 @@ Zawsze należy utworzyć konta użytkowników dla aplikacji za pośrednictwem pr
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Dostawców tożsamości społecznościowych, które są obsługiwane teraz? Te, które planujesz obsługiwać w przyszłości?
 Obecnie obsługujemy Facebook, Google +, LinkedIn, Amazon, usługi Twitter (wersja zapoznawcza), WeChat (wersja zapoznawcza), Weibo (wersja zapoznawcza) i q (wersja zapoznawcza). Dodamy obsługę innych popularnych społecznościowych dostawców tożsamości na podstawie oczekiwań klienta.
 
-Usługa Azure AD B2C dodano również obsługę [zasady niestandardowe](active-directory-b2c-overview-custom.md).  Te [zasady niestandardowe](active-directory-b2c-overview-custom.md) umożliwia deweloperom tworzenie własnych zasad, który za pomocą dowolnego dostawcy tożsamości, która obsługuje [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) lub SAML. 
+Usługa Azure AD B2C dodano również obsługę [zasady niestandardowe](active-directory-b2c-overview-custom.md).  Te [zasady niestandardowe](active-directory-b2c-overview-custom.md) umożliwia deweloperom tworzenie własnych zasad, który za pomocą dowolnego dostawcy tożsamości, która obsługuje [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) lub SAML. 
 
 Wprowadzenie do zasad niestandardowych, sprawdzając naszych [pakiet startowy niestandardowe zasady](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack).
 

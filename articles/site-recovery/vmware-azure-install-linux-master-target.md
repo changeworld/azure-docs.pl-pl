@@ -4,14 +4,14 @@ description: Dowiedz się, jak skonfigurować serwerze główny serwer docelowy 
 author: nsoneji
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 415b50b94052e7d428ddfa55d5288c8954a3ff1a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: e35a8cf720fffa3a3b4c7d9f1b83c2323041b1c4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212373"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833316"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalowanie serwera głównego elementu docelowego systemu Linux do powrotu po awarii
 Po przełączeniu w tryb failover maszyn wirtualnych na platformie Azure możesz można wykonać powrotu po awarii maszyn wirtualnych do lokacji lokalnej. Do powrotu po awarii, należy ponownie włączyć ochronę maszyny wirtualnej z platformy Azure do lokacji lokalnej. Ten proces wymaga lokalny główny serwer docelowy serwer do odbierania ruchu. 
@@ -259,7 +259,7 @@ Użyj następujących kroków, aby utworzyć dysk przechowywania:
     
     Wybierz **Wstaw** aby rozpocząć, edytując plik. Tworzenie nowego wiersza, a następnie wstaw poniższy tekst. Edytowanie Identyfikatora wielościeżkowe dysku, na podstawie Identyfikatora wielościeżkowe wyróżnione w poprzednim poleceniu.
 
-    **/dev/mapowania/ <Retention disks multipath id> /mnt/rw ext4 przechowywania 0 0**
+     **/dev/mapowania/ <Retention disks multipath id> /mnt/rw ext4 przechowywania 0 0**
 
     Wybierz **Esc**, a następnie wpisz **: wq** (zapisać i zamknąć) aby zamknąć okno edytora.
 

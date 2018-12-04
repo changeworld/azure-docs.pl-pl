@@ -7,14 +7,14 @@ manager: cshepard
 keywords: Usługa Azure backup; Agent maszyny Wirtualnej; Łączności sieciowej;
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 10/30/2018
+ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 496afab869d8cf1b7b00791913c3082e31b45327
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 9f26a51a8da2c3fec3ff180dbc8c8de08bb0a93a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633924"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833877"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup: problemy z agentem lub rozszerzenia
 
@@ -77,9 +77,9 @@ Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa A
 **Przyczyny 2: [rozszerzenie kopii zapasowej nie powiedzie się zaktualizować lub załadować](#the-backup-extension-fails-to-update-or-load)**  
 **Przyczyny 3: [maszyny Wirtualnej nie ma dostępu do Internetu](#the-vm-has-no-internet-access)**
 
-## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailed - operacji rozszerzenia VMSnapshot nie powiodła się
+## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailedForManagedDisks - operacji rozszerzenia VMSnapshot nie powiodła się.
 
-**Kod błędu:**: ExtentionOperationFailed <br>
+**Kod błędu:**: ExtentionOperationFailedForManagedDisks <br>
 **Komunikat o błędzie**: operacja rozszerzenia VMSnapshot nie powiodła się.<br>
 
 Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Azure Backup Inicjuje zadania, komunikując się z rozszerzenie kopii zapasowej maszyny Wirtualnej, aby utworzyć migawkę punktu w czasie. Dowolne z następujących warunków może uniemożliwić migawki wyzwalane. Jeśli nie zostanie wyzwolony, migawki, mogą wystąpić niepowodzenia wykonywania kopii zapasowej. Wykonaj następujące kroki w podanej kolejności, a następnie ponów próbę wykonania operacji:  
@@ -156,11 +156,11 @@ Ponadto jeśli podsieć nie ma trasy dla ruchu wychodzącego z Internetem, nale�
 #### <a name="solution"></a>Rozwiązanie
 Agent maszyny Wirtualnej może ulec uszkodzeniu lub usługa została zatrzymana. Ponowne zainstalowanie agenta maszyny Wirtualnej pomaga uzyskać najnowszą wersję. Pomaga również ponownie uruchomić komunikuje się z usługą.
 
-1. Ustal, czy Usługa agenta gościa Windows jest uruchomiona w usługach (services.msc) maszyny Wirtualnej. Spróbuj ponownie uruchomić usługę agenta gościa Windows i zainicjuj tworzenie kopii zapasowej.    
-2. Jeśli usługa agenta gościa Windows nie jest widoczny w usługach, w Panelu sterowania, przejdź do strony **programy i funkcje** do określenia, czy Usługa agenta gościa Windows jest zainstalowana.
-4. Jeśli Agent gościa Windows znajduje się w **programy i funkcje**, odinstaluj agenta gościa Windows.
+1. Ustal, czy Usługa agenta gościa platformy Azure Windows jest uruchomiona w usługach (services.msc) maszyny Wirtualnej. Spróbuj ponownie uruchomić usługę agenta gościa platformy Azure Windows i zainicjuj tworzenie kopii zapasowej.    
+2. Jeśli usługa agenta gościa platformy Azure Windows nie jest widoczny w usługach, w Panelu sterowania, przejdź do strony **programy i funkcje** do określenia, czy Usługa agenta gościa platformy Azure Windows jest zainstalowana.
+4. Jeśli agenta gościa platformy Azure Windows znajduje się w **programy i funkcje**, odinstaluj agenta gościa usługi Windows Azure.
 5. Pobierz i zainstaluj [najnowszej wersji pliku MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Musi mieć prawa administratora w celu ukończenia instalacji.
-6. Sprawdź, czy usługi agenta gościa Windows są wyświetlane w usługach.
+6. Sprawdź, czy usługi agenta gościa platformy Azure Windows są wyświetlane w usługach.
 7. Uruchomienie w kopii zapasowej na żądanie:
     * W portalu, wybierz **Utwórz teraz kopię zapasową**.
 
@@ -205,7 +205,7 @@ Następujące warunki mogłyby spowodować zadania migawki nie powiedzie się:
 | Przyczyna | Rozwiązanie |
 | --- | --- |
 | Stan maszyny Wirtualnej jest zgłaszany niepoprawnie, ponieważ maszyna wirtualna zostanie zamknięta w protokole RDP (Remote Desktop). | Wyłączenie maszyny Wirtualnej w protokole RDP sprawdzić w portalu w celu ustalenia, czy stan maszyny Wirtualnej jest poprawna. Jeśli nie jest poprawny, należy wyłączyć maszynę Wirtualną w portalu przy użyciu **zamknięcia** opcji na pulpicie nawigacyjnym maszyn wirtualnych. |
-| Maszyna wirtualna nie można pobrać adres hosta lub w sieci szkieletowej z serwera DHCP. | DHCP musi być włączona na gościu przeznaczonego na kopie zapasowe maszyn wirtualnych IaaS do pracy. Jeśli maszyna wirtualna nie może uzyskać adres hosta lub w sieci szkieletowej z odpowiedzi serwerów DHCP 245, go nie można pobrać lub uruchomić żadnych rozszerzeń. Jeśli potrzebujesz statycznego prywatnego adresu IP, należy go skonfigurować za pomocą platformy. Opcji protokołu DHCP w ramach maszyny Wirtualnej powinien być włączony w lewo. Aby uzyskać więcej informacji, zobacz [Ustaw wewnętrzny statyczny prywatny adres IP](../virtual-network/virtual-networks-reserved-private-ip.md). |
+| Maszyna wirtualna nie można pobrać adres hosta lub w sieci szkieletowej z serwera DHCP. | DHCP musi być włączona na gościu przeznaczonego na kopie zapasowe maszyn wirtualnych IaaS do pracy. Jeśli maszyna wirtualna nie może uzyskać adres hosta lub w sieci szkieletowej z odpowiedzi serwerów DHCP 245, go nie można pobrać lub uruchomić żadnych rozszerzeń. Jeśli potrzebujesz statycznego prywatnego adresu IP, należy skonfigurować ją przy użyciu **witryny Azure Portal** lub **PowerShell** i upewnij się, że jest włączona opcja DHCP wewnątrz maszyny Wirtualnej. Aby uzyskać więcej informacji na temat konfigurowania statycznego adresu IP za pomocą programu PowerShell, zobacz [klasyczna maszyna wirtualna](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm) i [maszyny Wirtualnej usługi Resource Manager](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface).
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>Rozszerzenie kopii zapasowej nie powiedzie się zaktualizować lub załadować
 Jeśli nie można załadować rozszerzenia kopii zapasowej nie powiedzie się, ponieważ migawka nie może być przyjęty.

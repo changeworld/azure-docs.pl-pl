@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 61fb9904e69f5269c345b733ef2396294c6c790a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8c29d054f2e4e9ff4b57785a57e5c6ea512623a6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448176"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840668"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą wrażenie Stany Zjednoczone (inne niż UltiPro)
 
@@ -38,7 +38,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą wrażenie Stany Zjednoczone (inne niż UltiPro), potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Wrażenie Stany Zjednoczone (inne niż UltiPro) logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Aby skonfigurować integrację ze Stanów Zjednoczonych wrażenie (inne niż Ult
 
 **Aby dodać wrażenie Stany Zjednoczone (inne niż UltiPro) z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -209,7 +209,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
   
 ### <a name="create-a-perception-united-states-non-ultipro-test-user"></a>Tworzenie użytkownika testowego wrażenie Stany Zjednoczone (inne niż UltiPro)
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Stanach Zjednoczonych wrażenie (inne niż UltiPro). Praca z [zespołem pomocy technicznej wrażenie Stany Zjednoczone (inne niż UltiPro)](http://www.ultimatesoftware.com/Contact/ContactUs) Aby dodać użytkowników na platformie wrażenie Stany Zjednoczone (inne niż UltiPro).
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Stanach Zjednoczonych wrażenie (inne niż UltiPro). Praca z [zespołem pomocy technicznej wrażenie Stany Zjednoczone (inne niż UltiPro)](https://www.ultimatesoftware.com/Contact/ContactUs) Aby dodać użytkowników na platformie wrażenie Stany Zjednoczone (inne niż UltiPro).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

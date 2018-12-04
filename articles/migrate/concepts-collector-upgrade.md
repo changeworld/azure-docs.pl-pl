@@ -4,15 +4,15 @@ description: Zawiera informacje dotyczące uaktualnień dla urządzenia w usłud
 author: musa-57
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/29/2018
 ms.author: hamusa
 services: azure-migrate
-ms.openlocfilehash: cd48b824845a0195fc78814a88dd449507c99394
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 88077ac965b2abb69be145f29cbadca2ff1128d6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241467"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836648"
 ---
 # <a name="collector-update-release-history"></a>Historia wersji aktualizacji modułu zbierającego
 
@@ -20,12 +20,18 @@ Ten artykuł zawiera podsumowanie uaktualnienia informacji dla urządzenia modu�
 
 Azure Migrate Collector to urządzenie uproszczone, które służy do odnajdywania w lokalnym środowisku vCenter do celów oceny przed migracją na platformę Azure. [Dowiedz się więcej](concepts-collector.md).
 
+## <a name="continuous-discovery-upgrade-versions"></a>Ciągłe odnajdywania: uaktualnienie wersji
 
-## <a name="one-time-discovery-upgrade-versions"></a>Jednorazowe: uaktualnienie wersji
+Uaktualnienie nie jest dla urządzenia ciągłe odnajdywania jest jeszcze dostępne.
+
+## <a name="one-time-discovery-deprecated-now-previous-upgrade-versions"></a>Jednorazowe odnajdywania (przestarzałe teraz): poprzednie wersje uaktualnienia
+
+> [!NOTE]
+> Urządzenie jednorazowe odnajdywania jest już przestarzały, ta metoda polegać vCenter w ustawieniach statystyk serwera dostępność punktu danych wydajności i zebrane liczniki wydajności średni, które spowodowało niepełną rozmiarów maszyn wirtualnych do migracji na platformę Azure.
 
 ### <a name="version-10916-released-on-10292018"></a>Wersja 1.0.9.16 (wydane 2018-10/29)
 
-Zawiera poprawki dotyczące problemów PowerCLI zmierzyła się z zespołem podczas konfigurowania urządzenia. 
+Zawiera poprawki dotyczące problemów PowerCLI zmierzyła się z zespołem podczas konfigurowania urządzenia.
 
 Wartości dla uaktualnienie mieszania [pakietu 1.0.9.16](https://aka.ms/migrate/col/upgrade_9_16)
 
@@ -55,29 +61,6 @@ MD5 | 739f588fe7fb95ce2a9b6b4d0bf9917e
 SHA1 | 9b3365acad038eb1c62ca2b2de1467cb8eed37f6
 SHA256 | 7a49fb8286595f39a29085534f29a623ec2edb12a3d76f90c9654b2f69eef87e
 
-### <a name="version-10911"></a>Wersja 1.0.9.11
-
-Wartości dla uaktualnienie mieszania [pakietu 1.0.9.11](https://aka.ms/migrate/col/upgrade_9_11)
-
-**Algorytm** | **Wartość skrótu**
---- | ---
-MD5 | 0e36129ac5383b204720df7a56b95a60
-SHA1 | aa422ef6aa6b6f8bc88f27727e80272241de1bdf
-SHA256 | 5f76dbbe40c5ccab3502cc1c5f074e4b4bcbf356d3721fd52fb7ff583ff2b68f
-
-### <a name="version-1097"></a>Wersja 1.0.9.7
-
-Wartości dla uaktualnienie mieszania [pakietu 1.0.9.7](https://aka.ms/migrate/col/upgrade_9_7)
-
-**Algorytm** | **Wartość skrótu**
---- | ---
-MD5 | 01ccd6bc0281f63f2a672952a2a25363
-SHA1 | 3e6c57523a30d5610acdaa14b833c070bffddbff
-SHA256 | e3ee031fb2d47b7881cc5b13750fc7df541028e0a1cc038c796789139aa8e1e6
-
-## <a name="continuous-discovery-upgrade-versions"></a>Ciągłe odnajdywania: uaktualnienie wersji
-
-Uaktualnienie nie jest dla urządzenia ciągłe odnajdywania jest jeszcze dostępne.
 
 ## <a name="run-an-upgrade"></a>Uruchamianie uaktualnienia
 

@@ -8,12 +8,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 2a6744bdec48e59b820605bb4d1cc01d32702bcf
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 2ee9f750ff52b8afe4be54233f1374f523a789f4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867769"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845174"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Dzienników serwera w usłudze Azure Database for PostgreSQL 
 Usługa Azure Database for postgresql w warstwie generuje zapytania i błąd dzienników. Dziennikami zapytań, błędów i może służyć do identyfikowania, rozwiązywanie problemów i naprawić błędy konfiguracji i nieoptymalne wydajności. (Dostęp do dzienników transakcji nie jest dołączony). 
@@ -26,18 +26,18 @@ Można skonfigurować rejestrowanie na serwerze przy użyciu parametrów serwera
 Aby uzyskać więcej informacji na temat tych parametrów, zobacz PostgreSQL [raportowanie błędów i rejestrowanie](https://www.postgresql.org/docs/current/static/runtime-config-logging.html) dokumentacji. Aby dowiedzieć się, jak skonfigurować — Azure Database for postgresql w warstwie parametrów, zobacz [dokumentacja portalu](howto-configure-server-parameters-using-portal.md) lub [dokumentacji interfejsu wiersza polecenia](howto-configure-server-parameters-using-cli.md).
 
 ## <a name="access-server-logs-through-portal-or-cli"></a>Dzienniki serwera dostępowego za pośrednictwem portalu lub interfejsu wiersza polecenia
-Po włączeniu dzienniki użytkownik może uzyskiwać do nich dostęp z usługi Azure Database for PostgreSQL dziennika magazynu przy użyciu [witryny Azure portal](howto-configure-server-logs-in-portal.md), [wiersza polecenia platformy Azure](howto-configure-server-logs-using-cli.md)i interfejsów API REST platformy Azure. Obróć pliki dziennika, co godzinę lub rozmiarze 100MB, osiągnięta jako pierwsza. Możesz ustawić okres przechowywania dla tego dziennika magazynu przy użyciu **dziennika\_przechowywania\_okres** parametru skojarzonego z serwerem. Wartość domyślna to 3 dni; wartość maksymalna to 7 dni. Serwer musi mieć wystarczające przydzielonej pamięci do przechowywania plików dziennika. (Ten parametr przechowywania nie kontroluje dzienniki diagnostyczne platformy Azure).
+Po włączeniu dzienniki użytkownik może uzyskiwać do nich dostęp z usługi Azure Database for PostgreSQL dziennika magazynu przy użyciu [witryny Azure portal](howto-configure-server-logs-in-portal.md), [wiersza polecenia platformy Azure](howto-configure-server-logs-using-cli.md)i interfejsów API REST platformy Azure. Obróć pliki dziennika, co godzinę lub rozmiarze 100MB, osiągnięta jako pierwsza. Możesz ustawić okres przechowywania dla tego dziennika magazynu przy użyciu **dziennika\_przechowywania\_okres** parametru skojarzonego z serwerem. Wartość domyślna to 3 dni; wartość maksymalna to 7 dni. Serwer musi mieć wystarczające przydzielonej pamięci do przechowywania plików dziennika. (Ten parametr przechowywania nie kontroluje dzienniki diagnostyczne platformy Azure).
 
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
-Usługa Azure Database for PostgreSQL jest zintegrowany z dzienników diagnostycznych usługi Azure Monitor. Po włączeniu dzienniki na Twoim serwerze PostgreSQL, możesz je emitowany do [usługi Log Analytics](../log-analytics/log-analytics-queries.md), usługa Event Hubs lub usługi Azure Storage. Aby dowiedzieć się więcej na temat włączania dzienników diagnostycznych, zobacz sekcję porad [dokumentacja dzienników diagnostycznych](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md). 
+Usługa Azure Database for PostgreSQL jest zintegrowany z dzienników diagnostycznych usługi Azure Monitor. Po włączeniu dzienniki na Twoim serwerze PostgreSQL, możesz je emitowany do [usługi Log Analytics](../azure-monitor/log-query/log-query-overview.md), usługa Event Hubs lub usługi Azure Storage. Aby dowiedzieć się więcej na temat włączania dzienników diagnostycznych, zobacz sekcję porad [dokumentacja dzienników diagnostycznych](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md). 
 
 
 W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależności od wyjściowy punkt końcowy możesz wybrać, zakres i kolejność, w jakiej są wyświetlane, mogą się różnić. 
 
 |**Pole** | **Opis** |
 |---|---|
-| Identyfikator dzierżawy | Identyfikator dzierżawy |
+| TenantId | Identyfikator dzierżawy |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Sygnatura czasowa podczas rejestrowania w formacie UTC |
 | Typ | Typ dziennika. zawsze `AzureDiagnostics` |

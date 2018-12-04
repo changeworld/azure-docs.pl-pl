@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 74ecfe50170f35420d3cf5dc5531b0fe1046889d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 14b5f13070554328a47cd80185efb487d887a6d5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433854"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832914"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą gwiazdek CS
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą gwiazdek CS, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - CS gwiazdek logowania jednokrotnego włączonych subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację usługi Azure AD CS gwiazdek, należy dodać CS g
 
 **Aby dodać CS gwiazdy z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -117,7 +117,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.csstars.com/enterprise/`
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta gwiazdek CS](http://www.marshclearsight.com/support/) do uzyskania tych wartości. 
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta gwiazdek CS](https://www.marshclearsight.com/support/) do uzyskania tych wartości. 
  
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -127,7 +127,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/cs-stars-tutorial/tutorial_general_400.png) 
 <CS>
-1. Aby skonfigurować logowanie jednokrotne na **gwiazdek CS** stronie, musisz wysłać pobrany **XML metadanych** do [gwiazdek CS zespołu pomocy technicznej](http://www.marshclearsight.com/support/). 
+1. Aby skonfigurować logowanie jednokrotne na **gwiazdek CS** stronie, musisz wysłać pobrany **XML metadanych** do [gwiazdek CS zespołu pomocy technicznej](https://www.marshclearsight.com/support/). 
 <CE>
 
 > [!TIP]
@@ -169,7 +169,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w CS gwiazdek.
 
-Aby pobrać użytkownika utworzony w CS gwiazdek, musisz skontaktować się z Twojego [gwiazdek CS zespołu pomocy technicznej](http://www.marshclearsight.com/support/).
+Aby pobrać użytkownika utworzony w CS gwiazdek, musisz skontaktować się z Twojego [gwiazdek CS zespołu pomocy technicznej](https://www.marshclearsight.com/support/).
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

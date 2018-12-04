@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 456e32e2f5194417f004f80feef1852dd3d0befd
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c93bc018aea92a63adac4889d9496356543c1e52
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723282"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842734"
 ---
 # <a name="token-session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Tokenów, sesji i konfiguracji pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C
 
@@ -66,7 +66,7 @@ Następujące właściwości umożliwiają klientom zgodzić się na odpowiednio
 
 - **Oświadczenie wystawcy (iss)** — ta właściwość identyfikuje dzierżawy usługi Azure AD B2C, który wystawił token.
     - `https://<domain>/{B2C tenant GUID}/v2.0/` — Jest to wartość domyślna.
-    - `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` — Ta wartość obejmuje identyfikatory dla dzierżawy usługi B2C i przepływ użytkownika używane w żądania tokenu. Jeśli aplikacji lub biblioteki musi być zgodne z usługi Azure AD B2C [specyfikacji protokołu OpenID Connect 1.0 odnajdywania](http://openid.net/specs/openid-connect-discovery-1_0.html), użyj tej wartości.
+    - `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` — Ta wartość obejmuje identyfikatory dla dzierżawy usługi B2C i przepływ użytkownika używane w żądania tokenu. Jeśli aplikacji lub biblioteki musi być zgodne z usługi Azure AD B2C [specyfikacji protokołu OpenID Connect 1.0 odnajdywania](https://openid.net/specs/openid-connect-discovery-1_0.html), użyj tej wartości.
 - **Oświadczenia podmiotu (pod)** — ta właściwość identyfikuje jednostkę, dla której token określa informacje.
     - **Identyfikator obiektu** — właściwość ta jest wartością domyślną. Wypełnia identyfikator obiektu użytkownika w katalogu do `sub` oświadczenia w tokenie.
     - **Nieobsługiwane** — właściwość ta jest świadczona wyłącznie dla zgodności z poprzednimi wersjami, a firma Microsoft zaleca, aby przełączyć się do **ObjectID** jak tylko można.

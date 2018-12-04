@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fa6ae230a209d804f244d8bc46a3c6ac1abf6071
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 19f3318c8bcaf634447285cab2951a89abf13a67
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725577"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837481"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Usługi Azure AD B2C: Protokoły uwierzytelniania
 Usługa Azure Active Directory B2C (Azure AD B2C) zapewnia usługi tożsamości dostępne jako usługa dla swoich aplikacji dzięki obsłudze dwa standardowe protokoły: OpenID Connect i OAuth 2.0. Usługa jest zgodny ze standardami, ale wszelkie dwie implementacje protokołów mogą występować niewielkie różnice. 
@@ -66,7 +66,7 @@ Niektóre tokeny zabezpieczające mają wbudowane mechanizmy, które uniemożliw
 
 Jeśli token elementu nośnego, są przesyłane poza bezpiecznego kanału, złośliwa strona użyć ataków typu man-in--middle do uzyskania tokenu i używać go w celu uzyskania nieautoryzowanego dostępu do chronionego zasobu. Te same zasady zabezpieczeń stosowane, gdy tokenów elementu nośnego, są przechowywane lub pamięci podręcznej do późniejszego użycia. Zawsze upewnij się, że Twoja aplikacja przesyła i przechowuje tokenów elementu nośnego w bezpieczny sposób.
 
-Kwestie związane z dodatkowego elementu nośnego tokenu zabezpieczeń, zobacz [RFC 6750 sekcji 5](http://tools.ietf.org/html/rfc6750).
+Kwestie związane z dodatkowego elementu nośnego tokenu zabezpieczeń, zobacz [RFC 6750 sekcji 5](https://tools.ietf.org/html/rfc6750).
 
 Więcej informacji na temat różnych rodzajów tokenów, które są używane w usłudze Azure AD B2C są dostępne w [odwołania do tokenu usługi Azure AD](active-directory-b2c-reference-tokens.md).
 

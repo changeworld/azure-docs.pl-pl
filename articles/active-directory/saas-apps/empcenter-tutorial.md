@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: e7e594619c3b7c1ebd34c802d53b3897046a9cd7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 722a5b90b9ca17197cb0a0d117e58a01108d0a9c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426840"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845046"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empcenter"></a>Samouczek: Integracja usługi Azure Active Directory z EmpCenter
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą EmpCenter, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - EmpCenter logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację EmpCenter w usłudze Azure AD, należy dodać Emp
 
 **Aby dodać EmpCenter z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -119,7 +119,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | `https://<subdomain>.workforcehosting.com/<instancename>` |
 
     > [!NOTE] 
-    > Wartość nie jest prawdziwe. Zaktualizuj wartość za pomocą adresu URL logowania rzeczywistych. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta EmpCenter](http://www.workforcesoftware.com/services/customer-support/) można uzyskać wartość. 
+    > Wartość nie jest prawdziwe. Zaktualizuj wartość za pomocą adresu URL logowania rzeczywistych. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta EmpCenter](https://www.workforcesoftware.com/services/customer-support/) można uzyskać wartość. 
  
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -129,7 +129,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/empcenter-tutorial/tutorial_general_400.png)
 
-1. Aby skonfigurować logowanie jednokrotne na **EmpCenter** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej EmpCenter](http://www.workforcesoftware.com/services/customer-support/). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Aby skonfigurować logowanie jednokrotne na **EmpCenter** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej EmpCenter](https://www.workforcesoftware.com/services/customer-support/). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 > [!TIP]
 > Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -168,7 +168,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="creating-an-empcenter-test-user"></a>Tworzenie użytkownika testowego EmpCenter
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do EmpCenter, musi być obsługiwana w EmpCenter. W przypadku EmpCenter, konta użytkowników muszą zostać utworzone przez użytkownika [zespołem pomocy technicznej EmpCenter](http://www.workforcesoftware.com/services/customer-support/).
+Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do EmpCenter, musi być obsługiwana w EmpCenter. W przypadku EmpCenter, konta użytkowników muszą zostać utworzone przez użytkownika [zespołem pomocy technicznej EmpCenter](https://www.workforcesoftware.com/services/customer-support/).
 
 > [!NOTE]
 > Można użyć jakichkolwiek innych EmpCenter użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez EmpCenter do świadczenia usługi Azure Active Directory kont użytkowników.

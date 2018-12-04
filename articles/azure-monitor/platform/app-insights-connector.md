@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 75120cef7f3da037eb59e05a2ff2f26d6c599f4a
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: c704639ce696672a87485a36d43a282d04a47a7e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684670"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845180"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Rozwiązanie do zarządzania Insights Connector aplikacji (wersja zapoznawcza)
 
@@ -267,4 +267,4 @@ To rozwiązanie nie ma zbiór przykładowe wyszukiwania dzienników wyświetlane
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Użyj [wyszukiwanie w dzienniku](../../log-analytics/log-analytics-queries.md) Aby wyświetlić szczegółowe informacje o aplikacjach Application Insights.
+- Użyj [wyszukiwanie w dzienniku](../../azure-monitor/log-query/log-query-overview.md) Aby wyświetlić szczegółowe informacje o aplikacjach Application Insights.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: dbf21c7c22a9b3273a65f7e186a2ac02ccae6ba2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b933bc5f5ecb39c3462e4e9bd300f1e07fd718c0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436211"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838779"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą usługi zabezpieczeń firmy Symantec w sieci Web (WSS)
 
@@ -40,7 +40,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą usługi zabezpieczeń sieci Web (WSS) firmy Symantec, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Konta usług zabezpieczeń firmy Symantec w sieci Web (WSS)
 
 > [!NOTE]
@@ -63,7 +63,7 @@ Aby skonfigurować integrację usług zabezpieczeń firmy Symantec w sieci Web (
 
 **Aby dodać usługi zabezpieczeń firmy Symantec w sieci Web (WSS) z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -170,7 +170,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 W tej sekcji utworzysz użytkownika o nazwie Britta Simon w sieci Web usług zabezpieczeń (WSS) firmy Symantec. Odpowiednie nazwy użytkownika końcowego mogą być tworzone ręcznie w portalu programu WSS lub możesz poczekać, aż użytkownicy/grupy aprowizowane w usłudze Azure AD synchronizowane z portalem programu WSS po kilku minutach (około 15 minut). Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. Publiczny adres IP komputera użytkownika końcowego, który będzie używany do przeglądania witryny sieci Web muszą być obsługiwana w portalu usługi zabezpieczeń firmy Symantec w sieci Web (WSS).
 
 > [!NOTE]
-> Proszę [tutaj](http://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1) można pobrać maszynie przez publiczny adres IP.
+> Proszę [tutaj](https://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1) można pobrać maszynie przez publiczny adres IP.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

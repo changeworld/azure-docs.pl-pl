@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/02/2018
+ms.date: 12/01/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: b4b81546a267e6fd082f83db8b23010f0742771f
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b043c5ebe4c2a02bd4d40ca4b2bb7d5f488f5747
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237909"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837345"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Samouczek: Tworzenie rozwiązania analizy użycia przemieszczonych danych dzięki platformie Azure i usługi Azure Stack 
 
@@ -87,7 +87,7 @@ Kontener konta i obiektów blob magazynu będzie przechowywać wszystkie orygina
 
     c.  Rodzaj konta: **magazynu (ogólnego przeznaczenia w wersji 1)**
 
-    d.  Lokalizacja: **zachodnie stany USA**
+    d.  Lokalizacja: **Zachodnie stany USA**
 
     e.  Replikacja: **magazyn lokalnie nadmiarowy (LRS)**
 
@@ -252,7 +252,7 @@ Skorzystaj z kroków i ustawień opisanych powyżej, można utworzyć innego kon
 
 ## <a name="test-the-queue-triggered-function"></a>Funkcja wyzwalana przez test kolejki
 
-1.  W witrynie Azure portal przejdź do funkcji. Rozwiń **dzienniki** w dolnej części strony i upewnij się, strumieniowe przesyłanie dzienników nie została wstrzymana.
+1.  W portalu usługi Azure Stack przejdź do funkcji. Rozwiń **dzienniki** w dolnej części strony i upewnij się, strumieniowe przesyłanie dzienników nie została wstrzymana.
 
 2.  Otwórz Eksploratora usługi Storage, a następnie nawiązać połączenie z kontem magazynu utworzonym na początku tej sekcji.
 

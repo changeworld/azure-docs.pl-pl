@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: bwren
-ms.openlocfilehash: 4ef1e302a305f683155139063891b838d8144008
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 493c48fe87158ee357d98eb0b0d1bd2a4fad5b2f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680467"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843788"
 ---
 # <a name="log-analytics-query-language"></a>Zaloguj się języka zapytań usługi Analytics
 Log Analytics udostępnia zbieranie dzienników i analizy dla usługi Azure Monitor. Ona bazuje na Eksploratora danych usługi Azure i korzysta z wersji tego samego języka zapytań. [Dokumentacja języka zapytań Eksploratora danych usługi Azure](/azure/kusto/query) zawiera wszystkie szczegółowe informacje dotyczące języka i powinien być podstawowy zasób do pisania zapytań usługi Log Analytics. Ta strona zawiera linki do innych zasobów do nauki, jak pisać zapytania, a także na różnice z implementacją usługi Log Analytics języka.
@@ -29,7 +29,7 @@ Log Analytics udostępnia zbieranie dzienników i analizy dla usługi Azure Moni
 -  [Wprowadzenie do zapytań w usłudze Log Analytics](get-started-queries.md) jest lekcji do pisania zapytań przy użyciu danych usługi Log Analytics.
 
 ## <a name="concepts"></a>Pojęcia
-- [Analizowanie danych usługi Log Analytics w usłudze Azure Monitor](../log-analytics-queries.md) zawiera krótkie omówienie dziennika zapytań i opisuje strukturę danych usługi Log Analytics.
+- [Analizowanie danych usługi Log Analytics w usłudze Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) zawiera krótkie omówienie dziennika zapytań i opisuje strukturę danych usługi Log Analytics.
 - [Wyświetlanie i analizowanie danych w usłudze Log Analytics](../log-analytics-log-search-portals.md) wyjaśnia portali, gdzie tworzenie i uruchamianie zapytań usługi Log Analytics.
 
 ## <a name="reference"></a>Informacje ogólne

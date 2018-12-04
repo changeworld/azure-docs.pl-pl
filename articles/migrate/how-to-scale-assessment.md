@@ -4,14 +4,14 @@ description: Opisuje sposób oceny dużej liczby maszyn lokalnych przy użyciu u
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 11/29/2018
 ms.author: raynew
-ms.openlocfilehash: b5685640a55e2ce52a202c341cb293fe9315ab14
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: b0965d50781ac3bb6c62338a2c6f17317306d249
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240192"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835543"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Odnajdź i oceń duże środowisko programu VMware
 
@@ -50,9 +50,12 @@ Jeśli jest wdrażane w środowisku dzierżawy, w tym miejscu jest jednym ze spo
 
 ## <a name="plan-your-migration-projects-and-discoveries"></a>Planowanie migracji projektów i odnajdywania
 
-Jeden moduł zbierający usługi Azure Migrate obsługuje odnajdywania z wielu serwerów programu vCenter, (jeden po drugim) i umożliwia wykrywanie do wielu projektów migracji (jeden po drugim).
+Na podstawie liczby maszyn wirtualnych są planowane do odnajdywania, można tworzyć wiele projektów i wdrażanie wielu urządzeń w Twoim środowisku. Urządzenia mogą być połączone z jednego serwera vCenter i pojedynczego projektu, (chyba że zatrzymać odnajdywania i rozpocząć od nowa).
 
-Moduł zbierający, w przypadku jednorazowego odnajdywania działa w pożar i zapomnij modelu, po zakończeniu odnajdowania, można użyć tego samego modułu zbierającego do zbierania danych z innego serwera vCenter lub wysyłać różne migrację. W przypadku ciągłego odnajdywania jednego urządzenia jest podłączony do pojedynczego projektu, więc nie możesz użyć tego samego modułu zbierającego do wyzwolenia odnajdywania drugiego.
+W przypadku jednorazowego odnajdywania (przestarzałe teraz), odnajdywania działa w pożar i zapomnij modelu, po zakończeniu odnajdowania, można użyć tego samego modułu zbierającego do zbierania danych z innego serwera vCenter lub wysyłać różne migrację.
+
+> [!NOTE]
+> Urządzenie jednorazowe odnajdywania jest już przestarzały, ta metoda polegać vCenter w ustawieniach statystyk serwera dostępność punktu danych wydajności i zebrane liczniki wydajności średni, które spowodowało niepełną rozmiarów maszyn wirtualnych do migracji na platformę Azure. Zaleca się, aby przejść do urządzenia jednorazowe.
 
 Zaplanuj odnajdywania i oceny, w oparciu o następujące limity:
 
@@ -65,7 +68,7 @@ Zaplanuj odnajdywania i oceny, w oparciu o następujące limity:
 Należy pamiętać następujące kwestie:
 
 - Po wykonaniu odnajdywanie przy użyciu usługi Azure Migrate collector można ustawić zakres odnajdywania do folderu na serwerze vCenter, centrum danych, klaster lub hosta.
-- Aby zrobić więcej niż jedne operacje odnajdywania, sprawdź w programie vCenter Server, które maszyny wirtualne, które miały zostać odnalezione znajdują się w foldery, centrów danych, klastrów i hostów, które obsługują ograniczenie 1500 maszyn.
+- Aby zrobić więcej niż jedne operacje odnajdywania z tego samego serwera vCenter, sprawdź w programie vCenter Server, które maszyny wirtualne, które miały zostać odnalezione znajdują się w foldery, centrów danych, klastrów i hostów, które obsługują ograniczenie 1500 maszyn.
 - Firma Microsoft zaleca, aby do celów oceny pamiętać maszyn za pomocą współzależności w ramach tego samego projektu i oceny. W programie vCenter Server upewnij się, że zależne maszyny znajdują się w tym samym folderze, centrum danych lub klastra na potrzeby oceny.
 
 Zależnie od scenariusza można podzielić czemu poszerzysz swoją wiedzę, jak określono poniżej:
@@ -73,25 +76,26 @@ Zależnie od scenariusza można podzielić czemu poszerzysz swoją wiedzę, jak 
 ### <a name="multiple-vcenter-servers-with-less-than-1500-vms"></a>VCenter wiele serwerów z mniej niż 1500 maszyn wirtualnych
 Jeśli masz wiele serwery vCenter w danym środowisku, a łączna liczba maszyn wirtualnych jest mniejszy niż 1500, można użyć następujących podejście, w zależności od danego scenariusza:
 
-**Jednorazowe:** jeden moduł zbierający i projekt migracji można użyć do odnajdywania wszystkich maszyn wirtualnych na wszystkich serwerach vCenter. Ponieważ moduł zbierający jednorazowe odnajdywania umożliwia odnalezienie jednego serwera vCenter w danym momencie, możesz uruchamiać tego samego modułu zbierającego wszystkie serwery vCenter, jeden po drugim i punktu modułu zbierającego, w tym samym projekcie migracji. Po zakończeniu wszystkich odnalezionych danych dotyczących następnie można utworzyć oceny dla maszyn.
-
 **Ciągłe odnajdywania:** w przypadku ciągłego odnajdywania jednego urządzenia można je podłączyć do pojedynczego projektu. Dlatego należy wdrożyć jeden urządzenie dla każdej serwery vCenter, a następnie utworzenie jednego projektu dla każdego urządzenia i operacje odnajdywania wyzwalacza odpowiednio.
+
+**Jednorazowe odnajdywania (przestarzałe teraz):** jeden moduł zbierający i projekt migracji można użyć do odnajdywania wszystkich maszyn wirtualnych na wszystkich serwerach vCenter. Ponieważ moduł zbierający jednorazowe odnajdywania umożliwia odnalezienie jednego serwera vCenter w danym momencie, możesz uruchamiać tego samego modułu zbierającego wszystkie serwery vCenter, jeden po drugim i punktu modułu zbierającego, w tym samym projekcie migracji. Po zakończeniu wszystkich odnalezionych danych dotyczących następnie można utworzyć oceny dla maszyn.
+
 
 ### <a name="multiple-vcenter-servers-with-more-than-1500-vms"></a>VCenter wiele serwerów z więcej niż 1500 maszyn wirtualnych
 
 Jeśli masz wiele serwery vCenter z mniej niż 1500 maszyn wirtualnych na serwer vCenter, ale więcej niż 1500 maszyn wirtualnych na wszystkich serwerach vCenter, konieczne jest utworzenie kilku projektów migracji (jeden projekt migracji może zawierać tylko 1500 maszyn wirtualnych). Można to osiągnąć, tworząc projekt migracji na serwer vCenter i dzielenia odnajdywania.
 
-**Jednorazowe:** jeden moduł zbierający służy do odnajdywania każdego serwera vCenter, (jeden po drugim). Jeśli chcesz, aby odnajdywania można uruchomić w tym samym czasie, możesz również wdrażanie wielu urządzeń i równoległego uruchamiania odnajdywania.
-
 **Ciągłe odnajdywania:** należy utworzyć wiele urządzenia modułu zbierającego (po jednym dla każdego serwera vCenter) i nawiązać połączenie z każdego urządzenia odnajdywania projektu i wyzwalacza odpowiednio.
+
+**Jednorazowe odnajdywania (przestarzałe teraz):** jeden moduł zbierający służy do odnajdywania każdego serwera vCenter, (jeden po drugim). Jeśli chcesz, aby odnajdywania można uruchomić w tym samym czasie, możesz również wdrażanie wielu urządzeń i równoległego uruchamiania odnajdywania.
 
 ### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>Więcej niż 1500 maszyn w jednym programie vCenter Server
 
 Jeśli masz więcej niż 1500 maszyn wirtualnych w jednym programie vCenter Server, należy podzielić odnajdywania na wielu projektów migracji. Aby podzielić odnajdywania, można wykorzystać pola zakresu w urządzeniu i określić hosta, klaster, folder lub centrum danych, które chcesz odnajdywać. Na przykład, jeśli masz dwa foldery w programie vCenter Server, jednym z 1000 maszyn wirtualnych (Folder1) i drugi z 800 maszyn wirtualnych (Folder2), można użyć pola zakresu do dzielenia odnajdywania między te foldery.
 
-**Jednorazowe:** można użyć tego samego modułu zbierającego do wyzwolenia odnajdywania obu. W przypadku pierwszego odnajdywania można określić Folder1 jako zakres i wskazać na pierwszy projekt migracji po zakończeniu pierwszego odnajdywania, możesz używać tego samego modułu zbierającego, zmień jego zakres, Folder2 i migracji szczegółów projektu do drugiego projektu migracji i do drugiego odnajdywania.
-
 **Ciągłe odnajdywania:** w takim przypadku należy utworzyć dwa urządzenia modułu zbierającego, pierwszy modułu zbierającego, określić zakres Folder1 i podłącz go do pierwszy projekt migracji. Możesz równolegle uruchomić odnajdywanie Folder2 przy użyciu drugiego urządzenia modułu zbierającego i podłącz go do drugiego projekt migracji.
+
+**Jednorazowe odnajdywania (przestarzałe teraz):** można użyć tego samego modułu zbierającego do wyzwolenia odnajdywania obu. W przypadku pierwszego odnajdywania można określić Folder1 jako zakres i wskazać na pierwszy projekt migracji po zakończeniu pierwszego odnajdywania, możesz używać tego samego modułu zbierającego, zmień jego zakres, Folder2 i migracji szczegółów projektu do drugiego projektu migracji i do drugiego odnajdywania.
 
 ### <a name="multi-tenant-environment"></a>Środowiska z wieloma dzierżawami
 
@@ -120,14 +124,20 @@ Usługa Azure Migrate tworzy lokalną maszynę wirtualną, nazywaną modułem zb
 Jeśli masz wiele projektów, należy pobrać tylko raz za pomocą urządzenia modułu zbierającego programem vCenter Server. Po pobraniu i skonfiguruj urządzenie, należy uruchomić dla każdego projektu, a następnie określ unikatowy identyfikator i klucz projektu.
 
 1. W projekcie usługi Azure Migrate kliknij pozycję **Wprowadzenie** > **Odnajdź i oceń** > **Odnajdź maszyny**.
-2. W obszarze **Odnajdź maszyny** dostępne są dwie opcje dla urządzenia. Kliknij przycisk **Pobierz**, aby pobrać odpowiednie urządzenie na podstawie swoich preferencji.
+2. W **odnajdź maszyny**, kliknij przycisk **Pobierz** do pobrania tego urządzenia.
 
-    a. **Odnajdywanie jednorazowe:** urządzenie dla tego modelu komunikuje się z serwerem vCenter, aby zebrać metadane dotyczące maszyn wirtualnych. Podczas zbierania danych wydajności maszyn wirtualnych opiera się ono na historycznych danych wydajności przechowywanych na serwerze vCenter i zbiera historię wydajności za ostatni miesiąc. W tym modelu usługa Azure Migrate zbiera średnie dane licznika (w porównaniu z licznikiem szczytowym) dla każdej metryki, [dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected). Ponieważ jest jednorazowe, zmiany w środowisku lokalnym nie są odzwierciedlane po ukończeniu odnajdywania. Jeśli chcesz odzwierciedlić zmiany, musisz przeprowadzić ponowne odnajdywanie w tym samym środowisku dla tego samego projektu.
-
-    b. **Ciągłe odnajdywanie:** urządzenie dla tego modelu stale profiluje środowisko lokalne w celu zebrania danych użycia w czasie rzeczywistym dla każdej maszyny wirtualnej. W tym modelu liczniki szczytowe są zbierane dla każdej metryki (użycie procesora CPU, użycie pamięci itp.). Ten model nie zależy od ustawień statystyk serwera vCenter na potrzeby zbierania danych o wydajności. Z urządzenia możesz w dowolnym momencie zatrzymać ciągłe profilowanie.
+    Urządzenie Azure Migrate komunikuje się z serwerem vCenter i stale profilów w środowisku lokalnym na potrzeby zbierania danych użycia w czasie rzeczywistym dla każdej maszyny Wirtualnej. Są zbierane przez liczniki szczytowe dla poszczególnych metryki (użycie procesora CPU, użycie pamięci przez program itp.). Ten model nie zależy od ustawień statystyk serwera vCenter na potrzeby zbierania danych o wydajności. Z urządzenia możesz w dowolnym momencie zatrzymać ciągłe profilowanie.
 
     > [!NOTE]
-    > Funkcjonalność ciągłego odnajdywania jest dostępna w wersji zapoznawczej.
+    > Urządzenie jednorazowe odnajdywania jest już przestarzały, ta metoda polegać vCenter w ustawieniach statystyk serwera dostępność punktu danych wydajności i zebrane liczniki wydajności średni, które spowodowało niepełną rozmiarów maszyn wirtualnych do migracji na platformę Azure.
+
+    **Natychmiastowej gratyfikacji:** z urządzeniem ciągłe odnajdowania po wykryciu ukończenia (zajmuje kilka godzin w zależności od liczby maszyn wirtualnych), możesz od razu utworzyć oceny. Ponieważ zbierania danych o wydajności rozpoczyna się, gdy jest rozpoczynane odnajdywania, jeśli szukasz natychmiastowej gratyfikacji, należy wybrać kryterium ustalania rozmiaru w ocenie jako *jako lokalne*. Aby w przypadku oceny na podstawie wydajności zalecane jest poczekać co najmniej jednego dnia po uruchamiania odnajdywania można pobrać zaleceń dotyczących rozmiarów niezawodne.
+
+    Należy pamiętać, że urządzenie zbiera w sposób ciągły tylko dane dotyczące wydajności i nie wykrywa żadnych zmian konfiguracji w środowisku lokalnym (tzn. dodania lub usunięcia maszyny wirtualnej, dodania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym możesz wykonać następujące działania, aby odzwierciedlić zmiany w portalu:
+
+    - Dodanie elementów (maszyn wirtualnych, dysków, rdzeni itp.): aby uwzględnić te zmiany w witrynie Azure Portal, możesz zatrzymać odnajdywanie z urządzenia i następnie uruchomić je ponownie. Zapewni to, że zmiany zostaną zaktualizowane w projekcie usługi Azure Migrate.
+
+    - Usunięcie maszyn wirtualnych: ze względu na konstrukcję urządzenia, usunięcie maszyny wirtualnej nie zostanie uwzględnione, nawet jeśli zatrzymasz odnajdywanie i uruchomisz je ponownie. Przyczyną jest to, że dane z kolejnych operacji odnajdywania są dołączane do starszych danych, a nie nadpisywane. W takim przypadku możesz po prostu zignorować maszynę wirtualną w portalu, usuwając ją z grupy i obliczając ponownie ocenę.
 
 3. W **skopiuj poświadczenia projektu**, skopiuj identyfikator i klucz projektu. Będą potrzebne do skonfigurowania modułu zbierającego.
 
@@ -146,7 +156,17 @@ Sprawdź, czy plik OVA jest bezpieczne, przed przystąpieniem do wdrażania:
 
 3. Upewnij się, że wygenerowanego skrótu odpowiada następujące ustawienia.
 
-#### <a name="one-time-discovery"></a>Jednorazowe odnajdywanie
+#### <a name="continuous-discovery"></a>Ciągłe odnajdywanie
+
+Do OVA w wersji 1.0.10.4
+
+**Algorytm** | **Wartość skrótu**
+--- | ---
+MD5 | 2ca5b1b93ee0675ca794dd3fd216e13d
+SHA1 | 8c46a52b18d36e91daeae62f412f5cb2a8198ee5
+SHA256 | 3b3dec0f995b3dd3c6ba218d436be003a687710abab9fcd17d4bdc90a11276be
+
+#### <a name="one-time-discovery-deprecated-now"></a>Jednorazowe odnajdywania (przestarzałe teraz)
 
 Ova w wersji 1.0.9.15 (wydania 10/23/2018 r.)
 
@@ -188,16 +208,6 @@ MD5 | d5b6a03701203ff556fa78694d6d7c35
 SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
 SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
 
-#### <a name="continuous-discovery"></a>Ciągłe odnajdywanie
-
-Do OVA w wersji 1.0.10.4
-
-**Algorytm** | **Wartość skrótu**
---- | ---
-MD5 | 2ca5b1b93ee0675ca794dd3fd216e13d
-SHA1 | 8c46a52b18d36e91daeae62f412f5cb2a8198ee5
-SHA256 | 3b3dec0f995b3dd3c6ba218d436be003a687710abab9fcd17d4bdc90a11276be
-
 ### <a name="create-the-collector-vm"></a>Tworzenie maszyny wirtualnej modułu zbierającego
 
 Zaimportuj pobrany plik na serwer vCenter:
@@ -221,37 +231,6 @@ Jeśli masz wiele projektów, pamiętaj zidentyfikować identyfikator i klucz dl
 1. W projekcie, wybierz pozycję **wprowadzenie** > **Odnajdź i oceń** > **odnajdź maszyny**.
 2. W **skopiuj poświadczenia projektu**, skopiuj identyfikator i klucz projektu.
     ![Skopiuj poświadczenia projektu](./media/how-to-scale-assessment/copy-project-credentials.png)
-
-### <a name="set-the-vcenter-statistics-level"></a>Ustaw poziom statystyki programu vCenter
-
-Urządzenie modułu zbierającego umożliwia odnalezienie następujących statyczne metadane dotyczące wybranych maszyn wirtualnych.
-
-1. Nazwa wyświetlana maszyny Wirtualnej (na klawiaturze vCenter)
-2. Ścieżka magazynu maszyny Wirtualnej (w programie vCenter hosta/folder)
-3. Adres IP
-4. Adres MAC
-5. System operacyjny
-5. Liczba rdzeni, dysków, kart sieciowych
-6. Rozmiar pamięci, rozmiary dysków
-7. Liczniki wydajności i maszyny Wirtualnej, dysku i sieci, zgodnie z opisem w poniższej tabeli.
-
-Jednorazowe odnajdywania w poniższej tabeli wymieniono liczniki wydajności dokładnie, które są zbierane i zawiera również listę wyników oceny, które ma wpływ, jeśli nie ma określonego licznika.
-
-Ciągłe odnajdywania tych samych liczników są zbierane w czasie rzeczywistym (interwał 20 sekund), więc nie ma żadnych zależności na poziom statystyki programu vCenter. Urządzenie następnie ustala telefoniczny przykłady 20 sekund do utworzenia pojedynczego punktu danych co 15 minut, wybierając wartość szczytowa z próbek 20 sekund i wysyła je do platformy Azure.
-
-|Licznik                                  |Poziom    |Poziom na urządzenie  |Ocena wpływu                               |
-|-----------------------------------------|---------|------------------|------------------------------------------------|
-|cpu.usage.average                        | 1       |Nie dotyczy                |Zalecany rozmiar maszyny Wirtualnej i kosztów                    |
-|mem.usage.average                        | 1       |Nie dotyczy                |Zalecany rozmiar maszyny Wirtualnej i kosztów                    |
-|virtualDisk.read.average                 | 2       |2                 |Rozmiar dysku, koszt magazynu i rozmiaru maszyny Wirtualnej         |
-|virtualDisk.write.average                | 2       |2                 |Rozmiar dysku, koszt magazynu i rozmiaru maszyny Wirtualnej         |
-|virtualDisk.numberReadAveraged.average   | 1       |3                 |Rozmiar dysku, koszt magazynu i rozmiaru maszyny Wirtualnej         |
-|virtualDisk.numberWriteAveraged.average  | 1       |3                 |Rozmiar dysku, koszt magazynu i rozmiaru maszyny Wirtualnej         |
-|NET.RECEIVED.AVERAGE                     | 2       |3                 |Koszt rozmiar i sieć maszyny Wirtualnej                        |
-|net.transmitted.average                  | 2       |3                 |Koszt rozmiar i sieć maszyny Wirtualnej                        |
-
-> [!WARNING]
-> Jednorazowe odnajdywania jeśli zostały ustawione po prostu wyższy poziom statystyk, potrwa na dzień do generowania liczników wydajności. Dlatego zaleca się, uruchom odnajdywanie po jednym dniu. Poczekaj co najmniej jednego dnia po uruchomieniu odnajdywania dla urządzenia na potrzeby profilowania środowiska i następnie utworzyć oceny dla modelu ciągłego odnajdywania.
 
 ### <a name="run-the-collector-to-discover-vms"></a>Uruchamianie modułu zbierającego w celu odnalezienia maszyn wirtualnych
 
@@ -280,16 +259,41 @@ Dla każdego odnajdywania, które należy wykonać możesz uruchomić moduł zbi
 6.  W **określ projekt migracji**, podaj identyfikator i klucz projektu. Jeśli nie zostaną skopiowane, otwórz witryny Azure portal z maszyny Wirtualnej modułu zbierającego. W projekcie **Przegląd** wybierz opcję **odnajdź maszyny** i skopiuj wartości.  
 7.  W **Wyświetl postęp zbierania**, monitorować proces odnajdywania i sprawdź, że metadane zbierane z maszyn wirtualnych znajduje się w zakresie. Moduł zbierający informuje o szacowanym czasie odnajdowania.
 
-
 #### <a name="verify-vms-in-the-portal"></a>Weryfikowanie maszyn wirtualnych w portalu
 
-W przypadku jednorazowego odnajdywania czas odnajdywania zależy od liczby odnajdywanych maszyn wirtualnych. Zazwyczaj do 100 maszyn wirtualnych, po uruchomieniu modułu zbierającego wynosi około godziny do zbierania danych konfiguracji i wydajności zakończyć. Możesz utworzyć oceny (zarówno oparte na wydajności, jak i oceny lokalne) natychmiast po zakończeniu odnajdywania.
-
-W przypadku ciągłego odnajdywania (w wersji zapoznawczej) moduł zbierający będzie stale profilował środowisko lokalne i będzie nadal wysyłał dane dotyczące wydajności w godzinnych odstępach. Możesz przejrzeć maszyny w portalu po godzinie od rozpoczęcia odnajdywania. Zdecydowanie zalecamy poczekać co najmniej dzień przed utworzeniem jakichkolwiek ocen na podstawie wydajności dla maszyn wirtualnych.
+Moduł zbierający będzie stale profilu w środowisku lokalnym i będą nadal wysyłać dane dotyczące wydajności z interwałem godzinę. Możesz przejrzeć maszyny w portalu po godzinie od rozpoczęcia odnajdywania. Zdecydowanie zalecamy poczekać co najmniej dzień przed utworzeniem jakichkolwiek ocen na podstawie wydajności dla maszyn wirtualnych.
 
 1. W projekcie migracji kliknij pozycję **Zarządzaj** > **Maszyny**.
 2. Sprawdź, czy maszyny wirtualne, które miały zostać odnalezione, są widoczne w portalu.
 
+### <a name="data-collected-from-on-premises-environment"></a>Dane zebrane ze środowiska lokalnego
+
+Modułem zbierającym, odnajduje poniższe dane konfiguracyjne dotyczące wybranych maszyn wirtualnych.
+
+1. Nazwa wyświetlana maszyny Wirtualnej (na klawiaturze vCenter)
+2. Ścieżka magazynu maszyny Wirtualnej (w programie vCenter hosta/folder)
+3. Adres IP
+4. Adres MAC
+5. System operacyjny
+5. Liczba rdzeni, dysków, kart sieciowych
+6. Rozmiar pamięci, rozmiary dysków
+7. Liczniki wydajności i maszyny Wirtualnej, dysku i sieci, zgodnie z opisem w poniższej tabeli.
+
+Urządzenie modułu zbierającego zbiera następujące liczniki wydajności dla każdej maszyny Wirtualnej z hosta ESXi w interwału wynoszącego 20 sekund. Te liczniki są liczniki vCenter i chociaż terminologii mówi średnia próbek 20-sekundowe liczników w czasie rzeczywistym. Urządzenie następnie ustala telefoniczny przykłady 20 sekund do utworzenia pojedynczego punktu danych co 15 minut, wybierając wartość szczytowa z próbek 20 sekund i wysyła je do platformy Azure. Dane wydajności dla maszyn wirtualnych zostanie uruchomiony, stają się dostępne w portalu po dwóch godzinach od zostały rozpoczęte odnajdywania. Zdecydowanie zaleca się poczekać co najmniej dzień przed utworzeniem oceny na podstawie wydajności, aby uzyskać dokładne zalecenia dotyczące doboru wielkości. Jeśli szukasz natychmiastowej gratyfikacji, możesz utworzyć oceny przy użyciu kryterium ustalania rozmiaru jako *jako lokalne* zostaną nie będą dane dotyczące wydajności w przypadku ustalania rozmiaru po prawej stronie.
+
+**Licznik** |  **Wpływ na ocenę**
+--- | ---
+cpu.usage.average | Zalecany rozmiar maszyny Wirtualnej i kosztów  
+mem.usage.average | Zalecany rozmiar maszyny Wirtualnej i kosztów  
+virtualDisk.read.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
+virtualDisk.write.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
+virtualDisk.numberReadAveraged.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
+virtualDisk.numberWriteAveraged.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
+NET.RECEIVED.AVERAGE | Oblicza rozmiar maszyny Wirtualnej                          
+net.transmitted.average | Oblicza rozmiar maszyny Wirtualnej     
+
+> [!WARNING]
+> Metoda odnajdywania jednorazowy, który opierał się na ustawienia statystyk serwera vCenter do zbierania danych wydajności jest już przestarzały.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

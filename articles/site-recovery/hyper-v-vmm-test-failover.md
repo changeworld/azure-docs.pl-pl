@@ -1,18 +1,18 @@
 ---
 title: Uruchamianie próbnego odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak uruchamianie próbnego odzyskiwania po awarii dla maszyn wirtualnych z funkcją Hyper-V w chmurach programu VMM do dodatkowego lokalnego centrum danych przy użyciu usługi Azure Site Recovery.
-author: ponatara
-manager: abhemraj
+author: rajani-janaki-ram
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/06/2018
-ms.author: ponatara
-ms.openlocfilehash: 3f7e534e9c698e31e1061c35aec713d20c7e570f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 11/27/2018
+ms.author: rajanaki
+ms.openlocfilehash: 5e6d155a3efebfc8289263ac703a87e9aa3287cd
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211353"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834761"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Uruchamianie próbnego odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej
 
@@ -125,7 +125,7 @@ Ta procedura opisuje sposób testować tryb failover planu odzyskiwania. Alterna
 4. Po zakończeniu trybu failover Sprawdź pomyślnie uruchomić maszyny wirtualne.
 5. Gdy wszystko będzie gotowe, kliknij przycisk **wyczyść test pracy awaryjnej** w planie odzyskiwania. W obszarze **Uwagi** zarejestruj i zapisz wszelkie obserwacje związane z testem pracy w trybie failover. Ten krok usuwa wszelkie maszyny wirtualne i sieci, które zostały utworzone przez usługę Site Recovery podczas testowania trybu failover. 
 
-![Testowanie trybu failover](./media/hyper-v-vmm-test-failover/TestFailover.png)
+![Testowanie pracy w trybie failover](./media/hyper-v-vmm-test-failover/TestFailover.png)
  
 
 

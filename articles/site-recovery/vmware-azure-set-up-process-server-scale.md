@@ -1,18 +1,18 @@
 ---
 title: Skonfigurować serwer przetwarzania na platformie Azure, aby zakończyć się niepowodzeniem w trakcie odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak skonfigurować serwer przetwarzania na platformie Azure, aby zakończyć się niepowodzeniem powrót po awarii z platformy Azure do lokalnych podczas odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych.
-author: rayne-wiselman
-manager: carmonm
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
-ms.author: raynew
-ms.openlocfilehash: 330f0197b8a7735043e93f00dc4baa5578f50228
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 11/27/2018
+ms.author: ramamill
+ms.openlocfilehash: 2ef08831706a018422ea3700c8eb63bd6f95c469
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212237"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834967"
 ---
 # <a name="scale-for-failback-with-additional-process-servers"></a>Skalowanie na potrzeby powrotu po awarii przy użyciu dodatkowych serwerów przetwarzania
 
@@ -41,6 +41,7 @@ W przypadku, gdy każda chronione maszyny źródłowej skonfigurowano 3 dyskami 
 Wymagania wstępne dotyczące dodatkowym serwerze przetwarzania są podsumowane w poniższej tabeli.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
+
 
 
 ## <a name="download-installation-file"></a>Pobierz plik instalacyjny

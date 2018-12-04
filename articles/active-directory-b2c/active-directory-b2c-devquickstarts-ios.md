@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9f475c7bc373afd8a109873908bb583bc07708f1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 9dbe88e1e179df4560d5094cf3f58ca770541323
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722551"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842276"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Usługa Azure AD B2C: Zaloguj się przy użyciu aplikacji systemu iOS
 
@@ -39,7 +39,7 @@ Następnie musisz utworzyć aplikację w katalogu usługi B2C. Rejestracja aplik
 * Konfigurowanie **identyfikator URI przekierowania** ze schematem niestandardowym (na przykład com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Ten identyfikator URI będzie potrzebna później.
 
 ## <a name="create-your-user-flows"></a>Tworzyć przepływy użytkownika
-W usłudze Azure AD B2C każde działanie użytkownika jest definiowany przez [przepływ użytkownika](active-directory-b2c-reference-policies.md). Ta aplikacja zawiera jedno rozwiązanie tożsamości: połączonego logowania i rejestracji. Utworzenie tego przepływu użytkownika, zgodnie z opisem w [artykule informacyjnym na temat przepływu użytkownika](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Po utworzeniu przepływu użytkownika, należy koniecznie:
+W usłudze Azure AD B2C każde działanie użytkownika jest definiowany przez [przepływ użytkownika](active-directory-b2c-reference-policies.md). Ta aplikacja zawiera jedno rozwiązanie tożsamości: połączonego logowania i rejestracji. Utworzenie tego przepływu użytkownika, zgodnie z opisem w [artykule informacyjnym na temat przepływu użytkownika](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow). Po utworzeniu przepływu użytkownika, należy koniecznie:
 
 * W obszarze **atrybuty tworzenia konta**, wybierz atrybut **nazwę wyświetlaną**.  Możesz wybrać, jak również inne atrybuty.
 * W obszarze **oświadczeń aplikacji**, wybierz oświadczenia **nazwę wyświetlaną** i **identyfikator obiektu użytkownika**. Możesz wybrać inne oświadczenia, jak również.

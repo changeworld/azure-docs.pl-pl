@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 65f3388074ff7a84c6e0516a64665019d5883ab1
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 0469ddb18014d36b33a42d1e7183bef9784d0dfb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913176"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843142"
 ---
 # <a name="log-analytics-query-language-differences"></a>Zaloguj się różnice języka zapytań usługi Analytics
 
-Gdy [usługi Log Analytics](../log-analytics-queries.md) jest oparta na [Eksploratora danych usługi Azure](/azure//data-explorer) i używa [sam język zapytań](/azure/kusto/query), wersję języka ma pewne różnice. W tym artykule identyfikuje elementy, które różnią się między wersją język używany do Eksploratora danych i wersja używana do zapytań usługi Log Analytics.
+Gdy [usługi Log Analytics](../../azure-monitor/log-query/log-query-overview.md) jest oparta na [Eksploratora danych usługi Azure](/azure//data-explorer) i używa [sam język zapytań](/azure/kusto/query), wersję języka ma pewne różnice. W tym artykule identyfikuje elementy, które różnią się między wersją język używany do Eksploratora danych i wersja używana do zapytań usługi Log Analytics.
 
 ## <a name="data-explorer-elements-not-supported-in-log-analytics"></a>Elementy Eksploratora danych nie jest obsługiwane w usłudze Log Analytics
 W poniższych sekcjach opisano elementy języka zapytań Eksploratora danych, które nie są obsługiwane przez usługę Log Analytics.

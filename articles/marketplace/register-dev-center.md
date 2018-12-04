@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: cc4e128cab3cad235462e29e65fa58002a103bcd
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 393426678d9331837bdc3b73c4e491dbe7eae6fa
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855905"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834829"
 ---
 # <a name="register-in-dev-center"></a>Rejestrowanie w Centrum deweloperów  
 Aby sprawdzić, czy użytkownik nie jest zalogowany do konta osobistego przeglądarki, otwórz nowy Internet Explorer InPrivate lub Incognito przeglądarki Chrome sesji przeglądania.  
@@ -171,7 +171,7 @@ Bank i informacje podatkowe jest wymagana dla wszystkich ofert komercyjnych przy
 > Przejdź do "Programy" (https://developer.microsoft.com/dashboard/Account/Programs) i zaloguj się do konta Centrum deweloperów. Jeśli nie widzisz jako zarejestrowanego programu platformy Azure, sprawdź w obszarze "Programy zalecane dla Ciebie", a następnie sprawdź na platformie Azure wybierz pozycję "Pierwsze kroki".
 
 *   **Jak połączyć mojego konta Centrum deweloperów do swojego profilu wydawcy w portalu Cloud Partner?**
-> Ostatnim krokiem przed publikowania jest łączenie danych konta Centrum deweloperów do Twojego portalu Cloud Partner [profilu](https://cloudpartner.azure.com/#profile). Jeśli Twoje konto Centrum deweloperów różni się od konta na [portalu Cloud Partner](https://cloudpartner.azure.com/#alloffers), Dodaj swoje konto Centrum deweloperów jako nowy [użytkownika](https://cloudpartner.azure.com/#documentation/manage-users) w portalu Cloud Partner. Zaloguj się do [portalu dla partnerów w chmurze](https://cloudpartner.azure.com/#alloffers) przy użyciu danych konta Centrum deweloperów. Wybierz profil Publisher znajduje się w górnej części menu bezpośrednio z przeglądarki sieci web. Centrum deweloperów łącze wybierz konto.
+> Ostatnim krokiem przed publikowania jest łączenie danych konta Centrum deweloperów do Twojego portalu Cloud Partner [profilu](https://cloudpartner.azure.com/#profile). Jeśli Twoje konto Centrum deweloperów różni się od konta na [portalu Cloud Partner](https://cloudpartner.azure.com/#alloffers), Dodaj swoje konto Centrum deweloperów jako nowy [użytkownika](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-users) w portalu Cloud Partner. Zaloguj się do [portalu dla partnerów w chmurze](https://cloudpartner.azure.com/#alloffers) przy użyciu danych konta Centrum deweloperów. Wybierz profil Publisher znajduje się w górnej części menu bezpośrednio z przeglądarki sieci web. Centrum deweloperów łącze wybierz konto.
 
 *   **Dlaczego moja aplikacja Centrum deweloperów zostaje odrzucony**
 > Firma weryfikacyjny innych firm (Duns & Bradstreet) nie może się z Tobą za pośrednictwem numer telefonu, które zostały udostępnione. Skontaktuj się z działem pomocy technicznej związanej z [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) można ponownie uruchomić proces weryfikacyjny

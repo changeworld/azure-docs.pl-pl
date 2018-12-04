@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 16e98811b65e215d8688e030ea8dcbb1f9446a5b
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d54d4eccc89313a8e109d1598078cdb1cc5d7a14
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381541"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836733"
 ---
-# <a name="trustframeworkpolicy"></a>Elementu TrustFrameworkPolicy
+# <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -25,8 +25,8 @@ Niestandardowe zasady jest przedstawiana jako jeden lub więcej plików w formac
 
 ```XML
 <TrustFrameworkPolicy
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="https://www.w3.org/2001/XMLSchema"
   xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
   PolicySchemaVersion="0.3.0.0"
   TenantId="mytenant.onmicrosoft.com"
@@ -42,7 +42,7 @@ Niestandardowe zasady jest przedstawiana jako jeden lub więcej plików w formac
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | Yes | Wersja schematu, który ma być używany do wykonywania zasad. Wartość musi być `0.3.0.0` |
 | TenantObjectId | Nie | Unikatowy identyfikator dzierżawy usługi Azure Active Directory (Azure AD) B2C. |
-| Identyfikator dzierżawy | Yes | Unikatowy identyfikator dzierżawy, do której należy ta zasada. |
+| TenantId | Yes | Unikatowy identyfikator dzierżawy, do której należy ta zasada. |
 | PolicyId | Yes | Unikatowy identyfikator zasad. Ten identyfikator musi być poprzedzony *B2C_1A_* |
 | PublicPolicyUri | Yes | Identyfikator URI dla zasad, które jest kombinacja Identyfikatora dzierżawy oraz identyfikatora zasad. |
 | DeploymentMode | Nie | Możliwe wartości: `Production`, `Debugging`, lub `Development`. Wartość domyślna to `Production`. Ta właściwość służy do debugowania zasady. Aby uzyskać więcej informacji, zobacz [zbieranie dzienników](active-directory-b2c-troubleshoot-custom.md). |
@@ -53,8 +53,8 @@ Poniższy przykład pokazuje, jak określić **elementu TrustFrameworkPolicy** e
 
 ``` XML
 <TrustFrameworkPolicy
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
    xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
    PolicySchemaVersion="0.3.0.0"
    TenantId="mytenant.onmicrosoft.com"
@@ -90,7 +90,7 @@ Dziedziczenie zasad z innych zasad **BasePolicy** element musi być zadeklarowan
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | --------|
-| Identyfikator dzierżawy | 1:1 | Identyfikator dzierżawy usługi Azure AD B2C. |
+| TenantId | 1:1 | Identyfikator dzierżawy usługi Azure AD B2C. |
 | PolicyId | 1:1 | Identyfikator zasady nadrzędne. |
 
 
@@ -98,8 +98,8 @@ Poniższy przykład pokazuje, jak określić zasadach podstawowych. To **B2C_1A_
 
 ``` XML
 <TrustFrameworkPolicy
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
    xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
    PolicySchemaVersion="0.3.0.0"
    TenantId="mytenant.onmicrosoft.com"

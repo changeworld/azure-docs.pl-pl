@@ -6,21 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 4e5833cf-4790-4146-82d6-737975fb06ba
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviewer: jiahan
-ms.openlocfilehash: bdf31c72fbcd8941161e6b9df0a490df7f6a16e0
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 2e3cec4564c509cd225a9bcd43185f6f5b344e8c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026522"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833463"
 ---
 # <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Aprowizuj Magazyn dyskowy maszyny wirtualnej w usłudze Azure Stack
 
@@ -65,7 +64,7 @@ Po utworzeniu maszyny Wirtualnej, można użyć portalu:
 
 Każdy dysk niezarządzany, jakie dodasz, należy umieścić w oddzielny kontener.
 
->[!NOTE]
+>[!NOTE]  
 >Dyski tworzone i zarządzane przez platformę Azure są nazywane [usługi managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
 
 ### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>Aby utworzyć i dołączyć nowy dysk danych, użyj portalu

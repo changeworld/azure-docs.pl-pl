@@ -7,25 +7,25 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 588ce454248f0577a52515a4327d1e43013d34a5
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f8ebb282d3f6abbc37739891c0f7228bef110d82
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581803"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842683"
 ---
 # <a name="tutorial-customize-the-user-interface-of-your-applications-in-azure-active-directory-b2c"></a>Samouczek: Dostosowywanie interfejsu użytkownika aplikacji w usłudze Azure Active Directory B2C
 
-Dla bardziej powszechne doświadczeń użytkowników takie jak rejestracji, logowania i edytowania profilu, możesz użyć [wbudowane zasady](active-directory-b2c-reference-policies.md) w usłudze Azure Active Directory (Azure AD) B2C. Informacje zawarte w tym samouczku ułatwiają Dowiedz się, jak [Dostosowywanie interfejsu użytkownika (UI)](customize-ui-overview.md) tych środowisk przy użyciu własnych plików HTML i CSS.
+Dla bardziej powszechne doświadczeń użytkowników takie jak rejestracji, logowania i edytowania profilu, możesz użyć [przepływy użytkownika](active-directory-b2c-reference-policies.md) w usłudze Azure Active Directory (Azure AD) B2C. Informacje zawarte w tym samouczku ułatwiają Dowiedz się, jak [Dostosowywanie interfejsu użytkownika (UI)](customize-ui-overview.md) tych środowisk przy użyciu własnych plików HTML i CSS.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Utwórz pliki dostosowania interfejsu użytkownika
-> * Utwórz zasady rejestracji i logowania, które używa plików
+> * Tworzenie przepływu rejestracji i logowania użytkownika, który używa plików
 > * Testowanie dostosowanego interfejsu użytkownika
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -61,7 +61,7 @@ Mimo że można przechowywać pliki na wiele sposobów, w ramach tego samouczka,
 
 ### <a name="enable-cors"></a>Włączanie mechanizmu CORS
 
- Kod platformy Azure AD B2C w przeglądarce używa nowoczesnych i standardowego podejścia do załadowania zawartości niestandardowej z adresu URL, który określisz w zasadach. Współużytkowanie zasobów między źródłami (cors) umożliwia ograniczone zasoby na stronie sieci web, aby zażądać z innych domen.
+ Kod platformy Azure AD B2C w przeglądarce używa nowoczesnych i standardowego podejścia można załadować niestandardowej zawartości z adresu URL, który określisz w przepływu użytkownika. Współużytkowanie zasobów między źródłami (cors) umożliwia ograniczone zasoby na stronie sieci web, aby zażądać z innych domen.
 
 1. Wybierz z menu **CORS**.
 2. Aby uzyskać **dozwolone źródła**, wprowadź `https://your-tenant-name.b2clogin.com`. Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C. Na przykład `https://fabrikam.b2clogin.com`. Należy używać małych liter, wprowadzając nazwę dzierżawy.
@@ -137,9 +137,9 @@ W tym samouczku przechowujesz pliki, które utworzono w ramach konta magazynu, a
 4. Skopiuj adres URL dla pliku, który został przekazany do użycia w dalszej części tego samouczka.
 5. Powtórz kroki 3 i 4 dla *style.css* pliku.
 
-## <a name="create-a-sign-up-and-sign-in-policy"></a>Tworzenie zasad rejestracji i logowania
+## <a name="create-a-sign-up-and-sign-in-user-flow"></a>Tworzenie przepływu rejestracji i logowania użytkowników
 
-Wykonanie czynności opisanych w tym samouczku, musisz utworzyć aplikacji testowej i zasad rejestracji lub logowania w usłudze Azure AD B2C. Można zastosować z zasadami opisanymi w tym samouczku, aby inne środowiska użytkownika, takie jak edytowanie profilu.
+Wykonanie czynności opisanych w tym samouczku, musisz utworzyć test przepływu aplikacji i tworzenia konta lub logowania użytkownika w usłudze Azure AD B2C. Można zastosować z zasadami opisanymi w tym samouczku, aby inne środowiska użytkownika, takie jak edytowanie profilu.
 
 ### <a name="create-an-azure-ad-b2c-application"></a>Tworzenie aplikacji usługi Azure AD B2C
 
@@ -153,29 +153,34 @@ Za pomocą usługi Azure AD B2C odbywa się przy użyciu aplikacji utworzonej w 
 6. Dla **aplikacji sieci Web / interfejs API sieci Web**, wybierz opcję `Yes`, a następnie wprowadź `https://jwt.ms` dla **adres URL odpowiedzi**.
 7. Kliknij pozycję **Utwórz**.
 
-### <a name="create-the-policy"></a>Tworzenie zasad
+### <a name="create-the-user-flow"></a>Utwórz przepływ użytkownika
 
-Aby przetestować pliki dostosowań, należy utworzyć wbudowanych zasad rejestracji lub logowania, które korzystają z aplikacji, która została wcześniej utworzona.
+Aby przetestować swoje pliki dostosowania, należy utworzyć przepływ wbudowanych rejestracji lub logowania użytkownika, który korzysta z aplikacji, która została wcześniej utworzona.
 
-1. W ramach dzierżawy usługi Azure AD B2C wybierz **zasady rejestracji lub logowania**, a następnie kliknij przycisk **Dodaj**.
-2. Wprowadź nazwę zasad. Na przykład *signup_signin*. Prefiks *B2C_1* jest automatycznie dodawany do nazwy po utworzeniu zasad.
-3. Wybierz **dostawców tożsamości**ustaw **E-mail rejestracji** konta lokalnego, a następnie kliknij przycisk **OK**.
-4. Wybierz **atrybuty tworzenia konta**, wybierz atrybuty, które mają być zbierane od klienta podczas rejestracji. Na przykład ustawić **Kraj/Region**, **nazwę wyświetlaną**, i **kod pocztowy**, a następnie kliknij przycisk **OK**.
-5. Wybierz **oświadczeń aplikacji**, wybierz oświadczenia, które mają być zwracane w tokenach autoryzacji wysyłanych z powrotem do aplikacji po pomyślnej rejestracji lub logowania. Na przykład wybierz **nazwę wyświetlaną**, **dostawcy tożsamości**, **kod pocztowy**, **użytkownik jest nowy** i **identyfikator obiektu użytkownika** , a następnie kliknij przycisk **OK**.
-6. Wybierz **dostosowanie interfejsu użytkownika strony**, wybierz opcję **ujednolicona strona rejestracji lub logowania**, a następnie kliknij **tak** dla **Użyj niestandardowej strony**.
-7. W **identyfikator URI strony niestandardowe**, wprowadź adres URL *ui.html niestandardowe* pliku zapisaną wcześniej, a następnie kliknij przycisk **OK**.
-8. Kliknij pozycję **Utwórz**.
+1. W ramach dzierżawy usługi Azure AD B2C wybierz **przepływy użytkownika**, a następnie kliknij przycisk **nowy przepływ użytkownika**.
+2. Na **zalecane** kliknij pozycję **Zaloguj się i logowanie**.
+3. Wprowadź nazwę przepływu użytkownika. Na przykład *signup_signin*. Prefiks *B2C_1* jest automatycznie dodawany do nazwy po utworzeniu przepływu użytkownika.
+4. W obszarze **dostawców tożsamości**, wybierz opcję **E-mail rejestracji**.
+5. W obszarze **atrybutach i oświadczeniach użytkowników**, kliknij przycisk **Pokaż więcej**.
+6. W **zbieranie atrybut** kolumnę, wybierz atrybuty, które mają być zbierane od klienta podczas rejestracji. Na przykład ustawić **Kraj/Region**, **nazwę wyświetlaną**, i **kod pocztowy**.
+7. W **zwracany oświadczenia** kolumnę, wybierz oświadczenia, które mają być zwracane w tokenach autoryzacji wysyłanych z powrotem do aplikacji po pomyślnej rejestracji lub logowania. Na przykład wybierz pozycje **Nazwa wyświetlana**, **Dostawca tożsamości**, **Kod pocztowy**, **Użytkownik jest nowy** i **Identyfikator obiektu użytkownika**.
+8. Kliknij przycisk **OK**.
+9. Kliknij pozycję **Utwórz**.
+10. W obszarze **Dostosuj**, wybierz opcję **strony układów**. Wybierz **ujednolicona strona rejestracji lub logowania**, a następnie kliknij **tak** dla **niestandardową zawartość strony**.
+11. W **identyfikator URI strony niestandardowe**, wprowadź adres URL *ui.html niestandardowe* pliku, który zapisaną wcześniej.
+12. W górnej części strony kliknij **Zapisz**.
 
-## <a name="test-the-policy"></a>Testowanie zasad
+## <a name="test-the-user-flow"></a>Testowanie przepływu użytkownika
 
-1. W ramach dzierżawy usługi Azure AD B2C wybierz **zasady rejestracji lub logowania**, a następnie wybierz utworzone wcześniej zasady. Na przykład *B2C_1_signup_signin*.
-2. Upewnij się, że jest zaznaczona utworzoną aplikację **wybierz aplikację**, a następnie kliknij przycisk **Uruchom teraz**.
+1. W ramach dzierżawy usługi Azure AD B2C wybierz **przepływy użytkownika** i wybierz pozycję przepływ użytkownika, który został utworzony. Na przykład *B2C_1_signup_signin*.
+2. W górnej części strony kliknij **uruchomić przepływ użytkownika**.
+3. Kliknij przycisk **uruchomić przepływ użytkownika** przycisku.
 
-    ![Uruchamianie zasad rejestracji lub logowania](./media/tutorial-customize-ui/signup-signin.png)
+    ![Uruchamianie przepływu rejestracji lub logowania użytkownika](./media/tutorial-customize-ui/run-user-flow.png)
 
     Powinieneś widzieć stronę podobny do poniższego przykładu z elementami, a ich tematyka na podstawie pliku CSS, który został utworzony:
 
-    ![Wyniki zasad](./media/tutorial-customize-ui/run-now.png) 
+    ![Wyniki przepływu użytkownika](./media/tutorial-customize-ui/run-now.png) 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -183,7 +188,7 @@ W tym artykule przedstawiono sposób:
 
 > [!div class="checklist"]
 > * Utwórz pliki dostosowania interfejsu użytkownika
-> * Utwórz zasady rejestracji i logowania, które używa plików
+> * Tworzenie przepływu rejestracji i logowania użytkownika, który używa plików
 > * Testowanie dostosowanego interfejsu użytkownika
 
 > [!div class="nextstepaction"]

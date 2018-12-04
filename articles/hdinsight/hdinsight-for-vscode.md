@@ -10,16 +10,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: 9603751db01eaffdf9fbe26164aed53017c5e23c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: fe186966dbddb5aa743e465f897aa5a1a0e07db1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499537"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840218"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Użyj usługi Azure HDInsight Tools for Visual Studio Code
 
-Dowiedz się, jak używać [Azure HDInsight Tools for Visual Studio Code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) (VS Code), aby utworzyć i przesłać [Apache Hive](https://hive.apache.org/) partii zadań, zapytania interakcyjne Apache Hive oraz skrypty PySpark. Narzędzia HDInsight systemu Azure można zainstalować na platformach, które są obsługiwane przez program VS Code. Są to systemy Windows, Linux i macOS. Wymagania wstępne dla różnych platform można znaleźć.
+Dowiedz się, jak używać narzędzi HDInsight systemu Azure dla programu Visual Studio Code (VS Code) do tworzenia i przesyłania zadań wsadowych Apache Hive, interakcyjnych zapytań Hive oraz skrypty PySpark dla platformy Apache Spark. Najpierw opiszemy sposób instalowania narzędzi HDInsight tools w programie VS Code, a następnie omówimy sposób przesyłania zadań Hive i platformy Spark. 
+
+Narzędzia HDInsight systemu Azure można zainstalować na platformach obsługiwanych przez program VS Code, obejmujących Windows, Linux i macOS. Poniżej przedstawiono wymagania wstępne dla różnych platform.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -411,7 +413,7 @@ HDInsight dla programu VS Code obsługuje następujące funkcje:
 
 ### <a name="create-and-running-applications"></a>Tworzenie i uruchamianie aplikacji
 * [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](spark/apache-spark-create-standalone-application.md)
-* [Zdalne uruchamianie zadań w klastrze usługi Apache Spark przy użyciu programu Livy Apache](spark/apache-spark-livy-rest-interface.md)
+* [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](spark/apache-spark-livy-rest-interface.md)
 
 ### <a name="manage-resources"></a>Zarządzanie zasobami
 * [Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight](spark/apache-spark-resource-manager.md)

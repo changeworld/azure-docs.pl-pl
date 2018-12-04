@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 10/24/2018
-ms.openlocfilehash: 31b09818f901ecf957364ae77fd8c6e636b04342
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.date: 12/03/2018
+ms.openlocfilehash: 489eccf1b73e7f5df76a3ce681b4479893a9e0ac
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712147"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843210"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
@@ -145,7 +145,7 @@ Wystąpienia zarządzanego nie można uzyskać dostęp do plików, więc nie mo�
 
 ### <a name="collation"></a>Sortowanie
 
-Opcja sortowania serwera jest `SQL_Latin1_General_CP1_CI_AS` i nie można zmienić. Zobacz [sortowania](https://docs.microsoft.com/sql/t-sql/statements/collations).
+Domyślnym sortowaniem wystąpienia jest `SQL_Latin1_General_CP1_CI_AS` i może być określony jako parametr tworzenia. Zobacz [sortowania](https://docs.microsoft.com/sql/t-sql/statements/collations).
 
 ### <a name="database-options"></a>Opcje bazy danych
 
@@ -277,7 +277,8 @@ Operacje
 ### <a name="logins--users"></a>Identyfikatory logowania / użytkownicy
 
 - Utworzone nazw logowania SQL `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY`, i `FROM SID` są obsługiwane. Zobacz [logowania Utwórz](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
-- Logowania Windows utworzonych za pomocą `CREATE LOGIN ... FROM WINDOWS` składni nie są obsługiwane.
+- Usługa Azure Active Directory (AAD) logowania do utworzonych za pomocą [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) składni lub [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) składni są obsługiwane (**publicznej wersji zapoznawczej**).
+- Logowania Windows utworzonych za pomocą `CREATE LOGIN ... FROM WINDOWS` składni nie są obsługiwane. Za pomocą usługi Azure Active Directory, logowania i użytkowników.
 - Azure użytkownik usługi Active Directory (Azure AD), który utworzył wystąpienie ma [nieograniczone uprawnienia administratora](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#unrestricted-administrative-accounts).
 - Użytkownicy poziomu bazy danych usługi Azure Active Directory (Azure AD) niebędący administratorami można tworzyć przy użyciu `CREATE USER ... FROM EXTERNAL PROVIDER` składni. Zobacz [Utwórz użytkownika... Z ZEWNĘTRZNEGO DOSTAWCY](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users)
 
@@ -333,7 +334,7 @@ Aby uzyskać informacje na temat instrukcji Restore, zobacz [PRZYWRÓCIĆ instru
 Broker usług dla wielu wystąpień nie jest obsługiwana:
 
 - `sys.routes` — Wymagania wstępne: Wybierz adres z sys.routes. Adres musi być lokalny dla każdej ścieżki. Zobacz [sys.routes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
-- `CREATE ROUTE` — nie jest możliwe `CREATE ROUTE` z `ADDRESS` innych niż `LOCAL`. Zobacz [Utwórz trasy](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql).
+- `CREATE ROUTE` -Nie można użyć `CREATE ROUTE` z `ADDRESS` innych niż `LOCAL`. Zobacz [Utwórz trasy](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql).
 - `ALTER ROUTE` Nie można `ALTER ROUTE` z `ADDRESS` innych niż `LOCAL`. Zobacz [trasy ALTER](https://docs.microsoft.com/sql/t-sql/statements/alter-route-transact-sql).  
 
 ### <a name="service-key-and-service-master-key"></a>Usługa klucza głównego klucza i usługi
@@ -427,12 +428,12 @@ Następujące zmienne, funkcje i widoki zwracają różne wyniki:
 
 Każde wystąpienie zarządzane musi 35 TB pamięci masowej zarezerwowane dla miejsca na dysku Premium platformy Azure, a każdego pliku bazy danych znajduje się na innym dysku fizycznym. Rozmiary dysków może być 128 GB, 256 GB, 512 GB, 1 TB lub 4 TB. Nieużywane miejsce na dysku nie jest rozliczany, ale suma rozmiarów dysków w warstwie Premium platformy Azure nie może przekraczać 35 TB. W niektórych przypadkach wystąpienia zarządzanego, które nie wymagają 8 TB w sumie może przekraczać 35 TB Azure limit rozmiaru magazynu, z powodu wewnętrznego fragmentacji.
 
-Na przykład wystąpienie zarządzane mogą mieć jeden plik 1,2 TB, rozmiar, który jest umieszczony na dysku 4 TB i pliki 248 każdy 1 GB w rozmiarze, które są umieszczone na oddzielnych dyskach 128 GB. W tym przykładzie:
+Na przykład wystąpienie zarządzane mogą mieć jeden plik 1,2 TB, rozmiar, który jest umieszczony na dysku 4 TB i pliki 248 (każdego 1 GB w rozmiarze), które są umieszczone na oddzielnych dyskach 128 GB. W tym przykładzie:
 
-- rozmiar magazynu całkowitego miejsca na dysku jest 1-4 TB + 248 × 128 GB = 35 TB.
+- Rozmiar magazynu całkowitego miejsca na dysku przydzielonego to 1-4 TB + 248 × 128 GB = 35 TB.
 - łączne miejsce zarezerwowane dla baz danych w wystąpieniu jest 1 x 1,2 TB + 248 x 1 GB = 1,4 TB pojemności.
 
-Obrazuje to, że w pewnych okolicznościach, ze względu na bardzo szczegółowych dystrybucji plików, wystąpienie zarządzane mogą dotrzeć do 35 TB zarezerwowane dla dołączonego dysku w warstwie Premium usługi Azure, gdy być może nie oczekujesz.
+To pokazuje, że w pewnych okolicznościach, ze względu na dystrybucji określonych plików, wystąpienie zarządzane mogą docierać do większej 35 TB zarezerwowane dla dołączonego dysku w warstwie Premium usługi Azure, gdy być może nie oczekujesz.
 
 W tym przykładzie istniejących baz danych będą nadal działać i można rozwijać bez żadnych przeszkód, tak długo, jak nowe pliki nie zostaną dodane. Jednak nowe bazy danych może nie można utworzyć ani przywrócić, ponieważ nie ma wystarczającej ilości miejsca dla nowych dysków twardych, nawet wtedy, gdy łączny rozmiar wszystkich baz danych nie osiąga limit rozmiaru wystąpienia. Błąd, który jest zwracany nie jest w takim przypadku usuń zaznaczenie.
 
@@ -443,7 +444,10 @@ Upewnij się, że usuwa wiodące `?` z klucza sygnatury dostępu Współdzielone
 
 ### <a name="tooling"></a>Narzędzia
 
-SQL Server Management Studio i SQL Server Data Tools, może być pewne problemy podczas uzyskiwania dostępu do wystąpienia zarządzanego. Wszystkie problemy narzędzia zostaną rozwiązane przed ogólnie dostępne.
+SQL Server Management Studio (SSMS) i SQL Server Data Tools (SSDT) może być pewne problemy podczas uzyskiwania dostępu do wystąpienia zarządzanego.
+
+- Za pomocą usługi Azure AD, logowania i użytkowników (**publicznej wersji zapoznawczej**) z narzędziami SSDT nie jest obecnie obsługiwane.
+- Funkcje tworzenia skryptów logowania do usługi Azure AD, aby użytkownicy (**publicznej wersji zapoznawczej**) nie są obsługiwane w programie SSMS.
 
 ### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>Nieprawidłowa baza danych nazw w niektórych widoków, dzienników i komunikatów
 
@@ -451,7 +455,7 @@ Kilka widoków systemowych, liczniki wydajności, komunikaty o błędach, XEvent
 
 ### <a name="database-mail-profile"></a>Profil poczty bazy danych
 
-Może istnieć tylko jedna baza danych profilu poczty i musi zostać wywołana `AzureManagedInstance_dbmail_profile`. To tymczasowe ograniczenie, które zostaną wkrótce usunięte.
+Może istnieć tylko jedna baza danych profilu poczty i musi zostać wywołana `AzureManagedInstance_dbmail_profile`.
 
 ### <a name="error-logs-are-not-persisted"></a>Dzienniki błędów są utrwalane nie
 
@@ -496,7 +500,7 @@ Mimo że ten kod działa z danymi w ramach tego samego wystąpienia wymagane us�
 
 ### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>Moduły środowiska CLR i połączone serwery jakiś czas nie mogą odwoływać się lokalny adres IP
 
-Moduły środowiska CLR, znajduje się w wystąpieniu zarządzanym i połączonych serwerów/rozproszonych zapytań, które odwołują się do pewnego czasu bieżącego wystąpienia nie można rozpoznać adresu IP lokalnego wystąpienia. Jest to błąd przejściowy.
+Moduły środowiska CLR, znajduje się w wystąpieniu zarządzanym i połączonych serwerów/rozproszonych zapytań, które odwołują się do pewnego czasu bieżącego wystąpienia nie można rozpoznać adresu IP lokalnego wystąpienia. Ten błąd jest przejściowy problem.
 
 **Obejście**: Użyj połączenia kontekstu w module środowiska CLR, jeśli to możliwe.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 051e39d0e7a58c79eb00bc3dfb73eaf5389617c8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8b821da194ce41fc419e769336eeeb5927306684
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448367"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843652"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pacific-timesheet"></a>Samouczek: Integracja usługi Azure Active Directory z grafik Pacyfiku
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Do konfigurowania integracji z usługą Azure AD z grafik Pacyfiku, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Pacyficznego grafiku logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację grafiku pacyficznego w usłudze Azure AD, należy
 
 **Aby dodać grafiku pacyficznego z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -117,7 +117,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
     b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adres URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej grafiku pacyficznego](http://www.pacifictimesheet.com/support) do uzyskania tych wartości.
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adres URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej grafiku pacyficznego](https://www.pacifictimesheet.com/support) do uzyskania tych wartości.
  
 1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
@@ -131,7 +131,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     ![Konfigurowanie logowania jednokrotnego](./media/pacific-timesheet-tutorial/tutorial_pacifictimesheet_configure.png) 
 
-1. Aby skonfigurować logowanie jednokrotne na **grafiku pacyficznego** stronie, musisz wysłać pobrany **certyfikat (Base64)**, **SAML pojedynczego logowania jednokrotnego usługi adresu URL**i **Identyfikator jednostki SAML** do [zespołem pomocy technicznej grafiku pacyficznego](http://www.pacifictimesheet.com/support). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Aby skonfigurować logowanie jednokrotne na **grafiku pacyficznego** stronie, musisz wysłać pobrany **certyfikat (Base64)**, **SAML pojedynczego logowania jednokrotnego usługi adresu URL**i **Identyfikator jednostki SAML** do [zespołem pomocy technicznej grafiku pacyficznego](https://www.pacifictimesheet.com/support). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 > [!TIP]
 > Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -170,7 +170,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="creating-a-pacific-timesheet-test-user"></a>Tworzenie użytkownika testowego i Pacyfik grafiku
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w grafiku pacyficznego. Praca z [zespołem pomocy technicznej grafiku pacyficznego](http://www.pacifictimesheet.com/support) do utworzenia użytkownika w aplikacji.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w grafiku pacyficznego. Praca z [zespołem pomocy technicznej grafiku pacyficznego](https://www.pacifictimesheet.com/support) do utworzenia użytkownika w aplikacji.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

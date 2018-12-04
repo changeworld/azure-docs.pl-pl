@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 64b4ab95d4972848c6c0cf7130ec97c2be41ead0
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 7fe018a1584561ae12742da6e75f7d265ae82656
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722920"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833554"
 ---
 # <a name="standard-properties-in-log-analytics-records"></a>Właściwości standardowe w rekordach usługi Log Analytics
-Dane w [usługi Log Analytics](../log-analytics/log-analytics-queries.md) jest przechowywany jako zestaw rekordów, każdy z typem danych, który ma unikatowego zestawu właściwości. Wiele typów danych, ma standardowych właściwości, które są wspólne dla wielu typów. W tym artykule opisano te właściwości i przedstawiono przykłady jak ich używać w zapytaniach.
+Dane w [usługi Log Analytics](../log-analytics/../azure-monitor/log-query/log-query-overview.md) jest przechowywany jako zestaw rekordów, każdy z typem danych, który ma unikatowego zestawu właściwości. Wiele typów danych, ma standardowych właściwości, które są wspólne dla wielu typów. W tym artykule opisano te właściwości i przedstawiono przykłady jak ich używać w zapytaniach.
 
 Niektóre z tych właściwości są nadal w trakcie zaimplementowana, może je wyświetlić, w niektórych typach danych, ale jeszcze nie w innych.
 
@@ -88,6 +88,6 @@ AzureActivity
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przeczytaj więcej na temat [są przechowywane dane usługi Log Analytics](../log-analytics/log-analytics-queries.md).
+- Przeczytaj więcej na temat [są przechowywane dane usługi Log Analytics](../log-analytics/../azure-monitor/log-query/log-query-overview.md).
 - Uzyskaj lekcji na [Pisanie zapytań w usłudze Log Analytics](../log-analytics/query-language/get-started-queries.md).
 - Uzyskaj lekcji na [sprzężenie tabel w zapytań usługi Log Analytics](../log-analytics/query-language/joins.md).

@@ -1,20 +1,18 @@
 ---
-title: Praca z danymi z danymi geograficznymi w konto interfejsu API SQL usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
+title: Praca z danymi z danymi geograficznymi w konto interfejsu API SQL usługi Azure Cosmos DB
 description: Dowiedz się, jak tworzyć, indeksu i zapytań przestrzennych obiektów za pomocą usługi Azure Cosmos DB i interfejsu API SQL.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: sngun
-ms.openlocfilehash: 1de97ef34ab2db79ef7eaeca66cb8d0598ae9262
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 947a39a3660e0755efbf99b74b66d2c16e331e07
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284493"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837056"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Dane lokalizacji geograficznych i GeoJSON za pomocą konta interfejsu API SQL usługi Azure Cosmos DB
 
@@ -160,27 +158,27 @@ Usługa Azure Cosmos DB obsługuje następujące funkcje wbudowane Otwórz dane 
 </tr>
 <tr>
   <td>ST_DISTANCE (spatial_expr, spatial_expr)</td>
-  <td>Zwraca odległość między dwoma wyrażeniami GeoJSON punkt, wielokąta lub LineString.</td>
+  <td>Zwraca odległość między dwoma wyrażeniami GeoJSON typu Point, Polygon lub LineString.</td>
 </tr>
 <tr>
   <td>ST_WITHIN (spatial_expr, spatial_expr)</td>
-  <td>Zwraca wartość wskazującą, czy pierwszy obiekt GeoJSON (punkt wielokąta i LineString) znajduje się w drugi obiekt GeoJSON (punkt wielokąta i LineString) wyrażenie logiczne.</td>
+  <td>Zwraca wyrażenie warunkowe wskazujące, czy pierwszy obiekt GeoJSON (Point, Polygon lub LineString) znajduje się w drugim obiekcie GeoJSON (Point, Polygon lub LineString).</td>
 </tr>
 <tr>
-  <td>ST_INTERSECTS (spatial_expr, spatial_expr)</td>
-  <td>Zwraca wartość wskazującą, czy dwa określone obiekty GeoJSON (punkt wielokąta i LineString) intersect wyrażenia logicznego.</td>
+  <td>ST_INTERSECTS (wyrażenie_przestrzenne, wyrażenie_przestrzenne)</td>
+  <td>Zwraca wyrażenie warunkowe wskazujące, czy dwa określone obiekty GeoJSON (Point, Polygon lub LineString) przecinają się.</td>
 </tr>
 <tr>
   <td>ST_ISVALID</td>
-  <td>Zwraca wartość logiczną wskazującą, czy określone wyrażenie GeoJSON punkt, wielokąta lub LineString jest nieprawidłowy.</td>
+  <td>Zwraca wartość logiczną wskazującą, czy określone wyrażenie GeoJSON typu Point, Polygon lub LineString jest nieprawidłowe.</td>
 </tr>
 <tr>
   <td>ST_ISVALIDDETAILED</td>
-  <td>Zwraca wartość JSON, zawierająca wartość logiczną wartość, jeśli określone wyrażenie GeoJSON punkt, wielokąta lub LineString jest prawidłowy, a nieprawidłowy, dodatkowo Przyczyna jako wartość ciągu.</td>
+  <td>Zwraca wartość JSON zawierającą wartość logiczną, jeśli określone wyrażenie GeoJSON typu Point, Polygon lub LineString jest prawidłowe, a jeśli jest nieprawidłowe, dodatkowo zwraca przyczynę jako wartość ciągu.</td>
 </tr>
 </table>
 
-Funkcje przestrzenne może służyć do wykonywania zapytań dotyczących odległości dla danych przestrzennych. Na przykład w tym miejscu jest zapytanie, które zwraca wszystkie rodziny dokumenty, które znajdują się w 30 km określonej lokalizacji za pomocą wbudowanych funkcji ST_DISTANCE. 
+Funkcje przestrzenne mogą być używane do wykonywania zapytań dotyczących odległości względem danych przestrzennych. Na przykład w tym miejscu jest zapytanie, które zwraca wszystkie rodziny dokumenty, które znajdują się w 30 km określonej lokalizacji za pomocą wbudowanych funkcji ST_DISTANCE. 
 
 **Zapytanie**
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: cshoe
-ms.openlocfilehash: 9b2539d94c645f71b596e53429e6e0d8cc46b9ad
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b071bfe83ba9ef653db2d6d1debad4e3dfa02580
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016747"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845930"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Pojęcia powiązania i Wyzwalacze usługi Azure Functions
 
@@ -231,6 +231,7 @@ Zobacz przykład specyficzny dla języka, przedstawiający użycie zwracanej war
 * [Skryptu C# (csx)](#c-script-example)
 * [F#](#f-example)
 * [JavaScript](#javascript-example)
+* [Python](#python-example)
 
 ### <a name="c-example"></a>Przykład w języku C#
 
@@ -291,7 +292,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 }
 ```
 
-### <a name="f-example"></a>Przykład F #
+### <a name="f-example"></a>F#przykład
 
 Oto powiązania danych wyjściowych w *function.json* pliku:
 
@@ -304,7 +305,7 @@ Oto powiązania danych wyjściowych w *function.json* pliku:
 }
 ```
 
-Poniżej przedstawiono kod F #:
+Oto F# kodu:
 
 ```fsharp
 let Run(input: WorkItem, log: ILogger) =
@@ -334,6 +335,29 @@ module.exports = function (context, input) {
     context.log('Node.js script processed queue message', json);
     context.done(null, json);
 }
+```
+
+### <a name="python-example"></a>Przykładem w języku Python
+
+Oto powiązania danych wyjściowych w *function.json* pliku:
+
+```json
+{
+    "name": "$return",
+    "type": "blob",
+    "direction": "out",
+    "path": "output-container/{id}"
+}
+```
+Poniżej przedstawiono kod języka Python:
+
+```python
+def main(input: azure.functions.InputStream) -> str:
+    return json.dumps({
+        'name': input.name,
+        'length': input.length,
+        'content': input.read().decode('utf-8')
+    })
 ```
 
 ## <a name="binding-datatype-property"></a>Właściwość dataType powiązania
@@ -476,7 +500,7 @@ Można również utworzyć wyrażeń dla części nazwy plików, takich jak rozs
  
 ### <a name="binding-expressions---trigger-metadata"></a>Wyrażenia wiązania — wyzwalanie metadanych
 
-Oprócz ładunek danych dostarczone przez wyzwalacza (na przykład zawartość komunikatu w kolejce, który wywołał funkcję) wiele wyzwalaczy, podaj wartości dodatkowe metadane. Te wartości może służyć jako parametry wejściowe w języku C# i F # lub właściwości w `context.bindings` obiektu w języku JavaScript. 
+Oprócz ładunek danych dostarczone przez wyzwalacza (na przykład zawartość komunikatu w kolejce, który wywołał funkcję) wiele wyzwalaczy, podaj wartości dodatkowe metadane. Te wartości mogą służyć jako parametrów wejściowych w C# i F# lub we właściwościach `context.bindings` obiektu w języku JavaScript. 
 
 Na przykład wyzwalacz usługi Azure Queue storage obsługuje następujące właściwości:
 
@@ -541,7 +565,7 @@ W poniższym przykładzie przedstawiono *function.json* pliku dla funkcji elemen
 }
 ```
 
-Aby to zrobić w języku C# i F # należy klasa, która definiuje pola, które ma zostać przeprowadzona, jak w poniższym przykładzie:
+Aby to zrobić C# i F#, potrzebujesz klasę, która definiuje pola, które mają zostać przeprowadzona, jak w poniższym przykładzie:
 
 ```csharp
 using System.Net;

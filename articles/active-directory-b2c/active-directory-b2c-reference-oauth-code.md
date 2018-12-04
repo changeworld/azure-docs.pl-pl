@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f39efcbc051bf57ab350357b020039eddd0f7c18
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c6d976869f2a068c393a643bb97cae2f7ac1a470
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720783"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843193"
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Usługa Azure Active Directory B2C: Przepływ kodu autoryzacji OAuth 2.0
 Przyznawanie kodu autoryzacji OAuth 2.0 w aplikacje zainstalowane na urządzeniu umożliwia uzyskanie dostępu do chronionych zasobów, takich jak interfejsy API sieci web. Za pomocą usługi Azure Active Directory B2C (Azure AD B2C) implementacji protokołu OAuth 2.0, możesz dodawać rejestracji, logowania i zarządzania tożsamościami, inne zadania do aplikacji mobilnych i klasycznych. Ten artykuł jest niezależny od języka. W artykule opisano jak wysyłać i odbierać komunikaty HTTP bez użycia żadnych bibliotek typu open source.
 
-Przepływ kodu autoryzacji OAuth 2.0 opisano w [sekcji 4.1 specyfikacji protokołu OAuth 2.0](http://tools.ietf.org/html/rfc6749). Służy do uwierzytelniania i autoryzacji w większości [typy aplikacji](active-directory-b2c-apps.md), w tym aplikacje sieci web i natywnie zainstalowanych aplikacji. Przepływ kodu autoryzacji OAuth 2.0 umożliwia bezpieczne uzyskiwanie tokenów dostępu i tokenów odświeżania dla Twoich aplikacji, które mogą być używane do dostępu do zasobów, które są zabezpieczone przez [serwera autoryzacji](active-directory-b2c-reference-protocols.md).  Token odświeżania umożliwia klienta do uzyskania nowego dostępu (i odświeżanie) tokeny po wygaśnięciu ważności tokenu dostępu, zwykle po godzinie.
+Przepływ kodu autoryzacji OAuth 2.0 opisano w [sekcji 4.1 specyfikacji protokołu OAuth 2.0](https://tools.ietf.org/html/rfc6749). Służy do uwierzytelniania i autoryzacji w większości [typy aplikacji](active-directory-b2c-apps.md), w tym aplikacje sieci web i natywnie zainstalowanych aplikacji. Przepływ kodu autoryzacji OAuth 2.0 umożliwia bezpieczne uzyskiwanie tokenów dostępu i tokenów odświeżania dla Twoich aplikacji, które mogą być używane do dostępu do zasobów, które są zabezpieczone przez [serwera autoryzacji](active-directory-b2c-reference-protocols.md).  Token odświeżania umożliwia klienta do uzyskania nowego dostępu (i odświeżanie) tokeny po wygaśnięciu ważności tokenu dostępu, zwykle po godzinie.
 
 Ten artykuł koncentruje się na **klientów publicznych** przepływ kodu autoryzacji OAuth 2.0. Publicznych klienta jest każda aplikacja kliencka, która nie jest zaufany, aby bezpiecznie zachować integralność klucza tajnego hasła. W tym aplikacje mobilne, aplikacje pulpitu i zasadniczo każda aplikacja, która jest uruchamiana na urządzeniu i należy uzyskiwanie tokenów dostępu. 
 

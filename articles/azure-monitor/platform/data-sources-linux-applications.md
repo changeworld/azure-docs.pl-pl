@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: fe5c355054aab483a7ee8e68305473b7b840779d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 4ddf163ce37c4adf1b89012c214ee807f55a0d98
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336953"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836326"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Zbierz liczniki wydajności dla aplikacji systemu Linux w usłudze Log Analytics 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -170,4 +170,4 @@ Po skonfigurowaniu agenta usługi Log Analytics dla systemu Linux w celu wysyła
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Liczniki wydajności są zbierane](data-sources-performance-counters.md) z agentów dla systemu Linux.
-* Dowiedz się więcej o [dziennikach](../../log-analytics/log-analytics-queries.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
+* Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 

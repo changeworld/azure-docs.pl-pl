@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 558df3fa70989aaf9ba182df3a918994c7dc9db6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1f1797cf3022285f81991eb15818b68df195de4b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243713"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834132"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Dodawanie właścicieli i użytkowników w usłudze Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -69,15 +69,11 @@ Poniższe kroki ułatwiają dodanie właściciela lub użytkowników do laborato
 3. Z listy labs wybierz żądane laboratorium.
 4. W bloku laboratorium wybierz **konfiguracji i zasad**. 
 5. Na **konfiguracji i zasad** wybierz opcję **kontrola dostępu (IAM)** z menu po lewej stronie. 
-6. Wybierz **Dodaj** na pasku narzędzi, aby dodać użytkownika do roli.
-
-    ![Dodawanie użytkownika](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
+6. Wybierz **Dodaj przypisanie roli** na pasku narzędzi, aby dodać użytkownika do roli.
 1. W **Dodaj uprawnienia** okna, wykonaj następujące czynności: 
     1. Wybierz rolę (na przykład: użytkownik usługi DevTest Labs). Sekcja [akcje, które mogą być wykonywane w każdej roli](#actions-that-can-be-performed-in-each-role) wymieniono różne akcje, które mogą być wykonywane przez użytkowników w roli właściciel, użytkownik usługi DevTest i współautor.
     2. Wybierz użytkownika, które mają zostać dodane do roli. 
     3. Wybierz pozycję **Zapisz**. 
-
-        ![Dodaj użytkownika do roli](./media/devtest-lab-add-devtest-user/add-user.png) 
 11. Po powrocie do **użytkowników** bloku użytkownik został dodany.  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>Dodawanie użytkownika zewnętrznego do laboratorium przy użyciu programu PowerShell

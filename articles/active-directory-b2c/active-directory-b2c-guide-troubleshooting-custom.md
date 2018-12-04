@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 32692cbe7959650d5181c9e9dfcd7dd5ee55a46e
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 8bb95ae776c329e67e9f9936213a9f4c2a0c8f62
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024597"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842598"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Rozwiązywanie problemów z niestandardowych zasad usługi Azure AD B2C i platformy środowiska tożsamości
 
@@ -60,7 +60,7 @@ Fragment kodu błędu: `Reason: User is currently logged as a user of 'yourtenan
     * Sieci Web aplikacji/internetowy interfejs API: nie
     * Natywny klient: Brak
 
-* Aby śledzić wymiana wiadomości między przeglądarką klienta i usługi Azure AD B2C, należy użyć [Fiddler](http://www.telerik.com/fiddler). Może pomóc Ci wskazanie gdzie swoją podróż po użytkownik nie działa prawidłowo w etapów aranżacji.
+* Aby śledzić wymiana wiadomości między przeglądarką klienta i usługi Azure AD B2C, należy użyć [Fiddler](https://www.telerik.com/fiddler). Może pomóc Ci wskazanie gdzie swoją podróż po użytkownik nie działa prawidłowo w etapów aranżacji.
 
 * W **trybu opracowywania**, użyj **usługi Application Insights** do śledzenia działania swoją podróż po użytkownik struktura środowiska tożsamości. W **trybu opracowywania**, można zaobserwować, wymiana oświadczeń między struktura środowiska tożsamości i różnych dostawców oświadczeń, które są zdefiniowane w profilach technicznych, takich jak dostawców tożsamości, oparte na interfejsie API usługi, Katalog użytkowników w usłudze Azure AD B2C i innych usług, takich jak Azure wielu uwierzytelnianie wieloskładnikowe.  
 

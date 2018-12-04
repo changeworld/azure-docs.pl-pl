@@ -11,12 +11,12 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/26/2018
 ms.author: v-daljep
-ms.openlocfilehash: b2c8ed30e26f5408123fe77606ddfec67479bcad
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 84b5665f434bcf7cdb0ac58a74727244d4155835
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726155"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844553"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorowanie usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics (wersja zapoznawcza)
 
@@ -185,7 +185,7 @@ Automatyczne alerty w rozwiązaniu opiera się na piśmie zapytanie usługi Log 
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Tworzenie alertów dla usługi Azure SQL Database
 
-Możesz z łatwością [tworzyć alerty](../monitoring-and-diagnostics/alert-metric.md) przy użyciu danych pochodzących z zasobów usługi Azure SQL Database. Poniżej przedstawiono niektóre przydatne [wyszukiwanie w dzienniku](log-analytics-queries.md) zapytań, które można używać z alertu dziennika:
+Możesz z łatwością [tworzyć alerty](../monitoring-and-diagnostics/alert-metric.md) przy użyciu danych pochodzących z zasobów usługi Azure SQL Database. Poniżej przedstawiono niektóre przydatne [wyszukiwanie w dzienniku](../azure-monitor/log-query/log-query-overview.md) zapytań, które można używać z alertu dziennika:
 
 #### <a name="high-cpu-on-azure-sql-database"></a>Wysokie użycie procesora CPU w usłudze Azure SQL Database
 
@@ -297,6 +297,6 @@ W trakcie można używać bezpłatnie rozwiązanie ma zastosowanie użycie dane 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Użyj [wyszukiwań w dziennikach](log-analytics-queries.md) w usłudze Log Analytics, aby wyświetlić szczegółowe dane usługi Azure SQL.
+- Użyj [wyszukiwań w dziennikach](../azure-monitor/log-query/log-query-overview.md) w usłudze Log Analytics, aby wyświetlić szczegółowe dane usługi Azure SQL.
 - [Tworzenie własnych pulpitów nawigacyjnych](../azure-monitor/platform/dashboards.md) Pokazywanie danych Azure SQL.
 - [Tworzenie alertów](../monitoring-and-diagnostics/monitoring-overview-alerts.md) po wystąpieniu określonych zdarzeń usługi Azure SQL.

@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 04/09/2018
-ms.openlocfilehash: 399c7b000360a73a9bab06b046be21c9d93a1c70
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: ef06e7b1abd66a2204ef982943fe24354bd7f122
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367134"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837447"
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Diagnozowanie i rozwiązywanie problemów w danym środowisku usługi Time Series Insights
 
@@ -31,7 +31,7 @@ W tym artykule opisano niektóre problemy, które można napotkać w danym środ
 Istnieje kilka przyczyn typowych, dlaczego mogą nie być wyświetlane dane w [Azure Eksplorator usługi Time Series Insights](https://insights.timeseries.azure.com):
 
 ### <a name="possible-cause-a-event-source-data-is-not-in-json-format"></a>Możliwa przyczyna A: zdarzenia źródła danych nie jest w formacie JSON
-Usługa Azure Time Series Insights obsługuje tylko dane JSON. Aby uzyskać przykłady kodu JSON, zobacz [kształty JSON obsługiwany](time-series-insights-send-events.md#supported-json-shapes).
+Usługa Azure Time Series Insights obsługuje tylko dane JSON. Aby uzyskać przykłady kodu JSON, zobacz [kształty JSON obsługiwany](./how-to-shape-query-json.md).
 
 ### <a name="possible-cause-b-event-source-key-is-missing-a-required-permission"></a>Klucz źródła zdarzeń B: możliwą przyczyną jest brak wymaganych uprawnień
 * Dla usługi IoT Hub, musisz podać klucz, który ma **połączenie z usługą** uprawnień.
@@ -70,7 +70,7 @@ Na przykład załóżmy, że to środowisko jest wprowadzane komunikaty z Centru
 
 Jak pokazano na diagramie, dziennych ruch przychodzący jest ~ 67,000 wiadomości. Ten kurs tłumaczy około 46 komunikatów na minutę. Jeśli każdy komunikat do Centrum zdarzeń jest spłaszczany do jednego zdarzenia usługi Time Series Insights, to środowisko zobaczy, bez ograniczania przepływności. Jeśli każdy komunikat do Centrum zdarzeń jest spłaszczany 100 zdarzeń usługi Time Series Insights, następnie 4,600 zdarzenia powinny być pozyskiwane co minutę. Środowisko S1 SKU usługi, które ma pojemność wynoszącą 3 można tylko 2100 zdarzeń przychodzących na minutę (1 mln zdarzeń każdego dnia = 700 zdarzeń na minutę na poziomie 3 jednostki = 2100 zdarzeń na minutę). W związku z tym zostanie wyświetlony opóźnienie z powodu dławienia. 
 
-Ogólne zrozumieć sposób działania spłaszczania logiki, zobacz [kształty JSON obsługiwany](time-series-insights-send-events.md#supported-json-shapes).
+Ogólne zrozumieć sposób działania spłaszczania logiki, zobacz [kształty JSON obsługiwany](./how-to-shape-query-json.md).
 
 ### <a name="recommended-resolution-steps-for-excessive-throttling"></a>Kroki zalecane rozwiązanie nadmierne ograniczania
 Aby usunąć opóźnienie, należy zwiększyć pojemność jednostki SKU środowiska. Aby uzyskać więcej informacji, zobacz [sposób skalowania środowiska usługi Time Series Insights](time-series-insights-how-to-scale-your-environment.md).

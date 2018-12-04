@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 96ef005f095e5ab774a88ec766080f647414a7ce
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4621122d805f37be1578aa7b7c9ae059f3141c77
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155545"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840303"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Wdrażanie aplikacji serwera Proxy Azure AD w domenie zarządzanej usług domenowych Azure AD
 Serwer Proxy aplikacji usługi Azure Active Directory (AD) pomaga wspierać pracowników zdalnych przez publikowanie lokalnych aplikacji można uzyskać dostęp za pośrednictwem Internetu. Korzystając z usług domenowych Azure AD możesz teraz lift-and-shift starszych aplikacji lokalnych do usług infrastruktury platformy Azure. Następnie można opublikować te aplikacje przy użyciu usługi Azure AD serwera Proxy aplikacji, co zapewnia bezpieczny dostęp zdalny do użytkowników w Twojej organizacji.
@@ -42,7 +42,7 @@ Aby wykonać zadania opisane w tym artykule, potrzebne są:
 ## <a name="task-1---enable-azure-ad-application-proxy-for-your-azure-ad-directory"></a>Zadanie 1. serwer Proxy aplikacji Włączanie usługi Azure AD dla katalogu usługi Azure AD
 Wykonaj poniższe kroki, aby umożliwić aplikacji serwera Proxy Azure AD dla katalogu usługi Azure AD.
 
-1. Zaloguj się jako administrator w [witryny Azure portal](http://portal.azure.com).
+1. Zaloguj się jako administrator w [witryny Azure portal](https://portal.azure.com).
 
 2. Kliknij przycisk **usługi Azure Active Directory** Aby wyświetlić przegląd katalogu. Kliknij przycisk **aplikacje dla przedsiębiorstw**.
 

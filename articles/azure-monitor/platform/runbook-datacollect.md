@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 4cea2b7feb6d21a0566a4876414b2d75abc29959
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 9f4ee3bdba87747a04dd4a5af9391c9dba6e1b51
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681759"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834226"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Zbieranie danych w usłudze Log Analytics przy użyciu elementu runbook usługi Azure Automation
 Znacznej ilości danych w usłudze Log Analytics może zbierać z różnych źródeł, w tym [źródeł danych](../../azure-monitor/platform/agent-data-sources.md) na agentach, a także [dane zbierane z platformy Azure](../../azure-monitor/platform/collect-azure-metrics-logs.md).  Istnieją scenariusze, chociaż wymagających zbierania danych, która nie jest dostępny za pośrednictwem tych standardowych źródeł.  W takich przypadkach można użyć [interfejsu API modułu zbierającego dane HTTP](../../log-analytics/log-analytics-data-collector-api.md) można zapisać danych do usługi Log Analytics za pomocą dowolnego klienta interfejsu API REST.  Typowe metodę w celu zbierania danych używa elementu runbook w usłudze Azure Automation.   
@@ -145,7 +145,7 @@ Usługa Azure Automation obejmuje środowisko do [przetestować element runbook]
     ![Wpis w danych wyjściowych](media/runbook-datacollect/post-output.png)
 
 ## <a name="5-verify-records-in-log-analytics"></a>5. Weryfikowanie rekordów w usłudze Log Analytics
-Gdy element runbook została ukończona w teście i upewnieniu się, że pomyślnie Odebrano dane wyjściowe, można sprawdzić, czy rekordy zostały utworzone przy użyciu [przeszukiwania dzienników w usłudze Log Analytics](../../log-analytics/log-analytics-queries.md).
+Gdy element runbook została ukończona w teście i upewnieniu się, że pomyślnie Odebrano dane wyjściowe, można sprawdzić, czy rekordy zostały utworzone przy użyciu [przeszukiwania dzienników w usłudze Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
 
 ![Dane wyjściowe dziennika](media/runbook-datacollect/log-output.png)
 

@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e689f93150d225d5b8c9ee9d5cfc422a1154c45a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 41f6027378e48b525345e29e1d1e08dd2c48aaa5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724557"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843754"
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Usługa Azure Active Directory B2C: Web zaloguj się przy użyciu protokołu OpenID Connect
 OpenID Connect to protokół uwierzytelniania, korzystających z protokołu OAuth 2.0, który może służyć do bezpiecznego logowania użytkowników do aplikacji sieci web. Za pomocą usługi Azure Active Directory B2C (Azure AD B2C) wdrażania protokołu OpenID Connect, można zlecają obsługę tworzenia nowych kont i logowania oraz skuteczniejszego innych zarządzania tożsamościami w aplikacjach sieci web w usłudze Azure Active Directory (Azure AD). Ten przewodnik pokazuje, jak to zrobić w sposób niezależny od języka. Przedstawiono sposób wysyłać i odbierać komunikaty HTTP bez użycia jakichkolwiek skorzystać z bibliotek typu open source.
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) rozszerza OAuth 2.0 *autoryzacji* protokół do użycia jako *uwierzytelniania* protokołu. Dzięki temu można wykonać logowanie jednokrotne przy użyciu protokołu OAuth. Wprowadza pojęcia *tokenu Identyfikacyjnego*, który jest token zabezpieczający, który umożliwia klientowi do zweryfikowania tożsamości danego użytkownika i uzyskania podstawowych informacji o profilu użytkownika.
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) rozszerza OAuth 2.0 *autoryzacji* protokół do użycia jako *uwierzytelniania* protokołu. Dzięki temu można wykonać logowanie jednokrotne przy użyciu protokołu OAuth. Wprowadza pojęcia *tokenu Identyfikacyjnego*, który jest token zabezpieczający, który umożliwia klientowi do zweryfikowania tożsamości danego użytkownika i uzyskania podstawowych informacji o profilu użytkownika.
 
 Ponieważ stanowi rozszerzenie protokołu OAuth 2.0, umożliwia ona także aplikacje, które można bezpiecznie uzyskać *tokeny dostępu*. Możesz użyć access_tokens dostępu do zasobów, które są zabezpieczone przez [serwera autoryzacji](active-directory-b2c-reference-protocols.md#the-basics). Zalecamy OpenID Connect, jeśli tworzysz aplikację internetową, która jest przechowywana na serwerze i dostępne za pośrednictwem przeglądarki. Jeśli chcesz dodać zarządzania tożsamościami do aplikacji mobilnych i klasycznych za pomocą usługi Azure AD B2C, należy użyć [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) zamiast protokołu OpenID Connect.
 
@@ -120,7 +120,7 @@ error=access_denied
 | state |Zobacz pełny opis w pierwszej tabeli w tej sekcji. Jeśli `state` parametru jest uwzględnione w żądaniu, tę samą wartość powinna zostać wyświetlona w odpowiedzi. Aplikacja powinna upewnij się, że `state` wartości żądania i odpowiedzi są identyczne. |
 
 ## <a name="validate-the-id-token"></a>Sprawdzanie poprawności tokenu Identyfikacyjnego
-Po prostu odbiera token Identyfikatora nie wystarcza do uwierzytelnienia użytkownika. Należy sprawdzić poprawności podpisu tokenu Identyfikacyjnego i weryfikować oświadczenia w tokenie na wymagania dotyczące Twojej aplikacji. Usługa Azure AD B2C używa [tokenów sieci Web JSON (tokenów Jwt)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) i kryptografii klucza publicznego do podpisywania tokenów i sprawdź, czy są prawidłowe.
+Po prostu odbiera token Identyfikatora nie wystarcza do uwierzytelnienia użytkownika. Należy sprawdzić poprawności podpisu tokenu Identyfikacyjnego i weryfikować oświadczenia w tokenie na wymagania dotyczące Twojej aplikacji. Usługa Azure AD B2C używa [tokenów sieci Web JSON (tokenów Jwt)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) i kryptografii klucza publicznego do podpisywania tokenów i sprawdź, czy są prawidłowe.
 
 Istnieje wiele bibliotek typu open source, które są dostępne do weryfikacji tokenów Jwt, w zależności od języka, preferencji. Firma Microsoft zaleca Eksplorowanie tych opcji, a nie Implementowanie logiki walidacji. W tym miejscu informacje będą przydatne ustalenie, jak prawidłowo używać tych bibliotek.
 
@@ -143,7 +143,7 @@ Po zweryfikowaniu podpis tokenu Identyfikacyjnego, istnieje kilka oświadczenia,
 * Należy sprawdzić, czy `aud` oświadczenia upewnić się, czy token identyfikator został wystawiony dla aplikacji. Jej wartość powinna być identyfikator aplikacji dla swojej aplikacji.
 * Należy sprawdzić, czy `iat` i `exp` oświadczeń upewnić się, że tokenu Identyfikacyjnego nie wygasł.
 
-Dostępne są także kilka więcej operacji sprawdzania poprawności, które należy wykonać. Te ustawienia są opisane szczegółowo w temacie [OpenID Connect podstawowej specyfikacji](http://openid.net/specs/openid-connect-core-1_0.html).  Można również sprawdzić dodatkowe oświadczenia, zależnie od scenariusza. Niektórych typowych operacji sprawdzania poprawności obejmują:
+Dostępne są także kilka więcej operacji sprawdzania poprawności, które należy wykonać. Te ustawienia są opisane szczegółowo w temacie [OpenID Connect podstawowej specyfikacji](https://openid.net/specs/openid-connect-core-1_0.html).  Można również sprawdzić dodatkowe oświadczenia, zależnie od scenariusza. Niektórych typowych operacji sprawdzania poprawności obejmują:
 
 * Zapewnienie, że użytkownik/organizacja zarejestrowała się w aplikacji.
 * Zapewnienie, że użytkownik ma odpowiednie zezwolenia/uprawnienia.

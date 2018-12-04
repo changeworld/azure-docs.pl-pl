@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 10de56ac8945be4bb0920f95774b469d283f575b
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 81927c4e69f36fbc4859ac2865bc15cbfacb17fb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721378"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843873"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Usługi Azure AD B2C: Odwołanie tokenu
 
@@ -30,9 +30,9 @@ Token elementu nośnego jest tokenem zabezpieczającym uproszczone, która udzie
 
 Jeśli token elementu nośnego, są przesyłane poza bezpiecznego kanału, złośliwa strona użyć ataków typu man-in--middle do uzyskania tokenu i używać go w celu uzyskania nieautoryzowanego dostępu do chronionego zasobu. Te same zasady zabezpieczeń stosowane, gdy tokenów elementu nośnego, są przechowywane lub pamięci podręcznej do późniejszego użycia. Zawsze upewnij się, że Twoja aplikacja przesyła i przechowuje tokenów elementu nośnego w bezpieczny sposób.
 
-Uwagi dodatkowe zabezpieczenie na tokenów elementu nośnego można znaleźć [RFC 6750 sekcji 5](http://tools.ietf.org/html/rfc6750).
+Uwagi dodatkowe zabezpieczenie na tokenów elementu nośnego można znaleźć [RFC 6750 sekcji 5](https://tools.ietf.org/html/rfc6750).
 
-Wiele tokenów wystawianych przez urząd usługi Azure AD B2C są implementowane jako tokenów sieci web JSON (tokenów Jwt). Token JWT jest compact, bezpieczny adres URL sposób przekazywania informacji między dwiema stronami. Tokenów Jwt zawierają informacje znane jako oświadczenia. Są to potwierdzenia informacji na temat elementu nośnego oraz temat tokenu. Oświadczenia w tokenów Jwt są obiektami JSON, które kodowania i serializacji do przesłania. Ponieważ tokenów Jwt wystawione przez usługę Azure AD B2C jest podpisany, ale nie są szyfrowane, można łatwo sprawdzić zawartość token JWT do debugowania. Dostępnych jest kilka narzędzi, można to zrobić, w tym [jwt.ms](https://jwt.ms). Aby uzyskać więcej informacji na temat tokenów Jwt, zobacz [specyfikacje JWT](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
+Wiele tokenów wystawianych przez urząd usługi Azure AD B2C są implementowane jako tokenów sieci web JSON (tokenów Jwt). Token JWT jest compact, bezpieczny adres URL sposób przekazywania informacji między dwiema stronami. Tokenów Jwt zawierają informacje znane jako oświadczenia. Są to potwierdzenia informacji na temat elementu nośnego oraz temat tokenu. Oświadczenia w tokenów Jwt są obiektami JSON, które kodowania i serializacji do przesłania. Ponieważ tokenów Jwt wystawione przez usługę Azure AD B2C jest podpisany, ale nie są szyfrowane, można łatwo sprawdzić zawartość token JWT do debugowania. Dostępnych jest kilka narzędzi, można to zrobić, w tym [jwt.ms](https://jwt.ms). Aby uzyskać więcej informacji na temat tokenów Jwt, zobacz [specyfikacje JWT](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
 
 ### <a name="id-tokens"></a>Tokeny identyfikatorów
 
@@ -68,7 +68,7 @@ Gdy interfejs API odbiera token dostępu, musi ona [zweryfikować podpisu](#toke
 
 Gdy używasz usługi Azure AD B2C, masz szczegółową kontrolę nad zawartością tokenów. Można skonfigurować [przepływy użytkownika](active-directory-b2c-reference-policies.md) i niestandardowych zasad do wysyłania oświadczeń, które wymaganych przez aplikację w operacjach niektórych zestawów danych użytkownika. Te oświadczenia mogą zawierać właściwości standardowych, takich jak użytkownika `displayName` i `emailAddress`. Mogą również obejmować [atrybutów niestandardowych użytkownika](active-directory-b2c-reference-custom-attr.md) zdefiniowanemu w katalogu usługi B2C. Każdy identyfikator i dostęp do tokenu, który pojawi się zawiera zestaw oświadczeń związanych z zabezpieczeniami. Twoje aplikacje mogą używać tych oświadczeń do bezpiecznego uwierzytelniania użytkowników i żądania.
 
-Należy pamiętać, że oświadczenia w tokeny Identyfikatora nie są zwracane w określonej kolejności. Ponadto nowe oświadczenia mogą zostać wprowadzone w tokeny Identyfikatora, w dowolnym momencie. Aplikacja nie powinna zostać podzielona na miarę wprowadzania nowych oświadczeń. Poniżej przedstawiono oświadczeń, których oczekujesz, że istnieje w tokenach dostępu i identyfikator, które są wystawione przez usługę Azure AD B2C. Dodatkowe oświadczenia są określane przez zasady. Praktyki, spróbuj wykonać sprawdzanie oświadczenia w tokenie identyfikator przykładowy przez wklejenie go do [jwt.ms](https://jwt.ms). Więcej szczegółowych informacji można znaleźć w [specyfikacją z OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html).
+Należy pamiętać, że oświadczenia w tokeny Identyfikatora nie są zwracane w określonej kolejności. Ponadto nowe oświadczenia mogą zostać wprowadzone w tokeny Identyfikatora, w dowolnym momencie. Aplikacja nie powinna zostać podzielona na miarę wprowadzania nowych oświadczeń. Poniżej przedstawiono oświadczeń, których oczekujesz, że istnieje w tokenach dostępu i identyfikator, które są wystawione przez usługę Azure AD B2C. Dodatkowe oświadczenia są określane przez zasady. Praktyki, spróbuj wykonać sprawdzanie oświadczenia w tokenie identyfikator przykładowy przez wklejenie go do [jwt.ms](https://jwt.ms). Więcej szczegółowych informacji można znaleźć w [specyfikacją z OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html).
 
 | Name (Nazwa) | Claim | Przykładowa wartość | Opis |
 | --- | --- | --- | --- |
@@ -78,8 +78,8 @@ Należy pamiętać, że oświadczenia w tokeny Identyfikatora nie są zwracane w
 | Czas wygaśnięcia |`exp` |`1438539443` |Czas wygaśnięcia, oświadczenia to czas, w której token staje się nieprawidłowy, reprezentowany w czasie uniksowym. Twoja aplikacja powinna używać tego oświadczenia próba sprawdzania prawidłowości okres istnienia tokenu. |
 | Nie wcześniej niż |`nbf` |`1438535543` |To oświadczenie jest czasu, jaką token staje się nieprawidłowy, jest reprezentowana w czasie uniksowym. Zazwyczaj jest taka sama jak czas, który został wystawiony token. Twoja aplikacja powinna używać tego oświadczenia próba sprawdzania prawidłowości okres istnienia tokenu. |
 | Wersja |`ver` |`1.0` |To jest wersja tokenu Identyfikacyjnego, zgodnie z definicją w usłudze Azure AD. |
-| Kod skrótu |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Skrót kod znajduje się w tokenie identyfikator tylko wtedy, gdy token wystawiony wraz z kodu autoryzacji OAuth 2.0. Skrót kod może służyć do weryfikowania autentyczności kodu autoryzacji. Aby uzyskać więcej informacji na temat sposobu tę weryfikację należy przeprowadzić, zobacz [specyfikacją z OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html).  |
-| Skrót tokenu dostępu |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Skrót tokenu dostępu znajduje się w tokenie identyfikator tylko wtedy, gdy token wystawiony wraz z tokenu dostępu OAuth 2.0. Skrót tokenu dostępu może służyć do weryfikowania autentyczności tokenu dostępu. Aby uzyskać więcej informacji na temat sposobu tę weryfikację należy przeprowadzić, zobacz [specyfikacją z OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html)  |
+| Kod skrótu |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Skrót kod znajduje się w tokenie identyfikator tylko wtedy, gdy token wystawiony wraz z kodu autoryzacji OAuth 2.0. Skrót kod może służyć do weryfikowania autentyczności kodu autoryzacji. Aby uzyskać więcej informacji na temat sposobu tę weryfikację należy przeprowadzić, zobacz [specyfikacją z OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html).  |
+| Skrót tokenu dostępu |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Skrót tokenu dostępu znajduje się w tokenie identyfikator tylko wtedy, gdy token wystawiony wraz z tokenu dostępu OAuth 2.0. Skrót tokenu dostępu może służyć do weryfikowania autentyczności tokenu dostępu. Aby uzyskać więcej informacji na temat sposobu tę weryfikację należy przeprowadzić, zobacz [specyfikacją z OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html)  |
 | Identyfikator jednorazowy |`nonce` |`12345` |Identyfikator jednorazowy jest strategii umożliwia ograniczenie liczby ataków powtarzania tokenu. Aplikację można określić identyfikatora jednorazowego w żądaniu autoryzacji przy użyciu `nonce` parametr zapytania. Wartości podane w żądaniu będzie obliczanie w niezmienionej postaci w `nonce` oświadczenia tylko tokenu Identyfikatora. Umożliwia to aplikacji, aby sprawdzić wartość względem wartości, które on określony w żądaniu, co umożliwi skojarzenie sesji aplikacji przy użyciu podanego tokenu Identyfikatora. Aplikację należy wykonywać tej weryfikacji w procesie weryfikacji tokenu Identyfikatora. |
 | Podmiot |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |To jest jednostka o tym, które token określa informacje, takie jak użytkownik aplikacji. Ta wartość jest niezmienny i nie może być ponownie przypisywany ani ponownie. Może służyć do sprawdzania autoryzacji bezpiecznie, np. gdy token jest używany do uzyskania dostępu do zasobu. Domyślnie roszczenie podmiotu jest wypełniana identyfikator obiektu użytkownika w katalogu. Aby dowiedzieć się więcej, zobacz [usługi Azure Active Directory B2C: tokenów, sesji i konfiguracji rejestracji jednokrotnej](active-directory-b2c-token-session-sso.md). |
 | Odwołania do klasy kontekstu uwierzytelniania |`acr` |Nie dotyczy |Nie używane obecnie, z wyjątkiem w przypadku starszych zasad. Aby dowiedzieć się więcej, zobacz [usługi Azure Active Directory B2C: tokenów, sesji i konfiguracji rejestracji jednokrotnej](active-directory-b2c-token-session-sso.md). |

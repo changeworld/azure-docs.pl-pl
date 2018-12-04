@@ -2,18 +2,18 @@
 title: Aprowizowanie puli Azure Batch za pomocą niestandardowego obrazu | Dokumentacja firmy Microsoft
 description: Tworzenie puli za pomocą niestandardowego obrazu dla aprowizacji funkcji obliczeniowych węzły, które zawierają oprogramowanie i dane potrzebne dla aplikacji usługi Batch. Obrazy niestandardowe są wydajny sposób konfigurowania węzłów obliczeniowych do uruchamiania obciążeń usługi Batch.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 10/04/2018
-ms.author: danlep
-ms.openlocfilehash: 7d0526dd233afd3976b22d257300681db0bfcead
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.author: lahugh
+ms.openlocfilehash: b296dce0a83971626c8e66ddc314c4d1e07d8602
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885216"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840371"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Używanie niestandardowego obrazu, aby utworzyć pulę maszyn wirtualnych 
 
@@ -50,7 +50,13 @@ Na platformie Azure można przygotować obrazu zarządzanego z migawek systemu o
 
 ### <a name="prepare-a-vm"></a>Przygotowywanie maszyny Wirtualnej 
 
-Jeśli tworzysz nową maszynę Wirtualną dla obrazu użyć obsługiwane przy użyciu usługi Batch jako obrazu podstawowego dla obrazu zarządzanego obrazu portalu Azure Marketplace, a następnie ją Dostosuj.  Aby uzyskać listę obsługiwanych przez usługę Azure Batch odwołań do obrazu portalu Azure Marketplace, zobacz [jednostki SKU agenta węzła listy](/rest/api/batchservice/account/listnodeagentskus) operacji. Obraz innych firm nie można użyć jako obrazu podstawowego.
+Jeśli tworzysz nową maszynę Wirtualną dla obrazu użyć obsługiwane przy użyciu usługi Batch jako obrazu podstawowego dla obrazu zarządzanego obrazu portalu Azure Marketplace, a następnie ją Dostosuj.  Aby uzyskać listę obsługiwanych przez usługę Azure Batch odwołań do obrazu portalu Azure Marketplace, zobacz [jednostki SKU agenta węzła listy](/rest/api/batchservice/account/listnodeagentskus) operacji. 
+
+> [!NOTE]
+> Nie można użyć obrazu innych firm, który ma dodatkową licencję i warunki zakupu jako obrazu podstawowego. Aby uzyskać informacji na temat tych obrazów z witryny Marketplace, zobacz wskazówki dotyczące [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+) lub [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+) maszyn wirtualnych.
+
 
 * Upewnij się, że maszyna wirtualna jest tworzona w przypadku dysków zarządzanych. To domyślne ustawienie magazynu podczas tworzenia maszyny Wirtualnej.
 * Nie należy instalować rozszerzeń platformy Azure, takich jak rozszerzenie niestandardowego skryptu na maszynie Wirtualnej. Jeśli obraz zawiera wstępnie zainstalowane rozszerzenie, Azure, mogą wystąpić problemy podczas wdrażania puli usługi Batch.

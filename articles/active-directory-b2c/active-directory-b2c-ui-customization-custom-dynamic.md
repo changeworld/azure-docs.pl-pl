@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 11a14bc8b593e5e7d81e9bdbd4ac4ee3b2bbecaa
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f078c1389e36b82f95b011ca1fbd7fbd1c4f895e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582891"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834242"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Usługa Azure Active Directory B2C: Skonfiguruj interfejs użytkownika z zawartością dynamiczną za pomocą zasad niestandardowych
 
@@ -193,7 +193,7 @@ Szablon języka HTML5 jest gotowy do użycia. Jednak nie jest dostępna w `Conte
 * Serwer zawartości jest włączona dla mechanizmu CORS.
 
     >[!NOTE]
-    >Aby sprawdzić, czy witryny, w którym przechowujesz zawartości włączył mechanizmu CORS i przetestować żądań CORPS, przejdź do [cors.org testu](http://test-cors.org/) witryny sieci Web. 
+    >Aby sprawdzić, czy witryny, w którym przechowujesz zawartości włączył mechanizmu CORS i przetestować żądań CORPS, przejdź do [cors.org testu](https://test-cors.org/) witryny sieci Web. 
 
 * Obsługiwane zawartość jest bezpieczna za pośrednictwem **HTTPS**.
 * Używasz *bezwzględne adresy URL*, takich jak *https://yourdomain/content*, wszystkie łącza, zawartość arkusza CSS i obrazów.

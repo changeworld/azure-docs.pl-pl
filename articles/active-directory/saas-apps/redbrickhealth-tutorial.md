@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 11452dfb94a5a1c8cf4734b1ef21a44cccafbea1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bccc7abed9a86bcba74a5d994664a20313f3282a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430512"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833809"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą programu RedBrick Health
 
@@ -38,7 +38,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą programu RedBrick Health, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Kondycja RedBrick logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Aby skonfigurować integrację RedBrick kondycji do usługi Azure AD, należy do
 
 **Aby dodać RedBrick kondycji z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -110,7 +110,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![RedBrick kondycji domena i adresy URL pojedynczy informacje logowania jednokrotnego](./media/redbrickhealth-tutorial/tutorial_redbrickhealth_url.png)
 
-    a. W **identyfikator** pole tekstowe, wpisz adres URL: `http://www.redbrickhealth.com`
+    a. W **identyfikator** pole tekstowe, wpisz adres URL: `https://www.redbrickhealth.com`
     
     b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL: `https://sso-intg.redbrickhealth.com/sp/ACS.saml2`
     
@@ -205,7 +205,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
   
 ### <a name="create-a-redbrick-health-test-user"></a>Tworzenie użytkownika testowego RedBrick kondycji
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon RedBrick kondycji. Praca z [zespołem pomocy technicznej RedBrick kondycji](https://home.redbrickhealth.com/contact/) Aby dodać użytkowników na platformie RedBrick kondycji. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon RedBrick kondycji. Praca z [zespołem pomocy technicznej RedBrick kondycji](https://home.redbrickhealth.com/contact/) Aby dodać użytkowników na platformie RedBrick kondycji. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

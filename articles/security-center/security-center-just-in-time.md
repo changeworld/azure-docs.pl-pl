@@ -1,6 +1,6 @@
 ---
-title: Tylko na maszynie wirtualnej czas dostępu w usłudze Azure Security Center | Dokumentacja firmy Microsoft
-description: W tym dokumencie przedstawiono sposób dokładnie na czas dostępu do maszyny Wirtualnej w usłudze Azure Security Center pomaga kontroli dostępu do usługi Azure virtual machines.
+title: Dostęp just in time maszyny wirtualnej w usłudze Azure Security Center | Dokumentacja firmy Microsoft
+description: W tym dokumencie przedstawiono kontrolować dostęp do maszyny Wirtualnej jak just-in-time w usłudze Azure Security Center ułatwia dostęp do usługi Azure virtual machines.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2018
+ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 72acf0f06bbed0129ff322b10a7faf16fd94f712
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 6281b79e374db164bbd11b602e92336162cae089
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314749"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841765"
 ---
-# <a name="manage-virtual-machine-access-using-just-in-time"></a>Zarządzanie dostępem maszyny wirtualnej przy użyciu dokładnie na czas
+# <a name="manage-virtual-machine-access-using-just-in-time"></a>Zarządzanie dostępem maszyny wirtualnej przy użyciu just-in-time
 
-Dokładnie na czas maszyny wirtualnej (VM) dostępu może służyć do blokowania ruchu przychodzącego do maszyn wirtualnych platformy Azure, zmniejszenia narażenia na ataki przy zapewnianiu łatwego dostępu, aby nawiązać połączenie z maszynami wirtualnymi w razie.
+Just-in-time (JIT) maszyny wirtualnej (VM) dostępu może służyć do blokowania ruchu przychodzącego do maszyn wirtualnych platformy Azure, zmniejszenia narażenia na ataki przy zapewnianiu łatwego dostępu, aby nawiązać połączenie z maszynami wirtualnymi w razie.
 
 > [!NOTE]
-> Tylko w czasie funkcja jest dostępna w warstwie standardowa usługi Security Center.  Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
+> Funkcja just in time jest dostępne w warstwie standardowa usługi Security Center.  Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
 >
 >
 
@@ -34,87 +34,98 @@ Dokładnie na czas maszyny wirtualnej (VM) dostępu może służyć do blokowani
 
 Atak siłowy ataki często porty zarządzania docelowe w celu uzyskania dostępu do maszyny Wirtualnej. W przypadku powodzenia osoba atakująca może przejąć kontrolę nad maszyną Wirtualną i ustanowić przyczółka w środowisku.
 
-Jest jednym ze sposobów, aby zmniejszyć narażenie na ataki siłowe Aby ograniczyć ilość czasu, który port jest otwarty. Porty zarządzania nie muszą być otwarte przez cały czas. Muszą być otwarte tylko wtedy, gdy nawiązano połączenie z maszyną wirtualną, np. aby wykonać zadania związane z zarządzaniem lub konserwacją. Gdy dokładnie na czas jest włączone, usługa Security Center używa [sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md#security-rules) (reguły sieciowej grupy zabezpieczeń), które ograniczają dostęp do portów zarządzania, dlatego nie może być obiektem ataków.
+Jest jednym ze sposobów, aby zmniejszyć narażenie na ataki siłowe Aby ograniczyć ilość czasu, który port jest otwarty. Porty zarządzania nie muszą być otwarte przez cały czas. Muszą być otwarte tylko wtedy, gdy nawiązano połączenie z maszyną wirtualną, np. aby wykonać zadania związane z zarządzaniem lub konserwacją. Gdy just in time jest włączone, usługa Security Center używa [sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md#security-rules) (reguły sieciowej grupy zabezpieczeń), które ograniczają dostęp do portów zarządzania, dlatego nie może być obiektem ataków.
 
-![Dokładnie na czas scenariusza][1]
+![Scenariusz just-in-time](./media/security-center-just-in-time/just-in-time-scenario.png)
 
-## <a name="how-does-just-in-time-access-work"></a>Jak dostęp dokładnie na czas pracy?
+## <a name="how-does-jit-access-work"></a>Jak działa dostęp JIT
 
-Gdy zostanie włączona funkcja „dokładnie na czas”, usługa Security Center zablokuje ruch przychodzący do maszyn wirtualnych platformy Azure poprzez utworzenie reguły sieciowej grupy zabezpieczeń. Należy wybrać porty na maszynie Wirtualnej, do którego zostanie zablokowany ruch przychodzący. Te porty są kontrolowane przez tylko w rozwiązaniu do czasu.
+Gdy just in time jest włączone, usługa Security Center zablokuje ruch przychodzący do maszyn wirtualnych platformy Azure, tworząc regułę sieciowej grupy zabezpieczeń. Należy wybrać porty na maszynie Wirtualnej, do którego zostanie zablokowany ruch przychodzący. Te porty są kontrolowane przez to rozwiązanie just in time.
 
-Gdy użytkownik poprosi o dostęp do maszyny Wirtualnej, Centrum zabezpieczeń sprawdza, czy użytkownik ma [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md) uprawnienia, które zapewniają dostęp do zapisu dla maszyny Wirtualnej. Jeśli mają uprawnienia do zapisu, żądanie zostanie zatwierdzone i usługi Security Center automatycznie skonfiguruje sieciowe grupy zabezpieczeń (NSG) w celu zezwolenia na ruch przychodzący na porty wybranego przez czas określony. Po upływie czasu, usługa Security Center przywraca sieciowych grup zabezpieczeń do poprzedniego stanu. Tych połączeń, które już istnieją są nie są przerywane, jednak.
+Gdy użytkownik poprosi o dostęp do maszyny Wirtualnej, Centrum zabezpieczeń sprawdza, czy użytkownik ma [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md) uprawnienia, które umożliwia pomyślnie poprosić o dostęp do maszyny Wirtualnej. Jeśli żądanie zostanie zatwierdzone, usługa Security Center automatycznie skonfiguruje sieciowe grupy zabezpieczeń (NSG), aby zezwolić na ruch przychodzący do wybranych portów i żądane źródłowe adresy IP lub zakresów ilości czasu, który został określony. Po upływie czasu, usługa Security Center przywraca sieciowych grup zabezpieczeń do poprzedniego stanu. Tych połączeń, które już istnieją są nie są przerywane, jednak.
 
 > [!NOTE]
-> Centrum zabezpieczeń dostęp dokładnie na czas maszyny Wirtualnej obsługuje obecnie tylko maszyny wirtualne wdrożone za pośrednictwem usługi Azure Resource Manager. Aby dowiedzieć się więcej o klasyczny, jak i modelem wdrażania usługi Resource Manager, zobacz [usługi Azure Resource Manager, a wdrożeniem klasycznym](../azure-resource-manager/resource-manager-deployment-model.md).
+> Usługa Security Center just-in-time w maszynie Wirtualnej dostęp do aktualnie obsługuje tylko maszyny wirtualne wdrożone za pośrednictwem usługi Azure Resource Manager. Aby dowiedzieć się więcej o klasyczny, jak i modelem wdrażania usługi Resource Manager, zobacz [usługi Azure Resource Manager, a wdrożeniem klasycznym](../azure-resource-manager/resource-manager-deployment-model.md).
 >
 >
 
-## <a name="using-just-in-time-access"></a>Za pomocą dostęp dokładnie na czas
+## <a name="using-jit-access-in-azure-security-center"></a>Przy użyciu dostępu JIT w usłudze Azure Security Center
 
 1. Otwórz pulpit nawigacyjny usługi **Security Center**.
 
-2. W okienku po lewej stronie wybierz **Just in dostęp maszyny Wirtualnej w czasie**.
+2. W okienku po lewej stronie wybierz **Just-in-time dostęp do maszyny Wirtualnej**.
 
-![Dokładnie na czas dostępu do maszyny Wirtualnej kafelka][2]
+![Kafelek dostęp do maszyny Wirtualnej just-in-time](./media/security-center-just-in-time/just-in-time.png)
 
-**Just in dostęp maszyny Wirtualnej w czasie** zostanie otwarte okno.
+**Just-in-time dostęp do maszyny Wirtualnej** zostanie otwarte okno.
 
-![Dokładnie na czas dostępu do maszyny Wirtualnej kafelka][10]
+![Kafelek dostęp do maszyny Wirtualnej just-in-time](./media/security-center-just-in-time/just-in-time-access.png)
 
-**Dostęp just in time do maszyny wirtualnej** zapewnia informacje o stanie maszyn wirtualnych:
+**Dostęp do maszyny Wirtualnej just-in-time** zawiera informacje o stanie maszyn wirtualnych:
 
-- **Skonfigurowane** — maszyny wirtualne, które zostały skonfigurowane pod kątem dostępu just in time do maszyn wirtualnych. Dane prezentowane jest ostatniego tygodnia i liczbie dla każdej maszyny Wirtualnej zatwierdzonych wniosków, Data ostatniego dostępu i godziny oraz ostatniego użytkownika.
-- **Zalecane** — maszyny wirtualne, które mogą obsługiwać dostęp just in time, ale nie zostały skonfigurowane pod tym kątem. Firma Microsoft zaleca, włączyć tylko w przypadku kontroli dostępu na maszynie Wirtualnej czas na te maszyny wirtualne. Zobacz [Konfigurowanie tylko w zasadach dostępu czasu](#configuring-a-just-in-time-access-policy).
+- **Skonfigurowane** — maszyny wirtualne, które zostały skonfigurowane do obsługi dostępu do maszyny Wirtualnej just-in-time. Dane prezentowane jest ostatniego tygodnia i liczbie dla każdej maszyny Wirtualnej zatwierdzonych wniosków, Data ostatniego dostępu i godziny oraz ostatniego użytkownika.
+- **Zaleca się** — maszyny wirtualne, które mogą obsługiwać dostęp do maszyny Wirtualnej w czasie, ale nie został skonfigurowany do. Firma Microsoft zaleca, włączyć kontrolę dostępu maszyny Wirtualnej just-in-time dla tych maszyn wirtualnych. Zobacz [skonfigurowaniem zasad dostępu just in time](#jit-config).
 - **Brak zaleceń** — powody, dla których maszyna wirtualna może nie mieć zaleceń:
-  - Brak sieciowej grupy zabezpieczeń — rozwiązanie just in time wymaga sieciowej grupy zabezpieczeń.
-  - Klasyczna maszyna wirtualna — dostęp just in time do maszyn wirtualnych usługi Security Center obecnie obsługuje tylko maszyny wirtualne wdrożone przy użyciu usługi Azure Resource Manager. Wdrożenia klasycznego nie jest obsługiwana przez tylko w rozwiązaniu do czasu.
-  - Inne — maszyna wirtualna znajduje się w tej kategorii, jeżeli rozwiązanie just in time jest wyłączone w zasadach zabezpieczeń subskrypcji lub grupy zasobów albo jeśli maszyna wirtualna nie ma publicznego adresu IP i sieciowej grupy zabezpieczeń.
+  - Brak sieciowej grupy zabezpieczeń — rozwiązanie just in time wymaga sieciowej grupy zabezpieczeń w miejscu.
+  - Klasyczna maszyna wirtualna — dostęp do maszyny Wirtualnej just-in-time w usłudze Security Center obecnie obsługuje tylko maszyny wirtualne wdrożone za pośrednictwem usługi Azure Resource Manager. Wdrożenie klasyczne nie jest obsługiwana przez rozwiązanie just in time.
+  - Inne — maszyna wirtualna jest w tej kategorii, jeżeli rozwiązanie just in time jest wyłączone w zasadach zabezpieczeń subskrypcji lub grupy zasobów lub że maszyna wirtualna nie ma publicznego adresu IP i nie ma sieciową grupę zabezpieczeń w miejscu.
 
-## <a name="configuring-a-just-in-time-access-policy"></a>Konfigurowanie tylko w zasadach dostępu czasu
+### Konfigurowanie zasad dostępu JIT<a name="jit-config"></a>
 
 Aby wybrać maszyny wirtualne, które chcesz włączyć:
 
-1. W obszarze **Just in dostęp maszyny Wirtualnej w czasie**, wybierz opcję **zalecane** kartę.
+1. W obszarze **Just-in-time dostęp do maszyny Wirtualnej**, wybierz opcję **zalecane** kartę.
 
-  ![Włącz dostęp dokładnie na czas][3]
+  ![Włącz dostęp just in time](./media/security-center-just-in-time/enable-just-in-time-access.png)
 
 2. W obszarze **maszyny WIRTUALNEJ**, wybierz maszyny wirtualne, które chcesz włączyć. Spowoduje to umieszczenie znacznik wyboru obok maszyny Wirtualnej.
 3. Wybierz **Włącz dostęp JIT na maszynach wirtualnych**.
+  1. Ten blok zawiera porty domyślne zalecane przez usługę Azure Security Center:
+     - 22 - PROTOKOŁU SSH
+     - 3389 - PROTOKOŁU RDP
+     - 5985 - Usługa WinRM 
+     - 5986 - Usługa WinRM
+  2. Można również skonfigurować porty niestandardowe. Aby to zrobić, wybierz **Dodaj**. 
+  3. W **Dodawanie konfiguracji portu**, dla każdego portu, należy wybrać opcję skonfigurowania zarówno domyślne i niestandardowe, możesz dostosować następujące ustawienia:
+    - **Typ protokołu**— protokół, który jest dozwolone na tym porcie, gdy żądanie zostanie zatwierdzone.
+    - **Dozwolone źródłowe adresy IP**-zakresów IP, które są dozwolone dla tego portu, gdy żądanie zostanie zatwierdzone.
+    - **Maksymalny czas żądania**— okno maksymalny czas, w którym można otworzyć określonego portu.
+
 4. Wybierz pozycję **Zapisz**.
 
-### <a name="default-ports"></a>Porty domyślne
-
-Możesz zobaczyć porty domyślne, których usługa Security Center zaleca się włączenie dokładnie na czas.
-
-1. W obszarze **Just in dostęp maszyny Wirtualnej w czasie**, wybierz opcję **zalecane** kartę.
-
-  ![Wyświetlanie portów domyślnych][6]
-
-2. W obszarze **maszyn wirtualnych**, wybierz maszynę Wirtualną. To umieszcza znacznik wyboru obok maszyny Wirtualnej i otwiera **Konfiguracja dostępu do maszyn wirtualnych JIT**. Ten blok zawiera domyślne porty.
-
-### <a name="add-ports"></a>Dodawanie portów
-
-W obszarze **Konfiguracja dostępu do maszyn wirtualnych JIT**, można także dodać i skonfigurować nowy port, na którym chcesz włączyć tylko w rozwiązaniu do czasu.
-
-1. W obszarze **Konfiguracja dostępu do maszyn wirtualnych JIT**, wybierz opcję **Dodaj**. Spowoduje to otwarcie **Dodawanie konfiguracji portu**.
-
-  ![Konfiguracja portu][7]
-
-2. W obszarze **Dodawanie konfiguracji portu**, zidentyfikuj port, protokół typu, dozwolone źródłowe adresy IP i maksymalny czas żądania.
-
-  Dozwolone źródłowe adresy IP są zakresy adresów IP, które mogą uzyskać dostęp po zatwierdzonym żądaniu.
-
-  Maksymalny czas żądania jest oknem maksymalny czas, można otworzyć określonego portu.
-
-3. Kliknij przycisk **OK**.
 
 > [!NOTE]
 >Gdy dostęp do maszyn wirtualnych JIT jest włączone dla maszyny Wirtualnej, usługa Azure Security Center tworzy odmówić wszystkich reguł ruchu przychodzącego dla wybranych portów w grupach zabezpieczeń sieci skojarzonych z nim. Zasady będzie najwyższy priorytet o sieciowych grupach zabezpieczeń lub niższy priorytet niż istniejące reguły, które zostały już istnieje. Zależy to od analizy wykonywane przez usługę Azure Security Center, która określa, czy reguła jest bezpieczne.
 >
 
+### <a name="request-jit-access-to-a-vm"></a>Żądanie dostępu JIT do maszyny Wirtualnej
 
-## <a name="set-just-in-time-within-a-vm"></a>Ustaw just-in-time w ramach maszyny Wirtualnej
+Aby poprosić o dostęp do maszyny Wirtualnej:
+1.  W obszarze **Just in dostęp maszyny Wirtualnej w czasie**, wybierz opcję **skonfigurowane**.
+2.  W obszarze **maszyn wirtualnych**, sprawdź maszyn wirtualnych, które chcesz włączyć dostęp just in time dla.
+3.  Wybierz **żądania dostępu**. 
+  ![Poproś o dostęp do maszyny wirtualnej](./media/security-center-just-in-time/request-access-to-a-vm.png)
+4.  W obszarze **żądania dostępu**źródłowych adresów IP, które port jest otwarty na i przedział czasu, dla którego numer portu będzie otwierać i dla każdej maszyny Wirtualnej, skonfiguruj porty, które chcesz otworzyć. Tylko będzie to możliwe zażądać dostępu do portów, które są skonfigurowane w zasadach just-in-time. Każdy port ma maksymalny czas dozwolony pochodną zasad just-in-time.
+5.  Wybierz **otworzyć porty**.
 
+> [!NOTE]
+> Jeśli użytkownik, który żąda dostępu jest za serwerem proxy, opcja **Mój adres IP** może nie działać. Może być konieczne zdefiniowanie pełny zakres adresów IP w organizacji.
+
+### <a name="editing-a-jit-access-policy"></a>Edytowanie zasad dostępu JIT
+
+Możesz zmienić istniejące zasady just-in-time maszyny Wirtualnej przez dodanie i skonfigurowanie nowego portu do ochrony dla tej maszyny Wirtualnej lub zmieniając wszelkie inne ustawienia związane z portem już chronione.
+
+Aby edytować istniejące zasady just-in-time maszyny wirtualnej:
+1. W **skonfigurowane** , w obszarze **maszyn wirtualnych**, wybierz maszynę Wirtualną, dla której chcesz dodać port, klikając trzy kropki znajdujące się w wierszu dla tej maszyny Wirtualnej. 
+2. Wybierz pozycję **Edit** (Edytuj).
+3. W obszarze **Konfiguracja dostępu do maszyn wirtualnych JIT**, możesz edytować istniejące ustawienia portu już chronione lub dodać nowy port niestandardowy. Aby uzyskać więcej informacji, zobacz [skonfigurowaniem zasad dostępu just in time](#jit-config). 
+  ![dostęp do maszyn wirtualnych JIT](./media/security-center-just-in-time/edit-policy.png)
+
+## <a name="using-jit-access-in-an-azure-vm-blade"></a>W bloku maszyny Wirtualnej platformy Azure przy użyciu dostępu JIT do
+
+Dla Twojej wygody możesz połączyć z maszyną wirtualną przy użyciu JIT bezpośrednio z w ramach bloku maszyny Wirtualnej na platformie Azure.
+
+### <a name="configuring-a-just-in-time-access-policy"></a>Konfigurowanie zasad dostępu just in time 
 Ułatwia to dystrybucję dostępu just in time dla maszyn wirtualnych, można ustawić maszynę Wirtualną, aby zezwolić na dostęp tylko just in time do bezpośrednio z poziomu maszyny Wirtualnej.
 
 1. W witrynie Azure portal wybierz **maszyn wirtualnych**.
@@ -126,69 +137,38 @@ Dzięki temu dostęp just in time do maszyny wirtualnej, używając następując
 
 - Serwery Windows:
     - Port 3389 protokołu RDP
-    - dostęp do 3 godzin
+    - 3 godzin maksymalny dozwolony dostęp
     - Dozwolone źródłowe adresy IP ustawiono na żądanie
 - Serwery z systemem Linux:
     - Port 22 protokołu SSH
-    - dostęp do 3 godzin
+    - 3 godzin maksymalny dozwolony dostęp
     - Dozwolone źródłowe adresy IP ustawiono na żądanie
      
 Jeśli maszyna wirtualna ma już just-in-time włączone, po przejściu do strony konfiguracji będzie czy just in time jest włączone, i użyć linku, aby otworzyć zasady w usłudze Azure Security Center, aby wyświetlić i zmienić ustawienia.
 
 ![Konfiguracja JIT na maszynie wirtualnej](./media/security-center-just-in-time/jit-vm-config.png)
 
+### <a name="requesting-jit-access-to-a-vm"></a>Żądanie dostępu JIT do maszyny Wirtualnej
 
-## <a name="requesting-access-to-a-vm"></a>Żądanie dostępu do maszyny Wirtualnej
+W witrynie Azure portal podczas próby nawiązania połączenia z maszyną wirtualną Azure sprawdza w przypadku zasad dostępu just in time, skonfigurowane na tej maszynie Wirtualnej.
 
-Aby poprosić o dostęp do maszyny Wirtualnej:
+- Jeśli nie masz JIT skonfigurowane na maszynie Wirtualnej, użytkownik jest monitowany, aby skonfigurować zasady JIT go.
 
-1. W obszarze **Just in dostęp maszyny Wirtualnej w czasie**, wybierz opcję **skonfigurowane** kartę.
-2. W obszarze **maszyn wirtualnych**, wybierz maszyny wirtualne, które chcesz włączyć dostęp. Spowoduje to umieszczenie znacznik wyboru obok maszyny Wirtualnej.
-3. Wybierz **żądania dostępu**. Spowoduje to otwarcie **żądania dostępu**.
+  ![wiersz JIT](./media/security-center-just-in-time/jit-prompt.png)
 
-  ![Poproś o dostęp do maszyny Wirtualnej][4]
+- Jeśli masz zasady JIT skonfigurowane na maszynie Wirtualnej, możesz kliknąć **żądania dostępu** umożliwiają dostęp zgodnie z zasadami JIT, ustaw dla maszyny Wirtualnej.
 
-4. W obszarze **żądania dostępu**, skonfiguruj dla każdej maszyny Wirtualnej porty do otwarcia wraz z otwartym port źródłowy adres IP i przedział czasu, dla którego port jest otwarty. Możesz zażądać dostępu tylko do portów, które są skonfigurowane w just w zasadach czasu. Każdy port może zawierać maksymalnie dopuszczalny czas pochodną just w zasadach czasu.
-5. Wybierz **otworzyć porty**.
+  ![Poproś o dostęp JIT](./media/security-center-just-in-time/jit-request-access.png)
 
-> [!NOTE]
-> Gdy użytkownik poprosi o dostęp do maszyny Wirtualnej, Centrum zabezpieczeń sprawdza, czy użytkownik ma [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md) uprawnienia, które zapewniają dostęp do zapisu dla maszyny Wirtualnej. Jeśli mają uprawnienia do zapisu, żądanie zostanie zatwierdzone.
->
->
-
-> [!NOTE]
-> Jeśli użytkownik, który żąda dostępu znajduje się za serwerem proxy, opcja "Mój adres IP" może nie działać. Może to być, aby zdefiniować pełną gamę organizacji.
->
->
-
-## <a name="editing-a-just-in-time-access-policy"></a>Edytowanie tylko w zasadach dostępu czasu
-
-Można zmienić, istniejącej maszyny Wirtualnej dokładnie na czas zasad, przez dodanie i skonfigurowanie nowego portu można otworzyć dla tej maszyny Wirtualnej lub zmieniając wszelkie inne parametry związane z portem już chronione.
-
-Aby można było edytować istniejące dokładnie na czas zasad maszyny wirtualnej, **skonfigurowane** karta jest używana:
-
-1. W obszarze **maszyn wirtualnych**, wybierz maszynę Wirtualną, aby dodać port do, klikając trzy kropki znajdujące się w wierszu dla tej maszyny Wirtualnej. Spowoduje to otwarcie menu.
-2. Wybierz **Edytuj** w menu. Spowoduje to otwarcie **Konfiguracja dostępu do maszyn wirtualnych JIT**.
-
-  ![Edycja zasad][8]
-
-3. W obszarze **Konfiguracja dostępu do maszyn wirtualnych JIT**, albo można edytować istniejące ustawienia portu już chronionego, klikając jego port lub możesz wybrać **Dodaj**. Spowoduje to otwarcie **Dodawanie konfiguracji portu**.
-
-  ![Dodawanie portu][7]
-
-4. W obszarze **Dodawanie konfiguracji portu**, ustalić port, protokół typu, dozwolone źródłowe adresy IP i maksymalny czas żądania.
-5. Kliknij przycisk **OK**.
-6. Wybierz pozycję **Zapisz**.
-
-## <a name="auditing-just-in-time-access-activity"></a>Inspekcja dokładnie na czas dostępu do działania
+## <a name="auditing-jit-access-activity"></a>Inspekcja aktywności dostęp JIT
 
 Możesz uzyskać wgląd w działania maszyny Wirtualnej przy użyciu przeszukiwania dzienników. Aby wyświetlić dzienniki:
 
-1. W obszarze **Just in dostęp maszyny Wirtualnej w czasie**, wybierz opcję **skonfigurowane** kartę.
+1. W obszarze **Just-in-time dostęp do maszyny Wirtualnej**, wybierz opcję **skonfigurowane** kartę.
 2. W obszarze **maszyn wirtualnych**, wybierz maszynę Wirtualną, aby wyświetlić informacje o, klikając trzy kropki znajdujące się w wierszu dla tej maszyny Wirtualnej. Spowoduje to otwarcie menu.
 3. Wybierz **dziennika aktywności** w menu. Spowoduje to otwarcie **dziennika aktywności**.
 
-  ![Wybierz dziennik aktywności][9]
+  ![Wybierz dziennik aktywności](./media/security-center-just-in-time/select-activity-log.png)
 
   **Dziennik aktywności** udostępnia widok filtrowany poprzednich operacji dla tej maszyny Wirtualnej wraz z godzina, Data i subskrypcji.
 
@@ -196,22 +176,44 @@ Informacje dziennika można pobrać, wybierając **kliknij tutaj, aby pobrać ws
 
 Modyfikowanie filtrów i wybierz **Zastosuj** do tworzenia wyszukiwania i dziennika.
 
-## <a name="using-just-in-time-vm-access-via-rest-apis"></a>Przy użyciu dokładnie na czas dostępu do maszyny Wirtualnej za pośrednictwem interfejsów API REST
 
-Po prostu dostęp maszyny Wirtualnej w czasie funkcja może być używana przy użyciu interfejsu API usługi Azure Security Center. Możesz uzyskać informacje na temat skonfigurowanych maszyn wirtualnych, dodawać nowe, poproś o dostęp do maszyny Wirtualnej, a także bardziej, za pośrednictwem tego interfejsu API. Zobacz [zasad dostępu do sieci Jit](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies), aby dowiedzieć się więcej na temat just w czasie interfejsu API REST.
+## <a name="permissions-needed-to-configure-and-use-jit"></a>Uprawnienia wymagane do konfigurowania i używania JIT
 
-## <a name="using-just-in-time-vm-access-via-powershell"></a>Przy użyciu dokładnie na czas dostępu do maszyny Wirtualnej za pomocą programu PowerShell 
+Ustaw te wymaganych uprawnień, aby umożliwić użytkownikowi konfigurowanie lub edytowanie zasad JIT dla maszyny Wirtualnej.
 
-Aby użyć tylko w czas rozwiązania dostępu do maszyny Wirtualnej za pomocą programu PowerShell, użyj oficjalne poleceń cmdlet programu PowerShell Centrum zabezpieczeń Azure, zwłaszcza `Set-AzureRmJitNetworkAccessPolicy`.
+Przypisać te *akcje* dla roli: 
+-   W zakresie subskrypcji lub grupy zasobów, jest skojarzona z maszyną Wirtualną:
+   - Microsoft.Security/locations/jitNetworkAccessPolicies/write
+-    W zakresie subskrypcji lub grupy zasobów lub maszyny Wirtualnej:
+   - Microsoft.Compute/virtualMachines/write 
 
-W poniższym przykładzie ustawiono tylko w czasie maszyna wirtualna zasady na określonej maszynie Wirtualnej dostępu i ustawia następujące czynności:
+Ustawić te uprawnienia, aby użytkownik mógł pomyślnie żądanie dostępu JIT do maszyny Wirtualnej: przypisać te *akcje* dla użytkownika:
+-   W zakresie subskrypcji lub grupy zasobów, jest skojarzona z maszyną Wirtualną:
+   - Zainicjuj Microsoft.Security/locations/{the_location_of_the_VM}/jitNetworkAccessPolicies//Akcja
+-    W zakresie subskrypcji lub grupy zasobów lub maszyny Wirtualnej:
+   - Microsoft.Compute/virtualMachines/read
+
+
+
+## <a name="use-jit-programmatically"></a>Usługa JIT umożliwia programowe
+Można skonfigurować i używać just-in-time za pośrednictwem interfejsów API REST i przy użyciu programu PowerShell.
+
+### <a name="using-just-in-time-vm-access-via-rest-apis"></a>Za pomocą just in time access maszyny Wirtualnej za pośrednictwem interfejsów API REST
+
+Funkcja dostępu just in time maszyny Wirtualnej może służyć za pośrednictwem interfejsu API usługi Azure Security Center. Możesz uzyskać informacje na temat skonfigurowanych maszyn wirtualnych, dodawać nowe, poproś o dostęp do maszyny Wirtualnej, a także bardziej, za pośrednictwem tego interfejsu API. Zobacz [zasad dostępu do sieci Jit](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies), aby dowiedzieć się więcej na temat interfejsu API REST just-in-time.
+
+### <a name="using-jit-vm-access-via-powershell"></a>Przy użyciu maszyn wirtualnych JIT dostępu za pomocą programu PowerShell 
+
+Aby użyć rozwiązania dostępu just in time maszyny Wirtualnej, za pomocą programu PowerShell, użyj oficjalne Azure Security Center poleceń cmdlet programu PowerShell, a w szczególności `Set-AzureRmJitNetworkAccessPolicy`.
+
+Poniższy przykład ustawia zasady dostępu just in time maszyn wirtualnych w określonej maszyny Wirtualnej, a następnie ustawia następujące czynności:
 1.  Zamykanie portów 22 i 3389.
 2.  Ustaw maksymalny przedział czasu wynoszącego 3 godziny dla każdego, dzięki czemu można je otworzyć za zatwierdzone żądania.
-3.  Zezwala na użytkownika, który żąda dostępu do kontroli źródła adresów IP, a także umożliwia użytkownikowi ustanowić sesję pomyślne na zatwierdzonych dokładnie na czas żądania dostępu.
+3.  Umożliwia użytkownikowi, który żąda dostępu do kontrolowania źródłowych adresów IP i umożliwia użytkownikowi nawiązać pomyślnej sesji na żądanie zatwierdzone dostępu just in time.
 
 W programie PowerShell, aby to zrobić, uruchom następujące polecenie:
 
-1.  Przypisz zmienna, która zawiera tylko w czasie maszyna wirtualna zasady dostępu dla maszyny Wirtualnej:
+1.  Przypisz zmienna, która zawiera zasady dostępu just in time maszyny Wirtualnej dla maszyny Wirtualnej:
 
         $JitPolicy = (@{
          id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
@@ -226,17 +228,17 @@ W programie PowerShell, aby to zrobić, uruchom następujące polecenie:
              allowedSourceAddressPrefix=@("*");
              maxRequestAccessDuration="PT3H"})})
 
-2.  Wstaw maszyny Wirtualnej dokładnie na czas maszyny Wirtualnej warunkowego do tablicy:
+2.  Wstaw zasad maszyny Wirtualnej just-in-time maszyny Wirtualnej dostępu do tablicy:
     
         $JitPolicyArr=@($JitPolicy)
 
-3.  Konfigurowanie tylko w czasie maszyna wirtualna zasady na wybranej maszynie Wirtualnej dostępu:
+3.  Konfigurowanie zasad dostępu just in time maszyny Wirtualnej na wybranej maszynie Wirtualnej:
     
         Set-AzureRmJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
-### <a name="requesting-access-to-a-vm"></a>Żądanie dostępu do maszyny Wirtualnej
+#### <a name="requesting-access-to-a-vm"></a>Żądanie dostępu do maszyny Wirtualnej
 
-W poniższym przykładzie widać tylko w żądaniu dostępu do maszyny Wirtualnej godziny określonej maszyny Wirtualnej w port, który 22 jest wymagane do otwarcia dla określonego adresu IP i dla określonego przedziału czasu:
+W poniższym przykładzie widać just-in-time żądanie dostępu dla maszyny Wirtualnej do określonej maszyny Wirtualnej w port, który 22 jest wymagane do otwarcia dla określonego adresu IP i dla określonego przedziału czasu:
 
 W programie PowerShell, uruchom następujące polecenie:
 1.  Konfigurowanie właściwości maszyny Wirtualnej żądania dostępu
@@ -258,7 +260,7 @@ Aby uzyskać więcej informacji zobacz dokumentację poleceń cmdlet programu Po
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób dokładnie na czas dostępu do maszyny Wirtualnej w usłudze Security Center pomaga, kontrolować dostęp do usługi Azure virtual machines.
+W tym artykule przedstawiono kontrolować dostęp do maszyny Wirtualnej jak just-in-time w usłudze Security Center ułatwia dostęp do usługi Azure virtual machines.
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
@@ -270,15 +272,3 @@ Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następując
 - [Usługa Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
 - [Blog Azure Security](https://blogs.msdn.microsoft.com/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
 
-
-<!--Image references-->
-[1]: ./media/security-center-just-in-time/just-in-time-scenario.png
-[2]: ./media/security-center-just-in-time/just-in-time.png
-[10]: ./media/security-center-just-in-time/just-in-time-access.png
-[3]: ./media/security-center-just-in-time/enable-just-in-time-access.png
-[4]: ./media/security-center-just-in-time/request-access-to-a-vm.png
-[5]: ./media/security-center-just-in-time/activity-log.png
-[6]: ./media/security-center-just-in-time/default-ports.png
-[7]: ./media/security-center-just-in-time/add-a-port.png
-[8]: ./media/security-center-just-in-time/edit-policy.png
-[9]: ./media/security-center-just-in-time/select-activity-log.png

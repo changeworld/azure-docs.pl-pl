@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 9da64ebe675f9d481c7474a81fec294d50e49ce7
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8285632d8dea76763c65dd06e8be2d7494a47188
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215212"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838996"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikowanie maszyn wirtualnych usługi Azure Stack na platformie Azure
 
@@ -207,8 +207,8 @@ Wybierz i zweryfikuj zasoby docelowe.
 ### <a name="create-a-replication-policy"></a>Tworzenie zasad replikacji
 
 1. Kliknij przycisk **przygotowanie infrastruktury** > **ustawień replikacji**.
-2. W **Tworzenie zasad replikacji**, określ nazwę zasad.
-3. W **progu celu punktu odzyskiwania**, określ limit punktu odzyskiwania celu (RPO).
+2. W obszarze **Tworzenie zasad replikacji** określ nazwę zasad.
+3. W obszarze **Wartość progowa celu punktu odzyskiwania** określ limit celu punktu odzyskiwania.
     - Punkty odzyskiwania dla replikowanych danych są tworzone zgodnie z ustawionym czasie.
     - To ustawienie nie wpływa na replikację, która jest ciągły. Generuje po prostu alert, jeśli osiągnięto limit progu bez tworzenia punktu odzyskiwania.
 4. W **czas przechowywania punktu odzyskiwania**, określ, jak długo każdy punkt odzyskiwania jest przechowywana. Replikowane maszyny wirtualne można odzyskać do dowolnego punktu w określonym przedziale czasu.

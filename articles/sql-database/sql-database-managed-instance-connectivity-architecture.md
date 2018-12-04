@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 08/16/2018
-ms.openlocfilehash: 312425d3ea02d15a992b9a694f09cb2be73b6221
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d0747e9e54a48ecccb7051ad4fe9998d86599ffe
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161594"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840745"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Usługa Azure SQL Database Managed architektura łączności wystąpienia 
 
@@ -66,7 +66,7 @@ Klienci połączyć się z wystąpieniem zarządzanym przy użyciu nazwy hosta, 
 
 Ten prywatny adres IP należy do zarządzanego wystąpienia wewnętrznego obciążenia równoważenia (ILB) która kieruje ruch do bramy zarządzane wystąpienia (GW). Zgodnie z wewnątrz tego samego klastra, potencjalnie może uruchomić wiele wystąpień zarządzanych, GW używa nazwy hosta wystąpienia zarządzanego przekierowywanie ruchu na prawidłowe usługi aparatu programu SQL. 
 
-Usługi zarządzania i wdrażania nawiązać wystąpienia zarządzanego przy użyciu publicznego punktu końcowego, który jest mapowany do zewnętrznego modułu równoważenia obciążenia. Ruch jest kierowany do węzłów, tylko wtedy, gdy są odbierane na wstępnie zdefiniowane zbiór porty, które są używane wyłącznie przez składniki zarządzania wystąpienia zarządzanego. Cała komunikacja między składniki zarządzania i płaszczyzna zarządzania jest wzajemnie uwierzytelnienia certyfikatu. 
+Połączenie usług zarządzania i wdrażania do wystąpienia zarządzanego przy użyciu [punkt końcowy zarządzania](sql-database-managed-instance-management-endpoint.md) mapuje zewnętrzny moduł równoważenia obciążenia. Ruch jest kierowany do węzłów, tylko wtedy, gdy odbierane na zestaw wstępnie zdefiniowanych portów, które są używane wyłącznie przez składniki zarządzania wystąpienia zarządzanego. Wbudowane zapory w węzłach jest skonfigurowana do zezwolenia na ruch tylko z określonych zakresów adresów IP firmy Microsoft. Cała komunikacja między składniki zarządzania i płaszczyzna zarządzania jest wzajemnie uwierzytelnienia certyfikatu. 
 
 ## <a name="next-steps"></a>Kolejne kroki 
 

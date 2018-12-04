@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 776ad8445c1968928a631ae1a401db4c65a6bb6d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: afc2d52044a294af0ead373dfce283d0ec994d1e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421245"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840626"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>Samouczek: Integracja usługi Azure Active Directory z logowania jednokrotnego SAML insygnia
 
@@ -38,7 +38,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD przy użyciu logowania jednokrotnego SAML insygnia, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Logowania jednokrotnego SAML insygnia logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Aby skonfigurować integrację logowania jednokrotnego SAML insygnia w usłudze 
 
 **Aby dodać logowania jednokrotnego SAML insygnia z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -120,7 +120,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<customername>.insigniailsusa.com/<uniqueid>`
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta logowania jednokrotnego SAML insygnia](http://www.insigniasoftware.com/insignia/Techsupport.aspx) do uzyskania tych wartości. 
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta logowania jednokrotnego SAML insygnia](https://www.insigniasoftware.com/insignia/Techsupport.aspx) do uzyskania tych wartości. 
  
 
 1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
@@ -135,7 +135,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfiguracja logowania jednokrotnego SAML insygnia](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_configure.png) 
 
-1. Aby skonfigurować logowanie jednokrotne na **logowania jednokrotnego SAML insygnia** stronie, musisz wysłać pobrany **certyfikat (Base64)**, **adres URL wylogowania i SAML pojedynczego logowania jednokrotnego usługi adresu URL** do [Zespołem pomocy technicznej logowania jednokrotnego SAML insygnia](http://www.insigniasoftware.com/insignia/Techsupport.aspx). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Aby skonfigurować logowanie jednokrotne na **logowania jednokrotnego SAML insygnia** stronie, musisz wysłać pobrany **certyfikat (Base64)**, **adres URL wylogowania i SAML pojedynczego logowania jednokrotnego usługi adresu URL** do [Zespołem pomocy technicznej logowania jednokrotnego SAML insygnia](https://www.insigniasoftware.com/insignia/Techsupport.aspx). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 > [!TIP]
 > Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -175,7 +175,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="create-an-insignia-saml-sso-test-user"></a>Tworzenie użytkownika testowego logowania jednokrotnego SAML insygnia
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon insygnia biblioteki systemu. Praca z [zespołem pomocy technicznej systemu biblioteki insygnia](http://www.insigniasoftware.com/insignia/Techsupport.aspx) Aby dodać użytkowników na platformie insygnia biblioteki systemu.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon insygnia biblioteki systemu. Praca z [zespołem pomocy technicznej systemu biblioteki insygnia](https://www.insigniasoftware.com/insignia/Techsupport.aspx) Aby dodać użytkowników na platformie insygnia biblioteki systemu.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

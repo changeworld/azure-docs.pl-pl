@@ -14,12 +14,12 @@ ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 857d58d31565e413a207162202f1a680d7da7c65
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: c07b87d88b884b22f44fe108bb28877cb30f973e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250737"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837175"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Przejąć niezarządzanego katalogu jako administrator usługi Azure Active Directory
 W tym artykule opisano dwa sposoby na przejęcie nazwy domeny DNS w niezarządzanego katalogu usługi Azure Active Directory (Azure AD). Gdy użytkownik samoobsługi rejestruje się w usłudze w chmurze, która korzysta z usługi Azure AD, jest dodawany do niezarządzanego katalogu usługi Azure AD na podstawie swojej domeny poczty e-mail. Więcej informacji na temat samoobsługowego lub "wirusowego" rejestrowania w usłudze, zobacz [co to jest Samoobsługowe tworzenie konta usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)
@@ -108,7 +108,11 @@ Dla [RMS dla użytkowników indywidualnych](/azure/information-protection/rms-fo
 
 Klucz i szablony nie są przenoszone, gdy dzierżawa niezarządzana jest w innym regionie. Na przykład niezarządzanej dzierżawy jest w Europie i dzierżawy, do której jesteś właścicielem, znajduje się w Ameryce Północnej. 
 
-Mimo że usługa RMS dla użytkowników indywidualnych jest przeznaczona do obsługi uwierzytelniania usługi Azure AD, aby otworzyć chronionej zawartości, nie uniemożliwia użytkownikom, z również ochrony zawartości. Jeśli użytkownicy chronić zawartość przy użyciu subskrypcji usługi RMS dla użytkowników indywidualnych, a klucz i szablony nie zostało przeniesione, za pośrednictwem, tę zawartość nie będzie dostępna po przejęciu domeny.    
+Mimo że usługa RMS dla użytkowników indywidualnych jest przeznaczona do obsługi uwierzytelniania usługi Azure AD, aby otworzyć chronionej zawartości, nie uniemożliwia użytkownikom, z również ochrony zawartości. Jeśli użytkownicy chronić zawartość przy użyciu subskrypcji usługi RMS dla użytkowników indywidualnych, a klucz i szablony nie zostało przeniesione, za pośrednictwem, tę zawartość nie będzie dostępna po przejęciu domeny.
+
+#### <a name="more-information-about-power-bi"></a>Więcej informacji na temat usługi Power BI
+
+Podczas wykonywania zewnętrznych przejęcia, zawartość usługi Power BI, który został utworzony przed przejęcia jest umieszczany w [obszar roboczy usługi Power BI zarchiwizowane](/power-bi/service-admin-power-bi-archived-workspace). Należy ręcznie przeprowadzić migrację żadnej zawartości, którego chcesz użyć w nowym dzierżawcą.
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Usługa Azure AD poleceń cmdlet programu PowerShell dla opcji ForceTakeover
 Możesz zobaczyć te polecenia cmdlet użyte w [przykład programu PowerShell](#powershell-example).

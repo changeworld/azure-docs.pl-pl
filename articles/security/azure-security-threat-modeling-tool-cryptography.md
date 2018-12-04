@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 4128d113535c67c0b440dc3fb275af05b5c1c1ae
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 79803a749b6d08c94bcbf5f3ca66aac8b7294fa3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306149"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844655"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Ramka zabezpieczeń: Kryptografia | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -172,8 +172,8 @@ ms.locfileid: "43306149"
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | System operacyjny urządzenia — Windows IoT Core, łączność urządzeń — zestawy SDK urządzeń Azure IoT |
-| **Odwołania**              | [Moduł TPM w systemie Windows IoT Core](https://developer.microsoft.com/windows/iot/docs/tpm), [Konfigurowanie modułu TPM na Windows IoT Core](https://developer.microsoft.com/windows/iot/win10/setuptpm), [TPM zestawu SDK urządzenia IoT platformy Azure](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
-| **Kroki** | Symmetric lub prywatnego certyfikatu kluczy bezpiecznie w sprzęcie chronione magazynu, takich jak mikroukładami modułu TPM lub karty inteligentnej. Windows 10 IoT Core obsługuje użytkownika modułu TPM wiąże się z kilku zgodne TPM, które mogą być używane: https://developer.microsoft.com/windows/iot/win10/tpm. Zalecane jest użycie oprogramowania układowego lub odrębny moduł TPM. Moduł TPM oprogramowania można używać tylko do celów projektowania i testowania. Gdy moduł TPM jest dostępny i klucze są aprowizowane w nim, kod, który generuje token powinny być zapisywane bez twardych kodowania jakichkolwiek poufnych informacji w nim. | 
+| **Odwołania**              | [Moduł TPM w systemie Windows IoT Core](https://developer.microsoft.com/windows/iot/docs/tpm), [Konfigurowanie modułu TPM na Windows IoT Core](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm), [TPM zestawu SDK urządzenia IoT platformy Azure](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
+| **Kroki** | Symmetric lub prywatnego certyfikatu kluczy bezpiecznie w sprzęcie chronione magazynu, takich jak mikroukładami modułu TPM lub karty inteligentnej. Windows 10 IoT Core obsługuje użytkownika modułu TPM wiąże się z kilku zgodne TPM, które mogą być używane: https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm. Zalecane jest użycie oprogramowania układowego lub odrębny moduł TPM. Moduł TPM oprogramowania można używać tylko do celów projektowania i testowania. Gdy moduł TPM jest dostępny i klucze są aprowizowane w nim, kod, który generuje token powinny być zapisywane bez twardych kodowania jakichkolwiek poufnych informacji w nim. | 
 
 ### <a name="example"></a>Przykład
 ```

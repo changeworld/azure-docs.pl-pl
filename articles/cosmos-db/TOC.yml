@@ -11,6 +11,8 @@ items:
     items:
     - name: .NET
       href: create-sql-api-dotnet.md
+    - name: .NET w wersji zapoznawczej
+      href: create-sql-api-dotnet-preview.md
     - name: Java
       href: create-sql-api-java.md
     - name: Node.js
@@ -164,8 +166,6 @@ items:
   items:
   - name: Dokumentacja interfejsu API środowiska SQL
     items:
-    - name: Wprowadzenie
-      href: sql-api-introduction.md
     - name: Modelowanie danych dokumentów
       href: modeling-data.md
     - name: Samouczki
@@ -176,8 +176,12 @@ items:
           items:
           - name: .NET
             href: sql-api-get-started.md
+          - name: .NET w wersji zapoznawczej
+            href: sql-api-dotnet-get-started-preview.md
           - name: .NET Core
             href: sql-api-dotnetcore-get-started.md
+          - name: .NET core w wersji zapoznawczej
+            href: sql-api-dotnet-core-get-started-preview.md
           - name: Java
             href: sql-api-java-get-started.md
           - name: Java (asynchroniczny)
@@ -188,6 +192,8 @@ items:
           items:
           - name: .NET
             href: sql-api-dotnet-application.md
+          - name: .NET w wersji zapoznawczej
+            href: sql-api-dotnet-application-preview.md
           - name: Java
             href: sql-api-java-application.md
           - name: Node.js
@@ -222,8 +228,6 @@ items:
         href: sql-api-sql-query-metrics.md
       - name: Procedury składowane, wyzwalacze i funkcje definiowane przez użytkownika (UDF)
         href: programming.md
-      - name: Partycjonowanie danych SQL
-        href: sql-api-partition-data.md
       - name: Typy danych
         items:
         - name: DateTime
@@ -453,6 +457,8 @@ items:
       href: how-to-configure-firewall.md
     - name: Konfigurowanie dostępu z sieci wirtualnych
       href: how-to-configure-vnet-service-endpoint.md
+    - name: Konfigurowanie współużytkowania zasobów między źródłami (CORS, Cross Origin Resource Sharing)
+      href: how-to-configure-cross-origin-resource-sharing.md
   - name: Gotowość przedsiębiorstwa
     items:
     - name: Przywracanie danych z kopii zapasowej
@@ -577,9 +583,9 @@ items:
       href: use-cases.md
     - name: Aplikacje mediów społecznościowych
       href: social-media-apps.md
-ms.openlocfilehash: be2c50fb19746f15d879ada3ccbdc4366a4c4763
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b3094d99c13b228a4a4165a1a1a49a97a7517cb0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262537"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833724"

@@ -4,15 +4,15 @@ description: Zawiera informacje dotyczące urządzenia modułu zbierającego w u
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 11/28/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 81e6731068db84f02073f02c49bea9a8fb7c7c70
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 5a542ae23bf500125fd08338b2efd30dd42d9a8d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241195"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840915"
 ---
 # <a name="about-the-collector-appliance"></a>O urządzenia modułu zbierającego
 
@@ -20,21 +20,9 @@ ms.locfileid: "50241195"
 
 Azure Migrate Collector to urządzenie uproszczone, który może służyć do wykrywania w lokalnym środowisku vCenter na potrzeby oceny za pomocą [usługi Azure Migrate](migrate-overview.md) usługi, przed migracją na platformę Azure.  
 
-## <a name="discovery-methods"></a>Metody odnajdywania
+## <a name="discovery-method"></a>Metoda odnajdywania
 
-Dostępne są dwie opcje dla urządzenia modułu zbierającego, jednorazowe lub ciągłe odnajdywania.
-
-### <a name="one-time-discovery"></a>Jednorazowe odnajdywanie
-
-Urządzenie modułu zbierającego komunikuje się jednorazowo przy użyciu programu vCenter Server, aby zebrać metadanych dotyczących maszyn wirtualnych. Za pomocą tej metody:
-
-- Urządzenie ciągle nie jest podłączony do projektu Azure Migrate.
-- Zmiany w środowisku lokalnym nie są uwzględniane w usłudze Azure Migrate, po zakończeniu odnajdywania. Aby odzwierciedlały zmiany, należy ponownie odnajdywanie w tym samym środowisku, w tym samym projekcie.
-- Podczas zbierania danych wydajności dla maszyny Wirtualnej, urządzenie opiera się na dane historyczne wydajności, przechowywane w programie vCenter Server. Historia wydajności zbiera dla ostatniego miesiąca.
-- Dla kolekcji historyczne dane wydajności należy ustawić ustawienia statystyk w programie vCenter Server na poziomie 3. Po ustawieniu poziomu do trzech, musisz poczekać co najmniej jeden dzień dla vCenter w celu zbierania liczników wydajności. Dlatego zaleca się uruchamianie odnajdywania po co najmniej jeden dzień. Do oceny środowiska na podstawie danych wydajności 1 tydzień lub 1 miesiąc, należy odpowiednio oczekiwania.
-- W przypadku tej metody odnajdowania usługi Azure Migrate umożliwia zbieranie informacji o średnia liczników dla każdego metryki (zamiast liczniki szczytowe), co może skutkować niepełną zmiany rozmiaru. Zalecamy użycie opcji ciągłego odnajdywania w celu uzyskania bardziej dokładnych rozmiaru wyników.
-
-### <a name="continuous-discovery"></a>Ciągłe odnajdywanie
+Wcześniej były dwie opcje urządzenia modułu zbierającego, jednorazowe i ciągłe odnajdywania. Model jednorazowe odnajdywania jest już przestarzały, ponieważ opiera się na ustawieniach statystyk serwera vCenter do zbierania danych wydajności (statystyki wymagane ustawienia należy ustawić poziom 3) i również zbierane średnia liczników (zamiast szczyt), które spowodowało niepełną zmiany rozmiaru. Model ciągłe odnajdywania zapewnia zbierania szczegółowych danych i skutkuje dokładne zmiany rozmiaru z powodu zbiór liczników szczytowego. Poniżej przedstawiono, jak to działa:
 
 Urządzenie modułu zbierającego stale jest podłączony do projektu Azure Migrate i stale zbiera dane dotyczące wydajności maszyn wirtualnych.
 
@@ -44,14 +32,16 @@ Urządzenie modułu zbierającego stale jest podłączony do projektu Azure Migr
 - Ten model nie są zależne od ustawienia statystyk serwera vCenter, tak aby zbierać dane dotyczące wydajności.
 - Aby zatrzymać, ciągłe profilowania w dowolnym momencie z modułu zbierającego.
 
-Należy pamiętać, że urządzenie zbiera w sposób ciągły tylko dane dotyczące wydajności i nie wykrywa żadnych zmian konfiguracji w środowisku lokalnym (tzn. dodania lub usunięcia maszyny wirtualnej, dodania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym możesz wykonać następujące działania, aby odzwierciedlić zmiany w portalu:
+**Natychmiastowej gratyfikacji:** przy użyciu urządzenia odnajdywania ciągłe, po zakończeniu odnajdywania (zajmuje kilka godzin w zależności od liczby maszyn wirtualnych), możesz od razu utworzyć oceny. Ponieważ zbierania danych o wydajności rozpoczyna się, gdy jest rozpoczynane odnajdywania, jeśli szukasz natychmiastowej gratyfikacji, należy wybrać kryterium ustalania rozmiaru w ocenie jako *jako lokalne*. Aby w przypadku oceny na podstawie wydajności zalecane jest poczekać co najmniej jednego dnia po uruchamiania odnajdywania można pobrać zaleceń dotyczących rozmiarów niezawodne.
+
+Urządzenie ciągle tylko zbiera dane wydajności, nie wykrywa zmiany konfiguracji w środowisku lokalnym, (tj. Dodawanie maszyny Wirtualnej, usuwania, dodawania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym możesz wykonać następujące działania, aby odzwierciedlić zmiany w portalu:
 
 - Dodanie elementów (maszyn wirtualnych, dysków, rdzeni itp.): aby uwzględnić te zmiany w witrynie Azure Portal, możesz zatrzymać odnajdywanie z urządzenia i następnie uruchomić je ponownie. Zapewni to, że zmiany zostaną zaktualizowane w projekcie usługi Azure Migrate.
 
 - Usunięcie maszyn wirtualnych: ze względu na konstrukcję urządzenia, usunięcie maszyny wirtualnej nie zostanie uwzględnione, nawet jeśli zatrzymasz odnajdywanie i uruchomisz je ponownie. Przyczyną jest to, że dane z kolejnych operacji odnajdywania są dołączane do starszych danych, a nie nadpisywane. W takim przypadku możesz po prostu zignorować maszynę wirtualną w portalu, usuwając ją z grupy i obliczając ponownie ocenę.
 
 > [!NOTE]
-> Funkcja ciągłego Odnajdywanie jest w wersji zapoznawczej. Zalecamy używanie tej metody, ponieważ zbiera ona szczegółowe dane wydajności i daje w wyniku dokładne szacunki rozmiaru.
+> Urządzenie jednorazowe odnajdywania jest już przestarzały, ta metoda polegać vCenter w ustawieniach statystyk serwera dostępność punktu danych wydajności i zebrane liczniki wydajności średni, które spowodowało niepełną rozmiarów maszyn wirtualnych do migracji na platformę Azure.
 
 ## <a name="deploying-the-collector"></a>Wdrażanie modułu zbierającego
 
@@ -211,7 +201,7 @@ Po skonfigurowaniu urządzenia można uruchomić odnajdywanie. Poniżej przedsta
 
 ### <a name="collected-metadata"></a>Zebrano metadane
 
-Urządzenie modułu zbierającego umożliwia odnalezienie następujące metadane statycznych dla maszyn wirtualnych:
+Urządzenie modułu zbierającego umożliwia odnalezienie następujących metadanych konfiguracji dla każdej maszyny Wirtualnej. Dane konfiguracji dla maszyn wirtualnych są dostępne godziny po uruchomieniu odnajdywania.
 
 - Nazwa wyświetlana maszyny Wirtualnej (w programie vCenter Server)
 - Ścieżka magazynu maszyny Wirtualnej (host/folderu w programie vCenter Server)
@@ -224,26 +214,18 @@ Urządzenie modułu zbierającego umożliwia odnalezienie następujące metadane
 
 #### <a name="performance-counters"></a>Liczniki wydajności
 
-- **Jednorazowe**: podczas odnajdywania jednorazowe zbieranymi licznikami, należy pamiętać o następujących:
+ Urządzenie modułu zbierającego zbiera następujące liczniki wydajności dla każdej maszyny Wirtualnej z hosta ESXi w interwału wynoszącego 20 sekund. Te liczniki są liczniki vCenter i chociaż terminologii mówi średnia próbek 20-sekundowe liczników w czasie rzeczywistym. Dane wydajności dla maszyn wirtualnych zostanie uruchomiony, stają się dostępne w portalu po dwóch godzinach od zostały rozpoczęte odnajdywania. Zdecydowanie zaleca się poczekać co najmniej dzień przed utworzeniem oceny na podstawie wydajności, aby uzyskać dokładne zalecenia dotyczące doboru wielkości. Jeśli szukasz natychmiastowej gratyfikacji, możesz utworzyć oceny przy użyciu kryterium ustalania rozmiaru jako *jako lokalne* zostaną nie będą dane dotyczące wydajności w przypadku ustalania rozmiaru po prawej stronie.
 
-    - Może upłynąć do 15 minut do zbierania i wysyłania metadanych konfiguracji do projektu.
-    - Po zebraniu danych konfiguracji może potrwać do godziny dane wydajności były dostępne w portalu.
-    - Po metadane są dostępne w portalu, zostanie wyświetlona lista maszyn wirtualnych i możesz rozpocząć tworzenie grup do oceny.
-- **Ciągłe odnajdywania**: ciągłe odnajdywania, należy pamiętać o następujących:
-    - Dane konfiguracji dla maszyny Wirtualnej jest dostępny za godzinę, po uruchomieniu odnajdywania
-    - Dane dotyczące wydajności rozpoczyna stają się dostępne po 2 godzinach.
-    - Po uruchomieniu odnajdywania, poczekaj co najmniej jeden dzień urządzenie profilowania środowiska, przed przystąpieniem do tworzenia oceny.
-
-**Licznik** | **Poziom** | **Poziom na urządzenie** | **Wpływ na ocenę**
---- | --- | --- | ---
-cpu.usage.average | 1 | Nie dotyczy | Zalecany rozmiar maszyny Wirtualnej i kosztów  
-mem.usage.average | 1 | Nie dotyczy | Zalecany rozmiar maszyny Wirtualnej i kosztów  
-virtualDisk.read.average | 2 | 2 | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
-virtualDisk.write.average | 2 | 2  | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
-virtualDisk.numberReadAveraged.average | 1 | 3 |  Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
-virtualDisk.numberWriteAveraged.average | 1 | 3 |   Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
-NET.RECEIVED.AVERAGE | 2 | 3 |  Oblicza rozmiar maszyny Wirtualnej                          |
-net.transmitted.average | 2 | 3 | Oblicza rozmiar maszyny Wirtualnej     
+**Licznik** |  **Wpływ na ocenę**
+--- | ---
+cpu.usage.average | Zalecany rozmiar maszyny Wirtualnej i kosztów  
+mem.usage.average | Zalecany rozmiar maszyny Wirtualnej i kosztów  
+virtualDisk.read.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
+virtualDisk.write.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
+virtualDisk.numberReadAveraged.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
+virtualDisk.numberWriteAveraged.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
+NET.RECEIVED.AVERAGE | Oblicza rozmiar maszyny Wirtualnej                          
+net.transmitted.average | Oblicza rozmiar maszyny Wirtualnej     
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 1ac4ec13ad404263e2821c2b89b5db299f36005e
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 76c2c7c7e99f10f48464d85030fea64bb7925cd7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642368"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845709"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Rozwiązanie usługi alert Management w usłudze Azure Log Analytics
 
@@ -74,7 +74,7 @@ Kliknij pozycję **zarządzania alertami** Kafelek, aby otworzyć **zarządzania
 | Aktywne alerty programu SCOM |Wszystkie alerty zbierane z programu Operations Manager z dowolny stan inny niż *zamknięte* pogrupowane według źródła, który wygenerował alert. |
 | Wszystkie aktywne alerty |Wszystkie alerty o dowolnym ważności, pogrupowane według nazwy alertu. Zawiera tylko alertów programu Operations Manager z dowolny stan inny niż *zamknięte*. |
 
-Po przewinięciu w prawo, pulpit nawigacyjny zawiera listę kilku typowych zapytań, które możesz kliknąć do wykonywania [wyszukiwanie w dzienniku](../../log-analytics/log-analytics-queries.md) alertów danych.
+Po przewinięciu w prawo, pulpit nawigacyjny zawiera listę kilku typowych zapytań, które możesz kliknąć do wykonywania [wyszukiwanie w dzienniku](../../azure-monitor/log-query/log-query-overview.md) alertów danych.
 
 ![Zgłoś alert, pulpit nawigacyjny zarządzania](media/alert-management-solution/dashboard.png)
 

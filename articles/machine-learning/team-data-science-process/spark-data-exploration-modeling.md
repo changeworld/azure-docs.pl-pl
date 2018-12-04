@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: fd02501e0b616ef173faae8c9ea81c3956d69672
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 803b190514ce0638e8eac5e937805d4a69e76995
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446759"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842938"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Eksplorowanie i modelowanie danych za pomocą platformy Spark
 
-W tym przewodniku używa platformy HDInsight Spark do wykonywania eksploracji danych i binarnej klasyfikacji i regresji, modelowanie zadania, na przykład NYC taksówki podróży, jak i klasie 2013 zestawu danych.  Przeprowadza użytkownika przez kroki [danych dla celów naukowych](https://aka.ms/datascienceprocess), end-to-end, przechowywanie danych i modele przy użyciu klastra usługi HDInsight Spark dla obiektów blob platformy Azure i związanych z przetwarzaniem. Proces analizuje i wizualizuje dane zaimportowane z usługi Azure Blob Storage i następnie przygotowuje dane w celu tworzenia modeli predykcyjnych. Te modele są kompilacji przy użyciu zestawu narzędzi Biblioteka MLlib platformy Spark w celu binarnej klasyfikacji i regresji zadań modelowania.
+W tym przewodniku używa platformy HDInsight Spark do wykonywania eksploracji danych i binarnej klasyfikacji i regresji, modelowanie zadania, na przykład NYC taksówki podróży, jak i klasie 2013 zestawu danych.  Przeprowadza użytkownika przez kroki [danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), end-to-end, przechowywanie danych i modele przy użyciu klastra usługi HDInsight Spark dla obiektów blob platformy Azure i związanych z przetwarzaniem. Proces analizuje i wizualizuje dane zaimportowane z usługi Azure Blob Storage i następnie przygotowuje dane w celu tworzenia modeli predykcyjnych. Te modele są kompilacji przy użyciu zestawu narzędzi Biblioteka MLlib platformy Spark w celu binarnej klasyfikacji i regresji zadań modelowania.
 
 * **Klasyfikacji binarnej** zadania jest prognozowanie, czy porady zostało opłacone podróż. 
 * **Regresji** zadania jest prognozowanie, kwotę napiwku na podstawie innych funkcji porada. 

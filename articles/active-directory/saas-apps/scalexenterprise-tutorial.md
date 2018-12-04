@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 04708806b9e1ba224e7b438f11c68dca82d6320e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 60beecc0895fbfb5d3af7817e8b76e0819c89a99
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448822"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835390"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Samouczek: Integracja usługi Azure Active Directory z usługą ScaleX Enterprise
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD z usługą ScaleX Enterprise, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - ScaleX Enterprise logowania jednokrotnego włączonych subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację ScaleX przedsiębiorstwa w usłudze Azure AD, nal
 
 **Aby dodać ScaleX przedsiębiorstwa z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -123,7 +123,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     W **adres URL logowania** polu tekstowym wpisz wartość, przy użyciu następującego wzorca: `https://platform.rescale.com/saml2/<company id>/sso/`
      
     > [!NOTE] 
-    > Nie są to rzeczywiste wartości. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adres URL odpowiedzi lub adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej ScaleX Enterprise Client](http://info.rescale.com/contact_sales) do uzyskania tych wartości. 
+    > Nie są to rzeczywiste wartości. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adres URL odpowiedzi lub adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej ScaleX Enterprise Client](https://info.rescale.com/contact_sales) do uzyskania tych wartości. 
 
 1. Aplikacja ScaleX oczekuje twierdzenia SAML w określonym formacie, który wymaga zmodyfikowania mapowania atrybutów niestandardowych, konfiguracji atrybuty tokenu języka SAML. Kliknij przycisk **Wyświetl i Edytuj wszystkie inne atrybuty użytkownika** pole wyboru umożliwiające otwarcie niestandardowe atrybuty ustawienia.
 

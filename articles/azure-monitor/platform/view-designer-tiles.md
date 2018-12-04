@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 17d1419501b4833d0abc3b5670827d57dfd7a286
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 53837573daef56bad12f627400f7db1ccd1c26cf
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643348"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836971"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Podręcznik informacyjny projektanta widoku kafelków w usłudze Log Analytics
 Przy użyciu projektanta widoku w usłudze Azure Log Analytics, można tworzyć widoki niestandardowe w witrynie Azure portal, które przedstawiają różne wizualizacje danych w obszarze roboczym usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla kafelków, które są dostępne w widoki niestandardowe.
@@ -35,7 +35,7 @@ W poniższej tabeli opisano dostępnych kafelków Projektant widoków:
 
 | Sąsiadująco | Opis |
 |:--- |:--- |
-| [Numer](#number-tile) |Liczba rekordów w wyniku zapytania. |
+| [Liczba](#number-tile) |Liczba rekordów w wyniku zapytania. |
 | [Dwóch liczb](#two-numbers-tile) |Liczba rekordów z dwóch różnych zapytań. |
 | [Wykres pierścieniowy](#donut-tile) | Wykres, który jest oparty na zapytaniu, z wartością podsumowania w Centrum. |
 | [Wykres liniowy i objaśnienie](#line-chart-amp-callout-tile) | Wykres liniowy, który jest oparty na zapytania i objaśnienie z wartością podsumowania. |
@@ -179,5 +179,5 @@ Ten Kafelek zawiera zarówno wiersz, wykres ten przedstawia wiele serii z dzienn
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [dziennikach](../../log-analytics/log-analytics-queries.md) do obsługi zapytań na kafelkach.
+* Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) do obsługi zapytań na kafelkach.
 * Dodaj [części wizualizacji](view-designer-parts.md) do widoku niestandardowego.

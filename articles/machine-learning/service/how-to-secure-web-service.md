@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
-ms.openlocfilehash: ec7b956f080837b297bac56e6237ac0672601ce7
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: a9dee2d88c986ed292567a18c29cd325833b5e6f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344488"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832874"
 ---
 # <a name="secure-azure-machine-learning-web-services-with-ssl"></a>Zabezpieczania usług sieci web Azure Machine Learning przy użyciu protokołu SSL
 
@@ -118,7 +118,7 @@ Następnie należy zaktualizować serwer DNS, aby wskazać usługę sieci web.
 
   Aktualizowanie systemu DNS, na karcie "Konfiguracja" "Publiczny adres IP" dla klastra AKS, jak pokazano na ilustracji. Możesz znaleźć publiczny adres IP jako jeden z typów zasobów utworzonych w ramach grupy zasobów, która zawiera węzły agenta usługi AKS i innych zasobów sieciowych.
 
-  ![Usługa Azure Machine Learning: Zabezpieczanie usługi sieci web przy użyciu protokołu SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)Self-
+  ![Usługa Azure Machine Learning: Zabezpieczanie usługi sieci web przy użyciu protokołu SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

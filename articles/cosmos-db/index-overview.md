@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: c0525cfba16fb61f8388ae4d6a693be3bb71674c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 0333bc5e95b74fc97cfff3d79adbe28aefff5d40
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629068"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834642"
 ---
 # <a name="indexing-in-azure-cosmos-db"></a>Indeksowanie w usłudze Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Przy wyświetlaniu elementów w kontenerze jako dokumenty JSON i przedstawiania 
 
 Węzeł główny pseudo jest tworzony jako element nadrzędny w węzłach rzeczywiste odpowiadający etykiet w dokumencie poniżej. Struktury danych zagnieżdżonych dysku hierarchii drzewa. Pośredni sztuczne węzły z etykietą przy użyciu wartości liczbowych (na przykład, 0, 1,...) są wykorzystywane do reprezentowania wyliczeń i tablicy wskaźników.
 
-## <a name="index-paths"></a>Indeks ścieżki
+## <a name="index-paths"></a>Ścieżki indeksów
 
 Usługa Azure Cosmos DB projektów elementów jako dokumenty JSON i indeksu jako drzewa. Następnie można dostroić zasady dla ścieżki w drzewie. Istnieje możliwość dołączania lub wykluczania ścieżki z indeksowania. To może oferować zapisu ulepszoną wydajność i zmniejszyć magazyn indeksów dla scenariuszy, w którym wzorców zapytań są znane wyprzedzeniem. Aby dowiedzieć się więcej, zobacz [ścieżki indeksu](index-paths.md).
 
@@ -59,6 +59,6 @@ Zakres kwerendy GermanTax jest wykonywane w ramach przetwarzania zapytań funkcj
 Więcej informacji na temat indeksowania w następujących artykułach:
 
 - [Zasady indeksowania](index-policy.md)
-- [Typy indeksu](index-types.md)
-- [Indeks ścieżki](index-paths.md)
+- [Typy indeksów](index-types.md)
+- [Ścieżki indeksów](index-paths.md)
 - [Jak zarządzać zasad indeksowania](how-to-manage-indexing-policy.md)

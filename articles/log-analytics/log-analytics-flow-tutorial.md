@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 93fc2d78344bea1861ef0131b712ca65c35de0e4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: ba5251bdbbddc5370e163a5b78e59878598594c4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722619"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835050"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Automatyzacja procesów usługi Log Analytics przy użyciu łącznika dla Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) pozwala tworzyć zautomatyzowane przepływy pracy przy użyciu setek akcji dla wielu usług. Dane wyjściowe z akcji może służyć jako dane wejściowe do innego, co pozwala na tworzenie integracja między różnymi usługami.  Łącznik usługi Azure Log Analytics dla Microsoft Flow, umożliwiają tworzenie przepływów pracy, które zawierają dane pobierane przez wyszukiwań w dziennikach w usłudze Log Analytics.
@@ -78,7 +78,7 @@ Samouczek, w tym artykule pokazano, jak utworzyć przepływ, który automatyczni
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [przeszukiwanie dzienników w usłudze Log Analytics](log-analytics-queries.md).
+- Dowiedz się więcej o [przeszukiwanie dzienników w usłudze Log Analytics](../azure-monitor/log-query/log-query-overview.md).
 - Dowiedz się więcej o [Microsoft Flow](https://ms.flow.microsoft.com).
 
 

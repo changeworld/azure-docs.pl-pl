@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 3f1e34b4d527d076a0bac2e0cb6ef3a901296c57
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: cc09998a982f319cfc1d60924d2175a3c17c8465
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612479"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836683"
 ---
 # <a name="define-a-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego OAuth2 w zasadach niestandardowych usługi Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Usługa Azure Active Directory (Azure AD) B2C umożliwia dostawcy tożsamości protokołu OAuth2. Jest to podstawowy protokół autoryzacji i uwierzytelnianie delegowane. Aby uzyskać więcej informacji, zobacz [RFC 6749 OAuth 2.0 autoryzacji Framework](http://tools.ietf.org/html/rfc6749). Przy użyciu protokołu OAuth2 profilu technicznego może tworzyć federacje z OAuth2 na podstawie dostawcy tożsamości, takie jak Facebook i Live.com, co pozwala użytkownikom Zaloguj się przy użyciu istniejącej społecznościowych lub tożsamościami w przedsiębiorstwie.
+Usługa Azure Active Directory (Azure AD) B2C umożliwia dostawcy tożsamości protokołu OAuth2. Jest to podstawowy protokół autoryzacji i uwierzytelnianie delegowane. Aby uzyskać więcej informacji, zobacz [RFC 6749 OAuth 2.0 autoryzacji Framework](https://tools.ietf.org/html/rfc6749). Przy użyciu protokołu OAuth2 profilu technicznego może tworzyć federacje z OAuth2 na podstawie dostawcy tożsamości, takie jak Facebook i Live.com, co pozwala użytkownikom Zaloguj się przy użyciu istniejącej społecznościowych lub tożsamościami w przedsiębiorstwie.
 
 ## <a name="protocol"></a>Protokół
 

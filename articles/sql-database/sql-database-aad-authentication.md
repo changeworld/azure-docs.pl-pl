@@ -11,17 +11,17 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 86e60f339af3d6d467b68d5d3b27d77a9861add1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/03/2018
+ms.openlocfilehash: ff9011dda4a94f323b430a3860eadc8d970a23f7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244083"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838620"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Użyj uwierzytelniania usługi Azure Active Directory do uwierzytelniania przy użyciu języka SQL
 
-Uwierzytelnianie usługi Azure Active Directory jest mechanizmem nawiązywania połączenia z usługą Azure [bazy danych SQL](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) przy użyciu tożsamości w usłudze Azure Active Directory (Azure AD). 
+Uwierzytelnianie usługi Azure Active Directory jest mechanizmem nawiązywania połączenia z usługą Azure [bazy danych SQL](sql-database-technical-overview.md), [wystąpienia zarządzanego](sql-database-managed-instance.md), i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) przy użyciu tożsamości na platformie Azure Usługi Active Directory (Azure AD). 
 
 > [!NOTE]
 > Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
@@ -84,15 +84,7 @@ Następujące elementy członkowskie programu Azure AD mogą być udostępniane 
 - Zaimportowane członków z innych usługi Azure AD, którzy są członkami domeny natywny lub federacyjnego.
 - Grupy usługi Active Directory tworzone jako grupy zabezpieczeń.
 
-Azure AD ograniczenia związane z wystąpienia zarządzanego:
-
-- Tylko administrator usługi Azure AD może utworzyć bazy danych, są ograniczone do pojedynczej bazy danych użytkowników usługi Azure AD, a nie posiadają to uprawnienie
-- Własność bazy danych:
-  - Jednostki usługi Azure AD nie można zmienić właściciela bazy danych (ALTER autoryzacji ON DATABASE) i nie można ustawić jako właściciela.
-  - Dla baz danych utworzonych przez administratora usługi Azure AD jest ustawiony nie własności (pole owner_sid sys.sysdatabases jest 0x1).
-- Nie można zarządzać agenta SQL, gdy zalogowany przy użyciu jednostki usługi Azure AD.
-- Nie można spersonifikować administratora usługi Azure AD przy użyciu EXECUTE AS
-- DAC połączenia jest nieobsługiwane w przypadku podmiotów zabezpieczeń usługi Azure AD.
+Usługi Azure AD, logowania i użytkowników, które są obsługiwane jako funkcja w wersji zapoznawczej dla [wystąpienia zarządzane przez usługę](sql-database-managed-instance.md)
 
 Te funkcje systemu zwracają wartości NULL, gdy wykonywane w ramach jednostki usługi Azure AD:
 

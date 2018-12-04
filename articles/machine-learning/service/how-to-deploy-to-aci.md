@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 3c07f39a6c6c4ce244ba49a26617b3e645c57acb
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 31a905e1fb16997eb80e47af3b790f431f28e49b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710379"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842870"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>Wdrażaj usługi sieci web w usłudze Azure Container Instances 
 
@@ -252,6 +252,23 @@ prediction = service.run(input_data = test_samples)
 print(prediction)
 ```
 
+## <a name="update-the-web-service"></a>Aktualizacja usługi sieci web
+
+Aby zaktualizować usługę sieci web, użyj `update` metody. Poniższy kod ilustruje sposób aktualizacji usługi sieci web w celu użycia nowego obrazu:
+
+```python
+from azureml.core.webservice import Webservice
+
+service_name = 'aci-mnist-3'
+# Retrieve existing service
+service = Webservice(name = service_name, workspace = ws)
+# Update the image used by the service
+service.update(image = new-image)
+print(service.state)
+```
+
+> [!NOTE]
+> Po zaktualizowaniu obrazu usługi sieci web nie jest automatycznie aktualizowany. Należy ręcznie zaktualizować wszystkich usług, które chcesz użyć nowego obrazu.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

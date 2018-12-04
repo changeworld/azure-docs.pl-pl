@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 3331ed7775cd3027f1262b195c6230fbea742497
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 32c8acb28eba0d5a19144e7c0f922f206976b6d0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336929"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833673"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>Zbieraj alerty z programów Nagios i Zabbix w usłudze Log Analytics z agenta usługi Log Analytics dla systemu Linux 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -80,7 +80,7 @@ Aby zbierać alerty na Nagios serwerze, wykonaj następujące czynności.
 
 
 ## <a name="alert-records"></a>Rekordy alertów
-Rekordy alertów można pobrać z programów Nagios i Zabbix przy użyciu [dziennikach](../../log-analytics/log-analytics-queries.md) w usłudze Log Analytics.
+Rekordy alertów można pobrać z programów Nagios i Zabbix przy użyciu [dziennikach](../../azure-monitor/log-query/log-query-overview.md) w usłudze Log Analytics.
 
 ### <a name="nagios-alert-records"></a>Rekordy Nagios alertu
 
@@ -107,7 +107,7 @@ Zgłoś alert, ma rekordów zbieranych przez Zabbix **typu** z **alertu** i **sy
 | Typ |*Zgłoś alert* |
 | SourceSystem |*Zabbix* |
 | AlertName | Nazwa alertu. |
-| AlertPriority | Ważność alertu.<br><br>niesklasyfikowanych<br>informacje<br>ostrzeżenie<br>średnia<br>Wysoka<br>po awarii  |
+| AlertPriority | Ważność alertu.<br><br>niesklasyfikowanych<br>Informacje o<br>ostrzeżenie<br>Średnia<br>Wysoka<br>po awarii  |
 | AlertState | Stan alertu.<br><br>0 — jest aktualna.<br>1 — stan jest nieznany.  |
 | AlertTypeNumber | Określa, czy alert może wygenerować wiele zdarzeń problem.<br><br>0 — jest aktualna.<br>1 — stan jest nieznany.    |
 | Komentarze | Dodatkowe komentarze dla alertu. |
@@ -119,4 +119,4 @@ Zgłoś alert, ma rekordów zbieranych przez Zabbix **typu** z **alertu** i **sy
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [alerty](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) w usłudze Log Analytics.
-* Dowiedz się więcej o [dziennikach](../../log-analytics/log-analytics-queries.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
+* Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 

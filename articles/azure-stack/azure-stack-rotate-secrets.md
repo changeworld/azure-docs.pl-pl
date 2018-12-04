@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 8d84801aacfc60bb11aac4c9046a433378a59b79
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2b1dc0ad28a6608e3a46087d31a3d077e9291a3d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314477"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841680"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Obróć klucze tajne w usłudze Azure Stack
 
@@ -44,7 +44,7 @@ Certyfikaty usług infrastruktury usługi dołączonej do Internetu, które są 
 
    <sup>*</sup> Dotyczy tylko w przypadku dostawcy tożsamości środowiska Active Directory federacyjnego Services (AD FS).
 
-> [!NOTE]
+> [!NOTE]  
 > Wszystkie inne bezpieczeństwo kluczy i ciągów, w tym kontrolera zarządzania płytą GŁÓWNĄ i przełączać hasła, hasła do kont użytkowników i administratorów są nadal ręcznie aktualizowane przez administratora. 
 
 W celu zachowania integralności infrastruktury Azure Stack, Operatorzy będą potrzebowali możliwości okresowo Obróć klucze tajne swoją infrastrukturę, częstotliwości, które są zgodne z wymaganiami dotyczącymi zabezpieczeń w organizacji.

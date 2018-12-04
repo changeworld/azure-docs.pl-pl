@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c363056fc013cc8b8fd67fb9d656d3550d3bf5a2
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8c3684f93bbf5b9fe9f5ea9167396b9822e70c48
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139513"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841629"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Dostosowywanie interfejsu użytkownika dla podróży użytkownika za pomocą zasad niestandardowych
 
@@ -31,7 +31,7 @@ Nie zakłóca pracy użytkowników jest klucz dla dowolnego rozwiązania firma k
 
 Usługa Azure AD B2C umożliwia dostosowanie wyglądu i działania programu użytkownika środowiska na różnych stronach, które są obsługiwane i wyświetlane przez usługę Azure AD B2C za pomocą niestandardowych zasad.
 
-W tym celu usługi Azure AD B2C kodu w przeglądarce usługi konsumenta, korzysta z nowoczesnego i standardowego podejścia [udostępniania zasobów między źródłami (CORS)](http://www.w3.org/TR/cors/) załadować niestandardowej zawartości z określonych adresów URL, określonej w zasadach niestandardowych, aby wskazywał Szablony HTML5/CSS. CORS to mechanizm, który umożliwia ograniczone zasoby, takie jak czcionki, na stronie sieci web wymagane z innej domeny spoza domeny, z której pochodzi zasobu.
+W tym celu usługi Azure AD B2C kodu w przeglądarce usługi konsumenta, korzysta z nowoczesnego i standardowego podejścia [udostępniania zasobów między źródłami (CORS)](https://www.w3.org/TR/cors/) załadować niestandardowej zawartości z określonych adresów URL, określonej w zasadach niestandardowych, aby wskazywał Szablony HTML5/CSS. CORS to mechanizm, który umożliwia ograniczone zasoby, takie jak czcionki, na stronie sieci web wymagane z innej domeny spoza domeny, z której pochodzi zasobu.
 
 W porównaniu do tradycyjnych stary sposób, gdzie strony szablonów są własnością rozwiązania, w miejscu podania ograniczone tekstu i obrazów, w przypadku, gdy ograniczoną kontrolę nad układu i sposobu działania zaoferował, co prowadzi do więcej niż trudności do osiągnięcia nie zakłóca pracy sposób mechanizmu CORS obsługuje HTML5 i CSS i pozwalają na:
 
@@ -69,10 +69,10 @@ Aby upewnić się, że wszystko działa zgodnie z oczekiwaniami, musisz mieć:
 - Używać bezwzględnych adresów URL, takich jak https://yourdomain/content dla wszystkich łączy i zawartość arkusza CSS.
 
 > [!TIP]
-> Aby sprawdzić, czy włączono mechanizm CORS lokacji zawartości są hosting w systemie i przetestować żądań CORPS, można skorzystać z witryny http://test-cors.org/. Dzięki rozłożeniu w tej witrynie możesz wysyłać żądania CORS na serwerze zdalnym (tak, aby sprawdzić, czy CORS jest obsługiwany) lub wysyłać żądania CORS serwer testowy (zapoznaj się z pewnych funkcji CORS).
+> Aby sprawdzić, czy włączono mechanizm CORS lokacji zawartości są hosting w systemie i przetestować żądań CORPS, można skorzystać z witryny https://test-cors.org/. Dzięki rozłożeniu w tej witrynie możesz wysyłać żądania CORS na serwerze zdalnym (tak, aby sprawdzić, czy CORS jest obsługiwany) lub wysyłać żądania CORS serwer testowy (zapoznaj się z pewnych funkcji CORS).
 
 > [!TIP]
-> Witryna http://enable-cors.org/ stanowi również bardziej niż przydatne zasoby na mechanizmu CORS.
+> Witryna https://enable-cors.org/ stanowi również bardziej niż przydatne zasoby na mechanizmu CORS.
 
 Dzięki rozłożeniu w tym podejściu z mechanizmu CORS użytkownicy końcowi mają spójnego środowiska między aplikacją i stron, obsługiwane przez usługę Azure AD B2C.
 
@@ -120,7 +120,7 @@ Mechanizm CORS (Cross-Origin Resource Sharing) musi być włączona w punkcie ko
 Aby sprawdzić, czy magazyn, które hostują zawartości na ma włączono mechanizm CORS, wykonaj następujące czynności:
 
 1. Otwieranie sesji przeglądania i przejdź do strony *unified.html* przy użyciu pełny adres URL lokalizacji na koncie magazynu `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. Na przykład https://contoso369b2c.blob.core.windows.net/b2c/unified.html.
-2. Przejdź do adresu http://test-cors.org. Ta witryna pozwala sprawdzić, czy strony, którego używasz, ma włączono mechanizm CORS.  
+2. Przejdź do adresu https://test-cors.org. Ta witryna pozwala sprawdzić, czy strony, którego używasz, ma włączono mechanizm CORS.  
 <!--
 ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
 -->

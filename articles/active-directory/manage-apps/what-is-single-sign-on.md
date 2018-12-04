@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 3012f07d8c56f2581a087bc8e43aa4a089bf9589
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: c21d78d1e0660b97c44130539ab3b5c71b8d6f6b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633516"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843040"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory
 Dowiedz się, jak wybrać najbardziej odpowiedni pojedynczej metody logowania jednokrotnego, podczas konfigurowania aplikacji w usłudze Azure Active Directory (Azure AD). 
@@ -178,6 +178,6 @@ Aby uzyskać więcej informacji, zobacz [Wersje usługi Azure Active Directory](
 * [Samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory](../saas-apps/tutorial-list.md)
 * [Samouczek dotyczący konfigurowania logowania jednokrotnego](configure-single-sign-on-portal.md)
 * [Wprowadzenie do zarządzanie dostępem do aplikacji](what-is-access-management.md)
-* Link pobierania: [plan wdrażania rejestracji jednokrotnej](http://aka.ms/SSODeploymentPlan).
+* Link pobierania: [plan wdrażania rejestracji jednokrotnej](https://aka.ms/SSODeploymentPlan).
 
 

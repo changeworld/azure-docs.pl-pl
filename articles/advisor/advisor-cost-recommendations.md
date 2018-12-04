@@ -3,26 +3,25 @@ title: Usługa Azure rekomendacji dotyczących kosztu usługi Advisor | Dokument
 description: Azure Advisor umożliwiają optymalizację kosztu wdrożeń platformy Azure.
 services: advisor
 documentationcenter: NA
-author: manbeenkohli
+author: kasparks
 manager: ''
 ms.assetid: ''
 ms.service: advisor
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
-ms.author: makohli
-ms.openlocfilehash: 71c380a1caae730b6b01615ce3047c2e22bd6dfb
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.author: kasparks
+ms.openlocfilehash: a4de50e3dc17d9c9543bf1ec8cabb04c5d60070b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42058799"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832891"
 ---
 # <a name="advisor-cost-recommendations"></a>Rekomendacji dotyczących kosztu usługi Advisor
 
-Advisor pomaga zoptymalizować i zmniejszyć ogólną platformy Azure możesz wydać identyfikując bezczynności i niedostatecznie używanych zasobów. Pobierz mogą kosztować z zaleceniami **koszt** karty Pulpit nawigacyjny usługi Advisor.
+Advisor pomaga zoptymalizować i zmniejszyć ogólną platformy Azure możesz wydać identyfikując bezczynności i niedostatecznie używanych zasobów. Pobierz mogą kosztować z zaleceniami **koszt** karty Pulpit nawigacyjny usługi Advisor.
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optymalizowanie maszyny wirtualnej, który możesz wydać przez zmianą rozmiaru lub zamykanie niedostatecznie używanych wystąpień 
 Mimo że niektóre scenariusze aplikacji może spowodować niewielkie wykorzystanie zgodnie z projektem, często można oszczędzić pieniądze, zarządzając rozmiaru i liczby maszyn wirtualnych. Klasyfikator monitoruje wykorzystanie maszyn wirtualnych przez 14 dni, a następnie identyfikuje niskiego wykorzystania maszyn wirtualnych. Maszyny wirtualne, których użycie procesora CPU wynosi 5 procent lub mniej i użycie sieci to 7 MB lub mniej przez cztery lub więcej dni są traktowane jako niskie użycie maszyn wirtualnych.

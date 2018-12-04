@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: c25bc5d577096078694e3af0de74debe0f906251
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: dd7f76e20e43e24c31f5afd8c8d9eb97db04255f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828502"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843227"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Za pomocą rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Przy użyciu mapy usługi w taki sposób, które z nich można przeglądać serwery: jako wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami, czas oczekiwania na połączenie przychodzące i wychodzące i portami w dowolnej architekturze połączenia TCP, bez konieczności konfiguracji wymagane inne niż Instalacja agenta.
@@ -277,7 +277,7 @@ Integracja mapy usługi przy użyciu rozwiązania Update Management jest automat
 ![Okienko Change Tracking maszyny](media/service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Rekordy usługi Log Analytics
-Mapy usługi komputera i przetwarzanie magazynu danych jest dostępna dla [wyszukiwania](../../log-analytics/log-analytics-queries.md) w usłudze Log Analytics. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
+Mapy usługi komputera i przetwarzanie magazynu danych jest dostępna dla [wyszukiwania](../../azure-monitor/log-query/log-query-overview.md) w usłudze Log Analytics. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
 
 Za godzinę dla każdego komputera unikatowy i procesów, oprócz rekordów, które są generowane, gdy proces lub komputer zostaje uruchomiony lub jest uruchomiona do rozwiązania Service Map, generowany jest jeden rekord. Te rekordy mają właściwości podane w poniższych tabelach. Pola i wartości w zdarzeniach ServiceMapComputer_CL są mapowane na pola zasób maszynę w interfejsie API ServiceMap usługi Azure Resource Manager. Pola i wartości w zdarzeniach ServiceMapProcess_CL są mapowane na pola zasobów procesu w interfejsie API ServiceMap usługi Azure Resource Manager. Pole ResourceName_s zgodne pola Nazwa odpowiedniego zasobu usługi Resource Manager. 
 
@@ -504,7 +504,7 @@ Aby uzyskać więcej informacji na temat zbierania i wykorzystywania danych, zob
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej o [dziennikach](../../log-analytics/log-analytics-queries.md) w usłudze Log Analytics, aby pobrać dane, które są zbierane przez rozwiązania Service Map.
+Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) w usłudze Log Analytics, aby pobrać dane, które są zbierane przez rozwiązania Service Map.
 
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów

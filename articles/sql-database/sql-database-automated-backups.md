@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/25/2018
-ms.openlocfilehash: 9c5cdf6c2baf4197b693b522848fc1fd04db7abf
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.date: 12/03/2018
+ms.openlocfilehash: 939c008dbfdb996c84132d5aa0b5ed625e0a68ec
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422514"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837906"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Dowiedz się więcej o automatycznych kopii zapasowych bazy danych SQL
 
@@ -33,8 +33,8 @@ Możesz użyć tych kopii zapasowych:
 
 - Przywracanie bazy danych do punktu w czasie w okresie przechowywania. Ta operacja spowoduje utworzenie nowej bazy danych, w tym samym serwerze co oryginalna baza danych.
 - Przywracanie usuniętej bazy danych do czasu, który został usunięty lub w dowolnym momencie w okresie przechowywania. Usuniętą bazę danych można przywrócić tylko na tym samym serwerze, na którym utworzono oryginalnej bazy danych.
-- Przywracanie bazy danych do innego regionu geograficznego. Dzięki temu można odzyskać z geograficznego po awarii, jeśli nie masz dostępu do serwera i bazy danych. Tworzy nową bazę danych w dowolnej istniejącego serwera, w dowolnym miejscu na świecie.
-- Przywracanie bazy danych z określonego długoterminowej kopii zapasowej, jeśli baza danych została skonfigurowana przy użyciu długoterminowe zasady przechowywania (od lewej do prawej). Dzięki temu można przywrócić starą wersję bazy danych, aby zrealizować żądanie zgodności lub uruchom starą wersję aplikacji. Zobacz [długoterminowego przechowywania](sql-database-long-term-retention.md).
+- Przywracanie bazy danych do innego regionu geograficznego. Funkcja przywracania geograficznego umożliwia odzyskanie geograficzne po awarii, jeśli nie masz dostępu do serwera i bazy danych. Tworzy nową bazę danych w dowolnej istniejącego serwera, w dowolnym miejscu na świecie.
+- Przywracanie bazy danych z określonego długoterminowej kopii zapasowej, jeśli baza danych została skonfigurowana przy użyciu długoterminowe zasady przechowywania (od lewej do prawej). Od lewej do prawej umożliwia przywracanie starszej wersji bazy danych, aby zrealizować żądanie zgodności lub uruchom starą wersję aplikacji. Aby uzyskać więcej informacji, zobacz [Długoterminowe przechowywanie](sql-database-long-term-retention.md).
 - Aby wykonać przywracanie, zobacz [przywrócić bazę danych z kopii zapasowych](sql-database-recovery-using-backups.md).
 
 > [!NOTE]
@@ -42,16 +42,16 @@ Możesz użyć tych kopii zapasowych:
 
 ## <a name="how-long-are-backups-kept"></a>Jak długo są przechowywane kopie zapasowe
 
-Każda baza danych SQL ma domyślny okres przechowywania kopii zapasowych, od 7 do 35 dni, od których zależy [model zakupu i warstwy usług](#pitr-retention-period). Można zaktualizować okresu przechowywania kopii zapasowej dla bazy danych na serwerze logicznym Azure (Ta funkcja zostanie wkrótce włączona w wystąpieniu zarządzanym usługi). Zobacz [okres przechowywania kopii zapasowej zmiany](#how-to-change-backup-retention-period) Aby uzyskać więcej informacji.
+Każda baza danych SQL ma domyślny okres przechowywania kopii zapasowych, od 7 do 35 dni, od których zależy [model zakupu i warstwy usług](#pitr-retention-period). Można zaktualizować okresu przechowywania kopii zapasowej dla bazy danych na serwerze logicznym platformy Azure. Aby uzyskać więcej informacji, zobacz [okres przechowywania kopii zapasowej zmiany](#how-to-change-the-pitr-backup-retention-period).
 
 Jeśli usuniesz bazę danych, SQL Database zostanie zachowana kopie zapasowe w taki sam sposób jak dla bazy danych online. Na przykład po usunięciu podstawowej bazy danych zawierającej okresu przechowywania siedmiu dni, kopii zapasowej, która jest cztery dni zostanie zapisany przez trzy kolejne dni.
 
-Jeśli zachodzi potrzeba przechowywanie kopii zapasowych przez okres dłuższy niż maksymalny okres przechowywania Odzyskiwanie, można zmodyfikować właściwości kopii zapasowej, aby dodać jeden lub więcej okresów przechowywania długoterminowego do bazy danych. Zobacz [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md) Aby uzyskać więcej informacji.
+Jeśli zachodzi potrzeba przechowywanie kopii zapasowych przez okres dłuższy niż maksymalny okres przechowywania, można zmodyfikować właściwości kopii zapasowej, aby dodać jeden lub więcej okresów przechowywania długoterminowego do bazy danych. Aby uzyskać więcej informacji, zobacz [Długoterminowe przechowywanie](sql-database-long-term-retention.md).
 
 > [!IMPORTANT]
 > Jeśli usuniesz serwera Azure SQL, który jest hostem bazy danych SQL, wszystkie elastycznych pul i baz danych, które należą do serwera również zostaną usunięte i nie można odzyskać. Nie można przywrócić usuniętego serwera. Ale jeśli skonfigurowano przechowywanie długoterminowe kopie zapasowe baz danych przy użyciu od lewej do prawej, nie zostaną usunięte i te bazy danych, które mogą zostać przywrócone.
 
-### <a name="pitr-retention-period"></a>Okres przechowywania Odzyskiwanie
+### <a name="default-backup-retention-period"></a>Domyślny okres przechowywania kopii zapasowych
 
 #### <a name="dtu-based-purchasing-model"></a>Model zakupu w oparciu o jednostki DTU
 
@@ -63,12 +63,10 @@ Domyślny okres przechowywania dla bazy danych utworzone za pomocą modelu zakup
 
 #### <a name="vcore-based-purchasing-model"></a>Model zakupu bazujący na rdzeniach wirtualnych
 
-Jeśli używasz [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md), domyślny okres przechowywania kopii zapasowych wynosi 7 dni, (zarówno na serwerach logicznych i wystąpienia zarządzane przez usługę).
+Jeśli używasz [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md), domyślny okres przechowywania kopii zapasowych wynosi 7 dni (w przypadku pojedynczej puli i zarządzanego wystąpienia bazy danych). Dla wszystkich baz danych Azure SQL (pojedynczy, puli i wystąpienie zarządzane usługi baz danych, możesz [zmienić okres przechowywania kopii zapasowej do 35 dni](#how-to-change-the-pitr-backup-retention-period).
 
-- Jedno- i puli baz danych, możesz [zmienić okres przechowywania kopii zapasowej do 35 dni](#how-to-change-backup-retention-period).
-- Zmiana okresu przechowywania kopii zapasowej nie jest dostępny w wystąpieniu zarządzanym.
-
-Czy możesz zmniejszyć bieżącym okresem przechowywania, wszystkie istniejące kopie zapasowe starsze niż przechowywania nowy okres są przestanie być dostępny. Jeśli zwiększysz bieżącego okresu przechowywania bazy danych SQL Database zostanie zachowana istniejące kopie zapasowe, aż do osiągnięcia dłuższy okres przechowywania danych.
+> [!WARNING]
+> Czy możesz zmniejszyć bieżącym okresem przechowywania, wszystkie istniejące kopie zapasowe starsze niż przechowywania nowy okres są przestanie być dostępny. Jeśli zwiększysz bieżącego okresu przechowywania bazy danych SQL Database zostanie zachowana istniejące kopie zapasowe, aż do osiągnięcia dłuższy okres przechowywania danych.
 
 ## <a name="how-often-do-backups-happen"></a>Jak często stanie kopie zapasowe
 
@@ -96,21 +94,24 @@ Jeśli baza danych jest szyfrowana za pomocą funkcji TDE, kopie zapasowe są au
 
 Na bieżąco zespół inżynierów usługi Azure SQL Database automatycznie testy przywracania automatycznych kopii zapasowych baz danych w usłudze. Podczas przywracania bazy danych uzyskują również sprawdzania integralności za pomocą polecenia DBCC CHECKDB. Problemy znalezione podczas sprawdzania integralności spowoduje alert do zespołu inżynieryjnego. Aby uzyskać więcej informacji o funkcji integralność danych w usłudze Azure SQL Database, zobacz [integralność danych w usłudze Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 
-## <a name="how-do-automated-backups-impact-my-compliance"></a>Jak automatycznie tworzonymi kopiami zapasowymi wpływ na Moje zgodności
+## <a name="how-do-automated-backups-impact-compliance"></a>Jak automatycznie tworzonymi kopiami zapasowymi wpływ na zgodność
 
-Podczas migracji bazy danych z warstwy usług oparte na jednostkach DTU z przechowywaniem Odzyskiwanie domyślne 35 dni do warstwy usług oparte na rdzeniach wirtualnych, aby upewnić się, że zasady odzyskiwania danych aplikacji nie są zagrożone zachowywana jest przechowywania Odzyskiwanie. Jeśli domyślny okres przechowywania nie spełnia wymagań dotyczących zgodności, możesz zmienić okres przechowywania Odzyskiwanie przy użyciu programu PowerShell lub interfejsu API REST. Zobacz [okres przechowywania kopii zapasowej zmiany](#how-to-change-backup-retention-period) Aby uzyskać więcej informacji.
+Podczas migracji bazy danych z warstwy usług oparte na jednostkach DTU z przechowywaniem Odzyskiwanie domyślne 35 dni do warstwy usług oparte na rdzeniach wirtualnych, aby upewnić się, że zasady odzyskiwania danych aplikacji nie są zagrożone zachowywana jest przechowywania Odzyskiwanie. Jeśli domyślny okres przechowywania nie spełnia wymagań dotyczących zgodności, możesz zmienić okres przechowywania Odzyskiwanie przy użyciu programu PowerShell lub interfejsu API REST. Zobacz [okres przechowywania kopii zapasowej zmiany](#how-to-change-the-pitr-backup-retention-period) Aby uzyskać więcej informacji.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="how-to-change-backup-retention-period"></a>Jak zmienić okres przechowywania kopii zapasowej
+## <a name="how-to-change-the-pitr-backup-retention-period"></a>Jak zmienić okres przechowywania kopii zapasowej Odzyskiwanie
 
-> [!Note]
-> Nie można zmienić domyślnego okresu przechowywania kopii zapasowych (7 dni) na wystąpieniu zarządzanym.
-
-Można zmienić domyślny okres przechowywania, przy użyciu interfejsu API REST lub programu PowerShell. Obsługiwane wartości to: 7, 14, 21, 28 lub 35 dni. Poniższe przykłady ilustrują zmiana okresu przechowywania Odzyskiwanie 28 dni.
+Można zmienić domyślny okres przechowywania kopii zapasowych Odzyskiwanie przy użyciu witryny Azure Portal, programu PowerShell lub interfejsu API REST. Obsługiwane wartości to: 7, 14, 21, 28 lub 35 dni. Poniższe przykłady ilustrują zmiana okresu przechowywania Odzyskiwanie 28 dni.
 
 > [!NOTE]
-> Te interfejsy API wpływają tylko na okres przechowywania Odzyskiwanie. Jeśli od lewej do prawej są skonfigurowane dla bazy danych, nie będzie mieć wpływ. Zobacz [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md) Aby uzyskać szczegółowe informacje o sposobie zmieniania okresy przechowywania od lewej do prawej.
+> Te interfejsy API wpływają tylko na okres przechowywania Odzyskiwanie. Jeśli od lewej do prawej są skonfigurowane dla bazy danych, nie będzie mieć wpływ. Aby uzyskać więcej informacji na temat zmiany okresy przechowywania od lewej do prawej, zobacz [długoterminowego przechowywania](sql-database-long-term-retention.md).
+
+### <a name="change-pitr-backup-retention-period-using-the-azure-portal"></a>Zmiana okresu przechowywania kopii zapasowej Odzyskiwanie przy użyciu witryny Azure portal
+
+Aby zmienić okres przechowywania kopii zapasowej Odzyskiwanie przy użyciu witryny Azure portal, przejdź do bazy danych których okres przechowywania, który chcesz zmienić, a następnie kliknij przycisk **Przegląd**.
+
+![Portal Azure Odzyskiwanie zmiany](./media/sql-database-automated-backup/configure-backup-retention.png)
 
 ### <a name="change-pitr-backup-retention-period-using-powershell"></a>Zmiana okresu przechowywania kopii zapasowej Odzyskiwanie przy użyciu programu PowerShell
 
@@ -154,7 +155,7 @@ Kod stanu: 200
 }
 ```
 
-Zobacz [interfejsu API REST przechowywania kopii zapasowej](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies) Aby uzyskać więcej informacji.
+Aby uzyskać więcej informacji, zobacz [interfejsu API REST przechowywania kopii zapasowej](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

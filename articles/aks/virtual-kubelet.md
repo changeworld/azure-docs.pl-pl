@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: cd41fba675a0814e6f2a1b17576add7811a803eb
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: a2fed45e4ec51fac7d4d04e50616a7e3748d71c4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233484"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834404"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Rozwiązania Virtual Kubelet za pomocą usługi Azure Kubernetes Service (AKS)
 
@@ -22,9 +22,9 @@ Usługa Azure Container Instances (ACI) zapewniają hostowanej środowisko do ur
 W przypadku używania dostawcy rozwiązania Virtual Kubelet dla usługi Azure Container Instances, kontenerów systemów Linux i Windows można zaplanować na wystąpienie kontenera tak, jakby była standardowy węzeł rozwiązania Kubernetes. Ta konfiguracja umożliwia korzystanie z zalet możliwości platformy Kubernetes i korzyści wartość i kosztów zarządzania wystąpienia kontenera.
 
 > [!NOTE]
+> AKS ma teraz wbudowaną obsługę planowania kontenerów w usłudze ACI, o nazwie *wirtualnych węzłów*. Te węzły wirtualny obsługuje obecnie wystąpień kontenera systemu Linux. Jeśli potrzebujesz do zaplanowania Windows container instances, możesz kontynuować używanie rozwiązania Virtual Kubelet. W przeciwnym razie należy użyć wirtualnych węzłów zamiast ręcznego instrukcji rozwiązania Virtual Kubelet wymienionych w tym artykule. Możesz rozpocząć pracę z wirtualnych węzłów przy użyciu [wiersza polecenia platformy Azure] [ virtual-nodes-cli] lub [witryny Azure portal][virtual-nodes-portal].
+>
 > Rozwiązania Virtual Kubelet jest projektem eksperymentalne "open source" i powinna być używana w związku z tym. Aby współtworzyć, problemów z plików i Przeczytaj więcej na temat rozwiązania virtual kubelet, zobacz [projektu wirtualnego GitHub agenta Kubelet][vk-github].
-
-Szczegóły tego dokumentu, konfigurowanie rozwiązania Virtual Kubelet dla wystąpienia kontenera w usłudze AKS.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
@@ -235,6 +235,8 @@ Przeczytaj więcej na temat rozwiązania Virtual Kubelet w [projektu wirtualnego
 [aks-remove-connector]: /cli/azure/aks#az-aks-remove-connector
 [az-container-list]: /cli/azure/aks#az-aks-list
 [aks-install-connector]: /cli/azure/aks#az-aks-install-connector
+[virtual-nodes-cli]: virtual-nodes-cli.md
+[virtual-nodes-portal]: virtual-nodes-portal.md
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

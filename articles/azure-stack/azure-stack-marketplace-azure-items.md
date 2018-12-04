@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 12/03/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 68d5742f5da542d5146997390e470180cf8c5776
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: adde29b0719f777bc6cf3ab86adbdeec4befddf0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620697"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842428"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Marketplace dostępnych elementów dla usługi Azure Stack
 
@@ -236,7 +236,6 @@ Microsoft Azure Stack obsługuje następujące maszyny wirtualne w portalu Azure
 | ![CloudLink SecureVM](media/azure-stack-marketplace-azure-items/cloudlink.png) | [CloudLink SecureVM](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | Kontrolowanie, monitorować i szyfrowania maszyn wirtualnych z łatwością i pewnością. **Pobierz wszystkie elementy CloudLink SecureVM.** | Dell EMC |
 | ![EventTracker SIEM](media/azure-stack-marketplace-azure-items/eventtracker.png) | [EventTracker SIEM](https://azuremarketplace.microsoft.com/marketplace/apps/eventtracker.eventtracker-siem)  | EventTracker SIEM jest platformy kompleksowych funkcji zabezpieczeń, która zapewnia zaawansowane narzędzia zabezpieczeń oraz możliwości gotowych do użycia inspekcja zgodności. | EventTracker |
 | ![F5](media/azure-stack-marketplace-azure-items/f5.png) | [F5 Big-IP wirtualnych Edition](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best)  | Zaawansowane Równoważenie obciążenia, usługa GSLB, Zapora sieciowa, DNS, zapory aplikacji sieci Web i uzyskania dostępu do aplikacji. | F5 Networks |
-| ![Zapory następnej generacji, FortiGate](media/azure-stack-marketplace-azure-items/fortinetsquare.png) | [Zapory następnej generacji, FortiGate](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-fortigate-singlevm) | Technologia zapory, która zapewnia pełną ochronę zawartości i sieci, z kompleksowym pakietem zaawansowanych funkcji zabezpieczeń. Kontrola aplikacji, rozwiązania antywirusowe, IPS, filtrowanie sieci web oraz sieć VPN wraz z zaawansowanych funkcji, takich jak zarządzanie lukami w zabezpieczeniach pracować wspólnie w celu identyfikować i minimalizować najnowsze złożone zagrożenia bezpieczeństwa. | Fortinet |
 | ![Hortonworks Data Platform (HDP) piaskownicy](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks Data Platform (HDP) piaskownicy](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | Wyłączyć przez HDP 2,5 100% open source platformy Hadoop, Spark, Storm, HBase, Kafka, Hive, Ambari. | Hortonworks |
 | ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Zabezpieczenia chmury hybrydowej Kaspersky](https://azuremarketplace.microsoft.com/marketplace/apps/kaspersky_lab.kaspersky_hybrid_cloud_security?tab=Overview) | Zabezpieczenia chmury hybrydowej Kaspersky umożliwia ekosystemu bezproblemowo zorganizowany i adaptacyjne cyberbezpieczeństwa. | Kaspersky laboratorium |
 | ![Firma KEMP LoadMaster obciążenia równoważenia zawartości ADC przełącznika](media/azure-stack-marketplace-azure-items/kemp.png) | [Firma KEMP LoadMaster obciążenia równoważenia zawartości ADC przełącznika](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | Moduł równoważenia obciążenia kontroler dostarczania aplikacji w warstwie 4 – 7, przełącznik zawartości i usługi Traffic Manager. | KEMP Technologies Inc. |

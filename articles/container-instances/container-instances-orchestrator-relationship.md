@@ -5,15 +5,15 @@ services: container-instances
 author: seanmck
 ms.service: container-instances
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 11/30/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: c17bdb5a81640a7162ae735a4633a31cdfffbb1d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 08bc344a20ade3d8bb0f7dd23a854fd03ddac006
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803515"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845811"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Usługa Azure Container Instances i koordynatorów kontenerów
 
@@ -40,9 +40,9 @@ Usługa Azure Container Instances umożliwia warstwowego podejścia do aranżacj
 
 Ponieważ podstawowej infrastruktury dla container instances jest zarządzana przez platformę Azure, platformą orchestrator nie musi dotyczyć samej znalezienie maszyny do odpowiedniego hosta, na którym należy uruchomić jeden kontener. Elastyczność chmury gwarantuje, że ten właśnie jest zawsze dostępna. Zamiast tego koordynatora skupić się na zadania, które upraszczają proces tworzenia architektury obsługującej wiele kontenerów, na przykład, skalowania i skoordynowanych uaktualnień.
 
-## <a name="potential-scenarios"></a>Możliwe scenariusze
+## <a name="scenarios"></a>Scenariusze
 
-Podczas integracji programu orchestrator za pomocą usługi Azure Container Instances jest nadal narodzin, zamierzamy, mogą pojawić się w kilku różnych środowiskach:
+Podczas integracji programu orchestrator za pomocą usługi Azure Container Instances jest nadal narodzin, przewidujemy, że pojawią się w kilku różnych środowiskach:
 
 ### <a name="orchestration-of-container-instances-exclusively"></a>Organizowanie kontenerów wystąpień wyłącznie
 
@@ -54,13 +54,15 @@ Dla obciążeń długotrwałych i stabilne i organizowanie kontenerów w klastrz
 
 Zamiast skalowania w poziomie liczby maszyn wirtualnych w klastrze, a następnie wdrażać dodatkowe kontenery na tych komputerach, koordynatora można po prostu zaplanować dodatkowe kontenery w usłudze Azure Container Instances i usuwać je, gdy są one już wymagane.
 
-## <a name="sample-implementation-virtual-kubelet-for-kubernetes"></a>Przykładowe zastosowanie: rozwiązania Virtual Kubelet dla rozwiązania Kubernetes
+## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>Przykładowe zastosowanie: wirtualnych węzłów usługi Azure Kubernetes Service (AKS)
 
-[Rozwiązania Virtual Kubelet] [ aci-connector-k8s] projekt pokazuje, jak platform aranżacji kontenerów można zintegrować z usługą Azure Container Instances.
+Szybkie skalowanie obciążeń aplikacji w [usługi Azure Kubernetes Service](../aks/intro-kubernetes.md) klastra (AKS), można użyć *wirtualnych węzłów* tworzone dynamicznie w usłudze Azure Container Instances. Obecnie w wersji zapoznawczej wirtualnych węzłów włączyć komunikację sieciową między zasobników, które są uruchamiane w usłudze ACI i klastrem AKS. 
 
-Rozwiązania Virtual Kubelet naśladuje Kubernetes [agenta kubelet] [ kubelet-doc] przez rejestrowanie jako węzeł z nieograniczoną pojemność i wysyła tworzenie [zasobników] [ pod-doc] jako grupy kontenerów w usłudze Azure Container Instances.
+Węzły wirtualne obsługuje obecnie wystąpień kontenera systemu Linux. Rozpoczynanie pracy z usługą wirtualnych węzłów przy użyciu [wiersza polecenia platformy Azure](https://go.microsoft.com/fwlink/?linkid=2047538) lub [witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2047545).
 
-Łączniki dla innych orkiestratorów mogą być zbudowane analogicznie zintegrowanych z platform podstawowych połączyć możliwości programu orchestrator API szybkość i łatwość zarządzania kontenerami w usłudze Azure Container Instances.
+Węzły wirtualne używały "open source" [rozwiązania Virtual Kubelet] [ aci-connector-k8s] do naśladowania rozwiązania Kubernetes [agenta kubelet] [ kubelet-doc] , rejestrując jako węzeł z bez ograniczeń pojemność. Rozwiązania Virtual Kubelet wywołuje tworzenie [zasobników] [ pod-doc] jako grupy kontenerów w usłudze Azure Container Instances.
+
+Zobacz [rozwiązania Virtual Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) projektu dodatkowe przykłady rozszerzenia interfejsu API rozwiązania Kubernetes do platform kontenerów bez użycia serwera.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

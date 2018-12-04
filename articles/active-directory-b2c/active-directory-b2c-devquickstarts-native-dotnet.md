@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: bd504beabbb126db2cd90ac010dbc2757e571185
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 2e515ee61144dfe56d2b5a4fac97da81b0fa8c84
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441903"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834849"
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Usługa Azure AD B2C: Tworzenie aplikacji klasycznych Windows
 Za pomocą usługi Azure Active Directory (Azure AD) B2C, można dodać zaawansowane Samoobsługowe funkcje obsługi tożsamości zarządzania do aplikacji komputerowej w kilku krótkich krokach. W tym artykule pokazano sposób tworzenia aplikacji "Lista zadań do wykonania".NET Windows Presentation Foundation (WPF), która obejmuje rejestracji i logowania użytkowników i zarządzania profilami. Aplikacja będzie zawierać obsługę rejestracji i logowania za pomocą nazwy użytkownika lub adres e-mail. Zawiera również obsługę rejestracji i logowania za pomocą kont społecznościowych, takich jak Facebook i Google.
@@ -31,7 +31,7 @@ Następnie musisz utworzyć aplikację w katalogu usługi B2C. Dzięki temu info
 * Skopiuj **Identyfikator aplikacji** przypisany do aplikacji. Będzie potrzebny później.
 
 ## <a name="create-your-policies"></a>Tworzenie zasad
-W usłudze Azure AD B2C każde działanie użytkownika jest definiowane przy użyciu [zasad](active-directory-b2c-reference-policies.md). Ten przykładowy kod obejmuje trzy środowiska tożsamości: Zarejestruj się, zaloguj się i edytowanie profilu. Należy utworzyć zasady dla każdego typu zgodnie z opisem w [artykule dotyczącym struktury zasad](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Podczas tworzenia trzech zbiorów zasad należy koniecznie:
+W usłudze Azure AD B2C każde działanie użytkownika jest definiowane przy użyciu [zasad](active-directory-b2c-reference-policies.md). Ten przykładowy kod obejmuje trzy środowiska tożsamości: Zarejestruj się, zaloguj się i edytowanie profilu. Należy utworzyć zasady dla każdego typu zgodnie z opisem w [artykule dotyczącym struktury zasad](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow). Podczas tworzenia trzech zbiorów zasad należy koniecznie:
 
 * W bloku dostawców tożsamości wybrać opcję **tworzenia konta przy użyciu identyfikatora użytkownika** lub **tworzenia konta przy użyciu adresu e-mail**.
 * Wybrać wartość **Nazwa wyświetlana** i inne atrybuty tworzenia konta w zasadach tworzenia konta.

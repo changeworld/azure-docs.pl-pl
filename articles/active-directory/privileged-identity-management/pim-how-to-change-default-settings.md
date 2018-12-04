@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 09/21/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 77a57afda3859de4a246c15d3b5c0b4ba8e2a8c8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 87003a053823cfc257a3b6f41699feefadbbcc66
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039005"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835169"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>Konfigurowanie ustawień roli w katalogu usługi Azure AD w usłudze PIM
 
@@ -50,7 +50,15 @@ Użyj **aktywacji** suwak, aby ustawić maksymalny czas w godzinach, rola pozost
 
 ## <a name="notifications"></a>Powiadomienia
 
-Użyj **powiadomienia** przełącznika, aby określić, czy system wysyła wiadomości e-mail do administratorów potwierdzenie ich uaktywniono rolę. Może to być przydatne w przypadku wykrycia nieautoryzowanego lub nielegalne aktywacji.
+Użyj **powiadomienia** przełącznika, aby określić, czy administratorzy będą otrzymywać powiadomienia e-mail uaktywnienie ról. Może to być przydatne w przypadku wykrycia nieautoryzowanego lub nielegalne aktywacji.
+
+Po ustawieniu **Włącz**, powiadomienia są wysyłane do:
+
+- Administrator ról uprzywilejowanych
+- Administrator zabezpieczeń
+- Administrator globalny
+
+Aby uzyskać więcej informacji, zobacz [wiadomości E-mail z powiadomieniami w usłudze PIM](pim-email-notifications.md).
 
 ## <a name="incidentrequest-ticket"></a>Bilet zdarzenia/żądania
 

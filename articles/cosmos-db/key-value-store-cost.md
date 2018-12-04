@@ -1,55 +1,52 @@
 ---
-title: Azure DB rozwiązania Cosmos jako wartość klucza magazynu — omówienie koszt | Dokumentacja firmy Microsoft
-description: Więcej informacji o niskich kosztów korzystania z bazy danych Azure rozwiązania Cosmos jako magazyn wartości klucza.
-keywords: magazyn kluczy i wartości
+title: Usługa Azure Cosmos DB jako wartości klucza magazynu — omówienie kosztów
+description: Więcej informacji na temat niskie koszty korzystania z usługi Azure Cosmos DB do przechowywania wartości klucza.
+keywords: Magazyn wartości klucza
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
-tags: ''
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: bcbe4afe5ca5abf9a709f5abbcdffa474c44702c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7331db23757ab4eaae054c7fe640952fe22a7917
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34612126"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840879"
 ---
-# <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure DB rozwiązania Cosmos jako magazyn wartości klucza — koszt — omówienie
+# <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Usługa Azure Cosmos DB jako wartości klucza magazynu — omówienie kosztów
 
-Azure DB rozwiązania Cosmos jest usługą bazy danych globalnie rozproszone i wiele modeli łatwe tworzenie aplikacji na dużą skalę, wysoko dostępne. Domyślnie program Azure DB rozwiązania Cosmos automatycznie indeksuje wszystkie dane, które go wysyła strumień, wydajnie. Umożliwia to szybkie i spójne [SQL](sql-api-sql-query.md) (i [JavaScript](programming.md)) kwerendy dla każdego typu danych. 
+Usługa Azure Cosmos DB to usługa globalnie dystrybuowanej, wielomodelowej bazy danych do tworzenia aplikacji o wysokiej dostępności, na dużą skalę w prosty sposób. Domyślnie usługa Azure Cosmos DB automatycznie indeksuje wszystkie dane, które pozyskuje wydajnie. Umożliwia to szybkie i spójne [SQL](how-to-sql-query.md) (i [JavaScript](programming.md)) kwerendy dla każdego typu danych. 
 
-Tym artykule opisano koszt bazy danych Azure rozwiązania Cosmos do zapisu proste i operacje odczytu, gdy jest używany jako magazyn kluczy i wartości. Zapisu operacji zalicza się wstawienia, zastępuje, usuwa i upserts dokumentów. Oprócz zagwarantowania 99,99% dostępności umowy SLA dla wszystkich kont w pojedynczym regionie i wszystkich kont w przypadku swobodna spójności i 99,999% odczytu dostępności na wszystkich kontach w przypadku bazy danych, bazy danych rozwiązania Cosmos Azure oferuje gwarantowane < opóźnienie 10 ms odczytuje i < 15 ms opóźnień (indeksowane), zapisuje na 99-ty percentyl. 
+W tym artykule opisano koszt usługi Azure Cosmos DB proste zapisu oraz operacje odczytu, gdy jest ona używana jako magazyn klucz/wartość. Operacje obejmują operacje wstawiania, zastępuje, usuwa i wykonuje operację UPSERT dokumentów zapisu. Oprócz gwarantujące dostępność przez 99,99% umowa SLA dotycząca dostępności dla wszystkich kont w obrębie jednego regionu i wszystkich kont w wielu regionach za pomocą rozluźnionej spójności, a przez 99,999% dostępność do odczytu na wszystkich multiregionalne konta baz danych, gwarantowana oferty usługi Azure Cosmos DB < opóźnieniem 10 ms odczytuje i < 15 ms opóźnienia (indeksowanych) zapisuje odpowiednio na poziomie 99 percentyla. 
 
-## <a name="why-we-use-request-units-rus"></a>Dlaczego używamy jednostek żądania (RUs)
+## <a name="why-we-use-request-units-rus"></a>Dlaczego używamy jednostek żądań (ru)
 
-Azure wydajności bazy danych rozwiązania Cosmos jest oparta na ilość elastycznie [jednostek żądania](request-units.md) (RU) dla partycji. Udostępnianie w drugiego stopnia szczegółowości i została zakupiona w RUs na sekundę ([nie należy mylić z rozliczeniami co godzinę](https://azure.microsoft.com/pricing/details/cosmos-db/)). RUs należy traktować jako walutę upraszczającym udostępniania przepływności wymagane dla aplikacji. Klientów nie trzeba myśleć o rozróżnianie między odczytu i zapisu pojemności jednostki. Model jednej waluty RUs tworzy wydajności, aby udostępnić elastycznie pojemności między odczyty i zapisy. Ten model elastycznie pojemności umożliwia usłudze zapewniają przewidywalną i spójny przepływności gwarancji, małych opóźnień i wysokiej dostępności. Na koniec używamy RU produktywnością modelu, ale każdy elastycznie RU ma także zdefiniowanych ilość zasobów (pamięć, Core). RU/s nie jest tylko IOPS.
+Wydajność usługi Azure Cosmos DB jest oparty na ilość aprowizowanej [jednostek żądań](request-units.md) (RU) dla partycji. Inicjowanie obsługi administracyjnej drugiego stopnia szczegółowości i nie jest sprzedawana w wielkości jednostek ru na sekundę ([nie należy mylić przy naliczaniu godzinowym](https://azure.microsoft.com/pricing/details/cosmos-db/)). (RUS) powinny być uważane za waluty, która upraszcza aprowizację przepustowość wymagana dla aplikacji. Naszych klientów nie trzeba myśleć o rozróżnianiu odczytu i zapisu jednostek pojemności. Model pojedynczej waluty (RUS) tworzy efektywność udostępnianie zaprowizowaną pojemnością między operacji odczytu i zapisu. Ten model zaprowizowaną pojemnością włącza usługę w celu zapewnienia przewidywalnych i spójne przepływności, gwarantowanych małych opóźnień i wysokiej dostępności. Na koniec używamy jednostek Zarezerwowanych do modelu przepływności, ale każdy aprowizowanych jednostek RU również ma określoną ilość zasobów (pamięci, Core). Jednostek żądań na sekundę nie jest tylko operacje We/Wy.
 
-Jako system globalnie rozproszoną bazę danych DB rozwiązania Cosmos jest tylko Azure usługa, która zapewnia SLA na opóźnienia, przepływności i spójności oprócz wysokiej dostępności. Przepływność, które należy udostępnić jest stosowany do poszczególnych regionów skojarzonych z Twoim kontem bazy danych DB rozwiązania Cosmos. Dla odczytów, DB rozwiązania Cosmos oferuje wiele dobrze zdefiniowany [poziomy spójności](consistency-levels.md) dla można wybrać. 
+Jako system globalnie rozproszonej bazy danych Cosmos DB to usługa tylko Azure, która zawiera umowy SLA dotyczące opóźnienia, przepływność i spójność oprócz wysokiej dostępności. Przepływność, którą możesz aprowizować jest stosowany do wszystkich regionów skojarzonych z kontem bazy danych usługi Cosmos DB. Dla odczytów, Cosmos DB oferuje wiele dobrze zdefiniowanych [poziomów spójności](consistency-levels.md) służących do wyboru. 
 
-Poniższa tabela przedstawia liczbę RUs wymaganych do wykonania odczytu i zapisu transakcji na podstawie rozmiaru dokumentu o rozmiarze 1 KB i 100 KB/s.
+W poniższej tabeli przedstawiono liczbę jednostek zarezerwowanych, wymagane do wykonywania odczytu i zapisu transakcji na podstawie rozmiaru dokumentu o rozmiarze 1 KB i 100 KB/s.
 
 |Rozmiar elementu|Odczyt 1|1 zapisu|
 |-------------|------|-------|
-|1 KB|1 RU|5 RUs|
-|100 KB|10 RUs|50 RUs|
+|1 KB|1 JEDNOSTKA ŻĄDANIA|5 jednostek ru|
+|100 KB|10 jednostek RU|50 (RUS)|
 
 ## <a name="cost-of-reads-and-writes"></a>Koszt odczyty i zapisy
 
-Jeśli dostarczasz 1 000 RU/s, ta ilość 3,6 m RU na godzinę i będzie koszt $0.08 godzinę (w Stanach Zjednoczonych i Europie). Dla dokumentu o rozmiarze 1 KB, oznacza to, czy będzie można korzystać z odczyty 3,6 m lub zapisuje 0.72-m (m 3,6 RU / 5) przy użyciu sieci udostępnionej przepływności. Znormalizowane do milionów odczyty i zapisy, kosztów byłoby odczyty /m 0,022 $ (0.08 $ / 3,6) i zapisuje 0.111 $/ m (0.08 $ / 0,72). Koszt milionów staje się minimalny, jak pokazano w poniższej tabeli.
+Jeśli aprowizować 1000 jednostek żądań na sekundę, ta ilość 3.6 mln jednostek RU/godz. i będzie koszt 0,08 USD za godzinę (w Stanach Zjednoczonych i Europie). Dla dokumentu o rozmiarze 1 KB, oznacza to, że mogą wykorzystywać odczyty 3.6-m lub m 0,72 zapisuje (3,6 mln jednostek RU / 5) przy użyciu aprowizowanej przepływności. Znormalizowane do milionów operacji odczytu i zapisu, opłata wyniesie odczyty /m 0,022 $ (0,08 USD / 3.6) i zapisuje 0.111 $/ m (0,08 USD / 0,72). Koszt za mln staje się minimalny, jak pokazano w poniższej tabeli.
 
-|Rozmiar elementu|1-m odczytu|1-m zapisu|
+|Rozmiar elementu|Odczyt 1-m|1-m zapisu|
 |-------------|-------|--------|
 |1 KB|$0.022|$0.111|
 |100 KB|$0.222|$1.111|
 
 
-Większość podstawowych obiektów blob lub obiekt Magazyny usług opłatą $0,40 na milionów transakcji odczytu i 5 USD na transakcję milionów zapisu. Jeśli używane optymalnie, rozwiązania Cosmos bazy danych może być 98% tańszy niż te rozwiązania, (dla transakcji 1 KB).
+Większość podstawowych obiektów blob lub obiekt Magazyny usług opłaty 0,40 USD za milion transakcji odczytu, a 5 USD za milion zapisu transakcji. Jeśli używany optymalnie, Cosmos DB można 98% tańsze niż te inne rozwiązania (w przypadku transakcji 1 KB).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Wkrótce nowe artykuły dotyczące optymalizacji Inicjowanie obsługi zasobów bazy danych Azure rozwiązania Cosmos. W międzyczasie możesz użyć naszych [Kalkulator RU](https://www.documentdb.com/capacityplanner).
+Wkrótce podamy nowe artykuły dotyczące optymalizacji, inicjowanie obsługi zasobu usługi Azure Cosmos DB. W międzyczasie możesz użyć naszych [kalkulatora jednostek RU](https://www.documentdb.com/capacityplanner).
 

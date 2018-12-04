@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: ac15b95c19fb0184e902ebb43146a76b6ba2faaf
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d9eaaf7da938c259d328840970ee6f844d54ff9d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283737"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836614"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Wyzwalacz siatki zdarzeń dla usługi Azure Functions
 
 W tym artykule opisano sposób obsługi [usługi Event Grid](../event-grid/overview.md) zdarzenia w usłudze Azure Functions.
 
-Usługa Event Grid jest usługą platformy Azure, która wysyła żądania HTTP, powiadomimy Cię o zdarzenia mające miejsce w *wydawców*. Wydawca jest usługą lub zasobem, który pochodzi zdarzenie. Na przykład konto usługi Azure blob storage jest wydawcą, a [przekazywania obiektów blob lub usunięciu to zdarzenie](../storage/blobs/storage-blob-event-overview.md). Niektóre [usług platformy Azure ma wbudowaną obsługą publikowania zdarzeń do usługi Event Grid](../event-grid/overview.md#event-sources). 
+Usługa Event Grid jest usługą platformy Azure, która wysyła żądania HTTP, powiadomimy Cię o zdarzenia mające miejsce w *wydawców*. Wydawca jest usługą lub zasobem, który pochodzi zdarzenie. Na przykład konto usługi Azure blob storage jest wydawcą, a [przekazywania obiektów blob lub usunięciu to zdarzenie](../storage/blobs/storage-blob-event-overview.md). Niektóre [usług platformy Azure ma wbudowaną obsługą publikowania zdarzeń do usługi Event Grid](../event-grid/overview.md#event-sources).
 
 Zdarzenie *obsługi* odbierania i przetwarzania zdarzeń. Usługa Azure Functions jest jednym z kilku [usług platformy Azure, które mają wbudowaną obsługę zdarzeń usługi Event Grid](../event-grid/overview.md#event-handlers). W tym artykule dowiesz się, jak za pomocą wyzwalacza usługi Event Grid, wywołaj funkcję po odebraniu zdarzenia z usługi Event Grid.
 
@@ -48,8 +48,9 @@ Zobacz przykład charakterystyczny dla wyzwalacza usługi Event Grid:
 
 * [C#](#c-example)
 * [Skryptu C# (csx)](#c-script-example)
-* [JavaScript](#javascript-example)
 * [Java](#trigger---java-example)
+* [JavaScript](#javascript-example)
+* [Python](#python-example)
 
 Na przykład wyzwalacz protokołu HTTP, zobacz [sposób użycia wyzwalacza HTTP](#use-an-http-trigger-as-an-event-grid-trigger) w dalszej części tego artykułu.
 
@@ -187,6 +188,39 @@ module.exports = function (context, eventGridEvent) {
 };
 ```
 
+### <a name="python-example"></a>Przykładem w języku Python
+
+W poniższym przykładzie pokazano powiązanie wyzwalacza w *function.json* pliku i [funkce Pythonu](functions-reference-python.md) powiązania, który używa.
+
+Oto powiązanie danych w *function.json* pliku:
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "event",
+      "direction": "in"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "__init__.py"
+}
+```
+
+Poniżej przedstawiono kod języka Python:
+
+```python
+import logging
+import azure.functions as func
+
+def main(event: func.EventGridEvent):
+    logging.info("Python Event Grid function processed a request.")
+    logging.info("  Subject: %s", event.subject)
+    logging.info("  Time: %s", event.event_time)
+    logging.info("  Data: %s", event.get_json())
+```
+
 ### <a name="trigger---java-example"></a>Wyzwalacz - przykładzie w języku Java
 
 W poniższym przykładzie pokazano powiązanie wyzwalacza w *function.json* pliku i [funkcja Java](functions-reference-java.md) wykorzystuje powiązania i zdarzenia do drukowania.
@@ -210,12 +244,12 @@ Oto kodu Java:
   public void logEvent(
      @EventGridTrigger(name = "event") String content,
       final ExecutionContext context
-  ) { 
+  ) {
       context.getLogger().info(content);
     }
 ```
 
-W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `EventGridTrigger` adnotacji w parametrach, którego wartość może pochodzić z EventGrid. Parametry z tymi adnotacjami spowodować, że funkcja do uruchomienia po odebraniu zdarzenia.  Ta adnotacja mogą być używane z typami natywnymi Java, obiektów typu Pojo lub wartości dopuszczających wartości null przy użyciu `Optional<T>`. 
+W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `EventGridTrigger` adnotacji w parametrach, którego wartość może pochodzić z EventGrid. Parametry z tymi adnotacjami spowodować, że funkcja do uruchomienia po odebraniu zdarzenia.  Ta adnotacja mogą być używane z typami natywnymi Java, obiektów typu Pojo lub wartości dopuszczających wartości null przy użyciu `Optional<T>`.
 
 ## <a name="attributes"></a>Atrybuty
 
@@ -295,7 +329,7 @@ Właściwości najwyższego poziomu, w tym przypadku dane JSON są takie same, w
 
 Objaśnienia dotyczące właściwości wspólne i specyficznych dla zdarzeń, zobacz [właściwości zdarzenia](../event-grid/event-schema.md#event-properties) w dokumentacji usługi Event Grid.
 
-`EventGridEvent` Typ definiuje tylko właściwości najwyższego poziomu; `Data` właściwość `JObject`. 
+`EventGridEvent` Typ definiuje tylko właściwości najwyższego poziomu; `Data` właściwość `JObject`.
 
 ## <a name="create-a-subscription"></a>Tworzenie subskrypcji
 
@@ -444,7 +478,7 @@ Użyj narzędzia takiego jak [Postman](https://www.getpostman.com/) lub [curl](h
 
 * Ustaw `Content-Type: application/json` nagłówka.
 * Ustaw `aeg-event-type: Notification` nagłówka.
-* Wklej dane RequestBin do treści żądania. 
+* Wklej dane RequestBin do treści żądania.
 * Opublikuj adres URL funkcji wyzwalacza usługi Event Grid, używając następującego wzorca:
 
 ```
@@ -509,19 +543,23 @@ Adres URL ngrok nie uzyskuje specjalnej obsługi przez usługę Event Grid, dzi�
 Utwórz subskrypcję usługi Event Grid typu, który ma zostać przetestowana i przypisz do niego ngrok punktu końcowego.
 
 Użyj tego wzorca punktu końcowego dla funkcji 1.x:
+
 ```
 https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={functionname}
 ```
+
 Użyj tego wzorca punktu końcowego dla funkcji 2.x:
+
 ```
 https://{subdomain}.ngrok.io/runtime/webhooks/eventgrid?functionName={functionName}
 ```
+
 `functionName` Parametr musi być nazwa określona w `FunctionName` atrybutu.
 
 Oto przykład korzystający z wiersza polecenia platformy Azure:
 
-```
-az eventgrid event-subscription create --resource-id /subscriptions/aeb4b7cb-b7cb-b7cb-b7cb-b7cbb6607f30/resourceGroups/eg0122/providers/Microsoft.Storage/storageAccounts/egblobstor0122 --name egblobsub0126 --endpoint https://263db807.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName=EventGridTrigger
+```azurecli
+az eventgrid event-subscription create --resource-id /subscriptions/aeb4b7cb-b7cb-b7cb-b7cb-b7cbb6607f30/resourceGroups/eg0122/providers/Microsoft.Storage/storageAccounts/egblobstor0122 --name egblobsub0126 --endpoint https://263db807.ngrok.io/runtime/webhooks/eventgrid?functionName=EventGridTrigger
 ```
 
 Aby uzyskać informacje o tym, jak można utworzyć subskrypcji, zobacz [Utwórz subskrypcję](#create-a-subscription) we wcześniejszej części tego artykułu.
@@ -560,8 +598,8 @@ public static async Task<HttpResponseMessage> Run(
     var messages = await req.Content.ReadAsAsync<JArray>();
 
     // If the request is for subscription validation, send back the validation code.
-    if (messages.Count > 0 && string.Equals((string)messages[0]["eventType"], 
-        "Microsoft.EventGrid.SubscriptionValidationEvent", 
+    if (messages.Count > 0 && string.Equals((string)messages[0]["eventType"],
+        "Microsoft.EventGrid.SubscriptionValidationEvent",
         System.StringComparison.OrdinalIgnoreCase))
     {
         log.LogInformation("Validate request received");
