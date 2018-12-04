@@ -600,7 +600,7 @@ Aby w dowolnym momencie zatrzymać przesyłanie strumieniowe dzienników, wpisz 
 > [!TIP]
 > Aplikacja PHP może użyć standardowej instrukcji [error_log()](http://php.net/manual/function.error-log.php) w celu przesłania danych wyjściowych do konsoli. Przykładowa aplikacja używa tego podejścia w pliku _app/Http/routes.php_.
 >
-> Będące platformą internetową rozwiązanie [Laravel używa produktu Monolog](https://laravel.com/docs/5.4/errors) jako dostawcy logowania. Aby zobaczyć, jak ustawić rozwiązanie Monolog tak, aby wysyłało komunikaty wyjściowe do konsoli, zobacz [PHP: How to use monolog to log to console (php://out) (PHP: Jak używać rozwiązania Monolog w przypadku logowania do konsoli (php://out))](http://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out).
+> Będące platformą internetową rozwiązanie [Laravel używa produktu Monolog](https://laravel.com/docs/5.4/errors) jako dostawcy logowania. Aby zobaczyć, jak ustawić rozwiązanie Monolog tak, aby wysyłało komunikaty wyjściowe do konsoli, zobacz [PHP: Jak używać rozwiązania Monolog w przypadku logowania do konsoli(php://out)](http://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out).
 >
 >
 

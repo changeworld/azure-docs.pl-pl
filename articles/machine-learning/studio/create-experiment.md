@@ -82,7 +82,7 @@ W tym samouczku dotyczącym uczenia maszynowego wykonamy pięć podstawowych kro
 [Krok 5. Przewidywanie nowych cen samochodów]: #step-5-predict-new-automobile-prices
 
 > [!TIP] 
-> Funkcjonalną kopię poniższego eksperymentu można znaleźć w [galerii sztucznej inteligencji platformy Azure](https://gallery.cortanaintelligence.com). Otwórz stronę **[Your first data science experiment - Automobile price prediction](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** (Pierwszy eksperyment z przetwarzaniem danych — prognozowanie cen samochodów) i kliknij przycisk **Open in Studio** (Otwórz w usłudze Studio), aby pobrać kopię eksperymentu do obszaru roboczego usługi Machine Learning Studio.
+> Funkcjonalną kopię poniższego eksperymentu można znaleźć w [galerii sztucznej inteligencji platformy Azure](https://gallery.cortanaintelligence.com). Otwórz stronę **[Pierwszy eksperyment z przetwarzaniem danych — prognozowanie cen samochodów](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** i kliknij przycisk **Open in Studio** (Otwórz w usłudze Studio), aby pobrać kopię eksperymentu do obszaru roboczego usługi Machine Learning Studio.
 
 
 ## <a name="step-1-get-data"></a>Krok 1. Pobieranie danych
